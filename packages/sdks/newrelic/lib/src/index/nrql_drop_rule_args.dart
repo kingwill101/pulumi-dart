@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NrqlDropRuleArgs {
   /// Account where the drop rule will be put. Defaults to the account associated with the API key used.
   final pulumi.Input<String>? accountId;
+
   /// An action type specifying how to apply the NRQL string (either `drop_data`, `drop_attributes`, or ` drop_attributes_from_metric_aggregates`).
   final pulumi.Input<String> action;
+
   /// The description of the drop rule.
   final pulumi.Input<String>? description;
+
   /// A NRQL string that specifies what data types to drop.
   final pulumi.Input<String> nrql;
 
@@ -39,11 +42,18 @@ class NrqlDropRuleArgs {
 
   factory NrqlDropRuleArgs.fromMap(Map<String, dynamic> map) {
     return NrqlDropRuleArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      nrql: (map['nrql'] as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nrql: pulumi.Input.fromValue(map['nrql'] as String),
     );
   }
 }
-

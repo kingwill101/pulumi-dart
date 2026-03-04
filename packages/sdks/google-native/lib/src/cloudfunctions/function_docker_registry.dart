@@ -4,16 +4,15 @@ enum FunctionDockerRegistry {
   containerRegistry("CONTAINER_REGISTRY"),
   artifactRegistry("ARTIFACT_REGISTRY");
 
-  const FunctionDockerRegistry(this.value);
-  final String value;
+  const FunctionDockerRegistry(this.wireValue);
+  final String wireValue;
 
   static FunctionDockerRegistry fromValue(String value) {
     for (final item in FunctionDockerRegistry.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FunctionDockerRegistry value: $value');
   }
 }
-

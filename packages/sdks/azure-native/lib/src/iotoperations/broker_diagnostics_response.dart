@@ -10,10 +10,13 @@ import 'traces_response.dart';
 class BrokerDiagnosticsResponse {
   /// Diagnostic log settings for the resource.
   final pulumi.Input<DiagnosticsLogsResponse>? logs;
+
   /// The metrics settings for the resource.
   final pulumi.Input<MetricsResponse>? metrics;
+
   /// The self check properties.
   final pulumi.Input<SelfCheckResponse>? selfCheck;
+
   /// The trace properties.
   final pulumi.Input<TracesResponse>? traces;
 
@@ -31,20 +34,65 @@ class BrokerDiagnosticsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logs': ?pulumi.Input.mapOptionalInputValue<DiagnosticsLogsResponse, Map<String, dynamic>>(logs, (value) => value.toMap()),
-      'metrics': ?pulumi.Input.mapOptionalInputValue<MetricsResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
-      'selfCheck': ?pulumi.Input.mapOptionalInputValue<SelfCheckResponse, Map<String, dynamic>>(selfCheck, (value) => value.toMap()),
-      'traces': ?pulumi.Input.mapOptionalInputValue<TracesResponse, Map<String, dynamic>>(traces, (value) => value.toMap()),
+      'logs':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiagnosticsLogsResponse,
+            Map<String, dynamic>
+          >(logs, (value) => value.toMap()),
+      'metrics':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetricsResponse,
+            Map<String, dynamic>
+          >(metrics, (value) => value.toMap()),
+      'selfCheck':
+          ?pulumi.Input.mapOptionalInputValue<
+            SelfCheckResponse,
+            Map<String, dynamic>
+          >(selfCheck, (value) => value.toMap()),
+      'traces':
+          ?pulumi.Input.mapOptionalInputValue<
+            TracesResponse,
+            Map<String, dynamic>
+          >(traces, (value) => value.toMap()),
     };
   }
 
   factory BrokerDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return BrokerDiagnosticsResponse(
-      logs: map['logs'] == null ? null : (DiagnosticsLogsResponse.fromMap((map['logs']! as Map).cast<String, dynamic>())).input(),
-      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input(),
-      selfCheck: map['selfCheck'] == null ? null : (SelfCheckResponse.fromMap((map['selfCheck']! as Map).cast<String, dynamic>())).input(),
-      traces: map['traces'] == null ? null : (TracesResponse.fromMap((map['traces']! as Map).cast<String, dynamic>())).input(),
+      logs: (() {
+        final guardedValue = map['logs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiagnosticsLogsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metrics: (() {
+        final guardedValue = map['metrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetricsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      selfCheck: (() {
+        final guardedValue = map['selfCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SelfCheckResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      traces: (() {
+        final guardedValue = map['traces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TracesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

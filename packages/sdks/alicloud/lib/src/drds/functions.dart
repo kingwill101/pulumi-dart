@@ -5,7 +5,7 @@ import 'get_instances_result.dart';
 /// The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
 /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 ///
-/// > **NOTE:** Available in 1.35.0+.
+/// &gt; **NOTE:** Available in 1.35.0+.
 ///
 /// ## Example Usage
 ///

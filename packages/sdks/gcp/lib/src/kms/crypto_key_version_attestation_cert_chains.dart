@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CryptoKeyVersionAttestationCertChains {
   /// Cavium certificate chain corresponding to the attestation.
   final pulumi.Input<List<String>>? caviumCerts;
+
   /// Google card certificate chain corresponding to the attestation.
   final pulumi.Input<List<String>>? googleCardCerts;
+
   /// Google partition certificate chain corresponding to the attestation.
   final pulumi.Input<List<String>>? googlePartitionCerts;
 
@@ -28,12 +30,25 @@ class CryptoKeyVersionAttestationCertChains {
     };
   }
 
-  factory CryptoKeyVersionAttestationCertChains.fromMap(Map<String, dynamic> map) {
+  factory CryptoKeyVersionAttestationCertChains.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CryptoKeyVersionAttestationCertChains(
-      caviumCerts: map['caviumCerts'] == null ? null : ((map['caviumCerts']! as List).cast<String>()).input(),
-      googleCardCerts: map['googleCardCerts'] == null ? null : ((map['googleCardCerts']! as List).cast<String>()).input(),
-      googlePartitionCerts: map['googlePartitionCerts'] == null ? null : ((map['googlePartitionCerts']! as List).cast<String>()).input(),
+      caviumCerts: (() {
+        final guardedValue = map['caviumCerts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      googleCardCerts: (() {
+        final guardedValue = map['googleCardCerts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      googlePartitionCerts: (() {
+        final guardedValue = map['googlePartitionCerts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceControlSecurityTokenProperties {
   /// The access token.
   final pulumi.Input<String>? accessToken;
+
   /// The refresh token.
   final pulumi.Input<String>? refreshToken;
+
   /// The token type. Must be either PersonalAccessToken or Oauth.
   final pulumi.Input<String>? tokenType;
 
@@ -28,12 +30,25 @@ class SourceControlSecurityTokenProperties {
     };
   }
 
-  factory SourceControlSecurityTokenProperties.fromMap(Map<String, dynamic> map) {
+  factory SourceControlSecurityTokenProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SourceControlSecurityTokenProperties(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
-      tokenType: map['tokenType'] == null ? null : (map['tokenType']! as String).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenType: (() {
+        final guardedValue = map['tokenType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

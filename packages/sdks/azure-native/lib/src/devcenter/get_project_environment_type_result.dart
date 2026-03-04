@@ -10,32 +10,47 @@ import 'user_role_assignment_response.dart';
 class GetProjectEnvironmentTypeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The role definition assigned to the environment creator on backing resources.
-  final ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment? creatorRoleAssignment;
+  final ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment?
+  creatorRoleAssignment;
+
   /// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
   final String? deploymentTargetId;
+
   /// The display name of the project environment type.
   final String? displayName;
+
   /// The number of environments of this type.
   final int environmentCount;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Managed identity properties
   final ManagedServiceIdentityResponse? identity;
+
   /// The geo-location for the environment type
   final String? location;
+
   /// The name of the resource
   final String name;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// Defines whether this Environment Type can be used in this Project.
   final String? status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
   final Map<String, UserRoleAssignmentResponse>? userRoleAssignments;
 
@@ -76,12 +91,12 @@ class GetProjectEnvironmentTypeResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'creatorRoleAssignment': ?creatorRoleAssignment == null ? null : creatorRoleAssignment!.toMap(),
+      'creatorRoleAssignment': ?creatorRoleAssignment?.toMap(),
       'deploymentTargetId': ?deploymentTargetId,
       'displayName': ?displayName,
       'environmentCount': environmentCount,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
       'provisioningState': provisioningState,
@@ -89,28 +104,77 @@ class GetProjectEnvironmentTypeResult {
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'userRoleAssignments': ?userRoleAssignments == null ? null : pulumi.Input.encodeMapValues<UserRoleAssignmentResponse, Map<String, dynamic>>(userRoleAssignments!, (value) => value.toMap()),
+      'userRoleAssignments': ?(() {
+        final guardedValue = userRoleAssignments;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeMapValues<
+          UserRoleAssignmentResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetProjectEnvironmentTypeResult.fromMap(Map<String, dynamic> map) {
     return GetProjectEnvironmentTypeResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creatorRoleAssignment: map['creatorRoleAssignment'] == null ? null : ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment.fromMap((map['creatorRoleAssignment']! as Map).cast<String, dynamic>()),
-      deploymentTargetId: map['deploymentTargetId'] == null ? null : map['deploymentTargetId']! as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      creatorRoleAssignment: (() {
+        final guardedValue = map['creatorRoleAssignment'];
+        if (guardedValue == null) return null;
+        return ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      deploymentTargetId: (() {
+        final guardedValue = map['deploymentTargetId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       environmentCount: map['environmentCount'] as int,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      userRoleAssignments: map['userRoleAssignments'] == null ? null : pulumi.Input.decodeMapValues<UserRoleAssignmentResponse>(map['userRoleAssignments']!, (value) => UserRoleAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      userRoleAssignments: (() {
+        final guardedValue = map['userRoleAssignments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<UserRoleAssignmentResponse>(
+          guardedValue,
+          (value) => UserRoleAssignmentResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

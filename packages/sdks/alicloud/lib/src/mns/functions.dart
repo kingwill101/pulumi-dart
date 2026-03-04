@@ -10,7 +10,7 @@ import 'get_topics_result.dart';
 
 /// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
 ///
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
 ///
 /// ## Example Usage
 ///
@@ -129,11 +129,11 @@ Future<GetQueuesResult> getQueues(
 ///
 /// For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
 ///
-/// > **NOTE:** Deprecated since v1.252.0.
+/// &gt; **NOTE:** Deprecated since v1.252.0.
 ///
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.252.0`. Please use new resource alicloud_message_service_service.
 ///
-/// > **NOTE:** The MNS service is not support in the international site.
+/// &gt; **NOTE:** The MNS service is not support in the international site.
 ///
 /// ## Example Usage
 ///
@@ -240,7 +240,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
 ///
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
 ///
 /// ## Example Usage
 ///
@@ -363,7 +363,7 @@ Future<GetTopicSubscriptionsResult> getTopicSubscriptions(
 
 /// This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
 ///
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
 ///
 /// ## Example Usage
 ///

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
   final pulumi.Input<String> alias;
   final pulumi.Input<String> function;
+
   /// The value of the function that is used to aggregate logs imported from Log Service.
   final pulumi.Input<String> parameterOne;
+
   /// The value of the function that is used to aggregate logs imported from Log Service.
   final pulumi.Input<String> parameterTwo;
   final pulumi.Input<String> slsKeyName;
@@ -35,14 +37,15 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
     };
   }
 
-  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic.fromMap(Map<String, dynamic> map) {
+  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic(
-      alias: (map['alias'] as String).input(),
-      function: (map['function'] as String).input(),
-      parameterOne: (map['parameterOne'] as String).input(),
-      parameterTwo: (map['parameterTwo'] as String).input(),
-      slsKeyName: (map['slsKeyName'] as String).input(),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      function: pulumi.Input.fromValue(map['function'] as String),
+      parameterOne: pulumi.Input.fromValue(map['parameterOne'] as String),
+      parameterTwo: pulumi.Input.fromValue(map['parameterTwo'] as String),
+      slsKeyName: pulumi.Input.fromValue(map['slsKeyName'] as String),
     );
   }
 }
-

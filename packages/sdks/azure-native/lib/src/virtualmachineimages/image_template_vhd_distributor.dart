@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateVhdDistributor {
   /// Tags that will be applied to the artifact once it has been created/updated by the distributor.
   final pulumi.Input<Map<String, String>>? artifactTags;
+
   /// The name to be used for the associated RunOutput.
   final pulumi.Input<String> runOutputName;
+
   /// Type of distribution.
   /// Expected value is 'VHD'.
   final pulumi.Input<String> type;
+
   /// Optional Azure Storage URI for the distributed VHD blob. Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
   final pulumi.Input<String>? uri;
 
@@ -37,11 +40,20 @@ class ImageTemplateVhdDistributor {
 
   factory ImageTemplateVhdDistributor.fromMap(Map<String, dynamic> map) {
     return ImageTemplateVhdDistributor(
-      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags']! as Map).cast<String, String>()).input(),
-      runOutputName: (map['runOutputName'] as String).input(),
-      type: (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      artifactTags: (() {
+        final guardedValue = map['artifactTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      runOutputName: pulumi.Input.fromValue(map['runOutputName'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

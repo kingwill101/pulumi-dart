@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserHierarchyStructureArgs {
   /// Reference to the hosting Amazon Connect Instance
   final pulumi.Input<String> instanceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetUserHierarchyStructureArgs].
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetUserHierarchyStructureArgs({
-    required this.instanceId,
-    this.region,
-  });
+  GetUserHierarchyStructureArgs({required this.instanceId, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceId': instanceId,
-      'region': ?region,
-    };
+    return <String, dynamic>{'instanceId': instanceId, 'region': ?region};
   }
 
   factory GetUserHierarchyStructureArgs.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

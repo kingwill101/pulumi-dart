@@ -1,0 +1,6 @@
+name: awsx-dart-ts-lb-simple
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX simple ALB and Fargate service in Dart.

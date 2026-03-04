@@ -1,5 +1,3 @@
-library module_imagebuilder;
-
 export 'imagebuilder/component.dart';
 export 'imagebuilder/component_args.dart';
 export 'imagebuilder/component_state.dart';

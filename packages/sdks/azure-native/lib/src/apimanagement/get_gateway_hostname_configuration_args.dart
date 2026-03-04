@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayHostnameConfigurationArgs {
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   final pulumi.Input<String> gatewayId;
+
   /// Gateway hostname configuration identifier. Must be unique in the scope of parent Gateway entity.
   final pulumi.Input<String> hcId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -37,13 +40,16 @@ class GetGatewayHostnameConfigurationArgs {
     };
   }
 
-  factory GetGatewayHostnameConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayHostnameConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayHostnameConfigurationArgs(
-      gatewayId: (map['gatewayId'] as String).input(),
-      hcId: (map['hcId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      hcId: pulumi.Input.fromValue(map['hcId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

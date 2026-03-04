@@ -6,16 +6,15 @@ enum FeaturizationMode {
   valueCustom("Custom"),
   valueOff("Off");
 
-  const FeaturizationMode(this.value);
-  final String value;
+  const FeaturizationMode(this.wireValue);
+  final String wireValue;
 
   static FeaturizationMode fromValue(String value) {
     for (final item in FeaturizationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeaturizationMode value: $value');
   }
 }
-

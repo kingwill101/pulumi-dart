@@ -10,16 +10,20 @@ enum KnownLogFileTextSettingsRecordStartTimestampFormat {
   valueDdMMMYyyyHHMmSsZzz("dd/MMM/yyyy:HH:mm:ss zzz"),
   valueYyyyMMDdTHHMmSsK("yyyy-MM-ddTHH:mm:ssK");
 
-  const KnownLogFileTextSettingsRecordStartTimestampFormat(this.value);
-  final String value;
+  const KnownLogFileTextSettingsRecordStartTimestampFormat(this.wireValue);
+  final String wireValue;
 
-  static KnownLogFileTextSettingsRecordStartTimestampFormat fromValue(String value) {
-    for (final item in KnownLogFileTextSettingsRecordStartTimestampFormat.values) {
-      if (item.value == value) {
+  static KnownLogFileTextSettingsRecordStartTimestampFormat fromValue(
+    String value,
+  ) {
+    for (final item
+        in KnownLogFileTextSettingsRecordStartTimestampFormat.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KnownLogFileTextSettingsRecordStartTimestampFormat value: $value');
+    throw ArgumentError(
+      'Unknown KnownLogFileTextSettingsRecordStartTimestampFormat value: $value',
+    );
   }
 }
-

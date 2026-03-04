@@ -31,10 +31,15 @@ class GetChannelConnectionArgs {
 
   factory GetChannelConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelConnectionArgs(
-      channelConnectionId: (map['channelConnectionId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      channelConnectionId: pulumi.Input.fromValue(
+        map['channelConnectionId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

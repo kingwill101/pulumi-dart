@@ -6,9 +6,9 @@ import 'ram_directory_state.dart';
 ///
 /// For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createramdirectory).
 ///
-/// > **NOTE:** Available since v1.174.0.
+/// &gt; **NOTE:** Available since v1.174.0.
 ///
-/// > **DEPRECATED:** This resource has been deprecated from version `1.239.0`.
+/// &gt; **DEPRECATED:** This resource has been deprecated from version `1.239.0`.
 ///
 /// ## Example Usage
 ///
@@ -256,14 +256,19 @@ import 'ram_directory_state.dart';
 class RamDirectory extends pulumi.CustomResource {
   /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
   late final pulumi.Output<String> desktopAccessType;
+
   /// Whether to enable public network access.
   late final pulumi.Output<bool> enableAdminAccess;
+
   /// Whether to grant local administrator rights to users who use cloud desktops.
   late final pulumi.Output<bool> enableInternetAccess;
+
   /// The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   late final pulumi.Output<String> ramDirectoryName;
+
   /// The status of directory.
   late final pulumi.Output<String> status;
+
   /// List of VSwitch IDs in the directory.
   late final pulumi.Output<List<String>> vswitchIds;
 
@@ -276,17 +281,17 @@ class RamDirectory extends pulumi.CustomResource {
     RamDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/ramDirectory:RamDirectory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.desktopAccessType = registerOutput<String>('desktopAccessType');
-    this.enableAdminAccess = registerOutput<bool>('enableAdminAccess');
-    this.enableInternetAccess = registerOutput<bool>('enableInternetAccess');
-    this.ramDirectoryName = registerOutput<String>('ramDirectoryName');
-    this.status = registerOutput<String>('status');
-    this.vswitchIds = registerOutput<List<String>>('vswitchIds');
+         'alicloud:eds/ramDirectory:RamDirectory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    desktopAccessType = registerOutput<String>('desktopAccessType');
+    enableAdminAccess = registerOutput<bool>('enableAdminAccess');
+    enableInternetAccess = registerOutput<bool>('enableInternetAccess');
+    ramDirectoryName = registerOutput<String>('ramDirectoryName');
+    status = registerOutput<String>('status');
+    vswitchIds = registerOutput<List<String>>('vswitchIds');
   }
 
   /// Gets an existing [RamDirectory] resource's state with the given [name] and [id].
@@ -307,16 +312,16 @@ class RamDirectory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/ramDirectory:RamDirectory',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.desktopAccessType = registerOutput<String>('desktopAccessType');
-    this.enableAdminAccess = registerOutput<bool>('enableAdminAccess');
-    this.enableInternetAccess = registerOutput<bool>('enableInternetAccess');
-    this.ramDirectoryName = registerOutput<String>('ramDirectoryName');
-    this.status = registerOutput<String>('status');
-    this.vswitchIds = registerOutput<List<String>>('vswitchIds');
+         'alicloud:eds/ramDirectory:RamDirectory',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    desktopAccessType = registerOutput<String>('desktopAccessType');
+    enableAdminAccess = registerOutput<bool>('enableAdminAccess');
+    enableInternetAccess = registerOutput<bool>('enableInternetAccess');
+    ramDirectoryName = registerOutput<String>('ramDirectoryName');
+    status = registerOutput<String>('status');
+    vswitchIds = registerOutput<List<String>>('vswitchIds');
   }
 }

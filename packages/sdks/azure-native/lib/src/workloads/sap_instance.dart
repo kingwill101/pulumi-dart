@@ -164,26 +164,37 @@ import 'system_data_response.dart';
 class SapInstance extends pulumi.CustomResource {
   /// Enter a business function/department identifier to group multiple SIDs.
   late final pulumi.Output<String> application;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
   late final pulumi.Output<String> environment;
+
   /// Defines the errors related to SAP Instance resource.
   late final pulumi.Output<SAPMigrateErrorResponse> errors;
+
   /// This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
   late final pulumi.Output<String> landscapeSid;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.
   late final pulumi.Output<String> systemSid;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -196,22 +207,22 @@ class SapInstance extends pulumi.CustomResource {
     SapInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:SapInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.application = registerOutput<String>('application');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.environment = registerOutput<String>('environment');
-    this.errors = registerOutput<SAPMigrateErrorResponse>('errors');
-    this.landscapeSid = registerOutput<String>('landscapeSid');
-    this.location = registerOutput<String>('location');
+         'azure-native:workloads:SapInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    application = registerOutput<String>('application');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    environment = registerOutput<String>('environment');
+    errors = registerOutput<SAPMigrateErrorResponse>('errors');
+    landscapeSid = registerOutput<String>('landscapeSid');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.systemSid = registerOutput<String>('systemSid');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemSid = registerOutput<String>('systemSid');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

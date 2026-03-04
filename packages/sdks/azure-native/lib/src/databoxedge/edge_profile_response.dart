@@ -10,20 +10,29 @@ class EdgeProfileResponse {
 
   /// Creates a new [EdgeProfileResponse].
   /// [subscription] Edge Profile Subscription
-  EdgeProfileResponse({
-    this.subscription,
-  });
+  EdgeProfileResponse({this.subscription});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subscription': ?pulumi.Input.mapOptionalInputValue<EdgeProfileSubscriptionResponse, Map<String, dynamic>>(subscription, (value) => value.toMap()),
+      'subscription':
+          ?pulumi.Input.mapOptionalInputValue<
+            EdgeProfileSubscriptionResponse,
+            Map<String, dynamic>
+          >(subscription, (value) => value.toMap()),
     };
   }
 
   factory EdgeProfileResponse.fromMap(Map<String, dynamic> map) {
     return EdgeProfileResponse(
-      subscription: map['subscription'] == null ? null : (EdgeProfileSubscriptionResponse.fromMap((map['subscription']! as Map).cast<String, dynamic>())).input(),
+      subscription: (() {
+        final guardedValue = map['subscription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EdgeProfileSubscriptionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

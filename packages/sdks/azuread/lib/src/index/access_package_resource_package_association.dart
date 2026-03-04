@@ -260,12 +260,14 @@ import 'access_package_resource_package_association_state.dart';
 /// $ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the Access Package ID, the access package ResourceRoleScope (in the format Role_Scope), the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceRoleScope}/{ResourceOriginID}/{AccessType}`.
+/// &gt; This ID format is unique to Terraform and is composed of the Access Package ID, the access package ResourceRoleScope (in the format Role_Scope), the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceRoleScope}/{ResourceOriginID}/{AccessType}`.
 class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
   /// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accessPackageId;
+
   /// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> accessType;
+
   /// The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> catalogResourceAssociationId;
 
@@ -278,14 +280,16 @@ class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
     AccessPackageResourcePackageAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPackageId = registerOutput<String>('accessPackageId');
-    this.accessType = registerOutput<String?>('accessType');
-    this.catalogResourceAssociationId = registerOutput<String>('catalogResourceAssociationId');
+         'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPackageId = registerOutput<String>('accessPackageId');
+    accessType = registerOutput<String?>('accessType');
+    catalogResourceAssociationId = registerOutput<String>(
+      'catalogResourceAssociationId',
+    );
   }
 
   /// Gets an existing [AccessPackageResourcePackageAssociation] resource's state with the given [name] and [id].
@@ -306,13 +310,15 @@ class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPackageId = registerOutput<String>('accessPackageId');
-    this.accessType = registerOutput<String?>('accessType');
-    this.catalogResourceAssociationId = registerOutput<String>('catalogResourceAssociationId');
+         'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPackageId = registerOutput<String>('accessPackageId');
+    accessType = registerOutput<String?>('accessType');
+    catalogResourceAssociationId = registerOutput<String>(
+      'catalogResourceAssociationId',
+    );
   }
 }

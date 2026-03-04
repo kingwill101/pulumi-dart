@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'crypto_key_version_args.dart';
-import 'crypto_key_version_attestation.dart';
 import 'crypto_key_version_external_protection_level_options.dart';
 import 'crypto_key_version_state.dart';
 
@@ -190,22 +189,30 @@ import 'crypto_key_version_state.dart';
 class CryptoKeyVersion extends pulumi.CustomResource {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
   late final pulumi.Output<String> algorithm;
+
   /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
   /// Only provided for key versions with protectionLevel HSM.
   /// Structure is documented below.
-  late final pulumi.Output<List<CryptoKeyVersionAttestation>> attestations;
+  late final pulumi.Output<List<Map<String, dynamic>>> attestations;
+
   /// The name of the cryptoKey associated with the CryptoKeyVersions.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
   late final pulumi.Output<String> cryptoKey;
+
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// Structure is documented below.
-  late final pulumi.Output<CryptoKeyVersionExternalProtectionLevelOptions?> externalProtectionLevelOptions;
+  late final pulumi.Output<CryptoKeyVersionExternalProtectionLevelOptions?>
+  externalProtectionLevelOptions;
+
   /// The time this CryptoKeyVersion key material was generated
   late final pulumi.Output<String> generateTime;
+
   /// The resource name for this CryptoKeyVersion.
   late final pulumi.Output<String> name;
+
   /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
   late final pulumi.Output<String> protectionLevel;
+
   /// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
   /// otherwise the value of this field is always retrieved automatically.
   /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
@@ -220,19 +227,22 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     CryptoKeyVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/cryptoKeyVersion:CryptoKeyVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<String>('algorithm');
-    this.attestations = registerOutput<List<CryptoKeyVersionAttestation>>('attestations');
-    this.cryptoKey = registerOutput<String>('cryptoKey');
-    this.externalProtectionLevelOptions = registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>('externalProtectionLevelOptions');
-    this.generateTime = registerOutput<String>('generateTime');
+         'gcp:kms/cryptoKeyVersion:CryptoKeyVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<String>('algorithm');
+    attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
+    cryptoKey = registerOutput<String>('cryptoKey');
+    externalProtectionLevelOptions =
+        registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>(
+          'externalProtectionLevelOptions',
+        );
+    generateTime = registerOutput<String>('generateTime');
     this.name = registerOutput<String>('name');
-    this.protectionLevel = registerOutput<String>('protectionLevel');
-    this.state = registerOutput<String>('state');
+    protectionLevel = registerOutput<String>('protectionLevel');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [CryptoKeyVersion] resource's state with the given [name] and [id].
@@ -253,18 +263,21 @@ class CryptoKeyVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/cryptoKeyVersion:CryptoKeyVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<String>('algorithm');
-    this.attestations = registerOutput<List<CryptoKeyVersionAttestation>>('attestations');
-    this.cryptoKey = registerOutput<String>('cryptoKey');
-    this.externalProtectionLevelOptions = registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>('externalProtectionLevelOptions');
-    this.generateTime = registerOutput<String>('generateTime');
+         'gcp:kms/cryptoKeyVersion:CryptoKeyVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<String>('algorithm');
+    attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
+    cryptoKey = registerOutput<String>('cryptoKey');
+    externalProtectionLevelOptions =
+        registerOutput<CryptoKeyVersionExternalProtectionLevelOptions?>(
+          'externalProtectionLevelOptions',
+        );
+    generateTime = registerOutput<String>('generateTime');
     this.name = registerOutput<String>('name');
-    this.protectionLevel = registerOutput<String>('protectionLevel');
+    protectionLevel = registerOutput<String>('protectionLevel');
     this.state = registerOutput<String>('state');
   }
 }

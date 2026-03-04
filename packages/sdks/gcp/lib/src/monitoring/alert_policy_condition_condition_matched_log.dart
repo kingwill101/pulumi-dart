@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertPolicyConditionConditionMatchedLog {
   /// A logs-based filter.
   final pulumi.Input<String> filter;
+
   /// A map from a label key to an extractor expression, which is used to
   /// extract the value for this label key. Each entry in this map is
   /// a specification for how data should be extracted from log entries that
@@ -29,11 +30,18 @@ class AlertPolicyConditionConditionMatchedLog {
     };
   }
 
-  factory AlertPolicyConditionConditionMatchedLog.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionMatchedLog.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionMatchedLog(
-      filter: (map['filter'] as String).input(),
-      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors']! as Map).cast<String, String>()).input(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
+      labelExtractors: (() {
+        final guardedValue = map['labelExtractors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

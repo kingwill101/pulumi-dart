@@ -358,32 +358,46 @@ import 'system_data_response.dart';
 class DiskEncryptionSet extends pulumi.CustomResource {
   /// The key vault key which is currently used by this disk encryption set.
   late final pulumi.Output<KeyForDiskEncryptionSetResponse?> activeKey;
+
   /// The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
   late final pulumi.Output<ApiErrorResponse> autoKeyRotationError;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The type of key used to encrypt the data of the disk.
   late final pulumi.Output<String?> encryptionType;
+
   /// Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
   late final pulumi.Output<String?> federatedClientId;
+
   /// The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
   late final pulumi.Output<EncryptionSetIdentityResponse?> identity;
+
   /// The time when the active key of this disk encryption set was updated.
   late final pulumi.Output<String> lastKeyRotationTimestamp;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation.
-  late final pulumi.Output<List<KeyForDiskEncryptionSetResponse>> previousKeys;
+  late final pulumi.Output<List<Map<String, dynamic>>> previousKeys;
+
   /// The disk encryption set provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Set this flag to true to enable auto-updating of this disk encryption set to the latest key version.
   late final pulumi.Output<bool?> rotationToLatestKeyVersionEnabled;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -396,25 +410,31 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     DiskEncryptionSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:DiskEncryptionSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeKey = registerOutput<KeyForDiskEncryptionSetResponse?>('activeKey');
-    this.autoKeyRotationError = registerOutput<ApiErrorResponse>('autoKeyRotationError');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.federatedClientId = registerOutput<String?>('federatedClientId');
-    this.identity = registerOutput<EncryptionSetIdentityResponse?>('identity');
-    this.lastKeyRotationTimestamp = registerOutput<String>('lastKeyRotationTimestamp');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:DiskEncryptionSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeKey = registerOutput<KeyForDiskEncryptionSetResponse?>('activeKey');
+    autoKeyRotationError = registerOutput<ApiErrorResponse>(
+      'autoKeyRotationError',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryptionType = registerOutput<String?>('encryptionType');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    identity = registerOutput<EncryptionSetIdentityResponse?>('identity');
+    lastKeyRotationTimestamp = registerOutput<String>(
+      'lastKeyRotationTimestamp',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.previousKeys = registerOutput<List<KeyForDiskEncryptionSetResponse>>('previousKeys');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.rotationToLatestKeyVersionEnabled = registerOutput<bool?>('rotationToLatestKeyVersionEnabled');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    previousKeys = registerOutput<List<Map<String, dynamic>>>('previousKeys');
+    provisioningState = registerOutput<String>('provisioningState');
+    rotationToLatestKeyVersionEnabled = registerOutput<bool?>(
+      'rotationToLatestKeyVersionEnabled',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

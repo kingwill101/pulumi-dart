@@ -10,20 +10,31 @@ class ApigatewayApiConfigOpenApiDocumentApigatewayV1beta {
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocumentApigatewayV1beta].
   /// [document] The OpenAPI Specification document file.
-  ApigatewayApiConfigOpenApiDocumentApigatewayV1beta({
-    this.document,
-  });
+  ApigatewayApiConfigOpenApiDocumentApigatewayV1beta({this.document});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'document': ?pulumi.Input.mapOptionalInputValue<ApigatewayApiConfigFileApigatewayV1beta, Map<String, dynamic>>(document, (value) => value.toMap()),
+      'document':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApigatewayApiConfigFileApigatewayV1beta,
+            Map<String, dynamic>
+          >(document, (value) => value.toMap()),
     };
   }
 
-  factory ApigatewayApiConfigOpenApiDocumentApigatewayV1beta.fromMap(Map<String, dynamic> map) {
+  factory ApigatewayApiConfigOpenApiDocumentApigatewayV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApigatewayApiConfigOpenApiDocumentApigatewayV1beta(
-      document: map['document'] == null ? null : (ApigatewayApiConfigFileApigatewayV1beta.fromMap((map['document']! as Map).cast<String, dynamic>())).input(),
+      document: (() {
+        final guardedValue = map['document'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApigatewayApiConfigFileApigatewayV1beta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

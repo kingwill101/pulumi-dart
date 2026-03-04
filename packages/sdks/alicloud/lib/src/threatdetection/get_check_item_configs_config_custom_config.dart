@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCheckItemConfigsConfigCustomConfig {
   /// The default value of the custom configuration item. The value is a string.
   final pulumi.Input<String> defaultValue;
+
   /// The name of the custom configuration item, which is unique in a check item.
   final pulumi.Input<String> name;
+
   /// The display name of the custom configuration item for internationalization.
   final pulumi.Input<String> showName;
+
   /// The type of the custom configuration item. The value is a JSON string.
   final pulumi.Input<String> typeDefine;
+
   /// The content of the description for the check item when the Type parameter is text.
   final pulumi.Input<String> value;
 
@@ -38,14 +42,15 @@ class GetCheckItemConfigsConfigCustomConfig {
     };
   }
 
-  factory GetCheckItemConfigsConfigCustomConfig.fromMap(Map<String, dynamic> map) {
+  factory GetCheckItemConfigsConfigCustomConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCheckItemConfigsConfigCustomConfig(
-      defaultValue: (map['defaultValue'] as String).input(),
-      name: (map['name'] as String).input(),
-      showName: (map['showName'] as String).input(),
-      typeDefine: (map['typeDefine'] as String).input(),
-      value: (map['value'] as String).input(),
+      defaultValue: pulumi.Input.fromValue(map['defaultValue'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      showName: pulumi.Input.fromValue(map['showName'] as String),
+      typeDefine: pulumi.Input.fromValue(map['typeDefine'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

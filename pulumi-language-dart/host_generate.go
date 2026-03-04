@@ -510,6 +510,13 @@ func requiredDartDependencies(
 	for name, dep := range inferredDependencies {
 		combined[name] = dep
 	}
+	nodejsPulumiDependencies := nodejsLanguagePulumiDependencies(packageSpec, providerName)
+	for name, dep := range nodejsPulumiDependencies {
+		if _, alreadyInferred := combined[name]; alreadyInferred {
+			continue
+		}
+		combined[name] = dep
+	}
 	registryDependencies := localRegistryDartDependencies(providerName, outputDir)
 	for name, dep := range registryDependencies {
 		combined[name] = dep
@@ -522,6 +529,60 @@ func requiredDartDependencies(
 		return nil
 	}
 	return combined
+}
+
+func nodejsLanguagePulumiDependencies(
+	packageSpec schema.PackageSpec,
+	providerName string,
+) map[string]interface{} {
+	if len(packageSpec.Language) == 0 {
+		return nil
+	}
+
+	raw, ok := packageSpec.Language["nodejs"]
+	if !ok || len(raw) == 0 {
+		return nil
+	}
+
+	var nodeInfo struct {
+		Dependencies map[string]string `json:"dependencies"`
+	}
+	if err := json.Unmarshal(raw, &nodeInfo); err != nil {
+		return nil
+	}
+	if len(nodeInfo.Dependencies) == 0 {
+		return nil
+	}
+
+	currentProvider := canonicalProviderName(providerName)
+	dependencies := map[string]interface{}{}
+	for dependencyName, rawConstraint := range nodeInfo.Dependencies {
+		npmPackage := strings.TrimSpace(dependencyName)
+		if !strings.HasPrefix(npmPackage, "@pulumi/") {
+			continue
+		}
+
+		referencedProvider := canonicalProviderName(strings.TrimPrefix(npmPackage, "@pulumi/"))
+		if referencedProvider == "" || referencedProvider == currentProvider {
+			continue
+		}
+
+		dartPackage := toDartPackageName("", referencedProvider)
+		if strings.TrimSpace(dartPackage) == "" {
+			continue
+		}
+
+		constraint := strings.TrimSpace(rawConstraint)
+		if constraint == "" {
+			continue
+		}
+		dependencies[dartPackage] = constraint
+	}
+
+	if len(dependencies) == 0 {
+		return nil
+	}
+	return dependencies
 }
 
 // Section: dependency inference from external schema refs.

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHubRoute {
   /// List of all addressPrefixes.
   final pulumi.Input<List<String>>? addressPrefixes;
+
   /// NextHop ip address.
   final pulumi.Input<String>? nextHopIpAddress;
 
   /// Creates a new [VirtualHubRoute].
   /// [addressPrefixes] List of all addressPrefixes.
   /// [nextHopIpAddress] NextHop ip address.
-  VirtualHubRoute({
-    this.addressPrefixes,
-    this.nextHopIpAddress,
-  });
+  VirtualHubRoute({this.addressPrefixes, this.nextHopIpAddress});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class VirtualHubRoute {
 
   factory VirtualHubRoute.fromMap(Map<String, dynamic> map) {
     return VirtualHubRoute(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
+      addressPrefixes: (() {
+        final guardedValue = map['addressPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nextHopIpAddress: (() {
+        final guardedValue = map['nextHopIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

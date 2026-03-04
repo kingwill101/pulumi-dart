@@ -5,16 +5,17 @@ enum AuditLogConfigLogTypeGameservicesV1beta {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const AuditLogConfigLogTypeGameservicesV1beta(this.value);
-  final String value;
+  const AuditLogConfigLogTypeGameservicesV1beta(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogTypeGameservicesV1beta fromValue(String value) {
     for (final item in AuditLogConfigLogTypeGameservicesV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeGameservicesV1beta value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeGameservicesV1beta value: $value',
+    );
   }
 }
-

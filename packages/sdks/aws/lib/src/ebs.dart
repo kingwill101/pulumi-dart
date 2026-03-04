@@ -1,5 +1,3 @@
-library module_ebs;
-
 export 'ebs/default_kms_key.dart';
 export 'ebs/default_kms_key_args.dart';
 export 'ebs/default_kms_key_state.dart';

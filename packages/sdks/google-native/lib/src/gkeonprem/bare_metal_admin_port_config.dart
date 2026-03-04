@@ -9,9 +9,7 @@ class BareMetalAdminPortConfig {
 
   /// Creates a new [BareMetalAdminPortConfig].
   /// [controlPlaneLoadBalancerPort] The port that control plane hosted load balancers will listen on.
-  BareMetalAdminPortConfig({
-    this.controlPlaneLoadBalancerPort,
-  });
+  BareMetalAdminPortConfig({this.controlPlaneLoadBalancerPort});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class BareMetalAdminPortConfig {
 
   factory BareMetalAdminPortConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminPortConfig(
-      controlPlaneLoadBalancerPort: map['controlPlaneLoadBalancerPort'] == null ? null : (map['controlPlaneLoadBalancerPort']! as int).input(),
+      controlPlaneLoadBalancerPort: (() {
+        final guardedValue = map['controlPlaneLoadBalancerPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

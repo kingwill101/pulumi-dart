@@ -1,5 +1,3 @@
-library module_iot;
-
 export 'iot/certificate.dart';
 export 'iot/certificate_args.dart';
 export 'iot/certificate_state.dart';

@@ -4,16 +4,15 @@ enum JobMode {
   processingModeInteractive("PROCESSING_MODE_INTERACTIVE"),
   processingModeBatch("PROCESSING_MODE_BATCH");
 
-  const JobMode(this.value);
-  final String value;
+  const JobMode(this.wireValue);
+  final String wireValue;
 
   static JobMode fromValue(String value) {
     for (final item in JobMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobMode value: $value');
   }
 }
-

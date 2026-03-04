@@ -19,14 +19,24 @@ class WorkforcePoolProviderExtraAttributesOauth2Client {
   /// OIDC providers and 'assertion.attributes.groups' for SAML providers for
   /// attribute mapping. Possible values: ["AZURE_AD_GROUPS_MAIL", "AZURE_AD_GROUPS_ID"]
   final pulumi.Input<String> attributesType;
+
   /// The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
   final pulumi.Input<String> clientId;
+
   /// The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret> clientSecret;
+  final pulumi.Input<
+    WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret
+  >
+  clientSecret;
+
   /// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
   final pulumi.Input<String> issuerUri;
+
   /// Represents the parameters to control which claims are fetched from an IdP.
-  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters>? queryParameters;
+  final pulumi.Input<
+    WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters
+  >?
+  queryParameters;
 
   /// Creates a new [WorkforcePoolProviderExtraAttributesOauth2Client].
   /// [attributesType] Represents the IdP and type of claims that should be fetched.
@@ -46,20 +56,41 @@ class WorkforcePoolProviderExtraAttributesOauth2Client {
     return <String, dynamic>{
       'attributesType': attributesType,
       'clientId': clientId,
-      'clientSecret': pulumi.Input.mapInputValue<WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'clientSecret':
+          pulumi.Input.mapInputValue<
+            WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret,
+            Map<String, dynamic>
+          >(clientSecret, (value) => value.toMap()),
       'issuerUri': issuerUri,
-      'queryParameters': ?pulumi.Input.mapOptionalInputValue<WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters, Map<String, dynamic>>(queryParameters, (value) => value.toMap()),
+      'queryParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters,
+            Map<String, dynamic>
+          >(queryParameters, (value) => value.toMap()),
     };
   }
 
-  factory WorkforcePoolProviderExtraAttributesOauth2Client.fromMap(Map<String, dynamic> map) {
+  factory WorkforcePoolProviderExtraAttributesOauth2Client.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkforcePoolProviderExtraAttributesOauth2Client(
-      attributesType: (map['attributesType'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
-      issuerUri: (map['issuerUri'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap((map['queryParameters']! as Map).cast<String, dynamic>())).input(),
+      attributesType: pulumi.Input.fromValue(map['attributesType'] as String),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(
+        WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret.fromMap(
+          (map['clientSecret']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      issuerUri: pulumi.Input.fromValue(map['issuerUri'] as String),
+      queryParameters: (() {
+        final guardedValue = map['queryParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

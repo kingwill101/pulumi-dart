@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterResponse {
   /// List of AS paths.
   final pulumi.Input<List<String>>? asPath;
+
   /// List of BGP communities.
   final pulumi.Input<List<String>>? community;
+
   /// List of route prefixes.
   final pulumi.Input<List<String>>? routePrefix;
 
@@ -15,11 +17,7 @@ class ParameterResponse {
   /// [asPath] List of AS paths.
   /// [community] List of BGP communities.
   /// [routePrefix] List of route prefixes.
-  ParameterResponse({
-    this.asPath,
-    this.community,
-    this.routePrefix,
-  });
+  ParameterResponse({this.asPath, this.community, this.routePrefix});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ParameterResponse {
 
   factory ParameterResponse.fromMap(Map<String, dynamic> map) {
     return ParameterResponse(
-      asPath: map['asPath'] == null ? null : ((map['asPath']! as List).cast<String>()).input(),
-      community: map['community'] == null ? null : ((map['community']! as List).cast<String>()).input(),
-      routePrefix: map['routePrefix'] == null ? null : ((map['routePrefix']! as List).cast<String>()).input(),
+      asPath: (() {
+        final guardedValue = map['asPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      community: (() {
+        final guardedValue = map['community'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      routePrefix: (() {
+        final guardedValue = map['routePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

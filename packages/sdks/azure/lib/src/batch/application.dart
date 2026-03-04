@@ -247,7 +247,7 @@ import 'application_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Batch` - 2024-07-01
@@ -262,14 +262,19 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// The name of the Batch account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// A value indicating whether packages within the application may be overwritten using the same version string. Defaults to `true`.
   late final pulumi.Output<bool?> allowUpdates;
+
   /// The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
   late final pulumi.Output<String?> defaultVersion;
+
   /// The display name for the application.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the application. This must be unique within the account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group that contains the Batch account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -282,17 +287,17 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:batch/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.allowUpdates = registerOutput<bool?>('allowUpdates');
-    this.defaultVersion = registerOutput<String?>('defaultVersion');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure:batch/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    allowUpdates = registerOutput<bool?>('allowUpdates');
+    defaultVersion = registerOutput<String?>('defaultVersion');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -313,16 +318,16 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:batch/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.allowUpdates = registerOutput<bool?>('allowUpdates');
-    this.defaultVersion = registerOutput<String?>('defaultVersion');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure:batch/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    allowUpdates = registerOutput<bool?>('allowUpdates');
+    defaultVersion = registerOutput<String?>('defaultVersion');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

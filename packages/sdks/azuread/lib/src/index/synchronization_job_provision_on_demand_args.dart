@@ -9,11 +9,15 @@ import 'synchronization_job_provision_on_demand_parameter.dart';
 /// {@macro pulumi_index_synchronization_job_provision_on_demand_synchronization_job_provision_on_demand_args_doc}
 class SynchronizationJobProvisionOnDemandArgs {
   /// One or more `parameter` blocks as documented below.
-  final pulumi.Input<List<SynchronizationJobProvisionOnDemandParameter>> parameters;
+  final pulumi.Input<List<SynchronizationJobProvisionOnDemandParameter>>
+  parameters;
+
   /// The ID of the service principal for the synchronization job.
   final pulumi.Input<String> servicePrincipalId;
+
   /// The ID of the synchronization job.
   final pulumi.Input<String> synchronizationJobId;
+
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
   final pulumi.Input<Map<String, String>>? triggers;
 
@@ -31,20 +35,49 @@ class SynchronizationJobProvisionOnDemandArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': pulumi.Input.mapInputValue<List<SynchronizationJobProvisionOnDemandParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<SynchronizationJobProvisionOnDemandParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            List<SynchronizationJobProvisionOnDemandParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SynchronizationJobProvisionOnDemandParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'servicePrincipalId': servicePrincipalId,
       'synchronizationJobId': synchronizationJobId,
       'triggers': ?triggers,
     };
   }
 
-  factory SynchronizationJobProvisionOnDemandArgs.fromMap(Map<String, dynamic> map) {
+  factory SynchronizationJobProvisionOnDemandArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SynchronizationJobProvisionOnDemandArgs(
-      parameters: (pulumi.Input.decodeList<SynchronizationJobProvisionOnDemandParameter>(map['parameters'], (value) => SynchronizationJobProvisionOnDemandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
-      synchronizationJobId: (map['synchronizationJobId'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
+      parameters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SynchronizationJobProvisionOnDemandParameter>(
+          map['parameters']!,
+          (value) => SynchronizationJobProvisionOnDemandParameter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      servicePrincipalId: pulumi.Input.fromValue(
+        map['servicePrincipalId'] as String,
+      ),
+      synchronizationJobId: pulumi.Input.fromValue(
+        map['synchronizationJobId'] as String,
+      ),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

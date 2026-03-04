@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProfessionalServiceSubscriptionLevelArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
+
   /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
   final pulumi.Input<String>? subscriptionId;
 
@@ -32,12 +34,19 @@ class GetProfessionalServiceSubscriptionLevelArgs {
     };
   }
 
-  factory GetProfessionalServiceSubscriptionLevelArgs.fromMap(Map<String, dynamic> map) {
+  factory GetProfessionalServiceSubscriptionLevelArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProfessionalServiceSubscriptionLevelArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

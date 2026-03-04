@@ -1,5 +1,3 @@
-library module_ram;
-
 export 'ram/functions.dart';
 export 'ram/get_resource_share_args.dart';
 export 'ram/get_resource_share_filter.dart';

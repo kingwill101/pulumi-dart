@@ -21,11 +21,12 @@ class GetSnapshotEncryptionSettingDiskEncryptionKey {
     };
   }
 
-  factory GetSnapshotEncryptionSettingDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
+  factory GetSnapshotEncryptionSettingDiskEncryptionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSnapshotEncryptionSettingDiskEncryptionKey(
-      secretUrl: (map['secretUrl'] as String).input(),
-      sourceVaultId: (map['sourceVaultId'] as String).input(),
+      secretUrl: pulumi.Input.fromValue(map['secretUrl'] as String),
+      sourceVaultId: pulumi.Input.fromValue(map['sourceVaultId'] as String),
     );
   }
 }
-

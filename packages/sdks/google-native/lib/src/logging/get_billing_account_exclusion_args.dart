@@ -27,9 +27,10 @@ class GetBillingAccountExclusionArgs {
 
   factory GetBillingAccountExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountExclusionArgs(
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      exclusionId: (map['exclusionId'] as String).input(),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      exclusionId: pulumi.Input.fromValue(map['exclusionId'] as String),
     );
   }
 }
-

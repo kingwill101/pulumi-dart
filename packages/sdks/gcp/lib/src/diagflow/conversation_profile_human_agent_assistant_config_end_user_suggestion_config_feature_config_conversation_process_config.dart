@@ -13,15 +13,18 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recentSentencesCount': ?recentSentencesCount,
-    };
+    return <String, dynamic>{'recentSentencesCount': ?recentSentencesCount};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig(
-      recentSentencesCount: map['recentSentencesCount'] == null ? null : (map['recentSentencesCount']! as int).input(),
+      recentSentencesCount: (() {
+        final guardedValue = map['recentSentencesCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

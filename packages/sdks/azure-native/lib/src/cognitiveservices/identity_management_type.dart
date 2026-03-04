@@ -4,16 +4,15 @@ enum IdentityManagementType {
   valueUser("User"),
   valueNone("None");
 
-  const IdentityManagementType(this.value);
-  final String value;
+  const IdentityManagementType(this.wireValue);
+  final String wireValue;
 
   static IdentityManagementType fromValue(String value) {
     for (final item in IdentityManagementType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IdentityManagementType value: $value');
   }
 }
-

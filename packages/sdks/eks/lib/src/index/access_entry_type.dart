@@ -7,16 +7,15 @@ enum AccessEntryType {
   eC2Windows("EC2_WINDOWS"),
   eC2("EC2");
 
-  const AccessEntryType(this.value);
-  final String value;
+  const AccessEntryType(this.wireValue);
+  final String wireValue;
 
   static AccessEntryType fromValue(String value) {
     for (final item in AccessEntryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessEntryType value: $value');
   }
 }
-

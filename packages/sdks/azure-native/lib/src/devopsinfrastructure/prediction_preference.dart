@@ -6,16 +6,15 @@ enum PredictionPreference {
   morePerformance("MorePerformance"),
   bestPerformance("BestPerformance");
 
-  const PredictionPreference(this.value);
-  final String value;
+  const PredictionPreference(this.wireValue);
+  final String wireValue;
 
   static PredictionPreference fromValue(String value) {
     for (final item in PredictionPreference.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PredictionPreference value: $value');
   }
 }
-

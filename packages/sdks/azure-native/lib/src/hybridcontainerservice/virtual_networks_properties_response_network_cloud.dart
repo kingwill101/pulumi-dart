@@ -9,20 +9,21 @@ class VirtualNetworksPropertiesResponseNetworkCloud {
 
   /// Creates a new [VirtualNetworksPropertiesResponseNetworkCloud].
   /// [networkId] The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
-  VirtualNetworksPropertiesResponseNetworkCloud({
-    this.networkId,
-  });
+  VirtualNetworksPropertiesResponseNetworkCloud({this.networkId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'networkId': ?networkId,
-    };
+    return <String, dynamic>{'networkId': ?networkId};
   }
 
-  factory VirtualNetworksPropertiesResponseNetworkCloud.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworksPropertiesResponseNetworkCloud.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworksPropertiesResponseNetworkCloud(
-      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

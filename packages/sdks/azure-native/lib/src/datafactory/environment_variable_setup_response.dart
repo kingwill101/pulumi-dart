@@ -7,8 +7,10 @@ class EnvironmentVariableSetupResponse {
   /// The type of custom setup.
   /// Expected value is 'EnvironmentVariableSetup'.
   final pulumi.Input<String> type;
+
   /// The name of the environment variable.
   final pulumi.Input<String> variableName;
+
   /// The value of the environment variable.
   final pulumi.Input<String> variableValue;
 
@@ -32,10 +34,9 @@ class EnvironmentVariableSetupResponse {
 
   factory EnvironmentVariableSetupResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableSetupResponse(
-      type: (map['type'] as String).input(),
-      variableName: (map['variableName'] as String).input(),
-      variableValue: (map['variableValue'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      variableName: pulumi.Input.fromValue(map['variableName'] as String),
+      variableValue: pulumi.Input.fromValue(map['variableValue'] as String),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogTableStorageDescriptorColumn {
   /// Free-form text comment.
   final pulumi.Input<String>? comment;
+
   /// Name of the Column.
   final pulumi.Input<String> name;
+
   /// Key-value pairs defining properties associated with the column.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Datatype of data in the Column.
   final pulumi.Input<String>? type;
 
@@ -33,13 +36,28 @@ class CatalogTableStorageDescriptorColumn {
     };
   }
 
-  factory CatalogTableStorageDescriptorColumn.fromMap(Map<String, dynamic> map) {
+  factory CatalogTableStorageDescriptorColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CatalogTableStorageDescriptorColumn(
-      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'trigger_reference_response.dart';
 class TriggerDependencyReferenceResponse {
   /// Referenced trigger.
   final pulumi.Input<TriggerReferenceResponse> referenceTrigger;
+
   /// The type of dependency reference.
   /// Expected value is 'TriggerDependencyReference'.
   final pulumi.Input<String> type;
@@ -21,16 +22,23 @@ class TriggerDependencyReferenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'referenceTrigger': pulumi.Input.mapInputValue<TriggerReferenceResponse, Map<String, dynamic>>(referenceTrigger, (value) => value.toMap()),
+      'referenceTrigger':
+          pulumi.Input.mapInputValue<
+            TriggerReferenceResponse,
+            Map<String, dynamic>
+          >(referenceTrigger, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory TriggerDependencyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TriggerDependencyReferenceResponse(
-      referenceTrigger: (TriggerReferenceResponse.fromMap((map['referenceTrigger'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      referenceTrigger: pulumi.Input.fromValue(
+        TriggerReferenceResponse.fromMap(
+          (map['referenceTrigger']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

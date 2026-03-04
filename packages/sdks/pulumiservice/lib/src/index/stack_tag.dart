@@ -5,12 +5,16 @@ import 'stack_tag_args.dart';
 class StackTag extends pulumi.CustomResource {
   /// Name of the tag. The 'key' part of the key=value pair
   late final pulumi.Output<String> name;
+
   /// Organization name.
   late final pulumi.Output<String> organization;
+
   /// Project name.
   late final pulumi.Output<String> project;
+
   /// Stack name.
   late final pulumi.Output<String> stack;
+
   /// Value of the tag. The 'value' part of the key=value pair
   late final pulumi.Output<String> value;
 
@@ -23,15 +27,15 @@ class StackTag extends pulumi.CustomResource {
     StackTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:StackTag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'pulumiservice:index:StackTag',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.project = registerOutput<String>('project');
-    this.stack = registerOutput<String>('stack');
-    this.value = registerOutput<String>('value');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    stack = registerOutput<String>('stack');
+    value = registerOutput<String>('value');
   }
 }

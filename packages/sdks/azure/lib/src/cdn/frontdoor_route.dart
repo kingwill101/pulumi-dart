@@ -913,37 +913,50 @@ import 'frontdoor_route_state.dart';
 class FrontdoorRoute extends pulumi.CustomResource {
   /// A `cache` block as defined below.
   ///
-  /// > **Note:** To disable caching, do not provide the `cache` block in the configuration file.
+  /// &gt; **Note:** To disable caching, do not provide the `cache` block in the configuration file.
   late final pulumi.Output<FrontdoorRouteCache?> cache;
+
   /// The IDs of the Front Door Custom Domains which are associated with this Front Door Route.
   late final pulumi.Output<List<String>?> cdnFrontdoorCustomDomainIds;
+
   /// The resource ID of the Front Door Endpoint where this Front Door Route should exist. Changing this forces a new Front Door Route to be created.
   late final pulumi.Output<String> cdnFrontdoorEndpointId;
+
   /// The resource ID of the Front Door Origin Group where this Front Door Route should be created.
   late final pulumi.Output<String> cdnFrontdoorOriginGroupId;
+
   /// One or more Front Door Origin resource IDs that this Front Door Route will link to.
   late final pulumi.Output<List<String>> cdnFrontdoorOriginIds;
+
   /// A directory path on the Front Door Origin that can be used to retrieve content (e.g. `contoso.cloudapp.net/originpath`).
   late final pulumi.Output<String?> cdnFrontdoorOriginPath;
+
   /// A list of the Front Door Rule Set IDs which should be assigned to this Front Door Route.
   late final pulumi.Output<List<String>?> cdnFrontdoorRuleSetIds;
+
   /// Is this Front Door Route enabled? Possible values are `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The Protocol that will be use when forwarding traffic to backends. Possible values are `HttpOnly`, `HttpsOnly` or `MatchRequest`. Defaults to `MatchRequest`.
   late final pulumi.Output<String?> forwardingProtocol;
+
   /// Automatically redirect HTTP traffic to HTTPS traffic? Possible values are `true` or `false`. Defaults to `true`.
   ///
-  /// > **Note:** The `https_redirect_enabled` rule is the first rule that will be executed.
+  /// &gt; **Note:** The `https_redirect_enabled` rule is the first rule that will be executed.
   late final pulumi.Output<bool?> httpsRedirectEnabled;
+
   /// Should this Front Door Route be linked to the default endpoint? Possible values include `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> linkToDefaultDomain;
+
   /// The name which should be used for this Front Door Route. Valid values must begin with a letter or number, end with a letter or number and may only contain letters, numbers and hyphens with a maximum length of 90 characters. Changing this forces a new Front Door Route to be created.
   late final pulumi.Output<String> name;
+
   /// The route patterns of the rule.
   late final pulumi.Output<List<String>> patternsToMatches;
+
   /// One or more Protocols supported by this Front Door Route. Possible values are `Http` or `Https`.
   ///
-  /// > **Note:** If `https_redirect_enabled` is set to `true` the `supported_protocols` field must contain both `Http` and `Https` values.
+  /// &gt; **Note:** If `https_redirect_enabled` is set to `true` the `supported_protocols` field must contain both `Http` and `Https` values.
   late final pulumi.Output<List<String>> supportedProtocols;
 
   /// Creates a new [FrontdoorRoute].
@@ -955,25 +968,33 @@ class FrontdoorRoute extends pulumi.CustomResource {
     FrontdoorRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorRoute:FrontdoorRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cache = registerOutput<FrontdoorRouteCache?>('cache');
-    this.cdnFrontdoorCustomDomainIds = registerOutput<List<String>?>('cdnFrontdoorCustomDomainIds');
-    this.cdnFrontdoorEndpointId = registerOutput<String>('cdnFrontdoorEndpointId');
-    this.cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
-    this.cdnFrontdoorOriginIds = registerOutput<List<String>>('cdnFrontdoorOriginIds');
-    this.cdnFrontdoorOriginPath = registerOutput<String?>('cdnFrontdoorOriginPath');
-    this.cdnFrontdoorRuleSetIds = registerOutput<List<String>?>('cdnFrontdoorRuleSetIds');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.forwardingProtocol = registerOutput<String?>('forwardingProtocol');
-    this.httpsRedirectEnabled = registerOutput<bool?>('httpsRedirectEnabled');
-    this.linkToDefaultDomain = registerOutput<bool?>('linkToDefaultDomain');
+         'azure:cdn/frontdoorRoute:FrontdoorRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cache = registerOutput<FrontdoorRouteCache?>('cache');
+    cdnFrontdoorCustomDomainIds = registerOutput<List<String>?>(
+      'cdnFrontdoorCustomDomainIds',
+    );
+    cdnFrontdoorEndpointId = registerOutput<String>('cdnFrontdoorEndpointId');
+    cdnFrontdoorOriginGroupId = registerOutput<String>(
+      'cdnFrontdoorOriginGroupId',
+    );
+    cdnFrontdoorOriginIds = registerOutput<List<String>>(
+      'cdnFrontdoorOriginIds',
+    );
+    cdnFrontdoorOriginPath = registerOutput<String?>('cdnFrontdoorOriginPath');
+    cdnFrontdoorRuleSetIds = registerOutput<List<String>?>(
+      'cdnFrontdoorRuleSetIds',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    forwardingProtocol = registerOutput<String?>('forwardingProtocol');
+    httpsRedirectEnabled = registerOutput<bool?>('httpsRedirectEnabled');
+    linkToDefaultDomain = registerOutput<bool?>('linkToDefaultDomain');
     this.name = registerOutput<String>('name');
-    this.patternsToMatches = registerOutput<List<String>>('patternsToMatches');
-    this.supportedProtocols = registerOutput<List<String>>('supportedProtocols');
+    patternsToMatches = registerOutput<List<String>>('patternsToMatches');
+    supportedProtocols = registerOutput<List<String>>('supportedProtocols');
   }
 
   /// Gets an existing [FrontdoorRoute] resource's state with the given [name] and [id].
@@ -994,24 +1015,32 @@ class FrontdoorRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorRoute:FrontdoorRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cache = registerOutput<FrontdoorRouteCache?>('cache');
-    this.cdnFrontdoorCustomDomainIds = registerOutput<List<String>?>('cdnFrontdoorCustomDomainIds');
-    this.cdnFrontdoorEndpointId = registerOutput<String>('cdnFrontdoorEndpointId');
-    this.cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
-    this.cdnFrontdoorOriginIds = registerOutput<List<String>>('cdnFrontdoorOriginIds');
-    this.cdnFrontdoorOriginPath = registerOutput<String?>('cdnFrontdoorOriginPath');
-    this.cdnFrontdoorRuleSetIds = registerOutput<List<String>?>('cdnFrontdoorRuleSetIds');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.forwardingProtocol = registerOutput<String?>('forwardingProtocol');
-    this.httpsRedirectEnabled = registerOutput<bool?>('httpsRedirectEnabled');
-    this.linkToDefaultDomain = registerOutput<bool?>('linkToDefaultDomain');
+         'azure:cdn/frontdoorRoute:FrontdoorRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cache = registerOutput<FrontdoorRouteCache?>('cache');
+    cdnFrontdoorCustomDomainIds = registerOutput<List<String>?>(
+      'cdnFrontdoorCustomDomainIds',
+    );
+    cdnFrontdoorEndpointId = registerOutput<String>('cdnFrontdoorEndpointId');
+    cdnFrontdoorOriginGroupId = registerOutput<String>(
+      'cdnFrontdoorOriginGroupId',
+    );
+    cdnFrontdoorOriginIds = registerOutput<List<String>>(
+      'cdnFrontdoorOriginIds',
+    );
+    cdnFrontdoorOriginPath = registerOutput<String?>('cdnFrontdoorOriginPath');
+    cdnFrontdoorRuleSetIds = registerOutput<List<String>?>(
+      'cdnFrontdoorRuleSetIds',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    forwardingProtocol = registerOutput<String?>('forwardingProtocol');
+    httpsRedirectEnabled = registerOutput<bool?>('httpsRedirectEnabled');
+    linkToDefaultDomain = registerOutput<bool?>('linkToDefaultDomain');
     this.name = registerOutput<String>('name');
-    this.patternsToMatches = registerOutput<List<String>>('patternsToMatches');
-    this.supportedProtocols = registerOutput<List<String>>('supportedProtocols');
+    patternsToMatches = registerOutput<List<String>>('patternsToMatches');
+    supportedProtocols = registerOutput<List<String>>('supportedProtocols');
   }
 }

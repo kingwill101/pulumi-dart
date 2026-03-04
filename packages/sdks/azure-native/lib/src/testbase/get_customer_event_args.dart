@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomerEventArgs {
   /// The resource name of the Test Base Customer event.
   final pulumi.Input<String> customerEventName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -34,10 +36,15 @@ class GetCustomerEventArgs {
 
   factory GetCustomerEventArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomerEventArgs(
-      customerEventName: (map['customerEventName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
+      customerEventName: pulumi.Input.fromValue(
+        map['customerEventName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      testBaseAccountName: pulumi.Input.fromValue(
+        map['testBaseAccountName'] as String,
+      ),
     );
   }
 }
-

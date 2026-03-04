@@ -6,7 +6,7 @@ import 'global_database_network_state.dart';
 ///
 /// For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-createglobaldatabasenetwork).
 ///
-/// > **NOTE:** Available since v1.181.0.
+/// &gt; **NOTE:** Available since v1.181.0.
 ///
 /// ## Example Usage
 ///
@@ -301,8 +301,10 @@ import 'global_database_network_state.dart';
 class GlobalDatabaseNetwork extends pulumi.CustomResource {
   /// The ID of the primary cluster.
   late final pulumi.Output<String> dbClusterId;
+
   /// The description of the Global Database Network.
   late final pulumi.Output<String> description;
+
   /// The status of the Global Database Network.
   late final pulumi.Output<String> status;
 
@@ -315,14 +317,14 @@ class GlobalDatabaseNetwork extends pulumi.CustomResource {
     GlobalDatabaseNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.description = registerOutput<String>('description');
-    this.status = registerOutput<String>('status');
+         'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbClusterId = registerOutput<String>('dbClusterId');
+    description = registerOutput<String>('description');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [GlobalDatabaseNetwork] resource's state with the given [name] and [id].
@@ -343,13 +345,13 @@ class GlobalDatabaseNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.description = registerOutput<String>('description');
-    this.status = registerOutput<String>('status');
+         'alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbClusterId = registerOutput<String>('dbClusterId');
+    description = registerOutput<String>('description');
+    status = registerOutput<String>('status');
   }
 }

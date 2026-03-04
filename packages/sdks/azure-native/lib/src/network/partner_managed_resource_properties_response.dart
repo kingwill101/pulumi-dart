@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerManagedResourcePropertiesResponse {
   /// The partner managed resource id.
   final pulumi.Input<String> id;
+
   /// The partner managed ILB resource id
   final pulumi.Input<String> internalLoadBalancerId;
+
   /// The partner managed SLB resource id
   final pulumi.Input<String> standardLoadBalancerId;
 
@@ -29,12 +31,17 @@ class PartnerManagedResourcePropertiesResponse {
     };
   }
 
-  factory PartnerManagedResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory PartnerManagedResourcePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PartnerManagedResourcePropertiesResponse(
-      id: (map['id'] as String).input(),
-      internalLoadBalancerId: (map['internalLoadBalancerId'] as String).input(),
-      standardLoadBalancerId: (map['standardLoadBalancerId'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      internalLoadBalancerId: pulumi.Input.fromValue(
+        map['internalLoadBalancerId'] as String,
+      ),
+      standardLoadBalancerId: pulumi.Input.fromValue(
+        map['standardLoadBalancerId'] as String,
+      ),
     );
   }
 }
-

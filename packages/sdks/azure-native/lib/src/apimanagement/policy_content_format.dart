@@ -5,16 +5,15 @@ enum PolicyContentFormat {
   valueRawxml("rawxml"),
   valueRawxmlLink("rawxml-link");
 
-  const PolicyContentFormat(this.value);
-  final String value;
+  const PolicyContentFormat(this.wireValue);
+  final String wireValue;
 
   static PolicyContentFormat fromValue(String value) {
     for (final item in PolicyContentFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyContentFormat value: $value');
   }
 }
-

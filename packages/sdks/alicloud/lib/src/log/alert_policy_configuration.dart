@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertPolicyConfiguration {
   /// Action Policy Id.
   final pulumi.Input<String>? actionPolicyId;
+
   /// Alert Policy Id.
   final pulumi.Input<String> alertPolicyId;
+
   /// Repeat interval used by alert policy, 1h, 1m.e.g.
   final pulumi.Input<String> repeatInterval;
 
@@ -30,10 +32,13 @@ class AlertPolicyConfiguration {
 
   factory AlertPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConfiguration(
-      actionPolicyId: map['actionPolicyId'] == null ? null : (map['actionPolicyId']! as String).input(),
-      alertPolicyId: (map['alertPolicyId'] as String).input(),
-      repeatInterval: (map['repeatInterval'] as String).input(),
+      actionPolicyId: (() {
+        final guardedValue = map['actionPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alertPolicyId: pulumi.Input.fromValue(map['alertPolicyId'] as String),
+      repeatInterval: pulumi.Input.fromValue(map['repeatInterval'] as String),
     );
   }
 }
-

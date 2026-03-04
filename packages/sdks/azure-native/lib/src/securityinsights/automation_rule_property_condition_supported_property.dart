@@ -59,16 +59,20 @@ enum AutomationRulePropertyConditionSupportedProperty {
   valueRegistryValueData("RegistryValueData"),
   valueUrl("Url");
 
-  const AutomationRulePropertyConditionSupportedProperty(this.value);
-  final String value;
+  const AutomationRulePropertyConditionSupportedProperty(this.wireValue);
+  final String wireValue;
 
-  static AutomationRulePropertyConditionSupportedProperty fromValue(String value) {
-    for (final item in AutomationRulePropertyConditionSupportedProperty.values) {
-      if (item.value == value) {
+  static AutomationRulePropertyConditionSupportedProperty fromValue(
+    String value,
+  ) {
+    for (final item
+        in AutomationRulePropertyConditionSupportedProperty.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AutomationRulePropertyConditionSupportedProperty value: $value');
+    throw ArgumentError(
+      'Unknown AutomationRulePropertyConditionSupportedProperty value: $value',
+    );
   }
 }
-

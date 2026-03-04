@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteURLRewriteNetworkservicesV1beta1 {
   /// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
   final pulumi.Input<String>? hostRewrite;
+
   /// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
   final pulumi.Input<String>? pathPrefixRewrite;
 
@@ -24,11 +25,20 @@ class HttpRouteURLRewriteNetworkservicesV1beta1 {
     };
   }
 
-  factory HttpRouteURLRewriteNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory HttpRouteURLRewriteNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpRouteURLRewriteNetworkservicesV1beta1(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
-      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite']! as String).input(),
+      hostRewrite: (() {
+        final guardedValue = map['hostRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathPrefixRewrite: (() {
+        final guardedValue = map['pathPrefixRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

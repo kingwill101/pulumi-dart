@@ -7,6 +7,7 @@ import 'get_app_connector_principal_info.dart';
 class GetAppConnectorResult {
   final String displayName;
   final Map<String, String> effectiveLabels;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -48,7 +49,11 @@ class GetAppConnectorResult {
       'id': id,
       'labels': labels,
       'name': name,
-      'principalInfos': pulumi.Input.encodeList<GetAppConnectorPrincipalInfo, Map<String, dynamic>>(principalInfos, (value) => value.toMap()),
+      'principalInfos':
+          pulumi.Input.encodeList<
+            GetAppConnectorPrincipalInfo,
+            Map<String, dynamic>
+          >(principalInfos, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': pulumiLabels,
       'region': ?region,
@@ -63,12 +68,24 @@ class GetAppConnectorResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      principalInfos: pulumi.Input.decodeList<GetAppConnectorPrincipalInfo>(map['principalInfos'], (value) => GetAppConnectorPrincipalInfo.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project']! as String,
+      principalInfos: pulumi.Input.decodeList<GetAppConnectorPrincipalInfo>(
+        map['principalInfos']!,
+        (value) => GetAppConnectorPrincipalInfo.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      region: map['region'] == null ? null : map['region']! as String,
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       state: map['state'] as String,
     );
   }
 }
-

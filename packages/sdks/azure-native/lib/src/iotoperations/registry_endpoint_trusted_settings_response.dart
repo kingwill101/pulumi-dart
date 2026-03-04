@@ -6,24 +6,32 @@ import 'registry_endpoint_trusted_signing_key_config_map_response.dart';
 /// RegistryEndpointTrustedSettings properties
 class RegistryEndpointTrustedSettingsResponse {
   /// The trust properties for the registry endpoint.
-  final pulumi.Input<RegistryEndpointTrustedSigningKeyConfigMapResponse> trustedSigningKeys;
+  final pulumi.Input<RegistryEndpointTrustedSigningKeyConfigMapResponse>
+  trustedSigningKeys;
 
   /// Creates a new [RegistryEndpointTrustedSettingsResponse].
   /// [trustedSigningKeys] The trust properties for the registry endpoint.
-  RegistryEndpointTrustedSettingsResponse({
-    required this.trustedSigningKeys,
-  });
+  RegistryEndpointTrustedSettingsResponse({required this.trustedSigningKeys});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'trustedSigningKeys': pulumi.Input.mapInputValue<RegistryEndpointTrustedSigningKeyConfigMapResponse, Map<String, dynamic>>(trustedSigningKeys, (value) => value.toMap()),
+      'trustedSigningKeys':
+          pulumi.Input.mapInputValue<
+            RegistryEndpointTrustedSigningKeyConfigMapResponse,
+            Map<String, dynamic>
+          >(trustedSigningKeys, (value) => value.toMap()),
     };
   }
 
-  factory RegistryEndpointTrustedSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory RegistryEndpointTrustedSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryEndpointTrustedSettingsResponse(
-      trustedSigningKeys: (RegistryEndpointTrustedSigningKeyConfigMapResponse.fromMap((map['trustedSigningKeys'] as Map).cast<String, dynamic>())).input(),
+      trustedSigningKeys: pulumi.Input.fromValue(
+        RegistryEndpointTrustedSigningKeyConfigMapResponse.fromMap(
+          (map['trustedSigningKeys']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

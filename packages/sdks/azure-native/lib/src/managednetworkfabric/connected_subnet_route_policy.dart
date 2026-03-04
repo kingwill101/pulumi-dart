@@ -7,6 +7,7 @@ import 'l3_export_route_policy.dart';
 class ConnectedSubnetRoutePolicy {
   /// Array of ARM Resource ID of the RoutePolicies.
   final pulumi.Input<L3ExportRoutePolicy>? exportRoutePolicy;
+
   /// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
   final pulumi.Input<String>? exportRoutePolicyId;
 
@@ -20,16 +21,31 @@ class ConnectedSubnetRoutePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exportRoutePolicy': ?pulumi.Input.mapOptionalInputValue<L3ExportRoutePolicy, Map<String, dynamic>>(exportRoutePolicy, (value) => value.toMap()),
+      'exportRoutePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            L3ExportRoutePolicy,
+            Map<String, dynamic>
+          >(exportRoutePolicy, (value) => value.toMap()),
       'exportRoutePolicyId': ?exportRoutePolicyId,
     };
   }
 
   factory ConnectedSubnetRoutePolicy.fromMap(Map<String, dynamic> map) {
     return ConnectedSubnetRoutePolicy(
-      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (L3ExportRoutePolicy.fromMap((map['exportRoutePolicy']! as Map).cast<String, dynamic>())).input(),
-      exportRoutePolicyId: map['exportRoutePolicyId'] == null ? null : (map['exportRoutePolicyId']! as String).input(),
+      exportRoutePolicy: (() {
+        final guardedValue = map['exportRoutePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          L3ExportRoutePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      exportRoutePolicyId: (() {
+        final guardedValue = map['exportRoutePolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

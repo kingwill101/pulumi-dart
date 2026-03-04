@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MsTeamsChannelProperties {
   /// Whether this channel accepted terms
   final pulumi.Input<bool>? acceptedTerms;
+
   /// Webhook for Microsoft Teams channel calls
   final pulumi.Input<String>? callingWebhook;
+
   /// Deployment environment for Microsoft Teams channel calls
   final pulumi.Input<String>? deploymentEnvironment;
+
   /// Enable calling for Microsoft Teams channel
   final pulumi.Input<bool>? enableCalling;
+
   /// Webhook for Microsoft Teams channel calls
   final pulumi.Input<String>? incomingCallRoute;
+
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
 
@@ -46,13 +51,32 @@ class MsTeamsChannelProperties {
 
   factory MsTeamsChannelProperties.fromMap(Map<String, dynamic> map) {
     return MsTeamsChannelProperties(
-      acceptedTerms: map['acceptedTerms'] == null ? null : (map['acceptedTerms']! as bool).input(),
-      callingWebhook: map['callingWebhook'] == null ? null : (map['callingWebhook']! as String).input(),
-      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : (map['deploymentEnvironment']! as String).input(),
-      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling']! as bool).input(),
-      incomingCallRoute: map['incomingCallRoute'] == null ? null : (map['incomingCallRoute']! as String).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
+      acceptedTerms: (() {
+        final guardedValue = map['acceptedTerms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      callingWebhook: (() {
+        final guardedValue = map['callingWebhook'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentEnvironment: (() {
+        final guardedValue = map['deploymentEnvironment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableCalling: (() {
+        final guardedValue = map['enableCalling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      incomingCallRoute: (() {
+        final guardedValue = map['incomingCallRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
     );
   }
 }
-

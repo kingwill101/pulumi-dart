@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction {
   final pulumi.Input<String> eventAction;
+
   /// Whether to send a notification.
   final pulumi.Input<bool> notify;
 
@@ -16,17 +17,15 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'eventAction': eventAction,
-      'notify': notify,
-    };
+    return <String, dynamic>{'eventAction': eventAction, 'notify': notify};
   }
 
-  factory RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction.fromMap(Map<String, dynamic> map) {
+  factory RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction(
-      eventAction: (map['eventAction'] as String).input(),
-      notify: (map['notify'] as bool).input(),
+      eventAction: pulumi.Input.fromValue(map['eventAction'] as String),
+      notify: pulumi.Input.fromValue(map['notify'] as bool),
     );
   }
 }
-

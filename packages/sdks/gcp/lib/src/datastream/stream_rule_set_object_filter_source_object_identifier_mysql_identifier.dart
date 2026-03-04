@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
   /// The database name.
   final pulumi.Input<String> database;
+
   /// The table name.
   final pulumi.Input<String> table;
 
@@ -17,17 +18,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'database': database,
-      'table': table,
-    };
+    return <String, dynamic>{'database': database, 'table': table};
   }
 
-  factory StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier.fromMap(Map<String, dynamic> map) {
+  factory StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier(
-      database: (map['database'] as String).input(),
-      table: (map['table'] as String).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      table: pulumi.Input.fromValue(map['table'] as String),
     );
   }
 }
-

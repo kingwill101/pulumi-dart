@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLaunchPathsArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
+
   /// Product identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> productId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -36,10 +38,17 @@ class GetLaunchPathsArgs {
 
   factory GetLaunchPathsArgs.fromMap(Map<String, dynamic> map) {
     return GetLaunchPathsArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
-      productId: (map['productId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

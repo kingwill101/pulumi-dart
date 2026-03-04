@@ -607,7 +607,7 @@ import 'subscription_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -622,15 +622,21 @@ import 'subscription_rule_state.dart';
 class SubscriptionRule extends pulumi.CustomResource {
   /// Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
   late final pulumi.Output<String?> action;
+
   /// A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
-  late final pulumi.Output<SubscriptionRuleCorrelationFilter?> correlationFilter;
+  late final pulumi.Output<SubscriptionRuleCorrelationFilter?>
+  correlationFilter;
+
   /// Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
   late final pulumi.Output<String> filterType;
+
   /// Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
   late final pulumi.Output<String?> sqlFilter;
   late final pulumi.Output<int> sqlFilterCompatibilityLevel;
+
   /// The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -643,18 +649,22 @@ class SubscriptionRule extends pulumi.CustomResource {
     SubscriptionRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicebus/subscriptionRule:SubscriptionRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>('correlationFilter');
-    this.filterType = registerOutput<String>('filterType');
+         'azure:servicebus/subscriptionRule:SubscriptionRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>(
+      'correlationFilter',
+    );
+    filterType = registerOutput<String>('filterType');
     this.name = registerOutput<String>('name');
-    this.sqlFilter = registerOutput<String?>('sqlFilter');
-    this.sqlFilterCompatibilityLevel = registerOutput<int>('sqlFilterCompatibilityLevel');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    sqlFilter = registerOutput<String?>('sqlFilter');
+    sqlFilterCompatibilityLevel = registerOutput<int>(
+      'sqlFilterCompatibilityLevel',
+    );
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 
   /// Gets an existing [SubscriptionRule] resource's state with the given [name] and [id].
@@ -675,17 +685,21 @@ class SubscriptionRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicebus/subscriptionRule:SubscriptionRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>('correlationFilter');
-    this.filterType = registerOutput<String>('filterType');
+         'azure:servicebus/subscriptionRule:SubscriptionRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>(
+      'correlationFilter',
+    );
+    filterType = registerOutput<String>('filterType');
     this.name = registerOutput<String>('name');
-    this.sqlFilter = registerOutput<String?>('sqlFilter');
-    this.sqlFilterCompatibilityLevel = registerOutput<int>('sqlFilterCompatibilityLevel');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    sqlFilter = registerOutput<String?>('sqlFilter');
+    sqlFilterCompatibilityLevel = registerOutput<int>(
+      'sqlFilterCompatibilityLevel',
+    );
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

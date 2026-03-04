@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAvailabilityZonesV3.
 class GetAvailabilityZonesV3Result {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The names of the availability zones, ordered alphanumerically, that
   /// match the queried `state`.
   final List<String> names;
+
   /// See Argument Reference above.
   final String region;
+
   /// See Argument Reference above.
   final String? state;
 
@@ -39,8 +41,11 @@ class GetAvailabilityZonesV3Result {
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       region: map['region'] as String,
-      state: map['state'] == null ? null : map['state']! as String,
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -10,20 +10,29 @@ class NamespaceActuationFeatureSpec {
 
   /// Creates a new [NamespaceActuationFeatureSpec].
   /// [actuationMode] actuation_mode controls the behavior of the controller
-  NamespaceActuationFeatureSpec({
-    this.actuationMode,
-  });
+  NamespaceActuationFeatureSpec({this.actuationMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actuationMode': ?pulumi.Input.mapOptionalInputValue<NamespaceActuationFeatureSpecActuationMode, String>(actuationMode, (value) => value.value),
+      'actuationMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            NamespaceActuationFeatureSpecActuationMode,
+            String
+          >(actuationMode, (value) => value.wireValue),
     };
   }
 
   factory NamespaceActuationFeatureSpec.fromMap(Map<String, dynamic> map) {
     return NamespaceActuationFeatureSpec(
-      actuationMode: map['actuationMode'] == null ? null : (NamespaceActuationFeatureSpecActuationMode.fromValue(map['actuationMode']! as String)).input(),
+      actuationMode: (() {
+        final guardedValue = map['actuationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NamespaceActuationFeatureSpecActuationMode.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

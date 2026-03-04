@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubeEnvironmentArgs {
   /// Name of the Kubernetes Environment.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetKubeEnvironmentArgs].
   /// [name] Name of the Kubernetes Environment.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetKubeEnvironmentArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetKubeEnvironmentArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetKubeEnvironmentArgs {
 
   factory GetKubeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetKubeEnvironmentArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

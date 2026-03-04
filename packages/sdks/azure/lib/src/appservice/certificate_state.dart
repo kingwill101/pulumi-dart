@@ -6,40 +6,54 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateState {
   /// The ID of the associated App Service plan. Must be specified when the certificate is used inside an App Service Environment hosted App Service or with Basic and Premium App Service plans. Changing this forces a new resource to be created.
   final pulumi.Input<String>? appServicePlanId;
+
   /// The expiration date for the certificate.
   final pulumi.Input<String>? expirationDate;
+
   /// The friendly name of the certificate.
   final pulumi.Input<String>? friendlyName;
+
   /// List of host names the certificate applies to.
   final pulumi.Input<List<String>>? hostNames;
+
   /// The ID of the App Service Environment where the certificate is in use.
   final pulumi.Input<String>? hostingEnvironmentProfileId;
+
   /// The issue date for the certificate.
   final pulumi.Input<String>? issueDate;
+
   /// The name of the certificate issuer.
   final pulumi.Input<String>? issuer;
   final pulumi.Input<String>? keyVaultId;
+
   /// The ID of the Key Vault secret. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
+  /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
   final pulumi.Input<String>? keyVaultSecretId;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The password to access the certificate's private key. Changing this forces a new resource to be created.
   final pulumi.Input<String>? password;
+
   /// The base64-encoded contents of the certificate. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
+  /// &gt; **NOTE:** Exactly one of `key_vault_secret_id` or `pfx_blob` must be specified.
   final pulumi.Input<String>? pfxBlob;
+
   /// The name of the resource group in which to create the certificate. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** The resource group must be the same as that which the app service plan is defined in - otherwise the certificate will not show as available for the app services.
+  /// &gt; **NOTE:** The resource group must be the same as that which the app service plan is defined in - otherwise the certificate will not show as available for the app services.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The subject name of the certificate.
   final pulumi.Input<String>? subjectName;
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The thumbprint for the certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -105,24 +119,93 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      appServicePlanId: map['appServicePlanId'] == null ? null : (map['appServicePlanId']! as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
-      hostNames: map['hostNames'] == null ? null : ((map['hostNames']! as List).cast<String>()).input(),
-      hostingEnvironmentProfileId: map['hostingEnvironmentProfileId'] == null ? null : (map['hostingEnvironmentProfileId']! as String).input(),
-      issueDate: map['issueDate'] == null ? null : (map['issueDate']! as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      pfxBlob: map['pfxBlob'] == null ? null : (map['pfxBlob']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      appServicePlanId: (() {
+        final guardedValue = map['appServicePlanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationDate: (() {
+        final guardedValue = map['expirationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      friendlyName: (() {
+        final guardedValue = map['friendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostNames: (() {
+        final guardedValue = map['hostNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      hostingEnvironmentProfileId: (() {
+        final guardedValue = map['hostingEnvironmentProfileId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      issueDate: (() {
+        final guardedValue = map['issueDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      issuer: (() {
+        final guardedValue = map['issuer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretId: (() {
+        final guardedValue = map['keyVaultSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pfxBlob: (() {
+        final guardedValue = map['pfxBlob'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subjectName: (() {
+        final guardedValue = map['subjectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

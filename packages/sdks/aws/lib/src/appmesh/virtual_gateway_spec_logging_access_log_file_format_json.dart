@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualGatewaySpecLoggingAccessLogFileFormatJson {
   /// The specified key for the JSON. Must be between 1 and 100 characters in length.
   final pulumi.Input<String> key;
+
   /// The specified value for the JSON. Must be between 1 and 100 characters in length.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class VirtualGatewaySpecLoggingAccessLogFileFormatJson {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory VirtualGatewaySpecLoggingAccessLogFileFormatJson.fromMap(Map<String, dynamic> map) {
+  factory VirtualGatewaySpecLoggingAccessLogFileFormatJson.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualGatewaySpecLoggingAccessLogFileFormatJson(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

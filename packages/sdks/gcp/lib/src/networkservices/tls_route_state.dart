@@ -7,25 +7,33 @@ import 'tls_route_rule.dart';
 class TlsRouteState {
   /// Time the TlsRoute was created in UTC.
   final pulumi.Input<String>? createTime;
+
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
+
   /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-  /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+  /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
   final pulumi.Input<List<String>>? gateways;
+
   /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
-  /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+  /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
   /// The attached Mesh should be of a type SIDECAR
   final pulumi.Input<List<String>>? meshes;
+
   /// Name of the TlsRoute resource.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
   final pulumi.Input<List<TlsRouteRule>>? rules;
+
   /// Server-defined URL of this resource.
   final pulumi.Input<String>? selfLink;
+
   /// Time the TlsRoute was updated in UTC.
   final pulumi.Input<String>? updateTime;
 
@@ -59,7 +67,18 @@ class TlsRouteState {
       'meshes': ?meshes,
       'name': ?name,
       'project': ?project,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<TlsRouteRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<TlsRouteRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TlsRouteRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<TlsRouteRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'selfLink': ?selfLink,
       'updateTime': ?updateTime,
     };
@@ -67,16 +86,57 @@ class TlsRouteState {
 
   factory TlsRouteState.fromMap(Map<String, dynamic> map) {
     return TlsRouteState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      gateways: map['gateways'] == null ? null : ((map['gateways']! as List).cast<String>()).input(),
-      meshes: map['meshes'] == null ? null : ((map['meshes']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TlsRouteRule>(map['rules']!, (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gateways: (() {
+        final guardedValue = map['gateways'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      meshes: (() {
+        final guardedValue = map['meshes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TlsRouteRule>(
+            guardedValue,
+            (value) =>
+                TlsRouteRule.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

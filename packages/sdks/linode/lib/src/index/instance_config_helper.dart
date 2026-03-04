@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceConfigHelper {
   /// Populates the /dev directory early during boot without udev. (default `true`)
   final pulumi.Input<bool>? devtmpfsAutomount;
+
   /// Helps maintain correct inittab/upstart console device. (default `true`)
   final pulumi.Input<bool>? distro;
+
   /// Creates a modules dependency file for the Kernel you run. (default `true`)
   final pulumi.Input<bool>? modulesDep;
+
   /// Automatically configures static networking. (default `true`)
   final pulumi.Input<bool>? network;
+
   /// Disables updatedb cron job to avoid disk thrashing. (default `true`)
   final pulumi.Input<bool>? updatedbDisabled;
 
@@ -40,12 +44,31 @@ class InstanceConfigHelper {
 
   factory InstanceConfigHelper.fromMap(Map<String, dynamic> map) {
     return InstanceConfigHelper(
-      devtmpfsAutomount: map['devtmpfsAutomount'] == null ? null : (map['devtmpfsAutomount']! as bool).input(),
-      distro: map['distro'] == null ? null : (map['distro']! as bool).input(),
-      modulesDep: map['modulesDep'] == null ? null : (map['modulesDep']! as bool).input(),
-      network: map['network'] == null ? null : (map['network']! as bool).input(),
-      updatedbDisabled: map['updatedbDisabled'] == null ? null : (map['updatedbDisabled']! as bool).input(),
+      devtmpfsAutomount: (() {
+        final guardedValue = map['devtmpfsAutomount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      distro: (() {
+        final guardedValue = map['distro'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      modulesDep: (() {
+        final guardedValue = map['modulesDep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      updatedbDisabled: (() {
+        final guardedValue = map['updatedbDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

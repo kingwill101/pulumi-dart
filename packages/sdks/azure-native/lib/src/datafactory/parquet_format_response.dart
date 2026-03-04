@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParquetFormatResponse {
   /// Deserializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? deserializer;
+
   /// Serializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? serializer;
+
   /// Type of dataset storage format.
   /// Expected value is 'ParquetFormat'.
   final pulumi.Input<String> type;
@@ -32,10 +34,17 @@ class ParquetFormatResponse {
 
   factory ParquetFormatResponse.fromMap(Map<String, dynamic> map) {
     return ParquetFormatResponse(
-      deserializer: map['deserializer'] == null ? null : (map['deserializer']!).input(),
-      serializer: map['serializer'] == null ? null : (map['serializer']!).input(),
-      type: (map['type'] as String).input(),
+      deserializer: (() {
+        final guardedValue = map['deserializer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      serializer: (() {
+        final guardedValue = map['serializer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

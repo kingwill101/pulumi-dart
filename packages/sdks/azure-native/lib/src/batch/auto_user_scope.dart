@@ -3,16 +3,15 @@ enum AutoUserScope {
   task("Task"),
   pool("Pool");
 
-  const AutoUserScope(this.value);
-  final String value;
+  const AutoUserScope(this.wireValue);
+  final String wireValue;
 
   static AutoUserScope fromValue(String value) {
     for (final item in AutoUserScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoUserScope value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteRequestParameter {
   /// Request parameter key. This is a [request data mapping parameter](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-data-mapping.html#websocket-mapping-request-parameters).
   final pulumi.Input<String> requestParameterKey;
+
   /// Boolean whether or not the parameter is required.
   final pulumi.Input<bool> required;
 
@@ -25,9 +26,10 @@ class RouteRequestParameter {
 
   factory RouteRequestParameter.fromMap(Map<String, dynamic> map) {
     return RouteRequestParameter(
-      requestParameterKey: (map['requestParameterKey'] as String).input(),
-      required: (map['required'] as bool).input(),
+      requestParameterKey: pulumi.Input.fromValue(
+        map['requestParameterKey'] as String,
+      ),
+      required: pulumi.Input.fromValue(map['required'] as bool),
     );
   }
 }
-

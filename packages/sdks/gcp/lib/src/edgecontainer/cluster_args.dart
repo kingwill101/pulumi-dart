@@ -17,51 +17,65 @@ class ClusterArgs {
   /// RBAC policy that will be applied and managed by GEC.
   /// Structure is documented below.
   final pulumi.Input<ClusterAuthorization> authorization;
+
   /// The configuration of the cluster control plane.
   /// Structure is documented below.
   final pulumi.Input<ClusterControlPlane>? controlPlane;
+
   /// Remote control plane disk encryption options. This field is only used when
   /// enabling CMEK support.
   /// Structure is documented below.
   final pulumi.Input<ClusterControlPlaneEncryption>? controlPlaneEncryption;
+
   /// The default maximum number of pods per node used if a maximum value is not
   /// specified explicitly for a node pool in this cluster. If unspecified, the
   /// Kubernetes default value will be used.
   final pulumi.Input<int>? defaultMaxPodsPerNode;
+
   /// Address pools for cluster data plane external load balancing.
   final pulumi.Input<List<String>>? externalLoadBalancerIpv4AddressPools;
+
   /// Fleet related configuration.
   /// Fleets are a Google Cloud concept for logically organizing clusters,
   /// letting you use and manage multi-cluster capabilities and apply
   /// consistent policies across your systems.
   /// Structure is documented below.
   final pulumi.Input<ClusterFleet> fleet;
+
   /// User-defined labels for the edgecloud cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location of the resource.
   final pulumi.Input<String> location;
+
   /// Cluster-wide maintenance policy configuration.
   /// Structure is documented below.
   final pulumi.Input<ClusterMaintenancePolicy>? maintenancePolicy;
+
   /// The GDCE cluster name.
   final pulumi.Input<String>? name;
+
   /// Fleet related configuration.
   /// Fleets are a Google Cloud concept for logically organizing clusters,
   /// letting you use and manage multi-cluster capabilities and apply
   /// consistent policies across your systems.
   /// Structure is documented below.
   final pulumi.Input<ClusterNetworking> networking;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The release channel a cluster is subscribed to.
   /// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
   final pulumi.Input<String>? releaseChannel;
+
   /// Config that customers are allowed to define for GDCE system add-ons.
   /// Structure is documented below.
   final pulumi.Input<ClusterSystemAddonsConfig>? systemAddonsConfig;
+
   /// The target cluster version. For example: "1.5.0".
   final pulumi.Input<String>? targetVersion;
 
@@ -101,42 +115,141 @@ class ClusterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorization': pulumi.Input.mapInputValue<ClusterAuthorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
-      'controlPlane': ?pulumi.Input.mapOptionalInputValue<ClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
-      'controlPlaneEncryption': ?pulumi.Input.mapOptionalInputValue<ClusterControlPlaneEncryption, Map<String, dynamic>>(controlPlaneEncryption, (value) => value.toMap()),
+      'authorization':
+          pulumi.Input.mapInputValue<
+            ClusterAuthorization,
+            Map<String, dynamic>
+          >(authorization, (value) => value.toMap()),
+      'controlPlane':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterControlPlane,
+            Map<String, dynamic>
+          >(controlPlane, (value) => value.toMap()),
+      'controlPlaneEncryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterControlPlaneEncryption,
+            Map<String, dynamic>
+          >(controlPlaneEncryption, (value) => value.toMap()),
       'defaultMaxPodsPerNode': ?defaultMaxPodsPerNode,
-      'externalLoadBalancerIpv4AddressPools': ?externalLoadBalancerIpv4AddressPools,
-      'fleet': pulumi.Input.mapInputValue<ClusterFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
+      'externalLoadBalancerIpv4AddressPools':
+          ?externalLoadBalancerIpv4AddressPools,
+      'fleet': pulumi.Input.mapInputValue<ClusterFleet, Map<String, dynamic>>(
+        fleet,
+        (value) => value.toMap(),
+      ),
       'labels': ?labels,
       'location': location,
-      'maintenancePolicy': ?pulumi.Input.mapOptionalInputValue<ClusterMaintenancePolicy, Map<String, dynamic>>(maintenancePolicy, (value) => value.toMap()),
+      'maintenancePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterMaintenancePolicy,
+            Map<String, dynamic>
+          >(maintenancePolicy, (value) => value.toMap()),
       'name': ?name,
-      'networking': pulumi.Input.mapInputValue<ClusterNetworking, Map<String, dynamic>>(networking, (value) => value.toMap()),
+      'networking':
+          pulumi.Input.mapInputValue<ClusterNetworking, Map<String, dynamic>>(
+            networking,
+            (value) => value.toMap(),
+          ),
       'project': ?project,
       'releaseChannel': ?releaseChannel,
-      'systemAddonsConfig': ?pulumi.Input.mapOptionalInputValue<ClusterSystemAddonsConfig, Map<String, dynamic>>(systemAddonsConfig, (value) => value.toMap()),
+      'systemAddonsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterSystemAddonsConfig,
+            Map<String, dynamic>
+          >(systemAddonsConfig, (value) => value.toMap()),
       'targetVersion': ?targetVersion,
     };
   }
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      authorization: (ClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
-      controlPlane: map['controlPlane'] == null ? null : (ClusterControlPlane.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())).input(),
-      controlPlaneEncryption: map['controlPlaneEncryption'] == null ? null : (ClusterControlPlaneEncryption.fromMap((map['controlPlaneEncryption']! as Map).cast<String, dynamic>())).input(),
-      defaultMaxPodsPerNode: map['defaultMaxPodsPerNode'] == null ? null : (map['defaultMaxPodsPerNode']! as int).input(),
-      externalLoadBalancerIpv4AddressPools: map['externalLoadBalancerIpv4AddressPools'] == null ? null : ((map['externalLoadBalancerIpv4AddressPools']! as List).cast<String>()).input(),
-      fleet: (ClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : (ClusterMaintenancePolicy.fromMap((map['maintenancePolicy']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networking: (ClusterNetworking.fromMap((map['networking'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      releaseChannel: map['releaseChannel'] == null ? null : (map['releaseChannel']! as String).input(),
-      systemAddonsConfig: map['systemAddonsConfig'] == null ? null : (ClusterSystemAddonsConfig.fromMap((map['systemAddonsConfig']! as Map).cast<String, dynamic>())).input(),
-      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion']! as String).input(),
+      authorization: pulumi.Input.fromValue(
+        ClusterAuthorization.fromMap(
+          (map['authorization']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      controlPlane: (() {
+        final guardedValue = map['controlPlane'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterControlPlane.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      controlPlaneEncryption: (() {
+        final guardedValue = map['controlPlaneEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterControlPlaneEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      defaultMaxPodsPerNode: (() {
+        final guardedValue = map['defaultMaxPodsPerNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      externalLoadBalancerIpv4AddressPools: (() {
+        final guardedValue = map['externalLoadBalancerIpv4AddressPools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fleet: pulumi.Input.fromValue(
+        ClusterFleet.fromMap((map['fleet']! as Map).cast<String, dynamic>()),
+      ),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      maintenancePolicy: (() {
+        final guardedValue = map['maintenancePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterMaintenancePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networking: pulumi.Input.fromValue(
+        ClusterNetworking.fromMap(
+          (map['networking']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseChannel: (() {
+        final guardedValue = map['releaseChannel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      systemAddonsConfig: (() {
+        final guardedValue = map['systemAddonsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterSystemAddonsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetVersion: (() {
+        final guardedValue = map['targetVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

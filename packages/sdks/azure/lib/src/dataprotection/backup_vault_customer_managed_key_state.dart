@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupVaultCustomerManagedKeyState {
   /// The ID of the Backup Vault. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataProtectionBackupVaultId;
+
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Backup Vault.
   final pulumi.Input<String>? keyVaultKeyId;
 
@@ -26,9 +27,16 @@ class BackupVaultCustomerManagedKeyState {
 
   factory BackupVaultCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return BackupVaultCustomerManagedKeyState(
-      dataProtectionBackupVaultId: map['dataProtectionBackupVaultId'] == null ? null : (map['dataProtectionBackupVaultId']! as String).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      dataProtectionBackupVaultId: (() {
+        final guardedValue = map['dataProtectionBackupVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultKeyId: (() {
+        final guardedValue = map['keyVaultKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

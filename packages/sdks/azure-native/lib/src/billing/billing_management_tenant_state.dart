@@ -5,16 +5,15 @@ enum BillingManagementTenantState {
   valueActive("Active"),
   valueRevoked("Revoked");
 
-  const BillingManagementTenantState(this.value);
-  final String value;
+  const BillingManagementTenantState(this.wireValue);
+  final String wireValue;
 
   static BillingManagementTenantState fromValue(String value) {
     for (final item in BillingManagementTenantState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BillingManagementTenantState value: $value');
   }
 }
-

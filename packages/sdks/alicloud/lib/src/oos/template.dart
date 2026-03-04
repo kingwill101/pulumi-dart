@@ -4,7 +4,7 @@ import 'template_state.dart';
 
 /// Provides a OOS Template resource. For information about Alicloud OOS Template and how to use it, see [What is Resource Alicloud OOS Template](https://www.alibabacloud.com/help/doc-detail/120761.htm).
 ///
-/// > **NOTE:** Available since v1.92.0.
+/// &gt; **NOTE:** Available since v1.92.0.
 ///
 /// ## Example Usage
 ///
@@ -316,36 +316,52 @@ import 'template_state.dart';
 class Template extends pulumi.CustomResource {
   /// When deleting a template, whether to delete its related executions. Default to `false`.
   late final pulumi.Output<bool?> autoDeleteExecutions;
+
   /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
   late final pulumi.Output<String> content;
+
   /// The creator of the template.
   late final pulumi.Output<String> createdBy;
+
   /// The time when the template is created.
   late final pulumi.Output<String> createdDate;
+
   /// The description of the template.
   late final pulumi.Output<String> description;
+
   /// Is it triggered successfully.
   late final pulumi.Output<bool> hasTrigger;
+
   /// The ID of resource group which the template belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
   late final pulumi.Output<String> shareType;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
   late final pulumi.Output<String> templateFormat;
+
   /// The id of OOS Template.
   late final pulumi.Output<String> templateId;
+
   /// The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
   late final pulumi.Output<String> templateName;
+
   /// The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.
   late final pulumi.Output<String> templateType;
+
   /// The version of OOS Template.
   late final pulumi.Output<String> templateVersion;
+
   /// The user who updated the template.
   late final pulumi.Output<String> updatedBy;
+
   /// The time when the template was updated.
   late final pulumi.Output<String> updatedDate;
+
   /// The name of template version.
   late final pulumi.Output<String?> versionName;
 
@@ -358,28 +374,28 @@ class Template extends pulumi.CustomResource {
     TemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/template:Template',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoDeleteExecutions = registerOutput<bool?>('autoDeleteExecutions');
-    this.content = registerOutput<String>('content');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String>('description');
-    this.hasTrigger = registerOutput<bool>('hasTrigger');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.shareType = registerOutput<String>('shareType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateFormat = registerOutput<String>('templateFormat');
-    this.templateId = registerOutput<String>('templateId');
-    this.templateName = registerOutput<String>('templateName');
-    this.templateType = registerOutput<String>('templateType');
-    this.templateVersion = registerOutput<String>('templateVersion');
-    this.updatedBy = registerOutput<String>('updatedBy');
-    this.updatedDate = registerOutput<String>('updatedDate');
-    this.versionName = registerOutput<String?>('versionName');
+         'alicloud:oos/template:Template',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoDeleteExecutions = registerOutput<bool?>('autoDeleteExecutions');
+    content = registerOutput<String>('content');
+    createdBy = registerOutput<String>('createdBy');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String>('description');
+    hasTrigger = registerOutput<bool>('hasTrigger');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    shareType = registerOutput<String>('shareType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateFormat = registerOutput<String>('templateFormat');
+    templateId = registerOutput<String>('templateId');
+    templateName = registerOutput<String>('templateName');
+    templateType = registerOutput<String>('templateType');
+    templateVersion = registerOutput<String>('templateVersion');
+    updatedBy = registerOutput<String>('updatedBy');
+    updatedDate = registerOutput<String>('updatedDate');
+    versionName = registerOutput<String?>('versionName');
   }
 
   /// Gets an existing [Template] resource's state with the given [name] and [id].
@@ -400,27 +416,27 @@ class Template extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/template:Template',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoDeleteExecutions = registerOutput<bool?>('autoDeleteExecutions');
-    this.content = registerOutput<String>('content');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String>('description');
-    this.hasTrigger = registerOutput<bool>('hasTrigger');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.shareType = registerOutput<String>('shareType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateFormat = registerOutput<String>('templateFormat');
-    this.templateId = registerOutput<String>('templateId');
-    this.templateName = registerOutput<String>('templateName');
-    this.templateType = registerOutput<String>('templateType');
-    this.templateVersion = registerOutput<String>('templateVersion');
-    this.updatedBy = registerOutput<String>('updatedBy');
-    this.updatedDate = registerOutput<String>('updatedDate');
-    this.versionName = registerOutput<String?>('versionName');
+         'alicloud:oos/template:Template',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoDeleteExecutions = registerOutput<bool?>('autoDeleteExecutions');
+    content = registerOutput<String>('content');
+    createdBy = registerOutput<String>('createdBy');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String>('description');
+    hasTrigger = registerOutput<bool>('hasTrigger');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    shareType = registerOutput<String>('shareType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateFormat = registerOutput<String>('templateFormat');
+    templateId = registerOutput<String>('templateId');
+    templateName = registerOutput<String>('templateName');
+    templateType = registerOutput<String>('templateType');
+    templateVersion = registerOutput<String>('templateVersion');
+    updatedBy = registerOutput<String>('updatedBy');
+    updatedDate = registerOutput<String>('updatedDate');
+    versionName = registerOutput<String?>('versionName');
   }
 }

@@ -215,12 +215,16 @@ import 'protection_state.dart';
 class Protection extends pulumi.CustomResource {
   /// The ARN of the Protection.
   late final pulumi.Output<String> arn;
+
   /// A friendly name for the Protection you are creating.
   late final pulumi.Output<String> name;
+
   /// The ARN (Amazon Resource Name) of the resource to be protected.
   late final pulumi.Output<String> resourceArn;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -233,16 +237,16 @@ class Protection extends pulumi.CustomResource {
     ProtectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/protection:Protection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:shield/protection:Protection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    resourceArn = registerOutput<String>('resourceArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Protection] resource's state with the given [name] and [id].
@@ -263,15 +267,15 @@ class Protection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/protection:Protection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:shield/protection:Protection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    resourceArn = registerOutput<String>('resourceArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

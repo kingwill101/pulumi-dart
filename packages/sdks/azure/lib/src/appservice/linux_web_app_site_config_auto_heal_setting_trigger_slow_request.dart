@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
   /// The number of Slow Requests in the time `interval` to trigger this rule.
   final pulumi.Input<int> count;
+
   /// The time interval in the form `hh:mm:ss`.
   final pulumi.Input<String> interval;
+
   /// The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
   final pulumi.Input<String> timeTaken;
 
@@ -28,12 +30,13 @@ class LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest {
     };
   }
 
-  factory LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap(Map<String, dynamic> map) {
+  factory LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest(
-      count: (map['count'] as int).input(),
-      interval: (map['interval'] as String).input(),
-      timeTaken: (map['timeTaken'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      interval: pulumi.Input.fromValue(map['interval'] as String),
+      timeTaken: pulumi.Input.fromValue(map['timeTaken'] as String),
     );
   }
 }
-

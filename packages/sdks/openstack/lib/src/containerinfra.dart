@@ -1,5 +1,3 @@
-library module_containerinfra;
-
 export 'containerinfra/cluster.dart';
 export 'containerinfra/cluster_args.dart';
 export 'containerinfra/cluster_state.dart';

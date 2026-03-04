@@ -5,16 +5,15 @@ enum PersistentDiskDefaultsDiskType {
   computeEngineDiskTypeSsd("COMPUTE_ENGINE_DISK_TYPE_SSD"),
   computeEngineDiskTypeBalanced("COMPUTE_ENGINE_DISK_TYPE_BALANCED");
 
-  const PersistentDiskDefaultsDiskType(this.value);
-  final String value;
+  const PersistentDiskDefaultsDiskType(this.wireValue);
+  final String wireValue;
 
   static PersistentDiskDefaultsDiskType fromValue(String value) {
     for (final item in PersistentDiskDefaultsDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PersistentDiskDefaultsDiskType value: $value');
   }
 }
-

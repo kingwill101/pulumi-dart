@@ -4,7 +4,6 @@ import 'bucket_definition_response.dart';
 import 'flux_configuration_args.dart';
 import 'git_repository_definition_response.dart';
 import 'kustomization_definition_response.dart';
-import 'object_status_definition_response.dart';
 import 'system_data_response.dart';
 
 /// The Flux Configuration object returned in Get & Put response.
@@ -804,48 +803,71 @@ import 'system_data_response.dart';
 class FluxConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Parameters to reconcile to the AzureBlob source kind type.
   late final pulumi.Output<AzureBlobDefinitionResponse?> azureBlob;
+
   /// Parameters to reconcile to the Bucket source kind type.
   late final pulumi.Output<BucketDefinitionResponse?> bucket;
+
   /// Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects.
   late final pulumi.Output<String> complianceState;
+
   /// Key-value pairs of protected configuration settings for the configuration
   late final pulumi.Output<Map<String, String>?> configurationProtectedSettings;
+
   /// Error message returned to the user in the case of provisioning failure.
   late final pulumi.Output<String> errorMessage;
+
   /// Parameters to reconcile to the GitRepository source kind type.
   late final pulumi.Output<GitRepositoryDefinitionResponse?> gitRepository;
+
   /// Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
-  late final pulumi.Output<Map<String, KustomizationDefinitionResponse>?> kustomizations;
+  late final pulumi.Output<Map<String, KustomizationDefinitionResponse>?>
+  kustomizations;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
   late final pulumi.Output<String?> namespace;
+
   /// Status of the creation of the fluxConfiguration.
   late final pulumi.Output<String> provisioningState;
+
   /// Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D
   late final pulumi.Output<String?> reconciliationWaitDuration;
+
   /// Public Key associated with this fluxConfiguration (either generated within the cluster or provided by the user).
   late final pulumi.Output<String> repositoryPublicKey;
+
   /// Scope at which the operator will be installed.
   late final pulumi.Output<String?> scope;
+
   /// Source Kind to pull the configuration data from.
   late final pulumi.Output<String?> sourceKind;
+
   /// Branch and/or SHA of the source commit synced with the cluster.
   late final pulumi.Output<String> sourceSyncedCommitId;
+
   /// Datetime the fluxConfiguration synced its source on the cluster.
   late final pulumi.Output<String> sourceUpdatedAt;
+
   /// Datetime the fluxConfiguration synced its status on the cluster with Azure.
   late final pulumi.Output<String> statusUpdatedAt;
+
   /// Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
-  late final pulumi.Output<List<ObjectStatusDefinitionResponse>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// Whether this configuration should suspend its reconciliation of its kustomizations and sources.
   late final pulumi.Output<bool?> suspend;
+
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
   late final pulumi.Output<bool?> waitForReconciliation;
 
@@ -858,33 +880,42 @@ class FluxConfiguration extends pulumi.CustomResource {
     FluxConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kubernetesconfiguration:FluxConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureBlob = registerOutput<AzureBlobDefinitionResponse?>('azureBlob');
-    this.bucket = registerOutput<BucketDefinitionResponse?>('bucket');
-    this.complianceState = registerOutput<String>('complianceState');
-    this.configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    this.errorMessage = registerOutput<String>('errorMessage');
-    this.gitRepository = registerOutput<GitRepositoryDefinitionResponse?>('gitRepository');
-    this.kustomizations = registerOutput<Map<String, KustomizationDefinitionResponse>?>('kustomizations');
+         'azure-native:kubernetesconfiguration:FluxConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureBlob = registerOutput<AzureBlobDefinitionResponse?>('azureBlob');
+    bucket = registerOutput<BucketDefinitionResponse?>('bucket');
+    complianceState = registerOutput<String>('complianceState');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>(
+      'configurationProtectedSettings',
+    );
+    errorMessage = registerOutput<String>('errorMessage');
+    gitRepository = registerOutput<GitRepositoryDefinitionResponse?>(
+      'gitRepository',
+    );
+    kustomizations =
+        registerOutput<Map<String, KustomizationDefinitionResponse>?>(
+          'kustomizations',
+        );
     this.name = registerOutput<String>('name');
-    this.namespace = registerOutput<String?>('namespace');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.reconciliationWaitDuration = registerOutput<String?>('reconciliationWaitDuration');
-    this.repositoryPublicKey = registerOutput<String>('repositoryPublicKey');
-    this.scope = registerOutput<String?>('scope');
-    this.sourceKind = registerOutput<String?>('sourceKind');
-    this.sourceSyncedCommitId = registerOutput<String>('sourceSyncedCommitId');
-    this.sourceUpdatedAt = registerOutput<String>('sourceUpdatedAt');
-    this.statusUpdatedAt = registerOutput<String>('statusUpdatedAt');
-    this.statuses = registerOutput<List<ObjectStatusDefinitionResponse>>('statuses');
-    this.suspend = registerOutput<bool?>('suspend');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.waitForReconciliation = registerOutput<bool?>('waitForReconciliation');
+    namespace = registerOutput<String?>('namespace');
+    provisioningState = registerOutput<String>('provisioningState');
+    reconciliationWaitDuration = registerOutput<String?>(
+      'reconciliationWaitDuration',
+    );
+    repositoryPublicKey = registerOutput<String>('repositoryPublicKey');
+    scope = registerOutput<String?>('scope');
+    sourceKind = registerOutput<String?>('sourceKind');
+    sourceSyncedCommitId = registerOutput<String>('sourceSyncedCommitId');
+    sourceUpdatedAt = registerOutput<String>('sourceUpdatedAt');
+    statusUpdatedAt = registerOutput<String>('statusUpdatedAt');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    suspend = registerOutput<bool?>('suspend');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    waitForReconciliation = registerOutput<bool?>('waitForReconciliation');
   }
 }

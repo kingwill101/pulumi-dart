@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_identity_pool_namespace_args.dart';
-import 'workload_identity_pool_namespace_owner_service.dart';
 import 'workload_identity_pool_namespace_state.dart';
 
 /// Represents a namespace for a workload identity pool. Namespaces are used to segment identities
@@ -310,20 +309,25 @@ import 'workload_identity_pool_namespace_state.dart';
 class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
   /// A description of the namespace. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
+
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
   /// identities within this namespace, however existing credentials will still be accepted until
   /// they expire.
   late final pulumi.Output<bool?> disabled;
+
   /// The resource name of the namespace as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/namespaces/{workload_identity_pool_namespace_id}`.
   late final pulumi.Output<String> name;
+
   /// Defines the owner that is allowed to mutate this resource. If present, this resource can only
   /// be mutated by the owner.
   /// Structure is documented below.
-  late final pulumi.Output<List<WorkloadIdentityPoolNamespaceOwnerService>> ownerServices;
+  late final pulumi.Output<List<Map<String, dynamic>>> ownerServices;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The current state of the namespace.
   /// * `ACTIVE`: The namespace is active.
   /// * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
@@ -331,10 +335,12 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
   /// UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
   /// until it is permanently deleted.
   late final pulumi.Output<String> state;
+
   /// The ID to use for the pool, which becomes the final component of the resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
   late final pulumi.Output<String> workloadIdentityPoolId;
+
   /// The ID to use for the namespace. This value must:
   /// * contain at most 63 characters
   /// * contain only lowercase alphanumeric characters or `-`
@@ -353,19 +359,21 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
     WorkloadIdentityPoolNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disabled = registerOutput<bool?>('disabled');
+         'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
-    this.ownerServices = registerOutput<List<WorkloadIdentityPoolNamespaceOwnerService>>('ownerServices');
-    this.project = registerOutput<String>('project');
-    this.state = registerOutput<String>('state');
-    this.workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
-    this.workloadIdentityPoolNamespaceId = registerOutput<String>('workloadIdentityPoolNamespaceId');
+    ownerServices = registerOutput<List<Map<String, dynamic>>>('ownerServices');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+    workloadIdentityPoolNamespaceId = registerOutput<String>(
+      'workloadIdentityPoolNamespaceId',
+    );
   }
 
   /// Gets an existing [WorkloadIdentityPoolNamespace] resource's state with the given [name] and [id].
@@ -386,18 +394,20 @@ class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disabled = registerOutput<bool?>('disabled');
+         'gcp:iam/workloadIdentityPoolNamespace:WorkloadIdentityPoolNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
-    this.ownerServices = registerOutput<List<WorkloadIdentityPoolNamespaceOwnerService>>('ownerServices');
-    this.project = registerOutput<String>('project');
+    ownerServices = registerOutput<List<Map<String, dynamic>>>('ownerServices');
+    project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
-    this.workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
-    this.workloadIdentityPoolNamespaceId = registerOutput<String>('workloadIdentityPoolNamespaceId');
+    workloadIdentityPoolId = registerOutput<String>('workloadIdentityPoolId');
+    workloadIdentityPoolNamespaceId = registerOutput<String>(
+      'workloadIdentityPoolNamespaceId',
+    );
   }
 }

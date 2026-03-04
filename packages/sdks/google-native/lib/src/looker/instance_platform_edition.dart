@@ -7,16 +7,15 @@ enum InstancePlatformEdition {
   lookerCoreEnterpriseAnnual("LOOKER_CORE_ENTERPRISE_ANNUAL"),
   lookerCoreEmbedAnnual("LOOKER_CORE_EMBED_ANNUAL");
 
-  const InstancePlatformEdition(this.value);
-  final String value;
+  const InstancePlatformEdition(this.wireValue);
+  final String wireValue;
 
   static InstancePlatformEdition fromValue(String value) {
     for (final item in InstancePlatformEdition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstancePlatformEdition value: $value');
   }
 }
-

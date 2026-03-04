@@ -4,16 +4,15 @@ enum ScheduledActionStatus {
   enabled("Enabled"),
   expired("Expired");
 
-  const ScheduledActionStatus(this.value);
-  final String value;
+  const ScheduledActionStatus(this.wireValue);
+  final String wireValue;
 
   static ScheduledActionStatus fromValue(String value) {
     for (final item in ScheduledActionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduledActionStatus value: $value');
   }
 }
-

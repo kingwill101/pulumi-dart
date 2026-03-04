@@ -10,23 +10,18 @@ class SubjectResponse {
   /// Creates a new [SubjectResponse].
   /// [digest] `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   /// [name] Required.
-  SubjectResponse({
-    required this.digest,
-    required this.name,
-  });
+  SubjectResponse({required this.digest, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': digest,
-      'name': name,
-    };
+    return <String, dynamic>{'digest': digest, 'name': name};
   }
 
   factory SubjectResponse.fromMap(Map<String, dynamic> map) {
     return SubjectResponse(
-      digest: ((map['digest'] as Map).cast<String, String>()).input(),
-      name: (map['name'] as String).input(),
+      digest: pulumi.Input.fromValue(
+        (map['digest'] as Map).cast<String, String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

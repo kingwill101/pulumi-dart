@@ -38,7 +38,7 @@ import 'get_versions_result.dart';
 
 /// This data source fetches information from a provided Artifact Registry repository, including the fully qualified name and URI for an image, based on a the latest version of image name and optional digest or tag.
 ///
-/// > **Note**
+/// &gt; **Note**
 /// Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
 ///
 /// ## Example Usage

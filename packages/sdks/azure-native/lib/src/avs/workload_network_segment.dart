@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'workload_network_segment_args.dart';
-import 'workload_network_segment_port_vif_response.dart';
 import 'workload_network_segment_subnet_response.dart';
 
 /// NSX Segment
@@ -186,24 +185,34 @@ import 'workload_network_segment_subnet_response.dart';
 class WorkloadNetworkSegment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gateway which to connect segment to.
   late final pulumi.Output<String?> connectedGateway;
+
   /// Display name of the segment.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Port Vif which segment is associated with.
-  late final pulumi.Output<List<WorkloadNetworkSegmentPortVifResponse>> portVif;
+  late final pulumi.Output<List<Map<String, dynamic>>> portVif;
+
   /// The provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// NSX revision number.
   late final pulumi.Output<double?> revision;
+
   /// Segment status.
   late final pulumi.Output<String> status;
+
   /// Subnet which to connect segment to.
   late final pulumi.Output<WorkloadNetworkSegmentSubnetResponse?> subnet;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -216,21 +225,21 @@ class WorkloadNetworkSegment extends pulumi.CustomResource {
     WorkloadNetworkSegmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:WorkloadNetworkSegment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectedGateway = registerOutput<String?>('connectedGateway');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure-native:avs:WorkloadNetworkSegment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectedGateway = registerOutput<String?>('connectedGateway');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.portVif = registerOutput<List<WorkloadNetworkSegmentPortVifResponse>>('portVif');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.revision = registerOutput<double?>('revision');
-    this.status = registerOutput<String>('status');
-    this.subnet = registerOutput<WorkloadNetworkSegmentSubnetResponse?>('subnet');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    portVif = registerOutput<List<Map<String, dynamic>>>('portVif');
+    provisioningState = registerOutput<String>('provisioningState');
+    revision = registerOutput<double?>('revision');
+    status = registerOutput<String>('status');
+    subnet = registerOutput<WorkloadNetworkSegmentSubnetResponse?>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

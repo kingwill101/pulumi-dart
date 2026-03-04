@@ -7,7 +7,6 @@ import 'aws_cluster_fleet.dart';
 import 'aws_cluster_logging_config.dart';
 import 'aws_cluster_networking.dart';
 import 'aws_cluster_state.dart';
-import 'aws_cluster_workload_identity_config.dart';
 
 /// An Anthos cluster running on AWS.
 ///
@@ -1672,45 +1671,64 @@ class AwsCluster extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
+
   /// Configuration related to the cluster RBAC settings.
   late final pulumi.Output<AwsClusterAuthorization> authorization;
+
   /// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
   late final pulumi.Output<String> awsRegion;
+
   /// Configuration options for the Binary Authorization feature.
   late final pulumi.Output<AwsClusterBinaryAuthorization> binaryAuthorization;
+
   /// Configuration related to the cluster control plane.
   late final pulumi.Output<AwsClusterControlPlane> controlPlane;
+
   /// Output only. The time at which this cluster was created.
   late final pulumi.Output<String> createTime;
+
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
+
   /// Output only. The endpoint of the cluster's API server.
   late final pulumi.Output<String> endpoint;
+
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
+
   /// Fleet configuration.
   late final pulumi.Output<AwsClusterFleet> fleet;
+
   /// The location for the resource
   late final pulumi.Output<String> location;
+
   /// Logging configuration.
   late final pulumi.Output<AwsClusterLoggingConfig> loggingConfig;
+
   /// The name of this resource.
   late final pulumi.Output<String> name;
+
   /// Cluster-wide networking configuration.
   late final pulumi.Output<AwsClusterNetworking> networking;
+
   /// The project for the resource
   late final pulumi.Output<String> project;
+
   /// Output only. If set, there are currently changes in flight to the cluster.
   late final pulumi.Output<bool> reconciling;
+
   /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
   late final pulumi.Output<String> state;
+
   /// Output only. A globally unique identifier for the cluster.
   late final pulumi.Output<String> uid;
+
   /// Output only. The time at which this cluster was last updated.
   late final pulumi.Output<String> updateTime;
+
   /// Output only. Workload Identity settings.
-  late final pulumi.Output<List<AwsClusterWorkloadIdentityConfig>> workloadIdentityConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityConfigs;
 
   /// Creates a new [AwsCluster].
   /// [name] The Pulumi resource name.
@@ -1721,32 +1739,38 @@ class AwsCluster extends pulumi.CustomResource {
     AwsClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:container/awsCluster:AwsCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<Map<String, String>?>('annotations');
-    this.authorization = registerOutput<AwsClusterAuthorization>('authorization');
-    this.awsRegion = registerOutput<String>('awsRegion');
-    this.binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization');
-    this.controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.etag = registerOutput<String>('etag');
-    this.fleet = registerOutput<AwsClusterFleet>('fleet');
-    this.location = registerOutput<String>('location');
-    this.loggingConfig = registerOutput<AwsClusterLoggingConfig>('loggingConfig');
+         'gcp:container/awsCluster:AwsCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<Map<String, String>?>('annotations');
+    authorization = registerOutput<AwsClusterAuthorization>('authorization');
+    awsRegion = registerOutput<String>('awsRegion');
+    binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>(
+      'binaryAuthorization',
+    );
+    controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>(
+      'effectiveAnnotations',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    fleet = registerOutput<AwsClusterFleet>('fleet');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<AwsClusterLoggingConfig>('loggingConfig');
     this.name = registerOutput<String>('name');
-    this.networking = registerOutput<AwsClusterNetworking>('networking');
-    this.project = registerOutput<String>('project');
-    this.reconciling = registerOutput<bool>('reconciling');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.workloadIdentityConfigs = registerOutput<List<AwsClusterWorkloadIdentityConfig>>('workloadIdentityConfigs');
+    networking = registerOutput<AwsClusterNetworking>('networking');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'workloadIdentityConfigs',
+    );
   }
 
   /// Gets an existing [AwsCluster] resource's state with the given [name] and [id].
@@ -1767,31 +1791,37 @@ class AwsCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:container/awsCluster:AwsCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<Map<String, String>?>('annotations');
-    this.authorization = registerOutput<AwsClusterAuthorization>('authorization');
-    this.awsRegion = registerOutput<String>('awsRegion');
-    this.binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization');
-    this.controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.etag = registerOutput<String>('etag');
-    this.fleet = registerOutput<AwsClusterFleet>('fleet');
-    this.location = registerOutput<String>('location');
-    this.loggingConfig = registerOutput<AwsClusterLoggingConfig>('loggingConfig');
+         'gcp:container/awsCluster:AwsCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<Map<String, String>?>('annotations');
+    authorization = registerOutput<AwsClusterAuthorization>('authorization');
+    awsRegion = registerOutput<String>('awsRegion');
+    binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>(
+      'binaryAuthorization',
+    );
+    controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>(
+      'effectiveAnnotations',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    fleet = registerOutput<AwsClusterFleet>('fleet');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<AwsClusterLoggingConfig>('loggingConfig');
     this.name = registerOutput<String>('name');
-    this.networking = registerOutput<AwsClusterNetworking>('networking');
-    this.project = registerOutput<String>('project');
-    this.reconciling = registerOutput<bool>('reconciling');
+    networking = registerOutput<AwsClusterNetworking>('networking');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.workloadIdentityConfigs = registerOutput<List<AwsClusterWorkloadIdentityConfig>>('workloadIdentityConfigs');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'workloadIdentityConfigs',
+    );
   }
 }

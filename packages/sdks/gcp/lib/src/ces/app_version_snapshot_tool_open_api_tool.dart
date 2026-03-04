@@ -9,29 +9,41 @@ class AppVersionSnapshotToolOpenApiTool {
   /// (Output)
   /// Authentication information required for API calls.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthentication>>? apiAuthentications;
+  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthentication>>?
+  apiAuthentications;
+
   /// The description of the app version.
   final pulumi.Input<String>? description;
+
   /// (Output)
   /// If true, the agent will ignore unknown fields in the API response for all
   /// operations defined in the OpenAPI schema.
   final pulumi.Input<bool>? ignoreUnknownFields;
+
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final pulumi.Input<String>? name;
+
   /// (Output)
   /// The OpenAPI schema of the toolset.
   final pulumi.Input<String>? openApiSchema;
+
   /// (Output)
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig>>? serviceDirectoryConfigs;
+  final pulumi.Input<
+    List<AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig>
+  >?
+  serviceDirectoryConfigs;
+
   /// (Output)
   /// The TLS configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolTlsConfig>>? tlsConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolTlsConfig>>?
+  tlsConfigs;
+
   /// (Output)
   /// The server URL of the Open API schema.
   /// This field is only set in toolsets in the environment dependencies
@@ -63,28 +75,119 @@ class AppVersionSnapshotToolOpenApiTool {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiAuthentications': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolOpenApiToolApiAuthentication>, List<Map<String, dynamic>>>(apiAuthentications, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolOpenApiToolApiAuthentication, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'apiAuthentications':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotToolOpenApiToolApiAuthentication>,
+            List<Map<String, dynamic>>
+          >(
+            apiAuthentications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotToolOpenApiToolApiAuthentication,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'ignoreUnknownFields': ?ignoreUnknownFields,
       'name': ?name,
       'openApiSchema': ?openApiSchema,
-      'serviceDirectoryConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig>, List<Map<String, dynamic>>>(serviceDirectoryConfigs, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'tlsConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolOpenApiToolTlsConfig>, List<Map<String, dynamic>>>(tlsConfigs, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolOpenApiToolTlsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceDirectoryConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig>,
+            List<Map<String, dynamic>>
+          >(
+            serviceDirectoryConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'tlsConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotToolOpenApiToolTlsConfig>,
+            List<Map<String, dynamic>>
+          >(
+            tlsConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotToolOpenApiToolTlsConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'url': ?url,
     };
   }
 
   factory AppVersionSnapshotToolOpenApiTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiTool(
-      apiAuthentications: map['apiAuthentications'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolApiAuthentication>(map['apiAuthentications']!, (value) => AppVersionSnapshotToolOpenApiToolApiAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : (map['ignoreUnknownFields']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      openApiSchema: map['openApiSchema'] == null ? null : (map['openApiSchema']! as String).input(),
-      serviceDirectoryConfigs: map['serviceDirectoryConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig>(map['serviceDirectoryConfigs']!, (value) => AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tlsConfigs: map['tlsConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolTlsConfig>(map['tlsConfigs']!, (value) => AppVersionSnapshotToolOpenApiToolTlsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      apiAuthentications: (() {
+        final guardedValue = map['apiAuthentications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppVersionSnapshotToolOpenApiToolApiAuthentication
+          >(
+            guardedValue,
+            (value) =>
+                AppVersionSnapshotToolOpenApiToolApiAuthentication.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ignoreUnknownFields: (() {
+        final guardedValue = map['ignoreUnknownFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      openApiSchema: (() {
+        final guardedValue = map['openApiSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceDirectoryConfigs: (() {
+        final guardedValue = map['serviceDirectoryConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig
+          >(
+            guardedValue,
+            (value) =>
+                AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      tlsConfigs: (() {
+        final guardedValue = map['tlsConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolTlsConfig>(
+            guardedValue,
+            (value) => AppVersionSnapshotToolOpenApiToolTlsConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

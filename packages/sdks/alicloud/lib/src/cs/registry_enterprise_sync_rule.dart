@@ -6,9 +6,9 @@ import 'registry_enterprise_sync_rule_state.dart';
 ///
 /// For information about Container Registry Sync Rule and how to use it, see [What is Sync Rule](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createreposyncrule)
 ///
-/// > **NOTE:** Available since v1.90.0.
+/// &gt; **NOTE:** Available since v1.90.0.
 ///
-/// > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+/// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 ///
 /// ## Example Usage
 ///
@@ -550,43 +550,60 @@ import 'registry_enterprise_sync_rule_state.dart';
 class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
   /// (Available since v1.240.0) The time when the synchronization rule was created.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the Container Registry source instance.
   late final pulumi.Output<String> instanceId;
+
   /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
   late final pulumi.Output<String> name;
+
   /// The namespace name of the source instance.
   late final pulumi.Output<String> namespaceName;
+
   /// (Available since v1.240.0) The region ID of the source instance.
   late final pulumi.Output<String> regionId;
+
   /// The image repository name of the source instance.
   late final pulumi.Output<String?> repoName;
+
   /// (Available since v1.240.0) The ID of the synchronization rule.
   late final pulumi.Output<String> repoSyncRuleId;
+
   /// (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
   late final pulumi.Output<String> ruleId;
+
   /// The synchronization direction.
   late final pulumi.Output<String> syncDirection;
+
   /// The name of the sync rule.
   late final pulumi.Output<String> syncRuleName;
+
   /// The synchronization scope. Valid values:
   /// - `REPO`: Encrypts or decrypts data.
   /// - `NAMESPACE`: Generates or verifies a digital signature.
-  /// > **NOTE:** From version 1.240.0, `sync_scope` can be set.
+  /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
   late final pulumi.Output<String> syncScope;
+
   /// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
   /// - `INITIATIVE`: Manually triggers the synchronization rule.
   /// - `PASSIVE`: Automatically triggers the synchronization rule.
   late final pulumi.Output<String> syncTrigger;
+
   /// The regular expression used to filter image tags.
   late final pulumi.Output<String> tagFilter;
+
   /// The ID of the destination instance.
   late final pulumi.Output<String> targetInstanceId;
+
   /// The namespace name of the destination instance.
   late final pulumi.Output<String> targetNamespaceName;
+
   /// The region ID of the destination instance.
   late final pulumi.Output<String> targetRegionId;
+
   /// The image repository name of the destination instance.
   late final pulumi.Output<String?> targetRepoName;
+
   /// The UID of the account to which the target instance belongs.
   late final pulumi.Output<String?> targetUserId;
 
@@ -599,29 +616,29 @@ class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
     RegistryEnterpriseSyncRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.regionId = registerOutput<String>('regionId');
-    this.repoName = registerOutput<String?>('repoName');
-    this.repoSyncRuleId = registerOutput<String>('repoSyncRuleId');
-    this.ruleId = registerOutput<String>('ruleId');
-    this.syncDirection = registerOutput<String>('syncDirection');
-    this.syncRuleName = registerOutput<String>('syncRuleName');
-    this.syncScope = registerOutput<String>('syncScope');
-    this.syncTrigger = registerOutput<String>('syncTrigger');
-    this.tagFilter = registerOutput<String>('tagFilter');
-    this.targetInstanceId = registerOutput<String>('targetInstanceId');
-    this.targetNamespaceName = registerOutput<String>('targetNamespaceName');
-    this.targetRegionId = registerOutput<String>('targetRegionId');
-    this.targetRepoName = registerOutput<String?>('targetRepoName');
-    this.targetUserId = registerOutput<String?>('targetUserId');
+    namespaceName = registerOutput<String>('namespaceName');
+    regionId = registerOutput<String>('regionId');
+    repoName = registerOutput<String?>('repoName');
+    repoSyncRuleId = registerOutput<String>('repoSyncRuleId');
+    ruleId = registerOutput<String>('ruleId');
+    syncDirection = registerOutput<String>('syncDirection');
+    syncRuleName = registerOutput<String>('syncRuleName');
+    syncScope = registerOutput<String>('syncScope');
+    syncTrigger = registerOutput<String>('syncTrigger');
+    tagFilter = registerOutput<String>('tagFilter');
+    targetInstanceId = registerOutput<String>('targetInstanceId');
+    targetNamespaceName = registerOutput<String>('targetNamespaceName');
+    targetRegionId = registerOutput<String>('targetRegionId');
+    targetRepoName = registerOutput<String?>('targetRepoName');
+    targetUserId = registerOutput<String?>('targetUserId');
   }
 
   /// Gets an existing [RegistryEnterpriseSyncRule] resource's state with the given [name] and [id].
@@ -642,28 +659,28 @@ class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.regionId = registerOutput<String>('regionId');
-    this.repoName = registerOutput<String?>('repoName');
-    this.repoSyncRuleId = registerOutput<String>('repoSyncRuleId');
-    this.ruleId = registerOutput<String>('ruleId');
-    this.syncDirection = registerOutput<String>('syncDirection');
-    this.syncRuleName = registerOutput<String>('syncRuleName');
-    this.syncScope = registerOutput<String>('syncScope');
-    this.syncTrigger = registerOutput<String>('syncTrigger');
-    this.tagFilter = registerOutput<String>('tagFilter');
-    this.targetInstanceId = registerOutput<String>('targetInstanceId');
-    this.targetNamespaceName = registerOutput<String>('targetNamespaceName');
-    this.targetRegionId = registerOutput<String>('targetRegionId');
-    this.targetRepoName = registerOutput<String?>('targetRepoName');
-    this.targetUserId = registerOutput<String?>('targetUserId');
+    namespaceName = registerOutput<String>('namespaceName');
+    regionId = registerOutput<String>('regionId');
+    repoName = registerOutput<String?>('repoName');
+    repoSyncRuleId = registerOutput<String>('repoSyncRuleId');
+    ruleId = registerOutput<String>('ruleId');
+    syncDirection = registerOutput<String>('syncDirection');
+    syncRuleName = registerOutput<String>('syncRuleName');
+    syncScope = registerOutput<String>('syncScope');
+    syncTrigger = registerOutput<String>('syncTrigger');
+    tagFilter = registerOutput<String>('tagFilter');
+    targetInstanceId = registerOutput<String>('targetInstanceId');
+    targetNamespaceName = registerOutput<String>('targetNamespaceName');
+    targetRegionId = registerOutput<String>('targetRegionId');
+    targetRepoName = registerOutput<String?>('targetRepoName');
+    targetUserId = registerOutput<String?>('targetUserId');
   }
 }

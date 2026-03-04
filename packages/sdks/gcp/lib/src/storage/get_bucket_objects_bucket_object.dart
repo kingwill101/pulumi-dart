@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketObjectsBucketObject {
   /// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data.
   final pulumi.Input<String> contentType;
+
   /// A url reference to download this object.
   final pulumi.Input<String> mediaLink;
+
   /// The name of the object.
   final pulumi.Input<String> name;
+
   /// A url reference to this object.
   final pulumi.Input<String> selfLink;
+
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
   final pulumi.Input<String> storageClass;
 
@@ -40,12 +44,11 @@ class GetBucketObjectsBucketObject {
 
   factory GetBucketObjectsBucketObject.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsBucketObject(
-      contentType: (map['contentType'] as String).input(),
-      mediaLink: (map['mediaLink'] as String).input(),
-      name: (map['name'] as String).input(),
-      selfLink: (map['selfLink'] as String).input(),
-      storageClass: (map['storageClass'] as String).input(),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      mediaLink: pulumi.Input.fromValue(map['mediaLink'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
+      storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
     );
   }
 }
-

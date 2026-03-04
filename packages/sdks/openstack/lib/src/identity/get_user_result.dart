@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getUser.
 class GetUserResult {
   /// See Argument Reference above.
   final String defaultProjectId;
+
   /// A description of the user.
   final String description;
+
   /// See Argument Reference above.
   final String domainId;
+
   /// See Argument Reference above.
   final bool enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final String? idpId;
+
   /// See Argument Reference above.
   final String? name;
+
   /// See Argument Reference above.
   final String? passwordExpiresAt;
+
   /// See Argument Reference above.
   final String? protocolId;
+
   /// See Argument Reference above.
   final String region;
+
   /// See Argument Reference above.
   final String? uniqueId;
 
@@ -75,13 +84,32 @@ class GetUserResult {
       domainId: map['domainId'] as String,
       enabled: map['enabled'] as bool,
       id: map['id'] as String,
-      idpId: map['idpId'] == null ? null : map['idpId']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      passwordExpiresAt: map['passwordExpiresAt'] == null ? null : map['passwordExpiresAt']! as String,
-      protocolId: map['protocolId'] == null ? null : map['protocolId']! as String,
+      idpId: (() {
+        final guardedValue = map['idpId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      passwordExpiresAt: (() {
+        final guardedValue = map['passwordExpiresAt'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      protocolId: (() {
+        final guardedValue = map['protocolId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
-      uniqueId: map['uniqueId'] == null ? null : map['uniqueId']! as String,
+      uniqueId: (() {
+        final guardedValue = map['uniqueId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

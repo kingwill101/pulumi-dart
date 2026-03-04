@@ -9,20 +9,21 @@ class GlobalSettingsState {
 
   /// Creates a new [GlobalSettingsState].
   /// [globalSettings] A list of resources along with the opt-in preferences for the account. For a list of inputs, see [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide.
-  GlobalSettingsState({
-    this.globalSettings,
-  });
+  GlobalSettingsState({this.globalSettings});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'globalSettings': ?globalSettings,
-    };
+    return <String, dynamic>{'globalSettings': ?globalSettings};
   }
 
   factory GlobalSettingsState.fromMap(Map<String, dynamic> map) {
     return GlobalSettingsState(
-      globalSettings: map['globalSettings'] == null ? null : (((map['globalSettings'] as Map).cast<String, String>()).input()).input(),
+      globalSettings: (() {
+        final guardedValue = map['globalSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

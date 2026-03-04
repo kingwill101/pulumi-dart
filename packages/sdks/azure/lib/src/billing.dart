@@ -1,5 +1,3 @@
-library module_billing;
-
 export 'billing/account_cost_management_export.dart';
 export 'billing/account_cost_management_export_args.dart';
 export 'billing/account_cost_management_export_export_data_options.dart';

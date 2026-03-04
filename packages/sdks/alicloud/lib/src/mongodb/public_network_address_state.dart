@@ -7,29 +7,52 @@ import 'public_network_address_replica_set.dart';
 class PublicNetworkAddressState {
   /// The instance ID.
   final pulumi.Input<String>? dbInstanceId;
+
   /// Replica set instance information.
   final pulumi.Input<List<PublicNetworkAddressReplicaSet>>? replicaSets;
 
   /// Creates a new [PublicNetworkAddressState].
   /// [dbInstanceId] The instance ID.
   /// [replicaSets] Replica set instance information.
-  PublicNetworkAddressState({
-    this.dbInstanceId,
-    this.replicaSets,
-  });
+  PublicNetworkAddressState({this.dbInstanceId, this.replicaSets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dbInstanceId': ?dbInstanceId,
-      'replicaSets': ?pulumi.Input.mapOptionalInputValue<List<PublicNetworkAddressReplicaSet>, List<Map<String, dynamic>>>(replicaSets, (value) => pulumi.Input.encodeList<PublicNetworkAddressReplicaSet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'replicaSets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PublicNetworkAddressReplicaSet>,
+            List<Map<String, dynamic>>
+          >(
+            replicaSets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PublicNetworkAddressReplicaSet,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory PublicNetworkAddressState.fromMap(Map<String, dynamic> map) {
     return PublicNetworkAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
-      replicaSets: map['replicaSets'] == null ? null : (pulumi.Input.decodeList<PublicNetworkAddressReplicaSet>(map['replicaSets']!, (value) => PublicNetworkAddressReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbInstanceId: (() {
+        final guardedValue = map['dbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicaSets: (() {
+        final guardedValue = map['replicaSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PublicNetworkAddressReplicaSet>(
+            guardedValue,
+            (value) => PublicNetworkAddressReplicaSet.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

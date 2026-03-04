@@ -1,5 +1,3 @@
-library module_network;
-
 export 'network/application_gateway.dart';
 export 'network/application_gateway_args.dart';
 export 'network/application_gateway_authentication_certificate.dart';

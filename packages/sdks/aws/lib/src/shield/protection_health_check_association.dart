@@ -328,6 +328,7 @@ import 'protection_health_check_association_state.dart';
 class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
   /// The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
   late final pulumi.Output<String> healthCheckArn;
+
   /// The ID of the protected resource.
   late final pulumi.Output<String> shieldProtectionId;
 
@@ -340,13 +341,13 @@ class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
     ProtectionHealthCheckAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.healthCheckArn = registerOutput<String>('healthCheckArn');
-    this.shieldProtectionId = registerOutput<String>('shieldProtectionId');
+         'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    healthCheckArn = registerOutput<String>('healthCheckArn');
+    shieldProtectionId = registerOutput<String>('shieldProtectionId');
   }
 
   /// Gets an existing [ProtectionHealthCheckAssociation] resource's state with the given [name] and [id].
@@ -367,12 +368,12 @@ class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.healthCheckArn = registerOutput<String>('healthCheckArn');
-    this.shieldProtectionId = registerOutput<String>('shieldProtectionId');
+         'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    healthCheckArn = registerOutput<String>('healthCheckArn');
+    shieldProtectionId = registerOutput<String>('shieldProtectionId');
   }
 }

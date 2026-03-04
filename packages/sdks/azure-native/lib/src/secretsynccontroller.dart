@@ -1,5 +1,3 @@
-library module_secretsynccontroller;
-
 export 'secretsynccontroller/azure_key_vault_secret_provider_class.dart';
 export 'secretsynccontroller/azure_key_vault_secret_provider_class_args.dart';
 export 'secretsynccontroller/azure_resource_manager_common_types_extended_location.dart';

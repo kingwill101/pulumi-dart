@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedDirectoryAccepterState {
   /// Method used when sharing a directory (i.e., `ORGANIZATIONS` or `HANDSHAKE`).
   final pulumi.Input<String>? method;
+
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
   final pulumi.Input<String>? notes;
+
   /// Account identifier of the directory owner.
   final pulumi.Input<String>? ownerAccountId;
+
   /// Identifier of the Managed Microsoft AD directory from the perspective of the directory owner.
   final pulumi.Input<String>? ownerDirectoryId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   final pulumi.Input<String>? sharedDirectoryId;
 
@@ -46,13 +51,36 @@ class SharedDirectoryAccepterState {
 
   factory SharedDirectoryAccepterState.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryAccepterState(
-      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
-      notes: map['notes'] == null ? null : ((map['notes'] as String).input()).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
-      ownerDirectoryId: map['ownerDirectoryId'] == null ? null : ((map['ownerDirectoryId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : ((map['sharedDirectoryId'] as String).input()).input(),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerAccountId: (() {
+        final guardedValue = map['ownerAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerDirectoryId: (() {
+        final guardedValue = map['ownerDirectoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedDirectoryId: (() {
+        final guardedValue = map['sharedDirectoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

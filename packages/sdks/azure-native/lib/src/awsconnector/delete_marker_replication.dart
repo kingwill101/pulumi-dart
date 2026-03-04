@@ -9,20 +9,19 @@ class DeleteMarkerReplication {
 
   /// Creates a new [DeleteMarkerReplication].
   /// [status] Indicates whether to replicate delete markers. Disabled by default.
-  DeleteMarkerReplication({
-    this.status,
-  });
+  DeleteMarkerReplication({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
   factory DeleteMarkerReplication.fromMap(Map<String, dynamic> map) {
     return DeleteMarkerReplication(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

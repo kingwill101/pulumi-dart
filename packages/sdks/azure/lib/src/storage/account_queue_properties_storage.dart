@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_queue_properties_args.dart';
-import 'account_queue_properties_cors_rule.dart';
 import 'account_queue_properties_hour_metrics.dart';
 import 'account_queue_properties_logging.dart';
 import 'account_queue_properties_minute_metrics.dart';
@@ -384,15 +383,19 @@ import 'account_queue_properties_state.dart';
 /// ```
 class AccountQueuePropertiesStorage extends pulumi.CustomResource {
   /// A `cors_rule` block as defined above.
-  late final pulumi.Output<List<AccountQueuePropertiesCorsRule>?> corsRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> corsRules;
+
   /// A `hour_metrics` block as defined below.
   ///
-  /// > **Note:** At least one of `cors_rule`, `logging`, `minute_metrics`, or `hour_metrics` must be specified.
+  /// &gt; **Note:** At least one of `cors_rule`, `logging`, `minute_metrics`, or `hour_metrics` must be specified.
   late final pulumi.Output<AccountQueuePropertiesHourMetrics> hourMetrics;
+
   /// A `logging` block as defined below.
   late final pulumi.Output<AccountQueuePropertiesLogging> logging;
+
   /// A `minute_metrics` block as defined below.
   late final pulumi.Output<AccountQueuePropertiesMinuteMetrics> minuteMetrics;
+
   /// The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -405,16 +408,20 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
     AccountQueuePropertiesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/accountQueueProperties:AccountQueueProperties',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.corsRules = registerOutput<List<AccountQueuePropertiesCorsRule>?>('corsRules');
-    this.hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>('hourMetrics');
-    this.logging = registerOutput<AccountQueuePropertiesLogging>('logging');
-    this.minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>('minuteMetrics');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/accountQueueProperties:AccountQueueProperties',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>(
+      'hourMetrics',
+    );
+    logging = registerOutput<AccountQueuePropertiesLogging>('logging');
+    minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>(
+      'minuteMetrics',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [AccountQueuePropertiesStorage] resource's state with the given [name] and [id].
@@ -435,15 +442,19 @@ class AccountQueuePropertiesStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/accountQueueProperties:AccountQueueProperties',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.corsRules = registerOutput<List<AccountQueuePropertiesCorsRule>?>('corsRules');
-    this.hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>('hourMetrics');
-    this.logging = registerOutput<AccountQueuePropertiesLogging>('logging');
-    this.minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>('minuteMetrics');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/accountQueueProperties:AccountQueueProperties',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    hourMetrics = registerOutput<AccountQueuePropertiesHourMetrics>(
+      'hourMetrics',
+    );
+    logging = registerOutput<AccountQueuePropertiesLogging>('logging');
+    minuteMetrics = registerOutput<AccountQueuePropertiesMinuteMetrics>(
+      'minuteMetrics',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

@@ -7,8 +7,10 @@ import 'failover_group_spec.dart';
 class FailoverGroupProperties {
   /// The resource ID of the partner SQL managed instance.
   final pulumi.Input<String> partnerManagedInstanceId;
+
   /// The specifications of the failover group resource.
   final pulumi.Input<FailoverGroupSpec> spec;
+
   /// The status of the failover group custom resource.
   final pulumi.Input<dynamic>? status;
 
@@ -25,17 +27,30 @@ class FailoverGroupProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'partnerManagedInstanceId': partnerManagedInstanceId,
-      'spec': pulumi.Input.mapInputValue<FailoverGroupSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec':
+          pulumi.Input.mapInputValue<FailoverGroupSpec, Map<String, dynamic>>(
+            spec,
+            (value) => value.toMap(),
+          ),
       'status': ?status,
     };
   }
 
   factory FailoverGroupProperties.fromMap(Map<String, dynamic> map) {
     return FailoverGroupProperties(
-      partnerManagedInstanceId: (map['partnerManagedInstanceId'] as String).input(),
-      spec: (FailoverGroupSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']!).input(),
+      partnerManagedInstanceId: pulumi.Input.fromValue(
+        map['partnerManagedInstanceId'] as String,
+      ),
+      spec: pulumi.Input.fromValue(
+        FailoverGroupSpec.fromMap(
+          (map['spec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

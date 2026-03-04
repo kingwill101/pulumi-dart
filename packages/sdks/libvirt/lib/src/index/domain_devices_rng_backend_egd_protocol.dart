@@ -8,20 +8,15 @@ class DomainDevicesRngBackendEgdProtocol {
 
   /// Creates a new [DomainDevicesRngBackendEgdProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesRngBackendEgdProtocol({
-    required this.type,
-  });
+  DomainDevicesRngBackendEgdProtocol({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory DomainDevicesRngBackendEgdProtocol.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngBackendEgdProtocol(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

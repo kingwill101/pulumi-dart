@@ -7,20 +7,17 @@ class GetClusterAddonsConfigDnsCacheConfig {
 
   /// Creates a new [GetClusterAddonsConfigDnsCacheConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigDnsCacheConfig({
-    required this.enabled,
-  });
+  GetClusterAddonsConfigDnsCacheConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetClusterAddonsConfigDnsCacheConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigDnsCacheConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterAddonsConfigDnsCacheConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

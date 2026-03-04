@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionConfig {
   /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
   final pulumi.Input<String>? gcePdKmsKeyName;
+
   /// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
   final pulumi.Input<String>? kmsKey;
 
   /// Creates a new [EncryptionConfig].
   /// [gcePdKmsKeyName] Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
   /// [kmsKey] Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
-  EncryptionConfig({
-    this.gcePdKmsKeyName,
-    this.kmsKey,
-  });
+  EncryptionConfig({this.gcePdKmsKeyName, this.kmsKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class EncryptionConfig {
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName']! as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      gcePdKmsKeyName: (() {
+        final guardedValue = map['gcePdKmsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

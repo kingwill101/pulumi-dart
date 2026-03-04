@@ -3,16 +3,17 @@ enum DeploymentStacksDeleteDetachEnum {
   delete("delete"),
   detach("detach");
 
-  const DeploymentStacksDeleteDetachEnum(this.value);
-  final String value;
+  const DeploymentStacksDeleteDetachEnum(this.wireValue);
+  final String wireValue;
 
   static DeploymentStacksDeleteDetachEnum fromValue(String value) {
     for (final item in DeploymentStacksDeleteDetachEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeploymentStacksDeleteDetachEnum value: $value');
+    throw ArgumentError(
+      'Unknown DeploymentStacksDeleteDetachEnum value: $value',
+    );
   }
 }
-

@@ -6,7 +6,7 @@ import 'topic_state.dart';
 ///
 /// For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html).
 ///
-/// > **NOTE:** Available in 1.53.0+
+/// &gt; **NOTE:** Available in 1.53.0+
 ///
 /// ## Example Usage
 ///
@@ -236,20 +236,26 @@ import 'topic_state.dart';
 class Topic extends pulumi.CustomResource {
   /// ID of the ONS Instance that owns the topics.
   late final pulumi.Output<String> instanceId;
+
   /// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
   late final pulumi.Output<int> messageType;
+
   /// This attribute has been deprecated.
   late final pulumi.Output<int> perm;
+
   /// This attribute is a concise description of topic. The length cannot exceed 128.
   late final pulumi.Output<String?> remark;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   ///
-  /// > **NOTE:** At least one of `topic_name` and `topic` should be set.
+  /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Replaced by `topic_name` after version 1.97.0.
   late final pulumi.Output<String> topic;
+
   /// Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
   late final pulumi.Output<String> topicName;
 
@@ -257,31 +263,24 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_rocketmq_topic_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(
-    String name, {
-    TopicArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:rocketmq/topic:Topic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.messageType = registerOutput<int>('messageType');
-    this.perm = registerOutput<int>('perm');
-    this.remark = registerOutput<String?>('remark');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topic = registerOutput<String>('topic');
-    this.topicName = registerOutput<String>('topicName');
+  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:rocketmq/topic:Topic',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    instanceId = registerOutput<String>('instanceId');
+    messageType = registerOutput<int>('messageType');
+    perm = registerOutput<int>('perm');
+    remark = registerOutput<String?>('remark');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topic = registerOutput<String>('topic');
+    topicName = registerOutput<String>('topicName');
   }
 
   /// Gets an existing [Topic] resource's state with the given [name] and [id].
-  static Topic get(
-    String name,
-    pulumi.Input<String> id, {
-    TopicState? state,
-  }) {
+  static Topic get(String name, pulumi.Input<String> id, {TopicState? state}) {
     return Topic._get(
       name,
       state: state?.toMap(),
@@ -294,17 +293,17 @@ class Topic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/topic:Topic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.messageType = registerOutput<int>('messageType');
-    this.perm = registerOutput<int>('perm');
-    this.remark = registerOutput<String?>('remark');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topic = registerOutput<String>('topic');
-    this.topicName = registerOutput<String>('topicName');
+         'alicloud:rocketmq/topic:Topic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    messageType = registerOutput<int>('messageType');
+    perm = registerOutput<int>('perm');
+    remark = registerOutput<String?>('remark');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topic = registerOutput<String>('topic');
+    topicName = registerOutput<String>('topicName');
   }
 }

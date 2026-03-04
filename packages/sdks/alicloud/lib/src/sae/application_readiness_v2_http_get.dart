@@ -35,12 +35,31 @@ class ApplicationReadinessV2HttpGet {
 
   factory ApplicationReadinessV2HttpGet.fromMap(Map<String, dynamic> map) {
     return ApplicationReadinessV2HttpGet(
-      isContainKeyWord: map['isContainKeyWord'] == null ? null : (map['isContainKeyWord']! as bool).input(),
-      keyWord: map['keyWord'] == null ? null : (map['keyWord']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
+      isContainKeyWord: (() {
+        final guardedValue = map['isContainKeyWord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyWord: (() {
+        final guardedValue = map['keyWord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scheme: (() {
+        final guardedValue = map['scheme'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

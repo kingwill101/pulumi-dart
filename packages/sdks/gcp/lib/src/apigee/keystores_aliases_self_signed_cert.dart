@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keystores_aliases_self_signed_cert_args.dart';
-import 'keystores_aliases_self_signed_cert_certs_info.dart';
 import 'keystores_aliases_self_signed_cert_state.dart';
 import 'keystores_aliases_self_signed_cert_subject.dart';
 import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
@@ -743,27 +742,40 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
   /// This must be provided for all formats except selfsignedcert; self-signed certs may specify the alias in either
   /// this parameter or the JSON body.
   late final pulumi.Output<String> alias;
+
   /// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
   late final pulumi.Output<int?> certValidityInDays;
+
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  late final pulumi.Output<List<KeystoresAliasesSelfSignedCertCertsInfo>> certsInfos;
+  late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
+
   /// The Apigee environment name
   late final pulumi.Output<String> environment;
+
   /// Key size. Default and maximum value is 2048 bits.
   late final pulumi.Output<String?> keySize;
+
   /// The Apigee keystore name associated in an Apigee environment
   late final pulumi.Output<String> keystore;
+
   /// The Apigee Organization name associated with the Apigee environment
   late final pulumi.Output<String> orgId;
+
   /// Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
   late final pulumi.Output<String> sigAlg;
+
   /// Subject details.
   /// Structure is documented below.
   late final pulumi.Output<KeystoresAliasesSelfSignedCertSubject> subject;
+
   /// List of alternative host names. Maximum length is 255 characters for each value.
   /// Structure is documented below.
-  late final pulumi.Output<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?> subjectAlternativeDnsNames;
+  late final pulumi.Output<
+    KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
+  >
+  subjectAlternativeDnsNames;
+
   /// Optional.Type of Alias
   late final pulumi.Output<String> type;
 
@@ -776,22 +788,25 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     KeystoresAliasesSelfSignedCertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alias = registerOutput<String>('alias');
-    this.certValidityInDays = registerOutput<int?>('certValidityInDays');
-    this.certsInfos = registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>('certsInfos');
-    this.environment = registerOutput<String>('environment');
-    this.keySize = registerOutput<String?>('keySize');
-    this.keystore = registerOutput<String>('keystore');
-    this.orgId = registerOutput<String>('orgId');
-    this.sigAlg = registerOutput<String>('sigAlg');
-    this.subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
-    this.subjectAlternativeDnsNames = registerOutput<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>('subjectAlternativeDnsNames');
-    this.type = registerOutput<String>('type');
+         'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alias = registerOutput<String>('alias');
+    certValidityInDays = registerOutput<int?>('certValidityInDays');
+    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    environment = registerOutput<String>('environment');
+    keySize = registerOutput<String?>('keySize');
+    keystore = registerOutput<String>('keystore');
+    orgId = registerOutput<String>('orgId');
+    sigAlg = registerOutput<String>('sigAlg');
+    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
+    subjectAlternativeDnsNames =
+        registerOutput<
+          KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
+        >('subjectAlternativeDnsNames');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [KeystoresAliasesSelfSignedCert] resource's state with the given [name] and [id].
@@ -812,21 +827,24 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alias = registerOutput<String>('alias');
-    this.certValidityInDays = registerOutput<int?>('certValidityInDays');
-    this.certsInfos = registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>('certsInfos');
-    this.environment = registerOutput<String>('environment');
-    this.keySize = registerOutput<String?>('keySize');
-    this.keystore = registerOutput<String>('keystore');
-    this.orgId = registerOutput<String>('orgId');
-    this.sigAlg = registerOutput<String>('sigAlg');
-    this.subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
-    this.subjectAlternativeDnsNames = registerOutput<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>('subjectAlternativeDnsNames');
-    this.type = registerOutput<String>('type');
+         'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alias = registerOutput<String>('alias');
+    certValidityInDays = registerOutput<int?>('certValidityInDays');
+    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    environment = registerOutput<String>('environment');
+    keySize = registerOutput<String?>('keySize');
+    keystore = registerOutput<String>('keystore');
+    orgId = registerOutput<String>('orgId');
+    sigAlg = registerOutput<String>('sigAlg');
+    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject');
+    subjectAlternativeDnsNames =
+        registerOutput<
+          KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?
+        >('subjectAlternativeDnsNames');
+    type = registerOutput<String>('type');
   }
 }

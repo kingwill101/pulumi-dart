@@ -159,12 +159,16 @@ import 'managed_integration_runtime_response.dart';
 class IntegrationRuntime extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource Etag.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Integration runtime properties.
   late final pulumi.Output<ManagedIntegrationRuntimeResponse> properties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -177,15 +181,17 @@ class IntegrationRuntime extends pulumi.CustomResource {
     IntegrationRuntimeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:IntegrationRuntime',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:synapse:IntegrationRuntime',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ManagedIntegrationRuntimeResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ManagedIntegrationRuntimeResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

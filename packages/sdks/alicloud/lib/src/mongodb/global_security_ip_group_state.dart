@@ -6,10 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalSecurityIpGroupState {
   /// The name of the IP whitelist template.
   final pulumi.Input<String>? globalIgName;
+
   /// The IP address in the whitelist template.
   ///
-  /// > **NOTE:** Separate multiple IP addresses with commas (,). You can create up to 1000 IP addresses or CIDR blocks for all IP address whitelists.
+  /// &gt; **NOTE:** Separate multiple IP addresses with commas (,). You can create up to 1000 IP addresses or CIDR blocks for all IP address whitelists.
   final pulumi.Input<String>? globalSecurityIpList;
+
   /// The region ID of the resource
   final pulumi.Input<String>? regionId;
 
@@ -33,10 +35,21 @@ class GlobalSecurityIpGroupState {
 
   factory GlobalSecurityIpGroupState.fromMap(Map<String, dynamic> map) {
     return GlobalSecurityIpGroupState(
-      globalIgName: map['globalIgName'] == null ? null : (map['globalIgName']! as String).input(),
-      globalSecurityIpList: map['globalSecurityIpList'] == null ? null : (map['globalSecurityIpList']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      globalIgName: (() {
+        final guardedValue = map['globalIgName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalSecurityIpList: (() {
+        final guardedValue = map['globalSecurityIpList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

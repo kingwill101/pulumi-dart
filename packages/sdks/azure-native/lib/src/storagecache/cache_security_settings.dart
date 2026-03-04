@@ -10,20 +10,38 @@ class CacheSecuritySettings {
 
   /// Creates a new [CacheSecuritySettings].
   /// [accessPolicies] NFS access policies defined for this cache.
-  CacheSecuritySettings({
-    this.accessPolicies,
-  });
+  CacheSecuritySettings({this.accessPolicies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicies': ?pulumi.Input.mapOptionalInputValue<List<NfsAccessPolicy>, List<Map<String, dynamic>>>(accessPolicies, (value) => pulumi.Input.encodeList<NfsAccessPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accessPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NfsAccessPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            accessPolicies,
+            (value) =>
+                pulumi.Input.encodeList<NfsAccessPolicy, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory CacheSecuritySettings.fromMap(Map<String, dynamic> map) {
     return CacheSecuritySettings(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<NfsAccessPolicy>(map['accessPolicies']!, (value) => NfsAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessPolicies: (() {
+        final guardedValue = map['accessPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NfsAccessPolicy>(
+            guardedValue,
+            (value) =>
+                NfsAccessPolicy.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

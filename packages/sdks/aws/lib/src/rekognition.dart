@@ -1,5 +1,3 @@
-library module_rekognition;
-
 export 'rekognition/collection.dart';
 export 'rekognition/collection_args.dart';
 export 'rekognition/collection_state.dart';

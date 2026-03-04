@@ -6,7 +6,7 @@ import 'application_state.dart';
 ///
 /// For information about OOS Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-createapplication).
 ///
-/// > **NOTE:** Available since v1.145.0.
+/// &gt; **NOTE:** Available since v1.145.0.
 ///
 /// ## Example Usage
 ///
@@ -220,10 +220,13 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// The name of the application.
   late final pulumi.Output<String> applicationName;
+
   /// Application group description information.
   late final pulumi.Output<String?> description;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -236,15 +239,15 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationName = registerOutput<String>('applicationName');
-    this.description = registerOutput<String?>('description');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:oos/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationName = registerOutput<String>('applicationName');
+    description = registerOutput<String?>('description');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -265,14 +268,14 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationName = registerOutput<String>('applicationName');
-    this.description = registerOutput<String?>('description');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:oos/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationName = registerOutput<String>('applicationName');
+    description = registerOutput<String?>('description');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

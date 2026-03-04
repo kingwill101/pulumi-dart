@@ -4,16 +4,15 @@ enum NetworkConfigType {
   client("CLIENT"),
   private("PRIVATE");
 
-  const NetworkConfigType(this.value);
-  final String value;
+  const NetworkConfigType(this.wireValue);
+  final String wireValue;
 
   static NetworkConfigType fromValue(String value) {
     for (final item in NetworkConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkConfigType value: $value');
   }
 }
-

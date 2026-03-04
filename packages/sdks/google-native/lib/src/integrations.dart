@@ -1,5 +1,3 @@
-library module_integrations;
-
 export 'integrations/auth_config.dart';
 export 'integrations/auth_config_args.dart';
 export 'integrations/auth_config_credential_type.dart';

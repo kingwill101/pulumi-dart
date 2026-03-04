@@ -6,7 +6,7 @@ import 'dedicated_block_storage_cluster_state.dart';
 ///
 /// For information about Ebs Dedicated Block Storage Cluster and how to use it, see [What is Dedicated Block Storage Cluster](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatededicatedblockstoragecluster).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -137,34 +137,49 @@ import 'dedicated_block_storage_cluster_state.dart';
 class DedicatedBlockStorageCluster extends pulumi.CustomResource {
   /// The available capacity of the dedicated block storage cluster. Unit: GiB.
   late final pulumi.Output<String> availableCapacity;
+
   /// The type of cloud disk that can be created by a dedicated block storage cluster.
   late final pulumi.Output<String> category;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The first ID of the resource
   late final pulumi.Output<String> dedicatedBlockStorageClusterId;
+
   /// The name of the resource
   late final pulumi.Output<String> dedicatedBlockStorageClusterName;
+
   /// Capacity to be delivered in GB.
   late final pulumi.Output<String> deliveryCapacity;
+
   /// The description of the dedicated block storage cluster.
   late final pulumi.Output<String> description;
+
   /// The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
   late final pulumi.Output<String> expiredTime;
-  /// Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
+
+  /// Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.&gt; Only valid in SupportedCategory = cloud_essd.
   late final pulumi.Output<String> performanceLevel;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// This parameter is not supported.
   late final pulumi.Output<String> supportedCategory;
+
   /// The total capacity of the dedicated block storage cluster. Unit: GiB.
   late final pulumi.Output<String> totalCapacity;
+
   /// The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
   late final pulumi.Output<String> type;
+
   /// The used (created disk) capacity of the current cluster, in GB
   late final pulumi.Output<String> usedCapacity;
+
   /// The zone ID  of the resource
   late final pulumi.Output<String> zoneId;
 
@@ -177,27 +192,31 @@ class DedicatedBlockStorageCluster extends pulumi.CustomResource {
     DedicatedBlockStorageClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availableCapacity = registerOutput<String>('availableCapacity');
-    this.category = registerOutput<String>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.dedicatedBlockStorageClusterId = registerOutput<String>('dedicatedBlockStorageClusterId');
-    this.dedicatedBlockStorageClusterName = registerOutput<String>('dedicatedBlockStorageClusterName');
-    this.deliveryCapacity = registerOutput<String>('deliveryCapacity');
-    this.description = registerOutput<String>('description');
-    this.expiredTime = registerOutput<String>('expiredTime');
-    this.performanceLevel = registerOutput<String>('performanceLevel');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.supportedCategory = registerOutput<String>('supportedCategory');
-    this.totalCapacity = registerOutput<String>('totalCapacity');
-    this.type = registerOutput<String>('type');
-    this.usedCapacity = registerOutput<String>('usedCapacity');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availableCapacity = registerOutput<String>('availableCapacity');
+    category = registerOutput<String>('category');
+    createTime = registerOutput<String>('createTime');
+    dedicatedBlockStorageClusterId = registerOutput<String>(
+      'dedicatedBlockStorageClusterId',
+    );
+    dedicatedBlockStorageClusterName = registerOutput<String>(
+      'dedicatedBlockStorageClusterName',
+    );
+    deliveryCapacity = registerOutput<String>('deliveryCapacity');
+    description = registerOutput<String>('description');
+    expiredTime = registerOutput<String>('expiredTime');
+    performanceLevel = registerOutput<String>('performanceLevel');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    supportedCategory = registerOutput<String>('supportedCategory');
+    totalCapacity = registerOutput<String>('totalCapacity');
+    type = registerOutput<String>('type');
+    usedCapacity = registerOutput<String>('usedCapacity');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [DedicatedBlockStorageCluster] resource's state with the given [name] and [id].
@@ -218,26 +237,30 @@ class DedicatedBlockStorageCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availableCapacity = registerOutput<String>('availableCapacity');
-    this.category = registerOutput<String>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.dedicatedBlockStorageClusterId = registerOutput<String>('dedicatedBlockStorageClusterId');
-    this.dedicatedBlockStorageClusterName = registerOutput<String>('dedicatedBlockStorageClusterName');
-    this.deliveryCapacity = registerOutput<String>('deliveryCapacity');
-    this.description = registerOutput<String>('description');
-    this.expiredTime = registerOutput<String>('expiredTime');
-    this.performanceLevel = registerOutput<String>('performanceLevel');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.supportedCategory = registerOutput<String>('supportedCategory');
-    this.totalCapacity = registerOutput<String>('totalCapacity');
-    this.type = registerOutput<String>('type');
-    this.usedCapacity = registerOutput<String>('usedCapacity');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:ebs/dedicatedBlockStorageCluster:DedicatedBlockStorageCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availableCapacity = registerOutput<String>('availableCapacity');
+    category = registerOutput<String>('category');
+    createTime = registerOutput<String>('createTime');
+    dedicatedBlockStorageClusterId = registerOutput<String>(
+      'dedicatedBlockStorageClusterId',
+    );
+    dedicatedBlockStorageClusterName = registerOutput<String>(
+      'dedicatedBlockStorageClusterName',
+    );
+    deliveryCapacity = registerOutput<String>('deliveryCapacity');
+    description = registerOutput<String>('description');
+    expiredTime = registerOutput<String>('expiredTime');
+    performanceLevel = registerOutput<String>('performanceLevel');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    supportedCategory = registerOutput<String>('supportedCategory');
+    totalCapacity = registerOutput<String>('totalCapacity');
+    type = registerOutput<String>('type');
+    usedCapacity = registerOutput<String>('usedCapacity');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_dapr_component_args.dart';
-import 'environment_dapr_component_metadata.dart';
-import 'environment_dapr_component_secret.dart';
 import 'environment_dapr_component_state.dart';
 
 /// Manages a Dapr Component for a Container App Environment.
@@ -247,7 +245,7 @@ import 'environment_dapr_component_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -262,22 +260,30 @@ import 'environment_dapr_component_state.dart';
 class EnvironmentDaprComponent extends pulumi.CustomResource {
   /// The Dapr Component Type. For example `state.azure.blobstorage`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> componentType;
+
   /// The ID of the Container App Managed Environment for this Dapr Component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppEnvironmentId;
+
   /// Should the Dapr sidecar to continue initialisation if the component fails to load. Defaults to `false`
   late final pulumi.Output<bool?> ignoreErrors;
+
   /// The timeout for component initialisation as a `ISO8601` formatted string. e.g. `5s`, `2h`, `1m`. Defaults to `5s`.
   late final pulumi.Output<String?> initTimeout;
+
   /// One or more `metadata` blocks as detailed below.
-  late final pulumi.Output<List<EnvironmentDaprComponentMetadata>?> metadatas;
+  late final pulumi.Output<List<Map<String, dynamic>>?> metadatas;
+
   /// The name for this Dapr component. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of scopes to which this component applies.
   ///
-  /// > **Note:** See the official docs for more information at https://learn.microsoft.com/en-us/azure/container-apps/dapr-overview?tabs=bicep1%2Cyaml#component-scopes
+  /// &gt; **Note:** See the official docs for more information at https://learn.microsoft.com/en-us/azure/container-apps/dapr-overview?tabs=bicep1%2Cyaml#component-scopes
   late final pulumi.Output<List<String>?> scopes;
+
   /// A `secret` block as detailed below.
-  late final pulumi.Output<List<EnvironmentDaprComponentSecret>?> secrets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+
   /// The version of the component.
   late final pulumi.Output<String> version;
 
@@ -290,20 +296,22 @@ class EnvironmentDaprComponent extends pulumi.CustomResource {
     EnvironmentDaprComponentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentDaprComponent:EnvironmentDaprComponent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.componentType = registerOutput<String>('componentType');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.ignoreErrors = registerOutput<bool?>('ignoreErrors');
-    this.initTimeout = registerOutput<String?>('initTimeout');
-    this.metadatas = registerOutput<List<EnvironmentDaprComponentMetadata>?>('metadatas');
+         'azure:containerapp/environmentDaprComponent:EnvironmentDaprComponent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    componentType = registerOutput<String>('componentType');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    ignoreErrors = registerOutput<bool?>('ignoreErrors');
+    initTimeout = registerOutput<String?>('initTimeout');
+    metadatas = registerOutput<List<Map<String, dynamic>>?>('metadatas');
     this.name = registerOutput<String>('name');
-    this.scopes = registerOutput<List<String>?>('scopes');
-    this.secrets = registerOutput<List<EnvironmentDaprComponentSecret>?>('secrets');
-    this.version = registerOutput<String>('version');
+    scopes = registerOutput<List<String>?>('scopes');
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [EnvironmentDaprComponent] resource's state with the given [name] and [id].
@@ -324,19 +332,21 @@ class EnvironmentDaprComponent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentDaprComponent:EnvironmentDaprComponent',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.componentType = registerOutput<String>('componentType');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.ignoreErrors = registerOutput<bool?>('ignoreErrors');
-    this.initTimeout = registerOutput<String?>('initTimeout');
-    this.metadatas = registerOutput<List<EnvironmentDaprComponentMetadata>?>('metadatas');
+         'azure:containerapp/environmentDaprComponent:EnvironmentDaprComponent',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    componentType = registerOutput<String>('componentType');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    ignoreErrors = registerOutput<bool?>('ignoreErrors');
+    initTimeout = registerOutput<String?>('initTimeout');
+    metadatas = registerOutput<List<Map<String, dynamic>>?>('metadatas');
     this.name = registerOutput<String>('name');
-    this.scopes = registerOutput<List<String>?>('scopes');
-    this.secrets = registerOutput<List<EnvironmentDaprComponentSecret>?>('secrets');
-    this.version = registerOutput<String>('version');
+    scopes = registerOutput<List<String>?>('scopes');
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    version = registerOutput<String>('version');
   }
 }

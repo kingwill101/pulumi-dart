@@ -7,10 +7,13 @@ import 'self_tracing.dart';
 class Traces {
   /// The cache size in megabytes.
   final pulumi.Input<int>? cacheSizeMegabytes;
+
   /// The toggle to enable/disable traces.
   final pulumi.Input<String>? mode;
+
   /// The self tracing properties.
   final pulumi.Input<SelfTracing>? selfTracing;
+
   /// The span channel capacity.
   final pulumi.Input<int>? spanChannelCapacity;
 
@@ -30,18 +33,39 @@ class Traces {
     return <String, dynamic>{
       'cacheSizeMegabytes': ?cacheSizeMegabytes,
       'mode': ?mode,
-      'selfTracing': ?pulumi.Input.mapOptionalInputValue<SelfTracing, Map<String, dynamic>>(selfTracing, (value) => value.toMap()),
+      'selfTracing':
+          ?pulumi.Input.mapOptionalInputValue<
+            SelfTracing,
+            Map<String, dynamic>
+          >(selfTracing, (value) => value.toMap()),
       'spanChannelCapacity': ?spanChannelCapacity,
     };
   }
 
   factory Traces.fromMap(Map<String, dynamic> map) {
     return Traces(
-      cacheSizeMegabytes: map['cacheSizeMegabytes'] == null ? null : (map['cacheSizeMegabytes']! as int).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      selfTracing: map['selfTracing'] == null ? null : (SelfTracing.fromMap((map['selfTracing']! as Map).cast<String, dynamic>())).input(),
-      spanChannelCapacity: map['spanChannelCapacity'] == null ? null : (map['spanChannelCapacity']! as int).input(),
+      cacheSizeMegabytes: (() {
+        final guardedValue = map['cacheSizeMegabytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfTracing: (() {
+        final guardedValue = map['selfTracing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SelfTracing.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spanChannelCapacity: (() {
+        final guardedValue = map['spanChannelCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

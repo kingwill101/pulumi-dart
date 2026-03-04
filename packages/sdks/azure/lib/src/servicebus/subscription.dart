@@ -243,7 +243,7 @@ import 'subscription_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceBus` - 2024-01-01
@@ -258,34 +258,49 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// The idle interval after which the topic is automatically deleted as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `5` minutes or `PT5M`. Defaults to `P10675199DT2H48M5.4775807S`.
   late final pulumi.Output<String?> autoDeleteOnIdle;
+
   /// Boolean flag which controls whether the Subscription supports batched operations.
   late final pulumi.Output<bool?> batchedOperationsEnabled;
+
   /// A `client_scoped_subscription` block as defined below.
-  late final pulumi.Output<SubscriptionClientScopedSubscription?> clientScopedSubscription;
+  late final pulumi.Output<SubscriptionClientScopedSubscription?>
+  clientScopedSubscription;
+
   /// whether the subscription is scoped to a client id. Defaults to `false`.
   ///
-  /// > **Note:** Client Scoped Subscription can only be used for JMS subscription (Java Message Service).
+  /// &gt; **Note:** Client Scoped Subscription can only be used for JMS subscription (Java Message Service).
   late final pulumi.Output<bool?> clientScopedSubscriptionEnabled;
+
   /// Boolean flag which controls whether the Subscription has dead letter support on filter evaluation exceptions. Defaults to `true`.
   late final pulumi.Output<bool?> deadLetteringOnFilterEvaluationError;
+
   /// Boolean flag which controls whether the Subscription has dead letter support when a message expires.
   late final pulumi.Output<bool?> deadLetteringOnMessageExpiration;
+
   /// The Default message timespan to live as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the value used when TimeToLive is not set on a message itself. Defaults to `P10675199DT2H48M5.4775807S`.
   late final pulumi.Output<String?> defaultMessageTtl;
+
   /// The name of a Queue or Topic to automatically forward Dead Letter messages to.
   late final pulumi.Output<String?> forwardDeadLetteredMessagesTo;
+
   /// The name of a Queue or Topic to automatically forward messages to.
   late final pulumi.Output<String?> forwardTo;
+
   /// The lock duration for the subscription as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Defaults to `PT1M`.
   late final pulumi.Output<String?> lockDuration;
+
   /// The maximum number of deliveries.
   late final pulumi.Output<int> maxDeliveryCount;
+
   /// Specifies the name of the ServiceBus Subscription resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Boolean flag which controls whether this Subscription supports the concept of a session. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> requiresSession;
+
   /// The status of the Subscription. Possible values are `Active`,`ReceiveDisabled`, or `Disabled`. Defaults to `Active`.
   late final pulumi.Output<String?> status;
+
   /// The ID of the ServiceBus Topic to create this Subscription in. Changing this forces a new resource to be created.
   late final pulumi.Output<String> topicId;
 
@@ -298,26 +313,39 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicebus/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
-    this.batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
-    this.clientScopedSubscription = registerOutput<SubscriptionClientScopedSubscription?>('clientScopedSubscription');
-    this.clientScopedSubscriptionEnabled = registerOutput<bool?>('clientScopedSubscriptionEnabled');
-    this.deadLetteringOnFilterEvaluationError = registerOutput<bool?>('deadLetteringOnFilterEvaluationError');
-    this.deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
-    this.defaultMessageTtl = registerOutput<String?>('defaultMessageTtl');
-    this.forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
-    this.forwardTo = registerOutput<String?>('forwardTo');
-    this.lockDuration = registerOutput<String?>('lockDuration');
-    this.maxDeliveryCount = registerOutput<int>('maxDeliveryCount');
+         'azure:servicebus/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
+    batchedOperationsEnabled = registerOutput<bool?>(
+      'batchedOperationsEnabled',
+    );
+    clientScopedSubscription =
+        registerOutput<SubscriptionClientScopedSubscription?>(
+          'clientScopedSubscription',
+        );
+    clientScopedSubscriptionEnabled = registerOutput<bool?>(
+      'clientScopedSubscriptionEnabled',
+    );
+    deadLetteringOnFilterEvaluationError = registerOutput<bool?>(
+      'deadLetteringOnFilterEvaluationError',
+    );
+    deadLetteringOnMessageExpiration = registerOutput<bool?>(
+      'deadLetteringOnMessageExpiration',
+    );
+    defaultMessageTtl = registerOutput<String?>('defaultMessageTtl');
+    forwardDeadLetteredMessagesTo = registerOutput<String?>(
+      'forwardDeadLetteredMessagesTo',
+    );
+    forwardTo = registerOutput<String?>('forwardTo');
+    lockDuration = registerOutput<String?>('lockDuration');
+    maxDeliveryCount = registerOutput<int>('maxDeliveryCount');
     this.name = registerOutput<String>('name');
-    this.requiresSession = registerOutput<bool?>('requiresSession');
-    this.status = registerOutput<String?>('status');
-    this.topicId = registerOutput<String>('topicId');
+    requiresSession = registerOutput<bool?>('requiresSession');
+    status = registerOutput<String?>('status');
+    topicId = registerOutput<String>('topicId');
   }
 
   /// Gets an existing [Subscription] resource's state with the given [name] and [id].
@@ -338,25 +366,38 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:servicebus/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
-    this.batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
-    this.clientScopedSubscription = registerOutput<SubscriptionClientScopedSubscription?>('clientScopedSubscription');
-    this.clientScopedSubscriptionEnabled = registerOutput<bool?>('clientScopedSubscriptionEnabled');
-    this.deadLetteringOnFilterEvaluationError = registerOutput<bool?>('deadLetteringOnFilterEvaluationError');
-    this.deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
-    this.defaultMessageTtl = registerOutput<String?>('defaultMessageTtl');
-    this.forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
-    this.forwardTo = registerOutput<String?>('forwardTo');
-    this.lockDuration = registerOutput<String?>('lockDuration');
-    this.maxDeliveryCount = registerOutput<int>('maxDeliveryCount');
+         'azure:servicebus/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
+    batchedOperationsEnabled = registerOutput<bool?>(
+      'batchedOperationsEnabled',
+    );
+    clientScopedSubscription =
+        registerOutput<SubscriptionClientScopedSubscription?>(
+          'clientScopedSubscription',
+        );
+    clientScopedSubscriptionEnabled = registerOutput<bool?>(
+      'clientScopedSubscriptionEnabled',
+    );
+    deadLetteringOnFilterEvaluationError = registerOutput<bool?>(
+      'deadLetteringOnFilterEvaluationError',
+    );
+    deadLetteringOnMessageExpiration = registerOutput<bool?>(
+      'deadLetteringOnMessageExpiration',
+    );
+    defaultMessageTtl = registerOutput<String?>('defaultMessageTtl');
+    forwardDeadLetteredMessagesTo = registerOutput<String?>(
+      'forwardDeadLetteredMessagesTo',
+    );
+    forwardTo = registerOutput<String?>('forwardTo');
+    lockDuration = registerOutput<String?>('lockDuration');
+    maxDeliveryCount = registerOutput<int>('maxDeliveryCount');
     this.name = registerOutput<String>('name');
-    this.requiresSession = registerOutput<bool?>('requiresSession');
-    this.status = registerOutput<String?>('status');
-    this.topicId = registerOutput<String>('topicId');
+    requiresSession = registerOutput<bool?>('requiresSession');
+    status = registerOutput<String?>('status');
+    topicId = registerOutput<String>('topicId');
   }
 }

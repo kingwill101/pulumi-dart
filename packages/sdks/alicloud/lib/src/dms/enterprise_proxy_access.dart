@@ -6,7 +6,7 @@ import 'enterprise_proxy_access_state.dart';
 ///
 /// For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -168,27 +168,37 @@ import 'enterprise_proxy_access_state.dart';
 class EnterpriseProxyAccess extends pulumi.CustomResource {
   /// The authorized account of the security agent.
   late final pulumi.Output<String> accessId;
+
   /// Secure access agent authorization password.
   late final pulumi.Output<String> accessSecret;
   late final pulumi.Output<String> createTime;
+
   /// Database account.
   late final pulumi.Output<String?> indepAccount;
+
   /// Database password.
   late final pulumi.Output<String?> indepPassword;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The source information of the security access agent permission is enabled, and the return value is as follows:
   /// * **Owner Authorization**: The UID of the owner in parentheses.
   /// * **Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
   late final pulumi.Output<String> originInfo;
+
   /// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
   late final pulumi.Output<String> proxyAccessId;
+
   /// The ID of the security agent.
   late final pulumi.Output<String> proxyId;
+
   /// The user ID.
   late final pulumi.Output<String> userId;
+
   /// User nickname.
   late final pulumi.Output<String> userName;
+
   /// User UID.
   late final pulumi.Output<String> userUid;
 
@@ -201,23 +211,23 @@ class EnterpriseProxyAccess extends pulumi.CustomResource {
     EnterpriseProxyAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessId = registerOutput<String>('accessId');
-    this.accessSecret = registerOutput<String>('accessSecret');
-    this.createTime = registerOutput<String>('createTime');
-    this.indepAccount = registerOutput<String?>('indepAccount');
-    this.indepPassword = registerOutput<String?>('indepPassword');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.originInfo = registerOutput<String>('originInfo');
-    this.proxyAccessId = registerOutput<String>('proxyAccessId');
-    this.proxyId = registerOutput<String>('proxyId');
-    this.userId = registerOutput<String>('userId');
-    this.userName = registerOutput<String>('userName');
-    this.userUid = registerOutput<String>('userUid');
+         'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessId = registerOutput<String>('accessId');
+    accessSecret = registerOutput<String>('accessSecret');
+    createTime = registerOutput<String>('createTime');
+    indepAccount = registerOutput<String?>('indepAccount');
+    indepPassword = registerOutput<String?>('indepPassword');
+    instanceId = registerOutput<String>('instanceId');
+    originInfo = registerOutput<String>('originInfo');
+    proxyAccessId = registerOutput<String>('proxyAccessId');
+    proxyId = registerOutput<String>('proxyId');
+    userId = registerOutput<String>('userId');
+    userName = registerOutput<String>('userName');
+    userUid = registerOutput<String>('userUid');
   }
 
   /// Gets an existing [EnterpriseProxyAccess] resource's state with the given [name] and [id].
@@ -238,22 +248,22 @@ class EnterpriseProxyAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessId = registerOutput<String>('accessId');
-    this.accessSecret = registerOutput<String>('accessSecret');
-    this.createTime = registerOutput<String>('createTime');
-    this.indepAccount = registerOutput<String?>('indepAccount');
-    this.indepPassword = registerOutput<String?>('indepPassword');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.originInfo = registerOutput<String>('originInfo');
-    this.proxyAccessId = registerOutput<String>('proxyAccessId');
-    this.proxyId = registerOutput<String>('proxyId');
-    this.userId = registerOutput<String>('userId');
-    this.userName = registerOutput<String>('userName');
-    this.userUid = registerOutput<String>('userUid');
+         'alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessId = registerOutput<String>('accessId');
+    accessSecret = registerOutput<String>('accessSecret');
+    createTime = registerOutput<String>('createTime');
+    indepAccount = registerOutput<String?>('indepAccount');
+    indepPassword = registerOutput<String?>('indepPassword');
+    instanceId = registerOutput<String>('instanceId');
+    originInfo = registerOutput<String>('originInfo');
+    proxyAccessId = registerOutput<String>('proxyAccessId');
+    proxyId = registerOutput<String>('proxyId');
+    userId = registerOutput<String>('userId');
+    userName = registerOutput<String>('userName');
+    userUid = registerOutput<String>('userUid');
   }
 }

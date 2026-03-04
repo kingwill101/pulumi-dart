@@ -178,22 +178,31 @@ import 'sub_resource_response.dart';
 class NspAssociation extends pulumi.CustomResource {
   /// Access mode on the association.
   late final pulumi.Output<String?> accessMode;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies if there are provisioning issues
   late final pulumi.Output<String> hasProvisioningIssues;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The PaaS resource to be associated.
   late final pulumi.Output<SubResourceResponse?> privateLinkResource;
+
   /// Profile id to which the PaaS resource is associated.
   late final pulumi.Output<SubResourceResponse?> profile;
+
   /// The provisioning state of the resource  association resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -206,20 +215,22 @@ class NspAssociation extends pulumi.CustomResource {
     NspAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NspAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessMode = registerOutput<String?>('accessMode');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hasProvisioningIssues = registerOutput<String>('hasProvisioningIssues');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:NspAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessMode = registerOutput<String?>('accessMode');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hasProvisioningIssues = registerOutput<String>('hasProvisioningIssues');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.privateLinkResource = registerOutput<SubResourceResponse?>('privateLinkResource');
-    this.profile = registerOutput<SubResourceResponse?>('profile');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateLinkResource = registerOutput<SubResourceResponse?>(
+      'privateLinkResource',
+    );
+    profile = registerOutput<SubResourceResponse?>('profile');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

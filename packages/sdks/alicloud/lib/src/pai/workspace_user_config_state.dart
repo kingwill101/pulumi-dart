@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceUserConfigState {
   /// The category. Valid values: `DataPrivacyConfig`.
   final pulumi.Input<String>? categoryName;
+
   /// The key of the configuration.
   final pulumi.Input<String>? configKey;
+
   /// The value of the configuration.
   final pulumi.Input<String>? configValue;
+
   /// The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
   final pulumi.Input<String>? scope;
 
@@ -36,11 +39,26 @@ class WorkspaceUserConfigState {
 
   factory WorkspaceUserConfigState.fromMap(Map<String, dynamic> map) {
     return WorkspaceUserConfigState(
-      categoryName: map['categoryName'] == null ? null : (map['categoryName']! as String).input(),
-      configKey: map['configKey'] == null ? null : (map['configKey']! as String).input(),
-      configValue: map['configValue'] == null ? null : (map['configValue']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      categoryName: (() {
+        final guardedValue = map['categoryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configKey: (() {
+        final guardedValue = map['configKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configValue: (() {
+        final guardedValue = map['configValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

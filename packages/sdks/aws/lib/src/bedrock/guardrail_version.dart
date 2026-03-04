@@ -119,15 +119,19 @@ import 'guardrail_version_timeouts.dart';
 class GuardrailVersion extends pulumi.CustomResource {
   /// Description of the Guardrail version.
   late final pulumi.Output<String?> description;
+
   /// Guardrail ARN.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> guardrailArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
   late final pulumi.Output<bool?> skipDestroy;
   late final pulumi.Output<GuardrailVersionTimeouts?> timeouts;
+
   /// Guardrail version.
   late final pulumi.Output<String> version;
 
@@ -140,17 +144,17 @@ class GuardrailVersion extends pulumi.CustomResource {
     GuardrailVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/guardrailVersion:GuardrailVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.guardrailArn = registerOutput<String>('guardrailArn');
-    this.region = registerOutput<String>('region');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts');
-    this.version = registerOutput<String>('version');
+         'aws:bedrock/guardrailVersion:GuardrailVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    guardrailArn = registerOutput<String>('guardrailArn');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [GuardrailVersion] resource's state with the given [name] and [id].
@@ -171,16 +175,16 @@ class GuardrailVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/guardrailVersion:GuardrailVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.guardrailArn = registerOutput<String>('guardrailArn');
-    this.region = registerOutput<String>('region');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts');
-    this.version = registerOutput<String>('version');
+         'aws:bedrock/guardrailVersion:GuardrailVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    guardrailArn = registerOutput<String>('guardrailArn');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    timeouts = registerOutput<GuardrailVersionTimeouts?>('timeouts');
+    version = registerOutput<String>('version');
   }
 }

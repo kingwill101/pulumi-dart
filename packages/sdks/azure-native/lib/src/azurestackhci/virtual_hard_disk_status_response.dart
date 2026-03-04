@@ -9,12 +9,17 @@ import 'virtual_hard_disk_upload_status_response.dart';
 class VirtualHardDiskStatusResponse {
   /// The download status of the virtual hard disk
   final pulumi.Input<VirtualHardDiskDownloadStatusResponse>? downloadStatus;
+
   /// VirtualHardDisk provisioning error code
   final pulumi.Input<String>? errorCode;
+
   /// Descriptive error message
   final pulumi.Input<String>? errorMessage;
+
   /// Provisioning status of the vhd
-  final pulumi.Input<VirtualHardDiskStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<VirtualHardDiskStatusProvisioningStatusResponse>?
+  provisioningStatus;
+
   /// The upload status of the virtual hard disk
   final pulumi.Input<VirtualHardDiskUploadStatusResponse>? uploadStatus;
 
@@ -34,22 +39,65 @@ class VirtualHardDiskStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'downloadStatus': ?pulumi.Input.mapOptionalInputValue<VirtualHardDiskDownloadStatusResponse, Map<String, dynamic>>(downloadStatus, (value) => value.toMap()),
+      'downloadStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualHardDiskDownloadStatusResponse,
+            Map<String, dynamic>
+          >(downloadStatus, (value) => value.toMap()),
       'errorCode': ?errorCode,
       'errorMessage': ?errorMessage,
-      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<VirtualHardDiskStatusProvisioningStatusResponse, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
-      'uploadStatus': ?pulumi.Input.mapOptionalInputValue<VirtualHardDiskUploadStatusResponse, Map<String, dynamic>>(uploadStatus, (value) => value.toMap()),
+      'provisioningStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualHardDiskStatusProvisioningStatusResponse,
+            Map<String, dynamic>
+          >(provisioningStatus, (value) => value.toMap()),
+      'uploadStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualHardDiskUploadStatusResponse,
+            Map<String, dynamic>
+          >(uploadStatus, (value) => value.toMap()),
     };
   }
 
   factory VirtualHardDiskStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskStatusResponse(
-      downloadStatus: map['downloadStatus'] == null ? null : (VirtualHardDiskDownloadStatusResponse.fromMap((map['downloadStatus']! as Map).cast<String, dynamic>())).input(),
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualHardDiskStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
-      uploadStatus: map['uploadStatus'] == null ? null : (VirtualHardDiskUploadStatusResponse.fromMap((map['uploadStatus']! as Map).cast<String, dynamic>())).input(),
+      downloadStatus: (() {
+        final guardedValue = map['downloadStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualHardDiskDownloadStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningStatus: (() {
+        final guardedValue = map['provisioningStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualHardDiskStatusProvisioningStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uploadStatus: (() {
+        final guardedValue = map['uploadStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualHardDiskUploadStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

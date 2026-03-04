@@ -3,16 +3,15 @@ enum RouterNatNatIpAllocateOption {
   autoOnly("AUTO_ONLY"),
   manualOnly("MANUAL_ONLY");
 
-  const RouterNatNatIpAllocateOption(this.value);
-  final String value;
+  const RouterNatNatIpAllocateOption(this.wireValue);
+  final String wireValue;
 
   static RouterNatNatIpAllocateOption fromValue(String value) {
     for (final item in RouterNatNatIpAllocateOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterNatNatIpAllocateOption value: $value');
   }
 }
-

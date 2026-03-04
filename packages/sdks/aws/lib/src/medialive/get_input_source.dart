@@ -27,10 +27,9 @@ class GetInputSource {
 
   factory GetInputSource.fromMap(Map<String, dynamic> map) {
     return GetInputSource(
-      passwordParam: (map['passwordParam'] as String).input(),
-      url: (map['url'] as String).input(),
-      username: (map['username'] as String).input(),
+      passwordParam: pulumi.Input.fromValue(map['passwordParam'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

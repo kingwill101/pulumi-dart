@@ -18,10 +18,13 @@ class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigUngraceful {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigUngraceful.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigUngraceful.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigUngraceful(
-      minimumSuccessPercentage: (map['minimumSuccessPercentage'] as int).input(),
+      minimumSuccessPercentage: pulumi.Input.fromValue(
+        map['minimumSuccessPercentage'] as int,
+      ),
     );
   }
 }
-

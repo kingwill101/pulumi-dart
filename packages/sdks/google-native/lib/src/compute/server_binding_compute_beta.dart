@@ -8,20 +8,27 @@ class ServerBindingComputeBeta {
 
   /// Creates a new [ServerBindingComputeBeta].
   /// [type] Optional.
-  ServerBindingComputeBeta({
-    this.type,
-  });
+  ServerBindingComputeBeta({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ServerBindingTypeComputeBeta, String>(type, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServerBindingTypeComputeBeta,
+            String
+          >(type, (value) => value.wireValue),
     };
   }
 
   factory ServerBindingComputeBeta.fromMap(Map<String, dynamic> map) {
     return ServerBindingComputeBeta(
-      type: map['type'] == null ? null : (ServerBindingTypeComputeBeta.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServerBindingTypeComputeBeta.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

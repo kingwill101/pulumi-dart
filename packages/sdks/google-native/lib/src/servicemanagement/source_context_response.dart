@@ -9,20 +9,15 @@ class SourceContextResponse {
 
   /// Creates a new [SourceContextResponse].
   /// [fileName] The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
-  SourceContextResponse({
-    required this.fileName,
-  });
+  SourceContextResponse({required this.fileName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fileName': fileName,
-    };
+    return <String, dynamic>{'fileName': fileName};
   }
 
   factory SourceContextResponse.fromMap(Map<String, dynamic> map) {
     return SourceContextResponse(
-      fileName: (map['fileName'] as String).input(),
+      fileName: pulumi.Input.fromValue(map['fileName'] as String),
     );
   }
 }
-

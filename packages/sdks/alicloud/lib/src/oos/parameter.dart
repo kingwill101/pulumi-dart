@@ -6,7 +6,7 @@ import 'parameter_state.dart';
 ///
 /// For information about OOS Parameter and how to use it, see [What is Parameter](https://www.alibabacloud.com/help/en/doc-detail/183408.html).
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 ///
 /// ## Example Usage
 ///
@@ -184,16 +184,22 @@ class Parameter extends pulumi.CustomResource {
   /// * `MinLength`: The minimum length of the common parameter.
   /// * `MaxLength`: The maximum length of the common parameter.
   late final pulumi.Output<String?> constraints;
+
   /// The description of the common parameter. The description must be `1` to `200` characters in length.
   late final pulumi.Output<String> description;
+
   /// The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
   late final pulumi.Output<String> parameterName;
+
   /// The ID of the Resource Group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The data type of the common parameter. Valid values: `String` and `StringList`.
   late final pulumi.Output<String> type;
+
   /// The value of the common parameter. The value must be `1` to `4096` characters in length.
   late final pulumi.Output<String> value;
 
@@ -206,18 +212,18 @@ class Parameter extends pulumi.CustomResource {
     ParameterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/parameter:Parameter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.constraints = registerOutput<String?>('constraints');
-    this.description = registerOutput<String>('description');
-    this.parameterName = registerOutput<String>('parameterName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String>('value');
+         'alicloud:oos/parameter:Parameter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    constraints = registerOutput<String?>('constraints');
+    description = registerOutput<String>('description');
+    parameterName = registerOutput<String>('parameterName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [Parameter] resource's state with the given [name] and [id].
@@ -238,17 +244,17 @@ class Parameter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/parameter:Parameter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.constraints = registerOutput<String?>('constraints');
-    this.description = registerOutput<String>('description');
-    this.parameterName = registerOutput<String>('parameterName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String>('value');
+         'alicloud:oos/parameter:Parameter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    constraints = registerOutput<String?>('constraints');
+    description = registerOutput<String>('description');
+    parameterName = registerOutput<String>('parameterName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
   }
 }

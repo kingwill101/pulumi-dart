@@ -1,5 +1,3 @@
-library module_meta;
-
 export 'meta/apigroup.dart';
 export 'meta/apigroup_list.dart';
 export 'meta/apigroup_patch.dart';

@@ -55,17 +55,30 @@ class GetRoutersRouterNat {
 
   factory GetRoutersRouterNat.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterNat(
-      enableEndpointIndependentMapping: (map['enableEndpointIndependentMapping'] as bool).input(),
-      icmpIdleTimeoutSec: (map['icmpIdleTimeoutSec'] as int).input(),
-      minPortsPerVm: (map['minPortsPerVm'] as int).input(),
-      name: (map['name'] as String).input(),
-      natIpAllocateOption: (map['natIpAllocateOption'] as String).input(),
-      natIps: ((map['natIps'] as List).cast<String>()).input(),
-      sourceSubnetworkIpRangesToNat: (map['sourceSubnetworkIpRangesToNat'] as String).input(),
-      tcpEstablishedIdleTimeoutSec: (map['tcpEstablishedIdleTimeoutSec'] as int).input(),
-      tcpTransitoryIdleTimeoutSec: (map['tcpTransitoryIdleTimeoutSec'] as int).input(),
-      udpIdleTimeoutSec: (map['udpIdleTimeoutSec'] as int).input(),
+      enableEndpointIndependentMapping: pulumi.Input.fromValue(
+        map['enableEndpointIndependentMapping'] as bool,
+      ),
+      icmpIdleTimeoutSec: pulumi.Input.fromValue(
+        map['icmpIdleTimeoutSec'] as int,
+      ),
+      minPortsPerVm: pulumi.Input.fromValue(map['minPortsPerVm'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      natIpAllocateOption: pulumi.Input.fromValue(
+        map['natIpAllocateOption'] as String,
+      ),
+      natIps: pulumi.Input.fromValue((map['natIps'] as List).cast<String>()),
+      sourceSubnetworkIpRangesToNat: pulumi.Input.fromValue(
+        map['sourceSubnetworkIpRangesToNat'] as String,
+      ),
+      tcpEstablishedIdleTimeoutSec: pulumi.Input.fromValue(
+        map['tcpEstablishedIdleTimeoutSec'] as int,
+      ),
+      tcpTransitoryIdleTimeoutSec: pulumi.Input.fromValue(
+        map['tcpTransitoryIdleTimeoutSec'] as int,
+      ),
+      udpIdleTimeoutSec: pulumi.Input.fromValue(
+        map['udpIdleTimeoutSec'] as int,
+      ),
     );
   }
 }
-

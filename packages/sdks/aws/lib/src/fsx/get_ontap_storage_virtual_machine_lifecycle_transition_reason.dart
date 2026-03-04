@@ -13,15 +13,14 @@ class GetOntapStorageVirtualMachineLifecycleTransitionReason {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'message': message,
-    };
+    return <String, dynamic>{'message': message};
   }
 
-  factory GetOntapStorageVirtualMachineLifecycleTransitionReason.fromMap(Map<String, dynamic> map) {
+  factory GetOntapStorageVirtualMachineLifecycleTransitionReason.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOntapStorageVirtualMachineLifecycleTransitionReason(
-      message: (map['message'] as String).input(),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

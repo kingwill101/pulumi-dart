@@ -1,5 +1,3 @@
-library module_datalabeling;
-
 export 'datalabeling/annotation_spec_set.dart';
 export 'datalabeling/annotation_spec_set_args.dart';
 export 'datalabeling/dataset.dart';

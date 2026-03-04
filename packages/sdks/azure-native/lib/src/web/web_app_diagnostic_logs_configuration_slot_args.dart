@@ -12,18 +12,25 @@ import 'http_logs_config.dart';
 class WebAppDiagnosticLogsConfigurationSlotArgs {
   /// Application logs configuration.
   final pulumi.Input<ApplicationLogsConfig>? applicationLogs;
+
   /// Detailed error messages configuration.
   final pulumi.Input<EnabledConfig>? detailedErrorMessages;
+
   /// Failed requests tracing configuration.
   final pulumi.Input<EnabledConfig>? failedRequestsTracing;
+
   /// HTTP logs configuration.
   final pulumi.Input<HttpLogsConfig>? httpLogs;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot. If a slot is not specified, the API will update the logging configuration for the production slot.
   final pulumi.Input<String> slot;
 
@@ -49,10 +56,26 @@ class WebAppDiagnosticLogsConfigurationSlotArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationLogs': ?pulumi.Input.mapOptionalInputValue<ApplicationLogsConfig, Map<String, dynamic>>(applicationLogs, (value) => value.toMap()),
-      'detailedErrorMessages': ?pulumi.Input.mapOptionalInputValue<EnabledConfig, Map<String, dynamic>>(detailedErrorMessages, (value) => value.toMap()),
-      'failedRequestsTracing': ?pulumi.Input.mapOptionalInputValue<EnabledConfig, Map<String, dynamic>>(failedRequestsTracing, (value) => value.toMap()),
-      'httpLogs': ?pulumi.Input.mapOptionalInputValue<HttpLogsConfig, Map<String, dynamic>>(httpLogs, (value) => value.toMap()),
+      'applicationLogs':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationLogsConfig,
+            Map<String, dynamic>
+          >(applicationLogs, (value) => value.toMap()),
+      'detailedErrorMessages':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnabledConfig,
+            Map<String, dynamic>
+          >(detailedErrorMessages, (value) => value.toMap()),
+      'failedRequestsTracing':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnabledConfig,
+            Map<String, dynamic>
+          >(failedRequestsTracing, (value) => value.toMap()),
+      'httpLogs':
+          ?pulumi.Input.mapOptionalInputValue<
+            HttpLogsConfig,
+            Map<String, dynamic>
+          >(httpLogs, (value) => value.toMap()),
       'kind': ?kind,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -60,17 +83,50 @@ class WebAppDiagnosticLogsConfigurationSlotArgs {
     };
   }
 
-  factory WebAppDiagnosticLogsConfigurationSlotArgs.fromMap(Map<String, dynamic> map) {
+  factory WebAppDiagnosticLogsConfigurationSlotArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAppDiagnosticLogsConfigurationSlotArgs(
-      applicationLogs: map['applicationLogs'] == null ? null : (ApplicationLogsConfig.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>())).input(),
-      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (EnabledConfig.fromMap((map['detailedErrorMessages']! as Map).cast<String, dynamic>())).input(),
-      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : (EnabledConfig.fromMap((map['failedRequestsTracing']! as Map).cast<String, dynamic>())).input(),
-      httpLogs: map['httpLogs'] == null ? null : (HttpLogsConfig.fromMap((map['httpLogs']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      applicationLogs: (() {
+        final guardedValue = map['applicationLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationLogsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      detailedErrorMessages: (() {
+        final guardedValue = map['detailedErrorMessages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnabledConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      failedRequestsTracing: (() {
+        final guardedValue = map['failedRequestsTracing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnabledConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      httpLogs: (() {
+        final guardedValue = map['httpLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HttpLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

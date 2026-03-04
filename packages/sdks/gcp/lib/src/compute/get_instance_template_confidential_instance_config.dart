@@ -8,6 +8,7 @@ class GetInstanceTemplateConfidentialInstanceConfig {
   /// values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
   /// "AMD Milan" is currently required.
   final pulumi.Input<String> confidentialInstanceType;
+
   /// Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
   final pulumi.Input<bool> enableConfidentialCompute;
 
@@ -26,11 +27,16 @@ class GetInstanceTemplateConfidentialInstanceConfig {
     };
   }
 
-  factory GetInstanceTemplateConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceTemplateConfidentialInstanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceTemplateConfidentialInstanceConfig(
-      confidentialInstanceType: (map['confidentialInstanceType'] as String).input(),
-      enableConfidentialCompute: (map['enableConfidentialCompute'] as bool).input(),
+      confidentialInstanceType: pulumi.Input.fromValue(
+        map['confidentialInstanceType'] as String,
+      ),
+      enableConfidentialCompute: pulumi.Input.fromValue(
+        map['enableConfidentialCompute'] as bool,
+      ),
     );
   }
 }
-

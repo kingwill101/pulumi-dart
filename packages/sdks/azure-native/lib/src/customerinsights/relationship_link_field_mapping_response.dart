@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipLinkFieldMappingResponse {
   /// The field name on the Interaction Type.
   final pulumi.Input<String> interactionFieldName;
+
   /// Link type.
   final pulumi.Input<String>? linkType;
+
   /// The field name on the Relationship metadata.
   final pulumi.Input<String> relationshipFieldName;
 
@@ -29,12 +31,21 @@ class RelationshipLinkFieldMappingResponse {
     };
   }
 
-  factory RelationshipLinkFieldMappingResponse.fromMap(Map<String, dynamic> map) {
+  factory RelationshipLinkFieldMappingResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RelationshipLinkFieldMappingResponse(
-      interactionFieldName: (map['interactionFieldName'] as String).input(),
-      linkType: map['linkType'] == null ? null : (map['linkType']! as String).input(),
-      relationshipFieldName: (map['relationshipFieldName'] as String).input(),
+      interactionFieldName: pulumi.Input.fromValue(
+        map['interactionFieldName'] as String,
+      ),
+      linkType: (() {
+        final guardedValue = map['linkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relationshipFieldName: pulumi.Input.fromValue(
+        map['relationshipFieldName'] as String,
+      ),
     );
   }
 }
-

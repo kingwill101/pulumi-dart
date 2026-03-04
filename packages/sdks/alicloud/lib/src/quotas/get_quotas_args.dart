@@ -10,22 +10,31 @@ import 'get_quotas_dimension.dart';
 class GetQuotasArgs {
   /// The dimensions.
   final pulumi.Input<List<GetQuotasDimension>>? dimensions;
+
   /// The group code.
   final pulumi.Input<String>? groupCode;
+
   /// The key word.
   final pulumi.Input<String>? keyWord;
+
   /// A regex string to filter results by Quota name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The product code.
   final pulumi.Input<String> productCode;
+
   /// The quota action code.
   final pulumi.Input<String>? quotaActionCode;
+
   /// The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
   final pulumi.Input<String>? quotaCategory;
+
   /// Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
   final pulumi.Input<String>? sortField;
+
   /// Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
   final pulumi.Input<String>? sortOrder;
 
@@ -55,7 +64,18 @@ class GetQuotasArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': ?pulumi.Input.mapOptionalInputValue<List<GetQuotasDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetQuotasDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetQuotasDimension>,
+            List<Map<String, dynamic>>
+          >(
+            dimensions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetQuotasDimension,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'groupCode': ?groupCode,
       'keyWord': ?keyWord,
       'nameRegex': ?nameRegex,
@@ -70,17 +90,59 @@ class GetQuotasArgs {
 
   factory GetQuotasArgs.fromMap(Map<String, dynamic> map) {
     return GetQuotasArgs(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<GetQuotasDimension>(map['dimensions']!, (value) => GetQuotasDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupCode: map['groupCode'] == null ? null : (map['groupCode']! as String).input(),
-      keyWord: map['keyWord'] == null ? null : (map['keyWord']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      productCode: (map['productCode'] as String).input(),
-      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode']! as String).input(),
-      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory']! as String).input(),
-      sortField: map['sortField'] == null ? null : (map['sortField']! as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder']! as String).input(),
+      dimensions: (() {
+        final guardedValue = map['dimensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetQuotasDimension>(
+            guardedValue,
+            (value) => GetQuotasDimension.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      groupCode: (() {
+        final guardedValue = map['groupCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyWord: (() {
+        final guardedValue = map['keyWord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
+      quotaActionCode: (() {
+        final guardedValue = map['quotaActionCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      quotaCategory: (() {
+        final guardedValue = map['quotaCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sortField: (() {
+        final guardedValue = map['sortField'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sortOrder: (() {
+        final guardedValue = map['sortOrder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

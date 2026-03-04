@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FixedOrPercentOsconfigV1alpha {
   /// Specifies a fixed value.
   final pulumi.Input<int>? fixed;
+
   /// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
   final pulumi.Input<int>? percent;
 
   /// Creates a new [FixedOrPercentOsconfigV1alpha].
   /// [fixed] Specifies a fixed value.
   /// [percent] Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-  FixedOrPercentOsconfigV1alpha({
-    this.fixed,
-    this.percent,
-  });
+  FixedOrPercentOsconfigV1alpha({this.fixed, this.percent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fixed': ?fixed,
-      'percent': ?percent,
-    };
+    return <String, dynamic>{'fixed': ?fixed, 'percent': ?percent};
   }
 
   factory FixedOrPercentOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return FixedOrPercentOsconfigV1alpha(
-      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
-      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
+      fixed: (() {
+        final guardedValue = map['fixed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      percent: (() {
+        final guardedValue = map['percent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

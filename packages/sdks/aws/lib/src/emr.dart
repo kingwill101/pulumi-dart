@@ -1,5 +1,3 @@
-library module_emr;
-
 export 'emr/block_public_access_configuration.dart';
 export 'emr/block_public_access_configuration_args.dart';
 export 'emr/block_public_access_configuration_permitted_public_security_group_rule_range.dart';

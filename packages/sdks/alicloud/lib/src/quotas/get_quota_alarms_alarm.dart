@@ -6,20 +6,28 @@ import 'get_quota_alarms_alarm_quota_dimension.dart';
 class GetQuotaAlarmsAlarm {
   /// The first ID of the resource.
   final pulumi.Input<String> alarmId;
+
   /// The ID of the Quota Alarm.
   final pulumi.Input<String> id;
+
   /// The Product Code.
   final pulumi.Input<String> productCode;
+
   /// The Quota Action Code.
   final pulumi.Input<String> quotaActionCode;
+
   /// The name of Quota Alarm.
   final pulumi.Input<String> quotaAlarmName;
+
   /// The Quota Dimensions.
   final pulumi.Input<List<GetQuotaAlarmsAlarmQuotaDimension>> quotaDimensions;
+
   /// The threshold of Quota Alarm.
   final pulumi.Input<double> threshold;
+
   /// The threshold percent of Quota Alarm.
   final pulumi.Input<double> thresholdPercent;
+
   /// The WebHook of Quota Alarm.
   final pulumi.Input<String> webHook;
 
@@ -52,7 +60,18 @@ class GetQuotaAlarmsAlarm {
       'productCode': productCode,
       'quotaActionCode': quotaActionCode,
       'quotaAlarmName': quotaAlarmName,
-      'quotaDimensions': pulumi.Input.mapInputValue<List<GetQuotaAlarmsAlarmQuotaDimension>, List<Map<String, dynamic>>>(quotaDimensions, (value) => pulumi.Input.encodeList<GetQuotaAlarmsAlarmQuotaDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'quotaDimensions':
+          pulumi.Input.mapInputValue<
+            List<GetQuotaAlarmsAlarmQuotaDimension>,
+            List<Map<String, dynamic>>
+          >(
+            quotaDimensions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetQuotaAlarmsAlarmQuotaDimension,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'threshold': threshold,
       'thresholdPercent': thresholdPercent,
       'webHook': webHook,
@@ -61,16 +80,24 @@ class GetQuotaAlarmsAlarm {
 
   factory GetQuotaAlarmsAlarm.fromMap(Map<String, dynamic> map) {
     return GetQuotaAlarmsAlarm(
-      alarmId: (map['alarmId'] as String).input(),
-      id: (map['id'] as String).input(),
-      productCode: (map['productCode'] as String).input(),
-      quotaActionCode: (map['quotaActionCode'] as String).input(),
-      quotaAlarmName: (map['quotaAlarmName'] as String).input(),
-      quotaDimensions: (pulumi.Input.decodeList<GetQuotaAlarmsAlarmQuotaDimension>(map['quotaDimensions'], (value) => GetQuotaAlarmsAlarmQuotaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      threshold: (map['threshold'] as double).input(),
-      thresholdPercent: (map['thresholdPercent'] as double).input(),
-      webHook: (map['webHook'] as String).input(),
+      alarmId: pulumi.Input.fromValue(map['alarmId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
+      quotaActionCode: pulumi.Input.fromValue(map['quotaActionCode'] as String),
+      quotaAlarmName: pulumi.Input.fromValue(map['quotaAlarmName'] as String),
+      quotaDimensions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetQuotaAlarmsAlarmQuotaDimension>(
+          map['quotaDimensions']!,
+          (value) => GetQuotaAlarmsAlarmQuotaDimension.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      thresholdPercent: pulumi.Input.fromValue(
+        map['thresholdPercent'] as double,
+      ),
+      webHook: pulumi.Input.fromValue(map['webHook'] as String),
     );
   }
 }
-

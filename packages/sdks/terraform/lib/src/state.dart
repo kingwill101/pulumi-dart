@@ -1,5 +1,3 @@
-library module_state;
-
 export 'state/functions.dart';
 export 'state/get_local_reference_args.dart';
 export 'state/get_local_reference_result.dart';

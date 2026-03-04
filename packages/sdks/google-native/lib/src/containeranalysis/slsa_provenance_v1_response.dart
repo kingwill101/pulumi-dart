@@ -19,16 +19,31 @@ class SlsaProvenanceV1Response {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildDefinition': pulumi.Input.mapInputValue<BuildDefinitionResponse, Map<String, dynamic>>(buildDefinition, (value) => value.toMap()),
-      'runDetails': pulumi.Input.mapInputValue<RunDetailsResponse, Map<String, dynamic>>(runDetails, (value) => value.toMap()),
+      'buildDefinition':
+          pulumi.Input.mapInputValue<
+            BuildDefinitionResponse,
+            Map<String, dynamic>
+          >(buildDefinition, (value) => value.toMap()),
+      'runDetails':
+          pulumi.Input.mapInputValue<RunDetailsResponse, Map<String, dynamic>>(
+            runDetails,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory SlsaProvenanceV1Response.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1Response(
-      buildDefinition: (BuildDefinitionResponse.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>())).input(),
-      runDetails: (RunDetailsResponse.fromMap((map['runDetails'] as Map).cast<String, dynamic>())).input(),
+      buildDefinition: pulumi.Input.fromValue(
+        BuildDefinitionResponse.fromMap(
+          (map['buildDefinition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      runDetails: pulumi.Input.fromValue(
+        RunDetailsResponse.fromMap(
+          (map['runDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

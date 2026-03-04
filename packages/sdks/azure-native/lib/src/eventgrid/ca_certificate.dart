@@ -147,20 +147,28 @@ import 'system_data_response.dart';
 class CaCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description for the CA Certificate resource.
   late final pulumi.Output<String?> description;
+
   /// Base64 encoded PEM (Privacy Enhanced Mail) format certificate data.
   late final pulumi.Output<String?> encodedCertificate;
+
   /// Certificate expiry time in UTC. This is a read-only field.
   late final pulumi.Output<String> expiryTimeInUtc;
+
   /// Certificate issue time in UTC. This is a read-only field.
   late final pulumi.Output<String> issueTimeInUtc;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the CA Certificate resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -173,19 +181,19 @@ class CaCertificate extends pulumi.CustomResource {
     CaCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:CaCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.encodedCertificate = registerOutput<String?>('encodedCertificate');
-    this.expiryTimeInUtc = registerOutput<String>('expiryTimeInUtc');
-    this.issueTimeInUtc = registerOutput<String>('issueTimeInUtc');
+         'azure-native:eventgrid:CaCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    encodedCertificate = registerOutput<String?>('encodedCertificate');
+    expiryTimeInUtc = registerOutput<String>('expiryTimeInUtc');
+    issueTimeInUtc = registerOutput<String>('issueTimeInUtc');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

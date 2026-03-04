@@ -9,8 +9,10 @@ class GetDatabaseMigrationsSqlDbResult {
   final String azureApiVersion;
   final String id;
   final String name;
+
   /// Database Migration Resource properties for SQL database.
   final DatabaseMigrationPropertiesSqlDbResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
   final String type;
@@ -47,10 +49,13 @@ class GetDatabaseMigrationsSqlDbResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: DatabaseMigrationPropertiesSqlDbResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      properties: DatabaseMigrationPropertiesSqlDbResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

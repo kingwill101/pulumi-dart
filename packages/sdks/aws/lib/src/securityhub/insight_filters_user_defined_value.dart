@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightFiltersUserDefinedValue {
   final pulumi.Input<String> comparison;
+
   /// The key of the map filter. For example, for `ResourceTags`, `Key` identifies the name of the tag. For `UserDefinedFields`, `Key` is the name of the field.
   final pulumi.Input<String> key;
   final pulumi.Input<String> value;
@@ -28,10 +29,9 @@ class InsightFiltersUserDefinedValue {
 
   factory InsightFiltersUserDefinedValue.fromMap(Map<String, dynamic> map) {
     return InsightFiltersUserDefinedValue(
-      comparison: (map['comparison'] as String).input(),
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

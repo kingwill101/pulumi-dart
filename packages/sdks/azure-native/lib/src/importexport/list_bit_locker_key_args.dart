@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListBitLockerKeyArgs {
   /// The name of the import/export job.
   final pulumi.Input<String> jobName;
+
   /// The resource group name uniquely identifies the resource group within the user subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class ListBitLockerKeyArgs {
 
   factory ListBitLockerKeyArgs.fromMap(Map<String, dynamic> map) {
     return ListBitLockerKeyArgs(
-      jobName: (map['jobName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

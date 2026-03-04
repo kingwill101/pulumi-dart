@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeBalancerVpc {
   /// (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
   final pulumi.Input<String>? ipv4Range;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
   final pulumi.Input<bool>? ipv4RangeAutoAssign;
+
   /// (Required) The ID of a subnet to assign to this NodeBalancer.
   final pulumi.Input<int> subnetId;
 
@@ -31,10 +33,17 @@ class NodeBalancerVpc {
 
   factory NodeBalancerVpc.fromMap(Map<String, dynamic> map) {
     return NodeBalancerVpc(
-      ipv4Range: map['ipv4Range'] == null ? null : (map['ipv4Range']! as String).input(),
-      ipv4RangeAutoAssign: map['ipv4RangeAutoAssign'] == null ? null : (map['ipv4RangeAutoAssign']! as bool).input(),
-      subnetId: (map['subnetId'] as int).input(),
+      ipv4Range: (() {
+        final guardedValue = map['ipv4Range'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4RangeAutoAssign: (() {
+        final guardedValue = map['ipv4RangeAutoAssign'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as int),
     );
   }
 }
-

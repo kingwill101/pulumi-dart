@@ -3,16 +3,15 @@ enum DomainJoinType {
   valueHybridAzureADJoin("HybridAzureADJoin"),
   valueAzureADJoin("AzureADJoin");
 
-  const DomainJoinType(this.value);
-  final String value;
+  const DomainJoinType(this.wireValue);
+  final String wireValue;
 
   static DomainJoinType fromValue(String value) {
     for (final item in DomainJoinType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DomainJoinType value: $value');
   }
 }
-

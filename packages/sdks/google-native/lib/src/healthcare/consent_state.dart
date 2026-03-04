@@ -7,16 +7,15 @@ enum ConsentState {
   draft("DRAFT"),
   rejected("REJECTED");
 
-  const ConsentState(this.value);
-  final String value;
+  const ConsentState(this.wireValue);
+  final String wireValue;
 
   static ConsentState fromValue(String value) {
     for (final item in ConsentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConsentState value: $value');
   }
 }
-

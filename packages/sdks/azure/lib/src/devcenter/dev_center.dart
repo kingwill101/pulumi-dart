@@ -199,7 +199,7 @@ import 'dev_center_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevCenter` - 2025-02-01
@@ -218,16 +218,22 @@ import 'dev_center_state.dart';
 class DevCenter extends pulumi.CustomResource {
   /// The URI of the Dev Center.
   late final pulumi.Output<String> devCenterUri;
+
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Dev Center.
   late final pulumi.Output<DevCenterIdentity?> identity;
+
   /// The Azure Region where the Dev Center should exist. Changing this forces a new Dev Center to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of this Dev Center. Changing this forces a new Dev Center to be created.
   late final pulumi.Output<String> name;
+
   /// Whether the project catalogs associated with projects in this Dev Center are allowed to sync catalog items. Defaults to `false`.
   late final pulumi.Output<bool?> projectCatalogItemSyncEnabled;
+
   /// Specifies the name of the Resource Group within which this Dev Center should exist. Changing this forces a new Dev Center to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Dev Center.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -240,18 +246,20 @@ class DevCenter extends pulumi.CustomResource {
     DevCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/devCenter:DevCenter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.devCenterUri = registerOutput<String>('devCenterUri');
-    this.identity = registerOutput<DevCenterIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:devcenter/devCenter:DevCenter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    devCenterUri = registerOutput<String>('devCenterUri');
+    identity = registerOutput<DevCenterIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.projectCatalogItemSyncEnabled = registerOutput<bool?>('projectCatalogItemSyncEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    projectCatalogItemSyncEnabled = registerOutput<bool?>(
+      'projectCatalogItemSyncEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [DevCenter] resource's state with the given [name] and [id].
@@ -272,17 +280,19 @@ class DevCenter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/devCenter:DevCenter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.devCenterUri = registerOutput<String>('devCenterUri');
-    this.identity = registerOutput<DevCenterIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:devcenter/devCenter:DevCenter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    devCenterUri = registerOutput<String>('devCenterUri');
+    identity = registerOutput<DevCenterIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.projectCatalogItemSyncEnabled = registerOutput<bool?>('projectCatalogItemSyncEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    projectCatalogItemSyncEnabled = registerOutput<bool?>(
+      'projectCatalogItemSyncEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

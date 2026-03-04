@@ -44,14 +44,41 @@ class ContainerRegistriesState {
 
   factory ContainerRegistriesState.fromMap(Map<String, dynamic> map) {
     return ContainerRegistriesState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl']! as String).input(),
-      storageUsageBytes: map['storageUsageBytes'] == null ? null : (map['storageUsageBytes']! as int).input(),
-      subscriptionTierSlug: map['subscriptionTierSlug'] == null ? null : (map['subscriptionTierSlug']! as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverUrl: (() {
+        final guardedValue = map['serverUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageUsageBytes: (() {
+        final guardedValue = map['storageUsageBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      subscriptionTierSlug: (() {
+        final guardedValue = map['subscriptionTierSlug'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

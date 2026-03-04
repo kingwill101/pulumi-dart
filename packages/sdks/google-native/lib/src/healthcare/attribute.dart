@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Attribute {
   /// Indicates the name of an attribute defined in the consent store.
   final pulumi.Input<String>? attributeDefinitionId;
+
   /// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [Attribute].
   /// [attributeDefinitionId] Indicates the name of an attribute defined in the consent store.
   /// [values] The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
-  Attribute({
-    this.attributeDefinitionId,
-    required this.values,
-  });
+  Attribute({this.attributeDefinitionId, required this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class Attribute {
 
   factory Attribute.fromMap(Map<String, dynamic> map) {
     return Attribute(
-      attributeDefinitionId: map['attributeDefinitionId'] == null ? null : (map['attributeDefinitionId']! as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      attributeDefinitionId: (() {
+        final guardedValue = map['attributeDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

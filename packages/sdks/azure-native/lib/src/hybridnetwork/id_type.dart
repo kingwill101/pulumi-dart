@@ -4,16 +4,15 @@ enum IdType {
   valueOpen("Open"),
   valueSecret("Secret");
 
-  const IdType(this.value);
-  final String value;
+  const IdType(this.wireValue);
+  final String wireValue;
 
   static IdType fromValue(String value) {
     for (final item in IdType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IdType value: $value');
   }
 }
-

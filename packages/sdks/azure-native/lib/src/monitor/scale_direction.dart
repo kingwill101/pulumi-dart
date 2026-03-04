@@ -4,16 +4,15 @@ enum ScaleDirection {
   valueIncrease("Increase"),
   valueDecrease("Decrease");
 
-  const ScaleDirection(this.value);
-  final String value;
+  const ScaleDirection(this.wireValue);
+  final String wireValue;
 
   static ScaleDirection fromValue(String value) {
     for (final item in ScaleDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScaleDirection value: $value');
   }
 }
-

@@ -31,10 +31,13 @@ class GetDeveloperArgs {
 
   factory GetDeveloperArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperArgs(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      developerId: (map['developerId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      developerId: pulumi.Input.fromValue(map['developerId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

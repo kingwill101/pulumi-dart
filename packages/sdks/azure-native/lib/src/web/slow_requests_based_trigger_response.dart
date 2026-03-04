@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlowRequestsBasedTriggerResponse {
   /// Request Count.
   final pulumi.Input<int>? count;
+
   /// Request Path.
   final pulumi.Input<String>? path;
+
   /// Time interval.
   final pulumi.Input<String>? timeInterval;
+
   /// Time taken.
   final pulumi.Input<String>? timeTaken;
 
@@ -36,11 +39,26 @@ class SlowRequestsBasedTriggerResponse {
 
   factory SlowRequestsBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return SlowRequestsBasedTriggerResponse(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as String).input(),
-      timeTaken: map['timeTaken'] == null ? null : (map['timeTaken']! as String).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeInterval: (() {
+        final guardedValue = map['timeInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeTaken: (() {
+        final guardedValue = map['timeTaken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

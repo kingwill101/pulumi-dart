@@ -6,16 +6,15 @@ enum ForwardingRuleNetworkTier {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const ForwardingRuleNetworkTier(this.value);
-  final String value;
+  const ForwardingRuleNetworkTier(this.wireValue);
+  final String wireValue;
 
   static ForwardingRuleNetworkTier fromValue(String value) {
     for (final item in ForwardingRuleNetworkTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ForwardingRuleNetworkTier value: $value');
   }
 }
-

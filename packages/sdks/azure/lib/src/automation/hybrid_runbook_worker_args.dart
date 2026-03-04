@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridRunbookWorkerArgs {
   /// The name of the automation account in which the Hybrid Worker is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
+
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The ID of the virtual machine used for this HybridWorker. Changing this forces a new Automation to be created.
   final pulumi.Input<String> vmResourceId;
+
   /// The name of the HybridWorker Group. Changing this forces a new Automation to be created.
   final pulumi.Input<String> workerGroupName;
+
   /// Specify the ID of this HybridWorker in UUID notation. Changing this forces a new Automation to be created.
   final pulumi.Input<String> workerId;
 
@@ -44,12 +48,15 @@ class HybridRunbookWorkerArgs {
 
   factory HybridRunbookWorkerArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vmResourceId: (map['vmResourceId'] as String).input(),
-      workerGroupName: (map['workerGroupName'] as String).input(),
-      workerId: (map['workerId'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vmResourceId: pulumi.Input.fromValue(map['vmResourceId'] as String),
+      workerGroupName: pulumi.Input.fromValue(map['workerGroupName'] as String),
+      workerId: pulumi.Input.fromValue(map['workerId'] as String),
     );
   }
 }
-

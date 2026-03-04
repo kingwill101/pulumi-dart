@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalPortfolioAssociationArgs {
   /// Product Portfolio ID
   final pulumi.Input<String> portfolioId;
+
   /// RAM entity ID
   final pulumi.Input<String> principalId;
+
   /// RAM entity type
   final pulumi.Input<String> principalType;
 
@@ -34,10 +36,9 @@ class PrincipalPortfolioAssociationArgs {
 
   factory PrincipalPortfolioAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalPortfolioAssociationArgs(
-      portfolioId: (map['portfolioId'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
+      portfolioId: pulumi.Input.fromValue(map['portfolioId'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
     );
   }
 }
-

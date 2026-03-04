@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshPublicKeyArgs {
   /// An expiration time in microseconds since epoch.
   final pulumi.Input<String>? expirationTimeUsec;
+
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   final pulumi.Input<String> key;
+
   /// The project ID of the Google Cloud Platform project.
   final pulumi.Input<String>? project;
+
   /// The user email.
   final pulumi.Input<String> user;
 
@@ -39,11 +42,18 @@ class SshPublicKeyArgs {
 
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec']! as String).input(),
-      key: (map['key'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      user: (map['user'] as String).input(),
+      expirationTimeUsec: (() {
+        final guardedValue = map['expirationTimeUsec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

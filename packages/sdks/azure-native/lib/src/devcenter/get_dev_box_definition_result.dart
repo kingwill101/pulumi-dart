@@ -9,34 +9,49 @@ import 'system_data_response.dart';
 class GetDevBoxDefinitionResult {
   /// Image reference information for the currently active image (only populated during updates).
   final ImageReferenceResponse activeImageReference;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
   final String? hibernateSupport;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Image reference information.
   final ImageReferenceResponse imageReference;
+
   /// Details for image validator error. Populated when the image validation is not successful.
   final ImageValidationErrorDetailsResponse imageValidationErrorDetails;
+
   /// Validation status of the configured image.
   final String imageValidationStatus;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The storage type used for the Operating System disk of Dev Boxes created using this definition.
   final String? osStorageType;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// The SKU for Dev Boxes created using this definition.
   final SkuResponse sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Validation status for the Dev Box Definition.
   final String validationStatus;
 
@@ -99,23 +114,42 @@ class GetDevBoxDefinitionResult {
 
   factory GetDevBoxDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetDevBoxDefinitionResult(
-      activeImageReference: ImageReferenceResponse.fromMap((map['activeImageReference'] as Map).cast<String, dynamic>()),
+      activeImageReference: ImageReferenceResponse.fromMap(
+        (map['activeImageReference']! as Map).cast<String, dynamic>(),
+      ),
       azureApiVersion: map['azureApiVersion'] as String,
-      hibernateSupport: map['hibernateSupport'] == null ? null : map['hibernateSupport']! as String,
+      hibernateSupport: (() {
+        final guardedValue = map['hibernateSupport'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      imageReference: ImageReferenceResponse.fromMap((map['imageReference'] as Map).cast<String, dynamic>()),
-      imageValidationErrorDetails: ImageValidationErrorDetailsResponse.fromMap((map['imageValidationErrorDetails'] as Map).cast<String, dynamic>()),
+      imageReference: ImageReferenceResponse.fromMap(
+        (map['imageReference']! as Map).cast<String, dynamic>(),
+      ),
+      imageValidationErrorDetails: ImageValidationErrorDetailsResponse.fromMap(
+        (map['imageValidationErrorDetails']! as Map).cast<String, dynamic>(),
+      ),
       imageValidationStatus: map['imageValidationStatus'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      osStorageType: map['osStorageType'] == null ? null : map['osStorageType']! as String,
+      osStorageType: (() {
+        final guardedValue = map['osStorageType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       validationStatus: map['validationStatus'] as String,
     );
   }
 }
-

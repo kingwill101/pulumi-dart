@@ -7,8 +7,10 @@ import 'condition_response.dart';
 class CacheHealthResponse {
   /// Outstanding conditions that need to be investigated and resolved.
   final pulumi.Input<List<ConditionResponse>> conditions;
+
   /// List of cache health states. Down is when the cluster is not responding.  Degraded is when its functioning but has some alerts. Transitioning when it is creating or deleting. Unknown will be returned in old api versions when a new value is added in future versions. WaitingForKey is when the create is waiting for the system assigned identity to be given access to the encryption key in the encryption settings.
   final pulumi.Input<String>? state;
+
   /// Describes explanation of state.
   final pulumi.Input<String>? statusDescription;
 
@@ -24,7 +26,18 @@ class CacheHealthResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': pulumi.Input.mapInputValue<List<ConditionResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          pulumi.Input.mapInputValue<
+            List<ConditionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConditionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'state': ?state,
       'statusDescription': ?statusDescription,
     };
@@ -32,10 +45,23 @@ class CacheHealthResponse {
 
   factory CacheHealthResponse.fromMap(Map<String, dynamic> map) {
     return CacheHealthResponse(
-      conditions: (pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      statusDescription: map['statusDescription'] == null ? null : (map['statusDescription']! as String).input(),
+      conditions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ConditionResponse>(
+          map['conditions']!,
+          (value) =>
+              ConditionResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusDescription: (() {
+        final guardedValue = map['statusDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

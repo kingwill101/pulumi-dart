@@ -10,20 +10,29 @@ class SessionAffinityConfigPatch {
 
   /// Creates a new [SessionAffinityConfigPatch].
   /// [clientIP] clientIP contains the configurations of Client IP based session affinity.
-  SessionAffinityConfigPatch({
-    this.clientIP,
-  });
+  SessionAffinityConfigPatch({this.clientIP});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientIP': ?pulumi.Input.mapOptionalInputValue<ClientIPConfigPatch, Map<String, dynamic>>(clientIP, (value) => value.toMap()),
+      'clientIP':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClientIPConfigPatch,
+            Map<String, dynamic>
+          >(clientIP, (value) => value.toMap()),
     };
   }
 
   factory SessionAffinityConfigPatch.fromMap(Map<String, dynamic> map) {
     return SessionAffinityConfigPatch(
-      clientIP: map['clientIP'] == null ? null : (ClientIPConfigPatch.fromMap((map['clientIP']! as Map).cast<String, dynamic>())).input(),
+      clientIP: (() {
+        final guardedValue = map['clientIP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClientIPConfigPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

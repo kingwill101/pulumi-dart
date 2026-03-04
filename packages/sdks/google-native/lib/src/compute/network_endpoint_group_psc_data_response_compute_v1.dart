@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkEndpointGroupPscDataResponseComputeV1 {
   /// Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
   final pulumi.Input<String> consumerPscAddress;
+
   /// The PSC connection id of the PSC Network Endpoint Group Consumer.
   final pulumi.Input<String> pscConnectionId;
+
   /// The connection status of the PSC Forwarding Rule.
   final pulumi.Input<String> pscConnectionStatus;
 
@@ -29,12 +31,17 @@ class NetworkEndpointGroupPscDataResponseComputeV1 {
     };
   }
 
-  factory NetworkEndpointGroupPscDataResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory NetworkEndpointGroupPscDataResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkEndpointGroupPscDataResponseComputeV1(
-      consumerPscAddress: (map['consumerPscAddress'] as String).input(),
-      pscConnectionId: (map['pscConnectionId'] as String).input(),
-      pscConnectionStatus: (map['pscConnectionStatus'] as String).input(),
+      consumerPscAddress: pulumi.Input.fromValue(
+        map['consumerPscAddress'] as String,
+      ),
+      pscConnectionId: pulumi.Input.fromValue(map['pscConnectionId'] as String),
+      pscConnectionStatus: pulumi.Input.fromValue(
+        map['pscConnectionStatus'] as String,
+      ),
     );
   }
 }
-

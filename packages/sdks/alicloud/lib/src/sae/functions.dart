@@ -18,7 +18,7 @@ import 'get_service_result.dart';
 
 /// This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.159.0+.
+/// &gt; **NOTE:** Available in v1.159.0+.
 ///
 /// ## Example Usage
 ///
@@ -160,7 +160,7 @@ Future<GetApplicationScalingRulesResult> getApplicationScalingRules(
 
 /// This data source provides the Sae Applications of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.161.0+.
+/// &gt; **NOTE:** Available in v1.161.0+.
 ///
 /// ## Example Usage
 ///
@@ -529,7 +529,7 @@ Future<GetApplicationsResult> getApplications(
 
 /// This data source provides the Sae Config Maps of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.130.0+.
+/// &gt; **NOTE:** Available in v1.130.0+.
 ///
 /// ## Example Usage
 ///
@@ -781,7 +781,7 @@ Future<GetConfigMapsResult> getConfigMaps(
 
 /// This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.160.0+.
+/// &gt; **NOTE:** Available in v1.160.0+.
 ///
 /// ## Example Usage
 ///
@@ -906,7 +906,7 @@ Future<GetGreyTagRoutesResult> getGreyTagRoutes(
 
 /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.137.0+.
+/// &gt; **NOTE:** Available in v1.137.0+.
 ///
 /// ## Example Usage
 ///
@@ -1429,7 +1429,7 @@ Future<GetIngressesResult> getIngresses(
 
 /// This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.139.0+.
+/// &gt; **NOTE:** Available in v1.139.0+.
 ///
 /// ## Example Usage
 ///
@@ -1539,7 +1539,7 @@ Future<GetInstanceSpecificationsResult> getInstanceSpecifications(
 
 /// This data source provides the Sae Namespaces of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.129.0+.
+/// &gt; **NOTE:** Available in v1.129.0+.
 ///
 /// ## Example Usage
 ///
@@ -1660,9 +1660,9 @@ Future<GetNamespacesResult> getNamespaces(
 ///
 /// For information about SAE and how to use it, see [What is SAE](https://help.aliyun.com/document_detail/125720.html).
 ///
-/// > **NOTE:** Available in v1.120.0+
+/// &gt; **NOTE:** Available in v1.120.0+
 ///
-/// > **NOTE:** The SAE service is not support in the international site.
+/// &gt; **NOTE:** The SAE service is not support in the international site.
 ///
 /// ## Example Usage
 ///

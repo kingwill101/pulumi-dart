@@ -10,20 +10,28 @@ class GetCustomizationTaskErrorDetailsResult {
 
   /// Creates a new [GetCustomizationTaskErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
-  GetCustomizationTaskErrorDetailsResult({
-    required this.errors,
-  });
+  GetCustomizationTaskErrorDetailsResult({required this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.encodeList<CatalogErrorDetailsResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            CatalogErrorDetailsResponse,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
     };
   }
 
-  factory GetCustomizationTaskErrorDetailsResult.fromMap(Map<String, dynamic> map) {
+  factory GetCustomizationTaskErrorDetailsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCustomizationTaskErrorDetailsResult(
-      errors: pulumi.Input.decodeList<CatalogErrorDetailsResponse>(map['errors'], (value) => CatalogErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<CatalogErrorDetailsResponse>(
+        map['errors']!,
+        (value) => CatalogErrorDetailsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

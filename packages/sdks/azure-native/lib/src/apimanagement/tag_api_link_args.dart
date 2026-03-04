@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagApiLinkArgs {
   /// Full resource Id of an API.
   final pulumi.Input<String> apiId;
+
   /// Tag-API link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? apiLinkId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Tag identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> tagId;
 
@@ -44,12 +48,17 @@ class TagApiLinkArgs {
 
   factory TagApiLinkArgs.fromMap(Map<String, dynamic> map) {
     return TagApiLinkArgs(
-      apiId: (map['apiId'] as String).input(),
-      apiLinkId: map['apiLinkId'] == null ? null : (map['apiLinkId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      tagId: (map['tagId'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      apiLinkId: (() {
+        final guardedValue = map['apiLinkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      tagId: pulumi.Input.fromValue(map['tagId'] as String),
     );
   }
 }
-

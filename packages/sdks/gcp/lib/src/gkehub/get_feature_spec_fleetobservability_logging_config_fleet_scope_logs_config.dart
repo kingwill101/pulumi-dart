@@ -13,15 +13,14 @@ class GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
-  factory GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig.fromMap(Map<String, dynamic> map) {
+  factory GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

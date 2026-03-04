@@ -10,32 +10,46 @@ import 'system_data_response.dart';
 class GetCloudResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Capacity of the cloud.
   final CloudCapacityResponse cloudCapacity;
+
   /// Name of the cloud in VMMServer.
   final String cloudName;
+
   /// The extended location.
   final ExtendedLocationResponse extendedLocation;
+
   /// Resource Id
   final String id;
+
   /// Gets or sets the inventory Item ID for the resource.
   final String? inventoryItemId;
+
   /// Gets or sets the location.
   final String location;
+
   /// Resource Name
   final String name;
+
   /// Gets or sets the provisioning state.
   final String provisioningState;
+
   /// List of QoS policies available for the cloud.
   final List<StorageQoSPolicyResponse> storageQoSPolicies;
+
   /// The system data.
   final SystemDataResponse systemData;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// Resource Type
   final String type;
+
   /// Unique ID of the cloud.
   final String? uuid;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   final String? vmmServerId;
 
@@ -84,7 +98,11 @@ class GetCloudResult {
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
-      'storageQoSPolicies': pulumi.Input.encodeList<StorageQoSPolicyResponse, Map<String, dynamic>>(storageQoSPolicies, (value) => value.toMap()),
+      'storageQoSPolicies':
+          pulumi.Input.encodeList<
+            StorageQoSPolicyResponse,
+            Map<String, dynamic>
+          >(storageQoSPolicies, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -96,21 +114,47 @@ class GetCloudResult {
   factory GetCloudResult.fromMap(Map<String, dynamic> map) {
     return GetCloudResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cloudCapacity: CloudCapacityResponse.fromMap((map['cloudCapacity'] as Map).cast<String, dynamic>()),
+      cloudCapacity: CloudCapacityResponse.fromMap(
+        (map['cloudCapacity']! as Map).cast<String, dynamic>(),
+      ),
       cloudName: map['cloudName'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: ExtendedLocationResponse.fromMap(
+        (map['extendedLocation']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
-      inventoryItemId: map['inventoryItemId'] == null ? null : map['inventoryItemId']! as String,
+      inventoryItemId: (() {
+        final guardedValue = map['inventoryItemId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      storageQoSPolicies: pulumi.Input.decodeList<StorageQoSPolicyResponse>(map['storageQoSPolicies'], (value) => StorageQoSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      storageQoSPolicies: pulumi.Input.decodeList<StorageQoSPolicyResponse>(
+        map['storageQoSPolicies']!,
+        (value) => StorageQoSPolicyResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid']! as String,
-      vmmServerId: map['vmmServerId'] == null ? null : map['vmmServerId']! as String,
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vmmServerId: (() {
+        final guardedValue = map['vmmServerId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

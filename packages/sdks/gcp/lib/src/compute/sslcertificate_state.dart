@@ -9,14 +9,19 @@ class SSLCertificateState {
   /// The chain must include at least one intermediate cert.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? certificate;
+
   /// The unique identifier for the resource.
   final pulumi.Input<int>? certificateId;
+
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Expire time of the certificate in RFC3339 text format.
   final pulumi.Input<String>? expireTime;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -26,21 +31,25 @@ class SSLCertificateState {
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
   final pulumi.Input<String>? name;
+
   /// Creates a unique name beginning with the
   /// specified prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
-  /// Resulting name for a `name_prefix` <= 37 characters:
+  /// Resulting name for a `name_prefix` &lt;= 37 characters:
   /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `name_prefix` 38 - 54 characters:
   /// `name_prefix` + YYmmdd + 3 digit incremental counter
   final pulumi.Input<String>? namePrefix;
+
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? privateKey;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The URI of the created resource.
   final pulumi.Input<String>? selfLink;
 
@@ -85,17 +94,56 @@ class SSLCertificateState {
 
   factory SSLCertificateState.fromMap(Map<String, dynamic> map) {
     return SSLCertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as int).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateId: (() {
+        final guardedValue = map['certificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      creationTimestamp: (() {
+        final guardedValue = map['creationTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

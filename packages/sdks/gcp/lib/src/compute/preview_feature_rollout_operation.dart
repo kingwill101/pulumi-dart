@@ -10,20 +10,29 @@ class PreviewFeatureRolloutOperation {
 
   /// Creates a new [PreviewFeatureRolloutOperation].
   /// [rolloutInput] The input for the rollout operation.
-  PreviewFeatureRolloutOperation({
-    this.rolloutInput,
-  });
+  PreviewFeatureRolloutOperation({this.rolloutInput});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rolloutInput': ?pulumi.Input.mapOptionalInputValue<PreviewFeatureRolloutOperationRolloutInput, Map<String, dynamic>>(rolloutInput, (value) => value.toMap()),
+      'rolloutInput':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreviewFeatureRolloutOperationRolloutInput,
+            Map<String, dynamic>
+          >(rolloutInput, (value) => value.toMap()),
     };
   }
 
   factory PreviewFeatureRolloutOperation.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureRolloutOperation(
-      rolloutInput: map['rolloutInput'] == null ? null : (PreviewFeatureRolloutOperationRolloutInput.fromMap((map['rolloutInput']! as Map).cast<String, dynamic>())).input(),
+      rolloutInput: (() {
+        final guardedValue = map['rolloutInput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreviewFeatureRolloutOperationRolloutInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

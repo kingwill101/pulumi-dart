@@ -4,16 +4,15 @@ enum AzureFirewallSkuTier {
   valuePremium("Premium"),
   valueBasic("Basic");
 
-  const AzureFirewallSkuTier(this.value);
-  final String value;
+  const AzureFirewallSkuTier(this.wireValue);
+  final String wireValue;
 
   static AzureFirewallSkuTier fromValue(String value) {
     for (final item in AzureFirewallSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureFirewallSkuTier value: $value');
   }
 }
-

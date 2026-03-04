@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserCredentialResponse {
   /// A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> userTokenSecretVersion;
+
   /// The username associated to this token.
   final pulumi.Input<String> username;
 
@@ -26,9 +27,10 @@ class UserCredentialResponse {
 
   factory UserCredentialResponse.fromMap(Map<String, dynamic> map) {
     return UserCredentialResponse(
-      userTokenSecretVersion: (map['userTokenSecretVersion'] as String).input(),
-      username: (map['username'] as String).input(),
+      userTokenSecretVersion: pulumi.Input.fromValue(
+        map['userTokenSecretVersion'] as String,
+      ),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

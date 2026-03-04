@@ -2,16 +2,15 @@
 enum WorkbookSharedTypeKind {
   valueShared("shared");
 
-  const WorkbookSharedTypeKind(this.value);
-  final String value;
+  const WorkbookSharedTypeKind(this.wireValue);
+  final String wireValue;
 
   static WorkbookSharedTypeKind fromValue(String value) {
     for (final item in WorkbookSharedTypeKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkbookSharedTypeKind value: $value');
   }
 }
-

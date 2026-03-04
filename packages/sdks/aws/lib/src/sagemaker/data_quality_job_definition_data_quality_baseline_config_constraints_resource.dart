@@ -13,15 +13,18 @@ class DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3Uri': ?s3Uri,
-    };
+    return <String, dynamic>{'s3Uri': ?s3Uri};
   }
 
-  factory DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource(
-      s3Uri: map['s3Uri'] == null ? null : ((map['s3Uri'] as String).input()).input(),
+      s3Uri: (() {
+        final guardedValue = map['s3Uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

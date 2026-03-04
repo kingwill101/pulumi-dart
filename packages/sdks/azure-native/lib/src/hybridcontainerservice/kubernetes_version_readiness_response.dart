@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesVersionReadinessResponse {
   /// The error message for version not being ready
   final pulumi.Input<String> errorMessage;
+
   /// Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
   final pulumi.Input<String>? osSku;
+
   /// The particular KubernetesVersion Image OS Type (Linux, Windows)
   final pulumi.Input<String> osType;
+
   /// Whether the kubernetes version image is ready or not
   final pulumi.Input<bool> ready;
 
@@ -36,11 +39,14 @@ class KubernetesVersionReadinessResponse {
 
   factory KubernetesVersionReadinessResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesVersionReadinessResponse(
-      errorMessage: (map['errorMessage'] as String).input(),
-      osSku: map['osSku'] == null ? null : (map['osSku']! as String).input(),
-      osType: (map['osType'] as String).input(),
-      ready: (map['ready'] as bool).input(),
+      errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
+      osSku: (() {
+        final guardedValue = map['osSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      ready: pulumi.Input.fromValue(map['ready'] as bool),
     );
   }
 }
-

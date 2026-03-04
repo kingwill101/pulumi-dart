@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GtmInstanceAlertConfig {
   /// Whether to configure DingTalk notifications. Valid values: `true`, `false`.
   final pulumi.Input<bool>? dingtalkNotice;
+
   /// Whether to configure mail notification. Valid values: `true`, `false`.
   final pulumi.Input<bool>? emailNotice;
+
   /// The Alarm Event Type.
   /// - `ADDR_ALERT`: Address not available.
   /// - `ADDR_RESUME`: Address Recovery available.
@@ -15,6 +17,7 @@ class GtmInstanceAlertConfig {
   /// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
   /// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
   final pulumi.Input<String>? noticeType;
+
   /// Whether to configure SMS notification. Valid values: `true`, `false`.
   final pulumi.Input<bool>? smsNotice;
 
@@ -41,11 +44,26 @@ class GtmInstanceAlertConfig {
 
   factory GtmInstanceAlertConfig.fromMap(Map<String, dynamic> map) {
     return GtmInstanceAlertConfig(
-      dingtalkNotice: map['dingtalkNotice'] == null ? null : (map['dingtalkNotice']! as bool).input(),
-      emailNotice: map['emailNotice'] == null ? null : (map['emailNotice']! as bool).input(),
-      noticeType: map['noticeType'] == null ? null : (map['noticeType']! as String).input(),
-      smsNotice: map['smsNotice'] == null ? null : (map['smsNotice']! as bool).input(),
+      dingtalkNotice: (() {
+        final guardedValue = map['dingtalkNotice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      emailNotice: (() {
+        final guardedValue = map['emailNotice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      noticeType: (() {
+        final guardedValue = map['noticeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      smsNotice: (() {
+        final guardedValue = map['smsNotice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

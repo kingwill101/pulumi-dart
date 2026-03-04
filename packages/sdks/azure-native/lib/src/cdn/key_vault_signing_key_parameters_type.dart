@@ -1,16 +1,17 @@
 enum KeyVaultSigningKeyParametersType {
   keyVaultSigningKeyParameters("KeyVaultSigningKeyParameters");
 
-  const KeyVaultSigningKeyParametersType(this.value);
-  final String value;
+  const KeyVaultSigningKeyParametersType(this.wireValue);
+  final String wireValue;
 
   static KeyVaultSigningKeyParametersType fromValue(String value) {
     for (final item in KeyVaultSigningKeyParametersType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KeyVaultSigningKeyParametersType value: $value');
+    throw ArgumentError(
+      'Unknown KeyVaultSigningKeyParametersType value: $value',
+    );
   }
 }
-

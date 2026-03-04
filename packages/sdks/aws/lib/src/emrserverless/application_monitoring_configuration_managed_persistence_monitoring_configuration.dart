@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration {
   /// Enables managed log persistence for monitoring logs.
   final pulumi.Input<bool>? enabled;
+
   /// The KMS key ARN to encrypt the logs stored in managed persistence.
   final pulumi.Input<String>? encryptionKeyArn;
 
@@ -23,11 +24,20 @@ class ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguratio
     };
   }
 
-  factory ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : ((map['encryptionKeyArn'] as String).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptionKeyArn: (() {
+        final guardedValue = map['encryptionKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

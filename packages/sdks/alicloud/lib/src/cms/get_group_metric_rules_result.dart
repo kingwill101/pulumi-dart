@@ -9,6 +9,7 @@ class GetGroupMetricRulesResult {
   final bool? enableState;
   final String? groupId;
   final String? groupMetricRuleName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -63,27 +64,71 @@ class GetGroupMetricRulesResult {
       'names': names,
       'namespace': ?namespace,
       'outputFile': ?outputFile,
-      'rules': pulumi.Input.encodeList<GetGroupMetricRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<
+            GetGroupMetricRulesRule,
+            Map<String, dynamic>
+          >(rules, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory GetGroupMetricRulesResult.fromMap(Map<String, dynamic> map) {
     return GetGroupMetricRulesResult(
-      dimensions: map['dimensions'] == null ? null : map['dimensions']! as String,
-      enableState: map['enableState'] == null ? null : map['enableState']! as bool,
-      groupId: map['groupId'] == null ? null : map['groupId']! as String,
-      groupMetricRuleName: map['groupMetricRuleName'] == null ? null : map['groupMetricRuleName']! as String,
+      dimensions: (() {
+        final guardedValue = map['dimensions'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableState: (() {
+        final guardedValue = map['enableState'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groupMetricRuleName: (() {
+        final guardedValue = map['groupMetricRuleName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      metricName: map['metricName'] == null ? null : map['metricName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      metricName: (() {
+        final guardedValue = map['metricName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      namespace: map['namespace'] == null ? null : map['namespace']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      rules: pulumi.Input.decodeList<GetGroupMetricRulesRule>(map['rules'], (value) => GetGroupMetricRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rules: pulumi.Input.decodeList<GetGroupMetricRulesRule>(
+        map['rules']!,
+        (value) => GetGroupMetricRulesRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

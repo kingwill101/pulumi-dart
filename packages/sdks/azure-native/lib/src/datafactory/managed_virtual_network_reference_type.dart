@@ -2,16 +2,17 @@
 enum ManagedVirtualNetworkReferenceType {
   valueManagedVirtualNetworkReference("ManagedVirtualNetworkReference");
 
-  const ManagedVirtualNetworkReferenceType(this.value);
-  final String value;
+  const ManagedVirtualNetworkReferenceType(this.wireValue);
+  final String wireValue;
 
   static ManagedVirtualNetworkReferenceType fromValue(String value) {
     for (final item in ManagedVirtualNetworkReferenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedVirtualNetworkReferenceType value: $value');
+    throw ArgumentError(
+      'Unknown ManagedVirtualNetworkReferenceType value: $value',
+    );
   }
 }
-

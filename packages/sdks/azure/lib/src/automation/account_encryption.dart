@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountEncryption {
   final pulumi.Input<String>? keySource;
+
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Automation Account.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// The User Assigned Managed Identity ID to be used for accessing the Customer Managed Key for encryption.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -29,10 +31,17 @@ class AccountEncryption {
 
   factory AccountEncryption.fromMap(Map<String, dynamic> map) {
     return AccountEncryption(
-      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      keySource: (() {
+        final guardedValue = map['keySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      userAssignedIdentityId: (() {
+        final guardedValue = map['userAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

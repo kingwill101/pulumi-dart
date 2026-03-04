@@ -8,20 +8,19 @@ class LaunchTemplateMonitoring {
 
   /// Creates a new [LaunchTemplateMonitoring].
   /// [enabled] If `true`, the launched EC2 instance will have detailed monitoring enabled.
-  LaunchTemplateMonitoring({
-    this.enabled,
-  });
+  LaunchTemplateMonitoring({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory LaunchTemplateMonitoring.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateMonitoring(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

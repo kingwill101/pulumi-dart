@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppMetadataSlotArgs {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Settings.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot. If a slot is not specified, the API will update the metadata for the production slot.
   final pulumi.Input<String> slot;
 
@@ -44,12 +48,23 @@ class WebAppMetadataSlotArgs {
 
   factory WebAppMetadataSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppMetadataSlotArgs(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

@@ -10,29 +10,48 @@ import 'networking_ip_assignment_assignment.dart';
 class NetworkingIpAssignmentArgs {
   /// A list of IP/Linode assignments to apply.
   final pulumi.Input<List<NetworkingIpAssignmentAssignment>>? assignments;
+
   /// The region where the IP addresses will be assigned.
   final pulumi.Input<String> region;
 
   /// Creates a new [NetworkingIpAssignmentArgs].
   /// [assignments] A list of IP/Linode assignments to apply.
   /// [region] The region where the IP addresses will be assigned.
-  NetworkingIpAssignmentArgs({
-    this.assignments,
-    required this.region,
-  });
+  NetworkingIpAssignmentArgs({this.assignments, required this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignments': ?pulumi.Input.mapOptionalInputValue<List<NetworkingIpAssignmentAssignment>, List<Map<String, dynamic>>>(assignments, (value) => pulumi.Input.encodeList<NetworkingIpAssignmentAssignment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'assignments':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkingIpAssignmentAssignment>,
+            List<Map<String, dynamic>>
+          >(
+            assignments,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkingIpAssignmentAssignment,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': region,
     };
   }
 
   factory NetworkingIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkingIpAssignmentArgs(
-      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments']!, (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: (map['region'] as String).input(),
+      assignments: (() {
+        final guardedValue = map['assignments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(
+            guardedValue,
+            (value) => NetworkingIpAssignmentAssignment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

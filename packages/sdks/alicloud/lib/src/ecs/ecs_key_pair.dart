@@ -6,7 +6,7 @@ import 'ecs_key_pair_state.dart';
 ///
 /// For information about ECS Key Pair and how to use it, see [What is Key Pair](https://www.alibabacloud.com/help/en/doc-detail/51771.htm).
 ///
-/// > **NOTE:** Available since v1.121.0.
+/// &gt; **NOTE:** Available since v1.121.0.
 ///
 /// ## Example Usage
 ///
@@ -173,18 +173,24 @@ import 'ecs_key_pair_state.dart';
 class EcsKeyPair extends pulumi.CustomResource {
   /// (Available since v1.237.0) The time when the key pair was created.
   late final pulumi.Output<String> createTime;
+
   /// The fingerprint of the key pair.
   late final pulumi.Output<String> fingerPrint;
+
   /// The key file.
   late final pulumi.Output<String?> keyFile;
   late final pulumi.Output<String> keyName;
   late final pulumi.Output<String?> keyNamePrefix;
+
   /// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   late final pulumi.Output<String> keyPairName;
+
   /// The public key of the key pair.
   late final pulumi.Output<String?> publicKey;
+
   /// The ID of the resource group to which to add the key pair.
   late final pulumi.Output<String> resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -197,20 +203,20 @@ class EcsKeyPair extends pulumi.CustomResource {
     EcsKeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsKeyPair:EcsKeyPair',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.fingerPrint = registerOutput<String>('fingerPrint');
-    this.keyFile = registerOutput<String?>('keyFile');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyNamePrefix = registerOutput<String?>('keyNamePrefix');
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.publicKey = registerOutput<String?>('publicKey');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ecs/ecsKeyPair:EcsKeyPair',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    fingerPrint = registerOutput<String>('fingerPrint');
+    keyFile = registerOutput<String?>('keyFile');
+    keyName = registerOutput<String>('keyName');
+    keyNamePrefix = registerOutput<String?>('keyNamePrefix');
+    keyPairName = registerOutput<String>('keyPairName');
+    publicKey = registerOutput<String?>('publicKey');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [EcsKeyPair] resource's state with the given [name] and [id].
@@ -231,19 +237,19 @@ class EcsKeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsKeyPair:EcsKeyPair',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.fingerPrint = registerOutput<String>('fingerPrint');
-    this.keyFile = registerOutput<String?>('keyFile');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyNamePrefix = registerOutput<String?>('keyNamePrefix');
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.publicKey = registerOutput<String?>('publicKey');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ecs/ecsKeyPair:EcsKeyPair',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    fingerPrint = registerOutput<String>('fingerPrint');
+    keyFile = registerOutput<String?>('keyFile');
+    keyName = registerOutput<String>('keyName');
+    keyNamePrefix = registerOutput<String?>('keyNamePrefix');
+    keyPairName = registerOutput<String>('keyPairName');
+    publicKey = registerOutput<String?>('publicKey');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

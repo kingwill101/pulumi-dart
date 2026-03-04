@@ -4,7 +4,7 @@ import 'endpoint_cosmosdb_account_state.dart';
 
 /// Manages an IotHub Cosmos DB Account Endpoint
 ///
-/// > **Note:** Endpoints can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azurerm_iothub_endpoint_*` resources - but the two ways of defining the endpoints cannot be used together. If both are used against the same IoTHub, spurious changes will occur. Also, defining a `azurerm_iothub_endpoint_*` resource and another endpoint of a different type directly on the `azure.iot.IoTHub` resource is not supported.
+/// &gt; **Note:** Endpoints can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azurerm_iothub_endpoint_*` resources - but the two ways of defining the endpoints cannot be used together. If both are used against the same IoTHub, spurious changes will occur. Also, defining a `azurerm_iothub_endpoint_*` resource and another endpoint of a different type directly on the `azure.iot.IoTHub` resource is not supported.
 ///
 /// ## Example Usage
 ///
@@ -453,37 +453,49 @@ import 'endpoint_cosmosdb_account_state.dart';
 class EndpointCosmosdbAccount extends pulumi.CustomResource {
   /// The type used to authenticate against the Cosmos DB Account endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
   late final pulumi.Output<String?> authenticationType;
+
   /// The name of the Cosmos DB Container in the Cosmos DB Database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerName;
+
   /// The name of the Cosmos DB Database in the Cosmos DB Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
+
   /// The URI of the Cosmos DB Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> endpointUri;
+
   /// The ID of the User Managed Identity used to authenticate against the Cosmos DB Account endpoint.
   ///
-  /// > **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   late final pulumi.Output<String?> identityId;
+
   /// The ID of the IoT Hub to create the endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
+
   /// The name of the endpoint. The name must be unique across endpoint types. The following names are reserved: `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the partition key associated with the Cosmos DB Container.
   late final pulumi.Output<String?> partitionKeyName;
+
   /// The template for generating a synthetic partition key value for use within the Cosmos DB Container.
   late final pulumi.Output<String?> partitionKeyTemplate;
+
   /// The primary key of the Cosmos DB Account.
   ///
-  /// > **Note:** `primary_key` must and can only be specified when `authentication_type` is `keyBased`.
+  /// &gt; **Note:** `primary_key` must and can only be specified when `authentication_type` is `keyBased`.
   late final pulumi.Output<String?> primaryKey;
+
   /// The name of the resource group under which the Cosmos DB Account has been created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary key of the Cosmos DB Account.
   ///
-  /// > **Note:** `secondary_key` must and can only be specified when `authentication_type` is `keyBased`.
+  /// &gt; **Note:** `secondary_key` must and can only be specified when `authentication_type` is `keyBased`.
   late final pulumi.Output<String?> secondaryKey;
+
   /// The subscription ID for the endpoint.
   ///
-  /// > **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   late final pulumi.Output<String> subscriptionId;
 
   /// Creates a new [EndpointCosmosdbAccount].
@@ -495,24 +507,24 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
     EndpointCosmosdbAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/endpointCosmosdbAccount:EndpointCosmosdbAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationType = registerOutput<String?>('authenticationType');
-    this.containerName = registerOutput<String>('containerName');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.endpointUri = registerOutput<String>('endpointUri');
-    this.identityId = registerOutput<String?>('identityId');
-    this.iothubId = registerOutput<String>('iothubId');
+         'azure:iot/endpointCosmosdbAccount:EndpointCosmosdbAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    containerName = registerOutput<String>('containerName');
+    databaseName = registerOutput<String>('databaseName');
+    endpointUri = registerOutput<String>('endpointUri');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    this.partitionKeyName = registerOutput<String?>('partitionKeyName');
-    this.partitionKeyTemplate = registerOutput<String?>('partitionKeyTemplate');
-    this.primaryKey = registerOutput<String?>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryKey = registerOutput<String?>('secondaryKey');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    partitionKeyName = registerOutput<String?>('partitionKeyName');
+    partitionKeyTemplate = registerOutput<String?>('partitionKeyTemplate');
+    primaryKey = registerOutput<String?>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String?>('secondaryKey');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 
   /// Gets an existing [EndpointCosmosdbAccount] resource's state with the given [name] and [id].
@@ -533,23 +545,23 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/endpointCosmosdbAccount:EndpointCosmosdbAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationType = registerOutput<String?>('authenticationType');
-    this.containerName = registerOutput<String>('containerName');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.endpointUri = registerOutput<String>('endpointUri');
-    this.identityId = registerOutput<String?>('identityId');
-    this.iothubId = registerOutput<String>('iothubId');
+         'azure:iot/endpointCosmosdbAccount:EndpointCosmosdbAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    containerName = registerOutput<String>('containerName');
+    databaseName = registerOutput<String>('databaseName');
+    endpointUri = registerOutput<String>('endpointUri');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    this.partitionKeyName = registerOutput<String?>('partitionKeyName');
-    this.partitionKeyTemplate = registerOutput<String?>('partitionKeyTemplate');
-    this.primaryKey = registerOutput<String?>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryKey = registerOutput<String?>('secondaryKey');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    partitionKeyName = registerOutput<String?>('partitionKeyName');
+    partitionKeyTemplate = registerOutput<String?>('partitionKeyTemplate');
+    primaryKey = registerOutput<String?>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String?>('secondaryKey');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

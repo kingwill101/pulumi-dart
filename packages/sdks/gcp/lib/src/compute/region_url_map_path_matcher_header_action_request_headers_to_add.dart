@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd {
   /// The name of the header.
   final pulumi.Input<String>? headerName;
+
   /// The value of the header to add.
   final pulumi.Input<String>? headerValue;
+
   /// If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
   /// The default value is false.
   final pulumi.Input<bool>? replace;
@@ -29,12 +31,25 @@ class RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd {
     };
   }
 
-  factory RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd.fromMap(Map<String, dynamic> map) {
+  factory RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd(
-      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
-      headerValue: map['headerValue'] == null ? null : (map['headerValue']! as String).input(),
-      replace: map['replace'] == null ? null : (map['replace']! as bool).input(),
+      headerName: (() {
+        final guardedValue = map['headerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headerValue: (() {
+        final guardedValue = map['headerValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replace: (() {
+        final guardedValue = map['replace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainTxtGuidArgs {
   /// Verified domain name.
   final pulumi.Input<String> domainName;
+
   /// User language.
   final pulumi.Input<String>? lang;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
   final pulumi.Input<String> type;
 
@@ -39,11 +42,18 @@ class GetDomainTxtGuidArgs {
 
   factory GetDomainTxtGuidArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainTxtGuidArgs(
-      domainName: (map['domainName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      type: (map['type'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum BackendBucketCdnPolicyCacheModeComputeV1 {
   invalidCacheMode("INVALID_CACHE_MODE"),
   useOriginHeaders("USE_ORIGIN_HEADERS");
 
-  const BackendBucketCdnPolicyCacheModeComputeV1(this.value);
-  final String value;
+  const BackendBucketCdnPolicyCacheModeComputeV1(this.wireValue);
+  final String wireValue;
 
   static BackendBucketCdnPolicyCacheModeComputeV1 fromValue(String value) {
     for (final item in BackendBucketCdnPolicyCacheModeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendBucketCdnPolicyCacheModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown BackendBucketCdnPolicyCacheModeComputeV1 value: $value',
+    );
   }
 }
-

@@ -12,7 +12,7 @@ import 'get_synchronization_jobs_result.dart';
 
 /// This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.146.0+.
+/// &gt; **NOTE:** Available in v1.146.0+.
 ///
 /// ## Example Usage
 ///
@@ -122,7 +122,7 @@ Future<GetConsumerChannelsResult> getConsumerChannels(
 
 /// This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
 ///
-/// > **NOTE:** Available in 1.198.0+
+/// &gt; **NOTE:** Available in 1.198.0+
 ///
 /// ## Example Usage
 ///
@@ -250,7 +250,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.157.0+.
+/// &gt; **NOTE:** Available in v1.157.0+.
 ///
 /// ## Example Usage
 ///
@@ -375,7 +375,7 @@ Future<GetMigrationJobsResult> getMigrationJobs(
 
 /// This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
 /// ## Example Usage
 ///
@@ -485,7 +485,7 @@ Future<GetSubscriptionJobsResult> getSubscriptionJobs(
 
 /// This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
 /// ## Example Usage
 ///

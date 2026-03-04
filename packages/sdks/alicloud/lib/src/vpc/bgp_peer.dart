@@ -6,7 +6,7 @@ import 'bgp_peer_state.dart';
 ///
 /// For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 ///
-/// > **NOTE:** Available since v1.153.0.
+/// &gt; **NOTE:** Available since v1.153.0.
 ///
 /// ## Example Usage
 ///
@@ -355,16 +355,22 @@ import 'bgp_peer_state.dart';
 class BgpPeer extends pulumi.CustomResource {
   /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
   late final pulumi.Output<int?> bfdMultiHop;
+
   /// The ID of the BGP group.
   late final pulumi.Output<String> bgpGroupId;
+
   /// The name of the BGP neighbor.
   late final pulumi.Output<String> bgpPeerName;
+
   /// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
   late final pulumi.Output<bool?> enableBfd;
+
   /// The IP version.
   late final pulumi.Output<String> ipVersion;
+
   /// The IP address of the BGP peer.
   late final pulumi.Output<String> peerIpAddress;
+
   /// Status of BGP neighbors.
   late final pulumi.Output<String> status;
 
@@ -377,18 +383,18 @@ class BgpPeer extends pulumi.CustomResource {
     BgpPeerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/bgpPeer:BgpPeer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bfdMultiHop = registerOutput<int?>('bfdMultiHop');
-    this.bgpGroupId = registerOutput<String>('bgpGroupId');
-    this.bgpPeerName = registerOutput<String>('bgpPeerName');
-    this.enableBfd = registerOutput<bool?>('enableBfd');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.peerIpAddress = registerOutput<String>('peerIpAddress');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/bgpPeer:BgpPeer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bfdMultiHop = registerOutput<int?>('bfdMultiHop');
+    bgpGroupId = registerOutput<String>('bgpGroupId');
+    bgpPeerName = registerOutput<String>('bgpPeerName');
+    enableBfd = registerOutput<bool?>('enableBfd');
+    ipVersion = registerOutput<String>('ipVersion');
+    peerIpAddress = registerOutput<String>('peerIpAddress');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BgpPeer] resource's state with the given [name] and [id].
@@ -409,17 +415,17 @@ class BgpPeer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/bgpPeer:BgpPeer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bfdMultiHop = registerOutput<int?>('bfdMultiHop');
-    this.bgpGroupId = registerOutput<String>('bgpGroupId');
-    this.bgpPeerName = registerOutput<String>('bgpPeerName');
-    this.enableBfd = registerOutput<bool?>('enableBfd');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.peerIpAddress = registerOutput<String>('peerIpAddress');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/bgpPeer:BgpPeer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bfdMultiHop = registerOutput<int?>('bfdMultiHop');
+    bgpGroupId = registerOutput<String>('bgpGroupId');
+    bgpPeerName = registerOutput<String>('bgpPeerName');
+    enableBfd = registerOutput<bool?>('enableBfd');
+    ipVersion = registerOutput<String>('ipVersion');
+    peerIpAddress = registerOutput<String>('peerIpAddress');
+    status = registerOutput<String>('status');
   }
 }

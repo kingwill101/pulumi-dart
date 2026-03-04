@@ -7,18 +7,25 @@ import 'system_data_response.dart';
 class GetAutoscaleSettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Azure resource Id
   final String id;
+
   /// Resource location
   final String location;
+
   /// Azure resource name
   final String name;
+
   /// The autoscale setting of the resource.
   final AutoscaleSettingResponse properties;
+
   /// The system metadata related to the response.
   final SystemDataResponse systemData;
+
   /// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
   final Map<String, String>? tags;
+
   /// Azure resource type
   final String type;
 
@@ -61,11 +68,18 @@ class GetAutoscaleSettingResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: AutoscaleSettingResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: AutoscaleSettingResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

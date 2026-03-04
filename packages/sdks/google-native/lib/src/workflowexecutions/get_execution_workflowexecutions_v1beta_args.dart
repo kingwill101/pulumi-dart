@@ -37,14 +37,23 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
     };
   }
 
-  factory GetExecutionWorkflowexecutionsV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExecutionWorkflowexecutionsV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExecutionWorkflowexecutionsV1betaArgs(
-      executionId: (map['executionId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
-      workflowId: (map['workflowId'] as String).input(),
+      executionId: pulumi.Input.fromValue(map['executionId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workflowId: pulumi.Input.fromValue(map['workflowId'] as String),
     );
   }
 }
-

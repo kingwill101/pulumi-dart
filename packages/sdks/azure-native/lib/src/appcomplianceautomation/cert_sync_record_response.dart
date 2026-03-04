@@ -7,10 +7,13 @@ import 'control_sync_record_response.dart';
 class CertSyncRecordResponse {
   /// Indicates the status of certification process.
   final pulumi.Input<String>? certificationStatus;
+
   /// The control records list to be synchronized.
   final pulumi.Input<List<ControlSyncRecordResponse>>? controls;
+
   /// Indicates the status of compliance process.
   final pulumi.Input<String>? ingestionStatus;
+
   /// The offerGuid which mapping to the reports.
   final pulumi.Input<String>? offerGuid;
 
@@ -29,7 +32,18 @@ class CertSyncRecordResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificationStatus': ?certificationStatus,
-      'controls': ?pulumi.Input.mapOptionalInputValue<List<ControlSyncRecordResponse>, List<Map<String, dynamic>>>(controls, (value) => pulumi.Input.encodeList<ControlSyncRecordResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'controls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ControlSyncRecordResponse>,
+            List<Map<String, dynamic>>
+          >(
+            controls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ControlSyncRecordResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ingestionStatus': ?ingestionStatus,
       'offerGuid': ?offerGuid,
     };
@@ -37,11 +51,33 @@ class CertSyncRecordResponse {
 
   factory CertSyncRecordResponse.fromMap(Map<String, dynamic> map) {
     return CertSyncRecordResponse(
-      certificationStatus: map['certificationStatus'] == null ? null : (map['certificationStatus']! as String).input(),
-      controls: map['controls'] == null ? null : (pulumi.Input.decodeList<ControlSyncRecordResponse>(map['controls']!, (value) => ControlSyncRecordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingestionStatus: map['ingestionStatus'] == null ? null : (map['ingestionStatus']! as String).input(),
-      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid']! as String).input(),
+      certificationStatus: (() {
+        final guardedValue = map['certificationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controls: (() {
+        final guardedValue = map['controls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ControlSyncRecordResponse>(
+            guardedValue,
+            (value) => ControlSyncRecordResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ingestionStatus: (() {
+        final guardedValue = map['ingestionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offerGuid: (() {
+        final guardedValue = map['offerGuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

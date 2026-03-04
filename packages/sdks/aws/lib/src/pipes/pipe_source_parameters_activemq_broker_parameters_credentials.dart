@@ -13,15 +13,14 @@ class PipeSourceParametersActivemqBrokerParametersCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'basicAuth': basicAuth,
-    };
+    return <String, dynamic>{'basicAuth': basicAuth};
   }
 
-  factory PipeSourceParametersActivemqBrokerParametersCredentials.fromMap(Map<String, dynamic> map) {
+  factory PipeSourceParametersActivemqBrokerParametersCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeSourceParametersActivemqBrokerParametersCredentials(
-      basicAuth: (map['basicAuth'] as String).input(),
+      basicAuth: pulumi.Input.fromValue(map['basicAuth'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentFrontendPrivate {
   /// Specify the method for allocating the private IP. Possible values are `Static` and `Dynamic`.
   final pulumi.Input<String> allocationMethod;
+
   /// Specify the private IP Address.
   final pulumi.Input<String> ipAddress;
+
   /// Specify the Subnet Resource ID for this NGINX Deployment.
   final pulumi.Input<String> subnetId;
 
@@ -30,10 +32,11 @@ class DeploymentFrontendPrivate {
 
   factory DeploymentFrontendPrivate.fromMap(Map<String, dynamic> map) {
     return DeploymentFrontendPrivate(
-      allocationMethod: (map['allocationMethod'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      allocationMethod: pulumi.Input.fromValue(
+        map['allocationMethod'] as String,
+      ),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

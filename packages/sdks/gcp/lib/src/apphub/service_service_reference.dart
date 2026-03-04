@@ -10,20 +10,19 @@ class ServiceServiceReference {
 
   /// Creates a new [ServiceServiceReference].
   /// [uri] (Output)
-  ServiceServiceReference({
-    this.uri,
-  });
+  ServiceServiceReference({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory ServiceServiceReference.fromMap(Map<String, dynamic> map) {
     return ServiceServiceReference(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

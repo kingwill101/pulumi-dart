@@ -1,5 +1,3 @@
-library module_arc;
-
 export 'arc/functions.dart';
 export 'arc/get_resource_bridge_appliance_args.dart';
 export 'arc/get_resource_bridge_appliance_identity.dart';

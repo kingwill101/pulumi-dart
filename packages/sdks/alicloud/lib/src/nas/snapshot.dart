@@ -6,9 +6,9 @@ import 'snapshot_state.dart';
 ///
 /// For information about File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
 ///
-/// > **NOTE:** Available since v1.152.0.
+/// &gt; **NOTE:** Available since v1.152.0.
 ///
-/// > **NOTE:** Only Extreme NAS file systems support the snapshot feature.
+/// &gt; **NOTE:** Only Extreme NAS file systems support the snapshot feature.
 ///
 /// ## Example Usage
 ///
@@ -232,13 +232,17 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The retention period of the snapshot. Unit: days. Valid values:
   /// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
   late final pulumi.Output<int?> retentionDays;
+
   /// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
   late final pulumi.Output<String?> snapshotName;
+
   /// The status of the snapshot.
   late final pulumi.Output<String> status;
 
@@ -251,16 +255,16 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.snapshotName = registerOutput<String?>('snapshotName');
-    this.status = registerOutput<String>('status');
+         'alicloud:nas/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    retentionDays = registerOutput<int?>('retentionDays');
+    snapshotName = registerOutput<String?>('snapshotName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -281,15 +285,15 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.snapshotName = registerOutput<String?>('snapshotName');
-    this.status = registerOutput<String>('status');
+         'alicloud:nas/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    retentionDays = registerOutput<int?>('retentionDays');
+    snapshotName = registerOutput<String?>('snapshotName');
+    status = registerOutput<String>('status');
   }
 }

@@ -2,16 +2,15 @@
 enum Language {
   valuePython("Python");
 
-  const Language(this.value);
-  final String value;
+  const Language(this.wireValue);
+  final String wireValue;
 
   static Language fromValue(String value) {
     for (final item in Language.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Language value: $value');
   }
 }
-

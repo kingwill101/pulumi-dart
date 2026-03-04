@@ -16,11 +16,7 @@ class KeyRingArgs {
   /// [keyRingId] Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   /// [location] Optional.
   /// [project] Optional.
-  KeyRingArgs({
-    this.keyRingId,
-    this.location,
-    this.project,
-  });
+  KeyRingArgs({this.keyRingId, this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +28,21 @@ class KeyRingArgs {
 
   factory KeyRingArgs.fromMap(Map<String, dynamic> map) {
     return KeyRingArgs(
-      keyRingId: map['keyRingId'] == null ? null : (map['keyRingId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      keyRingId: (() {
+        final guardedValue = map['keyRingId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

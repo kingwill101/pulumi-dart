@@ -4,16 +4,15 @@ enum Regionality {
   global("Global"),
   regional("Regional");
 
-  const Regionality(this.value);
-  final String value;
+  const Regionality(this.wireValue);
+  final String wireValue;
 
   static Regionality fromValue(String value) {
     for (final item in Regionality.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Regionality value: $value');
   }
 }
-

@@ -212,6 +212,7 @@ import 'advanced_threat_protection_state.dart';
 class AdvancedThreatProtection extends pulumi.CustomResource {
   /// Should Advanced Threat Protection be enabled on this resource?
   late final pulumi.Output<bool> enabled;
+
   /// The ID of the Azure Resource which to enable Advanced Threat Protection on. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetResourceId;
 
@@ -224,13 +225,13 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
     AdvancedThreatProtectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+         'azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 
   /// Gets an existing [AdvancedThreatProtection] resource's state with the given [name] and [id].
@@ -251,12 +252,12 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
+         'azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    targetResourceId = registerOutput<String>('targetResourceId');
   }
 }

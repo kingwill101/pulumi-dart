@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iac_profile_args.dart';
-import 'iac_template_properties_response.dart';
-import 'stage_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Resource representation of a IacProfile.
@@ -291,40 +289,57 @@ import 'system_data_response.dart';
 class IacProfile extends pulumi.CustomResource {
   /// Determines the authorization status of requests.
   late final pulumi.Output<String> authStatus;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Repository Branch Name
   late final pulumi.Output<String?> branchName;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the Pull Request submitted against the users repository.
   late final pulumi.Output<String> prStatus;
+
   /// The number associated with the submitted pull request.
   late final pulumi.Output<int> pullNumber;
+
   /// Repository Main Branch
   late final pulumi.Output<String?> repositoryMainBranch;
+
   /// Repository Name
   late final pulumi.Output<String?> repositoryName;
+
   /// Repository Owner
   late final pulumi.Output<String?> repositoryOwner;
-  late final pulumi.Output<List<StagePropertiesResponse>?> stages;
+  late final pulumi.Output<List<Map<String, dynamic>>?> stages;
+
   /// Terraform Storage Account Name
   late final pulumi.Output<String?> storageAccountName;
+
   /// Terraform Storage Account Resource Group
   late final pulumi.Output<String?> storageAccountResourceGroup;
+
   /// Terraform Storage Account Subscription
   late final pulumi.Output<String?> storageAccountSubscription;
+
   /// Terraform Container Name
   late final pulumi.Output<String?> storageContainerName;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  late final pulumi.Output<List<IacTemplatePropertiesResponse>?> templates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> templates;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -337,30 +352,34 @@ class IacProfile extends pulumi.CustomResource {
     IacProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devhub:IacProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authStatus = registerOutput<String>('authStatus');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.branchName = registerOutput<String?>('branchName');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:devhub:IacProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authStatus = registerOutput<String>('authStatus');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    branchName = registerOutput<String?>('branchName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.prStatus = registerOutput<String>('prStatus');
-    this.pullNumber = registerOutput<int>('pullNumber');
-    this.repositoryMainBranch = registerOutput<String?>('repositoryMainBranch');
-    this.repositoryName = registerOutput<String?>('repositoryName');
-    this.repositoryOwner = registerOutput<String?>('repositoryOwner');
-    this.stages = registerOutput<List<StagePropertiesResponse>?>('stages');
-    this.storageAccountName = registerOutput<String?>('storageAccountName');
-    this.storageAccountResourceGroup = registerOutput<String?>('storageAccountResourceGroup');
-    this.storageAccountSubscription = registerOutput<String?>('storageAccountSubscription');
-    this.storageContainerName = registerOutput<String?>('storageContainerName');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templates = registerOutput<List<IacTemplatePropertiesResponse>?>('templates');
-    this.type = registerOutput<String>('type');
+    prStatus = registerOutput<String>('prStatus');
+    pullNumber = registerOutput<int>('pullNumber');
+    repositoryMainBranch = registerOutput<String?>('repositoryMainBranch');
+    repositoryName = registerOutput<String?>('repositoryName');
+    repositoryOwner = registerOutput<String?>('repositoryOwner');
+    stages = registerOutput<List<Map<String, dynamic>>?>('stages');
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    storageAccountResourceGroup = registerOutput<String?>(
+      'storageAccountResourceGroup',
+    );
+    storageAccountSubscription = registerOutput<String?>(
+      'storageAccountSubscription',
+    );
+    storageContainerName = registerOutput<String?>('storageContainerName');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templates = registerOutput<List<Map<String, dynamic>>?>('templates');
+    type = registerOutput<String>('type');
   }
 }

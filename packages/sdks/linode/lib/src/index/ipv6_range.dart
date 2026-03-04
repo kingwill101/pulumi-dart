@@ -5,7 +5,7 @@ import 'ipv6_range_state.dart';
 /// Manages a Linode IPv6 range.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-ipv6-range).
 ///
-/// > **NOTICE:** We highly recommend that users do not remove an IPv6 range created by this Terraform resource outside of Terraform. This is because if a user manually removes an IPv6 range created by Terraform, and then assigns some IPv6 ranges to other linodes outside of Terraform, there is a chance that the same IPv6 range can be assigned to another linode, even though the new range is randomly selected. This will result in the newly assigned IPv6 range being managed by this Terraform resource. In this case, the user should manually taint this resource.
+/// &gt; **NOTICE:** We highly recommend that users do not remove an IPv6 range created by this Terraform resource outside of Terraform. This is because if a user manually removes an IPv6 range created by Terraform, and then assigns some IPv6 ranges to other linodes outside of Terraform, there is a chance that the same IPv6 range can be assigned to another linode, even though the new range is randomly selected. This will result in the newly assigned IPv6 range being managed by this Terraform resource. In this case, the user should manually taint this resource.
 ///
 /// ## Example Usage
 ///
@@ -149,16 +149,22 @@ import 'ipv6_range_state.dart';
 class Ipv6Range extends pulumi.CustomResource {
   /// Whether this IPv6 range is shared.
   late final pulumi.Output<bool> isBgp;
+
   /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
   late final pulumi.Output<int?> linodeId;
+
   /// A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
   late final pulumi.Output<List<int>> linodes;
+
   /// The prefix length of the IPv6 range.
   late final pulumi.Output<int> prefixLength;
+
   /// The IPv6 range of addresses in this pool.
   late final pulumi.Output<String> range;
+
   /// The region for this range of IPv6 addresses.
   late final pulumi.Output<String> region;
+
   /// The IPv6 SLAAC address to assign this range to.
   late final pulumi.Output<String> routeTarget;
 
@@ -171,18 +177,18 @@ class Ipv6Range extends pulumi.CustomResource {
     Ipv6RangeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/ipv6Range:Ipv6Range',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isBgp = registerOutput<bool>('isBgp');
-    this.linodeId = registerOutput<int?>('linodeId');
-    this.linodes = registerOutput<List<int>>('linodes');
-    this.prefixLength = registerOutput<int>('prefixLength');
-    this.range = registerOutput<String>('range');
-    this.region = registerOutput<String>('region');
-    this.routeTarget = registerOutput<String>('routeTarget');
+         'linode:index/ipv6Range:Ipv6Range',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isBgp = registerOutput<bool>('isBgp');
+    linodeId = registerOutput<int?>('linodeId');
+    linodes = registerOutput<List<int>>('linodes');
+    prefixLength = registerOutput<int>('prefixLength');
+    range = registerOutput<String>('range');
+    region = registerOutput<String>('region');
+    routeTarget = registerOutput<String>('routeTarget');
   }
 
   /// Gets an existing [Ipv6Range] resource's state with the given [name] and [id].
@@ -203,17 +209,17 @@ class Ipv6Range extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/ipv6Range:Ipv6Range',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isBgp = registerOutput<bool>('isBgp');
-    this.linodeId = registerOutput<int?>('linodeId');
-    this.linodes = registerOutput<List<int>>('linodes');
-    this.prefixLength = registerOutput<int>('prefixLength');
-    this.range = registerOutput<String>('range');
-    this.region = registerOutput<String>('region');
-    this.routeTarget = registerOutput<String>('routeTarget');
+         'linode:index/ipv6Range:Ipv6Range',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isBgp = registerOutput<bool>('isBgp');
+    linodeId = registerOutput<int?>('linodeId');
+    linodes = registerOutput<List<int>>('linodes');
+    prefixLength = registerOutput<int>('prefixLength');
+    range = registerOutput<String>('range');
+    region = registerOutput<String>('region');
+    routeTarget = registerOutput<String>('routeTarget');
   }
 }

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackArgs {
   /// Optional. Flag indicating whether to delete the stack even if it still contains resources.
   final pulumi.Input<bool>? forceDestroy;
+
   /// The name of the organization.
   final pulumi.Input<String> organizationName;
+
   /// The name of the project.
   final pulumi.Input<String> projectName;
+
   /// The name of the stack.
   final pulumi.Input<String> stackName;
 
@@ -39,11 +42,16 @@ class StackArgs {
 
   factory StackArgs.fromMap(Map<String, dynamic> map) {
     return StackArgs(
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
-      organizationName: (map['organizationName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      stackName: (map['stackName'] as String).input(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      stackName: pulumi.Input.fromValue(map['stackName'] as String),
     );
   }
 }
-

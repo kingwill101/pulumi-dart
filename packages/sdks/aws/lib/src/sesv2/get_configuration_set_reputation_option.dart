@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationSetReputationOption {
   /// The date and time (in Unix time) when the reputation metrics were last given a fresh start.
   final pulumi.Input<String> lastFreshStart;
+
   /// Specifies whether tracking of reputation metrics is enabled.
   final pulumi.Input<bool> reputationMetricsEnabled;
 
@@ -23,11 +24,14 @@ class GetConfigurationSetReputationOption {
     };
   }
 
-  factory GetConfigurationSetReputationOption.fromMap(Map<String, dynamic> map) {
+  factory GetConfigurationSetReputationOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConfigurationSetReputationOption(
-      lastFreshStart: (map['lastFreshStart'] as String).input(),
-      reputationMetricsEnabled: (map['reputationMetricsEnabled'] as bool).input(),
+      lastFreshStart: pulumi.Input.fromValue(map['lastFreshStart'] as String),
+      reputationMetricsEnabled: pulumi.Input.fromValue(
+        map['reputationMetricsEnabled'] as bool,
+      ),
     );
   }
 }
-

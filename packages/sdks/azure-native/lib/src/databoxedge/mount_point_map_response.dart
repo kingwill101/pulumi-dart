@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MountPointMapResponse {
   /// Mount point for the share.
   final pulumi.Input<String> mountPoint;
+
   /// Mounting type.
   final pulumi.Input<String> mountType;
+
   /// ID of the role to which share is mounted.
   final pulumi.Input<String> roleId;
+
   /// Role type.
   final pulumi.Input<String> roleType;
+
   /// ID of the share mounted to the role VM.
   final pulumi.Input<String> shareId;
 
@@ -41,12 +45,11 @@ class MountPointMapResponse {
 
   factory MountPointMapResponse.fromMap(Map<String, dynamic> map) {
     return MountPointMapResponse(
-      mountPoint: (map['mountPoint'] as String).input(),
-      mountType: (map['mountType'] as String).input(),
-      roleId: (map['roleId'] as String).input(),
-      roleType: (map['roleType'] as String).input(),
-      shareId: (map['shareId'] as String).input(),
+      mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
+      mountType: pulumi.Input.fromValue(map['mountType'] as String),
+      roleId: pulumi.Input.fromValue(map['roleId'] as String),
+      roleType: pulumi.Input.fromValue(map['roleType'] as String),
+      shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );
   }
 }
-

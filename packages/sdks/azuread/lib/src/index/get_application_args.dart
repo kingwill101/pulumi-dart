@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationArgs {
   /// Specifies the Client ID of the application.
   final pulumi.Input<String>? clientId;
+
   /// Specifies the display name of the application.
   final pulumi.Input<String>? displayName;
+
   /// Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
   ///
-  /// > One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+  /// &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
   final pulumi.Input<String>? identifierUri;
+
   /// Specifies the Object ID of the application.
   final pulumi.Input<String>? objectId;
 
@@ -41,11 +44,26 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identifierUri: (() {
+        final guardedValue = map['identifierUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -12,20 +12,17 @@ class CopilotSettingArgs {
 
   /// Creates a new [CopilotSettingArgs].
   /// [accessControlEnabled] Boolean indicating if role-based access control is enabled for copilot in this tenant.
-  CopilotSettingArgs({
-    required this.accessControlEnabled,
-  });
+  CopilotSettingArgs({required this.accessControlEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accessControlEnabled': accessControlEnabled,
-    };
+    return <String, dynamic>{'accessControlEnabled': accessControlEnabled};
   }
 
   factory CopilotSettingArgs.fromMap(Map<String, dynamic> map) {
     return CopilotSettingArgs(
-      accessControlEnabled: (map['accessControlEnabled'] as bool).input(),
+      accessControlEnabled: pulumi.Input.fromValue(
+        map['accessControlEnabled'] as bool,
+      ),
     );
   }
 }
-

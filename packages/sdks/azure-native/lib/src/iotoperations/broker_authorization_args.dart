@@ -11,14 +11,19 @@ import 'extended_location.dart';
 class BrokerAuthorizationArgs {
   /// Name of Instance broker authorization resource
   final pulumi.Input<String>? authorizationName;
+
   /// Name of broker.
   final pulumi.Input<String> brokerName;
+
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// Name of instance.
   final pulumi.Input<String> instanceName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<BrokerAuthorizationProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -42,22 +47,47 @@ class BrokerAuthorizationArgs {
     return <String, dynamic>{
       'authorizationName': ?authorizationName,
       'brokerName': brokerName,
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
       'instanceName': instanceName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<BrokerAuthorizationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            BrokerAuthorizationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory BrokerAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return BrokerAuthorizationArgs(
-      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName']! as String).input(),
-      brokerName: (map['brokerName'] as String).input(),
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (BrokerAuthorizationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authorizationName: (() {
+        final guardedValue = map['authorizationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      brokerName: pulumi.Input.fromValue(map['brokerName'] as String),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BrokerAuthorizationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

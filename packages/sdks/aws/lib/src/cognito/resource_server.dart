@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_server_args.dart';
-import 'resource_server_scope.dart';
 import 'resource_server_state.dart';
 
 /// Provides a Cognito Resource Server.
@@ -297,14 +296,19 @@ import 'resource_server_state.dart';
 class ResourceServer extends pulumi.CustomResource {
   /// An identifier for the resource server.
   late final pulumi.Output<String> identifier;
+
   /// A name for the resource server.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A list of all scopes configured for this resource server in the format identifier/scope_name.
   late final pulumi.Output<List<String>> scopeIdentifiers;
+
   /// A list of Authorization Scope.
-  late final pulumi.Output<List<ResourceServerScope>?> scopes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
+
   /// User pool the client belongs to.
   late final pulumi.Output<String> userPoolId;
 
@@ -317,17 +321,17 @@ class ResourceServer extends pulumi.CustomResource {
     ResourceServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cognito/resourceServer:ResourceServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identifier = registerOutput<String>('identifier');
+         'aws:cognito/resourceServer:ResourceServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identifier = registerOutput<String>('identifier');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers');
-    this.scopes = registerOutput<List<ResourceServerScope>?>('scopes');
-    this.userPoolId = registerOutput<String>('userPoolId');
+    region = registerOutput<String>('region');
+    scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers');
+    scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
+    userPoolId = registerOutput<String>('userPoolId');
   }
 
   /// Gets an existing [ResourceServer] resource's state with the given [name] and [id].
@@ -348,16 +352,16 @@ class ResourceServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cognito/resourceServer:ResourceServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identifier = registerOutput<String>('identifier');
+         'aws:cognito/resourceServer:ResourceServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identifier = registerOutput<String>('identifier');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers');
-    this.scopes = registerOutput<List<ResourceServerScope>?>('scopes');
-    this.userPoolId = registerOutput<String>('userPoolId');
+    region = registerOutput<String>('region');
+    scopeIdentifiers = registerOutput<List<String>>('scopeIdentifiers');
+    scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
+    userPoolId = registerOutput<String>('userPoolId');
   }
 }

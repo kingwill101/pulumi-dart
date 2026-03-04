@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegatedAdministratorArgs {
   /// The Alibaba Cloud account ID of the member in the resource directory.
   final pulumi.Input<String> accountId;
+
   /// The identifier of the trusted service.
   final pulumi.Input<String> servicePrincipal;
 
@@ -29,9 +30,10 @@ class DelegatedAdministratorArgs {
 
   factory DelegatedAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorArgs(
-      accountId: (map['accountId'] as String).input(),
-      servicePrincipal: (map['servicePrincipal'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      servicePrincipal: pulumi.Input.fromValue(
+        map['servicePrincipal'] as String,
+      ),
     );
   }
 }
-

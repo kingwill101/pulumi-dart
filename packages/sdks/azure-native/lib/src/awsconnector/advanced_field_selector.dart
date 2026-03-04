@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdvancedFieldSelector {
   /// An operator that includes events that match the last few characters of the event record field specified as the value of Field.
   final pulumi.Input<List<String>>? endsWith;
+
   /// An operator that includes events that match the exact value of the event record field specified as the value of Field. This is the only valid operator that you can use with the readOnly, eventCategory, and resources.type fields.
   final pulumi.Input<List<String>>? equals;
+
   /// A field in an event record on which to filter events to be logged. Supported fields include readOnly, eventCategory, eventSource (for management events), eventName, resources.type, and resources.ARN.
   final pulumi.Input<String>? field;
+
   /// An operator that excludes events that match the last few characters of the event record field specified as the value of Field.
   final pulumi.Input<List<String>>? notEndsWith;
+
   /// An operator that excludes events that match the exact value of the event record field specified as the value of Field.
   final pulumi.Input<List<String>>? notEquals;
+
   /// An operator that excludes events that match the first few characters of the event record field specified as the value of Field.
   final pulumi.Input<List<String>>? notStartsWith;
+
   /// An operator that includes events that match the first few characters of the event record field specified as the value of Field.
   final pulumi.Input<List<String>>? startsWith;
 
@@ -51,14 +57,41 @@ class AdvancedFieldSelector {
 
   factory AdvancedFieldSelector.fromMap(Map<String, dynamic> map) {
     return AdvancedFieldSelector(
-      endsWith: map['endsWith'] == null ? null : ((map['endsWith']! as List).cast<String>()).input(),
-      equals: map['equals'] == null ? null : ((map['equals']! as List).cast<String>()).input(),
-      field: map['field'] == null ? null : (map['field']! as String).input(),
-      notEndsWith: map['notEndsWith'] == null ? null : ((map['notEndsWith']! as List).cast<String>()).input(),
-      notEquals: map['notEquals'] == null ? null : ((map['notEquals']! as List).cast<String>()).input(),
-      notStartsWith: map['notStartsWith'] == null ? null : ((map['notStartsWith']! as List).cast<String>()).input(),
-      startsWith: map['startsWith'] == null ? null : ((map['startsWith']! as List).cast<String>()).input(),
+      endsWith: (() {
+        final guardedValue = map['endsWith'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      equals: (() {
+        final guardedValue = map['equals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notEndsWith: (() {
+        final guardedValue = map['notEndsWith'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      notEquals: (() {
+        final guardedValue = map['notEquals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      notStartsWith: (() {
+        final guardedValue = map['notStartsWith'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      startsWith: (() {
+        final guardedValue = map['startsWith'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

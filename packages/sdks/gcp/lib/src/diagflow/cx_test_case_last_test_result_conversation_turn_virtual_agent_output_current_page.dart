@@ -6,8 +6,9 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
   /// (Output)
   /// The human-readable name of the page, unique within the flow.
   final pulumi.Input<String>? displayName;
+
   /// The unique identifier of the page.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
   final pulumi.Input<String>? name;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage].
@@ -19,17 +20,23 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'displayName': ?displayName,
-      'name': ?name,
-    };
+    return <String, dynamic>{'displayName': ?displayName, 'name': ?name};
   }
 
-  factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage.fromMap(Map<String, dynamic> map) {
+  factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

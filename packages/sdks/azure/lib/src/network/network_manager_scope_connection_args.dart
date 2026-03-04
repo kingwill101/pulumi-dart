@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerScopeConnectionArgs {
   /// A description of the Network Manager Scope Connection.
   final pulumi.Input<String>? description;
+
   /// Specifies the name which should be used for this Network Manager Scope Connection. Changing this forces a new Network Manager Scope Connection to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the Network Manager Scope Connection. Changing this forces a new Network Manager Scope Connection to be created.
   final pulumi.Input<String> networkManagerId;
+
   /// Specifies the Resource ID of the target scope which the Network Manager is connected to. It should be either Subscription ID or Management Group ID.
   final pulumi.Input<String> targetScopeId;
+
   /// Specifies the Tenant ID of the Resource which the Network Manager is connected to.
   final pulumi.Input<String> tenantId;
 
@@ -44,12 +48,21 @@ class NetworkManagerScopeConnectionArgs {
 
   factory NetworkManagerScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerScopeConnectionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkManagerId: (map['networkManagerId'] as String).input(),
-      targetScopeId: (map['targetScopeId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkManagerId: pulumi.Input.fromValue(
+        map['networkManagerId'] as String,
+      ),
+      targetScopeId: pulumi.Input.fromValue(map['targetScopeId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

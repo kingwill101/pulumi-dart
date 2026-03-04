@@ -14,16 +14,15 @@ enum BudgetNotificationOperatorType {
   greaterThanOrEqualTo("GreaterThanOrEqualTo"),
   lessThan("LessThan");
 
-  const BudgetNotificationOperatorType(this.value);
-  final String value;
+  const BudgetNotificationOperatorType(this.wireValue);
+  final String wireValue;
 
   static BudgetNotificationOperatorType fromValue(String value) {
     for (final item in BudgetNotificationOperatorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BudgetNotificationOperatorType value: $value');
   }
 }
-

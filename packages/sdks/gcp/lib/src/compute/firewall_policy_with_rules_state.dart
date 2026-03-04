@@ -8,27 +8,38 @@ import 'firewall_policy_with_rules_rule.dart';
 class FirewallPolicyWithRulesState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
   final pulumi.Input<String>? fingerprint;
+
   /// The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
   /// Format: organizations/{organization_id} or folders/{folder_id}
   final pulumi.Input<String>? parent;
+
   /// The unique identifier for the resource. This identifier is defined by the server.
   final pulumi.Input<String>? policyId;
+
   /// A list of pre-define firewall policy rules.
   /// Structure is documented below.
-  final pulumi.Input<List<FirewallPolicyWithRulesPredefinedRule>>? predefinedRules;
+  final pulumi.Input<List<FirewallPolicyWithRulesPredefinedRule>>?
+  predefinedRules;
+
   /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
   final pulumi.Input<int>? ruleTupleCount;
+
   /// A list of firewall policy rules.
   /// Structure is documented below.
   final pulumi.Input<List<FirewallPolicyWithRulesRule>>? rules;
+
   /// Server-defined URL for the resource.
   final pulumi.Input<String>? selfLink;
+
   /// Server-defined URL for this resource with the resource id.
   final pulumi.Input<String>? selfLinkWithId;
+
   /// A textual name of the security policy.
   final pulumi.Input<String>? shortName;
 
@@ -65,9 +76,31 @@ class FirewallPolicyWithRulesState {
       'fingerprint': ?fingerprint,
       'parent': ?parent,
       'policyId': ?policyId,
-      'predefinedRules': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyWithRulesPredefinedRule>, List<Map<String, dynamic>>>(predefinedRules, (value) => pulumi.Input.encodeList<FirewallPolicyWithRulesPredefinedRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'predefinedRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FirewallPolicyWithRulesPredefinedRule>,
+            List<Map<String, dynamic>>
+          >(
+            predefinedRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirewallPolicyWithRulesPredefinedRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ruleTupleCount': ?ruleTupleCount,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyWithRulesRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<FirewallPolicyWithRulesRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FirewallPolicyWithRulesRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirewallPolicyWithRulesRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'selfLink': ?selfLink,
       'selfLinkWithId': ?selfLinkWithId,
       'shortName': ?shortName,
@@ -76,18 +109,75 @@ class FirewallPolicyWithRulesState {
 
   factory FirewallPolicyWithRulesState.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyWithRulesState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
-      predefinedRules: map['predefinedRules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyWithRulesPredefinedRule>(map['predefinedRules']!, (value) => FirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount']! as int).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(map['rules']!, (value) => FirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId']! as String).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
+      creationTimestamp: (() {
+        final guardedValue = map['creationTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      predefinedRules: (() {
+        final guardedValue = map['predefinedRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FirewallPolicyWithRulesPredefinedRule>(
+            guardedValue,
+            (value) => FirewallPolicyWithRulesPredefinedRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ruleTupleCount: (() {
+        final guardedValue = map['ruleTupleCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FirewallPolicyWithRulesRule>(
+            guardedValue,
+            (value) => FirewallPolicyWithRulesRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLinkWithId: (() {
+        final guardedValue = map['selfLinkWithId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shortName: (() {
+        final guardedValue = map['shortName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

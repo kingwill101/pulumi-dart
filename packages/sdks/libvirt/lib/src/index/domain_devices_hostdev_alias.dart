@@ -8,20 +8,15 @@ class DomainDevicesHostdevAlias {
 
   /// Creates a new [DomainDevicesHostdevAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesHostdevAlias({
-    required this.name,
-  });
+  DomainDevicesHostdevAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesHostdevAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

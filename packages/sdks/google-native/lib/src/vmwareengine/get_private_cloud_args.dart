@@ -31,10 +31,13 @@ class GetPrivateCloudArgs {
 
   factory GetPrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudArgs(
-      location: (map['location'] as String).input(),
-      privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

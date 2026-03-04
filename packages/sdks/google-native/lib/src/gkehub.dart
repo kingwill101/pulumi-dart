@@ -1,5 +1,3 @@
-library module_gkehub;
-
 export 'gkehub/anthos_observability_feature_spec.dart';
 export 'gkehub/anthos_observability_feature_spec_gkehub_v1beta.dart';
 export 'gkehub/anthos_observability_feature_spec_response.dart';

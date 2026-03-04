@@ -13,23 +13,20 @@ class GetWebAppArgs {
   /// Creates a new [GetWebAppArgs].
   /// [project] Optional.
   /// [webAppId] Required.
-  GetWebAppArgs({
-    this.project,
-    required this.webAppId,
-  });
+  GetWebAppArgs({this.project, required this.webAppId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'webAppId': webAppId,
-    };
+    return <String, dynamic>{'project': ?project, 'webAppId': webAppId};
   }
 
   factory GetWebAppArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      webAppId: (map['webAppId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webAppId: pulumi.Input.fromValue(map['webAppId'] as String),
     );
   }
 }
-

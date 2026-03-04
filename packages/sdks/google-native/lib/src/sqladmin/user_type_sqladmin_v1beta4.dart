@@ -7,16 +7,15 @@ enum UserTypeSqladminV1beta4 {
   cloudIamGroupUser("CLOUD_IAM_GROUP_USER"),
   cloudIamGroupServiceAccount("CLOUD_IAM_GROUP_SERVICE_ACCOUNT");
 
-  const UserTypeSqladminV1beta4(this.value);
-  final String value;
+  const UserTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static UserTypeSqladminV1beta4 fromValue(String value) {
     for (final item in UserTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserTypeSqladminV1beta4 value: $value');
   }
 }
-

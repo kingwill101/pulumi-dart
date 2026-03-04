@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
   /// Display name of the parameter.
   final pulumi.Input<String>? parameter;
+
   /// The new JSON-encoded value of the parameter. A null value clears the parameter.
   final pulumi.Input<String>? value;
 
@@ -17,17 +18,23 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parameter': ?parameter,
-      'value': ?value,
-    };
+    return <String, dynamic>{'parameter': ?parameter, 'value': ?value};
   }
 
-  factory CxPageTransitionRouteTriggerFulfillmentSetParameterAction.fromMap(Map<String, dynamic> map) {
+  factory CxPageTransitionRouteTriggerFulfillmentSetParameterAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxPageTransitionRouteTriggerFulfillmentSetParameterAction(
-      parameter: map['parameter'] == null ? null : (map['parameter']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      parameter: (() {
+        final guardedValue = map['parameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'session_registry_credentials.dart';
 class CustomContainerTemplate {
   /// List of container definitions for the sessions of the session pool.
   final pulumi.Input<List<SessionContainer>>? containers;
+
   /// Session pool ingress configuration.
   final pulumi.Input<SessionIngress>? ingress;
+
   /// Private container registry credentials for containers used by the sessions of the session pool.
   final pulumi.Input<SessionRegistryCredentials>? registryCredentials;
 
@@ -26,18 +28,61 @@ class CustomContainerTemplate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': ?pulumi.Input.mapOptionalInputValue<List<SessionContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<SessionContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ingress': ?pulumi.Input.mapOptionalInputValue<SessionIngress, Map<String, dynamic>>(ingress, (value) => value.toMap()),
-      'registryCredentials': ?pulumi.Input.mapOptionalInputValue<SessionRegistryCredentials, Map<String, dynamic>>(registryCredentials, (value) => value.toMap()),
+      'containers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SessionContainer>,
+            List<Map<String, dynamic>>
+          >(
+            containers,
+            (value) =>
+                pulumi.Input.encodeList<SessionContainer, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'ingress':
+          ?pulumi.Input.mapOptionalInputValue<
+            SessionIngress,
+            Map<String, dynamic>
+          >(ingress, (value) => value.toMap()),
+      'registryCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            SessionRegistryCredentials,
+            Map<String, dynamic>
+          >(registryCredentials, (value) => value.toMap()),
     };
   }
 
   factory CustomContainerTemplate.fromMap(Map<String, dynamic> map) {
     return CustomContainerTemplate(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<SessionContainer>(map['containers']!, (value) => SessionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (SessionIngress.fromMap((map['ingress']! as Map).cast<String, dynamic>())).input(),
-      registryCredentials: map['registryCredentials'] == null ? null : (SessionRegistryCredentials.fromMap((map['registryCredentials']! as Map).cast<String, dynamic>())).input(),
+      containers: (() {
+        final guardedValue = map['containers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SessionContainer>(
+            guardedValue,
+            (value) => SessionContainer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ingress: (() {
+        final guardedValue = map['ingress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SessionIngress.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      registryCredentials: (() {
+        final guardedValue = map['registryCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SessionRegistryCredentials.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

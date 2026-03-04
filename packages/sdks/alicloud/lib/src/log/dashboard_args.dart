@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardArgs {
   /// Dashboard attribute.
   final pulumi.Input<String>? attribute;
+
   /// Configuration of charts in the dashboard.
   /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
   final pulumi.Input<String> charList;
+
   /// The name of the Log Dashboard.
   final pulumi.Input<String> dashboardName;
+
   /// Dashboard alias.
   final pulumi.Input<String>? displayName;
+
   /// The name of the log project. It is the only in one Alicloud account.
   final pulumi.Input<String> projectName;
 
@@ -45,12 +49,19 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
-      charList: (map['charList'] as String).input(),
-      dashboardName: (map['dashboardName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
+      attribute: (() {
+        final guardedValue = map['attribute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      charList: pulumi.Input.fromValue(map['charList'] as String),
+      dashboardName: pulumi.Input.fromValue(map['dashboardName'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
     );
   }
 }
-

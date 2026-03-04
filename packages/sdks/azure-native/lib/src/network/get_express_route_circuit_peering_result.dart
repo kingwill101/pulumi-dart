@@ -13,52 +13,76 @@ import 'sub_resource_response.dart';
 class GetExpressRouteCircuitPeeringResult {
   /// The Azure ASN.
   final int? azureASN;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The list of circuit connections associated with Azure Private Peering for this circuit.
   final List<ExpressRouteCircuitConnectionResponse>? connections;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// The ExpressRoute connection.
   final ExpressRouteConnectionIdResponse? expressRouteConnection;
+
   /// The GatewayManager Etag.
   final String? gatewayManagerEtag;
+
   /// Resource ID.
   final String? id;
+
   /// The IPv6 peering configuration.
   final Ipv6ExpressRouteCircuitPeeringConfigResponse? ipv6PeeringConfig;
+
   /// Who was the last to modify the peering.
   final String lastModifiedBy;
+
   /// The Microsoft peering configuration.
   final ExpressRouteCircuitPeeringConfigResponse? microsoftPeeringConfig;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
+
   /// The peer ASN.
   final double? peerASN;
+
   /// The list of peered circuit connections associated with Azure Private Peering for this circuit.
   final List<PeerExpressRouteCircuitConnectionResponse> peeredConnections;
+
   /// The peering type.
   final String? peeringType;
+
   /// The primary port.
   final String? primaryAzurePort;
+
   /// The primary address prefix.
   final String? primaryPeerAddressPrefix;
+
   /// The provisioning state of the express route circuit peering resource.
   final String provisioningState;
+
   /// The reference to the RouteFilter resource.
   final SubResourceResponse? routeFilter;
+
   /// The secondary port.
   final String? secondaryAzurePort;
+
   /// The secondary address prefix.
   final String? secondaryPeerAddressPrefix;
+
   /// The shared key.
   final String? sharedKey;
+
   /// The peering state.
   final String? state;
+
   /// The peering stats of express route circuit.
   final ExpressRouteCircuitStatsResponse? stats;
+
   /// Type of the resource.
   final String type;
+
   /// The VLAN ID.
   final int? vlanId;
 
@@ -120,60 +144,169 @@ class GetExpressRouteCircuitPeeringResult {
     return <String, dynamic>{
       'azureASN': ?azureASN,
       'azureApiVersion': azureApiVersion,
-      'connections': ?connections == null ? null : pulumi.Input.encodeList<ExpressRouteCircuitConnectionResponse, Map<String, dynamic>>(connections!, (value) => value.toMap()),
+      'connections': ?(() {
+        final guardedValue = connections;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ExpressRouteCircuitConnectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'etag': etag,
-      'expressRouteConnection': ?expressRouteConnection == null ? null : expressRouteConnection!.toMap(),
+      'expressRouteConnection': ?expressRouteConnection?.toMap(),
       'gatewayManagerEtag': ?gatewayManagerEtag,
       'id': ?id,
-      'ipv6PeeringConfig': ?ipv6PeeringConfig == null ? null : ipv6PeeringConfig!.toMap(),
+      'ipv6PeeringConfig': ?ipv6PeeringConfig?.toMap(),
       'lastModifiedBy': lastModifiedBy,
-      'microsoftPeeringConfig': ?microsoftPeeringConfig == null ? null : microsoftPeeringConfig!.toMap(),
+      'microsoftPeeringConfig': ?microsoftPeeringConfig?.toMap(),
       'name': ?name,
       'peerASN': ?peerASN,
-      'peeredConnections': pulumi.Input.encodeList<PeerExpressRouteCircuitConnectionResponse, Map<String, dynamic>>(peeredConnections, (value) => value.toMap()),
+      'peeredConnections':
+          pulumi.Input.encodeList<
+            PeerExpressRouteCircuitConnectionResponse,
+            Map<String, dynamic>
+          >(peeredConnections, (value) => value.toMap()),
       'peeringType': ?peeringType,
       'primaryAzurePort': ?primaryAzurePort,
       'primaryPeerAddressPrefix': ?primaryPeerAddressPrefix,
       'provisioningState': provisioningState,
-      'routeFilter': ?routeFilter == null ? null : routeFilter!.toMap(),
+      'routeFilter': ?routeFilter?.toMap(),
       'secondaryAzurePort': ?secondaryAzurePort,
       'secondaryPeerAddressPrefix': ?secondaryPeerAddressPrefix,
       'sharedKey': ?sharedKey,
       'state': ?state,
-      'stats': ?stats == null ? null : stats!.toMap(),
+      'stats': ?stats?.toMap(),
       'type': type,
       'vlanId': ?vlanId,
     };
   }
 
-  factory GetExpressRouteCircuitPeeringResult.fromMap(Map<String, dynamic> map) {
+  factory GetExpressRouteCircuitPeeringResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExpressRouteCircuitPeeringResult(
-      azureASN: map['azureASN'] == null ? null : map['azureASN']! as int,
+      azureASN: (() {
+        final guardedValue = map['azureASN'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      connections: map['connections'] == null ? null : pulumi.Input.decodeList<ExpressRouteCircuitConnectionResponse>(map['connections']!, (value) => ExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connections: (() {
+        final guardedValue = map['connections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ExpressRouteCircuitConnectionResponse>(
+          guardedValue,
+          (value) => ExpressRouteCircuitConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       etag: map['etag'] as String,
-      expressRouteConnection: map['expressRouteConnection'] == null ? null : ExpressRouteConnectionIdResponse.fromMap((map['expressRouteConnection']! as Map).cast<String, dynamic>()),
-      gatewayManagerEtag: map['gatewayManagerEtag'] == null ? null : map['gatewayManagerEtag']! as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      ipv6PeeringConfig: map['ipv6PeeringConfig'] == null ? null : Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap((map['ipv6PeeringConfig']! as Map).cast<String, dynamic>()),
+      expressRouteConnection: (() {
+        final guardedValue = map['expressRouteConnection'];
+        if (guardedValue == null) return null;
+        return ExpressRouteConnectionIdResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      gatewayManagerEtag: (() {
+        final guardedValue = map['gatewayManagerEtag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ipv6PeeringConfig: (() {
+        final guardedValue = map['ipv6PeeringConfig'];
+        if (guardedValue == null) return null;
+        return Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       lastModifiedBy: map['lastModifiedBy'] as String,
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : ExpressRouteCircuitPeeringConfigResponse.fromMap((map['microsoftPeeringConfig']! as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name']! as String,
-      peerASN: map['peerASN'] == null ? null : map['peerASN']! as double,
-      peeredConnections: pulumi.Input.decodeList<PeerExpressRouteCircuitConnectionResponse>(map['peeredConnections'], (value) => PeerExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      peeringType: map['peeringType'] == null ? null : map['peeringType']! as String,
-      primaryAzurePort: map['primaryAzurePort'] == null ? null : map['primaryAzurePort']! as String,
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : map['primaryPeerAddressPrefix']! as String,
+      microsoftPeeringConfig: (() {
+        final guardedValue = map['microsoftPeeringConfig'];
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitPeeringConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      peerASN: (() {
+        final guardedValue = map['peerASN'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      peeredConnections:
+          pulumi.Input.decodeList<PeerExpressRouteCircuitConnectionResponse>(
+            map['peeredConnections']!,
+            (value) => PeerExpressRouteCircuitConnectionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      peeringType: (() {
+        final guardedValue = map['peeringType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      primaryAzurePort: (() {
+        final guardedValue = map['primaryAzurePort'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      primaryPeerAddressPrefix: (() {
+        final guardedValue = map['primaryPeerAddressPrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      routeFilter: map['routeFilter'] == null ? null : SubResourceResponse.fromMap((map['routeFilter']! as Map).cast<String, dynamic>()),
-      secondaryAzurePort: map['secondaryAzurePort'] == null ? null : map['secondaryAzurePort']! as String,
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : map['secondaryPeerAddressPrefix']! as String,
-      sharedKey: map['sharedKey'] == null ? null : map['sharedKey']! as String,
-      state: map['state'] == null ? null : map['state']! as String,
-      stats: map['stats'] == null ? null : ExpressRouteCircuitStatsResponse.fromMap((map['stats']! as Map).cast<String, dynamic>()),
+      routeFilter: (() {
+        final guardedValue = map['routeFilter'];
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      secondaryAzurePort: (() {
+        final guardedValue = map['secondaryAzurePort'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secondaryPeerAddressPrefix: (() {
+        final guardedValue = map['secondaryPeerAddressPrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sharedKey: (() {
+        final guardedValue = map['sharedKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      stats: (() {
+        final guardedValue = map['stats'];
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitStatsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
-      vlanId: map['vlanId'] == null ? null : map['vlanId']! as int,
+      vlanId: (() {
+        final guardedValue = map['vlanId'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'vault_state.dart';
 ///
 /// For information about Hybrid Backup Recovery (HBR) Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 ///
-/// > **NOTE:** Available since v1.129.0.
+/// &gt; **NOTE:** Available since v1.129.0.
 ///
 /// ## Example Usage
 ///
@@ -150,30 +150,41 @@ import 'vault_state.dart';
 class Vault extends pulumi.CustomResource {
   /// (Available since v1.243.0) The time when the backup vault was created.
   late final pulumi.Output<String> createTime;
+
   /// The description of Vault. Defaults to an empty string.
   late final pulumi.Output<String?> description;
+
   /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
   /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
   /// - `KMS`: Use Alibaba Cloud Kms to encryption.
   late final pulumi.Output<String> encryptType;
+
   /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
   late final pulumi.Output<String?> kmsKeyId;
+
   /// (Available since v1.243.0) The ID of the region in which the backup vault resides.
   late final pulumi.Output<String> regionId;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the Vault.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The name of Vault.
   late final pulumi.Output<String> vaultName;
+
   /// The storage class of Vault. Valid values: `STANDARD`.
   late final pulumi.Output<String> vaultStorageClass;
+
   /// The type of Vault. Valid values:
   /// - `STANDARD`: Standard backup vault.
   /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
   late final pulumi.Output<String> vaultType;
+
   /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> wormEnabled;
 
@@ -181,36 +192,29 @@ class Vault extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vault]. {@macro pulumi_hbr_vault_vault_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vault(
-    String name, {
-    VaultArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:hbr/vault:Vault',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.encryptType = registerOutput<String>('encryptType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vaultName = registerOutput<String>('vaultName');
-    this.vaultStorageClass = registerOutput<String>('vaultStorageClass');
-    this.vaultType = registerOutput<String>('vaultType');
-    this.wormEnabled = registerOutput<bool?>('wormEnabled');
+  Vault(String name, {VaultArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:hbr/vault:Vault',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    encryptType = registerOutput<String>('encryptType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vaultName = registerOutput<String>('vaultName');
+    vaultStorageClass = registerOutput<String>('vaultStorageClass');
+    vaultType = registerOutput<String>('vaultType');
+    wormEnabled = registerOutput<bool?>('wormEnabled');
   }
 
   /// Gets an existing [Vault] resource's state with the given [name] and [id].
-  static Vault get(
-    String name,
-    pulumi.Input<String> id, {
-    VaultState? state,
-  }) {
+  static Vault get(String name, pulumi.Input<String> id, {VaultState? state}) {
     return Vault._get(
       name,
       state: state?.toMap(),
@@ -223,22 +227,22 @@ class Vault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/vault:Vault',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.encryptType = registerOutput<String>('encryptType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vaultName = registerOutput<String>('vaultName');
-    this.vaultStorageClass = registerOutput<String>('vaultStorageClass');
-    this.vaultType = registerOutput<String>('vaultType');
-    this.wormEnabled = registerOutput<bool?>('wormEnabled');
+         'alicloud:hbr/vault:Vault',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    encryptType = registerOutput<String>('encryptType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vaultName = registerOutput<String>('vaultName');
+    vaultStorageClass = registerOutput<String>('vaultStorageClass');
+    vaultType = registerOutput<String>('vaultType');
+    wormEnabled = registerOutput<bool?>('wormEnabled');
   }
 }

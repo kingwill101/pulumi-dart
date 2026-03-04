@@ -39,12 +39,19 @@ class GetTaskArgs {
 
   factory GetTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      queueId: (map['queueId'] as String).input(),
-      responseView: map['responseView'] == null ? null : (map['responseView']! as String).input(),
-      taskId: (map['taskId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueId: pulumi.Input.fromValue(map['queueId'] as String),
+      responseView: (() {
+        final guardedValue = map['responseView'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskId: pulumi.Input.fromValue(map['taskId'] as String),
     );
   }
 }
-

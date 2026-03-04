@@ -29,12 +29,19 @@ class GetTlsInspectionPolicyNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetTlsInspectionPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetTlsInspectionPolicyNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTlsInspectionPolicyNetworksecurityV1beta1Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tlsInspectionPolicyId: (map['tlsInspectionPolicyId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tlsInspectionPolicyId: pulumi.Input.fromValue(
+        map['tlsInspectionPolicyId'] as String,
+      ),
     );
   }
 }
-

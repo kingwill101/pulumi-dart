@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue {
   /// The plain text of the client secret value.
   final pulumi.Input<String> plainText;
+
   /// (Output)
   /// A thumbprint to represent the current client secret value.
   final pulumi.Input<String>? thumbprint;
@@ -18,17 +19,19 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'plainText': plainText,
-      'thumbprint': ?thumbprint,
-    };
+    return <String, dynamic>{'plainText': plainText, 'thumbprint': ?thumbprint};
   }
 
-  factory WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue.fromMap(Map<String, dynamic> map) {
+  factory WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue(
-      plainText: (map['plainText'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      plainText: pulumi.Input.fromValue(map['plainText'] as String),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

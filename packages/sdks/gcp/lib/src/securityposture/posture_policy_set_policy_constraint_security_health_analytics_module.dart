@@ -6,6 +6,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
   /// The state of enablement for the module at its level of the resource hierarchy.
   /// Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? moduleEnablementState;
+
   /// The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
   final pulumi.Input<String> moduleName;
 
@@ -24,11 +25,16 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
     };
   }
 
-  factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule.fromMap(Map<String, dynamic> map) {
+  factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule(
-      moduleEnablementState: map['moduleEnablementState'] == null ? null : (map['moduleEnablementState']! as String).input(),
-      moduleName: (map['moduleName'] as String).input(),
+      moduleEnablementState: (() {
+        final guardedValue = map['moduleEnablementState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      moduleName: pulumi.Input.fromValue(map['moduleName'] as String),
     );
   }
 }
-

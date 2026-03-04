@@ -6,7 +6,7 @@ import 'account_state.dart';
 
 /// Manages a NetApp Account.
 ///
-/// > **Note:** Azure allows only one active directory can be joined to a single subscription at a time for NetApp Account.
+/// &gt; **Note:** Azure allows only one active directory can be joined to a single subscription at a time for NetApp Account.
 ///
 /// ## NetApp Account Usage
 ///
@@ -288,7 +288,7 @@ import 'account_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -301,18 +301,23 @@ import 'account_state.dart';
 /// $ pulumi import azure:netapp/account:Account example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.NetApp/netAppAccounts/account1
 /// ```
 ///
-/// > **Note:** When importing a NetApp account, the `active_directory.password` and `active_directory.server_root_ca_certificate` values *cannot* be retrieved from the Azure API and will need to be redeclared within the resource.
+/// &gt; **Note:** When importing a NetApp account, the `active_directory.password` and `active_directory.server_root_ca_certificate` values *cannot* be retrieved from the Azure API and will need to be redeclared within the resource.
 class Account extends pulumi.CustomResource {
   /// A `active_directory` block as defined below.
   late final pulumi.Output<AccountActiveDirectory?> activeDirectory;
+
   /// The `identity` block where it is used when customer managed keys based encryption will be enabled as defined below.
   late final pulumi.Output<AccountIdentity?> identity;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the NetApp Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group where the NetApp Account should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -325,17 +330,19 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeDirectory = registerOutput<AccountActiveDirectory?>('activeDirectory');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:netapp/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeDirectory = registerOutput<AccountActiveDirectory?>(
+      'activeDirectory',
+    );
+    identity = registerOutput<AccountIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -356,16 +363,18 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeDirectory = registerOutput<AccountActiveDirectory?>('activeDirectory');
-    this.identity = registerOutput<AccountIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:netapp/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeDirectory = registerOutput<AccountActiveDirectory?>(
+      'activeDirectory',
+    );
+    identity = registerOutput<AccountIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

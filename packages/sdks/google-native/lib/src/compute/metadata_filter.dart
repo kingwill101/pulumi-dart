@@ -8,29 +8,58 @@ import 'metadata_filter_label_match.dart';
 class MetadataFilter {
   /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
   final pulumi.Input<List<MetadataFilterLabelMatch>>? filterLabels;
+
   /// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
   final pulumi.Input<MetadataFilterFilterMatchCriteria>? filterMatchCriteria;
 
   /// Creates a new [MetadataFilter].
   /// [filterLabels] The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
   /// [filterMatchCriteria] Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
-  MetadataFilter({
-    this.filterLabels,
-    this.filterMatchCriteria,
-  });
+  MetadataFilter({this.filterLabels, this.filterMatchCriteria});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterLabels': ?pulumi.Input.mapOptionalInputValue<List<MetadataFilterLabelMatch>, List<Map<String, dynamic>>>(filterLabels, (value) => pulumi.Input.encodeList<MetadataFilterLabelMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'filterMatchCriteria': ?pulumi.Input.mapOptionalInputValue<MetadataFilterFilterMatchCriteria, String>(filterMatchCriteria, (value) => value.value),
+      'filterLabels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MetadataFilterLabelMatch>,
+            List<Map<String, dynamic>>
+          >(
+            filterLabels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MetadataFilterLabelMatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'filterMatchCriteria':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetadataFilterFilterMatchCriteria,
+            String
+          >(filterMatchCriteria, (value) => value.wireValue),
     };
   }
 
   factory MetadataFilter.fromMap(Map<String, dynamic> map) {
     return MetadataFilter(
-      filterLabels: map['filterLabels'] == null ? null : (pulumi.Input.decodeList<MetadataFilterLabelMatch>(map['filterLabels']!, (value) => MetadataFilterLabelMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filterMatchCriteria: map['filterMatchCriteria'] == null ? null : (MetadataFilterFilterMatchCriteria.fromValue(map['filterMatchCriteria']! as String)).input(),
+      filterLabels: (() {
+        final guardedValue = map['filterLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MetadataFilterLabelMatch>(
+            guardedValue,
+            (value) => MetadataFilterLabelMatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      filterMatchCriteria: (() {
+        final guardedValue = map['filterMatchCriteria'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetadataFilterFilterMatchCriteria.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyVMWorkloadProtectionPolicyRetentionWeekly {
   /// The number of weekly backups to keep. Possible values are between `1` and `5163`.
   final pulumi.Input<int> count;
+
   /// The weekday backups to retain. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
   final pulumi.Input<List<String>> weekdays;
 
@@ -17,17 +18,17 @@ class PolicyVMWorkloadProtectionPolicyRetentionWeekly {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'weekdays': weekdays,
-    };
+    return <String, dynamic>{'count': count, 'weekdays': weekdays};
   }
 
-  factory PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap(Map<String, dynamic> map) {
+  factory PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyVMWorkloadProtectionPolicyRetentionWeekly(
-      count: (map['count'] as int).input(),
-      weekdays: ((map['weekdays'] as List).cast<String>()).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      weekdays: pulumi.Input.fromValue(
+        (map['weekdays'] as List).cast<String>(),
+      ),
     );
   }
 }
-

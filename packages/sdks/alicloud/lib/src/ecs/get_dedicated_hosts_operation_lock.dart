@@ -8,20 +8,19 @@ class GetDedicatedHostsOperationLock {
 
   /// Creates a new [GetDedicatedHostsOperationLock].
   /// [lockReason] The reason why the dedicated host resource is locked.
-  GetDedicatedHostsOperationLock({
-    this.lockReason,
-  });
+  GetDedicatedHostsOperationLock({this.lockReason});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lockReason': ?lockReason,
-    };
+    return <String, dynamic>{'lockReason': ?lockReason};
   }
 
   factory GetDedicatedHostsOperationLock.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsOperationLock(
-      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
+      lockReason: (() {
+        final guardedValue = map['lockReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

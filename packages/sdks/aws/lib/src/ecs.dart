@@ -1,5 +1,3 @@
-library module_ecs;
-
 export 'ecs/account_setting_default.dart';
 export 'ecs/account_setting_default_args.dart';
 export 'ecs/account_setting_default_state.dart';

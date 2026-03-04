@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleServerActiveDirectoryAdministratorArgs {
   /// The object ID of a user, service principal or security group in the Azure Active Directory tenant set as the Flexible Server Admin. Changing this forces a new resource to be created.
   final pulumi.Input<String> objectId;
+
   /// The name of Azure Active Directory principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalName;
+
   /// The type of Azure Active Directory principal. Possible values are `Group`, `ServicePrincipal` and `User`. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalType;
+
   /// The name of the resource group for the PostgreSQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the PostgreSQL Flexible Server on which to set the administrator. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverName;
+
   /// The Azure Tenant ID. Changing this forces a new resource to be created.
   final pulumi.Input<String> tenantId;
 
@@ -47,15 +52,18 @@ class FlexibleServerActiveDirectoryAdministratorArgs {
     };
   }
 
-  factory FlexibleServerActiveDirectoryAdministratorArgs.fromMap(Map<String, dynamic> map) {
+  factory FlexibleServerActiveDirectoryAdministratorArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlexibleServerActiveDirectoryAdministratorArgs(
-      objectId: (map['objectId'] as String).input(),
-      principalName: (map['principalName'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      principalName: pulumi.Input.fromValue(map['principalName'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

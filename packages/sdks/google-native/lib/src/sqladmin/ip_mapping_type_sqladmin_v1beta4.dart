@@ -6,16 +6,15 @@ enum IpMappingTypeSqladminV1beta4 {
   private("PRIVATE"),
   migrated1stGen("MIGRATED_1ST_GEN");
 
-  const IpMappingTypeSqladminV1beta4(this.value);
-  final String value;
+  const IpMappingTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static IpMappingTypeSqladminV1beta4 fromValue(String value) {
     for (final item in IpMappingTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpMappingTypeSqladminV1beta4 value: $value');
   }
 }
-

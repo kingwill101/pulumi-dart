@@ -8,20 +8,19 @@ class DomainFeaturesCapabilitiesMkNod {
 
   /// Creates a new [DomainFeaturesCapabilitiesMkNod].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesMkNod({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesMkNod({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesCapabilitiesMkNod.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesMkNod(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

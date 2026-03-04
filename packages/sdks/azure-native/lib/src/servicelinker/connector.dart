@@ -202,28 +202,41 @@ import 'vnet_solution_response.dart';
 class Connector extends pulumi.CustomResource {
   /// The authentication type.
   late final pulumi.Output<AccessKeyInfoBaseResponse?> authInfo;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The application client type
   late final pulumi.Output<String?> clientType;
+
   /// The connection information consumed by applications, including secrets, connection strings.
   late final pulumi.Output<ConfigurationInfoResponse?> configurationInfo;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The network solution.
-  late final pulumi.Output<PublicNetworkSolutionResponse?> publicNetworkSolution;
+  late final pulumi.Output<PublicNetworkSolutionResponse?>
+  publicNetworkSolution;
+
   /// connection scope in source service.
   late final pulumi.Output<String?> scope;
+
   /// An option to store secret value in secure place
   late final pulumi.Output<SecretStoreResponse?> secretStore;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The target service properties
   late final pulumi.Output<AzureResourceResponse?> targetService;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The VNet solution.
   late final pulumi.Output<VNetSolutionResponse?> vNetSolution;
 
@@ -236,23 +249,27 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicelinker:Connector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authInfo = registerOutput<AccessKeyInfoBaseResponse?>('authInfo');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientType = registerOutput<String?>('clientType');
-    this.configurationInfo = registerOutput<ConfigurationInfoResponse?>('configurationInfo');
+         'azure-native:servicelinker:Connector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authInfo = registerOutput<AccessKeyInfoBaseResponse?>('authInfo');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientType = registerOutput<String?>('clientType');
+    configurationInfo = registerOutput<ConfigurationInfoResponse?>(
+      'configurationInfo',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkSolution = registerOutput<PublicNetworkSolutionResponse?>('publicNetworkSolution');
-    this.scope = registerOutput<String?>('scope');
-    this.secretStore = registerOutput<SecretStoreResponse?>('secretStore');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetService = registerOutput<AzureResourceResponse?>('targetService');
-    this.type = registerOutput<String>('type');
-    this.vNetSolution = registerOutput<VNetSolutionResponse?>('vNetSolution');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkSolution = registerOutput<PublicNetworkSolutionResponse?>(
+      'publicNetworkSolution',
+    );
+    scope = registerOutput<String?>('scope');
+    secretStore = registerOutput<SecretStoreResponse?>('secretStore');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetService = registerOutput<AzureResourceResponse?>('targetService');
+    type = registerOutput<String>('type');
+    vNetSolution = registerOutput<VNetSolutionResponse?>('vNetSolution');
   }
 }

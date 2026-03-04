@@ -3,16 +3,15 @@ enum HealthProbeEnabled {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const HealthProbeEnabled(this.value);
-  final String value;
+  const HealthProbeEnabled(this.wireValue);
+  final String wireValue;
 
   static HealthProbeEnabled fromValue(String value) {
     for (final item in HealthProbeEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HealthProbeEnabled value: $value');
   }
 }
-

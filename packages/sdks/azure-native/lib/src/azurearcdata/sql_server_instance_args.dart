@@ -10,12 +10,16 @@ import 'sql_server_instance_properties.dart';
 class SqlServerInstanceArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// null
   final pulumi.Input<SqlServerInstanceProperties>? properties;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server Instance
   final pulumi.Input<String>? sqlServerInstanceName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,7 +40,11 @@ class SqlServerInstanceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<SqlServerInstanceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SqlServerInstanceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sqlServerInstanceName': ?sqlServerInstanceName,
       'tags': ?tags,
@@ -45,12 +53,35 @@ class SqlServerInstanceArgs {
 
   factory SqlServerInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerInstanceArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (SqlServerInstanceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerInstanceName: map['sqlServerInstanceName'] == null ? null : (map['sqlServerInstanceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SqlServerInstanceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerInstanceName: (() {
+        final guardedValue = map['sqlServerInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

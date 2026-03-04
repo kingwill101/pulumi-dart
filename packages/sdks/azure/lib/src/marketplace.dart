@@ -1,5 +1,3 @@
-library module_marketplace;
-
 export 'marketplace/agreement.dart';
 export 'marketplace/agreement_args.dart';
 export 'marketplace/agreement_state.dart';

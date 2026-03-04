@@ -8,12 +8,16 @@ import 'sub_resource.dart';
 class ForwardingConfiguration {
   /// A reference to the BackendPool which this rule routes to.
   final pulumi.Input<SubResource>? backendPool;
+
   /// The caching configuration associated with this rule.
   final pulumi.Input<CacheConfiguration>? cacheConfiguration;
+
   /// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
   final pulumi.Input<String>? customForwardingPath;
+
   /// Protocol this rule will use when forwarding traffic to backends.
   final pulumi.Input<String>? forwardingProtocol;
+
   /// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
   final pulumi.Input<String> odataType;
 
@@ -33,8 +37,16 @@ class ForwardingConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendPool': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendPool, (value) => value.toMap()),
-      'cacheConfiguration': ?pulumi.Input.mapOptionalInputValue<CacheConfiguration, Map<String, dynamic>>(cacheConfiguration, (value) => value.toMap()),
+      'backendPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(backendPool, (value) => value.toMap()),
+      'cacheConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheConfiguration,
+            Map<String, dynamic>
+          >(cacheConfiguration, (value) => value.toMap()),
       'customForwardingPath': ?customForwardingPath,
       'forwardingProtocol': ?forwardingProtocol,
       'odataType': odataType,
@@ -43,12 +55,33 @@ class ForwardingConfiguration {
 
   factory ForwardingConfiguration.fromMap(Map<String, dynamic> map) {
     return ForwardingConfiguration(
-      backendPool: map['backendPool'] == null ? null : (SubResource.fromMap((map['backendPool']! as Map).cast<String, dynamic>())).input(),
-      cacheConfiguration: map['cacheConfiguration'] == null ? null : (CacheConfiguration.fromMap((map['cacheConfiguration']! as Map).cast<String, dynamic>())).input(),
-      customForwardingPath: map['customForwardingPath'] == null ? null : (map['customForwardingPath']! as String).input(),
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol']! as String).input(),
-      odataType: (map['odataType'] as String).input(),
+      backendPool: (() {
+        final guardedValue = map['backendPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      cacheConfiguration: (() {
+        final guardedValue = map['cacheConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      customForwardingPath: (() {
+        final guardedValue = map['customForwardingPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forwardingProtocol: (() {
+        final guardedValue = map['forwardingProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      odataType: pulumi.Input.fromValue(map['odataType'] as String),
     );
   }
 }
-

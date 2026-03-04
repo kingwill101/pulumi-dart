@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelReference {
   /// The ID of the dataset containing this model.
   final pulumi.Input<String> datasetId;
+
   /// The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
   final pulumi.Input<String> modelId;
+
   /// The ID of the project containing this model.
   final pulumi.Input<String> project;
 
@@ -30,10 +32,9 @@ class ModelReference {
 
   factory ModelReference.fromMap(Map<String, dynamic> map) {
     return ModelReference(
-      datasetId: (map['datasetId'] as String).input(),
-      modelId: (map['modelId'] as String).input(),
-      project: (map['project'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

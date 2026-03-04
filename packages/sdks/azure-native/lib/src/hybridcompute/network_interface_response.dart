@@ -10,20 +10,39 @@ class NetworkInterfaceResponse {
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipAddresses] The list of IP addresses in this interface.
-  NetworkInterfaceResponse({
-    this.ipAddresses,
-  });
+  NetworkInterfaceResponse({this.ipAddresses});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipAddresses': ?pulumi.Input.mapOptionalInputValue<List<IpAddressResponse>, List<Map<String, dynamic>>>(ipAddresses, (value) => pulumi.Input.encodeList<IpAddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipAddresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpAddressResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpAddressResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      ipAddresses: map['ipAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['ipAddresses']!, (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddresses: (() {
+        final guardedValue = map['ipAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpAddressResponse>(
+            guardedValue,
+            (value) => IpAddressResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

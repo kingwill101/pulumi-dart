@@ -7,20 +7,28 @@ import 'get_custom_domains_domain_route_config.dart';
 class GetCustomDomainsDomain {
   /// The account id.
   final pulumi.Input<String> accountId;
+
   /// The API version of the Function Compute service.
   final pulumi.Input<String> apiVersion;
+
   /// The configuration of HTTPS certificate.
   final pulumi.Input<GetCustomDomainsDomainCertConfig> certConfig;
+
   /// The created time of the custom domain.
   final pulumi.Input<String> createdTime;
+
   /// The custom domain name.
   final pulumi.Input<String> domainName;
+
   /// The custom domain id, same as domain name.
   final pulumi.Input<String> id;
+
   /// The last modified time of the custom domain.
   final pulumi.Input<String> lastModifiedTime;
+
   /// The custom domain protocol.
   final pulumi.Input<String> protocol;
+
   /// The configuration of domain route, mapping the path and Function Compute function.
   final pulumi.Input<List<GetCustomDomainsDomainRouteConfig>> routeConfigs;
 
@@ -50,28 +58,55 @@ class GetCustomDomainsDomain {
     return <String, dynamic>{
       'accountId': accountId,
       'apiVersion': apiVersion,
-      'certConfig': pulumi.Input.mapInputValue<GetCustomDomainsDomainCertConfig, Map<String, dynamic>>(certConfig, (value) => value.toMap()),
+      'certConfig':
+          pulumi.Input.mapInputValue<
+            GetCustomDomainsDomainCertConfig,
+            Map<String, dynamic>
+          >(certConfig, (value) => value.toMap()),
       'createdTime': createdTime,
       'domainName': domainName,
       'id': id,
       'lastModifiedTime': lastModifiedTime,
       'protocol': protocol,
-      'routeConfigs': pulumi.Input.mapInputValue<List<GetCustomDomainsDomainRouteConfig>, List<Map<String, dynamic>>>(routeConfigs, (value) => pulumi.Input.encodeList<GetCustomDomainsDomainRouteConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeConfigs':
+          pulumi.Input.mapInputValue<
+            List<GetCustomDomainsDomainRouteConfig>,
+            List<Map<String, dynamic>>
+          >(
+            routeConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCustomDomainsDomainRouteConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetCustomDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainsDomain(
-      accountId: (map['accountId'] as String).input(),
-      apiVersion: (map['apiVersion'] as String).input(),
-      certConfig: (GetCustomDomainsDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
-      createdTime: (map['createdTime'] as String).input(),
-      domainName: (map['domainName'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastModifiedTime: (map['lastModifiedTime'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      routeConfigs: (pulumi.Input.decodeList<GetCustomDomainsDomainRouteConfig>(map['routeConfigs'], (value) => GetCustomDomainsDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      apiVersion: pulumi.Input.fromValue(map['apiVersion'] as String),
+      certConfig: pulumi.Input.fromValue(
+        GetCustomDomainsDomainCertConfig.fromMap(
+          (map['certConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      createdTime: pulumi.Input.fromValue(map['createdTime'] as String),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastModifiedTime: pulumi.Input.fromValue(
+        map['lastModifiedTime'] as String,
+      ),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      routeConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetCustomDomainsDomainRouteConfig>(
+          map['routeConfigs']!,
+          (value) => GetCustomDomainsDomainRouteConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

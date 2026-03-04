@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteEntriesArgs {
   /// The destination CIDR block of the route entry.
   final pulumi.Input<String>? cidrBlock;
+
   /// The instance ID of the next hop.
   final pulumi.Input<String>? instanceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the router table to which the route entry belongs.
   final pulumi.Input<String> routeTableId;
+
   /// The type of the route entry.
   final pulumi.Input<String>? type;
 
@@ -44,12 +48,27 @@ class GetRouteEntriesArgs {
 
   factory GetRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

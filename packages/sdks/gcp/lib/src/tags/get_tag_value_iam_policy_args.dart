@@ -12,20 +12,15 @@ class GetTagValueIamPolicyArgs {
 
   /// Creates a new [GetTagValueIamPolicyArgs].
   /// [tagValue] Used to find the parent resource to bind the IAM policy to
-  GetTagValueIamPolicyArgs({
-    required this.tagValue,
-  });
+  GetTagValueIamPolicyArgs({required this.tagValue});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tagValue': tagValue,
-    };
+    return <String, dynamic>{'tagValue': tagValue};
   }
 
   factory GetTagValueIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagValueIamPolicyArgs(
-      tagValue: (map['tagValue'] as String).input(),
+      tagValue: pulumi.Input.fromValue(map['tagValue'] as String),
     );
   }
 }
-

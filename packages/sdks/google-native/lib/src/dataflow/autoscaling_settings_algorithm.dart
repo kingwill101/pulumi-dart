@@ -4,16 +4,15 @@ enum AutoscalingSettingsAlgorithm {
   autoscalingAlgorithmNone("AUTOSCALING_ALGORITHM_NONE"),
   autoscalingAlgorithmBasic("AUTOSCALING_ALGORITHM_BASIC");
 
-  const AutoscalingSettingsAlgorithm(this.value);
-  final String value;
+  const AutoscalingSettingsAlgorithm(this.wireValue);
+  final String wireValue;
 
   static AutoscalingSettingsAlgorithm fromValue(String value) {
     for (final item in AutoscalingSettingsAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoscalingSettingsAlgorithm value: $value');
   }
 }
-

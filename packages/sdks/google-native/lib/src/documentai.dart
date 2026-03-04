@@ -1,5 +1,3 @@
-library module_documentai;
-
 export 'documentai/functions.dart';
 export 'documentai/get_processor_args.dart';
 export 'documentai/get_processor_documentai_v1beta3_args.dart';

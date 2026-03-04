@@ -6,9 +6,9 @@ import 'product_state.dart';
 ///
 /// For information about MHUB Product and how to use it, see [What is Product](https://help.aliyun.com/product/65109.html).
 ///
-/// > **NOTE:** Available since v1.138.0+.
+/// &gt; **NOTE:** Available since v1.138.0+.
 ///
-/// > **NOTE:** At present, the resource only supports cn-shanghai region.
+/// &gt; **NOTE:** At present, the resource only supports cn-shanghai region.
 ///
 /// ## Example Usage
 ///
@@ -122,12 +122,12 @@ class Product extends pulumi.CustomResource {
     ProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mhub/product:Product',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
+         'alicloud:mhub/product:Product',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    productName = registerOutput<String>('productName');
   }
 
   /// Gets an existing [Product] resource's state with the given [name] and [id].
@@ -148,11 +148,11 @@ class Product extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mhub/product:Product',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
+         'alicloud:mhub/product:Product',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    productName = registerOutput<String>('productName');
   }
 }

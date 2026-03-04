@@ -9,20 +9,19 @@ class MonthlyTransfer {
 
   /// Creates a new [MonthlyTransfer].
   /// [gbPerMonthAllocated] GbPerMonthAllocated of the Instance.
-  MonthlyTransfer({
-    this.gbPerMonthAllocated,
-  });
+  MonthlyTransfer({this.gbPerMonthAllocated});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gbPerMonthAllocated': ?gbPerMonthAllocated,
-    };
+    return <String, dynamic>{'gbPerMonthAllocated': ?gbPerMonthAllocated};
   }
 
   factory MonthlyTransfer.fromMap(Map<String, dynamic> map) {
     return MonthlyTransfer(
-      gbPerMonthAllocated: map['gbPerMonthAllocated'] == null ? null : (map['gbPerMonthAllocated']! as String).input(),
+      gbPerMonthAllocated: (() {
+        final guardedValue = map['gbPerMonthAllocated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

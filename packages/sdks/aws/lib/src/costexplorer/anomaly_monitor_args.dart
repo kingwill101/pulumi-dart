@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnomalyMonitorArgs {
   /// The dimensions to evaluate. Valid values: `SERVICE`.
   final pulumi.Input<String>? monitorDimension;
+
   /// A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
   final pulumi.Input<String>? monitorSpecification;
+
   /// The possible type values. Valid values: `DIMENSIONAL` | `CUSTOM`.
   final pulumi.Input<String> monitorType;
+
   /// The name of the monitor.
   final pulumi.Input<String>? name;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,29 @@ class AnomalyMonitorArgs {
 
   factory AnomalyMonitorArgs.fromMap(Map<String, dynamic> map) {
     return AnomalyMonitorArgs(
-      monitorDimension: map['monitorDimension'] == null ? null : ((map['monitorDimension'] as String).input()).input(),
-      monitorSpecification: map['monitorSpecification'] == null ? null : ((map['monitorSpecification'] as String).input()).input(),
-      monitorType: (map['monitorType'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      monitorDimension: (() {
+        final guardedValue = map['monitorDimension'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitorSpecification: (() {
+        final guardedValue = map['monitorSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitorType: pulumi.Input.fromValue(map['monitorType'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

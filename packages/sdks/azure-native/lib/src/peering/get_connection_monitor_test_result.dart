@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConnectionMonitorTest.
 class GetConnectionMonitorTestResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The Connection Monitor test destination
   final String? destination;
+
   /// The Connection Monitor test destination port
   final int? destinationPort;
+
   /// The ID of the resource.
   final String id;
+
   /// The flag that indicates if the Connection Monitor test is successful or not.
   final bool isTestSuccessful;
+
   /// The name of the resource.
   final String name;
+
   /// The path representing the Connection Monitor test.
   final List<String> path;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// The Connection Monitor test source agent
   final String? sourceAgent;
+
   /// The Connection Monitor test frequency in seconds
   final int? testFrequencyInSec;
+
   /// The type of the resource.
   final String type;
 
@@ -71,17 +80,32 @@ class GetConnectionMonitorTestResult {
   factory GetConnectionMonitorTestResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorTestResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      destination: map['destination'] == null ? null : map['destination']! as String,
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort']! as int,
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      destinationPort: (() {
+        final guardedValue = map['destinationPort'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       id: map['id'] as String,
       isTestSuccessful: map['isTestSuccessful'] as bool,
       name: map['name'] as String,
       path: (map['path'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
-      sourceAgent: map['sourceAgent'] == null ? null : map['sourceAgent']! as String,
-      testFrequencyInSec: map['testFrequencyInSec'] == null ? null : map['testFrequencyInSec']! as int,
+      sourceAgent: (() {
+        final guardedValue = map['sourceAgent'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      testFrequencyInSec: (() {
+        final guardedValue = map['testFrequencyInSec'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

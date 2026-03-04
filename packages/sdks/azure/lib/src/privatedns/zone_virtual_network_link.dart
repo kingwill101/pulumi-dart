@@ -233,7 +233,7 @@ import 'zone_virtual_network_link_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2024-06-01
@@ -248,16 +248,22 @@ import 'zone_virtual_network_link_state.dart';
 class ZoneVirtualNetworkLink extends pulumi.CustomResource {
   /// The name of the Private DNS Zone Virtual Network Link. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Private DNS zone (without a terminating dot). Changing this forces a new resource to be created.
   late final pulumi.Output<String> privateDnsZoneName;
+
   /// Is auto-registration of virtual machine records in the virtual network in the Private DNS zone enabled? Defaults to `false`.
   late final pulumi.Output<bool?> registrationEnabled;
+
   /// Specifies the resolution policy of the Private DNS Zone Virtual Network Link. Possible values are `Default` and `NxDomainRedirect`.
   late final pulumi.Output<String> resolutionPolicy;
+
   /// Specifies the resource group where the Private DNS Zone exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkId;
 
@@ -270,18 +276,18 @@ class ZoneVirtualNetworkLink extends pulumi.CustomResource {
     ZoneVirtualNetworkLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.privateDnsZoneName = registerOutput<String>('privateDnsZoneName');
-    this.registrationEnabled = registerOutput<bool?>('registrationEnabled');
-    this.resolutionPolicy = registerOutput<String>('resolutionPolicy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    privateDnsZoneName = registerOutput<String>('privateDnsZoneName');
+    registrationEnabled = registerOutput<bool?>('registrationEnabled');
+    resolutionPolicy = registerOutput<String>('resolutionPolicy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 
   /// Gets an existing [ZoneVirtualNetworkLink] resource's state with the given [name] and [id].
@@ -302,17 +308,17 @@ class ZoneVirtualNetworkLink extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.privateDnsZoneName = registerOutput<String>('privateDnsZoneName');
-    this.registrationEnabled = registerOutput<bool?>('registrationEnabled');
-    this.resolutionPolicy = registerOutput<String>('resolutionPolicy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
+    privateDnsZoneName = registerOutput<String>('privateDnsZoneName');
+    registrationEnabled = registerOutput<bool?>('registrationEnabled');
+    resolutionPolicy = registerOutput<String>('resolutionPolicy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
   /// A filter to reduce the conversations used for training the model to a specific subset.
   final pulumi.Input<String> filter;
+
   /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
   final pulumi.Input<String> medium;
+
   /// Number of conversations used in training. Output only.
   final pulumi.Input<String> trainingConversationsCount;
 
@@ -29,12 +31,15 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse(
-      filter: (map['filter'] as String).input(),
-      medium: (map['medium'] as String).input(),
-      trainingConversationsCount: (map['trainingConversationsCount'] as String).input(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
+      medium: pulumi.Input.fromValue(map['medium'] as String),
+      trainingConversationsCount: pulumi.Input.fromValue(
+        map['trainingConversationsCount'] as String,
+      ),
     );
   }
 }
-

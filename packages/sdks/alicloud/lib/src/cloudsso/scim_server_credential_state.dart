@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScimServerCredentialState {
   /// (Available since v1.245.0) The time when the SCIM credential was created.
   final pulumi.Input<String>? createTime;
+
   /// The ID of the SCIM credential.
   final pulumi.Input<String>? credentialId;
+
   /// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
   final pulumi.Input<String>? credentialSecretFile;
+
   /// (Available since v1.245.0) The type of the SCIM credential.
   final pulumi.Input<String>? credentialType;
+
   /// The ID of the Directory.
   final pulumi.Input<String>? directoryId;
+
   /// (Available since v1.245.0) The time when the SCIM credential expires.
   final pulumi.Input<String>? expireTime;
+
   /// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
   final pulumi.Input<String>? status;
 
@@ -51,14 +57,41 @@ class ScimServerCredentialState {
 
   factory ScimServerCredentialState.fromMap(Map<String, dynamic> map) {
     return ScimServerCredentialState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      credentialId: map['credentialId'] == null ? null : (map['credentialId']! as String).input(),
-      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile']! as String).input(),
-      credentialType: map['credentialType'] == null ? null : (map['credentialType']! as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId']! as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialId: (() {
+        final guardedValue = map['credentialId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialSecretFile: (() {
+        final guardedValue = map['credentialSecretFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialType: (() {
+        final guardedValue = map['credentialType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      directoryId: (() {
+        final guardedValue = map['directoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

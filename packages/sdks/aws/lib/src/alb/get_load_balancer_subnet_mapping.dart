@@ -35,12 +35,13 @@ class GetLoadBalancerSubnetMapping {
 
   factory GetLoadBalancerSubnetMapping.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerSubnetMapping(
-      allocationId: (map['allocationId'] as String).input(),
-      ipv6Address: (map['ipv6Address'] as String).input(),
-      outpostId: (map['outpostId'] as String).input(),
-      privateIpv4Address: (map['privateIpv4Address'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
+      ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
+      outpostId: pulumi.Input.fromValue(map['outpostId'] as String),
+      privateIpv4Address: pulumi.Input.fromValue(
+        map['privateIpv4Address'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

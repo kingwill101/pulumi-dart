@@ -7,6 +7,7 @@ import 'address_properties_response.dart';
 class AddressDetailsResponse {
   /// Customer address and contact details.
   final pulumi.Input<AddressPropertiesResponse> forwardAddress;
+
   /// Return shipping address.
   final pulumi.Input<AddressPropertiesResponse> returnAddress;
 
@@ -20,16 +21,31 @@ class AddressDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'forwardAddress': pulumi.Input.mapInputValue<AddressPropertiesResponse, Map<String, dynamic>>(forwardAddress, (value) => value.toMap()),
-      'returnAddress': pulumi.Input.mapInputValue<AddressPropertiesResponse, Map<String, dynamic>>(returnAddress, (value) => value.toMap()),
+      'forwardAddress':
+          pulumi.Input.mapInputValue<
+            AddressPropertiesResponse,
+            Map<String, dynamic>
+          >(forwardAddress, (value) => value.toMap()),
+      'returnAddress':
+          pulumi.Input.mapInputValue<
+            AddressPropertiesResponse,
+            Map<String, dynamic>
+          >(returnAddress, (value) => value.toMap()),
     };
   }
 
   factory AddressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AddressDetailsResponse(
-      forwardAddress: (AddressPropertiesResponse.fromMap((map['forwardAddress'] as Map).cast<String, dynamic>())).input(),
-      returnAddress: (AddressPropertiesResponse.fromMap((map['returnAddress'] as Map).cast<String, dynamic>())).input(),
+      forwardAddress: pulumi.Input.fromValue(
+        AddressPropertiesResponse.fromMap(
+          (map['forwardAddress']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      returnAddress: pulumi.Input.fromValue(
+        AddressPropertiesResponse.fromMap(
+          (map['returnAddress']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

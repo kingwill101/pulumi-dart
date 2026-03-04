@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureContainerInfo {
   /// Container name (Based on the data format specified, this represents the name of Azure Files/Page blob/Block blob).
   final pulumi.Input<String> containerName;
+
   /// Storage format used for the file represented by the share.
   final pulumi.Input<String> dataFormat;
+
   /// ID of the storage account credential used to access storage.
   final pulumi.Input<String> storageAccountCredentialId;
 
@@ -31,10 +33,11 @@ class AzureContainerInfo {
 
   factory AzureContainerInfo.fromMap(Map<String, dynamic> map) {
     return AzureContainerInfo(
-      containerName: (map['containerName'] as String).input(),
-      dataFormat: (map['dataFormat'] as String).input(),
-      storageAccountCredentialId: (map['storageAccountCredentialId'] as String).input(),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      dataFormat: pulumi.Input.fromValue(map['dataFormat'] as String),
+      storageAccountCredentialId: pulumi.Input.fromValue(
+        map['storageAccountCredentialId'] as String,
+      ),
     );
   }
 }
-

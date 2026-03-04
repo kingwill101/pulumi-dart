@@ -9,20 +9,21 @@ class OverheadPatch {
 
   /// Creates a new [OverheadPatch].
   /// [podFixed] podFixed represents the fixed resource overhead associated with running a pod.
-  OverheadPatch({
-    this.podFixed,
-  });
+  OverheadPatch({this.podFixed});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'podFixed': ?podFixed,
-    };
+    return <String, dynamic>{'podFixed': ?podFixed};
   }
 
   factory OverheadPatch.fromMap(Map<String, dynamic> map) {
     return OverheadPatch(
-      podFixed: map['podFixed'] == null ? null : ((map['podFixed']! as Map).cast<String, String>()).input(),
+      podFixed: (() {
+        final guardedValue = map['podFixed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

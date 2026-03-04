@@ -5,16 +5,15 @@ enum ServiceIngress {
   ingressTrafficInternalOnly("INGRESS_TRAFFIC_INTERNAL_ONLY"),
   ingressTrafficInternalLoadBalancer("INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER");
 
-  const ServiceIngress(this.value);
-  final String value;
+  const ServiceIngress(this.wireValue);
+  final String wireValue;
 
   static ServiceIngress fromValue(String value) {
     for (final item in ServiceIngress.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceIngress value: $value');
   }
 }
-

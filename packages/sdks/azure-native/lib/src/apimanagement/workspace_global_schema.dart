@@ -274,14 +274,19 @@ import 'workspace_global_schema_args.dart';
 class WorkspaceGlobalSchema extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Free-form schema entity description.
   late final pulumi.Output<String?> description;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Schema Type. Immutable.
   late final pulumi.Output<String> schemaType;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Json-encoded string for non json-based schema.
   late final pulumi.Output<dynamic> value;
 
@@ -294,16 +299,16 @@ class WorkspaceGlobalSchema extends pulumi.CustomResource {
     WorkspaceGlobalSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:WorkspaceGlobalSchema',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
+         'azure-native:apimanagement:WorkspaceGlobalSchema',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.schemaType = registerOutput<String>('schemaType');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<dynamic>('value');
+    schemaType = registerOutput<String>('schemaType');
+    type = registerOutput<String>('type');
+    value = registerOutput<dynamic>('value');
   }
 }

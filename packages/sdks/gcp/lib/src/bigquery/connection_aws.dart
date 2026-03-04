@@ -10,20 +10,25 @@ class ConnectionAws {
 
   /// Creates a new [ConnectionAws].
   /// [accessRole] Authentication using Google owned service account to assume into customer's AWS IAM Role.
-  ConnectionAws({
-    required this.accessRole,
-  });
+  ConnectionAws({required this.accessRole});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessRole': pulumi.Input.mapInputValue<ConnectionAwsAccessRole, Map<String, dynamic>>(accessRole, (value) => value.toMap()),
+      'accessRole':
+          pulumi.Input.mapInputValue<
+            ConnectionAwsAccessRole,
+            Map<String, dynamic>
+          >(accessRole, (value) => value.toMap()),
     };
   }
 
   factory ConnectionAws.fromMap(Map<String, dynamic> map) {
     return ConnectionAws(
-      accessRole: (ConnectionAwsAccessRole.fromMap((map['accessRole'] as Map).cast<String, dynamic>())).input(),
+      accessRole: pulumi.Input.fromValue(
+        ConnectionAwsAccessRole.fromMap(
+          (map['accessRole']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

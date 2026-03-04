@@ -10,20 +10,25 @@ class AuthorityResponse {
 
   /// Creates a new [AuthorityResponse].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AuthorityResponse({
-    required this.hint,
-  });
+  AuthorityResponse({required this.hint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': pulumi.Input.mapInputValue<HintResponseContaineranalysisV1beta1, Map<String, dynamic>>(hint, (value) => value.toMap()),
+      'hint':
+          pulumi.Input.mapInputValue<
+            HintResponseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(hint, (value) => value.toMap()),
     };
   }
 
   factory AuthorityResponse.fromMap(Map<String, dynamic> map) {
     return AuthorityResponse(
-      hint: (HintResponseContaineranalysisV1beta1.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: pulumi.Input.fromValue(
+        HintResponseContaineranalysisV1beta1.fromMap(
+          (map['hint']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

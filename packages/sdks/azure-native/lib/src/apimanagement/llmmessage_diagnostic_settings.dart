@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LLMMessageDiagnosticSettings {
   /// Maximum size of message to logs in bytes. The default size is 32KB.
   final pulumi.Input<int>? maxSizeInBytes;
+
   /// Specifies which message should be logged. Currently there is only 'all' option.
   final pulumi.Input<String>? messages;
 
   /// Creates a new [LLMMessageDiagnosticSettings].
   /// [maxSizeInBytes] Maximum size of message to logs in bytes. The default size is 32KB.
   /// [messages] Specifies which message should be logged. Currently there is only 'all' option.
-  LLMMessageDiagnosticSettings({
-    this.maxSizeInBytes,
-    this.messages,
-  });
+  LLMMessageDiagnosticSettings({this.maxSizeInBytes, this.messages});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class LLMMessageDiagnosticSettings {
 
   factory LLMMessageDiagnosticSettings.fromMap(Map<String, dynamic> map) {
     return LLMMessageDiagnosticSettings(
-      maxSizeInBytes: map['maxSizeInBytes'] == null ? null : (map['maxSizeInBytes']! as int).input(),
-      messages: map['messages'] == null ? null : (map['messages']! as String).input(),
+      maxSizeInBytes: (() {
+        final guardedValue = map['maxSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      messages: (() {
+        final guardedValue = map['messages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

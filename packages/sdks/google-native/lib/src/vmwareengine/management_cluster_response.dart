@@ -7,8 +7,10 @@ import 'stretched_cluster_config_response.dart';
 class ManagementClusterResponse {
   /// The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   final pulumi.Input<String> clusterId;
+
   /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
   final pulumi.Input<Map<String, String>> nodeTypeConfigs;
+
   /// Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
   final pulumi.Input<StretchedClusterConfigResponse> stretchedClusterConfig;
 
@@ -26,16 +28,25 @@ class ManagementClusterResponse {
     return <String, dynamic>{
       'clusterId': clusterId,
       'nodeTypeConfigs': nodeTypeConfigs,
-      'stretchedClusterConfig': pulumi.Input.mapInputValue<StretchedClusterConfigResponse, Map<String, dynamic>>(stretchedClusterConfig, (value) => value.toMap()),
+      'stretchedClusterConfig':
+          pulumi.Input.mapInputValue<
+            StretchedClusterConfigResponse,
+            Map<String, dynamic>
+          >(stretchedClusterConfig, (value) => value.toMap()),
     };
   }
 
   factory ManagementClusterResponse.fromMap(Map<String, dynamic> map) {
     return ManagementClusterResponse(
-      clusterId: (map['clusterId'] as String).input(),
-      nodeTypeConfigs: ((map['nodeTypeConfigs'] as Map).cast<String, String>()).input(),
-      stretchedClusterConfig: (StretchedClusterConfigResponse.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      nodeTypeConfigs: pulumi.Input.fromValue(
+        (map['nodeTypeConfigs'] as Map).cast<String, String>(),
+      ),
+      stretchedClusterConfig: pulumi.Input.fromValue(
+        StretchedClusterConfigResponse.fromMap(
+          (map['stretchedClusterConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

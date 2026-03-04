@@ -4,9 +4,9 @@ import 'primary_endpoint_state.dart';
 
 /// Provides a PolarDB endpoint resource to manage primary endpoint of PolarDB cluster.
 ///
-/// > **NOTE:** Available since v1.217.0
+/// &gt; **NOTE:** Available since v1.217.0
 ///
-/// > **NOTE:** The default primary endpoint can not be created or deleted manually.
+/// &gt; **NOTE:** The default primary endpoint can not be created or deleted manually.
 ///
 /// ## Example Usage
 ///
@@ -290,28 +290,39 @@ import 'primary_endpoint_state.dart';
 class PrimaryEndpoint extends pulumi.CustomResource {
   /// Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
   late final pulumi.Output<String> connectionPrefix;
+
   /// The Id of cluster that can run database.
   late final pulumi.Output<String> dbClusterId;
+
   /// The name of the endpoint.
   late final pulumi.Output<String?> dbEndpointDescription;
+
   /// The ID of the cluster endpoint.
   late final pulumi.Output<String> dbEndpointId;
+
   /// Type of endpoint.
   late final pulumi.Output<String> endpointType;
+
   /// The network type of the endpoint address.
   late final pulumi.Output<String?> netType;
+
   /// Port of the specified endpoint. Valid values: 3000 to 5999.
   late final pulumi.Output<String> port;
+
   /// Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
   /// **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
   /// For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
   late final pulumi.Output<String?> sslAutoRotate;
+
   /// The specifies SSL certificate download link.
   late final pulumi.Output<String> sslCertificateUrl;
+
   /// The SSL connection string.
   late final pulumi.Output<String> sslConnectionString;
+
   /// Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   late final pulumi.Output<String?> sslEnabled;
+
   /// The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> sslExpireTime;
 
@@ -324,23 +335,23 @@ class PrimaryEndpoint extends pulumi.CustomResource {
     PrimaryEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/primaryEndpoint:PrimaryEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionPrefix = registerOutput<String>('connectionPrefix');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbEndpointDescription = registerOutput<String?>('dbEndpointDescription');
-    this.dbEndpointId = registerOutput<String>('dbEndpointId');
-    this.endpointType = registerOutput<String>('endpointType');
-    this.netType = registerOutput<String?>('netType');
-    this.port = registerOutput<String>('port');
-    this.sslAutoRotate = registerOutput<String?>('sslAutoRotate');
-    this.sslCertificateUrl = registerOutput<String>('sslCertificateUrl');
-    this.sslConnectionString = registerOutput<String>('sslConnectionString');
-    this.sslEnabled = registerOutput<String?>('sslEnabled');
-    this.sslExpireTime = registerOutput<String>('sslExpireTime');
+         'alicloud:polardb/primaryEndpoint:PrimaryEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionPrefix = registerOutput<String>('connectionPrefix');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbEndpointDescription = registerOutput<String?>('dbEndpointDescription');
+    dbEndpointId = registerOutput<String>('dbEndpointId');
+    endpointType = registerOutput<String>('endpointType');
+    netType = registerOutput<String?>('netType');
+    port = registerOutput<String>('port');
+    sslAutoRotate = registerOutput<String?>('sslAutoRotate');
+    sslCertificateUrl = registerOutput<String>('sslCertificateUrl');
+    sslConnectionString = registerOutput<String>('sslConnectionString');
+    sslEnabled = registerOutput<String?>('sslEnabled');
+    sslExpireTime = registerOutput<String>('sslExpireTime');
   }
 
   /// Gets an existing [PrimaryEndpoint] resource's state with the given [name] and [id].
@@ -361,22 +372,22 @@ class PrimaryEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:polardb/primaryEndpoint:PrimaryEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionPrefix = registerOutput<String>('connectionPrefix');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbEndpointDescription = registerOutput<String?>('dbEndpointDescription');
-    this.dbEndpointId = registerOutput<String>('dbEndpointId');
-    this.endpointType = registerOutput<String>('endpointType');
-    this.netType = registerOutput<String?>('netType');
-    this.port = registerOutput<String>('port');
-    this.sslAutoRotate = registerOutput<String?>('sslAutoRotate');
-    this.sslCertificateUrl = registerOutput<String>('sslCertificateUrl');
-    this.sslConnectionString = registerOutput<String>('sslConnectionString');
-    this.sslEnabled = registerOutput<String?>('sslEnabled');
-    this.sslExpireTime = registerOutput<String>('sslExpireTime');
+         'alicloud:polardb/primaryEndpoint:PrimaryEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionPrefix = registerOutput<String>('connectionPrefix');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbEndpointDescription = registerOutput<String?>('dbEndpointDescription');
+    dbEndpointId = registerOutput<String>('dbEndpointId');
+    endpointType = registerOutput<String>('endpointType');
+    netType = registerOutput<String?>('netType');
+    port = registerOutput<String>('port');
+    sslAutoRotate = registerOutput<String?>('sslAutoRotate');
+    sslCertificateUrl = registerOutput<String>('sslCertificateUrl');
+    sslConnectionString = registerOutput<String>('sslConnectionString');
+    sslEnabled = registerOutput<String?>('sslEnabled');
+    sslExpireTime = registerOutput<String>('sslExpireTime');
   }
 }

@@ -7,20 +7,15 @@ class WebAppWebAppUnit {
 
   /// Creates a new [WebAppWebAppUnit].
   /// [provisioned] Required.
-  WebAppWebAppUnit({
-    required this.provisioned,
-  });
+  WebAppWebAppUnit({required this.provisioned});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'provisioned': provisioned,
-    };
+    return <String, dynamic>{'provisioned': provisioned};
   }
 
   factory WebAppWebAppUnit.fromMap(Map<String, dynamic> map) {
     return WebAppWebAppUnit(
-      provisioned: (map['provisioned'] as int).input(),
+      provisioned: pulumi.Input.fromValue(map['provisioned'] as int),
     );
   }
 }
-

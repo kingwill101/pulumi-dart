@@ -25,12 +25,13 @@ class GetRouteSpecHttpRouteActionWeightedTarget {
     };
   }
 
-  factory GetRouteSpecHttpRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
+  factory GetRouteSpecHttpRouteActionWeightedTarget.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRouteSpecHttpRouteActionWeightedTarget(
-      port: (map['port'] as int).input(),
-      virtualNode: (map['virtualNode'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      virtualNode: pulumi.Input.fromValue(map['virtualNode'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

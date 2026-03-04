@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallOutbound {
   /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
   final pulumi.Input<String> action;
+
   /// Used to describe this rule. For display purposes only.
   final pulumi.Input<String>? description;
+
   /// A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
   final pulumi.Input<List<String>>? ipv4s;
+
   /// A list of IPv6 addresses or networks this rule applies to.
   final pulumi.Input<List<String>>? ipv6s;
+
   /// This Firewall's unique label.
   final pulumi.Input<String> label;
+
   /// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
   final pulumi.Input<String>? ports;
+
   /// The network protocol this rule controls.
   final pulumi.Input<String> protocol;
 
@@ -50,14 +56,29 @@ class FirewallOutbound {
 
   factory FirewallOutbound.fromMap(Map<String, dynamic> map) {
     return FirewallOutbound(
-      action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipv4s: map['ipv4s'] == null ? null : ((map['ipv4s']! as List).cast<String>()).input(),
-      ipv6s: map['ipv6s'] == null ? null : ((map['ipv6s']! as List).cast<String>()).input(),
-      label: (map['label'] as String).input(),
-      ports: map['ports'] == null ? null : (map['ports']! as String).input(),
-      protocol: (map['protocol'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4s: (() {
+        final guardedValue = map['ipv4s'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipv6s: (() {
+        final guardedValue = map['ipv6s'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      ports: (() {
+        final guardedValue = map['ports'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

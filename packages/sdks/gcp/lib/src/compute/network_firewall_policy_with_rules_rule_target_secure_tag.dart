@@ -6,6 +6,7 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTag {
   /// Name of the secure tag, created with TagManager's TagValue API.
   /// @pattern tagValues/[0-9]+
   final pulumi.Input<String>? name;
+
   /// (Output)
   /// [Output Only] State of the secure tag, either `EFFECTIVE` or
   /// `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
@@ -15,23 +16,26 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTag {
   /// Creates a new [NetworkFirewallPolicyWithRulesRuleTargetSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] (Output)
-  NetworkFirewallPolicyWithRulesRuleTargetSecureTag({
-    this.name,
-    this.state,
-  });
+  NetworkFirewallPolicyWithRulesRuleTargetSecureTag({this.name, this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'state': ?state,
-    };
+    return <String, dynamic>{'name': ?name, 'state': ?state};
   }
 
-  factory NetworkFirewallPolicyWithRulesRuleTargetSecureTag.fromMap(Map<String, dynamic> map) {
+  factory NetworkFirewallPolicyWithRulesRuleTargetSecureTag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkFirewallPolicyWithRulesRuleTargetSecureTag(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

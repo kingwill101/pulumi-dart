@@ -8,16 +8,15 @@ enum BindingType {
   valueElasticAPM("ElasticAPM"),
   valueCACertificates("CACertificates");
 
-  const BindingType(this.value);
-  final String value;
+  const BindingType(this.wireValue);
+  final String wireValue;
 
   static BindingType fromValue(String value) {
     for (final item in BindingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BindingType value: $value');
   }
 }
-

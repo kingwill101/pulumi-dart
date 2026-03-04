@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MountTargetPropertiesResponse {
   /// UUID v4 used to identify the MountTarget
   final pulumi.Input<String> fileSystemId;
+
   /// The mount target's IPv4 address
   final pulumi.Input<String> ipAddress;
+
   /// UUID v4 used to identify the MountTarget
   final pulumi.Input<String> mountTargetId;
+
   /// The SMB server's Fully Qualified Domain Name, FQDN
   final pulumi.Input<String>? smbServerFqdn;
 
@@ -36,11 +39,14 @@ class MountTargetPropertiesResponse {
 
   factory MountTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MountTargetPropertiesResponse(
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      mountTargetId: (map['mountTargetId'] as String).input(),
-      smbServerFqdn: map['smbServerFqdn'] == null ? null : (map['smbServerFqdn']! as String).input(),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      mountTargetId: pulumi.Input.fromValue(map['mountTargetId'] as String),
+      smbServerFqdn: (() {
+        final guardedValue = map['smbServerFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

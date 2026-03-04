@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOutpostsArgs {
   /// Availability Zone name.
   final pulumi.Input<String>? availabilityZone;
+
   /// Availability Zone identifier.
   final pulumi.Input<String>? availabilityZoneId;
+
   /// AWS Account identifier of the Outpost owner.
   final pulumi.Input<String>? ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Site identifier.
   final pulumi.Input<String>? siteId;
 
@@ -44,12 +48,31 @@ class GetOutpostsArgs {
 
   factory GetOutpostsArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostsArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      siteId: map['siteId'] == null ? null : ((map['siteId'] as String).input()).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZoneId: (() {
+        final guardedValue = map['availabilityZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

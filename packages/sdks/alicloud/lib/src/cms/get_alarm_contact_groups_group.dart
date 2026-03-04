@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlarmContactGroupsGroup {
   /// The name of Alarm Contact Group.
   final pulumi.Input<String> alarmContactGroupName;
+
   /// The alarm contacts in the alarm group.
   final pulumi.Input<List<String>> contacts;
+
   /// The description of the Alarm Group.
   final pulumi.Input<String> describe;
+
   /// Indicates whether the alarm group subscribes to weekly reports.
   final pulumi.Input<bool> enableSubscribed;
+
   /// The ID of the CMS.
   final pulumi.Input<String> id;
 
@@ -40,12 +44,15 @@ class GetAlarmContactGroupsGroup {
 
   factory GetAlarmContactGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetAlarmContactGroupsGroup(
-      alarmContactGroupName: (map['alarmContactGroupName'] as String).input(),
-      contacts: ((map['contacts'] as List).cast<String>()).input(),
-      describe: (map['describe'] as String).input(),
-      enableSubscribed: (map['enableSubscribed'] as bool).input(),
-      id: (map['id'] as String).input(),
+      alarmContactGroupName: pulumi.Input.fromValue(
+        map['alarmContactGroupName'] as String,
+      ),
+      contacts: pulumi.Input.fromValue(
+        (map['contacts'] as List).cast<String>(),
+      ),
+      describe: pulumi.Input.fromValue(map['describe'] as String),
+      enableSubscribed: pulumi.Input.fromValue(map['enableSubscribed'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

@@ -9,12 +9,17 @@ import 'service_perimeter_perimeter_type_accesscontextmanager_v1beta.dart';
 /// {@macro pulumi_accesscontextmanager_v1beta_service_perimeter_accesscontextmanager_v1beta_args_doc}
 class ServicePerimeterAccesscontextmanagerV1betaArgs {
   final pulumi.Input<String> accessPolicyId;
+
   /// Description of the `ServicePerimeter` and its use. Does not affect behavior.
   final pulumi.Input<String>? description;
+
   /// Resource name for the `ServicePerimeter`. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`, you cannot change its `name`.
   final pulumi.Input<String>? name;
+
   /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
-  final pulumi.Input<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta>? perimeterType;
+  final pulumi.Input<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta>?
+  perimeterType;
+
   /// Human readable title. Must be unique within the Policy.
   final pulumi.Input<String>? title;
 
@@ -37,19 +42,44 @@ class ServicePerimeterAccesscontextmanagerV1betaArgs {
       'accessPolicyId': accessPolicyId,
       'description': ?description,
       'name': ?name,
-      'perimeterType': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta, String>(perimeterType, (value) => value.value),
+      'perimeterType':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta,
+            String
+          >(perimeterType, (value) => value.wireValue),
       'title': ?title,
     };
   }
 
-  factory ServicePerimeterAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterAccesscontextmanagerV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterAccesscontextmanagerV1betaArgs(
-      accessPolicyId: (map['accessPolicyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      perimeterType: map['perimeterType'] == null ? null : (ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.fromValue(map['perimeterType']! as String)).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      accessPolicyId: pulumi.Input.fromValue(map['accessPolicyId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      perimeterType: (() {
+        final guardedValue = map['perimeterType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

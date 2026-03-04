@@ -140,14 +140,19 @@ import 'server_trust_certificate_args.dart';
 class ServerTrustCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The certificate name
   late final pulumi.Output<String> certificateName;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The certificate public blob
   late final pulumi.Output<String?> publicBlob;
+
   /// The certificate thumbprint
   late final pulumi.Output<String> thumbprint;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -160,16 +165,16 @@ class ServerTrustCertificate extends pulumi.CustomResource {
     ServerTrustCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ServerTrustCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.certificateName = registerOutput<String>('certificateName');
+         'azure-native:sql:ServerTrustCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificateName = registerOutput<String>('certificateName');
     this.name = registerOutput<String>('name');
-    this.publicBlob = registerOutput<String?>('publicBlob');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.type = registerOutput<String>('type');
+    publicBlob = registerOutput<String?>('publicBlob');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
   }
 }

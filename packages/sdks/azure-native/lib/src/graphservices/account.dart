@@ -147,16 +147,22 @@ import 'account_resource_response_system_data.dart';
 class Account extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Location of the resource.
   late final pulumi.Output<String?> location;
+
   /// Azure resource name.
   late final pulumi.Output<String> name;
+
   /// Property bag from billing account
   late final pulumi.Output<AccountResourceResponseProperties> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<AccountResourceResponseSystemData> systemData;
+
   /// resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Azure resource type.
   late final pulumi.Output<String> type;
 
@@ -169,17 +175,21 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:graphservices:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:graphservices:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<AccountResourceResponseProperties>('properties');
-    this.systemData = registerOutput<AccountResourceResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<AccountResourceResponseProperties>(
+      'properties',
+    );
+    systemData = registerOutput<AccountResourceResponseSystemData>(
+      'systemData',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

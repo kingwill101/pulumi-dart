@@ -1,5 +1,3 @@
-library module_aligreen;
-
 export 'aligreen/audit_callback.dart';
 export 'aligreen/audit_callback_args.dart';
 export 'aligreen/audit_callback_state.dart';

@@ -9,20 +9,19 @@ class ApplicationManagementPolicy {
 
   /// Creates a new [ApplicationManagementPolicy].
   /// [mode] The managed application management mode.
-  ApplicationManagementPolicy({
-    this.mode,
-  });
+  ApplicationManagementPolicy({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode,
-    };
+    return <String, dynamic>{'mode': ?mode};
   }
 
   factory ApplicationManagementPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationManagementPolicy(
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

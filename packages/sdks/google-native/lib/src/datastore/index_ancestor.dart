@@ -4,16 +4,15 @@ enum IndexAncestor {
   none("NONE"),
   allAncestors("ALL_ANCESTORS");
 
-  const IndexAncestor(this.value);
-  final String value;
+  const IndexAncestor(this.wireValue);
+  final String wireValue;
 
   static IndexAncestor fromValue(String value) {
     for (final item in IndexAncestor.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IndexAncestor value: $value');
   }
 }
-

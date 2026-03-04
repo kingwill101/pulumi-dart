@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1RouteMapResponse {
   /// HTTP path on the container to send health checkss to. AI Platform Prediction intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](/ai-platform/prediction/docs/custom-container-requirements#checks). For example, if you set this field to `/bar`, then AI Platform Prediction intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of Version.container.ports. If you don't specify this field, it defaults to the following value: /v1/models/ MODEL/versions/VERSION The placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of the model version. This does not include the "projects/PROJECT_ID /models/MODEL/versions/" prefix that the API returns in output; it is the bare version name, as provided to projects.models.versions.create.
   final pulumi.Input<String> health;
+
   /// HTTP path on the container to send prediction requests to. AI Platform Prediction forwards requests sent using projects.predict to this path on the container's IP address and port. AI Platform Prediction then returns the container's response in the API response. For example, if you set this field to `/foo`, then when AI Platform Prediction receives a prediction request, it forwards the request body in a POST request to the `/foo` path on the port of your container specified by the first value of Version.container.ports. If you don't specify this field, it defaults to the following value: /v1/models/MODEL/versions/VERSION:predict The placeholders in this value are replaced as follows: * MODEL: The name of the parent Model. This does not include the "projects/PROJECT_ID/models/" prefix that the API returns in output; it is the bare model name, as provided to projects.models.create. * VERSION: The name of the model version. This does not include the "projects/PROJECT_ID/models/MODEL/versions/" prefix that the API returns in output; it is the bare version name, as provided to projects.models.versions.create.
   final pulumi.Input<String> predict;
 
@@ -18,17 +19,13 @@ class GoogleCloudMlV1RouteMapResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'health': health,
-      'predict': predict,
-    };
+    return <String, dynamic>{'health': health, 'predict': predict};
   }
 
   factory GoogleCloudMlV1RouteMapResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1RouteMapResponse(
-      health: (map['health'] as String).input(),
-      predict: (map['predict'] as String).input(),
+      health: pulumi.Input.fromValue(map['health'] as String),
+      predict: pulumi.Input.fromValue(map['predict'] as String),
     );
   }
 }
-

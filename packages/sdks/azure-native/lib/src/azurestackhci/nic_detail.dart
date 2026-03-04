@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NicDetail {
   /// Adapter Name of NIC
   final pulumi.Input<String>? adapterName;
+
   /// Component Id of NIC
   final pulumi.Input<String>? componentId;
+
   /// Default Gateway of NIC
   final pulumi.Input<String>? defaultGateway;
+
   /// Default Isolation of Management NIC
   final pulumi.Input<String>? defaultIsolationId;
+
   /// DNS Servers for NIC
   final pulumi.Input<List<String>>? dnsServers;
+
   /// Driver Version of NIC
   final pulumi.Input<String>? driverVersion;
+
   /// Interface Description of NIC
   final pulumi.Input<String>? interfaceDescription;
+
   /// Subnet Mask of NIC
   final pulumi.Input<String>? ip4Address;
+
   /// Subnet Mask of NIC
   final pulumi.Input<String>? subnetMask;
 
@@ -61,16 +69,51 @@ class NicDetail {
 
   factory NicDetail.fromMap(Map<String, dynamic> map) {
     return NicDetail(
-      adapterName: map['adapterName'] == null ? null : (map['adapterName']! as String).input(),
-      componentId: map['componentId'] == null ? null : (map['componentId']! as String).input(),
-      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway']! as String).input(),
-      defaultIsolationId: map['defaultIsolationId'] == null ? null : (map['defaultIsolationId']! as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion']! as String).input(),
-      interfaceDescription: map['interfaceDescription'] == null ? null : (map['interfaceDescription']! as String).input(),
-      ip4Address: map['ip4Address'] == null ? null : (map['ip4Address']! as String).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
+      adapterName: (() {
+        final guardedValue = map['adapterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      componentId: (() {
+        final guardedValue = map['componentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultGateway: (() {
+        final guardedValue = map['defaultGateway'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultIsolationId: (() {
+        final guardedValue = map['defaultIsolationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      driverVersion: (() {
+        final guardedValue = map['driverVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interfaceDescription: (() {
+        final guardedValue = map['interfaceDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ip4Address: (() {
+        final guardedValue = map['ip4Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetMask: (() {
+        final guardedValue = map['subnetMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

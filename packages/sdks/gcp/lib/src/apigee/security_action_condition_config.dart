@@ -5,28 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityActionConditionConfig {
   /// A list of accessTokens. Limit 1000 per action.
   final pulumi.Input<List<String>>? accessTokens;
+
   /// A list of API keys. Limit 1000 per action.
   final pulumi.Input<List<String>>? apiKeys;
+
   /// A list of API Products. Limit 1000 per action.
   final pulumi.Input<List<String>>? apiProducts;
+
   /// A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
   /// This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
   final pulumi.Input<List<String>>? asns;
+
   /// A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
   /// OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
   /// Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
   final pulumi.Input<List<String>>? botReasons;
+
   /// A list of developer apps. Limit 1000 per action.
   final pulumi.Input<List<String>>? developerApps;
+
   /// A list of developers. Limit 1000 per action.
   final pulumi.Input<List<String>>? developers;
+
   /// Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
   /// Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
   final pulumi.Input<List<String>>? httpMethods;
+
   /// A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
   final pulumi.Input<List<String>>? ipAddressRanges;
+
   /// A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
   final pulumi.Input<List<String>>? regionCodes;
+
   /// A list of user agents to deny. We look for exact matches. Limit 50 per action.
   final pulumi.Input<List<String>>? userAgents;
 
@@ -74,18 +84,61 @@ class SecurityActionConditionConfig {
 
   factory SecurityActionConditionConfig.fromMap(Map<String, dynamic> map) {
     return SecurityActionConditionConfig(
-      accessTokens: map['accessTokens'] == null ? null : ((map['accessTokens']! as List).cast<String>()).input(),
-      apiKeys: map['apiKeys'] == null ? null : ((map['apiKeys']! as List).cast<String>()).input(),
-      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts']! as List).cast<String>()).input(),
-      asns: map['asns'] == null ? null : ((map['asns']! as List).cast<String>()).input(),
-      botReasons: map['botReasons'] == null ? null : ((map['botReasons']! as List).cast<String>()).input(),
-      developerApps: map['developerApps'] == null ? null : ((map['developerApps']! as List).cast<String>()).input(),
-      developers: map['developers'] == null ? null : ((map['developers']! as List).cast<String>()).input(),
-      httpMethods: map['httpMethods'] == null ? null : ((map['httpMethods']! as List).cast<String>()).input(),
-      ipAddressRanges: map['ipAddressRanges'] == null ? null : ((map['ipAddressRanges']! as List).cast<String>()).input(),
-      regionCodes: map['regionCodes'] == null ? null : ((map['regionCodes']! as List).cast<String>()).input(),
-      userAgents: map['userAgents'] == null ? null : ((map['userAgents']! as List).cast<String>()).input(),
+      accessTokens: (() {
+        final guardedValue = map['accessTokens'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      apiKeys: (() {
+        final guardedValue = map['apiKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      apiProducts: (() {
+        final guardedValue = map['apiProducts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      asns: (() {
+        final guardedValue = map['asns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      botReasons: (() {
+        final guardedValue = map['botReasons'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      developerApps: (() {
+        final guardedValue = map['developerApps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      developers: (() {
+        final guardedValue = map['developers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      httpMethods: (() {
+        final guardedValue = map['httpMethods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipAddressRanges: (() {
+        final guardedValue = map['ipAddressRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      regionCodes: (() {
+        final guardedValue = map['regionCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      userAgents: (() {
+        final guardedValue = map['userAgents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

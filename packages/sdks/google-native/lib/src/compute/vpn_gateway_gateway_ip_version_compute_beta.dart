@@ -3,16 +3,17 @@ enum VpnGatewayGatewayIpVersionComputeBeta {
   ipv4("IPV4"),
   ipv6("IPV6");
 
-  const VpnGatewayGatewayIpVersionComputeBeta(this.value);
-  final String value;
+  const VpnGatewayGatewayIpVersionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static VpnGatewayGatewayIpVersionComputeBeta fromValue(String value) {
     for (final item in VpnGatewayGatewayIpVersionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VpnGatewayGatewayIpVersionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown VpnGatewayGatewayIpVersionComputeBeta value: $value',
+    );
   }
 }
-

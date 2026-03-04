@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppIngressCor {
   /// Whether user credentials are allowed in the cross-origin request.
   final pulumi.Input<bool> allowCredentialsEnabled;
+
   /// The list of request headers that are permitted in the actual request.
   final pulumi.Input<List<String>> allowedHeaders;
+
   /// The list of HTTP methods are allowed when accessing the resource in a cross-origin request.
   final pulumi.Input<List<String>> allowedMethods;
+
   /// The list of origins that are allowed to make cross-origin calls.
   final pulumi.Input<List<String>> allowedOrigins;
+
   /// The list of headers exposed to the browser in the response to a cross-origin request.
   final pulumi.Input<List<String>> exposedHeaders;
+
   /// The number of seconds that the browser can cache the results of a preflight request.
   final pulumi.Input<int> maxAgeInSeconds;
 
@@ -45,13 +50,22 @@ class GetAppIngressCor {
 
   factory GetAppIngressCor.fromMap(Map<String, dynamic> map) {
     return GetAppIngressCor(
-      allowCredentialsEnabled: (map['allowCredentialsEnabled'] as bool).input(),
-      allowedHeaders: ((map['allowedHeaders'] as List).cast<String>()).input(),
-      allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
-      allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      exposedHeaders: ((map['exposedHeaders'] as List).cast<String>()).input(),
-      maxAgeInSeconds: (map['maxAgeInSeconds'] as int).input(),
+      allowCredentialsEnabled: pulumi.Input.fromValue(
+        map['allowCredentialsEnabled'] as bool,
+      ),
+      allowedHeaders: pulumi.Input.fromValue(
+        (map['allowedHeaders'] as List).cast<String>(),
+      ),
+      allowedMethods: pulumi.Input.fromValue(
+        (map['allowedMethods'] as List).cast<String>(),
+      ),
+      allowedOrigins: pulumi.Input.fromValue(
+        (map['allowedOrigins'] as List).cast<String>(),
+      ),
+      exposedHeaders: pulumi.Input.fromValue(
+        (map['exposedHeaders'] as List).cast<String>(),
+      ),
+      maxAgeInSeconds: pulumi.Input.fromValue(map['maxAgeInSeconds'] as int),
     );
   }
 }
-

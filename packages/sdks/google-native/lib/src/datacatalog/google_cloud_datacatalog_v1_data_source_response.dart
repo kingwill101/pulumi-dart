@@ -7,12 +7,16 @@ import 'google_cloud_datacatalog_v1_storage_properties_response.dart';
 class GoogleCloudDatacatalogV1DataSourceResponse {
   /// Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
   final pulumi.Input<String> resource;
+
   /// Service that physically stores the data.
   final pulumi.Input<String> service;
+
   /// Data Catalog entry name, if applicable.
   final pulumi.Input<String> sourceEntry;
+
   /// Detailed properties of the underlying storage.
-  final pulumi.Input<GoogleCloudDatacatalogV1StoragePropertiesResponse> storageProperties;
+  final pulumi.Input<GoogleCloudDatacatalogV1StoragePropertiesResponse>
+  storageProperties;
 
   /// Creates a new [GoogleCloudDatacatalogV1DataSourceResponse].
   /// [resource] Full name of a resource as defined by the service. For example: `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
@@ -31,17 +35,26 @@ class GoogleCloudDatacatalogV1DataSourceResponse {
       'resource': resource,
       'service': service,
       'sourceEntry': sourceEntry,
-      'storageProperties': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1StoragePropertiesResponse, Map<String, dynamic>>(storageProperties, (value) => value.toMap()),
+      'storageProperties':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogV1StoragePropertiesResponse,
+            Map<String, dynamic>
+          >(storageProperties, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataSourceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DataSourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1DataSourceResponse(
-      resource: (map['resource'] as String).input(),
-      service: (map['service'] as String).input(),
-      sourceEntry: (map['sourceEntry'] as String).input(),
-      storageProperties: (GoogleCloudDatacatalogV1StoragePropertiesResponse.fromMap((map['storageProperties'] as Map).cast<String, dynamic>())).input(),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
+      sourceEntry: pulumi.Input.fromValue(map['sourceEntry'] as String),
+      storageProperties: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogV1StoragePropertiesResponse.fromMap(
+          (map['storageProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

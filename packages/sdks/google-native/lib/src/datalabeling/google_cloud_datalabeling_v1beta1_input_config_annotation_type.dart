@@ -15,16 +15,20 @@ enum GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
   textEntityExtractionAnnotation("TEXT_ENTITY_EXTRACTION_ANNOTATION"),
   generalClassificationAnnotation("GENERAL_CLASSIFICATION_ANNOTATION");
 
-  const GoogleCloudDatalabelingV1beta1InputConfigAnnotationType(this.value);
-  final String value;
+  const GoogleCloudDatalabelingV1beta1InputConfigAnnotationType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDatalabelingV1beta1InputConfigAnnotationType fromValue(String value) {
-    for (final item in GoogleCloudDatalabelingV1beta1InputConfigAnnotationType.values) {
-      if (item.value == value) {
+  static GoogleCloudDatalabelingV1beta1InputConfigAnnotationType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDatalabelingV1beta1InputConfigAnnotationType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatalabelingV1beta1InputConfigAnnotationType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatalabelingV1beta1InputConfigAnnotationType value: $value',
+    );
   }
 }
-

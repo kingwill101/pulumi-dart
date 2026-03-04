@@ -1,11 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
-import 'deployment_auto_scale_profile.dart';
-import 'deployment_frontend_private.dart';
 import 'deployment_frontend_public.dart';
 import 'deployment_identity.dart';
-import 'deployment_logging_storage_account.dart';
-import 'deployment_network_interface.dart';
 import 'deployment_state.dart';
 import 'deployment_web_application_firewall.dart';
 
@@ -453,7 +449,7 @@ import 'deployment_web_application_firewall.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Nginx.NginxPlus` - 2024-11-01-preview
@@ -467,49 +463,67 @@ import 'deployment_web_application_firewall.dart';
 /// ```
 class DeploymentType extends pulumi.CustomResource {
   /// An `auto_scale_profile` block as defined below.
-  late final pulumi.Output<List<DeploymentAutoScaleProfile>?> autoScaleProfiles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> autoScaleProfiles;
+
   /// Specify the automatic upgrade channel for the NGINX deployment. Defaults to `stable`. The possible values are `stable` and `preview`.
   late final pulumi.Output<String?> automaticUpgradeChannel;
+
   /// Specify the number of NGINX capacity units for this NGINX deployment.
   ///
-  /// > **Note:** For more information on NGINX capacity units, please refer to the [NGINX scaling guidance documentation](https://docs.nginx.com/nginxaas/azure/quickstart/scaling/)
+  /// &gt; **Note:** For more information on NGINX capacity units, please refer to the [NGINX scaling guidance documentation](https://docs.nginx.com/nginxaas/azure/quickstart/scaling/)
   late final pulumi.Output<int?> capacity;
+
   /// The dataplane API endpoint of the NGINX Deployment.
   late final pulumi.Output<String> dataplaneApiEndpoint;
+
   /// Should the metrics be exported to Azure Monitor?
   late final pulumi.Output<bool?> diagnoseSupportEnabled;
+
   /// Specify the preferred support contact email address for receiving alerts and notifications.
   late final pulumi.Output<String?> email;
+
   /// One or more `frontend_private` blocks as defined below.
-  late final pulumi.Output<List<DeploymentFrontendPrivate>?> frontendPrivates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> frontendPrivates;
+
   /// A `frontend_public` block as defined below.
   late final pulumi.Output<DeploymentFrontendPublic?> frontendPublic;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<DeploymentIdentity?> identity;
+
   /// The IP address of the NGINX Deployment.
   late final pulumi.Output<String> ipAddress;
+
   /// The Azure Region where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   late final pulumi.Output<String> location;
-  late final pulumi.Output<List<DeploymentLoggingStorageAccount>?> loggingStorageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> loggingStorageAccounts;
   late final pulumi.Output<String> managedResourceGroup;
+
   /// The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `network_interface` blocks as defined below.
-  late final pulumi.Output<List<DeploymentNetworkInterface>?> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
+
   /// The version of the NGINX Deployment.
   late final pulumi.Output<String> nginxVersion;
+
   /// The name of the Resource Group where the NGINX Deployment should exist. Changing this forces a new NGINX Deployment to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the NGINX Deployment SKU.
   ///
-  /// > **Note:** For a list of available SKUs, please reference the [NGINXaaS for Azure documentation](https://docs.nginx.com/nginxaas/azure/billing/overview)
+  /// &gt; **Note:** For a list of available SKUs, please reference the [NGINXaaS for Azure documentation](https://docs.nginx.com/nginxaas/azure/billing/overview)
   ///
-  /// > **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `auto_scale_profile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `auto_scale_profile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
+  /// &gt; **Note:** If you are setting the `sku` to `basic_Monthly`, you cannot specify a `capacity` or `auto_scale_profile`; basic plans do not support scaling. Other `sku`s require either `capacity` or `auto_scale_profile`. If you're using `basic_Monthly` with deployments created before v4.0, you may need to use Terraform's `ignore_changes` functionality to ignore changes to the `capacity` field.
   late final pulumi.Output<String> sku;
+
   /// A mapping of tags which should be assigned to the NGINX Deployment.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `web_application_firewall` blocks as defined below.
-  late final pulumi.Output<DeploymentWebApplicationFirewall?> webApplicationFirewall;
+  late final pulumi.Output<DeploymentWebApplicationFirewall?>
+  webApplicationFirewall;
 
   /// Creates a new [DeploymentType].
   /// [name] The Pulumi resource name.
@@ -520,31 +534,45 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:nginx/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoScaleProfiles = registerOutput<List<DeploymentAutoScaleProfile>?>('autoScaleProfiles');
-    this.automaticUpgradeChannel = registerOutput<String?>('automaticUpgradeChannel');
-    this.capacity = registerOutput<int?>('capacity');
-    this.dataplaneApiEndpoint = registerOutput<String>('dataplaneApiEndpoint');
-    this.diagnoseSupportEnabled = registerOutput<bool?>('diagnoseSupportEnabled');
-    this.email = registerOutput<String?>('email');
-    this.frontendPrivates = registerOutput<List<DeploymentFrontendPrivate>?>('frontendPrivates');
-    this.frontendPublic = registerOutput<DeploymentFrontendPublic?>('frontendPublic');
-    this.identity = registerOutput<DeploymentIdentity?>('identity');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.location = registerOutput<String>('location');
-    this.loggingStorageAccounts = registerOutput<List<DeploymentLoggingStorageAccount>?>('loggingStorageAccounts');
-    this.managedResourceGroup = registerOutput<String>('managedResourceGroup');
+         'azure:nginx/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoScaleProfiles = registerOutput<List<Map<String, dynamic>>?>(
+      'autoScaleProfiles',
+    );
+    automaticUpgradeChannel = registerOutput<String?>(
+      'automaticUpgradeChannel',
+    );
+    capacity = registerOutput<int?>('capacity');
+    dataplaneApiEndpoint = registerOutput<String>('dataplaneApiEndpoint');
+    diagnoseSupportEnabled = registerOutput<bool?>('diagnoseSupportEnabled');
+    email = registerOutput<String?>('email');
+    frontendPrivates = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendPrivates',
+    );
+    frontendPublic = registerOutput<DeploymentFrontendPublic?>(
+      'frontendPublic',
+    );
+    identity = registerOutput<DeploymentIdentity?>('identity');
+    ipAddress = registerOutput<String>('ipAddress');
+    location = registerOutput<String>('location');
+    loggingStorageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'loggingStorageAccounts',
+    );
+    managedResourceGroup = registerOutput<String>('managedResourceGroup');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<DeploymentNetworkInterface>?>('networkInterfaces');
-    this.nginxVersion = registerOutput<String>('nginxVersion');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>('webApplicationFirewall');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'networkInterfaces',
+    );
+    nginxVersion = registerOutput<String>('nginxVersion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>(
+      'webApplicationFirewall',
+    );
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -565,30 +593,44 @@ class DeploymentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:nginx/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoScaleProfiles = registerOutput<List<DeploymentAutoScaleProfile>?>('autoScaleProfiles');
-    this.automaticUpgradeChannel = registerOutput<String?>('automaticUpgradeChannel');
-    this.capacity = registerOutput<int?>('capacity');
-    this.dataplaneApiEndpoint = registerOutput<String>('dataplaneApiEndpoint');
-    this.diagnoseSupportEnabled = registerOutput<bool?>('diagnoseSupportEnabled');
-    this.email = registerOutput<String?>('email');
-    this.frontendPrivates = registerOutput<List<DeploymentFrontendPrivate>?>('frontendPrivates');
-    this.frontendPublic = registerOutput<DeploymentFrontendPublic?>('frontendPublic');
-    this.identity = registerOutput<DeploymentIdentity?>('identity');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.location = registerOutput<String>('location');
-    this.loggingStorageAccounts = registerOutput<List<DeploymentLoggingStorageAccount>?>('loggingStorageAccounts');
-    this.managedResourceGroup = registerOutput<String>('managedResourceGroup');
+         'azure:nginx/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoScaleProfiles = registerOutput<List<Map<String, dynamic>>?>(
+      'autoScaleProfiles',
+    );
+    automaticUpgradeChannel = registerOutput<String?>(
+      'automaticUpgradeChannel',
+    );
+    capacity = registerOutput<int?>('capacity');
+    dataplaneApiEndpoint = registerOutput<String>('dataplaneApiEndpoint');
+    diagnoseSupportEnabled = registerOutput<bool?>('diagnoseSupportEnabled');
+    email = registerOutput<String?>('email');
+    frontendPrivates = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendPrivates',
+    );
+    frontendPublic = registerOutput<DeploymentFrontendPublic?>(
+      'frontendPublic',
+    );
+    identity = registerOutput<DeploymentIdentity?>('identity');
+    ipAddress = registerOutput<String>('ipAddress');
+    location = registerOutput<String>('location');
+    loggingStorageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'loggingStorageAccounts',
+    );
+    managedResourceGroup = registerOutput<String>('managedResourceGroup');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<DeploymentNetworkInterface>?>('networkInterfaces');
-    this.nginxVersion = registerOutput<String>('nginxVersion');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>('webApplicationFirewall');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'networkInterfaces',
+    );
+    nginxVersion = registerOutput<String>('nginxVersion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    webApplicationFirewall = registerOutput<DeploymentWebApplicationFirewall?>(
+      'webApplicationFirewall',
+    );
   }
 }

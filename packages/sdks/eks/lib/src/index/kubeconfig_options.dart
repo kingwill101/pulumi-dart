@@ -23,6 +23,7 @@ class KubeconfigOptions {
   ///
   /// The profile is passed to kubeconfig as an authentication environment setting.
   final pulumi.Input<String>? profileName;
+
   /// Role ARN to assume instead of the default AWS credential provider chain.
   ///
   /// The role is passed to kubeconfig as an authentication exec argument.
@@ -31,23 +32,24 @@ class KubeconfigOptions {
   /// Creates a new [KubeconfigOptions].
   /// [profileName] AWS credential profile name to always use instead of the default AWS credential provider chain.
   /// [roleArn] Role ARN to assume instead of the default AWS credential provider chain.
-  KubeconfigOptions({
-    this.profileName,
-    this.roleArn,
-  });
+  KubeconfigOptions({this.profileName, this.roleArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'profileName': ?profileName,
-      'roleArn': ?roleArn,
-    };
+    return <String, dynamic>{'profileName': ?profileName, 'roleArn': ?roleArn};
   }
 
   factory KubeconfigOptions.fromMap(Map<String, dynamic> map) {
     return KubeconfigOptions(
-      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      profileName: (() {
+        final guardedValue = map['profileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

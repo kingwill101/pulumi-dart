@@ -31,10 +31,15 @@ class GetTrainingPipelineArgs {
 
   factory GetTrainingPipelineArgs.fromMap(Map<String, dynamic> map) {
     return GetTrainingPipelineArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      trainingPipelineId: (map['trainingPipelineId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trainingPipelineId: pulumi.Input.fromValue(
+        map['trainingPipelineId'] as String,
+      ),
     );
   }
 }
-

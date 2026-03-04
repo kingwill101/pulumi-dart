@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGroupArgs {
   /// The name of this Application Group.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Application Group exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetApplicationGroupArgs {
 
   factory GetApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

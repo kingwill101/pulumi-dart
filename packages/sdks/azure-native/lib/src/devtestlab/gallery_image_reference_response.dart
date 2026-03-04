@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryImageReferenceResponse {
   /// The offer of the gallery image.
   final pulumi.Input<String>? offer;
+
   /// The OS type of the gallery image.
   final pulumi.Input<String>? osType;
+
   /// The publisher of the gallery image.
   final pulumi.Input<String>? publisher;
+
   /// The SKU of the gallery image.
   final pulumi.Input<String>? sku;
+
   /// The version of the gallery image.
   final pulumi.Input<String>? version;
 
@@ -41,12 +45,31 @@ class GalleryImageReferenceResponse {
 
   factory GalleryImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageReferenceResponse(
-      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
-      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      offer: (() {
+        final guardedValue = map['offer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

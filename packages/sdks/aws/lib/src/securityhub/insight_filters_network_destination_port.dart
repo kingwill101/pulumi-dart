@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightFiltersNetworkDestinationPort {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   final pulumi.Input<String>? eq;
+
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final pulumi.Input<String>? gte;
+
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final pulumi.Input<String>? lte;
 
@@ -14,26 +16,31 @@ class InsightFiltersNetworkDestinationPort {
   /// [eq] The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   /// [gte] The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   /// [lte] The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  InsightFiltersNetworkDestinationPort({
-    this.eq,
-    this.gte,
-    this.lte,
-  });
+  InsightFiltersNetworkDestinationPort({this.eq, this.gte, this.lte});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'eq': ?eq,
-      'gte': ?gte,
-      'lte': ?lte,
-    };
+    return <String, dynamic>{'eq': ?eq, 'gte': ?gte, 'lte': ?lte};
   }
 
-  factory InsightFiltersNetworkDestinationPort.fromMap(Map<String, dynamic> map) {
+  factory InsightFiltersNetworkDestinationPort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightFiltersNetworkDestinationPort(
-      eq: map['eq'] == null ? null : ((map['eq'] as String).input()).input(),
-      gte: map['gte'] == null ? null : ((map['gte'] as String).input()).input(),
-      lte: map['lte'] == null ? null : ((map['lte'] as String).input()).input(),
+      eq: (() {
+        final guardedValue = map['eq'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gte: (() {
+        final guardedValue = map['gte'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lte: (() {
+        final guardedValue = map['lte'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

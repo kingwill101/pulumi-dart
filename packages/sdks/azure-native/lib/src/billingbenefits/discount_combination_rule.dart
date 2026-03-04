@@ -3,16 +3,15 @@ enum DiscountCombinationRule {
   bestOf("BestOf"),
   stackable("Stackable");
 
-  const DiscountCombinationRule(this.value);
-  final String value;
+  const DiscountCombinationRule(this.wireValue);
+  final String wireValue;
 
   static DiscountCombinationRule fromValue(String value) {
     for (final item in DiscountCombinationRule.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscountCombinationRule value: $value');
   }
 }
-

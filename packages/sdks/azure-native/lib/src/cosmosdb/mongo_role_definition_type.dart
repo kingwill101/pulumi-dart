@@ -3,16 +3,15 @@ enum MongoRoleDefinitionType {
   valueBuiltInRole("BuiltInRole"),
   valueCustomRole("CustomRole");
 
-  const MongoRoleDefinitionType(this.value);
-  final String value;
+  const MongoRoleDefinitionType(this.wireValue);
+  final String wireValue;
 
   static MongoRoleDefinitionType fromValue(String value) {
     for (final item in MongoRoleDefinitionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MongoRoleDefinitionType value: $value');
   }
 }
-

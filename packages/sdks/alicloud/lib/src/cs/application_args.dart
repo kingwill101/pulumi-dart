@@ -55,16 +55,45 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      blueGreen: map['blueGreen'] == null ? null : (map['blueGreen']! as bool).input(),
-      blueGreenConfirm: map['blueGreenConfirm'] == null ? null : (map['blueGreenConfirm']! as bool).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
-      latestImage: map['latestImage'] == null ? null : (map['latestImage']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      template: (map['template'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      blueGreen: (() {
+        final guardedValue = map['blueGreen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      blueGreenConfirm: (() {
+        final guardedValue = map['blueGreenConfirm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      latestImage: (() {
+        final guardedValue = map['latestImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      template: pulumi.Input.fromValue(map['template'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

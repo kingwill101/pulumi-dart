@@ -13,15 +13,16 @@ class VirtualNodeSpecListenerTlsValidationTrustFile {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateChain': certificateChain,
-    };
+    return <String, dynamic>{'certificateChain': certificateChain};
   }
 
-  factory VirtualNodeSpecListenerTlsValidationTrustFile.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecListenerTlsValidationTrustFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecListenerTlsValidationTrustFile(
-      certificateChain: (map['certificateChain'] as String).input(),
+      certificateChain: pulumi.Input.fromValue(
+        map['certificateChain'] as String,
+      ),
     );
   }
 }
-

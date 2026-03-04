@@ -399,7 +399,7 @@ class ExtendedServerBlobAuditingPolicy extends pulumi.CustomResource {
   /// The general form for defining an action to be audited is:
   /// {action} ON {object} BY {principal}
   ///
-  /// Note that <object> in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively.
+  /// Note that &lt;object&gt; in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::{db_name} and SCHEMA::{schema_name} are used, respectively.
   ///
   /// For example:
   /// SELECT on dbo.myTable by public
@@ -408,8 +408,10 @@ class ExtendedServerBlobAuditingPolicy extends pulumi.CustomResource {
   ///
   /// For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
   late final pulumi.Output<List<String>?> auditActionsAndGroups;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies whether audit events are sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
   ///
@@ -422,6 +424,7 @@ class ExtendedServerBlobAuditingPolicy extends pulumi.CustomResource {
   /// For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207)
   /// or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
   late final pulumi.Output<bool?> isAzureMonitorTargetEnabled;
+
   /// Specifies the state of devops audit. If state is Enabled, devops logs will be sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled', 'IsAzureMonitorTargetEnabled' as true and 'IsDevopsAuditEnabled' as true
   ///
@@ -433,25 +436,35 @@ class ExtendedServerBlobAuditingPolicy extends pulumi.CustomResource {
   /// For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207)
   /// or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
   late final pulumi.Output<bool?> isDevopsAuditEnabled;
+
   /// Specifies whether Managed Identity is used to access blob storage
   late final pulumi.Output<bool?> isManagedIdentityInUse;
+
   /// Specifies whether storageAccountAccessKey value is the storage's secondary key.
   late final pulumi.Output<bool?> isStorageSecondaryKeyInUse;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Specifies condition of where clause when creating an audit.
   late final pulumi.Output<String?> predicateExpression;
+
   /// Specifies the amount of time in milliseconds that can elapse before audit actions are forced to be processed.
   /// The default minimum value is 1000 (1 second). The maximum is 2,147,483,647.
   late final pulumi.Output<int?> queueDelayMs;
+
   /// Specifies the number of days to keep in the audit logs in the storage account.
   late final pulumi.Output<int?> retentionDays;
+
   /// Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
   late final pulumi.Output<String> state;
+
   /// Specifies the blob storage subscription Id.
   late final pulumi.Output<String?> storageAccountSubscriptionId;
+
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
   late final pulumi.Output<String?> storageEndpoint;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -464,24 +477,32 @@ class ExtendedServerBlobAuditingPolicy extends pulumi.CustomResource {
     ExtendedServerBlobAuditingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ExtendedServerBlobAuditingPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditActionsAndGroups = registerOutput<List<String>?>('auditActionsAndGroups');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.isAzureMonitorTargetEnabled = registerOutput<bool?>('isAzureMonitorTargetEnabled');
-    this.isDevopsAuditEnabled = registerOutput<bool?>('isDevopsAuditEnabled');
-    this.isManagedIdentityInUse = registerOutput<bool?>('isManagedIdentityInUse');
-    this.isStorageSecondaryKeyInUse = registerOutput<bool?>('isStorageSecondaryKeyInUse');
+         'azure-native:sql:ExtendedServerBlobAuditingPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditActionsAndGroups = registerOutput<List<String>?>(
+      'auditActionsAndGroups',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isAzureMonitorTargetEnabled = registerOutput<bool?>(
+      'isAzureMonitorTargetEnabled',
+    );
+    isDevopsAuditEnabled = registerOutput<bool?>('isDevopsAuditEnabled');
+    isManagedIdentityInUse = registerOutput<bool?>('isManagedIdentityInUse');
+    isStorageSecondaryKeyInUse = registerOutput<bool?>(
+      'isStorageSecondaryKeyInUse',
+    );
     this.name = registerOutput<String>('name');
-    this.predicateExpression = registerOutput<String?>('predicateExpression');
-    this.queueDelayMs = registerOutput<int?>('queueDelayMs');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.state = registerOutput<String>('state');
-    this.storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
-    this.storageEndpoint = registerOutput<String?>('storageEndpoint');
-    this.type = registerOutput<String>('type');
+    predicateExpression = registerOutput<String?>('predicateExpression');
+    queueDelayMs = registerOutput<int?>('queueDelayMs');
+    retentionDays = registerOutput<int?>('retentionDays');
+    state = registerOutput<String>('state');
+    storageAccountSubscriptionId = registerOutput<String?>(
+      'storageAccountSubscriptionId',
+    );
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+    type = registerOutput<String>('type');
   }
 }

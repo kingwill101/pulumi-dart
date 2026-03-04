@@ -147,18 +147,25 @@ import 'system_data_response.dart';
 class ImportCollectorsOperation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the Timestamp when collector was created.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Gets the discovery site id.
   late final pulumi.Output<String?> discoverySiteId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Timestamp when collector was last updated.
   late final pulumi.Output<String> updatedTimestamp;
 
@@ -171,18 +178,18 @@ class ImportCollectorsOperation extends pulumi.CustomResource {
     ImportCollectorsOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:ImportCollectorsOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.discoverySiteId = registerOutput<String?>('discoverySiteId');
+         'azure-native:migrate:ImportCollectorsOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    discoverySiteId = registerOutput<String?>('discoverySiteId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }
 }

@@ -9,20 +9,19 @@ class JobDeliveryInfo {
 
   /// Creates a new [JobDeliveryInfo].
   /// [scheduledDateTime] Scheduled date time.
-  JobDeliveryInfo({
-    this.scheduledDateTime,
-  });
+  JobDeliveryInfo({this.scheduledDateTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scheduledDateTime': ?scheduledDateTime,
-    };
+    return <String, dynamic>{'scheduledDateTime': ?scheduledDateTime};
   }
 
   factory JobDeliveryInfo.fromMap(Map<String, dynamic> map) {
     return JobDeliveryInfo(
-      scheduledDateTime: map['scheduledDateTime'] == null ? null : (map['scheduledDateTime']! as String).input(),
+      scheduledDateTime: (() {
+        final guardedValue = map['scheduledDateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

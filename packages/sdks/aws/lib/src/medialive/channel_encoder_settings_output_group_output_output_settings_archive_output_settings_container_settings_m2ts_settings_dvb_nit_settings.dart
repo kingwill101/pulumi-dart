@@ -25,12 +25,17 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings(
-      networkId: (map['networkId'] as int).input(),
-      networkName: (map['networkName'] as String).input(),
-      repInterval: map['repInterval'] == null ? null : ((map['repInterval'] as int).input()).input(),
+      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkName: pulumi.Input.fromValue(map['networkName'] as String),
+      repInterval: (() {
+        final guardedValue = map['repInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

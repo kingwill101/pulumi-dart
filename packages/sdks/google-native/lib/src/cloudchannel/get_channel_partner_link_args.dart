@@ -31,10 +31,15 @@ class GetChannelPartnerLinkArgs {
 
   factory GetChannelPartnerLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelPartnerLinkArgs(
-      accountId: (map['accountId'] as String).input(),
-      channelPartnerLinkId: (map['channelPartnerLinkId'] as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      channelPartnerLinkId: pulumi.Input.fromValue(
+        map['channelPartnerLinkId'] as String,
+      ),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

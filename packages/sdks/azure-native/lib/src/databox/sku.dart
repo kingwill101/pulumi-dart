@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Sku {
   /// The display name of the sku.
   final pulumi.Input<String>? displayName;
+
   /// The sku family.
   final pulumi.Input<String>? family;
+
   /// The sku name.
   final pulumi.Input<String> name;
 
@@ -15,11 +17,7 @@ class Sku {
   /// [displayName] The display name of the sku.
   /// [family] The sku family.
   /// [name] The sku name.
-  Sku({
-    this.displayName,
-    this.family,
-    required this.name,
-  });
+  Sku({this.displayName, this.family, required this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      family: map['family'] == null ? null : (map['family']! as String).input(),
-      name: (map['name'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      family: (() {
+        final guardedValue = map['family'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

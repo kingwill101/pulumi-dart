@@ -10,20 +10,17 @@ class VmmToAzureCreateNetworkMappingInput {
 
   /// Creates a new [VmmToAzureCreateNetworkMappingInput].
   /// [instanceType] The instance type.
-  VmmToAzureCreateNetworkMappingInput({
-    required this.instanceType,
-  });
+  VmmToAzureCreateNetworkMappingInput({required this.instanceType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceType': instanceType,
-    };
+    return <String, dynamic>{'instanceType': instanceType};
   }
 
-  factory VmmToAzureCreateNetworkMappingInput.fromMap(Map<String, dynamic> map) {
+  factory VmmToAzureCreateNetworkMappingInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmmToAzureCreateNetworkMappingInput(
-      instanceType: (map['instanceType'] as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
-

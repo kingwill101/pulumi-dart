@@ -1,16 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_type_versions_cleanup_policy_response.dart';
 import 'azure_active_directory_response.dart';
-import 'client_certificate_response.dart';
 import 'cluster_upgrade_policy_response.dart';
-import 'ip_tag_response.dart';
-import 'load_balancing_rule_response.dart';
 import 'managed_cluster_args.dart';
-import 'network_security_rule_response.dart';
-import 'service_endpoint_response.dart';
-import 'settings_section_description_response.dart';
 import 'sku_response.dart';
-import 'subnet_response.dart';
 import 'system_data_response.dart';
 
 /// The managed cluster resource
@@ -1153,96 +1146,143 @@ import 'system_data_response.dart';
 class ManagedCluster extends pulumi.CustomResource {
   /// List of add-on features to enable on the cluster.
   late final pulumi.Output<List<String>?> addonFeatures;
+
   /// VM admin user password.
   late final pulumi.Output<String?> adminPassword;
+
   /// VM admin user name.
   late final pulumi.Output<String> adminUserName;
+
   /// Setting this to true enables RDP access to the VM. The default NSG rule opens RDP port to Internet which can be overridden with custom Network Security Rules. The default value for this setting is false.
   late final pulumi.Output<bool?> allowRdpAccess;
+
   /// The policy used to clean up unused versions.
-  late final pulumi.Output<ApplicationTypeVersionsCleanupPolicyResponse?> applicationTypeVersionsCleanupPolicy;
+  late final pulumi.Output<ApplicationTypeVersionsCleanupPolicyResponse?>
+  applicationTypeVersionsCleanupPolicy;
+
   /// Auxiliary subnets for the cluster.
-  late final pulumi.Output<List<SubnetResponse>?> auxiliarySubnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> auxiliarySubnets;
+
   /// The AAD authentication settings of the cluster.
   late final pulumi.Output<AzureActiveDirectoryResponse?> azureActiveDirectory;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The port used for client connections to the cluster.
   late final pulumi.Output<int?> clientConnectionPort;
+
   /// Client certificates that are allowed to manage the cluster.
-  late final pulumi.Output<List<ClientCertificateResponse>?> clients;
+  late final pulumi.Output<List<Map<String, dynamic>>?> clients;
+
   /// List of thumbprints of the cluster certificates.
   late final pulumi.Output<List<String>> clusterCertificateThumbprints;
+
   /// The Service Fabric runtime version of the cluster. This property is required when **clusterUpgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
   late final pulumi.Output<String?> clusterCodeVersion;
+
   /// A service generated unique identifier for the cluster resource.
   late final pulumi.Output<String> clusterId;
+
   /// The current state of the cluster.
   late final pulumi.Output<String> clusterState;
+
   /// Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'.
   late final pulumi.Output<String?> clusterUpgradeCadence;
+
   /// The upgrade mode of the cluster when new Service Fabric runtime version is available.
   late final pulumi.Output<String?> clusterUpgradeMode;
+
   /// Specify the resource id of a DDoS network protection plan that will be associated with the virtual network of the cluster.
   late final pulumi.Output<String?> ddosProtectionPlanId;
+
   /// The cluster dns name.
   late final pulumi.Output<String> dnsName;
+
   /// Setting this to true enables automatic OS upgrade for the node types that are created using any platform OS image with version 'latest'. The default value for this setting is false.
   late final pulumi.Output<bool?> enableAutoOSUpgrade;
+
   /// If true, token-based authentication is not allowed on the HttpGatewayEndpoint. This is required to support TLS versions 1.3 and above. If token-based authentication is used, HttpGatewayTokenAuthConnectionPort must be defined.
   late final pulumi.Output<bool?> enableHttpGatewayExclusiveAuthMode;
+
   /// Setting this to true creates IPv6 address space for the default VNet used by the cluster. This setting cannot be changed once the cluster is created. The default value for this setting is false.
   late final pulumi.Output<bool?> enableIpv6;
+
   /// Setting this to true will link the IPv4 address as the ServicePublicIP of the IPv6 address. It can only be set to True if IPv6 is enabled on the cluster.
   late final pulumi.Output<bool?> enableServicePublicIP;
+
   /// Azure resource etag.
   late final pulumi.Output<String> etag;
+
   /// The list of custom fabric settings to configure the cluster.
-  late final pulumi.Output<List<SettingsSectionDescriptionResponse>?> fabricSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> fabricSettings;
+
   /// The fully qualified domain name associated with the public load balancer of the cluster.
   late final pulumi.Output<String> fqdn;
+
   /// The port used for HTTP connections to the cluster.
   late final pulumi.Output<int?> httpGatewayConnectionPort;
+
   /// The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint.
   late final pulumi.Output<int?> httpGatewayTokenAuthConnectionPort;
+
   /// The list of IP tags associated with the default public IP address of the cluster.
-  late final pulumi.Output<List<IpTagResponse>?> ipTags;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipTags;
+
   /// The IPv4 address associated with the public load balancer of the cluster.
   late final pulumi.Output<String> ipv4Address;
+
   /// IPv6 address for the cluster if IPv6 is enabled.
   late final pulumi.Output<String> ipv6Address;
+
   /// Load balancing rules that are applied to the public load balancer of the cluster.
-  late final pulumi.Output<List<LoadBalancingRuleResponse>?> loadBalancingRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancingRules;
+
   /// Azure resource location.
   late final pulumi.Output<String> location;
+
   /// Azure resource name.
   late final pulumi.Output<String> name;
+
   /// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
-  late final pulumi.Output<List<NetworkSecurityRuleResponse>?> networkSecurityRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkSecurityRules;
+
   /// The provisioning state of the managed cluster resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created.
   late final pulumi.Output<String?> publicIPPrefixId;
+
   /// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
   late final pulumi.Output<String?> publicIPv6PrefixId;
+
   /// Service endpoints for subnets in the cluster.
-  late final pulumi.Output<List<ServiceEndpointResponse>?> serviceEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> serviceEndpoints;
+
   /// The sku of the managed cluster
   late final pulumi.Output<SkuResponse> sku;
+
   /// If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
   late final pulumi.Output<String?> subnetId;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Azure resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Azure resource type.
   late final pulumi.Output<String> type;
+
   /// The policy to use when upgrading the cluster.
   late final pulumi.Output<ClusterUpgradePolicyResponse?> upgradeDescription;
+
   /// For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types.
   late final pulumi.Output<bool?> useCustomVnet;
+
   /// Indicates if the cluster has zone resiliency.
   late final pulumi.Output<bool?> zonalResiliency;
+
   /// Indicates the update mode for Cross Az clusters.
   late final pulumi.Output<String?> zonalUpdateMode;
 
@@ -1255,57 +1295,82 @@ class ManagedCluster extends pulumi.CustomResource {
     ManagedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicefabric:ManagedCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addonFeatures = registerOutput<List<String>?>('addonFeatures');
-    this.adminPassword = registerOutput<String?>('adminPassword');
-    this.adminUserName = registerOutput<String>('adminUserName');
-    this.allowRdpAccess = registerOutput<bool?>('allowRdpAccess');
-    this.applicationTypeVersionsCleanupPolicy = registerOutput<ApplicationTypeVersionsCleanupPolicyResponse?>('applicationTypeVersionsCleanupPolicy');
-    this.auxiliarySubnets = registerOutput<List<SubnetResponse>?>('auxiliarySubnets');
-    this.azureActiveDirectory = registerOutput<AzureActiveDirectoryResponse?>('azureActiveDirectory');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientConnectionPort = registerOutput<int?>('clientConnectionPort');
-    this.clients = registerOutput<List<ClientCertificateResponse>?>('clients');
-    this.clusterCertificateThumbprints = registerOutput<List<String>>('clusterCertificateThumbprints');
-    this.clusterCodeVersion = registerOutput<String?>('clusterCodeVersion');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.clusterState = registerOutput<String>('clusterState');
-    this.clusterUpgradeCadence = registerOutput<String?>('clusterUpgradeCadence');
-    this.clusterUpgradeMode = registerOutput<String?>('clusterUpgradeMode');
-    this.ddosProtectionPlanId = registerOutput<String?>('ddosProtectionPlanId');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.enableAutoOSUpgrade = registerOutput<bool?>('enableAutoOSUpgrade');
-    this.enableHttpGatewayExclusiveAuthMode = registerOutput<bool?>('enableHttpGatewayExclusiveAuthMode');
-    this.enableIpv6 = registerOutput<bool?>('enableIpv6');
-    this.enableServicePublicIP = registerOutput<bool?>('enableServicePublicIP');
-    this.etag = registerOutput<String>('etag');
-    this.fabricSettings = registerOutput<List<SettingsSectionDescriptionResponse>?>('fabricSettings');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.httpGatewayConnectionPort = registerOutput<int?>('httpGatewayConnectionPort');
-    this.httpGatewayTokenAuthConnectionPort = registerOutput<int?>('httpGatewayTokenAuthConnectionPort');
-    this.ipTags = registerOutput<List<IpTagResponse>?>('ipTags');
-    this.ipv4Address = registerOutput<String>('ipv4Address');
-    this.ipv6Address = registerOutput<String>('ipv6Address');
-    this.loadBalancingRules = registerOutput<List<LoadBalancingRuleResponse>?>('loadBalancingRules');
-    this.location = registerOutput<String>('location');
+         'azure-native:servicefabric:ManagedCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addonFeatures = registerOutput<List<String>?>('addonFeatures');
+    adminPassword = registerOutput<String?>('adminPassword');
+    adminUserName = registerOutput<String>('adminUserName');
+    allowRdpAccess = registerOutput<bool?>('allowRdpAccess');
+    applicationTypeVersionsCleanupPolicy =
+        registerOutput<ApplicationTypeVersionsCleanupPolicyResponse?>(
+          'applicationTypeVersionsCleanupPolicy',
+        );
+    auxiliarySubnets = registerOutput<List<Map<String, dynamic>>?>(
+      'auxiliarySubnets',
+    );
+    azureActiveDirectory = registerOutput<AzureActiveDirectoryResponse?>(
+      'azureActiveDirectory',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientConnectionPort = registerOutput<int?>('clientConnectionPort');
+    clients = registerOutput<List<Map<String, dynamic>>?>('clients');
+    clusterCertificateThumbprints = registerOutput<List<String>>(
+      'clusterCertificateThumbprints',
+    );
+    clusterCodeVersion = registerOutput<String?>('clusterCodeVersion');
+    clusterId = registerOutput<String>('clusterId');
+    clusterState = registerOutput<String>('clusterState');
+    clusterUpgradeCadence = registerOutput<String?>('clusterUpgradeCadence');
+    clusterUpgradeMode = registerOutput<String?>('clusterUpgradeMode');
+    ddosProtectionPlanId = registerOutput<String?>('ddosProtectionPlanId');
+    dnsName = registerOutput<String>('dnsName');
+    enableAutoOSUpgrade = registerOutput<bool?>('enableAutoOSUpgrade');
+    enableHttpGatewayExclusiveAuthMode = registerOutput<bool?>(
+      'enableHttpGatewayExclusiveAuthMode',
+    );
+    enableIpv6 = registerOutput<bool?>('enableIpv6');
+    enableServicePublicIP = registerOutput<bool?>('enableServicePublicIP');
+    etag = registerOutput<String>('etag');
+    fabricSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'fabricSettings',
+    );
+    fqdn = registerOutput<String>('fqdn');
+    httpGatewayConnectionPort = registerOutput<int?>(
+      'httpGatewayConnectionPort',
+    );
+    httpGatewayTokenAuthConnectionPort = registerOutput<int?>(
+      'httpGatewayTokenAuthConnectionPort',
+    );
+    ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    loadBalancingRules = registerOutput<List<Map<String, dynamic>>?>(
+      'loadBalancingRules',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkSecurityRules = registerOutput<List<NetworkSecurityRuleResponse>?>('networkSecurityRules');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicIPPrefixId = registerOutput<String?>('publicIPPrefixId');
-    this.publicIPv6PrefixId = registerOutput<String?>('publicIPv6PrefixId');
-    this.serviceEndpoints = registerOutput<List<ServiceEndpointResponse>?>('serviceEndpoints');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.subnetId = registerOutput<String?>('subnetId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.upgradeDescription = registerOutput<ClusterUpgradePolicyResponse?>('upgradeDescription');
-    this.useCustomVnet = registerOutput<bool?>('useCustomVnet');
-    this.zonalResiliency = registerOutput<bool?>('zonalResiliency');
-    this.zonalUpdateMode = registerOutput<String?>('zonalUpdateMode');
+    networkSecurityRules = registerOutput<List<Map<String, dynamic>>?>(
+      'networkSecurityRules',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPPrefixId = registerOutput<String?>('publicIPPrefixId');
+    publicIPv6PrefixId = registerOutput<String?>('publicIPv6PrefixId');
+    serviceEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'serviceEndpoints',
+    );
+    sku = registerOutput<SkuResponse>('sku');
+    subnetId = registerOutput<String?>('subnetId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    upgradeDescription = registerOutput<ClusterUpgradePolicyResponse?>(
+      'upgradeDescription',
+    );
+    useCustomVnet = registerOutput<bool?>('useCustomVnet');
+    zonalResiliency = registerOutput<bool?>('zonalResiliency');
+    zonalUpdateMode = registerOutput<String?>('zonalUpdateMode');
   }
 }

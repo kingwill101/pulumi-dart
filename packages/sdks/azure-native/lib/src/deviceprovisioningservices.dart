@@ -1,5 +1,3 @@
-library module_deviceprovisioningservices;
-
 export 'deviceprovisioningservices/access_rights_description.dart';
 export 'deviceprovisioningservices/allocation_policy.dart';
 export 'deviceprovisioningservices/certificate_properties.dart';

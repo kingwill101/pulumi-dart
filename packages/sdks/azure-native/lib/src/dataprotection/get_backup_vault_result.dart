@@ -8,22 +8,31 @@ import 'system_data_response.dart';
 class GetBackupVaultResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Optional ETag.
   final String? eTag;
+
   /// Resource Id represents the complete path to the resource.
   final String id;
+
   /// Input Managed Identity Details
   final DppIdentityDetailsResponse? identity;
+
   /// Resource location.
   final String location;
+
   /// Resource name associated with the resource.
   final String name;
+
   /// BackupVaultResource properties
   final BackupVaultResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   final String type;
 
@@ -56,7 +65,7 @@ class GetBackupVaultResult {
       'azureApiVersion': azureApiVersion,
       'eTag': ?eTag,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': location,
       'name': name,
       'properties': properties.toMap(),
@@ -69,16 +78,33 @@ class GetBackupVaultResult {
   factory GetBackupVaultResult.fromMap(Map<String, dynamic> map) {
     return GetBackupVaultResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag']! as String,
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : DppIdentityDetailsResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return DppIdentityDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: BackupVaultResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: BackupVaultResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

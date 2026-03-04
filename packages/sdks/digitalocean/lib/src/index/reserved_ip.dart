@@ -4,7 +4,7 @@ import 'reserved_ip_state.dart';
 
 /// Provides a DigitalOcean reserved IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
 ///
-/// > **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `digitalocean.ReservedIp` resource by setting a `droplet_id` or using the `digitalocean.ReservedIpAssignment` resource, but the two cannot be used together.
+/// &gt; **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `digitalocean.ReservedIp` resource by setting a `droplet_id` or using the `digitalocean.ReservedIpAssignment` resource, but the two cannot be used together.
 ///
 /// ## Example Usage
 ///
@@ -169,10 +169,13 @@ import 'reserved_ip_state.dart';
 class ReservedIp extends pulumi.CustomResource {
   /// The ID of Droplet that the reserved IP will be assigned to.
   late final pulumi.Output<int?> dropletId;
+
   /// The IP Address of the resource
   late final pulumi.Output<String> ipAddress;
+
   /// The region that the reserved IP is reserved to.
   late final pulumi.Output<String> region;
+
   /// The uniform resource name of the reserved ip
   late final pulumi.Output<String> reservedIpUrn;
 
@@ -185,15 +188,15 @@ class ReservedIp extends pulumi.CustomResource {
     ReservedIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/reservedIp:ReservedIp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dropletId = registerOutput<int?>('dropletId');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.region = registerOutput<String>('region');
-    this.reservedIpUrn = registerOutput<String>('reservedIpUrn');
+         'digitalocean:index/reservedIp:ReservedIp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dropletId = registerOutput<int?>('dropletId');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+    reservedIpUrn = registerOutput<String>('reservedIpUrn');
   }
 
   /// Gets an existing [ReservedIp] resource's state with the given [name] and [id].
@@ -214,14 +217,14 @@ class ReservedIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/reservedIp:ReservedIp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dropletId = registerOutput<int?>('dropletId');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.region = registerOutput<String>('region');
-    this.reservedIpUrn = registerOutput<String>('reservedIpUrn');
+         'digitalocean:index/reservedIp:ReservedIp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dropletId = registerOutput<int?>('dropletId');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+    reservedIpUrn = registerOutput<String>('reservedIpUrn');
   }
 }

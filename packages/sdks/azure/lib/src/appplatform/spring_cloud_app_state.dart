@@ -10,30 +10,44 @@ import 'spring_cloud_app_persistent_disk.dart';
 class SpringCloudAppState {
   /// A JSON object that contains the addon configurations of the Spring Cloud Service.
   final pulumi.Input<String>? addonJson;
+
   /// A `custom_persistent_disk` block as defined below.
-  final pulumi.Input<List<SpringCloudAppCustomPersistentDisk>>? customPersistentDisks;
+  final pulumi.Input<List<SpringCloudAppCustomPersistentDisk>>?
+  customPersistentDisks;
+
   /// The Fully Qualified DNS Name of the Spring Application in the service.
   final pulumi.Input<String>? fqdn;
+
   /// Is only HTTPS allowed? Defaults to `false`.
   final pulumi.Input<bool>? httpsOnly;
+
   /// An `identity` block as defined below.
   final pulumi.Input<SpringCloudAppIdentity>? identity;
+
   /// An `ingress_settings` block as defined below.
   final pulumi.Input<SpringCloudAppIngressSettings>? ingressSettings;
+
   /// Does the Spring Cloud Application have public endpoint? Defaults to `false`.
   final pulumi.Input<bool>? isPublic;
+
   /// Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// An `persistent_disk` block as defined below.
   final pulumi.Input<SpringCloudAppPersistentDisk>? persistentDisk;
+
   /// Should the App in vnet injection instance exposes endpoint which could be accessed from Internet?
   final pulumi.Input<bool>? publicEndpointEnabled;
+
   /// Specifies the name of the resource group in which to create the Spring Cloud Application. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? serviceName;
+
   /// Is End to End TLS Enabled? Defaults to `false`.
   final pulumi.Input<bool>? tlsEnabled;
+
   /// The public endpoint of the Spring Cloud Application.
   final pulumi.Input<String>? url;
 
@@ -72,14 +86,37 @@ class SpringCloudAppState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addonJson': ?addonJson,
-      'customPersistentDisks': ?pulumi.Input.mapOptionalInputValue<List<SpringCloudAppCustomPersistentDisk>, List<Map<String, dynamic>>>(customPersistentDisks, (value) => pulumi.Input.encodeList<SpringCloudAppCustomPersistentDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customPersistentDisks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SpringCloudAppCustomPersistentDisk>,
+            List<Map<String, dynamic>>
+          >(
+            customPersistentDisks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SpringCloudAppCustomPersistentDisk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'fqdn': ?fqdn,
       'httpsOnly': ?httpsOnly,
-      'identity': ?pulumi.Input.mapOptionalInputValue<SpringCloudAppIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'ingressSettings': ?pulumi.Input.mapOptionalInputValue<SpringCloudAppIngressSettings, Map<String, dynamic>>(ingressSettings, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpringCloudAppIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
+      'ingressSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpringCloudAppIngressSettings,
+            Map<String, dynamic>
+          >(ingressSettings, (value) => value.toMap()),
       'isPublic': ?isPublic,
       'name': ?name,
-      'persistentDisk': ?pulumi.Input.mapOptionalInputValue<SpringCloudAppPersistentDisk, Map<String, dynamic>>(persistentDisk, (value) => value.toMap()),
+      'persistentDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpringCloudAppPersistentDisk,
+            Map<String, dynamic>
+          >(persistentDisk, (value) => value.toMap()),
       'publicEndpointEnabled': ?publicEndpointEnabled,
       'resourceGroupName': ?resourceGroupName,
       'serviceName': ?serviceName,
@@ -90,21 +127,95 @@ class SpringCloudAppState {
 
   factory SpringCloudAppState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppState(
-      addonJson: map['addonJson'] == null ? null : (map['addonJson']! as String).input(),
-      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(map['customPersistentDisks']!, (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
-      identity: map['identity'] == null ? null : (SpringCloudAppIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      ingressSettings: map['ingressSettings'] == null ? null : (SpringCloudAppIngressSettings.fromMap((map['ingressSettings']! as Map).cast<String, dynamic>())).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      persistentDisk: map['persistentDisk'] == null ? null : (SpringCloudAppPersistentDisk.fromMap((map['persistentDisk']! as Map).cast<String, dynamic>())).input(),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled']! as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
-      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled']! as bool).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      addonJson: (() {
+        final guardedValue = map['addonJson'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customPersistentDisks: (() {
+        final guardedValue = map['customPersistentDisks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(
+            guardedValue,
+            (value) => SpringCloudAppCustomPersistentDisk.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      fqdn: (() {
+        final guardedValue = map['fqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpsOnly: (() {
+        final guardedValue = map['httpsOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpringCloudAppIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ingressSettings: (() {
+        final guardedValue = map['ingressSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpringCloudAppIngressSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isPublic: (() {
+        final guardedValue = map['isPublic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      persistentDisk: (() {
+        final guardedValue = map['persistentDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpringCloudAppPersistentDisk.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      publicEndpointEnabled: (() {
+        final guardedValue = map['publicEndpointEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tlsEnabled: (() {
+        final guardedValue = map['tlsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

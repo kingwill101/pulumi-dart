@@ -4,7 +4,7 @@ import 'deploy_group_state.dart';
 
 /// Provides an EDAS deploy group resource, see [What is EDAS Deploy Group](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertdeploygroup).
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 ///
 /// ## Example Usage
@@ -330,8 +330,10 @@ import 'deploy_group_state.dart';
 class DeployGroup extends pulumi.CustomResource {
   /// The ID of the application that you want to deploy.
   late final pulumi.Output<String> appId;
+
   /// The name of the instance group that you want to create.
   late final pulumi.Output<String> groupName;
+
   /// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
   late final pulumi.Output<int> groupType;
 
@@ -344,14 +346,14 @@ class DeployGroup extends pulumi.CustomResource {
     DeployGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/deployGroup:DeployGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<int>('groupType');
+         'alicloud:edas/deployGroup:DeployGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<int>('groupType');
   }
 
   /// Gets an existing [DeployGroup] resource's state with the given [name] and [id].
@@ -372,13 +374,13 @@ class DeployGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/deployGroup:DeployGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<int>('groupType');
+         'alicloud:edas/deployGroup:DeployGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<int>('groupType');
   }
 }

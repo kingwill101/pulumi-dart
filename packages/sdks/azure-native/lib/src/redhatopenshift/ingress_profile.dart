@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngressProfile {
   /// The ingress profile name.
   final pulumi.Input<String>? name;
+
   /// Ingress visibility.
   final pulumi.Input<String>? visibility;
 
   /// Creates a new [IngressProfile].
   /// [name] The ingress profile name.
   /// [visibility] Ingress visibility.
-  IngressProfile({
-    this.name,
-    this.visibility,
-  });
+  IngressProfile({this.name, this.visibility});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'visibility': ?visibility,
-    };
+    return <String, dynamic>{'name': ?name, 'visibility': ?visibility};
   }
 
   factory IngressProfile.fromMap(Map<String, dynamic> map) {
     return IngressProfile(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      visibility: (() {
+        final guardedValue = map['visibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

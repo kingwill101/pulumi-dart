@@ -1,5 +1,3 @@
-library module_elasticsan;
-
 export 'elasticsan/action.dart';
 export 'elasticsan/elastic_san.dart';
 export 'elasticsan/elastic_san_args.dart';

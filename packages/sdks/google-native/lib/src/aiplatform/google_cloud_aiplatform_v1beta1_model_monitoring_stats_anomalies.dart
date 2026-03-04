@@ -8,12 +8,23 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_stats_anomalies_objecti
 class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
   /// Number of anomalies within all stats.
   final pulumi.Input<int>? anomalyCount;
+
   /// Deployed Model ID.
   final pulumi.Input<String>? deployedModelId;
+
   /// A list of historical Stats and Anomalies generated for all Features.
-  final pulumi.Input<List<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>>? featureStats;
+  final pulumi.Input<
+    List<
+      GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies
+    >
+  >?
+  featureStats;
+
   /// Model Monitoring Objective those stats and anomalies belonging to.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective>? objective;
+  final pulumi.Input<
+    GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective
+  >?
+  objective;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies].
   /// [anomalyCount] Number of anomalies within all stats.
@@ -31,18 +42,66 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
     return <String, dynamic>{
       'anomalyCount': ?anomalyCount,
       'deployedModelId': ?deployedModelId,
-      'featureStats': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>, List<Map<String, dynamic>>>(featureStats, (value) => pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'objective': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective, String>(objective, (value) => value.value),
+      'featureStats':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies
+            >,
+            List<Map<String, dynamic>>
+          >(
+            featureStats,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'objective':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective,
+            String
+          >(objective, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies(
-      anomalyCount: map['anomalyCount'] == null ? null : (map['anomalyCount']! as int).input(),
-      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId']! as String).input(),
-      featureStats: map['featureStats'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>(map['featureStats']!, (value) => GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objective: map['objective'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective.fromValue(map['objective']! as String)).input(),
+      anomalyCount: (() {
+        final guardedValue = map['anomalyCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      deployedModelId: (() {
+        final guardedValue = map['deployedModelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      featureStats: (() {
+        final guardedValue = map['featureStats'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies
+          >(
+            guardedValue,
+            (value) =>
+                GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      objective: (() {
+        final guardedValue = map['objective'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

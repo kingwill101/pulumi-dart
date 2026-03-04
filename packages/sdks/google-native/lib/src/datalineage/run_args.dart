@@ -10,19 +10,25 @@ import 'run_state.dart';
 class RunArgs {
   /// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
   final pulumi.Input<Map<String, String>>? attributes;
+
   /// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
   final pulumi.Input<String>? displayName;
+
   /// Optional. The timestamp of the end of the run.
   final pulumi.Input<String>? endTime;
   final pulumi.Input<String>? location;
+
   /// Immutable. The resource name of the run. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. Can be specified or auto-assigned. {run} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
   final pulumi.Input<String>? name;
   final pulumi.Input<String> processId;
   final pulumi.Input<String>? project;
+
   /// A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
   final pulumi.Input<String>? requestId;
+
   /// The timestamp of the start of the run.
   final pulumi.Input<String> startTime;
+
   /// The state of the run.
   final pulumi.Input<RunState> state;
 
@@ -61,23 +67,57 @@ class RunArgs {
       'project': ?project,
       'requestId': ?requestId,
       'startTime': startTime,
-      'state': pulumi.Input.mapInputValue<RunState, String>(state, (value) => value.value),
+      'state': pulumi.Input.mapInputValue<RunState, String>(
+        state,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory RunArgs.fromMap(Map<String, dynamic> map) {
     return RunArgs(
-      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      processId: (map['processId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      state: (RunState.fromValue(map['state'] as String)).input(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      processId: pulumi.Input.fromValue(map['processId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      state: pulumi.Input.fromValue(
+        RunState.fromValue(map['state']! as String),
+      ),
     );
   }
 }
-

@@ -148,17 +148,17 @@ tasks:
   parity:audit:
     desc: Compare Dart integration test surface against upstream Go/Node/Python tests
     cmds:
-      - ./scripts/parity_audit.sh
+      - dart run tool/parity_audit.dart
 
   parity:audit:sdk:
     desc: Compare Dart core test surface against upstream NodeJS/Python SDK test topics
     cmds:
-      - ./scripts/sdk_parity_audit.sh
+      - dart run tool/sdk_parity_audit.dart
 
   check:workspace:
     desc: Validate workspace pubspec conventions
     cmds:
-      - ./scripts/check-packages-workspace.sh
+      - dart run tool/check_packages_workspace.dart
 
   check:schema-drift:
     desc: Check upstream provider schema drift
@@ -173,14 +173,7 @@ tasks:
   check-tools:
     desc: Verify required tooling for SDK generation
     cmds:
-      - |
-        set -eu
-        for tool in go dart pulumi curl jq; do
-          command -v "${tool}" >/dev/null 2>&1 || {
-            echo "Missing required tool: ${tool}" >&2
-            exit 1
-          }
-        done
+      - dart run tool/check_tools.dart
 
   setup:
     desc: Prepare directories and build pulumi-language-dart
@@ -275,101 +268,8 @@ tasks:
     requires:
       vars:
         - PACKAGE
-        - SCHEMA_URL
-    deps:
-      - build-language-host
     cmds:
-      - task: fetch-schema
-        vars:
-          PACKAGE: "{{.PACKAGE}}"
-          SCHEMA_URL: "{{.SCHEMA_URL}}"
-      - task: init-project
-        vars:
-          PACKAGE: "{{.PACKAGE}}"
-      - |
-        set -eu
-        PACKAGE="{{.PACKAGE}}"
-        PROJECT_DIR="{{.GEN_PROJECT_DIR}}"
-        SCHEMA_PATH="{{.SCHEMAS_DIR}}/${PACKAGE}.schema.json"
-        OUTPUT_DIR="{{.SDKS_DIR}}/${PACKAGE}"
-        PRESERVE_EXAMPLES="{{.PRESERVE_EXAMPLES}}"
-        FORMAT_GENERATED="{{.FORMAT_GENERATED}}"
-        STRICT_FORMAT="{{.STRICT_FORMAT}}"
-        EXAMPLE_BACKUP_DIR=""
-        DOCS_BACKUP_DIR=""
-        PACKAGE_GIT_REPO_URL="$(git -C "{{.ROOT_DIR}}" remote get-url origin 2>/dev/null || true)"
-        case "${PACKAGE_GIT_REPO_URL}" in
-          git@github.com:*)
-            PACKAGE_GIT_REPO_URL="https://github.com/${PACKAGE_GIT_REPO_URL#git@github.com:}"
-            ;;
-        esac
-        export PULUMI_DART_SDK_GIT_URL="${PACKAGE_GIT_REPO_URL}"
-        export PULUMI_DART_SDK_GIT_REF="${PULUMI_DART_SDK_GIT_REF:-main}"
-        export PULUMI_DART_PULUMI_DEPENDENCY_PATH="{{.PULUMI_DART_PATH}}"
-        export PULUMI_DART_DEPENDENCY_REGISTRY="{{.PACKAGES_DIR}}/sdk_dependency_registry.yaml"
-        export PULUMI_DART_UPDATE_EXISTING_PUBSPEC="true"
-        export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}"
-
-        echo "Generating Dart SDK for ${PACKAGE}..."
-        PACKAGE_ADD_OUTPUT="$(cd "${PROJECT_DIR}" && pulumi package add "${SCHEMA_PATH}" 2>&1)"
-        PROVIDER_REF_WARNING_RE="reference to provider resource '/resources/pulumi:providers:.*' is deprecated, use '#/provider' instead;"
-        FILTERED_PACKAGE_ADD_OUTPUT="$(printf '%s\n' "${PACKAGE_ADD_OUTPUT}" | grep -Ev "${PROVIDER_REF_WARNING_RE}" || true)"
-        printf '%s\n' "${FILTERED_PACKAGE_ADD_OUTPUT}"
-        if printf '%s\n' "${PACKAGE_ADD_OUTPUT}" | grep -Eq "${PROVIDER_REF_WARNING_RE}"; then
-          echo "Note: provider-resource deprecation warnings are currently emitted by upstream package-add schema processing and are non-blocking for Dart SDK generation." >&2
-        fi
-
-        if [ "${PRESERVE_EXAMPLES}" = "true" ] && [ -d "${OUTPUT_DIR}/example" ]; then
-          EXAMPLE_BACKUP_DIR="$(mktemp -d)"
-          cp -R "${OUTPUT_DIR}/example" "${EXAMPLE_BACKUP_DIR}/example"
-          echo "Preserved existing examples from ${OUTPUT_DIR}/example"
-        fi
-        if [ -d "${OUTPUT_DIR}" ]; then
-          DOCS_BACKUP_DIR="$(mktemp -d)"
-          for DOC_FILE in README.md CHANGELOG.md analysis_options.yaml; do
-            if [ -f "${OUTPUT_DIR}/${DOC_FILE}" ]; then
-              cp "${OUTPUT_DIR}/${DOC_FILE}" "${DOCS_BACKUP_DIR}/${DOC_FILE}"
-              echo "Preserved existing ${OUTPUT_DIR}/${DOC_FILE}"
-            fi
-          done
-        fi
-
-        rm -rf "${OUTPUT_DIR}"
-        cp -R "${PROJECT_DIR}/sdks/${PACKAGE}" "${OUTPUT_DIR}"
-
-        if [ -n "${EXAMPLE_BACKUP_DIR}" ] && [ -d "${EXAMPLE_BACKUP_DIR}/example" ]; then
-          rm -rf "${OUTPUT_DIR}/example"
-          cp -R "${EXAMPLE_BACKUP_DIR}/example" "${OUTPUT_DIR}/example"
-          rm -rf "${EXAMPLE_BACKUP_DIR}"
-          echo "Restored preserved examples to ${OUTPUT_DIR}/example"
-        fi
-        if [ -n "${DOCS_BACKUP_DIR}" ]; then
-          for DOC_FILE in README.md CHANGELOG.md analysis_options.yaml; do
-            if [ -f "${DOCS_BACKUP_DIR}/${DOC_FILE}" ]; then
-              cp "${DOCS_BACKUP_DIR}/${DOC_FILE}" "${OUTPUT_DIR}/${DOC_FILE}"
-              echo "Restored preserved ${OUTPUT_DIR}/${DOC_FILE}"
-            fi
-          done
-          rm -rf "${DOCS_BACKUP_DIR}"
-        fi
-
-        if [ "${FORMAT_GENERATED}" = "true" ]; then
-          FORMAT_LOG="$(mktemp)"
-          if (cd "${OUTPUT_DIR}" && dart format . >"${FORMAT_LOG}" 2>&1); then
-            tail -n 1 "${FORMAT_LOG}" || true
-          else
-            echo "Warning: dart format reported parse/format errors for ${OUTPUT_DIR}" >&2
-            grep -E "Could not format|line [0-9]+, column [0-9]+|Unterminated string literal|Expected to find" "${FORMAT_LOG}" | head -n 20 >&2 || true
-            if [ "${STRICT_FORMAT}" = "true" ]; then
-              cat "${FORMAT_LOG}" >&2
-              rm -f "${FORMAT_LOG}"
-              exit 65
-            fi
-          fi
-          rm -f "${FORMAT_LOG}"
-        fi
-
-        echo "Done: ${OUTPUT_DIR}"
+      - dart run tool/generate_packages.dart --provider "{{.PACKAGE}}"
 
   generate:provider:
     desc: Generate Dart SDK for a provider package from Pulumi Registry
@@ -380,7 +280,6 @@ tasks:
       - task: generate-package
         vars:
           PACKAGE: "{{.PACKAGE}}"
-          SCHEMA_URL: "https://www.pulumi.com/registry/packages/{{.PACKAGE}}/schema.json"
 
   generate:gcp:
     desc: Generate Dart SDK for Pulumi GCP
@@ -434,20 +333,12 @@ tasks:
   generate:all:
     desc: Generate all configured provider SDKs for Dart
     cmds:
-      - |
-        set -eu
-        for provider in {{.ALL_PROVIDERS}}; do
-          task generate:provider PACKAGE="${provider}"
-        done
+      - dart run tool/generate_packages.dart --all
 
   generate:day1:
     desc: Generate Day 1 Google provider SDKs for Dart
     cmds:
-      - |
-        set -eu
-        for provider in {{.DAY1_PROVIDERS}}; do
-          task generate:provider PACKAGE="${provider}"
-        done
+      - dart run tool/generate_packages.dart --provider "gcp,gcp-global-cloudrun,google-native"
 
   analyze-package:
     internal: true

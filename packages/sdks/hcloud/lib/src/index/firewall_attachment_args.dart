@@ -10,9 +10,11 @@ class FirewallAttachmentArgs {
   /// ID of the firewall the resources
   /// should be attached to.
   final pulumi.Input<int> firewallId;
+
   /// List of label selectors used to
   /// select resources to attach to the firewall.
   final pulumi.Input<List<String>>? labelSelectors;
+
   /// List of Server IDs to attach to the
   /// firewall.
   final pulumi.Input<List<int>>? serverIds;
@@ -37,10 +39,17 @@ class FirewallAttachmentArgs {
 
   factory FirewallAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return FirewallAttachmentArgs(
-      firewallId: (map['firewallId'] as int).input(),
-      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors']! as List).cast<String>()).input(),
-      serverIds: map['serverIds'] == null ? null : ((map['serverIds']! as List).cast<int>()).input(),
+      firewallId: pulumi.Input.fromValue(map['firewallId'] as int),
+      labelSelectors: (() {
+        final guardedValue = map['labelSelectors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      serverIds: (() {
+        final guardedValue = map['serverIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceStateInfoUpdateInfo {
   /// Output only. Target engine version for the instance.
   final pulumi.Input<String> targetEngineVersion;
+
   /// Output only. Target node type for the instance.
   final pulumi.Input<String> targetNodeType;
+
   /// Output only. Target number of replica nodes per shard for the instance.
   final pulumi.Input<int> targetReplicaCount;
+
   /// Output only. Target number of shards for the instance.
   final pulumi.Input<int> targetShardCount;
 
@@ -35,11 +38,14 @@ class GetInstanceStateInfoUpdateInfo {
 
   factory GetInstanceStateInfoUpdateInfo.fromMap(Map<String, dynamic> map) {
     return GetInstanceStateInfoUpdateInfo(
-      targetEngineVersion: (map['targetEngineVersion'] as String).input(),
-      targetNodeType: (map['targetNodeType'] as String).input(),
-      targetReplicaCount: (map['targetReplicaCount'] as int).input(),
-      targetShardCount: (map['targetShardCount'] as int).input(),
+      targetEngineVersion: pulumi.Input.fromValue(
+        map['targetEngineVersion'] as String,
+      ),
+      targetNodeType: pulumi.Input.fromValue(map['targetNodeType'] as String),
+      targetReplicaCount: pulumi.Input.fromValue(
+        map['targetReplicaCount'] as int,
+      ),
+      targetShardCount: pulumi.Input.fromValue(map['targetShardCount'] as int),
     );
   }
 }
-

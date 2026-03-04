@@ -10,20 +10,15 @@ class DefaultResourceProperties {
 
   /// Creates a new [DefaultResourceProperties].
   /// [objectType] Type of the specific object - used for deserializing
-  DefaultResourceProperties({
-    required this.objectType,
-  });
+  DefaultResourceProperties({required this.objectType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectType': objectType,
-    };
+    return <String, dynamic>{'objectType': objectType};
   }
 
   factory DefaultResourceProperties.fromMap(Map<String, dynamic> map) {
     return DefaultResourceProperties(
-      objectType: (map['objectType'] as String).input(),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
     );
   }
 }
-

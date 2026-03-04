@@ -1,5 +1,3 @@
-library module_ces;
-
 export 'ces/agent.dart';
 export 'ces/agent_after_agent_callback.dart';
 export 'ces/agent_after_model_callback.dart';

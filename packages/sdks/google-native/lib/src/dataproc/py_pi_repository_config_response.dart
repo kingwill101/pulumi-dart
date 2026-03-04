@@ -9,20 +9,15 @@ class PyPiRepositoryConfigResponse {
 
   /// Creates a new [PyPiRepositoryConfigResponse].
   /// [pypiRepository] Optional. PyPi repository address
-  PyPiRepositoryConfigResponse({
-    required this.pypiRepository,
-  });
+  PyPiRepositoryConfigResponse({required this.pypiRepository});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pypiRepository': pypiRepository,
-    };
+    return <String, dynamic>{'pypiRepository': pypiRepository};
   }
 
   factory PyPiRepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return PyPiRepositoryConfigResponse(
-      pypiRepository: (map['pypiRepository'] as String).input(),
+      pypiRepository: pulumi.Input.fromValue(map['pypiRepository'] as String),
     );
   }
 }
-

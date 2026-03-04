@@ -9,16 +9,22 @@ enum GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy {
   assertContains("ASSERT_CONTAINS"),
   assertCondition("ASSERT_CONDITION");
 
-  const GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy value: $value',
+    );
   }
 }
-

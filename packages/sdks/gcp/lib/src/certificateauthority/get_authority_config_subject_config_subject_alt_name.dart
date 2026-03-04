@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorityConfigSubjectConfigSubjectAltName {
   /// Contains only valid, fully-qualified host names.
   final pulumi.Input<List<String>> dnsNames;
+
   /// Contains only valid RFC 2822 E-mail addresses.
   final pulumi.Input<List<String>> emailAddresses;
+
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
   final pulumi.Input<List<String>> ipAddresses;
+
   /// Contains only valid RFC 3986 URIs.
   final pulumi.Input<List<String>> uris;
 
@@ -33,13 +36,20 @@ class GetAuthorityConfigSubjectConfigSubjectAltName {
     };
   }
 
-  factory GetAuthorityConfigSubjectConfigSubjectAltName.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorityConfigSubjectConfigSubjectAltName.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorityConfigSubjectConfigSubjectAltName(
-      dnsNames: ((map['dnsNames'] as List).cast<String>()).input(),
-      emailAddresses: ((map['emailAddresses'] as List).cast<String>()).input(),
-      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
-      uris: ((map['uris'] as List).cast<String>()).input(),
+      dnsNames: pulumi.Input.fromValue(
+        (map['dnsNames'] as List).cast<String>(),
+      ),
+      emailAddresses: pulumi.Input.fromValue(
+        (map['emailAddresses'] as List).cast<String>(),
+      ),
+      ipAddresses: pulumi.Input.fromValue(
+        (map['ipAddresses'] as List).cast<String>(),
+      ),
+      uris: pulumi.Input.fromValue((map['uris'] as List).cast<String>()),
     );
   }
 }
-

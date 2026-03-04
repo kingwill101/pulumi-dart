@@ -4,16 +4,15 @@ enum ShareAccessType {
   valueRead("Read"),
   valueCustom("Custom");
 
-  const ShareAccessType(this.value);
-  final String value;
+  const ShareAccessType(this.wireValue);
+  final String wireValue;
 
   static ShareAccessType fromValue(String value) {
     for (final item in ShareAccessType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShareAccessType value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_storagecache;
-
 export 'storagecache/admin_status.dart';
 export 'storagecache/aml_filesystem.dart';
 export 'storagecache/aml_filesystem_archive_response.dart';

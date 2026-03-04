@@ -7,11 +7,14 @@ import 'get_share_acl.dart';
 class GetShareResult {
   /// One or more acl blocks as defined below.
   final List<GetShareAcl>? acls;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A map of custom file share metadata.
   final Map<String, String> metadata;
   final String name;
+
   /// The quota of the File Share in GB.
   final int quota;
   final String resourceManagerId;
@@ -40,7 +43,14 @@ class GetShareResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acls': ?acls == null ? null : pulumi.Input.encodeList<GetShareAcl, Map<String, dynamic>>(acls!, (value) => value.toMap()),
+      'acls': ?(() {
+        final guardedValue = acls;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetShareAcl, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
       'metadata': metadata,
       'name': name,
@@ -53,15 +63,30 @@ class GetShareResult {
 
   factory GetShareResult.fromMap(Map<String, dynamic> map) {
     return GetShareResult(
-      acls: map['acls'] == null ? null : pulumi.Input.decodeList<GetShareAcl>(map['acls']!, (value) => GetShareAcl.fromMap((value as Map).cast<String, dynamic>())),
+      acls: (() {
+        final guardedValue = map['acls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetShareAcl>(
+          guardedValue,
+          (value) =>
+              GetShareAcl.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       quota: map['quota'] as int,
       resourceManagerId: map['resourceManagerId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName']! as String,
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

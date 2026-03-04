@@ -31,10 +31,13 @@ class GetReplayPolicysimulatorV1betaArgs {
 
   factory GetReplayPolicysimulatorV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetReplayPolicysimulatorV1betaArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      replayId: (map['replayId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replayId: pulumi.Input.fromValue(map['replayId'] as String),
     );
   }
 }
-

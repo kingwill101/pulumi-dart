@@ -4,16 +4,15 @@ enum DiffDiskPlacement {
   resourceDisk("ResourceDisk"),
   nvmeDisk("NvmeDisk");
 
-  const DiffDiskPlacement(this.value);
-  final String value;
+  const DiffDiskPlacement(this.wireValue);
+  final String wireValue;
 
   static DiffDiskPlacement fromValue(String value) {
     for (final item in DiffDiskPlacement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiffDiskPlacement value: $value');
   }
 }
-

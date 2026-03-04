@@ -10,20 +10,27 @@ class AwsCloudTrailDataConnectorDataTypes {
 
   /// Creates a new [AwsCloudTrailDataConnectorDataTypes].
   /// [logs] Logs data type.
-  AwsCloudTrailDataConnectorDataTypes({
-    required this.logs,
-  });
+  AwsCloudTrailDataConnectorDataTypes({required this.logs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logs': pulumi.Input.mapInputValue<AwsCloudTrailDataConnectorDataTypesLogs, Map<String, dynamic>>(logs, (value) => value.toMap()),
+      'logs':
+          pulumi.Input.mapInputValue<
+            AwsCloudTrailDataConnectorDataTypesLogs,
+            Map<String, dynamic>
+          >(logs, (value) => value.toMap()),
     };
   }
 
-  factory AwsCloudTrailDataConnectorDataTypes.fromMap(Map<String, dynamic> map) {
+  factory AwsCloudTrailDataConnectorDataTypes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsCloudTrailDataConnectorDataTypes(
-      logs: (AwsCloudTrailDataConnectorDataTypesLogs.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
+      logs: pulumi.Input.fromValue(
+        AwsCloudTrailDataConnectorDataTypesLogs.fromMap(
+          (map['logs']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

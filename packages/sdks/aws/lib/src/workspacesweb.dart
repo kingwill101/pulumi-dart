@@ -1,5 +1,3 @@
-library module_workspacesweb;
-
 export 'workspacesweb/browser_settings.dart';
 export 'workspacesweb/browser_settings_args.dart';
 export 'workspacesweb/browser_settings_association.dart';

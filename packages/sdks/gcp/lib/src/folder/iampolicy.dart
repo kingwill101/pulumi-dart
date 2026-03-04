@@ -10,16 +10,16 @@ import 'iampolicy_state.dart';
 /// * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 ///
 ///
-/// > **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+/// &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 /// IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 ///
 /// ## gcp.folder.IAMPolicy
 ///
-/// !> **Be careful!** You can accidentally lock yourself out of your folder
+/// !&gt; **Be careful!** You can accidentally lock yourself out of your folder
 /// using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
 /// from anyone without permissions on its parent folder/organization. Proceed with caution.
 /// It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
@@ -1661,8 +1661,10 @@ import 'iampolicy_state.dart';
 class IAMPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the folder's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   late final pulumi.Output<String> folder;
+
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the folder. The policy will be
   /// merged with any existing policy applied to the folder.
@@ -1682,14 +1684,14 @@ class IAMPolicy extends pulumi.CustomResource {
     IAMPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:folder/iAMPolicy:IAMPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.policyData = registerOutput<String>('policyData');
+         'gcp:folder/iAMPolicy:IAMPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    policyData = registerOutput<String>('policyData');
   }
 
   /// Gets an existing [IAMPolicy] resource's state with the given [name] and [id].
@@ -1710,13 +1712,13 @@ class IAMPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:folder/iAMPolicy:IAMPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.policyData = registerOutput<String>('policyData');
+         'gcp:folder/iAMPolicy:IAMPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    policyData = registerOutput<String>('policyData');
   }
 }

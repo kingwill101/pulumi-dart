@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationProfileAssignmentPropertiesResponse {
   /// The Automanage configurationProfile ARM Resource URI.
   final pulumi.Input<String>? configurationProfile;
+
   /// The status of onboarding, which only appears in the response.
   final pulumi.Input<String> status;
+
   /// The target VM resource URI
   final pulumi.Input<String> targetId;
 
@@ -29,12 +31,17 @@ class ConfigurationProfileAssignmentPropertiesResponse {
     };
   }
 
-  factory ConfigurationProfileAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationProfileAssignmentPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationProfileAssignmentPropertiesResponse(
-      configurationProfile: map['configurationProfile'] == null ? null : (map['configurationProfile']! as String).input(),
-      status: (map['status'] as String).input(),
-      targetId: (map['targetId'] as String).input(),
+      configurationProfile: (() {
+        final guardedValue = map['configurationProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

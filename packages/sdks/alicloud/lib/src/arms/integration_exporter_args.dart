@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationExporterArgs {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String> clusterId;
+
   /// The type of prometheus integration.
   final pulumi.Input<String> integrationType;
+
   /// Exporter configuration parameter json string.
   final pulumi.Input<String> param;
 
@@ -34,10 +36,9 @@ class IntegrationExporterArgs {
 
   factory IntegrationExporterArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationExporterArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      integrationType: (map['integrationType'] as String).input(),
-      param: (map['param'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      integrationType: pulumi.Input.fromValue(map['integrationType'] as String),
+      param: pulumi.Input.fromValue(map['param'] as String),
     );
   }
 }
-

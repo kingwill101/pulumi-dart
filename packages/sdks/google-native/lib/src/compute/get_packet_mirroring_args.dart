@@ -31,10 +31,13 @@ class GetPacketMirroringArgs {
 
   factory GetPacketMirroringArgs.fromMap(Map<String, dynamic> map) {
     return GetPacketMirroringArgs(
-      packetMirroring: (map['packetMirroring'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      packetMirroring: pulumi.Input.fromValue(map['packetMirroring'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

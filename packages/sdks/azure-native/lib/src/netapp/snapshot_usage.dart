@@ -3,16 +3,15 @@ enum SnapshotUsage {
   useExistingSnapshot("UseExistingSnapshot"),
   createNewSnapshot("CreateNewSnapshot");
 
-  const SnapshotUsage(this.value);
-  final String value;
+  const SnapshotUsage(this.wireValue);
+  final String wireValue;
 
   static SnapshotUsage fromValue(String value) {
     for (final item in SnapshotUsage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SnapshotUsage value: $value');
   }
 }
-

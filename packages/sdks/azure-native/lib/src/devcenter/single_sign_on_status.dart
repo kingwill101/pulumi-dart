@@ -3,16 +3,15 @@ enum SingleSignOnStatus {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const SingleSignOnStatus(this.value);
-  final String value;
+  const SingleSignOnStatus(this.wireValue);
+  final String wireValue;
 
   static SingleSignOnStatus fromValue(String value) {
     for (final item in SingleSignOnStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SingleSignOnStatus value: $value');
   }
 }
-

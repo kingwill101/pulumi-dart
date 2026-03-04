@@ -1,5 +1,3 @@
-library module_actiontrail;
-
 export 'actiontrail/advanced_query_template.dart';
 export 'actiontrail/advanced_query_template_args.dart';
 export 'actiontrail/advanced_query_template_state.dart';

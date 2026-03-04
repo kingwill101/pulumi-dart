@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteServiceArgs {
   /// The region of the network instances that access the cloud services.
   final pulumi.Input<String> accessRegionId;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
+
   /// The description of the cloud service.
   final pulumi.Input<String>? description;
+
   /// The domain name or IP address of the cloud service.
   final pulumi.Input<String> host;
+
   /// The region of the cloud service.
   final pulumi.Input<String> hostRegionId;
+
   /// The VPC associated with the cloud service.
   ///
-  /// > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
+  /// &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
   final pulumi.Input<String> hostVpcId;
 
   /// Creates a new [RouteServiceArgs].
@@ -51,13 +56,16 @@ class RouteServiceArgs {
 
   factory RouteServiceArgs.fromMap(Map<String, dynamic> map) {
     return RouteServiceArgs(
-      accessRegionId: (map['accessRegionId'] as String).input(),
-      cenId: (map['cenId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      host: (map['host'] as String).input(),
-      hostRegionId: (map['hostRegionId'] as String).input(),
-      hostVpcId: (map['hostVpcId'] as String).input(),
+      accessRegionId: pulumi.Input.fromValue(map['accessRegionId'] as String),
+      cenId: pulumi.Input.fromValue(map['cenId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      hostRegionId: pulumi.Input.fromValue(map['hostRegionId'] as String),
+      hostVpcId: pulumi.Input.fromValue(map['hostVpcId'] as String),
     );
   }
 }
-

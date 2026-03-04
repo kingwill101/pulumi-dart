@@ -1,5 +1,3 @@
-library module_notebooks;
-
 export 'notebooks/accelerator_config.dart';
 export 'notebooks/accelerator_config_notebooks_v2.dart';
 export 'notebooks/accelerator_config_response.dart';

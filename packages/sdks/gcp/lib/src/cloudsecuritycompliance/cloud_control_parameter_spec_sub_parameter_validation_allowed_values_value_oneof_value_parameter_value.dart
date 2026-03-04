@@ -6,11 +6,17 @@ import 'cloud_control_parameter_spec_sub_parameter_validation_allowed_values_val
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue {
   /// Represents a boolean value.
   final pulumi.Input<bool>? boolValue;
+
   /// Represents a double value.
   final pulumi.Input<double>? numberValue;
+
   /// A list of strings.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue>? stringListValue;
+  final pulumi.Input<
+    CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue
+  >?
+  stringListValue;
+
   /// Represents a string value.
   final pulumi.Input<String>? stringValue;
 
@@ -30,18 +36,43 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     return <String, dynamic>{
       'boolValue': ?boolValue,
       'numberValue': ?numberValue,
-      'stringListValue': ?pulumi.Input.mapOptionalInputValue<CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue, Map<String, dynamic>>(stringListValue, (value) => value.toMap()),
+      'stringListValue':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue,
+            Map<String, dynamic>
+          >(stringListValue, (value) => value.toMap()),
       'stringValue': ?stringValue,
     };
   }
 
-  factory CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.fromMap(Map<String, dynamic> map) {
+  factory CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
-      numberValue: map['numberValue'] == null ? null : (map['numberValue']! as double).input(),
-      stringListValue: map['stringListValue'] == null ? null : (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue.fromMap((map['stringListValue']! as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      boolValue: (() {
+        final guardedValue = map['boolValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      numberValue: (() {
+        final guardedValue = map['numberValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      stringListValue: (() {
+        final guardedValue = map['stringListValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stringValue: (() {
+        final guardedValue = map['stringValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

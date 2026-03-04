@@ -125,22 +125,31 @@ import 'bot_alias_state.dart';
 class BotAlias extends pulumi.CustomResource {
   /// The ARN of the bot alias.
   late final pulumi.Output<String> arn;
+
   /// The name of the bot.
   late final pulumi.Output<String> botName;
+
   /// The version of the bot.
   late final pulumi.Output<String> botVersion;
+
   /// Checksum of the bot alias.
   late final pulumi.Output<String> checksum;
+
   /// The settings that determine how Amazon Lex uses conversation logs for the alias. Attributes are documented under conversation_logs.
   late final pulumi.Output<BotAliasConversationLogs?> conversationLogs;
+
   /// The date that the bot alias was created.
   late final pulumi.Output<String> createdDate;
+
   /// A description of the alias. Must be less than or equal to 200 characters in length.
   late final pulumi.Output<String?> description;
+
   /// The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
   late final pulumi.Output<String> lastUpdatedDate;
+
   /// The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -153,21 +162,23 @@ class BotAlias extends pulumi.CustomResource {
     BotAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/botAlias:BotAlias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.botName = registerOutput<String>('botName');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.checksum = registerOutput<String>('checksum');
-    this.conversationLogs = registerOutput<BotAliasConversationLogs?>('conversationLogs');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+         'aws:lex/botAlias:BotAlias',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    botName = registerOutput<String>('botName');
+    botVersion = registerOutput<String>('botVersion');
+    checksum = registerOutput<String>('checksum');
+    conversationLogs = registerOutput<BotAliasConversationLogs?>(
+      'conversationLogs',
+    );
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BotAlias] resource's state with the given [name] and [id].
@@ -188,20 +199,22 @@ class BotAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/botAlias:BotAlias',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.botName = registerOutput<String>('botName');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.checksum = registerOutput<String>('checksum');
-    this.conversationLogs = registerOutput<BotAliasConversationLogs?>('conversationLogs');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+         'aws:lex/botAlias:BotAlias',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    botName = registerOutput<String>('botName');
+    botVersion = registerOutput<String>('botVersion');
+    checksum = registerOutput<String>('checksum');
+    conversationLogs = registerOutput<BotAliasConversationLogs?>(
+      'conversationLogs',
+    );
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

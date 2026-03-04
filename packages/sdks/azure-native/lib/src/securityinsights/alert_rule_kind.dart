@@ -4,16 +4,15 @@ enum AlertRuleKind {
   valueMicrosoftSecurityIncidentCreation("MicrosoftSecurityIncidentCreation"),
   valueFusion("Fusion");
 
-  const AlertRuleKind(this.value);
-  final String value;
+  const AlertRuleKind(this.wireValue);
+  final String wireValue;
 
   static AlertRuleKind fromValue(String value) {
     for (final item in AlertRuleKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlertRuleKind value: $value');
   }
 }
-

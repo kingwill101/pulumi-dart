@@ -1,5 +1,3 @@
-library module_securityhub;
-
 export 'securityhub/account.dart';
 export 'securityhub/account_args.dart';
 export 'securityhub/account_state.dart';

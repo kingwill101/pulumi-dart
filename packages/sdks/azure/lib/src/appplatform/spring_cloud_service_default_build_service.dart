@@ -8,20 +8,21 @@ class SpringCloudServiceDefaultBuildService {
 
   /// Creates a new [SpringCloudServiceDefaultBuildService].
   /// [containerRegistryName] Specifies the name of the container registry used in the default build service.
-  SpringCloudServiceDefaultBuildService({
-    this.containerRegistryName,
-  });
+  SpringCloudServiceDefaultBuildService({this.containerRegistryName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'containerRegistryName': ?containerRegistryName,
-    };
+    return <String, dynamic>{'containerRegistryName': ?containerRegistryName};
   }
 
-  factory SpringCloudServiceDefaultBuildService.fromMap(Map<String, dynamic> map) {
+  factory SpringCloudServiceDefaultBuildService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpringCloudServiceDefaultBuildService(
-      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName']! as String).input(),
+      containerRegistryName: (() {
+        final guardedValue = map['containerRegistryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

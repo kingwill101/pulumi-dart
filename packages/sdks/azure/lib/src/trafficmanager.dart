@@ -1,5 +1,3 @@
-library module_trafficmanager;
-
 export 'trafficmanager/functions.dart';
 export 'trafficmanager/get_geographical_location_args.dart';
 export 'trafficmanager/get_geographical_location_result.dart';

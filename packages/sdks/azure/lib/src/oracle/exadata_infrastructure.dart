@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'exadata_infrastructure_args.dart';
-import 'exadata_infrastructure_maintenance_window.dart';
 import 'exadata_infrastructure_state.dart';
 
 /// Manages a Cloud Exadata Infrastructure.
@@ -191,7 +190,7 @@ import 'exadata_infrastructure_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -206,28 +205,40 @@ import 'exadata_infrastructure_state.dart';
 class ExadataInfrastructure extends pulumi.CustomResource {
   /// The number of compute servers for the Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<int> computeCount;
+
   /// The email address used by Oracle to send notifications regarding databases and infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<List<String>> customerContacts;
+
   /// The database server model type of the cloud Exadata infrastructure resource. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> databaseServerType;
+
   /// The user-friendly name for the Cloud Exadata Infrastructure resource. The name does not need to be unique. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> displayName;
+
   /// The Azure Region where the Cloud Exadata Infrastructure should exist. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> location;
+
   /// One or more `maintenance_window` blocks as defined below. Changing this forces a new Cloud Exadata Infrastructure to be created.
-  late final pulumi.Output<List<ExadataInfrastructureMaintenanceWindow>> maintenanceWindows;
+  late final pulumi.Output<List<Map<String, dynamic>>> maintenanceWindows;
+
   /// The name which should be used for this Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the ODB@A Infrastructure should exist. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The shape of the ODB@A infrastructure resource. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> shape;
+
   /// The number of storage servers for the Cloud Exadata Infrastructure. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<int> storageCount;
+
   /// The storage server model type of the cloud Exadata infrastructure resource. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<String> storageServerType;
+
   /// A mapping of tags which should be assigned to the Cloud Exadata Infrastructure.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Cloud Exadata Infrastructure zones. Changing this forces a new Cloud Exadata Infrastructure to be created.
   late final pulumi.Output<List<String>> zones;
 
@@ -240,24 +251,26 @@ class ExadataInfrastructure extends pulumi.CustomResource {
     ExadataInfrastructureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:oracle/exadataInfrastructure:ExadataInfrastructure',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.computeCount = registerOutput<int>('computeCount');
-    this.customerContacts = registerOutput<List<String>>('customerContacts');
-    this.databaseServerType = registerOutput<String>('databaseServerType');
-    this.displayName = registerOutput<String>('displayName');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindows = registerOutput<List<ExadataInfrastructureMaintenanceWindow>>('maintenanceWindows');
+         'azure:oracle/exadataInfrastructure:ExadataInfrastructure',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    computeCount = registerOutput<int>('computeCount');
+    customerContacts = registerOutput<List<String>>('customerContacts');
+    databaseServerType = registerOutput<String>('databaseServerType');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    maintenanceWindows = registerOutput<List<Map<String, dynamic>>>(
+      'maintenanceWindows',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.shape = registerOutput<String>('shape');
-    this.storageCount = registerOutput<int>('storageCount');
-    this.storageServerType = registerOutput<String>('storageServerType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    shape = registerOutput<String>('shape');
+    storageCount = registerOutput<int>('storageCount');
+    storageServerType = registerOutput<String>('storageServerType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>>('zones');
   }
 
   /// Gets an existing [ExadataInfrastructure] resource's state with the given [name] and [id].
@@ -278,23 +291,25 @@ class ExadataInfrastructure extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:oracle/exadataInfrastructure:ExadataInfrastructure',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.computeCount = registerOutput<int>('computeCount');
-    this.customerContacts = registerOutput<List<String>>('customerContacts');
-    this.databaseServerType = registerOutput<String>('databaseServerType');
-    this.displayName = registerOutput<String>('displayName');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindows = registerOutput<List<ExadataInfrastructureMaintenanceWindow>>('maintenanceWindows');
+         'azure:oracle/exadataInfrastructure:ExadataInfrastructure',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    computeCount = registerOutput<int>('computeCount');
+    customerContacts = registerOutput<List<String>>('customerContacts');
+    databaseServerType = registerOutput<String>('databaseServerType');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    maintenanceWindows = registerOutput<List<Map<String, dynamic>>>(
+      'maintenanceWindows',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.shape = registerOutput<String>('shape');
-    this.storageCount = registerOutput<int>('storageCount');
-    this.storageServerType = registerOutput<String>('storageServerType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    shape = registerOutput<String>('shape');
+    storageCount = registerOutput<int>('storageCount');
+    storageServerType = registerOutput<String>('storageServerType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>>('zones');
   }
 }

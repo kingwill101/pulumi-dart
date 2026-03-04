@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedPrivateEndpointArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
+
   /// The name of the managed private endpoint.
   final pulumi.Input<String> managedPrivateEndpointName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetManagedPrivateEndpointArgs {
 
   factory GetManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedPrivateEndpointArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      managedPrivateEndpointName: (map['managedPrivateEndpointName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      managedPrivateEndpointName: pulumi.Input.fromValue(
+        map['managedPrivateEndpointName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

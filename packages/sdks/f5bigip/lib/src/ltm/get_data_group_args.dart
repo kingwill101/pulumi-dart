@@ -10,10 +10,13 @@ import 'get_data_group_record.dart';
 class GetDataGroupArgs {
   /// Name of the datagroup
   final pulumi.Input<String> name;
+
   /// partition of the datagroup
   final pulumi.Input<String> partition;
+
   /// Specifies record of type (string/ip/integer)
   final pulumi.Input<List<GetDataGroupRecord>>? records;
+
   /// The Data Group type (string, ip, integer)"
   final pulumi.Input<String>? type;
 
@@ -33,18 +36,43 @@ class GetDataGroupArgs {
     return <String, dynamic>{
       'name': name,
       'partition': partition,
-      'records': ?pulumi.Input.mapOptionalInputValue<List<GetDataGroupRecord>, List<Map<String, dynamic>>>(records, (value) => pulumi.Input.encodeList<GetDataGroupRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'records':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetDataGroupRecord>,
+            List<Map<String, dynamic>>
+          >(
+            records,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDataGroupRecord,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': ?type,
     };
   }
 
   factory GetDataGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDataGroupArgs(
-      name: (map['name'] as String).input(),
-      partition: (map['partition'] as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<GetDataGroupRecord>(map['records']!, (value) => GetDataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      partition: pulumi.Input.fromValue(map['partition'] as String),
+      records: (() {
+        final guardedValue = map['records'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetDataGroupRecord>(
+            guardedValue,
+            (value) => GetDataGroupRecord.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

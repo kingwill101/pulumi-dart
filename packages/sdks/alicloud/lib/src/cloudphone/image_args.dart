@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageArgs {
   /// The image name.
   final pulumi.Input<String> imageName;
+
   /// The instance ID.
   final pulumi.Input<String> instanceId;
 
   /// Creates a new [ImageArgs].
   /// [imageName] The image name.
   /// [instanceId] The instance ID.
-  ImageArgs({
-    required this.imageName,
-    required this.instanceId,
-  });
+  ImageArgs({required this.imageName, required this.instanceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'imageName': imageName,
-      'instanceId': instanceId,
-    };
+    return <String, dynamic>{'imageName': imageName, 'instanceId': instanceId};
   }
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      imageName: (map['imageName'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      imageName: pulumi.Input.fromValue(map['imageName'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

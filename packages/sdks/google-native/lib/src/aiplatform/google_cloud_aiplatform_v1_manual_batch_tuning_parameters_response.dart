@@ -14,15 +14,14 @@ class GoogleCloudAiplatformV1ManualBatchTuningParametersResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'batchSize': batchSize,
-    };
+    return <String, dynamic>{'batchSize': batchSize};
   }
 
-  factory GoogleCloudAiplatformV1ManualBatchTuningParametersResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ManualBatchTuningParametersResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1ManualBatchTuningParametersResponse(
-      batchSize: (map['batchSize'] as int).input(),
+      batchSize: pulumi.Input.fromValue(map['batchSize'] as int),
     );
   }
 }
-

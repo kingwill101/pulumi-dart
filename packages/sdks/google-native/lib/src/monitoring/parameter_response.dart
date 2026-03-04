@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterResponse {
   /// A floating-point parameter value.
   final pulumi.Input<double> doubleValue;
+
   /// An integer parameter value.
   final pulumi.Input<String> intValue;
 
   /// Creates a new [ParameterResponse].
   /// [doubleValue] A floating-point parameter value.
   /// [intValue] An integer parameter value.
-  ParameterResponse({
-    required this.doubleValue,
-    required this.intValue,
-  });
+  ParameterResponse({required this.doubleValue, required this.intValue});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'doubleValue': doubleValue,
-      'intValue': intValue,
-    };
+    return <String, dynamic>{'doubleValue': doubleValue, 'intValue': intValue};
   }
 
   factory ParameterResponse.fromMap(Map<String, dynamic> map) {
     return ParameterResponse(
-      doubleValue: (map['doubleValue'] as double).input(),
-      intValue: (map['intValue'] as String).input(),
+      doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
+      intValue: pulumi.Input.fromValue(map['intValue'] as String),
     );
   }
 }
-

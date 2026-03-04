@@ -4,16 +4,15 @@ enum ManagedZoneDnsSecConfigState {
   on("on"),
   transfer("transfer");
 
-  const ManagedZoneDnsSecConfigState(this.value);
-  final String value;
+  const ManagedZoneDnsSecConfigState(this.wireValue);
+  final String wireValue;
 
   static ManagedZoneDnsSecConfigState fromValue(String value) {
     for (final item in ManagedZoneDnsSecConfigState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedZoneDnsSecConfigState value: $value');
   }
 }
-

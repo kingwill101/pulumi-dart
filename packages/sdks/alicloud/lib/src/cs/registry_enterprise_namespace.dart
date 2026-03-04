@@ -6,9 +6,9 @@ import 'registry_enterprise_namespace_state.dart';
 ///
 /// For information about Container Registry Enterprise Edition Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace)
 ///
-/// > **NOTE:** Available since v1.86.0.
+/// &gt; **NOTE:** Available since v1.86.0.
 ///
-/// > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+/// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 ///
 /// ## Example Usage
 ///
@@ -250,12 +250,15 @@ import 'registry_enterprise_namespace_state.dart';
 class RegistryEnterpriseNamespace extends pulumi.CustomResource {
   /// Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> autoCreate;
+
   /// The default type of the repository that is automatically created. Valid values:
   /// - `PUBLIC`: A public repository.
   /// - `PRIVATE`: A private repository.
   late final pulumi.Output<String> defaultVisibility;
+
   /// The ID of the Container Registry Enterprise Edition instance.
   late final pulumi.Output<String> instanceId;
+
   /// The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
   late final pulumi.Output<String> name;
 
@@ -268,14 +271,14 @@ class RegistryEnterpriseNamespace extends pulumi.CustomResource {
     RegistryEnterpriseNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreate = registerOutput<bool?>('autoCreate');
-    this.defaultVisibility = registerOutput<String>('defaultVisibility');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoCreate = registerOutput<bool?>('autoCreate');
+    defaultVisibility = registerOutput<String>('defaultVisibility');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
   }
 
@@ -297,14 +300,14 @@ class RegistryEnterpriseNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreate = registerOutput<bool?>('autoCreate');
-    this.defaultVisibility = registerOutput<String>('defaultVisibility');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoCreate = registerOutput<bool?>('autoCreate');
+    defaultVisibility = registerOutput<String>('defaultVisibility');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
   }
 }

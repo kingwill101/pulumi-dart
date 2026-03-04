@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsoleArgs {
   /// The name of the virtual machine console.
   final pulumi.Input<String> consoleName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the virtual machine.
   final pulumi.Input<String> virtualMachineName;
 
@@ -34,10 +36,13 @@ class GetConsoleArgs {
 
   factory GetConsoleArgs.fromMap(Map<String, dynamic> map) {
     return GetConsoleArgs(
-      consoleName: (map['consoleName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualMachineName: (map['virtualMachineName'] as String).input(),
+      consoleName: pulumi.Input.fromValue(map['consoleName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualMachineName: pulumi.Input.fromValue(
+        map['virtualMachineName'] as String,
+      ),
     );
   }
 }
-

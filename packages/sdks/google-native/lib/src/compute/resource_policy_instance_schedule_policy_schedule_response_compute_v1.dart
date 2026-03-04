@@ -14,15 +14,14 @@ class ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'schedule': schedule,
-    };
+    return <String, dynamic>{'schedule': schedule};
   }
 
-  factory ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1(
-      schedule: (map['schedule'] as String).input(),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficManagerNestedEndpointSubnet {
   /// The first IP Address in this subnet.
   final pulumi.Input<String> first;
+
   /// The last IP Address in this subnet.
   final pulumi.Input<String>? last;
+
   /// The block size (number of leading bits in the subnet mask).
   final pulumi.Input<int>? scope;
 
@@ -21,19 +23,22 @@ class TrafficManagerNestedEndpointSubnet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'first': first,
-      'last': ?last,
-      'scope': ?scope,
-    };
+    return <String, dynamic>{'first': first, 'last': ?last, 'scope': ?scope};
   }
 
   factory TrafficManagerNestedEndpointSubnet.fromMap(Map<String, dynamic> map) {
     return TrafficManagerNestedEndpointSubnet(
-      first: (map['first'] as String).input(),
-      last: map['last'] == null ? null : (map['last']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as int).input(),
+      first: pulumi.Input.fromValue(map['first'] as String),
+      last: (() {
+        final guardedValue = map['last'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

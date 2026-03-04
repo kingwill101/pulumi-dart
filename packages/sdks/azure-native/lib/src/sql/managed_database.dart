@@ -1264,28 +1264,40 @@ import 'managed_database_args.dart';
 class ManagedDatabase extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Collation of the metadata catalog.
   late final pulumi.Output<String?> catalogCollation;
+
   /// Collation of the managed database.
   late final pulumi.Output<String?> collation;
+
   /// Creation date of the database.
   late final pulumi.Output<String> creationDate;
+
   /// Geo paired region.
   late final pulumi.Output<String> defaultSecondaryLocation;
+
   /// Earliest restore point in time for point in time restore.
   late final pulumi.Output<String> earliestRestorePoint;
+
   /// Instance Failover Group resource identifier that this managed database belongs to.
   late final pulumi.Output<String> failoverGroupId;
+
   /// Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
   late final pulumi.Output<bool?> isLedgerOn;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Status of the database.
   late final pulumi.Output<String> status;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -1298,23 +1310,25 @@ class ManagedDatabase extends pulumi.CustomResource {
     ManagedDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ManagedDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.catalogCollation = registerOutput<String?>('catalogCollation');
-    this.collation = registerOutput<String?>('collation');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.defaultSecondaryLocation = registerOutput<String>('defaultSecondaryLocation');
-    this.earliestRestorePoint = registerOutput<String>('earliestRestorePoint');
-    this.failoverGroupId = registerOutput<String>('failoverGroupId');
-    this.isLedgerOn = registerOutput<bool?>('isLedgerOn');
-    this.location = registerOutput<String>('location');
+         'azure-native:sql:ManagedDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    catalogCollation = registerOutput<String?>('catalogCollation');
+    collation = registerOutput<String?>('collation');
+    creationDate = registerOutput<String>('creationDate');
+    defaultSecondaryLocation = registerOutput<String>(
+      'defaultSecondaryLocation',
+    );
+    earliestRestorePoint = registerOutput<String>('earliestRestorePoint');
+    failoverGroupId = registerOutput<String>('failoverGroupId');
+    isLedgerOn = registerOutput<bool?>('isLedgerOn');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

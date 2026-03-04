@@ -6,24 +6,36 @@ import 'bare_metal_admin_cluster_security_config_authorization.dart';
 class BareMetalAdminClusterSecurityConfig {
   /// Configures user access to the Bare Metal User cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterSecurityConfigAuthorization>? authorization;
+  final pulumi.Input<BareMetalAdminClusterSecurityConfigAuthorization>?
+  authorization;
 
   /// Creates a new [BareMetalAdminClusterSecurityConfig].
   /// [authorization] Configures user access to the Bare Metal User cluster.
-  BareMetalAdminClusterSecurityConfig({
-    this.authorization,
-  });
+  BareMetalAdminClusterSecurityConfig({this.authorization});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorization': ?pulumi.Input.mapOptionalInputValue<BareMetalAdminClusterSecurityConfigAuthorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
+      'authorization':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalAdminClusterSecurityConfigAuthorization,
+            Map<String, dynamic>
+          >(authorization, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalAdminClusterSecurityConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterSecurityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterSecurityConfig(
-      authorization: map['authorization'] == null ? null : (BareMetalAdminClusterSecurityConfigAuthorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
+      authorization: (() {
+        final guardedValue = map['authorization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalAdminClusterSecurityConfigAuthorization.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

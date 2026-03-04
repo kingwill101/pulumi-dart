@@ -297,16 +297,22 @@ import 'workspace_certificate_args.dart';
 class WorkspaceCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String> expirationDate;
+
   /// KeyVault location details of the certificate.
   late final pulumi.Output<KeyVaultContractPropertiesResponse?> keyVault;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Subject attribute of the certificate.
   late final pulumi.Output<String> subject;
+
   /// Thumbprint of the certificate.
   late final pulumi.Output<String> thumbprint;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -319,17 +325,17 @@ class WorkspaceCertificate extends pulumi.CustomResource {
     WorkspaceCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:WorkspaceCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault');
+         'azure-native:apimanagement:WorkspaceCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expirationDate = registerOutput<String>('expirationDate');
+    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault');
     this.name = registerOutput<String>('name');
-    this.subject = registerOutput<String>('subject');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.type = registerOutput<String>('type');
+    subject = registerOutput<String>('subject');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
   }
 }

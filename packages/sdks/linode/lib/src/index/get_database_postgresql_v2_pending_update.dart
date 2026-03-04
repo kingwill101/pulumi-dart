@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasePostgresqlV2PendingUpdate {
   /// The time when a mandatory update needs to be applied.
   final pulumi.Input<String> deadline;
+
   /// A description of the update.
   final pulumi.Input<String> description;
+
   /// The date and time a maintenance update will be applied.
   final pulumi.Input<String> plannedFor;
 
@@ -28,12 +30,13 @@ class GetDatabasePostgresqlV2PendingUpdate {
     };
   }
 
-  factory GetDatabasePostgresqlV2PendingUpdate.fromMap(Map<String, dynamic> map) {
+  factory GetDatabasePostgresqlV2PendingUpdate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabasePostgresqlV2PendingUpdate(
-      deadline: (map['deadline'] as String).input(),
-      description: (map['description'] as String).input(),
-      plannedFor: (map['plannedFor'] as String).input(),
+      deadline: pulumi.Input.fromValue(map['deadline'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      plannedFor: pulumi.Input.fromValue(map['plannedFor'] as String),
     );
   }
 }
-

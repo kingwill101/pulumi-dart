@@ -4,16 +4,17 @@ enum AuthenticationPolicyPrincipalBinding {
   useOrigin("USE_ORIGIN"),
   usePeer("USE_PEER");
 
-  const AuthenticationPolicyPrincipalBinding(this.value);
-  final String value;
+  const AuthenticationPolicyPrincipalBinding(this.wireValue);
+  final String wireValue;
 
   static AuthenticationPolicyPrincipalBinding fromValue(String value) {
     for (final item in AuthenticationPolicyPrincipalBinding.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuthenticationPolicyPrincipalBinding value: $value');
+    throw ArgumentError(
+      'Unknown AuthenticationPolicyPrincipalBinding value: $value',
+    );
   }
 }
-

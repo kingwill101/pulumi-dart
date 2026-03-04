@@ -30,16 +30,15 @@ enum WebhookFilters {
   environmentTagUpdated("environment_tag_updated"),
   importedEnvironmentChanged("imported_environment_changed");
 
-  const WebhookFilters(this.value);
-  final String value;
+  const WebhookFilters(this.wireValue);
+  final String wireValue;
 
   static WebhookFilters fromValue(String value) {
     for (final item in WebhookFilters.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebhookFilters value: $value');
   }
 }
-

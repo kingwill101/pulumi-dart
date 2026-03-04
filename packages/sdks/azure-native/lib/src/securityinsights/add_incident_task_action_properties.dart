@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddIncidentTaskActionProperties {
   /// The description of the task.
   final pulumi.Input<String>? description;
+
   /// The title of the task.
   final pulumi.Input<String> title;
 
   /// Creates a new [AddIncidentTaskActionProperties].
   /// [description] The description of the task.
   /// [title] The title of the task.
-  AddIncidentTaskActionProperties({
-    this.description,
-    required this.title,
-  });
+  AddIncidentTaskActionProperties({this.description, required this.title});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'title': title,
-    };
+    return <String, dynamic>{'description': ?description, 'title': title};
   }
 
   factory AddIncidentTaskActionProperties.fromMap(Map<String, dynamic> map) {
     return AddIncidentTaskActionProperties(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      title: (map['title'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

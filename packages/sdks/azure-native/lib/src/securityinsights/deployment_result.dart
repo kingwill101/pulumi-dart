@@ -4,16 +4,15 @@ enum DeploymentResult {
   valueCanceled("Canceled"),
   valueFailed("Failed");
 
-  const DeploymentResult(this.value);
-  final String value;
+  const DeploymentResult(this.wireValue);
+  final String wireValue;
 
   static DeploymentResult fromValue(String value) {
     for (final item in DeploymentResult.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeploymentResult value: $value');
   }
 }
-

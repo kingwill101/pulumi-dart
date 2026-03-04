@@ -6,7 +6,7 @@ import 'static_account_state.dart';
 ///
 /// For information about Amqp Static Account and how to use it, see [What is Static Account](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/create-a-pair-of-static-username-and-password).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -227,16 +227,22 @@ import 'static_account_state.dart';
 class StaticAccount extends pulumi.CustomResource {
   /// Access key.
   late final pulumi.Output<String> accessKey;
+
   /// The timestamp that indicates when the pair of static username and password was created.
   late final pulumi.Output<int> createTime;
+
   /// Amqp instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// The ID of the user's primary account.
   late final pulumi.Output<String> masterUid;
+
   /// The static password.
   late final pulumi.Output<String> password;
+
   /// Secret key.
   late final pulumi.Output<String> secretKey;
+
   /// The static username.
   late final pulumi.Output<String> userName;
 
@@ -249,18 +255,18 @@ class StaticAccount extends pulumi.CustomResource {
     StaticAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:amqp/staticAccount:StaticAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String>('accessKey');
-    this.createTime = registerOutput<int>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.masterUid = registerOutput<String>('masterUid');
-    this.password = registerOutput<String>('password');
-    this.secretKey = registerOutput<String>('secretKey');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:amqp/staticAccount:StaticAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String>('accessKey');
+    createTime = registerOutput<int>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    masterUid = registerOutput<String>('masterUid');
+    password = registerOutput<String>('password');
+    secretKey = registerOutput<String>('secretKey');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [StaticAccount] resource's state with the given [name] and [id].
@@ -281,17 +287,17 @@ class StaticAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:amqp/staticAccount:StaticAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String>('accessKey');
-    this.createTime = registerOutput<int>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.masterUid = registerOutput<String>('masterUid');
-    this.password = registerOutput<String>('password');
-    this.secretKey = registerOutput<String>('secretKey');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:amqp/staticAccount:StaticAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String>('accessKey');
+    createTime = registerOutput<int>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    masterUid = registerOutput<String>('masterUid');
+    password = registerOutput<String>('password');
+    secretKey = registerOutput<String>('secretKey');
+    userName = registerOutput<String>('userName');
   }
 }

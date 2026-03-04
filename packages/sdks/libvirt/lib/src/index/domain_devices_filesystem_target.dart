@@ -8,20 +8,15 @@ class DomainDevicesFilesystemTarget {
 
   /// Creates a new [DomainDevicesFilesystemTarget].
   /// [dir] Configures the directory path for the target where the filesystem is mounted.
-  DomainDevicesFilesystemTarget({
-    required this.dir,
-  });
+  DomainDevicesFilesystemTarget({required this.dir});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dir': dir,
-    };
+    return <String, dynamic>{'dir': dir};
   }
 
   factory DomainDevicesFilesystemTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemTarget(
-      dir: (map['dir'] as String).input(),
+      dir: pulumi.Input.fromValue(map['dir'] as String),
     );
   }
 }
-

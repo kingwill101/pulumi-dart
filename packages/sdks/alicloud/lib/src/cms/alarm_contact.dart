@@ -4,7 +4,7 @@ import 'alarm_contact_state.dart';
 
 /// Creates or modifies an alarm contact. For information about alarm contact and how to use it, see [What is alarm contact](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontact).
 ///
-/// > **NOTE:** Available since v1.99.0.
+/// &gt; **NOTE:** Available since v1.99.0.
 ///
 /// ## Example Usage
 ///
@@ -129,19 +129,25 @@ import 'alarm_contact_state.dart';
 class AlarmContact extends pulumi.CustomResource {
   /// The name of the alarm contact. The length should between 2 and 40 characters.
   late final pulumi.Output<String> alarmContactName;
+
   /// The TradeManager ID of the alarm contact.
   late final pulumi.Output<String?> channelsAliim;
+
   /// The webhook URL of the DingTalk chatbot.
   late final pulumi.Output<String?> channelsDingWebHook;
+
   /// The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
   late final pulumi.Output<String?> channelsMail;
+
   /// The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
   late final pulumi.Output<String?> channelsSms;
+
   /// The description of the alarm contact.
   late final pulumi.Output<String> describe;
+
   /// The language type of the alarm. Valid values: `en`, `zh-cn`.
   ///
-  /// > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
+  /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
   late final pulumi.Output<String?> lang;
 
   /// Creates a new [AlarmContact].
@@ -153,18 +159,18 @@ class AlarmContact extends pulumi.CustomResource {
     AlarmContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/alarmContact:AlarmContact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmContactName = registerOutput<String>('alarmContactName');
-    this.channelsAliim = registerOutput<String?>('channelsAliim');
-    this.channelsDingWebHook = registerOutput<String?>('channelsDingWebHook');
-    this.channelsMail = registerOutput<String?>('channelsMail');
-    this.channelsSms = registerOutput<String?>('channelsSms');
-    this.describe = registerOutput<String>('describe');
-    this.lang = registerOutput<String?>('lang');
+         'alicloud:cms/alarmContact:AlarmContact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alarmContactName = registerOutput<String>('alarmContactName');
+    channelsAliim = registerOutput<String?>('channelsAliim');
+    channelsDingWebHook = registerOutput<String?>('channelsDingWebHook');
+    channelsMail = registerOutput<String?>('channelsMail');
+    channelsSms = registerOutput<String?>('channelsSms');
+    describe = registerOutput<String>('describe');
+    lang = registerOutput<String?>('lang');
   }
 
   /// Gets an existing [AlarmContact] resource's state with the given [name] and [id].
@@ -185,17 +191,17 @@ class AlarmContact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/alarmContact:AlarmContact',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmContactName = registerOutput<String>('alarmContactName');
-    this.channelsAliim = registerOutput<String?>('channelsAliim');
-    this.channelsDingWebHook = registerOutput<String?>('channelsDingWebHook');
-    this.channelsMail = registerOutput<String?>('channelsMail');
-    this.channelsSms = registerOutput<String?>('channelsSms');
-    this.describe = registerOutput<String>('describe');
-    this.lang = registerOutput<String?>('lang');
+         'alicloud:cms/alarmContact:AlarmContact',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alarmContactName = registerOutput<String>('alarmContactName');
+    channelsAliim = registerOutput<String?>('channelsAliim');
+    channelsDingWebHook = registerOutput<String?>('channelsDingWebHook');
+    channelsMail = registerOutput<String?>('channelsMail');
+    channelsSms = registerOutput<String?>('channelsSms');
+    describe = registerOutput<String>('describe');
+    lang = registerOutput<String?>('lang');
   }
 }

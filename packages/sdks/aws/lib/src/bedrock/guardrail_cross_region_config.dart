@@ -8,9 +8,7 @@ class GuardrailCrossRegionConfig {
 
   /// Creates a new [GuardrailCrossRegionConfig].
   /// [guardrailProfileIdentifier] Guardrail profile ARN.
-  GuardrailCrossRegionConfig({
-    required this.guardrailProfileIdentifier,
-  });
+  GuardrailCrossRegionConfig({required this.guardrailProfileIdentifier});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,9 @@ class GuardrailCrossRegionConfig {
 
   factory GuardrailCrossRegionConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailCrossRegionConfig(
-      guardrailProfileIdentifier: (map['guardrailProfileIdentifier'] as String).input(),
+      guardrailProfileIdentifier: pulumi.Input.fromValue(
+        map['guardrailProfileIdentifier'] as String,
+      ),
     );
   }
 }
-

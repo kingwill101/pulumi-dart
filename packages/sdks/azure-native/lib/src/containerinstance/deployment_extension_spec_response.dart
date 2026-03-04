@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentExtensionSpecResponse {
   /// Type of extension to be added.
   final pulumi.Input<String> extensionType;
+
   /// Name of the extension.
   final pulumi.Input<String> name;
+
   /// Protected settings for the extension.
   final pulumi.Input<dynamic>? protectedSettings;
+
   /// Settings for the extension.
   final pulumi.Input<dynamic>? settings;
+
   /// Version of the extension being used.
   final pulumi.Input<String> version;
 
@@ -41,12 +45,19 @@ class DeploymentExtensionSpecResponse {
 
   factory DeploymentExtensionSpecResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentExtensionSpecResponse(
-      extensionType: (map['extensionType'] as String).input(),
-      name: (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']!).input(),
-      settings: map['settings'] == null ? null : (map['settings']!).input(),
-      version: (map['version'] as String).input(),
+      extensionType: pulumi.Input.fromValue(map['extensionType'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      protectedSettings: (() {
+        final guardedValue = map['protectedSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

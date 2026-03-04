@@ -6,31 +6,44 @@ import 'system_data_response.dart';
 class GetArcAddonResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Host OS supported by the Arc addon.
   final String hostPlatform;
+
   /// Platform where the runtime is hosted.
   final String hostPlatformType;
+
   /// The path ID that uniquely identifies the object.
   final String id;
+
   /// Addon type.
   /// Expected value is 'ArcForKubernetes'.
   final String kind;
+
   /// The object name.
   final String name;
+
   /// Addon Provisioning State
   final String provisioningState;
+
   /// Arc resource group name
   final String resourceGroupName;
+
   /// Arc resource location
   final String resourceLocation;
+
   /// Arc resource Name
   final String resourceName;
+
   /// Arc resource subscription Id
   final String subscriptionId;
+
   /// Metadata pertaining to creation and last modification of Addon
   final SystemDataResponse systemData;
+
   /// The hierarchical type of the object.
   final String type;
+
   /// Arc resource version
   final String version;
 
@@ -98,10 +111,11 @@ class GetArcAddonResult {
       resourceLocation: map['resourceLocation'] as String,
       resourceName: map['resourceName'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
-

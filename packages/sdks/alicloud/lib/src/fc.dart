@@ -1,5 +1,3 @@
-library module_fc;
-
 export 'fc/alias.dart';
 export 'fc/alias_args.dart';
 export 'fc/alias_routing_config.dart';

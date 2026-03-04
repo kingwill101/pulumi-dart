@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryTaskSourceTriggerAuthentication {
   /// Time in seconds that the token remains valid.
   final pulumi.Input<int>? expireInSeconds;
+
   /// The refresh token used to refresh the access token.
   final pulumi.Input<String>? refreshToken;
+
   /// The scope of the access token.
   final pulumi.Input<String>? scope;
+
   /// The access token used to access the source control provider.
   final pulumi.Input<String> token;
+
   /// The type of the token. Possible values are `PAT` (personal access token) and `OAuth`.
   final pulumi.Input<String> tokenType;
 
@@ -38,14 +42,27 @@ class RegistryTaskSourceTriggerAuthentication {
     };
   }
 
-  factory RegistryTaskSourceTriggerAuthentication.fromMap(Map<String, dynamic> map) {
+  factory RegistryTaskSourceTriggerAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryTaskSourceTriggerAuthentication(
-      expireInSeconds: map['expireInSeconds'] == null ? null : (map['expireInSeconds']! as int).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      token: (map['token'] as String).input(),
-      tokenType: (map['tokenType'] as String).input(),
+      expireInSeconds: (() {
+        final guardedValue = map['expireInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      token: pulumi.Input.fromValue(map['token'] as String),
+      tokenType: pulumi.Input.fromValue(map['tokenType'] as String),
     );
   }
 }
-

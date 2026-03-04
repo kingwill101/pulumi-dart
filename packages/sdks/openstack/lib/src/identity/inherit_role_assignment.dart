@@ -6,7 +6,7 @@ import 'inherit_role_assignment_state.dart';
 /// Openstack keystone `OS-INHERIT` api to created inherit roles within domains
 /// and parent projects for users and groups.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -196,17 +196,22 @@ import 'inherit_role_assignment_state.dart';
 class InheritRoleAssignment extends pulumi.CustomResource {
   /// The domain to assign the role in.
   late final pulumi.Output<String?> domainId;
+
   /// The group to assign the role to.
   late final pulumi.Output<String?> groupId;
+
   /// The project to assign the role in.
   /// The project should be able to containt child projects.
   late final pulumi.Output<String?> projectId;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new inherit role assignment.
   late final pulumi.Output<String> region;
+
   /// The role to assign.
   late final pulumi.Output<String> roleId;
+
   /// The user to assign the role to.
   late final pulumi.Output<String?> userId;
 
@@ -219,17 +224,17 @@ class InheritRoleAssignment extends pulumi.CustomResource {
     InheritRoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/inheritRoleAssignment:InheritRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainId = registerOutput<String?>('domainId');
-    this.groupId = registerOutput<String?>('groupId');
-    this.projectId = registerOutput<String?>('projectId');
-    this.region = registerOutput<String>('region');
-    this.roleId = registerOutput<String>('roleId');
-    this.userId = registerOutput<String?>('userId');
+         'openstack:identity/inheritRoleAssignment:InheritRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainId = registerOutput<String?>('domainId');
+    groupId = registerOutput<String?>('groupId');
+    projectId = registerOutput<String?>('projectId');
+    region = registerOutput<String>('region');
+    roleId = registerOutput<String>('roleId');
+    userId = registerOutput<String?>('userId');
   }
 
   /// Gets an existing [InheritRoleAssignment] resource's state with the given [name] and [id].
@@ -250,16 +255,16 @@ class InheritRoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/inheritRoleAssignment:InheritRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainId = registerOutput<String?>('domainId');
-    this.groupId = registerOutput<String?>('groupId');
-    this.projectId = registerOutput<String?>('projectId');
-    this.region = registerOutput<String>('region');
-    this.roleId = registerOutput<String>('roleId');
-    this.userId = registerOutput<String?>('userId');
+         'openstack:identity/inheritRoleAssignment:InheritRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainId = registerOutput<String?>('domainId');
+    groupId = registerOutput<String?>('groupId');
+    projectId = registerOutput<String?>('projectId');
+    region = registerOutput<String>('region');
+    roleId = registerOutput<String>('roleId');
+    userId = registerOutput<String?>('userId');
   }
 }

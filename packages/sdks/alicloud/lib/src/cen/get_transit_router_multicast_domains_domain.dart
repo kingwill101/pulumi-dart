@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterMulticastDomainsDomain {
   /// The ID of the Transit Router Multicast Domain.
   final pulumi.Input<String> id;
+
   /// The status of the multicast domain. Valid Value: `Active`.
   final pulumi.Input<String> status;
+
   /// The ID of the transit router.
   final pulumi.Input<String> transitRouterId;
+
   /// The description of the Transit Router Multicast Domain.
   final pulumi.Input<String> transitRouterMulticastDomainDescription;
+
   /// The ID of the multicast domain.
   final pulumi.Input<String> transitRouterMulticastDomainId;
+
   /// The name of the Transit Router Multicast Domain.
   final pulumi.Input<String> transitRouterMulticastDomainName;
 
@@ -37,21 +42,29 @@ class GetTransitRouterMulticastDomainsDomain {
       'id': id,
       'status': status,
       'transitRouterId': transitRouterId,
-      'transitRouterMulticastDomainDescription': transitRouterMulticastDomainDescription,
+      'transitRouterMulticastDomainDescription':
+          transitRouterMulticastDomainDescription,
       'transitRouterMulticastDomainId': transitRouterMulticastDomainId,
       'transitRouterMulticastDomainName': transitRouterMulticastDomainName,
     };
   }
 
-  factory GetTransitRouterMulticastDomainsDomain.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterMulticastDomainsDomain.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterMulticastDomainsDomain(
-      id: (map['id'] as String).input(),
-      status: (map['status'] as String).input(),
-      transitRouterId: (map['transitRouterId'] as String).input(),
-      transitRouterMulticastDomainDescription: (map['transitRouterMulticastDomainDescription'] as String).input(),
-      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
-      transitRouterMulticastDomainName: (map['transitRouterMulticastDomainName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      transitRouterId: pulumi.Input.fromValue(map['transitRouterId'] as String),
+      transitRouterMulticastDomainDescription: pulumi.Input.fromValue(
+        map['transitRouterMulticastDomainDescription'] as String,
+      ),
+      transitRouterMulticastDomainId: pulumi.Input.fromValue(
+        map['transitRouterMulticastDomainId'] as String,
+      ),
+      transitRouterMulticastDomainName: pulumi.Input.fromValue(
+        map['transitRouterMulticastDomainName'] as String,
+      ),
     );
   }
 }
-

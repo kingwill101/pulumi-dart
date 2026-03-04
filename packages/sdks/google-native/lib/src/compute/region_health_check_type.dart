@@ -9,16 +9,15 @@ enum RegionHealthCheckType {
   tcp("TCP"),
   udp("UDP");
 
-  const RegionHealthCheckType(this.value);
-  final String value;
+  const RegionHealthCheckType(this.wireValue);
+  final String wireValue;
 
   static RegionHealthCheckType fromValue(String value) {
     for (final item in RegionHealthCheckType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionHealthCheckType value: $value');
   }
 }
-

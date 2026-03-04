@@ -4,16 +4,15 @@ enum Verbosity {
   valueInformation("information"),
   valueError("error");
 
-  const Verbosity(this.value);
-  final String value;
+  const Verbosity(this.wireValue);
+  final String wireValue;
 
   static Verbosity fromValue(String value) {
     for (final item in Verbosity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Verbosity value: $value');
   }
 }
-

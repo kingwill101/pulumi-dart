@@ -3,16 +3,15 @@ enum SandboxConfigType {
   unspecified("UNSPECIFIED"),
   gvisor("GVISOR");
 
-  const SandboxConfigType(this.value);
-  final String value;
+  const SandboxConfigType(this.wireValue);
+  final String wireValue;
 
   static SandboxConfigType fromValue(String value) {
     for (final item in SandboxConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SandboxConfigType value: $value');
   }
 }
-

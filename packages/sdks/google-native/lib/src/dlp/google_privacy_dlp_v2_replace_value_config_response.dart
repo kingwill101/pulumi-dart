@@ -10,20 +10,27 @@ class GooglePrivacyDlpV2ReplaceValueConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceValueConfigResponse].
   /// [newValue] Value to replace it with.
-  GooglePrivacyDlpV2ReplaceValueConfigResponse({
-    required this.newValue,
-  });
+  GooglePrivacyDlpV2ReplaceValueConfigResponse({required this.newValue});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'newValue': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ValueResponse, Map<String, dynamic>>(newValue, (value) => value.toMap()),
+      'newValue':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2ValueResponse,
+            Map<String, dynamic>
+          >(newValue, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2ReplaceValueConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ReplaceValueConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2ReplaceValueConfigResponse(
-      newValue: (GooglePrivacyDlpV2ValueResponse.fromMap((map['newValue'] as Map).cast<String, dynamic>())).input(),
+      newValue: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2ValueResponse.fromMap(
+          (map['newValue']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

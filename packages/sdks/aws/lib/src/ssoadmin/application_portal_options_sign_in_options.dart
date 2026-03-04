@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPortalOptionsSignInOptions {
   /// URL that accepts authentication requests for an application.
   final pulumi.Input<String>? applicationUrl;
+
   /// Determines how IAM Identity Center navigates the user to the target application.
   /// Valid values are `APPLICATION` and `IDENTITY_CENTER`.
   /// If `APPLICATION` is set, IAM Identity Center redirects the customer to the configured `application_url`.
@@ -26,11 +27,16 @@ class ApplicationPortalOptionsSignInOptions {
     };
   }
 
-  factory ApplicationPortalOptionsSignInOptions.fromMap(Map<String, dynamic> map) {
+  factory ApplicationPortalOptionsSignInOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationPortalOptionsSignInOptions(
-      applicationUrl: map['applicationUrl'] == null ? null : ((map['applicationUrl'] as String).input()).input(),
-      origin: (map['origin'] as String).input(),
+      applicationUrl: (() {
+        final guardedValue = map['applicationUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      origin: pulumi.Input.fromValue(map['origin'] as String),
     );
   }
 }
-

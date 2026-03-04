@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AggregatorAggregatorAccount {
   /// The member ID.
   final pulumi.Input<String>? accountId;
+
   /// The member name.
   final pulumi.Input<String>? accountName;
+
   /// The affiliation of the member. Valid values: `ResourceDirectory`.
   final pulumi.Input<String>? accountType;
 
@@ -30,10 +32,21 @@ class AggregatorAggregatorAccount {
 
   factory AggregatorAggregatorAccount.fromMap(Map<String, dynamic> map) {
     return AggregatorAggregatorAccount(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountType: (() {
+        final guardedValue = map['accountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

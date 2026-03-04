@@ -8,20 +8,17 @@ class AnalyticsApplicationOutputSchema {
 
   /// Creates a new [AnalyticsApplicationOutputSchema].
   /// [recordFormatType] The Format Type of the records on the output stream. Can be `CSV` or `JSON`.
-  AnalyticsApplicationOutputSchema({
-    required this.recordFormatType,
-  });
+  AnalyticsApplicationOutputSchema({required this.recordFormatType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recordFormatType': recordFormatType,
-    };
+    return <String, dynamic>{'recordFormatType': recordFormatType};
   }
 
   factory AnalyticsApplicationOutputSchema.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationOutputSchema(
-      recordFormatType: (map['recordFormatType'] as String).input(),
+      recordFormatType: pulumi.Input.fromValue(
+        map['recordFormatType'] as String,
+      ),
     );
   }
 }
-

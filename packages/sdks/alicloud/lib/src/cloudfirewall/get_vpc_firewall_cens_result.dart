@@ -7,24 +7,32 @@ import 'get_vpc_firewall_cens_cen.dart';
 class GetVpcFirewallCensResult {
   /// The ID of the CEN instance.
   final String? cenId;
+
   /// A list of Vpc Firewall Cen Entries. Each element contains the following attributes:
   final List<GetVpcFirewallCensCen> cens;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Vpc Firewall Cen IDs.
   final List<String> ids;
   final String? lang;
+
   /// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
   final String? memberUid;
+
   /// The ID of the VPC instance that created the VPC firewall.
   final String? networkInstanceId;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
+
   /// Firewall switch status
   final String? status;
+
   /// VPC firewall ID
   final String? vpcFirewallId;
+
   /// The name of the VPC firewall instance.
   final String? vpcFirewallName;
 
@@ -61,7 +69,11 @@ class GetVpcFirewallCensResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cenId': ?cenId,
-      'cens': pulumi.Input.encodeList<GetVpcFirewallCensCen, Map<String, dynamic>>(cens, (value) => value.toMap()),
+      'cens':
+          pulumi.Input.encodeList<GetVpcFirewallCensCen, Map<String, dynamic>>(
+            cens,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'lang': ?lang,
@@ -78,20 +90,64 @@ class GetVpcFirewallCensResult {
 
   factory GetVpcFirewallCensResult.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensResult(
-      cenId: map['cenId'] == null ? null : map['cenId']! as String,
-      cens: pulumi.Input.decodeList<GetVpcFirewallCensCen>(map['cens'], (value) => GetVpcFirewallCensCen.fromMap((value as Map).cast<String, dynamic>())),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      cens: pulumi.Input.decodeList<GetVpcFirewallCensCen>(
+        map['cens']!,
+        (value) => GetVpcFirewallCensCen.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang']! as String,
-      memberUid: map['memberUid'] == null ? null : map['memberUid']! as String,
-      networkInstanceId: map['networkInstanceId'] == null ? null : map['networkInstanceId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      status: map['status'] == null ? null : map['status']! as String,
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : map['vpcFirewallId']! as String,
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : map['vpcFirewallName']! as String,
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      memberUid: (() {
+        final guardedValue = map['memberUid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      networkInstanceId: (() {
+        final guardedValue = map['networkInstanceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vpcFirewallId: (() {
+        final guardedValue = map['vpcFirewallId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vpcFirewallName: (() {
+        final guardedValue = map['vpcFirewallName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

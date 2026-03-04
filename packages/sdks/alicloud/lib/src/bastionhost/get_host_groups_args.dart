@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostGroupsArgs {
   /// Specify the New Host Group Name, Supports up to 128 Characters.
   final pulumi.Input<String>? hostGroupName;
+
   /// A list of Host Group IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// Specify the New Host Group Where the Bastion Host ID of.
   final pulumi.Input<String> instanceId;
+
   /// A regex string to filter results by Host Group name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -44,12 +48,27 @@ class GetHostGroupsArgs {
 
   factory GetHostGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetHostGroupsArgs(
-      hostGroupName: map['hostGroupName'] == null ? null : (map['hostGroupName']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      hostGroupName: (() {
+        final guardedValue = map['hostGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

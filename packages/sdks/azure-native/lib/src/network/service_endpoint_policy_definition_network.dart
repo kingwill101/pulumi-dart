@@ -175,18 +175,25 @@ import 'service_endpoint_policy_definition_args.dart';
 class ServiceEndpointPolicyDefinitionNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A description for this rule. Restricted to 140 chars.
   late final pulumi.Output<String?> description;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the service endpoint policy definition resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Service endpoint name.
   late final pulumi.Output<String?> service;
+
   /// A list of service resources.
   late final pulumi.Output<List<String>?> serviceResources;
+
   /// The type of the resource.
   late final pulumi.Output<String?> type;
 
@@ -199,18 +206,18 @@ class ServiceEndpointPolicyDefinitionNetwork extends pulumi.CustomResource {
     ServiceEndpointPolicyDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ServiceEndpointPolicyDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:ServiceEndpointPolicyDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.service = registerOutput<String?>('service');
-    this.serviceResources = registerOutput<List<String>?>('serviceResources');
-    this.type = registerOutput<String?>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    service = registerOutput<String?>('service');
+    serviceResources = registerOutput<List<String>?>('serviceResources');
+    type = registerOutput<String?>('type');
   }
 }

@@ -13,10 +13,7 @@ class GetDomainMappingArgs {
   /// Creates a new [GetDomainMappingArgs].
   /// [appId] Required.
   /// [domainMappingId] Required.
-  GetDomainMappingArgs({
-    required this.appId,
-    required this.domainMappingId,
-  });
+  GetDomainMappingArgs({required this.appId, required this.domainMappingId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,8 @@ class GetDomainMappingArgs {
 
   factory GetDomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainMappingArgs(
-      appId: (map['appId'] as String).input(),
-      domainMappingId: (map['domainMappingId'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      domainMappingId: pulumi.Input.fromValue(map['domainMappingId'] as String),
     );
   }
 }
-

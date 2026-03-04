@@ -9,18 +9,23 @@ class GetInterRegionTrafficQosPoliciesResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Inter Region Traffic Qos Policy names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Cen Inter Region Traffic Qos Policies. Each element contains the following attributes:
   final List<GetInterRegionTrafficQosPoliciesPolicy> policies;
+
   /// The status of the Inter Region Traffic Qos Policy.
   final String? status;
   final String? trafficQosPolicyDescription;
   final String? trafficQosPolicyId;
   final String? trafficQosPolicyName;
+
   /// The ID of the inter-region connection.
   final String transitRouterAttachmentId;
+
   /// The ID of the transit router.
   final String transitRouterId;
 
@@ -59,7 +64,11 @@ class GetInterRegionTrafficQosPoliciesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'policies': pulumi.Input.encodeList<GetInterRegionTrafficQosPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'policies':
+          pulumi.Input.encodeList<
+            GetInterRegionTrafficQosPoliciesPolicy,
+            Map<String, dynamic>
+          >(policies, (value) => value.toMap()),
       'status': ?status,
       'trafficQosPolicyDescription': ?trafficQosPolicyDescription,
       'trafficQosPolicyId': ?trafficQosPolicyId,
@@ -69,21 +78,51 @@ class GetInterRegionTrafficQosPoliciesResult {
     };
   }
 
-  factory GetInterRegionTrafficQosPoliciesResult.fromMap(Map<String, dynamic> map) {
+  factory GetInterRegionTrafficQosPoliciesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInterRegionTrafficQosPoliciesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      policies: pulumi.Input.decodeList<GetInterRegionTrafficQosPoliciesPolicy>(map['policies'], (value) => GetInterRegionTrafficQosPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
-      trafficQosPolicyDescription: map['trafficQosPolicyDescription'] == null ? null : map['trafficQosPolicyDescription']! as String,
-      trafficQosPolicyId: map['trafficQosPolicyId'] == null ? null : map['trafficQosPolicyId']! as String,
-      trafficQosPolicyName: map['trafficQosPolicyName'] == null ? null : map['trafficQosPolicyName']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policies: pulumi.Input.decodeList<GetInterRegionTrafficQosPoliciesPolicy>(
+        map['policies']!,
+        (value) => GetInterRegionTrafficQosPoliciesPolicy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trafficQosPolicyDescription: (() {
+        final guardedValue = map['trafficQosPolicyDescription'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trafficQosPolicyId: (() {
+        final guardedValue = map['trafficQosPolicyId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trafficQosPolicyName: (() {
+        final guardedValue = map['trafficQosPolicyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
       transitRouterId: map['transitRouterId'] as String,
     );
   }
 }
-

@@ -5,7 +5,9 @@ import 'user_pool_user_pool_add_ons_advanced_security_additional_flows.dart';
 
 class UserPoolUserPoolAddOns {
   /// A block to specify the threat protection configuration options for additional authentication types in your user pool, including custom authentication. Detailed below.
-  final pulumi.Input<UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows>? advancedSecurityAdditionalFlows;
+  final pulumi.Input<UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows>?
+  advancedSecurityAdditionalFlows;
+
   /// Mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
   final pulumi.Input<String> advancedSecurityMode;
 
@@ -19,16 +21,29 @@ class UserPoolUserPoolAddOns {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSecurityAdditionalFlows': ?pulumi.Input.mapOptionalInputValue<UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows, Map<String, dynamic>>(advancedSecurityAdditionalFlows, (value) => value.toMap()),
+      'advancedSecurityAdditionalFlows':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows,
+            Map<String, dynamic>
+          >(advancedSecurityAdditionalFlows, (value) => value.toMap()),
       'advancedSecurityMode': advancedSecurityMode,
     };
   }
 
   factory UserPoolUserPoolAddOns.fromMap(Map<String, dynamic> map) {
     return UserPoolUserPoolAddOns(
-      advancedSecurityAdditionalFlows: map['advancedSecurityAdditionalFlows'] == null ? null : ((UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows.fromMap((map['advancedSecurityAdditionalFlows']! as Map).cast<String, dynamic>())).input()).input(),
-      advancedSecurityMode: (map['advancedSecurityMode'] as String).input(),
+      advancedSecurityAdditionalFlows: (() {
+        final guardedValue = map['advancedSecurityAdditionalFlows'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      advancedSecurityMode: pulumi.Input.fromValue(
+        map['advancedSecurityMode'] as String,
+      ),
     );
   }
 }
-

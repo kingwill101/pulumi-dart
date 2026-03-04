@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupRoleManagementPolicyEligibleAssignmentRules {
   /// Must an assignment have an expiry date. `false` allows permanent assignment.
   final pulumi.Input<bool>? expirationRequired;
+
   /// The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
   ///
   /// One of `expiration_required` or `expire_after` must be provided.
@@ -25,11 +26,20 @@ class GroupRoleManagementPolicyEligibleAssignmentRules {
     };
   }
 
-  factory GroupRoleManagementPolicyEligibleAssignmentRules.fromMap(Map<String, dynamic> map) {
+  factory GroupRoleManagementPolicyEligibleAssignmentRules.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GroupRoleManagementPolicyEligibleAssignmentRules(
-      expirationRequired: map['expirationRequired'] == null ? null : (map['expirationRequired']! as bool).input(),
-      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter']! as String).input(),
+      expirationRequired: (() {
+        final guardedValue = map['expirationRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expireAfter: (() {
+        final guardedValue = map['expireAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

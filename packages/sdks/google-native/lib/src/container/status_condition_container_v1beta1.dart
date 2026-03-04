@@ -7,9 +7,12 @@ import 'status_condition_code_container_v1beta1.dart';
 /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 class StatusConditionContainerV1beta1 {
   /// Canonical code of the condition.
-  final pulumi.Input<StatusConditionCanonicalCodeContainerV1beta1>? canonicalCode;
+  final pulumi.Input<StatusConditionCanonicalCodeContainerV1beta1>?
+  canonicalCode;
+
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final pulumi.Input<StatusConditionCodeContainerV1beta1>? code;
+
   /// Human-friendly representation of the condition
   final pulumi.Input<String>? message;
 
@@ -25,18 +28,43 @@ class StatusConditionContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'canonicalCode': ?pulumi.Input.mapOptionalInputValue<StatusConditionCanonicalCodeContainerV1beta1, String>(canonicalCode, (value) => value.value),
-      'code': ?pulumi.Input.mapOptionalInputValue<StatusConditionCodeContainerV1beta1, String>(code, (value) => value.value),
+      'canonicalCode':
+          ?pulumi.Input.mapOptionalInputValue<
+            StatusConditionCanonicalCodeContainerV1beta1,
+            String
+          >(canonicalCode, (value) => value.wireValue),
+      'code':
+          ?pulumi.Input.mapOptionalInputValue<
+            StatusConditionCodeContainerV1beta1,
+            String
+          >(code, (value) => value.wireValue),
       'message': ?message,
     };
   }
 
   factory StatusConditionContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return StatusConditionContainerV1beta1(
-      canonicalCode: map['canonicalCode'] == null ? null : (StatusConditionCanonicalCodeContainerV1beta1.fromValue(map['canonicalCode']! as String)).input(),
-      code: map['code'] == null ? null : (StatusConditionCodeContainerV1beta1.fromValue(map['code']! as String)).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      canonicalCode: (() {
+        final guardedValue = map['canonicalCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StatusConditionCanonicalCodeContainerV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StatusConditionCodeContainerV1beta1.fromValue(guardedValue as String),
+        );
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

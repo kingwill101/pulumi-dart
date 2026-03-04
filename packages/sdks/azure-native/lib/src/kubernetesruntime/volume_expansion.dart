@@ -3,16 +3,15 @@ enum VolumeExpansion {
   allow("Allow"),
   disallow("Disallow");
 
-  const VolumeExpansion(this.value);
-  final String value;
+  const VolumeExpansion(this.wireValue);
+  final String wireValue;
 
   static VolumeExpansion fromValue(String value) {
     for (final item in VolumeExpansion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VolumeExpansion value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionEventingRuntimeDataStatus {
   /// An arbitrary description for the Connection.
   final pulumi.Input<String>? description;
+
   /// (Output)
   /// State of the Eventing
   final pulumi.Input<String>? state;
@@ -12,23 +13,26 @@ class ConnectionEventingRuntimeDataStatus {
   /// Creates a new [ConnectionEventingRuntimeDataStatus].
   /// [description] An arbitrary description for the Connection.
   /// [state] (Output)
-  ConnectionEventingRuntimeDataStatus({
-    this.description,
-    this.state,
-  });
+  ConnectionEventingRuntimeDataStatus({this.description, this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'state': ?state,
-    };
+    return <String, dynamic>{'description': ?description, 'state': ?state};
   }
 
-  factory ConnectionEventingRuntimeDataStatus.fromMap(Map<String, dynamic> map) {
+  factory ConnectionEventingRuntimeDataStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionEventingRuntimeDataStatus(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

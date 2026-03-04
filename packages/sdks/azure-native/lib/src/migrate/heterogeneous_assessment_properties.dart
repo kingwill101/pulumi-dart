@@ -9,20 +9,19 @@ class HeterogeneousAssessmentProperties {
 
   /// Creates a new [HeterogeneousAssessmentProperties].
   /// [assessmentArmIds] Arm id of partner assessments.
-  HeterogeneousAssessmentProperties({
-    this.assessmentArmIds,
-  });
+  HeterogeneousAssessmentProperties({this.assessmentArmIds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'assessmentArmIds': ?assessmentArmIds,
-    };
+    return <String, dynamic>{'assessmentArmIds': ?assessmentArmIds};
   }
 
   factory HeterogeneousAssessmentProperties.fromMap(Map<String, dynamic> map) {
     return HeterogeneousAssessmentProperties(
-      assessmentArmIds: map['assessmentArmIds'] == null ? null : ((map['assessmentArmIds']! as List).cast<String>()).input(),
+      assessmentArmIds: (() {
+        final guardedValue = map['assessmentArmIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

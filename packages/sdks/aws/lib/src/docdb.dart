@@ -1,5 +1,3 @@
-library module_docdb;
-
 export 'docdb/cluster.dart';
 export 'docdb/cluster_args.dart';
 export 'docdb/cluster_instance.dart';

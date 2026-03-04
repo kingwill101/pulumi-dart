@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticSnapshotPolicyDailyScheduleResponse {
   /// Indicates which hour in UTC timezone a snapshot should be taken
   final pulumi.Input<int>? hour;
+
   /// Indicates which minute snapshot should be taken
   final pulumi.Input<int>? minute;
+
   /// Daily snapshot count to keep
   final pulumi.Input<int>? snapshotsToKeep;
 
@@ -29,12 +31,25 @@ class ElasticSnapshotPolicyDailyScheduleResponse {
     };
   }
 
-  factory ElasticSnapshotPolicyDailyScheduleResponse.fromMap(Map<String, dynamic> map) {
+  factory ElasticSnapshotPolicyDailyScheduleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ElasticSnapshotPolicyDailyScheduleResponse(
-      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
-      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
+      hour: (() {
+        final guardedValue = map['hour'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minute: (() {
+        final guardedValue = map['minute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotsToKeep: (() {
+        final guardedValue = map['snapshotsToKeep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

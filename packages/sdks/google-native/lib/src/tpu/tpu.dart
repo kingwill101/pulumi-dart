@@ -10,20 +10,36 @@ class Tpu {
 
   /// Creates a new [Tpu].
   /// [nodeSpec] The TPU node(s) being requested.
-  Tpu({
-    this.nodeSpec,
-  });
+  Tpu({this.nodeSpec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeSpec': ?pulumi.Input.mapOptionalInputValue<List<NodeSpec>, List<Map<String, dynamic>>>(nodeSpec, (value) => pulumi.Input.encodeList<NodeSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeSpec>,
+            List<Map<String, dynamic>>
+          >(
+            nodeSpec,
+            (value) => pulumi.Input.encodeList<NodeSpec, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory Tpu.fromMap(Map<String, dynamic> map) {
     return Tpu(
-      nodeSpec: map['nodeSpec'] == null ? null : (pulumi.Input.decodeList<NodeSpec>(map['nodeSpec']!, (value) => NodeSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSpec: (() {
+        final guardedValue = map['nodeSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeSpec>(
+            guardedValue,
+            (value) => NodeSpec.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ThrottlingMetricType {
   numberOfRequests("NumberOfRequests"),
   numberOfResources("NumberOfResources");
 
-  const ThrottlingMetricType(this.value);
-  final String value;
+  const ThrottlingMetricType(this.wireValue);
+  final String wireValue;
 
   static ThrottlingMetricType fromValue(String value) {
     for (final item in ThrottlingMetricType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ThrottlingMetricType value: $value');
   }
 }
-

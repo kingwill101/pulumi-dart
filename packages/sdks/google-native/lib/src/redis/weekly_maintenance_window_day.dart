@@ -9,16 +9,15 @@ enum WeeklyMaintenanceWindowDay {
   saturday("SATURDAY"),
   sunday("SUNDAY");
 
-  const WeeklyMaintenanceWindowDay(this.value);
-  final String value;
+  const WeeklyMaintenanceWindowDay(this.wireValue);
+  final String wireValue;
 
   static WeeklyMaintenanceWindowDay fromValue(String value) {
     for (final item in WeeklyMaintenanceWindowDay.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WeeklyMaintenanceWindowDay value: $value');
   }
 }
-

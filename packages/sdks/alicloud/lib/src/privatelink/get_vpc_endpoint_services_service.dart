@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointServicesService {
   /// Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
   final pulumi.Input<bool> autoAcceptConnection;
+
   /// The default maximum bandwidth of the endpoint connection.
   final pulumi.Input<int> connectBandwidth;
+
   /// The ID of the Vpc Endpoint Service.
   final pulumi.Input<String> id;
+
   /// The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
   final pulumi.Input<String> serviceBusinessStatus;
+
   /// The description of the endpoint service.
   final pulumi.Input<String> serviceDescription;
+
   /// The domain name of the endpoint service.
   final pulumi.Input<String> serviceDomain;
+
   /// The ID of the endpoint service.
   final pulumi.Input<String> serviceId;
+
   /// The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
   final pulumi.Input<String> status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The name of the endpoint service.
   final pulumi.Input<String> vpcEndpointServiceName;
 
@@ -65,17 +74,24 @@ class GetVpcEndpointServicesService {
 
   factory GetVpcEndpointServicesService.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServicesService(
-      autoAcceptConnection: (map['autoAcceptConnection'] as bool).input(),
-      connectBandwidth: (map['connectBandwidth'] as int).input(),
-      id: (map['id'] as String).input(),
-      serviceBusinessStatus: (map['serviceBusinessStatus'] as String).input(),
-      serviceDescription: (map['serviceDescription'] as String).input(),
-      serviceDomain: (map['serviceDomain'] as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcEndpointServiceName: (map['vpcEndpointServiceName'] as String).input(),
+      autoAcceptConnection: pulumi.Input.fromValue(
+        map['autoAcceptConnection'] as bool,
+      ),
+      connectBandwidth: pulumi.Input.fromValue(map['connectBandwidth'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      serviceBusinessStatus: pulumi.Input.fromValue(
+        map['serviceBusinessStatus'] as String,
+      ),
+      serviceDescription: pulumi.Input.fromValue(
+        map['serviceDescription'] as String,
+      ),
+      serviceDomain: pulumi.Input.fromValue(map['serviceDomain'] as String),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      vpcEndpointServiceName: pulumi.Input.fromValue(
+        map['vpcEndpointServiceName'] as String,
+      ),
     );
   }
 }
-

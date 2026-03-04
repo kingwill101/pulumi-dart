@@ -3,16 +3,17 @@ enum SapCloudForCustomerSinkWriteBehavior {
   valueInsert("Insert"),
   valueUpdate("Update");
 
-  const SapCloudForCustomerSinkWriteBehavior(this.value);
-  final String value;
+  const SapCloudForCustomerSinkWriteBehavior(this.wireValue);
+  final String wireValue;
 
   static SapCloudForCustomerSinkWriteBehavior fromValue(String value) {
     for (final item in SapCloudForCustomerSinkWriteBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SapCloudForCustomerSinkWriteBehavior value: $value');
+    throw ArgumentError(
+      'Unknown SapCloudForCustomerSinkWriteBehavior value: $value',
+    );
   }
 }
-

@@ -10,8 +10,10 @@ import 'dependency_process_filter.dart';
 class GetMapDependencyViewForAllMachinesArgs {
   /// Filters for GetDependencyViewForAllMachines
   final pulumi.Input<DependencyProcessFilter>? filters;
+
   /// Maps resource name
   final pulumi.Input<String> mapName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,18 +29,33 @@ class GetMapDependencyViewForAllMachinesArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<DependencyProcessFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            DependencyProcessFilter,
+            Map<String, dynamic>
+          >(filters, (value) => value.toMap()),
       'mapName': mapName,
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory GetMapDependencyViewForAllMachinesArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMapDependencyViewForAllMachinesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMapDependencyViewForAllMachinesArgs(
-      filters: map['filters'] == null ? null : (DependencyProcessFilter.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
-      mapName: (map['mapName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DependencyProcessFilter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mapName: pulumi.Input.fromValue(map['mapName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UpgradeDistributionResponseContaineranalysisV1alpha1 {
   /// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
   final pulumi.Input<String> classification;
+
   /// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
   final pulumi.Input<String> cpeUri;
+
   /// The cve that would be resolved by this upgrade.
   final pulumi.Input<List<String>> cve;
+
   /// The severity as specified by the upstream operating system.
   final pulumi.Input<String> severity;
 
@@ -34,13 +37,14 @@ class UpgradeDistributionResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory UpgradeDistributionResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory UpgradeDistributionResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UpgradeDistributionResponseContaineranalysisV1alpha1(
-      classification: (map['classification'] as String).input(),
-      cpeUri: (map['cpeUri'] as String).input(),
-      cve: ((map['cve'] as List).cast<String>()).input(),
-      severity: (map['severity'] as String).input(),
+      classification: pulumi.Input.fromValue(map['classification'] as String),
+      cpeUri: pulumi.Input.fromValue(map['cpeUri'] as String),
+      cve: pulumi.Input.fromValue((map['cve'] as List).cast<String>()),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
   final pulumi.Input<String>? namespaceId;
+
   /// The ID of the project to which the entities belong.
   final pulumi.Input<String> projectId;
 
@@ -23,11 +24,16 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      projectId: (map['projectId'] as String).input(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
-

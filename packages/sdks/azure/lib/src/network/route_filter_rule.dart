@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteFilterRule {
   /// The access type of the rule. The only possible value is `Allow`.
   final pulumi.Input<String> access;
+
   /// The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
   final pulumi.Input<List<String>> communities;
+
   /// The name of the route filter rule.
   final pulumi.Input<String> name;
+
   /// The rule type of the rule. The only possible value is `Community`.
   final pulumi.Input<String> ruleType;
 
@@ -35,11 +38,12 @@ class RouteFilterRule {
 
   factory RouteFilterRule.fromMap(Map<String, dynamic> map) {
     return RouteFilterRule(
-      access: (map['access'] as String).input(),
-      communities: ((map['communities'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      ruleType: (map['ruleType'] as String).input(),
+      access: pulumi.Input.fromValue(map['access'] as String),
+      communities: pulumi.Input.fromValue(
+        (map['communities'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class KubernetesClusterAmdGpuDevicePlugin {
 
   /// Creates a new [KubernetesClusterAmdGpuDevicePlugin].
   /// [enabled] Boolean flag whether the component should be enabled or not.
-  KubernetesClusterAmdGpuDevicePlugin({
-    required this.enabled,
-  });
+  KubernetesClusterAmdGpuDevicePlugin({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory KubernetesClusterAmdGpuDevicePlugin.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterAmdGpuDevicePlugin.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterAmdGpuDevicePlugin(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

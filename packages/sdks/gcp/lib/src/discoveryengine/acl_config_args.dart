@@ -11,9 +11,11 @@ class AclConfigArgs {
   /// Identity provider config.
   /// Structure is documented below.
   final pulumi.Input<AclConfigIdpConfig>? idpConfig;
+
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -22,15 +24,15 @@ class AclConfigArgs {
   /// [idpConfig] Identity provider config.
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
-  AclConfigArgs({
-    this.idpConfig,
-    required this.location,
-    this.project,
-  });
+  AclConfigArgs({this.idpConfig, required this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idpConfig': ?pulumi.Input.mapOptionalInputValue<AclConfigIdpConfig, Map<String, dynamic>>(idpConfig, (value) => value.toMap()),
+      'idpConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AclConfigIdpConfig,
+            Map<String, dynamic>
+          >(idpConfig, (value) => value.toMap()),
       'location': location,
       'project': ?project,
     };
@@ -38,10 +40,21 @@ class AclConfigArgs {
 
   factory AclConfigArgs.fromMap(Map<String, dynamic> map) {
     return AclConfigArgs(
-      idpConfig: map['idpConfig'] == null ? null : (AclConfigIdpConfig.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      idpConfig: (() {
+        final guardedValue = map['idpConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AclConfigIdpConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'vsc_state.dart';
 ///
 /// For information about Eflo Vsc and how to use it, see [What is Vsc](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-controller-2022-12-15-createvsc).
 ///
-/// > **NOTE:** Available since v1.250.0.
+/// &gt; **NOTE:** Available since v1.250.0.
 ///
 /// ## Example Usage
 ///
@@ -147,14 +147,19 @@ import 'vsc_state.dart';
 class Vsc extends pulumi.CustomResource {
   /// The ID of the Node.
   late final pulumi.Output<String> nodeId;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the Vsc.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The name of the Vsc.
   late final pulumi.Output<String?> vscName;
+
   /// The type of the Vsc. Default value: `primary`. Valid values: `primary`.
   late final pulumi.Output<String> vscType;
 
@@ -162,30 +167,23 @@ class Vsc extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vsc]. {@macro pulumi_eflo_vsc_vsc_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vsc(
-    String name, {
-    VscArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:eflo/vsc:Vsc',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nodeId = registerOutput<String>('nodeId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vscName = registerOutput<String?>('vscName');
-    this.vscType = registerOutput<String>('vscType');
+  Vsc(String name, {VscArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:eflo/vsc:Vsc',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    nodeId = registerOutput<String>('nodeId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vscName = registerOutput<String?>('vscName');
+    vscType = registerOutput<String>('vscType');
   }
 
   /// Gets an existing [Vsc] resource's state with the given [name] and [id].
-  static Vsc get(
-    String name,
-    pulumi.Input<String> id, {
-    VscState? state,
-  }) {
+  static Vsc get(String name, pulumi.Input<String> id, {VscState? state}) {
     return Vsc._get(
       name,
       state: state?.toMap(),
@@ -198,16 +196,16 @@ class Vsc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/vsc:Vsc',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nodeId = registerOutput<String>('nodeId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vscName = registerOutput<String?>('vscName');
-    this.vscType = registerOutput<String>('vscType');
+         'alicloud:eflo/vsc:Vsc',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nodeId = registerOutput<String>('nodeId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vscName = registerOutput<String?>('vscName');
+    vscType = registerOutput<String>('vscType');
   }
 }

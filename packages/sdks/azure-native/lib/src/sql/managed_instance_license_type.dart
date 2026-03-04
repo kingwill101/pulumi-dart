@@ -3,16 +3,15 @@ enum ManagedInstanceLicenseType {
   valueLicenseIncluded("LicenseIncluded"),
   valueBasePrice("BasePrice");
 
-  const ManagedInstanceLicenseType(this.value);
-  final String value;
+  const ManagedInstanceLicenseType(this.wireValue);
+  final String wireValue;
 
   static ManagedInstanceLicenseType fromValue(String value) {
     for (final item in ManagedInstanceLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedInstanceLicenseType value: $value');
   }
 }
-

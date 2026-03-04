@@ -2525,18 +2525,26 @@ import 'system_data_response.dart';
 class ProviderInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Defines the provider instance errors.
   late final pulumi.Output<ErrorDetailResponse> errors;
+
   /// Resource health details
   late final pulumi.Output<HealthResponse> health;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the provider specific properties.
-  late final pulumi.Output<Db2ProviderInstancePropertiesResponse?> providerSettings;
+  late final pulumi.Output<Db2ProviderInstancePropertiesResponse?>
+  providerSettings;
+
   /// State of provisioning of the provider instance
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -2549,18 +2557,20 @@ class ProviderInstance extends pulumi.CustomResource {
     ProviderInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:ProviderInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.errors = registerOutput<ErrorDetailResponse>('errors');
-    this.health = registerOutput<HealthResponse>('health');
+         'azure-native:workloads:ProviderInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errors = registerOutput<ErrorDetailResponse>('errors');
+    health = registerOutput<HealthResponse>('health');
     this.name = registerOutput<String>('name');
-    this.providerSettings = registerOutput<Db2ProviderInstancePropertiesResponse?>('providerSettings');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    providerSettings = registerOutput<Db2ProviderInstancePropertiesResponse?>(
+      'providerSettings',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

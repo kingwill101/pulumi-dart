@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Gets or sets the base64 encoded value of the certificate.
   final pulumi.Input<String> base64Value;
+
   /// The parameters supplied to the create or update certificate operation.
   final pulumi.Input<String>? certificateName;
+
   /// Gets or sets the description of the certificate.
   final pulumi.Input<String>? description;
+
   /// Gets or sets the is exportable flag of the certificate.
   final pulumi.Input<bool>? isExportable;
+
   /// Gets or sets the name of the certificate.
   final pulumi.Input<String> name;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets the thumbprint of the certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -59,15 +66,34 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      base64Value: (map['base64Value'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isExportable: map['isExportable'] == null ? null : (map['isExportable']! as bool).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      base64Value: pulumi.Input.fromValue(map['base64Value'] as String),
+      certificateName: (() {
+        final guardedValue = map['certificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isExportable: (() {
+        final guardedValue = map['isExportable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

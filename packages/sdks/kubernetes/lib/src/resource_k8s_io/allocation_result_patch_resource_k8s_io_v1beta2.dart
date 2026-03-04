@@ -10,8 +10,10 @@ class AllocationResultPatchResourceK8sIoV1beta2 {
   ///
   /// This is an alpha field and requires enabling the DRADeviceBindingConditions and DRAResourceClaimDeviceStatus feature gate.
   final pulumi.Input<String>? allocationTimestamp;
+
   /// Devices is the result of allocating devices.
   final pulumi.Input<DeviceAllocationResultPatchResourceK8sIoV1beta2>? devices;
+
   /// NodeSelector defines where the allocated resources are available. If unset, they are available everywhere.
   final pulumi.Input<NodeSelectorPatch>? nodeSelector;
 
@@ -28,17 +30,46 @@ class AllocationResultPatchResourceK8sIoV1beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationTimestamp': ?allocationTimestamp,
-      'devices': ?pulumi.Input.mapOptionalInputValue<DeviceAllocationResultPatchResourceK8sIoV1beta2, Map<String, dynamic>>(devices, (value) => value.toMap()),
-      'nodeSelector': ?pulumi.Input.mapOptionalInputValue<NodeSelectorPatch, Map<String, dynamic>>(nodeSelector, (value) => value.toMap()),
+      'devices':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeviceAllocationResultPatchResourceK8sIoV1beta2,
+            Map<String, dynamic>
+          >(devices, (value) => value.toMap()),
+      'nodeSelector':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodeSelectorPatch,
+            Map<String, dynamic>
+          >(nodeSelector, (value) => value.toMap()),
     };
   }
 
-  factory AllocationResultPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
+  factory AllocationResultPatchResourceK8sIoV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationResultPatchResourceK8sIoV1beta2(
-      allocationTimestamp: map['allocationTimestamp'] == null ? null : (map['allocationTimestamp']! as String).input(),
-      devices: map['devices'] == null ? null : (DeviceAllocationResultPatchResourceK8sIoV1beta2.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      allocationTimestamp: (() {
+        final guardedValue = map['allocationTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      devices: (() {
+        final guardedValue = map['devices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeviceAllocationResultPatchResourceK8sIoV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nodeSelector: (() {
+        final guardedValue = map['nodeSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodeSelectorPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

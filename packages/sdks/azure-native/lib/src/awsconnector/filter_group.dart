@@ -10,20 +10,27 @@ class FilterGroup {
 
   /// Creates a new [FilterGroup].
   /// [webhookFilter] Property webhookFilter
-  FilterGroup({
-    this.webhookFilter,
-  });
+  FilterGroup({this.webhookFilter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'webhookFilter': ?pulumi.Input.mapOptionalInputValue<WebhookFilter, Map<String, dynamic>>(webhookFilter, (value) => value.toMap()),
+      'webhookFilter':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebhookFilter,
+            Map<String, dynamic>
+          >(webhookFilter, (value) => value.toMap()),
     };
   }
 
   factory FilterGroup.fromMap(Map<String, dynamic> map) {
     return FilterGroup(
-      webhookFilter: map['webhookFilter'] == null ? null : (WebhookFilter.fromMap((map['webhookFilter']! as Map).cast<String, dynamic>())).input(),
+      webhookFilter: (() {
+        final guardedValue = map['webhookFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebhookFilter.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'certificate_state.dart';
 ///
 /// For information about ESA Certificate and how to use it, see [What is Certificate](https://next.api.alibabacloud.com/document/ESA/2024-09-10/SetCertificate).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -167,26 +167,35 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Cloud certificate ID.
   late final pulumi.Output<String?> casId;
+
   /// The certificate Id.
   late final pulumi.Output<String> certId;
+
   /// The certificate name.
   late final pulumi.Output<String> certName;
+
   /// Certificate content.
   late final pulumi.Output<String> certificate;
+
   /// Creation time.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> createdType;
+
   /// A list of domain names. Multiple domain names are separated by commas.
   late final pulumi.Output<String?> domains;
   late final pulumi.Output<String?> privateKey;
+
   /// Region. This parameter is required if the type is CAS.
   /// For accounts on the Chinese site, this parameter value is: cn-hangzhou
   /// For accounts on the international site, this parameter value is: ap-southeast-1
   late final pulumi.Output<String> region;
+
   /// The site ID, which can be obtained by calling the ListSites interface.
   late final pulumi.Output<String> siteId;
+
   /// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
   late final pulumi.Output<String> status;
+
   /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
   late final pulumi.Output<String> type;
 
@@ -199,23 +208,23 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.casId = registerOutput<String?>('casId');
-    this.certId = registerOutput<String>('certId');
-    this.certName = registerOutput<String>('certName');
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
-    this.createdType = registerOutput<String>('createdType');
-    this.domains = registerOutput<String?>('domains');
-    this.privateKey = registerOutput<String?>('privateKey');
-    this.region = registerOutput<String>('region');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+         'alicloud:esa/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    casId = registerOutput<String?>('casId');
+    certId = registerOutput<String>('certId');
+    certName = registerOutput<String>('certName');
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
+    createdType = registerOutput<String>('createdType');
+    domains = registerOutput<String?>('domains');
+    privateKey = registerOutput<String?>('privateKey');
+    region = registerOutput<String>('region');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -236,22 +245,22 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.casId = registerOutput<String?>('casId');
-    this.certId = registerOutput<String>('certId');
-    this.certName = registerOutput<String>('certName');
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
-    this.createdType = registerOutput<String>('createdType');
-    this.domains = registerOutput<String?>('domains');
-    this.privateKey = registerOutput<String?>('privateKey');
-    this.region = registerOutput<String>('region');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+         'alicloud:esa/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    casId = registerOutput<String?>('casId');
+    certId = registerOutput<String>('certId');
+    certName = registerOutput<String>('certName');
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
+    createdType = registerOutput<String>('createdType');
+    domains = registerOutput<String?>('domains');
+    privateKey = registerOutput<String?>('privateKey');
+    region = registerOutput<String>('region');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 }

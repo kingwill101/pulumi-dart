@@ -6,15 +6,22 @@ import 'cloud_autonomous_vm_cluster_maintenance_window_month.dart';
 
 class CloudAutonomousVmClusterMaintenanceWindow {
   /// The days of the week when maintenance can be performed. Changing this will force terraform to create new resource.
-  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>>? daysOfWeeks;
+  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>>?
+  daysOfWeeks;
+
   /// The hours of the day when maintenance can be performed. Changing this will force terraform to create new resource.
   final pulumi.Input<List<int>>? hoursOfDays;
+
   /// The lead time in weeks before the maintenance window. Changing this will force terraform to create new resource.
   final pulumi.Input<int>? leadTimeInWeeks;
+
   /// The months when maintenance can be performed. Changing this will force terraform to create new resource.
-  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowMonth>>? months;
+  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowMonth>>?
+  months;
+
   /// The preference for the maintenance window scheduling. Changing this will force terraform to create new resource.
   final pulumi.Input<String> preference;
+
   /// Indicates whether to skip release updates during maintenance. Changing this will force terraform to create new resource.
   final pulumi.Input<List<int>>? weeksOfMonths;
 
@@ -36,24 +43,85 @@ class CloudAutonomousVmClusterMaintenanceWindow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'daysOfWeeks': ?pulumi.Input.mapOptionalInputValue<List<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>, List<Map<String, dynamic>>>(daysOfWeeks, (value) => pulumi.Input.encodeList<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'daysOfWeeks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>,
+            List<Map<String, dynamic>>
+          >(
+            daysOfWeeks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'hoursOfDays': ?hoursOfDays,
       'leadTimeInWeeks': ?leadTimeInWeeks,
-      'months': ?pulumi.Input.mapOptionalInputValue<List<CloudAutonomousVmClusterMaintenanceWindowMonth>, List<Map<String, dynamic>>>(months, (value) => pulumi.Input.encodeList<CloudAutonomousVmClusterMaintenanceWindowMonth, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'months':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CloudAutonomousVmClusterMaintenanceWindowMonth>,
+            List<Map<String, dynamic>>
+          >(
+            months,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CloudAutonomousVmClusterMaintenanceWindowMonth,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'preference': preference,
       'weeksOfMonths': ?weeksOfMonths,
     };
   }
 
-  factory CloudAutonomousVmClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory CloudAutonomousVmClusterMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudAutonomousVmClusterMaintenanceWindow(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(map['daysOfWeeks']!, (value) => CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      hoursOfDays: map['hoursOfDays'] == null ? null : (((map['hoursOfDays'] as List).cast<int>()).input()).input(),
-      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : ((map['leadTimeInWeeks'] as int).input()).input(),
-      months: map['months'] == null ? null : ((pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowMonth>(map['months']!, (value) => CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      preference: (map['preference'] as String).input(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : (((map['weeksOfMonths'] as List).cast<int>()).input()).input(),
+      daysOfWeeks: (() {
+        final guardedValue = map['daysOfWeeks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek
+          >(
+            guardedValue,
+            (value) =>
+                CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      hoursOfDays: (() {
+        final guardedValue = map['hoursOfDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      leadTimeInWeeks: (() {
+        final guardedValue = map['leadTimeInWeeks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      months: (() {
+        final guardedValue = map['months'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowMonth>(
+            guardedValue,
+            (value) => CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      preference: pulumi.Input.fromValue(map['preference'] as String),
+      weeksOfMonths: (() {
+        final guardedValue = map['weeksOfMonths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'status_response.dart';
 class ScheduledExecutionRecordResponse {
   /// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
   final pulumi.Input<StatusResponse> errorStatus;
+
   /// The timestamp of this execution attempt.
   final pulumi.Input<String> executionTime;
+
   /// The name of the created workflow invocation, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/workflowInvocations/*`.
   final pulumi.Input<String> workflowInvocation;
 
@@ -24,7 +26,11 @@ class ScheduledExecutionRecordResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorStatus': pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(errorStatus, (value) => value.toMap()),
+      'errorStatus':
+          pulumi.Input.mapInputValue<StatusResponse, Map<String, dynamic>>(
+            errorStatus,
+            (value) => value.toMap(),
+          ),
       'executionTime': executionTime,
       'workflowInvocation': workflowInvocation,
     };
@@ -32,10 +38,15 @@ class ScheduledExecutionRecordResponse {
 
   factory ScheduledExecutionRecordResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledExecutionRecordResponse(
-      errorStatus: (StatusResponse.fromMap((map['errorStatus'] as Map).cast<String, dynamic>())).input(),
-      executionTime: (map['executionTime'] as String).input(),
-      workflowInvocation: (map['workflowInvocation'] as String).input(),
+      errorStatus: pulumi.Input.fromValue(
+        StatusResponse.fromMap(
+          (map['errorStatus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      executionTime: pulumi.Input.fromValue(map['executionTime'] as String),
+      workflowInvocation: pulumi.Input.fromValue(
+        map['workflowInvocation'] as String,
+      ),
     );
   }
 }
-

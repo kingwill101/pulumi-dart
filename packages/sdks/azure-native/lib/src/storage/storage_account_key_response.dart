@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountKeyResponse {
   /// Creation time of the key, in round trip date format.
   final pulumi.Input<String> creationTime;
+
   /// Name of the key.
   final pulumi.Input<String> keyName;
+
   /// Permissions for the key -- read-only or full permissions.
   final pulumi.Input<String> permissions;
+
   /// Base 64-encoded value of the key.
   final pulumi.Input<String> value;
 
@@ -36,11 +39,10 @@ class StorageAccountKeyResponse {
 
   factory StorageAccountKeyResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountKeyResponse(
-      creationTime: (map['creationTime'] as String).input(),
-      keyName: (map['keyName'] as String).input(),
-      permissions: (map['permissions'] as String).input(),
-      value: (map['value'] as String).input(),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

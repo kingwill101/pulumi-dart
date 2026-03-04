@@ -27,10 +27,9 @@ class GetSigningJobRevocationRecord {
 
   factory GetSigningJobRevocationRecord.fromMap(Map<String, dynamic> map) {
     return GetSigningJobRevocationRecord(
-      reason: (map['reason'] as String).input(),
-      revokedAt: (map['revokedAt'] as String).input(),
-      revokedBy: (map['revokedBy'] as String).input(),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      revokedAt: pulumi.Input.fromValue(map['revokedAt'] as String),
+      revokedBy: pulumi.Input.fromValue(map['revokedBy'] as String),
     );
   }
 }
-

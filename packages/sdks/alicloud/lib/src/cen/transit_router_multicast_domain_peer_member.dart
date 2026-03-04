@@ -6,7 +6,7 @@ import 'transit_router_multicast_domain_peer_member_state.dart';
 ///
 /// For information about Cen Transit Router Multicast Domain Peer Member and how to use it, see [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-deregistertransitroutermulticastgroupmembers).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -455,15 +455,19 @@ import 'transit_router_multicast_domain_peer_member_state.dart';
 class TransitRouterMulticastDomainPeerMember extends pulumi.CustomResource {
   /// Specifies whether only to precheck the request.
   late final pulumi.Output<bool?> dryRun;
+
   /// The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
   late final pulumi.Output<String> groupIpAddress;
+
   /// The IDs of the inter-region multicast domains.
   late final pulumi.Output<String> peerTransitRouterMulticastDomainId;
+
   /// The status of the multicast resource. Valid values:
   /// - Registering: being created
   /// - Registered: available
   /// - Deregistering: being deleted
   late final pulumi.Output<String> status;
+
   /// The ID of the multicast domain to which the multicast member belongs.
   late final pulumi.Output<String> transitRouterMulticastDomainId;
 
@@ -476,16 +480,20 @@ class TransitRouterMulticastDomainPeerMember extends pulumi.CustomResource {
     TransitRouterMulticastDomainPeerMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.groupIpAddress = registerOutput<String>('groupIpAddress');
-    this.peerTransitRouterMulticastDomainId = registerOutput<String>('peerTransitRouterMulticastDomainId');
-    this.status = registerOutput<String>('status');
-    this.transitRouterMulticastDomainId = registerOutput<String>('transitRouterMulticastDomainId');
+         'alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    groupIpAddress = registerOutput<String>('groupIpAddress');
+    peerTransitRouterMulticastDomainId = registerOutput<String>(
+      'peerTransitRouterMulticastDomainId',
+    );
+    status = registerOutput<String>('status');
+    transitRouterMulticastDomainId = registerOutput<String>(
+      'transitRouterMulticastDomainId',
+    );
   }
 
   /// Gets an existing [TransitRouterMulticastDomainPeerMember] resource's state with the given [name] and [id].
@@ -506,15 +514,19 @@ class TransitRouterMulticastDomainPeerMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.groupIpAddress = registerOutput<String>('groupIpAddress');
-    this.peerTransitRouterMulticastDomainId = registerOutput<String>('peerTransitRouterMulticastDomainId');
-    this.status = registerOutput<String>('status');
-    this.transitRouterMulticastDomainId = registerOutput<String>('transitRouterMulticastDomainId');
+         'alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    groupIpAddress = registerOutput<String>('groupIpAddress');
+    peerTransitRouterMulticastDomainId = registerOutput<String>(
+      'peerTransitRouterMulticastDomainId',
+    );
+    status = registerOutput<String>('status');
+    transitRouterMulticastDomainId = registerOutput<String>(
+      'transitRouterMulticastDomainId',
+    );
   }
 }

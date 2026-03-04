@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourcePrecedenceResponse {
   /// The data source reference id.
   final pulumi.Input<String> dataSourceReferenceId;
+
   /// The data source type.
   final pulumi.Input<String> dataSourceType;
+
   /// The data source ID.
   final pulumi.Input<int> id;
+
   /// The data source name
   final pulumi.Input<String> name;
+
   /// the precedence value.
   final pulumi.Input<int>? precedence;
+
   /// The data source status.
   final pulumi.Input<String> status;
 
@@ -46,13 +51,18 @@ class DataSourcePrecedenceResponse {
 
   factory DataSourcePrecedenceResponse.fromMap(Map<String, dynamic> map) {
     return DataSourcePrecedenceResponse(
-      dataSourceReferenceId: (map['dataSourceReferenceId'] as String).input(),
-      dataSourceType: (map['dataSourceType'] as String).input(),
-      id: (map['id'] as int).input(),
-      name: (map['name'] as String).input(),
-      precedence: map['precedence'] == null ? null : (map['precedence']! as int).input(),
-      status: (map['status'] as String).input(),
+      dataSourceReferenceId: pulumi.Input.fromValue(
+        map['dataSourceReferenceId'] as String,
+      ),
+      dataSourceType: pulumi.Input.fromValue(map['dataSourceType'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      precedence: (() {
+        final guardedValue = map['precedence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

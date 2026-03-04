@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// The content of the certificate in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Cannot be used with `url`.
   final pulumi.Input<String>? content;
+
   /// The URL of the website to get the certificates from. Cannot be used with `content`.
   final pulumi.Input<String>? url;
+
   /// Whether to verify the certificate chain while parsing it or not (default: `true`). Cannot be used with `content`.
   final pulumi.Input<bool>? verifyChain;
 
@@ -18,11 +20,7 @@ class GetCertificateArgs {
   /// [content] The content of the certificate in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Cannot be used with `url`.
   /// [url] The URL of the website to get the certificates from. Cannot be used with `content`.
   /// [verifyChain] Whether to verify the certificate chain while parsing it or not (default: `true`). Cannot be used with `content`.
-  GetCertificateArgs({
-    this.content,
-    this.url,
-    this.verifyChain,
-  });
+  GetCertificateArgs({this.content, this.url, this.verifyChain});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,21 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      content: map['content'] == null ? null : (map['content']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      verifyChain: map['verifyChain'] == null ? null : (map['verifyChain']! as bool).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifyChain: (() {
+        final guardedValue = map['verifyChain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

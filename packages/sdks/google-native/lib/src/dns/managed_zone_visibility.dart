@@ -3,16 +3,15 @@ enum ManagedZoneVisibility {
   public("public"),
   private("private");
 
-  const ManagedZoneVisibility(this.value);
-  final String value;
+  const ManagedZoneVisibility(this.wireValue);
+  final String wireValue;
 
   static ManagedZoneVisibility fromValue(String value) {
     for (final item in ManagedZoneVisibility.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedZoneVisibility value: $value');
   }
 }
-

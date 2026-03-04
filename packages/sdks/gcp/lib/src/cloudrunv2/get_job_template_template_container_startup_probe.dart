@@ -9,19 +9,28 @@ class GetJobTemplateTemplateContainerStartupProbe {
   /// Minimum consecutive failures for the probe to be considered failed after
   /// having succeeded. Defaults to 3. Minimum value is 1.
   final pulumi.Input<int> failureThreshold;
+
   /// GRPC specifies an action involving a GRPC port.
-  final pulumi.Input<List<GetJobTemplateTemplateContainerStartupProbeGrpc>> grpcs;
+  final pulumi.Input<List<GetJobTemplateTemplateContainerStartupProbeGrpc>>
+  grpcs;
+
   /// HttpGet specifies the http request to perform.
-  final pulumi.Input<List<GetJobTemplateTemplateContainerStartupProbeHttpGet>> httpGets;
+  final pulumi.Input<List<GetJobTemplateTemplateContainerStartupProbeHttpGet>>
+  httpGets;
+
   /// Number of seconds after the container has started before the probe is
   /// initiated.
   /// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
   final pulumi.Input<int> initialDelaySeconds;
+
   /// How often (in seconds) to perform the probe.
   /// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
   final pulumi.Input<int> periodSeconds;
+
   /// TcpSocket specifies an action involving a TCP port.
-  final pulumi.Input<List<GetJobTemplateTemplateContainerStartupProbeTcpSocket>> tcpSockets;
+  final pulumi.Input<List<GetJobTemplateTemplateContainerStartupProbeTcpSocket>>
+  tcpSockets;
+
   /// Number of seconds after which the probe times out.
   /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
   /// Must be smaller than periodSeconds.
@@ -48,25 +57,88 @@ class GetJobTemplateTemplateContainerStartupProbe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'failureThreshold': failureThreshold,
-      'grpcs': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateContainerStartupProbeGrpc>, List<Map<String, dynamic>>>(grpcs, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateContainerStartupProbeGrpc, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'httpGets': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateContainerStartupProbeHttpGet>, List<Map<String, dynamic>>>(httpGets, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateContainerStartupProbeHttpGet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'grpcs':
+          pulumi.Input.mapInputValue<
+            List<GetJobTemplateTemplateContainerStartupProbeGrpc>,
+            List<Map<String, dynamic>>
+          >(
+            grpcs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetJobTemplateTemplateContainerStartupProbeGrpc,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'httpGets':
+          pulumi.Input.mapInputValue<
+            List<GetJobTemplateTemplateContainerStartupProbeHttpGet>,
+            List<Map<String, dynamic>>
+          >(
+            httpGets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetJobTemplateTemplateContainerStartupProbeHttpGet,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'initialDelaySeconds': initialDelaySeconds,
       'periodSeconds': periodSeconds,
-      'tcpSockets': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateContainerStartupProbeTcpSocket>, List<Map<String, dynamic>>>(tcpSockets, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateContainerStartupProbeTcpSocket, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tcpSockets':
+          pulumi.Input.mapInputValue<
+            List<GetJobTemplateTemplateContainerStartupProbeTcpSocket>,
+            List<Map<String, dynamic>>
+          >(
+            tcpSockets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetJobTemplateTemplateContainerStartupProbeTcpSocket,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'timeoutSeconds': timeoutSeconds,
     };
   }
 
-  factory GetJobTemplateTemplateContainerStartupProbe.fromMap(Map<String, dynamic> map) {
+  factory GetJobTemplateTemplateContainerStartupProbe.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobTemplateTemplateContainerStartupProbe(
-      failureThreshold: (map['failureThreshold'] as int).input(),
-      grpcs: (pulumi.Input.decodeList<GetJobTemplateTemplateContainerStartupProbeGrpc>(map['grpcs'], (value) => GetJobTemplateTemplateContainerStartupProbeGrpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpGets: (pulumi.Input.decodeList<GetJobTemplateTemplateContainerStartupProbeHttpGet>(map['httpGets'], (value) => GetJobTemplateTemplateContainerStartupProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initialDelaySeconds: (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: (map['periodSeconds'] as int).input(),
-      tcpSockets: (pulumi.Input.decodeList<GetJobTemplateTemplateContainerStartupProbeTcpSocket>(map['tcpSockets'], (value) => GetJobTemplateTemplateContainerStartupProbeTcpSocket.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeoutSeconds: (map['timeoutSeconds'] as int).input(),
+      failureThreshold: pulumi.Input.fromValue(map['failureThreshold'] as int),
+      grpcs: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<GetJobTemplateTemplateContainerStartupProbeGrpc>(
+          map['grpcs']!,
+          (value) => GetJobTemplateTemplateContainerStartupProbeGrpc.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      httpGets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetJobTemplateTemplateContainerStartupProbeHttpGet
+        >(
+          map['httpGets']!,
+          (value) => GetJobTemplateTemplateContainerStartupProbeHttpGet.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      initialDelaySeconds: pulumi.Input.fromValue(
+        map['initialDelaySeconds'] as int,
+      ),
+      periodSeconds: pulumi.Input.fromValue(map['periodSeconds'] as int),
+      tcpSockets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetJobTemplateTemplateContainerStartupProbeTcpSocket
+        >(
+          map['tcpSockets']!,
+          (value) =>
+              GetJobTemplateTemplateContainerStartupProbeTcpSocket.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
     );
   }
 }
-

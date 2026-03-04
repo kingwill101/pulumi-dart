@@ -7,6 +7,7 @@ import 'machine_group_group_attribute.dart';
 class MachineGroupState {
   /// Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
   final pulumi.Input<MachineGroupGroupAttribute>? groupAttribute;
+
   /// The name of the machine group. The name must meet the following requirements:
   ///
   /// - The name of each machine group in a project must be unique.
@@ -14,17 +15,21 @@ class MachineGroupState {
   /// - It must start and end with a lowercase letter or a digit.
   /// - It must be 3 to 128 characters in length.
   final pulumi.Input<String>? groupName;
+
   /// The type of the machine group. Set the value to an empty string.
   final pulumi.Input<String>? groupType;
+
   /// The identifier type of the machine group. Valid values:
   ///
   /// - ip: The machine group uses IP addresses as identifiers.
   /// - userdefined: The machine group uses custom identifiers.
   final pulumi.Input<String>? machineIdentifyType;
+
   /// The identification information of the machine group.
   /// - If machineidentifiytype is configured to ip, enter the ip address of the server.
   /// - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
   final pulumi.Input<List<String>>? machineLists;
+
   /// The name of the project.
   final pulumi.Input<String>? projectName;
 
@@ -46,7 +51,11 @@ class MachineGroupState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupAttribute': ?pulumi.Input.mapOptionalInputValue<MachineGroupGroupAttribute, Map<String, dynamic>>(groupAttribute, (value) => value.toMap()),
+      'groupAttribute':
+          ?pulumi.Input.mapOptionalInputValue<
+            MachineGroupGroupAttribute,
+            Map<String, dynamic>
+          >(groupAttribute, (value) => value.toMap()),
       'groupName': ?groupName,
       'groupType': ?groupType,
       'machineIdentifyType': ?machineIdentifyType,
@@ -57,13 +66,40 @@ class MachineGroupState {
 
   factory MachineGroupState.fromMap(Map<String, dynamic> map) {
     return MachineGroupState(
-      groupAttribute: map['groupAttribute'] == null ? null : (MachineGroupGroupAttribute.fromMap((map['groupAttribute']! as Map).cast<String, dynamic>())).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
-      machineIdentifyType: map['machineIdentifyType'] == null ? null : (map['machineIdentifyType']! as String).input(),
-      machineLists: map['machineLists'] == null ? null : ((map['machineLists']! as List).cast<String>()).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      groupAttribute: (() {
+        final guardedValue = map['groupAttribute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MachineGroupGroupAttribute.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupType: (() {
+        final guardedValue = map['groupType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineIdentifyType: (() {
+        final guardedValue = map['machineIdentifyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineLists: (() {
+        final guardedValue = map['machineLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      projectName: (() {
+        final guardedValue = map['projectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

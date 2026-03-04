@@ -6,9 +6,15 @@ import 'stream_source_config_mysql_source_config_include_objects_mysql_database_
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
   /// Database name.
   final pulumi.Input<String> database;
+
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable>>? mysqlTables;
+  final pulumi.Input<
+    List<
+      StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
+    >
+  >?
+  mysqlTables;
 
   /// Creates a new [StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase].
   /// [database] Database name.
@@ -21,15 +27,43 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'database': database,
-      'mysqlTables': ?pulumi.Input.mapOptionalInputValue<List<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable>, List<Map<String, dynamic>>>(mysqlTables, (value) => pulumi.Input.encodeList<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mysqlTables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
+            >,
+            List<Map<String, dynamic>>
+          >(
+            mysqlTables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase(
-      database: (map['database'] as String).input(),
-      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable>(map['mysqlTables']!, (value) => StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      mysqlTables: (() {
+        final guardedValue = map['mysqlTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
+          >(
+            guardedValue,
+            (value) =>
+                StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

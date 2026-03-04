@@ -25,18 +25,31 @@ class OrganizationReplayPolicysimulatorV1alphaArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': pulumi.Input.mapInputValue<GoogleCloudPolicysimulatorV1alphaReplayConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'config':
+          pulumi.Input.mapInputValue<
+            GoogleCloudPolicysimulatorV1alphaReplayConfig,
+            Map<String, dynamic>
+          >(config, (value) => value.toMap()),
       'location': ?location,
       'organizationId': organizationId,
     };
   }
 
-  factory OrganizationReplayPolicysimulatorV1alphaArgs.fromMap(Map<String, dynamic> map) {
+  factory OrganizationReplayPolicysimulatorV1alphaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationReplayPolicysimulatorV1alphaArgs(
-      config: (GoogleCloudPolicysimulatorV1alphaReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      config: pulumi.Input.fromValue(
+        GoogleCloudPolicysimulatorV1alphaReplayConfig.fromMap(
+          (map['config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

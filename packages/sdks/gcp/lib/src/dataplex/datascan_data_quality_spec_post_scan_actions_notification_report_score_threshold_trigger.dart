@@ -13,15 +13,18 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrig
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scoreThreshold': ?scoreThreshold,
-    };
+    return <String, dynamic>{'scoreThreshold': ?scoreThreshold};
   }
 
-  factory DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap(Map<String, dynamic> map) {
+  factory DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger(
-      scoreThreshold: map['scoreThreshold'] == null ? null : (map['scoreThreshold']! as double).input(),
+      scoreThreshold: (() {
+        final guardedValue = map['scoreThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

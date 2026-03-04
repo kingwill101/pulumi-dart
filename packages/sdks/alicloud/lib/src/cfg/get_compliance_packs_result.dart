@@ -6,15 +6,19 @@ import 'get_compliance_packs_pack.dart';
 /// Result data returned by getCompliancePacks.
 class GetCompliancePacksResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Compliance Pack names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Config Compliance Packs. Each element contains the following attributes:
   final List<GetCompliancePacksPack> packs;
+
   /// The status of the resource.
   final String? status;
 
@@ -46,22 +50,46 @@ class GetCompliancePacksResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'packs': pulumi.Input.encodeList<GetCompliancePacksPack, Map<String, dynamic>>(packs, (value) => value.toMap()),
+      'packs':
+          pulumi.Input.encodeList<GetCompliancePacksPack, Map<String, dynamic>>(
+            packs,
+            (value) => value.toMap(),
+          ),
       'status': ?status,
     };
   }
 
   factory GetCompliancePacksResult.fromMap(Map<String, dynamic> map) {
     return GetCompliancePacksResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      packs: pulumi.Input.decodeList<GetCompliancePacksPack>(map['packs'], (value) => GetCompliancePacksPack.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      packs: pulumi.Input.decodeList<GetCompliancePacksPack>(
+        map['packs']!,
+        (value) => GetCompliancePacksPack.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'global_settings_state.dart';
 
 /// Provides an AWS Backup Global Settings resource.
 ///
-/// > **Note:** This resource will show perpetual differences for any supported settings not explicitly configured in the `global_settings` configuration block. To avoid this, specify all supported options with their default values (typically `"false"`, but check the plan diff for the actual value). See [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide for available settings.
+/// &gt; **Note:** This resource will show perpetual differences for any supported settings not explicitly configured in the `global_settings` configuration block. To avoid this, specify all supported options with their default values (typically `"false"`, but check the plan diff for the actual value). See [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide for available settings.
 ///
 /// ## Example Usage
 ///
@@ -137,12 +137,12 @@ class GlobalSettings extends pulumi.CustomResource {
     GlobalSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:backup/globalSettings:GlobalSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.globalSettings = registerOutput<Map<String, String>>('globalSettings');
+         'aws:backup/globalSettings:GlobalSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    globalSettings = registerOutput<Map<String, String>>('globalSettings');
   }
 
   /// Gets an existing [GlobalSettings] resource's state with the given [name] and [id].
@@ -163,11 +163,11 @@ class GlobalSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:backup/globalSettings:GlobalSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.globalSettings = registerOutput<Map<String, String>>('globalSettings');
+         'aws:backup/globalSettings:GlobalSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    globalSettings = registerOutput<Map<String, String>>('globalSettings');
   }
 }

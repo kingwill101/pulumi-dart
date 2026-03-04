@@ -7,8 +7,10 @@ class InstanceIamBindingCondition {
   ///
   /// For `gcp.bigtable.InstanceIamPolicy` only:
   final pulumi.Input<String>? description;
+
   /// Textual representation of an expression in Common Expression Language syntax.
   final pulumi.Input<String> expression;
+
   /// A title for the expression, i.e. a short string describing its purpose.
   final pulumi.Input<String> title;
 
@@ -32,10 +34,13 @@ class InstanceIamBindingCondition {
 
   factory InstanceIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return InstanceIamBindingCondition(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expression: (map['expression'] as String).input(),
-      title: (map['title'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

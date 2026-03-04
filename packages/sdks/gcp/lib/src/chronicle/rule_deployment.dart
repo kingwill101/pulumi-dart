@@ -611,8 +611,10 @@ class RuleDeployment extends pulumi.CustomResource {
   /// Whether detections resulting from this deployment should be considered
   /// alerts.
   late final pulumi.Output<bool?> alerting;
+
   /// Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
   late final pulumi.Output<String> archiveTime;
+
   /// The archive state of the rule deployment.
   /// Cannot be set to true unless enabled is set to false i.e.
   /// archiving requires a two-step process: first, disable the rule by
@@ -621,25 +623,32 @@ class RuleDeployment extends pulumi.CustomResource {
   /// If currently set to true, enabled, alerting, and run_frequency cannot be
   /// updated.
   late final pulumi.Output<bool?> archived;
+
   /// Output only. The names of the associated/chained consumer rules. Rules are considered
   /// consumers of this rule if their rule text explicitly filters on this rule's ruleid.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
   late final pulumi.Output<List<String>> consumerRules;
+
   /// Whether the rule is currently deployed continuously against incoming data.
   late final pulumi.Output<bool?> enabled;
+
   /// The execution state of the rule deployment.
   /// Possible values:
   /// DEFAULT
   /// LIMITED
   /// PAUSED
   late final pulumi.Output<String> executionState;
+
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
+
   /// Output only. The timestamp when the rule deployment alert state was lastly changed. This is filled regardless of the current alert state.E.g. if the current alert status is false, this timestamp will be the timestamp when the alert status was changed to false.
   late final pulumi.Output<String> lastAlertStatusChangeTime;
+
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   late final pulumi.Output<String> location;
+
   /// The resource name of the rule deployment.
   /// Note that RuleDeployment is a child of the overall Rule, not any individual
   /// revision, so the resource ID segment for the Rule resource must not
@@ -647,16 +656,20 @@ class RuleDeployment extends pulumi.CustomResource {
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/deployment
   late final pulumi.Output<String> name;
+
   /// Output only. The names of the associated/chained producer rules. Rules are considered
   /// producers for this rule if this rule explicitly filters on their ruleid.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
   late final pulumi.Output<List<String>> producerRules;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The Rule ID of the rule.
   late final pulumi.Output<String> rule;
+
   /// The run frequency of the rule deployment.
   /// Possible values:
   /// LIVE
@@ -673,25 +686,27 @@ class RuleDeployment extends pulumi.CustomResource {
     RuleDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:chronicle/ruleDeployment:RuleDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alerting = registerOutput<bool?>('alerting');
-    this.archiveTime = registerOutput<String>('archiveTime');
-    this.archived = registerOutput<bool?>('archived');
-    this.consumerRules = registerOutput<List<String>>('consumerRules');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.executionState = registerOutput<String>('executionState');
-    this.instance = registerOutput<String>('instance');
-    this.lastAlertStatusChangeTime = registerOutput<String>('lastAlertStatusChangeTime');
-    this.location = registerOutput<String>('location');
+         'gcp:chronicle/ruleDeployment:RuleDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alerting = registerOutput<bool?>('alerting');
+    archiveTime = registerOutput<String>('archiveTime');
+    archived = registerOutput<bool?>('archived');
+    consumerRules = registerOutput<List<String>>('consumerRules');
+    enabled = registerOutput<bool?>('enabled');
+    executionState = registerOutput<String>('executionState');
+    instance = registerOutput<String>('instance');
+    lastAlertStatusChangeTime = registerOutput<String>(
+      'lastAlertStatusChangeTime',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.producerRules = registerOutput<List<String>>('producerRules');
-    this.project = registerOutput<String>('project');
-    this.rule = registerOutput<String>('rule');
-    this.runFrequency = registerOutput<String?>('runFrequency');
+    producerRules = registerOutput<List<String>>('producerRules');
+    project = registerOutput<String>('project');
+    rule = registerOutput<String>('rule');
+    runFrequency = registerOutput<String?>('runFrequency');
   }
 
   /// Gets an existing [RuleDeployment] resource's state with the given [name] and [id].
@@ -712,24 +727,26 @@ class RuleDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:chronicle/ruleDeployment:RuleDeployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alerting = registerOutput<bool?>('alerting');
-    this.archiveTime = registerOutput<String>('archiveTime');
-    this.archived = registerOutput<bool?>('archived');
-    this.consumerRules = registerOutput<List<String>>('consumerRules');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.executionState = registerOutput<String>('executionState');
-    this.instance = registerOutput<String>('instance');
-    this.lastAlertStatusChangeTime = registerOutput<String>('lastAlertStatusChangeTime');
-    this.location = registerOutput<String>('location');
+         'gcp:chronicle/ruleDeployment:RuleDeployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alerting = registerOutput<bool?>('alerting');
+    archiveTime = registerOutput<String>('archiveTime');
+    archived = registerOutput<bool?>('archived');
+    consumerRules = registerOutput<List<String>>('consumerRules');
+    enabled = registerOutput<bool?>('enabled');
+    executionState = registerOutput<String>('executionState');
+    instance = registerOutput<String>('instance');
+    lastAlertStatusChangeTime = registerOutput<String>(
+      'lastAlertStatusChangeTime',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.producerRules = registerOutput<List<String>>('producerRules');
-    this.project = registerOutput<String>('project');
-    this.rule = registerOutput<String>('rule');
-    this.runFrequency = registerOutput<String?>('runFrequency');
+    producerRules = registerOutput<List<String>>('producerRules');
+    project = registerOutput<String>('project');
+    rule = registerOutput<String>('rule');
+    runFrequency = registerOutput<String?>('runFrequency');
   }
 }

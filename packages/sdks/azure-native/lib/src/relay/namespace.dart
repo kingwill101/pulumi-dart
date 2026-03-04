@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_args.dart';
-import 'private_endpoint_connection_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -186,32 +185,47 @@ import 'system_data_response.dart';
 class Namespace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the namespace was created.
   late final pulumi.Output<String> createdAt;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Identifier for Azure Insights metrics.
   late final pulumi.Output<String> metricId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of private endpoint connections.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>?> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  privateEndpointConnections;
+
   /// Provisioning state of the Namespace.
   late final pulumi.Output<String> provisioningState;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Endpoint you can use to perform Service Bus operations.
   late final pulumi.Output<String> serviceBusEndpoint;
+
   /// SKU of the namespace.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Status of the Namespace.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The time the namespace was updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -224,25 +238,27 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:relay:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.location = registerOutput<String>('location');
-    this.metricId = registerOutput<String>('metricId');
+         'azure-native:relay:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    location = registerOutput<String>('location');
+    metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
+    sku = registerOutput<SkuResponse?>('sku');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

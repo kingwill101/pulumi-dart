@@ -10,8 +10,10 @@ class GetMainVersionsArgs {
   /// The supported clusterType of this emr version.
   /// Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
   final pulumi.Input<List<String>>? clusterTypes;
+
   /// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
   final pulumi.Input<String>? emrVersion;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -19,11 +21,7 @@ class GetMainVersionsArgs {
   /// [clusterTypes] The supported clusterType of this emr version.
   /// [emrVersion] The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMainVersionsArgs({
-    this.clusterTypes,
-    this.emrVersion,
-    this.outputFile,
-  });
+  GetMainVersionsArgs({this.clusterTypes, this.emrVersion, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,10 +33,21 @@ class GetMainVersionsArgs {
 
   factory GetMainVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetMainVersionsArgs(
-      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes']! as List).cast<String>()).input(),
-      emrVersion: map['emrVersion'] == null ? null : (map['emrVersion']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      clusterTypes: (() {
+        final guardedValue = map['clusterTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      emrVersion: (() {
+        final guardedValue = map['emrVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

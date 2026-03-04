@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbProxyPublicArgs {
   /// The prefix for the new database proxy connection address can be customized.
   final pulumi.Input<String> connectionStringPrefix;
+
   /// Instance ID.
   final pulumi.Input<String> dbInstanceId;
+
   /// The network type of the new database proxy connection address,This resource defaults to Public.
   final pulumi.Input<String> dbProxyConnectionStringNetType;
+
   /// Database proxy connection address ID.
   final pulumi.Input<String> dbProxyEndpointId;
+
   /// The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
   final pulumi.Input<String>? dbProxyNewConnectStringPort;
 
@@ -44,12 +48,21 @@ class DbProxyPublicArgs {
 
   factory DbProxyPublicArgs.fromMap(Map<String, dynamic> map) {
     return DbProxyPublicArgs(
-      connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      dbProxyConnectionStringNetType: (map['dbProxyConnectionStringNetType'] as String).input(),
-      dbProxyEndpointId: (map['dbProxyEndpointId'] as String).input(),
-      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : (map['dbProxyNewConnectStringPort']! as String).input(),
+      connectionStringPrefix: pulumi.Input.fromValue(
+        map['connectionStringPrefix'] as String,
+      ),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      dbProxyConnectionStringNetType: pulumi.Input.fromValue(
+        map['dbProxyConnectionStringNetType'] as String,
+      ),
+      dbProxyEndpointId: pulumi.Input.fromValue(
+        map['dbProxyEndpointId'] as String,
+      ),
+      dbProxyNewConnectStringPort: (() {
+        final guardedValue = map['dbProxyNewConnectStringPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

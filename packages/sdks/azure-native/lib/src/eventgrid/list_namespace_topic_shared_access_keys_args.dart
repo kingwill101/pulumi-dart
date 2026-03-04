@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListNamespaceTopicSharedAccessKeysArgs {
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the topic.
   final pulumi.Input<String> topicName;
 
@@ -32,12 +34,15 @@ class ListNamespaceTopicSharedAccessKeysArgs {
     };
   }
 
-  factory ListNamespaceTopicSharedAccessKeysArgs.fromMap(Map<String, dynamic> map) {
+  factory ListNamespaceTopicSharedAccessKeysArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListNamespaceTopicSharedAccessKeysArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicName: (map['topicName'] as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
-

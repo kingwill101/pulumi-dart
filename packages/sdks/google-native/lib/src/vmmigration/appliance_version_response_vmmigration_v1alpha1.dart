@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplianceVersionResponseVmmigrationV1alpha1 {
   /// Determine whether it's critical to upgrade the appliance to this version.
   final pulumi.Input<bool> critical;
+
   /// Link to a page that contains the version release notes.
   final pulumi.Input<String> releaseNotesUri;
+
   /// A link for downloading the version.
   final pulumi.Input<String> uri;
+
   /// The appliance version.
   final pulumi.Input<String> version;
 
@@ -34,13 +37,14 @@ class ApplianceVersionResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory ApplianceVersionResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ApplianceVersionResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplianceVersionResponseVmmigrationV1alpha1(
-      critical: (map['critical'] as bool).input(),
-      releaseNotesUri: (map['releaseNotesUri'] as String).input(),
-      uri: (map['uri'] as String).input(),
-      version: (map['version'] as String).input(),
+      critical: pulumi.Input.fromValue(map['critical'] as bool),
+      releaseNotesUri: pulumi.Input.fromValue(map['releaseNotesUri'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

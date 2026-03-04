@@ -231,24 +231,38 @@ import 'system_data_response.dart';
 class L2Connection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Globally-unique identifier for this connection that is to be used as a circuit ID.
   late final pulumi.Output<String> circuitId;
+
   /// A reference to an Microsoft.Orbital/edgeSites resource to route traffic for.
   late final pulumi.Output<L2ConnectionsPropertiesResponseEdgeSite> edgeSite;
+
   /// A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
-  late final pulumi.Output<L2ConnectionsPropertiesResponseGroundStation> groundStation;
+  late final pulumi.Output<L2ConnectionsPropertiesResponseGroundStation>
+  groundStation;
+
   /// The name of the partner router to establish a connection to within the ground station.
-  late final pulumi.Output<L2ConnectionsPropertiesResponseGroundStationPartnerRouter> groundStationPartnerRouter;
+  late final pulumi.Output<
+    L2ConnectionsPropertiesResponseGroundStationPartnerRouter
+  >
+  groundStationPartnerRouter;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The VLAN ID for the L2 connection.
   late final pulumi.Output<int> vlanId;
 
@@ -261,21 +275,29 @@ class L2Connection extends pulumi.CustomResource {
     L2ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:orbital:L2Connection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.circuitId = registerOutput<String>('circuitId');
-    this.edgeSite = registerOutput<L2ConnectionsPropertiesResponseEdgeSite>('edgeSite');
-    this.groundStation = registerOutput<L2ConnectionsPropertiesResponseGroundStation>('groundStation');
-    this.groundStationPartnerRouter = registerOutput<L2ConnectionsPropertiesResponseGroundStationPartnerRouter>('groundStationPartnerRouter');
-    this.location = registerOutput<String>('location');
+         'azure-native:orbital:L2Connection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    circuitId = registerOutput<String>('circuitId');
+    edgeSite = registerOutput<L2ConnectionsPropertiesResponseEdgeSite>(
+      'edgeSite',
+    );
+    groundStation =
+        registerOutput<L2ConnectionsPropertiesResponseGroundStation>(
+          'groundStation',
+        );
+    groundStationPartnerRouter =
+        registerOutput<
+          L2ConnectionsPropertiesResponseGroundStationPartnerRouter
+        >('groundStationPartnerRouter');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vlanId = registerOutput<int>('vlanId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vlanId = registerOutput<int>('vlanId');
   }
 }

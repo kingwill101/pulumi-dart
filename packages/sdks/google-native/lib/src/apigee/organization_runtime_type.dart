@@ -4,16 +4,15 @@ enum OrganizationRuntimeType {
   cloud("CLOUD"),
   hybrid("HYBRID");
 
-  const OrganizationRuntimeType(this.value);
-  final String value;
+  const OrganizationRuntimeType(this.wireValue);
+  final String wireValue;
 
   static OrganizationRuntimeType fromValue(String value) {
     for (final item in OrganizationRuntimeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationRuntimeType value: $value');
   }
 }
-

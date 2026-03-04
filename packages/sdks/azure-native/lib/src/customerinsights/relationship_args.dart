@@ -12,24 +12,34 @@ import 'relationship_type_mapping.dart';
 class RelationshipArgs {
   /// The Relationship Cardinality.
   final pulumi.Input<CardinalityTypes>? cardinality;
+
   /// Localized descriptions for the Relationship.
   final pulumi.Input<Map<String, String>>? description;
+
   /// Localized display name for the Relationship.
   final pulumi.Input<Map<String, String>>? displayName;
+
   /// The expiry date time in UTC.
   final pulumi.Input<String>? expiryDateTimeUtc;
+
   /// The properties of the Relationship.
   final pulumi.Input<List<PropertyDefinition>>? fields;
+
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// Optional property to be used to map fields in profile to their strong ids in related profile.
   final pulumi.Input<List<RelationshipTypeMapping>>? lookupMappings;
+
   /// Profile type.
   final pulumi.Input<String> profileType;
+
   /// Related profile being referenced.
   final pulumi.Input<String> relatedProfileType;
+
   /// The name of the Relationship.
   final pulumi.Input<String>? relationshipName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -61,13 +71,39 @@ class RelationshipArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cardinality': ?pulumi.Input.mapOptionalInputValue<CardinalityTypes, String>(cardinality, (value) => value.value),
+      'cardinality':
+          ?pulumi.Input.mapOptionalInputValue<CardinalityTypes, String>(
+            cardinality,
+            (value) => value.wireValue,
+          ),
       'description': ?description,
       'displayName': ?displayName,
       'expiryDateTimeUtc': ?expiryDateTimeUtc,
-      'fields': ?pulumi.Input.mapOptionalInputValue<List<PropertyDefinition>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<PropertyDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fields':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PropertyDefinition>,
+            List<Map<String, dynamic>>
+          >(
+            fields,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PropertyDefinition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'hubName': hubName,
-      'lookupMappings': ?pulumi.Input.mapOptionalInputValue<List<RelationshipTypeMapping>, List<Map<String, dynamic>>>(lookupMappings, (value) => pulumi.Input.encodeList<RelationshipTypeMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lookupMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RelationshipTypeMapping>,
+            List<Map<String, dynamic>>
+          >(
+            lookupMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RelationshipTypeMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'profileType': profileType,
       'relatedProfileType': relatedProfileType,
       'relationshipName': ?relationshipName,
@@ -77,18 +113,69 @@ class RelationshipArgs {
 
   factory RelationshipArgs.fromMap(Map<String, dynamic> map) {
     return RelationshipArgs(
-      cardinality: map['cardinality'] == null ? null : (CardinalityTypes.fromValue(map['cardinality']! as String)).input(),
-      description: map['description'] == null ? null : ((map['description']! as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
-      expiryDateTimeUtc: map['expiryDateTimeUtc'] == null ? null : (map['expiryDateTimeUtc']! as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<PropertyDefinition>(map['fields']!, (value) => PropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hubName: (map['hubName'] as String).input(),
-      lookupMappings: map['lookupMappings'] == null ? null : (pulumi.Input.decodeList<RelationshipTypeMapping>(map['lookupMappings']!, (value) => RelationshipTypeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      profileType: (map['profileType'] as String).input(),
-      relatedProfileType: (map['relatedProfileType'] as String).input(),
-      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      cardinality: (() {
+        final guardedValue = map['cardinality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CardinalityTypes.fromValue(guardedValue as String),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      expiryDateTimeUtc: (() {
+        final guardedValue = map['expiryDateTimeUtc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fields: (() {
+        final guardedValue = map['fields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PropertyDefinition>(
+            guardedValue,
+            (value) => PropertyDefinition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      lookupMappings: (() {
+        final guardedValue = map['lookupMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RelationshipTypeMapping>(
+            guardedValue,
+            (value) => RelationshipTypeMapping.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      profileType: pulumi.Input.fromValue(map['profileType'] as String),
+      relatedProfileType: pulumi.Input.fromValue(
+        map['relatedProfileType'] as String,
+      ),
+      relationshipName: (() {
+        final guardedValue = map['relationshipName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeidServiceArgs {
   /// The name of the deid service
   final pulumi.Input<String> deidServiceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetDeidServiceArgs {
 
   factory GetDeidServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeidServiceArgs(
-      deidServiceName: (map['deidServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      deidServiceName: pulumi.Input.fromValue(map['deidServiceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

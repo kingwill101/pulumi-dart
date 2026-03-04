@@ -4,7 +4,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 
 /// Manages a Dashboard Grafana Managed Private Endpoint.
 ///
-/// > **Note:** This resource will _not_ approve the managed private endpoint connection on the linked resource. This will need to be done manually via Azure CLI, PowerShell, or AzAPI resources. See here for an example that uses AzAPI.
+/// &gt; **Note:** This resource will _not_ approve the managed private endpoint connection on the linked resource. This will need to be done manually via Azure CLI, PowerShell, or AzAPI resources. See here for an example that uses AzAPI.
 ///
 /// ## Example Usage
 ///
@@ -289,7 +289,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Dashboard` - 2025-08-01
@@ -304,20 +304,28 @@ import 'grafana_managed_private_endpoint_state.dart';
 class GrafanaManagedPrivateEndpoint extends pulumi.CustomResource {
   /// The id of the associated managed Grafana. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
   late final pulumi.Output<String> grafanaId;
+
   /// Specifies a list of private link group IDs. The value of this will depend on the private link resource to which you are connecting. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
   late final pulumi.Output<List<String>?> groupIds;
+
   /// The Azure Region where the Dashboard Grafana Managed Private Endpoint should exist. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Dashboard Grafana Managed Private Endpoint. Must be between 2 and 20 alphanumeric characters or dashes, must begin with letter and end with a letter or number. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the resource to which this Dashboard Grafana Managed Private Endpoint will connect. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
   late final pulumi.Output<String> privateLinkResourceId;
+
   /// The region in which to create the private link. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
   late final pulumi.Output<String?> privateLinkResourceRegion;
+
   /// A domain name for this endpoint to be used within Grafana. Must be just a domain, without schema, and with at least three parts.
   late final pulumi.Output<String?> privateLinkServiceUrl;
+
   /// A message to provide in the request which will be seen by approvers.
   late final pulumi.Output<String?> requestMessage;
+
   /// A mapping of tags which should be assigned to the Dashboard Grafana Managed Private Endpoint.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -330,20 +338,22 @@ class GrafanaManagedPrivateEndpoint extends pulumi.CustomResource {
     GrafanaManagedPrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dashboard/grafanaManagedPrivateEndpoint:GrafanaManagedPrivateEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.grafanaId = registerOutput<String>('grafanaId');
-    this.groupIds = registerOutput<List<String>?>('groupIds');
-    this.location = registerOutput<String>('location');
+         'azure:dashboard/grafanaManagedPrivateEndpoint:GrafanaManagedPrivateEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    grafanaId = registerOutput<String>('grafanaId');
+    groupIds = registerOutput<List<String>?>('groupIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
-    this.privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
-    this.privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
+    privateLinkResourceRegion = registerOutput<String?>(
+      'privateLinkResourceRegion',
+    );
+    privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
+    requestMessage = registerOutput<String?>('requestMessage');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [GrafanaManagedPrivateEndpoint] resource's state with the given [name] and [id].
@@ -364,19 +374,21 @@ class GrafanaManagedPrivateEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dashboard/grafanaManagedPrivateEndpoint:GrafanaManagedPrivateEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.grafanaId = registerOutput<String>('grafanaId');
-    this.groupIds = registerOutput<List<String>?>('groupIds');
-    this.location = registerOutput<String>('location');
+         'azure:dashboard/grafanaManagedPrivateEndpoint:GrafanaManagedPrivateEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    grafanaId = registerOutput<String>('grafanaId');
+    groupIds = registerOutput<List<String>?>('groupIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
-    this.privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
-    this.privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
+    privateLinkResourceRegion = registerOutput<String?>(
+      'privateLinkResourceRegion',
+    );
+    privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
+    requestMessage = registerOutput<String?>('requestMessage');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

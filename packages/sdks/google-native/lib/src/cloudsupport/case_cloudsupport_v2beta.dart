@@ -8,35 +8,51 @@ import 'case_cloudsupport_v2beta_args.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class CaseCloudsupportV2beta extends pulumi.CustomResource {
   /// The issue classification applicable to this case.
-  late final pulumi.Output<CaseClassificationResponseCloudsupportV2beta> classification;
+  late final pulumi.Output<CaseClassificationResponseCloudsupportV2beta>
+  classification;
+
   /// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
   late final pulumi.Output<String> contactEmail;
+
   /// The time this case was created.
   late final pulumi.Output<String> createTime;
+
   /// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
   late final pulumi.Output<ActorResponseCloudsupportV2beta> creator;
+
   /// A broad description of the issue.
   late final pulumi.Output<String> description;
+
   /// The short summary of the issue reported in this case.
   late final pulumi.Output<String> displayName;
+
   /// Whether the case is currently escalated.
   late final pulumi.Output<bool> escalated;
+
   /// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
   late final pulumi.Output<String> languageCode;
+
   /// The resource name for the case.
   late final pulumi.Output<String> name;
+
   /// The priority of this case.
   late final pulumi.Output<String> priority;
+
   /// REMOVED. The severity of this case. Use priority instead.
   late final pulumi.Output<String> severity;
+
   /// The current status of the support case.
   late final pulumi.Output<String> state;
+
   /// The email addresses to receive updates on this case.
   late final pulumi.Output<List<String>> subscriberEmailAddresses;
+
   /// Whether this case was created for internal API testing and should not be acted on by the support team.
   late final pulumi.Output<bool> testCase;
+
   /// The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
   late final pulumi.Output<String> timeZone;
+
   /// The time this case was last updated.
   late final pulumi.Output<String> updateTime;
   late final pulumi.Output<String> v2betaId1;
@@ -51,28 +67,33 @@ class CaseCloudsupportV2beta extends pulumi.CustomResource {
     CaseCloudsupportV2betaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudsupport/v2beta:Case',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.classification = registerOutput<CaseClassificationResponseCloudsupportV2beta>('classification');
-    this.contactEmail = registerOutput<String>('contactEmail');
-    this.createTime = registerOutput<String>('createTime');
-    this.creator = registerOutput<ActorResponseCloudsupportV2beta>('creator');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.escalated = registerOutput<bool>('escalated');
-    this.languageCode = registerOutput<String>('languageCode');
+         'google-native:cloudsupport/v2beta:Case',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    classification =
+        registerOutput<CaseClassificationResponseCloudsupportV2beta>(
+          'classification',
+        );
+    contactEmail = registerOutput<String>('contactEmail');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<ActorResponseCloudsupportV2beta>('creator');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    escalated = registerOutput<bool>('escalated');
+    languageCode = registerOutput<String>('languageCode');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<String>('priority');
-    this.severity = registerOutput<String>('severity');
-    this.state = registerOutput<String>('state');
-    this.subscriberEmailAddresses = registerOutput<List<String>>('subscriberEmailAddresses');
-    this.testCase = registerOutput<bool>('testCase');
-    this.timeZone = registerOutput<String>('timeZone');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.v2betaId1 = registerOutput<String>('v2betaId1');
-    this.v2betumId = registerOutput<String>('v2betumId');
+    priority = registerOutput<String>('priority');
+    severity = registerOutput<String>('severity');
+    state = registerOutput<String>('state');
+    subscriberEmailAddresses = registerOutput<List<String>>(
+      'subscriberEmailAddresses',
+    );
+    testCase = registerOutput<bool>('testCase');
+    timeZone = registerOutput<String>('timeZone');
+    updateTime = registerOutput<String>('updateTime');
+    v2betaId1 = registerOutput<String>('v2betaId1');
+    v2betumId = registerOutput<String>('v2betumId');
   }
 }

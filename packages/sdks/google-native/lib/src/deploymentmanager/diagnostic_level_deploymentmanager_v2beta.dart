@@ -5,16 +5,17 @@ enum DiagnosticLevelDeploymentmanagerV2beta {
   warning("WARNING"),
   error("ERROR");
 
-  const DiagnosticLevelDeploymentmanagerV2beta(this.value);
-  final String value;
+  const DiagnosticLevelDeploymentmanagerV2beta(this.wireValue);
+  final String wireValue;
 
   static DiagnosticLevelDeploymentmanagerV2beta fromValue(String value) {
     for (final item in DiagnosticLevelDeploymentmanagerV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiagnosticLevelDeploymentmanagerV2beta value: $value');
+    throw ArgumentError(
+      'Unknown DiagnosticLevelDeploymentmanagerV2beta value: $value',
+    );
   }
 }
-

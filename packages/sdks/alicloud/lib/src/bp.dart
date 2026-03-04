@@ -1,5 +1,3 @@
-library module_bp;
-
 export 'bp/functions.dart';
 export 'bp/get_studio_applications_application.dart';
 export 'bp/get_studio_applications_args.dart';

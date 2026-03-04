@@ -801,7 +801,7 @@ import 'server_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -816,52 +816,70 @@ import 'server_state.dart';
 class Server extends pulumi.CustomResource {
   /// The administrator login name for the new server. Required unless `azuread_authentication_only` in the `azuread_administrator` block is `true`. When omitted, Azure will generate a default username which cannot be subsequently changed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> administratorLogin;
+
   /// The password associated with the `administrator_login` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx).
   late final pulumi.Output<String?> administratorLoginPassword;
+
   /// An integer value used to trigger an update for `administrator_login_password_wo`. This property should be incremented when updating `administrator_login_password_wo`.
   late final pulumi.Output<int?> administratorLoginPasswordWoVersion;
+
   /// An `azuread_administrator` block as defined below.
   late final pulumi.Output<ServerAzureadAdministrator?> azureadAdministrator;
+
   /// The connection policy the server will use. Possible values are `Default`, `Proxy`, and `Redirect`. Defaults to `Default`.
   late final pulumi.Output<String?> connectionPolicy;
+
   /// Whether to enable the Express Vulnerability Assessment Configuration. Defaults to `false`.
   ///
-  /// > **Note:** If you have enabled the Classic SQL Vulnerability Assessment configuration using the `azure.mssql.ServerVulnerabilityAssessment` resource, you must first delete it before enabling `express_vulnerability_assessment_enabled`. If you wish to revert back to using the Classic SQL Vulnerability Assessment configuration you must first disable this setting.
+  /// &gt; **Note:** If you have enabled the Classic SQL Vulnerability Assessment configuration using the `azure.mssql.ServerVulnerabilityAssessment` resource, you must first delete it before enabling `express_vulnerability_assessment_enabled`. If you wish to revert back to using the Classic SQL Vulnerability Assessment configuration you must first disable this setting.
   late final pulumi.Output<bool?> expressVulnerabilityAssessmentEnabled;
+
   /// The fully qualified domain name of the Azure SQL Server (e.g. myServerName.database.windows.net)
   late final pulumi.Output<String> fullyQualifiedDomainName;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ServerIdentity?> identity;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The Minimum TLS Version for all SQL Database and SQL Data Warehouse databases associated with the server. Valid values are: `1.0`, `1.1` , `1.2` and `Disabled`. Defaults to `1.2`.
   ///
-  /// > **Note:** The `minimum_tls_version` is set to `Disabled` means all TLS versions are allowed. After you enforce a version of `minimum_tls_version`, it's not possible to revert to `Disabled`.
+  /// &gt; **Note:** The `minimum_tls_version` is set to `Disabled` means all TLS versions are allowed. After you enforce a version of `minimum_tls_version`, it's not possible to revert to `Disabled`.
   ///
-  /// > **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
+  /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   late final pulumi.Output<String?> minimumTlsVersion;
+
   /// The name of the Microsoft SQL Server. This needs to be globally unique within Azure. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Whether outbound network traffic is restricted for this server. Defaults to `false`.
   late final pulumi.Output<bool?> outboundNetworkRestrictionEnabled;
+
   /// Specifies the primary user managed identity id. Required if `type` within the `identity` block is set to either `SystemAssigned, UserAssigned` or `UserAssigned` and should be set at same time as setting `identity_ids`.
   late final pulumi.Output<String> primaryUserAssignedIdentityId;
+
   /// Whether public network access is allowed for this server. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group in which to create the Microsoft SQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A list of dropped restorable database IDs on the server.
   late final pulumi.Output<List<String>> restorableDroppedDatabaseIds;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// The fully versioned `Key Vault` `Key` URL (e.g. `'https://<YourVaultName>.vault.azure.net/keys/<YourKeyName>/<YourKeyVersion>`) to be used as the `Customer Managed Key`(CMK/BYOK) for the `Transparent Data Encryption`(TDE) layer.
+
+  /// The fully versioned `Key Vault` `Key` URL (e.g. `'https://&lt;YourVaultName&gt;.vault.azure.net/keys/&lt;YourKeyName&gt;/&lt;YourKeyVersion&gt;`) to be used as the `Customer Managed Key`(CMK/BYOK) for the `Transparent Data Encryption`(TDE) layer.
   ///
-  /// > **Note:** To successfully deploy a `Microsoft SQL Server` in CMK/BYOK TDE the `Key Vault` must have `Soft-delete` and `purge protection` enabled to protect from data loss due to accidental key and/or key vault deletion. The `Key Vault` and the `Microsoft SQL Server` `User Managed Identity Instance` must belong to the same `Azure Active Directory` `tenant`.
+  /// &gt; **Note:** To successfully deploy a `Microsoft SQL Server` in CMK/BYOK TDE the `Key Vault` must have `Soft-delete` and `purge protection` enabled to protect from data loss due to accidental key and/or key vault deletion. The `Key Vault` and the `Microsoft SQL Server` `User Managed Identity Instance` must belong to the same `Azure Active Directory` `tenant`.
   ///
-  /// > **Note:** Cross-tenant `Key Vault` and `Microsoft SQL Server` interactions are not supported. Please see the [product documentation](https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-overview?view=azuresql#requirements-for-configuring-customer-managed-tde) for more information.
+  /// &gt; **Note:** Cross-tenant `Key Vault` and `Microsoft SQL Server` interactions are not supported. Please see the [product documentation](https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-overview?view=azuresql#requirements-for-configuring-customer-managed-tde) for more information.
   ///
-  /// > **Note:** When using a firewall with a `Key Vault`, you must enable the option `Allow trusted Microsoft services to bypass the firewall`.
+  /// &gt; **Note:** When using a firewall with a `Key Vault`, you must enable the option `Allow trusted Microsoft services to bypass the firewall`.
   late final pulumi.Output<String?> transparentDataEncryptionKeyVaultKeyId;
+
   /// The version for the new server. Valid values are: 2.0 (for v11 server) and 12.0 (for v12 server). Changing this forces a new resource to be created.
   late final pulumi.Output<String> version;
 
@@ -869,35 +887,52 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_mssql_server_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(
-    String name, {
-    ServerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:mssql/server:Server',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String>('administratorLogin');
-    this.administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
-    this.administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
-    this.azureadAdministrator = registerOutput<ServerAzureadAdministrator?>('azureadAdministrator');
-    this.connectionPolicy = registerOutput<String?>('connectionPolicy');
-    this.expressVulnerabilityAssessmentEnabled = registerOutput<bool?>('expressVulnerabilityAssessmentEnabled');
-    this.fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
-    this.identity = registerOutput<ServerIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:mssql/server:Server',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorLoginPassword = registerOutput<String?>(
+      'administratorLoginPassword',
+    );
+    administratorLoginPasswordWoVersion = registerOutput<int?>(
+      'administratorLoginPasswordWoVersion',
+    );
+    azureadAdministrator = registerOutput<ServerAzureadAdministrator?>(
+      'azureadAdministrator',
+    );
+    connectionPolicy = registerOutput<String?>('connectionPolicy');
+    expressVulnerabilityAssessmentEnabled = registerOutput<bool?>(
+      'expressVulnerabilityAssessmentEnabled',
+    );
+    fullyQualifiedDomainName = registerOutput<String>(
+      'fullyQualifiedDomainName',
+    );
+    identity = registerOutput<ServerIdentity?>('identity');
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.outboundNetworkRestrictionEnabled = registerOutput<bool?>('outboundNetworkRestrictionEnabled');
-    this.primaryUserAssignedIdentityId = registerOutput<String>('primaryUserAssignedIdentityId');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restorableDroppedDatabaseIds = registerOutput<List<String>>('restorableDroppedDatabaseIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
-    this.version = registerOutput<String>('version');
+    outboundNetworkRestrictionEnabled = registerOutput<bool?>(
+      'outboundNetworkRestrictionEnabled',
+    );
+    primaryUserAssignedIdentityId = registerOutput<String>(
+      'primaryUserAssignedIdentityId',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restorableDroppedDatabaseIds = registerOutput<List<String>>(
+      'restorableDroppedDatabaseIds',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>(
+      'transparentDataEncryptionKeyVaultKeyId',
+    );
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [Server] resource's state with the given [name] and [id].
@@ -918,29 +953,49 @@ class Server extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/server:Server',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String>('administratorLogin');
-    this.administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
-    this.administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
-    this.azureadAdministrator = registerOutput<ServerAzureadAdministrator?>('azureadAdministrator');
-    this.connectionPolicy = registerOutput<String?>('connectionPolicy');
-    this.expressVulnerabilityAssessmentEnabled = registerOutput<bool?>('expressVulnerabilityAssessmentEnabled');
-    this.fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
-    this.identity = registerOutput<ServerIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure:mssql/server:Server',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorLoginPassword = registerOutput<String?>(
+      'administratorLoginPassword',
+    );
+    administratorLoginPasswordWoVersion = registerOutput<int?>(
+      'administratorLoginPasswordWoVersion',
+    );
+    azureadAdministrator = registerOutput<ServerAzureadAdministrator?>(
+      'azureadAdministrator',
+    );
+    connectionPolicy = registerOutput<String?>('connectionPolicy');
+    expressVulnerabilityAssessmentEnabled = registerOutput<bool?>(
+      'expressVulnerabilityAssessmentEnabled',
+    );
+    fullyQualifiedDomainName = registerOutput<String>(
+      'fullyQualifiedDomainName',
+    );
+    identity = registerOutput<ServerIdentity?>('identity');
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.outboundNetworkRestrictionEnabled = registerOutput<bool?>('outboundNetworkRestrictionEnabled');
-    this.primaryUserAssignedIdentityId = registerOutput<String>('primaryUserAssignedIdentityId');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restorableDroppedDatabaseIds = registerOutput<List<String>>('restorableDroppedDatabaseIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
-    this.version = registerOutput<String>('version');
+    outboundNetworkRestrictionEnabled = registerOutput<bool?>(
+      'outboundNetworkRestrictionEnabled',
+    );
+    primaryUserAssignedIdentityId = registerOutput<String>(
+      'primaryUserAssignedIdentityId',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restorableDroppedDatabaseIds = registerOutput<List<String>>(
+      'restorableDroppedDatabaseIds',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>(
+      'transparentDataEncryptionKeyVaultKeyId',
+    );
+    version = registerOutput<String>('version');
   }
 }

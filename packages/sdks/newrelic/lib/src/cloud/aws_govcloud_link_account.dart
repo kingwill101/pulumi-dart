@@ -128,13 +128,16 @@ import 'aws_govcloud_link_account_state.dart';
 class AwsGovcloudLinkAccount extends pulumi.CustomResource {
   /// The New Relic account ID to operate on. This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`, if not specified in the configuration.
   late final pulumi.Output<String> accountId;
+
   /// The Amazon Resource Name (ARN) of the IAM role.
   ///
-  /// > **NOTE:** Altering the `account_id` (or) `metric_collection_mode` of an already applied `newrelic.cloud.AwsGovcloudLinkAccount` resource shall trigger a recreation of the resource, instead of an update.
+  /// &gt; **NOTE:** Altering the `account_id` (or) `metric_collection_mode` of an already applied `newrelic.cloud.AwsGovcloudLinkAccount` resource shall trigger a recreation of the resource, instead of an update.
   late final pulumi.Output<String> arn;
+
   /// The mode by which metric data is to be collected from the linked AWS GovCloud account. Defaults to `PULL`, if not specified in the configuration.
   /// - Use `PUSH` for Metric Streams and `PULL` for API Polling based metric collection respectively.
   late final pulumi.Output<String?> metricCollectionMode;
+
   /// The name/identifier of the AWS GovCloud - New Relic 'linked' account.
   late final pulumi.Output<String> name;
 
@@ -147,14 +150,14 @@ class AwsGovcloudLinkAccount extends pulumi.CustomResource {
     AwsGovcloudLinkAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsGovcloudLinkAccount:AwsGovcloudLinkAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.arn = registerOutput<String>('arn');
-    this.metricCollectionMode = registerOutput<String?>('metricCollectionMode');
+         'newrelic:cloud/awsGovcloudLinkAccount:AwsGovcloudLinkAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    metricCollectionMode = registerOutput<String?>('metricCollectionMode');
     this.name = registerOutput<String>('name');
   }
 
@@ -176,14 +179,14 @@ class AwsGovcloudLinkAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsGovcloudLinkAccount:AwsGovcloudLinkAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.arn = registerOutput<String>('arn');
-    this.metricCollectionMode = registerOutput<String?>('metricCollectionMode');
+         'newrelic:cloud/awsGovcloudLinkAccount:AwsGovcloudLinkAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    metricCollectionMode = registerOutput<String?>('metricCollectionMode');
     this.name = registerOutput<String>('name');
   }
 }

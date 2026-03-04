@@ -7,29 +7,23 @@ class AddonVrProperties {
   /// Addon type
   /// Expected value is 'VR'.
   final pulumi.Input<String> addonType;
+
   /// The vSphere Replication Server (VRS) count
   final pulumi.Input<int> vrsCount;
 
   /// Creates a new [AddonVrProperties].
   /// [addonType] Addon type
   /// [vrsCount] The vSphere Replication Server (VRS) count
-  AddonVrProperties({
-    required this.addonType,
-    required this.vrsCount,
-  });
+  AddonVrProperties({required this.addonType, required this.vrsCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'addonType': addonType,
-      'vrsCount': vrsCount,
-    };
+    return <String, dynamic>{'addonType': addonType, 'vrsCount': vrsCount};
   }
 
   factory AddonVrProperties.fromMap(Map<String, dynamic> map) {
     return AddonVrProperties(
-      addonType: (map['addonType'] as String).input(),
-      vrsCount: (map['vrsCount'] as int).input(),
+      addonType: pulumi.Input.fromValue(map['addonType'] as String),
+      vrsCount: pulumi.Input.fromValue(map['vrsCount'] as int),
     );
   }
 }
-

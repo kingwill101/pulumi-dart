@@ -14,15 +14,14 @@ class GoogleCloudAiplatformV1beta1GcsDestinationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputUriPrefix': outputUriPrefix,
-    };
+    return <String, dynamic>{'outputUriPrefix': outputUriPrefix};
   }
 
-  factory GoogleCloudAiplatformV1beta1GcsDestinationResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1GcsDestinationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1GcsDestinationResponse(
-      outputUriPrefix: (map['outputUriPrefix'] as String).input(),
+      outputUriPrefix: pulumi.Input.fromValue(map['outputUriPrefix'] as String),
     );
   }
 }
-

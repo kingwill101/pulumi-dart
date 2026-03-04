@@ -147,32 +147,46 @@ import 'system_data_response.dart';
 class Configuration extends pulumi.CustomResource {
   /// Allowed values of the configuration.
   late final pulumi.Output<String> allowedValues;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Current value of the configuration.
   late final pulumi.Output<String?> currentValue;
+
   /// Data type of the configuration.
   late final pulumi.Output<String> dataType;
+
   /// Default value of the configuration.
   late final pulumi.Output<String> defaultValue;
+
   /// Description of the configuration.
   late final pulumi.Output<String> description;
+
   /// The link used to get the document from community or Azure site.
   late final pulumi.Output<String> documentationLink;
+
   /// If is the configuration pending restart or not.
   late final pulumi.Output<String> isConfigPendingRestart;
+
   /// If is the configuration dynamic.
   late final pulumi.Output<String> isDynamicConfig;
+
   /// If is the configuration read only.
   late final pulumi.Output<String> isReadOnly;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Source of the configuration.
   late final pulumi.Output<String?> source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Value of the configuration.
   late final pulumi.Output<String?> value;
 
@@ -185,25 +199,25 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbformysql:Configuration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedValues = registerOutput<String>('allowedValues');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.currentValue = registerOutput<String?>('currentValue');
-    this.dataType = registerOutput<String>('dataType');
-    this.defaultValue = registerOutput<String>('defaultValue');
-    this.description = registerOutput<String>('description');
-    this.documentationLink = registerOutput<String>('documentationLink');
-    this.isConfigPendingRestart = registerOutput<String>('isConfigPendingRestart');
-    this.isDynamicConfig = registerOutput<String>('isDynamicConfig');
-    this.isReadOnly = registerOutput<String>('isReadOnly');
+         'azure-native:dbformysql:Configuration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedValues = registerOutput<String>('allowedValues');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    currentValue = registerOutput<String?>('currentValue');
+    dataType = registerOutput<String>('dataType');
+    defaultValue = registerOutput<String>('defaultValue');
+    description = registerOutput<String>('description');
+    documentationLink = registerOutput<String>('documentationLink');
+    isConfigPendingRestart = registerOutput<String>('isConfigPendingRestart');
+    isDynamicConfig = registerOutput<String>('isDynamicConfig');
+    isReadOnly = registerOutput<String>('isReadOnly');
     this.name = registerOutput<String>('name');
-    this.source = registerOutput<String?>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String?>('value');
+    source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
   }
 }

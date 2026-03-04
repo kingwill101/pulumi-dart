@@ -10,20 +10,25 @@ class BatchOperationsJobBucketList {
 
   /// Creates a new [BatchOperationsJobBucketList].
   /// [buckets] List of buckets and their objects to be transformed.
-  BatchOperationsJobBucketList({
-    required this.buckets,
-  });
+  BatchOperationsJobBucketList({required this.buckets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buckets': pulumi.Input.mapInputValue<BatchOperationsJobBucketListBuckets, Map<String, dynamic>>(buckets, (value) => value.toMap()),
+      'buckets':
+          pulumi.Input.mapInputValue<
+            BatchOperationsJobBucketListBuckets,
+            Map<String, dynamic>
+          >(buckets, (value) => value.toMap()),
     };
   }
 
   factory BatchOperationsJobBucketList.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobBucketList(
-      buckets: (BatchOperationsJobBucketListBuckets.fromMap((map['buckets'] as Map).cast<String, dynamic>())).input(),
+      buckets: pulumi.Input.fromValue(
+        BatchOperationsJobBucketListBuckets.fromMap(
+          (map['buckets']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

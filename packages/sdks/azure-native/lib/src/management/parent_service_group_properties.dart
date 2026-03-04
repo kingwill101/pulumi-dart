@@ -9,20 +9,19 @@ class ParentServiceGroupProperties {
 
   /// Creates a new [ParentServiceGroupProperties].
   /// [resourceId] The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
-  ParentServiceGroupProperties({
-    this.resourceId,
-  });
+  ParentServiceGroupProperties({this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': ?resourceId,
-    };
+    return <String, dynamic>{'resourceId': ?resourceId};
   }
 
   factory ParentServiceGroupProperties.fromMap(Map<String, dynamic> map) {
     return ParentServiceGroupProperties(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

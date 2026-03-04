@@ -2,16 +2,17 @@
 enum ManagedInstanceAdministratorType {
   valueActiveDirectory("ActiveDirectory");
 
-  const ManagedInstanceAdministratorType(this.value);
-  final String value;
+  const ManagedInstanceAdministratorType(this.wireValue);
+  final String wireValue;
 
   static ManagedInstanceAdministratorType fromValue(String value) {
     for (final item in ManagedInstanceAdministratorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedInstanceAdministratorType value: $value');
+    throw ArgumentError(
+      'Unknown ManagedInstanceAdministratorType value: $value',
+    );
   }
 }
-

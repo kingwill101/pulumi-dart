@@ -6,7 +6,7 @@ import 'smartag_flow_log_state.dart';
 ///
 /// For information about Smartag Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createflowlog).
 ///
-/// > **NOTE:** Available since v1.168.0.
+/// &gt; **NOTE:** Available since v1.168.0.
 ///
 /// ## Example Usage
 ///
@@ -131,26 +131,37 @@ import 'smartag_flow_log_state.dart';
 class SmartagFlowLog extends pulumi.CustomResource {
   /// The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
   late final pulumi.Output<int> activeAging;
+
   /// The description of the flow log.
   late final pulumi.Output<String?> description;
+
   /// The name of the flow log.
   late final pulumi.Output<String?> flowLogName;
+
   /// The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
   late final pulumi.Output<int> inactiveAging;
+
   /// The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
   late final pulumi.Output<String?> logstoreName;
+
   /// The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
   late final pulumi.Output<String?> netflowServerIp;
+
   /// The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
   late final pulumi.Output<int> netflowServerPort;
+
   /// The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
   late final pulumi.Output<String> netflowVersion;
+
   /// The location where the flow log is stored. Valid values:
   late final pulumi.Output<String> outputType;
+
   /// The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
   late final pulumi.Output<String?> projectName;
+
   /// The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
   late final pulumi.Output<String?> slsRegionId;
+
   /// The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
   late final pulumi.Output<String> status;
 
@@ -163,23 +174,23 @@ class SmartagFlowLog extends pulumi.CustomResource {
     SmartagFlowLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/smartagFlowLog:SmartagFlowLog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeAging = registerOutput<int>('activeAging');
-    this.description = registerOutput<String?>('description');
-    this.flowLogName = registerOutput<String?>('flowLogName');
-    this.inactiveAging = registerOutput<int>('inactiveAging');
-    this.logstoreName = registerOutput<String?>('logstoreName');
-    this.netflowServerIp = registerOutput<String?>('netflowServerIp');
-    this.netflowServerPort = registerOutput<int>('netflowServerPort');
-    this.netflowVersion = registerOutput<String>('netflowVersion');
-    this.outputType = registerOutput<String>('outputType');
-    this.projectName = registerOutput<String?>('projectName');
-    this.slsRegionId = registerOutput<String?>('slsRegionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:sag/smartagFlowLog:SmartagFlowLog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeAging = registerOutput<int>('activeAging');
+    description = registerOutput<String?>('description');
+    flowLogName = registerOutput<String?>('flowLogName');
+    inactiveAging = registerOutput<int>('inactiveAging');
+    logstoreName = registerOutput<String?>('logstoreName');
+    netflowServerIp = registerOutput<String?>('netflowServerIp');
+    netflowServerPort = registerOutput<int>('netflowServerPort');
+    netflowVersion = registerOutput<String>('netflowVersion');
+    outputType = registerOutput<String>('outputType');
+    projectName = registerOutput<String?>('projectName');
+    slsRegionId = registerOutput<String?>('slsRegionId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [SmartagFlowLog] resource's state with the given [name] and [id].
@@ -200,22 +211,22 @@ class SmartagFlowLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sag/smartagFlowLog:SmartagFlowLog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeAging = registerOutput<int>('activeAging');
-    this.description = registerOutput<String?>('description');
-    this.flowLogName = registerOutput<String?>('flowLogName');
-    this.inactiveAging = registerOutput<int>('inactiveAging');
-    this.logstoreName = registerOutput<String?>('logstoreName');
-    this.netflowServerIp = registerOutput<String?>('netflowServerIp');
-    this.netflowServerPort = registerOutput<int>('netflowServerPort');
-    this.netflowVersion = registerOutput<String>('netflowVersion');
-    this.outputType = registerOutput<String>('outputType');
-    this.projectName = registerOutput<String?>('projectName');
-    this.slsRegionId = registerOutput<String?>('slsRegionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:sag/smartagFlowLog:SmartagFlowLog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeAging = registerOutput<int>('activeAging');
+    description = registerOutput<String?>('description');
+    flowLogName = registerOutput<String?>('flowLogName');
+    inactiveAging = registerOutput<int>('inactiveAging');
+    logstoreName = registerOutput<String?>('logstoreName');
+    netflowServerIp = registerOutput<String?>('netflowServerIp');
+    netflowServerPort = registerOutput<int>('netflowServerPort');
+    netflowVersion = registerOutput<String>('netflowVersion');
+    outputType = registerOutput<String>('outputType');
+    projectName = registerOutput<String?>('projectName');
+    slsRegionId = registerOutput<String?>('slsRegionId');
+    status = registerOutput<String>('status');
   }
 }

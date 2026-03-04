@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OntapVolumeAggregateConfiguration {
   /// Used to specify the names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
   final pulumi.Input<List<String>>? aggregates;
+
   /// Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
   final pulumi.Input<int>? constituentsPerAggregate;
+
   /// The total amount of constituents for a `FLEXGROUP` volume. This would equal constituents_per_aggregate x aggregates.
   final pulumi.Input<int>? totalConstituents;
 
@@ -30,10 +32,21 @@ class OntapVolumeAggregateConfiguration {
 
   factory OntapVolumeAggregateConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapVolumeAggregateConfiguration(
-      aggregates: map['aggregates'] == null ? null : (((map['aggregates'] as List).cast<String>()).input()).input(),
-      constituentsPerAggregate: map['constituentsPerAggregate'] == null ? null : ((map['constituentsPerAggregate'] as int).input()).input(),
-      totalConstituents: map['totalConstituents'] == null ? null : ((map['totalConstituents'] as int).input()).input(),
+      aggregates: (() {
+        final guardedValue = map['aggregates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      constituentsPerAggregate: (() {
+        final guardedValue = map['constituentsPerAggregate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalConstituents: (() {
+        final guardedValue = map['totalConstituents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

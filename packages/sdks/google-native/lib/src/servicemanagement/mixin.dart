@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Mixin {
   /// The fully qualified name of the interface which is included.
   final pulumi.Input<String>? name;
+
   /// If non-empty specifies a path under which inherited HTTP paths are rooted.
   final pulumi.Input<String>? root;
 
   /// Creates a new [Mixin].
   /// [name] The fully qualified name of the interface which is included.
   /// [root] If non-empty specifies a path under which inherited HTTP paths are rooted.
-  Mixin({
-    this.name,
-    this.root,
-  });
+  Mixin({this.name, this.root});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'root': ?root,
-    };
+    return <String, dynamic>{'name': ?name, 'root': ?root};
   }
 
   factory Mixin.fromMap(Map<String, dynamic> map) {
     return Mixin(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      root: map['root'] == null ? null : (map['root']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      root: (() {
+        final guardedValue = map['root'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

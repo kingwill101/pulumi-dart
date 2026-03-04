@@ -3,16 +3,17 @@ enum ManagedResourcesNetworkAccessType {
   public("Public"),
   private("Private");
 
-  const ManagedResourcesNetworkAccessType(this.value);
-  final String value;
+  const ManagedResourcesNetworkAccessType(this.wireValue);
+  final String wireValue;
 
   static ManagedResourcesNetworkAccessType fromValue(String value) {
     for (final item in ManagedResourcesNetworkAccessType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedResourcesNetworkAccessType value: $value');
+    throw ArgumentError(
+      'Unknown ManagedResourcesNetworkAccessType value: $value',
+    );
   }
 }
-

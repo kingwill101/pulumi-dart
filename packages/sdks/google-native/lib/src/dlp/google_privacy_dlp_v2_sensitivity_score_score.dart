@@ -5,16 +5,17 @@ enum GooglePrivacyDlpV2SensitivityScoreScore {
   sensitivityModerate("SENSITIVITY_MODERATE"),
   sensitivityHigh("SENSITIVITY_HIGH");
 
-  const GooglePrivacyDlpV2SensitivityScoreScore(this.value);
-  final String value;
+  const GooglePrivacyDlpV2SensitivityScoreScore(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2SensitivityScoreScore fromValue(String value) {
     for (final item in GooglePrivacyDlpV2SensitivityScoreScore.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2SensitivityScoreScore value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2SensitivityScoreScore value: $value',
+    );
   }
 }
-

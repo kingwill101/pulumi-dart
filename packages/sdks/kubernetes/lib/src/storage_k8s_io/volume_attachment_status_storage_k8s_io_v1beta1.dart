@@ -7,10 +7,13 @@ import 'volume_error_storage_k8s_io_v1beta1.dart';
 class VolumeAttachmentStatusStorageK8sIoV1beta1 {
   /// The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
   final pulumi.Input<VolumeErrorStorageK8sIoV1beta1>? attachError;
+
   /// Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
   final pulumi.Input<bool> attached;
+
   /// Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
   final pulumi.Input<Map<String, String>>? attachmentMetadata;
+
   /// The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.
   final pulumi.Input<VolumeErrorStorageK8sIoV1beta1>? detachError;
 
@@ -28,20 +31,51 @@ class VolumeAttachmentStatusStorageK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachError': ?pulumi.Input.mapOptionalInputValue<VolumeErrorStorageK8sIoV1beta1, Map<String, dynamic>>(attachError, (value) => value.toMap()),
+      'attachError':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeErrorStorageK8sIoV1beta1,
+            Map<String, dynamic>
+          >(attachError, (value) => value.toMap()),
       'attached': attached,
       'attachmentMetadata': ?attachmentMetadata,
-      'detachError': ?pulumi.Input.mapOptionalInputValue<VolumeErrorStorageK8sIoV1beta1, Map<String, dynamic>>(detachError, (value) => value.toMap()),
+      'detachError':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeErrorStorageK8sIoV1beta1,
+            Map<String, dynamic>
+          >(detachError, (value) => value.toMap()),
     };
   }
 
-  factory VolumeAttachmentStatusStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory VolumeAttachmentStatusStorageK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumeAttachmentStatusStorageK8sIoV1beta1(
-      attachError: map['attachError'] == null ? null : (VolumeErrorStorageK8sIoV1beta1.fromMap((map['attachError']! as Map).cast<String, dynamic>())).input(),
-      attached: (map['attached'] as bool).input(),
-      attachmentMetadata: map['attachmentMetadata'] == null ? null : ((map['attachmentMetadata']! as Map).cast<String, String>()).input(),
-      detachError: map['detachError'] == null ? null : (VolumeErrorStorageK8sIoV1beta1.fromMap((map['detachError']! as Map).cast<String, dynamic>())).input(),
+      attachError: (() {
+        final guardedValue = map['attachError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeErrorStorageK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      attached: pulumi.Input.fromValue(map['attached'] as bool),
+      attachmentMetadata: (() {
+        final guardedValue = map['attachmentMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      detachError: (() {
+        final guardedValue = map['detachError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeErrorStorageK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

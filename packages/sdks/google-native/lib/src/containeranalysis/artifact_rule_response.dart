@@ -8,20 +8,17 @@ class ArtifactRuleResponse {
 
   /// Creates a new [ArtifactRuleResponse].
   /// [artifactRule] Required.
-  ArtifactRuleResponse({
-    required this.artifactRule,
-  });
+  ArtifactRuleResponse({required this.artifactRule});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'artifactRule': artifactRule,
-    };
+    return <String, dynamic>{'artifactRule': artifactRule};
   }
 
   factory ArtifactRuleResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactRuleResponse(
-      artifactRule: ((map['artifactRule'] as List).cast<String>()).input(),
+      artifactRule: pulumi.Input.fromValue(
+        (map['artifactRule'] as List).cast<String>(),
+      ),
     );
   }
 }
-

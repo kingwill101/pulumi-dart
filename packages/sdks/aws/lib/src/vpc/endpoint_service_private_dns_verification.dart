@@ -9,7 +9,7 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 ///
 /// For additional details, refer to the AWS documentation on [managing VPC endpoint service DNS names](https://docs.aws.amazon.com/vpc/latest/privatelink/manage-dns-names.html).
 ///
-/// > Destruction of this resource will not stop the verification process, only remove the resource from state.
+/// &gt; Destruction of this resource will not stop the verification process, only remove the resource from state.
 ///
 /// ## Example Usage
 ///
@@ -106,11 +106,14 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the endpoint service.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceId;
-  late final pulumi.Output<EndpointServicePrivateDnsVerificationTimeouts?> timeouts;
+  late final pulumi.Output<EndpointServicePrivateDnsVerificationTimeouts?>
+  timeouts;
+
   /// Whether to wait until the endpoint service returns a `Verified` status for the configured private DNS name.
   late final pulumi.Output<bool?> waitForVerification;
 
@@ -123,15 +126,17 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
     EndpointServicePrivateDnsVerificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>('timeouts');
-    this.waitForVerification = registerOutput<bool?>('waitForVerification');
+         'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    serviceId = registerOutput<String>('serviceId');
+    timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>(
+      'timeouts',
+    );
+    waitForVerification = registerOutput<bool?>('waitForVerification');
   }
 
   /// Gets an existing [EndpointServicePrivateDnsVerification] resource's state with the given [name] and [id].
@@ -152,14 +157,16 @@ class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>('timeouts');
-    this.waitForVerification = registerOutput<bool?>('waitForVerification');
+         'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    serviceId = registerOutput<String>('serviceId');
+    timeouts = registerOutput<EndpointServicePrivateDnsVerificationTimeouts?>(
+      'timeouts',
+    );
+    waitForVerification = registerOutput<bool?>('waitForVerification');
   }
 }

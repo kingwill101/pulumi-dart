@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkAclAttachmentResource {
   /// The resource id that the network acl will associate with.
   final pulumi.Input<String> resourceId;
+
   /// The resource id that the network acl will associate with. Only support `VSwitch` now.
   final pulumi.Input<String> resourceType;
 
@@ -25,9 +26,8 @@ class NetworkAclAttachmentResource {
 
   factory NetworkAclAttachmentResource.fromMap(Map<String, dynamic> map) {
     return NetworkAclAttachmentResource(
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

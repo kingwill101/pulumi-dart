@@ -5,13 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceNetworkAclPublicNetwork {
   /// The allowed request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
-  /// > **Note:** When `default_action` is `Allow`, `allowed_request_types`cannot be set.
+  /// &gt; **Note:** When `default_action` is `Allow`, `allowed_request_types`cannot be set.
   final pulumi.Input<List<String>>? allowedRequestTypes;
+
   /// The denied request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   ///
-  /// > **Note:** When `default_action` is `Deny`, `denied_request_types`cannot be set.
+  /// &gt; **Note:** When `default_action` is `Deny`, `denied_request_types`cannot be set.
   ///
-  /// > **Note:** `allowed_request_types` - (Optional) and `denied_request_types` cannot be set together.
+  /// &gt; **Note:** `allowed_request_types` - (Optional) and `denied_request_types` cannot be set together.
   final pulumi.Input<List<String>>? deniedRequestTypes;
 
   /// Creates a new [ServiceNetworkAclPublicNetwork].
@@ -31,9 +32,16 @@ class ServiceNetworkAclPublicNetwork {
 
   factory ServiceNetworkAclPublicNetwork.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkAclPublicNetwork(
-      allowedRequestTypes: map['allowedRequestTypes'] == null ? null : ((map['allowedRequestTypes']! as List).cast<String>()).input(),
-      deniedRequestTypes: map['deniedRequestTypes'] == null ? null : ((map['deniedRequestTypes']! as List).cast<String>()).input(),
+      allowedRequestTypes: (() {
+        final guardedValue = map['allowedRequestTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      deniedRequestTypes: (() {
+        final guardedValue = map['deniedRequestTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

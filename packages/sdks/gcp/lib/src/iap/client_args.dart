@@ -11,29 +11,23 @@ class ClientArgs {
   /// is attached to. The format is
   /// `projects/{project_number}/brands/{brand_id}`.
   final pulumi.Input<String> brand;
+
   /// Human-friendly name given to the OAuth client.
   final pulumi.Input<String> displayName;
 
   /// Creates a new [ClientArgs].
   /// [brand] Identifier of the brand to which this client
   /// [displayName] Human-friendly name given to the OAuth client.
-  ClientArgs({
-    required this.brand,
-    required this.displayName,
-  });
+  ClientArgs({required this.brand, required this.displayName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'brand': brand,
-      'displayName': displayName,
-    };
+    return <String, dynamic>{'brand': brand, 'displayName': displayName};
   }
 
   factory ClientArgs.fromMap(Map<String, dynamic> map) {
     return ClientArgs(
-      brand: (map['brand'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
+      brand: pulumi.Input.fromValue(map['brand'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
-

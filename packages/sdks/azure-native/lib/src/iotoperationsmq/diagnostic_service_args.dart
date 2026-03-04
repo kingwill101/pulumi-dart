@@ -11,30 +11,43 @@ import 'extended_location_property.dart';
 class DiagnosticServiceArgs {
   /// The frequency at which the data will be exported.
   final pulumi.Input<int>? dataExportFrequencySeconds;
+
   /// Name of MQ diagnostic resource
   final pulumi.Input<String>? diagnosticServiceName;
+
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
+
   /// The details of Diagnostic Service Docker Image.
   final pulumi.Input<ContainerImage> image;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The format for the logs generated.
   final pulumi.Input<String>? logFormat;
+
   /// The format for the logs generated.
   final pulumi.Input<String>? logLevel;
+
   /// The maximum data stored in MiB.
   final pulumi.Input<double>? maxDataStorageSize;
+
   /// The port at which metrics is exposed.
   final pulumi.Input<int>? metricsPort;
+
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
+
   /// The destination to collect traces. Diagnostic service will push traces to this endpoint
   final pulumi.Input<String>? openTelemetryTracesCollectorAddr;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Metric inactivity timeout.
   final pulumi.Input<int>? staleDataTimeoutSeconds;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -74,8 +87,15 @@ class DiagnosticServiceArgs {
     return <String, dynamic>{
       'dataExportFrequencySeconds': ?dataExportFrequencySeconds,
       'diagnosticServiceName': ?diagnosticServiceName,
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocationProperty, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
-      'image': pulumi.Input.mapInputValue<ContainerImage, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<
+            ExtendedLocationProperty,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
+      'image': pulumi.Input.mapInputValue<ContainerImage, Map<String, dynamic>>(
+        image,
+        (value) => value.toMap(),
+      ),
       'location': ?location,
       'logFormat': ?logFormat,
       'logLevel': ?logLevel,
@@ -91,21 +111,70 @@ class DiagnosticServiceArgs {
 
   factory DiagnosticServiceArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticServiceArgs(
-      dataExportFrequencySeconds: map['dataExportFrequencySeconds'] == null ? null : (map['dataExportFrequencySeconds']! as int).input(),
-      diagnosticServiceName: map['diagnosticServiceName'] == null ? null : (map['diagnosticServiceName']! as String).input(),
-      extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      image: (ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      logFormat: map['logFormat'] == null ? null : (map['logFormat']! as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
-      maxDataStorageSize: map['maxDataStorageSize'] == null ? null : (map['maxDataStorageSize']! as double).input(),
-      metricsPort: map['metricsPort'] == null ? null : (map['metricsPort']! as int).input(),
-      mqName: (map['mqName'] as String).input(),
-      openTelemetryTracesCollectorAddr: map['openTelemetryTracesCollectorAddr'] == null ? null : (map['openTelemetryTracesCollectorAddr']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      staleDataTimeoutSeconds: map['staleDataTimeoutSeconds'] == null ? null : (map['staleDataTimeoutSeconds']! as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dataExportFrequencySeconds: (() {
+        final guardedValue = map['dataExportFrequencySeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diagnosticServiceName: (() {
+        final guardedValue = map['diagnosticServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocationProperty.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      image: pulumi.Input.fromValue(
+        ContainerImage.fromMap((map['image']! as Map).cast<String, dynamic>()),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logFormat: (() {
+        final guardedValue = map['logFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxDataStorageSize: (() {
+        final guardedValue = map['maxDataStorageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      metricsPort: (() {
+        final guardedValue = map['metricsPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mqName: pulumi.Input.fromValue(map['mqName'] as String),
+      openTelemetryTracesCollectorAddr: (() {
+        final guardedValue = map['openTelemetryTracesCollectorAddr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      staleDataTimeoutSeconds: (() {
+        final guardedValue = map['staleDataTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

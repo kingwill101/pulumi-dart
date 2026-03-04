@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupEmailReceiver {
   /// The email address of this receiver.
   final pulumi.Input<String> emailAddress;
+
   /// Specifies the name of the Action Group.
   final pulumi.Input<String> name;
+
   /// Indicates whether to use common alert schema.
   final pulumi.Input<bool> useCommonAlertSchema;
 
@@ -30,10 +32,11 @@ class GetActionGroupEmailReceiver {
 
   factory GetActionGroupEmailReceiver.fromMap(Map<String, dynamic> map) {
     return GetActionGroupEmailReceiver(
-      emailAddress: (map['emailAddress'] as String).input(),
-      name: (map['name'] as String).input(),
-      useCommonAlertSchema: (map['useCommonAlertSchema'] as bool).input(),
+      emailAddress: pulumi.Input.fromValue(map['emailAddress'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      useCommonAlertSchema: pulumi.Input.fromValue(
+        map['useCommonAlertSchema'] as bool,
+      ),
     );
   }
 }
-

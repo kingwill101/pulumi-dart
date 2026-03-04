@@ -13,15 +13,14 @@ class GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'threadsPerCore': threadsPerCore,
-    };
+    return <String, dynamic>{'threadsPerCore': threadsPerCore};
   }
 
-  factory GetDatabaseInstancesInstanceSettingAdvancedMachineFeature.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingAdvancedMachineFeature.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceSettingAdvancedMachineFeature(
-      threadsPerCore: (map['threadsPerCore'] as int).input(),
+      threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
     );
   }
 }
-

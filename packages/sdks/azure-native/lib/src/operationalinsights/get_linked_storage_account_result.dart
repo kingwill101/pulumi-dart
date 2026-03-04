@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLinkedStorageAccount.
 class GetLinkedStorageAccountResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Linked storage accounts type.
   final String dataSourceType;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Linked storage accounts resources ids.
   final List<String>? storageAccountIds;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -49,9 +53,12 @@ class GetLinkedStorageAccountResult {
       dataSourceType: map['dataSourceType'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      storageAccountIds: map['storageAccountIds'] == null ? null : (map['storageAccountIds']! as List).cast<String>(),
+      storageAccountIds: (() {
+        final guardedValue = map['storageAccountIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

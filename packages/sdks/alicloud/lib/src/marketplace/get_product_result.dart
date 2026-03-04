@@ -6,9 +6,11 @@ import 'get_product_product.dart';
 /// Result data returned by getProduct.
 class GetProductResult {
   final String? availableRegion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String productCode;
+
   /// A product. It contains the following attributes:
   final List<GetProductProduct> products;
 
@@ -29,17 +31,28 @@ class GetProductResult {
       'availableRegion': ?availableRegion,
       'id': id,
       'productCode': productCode,
-      'products': pulumi.Input.encodeList<GetProductProduct, Map<String, dynamic>>(products, (value) => value.toMap()),
+      'products':
+          pulumi.Input.encodeList<GetProductProduct, Map<String, dynamic>>(
+            products,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetProductResult.fromMap(Map<String, dynamic> map) {
     return GetProductResult(
-      availableRegion: map['availableRegion'] == null ? null : map['availableRegion']! as String,
+      availableRegion: (() {
+        final guardedValue = map['availableRegion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       productCode: map['productCode'] as String,
-      products: pulumi.Input.decodeList<GetProductProduct>(map['products'], (value) => GetProductProduct.fromMap((value as Map).cast<String, dynamic>())),
+      products: pulumi.Input.decodeList<GetProductProduct>(
+        map['products']!,
+        (value) =>
+            GetProductProduct.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

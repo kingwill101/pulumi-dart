@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDropletAutoscaleCurrentUtilization {
   /// Average CPU utilization
   final pulumi.Input<double> cpu;
+
   /// Average Memory utilization
   final pulumi.Input<double> memory;
 
@@ -17,17 +18,15 @@ class GetDropletAutoscaleCurrentUtilization {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpu': cpu,
-      'memory': memory,
-    };
+    return <String, dynamic>{'cpu': cpu, 'memory': memory};
   }
 
-  factory GetDropletAutoscaleCurrentUtilization.fromMap(Map<String, dynamic> map) {
+  factory GetDropletAutoscaleCurrentUtilization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDropletAutoscaleCurrentUtilization(
-      cpu: (map['cpu'] as double).input(),
-      memory: (map['memory'] as double).input(),
+      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      memory: pulumi.Input.fromValue(map['memory'] as double),
     );
   }
 }
-

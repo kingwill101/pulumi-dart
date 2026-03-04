@@ -21,11 +21,12 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
     };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes(
-      allowAudioInput: (map['allowAudioInput'] as bool).input(),
-      allowDtmfInput: (map['allowDtmfInput'] as bool).input(),
+      allowAudioInput: pulumi.Input.fromValue(map['allowAudioInput'] as bool),
+      allowDtmfInput: pulumi.Input.fromValue(map['allowDtmfInput'] as bool),
     );
   }
 }
-

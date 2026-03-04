@@ -8,21 +8,31 @@ import 'instruction_args.dart';
 class Instruction extends pulumi.CustomResource {
   /// The names of any related resources that are blocking changes to the instruction.
   late final pulumi.Output<List<String>> blockingResources;
+
   /// Creation time of instruction.
   late final pulumi.Output<String> createTime;
+
   /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
-  late final pulumi.Output<GoogleCloudDatalabelingV1beta1CsvInstructionResponse> csvInstruction;
+  late final pulumi.Output<GoogleCloudDatalabelingV1beta1CsvInstructionResponse>
+  csvInstruction;
+
   /// The data type of this instruction.
   late final pulumi.Output<String> dataType;
+
   /// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
   late final pulumi.Output<String> description;
+
   /// The display name of the instruction. Maximum of 64 characters.
   late final pulumi.Output<String> displayName;
+
   /// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
   late final pulumi.Output<String> name;
+
   /// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
-  late final pulumi.Output<GoogleCloudDatalabelingV1beta1PdfInstructionResponse> pdfInstruction;
+  late final pulumi.Output<GoogleCloudDatalabelingV1beta1PdfInstructionResponse>
+  pdfInstruction;
   late final pulumi.Output<String> project;
+
   /// Last update time of instruction.
   late final pulumi.Output<String> updateTime;
 
@@ -35,20 +45,26 @@ class Instruction extends pulumi.CustomResource {
     InstructionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:datalabeling/v1beta1:Instruction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockingResources = registerOutput<List<String>>('blockingResources');
-    this.createTime = registerOutput<String>('createTime');
-    this.csvInstruction = registerOutput<GoogleCloudDatalabelingV1beta1CsvInstructionResponse>('csvInstruction');
-    this.dataType = registerOutput<String>('dataType');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'google-native:datalabeling/v1beta1:Instruction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockingResources = registerOutput<List<String>>('blockingResources');
+    createTime = registerOutput<String>('createTime');
+    csvInstruction =
+        registerOutput<GoogleCloudDatalabelingV1beta1CsvInstructionResponse>(
+          'csvInstruction',
+        );
+    dataType = registerOutput<String>('dataType');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.pdfInstruction = registerOutput<GoogleCloudDatalabelingV1beta1PdfInstructionResponse>('pdfInstruction');
-    this.project = registerOutput<String>('project');
-    this.updateTime = registerOutput<String>('updateTime');
+    pdfInstruction =
+        registerOutput<GoogleCloudDatalabelingV1beta1PdfInstructionResponse>(
+          'pdfInstruction',
+        );
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientInstanceAttachmentArgs {
   /// EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
   final pulumi.Input<String>? category;
+
   /// The ID of the ECS or ECI instance bound to the EAIS instance.
   final pulumi.Input<String> clientInstanceId;
+
   /// The Ei instance specification, which is used to filter matching specifications for updating.
   final pulumi.Input<String>? eiInstanceType;
+
   /// The EAIS instance ID.
   final pulumi.Input<String> instanceId;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -44,12 +48,25 @@ class ClientInstanceAttachmentArgs {
 
   factory ClientInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ClientInstanceAttachmentArgs(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      clientInstanceId: (map['clientInstanceId'] as String).input(),
-      eiInstanceType: map['eiInstanceType'] == null ? null : (map['eiInstanceType']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientInstanceId: pulumi.Input.fromValue(
+        map['clientInstanceId'] as String,
+      ),
+      eiInstanceType: (() {
+        final guardedValue = map['eiInstanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

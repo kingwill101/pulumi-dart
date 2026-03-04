@@ -154,14 +154,19 @@ import 'virtual_network_tap_response.dart';
 class NetworkInterfaceTapConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the network interface tap configuration resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Sub Resource type.
   late final pulumi.Output<String> type;
+
   /// The reference to the Virtual Network Tap resource.
   late final pulumi.Output<VirtualNetworkTapResponse?> virtualNetworkTap;
 
@@ -174,16 +179,18 @@ class NetworkInterfaceTapConfiguration extends pulumi.CustomResource {
     NetworkInterfaceTapConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NetworkInterfaceTapConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:NetworkInterfaceTapConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworkTap = registerOutput<VirtualNetworkTapResponse?>('virtualNetworkTap');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+    virtualNetworkTap = registerOutput<VirtualNetworkTapResponse?>(
+      'virtualNetworkTap',
+    );
   }
 }

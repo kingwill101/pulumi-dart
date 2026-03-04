@@ -6,7 +6,8 @@ import 'get_data_set_logical_table_map_source.dart';
 
 class GetDataSetLogicalTableMap {
   final pulumi.Input<String> alias;
-  final pulumi.Input<List<GetDataSetLogicalTableMapDataTransform>> dataTransforms;
+  final pulumi.Input<List<GetDataSetLogicalTableMapDataTransform>>
+  dataTransforms;
   final pulumi.Input<String> logicalTableMapId;
   final pulumi.Input<List<GetDataSetLogicalTableMapSource>> sources;
 
@@ -25,19 +26,56 @@ class GetDataSetLogicalTableMap {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alias': alias,
-      'dataTransforms': pulumi.Input.mapInputValue<List<GetDataSetLogicalTableMapDataTransform>, List<Map<String, dynamic>>>(dataTransforms, (value) => pulumi.Input.encodeList<GetDataSetLogicalTableMapDataTransform, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataTransforms':
+          pulumi.Input.mapInputValue<
+            List<GetDataSetLogicalTableMapDataTransform>,
+            List<Map<String, dynamic>>
+          >(
+            dataTransforms,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDataSetLogicalTableMapDataTransform,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'logicalTableMapId': logicalTableMapId,
-      'sources': pulumi.Input.mapInputValue<List<GetDataSetLogicalTableMapSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<GetDataSetLogicalTableMapSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sources':
+          pulumi.Input.mapInputValue<
+            List<GetDataSetLogicalTableMapSource>,
+            List<Map<String, dynamic>>
+          >(
+            sources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDataSetLogicalTableMapSource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetDataSetLogicalTableMap.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMap(
-      alias: (map['alias'] as String).input(),
-      dataTransforms: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransform>(map['dataTransforms']!, (value) => GetDataSetLogicalTableMapDataTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logicalTableMapId: (map['logicalTableMapId'] as String).input(),
-      sources: (pulumi.Input.decodeList<GetDataSetLogicalTableMapSource>(map['sources']!, (value) => GetDataSetLogicalTableMapSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      dataTransforms: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransform>(
+          map['dataTransforms']!,
+          (value) => GetDataSetLogicalTableMapDataTransform.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      logicalTableMapId: pulumi.Input.fromValue(
+        map['logicalTableMapId'] as String,
+      ),
+      sources: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetDataSetLogicalTableMapSource>(
+          map['sources']!,
+          (value) => GetDataSetLogicalTableMapSource.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

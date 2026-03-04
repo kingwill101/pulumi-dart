@@ -1,27 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSecret.
 class GetSecretResult {
   /// The content type for the Key Vault Secret.
   final String contentType;
+
   /// The date and time at which the Key Vault Secret expires and is no longer valid.
   final String expirationDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyVaultId;
   final String name;
+
   /// The earliest date at which the Key Vault Secret can be used.
   final String notBeforeDate;
+
   /// The (Versioned) ID for this Key Vault Secret. This property points to a specific version of a Key Vault Secret, as such using this won't auto-rotate values if used in other Azure Services.
   final String resourceId;
+
   /// The Versionless ID of the Key Vault Secret. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Secret is updated.
   final String resourceVersionlessId;
+
   /// Any tags assigned to this resource.
   final Map<String, String> tags;
+
   /// The value of the Key Vault Secret.
   final String value;
   final String? version;
+
   /// The Versionless ID of the Key Vault Secret. This can be used to always get latest secret value, and enable fetching automatically rotating secrets.
   final String versionlessId;
 
@@ -82,9 +89,12 @@ class GetSecretResult {
       resourceVersionlessId: map['resourceVersionlessId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       value: map['value'] as String,
-      version: map['version'] == null ? null : map['version']! as String,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       versionlessId: map['versionlessId'] as String,
     );
   }
 }
-

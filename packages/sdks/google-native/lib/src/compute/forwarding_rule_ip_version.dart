@@ -4,16 +4,15 @@ enum ForwardingRuleIpVersion {
   ipv6("IPV6"),
   unspecifiedVersion("UNSPECIFIED_VERSION");
 
-  const ForwardingRuleIpVersion(this.value);
-  final String value;
+  const ForwardingRuleIpVersion(this.wireValue);
+  final String wireValue;
 
   static ForwardingRuleIpVersion fromValue(String value) {
     for (final item in ForwardingRuleIpVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ForwardingRuleIpVersion value: $value');
   }
 }
-

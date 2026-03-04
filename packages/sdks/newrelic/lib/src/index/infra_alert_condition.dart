@@ -6,7 +6,7 @@ import 'infra_alert_condition_warning.dart';
 
 /// Use this resource to create and manage Infrastructure alert conditions in New Relic.
 ///
-/// > **WARNING:** The `newrelic.InfraAlertCondition` resource is deprecated and will be removed in the next major release. The resource newrelic.NrqlAlertCondition would be a preferred alternative to configure alert conditions - in most cases, feature parity can be achieved with a NRQL query. For more details and examples on moving away from infra alert conditions to the NRQL based alternative, please check out these examples.
+/// &gt; **WARNING:** The `newrelic.InfraAlertCondition` resource is deprecated and will be removed in the next major release. The resource newrelic.NrqlAlertCondition would be a preferred alternative to configure alert conditions - in most cases, feature parity can be achieved with a NRQL query. For more details and examples on moving away from infra alert conditions to the NRQL based alternative, please check out these examples.
 ///
 /// ## Example Usage
 ///
@@ -820,7 +820,7 @@ import 'infra_alert_condition_warning.dart';
 ///
 /// ## Import
 ///
-/// Infrastructure alert conditions can be imported using a composite ID of `<policy_id>:<condition_id>`, e.g.
+/// Infrastructure alert conditions can be imported using a composite ID of `&lt;policy_id&gt;:&lt;condition_id&gt;`, e.g.
 ///
 /// ```sh
 /// $ pulumi import newrelic:index/infraAlertCondition:InfraAlertCondition main 12345:67890
@@ -828,42 +828,59 @@ import 'infra_alert_condition_warning.dart';
 class InfraAlertCondition extends pulumi.CustomResource {
   /// The operator used to evaluate the threshold value.  Valid values are `above`, `below`, and `equal`.  Supported by the `infra_metric` and `infra_process_running` condition types.
   late final pulumi.Output<String?> comparison;
+
   /// The timestamp the alert condition was created.
   late final pulumi.Output<int> createdAt;
+
   /// Identifies the threshold parameters for opening a critical alert incident. See Thresholds below for details.
   late final pulumi.Output<InfraAlertConditionCritical?> critical;
+
   /// The description of the Infrastructure alert condition.
   late final pulumi.Output<String?> description;
+
   /// Whether the condition is turned on or off.  Valid values are `true` and `false`.  Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The unique entity identifier of the condition in New Relic.
   late final pulumi.Output<String> entityGuid;
+
   /// The metric event; for example, `SystemSample` or `StorageSample`.  Supported by the `infra_metric` condition type.
   late final pulumi.Output<String> event;
+
   /// For alerts on integrations, use this instead of `event`.  Supported by the `infra_metric` condition type.
   late final pulumi.Output<String?> integrationProvider;
+
   /// The Infrastructure alert condition's name.
   late final pulumi.Output<String> name;
+
   /// The ID of the alert policy where this condition should be used.
   late final pulumi.Output<String> policyId;
+
   /// Any filters applied to processes; for example: `commandName = 'java'`.  Required by the `infra_process_running` condition type.
   late final pulumi.Output<String?> processWhere;
+
   /// Runbook URL to display in notifications.
   late final pulumi.Output<String?> runbookUrl;
+
   /// The attribute name to identify the metric being targeted; for example, `cpuPercent`, `diskFreePercent`, or `memoryResidentSizeBytes`.  The underlying API will automatically populate this value for Infrastructure integrations (for example `diskFreePercent`), so make sure to explicitly include this value to avoid diff issues.  Supported by the `infra_metric` condition type.
   late final pulumi.Output<String?> select;
+
   /// The type of Infrastructure alert condition.  Valid values are  `infra_process_running`, `infra_metric`, and `infra_host_not_reporting`.
   late final pulumi.Output<String> type;
+
   /// The timestamp the alert condition was last updated.
   late final pulumi.Output<int> updatedAt;
+
   /// Determines how much time will pass (in hours) before an incident is automatically closed. Valid values are `1 2 4 8 12 24 48 72`. Defaults to 24. If `0` is provided, default of `24` is used and will have configuration drift during the apply phase until a valid value is provided.
   ///
   /// ```
   /// Warning: This resource will use the account ID linked to your API key. At the moment it is not possible to dynamically set the account ID.
   /// ```
   late final pulumi.Output<int?> violationCloseTimer;
+
   /// Identifies the threshold parameters for opening a warning alert incident. See Thresholds below for details.
   late final pulumi.Output<InfraAlertConditionWarning?> warning;
+
   /// If applicable, this identifies any Infrastructure host filters used; for example: `hostname LIKE '%cassandra%'`.
   late final pulumi.Output<String?> where;
 
@@ -876,29 +893,29 @@ class InfraAlertCondition extends pulumi.CustomResource {
     InfraAlertConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/infraAlertCondition:InfraAlertCondition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comparison = registerOutput<String?>('comparison');
-    this.createdAt = registerOutput<int>('createdAt');
-    this.critical = registerOutput<InfraAlertConditionCritical?>('critical');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityGuid = registerOutput<String>('entityGuid');
-    this.event = registerOutput<String>('event');
-    this.integrationProvider = registerOutput<String?>('integrationProvider');
+         'newrelic:index/infraAlertCondition:InfraAlertCondition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comparison = registerOutput<String?>('comparison');
+    createdAt = registerOutput<int>('createdAt');
+    critical = registerOutput<InfraAlertConditionCritical?>('critical');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    entityGuid = registerOutput<String>('entityGuid');
+    event = registerOutput<String>('event');
+    integrationProvider = registerOutput<String?>('integrationProvider');
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.processWhere = registerOutput<String?>('processWhere');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
-    this.select = registerOutput<String?>('select');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<int>('updatedAt');
-    this.violationCloseTimer = registerOutput<int?>('violationCloseTimer');
-    this.warning = registerOutput<InfraAlertConditionWarning?>('warning');
-    this.where = registerOutput<String?>('where');
+    policyId = registerOutput<String>('policyId');
+    processWhere = registerOutput<String?>('processWhere');
+    runbookUrl = registerOutput<String?>('runbookUrl');
+    select = registerOutput<String?>('select');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<int>('updatedAt');
+    violationCloseTimer = registerOutput<int?>('violationCloseTimer');
+    warning = registerOutput<InfraAlertConditionWarning?>('warning');
+    where = registerOutput<String?>('where');
   }
 
   /// Gets an existing [InfraAlertCondition] resource's state with the given [name] and [id].
@@ -919,28 +936,28 @@ class InfraAlertCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/infraAlertCondition:InfraAlertCondition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comparison = registerOutput<String?>('comparison');
-    this.createdAt = registerOutput<int>('createdAt');
-    this.critical = registerOutput<InfraAlertConditionCritical?>('critical');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityGuid = registerOutput<String>('entityGuid');
-    this.event = registerOutput<String>('event');
-    this.integrationProvider = registerOutput<String?>('integrationProvider');
+         'newrelic:index/infraAlertCondition:InfraAlertCondition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comparison = registerOutput<String?>('comparison');
+    createdAt = registerOutput<int>('createdAt');
+    critical = registerOutput<InfraAlertConditionCritical?>('critical');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    entityGuid = registerOutput<String>('entityGuid');
+    event = registerOutput<String>('event');
+    integrationProvider = registerOutput<String?>('integrationProvider');
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.processWhere = registerOutput<String?>('processWhere');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
-    this.select = registerOutput<String?>('select');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<int>('updatedAt');
-    this.violationCloseTimer = registerOutput<int?>('violationCloseTimer');
-    this.warning = registerOutput<InfraAlertConditionWarning?>('warning');
-    this.where = registerOutput<String?>('where');
+    policyId = registerOutput<String>('policyId');
+    processWhere = registerOutput<String?>('processWhere');
+    runbookUrl = registerOutput<String?>('runbookUrl');
+    select = registerOutput<String?>('select');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<int>('updatedAt');
+    violationCloseTimer = registerOutput<int?>('violationCloseTimer');
+    warning = registerOutput<InfraAlertConditionWarning?>('warning');
+    where = registerOutput<String?>('where');
   }
 }

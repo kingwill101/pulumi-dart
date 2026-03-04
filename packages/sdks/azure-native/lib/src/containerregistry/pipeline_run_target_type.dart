@@ -2,16 +2,15 @@
 enum PipelineRunTargetType {
   valueAzureStorageBlob("AzureStorageBlob");
 
-  const PipelineRunTargetType(this.value);
-  final String value;
+  const PipelineRunTargetType(this.wireValue);
+  final String wireValue;
 
   static PipelineRunTargetType fromValue(String value) {
     for (final item in PipelineRunTargetType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PipelineRunTargetType value: $value');
   }
 }
-

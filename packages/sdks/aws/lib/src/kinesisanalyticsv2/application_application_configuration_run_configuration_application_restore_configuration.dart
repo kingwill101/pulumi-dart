@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration {
   /// Specifies how the application should be restored. Valid values: `RESTORE_FROM_CUSTOM_SNAPSHOT`, `RESTORE_FROM_LATEST_SNAPSHOT`, `SKIP_RESTORE_FROM_SNAPSHOT`.
   final pulumi.Input<String>? applicationRestoreType;
+
   /// The identifier of an existing snapshot of application state to use to restart an application. The application uses this value if `RESTORE_FROM_CUSTOM_SNAPSHOT` is specified for `application_restore_type`.
   final pulumi.Input<String>? snapshotName;
 
@@ -23,11 +24,20 @@ class ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfi
     };
   }
 
-  factory ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration(
-      applicationRestoreType: map['applicationRestoreType'] == null ? null : ((map['applicationRestoreType'] as String).input()).input(),
-      snapshotName: map['snapshotName'] == null ? null : ((map['snapshotName'] as String).input()).input(),
+      applicationRestoreType: (() {
+        final guardedValue = map['applicationRestoreType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotName: (() {
+        final guardedValue = map['snapshotName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

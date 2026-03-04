@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BudgetActionDefinitionScpActionDefinition {
   /// The policy ID attached.
   final pulumi.Input<String> policyId;
+
   /// A list of target IDs.
   final pulumi.Input<List<String>> targetIds;
 
@@ -17,17 +18,17 @@ class BudgetActionDefinitionScpActionDefinition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policyId': policyId,
-      'targetIds': targetIds,
-    };
+    return <String, dynamic>{'policyId': policyId, 'targetIds': targetIds};
   }
 
-  factory BudgetActionDefinitionScpActionDefinition.fromMap(Map<String, dynamic> map) {
+  factory BudgetActionDefinitionScpActionDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BudgetActionDefinitionScpActionDefinition(
-      policyId: (map['policyId'] as String).input(),
-      targetIds: ((map['targetIds'] as List).cast<String>()).input(),
+      policyId: pulumi.Input.fromValue(map['policyId'] as String),
+      targetIds: pulumi.Input.fromValue(
+        (map['targetIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

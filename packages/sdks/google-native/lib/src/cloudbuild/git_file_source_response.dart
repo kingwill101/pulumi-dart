@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitFileSourceResponse {
   /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
   final pulumi.Input<String> bitbucketServerConfig;
+
   /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
   final pulumi.Input<String> githubEnterpriseConfig;
+
   /// The path of the file, with the repo root as the root of the path.
   final pulumi.Input<String> path;
+
   /// See RepoType above.
   final pulumi.Input<String> repoType;
+
   /// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
   final pulumi.Input<String> repository;
+
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
   final pulumi.Input<String> revision;
+
   /// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
   final pulumi.Input<String> uri;
 
@@ -51,14 +57,17 @@ class GitFileSourceResponse {
 
   factory GitFileSourceResponse.fromMap(Map<String, dynamic> map) {
     return GitFileSourceResponse(
-      bitbucketServerConfig: (map['bitbucketServerConfig'] as String).input(),
-      githubEnterpriseConfig: (map['githubEnterpriseConfig'] as String).input(),
-      path: (map['path'] as String).input(),
-      repoType: (map['repoType'] as String).input(),
-      repository: (map['repository'] as String).input(),
-      revision: (map['revision'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      bitbucketServerConfig: pulumi.Input.fromValue(
+        map['bitbucketServerConfig'] as String,
+      ),
+      githubEnterpriseConfig: pulumi.Input.fromValue(
+        map['githubEnterpriseConfig'] as String,
+      ),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      repoType: pulumi.Input.fromValue(map['repoType'] as String),
+      repository: pulumi.Input.fromValue(map['repository'] as String),
+      revision: pulumi.Input.fromValue(map['revision'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

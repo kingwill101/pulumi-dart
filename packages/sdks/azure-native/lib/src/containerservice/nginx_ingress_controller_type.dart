@@ -5,16 +5,15 @@ enum NginxIngressControllerType {
   valueInternal("Internal"),
   valueNone("None");
 
-  const NginxIngressControllerType(this.value);
-  final String value;
+  const NginxIngressControllerType(this.wireValue);
+  final String wireValue;
 
   static NginxIngressControllerType fromValue(String value) {
     for (final item in NginxIngressControllerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NginxIngressControllerType value: $value');
   }
 }
-

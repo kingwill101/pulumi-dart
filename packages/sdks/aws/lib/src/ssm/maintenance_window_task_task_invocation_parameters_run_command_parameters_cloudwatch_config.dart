@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig {
   /// The name of the CloudWatch log group where you want to send command output. If you don't specify a group name, Systems Manager automatically creates a log group for you. The log group uses the following naming format: aws/ssm/SystemsManagerDocumentName.
   final pulumi.Input<String>? cloudwatchLogGroupName;
+
   /// Enables Systems Manager to send command output to CloudWatch Logs.
   final pulumi.Input<bool>? cloudwatchOutputEnabled;
 
@@ -23,11 +24,20 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatc
     };
   }
 
-  factory MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig(
-      cloudwatchLogGroupName: map['cloudwatchLogGroupName'] == null ? null : ((map['cloudwatchLogGroupName'] as String).input()).input(),
-      cloudwatchOutputEnabled: map['cloudwatchOutputEnabled'] == null ? null : ((map['cloudwatchOutputEnabled'] as bool).input()).input(),
+      cloudwatchLogGroupName: (() {
+        final guardedValue = map['cloudwatchLogGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudwatchOutputEnabled: (() {
+        final guardedValue = map['cloudwatchOutputEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

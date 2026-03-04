@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExecuteCommandLogConfiguration {
   /// Determines whether to use encryption on the CloudWatch logs. If not specified, encryption will be off.
   final pulumi.Input<bool>? cloudWatchEncryptionEnabled;
+
   /// The name of the CloudWatch log group to send logs to.  The CloudWatch log group must already be created.
   final pulumi.Input<String>? cloudWatchLogGroupName;
+
   /// The name of the S3 bucket to send logs to.  The S3 bucket must already be created.
   final pulumi.Input<String>? s3BucketName;
+
   /// Determines whether to use encryption on the S3 logs. If not specified, encryption is not used.
   final pulumi.Input<bool>? s3EncryptionEnabled;
+
   /// An optional folder in the S3 bucket to place logs in.
   final pulumi.Input<String>? s3KeyPrefix;
 
@@ -41,12 +45,31 @@ class ExecuteCommandLogConfiguration {
 
   factory ExecuteCommandLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ExecuteCommandLogConfiguration(
-      cloudWatchEncryptionEnabled: map['cloudWatchEncryptionEnabled'] == null ? null : (map['cloudWatchEncryptionEnabled']! as bool).input(),
-      cloudWatchLogGroupName: map['cloudWatchLogGroupName'] == null ? null : (map['cloudWatchLogGroupName']! as String).input(),
-      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName']! as String).input(),
-      s3EncryptionEnabled: map['s3EncryptionEnabled'] == null ? null : (map['s3EncryptionEnabled']! as bool).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
+      cloudWatchEncryptionEnabled: (() {
+        final guardedValue = map['cloudWatchEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      cloudWatchLogGroupName: (() {
+        final guardedValue = map['cloudWatchLogGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3BucketName: (() {
+        final guardedValue = map['s3BucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3EncryptionEnabled: (() {
+        final guardedValue = map['s3EncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      s3KeyPrefix: (() {
+        final guardedValue = map['s3KeyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,22 +9,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCrossRegionBackupsArgs {
   /// The ID of the cross-region data backup file.
   final pulumi.Input<String>? backupId;
+
   /// The ID of the cross-region data backup file.
   final pulumi.Input<String>? crossBackupId;
+
   /// The ID of the destination region where the cross-region data backup file is stored.
   ///
-  /// > **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
+  /// &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
   final pulumi.Input<String>? crossBackupRegion;
+
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
+
   /// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
   final pulumi.Input<String>? endTime;
+
   /// A list of Cross Region Backup IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
   final pulumi.Input<String>? startTime;
 
@@ -66,16 +74,47 @@ class GetCrossRegionBackupsArgs {
 
   factory GetCrossRegionBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionBackupsArgs(
-      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
-      crossBackupId: map['crossBackupId'] == null ? null : (map['crossBackupId']! as String).input(),
-      crossBackupRegion: map['crossBackupRegion'] == null ? null : (map['crossBackupRegion']! as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      backupId: (() {
+        final guardedValue = map['backupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossBackupId: (() {
+        final guardedValue = map['crossBackupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossBackupRegion: (() {
+        final guardedValue = map['crossBackupRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

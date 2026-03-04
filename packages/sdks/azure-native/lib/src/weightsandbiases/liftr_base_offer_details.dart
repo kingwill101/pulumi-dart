@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LiftrBaseOfferDetails {
   /// Offer Id for the marketplace offer
   final pulumi.Input<String> offerId;
+
   /// Plan Id for the marketplace offer
   final pulumi.Input<String> planId;
+
   /// Plan Name for the marketplace offer
   final pulumi.Input<String>? planName;
+
   /// Publisher Id for the marketplace offer
   final pulumi.Input<String> publisherId;
+
   /// Plan Display Name for the marketplace offer
   final pulumi.Input<String>? termId;
+
   /// Plan Display Name for the marketplace offer
   final pulumi.Input<String>? termUnit;
 
@@ -46,13 +51,24 @@ class LiftrBaseOfferDetails {
 
   factory LiftrBaseOfferDetails.fromMap(Map<String, dynamic> map) {
     return LiftrBaseOfferDetails(
-      offerId: (map['offerId'] as String).input(),
-      planId: (map['planId'] as String).input(),
-      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
-      publisherId: (map['publisherId'] as String).input(),
-      termId: map['termId'] == null ? null : (map['termId']! as String).input(),
-      termUnit: map['termUnit'] == null ? null : (map['termUnit']! as String).input(),
+      offerId: pulumi.Input.fromValue(map['offerId'] as String),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      planName: (() {
+        final guardedValue = map['planName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisherId: pulumi.Input.fromValue(map['publisherId'] as String),
+      termId: (() {
+        final guardedValue = map['termId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      termUnit: (() {
+        final guardedValue = map['termUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

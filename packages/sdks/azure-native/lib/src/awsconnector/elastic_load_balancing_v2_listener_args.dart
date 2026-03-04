@@ -10,12 +10,16 @@ import 'elastic_load_balancing_v2_listener_properties.dart';
 class ElasticLoadBalancingV2ListenerArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Name of ElasticLoadBalancingV2Listener
   final pulumi.Input<String>? name;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<ElasticLoadBalancingV2ListenerProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,7 +41,11 @@ class ElasticLoadBalancingV2ListenerArgs {
     return <String, dynamic>{
       'location': ?location,
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ElasticLoadBalancingV2ListenerProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticLoadBalancingV2ListenerProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -45,12 +53,35 @@ class ElasticLoadBalancingV2ListenerArgs {
 
   factory ElasticLoadBalancingV2ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ElasticLoadBalancingV2ListenerArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (ElasticLoadBalancingV2ListenerProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticLoadBalancingV2ListenerProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

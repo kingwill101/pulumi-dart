@@ -4,16 +4,15 @@ enum ClientClassificationSource {
   valueRecommended("Recommended"),
   valueMIP("MIP");
 
-  const ClientClassificationSource(this.value);
-  final String value;
+  const ClientClassificationSource(this.wireValue);
+  final String wireValue;
 
   static ClientClassificationSource fromValue(String value) {
     for (final item in ClientClassificationSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClientClassificationSource value: $value');
   }
 }
-

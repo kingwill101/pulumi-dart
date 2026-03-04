@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetStaticMemberResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// The provisioning state of the scope assignment resource.
   final String provisioningState;
+
   /// Resource region.
   final String region;
+
   /// Resource Id.
   final String? resourceId;
+
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
+
   /// Resource type.
   final String type;
 
@@ -67,10 +75,15 @@ class GetStaticMemberResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       region: map['region'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

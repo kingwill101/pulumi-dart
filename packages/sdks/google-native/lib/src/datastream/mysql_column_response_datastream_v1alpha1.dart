@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MysqlColumnResponseDatastreamV1alpha1 {
   /// Column collation.
   final pulumi.Input<String> collation;
+
   /// Column name.
   final pulumi.Input<String> columnName;
+
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
   final pulumi.Input<String> dataType;
+
   /// Column length.
   final pulumi.Input<int> length;
+
   /// Whether or not the column can accept a null value.
   final pulumi.Input<bool> nullable;
+
   /// The ordinal position of the column in the table.
   final pulumi.Input<int> ordinalPosition;
+
   /// Whether or not the column represents a primary key.
   final pulumi.Input<bool> primaryKey;
 
@@ -49,16 +55,17 @@ class MysqlColumnResponseDatastreamV1alpha1 {
     };
   }
 
-  factory MysqlColumnResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory MysqlColumnResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MysqlColumnResponseDatastreamV1alpha1(
-      collation: (map['collation'] as String).input(),
-      columnName: (map['columnName'] as String).input(),
-      dataType: (map['dataType'] as String).input(),
-      length: (map['length'] as int).input(),
-      nullable: (map['nullable'] as bool).input(),
-      ordinalPosition: (map['ordinalPosition'] as int).input(),
-      primaryKey: (map['primaryKey'] as bool).input(),
+      collation: pulumi.Input.fromValue(map['collation'] as String),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
+      length: pulumi.Input.fromValue(map['length'] as int),
+      nullable: pulumi.Input.fromValue(map['nullable'] as bool),
+      ordinalPosition: pulumi.Input.fromValue(map['ordinalPosition'] as int),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as bool),
     );
   }
 }
-

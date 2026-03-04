@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_alias_args.dart';
 import 'account_alias_state.dart';
 
-/// > **Note:** There is only a single account alias per AWS account.
+/// &gt; **Note:** There is only a single account alias per AWS account.
 ///
 /// Manages the account alias for the AWS Account.
 ///
@@ -113,12 +113,12 @@ class AccountAlias extends pulumi.CustomResource {
     AccountAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/accountAlias:AccountAlias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountAlias = registerOutput<String>('accountAlias');
+         'aws:iam/accountAlias:AccountAlias',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountAlias = registerOutput<String>('accountAlias');
   }
 
   /// Gets an existing [AccountAlias] resource's state with the given [name] and [id].
@@ -139,11 +139,11 @@ class AccountAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/accountAlias:AccountAlias',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountAlias = registerOutput<String>('accountAlias');
+         'aws:iam/accountAlias:AccountAlias',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountAlias = registerOutput<String>('accountAlias');
   }
 }

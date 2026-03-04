@@ -29,27 +29,27 @@ class ZipBlob extends pulumi.CustomResource {
     ZipBlobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/zipBlob:ZipBlob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessTier = registerOutput<String>('accessTier');
-    this.cacheControl = registerOutput<String?>('cacheControl');
-    this.content = registerOutput<dynamic>('content');
-    this.contentMd5 = registerOutput<String?>('contentMd5');
-    this.contentType = registerOutput<String?>('contentType');
-    this.encryptionScope = registerOutput<String?>('encryptionScope');
-    this.metadata = registerOutput<Map<String, String>>('metadata');
+         'azure:storage/zipBlob:ZipBlob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessTier = registerOutput<String>('accessTier');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<dynamic>('content');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String?>('contentType');
+    encryptionScope = registerOutput<String?>('encryptionScope');
+    metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
-    this.parallelism = registerOutput<int?>('parallelism');
-    this.size = registerOutput<int?>('size');
-    this.sourceContent = registerOutput<String?>('sourceContent');
-    this.sourceUri = registerOutput<String?>('sourceUri');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.storageContainerName = registerOutput<String>('storageContainerName');
-    this.type = registerOutput<String>('type');
-    this.url = registerOutput<String>('url');
+    parallelism = registerOutput<int?>('parallelism');
+    size = registerOutput<int?>('size');
+    sourceContent = registerOutput<String?>('sourceContent');
+    sourceUri = registerOutput<String?>('sourceUri');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerName = registerOutput<String>('storageContainerName');
+    type = registerOutput<String>('type');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [ZipBlob] resource's state with the given [name] and [id].
@@ -70,26 +70,26 @@ class ZipBlob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/zipBlob:ZipBlob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessTier = registerOutput<String>('accessTier');
-    this.cacheControl = registerOutput<String?>('cacheControl');
-    this.content = registerOutput<dynamic>('content');
-    this.contentMd5 = registerOutput<String?>('contentMd5');
-    this.contentType = registerOutput<String?>('contentType');
-    this.encryptionScope = registerOutput<String?>('encryptionScope');
-    this.metadata = registerOutput<Map<String, String>>('metadata');
+         'azure:storage/zipBlob:ZipBlob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessTier = registerOutput<String>('accessTier');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<dynamic>('content');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String?>('contentType');
+    encryptionScope = registerOutput<String?>('encryptionScope');
+    metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
-    this.parallelism = registerOutput<int?>('parallelism');
-    this.size = registerOutput<int?>('size');
-    this.sourceContent = registerOutput<String?>('sourceContent');
-    this.sourceUri = registerOutput<String?>('sourceUri');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.storageContainerName = registerOutput<String>('storageContainerName');
-    this.type = registerOutput<String>('type');
-    this.url = registerOutput<String>('url');
+    parallelism = registerOutput<int?>('parallelism');
+    size = registerOutput<int?>('size');
+    sourceContent = registerOutput<String?>('sourceContent');
+    sourceUri = registerOutput<String?>('sourceUri');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    storageContainerName = registerOutput<String>('storageContainerName');
+    type = registerOutput<String>('type');
+    url = registerOutput<String>('url');
   }
 }

@@ -8,20 +8,19 @@ class GenaiAgentChildAgentApiKey {
 
   /// Creates a new [GenaiAgentChildAgentApiKey].
   /// [apiKey] API Key value
-  GenaiAgentChildAgentApiKey({
-    this.apiKey,
-  });
+  GenaiAgentChildAgentApiKey({this.apiKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiKey': ?apiKey,
-    };
+    return <String, dynamic>{'apiKey': ?apiKey};
   }
 
   factory GenaiAgentChildAgentApiKey.fromMap(Map<String, dynamic> map) {
     return GenaiAgentChildAgentApiKey(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      apiKey: (() {
+        final guardedValue = map['apiKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

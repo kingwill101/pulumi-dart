@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HardwareProfile {
   /// Gets or sets the number of vCPUs for the vm.
   final pulumi.Input<int>? cpuCount;
+
   /// Gets or sets a value indicating whether to enable dynamic memory or not.
   final pulumi.Input<String>? dynamicMemoryEnabled;
+
   /// Gets or sets the max dynamic memory for the vm.
   final pulumi.Input<int>? dynamicMemoryMaxMB;
+
   /// Gets or sets the min dynamic memory for the vm.
   final pulumi.Input<int>? dynamicMemoryMinMB;
+
   /// Gets highly available property.
   final pulumi.Input<String>? isHighlyAvailable;
+
   /// Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
   final pulumi.Input<String>? limitCpuForMigration;
+
   /// MemoryMB is the size of a virtual machine's memory, in MB.
   final pulumi.Input<int>? memoryMB;
 
@@ -51,14 +57,41 @@ class HardwareProfile {
 
   factory HardwareProfile.fromMap(Map<String, dynamic> map) {
     return HardwareProfile(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
-      dynamicMemoryEnabled: map['dynamicMemoryEnabled'] == null ? null : (map['dynamicMemoryEnabled']! as String).input(),
-      dynamicMemoryMaxMB: map['dynamicMemoryMaxMB'] == null ? null : (map['dynamicMemoryMaxMB']! as int).input(),
-      dynamicMemoryMinMB: map['dynamicMemoryMinMB'] == null ? null : (map['dynamicMemoryMinMB']! as int).input(),
-      isHighlyAvailable: map['isHighlyAvailable'] == null ? null : (map['isHighlyAvailable']! as String).input(),
-      limitCpuForMigration: map['limitCpuForMigration'] == null ? null : (map['limitCpuForMigration']! as String).input(),
-      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB']! as int).input(),
+      cpuCount: (() {
+        final guardedValue = map['cpuCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dynamicMemoryEnabled: (() {
+        final guardedValue = map['dynamicMemoryEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dynamicMemoryMaxMB: (() {
+        final guardedValue = map['dynamicMemoryMaxMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dynamicMemoryMinMB: (() {
+        final guardedValue = map['dynamicMemoryMinMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      isHighlyAvailable: (() {
+        final guardedValue = map['isHighlyAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      limitCpuForMigration: (() {
+        final guardedValue = map['limitCpuForMigration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryMB: (() {
+        final guardedValue = map['memoryMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

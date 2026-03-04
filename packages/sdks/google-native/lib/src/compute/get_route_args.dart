@@ -13,23 +13,20 @@ class GetRouteArgs {
   /// Creates a new [GetRouteArgs].
   /// [project] Optional.
   /// [route] Required.
-  GetRouteArgs({
-    this.project,
-    required this.route,
-  });
+  GetRouteArgs({this.project, required this.route});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'route': route,
-    };
+    return <String, dynamic>{'project': ?project, 'route': route};
   }
 
   factory GetRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      route: (map['route'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      route: pulumi.Input.fromValue(map['route'] as String),
     );
   }
 }
-

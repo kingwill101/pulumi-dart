@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInferenceGroupDeltaModelsStatusAsyncArgs {
   /// Gets or sets collection of delta models to retrieve status for.
   final pulumi.Input<List<String>>? deltaModels;
+
   /// InferenceGroup name.
   final pulumi.Input<String> groupName;
+
   /// InferencePool name.
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets target base model.
   final pulumi.Input<String>? targetBaseModel;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -47,15 +52,26 @@ class GetInferenceGroupDeltaModelsStatusAsyncArgs {
     };
   }
 
-  factory GetInferenceGroupDeltaModelsStatusAsyncArgs.fromMap(Map<String, dynamic> map) {
+  factory GetInferenceGroupDeltaModelsStatusAsyncArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInferenceGroupDeltaModelsStatusAsyncArgs(
-      deltaModels: map['deltaModels'] == null ? null : ((map['deltaModels']! as List).cast<String>()).input(),
-      groupName: (map['groupName'] as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      deltaModels: (() {
+        final guardedValue = map['deltaModels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      targetBaseModel: (() {
+        final guardedValue = map['targetBaseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

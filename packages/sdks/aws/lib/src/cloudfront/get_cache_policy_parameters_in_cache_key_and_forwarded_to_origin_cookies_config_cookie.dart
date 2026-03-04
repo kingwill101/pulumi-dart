@@ -13,15 +13,14 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': items,
-    };
+    return <String, dynamic>{'items': items};
   }
 
-  factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie.fromMap(Map<String, dynamic> map) {
+  factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie(
-      items: ((map['items'] as List).cast<String>()).input(),
+      items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
     );
   }
 }
-

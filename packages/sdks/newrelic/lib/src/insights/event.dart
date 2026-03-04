@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_args.dart';
-import 'event_event.dart';
 import 'event_state.dart';
 
 /// Use this resource to create one or more Insights events during a terraform run.
@@ -225,31 +224,24 @@ import 'event_state.dart';
 /// * `type` - (Optional) Specify the type for the attribute value. This is useful when passing integer or float values to Insights. Allowed values are `string`, `int`, or `float`. Defaults to `string`.
 class Event extends pulumi.CustomResource {
   /// An event to insert into Insights. Multiple event blocks can be defined. See Events below for details.
-  late final pulumi.Output<List<EventEvent>> events;
+  late final pulumi.Output<List<Map<String, dynamic>>> events;
 
   /// Creates a new [Event].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Event]. {@macro pulumi_insights_event_event_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Event(
-    String name, {
-    EventArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'newrelic:insights/event:Event',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.events = registerOutput<List<EventEvent>>('events');
+  Event(String name, {EventArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'newrelic:insights/event:Event',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    events = registerOutput<List<Map<String, dynamic>>>('events');
   }
 
   /// Gets an existing [Event] resource's state with the given [name] and [id].
-  static Event get(
-    String name,
-    pulumi.Input<String> id, {
-    EventState? state,
-  }) {
+  static Event get(String name, pulumi.Input<String> id, {EventState? state}) {
     return Event._get(
       name,
       state: state?.toMap(),
@@ -262,11 +254,11 @@ class Event extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:insights/event:Event',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.events = registerOutput<List<EventEvent>>('events');
+         'newrelic:insights/event:Event',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    events = registerOutput<List<Map<String, dynamic>>>('events');
   }
 }

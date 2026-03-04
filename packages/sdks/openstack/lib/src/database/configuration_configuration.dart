@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationConfiguration {
   /// Configuration parameter name. Changing this creates a new resource.
   final pulumi.Input<String> name;
+
   /// Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
   final pulumi.Input<bool>? stringType;
+
   /// Configuration parameter value. Changing this creates a new resource.
   final pulumi.Input<String> value;
 
@@ -30,10 +32,13 @@ class ConfigurationConfiguration {
 
   factory ConfigurationConfiguration.fromMap(Map<String, dynamic> map) {
     return ConfigurationConfiguration(
-      name: (map['name'] as String).input(),
-      stringType: map['stringType'] == null ? null : (map['stringType']! as bool).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      stringType: (() {
+        final guardedValue = map['stringType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

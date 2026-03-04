@@ -233,7 +233,7 @@ import 'vmware_replication_policy_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -248,8 +248,10 @@ import 'vmware_replication_policy_association_state.dart';
 class VmwareReplicationPolicyAssociation extends pulumi.CustomResource {
   /// The name of the replication policy association. Changing this forces a new association to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the VMWare replication policy which to be associated. Changing this forces a new association to be created.
   late final pulumi.Output<String> policyId;
+
   /// The ID of the Recovery Service Vault to which the policy should be associated.
   /// Changing this forces a new association to be created.
   late final pulumi.Output<String> recoveryVaultId;
@@ -263,14 +265,14 @@ class VmwareReplicationPolicyAssociation extends pulumi.CustomResource {
     VmwareReplicationPolicyAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/vmwareReplicationPolicyAssociation:VmwareReplicationPolicyAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:siterecovery/vmwareReplicationPolicyAssociation:VmwareReplicationPolicyAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    policyId = registerOutput<String>('policyId');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }
 
   /// Gets an existing [VmwareReplicationPolicyAssociation] resource's state with the given [name] and [id].
@@ -291,13 +293,13 @@ class VmwareReplicationPolicyAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/vmwareReplicationPolicyAssociation:VmwareReplicationPolicyAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:siterecovery/vmwareReplicationPolicyAssociation:VmwareReplicationPolicyAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    policyId = registerOutput<String>('policyId');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }
 }

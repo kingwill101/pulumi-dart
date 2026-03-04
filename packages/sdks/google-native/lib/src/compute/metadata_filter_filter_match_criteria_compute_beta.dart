@@ -4,16 +4,17 @@ enum MetadataFilterFilterMatchCriteriaComputeBeta {
   matchAny("MATCH_ANY"),
   notSet("NOT_SET");
 
-  const MetadataFilterFilterMatchCriteriaComputeBeta(this.value);
-  final String value;
+  const MetadataFilterFilterMatchCriteriaComputeBeta(this.wireValue);
+  final String wireValue;
 
   static MetadataFilterFilterMatchCriteriaComputeBeta fromValue(String value) {
     for (final item in MetadataFilterFilterMatchCriteriaComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MetadataFilterFilterMatchCriteriaComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown MetadataFilterFilterMatchCriteriaComputeBeta value: $value',
+    );
   }
 }
-

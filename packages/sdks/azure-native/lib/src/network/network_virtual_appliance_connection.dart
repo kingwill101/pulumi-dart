@@ -311,10 +311,13 @@ import 'network_virtual_appliance_connection_properties_response.dart';
 class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource.
   late final pulumi.Output<String?> name;
+
   /// Properties of the express route connection.
-  late final pulumi.Output<NetworkVirtualApplianceConnectionPropertiesResponse> properties;
+  late final pulumi.Output<NetworkVirtualApplianceConnectionPropertiesResponse>
+  properties;
 
   /// Creates a new [NetworkVirtualApplianceConnection].
   /// [name] The Pulumi resource name.
@@ -325,13 +328,16 @@ class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     NetworkVirtualApplianceConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NetworkVirtualApplianceConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:network:NetworkVirtualApplianceConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    this.properties = registerOutput<NetworkVirtualApplianceConnectionPropertiesResponse>('properties');
+    properties =
+        registerOutput<NetworkVirtualApplianceConnectionPropertiesResponse>(
+          'properties',
+        );
   }
 }

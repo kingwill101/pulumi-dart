@@ -7,20 +7,32 @@ import 'plugin_config_template_additional_config_template_multi_select_option.da
 class PluginConfigTemplateAdditionalConfigTemplate {
   /// Description.
   final pulumi.Input<String>? description;
+
   /// Enum options. To be populated if `ValueType` is `ENUM`.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplateEnumOption>>? enumOptions;
+  final pulumi.Input<
+    List<PluginConfigTemplateAdditionalConfigTemplateEnumOption>
+  >?
+  enumOptions;
+
   /// ID of the config variable. Must be unique within the configuration.
   final pulumi.Input<String> id;
+
   /// Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>>? multiSelectOptions;
+  final pulumi.Input<
+    List<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>
+  >?
+  multiSelectOptions;
+
   /// Flag represents that this `ConfigVariable` must be provided for a
   /// PluginInstance.
   final pulumi.Input<bool>? required;
+
   /// Regular expression in RE2 syntax used for validating the `value` of a
   /// `ConfigVariable`.
   final pulumi.Input<String>? validationRegex;
+
   /// Type of the parameter: string, int, bool etc.
   /// Possible values:
   /// VALUE_TYPE_UNSPECIFIED
@@ -55,25 +67,88 @@ class PluginConfigTemplateAdditionalConfigTemplate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'enumOptions': ?pulumi.Input.mapOptionalInputValue<List<PluginConfigTemplateAdditionalConfigTemplateEnumOption>, List<Map<String, dynamic>>>(enumOptions, (value) => pulumi.Input.encodeList<PluginConfigTemplateAdditionalConfigTemplateEnumOption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'enumOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PluginConfigTemplateAdditionalConfigTemplateEnumOption>,
+            List<Map<String, dynamic>>
+          >(
+            enumOptions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PluginConfigTemplateAdditionalConfigTemplateEnumOption,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': id,
-      'multiSelectOptions': ?pulumi.Input.mapOptionalInputValue<List<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>, List<Map<String, dynamic>>>(multiSelectOptions, (value) => pulumi.Input.encodeList<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'multiSelectOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>,
+            List<Map<String, dynamic>>
+          >(
+            multiSelectOptions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'required': ?required,
       'validationRegex': ?validationRegex,
       'valueType': valueType,
     };
   }
 
-  factory PluginConfigTemplateAdditionalConfigTemplate.fromMap(Map<String, dynamic> map) {
+  factory PluginConfigTemplateAdditionalConfigTemplate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PluginConfigTemplateAdditionalConfigTemplate(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enumOptions: map['enumOptions'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplateEnumOption>(map['enumOptions']!, (value) => PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: (map['id'] as String).input(),
-      multiSelectOptions: map['multiSelectOptions'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>(map['multiSelectOptions']!, (value) => PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      required: map['required'] == null ? null : (map['required']! as bool).input(),
-      validationRegex: map['validationRegex'] == null ? null : (map['validationRegex']! as String).input(),
-      valueType: (map['valueType'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enumOptions: (() {
+        final guardedValue = map['enumOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PluginConfigTemplateAdditionalConfigTemplateEnumOption
+          >(
+            guardedValue,
+            (value) =>
+                PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      multiSelectOptions: (() {
+        final guardedValue = map['multiSelectOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption
+          >(
+            guardedValue,
+            (value) =>
+                PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      required: (() {
+        final guardedValue = map['required'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      validationRegex: (() {
+        final guardedValue = map['validationRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueType: pulumi.Input.fromValue(map['valueType'] as String),
     );
   }
 }
-

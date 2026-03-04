@@ -9,16 +9,15 @@ enum WorkspaceSkuNameEnum {
   valueCapacityReservation("CapacityReservation"),
   valueLACluster("LACluster");
 
-  const WorkspaceSkuNameEnum(this.value);
-  final String value;
+  const WorkspaceSkuNameEnum(this.wireValue);
+  final String wireValue;
 
   static WorkspaceSkuNameEnum fromValue(String value) {
     for (final item in WorkspaceSkuNameEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkspaceSkuNameEnum value: $value');
   }
 }
-

@@ -20,16 +20,15 @@ enum FilterOperatorType {
   valueIsNullOrUndefined("IsNullOrUndefined"),
   valueIsNotNull("IsNotNull");
 
-  const FilterOperatorType(this.value);
-  final String value;
+  const FilterOperatorType(this.wireValue);
+  final String wireValue;
 
   static FilterOperatorType fromValue(String value) {
     for (final item in FilterOperatorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FilterOperatorType value: $value');
   }
 }
-

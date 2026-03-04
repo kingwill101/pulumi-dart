@@ -9,20 +9,27 @@ class InstanceGroupManagerAllInstancesConfigResponse {
 
   /// Creates a new [InstanceGroupManagerAllInstancesConfigResponse].
   /// [properties] Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-  InstanceGroupManagerAllInstancesConfigResponse({
-    required this.properties,
-  });
+  InstanceGroupManagerAllInstancesConfigResponse({required this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': pulumi.Input.mapInputValue<InstancePropertiesPatchResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            InstancePropertiesPatchResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
-  factory InstanceGroupManagerAllInstancesConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerAllInstancesConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerAllInstancesConfigResponse(
-      properties: (InstancePropertiesPatchResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: pulumi.Input.fromValue(
+        InstancePropertiesPatchResponse.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

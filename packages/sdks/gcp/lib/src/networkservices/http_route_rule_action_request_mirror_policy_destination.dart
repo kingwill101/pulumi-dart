@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteRuleActionRequestMirrorPolicyDestination {
   /// The URL of a BackendService to route traffic to.
   final pulumi.Input<String>? serviceName;
+
   /// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
   /// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
   /// If weights are specified for any one service name, they need to be specified for all of them.
@@ -20,17 +21,23 @@ class HttpRouteRuleActionRequestMirrorPolicyDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceName': ?serviceName,
-      'weight': ?weight,
-    };
+    return <String, dynamic>{'serviceName': ?serviceName, 'weight': ?weight};
   }
 
-  factory HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap(Map<String, dynamic> map) {
+  factory HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpRouteRuleActionRequestMirrorPolicyDestination(
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

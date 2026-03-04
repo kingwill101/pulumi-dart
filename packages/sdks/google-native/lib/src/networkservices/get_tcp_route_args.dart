@@ -31,10 +31,13 @@ class GetTcpRouteArgs {
 
   factory GetTcpRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetTcpRouteArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tcpRouteId: (map['tcpRouteId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tcpRouteId: pulumi.Input.fromValue(map['tcpRouteId'] as String),
     );
   }
 }
-

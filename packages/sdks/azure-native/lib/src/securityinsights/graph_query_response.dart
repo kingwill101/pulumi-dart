@@ -7,8 +7,10 @@ class GraphQueryResponse {
   /// Gets or sets the base query for the graph.
   /// The base query is wrapped by Sentinel UI infra with a KQL query, that measures the volume over time.
   final pulumi.Input<String> baseQuery;
+
   /// Gets or sets the legend for the graph.
   final pulumi.Input<String> legend;
+
   /// Gets or sets the metric name that the query is checking. For example: 'Total data receive'.
   final pulumi.Input<String> metricName;
 
@@ -32,10 +34,9 @@ class GraphQueryResponse {
 
   factory GraphQueryResponse.fromMap(Map<String, dynamic> map) {
     return GraphQueryResponse(
-      baseQuery: (map['baseQuery'] as String).input(),
-      legend: (map['legend'] as String).input(),
-      metricName: (map['metricName'] as String).input(),
+      baseQuery: pulumi.Input.fromValue(map['baseQuery'] as String),
+      legend: pulumi.Input.fromValue(map['legend'] as String),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
     );
   }
 }
-

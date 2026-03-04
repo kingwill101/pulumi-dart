@@ -7,10 +7,13 @@ import 'error_detail_response.dart';
 class UpdateStatusResponse {
   /// The time the operation or group was completed.
   final pulumi.Input<String> completedTime;
+
   /// The error details when a failure is encountered.
   final pulumi.Input<ErrorDetailResponse> error;
+
   /// The time the operation or group was started.
   final pulumi.Input<String> startTime;
+
   /// The State of the operation or group.
   final pulumi.Input<String> state;
 
@@ -29,7 +32,11 @@ class UpdateStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completedTime': completedTime,
-      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
+            error,
+            (value) => value.toMap(),
+          ),
       'startTime': startTime,
       'state': state,
     };
@@ -37,11 +44,14 @@ class UpdateStatusResponse {
 
   factory UpdateStatusResponse.fromMap(Map<String, dynamic> map) {
     return UpdateStatusResponse(
-      completedTime: (map['completedTime'] as String).input(),
-      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      startTime: (map['startTime'] as String).input(),
-      state: (map['state'] as String).input(),
+      completedTime: pulumi.Input.fromValue(map['completedTime'] as String),
+      error: pulumi.Input.fromValue(
+        ErrorDetailResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

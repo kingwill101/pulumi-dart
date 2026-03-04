@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleRuleActionInsertHeaderConfig {
   final pulumi.Input<String>? key;
   final pulumi.Input<String>? value;
+
   /// The value type of the inserted header field. Valid values:
   /// - `UserDefined`: a custom value
   /// - `ReferenceHeader`: uses a field of the user request header.
@@ -15,11 +16,7 @@ class RuleRuleActionInsertHeaderConfig {
   /// [key] Optional.
   /// [value] Optional.
   /// [valueType] The value type of the inserted header field. Valid values:
-  RuleRuleActionInsertHeaderConfig({
-    this.key,
-    this.value,
-    this.valueType,
-  });
+  RuleRuleActionInsertHeaderConfig({this.key, this.value, this.valueType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +28,21 @@ class RuleRuleActionInsertHeaderConfig {
 
   factory RuleRuleActionInsertHeaderConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionInsertHeaderConfig(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueType: (() {
+        final guardedValue = map['valueType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ImplementationEffort {
   valueModerate("Moderate"),
   valueHigh("High");
 
-  const ImplementationEffort(this.value);
-  final String value;
+  const ImplementationEffort(this.wireValue);
+  final String wireValue;
 
   static ImplementationEffort fromValue(String value) {
     for (final item in ImplementationEffort.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImplementationEffort value: $value');
   }
 }
-

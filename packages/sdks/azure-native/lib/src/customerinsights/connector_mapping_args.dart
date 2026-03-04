@@ -11,22 +11,31 @@ import 'entity_types.dart';
 class ConnectorMappingArgs {
   /// The name of the connector.
   final pulumi.Input<String> connectorName;
+
   /// Type of connector.
   final pulumi.Input<String>? connectorType;
+
   /// The description of the connector mapping.
   final pulumi.Input<String>? description;
+
   /// Display name for the connector mapping.
   final pulumi.Input<String>? displayName;
+
   /// Defines which entity type the file should map to.
   final pulumi.Input<EntityTypes> entityType;
+
   /// The mapping entity name.
   final pulumi.Input<String> entityTypeName;
+
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// The name of the connector mapping.
   final pulumi.Input<String>? mappingName;
+
   /// The properties of the mapping.
   final pulumi.Input<ConnectorMappingProperties> mappingProperties;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -60,28 +69,58 @@ class ConnectorMappingArgs {
       'connectorType': ?connectorType,
       'description': ?description,
       'displayName': ?displayName,
-      'entityType': pulumi.Input.mapInputValue<EntityTypes, String>(entityType, (value) => value.value),
+      'entityType': pulumi.Input.mapInputValue<EntityTypes, String>(
+        entityType,
+        (value) => value.wireValue,
+      ),
       'entityTypeName': entityTypeName,
       'hubName': hubName,
       'mappingName': ?mappingName,
-      'mappingProperties': pulumi.Input.mapInputValue<ConnectorMappingProperties, Map<String, dynamic>>(mappingProperties, (value) => value.toMap()),
+      'mappingProperties':
+          pulumi.Input.mapInputValue<
+            ConnectorMappingProperties,
+            Map<String, dynamic>
+          >(mappingProperties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory ConnectorMappingArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingArgs(
-      connectorName: (map['connectorName'] as String).input(),
-      connectorType: map['connectorType'] == null ? null : (map['connectorType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      entityType: (EntityTypes.fromValue(map['entityType'] as String)).input(),
-      entityTypeName: (map['entityTypeName'] as String).input(),
-      hubName: (map['hubName'] as String).input(),
-      mappingName: map['mappingName'] == null ? null : (map['mappingName']! as String).input(),
-      mappingProperties: (ConnectorMappingProperties.fromMap((map['mappingProperties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
+      connectorType: (() {
+        final guardedValue = map['connectorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityType: pulumi.Input.fromValue(
+        EntityTypes.fromValue(map['entityType']! as String),
+      ),
+      entityTypeName: pulumi.Input.fromValue(map['entityTypeName'] as String),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      mappingName: (() {
+        final guardedValue = map['mappingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mappingProperties: pulumi.Input.fromValue(
+        ConnectorMappingProperties.fromMap(
+          (map['mappingProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

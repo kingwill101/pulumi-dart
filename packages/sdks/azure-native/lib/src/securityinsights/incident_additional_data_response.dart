@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IncidentAdditionalDataResponse {
   /// List of product names of alerts in the incident
   final pulumi.Input<List<String>> alertProductNames;
+
   /// The number of alerts in the incident
   final pulumi.Input<int> alertsCount;
+
   /// The number of bookmarks in the incident
   final pulumi.Input<int> bookmarksCount;
+
   /// The number of comments in the incident
   final pulumi.Input<int> commentsCount;
+
   /// The provider incident url to the incident in Microsoft 365 Defender portal
   final pulumi.Input<String> providerIncidentUrl;
+
   /// The tactics associated with incident
   final pulumi.Input<List<String>> tactics;
 
@@ -46,13 +51,16 @@ class IncidentAdditionalDataResponse {
 
   factory IncidentAdditionalDataResponse.fromMap(Map<String, dynamic> map) {
     return IncidentAdditionalDataResponse(
-      alertProductNames: ((map['alertProductNames'] as List).cast<String>()).input(),
-      alertsCount: (map['alertsCount'] as int).input(),
-      bookmarksCount: (map['bookmarksCount'] as int).input(),
-      commentsCount: (map['commentsCount'] as int).input(),
-      providerIncidentUrl: (map['providerIncidentUrl'] as String).input(),
-      tactics: ((map['tactics'] as List).cast<String>()).input(),
+      alertProductNames: pulumi.Input.fromValue(
+        (map['alertProductNames'] as List).cast<String>(),
+      ),
+      alertsCount: pulumi.Input.fromValue(map['alertsCount'] as int),
+      bookmarksCount: pulumi.Input.fromValue(map['bookmarksCount'] as int),
+      commentsCount: pulumi.Input.fromValue(map['commentsCount'] as int),
+      providerIncidentUrl: pulumi.Input.fromValue(
+        map['providerIncidentUrl'] as String,
+      ),
+      tactics: pulumi.Input.fromValue((map['tactics'] as List).cast<String>()),
     );
   }
 }
-

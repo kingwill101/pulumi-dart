@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFavoriteProcessArgs {
   /// The resource name of a favorite process in a package. If the process name contains characters that are not allowed in Azure Resource Name, we use 'actualProcessName' in request body to submit the name.
   final pulumi.Input<String> favoriteProcessResourceName;
+
   /// The resource name of the Test Base Package.
   final pulumi.Input<String> packageName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -39,11 +42,16 @@ class GetFavoriteProcessArgs {
 
   factory GetFavoriteProcessArgs.fromMap(Map<String, dynamic> map) {
     return GetFavoriteProcessArgs(
-      favoriteProcessResourceName: (map['favoriteProcessResourceName'] as String).input(),
-      packageName: (map['packageName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
+      favoriteProcessResourceName: pulumi.Input.fromValue(
+        map['favoriteProcessResourceName'] as String,
+      ),
+      packageName: pulumi.Input.fromValue(map['packageName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      testBaseAccountName: pulumi.Input.fromValue(
+        map['testBaseAccountName'] as String,
+      ),
     );
   }
 }
-

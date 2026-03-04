@@ -10,29 +10,42 @@ import 'virtual_machine_preferences_response.dart';
 /// Summary Findings for a specific Group/PreferenceSet combination.
 class ReportSummaryGroupPreferenceSetFindingResponse {
   /// A set of findings that applies to Compute Engine machines in the input.
-  final pulumi.Input<ReportSummaryComputeEngineFindingResponse> computeEngineFinding;
+  final pulumi.Input<ReportSummaryComputeEngineFindingResponse>
+  computeEngineFinding;
+
   /// Description for the Preference Set.
   final pulumi.Input<String> description;
+
   /// Display Name of the Preference Set
   final pulumi.Input<String> displayName;
+
   /// A set of preferences that applies to all machines in the context.
   final pulumi.Input<VirtualMachinePreferencesResponse> machinePreferences;
+
   /// Compute monthly cost for this preference set.
   final pulumi.Input<MoneyResponse> monthlyCostCompute;
+
   /// Network Egress monthly cost for this preference set.
   final pulumi.Input<MoneyResponse> monthlyCostNetworkEgress;
+
   /// Licensing monthly cost for this preference set.
   final pulumi.Input<MoneyResponse> monthlyCostOsLicense;
+
   /// Miscellaneous monthly cost for this preference set.
   final pulumi.Input<MoneyResponse> monthlyCostOther;
+
   /// Storage monthly cost for this preference set.
   final pulumi.Input<MoneyResponse> monthlyCostStorage;
+
   /// Total monthly cost for this preference set.
   final pulumi.Input<MoneyResponse> monthlyCostTotal;
+
   /// A set of findings that applies to Sole-Tenant machines in the input.
   final pulumi.Input<ReportSummarySoleTenantFindingResponse> soleTenantFinding;
+
   /// A set of findings that applies to VMWare machines in the input.
-  final pulumi.Input<ReportSummaryVmwareEngineFindingResponse> vmwareEngineFinding;
+  final pulumi.Input<ReportSummaryVmwareEngineFindingResponse>
+  vmwareEngineFinding;
 
   /// Creates a new [ReportSummaryGroupPreferenceSetFindingResponse].
   /// [computeEngineFinding] A set of findings that applies to Compute Engine machines in the input.
@@ -64,36 +77,117 @@ class ReportSummaryGroupPreferenceSetFindingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeEngineFinding': pulumi.Input.mapInputValue<ReportSummaryComputeEngineFindingResponse, Map<String, dynamic>>(computeEngineFinding, (value) => value.toMap()),
+      'computeEngineFinding':
+          pulumi.Input.mapInputValue<
+            ReportSummaryComputeEngineFindingResponse,
+            Map<String, dynamic>
+          >(computeEngineFinding, (value) => value.toMap()),
       'description': description,
       'displayName': displayName,
-      'machinePreferences': pulumi.Input.mapInputValue<VirtualMachinePreferencesResponse, Map<String, dynamic>>(machinePreferences, (value) => value.toMap()),
-      'monthlyCostCompute': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(monthlyCostCompute, (value) => value.toMap()),
-      'monthlyCostNetworkEgress': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(monthlyCostNetworkEgress, (value) => value.toMap()),
-      'monthlyCostOsLicense': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(monthlyCostOsLicense, (value) => value.toMap()),
-      'monthlyCostOther': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(monthlyCostOther, (value) => value.toMap()),
-      'monthlyCostStorage': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(monthlyCostStorage, (value) => value.toMap()),
-      'monthlyCostTotal': pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(monthlyCostTotal, (value) => value.toMap()),
-      'soleTenantFinding': pulumi.Input.mapInputValue<ReportSummarySoleTenantFindingResponse, Map<String, dynamic>>(soleTenantFinding, (value) => value.toMap()),
-      'vmwareEngineFinding': pulumi.Input.mapInputValue<ReportSummaryVmwareEngineFindingResponse, Map<String, dynamic>>(vmwareEngineFinding, (value) => value.toMap()),
+      'machinePreferences':
+          pulumi.Input.mapInputValue<
+            VirtualMachinePreferencesResponse,
+            Map<String, dynamic>
+          >(machinePreferences, (value) => value.toMap()),
+      'monthlyCostCompute':
+          pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(
+            monthlyCostCompute,
+            (value) => value.toMap(),
+          ),
+      'monthlyCostNetworkEgress':
+          pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(
+            monthlyCostNetworkEgress,
+            (value) => value.toMap(),
+          ),
+      'monthlyCostOsLicense':
+          pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(
+            monthlyCostOsLicense,
+            (value) => value.toMap(),
+          ),
+      'monthlyCostOther':
+          pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(
+            monthlyCostOther,
+            (value) => value.toMap(),
+          ),
+      'monthlyCostStorage':
+          pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(
+            monthlyCostStorage,
+            (value) => value.toMap(),
+          ),
+      'monthlyCostTotal':
+          pulumi.Input.mapInputValue<MoneyResponse, Map<String, dynamic>>(
+            monthlyCostTotal,
+            (value) => value.toMap(),
+          ),
+      'soleTenantFinding':
+          pulumi.Input.mapInputValue<
+            ReportSummarySoleTenantFindingResponse,
+            Map<String, dynamic>
+          >(soleTenantFinding, (value) => value.toMap()),
+      'vmwareEngineFinding':
+          pulumi.Input.mapInputValue<
+            ReportSummaryVmwareEngineFindingResponse,
+            Map<String, dynamic>
+          >(vmwareEngineFinding, (value) => value.toMap()),
     };
   }
 
-  factory ReportSummaryGroupPreferenceSetFindingResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummaryGroupPreferenceSetFindingResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummaryGroupPreferenceSetFindingResponse(
-      computeEngineFinding: (ReportSummaryComputeEngineFindingResponse.fromMap((map['computeEngineFinding'] as Map).cast<String, dynamic>())).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      machinePreferences: (VirtualMachinePreferencesResponse.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>())).input(),
-      monthlyCostCompute: (MoneyResponse.fromMap((map['monthlyCostCompute'] as Map).cast<String, dynamic>())).input(),
-      monthlyCostNetworkEgress: (MoneyResponse.fromMap((map['monthlyCostNetworkEgress'] as Map).cast<String, dynamic>())).input(),
-      monthlyCostOsLicense: (MoneyResponse.fromMap((map['monthlyCostOsLicense'] as Map).cast<String, dynamic>())).input(),
-      monthlyCostOther: (MoneyResponse.fromMap((map['monthlyCostOther'] as Map).cast<String, dynamic>())).input(),
-      monthlyCostStorage: (MoneyResponse.fromMap((map['monthlyCostStorage'] as Map).cast<String, dynamic>())).input(),
-      monthlyCostTotal: (MoneyResponse.fromMap((map['monthlyCostTotal'] as Map).cast<String, dynamic>())).input(),
-      soleTenantFinding: (ReportSummarySoleTenantFindingResponse.fromMap((map['soleTenantFinding'] as Map).cast<String, dynamic>())).input(),
-      vmwareEngineFinding: (ReportSummaryVmwareEngineFindingResponse.fromMap((map['vmwareEngineFinding'] as Map).cast<String, dynamic>())).input(),
+      computeEngineFinding: pulumi.Input.fromValue(
+        ReportSummaryComputeEngineFindingResponse.fromMap(
+          (map['computeEngineFinding']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      machinePreferences: pulumi.Input.fromValue(
+        VirtualMachinePreferencesResponse.fromMap(
+          (map['machinePreferences']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monthlyCostCompute: pulumi.Input.fromValue(
+        MoneyResponse.fromMap(
+          (map['monthlyCostCompute']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monthlyCostNetworkEgress: pulumi.Input.fromValue(
+        MoneyResponse.fromMap(
+          (map['monthlyCostNetworkEgress']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monthlyCostOsLicense: pulumi.Input.fromValue(
+        MoneyResponse.fromMap(
+          (map['monthlyCostOsLicense']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monthlyCostOther: pulumi.Input.fromValue(
+        MoneyResponse.fromMap(
+          (map['monthlyCostOther']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monthlyCostStorage: pulumi.Input.fromValue(
+        MoneyResponse.fromMap(
+          (map['monthlyCostStorage']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monthlyCostTotal: pulumi.Input.fromValue(
+        MoneyResponse.fromMap(
+          (map['monthlyCostTotal']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      soleTenantFinding: pulumi.Input.fromValue(
+        ReportSummarySoleTenantFindingResponse.fromMap(
+          (map['soleTenantFinding']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vmwareEngineFinding: pulumi.Input.fromValue(
+        ReportSummaryVmwareEngineFindingResponse.fromMap(
+          (map['vmwareEngineFinding']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

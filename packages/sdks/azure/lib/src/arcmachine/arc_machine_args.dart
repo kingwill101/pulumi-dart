@@ -10,14 +10,19 @@ import 'arc_machine_identity.dart';
 class ArcMachineArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<ArcMachineIdentity>? identity;
+
   /// The kind of the Arc Machine. Possible values are `AVS`, `AWS`, `EPS`, `GCP`, `HCI`, `SCVMM` and `VMware`. Changing this forces a new resource to be created.
   final pulumi.Input<String> kind;
+
   /// The Azure Region where the Arc Machine should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the Arc machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Arc Machine should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A mapping of tags to assign to the Arc Machine.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,7 +44,11 @@ class ArcMachineArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<ArcMachineIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArcMachineIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'kind': kind,
       'location': ?location,
       'name': ?name,
@@ -50,13 +59,36 @@ class ArcMachineArgs {
 
   factory ArcMachineArgs.fromMap(Map<String, dynamic> map) {
     return ArcMachineArgs(
-      identity: map['identity'] == null ? null : (ArcMachineIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArcMachineIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

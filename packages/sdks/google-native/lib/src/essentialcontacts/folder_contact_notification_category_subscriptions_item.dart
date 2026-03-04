@@ -9,16 +9,20 @@ enum FolderContactNotificationCategorySubscriptionsItem {
   productUpdates("PRODUCT_UPDATES"),
   technicalIncidents("TECHNICAL_INCIDENTS");
 
-  const FolderContactNotificationCategorySubscriptionsItem(this.value);
-  final String value;
+  const FolderContactNotificationCategorySubscriptionsItem(this.wireValue);
+  final String wireValue;
 
-  static FolderContactNotificationCategorySubscriptionsItem fromValue(String value) {
-    for (final item in FolderContactNotificationCategorySubscriptionsItem.values) {
-      if (item.value == value) {
+  static FolderContactNotificationCategorySubscriptionsItem fromValue(
+    String value,
+  ) {
+    for (final item
+        in FolderContactNotificationCategorySubscriptionsItem.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FolderContactNotificationCategorySubscriptionsItem value: $value');
+    throw ArgumentError(
+      'Unknown FolderContactNotificationCategorySubscriptionsItem value: $value',
+    );
   }
 }
-

@@ -11,14 +11,19 @@ import 'test_issue_type.dart';
 class TestIssue {
   /// Category of issue. Required.
   final pulumi.Input<TestIssueCategory>? category;
+
   /// A brief human-readable message describing the issue. Required.
   final pulumi.Input<String>? errorMessage;
+
   /// Severity of issue. Required.
   final pulumi.Input<TestIssueSeverity>? severity;
+
   /// Deprecated in favor of stack trace fields inside specific warnings.
   final pulumi.Input<StackTrace>? stackTrace;
+
   /// Type of issue. Required.
   final pulumi.Input<TestIssueType>? type;
+
   /// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
   final pulumi.Input<Any>? warning;
 
@@ -40,24 +45,75 @@ class TestIssue {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'category': ?pulumi.Input.mapOptionalInputValue<TestIssueCategory, String>(category, (value) => value.value),
+      'category':
+          ?pulumi.Input.mapOptionalInputValue<TestIssueCategory, String>(
+            category,
+            (value) => value.wireValue,
+          ),
       'errorMessage': ?errorMessage,
-      'severity': ?pulumi.Input.mapOptionalInputValue<TestIssueSeverity, String>(severity, (value) => value.value),
-      'stackTrace': ?pulumi.Input.mapOptionalInputValue<StackTrace, Map<String, dynamic>>(stackTrace, (value) => value.toMap()),
-      'type': ?pulumi.Input.mapOptionalInputValue<TestIssueType, String>(type, (value) => value.value),
-      'warning': ?pulumi.Input.mapOptionalInputValue<Any, Map<String, dynamic>>(warning, (value) => value.toMap()),
+      'severity':
+          ?pulumi.Input.mapOptionalInputValue<TestIssueSeverity, String>(
+            severity,
+            (value) => value.wireValue,
+          ),
+      'stackTrace':
+          ?pulumi.Input.mapOptionalInputValue<StackTrace, Map<String, dynamic>>(
+            stackTrace,
+            (value) => value.toMap(),
+          ),
+      'type': ?pulumi.Input.mapOptionalInputValue<TestIssueType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
+      'warning': ?pulumi.Input.mapOptionalInputValue<Any, Map<String, dynamic>>(
+        warning,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory TestIssue.fromMap(Map<String, dynamic> map) {
     return TestIssue(
-      category: map['category'] == null ? null : (TestIssueCategory.fromValue(map['category']! as String)).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      severity: map['severity'] == null ? null : (TestIssueSeverity.fromValue(map['severity']! as String)).input(),
-      stackTrace: map['stackTrace'] == null ? null : (StackTrace.fromMap((map['stackTrace']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (TestIssueType.fromValue(map['type']! as String)).input(),
-      warning: map['warning'] == null ? null : (Any.fromMap((map['warning']! as Map).cast<String, dynamic>())).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TestIssueCategory.fromValue(guardedValue as String),
+        );
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TestIssueSeverity.fromValue(guardedValue as String),
+        );
+      })(),
+      stackTrace: (() {
+        final guardedValue = map['stackTrace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StackTrace.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TestIssueType.fromValue(guardedValue as String),
+        );
+      })(),
+      warning: (() {
+        final guardedValue = map['warning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Any.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

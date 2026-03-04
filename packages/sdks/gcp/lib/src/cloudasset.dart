@@ -1,5 +1,3 @@
-library module_cloudasset;
-
 export 'cloudasset/folder_feed.dart';
 export 'cloudasset/folder_feed_args.dart';
 export 'cloudasset/folder_feed_condition.dart';

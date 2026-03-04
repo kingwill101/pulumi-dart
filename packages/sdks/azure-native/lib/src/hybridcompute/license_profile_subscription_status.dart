@@ -7,16 +7,17 @@ enum LicenseProfileSubscriptionStatus {
   valueDisabling("Disabling"),
   valueFailed("Failed");
 
-  const LicenseProfileSubscriptionStatus(this.value);
-  final String value;
+  const LicenseProfileSubscriptionStatus(this.wireValue);
+  final String wireValue;
 
   static LicenseProfileSubscriptionStatus fromValue(String value) {
     for (final item in LicenseProfileSubscriptionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LicenseProfileSubscriptionStatus value: $value');
+    throw ArgumentError(
+      'Unknown LicenseProfileSubscriptionStatus value: $value',
+    );
   }
 }
-

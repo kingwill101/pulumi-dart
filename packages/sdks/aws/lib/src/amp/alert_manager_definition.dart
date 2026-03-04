@@ -155,8 +155,10 @@ import 'alert_manager_definition_state.dart';
 class AlertManagerDefinition extends pulumi.CustomResource {
   /// the alert manager definition that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-alert-manager.html).
   late final pulumi.Output<String> definition;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the prometheus workspace the alert manager definition should be linked to
   late final pulumi.Output<String> workspaceId;
 
@@ -169,14 +171,14 @@ class AlertManagerDefinition extends pulumi.CustomResource {
     AlertManagerDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amp/alertManagerDefinition:AlertManagerDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.definition = registerOutput<String>('definition');
-    this.region = registerOutput<String>('region');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'aws:amp/alertManagerDefinition:AlertManagerDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    definition = registerOutput<String>('definition');
+    region = registerOutput<String>('region');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [AlertManagerDefinition] resource's state with the given [name] and [id].
@@ -197,13 +199,13 @@ class AlertManagerDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amp/alertManagerDefinition:AlertManagerDefinition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.definition = registerOutput<String>('definition');
-    this.region = registerOutput<String>('region');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'aws:amp/alertManagerDefinition:AlertManagerDefinition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    definition = registerOutput<String>('definition');
+    region = registerOutput<String>('region');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

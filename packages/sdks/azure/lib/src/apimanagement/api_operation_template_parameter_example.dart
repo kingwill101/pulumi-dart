@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiOperationTemplateParameterExample {
   /// A long description for this example.
   final pulumi.Input<String>? description;
+
   /// A URL that points to the literal example.
   final pulumi.Input<String>? externalValue;
+
   /// The name of this example.
   final pulumi.Input<String> name;
+
   /// A short description for this example.
   final pulumi.Input<String>? summary;
+
   /// The example of the representation.
   final pulumi.Input<String>? value;
 
@@ -38,14 +42,31 @@ class ApiOperationTemplateParameterExample {
     };
   }
 
-  factory ApiOperationTemplateParameterExample.fromMap(Map<String, dynamic> map) {
+  factory ApiOperationTemplateParameterExample.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiOperationTemplateParameterExample(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      externalValue: map['externalValue'] == null ? null : (map['externalValue']! as String).input(),
-      name: (map['name'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalValue: (() {
+        final guardedValue = map['externalValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      summary: (() {
+        final guardedValue = map['summary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

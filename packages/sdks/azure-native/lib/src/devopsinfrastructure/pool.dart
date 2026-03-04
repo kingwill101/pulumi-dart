@@ -339,28 +339,41 @@ import 'vmss_fabric_profile_response.dart';
 class Pool extends pulumi.CustomResource {
   /// Defines how the machine will be handled once it executed a job.
   late final pulumi.Output<StatefulResponse> agentProfile;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource id of the DevCenter Project the pool belongs to.
   late final pulumi.Output<String> devCenterProjectResourceId;
+
   /// Defines the type of fabric the agent will run on.
   late final pulumi.Output<VmssFabricProfileResponse> fabricProfile;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Defines how many resources can there be created at any given time.
   late final pulumi.Output<int> maximumConcurrency;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the organization in which the pool will be used.
-  late final pulumi.Output<AzureDevOpsOrganizationProfileResponse> organizationProfile;
+  late final pulumi.Output<AzureDevOpsOrganizationProfileResponse>
+  organizationProfile;
+
   /// The status of the current operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -368,28 +381,30 @@ class Pool extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_devopsinfrastructure_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(
-    String name, {
-    PoolArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:devopsinfrastructure:Pool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentProfile = registerOutput<StatefulResponse>('agentProfile');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.devCenterProjectResourceId = registerOutput<String>('devCenterProjectResourceId');
-    this.fabricProfile = registerOutput<VmssFabricProfileResponse>('fabricProfile');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maximumConcurrency = registerOutput<int>('maximumConcurrency');
+  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:devopsinfrastructure:Pool',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    agentProfile = registerOutput<StatefulResponse>('agentProfile');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    devCenterProjectResourceId = registerOutput<String>(
+      'devCenterProjectResourceId',
+    );
+    fabricProfile = registerOutput<VmssFabricProfileResponse>('fabricProfile');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    maximumConcurrency = registerOutput<int>('maximumConcurrency');
     this.name = registerOutput<String>('name');
-    this.organizationProfile = registerOutput<AzureDevOpsOrganizationProfileResponse>('organizationProfile');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    organizationProfile =
+        registerOutput<AzureDevOpsOrganizationProfileResponse>(
+          'organizationProfile',
+        );
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

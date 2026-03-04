@@ -4,16 +4,17 @@ enum DomainMappingSpecCertificateMode {
   none("NONE"),
   automatic("AUTOMATIC");
 
-  const DomainMappingSpecCertificateMode(this.value);
-  final String value;
+  const DomainMappingSpecCertificateMode(this.wireValue);
+  final String wireValue;
 
   static DomainMappingSpecCertificateMode fromValue(String value) {
     for (final item in DomainMappingSpecCertificateMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DomainMappingSpecCertificateMode value: $value');
+    throw ArgumentError(
+      'Unknown DomainMappingSpecCertificateMode value: $value',
+    );
   }
 }
-

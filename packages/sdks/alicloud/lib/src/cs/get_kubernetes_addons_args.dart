@@ -9,20 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesAddonsArgs {
   /// The id of kubernetes cluster.
   final pulumi.Input<String> clusterId;
-  /// A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.
+
+  /// A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure &lt;cluster_ud&gt;:&lt;addon_name&gt;.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by addon name.
   final pulumi.Input<String>? nameRegex;
 
   /// Creates a new [GetKubernetesAddonsArgs].
   /// [clusterId] The id of kubernetes cluster.
-  /// [ids] A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.
+  /// [ids] A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure &lt;cluster_ud&gt;:&lt;addon_name&gt;.
   /// [nameRegex] A regex string to filter results by addon name.
-  GetKubernetesAddonsArgs({
-    required this.clusterId,
-    this.ids,
-    this.nameRegex,
-  });
+  GetKubernetesAddonsArgs({required this.clusterId, this.ids, this.nameRegex});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class GetKubernetesAddonsArgs {
 
   factory GetKubernetesAddonsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesAddonsArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -2,8 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_gateway_connection_args.dart';
 import 'vpn_gateway_connection_routing.dart';
 import 'vpn_gateway_connection_state.dart';
-import 'vpn_gateway_connection_traffic_selector_policy.dart';
-import 'vpn_gateway_connection_vpn_link.dart';
 
 /// Manages a VPN Gateway Connection.
 ///
@@ -445,7 +443,7 @@ import 'vpn_gateway_connection_vpn_link.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -460,18 +458,24 @@ import 'vpn_gateway_connection_vpn_link.dart';
 class VpnGatewayConnection extends pulumi.CustomResource {
   /// Whether Internet Security is enabled for this VPN Connection. Defaults to `false`.
   late final pulumi.Output<bool?> internetSecurityEnabled;
+
   /// The name which should be used for this VPN Gateway Connection. Changing this forces a new VPN Gateway Connection to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the remote VPN Site, which will connect to the VPN Gateway. Changing this forces a new VPN Gateway Connection to be created.
   late final pulumi.Output<String> remoteVpnSiteId;
+
   /// A `routing` block as defined below. If this is not specified, there will be a default route table created implicitly.
   late final pulumi.Output<VpnGatewayConnectionRouting> routing;
+
   /// One or more `traffic_selector_policy` blocks as defined below.
-  late final pulumi.Output<List<VpnGatewayConnectionTrafficSelectorPolicy>?> trafficSelectorPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> trafficSelectorPolicies;
+
   /// The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   late final pulumi.Output<String> vpnGatewayId;
+
   /// One or more `vpn_link` blocks as defined below.
-  late final pulumi.Output<List<VpnGatewayConnectionVpnLink>> vpnLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> vpnLinks;
 
   /// Creates a new [VpnGatewayConnection].
   /// [name] The Pulumi resource name.
@@ -482,18 +486,20 @@ class VpnGatewayConnection extends pulumi.CustomResource {
     VpnGatewayConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnGatewayConnection:VpnGatewayConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
+         'azure:network/vpnGatewayConnection:VpnGatewayConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
-    this.remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
-    this.routing = registerOutput<VpnGatewayConnectionRouting>('routing');
-    this.trafficSelectorPolicies = registerOutput<List<VpnGatewayConnectionTrafficSelectorPolicy>?>('trafficSelectorPolicies');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
-    this.vpnLinks = registerOutput<List<VpnGatewayConnectionVpnLink>>('vpnLinks');
+    remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
+    routing = registerOutput<VpnGatewayConnectionRouting>('routing');
+    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'trafficSelectorPolicies',
+    );
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
+    vpnLinks = registerOutput<List<Map<String, dynamic>>>('vpnLinks');
   }
 
   /// Gets an existing [VpnGatewayConnection] resource's state with the given [name] and [id].
@@ -514,17 +520,19 @@ class VpnGatewayConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnGatewayConnection:VpnGatewayConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
+         'azure:network/vpnGatewayConnection:VpnGatewayConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    internetSecurityEnabled = registerOutput<bool?>('internetSecurityEnabled');
     this.name = registerOutput<String>('name');
-    this.remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
-    this.routing = registerOutput<VpnGatewayConnectionRouting>('routing');
-    this.trafficSelectorPolicies = registerOutput<List<VpnGatewayConnectionTrafficSelectorPolicy>?>('trafficSelectorPolicies');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
-    this.vpnLinks = registerOutput<List<VpnGatewayConnectionVpnLink>>('vpnLinks');
+    remoteVpnSiteId = registerOutput<String>('remoteVpnSiteId');
+    routing = registerOutput<VpnGatewayConnectionRouting>('routing');
+    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'trafficSelectorPolicies',
+    );
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
+    vpnLinks = registerOutput<List<Map<String, dynamic>>>('vpnLinks');
   }
 }

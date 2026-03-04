@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNodeSpecListenerPortMapping {
   /// Port used for the port mapping.
   final pulumi.Input<int> port;
+
   /// Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
   final pulumi.Input<String> protocol;
 
@@ -17,17 +18,13 @@ class VirtualNodeSpecListenerPortMapping {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': port,
-      'protocol': protocol,
-    };
+    return <String, dynamic>{'port': port, 'protocol': protocol};
   }
 
   factory VirtualNodeSpecListenerPortMapping.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerPortMapping(
-      port: (map['port'] as int).input(),
-      protocol: (map['protocol'] as String).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

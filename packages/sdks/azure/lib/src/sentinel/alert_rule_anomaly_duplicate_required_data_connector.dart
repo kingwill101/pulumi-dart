@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyDuplicateRequiredDataConnector {
   /// The ID of the required Data Connector.
   final pulumi.Input<String>? connectorId;
+
   /// A list of data types of the required Data Connector.
   final pulumi.Input<List<String>>? dataTypes;
 
@@ -23,11 +24,20 @@ class AlertRuleAnomalyDuplicateRequiredDataConnector {
     };
   }
 
-  factory AlertRuleAnomalyDuplicateRequiredDataConnector.fromMap(Map<String, dynamic> map) {
+  factory AlertRuleAnomalyDuplicateRequiredDataConnector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertRuleAnomalyDuplicateRequiredDataConnector(
-      connectorId: map['connectorId'] == null ? null : (map['connectorId']! as String).input(),
-      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes']! as List).cast<String>()).input(),
+      connectorId: (() {
+        final guardedValue = map['connectorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataTypes: (() {
+        final guardedValue = map['dataTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

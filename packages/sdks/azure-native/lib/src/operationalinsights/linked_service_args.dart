@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceArgs {
   /// Name of the linkedServices resource
   final pulumi.Input<String>? linkedServiceName;
+
   /// The provisioning state of the linked service.
   final pulumi.Input<String>? provisioningState;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
   final pulumi.Input<String>? resourceId;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
+
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
   final pulumi.Input<String>? writeAccessResourceId;
 
@@ -54,14 +60,37 @@ class LinkedServiceArgs {
 
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
-      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName']! as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
-      writeAccessResourceId: map['writeAccessResourceId'] == null ? null : (map['writeAccessResourceId']! as String).input(),
+      linkedServiceName: (() {
+        final guardedValue = map['linkedServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
+      writeAccessResourceId: (() {
+        final guardedValue = map['writeAccessResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,16 +13,22 @@ import 'security_assessment_partner_data.dart';
 class AssessmentArgs {
   /// Additional data regarding the assessment
   final pulumi.Input<Map<String, String>>? additionalData;
+
   /// The Assessment Key - Unique key for the assessment type
   final pulumi.Input<String>? assessmentName;
+
   /// Describes properties of an assessment metadata.
   final pulumi.Input<SecurityAssessmentMetadataProperties>? metadata;
+
   /// Data regarding 3rd party partner integration
   final pulumi.Input<SecurityAssessmentPartnerData>? partnersData;
+
   /// Details of the resource that was assessed
   final pulumi.Input<AzureResourceDetails> resourceDetails;
+
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
+
   /// The result of the assessment
   final pulumi.Input<AssessmentStatus> status;
 
@@ -48,24 +54,73 @@ class AssessmentArgs {
     return <String, dynamic>{
       'additionalData': ?additionalData,
       'assessmentName': ?assessmentName,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<SecurityAssessmentMetadataProperties, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'partnersData': ?pulumi.Input.mapOptionalInputValue<SecurityAssessmentPartnerData, Map<String, dynamic>>(partnersData, (value) => value.toMap()),
-      'resourceDetails': pulumi.Input.mapInputValue<AzureResourceDetails, Map<String, dynamic>>(resourceDetails, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityAssessmentMetadataProperties,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'partnersData':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityAssessmentPartnerData,
+            Map<String, dynamic>
+          >(partnersData, (value) => value.toMap()),
+      'resourceDetails':
+          pulumi.Input.mapInputValue<
+            AzureResourceDetails,
+            Map<String, dynamic>
+          >(resourceDetails, (value) => value.toMap()),
       'resourceId': resourceId,
-      'status': pulumi.Input.mapInputValue<AssessmentStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<AssessmentStatus, Map<String, dynamic>>(
+            status,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      additionalData: map['additionalData'] == null ? null : ((map['additionalData']! as Map).cast<String, String>()).input(),
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
-      metadata: map['metadata'] == null ? null : (SecurityAssessmentMetadataProperties.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      partnersData: map['partnersData'] == null ? null : (SecurityAssessmentPartnerData.fromMap((map['partnersData']! as Map).cast<String, dynamic>())).input(),
-      resourceDetails: (AzureResourceDetails.fromMap((map['resourceDetails'] as Map).cast<String, dynamic>())).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      status: (AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      additionalData: (() {
+        final guardedValue = map['additionalData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      assessmentName: (() {
+        final guardedValue = map['assessmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityAssessmentMetadataProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      partnersData: (() {
+        final guardedValue = map['partnersData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityAssessmentPartnerData.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceDetails: pulumi.Input.fromValue(
+        AzureResourceDetails.fromMap(
+          (map['resourceDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      status: pulumi.Input.fromValue(
+        AssessmentStatus.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

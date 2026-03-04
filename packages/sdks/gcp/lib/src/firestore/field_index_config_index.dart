@@ -7,10 +7,12 @@ class FieldIndexConfigIndex {
   /// be specified.
   /// Possible values are: `CONTAINS`.
   final pulumi.Input<String>? arrayConfig;
-  /// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+
+  /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=, !=.
   /// Only one of `order` and `arrayConfig` can be specified.
   /// Possible values are: `ASCENDING`, `DESCENDING`.
   final pulumi.Input<String>? order;
+
   /// The scope at which a query is run. Collection scoped queries require you specify
   /// the collection at query time. Collection group scope allows queries across all
   /// collections with the same id.
@@ -20,13 +22,9 @@ class FieldIndexConfigIndex {
 
   /// Creates a new [FieldIndexConfigIndex].
   /// [arrayConfig] Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-  /// [order] Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+  /// [order] Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=, !=.
   /// [queryScope] The scope at which a query is run. Collection scoped queries require you specify
-  FieldIndexConfigIndex({
-    this.arrayConfig,
-    this.order,
-    this.queryScope,
-  });
+  FieldIndexConfigIndex({this.arrayConfig, this.order, this.queryScope});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +36,21 @@ class FieldIndexConfigIndex {
 
   factory FieldIndexConfigIndex.fromMap(Map<String, dynamic> map) {
     return FieldIndexConfigIndex(
-      arrayConfig: map['arrayConfig'] == null ? null : (map['arrayConfig']! as String).input(),
-      order: map['order'] == null ? null : (map['order']! as String).input(),
-      queryScope: map['queryScope'] == null ? null : (map['queryScope']! as String).input(),
+      arrayConfig: (() {
+        final guardedValue = map['arrayConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryScope: (() {
+        final guardedValue = map['queryScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

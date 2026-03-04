@@ -5,7 +5,7 @@ import 'cluster_state.dart';
 
 /// Manages an Arc Kubernetes Cluster.
 ///
-/// > **Note:** Installing and configuring the Azure Arc Agent on your Kubernetes Cluster to establish connectivity is outside the scope of this document. For more details refer to [Deploy agents to your cluster](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/conceptual-agent-overview#deploy-agents-to-your-cluster) and [Connect an existing Kubernetes Cluster](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#connect-an-existing-kubernetes-cluster). If you encounter issues connecting your Kubernetes Cluster to Azure Arc, we'd recommend opening a ticket with Microsoft Support.
+/// &gt; **Note:** Installing and configuring the Azure Arc Agent on your Kubernetes Cluster to establish connectivity is outside the scope of this document. For more details refer to [Deploy agents to your cluster](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/conceptual-agent-overview#deploy-agents-to-your-cluster) and [Connect an existing Kubernetes Cluster](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#connect-an-existing-kubernetes-cluster). If you encounter issues connecting your Kubernetes Cluster to Azure Arc, we'd recommend opening a ticket with Microsoft Support.
 ///
 /// ## Example Usage
 ///
@@ -208,11 +208,11 @@ import 'cluster_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** An extensive example on connecting the `azure.arckubernetes.Cluster` to an external kubernetes cluster can be found in the `./examples/arckubernetes` directory within the GitHub Repository.
+/// &gt; **Note:** An extensive example on connecting the `azure.arckubernetes.Cluster` to an external kubernetes cluster can be found in the `./examples/arckubernetes` directory within the GitHub Repository.
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Kubernetes` - 2024-01-01
@@ -227,28 +227,40 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// Specifies the base64-encoded public certificate used by the agent to do the initial handshake to the backend services in Azure. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> agentPublicKeyCertificate;
+
   /// Version of the agent running on the cluster resource.
   late final pulumi.Output<String> agentVersion;
+
   /// The distribution running on this Arc Kubernetes Cluster.
   late final pulumi.Output<String> distribution;
+
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<ClusterIdentity> identity;
+
   /// The infrastructure on which the Arc Kubernetes Cluster is running on.
   late final pulumi.Output<String> infrastructure;
+
   /// The Kubernetes version of the cluster resource.
   late final pulumi.Output<String> kubernetesVersion;
+
   /// Specifies the Azure Region where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Arc Kubernetes Cluster. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> name;
+
   /// The cluster offering.
   late final pulumi.Output<String> offering;
+
   /// Specifies the name of the Resource Group where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Arc Kubernetes Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Number of CPU cores present in the cluster resource.
   late final pulumi.Output<int> totalCoreCount;
+
   /// Number of nodes present in the cluster resource.
   late final pulumi.Output<int> totalNodeCount;
 
@@ -261,24 +273,26 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arckubernetes/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentPublicKeyCertificate = registerOutput<String>('agentPublicKeyCertificate');
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.distribution = registerOutput<String>('distribution');
-    this.identity = registerOutput<ClusterIdentity>('identity');
-    this.infrastructure = registerOutput<String>('infrastructure');
-    this.kubernetesVersion = registerOutput<String>('kubernetesVersion');
-    this.location = registerOutput<String>('location');
+         'azure:arckubernetes/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentPublicKeyCertificate = registerOutput<String>(
+      'agentPublicKeyCertificate',
+    );
+    agentVersion = registerOutput<String>('agentVersion');
+    distribution = registerOutput<String>('distribution');
+    identity = registerOutput<ClusterIdentity>('identity');
+    infrastructure = registerOutput<String>('infrastructure');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.offering = registerOutput<String>('offering');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalCoreCount = registerOutput<int>('totalCoreCount');
-    this.totalNodeCount = registerOutput<int>('totalNodeCount');
+    offering = registerOutput<String>('offering');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalCoreCount = registerOutput<int>('totalCoreCount');
+    totalNodeCount = registerOutput<int>('totalNodeCount');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -299,23 +313,25 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arckubernetes/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentPublicKeyCertificate = registerOutput<String>('agentPublicKeyCertificate');
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.distribution = registerOutput<String>('distribution');
-    this.identity = registerOutput<ClusterIdentity>('identity');
-    this.infrastructure = registerOutput<String>('infrastructure');
-    this.kubernetesVersion = registerOutput<String>('kubernetesVersion');
-    this.location = registerOutput<String>('location');
+         'azure:arckubernetes/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentPublicKeyCertificate = registerOutput<String>(
+      'agentPublicKeyCertificate',
+    );
+    agentVersion = registerOutput<String>('agentVersion');
+    distribution = registerOutput<String>('distribution');
+    identity = registerOutput<ClusterIdentity>('identity');
+    infrastructure = registerOutput<String>('infrastructure');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.offering = registerOutput<String>('offering');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalCoreCount = registerOutput<int>('totalCoreCount');
-    this.totalNodeCount = registerOutput<int>('totalNodeCount');
+    offering = registerOutput<String>('offering');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalCoreCount = registerOutput<int>('totalCoreCount');
+    totalNodeCount = registerOutput<int>('totalNodeCount');
   }
 }

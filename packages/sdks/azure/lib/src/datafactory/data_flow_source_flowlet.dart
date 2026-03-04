@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataFlowSourceFlowlet {
   /// Specifies the reference data flow parameters from dataset.
   final pulumi.Input<String>? datasetParameters;
+
   /// The name for the Data Factory Flowlet.
   final pulumi.Input<String> name;
+
   /// A map of parameters to associate with the Data Factory Flowlet.
   final pulumi.Input<Map<String, String>>? parameters;
 
@@ -30,10 +32,19 @@ class DataFlowSourceFlowlet {
 
   factory DataFlowSourceFlowlet.fromMap(Map<String, dynamic> map) {
     return DataFlowSourceFlowlet(
-      datasetParameters: map['datasetParameters'] == null ? null : (map['datasetParameters']! as String).input(),
-      name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      datasetParameters: (() {
+        final guardedValue = map['datasetParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

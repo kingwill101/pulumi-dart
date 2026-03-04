@@ -152,34 +152,49 @@ import 'subscription_args.dart';
 class Subscription extends pulumi.CustomResource {
   /// Determines whether tracing is enabled
   late final pulumi.Output<bool?> allowTracing;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Subscription creation date. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String> createdDate;
+
   /// The name of the subscription, or null if the subscription has no name.
   late final pulumi.Output<String?> displayName;
+
   /// Date when subscription was cancelled or expired. The setting is for audit purposes only and the subscription is not automatically cancelled. The subscription lifecycle can be managed by using the `state` property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String?> endDate;
+
   /// Subscription expiration date. The setting is for audit purposes only and the subscription is not automatically expired. The subscription lifecycle can be managed by using the `state` property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String?> expirationDate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Upcoming subscription expiration notification date. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String?> notificationDate;
+
   /// The user resource identifier of the subscription owner. The value is a valid relative URL in the format of /users/{userId} where {userId} is a user identifier.
   late final pulumi.Output<String?> ownerId;
+
   /// Subscription primary key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   late final pulumi.Output<String?> primaryKey;
+
   /// Scope like /products/{productId} or /apis or /apis/{apiId}.
   late final pulumi.Output<String> scope;
+
   /// Subscription secondary key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   late final pulumi.Output<String?> secondaryKey;
+
   /// Subscription activation date. The setting is for audit purposes only and the subscription is not automatically activated. The subscription lifecycle can be managed by using the `state` property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   late final pulumi.Output<String?> startDate;
+
   /// Subscription state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
   late final pulumi.Output<String> state;
+
   /// Optional subscription comment added by an administrator when the state is changed to the 'rejected'.
   late final pulumi.Output<String?> stateComment;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -192,26 +207,26 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:Subscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowTracing = registerOutput<bool?>('allowTracing');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.displayName = registerOutput<String?>('displayName');
-    this.endDate = registerOutput<String?>('endDate');
-    this.expirationDate = registerOutput<String?>('expirationDate');
+         'azure-native:apimanagement:Subscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowTracing = registerOutput<bool?>('allowTracing');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    displayName = registerOutput<String?>('displayName');
+    endDate = registerOutput<String?>('endDate');
+    expirationDate = registerOutput<String?>('expirationDate');
     this.name = registerOutput<String>('name');
-    this.notificationDate = registerOutput<String?>('notificationDate');
-    this.ownerId = registerOutput<String?>('ownerId');
-    this.primaryKey = registerOutput<String?>('primaryKey');
-    this.scope = registerOutput<String>('scope');
-    this.secondaryKey = registerOutput<String?>('secondaryKey');
-    this.startDate = registerOutput<String?>('startDate');
-    this.state = registerOutput<String>('state');
-    this.stateComment = registerOutput<String?>('stateComment');
-    this.type = registerOutput<String>('type');
+    notificationDate = registerOutput<String?>('notificationDate');
+    ownerId = registerOutput<String?>('ownerId');
+    primaryKey = registerOutput<String?>('primaryKey');
+    scope = registerOutput<String>('scope');
+    secondaryKey = registerOutput<String?>('secondaryKey');
+    startDate = registerOutput<String?>('startDate');
+    state = registerOutput<String>('state');
+    stateComment = registerOutput<String?>('stateComment');
+    type = registerOutput<String>('type');
   }
 }

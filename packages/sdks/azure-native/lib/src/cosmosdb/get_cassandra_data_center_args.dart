@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCassandraDataCenterArgs {
   /// Managed Cassandra cluster name.
   final pulumi.Input<String> clusterName;
+
   /// Data center name in a managed Cassandra cluster.
   final pulumi.Input<String> dataCenterName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetCassandraDataCenterArgs {
 
   factory GetCassandraDataCenterArgs.fromMap(Map<String, dynamic> map) {
     return GetCassandraDataCenterArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      dataCenterName: (map['dataCenterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      dataCenterName: pulumi.Input.fromValue(map['dataCenterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

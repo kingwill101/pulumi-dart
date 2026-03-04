@@ -9,24 +9,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CollectorArgs {
   /// How many days to collect data.
   final pulumi.Input<int>? collectionDays;
+
   /// Required. Id of the requesting object.
   final pulumi.Input<String> collectorId;
+
   /// User specified description of the Collector.
   final pulumi.Input<String>? description;
+
   /// User specified name of the Collector.
   final pulumi.Input<String>? displayName;
+
   /// Uri for EULA (End User License Agreement) from customer.
   final pulumi.Input<String>? eulaUri;
+
   /// User specified expected asset count.
   final pulumi.Input<String>? expectedAssetCount;
+
   /// Labels as key value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// name of resource.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Optional. An optional request ID to identify requests.
   final pulumi.Input<String>? requestId;
+
   /// Service Account email used to ingest data to this Collector.
   final pulumi.Input<String>? serviceAccount;
 
@@ -77,19 +86,64 @@ class CollectorArgs {
 
   factory CollectorArgs.fromMap(Map<String, dynamic> map) {
     return CollectorArgs(
-      collectionDays: map['collectionDays'] == null ? null : (map['collectionDays']! as int).input(),
-      collectorId: (map['collectorId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      eulaUri: map['eulaUri'] == null ? null : (map['eulaUri']! as String).input(),
-      expectedAssetCount: map['expectedAssetCount'] == null ? null : (map['expectedAssetCount']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      collectionDays: (() {
+        final guardedValue = map['collectionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      collectorId: pulumi.Input.fromValue(map['collectorId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eulaUri: (() {
+        final guardedValue = map['eulaUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expectedAssetCount: (() {
+        final guardedValue = map['expectedAssetCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

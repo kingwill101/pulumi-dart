@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadPartnerPermissions {
   /// Optional. Allow partner to view violation alerts.
   final pulumi.Input<bool>? assuredWorkloadsMonitoring;
+
   /// Allow the partner to view inspectability logs and monitoring violations.
   final pulumi.Input<bool>? dataLogsViewer;
+
   /// Optional. Allow partner to view access approval logs.
   final pulumi.Input<bool>? serviceAccessApprover;
 
@@ -30,10 +32,21 @@ class WorkloadPartnerPermissions {
 
   factory WorkloadPartnerPermissions.fromMap(Map<String, dynamic> map) {
     return WorkloadPartnerPermissions(
-      assuredWorkloadsMonitoring: map['assuredWorkloadsMonitoring'] == null ? null : (map['assuredWorkloadsMonitoring']! as bool).input(),
-      dataLogsViewer: map['dataLogsViewer'] == null ? null : (map['dataLogsViewer']! as bool).input(),
-      serviceAccessApprover: map['serviceAccessApprover'] == null ? null : (map['serviceAccessApprover']! as bool).input(),
+      assuredWorkloadsMonitoring: (() {
+        final guardedValue = map['assuredWorkloadsMonitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dataLogsViewer: (() {
+        final guardedValue = map['dataLogsViewer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceAccessApprover: (() {
+        final guardedValue = map['serviceAccessApprover'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

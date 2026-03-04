@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFilterCriteriaEcrImageInUseCount {
   /// (Optional) Lower bound of the range, inclusive.
   final pulumi.Input<double> lowerInclusive;
+
   /// (Optional) Upper bound of the range, inclusive.
   final pulumi.Input<double> upperInclusive;
 
@@ -23,11 +24,12 @@ class FilterFilterCriteriaEcrImageInUseCount {
     };
   }
 
-  factory FilterFilterCriteriaEcrImageInUseCount.fromMap(Map<String, dynamic> map) {
+  factory FilterFilterCriteriaEcrImageInUseCount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FilterFilterCriteriaEcrImageInUseCount(
-      lowerInclusive: (map['lowerInclusive'] as double).input(),
-      upperInclusive: (map['upperInclusive'] as double).input(),
+      lowerInclusive: pulumi.Input.fromValue(map['lowerInclusive'] as double),
+      upperInclusive: pulumi.Input.fromValue(map['upperInclusive'] as double),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_gkeonprem;
-
 export 'gkeonprem/bare_metal_admin_cluster.dart';
 export 'gkeonprem/bare_metal_admin_cluster_args.dart';
 export 'gkeonprem/bare_metal_admin_cluster_cluster_operations.dart';

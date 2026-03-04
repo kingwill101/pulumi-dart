@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorLogResponse {
   /// Resource ID of MonitorLog
   final pulumi.Input<String>? id;
+
   /// Primary Key value for Monitor
   final pulumi.Input<String>? primaryKey;
+
   /// Secondary Key value for Monitor
   final pulumi.Input<String>? secondaryKey;
+
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
+
   /// MonitorLog workspace
   final pulumi.Input<String>? workspace;
 
@@ -41,12 +45,31 @@ class MonitorLogResponse {
 
   factory MonitorLogResponse.fromMap(Map<String, dynamic> map) {
     return MonitorLogResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      workspace: map['workspace'] == null ? null : (map['workspace']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspace: (() {
+        final guardedValue = map['workspace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

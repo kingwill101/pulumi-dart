@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IoTHubNetworkRuleSetIpRule {
   /// The desired action for requests captured by this rule. Possible values are `Allow`. Defaults to `Allow`.
   final pulumi.Input<String>? action;
+
   /// The IP address range in CIDR notation for the ip rule.
   final pulumi.Input<String> ipMask;
+
   /// The name of the ip rule.
   final pulumi.Input<String> name;
 
@@ -21,19 +23,18 @@ class IoTHubNetworkRuleSetIpRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': ?action,
-      'ipMask': ipMask,
-      'name': name,
-    };
+    return <String, dynamic>{'action': ?action, 'ipMask': ipMask, 'name': name};
   }
 
   factory IoTHubNetworkRuleSetIpRule.fromMap(Map<String, dynamic> map) {
     return IoTHubNetworkRuleSetIpRule(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      ipMask: (map['ipMask'] as String).input(),
-      name: (map['name'] as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipMask: pulumi.Input.fromValue(map['ipMask'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

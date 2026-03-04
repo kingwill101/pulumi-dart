@@ -8,7 +8,7 @@ import 'transit_router_state.dart';
 ///
 /// For information about Cloud Enterprise Network (CEN) Transit Router and how to use it, see [What is Transit Router](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouter).
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///
@@ -174,26 +174,36 @@ import 'transit_router_state.dart';
 class TransitRouter extends pulumi.CustomResource {
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   late final pulumi.Output<String> cenId;
+
   /// (Available since v1.247.0) The time when the transit router was created.
   late final pulumi.Output<String> createTime;
+
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
+
   /// (Available since v1.247.0) The ID of the region where the transit router is deployed.
   late final pulumi.Output<String> regionId;
+
   /// The status of the transit router.
   late final pulumi.Output<String> status;
+
   /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
   late final pulumi.Output<bool?> supportMulticast;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The description of the Enterprise Edition transit router instance.
   /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
   late final pulumi.Output<String?> transitRouterDescription;
+
   /// The ID of the transit router.
   late final pulumi.Output<String> transitRouterId;
+
   /// The name of the Enterprise Edition transit router.
   /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
   late final pulumi.Output<String?> transitRouterName;
+
   /// The edition of the transit router.
   late final pulumi.Output<String> type;
 
@@ -206,22 +216,24 @@ class TransitRouter extends pulumi.CustomResource {
     TransitRouterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouter:TransitRouter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.supportMulticast = registerOutput<bool?>('supportMulticast');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterDescription = registerOutput<String?>('transitRouterDescription');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterName = registerOutput<String?>('transitRouterName');
-    this.type = registerOutput<String>('type');
+         'alicloud:cen/transitRouter:TransitRouter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    supportMulticast = registerOutput<bool?>('supportMulticast');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterDescription = registerOutput<String?>(
+      'transitRouterDescription',
+    );
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterName = registerOutput<String?>('transitRouterName');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [TransitRouter] resource's state with the given [name] and [id].
@@ -242,21 +254,23 @@ class TransitRouter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouter:TransitRouter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.supportMulticast = registerOutput<bool?>('supportMulticast');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitRouterDescription = registerOutput<String?>('transitRouterDescription');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterName = registerOutput<String?>('transitRouterName');
-    this.type = registerOutput<String>('type');
+         'alicloud:cen/transitRouter:TransitRouter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    supportMulticast = registerOutput<bool?>('supportMulticast');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitRouterDescription = registerOutput<String?>(
+      'transitRouterDescription',
+    );
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterName = registerOutput<String?>('transitRouterName');
+    type = registerOutput<String>('type');
   }
 }

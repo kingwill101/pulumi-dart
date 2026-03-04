@@ -10,20 +10,29 @@ class ConfigMonitoring {
 
   /// Creates a new [ConfigMonitoring].
   /// [requestLogging] Configuration for logging requests made to this project to Stackdriver Logging
-  ConfigMonitoring({
-    this.requestLogging,
-  });
+  ConfigMonitoring({this.requestLogging});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestLogging': ?pulumi.Input.mapOptionalInputValue<ConfigMonitoringRequestLogging, Map<String, dynamic>>(requestLogging, (value) => value.toMap()),
+      'requestLogging':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigMonitoringRequestLogging,
+            Map<String, dynamic>
+          >(requestLogging, (value) => value.toMap()),
     };
   }
 
   factory ConfigMonitoring.fromMap(Map<String, dynamic> map) {
     return ConfigMonitoring(
-      requestLogging: map['requestLogging'] == null ? null : (ConfigMonitoringRequestLogging.fromMap((map['requestLogging']! as Map).cast<String, dynamic>())).input(),
+      requestLogging: (() {
+        final guardedValue = map['requestLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigMonitoringRequestLogging.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

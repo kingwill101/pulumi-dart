@@ -9,20 +9,25 @@ class ClusterNotificationConfig {
 
   /// Creates a new [ClusterNotificationConfig].
   /// [pubsub] The pubsub config for the cluster's upgrade notifications.
-  ClusterNotificationConfig({
-    required this.pubsub,
-  });
+  ClusterNotificationConfig({required this.pubsub});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsub': pulumi.Input.mapInputValue<ClusterNotificationConfigPubsub, Map<String, dynamic>>(pubsub, (value) => value.toMap()),
+      'pubsub':
+          pulumi.Input.mapInputValue<
+            ClusterNotificationConfigPubsub,
+            Map<String, dynamic>
+          >(pubsub, (value) => value.toMap()),
     };
   }
 
   factory ClusterNotificationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNotificationConfig(
-      pubsub: (ClusterNotificationConfigPubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>())).input(),
+      pubsub: pulumi.Input.fromValue(
+        ClusterNotificationConfigPubsub.fromMap(
+          (map['pubsub']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

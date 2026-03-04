@@ -5,16 +5,15 @@ enum SpatialType {
   valuePolygon("Polygon"),
   valueMultiPolygon("MultiPolygon");
 
-  const SpatialType(this.value);
-  final String value;
+  const SpatialType(this.wireValue);
+  final String wireValue;
 
   static SpatialType fromValue(String value) {
     for (final item in SpatialType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SpatialType value: $value');
   }
 }
-

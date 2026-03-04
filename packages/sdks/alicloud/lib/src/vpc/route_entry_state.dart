@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteEntryState {
   /// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
   final pulumi.Input<String>? description;
+
   /// The destination CIDR block of the custom route entry.
   final pulumi.Input<String>? destinationCidrblock;
+
   /// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
   final pulumi.Input<String>? name;
+
   /// The ID of Next Hop.
   final pulumi.Input<String>? nexthopId;
+
   /// The type of Next Hop. Valid values:
   /// - `Instance`: An Elastic Compute Service (ECS) instance.
   /// - `HaVip`: A high-availability virtual IP address (HAVIP).
@@ -26,8 +30,10 @@ class RouteEntryState {
   /// - `GatewayEndpoint`: A gateway endpoint.
   /// - `Ecr`: A Express Connect Router (ECR).
   final pulumi.Input<String>? nexthopType;
+
   /// The ID of the Route Table.
   final pulumi.Input<String>? routeTableId;
+
   /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
   final pulumi.Input<String>? routerId;
 
@@ -63,14 +69,41 @@ class RouteEntryState {
 
   factory RouteEntryState.fromMap(Map<String, dynamic> map) {
     return RouteEntryState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationCidrblock: map['destinationCidrblock'] == null ? null : (map['destinationCidrblock']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId']! as String).input(),
-      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType']! as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationCidrblock: (() {
+        final guardedValue = map['destinationCidrblock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nexthopId: (() {
+        final guardedValue = map['nexthopId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nexthopType: (() {
+        final guardedValue = map['nexthopType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableId: (() {
+        final guardedValue = map['routeTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routerId: (() {
+        final guardedValue = map['routerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

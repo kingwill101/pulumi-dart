@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileFilterDetails {
   /// List of full path of the files to be transferred.
   final pulumi.Input<List<String>>? filePathList;
+
   /// Prefix list of the Azure files to be transferred.
   final pulumi.Input<List<String>>? filePrefixList;
+
   /// List of file shares to be transferred.
   final pulumi.Input<List<String>>? fileShareList;
 
@@ -31,10 +33,21 @@ class AzureFileFilterDetails {
 
   factory AzureFileFilterDetails.fromMap(Map<String, dynamic> map) {
     return AzureFileFilterDetails(
-      filePathList: map['filePathList'] == null ? null : ((map['filePathList']! as List).cast<String>()).input(),
-      filePrefixList: map['filePrefixList'] == null ? null : ((map['filePrefixList']! as List).cast<String>()).input(),
-      fileShareList: map['fileShareList'] == null ? null : ((map['fileShareList']! as List).cast<String>()).input(),
+      filePathList: (() {
+        final guardedValue = map['filePathList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      filePrefixList: (() {
+        final guardedValue = map['filePrefixList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fileShareList: (() {
+        final guardedValue = map['fileShareList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TypedLocalObjectReferencePatch {
   /// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
   final pulumi.Input<String>? apiGroup;
+
   /// Kind is the type of resource being referenced
   final pulumi.Input<String>? kind;
+
   /// Name is the name of resource being referenced
   final pulumi.Input<String>? name;
 
@@ -15,11 +17,7 @@ class TypedLocalObjectReferencePatch {
   /// [apiGroup] APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
   /// [kind] Kind is the type of resource being referenced
   /// [name] Name is the name of resource being referenced
-  TypedLocalObjectReferencePatch({
-    this.apiGroup,
-    this.kind,
-    this.name,
-  });
+  TypedLocalObjectReferencePatch({this.apiGroup, this.kind, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class TypedLocalObjectReferencePatch {
 
   factory TypedLocalObjectReferencePatch.fromMap(Map<String, dynamic> map) {
     return TypedLocalObjectReferencePatch(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      apiGroup: (() {
+        final guardedValue = map['apiGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectivityEndpointResponse {
   /// The location of the endpoint.
   final pulumi.Input<String>? location;
+
   /// The name of the endpoint.
   final pulumi.Input<String>? name;
+
   /// The port to connect to.
   final pulumi.Input<int>? port;
+
   /// The private ip address of the endpoint.
   final pulumi.Input<String>? privateIPAddress;
+
   /// The protocol of the endpoint.
   final pulumi.Input<String>? protocol;
 
@@ -41,12 +45,31 @@ class ConnectivityEndpointResponse {
 
   factory ConnectivityEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ConnectivityEndpointResponse(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      privateIPAddress: (() {
+        final guardedValue = map['privateIPAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

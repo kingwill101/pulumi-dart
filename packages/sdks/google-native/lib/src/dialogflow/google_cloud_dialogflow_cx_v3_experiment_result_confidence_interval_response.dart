@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse {
   /// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
   final pulumi.Input<double> confidenceLevel;
+
   /// Lower bound of the interval.
   final pulumi.Input<double> lowerBound;
+
   /// The percent change between an experiment metric's value and the value for its control.
   final pulumi.Input<double> ratio;
+
   /// Upper bound of the interval.
   final pulumi.Input<double> upperBound;
 
@@ -34,13 +37,14 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse(
-      confidenceLevel: (map['confidenceLevel'] as double).input(),
-      lowerBound: (map['lowerBound'] as double).input(),
-      ratio: (map['ratio'] as double).input(),
-      upperBound: (map['upperBound'] as double).input(),
+      confidenceLevel: pulumi.Input.fromValue(map['confidenceLevel'] as double),
+      lowerBound: pulumi.Input.fromValue(map['lowerBound'] as double),
+      ratio: pulumi.Input.fromValue(map['ratio'] as double),
+      upperBound: pulumi.Input.fromValue(map['upperBound'] as double),
     );
   }
 }
-

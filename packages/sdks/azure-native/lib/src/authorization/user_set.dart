@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserSet {
   /// The description of the user.
   final pulumi.Input<String>? description;
+
   /// The object id of the user.
   final pulumi.Input<String>? id;
+
   /// The value indicating whether the user is a backup fallback approver
   final pulumi.Input<bool>? isBackup;
+
   /// The type of user.
   final pulumi.Input<String>? userType;
 
@@ -18,12 +21,7 @@ class UserSet {
   /// [id] The object id of the user.
   /// [isBackup] The value indicating whether the user is a backup fallback approver
   /// [userType] The type of user.
-  UserSet({
-    this.description,
-    this.id,
-    this.isBackup,
-    this.userType,
-  });
+  UserSet({this.description, this.id, this.isBackup, this.userType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class UserSet {
 
   factory UserSet.fromMap(Map<String, dynamic> map) {
     return UserSet(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      isBackup: map['isBackup'] == null ? null : (map['isBackup']! as bool).input(),
-      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isBackup: (() {
+        final guardedValue = map['isBackup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userType: (() {
+        final guardedValue = map['userType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

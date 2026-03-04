@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertManagerPrivateKey {
   /// algorithm for private key.
   final pulumi.Input<String> algorithm;
+
   /// cert-manager rotationPolicy.
   final pulumi.Input<String> rotationPolicy;
+
   /// size of private key.
   final pulumi.Input<int> size;
 
@@ -31,10 +33,9 @@ class CertManagerPrivateKey {
 
   factory CertManagerPrivateKey.fromMap(Map<String, dynamic> map) {
     return CertManagerPrivateKey(
-      algorithm: (map['algorithm'] as String).input(),
-      rotationPolicy: (map['rotationPolicy'] as String).input(),
-      size: (map['size'] as int).input(),
+      algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
+      rotationPolicy: pulumi.Input.fromValue(map['rotationPolicy'] as String),
+      size: pulumi.Input.fromValue(map['size'] as int),
     );
   }
 }
-

@@ -12,6 +12,7 @@ class GetRegionsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
   final pulumi.Input<List<GetRegionsFilter>>? filters;
+
   /// Sort the results.
   /// The `sort` block is documented below.
   final pulumi.Input<List<GetRegionsSort>>? sorts;
@@ -19,23 +20,62 @@ class GetRegionsArgs {
   /// Creates a new [GetRegionsArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetRegionsArgs({
-    this.filters,
-    this.sorts,
-  });
+  GetRegionsArgs({this.filters, this.sorts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetRegionsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sorts': ?pulumi.Input.mapOptionalInputValue<List<GetRegionsSort>, List<Map<String, dynamic>>>(sorts, (value) => pulumi.Input.encodeList<GetRegionsSort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetRegionsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<GetRegionsFilter, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'sorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetRegionsSort>,
+            List<Map<String, dynamic>>
+          >(
+            sorts,
+            (value) =>
+                pulumi.Input.encodeList<GetRegionsSort, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRegionsFilter>(map['filters']!, (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetRegionsSort>(map['sorts']!, (value) => GetRegionsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetRegionsFilter>(
+            guardedValue,
+            (value) => GetRegionsFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sorts: (() {
+        final guardedValue = map['sorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetRegionsSort>(
+            guardedValue,
+            (value) =>
+                GetRegionsSort.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

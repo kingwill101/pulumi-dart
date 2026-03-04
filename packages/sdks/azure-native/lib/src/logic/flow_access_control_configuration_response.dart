@@ -7,12 +7,16 @@ import 'flow_access_control_configuration_policy_response.dart';
 class FlowAccessControlConfigurationResponse {
   /// The access control configuration for workflow actions.
   final pulumi.Input<FlowAccessControlConfigurationPolicyResponse>? actions;
+
   /// The access control configuration for accessing workflow run contents.
   final pulumi.Input<FlowAccessControlConfigurationPolicyResponse>? contents;
+
   /// The access control configuration for invoking workflow triggers.
   final pulumi.Input<FlowAccessControlConfigurationPolicyResponse>? triggers;
+
   /// The access control configuration for workflow management.
-  final pulumi.Input<FlowAccessControlConfigurationPolicyResponse>? workflowManagement;
+  final pulumi.Input<FlowAccessControlConfigurationPolicyResponse>?
+  workflowManagement;
 
   /// Creates a new [FlowAccessControlConfigurationResponse].
   /// [actions] The access control configuration for workflow actions.
@@ -28,20 +32,69 @@ class FlowAccessControlConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<FlowAccessControlConfigurationPolicyResponse, Map<String, dynamic>>(actions, (value) => value.toMap()),
-      'contents': ?pulumi.Input.mapOptionalInputValue<FlowAccessControlConfigurationPolicyResponse, Map<String, dynamic>>(contents, (value) => value.toMap()),
-      'triggers': ?pulumi.Input.mapOptionalInputValue<FlowAccessControlConfigurationPolicyResponse, Map<String, dynamic>>(triggers, (value) => value.toMap()),
-      'workflowManagement': ?pulumi.Input.mapOptionalInputValue<FlowAccessControlConfigurationPolicyResponse, Map<String, dynamic>>(workflowManagement, (value) => value.toMap()),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowAccessControlConfigurationPolicyResponse,
+            Map<String, dynamic>
+          >(actions, (value) => value.toMap()),
+      'contents':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowAccessControlConfigurationPolicyResponse,
+            Map<String, dynamic>
+          >(contents, (value) => value.toMap()),
+      'triggers':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowAccessControlConfigurationPolicyResponse,
+            Map<String, dynamic>
+          >(triggers, (value) => value.toMap()),
+      'workflowManagement':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowAccessControlConfigurationPolicyResponse,
+            Map<String, dynamic>
+          >(workflowManagement, (value) => value.toMap()),
     };
   }
 
-  factory FlowAccessControlConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory FlowAccessControlConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowAccessControlConfigurationResponse(
-      actions: map['actions'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
-      contents: map['contents'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['contents']! as Map).cast<String, dynamic>())).input(),
-      triggers: map['triggers'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['triggers']! as Map).cast<String, dynamic>())).input(),
-      workflowManagement: map['workflowManagement'] == null ? null : (FlowAccessControlConfigurationPolicyResponse.fromMap((map['workflowManagement']! as Map).cast<String, dynamic>())).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowAccessControlConfigurationPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      contents: (() {
+        final guardedValue = map['contents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowAccessControlConfigurationPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowAccessControlConfigurationPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      workflowManagement: (() {
+        final guardedValue = map['workflowManagement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowAccessControlConfigurationPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

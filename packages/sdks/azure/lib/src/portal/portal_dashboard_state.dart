@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortalDashboardState {
   /// JSON data representing dashboard body. See above for details on how to obtain this from the Portal.
   final pulumi.Input<String>? dashboardProperties;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Shared Dashboard. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** You can specify a tag with the key `hidden-title` to set a more user-friendly title for this Dashboard.
+  /// &gt; **Note:** You can specify a tag with the key `hidden-title` to set a more user-friendly title for this Dashboard.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which to create the dashboard. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,12 +47,33 @@ class PortalDashboardState {
 
   factory PortalDashboardState.fromMap(Map<String, dynamic> map) {
     return PortalDashboardState(
-      dashboardProperties: map['dashboardProperties'] == null ? null : (map['dashboardProperties']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dashboardProperties: (() {
+        final guardedValue = map['dashboardProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -13,23 +13,20 @@ class GetSiteArgs {
   /// Creates a new [GetSiteArgs].
   /// [project] Optional.
   /// [siteId] Required.
-  GetSiteArgs({
-    this.project,
-    required this.siteId,
-  });
+  GetSiteArgs({this.project, required this.siteId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'siteId': siteId,
-    };
+    return <String, dynamic>{'project': ?project, 'siteId': siteId};
   }
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      siteId: (map['siteId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
-

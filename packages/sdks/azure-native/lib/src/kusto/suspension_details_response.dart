@@ -9,20 +9,19 @@ class SuspensionDetailsResponse {
 
   /// Creates a new [SuspensionDetailsResponse].
   /// [suspensionStartDate] The starting date and time of the suspension state.
-  SuspensionDetailsResponse({
-    this.suspensionStartDate,
-  });
+  SuspensionDetailsResponse({this.suspensionStartDate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'suspensionStartDate': ?suspensionStartDate,
-    };
+    return <String, dynamic>{'suspensionStartDate': ?suspensionStartDate};
   }
 
   factory SuspensionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SuspensionDetailsResponse(
-      suspensionStartDate: map['suspensionStartDate'] == null ? null : (map['suspensionStartDate']! as String).input(),
+      suspensionStartDate: (() {
+        final guardedValue = map['suspensionStartDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

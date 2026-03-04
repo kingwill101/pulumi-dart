@@ -9,20 +9,21 @@ class GoogleCloudDialogflowCxV3beta1EventInput {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EventInput].
   /// [event] Name of the event.
-  GoogleCloudDialogflowCxV3beta1EventInput({
-    this.event,
-  });
+  GoogleCloudDialogflowCxV3beta1EventInput({this.event});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'event': ?event,
-    };
+    return <String, dynamic>{'event': ?event};
   }
 
-  factory GoogleCloudDialogflowCxV3beta1EventInput.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1EventInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1EventInput(
-      event: map['event'] == null ? null : (map['event']! as String).input(),
+      event: (() {
+        final guardedValue = map['event'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

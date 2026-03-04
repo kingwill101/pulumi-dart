@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightsConfigResponseSqladminV1beta4 {
   /// Whether Query Insights feature is enabled.
   final pulumi.Input<bool> queryInsightsEnabled;
+
   /// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
   final pulumi.Input<int> queryPlansPerMinute;
+
   /// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
   final pulumi.Input<int> queryStringLength;
+
   /// Whether Query Insights will record application tags from query when enabled.
   final pulumi.Input<bool> recordApplicationTags;
+
   /// Whether Query Insights will record client address when enabled.
   final pulumi.Input<bool> recordClientAddress;
 
@@ -39,14 +43,25 @@ class InsightsConfigResponseSqladminV1beta4 {
     };
   }
 
-  factory InsightsConfigResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory InsightsConfigResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightsConfigResponseSqladminV1beta4(
-      queryInsightsEnabled: (map['queryInsightsEnabled'] as bool).input(),
-      queryPlansPerMinute: (map['queryPlansPerMinute'] as int).input(),
-      queryStringLength: (map['queryStringLength'] as int).input(),
-      recordApplicationTags: (map['recordApplicationTags'] as bool).input(),
-      recordClientAddress: (map['recordClientAddress'] as bool).input(),
+      queryInsightsEnabled: pulumi.Input.fromValue(
+        map['queryInsightsEnabled'] as bool,
+      ),
+      queryPlansPerMinute: pulumi.Input.fromValue(
+        map['queryPlansPerMinute'] as int,
+      ),
+      queryStringLength: pulumi.Input.fromValue(
+        map['queryStringLength'] as int,
+      ),
+      recordApplicationTags: pulumi.Input.fromValue(
+        map['recordApplicationTags'] as bool,
+      ),
+      recordClientAddress: pulumi.Input.fromValue(
+        map['recordClientAddress'] as bool,
+      ),
     );
   }
 }
-

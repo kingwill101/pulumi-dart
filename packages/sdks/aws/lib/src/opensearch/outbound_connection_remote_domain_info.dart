@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutboundConnectionRemoteDomainInfo {
   /// The name of the remote domain.
   final pulumi.Input<String> domainName;
+
   /// The Account ID of the owner of the remote domain.
   final pulumi.Input<String> ownerId;
+
   /// The region of the remote domain.
   final pulumi.Input<String> region;
 
@@ -30,10 +32,9 @@ class OutboundConnectionRemoteDomainInfo {
 
   factory OutboundConnectionRemoteDomainInfo.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionRemoteDomainInfo(
-      domainName: (map['domainName'] as String).input(),
-      ownerId: (map['ownerId'] as String).input(),
-      region: (map['region'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      ownerId: pulumi.Input.fromValue(map['ownerId'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

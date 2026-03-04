@@ -1,5 +1,3 @@
-library module_fis;
-
 export 'fis/experiment_template.dart';
 export 'fis/experiment_template_action.dart';
 export 'fis/experiment_template_action_parameter.dart';

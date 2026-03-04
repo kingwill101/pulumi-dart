@@ -1,5 +1,3 @@
-library module_synthetics;
-
 export 'synthetics/canary.dart';
 export 'synthetics/canary_args.dart';
 export 'synthetics/canary_artifact_config.dart';

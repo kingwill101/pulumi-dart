@@ -1,5 +1,3 @@
-library module_observabilityadmin;
-
 export 'observabilityadmin/centralization_rule_for_organization.dart';
 export 'observabilityadmin/centralization_rule_for_organization_args.dart';
 export 'observabilityadmin/centralization_rule_for_organization_rule.dart';

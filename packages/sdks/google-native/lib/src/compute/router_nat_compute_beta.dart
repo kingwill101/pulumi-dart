@@ -14,41 +14,62 @@ import 'router_nat_type_compute_beta.dart';
 class RouterNatComputeBeta {
   /// The network tier to use when automatically reserving NAT IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, then the current project-level default tier is used.
   final pulumi.Input<RouterNatAutoNetworkTierComputeBeta>? autoNetworkTier;
+
   /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
   final pulumi.Input<List<String>>? drainNatIps;
+
   /// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
   final pulumi.Input<bool>? enableDynamicPortAllocation;
   final pulumi.Input<bool>? enableEndpointIndependentMapping;
+
   /// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
-  final pulumi.Input<List<RouterNatEndpointTypesItemComputeBeta>>? endpointTypes;
+  final pulumi.Input<List<RouterNatEndpointTypesItemComputeBeta>>?
+  endpointTypes;
+
   /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
   final pulumi.Input<int>? icmpIdleTimeoutSec;
+
   /// Configure logging on this NAT.
   final pulumi.Input<RouterNatLogConfigComputeBeta>? logConfig;
+
   /// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
   final pulumi.Input<int>? maxPortsPerVm;
+
   /// Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
   final pulumi.Input<int>? minPortsPerVm;
+
   /// Unique name of this Nat service. The name must be 1-63 characters long and comply with RFC1035.
   final pulumi.Input<String>? name;
+
   /// Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
-  final pulumi.Input<RouterNatNatIpAllocateOptionComputeBeta>? natIpAllocateOption;
+  final pulumi.Input<RouterNatNatIpAllocateOptionComputeBeta>?
+  natIpAllocateOption;
+
   /// A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
   final pulumi.Input<List<String>>? natIps;
+
   /// A list of rules associated with this NAT.
   final pulumi.Input<List<RouterNatRuleComputeBeta>>? rules;
+
   /// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
-  final pulumi.Input<RouterNatSourceSubnetworkIpRangesToNatComputeBeta>? sourceSubnetworkIpRangesToNat;
+  final pulumi.Input<RouterNatSourceSubnetworkIpRangesToNatComputeBeta>?
+  sourceSubnetworkIpRangesToNat;
+
   /// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
   final pulumi.Input<List<RouterNatSubnetworkToNatComputeBeta>>? subnetworks;
+
   /// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
   final pulumi.Input<int>? tcpEstablishedIdleTimeoutSec;
+
   /// Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
   final pulumi.Input<int>? tcpTimeWaitTimeoutSec;
+
   /// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
   final pulumi.Input<int>? tcpTransitoryIdleTimeoutSec;
+
   /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
   final pulumi.Input<RouterNatTypeComputeBeta>? type;
+
   /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
   final pulumi.Input<int>? udpIdleTimeoutSec;
 
@@ -98,52 +119,221 @@ class RouterNatComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoNetworkTier': ?pulumi.Input.mapOptionalInputValue<RouterNatAutoNetworkTierComputeBeta, String>(autoNetworkTier, (value) => value.value),
+      'autoNetworkTier':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouterNatAutoNetworkTierComputeBeta,
+            String
+          >(autoNetworkTier, (value) => value.wireValue),
       'drainNatIps': ?drainNatIps,
       'enableDynamicPortAllocation': ?enableDynamicPortAllocation,
       'enableEndpointIndependentMapping': ?enableEndpointIndependentMapping,
-      'endpointTypes': ?pulumi.Input.mapOptionalInputValue<List<RouterNatEndpointTypesItemComputeBeta>, List<String>>(endpointTypes, (value) => pulumi.Input.encodeList<RouterNatEndpointTypesItemComputeBeta, String>(value, (value) => value.value)),
+      'endpointTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RouterNatEndpointTypesItemComputeBeta>,
+            List<String>
+          >(
+            endpointTypes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RouterNatEndpointTypesItemComputeBeta,
+                  String
+                >(value, (value) => value.wireValue),
+          ),
       'icmpIdleTimeoutSec': ?icmpIdleTimeoutSec,
-      'logConfig': ?pulumi.Input.mapOptionalInputValue<RouterNatLogConfigComputeBeta, Map<String, dynamic>>(logConfig, (value) => value.toMap()),
+      'logConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouterNatLogConfigComputeBeta,
+            Map<String, dynamic>
+          >(logConfig, (value) => value.toMap()),
       'maxPortsPerVm': ?maxPortsPerVm,
       'minPortsPerVm': ?minPortsPerVm,
       'name': ?name,
-      'natIpAllocateOption': ?pulumi.Input.mapOptionalInputValue<RouterNatNatIpAllocateOptionComputeBeta, String>(natIpAllocateOption, (value) => value.value),
+      'natIpAllocateOption':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouterNatNatIpAllocateOptionComputeBeta,
+            String
+          >(natIpAllocateOption, (value) => value.wireValue),
       'natIps': ?natIps,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<RouterNatRuleComputeBeta>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RouterNatRuleComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sourceSubnetworkIpRangesToNat': ?pulumi.Input.mapOptionalInputValue<RouterNatSourceSubnetworkIpRangesToNatComputeBeta, String>(sourceSubnetworkIpRangesToNat, (value) => value.value),
-      'subnetworks': ?pulumi.Input.mapOptionalInputValue<List<RouterNatSubnetworkToNatComputeBeta>, List<Map<String, dynamic>>>(subnetworks, (value) => pulumi.Input.encodeList<RouterNatSubnetworkToNatComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RouterNatRuleComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RouterNatRuleComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sourceSubnetworkIpRangesToNat':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouterNatSourceSubnetworkIpRangesToNatComputeBeta,
+            String
+          >(sourceSubnetworkIpRangesToNat, (value) => value.wireValue),
+      'subnetworks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RouterNatSubnetworkToNatComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            subnetworks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RouterNatSubnetworkToNatComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tcpEstablishedIdleTimeoutSec': ?tcpEstablishedIdleTimeoutSec,
       'tcpTimeWaitTimeoutSec': ?tcpTimeWaitTimeoutSec,
       'tcpTransitoryIdleTimeoutSec': ?tcpTransitoryIdleTimeoutSec,
-      'type': ?pulumi.Input.mapOptionalInputValue<RouterNatTypeComputeBeta, String>(type, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<RouterNatTypeComputeBeta, String>(
+            type,
+            (value) => value.wireValue,
+          ),
       'udpIdleTimeoutSec': ?udpIdleTimeoutSec,
     };
   }
 
   factory RouterNatComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouterNatComputeBeta(
-      autoNetworkTier: map['autoNetworkTier'] == null ? null : (RouterNatAutoNetworkTierComputeBeta.fromValue(map['autoNetworkTier']! as String)).input(),
-      drainNatIps: map['drainNatIps'] == null ? null : ((map['drainNatIps']! as List).cast<String>()).input(),
-      enableDynamicPortAllocation: map['enableDynamicPortAllocation'] == null ? null : (map['enableDynamicPortAllocation']! as bool).input(),
-      enableEndpointIndependentMapping: map['enableEndpointIndependentMapping'] == null ? null : (map['enableEndpointIndependentMapping']! as bool).input(),
-      endpointTypes: map['endpointTypes'] == null ? null : (pulumi.Input.decodeList<RouterNatEndpointTypesItemComputeBeta>(map['endpointTypes']!, (value) => RouterNatEndpointTypesItemComputeBeta.fromValue(value as String))).input(),
-      icmpIdleTimeoutSec: map['icmpIdleTimeoutSec'] == null ? null : (map['icmpIdleTimeoutSec']! as int).input(),
-      logConfig: map['logConfig'] == null ? null : (RouterNatLogConfigComputeBeta.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
-      maxPortsPerVm: map['maxPortsPerVm'] == null ? null : (map['maxPortsPerVm']! as int).input(),
-      minPortsPerVm: map['minPortsPerVm'] == null ? null : (map['minPortsPerVm']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      natIpAllocateOption: map['natIpAllocateOption'] == null ? null : (RouterNatNatIpAllocateOptionComputeBeta.fromValue(map['natIpAllocateOption']! as String)).input(),
-      natIps: map['natIps'] == null ? null : ((map['natIps']! as List).cast<String>()).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouterNatRuleComputeBeta>(map['rules']!, (value) => RouterNatRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceSubnetworkIpRangesToNat: map['sourceSubnetworkIpRangesToNat'] == null ? null : (RouterNatSourceSubnetworkIpRangesToNatComputeBeta.fromValue(map['sourceSubnetworkIpRangesToNat']! as String)).input(),
-      subnetworks: map['subnetworks'] == null ? null : (pulumi.Input.decodeList<RouterNatSubnetworkToNatComputeBeta>(map['subnetworks']!, (value) => RouterNatSubnetworkToNatComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tcpEstablishedIdleTimeoutSec: map['tcpEstablishedIdleTimeoutSec'] == null ? null : (map['tcpEstablishedIdleTimeoutSec']! as int).input(),
-      tcpTimeWaitTimeoutSec: map['tcpTimeWaitTimeoutSec'] == null ? null : (map['tcpTimeWaitTimeoutSec']! as int).input(),
-      tcpTransitoryIdleTimeoutSec: map['tcpTransitoryIdleTimeoutSec'] == null ? null : (map['tcpTransitoryIdleTimeoutSec']! as int).input(),
-      type: map['type'] == null ? null : (RouterNatTypeComputeBeta.fromValue(map['type']! as String)).input(),
-      udpIdleTimeoutSec: map['udpIdleTimeoutSec'] == null ? null : (map['udpIdleTimeoutSec']! as int).input(),
+      autoNetworkTier: (() {
+        final guardedValue = map['autoNetworkTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouterNatAutoNetworkTierComputeBeta.fromValue(guardedValue as String),
+        );
+      })(),
+      drainNatIps: (() {
+        final guardedValue = map['drainNatIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enableDynamicPortAllocation: (() {
+        final guardedValue = map['enableDynamicPortAllocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableEndpointIndependentMapping: (() {
+        final guardedValue = map['enableEndpointIndependentMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpointTypes: (() {
+        final guardedValue = map['endpointTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RouterNatEndpointTypesItemComputeBeta>(
+            guardedValue,
+            (value) => RouterNatEndpointTypesItemComputeBeta.fromValue(
+              value as String,
+            ),
+          ),
+        );
+      })(),
+      icmpIdleTimeoutSec: (() {
+        final guardedValue = map['icmpIdleTimeoutSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      logConfig: (() {
+        final guardedValue = map['logConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouterNatLogConfigComputeBeta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      maxPortsPerVm: (() {
+        final guardedValue = map['maxPortsPerVm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minPortsPerVm: (() {
+        final guardedValue = map['minPortsPerVm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natIpAllocateOption: (() {
+        final guardedValue = map['natIpAllocateOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouterNatNatIpAllocateOptionComputeBeta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      natIps: (() {
+        final guardedValue = map['natIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RouterNatRuleComputeBeta>(
+            guardedValue,
+            (value) => RouterNatRuleComputeBeta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sourceSubnetworkIpRangesToNat: (() {
+        final guardedValue = map['sourceSubnetworkIpRangesToNat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouterNatSourceSubnetworkIpRangesToNatComputeBeta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      subnetworks: (() {
+        final guardedValue = map['subnetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RouterNatSubnetworkToNatComputeBeta>(
+            guardedValue,
+            (value) => RouterNatSubnetworkToNatComputeBeta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tcpEstablishedIdleTimeoutSec: (() {
+        final guardedValue = map['tcpEstablishedIdleTimeoutSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tcpTimeWaitTimeoutSec: (() {
+        final guardedValue = map['tcpTimeWaitTimeoutSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tcpTransitoryIdleTimeoutSec: (() {
+        final guardedValue = map['tcpTransitoryIdleTimeoutSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouterNatTypeComputeBeta.fromValue(guardedValue as String),
+        );
+      })(),
+      udpIdleTimeoutSec: (() {
+        final guardedValue = map['udpIdleTimeoutSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

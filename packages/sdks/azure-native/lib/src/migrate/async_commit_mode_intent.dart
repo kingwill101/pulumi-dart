@@ -4,16 +4,15 @@ enum AsyncCommitModeIntent {
   highAvailability("HighAvailability"),
   disasterRecovery("DisasterRecovery");
 
-  const AsyncCommitModeIntent(this.value);
-  final String value;
+  const AsyncCommitModeIntent(this.wireValue);
+  final String wireValue;
 
   static AsyncCommitModeIntent fromValue(String value) {
     for (final item in AsyncCommitModeIntent.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AsyncCommitModeIntent value: $value');
   }
 }
-

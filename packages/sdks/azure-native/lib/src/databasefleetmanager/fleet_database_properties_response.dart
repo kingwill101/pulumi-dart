@@ -8,36 +8,52 @@ import 'transparent_data_encryption_response.dart';
 class FleetDatabasePropertiesResponse {
   /// Backup retention in days.
   final pulumi.Input<int> backupRetentionDays;
+
   /// Database collation.
   final pulumi.Input<String>? collation;
+
   /// Connection string to connect to the database with.
   final pulumi.Input<String> connectionString;
+
   /// Create mode. Available options: Default - Create a database. Copy - Copy the source database (source database name must be specified) PointInTimeRestore - Create a database by restoring source database from a point in time (source database name and restore from time must be specified)
   final pulumi.Input<String>? createMode;
+
   /// Maximum database size in Gb.
   final pulumi.Input<int> databaseSizeGbMax;
+
   /// Earliest restore time.
   final pulumi.Input<String> earliestRestoreTime;
+
   /// Identity property.
   final pulumi.Input<IdentityResponse>? identity;
+
   /// Latest restore time.
   final pulumi.Input<String> latestRestoreTime;
+
   /// Resource identifier for the underlying database resource.
   final pulumi.Input<String> originalDatabaseId;
+
   /// Database state.
   final pulumi.Input<String> provisioningState;
+
   /// If true, database is recoverable.
   final pulumi.Input<bool> recoverable;
+
   /// Additional database properties to be applied as the underlying database resource tags.
   final pulumi.Input<Map<String, String>>? resourceTags;
+
   /// Restore from time when CreateMode is PointInTimeRestore.
   final pulumi.Input<String>? restoreFromTime;
+
   /// Source database name used when CreateMode is Copy or PointInTimeRestore.
   final pulumi.Input<String>? sourceDatabaseName;
+
   /// Name of the tier this database belongs to.
   final pulumi.Input<String>? tierName;
+
   /// Transparent Data Encryption properties
-  final pulumi.Input<TransparentDataEncryptionResponse>? transparentDataEncryption;
+  final pulumi.Input<TransparentDataEncryptionResponse>?
+  transparentDataEncryption;
 
   /// Creates a new [FleetDatabasePropertiesResponse].
   /// [backupRetentionDays] Backup retention in days.
@@ -83,7 +99,11 @@ class FleetDatabasePropertiesResponse {
       'createMode': ?createMode,
       'databaseSizeGbMax': databaseSizeGbMax,
       'earliestRestoreTime': earliestRestoreTime,
-      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityResponse,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'latestRestoreTime': latestRestoreTime,
       'originalDatabaseId': originalDatabaseId,
       'provisioningState': provisioningState,
@@ -92,29 +112,88 @@ class FleetDatabasePropertiesResponse {
       'restoreFromTime': ?restoreFromTime,
       'sourceDatabaseName': ?sourceDatabaseName,
       'tierName': ?tierName,
-      'transparentDataEncryption': ?pulumi.Input.mapOptionalInputValue<TransparentDataEncryptionResponse, Map<String, dynamic>>(transparentDataEncryption, (value) => value.toMap()),
+      'transparentDataEncryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            TransparentDataEncryptionResponse,
+            Map<String, dynamic>
+          >(transparentDataEncryption, (value) => value.toMap()),
     };
   }
 
   factory FleetDatabasePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetDatabasePropertiesResponse(
-      backupRetentionDays: (map['backupRetentionDays'] as int).input(),
-      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
-      databaseSizeGbMax: (map['databaseSizeGbMax'] as int).input(),
-      earliestRestoreTime: (map['earliestRestoreTime'] as String).input(),
-      identity: map['identity'] == null ? null : (IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      latestRestoreTime: (map['latestRestoreTime'] as String).input(),
-      originalDatabaseId: (map['originalDatabaseId'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      recoverable: (map['recoverable'] as bool).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags']! as Map).cast<String, String>()).input(),
-      restoreFromTime: map['restoreFromTime'] == null ? null : (map['restoreFromTime']! as String).input(),
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName']! as String).input(),
-      tierName: map['tierName'] == null ? null : (map['tierName']! as String).input(),
-      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (TransparentDataEncryptionResponse.fromMap((map['transparentDataEncryption']! as Map).cast<String, dynamic>())).input(),
+      backupRetentionDays: pulumi.Input.fromValue(
+        map['backupRetentionDays'] as int,
+      ),
+      collation: (() {
+        final guardedValue = map['collation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      createMode: (() {
+        final guardedValue = map['createMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseSizeGbMax: pulumi.Input.fromValue(
+        map['databaseSizeGbMax'] as int,
+      ),
+      earliestRestoreTime: pulumi.Input.fromValue(
+        map['earliestRestoreTime'] as String,
+      ),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      latestRestoreTime: pulumi.Input.fromValue(
+        map['latestRestoreTime'] as String,
+      ),
+      originalDatabaseId: pulumi.Input.fromValue(
+        map['originalDatabaseId'] as String,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      recoverable: pulumi.Input.fromValue(map['recoverable'] as bool),
+      resourceTags: (() {
+        final guardedValue = map['resourceTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      restoreFromTime: (() {
+        final guardedValue = map['restoreFromTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceDatabaseName: (() {
+        final guardedValue = map['sourceDatabaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tierName: (() {
+        final guardedValue = map['tierName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transparentDataEncryption: (() {
+        final guardedValue = map['transparentDataEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TransparentDataEncryptionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

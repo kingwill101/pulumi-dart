@@ -214,7 +214,7 @@ import 'subnet_route_state.dart';
 ///
 /// ## Import
 ///
-/// Routing entries can be imported using a combined ID using the following format: `<subnet_id>-route-<destination_cidr>-<next_hop>`
+/// Routing entries can be imported using a combined ID using the following format: `&lt;subnet_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;`
 ///
 /// ```sh
 /// $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
@@ -223,14 +223,17 @@ class SubnetRoute extends pulumi.CustomResource {
   /// CIDR block to match on the packet’s destination IP. Changing
   /// this creates a new routing entry.
   late final pulumi.Output<String> destinationCidr;
+
   /// IP address of the next hop gateway.  Changing
   /// this creates a new routing entry.
   late final pulumi.Output<String> nextHop;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to configure a routing entry on a subnet. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// routing entry.
   late final pulumi.Output<String> region;
+
   /// ID of the subnet this routing entry belongs to. Changing
   /// this creates a new routing entry.
   late final pulumi.Output<String> subnetId;
@@ -244,15 +247,15 @@ class SubnetRoute extends pulumi.CustomResource {
     SubnetRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/subnetRoute:SubnetRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationCidr = registerOutput<String>('destinationCidr');
-    this.nextHop = registerOutput<String>('nextHop');
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String>('subnetId');
+         'openstack:networking/subnetRoute:SubnetRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationCidr = registerOutput<String>('destinationCidr');
+    nextHop = registerOutput<String>('nextHop');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [SubnetRoute] resource's state with the given [name] and [id].
@@ -273,14 +276,14 @@ class SubnetRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/subnetRoute:SubnetRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationCidr = registerOutput<String>('destinationCidr');
-    this.nextHop = registerOutput<String>('nextHop');
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String>('subnetId');
+         'openstack:networking/subnetRoute:SubnetRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationCidr = registerOutput<String>('destinationCidr');
+    nextHop = registerOutput<String>('nextHop');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

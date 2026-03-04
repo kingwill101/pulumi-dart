@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 import 'interface_dnssettings_response.dart';
-import 'ipconfiguration_response.dart';
 import 'network_interface_args.dart';
 import 'network_interface_status_response.dart';
 import 'network_security_group_arm_reference_response.dart';
@@ -421,30 +420,44 @@ import 'system_data_response.dart';
 class NetworkInterface extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Boolean indicating whether this is a existing local network interface or if one should be created.
   late final pulumi.Output<bool?> createFromLocal;
+
   /// DNS Settings for the interface
   late final pulumi.Output<InterfaceDNSSettingsResponse?> dnsSettings;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// IPConfigurations - A list of IPConfigurations of the network interface.
-  late final pulumi.Output<List<IPConfigurationResponse>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// MacAddress - The MAC address of the network interface.
   late final pulumi.Output<String?> macAddress;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// NetworkSecurityGroup - Network Security Group attached to the network interface.
-  late final pulumi.Output<NetworkSecurityGroupArmReferenceResponse?> networkSecurityGroup;
+  late final pulumi.Output<NetworkSecurityGroupArmReferenceResponse?>
+  networkSecurityGroup;
+
   /// Provisioning state of the network interface.
   late final pulumi.Output<String> provisioningState;
+
   /// The observed state of network interfaces
   late final pulumi.Output<NetworkInterfaceStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -457,24 +470,31 @@ class NetworkInterface extends pulumi.CustomResource {
     NetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:NetworkInterface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createFromLocal = registerOutput<bool?>('createFromLocal');
-    this.dnsSettings = registerOutput<InterfaceDNSSettingsResponse?>('dnsSettings');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.ipConfigurations = registerOutput<List<IPConfigurationResponse>?>('ipConfigurations');
-    this.location = registerOutput<String>('location');
-    this.macAddress = registerOutput<String?>('macAddress');
+         'azure-native:azurestackhci:NetworkInterface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createFromLocal = registerOutput<bool?>('createFromLocal');
+    dnsSettings = registerOutput<InterfaceDNSSettingsResponse?>('dnsSettings');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
+    macAddress = registerOutput<String?>('macAddress');
     this.name = registerOutput<String>('name');
-    this.networkSecurityGroup = registerOutput<NetworkSecurityGroupArmReferenceResponse?>('networkSecurityGroup');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<NetworkInterfaceStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkSecurityGroup =
+        registerOutput<NetworkSecurityGroupArmReferenceResponse?>(
+          'networkSecurityGroup',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<NetworkInterfaceStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,3 @@
-library module_kubernetesconfiguration;
-
 export 'kubernetesconfiguration/aksidentity_type.dart';
 export 'kubernetesconfiguration/azure_blob_definition.dart';
 export 'kubernetesconfiguration/azure_blob_definition_response.dart';

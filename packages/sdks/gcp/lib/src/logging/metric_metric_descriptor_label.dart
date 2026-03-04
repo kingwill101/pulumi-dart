@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricMetricDescriptorLabel {
   /// A human-readable description for the label.
   final pulumi.Input<String>? description;
+
   /// The label key.
   final pulumi.Input<String> key;
+
   /// The type of data that can be assigned to the label.
   /// Default value is `STRING`.
   /// Possible values are: `BOOL`, `INT64`, `STRING`.
@@ -32,10 +34,17 @@ class MetricMetricDescriptorLabel {
 
   factory MetricMetricDescriptorLabel.fromMap(Map<String, dynamic> map) {
     return MetricMetricDescriptorLabel(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      key: (map['key'] as String).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      valueType: (() {
+        final guardedValue = map['valueType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

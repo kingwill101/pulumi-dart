@@ -4,16 +4,17 @@ enum EnterpriseCrmEventbusProtoTaskMetadataStatus {
   defaultInactive("DEFAULT_INACTIVE"),
   active("ACTIVE");
 
-  const EnterpriseCrmEventbusProtoTaskMetadataStatus(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoTaskMetadataStatus(this.wireValue);
+  final String wireValue;
 
   static EnterpriseCrmEventbusProtoTaskMetadataStatus fromValue(String value) {
     for (final item in EnterpriseCrmEventbusProtoTaskMetadataStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataStatus value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoTaskMetadataStatus value: $value',
+    );
   }
 }
-

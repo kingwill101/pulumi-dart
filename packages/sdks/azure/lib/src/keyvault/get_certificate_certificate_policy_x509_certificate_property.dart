@@ -6,12 +6,21 @@ import 'get_certificate_certificate_policy_x509_certificate_property_subject_alt
 class GetCertificateCertificatePolicyX509CertificateProperty {
   /// A list of Extended/Enhanced Key Usages.
   final pulumi.Input<List<String>> extendedKeyUsages;
+
   /// A list of uses associated with this Key.
   final pulumi.Input<List<String>> keyUsages;
+
   /// The Certificate's Subject.
   final pulumi.Input<String> subject;
+
   /// A `subject_alternative_names` block as defined below.
-  final pulumi.Input<List<GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName>> subjectAlternativeNames;
+  final pulumi.Input<
+    List<
+      GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName
+    >
+  >
+  subjectAlternativeNames;
+
   /// The Certificates Validity Period in Months.
   final pulumi.Input<int> validityInMonths;
 
@@ -34,19 +43,47 @@ class GetCertificateCertificatePolicyX509CertificateProperty {
       'extendedKeyUsages': extendedKeyUsages,
       'keyUsages': keyUsages,
       'subject': subject,
-      'subjectAlternativeNames': pulumi.Input.mapInputValue<List<GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName>, List<Map<String, dynamic>>>(subjectAlternativeNames, (value) => pulumi.Input.encodeList<GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subjectAlternativeNames':
+          pulumi.Input.mapInputValue<
+            List<
+              GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName
+            >,
+            List<Map<String, dynamic>>
+          >(
+            subjectAlternativeNames,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'validityInMonths': validityInMonths,
     };
   }
 
-  factory GetCertificateCertificatePolicyX509CertificateProperty.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateCertificatePolicyX509CertificateProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateCertificatePolicyX509CertificateProperty(
-      extendedKeyUsages: ((map['extendedKeyUsages'] as List).cast<String>()).input(),
-      keyUsages: ((map['keyUsages'] as List).cast<String>()).input(),
-      subject: (map['subject'] as String).input(),
-      subjectAlternativeNames: (pulumi.Input.decodeList<GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName>(map['subjectAlternativeNames'], (value) => GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validityInMonths: (map['validityInMonths'] as int).input(),
+      extendedKeyUsages: pulumi.Input.fromValue(
+        (map['extendedKeyUsages'] as List).cast<String>(),
+      ),
+      keyUsages: pulumi.Input.fromValue(
+        (map['keyUsages'] as List).cast<String>(),
+      ),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      subjectAlternativeNames: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName
+        >(
+          map['subjectAlternativeNames']!,
+          (value) =>
+              GetCertificateCertificatePolicyX509CertificatePropertySubjectAlternativeName.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      validityInMonths: pulumi.Input.fromValue(map['validityInMonths'] as int),
     );
   }
 }
-

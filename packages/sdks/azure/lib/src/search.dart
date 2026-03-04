@@ -1,5 +1,3 @@
-library module_search;
-
 export 'search/functions.dart';
 export 'search/get_service_args.dart';
 export 'search/get_service_identity.dart';

@@ -192,24 +192,35 @@ import 'system_data_response.dart';
 class Schedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Notes for this schedule.
   late final pulumi.Output<String?> notes;
+
   /// Current provisioning state of the schedule.
   late final pulumi.Output<String> provisioningState;
+
   /// The recurrence pattern of the scheduled actions.
   late final pulumi.Output<RecurrencePatternResponse?> recurrencePattern;
+
   /// Error details of last operation done on schedule.
-  late final pulumi.Output<ResourceOperationErrorResponse> resourceOperationError;
+  late final pulumi.Output<ResourceOperationErrorResponse>
+  resourceOperationError;
+
   /// When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
   late final pulumi.Output<String?> startAt;
+
   /// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
   late final pulumi.Output<String> stopAt;
+
   /// Metadata pertaining to creation and last modification of the schedule.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The IANA timezone id for the schedule.
   late final pulumi.Output<String> timeZoneId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -222,21 +233,25 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:labservices:Schedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:labservices:Schedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.recurrencePattern = registerOutput<RecurrencePatternResponse?>('recurrencePattern');
-    this.resourceOperationError = registerOutput<ResourceOperationErrorResponse>('resourceOperationError');
-    this.startAt = registerOutput<String?>('startAt');
-    this.stopAt = registerOutput<String>('stopAt');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeZoneId = registerOutput<String>('timeZoneId');
-    this.type = registerOutput<String>('type');
+    notes = registerOutput<String?>('notes');
+    provisioningState = registerOutput<String>('provisioningState');
+    recurrencePattern = registerOutput<RecurrencePatternResponse?>(
+      'recurrencePattern',
+    );
+    resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
+      'resourceOperationError',
+    );
+    startAt = registerOutput<String?>('startAt');
+    stopAt = registerOutput<String>('stopAt');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeZoneId = registerOutput<String>('timeZoneId');
+    type = registerOutput<String>('type');
   }
 }

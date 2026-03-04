@@ -9,10 +9,16 @@ import 'google_privacy_dlp_v2_or_conditions.dart';
 class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   /// BigQuery table must have been created after this date. Used to avoid backfilling.
   final pulumi.Input<String>? createdAfter;
+
   /// At least one of the conditions must be true for a table to be scanned.
   final pulumi.Input<GooglePrivacyDlpV2OrConditions>? orConditions;
+
   /// Restrict discovery to categories of table types.
-  final pulumi.Input<GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection>? typeCollection;
+  final pulumi.Input<
+    GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection
+  >?
+  typeCollection;
+
   /// Restrict discovery to specific table types.
   final pulumi.Input<GooglePrivacyDlpV2BigQueryTableTypes>? types;
 
@@ -31,19 +37,60 @@ class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdAfter': ?createdAfter,
-      'orConditions': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2OrConditions, Map<String, dynamic>>(orConditions, (value) => value.toMap()),
-      'typeCollection': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection, String>(typeCollection, (value) => value.value),
-      'types': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2BigQueryTableTypes, Map<String, dynamic>>(types, (value) => value.toMap()),
+      'orConditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2OrConditions,
+            Map<String, dynamic>
+          >(orConditions, (value) => value.toMap()),
+      'typeCollection':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection,
+            String
+          >(typeCollection, (value) => value.wireValue),
+      'types':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2BigQueryTableTypes,
+            Map<String, dynamic>
+          >(types, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DiscoveryBigQueryConditions(
-      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter']! as String).input(),
-      orConditions: map['orConditions'] == null ? null : (GooglePrivacyDlpV2OrConditions.fromMap((map['orConditions']! as Map).cast<String, dynamic>())).input(),
-      typeCollection: map['typeCollection'] == null ? null : (GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection.fromValue(map['typeCollection']! as String)).input(),
-      types: map['types'] == null ? null : (GooglePrivacyDlpV2BigQueryTableTypes.fromMap((map['types']! as Map).cast<String, dynamic>())).input(),
+      createdAfter: (() {
+        final guardedValue = map['createdAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orConditions: (() {
+        final guardedValue = map['orConditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2OrConditions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      typeCollection: (() {
+        final guardedValue = map['typeCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      types: (() {
+        final guardedValue = map['types'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2BigQueryTableTypes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

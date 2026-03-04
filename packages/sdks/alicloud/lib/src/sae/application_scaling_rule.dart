@@ -8,7 +8,7 @@ import 'application_scaling_rule_state.dart';
 ///
 /// For information about Serverless App Engine (SAE) Application Scaling Rule and how to use it, see [What is Application Scaling Rule](https://next.api.aliyun.com/api/sae/2019-05-06/CreateApplicationScalingRule).
 ///
-/// > **NOTE:** Available since v1.159.0.
+/// &gt; **NOTE:** Available since v1.159.0.
 ///
 /// ## Example Usage
 ///
@@ -755,18 +755,27 @@ import 'application_scaling_rule_state.dart';
 class ApplicationScalingRule extends pulumi.CustomResource {
   /// Application ID.
   late final pulumi.Output<String> appId;
+
   /// The min ready instance ratio.
   late final pulumi.Output<int?> minReadyInstanceRatio;
+
   /// The min ready instances.
   late final pulumi.Output<int?> minReadyInstances;
+
   /// True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
   late final pulumi.Output<bool> scalingRuleEnable;
+
   /// Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
-  late final pulumi.Output<ApplicationScalingRuleScalingRuleMetric?> scalingRuleMetric;
+  late final pulumi.Output<ApplicationScalingRuleScalingRuleMetric?>
+  scalingRuleMetric;
+
   /// The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
   late final pulumi.Output<String> scalingRuleName;
+
   /// Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
-  late final pulumi.Output<ApplicationScalingRuleScalingRuleTimer?> scalingRuleTimer;
+  late final pulumi.Output<ApplicationScalingRuleScalingRuleTimer?>
+  scalingRuleTimer;
+
   /// Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
   late final pulumi.Output<String> scalingRuleType;
 
@@ -779,19 +788,24 @@ class ApplicationScalingRule extends pulumi.CustomResource {
     ApplicationScalingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.minReadyInstanceRatio = registerOutput<int?>('minReadyInstanceRatio');
-    this.minReadyInstances = registerOutput<int?>('minReadyInstances');
-    this.scalingRuleEnable = registerOutput<bool>('scalingRuleEnable');
-    this.scalingRuleMetric = registerOutput<ApplicationScalingRuleScalingRuleMetric?>('scalingRuleMetric');
-    this.scalingRuleName = registerOutput<String>('scalingRuleName');
-    this.scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>('scalingRuleTimer');
-    this.scalingRuleType = registerOutput<String>('scalingRuleType');
+         'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    minReadyInstanceRatio = registerOutput<int?>('minReadyInstanceRatio');
+    minReadyInstances = registerOutput<int?>('minReadyInstances');
+    scalingRuleEnable = registerOutput<bool>('scalingRuleEnable');
+    scalingRuleMetric =
+        registerOutput<ApplicationScalingRuleScalingRuleMetric?>(
+          'scalingRuleMetric',
+        );
+    scalingRuleName = registerOutput<String>('scalingRuleName');
+    scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>(
+      'scalingRuleTimer',
+    );
+    scalingRuleType = registerOutput<String>('scalingRuleType');
   }
 
   /// Gets an existing [ApplicationScalingRule] resource's state with the given [name] and [id].
@@ -812,18 +826,23 @@ class ApplicationScalingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.minReadyInstanceRatio = registerOutput<int?>('minReadyInstanceRatio');
-    this.minReadyInstances = registerOutput<int?>('minReadyInstances');
-    this.scalingRuleEnable = registerOutput<bool>('scalingRuleEnable');
-    this.scalingRuleMetric = registerOutput<ApplicationScalingRuleScalingRuleMetric?>('scalingRuleMetric');
-    this.scalingRuleName = registerOutput<String>('scalingRuleName');
-    this.scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>('scalingRuleTimer');
-    this.scalingRuleType = registerOutput<String>('scalingRuleType');
+         'alicloud:sae/applicationScalingRule:ApplicationScalingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    minReadyInstanceRatio = registerOutput<int?>('minReadyInstanceRatio');
+    minReadyInstances = registerOutput<int?>('minReadyInstances');
+    scalingRuleEnable = registerOutput<bool>('scalingRuleEnable');
+    scalingRuleMetric =
+        registerOutput<ApplicationScalingRuleScalingRuleMetric?>(
+          'scalingRuleMetric',
+        );
+    scalingRuleName = registerOutput<String>('scalingRuleName');
+    scalingRuleTimer = registerOutput<ApplicationScalingRuleScalingRuleTimer?>(
+      'scalingRuleTimer',
+    );
+    scalingRuleType = registerOutput<String>('scalingRuleType');
   }
 }

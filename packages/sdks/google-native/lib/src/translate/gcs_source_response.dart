@@ -9,20 +9,15 @@ class GcsSourceResponse {
 
   /// Creates a new [GcsSourceResponse].
   /// [inputUri] Source data URI. For example, `gs://my_bucket/my_object`.
-  GcsSourceResponse({
-    required this.inputUri,
-  });
+  GcsSourceResponse({required this.inputUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'inputUri': inputUri,
-    };
+    return <String, dynamic>{'inputUri': inputUri};
   }
 
   factory GcsSourceResponse.fromMap(Map<String, dynamic> map) {
     return GcsSourceResponse(
-      inputUri: (map['inputUri'] as String).input(),
+      inputUri: pulumi.Input.fromValue(map['inputUri'] as String),
     );
   }
 }
-

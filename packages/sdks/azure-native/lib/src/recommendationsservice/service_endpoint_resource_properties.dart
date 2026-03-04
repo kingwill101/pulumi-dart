@@ -9,20 +9,19 @@ class ServiceEndpointResourceProperties {
 
   /// Creates a new [ServiceEndpointResourceProperties].
   /// [preAllocatedCapacity] ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity.
-  ServiceEndpointResourceProperties({
-    this.preAllocatedCapacity,
-  });
+  ServiceEndpointResourceProperties({this.preAllocatedCapacity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'preAllocatedCapacity': ?preAllocatedCapacity,
-    };
+    return <String, dynamic>{'preAllocatedCapacity': ?preAllocatedCapacity};
   }
 
   factory ServiceEndpointResourceProperties.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointResourceProperties(
-      preAllocatedCapacity: map['preAllocatedCapacity'] == null ? null : (map['preAllocatedCapacity']! as int).input(),
+      preAllocatedCapacity: (() {
+        final guardedValue = map['preAllocatedCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

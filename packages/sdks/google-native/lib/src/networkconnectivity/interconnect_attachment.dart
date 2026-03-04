@@ -9,20 +9,19 @@ class InterconnectAttachment {
 
   /// Creates a new [InterconnectAttachment].
   /// [region] Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments.
-  InterconnectAttachment({
-    this.region,
-  });
+  InterconnectAttachment({this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory InterconnectAttachment.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachment(
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

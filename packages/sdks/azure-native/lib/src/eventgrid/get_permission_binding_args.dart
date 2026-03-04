@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPermissionBindingArgs {
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// Name of the permission binding.
   final pulumi.Input<String> permissionBindingName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetPermissionBindingArgs {
 
   factory GetPermissionBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionBindingArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      permissionBindingName: (map['permissionBindingName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      permissionBindingName: pulumi.Input.fromValue(
+        map['permissionBindingName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

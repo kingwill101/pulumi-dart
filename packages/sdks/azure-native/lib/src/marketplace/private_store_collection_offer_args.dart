@@ -10,18 +10,25 @@ import 'plan.dart';
 class PrivateStoreCollectionOfferArgs {
   /// The collection ID
   final pulumi.Input<String> collectionId;
+
   /// Identifier for purposes of race condition
   final pulumi.Input<String>? eTag;
+
   /// Icon File Uris
   final pulumi.Input<Map<String, String>>? iconFileUris;
+
   /// The offer ID to update or delete
   final pulumi.Input<String>? offerId;
+
   /// Offer plans
   final pulumi.Input<List<Plan>>? plans;
+
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
+
   /// Plan ids limitation for this offer
   final pulumi.Input<List<String>>? specificPlanIdsLimitation;
+
   /// Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
   final pulumi.Input<bool>? updateSuppressedDueIdempotence;
 
@@ -51,7 +58,17 @@ class PrivateStoreCollectionOfferArgs {
       'eTag': ?eTag,
       'iconFileUris': ?iconFileUris,
       'offerId': ?offerId,
-      'plans': ?pulumi.Input.mapOptionalInputValue<List<Plan>, List<Map<String, dynamic>>>(plans, (value) => pulumi.Input.encodeList<Plan, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'plans':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Plan>,
+            List<Map<String, dynamic>>
+          >(
+            plans,
+            (value) => pulumi.Input.encodeList<Plan, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'privateStoreId': privateStoreId,
       'specificPlanIdsLimitation': ?specificPlanIdsLimitation,
       'updateSuppressedDueIdempotence': ?updateSuppressedDueIdempotence,
@@ -60,15 +77,45 @@ class PrivateStoreCollectionOfferArgs {
 
   factory PrivateStoreCollectionOfferArgs.fromMap(Map<String, dynamic> map) {
     return PrivateStoreCollectionOfferArgs(
-      collectionId: (map['collectionId'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
-      iconFileUris: map['iconFileUris'] == null ? null : ((map['iconFileUris']! as Map).cast<String, String>()).input(),
-      offerId: map['offerId'] == null ? null : (map['offerId']! as String).input(),
-      plans: map['plans'] == null ? null : (pulumi.Input.decodeList<Plan>(map['plans']!, (value) => Plan.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateStoreId: (map['privateStoreId'] as String).input(),
-      specificPlanIdsLimitation: map['specificPlanIdsLimitation'] == null ? null : ((map['specificPlanIdsLimitation']! as List).cast<String>()).input(),
-      updateSuppressedDueIdempotence: map['updateSuppressedDueIdempotence'] == null ? null : (map['updateSuppressedDueIdempotence']! as bool).input(),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iconFileUris: (() {
+        final guardedValue = map['iconFileUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      offerId: (() {
+        final guardedValue = map['offerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      plans: (() {
+        final guardedValue = map['plans'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Plan>(
+            guardedValue,
+            (value) => Plan.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      privateStoreId: pulumi.Input.fromValue(map['privateStoreId'] as String),
+      specificPlanIdsLimitation: (() {
+        final guardedValue = map['specificPlanIdsLimitation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      updateSuppressedDueIdempotence: (() {
+        final guardedValue = map['updateSuppressedDueIdempotence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

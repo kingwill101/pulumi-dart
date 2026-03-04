@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementLockByScopeArgs {
   /// The name of lock.
   final pulumi.Input<String> lockName;
+
   /// The scope for the lock.
   final pulumi.Input<String> scope;
 
   /// Creates a new [GetManagementLockByScopeArgs].
   /// [lockName] The name of lock.
   /// [scope] The scope for the lock.
-  GetManagementLockByScopeArgs({
-    required this.lockName,
-    required this.scope,
-  });
+  GetManagementLockByScopeArgs({required this.lockName, required this.scope});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lockName': lockName,
-      'scope': scope,
-    };
+    return <String, dynamic>{'lockName': lockName, 'scope': scope};
   }
 
   factory GetManagementLockByScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementLockByScopeArgs(
-      lockName: (map['lockName'] as String).input(),
-      scope: (map['scope'] as String).input(),
+      lockName: pulumi.Input.fromValue(map['lockName'] as String),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

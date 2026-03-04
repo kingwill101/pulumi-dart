@@ -2,16 +2,15 @@
 enum OrchestratorKind {
   valueKubernetes("Kubernetes");
 
-  const OrchestratorKind(this.value);
-  final String value;
+  const OrchestratorKind(this.wireValue);
+  final String wireValue;
 
   static OrchestratorKind fromValue(String value) {
     for (final item in OrchestratorKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrchestratorKind value: $value');
   }
 }
-

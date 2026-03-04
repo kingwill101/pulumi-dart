@@ -6,16 +6,15 @@ enum EthereumDetailsNetwork {
   testnetSepolia("TESTNET_SEPOLIA"),
   testnetHolesky("TESTNET_HOLESKY");
 
-  const EthereumDetailsNetwork(this.value);
-  final String value;
+  const EthereumDetailsNetwork(this.wireValue);
+  final String wireValue;
 
   static EthereumDetailsNetwork fromValue(String value) {
     for (final item in EthereumDetailsNetwork.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EthereumDetailsNetwork value: $value');
   }
 }
-

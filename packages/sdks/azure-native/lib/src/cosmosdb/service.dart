@@ -600,10 +600,14 @@ import 'service_args.dart';
 class Service extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the database account.
   late final pulumi.Output<String> name;
+
   /// Services response resource.
-  late final pulumi.Output<DataTransferServiceResourcePropertiesResponse> properties;
+  late final pulumi.Output<DataTransferServiceResourcePropertiesResponse>
+  properties;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -616,14 +620,16 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:cosmosdb:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<DataTransferServiceResourcePropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<DataTransferServiceResourcePropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

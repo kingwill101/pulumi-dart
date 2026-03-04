@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceSelectionResultResponse {
   /// Full machine-type names, e.g. "n1-standard-16".
   final pulumi.Input<String> machineType;
+
   /// Number of VM provisioned with the machine_type.
   final pulumi.Input<int> vmCount;
 
@@ -18,17 +19,13 @@ class InstanceSelectionResultResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'machineType': machineType,
-      'vmCount': vmCount,
-    };
+    return <String, dynamic>{'machineType': machineType, 'vmCount': vmCount};
   }
 
   factory InstanceSelectionResultResponse.fromMap(Map<String, dynamic> map) {
     return InstanceSelectionResultResponse(
-      machineType: (map['machineType'] as String).input(),
-      vmCount: (map['vmCount'] as int).input(),
+      machineType: pulumi.Input.fromValue(map['machineType'] as String),
+      vmCount: pulumi.Input.fromValue(map['vmCount'] as int),
     );
   }
 }
-

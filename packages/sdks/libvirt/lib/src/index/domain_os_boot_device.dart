@@ -8,20 +8,15 @@ class DomainOsBootDevice {
 
   /// Creates a new [DomainOsBootDevice].
   /// [dev] Specifies the device type for booting the domain.
-  DomainOsBootDevice({
-    required this.dev,
-  });
+  DomainOsBootDevice({required this.dev});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dev': dev,
-    };
+    return <String, dynamic>{'dev': dev};
   }
 
   factory DomainOsBootDevice.fromMap(Map<String, dynamic> map) {
     return DomainOsBootDevice(
-      dev: (map['dev'] as String).input(),
+      dev: pulumi.Input.fromValue(map['dev'] as String),
     );
   }
 }
-

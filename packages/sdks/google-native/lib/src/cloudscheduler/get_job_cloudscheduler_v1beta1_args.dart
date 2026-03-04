@@ -31,10 +31,13 @@ class GetJobCloudschedulerV1beta1Args {
 
   factory GetJobCloudschedulerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetJobCloudschedulerV1beta1Args(
-      jobId: (map['jobId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

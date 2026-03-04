@@ -1,5 +1,3 @@
-library module_azuredatatransfer;
-
 export 'azuredatatransfer/antivirus_ruleset.dart';
 export 'azuredatatransfer/antivirus_ruleset_response.dart';
 export 'azuredatatransfer/antivirus_solutions.dart';

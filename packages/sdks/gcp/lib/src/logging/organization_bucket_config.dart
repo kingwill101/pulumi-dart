@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_bucket_config_args.dart';
 import 'organization_bucket_config_cmek_settings.dart';
-import 'organization_bucket_config_index_config.dart';
 import 'organization_bucket_config_state.dart';
 
 /// Manages a organization-level logging bucket config. For more information see
 /// [the official logging documentation](https://cloud.google.com/logging/docs/) and
 /// [Storing Logs](https://cloud.google.com/logging/docs/storage).
 ///
-/// > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+/// &gt; **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 ///
 /// ## Example Usage
 ///
@@ -190,20 +189,28 @@ import 'organization_bucket_config_state.dart';
 class OrganizationBucketConfig extends pulumi.CustomResource {
   /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
   late final pulumi.Output<String> bucketId;
+
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
   late final pulumi.Output<OrganizationBucketConfigCmekSettings?> cmekSettings;
+
   /// Describes this bucket.
   late final pulumi.Output<String> description;
+
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  late final pulumi.Output<List<OrganizationBucketConfigIndexConfig>> indexConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> indexConfigs;
+
   /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
   late final pulumi.Output<String> lifecycleState;
+
   /// The location of the bucket. The supported locations are: "global" "us-central1"
   late final pulumi.Output<String> location;
+
   /// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
   late final pulumi.Output<String> name;
+
   /// The parent resource that contains the logging bucket.
   late final pulumi.Output<String> organization;
+
   /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   late final pulumi.Output<int?> retentionDays;
 
@@ -216,20 +223,22 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
     OrganizationBucketConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucketId = registerOutput<String>('bucketId');
-    this.cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings');
-    this.description = registerOutput<String>('description');
-    this.indexConfigs = registerOutput<List<OrganizationBucketConfigIndexConfig>>('indexConfigs');
-    this.lifecycleState = registerOutput<String>('lifecycleState');
-    this.location = registerOutput<String>('location');
+         'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucketId = registerOutput<String>('bucketId');
+    cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>(
+      'cmekSettings',
+    );
+    description = registerOutput<String>('description');
+    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.retentionDays = registerOutput<int?>('retentionDays');
+    organization = registerOutput<String>('organization');
+    retentionDays = registerOutput<int?>('retentionDays');
   }
 
   /// Gets an existing [OrganizationBucketConfig] resource's state with the given [name] and [id].
@@ -250,19 +259,21 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucketId = registerOutput<String>('bucketId');
-    this.cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings');
-    this.description = registerOutput<String>('description');
-    this.indexConfigs = registerOutput<List<OrganizationBucketConfigIndexConfig>>('indexConfigs');
-    this.lifecycleState = registerOutput<String>('lifecycleState');
-    this.location = registerOutput<String>('location');
+         'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucketId = registerOutput<String>('bucketId');
+    cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>(
+      'cmekSettings',
+    );
+    description = registerOutput<String>('description');
+    indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.retentionDays = registerOutput<int?>('retentionDays');
+    organization = registerOutput<String>('organization');
+    retentionDays = registerOutput<int?>('retentionDays');
   }
 }

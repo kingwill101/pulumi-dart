@@ -2,18 +2,19 @@
 enum ClusterTransitEncryptionMode {
   transitEncryptionModeUnspecified("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"),
   transitEncryptionModeDisabled("TRANSIT_ENCRYPTION_MODE_DISABLED"),
-  transitEncryptionModeServerAuthentication("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION");
+  transitEncryptionModeServerAuthentication(
+    "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+  );
 
-  const ClusterTransitEncryptionMode(this.value);
-  final String value;
+  const ClusterTransitEncryptionMode(this.wireValue);
+  final String wireValue;
 
   static ClusterTransitEncryptionMode fromValue(String value) {
     for (final item in ClusterTransitEncryptionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterTransitEncryptionMode value: $value');
   }
 }
-

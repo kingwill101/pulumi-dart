@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Endpoint {
   /// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
   final pulumi.Input<List<String>>? aliases;
+
   /// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
   final pulumi.Input<bool>? allowCors;
+
   /// The canonical name of this endpoint.
   final pulumi.Input<String>? name;
+
   /// The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".
   final pulumi.Input<String>? target;
 
@@ -18,12 +21,7 @@ class Endpoint {
   /// [allowCors] Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
   /// [name] The canonical name of this endpoint.
   /// [target] The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".
-  Endpoint({
-    this.aliases,
-    this.allowCors,
-    this.name,
-    this.target,
-  });
+  Endpoint({this.aliases, this.allowCors, this.name, this.target});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class Endpoint {
 
   factory Endpoint.fromMap(Map<String, dynamic> map) {
     return Endpoint(
-      aliases: map['aliases'] == null ? null : ((map['aliases']! as List).cast<String>()).input(),
-      allowCors: map['allowCors'] == null ? null : (map['allowCors']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      aliases: (() {
+        final guardedValue = map['aliases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowCors: (() {
+        final guardedValue = map['allowCors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

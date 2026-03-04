@@ -11,20 +11,19 @@ class GetAccountAliasesArgs {
 
   /// Creates a new [GetAccountAliasesArgs].
   /// [outputFile] Optional.
-  GetAccountAliasesArgs({
-    this.outputFile,
-  });
+  GetAccountAliasesArgs({this.outputFile});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputFile': ?outputFile,
-    };
+    return <String, dynamic>{'outputFile': ?outputFile};
   }
 
   factory GetAccountAliasesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAliasesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

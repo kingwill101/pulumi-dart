@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIdentity {
   /// Specifies a user-assigned identity by client ID. For system-assigned, do not set this field.
   final pulumi.Input<String>? clientId;
+
   /// Enum to determine identity framework.
   /// Expected value is 'Managed'.
   final pulumi.Input<String> identityType;
+
   /// Specifies a user-assigned identity by object ID. For system-assigned, do not set this field.
   final pulumi.Input<String>? objectId;
+
   /// Specifies a user-assigned identity by ARM resource ID. For system-assigned, do not set this field.
   final pulumi.Input<String>? resourceId;
 
@@ -37,11 +40,22 @@ class ManagedIdentity {
 
   factory ManagedIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedIdentity(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      identityType: (map['identityType'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityType: pulumi.Input.fromValue(map['identityType'] as String),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

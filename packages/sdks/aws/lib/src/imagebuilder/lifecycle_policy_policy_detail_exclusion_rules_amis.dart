@@ -6,12 +6,17 @@ import 'lifecycle_policy_policy_detail_exclusion_rules_amis_last_launched.dart';
 class LifecyclePolicyPolicyDetailExclusionRulesAmis {
   /// Configures whether public AMIs are excluded from the lifecycle action.
   final pulumi.Input<bool>? isPublic;
+
   /// Specifies configuration details for Image Builder to exclude the most recent resources from lifecycle actions. Detailed below.
-  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched>? lastLaunched;
+  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched>?
+  lastLaunched;
+
   /// Configures AWS Regions that are excluded from the lifecycle action.
   final pulumi.Input<List<String>>? regions;
+
   /// Specifies AWS accounts whose resources are excluded from the lifecycle action.
   final pulumi.Input<List<String>>? sharedAccounts;
+
   /// Lists tags that should be excluded from lifecycle actions for the AMIs that have them.
   final pulumi.Input<Map<String, String>>? tagMap;
 
@@ -32,21 +37,52 @@ class LifecyclePolicyPolicyDetailExclusionRulesAmis {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'isPublic': ?isPublic,
-      'lastLaunched': ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched, Map<String, dynamic>>(lastLaunched, (value) => value.toMap()),
+      'lastLaunched':
+          ?pulumi.Input.mapOptionalInputValue<
+            LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched,
+            Map<String, dynamic>
+          >(lastLaunched, (value) => value.toMap()),
       'regions': ?regions,
       'sharedAccounts': ?sharedAccounts,
       'tagMap': ?tagMap,
     };
   }
 
-  factory LifecyclePolicyPolicyDetailExclusionRulesAmis.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailExclusionRulesAmis.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailExclusionRulesAmis(
-      isPublic: map['isPublic'] == null ? null : ((map['isPublic'] as bool).input()).input(),
-      lastLaunched: map['lastLaunched'] == null ? null : ((LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched.fromMap((map['lastLaunched']! as Map).cast<String, dynamic>())).input()).input(),
-      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
-      sharedAccounts: map['sharedAccounts'] == null ? null : (((map['sharedAccounts'] as List).cast<String>()).input()).input(),
-      tagMap: map['tagMap'] == null ? null : (((map['tagMap'] as Map).cast<String, String>()).input()).input(),
+      isPublic: (() {
+        final guardedValue = map['isPublic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastLaunched: (() {
+        final guardedValue = map['lastLaunched'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sharedAccounts: (() {
+        final guardedValue = map['sharedAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tagMap: (() {
+        final guardedValue = map['tagMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

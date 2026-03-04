@@ -10,20 +10,38 @@ class SubnetSharedPublicIpAddressConfiguration {
 
   /// Creates a new [SubnetSharedPublicIpAddressConfiguration].
   /// [allowedPorts] Backend ports that virtual machines on this subnet are allowed to expose
-  SubnetSharedPublicIpAddressConfiguration({
-    this.allowedPorts,
-  });
+  SubnetSharedPublicIpAddressConfiguration({this.allowedPorts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedPorts': ?pulumi.Input.mapOptionalInputValue<List<Port>, List<Map<String, dynamic>>>(allowedPorts, (value) => pulumi.Input.encodeList<Port, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allowedPorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Port>,
+            List<Map<String, dynamic>>
+          >(
+            allowedPorts,
+            (value) => pulumi.Input.encodeList<Port, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
-  factory SubnetSharedPublicIpAddressConfiguration.fromMap(Map<String, dynamic> map) {
+  factory SubnetSharedPublicIpAddressConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubnetSharedPublicIpAddressConfiguration(
-      allowedPorts: map['allowedPorts'] == null ? null : (pulumi.Input.decodeList<Port>(map['allowedPorts']!, (value) => Port.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedPorts: (() {
+        final guardedValue = map['allowedPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Port>(
+            guardedValue,
+            (value) => Port.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

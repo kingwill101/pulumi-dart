@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'failover_group_args.dart';
-import 'failover_group_partner_server.dart';
 import 'failover_group_read_write_endpoint_failover_policy.dart';
 import 'failover_group_state.dart';
 
@@ -384,7 +383,7 @@ import 'failover_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -399,16 +398,23 @@ import 'failover_group_state.dart';
 class FailoverGroup extends pulumi.CustomResource {
   /// A set of database names to include in the failover group.
   late final pulumi.Output<List<String>?> databases;
+
   /// The name of the Failover Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `partner_server` block as defined below.
-  late final pulumi.Output<List<FailoverGroupPartnerServer>> partnerServers;
+  late final pulumi.Output<List<Map<String, dynamic>>> partnerServers;
+
   /// A `read_write_endpoint_failover_policy` block as defined below.
-  late final pulumi.Output<FailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
+  late final pulumi.Output<FailoverGroupReadWriteEndpointFailoverPolicy>
+  readWriteEndpointFailoverPolicy;
+
   /// Whether failover is enabled for the readonly endpoint. Defaults to `false`.
   late final pulumi.Output<bool> readonlyEndpointFailoverPolicyEnabled;
+
   /// The ID of the primary SQL Server on which to create the failover group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -421,18 +427,25 @@ class FailoverGroup extends pulumi.CustomResource {
     FailoverGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/failoverGroup:FailoverGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.databases = registerOutput<List<String>?>('databases');
+         'azure:mssql/failoverGroup:FailoverGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    databases = registerOutput<List<String>?>('databases');
     this.name = registerOutput<String>('name');
-    this.partnerServers = registerOutput<List<FailoverGroupPartnerServer>>('partnerServers');
-    this.readWriteEndpointFailoverPolicy = registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy');
-    this.readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>('readonlyEndpointFailoverPolicyEnabled');
-    this.serverId = registerOutput<String>('serverId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    partnerServers = registerOutput<List<Map<String, dynamic>>>(
+      'partnerServers',
+    );
+    readWriteEndpointFailoverPolicy =
+        registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>(
+          'readWriteEndpointFailoverPolicy',
+        );
+    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>(
+      'readonlyEndpointFailoverPolicyEnabled',
+    );
+    serverId = registerOutput<String>('serverId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [FailoverGroup] resource's state with the given [name] and [id].
@@ -453,17 +466,24 @@ class FailoverGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/failoverGroup:FailoverGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.databases = registerOutput<List<String>?>('databases');
+         'azure:mssql/failoverGroup:FailoverGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    databases = registerOutput<List<String>?>('databases');
     this.name = registerOutput<String>('name');
-    this.partnerServers = registerOutput<List<FailoverGroupPartnerServer>>('partnerServers');
-    this.readWriteEndpointFailoverPolicy = registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy');
-    this.readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>('readonlyEndpointFailoverPolicyEnabled');
-    this.serverId = registerOutput<String>('serverId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    partnerServers = registerOutput<List<Map<String, dynamic>>>(
+      'partnerServers',
+    );
+    readWriteEndpointFailoverPolicy =
+        registerOutput<FailoverGroupReadWriteEndpointFailoverPolicy>(
+          'readWriteEndpointFailoverPolicy',
+        );
+    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool>(
+      'readonlyEndpointFailoverPolicyEnabled',
+    );
+    serverId = registerOutput<String>('serverId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

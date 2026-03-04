@@ -7,16 +7,15 @@ enum DatabaseSlug {
   dB8VPCU32GB("db-s-8vcpu-32gb"),
   dB16VPCU64GB("db-s-16vcpu-64gb");
 
-  const DatabaseSlug(this.value);
-  final String value;
+  const DatabaseSlug(this.wireValue);
+  final String wireValue;
 
   static DatabaseSlug fromValue(String value) {
     for (final item in DatabaseSlug.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseSlug value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_consumption;
-
 export 'consumption/budget_management_group.dart';
 export 'consumption/budget_management_group_args.dart';
 export 'consumption/budget_management_group_filter.dart';

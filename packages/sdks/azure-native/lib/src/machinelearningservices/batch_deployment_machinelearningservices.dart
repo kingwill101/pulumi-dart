@@ -18,22 +18,31 @@ import 'system_data_response.dart';
 class BatchDeploymentMachinelearningservices extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// [Required] Additional attributes of the entity.
   late final pulumi.Output<BatchDeploymentResponse> batchDeploymentProperties;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Sku details required for ARM contract for Autoscaling.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -46,20 +55,22 @@ class BatchDeploymentMachinelearningservices extends pulumi.CustomResource {
     BatchDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:BatchDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.batchDeploymentProperties = registerOutput<BatchDeploymentResponse>('batchDeploymentProperties');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:machinelearningservices:BatchDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    batchDeploymentProperties = registerOutput<BatchDeploymentResponse>(
+      'batchDeploymentProperties',
+    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    sku = registerOutput<SkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

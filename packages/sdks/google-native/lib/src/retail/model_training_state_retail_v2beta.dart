@@ -4,16 +4,15 @@ enum ModelTrainingStateRetailV2beta {
   paused("PAUSED"),
   training("TRAINING");
 
-  const ModelTrainingStateRetailV2beta(this.value);
-  final String value;
+  const ModelTrainingStateRetailV2beta(this.wireValue);
+  final String wireValue;
 
   static ModelTrainingStateRetailV2beta fromValue(String value) {
     for (final item in ModelTrainingStateRetailV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ModelTrainingStateRetailV2beta value: $value');
   }
 }
-

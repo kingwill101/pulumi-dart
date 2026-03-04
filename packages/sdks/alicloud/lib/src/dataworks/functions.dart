@@ -6,7 +6,7 @@ import 'get_service_result.dart';
 
 /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.131.0+.
+/// &gt; **NOTE:** Available in v1.131.0+.
 ///
 /// ## Example Usage
 ///
@@ -189,7 +189,7 @@ Future<GetFoldersResult> getFolders(
 ///
 /// For information about DataWorks and how to use it, see [What is DataWorks](https://www.alibabacloud.com/help/en/product/72772.htm).
 ///
-/// > **NOTE:** Available in v1.118.0+. After the version 1.141.0, the data source is renamed as `alicloud.dataworks.getService`.
+/// &gt; **NOTE:** Available in v1.118.0+. After the version 1.141.0, the data source is renamed as `alicloud.dataworks.getService`.
 ///
 /// ## Example Usage
 ///

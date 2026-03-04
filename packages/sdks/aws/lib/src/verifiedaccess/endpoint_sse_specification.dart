@@ -9,10 +9,7 @@ class EndpointSseSpecification {
   /// Creates a new [EndpointSseSpecification].
   /// [customerManagedKeyEnabled] Optional.
   /// [kmsKeyArn] Optional.
-  EndpointSseSpecification({
-    this.customerManagedKeyEnabled,
-    this.kmsKeyArn,
-  });
+  EndpointSseSpecification({this.customerManagedKeyEnabled, this.kmsKeyArn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,16 @@ class EndpointSseSpecification {
 
   factory EndpointSseSpecification.fromMap(Map<String, dynamic> map) {
     return EndpointSseSpecification(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : ((map['customerManagedKeyEnabled'] as bool).input()).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      customerManagedKeyEnabled: (() {
+        final guardedValue = map['customerManagedKeyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kmsKeyArn: (() {
+        final guardedValue = map['kmsKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -184,16 +184,22 @@ import 'voice_connector_termination_state.dart';
 class VoiceConnectorTermination extends pulumi.CustomResource {
   /// The countries to which calls are allowed, in ISO 3166-1 alpha-2 format.
   late final pulumi.Output<List<String>> callingRegions;
+
   /// The IP addresses allowed to make calls, in CIDR format.
   late final pulumi.Output<List<String>> cidrAllowLists;
+
   /// The limit on calls per second. Max value based on account service quota. Default value of `1`.
   late final pulumi.Output<int?> cpsLimit;
+
   /// The default caller ID phone number.
   late final pulumi.Output<String?> defaultPhoneNumber;
+
   /// When termination settings are disabled, outbound calls can not be made.
   late final pulumi.Output<bool?> disabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Chime Voice Connector ID.
   late final pulumi.Output<String> voiceConnectorId;
 
@@ -206,18 +212,18 @@ class VoiceConnectorTermination extends pulumi.CustomResource {
     VoiceConnectorTerminationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callingRegions = registerOutput<List<String>>('callingRegions');
-    this.cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');
-    this.cpsLimit = registerOutput<int?>('cpsLimit');
-    this.defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.region = registerOutput<String>('region');
-    this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
+         'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callingRegions = registerOutput<List<String>>('callingRegions');
+    cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');
+    cpsLimit = registerOutput<int?>('cpsLimit');
+    defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
+    disabled = registerOutput<bool?>('disabled');
+    region = registerOutput<String>('region');
+    voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 
   /// Gets an existing [VoiceConnectorTermination] resource's state with the given [name] and [id].
@@ -238,17 +244,17 @@ class VoiceConnectorTermination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callingRegions = registerOutput<List<String>>('callingRegions');
-    this.cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');
-    this.cpsLimit = registerOutput<int?>('cpsLimit');
-    this.defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.region = registerOutput<String>('region');
-    this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
+         'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callingRegions = registerOutput<List<String>>('callingRegions');
+    cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');
+    cpsLimit = registerOutput<int?>('cpsLimit');
+    defaultPhoneNumber = registerOutput<String?>('defaultPhoneNumber');
+    disabled = registerOutput<bool?>('disabled');
+    region = registerOutput<String>('region');
+    voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

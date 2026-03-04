@@ -6,24 +6,34 @@ import 'attached_cluster_logging_config_component_config.dart';
 class AttachedClusterLoggingConfig {
   /// The configuration of the logging components
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterLoggingConfigComponentConfig>? componentConfig;
+  final pulumi.Input<AttachedClusterLoggingConfigComponentConfig>?
+  componentConfig;
 
   /// Creates a new [AttachedClusterLoggingConfig].
   /// [componentConfig] The configuration of the logging components
-  AttachedClusterLoggingConfig({
-    this.componentConfig,
-  });
+  AttachedClusterLoggingConfig({this.componentConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': ?pulumi.Input.mapOptionalInputValue<AttachedClusterLoggingConfigComponentConfig, Map<String, dynamic>>(componentConfig, (value) => value.toMap()),
+      'componentConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AttachedClusterLoggingConfigComponentConfig,
+            Map<String, dynamic>
+          >(componentConfig, (value) => value.toMap()),
     };
   }
 
   factory AttachedClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : (AttachedClusterLoggingConfigComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
+      componentConfig: (() {
+        final guardedValue = map['componentConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AttachedClusterLoggingConfigComponentConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

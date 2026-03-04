@@ -3,16 +3,15 @@ enum ApiBridgeActivationState {
   enabled("enabled"),
   disabled("disabled");
 
-  const ApiBridgeActivationState(this.value);
-  final String value;
+  const ApiBridgeActivationState(this.wireValue);
+  final String wireValue;
 
   static ApiBridgeActivationState fromValue(String value) {
     for (final item in ApiBridgeActivationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApiBridgeActivationState value: $value');
   }
 }
-

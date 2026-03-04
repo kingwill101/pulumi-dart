@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInsightsDatasetConfigArgs {
   /// The user-defined ID of the DatasetConfig
   final pulumi.Input<String> datasetConfigId;
+
   /// The location of the Dataset Config.
   final pulumi.Input<String> location;
+
   /// The name of the GCP project in which dataset config exists. Can be configured through config as well.
   final pulumi.Input<String>? project;
 
@@ -34,10 +36,13 @@ class GetInsightsDatasetConfigArgs {
 
   factory GetInsightsDatasetConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigArgs(
-      datasetConfigId: (map['datasetConfigId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      datasetConfigId: pulumi.Input.fromValue(map['datasetConfigId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

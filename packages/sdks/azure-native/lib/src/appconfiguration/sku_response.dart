@@ -9,20 +9,13 @@ class SkuResponse {
 
   /// Creates a new [SkuResponse].
   /// [name] The SKU name of the configuration store.
-  SkuResponse({
-    required this.name,
-  });
+  SkuResponse({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
-    return SkuResponse(
-      name: (map['name'] as String).input(),
-    );
+    return SkuResponse(name: pulumi.Input.fromValue(map['name'] as String));
   }
 }
-

@@ -10,16 +10,15 @@ enum ProtocolType {
   valueVxlan("Vxlan"),
   valueAll("All");
 
-  const ProtocolType(this.value);
-  final String value;
+  const ProtocolType(this.wireValue);
+  final String wireValue;
 
   static ProtocolType fromValue(String value) {
     for (final item in ProtocolType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProtocolType value: $value');
   }
 }
-

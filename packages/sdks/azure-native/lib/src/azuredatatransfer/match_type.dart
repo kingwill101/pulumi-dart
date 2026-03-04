@@ -3,16 +3,15 @@ enum MatchType {
   partial("Partial"),
   complete("Complete");
 
-  const MatchType(this.value);
-  final String value;
+  const MatchType(this.wireValue);
+  final String wireValue;
 
   static MatchType fromValue(String value) {
     for (final item in MatchType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MatchType value: $value');
   }
 }
-

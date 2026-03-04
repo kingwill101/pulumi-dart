@@ -5,26 +5,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlidnsRecordsRecord {
   /// The domain name associated to the records.
   final pulumi.Input<String> domainName;
+
   /// ID of the resource.
   final pulumi.Input<String> id;
+
   /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
   final pulumi.Input<String> line;
+
   /// Indicates whether the record is locked.
   final pulumi.Input<bool> locked;
+
   /// Priority of the `MX` record.
   final pulumi.Input<int> priority;
+
   /// ID of the record.
   final pulumi.Input<String> recordId;
+
   /// The remark of the domain record.  **NOTE:** Available in 1.144.0+.
   final pulumi.Input<String> remark;
+
   /// Host record of the domain.
   final pulumi.Input<String> rr;
+
   /// Record status. Valid values: `ENABLE` and `DISABLE`.
   final pulumi.Input<String> status;
+
   /// TTL of the record.
   final pulumi.Input<int> ttl;
+
   /// Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
   final pulumi.Input<String> type;
+
   /// Host record value of the domain.
   final pulumi.Input<String> value;
 
@@ -75,19 +86,18 @@ class GetAlidnsRecordsRecord {
 
   factory GetAlidnsRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetAlidnsRecordsRecord(
-      domainName: (map['domainName'] as String).input(),
-      id: (map['id'] as String).input(),
-      line: (map['line'] as String).input(),
-      locked: (map['locked'] as bool).input(),
-      priority: (map['priority'] as int).input(),
-      recordId: (map['recordId'] as String).input(),
-      remark: (map['remark'] as String).input(),
-      rr: (map['rr'] as String).input(),
-      status: (map['status'] as String).input(),
-      ttl: (map['ttl'] as int).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      line: pulumi.Input.fromValue(map['line'] as String),
+      locked: pulumi.Input.fromValue(map['locked'] as bool),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      recordId: pulumi.Input.fromValue(map['recordId'] as String),
+      remark: pulumi.Input.fromValue(map['remark'] as String),
+      rr: pulumi.Input.fromValue(map['rr'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

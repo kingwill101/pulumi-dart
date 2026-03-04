@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailIdentityArgs {
   /// The email address to assign to SES.
   final pulumi.Input<String> email;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [EmailIdentityArgs].
   /// [email] The email address to assign to SES.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EmailIdentityArgs({
-    required this.email,
-    this.region,
-  });
+  EmailIdentityArgs({required this.email, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': email,
-      'region': ?region,
-    };
+    return <String, dynamic>{'email': email, 'region': ?region};
   }
 
   factory EmailIdentityArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityArgs(
-      email: (map['email'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

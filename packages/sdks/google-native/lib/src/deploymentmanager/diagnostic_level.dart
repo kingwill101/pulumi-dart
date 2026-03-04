@@ -5,16 +5,15 @@ enum DiagnosticLevel {
   warning("WARNING"),
   error("ERROR");
 
-  const DiagnosticLevel(this.value);
-  final String value;
+  const DiagnosticLevel(this.wireValue);
+  final String wireValue;
 
   static DiagnosticLevel fromValue(String value) {
     for (final item in DiagnosticLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiagnosticLevel value: $value');
   }
 }
-

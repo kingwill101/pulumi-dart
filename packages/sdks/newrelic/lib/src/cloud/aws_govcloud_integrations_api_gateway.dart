@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsGovcloudIntegrationsApiGateway {
   /// Specify each AWS region that includes the resources that you want to monitor
   final pulumi.Input<List<String>>? awsRegions;
+
   /// The data polling interval in seconds
   final pulumi.Input<int>? metricsPollingInterval;
+
   /// Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
   final pulumi.Input<List<String>>? stagePrefixes;
+
   /// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagKey;
+
   /// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagValue;
 
@@ -40,12 +44,31 @@ class AwsGovcloudIntegrationsApiGateway {
 
   factory AwsGovcloudIntegrationsApiGateway.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudIntegrationsApiGateway(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
-      stagePrefixes: map['stagePrefixes'] == null ? null : ((map['stagePrefixes']! as List).cast<String>()).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
+      awsRegions: (() {
+        final guardedValue = map['awsRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      stagePrefixes: (() {
+        final guardedValue = map['stagePrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagValue: (() {
+        final guardedValue = map['tagValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

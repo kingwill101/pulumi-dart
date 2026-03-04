@@ -14,66 +14,98 @@ import 'user_assigned_identity_response.dart';
 class GetClusterResult {
   /// Object id of cluster AAD identity.
   final String? aadApplicationObjectId;
+
   /// App id of cluster AAD identity.
   final String? aadClientId;
+
   /// Id of cluster identity service principal.
   final String? aadServicePrincipalObjectId;
+
   /// Tenant id of cluster AAD identity.
   final String? aadTenantId;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Type of billing applied to the resource.
   final String billingModel;
+
   /// Unique, immutable resource id.
   final String cloudId;
+
   /// Endpoint configured for management from the Azure portal.
   final String? cloudManagementEndpoint;
+
   /// Overall connectivity status for the cluster resource.
   final String connectivityStatus;
+
   /// Desired properties of the cluster.
   final ClusterDesiredPropertiesResponse? desiredProperties;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
-  final IsolatedVmAttestationConfigurationResponse isolatedVmAttestationConfiguration;
+  final IsolatedVmAttestationConfigurationResponse
+  isolatedVmAttestationConfiguration;
+
   /// Most recent billing meter timestamp.
   final String lastBillingTimestamp;
+
   /// Most recent cluster sync timestamp.
   final String lastSyncTimestamp;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Log Collection properties of the cluster.
   final LogCollectionPropertiesResponse? logCollectionProperties;
+
   /// The name of the resource
   final String name;
+
   /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
   final String principalId;
+
   /// Provisioning state.
   final String provisioningState;
+
   /// First cluster sync timestamp.
   final String registrationTimestamp;
+
   /// RemoteSupport properties of the cluster.
   final RemoteSupportPropertiesResponse? remoteSupportProperties;
+
   /// Properties reported by cluster agent.
   final ClusterReportedPropertiesResponse reportedProperties;
+
   /// Object id of RP Service Principal
   final String resourceProviderObjectId;
+
   /// Region specific DataPath Endpoint of the cluster.
   final String serviceEndpoint;
+
   /// Software Assurance properties of the cluster.
   final SoftwareAssurancePropertiesResponse? softwareAssuranceProperties;
+
   /// Status of the cluster agent.
   final String status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
   final String tenantId;
+
   /// Number of days remaining in the trial period.
   final double trialDaysRemaining;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
   final Map<String, UserAssignedIdentityResponse>? userAssignedIdentities;
 
@@ -156,67 +188,139 @@ class GetClusterResult {
       'cloudId': cloudId,
       'cloudManagementEndpoint': ?cloudManagementEndpoint,
       'connectivityStatus': connectivityStatus,
-      'desiredProperties': ?desiredProperties == null ? null : desiredProperties!.toMap(),
+      'desiredProperties': ?desiredProperties?.toMap(),
       'id': id,
-      'isolatedVmAttestationConfiguration': isolatedVmAttestationConfiguration.toMap(),
+      'isolatedVmAttestationConfiguration': isolatedVmAttestationConfiguration
+          .toMap(),
       'lastBillingTimestamp': lastBillingTimestamp,
       'lastSyncTimestamp': lastSyncTimestamp,
       'location': location,
-      'logCollectionProperties': ?logCollectionProperties == null ? null : logCollectionProperties!.toMap(),
+      'logCollectionProperties': ?logCollectionProperties?.toMap(),
       'name': name,
       'principalId': principalId,
       'provisioningState': provisioningState,
       'registrationTimestamp': registrationTimestamp,
-      'remoteSupportProperties': ?remoteSupportProperties == null ? null : remoteSupportProperties!.toMap(),
+      'remoteSupportProperties': ?remoteSupportProperties?.toMap(),
       'reportedProperties': reportedProperties.toMap(),
       'resourceProviderObjectId': resourceProviderObjectId,
       'serviceEndpoint': serviceEndpoint,
-      'softwareAssuranceProperties': ?softwareAssuranceProperties == null ? null : softwareAssuranceProperties!.toMap(),
+      'softwareAssuranceProperties': ?softwareAssuranceProperties?.toMap(),
       'status': status,
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'tenantId': tenantId,
       'trialDaysRemaining': trialDaysRemaining,
       'type': type,
-      'userAssignedIdentities': ?userAssignedIdentities == null ? null : pulumi.Input.encodeMapValues<UserAssignedIdentityResponse, Map<String, dynamic>>(userAssignedIdentities!, (value) => value.toMap()),
+      'userAssignedIdentities': ?(() {
+        final guardedValue = userAssignedIdentities;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeMapValues<
+          UserAssignedIdentityResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      aadApplicationObjectId: map['aadApplicationObjectId'] == null ? null : map['aadApplicationObjectId']! as String,
-      aadClientId: map['aadClientId'] == null ? null : map['aadClientId']! as String,
-      aadServicePrincipalObjectId: map['aadServicePrincipalObjectId'] == null ? null : map['aadServicePrincipalObjectId']! as String,
-      aadTenantId: map['aadTenantId'] == null ? null : map['aadTenantId']! as String,
+      aadApplicationObjectId: (() {
+        final guardedValue = map['aadApplicationObjectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      aadClientId: (() {
+        final guardedValue = map['aadClientId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      aadServicePrincipalObjectId: (() {
+        final guardedValue = map['aadServicePrincipalObjectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      aadTenantId: (() {
+        final guardedValue = map['aadTenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       billingModel: map['billingModel'] as String,
       cloudId: map['cloudId'] as String,
-      cloudManagementEndpoint: map['cloudManagementEndpoint'] == null ? null : map['cloudManagementEndpoint']! as String,
+      cloudManagementEndpoint: (() {
+        final guardedValue = map['cloudManagementEndpoint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       connectivityStatus: map['connectivityStatus'] as String,
-      desiredProperties: map['desiredProperties'] == null ? null : ClusterDesiredPropertiesResponse.fromMap((map['desiredProperties']! as Map).cast<String, dynamic>()),
+      desiredProperties: (() {
+        final guardedValue = map['desiredProperties'];
+        if (guardedValue == null) return null;
+        return ClusterDesiredPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      isolatedVmAttestationConfiguration: IsolatedVmAttestationConfigurationResponse.fromMap((map['isolatedVmAttestationConfiguration'] as Map).cast<String, dynamic>()),
+      isolatedVmAttestationConfiguration:
+          IsolatedVmAttestationConfigurationResponse.fromMap(
+            (map['isolatedVmAttestationConfiguration']! as Map)
+                .cast<String, dynamic>(),
+          ),
       lastBillingTimestamp: map['lastBillingTimestamp'] as String,
       lastSyncTimestamp: map['lastSyncTimestamp'] as String,
       location: map['location'] as String,
-      logCollectionProperties: map['logCollectionProperties'] == null ? null : LogCollectionPropertiesResponse.fromMap((map['logCollectionProperties']! as Map).cast<String, dynamic>()),
+      logCollectionProperties: (() {
+        final guardedValue = map['logCollectionProperties'];
+        if (guardedValue == null) return null;
+        return LogCollectionPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
       principalId: map['principalId'] as String,
       provisioningState: map['provisioningState'] as String,
       registrationTimestamp: map['registrationTimestamp'] as String,
-      remoteSupportProperties: map['remoteSupportProperties'] == null ? null : RemoteSupportPropertiesResponse.fromMap((map['remoteSupportProperties']! as Map).cast<String, dynamic>()),
-      reportedProperties: ClusterReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
+      remoteSupportProperties: (() {
+        final guardedValue = map['remoteSupportProperties'];
+        if (guardedValue == null) return null;
+        return RemoteSupportPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      reportedProperties: ClusterReportedPropertiesResponse.fromMap(
+        (map['reportedProperties']! as Map).cast<String, dynamic>(),
+      ),
       resourceProviderObjectId: map['resourceProviderObjectId'] as String,
       serviceEndpoint: map['serviceEndpoint'] as String,
-      softwareAssuranceProperties: map['softwareAssuranceProperties'] == null ? null : SoftwareAssurancePropertiesResponse.fromMap((map['softwareAssuranceProperties']! as Map).cast<String, dynamic>()),
+      softwareAssuranceProperties: (() {
+        final guardedValue = map['softwareAssuranceProperties'];
+        if (guardedValue == null) return null;
+        return SoftwareAssurancePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       tenantId: map['tenantId'] as String,
       trialDaysRemaining: map['trialDaysRemaining'] as double,
       type: map['type'] as String,
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(map['userAssignedIdentities']!, (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(
+          guardedValue,
+          (value) => UserAssignedIdentityResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

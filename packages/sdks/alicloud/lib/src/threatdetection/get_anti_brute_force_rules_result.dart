@@ -7,12 +7,15 @@ import 'get_anti_brute_force_rules_rule.dart';
 class GetAntiBruteForceRulesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Anti Brute Force Rule IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of name of Anti Brute Force Rules.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Anti Brute Force Rule Entries. Each element contains the following attributes:
   final List<GetAntiBruteForceRulesRule> rules;
 
@@ -39,7 +42,11 @@ class GetAntiBruteForceRulesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'rules': pulumi.Input.encodeList<GetAntiBruteForceRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<
+            GetAntiBruteForceRulesRule,
+            Map<String, dynamic>
+          >(rules, (value) => value.toMap()),
     };
   }
 
@@ -47,11 +54,23 @@ class GetAntiBruteForceRulesResult {
     return GetAntiBruteForceRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      rules: pulumi.Input.decodeList<GetAntiBruteForceRulesRule>(map['rules'], (value) => GetAntiBruteForceRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rules: pulumi.Input.decodeList<GetAntiBruteForceRulesRule>(
+        map['rules']!,
+        (value) => GetAntiBruteForceRulesRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

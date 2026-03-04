@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountGeoLocation {
   final pulumi.Input<int> failoverPriority;
+
   /// The ID of the virtual network subnet.
   final pulumi.Input<String> id;
+
   /// The name of the Azure region hosting replicated data.
   final pulumi.Input<String> location;
 
@@ -29,10 +31,9 @@ class GetAccountGeoLocation {
 
   factory GetAccountGeoLocation.fromMap(Map<String, dynamic> map) {
     return GetAccountGeoLocation(
-      failoverPriority: (map['failoverPriority'] as int).input(),
-      id: (map['id'] as String).input(),
-      location: (map['location'] as String).input(),
+      failoverPriority: pulumi.Input.fromValue(map['failoverPriority'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

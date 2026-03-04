@@ -22,16 +22,15 @@ enum CultureCode {
   ptPt("pt-pt"),
   svSe("sv-se");
 
-  const CultureCode(this.value);
-  final String value;
+  const CultureCode(this.wireValue);
+  final String wireValue;
 
   static CultureCode fromValue(String value) {
     for (final item in CultureCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CultureCode value: $value');
   }
 }
-

@@ -6,24 +6,34 @@ class GetEnterpriseProxyAccessesAccess {
   /// The authorized account of the security agent.
   final pulumi.Input<String> accessId;
   final pulumi.Input<String> accessSecret;
+
   /// The authorization time of the security access agent permission.
   final pulumi.Input<String> createTime;
+
   /// Security Protection authorization ID.
   final pulumi.Input<String> id;
+
   /// Database account.
   final pulumi.Input<String> indepAccount;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The source information of the security access agent permission is enabled, and the return value is as follows:**Owner Authorization**: The UID of the owner in parentheses.**Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
   final pulumi.Input<String> originInfo;
+
   /// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
   final pulumi.Input<String> proxyAccessId;
+
   /// The ID of the security agent.
   final pulumi.Input<String> proxyId;
+
   /// The user ID.
   final pulumi.Input<String> userId;
+
   /// User nickname.
   final pulumi.Input<String> userName;
+
   /// User UID.
   final pulumi.Input<String> userUid;
 
@@ -74,19 +84,18 @@ class GetEnterpriseProxyAccessesAccess {
 
   factory GetEnterpriseProxyAccessesAccess.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseProxyAccessesAccess(
-      accessId: (map['accessId'] as String).input(),
-      accessSecret: (map['accessSecret'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      indepAccount: (map['indepAccount'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      originInfo: (map['originInfo'] as String).input(),
-      proxyAccessId: (map['proxyAccessId'] as String).input(),
-      proxyId: (map['proxyId'] as String).input(),
-      userId: (map['userId'] as String).input(),
-      userName: (map['userName'] as String).input(),
-      userUid: (map['userUid'] as String).input(),
+      accessId: pulumi.Input.fromValue(map['accessId'] as String),
+      accessSecret: pulumi.Input.fromValue(map['accessSecret'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      indepAccount: pulumi.Input.fromValue(map['indepAccount'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      originInfo: pulumi.Input.fromValue(map['originInfo'] as String),
+      proxyAccessId: pulumi.Input.fromValue(map['proxyAccessId'] as String),
+      proxyId: pulumi.Input.fromValue(map['proxyId'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
+      userUid: pulumi.Input.fromValue(map['userUid'] as String),
     );
   }
 }
-

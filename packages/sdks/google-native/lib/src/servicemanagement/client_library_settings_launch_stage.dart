@@ -9,16 +9,17 @@ enum ClientLibrarySettingsLaunchStage {
   ga("GA"),
   deprecated("DEPRECATED");
 
-  const ClientLibrarySettingsLaunchStage(this.value);
-  final String value;
+  const ClientLibrarySettingsLaunchStage(this.wireValue);
+  final String wireValue;
 
   static ClientLibrarySettingsLaunchStage fromValue(String value) {
     for (final item in ClientLibrarySettingsLaunchStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClientLibrarySettingsLaunchStage value: $value');
+    throw ArgumentError(
+      'Unknown ClientLibrarySettingsLaunchStage value: $value',
+    );
   }
 }
-

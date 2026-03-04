@@ -1,5 +1,3 @@
-library module_labservices;
-
 export 'labservices/auto_shutdown_profile.dart';
 export 'labservices/auto_shutdown_profile_response.dart';
 export 'labservices/connection_profile.dart';

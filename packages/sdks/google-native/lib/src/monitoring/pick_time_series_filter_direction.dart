@@ -4,16 +4,15 @@ enum PickTimeSeriesFilterDirection {
   top("TOP"),
   bottom("BOTTOM");
 
-  const PickTimeSeriesFilterDirection(this.value);
-  final String value;
+  const PickTimeSeriesFilterDirection(this.wireValue);
+  final String wireValue;
 
   static PickTimeSeriesFilterDirection fromValue(String value) {
     for (final item in PickTimeSeriesFilterDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PickTimeSeriesFilterDirection value: $value');
   }
 }
-

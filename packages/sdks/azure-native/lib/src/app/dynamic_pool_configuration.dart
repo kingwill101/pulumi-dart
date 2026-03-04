@@ -10,20 +10,29 @@ class DynamicPoolConfiguration {
 
   /// Creates a new [DynamicPoolConfiguration].
   /// [lifecycleConfiguration] The lifecycle configuration of a session in the dynamic session pool
-  DynamicPoolConfiguration({
-    this.lifecycleConfiguration,
-  });
+  DynamicPoolConfiguration({this.lifecycleConfiguration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lifecycleConfiguration': ?pulumi.Input.mapOptionalInputValue<LifecycleConfiguration, Map<String, dynamic>>(lifecycleConfiguration, (value) => value.toMap()),
+      'lifecycleConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            LifecycleConfiguration,
+            Map<String, dynamic>
+          >(lifecycleConfiguration, (value) => value.toMap()),
     };
   }
 
   factory DynamicPoolConfiguration.fromMap(Map<String, dynamic> map) {
     return DynamicPoolConfiguration(
-      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : (LifecycleConfiguration.fromMap((map['lifecycleConfiguration']! as Map).cast<String, dynamic>())).input(),
+      lifecycleConfiguration: (() {
+        final guardedValue = map['lifecycleConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LifecycleConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

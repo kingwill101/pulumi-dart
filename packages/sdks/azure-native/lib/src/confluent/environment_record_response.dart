@@ -7,10 +7,13 @@ import 'metadata_entity_response.dart';
 class EnvironmentRecordResponse {
   /// Display name of the user
   final pulumi.Input<String>? displayName;
+
   /// Id of the environment
   final pulumi.Input<String>? id;
+
   /// Type of environment
   final pulumi.Input<String>? kind;
+
   /// Metadata of the record
   final pulumi.Input<MetadataEntityResponse>? metadata;
 
@@ -31,17 +34,40 @@ class EnvironmentRecordResponse {
       'displayName': ?displayName,
       'id': ?id,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<MetadataEntityResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetadataEntityResponse,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentRecordResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentRecordResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetadataEntityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,26 +8,37 @@ import 'system_data_response.dart';
 class GetAddressResult {
   /// Type of address based on its usage context.
   final String? addressClassification;
+
   /// Status of address validation.
   final String addressValidationStatus;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Contact details for the address.
   final ContactDetailsResponse? contactDetails;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning state
   final String provisioningState;
+
   /// Shipping details for the address.
   final ShippingAddressResponse? shippingAddress;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -64,12 +75,12 @@ class GetAddressResult {
       'addressClassification': ?addressClassification,
       'addressValidationStatus': addressValidationStatus,
       'azureApiVersion': azureApiVersion,
-      'contactDetails': ?contactDetails == null ? null : contactDetails!.toMap(),
+      'contactDetails': ?contactDetails?.toMap(),
       'id': id,
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
-      'shippingAddress': ?shippingAddress == null ? null : shippingAddress!.toMap(),
+      'shippingAddress': ?shippingAddress?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -78,19 +89,40 @@ class GetAddressResult {
 
   factory GetAddressResult.fromMap(Map<String, dynamic> map) {
     return GetAddressResult(
-      addressClassification: map['addressClassification'] == null ? null : map['addressClassification']! as String,
+      addressClassification: (() {
+        final guardedValue = map['addressClassification'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       addressValidationStatus: map['addressValidationStatus'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      contactDetails: map['contactDetails'] == null ? null : ContactDetailsResponse.fromMap((map['contactDetails']! as Map).cast<String, dynamic>()),
+      contactDetails: (() {
+        final guardedValue = map['contactDetails'];
+        if (guardedValue == null) return null;
+        return ContactDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      shippingAddress: map['shippingAddress'] == null ? null : ShippingAddressResponse.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      shippingAddress: (() {
+        final guardedValue = map['shippingAddress'];
+        if (guardedValue == null) return null;
+        return ShippingAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum RequestSource {
   valueRest("rest");
 
-  const RequestSource(this.value);
-  final String value;
+  const RequestSource(this.wireValue);
+  final String wireValue;
 
   static RequestSource fromValue(String value) {
     for (final item in RequestSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequestSource value: $value');
   }
 }
-

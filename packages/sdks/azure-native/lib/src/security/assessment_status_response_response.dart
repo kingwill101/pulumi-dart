@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssessmentStatusResponseResponse {
   /// Programmatic code for the cause of the assessment status
   final pulumi.Input<String>? cause;
+
   /// Programmatic code for the status of the assessment
   final pulumi.Input<String> code;
+
   /// Human readable description of the assessment status
   final pulumi.Input<String>? description;
+
   /// The time that the assessment was created and first evaluated. Returned as UTC time in ISO 8601 format
   final pulumi.Input<String> firstEvaluationDate;
+
   /// The time that the status of the assessment last changed. Returned as UTC time in ISO 8601 format
   final pulumi.Input<String> statusChangeDate;
 
@@ -41,12 +45,23 @@ class AssessmentStatusResponseResponse {
 
   factory AssessmentStatusResponseResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentStatusResponseResponse(
-      cause: map['cause'] == null ? null : (map['cause']! as String).input(),
-      code: (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      firstEvaluationDate: (map['firstEvaluationDate'] as String).input(),
-      statusChangeDate: (map['statusChangeDate'] as String).input(),
+      cause: (() {
+        final guardedValue = map['cause'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firstEvaluationDate: pulumi.Input.fromValue(
+        map['firstEvaluationDate'] as String,
+      ),
+      statusChangeDate: pulumi.Input.fromValue(
+        map['statusChangeDate'] as String,
+      ),
     );
   }
 }
-

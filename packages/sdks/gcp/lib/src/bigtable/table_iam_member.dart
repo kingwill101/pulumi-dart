@@ -9,9 +9,9 @@ import 'table_iam_member_state.dart';
 /// * `gcp.bigtable.TableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
 /// * `gcp.bigtable.TableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved.
 ///
-/// > **Note:** `gcp.bigtable.TableIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.TableIamBinding` and `gcp.bigtable.TableIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the table as `gcp.bigtable.TableIamPolicy` replaces the entire policy.
+/// &gt; **Note:** `gcp.bigtable.TableIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.TableIamBinding` and `gcp.bigtable.TableIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the table as `gcp.bigtable.TableIamPolicy` replaces the entire policy.
 ///
-/// > **Note:** `gcp.bigtable.TableIamBinding` resources **can be** used in conjunction with `gcp.bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.bigtable.TableIamBinding` resources **can be** used in conjunction with `gcp.bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.bigtable.TableIamPolicy
 ///
@@ -814,10 +814,13 @@ import 'table_iam_member_state.dart';
 /// ```
 class TableIamMember extends pulumi.CustomResource {
   late final pulumi.Output<TableIamMemberCondition?> condition;
+
   /// (Computed) The etag of the tables's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The name or relative resource id of the instance that owns the table.
   late final pulumi.Output<String> instanceName;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -827,15 +830,18 @@ class TableIamMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The project in which the table belongs. If it
   /// is not provided, this provider will use the provider default.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   ///
   /// `gcp.bigtable.TableIamPolicy` only:
   late final pulumi.Output<String> role;
+
   /// The name or relative resource id of the table to manage IAM policies for.
   ///
   /// For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
@@ -850,18 +856,18 @@ class TableIamMember extends pulumi.CustomResource {
     TableIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/tableIamMember:TableIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<TableIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
-    this.table = registerOutput<String>('table');
+         'gcp:bigtable/tableIamMember:TableIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<TableIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    instanceName = registerOutput<String>('instanceName');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    table = registerOutput<String>('table');
   }
 
   /// Gets an existing [TableIamMember] resource's state with the given [name] and [id].
@@ -882,17 +888,17 @@ class TableIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/tableIamMember:TableIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<TableIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
-    this.table = registerOutput<String>('table');
+         'gcp:bigtable/tableIamMember:TableIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<TableIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    instanceName = registerOutput<String>('instanceName');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    table = registerOutput<String>('table');
   }
 }

@@ -3,16 +3,17 @@ enum CleanupPolicyRetentionDescription {
   valueDelete("Delete"),
   valueCompact("Compact");
 
-  const CleanupPolicyRetentionDescription(this.value);
-  final String value;
+  const CleanupPolicyRetentionDescription(this.wireValue);
+  final String wireValue;
 
   static CleanupPolicyRetentionDescription fromValue(String value) {
     for (final item in CleanupPolicyRetentionDescription.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CleanupPolicyRetentionDescription value: $value');
+    throw ArgumentError(
+      'Unknown CleanupPolicyRetentionDescription value: $value',
+    );
   }
 }
-

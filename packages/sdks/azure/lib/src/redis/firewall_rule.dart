@@ -294,7 +294,7 @@ import 'firewall_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cache` - 2024-11-01
@@ -309,12 +309,16 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The highest IP address included in the range.
   late final pulumi.Output<String> endIp;
+
   /// The name of the Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Redis Cache. Changing this forces a new resource to be created.
   late final pulumi.Output<String> redisCacheName;
+
   /// The name of the resource group in which this Redis Cache exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The lowest IP address included in the range
   late final pulumi.Output<String> startIp;
 
@@ -327,16 +331,16 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIp = registerOutput<String>('endIp');
+         'azure:redis/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIp = registerOutput<String>('endIp');
     this.name = registerOutput<String>('name');
-    this.redisCacheName = registerOutput<String>('redisCacheName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.startIp = registerOutput<String>('startIp');
+    redisCacheName = registerOutput<String>('redisCacheName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    startIp = registerOutput<String>('startIp');
   }
 
   /// Gets an existing [FirewallRule] resource's state with the given [name] and [id].
@@ -357,15 +361,15 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIp = registerOutput<String>('endIp');
+         'azure:redis/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIp = registerOutput<String>('endIp');
     this.name = registerOutput<String>('name');
-    this.redisCacheName = registerOutput<String>('redisCacheName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.startIp = registerOutput<String>('startIp');
+    redisCacheName = registerOutput<String>('redisCacheName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    startIp = registerOutput<String>('startIp');
   }
 }

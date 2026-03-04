@@ -4,15 +4,13 @@ import 'alarm_composite_expression.dart';
 import 'alarm_escalations_critical.dart';
 import 'alarm_escalations_info.dart';
 import 'alarm_escalations_warn.dart';
-import 'alarm_prometheus.dart';
 import 'alarm_state.dart';
-import 'alarm_target.dart';
 
 /// Provides a Cloud Monitor Service Alarm resource.
 ///
 /// For information about Cloud Monitor Service Alarm and how to use it, see [What is Alarm](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putresourcemetricrule).
 ///
-/// > **NOTE:** Available since v1.9.1.
+/// &gt; **NOTE:** Available since v1.9.1.
 ///
 /// ## Example Usage
 ///
@@ -557,45 +555,65 @@ import 'alarm_target.dart';
 class Alarm extends pulumi.CustomResource {
   /// The trigger conditions for multiple metrics. See `composite_expression` below.
   late final pulumi.Output<AlarmCompositeExpression?> compositeExpression;
+
   /// List contact groups of the alarm rule, which must have been created on the console.
   late final pulumi.Output<List<String>> contactGroups;
+
   /// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
   late final pulumi.Output<Map<String, String>> dimensions;
+
   /// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
   late final pulumi.Output<String?> effectiveInterval;
+
   /// Whether to enable alarm rule. Default value: `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
   late final pulumi.Output<int?> endTime;
+
   /// A configuration of critical alarm. See `escalations_critical` below.
   late final pulumi.Output<AlarmEscalationsCritical> escalationsCritical;
+
   /// A configuration of critical info. See `escalations_info` below.
   late final pulumi.Output<AlarmEscalationsInfo> escalationsInfo;
+
   /// A configuration of critical warn. See `escalations_warn` below.
   late final pulumi.Output<AlarmEscalationsWarn> escalationsWarn;
+
   /// The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
   late final pulumi.Output<String> metric;
+
   /// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
   late final pulumi.Output<String> metricDimensions;
+
   /// The name of the alert rule.
   late final pulumi.Output<String> name;
+
   /// The statistical period of the metric. Unit: seconds. Default value: `300`.
   late final pulumi.Output<int?> period;
+
   /// The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
   /// **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
   late final pulumi.Output<String> project;
+
   /// The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
-  late final pulumi.Output<List<AlarmPrometheus>> prometheuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> prometheuses;
+
   /// Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
   late final pulumi.Output<int?> silenceTime;
+
   /// Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
   late final pulumi.Output<int?> startTime;
+
   /// The status of the Alarm.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Adds or modifies the push channels of an alert rule. See `targets` below.
-  late final pulumi.Output<List<AlarmTarget>> targets;
+  late final pulumi.Output<List<Map<String, dynamic>>> targets;
+
   /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
   late final pulumi.Output<String?> webhook;
 
@@ -603,45 +621,42 @@ class Alarm extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alarm]. {@macro pulumi_cms_alarm_alarm_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alarm(
-    String name, {
-    AlarmArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cms/alarm:Alarm',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.compositeExpression = registerOutput<AlarmCompositeExpression?>('compositeExpression');
-    this.contactGroups = registerOutput<List<String>>('contactGroups');
-    this.dimensions = registerOutput<Map<String, String>>('dimensions');
-    this.effectiveInterval = registerOutput<String?>('effectiveInterval');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.endTime = registerOutput<int?>('endTime');
-    this.escalationsCritical = registerOutput<AlarmEscalationsCritical>('escalationsCritical');
-    this.escalationsInfo = registerOutput<AlarmEscalationsInfo>('escalationsInfo');
-    this.escalationsWarn = registerOutput<AlarmEscalationsWarn>('escalationsWarn');
-    this.metric = registerOutput<String>('metric');
-    this.metricDimensions = registerOutput<String>('metricDimensions');
+  Alarm(String name, {AlarmArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cms/alarm:Alarm',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    compositeExpression = registerOutput<AlarmCompositeExpression?>(
+      'compositeExpression',
+    );
+    contactGroups = registerOutput<List<String>>('contactGroups');
+    dimensions = registerOutput<Map<String, String>>('dimensions');
+    effectiveInterval = registerOutput<String?>('effectiveInterval');
+    enabled = registerOutput<bool?>('enabled');
+    endTime = registerOutput<int?>('endTime');
+    escalationsCritical = registerOutput<AlarmEscalationsCritical>(
+      'escalationsCritical',
+    );
+    escalationsInfo = registerOutput<AlarmEscalationsInfo>('escalationsInfo');
+    escalationsWarn = registerOutput<AlarmEscalationsWarn>('escalationsWarn');
+    metric = registerOutput<String>('metric');
+    metricDimensions = registerOutput<String>('metricDimensions');
     this.name = registerOutput<String>('name');
-    this.period = registerOutput<int?>('period');
-    this.project = registerOutput<String>('project');
-    this.prometheuses = registerOutput<List<AlarmPrometheus>>('prometheuses');
-    this.silenceTime = registerOutput<int?>('silenceTime');
-    this.startTime = registerOutput<int?>('startTime');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targets = registerOutput<List<AlarmTarget>>('targets');
-    this.webhook = registerOutput<String?>('webhook');
+    period = registerOutput<int?>('period');
+    project = registerOutput<String>('project');
+    prometheuses = registerOutput<List<Map<String, dynamic>>>('prometheuses');
+    silenceTime = registerOutput<int?>('silenceTime');
+    startTime = registerOutput<int?>('startTime');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    webhook = registerOutput<String?>('webhook');
   }
 
   /// Gets an existing [Alarm] resource's state with the given [name] and [id].
-  static Alarm get(
-    String name,
-    pulumi.Input<String> id, {
-    AlarmState? state,
-  }) {
+  static Alarm get(String name, pulumi.Input<String> id, {AlarmState? state}) {
     return Alarm._get(
       name,
       state: state?.toMap(),
@@ -654,31 +669,35 @@ class Alarm extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/alarm:Alarm',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.compositeExpression = registerOutput<AlarmCompositeExpression?>('compositeExpression');
-    this.contactGroups = registerOutput<List<String>>('contactGroups');
-    this.dimensions = registerOutput<Map<String, String>>('dimensions');
-    this.effectiveInterval = registerOutput<String?>('effectiveInterval');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.endTime = registerOutput<int?>('endTime');
-    this.escalationsCritical = registerOutput<AlarmEscalationsCritical>('escalationsCritical');
-    this.escalationsInfo = registerOutput<AlarmEscalationsInfo>('escalationsInfo');
-    this.escalationsWarn = registerOutput<AlarmEscalationsWarn>('escalationsWarn');
-    this.metric = registerOutput<String>('metric');
-    this.metricDimensions = registerOutput<String>('metricDimensions');
+         'alicloud:cms/alarm:Alarm',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    compositeExpression = registerOutput<AlarmCompositeExpression?>(
+      'compositeExpression',
+    );
+    contactGroups = registerOutput<List<String>>('contactGroups');
+    dimensions = registerOutput<Map<String, String>>('dimensions');
+    effectiveInterval = registerOutput<String?>('effectiveInterval');
+    enabled = registerOutput<bool?>('enabled');
+    endTime = registerOutput<int?>('endTime');
+    escalationsCritical = registerOutput<AlarmEscalationsCritical>(
+      'escalationsCritical',
+    );
+    escalationsInfo = registerOutput<AlarmEscalationsInfo>('escalationsInfo');
+    escalationsWarn = registerOutput<AlarmEscalationsWarn>('escalationsWarn');
+    metric = registerOutput<String>('metric');
+    metricDimensions = registerOutput<String>('metricDimensions');
     this.name = registerOutput<String>('name');
-    this.period = registerOutput<int?>('period');
-    this.project = registerOutput<String>('project');
-    this.prometheuses = registerOutput<List<AlarmPrometheus>>('prometheuses');
-    this.silenceTime = registerOutput<int?>('silenceTime');
-    this.startTime = registerOutput<int?>('startTime');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targets = registerOutput<List<AlarmTarget>>('targets');
-    this.webhook = registerOutput<String?>('webhook');
+    period = registerOutput<int?>('period');
+    project = registerOutput<String>('project');
+    prometheuses = registerOutput<List<Map<String, dynamic>>>('prometheuses');
+    silenceTime = registerOutput<int?>('silenceTime');
+    startTime = registerOutput<int?>('startTime');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    webhook = registerOutput<String?>('webhook');
   }
 }

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageQueueMessage {
   /// Gets or sets the message.
   final pulumi.Input<String>? message;
+
   /// Gets or sets the queue name.
   final pulumi.Input<String>? queueName;
+
   /// Gets or sets the SAS key.
   final pulumi.Input<String>? sasToken;
+
   /// Gets or sets the storage account name.
   final pulumi.Input<String>? storageAccount;
 
@@ -35,11 +38,26 @@ class StorageQueueMessage {
 
   factory StorageQueueMessage.fromMap(Map<String, dynamic> map) {
     return StorageQueueMessage(
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
-      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount']! as String).input(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sasToken: (() {
+        final guardedValue = map['sasToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccount: (() {
+        final guardedValue = map['storageAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

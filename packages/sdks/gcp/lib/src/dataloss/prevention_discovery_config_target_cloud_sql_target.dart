@@ -8,15 +8,23 @@ import 'prevention_discovery_config_target_cloud_sql_target_generation_cadence.d
 class PreventionDiscoveryConfigTargetCloudSqlTarget {
   /// In addition to matching the filter, these conditions must be true before a profile is generated.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetConditions>? conditions;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetConditions>?
+  conditions;
+
   /// Disable profiling for database resources that match this filter.
   final pulumi.Input<Map<String, dynamic>>? disabled;
+
   /// Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilter> filter;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetFilter>
+  filter;
+
   /// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence>? generationCadence;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence
+  >?
+  generationCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTarget].
   /// [conditions] In addition to matching the filter, these conditions must be true before a profile is generated.
@@ -32,20 +40,59 @@ class PreventionDiscoveryConfigTargetCloudSqlTarget {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetCloudSqlTargetConditions, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetCloudSqlTargetConditions,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
       'disabled': ?disabled,
-      'filter': pulumi.Input.mapInputValue<PreventionDiscoveryConfigTargetCloudSqlTargetFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
-      'generationCadence': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence, Map<String, dynamic>>(generationCadence, (value) => value.toMap()),
+      'filter':
+          pulumi.Input.mapInputValue<
+            PreventionDiscoveryConfigTargetCloudSqlTargetFilter,
+            Map<String, dynamic>
+          >(filter, (value) => value.toMap()),
+      'generationCadence':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence,
+            Map<String, dynamic>
+          >(generationCadence, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudSqlTarget.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudSqlTarget.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetCloudSqlTarget(
-      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : ((map['disabled']! as Map).cast<String, dynamic>()).input(),
-      filter: (PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      generationCadence: map['generationCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence.fromMap((map['generationCadence']! as Map).cast<String, dynamic>())).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetCloudSqlTargetConditions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      filter: pulumi.Input.fromValue(
+        PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap(
+          (map['filter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      generationCadence: (() {
+        final guardedValue = map['generationCadence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

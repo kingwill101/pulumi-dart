@@ -31,7 +31,11 @@ class ValueResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': booleanValue,
-      'dateValue': pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(dateValue, (value) => value.toMap()),
+      'dateValue':
+          pulumi.Input.mapInputValue<DateResponse, Map<String, dynamic>>(
+            dateValue,
+            (value) => value.toMap(),
+          ),
       'doubleValue': doubleValue,
       'integerValue': integerValue,
       'stringValue': stringValue,
@@ -41,13 +45,16 @@ class ValueResponse {
 
   factory ValueResponse.fromMap(Map<String, dynamic> map) {
     return ValueResponse(
-      booleanValue: (map['booleanValue'] as bool).input(),
-      dateValue: (DateResponse.fromMap((map['dateValue'] as Map).cast<String, dynamic>())).input(),
-      doubleValue: (map['doubleValue'] as double).input(),
-      integerValue: (map['integerValue'] as String).input(),
-      stringValue: (map['stringValue'] as String).input(),
-      timestampValue: (map['timestampValue'] as String).input(),
+      booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
+      dateValue: pulumi.Input.fromValue(
+        DateResponse.fromMap(
+          (map['dateValue']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
+      integerValue: pulumi.Input.fromValue(map['integerValue'] as String),
+      stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
+      timestampValue: pulumi.Input.fromValue(map['timestampValue'] as String),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_group_args.dart';
-import 'parameter_group_parameter.dart';
 import 'parameter_group_state.dart';
 
 /// Provides a DAX Parameter Group resource.
@@ -163,10 +162,13 @@ import 'parameter_group_state.dart';
 class ParameterGroup extends pulumi.CustomResource {
   /// A description of the parameter group.
   late final pulumi.Output<String?> description;
+
   /// The name of the parameter group.
   late final pulumi.Output<String> name;
+
   /// The parameters of the parameter group.
-  late final pulumi.Output<List<ParameterGroupParameter>> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -179,15 +181,15 @@ class ParameterGroup extends pulumi.CustomResource {
     ParameterGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dax/parameterGroup:ParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:dax/parameterGroup:ParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<List<ParameterGroupParameter>>('parameters');
-    this.region = registerOutput<String>('region');
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [ParameterGroup] resource's state with the given [name] and [id].
@@ -208,14 +210,14 @@ class ParameterGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dax/parameterGroup:ParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:dax/parameterGroup:ParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<List<ParameterGroupParameter>>('parameters');
-    this.region = registerOutput<String>('region');
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    region = registerOutput<String>('region');
   }
 }

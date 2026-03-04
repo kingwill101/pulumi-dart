@@ -7,16 +7,22 @@ import 'oracle_ssl_config.dart';
 class OracleProfile {
   /// Connection string attributes
   final pulumi.Input<Map<String, String>>? connectionAttributes;
+
   /// Database for the Oracle connection.
   final pulumi.Input<String> databaseService;
+
   /// Hostname for the Oracle connection.
   final pulumi.Input<String> hostname;
+
   /// Optional. SSL configuration for the Oracle connection.
   final pulumi.Input<OracleSslConfig>? oracleSslConfig;
+
   /// Password for the Oracle connection.
   final pulumi.Input<String> password;
+
   /// Port for the Oracle connection, default value is 1521.
   final pulumi.Input<int>? port;
+
   /// Username for the Oracle connection.
   final pulumi.Input<String> username;
 
@@ -43,7 +49,11 @@ class OracleProfile {
       'connectionAttributes': ?connectionAttributes,
       'databaseService': databaseService,
       'hostname': hostname,
-      'oracleSslConfig': ?pulumi.Input.mapOptionalInputValue<OracleSslConfig, Map<String, dynamic>>(oracleSslConfig, (value) => value.toMap()),
+      'oracleSslConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            OracleSslConfig,
+            Map<String, dynamic>
+          >(oracleSslConfig, (value) => value.toMap()),
       'password': password,
       'port': ?port,
       'username': username,
@@ -52,14 +62,31 @@ class OracleProfile {
 
   factory OracleProfile.fromMap(Map<String, dynamic> map) {
     return OracleProfile(
-      connectionAttributes: map['connectionAttributes'] == null ? null : ((map['connectionAttributes']! as Map).cast<String, String>()).input(),
-      databaseService: (map['databaseService'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      oracleSslConfig: map['oracleSslConfig'] == null ? null : (OracleSslConfig.fromMap((map['oracleSslConfig']! as Map).cast<String, dynamic>())).input(),
-      password: (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      username: (map['username'] as String).input(),
+      connectionAttributes: (() {
+        final guardedValue = map['connectionAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      databaseService: pulumi.Input.fromValue(map['databaseService'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      oracleSslConfig: (() {
+        final guardedValue = map['oracleSslConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OracleSslConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

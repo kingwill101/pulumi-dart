@@ -1,5 +1,3 @@
-library module_webpubsub;
-
 export 'webpubsub/aclaction.dart';
 export 'webpubsub/event_handler.dart';
 export 'webpubsub/event_handler_response.dart';

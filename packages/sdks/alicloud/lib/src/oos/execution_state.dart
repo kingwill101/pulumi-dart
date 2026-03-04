@@ -6,44 +6,64 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExecutionState {
   /// The counters of OOS Execution.
   final pulumi.Input<String>? counters;
+
   /// The time when the execution was created.
   final pulumi.Input<String>? createDate;
+
   /// The description of OOS Execution.
   final pulumi.Input<String>? description;
+
   /// The time when the execution was ended.
   final pulumi.Input<String>? endDate;
+
   /// The user who execute the template.
   final pulumi.Input<String>? executedBy;
+
   /// Whether to include subtasks.
   final pulumi.Input<bool>? isParent;
+
   /// The loop mode of OOS Execution.
   final pulumi.Input<String>? loopMode;
+
   /// The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
   final pulumi.Input<String>? mode;
+
   /// The outputs of OOS Execution.
   final pulumi.Input<String>? outputs;
+
   /// The parameters required by the template. Default to `{}`.
   final pulumi.Input<String>? parameters;
+
   /// The id of parent execution.
   final pulumi.Input<String>? parentExecutionId;
+
   /// The role that executes the current template.
   final pulumi.Input<String>? ramRole;
+
   /// The mode of safety check.
   final pulumi.Input<String>? safetyCheck;
+
   /// The time when the execution was started.
   final pulumi.Input<String>? startDate;
+
   /// The status of OOS Execution.
   final pulumi.Input<String>? status;
+
   /// The message of status.
   final pulumi.Input<String>? statusMessage;
+
   /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
   final pulumi.Input<String>? templateContent;
+
   /// The id of template.
   final pulumi.Input<String>? templateId;
+
   /// The name of execution template.
   final pulumi.Input<String>? templateName;
+
   /// The version of execution template.
   final pulumi.Input<String>? templateVersion;
+
   /// The time when the execution was updated.
   final pulumi.Input<String>? updateDate;
 
@@ -121,28 +141,111 @@ class ExecutionState {
 
   factory ExecutionState.fromMap(Map<String, dynamic> map) {
     return ExecutionState(
-      counters: map['counters'] == null ? null : (map['counters']! as String).input(),
-      createDate: map['createDate'] == null ? null : (map['createDate']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
-      executedBy: map['executedBy'] == null ? null : (map['executedBy']! as String).input(),
-      isParent: map['isParent'] == null ? null : (map['isParent']! as bool).input(),
-      loopMode: map['loopMode'] == null ? null : (map['loopMode']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      outputs: map['outputs'] == null ? null : (map['outputs']! as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
-      parentExecutionId: map['parentExecutionId'] == null ? null : (map['parentExecutionId']! as String).input(),
-      ramRole: map['ramRole'] == null ? null : (map['ramRole']! as String).input(),
-      safetyCheck: map['safetyCheck'] == null ? null : (map['safetyCheck']! as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage']! as String).input(),
-      templateContent: map['templateContent'] == null ? null : (map['templateContent']! as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
-      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion']! as String).input(),
-      updateDate: map['updateDate'] == null ? null : (map['updateDate']! as String).input(),
+      counters: (() {
+        final guardedValue = map['counters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createDate: (() {
+        final guardedValue = map['createDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endDate: (() {
+        final guardedValue = map['endDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executedBy: (() {
+        final guardedValue = map['executedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isParent: (() {
+        final guardedValue = map['isParent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loopMode: (() {
+        final guardedValue = map['loopMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputs: (() {
+        final guardedValue = map['outputs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentExecutionId: (() {
+        final guardedValue = map['parentExecutionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ramRole: (() {
+        final guardedValue = map['ramRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      safetyCheck: (() {
+        final guardedValue = map['safetyCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startDate: (() {
+        final guardedValue = map['startDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusMessage: (() {
+        final guardedValue = map['statusMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateContent: (() {
+        final guardedValue = map['templateContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateName: (() {
+        final guardedValue = map['templateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateVersion: (() {
+        final guardedValue = map['templateVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateDate: (() {
+        final guardedValue = map['updateDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

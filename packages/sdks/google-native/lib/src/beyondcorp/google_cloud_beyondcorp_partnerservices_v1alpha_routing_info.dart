@@ -14,15 +14,14 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pacUri': pacUri,
-    };
+    return <String, dynamic>{'pacUri': pacUri};
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo(
-      pacUri: (map['pacUri'] as String).input(),
+      pacUri: pulumi.Input.fromValue(map['pacUri'] as String),
     );
   }
 }
-

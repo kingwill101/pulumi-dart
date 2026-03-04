@@ -15,7 +15,7 @@ import 'primary_ip_state.dart';
 ///
 /// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
 ///
-/// > Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer accepts
+/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer accepts
 /// and returns the `datacenter` attribute. This version of the provider remains backward compatible by preserving
 /// the `datacenter` value in the state and by extracting the `location` name from the `datacenter` attribute when
 /// communicating with the API.
@@ -251,27 +251,37 @@ import 'primary_ip_state.dart';
 class PrimaryIp extends pulumi.CustomResource {
   /// ID of the assigned resource.
   late final pulumi.Output<int> assigneeId;
+
   /// The type of the assigned resource. Currently supported: `server`
   late final pulumi.Output<String> assigneeType;
+
   /// Whether auto delete is enabled.
   /// `Important note:`It is recommended to set `auto_delete` to `false`, because if a server assigned to the managed ip is getting deleted, it will also delete the primary IP which will break the TF state.
   late final pulumi.Output<bool> autoDelete;
+
   /// The datacenter name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   late final pulumi.Output<String> datacenter;
+
   /// Whether delete protection is enabled. See "Delete Protection" in the Provider Docs for details.
   ///
   /// Note: At least one of `location`, `datacenter` or `assignee_id` is required.
   late final pulumi.Output<bool?> deleteProtection;
+
   /// (string) IP Address of the Primary IP.
   late final pulumi.Output<String> ipAddress;
+
   /// (string) IPv6 subnet of the Primary IP for IPv6 addresses. (Only set if `type` is `ipv6`)
   late final pulumi.Output<String> ipNetwork;
+
   /// User-defined labels (key-value pairs).
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
+
   /// Name of the Primary IP.
   late final pulumi.Output<String> name;
+
   /// Type of the Primary IP. `ipv4` or `ipv6`
   late final pulumi.Output<String> type;
 
@@ -284,22 +294,22 @@ class PrimaryIp extends pulumi.CustomResource {
     PrimaryIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/primaryIp:PrimaryIp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assigneeId = registerOutput<int>('assigneeId');
-    this.assigneeType = registerOutput<String>('assigneeType');
-    this.autoDelete = registerOutput<bool>('autoDelete');
-    this.datacenter = registerOutput<String>('datacenter');
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.ipNetwork = registerOutput<String>('ipNetwork');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'hcloud:index/primaryIp:PrimaryIp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assigneeId = registerOutput<int>('assigneeId');
+    assigneeType = registerOutput<String>('assigneeType');
+    autoDelete = registerOutput<bool>('autoDelete');
+    datacenter = registerOutput<String>('datacenter');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipNetwork = registerOutput<String>('ipNetwork');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [PrimaryIp] resource's state with the given [name] and [id].
@@ -320,21 +330,21 @@ class PrimaryIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/primaryIp:PrimaryIp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assigneeId = registerOutput<int>('assigneeId');
-    this.assigneeType = registerOutput<String>('assigneeType');
-    this.autoDelete = registerOutput<bool>('autoDelete');
-    this.datacenter = registerOutput<String>('datacenter');
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.ipNetwork = registerOutput<String>('ipNetwork');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'hcloud:index/primaryIp:PrimaryIp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assigneeId = registerOutput<int>('assigneeId');
+    assigneeType = registerOutput<String>('assigneeType');
+    autoDelete = registerOutput<bool>('autoDelete');
+    datacenter = registerOutput<String>('datacenter');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipNetwork = registerOutput<String>('ipNetwork');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

@@ -10,12 +10,16 @@ import 'managed_cluster_storage_profile_snapshot_controller.dart';
 class ManagedClusterStorageProfile {
   /// AzureBlob CSI Driver settings for the storage profile.
   final pulumi.Input<ManagedClusterStorageProfileBlobCSIDriver>? blobCSIDriver;
+
   /// AzureDisk CSI Driver settings for the storage profile.
   final pulumi.Input<ManagedClusterStorageProfileDiskCSIDriver>? diskCSIDriver;
+
   /// AzureFile CSI Driver settings for the storage profile.
   final pulumi.Input<ManagedClusterStorageProfileFileCSIDriver>? fileCSIDriver;
+
   /// Snapshot Controller settings for the storage profile.
-  final pulumi.Input<ManagedClusterStorageProfileSnapshotController>? snapshotController;
+  final pulumi.Input<ManagedClusterStorageProfileSnapshotController>?
+  snapshotController;
 
   /// Creates a new [ManagedClusterStorageProfile].
   /// [blobCSIDriver] AzureBlob CSI Driver settings for the storage profile.
@@ -31,20 +35,67 @@ class ManagedClusterStorageProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blobCSIDriver': ?pulumi.Input.mapOptionalInputValue<ManagedClusterStorageProfileBlobCSIDriver, Map<String, dynamic>>(blobCSIDriver, (value) => value.toMap()),
-      'diskCSIDriver': ?pulumi.Input.mapOptionalInputValue<ManagedClusterStorageProfileDiskCSIDriver, Map<String, dynamic>>(diskCSIDriver, (value) => value.toMap()),
-      'fileCSIDriver': ?pulumi.Input.mapOptionalInputValue<ManagedClusterStorageProfileFileCSIDriver, Map<String, dynamic>>(fileCSIDriver, (value) => value.toMap()),
-      'snapshotController': ?pulumi.Input.mapOptionalInputValue<ManagedClusterStorageProfileSnapshotController, Map<String, dynamic>>(snapshotController, (value) => value.toMap()),
+      'blobCSIDriver':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedClusterStorageProfileBlobCSIDriver,
+            Map<String, dynamic>
+          >(blobCSIDriver, (value) => value.toMap()),
+      'diskCSIDriver':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedClusterStorageProfileDiskCSIDriver,
+            Map<String, dynamic>
+          >(diskCSIDriver, (value) => value.toMap()),
+      'fileCSIDriver':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedClusterStorageProfileFileCSIDriver,
+            Map<String, dynamic>
+          >(fileCSIDriver, (value) => value.toMap()),
+      'snapshotController':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedClusterStorageProfileSnapshotController,
+            Map<String, dynamic>
+          >(snapshotController, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterStorageProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStorageProfile(
-      blobCSIDriver: map['blobCSIDriver'] == null ? null : (ManagedClusterStorageProfileBlobCSIDriver.fromMap((map['blobCSIDriver']! as Map).cast<String, dynamic>())).input(),
-      diskCSIDriver: map['diskCSIDriver'] == null ? null : (ManagedClusterStorageProfileDiskCSIDriver.fromMap((map['diskCSIDriver']! as Map).cast<String, dynamic>())).input(),
-      fileCSIDriver: map['fileCSIDriver'] == null ? null : (ManagedClusterStorageProfileFileCSIDriver.fromMap((map['fileCSIDriver']! as Map).cast<String, dynamic>())).input(),
-      snapshotController: map['snapshotController'] == null ? null : (ManagedClusterStorageProfileSnapshotController.fromMap((map['snapshotController']! as Map).cast<String, dynamic>())).input(),
+      blobCSIDriver: (() {
+        final guardedValue = map['blobCSIDriver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedClusterStorageProfileBlobCSIDriver.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      diskCSIDriver: (() {
+        final guardedValue = map['diskCSIDriver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedClusterStorageProfileDiskCSIDriver.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fileCSIDriver: (() {
+        final guardedValue = map['fileCSIDriver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedClusterStorageProfileFileCSIDriver.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      snapshotController: (() {
+        final guardedValue = map['snapshotController'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedClusterStorageProfileSnapshotController.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

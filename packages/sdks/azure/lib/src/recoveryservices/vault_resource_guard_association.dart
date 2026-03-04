@@ -233,6 +233,7 @@ import 'vault_resource_guard_association_state.dart';
 class VaultResourceGuardAssociation extends pulumi.CustomResource {
   /// ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGuardId;
+
   /// ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -245,13 +246,13 @@ class VaultResourceGuardAssociation extends pulumi.CustomResource {
     VaultResourceGuardAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:recoveryservices/vaultResourceGuardAssociation:VaultResourceGuardAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.resourceGuardId = registerOutput<String>('resourceGuardId');
-    this.vaultId = registerOutput<String>('vaultId');
+         'azure:recoveryservices/vaultResourceGuardAssociation:VaultResourceGuardAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    resourceGuardId = registerOutput<String>('resourceGuardId');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [VaultResourceGuardAssociation] resource's state with the given [name] and [id].
@@ -272,12 +273,12 @@ class VaultResourceGuardAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:recoveryservices/vaultResourceGuardAssociation:VaultResourceGuardAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.resourceGuardId = registerOutput<String>('resourceGuardId');
-    this.vaultId = registerOutput<String>('vaultId');
+         'azure:recoveryservices/vaultResourceGuardAssociation:VaultResourceGuardAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    resourceGuardId = registerOutput<String>('resourceGuardId');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

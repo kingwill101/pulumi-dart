@@ -10,20 +10,28 @@ import 'peering_service_sku.dart';
 class PeeringServiceArgs {
   /// The location of the resource.
   final pulumi.Input<String>? location;
+
   /// The location (state/province) of the customer.
   final pulumi.Input<String>? peeringServiceLocation;
+
   /// The name of the peering service.
   final pulumi.Input<String>? peeringServiceName;
+
   /// The name of the service provider.
   final pulumi.Input<String>? peeringServiceProvider;
+
   /// The backup peering (Microsoft/service provider) location to be used for customer traffic.
   final pulumi.Input<String>? providerBackupPeeringLocation;
+
   /// The primary peering (Microsoft/service provider) location to be used for customer traffic.
   final pulumi.Input<String>? providerPrimaryPeeringLocation;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The SKU that defines the type of the peering service.
   final pulumi.Input<PeeringServiceSku>? sku;
+
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -58,23 +66,66 @@ class PeeringServiceArgs {
       'providerBackupPeeringLocation': ?providerBackupPeeringLocation,
       'providerPrimaryPeeringLocation': ?providerPrimaryPeeringLocation,
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<PeeringServiceSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            PeeringServiceSku,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory PeeringServiceArgs.fromMap(Map<String, dynamic> map) {
     return PeeringServiceArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      peeringServiceLocation: map['peeringServiceLocation'] == null ? null : (map['peeringServiceLocation']! as String).input(),
-      peeringServiceName: map['peeringServiceName'] == null ? null : (map['peeringServiceName']! as String).input(),
-      peeringServiceProvider: map['peeringServiceProvider'] == null ? null : (map['peeringServiceProvider']! as String).input(),
-      providerBackupPeeringLocation: map['providerBackupPeeringLocation'] == null ? null : (map['providerBackupPeeringLocation']! as String).input(),
-      providerPrimaryPeeringLocation: map['providerPrimaryPeeringLocation'] == null ? null : (map['providerPrimaryPeeringLocation']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (PeeringServiceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peeringServiceLocation: (() {
+        final guardedValue = map['peeringServiceLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peeringServiceName: (() {
+        final guardedValue = map['peeringServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peeringServiceProvider: (() {
+        final guardedValue = map['peeringServiceProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerBackupPeeringLocation: (() {
+        final guardedValue = map['providerBackupPeeringLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerPrimaryPeeringLocation: (() {
+        final guardedValue = map['providerPrimaryPeeringLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PeeringServiceSku.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

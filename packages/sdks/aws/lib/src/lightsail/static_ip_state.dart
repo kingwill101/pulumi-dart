@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticIpState {
   /// ARN of the Lightsail static IP.
   final pulumi.Input<String>? arn;
+
   /// Allocated static IP address.
   final pulumi.Input<String>? ipAddress;
+
   /// Name for the allocated static IP.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Support code for the static IP. Include this code in your email to support when you have questions about a static IP in Lightsail. This code enables our support team to look up your Lightsail information more easily.
   final pulumi.Input<String>? supportCode;
 
@@ -43,12 +47,31 @@ class StaticIpState {
 
   factory StaticIpState.fromMap(Map<String, dynamic> map) {
     return StaticIpState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      supportCode: map['supportCode'] == null ? null : ((map['supportCode'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportCode: (() {
+        final guardedValue = map['supportCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

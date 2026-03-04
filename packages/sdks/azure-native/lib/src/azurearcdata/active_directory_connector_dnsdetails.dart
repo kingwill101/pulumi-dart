@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActiveDirectoryConnectorDNSDetails {
   /// DNS domain name for which DNS lookups should be forwarded to the Active Directory DNS servers.
   final pulumi.Input<String>? domainName;
+
   /// List of Active Directory DNS server IP addresses.
   final pulumi.Input<List<String>> nameserverIPAddresses;
+
   /// Flag indicating whether to prefer Kubernetes DNS server response over AD DNS server response for IP address lookups.
   final pulumi.Input<bool>? preferK8sDnsForPtrLookups;
+
   /// Replica count for DNS proxy service. Default value is 1.
   final pulumi.Input<double>? replicas;
 
@@ -36,11 +39,24 @@ class ActiveDirectoryConnectorDNSDetails {
 
   factory ActiveDirectoryConnectorDNSDetails.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorDNSDetails(
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      nameserverIPAddresses: ((map['nameserverIPAddresses'] as List).cast<String>()).input(),
-      preferK8sDnsForPtrLookups: map['preferK8sDnsForPtrLookups'] == null ? null : (map['preferK8sDnsForPtrLookups']! as bool).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas']! as double).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameserverIPAddresses: pulumi.Input.fromValue(
+        (map['nameserverIPAddresses'] as List).cast<String>(),
+      ),
+      preferK8sDnsForPtrLookups: (() {
+        final guardedValue = map['preferK8sDnsForPtrLookups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      replicas: (() {
+        final guardedValue = map['replicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

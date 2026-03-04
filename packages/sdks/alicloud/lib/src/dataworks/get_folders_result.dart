@@ -6,6 +6,7 @@ import 'get_folders_folder.dart';
 /// Result data returned by getFolders.
 class GetFoldersResult {
   final List<GetFoldersFolder> folders;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -31,7 +32,11 @@ class GetFoldersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'folders': pulumi.Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(folders, (value) => value.toMap()),
+      'folders':
+          pulumi.Input.encodeList<GetFoldersFolder, Map<String, dynamic>>(
+            folders,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -42,13 +47,20 @@ class GetFoldersResult {
 
   factory GetFoldersResult.fromMap(Map<String, dynamic> map) {
     return GetFoldersResult(
-      folders: pulumi.Input.decodeList<GetFoldersFolder>(map['folders'], (value) => GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>())),
+      folders: pulumi.Input.decodeList<GetFoldersFolder>(
+        map['folders']!,
+        (value) =>
+            GetFoldersFolder.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       parentFolderPath: map['parentFolderPath'] as String,
       projectId: map['projectId'] as String,
     );
   }
 }
-

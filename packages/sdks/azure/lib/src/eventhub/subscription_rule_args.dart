@@ -10,14 +10,19 @@ import 'subscription_rule_correlation_filter.dart';
 class SubscriptionRuleArgs {
   /// Represents set of actions written in SQL language-based syntax that is performed against a BrokeredMessage.
   final pulumi.Input<String>? action;
+
   /// A `correlation_filter` block as documented below to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `CorrelationFilter`.
   final pulumi.Input<SubscriptionRuleCorrelationFilter>? correlationFilter;
+
   /// Type of filter to be applied to a BrokeredMessage. Possible values are `SqlFilter` and `CorrelationFilter`.
   final pulumi.Input<String> filterType;
+
   /// Specifies the name of the ServiceBus Subscription Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Represents a filter written in SQL language-based syntax that to be evaluated against a BrokeredMessage. Required when `filter_type` is set to `SqlFilter`.
   final pulumi.Input<String>? sqlFilter;
+
   /// The ID of the ServiceBus Subscription in which this Rule should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> subscriptionId;
 
@@ -40,7 +45,11 @@ class SubscriptionRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
-      'correlationFilter': ?pulumi.Input.mapOptionalInputValue<SubscriptionRuleCorrelationFilter, Map<String, dynamic>>(correlationFilter, (value) => value.toMap()),
+      'correlationFilter':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubscriptionRuleCorrelationFilter,
+            Map<String, dynamic>
+          >(correlationFilter, (value) => value.toMap()),
       'filterType': filterType,
       'name': ?name,
       'sqlFilter': ?sqlFilter,
@@ -50,13 +59,32 @@ class SubscriptionRuleArgs {
 
   factory SubscriptionRuleArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionRuleArgs(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      correlationFilter: map['correlationFilter'] == null ? null : (SubscriptionRuleCorrelationFilter.fromMap((map['correlationFilter']! as Map).cast<String, dynamic>())).input(),
-      filterType: (map['filterType'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter']! as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      correlationFilter: (() {
+        final guardedValue = map['correlationFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubscriptionRuleCorrelationFilter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      filterType: pulumi.Input.fromValue(map['filterType'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sqlFilter: (() {
+        final guardedValue = map['sqlFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
-

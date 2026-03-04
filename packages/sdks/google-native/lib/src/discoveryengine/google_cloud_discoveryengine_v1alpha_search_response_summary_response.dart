@@ -6,9 +6,14 @@ import 'google_cloud_discoveryengine_v1alpha_search_response_summary_safety_attr
 /// Summary of the top N search result specified by the summary spec.
 class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse {
   /// A collection of Safety Attribute categories and their associated confidence scores.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse> safetyAttributes;
+  final pulumi.Input<
+    GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse
+  >
+  safetyAttributes;
+
   /// Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set.
   final pulumi.Input<List<String>> summarySkippedReasons;
+
   /// The summary content.
   final pulumi.Input<String> summaryText;
 
@@ -24,18 +29,29 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'safetyAttributes': pulumi.Input.mapInputValue<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse, Map<String, dynamic>>(safetyAttributes, (value) => value.toMap()),
+      'safetyAttributes':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse,
+            Map<String, dynamic>
+          >(safetyAttributes, (value) => value.toMap()),
       'summarySkippedReasons': summarySkippedReasons,
       'summaryText': summaryText,
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse(
-      safetyAttributes: (GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse.fromMap((map['safetyAttributes'] as Map).cast<String, dynamic>())).input(),
-      summarySkippedReasons: ((map['summarySkippedReasons'] as List).cast<String>()).input(),
-      summaryText: (map['summaryText'] as String).input(),
+      safetyAttributes: pulumi.Input.fromValue(
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse.fromMap(
+          (map['safetyAttributes']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      summarySkippedReasons: pulumi.Input.fromValue(
+        (map['summarySkippedReasons'] as List).cast<String>(),
+      ),
+      summaryText: pulumi.Input.fromValue(map['summaryText'] as String),
     );
   }
 }
-

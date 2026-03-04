@@ -473,7 +473,7 @@ import 'managed_instance_active_directory_administrator_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -485,15 +485,20 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// ```sh
 /// $ pulumi import azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator administrator /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Sql/managedInstances/mymanagedinstance/administrators/activeDirectory
 /// ```
-class ManagedInstanceActiveDirectoryAdministrator extends pulumi.CustomResource {
+class ManagedInstanceActiveDirectoryAdministrator
+    extends pulumi.CustomResource {
   /// When `true`, only permit logins from AAD users and administrators. When `false`, also allow local database users.
   late final pulumi.Output<bool?> azureadAuthenticationOnly;
+
   /// The login name of the principal to set as the Managed Instance Administrator.
   late final pulumi.Output<String> loginUsername;
+
   /// The ID of the Azure SQL Managed Instance for which to set the administrator. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedInstanceId;
+
   /// The Object ID of the principal to set as the Managed Instance Administrator.
   late final pulumi.Output<String> objectId;
+
   /// The Azure Active Directory Tenant ID.
   late final pulumi.Output<String> tenantId;
 
@@ -506,16 +511,18 @@ class ManagedInstanceActiveDirectoryAdministrator extends pulumi.CustomResource 
     ManagedInstanceActiveDirectoryAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
-    this.loginUsername = registerOutput<String>('loginUsername');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
-    this.objectId = registerOutput<String>('objectId');
-    this.tenantId = registerOutput<String>('tenantId');
+         'azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureadAuthenticationOnly = registerOutput<bool?>(
+      'azureadAuthenticationOnly',
+    );
+    loginUsername = registerOutput<String>('loginUsername');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    objectId = registerOutput<String>('objectId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [ManagedInstanceActiveDirectoryAdministrator] resource's state with the given [name] and [id].
@@ -536,15 +543,17 @@ class ManagedInstanceActiveDirectoryAdministrator extends pulumi.CustomResource 
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
-    this.loginUsername = registerOutput<String>('loginUsername');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
-    this.objectId = registerOutput<String>('objectId');
-    this.tenantId = registerOutput<String>('tenantId');
+         'azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureadAuthenticationOnly = registerOutput<bool?>(
+      'azureadAuthenticationOnly',
+    );
+    loginUsername = registerOutput<String>('loginUsername');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    objectId = registerOutput<String>('objectId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

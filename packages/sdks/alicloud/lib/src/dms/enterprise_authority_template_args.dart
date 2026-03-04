@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseAuthorityTemplateArgs {
   /// Permission Template name.
   final pulumi.Input<String> authorityTemplateName;
+
   /// Permission template description information.
   final pulumi.Input<String>? description;
+
   /// Tenant ID.
   final pulumi.Input<int> tid;
 
@@ -34,10 +36,15 @@ class EnterpriseAuthorityTemplateArgs {
 
   factory EnterpriseAuthorityTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseAuthorityTemplateArgs(
-      authorityTemplateName: (map['authorityTemplateName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      tid: (map['tid'] as int).input(),
+      authorityTemplateName: pulumi.Input.fromValue(
+        map['authorityTemplateName'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tid: pulumi.Input.fromValue(map['tid'] as int),
     );
   }
 }
-

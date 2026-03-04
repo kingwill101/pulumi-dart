@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_server_args.dart';
-import 'management_server_management_uri.dart';
-import 'management_server_network.dart';
 import 'management_server_state.dart';
 
 /// A Backup and DR Management Server (Also referred as Management Console)
@@ -282,19 +280,25 @@ import 'management_server_state.dart';
 class ManagementServer extends pulumi.CustomResource {
   /// The location for the management server (management console)
   late final pulumi.Output<String> location;
+
   /// The management console URI
   /// Structure is documented below.
-  late final pulumi.Output<List<ManagementServerManagementUri>> managementUris;
+  late final pulumi.Output<List<Map<String, dynamic>>> managementUris;
+
   /// The name of management server (management console)
   late final pulumi.Output<String> name;
+
   /// Network details to create management server (management console).
   /// Structure is documented below.
-  late final pulumi.Output<List<ManagementServerNetwork>?> networks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+
   /// The oauth2ClientId of management console.
   late final pulumi.Output<String> oauth2ClientId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The type of management server (management console).
   /// Default value is `BACKUP_RESTORE`.
   /// Possible values are: `BACKUP_RESTORE`.
@@ -309,18 +313,20 @@ class ManagementServer extends pulumi.CustomResource {
     ManagementServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:backupdisasterrecovery/managementServer:ManagementServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managementUris = registerOutput<List<ManagementServerManagementUri>>('managementUris');
+         'gcp:backupdisasterrecovery/managementServer:ManagementServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    managementUris = registerOutput<List<Map<String, dynamic>>>(
+      'managementUris',
+    );
     this.name = registerOutput<String>('name');
-    this.networks = registerOutput<List<ManagementServerNetwork>?>('networks');
-    this.oauth2ClientId = registerOutput<String>('oauth2ClientId');
-    this.project = registerOutput<String>('project');
-    this.type = registerOutput<String?>('type');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    project = registerOutput<String>('project');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [ManagementServer] resource's state with the given [name] and [id].
@@ -341,17 +347,19 @@ class ManagementServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:backupdisasterrecovery/managementServer:ManagementServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managementUris = registerOutput<List<ManagementServerManagementUri>>('managementUris');
+         'gcp:backupdisasterrecovery/managementServer:ManagementServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    managementUris = registerOutput<List<Map<String, dynamic>>>(
+      'managementUris',
+    );
     this.name = registerOutput<String>('name');
-    this.networks = registerOutput<List<ManagementServerNetwork>?>('networks');
-    this.oauth2ClientId = registerOutput<String>('oauth2ClientId');
-    this.project = registerOutput<String>('project');
-    this.type = registerOutput<String?>('type');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    project = registerOutput<String>('project');
+    type = registerOutput<String?>('type');
   }
 }

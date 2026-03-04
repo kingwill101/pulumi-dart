@@ -3,16 +3,15 @@ enum BackupPolicyStatus {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
-  const BackupPolicyStatus(this.value);
-  final String value;
+  const BackupPolicyStatus(this.wireValue);
+  final String wireValue;
 
   static BackupPolicyStatus fromValue(String value) {
     for (final item in BackupPolicyStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupPolicyStatus value: $value');
   }
 }
-

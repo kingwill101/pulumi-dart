@@ -13,15 +13,18 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodeName': ?nodeName,
-    };
+    return <String, dynamic>{'nodeName': ?nodeName};
   }
 
-  factory PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType.fromMap(Map<String, dynamic> map) {
+  factory PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeName: (() {
+        final guardedValue = map['nodeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

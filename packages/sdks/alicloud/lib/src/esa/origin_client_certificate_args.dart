@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OriginClientCertificateArgs {
   /// The certificate content.
   final pulumi.Input<String> certificate;
+
   /// The domain names to associate.
   final pulumi.Input<List<String>>? hostnames;
+
   /// The certificate name.
   final pulumi.Input<String>? originClientCertificateName;
+
   /// The private key of the certificate.
   final pulumi.Input<String> privateKey;
+
   /// Site ID.
   final pulumi.Input<String> siteId;
 
@@ -44,12 +48,19 @@ class OriginClientCertificateArgs {
 
   factory OriginClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return OriginClientCertificateArgs(
-      certificate: (map['certificate'] as String).input(),
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
-      originClientCertificateName: map['originClientCertificateName'] == null ? null : (map['originClientCertificateName']! as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
+      certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      hostnames: (() {
+        final guardedValue = map['hostnames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      originClientCertificateName: (() {
+        final guardedValue = map['originClientCertificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
-

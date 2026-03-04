@@ -13,26 +13,37 @@ import 'storage_profile.dart';
 class AzureLargeInstanceArgs {
   /// Specifies the Azure Large Instance unique ID.
   final pulumi.Input<String>? azureLargeInstanceId;
+
   /// Name of the AzureLargeInstance.
   final pulumi.Input<String>? azureLargeInstanceName;
+
   /// Specifies the hardware settings for the Azure Large Instance.
   final pulumi.Input<HardwareProfile>? hardwareProfile;
+
   /// Hardware revision of an Azure Large Instance
   final pulumi.Input<String>? hwRevision;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Specifies the network settings for the Azure Large Instance.
   final pulumi.Input<NetworkProfile>? networkProfile;
+
   /// Specifies the operating system settings for the Azure Large Instance.
   final pulumi.Input<OsProfile>? osProfile;
+
   /// Resource power state
   final pulumi.Input<String>? powerState;
+
   /// Resource proximity placement group
   final pulumi.Input<String>? proximityPlacementGroup;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the storage settings for the Azure Large Instance disks.
   final pulumi.Input<StorageProfile>? storageProfile;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -68,34 +79,107 @@ class AzureLargeInstanceArgs {
     return <String, dynamic>{
       'azureLargeInstanceId': ?azureLargeInstanceId,
       'azureLargeInstanceName': ?azureLargeInstanceName,
-      'hardwareProfile': ?pulumi.Input.mapOptionalInputValue<HardwareProfile, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
+      'hardwareProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            HardwareProfile,
+            Map<String, dynamic>
+          >(hardwareProfile, (value) => value.toMap()),
       'hwRevision': ?hwRevision,
       'location': ?location,
-      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
-      'osProfile': ?pulumi.Input.mapOptionalInputValue<OsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'networkProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkProfile,
+            Map<String, dynamic>
+          >(networkProfile, (value) => value.toMap()),
+      'osProfile':
+          ?pulumi.Input.mapOptionalInputValue<OsProfile, Map<String, dynamic>>(
+            osProfile,
+            (value) => value.toMap(),
+          ),
       'powerState': ?powerState,
       'proximityPlacementGroup': ?proximityPlacementGroup,
       'resourceGroupName': resourceGroupName,
-      'storageProfile': ?pulumi.Input.mapOptionalInputValue<StorageProfile, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
+      'storageProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageProfile,
+            Map<String, dynamic>
+          >(storageProfile, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory AzureLargeInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AzureLargeInstanceArgs(
-      azureLargeInstanceId: map['azureLargeInstanceId'] == null ? null : (map['azureLargeInstanceId']! as String).input(),
-      azureLargeInstanceName: map['azureLargeInstanceName'] == null ? null : (map['azureLargeInstanceName']! as String).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
-      hwRevision: map['hwRevision'] == null ? null : (map['hwRevision']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
-      powerState: map['powerState'] == null ? null : (map['powerState']! as String).input(),
-      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : (map['proximityPlacementGroup']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      azureLargeInstanceId: (() {
+        final guardedValue = map['azureLargeInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureLargeInstanceName: (() {
+        final guardedValue = map['azureLargeInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hardwareProfile: (() {
+        final guardedValue = map['hardwareProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HardwareProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hwRevision: (() {
+        final guardedValue = map['hwRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      osProfile: (() {
+        final guardedValue = map['osProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      powerState: (() {
+        final guardedValue = map['powerState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proximityPlacementGroup: (() {
+        final guardedValue = map['proximityPlacementGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageProfile: (() {
+        final guardedValue = map['storageProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

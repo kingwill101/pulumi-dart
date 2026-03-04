@@ -9,13 +9,18 @@ import 'template_filter_config_sdp_settings.dart';
 class TemplateFilterConfig {
   /// Malicious URI filter settings.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigMaliciousUriFilterSettings>? maliciousUriFilterSettings;
+  final pulumi.Input<TemplateFilterConfigMaliciousUriFilterSettings>?
+  maliciousUriFilterSettings;
+
   /// Prompt injection and Jailbreak Filter settings.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigPiAndJailbreakFilterSettings>? piAndJailbreakFilterSettings;
+  final pulumi.Input<TemplateFilterConfigPiAndJailbreakFilterSettings>?
+  piAndJailbreakFilterSettings;
+
   /// Responsible AI Filter settings.
   /// Structure is documented below.
   final pulumi.Input<TemplateFilterConfigRaiSettings>? raiSettings;
+
   /// Sensitive Data Protection settings.
   /// Structure is documented below.
   final pulumi.Input<TemplateFilterConfigSdpSettings>? sdpSettings;
@@ -34,20 +39,67 @@ class TemplateFilterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maliciousUriFilterSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigMaliciousUriFilterSettings, Map<String, dynamic>>(maliciousUriFilterSettings, (value) => value.toMap()),
-      'piAndJailbreakFilterSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigPiAndJailbreakFilterSettings, Map<String, dynamic>>(piAndJailbreakFilterSettings, (value) => value.toMap()),
-      'raiSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigRaiSettings, Map<String, dynamic>>(raiSettings, (value) => value.toMap()),
-      'sdpSettings': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfigSdpSettings, Map<String, dynamic>>(sdpSettings, (value) => value.toMap()),
+      'maliciousUriFilterSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            TemplateFilterConfigMaliciousUriFilterSettings,
+            Map<String, dynamic>
+          >(maliciousUriFilterSettings, (value) => value.toMap()),
+      'piAndJailbreakFilterSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            TemplateFilterConfigPiAndJailbreakFilterSettings,
+            Map<String, dynamic>
+          >(piAndJailbreakFilterSettings, (value) => value.toMap()),
+      'raiSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            TemplateFilterConfigRaiSettings,
+            Map<String, dynamic>
+          >(raiSettings, (value) => value.toMap()),
+      'sdpSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            TemplateFilterConfigSdpSettings,
+            Map<String, dynamic>
+          >(sdpSettings, (value) => value.toMap()),
     };
   }
 
   factory TemplateFilterConfig.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfig(
-      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : (TemplateFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings']! as Map).cast<String, dynamic>())).input(),
-      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : (TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings']! as Map).cast<String, dynamic>())).input(),
-      raiSettings: map['raiSettings'] == null ? null : (TemplateFilterConfigRaiSettings.fromMap((map['raiSettings']! as Map).cast<String, dynamic>())).input(),
-      sdpSettings: map['sdpSettings'] == null ? null : (TemplateFilterConfigSdpSettings.fromMap((map['sdpSettings']! as Map).cast<String, dynamic>())).input(),
+      maliciousUriFilterSettings: (() {
+        final guardedValue = map['maliciousUriFilterSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TemplateFilterConfigMaliciousUriFilterSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      piAndJailbreakFilterSettings: (() {
+        final guardedValue = map['piAndJailbreakFilterSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      raiSettings: (() {
+        final guardedValue = map['raiSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TemplateFilterConfigRaiSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sdpSettings: (() {
+        final guardedValue = map['sdpSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TemplateFilterConfigSdpSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

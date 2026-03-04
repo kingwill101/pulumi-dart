@@ -22,7 +22,7 @@ import 'aws_govcloud_integrations_sns.dart';
 import 'aws_govcloud_integrations_sqs.dart';
 import 'aws_govcloud_integrations_state.dart';
 
-/// > **IMPORTANT!** This resource is in alpha state, and could still contain issues and missing functionality. If you encounter any issue please create a ticket on Github with all the required information.
+/// &gt; **IMPORTANT!** This resource is in alpha state, and could still contain issues and missing functionality. If you encounter any issue please create a ticket on Github with all the required information.
 ///
 /// Use this resource to integrate an AWSGovCloud account to New Relic.
 ///
@@ -189,46 +189,68 @@ import 'aws_govcloud_integrations_state.dart';
 class AwsGovcloudIntegrations extends pulumi.CustomResource {
   /// The New Relic account ID to operate on. This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
+
   /// Application load balancer AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsAlb?> alb;
+
   /// Api Gateway AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsApiGateway?> apiGateway;
+
   /// Autoscaling AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsAutoScaling?> autoScaling;
+
   /// Aws Direct Connect AwsGovCloud integration.See Integration blocks below for details.
-  late final pulumi.Output<AwsGovcloudIntegrationsAwsDirectConnect?> awsDirectConnect;
+  late final pulumi.Output<AwsGovcloudIntegrationsAwsDirectConnect?>
+  awsDirectConnect;
+
   /// Aws States AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsAwsStates?> awsStates;
+
   /// Cloudtrail AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsCloudtrail?> cloudtrail;
+
   /// Dynamo DB AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsDynamoDb?> dynamoDb;
+
   /// Elastic Beanstalk AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsEbs?> ebs;
+
   /// EC2 AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsEc2?> ec2;
+
   /// Elastic search AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsElasticSearch?> elasticSearch;
+
   /// Elb AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsElb?> elb;
+
   /// Emr AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsEmr?> emr;
+
   /// IAM AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsIam?> iam;
+
   /// Lambda AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsLambda?> lambda;
+
   /// The access key of the AwsGovCloud.
   late final pulumi.Output<String> linkedAccountId;
+
   /// RDS AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsRds?> rds;
+
   /// Redshift AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsRedShift?> redShift;
+
   /// Route53 AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsRoute53?> route53;
+
   /// The s3 integration
   late final pulumi.Output<AwsGovcloudIntegrationsS3?> s3;
+
   /// SNS AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsSns?> sns;
+
   /// SQS AwsGovCloud integration.See Integration blocks below for details.
   late final pulumi.Output<AwsGovcloudIntegrationsSqs?> sqs;
 
@@ -241,33 +263,43 @@ class AwsGovcloudIntegrations extends pulumi.CustomResource {
     AwsGovcloudIntegrationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsGovcloudIntegrations:AwsGovcloudIntegrations',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.alb = registerOutput<AwsGovcloudIntegrationsAlb?>('alb');
-    this.apiGateway = registerOutput<AwsGovcloudIntegrationsApiGateway?>('apiGateway');
-    this.autoScaling = registerOutput<AwsGovcloudIntegrationsAutoScaling?>('autoScaling');
-    this.awsDirectConnect = registerOutput<AwsGovcloudIntegrationsAwsDirectConnect?>('awsDirectConnect');
-    this.awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>('awsStates');
-    this.cloudtrail = registerOutput<AwsGovcloudIntegrationsCloudtrail?>('cloudtrail');
-    this.dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>('dynamoDb');
-    this.ebs = registerOutput<AwsGovcloudIntegrationsEbs?>('ebs');
-    this.ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>('ec2');
-    this.elasticSearch = registerOutput<AwsGovcloudIntegrationsElasticSearch?>('elasticSearch');
-    this.elb = registerOutput<AwsGovcloudIntegrationsElb?>('elb');
-    this.emr = registerOutput<AwsGovcloudIntegrationsEmr?>('emr');
-    this.iam = registerOutput<AwsGovcloudIntegrationsIam?>('iam');
-    this.lambda = registerOutput<AwsGovcloudIntegrationsLambda?>('lambda');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.rds = registerOutput<AwsGovcloudIntegrationsRds?>('rds');
-    this.redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>('redShift');
-    this.route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>('route53');
-    this.s3 = registerOutput<AwsGovcloudIntegrationsS3?>('s3');
-    this.sns = registerOutput<AwsGovcloudIntegrationsSns?>('sns');
-    this.sqs = registerOutput<AwsGovcloudIntegrationsSqs?>('sqs');
+         'newrelic:cloud/awsGovcloudIntegrations:AwsGovcloudIntegrations',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    alb = registerOutput<AwsGovcloudIntegrationsAlb?>('alb');
+    apiGateway = registerOutput<AwsGovcloudIntegrationsApiGateway?>(
+      'apiGateway',
+    );
+    autoScaling = registerOutput<AwsGovcloudIntegrationsAutoScaling?>(
+      'autoScaling',
+    );
+    awsDirectConnect = registerOutput<AwsGovcloudIntegrationsAwsDirectConnect?>(
+      'awsDirectConnect',
+    );
+    awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>('awsStates');
+    cloudtrail = registerOutput<AwsGovcloudIntegrationsCloudtrail?>(
+      'cloudtrail',
+    );
+    dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>('dynamoDb');
+    ebs = registerOutput<AwsGovcloudIntegrationsEbs?>('ebs');
+    ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>('ec2');
+    elasticSearch = registerOutput<AwsGovcloudIntegrationsElasticSearch?>(
+      'elasticSearch',
+    );
+    elb = registerOutput<AwsGovcloudIntegrationsElb?>('elb');
+    emr = registerOutput<AwsGovcloudIntegrationsEmr?>('emr');
+    iam = registerOutput<AwsGovcloudIntegrationsIam?>('iam');
+    lambda = registerOutput<AwsGovcloudIntegrationsLambda?>('lambda');
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    rds = registerOutput<AwsGovcloudIntegrationsRds?>('rds');
+    redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>('redShift');
+    route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>('route53');
+    s3 = registerOutput<AwsGovcloudIntegrationsS3?>('s3');
+    sns = registerOutput<AwsGovcloudIntegrationsSns?>('sns');
+    sqs = registerOutput<AwsGovcloudIntegrationsSqs?>('sqs');
   }
 
   /// Gets an existing [AwsGovcloudIntegrations] resource's state with the given [name] and [id].
@@ -288,32 +320,42 @@ class AwsGovcloudIntegrations extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsGovcloudIntegrations:AwsGovcloudIntegrations',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.alb = registerOutput<AwsGovcloudIntegrationsAlb?>('alb');
-    this.apiGateway = registerOutput<AwsGovcloudIntegrationsApiGateway?>('apiGateway');
-    this.autoScaling = registerOutput<AwsGovcloudIntegrationsAutoScaling?>('autoScaling');
-    this.awsDirectConnect = registerOutput<AwsGovcloudIntegrationsAwsDirectConnect?>('awsDirectConnect');
-    this.awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>('awsStates');
-    this.cloudtrail = registerOutput<AwsGovcloudIntegrationsCloudtrail?>('cloudtrail');
-    this.dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>('dynamoDb');
-    this.ebs = registerOutput<AwsGovcloudIntegrationsEbs?>('ebs');
-    this.ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>('ec2');
-    this.elasticSearch = registerOutput<AwsGovcloudIntegrationsElasticSearch?>('elasticSearch');
-    this.elb = registerOutput<AwsGovcloudIntegrationsElb?>('elb');
-    this.emr = registerOutput<AwsGovcloudIntegrationsEmr?>('emr');
-    this.iam = registerOutput<AwsGovcloudIntegrationsIam?>('iam');
-    this.lambda = registerOutput<AwsGovcloudIntegrationsLambda?>('lambda');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.rds = registerOutput<AwsGovcloudIntegrationsRds?>('rds');
-    this.redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>('redShift');
-    this.route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>('route53');
-    this.s3 = registerOutput<AwsGovcloudIntegrationsS3?>('s3');
-    this.sns = registerOutput<AwsGovcloudIntegrationsSns?>('sns');
-    this.sqs = registerOutput<AwsGovcloudIntegrationsSqs?>('sqs');
+         'newrelic:cloud/awsGovcloudIntegrations:AwsGovcloudIntegrations',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    alb = registerOutput<AwsGovcloudIntegrationsAlb?>('alb');
+    apiGateway = registerOutput<AwsGovcloudIntegrationsApiGateway?>(
+      'apiGateway',
+    );
+    autoScaling = registerOutput<AwsGovcloudIntegrationsAutoScaling?>(
+      'autoScaling',
+    );
+    awsDirectConnect = registerOutput<AwsGovcloudIntegrationsAwsDirectConnect?>(
+      'awsDirectConnect',
+    );
+    awsStates = registerOutput<AwsGovcloudIntegrationsAwsStates?>('awsStates');
+    cloudtrail = registerOutput<AwsGovcloudIntegrationsCloudtrail?>(
+      'cloudtrail',
+    );
+    dynamoDb = registerOutput<AwsGovcloudIntegrationsDynamoDb?>('dynamoDb');
+    ebs = registerOutput<AwsGovcloudIntegrationsEbs?>('ebs');
+    ec2 = registerOutput<AwsGovcloudIntegrationsEc2?>('ec2');
+    elasticSearch = registerOutput<AwsGovcloudIntegrationsElasticSearch?>(
+      'elasticSearch',
+    );
+    elb = registerOutput<AwsGovcloudIntegrationsElb?>('elb');
+    emr = registerOutput<AwsGovcloudIntegrationsEmr?>('emr');
+    iam = registerOutput<AwsGovcloudIntegrationsIam?>('iam');
+    lambda = registerOutput<AwsGovcloudIntegrationsLambda?>('lambda');
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    rds = registerOutput<AwsGovcloudIntegrationsRds?>('rds');
+    redShift = registerOutput<AwsGovcloudIntegrationsRedShift?>('redShift');
+    route53 = registerOutput<AwsGovcloudIntegrationsRoute53?>('route53');
+    s3 = registerOutput<AwsGovcloudIntegrationsS3?>('s3');
+    sns = registerOutput<AwsGovcloudIntegrationsSns?>('sns');
+    sqs = registerOutput<AwsGovcloudIntegrationsSqs?>('sqs');
   }
 }

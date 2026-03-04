@@ -7,15 +7,20 @@ import 'get_vpc_ipv6.dart';
 class GetVpcResult {
   /// The date and time when the VPC was created.
   final String created;
+
   /// The user-defined description of this VPC.
   final String description;
   final String id;
+
   /// A list of IPv6 allocations under this VPC.
   final List<GetVpcIpv6> ipv6s;
+
   /// The label of the VPC.
   final String label;
+
   /// The region where the VPC is deployed.
   final String region;
+
   /// The date and time when the VPC was last updated.
   final String updated;
 
@@ -42,7 +47,10 @@ class GetVpcResult {
       'created': created,
       'description': description,
       'id': id,
-      'ipv6s': pulumi.Input.encodeList<GetVpcIpv6, Map<String, dynamic>>(ipv6s, (value) => value.toMap()),
+      'ipv6s': pulumi.Input.encodeList<GetVpcIpv6, Map<String, dynamic>>(
+        ipv6s,
+        (value) => value.toMap(),
+      ),
       'label': label,
       'region': region,
       'updated': updated,
@@ -54,11 +62,13 @@ class GetVpcResult {
       created: map['created'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
-      ipv6s: pulumi.Input.decodeList<GetVpcIpv6>(map['ipv6s'], (value) => GetVpcIpv6.fromMap((value as Map).cast<String, dynamic>())),
+      ipv6s: pulumi.Input.decodeList<GetVpcIpv6>(
+        map['ipv6s']!,
+        (value) => GetVpcIpv6.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       label: map['label'] as String,
       region: map['region'] as String,
       updated: map['updated'] as String,
     );
   }
 }
-

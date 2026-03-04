@@ -550,7 +550,7 @@ import 'express_route_circuit_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -565,16 +565,21 @@ import 'express_route_circuit_connection_state.dart';
 class ExpressRouteCircuitConnection extends pulumi.CustomResource {
   /// The IPv4 address space from which to allocate customer address for global reach. Changing this forces a new Express Route Circuit Connection to be created.
   late final pulumi.Output<String> addressPrefixIpv4;
+
   /// The IPv6 address space from which to allocate customer addresses for global reach.
   ///
-  /// > **Note:** `address_prefix_ipv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
+  /// &gt; **Note:** `address_prefix_ipv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
   late final pulumi.Output<String?> addressPrefixIpv6;
+
   /// The authorization key which is associated with the Express Route Circuit Connection.
   late final pulumi.Output<String?> authorizationKey;
+
   /// The name which should be used for this Express Route Circuit Connection. Changing this forces a new Express Route Circuit Connection to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the peered Express Route Circuit Private Peering. Changing this forces a new Express Route Circuit Connection to be created.
   late final pulumi.Output<String> peerPeeringId;
+
   /// The ID of the Express Route Circuit Private Peering that this Express Route Circuit Connection connects with. Changing this forces a new Express Route Circuit Connection to be created.
   late final pulumi.Output<String> peeringId;
 
@@ -587,17 +592,17 @@ class ExpressRouteCircuitConnection extends pulumi.CustomResource {
     ExpressRouteCircuitConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/expressRouteCircuitConnection:ExpressRouteCircuitConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');
-    this.addressPrefixIpv6 = registerOutput<String?>('addressPrefixIpv6');
-    this.authorizationKey = registerOutput<String?>('authorizationKey');
+         'azure:network/expressRouteCircuitConnection:ExpressRouteCircuitConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');
+    addressPrefixIpv6 = registerOutput<String?>('addressPrefixIpv6');
+    authorizationKey = registerOutput<String?>('authorizationKey');
     this.name = registerOutput<String>('name');
-    this.peerPeeringId = registerOutput<String>('peerPeeringId');
-    this.peeringId = registerOutput<String>('peeringId');
+    peerPeeringId = registerOutput<String>('peerPeeringId');
+    peeringId = registerOutput<String>('peeringId');
   }
 
   /// Gets an existing [ExpressRouteCircuitConnection] resource's state with the given [name] and [id].
@@ -618,16 +623,16 @@ class ExpressRouteCircuitConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/expressRouteCircuitConnection:ExpressRouteCircuitConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');
-    this.addressPrefixIpv6 = registerOutput<String?>('addressPrefixIpv6');
-    this.authorizationKey = registerOutput<String?>('authorizationKey');
+         'azure:network/expressRouteCircuitConnection:ExpressRouteCircuitConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');
+    addressPrefixIpv6 = registerOutput<String?>('addressPrefixIpv6');
+    authorizationKey = registerOutput<String?>('authorizationKey');
     this.name = registerOutput<String>('name');
-    this.peerPeeringId = registerOutput<String>('peerPeeringId');
-    this.peeringId = registerOutput<String>('peeringId');
+    peerPeeringId = registerOutput<String>('peerPeeringId');
+    peeringId = registerOutput<String>('peeringId');
   }
 }

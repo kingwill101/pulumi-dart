@@ -8,7 +8,7 @@ import 'waiting_room_event_state.dart';
 ///
 /// For information about ESA Waiting Room Event and how to use it, see [What is Waiting Room Event](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateWaitingRoomEvent).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -455,44 +455,64 @@ import 'waiting_room_event_state.dart';
 class WaitingRoomEvent extends pulumi.CustomResource {
   /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
   late final pulumi.Output<String?> customPageHtml;
+
   /// Waiting room description.
   late final pulumi.Output<String?> description;
+
   /// Disable session renewal. Value:
   late final pulumi.Output<String?> disableSessionRenewalEnable;
+
   /// The timestamp of the end time of the event.
   late final pulumi.Output<String> endTime;
+
   /// JSON response switch. Value:
   late final pulumi.Output<String?> jsonResponseEnable;
+
   /// Default language setting. Values include:
   late final pulumi.Output<String?> language;
+
   /// Number of new users per minute.
   late final pulumi.Output<String> newUsersPerMinute;
+
   /// Pre-queue switch.
   late final pulumi.Output<String?> preQueueEnable;
+
   /// Pre-queue start time.
   late final pulumi.Output<String?> preQueueStartTime;
+
   /// Way of queuing. Value:
   late final pulumi.Output<String> queuingMethod;
+
   /// Waiting room status code. Value:
   late final pulumi.Output<String> queuingStatusCode;
+
   /// Random queue switch.
   late final pulumi.Output<String?> randomPreQueueEnable;
+
   /// User session duration in minutes.
   late final pulumi.Output<String> sessionDuration;
+
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
+
   /// The timestamp of the event start time.
   late final pulumi.Output<String> startTime;
+
   /// Enabled status. Value:
   late final pulumi.Output<String> status;
+
   /// Total number of active users.
   late final pulumi.Output<String> totalActiveUsers;
+
   /// The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
   late final pulumi.Output<int> waitingRoomEventId;
+
   /// Event name, custom event description.
   late final pulumi.Output<String> waitingRoomEventName;
+
   /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   late final pulumi.Output<String> waitingRoomId;
+
   /// Waiting room type. The following types are supported:
   late final pulumi.Output<String> waitingRoomType;
 
@@ -505,32 +525,34 @@ class WaitingRoomEvent extends pulumi.CustomResource {
     WaitingRoomEventArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customPageHtml = registerOutput<String?>('customPageHtml');
-    this.description = registerOutput<String?>('description');
-    this.disableSessionRenewalEnable = registerOutput<String?>('disableSessionRenewalEnable');
-    this.endTime = registerOutput<String>('endTime');
-    this.jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
-    this.language = registerOutput<String?>('language');
-    this.newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
-    this.preQueueEnable = registerOutput<String?>('preQueueEnable');
-    this.preQueueStartTime = registerOutput<String?>('preQueueStartTime');
-    this.queuingMethod = registerOutput<String>('queuingMethod');
-    this.queuingStatusCode = registerOutput<String>('queuingStatusCode');
-    this.randomPreQueueEnable = registerOutput<String?>('randomPreQueueEnable');
-    this.sessionDuration = registerOutput<String>('sessionDuration');
-    this.siteId = registerOutput<String>('siteId');
-    this.startTime = registerOutput<String>('startTime');
-    this.status = registerOutput<String>('status');
-    this.totalActiveUsers = registerOutput<String>('totalActiveUsers');
-    this.waitingRoomEventId = registerOutput<int>('waitingRoomEventId');
-    this.waitingRoomEventName = registerOutput<String>('waitingRoomEventName');
-    this.waitingRoomId = registerOutput<String>('waitingRoomId');
-    this.waitingRoomType = registerOutput<String>('waitingRoomType');
+         'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customPageHtml = registerOutput<String?>('customPageHtml');
+    description = registerOutput<String?>('description');
+    disableSessionRenewalEnable = registerOutput<String?>(
+      'disableSessionRenewalEnable',
+    );
+    endTime = registerOutput<String>('endTime');
+    jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
+    language = registerOutput<String?>('language');
+    newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
+    preQueueEnable = registerOutput<String?>('preQueueEnable');
+    preQueueStartTime = registerOutput<String?>('preQueueStartTime');
+    queuingMethod = registerOutput<String>('queuingMethod');
+    queuingStatusCode = registerOutput<String>('queuingStatusCode');
+    randomPreQueueEnable = registerOutput<String?>('randomPreQueueEnable');
+    sessionDuration = registerOutput<String>('sessionDuration');
+    siteId = registerOutput<String>('siteId');
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    totalActiveUsers = registerOutput<String>('totalActiveUsers');
+    waitingRoomEventId = registerOutput<int>('waitingRoomEventId');
+    waitingRoomEventName = registerOutput<String>('waitingRoomEventName');
+    waitingRoomId = registerOutput<String>('waitingRoomId');
+    waitingRoomType = registerOutput<String>('waitingRoomType');
   }
 
   /// Gets an existing [WaitingRoomEvent] resource's state with the given [name] and [id].
@@ -551,31 +573,33 @@ class WaitingRoomEvent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customPageHtml = registerOutput<String?>('customPageHtml');
-    this.description = registerOutput<String?>('description');
-    this.disableSessionRenewalEnable = registerOutput<String?>('disableSessionRenewalEnable');
-    this.endTime = registerOutput<String>('endTime');
-    this.jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
-    this.language = registerOutput<String?>('language');
-    this.newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
-    this.preQueueEnable = registerOutput<String?>('preQueueEnable');
-    this.preQueueStartTime = registerOutput<String?>('preQueueStartTime');
-    this.queuingMethod = registerOutput<String>('queuingMethod');
-    this.queuingStatusCode = registerOutput<String>('queuingStatusCode');
-    this.randomPreQueueEnable = registerOutput<String?>('randomPreQueueEnable');
-    this.sessionDuration = registerOutput<String>('sessionDuration');
-    this.siteId = registerOutput<String>('siteId');
-    this.startTime = registerOutput<String>('startTime');
-    this.status = registerOutput<String>('status');
-    this.totalActiveUsers = registerOutput<String>('totalActiveUsers');
-    this.waitingRoomEventId = registerOutput<int>('waitingRoomEventId');
-    this.waitingRoomEventName = registerOutput<String>('waitingRoomEventName');
-    this.waitingRoomId = registerOutput<String>('waitingRoomId');
-    this.waitingRoomType = registerOutput<String>('waitingRoomType');
+         'alicloud:esa/waitingRoomEvent:WaitingRoomEvent',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customPageHtml = registerOutput<String?>('customPageHtml');
+    description = registerOutput<String?>('description');
+    disableSessionRenewalEnable = registerOutput<String?>(
+      'disableSessionRenewalEnable',
+    );
+    endTime = registerOutput<String>('endTime');
+    jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
+    language = registerOutput<String?>('language');
+    newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
+    preQueueEnable = registerOutput<String?>('preQueueEnable');
+    preQueueStartTime = registerOutput<String?>('preQueueStartTime');
+    queuingMethod = registerOutput<String>('queuingMethod');
+    queuingStatusCode = registerOutput<String>('queuingStatusCode');
+    randomPreQueueEnable = registerOutput<String?>('randomPreQueueEnable');
+    sessionDuration = registerOutput<String>('sessionDuration');
+    siteId = registerOutput<String>('siteId');
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    totalActiveUsers = registerOutput<String>('totalActiveUsers');
+    waitingRoomEventId = registerOutput<int>('waitingRoomEventId');
+    waitingRoomEventName = registerOutput<String>('waitingRoomEventName');
+    waitingRoomId = registerOutput<String>('waitingRoomId');
+    waitingRoomType = registerOutput<String>('waitingRoomType');
   }
 }

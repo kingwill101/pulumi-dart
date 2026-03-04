@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SegmentSettingsResponse {
   /// Create an individual segment file. The default is `false`.
   final pulumi.Input<bool> individualSegments;
+
   /// Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
   final pulumi.Input<String> segmentDuration;
 
@@ -26,9 +27,10 @@ class SegmentSettingsResponse {
 
   factory SegmentSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SegmentSettingsResponse(
-      individualSegments: (map['individualSegments'] as bool).input(),
-      segmentDuration: (map['segmentDuration'] as String).input(),
+      individualSegments: pulumi.Input.fromValue(
+        map['individualSegments'] as bool,
+      ),
+      segmentDuration: pulumi.Input.fromValue(map['segmentDuration'] as String),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'standard_args.dart';
-import 'standard_component_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Security Standard on a resource
@@ -204,30 +203,43 @@ import 'system_data_response.dart';
 class Standard extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// category of the standard provided
   late final pulumi.Output<String?> category;
+
   /// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
-  late final pulumi.Output<List<StandardComponentPropertiesResponse>?> components;
+  late final pulumi.Output<List<Map<String, dynamic>>?> components;
+
   /// description of the standard
   late final pulumi.Output<String?> description;
+
   /// display name of the standard, equivalent to the standardId
   late final pulumi.Output<String?> displayName;
+
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
+
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
+
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// standard type (Custom or BuiltIn only currently)
   late final pulumi.Output<String> standardType;
+
   /// List of all standard supported clouds.
   late final pulumi.Output<List<String>?> supportedClouds;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -240,24 +252,24 @@ class Standard extends pulumi.CustomResource {
     StandardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:Standard',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.category = registerOutput<String?>('category');
-    this.components = registerOutput<List<StandardComponentPropertiesResponse>?>('components');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.etag = registerOutput<String?>('etag');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:security:Standard',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String?>('category');
+    components = registerOutput<List<Map<String, dynamic>>?>('components');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.standardType = registerOutput<String>('standardType');
-    this.supportedClouds = registerOutput<List<String>?>('supportedClouds');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    standardType = registerOutput<String>('standardType');
+    supportedClouds = registerOutput<List<String>?>('supportedClouds');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

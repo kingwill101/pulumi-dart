@@ -25,12 +25,13 @@ class BuildMetadataResponseContaineranalysisV1beta1 {
     };
   }
 
-  factory BuildMetadataResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory BuildMetadataResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BuildMetadataResponseContaineranalysisV1beta1(
-      finishedOn: (map['finishedOn'] as String).input(),
-      invocationId: (map['invocationId'] as String).input(),
-      startedOn: (map['startedOn'] as String).input(),
+      finishedOn: pulumi.Input.fromValue(map['finishedOn'] as String),
+      invocationId: pulumi.Input.fromValue(map['invocationId'] as String),
+      startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
     );
   }
 }
-

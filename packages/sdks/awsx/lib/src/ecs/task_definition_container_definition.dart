@@ -29,34 +29,43 @@ class TaskDefinitionContainerDefinition {
   final pulumi.Input<dynamic>? dockerLabels;
   final pulumi.Input<List<String>>? dockerSecurityOptions;
   final pulumi.Input<List<String>>? entryPoint;
+
   /// The environment variables to pass to a container
   final pulumi.Input<List<TaskDefinitionKeyValuePair>>? environment;
+
   /// The list of one or more files that contain the environment variables to pass to a container
   final pulumi.Input<List<TaskDefinitionEnvironmentFile>>? environmentFiles;
   final pulumi.Input<bool>? essential;
   final pulumi.Input<List<TaskDefinitionHostEntry>>? extraHosts;
-  final pulumi.Input<TaskDefinitionFirelensConfiguration>? firelensConfiguration;
+  final pulumi.Input<TaskDefinitionFirelensConfiguration>?
+  firelensConfiguration;
   final pulumi.Input<TaskDefinitionHealthCheck>? healthCheck;
   final pulumi.Input<String>? hostname;
+
   /// The image used to start a container. This string is passed directly to the Docker daemon.
   final pulumi.Input<String> image;
   final pulumi.Input<bool>? interactive;
   final pulumi.Input<List<String>>? links;
   final pulumi.Input<TaskDefinitionLinuxParameters>? linuxParameters;
   final pulumi.Input<TaskDefinitionLogConfiguration>? logConfiguration;
+
   /// The amount (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed.
   final pulumi.Input<int>? memory;
   final pulumi.Input<int>? memoryReservation;
   final pulumi.Input<List<TaskDefinitionMountPoint>>? mountPoints;
+
   /// The name of a container. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed
   final pulumi.Input<String> name;
+
   /// Port mappings allow containers to access ports on the host container instance to send or receive traffic.
   final pulumi.Input<List<TaskDefinitionPortMapping>>? portMappings;
   final pulumi.Input<bool>? privileged;
   final pulumi.Input<bool>? pseudoTerminal;
   final pulumi.Input<bool>? readonlyRootFilesystem;
-  final pulumi.Input<TaskDefinitionRepositoryCredentials>? repositoryCredentials;
-  final pulumi.Input<List<TaskDefinitionResourceRequirement>>? resourceRequirements;
+  final pulumi.Input<TaskDefinitionRepositoryCredentials>?
+  repositoryCredentials;
+  final pulumi.Input<List<TaskDefinitionResourceRequirement>>?
+  resourceRequirements;
   final pulumi.Input<List<TaskDefinitionSecret>>? secrets;
   final pulumi.Input<int>? startTimeout;
   final pulumi.Input<int>? stopTimeout;
@@ -152,88 +161,473 @@ class TaskDefinitionContainerDefinition {
     return <String, dynamic>{
       'command': ?command,
       'cpu': ?cpu,
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionContainerDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<TaskDefinitionContainerDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionContainerDependency>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionContainerDependency,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'disableNetworking': ?disableNetworking,
       'dnsSearchDomains': ?dnsSearchDomains,
       'dnsServers': ?dnsServers,
       'dockerLabels': ?dockerLabels,
       'dockerSecurityOptions': ?dockerSecurityOptions,
       'entryPoint': ?entryPoint,
-      'environment': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionKeyValuePair>, List<Map<String, dynamic>>>(environment, (value) => pulumi.Input.encodeList<TaskDefinitionKeyValuePair, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'environmentFiles': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionEnvironmentFile>, List<Map<String, dynamic>>>(environmentFiles, (value) => pulumi.Input.encodeList<TaskDefinitionEnvironmentFile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'environment':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionKeyValuePair>,
+            List<Map<String, dynamic>>
+          >(
+            environment,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionKeyValuePair,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'environmentFiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionEnvironmentFile>,
+            List<Map<String, dynamic>>
+          >(
+            environmentFiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionEnvironmentFile,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'essential': ?essential,
-      'extraHosts': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionHostEntry>, List<Map<String, dynamic>>>(extraHosts, (value) => pulumi.Input.encodeList<TaskDefinitionHostEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'firelensConfiguration': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionFirelensConfiguration, Map<String, dynamic>>(firelensConfiguration, (value) => value.toMap()),
-      'healthCheck': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionHealthCheck, Map<String, dynamic>>(healthCheck, (value) => value.toMap()),
+      'extraHosts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionHostEntry>,
+            List<Map<String, dynamic>>
+          >(
+            extraHosts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionHostEntry,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'firelensConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskDefinitionFirelensConfiguration,
+            Map<String, dynamic>
+          >(firelensConfiguration, (value) => value.toMap()),
+      'healthCheck':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskDefinitionHealthCheck,
+            Map<String, dynamic>
+          >(healthCheck, (value) => value.toMap()),
       'hostname': ?hostname,
       'image': image,
       'interactive': ?interactive,
       'links': ?links,
-      'linuxParameters': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionLinuxParameters, Map<String, dynamic>>(linuxParameters, (value) => value.toMap()),
-      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionLogConfiguration, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
+      'linuxParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskDefinitionLinuxParameters,
+            Map<String, dynamic>
+          >(linuxParameters, (value) => value.toMap()),
+      'logConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskDefinitionLogConfiguration,
+            Map<String, dynamic>
+          >(logConfiguration, (value) => value.toMap()),
       'memory': ?memory,
       'memoryReservation': ?memoryReservation,
-      'mountPoints': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionMountPoint>, List<Map<String, dynamic>>>(mountPoints, (value) => pulumi.Input.encodeList<TaskDefinitionMountPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mountPoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionMountPoint>,
+            List<Map<String, dynamic>>
+          >(
+            mountPoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionMountPoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
-      'portMappings': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionPortMapping>, List<Map<String, dynamic>>>(portMappings, (value) => pulumi.Input.encodeList<TaskDefinitionPortMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionPortMapping>,
+            List<Map<String, dynamic>>
+          >(
+            portMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionPortMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'privileged': ?privileged,
       'pseudoTerminal': ?pseudoTerminal,
       'readonlyRootFilesystem': ?readonlyRootFilesystem,
-      'repositoryCredentials': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionRepositoryCredentials, Map<String, dynamic>>(repositoryCredentials, (value) => value.toMap()),
-      'resourceRequirements': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionResourceRequirement>, List<Map<String, dynamic>>>(resourceRequirements, (value) => pulumi.Input.encodeList<TaskDefinitionResourceRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'secrets': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionSecret>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'repositoryCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskDefinitionRepositoryCredentials,
+            Map<String, dynamic>
+          >(repositoryCredentials, (value) => value.toMap()),
+      'resourceRequirements':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionResourceRequirement>,
+            List<Map<String, dynamic>>
+          >(
+            resourceRequirements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionResourceRequirement,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'secrets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionSecret>,
+            List<Map<String, dynamic>>
+          >(
+            secrets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionSecret,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'startTimeout': ?startTimeout,
       'stopTimeout': ?stopTimeout,
-      'systemControls': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionSystemControl>, List<Map<String, dynamic>>>(systemControls, (value) => pulumi.Input.encodeList<TaskDefinitionSystemControl, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ulimits': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionUlimit>, List<Map<String, dynamic>>>(ulimits, (value) => pulumi.Input.encodeList<TaskDefinitionUlimit, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'systemControls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionSystemControl>,
+            List<Map<String, dynamic>>
+          >(
+            systemControls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionSystemControl,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ulimits':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionUlimit>,
+            List<Map<String, dynamic>>
+          >(
+            ulimits,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionUlimit,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'user': ?user,
-      'volumesFrom': ?pulumi.Input.mapOptionalInputValue<List<TaskDefinitionVolumeFrom>, List<Map<String, dynamic>>>(volumesFrom, (value) => pulumi.Input.encodeList<TaskDefinitionVolumeFrom, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumesFrom':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TaskDefinitionVolumeFrom>,
+            List<Map<String, dynamic>>
+          >(
+            volumesFrom,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TaskDefinitionVolumeFrom,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'workingDirectory': ?workingDirectory,
     };
   }
 
   factory TaskDefinitionContainerDefinition.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionContainerDefinition(
-      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionContainerDependency>(map['dependsOn']!, (value) => TaskDefinitionContainerDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disableNetworking: map['disableNetworking'] == null ? null : (map['disableNetworking']! as bool).input(),
-      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : ((map['dnsSearchDomains']! as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      dockerLabels: map['dockerLabels'] == null ? null : (map['dockerLabels']!).input(),
-      dockerSecurityOptions: map['dockerSecurityOptions'] == null ? null : ((map['dockerSecurityOptions']! as List).cast<String>()).input(),
-      entryPoint: map['entryPoint'] == null ? null : ((map['entryPoint']! as List).cast<String>()).input(),
-      environment: map['environment'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionKeyValuePair>(map['environment']!, (value) => TaskDefinitionKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environmentFiles: map['environmentFiles'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionEnvironmentFile>(map['environmentFiles']!, (value) => TaskDefinitionEnvironmentFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      essential: map['essential'] == null ? null : (map['essential']! as bool).input(),
-      extraHosts: map['extraHosts'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionHostEntry>(map['extraHosts']!, (value) => TaskDefinitionHostEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      firelensConfiguration: map['firelensConfiguration'] == null ? null : (TaskDefinitionFirelensConfiguration.fromMap((map['firelensConfiguration']! as Map).cast<String, dynamic>())).input(),
-      healthCheck: map['healthCheck'] == null ? null : (TaskDefinitionHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      image: (map['image'] as String).input(),
-      interactive: map['interactive'] == null ? null : (map['interactive']! as bool).input(),
-      links: map['links'] == null ? null : ((map['links']! as List).cast<String>()).input(),
-      linuxParameters: map['linuxParameters'] == null ? null : (TaskDefinitionLinuxParameters.fromMap((map['linuxParameters']! as Map).cast<String, dynamic>())).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : (TaskDefinitionLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input(),
-      memory: map['memory'] == null ? null : (map['memory']! as int).input(),
-      memoryReservation: map['memoryReservation'] == null ? null : (map['memoryReservation']! as int).input(),
-      mountPoints: map['mountPoints'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionMountPoint>(map['mountPoints']!, (value) => TaskDefinitionMountPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      portMappings: map['portMappings'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionPortMapping>(map['portMappings']!, (value) => TaskDefinitionPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
-      pseudoTerminal: map['pseudoTerminal'] == null ? null : (map['pseudoTerminal']! as bool).input(),
-      readonlyRootFilesystem: map['readonlyRootFilesystem'] == null ? null : (map['readonlyRootFilesystem']! as bool).input(),
-      repositoryCredentials: map['repositoryCredentials'] == null ? null : (TaskDefinitionRepositoryCredentials.fromMap((map['repositoryCredentials']! as Map).cast<String, dynamic>())).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionResourceRequirement>(map['resourceRequirements']!, (value) => TaskDefinitionResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionSecret>(map['secrets']!, (value) => TaskDefinitionSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startTimeout: map['startTimeout'] == null ? null : (map['startTimeout']! as int).input(),
-      stopTimeout: map['stopTimeout'] == null ? null : (map['stopTimeout']! as int).input(),
-      systemControls: map['systemControls'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionSystemControl>(map['systemControls']!, (value) => TaskDefinitionSystemControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ulimits: map['ulimits'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionUlimit>(map['ulimits']!, (value) => TaskDefinitionUlimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      user: map['user'] == null ? null : (map['user']! as String).input(),
-      volumesFrom: map['volumesFrom'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionVolumeFrom>(map['volumesFrom']!, (value) => TaskDefinitionVolumeFrom.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory']! as String).input(),
+      command: (() {
+        final guardedValue = map['command'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionContainerDependency>(
+            guardedValue,
+            (value) => TaskDefinitionContainerDependency.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      disableNetworking: (() {
+        final guardedValue = map['disableNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dnsSearchDomains: (() {
+        final guardedValue = map['dnsSearchDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dockerLabels: (() {
+        final guardedValue = map['dockerLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      dockerSecurityOptions: (() {
+        final guardedValue = map['dockerSecurityOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      entryPoint: (() {
+        final guardedValue = map['entryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionKeyValuePair>(
+            guardedValue,
+            (value) => TaskDefinitionKeyValuePair.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      environmentFiles: (() {
+        final guardedValue = map['environmentFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionEnvironmentFile>(
+            guardedValue,
+            (value) => TaskDefinitionEnvironmentFile.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      essential: (() {
+        final guardedValue = map['essential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      extraHosts: (() {
+        final guardedValue = map['extraHosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionHostEntry>(
+            guardedValue,
+            (value) => TaskDefinitionHostEntry.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      firelensConfiguration: (() {
+        final guardedValue = map['firelensConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskDefinitionFirelensConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      healthCheck: (() {
+        final guardedValue = map['healthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskDefinitionHealthCheck.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      image: pulumi.Input.fromValue(map['image'] as String),
+      interactive: (() {
+        final guardedValue = map['interactive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      links: (() {
+        final guardedValue = map['links'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      linuxParameters: (() {
+        final guardedValue = map['linuxParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskDefinitionLinuxParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logConfiguration: (() {
+        final guardedValue = map['logConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskDefinitionLogConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      memoryReservation: (() {
+        final guardedValue = map['memoryReservation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mountPoints: (() {
+        final guardedValue = map['mountPoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionMountPoint>(
+            guardedValue,
+            (value) => TaskDefinitionMountPoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      portMappings: (() {
+        final guardedValue = map['portMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionPortMapping>(
+            guardedValue,
+            (value) => TaskDefinitionPortMapping.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      privileged: (() {
+        final guardedValue = map['privileged'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      pseudoTerminal: (() {
+        final guardedValue = map['pseudoTerminal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      readonlyRootFilesystem: (() {
+        final guardedValue = map['readonlyRootFilesystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      repositoryCredentials: (() {
+        final guardedValue = map['repositoryCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskDefinitionRepositoryCredentials.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceRequirements: (() {
+        final guardedValue = map['resourceRequirements'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionResourceRequirement>(
+            guardedValue,
+            (value) => TaskDefinitionResourceRequirement.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      secrets: (() {
+        final guardedValue = map['secrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionSecret>(
+            guardedValue,
+            (value) => TaskDefinitionSecret.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      startTimeout: (() {
+        final guardedValue = map['startTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      stopTimeout: (() {
+        final guardedValue = map['stopTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      systemControls: (() {
+        final guardedValue = map['systemControls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionSystemControl>(
+            guardedValue,
+            (value) => TaskDefinitionSystemControl.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ulimits: (() {
+        final guardedValue = map['ulimits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionUlimit>(
+            guardedValue,
+            (value) => TaskDefinitionUlimit.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumesFrom: (() {
+        final guardedValue = map['volumesFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TaskDefinitionVolumeFrom>(
+            guardedValue,
+            (value) => TaskDefinitionVolumeFrom.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      workingDirectory: (() {
+        final guardedValue = map['workingDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

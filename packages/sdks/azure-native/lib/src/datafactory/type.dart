@@ -2,16 +2,15 @@
 enum Type {
   valueLinkedServiceReference("LinkedServiceReference");
 
-  const Type(this.value);
-  final String value;
+  const Type(this.wireValue);
+  final String wireValue;
 
   static Type fromValue(String value) {
     for (final item in Type.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Type value: $value');
   }
 }
-

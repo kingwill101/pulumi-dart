@@ -9,20 +9,19 @@ class ExpressRouteCircuitPeeringId {
 
   /// Creates a new [ExpressRouteCircuitPeeringId].
   /// [id] The ID of the ExpressRoute circuit peering.
-  ExpressRouteCircuitPeeringId({
-    this.id,
-  });
+  ExpressRouteCircuitPeeringId({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ExpressRouteCircuitPeeringId.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringId(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

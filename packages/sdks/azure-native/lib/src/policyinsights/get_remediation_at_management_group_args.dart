@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRemediationAtManagementGroupArgs {
   /// Management group ID.
   final pulumi.Input<String> managementGroupId;
+
   /// The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
   final pulumi.Input<String> managementGroupsNamespace;
+
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
 
@@ -32,12 +34,17 @@ class GetRemediationAtManagementGroupArgs {
     };
   }
 
-  factory GetRemediationAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRemediationAtManagementGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRemediationAtManagementGroupArgs(
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      managementGroupsNamespace: (map['managementGroupsNamespace'] as String).input(),
-      remediationName: (map['remediationName'] as String).input(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      managementGroupsNamespace: pulumi.Input.fromValue(
+        map['managementGroupsNamespace'] as String,
+      ),
+      remediationName: pulumi.Input.fromValue(map['remediationName'] as String),
     );
   }
 }
-

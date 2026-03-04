@@ -10,10 +10,12 @@ class VolumeTypeAccessV3Args {
   /// ID of the project to give access to. Changing this
   /// creates a new resource.
   final pulumi.Input<String> projectId;
+
   /// The region in which to create the volume. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new quotaset.
   final pulumi.Input<String>? region;
+
   /// ID of the volume type to give access to. Changing
   /// this creates a new resource.
   final pulumi.Input<String> volumeTypeId;
@@ -38,10 +40,13 @@ class VolumeTypeAccessV3Args {
 
   factory VolumeTypeAccessV3Args.fromMap(Map<String, dynamic> map) {
     return VolumeTypeAccessV3Args(
-      projectId: (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      volumeTypeId: (map['volumeTypeId'] as String).input(),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeTypeId: pulumi.Input.fromValue(map['volumeTypeId'] as String),
     );
   }
 }
-

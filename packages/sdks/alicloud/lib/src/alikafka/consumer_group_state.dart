@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerGroupState {
   /// ID of the consumer group.
   final pulumi.Input<String>? consumerId;
+
   /// (Available since v1.268.0) The timestamp of when the group was created.
   final pulumi.Input<int>? createTime;
+
   /// Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
   final pulumi.Input<String>? description;
+
   /// ID of the ALIKAFKA Instance that owns the groups.
   final pulumi.Input<String>? instanceId;
+
   /// (Available since v1.268.0) The region ID.
   final pulumi.Input<String>? regionId;
+
   /// The remark of the resource.
   final pulumi.Input<String>? remark;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -51,14 +57,43 @@ class ConsumerGroupState {
 
   factory ConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupState(
-      consumerId: map['consumerId'] == null ? null : (map['consumerId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      consumerId: (() {
+        final guardedValue = map['consumerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remark: (() {
+        final guardedValue = map['remark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

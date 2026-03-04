@@ -3,16 +3,15 @@ enum ServerBindingTypeComputeV1 {
   restartNodeOnMinimalServers("RESTART_NODE_ON_MINIMAL_SERVERS"),
   serverBindingTypeUnspecified("SERVER_BINDING_TYPE_UNSPECIFIED");
 
-  const ServerBindingTypeComputeV1(this.value);
-  final String value;
+  const ServerBindingTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static ServerBindingTypeComputeV1 fromValue(String value) {
     for (final item in ServerBindingTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerBindingTypeComputeV1 value: $value');
   }
 }
-

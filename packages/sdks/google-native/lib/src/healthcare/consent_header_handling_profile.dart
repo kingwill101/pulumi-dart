@@ -4,16 +4,15 @@ enum ConsentHeaderHandlingProfile {
   permitEmptyScope("PERMIT_EMPTY_SCOPE"),
   requiredOnRead("REQUIRED_ON_READ");
 
-  const ConsentHeaderHandlingProfile(this.value);
-  final String value;
+  const ConsentHeaderHandlingProfile(this.wireValue);
+  final String wireValue;
 
   static ConsentHeaderHandlingProfile fromValue(String value) {
     for (final item in ConsentHeaderHandlingProfile.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConsentHeaderHandlingProfile value: $value');
   }
 }
-

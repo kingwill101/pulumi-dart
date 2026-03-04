@@ -14,31 +14,39 @@ class DbSystemArgs {
   /// letter or a number.
   final pulumi.Input<String> dbSystemId;
   final pulumi.Input<bool>? deletionProtection;
+
   /// The display name for the System db. The name does not have to
   /// be unique within your project.
   final pulumi.Input<String> displayName;
+
   /// The GCP Oracle zone where Oracle DbSystem is hosted.
   /// Example: us-east4-b-r2.
   /// If not specified, the system will pick a zone based on availability.
   final pulumi.Input<String>? gcpOracleZone;
+
   /// The labels or tags associated with the DbSystem.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// The name of the OdbNetwork associated with the DbSystem.
   /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the OdbSubnet.
   final pulumi.Input<String>? odbNetwork;
+
   /// The name of the OdbSubnet associated with the DbSystem for IP
   /// allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   final pulumi.Input<String> odbSubnet;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The properties of a DbSystem.
   /// Structure is documented below.
   final pulumi.Input<DbSystemProperties>? properties;
@@ -78,23 +86,56 @@ class DbSystemArgs {
       'odbNetwork': ?odbNetwork,
       'odbSubnet': odbSubnet,
       'project': ?project,
-      'properties': ?pulumi.Input.mapOptionalInputValue<DbSystemProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DbSystemProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory DbSystemArgs.fromMap(Map<String, dynamic> map) {
     return DbSystemArgs(
-      dbSystemId: (map['dbSystemId'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      displayName: (map['displayName'] as String).input(),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork']! as String).input(),
-      odbSubnet: (map['odbSubnet'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      properties: map['properties'] == null ? null : (DbSystemProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      dbSystemId: pulumi.Input.fromValue(map['dbSystemId'] as String),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      gcpOracleZone: (() {
+        final guardedValue = map['gcpOracleZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      odbNetwork: (() {
+        final guardedValue = map['odbNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      odbSubnet: pulumi.Input.fromValue(map['odbSubnet'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DbSystemProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

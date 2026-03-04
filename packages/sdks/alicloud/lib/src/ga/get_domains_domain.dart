@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomain {
   /// The ID of the global acceleration instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
   final pulumi.Input<String> domain;
+
   /// The ID of the Ga Domain.
   final pulumi.Input<String> id;
+
   /// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
   final pulumi.Input<String> status;
 
@@ -35,11 +38,10 @@ class GetDomainsDomain {
 
   factory GetDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomain(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      domain: (map['domain'] as String).input(),
-      id: (map['id'] as String).input(),
-      status: (map['status'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

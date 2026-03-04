@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPreRuleArgs {
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
+
   /// Pre Rule priority
   final pulumi.Input<String> priority;
 
   /// Creates a new [GetPreRuleArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Pre Rule priority
-  GetPreRuleArgs({
-    required this.globalRulestackName,
-    required this.priority,
-  });
+  GetPreRuleArgs({required this.globalRulestackName, required this.priority});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetPreRuleArgs {
 
   factory GetPreRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetPreRuleArgs(
-      globalRulestackName: (map['globalRulestackName'] as String).input(),
-      priority: (map['priority'] as String).input(),
+      globalRulestackName: pulumi.Input.fromValue(
+        map['globalRulestackName'] as String,
+      ),
+      priority: pulumi.Input.fromValue(map['priority'] as String),
     );
   }
 }
-

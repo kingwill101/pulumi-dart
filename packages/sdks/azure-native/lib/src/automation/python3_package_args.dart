@@ -10,12 +10,16 @@ import 'content_link.dart';
 class Python3PackageArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Gets or sets the module content link.
   final pulumi.Input<ContentLink> contentLink;
+
   /// The name of python package.
   final pulumi.Input<String>? packageName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets the tags attached to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,7 +40,11 @@ class Python3PackageArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
-      'contentLink': pulumi.Input.mapInputValue<ContentLink, Map<String, dynamic>>(contentLink, (value) => value.toMap()),
+      'contentLink':
+          pulumi.Input.mapInputValue<ContentLink, Map<String, dynamic>>(
+            contentLink,
+            (value) => value.toMap(),
+          ),
       'packageName': ?packageName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -45,12 +53,29 @@ class Python3PackageArgs {
 
   factory Python3PackageArgs.fromMap(Map<String, dynamic> map) {
     return Python3PackageArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      contentLink: (ContentLink.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      contentLink: pulumi.Input.fromValue(
+        ContentLink.fromMap(
+          (map['contentLink']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      packageName: (() {
+        final guardedValue = map['packageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

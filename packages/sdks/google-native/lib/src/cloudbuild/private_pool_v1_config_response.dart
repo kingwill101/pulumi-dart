@@ -8,6 +8,7 @@ import 'worker_config_response.dart';
 class PrivatePoolV1ConfigResponse {
   /// Network configuration for the pool.
   final pulumi.Input<NetworkConfigResponse> networkConfig;
+
   /// Machine configuration for the workers in the pool.
   final pulumi.Input<WorkerConfigResponse> workerConfig;
 
@@ -21,16 +22,31 @@ class PrivatePoolV1ConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkConfig': pulumi.Input.mapInputValue<NetworkConfigResponse, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
-      'workerConfig': pulumi.Input.mapInputValue<WorkerConfigResponse, Map<String, dynamic>>(workerConfig, (value) => value.toMap()),
+      'networkConfig':
+          pulumi.Input.mapInputValue<
+            NetworkConfigResponse,
+            Map<String, dynamic>
+          >(networkConfig, (value) => value.toMap()),
+      'workerConfig':
+          pulumi.Input.mapInputValue<
+            WorkerConfigResponse,
+            Map<String, dynamic>
+          >(workerConfig, (value) => value.toMap()),
     };
   }
 
   factory PrivatePoolV1ConfigResponse.fromMap(Map<String, dynamic> map) {
     return PrivatePoolV1ConfigResponse(
-      networkConfig: (NetworkConfigResponse.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      workerConfig: (WorkerConfigResponse.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      networkConfig: pulumi.Input.fromValue(
+        NetworkConfigResponse.fromMap(
+          (map['networkConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      workerConfig: pulumi.Input.fromValue(
+        WorkerConfigResponse.fromMap(
+          (map['workerConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

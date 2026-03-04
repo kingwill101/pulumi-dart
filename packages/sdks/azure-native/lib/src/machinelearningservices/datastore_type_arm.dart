@@ -9,16 +9,15 @@ enum DatastoreTypeArm {
   valueSqldb("sqldb"),
   valuePsqldb("psqldb");
 
-  const DatastoreTypeArm(this.value);
-  final String value;
+  const DatastoreTypeArm(this.wireValue);
+  final String wireValue;
 
   static DatastoreTypeArm fromValue(String value) {
     for (final item in DatastoreTypeArm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatastoreTypeArm value: $value');
   }
 }
-

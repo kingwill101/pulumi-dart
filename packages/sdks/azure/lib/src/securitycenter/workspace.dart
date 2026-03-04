@@ -4,7 +4,7 @@ import 'workspace_state.dart';
 
 /// Manages the subscription's Security Center Workspace.
 ///
-/// > **Note:** Owner access permission is required.
+/// &gt; **Note:** Owner access permission is required.
 ///
 /// ## Example Usage
 ///
@@ -192,6 +192,7 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// The scope of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope.
   late final pulumi.Output<String> scope;
+
   /// The ID of the Log Analytics Workspace to save the data in.
   late final pulumi.Output<String> workspaceId;
 
@@ -204,13 +205,13 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.scope = registerOutput<String>('scope');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'azure:securitycenter/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    scope = registerOutput<String>('scope');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -231,12 +232,12 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.scope = registerOutput<String>('scope');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'azure:securitycenter/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    scope = registerOutput<String>('scope');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

@@ -9,20 +9,39 @@ class DomainSysInfoSmbiosSystem {
 
   /// Creates a new [DomainSysInfoSmbiosSystem].
   /// [entries] Defines individual entries for system information in the SMBIOS configuration.
-  DomainSysInfoSmbiosSystem({
-    this.entries,
-  });
+  DomainSysInfoSmbiosSystem({this.entries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': ?pulumi.Input.mapOptionalInputValue<List<DomainSysInfoSmbiosSystemEntry>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<DomainSysInfoSmbiosSystemEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'entries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainSysInfoSmbiosSystemEntry>,
+            List<Map<String, dynamic>>
+          >(
+            entries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainSysInfoSmbiosSystemEntry,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainSysInfoSmbiosSystem.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosSystem(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosSystemEntry>(map['entries']!, (value) => DomainSysInfoSmbiosSystemEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (() {
+        final guardedValue = map['entries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainSysInfoSmbiosSystemEntry>(
+            guardedValue,
+            (value) => DomainSysInfoSmbiosSystemEntry.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

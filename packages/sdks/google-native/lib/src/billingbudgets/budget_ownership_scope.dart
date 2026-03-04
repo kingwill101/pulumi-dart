@@ -3,16 +3,15 @@ enum BudgetOwnershipScope {
   allUsers("ALL_USERS"),
   billingAccount("BILLING_ACCOUNT");
 
-  const BudgetOwnershipScope(this.value);
-  final String value;
+  const BudgetOwnershipScope(this.wireValue);
+  final String wireValue;
 
   static BudgetOwnershipScope fromValue(String value) {
     for (final item in BudgetOwnershipScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BudgetOwnershipScope value: $value');
   }
 }
-

@@ -146,12 +146,16 @@ import 'key_args.dart';
 class Key extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Used to activate the workspace after a customer managed key is provided.
   late final pulumi.Output<bool?> isActiveCMK;
+
   /// The Key Vault Url of the workspace key.
   late final pulumi.Output<String?> keyVaultUrl;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -159,20 +163,17 @@ class Key extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Key]. {@macro pulumi_synapse_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Key(
-    String name, {
-    KeyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:synapse:Key',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.isActiveCMK = registerOutput<bool?>('isActiveCMK');
-    this.keyVaultUrl = registerOutput<String?>('keyVaultUrl');
+  Key(String name, {KeyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:synapse:Key',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isActiveCMK = registerOutput<bool?>('isActiveCMK');
+    keyVaultUrl = registerOutput<String?>('keyVaultUrl');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

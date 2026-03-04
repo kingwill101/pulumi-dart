@@ -222,7 +222,7 @@ import 'fabric_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -237,10 +237,13 @@ import 'fabric_state.dart';
 class Fabric extends pulumi.CustomResource {
   /// In what region should the fabric be located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the network mapping. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
+
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -248,20 +251,17 @@ class Fabric extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Fabric]. {@macro pulumi_siterecovery_fabric_fabric_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Fabric(
-    String name, {
-    FabricArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:siterecovery/fabric:Fabric',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+  Fabric(String name, {FabricArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:siterecovery/fabric:Fabric',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [Fabric] resource's state with the given [name] and [id].
@@ -282,14 +282,14 @@ class Fabric extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/fabric:Fabric',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:siterecovery/fabric:Fabric',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

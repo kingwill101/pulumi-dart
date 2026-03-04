@@ -8,20 +8,15 @@ class DomainOsNvRamSourceNetworkConfig {
 
   /// Creates a new [DomainOsNvRamSourceNetworkConfig].
   /// [file] Specifies a file for loading additional network configuration in the backing store source.
-  DomainOsNvRamSourceNetworkConfig({
-    required this.file,
-  });
+  DomainOsNvRamSourceNetworkConfig({required this.file});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'file': file,
-    };
+    return <String, dynamic>{'file': file};
   }
 
   factory DomainOsNvRamSourceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceNetworkConfig(
-      file: (map['file'] as String).input(),
+      file: pulumi.Input.fromValue(map['file'] as String),
     );
   }
 }
-

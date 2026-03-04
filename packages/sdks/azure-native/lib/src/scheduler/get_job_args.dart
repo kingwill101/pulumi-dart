@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobArgs {
   /// The job collection name.
   final pulumi.Input<String> jobCollectionName;
+
   /// The job name.
   final pulumi.Input<String> jobName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetJobArgs {
 
   factory GetJobArgs.fromMap(Map<String, dynamic> map) {
     return GetJobArgs(
-      jobCollectionName: (map['jobCollectionName'] as String).input(),
-      jobName: (map['jobName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      jobCollectionName: pulumi.Input.fromValue(
+        map['jobCollectionName'] as String,
+      ),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

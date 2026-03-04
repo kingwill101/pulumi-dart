@@ -1,5 +1,3 @@
-library module_servicedirectory;
-
 export 'servicedirectory/endpoint.dart';
 export 'servicedirectory/endpoint_args.dart';
 export 'servicedirectory/endpoint_state.dart';

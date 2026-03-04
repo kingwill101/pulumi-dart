@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'data_lake_gen2_path_ace.dart';
 import 'data_lake_gen2_path_args.dart';
 import 'data_lake_gen2_path_state.dart';
 
 /// Manages a Data Lake Gen2 Path in a File System within an Azure Storage Account.
 ///
-/// > **Note:** This resource requires some `Storage` specific roles which are not granted by default. Some of the built-ins roles that can be attributed are [`Storage Account Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor), [`Storage Blob Data Owner`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner), [`Storage Blob Data Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor), [`Storage Blob Data Reader`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader).
+/// &gt; **Note:** This resource requires some `Storage` specific roles which are not granted by default. Some of the built-ins roles that can be attributed are [`Storage Account Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor), [`Storage Blob Data Owner`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner), [`Storage Blob Data Contributor`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor), [`Storage Blob Data Reader`](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader).
 ///
 /// ## Example Usage
 ///
@@ -254,17 +253,23 @@ import 'data_lake_gen2_path_state.dart';
 /// ```
 class DataLakeGen2Path extends pulumi.CustomResource {
   /// One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
-  late final pulumi.Output<List<DataLakeGen2PathAce>> aces;
+  late final pulumi.Output<List<Map<String, dynamic>>> aces;
+
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> filesystemName;
+
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group. Possible values also include `$superuser`.
   late final pulumi.Output<String> group;
+
   /// Specifies the Object ID of the Azure Active Directory User to make the owning user. Possible values also include `$superuser`.
   late final pulumi.Output<String> owner;
+
   /// The path which should be created within the Data Lake Gen2 File System in the Storage Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> path;
+
   /// Specifies the type for path to create. Currently only `directory` is supported. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resource;
+
   /// Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -277,18 +282,18 @@ class DataLakeGen2Path extends pulumi.CustomResource {
     DataLakeGen2PathArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aces = registerOutput<List<DataLakeGen2PathAce>>('aces');
-    this.filesystemName = registerOutput<String>('filesystemName');
-    this.group = registerOutput<String>('group');
-    this.owner = registerOutput<String>('owner');
-    this.path = registerOutput<String>('path');
-    this.resource = registerOutput<String>('resource');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    filesystemName = registerOutput<String>('filesystemName');
+    group = registerOutput<String>('group');
+    owner = registerOutput<String>('owner');
+    path = registerOutput<String>('path');
+    resource = registerOutput<String>('resource');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [DataLakeGen2Path] resource's state with the given [name] and [id].
@@ -309,17 +314,17 @@ class DataLakeGen2Path extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aces = registerOutput<List<DataLakeGen2PathAce>>('aces');
-    this.filesystemName = registerOutput<String>('filesystemName');
-    this.group = registerOutput<String>('group');
-    this.owner = registerOutput<String>('owner');
-    this.path = registerOutput<String>('path');
-    this.resource = registerOutput<String>('resource');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aces = registerOutput<List<Map<String, dynamic>>>('aces');
+    filesystemName = registerOutput<String>('filesystemName');
+    group = registerOutput<String>('group');
+    owner = registerOutput<String>('owner');
+    path = registerOutput<String>('path');
+    resource = registerOutput<String>('resource');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppSpecIngressRuleComponent {
   /// The name of the component.
   final pulumi.Input<String> name;
+
   /// An optional flag to preserve the path that is forwarded to the backend service.
   final pulumi.Input<bool> preservePathPrefix;
   final pulumi.Input<String> rewrite;
@@ -29,10 +30,11 @@ class GetAppSpecIngressRuleComponent {
 
   factory GetAppSpecIngressRuleComponent.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRuleComponent(
-      name: (map['name'] as String).input(),
-      preservePathPrefix: (map['preservePathPrefix'] as bool).input(),
-      rewrite: (map['rewrite'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      preservePathPrefix: pulumi.Input.fromValue(
+        map['preservePathPrefix'] as bool,
+      ),
+      rewrite: pulumi.Input.fromValue(map['rewrite'] as String),
     );
   }
 }
-

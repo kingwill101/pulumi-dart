@@ -6,10 +6,13 @@ import 'get_elasticsearch_log_filtering_tag.dart';
 class GetElasticsearchLog {
   /// A list of `filtering_tag` blocks as defined above.
   final pulumi.Input<List<GetElasticsearchLogFilteringTag>> filteringTags;
+
   /// Should the Azure Activity Logs should be sent to the Elasticsearch cluster?
   final pulumi.Input<bool> sendActivityLogs;
+
   /// Should the AzureAD Logs should be sent to the Elasticsearch cluster?
   final pulumi.Input<bool> sendAzureadLogs;
+
   /// Should the Azure Subscription Logs should be sent to the Elasticsearch cluster?
   final pulumi.Input<bool> sendSubscriptionLogs;
 
@@ -27,7 +30,18 @@ class GetElasticsearchLog {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filteringTags': pulumi.Input.mapInputValue<List<GetElasticsearchLogFilteringTag>, List<Map<String, dynamic>>>(filteringTags, (value) => pulumi.Input.encodeList<GetElasticsearchLogFilteringTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filteringTags':
+          pulumi.Input.mapInputValue<
+            List<GetElasticsearchLogFilteringTag>,
+            List<Map<String, dynamic>>
+          >(
+            filteringTags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetElasticsearchLogFilteringTag,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'sendActivityLogs': sendActivityLogs,
       'sendAzureadLogs': sendAzureadLogs,
       'sendSubscriptionLogs': sendSubscriptionLogs,
@@ -36,11 +50,19 @@ class GetElasticsearchLog {
 
   factory GetElasticsearchLog.fromMap(Map<String, dynamic> map) {
     return GetElasticsearchLog(
-      filteringTags: (pulumi.Input.decodeList<GetElasticsearchLogFilteringTag>(map['filteringTags'], (value) => GetElasticsearchLogFilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sendActivityLogs: (map['sendActivityLogs'] as bool).input(),
-      sendAzureadLogs: (map['sendAzureadLogs'] as bool).input(),
-      sendSubscriptionLogs: (map['sendSubscriptionLogs'] as bool).input(),
+      filteringTags: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetElasticsearchLogFilteringTag>(
+          map['filteringTags']!,
+          (value) => GetElasticsearchLogFilteringTag.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      sendActivityLogs: pulumi.Input.fromValue(map['sendActivityLogs'] as bool),
+      sendAzureadLogs: pulumi.Input.fromValue(map['sendAzureadLogs'] as bool),
+      sendSubscriptionLogs: pulumi.Input.fromValue(
+        map['sendSubscriptionLogs'] as bool,
+      ),
     );
   }
 }
-

@@ -7,26 +7,37 @@ import 'table_level_sharing_properties_response.dart';
 class GetKustoPoolAttachedDatabaseConfigurationResult {
   /// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
   final List<String> attachedDatabaseNames;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
   final String databaseName;
+
   /// The default principals modification kind
   final String defaultPrincipalsModificationKind;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The resource id of the kusto pool where the databases you would like to attach reside.
   final String kustoPoolResourceId;
+
   /// Resource location.
   final String? location;
+
   /// The name of the resource
   final String name;
+
   /// The provisioned state of the resource.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Table level sharing specifications
   final TableLevelSharingPropertiesResponse? tableLevelSharingProperties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -70,26 +81,41 @@ class GetKustoPoolAttachedDatabaseConfigurationResult {
       'name': name,
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
-      'tableLevelSharingProperties': ?tableLevelSharingProperties == null ? null : tableLevelSharingProperties!.toMap(),
+      'tableLevelSharingProperties': ?tableLevelSharingProperties?.toMap(),
       'type': type,
     };
   }
 
-  factory GetKustoPoolAttachedDatabaseConfigurationResult.fromMap(Map<String, dynamic> map) {
+  factory GetKustoPoolAttachedDatabaseConfigurationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKustoPoolAttachedDatabaseConfigurationResult(
-      attachedDatabaseNames: (map['attachedDatabaseNames'] as List).cast<String>(),
+      attachedDatabaseNames: (map['attachedDatabaseNames'] as List)
+          .cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       databaseName: map['databaseName'] as String,
-      defaultPrincipalsModificationKind: map['defaultPrincipalsModificationKind'] as String,
+      defaultPrincipalsModificationKind:
+          map['defaultPrincipalsModificationKind'] as String,
       id: map['id'] as String,
       kustoPoolResourceId: map['kustoPoolResourceId'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tableLevelSharingProperties: (() {
+        final guardedValue = map['tableLevelSharingProperties'];
+        if (guardedValue == null) return null;
+        return TableLevelSharingPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

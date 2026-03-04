@@ -1,5 +1,3 @@
-library module_purview;
-
 export 'purview/account.dart';
 export 'purview/account_args.dart';
 export 'purview/account_merge_info_response.dart';

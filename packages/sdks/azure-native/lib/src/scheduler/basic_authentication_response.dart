@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAuthenticationResponse {
   /// Gets or sets the password, return value will always be empty.
   final pulumi.Input<String>? password;
+
   /// Gets or sets the HTTP authentication type.
   /// Expected value is 'Basic'.
   final pulumi.Input<String> type;
+
   /// Gets or sets the username.
   final pulumi.Input<String>? username;
 
@@ -31,10 +33,17 @@ class BasicAuthenticationResponse {
 
   factory BasicAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return BasicAuthenticationResponse(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      type: (map['type'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

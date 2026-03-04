@@ -5,16 +5,15 @@ enum NetworkFeatures {
   valueBasicStandard("Basic_Standard"),
   valueStandardBasic("Standard_Basic");
 
-  const NetworkFeatures(this.value);
-  final String value;
+  const NetworkFeatures(this.wireValue);
+  final String wireValue;
 
   static NetworkFeatures fromValue(String value) {
     for (final item in NetworkFeatures.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkFeatures value: $value');
   }
 }
-

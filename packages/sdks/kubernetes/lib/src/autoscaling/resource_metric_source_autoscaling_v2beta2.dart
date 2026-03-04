@@ -7,6 +7,7 @@ import 'metric_target_autoscaling_v2beta2.dart';
 class ResourceMetricSourceAutoscalingV2beta2 {
   /// name is the name of the resource in question.
   final pulumi.Input<String> name;
+
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTargetAutoscalingV2beta2> target;
 
@@ -21,15 +22,24 @@ class ResourceMetricSourceAutoscalingV2beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'target': pulumi.Input.mapInputValue<MetricTargetAutoscalingV2beta2, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target':
+          pulumi.Input.mapInputValue<
+            MetricTargetAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
-  factory ResourceMetricSourceAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
+  factory ResourceMetricSourceAutoscalingV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceMetricSourceAutoscalingV2beta2(
-      name: (map['name'] as String).input(),
-      target: (MetricTargetAutoscalingV2beta2.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      target: pulumi.Input.fromValue(
+        MetricTargetAutoscalingV2beta2.fromMap(
+          (map['target']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

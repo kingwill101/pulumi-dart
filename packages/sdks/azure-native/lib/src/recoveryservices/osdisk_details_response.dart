@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSDiskDetailsResponse {
   /// The type of the OS on the VM.
   final pulumi.Input<String>? osType;
+
   /// The id of the disk containing the OS.
   final pulumi.Input<String>? osVhdId;
+
   /// The OS disk VHD name.
   final pulumi.Input<String>? vhdName;
 
@@ -15,11 +17,7 @@ class OSDiskDetailsResponse {
   /// [osType] The type of the OS on the VM.
   /// [osVhdId] The id of the disk containing the OS.
   /// [vhdName] The OS disk VHD name.
-  OSDiskDetailsResponse({
-    this.osType,
-    this.osVhdId,
-    this.vhdName,
-  });
+  OSDiskDetailsResponse({this.osType, this.osVhdId, this.vhdName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class OSDiskDetailsResponse {
 
   factory OSDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OSDiskDetailsResponse(
-      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
-      osVhdId: map['osVhdId'] == null ? null : (map['osVhdId']! as String).input(),
-      vhdName: map['vhdName'] == null ? null : (map['vhdName']! as String).input(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osVhdId: (() {
+        final guardedValue = map['osVhdId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vhdName: (() {
+        final guardedValue = map['vhdName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

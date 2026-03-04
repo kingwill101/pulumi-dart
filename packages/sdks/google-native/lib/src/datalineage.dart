@@ -1,5 +1,3 @@
-library module_datalineage;
-
 export 'datalineage/functions.dart';
 export 'datalineage/get_lineage_event_args.dart';
 export 'datalineage/get_lineage_event_result.dart';

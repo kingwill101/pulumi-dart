@@ -120,7 +120,7 @@ import 'get_enterprise_database_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cache` - 2024-11-01
@@ -141,7 +141,7 @@ Future<GetCacheResult> getCache(
 
 /// Use this data source to access information about an existing Redis Enterprise Database
 ///
-/// > **Note:** This data source has been deprecated in favor of azurerm_managed_redis.
+/// &gt; **Note:** This data source has been deprecated in favor of azurerm_managed_redis.
 ///
 /// ## Example Usage
 ///
@@ -163,7 +163,7 @@ Future<GetCacheResult> getCache(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cache` - 2024-10-01

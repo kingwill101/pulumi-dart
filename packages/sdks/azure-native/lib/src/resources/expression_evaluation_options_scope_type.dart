@@ -4,16 +4,17 @@ enum ExpressionEvaluationOptionsScopeType {
   valueOuter("Outer"),
   valueInner("Inner");
 
-  const ExpressionEvaluationOptionsScopeType(this.value);
-  final String value;
+  const ExpressionEvaluationOptionsScopeType(this.wireValue);
+  final String wireValue;
 
   static ExpressionEvaluationOptionsScopeType fromValue(String value) {
     for (final item in ExpressionEvaluationOptionsScopeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExpressionEvaluationOptionsScopeType value: $value');
+    throw ArgumentError(
+      'Unknown ExpressionEvaluationOptionsScopeType value: $value',
+    );
   }
 }
-

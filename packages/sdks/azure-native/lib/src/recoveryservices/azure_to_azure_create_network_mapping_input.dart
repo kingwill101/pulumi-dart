@@ -7,6 +7,7 @@ class AzureToAzureCreateNetworkMappingInput {
   /// The instance type.
   /// Expected value is 'AzureToAzure'.
   final pulumi.Input<String> instanceType;
+
   /// The primary azure vnet Id.
   final pulumi.Input<String> primaryNetworkId;
 
@@ -25,11 +26,14 @@ class AzureToAzureCreateNetworkMappingInput {
     };
   }
 
-  factory AzureToAzureCreateNetworkMappingInput.fromMap(Map<String, dynamic> map) {
+  factory AzureToAzureCreateNetworkMappingInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureToAzureCreateNetworkMappingInput(
-      instanceType: (map['instanceType'] as String).input(),
-      primaryNetworkId: (map['primaryNetworkId'] as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      primaryNetworkId: pulumi.Input.fromValue(
+        map['primaryNetworkId'] as String,
+      ),
     );
   }
 }
-

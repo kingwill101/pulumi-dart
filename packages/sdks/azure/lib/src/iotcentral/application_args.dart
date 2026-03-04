@@ -10,24 +10,33 @@ import 'application_identity.dart';
 class ApplicationArgs {
   /// A `display_name` name. Custom display name for the IoT Central application. Default is resource name.
   ///
-  /// > **Note:** Due to a bug in the provider, the default value of `display_name` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `display_name` explicitly.
+  /// &gt; **Note:** Due to a bug in the provider, the default value of `display_name` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `display_name` explicitly.
   final pulumi.Input<String>? displayName;
+
   /// An `identity` block as defined below.
   final pulumi.Input<ApplicationIdentity>? identity;
+
   /// Specifies the supported Azure location where the resource has to be create. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Whether public network access is allowed for the IoT Central Application. Defaults to `true`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
+
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A `sku` name. Possible values is `ST0`, `ST1`, `ST2`, Default value is `ST1`
   final pulumi.Input<String>? sku;
+
   /// A `sub_domain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
   final pulumi.Input<String> subDomain;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A `template` name. IoT Central application template name. Defaults to `iotc-pnp-preview@1.0.0`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? template;
 
@@ -58,7 +67,11 @@ class ApplicationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ApplicationIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
@@ -72,17 +85,56 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      identity: map['identity'] == null ? null : (ApplicationIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      subDomain: (map['subDomain'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (map['template']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccessEnabled: (() {
+        final guardedValue = map['publicNetworkAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subDomain: pulumi.Input.fromValue(map['subDomain'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

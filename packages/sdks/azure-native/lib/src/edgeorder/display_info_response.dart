@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DisplayInfoResponse {
   /// Configuration display name.
   final pulumi.Input<String> configurationDisplayName;
+
   /// Product family display name.
   final pulumi.Input<String> productFamilyDisplayName;
 
@@ -26,9 +27,12 @@ class DisplayInfoResponse {
 
   factory DisplayInfoResponse.fromMap(Map<String, dynamic> map) {
     return DisplayInfoResponse(
-      configurationDisplayName: (map['configurationDisplayName'] as String).input(),
-      productFamilyDisplayName: (map['productFamilyDisplayName'] as String).input(),
+      configurationDisplayName: pulumi.Input.fromValue(
+        map['configurationDisplayName'] as String,
+      ),
+      productFamilyDisplayName: pulumi.Input.fromValue(
+        map['productFamilyDisplayName'] as String,
+      ),
     );
   }
 }
-

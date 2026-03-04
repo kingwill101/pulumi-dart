@@ -31,10 +31,13 @@ class GetNfsShareArgs {
 
   factory GetNfsShareArgs.fromMap(Map<String, dynamic> map) {
     return GetNfsShareArgs(
-      location: (map['location'] as String).input(),
-      nfsShareId: (map['nfsShareId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      nfsShareId: pulumi.Input.fromValue(map['nfsShareId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

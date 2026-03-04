@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'event_response.dart';
 import 'notification_channel_args.dart';
 
 /// A notification.
@@ -181,28 +180,40 @@ import 'notification_channel_args.dart';
 class NotificationChannel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of the notification channel.
   late final pulumi.Output<String> createdDate;
+
   /// Description of notification.
   late final pulumi.Output<String?> description;
+
   /// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
   late final pulumi.Output<String?> emailRecipient;
+
   /// The list of event for which this notification is enabled.
-  late final pulumi.Output<List<EventResponse>?> events;
+  late final pulumi.Output<List<Map<String, dynamic>>?> events;
+
   /// The location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The locale to use when sending a notification (fallback for unsupported languages is EN).
   late final pulumi.Output<String?> notificationLocale;
+
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
+
   /// The webhook URL to send notifications to.
   late final pulumi.Output<String?> webHookUrl;
 
@@ -215,23 +226,23 @@ class NotificationChannel extends pulumi.CustomResource {
     NotificationChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devtestlab:NotificationChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.emailRecipient = registerOutput<String?>('emailRecipient');
-    this.events = registerOutput<List<EventResponse>?>('events');
-    this.location = registerOutput<String?>('location');
+         'azure-native:devtestlab:NotificationChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    emailRecipient = registerOutput<String?>('emailRecipient');
+    events = registerOutput<List<Map<String, dynamic>>?>('events');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.notificationLocale = registerOutput<String?>('notificationLocale');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    this.webHookUrl = registerOutput<String?>('webHookUrl');
+    notificationLocale = registerOutput<String?>('notificationLocale');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    webHookUrl = registerOutput<String?>('webHookUrl');
   }
 }

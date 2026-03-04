@@ -8,10 +8,13 @@ import 'push_filter_response.dart';
 class RepositoryEventConfigResponse {
   /// Filter to match changes in pull requests.
   final pulumi.Input<PullRequestFilterResponse> pullRequest;
+
   /// Filter to match changes in refs like branches, tags.
   final pulumi.Input<PushFilterResponse> push;
+
   /// The resource name of the Repo API resource.
   final pulumi.Input<String> repository;
+
   /// The type of the SCM vendor the repository points to.
   final pulumi.Input<String> repositoryType;
 
@@ -29,8 +32,16 @@ class RepositoryEventConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pullRequest': pulumi.Input.mapInputValue<PullRequestFilterResponse, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
-      'push': pulumi.Input.mapInputValue<PushFilterResponse, Map<String, dynamic>>(push, (value) => value.toMap()),
+      'pullRequest':
+          pulumi.Input.mapInputValue<
+            PullRequestFilterResponse,
+            Map<String, dynamic>
+          >(pullRequest, (value) => value.toMap()),
+      'push':
+          pulumi.Input.mapInputValue<PushFilterResponse, Map<String, dynamic>>(
+            push,
+            (value) => value.toMap(),
+          ),
       'repository': repository,
       'repositoryType': repositoryType,
     };
@@ -38,11 +49,18 @@ class RepositoryEventConfigResponse {
 
   factory RepositoryEventConfigResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryEventConfigResponse(
-      pullRequest: (PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: (PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
-      repository: (map['repository'] as String).input(),
-      repositoryType: (map['repositoryType'] as String).input(),
+      pullRequest: pulumi.Input.fromValue(
+        PullRequestFilterResponse.fromMap(
+          (map['pullRequest']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      push: pulumi.Input.fromValue(
+        PushFilterResponse.fromMap(
+          (map['push']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      repository: pulumi.Input.fromValue(map['repository'] as String),
+      repositoryType: pulumi.Input.fromValue(map['repositoryType'] as String),
     );
   }
 }
-

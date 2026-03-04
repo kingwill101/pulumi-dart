@@ -21,8 +21,9 @@ class VirtualizationSoftwareSettings {
 
   factory VirtualizationSoftwareSettings.fromMap(Map<String, dynamic> map) {
     return VirtualizationSoftwareSettings(
-      vMwareCloudFoundationLicenseCost: (map['vMwareCloudFoundationLicenseCost'] as double).input(),
+      vMwareCloudFoundationLicenseCost: pulumi.Input.fromValue(
+        map['vMwareCloudFoundationLicenseCost'] as double,
+      ),
     );
   }
 }
-

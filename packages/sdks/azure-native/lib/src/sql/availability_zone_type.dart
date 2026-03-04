@@ -5,16 +5,15 @@ enum AvailabilityZoneType {
   value2("2"),
   value3("3");
 
-  const AvailabilityZoneType(this.value);
-  final String value;
+  const AvailabilityZoneType(this.wireValue);
+  final String wireValue;
 
   static AvailabilityZoneType fromValue(String value) {
     for (final item in AvailabilityZoneType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AvailabilityZoneType value: $value');
   }
 }
-

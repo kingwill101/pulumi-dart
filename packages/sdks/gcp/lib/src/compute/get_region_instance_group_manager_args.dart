@@ -9,11 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionInstanceGroupManagerArgs {
   /// The name of the instance group. Either `name` or `self_link` must be provided.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   ///
   /// * `Region` - (Optional) The region where the managed instance group resides. If not provided, the provider region is used.
   final pulumi.Input<String>? project;
   final pulumi.Input<String>? region;
+
   /// The self link of the instance group. Either `name` or `self_link` must be provided.
   final pulumi.Input<String>? selfLink;
 
@@ -40,11 +42,26 @@ class GetRegionInstanceGroupManagerArgs {
 
   factory GetRegionInstanceGroupManagerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

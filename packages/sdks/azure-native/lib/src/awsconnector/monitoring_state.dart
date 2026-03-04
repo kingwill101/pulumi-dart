@@ -5,16 +5,15 @@ enum MonitoringState {
   enabled("enabled"),
   pending("pending");
 
-  const MonitoringState(this.value);
-  final String value;
+  const MonitoringState(this.wireValue);
+  final String wireValue;
 
   static MonitoringState fromValue(String value) {
     for (final item in MonitoringState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitoringState value: $value');
   }
 }
-

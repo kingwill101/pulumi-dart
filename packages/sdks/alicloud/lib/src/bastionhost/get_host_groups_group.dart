@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostGroupsGroup {
   /// Specify the New Host Group of Notes, Supports up to 500 Characters.
   final pulumi.Input<String> comment;
+
   /// Host Group ID.
   final pulumi.Input<String> hostGroupId;
+
   /// Specify the New Host Group Name, Supports up to 128 Characters.
   final pulumi.Input<String> hostGroupName;
+
   /// The ID of the Host Group.
   final pulumi.Input<String> id;
+
   /// Specify the New Host Group Where the Bastion Host ID of.
   final pulumi.Input<String> instanceId;
 
@@ -40,12 +44,11 @@ class GetHostGroupsGroup {
 
   factory GetHostGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetHostGroupsGroup(
-      comment: (map['comment'] as String).input(),
-      hostGroupId: (map['hostGroupId'] as String).input(),
-      hostGroupName: (map['hostGroupName'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      comment: pulumi.Input.fromValue(map['comment'] as String),
+      hostGroupId: pulumi.Input.fromValue(map['hostGroupId'] as String),
+      hostGroupName: pulumi.Input.fromValue(map['hostGroupName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

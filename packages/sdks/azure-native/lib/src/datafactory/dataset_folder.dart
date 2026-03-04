@@ -9,20 +9,19 @@ class DatasetFolder {
 
   /// Creates a new [DatasetFolder].
   /// [name] The name of the folder that this Dataset is in.
-  DatasetFolder({
-    this.name,
-  });
+  DatasetFolder({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory DatasetFolder.fromMap(Map<String, dynamic> map) {
     return DatasetFolder(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,15 @@ enum Severity {
   valueSev3("Sev3"),
   valueSev4("Sev4");
 
-  const Severity(this.value);
-  final String value;
+  const Severity(this.wireValue);
+  final String wireValue;
 
   static Severity fromValue(String value) {
     for (final item in Severity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Severity value: $value');
   }
 }
-

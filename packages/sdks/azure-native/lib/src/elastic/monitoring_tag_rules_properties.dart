@@ -7,29 +7,40 @@ import 'log_rules.dart';
 class MonitoringTagRulesProperties {
   /// Rules for sending logs.
   final pulumi.Input<LogRules>? logRules;
+
   /// Provisioning state of the monitoring tag rules.
   final pulumi.Input<String>? provisioningState;
 
   /// Creates a new [MonitoringTagRulesProperties].
   /// [logRules] Rules for sending logs.
   /// [provisioningState] Provisioning state of the monitoring tag rules.
-  MonitoringTagRulesProperties({
-    this.logRules,
-    this.provisioningState,
-  });
+  MonitoringTagRulesProperties({this.logRules, this.provisioningState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logRules': ?pulumi.Input.mapOptionalInputValue<LogRules, Map<String, dynamic>>(logRules, (value) => value.toMap()),
+      'logRules':
+          ?pulumi.Input.mapOptionalInputValue<LogRules, Map<String, dynamic>>(
+            logRules,
+            (value) => value.toMap(),
+          ),
       'provisioningState': ?provisioningState,
     };
   }
 
   factory MonitoringTagRulesProperties.fromMap(Map<String, dynamic> map) {
     return MonitoringTagRulesProperties(
-      logRules: map['logRules'] == null ? null : (LogRules.fromMap((map['logRules']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      logRules: (() {
+        final guardedValue = map['logRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogRules.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

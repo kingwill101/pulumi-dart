@@ -7,17 +7,23 @@ import 'get_prometheus_monitorings_prometheus_monitoring.dart';
 class GetPrometheusMonitoringsResult {
   /// The ID of the Prometheus instance.
   final String clusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Prometheus Monitoring names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Prometheus Monitorings. Each element contains the following attributes:
-  final List<GetPrometheusMonitoringsPrometheusMonitoring> prometheusMonitorings;
+  final List<GetPrometheusMonitoringsPrometheusMonitoring>
+  prometheusMonitorings;
+
   /// The status of the monitoring configuration.
   final String? status;
+
   /// The type of the monitoring configuration.
   final String? type;
 
@@ -51,7 +57,11 @@ class GetPrometheusMonitoringsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'prometheusMonitorings': pulumi.Input.encodeList<GetPrometheusMonitoringsPrometheusMonitoring, Map<String, dynamic>>(prometheusMonitorings, (value) => value.toMap()),
+      'prometheusMonitorings':
+          pulumi.Input.encodeList<
+            GetPrometheusMonitoringsPrometheusMonitoring,
+            Map<String, dynamic>
+          >(prometheusMonitorings, (value) => value.toMap()),
       'status': ?status,
       'type': ?type,
     };
@@ -62,13 +72,34 @@ class GetPrometheusMonitoringsResult {
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      prometheusMonitorings: pulumi.Input.decodeList<GetPrometheusMonitoringsPrometheusMonitoring>(map['prometheusMonitorings'], (value) => GetPrometheusMonitoringsPrometheusMonitoring.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
-      type: map['type'] == null ? null : map['type']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      prometheusMonitorings:
+          pulumi.Input.decodeList<GetPrometheusMonitoringsPrometheusMonitoring>(
+            map['prometheusMonitorings']!,
+            (value) => GetPrometheusMonitoringsPrometheusMonitoring.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

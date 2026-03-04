@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgentDeploymentArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// The name of the application associated with the Cognitive Services Account
   final pulumi.Input<String> appName;
+
   /// The name of the deployment associated with the Cognitive Services Account
   final pulumi.Input<String> deploymentName;
+
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,13 @@ class GetAgentDeploymentArgs {
 
   factory GetAgentDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentDeploymentArgs(
-      accountName: (map['accountName'] as String).input(),
-      appName: (map['appName'] as String).input(),
-      deploymentName: (map['deploymentName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      appName: pulumi.Input.fromValue(map['appName'] as String),
+      deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

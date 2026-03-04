@@ -13,16 +13,15 @@ enum FileNoteFileType {
   spdx("SPDX"),
   other("OTHER");
 
-  const FileNoteFileType(this.value);
-  final String value;
+  const FileNoteFileType(this.wireValue);
+  final String wireValue;
 
   static FileNoteFileType fromValue(String value) {
     for (final item in FileNoteFileType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FileNoteFileType value: $value');
   }
 }
-

@@ -4,7 +4,7 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 
 /// Provides an S3 bucket accelerate configuration resource. See the [Requirements for using Transfer Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html#transfer-acceleration-requirements) for more details.
 ///
-/// > This resource cannot be used with S3 directory buckets.
+/// &gt; This resource cannot be used with S3 directory buckets.
 ///
 /// ## Example Usage
 ///
@@ -146,10 +146,13 @@ import 'bucket_accelerate_configuration_v2_state.dart';
 class BucketAccelerateConfigurationV2 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Transfer acceleration state of the bucket. Valid values: `Enabled`, `Suspended`.
   late final pulumi.Output<String> status;
 
@@ -162,15 +165,15 @@ class BucketAccelerateConfigurationV2 extends pulumi.CustomResource {
     BucketAccelerateConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+         'aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BucketAccelerateConfigurationV2] resource's state with the given [name] and [id].
@@ -191,14 +194,14 @@ class BucketAccelerateConfigurationV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+         'aws:s3/bucketAccelerateConfigurationV2:BucketAccelerateConfigurationV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 }

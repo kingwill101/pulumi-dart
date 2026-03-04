@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_network_group_args.dart';
-import 'resource_id_response.dart';
 
 /// The Managed Network Group resource
 ///
@@ -214,26 +213,36 @@ import 'resource_id_response.dart';
 class ManagedNetworkGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Responsibility role under which this Managed Network Group will be created
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The collection of management groups covered by the Managed Network
-  late final pulumi.Output<List<ResourceIdResponse>?> managementGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> managementGroups;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the ManagedNetwork resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The collection of  subnets covered by the Managed Network
-  late final pulumi.Output<List<ResourceIdResponse>?> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+
   /// The collection of subscriptions covered by the Managed Network
-  late final pulumi.Output<List<ResourceIdResponse>?> subscriptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subscriptions;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
+
   /// The collection of virtual nets covered by the Managed Network
-  late final pulumi.Output<List<ResourceIdResponse>?> virtualNetworks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworks;
 
   /// Creates a new [ManagedNetworkGroup].
   /// [name] The Pulumi resource name.
@@ -244,21 +253,27 @@ class ManagedNetworkGroup extends pulumi.CustomResource {
     ManagedNetworkGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetwork:ManagedNetworkGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
-    this.managementGroups = registerOutput<List<ResourceIdResponse>?>('managementGroups');
+         'azure-native:managednetwork:ManagedNetworkGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    managementGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'managementGroups',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.subnets = registerOutput<List<ResourceIdResponse>?>('subnets');
-    this.subscriptions = registerOutput<List<ResourceIdResponse>?>('subscriptions');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworks = registerOutput<List<ResourceIdResponse>?>('virtualNetworks');
+    provisioningState = registerOutput<String>('provisioningState');
+    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subscriptions = registerOutput<List<Map<String, dynamic>>?>(
+      'subscriptions',
+    );
+    type = registerOutput<String>('type');
+    virtualNetworks = registerOutput<List<Map<String, dynamic>>?>(
+      'virtualNetworks',
+    );
   }
 }

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1SecurityReportQueryMetric {
   /// Aggregation function: avg, min, max, or sum.
   final pulumi.Input<String>? aggregationFunction;
+
   /// Alias for the metric. Alias will be used to replace metric name in query results.
   final pulumi.Input<String>? alias;
+
   /// Metric name.
   final pulumi.Input<String> name;
+
   /// One of `+`, `-`, `/`, `%`, `*`.
   final pulumi.Input<String>? operator;
+
   /// Operand value should be provided when operator is set.
   final pulumi.Input<String>? value;
 
@@ -39,14 +43,31 @@ class GoogleCloudApigeeV1SecurityReportQueryMetric {
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityReportQueryMetric.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityReportQueryMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityReportQueryMetric(
-      aggregationFunction: map['aggregationFunction'] == null ? null : (map['aggregationFunction']! as String).input(),
-      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
-      name: (map['name'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      aggregationFunction: (() {
+        final guardedValue = map['aggregationFunction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

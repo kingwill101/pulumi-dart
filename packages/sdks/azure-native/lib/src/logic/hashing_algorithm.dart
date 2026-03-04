@@ -8,16 +8,15 @@ enum HashingAlgorithm {
   valueSHA2384("SHA2384"),
   valueSHA2512("SHA2512");
 
-  const HashingAlgorithm(this.value);
-  final String value;
+  const HashingAlgorithm(this.wireValue);
+  final String wireValue;
 
   static HashingAlgorithm fromValue(String value) {
     for (final item in HashingAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HashingAlgorithm value: $value');
   }
 }
-

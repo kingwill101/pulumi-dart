@@ -21,11 +21,20 @@ class RepositoryAssociationS3RepositoryDetailCodeArtifact {
     };
   }
 
-  factory RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap(Map<String, dynamic> map) {
+  factory RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RepositoryAssociationS3RepositoryDetailCodeArtifact(
-      buildArtifactsObjectKey: map['buildArtifactsObjectKey'] == null ? null : ((map['buildArtifactsObjectKey'] as String).input()).input(),
-      sourceCodeArtifactsObjectKey: map['sourceCodeArtifactsObjectKey'] == null ? null : ((map['sourceCodeArtifactsObjectKey'] as String).input()).input(),
+      buildArtifactsObjectKey: (() {
+        final guardedValue = map['buildArtifactsObjectKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceCodeArtifactsObjectKey: (() {
+        final guardedValue = map['sourceCodeArtifactsObjectKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

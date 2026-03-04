@@ -7,6 +7,7 @@ class AlertPolicyConditionConditionSqlHourly {
   /// Must be greater than or equal to 0 minutes and less than or equal to
   /// 59 minutes.  If left unspecified, then an arbitrary offset is used.
   final pulumi.Input<int>? minuteOffset;
+
   /// Number of hours between runs. The interval must be greater than or
   /// equal to 1 hour and less than or equal to 48 hours.
   final pulumi.Input<int> periodicity;
@@ -26,11 +27,16 @@ class AlertPolicyConditionConditionSqlHourly {
     };
   }
 
-  factory AlertPolicyConditionConditionSqlHourly.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionSqlHourly.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionSqlHourly(
-      minuteOffset: map['minuteOffset'] == null ? null : (map['minuteOffset']! as int).input(),
-      periodicity: (map['periodicity'] as int).input(),
+      minuteOffset: (() {
+        final guardedValue = map['minuteOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      periodicity: pulumi.Input.fromValue(map['periodicity'] as int),
     );
   }
 }
-

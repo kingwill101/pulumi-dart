@@ -4,16 +4,19 @@ enum ConversationConversationStageDialogflowV2beta1 {
   virtualAgentStage("VIRTUAL_AGENT_STAGE"),
   humanAssistStage("HUMAN_ASSIST_STAGE");
 
-  const ConversationConversationStageDialogflowV2beta1(this.value);
-  final String value;
+  const ConversationConversationStageDialogflowV2beta1(this.wireValue);
+  final String wireValue;
 
-  static ConversationConversationStageDialogflowV2beta1 fromValue(String value) {
+  static ConversationConversationStageDialogflowV2beta1 fromValue(
+    String value,
+  ) {
     for (final item in ConversationConversationStageDialogflowV2beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConversationConversationStageDialogflowV2beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ConversationConversationStageDialogflowV2beta1 value: $value',
+    );
   }
 }
-

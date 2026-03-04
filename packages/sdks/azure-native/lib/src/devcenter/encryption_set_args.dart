@@ -10,18 +10,25 @@ import 'managed_service_identity.dart';
 class EncryptionSetArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
+
   /// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
   final pulumi.Input<String>? devboxDisksEncryptionEnableStatus;
+
   /// The name of the devcenter encryption set.
   final pulumi.Input<String>? encryptionSetName;
+
   /// Managed identity properties
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
   final pulumi.Input<String>? keyEncryptionKeyUrl;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,7 +57,11 @@ class EncryptionSetArgs {
       'devCenterName': devCenterName,
       'devboxDisksEncryptionEnableStatus': ?devboxDisksEncryptionEnableStatus,
       'encryptionSetName': ?encryptionSetName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'keyEncryptionKeyUrl': ?keyEncryptionKeyUrl,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
@@ -60,15 +71,46 @@ class EncryptionSetArgs {
 
   factory EncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionSetArgs(
-      devCenterName: (map['devCenterName'] as String).input(),
-      devboxDisksEncryptionEnableStatus: map['devboxDisksEncryptionEnableStatus'] == null ? null : (map['devboxDisksEncryptionEnableStatus']! as String).input(),
-      encryptionSetName: map['encryptionSetName'] == null ? null : (map['encryptionSetName']! as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
+      devboxDisksEncryptionEnableStatus: (() {
+        final guardedValue = map['devboxDisksEncryptionEnableStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionSetName: (() {
+        final guardedValue = map['encryptionSetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyEncryptionKeyUrl: (() {
+        final guardedValue = map['keyEncryptionKeyUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

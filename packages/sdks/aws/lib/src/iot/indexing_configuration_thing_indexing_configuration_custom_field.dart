@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndexingConfigurationThingIndexingConfigurationCustomField {
   /// The name of the field.
   final pulumi.Input<String>? name;
+
   /// The data type of the field. Valid values: `Number`, `String`, `Boolean`.
   final pulumi.Input<String>? type;
 
@@ -17,17 +18,23 @@ class IndexingConfigurationThingIndexingConfigurationCustomField {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'type': ?type,
-    };
+    return <String, dynamic>{'name': ?name, 'type': ?type};
   }
 
-  factory IndexingConfigurationThingIndexingConfigurationCustomField.fromMap(Map<String, dynamic> map) {
+  factory IndexingConfigurationThingIndexingConfigurationCustomField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IndexingConfigurationThingIndexingConfigurationCustomField(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

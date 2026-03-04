@@ -9,20 +9,27 @@ class NrqlAlertConditionOutlierConfiguration {
 
   /// Creates a new [NrqlAlertConditionOutlierConfiguration].
   /// [dbscan] BETA PREVIEW: the `dbscan` field is in limited release and only enabled for preview on a per-account basis. - Container for DBSCAN settings used to cluster data points and classify noise as outliers. Requires `epsilon` and `minimum_points`; optional `evaluation_group_facet` partitions data before analysis.
-  NrqlAlertConditionOutlierConfiguration({
-    required this.dbscan,
-  });
+  NrqlAlertConditionOutlierConfiguration({required this.dbscan});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbscan': pulumi.Input.mapInputValue<NrqlAlertConditionOutlierConfigurationDbscan, Map<String, dynamic>>(dbscan, (value) => value.toMap()),
+      'dbscan':
+          pulumi.Input.mapInputValue<
+            NrqlAlertConditionOutlierConfigurationDbscan,
+            Map<String, dynamic>
+          >(dbscan, (value) => value.toMap()),
     };
   }
 
-  factory NrqlAlertConditionOutlierConfiguration.fromMap(Map<String, dynamic> map) {
+  factory NrqlAlertConditionOutlierConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NrqlAlertConditionOutlierConfiguration(
-      dbscan: (NrqlAlertConditionOutlierConfigurationDbscan.fromMap((map['dbscan'] as Map).cast<String, dynamic>())).input(),
+      dbscan: pulumi.Input.fromValue(
+        NrqlAlertConditionOutlierConfigurationDbscan.fromMap(
+          (map['dbscan']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

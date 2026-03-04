@@ -9,7 +9,7 @@ import 'bucket_cname_state.dart';
 ///
 /// For information about OSS Bucket Cname and how to use it, see [What is Bucket Cname](https://www.alibabacloud.com/help/en/oss/developer-reference/putcname).
 ///
-/// > **NOTE:** Available since v1.233.0.
+/// &gt; **NOTE:** Available since v1.233.0.
 ///
 /// ## Example Usage
 ///
@@ -276,16 +276,22 @@ import 'bucket_cname_state.dart';
 class BucketCname extends pulumi.CustomResource {
   /// The bucket to which the custom domain name belongs
   late final pulumi.Output<String> bucket;
+
   /// The container for the certificate configuration. See `certificate` below.
   late final pulumi.Output<BucketCnameCertificate?> certificate;
+
   /// Whether to delete the certificate.
   late final pulumi.Output<bool?> deleteCertificate;
+
   /// User-defined domain name
   late final pulumi.Output<String> domain;
+
   /// Whether to force overwrite certificate.
   late final pulumi.Output<bool?> force;
+
   /// The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
   late final pulumi.Output<String?> previousCertId;
+
   /// Cname status
   late final pulumi.Output<String> status;
 
@@ -298,18 +304,18 @@ class BucketCname extends pulumi.CustomResource {
     BucketCnameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketCname:BucketCname',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.certificate = registerOutput<BucketCnameCertificate?>('certificate');
-    this.deleteCertificate = registerOutput<bool?>('deleteCertificate');
-    this.domain = registerOutput<String>('domain');
-    this.force = registerOutput<bool?>('force');
-    this.previousCertId = registerOutput<String?>('previousCertId');
-    this.status = registerOutput<String>('status');
+         'alicloud:oss/bucketCname:BucketCname',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    certificate = registerOutput<BucketCnameCertificate?>('certificate');
+    deleteCertificate = registerOutput<bool?>('deleteCertificate');
+    domain = registerOutput<String>('domain');
+    force = registerOutput<bool?>('force');
+    previousCertId = registerOutput<String?>('previousCertId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BucketCname] resource's state with the given [name] and [id].
@@ -330,17 +336,17 @@ class BucketCname extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketCname:BucketCname',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.certificate = registerOutput<BucketCnameCertificate?>('certificate');
-    this.deleteCertificate = registerOutput<bool?>('deleteCertificate');
-    this.domain = registerOutput<String>('domain');
-    this.force = registerOutput<bool?>('force');
-    this.previousCertId = registerOutput<String?>('previousCertId');
-    this.status = registerOutput<String>('status');
+         'alicloud:oss/bucketCname:BucketCname',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    certificate = registerOutput<BucketCnameCertificate?>('certificate');
+    deleteCertificate = registerOutput<bool?>('deleteCertificate');
+    domain = registerOutput<String>('domain');
+    force = registerOutput<bool?>('force');
+    previousCertId = registerOutput<String?>('previousCertId');
+    status = registerOutput<String>('status');
   }
 }

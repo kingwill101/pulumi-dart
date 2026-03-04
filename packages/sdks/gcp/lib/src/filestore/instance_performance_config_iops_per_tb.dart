@@ -12,20 +12,19 @@ class InstancePerformanceConfigIopsPerTb {
 
   /// Creates a new [InstancePerformanceConfigIopsPerTb].
   /// [maxIopsPerTb] The instance max IOPS will be calculated by multiplying
-  InstancePerformanceConfigIopsPerTb({
-    this.maxIopsPerTb,
-  });
+  InstancePerformanceConfigIopsPerTb({this.maxIopsPerTb});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxIopsPerTb': ?maxIopsPerTb,
-    };
+    return <String, dynamic>{'maxIopsPerTb': ?maxIopsPerTb};
   }
 
   factory InstancePerformanceConfigIopsPerTb.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfigIopsPerTb(
-      maxIopsPerTb: map['maxIopsPerTb'] == null ? null : (map['maxIopsPerTb']! as int).input(),
+      maxIopsPerTb: (() {
+        final guardedValue = map['maxIopsPerTb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

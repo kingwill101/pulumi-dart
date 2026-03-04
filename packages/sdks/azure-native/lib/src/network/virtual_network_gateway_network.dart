@@ -6,9 +6,6 @@ import 'managed_service_identity_response.dart';
 import 'sub_resource_response.dart';
 import 'virtual_network_gateway_args.dart';
 import 'virtual_network_gateway_auto_scale_configuration_response.dart';
-import 'virtual_network_gateway_ipconfiguration_response.dart';
-import 'virtual_network_gateway_nat_rule_response.dart';
-import 'virtual_network_gateway_policy_group_response.dart';
 import 'virtual_network_gateway_sku_response.dart';
 import 'vpn_client_configuration_response.dart';
 
@@ -1044,70 +1041,106 @@ import 'vpn_client_configuration_response.dart';
 class VirtualNetworkGatewayNetwork extends pulumi.CustomResource {
   /// ActiveActive flag.
   late final pulumi.Output<bool?> activeActive;
+
   /// Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet
   late final pulumi.Output<String?> adminState;
+
   /// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
   late final pulumi.Output<bool?> allowRemoteVnetTraffic;
+
   /// Configures this gateway to accept traffic from remote Virtual WAN networks.
   late final pulumi.Output<bool?> allowVirtualWanTraffic;
+
   /// Autoscale configuration for virutal network gateway
-  late final pulumi.Output<VirtualNetworkGatewayAutoScaleConfigurationResponse?> autoScaleConfiguration;
+  late final pulumi.Output<VirtualNetworkGatewayAutoScaleConfigurationResponse?>
+  autoScaleConfiguration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Virtual network gateway's BGP speaker settings.
   late final pulumi.Output<BgpSettingsResponse?> bgpSettings;
+
   /// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
   late final pulumi.Output<AddressSpaceResponse?> customRoutes;
+
   /// disableIPSecReplayProtection flag.
   late final pulumi.Output<bool?> disableIPSecReplayProtection;
+
   /// Whether BGP is enabled for this virtual network gateway or not.
   late final pulumi.Output<bool?> enableBgp;
+
   /// EnableBgpRouteTranslationForNat flag.
   late final pulumi.Output<bool?> enableBgpRouteTranslationForNat;
+
   /// Whether dns forwarding is enabled or not.
   late final pulumi.Output<bool?> enableDnsForwarding;
+
   /// Whether private IP needs to be enabled on this gateway for connections or not.
   late final pulumi.Output<bool?> enablePrivateIpAddress;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The extended location of type local virtual network gateway.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The reference to the LocalNetworkGateway resource which represents local network site having default routes. Assign Null value in case of removing existing default site setting.
   late final pulumi.Output<SubResourceResponse?> gatewayDefaultSite;
+
   /// The type of this virtual network gateway.
   late final pulumi.Output<String?> gatewayType;
+
   /// The identity of the virtual network gateway, if configured.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The IP address allocated by the gateway to which dns requests can be sent.
   late final pulumi.Output<String> inboundDnsForwardingEndpoint;
+
   /// IP configurations for virtual network gateway.
-  late final pulumi.Output<List<VirtualNetworkGatewayIPConfigurationResponse>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// NatRules for virtual network gateway.
-  late final pulumi.Output<List<VirtualNetworkGatewayNatRuleResponse>?> natRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> natRules;
+
   /// The provisioning state of the virtual network gateway resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
   late final pulumi.Output<String?> resiliencyModel;
+
   /// The resource GUID property of the virtual network gateway resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
   late final pulumi.Output<VirtualNetworkGatewaySkuResponse?> sku;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
   late final pulumi.Output<String?> vNetExtendedLocationResourceId;
+
   /// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
-  late final pulumi.Output<List<VirtualNetworkGatewayPolicyGroupResponse>?> virtualNetworkGatewayPolicyGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  virtualNetworkGatewayPolicyGroups;
+
   /// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
-  late final pulumi.Output<VpnClientConfigurationResponse?> vpnClientConfiguration;
+  late final pulumi.Output<VpnClientConfigurationResponse?>
+  vpnClientConfiguration;
+
   /// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
   late final pulumi.Output<String?> vpnGatewayGeneration;
+
   /// The type of this virtual network gateway.
   late final pulumi.Output<String?> vpnType;
 
@@ -1120,44 +1153,66 @@ class VirtualNetworkGatewayNetwork extends pulumi.CustomResource {
     VirtualNetworkGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VirtualNetworkGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeActive = registerOutput<bool?>('activeActive');
-    this.adminState = registerOutput<String?>('adminState');
-    this.allowRemoteVnetTraffic = registerOutput<bool?>('allowRemoteVnetTraffic');
-    this.allowVirtualWanTraffic = registerOutput<bool?>('allowVirtualWanTraffic');
-    this.autoScaleConfiguration = registerOutput<VirtualNetworkGatewayAutoScaleConfigurationResponse?>('autoScaleConfiguration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
-    this.customRoutes = registerOutput<AddressSpaceResponse?>('customRoutes');
-    this.disableIPSecReplayProtection = registerOutput<bool?>('disableIPSecReplayProtection');
-    this.enableBgp = registerOutput<bool?>('enableBgp');
-    this.enableBgpRouteTranslationForNat = registerOutput<bool?>('enableBgpRouteTranslationForNat');
-    this.enableDnsForwarding = registerOutput<bool?>('enableDnsForwarding');
-    this.enablePrivateIpAddress = registerOutput<bool?>('enablePrivateIpAddress');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.gatewayDefaultSite = registerOutput<SubResourceResponse?>('gatewayDefaultSite');
-    this.gatewayType = registerOutput<String?>('gatewayType');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.inboundDnsForwardingEndpoint = registerOutput<String>('inboundDnsForwardingEndpoint');
-    this.ipConfigurations = registerOutput<List<VirtualNetworkGatewayIPConfigurationResponse>?>('ipConfigurations');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:VirtualNetworkGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeActive = registerOutput<bool?>('activeActive');
+    adminState = registerOutput<String?>('adminState');
+    allowRemoteVnetTraffic = registerOutput<bool?>('allowRemoteVnetTraffic');
+    allowVirtualWanTraffic = registerOutput<bool?>('allowVirtualWanTraffic');
+    autoScaleConfiguration =
+        registerOutput<VirtualNetworkGatewayAutoScaleConfigurationResponse?>(
+          'autoScaleConfiguration',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
+    customRoutes = registerOutput<AddressSpaceResponse?>('customRoutes');
+    disableIPSecReplayProtection = registerOutput<bool?>(
+      'disableIPSecReplayProtection',
+    );
+    enableBgp = registerOutput<bool?>('enableBgp');
+    enableBgpRouteTranslationForNat = registerOutput<bool?>(
+      'enableBgpRouteTranslationForNat',
+    );
+    enableDnsForwarding = registerOutput<bool?>('enableDnsForwarding');
+    enablePrivateIpAddress = registerOutput<bool?>('enablePrivateIpAddress');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    gatewayDefaultSite = registerOutput<SubResourceResponse?>(
+      'gatewayDefaultSite',
+    );
+    gatewayType = registerOutput<String?>('gatewayType');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    inboundDnsForwardingEndpoint = registerOutput<String>(
+      'inboundDnsForwardingEndpoint',
+    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.natRules = registerOutput<List<VirtualNetworkGatewayNatRuleResponse>?>('natRules');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resiliencyModel = registerOutput<String?>('resiliencyModel');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.sku = registerOutput<VirtualNetworkGatewaySkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vNetExtendedLocationResourceId = registerOutput<String?>('vNetExtendedLocationResourceId');
-    this.virtualNetworkGatewayPolicyGroups = registerOutput<List<VirtualNetworkGatewayPolicyGroupResponse>?>('virtualNetworkGatewayPolicyGroups');
-    this.vpnClientConfiguration = registerOutput<VpnClientConfigurationResponse?>('vpnClientConfiguration');
-    this.vpnGatewayGeneration = registerOutput<String?>('vpnGatewayGeneration');
-    this.vpnType = registerOutput<String?>('vpnType');
+    natRules = registerOutput<List<Map<String, dynamic>>?>('natRules');
+    provisioningState = registerOutput<String>('provisioningState');
+    resiliencyModel = registerOutput<String?>('resiliencyModel');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    sku = registerOutput<VirtualNetworkGatewaySkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vNetExtendedLocationResourceId = registerOutput<String?>(
+      'vNetExtendedLocationResourceId',
+    );
+    virtualNetworkGatewayPolicyGroups =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'virtualNetworkGatewayPolicyGroups',
+        );
+    vpnClientConfiguration = registerOutput<VpnClientConfigurationResponse?>(
+      'vpnClientConfiguration',
+    );
+    vpnGatewayGeneration = registerOutput<String?>('vpnGatewayGeneration');
+    vpnType = registerOutput<String?>('vpnType');
   }
 }

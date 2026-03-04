@@ -1,5 +1,3 @@
-library module_batch;
-
 export 'batch/accelerator.dart';
 export 'batch/accelerator_response.dart';
 export 'batch/action_condition.dart';

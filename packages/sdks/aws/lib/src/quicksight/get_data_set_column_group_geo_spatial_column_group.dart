@@ -25,12 +25,13 @@ class GetDataSetColumnGroupGeoSpatialColumnGroup {
     };
   }
 
-  factory GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetColumnGroupGeoSpatialColumnGroup(
-      columns: ((map['columns'] as List).cast<String>()).input(),
-      countryCode: (map['countryCode'] as String).input(),
-      name: (map['name'] as String).input(),
+      columns: pulumi.Input.fromValue((map['columns'] as List).cast<String>()),
+      countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

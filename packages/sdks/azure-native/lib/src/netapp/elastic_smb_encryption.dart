@@ -3,16 +3,15 @@ enum ElasticSmbEncryption {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const ElasticSmbEncryption(this.value);
-  final String value;
+  const ElasticSmbEncryption(this.wireValue);
+  final String wireValue;
 
   static ElasticSmbEncryption fromValue(String value) {
     for (final item in ElasticSmbEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticSmbEncryption value: $value');
   }
 }
-

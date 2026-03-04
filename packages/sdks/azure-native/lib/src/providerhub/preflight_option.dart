@@ -3,16 +3,15 @@ enum PreflightOption {
   continueDeploymentOnFailure("ContinueDeploymentOnFailure"),
   defaultValidationOnly("DefaultValidationOnly");
 
-  const PreflightOption(this.value);
-  final String value;
+  const PreflightOption(this.wireValue);
+  final String wireValue;
 
   static PreflightOption fromValue(String value) {
     for (final item in PreflightOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PreflightOption value: $value');
   }
 }
-

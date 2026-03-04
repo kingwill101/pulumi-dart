@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopologySelectorLabelRequirementPatch {
   /// The label key that the selector applies to.
   final pulumi.Input<String>? key;
+
   /// An array of string values. One value must match the label to be selected. Each entry in Values is ORed.
   final pulumi.Input<List<String>>? values;
 
   /// Creates a new [TopologySelectorLabelRequirementPatch].
   /// [key] The label key that the selector applies to.
   /// [values] An array of string values. One value must match the label to be selected. Each entry in Values is ORed.
-  TopologySelectorLabelRequirementPatch({
-    this.key,
-    this.values,
-  });
+  TopologySelectorLabelRequirementPatch({this.key, this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'values': ?values,
-    };
+    return <String, dynamic>{'key': ?key, 'values': ?values};
   }
 
-  factory TopologySelectorLabelRequirementPatch.fromMap(Map<String, dynamic> map) {
+  factory TopologySelectorLabelRequirementPatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TopologySelectorLabelRequirementPatch(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

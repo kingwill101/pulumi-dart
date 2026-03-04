@@ -18,68 +18,101 @@ import 'stream_mqtt_destination.dart';
 class NamespaceAssetArgs {
   /// The name of the asset.
   final pulumi.Input<String>? assetName;
+
   /// URIs or type definition IDs.
   final pulumi.Input<List<String>>? assetTypeRefs;
+
   /// A set of key-value pairs that contain custom attributes set by the customer.
   final pulumi.Input<dynamic>? attributes;
+
   /// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
   final pulumi.Input<List<NamespaceDataset>>? datasets;
+
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
   final pulumi.Input<String>? defaultDatasetsConfiguration;
+
   /// Default destinations for a dataset.
-  final pulumi.Input<List<DatasetBrokerStateStoreDestination>>? defaultDatasetsDestinations;
+  final pulumi.Input<List<DatasetBrokerStateStoreDestination>>?
+  defaultDatasetsDestinations;
+
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
   final pulumi.Input<String>? defaultEventsConfiguration;
+
   /// Default destinations for an event.
   final pulumi.Input<List<EventMqttDestination>>? defaultEventsDestinations;
+
   /// Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here.
   final pulumi.Input<String>? defaultManagementGroupsConfiguration;
+
   /// Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here.
   final pulumi.Input<String>? defaultStreamsConfiguration;
+
   /// Default destinations for a stream.
   final pulumi.Input<List<StreamMqttDestination>>? defaultStreamsDestinations;
+
   /// Human-readable description of the asset.
   final pulumi.Input<String>? description;
+
   /// Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.
   final pulumi.Input<DeviceRef> deviceRef;
+
   /// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
   final pulumi.Input<List<String>>? discoveredAssetRefs;
+
   /// Human-readable display name.
   final pulumi.Input<String>? displayName;
+
   /// Asset documentation reference.
   final pulumi.Input<String>? documentationUri;
+
   /// Enabled/disabled status of the asset.
   final pulumi.Input<bool>? enabled;
+
   /// Array of events that are part of the asset. Each event can have per-event configuration.
   final pulumi.Input<List<NamespaceEvent>>? events;
+
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// Asset ID provided by the customer.
   final pulumi.Input<String>? externalAssetId;
+
   /// Asset hardware revision number.
   final pulumi.Input<String>? hardwareRevision;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Array of management groups that are part of the asset. Each management group can have a per-group configuration.
   final pulumi.Input<List<ManagementGroup>>? managementGroups;
+
   /// Asset manufacturer.
   final pulumi.Input<String>? manufacturer;
+
   /// Asset manufacturer URI.
   final pulumi.Input<String>? manufacturerUri;
+
   /// Asset model.
   final pulumi.Input<String>? model;
+
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// Asset product code.
   final pulumi.Input<String>? productCode;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Asset serial number.
   final pulumi.Input<String>? serialNumber;
+
   /// Asset software revision number.
   final pulumi.Input<String>? softwareRevision;
+
   /// Array of streams that are part of the asset. Each stream can have a per-stream configuration.
   final pulumi.Input<List<NamespaceStream>>? streams;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -158,26 +191,100 @@ class NamespaceAssetArgs {
       'assetName': ?assetName,
       'assetTypeRefs': ?assetTypeRefs,
       'attributes': ?attributes,
-      'datasets': ?pulumi.Input.mapOptionalInputValue<List<NamespaceDataset>, List<Map<String, dynamic>>>(datasets, (value) => pulumi.Input.encodeList<NamespaceDataset, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'datasets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamespaceDataset>,
+            List<Map<String, dynamic>>
+          >(
+            datasets,
+            (value) =>
+                pulumi.Input.encodeList<NamespaceDataset, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'defaultDatasetsConfiguration': ?defaultDatasetsConfiguration,
-      'defaultDatasetsDestinations': ?pulumi.Input.mapOptionalInputValue<List<DatasetBrokerStateStoreDestination>, List<Map<String, dynamic>>>(defaultDatasetsDestinations, (value) => pulumi.Input.encodeList<DatasetBrokerStateStoreDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultDatasetsDestinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DatasetBrokerStateStoreDestination>,
+            List<Map<String, dynamic>>
+          >(
+            defaultDatasetsDestinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DatasetBrokerStateStoreDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'defaultEventsConfiguration': ?defaultEventsConfiguration,
-      'defaultEventsDestinations': ?pulumi.Input.mapOptionalInputValue<List<EventMqttDestination>, List<Map<String, dynamic>>>(defaultEventsDestinations, (value) => pulumi.Input.encodeList<EventMqttDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'defaultManagementGroupsConfiguration': ?defaultManagementGroupsConfiguration,
+      'defaultEventsDestinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EventMqttDestination>,
+            List<Map<String, dynamic>>
+          >(
+            defaultEventsDestinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EventMqttDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'defaultManagementGroupsConfiguration':
+          ?defaultManagementGroupsConfiguration,
       'defaultStreamsConfiguration': ?defaultStreamsConfiguration,
-      'defaultStreamsDestinations': ?pulumi.Input.mapOptionalInputValue<List<StreamMqttDestination>, List<Map<String, dynamic>>>(defaultStreamsDestinations, (value) => pulumi.Input.encodeList<StreamMqttDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultStreamsDestinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StreamMqttDestination>,
+            List<Map<String, dynamic>>
+          >(
+            defaultStreamsDestinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamMqttDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
-      'deviceRef': pulumi.Input.mapInputValue<DeviceRef, Map<String, dynamic>>(deviceRef, (value) => value.toMap()),
+      'deviceRef': pulumi.Input.mapInputValue<DeviceRef, Map<String, dynamic>>(
+        deviceRef,
+        (value) => value.toMap(),
+      ),
       'discoveredAssetRefs': ?discoveredAssetRefs,
       'displayName': ?displayName,
       'documentationUri': ?documentationUri,
       'enabled': ?enabled,
-      'events': ?pulumi.Input.mapOptionalInputValue<List<NamespaceEvent>, List<Map<String, dynamic>>>(events, (value) => pulumi.Input.encodeList<NamespaceEvent, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'events':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamespaceEvent>,
+            List<Map<String, dynamic>>
+          >(
+            events,
+            (value) =>
+                pulumi.Input.encodeList<NamespaceEvent, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
       'externalAssetId': ?externalAssetId,
       'hardwareRevision': ?hardwareRevision,
       'location': ?location,
-      'managementGroups': ?pulumi.Input.mapOptionalInputValue<List<ManagementGroup>, List<Map<String, dynamic>>>(managementGroups, (value) => pulumi.Input.encodeList<ManagementGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managementGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ManagementGroup>,
+            List<Map<String, dynamic>>
+          >(
+            managementGroups,
+            (value) =>
+                pulumi.Input.encodeList<ManagementGroup, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'manufacturer': ?manufacturer,
       'manufacturerUri': ?manufacturerUri,
       'model': ?model,
@@ -186,47 +293,229 @@ class NamespaceAssetArgs {
       'resourceGroupName': resourceGroupName,
       'serialNumber': ?serialNumber,
       'softwareRevision': ?softwareRevision,
-      'streams': ?pulumi.Input.mapOptionalInputValue<List<NamespaceStream>, List<Map<String, dynamic>>>(streams, (value) => pulumi.Input.encodeList<NamespaceStream, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'streams':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamespaceStream>,
+            List<Map<String, dynamic>>
+          >(
+            streams,
+            (value) =>
+                pulumi.Input.encodeList<NamespaceStream, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
     };
   }
 
   factory NamespaceAssetArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceAssetArgs(
-      assetName: map['assetName'] == null ? null : (map['assetName']! as String).input(),
-      assetTypeRefs: map['assetTypeRefs'] == null ? null : ((map['assetTypeRefs']! as List).cast<String>()).input(),
-      attributes: map['attributes'] == null ? null : (map['attributes']!).input(),
-      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<NamespaceDataset>(map['datasets']!, (value) => NamespaceDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultDatasetsConfiguration: map['defaultDatasetsConfiguration'] == null ? null : (map['defaultDatasetsConfiguration']! as String).input(),
-      defaultDatasetsDestinations: map['defaultDatasetsDestinations'] == null ? null : (pulumi.Input.decodeList<DatasetBrokerStateStoreDestination>(map['defaultDatasetsDestinations']!, (value) => DatasetBrokerStateStoreDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultEventsConfiguration: map['defaultEventsConfiguration'] == null ? null : (map['defaultEventsConfiguration']! as String).input(),
-      defaultEventsDestinations: map['defaultEventsDestinations'] == null ? null : (pulumi.Input.decodeList<EventMqttDestination>(map['defaultEventsDestinations']!, (value) => EventMqttDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultManagementGroupsConfiguration: map['defaultManagementGroupsConfiguration'] == null ? null : (map['defaultManagementGroupsConfiguration']! as String).input(),
-      defaultStreamsConfiguration: map['defaultStreamsConfiguration'] == null ? null : (map['defaultStreamsConfiguration']! as String).input(),
-      defaultStreamsDestinations: map['defaultStreamsDestinations'] == null ? null : (pulumi.Input.decodeList<StreamMqttDestination>(map['defaultStreamsDestinations']!, (value) => StreamMqttDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      deviceRef: (DeviceRef.fromMap((map['deviceRef'] as Map).cast<String, dynamic>())).input(),
-      discoveredAssetRefs: map['discoveredAssetRefs'] == null ? null : ((map['discoveredAssetRefs']! as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      documentationUri: map['documentationUri'] == null ? null : (map['documentationUri']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<NamespaceEvent>(map['events']!, (value) => NamespaceEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      externalAssetId: map['externalAssetId'] == null ? null : (map['externalAssetId']! as String).input(),
-      hardwareRevision: map['hardwareRevision'] == null ? null : (map['hardwareRevision']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managementGroups: map['managementGroups'] == null ? null : (pulumi.Input.decodeList<ManagementGroup>(map['managementGroups']!, (value) => ManagementGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manufacturer: map['manufacturer'] == null ? null : (map['manufacturer']! as String).input(),
-      manufacturerUri: map['manufacturerUri'] == null ? null : (map['manufacturerUri']! as String).input(),
-      model: map['model'] == null ? null : (map['model']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
-      softwareRevision: map['softwareRevision'] == null ? null : (map['softwareRevision']! as String).input(),
-      streams: map['streams'] == null ? null : (pulumi.Input.decodeList<NamespaceStream>(map['streams']!, (value) => NamespaceStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      assetName: (() {
+        final guardedValue = map['assetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assetTypeRefs: (() {
+        final guardedValue = map['assetTypeRefs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      datasets: (() {
+        final guardedValue = map['datasets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NamespaceDataset>(
+            guardedValue,
+            (value) => NamespaceDataset.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      defaultDatasetsConfiguration: (() {
+        final guardedValue = map['defaultDatasetsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultDatasetsDestinations: (() {
+        final guardedValue = map['defaultDatasetsDestinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DatasetBrokerStateStoreDestination>(
+            guardedValue,
+            (value) => DatasetBrokerStateStoreDestination.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      defaultEventsConfiguration: (() {
+        final guardedValue = map['defaultEventsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultEventsDestinations: (() {
+        final guardedValue = map['defaultEventsDestinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EventMqttDestination>(
+            guardedValue,
+            (value) => EventMqttDestination.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      defaultManagementGroupsConfiguration: (() {
+        final guardedValue = map['defaultManagementGroupsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultStreamsConfiguration: (() {
+        final guardedValue = map['defaultStreamsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultStreamsDestinations: (() {
+        final guardedValue = map['defaultStreamsDestinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StreamMqttDestination>(
+            guardedValue,
+            (value) => StreamMqttDestination.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceRef: pulumi.Input.fromValue(
+        DeviceRef.fromMap((map['deviceRef']! as Map).cast<String, dynamic>()),
+      ),
+      discoveredAssetRefs: (() {
+        final guardedValue = map['discoveredAssetRefs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentationUri: (() {
+        final guardedValue = map['documentationUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      events: (() {
+        final guardedValue = map['events'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NamespaceEvent>(
+            guardedValue,
+            (value) =>
+                NamespaceEvent.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      externalAssetId: (() {
+        final guardedValue = map['externalAssetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hardwareRevision: (() {
+        final guardedValue = map['hardwareRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementGroups: (() {
+        final guardedValue = map['managementGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ManagementGroup>(
+            guardedValue,
+            (value) =>
+                ManagementGroup.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      manufacturer: (() {
+        final guardedValue = map['manufacturer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manufacturerUri: (() {
+        final guardedValue = map['manufacturerUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      model: (() {
+        final guardedValue = map['model'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      productCode: (() {
+        final guardedValue = map['productCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serialNumber: (() {
+        final guardedValue = map['serialNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      softwareRevision: (() {
+        final guardedValue = map['softwareRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streams: (() {
+        final guardedValue = map['streams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NamespaceStream>(
+            guardedValue,
+            (value) =>
+                NamespaceStream.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

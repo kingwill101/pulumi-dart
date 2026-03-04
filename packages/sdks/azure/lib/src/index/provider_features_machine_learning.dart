@@ -7,9 +7,7 @@ class ProviderFeaturesMachineLearning {
 
   /// Creates a new [ProviderFeaturesMachineLearning].
   /// [purgeSoftDeletedWorkspaceOnDestroy] Optional.
-  ProviderFeaturesMachineLearning({
-    this.purgeSoftDeletedWorkspaceOnDestroy,
-  });
+  ProviderFeaturesMachineLearning({this.purgeSoftDeletedWorkspaceOnDestroy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,8 +17,11 @@ class ProviderFeaturesMachineLearning {
 
   factory ProviderFeaturesMachineLearning.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesMachineLearning(
-      purgeSoftDeletedWorkspaceOnDestroy: map['purgeSoftDeletedWorkspaceOnDestroy'] == null ? null : (map['purgeSoftDeletedWorkspaceOnDestroy']! as bool).input(),
+      purgeSoftDeletedWorkspaceOnDestroy: (() {
+        final guardedValue = map['purgeSoftDeletedWorkspaceOnDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

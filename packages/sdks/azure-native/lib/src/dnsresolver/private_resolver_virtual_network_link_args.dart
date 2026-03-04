@@ -10,12 +10,16 @@ import 'sub_resource.dart';
 class PrivateResolverVirtualNetworkLinkArgs {
   /// The name of the DNS forwarding ruleset.
   final pulumi.Input<String> dnsForwardingRulesetName;
+
   /// Metadata attached to the virtual network link.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The reference to the virtual network. This cannot be changed after creation.
   final pulumi.Input<SubResource> virtualNetwork;
+
   /// The name of the virtual network link.
   final pulumi.Input<String>? virtualNetworkLinkName;
 
@@ -38,19 +42,42 @@ class PrivateResolverVirtualNetworkLinkArgs {
       'dnsForwardingRulesetName': dnsForwardingRulesetName,
       'metadata': ?metadata,
       'resourceGroupName': resourceGroupName,
-      'virtualNetwork': pulumi.Input.mapInputValue<SubResource, Map<String, dynamic>>(virtualNetwork, (value) => value.toMap()),
+      'virtualNetwork':
+          pulumi.Input.mapInputValue<SubResource, Map<String, dynamic>>(
+            virtualNetwork,
+            (value) => value.toMap(),
+          ),
       'virtualNetworkLinkName': ?virtualNetworkLinkName,
     };
   }
 
-  factory PrivateResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
+  factory PrivateResolverVirtualNetworkLinkArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateResolverVirtualNetworkLinkArgs(
-      dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualNetwork: (SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
-      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : (map['virtualNetworkLinkName']! as String).input(),
+      dnsForwardingRulesetName: pulumi.Input.fromValue(
+        map['dnsForwardingRulesetName'] as String,
+      ),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualNetwork: pulumi.Input.fromValue(
+        SubResource.fromMap(
+          (map['virtualNetwork']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      virtualNetworkLinkName: (() {
+        final guardedValue = map['virtualNetworkLinkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

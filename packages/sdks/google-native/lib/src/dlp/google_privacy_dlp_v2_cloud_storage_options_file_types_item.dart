@@ -11,16 +11,20 @@ enum GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem {
   powerpoint("POWERPOINT"),
   excel("EXCEL");
 
-  const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(this.value);
-  final String value;
+  const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(this.wireValue);
+  final String wireValue;
 
-  static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem.values) {
-      if (item.value == value) {
+  static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem value: $value',
+    );
   }
 }
-

@@ -4,18 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SecurityGroupMembership
 class SecurityGroupMembership {
-  /// <p>The unique ID for this security group.</p>
+  /// &lt;p&gt;The unique ID for this security group.&lt;/p&gt;
   final pulumi.Input<String>? securityGroupIdentifier;
-  /// <p>The status of this security group.</p>
+
+  /// &lt;p&gt;The status of this security group.&lt;/p&gt;
   final pulumi.Input<String>? status;
 
   /// Creates a new [SecurityGroupMembership].
-  /// [securityGroupIdentifier] <p>The unique ID for this security group.</p>
-  /// [status] <p>The status of this security group.</p>
-  SecurityGroupMembership({
-    this.securityGroupIdentifier,
-    this.status,
-  });
+  /// [securityGroupIdentifier] &lt;p&gt;The unique ID for this security group.&lt;/p&gt;
+  /// [status] &lt;p&gt;The status of this security group.&lt;/p&gt;
+  SecurityGroupMembership({this.securityGroupIdentifier, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SecurityGroupMembership {
 
   factory SecurityGroupMembership.fromMap(Map<String, dynamic> map) {
     return SecurityGroupMembership(
-      securityGroupIdentifier: map['securityGroupIdentifier'] == null ? null : (map['securityGroupIdentifier']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      securityGroupIdentifier: (() {
+        final guardedValue = map['securityGroupIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

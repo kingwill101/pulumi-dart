@@ -8,16 +8,15 @@ enum TargetHealthStateEnum {
   unhealthyDraining("unhealthy.draining"),
   unused("unused");
 
-  const TargetHealthStateEnum(this.value);
-  final String value;
+  const TargetHealthStateEnum(this.wireValue);
+  final String wireValue;
 
   static TargetHealthStateEnum fromValue(String value) {
     for (final item in TargetHealthStateEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetHealthStateEnum value: $value');
   }
 }
-

@@ -13,16 +13,15 @@ enum WebApplicationFirewallOperator {
   valueGeoMatch("GeoMatch"),
   valueAny("Any");
 
-  const WebApplicationFirewallOperator(this.value);
-  final String value;
+  const WebApplicationFirewallOperator(this.wireValue);
+  final String wireValue;
 
   static WebApplicationFirewallOperator fromValue(String value) {
     for (final item in WebApplicationFirewallOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebApplicationFirewallOperator value: $value');
   }
 }
-

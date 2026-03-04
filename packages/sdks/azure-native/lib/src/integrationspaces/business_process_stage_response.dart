@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BusinessProcessStageResponse {
   /// The description of the business stage.
   final pulumi.Input<String>? description;
+
   /// The properties within the properties of the business process stage.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// The property to keep track of stages before current in the business process stage.
   final pulumi.Input<List<String>>? stagesBefore;
 
@@ -31,10 +33,23 @@ class BusinessProcessStageResponse {
 
   factory BusinessProcessStageResponse.fromMap(Map<String, dynamic> map) {
     return BusinessProcessStageResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      stagesBefore: map['stagesBefore'] == null ? null : ((map['stagesBefore']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      stagesBefore: (() {
+        final guardedValue = map['stagesBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

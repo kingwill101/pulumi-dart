@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkGatewaySkuResponse {
   /// The capacity.
   final pulumi.Input<int> capacity;
+
   /// Gateway SKU name.
   final pulumi.Input<String>? name;
+
   /// Gateway SKU tier.
   final pulumi.Input<String>? tier;
 
@@ -31,10 +33,17 @@ class VirtualNetworkGatewaySkuResponse {
 
   factory VirtualNetworkGatewaySkuResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewaySkuResponse(
-      capacity: (map['capacity'] as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

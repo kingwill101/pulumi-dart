@@ -6,16 +6,15 @@ enum UrlMapSecurityLevel {
   secureOptional("SECURE_OPTIONAL"),
   secureAlways("SECURE_ALWAYS");
 
-  const UrlMapSecurityLevel(this.value);
-  final String value;
+  const UrlMapSecurityLevel(this.wireValue);
+  final String wireValue;
 
   static UrlMapSecurityLevel fromValue(String value) {
     for (final item in UrlMapSecurityLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UrlMapSecurityLevel value: $value');
   }
 }
-

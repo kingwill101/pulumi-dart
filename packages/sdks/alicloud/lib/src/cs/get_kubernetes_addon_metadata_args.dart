@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesAddonMetadataArgs {
   /// The id of kubernetes cluster.
   final pulumi.Input<String> clusterId;
+
   /// The name of the cluster addon. You can get a list of available addons that the cluster can install by using data source `alicloud.cs.getKubernetesAddons`.
   final pulumi.Input<String> name;
+
   /// The version of the cluster addon.
   final pulumi.Input<String> version;
 
@@ -34,10 +36,9 @@ class GetKubernetesAddonMetadataArgs {
 
   factory GetKubernetesAddonMetadataArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesAddonMetadataArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      name: (map['name'] as String).input(),
-      version: (map['version'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

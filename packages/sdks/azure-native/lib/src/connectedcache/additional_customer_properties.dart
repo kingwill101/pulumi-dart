@@ -6,28 +6,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalCustomerProperties {
   /// Customer resource Asn (autonomous system number).
   final pulumi.Input<String>? customerAsn;
+
   /// Customer resource contact email.
   final pulumi.Input<String>? customerEmail;
+
   /// Customer resource entitlement expiration date string.
   final pulumi.Input<String>? customerEntitlementExpiration;
+
   /// Customer resource entitlement Sku Guid.
   final pulumi.Input<String>? customerEntitlementSkuGuid;
+
   /// Customer resource entitlement Sku Id.
   final pulumi.Input<String>? customerEntitlementSkuId;
+
   /// Customer resource entitlement Sku name.
   final pulumi.Input<String>? customerEntitlementSkuName;
+
   /// Customer resource transit Asn (autonomous system number).
   final pulumi.Input<String>? customerTransitAsn;
+
   /// Customer resource transit state.
   final pulumi.Input<String>? customerTransitState;
+
   /// Optional property #1 of Mcc response object.
   final pulumi.Input<String>? optionalProperty1;
+
   /// Optional property #2 of Mcc response object.
   final pulumi.Input<String>? optionalProperty2;
+
   /// Optional property #3 of Mcc response object.
   final pulumi.Input<String>? optionalProperty3;
+
   /// Optional property #4 of Mcc response object.
   final pulumi.Input<String>? optionalProperty4;
+
   /// Optional property #5 of Mcc response object.
   final pulumi.Input<String>? optionalProperty5;
 
@@ -81,20 +93,71 @@ class AdditionalCustomerProperties {
 
   factory AdditionalCustomerProperties.fromMap(Map<String, dynamic> map) {
     return AdditionalCustomerProperties(
-      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn']! as String).input(),
-      customerEmail: map['customerEmail'] == null ? null : (map['customerEmail']! as String).input(),
-      customerEntitlementExpiration: map['customerEntitlementExpiration'] == null ? null : (map['customerEntitlementExpiration']! as String).input(),
-      customerEntitlementSkuGuid: map['customerEntitlementSkuGuid'] == null ? null : (map['customerEntitlementSkuGuid']! as String).input(),
-      customerEntitlementSkuId: map['customerEntitlementSkuId'] == null ? null : (map['customerEntitlementSkuId']! as String).input(),
-      customerEntitlementSkuName: map['customerEntitlementSkuName'] == null ? null : (map['customerEntitlementSkuName']! as String).input(),
-      customerTransitAsn: map['customerTransitAsn'] == null ? null : (map['customerTransitAsn']! as String).input(),
-      customerTransitState: map['customerTransitState'] == null ? null : (map['customerTransitState']! as String).input(),
-      optionalProperty1: map['optionalProperty1'] == null ? null : (map['optionalProperty1']! as String).input(),
-      optionalProperty2: map['optionalProperty2'] == null ? null : (map['optionalProperty2']! as String).input(),
-      optionalProperty3: map['optionalProperty3'] == null ? null : (map['optionalProperty3']! as String).input(),
-      optionalProperty4: map['optionalProperty4'] == null ? null : (map['optionalProperty4']! as String).input(),
-      optionalProperty5: map['optionalProperty5'] == null ? null : (map['optionalProperty5']! as String).input(),
+      customerAsn: (() {
+        final guardedValue = map['customerAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerEmail: (() {
+        final guardedValue = map['customerEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerEntitlementExpiration: (() {
+        final guardedValue = map['customerEntitlementExpiration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerEntitlementSkuGuid: (() {
+        final guardedValue = map['customerEntitlementSkuGuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerEntitlementSkuId: (() {
+        final guardedValue = map['customerEntitlementSkuId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerEntitlementSkuName: (() {
+        final guardedValue = map['customerEntitlementSkuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerTransitAsn: (() {
+        final guardedValue = map['customerTransitAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerTransitState: (() {
+        final guardedValue = map['customerTransitState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionalProperty1: (() {
+        final guardedValue = map['optionalProperty1'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionalProperty2: (() {
+        final guardedValue = map['optionalProperty2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionalProperty3: (() {
+        final guardedValue = map['optionalProperty3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionalProperty4: (() {
+        final guardedValue = map['optionalProperty4'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionalProperty5: (() {
+        final guardedValue = map['optionalProperty5'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

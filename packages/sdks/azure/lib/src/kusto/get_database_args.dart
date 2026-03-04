@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseArgs {
   /// The name of the Kusto Cluster this database is added to.
   final pulumi.Input<String> clusterName;
+
   /// The name of the Kusto Database.
   final pulumi.Input<String> name;
+
   /// The Resource Group where the Kusto Database exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetDatabaseArgs {
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

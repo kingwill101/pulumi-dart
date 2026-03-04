@@ -7,12 +7,15 @@ import 'get_workspace_identity.dart';
 class GetWorkspaceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// An `identity` block as defined below.
   final List<GetWorkspaceIdentity> identities;
+
   /// The location where the Machine Learning Workspace exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the Machine Learning Workspace.
   final Map<String, String> tags;
 
@@ -35,7 +38,11 @@ class GetWorkspaceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identities': pulumi.Input.encodeList<GetWorkspaceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<GetWorkspaceIdentity, Map<String, dynamic>>(
+            identities,
+            (value) => value.toMap(),
+          ),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -46,7 +53,12 @@ class GetWorkspaceResult {
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetWorkspaceIdentity>(map['identities'], (value) => GetWorkspaceIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetWorkspaceIdentity>(
+        map['identities']!,
+        (value) => GetWorkspaceIdentity.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -54,4 +66,3 @@ class GetWorkspaceResult {
     );
   }
 }
-

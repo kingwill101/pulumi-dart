@@ -5,7 +5,7 @@ import 'agentcore_token_vault_cmk_state.dart';
 
 /// Manages the AWS KMS customer master key (CMK) for a token vault.
 ///
-/// > Deletion of this resource will not modify the CMK, only remove the resource from state.
+/// &gt; Deletion of this resource will not modify the CMK, only remove the resource from state.
 ///
 /// ## Example Usage
 ///
@@ -122,9 +122,12 @@ import 'agentcore_token_vault_cmk_state.dart';
 /// ```
 class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
   /// KMS configuration for the token vault. See `kms_configuration` below.
-  late final pulumi.Output<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration;
+  late final pulumi.Output<AgentcoreTokenVaultCmkKmsConfiguration>
+  kmsConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Token vault ID. Defaults to `default`.
   late final pulumi.Output<String> tokenVaultId;
 
@@ -137,14 +140,16 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
     AgentcoreTokenVaultCmkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration');
-    this.region = registerOutput<String>('region');
-    this.tokenVaultId = registerOutput<String>('tokenVaultId');
+         'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>(
+      'kmsConfiguration',
+    );
+    region = registerOutput<String>('region');
+    tokenVaultId = registerOutput<String>('tokenVaultId');
   }
 
   /// Gets an existing [AgentcoreTokenVaultCmk] resource's state with the given [name] and [id].
@@ -165,13 +170,15 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration');
-    this.region = registerOutput<String>('region');
-    this.tokenVaultId = registerOutput<String>('tokenVaultId');
+         'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>(
+      'kmsConfiguration',
+    );
+    region = registerOutput<String>('region');
+    tokenVaultId = registerOutput<String>('tokenVaultId');
   }
 }

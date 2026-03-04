@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainVpcOption {
   /// The availability zones used by the domain.
   final pulumi.Input<List<String>> availabilityZones;
+
   /// The security groups used by the domain.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// The subnets used by the domain.
   final pulumi.Input<List<String>> subnetIds;
+
   /// The VPC used by the domain.
   final pulumi.Input<String> vpcId;
 
@@ -35,11 +38,16 @@ class GetDomainVpcOption {
 
   factory GetDomainVpcOption.fromMap(Map<String, dynamic> map) {
     return GetDomainVpcOption(
-      availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      availabilityZones: pulumi.Input.fromValue(
+        (map['availabilityZones'] as List).cast<String>(),
+      ),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

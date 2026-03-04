@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride {
   /// Specifies the percentage of the allocated storage traffic bandwidth. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String>? bandwidthPercentageSmb;
+
   /// Specifies the Cluster traffic priority. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String>? priorityValue8021ActionCluster;
+
   /// Specifies the Priority Flow Control where Data Center Bridging (DCB) is used. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String>? priorityValue8021ActionSmb;
 
@@ -28,12 +30,25 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride {
     };
   }
 
-  factory HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride.fromMap(Map<String, dynamic> map) {
+  factory HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride(
-      bandwidthPercentageSmb: map['bandwidthPercentageSmb'] == null ? null : (map['bandwidthPercentageSmb']! as String).input(),
-      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : (map['priorityValue8021ActionCluster']! as String).input(),
-      priorityValue8021ActionSmb: map['priorityValue8021ActionSmb'] == null ? null : (map['priorityValue8021ActionSmb']! as String).input(),
+      bandwidthPercentageSmb: (() {
+        final guardedValue = map['bandwidthPercentageSmb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priorityValue8021ActionCluster: (() {
+        final guardedValue = map['priorityValue8021ActionCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priorityValue8021ActionSmb: (() {
+        final guardedValue = map['priorityValue8021ActionSmb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

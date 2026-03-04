@@ -1,5 +1,3 @@
-library module_stack;
-
 export 'stack/functions.dart';
 export 'stack/get_hci_cluster_args.dart';
 export 'stack/get_hci_cluster_identity.dart';

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataCollectionRuleAssociationArgs {
   /// The name of the association. The name is case insensitive.
   final pulumi.Input<String>? associationName;
+
   /// The resource ID of the data collection endpoint that is to be associated.
   final pulumi.Input<String>? dataCollectionEndpointId;
+
   /// The resource ID of the data collection rule that is to be associated.
   final pulumi.Input<String>? dataCollectionRuleId;
+
   /// Description of the association.
   final pulumi.Input<String>? description;
+
   /// The identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -44,12 +48,27 @@ class DataCollectionRuleAssociationArgs {
 
   factory DataCollectionRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleAssociationArgs(
-      associationName: map['associationName'] == null ? null : (map['associationName']! as String).input(),
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId']! as String).input(),
-      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : (map['dataCollectionRuleId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      associationName: (() {
+        final guardedValue = map['associationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataCollectionEndpointId: (() {
+        final guardedValue = map['dataCollectionEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataCollectionRuleId: (() {
+        final guardedValue = map['dataCollectionRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

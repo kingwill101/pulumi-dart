@@ -7,18 +7,25 @@ import 'system_data_response.dart';
 class GetPrivateLinkScopeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Azure resource Id
   final String id;
+
   /// Resource location
   final String location;
+
   /// Azure resource name
   final String name;
+
   /// Properties that define a Azure Arc PrivateLinkScope resource.
   final HybridComputePrivateLinkScopePropertiesResponse properties;
+
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// Azure resource type
   final String type;
 
@@ -61,11 +68,18 @@ class GetPrivateLinkScopeResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: HybridComputePrivateLinkScopePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: HybridComputePrivateLinkScopePropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

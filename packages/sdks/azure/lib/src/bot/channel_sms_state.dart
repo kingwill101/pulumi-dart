@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelSmsState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? botName;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The phone number for the SMS Channel.
   final pulumi.Input<String>? phoneNumber;
+
   /// The name of the resource group where the SMS Channel should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The account security identifier (SID) for the SMS Channel.
   final pulumi.Input<String>? smsChannelAccountSecurityId;
+
   /// The authorization token for the SMS Channel.
   final pulumi.Input<String>? smsChannelAuthToken;
 
@@ -46,13 +51,36 @@ class ChannelSmsState {
 
   factory ChannelSmsState.fromMap(Map<String, dynamic> map) {
     return ChannelSmsState(
-      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      smsChannelAccountSecurityId: map['smsChannelAccountSecurityId'] == null ? null : (map['smsChannelAccountSecurityId']! as String).input(),
-      smsChannelAuthToken: map['smsChannelAuthToken'] == null ? null : (map['smsChannelAuthToken']! as String).input(),
+      botName: (() {
+        final guardedValue = map['botName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumber: (() {
+        final guardedValue = map['phoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      smsChannelAccountSecurityId: (() {
+        final guardedValue = map['smsChannelAccountSecurityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      smsChannelAuthToken: (() {
+        final guardedValue = map['smsChannelAuthToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,40 +8,54 @@ import 'node_pool_node_config.dart';
 class NodePoolState {
   /// The name of the target Distributed Cloud Edge Cluster.
   final pulumi.Input<String>? cluster;
+
   /// The time when the node pool was created.
   final pulumi.Input<String>? createTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Local disk encryption options. This field is only used when enabling CMEK support.
   /// Structure is documented below.
   final pulumi.Input<NodePoolLocalDiskEncryption>? localDiskEncryption;
+
   /// The location of the resource.
   final pulumi.Input<String>? location;
+
   /// Only machines matching this filter will be allowed to join the node pool.
-  /// The filtering language accepts strings like "name=<name>", and is
+  /// The filtering language accepts strings like "name=&lt;name&gt;", and is
   /// documented in more detail in [AIP-160](https://google.aip.dev/160).
   final pulumi.Input<String>? machineFilter;
+
   /// The resource name of the node pool.
   final pulumi.Input<String>? name;
+
   /// Configuration for each node in the NodePool
   /// Structure is documented below.
   final pulumi.Input<NodePoolNodeConfig>? nodeConfig;
+
   /// The number of nodes in the pool.
   final pulumi.Input<int>? nodeCount;
+
   /// Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
   final pulumi.Input<String>? nodeLocation;
+
   /// The lowest release version among all worker nodes.
   final pulumi.Input<String>? nodeVersion;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The time when the node pool was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -85,11 +99,19 @@ class NodePoolState {
       'createTime': ?createTime,
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
-      'localDiskEncryption': ?pulumi.Input.mapOptionalInputValue<NodePoolLocalDiskEncryption, Map<String, dynamic>>(localDiskEncryption, (value) => value.toMap()),
+      'localDiskEncryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolLocalDiskEncryption,
+            Map<String, dynamic>
+          >(localDiskEncryption, (value) => value.toMap()),
       'location': ?location,
       'machineFilter': ?machineFilter,
       'name': ?name,
-      'nodeConfig': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfig, Map<String, dynamic>>(nodeConfig, (value) => value.toMap()),
+      'nodeConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodePoolNodeConfig,
+            Map<String, dynamic>
+          >(nodeConfig, (value) => value.toMap()),
       'nodeCount': ?nodeCount,
       'nodeLocation': ?nodeLocation,
       'nodeVersion': ?nodeVersion,
@@ -101,22 +123,95 @@ class NodePoolState {
 
   factory NodePoolState.fromMap(Map<String, dynamic> map) {
     return NodePoolState(
-      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      localDiskEncryption: map['localDiskEncryption'] == null ? null : (NodePoolLocalDiskEncryption.fromMap((map['localDiskEncryption']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (NodePoolNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
-      nodeLocation: map['nodeLocation'] == null ? null : (map['nodeLocation']! as String).input(),
-      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      cluster: (() {
+        final guardedValue = map['cluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      localDiskEncryption: (() {
+        final guardedValue = map['localDiskEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolLocalDiskEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineFilter: (() {
+        final guardedValue = map['machineFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeConfig: (() {
+        final guardedValue = map['nodeConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodePoolNodeConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeLocation: (() {
+        final guardedValue = map['nodeLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeVersion: (() {
+        final guardedValue = map['nodeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

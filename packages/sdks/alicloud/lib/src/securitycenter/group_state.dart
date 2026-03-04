@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupState {
   /// GroupId.
   final pulumi.Input<String>? groupId;
+
   /// GroupName.
   final pulumi.Input<String>? groupName;
 
   /// Creates a new [GroupState].
   /// [groupId] GroupId.
   /// [groupName] GroupName.
-  GroupState({
-    this.groupId,
-    this.groupName,
-  });
+  GroupState({this.groupId, this.groupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupId': ?groupId,
-      'groupName': ?groupName,
-    };
+    return <String, dynamic>{'groupId': ?groupId, 'groupName': ?groupName};
   }
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

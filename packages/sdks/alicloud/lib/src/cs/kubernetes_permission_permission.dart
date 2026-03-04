@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesPermissionPermission {
   /// The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `""`.
   final pulumi.Input<String> cluster;
+
   /// Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
   final pulumi.Input<bool>? isCustom;
+
   /// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
   final pulumi.Input<bool>? isRamRole;
+
   /// The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
   final pulumi.Input<String>? namespace;
+
   /// Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
   final pulumi.Input<String> roleName;
+
   /// The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
   final pulumi.Input<String> roleType;
 
@@ -45,13 +50,24 @@ class KubernetesPermissionPermission {
 
   factory KubernetesPermissionPermission.fromMap(Map<String, dynamic> map) {
     return KubernetesPermissionPermission(
-      cluster: (map['cluster'] as String).input(),
-      isCustom: map['isCustom'] == null ? null : (map['isCustom']! as bool).input(),
-      isRamRole: map['isRamRole'] == null ? null : (map['isRamRole']! as bool).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      roleName: (map['roleName'] as String).input(),
-      roleType: (map['roleType'] as String).input(),
+      cluster: pulumi.Input.fromValue(map['cluster'] as String),
+      isCustom: (() {
+        final guardedValue = map['isCustom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isRamRole: (() {
+        final guardedValue = map['isRamRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleName: pulumi.Input.fromValue(map['roleName'] as String),
+      roleType: pulumi.Input.fromValue(map['roleType'] as String),
     );
   }
 }
-

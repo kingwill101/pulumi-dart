@@ -9,20 +9,19 @@ class CifsUser {
 
   /// Creates a new [CifsUser].
   /// [username] The CIFS user's username
-  CifsUser({
-    this.username,
-  });
+  CifsUser({this.username});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'username': ?username,
-    };
+    return <String, dynamic>{'username': ?username};
   }
 
   factory CifsUser.fromMap(Map<String, dynamic> map) {
     return CifsUser(
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

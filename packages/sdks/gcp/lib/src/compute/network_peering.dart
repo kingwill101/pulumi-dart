@@ -7,10 +7,10 @@ import 'network_peering_state.dart';
 /// and
 /// [API](https://cloud.google.com/compute/docs/reference/latest/networks).
 ///
-/// > Both networks must create a peering with each other for the peering
+/// &gt; Both networks must create a peering with each other for the peering
 /// to be functional.
 ///
-/// > Subnets IP ranges across peered VPC networks cannot overlap.
+/// &gt; Subnets IP ranges across peered VPC networks cannot overlap.
 ///
 /// ## Example Usage
 ///
@@ -226,26 +226,36 @@ import 'network_peering_state.dart';
 class NetworkPeering extends pulumi.CustomResource {
   /// Whether to export the custom routes to the peer network. Defaults to `false`.
   late final pulumi.Output<bool?> exportCustomRoutes;
+
   /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
   late final pulumi.Output<bool?> exportSubnetRoutesWithPublicIp;
+
   /// Whether to import the custom routes from the peer network. Defaults to `false`.
   late final pulumi.Output<bool?> importCustomRoutes;
+
   /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
   late final pulumi.Output<bool?> importSubnetRoutesWithPublicIp;
+
   /// Name of the peering.
   late final pulumi.Output<String> name;
+
   /// The primary network of the peering.
   late final pulumi.Output<String> network;
+
   /// The peer network in the peering. The peer network
   /// may belong to a different project.
   late final pulumi.Output<String> peerNetwork;
+
   /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
   late final pulumi.Output<String?> stackType;
+
   /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
   /// `ACTIVE` when there's a matching configuration in the peer network.
   late final pulumi.Output<String> state;
+
   /// Details about the current state of the peering.
   late final pulumi.Output<String> stateDetails;
+
   /// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
   late final pulumi.Output<String?> updateStrategy;
 
@@ -258,22 +268,26 @@ class NetworkPeering extends pulumi.CustomResource {
     NetworkPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkPeering:NetworkPeering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
-    this.exportSubnetRoutesWithPublicIp = registerOutput<bool?>('exportSubnetRoutesWithPublicIp');
-    this.importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
-    this.importSubnetRoutesWithPublicIp = registerOutput<bool?>('importSubnetRoutesWithPublicIp');
+         'gcp:compute/networkPeering:NetworkPeering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
+    exportSubnetRoutesWithPublicIp = registerOutput<bool?>(
+      'exportSubnetRoutesWithPublicIp',
+    );
+    importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
+    importSubnetRoutesWithPublicIp = registerOutput<bool?>(
+      'importSubnetRoutesWithPublicIp',
+    );
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.peerNetwork = registerOutput<String>('peerNetwork');
-    this.stackType = registerOutput<String?>('stackType');
-    this.state = registerOutput<String>('state');
-    this.stateDetails = registerOutput<String>('stateDetails');
-    this.updateStrategy = registerOutput<String?>('updateStrategy');
+    network = registerOutput<String>('network');
+    peerNetwork = registerOutput<String>('peerNetwork');
+    stackType = registerOutput<String?>('stackType');
+    state = registerOutput<String>('state');
+    stateDetails = registerOutput<String>('stateDetails');
+    updateStrategy = registerOutput<String?>('updateStrategy');
   }
 
   /// Gets an existing [NetworkPeering] resource's state with the given [name] and [id].
@@ -294,21 +308,25 @@ class NetworkPeering extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkPeering:NetworkPeering',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
-    this.exportSubnetRoutesWithPublicIp = registerOutput<bool?>('exportSubnetRoutesWithPublicIp');
-    this.importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
-    this.importSubnetRoutesWithPublicIp = registerOutput<bool?>('importSubnetRoutesWithPublicIp');
+         'gcp:compute/networkPeering:NetworkPeering',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
+    exportSubnetRoutesWithPublicIp = registerOutput<bool?>(
+      'exportSubnetRoutesWithPublicIp',
+    );
+    importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
+    importSubnetRoutesWithPublicIp = registerOutput<bool?>(
+      'importSubnetRoutesWithPublicIp',
+    );
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.peerNetwork = registerOutput<String>('peerNetwork');
-    this.stackType = registerOutput<String?>('stackType');
+    network = registerOutput<String>('network');
+    peerNetwork = registerOutput<String>('peerNetwork');
+    stackType = registerOutput<String?>('stackType');
     this.state = registerOutput<String>('state');
-    this.stateDetails = registerOutput<String>('stateDetails');
-    this.updateStrategy = registerOutput<String?>('updateStrategy');
+    stateDetails = registerOutput<String>('stateDetails');
+    updateStrategy = registerOutput<String?>('updateStrategy');
   }
 }

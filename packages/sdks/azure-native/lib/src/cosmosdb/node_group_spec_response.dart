@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeGroupSpecResponse {
   /// The disk storage size for the node group in GB. Example values: 128, 256, 512, 1024.
   final pulumi.Input<double>? diskSizeGB;
+
   /// Whether high availability is enabled on the node group.
   final pulumi.Input<bool>? enableHa;
+
   /// The node type deployed in the node group.
   final pulumi.Input<String>? kind;
+
   /// The number of nodes in the node group.
   final pulumi.Input<int>? nodeCount;
+
   /// The resource sku for the node group. This defines the size of CPU and memory that is provisioned for each node. Example values: 'M30', 'M40'.
   final pulumi.Input<String>? sku;
 
@@ -41,12 +45,31 @@ class NodeGroupSpecResponse {
 
   factory NodeGroupSpecResponse.fromMap(Map<String, dynamic> map) {
     return NodeGroupSpecResponse(
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as double).input(),
-      enableHa: map['enableHa'] == null ? null : (map['enableHa']! as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      diskSizeGB: (() {
+        final guardedValue = map['diskSizeGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      enableHa: (() {
+        final guardedValue = map['enableHa'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

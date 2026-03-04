@@ -10,14 +10,19 @@ import 'creator_properties.dart';
 class CreatorArgs {
   /// The name of the Maps Account.
   final pulumi.Input<String> accountName;
+
   /// The name of the Maps Creator instance.
   final pulumi.Input<String>? creatorName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The Creator resource properties.
   final pulumi.Input<CreatorProperties> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,7 +47,11 @@ class CreatorArgs {
       'accountName': accountName,
       'creatorName': ?creatorName,
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<CreatorProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<CreatorProperties, Map<String, dynamic>>(
+            properties,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -50,13 +59,32 @@ class CreatorArgs {
 
   factory CreatorArgs.fromMap(Map<String, dynamic> map) {
     return CreatorArgs(
-      accountName: (map['accountName'] as String).input(),
-      creatorName: map['creatorName'] == null ? null : (map['creatorName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (CreatorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      creatorName: (() {
+        final guardedValue = map['creatorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        CreatorProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

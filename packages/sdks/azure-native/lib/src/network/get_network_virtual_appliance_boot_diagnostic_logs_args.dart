@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkVirtualApplianceBootDiagnosticLogsArgs {
   /// Specifies the sas-url to the storage blob into which console screen shot for the requested instance will be written
   final pulumi.Input<String>? consoleScreenshotStorageSasUrl;
+
   /// The network virtual appliance instance id for which boot diagnostic logs is being requested
   final pulumi.Input<int>? instanceId;
+
   /// The name of Network Virtual Appliance.
   final pulumi.Input<String> networkVirtualApplianceName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the sas-url to the storage blob into which serial console logs for the requested instance will be written
   final pulumi.Input<String>? serialConsoleStorageSasUrl;
 
@@ -42,14 +46,31 @@ class GetNetworkVirtualApplianceBootDiagnosticLogsArgs {
     };
   }
 
-  factory GetNetworkVirtualApplianceBootDiagnosticLogsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkVirtualApplianceBootDiagnosticLogsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkVirtualApplianceBootDiagnosticLogsArgs(
-      consoleScreenshotStorageSasUrl: map['consoleScreenshotStorageSasUrl'] == null ? null : (map['consoleScreenshotStorageSasUrl']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as int).input(),
-      networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serialConsoleStorageSasUrl: map['serialConsoleStorageSasUrl'] == null ? null : (map['serialConsoleStorageSasUrl']! as String).input(),
+      consoleScreenshotStorageSasUrl: (() {
+        final guardedValue = map['consoleScreenshotStorageSasUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkVirtualApplianceName: pulumi.Input.fromValue(
+        map['networkVirtualApplianceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serialConsoleStorageSasUrl: (() {
+        final guardedValue = map['serialConsoleStorageSasUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

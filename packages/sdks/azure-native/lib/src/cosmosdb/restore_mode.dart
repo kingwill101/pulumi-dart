@@ -2,16 +2,15 @@
 enum RestoreMode {
   valuePointInTime("PointInTime");
 
-  const RestoreMode(this.value);
-  final String value;
+  const RestoreMode(this.wireValue);
+  final String wireValue;
 
   static RestoreMode fromValue(String value) {
     for (final item in RestoreMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RestoreMode value: $value');
   }
 }
-

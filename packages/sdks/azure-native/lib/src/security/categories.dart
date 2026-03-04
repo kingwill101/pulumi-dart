@@ -6,16 +6,15 @@ enum Categories {
   valueIdentityAndAccess("IdentityAndAccess"),
   valueIoT("IoT");
 
-  const Categories(this.value);
-  final String value;
+  const Categories(this.wireValue);
+  final String wireValue;
 
   static Categories fromValue(String value) {
     for (final item in Categories.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Categories value: $value');
   }
 }
-

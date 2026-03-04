@@ -1,5 +1,3 @@
-library module_standbypool;
-
 export 'standbypool/container_group_profile.dart';
 export 'standbypool/container_group_profile_response.dart';
 export 'standbypool/container_group_properties.dart';

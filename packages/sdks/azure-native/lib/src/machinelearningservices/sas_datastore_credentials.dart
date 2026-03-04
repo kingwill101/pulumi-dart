@@ -8,6 +8,7 @@ class SasDatastoreCredentials {
   /// Enum to determine the datastore credentials type.
   /// Expected value is 'Sas'.
   final pulumi.Input<String> credentialsType;
+
   /// [Required] Storage container secrets.
   final pulumi.Input<SasDatastoreSecrets> secrets;
 
@@ -22,15 +23,22 @@ class SasDatastoreCredentials {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'credentialsType': credentialsType,
-      'secrets': pulumi.Input.mapInputValue<SasDatastoreSecrets, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets':
+          pulumi.Input.mapInputValue<SasDatastoreSecrets, Map<String, dynamic>>(
+            secrets,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory SasDatastoreCredentials.fromMap(Map<String, dynamic> map) {
     return SasDatastoreCredentials(
-      credentialsType: (map['credentialsType'] as String).input(),
-      secrets: (SasDatastoreSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
+      credentialsType: pulumi.Input.fromValue(map['credentialsType'] as String),
+      secrets: pulumi.Input.fromValue(
+        SasDatastoreSecrets.fromMap(
+          (map['secrets']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

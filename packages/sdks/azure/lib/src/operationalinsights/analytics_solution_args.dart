@@ -10,16 +10,22 @@ import 'analytics_solution_plan.dart';
 class AnalyticsSolutionArgs {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// A `plan` block as documented below.
   final pulumi.Input<AnalyticsSolutionPlan> plan;
+
   /// The name of the resource group in which the Log Analytics solution is created. Changing this forces a new resource to be created. Note: The solution and its related workspace can only exist in the same resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the name of the solution to be deployed. See [here for options](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions).Changing this forces a new resource to be created.
   final pulumi.Input<String> solutionName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The full name of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
   final pulumi.Input<String> workspaceName;
+
   /// The full resource ID of the Log Analytics workspace with which the solution will be linked. Changing this forces a new resource to be created.
   final pulumi.Input<String> workspaceResourceId;
 
@@ -44,7 +50,11 @@ class AnalyticsSolutionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'plan': pulumi.Input.mapInputValue<AnalyticsSolutionPlan, Map<String, dynamic>>(plan, (value) => value.toMap()),
+      'plan':
+          pulumi.Input.mapInputValue<
+            AnalyticsSolutionPlan,
+            Map<String, dynamic>
+          >(plan, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'solutionName': solutionName,
       'tags': ?tags,
@@ -55,14 +65,31 @@ class AnalyticsSolutionArgs {
 
   factory AnalyticsSolutionArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsSolutionArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      plan: (AnalyticsSolutionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      solutionName: (map['solutionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
-      workspaceResourceId: (map['workspaceResourceId'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      plan: pulumi.Input.fromValue(
+        AnalyticsSolutionPlan.fromMap(
+          (map['plan']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      solutionName: pulumi.Input.fromValue(map['solutionName'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
+      workspaceResourceId: pulumi.Input.fromValue(
+        map['workspaceResourceId'] as String,
+      ),
     );
   }
 }
-

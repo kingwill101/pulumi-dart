@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersSnowflake {
   /// The database to which to connect.
   final pulumi.Input<String> database;
+
   /// The host to which to connect.
   final pulumi.Input<String> host;
+
   /// The warehouse to which to connect.
   final pulumi.Input<String> warehouse;
 
@@ -30,10 +32,9 @@ class DataSourceParametersSnowflake {
 
   factory DataSourceParametersSnowflake.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersSnowflake(
-      database: (map['database'] as String).input(),
-      host: (map['host'] as String).input(),
-      warehouse: (map['warehouse'] as String).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      warehouse: pulumi.Input.fromValue(map['warehouse'] as String),
     );
   }
 }
-

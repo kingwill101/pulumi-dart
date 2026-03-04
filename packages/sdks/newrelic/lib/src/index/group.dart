@@ -607,7 +607,7 @@ import 'group_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE** Please note that the addition of users to groups is only possible when both the group and the users to be added to it belong to the _same authentication domain_. If the group being created and the users being added to it belong to different authentication domains, an error indicating `user not found` or an equivalent error will be thrown.
+/// &gt; **NOTE** Please note that the addition of users to groups is only possible when both the group and the users to be added to it belong to the _same authentication domain_. If the group being created and the users being added to it belong to different authentication domains, an error indicating `user not found` or an equivalent error will be thrown.
 ///
 /// ## Import
 ///
@@ -619,40 +619,35 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// The ID of the authentication domain to which the group to be created would belong.
   late final pulumi.Output<String> authenticationDomainId;
+
   /// The name of the group to be created.
   late final pulumi.Output<String> name;
+
   /// A list of IDs of users to be included in the group to be created.
   ///
-  /// > **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
+  /// &gt; **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
   ///
-  /// > **WARNING:** Changing the `authentication_domain_id` of a `newrelic.Group` resource that has already been applied would result in a **replacement** of the resource – destruction of the existing resource, followed by the addition of a new resource with the specified configuration. This is due to the fact that updating the `authentication_domain_id` of an existing group is not supported.
+  /// &gt; **WARNING:** Changing the `authentication_domain_id` of a `newrelic.Group` resource that has already been applied would result in a **replacement** of the resource – destruction of the existing resource, followed by the addition of a new resource with the specified configuration. This is due to the fact that updating the `authentication_domain_id` of an existing group is not supported.
   late final pulumi.Output<List<String>?> userIds;
 
   /// Creates a new [Group].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_index_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(
-    String name, {
-    GroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'newrelic:index/group:Group',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationDomainId = registerOutput<String>('authenticationDomainId');
+  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'newrelic:index/group:Group',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authenticationDomainId = registerOutput<String>('authenticationDomainId');
     this.name = registerOutput<String>('name');
-    this.userIds = registerOutput<List<String>?>('userIds');
+    userIds = registerOutput<List<String>?>('userIds');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(
-    String name,
-    pulumi.Input<String> id, {
-    GroupState? state,
-  }) {
+  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -665,13 +660,13 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/group:Group',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationDomainId = registerOutput<String>('authenticationDomainId');
+         'newrelic:index/group:Group',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationDomainId = registerOutput<String>('authenticationDomainId');
     this.name = registerOutput<String>('name');
-    this.userIds = registerOutput<List<String>?>('userIds');
+    userIds = registerOutput<List<String>?>('userIds');
   }
 }

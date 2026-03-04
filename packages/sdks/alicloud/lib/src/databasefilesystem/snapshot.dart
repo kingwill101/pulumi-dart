@@ -6,7 +6,7 @@ import 'snapshot_state.dart';
 ///
 /// For information about Database File System (DBFS) Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-createsnapshot).
 ///
-/// > **NOTE:** Available since v1.156.0.
+/// &gt; **NOTE:** Available since v1.156.0.
 ///
 /// ## Example Usage
 ///
@@ -169,14 +169,19 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether to force delete the snapshot. Valid values:
   late final pulumi.Output<bool?> force;
+
   /// The ID of the Database File System.
   late final pulumi.Output<String> instanceId;
+
   /// The retention period of the snapshot. Valid values: `1` to `65536`.
   late final pulumi.Output<int?> retentionDays;
+
   /// The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
   late final pulumi.Output<String?> snapshotName;
+
   /// The status of the Snapshot.
   late final pulumi.Output<String> status;
 
@@ -189,17 +194,17 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.force = registerOutput<bool?>('force');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.snapshotName = registerOutput<String?>('snapshotName');
-    this.status = registerOutput<String>('status');
+         'alicloud:databasefilesystem/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    force = registerOutput<bool?>('force');
+    instanceId = registerOutput<String>('instanceId');
+    retentionDays = registerOutput<int?>('retentionDays');
+    snapshotName = registerOutput<String?>('snapshotName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -220,16 +225,16 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.force = registerOutput<bool?>('force');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.snapshotName = registerOutput<String?>('snapshotName');
-    this.status = registerOutput<String>('status');
+         'alicloud:databasefilesystem/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    force = registerOutput<bool?>('force');
+    instanceId = registerOutput<String>('instanceId');
+    retentionDays = registerOutput<int?>('retentionDays');
+    snapshotName = registerOutput<String?>('snapshotName');
+    status = registerOutput<String>('status');
   }
 }

@@ -8,34 +8,49 @@ import 'volume_backups_response.dart';
 class GetBackupPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Backup Policy GUID ID
   final String backupPolicyId;
+
   /// Daily backups count to keep
   final int? dailyBackupsToKeep;
+
   /// The property to decide policy is enabled or not
   final bool? enabled;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Monthly backups count to keep
   final int? monthlyBackupsToKeep;
+
   /// The name of the resource
   final String name;
+
   /// Azure lifecycle management
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// A list of volumes assigned to this policy
   final List<VolumeBackupsResponse> volumeBackups;
+
   /// Volumes using current backup policy
   final int volumesAssigned;
+
   /// Weekly backups count to keep
   final int? weeklyBackupsToKeep;
 
@@ -90,7 +105,11 @@ class GetBackupPolicyResult {
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'volumeBackups': pulumi.Input.encodeList<VolumeBackupsResponse, Map<String, dynamic>>(volumeBackups, (value) => value.toMap()),
+      'volumeBackups':
+          pulumi.Input.encodeList<VolumeBackupsResponse, Map<String, dynamic>>(
+            volumeBackups,
+            (value) => value.toMap(),
+          ),
       'volumesAssigned': volumesAssigned,
       'weeklyBackupsToKeep': ?weeklyBackupsToKeep,
     };
@@ -100,21 +119,47 @@ class GetBackupPolicyResult {
     return GetBackupPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       backupPolicyId: map['backupPolicyId'] as String,
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : map['dailyBackupsToKeep']! as int,
-      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
+      dailyBackupsToKeep: (() {
+        final guardedValue = map['dailyBackupsToKeep'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : map['monthlyBackupsToKeep']! as int,
+      monthlyBackupsToKeep: (() {
+        final guardedValue = map['monthlyBackupsToKeep'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      volumeBackups: pulumi.Input.decodeList<VolumeBackupsResponse>(map['volumeBackups'], (value) => VolumeBackupsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      volumeBackups: pulumi.Input.decodeList<VolumeBackupsResponse>(
+        map['volumeBackups']!,
+        (value) => VolumeBackupsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       volumesAssigned: map['volumesAssigned'] as int,
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : map['weeklyBackupsToKeep']! as int,
+      weeklyBackupsToKeep: (() {
+        final guardedValue = map['weeklyBackupsToKeep'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceManagerMemberArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
   final pulumi.Input<String> targetWorkspaceResourceId;
+
   /// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
   final pulumi.Input<String> targetWorkspaceTenantId;
+
   /// The name of the workspace manager member
   final pulumi.Input<String>? workspaceManagerMemberName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -44,12 +48,21 @@ class WorkspaceManagerMemberArgs {
 
   factory WorkspaceManagerMemberArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerMemberArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetWorkspaceResourceId: (map['targetWorkspaceResourceId'] as String).input(),
-      targetWorkspaceTenantId: (map['targetWorkspaceTenantId'] as String).input(),
-      workspaceManagerMemberName: map['workspaceManagerMemberName'] == null ? null : (map['workspaceManagerMemberName']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      targetWorkspaceResourceId: pulumi.Input.fromValue(
+        map['targetWorkspaceResourceId'] as String,
+      ),
+      targetWorkspaceTenantId: pulumi.Input.fromValue(
+        map['targetWorkspaceTenantId'] as String,
+      ),
+      workspaceManagerMemberName: (() {
+        final guardedValue = map['workspaceManagerMemberName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCatalogTableStorageDescriptorSortColumn {
   /// Name of the column.
   final pulumi.Input<String> column;
+
   /// Whether the column is sorted in ascending (`1`) or descending order (`0`).
   final pulumi.Input<int> sortOrder;
 
@@ -17,17 +18,15 @@ class GetCatalogTableStorageDescriptorSortColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'column': column,
-      'sortOrder': sortOrder,
-    };
+    return <String, dynamic>{'column': column, 'sortOrder': sortOrder};
   }
 
-  factory GetCatalogTableStorageDescriptorSortColumn.fromMap(Map<String, dynamic> map) {
+  factory GetCatalogTableStorageDescriptorSortColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCatalogTableStorageDescriptorSortColumn(
-      column: (map['column'] as String).input(),
-      sortOrder: (map['sortOrder'] as int).input(),
+      column: pulumi.Input.fromValue(map['column'] as String),
+      sortOrder: pulumi.Input.fromValue(map['sortOrder'] as int),
     );
   }
 }
-

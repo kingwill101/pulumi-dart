@@ -10,20 +10,38 @@ class SharedPublicIpAddressConfiguration {
 
   /// Creates a new [SharedPublicIpAddressConfiguration].
   /// [inboundNatRules] The incoming NAT rules
-  SharedPublicIpAddressConfiguration({
-    this.inboundNatRules,
-  });
+  SharedPublicIpAddressConfiguration({this.inboundNatRules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inboundNatRules': ?pulumi.Input.mapOptionalInputValue<List<InboundNatRule>, List<Map<String, dynamic>>>(inboundNatRules, (value) => pulumi.Input.encodeList<InboundNatRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inboundNatRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InboundNatRule>,
+            List<Map<String, dynamic>>
+          >(
+            inboundNatRules,
+            (value) =>
+                pulumi.Input.encodeList<InboundNatRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory SharedPublicIpAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return SharedPublicIpAddressConfiguration(
-      inboundNatRules: map['inboundNatRules'] == null ? null : (pulumi.Input.decodeList<InboundNatRule>(map['inboundNatRules']!, (value) => InboundNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundNatRules: (() {
+        final guardedValue = map['inboundNatRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InboundNatRule>(
+            guardedValue,
+            (value) =>
+                InboundNatRule.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

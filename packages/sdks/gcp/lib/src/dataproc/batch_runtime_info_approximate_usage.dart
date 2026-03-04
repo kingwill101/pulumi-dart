@@ -6,12 +6,15 @@ class BatchRuntimeInfoApproximateUsage {
   /// (Output)
   /// Accelerator type being used, if any.
   final pulumi.Input<String>? acceleratorType;
+
   /// (Output)
   /// Accelerator usage in (milliAccelerator x seconds)
   final pulumi.Input<String>? milliAcceleratorSeconds;
+
   /// (Output)
   /// DCU (Dataproc Compute Units) usage in (milliDCU x seconds)
   final pulumi.Input<String>? milliDcuSeconds;
+
   /// (Output)
   /// Shuffle storage usage in (GB x seconds)
   final pulumi.Input<String>? shuffleStorageGbSeconds;
@@ -39,11 +42,26 @@ class BatchRuntimeInfoApproximateUsage {
 
   factory BatchRuntimeInfoApproximateUsage.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeInfoApproximateUsage(
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
-      milliAcceleratorSeconds: map['milliAcceleratorSeconds'] == null ? null : (map['milliAcceleratorSeconds']! as String).input(),
-      milliDcuSeconds: map['milliDcuSeconds'] == null ? null : (map['milliDcuSeconds']! as String).input(),
-      shuffleStorageGbSeconds: map['shuffleStorageGbSeconds'] == null ? null : (map['shuffleStorageGbSeconds']! as String).input(),
+      acceleratorType: (() {
+        final guardedValue = map['acceleratorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      milliAcceleratorSeconds: (() {
+        final guardedValue = map['milliAcceleratorSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      milliDcuSeconds: (() {
+        final guardedValue = map['milliDcuSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shuffleStorageGbSeconds: (() {
+        final guardedValue = map['shuffleStorageGbSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

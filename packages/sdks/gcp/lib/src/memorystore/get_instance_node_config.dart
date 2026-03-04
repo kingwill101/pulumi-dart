@@ -8,20 +8,15 @@ class GetInstanceNodeConfig {
 
   /// Creates a new [GetInstanceNodeConfig].
   /// [sizeGb] Output only. Memory size in GB of the node.
-  GetInstanceNodeConfig({
-    required this.sizeGb,
-  });
+  GetInstanceNodeConfig({required this.sizeGb});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sizeGb': sizeGb,
-    };
+    return <String, dynamic>{'sizeGb': sizeGb};
   }
 
   factory GetInstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceNodeConfig(
-      sizeGb: (map['sizeGb'] as double).input(),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as double),
     );
   }
 }
-

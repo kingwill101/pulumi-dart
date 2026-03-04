@@ -253,10 +253,14 @@ import 'indexing_configuration_thing_indexing_configuration.dart';
 class IndexingConfiguration extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Thing group indexing configuration. See below.
-  late final pulumi.Output<IndexingConfigurationThingGroupIndexingConfiguration> thingGroupIndexingConfiguration;
+  late final pulumi.Output<IndexingConfigurationThingGroupIndexingConfiguration>
+  thingGroupIndexingConfiguration;
+
   /// Thing indexing configuration. See below.
-  late final pulumi.Output<IndexingConfigurationThingIndexingConfiguration> thingIndexingConfiguration;
+  late final pulumi.Output<IndexingConfigurationThingIndexingConfiguration>
+  thingIndexingConfiguration;
 
   /// Creates a new [IndexingConfiguration].
   /// [name] The Pulumi resource name.
@@ -267,14 +271,20 @@ class IndexingConfiguration extends pulumi.CustomResource {
     IndexingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iot/indexingConfiguration:IndexingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.thingGroupIndexingConfiguration = registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>('thingGroupIndexingConfiguration');
-    this.thingIndexingConfiguration = registerOutput<IndexingConfigurationThingIndexingConfiguration>('thingIndexingConfiguration');
+         'aws:iot/indexingConfiguration:IndexingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    thingGroupIndexingConfiguration =
+        registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>(
+          'thingGroupIndexingConfiguration',
+        );
+    thingIndexingConfiguration =
+        registerOutput<IndexingConfigurationThingIndexingConfiguration>(
+          'thingIndexingConfiguration',
+        );
   }
 
   /// Gets an existing [IndexingConfiguration] resource's state with the given [name] and [id].
@@ -295,13 +305,19 @@ class IndexingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iot/indexingConfiguration:IndexingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.thingGroupIndexingConfiguration = registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>('thingGroupIndexingConfiguration');
-    this.thingIndexingConfiguration = registerOutput<IndexingConfigurationThingIndexingConfiguration>('thingIndexingConfiguration');
+         'aws:iot/indexingConfiguration:IndexingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    thingGroupIndexingConfiguration =
+        registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>(
+          'thingGroupIndexingConfiguration',
+        );
+    thingIndexingConfiguration =
+        registerOutput<IndexingConfigurationThingIndexingConfiguration>(
+          'thingIndexingConfiguration',
+        );
   }
 }

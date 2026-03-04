@@ -5,16 +5,22 @@ enum GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1 {
   default_("DEFAULT"),
   latest("LATEST");
 
-  const GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1(this.value);
-  final String value;
+  const GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1 fromValue(String value) {
-    for (final item in GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1.values) {
-      if (item.value == value) {
+  static GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1 value: $value',
+    );
   }
 }
-

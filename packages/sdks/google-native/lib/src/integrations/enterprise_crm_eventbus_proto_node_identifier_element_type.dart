@@ -4,16 +4,20 @@ enum EnterpriseCrmEventbusProtoNodeIdentifierElementType {
   taskConfig("TASK_CONFIG"),
   triggerConfig("TRIGGER_CONFIG");
 
-  const EnterpriseCrmEventbusProtoNodeIdentifierElementType(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoNodeIdentifierElementType(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoNodeIdentifierElementType fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoNodeIdentifierElementType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoNodeIdentifierElementType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoNodeIdentifierElementType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoNodeIdentifierElementType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoNodeIdentifierElementType value: $value',
+    );
   }
 }
-

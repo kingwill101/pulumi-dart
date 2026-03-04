@@ -685,7 +685,7 @@ import 'volume_quota_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -700,18 +700,23 @@ import 'volume_quota_rule_state.dart';
 class VolumeQuotaRule extends pulumi.CustomResource {
   /// The Azure Region where the Volume Quota Rule should exist. Changing this forces a new Volume Quota Rule to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Volume Quota Rule. Changing this forces a new Volume Quota Rule to be created.
   late final pulumi.Output<String> name;
+
   /// Quota size in kibibytes.
   late final pulumi.Output<int> quotaSizeInKib;
+
   /// Quota Target. This can be Unix UID/GID for NFSv3/NFSv4.1 volumes and Windows User SID for CIFS based volumes. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `quota_target ` must be used when `quota_type` is `IndividualGroupQuota` or `IndividualUserQuota`
+  /// &gt; **Note:** `quota_target ` must be used when `quota_type` is `IndividualGroupQuota` or `IndividualUserQuota`
   ///
-  /// > **Note:** more information about this resource can be found at [Understand default and individual user and group quotas](https://learn.microsoft.com/en-us/azure/azure-netapp-files/default-individual-user-group-quotas-introduction)
+  /// &gt; **Note:** more information about this resource can be found at [Understand default and individual user and group quotas](https://learn.microsoft.com/en-us/azure/azure-netapp-files/default-individual-user-group-quotas-introduction)
   late final pulumi.Output<String?> quotaTarget;
+
   /// Quota type. Possible values are `DefaultGroupQuota`, `DefaultUserQuota`, `IndividualGroupQuota` and `IndividualUserQuota`. Please note that `IndividualGroupQuota` and `DefaultGroupQuota` are not applicable to SMB and dual-protocol volumes. Changing this forces a new resource to be created.
   late final pulumi.Output<String> quotaType;
+
   /// The NetApp volume ID where the Volume Quota Rule is assigned to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> volumeId;
 
@@ -724,17 +729,17 @@ class VolumeQuotaRule extends pulumi.CustomResource {
     VolumeQuotaRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/volumeQuotaRule:VolumeQuotaRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:netapp/volumeQuotaRule:VolumeQuotaRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.quotaSizeInKib = registerOutput<int>('quotaSizeInKib');
-    this.quotaTarget = registerOutput<String?>('quotaTarget');
-    this.quotaType = registerOutput<String>('quotaType');
-    this.volumeId = registerOutput<String>('volumeId');
+    quotaSizeInKib = registerOutput<int>('quotaSizeInKib');
+    quotaTarget = registerOutput<String?>('quotaTarget');
+    quotaType = registerOutput<String>('quotaType');
+    volumeId = registerOutput<String>('volumeId');
   }
 
   /// Gets an existing [VolumeQuotaRule] resource's state with the given [name] and [id].
@@ -755,16 +760,16 @@ class VolumeQuotaRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/volumeQuotaRule:VolumeQuotaRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:netapp/volumeQuotaRule:VolumeQuotaRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.quotaSizeInKib = registerOutput<int>('quotaSizeInKib');
-    this.quotaTarget = registerOutput<String?>('quotaTarget');
-    this.quotaType = registerOutput<String>('quotaType');
-    this.volumeId = registerOutput<String>('volumeId');
+    quotaSizeInKib = registerOutput<int>('quotaSizeInKib');
+    quotaTarget = registerOutput<String?>('quotaTarget');
+    quotaType = registerOutput<String>('quotaType');
+    volumeId = registerOutput<String>('volumeId');
   }
 }

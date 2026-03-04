@@ -18,75 +18,129 @@ import 'get_gradientai_agents_by_openai_api_key_agent_template.dart';
 
 class GetGradientaiAgentsByOpenaiApiKeyAgent {
   /// AgentGuardrail represents a Guardrail attached to Gen AI Agent
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail>>? agentGuardrails;
+  final pulumi.Input<
+    List<GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail>
+  >?
+  agentGuardrails;
+
   /// ID of the Agent to retrieve
   final pulumi.Input<String> agentId;
+
   /// Anthropic API Key information
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey>>? anthropicApiKeys;
+  final pulumi.Input<
+    List<GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey>
+  >?
+  anthropicApiKeys;
+
   /// List of API Key Infos
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo>>? apiKeyInfos;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo>>?
+  apiKeyInfos;
+
   /// List of API Keys
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKey>>? apiKeys;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKey>>?
+  apiKeys;
+
   /// List of Chatbot Identifiers
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier>>? chatbotIdentifiers;
+  final pulumi.Input<
+    List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier>
+  >?
+  chatbotIdentifiers;
+
   /// ChatBot configuration
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbot>>? chatbots;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbot>>?
+  chatbots;
+
   /// List of child agents
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent>> childAgents;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent>>
+  childAgents;
+
   /// Timestamp when the Agent was created
   final pulumi.Input<String> createdAt;
+
   /// List of API Key Infos
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentDeployment>>? deployments;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentDeployment>>?
+  deployments;
+
   /// Description for the Agent
   final pulumi.Input<String>? description;
+
   /// List of API Key Infos
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentFunction>>? functions;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentFunction>>?
+  functions;
+
   /// If case condition
   final pulumi.Input<String>? ifCase;
+
   /// Instruction for the Agent
   final pulumi.Input<String> instruction;
+
   /// K value
   final pulumi.Input<int>? k;
+
   /// List of Knowledge Bases
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase>>? knowledgeBases;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase>>?
+  knowledgeBases;
+
   /// Maximum tokens allowed
   final pulumi.Input<int>? maxTokens;
+
   /// Model UUID of the Agent
   final pulumi.Input<String> modelUuid;
+
   /// Model of the Agent
   final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentModel>> models;
+
   /// Name of the Agent
   final pulumi.Input<String> name;
+
   /// OpenAI API Key information
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey>>? openAiApiKeys;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey>>?
+  openAiApiKeys;
+
   /// List of parent agents
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent>> parentAgents;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent>>
+  parentAgents;
+
   /// Project ID of the Agent
   final pulumi.Input<String> projectId;
+
   /// Region where the Agent is deployed
   final pulumi.Input<String> region;
+
   /// Retrieval method used
   final pulumi.Input<String>? retrievalMethod;
+
   /// Timestamp when the route was created
   final pulumi.Input<String> routeCreatedAt;
+
   /// User who created the route
   final pulumi.Input<String>? routeCreatedBy;
+
   /// Route name
   final pulumi.Input<String>? routeName;
+
   /// Route UUID
   final pulumi.Input<String>? routeUuid;
+
   /// List of Tags
   final pulumi.Input<List<String>>? tags;
+
   /// Agent temperature setting
   final pulumi.Input<double>? temperature;
+
   /// Agent Template
-  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplate>>? templates;
+  final pulumi.Input<List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplate>>?
+  templates;
+
   /// Top P sampling parameter
   final pulumi.Input<double>? topP;
+
   /// Timestamp when the Agent was updated
   final pulumi.Input<String> updatedAt;
+
   /// URL for the Agent
   final pulumi.Input<String>? url;
+
   /// User ID linked with the Agent
   final pulumi.Input<String>? userId;
 
@@ -168,28 +222,171 @@ class GetGradientaiAgentsByOpenaiApiKeyAgent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentGuardrails': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail>, List<Map<String, dynamic>>>(agentGuardrails, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'agentGuardrails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail>,
+            List<Map<String, dynamic>>
+          >(
+            agentGuardrails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'agentId': agentId,
-      'anthropicApiKeys': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey>, List<Map<String, dynamic>>>(anthropicApiKeys, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'apiKeyInfos': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo>, List<Map<String, dynamic>>>(apiKeyInfos, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'apiKeys': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKey>, List<Map<String, dynamic>>>(apiKeys, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentApiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'chatbotIdentifiers': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier>, List<Map<String, dynamic>>>(chatbotIdentifiers, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'chatbots': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbot>, List<Map<String, dynamic>>>(chatbots, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChatbot, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'childAgents': pulumi.Input.mapInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent>, List<Map<String, dynamic>>>(childAgents, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'anthropicApiKeys':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey>,
+            List<Map<String, dynamic>>
+          >(
+            anthropicApiKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'apiKeyInfos':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo>,
+            List<Map<String, dynamic>>
+          >(
+            apiKeyInfos,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'apiKeys':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentApiKey>,
+            List<Map<String, dynamic>>
+          >(
+            apiKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentApiKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'chatbotIdentifiers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier>,
+            List<Map<String, dynamic>>
+          >(
+            chatbotIdentifiers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'chatbots':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentChatbot>,
+            List<Map<String, dynamic>>
+          >(
+            chatbots,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentChatbot,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'childAgents':
+          pulumi.Input.mapInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent>,
+            List<Map<String, dynamic>>
+          >(
+            childAgents,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'createdAt': createdAt,
-      'deployments': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentDeployment>, List<Map<String, dynamic>>>(deployments, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentDeployment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deployments':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentDeployment>,
+            List<Map<String, dynamic>>
+          >(
+            deployments,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentDeployment,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
-      'functions': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentFunction>, List<Map<String, dynamic>>>(functions, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentFunction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'functions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentFunction>,
+            List<Map<String, dynamic>>
+          >(
+            functions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentFunction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ifCase': ?ifCase,
       'instruction': instruction,
       'k': ?k,
-      'knowledgeBases': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase>, List<Map<String, dynamic>>>(knowledgeBases, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'knowledgeBases':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase>,
+            List<Map<String, dynamic>>
+          >(
+            knowledgeBases,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'maxTokens': ?maxTokens,
       'modelUuid': modelUuid,
-      'models': pulumi.Input.mapInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentModel>, List<Map<String, dynamic>>>(models, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentModel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'models':
+          pulumi.Input.mapInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentModel>,
+            List<Map<String, dynamic>>
+          >(
+            models,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentModel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
-      'openAiApiKeys': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey>, List<Map<String, dynamic>>>(openAiApiKeys, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'parentAgents': pulumi.Input.mapInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent>, List<Map<String, dynamic>>>(parentAgents, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'openAiApiKeys':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey>,
+            List<Map<String, dynamic>>
+          >(
+            openAiApiKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'parentAgents':
+          pulumi.Input.mapInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent>,
+            List<Map<String, dynamic>>
+          >(
+            parentAgents,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'projectId': projectId,
       'region': region,
       'retrievalMethod': ?retrievalMethod,
@@ -199,7 +396,18 @@ class GetGradientaiAgentsByOpenaiApiKeyAgent {
       'routeUuid': ?routeUuid,
       'tags': ?tags,
       'temperature': ?temperature,
-      'templates': ?pulumi.Input.mapOptionalInputValue<List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplate>, List<Map<String, dynamic>>>(templates, (value) => pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgentTemplate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'templates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGradientaiAgentsByOpenaiApiKeyAgentTemplate>,
+            List<Map<String, dynamic>>
+          >(
+            templates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGradientaiAgentsByOpenaiApiKeyAgentTemplate,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'topP': ?topP,
       'updatedAt': updatedAt,
       'url': ?url,
@@ -207,45 +415,265 @@ class GetGradientaiAgentsByOpenaiApiKeyAgent {
     };
   }
 
-  factory GetGradientaiAgentsByOpenaiApiKeyAgent.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiAgentsByOpenaiApiKeyAgent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiAgentsByOpenaiApiKeyAgent(
-      agentGuardrails: map['agentGuardrails'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail>(map['agentGuardrails']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      agentId: (map['agentId'] as String).input(),
-      anthropicApiKeys: map['anthropicApiKeys'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey>(map['anthropicApiKeys']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiKeyInfos: map['apiKeyInfos'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo>(map['apiKeyInfos']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiKeys: map['apiKeys'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentApiKey>(map['apiKeys']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentApiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      chatbotIdentifiers: map['chatbotIdentifiers'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier>(map['chatbotIdentifiers']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      chatbots: map['chatbots'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChatbot>(map['chatbots']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentChatbot.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      childAgents: (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent>(map['childAgents'], (value) => GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      deployments: map['deployments'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentDeployment>(map['deployments']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentDeployment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      functions: map['functions'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentFunction>(map['functions']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ifCase: map['ifCase'] == null ? null : (map['ifCase']! as String).input(),
-      instruction: (map['instruction'] as String).input(),
-      k: map['k'] == null ? null : (map['k']! as int).input(),
-      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase>(map['knowledgeBases']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens']! as int).input(),
-      modelUuid: (map['modelUuid'] as String).input(),
-      models: (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentModel>(map['models'], (value) => GetGradientaiAgentsByOpenaiApiKeyAgentModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      openAiApiKeys: map['openAiApiKeys'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey>(map['openAiApiKeys']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parentAgents: (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent>(map['parentAgents'], (value) => GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projectId: (map['projectId'] as String).input(),
-      region: (map['region'] as String).input(),
-      retrievalMethod: map['retrievalMethod'] == null ? null : (map['retrievalMethod']! as String).input(),
-      routeCreatedAt: (map['routeCreatedAt'] as String).input(),
-      routeCreatedBy: map['routeCreatedBy'] == null ? null : (map['routeCreatedBy']! as String).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
-      routeUuid: map['routeUuid'] == null ? null : (map['routeUuid']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
-      templates: map['templates'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentTemplate>(map['templates']!, (value) => GetGradientaiAgentsByOpenaiApiKeyAgentTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      topP: map['topP'] == null ? null : (map['topP']! as double).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      agentGuardrails: (() {
+        final guardedValue = map['agentGuardrails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail
+          >(
+            guardedValue,
+            (value) =>
+                GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      anthropicApiKeys: (() {
+        final guardedValue = map['anthropicApiKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey
+          >(
+            guardedValue,
+            (value) =>
+                GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      apiKeyInfos: (() {
+        final guardedValue = map['apiKeyInfos'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo
+          >(
+            guardedValue,
+            (value) => GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      apiKeys: (() {
+        final guardedValue = map['apiKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentApiKey>(
+            guardedValue,
+            (value) => GetGradientaiAgentsByOpenaiApiKeyAgentApiKey.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      chatbotIdentifiers: (() {
+        final guardedValue = map['chatbotIdentifiers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier
+          >(
+            guardedValue,
+            (value) =>
+                GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      chatbots: (() {
+        final guardedValue = map['chatbots'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChatbot>(
+            guardedValue,
+            (value) => GetGradientaiAgentsByOpenaiApiKeyAgentChatbot.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      childAgents: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent>(
+          map['childAgents']!,
+          (value) => GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      deployments: (() {
+        final guardedValue = map['deployments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentDeployment
+          >(
+            guardedValue,
+            (value) => GetGradientaiAgentsByOpenaiApiKeyAgentDeployment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functions: (() {
+        final guardedValue = map['functions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentFunction>(
+            guardedValue,
+            (value) => GetGradientaiAgentsByOpenaiApiKeyAgentFunction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ifCase: (() {
+        final guardedValue = map['ifCase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instruction: pulumi.Input.fromValue(map['instruction'] as String),
+      k: (() {
+        final guardedValue = map['k'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      knowledgeBases: (() {
+        final guardedValue = map['knowledgeBases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase
+          >(
+            guardedValue,
+            (value) =>
+                GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      maxTokens: (() {
+        final guardedValue = map['maxTokens'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      modelUuid: pulumi.Input.fromValue(map['modelUuid'] as String),
+      models: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentModel>(
+          map['models']!,
+          (value) => GetGradientaiAgentsByOpenaiApiKeyAgentModel.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      openAiApiKeys: (() {
+        final guardedValue = map['openAiApiKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey
+          >(
+            guardedValue,
+            (value) =>
+                GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      parentAgents: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent
+        >(
+          map['parentAgents']!,
+          (value) => GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      retrievalMethod: (() {
+        final guardedValue = map['retrievalMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeCreatedAt: pulumi.Input.fromValue(map['routeCreatedAt'] as String),
+      routeCreatedBy: (() {
+        final guardedValue = map['routeCreatedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeName: (() {
+        final guardedValue = map['routeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeUuid: (() {
+        final guardedValue = map['routeUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      temperature: (() {
+        final guardedValue = map['temperature'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      templates: (() {
+        final guardedValue = map['templates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgentTemplate>(
+            guardedValue,
+            (value) => GetGradientaiAgentsByOpenaiApiKeyAgentTemplate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      topP: (() {
+        final guardedValue = map['topP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

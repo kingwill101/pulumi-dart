@@ -8,20 +8,15 @@ class GetOrganizationPolicyRestorePolicy {
 
   /// Creates a new [GetOrganizationPolicyRestorePolicy].
   /// [default_] May only be set to true. If set, then the default Policy is restored.
-  GetOrganizationPolicyRestorePolicy({
-    required this.default_,
-  });
+  GetOrganizationPolicyRestorePolicy({required this.default_});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'default': default_,
-    };
+    return <String, dynamic>{'default': default_};
   }
 
   factory GetOrganizationPolicyRestorePolicy.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPolicyRestorePolicy(
-      default_: (map['default'] as bool).input(),
+      default_: pulumi.Input.fromValue(map['default'] as bool),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum DataStoreContentConfig {
   contentRequired("CONTENT_REQUIRED"),
   publicWebsite("PUBLIC_WEBSITE");
 
-  const DataStoreContentConfig(this.value);
-  final String value;
+  const DataStoreContentConfig(this.wireValue);
+  final String wireValue;
 
   static DataStoreContentConfig fromValue(String value) {
     for (final item in DataStoreContentConfig.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataStoreContentConfig value: $value');
   }
 }
-

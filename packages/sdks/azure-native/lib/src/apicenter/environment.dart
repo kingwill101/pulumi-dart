@@ -223,22 +223,31 @@ import 'system_data_response.dart';
 class Environment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The custom metadata defined for API catalog entities.
   late final pulumi.Output<dynamic> customProperties;
+
   /// The environment description.
   late final pulumi.Output<String?> description;
+
   /// Environment kind.
   late final pulumi.Output<String> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Environment onboarding information
   late final pulumi.Output<OnboardingResponse?> onboarding;
+
   /// Server information of the environment.
   late final pulumi.Output<EnvironmentServerResponse?> server;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Environment title.
   late final pulumi.Output<String> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -251,20 +260,20 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apicenter:Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customProperties = registerOutput<dynamic>('customProperties');
-    this.description = registerOutput<String?>('description');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:apicenter:Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customProperties = registerOutput<dynamic>('customProperties');
+    description = registerOutput<String?>('description');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.onboarding = registerOutput<OnboardingResponse?>('onboarding');
-    this.server = registerOutput<EnvironmentServerResponse?>('server');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.title = registerOutput<String>('title');
-    this.type = registerOutput<String>('type');
+    onboarding = registerOutput<OnboardingResponse?>('onboarding');
+    server = registerOutput<EnvironmentServerResponse?>('server');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
   }
 }

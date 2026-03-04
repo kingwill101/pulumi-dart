@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudCustomizedAcceleratorGitRepositorySshAuth {
   /// Specifies the Public SSH Key of git repository basic auth.
   final pulumi.Input<String>? hostKey;
+
   /// Specifies the SSH Key algorithm of git repository basic auth.
   final pulumi.Input<String>? hostKeyAlgorithm;
+
   /// Specifies the Private SSH Key of git repository basic auth.
   final pulumi.Input<String> privateKey;
 
@@ -28,12 +30,21 @@ class SpringCloudCustomizedAcceleratorGitRepositorySshAuth {
     };
   }
 
-  factory SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap(Map<String, dynamic> map) {
+  factory SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpringCloudCustomizedAcceleratorGitRepositorySshAuth(
-      hostKey: map['hostKey'] == null ? null : (map['hostKey']! as String).input(),
-      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm']! as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
+      hostKey: (() {
+        final guardedValue = map['hostKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostKeyAlgorithm: (() {
+        final guardedValue = map['hostKeyAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
-

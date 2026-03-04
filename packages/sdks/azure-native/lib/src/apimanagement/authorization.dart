@@ -308,18 +308,25 @@ import 'authorization_error_response.dart';
 class Authorization extends pulumi.CustomResource {
   /// Authorization type options
   late final pulumi.Output<String?> authorizationType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Authorization error details.
   late final pulumi.Output<AuthorizationErrorResponse?> error;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// OAuth2 grant type options
   late final pulumi.Output<String?> oAuth2GrantType;
+
   /// Authorization parameters
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// Status of the Authorization
   late final pulumi.Output<String?> status;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -332,18 +339,18 @@ class Authorization extends pulumi.CustomResource {
     AuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:Authorization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizationType = registerOutput<String?>('authorizationType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.error = registerOutput<AuthorizationErrorResponse?>('error');
+         'azure-native:apimanagement:Authorization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizationType = registerOutput<String?>('authorizationType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    error = registerOutput<AuthorizationErrorResponse?>('error');
     this.name = registerOutput<String>('name');
-    this.oAuth2GrantType = registerOutput<String?>('oAuth2GrantType');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.status = registerOutput<String?>('status');
-    this.type = registerOutput<String>('type');
+    oAuth2GrantType = registerOutput<String?>('oAuth2GrantType');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    status = registerOutput<String?>('status');
+    type = registerOutput<String>('type');
   }
 }

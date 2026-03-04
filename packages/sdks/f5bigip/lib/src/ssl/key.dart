@@ -133,12 +133,16 @@ import 'key_state.dart';
 class Key extends pulumi.CustomResource {
   /// Content of SSL certificate key present on local Disk
   late final pulumi.Output<String> content;
+
   /// Full Path Name of ssl key
   late final pulumi.Output<String> fullPath;
+
   /// Name of the SSL Certificate key to be Imported on to BIGIP
   late final pulumi.Output<String> name;
+
   /// Partition of ssl certificate key
   late final pulumi.Output<String?> partition;
+
   /// Passphrase on key.
   late final pulumi.Output<String?> passphrase;
 
@@ -146,29 +150,22 @@ class Key extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Key]. {@macro pulumi_ssl_key_key_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Key(
-    String name, {
-    KeyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:ssl/key:Key',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String>('content');
-    this.fullPath = registerOutput<String>('fullPath');
+  Key(String name, {KeyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:ssl/key:Key',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    content = registerOutput<String>('content');
+    fullPath = registerOutput<String>('fullPath');
     this.name = registerOutput<String>('name');
-    this.partition = registerOutput<String?>('partition');
-    this.passphrase = registerOutput<String?>('passphrase');
+    partition = registerOutput<String?>('partition');
+    passphrase = registerOutput<String?>('passphrase');
   }
 
   /// Gets an existing [Key] resource's state with the given [name] and [id].
-  static Key get(
-    String name,
-    pulumi.Input<String> id, {
-    KeyState? state,
-  }) {
+  static Key get(String name, pulumi.Input<String> id, {KeyState? state}) {
     return Key._get(
       name,
       state: state?.toMap(),
@@ -181,15 +178,15 @@ class Key extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ssl/key:Key',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String>('content');
-    this.fullPath = registerOutput<String>('fullPath');
+         'f5bigip:ssl/key:Key',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<String>('content');
+    fullPath = registerOutput<String>('fullPath');
     this.name = registerOutput<String>('name');
-    this.partition = registerOutput<String?>('partition');
-    this.passphrase = registerOutput<String?>('passphrase');
+    partition = registerOutput<String?>('partition');
+    passphrase = registerOutput<String?>('passphrase');
   }
 }

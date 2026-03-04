@@ -19,10 +19,15 @@ class DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
     };
   }
 
-  factory DaprComponentResiliencyPolicyTimeoutPolicyConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DaprComponentResiliencyPolicyTimeoutPolicyConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DaprComponentResiliencyPolicyTimeoutPolicyConfiguration(
-      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds']! as int).input(),
+      responseTimeoutInSeconds: (() {
+        final guardedValue = map['responseTimeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

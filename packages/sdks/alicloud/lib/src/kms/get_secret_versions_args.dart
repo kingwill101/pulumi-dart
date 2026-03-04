@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretVersionsArgs {
   /// Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of KMS Secret Version ids.
   final pulumi.Input<List<String>>? ids;
+
   /// Specifies whether to return deprecated secret versions. Default to `false`.
   final pulumi.Input<String>? includeDeprecated;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The name of the secret.
   final pulumi.Input<String> secretName;
+
   /// The stage of the secret version.
   final pulumi.Input<String>? versionStage;
 
@@ -49,13 +54,32 @@ class GetSecretVersionsArgs {
 
   factory GetSecretVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      secretName: (map['secretName'] as String).input(),
-      versionStage: map['versionStage'] == null ? null : (map['versionStage']! as String).input(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includeDeprecated: (() {
+        final guardedValue = map['includeDeprecated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      versionStage: (() {
+        final guardedValue = map['versionStage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

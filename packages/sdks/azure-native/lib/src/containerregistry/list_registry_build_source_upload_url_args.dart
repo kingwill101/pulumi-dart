@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListRegistryBuildSourceUploadUrlArgs {
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class ListRegistryBuildSourceUploadUrlArgs {
     };
   }
 
-  factory ListRegistryBuildSourceUploadUrlArgs.fromMap(Map<String, dynamic> map) {
+  factory ListRegistryBuildSourceUploadUrlArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListRegistryBuildSourceUploadUrlArgs(
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

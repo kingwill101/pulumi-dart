@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver {
   /// The entry point of job application.
   final pulumi.Input<String> entryPoint;
+
   /// The arguments for job application.
   final pulumi.Input<List<String>>? entryPointArguments;
+
   /// The Spark submit parameters that are used for job runs.
   final pulumi.Input<String>? sparkSubmitParameters;
 
@@ -28,12 +30,21 @@ class JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver {
     };
   }
 
-  factory JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap(Map<String, dynamic> map) {
+  factory JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver(
-      entryPoint: (map['entryPoint'] as String).input(),
-      entryPointArguments: map['entryPointArguments'] == null ? null : (((map['entryPointArguments'] as List).cast<String>()).input()).input(),
-      sparkSubmitParameters: map['sparkSubmitParameters'] == null ? null : ((map['sparkSubmitParameters'] as String).input()).input(),
+      entryPoint: pulumi.Input.fromValue(map['entryPoint'] as String),
+      entryPointArguments: (() {
+        final guardedValue = map['entryPointArguments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sparkSubmitParameters: (() {
+        final guardedValue = map['sparkSubmitParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

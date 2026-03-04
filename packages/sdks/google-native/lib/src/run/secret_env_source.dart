@@ -7,8 +7,10 @@ import 'local_object_reference.dart';
 class SecretEnvSource {
   /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
   final pulumi.Input<LocalObjectReference>? localObjectReference;
+
   /// The Secret to select from.
   final pulumi.Input<String>? name;
+
   /// Specify whether the Secret must be defined
   final pulumi.Input<bool>? optional;
 
@@ -16,15 +18,15 @@ class SecretEnvSource {
   /// [localObjectReference] This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
   /// [name] The Secret to select from.
   /// [optional] Specify whether the Secret must be defined
-  SecretEnvSource({
-    this.localObjectReference,
-    this.name,
-    this.optional,
-  });
+  SecretEnvSource({this.localObjectReference, this.name, this.optional});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'localObjectReference': ?pulumi.Input.mapOptionalInputValue<LocalObjectReference, Map<String, dynamic>>(localObjectReference, (value) => value.toMap()),
+      'localObjectReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            LocalObjectReference,
+            Map<String, dynamic>
+          >(localObjectReference, (value) => value.toMap()),
       'name': ?name,
       'optional': ?optional,
     };
@@ -32,10 +34,25 @@ class SecretEnvSource {
 
   factory SecretEnvSource.fromMap(Map<String, dynamic> map) {
     return SecretEnvSource(
-      localObjectReference: map['localObjectReference'] == null ? null : (LocalObjectReference.fromMap((map['localObjectReference']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
+      localObjectReference: (() {
+        final guardedValue = map['localObjectReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LocalObjectReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optional: (() {
+        final guardedValue = map['optional'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

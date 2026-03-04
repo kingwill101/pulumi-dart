@@ -6,7 +6,9 @@ import 'akri_connector_template_helm_container_registry_settings_response.dart';
 /// AkriConnectorTemplateHelmContainerRegistry properties.
 class AkriConnectorTemplateHelmContainerRegistryResponse {
   /// The registry settings for the container registry.
-  final pulumi.Input<AkriConnectorTemplateHelmContainerRegistrySettingsResponse> containerRegistrySettings;
+  final pulumi.Input<AkriConnectorTemplateHelmContainerRegistrySettingsResponse>
+  containerRegistrySettings;
+
   /// AkriConnectorTemplateHelmRegistrySettingsType values.
   /// Expected value is 'ContainerRegistry'.
   final pulumi.Input<String> registrySettingsType;
@@ -21,16 +23,27 @@ class AkriConnectorTemplateHelmContainerRegistryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerRegistrySettings': pulumi.Input.mapInputValue<AkriConnectorTemplateHelmContainerRegistrySettingsResponse, Map<String, dynamic>>(containerRegistrySettings, (value) => value.toMap()),
+      'containerRegistrySettings':
+          pulumi.Input.mapInputValue<
+            AkriConnectorTemplateHelmContainerRegistrySettingsResponse,
+            Map<String, dynamic>
+          >(containerRegistrySettings, (value) => value.toMap()),
       'registrySettingsType': registrySettingsType,
     };
   }
 
-  factory AkriConnectorTemplateHelmContainerRegistryResponse.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorTemplateHelmContainerRegistryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorTemplateHelmContainerRegistryResponse(
-      containerRegistrySettings: (AkriConnectorTemplateHelmContainerRegistrySettingsResponse.fromMap((map['containerRegistrySettings'] as Map).cast<String, dynamic>())).input(),
-      registrySettingsType: (map['registrySettingsType'] as String).input(),
+      containerRegistrySettings: pulumi.Input.fromValue(
+        AkriConnectorTemplateHelmContainerRegistrySettingsResponse.fromMap(
+          (map['containerRegistrySettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      registrySettingsType: pulumi.Input.fromValue(
+        map['registrySettingsType'] as String,
+      ),
     );
   }
 }
-

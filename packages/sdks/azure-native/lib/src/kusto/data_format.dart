@@ -4,16 +4,15 @@ enum DataFormat {
   valueJSON("JSON"),
   valueCSV("CSV");
 
-  const DataFormat(this.value);
-  final String value;
+  const DataFormat(this.wireValue);
+  final String wireValue;
 
   static DataFormat fromValue(String value) {
     for (final item in DataFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataFormat value: $value');
   }
 }
-

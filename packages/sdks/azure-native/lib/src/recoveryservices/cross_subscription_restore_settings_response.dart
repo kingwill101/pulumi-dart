@@ -18,10 +18,15 @@ class CrossSubscriptionRestoreSettingsResponse {
     };
   }
 
-  factory CrossSubscriptionRestoreSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory CrossSubscriptionRestoreSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CrossSubscriptionRestoreSettingsResponse(
-      crossSubscriptionRestoreState: map['crossSubscriptionRestoreState'] == null ? null : (map['crossSubscriptionRestoreState']! as String).input(),
+      crossSubscriptionRestoreState: (() {
+        final guardedValue = map['crossSubscriptionRestoreState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

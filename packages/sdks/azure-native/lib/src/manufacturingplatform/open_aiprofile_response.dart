@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenAIProfileResponse {
   /// Embedding Model Capacity
   final pulumi.Input<int>? embeddingModelCapacity;
+
   /// Embedding Model Name
   final pulumi.Input<String>? embeddingModelName;
+
   /// Embedding Model SKU Name
   final pulumi.Input<String>? embeddingModelSkuName;
+
   /// Embedding Model Version
   final pulumi.Input<String>? embeddingModelVersion;
+
   /// GPT Model Capacity
   final pulumi.Input<int>? gptModelCapacity;
+
   /// GPT Model Name
   final pulumi.Input<String>? gptModelName;
+
   /// GPT Model SKU Name
   final pulumi.Input<String>? gptModelSkuName;
+
   /// GPT Model Version
   final pulumi.Input<String>? gptModelVersion;
+
   /// Resource Id of OpenAI Resource
   final pulumi.Input<String> id;
 
@@ -61,16 +69,47 @@ class OpenAIProfileResponse {
 
   factory OpenAIProfileResponse.fromMap(Map<String, dynamic> map) {
     return OpenAIProfileResponse(
-      embeddingModelCapacity: map['embeddingModelCapacity'] == null ? null : (map['embeddingModelCapacity']! as int).input(),
-      embeddingModelName: map['embeddingModelName'] == null ? null : (map['embeddingModelName']! as String).input(),
-      embeddingModelSkuName: map['embeddingModelSkuName'] == null ? null : (map['embeddingModelSkuName']! as String).input(),
-      embeddingModelVersion: map['embeddingModelVersion'] == null ? null : (map['embeddingModelVersion']! as String).input(),
-      gptModelCapacity: map['gptModelCapacity'] == null ? null : (map['gptModelCapacity']! as int).input(),
-      gptModelName: map['gptModelName'] == null ? null : (map['gptModelName']! as String).input(),
-      gptModelSkuName: map['gptModelSkuName'] == null ? null : (map['gptModelSkuName']! as String).input(),
-      gptModelVersion: map['gptModelVersion'] == null ? null : (map['gptModelVersion']! as String).input(),
-      id: (map['id'] as String).input(),
+      embeddingModelCapacity: (() {
+        final guardedValue = map['embeddingModelCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      embeddingModelName: (() {
+        final guardedValue = map['embeddingModelName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      embeddingModelSkuName: (() {
+        final guardedValue = map['embeddingModelSkuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      embeddingModelVersion: (() {
+        final guardedValue = map['embeddingModelVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gptModelCapacity: (() {
+        final guardedValue = map['gptModelCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gptModelName: (() {
+        final guardedValue = map['gptModelName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gptModelSkuName: (() {
+        final guardedValue = map['gptModelSkuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gptModelVersion: (() {
+        final guardedValue = map['gptModelVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

@@ -10,16 +10,22 @@ import 'get_snapshot_filter.dart';
 class GetSnapshotArgs {
   /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference][1].
   final pulumi.Input<List<GetSnapshotFilter>>? filters;
+
   /// If more than one result is returned, use the most recent snapshot.
   final pulumi.Input<bool>? mostRecent;
+
   /// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
   final pulumi.Input<List<String>>? owners;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// One or more AWS accounts IDs that can create volumes from the snapshot.
   final pulumi.Input<List<String>>? restorableByUserIds;
+
   /// Returns information on a specific snapshot_id.
   final pulumi.Input<List<String>>? snapshotIds;
+
   /// Map of tags for the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,7 +49,18 @@ class GetSnapshotArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetSnapshotFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetSnapshotFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetSnapshotFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetSnapshotFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'mostRecent': ?mostRecent,
       'owners': ?owners,
       'region': ?region,
@@ -55,14 +72,50 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetSnapshotFilter>(map['filters']!, (value) => GetSnapshotFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
-      owners: map['owners'] == null ? null : (((map['owners'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restorableByUserIds: map['restorableByUserIds'] == null ? null : (((map['restorableByUserIds'] as List).cast<String>()).input()).input(),
-      snapshotIds: map['snapshotIds'] == null ? null : (((map['snapshotIds'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetSnapshotFilter>(
+            guardedValue,
+            (value) => GetSnapshotFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      owners: (() {
+        final guardedValue = map['owners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restorableByUserIds: (() {
+        final guardedValue = map['restorableByUserIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      snapshotIds: (() {
+        final guardedValue = map['snapshotIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

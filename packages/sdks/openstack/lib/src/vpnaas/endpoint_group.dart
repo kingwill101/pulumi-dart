@@ -135,23 +135,29 @@ class EndpointGroup extends pulumi.CustomResource {
   /// The human-readable description for the group.
   /// Changing this updates the description of the existing group.
   late final pulumi.Output<String?> description;
+
   /// List of endpoints of the same type, for the endpoint group. The values will depend on the type.
   /// Changing this creates a new group.
   late final pulumi.Output<List<String>?> endpoints;
+
   /// The name of the group. Changing this updates the name of
   /// the existing group.
   late final pulumi.Output<String> name;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an endpoint group. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// group.
   late final pulumi.Output<String> region;
+
   /// The owner of the group. Required if admin wants to
   /// create an endpoint group for another project. Changing this creates a new group.
   late final pulumi.Output<String> tenantId;
+
   /// The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
   /// Changing this creates a new group.
   late final pulumi.Output<String> type;
+
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -164,18 +170,18 @@ class EndpointGroup extends pulumi.CustomResource {
     EndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:vpnaas/endpointGroup:EndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.endpoints = registerOutput<List<String>?>('endpoints');
+         'openstack:vpnaas/endpointGroup:EndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    endpoints = registerOutput<List<String>?>('endpoints');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 
   /// Gets an existing [EndpointGroup] resource's state with the given [name] and [id].
@@ -196,17 +202,17 @@ class EndpointGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:vpnaas/endpointGroup:EndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.endpoints = registerOutput<List<String>?>('endpoints');
+         'openstack:vpnaas/endpointGroup:EndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    endpoints = registerOutput<List<String>?>('endpoints');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 }

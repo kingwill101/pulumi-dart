@@ -9,20 +9,21 @@ class IntegrationAccountMapPropertiesParametersSchema {
 
   /// Creates a new [IntegrationAccountMapPropertiesParametersSchema].
   /// [ref] The reference name.
-  IntegrationAccountMapPropertiesParametersSchema({
-    this.ref,
-  });
+  IntegrationAccountMapPropertiesParametersSchema({this.ref});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ref': ?ref,
-    };
+    return <String, dynamic>{'ref': ?ref};
   }
 
-  factory IntegrationAccountMapPropertiesParametersSchema.fromMap(Map<String, dynamic> map) {
+  factory IntegrationAccountMapPropertiesParametersSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationAccountMapPropertiesParametersSchema(
-      ref: map['ref'] == null ? null : (map['ref']! as String).input(),
+      ref: (() {
+        final guardedValue = map['ref'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

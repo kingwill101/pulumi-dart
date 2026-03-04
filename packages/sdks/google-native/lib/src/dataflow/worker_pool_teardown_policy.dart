@@ -5,16 +5,15 @@ enum WorkerPoolTeardownPolicy {
   teardownOnSuccess("TEARDOWN_ON_SUCCESS"),
   teardownNever("TEARDOWN_NEVER");
 
-  const WorkerPoolTeardownPolicy(this.value);
-  final String value;
+  const WorkerPoolTeardownPolicy(this.wireValue);
+  final String wireValue;
 
   static WorkerPoolTeardownPolicy fromValue(String value) {
     for (final item in WorkerPoolTeardownPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkerPoolTeardownPolicy value: $value');
   }
 }
-

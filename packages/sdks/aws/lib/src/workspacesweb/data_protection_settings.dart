@@ -674,24 +674,34 @@ import 'data_protection_settings_state.dart';
 class DataProtectionSettings extends pulumi.CustomResource {
   /// Additional encryption context for the data protection settings.
   late final pulumi.Output<Map<String, String>?> additionalEncryptionContext;
+
   /// List of web portal ARNs that this data protection settings resource is associated with.
   late final pulumi.Output<List<String>> associatedPortalArns;
+
   /// ARN of the customer managed KMS key.
   late final pulumi.Output<String?> customerManagedKey;
+
   /// ARN of the data protection settings resource.
   late final pulumi.Output<String> dataProtectionSettingsArn;
+
   /// The description of the data protection settings.
   late final pulumi.Output<String?> description;
+
   /// The display name of the data protection settings.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> displayName;
+
   /// The inline redaction configuration of the data protection settings. Detailed below.
-  late final pulumi.Output<DataProtectionSettingsInlineRedactionConfiguration?> inlineRedactionConfiguration;
+  late final pulumi.Output<DataProtectionSettingsInlineRedactionConfiguration?>
+  inlineRedactionConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -704,21 +714,28 @@ class DataProtectionSettings extends pulumi.CustomResource {
     DataProtectionSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/dataProtectionSettings:DataProtectionSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    this.associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
-    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
-    this.dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.inlineRedactionConfiguration = registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>('inlineRedactionConfiguration');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:workspacesweb/dataProtectionSettings:DataProtectionSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>(
+      'additionalEncryptionContext',
+    );
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    dataProtectionSettingsArn = registerOutput<String>(
+      'dataProtectionSettingsArn',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    inlineRedactionConfiguration =
+        registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>(
+          'inlineRedactionConfiguration',
+        );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [DataProtectionSettings] resource's state with the given [name] and [id].
@@ -739,20 +756,27 @@ class DataProtectionSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/dataProtectionSettings:DataProtectionSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    this.associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
-    this.customerManagedKey = registerOutput<String?>('customerManagedKey');
-    this.dataProtectionSettingsArn = registerOutput<String>('dataProtectionSettingsArn');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.inlineRedactionConfiguration = registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>('inlineRedactionConfiguration');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:workspacesweb/dataProtectionSettings:DataProtectionSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>(
+      'additionalEncryptionContext',
+    );
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    dataProtectionSettingsArn = registerOutput<String>(
+      'dataProtectionSettingsArn',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    inlineRedactionConfiguration =
+        registerOutput<DataProtectionSettingsInlineRedactionConfiguration?>(
+          'inlineRedactionConfiguration',
+        );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

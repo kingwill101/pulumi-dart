@@ -153,16 +153,22 @@ import 'virtual_endpoint_args.dart';
 class VirtualEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Type of endpoint for the virtual endpoints.
   late final pulumi.Output<String?> endpointType;
+
   /// List of servers that one of the virtual endpoints can refer to.
   late final pulumi.Output<List<String>?> members;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// List of virtual endpoints for a server.
   late final pulumi.Output<List<String>> virtualEndpoints;
 
@@ -175,17 +181,17 @@ class VirtualEndpoint extends pulumi.CustomResource {
     VirtualEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:VirtualEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.endpointType = registerOutput<String?>('endpointType');
-    this.members = registerOutput<List<String>?>('members');
+         'azure-native:dbforpostgresql:VirtualEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endpointType = registerOutput<String?>('endpointType');
+    members = registerOutput<List<String>?>('members');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.virtualEndpoints = registerOutput<List<String>>('virtualEndpoints');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    virtualEndpoints = registerOutput<List<String>>('virtualEndpoints');
   }
 }

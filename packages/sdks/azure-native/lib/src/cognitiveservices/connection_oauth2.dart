@@ -7,17 +7,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionOAuth2 {
   /// Required by Concur connection category
   final pulumi.Input<String>? authUrl;
+
   /// Client id in the format of UUID
   final pulumi.Input<String>? clientId;
   final pulumi.Input<String>? clientSecret;
+
   /// Required by GoogleAdWords connection category
   final pulumi.Input<String>? developerToken;
   final pulumi.Input<String>? password;
+
   /// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
   /// where user needs to get RefreshToken offline
   final pulumi.Input<String>? refreshToken;
+
   /// Required by QuickBooks and Xero connection categories
   final pulumi.Input<String>? tenantId;
+
   /// Concur, ServiceNow auth server AccessToken grant type is 'Password'
   /// which requires UsernamePassword
   final pulumi.Input<String>? username;
@@ -57,15 +62,46 @@ class ConnectionOAuth2 {
 
   factory ConnectionOAuth2.fromMap(Map<String, dynamic> map) {
     return ConnectionOAuth2(
-      authUrl: map['authUrl'] == null ? null : (map['authUrl']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      developerToken: map['developerToken'] == null ? null : (map['developerToken']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      authUrl: (() {
+        final guardedValue = map['authUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      developerToken: (() {
+        final guardedValue = map['developerToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

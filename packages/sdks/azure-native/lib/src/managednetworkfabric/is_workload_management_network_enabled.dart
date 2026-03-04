@@ -3,16 +3,17 @@ enum IsWorkloadManagementNetworkEnabled {
   valueTrue("True"),
   valueFalse("False");
 
-  const IsWorkloadManagementNetworkEnabled(this.value);
-  final String value;
+  const IsWorkloadManagementNetworkEnabled(this.wireValue);
+  final String wireValue;
 
   static IsWorkloadManagementNetworkEnabled fromValue(String value) {
     for (final item in IsWorkloadManagementNetworkEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IsWorkloadManagementNetworkEnabled value: $value');
+    throw ArgumentError(
+      'Unknown IsWorkloadManagementNetworkEnabled value: $value',
+    );
   }
 }
-

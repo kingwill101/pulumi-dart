@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineScaleSetVMProtectionPolicyResponse {
   /// Indicates that the virtual machine scale set VM shouldn't be considered for deletion during a scale-in operation.
   final pulumi.Input<bool>? protectFromScaleIn;
+
   /// Indicates that model updates or actions (including scale-in) initiated on the virtual machine scale set should not be applied to the virtual machine scale set VM.
   final pulumi.Input<bool>? protectFromScaleSetActions;
 
@@ -24,11 +25,20 @@ class VirtualMachineScaleSetVMProtectionPolicyResponse {
     };
   }
 
-  factory VirtualMachineScaleSetVMProtectionPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineScaleSetVMProtectionPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineScaleSetVMProtectionPolicyResponse(
-      protectFromScaleIn: map['protectFromScaleIn'] == null ? null : (map['protectFromScaleIn']! as bool).input(),
-      protectFromScaleSetActions: map['protectFromScaleSetActions'] == null ? null : (map['protectFromScaleSetActions']! as bool).input(),
+      protectFromScaleIn: (() {
+        final guardedValue = map['protectFromScaleIn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      protectFromScaleSetActions: (() {
+        final guardedValue = map['protectFromScaleSetActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

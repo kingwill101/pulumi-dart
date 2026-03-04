@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGuestConfigurationHCRPAssignmentArgs {
   /// The guest configuration assignment name.
   final pulumi.Input<String> guestConfigurationAssignmentName;
+
   /// The name of the ARC machine.
   final pulumi.Input<String> machineName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetGuestConfigurationHCRPAssignmentArgs {
     };
   }
 
-  factory GetGuestConfigurationHCRPAssignmentArgs.fromMap(Map<String, dynamic> map) {
+  factory GetGuestConfigurationHCRPAssignmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGuestConfigurationHCRPAssignmentArgs(
-      guestConfigurationAssignmentName: (map['guestConfigurationAssignmentName'] as String).input(),
-      machineName: (map['machineName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      guestConfigurationAssignmentName: pulumi.Input.fromValue(
+        map['guestConfigurationAssignmentName'] as String,
+      ),
+      machineName: pulumi.Input.fromValue(map['machineName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

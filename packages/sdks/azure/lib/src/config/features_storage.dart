@@ -7,20 +7,19 @@ class FeaturesStorage {
 
   /// Creates a new [FeaturesStorage].
   /// [dataPlaneAvailable] Optional.
-  FeaturesStorage({
-    this.dataPlaneAvailable,
-  });
+  FeaturesStorage({this.dataPlaneAvailable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataPlaneAvailable': ?dataPlaneAvailable,
-    };
+    return <String, dynamic>{'dataPlaneAvailable': ?dataPlaneAvailable};
   }
 
   factory FeaturesStorage.fromMap(Map<String, dynamic> map) {
     return FeaturesStorage(
-      dataPlaneAvailable: map['dataPlaneAvailable'] == null ? null : (map['dataPlaneAvailable']! as bool).input(),
+      dataPlaneAvailable: (() {
+        final guardedValue = map['dataPlaneAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

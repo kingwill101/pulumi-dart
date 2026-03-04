@@ -6,15 +6,18 @@ class ApplicationCredentialAccessRule {
   /// The ID of the existing access rule. The access rule ID of
   /// another application credential can be provided.
   final pulumi.Input<String>? id;
+
   /// The request method that the application credential is
   /// permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
   /// `HEAD`, `PATCH`, `PUT` and `DELETE`.
   final pulumi.Input<String> method;
+
   /// The API path that the application credential is permitted
   /// to access. May use named wildcards such as **{tag}** or the unnamed wildcard
   /// **\*** to match against any string in the path up to a **/**, or the recursive
   /// wildcard **\*\*** to include **/** in the matched path.
   final pulumi.Input<String> path;
+
   /// The service type identifier for the service that the
   /// application credential is granted to access. Must be a service type that is
   /// listed in the service catalog and not a code name for a service. E.g.
@@ -45,11 +48,14 @@ class ApplicationCredentialAccessRule {
 
   factory ApplicationCredentialAccessRule.fromMap(Map<String, dynamic> map) {
     return ApplicationCredentialAccessRule(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      method: (map['method'] as String).input(),
-      path: (map['path'] as String).input(),
-      service: (map['service'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      method: pulumi.Input.fromValue(map['method'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

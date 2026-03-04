@@ -2,16 +2,15 @@
 enum CatalogItemType {
   valueEnvironmentDefinition("EnvironmentDefinition");
 
-  const CatalogItemType(this.value);
-  final String value;
+  const CatalogItemType(this.wireValue);
+  final String wireValue;
 
   static CatalogItemType fromValue(String value) {
     for (final item in CatalogItemType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CatalogItemType value: $value');
   }
 }
-

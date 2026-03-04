@@ -7,20 +7,15 @@ class GetLaunchTemplateMonitoring {
 
   /// Creates a new [GetLaunchTemplateMonitoring].
   /// [enabled] Required.
-  GetLaunchTemplateMonitoring({
-    required this.enabled,
-  });
+  GetLaunchTemplateMonitoring({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory GetLaunchTemplateMonitoring.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateMonitoring(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

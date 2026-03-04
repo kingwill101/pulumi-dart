@@ -6,16 +6,17 @@ enum TlsInspectionPolicyTlsFeatureProfile {
   profileRestricted("PROFILE_RESTRICTED"),
   profileCustom("PROFILE_CUSTOM");
 
-  const TlsInspectionPolicyTlsFeatureProfile(this.value);
-  final String value;
+  const TlsInspectionPolicyTlsFeatureProfile(this.wireValue);
+  final String wireValue;
 
   static TlsInspectionPolicyTlsFeatureProfile fromValue(String value) {
     for (final item in TlsInspectionPolicyTlsFeatureProfile.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TlsInspectionPolicyTlsFeatureProfile value: $value');
+    throw ArgumentError(
+      'Unknown TlsInspectionPolicyTlsFeatureProfile value: $value',
+    );
   }
 }
-

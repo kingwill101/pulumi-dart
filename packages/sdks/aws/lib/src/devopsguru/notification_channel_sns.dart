@@ -8,20 +8,15 @@ class NotificationChannelSns {
 
   /// Creates a new [NotificationChannelSns].
   /// [topicArn] Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
-  NotificationChannelSns({
-    required this.topicArn,
-  });
+  NotificationChannelSns({required this.topicArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topicArn': topicArn,
-    };
+    return <String, dynamic>{'topicArn': topicArn};
   }
 
   factory NotificationChannelSns.fromMap(Map<String, dynamic> map) {
     return NotificationChannelSns(
-      topicArn: (map['topicArn'] as String).input(),
+      topicArn: pulumi.Input.fromValue(map['topicArn'] as String),
     );
   }
 }
-

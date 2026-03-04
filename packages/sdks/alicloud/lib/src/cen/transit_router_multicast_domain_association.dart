@@ -6,7 +6,7 @@ import 'transit_router_multicast_domain_association_state.dart';
 ///
 /// For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association and how to use it, see [What is Transit Router Multicast Domain Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitroutermulticastdomain).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -415,10 +415,13 @@ import 'transit_router_multicast_domain_association_state.dart';
 class TransitRouterMulticastDomainAssociation extends pulumi.CustomResource {
   /// The status of the Transit Router Multicast Domain Association.
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC connection.
   late final pulumi.Output<String> transitRouterAttachmentId;
+
   /// The ID of the multicast domain.
   late final pulumi.Output<String> transitRouterMulticastDomainId;
+
   /// The ID of the vSwitch.
   late final pulumi.Output<String> vswitchId;
 
@@ -431,15 +434,19 @@ class TransitRouterMulticastDomainAssociation extends pulumi.CustomResource {
     TransitRouterMulticastDomainAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.status = registerOutput<String>('status');
-    this.transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
-    this.transitRouterMulticastDomainId = registerOutput<String>('transitRouterMulticastDomainId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    status = registerOutput<String>('status');
+    transitRouterAttachmentId = registerOutput<String>(
+      'transitRouterAttachmentId',
+    );
+    transitRouterMulticastDomainId = registerOutput<String>(
+      'transitRouterMulticastDomainId',
+    );
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [TransitRouterMulticastDomainAssociation] resource's state with the given [name] and [id].
@@ -460,14 +467,18 @@ class TransitRouterMulticastDomainAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.status = registerOutput<String>('status');
-    this.transitRouterAttachmentId = registerOutput<String>('transitRouterAttachmentId');
-    this.transitRouterMulticastDomainId = registerOutput<String>('transitRouterMulticastDomainId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    status = registerOutput<String>('status');
+    transitRouterAttachmentId = registerOutput<String>(
+      'transitRouterAttachmentId',
+    );
+    transitRouterMulticastDomainId = registerOutput<String>(
+      'transitRouterMulticastDomainId',
+    );
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

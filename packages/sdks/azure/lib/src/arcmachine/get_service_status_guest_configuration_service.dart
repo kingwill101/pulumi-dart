@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceStatusGuestConfigurationService {
   /// The behavior of the service when the Arc-enabled machine starts up.
   final pulumi.Input<String> startupType;
+
   /// The current status of the service.
   final pulumi.Input<String> status;
 
@@ -17,17 +18,15 @@ class GetServiceStatusGuestConfigurationService {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startupType': startupType,
-      'status': status,
-    };
+    return <String, dynamic>{'startupType': startupType, 'status': status};
   }
 
-  factory GetServiceStatusGuestConfigurationService.fromMap(Map<String, dynamic> map) {
+  factory GetServiceStatusGuestConfigurationService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceStatusGuestConfigurationService(
-      startupType: (map['startupType'] as String).input(),
-      status: (map['status'] as String).input(),
+      startupType: pulumi.Input.fromValue(map['startupType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

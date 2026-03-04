@@ -9,20 +9,17 @@ class DiscoveryResponseContaineranalysisV1beta1 {
 
   /// Creates a new [DiscoveryResponseContaineranalysisV1beta1].
   /// [analysisKind] Immutable. The kind of analysis that is handled by this discovery.
-  DiscoveryResponseContaineranalysisV1beta1({
-    required this.analysisKind,
-  });
+  DiscoveryResponseContaineranalysisV1beta1({required this.analysisKind});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'analysisKind': analysisKind,
-    };
+    return <String, dynamic>{'analysisKind': analysisKind};
   }
 
-  factory DiscoveryResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory DiscoveryResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiscoveryResponseContaineranalysisV1beta1(
-      analysisKind: (map['analysisKind'] as String).input(),
+      analysisKind: pulumi.Input.fromValue(map['analysisKind'] as String),
     );
   }
 }
-

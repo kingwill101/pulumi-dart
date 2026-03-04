@@ -5,16 +5,17 @@ enum DeprecationStatusStateComputeBeta {
   deprecated("DEPRECATED"),
   obsolete("OBSOLETE");
 
-  const DeprecationStatusStateComputeBeta(this.value);
-  final String value;
+  const DeprecationStatusStateComputeBeta(this.wireValue);
+  final String wireValue;
 
   static DeprecationStatusStateComputeBeta fromValue(String value) {
     for (final item in DeprecationStatusStateComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeprecationStatusStateComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown DeprecationStatusStateComputeBeta value: $value',
+    );
   }
 }
-

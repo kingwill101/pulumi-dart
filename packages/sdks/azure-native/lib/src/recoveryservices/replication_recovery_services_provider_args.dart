@@ -10,12 +10,16 @@ import 'add_recovery_services_provider_input_properties.dart';
 class ReplicationRecoveryServicesProviderArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
+
   /// The properties of an add provider request.
   final pulumi.Input<AddRecoveryServicesProviderInputProperties> properties;
+
   /// Recovery services provider name.
   final pulumi.Input<String>? providerName;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -36,21 +40,36 @@ class ReplicationRecoveryServicesProviderArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fabricName': fabricName,
-      'properties': pulumi.Input.mapInputValue<AddRecoveryServicesProviderInputProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            AddRecoveryServicesProviderInputProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'providerName': ?providerName,
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
   }
 
-  factory ReplicationRecoveryServicesProviderArgs.fromMap(Map<String, dynamic> map) {
+  factory ReplicationRecoveryServicesProviderArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationRecoveryServicesProviderArgs(
-      fabricName: (map['fabricName'] as String).input(),
-      properties: (AddRecoveryServicesProviderInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      properties: pulumi.Input.fromValue(
+        AddRecoveryServicesProviderInputProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

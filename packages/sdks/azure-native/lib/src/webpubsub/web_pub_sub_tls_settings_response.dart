@@ -9,20 +9,19 @@ class WebPubSubTlsSettingsResponse {
 
   /// Creates a new [WebPubSubTlsSettingsResponse].
   /// [clientCertEnabled] Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  WebPubSubTlsSettingsResponse({
-    this.clientCertEnabled,
-  });
+  WebPubSubTlsSettingsResponse({this.clientCertEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientCertEnabled': ?clientCertEnabled,
-    };
+    return <String, dynamic>{'clientCertEnabled': ?clientCertEnabled};
   }
 
   factory WebPubSubTlsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return WebPubSubTlsSettingsResponse(
-      clientCertEnabled: map['clientCertEnabled'] == null ? null : (map['clientCertEnabled']! as bool).input(),
+      clientCertEnabled: (() {
+        final guardedValue = map['clientCertEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

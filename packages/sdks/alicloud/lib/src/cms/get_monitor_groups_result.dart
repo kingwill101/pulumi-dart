@@ -7,6 +7,7 @@ import 'get_monitor_groups_group.dart';
 class GetMonitorGroupsResult {
   final String? dynamicTagRuleId;
   final List<GetMonitorGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -53,7 +54,11 @@ class GetMonitorGroupsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dynamicTagRuleId': ?dynamicTagRuleId,
-      'groups': pulumi.Input.encodeList<GetMonitorGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<GetMonitorGroupsGroup, Map<String, dynamic>>(
+            groups,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'includeTemplateHistory': ?includeTemplateHistory,
@@ -70,20 +75,60 @@ class GetMonitorGroupsResult {
 
   factory GetMonitorGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupsResult(
-      dynamicTagRuleId: map['dynamicTagRuleId'] == null ? null : map['dynamicTagRuleId']! as String,
-      groups: pulumi.Input.decodeList<GetMonitorGroupsGroup>(map['groups'], (value) => GetMonitorGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      dynamicTagRuleId: (() {
+        final guardedValue = map['dynamicTagRuleId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groups: pulumi.Input.decodeList<GetMonitorGroupsGroup>(
+        map['groups']!,
+        (value) => GetMonitorGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeTemplateHistory: map['includeTemplateHistory'] == null ? null : map['includeTemplateHistory']! as bool,
-      keyword: map['keyword'] == null ? null : map['keyword']! as String,
-      monitorGroupName: map['monitorGroupName'] == null ? null : map['monitorGroupName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeTemplateHistory: (() {
+        final guardedValue = map['includeTemplateHistory'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      monitorGroupName: (() {
+        final guardedValue = map['monitorGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      selectContactGroups: map['selectContactGroups'] == null ? null : map['selectContactGroups']! as bool,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      selectContactGroups: (() {
+        final guardedValue = map['selectContactGroups'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

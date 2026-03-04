@@ -6,16 +6,15 @@ enum CisBenchmarkSeverity {
   high("HIGH"),
   critical("CRITICAL");
 
-  const CisBenchmarkSeverity(this.value);
-  final String value;
+  const CisBenchmarkSeverity(this.wireValue);
+  final String wireValue;
 
   static CisBenchmarkSeverity fromValue(String value) {
     for (final item in CisBenchmarkSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CisBenchmarkSeverity value: $value');
   }
 }
-

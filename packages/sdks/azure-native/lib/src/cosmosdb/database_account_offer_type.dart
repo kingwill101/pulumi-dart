@@ -2,16 +2,15 @@
 enum DatabaseAccountOfferType {
   valueStandard("Standard");
 
-  const DatabaseAccountOfferType(this.value);
-  final String value;
+  const DatabaseAccountOfferType(this.wireValue);
+  final String wireValue;
 
   static DatabaseAccountOfferType fromValue(String value) {
     for (final item in DatabaseAccountOfferType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseAccountOfferType value: $value');
   }
 }
-

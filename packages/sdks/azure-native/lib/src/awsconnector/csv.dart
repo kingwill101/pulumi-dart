@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Csv {
   /// The delimiter used for separating items in the CSV file being imported.
   final pulumi.Input<String>? delimiter;
+
   /// List of the headers used to specify a common header for all source CSV files being imported. If this field is specified then the first line of each CSV file is treated as data instead of the header. If this field is not specified the the first line of each CSV file is treated as the header.
   final pulumi.Input<List<String>>? headerList;
 
   /// Creates a new [Csv].
   /// [delimiter] The delimiter used for separating items in the CSV file being imported.
   /// [headerList] List of the headers used to specify a common header for all source CSV files being imported. If this field is specified then the first line of each CSV file is treated as data instead of the header. If this field is not specified the the first line of each CSV file is treated as the header.
-  Csv({
-    this.delimiter,
-    this.headerList,
-  });
+  Csv({this.delimiter, this.headerList});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class Csv {
 
   factory Csv.fromMap(Map<String, dynamic> map) {
     return Csv(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
-      headerList: map['headerList'] == null ? null : ((map['headerList']! as List).cast<String>()).input(),
+      delimiter: (() {
+        final guardedValue = map['delimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headerList: (() {
+        final guardedValue = map['headerList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

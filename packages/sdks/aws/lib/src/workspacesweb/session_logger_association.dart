@@ -363,8 +363,10 @@ import 'session_logger_association_state.dart';
 class SessionLoggerAssociation extends pulumi.CustomResource {
   /// ARN of the web portal.
   late final pulumi.Output<String> portalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the session logger.
   ///
   /// The following arguments are optional:
@@ -379,14 +381,14 @@ class SessionLoggerAssociation extends pulumi.CustomResource {
     SessionLoggerAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portalArn = registerOutput<String>('portalArn');
-    this.region = registerOutput<String>('region');
-    this.sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
+         'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
   }
 
   /// Gets an existing [SessionLoggerAssociation] resource's state with the given [name] and [id].
@@ -407,13 +409,13 @@ class SessionLoggerAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portalArn = registerOutput<String>('portalArn');
-    this.region = registerOutput<String>('region');
-    this.sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
+         'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
   }
 }

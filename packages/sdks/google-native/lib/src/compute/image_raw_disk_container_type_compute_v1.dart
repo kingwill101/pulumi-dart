@@ -2,16 +2,17 @@
 enum ImageRawDiskContainerTypeComputeV1 {
   tar("TAR");
 
-  const ImageRawDiskContainerTypeComputeV1(this.value);
-  final String value;
+  const ImageRawDiskContainerTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static ImageRawDiskContainerTypeComputeV1 fromValue(String value) {
     for (final item in ImageRawDiskContainerTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ImageRawDiskContainerTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown ImageRawDiskContainerTypeComputeV1 value: $value',
+    );
   }
 }
-

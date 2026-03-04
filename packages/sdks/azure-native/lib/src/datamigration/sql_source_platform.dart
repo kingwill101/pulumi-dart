@@ -2,16 +2,15 @@
 enum SqlSourcePlatform {
   valueSqlOnPrem("SqlOnPrem");
 
-  const SqlSourcePlatform(this.value);
-  final String value;
+  const SqlSourcePlatform(this.wireValue);
+  final String wireValue;
 
   static SqlSourcePlatform fromValue(String value) {
     for (final item in SqlSourcePlatform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlSourcePlatform value: $value');
   }
 }
-

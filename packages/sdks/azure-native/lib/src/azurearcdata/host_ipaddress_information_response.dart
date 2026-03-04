@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostIPAddressInformationResponse {
   /// IP address
   final pulumi.Input<String> ipAddress;
+
   /// Subnet mask
   final pulumi.Input<String> subnetMask;
 
@@ -18,17 +19,13 @@ class HostIPAddressInformationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddress': ipAddress,
-      'subnetMask': subnetMask,
-    };
+    return <String, dynamic>{'ipAddress': ipAddress, 'subnetMask': subnetMask};
   }
 
   factory HostIPAddressInformationResponse.fromMap(Map<String, dynamic> map) {
     return HostIPAddressInformationResponse(
-      ipAddress: (map['ipAddress'] as String).input(),
-      subnetMask: (map['subnetMask'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      subnetMask: pulumi.Input.fromValue(map['subnetMask'] as String),
     );
   }
 }
-

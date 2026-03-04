@@ -194,12 +194,17 @@ import 'managed_network_peering_policy_properties_response.dart';
 class ManagedNetworkPeeringPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets or sets the properties of a Managed Network Policy
-  late final pulumi.Output<ManagedNetworkPeeringPolicyPropertiesResponse> properties;
+  late final pulumi.Output<ManagedNetworkPeeringPolicyPropertiesResponse>
+  properties;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -212,15 +217,17 @@ class ManagedNetworkPeeringPolicy extends pulumi.CustomResource {
     ManagedNetworkPeeringPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetwork:ManagedNetworkPeeringPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:managednetwork:ManagedNetworkPeeringPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ManagedNetworkPeeringPolicyPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ManagedNetworkPeeringPolicyPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

@@ -4,16 +4,17 @@ enum DashConfigSegmentReferenceScheme {
   segmentList("SEGMENT_LIST"),
   segmentTemplateNumber("SEGMENT_TEMPLATE_NUMBER");
 
-  const DashConfigSegmentReferenceScheme(this.value);
-  final String value;
+  const DashConfigSegmentReferenceScheme(this.wireValue);
+  final String wireValue;
 
   static DashConfigSegmentReferenceScheme fromValue(String value) {
     for (final item in DashConfigSegmentReferenceScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DashConfigSegmentReferenceScheme value: $value');
+    throw ArgumentError(
+      'Unknown DashConfigSegmentReferenceScheme value: $value',
+    );
   }
 }
-

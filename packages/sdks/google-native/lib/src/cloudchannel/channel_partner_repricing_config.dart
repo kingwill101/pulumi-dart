@@ -7,10 +7,14 @@ import 'google_cloud_channel_v1_repricing_config_response.dart';
 class ChannelPartnerRepricingConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> channelPartnerLinkId;
+
   /// Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}.
   late final pulumi.Output<String> name;
+
   /// The configuration for bill modifications made by a reseller before sending it to ChannelPartner.
-  late final pulumi.Output<GoogleCloudChannelV1RepricingConfigResponse> repricingConfig;
+  late final pulumi.Output<GoogleCloudChannelV1RepricingConfigResponse>
+  repricingConfig;
+
   /// Timestamp of an update to the repricing rule. If `update_time` is after RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
   late final pulumi.Output<String> updateTime;
 
@@ -23,15 +27,18 @@ class ChannelPartnerRepricingConfig extends pulumi.CustomResource {
     ChannelPartnerRepricingConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudchannel/v1:ChannelPartnerRepricingConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.channelPartnerLinkId = registerOutput<String>('channelPartnerLinkId');
+         'google-native:cloudchannel/v1:ChannelPartnerRepricingConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    channelPartnerLinkId = registerOutput<String>('channelPartnerLinkId');
     this.name = registerOutput<String>('name');
-    this.repricingConfig = registerOutput<GoogleCloudChannelV1RepricingConfigResponse>('repricingConfig');
-    this.updateTime = registerOutput<String>('updateTime');
+    repricingConfig =
+        registerOutput<GoogleCloudChannelV1RepricingConfigResponse>(
+          'repricingConfig',
+        );
+    updateTime = registerOutput<String>('updateTime');
   }
 }

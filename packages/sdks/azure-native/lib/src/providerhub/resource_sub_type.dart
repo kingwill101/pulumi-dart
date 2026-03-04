@@ -3,16 +3,15 @@ enum ResourceSubType {
   notSpecified("NotSpecified"),
   asyncOperation("AsyncOperation");
 
-  const ResourceSubType(this.value);
-  final String value;
+  const ResourceSubType(this.wireValue);
+  final String wireValue;
 
   static ResourceSubType fromValue(String value) {
     for (final item in ResourceSubType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceSubType value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecuritySettingsResponse {
   /// Physical servers per administrator.
   final pulumi.Input<double> serverSecurityCostPerServerPerYear;
+
   /// Virtual machines per administrator.
   final pulumi.Input<double> sqlServerSecurityCostPerServerPerYear;
 
@@ -20,15 +21,19 @@ class SecuritySettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'serverSecurityCostPerServerPerYear': serverSecurityCostPerServerPerYear,
-      'sqlServerSecurityCostPerServerPerYear': sqlServerSecurityCostPerServerPerYear,
+      'sqlServerSecurityCostPerServerPerYear':
+          sqlServerSecurityCostPerServerPerYear,
     };
   }
 
   factory SecuritySettingsResponse.fromMap(Map<String, dynamic> map) {
     return SecuritySettingsResponse(
-      serverSecurityCostPerServerPerYear: (map['serverSecurityCostPerServerPerYear'] as double).input(),
-      sqlServerSecurityCostPerServerPerYear: (map['sqlServerSecurityCostPerServerPerYear'] as double).input(),
+      serverSecurityCostPerServerPerYear: pulumi.Input.fromValue(
+        map['serverSecurityCostPerServerPerYear'] as double,
+      ),
+      sqlServerSecurityCostPerServerPerYear: pulumi.Input.fromValue(
+        map['sqlServerSecurityCostPerServerPerYear'] as double,
+      ),
     );
   }
 }
-

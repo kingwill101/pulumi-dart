@@ -1,44 +1,58 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getOrderableDbInstance.
 class GetOrderableDbInstanceResult {
   /// Availability zones where the instance is available.
   final List<String> availabilityZones;
   final String? engine;
   final String engineVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceClass;
   final String? licenseModel;
+
   /// Maximum total provisioned IOPS for a DB instance.
   final int maxIopsPerDbInstance;
+
   /// Maximum provisioned IOPS per GiB for a DB instance.
   final double maxIopsPerGib;
+
   /// Maximum storage size for a DB instance.
   final int maxStorageSize;
+
   /// Minimum total provisioned IOPS for a DB instance.
   final int minIopsPerDbInstance;
+
   /// Minimum provisioned IOPS per GiB for a DB instance.
   final double minIopsPerGib;
+
   /// Minimum storage size for a DB instance.
   final int minStorageSize;
+
   /// Whether a DB instance is Multi-AZ capable.
   final bool multiAzCapable;
   final List<String>? preferredInstanceClasses;
+
   /// Whether a DB instance can have a read replica.
   final bool readReplicaCapable;
   final String region;
+
   /// Storage type for a DB instance.
   final String storageType;
+
   /// Whether a DB instance supports Enhanced Monitoring at intervals from 1 to 60 seconds.
   final bool supportsEnhancedMonitoring;
+
   /// Whether a DB instance supports IAM database authentication.
   final bool supportsIamDatabaseAuthentication;
+
   /// Whether a DB instance supports provisioned IOPS.
   final bool supportsIops;
+
   /// Whether a DB instance supports Performance Insights.
   final bool supportsPerformanceInsights;
+
   /// Whether a DB instance supports encrypted storage.
   final bool supportsStorageEncryption;
   final bool vpc;
@@ -124,11 +138,19 @@ class GetOrderableDbInstanceResult {
   factory GetOrderableDbInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetOrderableDbInstanceResult(
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      engine: map['engine'] == null ? null : map['engine'] as String,
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       instanceClass: map['instanceClass'] as String,
-      licenseModel: map['licenseModel'] == null ? null : map['licenseModel'] as String,
+      licenseModel: (() {
+        final guardedValue = map['licenseModel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       maxIopsPerDbInstance: map['maxIopsPerDbInstance'] as int,
       maxIopsPerGib: map['maxIopsPerGib'] as double,
       maxStorageSize: map['maxStorageSize'] as int,
@@ -136,12 +158,17 @@ class GetOrderableDbInstanceResult {
       minIopsPerGib: map['minIopsPerGib'] as double,
       minStorageSize: map['minStorageSize'] as int,
       multiAzCapable: map['multiAzCapable'] as bool,
-      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : (map['preferredInstanceClasses'] as List).cast<String>(),
+      preferredInstanceClasses: (() {
+        final guardedValue = map['preferredInstanceClasses'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       readReplicaCapable: map['readReplicaCapable'] as bool,
       region: map['region'] as String,
       storageType: map['storageType'] as String,
       supportsEnhancedMonitoring: map['supportsEnhancedMonitoring'] as bool,
-      supportsIamDatabaseAuthentication: map['supportsIamDatabaseAuthentication'] as bool,
+      supportsIamDatabaseAuthentication:
+          map['supportsIamDatabaseAuthentication'] as bool,
       supportsIops: map['supportsIops'] as bool,
       supportsPerformanceInsights: map['supportsPerformanceInsights'] as bool,
       supportsStorageEncryption: map['supportsStorageEncryption'] as bool,
@@ -149,4 +176,3 @@ class GetOrderableDbInstanceResult {
     );
   }
 }
-

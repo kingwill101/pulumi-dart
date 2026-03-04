@@ -31,7 +31,11 @@ class GetEnterpriseProxiesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'proxies': pulumi.Input.encodeList<GetEnterpriseProxiesProxy, Map<String, dynamic>>(proxies, (value) => value.toMap()),
+      'proxies':
+          pulumi.Input.encodeList<
+            GetEnterpriseProxiesProxy,
+            Map<String, dynamic>
+          >(proxies, (value) => value.toMap()),
       'tid': ?tid,
     };
   }
@@ -40,10 +44,22 @@ class GetEnterpriseProxiesResult {
     return GetEnterpriseProxiesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      proxies: pulumi.Input.decodeList<GetEnterpriseProxiesProxy>(map['proxies'], (value) => GetEnterpriseProxiesProxy.fromMap((value as Map).cast<String, dynamic>())),
-      tid: map['tid'] == null ? null : map['tid']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      proxies: pulumi.Input.decodeList<GetEnterpriseProxiesProxy>(
+        map['proxies']!,
+        (value) => GetEnterpriseProxiesProxy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tid: (() {
+        final guardedValue = map['tid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

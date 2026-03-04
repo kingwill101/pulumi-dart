@@ -8,13 +8,24 @@ import 'prevention_discovery_config_target_big_query_target_cadence_table_modifi
 class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
   /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence>? inspectTemplateModifiedCadence;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence
+  >?
+  inspectTemplateModifiedCadence;
+
   /// Governs when to update data profiles when a schema is modified
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence>? schemaModifiedCadence;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence
+  >?
+  schemaModifiedCadence;
+
   /// Governs when to update profile when a table is modified.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence>? tableModifiedCadence;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence
+  >?
+  tableModifiedCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetCadence].
   /// [inspectTemplateModifiedCadence] Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
@@ -28,18 +39,55 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inspectTemplateModifiedCadence': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence, Map<String, dynamic>>(inspectTemplateModifiedCadence, (value) => value.toMap()),
-      'schemaModifiedCadence': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence, Map<String, dynamic>>(schemaModifiedCadence, (value) => value.toMap()),
-      'tableModifiedCadence': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence, Map<String, dynamic>>(tableModifiedCadence, (value) => value.toMap()),
+      'inspectTemplateModifiedCadence':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence,
+            Map<String, dynamic>
+          >(inspectTemplateModifiedCadence, (value) => value.toMap()),
+      'schemaModifiedCadence':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence,
+            Map<String, dynamic>
+          >(schemaModifiedCadence, (value) => value.toMap()),
+      'tableModifiedCadence':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence,
+            Map<String, dynamic>
+          >(tableModifiedCadence, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetBigQueryTargetCadence(
-      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence']! as Map).cast<String, dynamic>())).input(),
-      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap((map['schemaModifiedCadence']! as Map).cast<String, dynamic>())).input(),
-      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence.fromMap((map['tableModifiedCadence']! as Map).cast<String, dynamic>())).input(),
+      inspectTemplateModifiedCadence: (() {
+        final guardedValue = map['inspectTemplateModifiedCadence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      schemaModifiedCadence: (() {
+        final guardedValue = map['schemaModifiedCadence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tableModifiedCadence: (() {
+        final guardedValue = map['tableModifiedCadence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

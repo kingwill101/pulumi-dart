@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationScalingRuleScalingRuleMetricMetric {
   /// According to different `metric_type`, set the target value of the corresponding monitoring index.
   final pulumi.Input<int>? metricTargetAverageUtilization;
+
   /// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
   /// - CPU: CPU usage.
   /// - MEMORY: MEMORY usage.
@@ -17,12 +18,16 @@ class ApplicationScalingRuleScalingRuleMetricMetric {
   /// - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
   /// **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
   final pulumi.Input<String>? metricType;
+
   /// SLB ID.
   final pulumi.Input<String>? slbId;
+
   /// The log store of the Log Service.
   final pulumi.Input<String>? slbLogStore;
+
   /// The project of the Log Service.
   final pulumi.Input<String>? slbProject;
+
   /// SLB listening port.
   final pulumi.Input<String>? vport;
 
@@ -53,15 +58,40 @@ class ApplicationScalingRuleScalingRuleMetricMetric {
     };
   }
 
-  factory ApplicationScalingRuleScalingRuleMetricMetric.fromMap(Map<String, dynamic> map) {
+  factory ApplicationScalingRuleScalingRuleMetricMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationScalingRuleScalingRuleMetricMetric(
-      metricTargetAverageUtilization: map['metricTargetAverageUtilization'] == null ? null : (map['metricTargetAverageUtilization']! as int).input(),
-      metricType: map['metricType'] == null ? null : (map['metricType']! as String).input(),
-      slbId: map['slbId'] == null ? null : (map['slbId']! as String).input(),
-      slbLogStore: map['slbLogStore'] == null ? null : (map['slbLogStore']! as String).input(),
-      slbProject: map['slbProject'] == null ? null : (map['slbProject']! as String).input(),
-      vport: map['vport'] == null ? null : (map['vport']! as String).input(),
+      metricTargetAverageUtilization: (() {
+        final guardedValue = map['metricTargetAverageUtilization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      metricType: (() {
+        final guardedValue = map['metricType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slbId: (() {
+        final guardedValue = map['slbId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slbLogStore: (() {
+        final guardedValue = map['slbLogStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slbProject: (() {
+        final guardedValue = map['slbProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vport: (() {
+        final guardedValue = map['vport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

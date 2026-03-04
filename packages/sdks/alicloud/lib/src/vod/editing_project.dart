@@ -6,7 +6,7 @@ import 'editing_project_state.dart';
 ///
 /// For information about VOD Editing Project and how to use it, see [What is Editing Project](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/addeditingproject#doc-api-vod-AddEditingProject).
 ///
-/// > **NOTE:** Available since v1.187.0.
+/// &gt; **NOTE:** Available since v1.187.0.
 ///
 /// ## Example Usage
 ///
@@ -258,14 +258,19 @@ import 'editing_project_state.dart';
 class EditingProject extends pulumi.CustomResource {
   /// The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
   late final pulumi.Output<String?> coverUrl;
+
   /// The region where you want to create the online editing project.
   late final pulumi.Output<String?> division;
+
   /// The description of the online editing project.
   late final pulumi.Output<String> editingProjectName;
+
   /// The Status of the resource.
   late final pulumi.Output<String> status;
+
   /// The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
   late final pulumi.Output<String> timeline;
+
   /// The title of the online editing project.
   late final pulumi.Output<String> title;
 
@@ -278,17 +283,17 @@ class EditingProject extends pulumi.CustomResource {
     EditingProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vod/editingProject:EditingProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.coverUrl = registerOutput<String?>('coverUrl');
-    this.division = registerOutput<String?>('division');
-    this.editingProjectName = registerOutput<String>('editingProjectName');
-    this.status = registerOutput<String>('status');
-    this.timeline = registerOutput<String>('timeline');
-    this.title = registerOutput<String>('title');
+         'alicloud:vod/editingProject:EditingProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    coverUrl = registerOutput<String?>('coverUrl');
+    division = registerOutput<String?>('division');
+    editingProjectName = registerOutput<String>('editingProjectName');
+    status = registerOutput<String>('status');
+    timeline = registerOutput<String>('timeline');
+    title = registerOutput<String>('title');
   }
 
   /// Gets an existing [EditingProject] resource's state with the given [name] and [id].
@@ -309,16 +314,16 @@ class EditingProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vod/editingProject:EditingProject',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.coverUrl = registerOutput<String?>('coverUrl');
-    this.division = registerOutput<String?>('division');
-    this.editingProjectName = registerOutput<String>('editingProjectName');
-    this.status = registerOutput<String>('status');
-    this.timeline = registerOutput<String>('timeline');
-    this.title = registerOutput<String>('title');
+         'alicloud:vod/editingProject:EditingProject',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    coverUrl = registerOutput<String?>('coverUrl');
+    division = registerOutput<String?>('division');
+    editingProjectName = registerOutput<String>('editingProjectName');
+    status = registerOutput<String>('status');
+    timeline = registerOutput<String>('timeline');
+    title = registerOutput<String>('title');
   }
 }

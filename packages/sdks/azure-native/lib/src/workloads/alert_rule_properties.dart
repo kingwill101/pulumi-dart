@@ -7,28 +7,40 @@ import 'alert_query_parameter.dart';
 class AlertRuleProperties {
   /// Action Group resource Ids to invoke when the alert fires
   final pulumi.Input<List<String>>? actionGroups;
+
   /// The alert query parameters.
   final pulumi.Input<List<AlertQueryParameter>>? alertQueryParameters;
+
   /// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
   final pulumi.Input<String>? autoMitigate;
+
   /// Evaluation of metric on a particular column.
   final pulumi.Input<String>? dimension;
+
   /// How often the scheduled query rule is evaluated.
   final pulumi.Input<int>? evaluationFrequency;
+
   /// The operator for failing periods.
   final pulumi.Input<String>? failingPeriodsOperator;
+
   /// The number of failing periods to trigger an alert.
   final pulumi.Input<int>? failingPeriodsToAlert;
+
   /// Mute actions for the chosen period of time after the alert is fired.
   final pulumi.Input<int>? muteActionsDuration;
+
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
   final pulumi.Input<int>? severity;
+
   /// Indicates whether the alert is in an enabled state.
   final pulumi.Input<String>? status;
+
   /// The threshold of the alert.
   final pulumi.Input<int>? threshold;
+
   /// The threshold operator of the alert.
   final pulumi.Input<String>? thresholdOperator;
+
   /// The period of time on which the Alert query will be executed.
   final pulumi.Input<int>? windowSize;
 
@@ -65,7 +77,18 @@ class AlertRuleProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionGroups': ?actionGroups,
-      'alertQueryParameters': ?pulumi.Input.mapOptionalInputValue<List<AlertQueryParameter>, List<Map<String, dynamic>>>(alertQueryParameters, (value) => pulumi.Input.encodeList<AlertQueryParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'alertQueryParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertQueryParameter>,
+            List<Map<String, dynamic>>
+          >(
+            alertQueryParameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertQueryParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'autoMitigate': ?autoMitigate,
       'dimension': ?dimension,
       'evaluationFrequency': ?evaluationFrequency,
@@ -82,20 +105,78 @@ class AlertRuleProperties {
 
   factory AlertRuleProperties.fromMap(Map<String, dynamic> map) {
     return AlertRuleProperties(
-      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups']! as List).cast<String>()).input(),
-      alertQueryParameters: map['alertQueryParameters'] == null ? null : (pulumi.Input.decodeList<AlertQueryParameter>(map['alertQueryParameters']!, (value) => AlertQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate']! as String).input(),
-      dimension: map['dimension'] == null ? null : (map['dimension']! as String).input(),
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency']! as int).input(),
-      failingPeriodsOperator: map['failingPeriodsOperator'] == null ? null : (map['failingPeriodsOperator']! as String).input(),
-      failingPeriodsToAlert: map['failingPeriodsToAlert'] == null ? null : (map['failingPeriodsToAlert']! as int).input(),
-      muteActionsDuration: map['muteActionsDuration'] == null ? null : (map['muteActionsDuration']! as int).input(),
-      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold']! as int).input(),
-      thresholdOperator: map['thresholdOperator'] == null ? null : (map['thresholdOperator']! as String).input(),
-      windowSize: map['windowSize'] == null ? null : (map['windowSize']! as int).input(),
+      actionGroups: (() {
+        final guardedValue = map['actionGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      alertQueryParameters: (() {
+        final guardedValue = map['alertQueryParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AlertQueryParameter>(
+            guardedValue,
+            (value) => AlertQueryParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      autoMitigate: (() {
+        final guardedValue = map['autoMitigate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dimension: (() {
+        final guardedValue = map['dimension'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      evaluationFrequency: (() {
+        final guardedValue = map['evaluationFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      failingPeriodsOperator: (() {
+        final guardedValue = map['failingPeriodsOperator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      failingPeriodsToAlert: (() {
+        final guardedValue = map['failingPeriodsToAlert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      muteActionsDuration: (() {
+        final guardedValue = map['muteActionsDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      thresholdOperator: (() {
+        final guardedValue = map['thresholdOperator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      windowSize: (() {
+        final guardedValue = map['windowSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

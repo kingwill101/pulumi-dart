@@ -8,17 +8,22 @@ import 'service_perimeter_dry_run_egress_policy_egress_to.dart';
 class ServicePerimeterDryRunEgressPolicyState {
   /// The name of the Access Policy this resource belongs to.
   final pulumi.Input<String>? accessPolicyId;
+
   /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
   /// Structure is documented below.
   final pulumi.Input<ServicePerimeterDryRunEgressPolicyEgressFrom>? egressFrom;
+
   /// Defines the conditions on the `ApiOperation` and destination resources that
   /// cause this `EgressPolicy` to apply.
   /// Structure is documented below.
   final pulumi.Input<ServicePerimeterDryRunEgressPolicyEgressTo>? egressTo;
+
   /// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
   final pulumi.Input<String>? etag;
+
   /// The name of the Service Perimeter to add this resource to.
   final pulumi.Input<String>? perimeter;
+
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
   final pulumi.Input<String>? title;
 
@@ -41,23 +46,64 @@ class ServicePerimeterDryRunEgressPolicyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessPolicyId': ?accessPolicyId,
-      'egressFrom': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterDryRunEgressPolicyEgressFrom, Map<String, dynamic>>(egressFrom, (value) => value.toMap()),
-      'egressTo': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterDryRunEgressPolicyEgressTo, Map<String, dynamic>>(egressTo, (value) => value.toMap()),
+      'egressFrom':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterDryRunEgressPolicyEgressFrom,
+            Map<String, dynamic>
+          >(egressFrom, (value) => value.toMap()),
+      'egressTo':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterDryRunEgressPolicyEgressTo,
+            Map<String, dynamic>
+          >(egressTo, (value) => value.toMap()),
       'etag': ?etag,
       'perimeter': ?perimeter,
       'title': ?title,
     };
   }
 
-  factory ServicePerimeterDryRunEgressPolicyState.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterDryRunEgressPolicyState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterDryRunEgressPolicyState(
-      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId']! as String).input(),
-      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom']! as Map).cast<String, dynamic>())).input(),
-      egressTo: map['egressTo'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo']! as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      perimeter: map['perimeter'] == null ? null : (map['perimeter']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      accessPolicyId: (() {
+        final guardedValue = map['accessPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      egressFrom: (() {
+        final guardedValue = map['egressFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      egressTo: (() {
+        final guardedValue = map['egressTo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicePerimeterDryRunEgressPolicyEgressTo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      perimeter: (() {
+        final guardedValue = map['perimeter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

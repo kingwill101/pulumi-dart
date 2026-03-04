@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagArgs {
   /// The tag name.
   final pulumi.Input<String> key;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the EC2 resource to manage the tag for.
   final pulumi.Input<String> resourceId;
+
   /// The value of the tag.
   final pulumi.Input<String> value;
 
@@ -39,11 +42,14 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      key: (map['key'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

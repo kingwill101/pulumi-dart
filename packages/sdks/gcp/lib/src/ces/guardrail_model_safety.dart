@@ -10,20 +10,35 @@ class GuardrailModelSafety {
 
   /// Creates a new [GuardrailModelSafety].
   /// [safetySettings] List of safety settings.
-  GuardrailModelSafety({
-    required this.safetySettings,
-  });
+  GuardrailModelSafety({required this.safetySettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'safetySettings': pulumi.Input.mapInputValue<List<GuardrailModelSafetySafetySetting>, List<Map<String, dynamic>>>(safetySettings, (value) => pulumi.Input.encodeList<GuardrailModelSafetySafetySetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'safetySettings':
+          pulumi.Input.mapInputValue<
+            List<GuardrailModelSafetySafetySetting>,
+            List<Map<String, dynamic>>
+          >(
+            safetySettings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GuardrailModelSafetySafetySetting,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GuardrailModelSafety.fromMap(Map<String, dynamic> map) {
     return GuardrailModelSafety(
-      safetySettings: (pulumi.Input.decodeList<GuardrailModelSafetySafetySetting>(map['safetySettings'], (value) => GuardrailModelSafetySafetySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      safetySettings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GuardrailModelSafetySafetySetting>(
+          map['safetySettings']!,
+          (value) => GuardrailModelSafetySafetySetting.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

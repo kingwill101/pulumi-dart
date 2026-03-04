@@ -5,16 +5,15 @@ enum AddressNetworkTierComputeBeta {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const AddressNetworkTierComputeBeta(this.value);
-  final String value;
+  const AddressNetworkTierComputeBeta(this.wireValue);
+  final String wireValue;
 
   static AddressNetworkTierComputeBeta fromValue(String value) {
     for (final item in AddressNetworkTierComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressNetworkTierComputeBeta value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationSecurityGroupAssociationState {
   /// The id of application security group to associate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applicationSecurityGroupId;
+
   /// The id of private endpoint to associate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? privateEndpointId;
 
@@ -24,11 +25,20 @@ class ApplicationSecurityGroupAssociationState {
     };
   }
 
-  factory ApplicationSecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
+  factory ApplicationSecurityGroupAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationSecurityGroupAssociationState(
-      applicationSecurityGroupId: map['applicationSecurityGroupId'] == null ? null : (map['applicationSecurityGroupId']! as String).input(),
-      privateEndpointId: map['privateEndpointId'] == null ? null : (map['privateEndpointId']! as String).input(),
+      applicationSecurityGroupId: (() {
+        final guardedValue = map['applicationSecurityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateEndpointId: (() {
+        final guardedValue = map['privateEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

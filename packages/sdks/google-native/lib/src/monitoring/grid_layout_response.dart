@@ -7,29 +7,43 @@ import 'widget_response.dart';
 class GridLayoutResponse {
   /// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
   final pulumi.Input<String> columns;
+
   /// The informational elements that are arranged into the columns row-first.
   final pulumi.Input<List<WidgetResponse>> widgets;
 
   /// Creates a new [GridLayoutResponse].
   /// [columns] The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
   /// [widgets] The informational elements that are arranged into the columns row-first.
-  GridLayoutResponse({
-    required this.columns,
-    required this.widgets,
-  });
+  GridLayoutResponse({required this.columns, required this.widgets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'columns': columns,
-      'widgets': pulumi.Input.mapInputValue<List<WidgetResponse>, List<Map<String, dynamic>>>(widgets, (value) => pulumi.Input.encodeList<WidgetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'widgets':
+          pulumi.Input.mapInputValue<
+            List<WidgetResponse>,
+            List<Map<String, dynamic>>
+          >(
+            widgets,
+            (value) =>
+                pulumi.Input.encodeList<WidgetResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory GridLayoutResponse.fromMap(Map<String, dynamic> map) {
     return GridLayoutResponse(
-      columns: (map['columns'] as String).input(),
-      widgets: (pulumi.Input.decodeList<WidgetResponse>(map['widgets'], (value) => WidgetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: pulumi.Input.fromValue(map['columns'] as String),
+      widgets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<WidgetResponse>(
+          map['widgets']!,
+          (value) =>
+              WidgetResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

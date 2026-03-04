@@ -173,26 +173,37 @@ import 'local_network_gateway_args.dart';
 class LocalNetworkGatewayNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Local network gateway's BGP speaker settings.
   late final pulumi.Output<BgpSettingsResponse?> bgpSettings;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// FQDN of local network gateway.
   late final pulumi.Output<String?> fqdn;
+
   /// IP address of local network gateway.
   late final pulumi.Output<String?> gatewayIpAddress;
+
   /// Local network site address space.
   late final pulumi.Output<AddressSpaceResponse?> localNetworkAddressSpace;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the local network gateway resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource GUID property of the local network gateway resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -205,22 +216,24 @@ class LocalNetworkGatewayNetwork extends pulumi.CustomResource {
     LocalNetworkGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:LocalNetworkGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
-    this.etag = registerOutput<String>('etag');
-    this.fqdn = registerOutput<String?>('fqdn');
-    this.gatewayIpAddress = registerOutput<String?>('gatewayIpAddress');
-    this.localNetworkAddressSpace = registerOutput<AddressSpaceResponse?>('localNetworkAddressSpace');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:LocalNetworkGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
+    etag = registerOutput<String>('etag');
+    fqdn = registerOutput<String?>('fqdn');
+    gatewayIpAddress = registerOutput<String?>('gatewayIpAddress');
+    localNetworkAddressSpace = registerOutput<AddressSpaceResponse?>(
+      'localNetworkAddressSpace',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

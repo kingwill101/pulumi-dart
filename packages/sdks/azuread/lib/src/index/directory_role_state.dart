@@ -6,13 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DirectoryRoleState {
   /// The description of the directory role.
   final pulumi.Input<String>? description;
+
   /// The display name of the directory role to activate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? displayName;
+
   /// The object ID of the directory role.
   final pulumi.Input<String>? objectId;
+
   /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
   ///
-  /// > Either `display_name` or `template_id` must be specified.
+  /// &gt; Either `display_name` or `template_id` must be specified.
   final pulumi.Input<String>? templateId;
 
   /// Creates a new [DirectoryRoleState].
@@ -38,11 +41,26 @@ class DirectoryRoleState {
 
   factory DirectoryRoleState.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

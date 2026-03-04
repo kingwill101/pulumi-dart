@@ -3,16 +3,15 @@ enum TargetAuthenticationType {
   aad("Aad"),
   sql("Sql");
 
-  const TargetAuthenticationType(this.value);
-  final String value;
+  const TargetAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static TargetAuthenticationType fromValue(String value) {
     for (final item in TargetAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetAuthenticationType value: $value');
   }
 }
-

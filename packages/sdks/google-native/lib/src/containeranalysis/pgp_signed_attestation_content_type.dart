@@ -3,16 +3,17 @@ enum PgpSignedAttestationContentType {
   contentTypeUnspecified("CONTENT_TYPE_UNSPECIFIED"),
   simpleSigningJson("SIMPLE_SIGNING_JSON");
 
-  const PgpSignedAttestationContentType(this.value);
-  final String value;
+  const PgpSignedAttestationContentType(this.wireValue);
+  final String wireValue;
 
   static PgpSignedAttestationContentType fromValue(String value) {
     for (final item in PgpSignedAttestationContentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PgpSignedAttestationContentType value: $value');
+    throw ArgumentError(
+      'Unknown PgpSignedAttestationContentType value: $value',
+    );
   }
 }
-

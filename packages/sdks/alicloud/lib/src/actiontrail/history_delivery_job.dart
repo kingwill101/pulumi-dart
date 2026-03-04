@@ -8,13 +8,13 @@ import 'history_delivery_job_state.dart';
 ///
 /// For information about Action Trail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
 ///
-/// > **NOTE:** Available since v1.139.0.
+/// &gt; **NOTE:** Available since v1.139.0.
 ///
-/// > **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
+/// &gt; **NOTE:** You are authorized to use the historical event delivery task feature. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=a2c63.p38356.0.0.e29f552bb6odNZ#/ticket/createIndex) or ask the sales manager to add you to the whitelist.
 ///
-/// > **NOTE:** Make sure that you have called the `alicloud.actiontrail.Trail` to create a single-account or multi-account trace that delivered to Log Service SLS.
+/// &gt; **NOTE:** Make sure that you have called the `alicloud.actiontrail.Trail` to create a single-account or multi-account trace that delivered to Log Service SLS.
 ///
-/// > **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
+/// &gt; **NOTE:** An Alibaba cloud account can only have one running delivery history job at the same time.
 ///
 ///
 ///
@@ -357,8 +357,10 @@ import 'history_delivery_job_state.dart';
 class HistoryDeliveryJob extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The status of the resource
   late final pulumi.Output<int> status;
+
   /// The Track Name.
   late final pulumi.Output<String> trailName;
 
@@ -371,14 +373,14 @@ class HistoryDeliveryJob extends pulumi.CustomResource {
     HistoryDeliveryJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.status = registerOutput<int>('status');
-    this.trailName = registerOutput<String>('trailName');
+         'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    status = registerOutput<int>('status');
+    trailName = registerOutput<String>('trailName');
   }
 
   /// Gets an existing [HistoryDeliveryJob] resource's state with the given [name] and [id].
@@ -399,13 +401,13 @@ class HistoryDeliveryJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.status = registerOutput<int>('status');
-    this.trailName = registerOutput<String>('trailName');
+         'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    status = registerOutput<int>('status');
+    trailName = registerOutput<String>('trailName');
   }
 }

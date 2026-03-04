@@ -10,20 +10,29 @@ class BackendConfigurationResponse {
 
   /// Creates a new [BackendConfigurationResponse].
   /// [subnet] The default hostname of the data-plane gateway to which requests can be sent.
-  BackendConfigurationResponse({
-    this.subnet,
-  });
+  BackendConfigurationResponse({this.subnet});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subnet': ?pulumi.Input.mapOptionalInputValue<BackendSubnetConfigurationResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackendSubnetConfigurationResponse,
+            Map<String, dynamic>
+          >(subnet, (value) => value.toMap()),
     };
   }
 
   factory BackendConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BackendConfigurationResponse(
-      subnet: map['subnet'] == null ? null : (BackendSubnetConfigurationResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackendSubnetConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

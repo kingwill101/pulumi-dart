@@ -4,16 +4,15 @@ enum JsonFileFormatSchemaFileFormat {
   noSchemaFile("NO_SCHEMA_FILE"),
   avroSchemaFile("AVRO_SCHEMA_FILE");
 
-  const JsonFileFormatSchemaFileFormat(this.value);
-  final String value;
+  const JsonFileFormatSchemaFileFormat(this.wireValue);
+  final String wireValue;
 
   static JsonFileFormatSchemaFileFormat fromValue(String value) {
     for (final item in JsonFileFormatSchemaFileFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JsonFileFormatSchemaFileFormat value: $value');
   }
 }
-

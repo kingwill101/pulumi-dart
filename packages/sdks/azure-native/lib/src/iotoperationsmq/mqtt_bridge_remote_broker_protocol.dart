@@ -3,16 +3,15 @@ enum MqttBridgeRemoteBrokerProtocol {
   mqtt("mqtt"),
   webSocket("webSocket");
 
-  const MqttBridgeRemoteBrokerProtocol(this.value);
-  final String value;
+  const MqttBridgeRemoteBrokerProtocol(this.wireValue);
+  final String wireValue;
 
   static MqttBridgeRemoteBrokerProtocol fromValue(String value) {
     for (final item in MqttBridgeRemoteBrokerProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MqttBridgeRemoteBrokerProtocol value: $value');
   }
 }
-

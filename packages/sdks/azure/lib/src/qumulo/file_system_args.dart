@@ -9,26 +9,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileSystemArgs {
   /// The initial administrator password of the Azure Native Qumulo Scalable File System. Changing this forces a new resource to be created.
   final pulumi.Input<String> adminPassword;
+
   /// The email address used for the Azure Native Qumulo Scalable File System. Changing this forces a new resource to be created.
   final pulumi.Input<String> email;
+
   /// The Azure Region where the Azure Native Qumulo Scalable File System should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of this Azure Native Qumulo Scalable File System resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the marketplace offer ID. Defaults to `qumulo-saas-mpp`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? offerId;
+
   /// Specifies the marketplace plan ID. Defaults to `azure-native-qumulo-v3`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? planId;
+
   /// Specifies the marketplace publisher ID. Defaults to `qumulo1584033880660`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? publisherId;
+
   /// Specifies the name of the Resource Group within which this Azure Native Qumulo Scalable File System should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The storage Sku. Possible values are `Cold_LRS`, `Hot_LRS` and `Hot_ZRS`. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageSku;
+
   /// The delegated subnet ID for Vnet injection. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
+
   /// A mapping of tags which should be assigned to the File System.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The Availability Zone in which the Azure Native Qumulo Scalable File system is located. Changing this forces a new resource to be created.
   final pulumi.Input<String> zone;
 
@@ -79,19 +90,46 @@ class FileSystemArgs {
 
   factory FileSystemArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemArgs(
-      adminPassword: (map['adminPassword'] as String).input(),
-      email: (map['email'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      offerId: map['offerId'] == null ? null : (map['offerId']! as String).input(),
-      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
-      publisherId: map['publisherId'] == null ? null : (map['publisherId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageSku: (map['storageSku'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zone: (map['zone'] as String).input(),
+      adminPassword: pulumi.Input.fromValue(map['adminPassword'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offerId: (() {
+        final guardedValue = map['offerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      planId: (() {
+        final guardedValue = map['planId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisherId: (() {
+        final guardedValue = map['publisherId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageSku: pulumi.Input.fromValue(map['storageSku'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

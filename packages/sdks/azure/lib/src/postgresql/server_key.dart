@@ -4,7 +4,7 @@ import 'server_key_state.dart';
 
 /// Manages a Customer Managed Key for a PostgreSQL Server.
 ///
-/// > **Note:** The `azure.postgresql.ServerKey` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
+/// &gt; **Note:** The `azure.postgresql.ServerKey` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
 ///
 /// ## Example Usage
 ///
@@ -650,7 +650,7 @@ import 'server_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2020-01-01
@@ -665,6 +665,7 @@ import 'server_key_state.dart';
 class ServerKey extends pulumi.CustomResource {
   /// The URL to a Key Vault Key.
   late final pulumi.Output<String> keyVaultKeyId;
+
   /// The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
 
@@ -677,13 +678,13 @@ class ServerKey extends pulumi.CustomResource {
     ServerKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/serverKey:ServerKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.serverId = registerOutput<String>('serverId');
+         'azure:postgresql/serverKey:ServerKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    serverId = registerOutput<String>('serverId');
   }
 
   /// Gets an existing [ServerKey] resource's state with the given [name] and [id].
@@ -704,12 +705,12 @@ class ServerKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/serverKey:ServerKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.serverId = registerOutput<String>('serverId');
+         'azure:postgresql/serverKey:ServerKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    serverId = registerOutput<String>('serverId');
   }
 }

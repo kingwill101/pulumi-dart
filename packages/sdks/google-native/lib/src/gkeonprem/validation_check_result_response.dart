@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ValidationCheckResultResponse {
   /// The category of the validation.
   final pulumi.Input<String> category;
+
   /// The description of the validation check.
   final pulumi.Input<String> description;
+
   /// Detailed failure information, which might be unformatted.
   final pulumi.Input<String> details;
+
   /// A human-readable message of the check failure.
   final pulumi.Input<String> reason;
+
   /// The validation check state.
   final pulumi.Input<String> state;
 
@@ -41,12 +45,11 @@ class ValidationCheckResultResponse {
 
   factory ValidationCheckResultResponse.fromMap(Map<String, dynamic> map) {
     return ValidationCheckResultResponse(
-      category: (map['category'] as String).input(),
-      description: (map['description'] as String).input(),
-      details: (map['details'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      state: (map['state'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

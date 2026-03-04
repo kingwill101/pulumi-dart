@@ -6,7 +6,7 @@ import 'nacos_config_state.dart';
 ///
 /// For information about Microservice Engine (MSE) Nacos Config and how to use it, see [What is Nacos configuration](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createnacosconfig)
 ///
-/// > **NOTE:** Available since v1.233.0.
+/// &gt; **NOTE:** Available since v1.233.0.
 ///
 /// ## Example Usage
 ///
@@ -391,26 +391,37 @@ import 'nacos_config_state.dart';
 class NacosConfig extends pulumi.CustomResource {
   /// The language type of the returned information. Valid values: `zh`, `en`.
   late final pulumi.Output<String?> acceptLanguage;
+
   /// The name of the application.
   late final pulumi.Output<String?> appName;
+
   /// The list of IP addresses where the beta release of the configuration is performed.
   late final pulumi.Output<String> betaIps;
+
   /// The content of the configuration.
   late final pulumi.Output<String> content;
+
   /// The ID of the data.
   late final pulumi.Output<String> dataId;
+
   /// The description of the configuration.
   late final pulumi.Output<String?> desc;
+
   /// The encryption key.
   late final pulumi.Output<String> encryptedDataKey;
+
   /// The ID of the group.
   late final pulumi.Output<String> group;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
   late final pulumi.Output<String?> namespaceId;
+
   /// The tags of the configuration.
   late final pulumi.Output<String?> tags;
+
   /// The format of the configuration. Supported formats include TEXT, JSON, and XML.
   late final pulumi.Output<String> type;
 
@@ -423,23 +434,23 @@ class NacosConfig extends pulumi.CustomResource {
     NacosConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mse/nacosConfig:NacosConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
-    this.appName = registerOutput<String?>('appName');
-    this.betaIps = registerOutput<String>('betaIps');
-    this.content = registerOutput<String>('content');
-    this.dataId = registerOutput<String>('dataId');
-    this.desc = registerOutput<String?>('desc');
-    this.encryptedDataKey = registerOutput<String>('encryptedDataKey');
-    this.group = registerOutput<String>('group');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaceId = registerOutput<String?>('namespaceId');
-    this.tags = registerOutput<String?>('tags');
-    this.type = registerOutput<String>('type');
+         'alicloud:mse/nacosConfig:NacosConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    appName = registerOutput<String?>('appName');
+    betaIps = registerOutput<String>('betaIps');
+    content = registerOutput<String>('content');
+    dataId = registerOutput<String>('dataId');
+    desc = registerOutput<String?>('desc');
+    encryptedDataKey = registerOutput<String>('encryptedDataKey');
+    group = registerOutput<String>('group');
+    instanceId = registerOutput<String>('instanceId');
+    namespaceId = registerOutput<String?>('namespaceId');
+    tags = registerOutput<String?>('tags');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [NacosConfig] resource's state with the given [name] and [id].
@@ -460,22 +471,22 @@ class NacosConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mse/nacosConfig:NacosConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptLanguage = registerOutput<String?>('acceptLanguage');
-    this.appName = registerOutput<String?>('appName');
-    this.betaIps = registerOutput<String>('betaIps');
-    this.content = registerOutput<String>('content');
-    this.dataId = registerOutput<String>('dataId');
-    this.desc = registerOutput<String?>('desc');
-    this.encryptedDataKey = registerOutput<String>('encryptedDataKey');
-    this.group = registerOutput<String>('group');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaceId = registerOutput<String?>('namespaceId');
-    this.tags = registerOutput<String?>('tags');
-    this.type = registerOutput<String>('type');
+         'alicloud:mse/nacosConfig:NacosConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    appName = registerOutput<String?>('appName');
+    betaIps = registerOutput<String>('betaIps');
+    content = registerOutput<String>('content');
+    dataId = registerOutput<String>('dataId');
+    desc = registerOutput<String?>('desc');
+    encryptedDataKey = registerOutput<String>('encryptedDataKey');
+    group = registerOutput<String>('group');
+    instanceId = registerOutput<String>('instanceId');
+    namespaceId = registerOutput<String?>('namespaceId');
+    tags = registerOutput<String?>('tags');
+    type = registerOutput<String>('type');
   }
 }

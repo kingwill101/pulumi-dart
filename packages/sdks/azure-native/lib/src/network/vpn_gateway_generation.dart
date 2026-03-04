@@ -4,16 +4,15 @@ enum VpnGatewayGeneration {
   valueGeneration1("Generation1"),
   valueGeneration2("Generation2");
 
-  const VpnGatewayGeneration(this.value);
-  final String value;
+  const VpnGatewayGeneration(this.wireValue);
+  final String wireValue;
 
   static VpnGatewayGeneration fromValue(String value) {
     for (final item in VpnGatewayGeneration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnGatewayGeneration value: $value');
   }
 }
-

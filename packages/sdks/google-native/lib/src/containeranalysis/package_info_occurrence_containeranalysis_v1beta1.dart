@@ -7,12 +7,16 @@ import 'license_containeranalysis_v1beta1.dart';
 class PackageInfoOccurrenceContaineranalysisV1beta1 {
   /// A place for the SPDX file creator to record any general comments about the package being described
   final pulumi.Input<String>? comment;
+
   /// Provide the actual file name of the package, or path of the directory being treated as a package
   final pulumi.Input<String>? filename;
+
   /// Uniquely identify any element in an SPDX document which may be referenced by other elements
   final pulumi.Input<String>? id;
+
   /// package or alternative values, if the governing license cannot be determined
   final pulumi.Input<LicenseContaineranalysisV1beta1>? licenseConcluded;
+
   /// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
   final pulumi.Input<String>? sourceInfo;
 
@@ -35,19 +39,48 @@ class PackageInfoOccurrenceContaineranalysisV1beta1 {
       'comment': ?comment,
       'filename': ?filename,
       'id': ?id,
-      'licenseConcluded': ?pulumi.Input.mapOptionalInputValue<LicenseContaineranalysisV1beta1, Map<String, dynamic>>(licenseConcluded, (value) => value.toMap()),
+      'licenseConcluded':
+          ?pulumi.Input.mapOptionalInputValue<
+            LicenseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(licenseConcluded, (value) => value.toMap()),
       'sourceInfo': ?sourceInfo,
     };
   }
 
-  factory PackageInfoOccurrenceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory PackageInfoOccurrenceContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PackageInfoOccurrenceContaineranalysisV1beta1(
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      licenseConcluded: map['licenseConcluded'] == null ? null : (LicenseContaineranalysisV1beta1.fromMap((map['licenseConcluded']! as Map).cast<String, dynamic>())).input(),
-      sourceInfo: map['sourceInfo'] == null ? null : (map['sourceInfo']! as String).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filename: (() {
+        final guardedValue = map['filename'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenseConcluded: (() {
+        final guardedValue = map['licenseConcluded'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LicenseContaineranalysisV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceInfo: (() {
+        final guardedValue = map['sourceInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

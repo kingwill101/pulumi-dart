@@ -8,14 +8,20 @@ import 'extended_error_info.dart';
 class DefaultRolloutPropertiesStatus {
   /// The completed regions.
   final pulumi.Input<List<String>>? completedRegions;
+
   /// The failed or skipped regions.
   final pulumi.Input<Map<String, ExtendedErrorInfo>>? failedOrSkippedRegions;
+
   /// The manifest checkin status.
-  final pulumi.Input<DefaultRolloutStatusManifestCheckinStatus>? manifestCheckinStatus;
+  final pulumi.Input<DefaultRolloutStatusManifestCheckinStatus>?
+  manifestCheckinStatus;
+
   /// The next traffic region.
   final pulumi.Input<String>? nextTrafficRegion;
+
   /// The next traffic region scheduled time.
   final pulumi.Input<String>? nextTrafficRegionScheduledTime;
+
   /// The subscription reregistration result.
   final pulumi.Input<String>? subscriptionReregistrationResult;
 
@@ -38,8 +44,23 @@ class DefaultRolloutPropertiesStatus {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completedRegions': ?completedRegions,
-      'failedOrSkippedRegions': ?pulumi.Input.mapOptionalInputValue<Map<String, ExtendedErrorInfo>, Map<String, Map<String, dynamic>>>(failedOrSkippedRegions, (value) => pulumi.Input.encodeMapValues<ExtendedErrorInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'manifestCheckinStatus': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutStatusManifestCheckinStatus, Map<String, dynamic>>(manifestCheckinStatus, (value) => value.toMap()),
+      'failedOrSkippedRegions':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ExtendedErrorInfo>,
+            Map<String, Map<String, dynamic>>
+          >(
+            failedOrSkippedRegions,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ExtendedErrorInfo,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'manifestCheckinStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutStatusManifestCheckinStatus,
+            Map<String, dynamic>
+          >(manifestCheckinStatus, (value) => value.toMap()),
       'nextTrafficRegion': ?nextTrafficRegion,
       'nextTrafficRegionScheduledTime': ?nextTrafficRegionScheduledTime,
       'subscriptionReregistrationResult': ?subscriptionReregistrationResult,
@@ -48,13 +69,47 @@ class DefaultRolloutPropertiesStatus {
 
   factory DefaultRolloutPropertiesStatus.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutPropertiesStatus(
-      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions']! as List).cast<String>()).input(),
-      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfo>(map['failedOrSkippedRegions']!, (value) => ExtendedErrorInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (DefaultRolloutStatusManifestCheckinStatus.fromMap((map['manifestCheckinStatus']! as Map).cast<String, dynamic>())).input(),
-      nextTrafficRegion: map['nextTrafficRegion'] == null ? null : (map['nextTrafficRegion']! as String).input(),
-      nextTrafficRegionScheduledTime: map['nextTrafficRegionScheduledTime'] == null ? null : (map['nextTrafficRegionScheduledTime']! as String).input(),
-      subscriptionReregistrationResult: map['subscriptionReregistrationResult'] == null ? null : (map['subscriptionReregistrationResult']! as String).input(),
+      completedRegions: (() {
+        final guardedValue = map['completedRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      failedOrSkippedRegions: (() {
+        final guardedValue = map['failedOrSkippedRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ExtendedErrorInfo>(
+            guardedValue,
+            (value) => ExtendedErrorInfo.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      manifestCheckinStatus: (() {
+        final guardedValue = map['manifestCheckinStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutStatusManifestCheckinStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nextTrafficRegion: (() {
+        final guardedValue = map['nextTrafficRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextTrafficRegionScheduledTime: (() {
+        final guardedValue = map['nextTrafficRegionScheduledTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionReregistrationResult: (() {
+        final guardedValue = map['subscriptionReregistrationResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

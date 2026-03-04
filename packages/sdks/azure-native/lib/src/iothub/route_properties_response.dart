@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutePropertiesResponse {
   /// The condition that is evaluated to apply the routing rule. If no condition is provided, it evaluates to true by default. For grammar, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
   final pulumi.Input<String>? condition;
+
   /// The list of endpoints to which messages that satisfy the condition are routed. Currently only one endpoint is allowed.
   final pulumi.Input<List<String>> endpointNames;
+
   /// Used to specify whether a route is enabled.
   final pulumi.Input<bool> isEnabled;
+
   /// The name of the route. The name can only include alphanumeric characters, periods, underscores, hyphens, has a maximum length of 64 characters, and must be unique.
   final pulumi.Input<String> name;
+
   /// The source that the routing rule is to be applied to, such as DeviceMessages.
   final pulumi.Input<String> source;
 
@@ -41,12 +45,17 @@ class RoutePropertiesResponse {
 
   factory RoutePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RoutePropertiesResponse(
-      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
-      endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      name: (map['name'] as String).input(),
-      source: (map['source'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointNames: pulumi.Input.fromValue(
+        (map['endpointNames'] as List).cast<String>(),
+      ),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

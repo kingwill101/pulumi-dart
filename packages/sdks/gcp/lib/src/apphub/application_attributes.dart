@@ -11,15 +11,20 @@ class ApplicationAttributes {
   /// Optional. Business team that ensures user needs are met and value is delivered
   /// Structure is documented below.
   final pulumi.Input<List<ApplicationAttributesBusinessOwner>>? businessOwners;
+
   /// Criticality of the Application, Service, or Workload
   /// Structure is documented below.
   final pulumi.Input<ApplicationAttributesCriticality>? criticality;
+
   /// Optional. Developer team that owns development and coding.
   /// Structure is documented below.
-  final pulumi.Input<List<ApplicationAttributesDeveloperOwner>>? developerOwners;
+  final pulumi.Input<List<ApplicationAttributesDeveloperOwner>>?
+  developerOwners;
+
   /// Environment of the Application, Service, or Workload
   /// Structure is documented below.
   final pulumi.Input<ApplicationAttributesEnvironment>? environment;
+
   /// Optional. Operator team that ensures runtime and operations.
   /// Structure is documented below.
   final pulumi.Input<List<ApplicationAttributesOperatorOwner>>? operatorOwners;
@@ -40,22 +45,111 @@ class ApplicationAttributes {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'businessOwners': ?pulumi.Input.mapOptionalInputValue<List<ApplicationAttributesBusinessOwner>, List<Map<String, dynamic>>>(businessOwners, (value) => pulumi.Input.encodeList<ApplicationAttributesBusinessOwner, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'criticality': ?pulumi.Input.mapOptionalInputValue<ApplicationAttributesCriticality, Map<String, dynamic>>(criticality, (value) => value.toMap()),
-      'developerOwners': ?pulumi.Input.mapOptionalInputValue<List<ApplicationAttributesDeveloperOwner>, List<Map<String, dynamic>>>(developerOwners, (value) => pulumi.Input.encodeList<ApplicationAttributesDeveloperOwner, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'environment': ?pulumi.Input.mapOptionalInputValue<ApplicationAttributesEnvironment, Map<String, dynamic>>(environment, (value) => value.toMap()),
-      'operatorOwners': ?pulumi.Input.mapOptionalInputValue<List<ApplicationAttributesOperatorOwner>, List<Map<String, dynamic>>>(operatorOwners, (value) => pulumi.Input.encodeList<ApplicationAttributesOperatorOwner, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'businessOwners':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationAttributesBusinessOwner>,
+            List<Map<String, dynamic>>
+          >(
+            businessOwners,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationAttributesBusinessOwner,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'criticality':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationAttributesCriticality,
+            Map<String, dynamic>
+          >(criticality, (value) => value.toMap()),
+      'developerOwners':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationAttributesDeveloperOwner>,
+            List<Map<String, dynamic>>
+          >(
+            developerOwners,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationAttributesDeveloperOwner,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'environment':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationAttributesEnvironment,
+            Map<String, dynamic>
+          >(environment, (value) => value.toMap()),
+      'operatorOwners':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationAttributesOperatorOwner>,
+            List<Map<String, dynamic>>
+          >(
+            operatorOwners,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationAttributesOperatorOwner,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ApplicationAttributes.fromMap(Map<String, dynamic> map) {
     return ApplicationAttributes(
-      businessOwners: map['businessOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesBusinessOwner>(map['businessOwners']!, (value) => ApplicationAttributesBusinessOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      criticality: map['criticality'] == null ? null : (ApplicationAttributesCriticality.fromMap((map['criticality']! as Map).cast<String, dynamic>())).input(),
-      developerOwners: map['developerOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesDeveloperOwner>(map['developerOwners']!, (value) => ApplicationAttributesDeveloperOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (ApplicationAttributesEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
-      operatorOwners: map['operatorOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesOperatorOwner>(map['operatorOwners']!, (value) => ApplicationAttributesOperatorOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessOwners: (() {
+        final guardedValue = map['businessOwners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationAttributesBusinessOwner>(
+            guardedValue,
+            (value) => ApplicationAttributesBusinessOwner.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      criticality: (() {
+        final guardedValue = map['criticality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationAttributesCriticality.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      developerOwners: (() {
+        final guardedValue = map['developerOwners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationAttributesDeveloperOwner>(
+            guardedValue,
+            (value) => ApplicationAttributesDeveloperOwner.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationAttributesEnvironment.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      operatorOwners: (() {
+        final guardedValue = map['operatorOwners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationAttributesOperatorOwner>(
+            guardedValue,
+            (value) => ApplicationAttributesOperatorOwner.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

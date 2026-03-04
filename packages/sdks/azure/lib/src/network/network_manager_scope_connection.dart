@@ -286,7 +286,7 @@ import 'network_manager_scope_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -301,14 +301,19 @@ import 'network_manager_scope_connection_state.dart';
 class NetworkManagerScopeConnection extends pulumi.CustomResource {
   /// The Connection state of the Network Manager Scope Connection.
   late final pulumi.Output<String> connectionState;
+
   /// A description of the Network Manager Scope Connection.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name which should be used for this Network Manager Scope Connection. Changing this forces a new Network Manager Scope Connection to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the Network Manager Scope Connection. Changing this forces a new Network Manager Scope Connection to be created.
   late final pulumi.Output<String> networkManagerId;
+
   /// Specifies the Resource ID of the target scope which the Network Manager is connected to. It should be either Subscription ID or Management Group ID.
   late final pulumi.Output<String> targetScopeId;
+
   /// Specifies the Tenant ID of the Resource which the Network Manager is connected to.
   late final pulumi.Output<String> tenantId;
 
@@ -321,17 +326,17 @@ class NetworkManagerScopeConnection extends pulumi.CustomResource {
     NetworkManagerScopeConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerScopeConnection:NetworkManagerScopeConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionState = registerOutput<String>('connectionState');
-    this.description = registerOutput<String?>('description');
+         'azure:network/networkManagerScopeConnection:NetworkManagerScopeConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionState = registerOutput<String>('connectionState');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
-    this.targetScopeId = registerOutput<String>('targetScopeId');
-    this.tenantId = registerOutput<String>('tenantId');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    targetScopeId = registerOutput<String>('targetScopeId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [NetworkManagerScopeConnection] resource's state with the given [name] and [id].
@@ -352,16 +357,16 @@ class NetworkManagerScopeConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerScopeConnection:NetworkManagerScopeConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionState = registerOutput<String>('connectionState');
-    this.description = registerOutput<String?>('description');
+         'azure:network/networkManagerScopeConnection:NetworkManagerScopeConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionState = registerOutput<String>('connectionState');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
-    this.targetScopeId = registerOutput<String>('targetScopeId');
-    this.tenantId = registerOutput<String>('tenantId');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    targetScopeId = registerOutput<String>('targetScopeId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

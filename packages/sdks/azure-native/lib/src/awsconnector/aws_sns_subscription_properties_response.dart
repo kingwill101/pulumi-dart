@@ -4,23 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsSnsSubscription
 class AwsSnsSubscriptionPropertiesResponse {
-  /// <p>The subscription's endpoint (format depends on the protocol).</p>
+  /// &lt;p&gt;The subscription's endpoint (format depends on the protocol).&lt;/p&gt;
   final pulumi.Input<String>? endpoint;
-  /// <p>The subscription's owner.</p>
+
+  /// &lt;p&gt;The subscription's owner.&lt;/p&gt;
   final pulumi.Input<String>? owner;
-  /// <p>The subscription's protocol.</p>
+
+  /// &lt;p&gt;The subscription's protocol.&lt;/p&gt;
   final pulumi.Input<String>? protocol;
-  /// <p>The subscription's ARN.</p>
+
+  /// &lt;p&gt;The subscription's ARN.&lt;/p&gt;
   final pulumi.Input<String>? subscriptionArn;
-  /// <p>The ARN of the subscription's topic.</p>
+
+  /// &lt;p&gt;The ARN of the subscription's topic.&lt;/p&gt;
   final pulumi.Input<String>? topicArn;
 
   /// Creates a new [AwsSnsSubscriptionPropertiesResponse].
-  /// [endpoint] <p>The subscription's endpoint (format depends on the protocol).</p>
-  /// [owner] <p>The subscription's owner.</p>
-  /// [protocol] <p>The subscription's protocol.</p>
-  /// [subscriptionArn] <p>The subscription's ARN.</p>
-  /// [topicArn] <p>The ARN of the subscription's topic.</p>
+  /// [endpoint] &lt;p&gt;The subscription's endpoint (format depends on the protocol).&lt;/p&gt;
+  /// [owner] &lt;p&gt;The subscription's owner.&lt;/p&gt;
+  /// [protocol] &lt;p&gt;The subscription's protocol.&lt;/p&gt;
+  /// [subscriptionArn] &lt;p&gt;The subscription's ARN.&lt;/p&gt;
+  /// [topicArn] &lt;p&gt;The ARN of the subscription's topic.&lt;/p&gt;
   AwsSnsSubscriptionPropertiesResponse({
     this.endpoint,
     this.owner,
@@ -39,14 +43,35 @@ class AwsSnsSubscriptionPropertiesResponse {
     };
   }
 
-  factory AwsSnsSubscriptionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsSnsSubscriptionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsSnsSubscriptionPropertiesResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      subscriptionArn: map['subscriptionArn'] == null ? null : (map['subscriptionArn']! as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn']! as String).input(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionArn: (() {
+        final guardedValue = map['subscriptionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicArn: (() {
+        final guardedValue = map['topicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

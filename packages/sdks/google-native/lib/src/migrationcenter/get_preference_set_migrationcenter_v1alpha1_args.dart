@@ -29,12 +29,17 @@ class GetPreferenceSetMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetPreferenceSetMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetPreferenceSetMigrationcenterV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPreferenceSetMigrationcenterV1alpha1Args(
-      location: (map['location'] as String).input(),
-      preferenceSetId: (map['preferenceSetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      preferenceSetId: pulumi.Input.fromValue(map['preferenceSetId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

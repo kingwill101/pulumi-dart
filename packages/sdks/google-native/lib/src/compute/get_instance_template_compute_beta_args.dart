@@ -27,9 +27,14 @@ class GetInstanceTemplateComputeBetaArgs {
 
   factory GetInstanceTemplateComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateComputeBetaArgs(
-      instanceTemplate: (map['instanceTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      instanceTemplate: pulumi.Input.fromValue(
+        map['instanceTemplate'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

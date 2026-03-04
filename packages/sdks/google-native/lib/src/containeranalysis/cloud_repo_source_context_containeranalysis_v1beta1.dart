@@ -8,8 +8,10 @@ import 'repo_id_containeranalysis_v1beta1.dart';
 class CloudRepoSourceContextContaineranalysisV1beta1 {
   /// An alias, which may be a branch or tag.
   final pulumi.Input<AliasContextContaineranalysisV1beta1>? aliasContext;
+
   /// The ID of the repo.
   final pulumi.Input<RepoIdContaineranalysisV1beta1>? repoId;
+
   /// A revision ID.
   final pulumi.Input<String>? revisionId;
 
@@ -25,18 +27,47 @@ class CloudRepoSourceContextContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aliasContext': ?pulumi.Input.mapOptionalInputValue<AliasContextContaineranalysisV1beta1, Map<String, dynamic>>(aliasContext, (value) => value.toMap()),
-      'repoId': ?pulumi.Input.mapOptionalInputValue<RepoIdContaineranalysisV1beta1, Map<String, dynamic>>(repoId, (value) => value.toMap()),
+      'aliasContext':
+          ?pulumi.Input.mapOptionalInputValue<
+            AliasContextContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(aliasContext, (value) => value.toMap()),
+      'repoId':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepoIdContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(repoId, (value) => value.toMap()),
       'revisionId': ?revisionId,
     };
   }
 
-  factory CloudRepoSourceContextContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CloudRepoSourceContextContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudRepoSourceContextContaineranalysisV1beta1(
-      aliasContext: map['aliasContext'] == null ? null : (AliasContextContaineranalysisV1beta1.fromMap((map['aliasContext']! as Map).cast<String, dynamic>())).input(),
-      repoId: map['repoId'] == null ? null : (RepoIdContaineranalysisV1beta1.fromMap((map['repoId']! as Map).cast<String, dynamic>())).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
+      aliasContext: (() {
+        final guardedValue = map['aliasContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AliasContextContaineranalysisV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      repoId: (() {
+        final guardedValue = map['repoId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepoIdContaineranalysisV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      revisionId: (() {
+        final guardedValue = map['revisionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

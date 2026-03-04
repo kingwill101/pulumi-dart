@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateStoreCollectionOfferArgs {
   /// The collection ID
   final pulumi.Input<String> collectionId;
+
   /// The offer ID to update or delete
   final pulumi.Input<String> offerId;
+
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
 
@@ -34,10 +36,9 @@ class GetPrivateStoreCollectionOfferArgs {
 
   factory GetPrivateStoreCollectionOfferArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateStoreCollectionOfferArgs(
-      collectionId: (map['collectionId'] as String).input(),
-      offerId: (map['offerId'] as String).input(),
-      privateStoreId: (map['privateStoreId'] as String).input(),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      offerId: pulumi.Input.fromValue(map['offerId'] as String),
+      privateStoreId: pulumi.Input.fromValue(map['privateStoreId'] as String),
     );
   }
 }
-

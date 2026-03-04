@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubResponse {
   /// Resource ID of EventHub
   final pulumi.Input<String>? id;
+
   /// EventHub name
   final pulumi.Input<String>? name;
+
   /// EventHub namespace
   final pulumi.Input<String>? nameSpace;
+
   /// EventHub policy name
   final pulumi.Input<String>? policyName;
+
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
 
@@ -41,12 +45,31 @@ class EventHubResponse {
 
   factory EventHubResponse.fromMap(Map<String, dynamic> map) {
     return EventHubResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameSpace: map['nameSpace'] == null ? null : (map['nameSpace']! as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameSpace: (() {
+        final guardedValue = map['nameSpace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

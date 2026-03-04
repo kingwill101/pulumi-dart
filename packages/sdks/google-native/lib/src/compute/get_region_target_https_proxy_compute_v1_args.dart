@@ -29,12 +29,19 @@ class GetRegionTargetHttpsProxyComputeV1Args {
     };
   }
 
-  factory GetRegionTargetHttpsProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
+  factory GetRegionTargetHttpsProxyComputeV1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionTargetHttpsProxyComputeV1Args(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      targetHttpsProxy: (map['targetHttpsProxy'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      targetHttpsProxy: pulumi.Input.fromValue(
+        map['targetHttpsProxy'] as String,
+      ),
     );
   }
 }
-

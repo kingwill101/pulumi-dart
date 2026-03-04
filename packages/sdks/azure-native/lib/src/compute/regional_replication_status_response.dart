@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionalReplicationStatusResponse {
   /// The details of the replication status.
   final pulumi.Input<String> details;
+
   /// It indicates progress of the replication job.
   final pulumi.Input<int> progress;
+
   /// The region to which the gallery image version is being replicated to.
   final pulumi.Input<String> region;
+
   /// This is the regional replication state.
   final pulumi.Input<String> state;
 
@@ -36,11 +39,10 @@ class RegionalReplicationStatusResponse {
 
   factory RegionalReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
     return RegionalReplicationStatusResponse(
-      details: (map['details'] as String).input(),
-      progress: (map['progress'] as int).input(),
-      region: (map['region'] as String).input(),
-      state: (map['state'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      progress: pulumi.Input.fromValue(map['progress'] as int),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

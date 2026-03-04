@@ -5,16 +5,15 @@ enum NetworkProtocol {
   valueUDP("UDP"),
   valueICMP("ICMP");
 
-  const NetworkProtocol(this.value);
-  final String value;
+  const NetworkProtocol(this.wireValue);
+  final String wireValue;
 
   static NetworkProtocol fromValue(String value) {
     for (final item in NetworkProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkProtocol value: $value');
   }
 }
-

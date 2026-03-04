@@ -29,12 +29,15 @@ class GetOrganizationsDeidentifyTemplateArgs {
     };
   }
 
-  factory GetOrganizationsDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationsDeidentifyTemplateArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationsDeidentifyTemplateArgs(
-      deidentifyTemplateId: (map['deidentifyTemplateId'] as String).input(),
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      deidentifyTemplateId: pulumi.Input.fromValue(
+        map['deidentifyTemplateId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

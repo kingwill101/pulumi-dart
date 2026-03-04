@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAclRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation {
   /// Relative processing order for multiple transformations that are defined for a rule statement. AWS WAF processes all transformations, from lowest priority to highest, before inspecting the transformed content.
   final pulumi.Input<int> priority;
+
   /// Transformation to apply, please refer to the Text Transformation [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_TextTransformation.html) for more details.
   final pulumi.Input<String> type;
 
@@ -17,17 +18,15 @@ class WebAclRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'priority': priority,
-      'type': type,
-    };
+    return <String, dynamic>{'priority': priority, 'type': type};
   }
 
-  factory WebAclRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation(
-      priority: (map['priority'] as int).input(),
-      type: (map['type'] as String).input(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -27,16 +27,15 @@ enum AzureCurrency {
   aUD("AUD"),
   cNY("CNY");
 
-  const AzureCurrency(this.value);
-  final String value;
+  const AzureCurrency(this.wireValue);
+  final String wireValue;
 
   static AzureCurrency fromValue(String value) {
     for (final item in AzureCurrency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureCurrency value: $value');
   }
 }
-

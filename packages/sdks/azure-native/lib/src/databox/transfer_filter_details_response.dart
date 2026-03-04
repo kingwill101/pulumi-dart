@@ -9,10 +9,13 @@ import 'filter_file_details_response.dart';
 class TransferFilterDetailsResponse {
   /// Filter details to transfer Azure files.
   final pulumi.Input<AzureFileFilterDetailsResponse>? azureFileFilterDetails;
+
   /// Filter details to transfer blobs.
   final pulumi.Input<BlobFilterDetailsResponse>? blobFilterDetails;
+
   /// Type of the account of data.
   final pulumi.Input<String> dataAccountType;
+
   /// Details of the filter files to be used for data transfer.
   final pulumi.Input<List<FilterFileDetailsResponse>>? filterFileDetails;
 
@@ -30,20 +33,65 @@ class TransferFilterDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureFileFilterDetails': ?pulumi.Input.mapOptionalInputValue<AzureFileFilterDetailsResponse, Map<String, dynamic>>(azureFileFilterDetails, (value) => value.toMap()),
-      'blobFilterDetails': ?pulumi.Input.mapOptionalInputValue<BlobFilterDetailsResponse, Map<String, dynamic>>(blobFilterDetails, (value) => value.toMap()),
+      'azureFileFilterDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureFileFilterDetailsResponse,
+            Map<String, dynamic>
+          >(azureFileFilterDetails, (value) => value.toMap()),
+      'blobFilterDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            BlobFilterDetailsResponse,
+            Map<String, dynamic>
+          >(blobFilterDetails, (value) => value.toMap()),
       'dataAccountType': dataAccountType,
-      'filterFileDetails': ?pulumi.Input.mapOptionalInputValue<List<FilterFileDetailsResponse>, List<Map<String, dynamic>>>(filterFileDetails, (value) => pulumi.Input.encodeList<FilterFileDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filterFileDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FilterFileDetailsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            filterFileDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FilterFileDetailsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TransferFilterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TransferFilterDetailsResponse(
-      azureFileFilterDetails: map['azureFileFilterDetails'] == null ? null : (AzureFileFilterDetailsResponse.fromMap((map['azureFileFilterDetails']! as Map).cast<String, dynamic>())).input(),
-      blobFilterDetails: map['blobFilterDetails'] == null ? null : (BlobFilterDetailsResponse.fromMap((map['blobFilterDetails']! as Map).cast<String, dynamic>())).input(),
-      dataAccountType: (map['dataAccountType'] as String).input(),
-      filterFileDetails: map['filterFileDetails'] == null ? null : (pulumi.Input.decodeList<FilterFileDetailsResponse>(map['filterFileDetails']!, (value) => FilterFileDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureFileFilterDetails: (() {
+        final guardedValue = map['azureFileFilterDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureFileFilterDetailsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      blobFilterDetails: (() {
+        final guardedValue = map['blobFilterDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BlobFilterDetailsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataAccountType: pulumi.Input.fromValue(map['dataAccountType'] as String),
+      filterFileDetails: (() {
+        final guardedValue = map['filterFileDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FilterFileDetailsResponse>(
+            guardedValue,
+            (value) => FilterFileDetailsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -483,10 +483,13 @@ import 'plugin_attachment_state.dart';
 class PluginAttachment extends pulumi.CustomResource {
   /// The api_id that plugin attaches to.
   late final pulumi.Output<String> apiId;
+
   /// The group that the api belongs to.
   late final pulumi.Output<String> groupId;
+
   /// The plugin that attaches to the api.
   late final pulumi.Output<String> pluginId;
+
   /// Stage that the plugin attaches to.
   late final pulumi.Output<String> stageName;
 
@@ -499,15 +502,15 @@ class PluginAttachment extends pulumi.CustomResource {
     PluginAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/pluginAttachment:PluginAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.groupId = registerOutput<String>('groupId');
-    this.pluginId = registerOutput<String>('pluginId');
-    this.stageName = registerOutput<String>('stageName');
+         'alicloud:apigateway/pluginAttachment:PluginAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    groupId = registerOutput<String>('groupId');
+    pluginId = registerOutput<String>('pluginId');
+    stageName = registerOutput<String>('stageName');
   }
 
   /// Gets an existing [PluginAttachment] resource's state with the given [name] and [id].
@@ -528,14 +531,14 @@ class PluginAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/pluginAttachment:PluginAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.groupId = registerOutput<String>('groupId');
-    this.pluginId = registerOutput<String>('pluginId');
-    this.stageName = registerOutput<String>('stageName');
+         'alicloud:apigateway/pluginAttachment:PluginAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    groupId = registerOutput<String>('groupId');
+    pluginId = registerOutput<String>('pluginId');
+    stageName = registerOutput<String>('stageName');
   }
 }

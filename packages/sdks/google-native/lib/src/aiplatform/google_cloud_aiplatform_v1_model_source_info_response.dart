@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1ModelSourceInfoResponse {
   /// If this Model is copy of another Model. If true then source_type pertains to the original.
   final pulumi.Input<bool> copy;
+
   /// Type of the model source.
   final pulumi.Input<String> sourceType;
 
@@ -18,17 +19,15 @@ class GoogleCloudAiplatformV1ModelSourceInfoResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'copy': copy,
-      'sourceType': sourceType,
-    };
+    return <String, dynamic>{'copy': copy, 'sourceType': sourceType};
   }
 
-  factory GoogleCloudAiplatformV1ModelSourceInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ModelSourceInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1ModelSourceInfoResponse(
-      copy: (map['copy'] as bool).input(),
-      sourceType: (map['sourceType'] as String).input(),
+      copy: pulumi.Input.fromValue(map['copy'] as bool),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
     );
   }
 }
-

@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PhotonPersistentDiskVolumeSource {
   /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
   final pulumi.Input<String>? fsType;
+
   /// pdID is the ID that identifies Photon Controller persistent disk
   final pulumi.Input<String> pdID;
 
   /// Creates a new [PhotonPersistentDiskVolumeSource].
   /// [fsType] fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
   /// [pdID] pdID is the ID that identifies Photon Controller persistent disk
-  PhotonPersistentDiskVolumeSource({
-    this.fsType,
-    required this.pdID,
-  });
+  PhotonPersistentDiskVolumeSource({this.fsType, required this.pdID});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fsType': ?fsType,
-      'pdID': pdID,
-    };
+    return <String, dynamic>{'fsType': ?fsType, 'pdID': pdID};
   }
 
   factory PhotonPersistentDiskVolumeSource.fromMap(Map<String, dynamic> map) {
     return PhotonPersistentDiskVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
-      pdID: (map['pdID'] as String).input(),
+      fsType: (() {
+        final guardedValue = map['fsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pdID: pulumi.Input.fromValue(map['pdID'] as String),
     );
   }
 }
-

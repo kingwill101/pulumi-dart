@@ -8,29 +8,62 @@ import 'quota_limit_response.dart';
 class QuotaResponse {
   /// List of QuotaLimit definitions for the service.
   final pulumi.Input<List<QuotaLimitResponse>> limits;
+
   /// List of MetricRule definitions, each one mapping a selected method to one or more metrics.
   final pulumi.Input<List<MetricRuleResponse>> metricRules;
 
   /// Creates a new [QuotaResponse].
   /// [limits] List of QuotaLimit definitions for the service.
   /// [metricRules] List of MetricRule definitions, each one mapping a selected method to one or more metrics.
-  QuotaResponse({
-    required this.limits,
-    required this.metricRules,
-  });
+  QuotaResponse({required this.limits, required this.metricRules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'limits': pulumi.Input.mapInputValue<List<QuotaLimitResponse>, List<Map<String, dynamic>>>(limits, (value) => pulumi.Input.encodeList<QuotaLimitResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'metricRules': pulumi.Input.mapInputValue<List<MetricRuleResponse>, List<Map<String, dynamic>>>(metricRules, (value) => pulumi.Input.encodeList<MetricRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'limits':
+          pulumi.Input.mapInputValue<
+            List<QuotaLimitResponse>,
+            List<Map<String, dynamic>>
+          >(
+            limits,
+            (value) =>
+                pulumi.Input.encodeList<
+                  QuotaLimitResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'metricRules':
+          pulumi.Input.mapInputValue<
+            List<MetricRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            metricRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MetricRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory QuotaResponse.fromMap(Map<String, dynamic> map) {
     return QuotaResponse(
-      limits: (pulumi.Input.decodeList<QuotaLimitResponse>(map['limits'], (value) => QuotaLimitResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricRules: (pulumi.Input.decodeList<MetricRuleResponse>(map['metricRules'], (value) => MetricRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<QuotaLimitResponse>(
+          map['limits']!,
+          (value) => QuotaLimitResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      metricRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MetricRuleResponse>(
+          map['metricRules']!,
+          (value) => MetricRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

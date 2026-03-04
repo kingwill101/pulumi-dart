@@ -4,16 +4,17 @@ enum ClusterAuthorizationModeRedisV1beta1 {
   authModeIamAuth("AUTH_MODE_IAM_AUTH"),
   authModeDisabled("AUTH_MODE_DISABLED");
 
-  const ClusterAuthorizationModeRedisV1beta1(this.value);
-  final String value;
+  const ClusterAuthorizationModeRedisV1beta1(this.wireValue);
+  final String wireValue;
 
   static ClusterAuthorizationModeRedisV1beta1 fromValue(String value) {
     for (final item in ClusterAuthorizationModeRedisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClusterAuthorizationModeRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ClusterAuthorizationModeRedisV1beta1 value: $value',
+    );
   }
 }
-

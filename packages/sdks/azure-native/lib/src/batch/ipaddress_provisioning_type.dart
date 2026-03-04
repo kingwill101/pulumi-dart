@@ -4,16 +4,15 @@ enum IPAddressProvisioningType {
   userManaged("UserManaged"),
   noPublicIPAddresses("NoPublicIPAddresses");
 
-  const IPAddressProvisioningType(this.value);
-  final String value;
+  const IPAddressProvisioningType(this.wireValue);
+  final String wireValue;
 
   static IPAddressProvisioningType fromValue(String value) {
     for (final item in IPAddressProvisioningType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IPAddressProvisioningType value: $value');
   }
 }
-

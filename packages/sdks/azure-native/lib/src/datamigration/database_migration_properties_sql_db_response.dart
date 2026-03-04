@@ -10,38 +10,56 @@ import 'sql_db_offline_configuration_response.dart';
 class DatabaseMigrationPropertiesSqlDbResponse {
   /// Database migration end time.
   final pulumi.Input<String> endedOn;
+
   /// Expected value is 'SqlDb'.
   final pulumi.Input<String> kind;
+
   /// Error details in case of migration failure.
   final pulumi.Input<ErrorInfoResponse> migrationFailureError;
+
   /// ID for current migration operation.
   final pulumi.Input<String>? migrationOperationId;
+
   /// Resource Id of the Migration Service.
   final pulumi.Input<String>? migrationService;
+
   /// Migration status.
   final pulumi.Input<String> migrationStatus;
+
   /// Detailed migration status. Not included by default.
-  final pulumi.Input<SqlDbMigrationStatusDetailsResponse> migrationStatusDetails;
+  final pulumi.Input<SqlDbMigrationStatusDetailsResponse>
+  migrationStatusDetails;
+
   /// Offline configuration.
   final pulumi.Input<SqlDbOfflineConfigurationResponse> offlineConfiguration;
+
   /// Error message for migration provisioning failure, if any.
   final pulumi.Input<String>? provisioningError;
+
   /// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
   final pulumi.Input<String> provisioningState;
+
   /// Resource Id of the target resource.
   final pulumi.Input<String>? scope;
+
   /// Name of the source database.
   final pulumi.Input<String>? sourceDatabaseName;
+
   /// Name of the source sql server.
   final pulumi.Input<String> sourceServerName;
+
   /// Source SQL Server connection details.
   final pulumi.Input<SqlConnectionInformationResponse>? sourceSqlConnection;
+
   /// Database migration start time.
   final pulumi.Input<String> startedOn;
+
   /// List of tables to copy.
   final pulumi.Input<List<String>>? tableList;
+
   /// Database collation to be used for the target database.
   final pulumi.Input<String>? targetDatabaseCollation;
+
   /// Target SQL DB connection details.
   final pulumi.Input<SqlConnectionInformationResponse>? targetSqlConnection;
 
@@ -89,46 +107,127 @@ class DatabaseMigrationPropertiesSqlDbResponse {
     return <String, dynamic>{
       'endedOn': endedOn,
       'kind': kind,
-      'migrationFailureError': pulumi.Input.mapInputValue<ErrorInfoResponse, Map<String, dynamic>>(migrationFailureError, (value) => value.toMap()),
+      'migrationFailureError':
+          pulumi.Input.mapInputValue<ErrorInfoResponse, Map<String, dynamic>>(
+            migrationFailureError,
+            (value) => value.toMap(),
+          ),
       'migrationOperationId': ?migrationOperationId,
       'migrationService': ?migrationService,
       'migrationStatus': migrationStatus,
-      'migrationStatusDetails': pulumi.Input.mapInputValue<SqlDbMigrationStatusDetailsResponse, Map<String, dynamic>>(migrationStatusDetails, (value) => value.toMap()),
-      'offlineConfiguration': pulumi.Input.mapInputValue<SqlDbOfflineConfigurationResponse, Map<String, dynamic>>(offlineConfiguration, (value) => value.toMap()),
+      'migrationStatusDetails':
+          pulumi.Input.mapInputValue<
+            SqlDbMigrationStatusDetailsResponse,
+            Map<String, dynamic>
+          >(migrationStatusDetails, (value) => value.toMap()),
+      'offlineConfiguration':
+          pulumi.Input.mapInputValue<
+            SqlDbOfflineConfigurationResponse,
+            Map<String, dynamic>
+          >(offlineConfiguration, (value) => value.toMap()),
       'provisioningError': ?provisioningError,
       'provisioningState': provisioningState,
       'scope': ?scope,
       'sourceDatabaseName': ?sourceDatabaseName,
       'sourceServerName': sourceServerName,
-      'sourceSqlConnection': ?pulumi.Input.mapOptionalInputValue<SqlConnectionInformationResponse, Map<String, dynamic>>(sourceSqlConnection, (value) => value.toMap()),
+      'sourceSqlConnection':
+          ?pulumi.Input.mapOptionalInputValue<
+            SqlConnectionInformationResponse,
+            Map<String, dynamic>
+          >(sourceSqlConnection, (value) => value.toMap()),
       'startedOn': startedOn,
       'tableList': ?tableList,
       'targetDatabaseCollation': ?targetDatabaseCollation,
-      'targetSqlConnection': ?pulumi.Input.mapOptionalInputValue<SqlConnectionInformationResponse, Map<String, dynamic>>(targetSqlConnection, (value) => value.toMap()),
+      'targetSqlConnection':
+          ?pulumi.Input.mapOptionalInputValue<
+            SqlConnectionInformationResponse,
+            Map<String, dynamic>
+          >(targetSqlConnection, (value) => value.toMap()),
     };
   }
 
-  factory DatabaseMigrationPropertiesSqlDbResponse.fromMap(Map<String, dynamic> map) {
+  factory DatabaseMigrationPropertiesSqlDbResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseMigrationPropertiesSqlDbResponse(
-      endedOn: (map['endedOn'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      migrationFailureError: (ErrorInfoResponse.fromMap((map['migrationFailureError'] as Map).cast<String, dynamic>())).input(),
-      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId']! as String).input(),
-      migrationService: map['migrationService'] == null ? null : (map['migrationService']! as String).input(),
-      migrationStatus: (map['migrationStatus'] as String).input(),
-      migrationStatusDetails: (SqlDbMigrationStatusDetailsResponse.fromMap((map['migrationStatusDetails'] as Map).cast<String, dynamic>())).input(),
-      offlineConfiguration: (SqlDbOfflineConfigurationResponse.fromMap((map['offlineConfiguration'] as Map).cast<String, dynamic>())).input(),
-      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName']! as String).input(),
-      sourceServerName: (map['sourceServerName'] as String).input(),
-      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformationResponse.fromMap((map['sourceSqlConnection']! as Map).cast<String, dynamic>())).input(),
-      startedOn: (map['startedOn'] as String).input(),
-      tableList: map['tableList'] == null ? null : ((map['tableList']! as List).cast<String>()).input(),
-      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation']! as String).input(),
-      targetSqlConnection: map['targetSqlConnection'] == null ? null : (SqlConnectionInformationResponse.fromMap((map['targetSqlConnection']! as Map).cast<String, dynamic>())).input(),
+      endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      migrationFailureError: pulumi.Input.fromValue(
+        ErrorInfoResponse.fromMap(
+          (map['migrationFailureError']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      migrationOperationId: (() {
+        final guardedValue = map['migrationOperationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      migrationService: (() {
+        final guardedValue = map['migrationService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      migrationStatus: pulumi.Input.fromValue(map['migrationStatus'] as String),
+      migrationStatusDetails: pulumi.Input.fromValue(
+        SqlDbMigrationStatusDetailsResponse.fromMap(
+          (map['migrationStatusDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      offlineConfiguration: pulumi.Input.fromValue(
+        SqlDbOfflineConfigurationResponse.fromMap(
+          (map['offlineConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisioningError: (() {
+        final guardedValue = map['provisioningError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceDatabaseName: (() {
+        final guardedValue = map['sourceDatabaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceServerName: pulumi.Input.fromValue(
+        map['sourceServerName'] as String,
+      ),
+      sourceSqlConnection: (() {
+        final guardedValue = map['sourceSqlConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SqlConnectionInformationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
+      tableList: (() {
+        final guardedValue = map['tableList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targetDatabaseCollation: (() {
+        final guardedValue = map['targetDatabaseCollation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetSqlConnection: (() {
+        final guardedValue = map['targetSqlConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SqlConnectionInformationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

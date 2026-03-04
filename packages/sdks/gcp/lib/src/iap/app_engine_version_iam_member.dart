@@ -13,11 +13,11 @@ import 'app_engine_version_iam_member_state.dart';
 ///
 /// * `gcp.iap.AppEngineVersionIamPolicy`: Retrieves the IAM policy for the appengineversion
 ///
-/// > **Note:** `gcp.iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineVersionIamBinding` and `gcp.iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineVersionIamBinding` and `gcp.iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.iap.AppEngineVersionIamPolicy
@@ -960,11 +960,11 @@ import 'app_engine_version_iam_member_state.dart';
 ///
 /// * `gcp.iap.AppEngineVersionIamPolicy`: Retrieves the IAM policy for the appengineversion
 ///
-/// > **Note:** `gcp.iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineVersionIamBinding` and `gcp.iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineVersionIamBinding` and `gcp.iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.iap.AppEngineVersionIamPolicy
@@ -1925,17 +1925,20 @@ import 'app_engine_version_iam_member_state.dart';
 /// $ pulumi import gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember editor projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class AppEngineVersionIamMember extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> appId;
+
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<AppEngineVersionIamMemberCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -1949,15 +1952,19 @@ class AppEngineVersionIamMember extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<String> member;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.iap.AppEngineVersionIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
+
   /// Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> service;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> versionId;
 
@@ -1970,19 +1977,21 @@ class AppEngineVersionIamMember extends pulumi.CustomResource {
     AppEngineVersionIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.condition = registerOutput<AppEngineVersionIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
-    this.service = registerOutput<String>('service');
-    this.versionId = registerOutput<String>('versionId');
+         'gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    condition = registerOutput<AppEngineVersionIamMemberCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    service = registerOutput<String>('service');
+    versionId = registerOutput<String>('versionId');
   }
 
   /// Gets an existing [AppEngineVersionIamMember] resource's state with the given [name] and [id].
@@ -2003,18 +2012,20 @@ class AppEngineVersionIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.condition = registerOutput<AppEngineVersionIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
-    this.service = registerOutput<String>('service');
-    this.versionId = registerOutput<String>('versionId');
+         'gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    condition = registerOutput<AppEngineVersionIamMemberCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    service = registerOutput<String>('service');
+    versionId = registerOutput<String>('versionId');
   }
 }

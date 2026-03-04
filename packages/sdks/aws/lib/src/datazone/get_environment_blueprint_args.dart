@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentBlueprintArgs {
   /// ID of the domain.
   final pulumi.Input<String> domainId;
+
   /// Whether the blueprint is managed by Amazon DataZone.
   final pulumi.Input<bool> managed;
+
   /// Name of the blueprint.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,14 @@ class GetEnvironmentBlueprintArgs {
 
   factory GetEnvironmentBlueprintArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentBlueprintArgs(
-      domainId: (map['domainId'] as String).input(),
-      managed: (map['managed'] as bool).input(),
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      domainId: pulumi.Input.fromValue(map['domainId'] as String),
+      managed: pulumi.Input.fromValue(map['managed'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

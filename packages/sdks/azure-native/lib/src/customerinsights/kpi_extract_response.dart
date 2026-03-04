@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KpiExtractResponse {
   /// The expression.
   final pulumi.Input<String> expression;
+
   /// KPI extract name.
   final pulumi.Input<String> extractName;
 
   /// Creates a new [KpiExtractResponse].
   /// [expression] The expression.
   /// [extractName] KPI extract name.
-  KpiExtractResponse({
-    required this.expression,
-    required this.extractName,
-  });
+  KpiExtractResponse({required this.expression, required this.extractName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class KpiExtractResponse {
 
   factory KpiExtractResponse.fromMap(Map<String, dynamic> map) {
     return KpiExtractResponse(
-      expression: (map['expression'] as String).input(),
-      extractName: (map['extractName'] as String).input(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
+      extractName: pulumi.Input.fromValue(map['extractName'] as String),
     );
   }
 }
-

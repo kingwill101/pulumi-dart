@@ -8,6 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_aiplatform_v1beta1_dataset_version_aiplatform_v1beta1_args_doc}
 class DatasetVersionAiplatformV1beta1Args {
   final pulumi.Input<String> datasetId;
+
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String>? etag;
   final pulumi.Input<String>? location;
@@ -34,13 +35,26 @@ class DatasetVersionAiplatformV1beta1Args {
     };
   }
 
-  factory DatasetVersionAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory DatasetVersionAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatasetVersionAiplatformV1beta1Args(
-      datasetId: (map['datasetId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

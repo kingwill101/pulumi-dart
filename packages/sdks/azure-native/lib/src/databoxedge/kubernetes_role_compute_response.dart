@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesRoleComputeResponse {
   /// Memory in bytes
   final pulumi.Input<double> memoryInBytes;
+
   /// Processor count
   final pulumi.Input<int> processorCount;
+
   /// VM profile
   final pulumi.Input<String> vmProfile;
 
@@ -31,10 +33,9 @@ class KubernetesRoleComputeResponse {
 
   factory KubernetesRoleComputeResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleComputeResponse(
-      memoryInBytes: (map['memoryInBytes'] as double).input(),
-      processorCount: (map['processorCount'] as int).input(),
-      vmProfile: (map['vmProfile'] as String).input(),
+      memoryInBytes: pulumi.Input.fromValue(map['memoryInBytes'] as double),
+      processorCount: pulumi.Input.fromValue(map['processorCount'] as int),
+      vmProfile: pulumi.Input.fromValue(map['vmProfile'] as String),
     );
   }
 }
-

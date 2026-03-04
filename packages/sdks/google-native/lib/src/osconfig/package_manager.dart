@@ -7,16 +7,15 @@ enum PackageManager {
   zypper("ZYPPER"),
   goo("GOO");
 
-  const PackageManager(this.value);
-  final String value;
+  const PackageManager(this.wireValue);
+  final String wireValue;
 
   static PackageManager fromValue(String value) {
     for (final item in PackageManager.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PackageManager value: $value');
   }
 }
-

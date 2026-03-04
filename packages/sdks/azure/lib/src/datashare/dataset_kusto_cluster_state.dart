@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetKustoClusterState {
   /// The name of the Data Share Dataset.
   final pulumi.Input<String>? displayName;
+
   /// The resource ID of the Kusto Cluster to be shared with the receiver. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   final pulumi.Input<String>? kustoClusterId;
+
   /// The location of the Kusto Cluster.
   final pulumi.Input<String>? kustoClusterLocation;
+
   /// The name which should be used for this Data Share Kusto Cluster Dataset. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   final pulumi.Input<String>? name;
+
   /// The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   final pulumi.Input<String>? shareId;
 
@@ -41,12 +45,31 @@ class DatasetKustoClusterState {
 
   factory DatasetKustoClusterState.fromMap(Map<String, dynamic> map) {
     return DatasetKustoClusterState(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      kustoClusterId: map['kustoClusterId'] == null ? null : (map['kustoClusterId']! as String).input(),
-      kustoClusterLocation: map['kustoClusterLocation'] == null ? null : (map['kustoClusterLocation']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kustoClusterId: (() {
+        final guardedValue = map['kustoClusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kustoClusterLocation: (() {
+        final guardedValue = map['kustoClusterLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareId: (() {
+        final guardedValue = map['shareId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

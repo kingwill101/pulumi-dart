@@ -7,8 +7,10 @@ import 'subscription_state_override_action_response.dart';
 class ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse {
   /// The soft delete TTL.
   final pulumi.Input<String>? softDeleteTTL;
+
   /// The subscription state override actions.
-  final pulumi.Input<List<SubscriptionStateOverrideActionResponse>>? subscriptionStateOverrideActions;
+  final pulumi.Input<List<SubscriptionStateOverrideActionResponse>>?
+  subscriptionStateOverrideActions;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse].
   /// [softDeleteTTL] The soft delete TTL.
@@ -21,15 +23,42 @@ class ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifi
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'softDeleteTTL': ?softDeleteTTL,
-      'subscriptionStateOverrideActions': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionStateOverrideActionResponse>, List<Map<String, dynamic>>>(subscriptionStateOverrideActions, (value) => pulumi.Input.encodeList<SubscriptionStateOverrideActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subscriptionStateOverrideActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubscriptionStateOverrideActionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subscriptionStateOverrideActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SubscriptionStateOverrideActionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse(
-      softDeleteTTL: map['softDeleteTTL'] == null ? null : (map['softDeleteTTL']! as String).input(),
-      subscriptionStateOverrideActions: map['subscriptionStateOverrideActions'] == null ? null : (pulumi.Input.decodeList<SubscriptionStateOverrideActionResponse>(map['subscriptionStateOverrideActions']!, (value) => SubscriptionStateOverrideActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      softDeleteTTL: (() {
+        final guardedValue = map['softDeleteTTL'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionStateOverrideActions: (() {
+        final guardedValue = map['subscriptionStateOverrideActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubscriptionStateOverrideActionResponse>(
+            guardedValue,
+            (value) => SubscriptionStateOverrideActionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

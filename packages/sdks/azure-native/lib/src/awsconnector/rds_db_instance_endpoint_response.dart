@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RdsDbInstanceEndpointResponse {
   /// Specifies the DNS address of the DB instance.
   final pulumi.Input<String>? address;
+
   /// Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
   final pulumi.Input<String>? hostedZoneId;
+
   /// Specifies the port that the database engine is listening on.
   final pulumi.Input<String>? port;
 
@@ -15,11 +17,7 @@ class RdsDbInstanceEndpointResponse {
   /// [address] Specifies the DNS address of the DB instance.
   /// [hostedZoneId] Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
   /// [port] Specifies the port that the database engine is listening on.
-  RdsDbInstanceEndpointResponse({
-    this.address,
-    this.hostedZoneId,
-    this.port,
-  });
+  RdsDbInstanceEndpointResponse({this.address, this.hostedZoneId, this.port});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class RdsDbInstanceEndpointResponse {
 
   factory RdsDbInstanceEndpointResponse.fromMap(Map<String, dynamic> map) {
     return RdsDbInstanceEndpointResponse(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostedZoneId: (() {
+        final guardedValue = map['hostedZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

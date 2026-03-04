@@ -4,16 +4,15 @@ enum CustomImageOsType {
   linux("Linux"),
   none("None");
 
-  const CustomImageOsType(this.value);
-  final String value;
+  const CustomImageOsType(this.wireValue);
+  final String wireValue;
 
   static CustomImageOsType fromValue(String value) {
     for (final item in CustomImageOsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CustomImageOsType value: $value');
   }
 }
-

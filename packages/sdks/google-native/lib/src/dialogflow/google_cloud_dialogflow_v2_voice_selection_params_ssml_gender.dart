@@ -5,16 +5,20 @@ enum GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender {
   ssmlVoiceGenderFemale("SSML_VOICE_GENDER_FEMALE"),
   ssmlVoiceGenderNeutral("SSML_VOICE_GENDER_NEUTRAL");
 
-  const GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender value: $value',
+    );
   }
 }
-

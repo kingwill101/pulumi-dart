@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudRunRewrite {
   /// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
   final pulumi.Input<String>? region;
+
   /// User-defined ID of the Cloud Run service.
   final pulumi.Input<String> serviceId;
+
   /// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
   final pulumi.Input<String>? tag;
 
@@ -15,11 +17,7 @@ class CloudRunRewrite {
   /// [region] Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
   /// [serviceId] User-defined ID of the Cloud Run service.
   /// [tag] Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
-  CloudRunRewrite({
-    this.region,
-    required this.serviceId,
-    this.tag,
-  });
+  CloudRunRewrite({this.region, required this.serviceId, this.tag});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class CloudRunRewrite {
 
   factory CloudRunRewrite.fromMap(Map<String, dynamic> map) {
     return CloudRunRewrite(
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
+      tag: (() {
+        final guardedValue = map['tag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

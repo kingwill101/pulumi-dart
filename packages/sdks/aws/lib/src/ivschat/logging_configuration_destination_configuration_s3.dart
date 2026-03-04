@@ -10,20 +10,17 @@ class LoggingConfigurationDestinationConfigurationS3 {
 
   /// Creates a new [LoggingConfigurationDestinationConfigurationS3].
   /// [bucketName] Name of the Amazon S3 bucket where chat activity will be logged.
-  LoggingConfigurationDestinationConfigurationS3({
-    required this.bucketName,
-  });
+  LoggingConfigurationDestinationConfigurationS3({required this.bucketName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketName': bucketName,
-    };
+    return <String, dynamic>{'bucketName': bucketName};
   }
 
-  factory LoggingConfigurationDestinationConfigurationS3.fromMap(Map<String, dynamic> map) {
+  factory LoggingConfigurationDestinationConfigurationS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoggingConfigurationDestinationConfigurationS3(
-      bucketName: (map['bucketName'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
     );
   }
 }
-

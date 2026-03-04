@@ -9,20 +9,19 @@ class SessionIngressResponse {
 
   /// Creates a new [SessionIngressResponse].
   /// [targetPort] Target port in containers for traffic from ingress
-  SessionIngressResponse({
-    this.targetPort,
-  });
+  SessionIngressResponse({this.targetPort});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetPort': ?targetPort,
-    };
+    return <String, dynamic>{'targetPort': ?targetPort};
   }
 
   factory SessionIngressResponse.fromMap(Map<String, dynamic> map) {
     return SessionIngressResponse(
-      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
+      targetPort: (() {
+        final guardedValue = map['targetPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

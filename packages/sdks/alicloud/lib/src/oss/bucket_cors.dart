@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_cors_args.dart';
-import 'bucket_cors_cors_rule.dart';
 import 'bucket_cors_state.dart';
 
 /// Provides a OSS Bucket Cors resource. Cross-Origin Resource Sharing (CORS) allows web applications to access resources in other regions.
 ///
 /// For information about OSS Bucket Cors and how to use it, see [What is Bucket Cors](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketcors).
 ///
-/// > **NOTE:** Available since v1.223.0.
+/// &gt; **NOTE:** Available since v1.223.0.
 ///
 /// ## Example Usage
 ///
@@ -276,8 +275,10 @@ import 'bucket_cors_state.dart';
 class BucketCors extends pulumi.CustomResource {
   /// The name of the Bucket.
   late final pulumi.Output<String> bucket;
+
   /// The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
-  late final pulumi.Output<List<BucketCorsCorsRule>> corsRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> corsRules;
+
   /// Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
   late final pulumi.Output<bool> responseVary;
 
@@ -290,14 +291,14 @@ class BucketCors extends pulumi.CustomResource {
     BucketCorsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketCors:BucketCors',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.corsRules = registerOutput<List<BucketCorsCorsRule>>('corsRules');
-    this.responseVary = registerOutput<bool>('responseVary');
+         'alicloud:oss/bucketCors:BucketCors',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    responseVary = registerOutput<bool>('responseVary');
   }
 
   /// Gets an existing [BucketCors] resource's state with the given [name] and [id].
@@ -318,13 +319,13 @@ class BucketCors extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketCors:BucketCors',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.corsRules = registerOutput<List<BucketCorsCorsRule>>('corsRules');
-    this.responseVary = registerOutput<bool>('responseVary');
+         'alicloud:oss/bucketCors:BucketCors',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    responseVary = registerOutput<bool>('responseVary');
   }
 }

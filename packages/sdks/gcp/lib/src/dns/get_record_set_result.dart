@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRecordSet.
 class GetRecordSetResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -8,8 +7,10 @@ class GetRecordSetResult {
   final String managedZone;
   final String name;
   final String? project;
+
   /// The string data for the records in this record set.
   final List<String> rrdatas;
+
   /// The time-to-live of this record set (seconds).
   final int ttl;
   final String type;
@@ -49,11 +50,14 @@ class GetRecordSetResult {
       id: map['id'] as String,
       managedZone: map['managedZone'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       rrdatas: (map['rrdatas'] as List).cast<String>(),
       ttl: map['ttl'] as int,
       type: map['type'] as String,
     );
   }
 }
-

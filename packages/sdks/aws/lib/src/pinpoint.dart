@@ -1,5 +1,3 @@
-library module_pinpoint;
-
 export 'pinpoint/adm_channel.dart';
 export 'pinpoint/adm_channel_args.dart';
 export 'pinpoint/adm_channel_state.dart';

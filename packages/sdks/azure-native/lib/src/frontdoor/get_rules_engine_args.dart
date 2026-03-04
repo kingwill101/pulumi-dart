@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesEngineArgs {
   /// Name of the Front Door which is globally unique.
   final pulumi.Input<String> frontDoorName;
+
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Rules Engine which is unique within the Front Door.
   final pulumi.Input<String> rulesEngineName;
 
@@ -34,10 +36,11 @@ class GetRulesEngineArgs {
 
   factory GetRulesEngineArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesEngineArgs(
-      frontDoorName: (map['frontDoorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rulesEngineName: (map['rulesEngineName'] as String).input(),
+      frontDoorName: pulumi.Input.fromValue(map['frontDoorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rulesEngineName: pulumi.Input.fromValue(map['rulesEngineName'] as String),
     );
   }
 }
-

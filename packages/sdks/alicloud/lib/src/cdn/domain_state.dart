@@ -72,19 +72,61 @@ class DomainState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authConfig': ?pulumi.Input.mapOptionalInputValue<DomainAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'authConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainAuthConfig,
+            Map<String, dynamic>
+          >(authConfig, (value) => value.toMap()),
       'blockIps': ?blockIps,
-      'cacheConfigs': ?pulumi.Input.mapOptionalInputValue<List<DomainCacheConfig>, List<Map<String, dynamic>>>(cacheConfigs, (value) => pulumi.Input.encodeList<DomainCacheConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cacheConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainCacheConfig>,
+            List<Map<String, dynamic>>
+          >(
+            cacheConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainCacheConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'cdnType': ?cdnType,
-      'certificateConfig': ?pulumi.Input.mapOptionalInputValue<DomainCertificateConfig, Map<String, dynamic>>(certificateConfig, (value) => value.toMap()),
+      'certificateConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainCertificateConfig,
+            Map<String, dynamic>
+          >(certificateConfig, (value) => value.toMap()),
       'domainName': ?domainName,
-      'httpHeaderConfigs': ?pulumi.Input.mapOptionalInputValue<List<DomainHttpHeaderConfig>, List<Map<String, dynamic>>>(httpHeaderConfigs, (value) => pulumi.Input.encodeList<DomainHttpHeaderConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'httpHeaderConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainHttpHeaderConfig>,
+            List<Map<String, dynamic>>
+          >(
+            httpHeaderConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainHttpHeaderConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'optimizeEnable': ?optimizeEnable,
-      'page404Config': ?pulumi.Input.mapOptionalInputValue<DomainPage404Config, Map<String, dynamic>>(page404Config, (value) => value.toMap()),
+      'page404Config':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainPage404Config,
+            Map<String, dynamic>
+          >(page404Config, (value) => value.toMap()),
       'pageCompressEnable': ?pageCompressEnable,
-      'parameterFilterConfig': ?pulumi.Input.mapOptionalInputValue<DomainParameterFilterConfig, Map<String, dynamic>>(parameterFilterConfig, (value) => value.toMap()),
+      'parameterFilterConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainParameterFilterConfig,
+            Map<String, dynamic>
+          >(parameterFilterConfig, (value) => value.toMap()),
       'rangeEnable': ?rangeEnable,
-      'referConfig': ?pulumi.Input.mapOptionalInputValue<DomainReferConfig, Map<String, dynamic>>(referConfig, (value) => value.toMap()),
+      'referConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainReferConfig,
+            Map<String, dynamic>
+          >(referConfig, (value) => value.toMap()),
       'scope': ?scope,
       'sourcePort': ?sourcePort,
       'sourceType': ?sourceType,
@@ -95,25 +137,130 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      authConfig: map['authConfig'] == null ? null : (DomainAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
-      blockIps: map['blockIps'] == null ? null : ((map['blockIps']! as List).cast<String>()).input(),
-      cacheConfigs: map['cacheConfigs'] == null ? null : (pulumi.Input.decodeList<DomainCacheConfig>(map['cacheConfigs']!, (value) => DomainCacheConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cdnType: map['cdnType'] == null ? null : (map['cdnType']! as String).input(),
-      certificateConfig: map['certificateConfig'] == null ? null : (DomainCertificateConfig.fromMap((map['certificateConfig']! as Map).cast<String, dynamic>())).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      httpHeaderConfigs: map['httpHeaderConfigs'] == null ? null : (pulumi.Input.decodeList<DomainHttpHeaderConfig>(map['httpHeaderConfigs']!, (value) => DomainHttpHeaderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      optimizeEnable: map['optimizeEnable'] == null ? null : (map['optimizeEnable']! as String).input(),
-      page404Config: map['page404Config'] == null ? null : (DomainPage404Config.fromMap((map['page404Config']! as Map).cast<String, dynamic>())).input(),
-      pageCompressEnable: map['pageCompressEnable'] == null ? null : (map['pageCompressEnable']! as String).input(),
-      parameterFilterConfig: map['parameterFilterConfig'] == null ? null : (DomainParameterFilterConfig.fromMap((map['parameterFilterConfig']! as Map).cast<String, dynamic>())).input(),
-      rangeEnable: map['rangeEnable'] == null ? null : (map['rangeEnable']! as String).input(),
-      referConfig: map['referConfig'] == null ? null : (DomainReferConfig.fromMap((map['referConfig']! as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort']! as int).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
-      sources: map['sources'] == null ? null : ((map['sources']! as List).cast<String>()).input(),
-      videoSeekEnable: map['videoSeekEnable'] == null ? null : (map['videoSeekEnable']! as String).input(),
+      authConfig: (() {
+        final guardedValue = map['authConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainAuthConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      blockIps: (() {
+        final guardedValue = map['blockIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cacheConfigs: (() {
+        final guardedValue = map['cacheConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainCacheConfig>(
+            guardedValue,
+            (value) => DomainCacheConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      cdnType: (() {
+        final guardedValue = map['cdnType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateConfig: (() {
+        final guardedValue = map['certificateConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainCertificateConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpHeaderConfigs: (() {
+        final guardedValue = map['httpHeaderConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainHttpHeaderConfig>(
+            guardedValue,
+            (value) => DomainHttpHeaderConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      optimizeEnable: (() {
+        final guardedValue = map['optimizeEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      page404Config: (() {
+        final guardedValue = map['page404Config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainPage404Config.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pageCompressEnable: (() {
+        final guardedValue = map['pageCompressEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterFilterConfig: (() {
+        final guardedValue = map['parameterFilterConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainParameterFilterConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rangeEnable: (() {
+        final guardedValue = map['rangeEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      referConfig: (() {
+        final guardedValue = map['referConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainReferConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourcePort: (() {
+        final guardedValue = map['sourcePort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sourceType: (() {
+        final guardedValue = map['sourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      videoSeekEnable: (() {
+        final guardedValue = map['videoSeekEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

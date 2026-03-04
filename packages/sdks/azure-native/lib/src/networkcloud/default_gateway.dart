@@ -4,16 +4,15 @@ enum DefaultGateway {
   valueTrue("True"),
   valueFalse("False");
 
-  const DefaultGateway(this.value);
-  final String value;
+  const DefaultGateway(this.wireValue);
+  final String wireValue;
 
   static DefaultGateway fromValue(String value) {
     for (final item in DefaultGateway.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefaultGateway value: $value');
   }
 }
-

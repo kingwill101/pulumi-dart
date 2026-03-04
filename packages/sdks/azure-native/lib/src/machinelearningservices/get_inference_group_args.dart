@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInferenceGroupArgs {
   /// InferenceGroup name.
   final pulumi.Input<String> groupName;
+
   /// InferencePool name.
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,12 @@ class GetInferenceGroupArgs {
 
   factory GetInferenceGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetInferenceGroupArgs(
-      groupName: (map['groupName'] as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

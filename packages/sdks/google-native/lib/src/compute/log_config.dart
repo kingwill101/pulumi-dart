@@ -9,8 +9,10 @@ import 'log_config_data_access_options.dart';
 class LogConfig {
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<LogConfigCloudAuditOptions>? cloudAudit;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<LogConfigCounterOptions>? counter;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<LogConfigDataAccessOptions>? dataAccess;
 
@@ -18,26 +20,57 @@ class LogConfig {
   /// [cloudAudit] This is deprecated and has no effect. Do not use.
   /// [counter] This is deprecated and has no effect. Do not use.
   /// [dataAccess] This is deprecated and has no effect. Do not use.
-  LogConfig({
-    this.cloudAudit,
-    this.counter,
-    this.dataAccess,
-  });
+  LogConfig({this.cloudAudit, this.counter, this.dataAccess});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudAudit': ?pulumi.Input.mapOptionalInputValue<LogConfigCloudAuditOptions, Map<String, dynamic>>(cloudAudit, (value) => value.toMap()),
-      'counter': ?pulumi.Input.mapOptionalInputValue<LogConfigCounterOptions, Map<String, dynamic>>(counter, (value) => value.toMap()),
-      'dataAccess': ?pulumi.Input.mapOptionalInputValue<LogConfigDataAccessOptions, Map<String, dynamic>>(dataAccess, (value) => value.toMap()),
+      'cloudAudit':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogConfigCloudAuditOptions,
+            Map<String, dynamic>
+          >(cloudAudit, (value) => value.toMap()),
+      'counter':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogConfigCounterOptions,
+            Map<String, dynamic>
+          >(counter, (value) => value.toMap()),
+      'dataAccess':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogConfigDataAccessOptions,
+            Map<String, dynamic>
+          >(dataAccess, (value) => value.toMap()),
     };
   }
 
   factory LogConfig.fromMap(Map<String, dynamic> map) {
     return LogConfig(
-      cloudAudit: map['cloudAudit'] == null ? null : (LogConfigCloudAuditOptions.fromMap((map['cloudAudit']! as Map).cast<String, dynamic>())).input(),
-      counter: map['counter'] == null ? null : (LogConfigCounterOptions.fromMap((map['counter']! as Map).cast<String, dynamic>())).input(),
-      dataAccess: map['dataAccess'] == null ? null : (LogConfigDataAccessOptions.fromMap((map['dataAccess']! as Map).cast<String, dynamic>())).input(),
+      cloudAudit: (() {
+        final guardedValue = map['cloudAudit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogConfigCloudAuditOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      counter: (() {
+        final guardedValue = map['counter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogConfigCounterOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataAccess: (() {
+        final guardedValue = map['dataAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogConfigDataAccessOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

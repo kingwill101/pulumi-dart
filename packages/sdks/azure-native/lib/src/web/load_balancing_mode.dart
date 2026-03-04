@@ -5,16 +5,15 @@ enum LoadBalancingMode {
   valuePublishing("Publishing"),
   valueWebPublishing("Web, Publishing");
 
-  const LoadBalancingMode(this.value);
-  final String value;
+  const LoadBalancingMode(this.wireValue);
+  final String wireValue;
 
   static LoadBalancingMode fromValue(String value) {
     for (final item in LoadBalancingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoadBalancingMode value: $value');
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpamIpamPoolAllocationsArgs {
   /// The allocated address segment.
   final pulumi.Input<String>? cidr;
+
   /// A list of Ipam Pool Allocation IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The instance ID of the ipam pool allocation.
   final pulumi.Input<String>? ipamPoolAllocationId;
+
   /// The name of the ipam pool allocation.It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? ipamPoolAllocationName;
+
   /// The ID of the IPAM Pool.
   final pulumi.Input<String> ipamPoolId;
+
   /// A regex string to filter results by Group Metric Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -54,14 +60,37 @@ class GetIpamIpamPoolAllocationsArgs {
 
   factory GetIpamIpamPoolAllocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolAllocationsArgs(
-      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : (map['ipamPoolAllocationId']! as String).input(),
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName']! as String).input(),
-      ipamPoolId: (map['ipamPoolId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipamPoolAllocationId: (() {
+        final guardedValue = map['ipamPoolAllocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamPoolAllocationName: (() {
+        final guardedValue = map['ipamPoolAllocationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DotNetComponentServiceBindResponse {
   /// Name of the service bind
   final pulumi.Input<String>? name;
+
   /// Resource id of the target service
   final pulumi.Input<String>? serviceId;
 
   /// Creates a new [DotNetComponentServiceBindResponse].
   /// [name] Name of the service bind
   /// [serviceId] Resource id of the target service
-  DotNetComponentServiceBindResponse({
-    this.name,
-    this.serviceId,
-  });
+  DotNetComponentServiceBindResponse({this.name, this.serviceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'serviceId': ?serviceId,
-    };
+    return <String, dynamic>{'name': ?name, 'serviceId': ?serviceId};
   }
 
   factory DotNetComponentServiceBindResponse.fromMap(Map<String, dynamic> map) {
     return DotNetComponentServiceBindResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: (() {
+        final guardedValue = map['serviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

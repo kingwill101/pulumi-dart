@@ -4,16 +4,17 @@ enum BuildOptionsSourceProvenanceHashItem {
   md5("MD5"),
   sha512("SHA512");
 
-  const BuildOptionsSourceProvenanceHashItem(this.value);
-  final String value;
+  const BuildOptionsSourceProvenanceHashItem(this.wireValue);
+  final String wireValue;
 
   static BuildOptionsSourceProvenanceHashItem fromValue(String value) {
     for (final item in BuildOptionsSourceProvenanceHashItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BuildOptionsSourceProvenanceHashItem value: $value');
+    throw ArgumentError(
+      'Unknown BuildOptionsSourceProvenanceHashItem value: $value',
+    );
   }
 }
-

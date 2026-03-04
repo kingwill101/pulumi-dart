@@ -4,16 +4,15 @@ enum TestType {
   valueFunctionalTest("FunctionalTest"),
   valueFlowDrivenTest("FlowDrivenTest");
 
-  const TestType(this.value);
-  final String value;
+  const TestType(this.wireValue);
+  final String wireValue;
 
   static TestType fromValue(String value) {
     for (final item in TestType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TestType value: $value');
   }
 }
-

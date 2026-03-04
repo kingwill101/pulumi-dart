@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SQLTempDbSettingsResponse {
   /// SQL Server tempdb data file count
   final pulumi.Input<int>? dataFileCount;
+
   /// SQL Server tempdb data file size
   final pulumi.Input<int>? dataFileSize;
+
   /// SQL Server tempdb data file autoGrowth size
   final pulumi.Input<int>? dataGrowth;
+
   /// SQL Server default file path
   final pulumi.Input<String>? defaultFilePath;
+
   /// SQL Server tempdb log file size
   final pulumi.Input<int>? logFileSize;
+
   /// SQL Server tempdb log file autoGrowth size
   final pulumi.Input<int>? logGrowth;
+
   /// Logical Unit Numbers for the disks.
   final pulumi.Input<List<int>>? luns;
+
   /// SQL Server tempdb persist folder choice
   final pulumi.Input<bool>? persistFolder;
+
   /// SQL Server tempdb persist folder location
   final pulumi.Input<String>? persistFolderPath;
+
   /// Use storage pool to build a drive if true or not provided
   final pulumi.Input<bool>? useStoragePool;
 
@@ -66,17 +75,56 @@ class SQLTempDbSettingsResponse {
 
   factory SQLTempDbSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SQLTempDbSettingsResponse(
-      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount']! as int).input(),
-      dataFileSize: map['dataFileSize'] == null ? null : (map['dataFileSize']! as int).input(),
-      dataGrowth: map['dataGrowth'] == null ? null : (map['dataGrowth']! as int).input(),
-      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath']! as String).input(),
-      logFileSize: map['logFileSize'] == null ? null : (map['logFileSize']! as int).input(),
-      logGrowth: map['logGrowth'] == null ? null : (map['logGrowth']! as int).input(),
-      luns: map['luns'] == null ? null : ((map['luns']! as List).cast<int>()).input(),
-      persistFolder: map['persistFolder'] == null ? null : (map['persistFolder']! as bool).input(),
-      persistFolderPath: map['persistFolderPath'] == null ? null : (map['persistFolderPath']! as String).input(),
-      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool']! as bool).input(),
+      dataFileCount: (() {
+        final guardedValue = map['dataFileCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataFileSize: (() {
+        final guardedValue = map['dataFileSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataGrowth: (() {
+        final guardedValue = map['dataGrowth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      defaultFilePath: (() {
+        final guardedValue = map['defaultFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logFileSize: (() {
+        final guardedValue = map['logFileSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      logGrowth: (() {
+        final guardedValue = map['logGrowth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      luns: (() {
+        final guardedValue = map['luns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      persistFolder: (() {
+        final guardedValue = map['persistFolder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      persistFolderPath: (() {
+        final guardedValue = map['persistFolderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useStoragePool: (() {
+        final guardedValue = map['useStoragePool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

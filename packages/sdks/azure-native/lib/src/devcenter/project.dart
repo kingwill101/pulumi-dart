@@ -318,30 +318,43 @@ import 'system_data_response.dart';
 class Project extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Settings to be used when associating a project with a catalog.
   late final pulumi.Output<ProjectCatalogSettingsResponse?> catalogSettings;
+
   /// Description of the project.
   late final pulumi.Output<String?> description;
+
   /// Resource Id of an associated DevCenter
   late final pulumi.Output<String?> devCenterId;
+
   /// The URI of the Dev Center resource this project is associated with.
   late final pulumi.Output<String> devCenterUri;
+
   /// The display name of the project.
   late final pulumi.Output<String?> displayName;
+
   /// Managed identity properties
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
   late final pulumi.Output<int?> maxDevBoxesPerUser;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -354,24 +367,26 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.catalogSettings = registerOutput<ProjectCatalogSettingsResponse?>('catalogSettings');
-    this.description = registerOutput<String?>('description');
-    this.devCenterId = registerOutput<String?>('devCenterId');
-    this.devCenterUri = registerOutput<String>('devCenterUri');
-    this.displayName = registerOutput<String?>('displayName');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maxDevBoxesPerUser = registerOutput<int?>('maxDevBoxesPerUser');
+         'azure-native:devcenter:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    catalogSettings = registerOutput<ProjectCatalogSettingsResponse?>(
+      'catalogSettings',
+    );
+    description = registerOutput<String?>('description');
+    devCenterId = registerOutput<String?>('devCenterId');
+    devCenterUri = registerOutput<String>('devCenterUri');
+    displayName = registerOutput<String?>('displayName');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    maxDevBoxesPerUser = registerOutput<int?>('maxDevBoxesPerUser');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

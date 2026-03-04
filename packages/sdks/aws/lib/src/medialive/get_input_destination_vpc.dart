@@ -23,9 +23,12 @@ class GetInputDestinationVpc {
 
   factory GetInputDestinationVpc.fromMap(Map<String, dynamic> map) {
     return GetInputDestinationVpc(
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
     );
   }
 }
-

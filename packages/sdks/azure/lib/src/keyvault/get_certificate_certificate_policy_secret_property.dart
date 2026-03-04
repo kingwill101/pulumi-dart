@@ -8,20 +8,17 @@ class GetCertificateCertificatePolicySecretProperty {
 
   /// Creates a new [GetCertificateCertificatePolicySecretProperty].
   /// [contentType] The Content-Type of the Certificate, for example `application/x-pkcs12` for a PFX or `application/x-pem-file` for a PEM.
-  GetCertificateCertificatePolicySecretProperty({
-    required this.contentType,
-  });
+  GetCertificateCertificatePolicySecretProperty({required this.contentType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'contentType': contentType,
-    };
+    return <String, dynamic>{'contentType': contentType};
   }
 
-  factory GetCertificateCertificatePolicySecretProperty.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateCertificatePolicySecretProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateCertificatePolicySecretProperty(
-      contentType: (map['contentType'] as String).input(),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
     );
   }
 }
-

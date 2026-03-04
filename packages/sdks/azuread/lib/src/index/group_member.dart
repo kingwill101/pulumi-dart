@@ -4,7 +4,7 @@ import 'group_member_state.dart';
 
 /// Manages a single group membership within Azure Active Directory.
 ///
-/// > **Warning** Do not use this resource at the same time as the `members` property of the `azuread.Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
+/// &gt; **Warning** Do not use this resource at the same time as the `members` property of the `azuread.Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
 ///
 /// ## API Permissions
 ///
@@ -181,10 +181,11 @@ import 'group_member_state.dart';
 /// $ pulumi import azuread:index/groupMember:GroupMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+/// &gt; This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
 class GroupMember extends pulumi.CustomResource {
   /// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> groupObjectId;
+
   /// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   late final pulumi.Output<String> memberObjectId;
 
@@ -197,13 +198,13 @@ class GroupMember extends pulumi.CustomResource {
     GroupMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/groupMember:GroupMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupObjectId = registerOutput<String>('groupObjectId');
-    this.memberObjectId = registerOutput<String>('memberObjectId');
+         'azuread:index/groupMember:GroupMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupObjectId = registerOutput<String>('groupObjectId');
+    memberObjectId = registerOutput<String>('memberObjectId');
   }
 
   /// Gets an existing [GroupMember] resource's state with the given [name] and [id].
@@ -224,12 +225,12 @@ class GroupMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/groupMember:GroupMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupObjectId = registerOutput<String>('groupObjectId');
-    this.memberObjectId = registerOutput<String>('memberObjectId');
+         'azuread:index/groupMember:GroupMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupObjectId = registerOutput<String>('groupObjectId');
+    memberObjectId = registerOutput<String>('memberObjectId');
   }
 }

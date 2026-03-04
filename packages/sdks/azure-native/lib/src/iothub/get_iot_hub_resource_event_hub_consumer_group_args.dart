@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIotHubResourceEventHubConsumerGroupArgs {
   /// The name of the Event Hub-compatible endpoint in the IoT hub.
   final pulumi.Input<String> eventHubEndpointName;
+
   /// The name of the consumer group to retrieve.
   final pulumi.Input<String> name;
+
   /// The name of the resource group that contains the IoT hub.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the IoT hub.
   final pulumi.Input<String> resourceName;
 
@@ -37,13 +40,18 @@ class GetIotHubResourceEventHubConsumerGroupArgs {
     };
   }
 
-  factory GetIotHubResourceEventHubConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetIotHubResourceEventHubConsumerGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIotHubResourceEventHubConsumerGroupArgs(
-      eventHubEndpointName: (map['eventHubEndpointName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      eventHubEndpointName: pulumi.Input.fromValue(
+        map['eventHubEndpointName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

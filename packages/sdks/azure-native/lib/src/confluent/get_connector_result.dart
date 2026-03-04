@@ -9,18 +9,26 @@ import 'system_data_response.dart';
 class GetConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Connector Info Base
   final ConnectorInfoBaseResponse? connectorBasicInfo;
+
   /// Connector Service type info base properties.
-  final AzureBlobStorageSinkConnectorServiceInfoResponse? connectorServiceTypeInfo;
+  final AzureBlobStorageSinkConnectorServiceInfoResponse?
+  connectorServiceTypeInfo;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The connection information consumed by applications.
   final KafkaAzureBlobStorageSinkConnectorInfoResponse? partnerConnectorInfo;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -47,11 +55,11 @@ class GetConnectorResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'connectorBasicInfo': ?connectorBasicInfo == null ? null : connectorBasicInfo!.toMap(),
-      'connectorServiceTypeInfo': ?connectorServiceTypeInfo == null ? null : connectorServiceTypeInfo!.toMap(),
+      'connectorBasicInfo': ?connectorBasicInfo?.toMap(),
+      'connectorServiceTypeInfo': ?connectorServiceTypeInfo?.toMap(),
       'id': id,
       'name': name,
-      'partnerConnectorInfo': ?partnerConnectorInfo == null ? null : partnerConnectorInfo!.toMap(),
+      'partnerConnectorInfo': ?partnerConnectorInfo?.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -60,14 +68,33 @@ class GetConnectorResult {
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectorBasicInfo: map['connectorBasicInfo'] == null ? null : ConnectorInfoBaseResponse.fromMap((map['connectorBasicInfo']! as Map).cast<String, dynamic>()),
-      connectorServiceTypeInfo: map['connectorServiceTypeInfo'] == null ? null : AzureBlobStorageSinkConnectorServiceInfoResponse.fromMap((map['connectorServiceTypeInfo']! as Map).cast<String, dynamic>()),
+      connectorBasicInfo: (() {
+        final guardedValue = map['connectorBasicInfo'];
+        if (guardedValue == null) return null;
+        return ConnectorInfoBaseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      connectorServiceTypeInfo: (() {
+        final guardedValue = map['connectorServiceTypeInfo'];
+        if (guardedValue == null) return null;
+        return AzureBlobStorageSinkConnectorServiceInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      partnerConnectorInfo: map['partnerConnectorInfo'] == null ? null : KafkaAzureBlobStorageSinkConnectorInfoResponse.fromMap((map['partnerConnectorInfo']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      partnerConnectorInfo: (() {
+        final guardedValue = map['partnerConnectorInfo'];
+        if (guardedValue == null) return null;
+        return KafkaAzureBlobStorageSinkConnectorInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

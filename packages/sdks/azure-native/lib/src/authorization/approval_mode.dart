@@ -5,16 +5,15 @@ enum ApprovalMode {
   valueParallel("Parallel"),
   valueNoApproval("NoApproval");
 
-  const ApprovalMode(this.value);
-  final String value;
+  const ApprovalMode(this.wireValue);
+  final String wireValue;
 
   static ApprovalMode fromValue(String value) {
     for (final item in ApprovalMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApprovalMode value: $value');
   }
 }
-

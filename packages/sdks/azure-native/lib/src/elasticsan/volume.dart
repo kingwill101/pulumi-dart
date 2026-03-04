@@ -319,22 +319,31 @@ import 'volume_args.dart';
 class Volume extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// State of the operation on the resource.
   late final pulumi.Output<SourceCreationDataResponse?> creationData;
+
   /// Parent resource information.
   late final pulumi.Output<ManagedByInfoResponse?> managedBy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Volume size.
   late final pulumi.Output<double> sizeGiB;
+
   /// Storage target information
   late final pulumi.Output<IscsiTargetInfoResponse> storageTarget;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Unique Id of the volume in GUID format
   late final pulumi.Output<String> volumeId;
 
@@ -342,25 +351,22 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_elasticsan_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(
-    String name, {
-    VolumeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:elasticsan:Volume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationData = registerOutput<SourceCreationDataResponse?>('creationData');
-    this.managedBy = registerOutput<ManagedByInfoResponse?>('managedBy');
+  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:elasticsan:Volume',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationData = registerOutput<SourceCreationDataResponse?>('creationData');
+    managedBy = registerOutput<ManagedByInfoResponse?>('managedBy');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sizeGiB = registerOutput<double>('sizeGiB');
-    this.storageTarget = registerOutput<IscsiTargetInfoResponse>('storageTarget');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.volumeId = registerOutput<String>('volumeId');
+    provisioningState = registerOutput<String>('provisioningState');
+    sizeGiB = registerOutput<double>('sizeGiB');
+    storageTarget = registerOutput<IscsiTargetInfoResponse>('storageTarget');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    volumeId = registerOutput<String>('volumeId');
   }
 }

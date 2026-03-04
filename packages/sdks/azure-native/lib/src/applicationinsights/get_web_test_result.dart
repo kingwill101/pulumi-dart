@@ -10,42 +10,61 @@ import 'web_test_properties_response_validation_rules.dart';
 class GetWebTestResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// An XML configuration specification for a WebTest.
   final WebTestPropertiesResponseConfiguration? configuration;
+
   /// User defined description for this WebTest.
   final String? description;
+
   /// Is the test actively being monitored.
   final bool? enabled;
+
   /// Interval in seconds between test runs for this WebTest. Default value is 300.
   final int? frequency;
+
   /// Azure resource Id
   final String id;
+
   /// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
   final String? kind;
+
   /// Resource location
   final String location;
+
   /// A list of where to physically run the tests from to give global coverage for accessibility of your application.
   final List<WebTestGeolocationResponse> locations;
+
   /// Azure resource name
   final String name;
+
   /// Current state of this component, whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
   final String provisioningState;
+
   /// The collection of request properties
   final WebTestPropertiesResponseRequest? request;
+
   /// Allow for retries should this WebTest fail.
   final bool? retryEnabled;
+
   /// Unique ID of this WebTest. This is typically the same value as the Name field.
   final String syntheticMonitorId;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// Seconds until this WebTest will timeout and fail. Default value is 30.
   final int? timeout;
+
   /// Azure resource type
   final String type;
+
   /// The collection of validation rule properties
   final WebTestPropertiesResponseValidationRules? validationRules;
+
   /// The kind of web test this is, valid choices are ping, multistep and standard.
   final String webTestKind;
+
   /// User defined name if this WebTest.
   final String webTestName;
 
@@ -96,23 +115,27 @@ class GetWebTestResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'configuration': ?configuration?.toMap(),
       'description': ?description,
       'enabled': ?enabled,
       'frequency': ?frequency,
       'id': id,
       'kind': ?kind,
       'location': location,
-      'locations': pulumi.Input.encodeList<WebTestGeolocationResponse, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'locations':
+          pulumi.Input.encodeList<
+            WebTestGeolocationResponse,
+            Map<String, dynamic>
+          >(locations, (value) => value.toMap()),
       'name': name,
       'provisioningState': provisioningState,
-      'request': ?request == null ? null : request!.toMap(),
+      'request': ?request?.toMap(),
       'retryEnabled': ?retryEnabled,
       'syntheticMonitorId': syntheticMonitorId,
       'tags': ?tags,
       'timeout': ?timeout,
       'type': type,
-      'validationRules': ?validationRules == null ? null : validationRules!.toMap(),
+      'validationRules': ?validationRules?.toMap(),
       'webTestKind': webTestKind,
       'webTestName': webTestName,
     };
@@ -121,26 +144,76 @@ class GetWebTestResult {
   factory GetWebTestResult.fromMap(Map<String, dynamic> map) {
     return GetWebTestResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      configuration: map['configuration'] == null ? null : WebTestPropertiesResponseConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description']! as String,
-      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
-      frequency: map['frequency'] == null ? null : map['frequency']! as int,
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return WebTestPropertiesResponseConfiguration.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      frequency: (() {
+        final guardedValue = map['frequency'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
-      locations: pulumi.Input.decodeList<WebTestGeolocationResponse>(map['locations'], (value) => WebTestGeolocationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      locations: pulumi.Input.decodeList<WebTestGeolocationResponse>(
+        map['locations']!,
+        (value) => WebTestGeolocationResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      request: map['request'] == null ? null : WebTestPropertiesResponseRequest.fromMap((map['request']! as Map).cast<String, dynamic>()),
-      retryEnabled: map['retryEnabled'] == null ? null : map['retryEnabled']! as bool,
+      request: (() {
+        final guardedValue = map['request'];
+        if (guardedValue == null) return null;
+        return WebTestPropertiesResponseRequest.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      retryEnabled: (() {
+        final guardedValue = map['retryEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       syntheticMonitorId: map['syntheticMonitorId'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      timeout: map['timeout'] == null ? null : map['timeout']! as int,
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       type: map['type'] as String,
-      validationRules: map['validationRules'] == null ? null : WebTestPropertiesResponseValidationRules.fromMap((map['validationRules']! as Map).cast<String, dynamic>()),
+      validationRules: (() {
+        final guardedValue = map['validationRules'];
+        if (guardedValue == null) return null;
+        return WebTestPropertiesResponseValidationRules.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       webTestKind: map['webTestKind'] as String,
       webTestName: map['webTestName'] as String,
     );
   }
 }
-

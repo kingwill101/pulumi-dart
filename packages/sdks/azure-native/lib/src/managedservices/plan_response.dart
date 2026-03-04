@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanResponse {
   /// Azure Marketplace plan name.
   final pulumi.Input<String> name;
+
   /// Azure Marketplace product code.
   final pulumi.Input<String> product;
+
   /// Azure Marketplace publisher ID.
   final pulumi.Input<String> publisher;
+
   /// Azure Marketplace plan's version.
   final pulumi.Input<String> version;
 
@@ -36,11 +39,10 @@ class PlanResponse {
 
   factory PlanResponse.fromMap(Map<String, dynamic> map) {
     return PlanResponse(
-      name: (map['name'] as String).input(),
-      product: (map['product'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      version: (map['version'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      product: pulumi.Input.fromValue(map['product'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'security_group_state.dart';
 ///
 /// For information about ENS Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createsnapshot).
 ///
-/// > **NOTE:** Available since v1.213.0.
+/// &gt; **NOTE:** Available since v1.213.0.
 ///
 /// ## Example Usage
 ///
@@ -139,6 +139,7 @@ import 'security_group_state.dart';
 class SecurityGroup extends pulumi.CustomResource {
   /// Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
   late final pulumi.Output<String?> securityGroupName;
 
@@ -151,13 +152,13 @@ class SecurityGroup extends pulumi.CustomResource {
     SecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/securityGroup:SecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.securityGroupName = registerOutput<String?>('securityGroupName');
+         'alicloud:ens/securityGroup:SecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    securityGroupName = registerOutput<String?>('securityGroupName');
   }
 
   /// Gets an existing [SecurityGroup] resource's state with the given [name] and [id].
@@ -178,12 +179,12 @@ class SecurityGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/securityGroup:SecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.securityGroupName = registerOutput<String?>('securityGroupName');
+         'alicloud:ens/securityGroup:SecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    securityGroupName = registerOutput<String?>('securityGroupName');
   }
 }

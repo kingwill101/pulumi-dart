@@ -3,16 +3,15 @@ enum RepoUpgradeOnBoot {
   nONE("NONE"),
   sECURITY("SECURITY");
 
-  const RepoUpgradeOnBoot(this.value);
-  final String value;
+  const RepoUpgradeOnBoot(this.wireValue);
+  final String wireValue;
 
   static RepoUpgradeOnBoot fromValue(String value) {
     for (final item in RepoUpgradeOnBoot.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RepoUpgradeOnBoot value: $value');
   }
 }
-

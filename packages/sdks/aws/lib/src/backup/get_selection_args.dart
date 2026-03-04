@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSelectionArgs {
   /// Backup plan ID associated with the selection of resources.
   final pulumi.Input<String> planId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Backup selection ID.
   final pulumi.Input<String> selectionId;
 
@@ -34,10 +36,13 @@ class GetSelectionArgs {
 
   factory GetSelectionArgs.fromMap(Map<String, dynamic> map) {
     return GetSelectionArgs(
-      planId: (map['planId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      selectionId: (map['selectionId'] as String).input(),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selectionId: pulumi.Input.fromValue(map['selectionId'] as String),
     );
   }
 }
-

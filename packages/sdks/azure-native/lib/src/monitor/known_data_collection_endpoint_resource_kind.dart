@@ -3,16 +3,17 @@ enum KnownDataCollectionEndpointResourceKind {
   valueLinux("Linux"),
   valueWindows("Windows");
 
-  const KnownDataCollectionEndpointResourceKind(this.value);
-  final String value;
+  const KnownDataCollectionEndpointResourceKind(this.wireValue);
+  final String wireValue;
 
   static KnownDataCollectionEndpointResourceKind fromValue(String value) {
     for (final item in KnownDataCollectionEndpointResourceKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KnownDataCollectionEndpointResourceKind value: $value');
+    throw ArgumentError(
+      'Unknown KnownDataCollectionEndpointResourceKind value: $value',
+    );
   }
 }
-

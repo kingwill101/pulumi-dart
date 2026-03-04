@@ -6,11 +6,11 @@ import 'ddos_coo_instance_state.dart';
 ///
 /// For information about BGP-line Anti-DDoS Pro(DdosCoo) Instance and how to use it, see [What is Anti-DDoS Pro Instance](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
 ///
-/// > **NOTE:** Available since v1.37.0.
+/// &gt; **NOTE:** Available since v1.37.0.
 ///
-/// > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+/// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 ///
-/// > **NOTE:** From version 1.214.0, if `product_type` is set to `ddoscoo` or `ddoscoo_intl`, the provider `region` should be set to `cn-hangzhou`, and if `product_type` is set to `ddosDip`, the provider `region` should be set to `ap-southeast-1`.
+/// &gt; **NOTE:** From version 1.214.0, if `product_type` is set to `ddoscoo` or `ddoscoo_intl`, the provider `region` should be set to `cn-hangzhou`, and if `product_type` is set to `ddosDip`, the provider `region` should be set to `ap-southeast-1`.
 ///
 /// ## Example Usage
 ///
@@ -179,42 +179,61 @@ import 'ddos_coo_instance_state.dart';
 class DdosCooInstance extends pulumi.CustomResource {
   /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   late final pulumi.Output<String> addressType;
+
   /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   late final pulumi.Output<String> bandwidth;
+
   /// The mitigation plan of the instance. Valid values:
   late final pulumi.Output<String?> bandwidthMode;
+
   /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   late final pulumi.Output<String> baseBandwidth;
+
   /// (Available since v1.248.0) The time when the instance was created.
   late final pulumi.Output<int> createTime;
+
   /// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
   late final pulumi.Output<String> domainCount;
+
   /// The mitigation plan of the instance. Default value: `coop`. Valid values:
   late final pulumi.Output<String> editionSale;
+
   /// The function plan of the instance. Valid values:
   late final pulumi.Output<String> functionVersion;
+
   /// (Available since v1.212.0) The IP address of the Instance.
   late final pulumi.Output<String> ip;
+
   /// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
   late final pulumi.Output<String?> modifyType;
+
   /// Name of the instance. This name can have a string of `1` to `64` characters.
   late final pulumi.Output<String> name;
+
   /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
   late final pulumi.Output<String> normalBandwidth;
+
   /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
   late final pulumi.Output<String> normalQps;
+
   /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
   late final pulumi.Output<int?> period;
+
   /// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
   late final pulumi.Output<String> portCount;
+
   /// The mitigation plan of the instance. Valid values:
   late final pulumi.Output<String> productPlan;
+
   /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
   late final pulumi.Output<String?> productType;
+
   /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   late final pulumi.Output<String> serviceBandwidth;
+
   /// (Available since v1.248.0) The status of the instance.
   late final pulumi.Output<int> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -227,31 +246,31 @@ class DdosCooInstance extends pulumi.CustomResource {
     DdosCooInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/ddosCooInstance:DdosCooInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressType = registerOutput<String>('addressType');
-    this.bandwidth = registerOutput<String>('bandwidth');
-    this.bandwidthMode = registerOutput<String?>('bandwidthMode');
-    this.baseBandwidth = registerOutput<String>('baseBandwidth');
-    this.createTime = registerOutput<int>('createTime');
-    this.domainCount = registerOutput<String>('domainCount');
-    this.editionSale = registerOutput<String>('editionSale');
-    this.functionVersion = registerOutput<String>('functionVersion');
-    this.ip = registerOutput<String>('ip');
-    this.modifyType = registerOutput<String?>('modifyType');
+         'alicloud:dns/ddosCooInstance:DdosCooInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressType = registerOutput<String>('addressType');
+    bandwidth = registerOutput<String>('bandwidth');
+    bandwidthMode = registerOutput<String?>('bandwidthMode');
+    baseBandwidth = registerOutput<String>('baseBandwidth');
+    createTime = registerOutput<int>('createTime');
+    domainCount = registerOutput<String>('domainCount');
+    editionSale = registerOutput<String>('editionSale');
+    functionVersion = registerOutput<String>('functionVersion');
+    ip = registerOutput<String>('ip');
+    modifyType = registerOutput<String?>('modifyType');
     this.name = registerOutput<String>('name');
-    this.normalBandwidth = registerOutput<String>('normalBandwidth');
-    this.normalQps = registerOutput<String>('normalQps');
-    this.period = registerOutput<int?>('period');
-    this.portCount = registerOutput<String>('portCount');
-    this.productPlan = registerOutput<String>('productPlan');
-    this.productType = registerOutput<String?>('productType');
-    this.serviceBandwidth = registerOutput<String>('serviceBandwidth');
-    this.status = registerOutput<int>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    normalBandwidth = registerOutput<String>('normalBandwidth');
+    normalQps = registerOutput<String>('normalQps');
+    period = registerOutput<int?>('period');
+    portCount = registerOutput<String>('portCount');
+    productPlan = registerOutput<String>('productPlan');
+    productType = registerOutput<String?>('productType');
+    serviceBandwidth = registerOutput<String>('serviceBandwidth');
+    status = registerOutput<int>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [DdosCooInstance] resource's state with the given [name] and [id].
@@ -272,30 +291,30 @@ class DdosCooInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/ddosCooInstance:DdosCooInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressType = registerOutput<String>('addressType');
-    this.bandwidth = registerOutput<String>('bandwidth');
-    this.bandwidthMode = registerOutput<String?>('bandwidthMode');
-    this.baseBandwidth = registerOutput<String>('baseBandwidth');
-    this.createTime = registerOutput<int>('createTime');
-    this.domainCount = registerOutput<String>('domainCount');
-    this.editionSale = registerOutput<String>('editionSale');
-    this.functionVersion = registerOutput<String>('functionVersion');
-    this.ip = registerOutput<String>('ip');
-    this.modifyType = registerOutput<String?>('modifyType');
+         'alicloud:dns/ddosCooInstance:DdosCooInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressType = registerOutput<String>('addressType');
+    bandwidth = registerOutput<String>('bandwidth');
+    bandwidthMode = registerOutput<String?>('bandwidthMode');
+    baseBandwidth = registerOutput<String>('baseBandwidth');
+    createTime = registerOutput<int>('createTime');
+    domainCount = registerOutput<String>('domainCount');
+    editionSale = registerOutput<String>('editionSale');
+    functionVersion = registerOutput<String>('functionVersion');
+    ip = registerOutput<String>('ip');
+    modifyType = registerOutput<String?>('modifyType');
     this.name = registerOutput<String>('name');
-    this.normalBandwidth = registerOutput<String>('normalBandwidth');
-    this.normalQps = registerOutput<String>('normalQps');
-    this.period = registerOutput<int?>('period');
-    this.portCount = registerOutput<String>('portCount');
-    this.productPlan = registerOutput<String>('productPlan');
-    this.productType = registerOutput<String?>('productType');
-    this.serviceBandwidth = registerOutput<String>('serviceBandwidth');
-    this.status = registerOutput<int>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    normalBandwidth = registerOutput<String>('normalBandwidth');
+    normalQps = registerOutput<String>('normalQps');
+    period = registerOutput<int?>('period');
+    portCount = registerOutput<String>('portCount');
+    productPlan = registerOutput<String>('productPlan');
+    productType = registerOutput<String?>('productType');
+    serviceBandwidth = registerOutput<String>('serviceBandwidth');
+    status = registerOutput<int>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

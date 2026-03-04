@@ -11,20 +11,19 @@ class CxAgentPersonalizationSettings {
 
   /// Creates a new [CxAgentPersonalizationSettings].
   /// [defaultEndUserMetadata] Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
-  CxAgentPersonalizationSettings({
-    this.defaultEndUserMetadata,
-  });
+  CxAgentPersonalizationSettings({this.defaultEndUserMetadata});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultEndUserMetadata': ?defaultEndUserMetadata,
-    };
+    return <String, dynamic>{'defaultEndUserMetadata': ?defaultEndUserMetadata};
   }
 
   factory CxAgentPersonalizationSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentPersonalizationSettings(
-      defaultEndUserMetadata: map['defaultEndUserMetadata'] == null ? null : (map['defaultEndUserMetadata']! as String).input(),
+      defaultEndUserMetadata: (() {
+        final guardedValue = map['defaultEndUserMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

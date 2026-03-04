@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'size_constraint_set_args.dart';
-import 'size_constraint_set_size_constraint.dart';
 import 'size_constraint_set_state.dart';
 
 /// Provides a WAF Regional Size Constraint Set Resource for use with Application Load Balancer.
@@ -160,12 +159,15 @@ import 'size_constraint_set_state.dart';
 /// ```
 class SizeConstraintSet extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
+
   /// The name or description of the Size Constraint Set.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Specifies the parts of web requests that you want to inspect the size of.
-  late final pulumi.Output<List<SizeConstraintSetSizeConstraint>?> sizeConstraints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sizeConstraints;
 
   /// Creates a new [SizeConstraintSet].
   /// [name] The Pulumi resource name.
@@ -176,15 +178,17 @@ class SizeConstraintSet extends pulumi.CustomResource {
     SizeConstraintSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/sizeConstraintSet:SizeConstraintSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:wafregional/sizeConstraintSet:SizeConstraintSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints');
+    region = registerOutput<String>('region');
+    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>(
+      'sizeConstraints',
+    );
   }
 
   /// Gets an existing [SizeConstraintSet] resource's state with the given [name] and [id].
@@ -205,14 +209,16 @@ class SizeConstraintSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/sizeConstraintSet:SizeConstraintSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:wafregional/sizeConstraintSet:SizeConstraintSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints');
+    region = registerOutput<String>('region');
+    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>(
+      'sizeConstraints',
+    );
   }
 }

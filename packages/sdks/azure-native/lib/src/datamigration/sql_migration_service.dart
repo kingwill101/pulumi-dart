@@ -248,10 +248,12 @@ import 'system_data_response.dart';
 class SqlMigrationService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Current state of the Integration runtime.
   late final pulumi.Output<String> integrationRuntimeState;
   late final pulumi.Output<String?> location;
   late final pulumi.Output<String> name;
+
   /// Provisioning state to track the async operation status.
   late final pulumi.Output<String> provisioningState;
   late final pulumi.Output<SystemDataResponse> systemData;
@@ -267,18 +269,18 @@ class SqlMigrationService extends pulumi.CustomResource {
     SqlMigrationServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datamigration:SqlMigrationService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.integrationRuntimeState = registerOutput<String>('integrationRuntimeState');
-    this.location = registerOutput<String?>('location');
+         'azure-native:datamigration:SqlMigrationService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    integrationRuntimeState = registerOutput<String>('integrationRuntimeState');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

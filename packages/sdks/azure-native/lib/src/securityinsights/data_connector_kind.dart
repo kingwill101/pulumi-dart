@@ -5,23 +5,26 @@ enum DataConnectorKind {
   valueMicrosoftCloudAppSecurity("MicrosoftCloudAppSecurity"),
   valueThreatIntelligence("ThreatIntelligence"),
   valueMicrosoftThreatIntelligence("MicrosoftThreatIntelligence"),
-  valuePremiumMicrosoftDefenderForThreatIntelligence("PremiumMicrosoftDefenderForThreatIntelligence"),
+  valuePremiumMicrosoftDefenderForThreatIntelligence(
+    "PremiumMicrosoftDefenderForThreatIntelligence",
+  ),
   valueOffice365("Office365"),
   valueAmazonWebServicesCloudTrail("AmazonWebServicesCloudTrail"),
   valueAzureAdvancedThreatProtection("AzureAdvancedThreatProtection"),
-  valueMicrosoftDefenderAdvancedThreatProtection("MicrosoftDefenderAdvancedThreatProtection"),
+  valueMicrosoftDefenderAdvancedThreatProtection(
+    "MicrosoftDefenderAdvancedThreatProtection",
+  ),
   valueRestApiPoller("RestApiPoller");
 
-  const DataConnectorKind(this.value);
-  final String value;
+  const DataConnectorKind(this.wireValue);
+  final String wireValue;
 
   static DataConnectorKind fromValue(String value) {
     for (final item in DataConnectorKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataConnectorKind value: $value');
   }
 }
-

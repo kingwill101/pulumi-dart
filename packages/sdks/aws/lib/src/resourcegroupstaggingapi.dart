@@ -1,5 +1,3 @@
-library module_resourcegroupstaggingapi;
-
 export 'resourcegroupstaggingapi/functions.dart';
 export 'resourcegroupstaggingapi/get_required_tags_args.dart';
 export 'resourcegroupstaggingapi/get_required_tags_required_tag.dart';

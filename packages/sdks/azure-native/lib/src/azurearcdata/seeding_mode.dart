@@ -3,16 +3,15 @@ enum SeedingMode {
   valueAUTOMATIC("AUTOMATIC"),
   valueMANUAL("MANUAL");
 
-  const SeedingMode(this.value);
-  final String value;
+  const SeedingMode(this.wireValue);
+  final String wireValue;
 
   static SeedingMode fromValue(String value) {
     for (final item in SeedingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SeedingMode value: $value');
   }
 }
-

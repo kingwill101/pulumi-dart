@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleColumnResponseDatastreamV1alpha1 {
   /// Column name.
   final pulumi.Input<String> columnName;
+
   /// The Oracle data type.
   final pulumi.Input<String> dataType;
+
   /// Column encoding.
   final pulumi.Input<String> encoding;
+
   /// Column length.
   final pulumi.Input<int> length;
+
   /// Whether or not the column can accept a null value.
   final pulumi.Input<bool> nullable;
+
   /// The ordinal position of the column in the table.
   final pulumi.Input<int> ordinalPosition;
+
   /// Column precision.
   final pulumi.Input<int> precision;
+
   /// Whether or not the column represents a primary key.
   final pulumi.Input<bool> primaryKey;
+
   /// Column scale.
   final pulumi.Input<int> scale;
 
@@ -59,18 +67,19 @@ class OracleColumnResponseDatastreamV1alpha1 {
     };
   }
 
-  factory OracleColumnResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory OracleColumnResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OracleColumnResponseDatastreamV1alpha1(
-      columnName: (map['columnName'] as String).input(),
-      dataType: (map['dataType'] as String).input(),
-      encoding: (map['encoding'] as String).input(),
-      length: (map['length'] as int).input(),
-      nullable: (map['nullable'] as bool).input(),
-      ordinalPosition: (map['ordinalPosition'] as int).input(),
-      precision: (map['precision'] as int).input(),
-      primaryKey: (map['primaryKey'] as bool).input(),
-      scale: (map['scale'] as int).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
+      encoding: pulumi.Input.fromValue(map['encoding'] as String),
+      length: pulumi.Input.fromValue(map['length'] as int),
+      nullable: pulumi.Input.fromValue(map['nullable'] as bool),
+      ordinalPosition: pulumi.Input.fromValue(map['ordinalPosition'] as int),
+      precision: pulumi.Input.fromValue(map['precision'] as int),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as bool),
+      scale: pulumi.Input.fromValue(map['scale'] as int),
     );
   }
 }
-

@@ -65,16 +65,15 @@ enum AzureSkuName {
   valueStandardE8dV5("Standard_E8d_v5"),
   valueStandardE16dV5("Standard_E16d_v5");
 
-  const AzureSkuName(this.value);
-  final String value;
+  const AzureSkuName(this.wireValue);
+  final String wireValue;
 
   static AzureSkuName fromValue(String value) {
     for (final item in AzureSkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureSkuName value: $value');
   }
 }
-

@@ -8,7 +8,8 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse {
   final pulumi.Input<String> buildFinishedOn;
   final pulumi.Input<String> buildInvocationId;
   final pulumi.Input<String> buildStartedOn;
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse> completeness;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse>
+  completeness;
   final pulumi.Input<bool> reproducible;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse].
@@ -30,19 +31,30 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse {
       'buildFinishedOn': buildFinishedOn,
       'buildInvocationId': buildInvocationId,
       'buildStartedOn': buildStartedOn,
-      'completeness': pulumi.Input.mapInputValue<GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse, Map<String, dynamic>>(completeness, (value) => value.toMap()),
+      'completeness':
+          pulumi.Input.mapInputValue<
+            GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse,
+            Map<String, dynamic>
+          >(completeness, (value) => value.toMap()),
       'reproducible': reproducible,
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse(
-      buildFinishedOn: (map['buildFinishedOn'] as String).input(),
-      buildInvocationId: (map['buildInvocationId'] as String).input(),
-      buildStartedOn: (map['buildStartedOn'] as String).input(),
-      completeness: (GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap((map['completeness'] as Map).cast<String, dynamic>())).input(),
-      reproducible: (map['reproducible'] as bool).input(),
+      buildFinishedOn: pulumi.Input.fromValue(map['buildFinishedOn'] as String),
+      buildInvocationId: pulumi.Input.fromValue(
+        map['buildInvocationId'] as String,
+      ),
+      buildStartedOn: pulumi.Input.fromValue(map['buildStartedOn'] as String),
+      completeness: pulumi.Input.fromValue(
+        GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(
+          (map['completeness']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      reproducible: pulumi.Input.fromValue(map['reproducible'] as bool),
     );
   }
 }
-

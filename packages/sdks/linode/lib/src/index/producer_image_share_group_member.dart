@@ -108,18 +108,25 @@ import 'producer_image_share_group_member_state.dart';
 class ProducerImageShareGroupMember extends pulumi.CustomResource {
   /// When the member was created.
   late final pulumi.Output<String> created;
+
   /// When the member will expire.
   late final pulumi.Output<String> expiry;
+
   /// A label for the member.
   late final pulumi.Output<String> label;
+
   /// The ID of the Image Share Group to which the member will be added.
   late final pulumi.Output<int> sharegroupId;
+
   /// The status of the member.
   late final pulumi.Output<String> status;
+
   /// The token of the prospective member.
   late final pulumi.Output<String> token;
+
   /// The UUID of member's token.
   late final pulumi.Output<String> tokenUuid;
+
   /// When the member was last updated.
   late final pulumi.Output<String> updated;
 
@@ -132,19 +139,19 @@ class ProducerImageShareGroupMember extends pulumi.CustomResource {
     ProducerImageShareGroupMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.expiry = registerOutput<String>('expiry');
-    this.label = registerOutput<String>('label');
-    this.sharegroupId = registerOutput<int>('sharegroupId');
-    this.status = registerOutput<String>('status');
-    this.token = registerOutput<String>('token');
-    this.tokenUuid = registerOutput<String>('tokenUuid');
-    this.updated = registerOutput<String>('updated');
+         'linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    expiry = registerOutput<String>('expiry');
+    label = registerOutput<String>('label');
+    sharegroupId = registerOutput<int>('sharegroupId');
+    status = registerOutput<String>('status');
+    token = registerOutput<String>('token');
+    tokenUuid = registerOutput<String>('tokenUuid');
+    updated = registerOutput<String>('updated');
   }
 
   /// Gets an existing [ProducerImageShareGroupMember] resource's state with the given [name] and [id].
@@ -165,18 +172,18 @@ class ProducerImageShareGroupMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.expiry = registerOutput<String>('expiry');
-    this.label = registerOutput<String>('label');
-    this.sharegroupId = registerOutput<int>('sharegroupId');
-    this.status = registerOutput<String>('status');
-    this.token = registerOutput<String>('token');
-    this.tokenUuid = registerOutput<String>('tokenUuid');
-    this.updated = registerOutput<String>('updated');
+         'linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    expiry = registerOutput<String>('expiry');
+    label = registerOutput<String>('label');
+    sharegroupId = registerOutput<int>('sharegroupId');
+    status = registerOutput<String>('status');
+    token = registerOutput<String>('token');
+    tokenUuid = registerOutput<String>('tokenUuid');
+    updated = registerOutput<String>('updated');
   }
 }

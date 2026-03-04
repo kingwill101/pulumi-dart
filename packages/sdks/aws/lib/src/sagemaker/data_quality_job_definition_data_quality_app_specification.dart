@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataQualityJobDefinitionDataQualityAppSpecification {
   /// Sets the environment variables in the container that the monitoring job runs. A list of key value pairs.
   final pulumi.Input<Map<String, String>>? environment;
+
   /// The container image that the data quality monitoring job runs.
   final pulumi.Input<String> imageUri;
+
   /// An Amazon S3 URI to a script that is called after analysis has been performed. Applicable only for the built-in (first party) containers.
   final pulumi.Input<String>? postAnalyticsProcessorSourceUri;
+
   /// An Amazon S3 URI to a script that is called per row prior to running analysis. It can base64 decode the payload and convert it into a flatted json so that the built-in container can use the converted data. Applicable only for the built-in (first party) containers.
   final pulumi.Input<String>? recordPreprocessorSourceUri;
 
@@ -33,13 +36,28 @@ class DataQualityJobDefinitionDataQualityAppSpecification {
     };
   }
 
-  factory DataQualityJobDefinitionDataQualityAppSpecification.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionDataQualityAppSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionDataQualityAppSpecification(
-      environment: map['environment'] == null ? null : (((map['environment'] as Map).cast<String, String>()).input()).input(),
-      imageUri: (map['imageUri'] as String).input(),
-      postAnalyticsProcessorSourceUri: map['postAnalyticsProcessorSourceUri'] == null ? null : ((map['postAnalyticsProcessorSourceUri'] as String).input()).input(),
-      recordPreprocessorSourceUri: map['recordPreprocessorSourceUri'] == null ? null : ((map['recordPreprocessorSourceUri'] as String).input()).input(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      imageUri: pulumi.Input.fromValue(map['imageUri'] as String),
+      postAnalyticsProcessorSourceUri: (() {
+        final guardedValue = map['postAnalyticsProcessorSourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordPreprocessorSourceUri: (() {
+        final guardedValue = map['recordPreprocessorSourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

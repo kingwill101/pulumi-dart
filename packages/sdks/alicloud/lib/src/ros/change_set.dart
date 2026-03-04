@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'change_set_args.dart';
-import 'change_set_parameter.dart';
 import 'change_set_state.dart';
 
 /// Provides a ROS Change Set resource.
 ///
 /// For information about ROS Change Set and how to use it, see [What is Change Set](https://www.alibabacloud.com/help/doc-detail/131051.htm).
 ///
-/// > **NOTE:** Available since v1.105.0.
+/// &gt; **NOTE:** Available since v1.105.0.
 ///
 /// ## Example Usage
 ///
@@ -176,40 +175,58 @@ import 'change_set_state.dart';
 class ChangeSet extends pulumi.CustomResource {
   /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   late final pulumi.Output<String> changeSetName;
+
   /// The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
   late final pulumi.Output<String?> changeSetType;
+
   /// The description of the change set. The description can be up to 1,024 bytes in length.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
   late final pulumi.Output<bool?> disableRollback;
+
   /// The notification urls.
   late final pulumi.Output<List<String>?> notificationUrls;
+
   /// Parameters.
-  late final pulumi.Output<List<ChangeSetParameter>> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+
   /// The ram role name.
   late final pulumi.Output<String?> ramRoleName;
+
   /// The replacement option.
   late final pulumi.Output<String?> replacementOption;
+
   /// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
   late final pulumi.Output<String> stackId;
+
   /// The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
   late final pulumi.Output<String?> stackName;
+
   /// The stack policy body.
   late final pulumi.Output<String?> stackPolicyBody;
+
   /// The stack policy during update body.
   late final pulumi.Output<String?> stackPolicyDuringUpdateBody;
+
   /// The stack policy during update url.
   late final pulumi.Output<String?> stackPolicyDuringUpdateUrl;
+
   /// The stack policy url.
   late final pulumi.Output<String?> stackPolicyUrl;
+
   /// The status of the change set.
   late final pulumi.Output<String> status;
+
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
   late final pulumi.Output<String?> templateBody;
+
   /// The template url.
   late final pulumi.Output<String?> templateUrl;
+
   /// Timeout In Minutes.
   late final pulumi.Output<int> timeoutInMinutes;
+
   /// The use previous parameters.
   late final pulumi.Output<bool?> usePreviousParameters;
 
@@ -222,30 +239,34 @@ class ChangeSet extends pulumi.CustomResource {
     ChangeSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ros/changeSet:ChangeSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.changeSetName = registerOutput<String>('changeSetName');
-    this.changeSetType = registerOutput<String?>('changeSetType');
-    this.description = registerOutput<String?>('description');
-    this.disableRollback = registerOutput<bool?>('disableRollback');
-    this.notificationUrls = registerOutput<List<String>?>('notificationUrls');
-    this.parameters = registerOutput<List<ChangeSetParameter>>('parameters');
-    this.ramRoleName = registerOutput<String?>('ramRoleName');
-    this.replacementOption = registerOutput<String?>('replacementOption');
-    this.stackId = registerOutput<String>('stackId');
-    this.stackName = registerOutput<String?>('stackName');
-    this.stackPolicyBody = registerOutput<String?>('stackPolicyBody');
-    this.stackPolicyDuringUpdateBody = registerOutput<String?>('stackPolicyDuringUpdateBody');
-    this.stackPolicyDuringUpdateUrl = registerOutput<String?>('stackPolicyDuringUpdateUrl');
-    this.stackPolicyUrl = registerOutput<String?>('stackPolicyUrl');
-    this.status = registerOutput<String>('status');
-    this.templateBody = registerOutput<String?>('templateBody');
-    this.templateUrl = registerOutput<String?>('templateUrl');
-    this.timeoutInMinutes = registerOutput<int>('timeoutInMinutes');
-    this.usePreviousParameters = registerOutput<bool?>('usePreviousParameters');
+         'alicloud:ros/changeSet:ChangeSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    changeSetName = registerOutput<String>('changeSetName');
+    changeSetType = registerOutput<String?>('changeSetType');
+    description = registerOutput<String?>('description');
+    disableRollback = registerOutput<bool?>('disableRollback');
+    notificationUrls = registerOutput<List<String>?>('notificationUrls');
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    ramRoleName = registerOutput<String?>('ramRoleName');
+    replacementOption = registerOutput<String?>('replacementOption');
+    stackId = registerOutput<String>('stackId');
+    stackName = registerOutput<String?>('stackName');
+    stackPolicyBody = registerOutput<String?>('stackPolicyBody');
+    stackPolicyDuringUpdateBody = registerOutput<String?>(
+      'stackPolicyDuringUpdateBody',
+    );
+    stackPolicyDuringUpdateUrl = registerOutput<String?>(
+      'stackPolicyDuringUpdateUrl',
+    );
+    stackPolicyUrl = registerOutput<String?>('stackPolicyUrl');
+    status = registerOutput<String>('status');
+    templateBody = registerOutput<String?>('templateBody');
+    templateUrl = registerOutput<String?>('templateUrl');
+    timeoutInMinutes = registerOutput<int>('timeoutInMinutes');
+    usePreviousParameters = registerOutput<bool?>('usePreviousParameters');
   }
 
   /// Gets an existing [ChangeSet] resource's state with the given [name] and [id].
@@ -266,29 +287,33 @@ class ChangeSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ros/changeSet:ChangeSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.changeSetName = registerOutput<String>('changeSetName');
-    this.changeSetType = registerOutput<String?>('changeSetType');
-    this.description = registerOutput<String?>('description');
-    this.disableRollback = registerOutput<bool?>('disableRollback');
-    this.notificationUrls = registerOutput<List<String>?>('notificationUrls');
-    this.parameters = registerOutput<List<ChangeSetParameter>>('parameters');
-    this.ramRoleName = registerOutput<String?>('ramRoleName');
-    this.replacementOption = registerOutput<String?>('replacementOption');
-    this.stackId = registerOutput<String>('stackId');
-    this.stackName = registerOutput<String?>('stackName');
-    this.stackPolicyBody = registerOutput<String?>('stackPolicyBody');
-    this.stackPolicyDuringUpdateBody = registerOutput<String?>('stackPolicyDuringUpdateBody');
-    this.stackPolicyDuringUpdateUrl = registerOutput<String?>('stackPolicyDuringUpdateUrl');
-    this.stackPolicyUrl = registerOutput<String?>('stackPolicyUrl');
-    this.status = registerOutput<String>('status');
-    this.templateBody = registerOutput<String?>('templateBody');
-    this.templateUrl = registerOutput<String?>('templateUrl');
-    this.timeoutInMinutes = registerOutput<int>('timeoutInMinutes');
-    this.usePreviousParameters = registerOutput<bool?>('usePreviousParameters');
+         'alicloud:ros/changeSet:ChangeSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    changeSetName = registerOutput<String>('changeSetName');
+    changeSetType = registerOutput<String?>('changeSetType');
+    description = registerOutput<String?>('description');
+    disableRollback = registerOutput<bool?>('disableRollback');
+    notificationUrls = registerOutput<List<String>?>('notificationUrls');
+    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    ramRoleName = registerOutput<String?>('ramRoleName');
+    replacementOption = registerOutput<String?>('replacementOption');
+    stackId = registerOutput<String>('stackId');
+    stackName = registerOutput<String?>('stackName');
+    stackPolicyBody = registerOutput<String?>('stackPolicyBody');
+    stackPolicyDuringUpdateBody = registerOutput<String?>(
+      'stackPolicyDuringUpdateBody',
+    );
+    stackPolicyDuringUpdateUrl = registerOutput<String?>(
+      'stackPolicyDuringUpdateUrl',
+    );
+    stackPolicyUrl = registerOutput<String?>('stackPolicyUrl');
+    status = registerOutput<String>('status');
+    templateBody = registerOutput<String?>('templateBody');
+    templateUrl = registerOutput<String?>('templateUrl');
+    timeoutInMinutes = registerOutput<int>('timeoutInMinutes');
+    usePreviousParameters = registerOutput<bool?>('usePreviousParameters');
   }
 }

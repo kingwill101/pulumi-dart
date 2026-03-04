@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebtestLocationAvailabilityCriteriaResponse {
   /// The Application Insights resource Id.
   final pulumi.Input<String> componentId;
+
   /// The number of failed locations.
   final pulumi.Input<double> failedLocationCount;
+
   /// specifies the type of the alert criteria.
   /// Expected value is 'Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria'.
   final pulumi.Input<String> odataType;
+
   /// The Application Insights web test Id.
   final pulumi.Input<String> webTestId;
 
@@ -35,13 +38,16 @@ class WebtestLocationAvailabilityCriteriaResponse {
     };
   }
 
-  factory WebtestLocationAvailabilityCriteriaResponse.fromMap(Map<String, dynamic> map) {
+  factory WebtestLocationAvailabilityCriteriaResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebtestLocationAvailabilityCriteriaResponse(
-      componentId: (map['componentId'] as String).input(),
-      failedLocationCount: (map['failedLocationCount'] as double).input(),
-      odataType: (map['odataType'] as String).input(),
-      webTestId: (map['webTestId'] as String).input(),
+      componentId: pulumi.Input.fromValue(map['componentId'] as String),
+      failedLocationCount: pulumi.Input.fromValue(
+        map['failedLocationCount'] as double,
+      ),
+      odataType: pulumi.Input.fromValue(map['odataType'] as String),
+      webTestId: pulumi.Input.fromValue(map['webTestId'] as String),
     );
   }
 }
-

@@ -14,33 +14,47 @@ import 'endpoint_sse_specification.dart';
 class EndpointArgs {
   /// The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   final pulumi.Input<String>? applicationDomain;
+
   /// The type of attachment. Currently, only `vpc` is supported.
   final pulumi.Input<String> attachmentType;
+
   /// The CIDR block details. This parameter is required if the endpoint type is `cidr`.
   final pulumi.Input<EndpointCidrOptions>? cidrOptions;
+
   /// A description for the Verified Access endpoint.
   final pulumi.Input<String>? description;
+
   /// The ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   final pulumi.Input<String>? domainCertificateArn;
+
   /// A custom identifier that is prepended to the DNS name that is generated for the endpoint.
   final pulumi.Input<String>? endpointDomainPrefix;
+
   /// The type of Verified Access endpoint to create. Currently `load-balancer` or `network-interface` are supported.
   final pulumi.Input<String> endpointType;
+
   /// The load balancer details. This parameter is required if the endpoint type is `load-balancer`.
   final pulumi.Input<EndpointLoadBalancerOptions>? loadBalancerOptions;
+
   /// The network interface details. This parameter is required if the endpoint type is `network-interface`.
   final pulumi.Input<EndpointNetworkInterfaceOptions>? networkInterfaceOptions;
+
   /// The policy document that is associated with this resource.
   final pulumi.Input<String>? policyDocument;
   final pulumi.Input<EndpointRdsOptions>? rdsOptions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of the the security groups IDs to associate with the Verified Access endpoint.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// The options in use for server side encryption.
   final pulumi.Input<EndpointSseSpecification>? sseSpecification;
+
   /// Key-value tags for the Verified Access Endpoint. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the Verified Access group to associate the endpoint with.
   ///
   /// The following arguments are optional:
@@ -86,18 +100,38 @@ class EndpointArgs {
     return <String, dynamic>{
       'applicationDomain': ?applicationDomain,
       'attachmentType': attachmentType,
-      'cidrOptions': ?pulumi.Input.mapOptionalInputValue<EndpointCidrOptions, Map<String, dynamic>>(cidrOptions, (value) => value.toMap()),
+      'cidrOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            EndpointCidrOptions,
+            Map<String, dynamic>
+          >(cidrOptions, (value) => value.toMap()),
       'description': ?description,
       'domainCertificateArn': ?domainCertificateArn,
       'endpointDomainPrefix': ?endpointDomainPrefix,
       'endpointType': endpointType,
-      'loadBalancerOptions': ?pulumi.Input.mapOptionalInputValue<EndpointLoadBalancerOptions, Map<String, dynamic>>(loadBalancerOptions, (value) => value.toMap()),
-      'networkInterfaceOptions': ?pulumi.Input.mapOptionalInputValue<EndpointNetworkInterfaceOptions, Map<String, dynamic>>(networkInterfaceOptions, (value) => value.toMap()),
+      'loadBalancerOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            EndpointLoadBalancerOptions,
+            Map<String, dynamic>
+          >(loadBalancerOptions, (value) => value.toMap()),
+      'networkInterfaceOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            EndpointNetworkInterfaceOptions,
+            Map<String, dynamic>
+          >(networkInterfaceOptions, (value) => value.toMap()),
       'policyDocument': ?policyDocument,
-      'rdsOptions': ?pulumi.Input.mapOptionalInputValue<EndpointRdsOptions, Map<String, dynamic>>(rdsOptions, (value) => value.toMap()),
+      'rdsOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            EndpointRdsOptions,
+            Map<String, dynamic>
+          >(rdsOptions, (value) => value.toMap()),
       'region': ?region,
       'securityGroupIds': ?securityGroupIds,
-      'sseSpecification': ?pulumi.Input.mapOptionalInputValue<EndpointSseSpecification, Map<String, dynamic>>(sseSpecification, (value) => value.toMap()),
+      'sseSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            EndpointSseSpecification,
+            Map<String, dynamic>
+          >(sseSpecification, (value) => value.toMap()),
       'tags': ?tags,
       'verifiedAccessGroupId': verifiedAccessGroupId,
     };
@@ -105,23 +139,98 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      applicationDomain: map['applicationDomain'] == null ? null : ((map['applicationDomain'] as String).input()).input(),
-      attachmentType: (map['attachmentType'] as String).input(),
-      cidrOptions: map['cidrOptions'] == null ? null : ((EndpointCidrOptions.fromMap((map['cidrOptions']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      domainCertificateArn: map['domainCertificateArn'] == null ? null : ((map['domainCertificateArn'] as String).input()).input(),
-      endpointDomainPrefix: map['endpointDomainPrefix'] == null ? null : ((map['endpointDomainPrefix'] as String).input()).input(),
-      endpointType: (map['endpointType'] as String).input(),
-      loadBalancerOptions: map['loadBalancerOptions'] == null ? null : ((EndpointLoadBalancerOptions.fromMap((map['loadBalancerOptions']! as Map).cast<String, dynamic>())).input()).input(),
-      networkInterfaceOptions: map['networkInterfaceOptions'] == null ? null : ((EndpointNetworkInterfaceOptions.fromMap((map['networkInterfaceOptions']! as Map).cast<String, dynamic>())).input()).input(),
-      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
-      rdsOptions: map['rdsOptions'] == null ? null : ((EndpointRdsOptions.fromMap((map['rdsOptions']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      sseSpecification: map['sseSpecification'] == null ? null : ((EndpointSseSpecification.fromMap((map['sseSpecification']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      verifiedAccessGroupId: (map['verifiedAccessGroupId'] as String).input(),
+      applicationDomain: (() {
+        final guardedValue = map['applicationDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attachmentType: pulumi.Input.fromValue(map['attachmentType'] as String),
+      cidrOptions: (() {
+        final guardedValue = map['cidrOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EndpointCidrOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainCertificateArn: (() {
+        final guardedValue = map['domainCertificateArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointDomainPrefix: (() {
+        final guardedValue = map['endpointDomainPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      loadBalancerOptions: (() {
+        final guardedValue = map['loadBalancerOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EndpointLoadBalancerOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkInterfaceOptions: (() {
+        final guardedValue = map['networkInterfaceOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EndpointNetworkInterfaceOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      policyDocument: (() {
+        final guardedValue = map['policyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rdsOptions: (() {
+        final guardedValue = map['rdsOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EndpointRdsOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sseSpecification: (() {
+        final guardedValue = map['sseSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EndpointSseSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      verifiedAccessGroupId: pulumi.Input.fromValue(
+        map['verifiedAccessGroupId'] as String,
+      ),
     );
   }
 }
-

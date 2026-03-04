@@ -8,7 +8,7 @@ import 'mount_target_state.dart';
 ///
 /// For information about File Storage (NAS) Mount Target and how to use it, see [What is Mount Target](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 ///
-/// > **NOTE:** Available since v1.34.0.
+/// &gt; **NOTE:** Available since v1.34.0.
 ///
 /// ## Example Usage
 ///
@@ -318,26 +318,34 @@ import 'mount_target_state.dart';
 class MountTarget extends pulumi.CustomResource {
   /// The name of the permission group.
   late final pulumi.Output<String?> accessGroupName;
+
   /// Whether to create an IPv6 mount point.
   ///
   /// Value:
   /// - true: create
   /// - false (default): not created
   ///
-  /// > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+  /// &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
   late final pulumi.Output<bool?> dualStack;
+
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The domain name of the Mount point.
   late final pulumi.Output<String> mountTargetDomain;
+
   /// Network type.
   late final pulumi.Output<String> networkType;
+
   /// The ID of the security group.
   late final pulumi.Output<String?> securityGroupId;
+
   /// The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
   late final pulumi.Output<String> status;
+
   /// VPC ID.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of the switch.
   late final pulumi.Output<String?> vswitchId;
 
@@ -350,20 +358,20 @@ class MountTarget extends pulumi.CustomResource {
     MountTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/mountTarget:MountTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String?>('accessGroupName');
-    this.dualStack = registerOutput<bool?>('dualStack');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.mountTargetDomain = registerOutput<String>('mountTargetDomain');
-    this.networkType = registerOutput<String>('networkType');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:nas/mountTarget:MountTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String?>('accessGroupName');
+    dualStack = registerOutput<bool?>('dualStack');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    mountTargetDomain = registerOutput<String>('mountTargetDomain');
+    networkType = registerOutput<String>('networkType');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 
   /// Gets an existing [MountTarget] resource's state with the given [name] and [id].
@@ -384,19 +392,19 @@ class MountTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/mountTarget:MountTarget',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String?>('accessGroupName');
-    this.dualStack = registerOutput<bool?>('dualStack');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.mountTargetDomain = registerOutput<String>('mountTargetDomain');
-    this.networkType = registerOutput<String>('networkType');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:nas/mountTarget:MountTarget',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String?>('accessGroupName');
+    dualStack = registerOutput<bool?>('dualStack');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    mountTargetDomain = registerOutput<String>('mountTargetDomain');
+    networkType = registerOutput<String>('networkType');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 }

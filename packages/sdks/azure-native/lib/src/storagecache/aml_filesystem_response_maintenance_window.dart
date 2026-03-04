@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AmlFilesystemResponseMaintenanceWindow {
   /// Day of the week on which the maintenance window will occur.
   final pulumi.Input<String>? dayOfWeek;
+
   /// The time of day (in UTC) to start the maintenance window.
   final pulumi.Input<String>? timeOfDayUTC;
 
   /// Creates a new [AmlFilesystemResponseMaintenanceWindow].
   /// [dayOfWeek] Day of the week on which the maintenance window will occur.
   /// [timeOfDayUTC] The time of day (in UTC) to start the maintenance window.
-  AmlFilesystemResponseMaintenanceWindow({
-    this.dayOfWeek,
-    this.timeOfDayUTC,
-  });
+  AmlFilesystemResponseMaintenanceWindow({this.dayOfWeek, this.timeOfDayUTC});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class AmlFilesystemResponseMaintenanceWindow {
     };
   }
 
-  factory AmlFilesystemResponseMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory AmlFilesystemResponseMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AmlFilesystemResponseMaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as String).input(),
-      timeOfDayUTC: map['timeOfDayUTC'] == null ? null : (map['timeOfDayUTC']! as String).input(),
+      dayOfWeek: (() {
+        final guardedValue = map['dayOfWeek'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeOfDayUTC: (() {
+        final guardedValue = map['timeOfDayUTC'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

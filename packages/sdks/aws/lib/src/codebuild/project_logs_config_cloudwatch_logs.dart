@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectLogsConfigCloudwatchLogs {
   /// Group name of the logs in CloudWatch Logs.
   final pulumi.Input<String>? groupName;
+
   /// Current status of logs in CloudWatch Logs for a build project. Valid values: `ENABLED`,
   /// `DISABLED`. Defaults to `ENABLED`.
   final pulumi.Input<String>? status;
+
   /// Prefix of the log stream name of the logs in CloudWatch Logs.
   final pulumi.Input<String>? streamName;
 
@@ -31,10 +33,21 @@ class ProjectLogsConfigCloudwatchLogs {
 
   factory ProjectLogsConfigCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ProjectLogsConfigCloudwatchLogs(
-      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      streamName: map['streamName'] == null ? null : ((map['streamName'] as String).input()).input(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamName: (() {
+        final guardedValue = map['streamName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

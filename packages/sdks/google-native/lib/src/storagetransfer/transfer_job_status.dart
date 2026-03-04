@@ -5,16 +5,15 @@ enum TransferJobStatus {
   disabled("DISABLED"),
   deleted("DELETED");
 
-  const TransferJobStatus(this.value);
-  final String value;
+  const TransferJobStatus(this.wireValue);
+  final String wireValue;
 
   static TransferJobStatus fromValue(String value) {
     for (final item in TransferJobStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransferJobStatus value: $value');
   }
 }
-

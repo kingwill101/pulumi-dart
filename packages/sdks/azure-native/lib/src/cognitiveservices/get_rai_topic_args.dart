@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRaiTopicArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// The name of the Rai Topic associated with the Cognitive Services Account
   final pulumi.Input<String> raiTopicName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetRaiTopicArgs {
 
   factory GetRaiTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetRaiTopicArgs(
-      accountName: (map['accountName'] as String).input(),
-      raiTopicName: (map['raiTopicName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      raiTopicName: pulumi.Input.fromValue(map['raiTopicName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

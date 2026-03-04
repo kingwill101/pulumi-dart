@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadDiskTargetEnvironment {
   /// Required. Target project for the disk.
   final pulumi.Input<String> project;
+
   /// Required. Target zone for the disk.
   final pulumi.Input<String> zone;
 
@@ -17,17 +18,15 @@ class RestoreWorkloadDiskTargetEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': project,
-      'zone': zone,
-    };
+    return <String, dynamic>{'project': project, 'zone': zone};
   }
 
-  factory RestoreWorkloadDiskTargetEnvironment.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadDiskTargetEnvironment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadDiskTargetEnvironment(
-      project: (map['project'] as String).input(),
-      zone: (map['zone'] as String).input(),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

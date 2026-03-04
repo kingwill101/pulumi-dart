@@ -5,16 +5,15 @@ enum HttpMethodVerb {
   valuePUT("PUT"),
   valueDELETE("DELETE");
 
-  const HttpMethodVerb(this.value);
-  final String value;
+  const HttpMethodVerb(this.wireValue);
+  final String wireValue;
 
   static HttpMethodVerb fromValue(String value) {
     for (final item in HttpMethodVerb.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpMethodVerb value: $value');
   }
 }
-

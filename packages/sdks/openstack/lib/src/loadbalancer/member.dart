@@ -119,40 +119,52 @@ class Member extends pulumi.CustomResource {
   /// The IP address of the member to receive traffic from
   /// the load balancer. Changing this creates a new member.
   late final pulumi.Output<String> address;
+
   /// The administrative state of the member.
   /// A valid value is true (UP) or false (DOWN). Defaults to true.
   late final pulumi.Output<bool?> adminStateUp;
+
   /// Boolean that indicates whether that member works as a backup or not. Available
-  /// only for Octavia >= 2.1.
+  /// only for Octavia &gt;= 2.1.
   late final pulumi.Output<bool?> backup;
+
   /// An alternate IP address used for health monitoring a backend member.
   /// Available only for Octavia
   late final pulumi.Output<String?> monitorAddress;
+
   /// An alternate protocol port used for health monitoring a backend member.
   /// Available only for Octavia
   late final pulumi.Output<int?> monitorPort;
+
   /// Human-readable name for the member.
   late final pulumi.Output<String> name;
+
   /// The id of the pool that this member will be assigned
   /// to. Changing this creates a new member.
   late final pulumi.Output<String> poolId;
+
   /// The port on which to listen for client traffic.
   /// Changing this creates a new member.
   late final pulumi.Output<int> protocolPort;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a member. If omitted, the `region`
   /// argument of the provider is used. Changing this creates a new member.
   late final pulumi.Output<String> region;
+
   /// The subnet in which to access the member. Changing
   /// this creates a new member.
   late final pulumi.Output<String?> subnetId;
+
   /// A list of simple strings assigned to the member.
-  /// Available only for Octavia >= 2.5.
+  /// Available only for Octavia &gt;= 2.5.
   late final pulumi.Output<List<String>?> tags;
+
   /// Required for admins. The UUID of the tenant who owns
   /// the member.  Only administrative users can specify a tenant UUID
   /// other than their own. Changing this creates a new member.
   late final pulumi.Output<String> tenantId;
+
   /// A positive integer value that indicates the relative
   /// portion of traffic that this member should receive from the pool. For
   /// example, a member with a weight of 10 receives five times as much traffic
@@ -163,29 +175,26 @@ class Member extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Member]. {@macro pulumi_loadbalancer_member_member_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Member(
-    String name, {
-    MemberArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:loadbalancer/member:Member',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.address = registerOutput<String>('address');
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.backup = registerOutput<bool?>('backup');
-    this.monitorAddress = registerOutput<String?>('monitorAddress');
-    this.monitorPort = registerOutput<int?>('monitorPort');
+  Member(String name, {MemberArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:loadbalancer/member:Member',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    address = registerOutput<String>('address');
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    backup = registerOutput<bool?>('backup');
+    monitorAddress = registerOutput<String?>('monitorAddress');
+    monitorPort = registerOutput<int?>('monitorPort');
     this.name = registerOutput<String>('name');
-    this.poolId = registerOutput<String>('poolId');
-    this.protocolPort = registerOutput<int>('protocolPort');
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String?>('subnetId');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.weight = registerOutput<int>('weight');
+    poolId = registerOutput<String>('poolId');
+    protocolPort = registerOutput<int>('protocolPort');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    weight = registerOutput<int>('weight');
   }
 
   /// Gets an existing [Member] resource's state with the given [name] and [id].
@@ -206,23 +215,23 @@ class Member extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/member:Member',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.address = registerOutput<String>('address');
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.backup = registerOutput<bool?>('backup');
-    this.monitorAddress = registerOutput<String?>('monitorAddress');
-    this.monitorPort = registerOutput<int?>('monitorPort');
+         'openstack:loadbalancer/member:Member',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    address = registerOutput<String>('address');
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    backup = registerOutput<bool?>('backup');
+    monitorAddress = registerOutput<String?>('monitorAddress');
+    monitorPort = registerOutput<int?>('monitorPort');
     this.name = registerOutput<String>('name');
-    this.poolId = registerOutput<String>('poolId');
-    this.protocolPort = registerOutput<int>('protocolPort');
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String?>('subnetId');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.weight = registerOutput<int>('weight');
+    poolId = registerOutput<String>('poolId');
+    protocolPort = registerOutput<int>('protocolPort');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    weight = registerOutput<int>('weight');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_store_collection_args.dart';
-import 'rule_response.dart';
 import 'system_data_response.dart';
 
 /// The Collection data structure.
@@ -171,30 +170,43 @@ import 'system_data_response.dart';
 class PrivateStoreCollection extends pulumi.CustomResource {
   /// Indicating whether all subscriptions are selected (=true) or not (=false).
   late final pulumi.Output<bool?> allSubscriptions;
+
   /// Gets list of collection rules
-  late final pulumi.Output<List<RuleResponse>> appliedRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> appliedRules;
+
   /// Indicating whether all items are approved for this collection (=true) or not (=false).
   late final pulumi.Output<bool> approveAllItems;
+
   /// Gets the modified date of all items approved.
   late final pulumi.Output<String> approveAllItemsModifiedAt;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the association with Commercial's Billing Account.
   late final pulumi.Output<String?> claim;
+
   /// Gets collection Id.
   late final pulumi.Output<String> collectionId;
+
   /// Gets or sets collection name.
   late final pulumi.Output<String?> collectionName;
+
   /// Indicating whether the collection is enabled or disabled.
   late final pulumi.Output<bool?> enabled;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Gets the number of offers associated with the collection.
   late final pulumi.Output<double> numberOfOffers;
+
   /// Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
   late final pulumi.Output<List<String>?> subscriptionsList;
+
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -207,24 +219,26 @@ class PrivateStoreCollection extends pulumi.CustomResource {
     PrivateStoreCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:marketplace:PrivateStoreCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allSubscriptions = registerOutput<bool?>('allSubscriptions');
-    this.appliedRules = registerOutput<List<RuleResponse>>('appliedRules');
-    this.approveAllItems = registerOutput<bool>('approveAllItems');
-    this.approveAllItemsModifiedAt = registerOutput<String>('approveAllItemsModifiedAt');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.claim = registerOutput<String?>('claim');
-    this.collectionId = registerOutput<String>('collectionId');
-    this.collectionName = registerOutput<String?>('collectionName');
-    this.enabled = registerOutput<bool?>('enabled');
+         'azure-native:marketplace:PrivateStoreCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allSubscriptions = registerOutput<bool?>('allSubscriptions');
+    appliedRules = registerOutput<List<Map<String, dynamic>>>('appliedRules');
+    approveAllItems = registerOutput<bool>('approveAllItems');
+    approveAllItemsModifiedAt = registerOutput<String>(
+      'approveAllItemsModifiedAt',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    claim = registerOutput<String?>('claim');
+    collectionId = registerOutput<String>('collectionId');
+    collectionName = registerOutput<String?>('collectionName');
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.numberOfOffers = registerOutput<double>('numberOfOffers');
-    this.subscriptionsList = registerOutput<List<String>?>('subscriptionsList');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    numberOfOffers = registerOutput<double>('numberOfOffers');
+    subscriptionsList = registerOutput<List<String>?>('subscriptionsList');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

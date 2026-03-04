@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultEncryption {
   /// Enabling/Disabling the Double Encryption state.
   final pulumi.Input<bool> infrastructureEncryptionEnabled;
+
   /// The Key Vault key id used to encrypt this vault. Key managed by Vault Managed Hardware Security Module is also supported.
   final pulumi.Input<String> keyId;
+
   /// Indicate that system assigned identity should be used or not. Defaults to `true`. Must be set to `false` when `user_assigned_identity_id` is set.
   ///
-  /// !> **Note:** `use_system_assigned_identity` only be able to set to `false` for **new** vaults. Any vaults containing existing items registered or attempted to be registered to it are not supported. Details can be found in [the document](https://learn.microsoft.com/en-us/azure/backup/encryption-at-rest-with-cmk?tabs=portal#before-you-start)
+  /// !&gt; **Note:** `use_system_assigned_identity` only be able to set to `false` for **new** vaults. Any vaults containing existing items registered or attempted to be registered to it are not supported. Details can be found in [the document](https://learn.microsoft.com/en-us/azure/backup/encryption-at-rest-with-cmk?tabs=portal#before-you-start)
   ///
-  /// !> **Note:** Once `infrastructure_encryption_enabled` has been set it's not possible to change it.
+  /// !&gt; **Note:** Once `infrastructure_encryption_enabled` has been set it's not possible to change it.
   final pulumi.Input<bool>? useSystemAssignedIdentity;
+
   /// Specifies the user assigned identity ID to be used.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -39,11 +42,20 @@ class VaultEncryption {
 
   factory VaultEncryption.fromMap(Map<String, dynamic> map) {
     return VaultEncryption(
-      infrastructureEncryptionEnabled: (map['infrastructureEncryptionEnabled'] as bool).input(),
-      keyId: (map['keyId'] as String).input(),
-      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity']! as bool).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      infrastructureEncryptionEnabled: pulumi.Input.fromValue(
+        map['infrastructureEncryptionEnabled'] as bool,
+      ),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      useSystemAssignedIdentity: (() {
+        final guardedValue = map['useSystemAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userAssignedIdentityId: (() {
+        final guardedValue = map['userAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

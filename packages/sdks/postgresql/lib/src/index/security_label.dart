@@ -6,7 +6,7 @@ import 'security_label_state.dart';
 ///
 /// See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-security-label.html)
 ///
-/// > **Note:** This resource needs Postgresql version 11 or above.
+/// &gt; **Note:** This resource needs Postgresql version 11 or above.
 ///
 /// ## Usage
 ///
@@ -155,10 +155,13 @@ import 'security_label_state.dart';
 class SecurityLabel extends pulumi.CustomResource {
   /// The value of the security label.
   late final pulumi.Output<String> label;
+
   /// The name of the provider with which this label is to be associated.
   late final pulumi.Output<String> labelProvider;
+
   /// The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   late final pulumi.Output<String> objectName;
+
   /// The PostgreSQL object type to apply this security label to.
   late final pulumi.Output<String> objectType;
 
@@ -171,15 +174,15 @@ class SecurityLabel extends pulumi.CustomResource {
     SecurityLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/securityLabel:SecurityLabel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.label = registerOutput<String>('label');
-    this.labelProvider = registerOutput<String>('labelProvider');
-    this.objectName = registerOutput<String>('objectName');
-    this.objectType = registerOutput<String>('objectType');
+         'postgresql:index/securityLabel:SecurityLabel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    label = registerOutput<String>('label');
+    labelProvider = registerOutput<String>('labelProvider');
+    objectName = registerOutput<String>('objectName');
+    objectType = registerOutput<String>('objectType');
   }
 
   /// Gets an existing [SecurityLabel] resource's state with the given [name] and [id].
@@ -200,14 +203,14 @@ class SecurityLabel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/securityLabel:SecurityLabel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.label = registerOutput<String>('label');
-    this.labelProvider = registerOutput<String>('labelProvider');
-    this.objectName = registerOutput<String>('objectName');
-    this.objectType = registerOutput<String>('objectType');
+         'postgresql:index/securityLabel:SecurityLabel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    label = registerOutput<String>('label');
+    labelProvider = registerOutput<String>('labelProvider');
+    objectName = registerOutput<String>('objectName');
+    objectType = registerOutput<String>('objectType');
   }
 }

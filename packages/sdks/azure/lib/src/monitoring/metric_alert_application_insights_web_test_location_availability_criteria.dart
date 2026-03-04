@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria {
   /// The ID of the Application Insights Resource.
   final pulumi.Input<String> componentId;
+
   /// The number of failed locations.
   final pulumi.Input<int> failedLocationCount;
+
   /// The ID of the Application Insights Web Test.
   final pulumi.Input<String> webTestId;
 
@@ -28,12 +30,15 @@ class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria {
     };
   }
 
-  factory MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(Map<String, dynamic> map) {
+  factory MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria(
-      componentId: (map['componentId'] as String).input(),
-      failedLocationCount: (map['failedLocationCount'] as int).input(),
-      webTestId: (map['webTestId'] as String).input(),
+      componentId: pulumi.Input.fromValue(map['componentId'] as String),
+      failedLocationCount: pulumi.Input.fromValue(
+        map['failedLocationCount'] as int,
+      ),
+      webTestId: pulumi.Input.fromValue(map['webTestId'] as String),
     );
   }
 }
-

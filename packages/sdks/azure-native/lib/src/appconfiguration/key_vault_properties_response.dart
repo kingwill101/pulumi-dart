@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultPropertiesResponse {
   /// The client id of the identity which will be used to access key vault.
   final pulumi.Input<String>? identityClientId;
+
   /// The URI of the key vault key used to encrypt data.
   final pulumi.Input<String>? keyIdentifier;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [identityClientId] The client id of the identity which will be used to access key vault.
   /// [keyIdentifier] The URI of the key vault key used to encrypt data.
-  KeyVaultPropertiesResponse({
-    this.identityClientId,
-    this.keyIdentifier,
-  });
+  KeyVaultPropertiesResponse({this.identityClientId, this.keyIdentifier});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
+      identityClientId: (() {
+        final guardedValue = map['identityClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyIdentifier: (() {
+        final guardedValue = map['keyIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

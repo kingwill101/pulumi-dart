@@ -7,12 +7,20 @@ import 'prevention_discovery_config_target_other_cloud_target_filter_single_reso
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilter {
   /// A collection of resources for this filter to apply to.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection>? collection;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection
+  >?
+  collection;
+
   /// Match discovery resources not covered by any other filter.
   final pulumi.Input<Map<String, dynamic>>? others;
+
   /// The resource to scan. Configs using this filter can only have one target (the target with this single resource reference).
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource>? singleResource;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource
+  >?
+  singleResource;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilter].
   /// [collection] A collection of resources for this filter to apply to.
@@ -26,18 +34,49 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'collection': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection, Map<String, dynamic>>(collection, (value) => value.toMap()),
+      'collection':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection,
+            Map<String, dynamic>
+          >(collection, (value) => value.toMap()),
       'others': ?others,
-      'singleResource': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource, Map<String, dynamic>>(singleResource, (value) => value.toMap()),
+      'singleResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource,
+            Map<String, dynamic>
+          >(singleResource, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilter.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilter(
-      collection: map['collection'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection.fromMap((map['collection']! as Map).cast<String, dynamic>())).input(),
-      others: map['others'] == null ? null : ((map['others']! as Map).cast<String, dynamic>()).input(),
-      singleResource: map['singleResource'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource.fromMap((map['singleResource']! as Map).cast<String, dynamic>())).input(),
+      collection: (() {
+        final guardedValue = map['collection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      others: (() {
+        final guardedValue = map['others'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      singleResource: (() {
+        final guardedValue = map['singleResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VariablePatchAdmissionregistrationK8sIoV1alpha1 {
   /// Expression is the expression that will be evaluated as the value of the variable. The CEL expression has access to the same identifiers as the CEL expressions in Validation.
   final pulumi.Input<String>? expression;
+
   /// Name is the name of the variable. The name must be a valid CEL identifier and unique among all variables. The variable can be accessed in other expressions through `variables` For example, if name is "foo", the variable will be available as `variables.foo`
   final pulumi.Input<String>? name;
 
   /// Creates a new [VariablePatchAdmissionregistrationK8sIoV1alpha1].
   /// [expression] Expression is the expression that will be evaluated as the value of the variable. The CEL expression has access to the same identifiers as the CEL expressions in Validation.
   /// [name] Name is the name of the variable. The name must be a valid CEL identifier and unique among all variables. The variable can be accessed in other expressions through `variables` For example, if name is "foo", the variable will be available as `variables.foo`
-  VariablePatchAdmissionregistrationK8sIoV1alpha1({
-    this.expression,
-    this.name,
-  });
+  VariablePatchAdmissionregistrationK8sIoV1alpha1({this.expression, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expression': ?expression,
-      'name': ?name,
-    };
+    return <String, dynamic>{'expression': ?expression, 'name': ?name};
   }
 
-  factory VariablePatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory VariablePatchAdmissionregistrationK8sIoV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VariablePatchAdmissionregistrationK8sIoV1alpha1(
-      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      expression: (() {
+        final guardedValue = map['expression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

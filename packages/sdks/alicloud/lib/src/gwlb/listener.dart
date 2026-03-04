@@ -8,7 +8,7 @@ import 'listener_state.dart';
 ///
 /// For information about GWLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createlistener).
 ///
-/// > **NOTE:** Available since v1.234.0.
+/// &gt; **NOTE:** Available since v1.234.0.
 ///
 /// ## Example Usage
 ///
@@ -677,18 +677,24 @@ import 'listener_state.dart';
 class Listener extends pulumi.CustomResource {
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// The description of the listener.
   ///
   /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
   late final pulumi.Output<String?> listenerDescription;
+
   /// The GWLB instance ID.
   late final pulumi.Output<String> loadBalancerId;
+
   /// The region ID.
   late final pulumi.Output<String> regionId;
+
   /// The server group ID.
   late final pulumi.Output<String> serverGroupId;
+
   /// The status of the listener.
   late final pulumi.Output<String> status;
+
   /// The tags. You can specify at most 20 tags in each call.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -701,18 +707,18 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gwlb/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.listenerDescription = registerOutput<String?>('listenerDescription');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.regionId = registerOutput<String>('regionId');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:gwlb/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    listenerDescription = registerOutput<String?>('listenerDescription');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    regionId = registerOutput<String>('regionId');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -733,17 +739,17 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gwlb/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.listenerDescription = registerOutput<String?>('listenerDescription');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.regionId = registerOutput<String>('regionId');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:gwlb/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    listenerDescription = registerOutput<String?>('listenerDescription');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    regionId = registerOutput<String>('regionId');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

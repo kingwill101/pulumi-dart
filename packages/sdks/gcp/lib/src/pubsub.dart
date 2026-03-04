@@ -1,5 +1,3 @@
-library module_pubsub;
-
 export 'pubsub/functions.dart';
 export 'pubsub/get_schema_iam_policy_args.dart';
 export 'pubsub/get_schema_iam_policy_result.dart';

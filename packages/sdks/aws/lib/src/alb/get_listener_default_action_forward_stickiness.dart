@@ -15,17 +15,15 @@ class GetListenerDefaultActionForwardStickiness {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'duration': duration,
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'duration': duration, 'enabled': enabled};
   }
 
-  factory GetListenerDefaultActionForwardStickiness.fromMap(Map<String, dynamic> map) {
+  factory GetListenerDefaultActionForwardStickiness.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerDefaultActionForwardStickiness(
-      duration: (map['duration'] as int).input(),
-      enabled: (map['enabled'] as bool).input(),
+      duration: pulumi.Input.fromValue(map['duration'] as int),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

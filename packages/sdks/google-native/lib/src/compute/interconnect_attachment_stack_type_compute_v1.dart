@@ -3,16 +3,17 @@ enum InterconnectAttachmentStackTypeComputeV1 {
   ipv4Ipv6("IPV4_IPV6"),
   ipv4Only("IPV4_ONLY");
 
-  const InterconnectAttachmentStackTypeComputeV1(this.value);
-  final String value;
+  const InterconnectAttachmentStackTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static InterconnectAttachmentStackTypeComputeV1 fromValue(String value) {
     for (final item in InterconnectAttachmentStackTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectAttachmentStackTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectAttachmentStackTypeComputeV1 value: $value',
+    );
   }
 }
-

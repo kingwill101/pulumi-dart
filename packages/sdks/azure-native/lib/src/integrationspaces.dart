@@ -1,5 +1,3 @@
-library module_integrationspaces;
-
 export 'integrationspaces/application.dart';
 export 'integrationspaces/application_args.dart';
 export 'integrationspaces/application_resource.dart';

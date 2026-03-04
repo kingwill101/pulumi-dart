@@ -1,5 +1,3 @@
-library module_lb;
-
 export 'lb/application_load_balancer.dart';
 export 'lb/application_load_balancer_args.dart';
 export 'lb/listener.dart';

@@ -6,16 +6,15 @@ enum BootDiskDiskType {
   pdBalanced("PD_BALANCED"),
   pdExtreme("PD_EXTREME");
 
-  const BootDiskDiskType(this.value);
-  final String value;
+  const BootDiskDiskType(this.wireValue);
+  final String wireValue;
 
   static BootDiskDiskType fromValue(String value) {
     for (final item in BootDiskDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BootDiskDiskType value: $value');
   }
 }
-

@@ -7,11 +7,15 @@ import 'google_cloud_retail_v2_condition_time_range_response.dart';
 /// Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
 class GoogleCloudRetailV2ConditionResponse {
   /// Range of time(s) specifying when Condition is active. Condition true if any time range matches.
-  final pulumi.Input<List<GoogleCloudRetailV2ConditionTimeRangeResponse>> activeTimeRange;
+  final pulumi.Input<List<GoogleCloudRetailV2ConditionTimeRangeResponse>>
+  activeTimeRange;
+
   /// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
   final pulumi.Input<List<String>> pageCategories;
+
   /// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
-  final pulumi.Input<List<GoogleCloudRetailV2ConditionQueryTermResponse>> queryTerms;
+  final pulumi.Input<List<GoogleCloudRetailV2ConditionQueryTermResponse>>
+  queryTerms;
 
   /// Creates a new [GoogleCloudRetailV2ConditionResponse].
   /// [activeTimeRange] Range of time(s) specifying when Condition is active. Condition true if any time range matches.
@@ -25,18 +29,57 @@ class GoogleCloudRetailV2ConditionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeTimeRange': pulumi.Input.mapInputValue<List<GoogleCloudRetailV2ConditionTimeRangeResponse>, List<Map<String, dynamic>>>(activeTimeRange, (value) => pulumi.Input.encodeList<GoogleCloudRetailV2ConditionTimeRangeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'activeTimeRange':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudRetailV2ConditionTimeRangeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            activeTimeRange,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudRetailV2ConditionTimeRangeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'pageCategories': pageCategories,
-      'queryTerms': pulumi.Input.mapInputValue<List<GoogleCloudRetailV2ConditionQueryTermResponse>, List<Map<String, dynamic>>>(queryTerms, (value) => pulumi.Input.encodeList<GoogleCloudRetailV2ConditionQueryTermResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'queryTerms':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudRetailV2ConditionQueryTermResponse>,
+            List<Map<String, dynamic>>
+          >(
+            queryTerms,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudRetailV2ConditionQueryTermResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GoogleCloudRetailV2ConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2ConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2ConditionResponse(
-      activeTimeRange: (pulumi.Input.decodeList<GoogleCloudRetailV2ConditionTimeRangeResponse>(map['activeTimeRange'], (value) => GoogleCloudRetailV2ConditionTimeRangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pageCategories: ((map['pageCategories'] as List).cast<String>()).input(),
-      queryTerms: (pulumi.Input.decodeList<GoogleCloudRetailV2ConditionQueryTermResponse>(map['queryTerms'], (value) => GoogleCloudRetailV2ConditionQueryTermResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activeTimeRange: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GoogleCloudRetailV2ConditionTimeRangeResponse>(
+          map['activeTimeRange']!,
+          (value) => GoogleCloudRetailV2ConditionTimeRangeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      pageCategories: pulumi.Input.fromValue(
+        (map['pageCategories'] as List).cast<String>(),
+      ),
+      queryTerms: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GoogleCloudRetailV2ConditionQueryTermResponse>(
+          map['queryTerms']!,
+          (value) => GoogleCloudRetailV2ConditionQueryTermResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

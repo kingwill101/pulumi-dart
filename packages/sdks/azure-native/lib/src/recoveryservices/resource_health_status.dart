@@ -7,16 +7,15 @@ enum ResourceHealthStatus {
   valuePersistentUnhealthy("PersistentUnhealthy"),
   valueInvalid("Invalid");
 
-  const ResourceHealthStatus(this.value);
-  final String value;
+  const ResourceHealthStatus(this.wireValue);
+  final String wireValue;
 
   static ResourceHealthStatus fromValue(String value) {
     for (final item in ResourceHealthStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceHealthStatus value: $value');
   }
 }
-

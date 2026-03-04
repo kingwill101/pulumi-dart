@@ -10,10 +10,13 @@ import 'identity_binding_properties.dart';
 class IdentityBindingArgs {
   /// The name of the identity binding.
   final pulumi.Input<String>? identityBindingName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<IdentityBindingProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
 
@@ -32,7 +35,11 @@ class IdentityBindingArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'identityBindingName': ?identityBindingName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<IdentityBindingProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityBindingProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
@@ -40,11 +47,24 @@ class IdentityBindingArgs {
 
   factory IdentityBindingArgs.fromMap(Map<String, dynamic> map) {
     return IdentityBindingArgs(
-      identityBindingName: map['identityBindingName'] == null ? null : (map['identityBindingName']! as String).input(),
-      properties: map['properties'] == null ? null : (IdentityBindingProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      identityBindingName: (() {
+        final guardedValue = map['identityBindingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityBindingProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

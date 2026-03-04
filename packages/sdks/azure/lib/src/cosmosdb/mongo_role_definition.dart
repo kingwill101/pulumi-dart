@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_role_definition_args.dart';
-import 'mongo_role_definition_privilege.dart';
 import 'mongo_role_definition_state.dart';
 
 /// Manages a Cosmos DB Mongo Role Definition.
@@ -322,7 +321,7 @@ import 'mongo_role_definition_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DocumentDB` - 2022-11-15
@@ -337,12 +336,15 @@ import 'mongo_role_definition_state.dart';
 class MongoRoleDefinition extends pulumi.CustomResource {
   /// The resource ID of the Mongo DB. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cosmosMongoDatabaseId;
+
   /// A list of Mongo Roles which are inherited to the Mongo Role Definition.
   ///
-  /// > **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
+  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
   late final pulumi.Output<List<String>?> inheritedRoleNames;
+
   /// A `privilege` block as defined below.
-  late final pulumi.Output<List<MongoRoleDefinitionPrivilege>?> privileges;
+  late final pulumi.Output<List<Map<String, dynamic>>?> privileges;
+
   /// The user-friendly name for the Mongo Role Definition. It must be unique for the database account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleName;
 
@@ -355,15 +357,15 @@ class MongoRoleDefinition extends pulumi.CustomResource {
     MongoRoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
-    this.inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
-    this.privileges = registerOutput<List<MongoRoleDefinitionPrivilege>?>('privileges');
-    this.roleName = registerOutput<String>('roleName');
+         'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
+    privileges = registerOutput<List<Map<String, dynamic>>?>('privileges');
+    roleName = registerOutput<String>('roleName');
   }
 
   /// Gets an existing [MongoRoleDefinition] resource's state with the given [name] and [id].
@@ -384,14 +386,14 @@ class MongoRoleDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
-    this.inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
-    this.privileges = registerOutput<List<MongoRoleDefinitionPrivilege>?>('privileges');
-    this.roleName = registerOutput<String>('roleName');
+         'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
+    privileges = registerOutput<List<Map<String, dynamic>>?>('privileges');
+    roleName = registerOutput<String>('roleName');
   }
 }

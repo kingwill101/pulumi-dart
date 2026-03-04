@@ -6,7 +6,10 @@ import 'resource_policy_resource_status_instance_schedule_policy_status_response
 /// Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
 class ResourcePolicyResourceStatusResponseComputeBeta {
   /// Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
-  final pulumi.Input<ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeBeta> instanceSchedulePolicy;
+  final pulumi.Input<
+    ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeBeta
+  >
+  instanceSchedulePolicy;
 
   /// Creates a new [ResourcePolicyResourceStatusResponseComputeBeta].
   /// [instanceSchedulePolicy] Specifies a set of output values reffering to the instance_schedule_policy system status. This field should have the same name as corresponding policy field.
@@ -16,14 +19,23 @@ class ResourcePolicyResourceStatusResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instanceSchedulePolicy': pulumi.Input.mapInputValue<ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeBeta, Map<String, dynamic>>(instanceSchedulePolicy, (value) => value.toMap()),
+      'instanceSchedulePolicy':
+          pulumi.Input.mapInputValue<
+            ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeBeta,
+            Map<String, dynamic>
+          >(instanceSchedulePolicy, (value) => value.toMap()),
     };
   }
 
-  factory ResourcePolicyResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyResourceStatusResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyResourceStatusResponseComputeBeta(
-      instanceSchedulePolicy: (ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeBeta.fromMap((map['instanceSchedulePolicy'] as Map).cast<String, dynamic>())).input(),
+      instanceSchedulePolicy: pulumi.Input.fromValue(
+        ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeBeta.fromMap(
+          (map['instanceSchedulePolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessTokenAuthenticationResponse {
   /// The access token that will be used while authenticating with the onboarded environment
   final pulumi.Input<String>? accessToken;
+
   /// The authentication type
   /// Expected value is 'AccessToken'.
   final pulumi.Input<String> authenticationType;
+
   /// The user name that will be used while authenticating with the onboarded environment
   final pulumi.Input<String>? username;
 
@@ -32,10 +34,19 @@ class AccessTokenAuthenticationResponse {
 
   factory AccessTokenAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AccessTokenAuthenticationResponse(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
-      authenticationType: (map['authenticationType'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authenticationType: pulumi.Input.fromValue(
+        map['authenticationType'] as String,
+      ),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,16 +7,17 @@ enum GlobalForwardingRuleLoadBalancingScheme {
   internalSelfManaged("INTERNAL_SELF_MANAGED"),
   invalid("INVALID");
 
-  const GlobalForwardingRuleLoadBalancingScheme(this.value);
-  final String value;
+  const GlobalForwardingRuleLoadBalancingScheme(this.wireValue);
+  final String wireValue;
 
   static GlobalForwardingRuleLoadBalancingScheme fromValue(String value) {
     for (final item in GlobalForwardingRuleLoadBalancingScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleLoadBalancingScheme value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleLoadBalancingScheme value: $value',
+    );
   }
 }
-

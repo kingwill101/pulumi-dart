@@ -7,12 +7,16 @@ import 'version_kind_containeranalysis_v1alpha1.dart';
 class VersionContaineranalysisV1alpha1 {
   /// Used to correct mistakes in the version numbering scheme.
   final pulumi.Input<int>? epoch;
+
   /// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
   final pulumi.Input<bool>? inclusive;
+
   /// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
   final pulumi.Input<VersionKindContaineranalysisV1alpha1>? kind;
+
   /// The main part of the version name.
   final pulumi.Input<String>? name;
+
   /// The iteration of the package build from the above version.
   final pulumi.Input<String>? revision;
 
@@ -34,7 +38,11 @@ class VersionContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'epoch': ?epoch,
       'inclusive': ?inclusive,
-      'kind': ?pulumi.Input.mapOptionalInputValue<VersionKindContaineranalysisV1alpha1, String>(kind, (value) => value.value),
+      'kind':
+          ?pulumi.Input.mapOptionalInputValue<
+            VersionKindContaineranalysisV1alpha1,
+            String
+          >(kind, (value) => value.wireValue),
       'name': ?name,
       'revision': ?revision,
     };
@@ -42,12 +50,35 @@ class VersionContaineranalysisV1alpha1 {
 
   factory VersionContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return VersionContaineranalysisV1alpha1(
-      epoch: map['epoch'] == null ? null : (map['epoch']! as int).input(),
-      inclusive: map['inclusive'] == null ? null : (map['inclusive']! as bool).input(),
-      kind: map['kind'] == null ? null : (VersionKindContaineranalysisV1alpha1.fromValue(map['kind']! as String)).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      epoch: (() {
+        final guardedValue = map['epoch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      inclusive: (() {
+        final guardedValue = map['inclusive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VersionKindContaineranalysisV1alpha1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

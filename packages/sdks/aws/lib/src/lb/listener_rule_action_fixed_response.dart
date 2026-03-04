@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerRuleActionFixedResponse {
   /// The content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`.
   final pulumi.Input<String> contentType;
+
   /// The message body.
   final pulumi.Input<String>? messageBody;
+
   /// The HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
   final pulumi.Input<String>? statusCode;
 
@@ -30,10 +32,17 @@ class ListenerRuleActionFixedResponse {
 
   factory ListenerRuleActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionFixedResponse(
-      contentType: (map['contentType'] as String).input(),
-      messageBody: map['messageBody'] == null ? null : ((map['messageBody'] as String).input()).input(),
-      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      messageBody: (() {
+        final guardedValue = map['messageBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

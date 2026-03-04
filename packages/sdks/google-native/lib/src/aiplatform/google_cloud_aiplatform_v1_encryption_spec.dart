@@ -9,20 +9,17 @@ class GoogleCloudAiplatformV1EncryptionSpec {
 
   /// Creates a new [GoogleCloudAiplatformV1EncryptionSpec].
   /// [kmsKeyName] The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
-  GoogleCloudAiplatformV1EncryptionSpec({
-    required this.kmsKeyName,
-  });
+  GoogleCloudAiplatformV1EncryptionSpec({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
-  factory GoogleCloudAiplatformV1EncryptionSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1EncryptionSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1EncryptionSpec(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

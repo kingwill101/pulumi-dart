@@ -491,29 +491,41 @@ import '../internal/package_registration.dart' as package_registration;
 class Volume extends pulumi.CustomResource {
   /// Configures the total amount of space allocated for the storage volume.
   late final pulumi.Output<double> allocation;
+
   /// Specifies the units for the allocated space in the storage volume.
   late final pulumi.Output<String?> allocationUnit;
+
   /// Backing store configuration for copy-on-write volumes
   late final pulumi.Output<VolumeBackingStore?> backingStore;
+
   /// Volume capacity in bytes (required unless using create.content)
   late final pulumi.Output<double> capacity;
+
   /// Specifies the units for the total capacity in the storage volume.
   late final pulumi.Output<String?> capacityUnit;
+
   /// Volume creation options for initializing volume content from external sources
   late final pulumi.Output<VolumeCreate?> create;
+
   /// Defines a unique key identifier for the storage volume.
   late final pulumi.Output<String> key;
+
   /// Sets the name for the storage volume, which must be unique within the pool.
   late final pulumi.Output<String> name;
+
   /// Volume path on the host filesystem (same as target.path)
   late final pulumi.Output<String> path;
+
   /// Configures the physical size of the storage volume.
   late final pulumi.Output<double> physical;
+
   /// Specifies the units for the physical size in the storage volume.
   late final pulumi.Output<String?> physicalUnit;
+
   /// Name of the storage pool where the volume will be created
   late final pulumi.Output<String> pool;
   late final pulumi.Output<VolumeTarget?> target;
+
   /// Specifies the type of the storage volume, allowing for distinction of different volume types.
   late final pulumi.Output<String?> type;
 
@@ -521,31 +533,28 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_index_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(
-    String name, {
-    VolumeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'libvirt:index/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-          registerPackageRequest: package_registration.registerPackageRequest,
-        ) {
-    this.allocation = registerOutput<double>('allocation');
-    this.allocationUnit = registerOutput<String?>('allocationUnit');
-    this.backingStore = registerOutput<VolumeBackingStore?>('backingStore');
-    this.capacity = registerOutput<double>('capacity');
-    this.capacityUnit = registerOutput<String?>('capacityUnit');
-    this.create = registerOutput<VolumeCreate?>('create');
-    this.key = registerOutput<String>('key');
+  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'libvirt:index/volume:Volume',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+        registerPackageRequest: package_registration.registerPackageRequest,
+      ) {
+    allocation = registerOutput<double>('allocation');
+    allocationUnit = registerOutput<String?>('allocationUnit');
+    backingStore = registerOutput<VolumeBackingStore?>('backingStore');
+    capacity = registerOutput<double>('capacity');
+    capacityUnit = registerOutput<String?>('capacityUnit');
+    create = registerOutput<VolumeCreate?>('create');
+    key = registerOutput<String>('key');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.physical = registerOutput<double>('physical');
-    this.physicalUnit = registerOutput<String?>('physicalUnit');
-    this.pool = registerOutput<String>('pool');
-    this.target = registerOutput<VolumeTarget?>('target');
-    this.type = registerOutput<String?>('type');
+    path = registerOutput<String>('path');
+    physical = registerOutput<double>('physical');
+    physicalUnit = registerOutput<String?>('physicalUnit');
+    pool = registerOutput<String>('pool');
+    target = registerOutput<VolumeTarget?>('target');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [Volume] resource's state with the given [name] and [id].
@@ -566,24 +575,24 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'libvirt:index/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocation = registerOutput<double>('allocation');
-    this.allocationUnit = registerOutput<String?>('allocationUnit');
-    this.backingStore = registerOutput<VolumeBackingStore?>('backingStore');
-    this.capacity = registerOutput<double>('capacity');
-    this.capacityUnit = registerOutput<String?>('capacityUnit');
-    this.create = registerOutput<VolumeCreate?>('create');
-    this.key = registerOutput<String>('key');
+         'libvirt:index/volume:Volume',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocation = registerOutput<double>('allocation');
+    allocationUnit = registerOutput<String?>('allocationUnit');
+    backingStore = registerOutput<VolumeBackingStore?>('backingStore');
+    capacity = registerOutput<double>('capacity');
+    capacityUnit = registerOutput<String?>('capacityUnit');
+    create = registerOutput<VolumeCreate?>('create');
+    key = registerOutput<String>('key');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.physical = registerOutput<double>('physical');
-    this.physicalUnit = registerOutput<String?>('physicalUnit');
-    this.pool = registerOutput<String>('pool');
-    this.target = registerOutput<VolumeTarget?>('target');
-    this.type = registerOutput<String?>('type');
+    path = registerOutput<String>('path');
+    physical = registerOutput<double>('physical');
+    physicalUnit = registerOutput<String?>('physicalUnit');
+    pool = registerOutput<String>('pool');
+    target = registerOutput<VolumeTarget?>('target');
+    type = registerOutput<String?>('type');
   }
 }

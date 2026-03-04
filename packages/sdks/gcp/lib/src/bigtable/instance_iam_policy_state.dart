@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceIamPolicyState {
   /// (Computed) The etag of the instances's IAM policy.
   final pulumi.Input<String>? etag;
+
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
@@ -36,11 +37,26 @@ class InstanceIamPolicyState {
 
   factory InstanceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyData: (() {
+        final guardedValue = map['policyData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

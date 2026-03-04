@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageRecipeBlockDeviceMappingEbs {
   /// Whether to delete the volume on termination. Defaults to unset, which is the value inherited from the parent image.
   final pulumi.Input<String>? deleteOnTermination;
+
   /// Whether to encrypt the volume. Defaults to unset, which is the value inherited from the parent image.
   final pulumi.Input<String>? encrypted;
+
   /// Number of Input/Output (I/O) operations per second to provision for an `io1` or `io2` volume.
   final pulumi.Input<int>? iops;
+
   /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key for encryption.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Identifier of the EC2 Volume Snapshot.
   final pulumi.Input<String>? snapshotId;
+
   /// For GP3 volumes only. The throughput in MiB/s that the volume supports.
   final pulumi.Input<int>? throughput;
+
   /// Size of the volume, in GiB.
   final pulumi.Input<int>? volumeSize;
+
   /// Type of the volume. For example, `gp2` or `io2`.
   final pulumi.Input<String>? volumeType;
 
@@ -55,15 +62,46 @@ class ImageRecipeBlockDeviceMappingEbs {
 
   factory ImageRecipeBlockDeviceMappingEbs.fromMap(Map<String, dynamic> map) {
     return ImageRecipeBlockDeviceMappingEbs(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as String).input()).input(),
-      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as String).input()).input(),
-      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
-      throughput: map['throughput'] == null ? null : ((map['throughput'] as int).input()).input(),
-      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
-      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
+      deleteOnTermination: (() {
+        final guardedValue = map['deleteOnTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iops: (() {
+        final guardedValue = map['iops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotId: (() {
+        final guardedValue = map['snapshotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      throughput: (() {
+        final guardedValue = map['throughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeSize: (() {
+        final guardedValue = map['volumeSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeType: (() {
+        final guardedValue = map['volumeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

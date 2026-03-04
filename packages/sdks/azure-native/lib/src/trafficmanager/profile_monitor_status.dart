@@ -6,16 +6,15 @@ enum ProfileMonitorStatus {
   disabled("Disabled"),
   inactive("Inactive");
 
-  const ProfileMonitorStatus(this.value);
-  final String value;
+  const ProfileMonitorStatus(this.wireValue);
+  final String wireValue;
 
   static ProfileMonitorStatus fromValue(String value) {
     for (final item in ProfileMonitorStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProfileMonitorStatus value: $value');
   }
 }
-

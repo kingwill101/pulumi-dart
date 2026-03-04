@@ -7,17 +7,22 @@ import 'get_peer_connections_connection.dart';
 class GetPeerConnectionsResult {
   /// A list of Vpc Peer Connections. Each element contains the following attributes:
   final List<GetPeerConnectionsConnection> connections;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of PeerConnection names.
   final List<String> names;
   final String? outputFile;
+
   /// The name of the resource.
   final String? peerConnectionName;
+
   /// The status of the resource.
   final String? status;
+
   /// The ID of the requester VPC.
   final String? vpcId;
 
@@ -45,7 +50,11 @@ class GetPeerConnectionsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections': pulumi.Input.encodeList<GetPeerConnectionsConnection, Map<String, dynamic>>(connections, (value) => value.toMap()),
+      'connections':
+          pulumi.Input.encodeList<
+            GetPeerConnectionsConnection,
+            Map<String, dynamic>
+          >(connections, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -59,16 +68,40 @@ class GetPeerConnectionsResult {
 
   factory GetPeerConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetPeerConnectionsResult(
-      connections: pulumi.Input.decodeList<GetPeerConnectionsConnection>(map['connections'], (value) => GetPeerConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
+      connections: pulumi.Input.decodeList<GetPeerConnectionsConnection>(
+        map['connections']!,
+        (value) => GetPeerConnectionsConnection.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      peerConnectionName: map['peerConnectionName'] == null ? null : map['peerConnectionName']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      peerConnectionName: (() {
+        final guardedValue = map['peerConnectionName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

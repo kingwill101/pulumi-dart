@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterDesiredProperties {
   /// Desired level of diagnostic data emitted by the cluster.
   final pulumi.Input<String>? diagnosticLevel;
+
   /// Desired state of Windows Server Subscription.
   final pulumi.Input<String>? windowsServerSubscription;
 
@@ -26,9 +27,16 @@ class ClusterDesiredProperties {
 
   factory ClusterDesiredProperties.fromMap(Map<String, dynamic> map) {
     return ClusterDesiredProperties(
-      diagnosticLevel: map['diagnosticLevel'] == null ? null : (map['diagnosticLevel']! as String).input(),
-      windowsServerSubscription: map['windowsServerSubscription'] == null ? null : (map['windowsServerSubscription']! as String).input(),
+      diagnosticLevel: (() {
+        final guardedValue = map['diagnosticLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      windowsServerSubscription: (() {
+        final guardedValue = map['windowsServerSubscription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

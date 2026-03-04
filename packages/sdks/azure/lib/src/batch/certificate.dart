@@ -4,7 +4,7 @@ import 'certificate_state.dart';
 
 /// Manages a certificate in an Azure Batch account.
 ///
-/// > **Note:** The `azure.batch.Certificate` resource has been deprecated due to Azure retiring the Azure Batch Account Certificates Feature, and will be removed in v5.0 of the AzureRM provider.
+/// &gt; **Note:** The `azure.batch.Certificate` resource has been deprecated due to Azure retiring the Azure Batch Account Certificates Feature, and will be removed in v5.0 of the AzureRM provider.
 ///
 /// ## Example Usage
 ///
@@ -313,7 +313,7 @@ import 'certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Batch` - 2024-07-01
@@ -328,20 +328,28 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Specifies the name of the Batch account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// The base64-encoded contents of the certificate.
   late final pulumi.Output<String> certificate;
+
   /// The format of the certificate. Possible values are `Cer` or `Pfx`.
   late final pulumi.Output<String> format;
+
   /// The generated name of the certificate.
   late final pulumi.Output<String> name;
+
   /// The password to access the certificate's private key. This can only be specified when `format` is `Pfx`.
   late final pulumi.Output<String?> password;
+
   /// The public key of the certificate.
   late final pulumi.Output<String> publicData;
+
   /// The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The thumbprint of the certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> thumbprint;
+
   /// The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> thumbprintAlgorithm;
 
@@ -354,20 +362,20 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:batch/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.certificate = registerOutput<String>('certificate');
-    this.format = registerOutput<String>('format');
+         'azure:batch/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    certificate = registerOutput<String>('certificate');
+    format = registerOutput<String>('format');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.publicData = registerOutput<String>('publicData');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.thumbprintAlgorithm = registerOutput<String>('thumbprintAlgorithm');
+    password = registerOutput<String?>('password');
+    publicData = registerOutput<String>('publicData');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    thumbprint = registerOutput<String>('thumbprint');
+    thumbprintAlgorithm = registerOutput<String>('thumbprintAlgorithm');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -388,19 +396,19 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:batch/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.certificate = registerOutput<String>('certificate');
-    this.format = registerOutput<String>('format');
+         'azure:batch/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    certificate = registerOutput<String>('certificate');
+    format = registerOutput<String>('format');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.publicData = registerOutput<String>('publicData');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.thumbprintAlgorithm = registerOutput<String>('thumbprintAlgorithm');
+    password = registerOutput<String?>('password');
+    publicData = registerOutput<String>('publicData');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    thumbprint = registerOutput<String>('thumbprint');
+    thumbprintAlgorithm = registerOutput<String>('thumbprintAlgorithm');
   }
 }

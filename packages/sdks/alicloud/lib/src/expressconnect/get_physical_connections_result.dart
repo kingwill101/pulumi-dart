@@ -6,6 +6,7 @@ import 'get_physical_connections_connection.dart';
 /// Result data returned by getPhysicalConnections.
 class GetPhysicalConnectionsResult {
   final List<GetPhysicalConnectionsConnection> connections;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -37,7 +38,11 @@ class GetPhysicalConnectionsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connections': pulumi.Input.encodeList<GetPhysicalConnectionsConnection, Map<String, dynamic>>(connections, (value) => value.toMap()),
+      'connections':
+          pulumi.Input.encodeList<
+            GetPhysicalConnectionsConnection,
+            Map<String, dynamic>
+          >(connections, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'includeReservationData': ?includeReservationData,
@@ -50,15 +55,35 @@ class GetPhysicalConnectionsResult {
 
   factory GetPhysicalConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetPhysicalConnectionsResult(
-      connections: pulumi.Input.decodeList<GetPhysicalConnectionsConnection>(map['connections'], (value) => GetPhysicalConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
+      connections: pulumi.Input.decodeList<GetPhysicalConnectionsConnection>(
+        map['connections']!,
+        (value) => GetPhysicalConnectionsConnection.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeReservationData: (() {
+        final guardedValue = map['includeReservationData'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

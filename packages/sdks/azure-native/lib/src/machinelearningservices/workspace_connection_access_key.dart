@@ -9,10 +9,7 @@ class WorkspaceConnectionAccessKey {
   /// Creates a new [WorkspaceConnectionAccessKey].
   /// [accessKeyId] Optional.
   /// [secretAccessKey] Optional.
-  WorkspaceConnectionAccessKey({
-    this.accessKeyId,
-    this.secretAccessKey,
-  });
+  WorkspaceConnectionAccessKey({this.accessKeyId, this.secretAccessKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,16 @@ class WorkspaceConnectionAccessKey {
 
   factory WorkspaceConnectionAccessKey.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionAccessKey(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
+      accessKeyId: (() {
+        final guardedValue = map['accessKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretAccessKey: (() {
+        final guardedValue = map['secretAccessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

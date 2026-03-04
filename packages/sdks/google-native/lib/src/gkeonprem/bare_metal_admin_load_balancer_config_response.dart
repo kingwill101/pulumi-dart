@@ -9,8 +9,10 @@ import 'bare_metal_admin_vip_config_response.dart';
 class BareMetalAdminLoadBalancerConfigResponse {
   /// Manually configured load balancers.
   final pulumi.Input<BareMetalAdminManualLbConfigResponse> manualLbConfig;
+
   /// Configures the ports that the load balancer will listen on.
   final pulumi.Input<BareMetalAdminPortConfigResponse> portConfig;
+
   /// The VIPs used by the load balancer.
   final pulumi.Input<BareMetalAdminVipConfigResponse> vipConfig;
 
@@ -26,18 +28,43 @@ class BareMetalAdminLoadBalancerConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manualLbConfig': pulumi.Input.mapInputValue<BareMetalAdminManualLbConfigResponse, Map<String, dynamic>>(manualLbConfig, (value) => value.toMap()),
-      'portConfig': pulumi.Input.mapInputValue<BareMetalAdminPortConfigResponse, Map<String, dynamic>>(portConfig, (value) => value.toMap()),
-      'vipConfig': pulumi.Input.mapInputValue<BareMetalAdminVipConfigResponse, Map<String, dynamic>>(vipConfig, (value) => value.toMap()),
+      'manualLbConfig':
+          pulumi.Input.mapInputValue<
+            BareMetalAdminManualLbConfigResponse,
+            Map<String, dynamic>
+          >(manualLbConfig, (value) => value.toMap()),
+      'portConfig':
+          pulumi.Input.mapInputValue<
+            BareMetalAdminPortConfigResponse,
+            Map<String, dynamic>
+          >(portConfig, (value) => value.toMap()),
+      'vipConfig':
+          pulumi.Input.mapInputValue<
+            BareMetalAdminVipConfigResponse,
+            Map<String, dynamic>
+          >(vipConfig, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalAdminLoadBalancerConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminLoadBalancerConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminLoadBalancerConfigResponse(
-      manualLbConfig: (BareMetalAdminManualLbConfigResponse.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>())).input(),
-      portConfig: (BareMetalAdminPortConfigResponse.fromMap((map['portConfig'] as Map).cast<String, dynamic>())).input(),
-      vipConfig: (BareMetalAdminVipConfigResponse.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
+      manualLbConfig: pulumi.Input.fromValue(
+        BareMetalAdminManualLbConfigResponse.fromMap(
+          (map['manualLbConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      portConfig: pulumi.Input.fromValue(
+        BareMetalAdminPortConfigResponse.fromMap(
+          (map['portConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vipConfig: pulumi.Input.fromValue(
+        BareMetalAdminVipConfigResponse.fromMap(
+          (map['vipConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

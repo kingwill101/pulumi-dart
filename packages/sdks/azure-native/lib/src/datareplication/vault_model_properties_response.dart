@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultModelPropertiesResponse {
   /// Gets or sets the provisioning state of the vault.
   final pulumi.Input<String> provisioningState;
+
   /// Gets or sets the service resource Id.
   final pulumi.Input<String> serviceResourceId;
+
   /// Gets or sets the type of vault.
   final pulumi.Input<String>? vaultType;
 
@@ -31,10 +33,17 @@ class VaultModelPropertiesResponse {
 
   factory VaultModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VaultModelPropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
-      serviceResourceId: (map['serviceResourceId'] as String).input(),
-      vaultType: map['vaultType'] == null ? null : (map['vaultType']! as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      serviceResourceId: pulumi.Input.fromValue(
+        map['serviceResourceId'] as String,
+      ),
+      vaultType: (() {
+        final guardedValue = map['vaultType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

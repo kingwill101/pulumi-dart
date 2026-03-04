@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontdoorProfileArgs {
   /// Specifies the name of the Front Door Profile.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where this Front Door Profile exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetFrontdoorProfileArgs {
 
   factory GetFrontdoorProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorProfileArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

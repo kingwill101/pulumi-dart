@@ -10,20 +10,26 @@ class SandboxConfig {
 
   /// Creates a new [SandboxConfig].
   /// [type] Type of the sandbox to use for the node.
-  SandboxConfig({
-    this.type,
-  });
+  SandboxConfig({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<SandboxConfigType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<SandboxConfigType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory SandboxConfig.fromMap(Map<String, dynamic> map) {
     return SandboxConfig(
-      type: map['type'] == null ? null : (SandboxConfigType.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SandboxConfigType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

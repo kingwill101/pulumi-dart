@@ -33,13 +33,22 @@ class GetMigrationJobIamPolicyDatamigrationV1beta1Args {
     };
   }
 
-  factory GetMigrationJobIamPolicyDatamigrationV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetMigrationJobIamPolicyDatamigrationV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMigrationJobIamPolicyDatamigrationV1beta1Args(
-      location: (map['location'] as String).input(),
-      migrationJobId: (map['migrationJobId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      migrationJobId: pulumi.Input.fromValue(map['migrationJobId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

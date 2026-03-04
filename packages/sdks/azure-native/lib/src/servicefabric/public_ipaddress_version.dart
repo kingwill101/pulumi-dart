@@ -3,16 +3,15 @@ enum PublicIPAddressVersion {
   valueIPv4("IPv4"),
   valueIPv6("IPv6");
 
-  const PublicIPAddressVersion(this.value);
-  final String value;
+  const PublicIPAddressVersion(this.wireValue);
+  final String wireValue;
 
   static PublicIPAddressVersion fromValue(String value) {
     for (final item in PublicIPAddressVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicIPAddressVersion value: $value');
   }
 }
-

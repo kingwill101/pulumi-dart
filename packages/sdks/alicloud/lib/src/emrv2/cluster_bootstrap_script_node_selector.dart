@@ -4,15 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBootstrapScriptNodeSelector {
   final pulumi.Input<String>? nodeGroupId;
+
   /// The bootstrap scripts execution target node group ids.
   final pulumi.Input<List<String>>? nodeGroupIds;
   final pulumi.Input<String>? nodeGroupName;
+
   /// The bootstrap scripts execution target node group names.
   final pulumi.Input<List<String>>? nodeGroupNames;
+
   /// The bootstrap scripts execution target node group types.
   final pulumi.Input<List<String>>? nodeGroupTypes;
+
   /// The bootstrap scripts execution target node names.
   final pulumi.Input<List<String>>? nodeNames;
+
   /// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
   final pulumi.Input<String> nodeSelectType;
 
@@ -48,14 +53,37 @@ class ClusterBootstrapScriptNodeSelector {
 
   factory ClusterBootstrapScriptNodeSelector.fromMap(Map<String, dynamic> map) {
     return ClusterBootstrapScriptNodeSelector(
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
-      nodeGroupIds: map['nodeGroupIds'] == null ? null : ((map['nodeGroupIds']! as List).cast<String>()).input(),
-      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName']! as String).input(),
-      nodeGroupNames: map['nodeGroupNames'] == null ? null : ((map['nodeGroupNames']! as List).cast<String>()).input(),
-      nodeGroupTypes: map['nodeGroupTypes'] == null ? null : ((map['nodeGroupTypes']! as List).cast<String>()).input(),
-      nodeNames: map['nodeNames'] == null ? null : ((map['nodeNames']! as List).cast<String>()).input(),
-      nodeSelectType: (map['nodeSelectType'] as String).input(),
+      nodeGroupId: (() {
+        final guardedValue = map['nodeGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupIds: (() {
+        final guardedValue = map['nodeGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nodeGroupName: (() {
+        final guardedValue = map['nodeGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupNames: (() {
+        final guardedValue = map['nodeGroupNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nodeGroupTypes: (() {
+        final guardedValue = map['nodeGroupTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nodeNames: (() {
+        final guardedValue = map['nodeNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nodeSelectType: pulumi.Input.fromValue(map['nodeSelectType'] as String),
     );
   }
 }
-

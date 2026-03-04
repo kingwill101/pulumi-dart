@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteCustomDomainArgs {
   /// The custom domain to create.
   final pulumi.Input<String>? domainName;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the static site.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Validation method for adding a custom domain
   final pulumi.Input<String>? validationMethod;
 
@@ -44,12 +48,25 @@ class StaticSiteCustomDomainArgs {
 
   factory StaticSiteCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteCustomDomainArgs(
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      validationMethod: map['validationMethod'] == null ? null : (map['validationMethod']! as String).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      validationMethod: (() {
+        final guardedValue = map['validationMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

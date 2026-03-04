@@ -7,8 +7,10 @@ class OrganizationSecurityPolicyRuleMatch {
   /// The configuration options for matching the rule.
   /// Structure is documented below.
   final pulumi.Input<OrganizationSecurityPolicyRuleMatchConfig> config;
+
   /// A description of the rule.
   final pulumi.Input<String>? description;
+
   /// Preconfigured versioned expression. For organization security policy rules,
   /// the only supported type is "FIREWALL".
   /// Default value is `FIREWALL`.
@@ -27,18 +29,35 @@ class OrganizationSecurityPolicyRuleMatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': pulumi.Input.mapInputValue<OrganizationSecurityPolicyRuleMatchConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'config':
+          pulumi.Input.mapInputValue<
+            OrganizationSecurityPolicyRuleMatchConfig,
+            Map<String, dynamic>
+          >(config, (value) => value.toMap()),
       'description': ?description,
       'versionedExpr': ?versionedExpr,
     };
   }
 
-  factory OrganizationSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
+  factory OrganizationSecurityPolicyRuleMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationSecurityPolicyRuleMatch(
-      config: (OrganizationSecurityPolicyRuleMatchConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      versionedExpr: map['versionedExpr'] == null ? null : (map['versionedExpr']! as String).input(),
+      config: pulumi.Input.fromValue(
+        OrganizationSecurityPolicyRuleMatchConfig.fromMap(
+          (map['config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionedExpr: (() {
+        final guardedValue = map['versionedExpr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

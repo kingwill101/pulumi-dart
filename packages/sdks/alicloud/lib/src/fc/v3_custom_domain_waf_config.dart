@@ -8,20 +8,19 @@ class V3CustomDomainWafConfig {
 
   /// Creates a new [V3CustomDomainWafConfig].
   /// [enableWaf] Enable WAF protection
-  V3CustomDomainWafConfig({
-    this.enableWaf,
-  });
+  V3CustomDomainWafConfig({this.enableWaf});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableWaf': ?enableWaf,
-    };
+    return <String, dynamic>{'enableWaf': ?enableWaf};
   }
 
   factory V3CustomDomainWafConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainWafConfig(
-      enableWaf: map['enableWaf'] == null ? null : (map['enableWaf']! as bool).input(),
+      enableWaf: (() {
+        final guardedValue = map['enableWaf'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

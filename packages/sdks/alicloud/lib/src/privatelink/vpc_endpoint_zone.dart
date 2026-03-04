@@ -8,7 +8,7 @@ import 'vpc_endpoint_zone_state.dart';
 ///
 /// For information about Private Link Vpc Endpoint Zone and how to use it, see [What is Vpc Endpoint Zone](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addzonetovpcendpoint).
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -464,16 +464,22 @@ import 'vpc_endpoint_zone_state.dart';
 class VpcEndpointZone extends pulumi.CustomResource {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// The endpoint ID.
   late final pulumi.Output<String> endpointId;
+
   /// The IP address of the endpoint ENI.
   late final pulumi.Output<String> eniIp;
+
   /// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
   late final pulumi.Output<String> regionId;
+
   /// The state of the zone.
   late final pulumi.Output<String> status;
+
   /// The ID of the vSwitch in the zone.
   late final pulumi.Output<String> vswitchId;
+
   /// The zone ID.
   late final pulumi.Output<String> zoneId;
 
@@ -486,18 +492,18 @@ class VpcEndpointZone extends pulumi.CustomResource {
     VpcEndpointZoneArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.eniIp = registerOutput<String>('eniIp');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    endpointId = registerOutput<String>('endpointId');
+    eniIp = registerOutput<String>('eniIp');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [VpcEndpointZone] resource's state with the given [name] and [id].
@@ -518,17 +524,17 @@ class VpcEndpointZone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.eniIp = registerOutput<String>('eniIp');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    endpointId = registerOutput<String>('endpointId');
+    eniIp = registerOutput<String>('eniIp');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

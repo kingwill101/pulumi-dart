@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnqueueReplicationServerPropertiesResponse {
   /// Defines the type of Enqueue Replication Server.
   final pulumi.Input<String> ersVersion;
+
   /// Defines the health of SAP Instances.
   final pulumi.Input<String> health;
+
   /// ERS SAP Hostname.
   final pulumi.Input<String> hostname;
+
   /// ERS Instance Number.
   final pulumi.Input<String> instanceNo;
+
   /// ERS SAP IP Address.
   final pulumi.Input<String> ipAddress;
+
   /// ERS SAP Kernel Patch level.
   final pulumi.Input<String> kernelPatch;
+
   /// ERS SAP Kernel Version.
   final pulumi.Input<String> kernelVersion;
 
@@ -49,16 +55,17 @@ class EnqueueReplicationServerPropertiesResponse {
     };
   }
 
-  factory EnqueueReplicationServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory EnqueueReplicationServerPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnqueueReplicationServerPropertiesResponse(
-      ersVersion: (map['ersVersion'] as String).input(),
-      health: (map['health'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      instanceNo: (map['instanceNo'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      kernelPatch: (map['kernelPatch'] as String).input(),
-      kernelVersion: (map['kernelVersion'] as String).input(),
+      ersVersion: pulumi.Input.fromValue(map['ersVersion'] as String),
+      health: pulumi.Input.fromValue(map['health'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      instanceNo: pulumi.Input.fromValue(map['instanceNo'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      kernelPatch: pulumi.Input.fromValue(map['kernelPatch'] as String),
+      kernelVersion: pulumi.Input.fromValue(map['kernelVersion'] as String),
     );
   }
 }
-

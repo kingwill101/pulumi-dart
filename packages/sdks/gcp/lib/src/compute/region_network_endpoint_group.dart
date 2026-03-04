@@ -2263,17 +2263,22 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
   late final pulumi.Output<RegionNetworkEndpointGroupAppEngine?> appEngine;
+
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
-  late final pulumi.Output<RegionNetworkEndpointGroupCloudFunction?> cloudFunction;
+  late final pulumi.Output<RegionNetworkEndpointGroupCloudFunction?>
+  cloudFunction;
+
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
   late final pulumi.Output<RegionNetworkEndpointGroupCloudRun?> cloudRun;
+
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
+
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -2282,32 +2287,42 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// This field is only used for PSC and INTERNET NEGs.
   /// The URL of the network to which all network endpoints in the NEG belong. Uses
   /// "default" project network if unspecified.
   late final pulumi.Output<String> network;
+
   /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
   /// Default value is `SERVERLESS`.
   /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
   late final pulumi.Output<String?> networkEndpointType;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// This field is only used for PSC NEGs.
   /// Structure is documented below.
   late final pulumi.Output<RegionNetworkEndpointGroupPscData> pscData;
+
   /// This field is only used for PSC and INTERNET NEGs.
   /// The target service url used to set up private service connection to
   /// a Google API or a PSC Producer Service Attachment.
   late final pulumi.Output<String?> pscTargetService;
+
   /// A reference to the region where the regional NEGs reside.
   late final pulumi.Output<String> region;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
-  late final pulumi.Output<RegionNetworkEndpointGroupServerlessDeployment?> serverlessDeployment;
+  late final pulumi.Output<RegionNetworkEndpointGroupServerlessDeployment?>
+  serverlessDeployment;
+
   /// This field is only used for PSC NEGs.
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   late final pulumi.Output<String?> subnetwork;
@@ -2321,25 +2336,32 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     RegionNetworkEndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine');
-    this.cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction');
-    this.cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun');
-    this.description = registerOutput<String?>('description');
+         'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>(
+      'appEngine',
+    );
+    cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>(
+      'cloudFunction',
+    );
+    cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.networkEndpointType = registerOutput<String?>('networkEndpointType');
-    this.project = registerOutput<String>('project');
-    this.pscData = registerOutput<RegionNetworkEndpointGroupPscData>('pscData');
-    this.pscTargetService = registerOutput<String?>('pscTargetService');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serverlessDeployment = registerOutput<RegionNetworkEndpointGroupServerlessDeployment?>('serverlessDeployment');
-    this.subnetwork = registerOutput<String?>('subnetwork');
+    network = registerOutput<String>('network');
+    networkEndpointType = registerOutput<String?>('networkEndpointType');
+    project = registerOutput<String>('project');
+    pscData = registerOutput<RegionNetworkEndpointGroupPscData>('pscData');
+    pscTargetService = registerOutput<String?>('pscTargetService');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serverlessDeployment =
+        registerOutput<RegionNetworkEndpointGroupServerlessDeployment?>(
+          'serverlessDeployment',
+        );
+    subnetwork = registerOutput<String?>('subnetwork');
   }
 
   /// Gets an existing [RegionNetworkEndpointGroup] resource's state with the given [name] and [id].
@@ -2360,24 +2382,31 @@ class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>('appEngine');
-    this.cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>('cloudFunction');
-    this.cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun');
-    this.description = registerOutput<String?>('description');
+         'gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appEngine = registerOutput<RegionNetworkEndpointGroupAppEngine?>(
+      'appEngine',
+    );
+    cloudFunction = registerOutput<RegionNetworkEndpointGroupCloudFunction?>(
+      'cloudFunction',
+    );
+    cloudRun = registerOutput<RegionNetworkEndpointGroupCloudRun?>('cloudRun');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.networkEndpointType = registerOutput<String?>('networkEndpointType');
-    this.project = registerOutput<String>('project');
-    this.pscData = registerOutput<RegionNetworkEndpointGroupPscData>('pscData');
-    this.pscTargetService = registerOutput<String?>('pscTargetService');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serverlessDeployment = registerOutput<RegionNetworkEndpointGroupServerlessDeployment?>('serverlessDeployment');
-    this.subnetwork = registerOutput<String?>('subnetwork');
+    network = registerOutput<String>('network');
+    networkEndpointType = registerOutput<String?>('networkEndpointType');
+    project = registerOutput<String>('project');
+    pscData = registerOutput<RegionNetworkEndpointGroupPscData>('pscData');
+    pscTargetService = registerOutput<String?>('pscTargetService');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serverlessDeployment =
+        registerOutput<RegionNetworkEndpointGroupServerlessDeployment?>(
+          'serverlessDeployment',
+        );
+    subnetwork = registerOutput<String?>('subnetwork');
   }
 }

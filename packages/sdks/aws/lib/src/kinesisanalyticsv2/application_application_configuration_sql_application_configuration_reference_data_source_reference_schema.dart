@@ -6,11 +6,21 @@ import 'application_application_configuration_sql_application_configuration_refe
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema {
   /// Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
-  final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>> recordColumns;
+  final pulumi.Input<
+    List<
+      ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn
+    >
+  >
+  recordColumns;
+
   /// Specifies the encoding of the records in the streaming source. For example, `UTF-8`.
   final pulumi.Input<String>? recordEncoding;
+
   /// Specifies the format of the records on the streaming source.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat> recordFormat;
+  final pulumi.Input<
+    ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat
+  >
+  recordFormat;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema].
   /// [recordColumns] Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
@@ -24,18 +34,54 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'recordColumns': pulumi.Input.mapInputValue<List<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>, List<Map<String, dynamic>>>(recordColumns, (value) => pulumi.Input.encodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recordColumns':
+          pulumi.Input.mapInputValue<
+            List<
+              ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn
+            >,
+            List<Map<String, dynamic>>
+          >(
+            recordColumns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'recordEncoding': ?recordEncoding,
-      'recordFormat': pulumi.Input.mapInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat, Map<String, dynamic>>(recordFormat, (value) => value.toMap()),
+      'recordFormat':
+          pulumi.Input.mapInputValue<
+            ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat,
+            Map<String, dynamic>
+          >(recordFormat, (value) => value.toMap()),
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema(
-      recordColumns: (pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>(map['recordColumns']!, (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recordEncoding: map['recordEncoding'] == null ? null : ((map['recordEncoding'] as String).input()).input(),
-      recordFormat: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat.fromMap((map['recordFormat']! as Map).cast<String, dynamic>())).input(),
+      recordColumns: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn
+        >(
+          map['recordColumns']!,
+          (value) =>
+              ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      recordEncoding: (() {
+        final guardedValue = map['recordEncoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordFormat: pulumi.Input.fromValue(
+        ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat.fromMap(
+          (map['recordFormat']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

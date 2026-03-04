@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionErrorResponse {
   /// Code of the status
   final pulumi.Input<String>? code;
+
   /// Resource ETag
   final pulumi.Input<String>? etag;
+
   /// Resource id
   final pulumi.Input<String> id;
+
   /// Resource location
   final pulumi.Input<String>? location;
+
   /// Description of the status
   final pulumi.Input<String>? message;
+
   /// Resource name
   final pulumi.Input<String> name;
+
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Resource type
   final pulumi.Input<String> type;
 
@@ -56,15 +63,36 @@ class ConnectionErrorResponse {
 
   factory ConnectionErrorResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionErrorResponse(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

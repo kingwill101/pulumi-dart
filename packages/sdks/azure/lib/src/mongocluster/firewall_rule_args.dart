@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRuleArgs {
   /// The end IP address of the Mongo Cluster Firewall Rule.
   final pulumi.Input<String> endIpAddress;
+
   /// The ID of the Mongo Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> mongoClusterId;
+
   /// The name of the Mongo Cluster Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The start IP address of the Mongo Cluster Firewall Rule.
   final pulumi.Input<String> startIpAddress;
 
@@ -39,11 +42,14 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      endIpAddress: (map['endIpAddress'] as String).input(),
-      mongoClusterId: (map['mongoClusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      startIpAddress: (map['startIpAddress'] as String).input(),
+      endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
+      mongoClusterId: pulumi.Input.fromValue(map['mongoClusterId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
     );
   }
 }
-

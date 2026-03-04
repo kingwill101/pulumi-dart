@@ -4,16 +4,20 @@ enum GoogleCloudChannelV1ConditionalOverrideRebillingBasis {
   costAtList("COST_AT_LIST"),
   directCustomerCost("DIRECT_CUSTOMER_COST");
 
-  const GoogleCloudChannelV1ConditionalOverrideRebillingBasis(this.value);
-  final String value;
+  const GoogleCloudChannelV1ConditionalOverrideRebillingBasis(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudChannelV1ConditionalOverrideRebillingBasis fromValue(String value) {
-    for (final item in GoogleCloudChannelV1ConditionalOverrideRebillingBasis.values) {
-      if (item.value == value) {
+  static GoogleCloudChannelV1ConditionalOverrideRebillingBasis fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudChannelV1ConditionalOverrideRebillingBasis.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudChannelV1ConditionalOverrideRebillingBasis value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudChannelV1ConditionalOverrideRebillingBasis value: $value',
+    );
   }
 }
-

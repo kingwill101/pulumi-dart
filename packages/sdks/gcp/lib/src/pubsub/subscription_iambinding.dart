@@ -9,9 +9,9 @@ import 'subscription_iambinding_state.dart';
 /// * `gcp.pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
 /// * `gcp.pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
 ///
-/// > **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.pubsub.SubscriptionIAMPolicy
 ///
@@ -613,8 +613,10 @@ import 'subscription_iambinding_state.dart';
 /// ```
 class SubscriptionIAMBinding extends pulumi.CustomResource {
   late final pulumi.Output<SubscriptionIAMBindingCondition?> condition;
+
   /// (Computed) The etag of the subscription's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -624,13 +626,16 @@ class SubscriptionIAMBinding extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<List<String>> members;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
+
   /// The subscription name or id to bind to attach IAM policy to.
   late final pulumi.Output<String> subscription;
 
@@ -643,17 +648,17 @@ class SubscriptionIAMBinding extends pulumi.CustomResource {
     SubscriptionIAMBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<SubscriptionIAMBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
-    this.subscription = registerOutput<String>('subscription');
+         'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<SubscriptionIAMBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    subscription = registerOutput<String>('subscription');
   }
 
   /// Gets an existing [SubscriptionIAMBinding] resource's state with the given [name] and [id].
@@ -674,16 +679,16 @@ class SubscriptionIAMBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<SubscriptionIAMBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
-    this.subscription = registerOutput<String>('subscription');
+         'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<SubscriptionIAMBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    subscription = registerOutput<String>('subscription');
   }
 }

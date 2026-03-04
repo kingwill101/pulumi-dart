@@ -412,12 +412,17 @@ import 'time_series_database_connection_args.dart';
 class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Extension resource name.
   late final pulumi.Output<String> name;
+
   /// Properties of a specific time series database connection.
-  late final pulumi.Output<AzureDataExplorerConnectionPropertiesResponse> properties;
+  late final pulumi.Output<AzureDataExplorerConnectionPropertiesResponse>
+  properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -430,15 +435,17 @@ class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
     TimeSeriesDatabaseConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:digitaltwins:TimeSeriesDatabaseConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:digitaltwins:TimeSeriesDatabaseConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<AzureDataExplorerConnectionPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<AzureDataExplorerConnectionPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

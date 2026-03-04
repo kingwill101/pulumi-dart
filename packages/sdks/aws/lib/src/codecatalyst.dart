@@ -1,5 +1,3 @@
-library module_codecatalyst;
-
 export 'codecatalyst/dev_environment.dart';
 export 'codecatalyst/dev_environment_args.dart';
 export 'codecatalyst/dev_environment_ides.dart';

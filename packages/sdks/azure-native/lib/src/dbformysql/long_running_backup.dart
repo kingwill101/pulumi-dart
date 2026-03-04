@@ -133,19 +133,26 @@ import 'system_data_response.dart';
 class LongRunningBackup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Backup name
   late final pulumi.Output<String?> backupNameV2;
   late final pulumi.Output<String?> backupType;
+
   /// Backup completed time (ISO8601 format).
   late final pulumi.Output<String?> completedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of backup resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Backup source
   late final pulumi.Output<String?> source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -158,19 +165,19 @@ class LongRunningBackup extends pulumi.CustomResource {
     LongRunningBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbformysql:LongRunningBackup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupNameV2 = registerOutput<String?>('backupNameV2');
-    this.backupType = registerOutput<String?>('backupType');
-    this.completedTime = registerOutput<String?>('completedTime');
+         'azure-native:dbformysql:LongRunningBackup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupNameV2 = registerOutput<String?>('backupNameV2');
+    backupType = registerOutput<String?>('backupType');
+    completedTime = registerOutput<String?>('completedTime');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.source = registerOutput<String?>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

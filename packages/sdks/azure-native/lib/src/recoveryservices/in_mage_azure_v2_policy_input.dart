@@ -6,15 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageAzureV2PolicyInput {
   /// The app consistent snapshot frequency (in minutes).
   final pulumi.Input<int>? appConsistentFrequencyInMinutes;
+
   /// The crash consistent snapshot frequency (in minutes).
   final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
+
   /// The class type.
   /// Expected value is 'InMageAzureV2'.
   final pulumi.Input<String> instanceType;
+
   /// A value indicating whether multi-VM sync has to be enabled. Value should be 'Enabled' or 'Disabled'.
   final pulumi.Input<String> multiVmSyncStatus;
+
   /// The duration in minutes until which the recovery points need to be stored.
   final pulumi.Input<int>? recoveryPointHistory;
+
   /// The recovery point threshold in minutes.
   final pulumi.Input<int>? recoveryPointThresholdInMinutes;
 
@@ -47,13 +52,30 @@ class InMageAzureV2PolicyInput {
 
   factory InMageAzureV2PolicyInput.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2PolicyInput(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes']! as int).input(),
-      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes']! as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      multiVmSyncStatus: (map['multiVmSyncStatus'] as String).input(),
-      recoveryPointHistory: map['recoveryPointHistory'] == null ? null : (map['recoveryPointHistory']! as int).input(),
-      recoveryPointThresholdInMinutes: map['recoveryPointThresholdInMinutes'] == null ? null : (map['recoveryPointThresholdInMinutes']! as int).input(),
+      appConsistentFrequencyInMinutes: (() {
+        final guardedValue = map['appConsistentFrequencyInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      crashConsistentFrequencyInMinutes: (() {
+        final guardedValue = map['crashConsistentFrequencyInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      multiVmSyncStatus: pulumi.Input.fromValue(
+        map['multiVmSyncStatus'] as String,
+      ),
+      recoveryPointHistory: (() {
+        final guardedValue = map['recoveryPointHistory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recoveryPointThresholdInMinutes: (() {
+        final guardedValue = map['recoveryPointThresholdInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

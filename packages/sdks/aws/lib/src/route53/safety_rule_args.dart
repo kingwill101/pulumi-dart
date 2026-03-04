@@ -10,18 +10,25 @@ import 'safety_rule_rule_config.dart';
 class SafetyRuleArgs {
   /// Routing controls that are part of transactions that are evaluated to determine if a request to change a routing control state is allowed.
   final pulumi.Input<List<String>>? assertedControls;
+
   /// ARN of the control panel in which this safety rule will reside.
   final pulumi.Input<String> controlPanelArn;
+
   /// Gating controls for the new gating rule. That is, routing controls that are evaluated by the rule configuration that you specify.
   final pulumi.Input<List<String>>? gatingControls;
+
   /// Name describing the safety rule.
   final pulumi.Input<String>? name;
+
   /// Configuration block for safety rule criteria. See below.
   final pulumi.Input<SafetyRuleRuleConfig> ruleConfig;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
   final pulumi.Input<List<String>>? targetControls;
+
   /// Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
   ///
   /// The following arguments are optional:
@@ -53,7 +60,11 @@ class SafetyRuleArgs {
       'controlPanelArn': controlPanelArn,
       'gatingControls': ?gatingControls,
       'name': ?name,
-      'ruleConfig': pulumi.Input.mapInputValue<SafetyRuleRuleConfig, Map<String, dynamic>>(ruleConfig, (value) => value.toMap()),
+      'ruleConfig':
+          pulumi.Input.mapInputValue<
+            SafetyRuleRuleConfig,
+            Map<String, dynamic>
+          >(ruleConfig, (value) => value.toMap()),
       'tags': ?tags,
       'targetControls': ?targetControls,
       'waitPeriodMs': waitPeriodMs,
@@ -62,15 +73,40 @@ class SafetyRuleArgs {
 
   factory SafetyRuleArgs.fromMap(Map<String, dynamic> map) {
     return SafetyRuleArgs(
-      assertedControls: map['assertedControls'] == null ? null : (((map['assertedControls'] as List).cast<String>()).input()).input(),
-      controlPanelArn: (map['controlPanelArn'] as String).input(),
-      gatingControls: map['gatingControls'] == null ? null : (((map['gatingControls'] as List).cast<String>()).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      ruleConfig: (SafetyRuleRuleConfig.fromMap((map['ruleConfig']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      targetControls: map['targetControls'] == null ? null : (((map['targetControls'] as List).cast<String>()).input()).input(),
-      waitPeriodMs: (map['waitPeriodMs'] as int).input(),
+      assertedControls: (() {
+        final guardedValue = map['assertedControls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      controlPanelArn: pulumi.Input.fromValue(map['controlPanelArn'] as String),
+      gatingControls: (() {
+        final guardedValue = map['gatingControls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleConfig: pulumi.Input.fromValue(
+        SafetyRuleRuleConfig.fromMap(
+          (map['ruleConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetControls: (() {
+        final guardedValue = map['targetControls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      waitPeriodMs: pulumi.Input.fromValue(map['waitPeriodMs'] as int),
     );
   }
 }
-

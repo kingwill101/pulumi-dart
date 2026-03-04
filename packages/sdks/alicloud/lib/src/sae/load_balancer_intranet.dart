@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_intranet_args.dart';
-import 'load_balancer_intranet_intranet.dart';
 import 'load_balancer_intranet_state.dart';
 
 /// Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
 ///
 /// For information about Serverless App Engine (SAE) Load Balancer Intranet Attachment and how to use it, see [alicloud.sae.LoadBalancerIntranet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
 ///
-/// > **NOTE:** Available since v1.165.0.
+/// &gt; **NOTE:** Available since v1.165.0.
 ///
 /// ## Example Usage
 ///
@@ -569,12 +568,15 @@ import 'load_balancer_intranet_state.dart';
 class LoadBalancerIntranet extends pulumi.CustomResource {
   /// The target application ID that needs to be bound to the SLB.
   late final pulumi.Output<String> appId;
+
   /// Use designated private network SLBs that have been purchased to support non-shared instances.
   late final pulumi.Output<String> intranetIp;
+
   /// The intranet SLB ID.
   late final pulumi.Output<String?> intranetSlbId;
+
   /// The bound private network SLB. See `intranet` below.
-  late final pulumi.Output<List<LoadBalancerIntranetIntranet>> intranets;
+  late final pulumi.Output<List<Map<String, dynamic>>> intranets;
 
   /// Creates a new [LoadBalancerIntranet].
   /// [name] The Pulumi resource name.
@@ -585,15 +587,15 @@ class LoadBalancerIntranet extends pulumi.CustomResource {
     LoadBalancerIntranetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.intranetIp = registerOutput<String>('intranetIp');
-    this.intranetSlbId = registerOutput<String?>('intranetSlbId');
-    this.intranets = registerOutput<List<LoadBalancerIntranetIntranet>>('intranets');
+         'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    intranetIp = registerOutput<String>('intranetIp');
+    intranetSlbId = registerOutput<String?>('intranetSlbId');
+    intranets = registerOutput<List<Map<String, dynamic>>>('intranets');
   }
 
   /// Gets an existing [LoadBalancerIntranet] resource's state with the given [name] and [id].
@@ -614,14 +616,14 @@ class LoadBalancerIntranet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.intranetIp = registerOutput<String>('intranetIp');
-    this.intranetSlbId = registerOutput<String?>('intranetSlbId');
-    this.intranets = registerOutput<List<LoadBalancerIntranetIntranet>>('intranets');
+         'alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    intranetIp = registerOutput<String>('intranetIp');
+    intranetSlbId = registerOutput<String?>('intranetSlbId');
+    intranets = registerOutput<List<Map<String, dynamic>>>('intranets');
   }
 }

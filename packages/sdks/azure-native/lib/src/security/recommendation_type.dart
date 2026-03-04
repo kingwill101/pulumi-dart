@@ -17,16 +17,15 @@ enum RecommendationType {
   valueIoTSharedCredentials("IoT_SharedCredentials"),
   valueIoTVulnerableTLSCipherSuite("IoT_VulnerableTLSCipherSuite");
 
-  const RecommendationType(this.value);
-  final String value;
+  const RecommendationType(this.wireValue);
+  final String wireValue;
 
   static RecommendationType fromValue(String value) {
     for (final item in RecommendationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecommendationType value: $value');
   }
 }
-

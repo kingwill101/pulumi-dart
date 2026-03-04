@@ -4,7 +4,7 @@ import 'gallery_application_assignment_state.dart';
 
 /// Manages a Virtual Machine Gallery Application Assignment.
 ///
-/// > **Note:** Gallery Application Assignments can be defined either directly on `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources, or using the `azure.compute.GalleryApplicationAssignment` resource - but the two approaches cannot be used together. If both are used with the same Virtual Machine, spurious changes will occur. It's recommended to use `ignore_changes` for the `gallery_application` block on the associated virtual machine resources, to avoid a persistent diff when using this resource.
+/// &gt; **Note:** Gallery Application Assignments can be defined either directly on `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources, or using the `azure.compute.GalleryApplicationAssignment` resource - but the two approaches cannot be used together. If both are used with the same Virtual Machine, spurious changes will occur. It's recommended to use `ignore_changes` for the `gallery_application` block on the associated virtual machine resources, to avoid a persistent diff when using this resource.
 /// ## Example Usage
 ///
 ///
@@ -510,7 +510,7 @@ import 'gallery_application_assignment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -525,12 +525,16 @@ import 'gallery_application_assignment_state.dart';
 class GalleryApplicationAssignment extends pulumi.CustomResource {
   /// Specifies the URI to an Azure Blob that will replace the default configuration for the package if provided. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> configurationBlobUri;
+
   /// The ID of the Gallery Application Version. Changing this forces a new resource to be created.
   late final pulumi.Output<String> galleryApplicationVersionId;
+
   /// Specifies the order in which the packages have to be installed. Possible values are between `0` and `2147483647`. Defaults to `0`.
   late final pulumi.Output<int?> order;
+
   /// Specifies a passthrough value for more generic context. This field can be any valid `string` value. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> tag;
+
   /// The ID of the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -543,16 +547,18 @@ class GalleryApplicationAssignment extends pulumi.CustomResource {
     GalleryApplicationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/galleryApplicationAssignment:GalleryApplicationAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationBlobUri = registerOutput<String?>('configurationBlobUri');
-    this.galleryApplicationVersionId = registerOutput<String>('galleryApplicationVersionId');
-    this.order = registerOutput<int?>('order');
-    this.tag = registerOutput<String?>('tag');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:compute/galleryApplicationAssignment:GalleryApplicationAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationBlobUri = registerOutput<String?>('configurationBlobUri');
+    galleryApplicationVersionId = registerOutput<String>(
+      'galleryApplicationVersionId',
+    );
+    order = registerOutput<int?>('order');
+    tag = registerOutput<String?>('tag');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [GalleryApplicationAssignment] resource's state with the given [name] and [id].
@@ -573,15 +579,17 @@ class GalleryApplicationAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/galleryApplicationAssignment:GalleryApplicationAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationBlobUri = registerOutput<String?>('configurationBlobUri');
-    this.galleryApplicationVersionId = registerOutput<String>('galleryApplicationVersionId');
-    this.order = registerOutput<int?>('order');
-    this.tag = registerOutput<String?>('tag');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:compute/galleryApplicationAssignment:GalleryApplicationAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationBlobUri = registerOutput<String?>('configurationBlobUri');
+    galleryApplicationVersionId = registerOutput<String>(
+      'galleryApplicationVersionId',
+    );
+    order = registerOutput<int?>('order');
+    tag = registerOutput<String?>('tag');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

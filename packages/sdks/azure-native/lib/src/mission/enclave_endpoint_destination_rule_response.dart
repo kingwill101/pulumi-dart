@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnclaveEndpointDestinationRuleResponse {
   /// Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
   final pulumi.Input<String>? destination;
+
   /// Endpoint Rule Name.
   final pulumi.Input<String>? endpointRuleName;
+
   /// Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
   final pulumi.Input<String>? ports;
+
   /// Protocols. Options specified by Endpoint Protocol Enum.
   final pulumi.Input<List<String>>? protocols;
 
@@ -34,13 +37,30 @@ class EnclaveEndpointDestinationRuleResponse {
     };
   }
 
-  factory EnclaveEndpointDestinationRuleResponse.fromMap(Map<String, dynamic> map) {
+  factory EnclaveEndpointDestinationRuleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnclaveEndpointDestinationRuleResponse(
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
-      endpointRuleName: map['endpointRuleName'] == null ? null : (map['endpointRuleName']! as String).input(),
-      ports: map['ports'] == null ? null : (map['ports']! as String).input(),
-      protocols: map['protocols'] == null ? null : ((map['protocols']! as List).cast<String>()).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointRuleName: (() {
+        final guardedValue = map['endpointRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ports: (() {
+        final guardedValue = map['ports'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocols: (() {
+        final guardedValue = map['protocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

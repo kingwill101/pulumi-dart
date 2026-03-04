@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersDatabricks {
   /// The host name of the Databricks data source.
   final pulumi.Input<String> host;
+
   /// The port for the Databricks data source.
   final pulumi.Input<int> port;
+
   /// The HTTP path of the Databricks data source.
   final pulumi.Input<String> sqlEndpointPath;
 
@@ -30,10 +32,9 @@ class DataSourceParametersDatabricks {
 
   factory DataSourceParametersDatabricks.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersDatabricks(
-      host: (map['host'] as String).input(),
-      port: (map['port'] as int).input(),
-      sqlEndpointPath: (map['sqlEndpointPath'] as String).input(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      sqlEndpointPath: pulumi.Input.fromValue(map['sqlEndpointPath'] as String),
     );
   }
 }
-

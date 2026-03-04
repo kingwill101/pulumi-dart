@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionEksPropertyPodPropertyContainerResource {
   /// The type and quantity of the resources to reserve for the container.
   final pulumi.Input<Map<String, String>> limits;
+
   /// The type and quantity of the resources to request for the container.
   final pulumi.Input<Map<String, String>> requests;
 
@@ -17,17 +18,19 @@ class GetJobDefinitionEksPropertyPodPropertyContainerResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'limits': limits,
-      'requests': requests,
-    };
+    return <String, dynamic>{'limits': limits, 'requests': requests};
   }
 
-  factory GetJobDefinitionEksPropertyPodPropertyContainerResource.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionEksPropertyPodPropertyContainerResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionEksPropertyPodPropertyContainerResource(
-      limits: ((map['limits'] as Map).cast<String, String>()).input(),
-      requests: ((map['requests'] as Map).cast<String, String>()).input(),
+      limits: pulumi.Input.fromValue(
+        (map['limits'] as Map).cast<String, String>(),
+      ),
+      requests: pulumi.Input.fromValue(
+        (map['requests'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

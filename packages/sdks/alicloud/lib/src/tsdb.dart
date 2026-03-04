@@ -1,5 +1,3 @@
-library module_tsdb;
-
 export 'tsdb/functions.dart';
 export 'tsdb/get_instances_args.dart';
 export 'tsdb/get_instances_instance.dart';

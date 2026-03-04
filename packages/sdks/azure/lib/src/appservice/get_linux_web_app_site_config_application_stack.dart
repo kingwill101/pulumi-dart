@@ -5,27 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppSiteConfigApplicationStack {
   /// The docker image, including tag, used by this Linux Web App.
   final pulumi.Input<String> dockerImageName;
+
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryPassword;
+
   /// The URL of the container registry where the `docker_image_name` is located.
   final pulumi.Input<String> dockerRegistryUrl;
+
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryUsername;
+
   /// The version of .NET in use.
   final pulumi.Input<String> dotnetVersion;
   final pulumi.Input<String> goVersion;
+
   /// The Java server type.
   final pulumi.Input<String> javaServer;
+
   /// The Version of the `java_server` in use.
   final pulumi.Input<String> javaServerVersion;
+
   /// The Version of Java in use.
   final pulumi.Input<String> javaVersion;
+
   /// The version of Node in use.
   final pulumi.Input<String> nodeVersion;
+
   /// The version of PHP in use.
   final pulumi.Input<String> phpVersion;
+
   /// The version of Python in use.
   final pulumi.Input<String> pythonVersion;
+
   /// The version of Ruby in use.
   final pulumi.Input<String> rubyVersion;
 
@@ -77,22 +88,31 @@ class GetLinuxWebAppSiteConfigApplicationStack {
     };
   }
 
-  factory GetLinuxWebAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
+  factory GetLinuxWebAppSiteConfigApplicationStack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLinuxWebAppSiteConfigApplicationStack(
-      dockerImageName: (map['dockerImageName'] as String).input(),
-      dockerRegistryPassword: (map['dockerRegistryPassword'] as String).input(),
-      dockerRegistryUrl: (map['dockerRegistryUrl'] as String).input(),
-      dockerRegistryUsername: (map['dockerRegistryUsername'] as String).input(),
-      dotnetVersion: (map['dotnetVersion'] as String).input(),
-      goVersion: (map['goVersion'] as String).input(),
-      javaServer: (map['javaServer'] as String).input(),
-      javaServerVersion: (map['javaServerVersion'] as String).input(),
-      javaVersion: (map['javaVersion'] as String).input(),
-      nodeVersion: (map['nodeVersion'] as String).input(),
-      phpVersion: (map['phpVersion'] as String).input(),
-      pythonVersion: (map['pythonVersion'] as String).input(),
-      rubyVersion: (map['rubyVersion'] as String).input(),
+      dockerImageName: pulumi.Input.fromValue(map['dockerImageName'] as String),
+      dockerRegistryPassword: pulumi.Input.fromValue(
+        map['dockerRegistryPassword'] as String,
+      ),
+      dockerRegistryUrl: pulumi.Input.fromValue(
+        map['dockerRegistryUrl'] as String,
+      ),
+      dockerRegistryUsername: pulumi.Input.fromValue(
+        map['dockerRegistryUsername'] as String,
+      ),
+      dotnetVersion: pulumi.Input.fromValue(map['dotnetVersion'] as String),
+      goVersion: pulumi.Input.fromValue(map['goVersion'] as String),
+      javaServer: pulumi.Input.fromValue(map['javaServer'] as String),
+      javaServerVersion: pulumi.Input.fromValue(
+        map['javaServerVersion'] as String,
+      ),
+      javaVersion: pulumi.Input.fromValue(map['javaVersion'] as String),
+      nodeVersion: pulumi.Input.fromValue(map['nodeVersion'] as String),
+      phpVersion: pulumi.Input.fromValue(map['phpVersion'] as String),
+      pythonVersion: pulumi.Input.fromValue(map['pythonVersion'] as String),
+      rubyVersion: pulumi.Input.fromValue(map['rubyVersion'] as String),
     );
   }
 }
-

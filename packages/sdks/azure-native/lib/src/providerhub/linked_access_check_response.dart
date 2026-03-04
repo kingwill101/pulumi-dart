@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedAccessCheckResponse {
   /// The action name.
   final pulumi.Input<String>? actionName;
+
   /// The linked action.
   final pulumi.Input<String>? linkedAction;
+
   /// The linked action verb.
   final pulumi.Input<String>? linkedActionVerb;
+
   /// The linked property.
   final pulumi.Input<String>? linkedProperty;
+
   /// The linked type.
   final pulumi.Input<String>? linkedType;
 
@@ -40,12 +44,31 @@ class LinkedAccessCheckResponse {
 
   factory LinkedAccessCheckResponse.fromMap(Map<String, dynamic> map) {
     return LinkedAccessCheckResponse(
-      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
-      linkedAction: map['linkedAction'] == null ? null : (map['linkedAction']! as String).input(),
-      linkedActionVerb: map['linkedActionVerb'] == null ? null : (map['linkedActionVerb']! as String).input(),
-      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty']! as String).input(),
-      linkedType: map['linkedType'] == null ? null : (map['linkedType']! as String).input(),
+      actionName: (() {
+        final guardedValue = map['actionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedAction: (() {
+        final guardedValue = map['linkedAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedActionVerb: (() {
+        final guardedValue = map['linkedActionVerb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedProperty: (() {
+        final guardedValue = map['linkedProperty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedType: (() {
+        final guardedValue = map['linkedType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

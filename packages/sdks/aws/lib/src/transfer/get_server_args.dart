@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID for an SFTP server.
   final pulumi.Input<String> serverId;
+
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,11 +20,7 @@ class GetServerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serverId] ID for an SFTP server.
   /// [tags] Map of tags assigned to the resource.
-  GetServerArgs({
-    this.region,
-    required this.serverId,
-    this.tags,
-  });
+  GetServerArgs({this.region, required this.serverId, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,19 @@ class GetServerArgs {
 
   factory GetServerArgs.fromMap(Map<String, dynamic> map) {
     return GetServerArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serverId: (map['serverId'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

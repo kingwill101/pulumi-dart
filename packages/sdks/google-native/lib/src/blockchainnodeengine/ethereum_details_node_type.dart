@@ -5,16 +5,15 @@ enum EthereumDetailsNodeType {
   full("FULL"),
   archive("ARCHIVE");
 
-  const EthereumDetailsNodeType(this.value);
-  final String value;
+  const EthereumDetailsNodeType(this.wireValue);
+  final String wireValue;
 
   static EthereumDetailsNodeType fromValue(String value) {
     for (final item in EthereumDetailsNodeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EthereumDetailsNodeType value: $value');
   }
 }
-

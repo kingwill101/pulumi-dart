@@ -14,32 +14,49 @@ import 'get_service_meshes_mesh_mesh_config_sidecar_injector.dart';
 class GetServiceMeshesMeshMeshConfig {
   /// The configuration of the access logging.
   final pulumi.Input<List<GetServiceMeshesMeshMeshConfigAccessLog>> accessLogs;
+
   /// The configuration of the Service grid audit.
   final pulumi.Input<List<GetServiceMeshesMeshMeshConfigAudit>> audits;
+
   /// (Available since v1.174.0) The configuration of the control plane logging.
-  final pulumi.Input<List<GetServiceMeshesMeshMeshConfigControlPlaneLog>> controlPlaneLogs;
+  final pulumi.Input<List<GetServiceMeshesMeshMeshConfigControlPlaneLog>>
+  controlPlaneLogs;
+
   /// Whether or not to enable the use of a custom zipkin.
   final pulumi.Input<bool> customizedZipkin;
+
   /// Whether to enable service can access the service through the nearest node access.
   final pulumi.Input<bool> enableLocalityLb;
+
   /// The IP ADDRESS range.
   final pulumi.Input<String> includeIpRanges;
+
   /// The configuration of the Kiali.
   final pulumi.Input<List<GetServiceMeshesMeshMeshConfigKiali>> kialis;
+
   /// The open-door policy of agent (OPA) plug-in information.
   final pulumi.Input<List<GetServiceMeshesMeshMeshConfigOpa>> opas;
+
   /// The policy of the Out to the traffic.
   final pulumi.Input<String> outboundTrafficPolicy;
+
   /// The configuration of the Link trace sampling.
   final pulumi.Input<List<GetServiceMeshesMeshMeshConfigPilot>> pilots;
+
   /// the configuration of the Prometheus.
-  final pulumi.Input<List<GetServiceMeshesMeshMeshConfigPrometheus>> prometheuses;
+  final pulumi.Input<List<GetServiceMeshesMeshMeshConfigPrometheus>>
+  prometheuses;
+
   /// The configuration of the Proxy.
   final pulumi.Input<List<GetServiceMeshesMeshMeshConfigProxy>> proxies;
+
   /// The configuration of the Sidecar injector.
-  final pulumi.Input<List<GetServiceMeshesMeshMeshConfigSidecarInjector>> sidecarInjectors;
+  final pulumi.Input<List<GetServiceMeshesMeshMeshConfigSidecarInjector>>
+  sidecarInjectors;
+
   /// Whether to enable acquisition Prometheus metrics.
   final pulumi.Input<bool> telemetry;
+
   /// Whether to enable link trace.
   final pulumi.Input<bool> tracing;
 
@@ -79,19 +96,118 @@ class GetServiceMeshesMeshMeshConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLogs': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigAccessLog>, List<Map<String, dynamic>>>(accessLogs, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigAccessLog, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'audits': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigAudit>, List<Map<String, dynamic>>>(audits, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigAudit, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'controlPlaneLogs': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigControlPlaneLog>, List<Map<String, dynamic>>>(controlPlaneLogs, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigControlPlaneLog, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accessLogs':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigAccessLog>,
+            List<Map<String, dynamic>>
+          >(
+            accessLogs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigAccessLog,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'audits':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigAudit>,
+            List<Map<String, dynamic>>
+          >(
+            audits,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigAudit,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'controlPlaneLogs':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigControlPlaneLog>,
+            List<Map<String, dynamic>>
+          >(
+            controlPlaneLogs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigControlPlaneLog,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'customizedZipkin': customizedZipkin,
       'enableLocalityLb': enableLocalityLb,
       'includeIpRanges': includeIpRanges,
-      'kialis': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigKiali>, List<Map<String, dynamic>>>(kialis, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigKiali, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'opas': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigOpa>, List<Map<String, dynamic>>>(opas, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigOpa, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'kialis':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigKiali>,
+            List<Map<String, dynamic>>
+          >(
+            kialis,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigKiali,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'opas':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigOpa>,
+            List<Map<String, dynamic>>
+          >(
+            opas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigOpa,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'outboundTrafficPolicy': outboundTrafficPolicy,
-      'pilots': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigPilot>, List<Map<String, dynamic>>>(pilots, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigPilot, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'prometheuses': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigPrometheus>, List<Map<String, dynamic>>>(prometheuses, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigPrometheus, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'proxies': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigProxy>, List<Map<String, dynamic>>>(proxies, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigProxy, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sidecarInjectors': pulumi.Input.mapInputValue<List<GetServiceMeshesMeshMeshConfigSidecarInjector>, List<Map<String, dynamic>>>(sidecarInjectors, (value) => pulumi.Input.encodeList<GetServiceMeshesMeshMeshConfigSidecarInjector, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pilots':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigPilot>,
+            List<Map<String, dynamic>>
+          >(
+            pilots,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigPilot,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'prometheuses':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigPrometheus>,
+            List<Map<String, dynamic>>
+          >(
+            prometheuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigPrometheus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'proxies':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigProxy>,
+            List<Map<String, dynamic>>
+          >(
+            proxies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigProxy,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sidecarInjectors':
+          pulumi.Input.mapInputValue<
+            List<GetServiceMeshesMeshMeshConfigSidecarInjector>,
+            List<Map<String, dynamic>>
+          >(
+            sidecarInjectors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMeshesMeshMeshConfigSidecarInjector,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'telemetry': telemetry,
       'tracing': tracing,
     };
@@ -99,22 +215,86 @@ class GetServiceMeshesMeshMeshConfig {
 
   factory GetServiceMeshesMeshMeshConfig.fromMap(Map<String, dynamic> map) {
     return GetServiceMeshesMeshMeshConfig(
-      accessLogs: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigAccessLog>(map['accessLogs'], (value) => GetServiceMeshesMeshMeshConfigAccessLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      audits: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigAudit>(map['audits'], (value) => GetServiceMeshesMeshMeshConfigAudit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      controlPlaneLogs: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigControlPlaneLog>(map['controlPlaneLogs'], (value) => GetServiceMeshesMeshMeshConfigControlPlaneLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customizedZipkin: (map['customizedZipkin'] as bool).input(),
-      enableLocalityLb: (map['enableLocalityLb'] as bool).input(),
-      includeIpRanges: (map['includeIpRanges'] as String).input(),
-      kialis: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigKiali>(map['kialis'], (value) => GetServiceMeshesMeshMeshConfigKiali.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      opas: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigOpa>(map['opas'], (value) => GetServiceMeshesMeshMeshConfigOpa.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outboundTrafficPolicy: (map['outboundTrafficPolicy'] as String).input(),
-      pilots: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigPilot>(map['pilots'], (value) => GetServiceMeshesMeshMeshConfigPilot.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prometheuses: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigPrometheus>(map['prometheuses'], (value) => GetServiceMeshesMeshMeshConfigPrometheus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      proxies: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigProxy>(map['proxies'], (value) => GetServiceMeshesMeshMeshConfigProxy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sidecarInjectors: (pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigSidecarInjector>(map['sidecarInjectors'], (value) => GetServiceMeshesMeshMeshConfigSidecarInjector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      telemetry: (map['telemetry'] as bool).input(),
-      tracing: (map['tracing'] as bool).input(),
+      accessLogs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigAccessLog>(
+          map['accessLogs']!,
+          (value) => GetServiceMeshesMeshMeshConfigAccessLog.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      audits: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigAudit>(
+          map['audits']!,
+          (value) => GetServiceMeshesMeshMeshConfigAudit.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      controlPlaneLogs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigControlPlaneLog>(
+          map['controlPlaneLogs']!,
+          (value) => GetServiceMeshesMeshMeshConfigControlPlaneLog.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      customizedZipkin: pulumi.Input.fromValue(map['customizedZipkin'] as bool),
+      enableLocalityLb: pulumi.Input.fromValue(map['enableLocalityLb'] as bool),
+      includeIpRanges: pulumi.Input.fromValue(map['includeIpRanges'] as String),
+      kialis: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigKiali>(
+          map['kialis']!,
+          (value) => GetServiceMeshesMeshMeshConfigKiali.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      opas: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigOpa>(
+          map['opas']!,
+          (value) => GetServiceMeshesMeshMeshConfigOpa.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      outboundTrafficPolicy: pulumi.Input.fromValue(
+        map['outboundTrafficPolicy'] as String,
+      ),
+      pilots: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigPilot>(
+          map['pilots']!,
+          (value) => GetServiceMeshesMeshMeshConfigPilot.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      prometheuses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigPrometheus>(
+          map['prometheuses']!,
+          (value) => GetServiceMeshesMeshMeshConfigPrometheus.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      proxies: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigProxy>(
+          map['proxies']!,
+          (value) => GetServiceMeshesMeshMeshConfigProxy.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      sidecarInjectors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServiceMeshesMeshMeshConfigSidecarInjector>(
+          map['sidecarInjectors']!,
+          (value) => GetServiceMeshesMeshMeshConfigSidecarInjector.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      telemetry: pulumi.Input.fromValue(map['telemetry'] as bool),
+      tracing: pulumi.Input.fromValue(map['tracing'] as bool),
     );
   }
 }
-

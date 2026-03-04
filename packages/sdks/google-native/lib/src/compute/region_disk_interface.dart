@@ -4,16 +4,15 @@ enum RegionDiskInterface {
   scsi("SCSI"),
   unspecified("UNSPECIFIED");
 
-  const RegionDiskInterface(this.value);
-  final String value;
+  const RegionDiskInterface(this.wireValue);
+  final String wireValue;
 
   static RegionDiskInterface fromValue(String value) {
     for (final item in RegionDiskInterface.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionDiskInterface value: $value');
   }
 }
-

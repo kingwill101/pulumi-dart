@@ -190,32 +190,46 @@ import 'watchlist_user_info_response.dart';
 class WatchlistItem extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the watchlist item was created
   late final pulumi.Output<String?> created;
+
   /// Describes a user that created the watchlist item
   late final pulumi.Output<WatchlistUserInfoResponse?> createdBy;
+
   /// key-value pairs for a watchlist item entity mapping
   late final pulumi.Output<dynamic> entityMapping;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// A flag that indicates if the watchlist item is deleted or not
   late final pulumi.Output<bool?> isDeleted;
+
   /// key-value pairs for a watchlist item
   late final pulumi.Output<dynamic> itemsKeyValue;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tenantId to which the watchlist item belongs to
   late final pulumi.Output<String?> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The last time the watchlist item was updated
   late final pulumi.Output<String?> updated;
+
   /// Describes a user that updated the watchlist item
   late final pulumi.Output<WatchlistUserInfoResponse?> updatedBy;
+
   /// The id (a Guid) of the watchlist item
   late final pulumi.Output<String?> watchlistItemId;
+
   /// The type of the watchlist item
   late final pulumi.Output<String?> watchlistItemType;
 
@@ -228,25 +242,25 @@ class WatchlistItem extends pulumi.CustomResource {
     WatchlistItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:WatchlistItem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.created = registerOutput<String?>('created');
-    this.createdBy = registerOutput<WatchlistUserInfoResponse?>('createdBy');
-    this.entityMapping = registerOutput<dynamic>('entityMapping');
-    this.etag = registerOutput<String?>('etag');
-    this.isDeleted = registerOutput<bool?>('isDeleted');
-    this.itemsKeyValue = registerOutput<dynamic>('itemsKeyValue');
+         'azure-native:securityinsights:WatchlistItem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    created = registerOutput<String?>('created');
+    createdBy = registerOutput<WatchlistUserInfoResponse?>('createdBy');
+    entityMapping = registerOutput<dynamic>('entityMapping');
+    etag = registerOutput<String?>('etag');
+    isDeleted = registerOutput<bool?>('isDeleted');
+    itemsKeyValue = registerOutput<dynamic>('itemsKeyValue');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
-    this.updated = registerOutput<String?>('updated');
-    this.updatedBy = registerOutput<WatchlistUserInfoResponse?>('updatedBy');
-    this.watchlistItemId = registerOutput<String?>('watchlistItemId');
-    this.watchlistItemType = registerOutput<String?>('watchlistItemType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+    updated = registerOutput<String?>('updated');
+    updatedBy = registerOutput<WatchlistUserInfoResponse?>('updatedBy');
+    watchlistItemId = registerOutput<String?>('watchlistItemId');
+    watchlistItemType = registerOutput<String?>('watchlistItemType');
   }
 }

@@ -629,26 +629,37 @@ import 'update_configuration_response.dart';
 class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// CreatedBy property, which only appears in the response.
   late final pulumi.Output<String> createdBy;
+
   /// Creation time of the resource, which only appears in the response.
   late final pulumi.Output<String> creationTime;
+
   /// Details of provisioning error
   late final pulumi.Output<ErrorResponseResponse?> error;
+
   /// LastModifiedBy property, which only appears in the response.
   late final pulumi.Output<String> lastModifiedBy;
+
   /// Last time resource was modified, which only appears in the response.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Provisioning state for the software update configuration, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Schedule information for the Software update configuration
   late final pulumi.Output<SUCSchedulePropertiesResponse> scheduleInfo;
+
   /// Tasks information for the Software update configuration.
   late final pulumi.Output<SoftwareUpdateConfigurationTasksResponse?> tasks;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// update specific properties for the Software update configuration
   late final pulumi.Output<UpdateConfigurationResponse> updateConfiguration;
 
@@ -661,22 +672,26 @@ class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     SoftwareUpdateConfigurationByNameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:SoftwareUpdateConfigurationByName',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.error = registerOutput<ErrorResponseResponse?>('error');
-    this.lastModifiedBy = registerOutput<String>('lastModifiedBy');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'azure-native:automation:SoftwareUpdateConfigurationByName',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<String>('createdBy');
+    creationTime = registerOutput<String>('creationTime');
+    error = registerOutput<ErrorResponseResponse?>('error');
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scheduleInfo = registerOutput<SUCSchedulePropertiesResponse>('scheduleInfo');
-    this.tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>('tasks');
-    this.type = registerOutput<String>('type');
-    this.updateConfiguration = registerOutput<UpdateConfigurationResponse>('updateConfiguration');
+    provisioningState = registerOutput<String>('provisioningState');
+    scheduleInfo = registerOutput<SUCSchedulePropertiesResponse>(
+      'scheduleInfo',
+    );
+    tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>('tasks');
+    type = registerOutput<String>('type');
+    updateConfiguration = registerOutput<UpdateConfigurationResponse>(
+      'updateConfiguration',
+    );
   }
 }

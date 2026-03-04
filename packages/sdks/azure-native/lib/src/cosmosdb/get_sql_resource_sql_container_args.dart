@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlResourceSqlContainerArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
+
   /// Cosmos DB container name.
   final pulumi.Input<String> containerName;
+
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,12 @@ class GetSqlResourceSqlContainerArgs {
 
   factory GetSqlResourceSqlContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlResourceSqlContainerArgs(
-      accountName: (map['accountName'] as String).input(),
-      containerName: (map['containerName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

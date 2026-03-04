@@ -16,16 +16,15 @@ enum EdifactCharacterSet {
   valueUNOY("UNOY"),
   valueKECA("KECA");
 
-  const EdifactCharacterSet(this.value);
-  final String value;
+  const EdifactCharacterSet(this.wireValue);
+  final String wireValue;
 
   static EdifactCharacterSet fromValue(String value) {
     for (final item in EdifactCharacterSet.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EdifactCharacterSet value: $value');
   }
 }
-

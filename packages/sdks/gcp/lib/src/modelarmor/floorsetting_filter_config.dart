@@ -9,13 +9,18 @@ import 'floorsetting_filter_config_sdp_settings.dart';
 class FloorsettingFilterConfig {
   /// Malicious URI filter settings.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingFilterConfigMaliciousUriFilterSettings>? maliciousUriFilterSettings;
+  final pulumi.Input<FloorsettingFilterConfigMaliciousUriFilterSettings>?
+  maliciousUriFilterSettings;
+
   /// Prompt injection and Jailbreak Filter settings.
   /// Structure is documented below.
-  final pulumi.Input<FloorsettingFilterConfigPiAndJailbreakFilterSettings>? piAndJailbreakFilterSettings;
+  final pulumi.Input<FloorsettingFilterConfigPiAndJailbreakFilterSettings>?
+  piAndJailbreakFilterSettings;
+
   /// Responsible AI Filter settings.
   /// Structure is documented below.
   final pulumi.Input<FloorsettingFilterConfigRaiSettings>? raiSettings;
+
   /// Sensitive Data Protection settings.
   /// Structure is documented below.
   final pulumi.Input<FloorsettingFilterConfigSdpSettings>? sdpSettings;
@@ -34,20 +39,67 @@ class FloorsettingFilterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maliciousUriFilterSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigMaliciousUriFilterSettings, Map<String, dynamic>>(maliciousUriFilterSettings, (value) => value.toMap()),
-      'piAndJailbreakFilterSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigPiAndJailbreakFilterSettings, Map<String, dynamic>>(piAndJailbreakFilterSettings, (value) => value.toMap()),
-      'raiSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigRaiSettings, Map<String, dynamic>>(raiSettings, (value) => value.toMap()),
-      'sdpSettings': ?pulumi.Input.mapOptionalInputValue<FloorsettingFilterConfigSdpSettings, Map<String, dynamic>>(sdpSettings, (value) => value.toMap()),
+      'maliciousUriFilterSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            FloorsettingFilterConfigMaliciousUriFilterSettings,
+            Map<String, dynamic>
+          >(maliciousUriFilterSettings, (value) => value.toMap()),
+      'piAndJailbreakFilterSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            FloorsettingFilterConfigPiAndJailbreakFilterSettings,
+            Map<String, dynamic>
+          >(piAndJailbreakFilterSettings, (value) => value.toMap()),
+      'raiSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            FloorsettingFilterConfigRaiSettings,
+            Map<String, dynamic>
+          >(raiSettings, (value) => value.toMap()),
+      'sdpSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            FloorsettingFilterConfigSdpSettings,
+            Map<String, dynamic>
+          >(sdpSettings, (value) => value.toMap()),
     };
   }
 
   factory FloorsettingFilterConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfig(
-      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : (FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings']! as Map).cast<String, dynamic>())).input(),
-      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : (FloorsettingFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings']! as Map).cast<String, dynamic>())).input(),
-      raiSettings: map['raiSettings'] == null ? null : (FloorsettingFilterConfigRaiSettings.fromMap((map['raiSettings']! as Map).cast<String, dynamic>())).input(),
-      sdpSettings: map['sdpSettings'] == null ? null : (FloorsettingFilterConfigSdpSettings.fromMap((map['sdpSettings']! as Map).cast<String, dynamic>())).input(),
+      maliciousUriFilterSettings: (() {
+        final guardedValue = map['maliciousUriFilterSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      piAndJailbreakFilterSettings: (() {
+        final guardedValue = map['piAndJailbreakFilterSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FloorsettingFilterConfigPiAndJailbreakFilterSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      raiSettings: (() {
+        final guardedValue = map['raiSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FloorsettingFilterConfigRaiSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sdpSettings: (() {
+        final guardedValue = map['sdpSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FloorsettingFilterConfigSdpSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

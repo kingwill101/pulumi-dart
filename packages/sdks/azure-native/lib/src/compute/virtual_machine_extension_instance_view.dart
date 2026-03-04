@@ -7,12 +7,16 @@ import 'instance_view_status.dart';
 class VirtualMachineExtensionInstanceView {
   /// The virtual machine extension name.
   final pulumi.Input<String>? name;
+
   /// The resource status information.
   final pulumi.Input<List<InstanceViewStatus>>? statuses;
+
   /// The resource status information.
   final pulumi.Input<List<InstanceViewStatus>>? substatuses;
+
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
   final pulumi.Input<String>? type;
+
   /// Specifies the version of the script handler.
   final pulumi.Input<String>? typeHandlerVersion;
 
@@ -33,21 +37,78 @@ class VirtualMachineExtensionInstanceView {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'substatuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatus>, List<Map<String, dynamic>>>(substatuses, (value) => pulumi.Input.encodeList<InstanceViewStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceViewStatus>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceViewStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'substatuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceViewStatus>,
+            List<Map<String, dynamic>>
+          >(
+            substatuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceViewStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': ?type,
       'typeHandlerVersion': ?typeHandlerVersion,
     };
   }
 
-  factory VirtualMachineExtensionInstanceView.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineExtensionInstanceView.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineExtensionInstanceView(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatus>(map['statuses']!, (value) => InstanceViewStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      substatuses: map['substatuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatus>(map['substatuses']!, (value) => InstanceViewStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceViewStatus>(
+            guardedValue,
+            (value) => InstanceViewStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      substatuses: (() {
+        final guardedValue = map['substatuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceViewStatus>(
+            guardedValue,
+            (value) => InstanceViewStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      typeHandlerVersion: (() {
+        final guardedValue = map['typeHandlerVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

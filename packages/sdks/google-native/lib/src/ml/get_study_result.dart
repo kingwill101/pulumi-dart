@@ -6,12 +6,16 @@ import 'google_cloud_ml_v1_study_config_response.dart';
 class GetStudyResult {
   /// Time at which the study was created.
   final String createTime;
+
   /// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
   final String inactiveReason;
+
   /// The name of a study.
   final String name;
+
   /// The detailed state of a study.
   final String state;
+
   /// Configuration of the study.
   final GoogleCloudMlV1StudyConfigResponse studyConfig;
 
@@ -45,8 +49,9 @@ class GetStudyResult {
       inactiveReason: map['inactiveReason'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      studyConfig: GoogleCloudMlV1StudyConfigResponse.fromMap((map['studyConfig'] as Map).cast<String, dynamic>()),
+      studyConfig: GoogleCloudMlV1StudyConfigResponse.fromMap(
+        (map['studyConfig']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

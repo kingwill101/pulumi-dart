@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CompositeTypeLabelEntryResponseDeploymentmanagerV2beta {
   /// Key of the label
   final pulumi.Input<String> key;
+
   /// Value of the label
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class CompositeTypeLabelEntryResponseDeploymentmanagerV2beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory CompositeTypeLabelEntryResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory CompositeTypeLabelEntryResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CompositeTypeLabelEntryResponseDeploymentmanagerV2beta(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

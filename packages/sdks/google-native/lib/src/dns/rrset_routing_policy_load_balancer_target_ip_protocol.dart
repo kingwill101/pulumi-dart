@@ -4,16 +4,19 @@ enum RRSetRoutingPolicyLoadBalancerTargetIpProtocol {
   tcp("tcp"),
   udp("udp");
 
-  const RRSetRoutingPolicyLoadBalancerTargetIpProtocol(this.value);
-  final String value;
+  const RRSetRoutingPolicyLoadBalancerTargetIpProtocol(this.wireValue);
+  final String wireValue;
 
-  static RRSetRoutingPolicyLoadBalancerTargetIpProtocol fromValue(String value) {
+  static RRSetRoutingPolicyLoadBalancerTargetIpProtocol fromValue(
+    String value,
+  ) {
     for (final item in RRSetRoutingPolicyLoadBalancerTargetIpProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RRSetRoutingPolicyLoadBalancerTargetIpProtocol value: $value');
+    throw ArgumentError(
+      'Unknown RRSetRoutingPolicyLoadBalancerTargetIpProtocol value: $value',
+    );
   }
 }
-

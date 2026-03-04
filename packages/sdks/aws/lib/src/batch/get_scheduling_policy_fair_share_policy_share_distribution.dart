@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSchedulingPolicyFairSharePolicyShareDistribution {
   /// Fair share identifier or fair share identifier prefix. For more information, see [ShareAttributes](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html).
   final pulumi.Input<String> shareIdentifier;
+
   /// Weight factor for the fair share identifier. For more information, see [ShareAttributes](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html).
   final pulumi.Input<double> weightFactor;
 
@@ -23,11 +24,12 @@ class GetSchedulingPolicyFairSharePolicyShareDistribution {
     };
   }
 
-  factory GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap(Map<String, dynamic> map) {
+  factory GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSchedulingPolicyFairSharePolicyShareDistribution(
-      shareIdentifier: (map['shareIdentifier'] as String).input(),
-      weightFactor: (map['weightFactor'] as double).input(),
+      shareIdentifier: pulumi.Input.fromValue(map['shareIdentifier'] as String),
+      weightFactor: pulumi.Input.fromValue(map['weightFactor'] as double),
     );
   }
 }
-

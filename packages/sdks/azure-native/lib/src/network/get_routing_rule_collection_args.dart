@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoutingRuleCollectionArgs {
   /// The name of the network manager Routing Configuration.
   final pulumi.Input<String> configurationName;
+
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the network manager routing Configuration rule collection.
   final pulumi.Input<String> ruleCollectionName;
 
@@ -39,11 +42,18 @@ class GetRoutingRuleCollectionArgs {
 
   factory GetRoutingRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutingRuleCollectionArgs(
-      configurationName: (map['configurationName'] as String).input(),
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleCollectionName: (map['ruleCollectionName'] as String).input(),
+      configurationName: pulumi.Input.fromValue(
+        map['configurationName'] as String,
+      ),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleCollectionName: pulumi.Input.fromValue(
+        map['ruleCollectionName'] as String,
+      ),
     );
   }
 }
-

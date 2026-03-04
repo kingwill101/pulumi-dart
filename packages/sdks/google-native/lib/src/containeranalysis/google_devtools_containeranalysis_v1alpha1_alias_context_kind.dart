@@ -5,16 +5,20 @@ enum GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind {
   movable("MOVABLE"),
   other("OTHER");
 
-  const GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind(this.value);
-  final String value;
+  const GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind(this.wireValue);
+  final String wireValue;
 
-  static GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind fromValue(String value) {
-    for (final item in GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind.values) {
-      if (item.value == value) {
+  static GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind value: $value');
+    throw ArgumentError(
+      'Unknown GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind value: $value',
+    );
   }
 }
-

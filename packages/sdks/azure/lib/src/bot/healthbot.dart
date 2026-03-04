@@ -148,7 +148,7 @@ import 'healthbot_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthBot` - 2025-05-25
@@ -163,16 +163,21 @@ import 'healthbot_state.dart';
 class Healthbot extends pulumi.CustomResource {
   /// The management portal url.
   late final pulumi.Output<String> botManagementPortalUrl;
+
   /// Specifies The Azure Region where the resource exists. Changing this force a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies The name of the Healthbot Service resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies The name of the Resource Group in which to create the Healthbot Service. changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name which should be used for the SKU of the service. Possible values are `C0`, `C1`, `F0`, `PES` and `S1`.
   ///
-  /// > **Note:** Downgrading to `F0` forces a new resource to be created.
+  /// &gt; **Note:** Downgrading to `F0` forces a new resource to be created.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags which should be assigned to the service.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -185,17 +190,17 @@ class Healthbot extends pulumi.CustomResource {
     HealthbotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/healthbot:Healthbot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botManagementPortalUrl = registerOutput<String>('botManagementPortalUrl');
-    this.location = registerOutput<String>('location');
+         'azure:bot/healthbot:Healthbot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botManagementPortalUrl = registerOutput<String>('botManagementPortalUrl');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Healthbot] resource's state with the given [name] and [id].
@@ -216,16 +221,16 @@ class Healthbot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/healthbot:Healthbot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botManagementPortalUrl = registerOutput<String>('botManagementPortalUrl');
-    this.location = registerOutput<String>('location');
+         'azure:bot/healthbot:Healthbot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botManagementPortalUrl = registerOutput<String>('botManagementPortalUrl');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

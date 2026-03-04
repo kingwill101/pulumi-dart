@@ -10,16 +10,21 @@ class GlobalReachConnectionArgs {
   /// Authorization key from the peer express route used for the global reach
   /// connection
   final pulumi.Input<String>? authorizationKey;
+
   /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
   /// global reach connection
   final pulumi.Input<String>? expressRouteId;
+
   /// Name of the global reach connection
   final pulumi.Input<String>? globalReachConnectionName;
+
   /// Identifier of the ExpressRoute Circuit to peer with in the global reach
   /// connection
   final pulumi.Input<String>? peerExpressRouteCircuit;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -52,13 +57,32 @@ class GlobalReachConnectionArgs {
 
   factory GlobalReachConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GlobalReachConnectionArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
-      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId']! as String).input(),
-      globalReachConnectionName: map['globalReachConnectionName'] == null ? null : (map['globalReachConnectionName']! as String).input(),
-      peerExpressRouteCircuit: map['peerExpressRouteCircuit'] == null ? null : (map['peerExpressRouteCircuit']! as String).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authorizationKey: (() {
+        final guardedValue = map['authorizationKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expressRouteId: (() {
+        final guardedValue = map['expressRouteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalReachConnectionName: (() {
+        final guardedValue = map['globalReachConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peerExpressRouteCircuit: (() {
+        final guardedValue = map['peerExpressRouteCircuit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

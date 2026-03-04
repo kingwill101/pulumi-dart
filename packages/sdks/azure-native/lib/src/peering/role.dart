@@ -7,16 +7,15 @@ enum Role {
   valueEscalation("Escalation"),
   valueOther("Other");
 
-  const Role(this.value);
-  final String value;
+  const Role(this.wireValue);
+  final String wireValue;
 
   static Role fromValue(String value) {
     for (final item in Role.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Role value: $value');
   }
 }
-

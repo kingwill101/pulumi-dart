@@ -6,10 +6,12 @@ class GetInstanceTemplateNetworkInterfaceAccessConfig {
   /// The IP address that will be 1:1 mapped to the instance's
   /// network ip. If not given, one will be generated.
   final pulumi.Input<String> natIp;
+
   /// The [networking tier][network-tier] used for configuring
   /// this instance template. This field can take the following values: PREMIUM or
   /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
   final pulumi.Input<String> networkTier;
+
   /// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
   final pulumi.Input<String> publicPtrDomainName;
 
@@ -31,12 +33,15 @@ class GetInstanceTemplateNetworkInterfaceAccessConfig {
     };
   }
 
-  factory GetInstanceTemplateNetworkInterfaceAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceTemplateNetworkInterfaceAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceTemplateNetworkInterfaceAccessConfig(
-      natIp: (map['natIp'] as String).input(),
-      networkTier: (map['networkTier'] as String).input(),
-      publicPtrDomainName: (map['publicPtrDomainName'] as String).input(),
+      natIp: pulumi.Input.fromValue(map['natIp'] as String),
+      networkTier: pulumi.Input.fromValue(map['networkTier'] as String),
+      publicPtrDomainName: pulumi.Input.fromValue(
+        map['publicPtrDomainName'] as String,
+      ),
     );
   }
 }
-

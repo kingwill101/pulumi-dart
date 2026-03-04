@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkFunctionDefinitionGroupPropertiesFormatResponse {
   /// The network function definition group description.
   final pulumi.Input<String>? description;
+
   /// The provisioning state of the network function definition groups resource.
   final pulumi.Input<String> provisioningState;
 
@@ -24,11 +25,18 @@ class NetworkFunctionDefinitionGroupPropertiesFormatResponse {
     };
   }
 
-  factory NetworkFunctionDefinitionGroupPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
+  factory NetworkFunctionDefinitionGroupPropertiesFormatResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkFunctionDefinitionGroupPropertiesFormatResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

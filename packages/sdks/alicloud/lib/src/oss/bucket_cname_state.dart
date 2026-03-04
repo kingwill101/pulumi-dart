@@ -7,16 +7,22 @@ import 'bucket_cname_certificate.dart';
 class BucketCnameState {
   /// The bucket to which the custom domain name belongs
   final pulumi.Input<String>? bucket;
+
   /// The container for the certificate configuration. See `certificate` below.
   final pulumi.Input<BucketCnameCertificate>? certificate;
+
   /// Whether to delete the certificate.
   final pulumi.Input<bool>? deleteCertificate;
+
   /// User-defined domain name
   final pulumi.Input<String>? domain;
+
   /// Whether to force overwrite certificate.
   final pulumi.Input<bool>? force;
+
   /// The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
   final pulumi.Input<String>? previousCertId;
+
   /// Cname status
   final pulumi.Input<String>? status;
 
@@ -41,7 +47,11 @@ class BucketCnameState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': ?bucket,
-      'certificate': ?pulumi.Input.mapOptionalInputValue<BucketCnameCertificate, Map<String, dynamic>>(certificate, (value) => value.toMap()),
+      'certificate':
+          ?pulumi.Input.mapOptionalInputValue<
+            BucketCnameCertificate,
+            Map<String, dynamic>
+          >(certificate, (value) => value.toMap()),
       'deleteCertificate': ?deleteCertificate,
       'domain': ?domain,
       'force': ?force,
@@ -52,14 +62,45 @@ class BucketCnameState {
 
   factory BucketCnameState.fromMap(Map<String, dynamic> map) {
     return BucketCnameState(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      certificate: map['certificate'] == null ? null : (BucketCnameCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
-      deleteCertificate: map['deleteCertificate'] == null ? null : (map['deleteCertificate']! as bool).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      previousCertId: map['previousCertId'] == null ? null : (map['previousCertId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BucketCnameCertificate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deleteCertificate: (() {
+        final guardedValue = map['deleteCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      previousCertId: (() {
+        final guardedValue = map['previousCertId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudPhoneInstanceState {
   /// The ID of the instance group to which the instance belongs
   final pulumi.Input<String>? androidInstanceGroupId;
+
   /// The instance name
   final pulumi.Input<String>? androidInstanceName;
 
@@ -26,9 +27,16 @@ class CloudPhoneInstanceState {
 
   factory CloudPhoneInstanceState.fromMap(Map<String, dynamic> map) {
     return CloudPhoneInstanceState(
-      androidInstanceGroupId: map['androidInstanceGroupId'] == null ? null : (map['androidInstanceGroupId']! as String).input(),
-      androidInstanceName: map['androidInstanceName'] == null ? null : (map['androidInstanceName']! as String).input(),
+      androidInstanceGroupId: (() {
+        final guardedValue = map['androidInstanceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      androidInstanceName: (() {
+        final guardedValue = map['androidInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

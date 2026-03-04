@@ -35,11 +35,18 @@ class GetRoutineArgs {
 
   factory GetRoutineArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutineArgs(
-      datasetId: (map['datasetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      readMask: map['readMask'] == null ? null : (map['readMask']! as String).input(),
-      routineId: (map['routineId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readMask: (() {
+        final guardedValue = map['readMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routineId: pulumi.Input.fromValue(map['routineId'] as String),
     );
   }
 }
-

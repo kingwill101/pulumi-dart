@@ -10,20 +10,27 @@ class GrafeasV1beta1DeploymentDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1DeploymentDetailsResponse].
   /// [deployment] Deployment history for the resource.
-  GrafeasV1beta1DeploymentDetailsResponse({
-    required this.deployment,
-  });
+  GrafeasV1beta1DeploymentDetailsResponse({required this.deployment});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployment': pulumi.Input.mapInputValue<DeploymentResponseContaineranalysisV1beta1, Map<String, dynamic>>(deployment, (value) => value.toMap()),
+      'deployment':
+          pulumi.Input.mapInputValue<
+            DeploymentResponseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(deployment, (value) => value.toMap()),
     };
   }
 
-  factory GrafeasV1beta1DeploymentDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1beta1DeploymentDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1beta1DeploymentDetailsResponse(
-      deployment: (DeploymentResponseContaineranalysisV1beta1.fromMap((map['deployment'] as Map).cast<String, dynamic>())).input(),
+      deployment: pulumi.Input.fromValue(
+        DeploymentResponseContaineranalysisV1beta1.fromMap(
+          (map['deployment']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

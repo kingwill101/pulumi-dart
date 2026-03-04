@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxFunctionAppAuthSettingFacebook {
   /// The App ID of the Facebook app used for login.
   final pulumi.Input<String> appId;
+
   /// The App Secret of the Facebook app used for Facebook login.
   final pulumi.Input<String> appSecret;
+
   /// The app setting name that contains the `app_secret` value used for Facebook login.
   final pulumi.Input<String> appSecretSettingName;
+
   /// A list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication.
   final pulumi.Input<List<String>> oauthScopes;
 
@@ -33,13 +36,18 @@ class GetLinuxFunctionAppAuthSettingFacebook {
     };
   }
 
-  factory GetLinuxFunctionAppAuthSettingFacebook.fromMap(Map<String, dynamic> map) {
+  factory GetLinuxFunctionAppAuthSettingFacebook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLinuxFunctionAppAuthSettingFacebook(
-      appId: (map['appId'] as String).input(),
-      appSecret: (map['appSecret'] as String).input(),
-      appSecretSettingName: (map['appSecretSettingName'] as String).input(),
-      oauthScopes: ((map['oauthScopes'] as List).cast<String>()).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      appSecret: pulumi.Input.fromValue(map['appSecret'] as String),
+      appSecretSettingName: pulumi.Input.fromValue(
+        map['appSecretSettingName'] as String,
+      ),
+      oauthScopes: pulumi.Input.fromValue(
+        (map['oauthScopes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

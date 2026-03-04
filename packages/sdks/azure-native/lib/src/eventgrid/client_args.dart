@@ -12,18 +12,26 @@ class ClientArgs {
   /// Example:
   /// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
   final pulumi.Input<dynamic>? attributes;
+
   /// The name presented by the client for authentication. The default value is the name of the resource.
   final pulumi.Input<String>? authenticationName;
+
   /// The client certificate authentication information.
-  final pulumi.Input<ClientCertificateAuthentication>? clientCertificateAuthentication;
+  final pulumi.Input<ClientCertificateAuthentication>?
+  clientCertificateAuthentication;
+
   /// The client name.
   final pulumi.Input<String>? clientName;
+
   /// Description for the Client resource.
   final pulumi.Input<String>? description;
+
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// Indicates if the client is enabled or not. Default value is Enabled.
   final pulumi.Input<String>? state;
 
@@ -51,7 +59,11 @@ class ClientArgs {
     return <String, dynamic>{
       'attributes': ?attributes,
       'authenticationName': ?authenticationName,
-      'clientCertificateAuthentication': ?pulumi.Input.mapOptionalInputValue<ClientCertificateAuthentication, Map<String, dynamic>>(clientCertificateAuthentication, (value) => value.toMap()),
+      'clientCertificateAuthentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClientCertificateAuthentication,
+            Map<String, dynamic>
+          >(clientCertificateAuthentication, (value) => value.toMap()),
       'clientName': ?clientName,
       'description': ?description,
       'namespaceName': namespaceName,
@@ -62,15 +74,44 @@ class ClientArgs {
 
   factory ClientArgs.fromMap(Map<String, dynamic> map) {
     return ClientArgs(
-      attributes: map['attributes'] == null ? null : (map['attributes']!).input(),
-      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName']! as String).input(),
-      clientCertificateAuthentication: map['clientCertificateAuthentication'] == null ? null : (ClientCertificateAuthentication.fromMap((map['clientCertificateAuthentication']! as Map).cast<String, dynamic>())).input(),
-      clientName: map['clientName'] == null ? null : (map['clientName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      authenticationName: (() {
+        final guardedValue = map['authenticationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientCertificateAuthentication: (() {
+        final guardedValue = map['clientCertificateAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClientCertificateAuthentication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientName: (() {
+        final guardedValue = map['clientName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

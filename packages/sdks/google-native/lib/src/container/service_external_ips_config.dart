@@ -9,20 +9,19 @@ class ServiceExternalIPsConfig {
 
   /// Creates a new [ServiceExternalIPsConfig].
   /// [enabled] Whether Services with ExternalIPs field are allowed or not.
-  ServiceExternalIPsConfig({
-    this.enabled,
-  });
+  ServiceExternalIPsConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ServiceExternalIPsConfig.fromMap(Map<String, dynamic> map) {
     return ServiceExternalIPsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

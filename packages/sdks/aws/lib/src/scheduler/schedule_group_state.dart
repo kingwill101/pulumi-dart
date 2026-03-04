@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleGroupState {
   /// ARN of the schedule group.
   final pulumi.Input<String>? arn;
+
   /// Time at which the schedule group was created.
   final pulumi.Input<String>? creationDate;
+
   /// Time at which the schedule group was last modified.
   final pulumi.Input<String>? lastModificationDate;
+
   /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// State of the schedule group. Can be `ACTIVE` or `DELETING`.
   final pulumi.Input<String>? state;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -61,16 +69,55 @@ class ScheduleGroupState {
 
   factory ScheduleGroupState.fromMap(Map<String, dynamic> map) {
     return ScheduleGroupState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
-      lastModificationDate: map['lastModificationDate'] == null ? null : ((map['lastModificationDate'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      creationDate: (() {
+        final guardedValue = map['creationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModificationDate: (() {
+        final guardedValue = map['lastModificationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

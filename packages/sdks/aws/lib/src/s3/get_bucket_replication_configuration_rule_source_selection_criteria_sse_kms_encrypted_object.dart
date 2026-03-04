@@ -12,15 +12,14 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncrypte
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': status,
-    };
+    return <String, dynamic>{'status': status};
   }
 
-  factory GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap(Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject(
-      status: (map['status'] as String).input(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

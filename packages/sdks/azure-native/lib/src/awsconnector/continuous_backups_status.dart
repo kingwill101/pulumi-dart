@@ -3,16 +3,15 @@ enum ContinuousBackupsStatus {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
-  const ContinuousBackupsStatus(this.value);
-  final String value;
+  const ContinuousBackupsStatus(this.wireValue);
+  final String wireValue;
 
   static ContinuousBackupsStatus fromValue(String value) {
     for (final item in ContinuousBackupsStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ContinuousBackupsStatus value: $value');
   }
 }
-

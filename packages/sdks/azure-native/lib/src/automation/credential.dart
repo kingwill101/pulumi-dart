@@ -158,16 +158,22 @@ import 'credential_args.dart';
 class Credential extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the creation time.
   late final pulumi.Output<String> creationTime;
+
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
+
   /// Gets the last modified time.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// Gets the user name of the credential.
   late final pulumi.Output<String> userName;
 
@@ -180,17 +186,17 @@ class Credential extends pulumi.CustomResource {
     CredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:Credential',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.description = registerOutput<String?>('description');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'azure-native:automation:Credential',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String?>('description');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.userName = registerOutput<String>('userName');
+    type = registerOutput<String>('type');
+    userName = registerOutput<String>('userName');
   }
 }

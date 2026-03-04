@@ -9,20 +9,31 @@ class ListenerRuleTransformUrlRewriteConfig {
 
   /// Creates a new [ListenerRuleTransformUrlRewriteConfig].
   /// [rewrite] Block for URL rewrite configuration. Only one block is accepted. See Rewrite Blocks below.
-  ListenerRuleTransformUrlRewriteConfig({
-    this.rewrite,
-  });
+  ListenerRuleTransformUrlRewriteConfig({this.rewrite});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rewrite': ?pulumi.Input.mapOptionalInputValue<ListenerRuleTransformUrlRewriteConfigRewrite, Map<String, dynamic>>(rewrite, (value) => value.toMap()),
+      'rewrite':
+          ?pulumi.Input.mapOptionalInputValue<
+            ListenerRuleTransformUrlRewriteConfigRewrite,
+            Map<String, dynamic>
+          >(rewrite, (value) => value.toMap()),
     };
   }
 
-  factory ListenerRuleTransformUrlRewriteConfig.fromMap(Map<String, dynamic> map) {
+  factory ListenerRuleTransformUrlRewriteConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerRuleTransformUrlRewriteConfig(
-      rewrite: map['rewrite'] == null ? null : ((ListenerRuleTransformUrlRewriteConfigRewrite.fromMap((map['rewrite']! as Map).cast<String, dynamic>())).input()).input(),
+      rewrite: (() {
+        final guardedValue = map['rewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ListenerRuleTransformUrlRewriteConfigRewrite.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

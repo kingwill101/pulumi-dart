@@ -373,20 +373,29 @@ import 'dsc_node_configuration_args.dart';
 class DscNodeConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the configuration of the node.
-  late final pulumi.Output<DscConfigurationAssociationPropertyResponse?> configuration;
+  late final pulumi.Output<DscConfigurationAssociationPropertyResponse?>
+  configuration;
+
   /// Gets or sets creation time.
   late final pulumi.Output<String?> creationTime;
+
   /// If a new build version of NodeConfiguration is required.
   late final pulumi.Output<bool?> incrementNodeConfigurationBuild;
+
   /// Gets or sets the last modified time.
   late final pulumi.Output<String?> lastModifiedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Number of nodes with this node configuration assigned
   late final pulumi.Output<double?> nodeCount;
+
   /// Source of node configuration.
   late final pulumi.Output<String?> source;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -399,19 +408,24 @@ class DscNodeConfiguration extends pulumi.CustomResource {
     DscNodeConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:DscNodeConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configuration = registerOutput<DscConfigurationAssociationPropertyResponse?>('configuration');
-    this.creationTime = registerOutput<String?>('creationTime');
-    this.incrementNodeConfigurationBuild = registerOutput<bool?>('incrementNodeConfigurationBuild');
-    this.lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+         'azure-native:automation:DscNodeConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configuration =
+        registerOutput<DscConfigurationAssociationPropertyResponse?>(
+          'configuration',
+        );
+    creationTime = registerOutput<String?>('creationTime');
+    incrementNodeConfigurationBuild = registerOutput<bool?>(
+      'incrementNodeConfigurationBuild',
+    );
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<double?>('nodeCount');
-    this.source = registerOutput<String?>('source');
-    this.type = registerOutput<String>('type');
+    nodeCount = registerOutput<double?>('nodeCount');
+    source = registerOutput<String?>('source');
+    type = registerOutput<String>('type');
   }
 }

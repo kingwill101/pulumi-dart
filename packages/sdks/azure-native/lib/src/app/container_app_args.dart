@@ -14,30 +14,43 @@ import 'template.dart';
 class ContainerAppArgs {
   /// Non versioned Container App configuration properties.
   final pulumi.Input<Configuration>? configuration;
+
   /// Name of the Container App.
   final pulumi.Input<String>? containerAppName;
+
   /// Resource ID of environment.
   final pulumi.Input<String>? environmentId;
+
   /// The complex type of the extended location.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
   final pulumi.Input<String>? kind;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   final pulumi.Input<String>? managedBy;
+
   /// Deprecated. Resource ID of the Container App's environment.
   final pulumi.Input<String>? managedEnvironmentId;
+
   /// Container App auto patch configuration.
   final pulumi.Input<ContainerAppPatchingConfiguration>? patchingConfiguration;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Container App versioned application definition.
   final pulumi.Input<Template>? template;
+
   /// Workload profile name to pin for container app execution.
   final pulumi.Input<String>? workloadProfileName;
 
@@ -75,40 +88,131 @@ class ContainerAppArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<Configuration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            Configuration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'containerAppName': ?containerAppName,
       'environmentId': ?environmentId,
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'kind': ?kind,
       'location': ?location,
       'managedBy': ?managedBy,
       'managedEnvironmentId': ?managedEnvironmentId,
-      'patchingConfiguration': ?pulumi.Input.mapOptionalInputValue<ContainerAppPatchingConfiguration, Map<String, dynamic>>(patchingConfiguration, (value) => value.toMap()),
+      'patchingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerAppPatchingConfiguration,
+            Map<String, dynamic>
+          >(patchingConfiguration, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
-      'template': ?pulumi.Input.mapOptionalInputValue<Template, Map<String, dynamic>>(template, (value) => value.toMap()),
+      'template':
+          ?pulumi.Input.mapOptionalInputValue<Template, Map<String, dynamic>>(
+            template,
+            (value) => value.toMap(),
+          ),
       'workloadProfileName': ?workloadProfileName,
     };
   }
 
   factory ContainerAppArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppArgs(
-      configuration: map['configuration'] == null ? null : (Configuration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      containerAppName: map['containerAppName'] == null ? null : (map['containerAppName']! as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
-      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId']! as String).input(),
-      patchingConfiguration: map['patchingConfiguration'] == null ? null : (ContainerAppPatchingConfiguration.fromMap((map['patchingConfiguration']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (Template.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
-      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName']! as String).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Configuration.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      containerAppName: (() {
+        final guardedValue = map['containerAppName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentId: (() {
+        final guardedValue = map['environmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedBy: (() {
+        final guardedValue = map['managedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedEnvironmentId: (() {
+        final guardedValue = map['managedEnvironmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      patchingConfiguration: (() {
+        final guardedValue = map['patchingConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerAppPatchingConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      template: (() {
+        final guardedValue = map['template'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Template.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      workloadProfileName: (() {
+        final guardedValue = map['workloadProfileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

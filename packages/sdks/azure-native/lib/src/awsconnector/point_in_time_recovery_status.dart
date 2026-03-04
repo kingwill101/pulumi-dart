@@ -3,16 +3,15 @@ enum PointInTimeRecoveryStatus {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
-  const PointInTimeRecoveryStatus(this.value);
-  final String value;
+  const PointInTimeRecoveryStatus(this.wireValue);
+  final String wireValue;
 
   static PointInTimeRecoveryStatus fromValue(String value) {
     for (final item in PointInTimeRecoveryStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PointInTimeRecoveryStatus value: $value');
   }
 }
-

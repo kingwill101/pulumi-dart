@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPolicyAttachmentState {
   /// The name of the group.
   final pulumi.Input<String>? groupName;
+
   /// The name of the policy.
   final pulumi.Input<String>? policyName;
+
   /// Policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
@@ -33,10 +35,21 @@ class GroupPolicyAttachmentState {
 
   factory GroupPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentState(
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyType: (() {
+        final guardedValue = map['policyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

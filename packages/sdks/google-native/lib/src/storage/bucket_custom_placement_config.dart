@@ -9,20 +9,19 @@ class BucketCustomPlacementConfig {
 
   /// Creates a new [BucketCustomPlacementConfig].
   /// [dataLocations] The list of regional locations in which data is placed.
-  BucketCustomPlacementConfig({
-    this.dataLocations,
-  });
+  BucketCustomPlacementConfig({this.dataLocations});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataLocations': ?dataLocations,
-    };
+    return <String, dynamic>{'dataLocations': ?dataLocations};
   }
 
   factory BucketCustomPlacementConfig.fromMap(Map<String, dynamic> map) {
     return BucketCustomPlacementConfig(
-      dataLocations: map['dataLocations'] == null ? null : ((map['dataLocations']! as List).cast<String>()).input(),
+      dataLocations: (() {
+        final guardedValue = map['dataLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

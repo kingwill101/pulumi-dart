@@ -1,5 +1,3 @@
-library module_managedredis;
-
 export 'managedredis/access_policy_assignment.dart';
 export 'managedredis/access_policy_assignment_args.dart';
 export 'managedredis/access_policy_assignment_state.dart';

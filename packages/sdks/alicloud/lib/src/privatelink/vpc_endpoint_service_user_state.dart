@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServiceUserState {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
+
   /// The endpoint service ID.
   final pulumi.Input<String>? serviceId;
+
   /// The whitelist in the format of ARN.
   final pulumi.Input<String>? userArn;
+
   /// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
   final pulumi.Input<String>? userId;
 
@@ -36,11 +39,26 @@ class VpcEndpointServiceUserState {
 
   factory VpcEndpointServiceUserState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceUserState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
-      userArn: map['userArn'] == null ? null : (map['userArn']! as String).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceId: (() {
+        final guardedValue = map['serviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userArn: (() {
+        final guardedValue = map['userArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

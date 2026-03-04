@@ -7,10 +7,13 @@ import 'bucket_access_control_project_team_response.dart';
 class BucketAccessControlResponse {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// The domain associated with the entity, if any.
   final pulumi.Input<String> domain;
+
   /// The email address associated with the entity, if any.
   final pulumi.Input<String> email;
+
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
   /// - user-email
@@ -24,16 +27,22 @@ class BucketAccessControlResponse {
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
   final pulumi.Input<String> entity;
+
   /// The ID for the entity, if any.
   final pulumi.Input<String> entityId;
+
   /// HTTP 1.1 Entity tag for the access-control entry.
   final pulumi.Input<String> etag;
+
   /// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
   final pulumi.Input<String> kind;
+
   /// The project team associated with the entity, if any.
   final pulumi.Input<BucketAccessControlProjectTeamResponse> projectTeam;
+
   /// The access permission for the entity.
   final pulumi.Input<String> role;
+
   /// The link to this access-control entry.
   final pulumi.Input<String> selfLink;
 
@@ -70,7 +79,11 @@ class BucketAccessControlResponse {
       'entityId': entityId,
       'etag': etag,
       'kind': kind,
-      'projectTeam': pulumi.Input.mapInputValue<BucketAccessControlProjectTeamResponse, Map<String, dynamic>>(projectTeam, (value) => value.toMap()),
+      'projectTeam':
+          pulumi.Input.mapInputValue<
+            BucketAccessControlProjectTeamResponse,
+            Map<String, dynamic>
+          >(projectTeam, (value) => value.toMap()),
       'role': role,
       'selfLink': selfLink,
     };
@@ -78,17 +91,20 @@ class BucketAccessControlResponse {
 
   factory BucketAccessControlResponse.fromMap(Map<String, dynamic> map) {
     return BucketAccessControlResponse(
-      bucket: (map['bucket'] as String).input(),
-      domain: (map['domain'] as String).input(),
-      email: (map['email'] as String).input(),
-      entity: (map['entity'] as String).input(),
-      entityId: (map['entityId'] as String).input(),
-      etag: (map['etag'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      projectTeam: (BucketAccessControlProjectTeamResponse.fromMap((map['projectTeam'] as Map).cast<String, dynamic>())).input(),
-      role: (map['role'] as String).input(),
-      selfLink: (map['selfLink'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      entity: pulumi.Input.fromValue(map['entity'] as String),
+      entityId: pulumi.Input.fromValue(map['entityId'] as String),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      projectTeam: pulumi.Input.fromValue(
+        BucketAccessControlProjectTeamResponse.fromMap(
+          (map['projectTeam']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'basic_ip_set_state.dart';
 ///
 /// For information about Global Accelerator (GA) Basic Ip Set and how to use it, see [What is Basic Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicipset).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -214,12 +214,16 @@ import 'basic_ip_set_state.dart';
 class BasicIpSet extends pulumi.CustomResource {
   /// The ID of the acceleration region.
   late final pulumi.Output<String> accelerateRegionId;
+
   /// The ID of the basic GA instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The bandwidth of the acceleration region. Unit: Mbit/s.
   late final pulumi.Output<int> bandwidth;
+
   /// The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
   late final pulumi.Output<String> ispType;
+
   /// The status of the Basic Ip Set instance.
   late final pulumi.Output<String> status;
 
@@ -232,16 +236,16 @@ class BasicIpSet extends pulumi.CustomResource {
     BasicIpSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicIpSet:BasicIpSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerateRegionId = registerOutput<String>('accelerateRegionId');
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.ispType = registerOutput<String>('ispType');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicIpSet:BasicIpSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerateRegionId = registerOutput<String>('accelerateRegionId');
+    acceleratorId = registerOutput<String>('acceleratorId');
+    bandwidth = registerOutput<int>('bandwidth');
+    ispType = registerOutput<String>('ispType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BasicIpSet] resource's state with the given [name] and [id].
@@ -262,15 +266,15 @@ class BasicIpSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicIpSet:BasicIpSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accelerateRegionId = registerOutput<String>('accelerateRegionId');
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.ispType = registerOutput<String>('ispType');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicIpSet:BasicIpSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accelerateRegionId = registerOutput<String>('accelerateRegionId');
+    acceleratorId = registerOutput<String>('acceleratorId');
+    bandwidth = registerOutput<int>('bandwidth');
+    ispType = registerOutput<String>('ispType');
+    status = registerOutput<String>('status');
   }
 }

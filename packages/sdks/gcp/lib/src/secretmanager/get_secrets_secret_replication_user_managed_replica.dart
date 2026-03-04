@@ -6,7 +6,11 @@ import 'get_secrets_secret_replication_user_managed_replica_customer_managed_enc
 class GetSecretsSecretReplicationUserManagedReplica {
   /// Customer Managed Encryption for the secret.
   /// Structure is documented below.
-  final pulumi.Input<List<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption>> customerManagedEncryptions;
+  final pulumi.Input<
+    List<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption>
+  >
+  customerManagedEncryptions;
+
   /// The canonical IDs of the location to replicate data.
   final pulumi.Input<String> location;
 
@@ -20,16 +24,40 @@ class GetSecretsSecretReplicationUserManagedReplica {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedEncryptions': pulumi.Input.mapInputValue<List<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption>, List<Map<String, dynamic>>>(customerManagedEncryptions, (value) => pulumi.Input.encodeList<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customerManagedEncryptions':
+          pulumi.Input.mapInputValue<
+            List<
+              GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption
+            >,
+            List<Map<String, dynamic>>
+          >(
+            customerManagedEncryptions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'location': location,
     };
   }
 
-  factory GetSecretsSecretReplicationUserManagedReplica.fromMap(Map<String, dynamic> map) {
+  factory GetSecretsSecretReplicationUserManagedReplica.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSecretsSecretReplicationUserManagedReplica(
-      customerManagedEncryptions: (pulumi.Input.decodeList<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption>(map['customerManagedEncryptions'], (value) => GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: (map['location'] as String).input(),
+      customerManagedEncryptions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption
+        >(
+          map['customerManagedEncryptions']!,
+          (value) =>
+              GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

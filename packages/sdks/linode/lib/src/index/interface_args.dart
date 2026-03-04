@@ -13,14 +13,19 @@ import 'interface_vpc.dart';
 class InterfaceArgs {
   /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
   final pulumi.Input<InterfaceDefaultRoute>? defaultRoute;
+
   /// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
   final pulumi.Input<int>? firewallId;
+
   /// The ID of the Linode to assign this interface to.
   final pulumi.Input<int> linodeId;
+
   /// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   final pulumi.Input<InterfacePublic>? public;
+
   /// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   final pulumi.Input<InterfaceVlan>? vlan;
+
   /// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   final pulumi.Input<InterfaceVpc>? vpc;
 
@@ -42,24 +47,71 @@ class InterfaceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultRoute': ?pulumi.Input.mapOptionalInputValue<InterfaceDefaultRoute, Map<String, dynamic>>(defaultRoute, (value) => value.toMap()),
+      'defaultRoute':
+          ?pulumi.Input.mapOptionalInputValue<
+            InterfaceDefaultRoute,
+            Map<String, dynamic>
+          >(defaultRoute, (value) => value.toMap()),
       'firewallId': ?firewallId,
       'linodeId': linodeId,
-      'public': ?pulumi.Input.mapOptionalInputValue<InterfacePublic, Map<String, dynamic>>(public, (value) => value.toMap()),
-      'vlan': ?pulumi.Input.mapOptionalInputValue<InterfaceVlan, Map<String, dynamic>>(vlan, (value) => value.toMap()),
-      'vpc': ?pulumi.Input.mapOptionalInputValue<InterfaceVpc, Map<String, dynamic>>(vpc, (value) => value.toMap()),
+      'public':
+          ?pulumi.Input.mapOptionalInputValue<
+            InterfacePublic,
+            Map<String, dynamic>
+          >(public, (value) => value.toMap()),
+      'vlan':
+          ?pulumi.Input.mapOptionalInputValue<
+            InterfaceVlan,
+            Map<String, dynamic>
+          >(vlan, (value) => value.toMap()),
+      'vpc':
+          ?pulumi.Input.mapOptionalInputValue<
+            InterfaceVpc,
+            Map<String, dynamic>
+          >(vpc, (value) => value.toMap()),
     };
   }
 
   factory InterfaceArgs.fromMap(Map<String, dynamic> map) {
     return InterfaceArgs(
-      defaultRoute: map['defaultRoute'] == null ? null : (InterfaceDefaultRoute.fromMap((map['defaultRoute']! as Map).cast<String, dynamic>())).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
-      linodeId: (map['linodeId'] as int).input(),
-      public: map['public'] == null ? null : (InterfacePublic.fromMap((map['public']! as Map).cast<String, dynamic>())).input(),
-      vlan: map['vlan'] == null ? null : (InterfaceVlan.fromMap((map['vlan']! as Map).cast<String, dynamic>())).input(),
-      vpc: map['vpc'] == null ? null : (InterfaceVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>())).input(),
+      defaultRoute: (() {
+        final guardedValue = map['defaultRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InterfaceDefaultRoute.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      firewallId: (() {
+        final guardedValue = map['firewallId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
+      public: (() {
+        final guardedValue = map['public'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InterfacePublic.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vlan: (() {
+        final guardedValue = map['vlan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InterfaceVlan.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      vpc: (() {
+        final guardedValue = map['vpc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InterfaceVpc.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'workspace_code_source_state.dart';
 ///
 /// For information about PAI Workspace Code Source and how to use it, see [What is Code Source](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateCodeSource).
 ///
-/// > **NOTE:** Available since v1.236.0.
+/// &gt; **NOTE:** Available since v1.236.0.
 ///
 /// ## Example Usage
 ///
@@ -235,24 +235,34 @@ class WorkspaceCodeSource extends pulumi.CustomResource {
   /// - PRIVATE: In this workspace, it is only visible to you and the administrator.
   /// - PUBLIC: In this workspace, it is visible to everyone.
   late final pulumi.Output<String> accessibility;
+
   /// Code repository branch.
   late final pulumi.Output<String?> codeBranch;
+
   /// The code CommitId.
   late final pulumi.Output<String?> codeCommit;
+
   /// Code repository address.
   late final pulumi.Output<String> codeRepo;
+
   /// The Token used to access the code repository.
   late final pulumi.Output<String?> codeRepoAccessToken;
+
   /// The user name of the code repository.
   late final pulumi.Output<String?> codeRepoUserName;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// A detailed description of the code configuration.
   late final pulumi.Output<String?> description;
+
   /// Code source configuration name.
   late final pulumi.Output<String> displayName;
+
   /// The local Mount Directory of the code.
   late final pulumi.Output<String> mountPath;
+
   /// The ID of the workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -265,22 +275,22 @@ class WorkspaceCodeSource extends pulumi.CustomResource {
     WorkspaceCodeSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessibility = registerOutput<String>('accessibility');
-    this.codeBranch = registerOutput<String?>('codeBranch');
-    this.codeCommit = registerOutput<String?>('codeCommit');
-    this.codeRepo = registerOutput<String>('codeRepo');
-    this.codeRepoAccessToken = registerOutput<String?>('codeRepoAccessToken');
-    this.codeRepoUserName = registerOutput<String?>('codeRepoUserName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.mountPath = registerOutput<String>('mountPath');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessibility = registerOutput<String>('accessibility');
+    codeBranch = registerOutput<String?>('codeBranch');
+    codeCommit = registerOutput<String?>('codeCommit');
+    codeRepo = registerOutput<String>('codeRepo');
+    codeRepoAccessToken = registerOutput<String?>('codeRepoAccessToken');
+    codeRepoUserName = registerOutput<String?>('codeRepoUserName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    mountPath = registerOutput<String>('mountPath');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceCodeSource] resource's state with the given [name] and [id].
@@ -301,21 +311,21 @@ class WorkspaceCodeSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessibility = registerOutput<String>('accessibility');
-    this.codeBranch = registerOutput<String?>('codeBranch');
-    this.codeCommit = registerOutput<String?>('codeCommit');
-    this.codeRepo = registerOutput<String>('codeRepo');
-    this.codeRepoAccessToken = registerOutput<String?>('codeRepoAccessToken');
-    this.codeRepoUserName = registerOutput<String?>('codeRepoUserName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.mountPath = registerOutput<String>('mountPath');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/workspaceCodeSource:WorkspaceCodeSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessibility = registerOutput<String>('accessibility');
+    codeBranch = registerOutput<String?>('codeBranch');
+    codeCommit = registerOutput<String?>('codeCommit');
+    codeRepo = registerOutput<String>('codeRepo');
+    codeRepoAccessToken = registerOutput<String?>('codeRepoAccessToken');
+    codeRepoUserName = registerOutput<String?>('codeRepoUserName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    mountPath = registerOutput<String>('mountPath');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

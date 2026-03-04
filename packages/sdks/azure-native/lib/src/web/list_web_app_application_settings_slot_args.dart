@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebAppApplicationSettingsSlotArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot. If a slot is not specified, the API will get the application settings for the production slot.
   final pulumi.Input<String> slot;
 
@@ -32,12 +34,15 @@ class ListWebAppApplicationSettingsSlotArgs {
     };
   }
 
-  factory ListWebAppApplicationSettingsSlotArgs.fromMap(Map<String, dynamic> map) {
+  factory ListWebAppApplicationSettingsSlotArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWebAppApplicationSettingsSlotArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

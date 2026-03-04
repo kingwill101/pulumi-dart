@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupPoliciesArgs {
   /// The db cluster id.
   final pulumi.Input<String> dbClusterId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetBackupPoliciesArgs].
   /// [dbClusterId] The db cluster id.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBackupPoliciesArgs({
-    required this.dbClusterId,
-    this.outputFile,
-  });
+  GetBackupPoliciesArgs({required this.dbClusterId, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,12 @@ class GetBackupPoliciesArgs {
 
   factory GetBackupPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPoliciesArgs(
-      dbClusterId: (map['dbClusterId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

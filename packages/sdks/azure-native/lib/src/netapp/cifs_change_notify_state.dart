@@ -3,16 +3,15 @@ enum CifsChangeNotifyState {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const CifsChangeNotifyState(this.value);
-  final String value;
+  const CifsChangeNotifyState(this.wireValue);
+  final String wireValue;
 
   static CifsChangeNotifyState fromValue(String value) {
     for (final item in CifsChangeNotifyState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CifsChangeNotifyState value: $value');
   }
 }
-

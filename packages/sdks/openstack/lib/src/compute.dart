@@ -1,5 +1,3 @@
-library module_compute;
-
 export 'compute/aggregate_v2.dart';
 export 'compute/aggregate_v2_args.dart';
 export 'compute/aggregate_v2_state.dart';

@@ -5,11 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserHierarchyGroupHierarchyPathLevelTwo {
   /// ARN of the hierarchy group.
   final pulumi.Input<String> arn;
+
   /// The identifier of the hierarchy group.
   final pulumi.Input<String> id;
+
   /// Returns information on a specific hierarchy group by name
   ///
-  /// > **NOTE:** `instance_id` and one of either `name` or `hierarchy_group_id` is required.
+  /// &gt; **NOTE:** `instance_id` and one of either `name` or `hierarchy_group_id` is required.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetUserHierarchyGroupHierarchyPathLevelTwo].
@@ -23,19 +25,16 @@ class GetUserHierarchyGroupHierarchyPathLevelTwo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'name': name,
-    };
+    return <String, dynamic>{'arn': arn, 'id': id, 'name': name};
   }
 
-  factory GetUserHierarchyGroupHierarchyPathLevelTwo.fromMap(Map<String, dynamic> map) {
+  factory GetUserHierarchyGroupHierarchyPathLevelTwo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserHierarchyGroupHierarchyPathLevelTwo(
-      arn: (map['arn'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

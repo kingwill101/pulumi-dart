@@ -7,34 +7,49 @@ import 'system_data_response.dart';
 class GetMachineExtensionResult {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   final bool? autoUpgradeMinorVersion;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   final bool? enableAutomaticUpgrade;
+
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   final String? forceUpdateTag;
+
   /// Gets or sets the Id.
   final String id;
+
   /// The machine extension instance view.
   final MachineExtensionPropertiesResponseInstanceView? instanceView;
+
   /// Gets or sets the location.
   final String? location;
+
   /// Gets or sets the name.
   final String name;
+
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   final dynamic protectedSettings;
+
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
+
   /// The name of the extension handler publisher.
   final String? publisher;
+
   /// Json formatted public settings for the extension.
   final dynamic settings;
+
   /// The system data.
   final SystemDataResponse systemData;
+
   /// Gets or sets the Resource tags.
   final Map<String, String>? tags;
+
   /// Gets or sets the type of the resource.
   final String type;
+
   /// Specifies the version of the script handler.
   final String? typeHandlerVersion;
 
@@ -81,7 +96,7 @@ class GetMachineExtensionResult {
       'enableAutomaticUpgrade': ?enableAutomaticUpgrade,
       'forceUpdateTag': ?forceUpdateTag,
       'id': id,
-      'instanceView': ?instanceView == null ? null : instanceView!.toMap(),
+      'instanceView': ?instanceView?.toMap(),
       'location': ?location,
       'name': name,
       'protectedSettings': ?protectedSettings,
@@ -97,23 +112,66 @@ class GetMachineExtensionResult {
 
   factory GetMachineExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetMachineExtensionResult(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion']! as bool,
+      autoUpgradeMinorVersion: (() {
+        final guardedValue = map['autoUpgradeMinorVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade']! as bool,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
+      enableAutomaticUpgrade: (() {
+        final guardedValue = map['enableAutomaticUpgrade'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      forceUpdateTag: (() {
+        final guardedValue = map['forceUpdateTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      instanceView: map['instanceView'] == null ? null : MachineExtensionPropertiesResponseInstanceView.fromMap((map['instanceView']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      instanceView: (() {
+        final guardedValue = map['instanceView'];
+        if (guardedValue == null) return null;
+        return MachineExtensionPropertiesResponseInstanceView.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings']!,
+      protectedSettings: (() {
+        final guardedValue = map['protectedSettings'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher']! as String,
-      settings: map['settings'] == null ? null : map['settings']!,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion']! as String,
+      typeHandlerVersion: (() {
+        final guardedValue = map['typeHandlerVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

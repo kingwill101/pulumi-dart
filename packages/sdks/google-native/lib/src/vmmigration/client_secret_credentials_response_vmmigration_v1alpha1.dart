@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientSecretCredentialsResponseVmmigrationV1alpha1 {
   /// Azure client ID.
   final pulumi.Input<String> clientId;
+
   /// Input only. Azure client secret.
   final pulumi.Input<String> clientSecret;
+
   /// Azure tenant ID.
   final pulumi.Input<String> tenantId;
 
@@ -29,12 +31,13 @@ class ClientSecretCredentialsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory ClientSecretCredentialsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ClientSecretCredentialsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClientSecretCredentialsResponseVmmigrationV1alpha1(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

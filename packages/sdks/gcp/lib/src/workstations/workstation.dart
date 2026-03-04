@@ -436,44 +436,60 @@ class Workstation extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
+
   /// Time when this resource was created.
   late final pulumi.Output<String> createTime;
+
   /// Human-readable name for this resource.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
   late final pulumi.Output<Map<String, String>?> env;
+
   /// Host to which clients can send HTTPS traffic that will be received by the workstation.
   /// Authorized traffic will be received to the workstation as HTTP on port 80.
   /// To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
   late final pulumi.Output<String> host;
+
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location where the workstation parent resources reside.
   late final pulumi.Output<String> location;
+
   /// Full name of this resource.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Full resource name of the source workstation from which the workstation's persistent
   /// directories will be cloned from during creation.
   late final pulumi.Output<String?> sourceWorkstation;
+
   /// Current state of the workstation.
   late final pulumi.Output<String> state;
+
   /// A system-assigned unique identified for this resource.
   late final pulumi.Output<String> uid;
+
   /// The ID of the parent workstation cluster.
   late final pulumi.Output<String> workstationClusterId;
+
   /// The ID of the parent workstation cluster config.
   late final pulumi.Output<String> workstationConfigId;
+
   /// ID to use for the workstation.
   late final pulumi.Output<String> workstationId;
 
@@ -486,29 +502,31 @@ class Workstation extends pulumi.CustomResource {
     WorkstationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:workstations/workstation:Workstation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<Map<String, String>?>('annotations');
-    this.createTime = registerOutput<String>('createTime');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.env = registerOutput<Map<String, String>?>('env');
-    this.host = registerOutput<String>('host');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:workstations/workstation:Workstation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<Map<String, String>?>('annotations');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>(
+      'effectiveAnnotations',
+    );
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    env = registerOutput<Map<String, String>?>('env');
+    host = registerOutput<String>('host');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.sourceWorkstation = registerOutput<String?>('sourceWorkstation');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.workstationClusterId = registerOutput<String>('workstationClusterId');
-    this.workstationConfigId = registerOutput<String>('workstationConfigId');
-    this.workstationId = registerOutput<String>('workstationId');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    sourceWorkstation = registerOutput<String?>('sourceWorkstation');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationConfigId = registerOutput<String>('workstationConfigId');
+    workstationId = registerOutput<String>('workstationId');
   }
 
   /// Gets an existing [Workstation] resource's state with the given [name] and [id].
@@ -529,28 +547,30 @@ class Workstation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:workstations/workstation:Workstation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<Map<String, String>?>('annotations');
-    this.createTime = registerOutput<String>('createTime');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.env = registerOutput<Map<String, String>?>('env');
-    this.host = registerOutput<String>('host');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:workstations/workstation:Workstation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<Map<String, String>?>('annotations');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>(
+      'effectiveAnnotations',
+    );
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    env = registerOutput<Map<String, String>?>('env');
+    host = registerOutput<String>('host');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.sourceWorkstation = registerOutput<String?>('sourceWorkstation');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    sourceWorkstation = registerOutput<String?>('sourceWorkstation');
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.workstationClusterId = registerOutput<String>('workstationClusterId');
-    this.workstationConfigId = registerOutput<String>('workstationConfigId');
-    this.workstationId = registerOutput<String>('workstationId');
+    uid = registerOutput<String>('uid');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationConfigId = registerOutput<String>('workstationConfigId');
+    workstationId = registerOutput<String>('workstationId');
   }
 }

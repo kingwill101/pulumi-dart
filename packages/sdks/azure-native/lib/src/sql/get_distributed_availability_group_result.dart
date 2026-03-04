@@ -7,32 +7,46 @@ import 'distributed_availability_group_database_response.dart';
 class GetDistributedAvailabilityGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Databases in the distributed availability group
   final List<DistributedAvailabilityGroupDatabaseResponse>? databases;
+
   /// ID of the distributed availability group
   final String distributedAvailabilityGroupId;
+
   /// Name of the distributed availability group
   final String distributedAvailabilityGroupName;
+
   /// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
   final String? failoverMode;
+
   /// Resource ID.
   final String id;
+
   /// Managed instance side availability group name
   final String? instanceAvailabilityGroupName;
+
   /// Managed instance side link role
   final String? instanceLinkRole;
+
   /// Resource name.
   final String name;
+
   /// SQL server side availability group name
   final String? partnerAvailabilityGroupName;
+
   /// SQL server side endpoint - IP or DNS resolvable name
   final String? partnerEndpoint;
+
   /// SQL server side link role
   final String partnerLinkRole;
+
   /// Replication mode of the link
   final String? replicationMode;
+
   /// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
   final String? seedingMode;
+
   /// Resource type.
   final String type;
 
@@ -73,7 +87,14 @@ class GetDistributedAvailabilityGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'databases': ?databases == null ? null : pulumi.Input.encodeList<DistributedAvailabilityGroupDatabaseResponse, Map<String, dynamic>>(databases!, (value) => value.toMap()),
+      'databases': ?(() {
+        final guardedValue = databases;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          DistributedAvailabilityGroupDatabaseResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'distributedAvailabilityGroupId': distributedAvailabilityGroupId,
       'distributedAvailabilityGroupName': distributedAvailabilityGroupName,
       'failoverMode': ?failoverMode,
@@ -90,24 +111,65 @@ class GetDistributedAvailabilityGroupResult {
     };
   }
 
-  factory GetDistributedAvailabilityGroupResult.fromMap(Map<String, dynamic> map) {
+  factory GetDistributedAvailabilityGroupResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDistributedAvailabilityGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      databases: map['databases'] == null ? null : pulumi.Input.decodeList<DistributedAvailabilityGroupDatabaseResponse>(map['databases']!, (value) => DistributedAvailabilityGroupDatabaseResponse.fromMap((value as Map).cast<String, dynamic>())),
-      distributedAvailabilityGroupId: map['distributedAvailabilityGroupId'] as String,
-      distributedAvailabilityGroupName: map['distributedAvailabilityGroupName'] as String,
-      failoverMode: map['failoverMode'] == null ? null : map['failoverMode']! as String,
+      databases: (() {
+        final guardedValue = map['databases'];
+        if (guardedValue == null) return null;
+        return pulumi
+            .Input.decodeList<DistributedAvailabilityGroupDatabaseResponse>(
+          guardedValue,
+          (value) => DistributedAvailabilityGroupDatabaseResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      distributedAvailabilityGroupId:
+          map['distributedAvailabilityGroupId'] as String,
+      distributedAvailabilityGroupName:
+          map['distributedAvailabilityGroupName'] as String,
+      failoverMode: (() {
+        final guardedValue = map['failoverMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      instanceAvailabilityGroupName: map['instanceAvailabilityGroupName'] == null ? null : map['instanceAvailabilityGroupName']! as String,
-      instanceLinkRole: map['instanceLinkRole'] == null ? null : map['instanceLinkRole']! as String,
+      instanceAvailabilityGroupName: (() {
+        final guardedValue = map['instanceAvailabilityGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instanceLinkRole: (() {
+        final guardedValue = map['instanceLinkRole'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      partnerAvailabilityGroupName: map['partnerAvailabilityGroupName'] == null ? null : map['partnerAvailabilityGroupName']! as String,
-      partnerEndpoint: map['partnerEndpoint'] == null ? null : map['partnerEndpoint']! as String,
+      partnerAvailabilityGroupName: (() {
+        final guardedValue = map['partnerAvailabilityGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      partnerEndpoint: (() {
+        final guardedValue = map['partnerEndpoint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       partnerLinkRole: map['partnerLinkRole'] as String,
-      replicationMode: map['replicationMode'] == null ? null : map['replicationMode']! as String,
-      seedingMode: map['seedingMode'] == null ? null : map['seedingMode']! as String,
+      replicationMode: (() {
+        final guardedValue = map['replicationMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      seedingMode: (() {
+        final guardedValue = map['seedingMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureOIDCConfiguration {
   /// The client ID of the federated workload identity.
   final pulumi.Input<String> clientId;
+
   /// The subscription ID of the federated workload identity.
   final pulumi.Input<String> subscriptionId;
+
   /// The tenant ID of the federated workload identity.
   final pulumi.Input<String> tenantId;
 
@@ -30,10 +32,9 @@ class AzureOIDCConfiguration {
 
   factory AzureOIDCConfiguration.fromMap(Map<String, dynamic> map) {
     return AzureOIDCConfiguration(
-      clientId: (map['clientId'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

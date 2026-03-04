@@ -6,62 +6,91 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteMapState {
   /// A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
   final pulumi.Input<String>? asPathMatchMode;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String>? cenId;
+
   /// The ID of the region to which the CEN instance belongs.
   final pulumi.Input<String>? cenRegionId;
+
   /// A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
   final pulumi.Input<String>? cidrMatchMode;
+
   /// A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
   final pulumi.Input<String>? communityMatchMode;
+
   /// An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
   final pulumi.Input<String>? communityOperateMode;
+
   /// The description of the route map.
   final pulumi.Input<String>? description;
+
   /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
   final pulumi.Input<List<String>>? destinationChildInstanceTypes;
+
   /// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
   final pulumi.Input<List<String>>? destinationCidrBlocks;
+
   /// A match statement that indicates the list of IDs of the destination instances.
   final pulumi.Input<List<String>>? destinationInstanceIds;
+
   /// Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
   final pulumi.Input<bool>? destinationInstanceIdsReverseMatch;
+
   /// A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
   final pulumi.Input<List<String>>? destinationRouteTableIds;
+
   /// The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
   final pulumi.Input<String>? mapResult;
+
   /// A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
   final pulumi.Input<List<String>>? matchAsns;
+
   /// A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
   final pulumi.Input<List<String>>? matchCommunitySets;
+
   /// The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
   final pulumi.Input<int>? nextPriority;
+
   /// An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
   final pulumi.Input<List<String>>? operateCommunitySets;
+
   /// An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
   final pulumi.Input<int>? preference;
+
   /// An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
   final pulumi.Input<List<String>>? prependAsPaths;
+
   /// The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
   final pulumi.Input<int>? priority;
+
   /// ID of the RouteMap. It is available in 1.161.0+.
   final pulumi.Input<String>? routeMapId;
+
   /// A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
   final pulumi.Input<List<String>>? routeTypes;
+
   /// A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
   final pulumi.Input<List<String>>? sourceChildInstanceTypes;
+
   /// A match statement that indicates the list of IDs of the source instances.
   final pulumi.Input<List<String>>? sourceInstanceIds;
+
   /// Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
   final pulumi.Input<bool>? sourceInstanceIdsReverseMatch;
+
   /// A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
   final pulumi.Input<List<String>>? sourceRegionIds;
+
   /// A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
   final pulumi.Input<List<String>>? sourceRouteTableIds;
+
   /// (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
   final pulumi.Input<String>? status;
+
   /// The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
   final pulumi.Input<String>? transitRouterRouteTableId;
+
   /// The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
   final pulumi.Input<String>? transmitDirection;
 
@@ -166,37 +195,156 @@ class RouteMapState {
 
   factory RouteMapState.fromMap(Map<String, dynamic> map) {
     return RouteMapState(
-      asPathMatchMode: map['asPathMatchMode'] == null ? null : (map['asPathMatchMode']! as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      cenRegionId: map['cenRegionId'] == null ? null : (map['cenRegionId']! as String).input(),
-      cidrMatchMode: map['cidrMatchMode'] == null ? null : (map['cidrMatchMode']! as String).input(),
-      communityMatchMode: map['communityMatchMode'] == null ? null : (map['communityMatchMode']! as String).input(),
-      communityOperateMode: map['communityOperateMode'] == null ? null : (map['communityOperateMode']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationChildInstanceTypes: map['destinationChildInstanceTypes'] == null ? null : ((map['destinationChildInstanceTypes']! as List).cast<String>()).input(),
-      destinationCidrBlocks: map['destinationCidrBlocks'] == null ? null : ((map['destinationCidrBlocks']! as List).cast<String>()).input(),
-      destinationInstanceIds: map['destinationInstanceIds'] == null ? null : ((map['destinationInstanceIds']! as List).cast<String>()).input(),
-      destinationInstanceIdsReverseMatch: map['destinationInstanceIdsReverseMatch'] == null ? null : (map['destinationInstanceIdsReverseMatch']! as bool).input(),
-      destinationRouteTableIds: map['destinationRouteTableIds'] == null ? null : ((map['destinationRouteTableIds']! as List).cast<String>()).input(),
-      mapResult: map['mapResult'] == null ? null : (map['mapResult']! as String).input(),
-      matchAsns: map['matchAsns'] == null ? null : ((map['matchAsns']! as List).cast<String>()).input(),
-      matchCommunitySets: map['matchCommunitySets'] == null ? null : ((map['matchCommunitySets']! as List).cast<String>()).input(),
-      nextPriority: map['nextPriority'] == null ? null : (map['nextPriority']! as int).input(),
-      operateCommunitySets: map['operateCommunitySets'] == null ? null : ((map['operateCommunitySets']! as List).cast<String>()).input(),
-      preference: map['preference'] == null ? null : (map['preference']! as int).input(),
-      prependAsPaths: map['prependAsPaths'] == null ? null : ((map['prependAsPaths']! as List).cast<String>()).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      routeMapId: map['routeMapId'] == null ? null : (map['routeMapId']! as String).input(),
-      routeTypes: map['routeTypes'] == null ? null : ((map['routeTypes']! as List).cast<String>()).input(),
-      sourceChildInstanceTypes: map['sourceChildInstanceTypes'] == null ? null : ((map['sourceChildInstanceTypes']! as List).cast<String>()).input(),
-      sourceInstanceIds: map['sourceInstanceIds'] == null ? null : ((map['sourceInstanceIds']! as List).cast<String>()).input(),
-      sourceInstanceIdsReverseMatch: map['sourceInstanceIdsReverseMatch'] == null ? null : (map['sourceInstanceIdsReverseMatch']! as bool).input(),
-      sourceRegionIds: map['sourceRegionIds'] == null ? null : ((map['sourceRegionIds']! as List).cast<String>()).input(),
-      sourceRouteTableIds: map['sourceRouteTableIds'] == null ? null : ((map['sourceRouteTableIds']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId']! as String).input(),
-      transmitDirection: map['transmitDirection'] == null ? null : (map['transmitDirection']! as String).input(),
+      asPathMatchMode: (() {
+        final guardedValue = map['asPathMatchMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cenRegionId: (() {
+        final guardedValue = map['cenRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrMatchMode: (() {
+        final guardedValue = map['cidrMatchMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      communityMatchMode: (() {
+        final guardedValue = map['communityMatchMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      communityOperateMode: (() {
+        final guardedValue = map['communityOperateMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationChildInstanceTypes: (() {
+        final guardedValue = map['destinationChildInstanceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationCidrBlocks: (() {
+        final guardedValue = map['destinationCidrBlocks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationInstanceIds: (() {
+        final guardedValue = map['destinationInstanceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationInstanceIdsReverseMatch: (() {
+        final guardedValue = map['destinationInstanceIdsReverseMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      destinationRouteTableIds: (() {
+        final guardedValue = map['destinationRouteTableIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mapResult: (() {
+        final guardedValue = map['mapResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchAsns: (() {
+        final guardedValue = map['matchAsns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      matchCommunitySets: (() {
+        final guardedValue = map['matchCommunitySets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nextPriority: (() {
+        final guardedValue = map['nextPriority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      operateCommunitySets: (() {
+        final guardedValue = map['operateCommunitySets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      preference: (() {
+        final guardedValue = map['preference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      prependAsPaths: (() {
+        final guardedValue = map['prependAsPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      routeMapId: (() {
+        final guardedValue = map['routeMapId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTypes: (() {
+        final guardedValue = map['routeTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceChildInstanceTypes: (() {
+        final guardedValue = map['sourceChildInstanceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceInstanceIds: (() {
+        final guardedValue = map['sourceInstanceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceInstanceIdsReverseMatch: (() {
+        final guardedValue = map['sourceInstanceIdsReverseMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourceRegionIds: (() {
+        final guardedValue = map['sourceRegionIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceRouteTableIds: (() {
+        final guardedValue = map['sourceRouteTableIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterRouteTableId: (() {
+        final guardedValue = map['transitRouterRouteTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transmitDirection: (() {
+        final guardedValue = map['transmitDirection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum ConditionOperator {
   valueLessThanOrEqual("LessThanOrEqual"),
   valueGreaterOrLessThan("GreaterOrLessThan");
 
-  const ConditionOperator(this.value);
-  final String value;
+  const ConditionOperator(this.wireValue);
+  final String wireValue;
 
   static ConditionOperator fromValue(String value) {
     for (final item in ConditionOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionOperator value: $value');
   }
 }
-

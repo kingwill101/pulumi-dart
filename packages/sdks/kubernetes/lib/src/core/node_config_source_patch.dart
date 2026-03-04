@@ -10,20 +10,29 @@ class NodeConfigSourcePatch {
 
   /// Creates a new [NodeConfigSourcePatch].
   /// [configMap] ConfigMap is a reference to a Node's ConfigMap
-  NodeConfigSourcePatch({
-    this.configMap,
-  });
+  NodeConfigSourcePatch({this.configMap});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configMap': ?pulumi.Input.mapOptionalInputValue<ConfigMapNodeConfigSourcePatch, Map<String, dynamic>>(configMap, (value) => value.toMap()),
+      'configMap':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigMapNodeConfigSourcePatch,
+            Map<String, dynamic>
+          >(configMap, (value) => value.toMap()),
     };
   }
 
   factory NodeConfigSourcePatch.fromMap(Map<String, dynamic> map) {
     return NodeConfigSourcePatch(
-      configMap: map['configMap'] == null ? null : (ConfigMapNodeConfigSourcePatch.fromMap((map['configMap']! as Map).cast<String, dynamic>())).input(),
+      configMap: (() {
+        final guardedValue = map['configMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigMapNodeConfigSourcePatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

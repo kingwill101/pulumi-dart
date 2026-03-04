@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvGroupState {
   /// Hostnames of the environment group.
   final pulumi.Input<List<String>>? hostnames;
+
   /// The resource ID of the environment group.
   final pulumi.Input<String>? name;
+
   /// The Apigee Organization associated with the Apigee environment group,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String>? orgId;
@@ -16,11 +18,7 @@ class EnvGroupState {
   /// [hostnames] Hostnames of the environment group.
   /// [name] The resource ID of the environment group.
   /// [orgId] The Apigee Organization associated with the Apigee environment group,
-  EnvGroupState({
-    this.hostnames,
-    this.name,
-    this.orgId,
-  });
+  EnvGroupState({this.hostnames, this.name, this.orgId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,21 @@ class EnvGroupState {
 
   factory EnvGroupState.fromMap(Map<String, dynamic> map) {
     return EnvGroupState(
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      hostnames: (() {
+        final guardedValue = map['hostnames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgId: (() {
+        final guardedValue = map['orgId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

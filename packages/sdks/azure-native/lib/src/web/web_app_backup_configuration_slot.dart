@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_schedule_response.dart';
-import 'database_backup_setting_response.dart';
 import 'web_app_backup_configuration_slot_args.dart';
 
 /// Description of a backup which will be performed.
@@ -18,20 +17,28 @@ import 'web_app_backup_configuration_slot_args.dart';
 class WebAppBackupConfigurationSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Name of the backup.
   late final pulumi.Output<String?> backupName;
+
   /// Schedule for the backup if it is executed periodically.
   late final pulumi.Output<BackupScheduleResponse?> backupSchedule;
+
   /// Databases included in the backup.
-  late final pulumi.Output<List<DatabaseBackupSettingResponse>?> databases;
+  late final pulumi.Output<List<Map<String, dynamic>>?> databases;
+
   /// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   late final pulumi.Output<bool?> enabled;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// SAS URL to the container.
   late final pulumi.Output<String> storageAccountUrl;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -44,19 +51,19 @@ class WebAppBackupConfigurationSlot extends pulumi.CustomResource {
     WebAppBackupConfigurationSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppBackupConfigurationSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupName = registerOutput<String?>('backupName');
-    this.backupSchedule = registerOutput<BackupScheduleResponse?>('backupSchedule');
-    this.databases = registerOutput<List<DatabaseBackupSettingResponse>?>('databases');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppBackupConfigurationSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupName = registerOutput<String?>('backupName');
+    backupSchedule = registerOutput<BackupScheduleResponse?>('backupSchedule');
+    databases = registerOutput<List<Map<String, dynamic>>?>('databases');
+    enabled = registerOutput<bool?>('enabled');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.storageAccountUrl = registerOutput<String>('storageAccountUrl');
-    this.type = registerOutput<String>('type');
+    storageAccountUrl = registerOutput<String>('storageAccountUrl');
+    type = registerOutput<String>('type');
   }
 }

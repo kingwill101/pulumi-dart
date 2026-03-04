@@ -7,22 +7,31 @@ import 'wrapping_public_key_response.dart';
 class GetImportJobResult {
   /// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
   final KeyOperationAttestationResponse attestation;
+
   /// The time at which this ImportJob was created.
   final String createTime;
+
   /// The time this ImportJob expired. Only present if state is EXPIRED.
   final String expireEventTime;
+
   /// The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
   final String expireTime;
+
   /// The time this ImportJob's key material was generated.
   final String generateTime;
+
   /// Immutable. The wrapping method to be used for incoming key material.
   final String importMethod;
+
   /// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
   final String name;
+
   /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
   final String protectionLevel;
+
   /// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
   final WrappingPublicKeyResponse publicKey;
+
   /// The current state of the ImportJob, indicating if it can be used.
   final String state;
 
@@ -67,7 +76,9 @@ class GetImportJobResult {
 
   factory GetImportJobResult.fromMap(Map<String, dynamic> map) {
     return GetImportJobResult(
-      attestation: KeyOperationAttestationResponse.fromMap((map['attestation'] as Map).cast<String, dynamic>()),
+      attestation: KeyOperationAttestationResponse.fromMap(
+        (map['attestation']! as Map).cast<String, dynamic>(),
+      ),
       createTime: map['createTime'] as String,
       expireEventTime: map['expireEventTime'] as String,
       expireTime: map['expireTime'] as String,
@@ -75,9 +86,10 @@ class GetImportJobResult {
       importMethod: map['importMethod'] as String,
       name: map['name'] as String,
       protectionLevel: map['protectionLevel'] as String,
-      publicKey: WrappingPublicKeyResponse.fromMap((map['publicKey'] as Map).cast<String, dynamic>()),
+      publicKey: WrappingPublicKeyResponse.fromMap(
+        (map['publicKey']! as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
     );
   }
 }
-

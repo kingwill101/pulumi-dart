@@ -7,10 +7,13 @@ import 'http_header_option_compute_beta.dart';
 class HttpHeaderActionComputeBeta {
   /// Headers to add to a matching request before forwarding the request to the backendService.
   final pulumi.Input<List<HttpHeaderOptionComputeBeta>>? requestHeadersToAdd;
+
   /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
   final pulumi.Input<List<String>>? requestHeadersToRemove;
+
   /// Headers to add the response before sending the response back to the client.
   final pulumi.Input<List<HttpHeaderOptionComputeBeta>>? responseHeadersToAdd;
+
   /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
   final pulumi.Input<List<String>>? responseHeadersToRemove;
 
@@ -28,20 +31,71 @@ class HttpHeaderActionComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeadersToAdd': ?pulumi.Input.mapOptionalInputValue<List<HttpHeaderOptionComputeBeta>, List<Map<String, dynamic>>>(requestHeadersToAdd, (value) => pulumi.Input.encodeList<HttpHeaderOptionComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestHeadersToAdd':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HttpHeaderOptionComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            requestHeadersToAdd,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HttpHeaderOptionComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'requestHeadersToRemove': ?requestHeadersToRemove,
-      'responseHeadersToAdd': ?pulumi.Input.mapOptionalInputValue<List<HttpHeaderOptionComputeBeta>, List<Map<String, dynamic>>>(responseHeadersToAdd, (value) => pulumi.Input.encodeList<HttpHeaderOptionComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'responseHeadersToAdd':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HttpHeaderOptionComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            responseHeadersToAdd,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HttpHeaderOptionComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'responseHeadersToRemove': ?responseHeadersToRemove,
     };
   }
 
   factory HttpHeaderActionComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpHeaderActionComputeBeta(
-      requestHeadersToAdd: map['requestHeadersToAdd'] == null ? null : (pulumi.Input.decodeList<HttpHeaderOptionComputeBeta>(map['requestHeadersToAdd']!, (value) => HttpHeaderOptionComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestHeadersToRemove: map['requestHeadersToRemove'] == null ? null : ((map['requestHeadersToRemove']! as List).cast<String>()).input(),
-      responseHeadersToAdd: map['responseHeadersToAdd'] == null ? null : (pulumi.Input.decodeList<HttpHeaderOptionComputeBeta>(map['responseHeadersToAdd']!, (value) => HttpHeaderOptionComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeadersToRemove: map['responseHeadersToRemove'] == null ? null : ((map['responseHeadersToRemove']! as List).cast<String>()).input(),
+      requestHeadersToAdd: (() {
+        final guardedValue = map['requestHeadersToAdd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HttpHeaderOptionComputeBeta>(
+            guardedValue,
+            (value) => HttpHeaderOptionComputeBeta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      requestHeadersToRemove: (() {
+        final guardedValue = map['requestHeadersToRemove'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      responseHeadersToAdd: (() {
+        final guardedValue = map['responseHeadersToAdd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HttpHeaderOptionComputeBeta>(
+            guardedValue,
+            (value) => HttpHeaderOptionComputeBeta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      responseHeadersToRemove: (() {
+        final guardedValue = map['responseHeadersToRemove'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

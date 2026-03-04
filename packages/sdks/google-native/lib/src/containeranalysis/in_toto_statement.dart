@@ -14,6 +14,7 @@ class InTotoStatement {
   final pulumi.Input<SlsaProvenance>? slsaProvenance;
   final pulumi.Input<SlsaProvenanceZeroTwo>? slsaProvenanceZeroTwo;
   final pulumi.Input<List<Subject>>? subject;
+
   /// Always `https://in-toto.io/Statement/v0.1`.
   final pulumi.Input<String>? type;
 
@@ -36,23 +37,83 @@ class InTotoStatement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'predicateType': ?predicateType,
-      'provenance': ?pulumi.Input.mapOptionalInputValue<InTotoProvenance, Map<String, dynamic>>(provenance, (value) => value.toMap()),
-      'slsaProvenance': ?pulumi.Input.mapOptionalInputValue<SlsaProvenance, Map<String, dynamic>>(slsaProvenance, (value) => value.toMap()),
-      'slsaProvenanceZeroTwo': ?pulumi.Input.mapOptionalInputValue<SlsaProvenanceZeroTwo, Map<String, dynamic>>(slsaProvenanceZeroTwo, (value) => value.toMap()),
-      'subject': ?pulumi.Input.mapOptionalInputValue<List<Subject>, List<Map<String, dynamic>>>(subject, (value) => pulumi.Input.encodeList<Subject, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'provenance':
+          ?pulumi.Input.mapOptionalInputValue<
+            InTotoProvenance,
+            Map<String, dynamic>
+          >(provenance, (value) => value.toMap()),
+      'slsaProvenance':
+          ?pulumi.Input.mapOptionalInputValue<
+            SlsaProvenance,
+            Map<String, dynamic>
+          >(slsaProvenance, (value) => value.toMap()),
+      'slsaProvenanceZeroTwo':
+          ?pulumi.Input.mapOptionalInputValue<
+            SlsaProvenanceZeroTwo,
+            Map<String, dynamic>
+          >(slsaProvenanceZeroTwo, (value) => value.toMap()),
+      'subject':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Subject>,
+            List<Map<String, dynamic>>
+          >(
+            subject,
+            (value) => pulumi.Input.encodeList<Subject, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'type': ?type,
     };
   }
 
   factory InTotoStatement.fromMap(Map<String, dynamic> map) {
     return InTotoStatement(
-      predicateType: map['predicateType'] == null ? null : (map['predicateType']! as String).input(),
-      provenance: map['provenance'] == null ? null : (InTotoProvenance.fromMap((map['provenance']! as Map).cast<String, dynamic>())).input(),
-      slsaProvenance: map['slsaProvenance'] == null ? null : (SlsaProvenance.fromMap((map['slsaProvenance']! as Map).cast<String, dynamic>())).input(),
-      slsaProvenanceZeroTwo: map['slsaProvenanceZeroTwo'] == null ? null : (SlsaProvenanceZeroTwo.fromMap((map['slsaProvenanceZeroTwo']! as Map).cast<String, dynamic>())).input(),
-      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<Subject>(map['subject']!, (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      predicateType: (() {
+        final guardedValue = map['predicateType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provenance: (() {
+        final guardedValue = map['provenance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InTotoProvenance.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      slsaProvenance: (() {
+        final guardedValue = map['slsaProvenance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SlsaProvenance.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      slsaProvenanceZeroTwo: (() {
+        final guardedValue = map['slsaProvenanceZeroTwo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SlsaProvenanceZeroTwo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subject: (() {
+        final guardedValue = map['subject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Subject>(
+            guardedValue,
+            (value) => Subject.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

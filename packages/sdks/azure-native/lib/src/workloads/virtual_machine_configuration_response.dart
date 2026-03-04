@@ -8,8 +8,10 @@ import 'osprofile_response.dart';
 class VirtualMachineConfigurationResponse {
   /// The image reference.
   final pulumi.Input<ImageReferenceResponse> imageReference;
+
   /// The OS profile.
   final pulumi.Input<OSProfileResponse> osProfile;
+
   /// The virtual machine size.
   final pulumi.Input<String> vmSize;
 
@@ -25,18 +27,35 @@ class VirtualMachineConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imageReference': pulumi.Input.mapInputValue<ImageReferenceResponse, Map<String, dynamic>>(imageReference, (value) => value.toMap()),
-      'osProfile': pulumi.Input.mapInputValue<OSProfileResponse, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'imageReference':
+          pulumi.Input.mapInputValue<
+            ImageReferenceResponse,
+            Map<String, dynamic>
+          >(imageReference, (value) => value.toMap()),
+      'osProfile':
+          pulumi.Input.mapInputValue<OSProfileResponse, Map<String, dynamic>>(
+            osProfile,
+            (value) => value.toMap(),
+          ),
       'vmSize': vmSize,
     };
   }
 
-  factory VirtualMachineConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineConfigurationResponse(
-      imageReference: (ImageReferenceResponse.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      osProfile: (OSProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      vmSize: (map['vmSize'] as String).input(),
+      imageReference: pulumi.Input.fromValue(
+        ImageReferenceResponse.fromMap(
+          (map['imageReference']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      osProfile: pulumi.Input.fromValue(
+        OSProfileResponse.fromMap(
+          (map['osProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vmSize: pulumi.Input.fromValue(map['vmSize'] as String),
     );
   }
 }
-

@@ -7,20 +7,21 @@ class OptInResourceDataTableWithColumnsColumnWildcard {
 
   /// Creates a new [OptInResourceDataTableWithColumnsColumnWildcard].
   /// [excludedColumnNames] Optional.
-  OptInResourceDataTableWithColumnsColumnWildcard({
-    this.excludedColumnNames,
-  });
+  OptInResourceDataTableWithColumnsColumnWildcard({this.excludedColumnNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'excludedColumnNames': ?excludedColumnNames,
-    };
+    return <String, dynamic>{'excludedColumnNames': ?excludedColumnNames};
   }
 
-  factory OptInResourceDataTableWithColumnsColumnWildcard.fromMap(Map<String, dynamic> map) {
+  factory OptInResourceDataTableWithColumnsColumnWildcard.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OptInResourceDataTableWithColumnsColumnWildcard(
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : (((map['excludedColumnNames'] as List).cast<String>()).input()).input(),
+      excludedColumnNames: (() {
+        final guardedValue = map['excludedColumnNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

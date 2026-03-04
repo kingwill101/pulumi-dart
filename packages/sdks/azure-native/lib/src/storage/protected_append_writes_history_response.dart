@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProtectedAppendWritesHistoryResponse {
   /// When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
   final pulumi.Input<bool>? allowProtectedAppendWritesAll;
+
   /// Returns the date and time the tag was added.
   final pulumi.Input<String> timestamp;
 
@@ -24,11 +25,16 @@ class ProtectedAppendWritesHistoryResponse {
     };
   }
 
-  factory ProtectedAppendWritesHistoryResponse.fromMap(Map<String, dynamic> map) {
+  factory ProtectedAppendWritesHistoryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProtectedAppendWritesHistoryResponse(
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll']! as bool).input(),
-      timestamp: (map['timestamp'] as String).input(),
+      allowProtectedAppendWritesAll: (() {
+        final guardedValue = map['allowProtectedAppendWritesAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
     );
   }
 }
-

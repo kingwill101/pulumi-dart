@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueueAuthorizationRuleArgs {
   /// Does this Authorization Rule have Listen permissions to the ServiceBus Queue? Defaults to `false`.
   final pulumi.Input<bool>? listen;
+
   /// Does this Authorization Rule have Manage permissions to the ServiceBus Queue? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   final pulumi.Input<bool>? manage;
+
   /// Specifies the name of the Authorization Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the ServiceBus Queue. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** At least one of the 3 permissions below needs to be set.
+  /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   final pulumi.Input<String> queueId;
+
   /// Does this Authorization Rule have Send permissions to the ServiceBus Queue? Defaults to `false`.
   final pulumi.Input<bool>? send;
 
@@ -46,12 +50,27 @@ class QueueAuthorizationRuleArgs {
 
   factory QueueAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return QueueAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      queueId: (map['queueId'] as String).input(),
-      send: map['send'] == null ? null : (map['send']! as bool).input(),
+      listen: (() {
+        final guardedValue = map['listen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manage: (() {
+        final guardedValue = map['manage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueId: pulumi.Input.fromValue(map['queueId'] as String),
+      send: (() {
+        final guardedValue = map['send'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataEncryptionResponse {
   /// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
   final pulumi.Input<String> geoBackupEncryptionKeyStatus;
+
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
   final pulumi.Input<String>? geoBackupKeyURI;
+
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
   final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
+
   /// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
   final pulumi.Input<String> primaryEncryptionKeyStatus;
+
   /// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
   final pulumi.Input<String>? primaryKeyURI;
+
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
   final pulumi.Input<String>? primaryUserAssignedIdentityId;
+
   /// Data encryption type used by a server.
   final pulumi.Input<String>? type;
 
@@ -51,14 +57,37 @@ class DataEncryptionResponse {
 
   factory DataEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return DataEncryptionResponse(
-      geoBackupEncryptionKeyStatus: (map['geoBackupEncryptionKeyStatus'] as String).input(),
-      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : (map['geoBackupKeyURI']! as String).input(),
-      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId']! as String).input(),
-      primaryEncryptionKeyStatus: (map['primaryEncryptionKeyStatus'] as String).input(),
-      primaryKeyURI: map['primaryKeyURI'] == null ? null : (map['primaryKeyURI']! as String).input(),
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      geoBackupEncryptionKeyStatus: pulumi.Input.fromValue(
+        map['geoBackupEncryptionKeyStatus'] as String,
+      ),
+      geoBackupKeyURI: (() {
+        final guardedValue = map['geoBackupKeyURI'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      geoBackupUserAssignedIdentityId: (() {
+        final guardedValue = map['geoBackupUserAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryEncryptionKeyStatus: pulumi.Input.fromValue(
+        map['primaryEncryptionKeyStatus'] as String,
+      ),
+      primaryKeyURI: (() {
+        final guardedValue = map['primaryKeyURI'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryUserAssignedIdentityId: (() {
+        final guardedValue = map['primaryUserAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

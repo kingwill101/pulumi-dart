@@ -260,7 +260,7 @@ import 'api_subscription_key_parameter_names.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -275,110 +275,135 @@ import 'api_subscription_key_parameter_names.dart';
 class Api extends pulumi.CustomResource {
   /// The Name of the API Management Service where this API should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// Type of API. Possible values are `graphql`, `http`, `soap`, and `websocket`. Defaults to `http`.
   late final pulumi.Output<String> apiType;
+
   /// A `contact` block as documented below.
   late final pulumi.Output<ApiContact?> contact;
+
   /// A description of the API Management API, which may include HTML formatting tags.
   late final pulumi.Output<String?> description;
+
   /// The display name of the API.
   late final pulumi.Output<String> displayName;
+
   /// A `import` block as documented below.
   ///
-  /// > **Note:** The `display_name`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
+  /// &gt; **Note:** The `display_name`, `description`, `contact`, and `license` fields can be imported by the `import` block, which might cause a drift if these fields are set along with the `import` block.
   late final pulumi.Output<ApiImport?> import;
+
   /// Is this the current API Revision?
   late final pulumi.Output<bool> isCurrent;
+
   /// Is this API Revision online/accessible via the Gateway?
   late final pulumi.Output<bool> isOnline;
+
   /// A `license` block as documented below.
   late final pulumi.Output<ApiLicense?> license;
+
   /// The name of the API Management API. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// An `oauth2_authorization` block as documented below.
   late final pulumi.Output<ApiOauth2Authorization?> oauth2Authorization;
+
   /// An `openid_authentication` block as documented below.
   late final pulumi.Output<ApiOpenidAuthentication?> openidAuthentication;
+
   /// The Path for this API Management API, which is a relative URL which uniquely identifies this API and all of its resource paths within the API Management Service.
   late final pulumi.Output<String> path;
+
   /// A list of protocols the operations in this API can be invoked. Possible values are `http`, `https`, `ws`, and `wss`.
   ///
-  /// > **Note:** `display_name`, `path` and `protocols` are required when `source_api_id` is not set.
+  /// &gt; **Note:** `display_name`, `path` and `protocols` are required when `source_api_id` is not set.
   late final pulumi.Output<List<String>> protocols;
+
   /// The Name of the Resource Group where the API Management API exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Revision which used for this API. Changing this forces a new resource to be created.
   late final pulumi.Output<String> revision;
+
   /// The description of the API Revision of the API Management API.
   late final pulumi.Output<String?> revisionDescription;
+
   /// Absolute URL of the backend service implementing this API.
   ///
-  /// > **Note:** The `service_url` is required when `api_type` is specified as `websocket`.
+  /// &gt; **Note:** The `service_url` is required when `api_type` is specified as `websocket`.
   late final pulumi.Output<String> serviceUrl;
+
   /// The API id of the source API, which could be in format `azurerm_api_management_api.example.id` or in format `azurerm_api_management_api.example.id;rev=1`
   late final pulumi.Output<String?> sourceApiId;
+
   /// A `subscription_key_parameter_names` block as documented below.
-  late final pulumi.Output<ApiSubscriptionKeyParameterNames> subscriptionKeyParameterNames;
+  late final pulumi.Output<ApiSubscriptionKeyParameterNames>
+  subscriptionKeyParameterNames;
+
   /// Should this API require a subscription key? Defaults to `true`.
   late final pulumi.Output<bool?> subscriptionRequired;
+
   /// Absolute URL of the Terms of Service for the API.
   late final pulumi.Output<String?> termsOfServiceUrl;
+
   /// The Version number of this API, if this API is versioned.
   late final pulumi.Output<String> version;
+
   /// The description of the API Version of the API Management API.
   late final pulumi.Output<String?> versionDescription;
+
   /// The ID of the Version Set which this API is associated with.
   ///
-  /// > **Note:** When `version` is set, `version_set_id` must also be specified
+  /// &gt; **Note:** When `version` is set, `version_set_id` must also be specified
   late final pulumi.Output<String> versionSetId;
 
   /// Creates a new [Api].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Api]. {@macro pulumi_apimanagement_api_api_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Api(
-    String name, {
-    ApiArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:apimanagement/api:Api',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.apiType = registerOutput<String>('apiType');
-    this.contact = registerOutput<ApiContact?>('contact');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.import = registerOutput<ApiImport?>('import');
-    this.isCurrent = registerOutput<bool>('isCurrent');
-    this.isOnline = registerOutput<bool>('isOnline');
-    this.license = registerOutput<ApiLicense?>('license');
+  Api(String name, {ApiArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:apimanagement/api:Api',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiType = registerOutput<String>('apiType');
+    contact = registerOutput<ApiContact?>('contact');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    import = registerOutput<ApiImport?>('import');
+    isCurrent = registerOutput<bool>('isCurrent');
+    isOnline = registerOutput<bool>('isOnline');
+    license = registerOutput<ApiLicense?>('license');
     this.name = registerOutput<String>('name');
-    this.oauth2Authorization = registerOutput<ApiOauth2Authorization?>('oauth2Authorization');
-    this.openidAuthentication = registerOutput<ApiOpenidAuthentication?>('openidAuthentication');
-    this.path = registerOutput<String>('path');
-    this.protocols = registerOutput<List<String>>('protocols');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.revision = registerOutput<String>('revision');
-    this.revisionDescription = registerOutput<String?>('revisionDescription');
-    this.serviceUrl = registerOutput<String>('serviceUrl');
-    this.sourceApiId = registerOutput<String?>('sourceApiId');
-    this.subscriptionKeyParameterNames = registerOutput<ApiSubscriptionKeyParameterNames>('subscriptionKeyParameterNames');
-    this.subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
-    this.termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
-    this.version = registerOutput<String>('version');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.versionSetId = registerOutput<String>('versionSetId');
+    oauth2Authorization = registerOutput<ApiOauth2Authorization?>(
+      'oauth2Authorization',
+    );
+    openidAuthentication = registerOutput<ApiOpenidAuthentication?>(
+      'openidAuthentication',
+    );
+    path = registerOutput<String>('path');
+    protocols = registerOutput<List<String>>('protocols');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    revision = registerOutput<String>('revision');
+    revisionDescription = registerOutput<String?>('revisionDescription');
+    serviceUrl = registerOutput<String>('serviceUrl');
+    sourceApiId = registerOutput<String?>('sourceApiId');
+    subscriptionKeyParameterNames =
+        registerOutput<ApiSubscriptionKeyParameterNames>(
+          'subscriptionKeyParameterNames',
+        );
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+    version = registerOutput<String>('version');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionSetId = registerOutput<String>('versionSetId');
   }
 
   /// Gets an existing [Api] resource's state with the given [name] and [id].
-  static Api get(
-    String name,
-    pulumi.Input<String> id, {
-    ApiState? state,
-  }) {
+  static Api get(String name, pulumi.Input<String> id, {ApiState? state}) {
     return Api._get(
       name,
       state: state?.toMap(),
@@ -391,35 +416,42 @@ class Api extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/api:Api',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.apiType = registerOutput<String>('apiType');
-    this.contact = registerOutput<ApiContact?>('contact');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.import = registerOutput<ApiImport?>('import');
-    this.isCurrent = registerOutput<bool>('isCurrent');
-    this.isOnline = registerOutput<bool>('isOnline');
-    this.license = registerOutput<ApiLicense?>('license');
+         'azure:apimanagement/api:Api',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiType = registerOutput<String>('apiType');
+    contact = registerOutput<ApiContact?>('contact');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    import = registerOutput<ApiImport?>('import');
+    isCurrent = registerOutput<bool>('isCurrent');
+    isOnline = registerOutput<bool>('isOnline');
+    license = registerOutput<ApiLicense?>('license');
     this.name = registerOutput<String>('name');
-    this.oauth2Authorization = registerOutput<ApiOauth2Authorization?>('oauth2Authorization');
-    this.openidAuthentication = registerOutput<ApiOpenidAuthentication?>('openidAuthentication');
-    this.path = registerOutput<String>('path');
-    this.protocols = registerOutput<List<String>>('protocols');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.revision = registerOutput<String>('revision');
-    this.revisionDescription = registerOutput<String?>('revisionDescription');
-    this.serviceUrl = registerOutput<String>('serviceUrl');
-    this.sourceApiId = registerOutput<String?>('sourceApiId');
-    this.subscriptionKeyParameterNames = registerOutput<ApiSubscriptionKeyParameterNames>('subscriptionKeyParameterNames');
-    this.subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
-    this.termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
-    this.version = registerOutput<String>('version');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.versionSetId = registerOutput<String>('versionSetId');
+    oauth2Authorization = registerOutput<ApiOauth2Authorization?>(
+      'oauth2Authorization',
+    );
+    openidAuthentication = registerOutput<ApiOpenidAuthentication?>(
+      'openidAuthentication',
+    );
+    path = registerOutput<String>('path');
+    protocols = registerOutput<List<String>>('protocols');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    revision = registerOutput<String>('revision');
+    revisionDescription = registerOutput<String?>('revisionDescription');
+    serviceUrl = registerOutput<String>('serviceUrl');
+    sourceApiId = registerOutput<String?>('sourceApiId');
+    subscriptionKeyParameterNames =
+        registerOutput<ApiSubscriptionKeyParameterNames>(
+          'subscriptionKeyParameterNames',
+        );
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+    version = registerOutput<String>('version');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionSetId = registerOutput<String>('versionSetId');
   }
 }

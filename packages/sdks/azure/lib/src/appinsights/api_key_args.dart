@@ -9,13 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiKeyArgs {
   /// The ID of the Application Insights component on which the API key operates. Changing this forces a new resource to be created.
   final pulumi.Input<String> applicationInsightsId;
+
   /// Specifies the name of the Application Insights API key. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? readPermissions;
+
   /// Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** At least one read or write permission must be defined.
+  /// &gt; **Note:** At least one read or write permission must be defined.
   final pulumi.Input<List<String>>? writePermissions;
 
   /// Creates a new [ApiKeyArgs].
@@ -41,11 +44,24 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      applicationInsightsId: (map['applicationInsightsId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      readPermissions: map['readPermissions'] == null ? null : ((map['readPermissions']! as List).cast<String>()).input(),
-      writePermissions: map['writePermissions'] == null ? null : ((map['writePermissions']! as List).cast<String>()).input(),
+      applicationInsightsId: pulumi.Input.fromValue(
+        map['applicationInsightsId'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readPermissions: (() {
+        final guardedValue = map['readPermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      writePermissions: (() {
+        final guardedValue = map['writePermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

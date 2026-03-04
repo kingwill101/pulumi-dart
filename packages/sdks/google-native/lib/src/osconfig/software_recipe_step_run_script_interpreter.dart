@@ -4,16 +4,17 @@ enum SoftwareRecipeStepRunScriptInterpreter {
   shell("SHELL"),
   powershell("POWERSHELL");
 
-  const SoftwareRecipeStepRunScriptInterpreter(this.value);
-  final String value;
+  const SoftwareRecipeStepRunScriptInterpreter(this.wireValue);
+  final String wireValue;
 
   static SoftwareRecipeStepRunScriptInterpreter fromValue(String value) {
     for (final item in SoftwareRecipeStepRunScriptInterpreter.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SoftwareRecipeStepRunScriptInterpreter value: $value');
+    throw ArgumentError(
+      'Unknown SoftwareRecipeStepRunScriptInterpreter value: $value',
+    );
   }
 }
-

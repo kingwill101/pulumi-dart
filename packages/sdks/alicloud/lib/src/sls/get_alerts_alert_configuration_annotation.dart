@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertsAlertConfigurationAnnotation {
   /// Field name.
   final pulumi.Input<String> key;
+
   /// Field value.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetAlertsAlertConfigurationAnnotation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory GetAlertsAlertConfigurationAnnotation.fromMap(Map<String, dynamic> map) {
+  factory GetAlertsAlertConfigurationAnnotation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAlertsAlertConfigurationAnnotation(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

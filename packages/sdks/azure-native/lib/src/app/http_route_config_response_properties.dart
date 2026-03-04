@@ -9,12 +9,17 @@ import 'http_route_rule_response.dart';
 class HttpRouteConfigResponseProperties {
   /// Custom domain bindings for http Routes' hostnames.
   final pulumi.Input<List<CustomDomainResponse>>? customDomains;
+
   /// FQDN of the route resource.
   final pulumi.Input<String> fqdn;
+
   /// List of errors when trying to reconcile http routes
-  final pulumi.Input<List<HttpRouteProvisioningErrorsResponse>> provisioningErrors;
+  final pulumi.Input<List<HttpRouteProvisioningErrorsResponse>>
+  provisioningErrors;
+
   /// The provisioning state of the Http Route Config in cluster
   final pulumi.Input<String> provisioningState;
+
   /// Routing Rules for http route resource.
   final pulumi.Input<List<HttpRouteRuleResponse>>? rules;
 
@@ -34,22 +39,85 @@ class HttpRouteConfigResponseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customDomains': ?pulumi.Input.mapOptionalInputValue<List<CustomDomainResponse>, List<Map<String, dynamic>>>(customDomains, (value) => pulumi.Input.encodeList<CustomDomainResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customDomains':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CustomDomainResponse>,
+            List<Map<String, dynamic>>
+          >(
+            customDomains,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CustomDomainResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'fqdn': fqdn,
-      'provisioningErrors': pulumi.Input.mapInputValue<List<HttpRouteProvisioningErrorsResponse>, List<Map<String, dynamic>>>(provisioningErrors, (value) => pulumi.Input.encodeList<HttpRouteProvisioningErrorsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'provisioningErrors':
+          pulumi.Input.mapInputValue<
+            List<HttpRouteProvisioningErrorsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            provisioningErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HttpRouteProvisioningErrorsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<HttpRouteRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<HttpRouteRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HttpRouteRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HttpRouteRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory HttpRouteConfigResponseProperties.fromMap(Map<String, dynamic> map) {
     return HttpRouteConfigResponseProperties(
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainResponse>(map['customDomains']!, (value) => CustomDomainResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fqdn: (map['fqdn'] as String).input(),
-      provisioningErrors: (pulumi.Input.decodeList<HttpRouteProvisioningErrorsResponse>(map['provisioningErrors'], (value) => HttpRouteProvisioningErrorsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleResponse>(map['rules']!, (value) => HttpRouteRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDomains: (() {
+        final guardedValue = map['customDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CustomDomainResponse>(
+            guardedValue,
+            (value) => CustomDomainResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      provisioningErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HttpRouteProvisioningErrorsResponse>(
+          map['provisioningErrors']!,
+          (value) => HttpRouteProvisioningErrorsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HttpRouteRuleResponse>(
+            guardedValue,
+            (value) => HttpRouteRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

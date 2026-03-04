@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionResponseComputeBeta {
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> iam;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> op;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> svc;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String> sys;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<List<String>> values;
 
@@ -41,12 +45,11 @@ class ConditionResponseComputeBeta {
 
   factory ConditionResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ConditionResponseComputeBeta(
-      iam: (map['iam'] as String).input(),
-      op: (map['op'] as String).input(),
-      svc: (map['svc'] as String).input(),
-      sys: (map['sys'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      iam: pulumi.Input.fromValue(map['iam'] as String),
+      op: pulumi.Input.fromValue(map['op'] as String),
+      svc: pulumi.Input.fromValue(map['svc'] as String),
+      sys: pulumi.Input.fromValue(map['sys'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

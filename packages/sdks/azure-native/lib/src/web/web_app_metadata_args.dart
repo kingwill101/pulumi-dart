@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppMetadataArgs {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Settings.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,22 @@ class WebAppMetadataArgs {
 
   factory WebAppMetadataArgs.fromMap(Map<String, dynamic> map) {
     return WebAppMetadataArgs(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

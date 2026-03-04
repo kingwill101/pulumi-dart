@@ -10,8 +10,10 @@ import 'service_group_member_relationship_properties.dart';
 class ServiceGroupMemberRelationshipArgs {
   /// Name of ServiceGroupMember relationship.
   final pulumi.Input<String>? name;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<ServiceGroupMemberRelationshipProperties>? properties;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -28,17 +30,32 @@ class ServiceGroupMemberRelationshipArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ServiceGroupMemberRelationshipProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceGroupMemberRelationshipProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceUri': resourceUri,
     };
   }
 
   factory ServiceGroupMemberRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMemberRelationshipArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (ServiceGroupMemberRelationshipProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceGroupMemberRelationshipProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

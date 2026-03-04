@@ -3,16 +3,17 @@ enum LoggingConfigLogActionStatesItem {
   succeeded("SUCCEEDED"),
   failed("FAILED");
 
-  const LoggingConfigLogActionStatesItem(this.value);
-  final String value;
+  const LoggingConfigLogActionStatesItem(this.wireValue);
+  final String wireValue;
 
   static LoggingConfigLogActionStatesItem fromValue(String value) {
     for (final item in LoggingConfigLogActionStatesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoggingConfigLogActionStatesItem value: $value');
+    throw ArgumentError(
+      'Unknown LoggingConfigLogActionStatesItem value: $value',
+    );
   }
 }
-

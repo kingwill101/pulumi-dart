@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSourceControlArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of source control.
   final pulumi.Input<String> sourceControlName;
 
@@ -34,10 +36,15 @@ class GetSourceControlArgs {
 
   factory GetSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return GetSourceControlArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceControlName: (map['sourceControlName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sourceControlName: pulumi.Input.fromValue(
+        map['sourceControlName'] as String,
+      ),
     );
   }
 }
-

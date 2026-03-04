@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreatOverrideResponse {
   /// Threat action override. For some threat types, only a subset of actions applies.
   final pulumi.Input<String> action;
+
   /// Vendor-specific ID of a threat to override.
   final pulumi.Input<String> threatId;
+
   /// Type of the threat (read only).
   final pulumi.Input<String> type;
 
@@ -31,10 +33,9 @@ class ThreatOverrideResponse {
 
   factory ThreatOverrideResponse.fromMap(Map<String, dynamic> map) {
     return ThreatOverrideResponse(
-      action: (map['action'] as String).input(),
-      threatId: (map['threatId'] as String).input(),
-      type: (map['type'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      threatId: pulumi.Input.fromValue(map['threatId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

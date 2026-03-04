@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the Registry where the repository resides.
   final pulumi.Input<String>? registryId;
+
   /// Name of the ECR Repository.
   final pulumi.Input<String> repositoryName;
 
@@ -18,11 +20,7 @@ class GetImagesArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] ID of the Registry where the repository resides.
   /// [repositoryName] Name of the ECR Repository.
-  GetImagesArgs({
-    this.region,
-    this.registryId,
-    required this.repositoryName,
-  });
+  GetImagesArgs({this.region, this.registryId, required this.repositoryName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
-      repositoryName: (map['repositoryName'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryId: (() {
+        final guardedValue = map['registryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
     );
   }
 }
-

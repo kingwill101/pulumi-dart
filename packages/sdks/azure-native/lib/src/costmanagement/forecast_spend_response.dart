@@ -8,29 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForecastSpendResponse {
   /// The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
   final pulumi.Input<double> amount;
+
   /// The unit of measure for the budget amount.
   final pulumi.Input<String> unit;
 
   /// Creates a new [ForecastSpendResponse].
   /// [amount] The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
   /// [unit] The unit of measure for the budget amount.
-  ForecastSpendResponse({
-    required this.amount,
-    required this.unit,
-  });
+  ForecastSpendResponse({required this.amount, required this.unit});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'amount': amount,
-      'unit': unit,
-    };
+    return <String, dynamic>{'amount': amount, 'unit': unit};
   }
 
   factory ForecastSpendResponse.fromMap(Map<String, dynamic> map) {
     return ForecastSpendResponse(
-      amount: (map['amount'] as double).input(),
-      unit: (map['unit'] as String).input(),
+      amount: pulumi.Input.fromValue(map['amount'] as double),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }
 }
-

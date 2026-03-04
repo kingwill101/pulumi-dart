@@ -7,16 +7,15 @@ enum Transform {
   valueUrlEncode("UrlEncode"),
   valueRemoveNulls("RemoveNulls");
 
-  const Transform(this.value);
-  final String value;
+  const Transform(this.wireValue);
+  final String wireValue;
 
   static Transform fromValue(String value) {
     for (final item in Transform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Transform value: $value');
   }
 }
-

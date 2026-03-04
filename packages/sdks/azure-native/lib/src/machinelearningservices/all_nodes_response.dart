@@ -10,20 +10,15 @@ class AllNodesResponse {
 
   /// Creates a new [AllNodesResponse].
   /// [nodesValueType] The enumerated types for the nodes value
-  AllNodesResponse({
-    required this.nodesValueType,
-  });
+  AllNodesResponse({required this.nodesValueType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodesValueType': nodesValueType,
-    };
+    return <String, dynamic>{'nodesValueType': nodesValueType};
   }
 
   factory AllNodesResponse.fromMap(Map<String, dynamic> map) {
     return AllNodesResponse(
-      nodesValueType: (map['nodesValueType'] as String).input(),
+      nodesValueType: pulumi.Input.fromValue(map['nodesValueType'] as String),
     );
   }
 }
-

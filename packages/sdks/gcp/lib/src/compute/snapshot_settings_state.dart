@@ -8,6 +8,7 @@ class SnapshotSettingsState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Policy of which storage location is going to be resolved, and additional data
   /// that particularizes how the policy is going to be carried out
   /// Structure is documented below.
@@ -16,23 +17,35 @@ class SnapshotSettingsState {
   /// Creates a new [SnapshotSettingsState].
   /// [project] The ID of the project in which the resource belongs.
   /// [storageLocation] Policy of which storage location is going to be resolved, and additional data
-  SnapshotSettingsState({
-    this.project,
-    this.storageLocation,
-  });
+  SnapshotSettingsState({this.project, this.storageLocation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'project': ?project,
-      'storageLocation': ?pulumi.Input.mapOptionalInputValue<SnapshotSettingsStorageLocation, Map<String, dynamic>>(storageLocation, (value) => value.toMap()),
+      'storageLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            SnapshotSettingsStorageLocation,
+            Map<String, dynamic>
+          >(storageLocation, (value) => value.toMap()),
     };
   }
 
   factory SnapshotSettingsState.fromMap(Map<String, dynamic> map) {
     return SnapshotSettingsState(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (SnapshotSettingsStorageLocation.fromMap((map['storageLocation']! as Map).cast<String, dynamic>())).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageLocation: (() {
+        final guardedValue = map['storageLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SnapshotSettingsStorageLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

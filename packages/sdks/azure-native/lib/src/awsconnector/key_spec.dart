@@ -14,16 +14,15 @@ enum KeySpec {
   sM2("SM2"),
   sYMMETRICDEFAULT("SYMMETRIC_DEFAULT");
 
-  const KeySpec(this.value);
-  final String value;
+  const KeySpec(this.wireValue);
+  final String wireValue;
 
   static KeySpec fromValue(String value) {
     for (final item in KeySpec.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeySpec value: $value');
   }
 }
-

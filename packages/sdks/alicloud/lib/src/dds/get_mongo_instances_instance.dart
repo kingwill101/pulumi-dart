@@ -83,13 +83,46 @@ class GetMongoInstancesInstance {
       'instanceClass': instanceClass,
       'instanceType': instanceType,
       'lockMode': lockMode,
-      'mongos': pulumi.Input.mapInputValue<List<GetMongoInstancesInstanceMongo>, List<Map<String, dynamic>>>(mongos, (value) => pulumi.Input.encodeList<GetMongoInstancesInstanceMongo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mongos':
+          pulumi.Input.mapInputValue<
+            List<GetMongoInstancesInstanceMongo>,
+            List<Map<String, dynamic>>
+          >(
+            mongos,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetMongoInstancesInstanceMongo,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
       'networkType': networkType,
       'regionId': regionId,
       'replication': replication,
-      'restoreRanges': pulumi.Input.mapInputValue<List<GetMongoInstancesInstanceRestoreRange>, List<Map<String, dynamic>>>(restoreRanges, (value) => pulumi.Input.encodeList<GetMongoInstancesInstanceRestoreRange, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'shards': pulumi.Input.mapInputValue<List<GetMongoInstancesInstanceShard>, List<Map<String, dynamic>>>(shards, (value) => pulumi.Input.encodeList<GetMongoInstancesInstanceShard, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'restoreRanges':
+          pulumi.Input.mapInputValue<
+            List<GetMongoInstancesInstanceRestoreRange>,
+            List<Map<String, dynamic>>
+          >(
+            restoreRanges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetMongoInstancesInstanceRestoreRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'shards':
+          pulumi.Input.mapInputValue<
+            List<GetMongoInstancesInstanceShard>,
+            List<Map<String, dynamic>>
+          >(
+            shards,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetMongoInstancesInstanceShard,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': status,
       'storage': storage,
       'tags': tags,
@@ -98,27 +131,49 @@ class GetMongoInstancesInstance {
 
   factory GetMongoInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesInstance(
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      chargeType: (map['chargeType'] as String).input(),
-      creationTime: (map['creationTime'] as String).input(),
-      engine: (map['engine'] as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      expirationTime: (map['expirationTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceClass: (map['instanceClass'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      lockMode: (map['lockMode'] as String).input(),
-      mongos: (pulumi.Input.decodeList<GetMongoInstancesInstanceMongo>(map['mongos'], (value) => GetMongoInstancesInstanceMongo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
-      replication: (map['replication'] as String).input(),
-      restoreRanges: (pulumi.Input.decodeList<GetMongoInstancesInstanceRestoreRange>(map['restoreRanges'], (value) => GetMongoInstancesInstanceRestoreRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shards: (pulumi.Input.decodeList<GetMongoInstancesInstanceShard>(map['shards'], (value) => GetMongoInstancesInstanceShard.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: (map['status'] as String).input(),
-      storage: (map['storage'] as int).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      chargeType: pulumi.Input.fromValue(map['chargeType'] as String),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      expirationTime: pulumi.Input.fromValue(map['expirationTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      lockMode: pulumi.Input.fromValue(map['lockMode'] as String),
+      mongos: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetMongoInstancesInstanceMongo>(
+          map['mongos']!,
+          (value) => GetMongoInstancesInstanceMongo.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      replication: pulumi.Input.fromValue(map['replication'] as String),
+      restoreRanges: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetMongoInstancesInstanceRestoreRange>(
+          map['restoreRanges']!,
+          (value) => GetMongoInstancesInstanceRestoreRange.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      shards: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetMongoInstancesInstanceShard>(
+          map['shards']!,
+          (value) => GetMongoInstancesInstanceShard.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      storage: pulumi.Input.fromValue(map['storage'] as int),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
-

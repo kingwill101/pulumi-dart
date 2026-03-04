@@ -7,6 +7,7 @@ class LinkedIntegrationRuntimeRbacAuthorization {
   /// The authorization type for integration runtime sharing.
   /// Expected value is 'RBAC'.
   final pulumi.Input<String> authorizationType;
+
   /// The resource identifier of the integration runtime to be shared.
   final pulumi.Input<String> resourceId;
 
@@ -25,11 +26,14 @@ class LinkedIntegrationRuntimeRbacAuthorization {
     };
   }
 
-  factory LinkedIntegrationRuntimeRbacAuthorization.fromMap(Map<String, dynamic> map) {
+  factory LinkedIntegrationRuntimeRbacAuthorization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinkedIntegrationRuntimeRbacAuthorization(
-      authorizationType: (map['authorizationType'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      authorizationType: pulumi.Input.fromValue(
+        map['authorizationType'] as String,
+      ),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

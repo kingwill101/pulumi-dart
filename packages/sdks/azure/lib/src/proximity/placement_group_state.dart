@@ -6,19 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlacementGroupState {
   /// Specifies the supported sizes of Virtual Machines that can be created in the Proximity Placement Group.
   ///
-  /// > **Note:** Removing `allowed_vm_sizes` after it is set forces a new resource to be created.
+  /// &gt; **Note:** Removing `allowed_vm_sizes` after it is set forces a new resource to be created.
   final pulumi.Input<List<String>>? allowedVmSizes;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the proximity placement group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which to create the availability set. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies the supported zone of the Proximity Placement Group. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `allowed_vm_sizes` must be set when `zone` is specified.
+  /// &gt; **Note:** `allowed_vm_sizes` must be set when `zone` is specified.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [PlacementGroupState].
@@ -50,13 +55,38 @@ class PlacementGroupState {
 
   factory PlacementGroupState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupState(
-      allowedVmSizes: map['allowedVmSizes'] == null ? null : ((map['allowedVmSizes']! as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      allowedVmSizes: (() {
+        final guardedValue = map['allowedVmSizes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

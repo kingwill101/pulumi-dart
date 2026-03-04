@@ -10,20 +10,29 @@ class GooglePrivacyDlpV2EntityId {
 
   /// Creates a new [GooglePrivacyDlpV2EntityId].
   /// [field] Composite key indicating which field contains the entity identifier.
-  GooglePrivacyDlpV2EntityId({
-    this.field,
-  });
+  GooglePrivacyDlpV2EntityId({this.field});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'field': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(field, (value) => value.toMap()),
+      'field':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2FieldId,
+            Map<String, dynamic>
+          >(field, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2EntityId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2EntityId(
-      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2FieldId.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

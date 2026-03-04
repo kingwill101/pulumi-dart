@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentGroupEc2TagSetEc2TagFilter {
   /// The key of the tag filter.
   final pulumi.Input<String>? key;
+
   /// The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
   final pulumi.Input<String>? type;
+
   /// The value of the tag filter.
   ///
   /// Multiple occurrences of `ec2_tag_filter` are allowed, where any instance that matches to at least one of the tag filters is selected.
@@ -16,26 +18,31 @@ class DeploymentGroupEc2TagSetEc2TagFilter {
   /// [key] The key of the tag filter.
   /// [type] The type of the tag filter, either `KEY_ONLY`, `VALUE_ONLY`, or `KEY_AND_VALUE`.
   /// [value] The value of the tag filter.
-  DeploymentGroupEc2TagSetEc2TagFilter({
-    this.key,
-    this.type,
-    this.value,
-  });
+  DeploymentGroupEc2TagSetEc2TagFilter({this.key, this.type, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'type': ?type,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'type': ?type, 'value': ?value};
   }
 
-  factory DeploymentGroupEc2TagSetEc2TagFilter.fromMap(Map<String, dynamic> map) {
+  factory DeploymentGroupEc2TagSetEc2TagFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentGroupEc2TagSetEc2TagFilter(
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

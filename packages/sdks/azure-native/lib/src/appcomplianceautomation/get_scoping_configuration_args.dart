@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScopingConfigurationArgs {
   /// Report Name.
   final pulumi.Input<String> reportName;
+
   /// The scoping configuration of the specific report.
   final pulumi.Input<String> scopingConfigurationName;
 
@@ -29,9 +30,10 @@ class GetScopingConfigurationArgs {
 
   factory GetScopingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetScopingConfigurationArgs(
-      reportName: (map['reportName'] as String).input(),
-      scopingConfigurationName: (map['scopingConfigurationName'] as String).input(),
+      reportName: pulumi.Input.fromValue(map['reportName'] as String),
+      scopingConfigurationName: pulumi.Input.fromValue(
+        map['scopingConfigurationName'] as String,
+      ),
     );
   }
 }
-

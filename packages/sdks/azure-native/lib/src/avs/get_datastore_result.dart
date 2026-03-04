@@ -9,22 +9,31 @@ import 'system_data_response.dart';
 class GetDatastoreResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// An iSCSI volume
   final DiskPoolVolumeResponse? diskPoolVolume;
+
   /// An Elastic SAN volume
   final ElasticSanVolumeResponse? elasticSanVolume;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// An Azure NetApp Files volume
   final NetAppVolumeResponse? netAppVolume;
+
   /// The state of the datastore provisioning
   final String provisioningState;
+
   /// The operational status of the datastore
   final String status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -55,11 +64,11 @@ class GetDatastoreResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'diskPoolVolume': ?diskPoolVolume == null ? null : diskPoolVolume!.toMap(),
-      'elasticSanVolume': ?elasticSanVolume == null ? null : elasticSanVolume!.toMap(),
+      'diskPoolVolume': ?diskPoolVolume?.toMap(),
+      'elasticSanVolume': ?elasticSanVolume?.toMap(),
       'id': id,
       'name': name,
-      'netAppVolume': ?netAppVolume == null ? null : netAppVolume!.toMap(),
+      'netAppVolume': ?netAppVolume?.toMap(),
       'provisioningState': provisioningState,
       'status': status,
       'systemData': systemData.toMap(),
@@ -70,16 +79,35 @@ class GetDatastoreResult {
   factory GetDatastoreResult.fromMap(Map<String, dynamic> map) {
     return GetDatastoreResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      diskPoolVolume: map['diskPoolVolume'] == null ? null : DiskPoolVolumeResponse.fromMap((map['diskPoolVolume']! as Map).cast<String, dynamic>()),
-      elasticSanVolume: map['elasticSanVolume'] == null ? null : ElasticSanVolumeResponse.fromMap((map['elasticSanVolume']! as Map).cast<String, dynamic>()),
+      diskPoolVolume: (() {
+        final guardedValue = map['diskPoolVolume'];
+        if (guardedValue == null) return null;
+        return DiskPoolVolumeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      elasticSanVolume: (() {
+        final guardedValue = map['elasticSanVolume'];
+        if (guardedValue == null) return null;
+        return ElasticSanVolumeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      netAppVolume: map['netAppVolume'] == null ? null : NetAppVolumeResponse.fromMap((map['netAppVolume']! as Map).cast<String, dynamic>()),
+      netAppVolume: (() {
+        final guardedValue = map['netAppVolume'];
+        if (guardedValue == null) return null;
+        return NetAppVolumeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

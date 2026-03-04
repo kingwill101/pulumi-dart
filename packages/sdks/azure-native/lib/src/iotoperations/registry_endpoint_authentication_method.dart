@@ -5,16 +5,17 @@ enum RegistryEndpointAuthenticationMethod {
   anonymous("Anonymous"),
   artifactPullSecret("ArtifactPullSecret");
 
-  const RegistryEndpointAuthenticationMethod(this.value);
-  final String value;
+  const RegistryEndpointAuthenticationMethod(this.wireValue);
+  final String wireValue;
 
   static RegistryEndpointAuthenticationMethod fromValue(String value) {
     for (final item in RegistryEndpointAuthenticationMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegistryEndpointAuthenticationMethod value: $value');
+    throw ArgumentError(
+      'Unknown RegistryEndpointAuthenticationMethod value: $value',
+    );
   }
 }
-

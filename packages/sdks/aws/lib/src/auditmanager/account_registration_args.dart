@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountRegistrationArgs {
   /// Identifier for the delegated administrator account.
   final pulumi.Input<String>? delegatedAdminAccount;
+
   /// Flag to deregister AuditManager in the account upon destruction. Defaults to `false` (ie. AuditManager will remain active in the account, even if this resource is removed).
   final pulumi.Input<bool>? deregisterOnDestroy;
+
   /// KMS key identifier.
   final pulumi.Input<String>? kmsKey;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,26 @@ class AccountRegistrationArgs {
 
   factory AccountRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return AccountRegistrationArgs(
-      delegatedAdminAccount: map['delegatedAdminAccount'] == null ? null : ((map['delegatedAdminAccount'] as String).input()).input(),
-      deregisterOnDestroy: map['deregisterOnDestroy'] == null ? null : ((map['deregisterOnDestroy'] as bool).input()).input(),
-      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      delegatedAdminAccount: (() {
+        final guardedValue = map['delegatedAdminAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deregisterOnDestroy: (() {
+        final guardedValue = map['deregisterOnDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -43,14 +43,41 @@ class RunCommandInstanceView {
 
   factory RunCommandInstanceView.fromMap(Map<String, dynamic> map) {
     return RunCommandInstanceView(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      executionMessage: map['executionMessage'] == null ? null : (map['executionMessage']! as String).input(),
-      executionState: map['executionState'] == null ? null : (map['executionState']! as String).input(),
-      exitCode: map['exitCode'] == null ? null : (map['exitCode']! as int).input(),
-      output: map['output'] == null ? null : (map['output']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionMessage: (() {
+        final guardedValue = map['executionMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionState: (() {
+        final guardedValue = map['executionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exitCode: (() {
+        final guardedValue = map['exitCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      output: (() {
+        final guardedValue = map['output'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

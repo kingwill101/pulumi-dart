@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BindingResourcePropertiesResponse {
   /// Binding parameters of the Binding resource
   final pulumi.Input<Map<String, String>>? bindingParameters;
+
   /// Creation time of the Binding resource
   final pulumi.Input<String> createdAt;
+
   /// The generated Spring Boot property file for this binding. The secret will be deducted.
   final pulumi.Input<String> generatedProperties;
+
   /// The key of the bound resource
   final pulumi.Input<String>? key;
+
   /// The Azure resource id of the bound resource
   final pulumi.Input<String>? resourceId;
+
   /// The name of the bound resource
   final pulumi.Input<String> resourceName;
+
   /// The standard Azure resource type of the bound resource
   final pulumi.Input<String> resourceType;
+
   /// Update time of the Binding resource
   final pulumi.Input<String> updatedAt;
 
@@ -56,15 +63,30 @@ class BindingResourcePropertiesResponse {
 
   factory BindingResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BindingResourcePropertiesResponse(
-      bindingParameters: map['bindingParameters'] == null ? null : ((map['bindingParameters']! as Map).cast<String, String>()).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      generatedProperties: (map['generatedProperties'] as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
+      bindingParameters: (() {
+        final guardedValue = map['bindingParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      generatedProperties: pulumi.Input.fromValue(
+        map['generatedProperties'] as String,
+      ),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
-

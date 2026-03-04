@@ -8,20 +8,17 @@ class InstanceWorkforceIdentityFederationConfig {
 
   /// Creates a new [InstanceWorkforceIdentityFederationConfig].
   /// [enabled] 'Whether Workforce Identity Federation is enabled.'
-  InstanceWorkforceIdentityFederationConfig({
-    required this.enabled,
-  });
+  InstanceWorkforceIdentityFederationConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory InstanceWorkforceIdentityFederationConfig.fromMap(Map<String, dynamic> map) {
+  factory InstanceWorkforceIdentityFederationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceWorkforceIdentityFederationConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

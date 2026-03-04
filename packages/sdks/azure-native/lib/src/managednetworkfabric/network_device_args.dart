@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkDeviceArgs {
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
+
   /// The host name of the device.
   final pulumi.Input<String>? hostName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Name of the Network Device.
   final pulumi.Input<String>? networkDeviceName;
+
   /// Network Device SKU name.
   final pulumi.Input<String>? networkDeviceSku;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
   final pulumi.Input<String> serialNumber;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -59,15 +66,42 @@ class NetworkDeviceArgs {
 
   factory NetworkDeviceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkDeviceArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkDeviceName: map['networkDeviceName'] == null ? null : (map['networkDeviceName']! as String).input(),
-      networkDeviceSku: map['networkDeviceSku'] == null ? null : (map['networkDeviceSku']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serialNumber: (map['serialNumber'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostName: (() {
+        final guardedValue = map['hostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkDeviceName: (() {
+        final guardedValue = map['networkDeviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkDeviceSku: (() {
+        final guardedValue = map['networkDeviceSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

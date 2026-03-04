@@ -13,15 +13,14 @@ class ServiceAdditionalLocationVirtualNetworkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subnetId': subnetId,
-    };
+    return <String, dynamic>{'subnetId': subnetId};
   }
 
-  factory ServiceAdditionalLocationVirtualNetworkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ServiceAdditionalLocationVirtualNetworkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceAdditionalLocationVirtualNetworkConfiguration(
-      subnetId: (map['subnetId'] as String).input(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicecatalogPortfolioStatusArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
   final pulumi.Input<String> status;
 
   /// Creates a new [ServicecatalogPortfolioStatusArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
-  ServicecatalogPortfolioStatusArgs({
-    this.region,
-    required this.status,
-  });
+  ServicecatalogPortfolioStatusArgs({this.region, required this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'status': status,
-    };
+    return <String, dynamic>{'region': ?region, 'status': status};
   }
 
   factory ServicecatalogPortfolioStatusArgs.fromMap(Map<String, dynamic> map) {
     return ServicecatalogPortfolioStatusArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: (map['status'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

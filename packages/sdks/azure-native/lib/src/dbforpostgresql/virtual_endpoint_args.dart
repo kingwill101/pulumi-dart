@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualEndpointArgs {
   /// Type of endpoint for the virtual endpoints.
   final pulumi.Input<String>? endpointType;
+
   /// List of servers that one of the virtual endpoints can refer to.
   final pulumi.Input<List<String>>? members;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// Base name of the virtual endpoints.
   final pulumi.Input<String>? virtualEndpointName;
 
@@ -44,12 +48,25 @@ class VirtualEndpointArgs {
 
   factory VirtualEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VirtualEndpointArgs(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
-      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      virtualEndpointName: map['virtualEndpointName'] == null ? null : (map['virtualEndpointName']! as String).input(),
+      endpointType: (() {
+        final guardedValue = map['endpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      members: (() {
+        final guardedValue = map['members'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      virtualEndpointName: (() {
+        final guardedValue = map['virtualEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

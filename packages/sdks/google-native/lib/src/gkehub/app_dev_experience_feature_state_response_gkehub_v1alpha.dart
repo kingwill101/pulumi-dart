@@ -16,14 +16,23 @@ class AppDevExperienceFeatureStateResponseGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkingInstallSucceeded': pulumi.Input.mapInputValue<StatusResponseGkehubV1alpha, Map<String, dynamic>>(networkingInstallSucceeded, (value) => value.toMap()),
+      'networkingInstallSucceeded':
+          pulumi.Input.mapInputValue<
+            StatusResponseGkehubV1alpha,
+            Map<String, dynamic>
+          >(networkingInstallSucceeded, (value) => value.toMap()),
     };
   }
 
-  factory AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppDevExperienceFeatureStateResponseGkehubV1alpha(
-      networkingInstallSucceeded: (StatusResponseGkehubV1alpha.fromMap((map['networkingInstallSucceeded'] as Map).cast<String, dynamic>())).input(),
+      networkingInstallSucceeded: pulumi.Input.fromValue(
+        StatusResponseGkehubV1alpha.fromMap(
+          (map['networkingInstallSucceeded']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

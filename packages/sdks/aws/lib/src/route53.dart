@@ -1,5 +1,3 @@
-library module_route53;
-
 export 'route53/cell.dart';
 export 'route53/cell_args.dart';
 export 'route53/cell_state.dart';

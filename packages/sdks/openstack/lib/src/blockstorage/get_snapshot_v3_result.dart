@@ -1,23 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSnapshotV3.
 class GetSnapshotV3Result {
   /// The snapshot's description.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The snapshot's metadata.
   final Map<String, String> metadata;
   final bool? mostRecent;
+
   /// See Argument Reference above.
   final String name;
+
   /// See Argument Reference above.
   final String region;
+
   /// The size of the snapshot.
   final int size;
+
   /// See Argument Reference above.
   final String status;
+
   /// See Argument Reference above.
   final String volumeId;
 
@@ -62,7 +68,11 @@ class GetSnapshotV3Result {
       description: map['description'] as String,
       id: map['id'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       name: map['name'] as String,
       region: map['region'] as String,
       size: map['size'] as int,
@@ -71,4 +81,3 @@ class GetSnapshotV3Result {
     );
   }
 }
-

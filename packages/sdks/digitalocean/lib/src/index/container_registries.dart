@@ -20,18 +20,18 @@ class ContainerRegistries extends pulumi.CustomResource {
     ContainerRegistriesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/containerRegistries:ContainerRegistries',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.endpoint = registerOutput<String>('endpoint');
+         'digitalocean:index/containerRegistries:ContainerRegistries',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serverUrl = registerOutput<String>('serverUrl');
-    this.storageUsageBytes = registerOutput<int>('storageUsageBytes');
-    this.subscriptionTierSlug = registerOutput<String>('subscriptionTierSlug');
+    region = registerOutput<String>('region');
+    serverUrl = registerOutput<String>('serverUrl');
+    storageUsageBytes = registerOutput<int>('storageUsageBytes');
+    subscriptionTierSlug = registerOutput<String>('subscriptionTierSlug');
   }
 
   /// Gets an existing [ContainerRegistries] resource's state with the given [name] and [id].
@@ -52,17 +52,17 @@ class ContainerRegistries extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/containerRegistries:ContainerRegistries',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.endpoint = registerOutput<String>('endpoint');
+         'digitalocean:index/containerRegistries:ContainerRegistries',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.serverUrl = registerOutput<String>('serverUrl');
-    this.storageUsageBytes = registerOutput<int>('storageUsageBytes');
-    this.subscriptionTierSlug = registerOutput<String>('subscriptionTierSlug');
+    region = registerOutput<String>('region');
+    serverUrl = registerOutput<String>('serverUrl');
+    storageUsageBytes = registerOutput<int>('storageUsageBytes');
+    subscriptionTierSlug = registerOutput<String>('subscriptionTierSlug');
   }
 }

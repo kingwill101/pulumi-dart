@@ -5,31 +5,44 @@ import 'scan_status_enum_value.dart';
 
 /// Definition of ImageScanStatus
 class ImageScanStatus {
-  /// <p>The description of the image scan status.</p>
+  /// &lt;p&gt;The description of the image scan status.&lt;/p&gt;
   final pulumi.Input<String>? description;
-  /// <p>The current state of an image scan.</p>
+
+  /// &lt;p&gt;The current state of an image scan.&lt;/p&gt;
   final pulumi.Input<ScanStatusEnumValue>? status;
 
   /// Creates a new [ImageScanStatus].
-  /// [description] <p>The description of the image scan status.</p>
-  /// [status] <p>The current state of an image scan.</p>
-  ImageScanStatus({
-    this.description,
-    this.status,
-  });
+  /// [description] &lt;p&gt;The description of the image scan status.&lt;/p&gt;
+  /// [status] &lt;p&gt;The current state of an image scan.&lt;/p&gt;
+  ImageScanStatus({this.description, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'status': ?pulumi.Input.mapOptionalInputValue<ScanStatusEnumValue, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScanStatusEnumValue,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory ImageScanStatus.fromMap(Map<String, dynamic> map) {
     return ImageScanStatus(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      status: map['status'] == null ? null : (ScanStatusEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScanStatusEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

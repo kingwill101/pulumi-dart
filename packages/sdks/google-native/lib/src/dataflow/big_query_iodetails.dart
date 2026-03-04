@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigQueryIODetails {
   /// Dataset accessed in the connection.
   final pulumi.Input<String>? dataset;
+
   /// Project accessed in the connection.
   final pulumi.Input<String>? project;
+
   /// Query used to access data in the connection.
   final pulumi.Input<String>? query;
+
   /// Table accessed in the connection.
   final pulumi.Input<String>? table;
 
@@ -18,12 +21,7 @@ class BigQueryIODetails {
   /// [project] Project accessed in the connection.
   /// [query] Query used to access data in the connection.
   /// [table] Table accessed in the connection.
-  BigQueryIODetails({
-    this.dataset,
-    this.project,
-    this.query,
-    this.table,
-  });
+  BigQueryIODetails({this.dataset, this.project, this.query, this.table});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class BigQueryIODetails {
 
   factory BigQueryIODetails.fromMap(Map<String, dynamic> map) {
     return BigQueryIODetails(
-      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      query: map['query'] == null ? null : (map['query']! as String).input(),
-      table: map['table'] == null ? null : (map['table']! as String).input(),
+      dataset: (() {
+        final guardedValue = map['dataset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      query: (() {
+        final guardedValue = map['query'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      table: (() {
+        final guardedValue = map['table'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

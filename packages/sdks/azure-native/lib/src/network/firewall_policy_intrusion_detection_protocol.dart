@@ -5,16 +5,17 @@ enum FirewallPolicyIntrusionDetectionProtocol {
   valueICMP("ICMP"),
   valueANY("ANY");
 
-  const FirewallPolicyIntrusionDetectionProtocol(this.value);
-  final String value;
+  const FirewallPolicyIntrusionDetectionProtocol(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyIntrusionDetectionProtocol fromValue(String value) {
     for (final item in FirewallPolicyIntrusionDetectionProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionProtocol value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyIntrusionDetectionProtocol value: $value',
+    );
   }
 }
-

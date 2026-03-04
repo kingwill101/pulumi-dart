@@ -147,14 +147,19 @@ import 'system_data_response.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// highest IP address included in the range
   late final pulumi.Output<String> endIP;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// lowest IP address included in the range
   late final pulumi.Output<String> startIP;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -167,16 +172,16 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:redis:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.endIP = registerOutput<String>('endIP');
+         'azure-native:redis:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endIP = registerOutput<String>('endIP');
     this.name = registerOutput<String>('name');
-    this.startIP = registerOutput<String>('startIP');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    startIP = registerOutput<String>('startIP');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

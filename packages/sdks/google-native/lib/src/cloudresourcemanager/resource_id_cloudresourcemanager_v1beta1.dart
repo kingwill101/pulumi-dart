@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceIdCloudresourcemanagerV1beta1 {
   /// Required field for the type-specific id. This should correspond to the id used in the type-specific API's.
   final pulumi.Input<String>? id;
+
   /// Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization".
   final pulumi.Input<String>? type;
 
   /// Creates a new [ResourceIdCloudresourcemanagerV1beta1].
   /// [id] Required field for the type-specific id. This should correspond to the id used in the type-specific API's.
   /// [type] Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization".
-  ResourceIdCloudresourcemanagerV1beta1({
-    this.id,
-    this.type,
-  });
+  ResourceIdCloudresourcemanagerV1beta1({this.id, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'type': ?type,
-    };
+    return <String, dynamic>{'id': ?id, 'type': ?type};
   }
 
-  factory ResourceIdCloudresourcemanagerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ResourceIdCloudresourcemanagerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceIdCloudresourcemanagerV1beta1(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

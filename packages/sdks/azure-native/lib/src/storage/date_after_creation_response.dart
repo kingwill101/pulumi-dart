@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DateAfterCreationResponse {
   /// Value indicating the age in days after creation
   final pulumi.Input<double> daysAfterCreationGreaterThan;
+
   /// Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterCreationGreaterThan to be set for snapshots and blob version based actions. The blob will be archived if both the conditions are satisfied.
   final pulumi.Input<double>? daysAfterLastTierChangeGreaterThan;
 
@@ -26,9 +27,14 @@ class DateAfterCreationResponse {
 
   factory DateAfterCreationResponse.fromMap(Map<String, dynamic> map) {
     return DateAfterCreationResponse(
-      daysAfterCreationGreaterThan: (map['daysAfterCreationGreaterThan'] as double).input(),
-      daysAfterLastTierChangeGreaterThan: map['daysAfterLastTierChangeGreaterThan'] == null ? null : (map['daysAfterLastTierChangeGreaterThan']! as double).input(),
+      daysAfterCreationGreaterThan: pulumi.Input.fromValue(
+        map['daysAfterCreationGreaterThan'] as double,
+      ),
+      daysAfterLastTierChangeGreaterThan: (() {
+        final guardedValue = map['daysAfterLastTierChangeGreaterThan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

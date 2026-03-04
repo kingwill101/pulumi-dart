@@ -7,29 +7,40 @@ import 'runtime_access_config_access_type.dart';
 class RuntimeAccessConfig {
   /// The type of access mode this instance.
   final pulumi.Input<RuntimeAccessConfigAccessType>? accessType;
+
   /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
   final pulumi.Input<String>? runtimeOwner;
 
   /// Creates a new [RuntimeAccessConfig].
   /// [accessType] The type of access mode this instance.
   /// [runtimeOwner] The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
-  RuntimeAccessConfig({
-    this.accessType,
-    this.runtimeOwner,
-  });
+  RuntimeAccessConfig({this.accessType, this.runtimeOwner});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessType': ?pulumi.Input.mapOptionalInputValue<RuntimeAccessConfigAccessType, String>(accessType, (value) => value.value),
+      'accessType':
+          ?pulumi.Input.mapOptionalInputValue<
+            RuntimeAccessConfigAccessType,
+            String
+          >(accessType, (value) => value.wireValue),
       'runtimeOwner': ?runtimeOwner,
     };
   }
 
   factory RuntimeAccessConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeAccessConfig(
-      accessType: map['accessType'] == null ? null : (RuntimeAccessConfigAccessType.fromValue(map['accessType']! as String)).input(),
-      runtimeOwner: map['runtimeOwner'] == null ? null : (map['runtimeOwner']! as String).input(),
+      accessType: (() {
+        final guardedValue = map['accessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RuntimeAccessConfigAccessType.fromValue(guardedValue as String),
+        );
+      })(),
+      runtimeOwner: (() {
+        final guardedValue = map['runtimeOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,24 +6,31 @@ class GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
   /// (Output)
   /// Destination IP address.
   final pulumi.Input<String> destinationIp;
+
   /// (Output)
   /// URI of the network where this packet is sent to.
   final pulumi.Input<String> destinationNetworkUri;
+
   /// (Output)
   /// Destination port. Only valid when protocol is TCP or UDP.
   final pulumi.Input<int> destinationPort;
+
   /// (Output)
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
   final pulumi.Input<String> protocol;
+
   /// (Output)
   /// URI of the source telemetry agent this packet originates from.
   final pulumi.Input<String> sourceAgentUri;
+
   /// (Output)
   /// Source IP address.
   final pulumi.Input<String> sourceIp;
+
   /// (Output)
   /// URI of the network where this packet originates from.
   final pulumi.Input<String> sourceNetworkUri;
+
   /// (Output)
   /// Source port. Only valid when protocol is TCP or UDP.
   final pulumi.Input<int> sourcePort;
@@ -61,17 +68,22 @@ class GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
     };
   }
 
-  factory GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestRunReachabilityDetailTraceEndpointInfo(
-      destinationIp: (map['destinationIp'] as String).input(),
-      destinationNetworkUri: (map['destinationNetworkUri'] as String).input(),
-      destinationPort: (map['destinationPort'] as int).input(),
-      protocol: (map['protocol'] as String).input(),
-      sourceAgentUri: (map['sourceAgentUri'] as String).input(),
-      sourceIp: (map['sourceIp'] as String).input(),
-      sourceNetworkUri: (map['sourceNetworkUri'] as String).input(),
-      sourcePort: (map['sourcePort'] as int).input(),
+      destinationIp: pulumi.Input.fromValue(map['destinationIp'] as String),
+      destinationNetworkUri: pulumi.Input.fromValue(
+        map['destinationNetworkUri'] as String,
+      ),
+      destinationPort: pulumi.Input.fromValue(map['destinationPort'] as int),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      sourceAgentUri: pulumi.Input.fromValue(map['sourceAgentUri'] as String),
+      sourceIp: pulumi.Input.fromValue(map['sourceIp'] as String),
+      sourceNetworkUri: pulumi.Input.fromValue(
+        map['sourceNetworkUri'] as String,
+      ),
+      sourcePort: pulumi.Input.fromValue(map['sourcePort'] as int),
     );
   }
 }
-

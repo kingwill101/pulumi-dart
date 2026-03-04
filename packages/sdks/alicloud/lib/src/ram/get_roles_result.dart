@@ -9,13 +9,16 @@ class GetRolesResult {
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// (Available since v1.42.0) A list of Role names.
   final List<String> names;
   final String? outputFile;
   final String? policyName;
   final String? policyType;
+
   /// A list of Role. Each element contains the following attributes:
   final List<GetRolesRole> roles;
+
   /// (Available since v1.262.1) The tags of the RAM role.
   final Map<String, String>? tags;
 
@@ -50,7 +53,10 @@ class GetRolesResult {
       'outputFile': ?outputFile,
       'policyName': ?policyName,
       'policyType': ?policyType,
-      'roles': pulumi.Input.encodeList<GetRolesRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
+      'roles': pulumi.Input.encodeList<GetRolesRole, Map<String, dynamic>>(
+        roles,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
@@ -59,14 +65,36 @@ class GetRolesResult {
     return GetRolesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      policyName: map['policyName'] == null ? null : map['policyName']! as String,
-      policyType: map['policyType'] == null ? null : map['policyType']! as String,
-      roles: pulumi.Input.decodeList<GetRolesRole>(map['roles'], (value) => GetRolesRole.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policyType: (() {
+        final guardedValue = map['policyType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      roles: pulumi.Input.decodeList<GetRolesRole>(
+        map['roles']!,
+        (value) => GetRolesRole.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

@@ -14,16 +14,15 @@ enum AcceleratorConfigType {
   tpuV2("TPU_V2"),
   tpuV3("TPU_V3");
 
-  const AcceleratorConfigType(this.value);
-  final String value;
+  const AcceleratorConfigType(this.wireValue);
+  final String wireValue;
 
   static AcceleratorConfigType fromValue(String value) {
     for (final item in AcceleratorConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AcceleratorConfigType value: $value');
   }
 }
-

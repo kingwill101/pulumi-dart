@@ -2,16 +2,15 @@
 enum SmartDataActions {
   valueRead("Read");
 
-  const SmartDataActions(this.value);
-  final String value;
+  const SmartDataActions(this.wireValue);
+  final String wireValue;
 
   static SmartDataActions fromValue(String value) {
     for (final item in SmartDataActions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SmartDataActions value: $value');
   }
 }
-

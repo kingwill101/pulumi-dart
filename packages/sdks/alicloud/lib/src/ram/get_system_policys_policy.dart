@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSystemPolicysPolicy {
   /// Number of references.
   final pulumi.Input<int> attachmentCount;
+
   /// Creation time.
   final pulumi.Input<String> createTime;
+
   /// The permission policy description.
   final pulumi.Input<String> description;
+
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
+
   /// The permission policy name.
   final pulumi.Input<String> policyName;
+
   /// Permission policy type.
   final pulumi.Input<String> policyType;
+
   /// Modification time.
   final pulumi.Input<String> updateDate;
 
@@ -50,14 +56,13 @@ class GetSystemPolicysPolicy {
 
   factory GetSystemPolicysPolicy.fromMap(Map<String, dynamic> map) {
     return GetSystemPolicysPolicy(
-      attachmentCount: (map['attachmentCount'] as int).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      policyType: (map['policyType'] as String).input(),
-      updateDate: (map['updateDate'] as String).input(),
+      attachmentCount: pulumi.Input.fromValue(map['attachmentCount'] as int),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
+      updateDate: pulumi.Input.fromValue(map['updateDate'] as String),
     );
   }
 }
-

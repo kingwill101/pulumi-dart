@@ -11,16 +11,22 @@ import 'capacity_commitment_renewal_plan_bigqueryreservation_v1beta1.dart';
 class CapacityCommitmentBigqueryreservationV1beta1Args {
   /// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
   final pulumi.Input<String>? capacityCommitmentId;
+
   /// If true, fail the request if another project in the organization has a capacity commitment.
   final pulumi.Input<bool>? enforceSingleAdminProjectPerOrg;
   final pulumi.Input<String>? location;
+
   /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
   final pulumi.Input<bool>? multiRegionAuxiliary;
+
   /// Capacity commitment commitment plan.
   final pulumi.Input<CapacityCommitmentPlanBigqueryreservationV1beta1>? plan;
   final pulumi.Input<String>? project;
+
   /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
-  final pulumi.Input<CapacityCommitmentRenewalPlanBigqueryreservationV1beta1>? renewalPlan;
+  final pulumi.Input<CapacityCommitmentRenewalPlanBigqueryreservationV1beta1>?
+  renewalPlan;
+
   /// Number of slots in this commitment.
   final pulumi.Input<String>? slotCount;
 
@@ -50,24 +56,73 @@ class CapacityCommitmentBigqueryreservationV1beta1Args {
       'enforceSingleAdminProjectPerOrg': ?enforceSingleAdminProjectPerOrg,
       'location': ?location,
       'multiRegionAuxiliary': ?multiRegionAuxiliary,
-      'plan': ?pulumi.Input.mapOptionalInputValue<CapacityCommitmentPlanBigqueryreservationV1beta1, String>(plan, (value) => value.value),
+      'plan':
+          ?pulumi.Input.mapOptionalInputValue<
+            CapacityCommitmentPlanBigqueryreservationV1beta1,
+            String
+          >(plan, (value) => value.wireValue),
       'project': ?project,
-      'renewalPlan': ?pulumi.Input.mapOptionalInputValue<CapacityCommitmentRenewalPlanBigqueryreservationV1beta1, String>(renewalPlan, (value) => value.value),
+      'renewalPlan':
+          ?pulumi.Input.mapOptionalInputValue<
+            CapacityCommitmentRenewalPlanBigqueryreservationV1beta1,
+            String
+          >(renewalPlan, (value) => value.wireValue),
       'slotCount': ?slotCount,
     };
   }
 
-  factory CapacityCommitmentBigqueryreservationV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory CapacityCommitmentBigqueryreservationV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityCommitmentBigqueryreservationV1beta1Args(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId']! as String).input(),
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary']! as bool).input(),
-      plan: map['plan'] == null ? null : (CapacityCommitmentPlanBigqueryreservationV1beta1.fromValue(map['plan']! as String)).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      renewalPlan: map['renewalPlan'] == null ? null : (CapacityCommitmentRenewalPlanBigqueryreservationV1beta1.fromValue(map['renewalPlan']! as String)).input(),
-      slotCount: map['slotCount'] == null ? null : (map['slotCount']! as String).input(),
+      capacityCommitmentId: (() {
+        final guardedValue = map['capacityCommitmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enforceSingleAdminProjectPerOrg: (() {
+        final guardedValue = map['enforceSingleAdminProjectPerOrg'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiRegionAuxiliary: (() {
+        final guardedValue = map['multiRegionAuxiliary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CapacityCommitmentPlanBigqueryreservationV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewalPlan: (() {
+        final guardedValue = map['renewalPlan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CapacityCommitmentRenewalPlanBigqueryreservationV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      slotCount: (() {
+        final guardedValue = map['slotCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

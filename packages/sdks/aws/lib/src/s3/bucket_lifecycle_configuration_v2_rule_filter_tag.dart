@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLifecycleConfigurationV2RuleFilterTag {
   /// Name of the object key.
   final pulumi.Input<String> key;
+
   /// Value of the tag.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class BucketLifecycleConfigurationV2RuleFilterTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory BucketLifecycleConfigurationV2RuleFilterTag.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleConfigurationV2RuleFilterTag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleConfigurationV2RuleFilterTag(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery {
   /// Example natural language query.
   final pulumi.Input<String> naturalLanguage;
+
   /// SQL equivalent of `natural_language`.
   final pulumi.Input<String> sql;
 
@@ -17,17 +18,15 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'naturalLanguage': naturalLanguage,
-      'sql': sql,
-    };
+    return <String, dynamic>{'naturalLanguage': naturalLanguage, 'sql': sql};
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery(
-      naturalLanguage: (map['naturalLanguage'] as String).input(),
-      sql: (map['sql'] as String).input(),
+      naturalLanguage: pulumi.Input.fromValue(map['naturalLanguage'] as String),
+      sql: pulumi.Input.fromValue(map['sql'] as String),
     );
   }
 }
-

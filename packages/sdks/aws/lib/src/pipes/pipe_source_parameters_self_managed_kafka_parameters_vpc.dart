@@ -21,11 +21,20 @@ class PipeSourceParametersSelfManagedKafkaParametersVpc {
     };
   }
 
-  factory PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap(Map<String, dynamic> map) {
+  factory PipeSourceParametersSelfManagedKafkaParametersVpc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeSourceParametersSelfManagedKafkaParametersVpc(
-      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
-      subnets: map['subnets'] == null ? null : (((map['subnets'] as List).cast<String>()).input()).input(),
+      securityGroups: (() {
+        final guardedValue = map['securityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnets: (() {
+        final guardedValue = map['subnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

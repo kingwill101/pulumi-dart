@@ -5,7 +5,7 @@ import 'lite_topic_reservation_config.dart';
 import 'lite_topic_retention_config.dart';
 import 'lite_topic_state.dart';
 
-/// > **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `gcp.pubsub.Topic` instead.
+/// &gt; **Warning:** [Pubsub Lite is deprecated and will be turned down effective March 18, 2026](https://cloud.google.com/pubsub/lite/docs/release-notes#June_17_2024). The resource will be removed in a future major release, please use `gcp.pubsub.Topic` instead.
 ///
 /// A named resource to which messages are sent by publishers.
 ///
@@ -287,20 +287,26 @@ import 'lite_topic_state.dart';
 class LiteTopic extends pulumi.CustomResource {
   /// Name of the topic.
   late final pulumi.Output<String> name;
+
   /// The settings for this topic's partitions.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicPartitionConfig?> partitionConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the pubsub lite topic.
   late final pulumi.Output<String?> region;
+
   /// The settings for this topic's Reservation usage.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicReservationConfig?> reservationConfig;
+
   /// The settings for a topic's message retention.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicRetentionConfig?> retentionConfig;
+
   /// The zone of the pubsub lite topic.
   late final pulumi.Output<String?> zone;
 
@@ -313,18 +319,24 @@ class LiteTopic extends pulumi.CustomResource {
     LiteTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteTopic:LiteTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:pubsub/liteTopic:LiteTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String?>('region');
-    this.reservationConfig = registerOutput<LiteTopicReservationConfig?>('reservationConfig');
-    this.retentionConfig = registerOutput<LiteTopicRetentionConfig?>('retentionConfig');
-    this.zone = registerOutput<String?>('zone');
+    partitionConfig = registerOutput<LiteTopicPartitionConfig?>(
+      'partitionConfig',
+    );
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    reservationConfig = registerOutput<LiteTopicReservationConfig?>(
+      'reservationConfig',
+    );
+    retentionConfig = registerOutput<LiteTopicRetentionConfig?>(
+      'retentionConfig',
+    );
+    zone = registerOutput<String?>('zone');
   }
 
   /// Gets an existing [LiteTopic] resource's state with the given [name] and [id].
@@ -345,17 +357,23 @@ class LiteTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteTopic:LiteTopic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:pubsub/liteTopic:LiteTopic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String?>('region');
-    this.reservationConfig = registerOutput<LiteTopicReservationConfig?>('reservationConfig');
-    this.retentionConfig = registerOutput<LiteTopicRetentionConfig?>('retentionConfig');
-    this.zone = registerOutput<String?>('zone');
+    partitionConfig = registerOutput<LiteTopicPartitionConfig?>(
+      'partitionConfig',
+    );
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    reservationConfig = registerOutput<LiteTopicReservationConfig?>(
+      'reservationConfig',
+    );
+    retentionConfig = registerOutput<LiteTopicRetentionConfig?>(
+      'retentionConfig',
+    );
+    zone = registerOutput<String?>('zone');
   }
 }

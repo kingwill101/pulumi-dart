@@ -4,16 +4,15 @@ enum EntityImpact {
   limited("Limited"),
   suppressed("Suppressed");
 
-  const EntityImpact(this.value);
-  final String value;
+  const EntityImpact(this.wireValue);
+  final String wireValue;
 
   static EntityImpact fromValue(String value) {
     for (final item in EntityImpact.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityImpact value: $value');
   }
 }
-

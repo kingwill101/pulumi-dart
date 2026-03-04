@@ -7,10 +7,13 @@ import 'input_mapping_location.dart';
 class InputMapping {
   /// The name of the field that is going to be injected.
   final pulumi.Input<String>? fieldName;
+
   /// The location where this mapping applies.
   final pulumi.Input<InputMappingLocation>? location;
+
   /// Regex to evaluate on method to decide if input applies.
   final pulumi.Input<String>? methodMatch;
+
   /// A jsonPath expression to select an element.
   final pulumi.Input<String>? value;
 
@@ -19,17 +22,16 @@ class InputMapping {
   /// [location] The location where this mapping applies.
   /// [methodMatch] Regex to evaluate on method to decide if input applies.
   /// [value] A jsonPath expression to select an element.
-  InputMapping({
-    this.fieldName,
-    this.location,
-    this.methodMatch,
-    this.value,
-  });
+  InputMapping({this.fieldName, this.location, this.methodMatch, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fieldName': ?fieldName,
-      'location': ?pulumi.Input.mapOptionalInputValue<InputMappingLocation, String>(location, (value) => value.value),
+      'location':
+          ?pulumi.Input.mapOptionalInputValue<InputMappingLocation, String>(
+            location,
+            (value) => value.wireValue,
+          ),
       'methodMatch': ?methodMatch,
       'value': ?value,
     };
@@ -37,11 +39,28 @@ class InputMapping {
 
   factory InputMapping.fromMap(Map<String, dynamic> map) {
     return InputMapping(
-      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
-      location: map['location'] == null ? null : (InputMappingLocation.fromValue(map['location']! as String)).input(),
-      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      fieldName: (() {
+        final guardedValue = map['fieldName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InputMappingLocation.fromValue(guardedValue as String),
+        );
+      })(),
+      methodMatch: (() {
+        final guardedValue = map['methodMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

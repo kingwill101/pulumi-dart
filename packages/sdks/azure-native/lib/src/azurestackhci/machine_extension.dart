@@ -174,30 +174,44 @@ import 'system_data_response.dart';
 class MachineExtension extends pulumi.CustomResource {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// The machine extension instance view.
-  late final pulumi.Output<MachineExtensionPropertiesResponseInstanceView?> instanceView;
+  late final pulumi.Output<MachineExtensionPropertiesResponseInstanceView?>
+  instanceView;
+
   /// The location.
   late final pulumi.Output<String?> location;
+
   /// The name.
   late final pulumi.Output<String> name;
+
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   late final pulumi.Output<dynamic> protectedSettings;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// The name of the extension handler publisher.
   late final pulumi.Output<String?> publisher;
+
   /// Json formatted public settings for the extension.
   late final pulumi.Output<dynamic> settings;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// Specifies the version of the script handler.
   late final pulumi.Output<String?> typeHandlerVersion;
 
@@ -210,24 +224,27 @@ class MachineExtension extends pulumi.CustomResource {
     MachineExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:MachineExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    this.instanceView = registerOutput<MachineExtensionPropertiesResponseInstanceView?>('instanceView');
-    this.location = registerOutput<String?>('location');
+         'azure-native:azurestackhci:MachineExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    instanceView =
+        registerOutput<MachineExtensionPropertiesResponseInstanceView?>(
+          'instanceView',
+        );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.protectedSettings = registerOutput<dynamic>('protectedSettings');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publisher = registerOutput<String?>('publisher');
-    this.settings = registerOutput<dynamic>('settings');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+    protectedSettings = registerOutput<dynamic>('protectedSettings');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisher = registerOutput<String?>('publisher');
+    settings = registerOutput<dynamic>('settings');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_access_control_args.dart';
-import 'object_access_control_project_team.dart';
 import 'object_access_control_state.dart';
 
 /// The ObjectAccessControls resources represent the Access Control Lists
@@ -221,10 +220,13 @@ import 'object_access_control_state.dart';
 class ObjectAccessControl extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// The domain associated with the entity.
   late final pulumi.Output<String> domain;
+
   /// The email address associated with the entity.
   late final pulumi.Output<String> email;
+
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
   /// * user-{{email}} (such as "user-liz@example.com")
@@ -235,15 +237,20 @@ class ObjectAccessControl extends pulumi.CustomResource {
   /// * allUsers
   /// * allAuthenticatedUsers
   late final pulumi.Output<String> entity;
+
   /// The ID for the entity
   late final pulumi.Output<String> entityId;
+
   /// The content generation of the object, if applied to an object.
   late final pulumi.Output<int> generation;
+
   /// The name of the object to apply the access control to.
-  late final pulumi.Output<String> object;
+  late final pulumi.Output<String> object_;
+
   /// The project team associated with the entity
   /// Structure is documented below.
-  late final pulumi.Output<List<ObjectAccessControlProjectTeam>> projectTeams;
+  late final pulumi.Output<List<Map<String, dynamic>>> projectTeams;
+
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
   late final pulumi.Output<String> role;
@@ -257,20 +264,20 @@ class ObjectAccessControl extends pulumi.CustomResource {
     ObjectAccessControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/objectAccessControl:ObjectAccessControl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.domain = registerOutput<String>('domain');
-    this.email = registerOutput<String>('email');
-    this.entity = registerOutput<String>('entity');
-    this.entityId = registerOutput<String>('entityId');
-    this.generation = registerOutput<int>('generation');
-    this.object = registerOutput<String>('object');
-    this.projectTeams = registerOutput<List<ObjectAccessControlProjectTeam>>('projectTeams');
-    this.role = registerOutput<String>('role');
+         'gcp:storage/objectAccessControl:ObjectAccessControl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    domain = registerOutput<String>('domain');
+    email = registerOutput<String>('email');
+    entity = registerOutput<String>('entity');
+    entityId = registerOutput<String>('entityId');
+    generation = registerOutput<int>('generation');
+    object_ = registerOutput<String>('object');
+    projectTeams = registerOutput<List<Map<String, dynamic>>>('projectTeams');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [ObjectAccessControl] resource's state with the given [name] and [id].
@@ -291,19 +298,19 @@ class ObjectAccessControl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/objectAccessControl:ObjectAccessControl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.domain = registerOutput<String>('domain');
-    this.email = registerOutput<String>('email');
-    this.entity = registerOutput<String>('entity');
-    this.entityId = registerOutput<String>('entityId');
-    this.generation = registerOutput<int>('generation');
-    this.object = registerOutput<String>('object');
-    this.projectTeams = registerOutput<List<ObjectAccessControlProjectTeam>>('projectTeams');
-    this.role = registerOutput<String>('role');
+         'gcp:storage/objectAccessControl:ObjectAccessControl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    domain = registerOutput<String>('domain');
+    email = registerOutput<String>('email');
+    entity = registerOutput<String>('entity');
+    entityId = registerOutput<String>('entityId');
+    generation = registerOutput<int>('generation');
+    object_ = registerOutput<String>('object');
+    projectTeams = registerOutput<List<Map<String, dynamic>>>('projectTeams');
+    role = registerOutput<String>('role');
   }
 }

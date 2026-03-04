@@ -149,19 +149,26 @@ import 'static_site_user_provided_function_app_for_static_site_args.dart';
 /// ```sh
 /// $ pulumi import azure-native:web:StaticSiteUserProvidedFunctionAppForStaticSite testFunctionApp /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}
 /// ```
-class StaticSiteUserProvidedFunctionAppForStaticSite extends pulumi.CustomResource {
+class StaticSiteUserProvidedFunctionAppForStaticSite
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The date and time on which the function app was registered with the static site.
   late final pulumi.Output<String> createdOn;
+
   /// The region of the function app registered with the static site
   late final pulumi.Output<String?> functionAppRegion;
+
   /// The resource id of the function app registered with the static site
   late final pulumi.Output<String?> functionAppResourceId;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -174,17 +181,17 @@ class StaticSiteUserProvidedFunctionAppForStaticSite extends pulumi.CustomResour
     StaticSiteUserProvidedFunctionAppForStaticSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:StaticSiteUserProvidedFunctionAppForStaticSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.functionAppRegion = registerOutput<String?>('functionAppRegion');
-    this.functionAppResourceId = registerOutput<String?>('functionAppResourceId');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:StaticSiteUserProvidedFunctionAppForStaticSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdOn = registerOutput<String>('createdOn');
+    functionAppRegion = registerOutput<String?>('functionAppRegion');
+    functionAppResourceId = registerOutput<String?>('functionAppResourceId');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

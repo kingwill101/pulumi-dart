@@ -7,16 +7,15 @@ enum CasePriority {
   p3("P3"),
   p4("P4");
 
-  const CasePriority(this.value);
-  final String value;
+  const CasePriority(this.wireValue);
+  final String wireValue;
 
   static CasePriority fromValue(String value) {
     for (final item in CasePriority.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CasePriority value: $value');
   }
 }
-

@@ -561,28 +561,43 @@ import 'integration_account_map_properties_response_parameters_schema.dart';
 class IntegrationAccountMap extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The changed time.
   late final pulumi.Output<String> changedTime;
+
   /// The content.
   late final pulumi.Output<String?> content;
+
   /// The content link.
   late final pulumi.Output<ContentLinkResponse> contentLink;
+
   /// The content type.
   late final pulumi.Output<String?> contentType;
+
   /// The created time.
   late final pulumi.Output<String> createdTime;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The map type.
   late final pulumi.Output<String> mapType;
+
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The parameters schema of integration account map.
-  late final pulumi.Output<IntegrationAccountMapPropertiesResponseParametersSchema?> parametersSchema;
+  late final pulumi.Output<
+    IntegrationAccountMapPropertiesResponseParametersSchema?
+  >
+  parametersSchema;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -595,23 +610,26 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     IntegrationAccountMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationAccountMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.changedTime = registerOutput<String>('changedTime');
-    this.content = registerOutput<String?>('content');
-    this.contentLink = registerOutput<ContentLinkResponse>('contentLink');
-    this.contentType = registerOutput<String?>('contentType');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.location = registerOutput<String?>('location');
-    this.mapType = registerOutput<String>('mapType');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:logic:IntegrationAccountMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<String?>('content');
+    contentLink = registerOutput<ContentLinkResponse>('contentLink');
+    contentType = registerOutput<String?>('contentType');
+    createdTime = registerOutput<String>('createdTime');
+    location = registerOutput<String?>('location');
+    mapType = registerOutput<String>('mapType');
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.parametersSchema = registerOutput<IntegrationAccountMapPropertiesResponseParametersSchema?>('parametersSchema');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    parametersSchema =
+        registerOutput<
+          IntegrationAccountMapPropertiesResponseParametersSchema?
+        >('parametersSchema');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

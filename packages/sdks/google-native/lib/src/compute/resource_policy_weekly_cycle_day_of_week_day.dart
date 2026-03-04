@@ -9,16 +9,17 @@ enum ResourcePolicyWeeklyCycleDayOfWeekDay {
   tuesday("TUESDAY"),
   wednesday("WEDNESDAY");
 
-  const ResourcePolicyWeeklyCycleDayOfWeekDay(this.value);
-  final String value;
+  const ResourcePolicyWeeklyCycleDayOfWeekDay(this.wireValue);
+  final String wireValue;
 
   static ResourcePolicyWeeklyCycleDayOfWeekDay fromValue(String value) {
     for (final item in ResourcePolicyWeeklyCycleDayOfWeekDay.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResourcePolicyWeeklyCycleDayOfWeekDay value: $value');
+    throw ArgumentError(
+      'Unknown ResourcePolicyWeeklyCycleDayOfWeekDay value: $value',
+    );
   }
 }
-

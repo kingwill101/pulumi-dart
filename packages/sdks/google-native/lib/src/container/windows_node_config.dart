@@ -10,20 +10,27 @@ class WindowsNodeConfig {
 
   /// Creates a new [WindowsNodeConfig].
   /// [osVersion] OSVersion specifies the Windows node config to be used on the node
-  WindowsNodeConfig({
-    this.osVersion,
-  });
+  WindowsNodeConfig({this.osVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'osVersion': ?pulumi.Input.mapOptionalInputValue<WindowsNodeConfigOsVersion, String>(osVersion, (value) => value.value),
+      'osVersion':
+          ?pulumi.Input.mapOptionalInputValue<
+            WindowsNodeConfigOsVersion,
+            String
+          >(osVersion, (value) => value.wireValue),
     };
   }
 
   factory WindowsNodeConfig.fromMap(Map<String, dynamic> map) {
     return WindowsNodeConfig(
-      osVersion: map['osVersion'] == null ? null : (WindowsNodeConfigOsVersion.fromValue(map['osVersion']! as String)).input(),
+      osVersion: (() {
+        final guardedValue = map['osVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WindowsNodeConfigOsVersion.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

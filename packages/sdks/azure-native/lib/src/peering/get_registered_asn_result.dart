@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegisteredAsn.
 class GetRegisteredAsnResult {
   /// The customer's ASN from which traffic originates.
   final int? asn;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The ID of the resource.
   final String id;
+
   /// The name of the resource.
   final String name;
+
   /// The peering service prefix key that is to be shared with the customer.
   final String peeringServicePrefixKey;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// The type of the resource.
   final String type;
 
@@ -50,7 +55,11 @@ class GetRegisteredAsnResult {
 
   factory GetRegisteredAsnResult.fromMap(Map<String, dynamic> map) {
     return GetRegisteredAsnResult(
-      asn: map['asn'] == null ? null : map['asn']! as int,
+      asn: (() {
+        final guardedValue = map['asn'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -60,4 +69,3 @@ class GetRegisteredAsnResult {
     );
   }
 }
-

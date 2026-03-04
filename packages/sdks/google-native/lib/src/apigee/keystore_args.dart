@@ -8,6 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_keystore_args_doc}
 class KeystoreArgs {
   final pulumi.Input<String> environmentId;
+
   /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -32,10 +33,13 @@ class KeystoreArgs {
 
   factory KeystoreArgs.fromMap(Map<String, dynamic> map) {
     return KeystoreArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

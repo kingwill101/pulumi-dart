@@ -9,20 +9,15 @@ class QuantityBasedRetentionResponse {
 
   /// Creates a new [QuantityBasedRetentionResponse].
   /// [count] The number of backups to retain.
-  QuantityBasedRetentionResponse({
-    required this.count,
-  });
+  QuantityBasedRetentionResponse({required this.count});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-    };
+    return <String, dynamic>{'count': count};
   }
 
   factory QuantityBasedRetentionResponse.fromMap(Map<String, dynamic> map) {
     return QuantityBasedRetentionResponse(
-      count: (map['count'] as int).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
     );
   }
 }
-

@@ -8,25 +8,35 @@ import 'system_data_response.dart';
 class GetCustomizableConnectorDefinitionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The UiConfig for 'Customizable' connector definition kind.
   final CustomizableConnectionsConfigResponse? connectionsConfig;
+
   /// The UiConfig for 'Customizable' connector definition kind.
   final CustomizableConnectorUiConfigResponse connectorUiConfig;
+
   /// Gets or sets the connector definition created date in UTC format.
   final String? createdTimeUtc;
+
   /// Etag of the azure resource
   final String? etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The kind of the data connector definitions
   /// Expected value is 'Customizable'.
   final String kind;
+
   /// Gets or sets the connector definition last modified date in UTC format.
   final String? lastModifiedUtc;
+
   /// The name of the resource
   final String name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -59,7 +69,7 @@ class GetCustomizableConnectorDefinitionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'connectionsConfig': ?connectionsConfig == null ? null : connectionsConfig!.toMap(),
+      'connectionsConfig': ?connectionsConfig?.toMap(),
       'connectorUiConfig': connectorUiConfig.toMap(),
       'createdTimeUtc': ?createdTimeUtc,
       'etag': ?etag,
@@ -72,20 +82,43 @@ class GetCustomizableConnectorDefinitionResult {
     };
   }
 
-  factory GetCustomizableConnectorDefinitionResult.fromMap(Map<String, dynamic> map) {
+  factory GetCustomizableConnectorDefinitionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCustomizableConnectorDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectionsConfig: map['connectionsConfig'] == null ? null : CustomizableConnectionsConfigResponse.fromMap((map['connectionsConfig']! as Map).cast<String, dynamic>()),
-      connectorUiConfig: CustomizableConnectorUiConfigResponse.fromMap((map['connectorUiConfig'] as Map).cast<String, dynamic>()),
-      createdTimeUtc: map['createdTimeUtc'] == null ? null : map['createdTimeUtc']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      connectionsConfig: (() {
+        final guardedValue = map['connectionsConfig'];
+        if (guardedValue == null) return null;
+        return CustomizableConnectionsConfigResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      connectorUiConfig: CustomizableConnectorUiConfigResponse.fromMap(
+        (map['connectorUiConfig']! as Map).cast<String, dynamic>(),
+      ),
+      createdTimeUtc: (() {
+        final guardedValue = map['createdTimeUtc'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
-      lastModifiedUtc: map['lastModifiedUtc'] == null ? null : map['lastModifiedUtc']! as String,
+      lastModifiedUtc: (() {
+        final guardedValue = map['lastModifiedUtc'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

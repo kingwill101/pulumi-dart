@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse {
   /// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
   final pulumi.Input<String> cloudLoggingSeverity;
+
   /// Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
   final pulumi.Input<bool> enableCloudLogging;
 
@@ -24,11 +25,16 @@ class GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse(
-      cloudLoggingSeverity: (map['cloudLoggingSeverity'] as String).input(),
-      enableCloudLogging: (map['enableCloudLogging'] as bool).input(),
+      cloudLoggingSeverity: pulumi.Input.fromValue(
+        map['cloudLoggingSeverity'] as String,
+      ),
+      enableCloudLogging: pulumi.Input.fromValue(
+        map['enableCloudLogging'] as bool,
+      ),
     );
   }
 }
-

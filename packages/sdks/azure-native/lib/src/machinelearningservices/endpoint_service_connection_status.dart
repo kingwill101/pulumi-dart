@@ -5,16 +5,17 @@ enum EndpointServiceConnectionStatus {
   valueRejected("Rejected"),
   valueDisconnected("Disconnected");
 
-  const EndpointServiceConnectionStatus(this.value);
-  final String value;
+  const EndpointServiceConnectionStatus(this.wireValue);
+  final String wireValue;
 
   static EndpointServiceConnectionStatus fromValue(String value) {
     for (final item in EndpointServiceConnectionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EndpointServiceConnectionStatus value: $value');
+    throw ArgumentError(
+      'Unknown EndpointServiceConnectionStatus value: $value',
+    );
   }
 }
-

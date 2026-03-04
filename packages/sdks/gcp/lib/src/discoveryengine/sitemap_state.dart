@@ -6,21 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SitemapState {
   /// Timestamp when the sitemap was created.
   final pulumi.Input<String>? createTime;
+
   /// The unique id of the data store.
   final pulumi.Input<String>? dataStoreId;
+
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String>? location;
+
   /// The unique full resource name of the sitemap. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/siteSearchEngine/sitemaps/{sitemap_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The unique id of the sitemap.
   final pulumi.Input<String>? sitemapId;
+
   /// Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
   final pulumi.Input<String>? uri;
 
@@ -56,14 +62,41 @@ class SitemapState {
 
   factory SitemapState.fromMap(Map<String, dynamic> map) {
     return SitemapState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sitemapId: map['sitemapId'] == null ? null : (map['sitemapId']! as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataStoreId: (() {
+        final guardedValue = map['dataStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sitemapId: (() {
+        final guardedValue = map['sitemapId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

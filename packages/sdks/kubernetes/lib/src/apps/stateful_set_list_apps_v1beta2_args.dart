@@ -12,6 +12,7 @@ class StatefulSetListAppsV1beta2Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
   final pulumi.Input<List<StatefulSetAppsV1beta2Resource>> items;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
   final pulumi.Input<ListMeta>? metadata;
@@ -33,17 +34,36 @@ class StatefulSetListAppsV1beta2Args {
       'apiVersion': ?apiVersion,
       'items': items,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ListMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory StatefulSetListAppsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return StatefulSetListAppsV1beta2Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      items: ((map['items'] as List).cast<StatefulSetAppsV1beta2Resource>()).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      items: pulumi.Input.fromValue(
+        (map['items'] as List).cast<StatefulSetAppsV1beta2Resource>(),
+      ),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ListMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

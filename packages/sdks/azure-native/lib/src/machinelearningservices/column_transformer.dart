@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ColumnTransformer {
   /// Fields to apply transformer logic on.
   final pulumi.Input<List<String>>? fields;
+
   /// Different properties to be passed to transformer.
   /// Input expected is dictionary of key,value pairs in JSON format.
   final pulumi.Input<dynamic>? parameters;
@@ -13,23 +14,24 @@ class ColumnTransformer {
   /// Creates a new [ColumnTransformer].
   /// [fields] Fields to apply transformer logic on.
   /// [parameters] Different properties to be passed to transformer.
-  ColumnTransformer({
-    this.fields,
-    this.parameters,
-  });
+  ColumnTransformer({this.fields, this.parameters});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fields': ?fields,
-      'parameters': ?parameters,
-    };
+    return <String, dynamic>{'fields': ?fields, 'parameters': ?parameters};
   }
 
   factory ColumnTransformer.fromMap(Map<String, dynamic> map) {
     return ColumnTransformer(
-      fields: map['fields'] == null ? null : ((map['fields']! as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']!).input(),
+      fields: (() {
+        final guardedValue = map['fields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

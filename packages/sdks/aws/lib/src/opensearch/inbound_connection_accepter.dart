@@ -227,8 +227,10 @@ import 'inbound_connection_accepter_state.dart';
 class InboundConnectionAccepter extends pulumi.CustomResource {
   /// Specifies the ID of the connection to accept.
   late final pulumi.Output<String> connectionId;
+
   /// Status of the connection request.
   late final pulumi.Output<String> connectionStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -241,14 +243,14 @@ class InboundConnectionAccepter extends pulumi.CustomResource {
     InboundConnectionAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:opensearch/inboundConnectionAccepter:InboundConnectionAccepter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionId = registerOutput<String>('connectionId');
-    this.connectionStatus = registerOutput<String>('connectionStatus');
-    this.region = registerOutput<String>('region');
+         'aws:opensearch/inboundConnectionAccepter:InboundConnectionAccepter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionId = registerOutput<String>('connectionId');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [InboundConnectionAccepter] resource's state with the given [name] and [id].
@@ -269,13 +271,13 @@ class InboundConnectionAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:opensearch/inboundConnectionAccepter:InboundConnectionAccepter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionId = registerOutput<String>('connectionId');
-    this.connectionStatus = registerOutput<String>('connectionStatus');
-    this.region = registerOutput<String>('region');
+         'aws:opensearch/inboundConnectionAccepter:InboundConnectionAccepter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionId = registerOutput<String>('connectionId');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    region = registerOutput<String>('region');
   }
 }

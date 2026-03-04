@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'waiting_room_args.dart';
-import 'waiting_room_host_name_and_path.dart';
 import 'waiting_room_state.dart';
 
 /// Provides a ESA Waiting Room resource.
@@ -9,7 +8,7 @@ import 'waiting_room_state.dart';
 ///
 /// For information about ESA Waiting Room and how to use it, see [What is Waiting Room](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateWaitingRoom).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -378,40 +377,57 @@ import 'waiting_room_state.dart';
 class WaitingRoom extends pulumi.CustomResource {
   /// Custom Cookie name.
   late final pulumi.Output<String> cookieName;
+
   /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
   late final pulumi.Output<String?> customPageHtml;
+
   /// Waiting room description.
   late final pulumi.Output<String?> description;
+
   /// Disable session renewal. Value:
   late final pulumi.Output<String?> disableSessionRenewalEnable;
+
   /// Host name and path. See `host_name_and_path` below.
-  late final pulumi.Output<List<WaitingRoomHostNameAndPath>> hostNameAndPaths;
+  late final pulumi.Output<List<Map<String, dynamic>>> hostNameAndPaths;
+
   /// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
   late final pulumi.Output<String?> jsonResponseEnable;
+
   /// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
   late final pulumi.Output<String?> language;
+
   /// Number of new users per minute.
   late final pulumi.Output<String> newUsersPerMinute;
+
   /// All in line. Value:
   late final pulumi.Output<String?> queueAllEnable;
+
   /// Way of queuing. Value:
   late final pulumi.Output<String> queuingMethod;
+
   /// Waiting room status code. Value:
   late final pulumi.Output<String> queuingStatusCode;
+
   /// Session duration in minutes.
   late final pulumi.Output<String> sessionDuration;
+
   /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
   late final pulumi.Output<String> siteId;
+
   /// Waiting room enabled status. Value:
   /// - 'on': Enable waiting room
   /// - 'off': Disabled waiting room
   late final pulumi.Output<String> status;
+
   /// Total number of active users.
   late final pulumi.Output<String> totalActiveUsers;
+
   /// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
   late final pulumi.Output<String> waitingRoomId;
+
   /// The name of the waiting room.
   late final pulumi.Output<String> waitingRoomName;
+
   /// Waiting room type, support:
   late final pulumi.Output<String> waitingRoomType;
 
@@ -424,29 +440,33 @@ class WaitingRoom extends pulumi.CustomResource {
     WaitingRoomArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/waitingRoom:WaitingRoom',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookieName = registerOutput<String>('cookieName');
-    this.customPageHtml = registerOutput<String?>('customPageHtml');
-    this.description = registerOutput<String?>('description');
-    this.disableSessionRenewalEnable = registerOutput<String?>('disableSessionRenewalEnable');
-    this.hostNameAndPaths = registerOutput<List<WaitingRoomHostNameAndPath>>('hostNameAndPaths');
-    this.jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
-    this.language = registerOutput<String?>('language');
-    this.newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
-    this.queueAllEnable = registerOutput<String?>('queueAllEnable');
-    this.queuingMethod = registerOutput<String>('queuingMethod');
-    this.queuingStatusCode = registerOutput<String>('queuingStatusCode');
-    this.sessionDuration = registerOutput<String>('sessionDuration');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
-    this.totalActiveUsers = registerOutput<String>('totalActiveUsers');
-    this.waitingRoomId = registerOutput<String>('waitingRoomId');
-    this.waitingRoomName = registerOutput<String>('waitingRoomName');
-    this.waitingRoomType = registerOutput<String>('waitingRoomType');
+         'alicloud:esa/waitingRoom:WaitingRoom',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cookieName = registerOutput<String>('cookieName');
+    customPageHtml = registerOutput<String?>('customPageHtml');
+    description = registerOutput<String?>('description');
+    disableSessionRenewalEnable = registerOutput<String?>(
+      'disableSessionRenewalEnable',
+    );
+    hostNameAndPaths = registerOutput<List<Map<String, dynamic>>>(
+      'hostNameAndPaths',
+    );
+    jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
+    language = registerOutput<String?>('language');
+    newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
+    queueAllEnable = registerOutput<String?>('queueAllEnable');
+    queuingMethod = registerOutput<String>('queuingMethod');
+    queuingStatusCode = registerOutput<String>('queuingStatusCode');
+    sessionDuration = registerOutput<String>('sessionDuration');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
+    totalActiveUsers = registerOutput<String>('totalActiveUsers');
+    waitingRoomId = registerOutput<String>('waitingRoomId');
+    waitingRoomName = registerOutput<String>('waitingRoomName');
+    waitingRoomType = registerOutput<String>('waitingRoomType');
   }
 
   /// Gets an existing [WaitingRoom] resource's state with the given [name] and [id].
@@ -467,28 +487,32 @@ class WaitingRoom extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/waitingRoom:WaitingRoom',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookieName = registerOutput<String>('cookieName');
-    this.customPageHtml = registerOutput<String?>('customPageHtml');
-    this.description = registerOutput<String?>('description');
-    this.disableSessionRenewalEnable = registerOutput<String?>('disableSessionRenewalEnable');
-    this.hostNameAndPaths = registerOutput<List<WaitingRoomHostNameAndPath>>('hostNameAndPaths');
-    this.jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
-    this.language = registerOutput<String?>('language');
-    this.newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
-    this.queueAllEnable = registerOutput<String?>('queueAllEnable');
-    this.queuingMethod = registerOutput<String>('queuingMethod');
-    this.queuingStatusCode = registerOutput<String>('queuingStatusCode');
-    this.sessionDuration = registerOutput<String>('sessionDuration');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
-    this.totalActiveUsers = registerOutput<String>('totalActiveUsers');
-    this.waitingRoomId = registerOutput<String>('waitingRoomId');
-    this.waitingRoomName = registerOutput<String>('waitingRoomName');
-    this.waitingRoomType = registerOutput<String>('waitingRoomType');
+         'alicloud:esa/waitingRoom:WaitingRoom',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cookieName = registerOutput<String>('cookieName');
+    customPageHtml = registerOutput<String?>('customPageHtml');
+    description = registerOutput<String?>('description');
+    disableSessionRenewalEnable = registerOutput<String?>(
+      'disableSessionRenewalEnable',
+    );
+    hostNameAndPaths = registerOutput<List<Map<String, dynamic>>>(
+      'hostNameAndPaths',
+    );
+    jsonResponseEnable = registerOutput<String?>('jsonResponseEnable');
+    language = registerOutput<String?>('language');
+    newUsersPerMinute = registerOutput<String>('newUsersPerMinute');
+    queueAllEnable = registerOutput<String?>('queueAllEnable');
+    queuingMethod = registerOutput<String>('queuingMethod');
+    queuingStatusCode = registerOutput<String>('queuingStatusCode');
+    sessionDuration = registerOutput<String>('sessionDuration');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
+    totalActiveUsers = registerOutput<String>('totalActiveUsers');
+    waitingRoomId = registerOutput<String>('waitingRoomId');
+    waitingRoomName = registerOutput<String>('waitingRoomName');
+    waitingRoomType = registerOutput<String>('waitingRoomType');
   }
 }

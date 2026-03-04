@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionCacheBehaviorSettingsForwardedCookies {
   /// Specific cookies to forward to your distribution's origin.
   final pulumi.Input<List<String>>? cookiesAllowLists;
+
   /// Which cookies to forward to the distribution's origin for a cache behavior. Valid values: `all`, `none`, `allow-list`.
   final pulumi.Input<String>? option;
 
@@ -23,11 +24,20 @@ class DistributionCacheBehaviorSettingsForwardedCookies {
     };
   }
 
-  factory DistributionCacheBehaviorSettingsForwardedCookies.fromMap(Map<String, dynamic> map) {
+  factory DistributionCacheBehaviorSettingsForwardedCookies.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionCacheBehaviorSettingsForwardedCookies(
-      cookiesAllowLists: map['cookiesAllowLists'] == null ? null : (((map['cookiesAllowLists'] as List).cast<String>()).input()).input(),
-      option: map['option'] == null ? null : ((map['option'] as String).input()).input(),
+      cookiesAllowLists: (() {
+        final guardedValue = map['cookiesAllowLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      option: (() {
+        final guardedValue = map['option'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

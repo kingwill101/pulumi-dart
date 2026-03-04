@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductsProduct {
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
+
   /// The first ID of the resource
   final pulumi.Input<String> productCode;
+
   /// The name of the resource
   final pulumi.Input<String> productName;
 
@@ -30,10 +32,9 @@ class GetProductsProduct {
 
   factory GetProductsProduct.fromMap(Map<String, dynamic> map) {
     return GetProductsProduct(
-      id: (map['id'] as String).input(),
-      productCode: (map['productCode'] as String).input(),
-      productName: (map['productName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
+      productName: pulumi.Input.fromValue(map['productName'] as String),
     );
   }
 }
-

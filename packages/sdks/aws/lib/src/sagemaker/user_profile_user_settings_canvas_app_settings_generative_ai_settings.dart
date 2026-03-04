@@ -12,15 +12,18 @@ class UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'amazonBedrockRoleArn': ?amazonBedrockRoleArn,
-    };
+    return <String, dynamic>{'amazonBedrockRoleArn': ?amazonBedrockRoleArn};
   }
 
-  factory UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap(Map<String, dynamic> map) {
+  factory UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserProfileUserSettingsCanvasAppSettingsGenerativeAiSettings(
-      amazonBedrockRoleArn: map['amazonBedrockRoleArn'] == null ? null : ((map['amazonBedrockRoleArn'] as String).input()).input(),
+      amazonBedrockRoleArn: (() {
+        final guardedValue = map['amazonBedrockRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

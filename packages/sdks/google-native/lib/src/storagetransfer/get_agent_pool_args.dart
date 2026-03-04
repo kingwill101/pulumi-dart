@@ -13,23 +13,20 @@ class GetAgentPoolArgs {
   /// Creates a new [GetAgentPoolArgs].
   /// [agentPoolId] Required.
   /// [project] Optional.
-  GetAgentPoolArgs({
-    required this.agentPoolId,
-    this.project,
-  });
+  GetAgentPoolArgs({required this.agentPoolId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agentPoolId': agentPoolId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'agentPoolId': agentPoolId, 'project': ?project};
   }
 
   factory GetAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolArgs(
-      agentPoolId: (map['agentPoolId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      agentPoolId: pulumi.Input.fromValue(map['agentPoolId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

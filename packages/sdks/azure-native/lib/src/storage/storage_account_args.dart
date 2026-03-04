@@ -21,66 +21,98 @@ import 'sku.dart';
 class StorageAccountArgs {
   /// Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.
   final pulumi.Input<AccessTier>? accessTier;
+
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String>? accountName;
+
   /// Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
   final pulumi.Input<bool>? allowBlobPublicAccess;
+
   /// Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
   final pulumi.Input<bool>? allowCrossTenantReplication;
+
   /// Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
   final pulumi.Input<bool>? allowSharedKeyAccess;
+
   /// Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
   final pulumi.Input<String>? allowedCopyScope;
+
   /// Provides the identity based authentication settings for Azure Files.
-  final pulumi.Input<AzureFilesIdentityBasedAuthentication>? azureFilesIdentityBasedAuthentication;
+  final pulumi.Input<AzureFilesIdentityBasedAuthentication>?
+  azureFilesIdentityBasedAuthentication;
+
   /// User domain assigned to the storage account. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.
   final pulumi.Input<CustomDomain>? customDomain;
+
   /// A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property.
   final pulumi.Input<bool>? defaultToOAuthAuthentication;
+
   /// Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
   final pulumi.Input<String>? dnsEndpointType;
+
   /// Enables extended group support with local users feature, if set to true
   final pulumi.Input<bool>? enableExtendedGroups;
+
   /// Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
   final pulumi.Input<bool>? enableHttpsTrafficOnly;
+
   /// NFS 3.0 protocol support enabled if set to true.
   final pulumi.Input<bool>? enableNfsV3;
+
   /// Encryption settings to be used for server-side encryption for the storage account.
   final pulumi.Input<Encryption>? encryption;
+
   /// Optional. Set the extended location of the resource. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// The identity of the resource.
   final pulumi.Input<Identity>? identity;
+
   /// The property is immutable and can only be set to true at the account creation time. When set to true, it enables object level immutability for all the new containers in the account by default.
   final pulumi.Input<ImmutableStorageAccount>? immutableStorageWithVersioning;
+
   /// Account HierarchicalNamespace enabled if sets to true.
   final pulumi.Input<bool>? isHnsEnabled;
+
   /// Enables local users feature, if set to true
   final pulumi.Input<bool>? isLocalUserEnabled;
+
   /// Enables Secure File Transfer Protocol, if set to true
   final pulumi.Input<bool>? isSftpEnabled;
+
   /// KeyPolicy assigned to the storage account.
   final pulumi.Input<KeyPolicy>? keyPolicy;
+
   /// Required. Indicates the type of storage account.
   final pulumi.Input<String> kind;
+
   /// Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
   final pulumi.Input<String>? largeFileSharesState;
+
   /// Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
   final pulumi.Input<String>? location;
+
   /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
   final pulumi.Input<String>? minimumTlsVersion;
+
   /// Network rule set
   final pulumi.Input<NetworkRuleSet>? networkRuleSet;
+
   /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Maintains information about the network routing choice opted by the user for data transfer
   final pulumi.Input<RoutingPreference>? routingPreference;
+
   /// SasPolicy assigned to the storage account.
   final pulumi.Input<SasPolicy>? sasPolicy;
+
   /// Required. Gets or sets the SKU name.
   final pulumi.Input<Sku> sku;
+
   /// Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -154,76 +186,273 @@ class StorageAccountArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessTier': ?pulumi.Input.mapOptionalInputValue<AccessTier, String>(accessTier, (value) => value.value),
+      'accessTier': ?pulumi.Input.mapOptionalInputValue<AccessTier, String>(
+        accessTier,
+        (value) => value.wireValue,
+      ),
       'accountName': ?accountName,
       'allowBlobPublicAccess': ?allowBlobPublicAccess,
       'allowCrossTenantReplication': ?allowCrossTenantReplication,
       'allowSharedKeyAccess': ?allowSharedKeyAccess,
       'allowedCopyScope': ?allowedCopyScope,
-      'azureFilesIdentityBasedAuthentication': ?pulumi.Input.mapOptionalInputValue<AzureFilesIdentityBasedAuthentication, Map<String, dynamic>>(azureFilesIdentityBasedAuthentication, (value) => value.toMap()),
-      'customDomain': ?pulumi.Input.mapOptionalInputValue<CustomDomain, Map<String, dynamic>>(customDomain, (value) => value.toMap()),
+      'azureFilesIdentityBasedAuthentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureFilesIdentityBasedAuthentication,
+            Map<String, dynamic>
+          >(azureFilesIdentityBasedAuthentication, (value) => value.toMap()),
+      'customDomain':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomDomain,
+            Map<String, dynamic>
+          >(customDomain, (value) => value.toMap()),
       'defaultToOAuthAuthentication': ?defaultToOAuthAuthentication,
       'dnsEndpointType': ?dnsEndpointType,
       'enableExtendedGroups': ?enableExtendedGroups,
       'enableHttpsTrafficOnly': ?enableHttpsTrafficOnly,
       'enableNfsV3': ?enableNfsV3,
-      'encryption': ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'immutableStorageWithVersioning': ?pulumi.Input.mapOptionalInputValue<ImmutableStorageAccount, Map<String, dynamic>>(immutableStorageWithVersioning, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(
+            encryption,
+            (value) => value.toMap(),
+          ),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(
+            identity,
+            (value) => value.toMap(),
+          ),
+      'immutableStorageWithVersioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImmutableStorageAccount,
+            Map<String, dynamic>
+          >(immutableStorageWithVersioning, (value) => value.toMap()),
       'isHnsEnabled': ?isHnsEnabled,
       'isLocalUserEnabled': ?isLocalUserEnabled,
       'isSftpEnabled': ?isSftpEnabled,
-      'keyPolicy': ?pulumi.Input.mapOptionalInputValue<KeyPolicy, Map<String, dynamic>>(keyPolicy, (value) => value.toMap()),
+      'keyPolicy':
+          ?pulumi.Input.mapOptionalInputValue<KeyPolicy, Map<String, dynamic>>(
+            keyPolicy,
+            (value) => value.toMap(),
+          ),
       'kind': kind,
       'largeFileSharesState': ?largeFileSharesState,
       'location': ?location,
       'minimumTlsVersion': ?minimumTlsVersion,
-      'networkRuleSet': ?pulumi.Input.mapOptionalInputValue<NetworkRuleSet, Map<String, dynamic>>(networkRuleSet, (value) => value.toMap()),
+      'networkRuleSet':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkRuleSet,
+            Map<String, dynamic>
+          >(networkRuleSet, (value) => value.toMap()),
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
-      'routingPreference': ?pulumi.Input.mapOptionalInputValue<RoutingPreference, Map<String, dynamic>>(routingPreference, (value) => value.toMap()),
-      'sasPolicy': ?pulumi.Input.mapOptionalInputValue<SasPolicy, Map<String, dynamic>>(sasPolicy, (value) => value.toMap()),
-      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'routingPreference':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoutingPreference,
+            Map<String, dynamic>
+          >(routingPreference, (value) => value.toMap()),
+      'sasPolicy':
+          ?pulumi.Input.mapOptionalInputValue<SasPolicy, Map<String, dynamic>>(
+            sasPolicy,
+            (value) => value.toMap(),
+          ),
+      'sku': pulumi.Input.mapInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory StorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountArgs(
-      accessTier: map['accessTier'] == null ? null : (AccessTier.fromValue(map['accessTier']! as String)).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      allowBlobPublicAccess: map['allowBlobPublicAccess'] == null ? null : (map['allowBlobPublicAccess']! as bool).input(),
-      allowCrossTenantReplication: map['allowCrossTenantReplication'] == null ? null : (map['allowCrossTenantReplication']! as bool).input(),
-      allowSharedKeyAccess: map['allowSharedKeyAccess'] == null ? null : (map['allowSharedKeyAccess']! as bool).input(),
-      allowedCopyScope: map['allowedCopyScope'] == null ? null : (map['allowedCopyScope']! as String).input(),
-      azureFilesIdentityBasedAuthentication: map['azureFilesIdentityBasedAuthentication'] == null ? null : (AzureFilesIdentityBasedAuthentication.fromMap((map['azureFilesIdentityBasedAuthentication']! as Map).cast<String, dynamic>())).input(),
-      customDomain: map['customDomain'] == null ? null : (CustomDomain.fromMap((map['customDomain']! as Map).cast<String, dynamic>())).input(),
-      defaultToOAuthAuthentication: map['defaultToOAuthAuthentication'] == null ? null : (map['defaultToOAuthAuthentication']! as bool).input(),
-      dnsEndpointType: map['dnsEndpointType'] == null ? null : (map['dnsEndpointType']! as String).input(),
-      enableExtendedGroups: map['enableExtendedGroups'] == null ? null : (map['enableExtendedGroups']! as bool).input(),
-      enableHttpsTrafficOnly: map['enableHttpsTrafficOnly'] == null ? null : (map['enableHttpsTrafficOnly']! as bool).input(),
-      enableNfsV3: map['enableNfsV3'] == null ? null : (map['enableNfsV3']! as bool).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      immutableStorageWithVersioning: map['immutableStorageWithVersioning'] == null ? null : (ImmutableStorageAccount.fromMap((map['immutableStorageWithVersioning']! as Map).cast<String, dynamic>())).input(),
-      isHnsEnabled: map['isHnsEnabled'] == null ? null : (map['isHnsEnabled']! as bool).input(),
-      isLocalUserEnabled: map['isLocalUserEnabled'] == null ? null : (map['isLocalUserEnabled']! as bool).input(),
-      isSftpEnabled: map['isSftpEnabled'] == null ? null : (map['isSftpEnabled']! as bool).input(),
-      keyPolicy: map['keyPolicy'] == null ? null : (KeyPolicy.fromMap((map['keyPolicy']! as Map).cast<String, dynamic>())).input(),
-      kind: (map['kind'] as String).input(),
-      largeFileSharesState: map['largeFileSharesState'] == null ? null : (map['largeFileSharesState']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
-      networkRuleSet: map['networkRuleSet'] == null ? null : (NetworkRuleSet.fromMap((map['networkRuleSet']! as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routingPreference: map['routingPreference'] == null ? null : (RoutingPreference.fromMap((map['routingPreference']! as Map).cast<String, dynamic>())).input(),
-      sasPolicy: map['sasPolicy'] == null ? null : (SasPolicy.fromMap((map['sasPolicy']! as Map).cast<String, dynamic>())).input(),
-      sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      accessTier: (() {
+        final guardedValue = map['accessTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccessTier.fromValue(guardedValue as String),
+        );
+      })(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      allowBlobPublicAccess: (() {
+        final guardedValue = map['allowBlobPublicAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowCrossTenantReplication: (() {
+        final guardedValue = map['allowCrossTenantReplication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowSharedKeyAccess: (() {
+        final guardedValue = map['allowSharedKeyAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowedCopyScope: (() {
+        final guardedValue = map['allowedCopyScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureFilesIdentityBasedAuthentication: (() {
+        final guardedValue = map['azureFilesIdentityBasedAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureFilesIdentityBasedAuthentication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      customDomain: (() {
+        final guardedValue = map['customDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      defaultToOAuthAuthentication: (() {
+        final guardedValue = map['defaultToOAuthAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dnsEndpointType: (() {
+        final guardedValue = map['dnsEndpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableExtendedGroups: (() {
+        final guardedValue = map['enableExtendedGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableHttpsTrafficOnly: (() {
+        final guardedValue = map['enableHttpsTrafficOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableNfsV3: (() {
+        final guardedValue = map['enableNfsV3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Encryption.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Identity.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      immutableStorageWithVersioning: (() {
+        final guardedValue = map['immutableStorageWithVersioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImmutableStorageAccount.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isHnsEnabled: (() {
+        final guardedValue = map['isHnsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isLocalUserEnabled: (() {
+        final guardedValue = map['isLocalUserEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isSftpEnabled: (() {
+        final guardedValue = map['isSftpEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyPolicy: (() {
+        final guardedValue = map['keyPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      largeFileSharesState: (() {
+        final guardedValue = map['largeFileSharesState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minimumTlsVersion: (() {
+        final guardedValue = map['minimumTlsVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkRuleSet: (() {
+        final guardedValue = map['networkRuleSet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      routingPreference: (() {
+        final guardedValue = map['routingPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RoutingPreference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sasPolicy: (() {
+        final guardedValue = map['sasPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SasPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      sku: pulumi.Input.fromValue(
+        Sku.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

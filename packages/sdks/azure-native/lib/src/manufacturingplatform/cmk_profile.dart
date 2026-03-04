@@ -9,20 +9,13 @@ class CmkProfile {
 
   /// Creates a new [CmkProfile].
   /// [keyUri] URI of Key in AKV
-  CmkProfile({
-    required this.keyUri,
-  });
+  CmkProfile({required this.keyUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyUri': keyUri,
-    };
+    return <String, dynamic>{'keyUri': keyUri};
   }
 
   factory CmkProfile.fromMap(Map<String, dynamic> map) {
-    return CmkProfile(
-      keyUri: (map['keyUri'] as String).input(),
-    );
+    return CmkProfile(keyUri: pulumi.Input.fromValue(map['keyUri'] as String));
   }
 }
-

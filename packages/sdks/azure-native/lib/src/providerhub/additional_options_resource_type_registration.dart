@@ -1,18 +1,21 @@
 /// The additional options.
 enum AdditionalOptionsResourceTypeRegistration {
   protectedAsyncOperationPolling("ProtectedAsyncOperationPolling"),
-  protectedAsyncOperationPollingAuditOnly("ProtectedAsyncOperationPollingAuditOnly");
+  protectedAsyncOperationPollingAuditOnly(
+    "ProtectedAsyncOperationPollingAuditOnly",
+  );
 
-  const AdditionalOptionsResourceTypeRegistration(this.value);
-  final String value;
+  const AdditionalOptionsResourceTypeRegistration(this.wireValue);
+  final String wireValue;
 
   static AdditionalOptionsResourceTypeRegistration fromValue(String value) {
     for (final item in AdditionalOptionsResourceTypeRegistration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AdditionalOptionsResourceTypeRegistration value: $value');
+    throw ArgumentError(
+      'Unknown AdditionalOptionsResourceTypeRegistration value: $value',
+    );
   }
 }
-

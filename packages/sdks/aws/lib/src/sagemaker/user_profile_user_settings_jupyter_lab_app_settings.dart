@@ -9,16 +9,34 @@ import 'user_profile_user_settings_jupyter_lab_app_settings_emr_settings.dart';
 
 class UserProfileUserSettingsJupyterLabAppSettings {
   /// Indicates whether idle shutdown is activated for JupyterLab applications. see `app_lifecycle_management` Block below.
-  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement>? appLifecycleManagement;
+  final pulumi.Input<
+    UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement
+  >?
+  appLifecycleManagement;
+
   /// The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   final pulumi.Input<String>? builtInLifecycleConfigArn;
+
   /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see Code Repository below.
-  final pulumi.Input<List<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>>? codeRepositories;
-  final pulumi.Input<List<UserProfileUserSettingsJupyterLabAppSettingsCustomImage>>? customImages;
+  final pulumi.Input<
+    List<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>
+  >?
+  codeRepositories;
+  final pulumi.Input<
+    List<UserProfileUserSettingsJupyterLabAppSettingsCustomImage>
+  >?
+  customImages;
+
   /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec>? defaultResourceSpec;
+  final pulumi.Input<
+    UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec
+  >?
+  defaultResourceSpec;
+
   /// The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emr_settings` Block below.
-  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsEmrSettings>? emrSettings;
+  final pulumi.Input<UserProfileUserSettingsJupyterLabAppSettingsEmrSettings>?
+  emrSettings;
+
   /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
   final pulumi.Input<List<String>>? lifecycleConfigArns;
 
@@ -42,26 +60,121 @@ class UserProfileUserSettingsJupyterLabAppSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appLifecycleManagement': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement, Map<String, dynamic>>(appLifecycleManagement, (value) => value.toMap()),
+      'appLifecycleManagement':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement,
+            Map<String, dynamic>
+          >(appLifecycleManagement, (value) => value.toMap()),
       'builtInLifecycleConfigArn': ?builtInLifecycleConfigArn,
-      'codeRepositories': ?pulumi.Input.mapOptionalInputValue<List<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>, List<Map<String, dynamic>>>(codeRepositories, (value) => pulumi.Input.encodeList<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'customImages': ?pulumi.Input.mapOptionalInputValue<List<UserProfileUserSettingsJupyterLabAppSettingsCustomImage>, List<Map<String, dynamic>>>(customImages, (value) => pulumi.Input.encodeList<UserProfileUserSettingsJupyterLabAppSettingsCustomImage, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'defaultResourceSpec': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec, Map<String, dynamic>>(defaultResourceSpec, (value) => value.toMap()),
-      'emrSettings': ?pulumi.Input.mapOptionalInputValue<UserProfileUserSettingsJupyterLabAppSettingsEmrSettings, Map<String, dynamic>>(emrSettings, (value) => value.toMap()),
+      'codeRepositories':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>,
+            List<Map<String, dynamic>>
+          >(
+            codeRepositories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserProfileUserSettingsJupyterLabAppSettingsCodeRepository,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'customImages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserProfileUserSettingsJupyterLabAppSettingsCustomImage>,
+            List<Map<String, dynamic>>
+          >(
+            customImages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserProfileUserSettingsJupyterLabAppSettingsCustomImage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'defaultResourceSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec,
+            Map<String, dynamic>
+          >(defaultResourceSpec, (value) => value.toMap()),
+      'emrSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserProfileUserSettingsJupyterLabAppSettingsEmrSettings,
+            Map<String, dynamic>
+          >(emrSettings, (value) => value.toMap()),
       'lifecycleConfigArns': ?lifecycleConfigArns,
     };
   }
 
-  factory UserProfileUserSettingsJupyterLabAppSettings.fromMap(Map<String, dynamic> map) {
+  factory UserProfileUserSettingsJupyterLabAppSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserProfileUserSettingsJupyterLabAppSettings(
-      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : ((UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement']! as Map).cast<String, dynamic>())).input()).input(),
-      builtInLifecycleConfigArn: map['builtInLifecycleConfigArn'] == null ? null : ((map['builtInLifecycleConfigArn'] as String).input()).input(),
-      codeRepositories: map['codeRepositories'] == null ? null : ((pulumi.Input.decodeList<UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>(map['codeRepositories']!, (value) => UserProfileUserSettingsJupyterLabAppSettingsCodeRepository.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      customImages: map['customImages'] == null ? null : ((pulumi.Input.decodeList<UserProfileUserSettingsJupyterLabAppSettingsCustomImage>(map['customImages']!, (value) => UserProfileUserSettingsJupyterLabAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
-      emrSettings: map['emrSettings'] == null ? null : ((UserProfileUserSettingsJupyterLabAppSettingsEmrSettings.fromMap((map['emrSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (((map['lifecycleConfigArns'] as List).cast<String>()).input()).input(),
+      appLifecycleManagement: (() {
+        final guardedValue = map['appLifecycleManagement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      builtInLifecycleConfigArn: (() {
+        final guardedValue = map['builtInLifecycleConfigArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      codeRepositories: (() {
+        final guardedValue = map['codeRepositories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            UserProfileUserSettingsJupyterLabAppSettingsCodeRepository
+          >(
+            guardedValue,
+            (value) =>
+                UserProfileUserSettingsJupyterLabAppSettingsCodeRepository.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      customImages: (() {
+        final guardedValue = map['customImages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            UserProfileUserSettingsJupyterLabAppSettingsCustomImage
+          >(
+            guardedValue,
+            (value) =>
+                UserProfileUserSettingsJupyterLabAppSettingsCustomImage.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      defaultResourceSpec: (() {
+        final guardedValue = map['defaultResourceSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserProfileUserSettingsJupyterLabAppSettingsDefaultResourceSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      emrSettings: (() {
+        final guardedValue = map['emrSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserProfileUserSettingsJupyterLabAppSettingsEmrSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lifecycleConfigArns: (() {
+        final guardedValue = map['lifecycleConfigArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_notificationhubs;
-
 export 'notificationhubs/access_rights.dart';
 export 'notificationhubs/adm_credential.dart';
 export 'notificationhubs/adm_credential_response.dart';

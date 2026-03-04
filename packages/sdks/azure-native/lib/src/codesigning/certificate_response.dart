@@ -6,26 +6,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateResponse {
   /// Certificate created date.
   final pulumi.Input<String>? createdDate;
+
   /// The timestamp when the revocation is effective.
   final pulumi.Input<String>? effectiveAt;
+
   /// Enhanced key usage of the certificate.
   final pulumi.Input<String>? enhancedKeyUsage;
+
   /// Certificate expiry date.
   final pulumi.Input<String>? expiryDate;
+
   /// Reason for the revocation failure.
   final pulumi.Input<String>? failureReason;
+
   /// Reason for revocation.
   final pulumi.Input<String>? reason;
+
   /// Remarks for the revocation.
   final pulumi.Input<String>? remarks;
+
   /// The timestamp when the revocation is requested.
   final pulumi.Input<String>? requestedAt;
+
   /// Serial number of the certificate.
   final pulumi.Input<String>? serialNumber;
+
   /// Status of the certificate.
   final pulumi.Input<String> status;
+
   /// Subject name of the certificate.
   final pulumi.Input<String>? subjectName;
+
   /// Thumbprint of the certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -76,19 +87,62 @@ class CertificateResponse {
 
   factory CertificateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateResponse(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
-      effectiveAt: map['effectiveAt'] == null ? null : (map['effectiveAt']! as String).input(),
-      enhancedKeyUsage: map['enhancedKeyUsage'] == null ? null : (map['enhancedKeyUsage']! as String).input(),
-      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate']! as String).input(),
-      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
-      remarks: map['remarks'] == null ? null : (map['remarks']! as String).input(),
-      requestedAt: map['requestedAt'] == null ? null : (map['requestedAt']! as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
-      status: (map['status'] as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      createdDate: (() {
+        final guardedValue = map['createdDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveAt: (() {
+        final guardedValue = map['effectiveAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enhancedKeyUsage: (() {
+        final guardedValue = map['enhancedKeyUsage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiryDate: (() {
+        final guardedValue = map['expiryDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      failureReason: (() {
+        final guardedValue = map['failureReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remarks: (() {
+        final guardedValue = map['remarks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestedAt: (() {
+        final guardedValue = map['requestedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serialNumber: (() {
+        final guardedValue = map['serialNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      subjectName: (() {
+        final guardedValue = map['subjectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

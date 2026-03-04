@@ -21,54 +21,79 @@ class AccountPropertiesResponse {
   /// The abuse penalty.
   final pulumi.Input<AbusePenaltyResponse> abusePenalty;
   final pulumi.Input<List<String>>? allowedFqdnList;
+
   /// The user owned AML workspace properties.
   final pulumi.Input<UserOwnedAmlWorkspaceResponse>? amlWorkspace;
+
   /// The api properties for special APIs.
   final pulumi.Input<ApiPropertiesResponse>? apiProperties;
+
   /// The call rate limit Cognitive Services account.
   final pulumi.Input<CallRateLimitResponse> callRateLimit;
+
   /// Gets the capabilities of the cognitive services account. Each item indicates the capability of a specific feature. The values are read-only and for reference only.
   final pulumi.Input<List<SkuCapabilityResponse>> capabilities;
+
   /// The commitment plan associations of Cognitive Services account.
-  final pulumi.Input<List<CommitmentPlanAssociationResponse>> commitmentPlanAssociations;
+  final pulumi.Input<List<CommitmentPlanAssociationResponse>>
+  commitmentPlanAssociations;
+
   /// Optional subdomain name used for token-based authentication.
   final pulumi.Input<String>? customSubDomainName;
+
   /// Gets the date of cognitive services account creation.
   final pulumi.Input<String> dateCreated;
+
   /// The deletion date, only available for deleted account.
   final pulumi.Input<String> deletionDate;
   final pulumi.Input<bool>? disableLocalAuth;
+
   /// The flag to enable dynamic throttling.
   final pulumi.Input<bool>? dynamicThrottlingEnabled;
+
   /// The encryption properties for this resource.
   final pulumi.Input<EncryptionResponse>? encryption;
+
   /// Endpoint of the created account.
   final pulumi.Input<String> endpoint;
   final pulumi.Input<Map<String, String>> endpoints;
+
   /// The internal identifier (deprecated, do not use this property).
   final pulumi.Input<String> internalId;
+
   /// If the resource is migrated from an existing key.
   final pulumi.Input<bool> isMigrated;
+
   /// The multiregion settings of Cognitive Services account.
   final pulumi.Input<MultiRegionSettingsResponse>? locations;
+
   /// Resource migration token.
   final pulumi.Input<String>? migrationToken;
+
   /// A collection of rules governing the accessibility from specific network locations.
   final pulumi.Input<NetworkRuleSetResponse>? networkAcls;
+
   /// The private endpoint connection associated with the Cognitive Services account.
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>>
+  privateEndpointConnections;
+
   /// Gets the status of the cognitive services account at the time the operation was called.
   final pulumi.Input<String> provisioningState;
+
   /// Whether or not public endpoint access is allowed for this account.
   final pulumi.Input<String>? publicNetworkAccess;
   final pulumi.Input<QuotaLimitResponse> quotaLimit;
+
   /// Cognitive Services Rai Monitor Config.
   final pulumi.Input<RaiMonitorConfigResponse>? raiMonitorConfig;
   final pulumi.Input<bool>? restrictOutboundNetworkAccess;
+
   /// The scheduled purge date, only available for deleted account.
   final pulumi.Input<String> scheduledPurgeDate;
+
   /// Sku change info of account.
   final pulumi.Input<SkuChangeInfoResponse> skuChangeInfo;
+
   /// The storage accounts for this resource.
   final pulumi.Input<List<UserOwnedStorageResponse>>? userOwnedStorage;
 
@@ -136,70 +161,283 @@ class AccountPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abusePenalty': pulumi.Input.mapInputValue<AbusePenaltyResponse, Map<String, dynamic>>(abusePenalty, (value) => value.toMap()),
+      'abusePenalty':
+          pulumi.Input.mapInputValue<
+            AbusePenaltyResponse,
+            Map<String, dynamic>
+          >(abusePenalty, (value) => value.toMap()),
       'allowedFqdnList': ?allowedFqdnList,
-      'amlWorkspace': ?pulumi.Input.mapOptionalInputValue<UserOwnedAmlWorkspaceResponse, Map<String, dynamic>>(amlWorkspace, (value) => value.toMap()),
-      'apiProperties': ?pulumi.Input.mapOptionalInputValue<ApiPropertiesResponse, Map<String, dynamic>>(apiProperties, (value) => value.toMap()),
-      'callRateLimit': pulumi.Input.mapInputValue<CallRateLimitResponse, Map<String, dynamic>>(callRateLimit, (value) => value.toMap()),
-      'capabilities': pulumi.Input.mapInputValue<List<SkuCapabilityResponse>, List<Map<String, dynamic>>>(capabilities, (value) => pulumi.Input.encodeList<SkuCapabilityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'commitmentPlanAssociations': pulumi.Input.mapInputValue<List<CommitmentPlanAssociationResponse>, List<Map<String, dynamic>>>(commitmentPlanAssociations, (value) => pulumi.Input.encodeList<CommitmentPlanAssociationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'amlWorkspace':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserOwnedAmlWorkspaceResponse,
+            Map<String, dynamic>
+          >(amlWorkspace, (value) => value.toMap()),
+      'apiProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiPropertiesResponse,
+            Map<String, dynamic>
+          >(apiProperties, (value) => value.toMap()),
+      'callRateLimit':
+          pulumi.Input.mapInputValue<
+            CallRateLimitResponse,
+            Map<String, dynamic>
+          >(callRateLimit, (value) => value.toMap()),
+      'capabilities':
+          pulumi.Input.mapInputValue<
+            List<SkuCapabilityResponse>,
+            List<Map<String, dynamic>>
+          >(
+            capabilities,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SkuCapabilityResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'commitmentPlanAssociations':
+          pulumi.Input.mapInputValue<
+            List<CommitmentPlanAssociationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            commitmentPlanAssociations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CommitmentPlanAssociationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'customSubDomainName': ?customSubDomainName,
       'dateCreated': dateCreated,
       'deletionDate': deletionDate,
       'disableLocalAuth': ?disableLocalAuth,
       'dynamicThrottlingEnabled': ?dynamicThrottlingEnabled,
-      'encryption': ?pulumi.Input.mapOptionalInputValue<EncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            EncryptionResponse,
+            Map<String, dynamic>
+          >(encryption, (value) => value.toMap()),
       'endpoint': endpoint,
       'endpoints': endpoints,
       'internalId': internalId,
       'isMigrated': isMigrated,
-      'locations': ?pulumi.Input.mapOptionalInputValue<MultiRegionSettingsResponse, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'locations':
+          ?pulumi.Input.mapOptionalInputValue<
+            MultiRegionSettingsResponse,
+            Map<String, dynamic>
+          >(locations, (value) => value.toMap()),
       'migrationToken': ?migrationToken,
-      'networkAcls': ?pulumi.Input.mapOptionalInputValue<NetworkRuleSetResponse, Map<String, dynamic>>(networkAcls, (value) => value.toMap()),
-      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkAcls':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkRuleSetResponse,
+            Map<String, dynamic>
+          >(networkAcls, (value) => value.toMap()),
+      'privateEndpointConnections':
+          pulumi.Input.mapInputValue<
+            List<PrivateEndpointConnectionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            privateEndpointConnections,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrivateEndpointConnectionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'quotaLimit': pulumi.Input.mapInputValue<QuotaLimitResponse, Map<String, dynamic>>(quotaLimit, (value) => value.toMap()),
-      'raiMonitorConfig': ?pulumi.Input.mapOptionalInputValue<RaiMonitorConfigResponse, Map<String, dynamic>>(raiMonitorConfig, (value) => value.toMap()),
+      'quotaLimit':
+          pulumi.Input.mapInputValue<QuotaLimitResponse, Map<String, dynamic>>(
+            quotaLimit,
+            (value) => value.toMap(),
+          ),
+      'raiMonitorConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RaiMonitorConfigResponse,
+            Map<String, dynamic>
+          >(raiMonitorConfig, (value) => value.toMap()),
       'restrictOutboundNetworkAccess': ?restrictOutboundNetworkAccess,
       'scheduledPurgeDate': scheduledPurgeDate,
-      'skuChangeInfo': pulumi.Input.mapInputValue<SkuChangeInfoResponse, Map<String, dynamic>>(skuChangeInfo, (value) => value.toMap()),
-      'userOwnedStorage': ?pulumi.Input.mapOptionalInputValue<List<UserOwnedStorageResponse>, List<Map<String, dynamic>>>(userOwnedStorage, (value) => pulumi.Input.encodeList<UserOwnedStorageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'skuChangeInfo':
+          pulumi.Input.mapInputValue<
+            SkuChangeInfoResponse,
+            Map<String, dynamic>
+          >(skuChangeInfo, (value) => value.toMap()),
+      'userOwnedStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserOwnedStorageResponse>,
+            List<Map<String, dynamic>>
+          >(
+            userOwnedStorage,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserOwnedStorageResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AccountPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AccountPropertiesResponse(
-      abusePenalty: (AbusePenaltyResponse.fromMap((map['abusePenalty'] as Map).cast<String, dynamic>())).input(),
-      allowedFqdnList: map['allowedFqdnList'] == null ? null : ((map['allowedFqdnList']! as List).cast<String>()).input(),
-      amlWorkspace: map['amlWorkspace'] == null ? null : (UserOwnedAmlWorkspaceResponse.fromMap((map['amlWorkspace']! as Map).cast<String, dynamic>())).input(),
-      apiProperties: map['apiProperties'] == null ? null : (ApiPropertiesResponse.fromMap((map['apiProperties']! as Map).cast<String, dynamic>())).input(),
-      callRateLimit: (CallRateLimitResponse.fromMap((map['callRateLimit'] as Map).cast<String, dynamic>())).input(),
-      capabilities: (pulumi.Input.decodeList<SkuCapabilityResponse>(map['capabilities'], (value) => SkuCapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      commitmentPlanAssociations: (pulumi.Input.decodeList<CommitmentPlanAssociationResponse>(map['commitmentPlanAssociations'], (value) => CommitmentPlanAssociationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customSubDomainName: map['customSubDomainName'] == null ? null : (map['customSubDomainName']! as String).input(),
-      dateCreated: (map['dateCreated'] as String).input(),
-      deletionDate: (map['deletionDate'] as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
-      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled']! as bool).input(),
-      encryption: map['encryption'] == null ? null : (EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      endpoint: (map['endpoint'] as String).input(),
-      endpoints: ((map['endpoints'] as Map).cast<String, String>()).input(),
-      internalId: (map['internalId'] as String).input(),
-      isMigrated: (map['isMigrated'] as bool).input(),
-      locations: map['locations'] == null ? null : (MultiRegionSettingsResponse.fromMap((map['locations']! as Map).cast<String, dynamic>())).input(),
-      migrationToken: map['migrationToken'] == null ? null : (map['migrationToken']! as String).input(),
-      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSetResponse.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
-      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      quotaLimit: (QuotaLimitResponse.fromMap((map['quotaLimit'] as Map).cast<String, dynamic>())).input(),
-      raiMonitorConfig: map['raiMonitorConfig'] == null ? null : (RaiMonitorConfigResponse.fromMap((map['raiMonitorConfig']! as Map).cast<String, dynamic>())).input(),
-      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess']! as bool).input(),
-      scheduledPurgeDate: (map['scheduledPurgeDate'] as String).input(),
-      skuChangeInfo: (SkuChangeInfoResponse.fromMap((map['skuChangeInfo'] as Map).cast<String, dynamic>())).input(),
-      userOwnedStorage: map['userOwnedStorage'] == null ? null : (pulumi.Input.decodeList<UserOwnedStorageResponse>(map['userOwnedStorage']!, (value) => UserOwnedStorageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      abusePenalty: pulumi.Input.fromValue(
+        AbusePenaltyResponse.fromMap(
+          (map['abusePenalty']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      allowedFqdnList: (() {
+        final guardedValue = map['allowedFqdnList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      amlWorkspace: (() {
+        final guardedValue = map['amlWorkspace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserOwnedAmlWorkspaceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      apiProperties: (() {
+        final guardedValue = map['apiProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      callRateLimit: pulumi.Input.fromValue(
+        CallRateLimitResponse.fromMap(
+          (map['callRateLimit']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      capabilities: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SkuCapabilityResponse>(
+          map['capabilities']!,
+          (value) => SkuCapabilityResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      commitmentPlanAssociations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<CommitmentPlanAssociationResponse>(
+          map['commitmentPlanAssociations']!,
+          (value) => CommitmentPlanAssociationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      customSubDomainName: (() {
+        final guardedValue = map['customSubDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dateCreated: pulumi.Input.fromValue(map['dateCreated'] as String),
+      deletionDate: pulumi.Input.fromValue(map['deletionDate'] as String),
+      disableLocalAuth: (() {
+        final guardedValue = map['disableLocalAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dynamicThrottlingEnabled: (() {
+        final guardedValue = map['dynamicThrottlingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EncryptionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      endpoints: pulumi.Input.fromValue(
+        (map['endpoints'] as Map).cast<String, String>(),
+      ),
+      internalId: pulumi.Input.fromValue(map['internalId'] as String),
+      isMigrated: pulumi.Input.fromValue(map['isMigrated'] as bool),
+      locations: (() {
+        final guardedValue = map['locations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MultiRegionSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      migrationToken: (() {
+        final guardedValue = map['migrationToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkAcls: (() {
+        final guardedValue = map['networkAcls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkRuleSetResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      privateEndpointConnections: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+          map['privateEndpointConnections']!,
+          (value) => PrivateEndpointConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      quotaLimit: pulumi.Input.fromValue(
+        QuotaLimitResponse.fromMap(
+          (map['quotaLimit']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      raiMonitorConfig: (() {
+        final guardedValue = map['raiMonitorConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RaiMonitorConfigResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      restrictOutboundNetworkAccess: (() {
+        final guardedValue = map['restrictOutboundNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scheduledPurgeDate: pulumi.Input.fromValue(
+        map['scheduledPurgeDate'] as String,
+      ),
+      skuChangeInfo: pulumi.Input.fromValue(
+        SkuChangeInfoResponse.fromMap(
+          (map['skuChangeInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      userOwnedStorage: (() {
+        final guardedValue = map['userOwnedStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserOwnedStorageResponse>(
+            guardedValue,
+            (value) => UserOwnedStorageResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

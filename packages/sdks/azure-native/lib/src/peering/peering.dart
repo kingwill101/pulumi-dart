@@ -929,24 +929,34 @@ import 'peering_sku_response.dart';
 class Peering extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The properties that define a direct peering.
   late final pulumi.Output<PeeringPropertiesDirectResponse?> direct;
+
   /// The properties that define an exchange peering.
   late final pulumi.Output<PeeringPropertiesExchangeResponse?> exchange;
+
   /// The kind of the peering.
   late final pulumi.Output<String> kind;
+
   /// The location of the resource.
   late final pulumi.Output<String> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The location of the peering.
   late final pulumi.Output<String?> peeringLocation;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU that defines the tier and kind of the peering.
   late final pulumi.Output<PeeringSkuResponse> sku;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -959,21 +969,21 @@ class Peering extends pulumi.CustomResource {
     PeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:peering:Peering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.direct = registerOutput<PeeringPropertiesDirectResponse?>('direct');
-    this.exchange = registerOutput<PeeringPropertiesExchangeResponse?>('exchange');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:peering:Peering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    direct = registerOutput<PeeringPropertiesDirectResponse?>('direct');
+    exchange = registerOutput<PeeringPropertiesExchangeResponse?>('exchange');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.peeringLocation = registerOutput<String?>('peeringLocation');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<PeeringSkuResponse>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    peeringLocation = registerOutput<String?>('peeringLocation');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<PeeringSkuResponse>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

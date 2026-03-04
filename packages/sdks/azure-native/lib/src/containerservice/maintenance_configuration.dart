@@ -2,8 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_configuration_args.dart';
 import 'maintenance_window_response.dart';
 import 'system_data_response.dart';
-import 'time_in_week_response.dart';
-import 'time_span_response.dart';
 
 /// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
 ///
@@ -276,16 +274,22 @@ import 'time_span_response.dart';
 class MaintenanceConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Maintenance window for the maintenance configuration.
   late final pulumi.Output<MaintenanceWindowResponse?> maintenanceWindow;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String> name;
+
   /// Time slots on which upgrade is not allowed.
-  late final pulumi.Output<List<TimeSpanResponse>?> notAllowedTime;
+  late final pulumi.Output<List<Map<String, dynamic>>?> notAllowedTime;
+
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
-  late final pulumi.Output<List<TimeInWeekResponse>?> timeInWeek;
+  late final pulumi.Output<List<Map<String, dynamic>>?> timeInWeek;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -298,17 +302,21 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     MaintenanceConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:MaintenanceConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow');
+         'azure-native:containerservice:MaintenanceConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    maintenanceWindow = registerOutput<MaintenanceWindowResponse?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.notAllowedTime = registerOutput<List<TimeSpanResponse>?>('notAllowedTime');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeInWeek = registerOutput<List<TimeInWeekResponse>?>('timeInWeek');
-    this.type = registerOutput<String>('type');
+    notAllowedTime = registerOutput<List<Map<String, dynamic>>?>(
+      'notAllowedTime',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeInWeek = registerOutput<List<Map<String, dynamic>>?>('timeInWeek');
+    type = registerOutput<String>('type');
   }
 }

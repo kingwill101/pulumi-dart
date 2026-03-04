@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorAwsS3Args {
   /// The ARN of the AWS role, which is connected to this AWS CloudTrail Data Connector. See the [Azure document](https://docs.microsoft.com/azure/sentinel/connect-aws?tabs=s3#create-an-aws-assumed-role-and-grant-access-to-the-aws-sentinel-account) for details.
   final pulumi.Input<String> awsRoleArn;
+
   /// The name of the Log Analytics table that will store the ingested data.
   final pulumi.Input<String> destinationTable;
+
   /// The ID of the Log Analytics Workspace that this AWS S3 Data Connector resides in. Changing this forces a new AWS S3 Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this AWS S3 Data Connector. Changing this forces a new AWS S3 Data Connector to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies a list of AWS SQS urls for the AWS S3 Data Connector.
   final pulumi.Input<List<String>> sqsUrls;
 
@@ -44,12 +48,19 @@ class DataConnectorAwsS3Args {
 
   factory DataConnectorAwsS3Args.fromMap(Map<String, dynamic> map) {
     return DataConnectorAwsS3Args(
-      awsRoleArn: (map['awsRoleArn'] as String).input(),
-      destinationTable: (map['destinationTable'] as String).input(),
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sqsUrls: ((map['sqsUrls'] as List).cast<String>()).input(),
+      awsRoleArn: pulumi.Input.fromValue(map['awsRoleArn'] as String),
+      destinationTable: pulumi.Input.fromValue(
+        map['destinationTable'] as String,
+      ),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sqsUrls: pulumi.Input.fromValue((map['sqsUrls'] as List).cast<String>()),
     );
   }
 }
-

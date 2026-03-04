@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedImageIdentifier {
   /// The Offer Name for this Shared Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> offer;
+
   /// The Publisher Name for this Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
+
   /// The Name of the SKU for this Gallery Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> sku;
 
@@ -30,10 +32,9 @@ class SharedImageIdentifier {
 
   factory SharedImageIdentifier.fromMap(Map<String, dynamic> map) {
     return SharedImageIdentifier(
-      offer: (map['offer'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      sku: (map['sku'] as String).input(),
+      offer: pulumi.Input.fromValue(map['offer'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
     );
   }
 }
-

@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostsHostCapacity {
   /// The remaining local disk capacity. Unit: GiB.
   final pulumi.Input<int> availableLocalStorage;
+
   /// The remaining memory capacity, unit: GiB.
   final pulumi.Input<double> availableMemory;
+
   /// The number of remaining vCPU cores.
   final pulumi.Input<int> availableVcpus;
+
   /// The number of available virtual GPUs.
   final pulumi.Input<int> availableVgpus;
+
   /// Local disk type.
   final pulumi.Input<String> localStorageCategory;
+
   /// The total capacity of the local disk, in GiB.
   final pulumi.Input<int> totalLocalStorage;
+
   /// The total memory capacity, unit: GiB.
   final pulumi.Input<double> totalMemory;
+
   /// The total number of vCPU cores.
   final pulumi.Input<int> totalVcpus;
+
   /// The total number of virtual GPUs.
   final pulumi.Input<int> totalVgpus;
 
@@ -60,16 +68,21 @@ class GetDedicatedHostsHostCapacity {
 
   factory GetDedicatedHostsHostCapacity.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsHostCapacity(
-      availableLocalStorage: (map['availableLocalStorage'] as int).input(),
-      availableMemory: (map['availableMemory'] as double).input(),
-      availableVcpus: (map['availableVcpus'] as int).input(),
-      availableVgpus: (map['availableVgpus'] as int).input(),
-      localStorageCategory: (map['localStorageCategory'] as String).input(),
-      totalLocalStorage: (map['totalLocalStorage'] as int).input(),
-      totalMemory: (map['totalMemory'] as double).input(),
-      totalVcpus: (map['totalVcpus'] as int).input(),
-      totalVgpus: (map['totalVgpus'] as int).input(),
+      availableLocalStorage: pulumi.Input.fromValue(
+        map['availableLocalStorage'] as int,
+      ),
+      availableMemory: pulumi.Input.fromValue(map['availableMemory'] as double),
+      availableVcpus: pulumi.Input.fromValue(map['availableVcpus'] as int),
+      availableVgpus: pulumi.Input.fromValue(map['availableVgpus'] as int),
+      localStorageCategory: pulumi.Input.fromValue(
+        map['localStorageCategory'] as String,
+      ),
+      totalLocalStorage: pulumi.Input.fromValue(
+        map['totalLocalStorage'] as int,
+      ),
+      totalMemory: pulumi.Input.fromValue(map['totalMemory'] as double),
+      totalVcpus: pulumi.Input.fromValue(map['totalVcpus'] as int),
+      totalVgpus: pulumi.Input.fromValue(map['totalVgpus'] as int),
     );
   }
 }
-

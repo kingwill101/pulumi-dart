@@ -9,8 +9,10 @@ import 'google_privacy_dlp_v2_value.dart';
 class GooglePrivacyDlpV2Condition {
   /// Field within the record this condition is evaluated against.
   final pulumi.Input<GooglePrivacyDlpV2FieldId> field;
+
   /// Operator used to compare the field or infoType to the value.
   final pulumi.Input<GooglePrivacyDlpV2ConditionOperator> operator;
+
   /// Value to compare against. [Mandatory, except for `EXISTS` tests.]
   final pulumi.Input<GooglePrivacyDlpV2Value>? value;
 
@@ -26,18 +28,45 @@ class GooglePrivacyDlpV2Condition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'field': pulumi.Input.mapInputValue<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(field, (value) => value.toMap()),
-      'operator': pulumi.Input.mapInputValue<GooglePrivacyDlpV2ConditionOperator, String>(operator, (value) => value.value),
-      'value': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Value, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'field':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2FieldId,
+            Map<String, dynamic>
+          >(field, (value) => value.toMap()),
+      'operator':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2ConditionOperator,
+            String
+          >(operator, (value) => value.wireValue),
+      'value':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2Value,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2Condition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Condition(
-      field: (GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
-      operator: (GooglePrivacyDlpV2ConditionOperator.fromValue(map['operator'] as String)).input(),
-      value: map['value'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
+      field: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2FieldId.fromMap(
+          (map['field']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      operator: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2ConditionOperator.fromValue(
+          map['operator']! as String,
+        ),
+      ),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2Value.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

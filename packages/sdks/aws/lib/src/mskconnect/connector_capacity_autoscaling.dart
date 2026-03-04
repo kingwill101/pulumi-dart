@@ -7,14 +7,19 @@ import 'connector_capacity_autoscaling_scale_out_policy.dart';
 class ConnectorCapacityAutoscaling {
   /// The maximum number of workers allocated to the connector.
   final pulumi.Input<int> maxWorkerCount;
+
   /// The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
   final pulumi.Input<int>? mcuCount;
+
   /// The minimum number of workers allocated to the connector.
   final pulumi.Input<int> minWorkerCount;
+
   /// The scale-in policy for the connector. See `scale_in_policy` Block for details.
   final pulumi.Input<ConnectorCapacityAutoscalingScaleInPolicy>? scaleInPolicy;
+
   /// The scale-out policy for the connector. See `scale_out_policy` Block for details.
-  final pulumi.Input<ConnectorCapacityAutoscalingScaleOutPolicy>? scaleOutPolicy;
+  final pulumi.Input<ConnectorCapacityAutoscalingScaleOutPolicy>?
+  scaleOutPolicy;
 
   /// Creates a new [ConnectorCapacityAutoscaling].
   /// [maxWorkerCount] The maximum number of workers allocated to the connector.
@@ -35,19 +40,46 @@ class ConnectorCapacityAutoscaling {
       'maxWorkerCount': maxWorkerCount,
       'mcuCount': ?mcuCount,
       'minWorkerCount': minWorkerCount,
-      'scaleInPolicy': ?pulumi.Input.mapOptionalInputValue<ConnectorCapacityAutoscalingScaleInPolicy, Map<String, dynamic>>(scaleInPolicy, (value) => value.toMap()),
-      'scaleOutPolicy': ?pulumi.Input.mapOptionalInputValue<ConnectorCapacityAutoscalingScaleOutPolicy, Map<String, dynamic>>(scaleOutPolicy, (value) => value.toMap()),
+      'scaleInPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorCapacityAutoscalingScaleInPolicy,
+            Map<String, dynamic>
+          >(scaleInPolicy, (value) => value.toMap()),
+      'scaleOutPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorCapacityAutoscalingScaleOutPolicy,
+            Map<String, dynamic>
+          >(scaleOutPolicy, (value) => value.toMap()),
     };
   }
 
   factory ConnectorCapacityAutoscaling.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityAutoscaling(
-      maxWorkerCount: (map['maxWorkerCount'] as int).input(),
-      mcuCount: map['mcuCount'] == null ? null : ((map['mcuCount'] as int).input()).input(),
-      minWorkerCount: (map['minWorkerCount'] as int).input(),
-      scaleInPolicy: map['scaleInPolicy'] == null ? null : ((ConnectorCapacityAutoscalingScaleInPolicy.fromMap((map['scaleInPolicy']! as Map).cast<String, dynamic>())).input()).input(),
-      scaleOutPolicy: map['scaleOutPolicy'] == null ? null : ((ConnectorCapacityAutoscalingScaleOutPolicy.fromMap((map['scaleOutPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      maxWorkerCount: pulumi.Input.fromValue(map['maxWorkerCount'] as int),
+      mcuCount: (() {
+        final guardedValue = map['mcuCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minWorkerCount: pulumi.Input.fromValue(map['minWorkerCount'] as int),
+      scaleInPolicy: (() {
+        final guardedValue = map['scaleInPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorCapacityAutoscalingScaleInPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scaleOutPolicy: (() {
+        final guardedValue = map['scaleOutPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorCapacityAutoscalingScaleOutPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class GrafanaPluginResponse {
 
   /// Creates a new [GrafanaPluginResponse].
   /// [pluginId] Grafana plugin id
-  GrafanaPluginResponse({
-    required this.pluginId,
-  });
+  GrafanaPluginResponse({required this.pluginId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pluginId': pluginId,
-    };
+    return <String, dynamic>{'pluginId': pluginId};
   }
 
   factory GrafanaPluginResponse.fromMap(Map<String, dynamic> map) {
     return GrafanaPluginResponse(
-      pluginId: (map['pluginId'] as String).input(),
+      pluginId: pulumi.Input.fromValue(map['pluginId'] as String),
     );
   }
 }
-

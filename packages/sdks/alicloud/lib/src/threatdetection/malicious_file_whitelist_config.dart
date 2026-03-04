@@ -6,7 +6,7 @@ import 'malicious_file_whitelist_config_state.dart';
 ///
 /// For information about Threat Detection Malicious File Whitelist Config and how to use it, see [What is Malicious File Whitelist Config](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createmaliciousfilewhitelistconfig/).
 ///
-/// > **NOTE:** Available since v1.214.0.
+/// &gt; **NOTE:** Available since v1.214.0.
 ///
 /// ## Example Usage
 ///
@@ -169,19 +169,26 @@ import 'malicious_file_whitelist_config_state.dart';
 class MaliciousFileWhitelistConfig extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// The name of the security alert associated with the representative rule.
   late final pulumi.Output<String?> eventName;
+
   /// Represents the alarm associated with the resource and the white field.
   late final pulumi.Output<String?> field;
+
   /// Represents the whiteout target value in effect for the resource.
   late final pulumi.Output<String?> fieldValue;
+
   /// The decision operator in effect on behalf of the resource.
   late final pulumi.Output<String?> operator;
+
   /// Business Source:
   /// - agentless: agentless detection.
   late final pulumi.Output<String?> source;
+
   /// The type of target in effect on behalf of the resource.
   late final pulumi.Output<String?> targetType;
+
   /// Represents the specific value of the target type in effect for the resource.
   late final pulumi.Output<String?> targetValue;
 
@@ -194,19 +201,19 @@ class MaliciousFileWhitelistConfig extends pulumi.CustomResource {
     MaliciousFileWhitelistConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.eventName = registerOutput<String?>('eventName');
-    this.field = registerOutput<String?>('field');
-    this.fieldValue = registerOutput<String?>('fieldValue');
-    this.operator = registerOutput<String?>('operator');
-    this.source = registerOutput<String?>('source');
-    this.targetType = registerOutput<String?>('targetType');
-    this.targetValue = registerOutput<String?>('targetValue');
+         'alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    eventName = registerOutput<String?>('eventName');
+    field = registerOutput<String?>('field');
+    fieldValue = registerOutput<String?>('fieldValue');
+    operator = registerOutput<String?>('operator');
+    source = registerOutput<String?>('source');
+    targetType = registerOutput<String?>('targetType');
+    targetValue = registerOutput<String?>('targetValue');
   }
 
   /// Gets an existing [MaliciousFileWhitelistConfig] resource's state with the given [name] and [id].
@@ -227,18 +234,18 @@ class MaliciousFileWhitelistConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.eventName = registerOutput<String?>('eventName');
-    this.field = registerOutput<String?>('field');
-    this.fieldValue = registerOutput<String?>('fieldValue');
-    this.operator = registerOutput<String?>('operator');
-    this.source = registerOutput<String?>('source');
-    this.targetType = registerOutput<String?>('targetType');
-    this.targetValue = registerOutput<String?>('targetValue');
+         'alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    eventName = registerOutput<String?>('eventName');
+    field = registerOutput<String?>('field');
+    fieldValue = registerOutput<String?>('fieldValue');
+    operator = registerOutput<String?>('operator');
+    source = registerOutput<String?>('source');
+    targetType = registerOutput<String?>('targetType');
+    targetValue = registerOutput<String?>('targetValue');
   }
 }

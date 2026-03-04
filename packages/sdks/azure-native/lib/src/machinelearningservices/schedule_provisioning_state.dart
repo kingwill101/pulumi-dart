@@ -4,16 +4,15 @@ enum ScheduleProvisioningState {
   valueProvisioning("Provisioning"),
   valueFailed("Failed");
 
-  const ScheduleProvisioningState(this.value);
-  final String value;
+  const ScheduleProvisioningState(this.wireValue);
+  final String wireValue;
 
   static ScheduleProvisioningState fromValue(String value) {
     for (final item in ScheduleProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduleProvisioningState value: $value');
   }
 }
-

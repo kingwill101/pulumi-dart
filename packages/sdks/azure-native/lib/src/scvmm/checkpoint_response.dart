@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CheckpointResponse {
   /// Gets ID of the checkpoint.
   final pulumi.Input<String>? checkpointID;
+
   /// Gets description of the checkpoint.
   final pulumi.Input<String>? description;
+
   /// Gets name of the checkpoint.
   final pulumi.Input<String>? name;
+
   /// Gets ID of parent of the checkpoint.
   final pulumi.Input<String>? parentCheckpointID;
 
@@ -36,11 +39,26 @@ class CheckpointResponse {
 
   factory CheckpointResponse.fromMap(Map<String, dynamic> map) {
     return CheckpointResponse(
-      checkpointID: map['checkpointID'] == null ? null : (map['checkpointID']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentCheckpointID: map['parentCheckpointID'] == null ? null : (map['parentCheckpointID']! as String).input(),
+      checkpointID: (() {
+        final guardedValue = map['checkpointID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentCheckpointID: (() {
+        final guardedValue = map['parentCheckpointID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

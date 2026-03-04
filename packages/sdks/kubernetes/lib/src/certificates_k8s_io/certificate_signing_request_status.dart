@@ -28,29 +28,52 @@ class CertificateSigningRequestStatus {
   /// -----END CERTIFICATE-----
   /// )
   final pulumi.Input<String>? certificate;
+
   /// conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
   final pulumi.Input<List<CertificateSigningRequestCondition>>? conditions;
 
   /// Creates a new [CertificateSigningRequestStatus].
   /// [certificate] certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.
   /// [conditions] conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
-  CertificateSigningRequestStatus({
-    this.certificate,
-    this.conditions,
-  });
+  CertificateSigningRequestStatus({this.certificate, this.conditions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificate': ?certificate,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<CertificateSigningRequestCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<CertificateSigningRequestCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CertificateSigningRequestCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CertificateSigningRequestCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CertificateSigningRequestStatus.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestStatus(
-      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestCondition>(map['conditions']!, (value) => CertificateSigningRequestCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CertificateSigningRequestCondition>(
+            guardedValue,
+            (value) => CertificateSigningRequestCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

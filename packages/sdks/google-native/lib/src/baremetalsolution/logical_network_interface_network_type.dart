@@ -4,16 +4,17 @@ enum LogicalNetworkInterfaceNetworkType {
   client("CLIENT"),
   private("PRIVATE");
 
-  const LogicalNetworkInterfaceNetworkType(this.value);
-  final String value;
+  const LogicalNetworkInterfaceNetworkType(this.wireValue);
+  final String wireValue;
 
   static LogicalNetworkInterfaceNetworkType fromValue(String value) {
     for (final item in LogicalNetworkInterfaceNetworkType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LogicalNetworkInterfaceNetworkType value: $value');
+    throw ArgumentError(
+      'Unknown LogicalNetworkInterfaceNetworkType value: $value',
+    );
   }
 }
-

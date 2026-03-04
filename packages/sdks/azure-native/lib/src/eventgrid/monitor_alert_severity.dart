@@ -7,16 +7,15 @@ enum MonitorAlertSeverity {
   valueSev3("Sev3"),
   valueSev4("Sev4");
 
-  const MonitorAlertSeverity(this.value);
-  final String value;
+  const MonitorAlertSeverity(this.wireValue);
+  final String wireValue;
 
   static MonitorAlertSeverity fromValue(String value) {
     for (final item in MonitorAlertSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitorAlertSeverity value: $value');
   }
 }
-

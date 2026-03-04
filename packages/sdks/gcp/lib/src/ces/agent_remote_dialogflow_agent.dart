@@ -8,14 +8,18 @@ class AgentRemoteDialogflowAgent {
   /// agent resource name.
   /// Format: `projects/{project}/locations/{location}/agents/{agent}`
   final pulumi.Input<String> agent;
+
   /// The environment ID of the Dialogflow agent be used for the agent
   /// execution. If not specified, the draft environment will be used.
   final pulumi.Input<String>? environmentId;
+
   /// The flow ID of the flow in the Dialogflow agent.
   final pulumi.Input<String> flowId;
+
   /// The mapping of the app variables names to the Dialogflow session
   /// parameters names to be sent to the Dialogflow agent as input.
   final pulumi.Input<Map<String, String>>? inputVariableMapping;
+
   /// The mapping of the Dialogflow session parameters names to the app
   /// variables names to be sent back to the CES agent after the Dialogflow
   /// agent execution ends.
@@ -47,12 +51,27 @@ class AgentRemoteDialogflowAgent {
 
   factory AgentRemoteDialogflowAgent.fromMap(Map<String, dynamic> map) {
     return AgentRemoteDialogflowAgent(
-      agent: (map['agent'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
-      flowId: (map['flowId'] as String).input(),
-      inputVariableMapping: map['inputVariableMapping'] == null ? null : ((map['inputVariableMapping']! as Map).cast<String, String>()).input(),
-      outputVariableMapping: map['outputVariableMapping'] == null ? null : ((map['outputVariableMapping']! as Map).cast<String, String>()).input(),
+      agent: pulumi.Input.fromValue(map['agent'] as String),
+      environmentId: (() {
+        final guardedValue = map['environmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      flowId: pulumi.Input.fromValue(map['flowId'] as String),
+      inputVariableMapping: (() {
+        final guardedValue = map['inputVariableMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      outputVariableMapping: (() {
+        final guardedValue = map['outputVariableMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

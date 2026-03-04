@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelectedResource {
   /// Id of the connection
   final pulumi.Input<String> id;
+
   /// Location of the connection
   final pulumi.Input<String>? location;
+
   /// Name of the connection
   final pulumi.Input<String>? name;
+
   /// Name of the subscription with the connection
   final pulumi.Input<String>? subscriptionName;
 
@@ -36,11 +39,22 @@ class SelectedResource {
 
   factory SelectedResource.fromMap(Map<String, dynamic> map) {
     return SelectedResource(
-      id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionName: (() {
+        final guardedValue = map['subscriptionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ class GetCertificatesCertificateManagedProvisioningIssue {
   /// the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'reason' field.
   final pulumi.Input<String> details;
+
   /// Reason for provisioning failures.
   final pulumi.Input<String> reason;
 
@@ -19,17 +20,15 @@ class GetCertificatesCertificateManagedProvisioningIssue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'details': details,
-      'reason': reason,
-    };
+    return <String, dynamic>{'details': details, 'reason': reason};
   }
 
-  factory GetCertificatesCertificateManagedProvisioningIssue.fromMap(Map<String, dynamic> map) {
+  factory GetCertificatesCertificateManagedProvisioningIssue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificatesCertificateManagedProvisioningIssue(
-      details: (map['details'] as String).input(),
-      reason: (map['reason'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
     );
   }
 }
-

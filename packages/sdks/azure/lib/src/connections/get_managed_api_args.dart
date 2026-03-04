@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedApiArgs {
   /// The Azure location for this Managed API.
   final pulumi.Input<String> location;
+
   /// Specifies the name of the Managed API.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetManagedApiArgs].
   /// [location] The Azure location for this Managed API.
   /// [name] Specifies the name of the Managed API.
-  GetManagedApiArgs({
-    required this.location,
-    required this.name,
-  });
+  GetManagedApiArgs({required this.location, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-      'name': name,
-    };
+    return <String, dynamic>{'location': location, 'name': name};
   }
 
   factory GetManagedApiArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedApiArgs(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

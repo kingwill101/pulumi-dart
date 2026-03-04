@@ -29,12 +29,17 @@ class GetGatewayNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetGatewayNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayNetworkservicesV1beta1Args(
-      gatewayId: (map['gatewayId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

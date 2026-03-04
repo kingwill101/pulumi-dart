@@ -5,16 +5,22 @@ enum ValidationOptionsSchemaValidationDeploymentmanagerV2beta {
   ignoreWithWarnings("IGNORE_WITH_WARNINGS"),
   fail("FAIL");
 
-  const ValidationOptionsSchemaValidationDeploymentmanagerV2beta(this.value);
-  final String value;
+  const ValidationOptionsSchemaValidationDeploymentmanagerV2beta(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static ValidationOptionsSchemaValidationDeploymentmanagerV2beta fromValue(String value) {
-    for (final item in ValidationOptionsSchemaValidationDeploymentmanagerV2beta.values) {
-      if (item.value == value) {
+  static ValidationOptionsSchemaValidationDeploymentmanagerV2beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ValidationOptionsSchemaValidationDeploymentmanagerV2beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ValidationOptionsSchemaValidationDeploymentmanagerV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ValidationOptionsSchemaValidationDeploymentmanagerV2beta value: $value',
+    );
   }
 }
-

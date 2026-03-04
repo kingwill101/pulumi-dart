@@ -12,26 +12,37 @@ import 'virtual_hard_disk.dart';
 class OSDisk {
   /// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior is: **None for Standard storage. ReadOnly for Premium storage.**
   final pulumi.Input<CachingTypes>? caching;
+
   /// Specifies how the virtual machine disk should be created. Possible values are **Attach:** This value is used when you are using a specialized disk to create the virtual machine. **FromImage:** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you should also use the imageReference element described above. If you are using a marketplace image, you should also use the plan element previously described.
   final pulumi.Input<String> createOption;
+
   /// Specifies whether OS Disk should be deleted or detached upon VM deletion. Possible values are: **Delete.** If this value is used, the OS disk is deleted when VM is deleted. **Detach.** If this value is used, the os disk is retained after VM is deleted. The default value is set to **Detach**. For an ephemeral OS Disk, the default value is set to **Delete**. The user cannot change the delete option for an ephemeral OS Disk.
   final pulumi.Input<String>? deleteOption;
+
   /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
   final pulumi.Input<DiffDiskSettings>? diffDiskSettings;
+
   /// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
   final pulumi.Input<int>? diskSizeGB;
+
   /// Specifies the encryption settings for the OS Disk. Minimum api-version: 2015-06-15.
   final pulumi.Input<DiskEncryptionSettings>? encryptionSettings;
+
   /// The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
   final pulumi.Input<VirtualHardDisk>? image;
+
   /// The managed disk parameters.
   final pulumi.Input<ManagedDiskParameters>? managedDisk;
+
   /// The disk name.
   final pulumi.Input<String>? name;
+
   /// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
   final pulumi.Input<OperatingSystemTypes>? osType;
+
   /// The virtual hard disk.
   final pulumi.Input<VirtualHardDisk>? vhd;
+
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
   final pulumi.Input<bool>? writeAcceleratorEnabled;
 
@@ -65,36 +76,130 @@ class OSDisk {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caching': ?pulumi.Input.mapOptionalInputValue<CachingTypes, String>(caching, (value) => value.value),
+      'caching': ?pulumi.Input.mapOptionalInputValue<CachingTypes, String>(
+        caching,
+        (value) => value.wireValue,
+      ),
       'createOption': createOption,
       'deleteOption': ?deleteOption,
-      'diffDiskSettings': ?pulumi.Input.mapOptionalInputValue<DiffDiskSettings, Map<String, dynamic>>(diffDiskSettings, (value) => value.toMap()),
+      'diffDiskSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiffDiskSettings,
+            Map<String, dynamic>
+          >(diffDiskSettings, (value) => value.toMap()),
       'diskSizeGB': ?diskSizeGB,
-      'encryptionSettings': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionSettings, Map<String, dynamic>>(encryptionSettings, (value) => value.toMap()),
-      'image': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(image, (value) => value.toMap()),
-      'managedDisk': ?pulumi.Input.mapOptionalInputValue<ManagedDiskParameters, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
+      'encryptionSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskEncryptionSettings,
+            Map<String, dynamic>
+          >(encryptionSettings, (value) => value.toMap()),
+      'image':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualHardDisk,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
+      'managedDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedDiskParameters,
+            Map<String, dynamic>
+          >(managedDisk, (value) => value.toMap()),
       'name': ?name,
-      'osType': ?pulumi.Input.mapOptionalInputValue<OperatingSystemTypes, String>(osType, (value) => value.value),
-      'vhd': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(vhd, (value) => value.toMap()),
+      'osType':
+          ?pulumi.Input.mapOptionalInputValue<OperatingSystemTypes, String>(
+            osType,
+            (value) => value.wireValue,
+          ),
+      'vhd':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualHardDisk,
+            Map<String, dynamic>
+          >(vhd, (value) => value.toMap()),
       'writeAcceleratorEnabled': ?writeAcceleratorEnabled,
     };
   }
 
   factory OSDisk.fromMap(Map<String, dynamic> map) {
     return OSDisk(
-      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching']! as String)).input(),
-      createOption: (map['createOption'] as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
-      diffDiskSettings: map['diffDiskSettings'] == null ? null : (DiffDiskSettings.fromMap((map['diffDiskSettings']! as Map).cast<String, dynamic>())).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (DiskEncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParameters.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      osType: map['osType'] == null ? null : (OperatingSystemTypes.fromValue(map['osType']! as String)).input(),
-      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd']! as Map).cast<String, dynamic>())).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
+      caching: (() {
+        final guardedValue = map['caching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CachingTypes.fromValue(guardedValue as String),
+        );
+      })(),
+      createOption: pulumi.Input.fromValue(map['createOption'] as String),
+      deleteOption: (() {
+        final guardedValue = map['deleteOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diffDiskSettings: (() {
+        final guardedValue = map['diffDiskSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiffDiskSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      diskSizeGB: (() {
+        final guardedValue = map['diskSizeGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      encryptionSettings: (() {
+        final guardedValue = map['encryptionSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskEncryptionSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualHardDisk.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      managedDisk: (() {
+        final guardedValue = map['managedDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedDiskParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OperatingSystemTypes.fromValue(guardedValue as String),
+        );
+      })(),
+      vhd: (() {
+        final guardedValue = map['vhd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualHardDisk.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      writeAcceleratorEnabled: (() {
+        final guardedValue = map['writeAcceleratorEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

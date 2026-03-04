@@ -13,15 +13,14 @@ class IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authorization': authorization,
-    };
+    return <String, dynamic>{'authorization': authorization};
   }
 
-  factory IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess.fromMap(Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess(
-      authorization: (map['authorization'] as String).input(),
+      authorization: pulumi.Input.fromValue(map['authorization'] as String),
     );
   }
 }
-

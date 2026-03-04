@@ -9,20 +9,13 @@ class SubResourceResponse {
 
   /// Creates a new [SubResourceResponse].
   /// [id] Resource ID.
-  SubResourceResponse({
-    required this.id,
-  });
+  SubResourceResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory SubResourceResponse.fromMap(Map<String, dynamic> map) {
-    return SubResourceResponse(
-      id: (map['id'] as String).input(),
-    );
+    return SubResourceResponse(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

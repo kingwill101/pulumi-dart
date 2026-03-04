@@ -6,7 +6,7 @@ import 'storage_bundle_state.dart';
 ///
 /// For information about Cloud Storage Gateway Storage Bundle and how to use it, see [What is Storage Bundle](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/createstoragebundle).
 ///
-/// > **NOTE:** Available since v1.116.0.
+/// &gt; **NOTE:** Available since v1.116.0.
 ///
 /// ## Example Usage
 ///
@@ -110,6 +110,7 @@ import 'storage_bundle_state.dart';
 class StorageBundle extends pulumi.CustomResource {
   /// The description of storage bundle.
   late final pulumi.Output<String?> description;
+
   /// The name of storage bundle.
   late final pulumi.Output<String> storageBundleName;
 
@@ -122,13 +123,13 @@ class StorageBundle extends pulumi.CustomResource {
     StorageBundleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.storageBundleName = registerOutput<String>('storageBundleName');
+         'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    storageBundleName = registerOutput<String>('storageBundleName');
   }
 
   /// Gets an existing [StorageBundle] resource's state with the given [name] and [id].
@@ -149,12 +150,12 @@ class StorageBundle extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.storageBundleName = registerOutput<String>('storageBundleName');
+         'alicloud:cloudstoragegateway/storageBundle:StorageBundle',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    storageBundleName = registerOutput<String>('storageBundleName');
   }
 }

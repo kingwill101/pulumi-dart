@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayPrivateEndpointConnectionArgs {
   /// The name of the application gateway.
   final pulumi.Input<String> applicationGatewayName;
+
   /// The name of the application gateway private endpoint connection.
   final pulumi.Input<String> connectionName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetApplicationGatewayPrivateEndpointConnectionArgs {
     };
   }
 
-  factory GetApplicationGatewayPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayPrivateEndpointConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayPrivateEndpointConnectionArgs(
-      applicationGatewayName: (map['applicationGatewayName'] as String).input(),
-      connectionName: (map['connectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      applicationGatewayName: pulumi.Input.fromValue(
+        map['applicationGatewayName'] as String,
+      ),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

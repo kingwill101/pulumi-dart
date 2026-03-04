@@ -7,76 +7,98 @@ import 'registry_enterprise_instance_instance_endpoint.dart';
 class RegistryEnterpriseInstanceState {
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
   final pulumi.Input<String>? createdTime;
+
   /// Custom OSS Bucket name
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? customOssBucket;
+
   /// Whether to use the default OSS Bucket. Value:
   final pulumi.Input<String>? defaultOssBucket;
+
   /// Expiration Time
   final pulumi.Input<String>? endTime;
+
   /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
   /// - `ACR`: Uses the Trivy scan engine provided by default.
   /// - `SAS`: uses the enhanced cloud security scan engine.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? imageScanner;
+
   /// (Available since v1.240.0) Instance Network Access Endpoint List
-  final pulumi.Input<List<RegistryEnterpriseInstanceInstanceEndpoint>>? instanceEndpoints;
+  final pulumi.Input<List<RegistryEnterpriseInstanceInstanceEndpoint>>?
+  instanceEndpoints;
+
   /// InstanceName
   final pulumi.Input<String>? instanceName;
+
   /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
   /// - `Basic`: Basic instance
   /// - `Standard`: Standard instance
   /// - `Advanced`: Advanced Edition Instance
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? instanceType;
+
   /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
   final pulumi.Input<String>? kmsEncryptedPassword;
+
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   final pulumi.Input<Map<String, String>>? kmsEncryptionContext;
+
   /// The number of additional namespaces to purchase. The value is an integral multiple of `5`.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<int>? namespaceQuota;
+
   /// Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
   final pulumi.Input<String>? password;
+
   /// Payment type, value:
   /// - Subscription: Prepaid.
   final pulumi.Input<String>? paymentType;
+
   /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
   ///
-  /// > **NOTE:**  must be set when creating a prepaid instance.
+  /// &gt; **NOTE:**  must be set when creating a prepaid instance.
   ///
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<int>? period;
+
   /// RegionId
   final pulumi.Input<String>? regionId;
+
   /// Automatic renewal cycle, in months.
   ///
-  /// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
+  /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
   final pulumi.Input<int>? renewPeriod;
+
   /// Automatic renewal status, value:
   /// - AutoRenewal: automatic renewal.
   /// - ManualRenewal: manual renewal.
   ///
   /// Default ManualRenewal.
   final pulumi.Input<String>? renewalStatus;
+
   /// The number of additional repositories to purchase. The value is an integral multiple of `1000`.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<int>? repoQuota;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
+
   /// Instance Status
   final pulumi.Input<String>? status;
+
   /// The number of VPC access controls.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   ///
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -138,7 +160,18 @@ class RegistryEnterpriseInstanceState {
       'defaultOssBucket': ?defaultOssBucket,
       'endTime': ?endTime,
       'imageScanner': ?imageScanner,
-      'instanceEndpoints': ?pulumi.Input.mapOptionalInputValue<List<RegistryEnterpriseInstanceInstanceEndpoint>, List<Map<String, dynamic>>>(instanceEndpoints, (value) => pulumi.Input.encodeList<RegistryEnterpriseInstanceInstanceEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instanceEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegistryEnterpriseInstanceInstanceEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            instanceEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegistryEnterpriseInstanceInstanceEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'instanceName': ?instanceName,
       'instanceType': ?instanceType,
       'kmsEncryptedPassword': ?kmsEncryptedPassword,
@@ -159,29 +192,125 @@ class RegistryEnterpriseInstanceState {
 
   factory RegistryEnterpriseInstanceState.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseInstanceState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
-      customOssBucket: map['customOssBucket'] == null ? null : (map['customOssBucket']! as String).input(),
-      defaultOssBucket: map['defaultOssBucket'] == null ? null : (map['defaultOssBucket']! as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      imageScanner: map['imageScanner'] == null ? null : (map['imageScanner']! as String).input(),
-      instanceEndpoints: map['instanceEndpoints'] == null ? null : (pulumi.Input.decodeList<RegistryEnterpriseInstanceInstanceEndpoint>(map['instanceEndpoints']!, (value) => RegistryEnterpriseInstanceInstanceEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
-      namespaceQuota: map['namespaceQuota'] == null ? null : (map['namespaceQuota']! as int).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
-      repoQuota: map['repoQuota'] == null ? null : (map['repoQuota']! as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcQuota: map['vpcQuota'] == null ? null : (map['vpcQuota']! as int).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdTime: (() {
+        final guardedValue = map['createdTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customOssBucket: (() {
+        final guardedValue = map['customOssBucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultOssBucket: (() {
+        final guardedValue = map['defaultOssBucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageScanner: (() {
+        final guardedValue = map['imageScanner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceEndpoints: (() {
+        final guardedValue = map['instanceEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegistryEnterpriseInstanceInstanceEndpoint>(
+            guardedValue,
+            (value) => RegistryEnterpriseInstanceInstanceEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncryptedPassword: (() {
+        final guardedValue = map['kmsEncryptedPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncryptionContext: (() {
+        final guardedValue = map['kmsEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      namespaceQuota: (() {
+        final guardedValue = map['namespaceQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewPeriod: (() {
+        final guardedValue = map['renewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewalStatus: (() {
+        final guardedValue = map['renewalStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoQuota: (() {
+        final guardedValue = map['repoQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcQuota: (() {
+        final guardedValue = map['vpcQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

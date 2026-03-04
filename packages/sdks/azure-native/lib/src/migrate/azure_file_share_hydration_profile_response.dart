@@ -7,12 +7,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileShareHydrationProfileResponse {
   /// Gets or sets the cloud directory path of the directory on azure file share.
   final pulumi.Input<String>? azureFileShareDirPath;
+
   /// Gets or sets the name of the azure file share.
   final pulumi.Input<String>? azureFileShareName;
+
   /// Gets or sets the name of the azure file share resource group.
   final pulumi.Input<String>? azureFileShareResourceGroup;
+
   /// Gets or sets the name of the azure file share storage account.
   final pulumi.Input<String>? azureFileShareStorageAccount;
+
   /// Gets or sets the subscription id of the azure file share.
   final pulumi.Input<String>? azureFileShareSubscriptionId;
 
@@ -40,14 +44,35 @@ class AzureFileShareHydrationProfileResponse {
     };
   }
 
-  factory AzureFileShareHydrationProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureFileShareHydrationProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureFileShareHydrationProfileResponse(
-      azureFileShareDirPath: map['azureFileShareDirPath'] == null ? null : (map['azureFileShareDirPath']! as String).input(),
-      azureFileShareName: map['azureFileShareName'] == null ? null : (map['azureFileShareName']! as String).input(),
-      azureFileShareResourceGroup: map['azureFileShareResourceGroup'] == null ? null : (map['azureFileShareResourceGroup']! as String).input(),
-      azureFileShareStorageAccount: map['azureFileShareStorageAccount'] == null ? null : (map['azureFileShareStorageAccount']! as String).input(),
-      azureFileShareSubscriptionId: map['azureFileShareSubscriptionId'] == null ? null : (map['azureFileShareSubscriptionId']! as String).input(),
+      azureFileShareDirPath: (() {
+        final guardedValue = map['azureFileShareDirPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureFileShareName: (() {
+        final guardedValue = map['azureFileShareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureFileShareResourceGroup: (() {
+        final guardedValue = map['azureFileShareResourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureFileShareStorageAccount: (() {
+        final guardedValue = map['azureFileShareStorageAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureFileShareSubscriptionId: (() {
+        final guardedValue = map['azureFileShareSubscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

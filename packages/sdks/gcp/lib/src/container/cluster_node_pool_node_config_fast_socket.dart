@@ -8,20 +8,17 @@ class ClusterNodePoolNodeConfigFastSocket {
 
   /// Creates a new [ClusterNodePoolNodeConfigFastSocket].
   /// [enabled] Whether or not the NCCL Fast Socket is enabled
-  ClusterNodePoolNodeConfigFastSocket({
-    required this.enabled,
-  });
+  ClusterNodePoolNodeConfigFastSocket({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory ClusterNodePoolNodeConfigFastSocket.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigFastSocket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolNodeConfigFastSocket(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

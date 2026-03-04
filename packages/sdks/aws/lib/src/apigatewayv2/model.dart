@@ -190,14 +190,19 @@ import 'model_state.dart';
 class Model extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
+
   /// The content-type for the model, for example, `application/json`. Must be between 1 and 256 characters in length.
   late final pulumi.Output<String> contentType;
+
   /// Description of the model. Must be between 1 and 128 characters in length.
   late final pulumi.Output<String?> description;
+
   /// Name of the model. Must be alphanumeric. Must be between 1 and 128 characters in length.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model. Must be less than or equal to 32768 characters in length.
   late final pulumi.Output<String> schema;
 
@@ -205,30 +210,23 @@ class Model extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Model]. {@macro pulumi_apigatewayv2_model_model_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Model(
-    String name, {
-    ModelArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:apigatewayv2/model:Model',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.contentType = registerOutput<String>('contentType');
-    this.description = registerOutput<String?>('description');
+  Model(String name, {ModelArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:apigatewayv2/model:Model',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiId = registerOutput<String>('apiId');
+    contentType = registerOutput<String>('contentType');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.schema = registerOutput<String>('schema');
+    region = registerOutput<String>('region');
+    schema = registerOutput<String>('schema');
   }
 
   /// Gets an existing [Model] resource's state with the given [name] and [id].
-  static Model get(
-    String name,
-    pulumi.Input<String> id, {
-    ModelState? state,
-  }) {
+  static Model get(String name, pulumi.Input<String> id, {ModelState? state}) {
     return Model._get(
       name,
       state: state?.toMap(),
@@ -241,16 +239,16 @@ class Model extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigatewayv2/model:Model',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.contentType = registerOutput<String>('contentType');
-    this.description = registerOutput<String?>('description');
+         'aws:apigatewayv2/model:Model',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    contentType = registerOutput<String>('contentType');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.schema = registerOutput<String>('schema');
+    region = registerOutput<String>('region');
+    schema = registerOutput<String>('schema');
   }
 }

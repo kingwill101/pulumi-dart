@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventRuleMnsParameter {
   /// (Available since v1.211.1) The ARN of the API operation.
   final pulumi.Input<String>? arn;
+
   /// The ID of the recipient that receives alert notifications.
   final pulumi.Input<String>? mnsParametersId;
+
   /// The name of the MNS queue.
   final pulumi.Input<String>? queue;
+
   /// The region where Message Service (MNS) is deployed.
   final pulumi.Input<String>? region;
+
   /// The MNS topic.
   final pulumi.Input<String>? topic;
 
@@ -40,12 +44,31 @@ class EventRuleMnsParameter {
 
   factory EventRuleMnsParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleMnsParameter(
-      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
-      mnsParametersId: map['mnsParametersId'] == null ? null : (map['mnsParametersId']! as String).input(),
-      queue: map['queue'] == null ? null : (map['queue']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mnsParametersId: (() {
+        final guardedValue = map['mnsParametersId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queue: (() {
+        final guardedValue = map['queue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -45,10 +45,13 @@ import 'api_deployment_state.dart';
 class ApiDeployment extends pulumi.CustomResource {
   /// The Apigee Environment associated with the Apigee API deployment.
   late final pulumi.Output<String> environment;
+
   /// The Apigee Organization associated with the Apigee API deployment.
   late final pulumi.Output<String> orgId;
+
   /// The Apigee API associated with the Apigee API deployment.
   late final pulumi.Output<String> proxyId;
+
   /// The revision of the API proxy to be deployed.
   late final pulumi.Output<String> revision;
 
@@ -61,15 +64,15 @@ class ApiDeployment extends pulumi.CustomResource {
     ApiDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/apiDeployment:ApiDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.environment = registerOutput<String>('environment');
-    this.orgId = registerOutput<String>('orgId');
-    this.proxyId = registerOutput<String>('proxyId');
-    this.revision = registerOutput<String>('revision');
+         'gcp:apigee/apiDeployment:ApiDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    environment = registerOutput<String>('environment');
+    orgId = registerOutput<String>('orgId');
+    proxyId = registerOutput<String>('proxyId');
+    revision = registerOutput<String>('revision');
   }
 
   /// Gets an existing [ApiDeployment] resource's state with the given [name] and [id].
@@ -90,14 +93,14 @@ class ApiDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/apiDeployment:ApiDeployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.environment = registerOutput<String>('environment');
-    this.orgId = registerOutput<String>('orgId');
-    this.proxyId = registerOutput<String>('proxyId');
-    this.revision = registerOutput<String>('revision');
+         'gcp:apigee/apiDeployment:ApiDeployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    environment = registerOutput<String>('environment');
+    orgId = registerOutput<String>('orgId');
+    proxyId = registerOutput<String>('proxyId');
+    revision = registerOutput<String>('revision');
   }
 }

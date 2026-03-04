@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenseRuleConfigWafBaseConfigRuleDetail {
   /// Web core protection rule action. Valid values:
   final pulumi.Input<String>? ruleAction;
+
   /// The protection rule ID.
   final pulumi.Input<String>? ruleId;
+
   /// Protection rule status.
   final pulumi.Input<int>? ruleStatus;
 
@@ -28,12 +30,25 @@ class DefenseRuleConfigWafBaseConfigRuleDetail {
     };
   }
 
-  factory DefenseRuleConfigWafBaseConfigRuleDetail.fromMap(Map<String, dynamic> map) {
+  factory DefenseRuleConfigWafBaseConfigRuleDetail.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenseRuleConfigWafBaseConfigRuleDetail(
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction']! as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
-      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus']! as int).input(),
+      ruleAction: (() {
+        final guardedValue = map['ruleAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleId: (() {
+        final guardedValue = map['ruleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleStatus: (() {
+        final guardedValue = map['ruleStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

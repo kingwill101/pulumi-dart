@@ -5,7 +5,10 @@ import 'get_firewall_policy_firewall_policy_stateful_rule_group_reference_overri
 
 class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   final pulumi.Input<String> deepThreatInspection;
-  final pulumi.Input<List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>> overrides;
+  final pulumi.Input<
+    List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>
+  >
+  overrides;
   final pulumi.Input<int> priority;
   final pulumi.Input<String> resourceArn;
 
@@ -24,19 +27,45 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deepThreatInspection': deepThreatInspection,
-      'overrides': pulumi.Input.mapInputValue<List<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>, List<Map<String, dynamic>>>(overrides, (value) => pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'overrides':
+          pulumi.Input.mapInputValue<
+            List<
+              GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride
+            >,
+            List<Map<String, dynamic>>
+          >(
+            overrides,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'priority': priority,
       'resourceArn': resourceArn,
     };
   }
 
-  factory GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference(
-      deepThreatInspection: (map['deepThreatInspection'] as String).input(),
-      overrides: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>(map['overrides']!, (value) => GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: (map['priority'] as int).input(),
-      resourceArn: (map['resourceArn'] as String).input(),
+      deepThreatInspection: pulumi.Input.fromValue(
+        map['deepThreatInspection'] as String,
+      ),
+      overrides: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride
+        >(
+          map['overrides']!,
+          (value) =>
+              GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
     );
   }
 }
-

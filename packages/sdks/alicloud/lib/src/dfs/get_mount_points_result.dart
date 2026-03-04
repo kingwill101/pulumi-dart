@@ -6,6 +6,7 @@ import 'get_mount_points_point.dart';
 /// Result data returned by getMountPoints.
 class GetMountPointsResult {
   final String fileSystemId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,7 +36,11 @@ class GetMountPointsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'points': pulumi.Input.encodeList<GetMountPointsPoint, Map<String, dynamic>>(points, (value) => value.toMap()),
+      'points':
+          pulumi.Input.encodeList<GetMountPointsPoint, Map<String, dynamic>>(
+            points,
+            (value) => value.toMap(),
+          ),
       'status': ?status,
     };
   }
@@ -45,10 +50,21 @@ class GetMountPointsResult {
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      points: pulumi.Input.decodeList<GetMountPointsPoint>(map['points'], (value) => GetMountPointsPoint.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      points: pulumi.Input.decodeList<GetMountPointsPoint>(
+        map['points']!,
+        (value) =>
+            GetMountPointsPoint.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

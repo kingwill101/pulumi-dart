@@ -8,20 +8,19 @@ class HubManagedNetwork {
 
   /// Creates a new [HubManagedNetwork].
   /// [isolationMode] The isolation mode of the AI Foundry Hub. Possible values are `Disabled`, `AllowOnlyApprovedOutbound`, and `AllowInternetOutbound`.
-  HubManagedNetwork({
-    this.isolationMode,
-  });
+  HubManagedNetwork({this.isolationMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'isolationMode': ?isolationMode,
-    };
+    return <String, dynamic>{'isolationMode': ?isolationMode};
   }
 
   factory HubManagedNetwork.fromMap(Map<String, dynamic> map) {
     return HubManagedNetwork(
-      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode']! as String).input(),
+      isolationMode: (() {
+        final guardedValue = map['isolationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

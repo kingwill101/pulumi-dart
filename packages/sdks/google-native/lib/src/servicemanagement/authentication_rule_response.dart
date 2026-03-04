@@ -8,10 +8,13 @@ import 'oauth_requirements_response.dart';
 class AuthenticationRuleResponse {
   /// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
   final pulumi.Input<bool> allowWithoutCredential;
+
   /// The requirements for OAuth credentials.
   final pulumi.Input<OAuthRequirementsResponse> oauth;
+
   /// Requirements for additional authentication providers.
   final pulumi.Input<List<AuthRequirementResponse>> requirements;
+
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
   final pulumi.Input<String> selector;
 
@@ -30,19 +33,46 @@ class AuthenticationRuleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowWithoutCredential': allowWithoutCredential,
-      'oauth': pulumi.Input.mapInputValue<OAuthRequirementsResponse, Map<String, dynamic>>(oauth, (value) => value.toMap()),
-      'requirements': pulumi.Input.mapInputValue<List<AuthRequirementResponse>, List<Map<String, dynamic>>>(requirements, (value) => pulumi.Input.encodeList<AuthRequirementResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'oauth':
+          pulumi.Input.mapInputValue<
+            OAuthRequirementsResponse,
+            Map<String, dynamic>
+          >(oauth, (value) => value.toMap()),
+      'requirements':
+          pulumi.Input.mapInputValue<
+            List<AuthRequirementResponse>,
+            List<Map<String, dynamic>>
+          >(
+            requirements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AuthRequirementResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'selector': selector,
     };
   }
 
   factory AuthenticationRuleResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationRuleResponse(
-      allowWithoutCredential: (map['allowWithoutCredential'] as bool).input(),
-      oauth: (OAuthRequirementsResponse.fromMap((map['oauth'] as Map).cast<String, dynamic>())).input(),
-      requirements: (pulumi.Input.decodeList<AuthRequirementResponse>(map['requirements'], (value) => AuthRequirementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selector: (map['selector'] as String).input(),
+      allowWithoutCredential: pulumi.Input.fromValue(
+        map['allowWithoutCredential'] as bool,
+      ),
+      oauth: pulumi.Input.fromValue(
+        OAuthRequirementsResponse.fromMap(
+          (map['oauth']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      requirements: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AuthRequirementResponse>(
+          map['requirements']!,
+          (value) => AuthRequirementResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      selector: pulumi.Input.fromValue(map['selector'] as String),
     );
   }
 }
-

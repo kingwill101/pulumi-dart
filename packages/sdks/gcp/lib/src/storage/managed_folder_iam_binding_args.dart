@@ -10,11 +10,14 @@ import 'managed_folder_iam_binding_condition.dart';
 class ManagedFolderIamBindingArgs {
   /// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> bucket;
+
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<ManagedFolderIamBindingCondition>? condition;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> managedFolder;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -27,6 +30,7 @@ class ManagedFolderIamBindingArgs {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   final pulumi.Input<List<String>> members;
+
   /// The role that should be applied. Only one
   /// `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -49,7 +53,11 @@ class ManagedFolderIamBindingArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
-      'condition': ?pulumi.Input.mapOptionalInputValue<ManagedFolderIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedFolderIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'managedFolder': managedFolder,
       'members': members,
       'role': role,
@@ -58,12 +66,19 @@ class ManagedFolderIamBindingArgs {
 
   factory ManagedFolderIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderIamBindingArgs(
-      bucket: (map['bucket'] as String).input(),
-      condition: map['condition'] == null ? null : (ManagedFolderIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      managedFolder: (map['managedFolder'] as String).input(),
-      members: ((map['members'] as List).cast<String>()).input(),
-      role: (map['role'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedFolderIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      managedFolder: pulumi.Input.fromValue(map['managedFolder'] as String),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

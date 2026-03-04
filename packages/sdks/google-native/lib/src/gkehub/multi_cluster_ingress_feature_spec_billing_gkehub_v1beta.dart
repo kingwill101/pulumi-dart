@@ -4,16 +4,20 @@ enum MultiClusterIngressFeatureSpecBillingGkehubV1beta {
   payAsYouGo("PAY_AS_YOU_GO"),
   anthosLicense("ANTHOS_LICENSE");
 
-  const MultiClusterIngressFeatureSpecBillingGkehubV1beta(this.value);
-  final String value;
+  const MultiClusterIngressFeatureSpecBillingGkehubV1beta(this.wireValue);
+  final String wireValue;
 
-  static MultiClusterIngressFeatureSpecBillingGkehubV1beta fromValue(String value) {
-    for (final item in MultiClusterIngressFeatureSpecBillingGkehubV1beta.values) {
-      if (item.value == value) {
+  static MultiClusterIngressFeatureSpecBillingGkehubV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in MultiClusterIngressFeatureSpecBillingGkehubV1beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MultiClusterIngressFeatureSpecBillingGkehubV1beta value: $value');
+    throw ArgumentError(
+      'Unknown MultiClusterIngressFeatureSpecBillingGkehubV1beta value: $value',
+    );
   }
 }
-

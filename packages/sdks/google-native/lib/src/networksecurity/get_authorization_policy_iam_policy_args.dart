@@ -33,13 +33,24 @@ class GetAuthorizationPolicyIamPolicyArgs {
     };
   }
 
-  factory GetAuthorizationPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorizationPolicyIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorizationPolicyIamPolicyArgs(
-      authorizationPolicyId: (map['authorizationPolicyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      authorizationPolicyId: pulumi.Input.fromValue(
+        map['authorizationPolicyId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

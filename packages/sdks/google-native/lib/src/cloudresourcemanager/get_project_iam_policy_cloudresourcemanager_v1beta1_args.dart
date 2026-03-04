@@ -11,20 +11,17 @@ class GetProjectIamPolicyCloudresourcemanagerV1beta1Args {
 
   /// Creates a new [GetProjectIamPolicyCloudresourcemanagerV1beta1Args].
   /// [resource] Required.
-  GetProjectIamPolicyCloudresourcemanagerV1beta1Args({
-    required this.resource,
-  });
+  GetProjectIamPolicyCloudresourcemanagerV1beta1Args({required this.resource});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resource': resource,
-    };
+    return <String, dynamic>{'resource': resource};
   }
 
-  factory GetProjectIamPolicyCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetProjectIamPolicyCloudresourcemanagerV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProjectIamPolicyCloudresourcemanagerV1beta1Args(
-      resource: (map['resource'] as String).input(),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationRuntimeObjectMetadatumArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The integration runtime name.
   final pulumi.Input<String> integrationRuntimeName;
+
   /// Metadata path.
   final pulumi.Input<String>? metadataPath;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,22 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
     };
   }
 
-  factory GetIntegrationRuntimeObjectMetadatumArgs.fromMap(Map<String, dynamic> map) {
+  factory GetIntegrationRuntimeObjectMetadatumArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIntegrationRuntimeObjectMetadatumArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      integrationRuntimeName: (map['integrationRuntimeName'] as String).input(),
-      metadataPath: map['metadataPath'] == null ? null : (map['metadataPath']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      integrationRuntimeName: pulumi.Input.fromValue(
+        map['integrationRuntimeName'] as String,
+      ),
+      metadataPath: (() {
+        final guardedValue = map['metadataPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

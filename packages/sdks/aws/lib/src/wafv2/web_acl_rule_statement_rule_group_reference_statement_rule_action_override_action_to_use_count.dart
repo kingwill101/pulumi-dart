@@ -5,7 +5,10 @@ import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_overri
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount {
   /// Defines custom handling for the web request. See `custom_request_handling` below for details.
-  final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<
+    WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling
+  >?
+  customRequestHandling;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
@@ -15,14 +18,27 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling, Map<String, dynamic>>(customRequestHandling, (value) => value.toMap()),
+      'customRequestHandling':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling,
+            Map<String, dynamic>
+          >(customRequestHandling, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount(
-      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
+      customRequestHandling: (() {
+        final guardedValue = map['customRequestHandling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

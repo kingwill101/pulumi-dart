@@ -28,17 +28,33 @@ class GetResolverZonesResult {
       'id': id,
       'outputFile': ?outputFile,
       'status': ?status,
-      'zones': pulumi.Input.encodeList<GetResolverZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones':
+          pulumi.Input.encodeList<GetResolverZonesZone, Map<String, dynamic>>(
+            zones,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetResolverZonesResult.fromMap(Map<String, dynamic> map) {
     return GetResolverZonesResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      zones: pulumi.Input.decodeList<GetResolverZonesZone>(map['zones'], (value) => GetResolverZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zones: pulumi.Input.decodeList<GetResolverZonesZone>(
+        map['zones']!,
+        (value) => GetResolverZonesZone.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

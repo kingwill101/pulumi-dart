@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'connected_subnet_response.dart';
 import 'export_route_policy_response.dart';
 import 'import_route_policy_response.dart';
 import 'internal_network_args.dart';
@@ -554,46 +553,71 @@ import 'system_data_response.dart';
 class InternalNetwork extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// BGP configuration properties.
-  late final pulumi.Output<InternalNetworkPropertiesResponseBgpConfiguration?> bgpConfiguration;
+  late final pulumi.Output<InternalNetworkPropertiesResponseBgpConfiguration?>
+  bgpConfiguration;
+
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// List of Connected IPv4 Subnets.
-  late final pulumi.Output<List<ConnectedSubnetResponse>?> connectedIPv4Subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> connectedIPv4Subnets;
+
   /// List of connected IPv6 Subnets.
-  late final pulumi.Output<List<ConnectedSubnetResponse>?> connectedIPv6Subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> connectedIPv6Subnets;
+
   /// Egress Acl. ARM resource ID of Access Control Lists.
   late final pulumi.Output<String?> egressAclId;
+
   /// Export Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ExportRoutePolicyResponse?> exportRoutePolicy;
+
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> exportRoutePolicyId;
+
   /// Extension. Example: NoExtension | NPB.
   late final pulumi.Output<String?> extension;
+
   /// Import Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ImportRoutePolicyResponse?> importRoutePolicy;
+
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> importRoutePolicyId;
+
   /// Ingress Acl. ARM resource ID of Access Control Lists.
   late final pulumi.Output<String?> ingressAclId;
+
   /// To check whether monitoring of internal network is enabled or not.
   late final pulumi.Output<String?> isMonitoringEnabled;
+
   /// Maximum transmission unit. Default value is 1500.
   late final pulumi.Output<int?> mtu;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Static Route Configuration properties.
-  late final pulumi.Output<InternalNetworkPropertiesResponseStaticRouteConfiguration?> staticRouteConfiguration;
+  late final pulumi.Output<
+    InternalNetworkPropertiesResponseStaticRouteConfiguration?
+  >
+  staticRouteConfiguration;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Vlan identifier. Example: 1001.
   late final pulumi.Output<int> vlanId;
 
@@ -606,32 +630,46 @@ class InternalNetwork extends pulumi.CustomResource {
     InternalNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:InternalNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bgpConfiguration = registerOutput<InternalNetworkPropertiesResponseBgpConfiguration?>('bgpConfiguration');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.connectedIPv4Subnets = registerOutput<List<ConnectedSubnetResponse>?>('connectedIPv4Subnets');
-    this.connectedIPv6Subnets = registerOutput<List<ConnectedSubnetResponse>?>('connectedIPv6Subnets');
-    this.egressAclId = registerOutput<String?>('egressAclId');
-    this.exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>('exportRoutePolicy');
-    this.exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
-    this.extension = registerOutput<String?>('extension');
-    this.importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>('importRoutePolicy');
-    this.importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
-    this.ingressAclId = registerOutput<String?>('ingressAclId');
-    this.isMonitoringEnabled = registerOutput<String?>('isMonitoringEnabled');
-    this.mtu = registerOutput<int?>('mtu');
+         'azure-native:managednetworkfabric:InternalNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpConfiguration =
+        registerOutput<InternalNetworkPropertiesResponseBgpConfiguration?>(
+          'bgpConfiguration',
+        );
+    configurationState = registerOutput<String>('configurationState');
+    connectedIPv4Subnets = registerOutput<List<Map<String, dynamic>>?>(
+      'connectedIPv4Subnets',
+    );
+    connectedIPv6Subnets = registerOutput<List<Map<String, dynamic>>?>(
+      'connectedIPv6Subnets',
+    );
+    egressAclId = registerOutput<String?>('egressAclId');
+    exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>(
+      'exportRoutePolicy',
+    );
+    exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
+    extension = registerOutput<String?>('extension');
+    importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>(
+      'importRoutePolicy',
+    );
+    importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
+    ingressAclId = registerOutput<String?>('ingressAclId');
+    isMonitoringEnabled = registerOutput<String?>('isMonitoringEnabled');
+    mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.staticRouteConfiguration = registerOutput<InternalNetworkPropertiesResponseStaticRouteConfiguration?>('staticRouteConfiguration');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.vlanId = registerOutput<int>('vlanId');
+    provisioningState = registerOutput<String>('provisioningState');
+    staticRouteConfiguration =
+        registerOutput<
+          InternalNetworkPropertiesResponseStaticRouteConfiguration?
+        >('staticRouteConfiguration');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    vlanId = registerOutput<int>('vlanId');
   }
 }

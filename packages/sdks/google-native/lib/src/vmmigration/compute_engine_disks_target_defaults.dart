@@ -8,12 +8,16 @@ import 'persistent_disk_defaults.dart';
 class ComputeEngineDisksTargetDefaults {
   /// The details of each Persistent Disk to create.
   final pulumi.Input<List<PersistentDiskDefaults>>? disks;
+
   /// Details of the disk only migration target.
   final pulumi.Input<Map<String, dynamic>>? disksTargetDefaults;
+
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
   final pulumi.Input<String>? targetProject;
+
   /// Details of the VM migration target.
   final pulumi.Input<DisksMigrationVmTargetDefaults>? vmTargetDefaults;
+
   /// The zone in which to create the Persistent Disks.
   final pulumi.Input<String>? zone;
 
@@ -33,22 +37,69 @@ class ComputeEngineDisksTargetDefaults {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': ?pulumi.Input.mapOptionalInputValue<List<PersistentDiskDefaults>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<PersistentDiskDefaults, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'disks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PersistentDiskDefaults>,
+            List<Map<String, dynamic>>
+          >(
+            disks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PersistentDiskDefaults,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'disksTargetDefaults': ?disksTargetDefaults,
       'targetProject': ?targetProject,
-      'vmTargetDefaults': ?pulumi.Input.mapOptionalInputValue<DisksMigrationVmTargetDefaults, Map<String, dynamic>>(vmTargetDefaults, (value) => value.toMap()),
+      'vmTargetDefaults':
+          ?pulumi.Input.mapOptionalInputValue<
+            DisksMigrationVmTargetDefaults,
+            Map<String, dynamic>
+          >(vmTargetDefaults, (value) => value.toMap()),
       'zone': ?zone,
     };
   }
 
   factory ComputeEngineDisksTargetDefaults.fromMap(Map<String, dynamic> map) {
     return ComputeEngineDisksTargetDefaults(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<PersistentDiskDefaults>(map['disks']!, (value) => PersistentDiskDefaults.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disksTargetDefaults: map['disksTargetDefaults'] == null ? null : ((map['disksTargetDefaults']! as Map).cast<String, dynamic>()).input(),
-      targetProject: map['targetProject'] == null ? null : (map['targetProject']! as String).input(),
-      vmTargetDefaults: map['vmTargetDefaults'] == null ? null : (DisksMigrationVmTargetDefaults.fromMap((map['vmTargetDefaults']! as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      disks: (() {
+        final guardedValue = map['disks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PersistentDiskDefaults>(
+            guardedValue,
+            (value) => PersistentDiskDefaults.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      disksTargetDefaults: (() {
+        final guardedValue = map['disksTargetDefaults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      targetProject: (() {
+        final guardedValue = map['targetProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmTargetDefaults: (() {
+        final guardedValue = map['vmTargetDefaults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DisksMigrationVmTargetDefaults.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'ip_address_response.dart';
 class FlowEndpointsResponse {
   /// The access endpoint ip address.
   final pulumi.Input<List<IpAddressResponse>>? accessEndpointIpAddresses;
+
   /// The outgoing ip address.
   final pulumi.Input<List<IpAddressResponse>>? outgoingIpAddresses;
 
@@ -20,16 +21,59 @@ class FlowEndpointsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessEndpointIpAddresses': ?pulumi.Input.mapOptionalInputValue<List<IpAddressResponse>, List<Map<String, dynamic>>>(accessEndpointIpAddresses, (value) => pulumi.Input.encodeList<IpAddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'outgoingIpAddresses': ?pulumi.Input.mapOptionalInputValue<List<IpAddressResponse>, List<Map<String, dynamic>>>(outgoingIpAddresses, (value) => pulumi.Input.encodeList<IpAddressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accessEndpointIpAddresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpAddressResponse>,
+            List<Map<String, dynamic>>
+          >(
+            accessEndpointIpAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpAddressResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'outgoingIpAddresses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpAddressResponse>,
+            List<Map<String, dynamic>>
+          >(
+            outgoingIpAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpAddressResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory FlowEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return FlowEndpointsResponse(
-      accessEndpointIpAddresses: map['accessEndpointIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['accessEndpointIpAddresses']!, (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outgoingIpAddresses: map['outgoingIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['outgoingIpAddresses']!, (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessEndpointIpAddresses: (() {
+        final guardedValue = map['accessEndpointIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpAddressResponse>(
+            guardedValue,
+            (value) => IpAddressResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      outgoingIpAddresses: (() {
+        final guardedValue = map['outgoingIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpAddressResponse>(
+            guardedValue,
+            (value) => IpAddressResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -17,26 +17,40 @@ import 'virtual_machine_instance_properties_storage_profile.dart';
 class VirtualMachineInstanceArgs {
   /// Boolean indicating whether this is an existing local virtual machine or if one should be created.
   final pulumi.Input<bool>? createFromLocal;
+
   /// The extendedLocation of the resource.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
-  final pulumi.Input<VirtualMachineInstancePropertiesHardwareProfile>? hardwareProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesHardwareProfile>?
+  hardwareProfile;
+
   /// HTTP Proxy configuration for the VM.
   final pulumi.Input<HttpProxyConfiguration>? httpProxyConfig;
+
   /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// NetworkProfile - describes the network configuration the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesNetworkProfile>? networkProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesNetworkProfile>?
+  networkProfile;
+
   /// OsProfile - describes the configuration of the operating system and sets login data
   final pulumi.Input<VirtualMachineInstancePropertiesOsProfile>? osProfile;
+
   /// Unique identifier defined by ARC to identify the guest of the VM.
   final pulumi.Input<String>? resourceUid;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// SecurityProfile - Specifies the security settings for the virtual machine instance.
-  final pulumi.Input<VirtualMachineInstancePropertiesSecurityProfile>? securityProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesSecurityProfile>?
+  securityProfile;
+
   /// StorageProfile - contains information about the disks and storage information for the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesStorageProfile>? storageProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesStorageProfile>?
+  storageProfile;
 
   /// Creates a new [VirtualMachineInstanceArgs].
   /// [createFromLocal] Boolean indicating whether this is an existing local virtual machine or if one should be created.
@@ -67,33 +81,136 @@ class VirtualMachineInstanceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createFromLocal': ?createFromLocal,
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
-      'hardwareProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesHardwareProfile, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
-      'httpProxyConfig': ?pulumi.Input.mapOptionalInputValue<HttpProxyConfiguration, Map<String, dynamic>>(httpProxyConfig, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'networkProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesNetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
-      'osProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesOsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
+      'hardwareProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineInstancePropertiesHardwareProfile,
+            Map<String, dynamic>
+          >(hardwareProfile, (value) => value.toMap()),
+      'httpProxyConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            HttpProxyConfiguration,
+            Map<String, dynamic>
+          >(httpProxyConfig, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
+      'networkProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineInstancePropertiesNetworkProfile,
+            Map<String, dynamic>
+          >(networkProfile, (value) => value.toMap()),
+      'osProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineInstancePropertiesOsProfile,
+            Map<String, dynamic>
+          >(osProfile, (value) => value.toMap()),
       'resourceUid': ?resourceUid,
       'resourceUri': resourceUri,
-      'securityProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesSecurityProfile, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
-      'storageProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesStorageProfile, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
+      'securityProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineInstancePropertiesSecurityProfile,
+            Map<String, dynamic>
+          >(securityProfile, (value) => value.toMap()),
+      'storageProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineInstancePropertiesStorageProfile,
+            Map<String, dynamic>
+          >(storageProfile, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceArgs(
-      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal']! as bool).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (VirtualMachineInstancePropertiesHardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (VirtualMachineInstancePropertiesNetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (VirtualMachineInstancePropertiesOsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
-      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid']! as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
-      securityProfile: map['securityProfile'] == null ? null : (VirtualMachineInstancePropertiesSecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (VirtualMachineInstancePropertiesStorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      createFromLocal: (() {
+        final guardedValue = map['createFromLocal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hardwareProfile: (() {
+        final guardedValue = map['hardwareProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineInstancePropertiesHardwareProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      httpProxyConfig: (() {
+        final guardedValue = map['httpProxyConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HttpProxyConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineInstancePropertiesNetworkProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      osProfile: (() {
+        final guardedValue = map['osProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineInstancePropertiesOsProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceUid: (() {
+        final guardedValue = map['resourceUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      securityProfile: (() {
+        final guardedValue = map['securityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineInstancePropertiesSecurityProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageProfile: (() {
+        final guardedValue = map['storageProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineInstancePropertiesStorageProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

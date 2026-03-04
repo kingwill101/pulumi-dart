@@ -4,16 +4,17 @@ enum AzureLargeInstanceHardwareTypeNamesEnum {
   hPE("HPE"),
   sDFLEX("SDFLEX");
 
-  const AzureLargeInstanceHardwareTypeNamesEnum(this.value);
-  final String value;
+  const AzureLargeInstanceHardwareTypeNamesEnum(this.wireValue);
+  final String wireValue;
 
   static AzureLargeInstanceHardwareTypeNamesEnum fromValue(String value) {
     for (final item in AzureLargeInstanceHardwareTypeNamesEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureLargeInstanceHardwareTypeNamesEnum value: $value');
+    throw ArgumentError(
+      'Unknown AzureLargeInstanceHardwareTypeNamesEnum value: $value',
+    );
   }
 }
-

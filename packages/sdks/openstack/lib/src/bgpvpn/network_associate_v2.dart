@@ -116,14 +116,17 @@ class NetworkAssociateV2 extends pulumi.CustomResource {
   /// The ID of the BGP VPN to which the network will be
   /// associated. Changing this creates a new BGP VPN network association
   late final pulumi.Output<String> bgpvpnId;
+
   /// The ID of the network to be associated with the BGP
   /// VPN. Changing this creates a new BGP VPN network association.
   late final pulumi.Output<String> networkId;
+
   /// The ID of the project that owns the BGP VPN network
   /// association. Only administrative and users with `advsvc` role can specify a
   /// project ID other than their own. Changing this creates a new BGP VPN network
   /// association.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a BGP VPN network association. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
@@ -139,15 +142,15 @@ class NetworkAssociateV2 extends pulumi.CustomResource {
     NetworkAssociateV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgpvpnId = registerOutput<String>('bgpvpnId');
-    this.networkId = registerOutput<String>('networkId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
+         'openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgpvpnId = registerOutput<String>('bgpvpnId');
+    networkId = registerOutput<String>('networkId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [NetworkAssociateV2] resource's state with the given [name] and [id].
@@ -168,14 +171,14 @@ class NetworkAssociateV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgpvpnId = registerOutput<String>('bgpvpnId');
-    this.networkId = registerOutput<String>('networkId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
+         'openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgpvpnId = registerOutput<String>('bgpvpnId');
+    networkId = registerOutput<String>('networkId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
   }
 }

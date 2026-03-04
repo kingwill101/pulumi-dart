@@ -6,16 +6,15 @@ enum SummaryStatus {
   notApplicable("not-applicable"),
   ok("ok");
 
-  const SummaryStatus(this.value);
-  final String value;
+  const SummaryStatus(this.wireValue);
+  final String wireValue;
 
   static SummaryStatus fromValue(String value) {
     for (final item in SummaryStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SummaryStatus value: $value');
   }
 }
-

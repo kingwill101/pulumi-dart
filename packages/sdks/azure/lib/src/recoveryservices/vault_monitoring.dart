@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultMonitoring {
   /// Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to `true`.
   final pulumi.Input<bool>? alertsForAllJobFailuresEnabled;
+
   /// Enabling/Disabling alerts from the older (classic alerts) solution. Defaults to `true`. More details could be found [here](https://learn.microsoft.com/en-us/azure/backup/monitoring-and-alerts-overview).
   final pulumi.Input<bool>? alertsForCriticalOperationFailuresEnabled;
 
@@ -19,15 +20,23 @@ class VaultMonitoring {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alertsForAllJobFailuresEnabled': ?alertsForAllJobFailuresEnabled,
-      'alertsForCriticalOperationFailuresEnabled': ?alertsForCriticalOperationFailuresEnabled,
+      'alertsForCriticalOperationFailuresEnabled':
+          ?alertsForCriticalOperationFailuresEnabled,
     };
   }
 
   factory VaultMonitoring.fromMap(Map<String, dynamic> map) {
     return VaultMonitoring(
-      alertsForAllJobFailuresEnabled: map['alertsForAllJobFailuresEnabled'] == null ? null : (map['alertsForAllJobFailuresEnabled']! as bool).input(),
-      alertsForCriticalOperationFailuresEnabled: map['alertsForCriticalOperationFailuresEnabled'] == null ? null : (map['alertsForCriticalOperationFailuresEnabled']! as bool).input(),
+      alertsForAllJobFailuresEnabled: (() {
+        final guardedValue = map['alertsForAllJobFailuresEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      alertsForCriticalOperationFailuresEnabled: (() {
+        final guardedValue = map['alertsForCriticalOperationFailuresEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

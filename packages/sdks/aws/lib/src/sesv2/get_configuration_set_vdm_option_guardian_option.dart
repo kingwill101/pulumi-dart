@@ -18,10 +18,13 @@ class GetConfigurationSetVdmOptionGuardianOption {
     };
   }
 
-  factory GetConfigurationSetVdmOptionGuardianOption.fromMap(Map<String, dynamic> map) {
+  factory GetConfigurationSetVdmOptionGuardianOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConfigurationSetVdmOptionGuardianOption(
-      optimizedSharedDelivery: (map['optimizedSharedDelivery'] as String).input(),
+      optimizedSharedDelivery: pulumi.Input.fromValue(
+        map['optimizedSharedDelivery'] as String,
+      ),
     );
   }
 }
-

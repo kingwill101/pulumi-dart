@@ -6,16 +6,15 @@ enum RestServiceAuthenticationType {
   valueManagedServiceIdentity("ManagedServiceIdentity"),
   valueOAuth2ClientCredential("OAuth2ClientCredential");
 
-  const RestServiceAuthenticationType(this.value);
-  final String value;
+  const RestServiceAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static RestServiceAuthenticationType fromValue(String value) {
     for (final item in RestServiceAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RestServiceAuthenticationType value: $value');
   }
 }
-

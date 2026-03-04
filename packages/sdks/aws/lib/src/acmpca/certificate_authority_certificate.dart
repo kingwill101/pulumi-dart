@@ -571,10 +571,13 @@ import 'certificate_authority_certificate_state.dart';
 class CertificateAuthorityCertificate extends pulumi.CustomResource {
   /// PEM-encoded certificate for the Certificate Authority.
   late final pulumi.Output<String> certificate;
+
   /// ARN of the Certificate Authority.
   late final pulumi.Output<String> certificateAuthorityArn;
+
   /// PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA. Required for subordinate Certificate Authorities. Not allowed for root Certificate Authorities.
   late final pulumi.Output<String?> certificateChain;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -587,15 +590,15 @@ class CertificateAuthorityCertificate extends pulumi.CustomResource {
     CertificateAuthorityCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:acmpca/certificateAuthorityCertificate:CertificateAuthorityCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
-    this.certificateChain = registerOutput<String?>('certificateChain');
-    this.region = registerOutput<String>('region');
+         'aws:acmpca/certificateAuthorityCertificate:CertificateAuthorityCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
+    certificateChain = registerOutput<String?>('certificateChain');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [CertificateAuthorityCertificate] resource's state with the given [name] and [id].
@@ -616,14 +619,14 @@ class CertificateAuthorityCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:acmpca/certificateAuthorityCertificate:CertificateAuthorityCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
-    this.certificateChain = registerOutput<String?>('certificateChain');
-    this.region = registerOutput<String>('region');
+         'aws:acmpca/certificateAuthorityCertificate:CertificateAuthorityCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
+    certificateChain = registerOutput<String?>('certificateChain');
+    region = registerOutput<String>('region');
   }
 }

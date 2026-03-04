@@ -13,17 +13,23 @@ import 'resource_claim_status_patch_resource_k8s_io_v1beta2.dart';
 /// ResourceClaim describes a request for access to resources in the cluster, for use by workloads. For example, if a workload needs an accelerator device with specific properties, this is how that request is expressed. The status stanza tracks whether this claim has been satisfied and what specific resources have been allocated.
 ///
 /// This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
-class ResourceClaimPatchResourceK8sIoV1beta2Resource extends pulumi.CustomResource {
+class ResourceClaimPatchResourceK8sIoV1beta2Resource
+    extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
+
   /// Standard object metadata
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// Spec describes what is being requested and how to configure it. The spec is immutable.
   late final pulumi.Output<ResourceClaimSpecPatchResourceK8sIoV1beta2?> spec;
+
   /// Status describes whether the claim is ready to use and what has been allocated.
-  late final pulumi.Output<ResourceClaimStatusPatchResourceK8sIoV1beta2?> status;
+  late final pulumi.Output<ResourceClaimStatusPatchResourceK8sIoV1beta2?>
+  status;
 
   /// Creates a new [ResourceClaimPatchResourceK8sIoV1beta2Resource].
   /// [name] The Pulumi resource name.
@@ -34,15 +40,17 @@ class ResourceClaimPatchResourceK8sIoV1beta2Resource extends pulumi.CustomResour
     ResourceClaimPatchResourceK8sIoV1beta2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:resource.k8s.io/v1beta2:ResourceClaimPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.spec = registerOutput<ResourceClaimSpecPatchResourceK8sIoV1beta2?>('spec');
-    this.status = registerOutput<ResourceClaimStatusPatchResourceK8sIoV1beta2?>('status');
+         'kubernetes:resource.k8s.io/v1beta2:ResourceClaimPatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    spec = registerOutput<ResourceClaimSpecPatchResourceK8sIoV1beta2?>('spec');
+    status = registerOutput<ResourceClaimStatusPatchResourceK8sIoV1beta2?>(
+      'status',
+    );
   }
 }

@@ -164,16 +164,22 @@ import 'trusted_access_role_binding_args.dart';
 class TrustedAccessRoleBinding extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current provisioning state of trusted access role binding.
   late final pulumi.Output<String> provisioningState;
+
   /// A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
   late final pulumi.Output<List<String>> roles;
+
   /// The ARM resource ID of source resource that trusted access is configured for.
   late final pulumi.Output<String> sourceResourceId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -186,17 +192,17 @@ class TrustedAccessRoleBinding extends pulumi.CustomResource {
     TrustedAccessRoleBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:TrustedAccessRoleBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:containerservice:TrustedAccessRoleBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.roles = registerOutput<List<String>>('roles');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    roles = registerOutput<List<String>>('roles');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

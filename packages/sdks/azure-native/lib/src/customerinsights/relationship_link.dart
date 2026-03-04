@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'participant_profile_property_reference_response.dart';
 import 'relationship_link_args.dart';
-import 'relationship_link_field_mapping_response.dart';
 
 /// The relationship link resource format.
 ///
@@ -237,30 +235,45 @@ import 'relationship_link_field_mapping_response.dart';
 class RelationshipLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Localized descriptions for the Relationship Link.
   late final pulumi.Output<Map<String, String>?> description;
+
   /// Localized display name for the Relationship Link.
   late final pulumi.Output<Map<String, String>?> displayName;
+
   /// The InteractionType associated with the Relationship Link.
   late final pulumi.Output<String> interactionType;
+
   /// The name of the Relationship Link.
   late final pulumi.Output<String> linkName;
+
   /// The mappings between Interaction and Relationship fields.
-  late final pulumi.Output<List<RelationshipLinkFieldMappingResponse>?> mappings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> mappings;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The property references for the Profile of the Relationship.
-  late final pulumi.Output<List<ParticipantProfilePropertyReferenceResponse>> profilePropertyReferences;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  profilePropertyReferences;
+
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The property references for the Related Profile of the Relationship.
-  late final pulumi.Output<List<ParticipantProfilePropertyReferenceResponse>> relatedProfilePropertyReferences;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  relatedProfilePropertyReferences;
+
   /// The relationship guid id.
   late final pulumi.Output<String> relationshipGuidId;
+
   /// The Relationship associated with the Link.
   late final pulumi.Output<String> relationshipName;
+
   /// The hub name.
   late final pulumi.Output<String> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -273,24 +286,29 @@ class RelationshipLink extends pulumi.CustomResource {
     RelationshipLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:customerinsights:RelationshipLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<Map<String, String>?>('description');
-    this.displayName = registerOutput<Map<String, String>?>('displayName');
-    this.interactionType = registerOutput<String>('interactionType');
-    this.linkName = registerOutput<String>('linkName');
-    this.mappings = registerOutput<List<RelationshipLinkFieldMappingResponse>?>('mappings');
+         'azure-native:customerinsights:RelationshipLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<Map<String, String>?>('description');
+    displayName = registerOutput<Map<String, String>?>('displayName');
+    interactionType = registerOutput<String>('interactionType');
+    linkName = registerOutput<String>('linkName');
+    mappings = registerOutput<List<Map<String, dynamic>>?>('mappings');
     this.name = registerOutput<String>('name');
-    this.profilePropertyReferences = registerOutput<List<ParticipantProfilePropertyReferenceResponse>>('profilePropertyReferences');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.relatedProfilePropertyReferences = registerOutput<List<ParticipantProfilePropertyReferenceResponse>>('relatedProfilePropertyReferences');
-    this.relationshipGuidId = registerOutput<String>('relationshipGuidId');
-    this.relationshipName = registerOutput<String>('relationshipName');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    profilePropertyReferences = registerOutput<List<Map<String, dynamic>>>(
+      'profilePropertyReferences',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    relatedProfilePropertyReferences =
+        registerOutput<List<Map<String, dynamic>>>(
+          'relatedProfilePropertyReferences',
+        );
+    relationshipGuidId = registerOutput<String>('relationshipGuidId');
+    relationshipName = registerOutput<String>('relationshipName');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

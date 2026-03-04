@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientGroupArgs {
   /// The client group name.
   final pulumi.Input<String>? clientGroupName;
+
   /// Description for the Client Group resource.
   final pulumi.Input<String>? description;
+
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The grouping query for the clients.
   /// Example : attributes.keyName IN ['a', 'b', 'c'].
   final pulumi.Input<String>? query;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,12 +49,25 @@ class ClientGroupArgs {
 
   factory ClientGroupArgs.fromMap(Map<String, dynamic> map) {
     return ClientGroupArgs(
-      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      query: map['query'] == null ? null : (map['query']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clientGroupName: (() {
+        final guardedValue = map['clientGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      query: (() {
+        final guardedValue = map['query'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

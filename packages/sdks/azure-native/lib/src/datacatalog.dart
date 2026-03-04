@@ -1,5 +1,3 @@
-library module_datacatalog;
-
 export 'datacatalog/adccatalog.dart';
 export 'datacatalog/adccatalog_args.dart';
 export 'datacatalog/functions.dart';

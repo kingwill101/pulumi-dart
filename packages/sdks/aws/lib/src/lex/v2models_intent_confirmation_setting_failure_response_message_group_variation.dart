@@ -8,13 +8,28 @@ import 'v2models_intent_confirmation_setting_failure_response_message_group_vari
 
 class V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation {
   /// Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationCustomPayload>? customPayload;
+  final pulumi.Input<
+    V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationCustomPayload
+  >?
+  customPayload;
+
   /// Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationImageResponseCard>? imageResponseCard;
+  final pulumi.Input<
+    V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationImageResponseCard
+  >?
+  imageResponseCard;
+
   /// Configuration block for a message in plain text format. See `plain_text_message`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage>? plainTextMessage;
+  final pulumi.Input<
+    V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage
+  >?
+  plainTextMessage;
+
   /// Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage>? ssmlMessage;
+  final pulumi.Input<
+    V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage
+  >?
+  ssmlMessage;
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation].
   /// [customPayload] Configuration block for a message in a custom format defined by the client application. See `custom_payload`.
@@ -30,20 +45,69 @@ class V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPayload': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationCustomPayload, Map<String, dynamic>>(customPayload, (value) => value.toMap()),
-      'imageResponseCard': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationImageResponseCard, Map<String, dynamic>>(imageResponseCard, (value) => value.toMap()),
-      'plainTextMessage': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage, Map<String, dynamic>>(plainTextMessage, (value) => value.toMap()),
-      'ssmlMessage': ?pulumi.Input.mapOptionalInputValue<V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage, Map<String, dynamic>>(ssmlMessage, (value) => value.toMap()),
+      'customPayload':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationCustomPayload,
+            Map<String, dynamic>
+          >(customPayload, (value) => value.toMap()),
+      'imageResponseCard':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationImageResponseCard,
+            Map<String, dynamic>
+          >(imageResponseCard, (value) => value.toMap()),
+      'plainTextMessage':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage,
+            Map<String, dynamic>
+          >(plainTextMessage, (value) => value.toMap()),
+      'ssmlMessage':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage,
+            Map<String, dynamic>
+          >(ssmlMessage, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariation(
-      customPayload: map['customPayload'] == null ? null : ((V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationCustomPayload.fromMap((map['customPayload']! as Map).cast<String, dynamic>())).input()).input(),
-      imageResponseCard: map['imageResponseCard'] == null ? null : ((V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationImageResponseCard.fromMap((map['imageResponseCard']! as Map).cast<String, dynamic>())).input()).input(),
-      plainTextMessage: map['plainTextMessage'] == null ? null : ((V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage.fromMap((map['plainTextMessage']! as Map).cast<String, dynamic>())).input()).input(),
-      ssmlMessage: map['ssmlMessage'] == null ? null : ((V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage.fromMap((map['ssmlMessage']! as Map).cast<String, dynamic>())).input()).input(),
+      customPayload: (() {
+        final guardedValue = map['customPayload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationCustomPayload.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageResponseCard: (() {
+        final guardedValue = map['imageResponseCard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationImageResponseCard.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      plainTextMessage: (() {
+        final guardedValue = map['plainTextMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ssmlMessage: (() {
+        final guardedValue = map['ssmlMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationSsmlMessage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

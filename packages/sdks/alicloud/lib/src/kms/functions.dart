@@ -20,7 +20,7 @@ import 'get_service_result.dart';
 
 /// This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.79.0.
+/// &gt; **NOTE:** Available since v1.79.0.
 ///
 /// ## Example Usage
 ///
@@ -296,7 +296,7 @@ Future<GetCiphertextResult> getCiphertext(
 
 /// This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
 ///
-/// > **NOTE:** Available since v1.242.0.
+/// &gt; **NOTE:** Available since v1.242.0.
 ///
 /// ## Example Usage
 ///
@@ -1095,7 +1095,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
 ///
-/// > NOTE: Available in v1.85.0+
+/// &gt; NOTE: Available in v1.85.0+
 ///
 /// ## Example Usage
 ///
@@ -1232,7 +1232,7 @@ Future<GetKeyVersionsResult> getKeyVersions(
 ///
 /// For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
 ///
-/// > **NOTE:** Available since v1.85.0.
+/// &gt; **NOTE:** Available since v1.85.0.
 ///
 /// ## Example Usage
 ///
@@ -1551,7 +1551,7 @@ Future<GetPlaintextResult> getPlaintext(
 
 /// This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in v1.88.0+.
+/// &gt; **NOTE:** Available in v1.88.0+.
 ///
 /// ## Example Usage
 ///
@@ -1680,7 +1680,7 @@ Future<GetSecretVersionsResult> getSecretVersions(
 
 /// This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.86.0.
+/// &gt; **NOTE:** Available since v1.86.0.
 ///
 /// ## Example Usage
 ///
@@ -1835,7 +1835,7 @@ Future<GetSecretsResult> getSecrets(
 ///
 /// For information about KMS and how to use it, see [What is KMS](https://help.aliyun.com/document_detail/186020.html).
 ///
-/// > **NOTE:** Available in v1.108.0+
+/// &gt; **NOTE:** Available in v1.108.0+
 ///
 /// ## Example Usage
 ///

@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWafPolicyArgs {
   /// ID of the WAF policy deployed in the BIG-IP.
   final pulumi.Input<String> policyId;
+
   /// Exported WAF policy JSON
   final pulumi.Input<String>? policyJson;
 
   /// Creates a new [GetWafPolicyArgs].
   /// [policyId] ID of the WAF policy deployed in the BIG-IP.
   /// [policyJson] Exported WAF policy JSON
-  GetWafPolicyArgs({
-    required this.policyId,
-    this.policyJson,
-  });
+  GetWafPolicyArgs({required this.policyId, this.policyJson});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policyId': policyId,
-      'policyJson': ?policyJson,
-    };
+    return <String, dynamic>{'policyId': policyId, 'policyJson': ?policyJson};
   }
 
   factory GetWafPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWafPolicyArgs(
-      policyId: (map['policyId'] as String).input(),
-      policyJson: map['policyJson'] == null ? null : (map['policyJson']! as String).input(),
+      policyId: pulumi.Input.fromValue(map['policyId'] as String),
+      policyJson: (() {
+        final guardedValue = map['policyJson'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum EnableWriteBackState {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const EnableWriteBackState(this.value);
-  final String value;
+  const EnableWriteBackState(this.wireValue);
+  final String wireValue;
 
   static EnableWriteBackState fromValue(String value) {
     for (final item in EnableWriteBackState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnableWriteBackState value: $value');
   }
 }
-

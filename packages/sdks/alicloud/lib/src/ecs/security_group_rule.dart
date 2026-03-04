@@ -6,11 +6,11 @@ import 'security_group_rule_state.dart';
 ///
 /// For information about Security Group Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/ecs/user-guide/security-group-rules).
 ///
-/// > **NOTE:** Available since v0.1.0.
+/// &gt; **NOTE:** Available since v0.1.0.
 ///
 /// Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
 ///
-/// > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+/// &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
 ///
 /// ## Example Usage
 ///
@@ -188,33 +188,46 @@ import 'security_group_rule_state.dart';
 class SecurityGroupRule extends pulumi.CustomResource {
   /// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
   late final pulumi.Output<String?> cidrIp;
+
   /// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
   ///
-  /// > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+  /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
   late final pulumi.Output<String?> description;
+
   /// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
   late final pulumi.Output<String> ipProtocol;
+
   /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
   late final pulumi.Output<String?> ipv6CidrIp;
+
   /// Network type, can be either `internet` or `intranet`, the default value is `internet`.
   late final pulumi.Output<String> nicType;
+
   /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
   late final pulumi.Output<String?> policy;
+
   /// The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
   /// For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
   late final pulumi.Output<String?> portRange;
+
   /// The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
   late final pulumi.Output<String> prefixListId;
+
   /// The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
   late final pulumi.Output<int?> priority;
+
   /// The ID of the Security Group.
   late final pulumi.Output<String> securityGroupId;
+
   /// The ID of the Security Group Rule.
   late final pulumi.Output<String> securityGroupRuleId;
+
   /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
   late final pulumi.Output<String?> sourceGroupOwnerAccount;
+
   /// The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
   late final pulumi.Output<String?> sourceSecurityGroupId;
+
   /// The type of the Security Group Rule. Valid values:
   late final pulumi.Output<String> type;
 
@@ -227,25 +240,27 @@ class SecurityGroupRule extends pulumi.CustomResource {
     SecurityGroupRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/securityGroupRule:SecurityGroupRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrIp = registerOutput<String?>('cidrIp');
-    this.description = registerOutput<String?>('description');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
-    this.ipv6CidrIp = registerOutput<String?>('ipv6CidrIp');
-    this.nicType = registerOutput<String>('nicType');
-    this.policy = registerOutput<String?>('policy');
-    this.portRange = registerOutput<String?>('portRange');
-    this.prefixListId = registerOutput<String>('prefixListId');
-    this.priority = registerOutput<int?>('priority');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
-    this.sourceGroupOwnerAccount = registerOutput<String?>('sourceGroupOwnerAccount');
-    this.sourceSecurityGroupId = registerOutput<String?>('sourceSecurityGroupId');
-    this.type = registerOutput<String>('type');
+         'alicloud:ecs/securityGroupRule:SecurityGroupRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrIp = registerOutput<String?>('cidrIp');
+    description = registerOutput<String?>('description');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    ipv6CidrIp = registerOutput<String?>('ipv6CidrIp');
+    nicType = registerOutput<String>('nicType');
+    policy = registerOutput<String?>('policy');
+    portRange = registerOutput<String?>('portRange');
+    prefixListId = registerOutput<String>('prefixListId');
+    priority = registerOutput<int?>('priority');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    sourceGroupOwnerAccount = registerOutput<String?>(
+      'sourceGroupOwnerAccount',
+    );
+    sourceSecurityGroupId = registerOutput<String?>('sourceSecurityGroupId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [SecurityGroupRule] resource's state with the given [name] and [id].
@@ -266,24 +281,26 @@ class SecurityGroupRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/securityGroupRule:SecurityGroupRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrIp = registerOutput<String?>('cidrIp');
-    this.description = registerOutput<String?>('description');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
-    this.ipv6CidrIp = registerOutput<String?>('ipv6CidrIp');
-    this.nicType = registerOutput<String>('nicType');
-    this.policy = registerOutput<String?>('policy');
-    this.portRange = registerOutput<String?>('portRange');
-    this.prefixListId = registerOutput<String>('prefixListId');
-    this.priority = registerOutput<int?>('priority');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
-    this.sourceGroupOwnerAccount = registerOutput<String?>('sourceGroupOwnerAccount');
-    this.sourceSecurityGroupId = registerOutput<String?>('sourceSecurityGroupId');
-    this.type = registerOutput<String>('type');
+         'alicloud:ecs/securityGroupRule:SecurityGroupRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrIp = registerOutput<String?>('cidrIp');
+    description = registerOutput<String?>('description');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    ipv6CidrIp = registerOutput<String?>('ipv6CidrIp');
+    nicType = registerOutput<String>('nicType');
+    policy = registerOutput<String?>('policy');
+    portRange = registerOutput<String?>('portRange');
+    prefixListId = registerOutput<String>('prefixListId');
+    priority = registerOutput<int?>('priority');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    sourceGroupOwnerAccount = registerOutput<String?>(
+      'sourceGroupOwnerAccount',
+    );
+    sourceSecurityGroupId = registerOutput<String?>('sourceSecurityGroupId');
+    type = registerOutput<String>('type');
   }
 }

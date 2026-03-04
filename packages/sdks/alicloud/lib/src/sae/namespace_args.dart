@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceArgs {
   /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
   final pulumi.Input<bool>? enableMicroRegistration;
+
   /// The Description of Namespace.
   final pulumi.Input<String>? namespaceDescription;
+
   /// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
   final pulumi.Input<String>? namespaceId;
+
   /// The Name of Namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
   final pulumi.Input<String>? namespaceShortId;
 
@@ -44,12 +48,27 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      enableMicroRegistration: map['enableMicroRegistration'] == null ? null : (map['enableMicroRegistration']! as bool).input(),
-      namespaceDescription: map['namespaceDescription'] == null ? null : (map['namespaceDescription']! as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      namespaceShortId: map['namespaceShortId'] == null ? null : (map['namespaceShortId']! as String).input(),
+      enableMicroRegistration: (() {
+        final guardedValue = map['enableMicroRegistration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      namespaceDescription: (() {
+        final guardedValue = map['namespaceDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      namespaceShortId: (() {
+        final guardedValue = map['namespaceShortId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

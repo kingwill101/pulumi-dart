@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInternetGatewayRuleArgs {
   /// Name of the Internet Gateway rule.
   final pulumi.Input<String> internetGatewayRuleName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetInternetGatewayRuleArgs {
 
   factory GetInternetGatewayRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayRuleArgs(
-      internetGatewayRuleName: (map['internetGatewayRuleName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      internetGatewayRuleName: pulumi.Input.fromValue(
+        map['internetGatewayRuleName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

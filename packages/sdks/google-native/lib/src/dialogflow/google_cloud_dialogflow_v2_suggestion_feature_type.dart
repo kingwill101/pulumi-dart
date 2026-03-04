@@ -6,16 +6,17 @@ enum GoogleCloudDialogflowV2SuggestionFeatureType {
   smartReply("SMART_REPLY"),
   knowledgeSearch("KNOWLEDGE_SEARCH");
 
-  const GoogleCloudDialogflowV2SuggestionFeatureType(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2SuggestionFeatureType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDialogflowV2SuggestionFeatureType fromValue(String value) {
     for (final item in GoogleCloudDialogflowV2SuggestionFeatureType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2SuggestionFeatureType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2SuggestionFeatureType value: $value',
+    );
   }
 }
-

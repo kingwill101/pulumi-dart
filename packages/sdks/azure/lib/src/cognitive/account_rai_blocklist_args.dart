@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountRaiBlocklistArgs {
   /// The ID of the Cognitive Services Account. Changing this forces a new Cognitive Account Rai Blocklist to be created.
   final pulumi.Input<String> cognitiveAccountId;
+
   /// A short description for the Cognitive Account Rai Blocklist.
   final pulumi.Input<String>? description;
+
   /// The name of the Cognitive Account Rai Blocklist. Changing this forces a new Cognitive Account Rai Blocklist to be created.
   final pulumi.Input<String>? name;
 
@@ -34,10 +36,19 @@ class AccountRaiBlocklistArgs {
 
   factory AccountRaiBlocklistArgs.fromMap(Map<String, dynamic> map) {
     return AccountRaiBlocklistArgs(
-      cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      cognitiveAccountId: pulumi.Input.fromValue(
+        map['cognitiveAccountId'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

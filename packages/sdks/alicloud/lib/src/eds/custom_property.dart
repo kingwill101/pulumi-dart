@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_property_args.dart';
-import 'custom_property_property_value.dart';
 import 'custom_property_state.dart';
 
 /// Provides a ECD Custom Property resource.
 ///
 /// For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-eds-user-2021-03-08-createproperty-desktop).
 ///
-/// > **NOTE:** Available since v1.176.0.
+/// &gt; **NOTE:** Available since v1.176.0.
 ///
-/// > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
+/// &gt; **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
 ///
 /// ## Example Usage
 ///
@@ -140,8 +139,9 @@ import 'custom_property_state.dart';
 class CustomProperty extends pulumi.CustomResource {
   /// The Custom attribute key.
   late final pulumi.Output<String> propertyKey;
+
   /// Custom attribute sets the value of. See `property_values` below.
-  late final pulumi.Output<List<CustomPropertyPropertyValue>?> propertyValues;
+  late final pulumi.Output<List<Map<String, dynamic>>?> propertyValues;
 
   /// Creates a new [CustomProperty].
   /// [name] The Pulumi resource name.
@@ -152,13 +152,15 @@ class CustomProperty extends pulumi.CustomResource {
     CustomPropertyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/customProperty:CustomProperty',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.propertyKey = registerOutput<String>('propertyKey');
-    this.propertyValues = registerOutput<List<CustomPropertyPropertyValue>?>('propertyValues');
+         'alicloud:eds/customProperty:CustomProperty',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    propertyKey = registerOutput<String>('propertyKey');
+    propertyValues = registerOutput<List<Map<String, dynamic>>?>(
+      'propertyValues',
+    );
   }
 
   /// Gets an existing [CustomProperty] resource's state with the given [name] and [id].
@@ -179,12 +181,14 @@ class CustomProperty extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/customProperty:CustomProperty',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.propertyKey = registerOutput<String>('propertyKey');
-    this.propertyValues = registerOutput<List<CustomPropertyPropertyValue>?>('propertyValues');
+         'alicloud:eds/customProperty:CustomProperty',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    propertyKey = registerOutput<String>('propertyKey');
+    propertyValues = registerOutput<List<Map<String, dynamic>>?>(
+      'propertyValues',
+    );
   }
 }

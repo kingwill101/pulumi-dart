@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'studio_application_args.dart';
-import 'studio_application_instance.dart';
 import 'studio_application_state.dart';
 
 /// Provides a Cloud Architect Design Tools Application resource.
 ///
 /// For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
 ///
-/// > **NOTE:** Available since v1.192.0.
+/// &gt; **NOTE:** Available since v1.192.0.
 ///
 /// ## Example Usage
 ///
@@ -267,18 +266,25 @@ import 'studio_application_state.dart';
 class StudioApplication extends pulumi.CustomResource {
   /// The name of the application.
   late final pulumi.Output<String> applicationName;
+
   /// The id of the area.
   late final pulumi.Output<String?> areaId;
+
   /// The configuration of the application.
   late final pulumi.Output<Map<String, String>?> configuration;
+
   /// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
-  late final pulumi.Output<List<StudioApplicationInstance>?> instances;
+  late final pulumi.Output<List<Map<String, dynamic>>?> instances;
+
   /// The id of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the Application.
   late final pulumi.Output<String> status;
+
   /// The id of the template.
   late final pulumi.Output<String> templateId;
+
   /// The variables of the application.
   late final pulumi.Output<Map<String, String>?> variables;
 
@@ -291,19 +297,19 @@ class StudioApplication extends pulumi.CustomResource {
     StudioApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bp/studioApplication:StudioApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationName = registerOutput<String>('applicationName');
-    this.areaId = registerOutput<String?>('areaId');
-    this.configuration = registerOutput<Map<String, String>?>('configuration');
-    this.instances = registerOutput<List<StudioApplicationInstance>?>('instances');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.templateId = registerOutput<String>('templateId');
-    this.variables = registerOutput<Map<String, String>?>('variables');
+         'alicloud:bp/studioApplication:StudioApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationName = registerOutput<String>('applicationName');
+    areaId = registerOutput<String?>('areaId');
+    configuration = registerOutput<Map<String, String>?>('configuration');
+    instances = registerOutput<List<Map<String, dynamic>>?>('instances');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    templateId = registerOutput<String>('templateId');
+    variables = registerOutput<Map<String, String>?>('variables');
   }
 
   /// Gets an existing [StudioApplication] resource's state with the given [name] and [id].
@@ -324,18 +330,18 @@ class StudioApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bp/studioApplication:StudioApplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationName = registerOutput<String>('applicationName');
-    this.areaId = registerOutput<String?>('areaId');
-    this.configuration = registerOutput<Map<String, String>?>('configuration');
-    this.instances = registerOutput<List<StudioApplicationInstance>?>('instances');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.templateId = registerOutput<String>('templateId');
-    this.variables = registerOutput<Map<String, String>?>('variables');
+         'alicloud:bp/studioApplication:StudioApplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationName = registerOutput<String>('applicationName');
+    areaId = registerOutput<String?>('areaId');
+    configuration = registerOutput<Map<String, String>?>('configuration');
+    instances = registerOutput<List<Map<String, dynamic>>?>('instances');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    templateId = registerOutput<String>('templateId');
+    variables = registerOutput<Map<String, String>?>('variables');
   }
 }

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceManagerGroupArgs {
   /// The description of the workspace manager group
   final pulumi.Input<String>? description;
+
   /// The display name of the workspace manager group
   final pulumi.Input<String> displayName;
+
   /// The names of the workspace manager members participating in this group.
   final pulumi.Input<List<String>> memberResourceNames;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace manager group
   final pulumi.Input<String>? workspaceManagerGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -49,13 +54,24 @@ class WorkspaceManagerGroupArgs {
 
   factory WorkspaceManagerGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerGroupArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      memberResourceNames: ((map['memberResourceNames'] as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceManagerGroupName: map['workspaceManagerGroupName'] == null ? null : (map['workspaceManagerGroupName']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      memberResourceNames: pulumi.Input.fromValue(
+        (map['memberResourceNames'] as List).cast<String>(),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceManagerGroupName: (() {
+        final guardedValue = map['workspaceManagerGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

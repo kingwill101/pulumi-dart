@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse {
   /// Average length of non-null values in the scanned data.
   final pulumi.Input<double> averageLength;
+
   /// Maximum length of non-null values in the scanned data.
   final pulumi.Input<String> maxLength;
+
   /// Minimum length of non-null values in the scanned data.
   final pulumi.Input<String> minLength;
 
@@ -29,12 +31,13 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
     };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse(
-      averageLength: (map['averageLength'] as double).input(),
-      maxLength: (map['maxLength'] as String).input(),
-      minLength: (map['minLength'] as String).input(),
+      averageLength: pulumi.Input.fromValue(map['averageLength'] as double),
+      maxLength: pulumi.Input.fromValue(map['maxLength'] as String),
+      minLength: pulumi.Input.fromValue(map['minLength'] as String),
     );
   }
 }
-

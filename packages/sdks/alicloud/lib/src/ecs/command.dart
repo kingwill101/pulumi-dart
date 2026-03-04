@@ -6,7 +6,7 @@ import 'command_state.dart';
 ///
 /// For information about ECS Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/doc-detail/64844.htm).
 ///
-/// > **NOTE:** Available in v1.116.0+.
+/// &gt; **NOTE:** Available in v1.116.0+.
 ///
 /// ## Example Usage
 ///
@@ -137,16 +137,22 @@ import 'command_state.dart';
 class Command extends pulumi.CustomResource {
   /// The Base64-encoded content of the command.
   late final pulumi.Output<String> commandContent;
+
   /// The description of command.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether to use custom parameters in the command to be created. Default to: false.
   late final pulumi.Output<bool?> enableParameter;
+
   /// The name of the command, which supports all character sets. It can be up to 128 characters in length.
   late final pulumi.Output<String> name;
+
   /// The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
   late final pulumi.Output<int?> timeout;
+
   /// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
   late final pulumi.Output<String> type;
+
   /// The execution path of the command in the ECS instance.
   late final pulumi.Output<String?> workingDir;
 
@@ -159,18 +165,18 @@ class Command extends pulumi.CustomResource {
     CommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/command:Command',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandContent = registerOutput<String>('commandContent');
-    this.description = registerOutput<String?>('description');
-    this.enableParameter = registerOutput<bool?>('enableParameter');
+         'alicloud:ecs/command:Command',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandContent = registerOutput<String>('commandContent');
+    description = registerOutput<String?>('description');
+    enableParameter = registerOutput<bool?>('enableParameter');
     this.name = registerOutput<String>('name');
-    this.timeout = registerOutput<int?>('timeout');
-    this.type = registerOutput<String>('type');
-    this.workingDir = registerOutput<String?>('workingDir');
+    timeout = registerOutput<int?>('timeout');
+    type = registerOutput<String>('type');
+    workingDir = registerOutput<String?>('workingDir');
   }
 
   /// Gets an existing [Command] resource's state with the given [name] and [id].
@@ -191,17 +197,17 @@ class Command extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/command:Command',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandContent = registerOutput<String>('commandContent');
-    this.description = registerOutput<String?>('description');
-    this.enableParameter = registerOutput<bool?>('enableParameter');
+         'alicloud:ecs/command:Command',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandContent = registerOutput<String>('commandContent');
+    description = registerOutput<String?>('description');
+    enableParameter = registerOutput<bool?>('enableParameter');
     this.name = registerOutput<String>('name');
-    this.timeout = registerOutput<int?>('timeout');
-    this.type = registerOutput<String>('type');
-    this.workingDir = registerOutput<String?>('workingDir');
+    timeout = registerOutput<int?>('timeout');
+    type = registerOutput<String>('type');
+    workingDir = registerOutput<String?>('workingDir');
   }
 }

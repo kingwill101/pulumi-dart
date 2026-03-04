@@ -4,16 +4,17 @@ enum MavenRepositoryConfigVersionPolicy {
   release("RELEASE"),
   snapshot("SNAPSHOT");
 
-  const MavenRepositoryConfigVersionPolicy(this.value);
-  final String value;
+  const MavenRepositoryConfigVersionPolicy(this.wireValue);
+  final String wireValue;
 
   static MavenRepositoryConfigVersionPolicy fromValue(String value) {
     for (final item in MavenRepositoryConfigVersionPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MavenRepositoryConfigVersionPolicy value: $value');
+    throw ArgumentError(
+      'Unknown MavenRepositoryConfigVersionPolicy value: $value',
+    );
   }
 }
-

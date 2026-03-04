@@ -4,7 +4,7 @@ import 'certificate_state.dart';
 
 /// Provides a resource to override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances in the current AWS region.
 ///
-/// > **NOTE:** Removing this Terraform resource removes the override. New DB instances will use the system-default certificate for the current AWS region.
+/// &gt; **NOTE:** Removing this Terraform resource removes the override. New DB instances will use the system-default certificate for the current AWS region.
 ///
 /// ## Example Usage
 ///
@@ -103,6 +103,7 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Certificate identifier. For example, `rds-ca-rsa4096-g1`. Refer to [AWS RDS (Relational Database) Certificate Identifier](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html#UsingWithRDS.SSL.CertificateIdentifier) for more information.
   late final pulumi.Output<String> certificateIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -115,13 +116,13 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateIdentifier = registerOutput<String>('certificateIdentifier');
-    this.region = registerOutput<String>('region');
+         'aws:rds/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateIdentifier = registerOutput<String>('certificateIdentifier');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -142,12 +143,12 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateIdentifier = registerOutput<String>('certificateIdentifier');
-    this.region = registerOutput<String>('region');
+         'aws:rds/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateIdentifier = registerOutput<String>('certificateIdentifier');
+    region = registerOutput<String>('region');
   }
 }

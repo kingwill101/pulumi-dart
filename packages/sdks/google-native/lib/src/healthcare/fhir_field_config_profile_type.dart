@@ -5,16 +5,15 @@ enum FhirFieldConfigProfileType {
   basic("BASIC"),
   cleanAll("CLEAN_ALL");
 
-  const FhirFieldConfigProfileType(this.value);
-  final String value;
+  const FhirFieldConfigProfileType(this.wireValue);
+  final String wireValue;
 
   static FhirFieldConfigProfileType fromValue(String value) {
     for (final item in FhirFieldConfigProfileType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FhirFieldConfigProfileType value: $value');
   }
 }
-

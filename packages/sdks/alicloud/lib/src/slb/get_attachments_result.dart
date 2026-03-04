@@ -10,6 +10,7 @@ class GetAttachmentsResult {
   final List<String>? instanceIds;
   final String loadBalancerId;
   final String? outputFile;
+
   /// A list of SLB attachments. Each element contains the following attributes:
   final List<GetAttachmentsSlbAttachment> slbAttachments;
 
@@ -33,18 +34,34 @@ class GetAttachmentsResult {
       'instanceIds': ?instanceIds,
       'loadBalancerId': loadBalancerId,
       'outputFile': ?outputFile,
-      'slbAttachments': pulumi.Input.encodeList<GetAttachmentsSlbAttachment, Map<String, dynamic>>(slbAttachments, (value) => value.toMap()),
+      'slbAttachments':
+          pulumi.Input.encodeList<
+            GetAttachmentsSlbAttachment,
+            Map<String, dynamic>
+          >(slbAttachments, (value) => value.toMap()),
     };
   }
 
   factory GetAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetAttachmentsResult(
       id: map['id'] as String,
-      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds']! as List).cast<String>(),
+      instanceIds: (() {
+        final guardedValue = map['instanceIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       loadBalancerId: map['loadBalancerId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      slbAttachments: pulumi.Input.decodeList<GetAttachmentsSlbAttachment>(map['slbAttachments'], (value) => GetAttachmentsSlbAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      slbAttachments: pulumi.Input.decodeList<GetAttachmentsSlbAttachment>(
+        map['slbAttachments']!,
+        (value) => GetAttachmentsSlbAttachment.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RefreshDetailsResponse {
   /// Indicates the relative path of the error xml for the last refresh job on this particular share or container, if any. This could be a failed job or a successful job.
   final pulumi.Input<String>? errorManifestFile;
+
   /// If a refresh job is currently in progress on this share or container, this field indicates the ARM resource ID of that job. The field is empty if no job is in progress.
   final pulumi.Input<String>? inProgressRefreshJobId;
+
   /// Indicates the completed time for the last refresh job on this particular share or container, if any.This could be a failed job or a successful job.
   final pulumi.Input<String>? lastCompletedRefreshJobTimeInUTC;
+
   /// Indicates the id of the last refresh job on this particular share or container,if any. This could be a failed job or a successful job.
   final pulumi.Input<String>? lastJob;
 
@@ -36,11 +39,26 @@ class RefreshDetailsResponse {
 
   factory RefreshDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RefreshDetailsResponse(
-      errorManifestFile: map['errorManifestFile'] == null ? null : (map['errorManifestFile']! as String).input(),
-      inProgressRefreshJobId: map['inProgressRefreshJobId'] == null ? null : (map['inProgressRefreshJobId']! as String).input(),
-      lastCompletedRefreshJobTimeInUTC: map['lastCompletedRefreshJobTimeInUTC'] == null ? null : (map['lastCompletedRefreshJobTimeInUTC']! as String).input(),
-      lastJob: map['lastJob'] == null ? null : (map['lastJob']! as String).input(),
+      errorManifestFile: (() {
+        final guardedValue = map['errorManifestFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inProgressRefreshJobId: (() {
+        final guardedValue = map['inProgressRefreshJobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastCompletedRefreshJobTimeInUTC: (() {
+        final guardedValue = map['lastCompletedRefreshJobTimeInUTC'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastJob: (() {
+        final guardedValue = map['lastJob'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

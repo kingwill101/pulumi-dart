@@ -3,16 +3,15 @@ enum EventsOutOfOrderPolicy {
   valueAdjust("Adjust"),
   valueDrop("Drop");
 
-  const EventsOutOfOrderPolicy(this.value);
-  final String value;
+  const EventsOutOfOrderPolicy(this.wireValue);
+  final String wireValue;
 
   static EventsOutOfOrderPolicy fromValue(String value) {
     for (final item in EventsOutOfOrderPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventsOutOfOrderPolicy value: $value');
   }
 }
-

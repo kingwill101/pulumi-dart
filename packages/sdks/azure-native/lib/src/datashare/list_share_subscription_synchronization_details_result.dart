@@ -7,6 +7,7 @@ import 'synchronization_details_response.dart';
 class ListShareSubscriptionSynchronizationDetailsResult {
   /// The Url of next result page.
   final String? nextLink;
+
   /// Collection of items of type DataTransferObjects.
   final List<SynchronizationDetailsResponse> value;
 
@@ -21,15 +22,29 @@ class ListShareSubscriptionSynchronizationDetailsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<SynchronizationDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<
+            SynchronizationDetailsResponse,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
-  factory ListShareSubscriptionSynchronizationDetailsResult.fromMap(Map<String, dynamic> map) {
+  factory ListShareSubscriptionSynchronizationDetailsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListShareSubscriptionSynchronizationDetailsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: pulumi.Input.decodeList<SynchronizationDetailsResponse>(map['value'], (value) => SynchronizationDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: pulumi.Input.decodeList<SynchronizationDetailsResponse>(
+        map['value']!,
+        (value) => SynchronizationDetailsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

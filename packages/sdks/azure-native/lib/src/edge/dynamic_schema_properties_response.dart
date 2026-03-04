@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicSchemaPropertiesResponse {
   /// Type of configuration model
   final pulumi.Input<String> configurationModel;
+
   /// Type of configuration
   final pulumi.Input<String> configurationType;
+
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
 
@@ -31,10 +33,15 @@ class DynamicSchemaPropertiesResponse {
 
   factory DynamicSchemaPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DynamicSchemaPropertiesResponse(
-      configurationModel: (map['configurationModel'] as String).input(),
-      configurationType: (map['configurationType'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      configurationModel: pulumi.Input.fromValue(
+        map['configurationModel'] as String,
+      ),
+      configurationType: pulumi.Input.fromValue(
+        map['configurationType'] as String,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

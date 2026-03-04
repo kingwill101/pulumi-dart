@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketLoggingArgs {
   /// The name of the bucket which will be logged.
   final pulumi.Input<String> bucket;
+
   /// The region where the bucket resides.
   final pulumi.Input<String> region;
+
   /// The name of the bucket which will store the logs.
   final pulumi.Input<String> targetBucket;
+
   /// The prefix for the log files.
   final pulumi.Input<String> targetPrefix;
 
@@ -39,11 +42,10 @@ class SpacesBucketLoggingArgs {
 
   factory SpacesBucketLoggingArgs.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLoggingArgs(
-      bucket: (map['bucket'] as String).input(),
-      region: (map['region'] as String).input(),
-      targetBucket: (map['targetBucket'] as String).input(),
-      targetPrefix: (map['targetPrefix'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      targetBucket: pulumi.Input.fromValue(map['targetBucket'] as String),
+      targetPrefix: pulumi.Input.fromValue(map['targetPrefix'] as String),
     );
   }
 }
-

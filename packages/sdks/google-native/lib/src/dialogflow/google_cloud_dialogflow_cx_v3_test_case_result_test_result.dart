@@ -4,16 +4,20 @@ enum GoogleCloudDialogflowCxV3TestCaseResultTestResult {
   passed("PASSED"),
   failed("FAILED");
 
-  const GoogleCloudDialogflowCxV3TestCaseResultTestResult(this.value);
-  final String value;
+  const GoogleCloudDialogflowCxV3TestCaseResultTestResult(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDialogflowCxV3TestCaseResultTestResult fromValue(String value) {
-    for (final item in GoogleCloudDialogflowCxV3TestCaseResultTestResult.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowCxV3TestCaseResultTestResult fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowCxV3TestCaseResultTestResult.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3TestCaseResultTestResult value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3TestCaseResultTestResult value: $value',
+    );
   }
 }
-

@@ -3,16 +3,15 @@ enum OSDiskType {
   valueManaged("Managed"),
   valueEphemeral("Ephemeral");
 
-  const OSDiskType(this.value);
-  final String value;
+  const OSDiskType(this.wireValue);
+  final String wireValue;
 
   static OSDiskType fromValue(String value) {
     for (final item in OSDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OSDiskType value: $value');
   }
 }
-

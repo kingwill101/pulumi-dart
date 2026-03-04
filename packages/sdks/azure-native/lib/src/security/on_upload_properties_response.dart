@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnUploadPropertiesResponse {
   /// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
   final pulumi.Input<int>? capGBPerMonth;
+
   /// Indicates whether On Upload malware scanning should be enabled.
   final pulumi.Input<bool>? isEnabled;
 
   /// Creates a new [OnUploadPropertiesResponse].
   /// [capGBPerMonth] Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
   /// [isEnabled] Indicates whether On Upload malware scanning should be enabled.
-  OnUploadPropertiesResponse({
-    this.capGBPerMonth,
-    this.isEnabled,
-  });
+  OnUploadPropertiesResponse({this.capGBPerMonth, this.isEnabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class OnUploadPropertiesResponse {
 
   factory OnUploadPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OnUploadPropertiesResponse(
-      capGBPerMonth: map['capGBPerMonth'] == null ? null : (map['capGBPerMonth']! as int).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      capGBPerMonth: (() {
+        final guardedValue = map['capGBPerMonth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointAclPoliciesPolicy {
   /// The description of the entry.
   final pulumi.Input<String> description;
+
   /// The type of endpoint.
   final pulumi.Input<String> endpointType;
+
   /// The IP segment that allowed to access.
   final pulumi.Input<String> entry;
+
   /// The ID of the Endpoint Acl Policy.
   final pulumi.Input<String> id;
+
   /// The ID of the CR Instance.
   final pulumi.Input<String> instanceId;
 
@@ -40,12 +44,11 @@ class GetEndpointAclPoliciesPolicy {
 
   factory GetEndpointAclPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetEndpointAclPoliciesPolicy(
-      description: (map['description'] as String).input(),
-      endpointType: (map['endpointType'] as String).input(),
-      entry: (map['entry'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      entry: pulumi.Input.fromValue(map['entry'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

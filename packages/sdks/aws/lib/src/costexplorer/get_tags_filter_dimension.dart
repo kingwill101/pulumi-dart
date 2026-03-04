@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTagsFilterDimension {
   /// Unique name of the Cost Category.
   final pulumi.Input<String>? key;
+
   /// Match options that you can use to filter your results. MatchOptions is only applicable for actions related to cost category. The default values for MatchOptions is `EQUALS` and `CASE_SENSITIVE`. Valid values are: `EQUALS`,  `ABSENT`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`.
   final pulumi.Input<List<String>>? matchOptions;
+
   /// Specific value of the Cost Category.
   final pulumi.Input<List<String>>? values;
 
@@ -14,11 +16,7 @@ class GetTagsFilterDimension {
   /// [key] Unique name of the Cost Category.
   /// [matchOptions] Match options that you can use to filter your results. MatchOptions is only applicable for actions related to cost category. The default values for MatchOptions is `EQUALS` and `CASE_SENSITIVE`. Valid values are: `EQUALS`,  `ABSENT`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`.
   /// [values] Specific value of the Cost Category.
-  GetTagsFilterDimension({
-    this.key,
-    this.matchOptions,
-    this.values,
-  });
+  GetTagsFilterDimension({this.key, this.matchOptions, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class GetTagsFilterDimension {
 
   factory GetTagsFilterDimension.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterDimension(
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      matchOptions: map['matchOptions'] == null ? null : (((map['matchOptions'] as List).cast<String>()).input()).input(),
-      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchOptions: (() {
+        final guardedValue = map['matchOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading].
   /// [policy] The policy for kernel module loading.
-  NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
-    this.policy,
-  });
+  NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading({this.policy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': ?policy,
-    };
+    return <String, dynamic>{'policy': ?policy};
   }
 
-  factory NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(Map<String, dynamic> map) {
+  factory NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading(
-      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

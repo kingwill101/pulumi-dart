@@ -7,9 +7,7 @@ class ProviderFeaturesLogAnalyticsWorkspace {
 
   /// Creates a new [ProviderFeaturesLogAnalyticsWorkspace].
   /// [permanentlyDeleteOnDestroy] Optional.
-  ProviderFeaturesLogAnalyticsWorkspace({
-    this.permanentlyDeleteOnDestroy,
-  });
+  ProviderFeaturesLogAnalyticsWorkspace({this.permanentlyDeleteOnDestroy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,10 +15,15 @@ class ProviderFeaturesLogAnalyticsWorkspace {
     };
   }
 
-  factory ProviderFeaturesLogAnalyticsWorkspace.fromMap(Map<String, dynamic> map) {
+  factory ProviderFeaturesLogAnalyticsWorkspace.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProviderFeaturesLogAnalyticsWorkspace(
-      permanentlyDeleteOnDestroy: map['permanentlyDeleteOnDestroy'] == null ? null : (map['permanentlyDeleteOnDestroy']! as bool).input(),
+      permanentlyDeleteOnDestroy: (() {
+        final guardedValue = map['permanentlyDeleteOnDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

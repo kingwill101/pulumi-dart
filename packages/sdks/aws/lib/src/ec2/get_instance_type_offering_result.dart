@@ -6,10 +6,13 @@ import 'get_instance_type_offering_filter.dart';
 /// Result data returned by getInstanceTypeOffering.
 class GetInstanceTypeOfferingResult {
   final List<GetInstanceTypeOfferingFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// EC2 Instance Type.
   final String instanceType;
+
   /// Identifier for the location.
   final String location;
   final String? locationType;
@@ -36,7 +39,14 @@ class GetInstanceTypeOfferingResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetInstanceTypeOfferingFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetInstanceTypeOfferingFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'instanceType': instanceType,
       'location': location,
@@ -48,14 +58,30 @@ class GetInstanceTypeOfferingResult {
 
   factory GetInstanceTypeOfferingResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstanceTypeOfferingFilter>(map['filters']!, (value) => GetInstanceTypeOfferingFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetInstanceTypeOfferingFilter>(
+          guardedValue,
+          (value) => GetInstanceTypeOfferingFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       instanceType: map['instanceType'] as String,
       location: map['location'] as String,
-      locationType: map['locationType'] == null ? null : map['locationType'] as String,
-      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : (map['preferredInstanceTypes'] as List).cast<String>(),
+      locationType: (() {
+        final guardedValue = map['locationType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      preferredInstanceTypes: (() {
+        final guardedValue = map['preferredInstanceTypes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       region: map['region'] as String,
     );
   }
 }
-

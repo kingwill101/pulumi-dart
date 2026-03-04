@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDevToolPortalArgs {
   /// The name of Dev Tool Portal.
   final pulumi.Input<String> devToolPortalName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,13 @@ class GetDevToolPortalArgs {
 
   factory GetDevToolPortalArgs.fromMap(Map<String, dynamic> map) {
     return GetDevToolPortalArgs(
-      devToolPortalName: (map['devToolPortalName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      devToolPortalName: pulumi.Input.fromValue(
+        map['devToolPortalName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

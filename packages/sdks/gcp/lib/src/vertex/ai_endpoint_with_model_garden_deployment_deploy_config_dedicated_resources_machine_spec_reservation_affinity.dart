@@ -7,6 +7,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
   /// SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
   /// as the key and specify the name of your reservation as its value.
   final pulumi.Input<String>? key;
+
   /// Specifies the reservation affinity type.
   /// Possible values:
   /// TYPE_UNSPECIFIED
@@ -14,6 +15,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
   /// ANY_RESERVATION
   /// SPECIFIC_RESERVATION
   final pulumi.Input<String> reservationAffinityType;
+
   /// Corresponds to the label values of a reservation resource. This must be the
   /// full resource name of the reservation or reservation block.
   final pulumi.Input<List<String>>? values;
@@ -36,12 +38,23 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
     };
   }
 
-  factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity.fromMap(Map<String, dynamic> map) {
+  factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      reservationAffinityType: (map['reservationAffinityType'] as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservationAffinityType: pulumi.Input.fromValue(
+        map['reservationAffinityType'] as String,
+      ),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

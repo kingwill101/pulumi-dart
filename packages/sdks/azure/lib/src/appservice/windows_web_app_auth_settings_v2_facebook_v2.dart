@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsWebAppAuthSettingsV2FacebookV2 {
   /// The App ID of the Facebook app used for login.
   final pulumi.Input<String> appId;
+
   /// The app setting name that contains the `app_secret` value used for Facebook Login.
   ///
-  /// !> **Note:** A setting with this name must exist in `app_settings` to function correctly.
+  /// !&gt; **Note:** A setting with this name must exist in `app_settings` to function correctly.
   final pulumi.Input<String> appSecretSettingName;
+
   /// The version of the Facebook API to be used while logging in.
   final pulumi.Input<String>? graphApiVersion;
+
   /// The list of scopes that should be requested as part of Facebook Login authentication.
   final pulumi.Input<List<String>>? loginScopes;
 
@@ -35,13 +38,24 @@ class WindowsWebAppAuthSettingsV2FacebookV2 {
     };
   }
 
-  factory WindowsWebAppAuthSettingsV2FacebookV2.fromMap(Map<String, dynamic> map) {
+  factory WindowsWebAppAuthSettingsV2FacebookV2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsWebAppAuthSettingsV2FacebookV2(
-      appId: (map['appId'] as String).input(),
-      appSecretSettingName: (map['appSecretSettingName'] as String).input(),
-      graphApiVersion: map['graphApiVersion'] == null ? null : (map['graphApiVersion']! as String).input(),
-      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes']! as List).cast<String>()).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      appSecretSettingName: pulumi.Input.fromValue(
+        map['appSecretSettingName'] as String,
+      ),
+      graphApiVersion: (() {
+        final guardedValue = map['graphApiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginScopes: (() {
+        final guardedValue = map['loginScopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

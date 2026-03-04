@@ -158,8 +158,10 @@ import 'tracker_association_state.dart';
 class TrackerAssociation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker resource. Used when you need to specify a resource across all AWS.
   late final pulumi.Output<String> consumerArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The name of the tracker resource to be associated with a geofence collection.
   late final pulumi.Output<String> trackerName;
 
@@ -172,14 +174,14 @@ class TrackerAssociation extends pulumi.CustomResource {
     TrackerAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:location/trackerAssociation:TrackerAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumerArn = registerOutput<String>('consumerArn');
-    this.region = registerOutput<String>('region');
-    this.trackerName = registerOutput<String>('trackerName');
+         'aws:location/trackerAssociation:TrackerAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumerArn = registerOutput<String>('consumerArn');
+    region = registerOutput<String>('region');
+    trackerName = registerOutput<String>('trackerName');
   }
 
   /// Gets an existing [TrackerAssociation] resource's state with the given [name] and [id].
@@ -200,13 +202,13 @@ class TrackerAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:location/trackerAssociation:TrackerAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumerArn = registerOutput<String>('consumerArn');
-    this.region = registerOutput<String>('region');
-    this.trackerName = registerOutput<String>('trackerName');
+         'aws:location/trackerAssociation:TrackerAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumerArn = registerOutput<String>('consumerArn');
+    region = registerOutput<String>('region');
+    trackerName = registerOutput<String>('trackerName');
   }
 }

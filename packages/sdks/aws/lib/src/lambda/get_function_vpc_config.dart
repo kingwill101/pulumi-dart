@@ -4,10 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionVpcConfig {
   final pulumi.Input<bool> ipv6AllowedForDualStack;
+
   /// List of security group IDs associated with the Lambda function.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// List of subnet IDs associated with the Lambda function.
   final pulumi.Input<List<String>> subnetIds;
+
   /// ID of the VPC.
   final pulumi.Input<String> vpcId;
 
@@ -34,11 +37,16 @@ class GetFunctionVpcConfig {
 
   factory GetFunctionVpcConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionVpcConfig(
-      ipv6AllowedForDualStack: (map['ipv6AllowedForDualStack'] as bool).input(),
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      ipv6AllowedForDualStack: pulumi.Input.fromValue(
+        map['ipv6AllowedForDualStack'] as bool,
+      ),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

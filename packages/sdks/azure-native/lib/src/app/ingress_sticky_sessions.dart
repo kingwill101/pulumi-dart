@@ -9,20 +9,19 @@ class IngressStickySessions {
 
   /// Creates a new [IngressStickySessions].
   /// [affinity] Sticky Session Affinity
-  IngressStickySessions({
-    this.affinity,
-  });
+  IngressStickySessions({this.affinity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'affinity': ?affinity,
-    };
+    return <String, dynamic>{'affinity': ?affinity};
   }
 
   factory IngressStickySessions.fromMap(Map<String, dynamic> map) {
     return IngressStickySessions(
-      affinity: map['affinity'] == null ? null : (map['affinity']! as String).input(),
+      affinity: (() {
+        final guardedValue = map['affinity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

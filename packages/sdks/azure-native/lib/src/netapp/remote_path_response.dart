@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemotePathResponse {
   /// The Path to a ONTAP Host
   final pulumi.Input<String> externalHostName;
+
   /// The name of a server on the ONTAP Host
   final pulumi.Input<String> serverName;
+
   /// The name of a volume on the server
   final pulumi.Input<String> volumeName;
 
@@ -31,10 +33,11 @@ class RemotePathResponse {
 
   factory RemotePathResponse.fromMap(Map<String, dynamic> map) {
     return RemotePathResponse(
-      externalHostName: (map['externalHostName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      externalHostName: pulumi.Input.fromValue(
+        map['externalHostName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

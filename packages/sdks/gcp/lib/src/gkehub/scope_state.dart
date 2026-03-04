@@ -9,20 +9,19 @@ class ScopeState {
 
   /// Creates a new [ScopeState].
   /// [code] (Output)
-  ScopeState({
-    this.code,
-  });
+  ScopeState({this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-    };
+    return <String, dynamic>{'code': ?code};
   }
 
   factory ScopeState.fromMap(Map<String, dynamic> map) {
     return ScopeState(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

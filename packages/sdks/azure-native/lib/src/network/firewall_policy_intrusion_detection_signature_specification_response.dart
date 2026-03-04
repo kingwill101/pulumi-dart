@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyIntrusionDetectionSignatureSpecificationResponse {
   /// Signature id.
   final pulumi.Input<String>? id;
+
   /// The signature state.
   final pulumi.Input<String>? mode;
 
@@ -18,17 +19,23 @@ class FirewallPolicyIntrusionDetectionSignatureSpecificationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'mode': ?mode,
-    };
+    return <String, dynamic>{'id': ?id, 'mode': ?mode};
   }
 
-  factory FirewallPolicyIntrusionDetectionSignatureSpecificationResponse.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyIntrusionDetectionSignatureSpecificationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyIntrusionDetectionSignatureSpecificationResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -180,8 +180,10 @@ class UserSettingsAssociation extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> portalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the user settings to associate with the portal. Forces replacement if changed.
   late final pulumi.Output<String> userSettingsArn;
 
@@ -194,14 +196,14 @@ class UserSettingsAssociation extends pulumi.CustomResource {
     UserSettingsAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/userSettingsAssociation:UserSettingsAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portalArn = registerOutput<String>('portalArn');
-    this.region = registerOutput<String>('region');
-    this.userSettingsArn = registerOutput<String>('userSettingsArn');
+         'aws:workspacesweb/userSettingsAssociation:UserSettingsAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    userSettingsArn = registerOutput<String>('userSettingsArn');
   }
 
   /// Gets an existing [UserSettingsAssociation] resource's state with the given [name] and [id].
@@ -222,13 +224,13 @@ class UserSettingsAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/userSettingsAssociation:UserSettingsAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portalArn = registerOutput<String>('portalArn');
-    this.region = registerOutput<String>('region');
-    this.userSettingsArn = registerOutput<String>('userSettingsArn');
+         'aws:workspacesweb/userSettingsAssociation:UserSettingsAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    userSettingsArn = registerOutput<String>('userSettingsArn');
   }
 }

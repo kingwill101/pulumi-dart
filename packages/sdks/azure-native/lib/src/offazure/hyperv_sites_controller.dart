@@ -245,30 +245,43 @@ import 'system_data_response.dart';
 class HypervSitesController extends pulumi.CustomResource {
   /// Gets or sets the on-premises agent details.
   late final pulumi.Output<SiteAgentPropertiesResponse?> agentDetails;
+
   /// Gets or sets the Appliance Name.
   late final pulumi.Output<String?> applianceName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the ARM ID of migration hub solution for SDS.
   late final pulumi.Output<String?> discoverySolutionId;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Gets the Master Site this site is linked to.
   late final pulumi.Output<String> masterSiteId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Gets the service endpoint.
   late final pulumi.Output<String> serviceEndpoint;
+
   /// Gets or sets the service principal identity details used by agent for
   /// communication
   /// to the service.
-  late final pulumi.Output<SiteSpnPropertiesResponse?> servicePrincipalIdentityDetails;
+  late final pulumi.Output<SiteSpnPropertiesResponse?>
+  servicePrincipalIdentityDetails;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -281,23 +294,26 @@ class HypervSitesController extends pulumi.CustomResource {
     HypervSitesControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:offazure:HypervSitesController',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentDetails = registerOutput<SiteAgentPropertiesResponse?>('agentDetails');
-    this.applianceName = registerOutput<String?>('applianceName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.discoverySolutionId = registerOutput<String?>('discoverySolutionId');
-    this.location = registerOutput<String>('location');
-    this.masterSiteId = registerOutput<String>('masterSiteId');
+         'azure-native:offazure:HypervSitesController',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentDetails = registerOutput<SiteAgentPropertiesResponse?>('agentDetails');
+    applianceName = registerOutput<String?>('applianceName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoverySolutionId = registerOutput<String?>('discoverySolutionId');
+    location = registerOutput<String>('location');
+    masterSiteId = registerOutput<String>('masterSiteId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.serviceEndpoint = registerOutput<String>('serviceEndpoint');
-    this.servicePrincipalIdentityDetails = registerOutput<SiteSpnPropertiesResponse?>('servicePrincipalIdentityDetails');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String?>('provisioningState');
+    serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    servicePrincipalIdentityDetails =
+        registerOutput<SiteSpnPropertiesResponse?>(
+          'servicePrincipalIdentityDetails',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -10,20 +10,35 @@ class GetTopicEventSubscriptionDeliveryAttributesResult {
 
   /// Creates a new [GetTopicEventSubscriptionDeliveryAttributesResult].
   /// [value] A collection of DeliveryAttributeMapping
-  GetTopicEventSubscriptionDeliveryAttributesResult({
-    this.value,
-  });
+  GetTopicEventSubscriptionDeliveryAttributesResult({this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<DynamicDeliveryAttributeMappingResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          DynamicDeliveryAttributeMappingResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory GetTopicEventSubscriptionDeliveryAttributesResult.fromMap(Map<String, dynamic> map) {
+  factory GetTopicEventSubscriptionDeliveryAttributesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTopicEventSubscriptionDeliveryAttributesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['value']!, (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(
+          guardedValue,
+          (value) => DynamicDeliveryAttributeMappingResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

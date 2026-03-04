@@ -10,6 +10,7 @@ class RuleDeploymentArgs {
   /// Whether detections resulting from this deployment should be considered
   /// alerts.
   final pulumi.Input<bool>? alerting;
+
   /// The archive state of the rule deployment.
   /// Cannot be set to true unless enabled is set to false i.e.
   /// archiving requires a two-step process: first, disable the rule by
@@ -18,17 +19,23 @@ class RuleDeploymentArgs {
   /// If currently set to true, enabled, alerting, and run_frequency cannot be
   /// updated.
   final pulumi.Input<bool>? archived;
+
   /// Whether the rule is currently deployed continuously against incoming data.
   final pulumi.Input<bool>? enabled;
+
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
+
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The Rule ID of the rule.
   final pulumi.Input<String> rule;
+
   /// The run frequency of the rule deployment.
   /// Possible values:
   /// LIVE
@@ -71,15 +78,34 @@ class RuleDeploymentArgs {
 
   factory RuleDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return RuleDeploymentArgs(
-      alerting: map['alerting'] == null ? null : (map['alerting']! as bool).input(),
-      archived: map['archived'] == null ? null : (map['archived']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      instance: (map['instance'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rule: (map['rule'] as String).input(),
-      runFrequency: map['runFrequency'] == null ? null : (map['runFrequency']! as String).input(),
+      alerting: (() {
+        final guardedValue = map['alerting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      archived: (() {
+        final guardedValue = map['archived'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rule: pulumi.Input.fromValue(map['rule'] as String),
+      runFrequency: (() {
+        final guardedValue = map['runFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

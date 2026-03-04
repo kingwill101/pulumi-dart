@@ -1,5 +1,3 @@
-library module_apihub;
-
 export 'apihub/api_hub_instance.dart';
 export 'apihub/api_hub_instance_args.dart';
 export 'apihub/api_hub_instance_config.dart';

@@ -164,22 +164,31 @@ import 'hub_billing_info_format_response.dart';
 class Hub extends pulumi.CustomResource {
   /// API endpoint URL of the hub.
   late final pulumi.Output<String> apiEndpoint;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Billing settings of the hub.
   late final pulumi.Output<HubBillingInfoFormatResponse?> hubBillingInfo;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the hub.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0.
   late final pulumi.Output<int?> tenantFeatures;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Web endpoint URL of the hub.
   late final pulumi.Output<String> webEndpoint;
 
@@ -187,25 +196,24 @@ class Hub extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Hub]. {@macro pulumi_customerinsights_hub_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Hub(
-    String name, {
-    HubArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:customerinsights:Hub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiEndpoint = registerOutput<String>('apiEndpoint');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hubBillingInfo = registerOutput<HubBillingInfoFormatResponse?>('hubBillingInfo');
-    this.location = registerOutput<String?>('location');
+  Hub(String name, {HubArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:customerinsights:Hub',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apiEndpoint = registerOutput<String>('apiEndpoint');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hubBillingInfo = registerOutput<HubBillingInfoFormatResponse?>(
+      'hubBillingInfo',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantFeatures = registerOutput<int?>('tenantFeatures');
-    this.type = registerOutput<String>('type');
-    this.webEndpoint = registerOutput<String>('webEndpoint');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantFeatures = registerOutput<int?>('tenantFeatures');
+    type = registerOutput<String>('type');
+    webEndpoint = registerOutput<String>('webEndpoint');
   }
 }

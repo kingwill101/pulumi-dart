@@ -8,29 +8,42 @@ import 'subject_response.dart';
 class SubjectConfigResponse {
   /// Optional. Contains distinguished name fields such as the common name, location and organization.
   final pulumi.Input<SubjectResponse> subject;
+
   /// Optional. The subject alternative name fields.
   final pulumi.Input<SubjectAltNamesResponse> subjectAltName;
 
   /// Creates a new [SubjectConfigResponse].
   /// [subject] Optional. Contains distinguished name fields such as the common name, location and organization.
   /// [subjectAltName] Optional. The subject alternative name fields.
-  SubjectConfigResponse({
-    required this.subject,
-    required this.subjectAltName,
-  });
+  SubjectConfigResponse({required this.subject, required this.subjectAltName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subject': pulumi.Input.mapInputValue<SubjectResponse, Map<String, dynamic>>(subject, (value) => value.toMap()),
-      'subjectAltName': pulumi.Input.mapInputValue<SubjectAltNamesResponse, Map<String, dynamic>>(subjectAltName, (value) => value.toMap()),
+      'subject':
+          pulumi.Input.mapInputValue<SubjectResponse, Map<String, dynamic>>(
+            subject,
+            (value) => value.toMap(),
+          ),
+      'subjectAltName':
+          pulumi.Input.mapInputValue<
+            SubjectAltNamesResponse,
+            Map<String, dynamic>
+          >(subjectAltName, (value) => value.toMap()),
     };
   }
 
   factory SubjectConfigResponse.fromMap(Map<String, dynamic> map) {
     return SubjectConfigResponse(
-      subject: (SubjectResponse.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      subjectAltName: (SubjectAltNamesResponse.fromMap((map['subjectAltName'] as Map).cast<String, dynamic>())).input(),
+      subject: pulumi.Input.fromValue(
+        SubjectResponse.fromMap(
+          (map['subject']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      subjectAltName: pulumi.Input.fromValue(
+        SubjectAltNamesResponse.fromMap(
+          (map['subjectAltName']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

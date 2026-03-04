@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_args.dart';
-import 'contact_response.dart';
-import 'external_documentation_response.dart';
 import 'license_response.dart';
 import 'system_data_response.dart';
 import 'terms_of_service_response.dart';
@@ -247,30 +245,43 @@ import 'terms_of_service_response.dart';
 class Api extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The set of contacts
-  late final pulumi.Output<List<ContactResponse>?> contacts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> contacts;
+
   /// The custom metadata defined for API catalog entities.
   late final pulumi.Output<dynamic> customProperties;
+
   /// Description of the API.
   late final pulumi.Output<String?> description;
+
   /// The set of external documentation
-  late final pulumi.Output<List<ExternalDocumentationResponse>?> externalDocumentation;
+  late final pulumi.Output<List<Map<String, dynamic>>?> externalDocumentation;
+
   /// Kind of API. For example, REST or GraphQL.
   late final pulumi.Output<String> kind;
+
   /// The license information for the API.
   late final pulumi.Output<LicenseResponse?> license;
+
   /// Current lifecycle stage of the API.
   late final pulumi.Output<String> lifecycleStage;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Short description of the API.
   late final pulumi.Output<String?> summary;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Terms of service for the API.
   late final pulumi.Output<TermsOfServiceResponse?> termsOfService;
+
   /// API title.
   late final pulumi.Output<String> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -278,29 +289,28 @@ class Api extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Api]. {@macro pulumi_apicenter_api_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Api(
-    String name, {
-    ApiArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:apicenter:Api',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contacts = registerOutput<List<ContactResponse>?>('contacts');
-    this.customProperties = registerOutput<dynamic>('customProperties');
-    this.description = registerOutput<String?>('description');
-    this.externalDocumentation = registerOutput<List<ExternalDocumentationResponse>?>('externalDocumentation');
-    this.kind = registerOutput<String>('kind');
-    this.license = registerOutput<LicenseResponse?>('license');
-    this.lifecycleStage = registerOutput<String>('lifecycleStage');
+  Api(String name, {ApiArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:apicenter:Api',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contacts = registerOutput<List<Map<String, dynamic>>?>('contacts');
+    customProperties = registerOutput<dynamic>('customProperties');
+    description = registerOutput<String?>('description');
+    externalDocumentation = registerOutput<List<Map<String, dynamic>>?>(
+      'externalDocumentation',
+    );
+    kind = registerOutput<String>('kind');
+    license = registerOutput<LicenseResponse?>('license');
+    lifecycleStage = registerOutput<String>('lifecycleStage');
     this.name = registerOutput<String>('name');
-    this.summary = registerOutput<String?>('summary');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.termsOfService = registerOutput<TermsOfServiceResponse?>('termsOfService');
-    this.title = registerOutput<String>('title');
-    this.type = registerOutput<String>('type');
+    summary = registerOutput<String?>('summary');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    termsOfService = registerOutput<TermsOfServiceResponse?>('termsOfService');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
   }
 }

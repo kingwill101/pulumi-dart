@@ -7,12 +7,16 @@ import 'partition_index_partition_index.dart';
 class PartitionIndexState {
   /// The catalog ID where the table resides.
   final pulumi.Input<String>? catalogId;
+
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   final pulumi.Input<String>? databaseName;
+
   /// Configuration block for a partition index. See `partition_index` below.
   final pulumi.Input<PartitionIndexPartitionIndex>? partitionIndex;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
   final pulumi.Input<String>? tableName;
 
@@ -34,7 +38,11 @@ class PartitionIndexState {
     return <String, dynamic>{
       'catalogId': ?catalogId,
       'databaseName': ?databaseName,
-      'partitionIndex': ?pulumi.Input.mapOptionalInputValue<PartitionIndexPartitionIndex, Map<String, dynamic>>(partitionIndex, (value) => value.toMap()),
+      'partitionIndex':
+          ?pulumi.Input.mapOptionalInputValue<
+            PartitionIndexPartitionIndex,
+            Map<String, dynamic>
+          >(partitionIndex, (value) => value.toMap()),
       'region': ?region,
       'tableName': ?tableName,
     };
@@ -42,12 +50,35 @@ class PartitionIndexState {
 
   factory PartitionIndexState.fromMap(Map<String, dynamic> map) {
     return PartitionIndexState(
-      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
-      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
-      partitionIndex: map['partitionIndex'] == null ? null : ((PartitionIndexPartitionIndex.fromMap((map['partitionIndex']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
+      catalogId: (() {
+        final guardedValue = map['catalogId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partitionIndex: (() {
+        final guardedValue = map['partitionIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PartitionIndexPartitionIndex.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,16 +9,15 @@ enum StackMetaLearnerType {
   valueLightGBMRegressor("LightGBMRegressor"),
   valueLinearRegression("LinearRegression");
 
-  const StackMetaLearnerType(this.value);
-  final String value;
+  const StackMetaLearnerType(this.wireValue);
+  final String wireValue;
 
   static StackMetaLearnerType fromValue(String value) {
     for (final item in StackMetaLearnerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StackMetaLearnerType value: $value');
   }
 }
-

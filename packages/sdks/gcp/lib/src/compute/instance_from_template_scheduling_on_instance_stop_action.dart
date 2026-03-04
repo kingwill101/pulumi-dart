@@ -8,20 +8,21 @@ class InstanceFromTemplateSchedulingOnInstanceStopAction {
 
   /// Creates a new [InstanceFromTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.
-  InstanceFromTemplateSchedulingOnInstanceStopAction({
-    this.discardLocalSsd,
-  });
+  InstanceFromTemplateSchedulingOnInstanceStopAction({this.discardLocalSsd});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'discardLocalSsd': ?discardLocalSsd,
-    };
+    return <String, dynamic>{'discardLocalSsd': ?discardLocalSsd};
   }
 
-  factory InstanceFromTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromTemplateSchedulingOnInstanceStopAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromTemplateSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd']! as bool).input(),
+      discardLocalSsd: (() {
+        final guardedValue = map['discardLocalSsd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class PrivateEndpoint {
 
   /// Creates a new [PrivateEndpoint].
   /// [id] This is private endpoint resource created with Microsoft.Network resource provider.
-  PrivateEndpoint({
-    this.id,
-  });
+  PrivateEndpoint({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory PrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return PrivateEndpoint(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum Commit {
   synchronousCommit("Synchronous_Commit"),
   asynchronousCommit("Asynchronous_Commit");
 
-  const Commit(this.value);
-  final String value;
+  const Commit(this.wireValue);
+  final String wireValue;
 
   static Commit fromValue(String value) {
     for (final item in Commit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Commit value: $value');
   }
 }
-

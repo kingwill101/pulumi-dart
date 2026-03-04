@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainNameArgs {
   /// Fully-qualified domain name to look up. If no domain name is found, an error will be returned.
   final pulumi.Input<String> domainName;
+
   /// The identifier for the domain name resource. Supported only for private custom domain names.
   final pulumi.Input<String>? domainNameId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of tags for the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +42,24 @@ class GetDomainNameArgs {
 
   factory GetDomainNameArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainNameArgs(
-      domainName: (map['domainName'] as String).input(),
-      domainNameId: map['domainNameId'] == null ? null : ((map['domainNameId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      domainNameId: (() {
+        final guardedValue = map['domainNameId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

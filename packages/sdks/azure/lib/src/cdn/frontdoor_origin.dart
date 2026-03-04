@@ -5,7 +5,7 @@ import 'frontdoor_origin_state.dart';
 
 /// Manages a Front Door (standard/premium) Origin.
 ///
-/// !> **Note:** If you are attempting to implement an Origin that uses its own Private Link Service with a Load Balancer the Profile resource in your configuration file **must** have a `depends_on` meta-argument which references the `azure.privatedns.LinkService`, see `Example Usage With Private Link Service` below.
+/// !&gt; **Note:** If you are attempting to implement an Origin that uses its own Private Link Service with a Load Balancer the Profile resource in your configuration file **must** have a `depends_on` meta-argument which references the `azure.privatedns.LinkService`, see `Example Usage With Private Link Service` below.
 ///
 /// ## Example Usage
 ///
@@ -1335,7 +1335,7 @@ import 'frontdoor_origin_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cdn` - 2024-02-01
@@ -1350,30 +1350,40 @@ import 'frontdoor_origin_state.dart';
 class FrontdoorOrigin extends pulumi.CustomResource {
   /// The ID of the Front Door Origin Group within which this Front Door Origin should exist. Changing this forces a new Front Door Origin to be created.
   late final pulumi.Output<String> cdnFrontdoorOriginGroupId;
+
   /// Specifies whether certificate name checks are enabled for this origin.
   late final pulumi.Output<bool> certificateNameCheckEnabled;
+
   /// Should the origin be enabled? Possible values are `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The IPv4 address, IPv6 address or Domain name of the Origin.
   ///
-  /// !> **Note:** This must be unique across all Front Door Origins within a Front Door Endpoint.
+  /// !&gt; **Note:** This must be unique across all Front Door Origins within a Front Door Endpoint.
   late final pulumi.Output<String> hostName;
+
   /// The value of the HTTP port. Must be between `1` and `65535`. Defaults to `80`.
   late final pulumi.Output<int?> httpPort;
+
   /// The value of the HTTPS port. Must be between `1` and `65535`. Defaults to `443`.
   late final pulumi.Output<int?> httpsPort;
+
   /// The name which should be used for this Front Door Origin. Changing this forces a new Front Door Origin to be created.
   late final pulumi.Output<String> name;
+
   /// The host header value (an IPv4 address, IPv6 address or Domain name) which is sent to the origin with each request. If unspecified the hostname from the request will be used.
   ///
-  /// > **Note:** Azure Front Door Origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin's hostname. This field's value overrides the host header defined in the Front Door Endpoint. For more information on how to properly set the origin host header value please see the [product documentation](https://docs.microsoft.com/azure/frontdoor/origin?pivots=front-door-standard-premium#origin-host-header).
+  /// &gt; **Note:** Azure Front Door Origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin's hostname. This field's value overrides the host header defined in the Front Door Endpoint. For more information on how to properly set the origin host header value please see the [product documentation](https://docs.microsoft.com/azure/frontdoor/origin?pivots=front-door-standard-premium#origin-host-header).
   late final pulumi.Output<String?> originHostHeader;
+
   /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy. Must be between `1` and `5` (inclusive). Defaults to `1`.
   late final pulumi.Output<int?> priority;
+
   /// A `private_link` block as defined below.
   ///
-  /// > **Note:** Private Link requires that the Front Door Profile this Origin is hosted within is using the SKU `Premium_AzureFrontDoor` and that the `certificate_name_check_enabled` field is set to `true`.
+  /// &gt; **Note:** Private Link requires that the Front Door Profile this Origin is hosted within is using the SKU `Premium_AzureFrontDoor` and that the `certificate_name_check_enabled` field is set to `true`.
   late final pulumi.Output<FrontdoorOriginPrivateLink?> privateLink;
+
   /// The weight of the origin in a given origin group for load balancing. Must be between `1` and `1000`. Defaults to `500`.
   late final pulumi.Output<int?> weight;
 
@@ -1386,22 +1396,26 @@ class FrontdoorOrigin extends pulumi.CustomResource {
     FrontdoorOriginArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorOrigin:FrontdoorOrigin',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
-    this.certificateNameCheckEnabled = registerOutput<bool>('certificateNameCheckEnabled');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.hostName = registerOutput<String>('hostName');
-    this.httpPort = registerOutput<int?>('httpPort');
-    this.httpsPort = registerOutput<int?>('httpsPort');
+         'azure:cdn/frontdoorOrigin:FrontdoorOrigin',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorOriginGroupId = registerOutput<String>(
+      'cdnFrontdoorOriginGroupId',
+    );
+    certificateNameCheckEnabled = registerOutput<bool>(
+      'certificateNameCheckEnabled',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
+    httpPort = registerOutput<int?>('httpPort');
+    httpsPort = registerOutput<int?>('httpsPort');
     this.name = registerOutput<String>('name');
-    this.originHostHeader = registerOutput<String?>('originHostHeader');
-    this.priority = registerOutput<int?>('priority');
-    this.privateLink = registerOutput<FrontdoorOriginPrivateLink?>('privateLink');
-    this.weight = registerOutput<int?>('weight');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    priority = registerOutput<int?>('priority');
+    privateLink = registerOutput<FrontdoorOriginPrivateLink?>('privateLink');
+    weight = registerOutput<int?>('weight');
   }
 
   /// Gets an existing [FrontdoorOrigin] resource's state with the given [name] and [id].
@@ -1422,21 +1436,25 @@ class FrontdoorOrigin extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorOrigin:FrontdoorOrigin',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
-    this.certificateNameCheckEnabled = registerOutput<bool>('certificateNameCheckEnabled');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.hostName = registerOutput<String>('hostName');
-    this.httpPort = registerOutput<int?>('httpPort');
-    this.httpsPort = registerOutput<int?>('httpsPort');
+         'azure:cdn/frontdoorOrigin:FrontdoorOrigin',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorOriginGroupId = registerOutput<String>(
+      'cdnFrontdoorOriginGroupId',
+    );
+    certificateNameCheckEnabled = registerOutput<bool>(
+      'certificateNameCheckEnabled',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
+    httpPort = registerOutput<int?>('httpPort');
+    httpsPort = registerOutput<int?>('httpsPort');
     this.name = registerOutput<String>('name');
-    this.originHostHeader = registerOutput<String?>('originHostHeader');
-    this.priority = registerOutput<int?>('priority');
-    this.privateLink = registerOutput<FrontdoorOriginPrivateLink?>('privateLink');
-    this.weight = registerOutput<int?>('weight');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    priority = registerOutput<int?>('priority');
+    privateLink = registerOutput<FrontdoorOriginPrivateLink?>('privateLink');
+    weight = registerOutput<int?>('weight');
   }
 }

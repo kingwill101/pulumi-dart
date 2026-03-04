@@ -3,16 +3,15 @@ enum RuleIsCompressionEnabled {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const RuleIsCompressionEnabled(this.value);
-  final String value;
+  const RuleIsCompressionEnabled(this.wireValue);
+  final String wireValue;
 
   static RuleIsCompressionEnabled fromValue(String value) {
     for (final item in RuleIsCompressionEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleIsCompressionEnabled value: $value');
   }
 }
-

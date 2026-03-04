@@ -134,19 +134,26 @@ import 'static_site_custom_domain_args.dart';
 class StaticSiteCustomDomain extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The date and time on which the custom domain was created for the static site.
   late final pulumi.Output<String> createdOn;
+
   /// The domain name for the static site custom domain.
   late final pulumi.Output<String> domainName;
   late final pulumi.Output<String> errorMessage;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// The status of the custom domain
   late final pulumi.Output<String> status;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The TXT record validation token
   late final pulumi.Output<String> validationToken;
 
@@ -159,19 +166,19 @@ class StaticSiteCustomDomain extends pulumi.CustomResource {
     StaticSiteCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:StaticSiteCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.domainName = registerOutput<String>('domainName');
-    this.errorMessage = registerOutput<String>('errorMessage');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:StaticSiteCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdOn = registerOutput<String>('createdOn');
+    domainName = registerOutput<String>('domainName');
+    errorMessage = registerOutput<String>('errorMessage');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
-    this.validationToken = registerOutput<String>('validationToken');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
+    validationToken = registerOutput<String>('validationToken');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcAssociationAuthorizationArgs {
   /// The VPC to authorize for association with the private hosted zone.
   final pulumi.Input<String> vpcId;
+
   /// The VPC's region. Defaults to the region of the AWS provider.
   final pulumi.Input<String>? vpcRegion;
+
   /// The ID of the private hosted zone that you want to authorize associating a VPC with.
   final pulumi.Input<String> zoneId;
 
@@ -34,10 +36,13 @@ class VpcAssociationAuthorizationArgs {
 
   factory VpcAssociationAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return VpcAssociationAuthorizationArgs(
-      vpcId: (map['vpcId'] as String).input(),
-      vpcRegion: map['vpcRegion'] == null ? null : ((map['vpcRegion'] as String).input()).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vpcRegion: (() {
+        final guardedValue = map['vpcRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

@@ -13,25 +13,30 @@ import 'resource/resource.dart';
 ///
 class StructConverter {
   /// Converts a map into protobuf [Struct].
-  static Future<Struct> toStruct(Map<String, dynamic> input) async {
+  static Future<Struct> toStruct(
+    Map<String, dynamic> input, {
+    bool collapseUnknownCollections = true,
+  }) async {
     final struct = Struct();
     for (final entry in input.entries) {
-      struct.fields[entry.key] = await toValue(entry.value);
+      struct.fields[entry.key] = await toValue(
+        entry.value,
+        collapseUnknownCollections: collapseUnknownCollections,
+      );
     }
     return struct;
   }
 
   /// Converts a Dart value into protobuf [Value].
-  static Future<Value> toValue(dynamic value) async {
+  static Future<Value> toValue(
+    dynamic value, {
+    bool collapseUnknownCollections = true,
+  }) async {
     final result = Value();
 
     if (value == null) {
       result.nullValue = NullValue.NULL_VALUE;
       return result;
-    }
-
-    if (value is Input) {
-      return toValue(value.toOutput());
     }
 
     if (value is Output) {
@@ -41,7 +46,10 @@ class StructConverter {
         return result;
       }
 
-      final inner = await toValue(data.value);
+      final inner = await toValue(
+        data.value,
+        collapseUnknownCollections: collapseUnknownCollections,
+      );
       if (!data.isSecret) {
         return inner;
       }
@@ -52,6 +60,13 @@ class StructConverter {
         ..fields[Constants.valueName] = inner;
       result.structValue = secret;
       return result;
+    }
+
+    if (value is Input) {
+      return toValue(
+        value.toOutput(),
+        collapseUnknownCollections: collapseUnknownCollections,
+      );
     }
 
     if (value is Resource) {
@@ -100,13 +115,16 @@ class StructConverter {
       final list = ListValue();
       var hasUnknownDescendant = false;
       for (final item in value) {
-        final serialized = await toValue(item);
+        final serialized = await toValue(
+          item,
+          collapseUnknownCollections: collapseUnknownCollections,
+        );
         if (_containsUnknowns(serialized)) {
           hasUnknownDescendant = true;
         }
         list.values.add(serialized);
       }
-      if (hasUnknownDescendant) {
+      if (collapseUnknownCollections && hasUnknownDescendant) {
         result.stringValue = Constants.unknownArrayValue;
         return result;
       }
@@ -119,13 +137,16 @@ class StructConverter {
       var hasUnknownDescendant = false;
       for (final entry in value.entries) {
         final key = entry.key.toString();
-        final serialized = await toValue(entry.value);
+        final serialized = await toValue(
+          entry.value,
+          collapseUnknownCollections: collapseUnknownCollections,
+        );
         if (_containsUnknowns(serialized)) {
           hasUnknownDescendant = true;
         }
         struct.fields[key] = serialized;
       }
-      if (hasUnknownDescendant) {
+      if (collapseUnknownCollections && hasUnknownDescendant) {
         result.stringValue = Constants.unknownObjectValue;
         return result;
       }

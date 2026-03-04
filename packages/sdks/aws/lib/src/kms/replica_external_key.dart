@@ -173,38 +173,53 @@ import 'replica_external_key_state.dart';
 class ReplicaExternalKey extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the replica key. The key ARNs of related multi-Region keys differ only in the Region value.
   late final pulumi.Output<String> arn;
+
   /// A flag to indicate whether to bypass the key policy lockout safety check.
   /// Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
   /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS Key Management Service Developer Guide_.
   /// The default value is `false`.
   late final pulumi.Output<bool?> bypassPolicyLockoutSafetyCheck;
+
   /// The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the KMS key.
   /// If you specify a value, it must be between `7` and `30`, inclusive. If you do not specify a value, it defaults to `30`.
   late final pulumi.Output<int?> deletionWindowInDays;
+
   /// A description of the KMS key.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether the replica key is enabled. Disabled KMS keys cannot be used in cryptographic operations. Keys pending import can only be `false`. Imported keys default to `true` unless expired.
   late final pulumi.Output<bool> enabled;
+
   /// Whether the key material expires. Empty when pending key material import, otherwise `KEY_MATERIAL_EXPIRES` or `KEY_MATERIAL_DOES_NOT_EXPIRE`.
   late final pulumi.Output<String> expirationModel;
+
   /// The key ID of the replica key. Related multi-Region keys have the same key ID.
   late final pulumi.Output<String> keyId;
+
   /// Base64 encoded 256-bit symmetric encryption key material to import. The KMS key is permanently associated with this key material. The same key material can be [reimported](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material), but you cannot import different key material.
   late final pulumi.Output<String?> keyMaterialBase64;
+
   /// The state of the replica key.
   late final pulumi.Output<String> keyState;
+
   /// The [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations) for which you can use the KMS key. This is a shared property of multi-Region keys.
   late final pulumi.Output<String> keyUsage;
+
   /// The key policy to attach to the KMS key. If you do not specify a key policy, AWS KMS attaches the [default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) to the KMS key.
   late final pulumi.Output<String> policy;
+
   /// The ARN of the multi-Region primary key to replicate. The primary key must be in a different AWS Region of the same AWS Partition. You can create only one replica of a given primary key in each AWS Region.
   late final pulumi.Output<String> primaryKeyArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the key becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
   late final pulumi.Output<String?> validTo;
 
@@ -217,27 +232,29 @@ class ReplicaExternalKey extends pulumi.CustomResource {
     ReplicaExternalKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kms/replicaExternalKey:ReplicaExternalKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
-    this.deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.expirationModel = registerOutput<String>('expirationModel');
-    this.keyId = registerOutput<String>('keyId');
-    this.keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64');
-    this.keyState = registerOutput<String>('keyState');
-    this.keyUsage = registerOutput<String>('keyUsage');
-    this.policy = registerOutput<String>('policy');
-    this.primaryKeyArn = registerOutput<String>('primaryKeyArn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.validTo = registerOutput<String?>('validTo');
+         'aws:kms/replicaExternalKey:ReplicaExternalKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool?>(
+      'bypassPolicyLockoutSafetyCheck',
+    );
+    deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    expirationModel = registerOutput<String>('expirationModel');
+    keyId = registerOutput<String>('keyId');
+    keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64');
+    keyState = registerOutput<String>('keyState');
+    keyUsage = registerOutput<String>('keyUsage');
+    policy = registerOutput<String>('policy');
+    primaryKeyArn = registerOutput<String>('primaryKeyArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    validTo = registerOutput<String?>('validTo');
   }
 
   /// Gets an existing [ReplicaExternalKey] resource's state with the given [name] and [id].
@@ -258,26 +275,28 @@ class ReplicaExternalKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kms/replicaExternalKey:ReplicaExternalKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
-    this.deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.expirationModel = registerOutput<String>('expirationModel');
-    this.keyId = registerOutput<String>('keyId');
-    this.keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64');
-    this.keyState = registerOutput<String>('keyState');
-    this.keyUsage = registerOutput<String>('keyUsage');
-    this.policy = registerOutput<String>('policy');
-    this.primaryKeyArn = registerOutput<String>('primaryKeyArn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.validTo = registerOutput<String?>('validTo');
+         'aws:kms/replicaExternalKey:ReplicaExternalKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool?>(
+      'bypassPolicyLockoutSafetyCheck',
+    );
+    deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    expirationModel = registerOutput<String>('expirationModel');
+    keyId = registerOutput<String>('keyId');
+    keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64');
+    keyState = registerOutput<String>('keyState');
+    keyUsage = registerOutput<String>('keyUsage');
+    policy = registerOutput<String>('policy');
+    primaryKeyArn = registerOutput<String>('primaryKeyArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    validTo = registerOutput<String?>('validTo');
   }
 }

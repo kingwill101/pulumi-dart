@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketObjectCustomerEncryption {
   /// The encryption algorithm. Default: AES256
   final pulumi.Input<String> encryptionAlgorithm;
+
   /// Base64 encoded customer supplied encryption key.
   final pulumi.Input<String> encryptionKey;
 
@@ -25,9 +26,10 @@ class GetBucketObjectCustomerEncryption {
 
   factory GetBucketObjectCustomerEncryption.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectCustomerEncryption(
-      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
-      encryptionKey: (map['encryptionKey'] as String).input(),
+      encryptionAlgorithm: pulumi.Input.fromValue(
+        map['encryptionAlgorithm'] as String,
+      ),
+      encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
     );
   }
 }
-

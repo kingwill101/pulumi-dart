@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_datasetversion_args.dart';
-import 'workspace_datasetversion_label.dart';
 import 'workspace_datasetversion_state.dart';
 
 /// Provides a PAI Workspace Datasetversion resource.
@@ -8,7 +7,7 @@ import 'workspace_datasetversion_state.dart';
 ///
 ///
 /// For information about PAI Workspace Dataset Version and how to use it, see [What is Dataset Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDatasetVersion).
-/// > **NOTE:** Available since v1.236.0.
+/// &gt; **NOTE:** Available since v1.236.0.
 ///
 /// ## Example Usage
 ///
@@ -440,32 +439,43 @@ import 'workspace_datasetversion_state.dart';
 class WorkspaceDatasetversion extends pulumi.CustomResource {
   /// Update time.
   late final pulumi.Output<String> createTime;
+
   /// Data count.
   late final pulumi.Output<int?> dataCount;
+
   /// Data size.
   late final pulumi.Output<int?> dataSize;
+
   /// The data source type. The following values are supported:
   /// - OSS: Alibaba Cloud Object Storage (OSS).
   /// - NAS: Alibaba cloud file storage (NAS).
   late final pulumi.Output<String> dataSourceType;
+
   /// The first ID of the resource
   late final pulumi.Output<String> datasetId;
+
   /// Description of dataset version.
   late final pulumi.Output<String?> description;
+
   /// The tag of the resource See `labels` below.
-  late final pulumi.Output<List<WorkspaceDatasetversionLabel>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// The extended field, which is of the JsonString type.
   ///
   /// When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.
   late final pulumi.Output<String?> options;
+
   /// The properties of the dataset. The following values are supported:
   /// - FILE: FILE.
   /// - DIRECTORY: folder.
   late final pulumi.Output<String> property;
+
   /// The data source ID.
   late final pulumi.Output<String?> sourceId;
+
   /// The data source type. The default value is USER.
   late final pulumi.Output<String?> sourceType;
+
   /// The Uri configuration sample is as follows:
   /// - The data source type is OSS:'oss:// bucket.endpoint/object'
   /// - The data source type is NAS:
@@ -478,6 +488,7 @@ class WorkspaceDatasetversion extends pulumi.CustomResource {
   ///
   /// CPFS1.0 and CPFS2.0 are distinguished by the format of fsid: CPFS1.0 is cpfs-;CPFS2.0 is cpfs-.
   late final pulumi.Output<String> uri;
+
   /// The name of the resource
   late final pulumi.Output<String> versionName;
 
@@ -490,24 +501,24 @@ class WorkspaceDatasetversion extends pulumi.CustomResource {
     WorkspaceDatasetversionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataCount = registerOutput<int?>('dataCount');
-    this.dataSize = registerOutput<int?>('dataSize');
-    this.dataSourceType = registerOutput<String>('dataSourceType');
-    this.datasetId = registerOutput<String>('datasetId');
-    this.description = registerOutput<String?>('description');
-    this.labels = registerOutput<List<WorkspaceDatasetversionLabel>?>('labels');
+         'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataCount = registerOutput<int?>('dataCount');
+    dataSize = registerOutput<int?>('dataSize');
+    dataSourceType = registerOutput<String>('dataSourceType');
+    datasetId = registerOutput<String>('datasetId');
+    description = registerOutput<String?>('description');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     this.options = registerOutput<String?>('options');
-    this.property = registerOutput<String>('property');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.uri = registerOutput<String>('uri');
-    this.versionName = registerOutput<String>('versionName');
+    property = registerOutput<String>('property');
+    sourceId = registerOutput<String?>('sourceId');
+    sourceType = registerOutput<String?>('sourceType');
+    uri = registerOutput<String>('uri');
+    versionName = registerOutput<String>('versionName');
   }
 
   /// Gets an existing [WorkspaceDatasetversion] resource's state with the given [name] and [id].
@@ -528,23 +539,23 @@ class WorkspaceDatasetversion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataCount = registerOutput<int?>('dataCount');
-    this.dataSize = registerOutput<int?>('dataSize');
-    this.dataSourceType = registerOutput<String>('dataSourceType');
-    this.datasetId = registerOutput<String>('datasetId');
-    this.description = registerOutput<String?>('description');
-    this.labels = registerOutput<List<WorkspaceDatasetversionLabel>?>('labels');
+         'alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataCount = registerOutput<int?>('dataCount');
+    dataSize = registerOutput<int?>('dataSize');
+    dataSourceType = registerOutput<String>('dataSourceType');
+    datasetId = registerOutput<String>('datasetId');
+    description = registerOutput<String?>('description');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     this.options = registerOutput<String?>('options');
-    this.property = registerOutput<String>('property');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.uri = registerOutput<String>('uri');
-    this.versionName = registerOutput<String>('versionName');
+    property = registerOutput<String>('property');
+    sourceId = registerOutput<String?>('sourceId');
+    sourceType = registerOutput<String?>('sourceType');
+    uri = registerOutput<String>('uri');
+    versionName = registerOutput<String>('versionName');
   }
 }

@@ -9,32 +9,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StudioArgs {
   /// Specifies whether the Studio authenticates users using IAM or Amazon Web Services SSO. Valid values are `SSO` or `IAM`.
   final pulumi.Input<String> authMode;
+
   /// The Amazon S3 location to back up Amazon EMR Studio Workspaces and notebook files.
   final pulumi.Input<String> defaultS3Location;
+
   /// A detailed description of the Amazon EMR Studio.
   final pulumi.Input<String>? description;
+
   /// The AWS KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
   final pulumi.Input<String>? encryptionKeyArn;
+
   /// The ID of the Amazon EMR Studio Engine security group. The Engine security group allows inbound network traffic from the Workspace security group, and it must be in the same VPC specified by `vpc_id`.
   final pulumi.Input<String> engineSecurityGroupId;
+
   /// The authentication endpoint of your identity provider (IdP). Specify this value when you use IAM authentication and want to let federated users log in to a Studio with the Studio URL and credentials from your IdP. Amazon EMR Studio redirects users to this endpoint to enter credentials.
   final pulumi.Input<String>? idpAuthUrl;
+
   /// The name that your identity provider (IdP) uses for its RelayState parameter. For example, RelayState or TargetSource. Specify this value when you use IAM authentication and want to let federated users log in to a Studio using the Studio URL. The RelayState parameter differs by IdP.
   final pulumi.Input<String>? idpRelayStateParameterName;
+
   /// A descriptive name for the Amazon EMR Studio.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The IAM role that the Amazon EMR Studio assumes. The service role provides a way for Amazon EMR Studio to interoperate with other Amazon Web Services services.
   final pulumi.Input<String> serviceRole;
+
   /// A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC specified by `vpc_id`. Studio users can create a Workspace in any of the specified subnets.
   final pulumi.Input<List<String>> subnetIds;
+
   /// list of tags to apply to the EMR Cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The IAM user role that users and groups assume when logged in to an Amazon EMR Studio. Only specify a User Role when you use Amazon Web Services SSO authentication. The permissions attached to the User Role can be scoped down for each user or group using session policies.
   final pulumi.Input<String>? userRole;
+
   /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the Studio.
   final pulumi.Input<String> vpcId;
+
   /// The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpc_id`.
   ///
   /// The following arguments are optional:
@@ -96,22 +110,63 @@ class StudioArgs {
 
   factory StudioArgs.fromMap(Map<String, dynamic> map) {
     return StudioArgs(
-      authMode: (map['authMode'] as String).input(),
-      defaultS3Location: (map['defaultS3Location'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : ((map['encryptionKeyArn'] as String).input()).input(),
-      engineSecurityGroupId: (map['engineSecurityGroupId'] as String).input(),
-      idpAuthUrl: map['idpAuthUrl'] == null ? null : ((map['idpAuthUrl'] as String).input()).input(),
-      idpRelayStateParameterName: map['idpRelayStateParameterName'] == null ? null : ((map['idpRelayStateParameterName'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serviceRole: (map['serviceRole'] as String).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      userRole: map['userRole'] == null ? null : ((map['userRole'] as String).input()).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      workspaceSecurityGroupId: (map['workspaceSecurityGroupId'] as String).input(),
+      authMode: pulumi.Input.fromValue(map['authMode'] as String),
+      defaultS3Location: pulumi.Input.fromValue(
+        map['defaultS3Location'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionKeyArn: (() {
+        final guardedValue = map['encryptionKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineSecurityGroupId: pulumi.Input.fromValue(
+        map['engineSecurityGroupId'] as String,
+      ),
+      idpAuthUrl: (() {
+        final guardedValue = map['idpAuthUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idpRelayStateParameterName: (() {
+        final guardedValue = map['idpRelayStateParameterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceRole: pulumi.Input.fromValue(map['serviceRole'] as String),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userRole: (() {
+        final guardedValue = map['userRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      workspaceSecurityGroupId: pulumi.Input.fromValue(
+        map['workspaceSecurityGroupId'] as String,
+      ),
     );
   }
 }
-

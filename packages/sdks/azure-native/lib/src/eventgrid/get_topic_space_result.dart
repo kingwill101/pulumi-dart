@@ -6,22 +6,29 @@ import 'system_data_response.dart';
 class GetTopicSpaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Description for the Topic Space resource.
   final String? description;
+
   /// Fully qualified identifier of the resource.
   final String id;
+
   /// Name of the resource.
   final String name;
+
   /// Provisioning state of the TopicSpace resource.
   final String provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   final SystemDataResponse systemData;
+
   /// The topic filters in the topic space.
   /// Example: "topicTemplates": [
   /// "devices/foo/bar",
   /// "devices/topic1/+",
   /// "devices/${principal.name}/${principal.attributes.keyName}" ].
   final List<String>? topicTemplates;
+
   /// Type of the resource.
   final String type;
 
@@ -61,14 +68,23 @@ class GetTopicSpaceResult {
   factory GetTopicSpaceResult.fromMap(Map<String, dynamic> map) {
     return GetTopicSpaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      topicTemplates: map['topicTemplates'] == null ? null : (map['topicTemplates']! as List).cast<String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      topicTemplates: (() {
+        final guardedValue = map['topicTemplates'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

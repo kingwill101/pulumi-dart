@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'byte_match_set_args.dart';
-import 'byte_match_set_byte_match_tuple.dart';
 import 'byte_match_set_state.dart';
 
 /// Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
@@ -166,9 +165,11 @@ import 'byte_match_set_state.dart';
 /// ```
 class ByteMatchSet extends pulumi.CustomResource {
   /// Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-  late final pulumi.Output<List<ByteMatchSetByteMatchTuple>?> byteMatchTuples;
+  late final pulumi.Output<List<Map<String, dynamic>>?> byteMatchTuples;
+
   /// The name or description of the ByteMatchSet.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -181,14 +182,16 @@ class ByteMatchSet extends pulumi.CustomResource {
     ByteMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/byteMatchSet:ByteMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples');
+         'aws:wafregional/byteMatchSet:ByteMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    byteMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'byteMatchTuples',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [ByteMatchSet] resource's state with the given [name] and [id].
@@ -209,13 +212,15 @@ class ByteMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/byteMatchSet:ByteMatchSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples');
+         'aws:wafregional/byteMatchSet:ByteMatchSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    byteMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'byteMatchTuples',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

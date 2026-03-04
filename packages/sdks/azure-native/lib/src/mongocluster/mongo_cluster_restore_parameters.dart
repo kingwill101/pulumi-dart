@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoClusterRestoreParameters {
   /// UTC point in time to restore a mongo cluster
   final pulumi.Input<String>? pointInTimeUTC;
+
   /// Resource ID to locate the source cluster to restore
   final pulumi.Input<String>? sourceResourceId;
 
   /// Creates a new [MongoClusterRestoreParameters].
   /// [pointInTimeUTC] UTC point in time to restore a mongo cluster
   /// [sourceResourceId] Resource ID to locate the source cluster to restore
-  MongoClusterRestoreParameters({
-    this.pointInTimeUTC,
-    this.sourceResourceId,
-  });
+  MongoClusterRestoreParameters({this.pointInTimeUTC, this.sourceResourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class MongoClusterRestoreParameters {
 
   factory MongoClusterRestoreParameters.fromMap(Map<String, dynamic> map) {
     return MongoClusterRestoreParameters(
-      pointInTimeUTC: map['pointInTimeUTC'] == null ? null : (map['pointInTimeUTC']! as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      pointInTimeUTC: (() {
+        final guardedValue = map['pointInTimeUTC'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceResourceId: (() {
+        final guardedValue = map['sourceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

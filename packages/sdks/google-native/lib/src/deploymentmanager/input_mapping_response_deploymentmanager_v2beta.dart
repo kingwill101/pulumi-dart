@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InputMappingResponseDeploymentmanagerV2beta {
   /// The name of the field that is going to be injected.
   final pulumi.Input<String> fieldName;
+
   /// The location where this mapping applies.
   final pulumi.Input<String> location;
+
   /// Regex to evaluate on method to decide if input applies.
   final pulumi.Input<String> methodMatch;
+
   /// A jsonPath expression to select an element.
   final pulumi.Input<String> value;
 
@@ -34,13 +37,14 @@ class InputMappingResponseDeploymentmanagerV2beta {
     };
   }
 
-  factory InputMappingResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory InputMappingResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InputMappingResponseDeploymentmanagerV2beta(
-      fieldName: (map['fieldName'] as String).input(),
-      location: (map['location'] as String).input(),
-      methodMatch: (map['methodMatch'] as String).input(),
-      value: (map['value'] as String).input(),
+      fieldName: pulumi.Input.fromValue(map['fieldName'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      methodMatch: pulumi.Input.fromValue(map['methodMatch'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

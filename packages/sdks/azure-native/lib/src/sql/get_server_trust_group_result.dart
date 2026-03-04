@@ -7,14 +7,19 @@ import 'server_info_response.dart';
 class GetServerTrustGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Group members information for the server trust group.
   final List<ServerInfoResponse> groupMembers;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Trust scope of the server trust group.
   final List<String> trustScopes;
+
   /// Resource type.
   final String type;
 
@@ -37,7 +42,11 @@ class GetServerTrustGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'groupMembers': pulumi.Input.encodeList<ServerInfoResponse, Map<String, dynamic>>(groupMembers, (value) => value.toMap()),
+      'groupMembers':
+          pulumi.Input.encodeList<ServerInfoResponse, Map<String, dynamic>>(
+            groupMembers,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'name': name,
       'trustScopes': trustScopes,
@@ -48,7 +57,11 @@ class GetServerTrustGroupResult {
   factory GetServerTrustGroupResult.fromMap(Map<String, dynamic> map) {
     return GetServerTrustGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      groupMembers: pulumi.Input.decodeList<ServerInfoResponse>(map['groupMembers'], (value) => ServerInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      groupMembers: pulumi.Input.decodeList<ServerInfoResponse>(
+        map['groupMembers']!,
+        (value) =>
+            ServerInfoResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
       trustScopes: (map['trustScopes'] as List).cast<String>(),
@@ -56,4 +69,3 @@ class GetServerTrustGroupResult {
     );
   }
 }
-

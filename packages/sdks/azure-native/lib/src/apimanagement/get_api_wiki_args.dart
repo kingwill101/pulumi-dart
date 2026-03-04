@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiWikiArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,11 @@ class GetApiWikiArgs {
 
   factory GetApiWikiArgs.fromMap(Map<String, dynamic> map) {
     return GetApiWikiArgs(
-      apiId: (map['apiId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

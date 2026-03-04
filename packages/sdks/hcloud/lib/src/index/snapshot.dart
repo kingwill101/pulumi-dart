@@ -139,8 +139,10 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// Description of the snapshot.
   late final pulumi.Output<String?> description;
+
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Server to the snapshot should be created from.
   late final pulumi.Output<int> serverId;
 
@@ -153,14 +155,14 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.serverId = registerOutput<int>('serverId');
+         'hcloud:index/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    labels = registerOutput<Map<String, String>?>('labels');
+    serverId = registerOutput<int>('serverId');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -181,13 +183,13 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.serverId = registerOutput<int>('serverId');
+         'hcloud:index/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    labels = registerOutput<Map<String, String>?>('labels');
+    serverId = registerOutput<int>('serverId');
   }
 }

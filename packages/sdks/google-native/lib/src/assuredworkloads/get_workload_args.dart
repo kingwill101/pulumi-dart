@@ -31,10 +31,9 @@ class GetWorkloadArgs {
 
   factory GetWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadArgs(
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      workloadId: (map['workloadId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      workloadId: pulumi.Input.fromValue(map['workloadId'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_iotoperations;
-
 export 'iotoperations/advanced_settings.dart';
 export 'iotoperations/advanced_settings_response.dart';
 export 'iotoperations/akri_connector.dart';

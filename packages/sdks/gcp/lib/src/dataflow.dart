@@ -1,5 +1,3 @@
-library module_dataflow;
-
 export 'dataflow/flex_template_job.dart';
 export 'dataflow/flex_template_job_args.dart';
 export 'dataflow/flex_template_job_state.dart';

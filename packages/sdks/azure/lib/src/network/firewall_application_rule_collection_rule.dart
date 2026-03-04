@@ -6,18 +6,25 @@ import 'firewall_application_rule_collection_rule_protocol.dart';
 class FirewallApplicationRuleCollectionRule {
   /// Specifies a description for the rule.
   final pulumi.Input<String>? description;
+
   /// A list of FQDN tags. Possible values are `AppServiceEnvironment`, `AzureBackup`, `AzureKubernetesService`, `HDInsight`, `MicrosoftActiveProtectionService`, `WindowsDiagnostics`, `WindowsUpdate` and `WindowsVirtualDesktop`.
   final pulumi.Input<List<String>>? fqdnTags;
+
   /// Specifies the name of the rule.
   final pulumi.Input<String> name;
+
   /// One or more `protocol` blocks as defined below.
-  final pulumi.Input<List<FirewallApplicationRuleCollectionRuleProtocol>>? protocols;
+  final pulumi.Input<List<FirewallApplicationRuleCollectionRuleProtocol>>?
+  protocols;
+
   /// A list of source IP addresses and/or IP ranges.
   final pulumi.Input<List<String>>? sourceAddresses;
+
   /// A list of source IP Group IDs for the rule.
   ///
-  /// > **Note:** At least one of `source_addresses` and `source_ip_groups` must be specified for a rule.
+  /// &gt; **Note:** At least one of `source_addresses` and `source_ip_groups` must be specified for a rule.
   final pulumi.Input<List<String>>? sourceIpGroups;
+
   /// A list of FQDNs.
   final pulumi.Input<List<String>>? targetFqdns;
 
@@ -44,23 +51,67 @@ class FirewallApplicationRuleCollectionRule {
       'description': ?description,
       'fqdnTags': ?fqdnTags,
       'name': name,
-      'protocols': ?pulumi.Input.mapOptionalInputValue<List<FirewallApplicationRuleCollectionRuleProtocol>, List<Map<String, dynamic>>>(protocols, (value) => pulumi.Input.encodeList<FirewallApplicationRuleCollectionRuleProtocol, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'protocols':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FirewallApplicationRuleCollectionRuleProtocol>,
+            List<Map<String, dynamic>>
+          >(
+            protocols,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirewallApplicationRuleCollectionRuleProtocol,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'sourceAddresses': ?sourceAddresses,
       'sourceIpGroups': ?sourceIpGroups,
       'targetFqdns': ?targetFqdns,
     };
   }
 
-  factory FirewallApplicationRuleCollectionRule.fromMap(Map<String, dynamic> map) {
+  factory FirewallApplicationRuleCollectionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallApplicationRuleCollectionRule(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags']! as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallApplicationRuleCollectionRuleProtocol>(map['protocols']!, (value) => FirewallApplicationRuleCollectionRuleProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
-      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fqdnTags: (() {
+        final guardedValue = map['fqdnTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      protocols: (() {
+        final guardedValue = map['protocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<FirewallApplicationRuleCollectionRuleProtocol>(
+            guardedValue,
+            (value) => FirewallApplicationRuleCollectionRuleProtocol.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sourceAddresses: (() {
+        final guardedValue = map['sourceAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceIpGroups: (() {
+        final guardedValue = map['sourceIpGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targetFqdns: (() {
+        final guardedValue = map['targetFqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

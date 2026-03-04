@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataDisk {
   /// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
   final pulumi.Input<String>? caching;
+
   /// The initial disk size in gigabytes.
   final pulumi.Input<int>? diskSizeGiB;
+
   /// The drive letter for the empty data disk. If not specified, it will be the first available letter.
   final pulumi.Input<String>? driveLetter;
+
   /// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
   final pulumi.Input<String>? storageAccountType;
 
@@ -36,11 +39,26 @@ class DataDisk {
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB']! as int).input(),
-      driveLetter: map['driveLetter'] == null ? null : (map['driveLetter']! as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      caching: (() {
+        final guardedValue = map['caching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskSizeGiB: (() {
+        final guardedValue = map['diskSizeGiB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      driveLetter: (() {
+        final guardedValue = map['driveLetter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountType: (() {
+        final guardedValue = map['storageAccountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

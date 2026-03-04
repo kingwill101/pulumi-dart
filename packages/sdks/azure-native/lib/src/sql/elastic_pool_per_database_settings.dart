@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticPoolPerDatabaseSettings {
   /// Auto Pause Delay for per database within pool
   final pulumi.Input<int>? autoPauseDelay;
+
   /// The maximum capacity any one database can consume.
   final pulumi.Input<double>? maxCapacity;
+
   /// The minimum capacity all databases are guaranteed.
   final pulumi.Input<double>? minCapacity;
 
@@ -31,10 +33,21 @@ class ElasticPoolPerDatabaseSettings {
 
   factory ElasticPoolPerDatabaseSettings.fromMap(Map<String, dynamic> map) {
     return ElasticPoolPerDatabaseSettings(
-      autoPauseDelay: map['autoPauseDelay'] == null ? null : (map['autoPauseDelay']! as int).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as double).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as double).input(),
+      autoPauseDelay: (() {
+        final guardedValue = map['autoPauseDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxCapacity: (() {
+        final guardedValue = map['maxCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minCapacity: (() {
+        final guardedValue = map['minCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

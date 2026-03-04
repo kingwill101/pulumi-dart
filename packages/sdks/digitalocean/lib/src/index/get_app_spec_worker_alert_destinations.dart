@@ -5,28 +5,52 @@ import 'get_app_spec_worker_alert_destinations_slack_webhook.dart';
 
 class GetAppSpecWorkerAlertDestinations {
   final pulumi.Input<List<String>>? emails;
-  final pulumi.Input<List<GetAppSpecWorkerAlertDestinationsSlackWebhook>>? slackWebhooks;
+  final pulumi.Input<List<GetAppSpecWorkerAlertDestinationsSlackWebhook>>?
+  slackWebhooks;
 
   /// Creates a new [GetAppSpecWorkerAlertDestinations].
   /// [emails] Optional.
   /// [slackWebhooks] Optional.
-  GetAppSpecWorkerAlertDestinations({
-    this.emails,
-    this.slackWebhooks,
-  });
+  GetAppSpecWorkerAlertDestinations({this.emails, this.slackWebhooks});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'emails': ?emails,
-      'slackWebhooks': ?pulumi.Input.mapOptionalInputValue<List<GetAppSpecWorkerAlertDestinationsSlackWebhook>, List<Map<String, dynamic>>>(slackWebhooks, (value) => pulumi.Input.encodeList<GetAppSpecWorkerAlertDestinationsSlackWebhook, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'slackWebhooks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetAppSpecWorkerAlertDestinationsSlackWebhook>,
+            List<Map<String, dynamic>>
+          >(
+            slackWebhooks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetAppSpecWorkerAlertDestinationsSlackWebhook,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetAppSpecWorkerAlertDestinations.fromMap(Map<String, dynamic> map) {
     return GetAppSpecWorkerAlertDestinations(
-      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
-      slackWebhooks: map['slackWebhooks'] == null ? null : (pulumi.Input.decodeList<GetAppSpecWorkerAlertDestinationsSlackWebhook>(map['slackWebhooks']!, (value) => GetAppSpecWorkerAlertDestinationsSlackWebhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emails: (() {
+        final guardedValue = map['emails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      slackWebhooks: (() {
+        final guardedValue = map['slackWebhooks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<GetAppSpecWorkerAlertDestinationsSlackWebhook>(
+            guardedValue,
+            (value) => GetAppSpecWorkerAlertDestinationsSlackWebhook.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

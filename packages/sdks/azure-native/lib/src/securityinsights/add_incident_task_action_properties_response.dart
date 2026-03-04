@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddIncidentTaskActionPropertiesResponse {
   /// The description of the task.
   final pulumi.Input<String>? description;
+
   /// The title of the task.
   final pulumi.Input<String> title;
 
@@ -18,17 +19,19 @@ class AddIncidentTaskActionPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'title': title,
-    };
+    return <String, dynamic>{'description': ?description, 'title': title};
   }
 
-  factory AddIncidentTaskActionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AddIncidentTaskActionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AddIncidentTaskActionPropertiesResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      title: (map['title'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

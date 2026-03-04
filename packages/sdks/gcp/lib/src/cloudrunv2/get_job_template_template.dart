@@ -9,24 +9,33 @@ import 'get_job_template_template_vpc_access.dart';
 class GetJobTemplateTemplate {
   /// Holds the single container that defines the unit of execution for this task.
   final pulumi.Input<List<GetJobTemplateTemplateContainer>> containers;
+
   /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
   final pulumi.Input<String> encryptionKey;
+
   /// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
   final pulumi.Input<String> executionEnvironment;
+
   /// True if GPU zonal redundancy is disabled on this execution.
   final pulumi.Input<bool> gpuZonalRedundancyDisabled;
+
   /// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
   final pulumi.Input<int> maxRetries;
+
   /// Node Selector describes the hardware requirements of the resources.
   final pulumi.Input<List<GetJobTemplateTemplateNodeSelector>> nodeSelectors;
+
   /// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
   final pulumi.Input<String> serviceAccount;
+
   /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
   ///
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   final pulumi.Input<String> timeout;
+
   /// A list of Volumes to make available to containers.
   final pulumi.Input<List<GetJobTemplateTemplateVolume>> volumes;
+
   /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
   final pulumi.Input<List<GetJobTemplateTemplateVpcAccess>> vpcAccesses;
 
@@ -56,32 +65,107 @@ class GetJobTemplateTemplate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateContainer>, List<Map<String, dynamic>>>(containers, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateContainer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'containers':
+          pulumi.Input.mapInputValue<
+            List<GetJobTemplateTemplateContainer>,
+            List<Map<String, dynamic>>
+          >(
+            containers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetJobTemplateTemplateContainer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'encryptionKey': encryptionKey,
       'executionEnvironment': executionEnvironment,
       'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled,
       'maxRetries': maxRetries,
-      'nodeSelectors': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateNodeSelector>, List<Map<String, dynamic>>>(nodeSelectors, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateNodeSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeSelectors':
+          pulumi.Input.mapInputValue<
+            List<GetJobTemplateTemplateNodeSelector>,
+            List<Map<String, dynamic>>
+          >(
+            nodeSelectors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetJobTemplateTemplateNodeSelector,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serviceAccount': serviceAccount,
       'timeout': timeout,
-      'volumes': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'vpcAccesses': pulumi.Input.mapInputValue<List<GetJobTemplateTemplateVpcAccess>, List<Map<String, dynamic>>>(vpcAccesses, (value) => pulumi.Input.encodeList<GetJobTemplateTemplateVpcAccess, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes':
+          pulumi.Input.mapInputValue<
+            List<GetJobTemplateTemplateVolume>,
+            List<Map<String, dynamic>>
+          >(
+            volumes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetJobTemplateTemplateVolume,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'vpcAccesses':
+          pulumi.Input.mapInputValue<
+            List<GetJobTemplateTemplateVpcAccess>,
+            List<Map<String, dynamic>>
+          >(
+            vpcAccesses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetJobTemplateTemplateVpcAccess,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetJobTemplateTemplate.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplate(
-      containers: (pulumi.Input.decodeList<GetJobTemplateTemplateContainer>(map['containers'], (value) => GetJobTemplateTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptionKey: (map['encryptionKey'] as String).input(),
-      executionEnvironment: (map['executionEnvironment'] as String).input(),
-      gpuZonalRedundancyDisabled: (map['gpuZonalRedundancyDisabled'] as bool).input(),
-      maxRetries: (map['maxRetries'] as int).input(),
-      nodeSelectors: (pulumi.Input.decodeList<GetJobTemplateTemplateNodeSelector>(map['nodeSelectors'], (value) => GetJobTemplateTemplateNodeSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccount: (map['serviceAccount'] as String).input(),
-      timeout: (map['timeout'] as String).input(),
-      volumes: (pulumi.Input.decodeList<GetJobTemplateTemplateVolume>(map['volumes'], (value) => GetJobTemplateTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcAccesses: (pulumi.Input.decodeList<GetJobTemplateTemplateVpcAccess>(map['vpcAccesses'], (value) => GetJobTemplateTemplateVpcAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetJobTemplateTemplateContainer>(
+          map['containers']!,
+          (value) => GetJobTemplateTemplateContainer.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
+      executionEnvironment: pulumi.Input.fromValue(
+        map['executionEnvironment'] as String,
+      ),
+      gpuZonalRedundancyDisabled: pulumi.Input.fromValue(
+        map['gpuZonalRedundancyDisabled'] as bool,
+      ),
+      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      nodeSelectors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetJobTemplateTemplateNodeSelector>(
+          map['nodeSelectors']!,
+          (value) => GetJobTemplateTemplateNodeSelector.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
+      timeout: pulumi.Input.fromValue(map['timeout'] as String),
+      volumes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetJobTemplateTemplateVolume>(
+          map['volumes']!,
+          (value) => GetJobTemplateTemplateVolume.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      vpcAccesses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetJobTemplateTemplateVpcAccess>(
+          map['vpcAccesses']!,
+          (value) => GetJobTemplateTemplateVpcAccess.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

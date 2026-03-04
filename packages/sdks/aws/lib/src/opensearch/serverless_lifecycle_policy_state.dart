@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessLifecyclePolicyState {
   /// Description of the policy.
   final pulumi.Input<String>? description;
+
   /// Name of the policy.
   final pulumi.Input<String>? name;
+
   /// JSON policy document to use as the content for the new policy.
   final pulumi.Input<String>? policy;
+
   /// Version of the policy.
   final pulumi.Input<String>? policyVersion;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Type of lifecycle policy. Must be `retention`.
   ///
   /// The following arguments are optional:
@@ -48,13 +53,36 @@ class ServerlessLifecyclePolicyState {
 
   factory ServerlessLifecyclePolicyState.fromMap(Map<String, dynamic> map) {
     return ServerlessLifecyclePolicyState(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
-      policyVersion: map['policyVersion'] == null ? null : ((map['policyVersion'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyVersion: (() {
+        final guardedValue = map['policyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

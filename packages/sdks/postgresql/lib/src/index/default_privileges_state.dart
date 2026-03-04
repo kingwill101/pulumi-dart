@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultPrivilegesState {
   /// The database to grant default privileges for this role.
   final pulumi.Input<String>? database;
+
   /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
   final pulumi.Input<String>? objectType;
+
   /// Specifies the role that creates objects for which the default privileges will be applied.
   final pulumi.Input<String>? owner;
+
   /// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
   final pulumi.Input<List<String>>? privileges;
+
   /// The role that will automatically be granted the specified privileges on new objects created by the owner.
   final pulumi.Input<String>? role;
+
   /// The database schema to set default privileges for this role.
   final pulumi.Input<String>? schema;
+
   /// Permit the grant recipient to grant it to others
   final pulumi.Input<bool>? withGrantOption;
 
@@ -51,14 +57,41 @@ class DefaultPrivilegesState {
 
   factory DefaultPrivilegesState.fromMap(Map<String, dynamic> map) {
     return DefaultPrivilegesState(
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
-      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
-      privileges: map['privileges'] == null ? null : ((map['privileges']! as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
-      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption']! as bool).input(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectType: (() {
+        final guardedValue = map['objectType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privileges: (() {
+        final guardedValue = map['privileges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withGrantOption: (() {
+        final guardedValue = map['withGrantOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

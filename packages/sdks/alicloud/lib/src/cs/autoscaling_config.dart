@@ -4,15 +4,15 @@ import 'autoscaling_config_state.dart';
 
 /// This resource will help you configure auto scaling for the kubernetes cluster, see [What is autoscaling config](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-configure-auto-scaling).
 ///
-/// > **NOTE:** Available since v1.127.0.
+/// &gt; **NOTE:** Available since v1.127.0.
 ///
-/// > **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
+/// &gt; **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
 ///
-/// > **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+/// &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
 ///
-/// > **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
+/// &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
 ///
-/// > **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `priorities`.
+/// &gt; **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `priorities`.
 ///
 /// ## Example Usage
 ///
@@ -749,36 +749,52 @@ import 'autoscaling_config_state.dart';
 class AutoscalingConfig extends pulumi.CustomResource {
   /// The id of kubernetes cluster.
   late final pulumi.Output<String?> clusterId;
+
   /// Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
   late final pulumi.Output<String?> coolDownDuration;
+
   /// If true DaemonSet pods will be  terminated from nodes. Default is `false`.
   late final pulumi.Output<bool?> daemonsetEvictionForNodes;
+
   /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
   late final pulumi.Output<String?> expander;
+
   /// The scale-in threshold for GPU instance. Default is `0.5`.
   late final pulumi.Output<String?> gpuUtilizationThreshold;
+
   /// Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
   late final pulumi.Output<int?> maxGracefulTerminationSec;
+
   /// Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
   late final pulumi.Output<int?> minReplicaCount;
+
   /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
   late final pulumi.Output<Map<String, String>?> priorities;
+
   /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
   late final pulumi.Output<bool?> recycleNodeDeletionEnabled;
+
   /// Specify whether to allow the scale-in of nodes. Default is `true`.
   late final pulumi.Output<bool?> scaleDownEnabled;
+
   /// Should CA scale up when there 0 ready nodes. Default is `true`.
   late final pulumi.Output<bool?> scaleUpFromZero;
+
   /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
   late final pulumi.Output<String?> scalerType;
+
   /// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
   late final pulumi.Output<String?> scanInterval;
+
   /// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
   late final pulumi.Output<bool?> skipNodesWithLocalStorage;
+
   /// If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
   late final pulumi.Output<bool?> skipNodesWithSystemPods;
+
   /// Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
   late final pulumi.Output<String?> unneededDuration;
+
   /// The scale-in a threshold. Default is `0.5`.
   late final pulumi.Output<String?> utilizationThreshold;
 
@@ -791,28 +807,38 @@ class AutoscalingConfig extends pulumi.CustomResource {
     AutoscalingConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/autoscalingConfig:AutoscalingConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String?>('clusterId');
-    this.coolDownDuration = registerOutput<String?>('coolDownDuration');
-    this.daemonsetEvictionForNodes = registerOutput<bool?>('daemonsetEvictionForNodes');
-    this.expander = registerOutput<String?>('expander');
-    this.gpuUtilizationThreshold = registerOutput<String?>('gpuUtilizationThreshold');
-    this.maxGracefulTerminationSec = registerOutput<int?>('maxGracefulTerminationSec');
-    this.minReplicaCount = registerOutput<int?>('minReplicaCount');
-    this.priorities = registerOutput<Map<String, String>?>('priorities');
-    this.recycleNodeDeletionEnabled = registerOutput<bool?>('recycleNodeDeletionEnabled');
-    this.scaleDownEnabled = registerOutput<bool?>('scaleDownEnabled');
-    this.scaleUpFromZero = registerOutput<bool?>('scaleUpFromZero');
-    this.scalerType = registerOutput<String?>('scalerType');
-    this.scanInterval = registerOutput<String?>('scanInterval');
-    this.skipNodesWithLocalStorage = registerOutput<bool?>('skipNodesWithLocalStorage');
-    this.skipNodesWithSystemPods = registerOutput<bool?>('skipNodesWithSystemPods');
-    this.unneededDuration = registerOutput<String?>('unneededDuration');
-    this.utilizationThreshold = registerOutput<String?>('utilizationThreshold');
+         'alicloud:cs/autoscalingConfig:AutoscalingConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String?>('clusterId');
+    coolDownDuration = registerOutput<String?>('coolDownDuration');
+    daemonsetEvictionForNodes = registerOutput<bool?>(
+      'daemonsetEvictionForNodes',
+    );
+    expander = registerOutput<String?>('expander');
+    gpuUtilizationThreshold = registerOutput<String?>(
+      'gpuUtilizationThreshold',
+    );
+    maxGracefulTerminationSec = registerOutput<int?>(
+      'maxGracefulTerminationSec',
+    );
+    minReplicaCount = registerOutput<int?>('minReplicaCount');
+    priorities = registerOutput<Map<String, String>?>('priorities');
+    recycleNodeDeletionEnabled = registerOutput<bool?>(
+      'recycleNodeDeletionEnabled',
+    );
+    scaleDownEnabled = registerOutput<bool?>('scaleDownEnabled');
+    scaleUpFromZero = registerOutput<bool?>('scaleUpFromZero');
+    scalerType = registerOutput<String?>('scalerType');
+    scanInterval = registerOutput<String?>('scanInterval');
+    skipNodesWithLocalStorage = registerOutput<bool?>(
+      'skipNodesWithLocalStorage',
+    );
+    skipNodesWithSystemPods = registerOutput<bool?>('skipNodesWithSystemPods');
+    unneededDuration = registerOutput<String?>('unneededDuration');
+    utilizationThreshold = registerOutput<String?>('utilizationThreshold');
   }
 
   /// Gets an existing [AutoscalingConfig] resource's state with the given [name] and [id].
@@ -833,27 +859,37 @@ class AutoscalingConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/autoscalingConfig:AutoscalingConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String?>('clusterId');
-    this.coolDownDuration = registerOutput<String?>('coolDownDuration');
-    this.daemonsetEvictionForNodes = registerOutput<bool?>('daemonsetEvictionForNodes');
-    this.expander = registerOutput<String?>('expander');
-    this.gpuUtilizationThreshold = registerOutput<String?>('gpuUtilizationThreshold');
-    this.maxGracefulTerminationSec = registerOutput<int?>('maxGracefulTerminationSec');
-    this.minReplicaCount = registerOutput<int?>('minReplicaCount');
-    this.priorities = registerOutput<Map<String, String>?>('priorities');
-    this.recycleNodeDeletionEnabled = registerOutput<bool?>('recycleNodeDeletionEnabled');
-    this.scaleDownEnabled = registerOutput<bool?>('scaleDownEnabled');
-    this.scaleUpFromZero = registerOutput<bool?>('scaleUpFromZero');
-    this.scalerType = registerOutput<String?>('scalerType');
-    this.scanInterval = registerOutput<String?>('scanInterval');
-    this.skipNodesWithLocalStorage = registerOutput<bool?>('skipNodesWithLocalStorage');
-    this.skipNodesWithSystemPods = registerOutput<bool?>('skipNodesWithSystemPods');
-    this.unneededDuration = registerOutput<String?>('unneededDuration');
-    this.utilizationThreshold = registerOutput<String?>('utilizationThreshold');
+         'alicloud:cs/autoscalingConfig:AutoscalingConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String?>('clusterId');
+    coolDownDuration = registerOutput<String?>('coolDownDuration');
+    daemonsetEvictionForNodes = registerOutput<bool?>(
+      'daemonsetEvictionForNodes',
+    );
+    expander = registerOutput<String?>('expander');
+    gpuUtilizationThreshold = registerOutput<String?>(
+      'gpuUtilizationThreshold',
+    );
+    maxGracefulTerminationSec = registerOutput<int?>(
+      'maxGracefulTerminationSec',
+    );
+    minReplicaCount = registerOutput<int?>('minReplicaCount');
+    priorities = registerOutput<Map<String, String>?>('priorities');
+    recycleNodeDeletionEnabled = registerOutput<bool?>(
+      'recycleNodeDeletionEnabled',
+    );
+    scaleDownEnabled = registerOutput<bool?>('scaleDownEnabled');
+    scaleUpFromZero = registerOutput<bool?>('scaleUpFromZero');
+    scalerType = registerOutput<String?>('scalerType');
+    scanInterval = registerOutput<String?>('scanInterval');
+    skipNodesWithLocalStorage = registerOutput<bool?>(
+      'skipNodesWithLocalStorage',
+    );
+    skipNodesWithSystemPods = registerOutput<bool?>('skipNodesWithSystemPods');
+    unneededDuration = registerOutput<String?>('unneededDuration');
+    utilizationThreshold = registerOutput<String?>('utilizationThreshold');
   }
 }

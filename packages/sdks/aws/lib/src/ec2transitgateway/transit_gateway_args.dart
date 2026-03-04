@@ -9,30 +9,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayArgs {
   /// Private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is `64512` to `65534` for 16-bit ASNs and `4200000000` to `4294967294` for 32-bit ASNs. Default value: `64512`.
   ///
-  /// > **NOTE:** Modifying `amazon_side_asn` on a Transit Gateway with active BGP sessions is [not allowed](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayOptions.html). You must first delete all Transit Gateway attachments that have BGP configured prior to modifying `amazon_side_asn`.
+  /// &gt; **NOTE:** Modifying `amazon_side_asn` on a Transit Gateway with active BGP sessions is [not allowed](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayOptions.html). You must first delete all Transit Gateway attachments that have BGP configured prior to modifying `amazon_side_asn`.
   final pulumi.Input<int>? amazonSideAsn;
+
   /// Whether resource attachment requests are automatically accepted. Valid values: `disable`, `enable`. Default value: `disable`.
   final pulumi.Input<String>? autoAcceptSharedAttachments;
+
   /// Whether resource attachments are automatically associated with the default association route table. Valid values: `disable`, `enable`. Default value: `enable`.
   final pulumi.Input<String>? defaultRouteTableAssociation;
+
   /// Whether resource attachments automatically propagate routes to the default propagation route table. Valid values: `disable`, `enable`. Default value: `enable`.
   final pulumi.Input<String>? defaultRouteTablePropagation;
+
   /// Description of the EC2 Transit Gateway.
   final pulumi.Input<String>? description;
+
   /// Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
   final pulumi.Input<String>? dnsSupport;
+
   /// Whether encryption support for VPC Encryption Control is enabled. Valid values: `disable`, `enable`. Default value: `disable`. Once set, switching to `disable` requires explicitly specifying `disable` rather than removing the argument.
   final pulumi.Input<String>? encryptionSupport;
+
   /// Whether Multicast support is enabled. Required to use `ec2_transit_gateway_multicast_domain`. Valid values: `disable`, `enable`. Default value: `disable`.
   final pulumi.Input<String>? multicastSupport;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether Security Group Referencing Support is enabled. Valid values: `disable`, `enable`. Default value: `disable`.
   final pulumi.Input<String>? securityGroupReferencingSupport;
+
   /// Key-value tags for the EC2 Transit Gateway. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24 CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.
   final pulumi.Input<List<String>>? transitGatewayCidrBlocks;
+
   /// Whether VPN Equal Cost Multipath Protocol support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
   final pulumi.Input<String>? vpnEcmpSupport;
 
@@ -86,20 +98,73 @@ class TransitGatewayArgs {
 
   factory TransitGatewayArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayArgs(
-      amazonSideAsn: map['amazonSideAsn'] == null ? null : ((map['amazonSideAsn'] as int).input()).input(),
-      autoAcceptSharedAttachments: map['autoAcceptSharedAttachments'] == null ? null : ((map['autoAcceptSharedAttachments'] as String).input()).input(),
-      defaultRouteTableAssociation: map['defaultRouteTableAssociation'] == null ? null : ((map['defaultRouteTableAssociation'] as String).input()).input(),
-      defaultRouteTablePropagation: map['defaultRouteTablePropagation'] == null ? null : ((map['defaultRouteTablePropagation'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      dnsSupport: map['dnsSupport'] == null ? null : ((map['dnsSupport'] as String).input()).input(),
-      encryptionSupport: map['encryptionSupport'] == null ? null : ((map['encryptionSupport'] as String).input()).input(),
-      multicastSupport: map['multicastSupport'] == null ? null : ((map['multicastSupport'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : ((map['securityGroupReferencingSupport'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      transitGatewayCidrBlocks: map['transitGatewayCidrBlocks'] == null ? null : (((map['transitGatewayCidrBlocks'] as List).cast<String>()).input()).input(),
-      vpnEcmpSupport: map['vpnEcmpSupport'] == null ? null : ((map['vpnEcmpSupport'] as String).input()).input(),
+      amazonSideAsn: (() {
+        final guardedValue = map['amazonSideAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      autoAcceptSharedAttachments: (() {
+        final guardedValue = map['autoAcceptSharedAttachments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultRouteTableAssociation: (() {
+        final guardedValue = map['defaultRouteTableAssociation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultRouteTablePropagation: (() {
+        final guardedValue = map['defaultRouteTablePropagation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsSupport: (() {
+        final guardedValue = map['dnsSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionSupport: (() {
+        final guardedValue = map['encryptionSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multicastSupport: (() {
+        final guardedValue = map['multicastSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupReferencingSupport: (() {
+        final guardedValue = map['securityGroupReferencingSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transitGatewayCidrBlocks: (() {
+        final guardedValue = map['transitGatewayCidrBlocks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vpnEcmpSupport: (() {
+        final guardedValue = map['vpnEcmpSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

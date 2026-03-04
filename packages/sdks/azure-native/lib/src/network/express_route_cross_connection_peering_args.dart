@@ -11,32 +11,46 @@ import 'ipv6_express_route_circuit_peering_config.dart';
 class ExpressRouteCrossConnectionPeeringArgs {
   /// The name of the ExpressRouteCrossConnection.
   final pulumi.Input<String> crossConnectionName;
+
   /// The GatewayManager Etag.
   final pulumi.Input<String>? gatewayManagerEtag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The IPv6 peering configuration.
   final pulumi.Input<Ipv6ExpressRouteCircuitPeeringConfig>? ipv6PeeringConfig;
+
   /// The Microsoft peering configuration.
   final pulumi.Input<ExpressRouteCircuitPeeringConfig>? microsoftPeeringConfig;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The peer ASN.
   final pulumi.Input<double>? peerASN;
+
   /// The name of the peering.
   final pulumi.Input<String>? peeringName;
+
   /// The peering type.
   final pulumi.Input<String>? peeringType;
+
   /// The primary address prefix.
   final pulumi.Input<String>? primaryPeerAddressPrefix;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The secondary address prefix.
   final pulumi.Input<String>? secondaryPeerAddressPrefix;
+
   /// The shared key.
   final pulumi.Input<String>? sharedKey;
+
   /// The peering state.
   final pulumi.Input<String>? state;
+
   /// The VLAN ID.
   final pulumi.Input<int>? vlanId;
 
@@ -79,8 +93,16 @@ class ExpressRouteCrossConnectionPeeringArgs {
       'crossConnectionName': crossConnectionName,
       'gatewayManagerEtag': ?gatewayManagerEtag,
       'id': ?id,
-      'ipv6PeeringConfig': ?pulumi.Input.mapOptionalInputValue<Ipv6ExpressRouteCircuitPeeringConfig, Map<String, dynamic>>(ipv6PeeringConfig, (value) => value.toMap()),
-      'microsoftPeeringConfig': ?pulumi.Input.mapOptionalInputValue<ExpressRouteCircuitPeeringConfig, Map<String, dynamic>>(microsoftPeeringConfig, (value) => value.toMap()),
+      'ipv6PeeringConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            Ipv6ExpressRouteCircuitPeeringConfig,
+            Map<String, dynamic>
+          >(ipv6PeeringConfig, (value) => value.toMap()),
+      'microsoftPeeringConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExpressRouteCircuitPeeringConfig,
+            Map<String, dynamic>
+          >(microsoftPeeringConfig, (value) => value.toMap()),
       'name': ?name,
       'peerASN': ?peerASN,
       'peeringName': ?peeringName,
@@ -94,24 +116,89 @@ class ExpressRouteCrossConnectionPeeringArgs {
     };
   }
 
-  factory ExpressRouteCrossConnectionPeeringArgs.fromMap(Map<String, dynamic> map) {
+  factory ExpressRouteCrossConnectionPeeringArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressRouteCrossConnectionPeeringArgs(
-      crossConnectionName: (map['crossConnectionName'] as String).input(),
-      gatewayManagerEtag: map['gatewayManagerEtag'] == null ? null : (map['gatewayManagerEtag']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      ipv6PeeringConfig: map['ipv6PeeringConfig'] == null ? null : (Ipv6ExpressRouteCircuitPeeringConfig.fromMap((map['ipv6PeeringConfig']! as Map).cast<String, dynamic>())).input(),
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringConfig.fromMap((map['microsoftPeeringConfig']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      peerASN: map['peerASN'] == null ? null : (map['peerASN']! as double).input(),
-      peeringName: map['peeringName'] == null ? null : (map['peeringName']! as String).input(),
-      peeringType: map['peeringType'] == null ? null : (map['peeringType']! as String).input(),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix']! as String).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
+      crossConnectionName: pulumi.Input.fromValue(
+        map['crossConnectionName'] as String,
+      ),
+      gatewayManagerEtag: (() {
+        final guardedValue = map['gatewayManagerEtag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6PeeringConfig: (() {
+        final guardedValue = map['ipv6PeeringConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Ipv6ExpressRouteCircuitPeeringConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      microsoftPeeringConfig: (() {
+        final guardedValue = map['microsoftPeeringConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExpressRouteCircuitPeeringConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peerASN: (() {
+        final guardedValue = map['peerASN'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      peeringName: (() {
+        final guardedValue = map['peeringName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peeringType: (() {
+        final guardedValue = map['peeringType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryPeerAddressPrefix: (() {
+        final guardedValue = map['primaryPeerAddressPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      secondaryPeerAddressPrefix: (() {
+        final guardedValue = map['secondaryPeerAddressPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedKey: (() {
+        final guardedValue = map['sharedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vlanId: (() {
+        final guardedValue = map['vlanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

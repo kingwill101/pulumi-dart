@@ -7,6 +7,7 @@ import 'get_dbaudit_instance_instance.dart';
 class GetDBAuditInstanceResult {
   final String? descriptionRegex;
   final List<String> descriptions;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -38,7 +39,11 @@ class GetDBAuditInstanceResult {
       'descriptions': descriptions,
       'id': id,
       'ids': ids,
-      'instances': pulumi.Input.encodeList<GetDBAuditInstanceInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetDBAuditInstanceInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'tags': ?tags,
     };
@@ -46,14 +51,30 @@ class GetDBAuditInstanceResult {
 
   factory GetDBAuditInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetDBAuditInstanceResult(
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
+      descriptionRegex: (() {
+        final guardedValue = map['descriptionRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetDBAuditInstanceInstance>(map['instances'], (value) => GetDBAuditInstanceInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      instances: pulumi.Input.decodeList<GetDBAuditInstanceInstance>(
+        map['instances']!,
+        (value) => GetDBAuditInstanceInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

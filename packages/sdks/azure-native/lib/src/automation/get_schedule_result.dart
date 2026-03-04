@@ -6,38 +6,55 @@ import 'advanced_schedule_response.dart';
 class GetScheduleResult {
   /// Gets or sets the advanced schedule.
   final AdvancedScheduleResponse? advancedSchedule;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets or sets the creation time.
   final String? creationTime;
+
   /// Gets or sets the description.
   final String? description;
+
   /// Gets or sets the end time of the schedule.
   final String? expiryTime;
+
   /// Gets or sets the expiry time's offset in minutes.
   final double? expiryTimeOffsetMinutes;
+
   /// Gets or sets the frequency of the schedule.
   final String? frequency;
+
   /// Fully qualified resource Id for the resource
   final String id;
+
   /// Gets or sets the interval of the schedule.
   final dynamic interval;
+
   /// Gets or sets a value indicating whether this schedule is enabled.
   final bool? isEnabled;
+
   /// Gets or sets the last modified time.
   final String? lastModifiedTime;
+
   /// The name of the resource
   final String name;
+
   /// Gets or sets the next run time of the schedule.
   final String? nextRun;
+
   /// Gets or sets the next run time's offset in minutes.
   final double? nextRunOffsetMinutes;
+
   /// Gets or sets the start time of the schedule.
   final String? startTime;
+
   /// Gets the start time's offset in minutes.
   final double startTimeOffsetMinutes;
+
   /// Gets or sets the time zone of the schedule.
   final String? timeZone;
+
   /// The type of the resource.
   final String type;
 
@@ -83,7 +100,7 @@ class GetScheduleResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSchedule': ?advancedSchedule == null ? null : advancedSchedule!.toMap(),
+      'advancedSchedule': ?advancedSchedule?.toMap(),
       'azureApiVersion': azureApiVersion,
       'creationTime': ?creationTime,
       'description': ?description,
@@ -106,25 +123,78 @@ class GetScheduleResult {
 
   factory GetScheduleResult.fromMap(Map<String, dynamic> map) {
     return GetScheduleResult(
-      advancedSchedule: map['advancedSchedule'] == null ? null : AdvancedScheduleResponse.fromMap((map['advancedSchedule']! as Map).cast<String, dynamic>()),
+      advancedSchedule: (() {
+        final guardedValue = map['advancedSchedule'];
+        if (guardedValue == null) return null;
+        return AdvancedScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime']! as String,
-      expiryTimeOffsetMinutes: map['expiryTimeOffsetMinutes'] == null ? null : map['expiryTimeOffsetMinutes']! as double,
-      frequency: map['frequency'] == null ? null : map['frequency']! as String,
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      expiryTime: (() {
+        final guardedValue = map['expiryTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      expiryTimeOffsetMinutes: (() {
+        final guardedValue = map['expiryTimeOffsetMinutes'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      frequency: (() {
+        final guardedValue = map['frequency'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      interval: map['interval'] == null ? null : map['interval']!,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled']! as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      nextRun: map['nextRun'] == null ? null : map['nextRun']! as String,
-      nextRunOffsetMinutes: map['nextRunOffsetMinutes'] == null ? null : map['nextRunOffsetMinutes']! as double,
-      startTime: map['startTime'] == null ? null : map['startTime']! as String,
+      nextRun: (() {
+        final guardedValue = map['nextRun'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nextRunOffsetMinutes: (() {
+        final guardedValue = map['nextRunOffsetMinutes'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       startTimeOffsetMinutes: map['startTimeOffsetMinutes'] as double,
-      timeZone: map['timeZone'] == null ? null : map['timeZone']! as String,
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -13,16 +13,15 @@ enum TargetHealthReasonEnum {
   targetResponseCodeMismatch("Target.ResponseCodeMismatch"),
   targetTimeout("Target.Timeout");
 
-  const TargetHealthReasonEnum(this.value);
-  final String value;
+  const TargetHealthReasonEnum(this.wireValue);
+  final String wireValue;
 
   static TargetHealthReasonEnum fromValue(String value) {
     for (final item in TargetHealthReasonEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetHealthReasonEnum value: $value');
   }
 }
-

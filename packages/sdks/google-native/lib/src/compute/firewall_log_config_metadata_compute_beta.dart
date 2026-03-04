@@ -3,16 +3,17 @@ enum FirewallLogConfigMetadataComputeBeta {
   excludeAllMetadata("EXCLUDE_ALL_METADATA"),
   includeAllMetadata("INCLUDE_ALL_METADATA");
 
-  const FirewallLogConfigMetadataComputeBeta(this.value);
-  final String value;
+  const FirewallLogConfigMetadataComputeBeta(this.wireValue);
+  final String wireValue;
 
   static FirewallLogConfigMetadataComputeBeta fromValue(String value) {
     for (final item in FirewallLogConfigMetadataComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallLogConfigMetadataComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown FirewallLogConfigMetadataComputeBeta value: $value',
+    );
   }
 }
-

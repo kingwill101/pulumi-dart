@@ -131,8 +131,10 @@ import 'ai_cache_config_state.dart';
 class AiCacheConfig extends pulumi.CustomResource {
   /// If set to true, disables GenAI caching. Otherwise caching is enabled.
   late final pulumi.Output<bool> disableCache;
+
   /// Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -146,14 +148,14 @@ class AiCacheConfig extends pulumi.CustomResource {
     AiCacheConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiCacheConfig:AiCacheConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disableCache = registerOutput<bool>('disableCache');
+         'gcp:vertex/aiCacheConfig:AiCacheConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disableCache = registerOutput<bool>('disableCache');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [AiCacheConfig] resource's state with the given [name] and [id].
@@ -174,13 +176,13 @@ class AiCacheConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiCacheConfig:AiCacheConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disableCache = registerOutput<bool>('disableCache');
+         'gcp:vertex/aiCacheConfig:AiCacheConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disableCache = registerOutput<bool>('disableCache');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 }

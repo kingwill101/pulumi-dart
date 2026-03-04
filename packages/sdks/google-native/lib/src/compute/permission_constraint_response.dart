@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionConstraintResponse {
   /// Key of the constraint.
   final pulumi.Input<String> key;
+
   /// A list of allowed values.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [PermissionConstraintResponse].
   /// [key] Key of the constraint.
   /// [values] A list of allowed values.
-  PermissionConstraintResponse({
-    required this.key,
-    required this.values,
-  });
+  PermissionConstraintResponse({required this.key, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
   factory PermissionConstraintResponse.fromMap(Map<String, dynamic> map) {
     return PermissionConstraintResponse(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

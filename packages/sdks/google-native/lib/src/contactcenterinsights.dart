@@ -1,5 +1,3 @@
-library module_contactcenterinsights;
-
 export 'contactcenterinsights/analysis.dart';
 export 'contactcenterinsights/analysis_args.dart';
 export 'contactcenterinsights/conversation.dart';

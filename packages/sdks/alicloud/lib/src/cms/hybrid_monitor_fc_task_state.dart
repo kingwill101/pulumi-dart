@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridMonitorFcTaskState {
   /// The ID of the monitoring task.
   final pulumi.Input<String>? hybridMonitorFcTaskId;
+
   /// The index warehouse where the host belongs.
   final pulumi.Input<String>? namespace;
+
   /// The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
   final pulumi.Input<String>? targetUserId;
+
   /// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
   final pulumi.Input<String>? yarmConfig;
 
@@ -36,11 +39,26 @@ class HybridMonitorFcTaskState {
 
   factory HybridMonitorFcTaskState.fromMap(Map<String, dynamic> map) {
     return HybridMonitorFcTaskState(
-      hybridMonitorFcTaskId: map['hybridMonitorFcTaskId'] == null ? null : (map['hybridMonitorFcTaskId']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId']! as String).input(),
-      yarmConfig: map['yarmConfig'] == null ? null : (map['yarmConfig']! as String).input(),
+      hybridMonitorFcTaskId: (() {
+        final guardedValue = map['hybridMonitorFcTaskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetUserId: (() {
+        final guardedValue = map['targetUserId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      yarmConfig: (() {
+        final guardedValue = map['yarmConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

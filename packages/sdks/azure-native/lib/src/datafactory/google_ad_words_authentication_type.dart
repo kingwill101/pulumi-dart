@@ -3,16 +3,17 @@ enum GoogleAdWordsAuthenticationType {
   valueServiceAuthentication("ServiceAuthentication"),
   valueUserAuthentication("UserAuthentication");
 
-  const GoogleAdWordsAuthenticationType(this.value);
-  final String value;
+  const GoogleAdWordsAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static GoogleAdWordsAuthenticationType fromValue(String value) {
     for (final item in GoogleAdWordsAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleAdWordsAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleAdWordsAuthenticationType value: $value',
+    );
   }
 }
-

@@ -7,10 +7,12 @@ class JobTemplateTemplateVpcAccessNetworkInterface {
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
   /// looked up from the subnetwork.
   final pulumi.Input<String>? network;
+
   /// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
   /// subnetwork with the same name with the network will be used.
   final pulumi.Input<String>? subnetwork;
+
   /// Network tags applied to this Cloud Run job.
   final pulumi.Input<List<String>>? tags;
 
@@ -32,12 +34,25 @@ class JobTemplateTemplateVpcAccessNetworkInterface {
     };
   }
 
-  factory JobTemplateTemplateVpcAccessNetworkInterface.fromMap(Map<String, dynamic> map) {
+  factory JobTemplateTemplateVpcAccessNetworkInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobTemplateTemplateVpcAccessNetworkInterface(
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

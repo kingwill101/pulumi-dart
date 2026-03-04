@@ -7,14 +7,21 @@ import 'rule_group_rule_statement_size_constraint_statement_text_transformation.
 class RuleGroupRuleStatementSizeConstraintStatement {
   /// The operator to use to compare the request part to the size setting. Valid values include: `EQ`, `NE`, `LE`, `LT`, `GE`, or `GT`.
   final pulumi.Input<String> comparisonOperator;
+
   /// The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatch>?
+  fieldToMatch;
+
   /// The size, in bytes, to compare to the request part, after any transformations. Valid values are integers between 0 and 21474836480, inclusive.
   final pulumi.Input<int> size;
+
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.
   /// At least one required.
   /// See Text Transformation below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementSizeConstraintStatementTextTransformation>> textTransformations;
+  final pulumi.Input<
+    List<RuleGroupRuleStatementSizeConstraintStatementTextTransformation>
+  >
+  textTransformations;
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatement].
   /// [comparisonOperator] The operator to use to compare the request part to the size setting. Valid values include: `EQ`, `NE`, `LE`, `LT`, `GE`, or `GT`.
@@ -31,19 +38,57 @@ class RuleGroupRuleStatementSizeConstraintStatement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'comparisonOperator': comparisonOperator,
-      'fieldToMatch': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementSizeConstraintStatementFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
+      'fieldToMatch':
+          ?pulumi.Input.mapOptionalInputValue<
+            RuleGroupRuleStatementSizeConstraintStatementFieldToMatch,
+            Map<String, dynamic>
+          >(fieldToMatch, (value) => value.toMap()),
       'size': size,
-      'textTransformations': pulumi.Input.mapInputValue<List<RuleGroupRuleStatementSizeConstraintStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<RuleGroupRuleStatementSizeConstraintStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'textTransformations':
+          pulumi.Input.mapInputValue<
+            List<
+              RuleGroupRuleStatementSizeConstraintStatementTextTransformation
+            >,
+            List<Map<String, dynamic>>
+          >(
+            textTransformations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupRuleStatementSizeConstraintStatementTextTransformation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory RuleGroupRuleStatementSizeConstraintStatement.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementSizeConstraintStatement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementSizeConstraintStatement(
-      comparisonOperator: (map['comparisonOperator'] as String).input(),
-      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
-      size: (map['size'] as int).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementSizeConstraintStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      comparisonOperator: pulumi.Input.fromValue(
+        map['comparisonOperator'] as String,
+      ),
+      fieldToMatch: (() {
+        final guardedValue = map['fieldToMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RuleGroupRuleStatementSizeConstraintStatementFieldToMatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      size: pulumi.Input.fromValue(map['size'] as int),
+      textTransformations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          RuleGroupRuleStatementSizeConstraintStatementTextTransformation
+        >(
+          map['textTransformations']!,
+          (value) =>
+              RuleGroupRuleStatementSizeConstraintStatementTextTransformation.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

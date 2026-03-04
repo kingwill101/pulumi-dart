@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_control_list_args.dart';
-import 'access_control_list_match_configuration_response.dart';
-import 'common_dynamic_match_configuration_response.dart';
 import 'system_data_response.dart';
 
 /// The Access Control List resource definition.
@@ -616,34 +614,50 @@ import 'system_data_response.dart';
 class AccessControlList extends pulumi.CustomResource {
   /// Access Control List file URL.
   late final pulumi.Output<String?> aclsUrl;
+
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// Input method to configure Access Control List.
   late final pulumi.Output<String> configurationType;
+
   /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
   late final pulumi.Output<String?> defaultAction;
+
   /// List of dynamic match configurations.
-  late final pulumi.Output<List<CommonDynamicMatchConfigurationResponse>?> dynamicMatchConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  dynamicMatchConfigurations;
+
   /// The last synced timestamp.
   late final pulumi.Output<String> lastSyncedTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// List of match configurations.
-  late final pulumi.Output<List<AccessControlListMatchConfigurationResponse>?> matchConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> matchConfigurations;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -656,26 +670,30 @@ class AccessControlList extends pulumi.CustomResource {
     AccessControlListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:AccessControlList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclsUrl = registerOutput<String?>('aclsUrl');
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.configurationType = registerOutput<String>('configurationType');
-    this.defaultAction = registerOutput<String?>('defaultAction');
-    this.dynamicMatchConfigurations = registerOutput<List<CommonDynamicMatchConfigurationResponse>?>('dynamicMatchConfigurations');
-    this.lastSyncedTime = registerOutput<String>('lastSyncedTime');
-    this.location = registerOutput<String>('location');
-    this.matchConfigurations = registerOutput<List<AccessControlListMatchConfigurationResponse>?>('matchConfigurations');
+         'azure-native:managednetworkfabric:AccessControlList',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclsUrl = registerOutput<String?>('aclsUrl');
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    configurationType = registerOutput<String>('configurationType');
+    defaultAction = registerOutput<String?>('defaultAction');
+    dynamicMatchConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'dynamicMatchConfigurations',
+    );
+    lastSyncedTime = registerOutput<String>('lastSyncedTime');
+    location = registerOutput<String>('location');
+    matchConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'matchConfigurations',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkRuleArgs {
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The name of the virtual network rule.
   final pulumi.Input<String> virtualNetworkRuleName;
 
@@ -34,10 +36,13 @@ class GetVirtualNetworkRuleArgs {
 
   factory GetVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRuleArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      virtualNetworkRuleName: (map['virtualNetworkRuleName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      virtualNetworkRuleName: pulumi.Input.fromValue(
+        map['virtualNetworkRuleName'] as String,
+      ),
     );
   }
 }
-

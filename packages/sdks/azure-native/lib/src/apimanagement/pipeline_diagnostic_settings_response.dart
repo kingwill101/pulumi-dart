@@ -7,29 +7,50 @@ import 'http_message_diagnostic_response.dart';
 class PipelineDiagnosticSettingsResponse {
   /// Diagnostic settings for request.
   final pulumi.Input<HttpMessageDiagnosticResponse>? request;
+
   /// Diagnostic settings for response.
   final pulumi.Input<HttpMessageDiagnosticResponse>? response;
 
   /// Creates a new [PipelineDiagnosticSettingsResponse].
   /// [request] Diagnostic settings for request.
   /// [response] Diagnostic settings for response.
-  PipelineDiagnosticSettingsResponse({
-    this.request,
-    this.response,
-  });
+  PipelineDiagnosticSettingsResponse({this.request, this.response});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'request': ?pulumi.Input.mapOptionalInputValue<HttpMessageDiagnosticResponse, Map<String, dynamic>>(request, (value) => value.toMap()),
-      'response': ?pulumi.Input.mapOptionalInputValue<HttpMessageDiagnosticResponse, Map<String, dynamic>>(response, (value) => value.toMap()),
+      'request':
+          ?pulumi.Input.mapOptionalInputValue<
+            HttpMessageDiagnosticResponse,
+            Map<String, dynamic>
+          >(request, (value) => value.toMap()),
+      'response':
+          ?pulumi.Input.mapOptionalInputValue<
+            HttpMessageDiagnosticResponse,
+            Map<String, dynamic>
+          >(response, (value) => value.toMap()),
     };
   }
 
   factory PipelineDiagnosticSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PipelineDiagnosticSettingsResponse(
-      request: map['request'] == null ? null : (HttpMessageDiagnosticResponse.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (HttpMessageDiagnosticResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input(),
+      request: (() {
+        final guardedValue = map['request'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HttpMessageDiagnosticResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      response: (() {
+        final guardedValue = map['response'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HttpMessageDiagnosticResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

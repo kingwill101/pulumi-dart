@@ -6,16 +6,15 @@ enum SeverityOverrideAction {
   alert("ALERT"),
   deny("DENY");
 
-  const SeverityOverrideAction(this.value);
-  final String value;
+  const SeverityOverrideAction(this.wireValue);
+  final String wireValue;
 
   static SeverityOverrideAction fromValue(String value) {
     for (final item in SeverityOverrideAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SeverityOverrideAction value: $value');
   }
 }
-

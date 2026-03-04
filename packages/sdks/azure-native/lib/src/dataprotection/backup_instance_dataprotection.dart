@@ -1253,14 +1253,19 @@ import 'system_data_response.dart';
 class BackupInstanceDataprotection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Proxy Resource name associated with the resource.
   late final pulumi.Output<String> name;
+
   /// BackupInstanceResource properties
   late final pulumi.Output<BackupInstanceResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Proxy Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -1273,16 +1278,16 @@ class BackupInstanceDataprotection extends pulumi.CustomResource {
     BackupInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dataprotection:BackupInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:dataprotection:BackupInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<BackupInstanceResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<BackupInstanceResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

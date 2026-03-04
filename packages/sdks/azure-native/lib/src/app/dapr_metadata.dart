@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DaprMetadata {
   /// Metadata property name.
   final pulumi.Input<String>? name;
+
   /// Name of the Dapr Component secret from which to pull the metadata property value.
   final pulumi.Input<String>? secretRef;
+
   /// Metadata property value.
   final pulumi.Input<String>? value;
 
@@ -15,11 +17,7 @@ class DaprMetadata {
   /// [name] Metadata property name.
   /// [secretRef] Name of the Dapr Component secret from which to pull the metadata property value.
   /// [value] Metadata property value.
-  DaprMetadata({
-    this.name,
-    this.secretRef,
-    this.value,
-  });
+  DaprMetadata({this.name, this.secretRef, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class DaprMetadata {
 
   factory DaprMetadata.fromMap(Map<String, dynamic> map) {
     return DaprMetadata(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      secretRef: map['secretRef'] == null ? null : (map['secretRef']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretRef: (() {
+        final guardedValue = map['secretRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

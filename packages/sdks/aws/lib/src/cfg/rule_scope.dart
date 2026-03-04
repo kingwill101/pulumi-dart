@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleScope {
   /// The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for `compliance_resource_types`.
   final pulumi.Input<String>? complianceResourceId;
+
   /// A list of resource types of only those AWS resources that you want to trigger an evaluation for the ruleE.g., `AWS::EC2::Instance`. You can only specify one type if you also specify a resource ID for `compliance_resource_id`. See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types.
   final pulumi.Input<List<String>>? complianceResourceTypes;
+
   /// The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.
   final pulumi.Input<String>? tagKey;
+
   /// The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule.
   final pulumi.Input<String>? tagValue;
 
@@ -35,11 +38,26 @@ class RuleScope {
 
   factory RuleScope.fromMap(Map<String, dynamic> map) {
     return RuleScope(
-      complianceResourceId: map['complianceResourceId'] == null ? null : ((map['complianceResourceId'] as String).input()).input(),
-      complianceResourceTypes: map['complianceResourceTypes'] == null ? null : (((map['complianceResourceTypes'] as List).cast<String>()).input()).input(),
-      tagKey: map['tagKey'] == null ? null : ((map['tagKey'] as String).input()).input(),
-      tagValue: map['tagValue'] == null ? null : ((map['tagValue'] as String).input()).input(),
+      complianceResourceId: (() {
+        final guardedValue = map['complianceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      complianceResourceTypes: (() {
+        final guardedValue = map['complianceResourceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagValue: (() {
+        final guardedValue = map['tagValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

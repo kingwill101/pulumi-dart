@@ -6,30 +6,43 @@ import 'domain_registrant_contact_extra_param.dart';
 class DomainRegistrantContact {
   /// First line of the contact's address.
   final pulumi.Input<String>? addressLine1;
+
   /// Second line of contact's address, if any.
   final pulumi.Input<String>? addressLine2;
+
   /// The city of the contact's address.
   final pulumi.Input<String>? city;
+
   /// Indicates whether the contact is a person, company, association, or public organization. See the [AWS API documentation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html#Route53Domains-Type-domains_ContactDetail-ContactType) for valid values.
   final pulumi.Input<String>? contactType;
+
   /// Code for the country of the contact's address. See the [AWS API documentation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html#Route53Domains-Type-domains_ContactDetail-CountryCode) for valid values.
   final pulumi.Input<String>? countryCode;
+
   /// Email address of the contact.
   final pulumi.Input<String>? email;
+
   /// A list of name-value pairs for parameters required by certain top-level domains.
   final pulumi.Input<List<DomainRegistrantContactExtraParam>>? extraParams;
+
   /// Fax number of the contact. Phone number must be specified in the format "+[country dialing code].[number including any area code]".
   final pulumi.Input<String>? fax;
+
   /// First name of contact.
   final pulumi.Input<String>? firstName;
+
   /// Last name of contact.
   final pulumi.Input<String>? lastName;
+
   /// Name of the organization for contact types other than `PERSON`.
   final pulumi.Input<String>? organizationName;
+
   /// The phone number of the contact. Phone number must be specified in the format "+[country dialing code].[number including any area code]".
   final pulumi.Input<String>? phoneNumber;
+
   /// The state or province of the contact's city.
   final pulumi.Input<String>? state;
+
   /// The zip or postal code of the contact's address.
   final pulumi.Input<String>? zipCode;
 
@@ -73,7 +86,18 @@ class DomainRegistrantContact {
       'contactType': ?contactType,
       'countryCode': ?countryCode,
       'email': ?email,
-      'extraParams': ?pulumi.Input.mapOptionalInputValue<List<DomainRegistrantContactExtraParam>, List<Map<String, dynamic>>>(extraParams, (value) => pulumi.Input.encodeList<DomainRegistrantContactExtraParam, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extraParams':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainRegistrantContactExtraParam>,
+            List<Map<String, dynamic>>
+          >(
+            extraParams,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainRegistrantContactExtraParam,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'fax': ?fax,
       'firstName': ?firstName,
       'lastName': ?lastName,
@@ -86,21 +110,83 @@ class DomainRegistrantContact {
 
   factory DomainRegistrantContact.fromMap(Map<String, dynamic> map) {
     return DomainRegistrantContact(
-      addressLine1: map['addressLine1'] == null ? null : ((map['addressLine1'] as String).input()).input(),
-      addressLine2: map['addressLine2'] == null ? null : ((map['addressLine2'] as String).input()).input(),
-      city: map['city'] == null ? null : ((map['city'] as String).input()).input(),
-      contactType: map['contactType'] == null ? null : ((map['contactType'] as String).input()).input(),
-      countryCode: map['countryCode'] == null ? null : ((map['countryCode'] as String).input()).input(),
-      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
-      extraParams: map['extraParams'] == null ? null : ((pulumi.Input.decodeList<DomainRegistrantContactExtraParam>(map['extraParams']!, (value) => DomainRegistrantContactExtraParam.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      fax: map['fax'] == null ? null : ((map['fax'] as String).input()).input(),
-      firstName: map['firstName'] == null ? null : ((map['firstName'] as String).input()).input(),
-      lastName: map['lastName'] == null ? null : ((map['lastName'] as String).input()).input(),
-      organizationName: map['organizationName'] == null ? null : ((map['organizationName'] as String).input()).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : ((map['phoneNumber'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      zipCode: map['zipCode'] == null ? null : ((map['zipCode'] as String).input()).input(),
+      addressLine1: (() {
+        final guardedValue = map['addressLine1'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addressLine2: (() {
+        final guardedValue = map['addressLine2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      city: (() {
+        final guardedValue = map['city'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contactType: (() {
+        final guardedValue = map['contactType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countryCode: (() {
+        final guardedValue = map['countryCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extraParams: (() {
+        final guardedValue = map['extraParams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainRegistrantContactExtraParam>(
+            guardedValue,
+            (value) => DomainRegistrantContactExtraParam.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      fax: (() {
+        final guardedValue = map['fax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firstName: (() {
+        final guardedValue = map['firstName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastName: (() {
+        final guardedValue = map['lastName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationName: (() {
+        final guardedValue = map['organizationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumber: (() {
+        final guardedValue = map['phoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zipCode: (() {
+        final guardedValue = map['zipCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRuleActionFindingFieldsUpdateRelatedFinding {
   /// The product-generated identifier for a related finding.
   final pulumi.Input<String> id;
+
   /// The ARN of the product that generated a related finding.
   final pulumi.Input<String> productArn;
 
@@ -17,17 +18,15 @@ class AutomationRuleActionFindingFieldsUpdateRelatedFinding {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'productArn': productArn,
-    };
+    return <String, dynamic>{'id': id, 'productArn': productArn};
   }
 
-  factory AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap(Map<String, dynamic> map) {
+  factory AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRuleActionFindingFieldsUpdateRelatedFinding(
-      id: (map['id'] as String).input(),
-      productArn: (map['productArn'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      productArn: pulumi.Input.fromValue(map['productArn'] as String),
     );
   }
 }
-

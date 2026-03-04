@@ -3,16 +3,15 @@ enum ReplicaModificationsStatus {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const ReplicaModificationsStatus(this.value);
-  final String value;
+  const ReplicaModificationsStatus(this.wireValue);
+  final String wireValue;
 
   static ReplicaModificationsStatus fromValue(String value) {
     for (final item in ReplicaModificationsStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReplicaModificationsStatus value: $value');
   }
 }
-

@@ -11,23 +11,30 @@ import 'private_connection_vpc_peering_config.dart';
 class PrivateConnectionArgs {
   /// If set to true, will skip validations.
   final pulumi.Input<bool>? createWithoutValidation;
+
   /// Display name.
   final pulumi.Input<String> displayName;
+
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The name of the location this private connection is located in.
   final pulumi.Input<String> location;
+
   /// The private connectivity identifier.
   final pulumi.Input<String> privateConnectionId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The PSC Interface configuration is used to create PSC Interface
   /// between Datastream and the consumer's PSC.
   /// Structure is documented below.
   final pulumi.Input<PrivateConnectionPscInterfaceConfig>? pscInterfaceConfig;
+
   /// The VPC Peering configuration is used to create VPC peering
   /// between Datastream and the consumer's VPC.
   /// Structure is documented below.
@@ -61,22 +68,61 @@ class PrivateConnectionArgs {
       'location': location,
       'privateConnectionId': privateConnectionId,
       'project': ?project,
-      'pscInterfaceConfig': ?pulumi.Input.mapOptionalInputValue<PrivateConnectionPscInterfaceConfig, Map<String, dynamic>>(pscInterfaceConfig, (value) => value.toMap()),
-      'vpcPeeringConfig': ?pulumi.Input.mapOptionalInputValue<PrivateConnectionVpcPeeringConfig, Map<String, dynamic>>(vpcPeeringConfig, (value) => value.toMap()),
+      'pscInterfaceConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateConnectionPscInterfaceConfig,
+            Map<String, dynamic>
+          >(pscInterfaceConfig, (value) => value.toMap()),
+      'vpcPeeringConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateConnectionVpcPeeringConfig,
+            Map<String, dynamic>
+          >(vpcPeeringConfig, (value) => value.toMap()),
     };
   }
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation']! as bool).input(),
-      displayName: (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pscInterfaceConfig: map['pscInterfaceConfig'] == null ? null : (PrivateConnectionPscInterfaceConfig.fromMap((map['pscInterfaceConfig']! as Map).cast<String, dynamic>())).input(),
-      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (PrivateConnectionVpcPeeringConfig.fromMap((map['vpcPeeringConfig']! as Map).cast<String, dynamic>())).input(),
+      createWithoutValidation: (() {
+        final guardedValue = map['createWithoutValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      privateConnectionId: pulumi.Input.fromValue(
+        map['privateConnectionId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pscInterfaceConfig: (() {
+        final guardedValue = map['pscInterfaceConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateConnectionPscInterfaceConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcPeeringConfig: (() {
+        final guardedValue = map['vpcPeeringConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateConnectionVpcPeeringConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

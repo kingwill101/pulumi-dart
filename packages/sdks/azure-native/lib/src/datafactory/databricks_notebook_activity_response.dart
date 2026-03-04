@@ -10,27 +10,38 @@ import 'user_property_response.dart';
 class DatabricksNotebookActivityResponse {
   /// Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
   final pulumi.Input<Map<String, dynamic>>? baseParameters;
+
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+
   /// Activity description.
   final pulumi.Input<String>? description;
+
   /// A list of libraries to be installed on the cluster that will execute the job.
   final pulumi.Input<List<Map<String, dynamic>>>? libraries;
+
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+
   /// Activity name.
   final pulumi.Input<String> name;
+
   /// The absolute path of the notebook to be run in the Databricks Workspace. This path must begin with a slash. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> notebookPath;
+
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
+
   /// Activity policy.
   final pulumi.Input<ActivityPolicyResponse>? policy;
+
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
+
   /// Type of activity.
   /// Expected value is 'DatabricksNotebook'.
   final pulumi.Input<String> type;
+
   /// Activity user properties.
   final pulumi.Input<List<UserPropertyResponse>>? userProperties;
 
@@ -65,35 +76,126 @@ class DatabricksNotebookActivityResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'baseParameters': ?baseParameters,
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ActivityDependencyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ActivityDependencyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'libraries': ?libraries,
-      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'linkedServiceName':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedServiceReferenceResponse,
+            Map<String, dynamic>
+          >(linkedServiceName, (value) => value.toMap()),
       'name': name,
       'notebookPath': notebookPath,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'policy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ActivityPolicyResponse,
+            Map<String, dynamic>
+          >(policy, (value) => value.toMap()),
       'state': ?state,
       'type': type,
-      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserPropertyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            userProperties,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserPropertyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DatabricksNotebookActivityResponse.fromMap(Map<String, dynamic> map) {
     return DatabricksNotebookActivityResponse(
-      baseParameters: map['baseParameters'] == null ? null : ((map['baseParameters']! as Map).cast<String, dynamic>()).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn']!, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      libraries: map['libraries'] == null ? null : ((map['libraries']! as List).cast<Map<String, dynamic>>()).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      notebookPath: (map['notebookPath']).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties']!, (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseParameters: (() {
+        final guardedValue = map['baseParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ActivityDependencyResponse>(
+            guardedValue,
+            (value) => ActivityDependencyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      libraries: (() {
+        final guardedValue = map['libraries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<Map<String, dynamic>>(),
+        );
+      })(),
+      linkedServiceName: (() {
+        final guardedValue = map['linkedServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedServiceReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      notebookPath: pulumi.Input.fromValue(map['notebookPath']),
+      onInactiveMarkAs: (() {
+        final guardedValue = map['onInactiveMarkAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ActivityPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userProperties: (() {
+        final guardedValue = map['userProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserPropertyResponse>(
+            guardedValue,
+            (value) => UserPropertyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_instance_args.dart';
-import 'serverless_instance_security_ip_group.dart';
 import 'serverless_instance_state.dart';
 
 /// Provides a MongoDB Serverless Instance resource.
 ///
 /// For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
 ///
-/// > **NOTE:** Deprecated since v1.214.0.
+/// &gt; **NOTE:** Deprecated since v1.214.0.
 ///
-/// > **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
+/// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
 ///
 /// ## Example Usage
 ///
@@ -343,40 +342,58 @@ class ServerlessInstance extends pulumi.CustomResource {
   /// * The password length is `8` to `32` bits.
   /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
   late final pulumi.Output<String> accountPassword;
+
   /// Set whether the instance is automatically renewed.
   late final pulumi.Output<bool?> autoRenew;
+
   /// The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
   late final pulumi.Output<int> capacityUnit;
+
   /// The db instance description.
   late final pulumi.Output<String?> dbInstanceDescription;
+
   /// The db instance storage. Valid values: `1` to `100`.
   late final pulumi.Output<int> dbInstanceStorage;
+
   /// The database engine of the instance. Valid values: `MongoDB`.
   late final pulumi.Output<String> engine;
+
   /// The database version number. Valid values: `4.2`.
   late final pulumi.Output<String> engineVersion;
+
   /// The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
   late final pulumi.Output<String> maintainEndTime;
+
   /// The start time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC.
   late final pulumi.Output<String> maintainStartTime;
+
   /// The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
   late final pulumi.Output<int?> period;
+
   /// The period price type. Valid values: `Day`, `Month`.
   late final pulumi.Output<String?> periodPriceType;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// An array that consists of the information of IP whitelists.
-  late final pulumi.Output<List<ServerlessInstanceSecurityIpGroup>?> securityIpGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> securityIpGroups;
+
   /// The instance status. For more information, see the instance Status Table.
   late final pulumi.Output<String> status;
+
   /// The storage engine used by the instance. Valid values: `WiredTiger`.
   late final pulumi.Output<String> storageEngine;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the VPC network.
   late final pulumi.Output<String> vpcId;
+
   /// The of the vswitch.
   late final pulumi.Output<String> vswitchId;
+
   /// The ID of the zone. Use this parameter to specify the zone created by the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -389,30 +406,32 @@ class ServerlessInstance extends pulumi.CustomResource {
     ServerlessInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/serverlessInstance:ServerlessInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.capacityUnit = registerOutput<int>('capacityUnit');
-    this.dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
-    this.dbInstanceStorage = registerOutput<int>('dbInstanceStorage');
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.maintainEndTime = registerOutput<String>('maintainEndTime');
-    this.maintainStartTime = registerOutput<String>('maintainStartTime');
-    this.period = registerOutput<int?>('period');
-    this.periodPriceType = registerOutput<String?>('periodPriceType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityIpGroups = registerOutput<List<ServerlessInstanceSecurityIpGroup>?>('securityIpGroups');
-    this.status = registerOutput<String>('status');
-    this.storageEngine = registerOutput<String>('storageEngine');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:mongodb/serverlessInstance:ServerlessInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountPassword = registerOutput<String>('accountPassword');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    capacityUnit = registerOutput<int>('capacityUnit');
+    dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
+    dbInstanceStorage = registerOutput<int>('dbInstanceStorage');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    maintainEndTime = registerOutput<String>('maintainEndTime');
+    maintainStartTime = registerOutput<String>('maintainStartTime');
+    period = registerOutput<int?>('period');
+    periodPriceType = registerOutput<String?>('periodPriceType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityIpGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'securityIpGroups',
+    );
+    status = registerOutput<String>('status');
+    storageEngine = registerOutput<String>('storageEngine');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [ServerlessInstance] resource's state with the given [name] and [id].
@@ -433,29 +452,31 @@ class ServerlessInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/serverlessInstance:ServerlessInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.capacityUnit = registerOutput<int>('capacityUnit');
-    this.dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
-    this.dbInstanceStorage = registerOutput<int>('dbInstanceStorage');
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.maintainEndTime = registerOutput<String>('maintainEndTime');
-    this.maintainStartTime = registerOutput<String>('maintainStartTime');
-    this.period = registerOutput<int?>('period');
-    this.periodPriceType = registerOutput<String?>('periodPriceType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityIpGroups = registerOutput<List<ServerlessInstanceSecurityIpGroup>?>('securityIpGroups');
-    this.status = registerOutput<String>('status');
-    this.storageEngine = registerOutput<String>('storageEngine');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:mongodb/serverlessInstance:ServerlessInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountPassword = registerOutput<String>('accountPassword');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    capacityUnit = registerOutput<int>('capacityUnit');
+    dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
+    dbInstanceStorage = registerOutput<int>('dbInstanceStorage');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    maintainEndTime = registerOutput<String>('maintainEndTime');
+    maintainStartTime = registerOutput<String>('maintainStartTime');
+    period = registerOutput<int?>('period');
+    periodPriceType = registerOutput<String?>('periodPriceType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityIpGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'securityIpGroups',
+    );
+    status = registerOutput<String>('status');
+    storageEngine = registerOutput<String>('storageEngine');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

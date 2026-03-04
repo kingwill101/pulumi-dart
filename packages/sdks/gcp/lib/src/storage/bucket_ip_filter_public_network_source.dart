@@ -8,20 +8,17 @@ class BucketIpFilterPublicNetworkSource {
 
   /// Creates a new [BucketIpFilterPublicNetworkSource].
   /// [allowedIpCidrRanges] The list of public IPv4 and IPv6 CIDR ranges that can access the bucket and its data.
-  BucketIpFilterPublicNetworkSource({
-    required this.allowedIpCidrRanges,
-  });
+  BucketIpFilterPublicNetworkSource({required this.allowedIpCidrRanges});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedIpCidrRanges': allowedIpCidrRanges,
-    };
+    return <String, dynamic>{'allowedIpCidrRanges': allowedIpCidrRanges};
   }
 
   factory BucketIpFilterPublicNetworkSource.fromMap(Map<String, dynamic> map) {
     return BucketIpFilterPublicNetworkSource(
-      allowedIpCidrRanges: ((map['allowedIpCidrRanges'] as List).cast<String>()).input(),
+      allowedIpCidrRanges: pulumi.Input.fromValue(
+        (map['allowedIpCidrRanges'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_cloudbilling;
-
 export 'cloudbilling/audit_config.dart';
 export 'cloudbilling/audit_config_response.dart';
 export 'cloudbilling/audit_log_config.dart';

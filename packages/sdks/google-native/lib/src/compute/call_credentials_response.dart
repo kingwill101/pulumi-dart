@@ -7,6 +7,7 @@ import 'metadata_credentials_from_plugin_response.dart';
 class CallCredentialsResponse {
   /// The type of call credentials to use for GRPC requests to the SDS server. This field can be set to one of the following: - GCE_VM: The local GCE VM service account credentials are used to access the SDS server. - FROM_PLUGIN: Custom authenticator credentials are used to access the SDS server.
   final pulumi.Input<String> callCredentialType;
+
   /// Custom authenticator credentials. Valid if callCredentialType is FROM_PLUGIN.
   final pulumi.Input<MetadataCredentialsFromPluginResponse> fromPlugin;
 
@@ -21,15 +22,24 @@ class CallCredentialsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'callCredentialType': callCredentialType,
-      'fromPlugin': pulumi.Input.mapInputValue<MetadataCredentialsFromPluginResponse, Map<String, dynamic>>(fromPlugin, (value) => value.toMap()),
+      'fromPlugin':
+          pulumi.Input.mapInputValue<
+            MetadataCredentialsFromPluginResponse,
+            Map<String, dynamic>
+          >(fromPlugin, (value) => value.toMap()),
     };
   }
 
   factory CallCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return CallCredentialsResponse(
-      callCredentialType: (map['callCredentialType'] as String).input(),
-      fromPlugin: (MetadataCredentialsFromPluginResponse.fromMap((map['fromPlugin'] as Map).cast<String, dynamic>())).input(),
+      callCredentialType: pulumi.Input.fromValue(
+        map['callCredentialType'] as String,
+      ),
+      fromPlugin: pulumi.Input.fromValue(
+        MetadataCredentialsFromPluginResponse.fromMap(
+          (map['fromPlugin']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

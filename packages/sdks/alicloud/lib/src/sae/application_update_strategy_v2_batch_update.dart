@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationUpdateStrategyV2BatchUpdate {
   /// The number of batches in which you want to release the instances.
   final pulumi.Input<int>? batch;
+
   /// The batch wait time.
   final pulumi.Input<int>? batchWaitTime;
+
   /// The processing method for the batches. Valid values: `auto` and `manual`.
   final pulumi.Input<String>? releaseType;
 
@@ -28,12 +30,25 @@ class ApplicationUpdateStrategyV2BatchUpdate {
     };
   }
 
-  factory ApplicationUpdateStrategyV2BatchUpdate.fromMap(Map<String, dynamic> map) {
+  factory ApplicationUpdateStrategyV2BatchUpdate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationUpdateStrategyV2BatchUpdate(
-      batch: map['batch'] == null ? null : (map['batch']! as int).input(),
-      batchWaitTime: map['batchWaitTime'] == null ? null : (map['batchWaitTime']! as int).input(),
-      releaseType: map['releaseType'] == null ? null : (map['releaseType']! as String).input(),
+      batch: (() {
+        final guardedValue = map['batch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      batchWaitTime: (() {
+        final guardedValue = map['batchWaitTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      releaseType: (() {
+        final guardedValue = map['releaseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

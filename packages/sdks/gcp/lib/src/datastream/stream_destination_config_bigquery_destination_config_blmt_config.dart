@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
   /// The Cloud Storage bucket name.
   final pulumi.Input<String> bucket;
+
   /// The bigquery connection. Format: `{project}.{location}.{name}`
   final pulumi.Input<String> connectionName;
+
   /// The file format.
   final pulumi.Input<String> fileFormat;
+
   /// The root path inside the Cloud Storage bucket.
   final pulumi.Input<String>? rootPath;
+
   /// The table format.
   final pulumi.Input<String> tableFormat;
 
@@ -38,14 +42,19 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
     };
   }
 
-  factory StreamDestinationConfigBigqueryDestinationConfigBlmtConfig.fromMap(Map<String, dynamic> map) {
+  factory StreamDestinationConfigBigqueryDestinationConfigBlmtConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamDestinationConfigBigqueryDestinationConfigBlmtConfig(
-      bucket: (map['bucket'] as String).input(),
-      connectionName: (map['connectionName'] as String).input(),
-      fileFormat: (map['fileFormat'] as String).input(),
-      rootPath: map['rootPath'] == null ? null : (map['rootPath']! as String).input(),
-      tableFormat: (map['tableFormat'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      fileFormat: pulumi.Input.fromValue(map['fileFormat'] as String),
+      rootPath: (() {
+        final guardedValue = map['rootPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableFormat: pulumi.Input.fromValue(map['tableFormat'] as String),
     );
   }
 }
-

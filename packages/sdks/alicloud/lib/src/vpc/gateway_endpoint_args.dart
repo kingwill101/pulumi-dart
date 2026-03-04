@@ -10,18 +10,25 @@ class GatewayEndpointArgs {
   /// The description of the VPC gateway endpoint.
   /// The length of the description information is between 1 and 255 characters.
   final pulumi.Input<String>? gatewayEndpointDescrption;
+
   /// The name of the VPC gateway endpoint.
   final pulumi.Input<String>? gatewayEndpointName;
+
   /// Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
   final pulumi.Input<String>? policyDocument;
+
   /// The ID of the resource group to which the instance belongs.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
   final pulumi.Input<List<String>>? routeTables;
+
   /// The endpoint service name.
   final pulumi.Input<String> serviceName;
+
   /// The tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
 
@@ -60,15 +67,40 @@ class GatewayEndpointArgs {
 
   factory GatewayEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointArgs(
-      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : (map['gatewayEndpointDescrption']! as String).input(),
-      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : (map['gatewayEndpointName']! as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      routeTables: map['routeTables'] == null ? null : ((map['routeTables']! as List).cast<String>()).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      gatewayEndpointDescrption: (() {
+        final guardedValue = map['gatewayEndpointDescrption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayEndpointName: (() {
+        final guardedValue = map['gatewayEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyDocument: (() {
+        final guardedValue = map['policyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTables: (() {
+        final guardedValue = map['routeTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

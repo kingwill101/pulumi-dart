@@ -7,13 +7,16 @@ import 'get_server_groups_slb_server_group.dart';
 class GetServerGroupsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of SLB VServer groups IDs.
   final List<String> ids;
   final String loadBalancerId;
   final String? nameRegex;
+
   /// A list of SLB VServer groups names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of SLB VServer groups. Each element contains the following attributes:
   final List<GetServerGroupsSlbServerGroup> slbServerGroups;
 
@@ -43,7 +46,11 @@ class GetServerGroupsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'slbServerGroups': pulumi.Input.encodeList<GetServerGroupsSlbServerGroup, Map<String, dynamic>>(slbServerGroups, (value) => value.toMap()),
+      'slbServerGroups':
+          pulumi.Input.encodeList<
+            GetServerGroupsSlbServerGroup,
+            Map<String, dynamic>
+          >(slbServerGroups, (value) => value.toMap()),
     };
   }
 
@@ -52,11 +59,23 @@ class GetServerGroupsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       loadBalancerId: map['loadBalancerId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      slbServerGroups: pulumi.Input.decodeList<GetServerGroupsSlbServerGroup>(map['slbServerGroups'], (value) => GetServerGroupsSlbServerGroup.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      slbServerGroups: pulumi.Input.decodeList<GetServerGroupsSlbServerGroup>(
+        map['slbServerGroups']!,
+        (value) => GetServerGroupsSlbServerGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -26,17 +26,38 @@ class BuildDefinitionResponse {
       'buildType': buildType,
       'externalParameters': externalParameters,
       'internalParameters': internalParameters,
-      'resolvedDependencies': pulumi.Input.mapInputValue<List<ResourceDescriptorResponse>, List<Map<String, dynamic>>>(resolvedDependencies, (value) => pulumi.Input.encodeList<ResourceDescriptorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resolvedDependencies':
+          pulumi.Input.mapInputValue<
+            List<ResourceDescriptorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            resolvedDependencies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceDescriptorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory BuildDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return BuildDefinitionResponse(
-      buildType: (map['buildType'] as String).input(),
-      externalParameters: ((map['externalParameters'] as Map).cast<String, String>()).input(),
-      internalParameters: ((map['internalParameters'] as Map).cast<String, String>()).input(),
-      resolvedDependencies: (pulumi.Input.decodeList<ResourceDescriptorResponse>(map['resolvedDependencies'], (value) => ResourceDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      buildType: pulumi.Input.fromValue(map['buildType'] as String),
+      externalParameters: pulumi.Input.fromValue(
+        (map['externalParameters'] as Map).cast<String, String>(),
+      ),
+      internalParameters: pulumi.Input.fromValue(
+        (map['internalParameters'] as Map).cast<String, String>(),
+      ),
+      resolvedDependencies: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ResourceDescriptorResponse>(
+          map['resolvedDependencies']!,
+          (value) => ResourceDescriptorResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

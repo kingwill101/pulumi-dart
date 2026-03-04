@@ -3,16 +3,15 @@ enum AppType {
   valuePortal("portal"),
   valueDeveloperPortal("developerPortal");
 
-  const AppType(this.value);
-  final String value;
+  const AppType(this.wireValue);
+  final String wireValue;
 
   static AppType fromValue(String value) {
     for (final item in AppType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AppType value: $value');
   }
 }
-

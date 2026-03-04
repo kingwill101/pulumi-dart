@@ -3,16 +3,15 @@ enum HashType {
   none("NONE"),
   sha256("SHA256");
 
-  const HashType(this.value);
-  final String value;
+  const HashType(this.wireValue);
+  final String wireValue;
 
   static HashType fromValue(String value) {
     for (final item in HashType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HashType value: $value');
   }
 }
-

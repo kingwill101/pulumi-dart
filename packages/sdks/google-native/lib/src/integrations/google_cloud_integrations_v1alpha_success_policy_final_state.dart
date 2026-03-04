@@ -4,16 +4,20 @@ enum GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState {
   succeeded("SUCCEEDED"),
   suspended("SUSPENDED");
 
-  const GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState value: $value',
+    );
   }
 }
-

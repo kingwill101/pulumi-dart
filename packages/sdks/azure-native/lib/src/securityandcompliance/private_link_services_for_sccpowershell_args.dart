@@ -12,16 +12,22 @@ import 'services_resource_identity.dart';
 class PrivateLinkServicesForSCCPowershellArgs {
   /// Setting indicating whether the service has a managed identity associated with it.
   final pulumi.Input<ServicesResourceIdentity>? identity;
+
   /// The kind of the service.
   final pulumi.Input<Kind> kind;
+
   /// The resource location.
   final pulumi.Input<String>? location;
+
   /// The common properties of a service.
   final pulumi.Input<ServicesProperties>? properties;
+
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the service instance.
   final pulumi.Input<String>? resourceName;
+
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,26 +51,70 @@ class PrivateLinkServicesForSCCPowershellArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<ServicesResourceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'kind': pulumi.Input.mapInputValue<Kind, String>(kind, (value) => value.value),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicesResourceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
+      'kind': pulumi.Input.mapInputValue<Kind, String>(
+        kind,
+        (value) => value.wireValue,
+      ),
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ServicesProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicesProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': ?resourceName,
       'tags': ?tags,
     };
   }
 
-  factory PrivateLinkServicesForSCCPowershellArgs.fromMap(Map<String, dynamic> map) {
+  factory PrivateLinkServicesForSCCPowershellArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateLinkServicesForSCCPowershellArgs(
-      identity: map['identity'] == null ? null : (ServicesResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      kind: (Kind.fromValue(map['kind'] as String)).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (ServicesProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicesResourceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: pulumi.Input.fromValue(Kind.fromValue(map['kind']! as String)),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicesProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

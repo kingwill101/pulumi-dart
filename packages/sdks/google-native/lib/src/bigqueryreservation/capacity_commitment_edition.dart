@@ -5,16 +5,15 @@ enum CapacityCommitmentEdition {
   enterprise("ENTERPRISE"),
   enterprisePlus("ENTERPRISE_PLUS");
 
-  const CapacityCommitmentEdition(this.value);
-  final String value;
+  const CapacityCommitmentEdition(this.wireValue);
+  final String wireValue;
 
   static CapacityCommitmentEdition fromValue(String value) {
     for (final item in CapacityCommitmentEdition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CapacityCommitmentEdition value: $value');
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransferJobLoggingConfig {
   /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
   final pulumi.Input<bool>? enableOnPremGcsTransferLogs;
+
   /// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
   final pulumi.Input<List<String>>? logActionStates;
+
   /// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.
   final pulumi.Input<List<String>>? logActions;
 
@@ -30,10 +32,21 @@ class TransferJobLoggingConfig {
 
   factory TransferJobLoggingConfig.fromMap(Map<String, dynamic> map) {
     return TransferJobLoggingConfig(
-      enableOnPremGcsTransferLogs: map['enableOnPremGcsTransferLogs'] == null ? null : (map['enableOnPremGcsTransferLogs']! as bool).input(),
-      logActionStates: map['logActionStates'] == null ? null : ((map['logActionStates']! as List).cast<String>()).input(),
-      logActions: map['logActions'] == null ? null : ((map['logActions']! as List).cast<String>()).input(),
+      enableOnPremGcsTransferLogs: (() {
+        final guardedValue = map['enableOnPremGcsTransferLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logActionStates: (() {
+        final guardedValue = map['logActionStates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logActions: (() {
+        final guardedValue = map['logActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

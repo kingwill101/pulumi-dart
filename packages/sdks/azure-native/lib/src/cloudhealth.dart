@@ -1,5 +1,3 @@
-library module_cloudhealth;
-
 export 'cloudhealth/alert_configuration.dart';
 export 'cloudhealth/alert_configuration_response.dart';
 export 'cloudhealth/alert_severity.dart';

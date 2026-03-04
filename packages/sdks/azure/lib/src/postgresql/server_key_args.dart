@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerKeyArgs {
   /// The URL to a Key Vault Key.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
 
   /// Creates a new [ServerKeyArgs].
   /// [keyVaultKeyId] The URL to a Key Vault Key.
   /// [serverId] The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
-  ServerKeyArgs({
-    required this.keyVaultKeyId,
-    required this.serverId,
-  });
+  ServerKeyArgs({required this.keyVaultKeyId, required this.serverId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class ServerKeyArgs {
 
   factory ServerKeyArgs.fromMap(Map<String, dynamic> map) {
     return ServerKeyArgs(
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      serverId: (map['serverId'] as String).input(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
     );
   }
 }
-

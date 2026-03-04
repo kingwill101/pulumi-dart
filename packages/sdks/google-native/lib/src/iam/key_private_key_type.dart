@@ -4,16 +4,15 @@ enum KeyPrivateKeyType {
   typePkcs12File("TYPE_PKCS12_FILE"),
   typeGoogleCredentialsFile("TYPE_GOOGLE_CREDENTIALS_FILE");
 
-  const KeyPrivateKeyType(this.value);
-  final String value;
+  const KeyPrivateKeyType(this.wireValue);
+  final String wireValue;
 
   static KeyPrivateKeyType fromValue(String value) {
     for (final item in KeyPrivateKeyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyPrivateKeyType value: $value');
   }
 }
-

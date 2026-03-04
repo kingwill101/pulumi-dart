@@ -152,20 +152,28 @@ import 'app_service_certificate_order_certificate_args.dart';
 class AppServiceCertificateOrderCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Key Vault resource Id.
   late final pulumi.Output<String?> keyVaultId;
+
   /// Key Vault secret name.
   late final pulumi.Output<String?> keyVaultSecretName;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
+
   /// Resource Location.
   late final pulumi.Output<String> location;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Status of the Key Vault secret.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -178,19 +186,19 @@ class AppServiceCertificateOrderCertificate extends pulumi.CustomResource {
     AppServiceCertificateOrderCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:certificateregistration:AppServiceCertificateOrderCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.keyVaultId = registerOutput<String?>('keyVaultId');
-    this.keyVaultSecretName = registerOutput<String?>('keyVaultSecretName');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:certificateregistration:AppServiceCertificateOrderCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    keyVaultId = registerOutput<String?>('keyVaultId');
+    keyVaultSecretName = registerOutput<String?>('keyVaultSecretName');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

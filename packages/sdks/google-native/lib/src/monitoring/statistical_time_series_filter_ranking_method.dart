@@ -3,16 +3,17 @@ enum StatisticalTimeSeriesFilterRankingMethod {
   methodUnspecified("METHOD_UNSPECIFIED"),
   methodClusterOutlier("METHOD_CLUSTER_OUTLIER");
 
-  const StatisticalTimeSeriesFilterRankingMethod(this.value);
-  final String value;
+  const StatisticalTimeSeriesFilterRankingMethod(this.wireValue);
+  final String wireValue;
 
   static StatisticalTimeSeriesFilterRankingMethod fromValue(String value) {
     for (final item in StatisticalTimeSeriesFilterRankingMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown StatisticalTimeSeriesFilterRankingMethod value: $value');
+    throw ArgumentError(
+      'Unknown StatisticalTimeSeriesFilterRankingMethod value: $value',
+    );
   }
 }
-

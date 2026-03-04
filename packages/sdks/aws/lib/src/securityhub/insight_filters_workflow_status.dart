@@ -9,23 +9,16 @@ class InsightFiltersWorkflowStatus {
   /// Creates a new [InsightFiltersWorkflowStatus].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersWorkflowStatus({
-    required this.comparison,
-    required this.value,
-  });
+  InsightFiltersWorkflowStatus({required this.comparison, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory InsightFiltersWorkflowStatus.fromMap(Map<String, dynamic> map) {
     return InsightFiltersWorkflowStatus(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

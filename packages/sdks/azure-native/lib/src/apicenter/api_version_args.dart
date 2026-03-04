@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiVersionArgs {
   /// The name of the API.
   final pulumi.Input<String> apiName;
+
   /// Current lifecycle stage of the API.
   final pulumi.Input<String> lifecycleStage;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
+
   /// API version title.
   final pulumi.Input<String> title;
+
   /// The name of the API version.
   final pulumi.Input<String>? versionName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -54,14 +60,19 @@ class ApiVersionArgs {
 
   factory ApiVersionArgs.fromMap(Map<String, dynamic> map) {
     return ApiVersionArgs(
-      apiName: (map['apiName'] as String).input(),
-      lifecycleStage: (map['lifecycleStage'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      title: (map['title'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      apiName: pulumi.Input.fromValue(map['apiName'] as String),
+      lifecycleStage: pulumi.Input.fromValue(map['lifecycleStage'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
+      versionName: (() {
+        final guardedValue = map['versionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -8,20 +8,28 @@ import 'match_condition.dart';
 class CustomRule {
   /// Describes what action to be applied when rule matches.
   final pulumi.Input<String> action;
+
   /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
   final pulumi.Input<String>? enabledState;
+
   /// Describes the list of variables to group the rate limit requests
   final pulumi.Input<List<GroupByVariable>>? groupBy;
+
   /// List of match conditions.
   final pulumi.Input<List<MatchCondition>> matchConditions;
+
   /// Describes the name of the rule.
   final pulumi.Input<String>? name;
+
   /// Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   final pulumi.Input<int> priority;
+
   /// Time window for resetting the rate limit count. Default is 1 minute.
   final pulumi.Input<int>? rateLimitDurationInMinutes;
+
   /// Number of allowed requests per client within the time window.
   final pulumi.Input<int>? rateLimitThreshold;
+
   /// Describes type of rule.
   final pulumi.Input<String> ruleType;
 
@@ -51,8 +59,30 @@ class CustomRule {
     return <String, dynamic>{
       'action': action,
       'enabledState': ?enabledState,
-      'groupBy': ?pulumi.Input.mapOptionalInputValue<List<GroupByVariable>, List<Map<String, dynamic>>>(groupBy, (value) => pulumi.Input.encodeList<GroupByVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'matchConditions': pulumi.Input.mapInputValue<List<MatchCondition>, List<Map<String, dynamic>>>(matchConditions, (value) => pulumi.Input.encodeList<MatchCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groupBy':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GroupByVariable>,
+            List<Map<String, dynamic>>
+          >(
+            groupBy,
+            (value) =>
+                pulumi.Input.encodeList<GroupByVariable, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'matchConditions':
+          pulumi.Input.mapInputValue<
+            List<MatchCondition>,
+            List<Map<String, dynamic>>
+          >(
+            matchConditions,
+            (value) =>
+                pulumi.Input.encodeList<MatchCondition, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'name': ?name,
       'priority': priority,
       'rateLimitDurationInMinutes': ?rateLimitDurationInMinutes,
@@ -63,16 +93,47 @@ class CustomRule {
 
   factory CustomRule.fromMap(Map<String, dynamic> map) {
     return CustomRule(
-      action: (map['action'] as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
-      groupBy: map['groupBy'] == null ? null : (pulumi.Input.decodeList<GroupByVariable>(map['groupBy']!, (value) => GroupByVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchConditions: (pulumi.Input.decodeList<MatchCondition>(map['matchConditions'], (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      priority: (map['priority'] as int).input(),
-      rateLimitDurationInMinutes: map['rateLimitDurationInMinutes'] == null ? null : (map['rateLimitDurationInMinutes']! as int).input(),
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold']! as int).input(),
-      ruleType: (map['ruleType'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      enabledState: (() {
+        final guardedValue = map['enabledState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupBy: (() {
+        final guardedValue = map['groupBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GroupByVariable>(
+            guardedValue,
+            (value) =>
+                GroupByVariable.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      matchConditions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MatchCondition>(
+          map['matchConditions']!,
+          (value) =>
+              MatchCondition.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      rateLimitDurationInMinutes: (() {
+        final guardedValue = map['rateLimitDurationInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      rateLimitThreshold: (() {
+        final guardedValue = map['rateLimitThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }
 }
-

@@ -6,31 +6,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GcpCredentialsDetailsPropertiesResponse {
   /// Auth provider x509 certificate URL field of the API key (write only)
   final pulumi.Input<String> authProviderX509CertUrl;
+
   /// Auth URI field of the API key (write only)
   final pulumi.Input<String> authUri;
+
   /// State of the multi-cloud connector
   final pulumi.Input<String> authenticationProvisioningState;
+
   /// Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// Expected value is 'gcpCredentials'.
   final pulumi.Input<String> authenticationType;
+
   /// Client email field of the API key (write only)
   final pulumi.Input<String> clientEmail;
+
   /// Client ID field of the API key (write only)
   final pulumi.Input<String> clientId;
+
   /// Client x509 certificate URL field of the API key (write only)
   final pulumi.Input<String> clientX509CertUrl;
+
   /// The permissions detected in the cloud account.
   final pulumi.Input<List<String>> grantedPermissions;
+
   /// The organization ID of the GCP cloud account
   final pulumi.Input<String> organizationId;
+
   /// Private key field of the API key (write only)
   final pulumi.Input<String> privateKey;
+
   /// Private key ID field of the API key (write only)
   final pulumi.Input<String> privateKeyId;
+
   /// Project ID field of the API key (write only)
   final pulumi.Input<String> projectId;
+
   /// Token URI field of the API key (write only)
   final pulumi.Input<String> tokenUri;
+
   /// Type field of the API key (write only)
   final pulumi.Input<String> type;
 
@@ -85,23 +98,34 @@ class GcpCredentialsDetailsPropertiesResponse {
     };
   }
 
-  factory GcpCredentialsDetailsPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory GcpCredentialsDetailsPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GcpCredentialsDetailsPropertiesResponse(
-      authProviderX509CertUrl: (map['authProviderX509CertUrl'] as String).input(),
-      authUri: (map['authUri'] as String).input(),
-      authenticationProvisioningState: (map['authenticationProvisioningState'] as String).input(),
-      authenticationType: (map['authenticationType'] as String).input(),
-      clientEmail: (map['clientEmail'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientX509CertUrl: (map['clientX509CertUrl'] as String).input(),
-      grantedPermissions: ((map['grantedPermissions'] as List).cast<String>()).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
-      privateKeyId: (map['privateKeyId'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
-      tokenUri: (map['tokenUri'] as String).input(),
-      type: (map['type'] as String).input(),
+      authProviderX509CertUrl: pulumi.Input.fromValue(
+        map['authProviderX509CertUrl'] as String,
+      ),
+      authUri: pulumi.Input.fromValue(map['authUri'] as String),
+      authenticationProvisioningState: pulumi.Input.fromValue(
+        map['authenticationProvisioningState'] as String,
+      ),
+      authenticationType: pulumi.Input.fromValue(
+        map['authenticationType'] as String,
+      ),
+      clientEmail: pulumi.Input.fromValue(map['clientEmail'] as String),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientX509CertUrl: pulumi.Input.fromValue(
+        map['clientX509CertUrl'] as String,
+      ),
+      grantedPermissions: pulumi.Input.fromValue(
+        (map['grantedPermissions'] as List).cast<String>(),
+      ),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      privateKeyId: pulumi.Input.fromValue(map['privateKeyId'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      tokenUri: pulumi.Input.fromValue(map['tokenUri'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

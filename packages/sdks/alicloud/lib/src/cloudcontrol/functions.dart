@@ -8,7 +8,7 @@ import 'get_resource_types_result.dart';
 
 /// This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -175,7 +175,7 @@ Future<GetPricesResult> getPrices(
 
 /// This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -308,7 +308,7 @@ Future<GetProductsResult> getProducts(
 
 /// This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///

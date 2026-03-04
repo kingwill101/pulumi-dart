@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceLocationDataContract {
   /// The city or locality where the resource is located.
   final pulumi.Input<String>? city;
+
   /// The country or region where the resource is located.
   final pulumi.Input<String>? countryOrRegion;
+
   /// The district, state, or province where the resource is located.
   final pulumi.Input<String>? district;
+
   /// A canonical name for the geographic or physical location.
   final pulumi.Input<String> name;
 
@@ -36,11 +39,22 @@ class ResourceLocationDataContract {
 
   factory ResourceLocationDataContract.fromMap(Map<String, dynamic> map) {
     return ResourceLocationDataContract(
-      city: map['city'] == null ? null : (map['city']! as String).input(),
-      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion']! as String).input(),
-      district: map['district'] == null ? null : (map['district']! as String).input(),
-      name: (map['name'] as String).input(),
+      city: (() {
+        final guardedValue = map['city'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      countryOrRegion: (() {
+        final guardedValue = map['countryOrRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      district: (() {
+        final guardedValue = map['district'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

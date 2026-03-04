@@ -5,16 +5,17 @@ enum ExceptionEntrySelectorMatchOperator {
   valueStartsWith("StartsWith"),
   valueEndsWith("EndsWith");
 
-  const ExceptionEntrySelectorMatchOperator(this.value);
-  final String value;
+  const ExceptionEntrySelectorMatchOperator(this.wireValue);
+  final String wireValue;
 
   static ExceptionEntrySelectorMatchOperator fromValue(String value) {
     for (final item in ExceptionEntrySelectorMatchOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExceptionEntrySelectorMatchOperator value: $value');
+    throw ArgumentError(
+      'Unknown ExceptionEntrySelectorMatchOperator value: $value',
+    );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForestTrustResponse {
   /// Friendly Name
   final pulumi.Input<String>? friendlyName;
+
   /// Remote Dns ips
   final pulumi.Input<String>? remoteDnsIps;
+
   /// Trust Direction
   final pulumi.Input<String>? trustDirection;
+
   /// Trust Password
   final pulumi.Input<String>? trustPassword;
+
   /// Trusted Domain FQDN
   final pulumi.Input<String>? trustedDomainFqdn;
 
@@ -41,12 +45,31 @@ class ForestTrustResponse {
 
   factory ForestTrustResponse.fromMap(Map<String, dynamic> map) {
     return ForestTrustResponse(
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
-      remoteDnsIps: map['remoteDnsIps'] == null ? null : (map['remoteDnsIps']! as String).input(),
-      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection']! as String).input(),
-      trustPassword: map['trustPassword'] == null ? null : (map['trustPassword']! as String).input(),
-      trustedDomainFqdn: map['trustedDomainFqdn'] == null ? null : (map['trustedDomainFqdn']! as String).input(),
+      friendlyName: (() {
+        final guardedValue = map['friendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteDnsIps: (() {
+        final guardedValue = map['remoteDnsIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustDirection: (() {
+        final guardedValue = map['trustDirection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustPassword: (() {
+        final guardedValue = map['trustPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustedDomainFqdn: (() {
+        final guardedValue = map['trustedDomainFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

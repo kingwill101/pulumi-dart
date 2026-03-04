@@ -70,11 +70,33 @@ class BastionHostInstanceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adAuthServers': ?pulumi.Input.mapOptionalInputValue<List<BastionHostInstanceAdAuthServer>, List<Map<String, dynamic>>>(adAuthServers, (value) => pulumi.Input.encodeList<BastionHostInstanceAdAuthServer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'adAuthServers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BastionHostInstanceAdAuthServer>,
+            List<Map<String, dynamic>>
+          >(
+            adAuthServers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BastionHostInstanceAdAuthServer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'bandwidth': bandwidth,
       'description': description,
       'enablePublicAccess': ?enablePublicAccess,
-      'ldapAuthServers': ?pulumi.Input.mapOptionalInputValue<List<BastionHostInstanceLdapAuthServer>, List<Map<String, dynamic>>>(ldapAuthServers, (value) => pulumi.Input.encodeList<BastionHostInstanceLdapAuthServer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ldapAuthServers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BastionHostInstanceLdapAuthServer>,
+            List<Map<String, dynamic>>
+          >(
+            ldapAuthServers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BastionHostInstanceLdapAuthServer,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'licenseCode': licenseCode,
       'period': ?period,
       'planCode': planCode,
@@ -93,25 +115,86 @@ class BastionHostInstanceArgs {
 
   factory BastionHostInstanceArgs.fromMap(Map<String, dynamic> map) {
     return BastionHostInstanceArgs(
-      adAuthServers: map['adAuthServers'] == null ? null : (pulumi.Input.decodeList<BastionHostInstanceAdAuthServer>(map['adAuthServers']!, (value) => BastionHostInstanceAdAuthServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bandwidth: (map['bandwidth'] as String).input(),
-      description: (map['description'] as String).input(),
-      enablePublicAccess: map['enablePublicAccess'] == null ? null : (map['enablePublicAccess']! as bool).input(),
-      ldapAuthServers: map['ldapAuthServers'] == null ? null : (pulumi.Input.decodeList<BastionHostInstanceLdapAuthServer>(map['ldapAuthServers']!, (value) => BastionHostInstanceLdapAuthServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseCode: (map['licenseCode'] as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      planCode: (map['planCode'] as String).input(),
-      publicWhiteLists: map['publicWhiteLists'] == null ? null : ((map['publicWhiteLists']! as List).cast<String>()).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
-      renewalPeriodUnit: map['renewalPeriodUnit'] == null ? null : (map['renewalPeriodUnit']! as String).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      slaveVswitchId: map['slaveVswitchId'] == null ? null : (map['slaveVswitchId']! as String).input(),
-      storage: (map['storage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      adAuthServers: (() {
+        final guardedValue = map['adAuthServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BastionHostInstanceAdAuthServer>(
+            guardedValue,
+            (value) => BastionHostInstanceAdAuthServer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      enablePublicAccess: (() {
+        final guardedValue = map['enablePublicAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ldapAuthServers: (() {
+        final guardedValue = map['ldapAuthServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BastionHostInstanceLdapAuthServer>(
+            guardedValue,
+            (value) => BastionHostInstanceLdapAuthServer.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      licenseCode: pulumi.Input.fromValue(map['licenseCode'] as String),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      planCode: pulumi.Input.fromValue(map['planCode'] as String),
+      publicWhiteLists: (() {
+        final guardedValue = map['publicWhiteLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      renewPeriod: (() {
+        final guardedValue = map['renewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewalPeriodUnit: (() {
+        final guardedValue = map['renewalPeriodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewalStatus: (() {
+        final guardedValue = map['renewalStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      slaveVswitchId: (() {
+        final guardedValue = map['slaveVswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storage: pulumi.Input.fromValue(map['storage'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

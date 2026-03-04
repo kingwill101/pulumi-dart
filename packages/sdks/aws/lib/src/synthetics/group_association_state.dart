@@ -7,10 +7,13 @@ class GroupAssociationState {
   /// ARN of the canary.
   final pulumi.Input<String>? canaryArn;
   final pulumi.Input<String>? groupArn;
+
   /// ID of the Group.
   final pulumi.Input<String>? groupId;
+
   /// Name of the group that the canary will be associated with.
   final pulumi.Input<String>? groupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -40,12 +43,31 @@ class GroupAssociationState {
 
   factory GroupAssociationState.fromMap(Map<String, dynamic> map) {
     return GroupAssociationState(
-      canaryArn: map['canaryArn'] == null ? null : ((map['canaryArn'] as String).input()).input(),
-      groupArn: map['groupArn'] == null ? null : ((map['groupArn'] as String).input()).input(),
-      groupId: map['groupId'] == null ? null : ((map['groupId'] as String).input()).input(),
-      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      canaryArn: (() {
+        final guardedValue = map['canaryArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupArn: (() {
+        final guardedValue = map['groupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

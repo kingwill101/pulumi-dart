@@ -8,8 +8,10 @@ import 'threshold_rule_response.dart';
 class EvaluationRuleResponse {
   /// Degraded rule with static threshold.
   final pulumi.Input<ThresholdRuleResponse>? degradedRule;
+
   /// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
   final pulumi.Input<DynamicDetectionRuleResponse>? dynamicDetectionRule;
+
   /// Unhealthy rule with static threshold.
   final pulumi.Input<ThresholdRuleResponse>? unhealthyRule;
 
@@ -25,18 +27,53 @@ class EvaluationRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'degradedRule': ?pulumi.Input.mapOptionalInputValue<ThresholdRuleResponse, Map<String, dynamic>>(degradedRule, (value) => value.toMap()),
-      'dynamicDetectionRule': ?pulumi.Input.mapOptionalInputValue<DynamicDetectionRuleResponse, Map<String, dynamic>>(dynamicDetectionRule, (value) => value.toMap()),
-      'unhealthyRule': ?pulumi.Input.mapOptionalInputValue<ThresholdRuleResponse, Map<String, dynamic>>(unhealthyRule, (value) => value.toMap()),
+      'degradedRule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ThresholdRuleResponse,
+            Map<String, dynamic>
+          >(degradedRule, (value) => value.toMap()),
+      'dynamicDetectionRule':
+          ?pulumi.Input.mapOptionalInputValue<
+            DynamicDetectionRuleResponse,
+            Map<String, dynamic>
+          >(dynamicDetectionRule, (value) => value.toMap()),
+      'unhealthyRule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ThresholdRuleResponse,
+            Map<String, dynamic>
+          >(unhealthyRule, (value) => value.toMap()),
     };
   }
 
   factory EvaluationRuleResponse.fromMap(Map<String, dynamic> map) {
     return EvaluationRuleResponse(
-      degradedRule: map['degradedRule'] == null ? null : (ThresholdRuleResponse.fromMap((map['degradedRule']! as Map).cast<String, dynamic>())).input(),
-      dynamicDetectionRule: map['dynamicDetectionRule'] == null ? null : (DynamicDetectionRuleResponse.fromMap((map['dynamicDetectionRule']! as Map).cast<String, dynamic>())).input(),
-      unhealthyRule: map['unhealthyRule'] == null ? null : (ThresholdRuleResponse.fromMap((map['unhealthyRule']! as Map).cast<String, dynamic>())).input(),
+      degradedRule: (() {
+        final guardedValue = map['degradedRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ThresholdRuleResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dynamicDetectionRule: (() {
+        final guardedValue = map['dynamicDetectionRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DynamicDetectionRuleResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      unhealthyRule: (() {
+        final guardedValue = map['unhealthyRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ThresholdRuleResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

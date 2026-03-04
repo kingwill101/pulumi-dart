@@ -6,28 +6,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticBackupPropertiesResponse {
   /// Type of backup Manual or Scheduled
   final pulumi.Input<String> backupType;
+
   /// The completion date of the backup
   final pulumi.Input<String> completionDate;
+
   /// The creation date of the backup
   final pulumi.Input<String> creationDate;
+
   /// ResourceId used to identify the elastic backup policy
   final pulumi.Input<String> elasticBackupPolicyResourceId;
+
   /// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
   final pulumi.Input<String>? elasticSnapshotResourceId;
+
   /// ResourceId used to identify the Elastic Volume
   final pulumi.Input<String> elasticVolumeResourceId;
+
   /// Failure reason
   final pulumi.Input<String> failureReason;
+
   /// Label for backup
   final pulumi.Input<String>? label;
+
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
+
   /// Size of backup in bytes
   final pulumi.Input<double> size;
+
   /// The snapshot creation date of the backup
   final pulumi.Input<String> snapshotCreationDate;
+
   /// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
   final pulumi.Input<String>? snapshotUsage;
+
   /// Specifies if the backup is for a large volume.
   final pulumi.Input<String> volumeSize;
 
@@ -81,20 +93,39 @@ class ElasticBackupPropertiesResponse {
 
   factory ElasticBackupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticBackupPropertiesResponse(
-      backupType: (map['backupType'] as String).input(),
-      completionDate: (map['completionDate'] as String).input(),
-      creationDate: (map['creationDate'] as String).input(),
-      elasticBackupPolicyResourceId: (map['elasticBackupPolicyResourceId'] as String).input(),
-      elasticSnapshotResourceId: map['elasticSnapshotResourceId'] == null ? null : (map['elasticSnapshotResourceId']! as String).input(),
-      elasticVolumeResourceId: (map['elasticVolumeResourceId'] as String).input(),
-      failureReason: (map['failureReason'] as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      size: (map['size'] as double).input(),
-      snapshotCreationDate: (map['snapshotCreationDate'] as String).input(),
-      snapshotUsage: map['snapshotUsage'] == null ? null : (map['snapshotUsage']! as String).input(),
-      volumeSize: (map['volumeSize'] as String).input(),
+      backupType: pulumi.Input.fromValue(map['backupType'] as String),
+      completionDate: pulumi.Input.fromValue(map['completionDate'] as String),
+      creationDate: pulumi.Input.fromValue(map['creationDate'] as String),
+      elasticBackupPolicyResourceId: pulumi.Input.fromValue(
+        map['elasticBackupPolicyResourceId'] as String,
+      ),
+      elasticSnapshotResourceId: (() {
+        final guardedValue = map['elasticSnapshotResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticVolumeResourceId: pulumi.Input.fromValue(
+        map['elasticVolumeResourceId'] as String,
+      ),
+      failureReason: pulumi.Input.fromValue(map['failureReason'] as String),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      size: pulumi.Input.fromValue(map['size'] as double),
+      snapshotCreationDate: pulumi.Input.fromValue(
+        map['snapshotCreationDate'] as String,
+      ),
+      snapshotUsage: (() {
+        final guardedValue = map['snapshotUsage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as String),
     );
   }
 }
-

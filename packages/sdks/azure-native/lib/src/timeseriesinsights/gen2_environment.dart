@@ -3,7 +3,6 @@ import 'environment_status_response.dart';
 import 'gen2_environment_args.dart';
 import 'gen2_storage_configuration_output_response.dart';
 import 'sku_response.dart';
-import 'time_series_id_property_response.dart';
 import 'warm_store_configuration_properties_response.dart';
 
 /// An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen2 environments do not have set data retention limits.
@@ -131,35 +130,51 @@ import 'warm_store_configuration_properties_response.dart';
 class Gen2Environment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the resource was created.
   late final pulumi.Output<String> creationTime;
+
   /// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
   late final pulumi.Output<String> dataAccessFqdn;
+
   /// An id used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
   late final pulumi.Output<String> dataAccessId;
+
   /// The kind of the environment.
   /// Expected value is 'Gen2'.
   late final pulumi.Output<String> kind;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
   late final pulumi.Output<SkuResponse> sku;
+
   /// An object that represents the status of the environment, and its internal state in the Time Series Insights service.
   late final pulumi.Output<EnvironmentStatusResponse> status;
+
   /// The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
-  late final pulumi.Output<Gen2StorageConfigurationOutputResponse> storageConfiguration;
+  late final pulumi.Output<Gen2StorageConfigurationOutputResponse>
+  storageConfiguration;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The list of event properties which will be used to define the environment's time series id.
-  late final pulumi.Output<List<TimeSeriesIdPropertyResponse>> timeSeriesIdProperties;
+  late final pulumi.Output<List<Map<String, dynamic>>> timeSeriesIdProperties;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
-  late final pulumi.Output<WarmStoreConfigurationPropertiesResponse?> warmStoreConfiguration;
+  late final pulumi.Output<WarmStoreConfigurationPropertiesResponse?>
+  warmStoreConfiguration;
 
   /// Creates a new [Gen2Environment].
   /// [name] The Pulumi resource name.
@@ -170,25 +185,33 @@ class Gen2Environment extends pulumi.CustomResource {
     Gen2EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:timeseriesinsights:Gen2Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.dataAccessFqdn = registerOutput<String>('dataAccessFqdn');
-    this.dataAccessId = registerOutput<String>('dataAccessId');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:timeseriesinsights:Gen2Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    dataAccessFqdn = registerOutput<String>('dataAccessFqdn');
+    dataAccessId = registerOutput<String>('dataAccessId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.status = registerOutput<EnvironmentStatusResponse>('status');
-    this.storageConfiguration = registerOutput<Gen2StorageConfigurationOutputResponse>('storageConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeSeriesIdProperties = registerOutput<List<TimeSeriesIdPropertyResponse>>('timeSeriesIdProperties');
-    this.type = registerOutput<String>('type');
-    this.warmStoreConfiguration = registerOutput<WarmStoreConfigurationPropertiesResponse?>('warmStoreConfiguration');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku');
+    status = registerOutput<EnvironmentStatusResponse>('status');
+    storageConfiguration =
+        registerOutput<Gen2StorageConfigurationOutputResponse>(
+          'storageConfiguration',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeSeriesIdProperties = registerOutput<List<Map<String, dynamic>>>(
+      'timeSeriesIdProperties',
+    );
+    type = registerOutput<String>('type');
+    warmStoreConfiguration =
+        registerOutput<WarmStoreConfigurationPropertiesResponse?>(
+          'warmStoreConfiguration',
+        );
   }
 }

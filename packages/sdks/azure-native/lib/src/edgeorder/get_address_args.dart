@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAddressArgs {
   /// The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
   final pulumi.Input<String> addressName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAddressArgs].
   /// [addressName] The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAddressArgs({
-    required this.addressName,
-    required this.resourceGroupName,
-  });
+  GetAddressArgs({required this.addressName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetAddressArgs {
 
   factory GetAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressArgs(
-      addressName: (map['addressName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      addressName: pulumi.Input.fromValue(map['addressName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

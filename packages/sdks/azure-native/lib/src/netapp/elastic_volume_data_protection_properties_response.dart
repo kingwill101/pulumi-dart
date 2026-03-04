@@ -8,29 +8,52 @@ import 'elastic_volume_snapshot_properties_response.dart';
 class ElasticVolumeDataProtectionPropertiesResponse {
   /// Used to configure backups on an elastic volume.
   final pulumi.Input<ElasticVolumeBackupPropertiesResponse>? backup;
+
   /// Used to apply a snapshot policy to a volume.
   final pulumi.Input<ElasticVolumeSnapshotPropertiesResponse>? snapshot;
 
   /// Creates a new [ElasticVolumeDataProtectionPropertiesResponse].
   /// [backup] Used to configure backups on an elastic volume.
   /// [snapshot] Used to apply a snapshot policy to a volume.
-  ElasticVolumeDataProtectionPropertiesResponse({
-    this.backup,
-    this.snapshot,
-  });
+  ElasticVolumeDataProtectionPropertiesResponse({this.backup, this.snapshot});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backup': ?pulumi.Input.mapOptionalInputValue<ElasticVolumeBackupPropertiesResponse, Map<String, dynamic>>(backup, (value) => value.toMap()),
-      'snapshot': ?pulumi.Input.mapOptionalInputValue<ElasticVolumeSnapshotPropertiesResponse, Map<String, dynamic>>(snapshot, (value) => value.toMap()),
+      'backup':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticVolumeBackupPropertiesResponse,
+            Map<String, dynamic>
+          >(backup, (value) => value.toMap()),
+      'snapshot':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticVolumeSnapshotPropertiesResponse,
+            Map<String, dynamic>
+          >(snapshot, (value) => value.toMap()),
     };
   }
 
-  factory ElasticVolumeDataProtectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ElasticVolumeDataProtectionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ElasticVolumeDataProtectionPropertiesResponse(
-      backup: map['backup'] == null ? null : (ElasticVolumeBackupPropertiesResponse.fromMap((map['backup']! as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (ElasticVolumeSnapshotPropertiesResponse.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
+      backup: (() {
+        final guardedValue = map['backup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticVolumeBackupPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      snapshot: (() {
+        final guardedValue = map['snapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticVolumeSnapshotPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

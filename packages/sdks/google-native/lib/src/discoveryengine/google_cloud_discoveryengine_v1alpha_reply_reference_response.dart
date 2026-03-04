@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse {
   /// Anchor text.
   final pulumi.Input<String> anchorText;
+
   /// Anchor text end index.
   final pulumi.Input<int> end;
+
   /// Anchor text start index.
   final pulumi.Input<int> start;
+
   /// URI link reference.
   final pulumi.Input<String> uri;
 
@@ -34,13 +37,14 @@ class GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse {
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse(
-      anchorText: (map['anchorText'] as String).input(),
-      end: (map['end'] as int).input(),
-      start: (map['start'] as int).input(),
-      uri: (map['uri'] as String).input(),
+      anchorText: pulumi.Input.fromValue(map['anchorText'] as String),
+      end: pulumi.Input.fromValue(map['end'] as int),
+      start: pulumi.Input.fromValue(map['start'] as int),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

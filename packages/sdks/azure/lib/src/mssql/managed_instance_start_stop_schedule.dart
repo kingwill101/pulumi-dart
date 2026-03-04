@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_instance_start_stop_schedule_args.dart';
-import 'managed_instance_start_stop_schedule_schedule.dart';
 import 'managed_instance_start_stop_schedule_state.dart';
 
 /// Manages Start Stop Schedules for an MS SQL Managed Instance.
@@ -1409,7 +1408,7 @@ import 'managed_instance_start_stop_schedule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -1424,14 +1423,19 @@ import 'managed_instance_start_stop_schedule_state.dart';
 class ManagedInstanceStartStopSchedule extends pulumi.CustomResource {
   /// Specifies the description of the schedule.
   late final pulumi.Output<String?> description;
+
   /// Specifies the ID of the Managed Instance. Changing this forces a new Sql Start Stop Managed Instance Schedule to be created.
   late final pulumi.Output<String> managedInstanceId;
+
   /// Timestamp when the next action will be executed in the corresponding schedule time zone.
   late final pulumi.Output<String> nextExecutionTime;
+
   /// Next action to be executed (Start or Stop).
   late final pulumi.Output<String> nextRunAction;
+
   /// A `schedule` block as defined below.
-  late final pulumi.Output<List<ManagedInstanceStartStopScheduleSchedule>> schedules;
+  late final pulumi.Output<List<Map<String, dynamic>>> schedules;
+
   /// Specifies the time zone of the schedule. Defaults to `UTC`.
   late final pulumi.Output<String?> timezoneId;
 
@@ -1444,17 +1448,17 @@ class ManagedInstanceStartStopSchedule extends pulumi.CustomResource {
     ManagedInstanceStartStopScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstanceStartStopSchedule:ManagedInstanceStartStopSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
-    this.nextExecutionTime = registerOutput<String>('nextExecutionTime');
-    this.nextRunAction = registerOutput<String>('nextRunAction');
-    this.schedules = registerOutput<List<ManagedInstanceStartStopScheduleSchedule>>('schedules');
-    this.timezoneId = registerOutput<String?>('timezoneId');
+         'azure:mssql/managedInstanceStartStopSchedule:ManagedInstanceStartStopSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    nextExecutionTime = registerOutput<String>('nextExecutionTime');
+    nextRunAction = registerOutput<String>('nextRunAction');
+    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    timezoneId = registerOutput<String?>('timezoneId');
   }
 
   /// Gets an existing [ManagedInstanceStartStopSchedule] resource's state with the given [name] and [id].
@@ -1475,16 +1479,16 @@ class ManagedInstanceStartStopSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstanceStartStopSchedule:ManagedInstanceStartStopSchedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
-    this.nextExecutionTime = registerOutput<String>('nextExecutionTime');
-    this.nextRunAction = registerOutput<String>('nextRunAction');
-    this.schedules = registerOutput<List<ManagedInstanceStartStopScheduleSchedule>>('schedules');
-    this.timezoneId = registerOutput<String?>('timezoneId');
+         'azure:mssql/managedInstanceStartStopSchedule:ManagedInstanceStartStopSchedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    nextExecutionTime = registerOutput<String>('nextExecutionTime');
+    nextRunAction = registerOutput<String>('nextRunAction');
+    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    timezoneId = registerOutput<String?>('timezoneId');
   }
 }

@@ -14,27 +14,47 @@ import 'security_setting_retention_strategy_dialogflow_v3beta1.dart';
 /// {@macro pulumi_dialogflow_v3beta1_security_setting_dialogflow_v3beta1_args_doc}
 class SecuritySettingDialogflowV3beta1Args {
   /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings>? audioExportSettings;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings
+  >?
+  audioExportSettings;
+
   /// [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
   final pulumi.Input<String>? deidentifyTemplate;
+
   /// The human-readable name of the security settings, unique within the location.
   final pulumi.Input<String> displayName;
+
   /// Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings>? insightsExportSettings;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings
+  >?
+  insightsExportSettings;
+
   /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. The `DLP Inspect Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
   final pulumi.Input<String>? inspectTemplate;
   final pulumi.Input<String>? location;
+
   /// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// List of types of data to remove when retention settings triggers purge.
-  final pulumi.Input<List<SecuritySettingPurgeDataTypesItemDialogflowV3beta1>>? purgeDataTypes;
+  final pulumi.Input<List<SecuritySettingPurgeDataTypesItemDialogflowV3beta1>>?
+  purgeDataTypes;
+
   /// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
-  final pulumi.Input<SecuritySettingRedactionScopeDialogflowV3beta1>? redactionScope;
+  final pulumi.Input<SecuritySettingRedactionScopeDialogflowV3beta1>?
+  redactionScope;
+
   /// Strategy that defines how we do redaction.
-  final pulumi.Input<SecuritySettingRedactionStrategyDialogflowV3beta1>? redactionStrategy;
+  final pulumi.Input<SecuritySettingRedactionStrategyDialogflowV3beta1>?
+  redactionStrategy;
+
   /// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
-  final pulumi.Input<SecuritySettingRetentionStrategyDialogflowV3beta1>? retentionStrategy;
+  final pulumi.Input<SecuritySettingRetentionStrategyDialogflowV3beta1>?
+  retentionStrategy;
+
   /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
   final pulumi.Input<int>? retentionWindowDays;
 
@@ -70,38 +90,148 @@ class SecuritySettingDialogflowV3beta1Args {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioExportSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings, Map<String, dynamic>>(audioExportSettings, (value) => value.toMap()),
+      'audioExportSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings,
+            Map<String, dynamic>
+          >(audioExportSettings, (value) => value.toMap()),
       'deidentifyTemplate': ?deidentifyTemplate,
       'displayName': displayName,
-      'insightsExportSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings, Map<String, dynamic>>(insightsExportSettings, (value) => value.toMap()),
+      'insightsExportSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings,
+            Map<String, dynamic>
+          >(insightsExportSettings, (value) => value.toMap()),
       'inspectTemplate': ?inspectTemplate,
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'purgeDataTypes': ?pulumi.Input.mapOptionalInputValue<List<SecuritySettingPurgeDataTypesItemDialogflowV3beta1>, List<String>>(purgeDataTypes, (value) => pulumi.Input.encodeList<SecuritySettingPurgeDataTypesItemDialogflowV3beta1, String>(value, (value) => value.value)),
-      'redactionScope': ?pulumi.Input.mapOptionalInputValue<SecuritySettingRedactionScopeDialogflowV3beta1, String>(redactionScope, (value) => value.value),
-      'redactionStrategy': ?pulumi.Input.mapOptionalInputValue<SecuritySettingRedactionStrategyDialogflowV3beta1, String>(redactionStrategy, (value) => value.value),
-      'retentionStrategy': ?pulumi.Input.mapOptionalInputValue<SecuritySettingRetentionStrategyDialogflowV3beta1, String>(retentionStrategy, (value) => value.value),
+      'purgeDataTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SecuritySettingPurgeDataTypesItemDialogflowV3beta1>,
+            List<String>
+          >(
+            purgeDataTypes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SecuritySettingPurgeDataTypesItemDialogflowV3beta1,
+                  String
+                >(value, (value) => value.wireValue),
+          ),
+      'redactionScope':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecuritySettingRedactionScopeDialogflowV3beta1,
+            String
+          >(redactionScope, (value) => value.wireValue),
+      'redactionStrategy':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecuritySettingRedactionStrategyDialogflowV3beta1,
+            String
+          >(redactionStrategy, (value) => value.wireValue),
+      'retentionStrategy':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecuritySettingRetentionStrategyDialogflowV3beta1,
+            String
+          >(retentionStrategy, (value) => value.wireValue),
       'retentionWindowDays': ?retentionWindowDays,
     };
   }
 
-  factory SecuritySettingDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
+  factory SecuritySettingDialogflowV3beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecuritySettingDialogflowV3beta1Args(
-      audioExportSettings: map['audioExportSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings.fromMap((map['audioExportSettings']! as Map).cast<String, dynamic>())).input(),
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      insightsExportSettings: map['insightsExportSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings.fromMap((map['insightsExportSettings']! as Map).cast<String, dynamic>())).input(),
-      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      purgeDataTypes: map['purgeDataTypes'] == null ? null : (pulumi.Input.decodeList<SecuritySettingPurgeDataTypesItemDialogflowV3beta1>(map['purgeDataTypes']!, (value) => SecuritySettingPurgeDataTypesItemDialogflowV3beta1.fromValue(value as String))).input(),
-      redactionScope: map['redactionScope'] == null ? null : (SecuritySettingRedactionScopeDialogflowV3beta1.fromValue(map['redactionScope']! as String)).input(),
-      redactionStrategy: map['redactionStrategy'] == null ? null : (SecuritySettingRedactionStrategyDialogflowV3beta1.fromValue(map['redactionStrategy']! as String)).input(),
-      retentionStrategy: map['retentionStrategy'] == null ? null : (SecuritySettingRetentionStrategyDialogflowV3beta1.fromValue(map['retentionStrategy']! as String)).input(),
-      retentionWindowDays: map['retentionWindowDays'] == null ? null : (map['retentionWindowDays']! as int).input(),
+      audioExportSettings: (() {
+        final guardedValue = map['audioExportSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deidentifyTemplate: (() {
+        final guardedValue = map['deidentifyTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      insightsExportSettings: (() {
+        final guardedValue = map['insightsExportSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inspectTemplate: (() {
+        final guardedValue = map['inspectTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      purgeDataTypes: (() {
+        final guardedValue = map['purgeDataTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            SecuritySettingPurgeDataTypesItemDialogflowV3beta1
+          >(
+            guardedValue,
+            (value) =>
+                SecuritySettingPurgeDataTypesItemDialogflowV3beta1.fromValue(
+                  value as String,
+                ),
+          ),
+        );
+      })(),
+      redactionScope: (() {
+        final guardedValue = map['redactionScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecuritySettingRedactionScopeDialogflowV3beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      redactionStrategy: (() {
+        final guardedValue = map['redactionStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecuritySettingRedactionStrategyDialogflowV3beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      retentionStrategy: (() {
+        final guardedValue = map['retentionStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecuritySettingRetentionStrategyDialogflowV3beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      retentionWindowDays: (() {
+        final guardedValue = map['retentionWindowDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -20,8 +20,9 @@ class BatchOperationsJobDeleteObject {
 
   factory BatchOperationsJobDeleteObject.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobDeleteObject(
-      permanentObjectDeletionEnabled: (map['permanentObjectDeletionEnabled'] as bool).input(),
+      permanentObjectDeletionEnabled: pulumi.Input.fromValue(
+        map['permanentObjectDeletionEnabled'] as bool,
+      ),
     );
   }
 }
-

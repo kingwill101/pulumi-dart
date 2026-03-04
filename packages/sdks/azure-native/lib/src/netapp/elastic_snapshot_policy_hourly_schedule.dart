@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticSnapshotPolicyHourlySchedule {
   /// Indicates which minute snapshot should be taken
   final pulumi.Input<int>? minute;
+
   /// Hourly snapshot count to keep
   final pulumi.Input<int>? snapshotsToKeep;
 
   /// Creates a new [ElasticSnapshotPolicyHourlySchedule].
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Hourly snapshot count to keep
-  ElasticSnapshotPolicyHourlySchedule({
-    this.minute,
-    this.snapshotsToKeep,
-  });
+  ElasticSnapshotPolicyHourlySchedule({this.minute, this.snapshotsToKeep});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class ElasticSnapshotPolicyHourlySchedule {
     };
   }
 
-  factory ElasticSnapshotPolicyHourlySchedule.fromMap(Map<String, dynamic> map) {
+  factory ElasticSnapshotPolicyHourlySchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ElasticSnapshotPolicyHourlySchedule(
-      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
+      minute: (() {
+        final guardedValue = map['minute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotsToKeep: (() {
+        final guardedValue = map['snapshotsToKeep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

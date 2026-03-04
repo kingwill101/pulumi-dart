@@ -7,20 +7,15 @@ class GetMeshSpecEgressFilter {
 
   /// Creates a new [GetMeshSpecEgressFilter].
   /// [type] Required.
-  GetMeshSpecEgressFilter({
-    required this.type,
-  });
+  GetMeshSpecEgressFilter({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory GetMeshSpecEgressFilter.fromMap(Map<String, dynamic> map) {
     return GetMeshSpecEgressFilter(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

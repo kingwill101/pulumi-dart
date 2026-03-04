@@ -9,10 +9,14 @@ import 'bare_metal_sr_iov_config.dart';
 class BareMetalNetworkConfig {
   /// Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.
   final pulumi.Input<bool>? advancedNetworking;
+
   /// Configuration for island mode CIDR. In an island-mode network, nodes have unique IP addresses, but pods don't have unique addresses across clusters. This doesn't cause problems because pods in one cluster never directly communicate with pods in another cluster. Instead, there are gateways that mediate between a pod in one cluster and a pod in another cluster.
   final pulumi.Input<BareMetalIslandModeCidrConfig>? islandModeCidr;
+
   /// Configuration for multiple network interfaces.
-  final pulumi.Input<BareMetalMultipleNetworkInterfacesConfig>? multipleNetworkInterfacesConfig;
+  final pulumi.Input<BareMetalMultipleNetworkInterfacesConfig>?
+  multipleNetworkInterfacesConfig;
+
   /// Configuration for SR-IOV.
   final pulumi.Input<BareMetalSrIovConfig>? srIovConfig;
 
@@ -31,19 +35,58 @@ class BareMetalNetworkConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advancedNetworking': ?advancedNetworking,
-      'islandModeCidr': ?pulumi.Input.mapOptionalInputValue<BareMetalIslandModeCidrConfig, Map<String, dynamic>>(islandModeCidr, (value) => value.toMap()),
-      'multipleNetworkInterfacesConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalMultipleNetworkInterfacesConfig, Map<String, dynamic>>(multipleNetworkInterfacesConfig, (value) => value.toMap()),
-      'srIovConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalSrIovConfig, Map<String, dynamic>>(srIovConfig, (value) => value.toMap()),
+      'islandModeCidr':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalIslandModeCidrConfig,
+            Map<String, dynamic>
+          >(islandModeCidr, (value) => value.toMap()),
+      'multipleNetworkInterfacesConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalMultipleNetworkInterfacesConfig,
+            Map<String, dynamic>
+          >(multipleNetworkInterfacesConfig, (value) => value.toMap()),
+      'srIovConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalSrIovConfig,
+            Map<String, dynamic>
+          >(srIovConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNetworkConfig(
-      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking']! as bool).input(),
-      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalIslandModeCidrConfig.fromMap((map['islandModeCidr']! as Map).cast<String, dynamic>())).input(),
-      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : (BareMetalMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig']! as Map).cast<String, dynamic>())).input(),
-      srIovConfig: map['srIovConfig'] == null ? null : (BareMetalSrIovConfig.fromMap((map['srIovConfig']! as Map).cast<String, dynamic>())).input(),
+      advancedNetworking: (() {
+        final guardedValue = map['advancedNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      islandModeCidr: (() {
+        final guardedValue = map['islandModeCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalIslandModeCidrConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      multipleNetworkInterfacesConfig: (() {
+        final guardedValue = map['multipleNetworkInterfacesConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalMultipleNetworkInterfacesConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      srIovConfig: (() {
+        final guardedValue = map['srIovConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalSrIovConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

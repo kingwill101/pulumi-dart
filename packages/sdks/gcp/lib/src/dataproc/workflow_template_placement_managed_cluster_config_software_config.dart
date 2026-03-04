@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
   /// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
   final pulumi.Input<String>? imageVersion;
+
   /// The set of components to activate on the cluster.
   final pulumi.Input<List<String>>? optionalComponents;
+
   /// The properties to set on daemon config files.
   ///
   /// Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
@@ -43,12 +45,27 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(
-      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion']! as String).input(),
-      optionalComponents: map['optionalComponents'] == null ? null : ((map['optionalComponents']! as List).cast<String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      imageVersion: (() {
+        final guardedValue = map['imageVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionalComponents: (() {
+        final guardedValue = map['optionalComponents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TextStyleResponse {
   /// The background color as a hex string. "#RRGGBB" or "#RGB"
   final pulumi.Input<String> backgroundColor;
+
   /// Font sizes for both the title and content. The title will still be larger relative to the content.
   final pulumi.Input<String> fontSize;
+
   /// The horizontal alignment of both the title and content
   final pulumi.Input<String> horizontalAlignment;
+
   /// The amount of padding around the widget
   final pulumi.Input<String> padding;
+
   /// The pointer location for this widget (also sometimes called a "tail")
   final pulumi.Input<String> pointerLocation;
+
   /// The text color as a hex string. "#RRGGBB" or "#RGB"
   final pulumi.Input<String> textColor;
+
   /// The vertical alignment of both the title and content
   final pulumi.Input<String> verticalAlignment;
 
@@ -51,14 +57,17 @@ class TextStyleResponse {
 
   factory TextStyleResponse.fromMap(Map<String, dynamic> map) {
     return TextStyleResponse(
-      backgroundColor: (map['backgroundColor'] as String).input(),
-      fontSize: (map['fontSize'] as String).input(),
-      horizontalAlignment: (map['horizontalAlignment'] as String).input(),
-      padding: (map['padding'] as String).input(),
-      pointerLocation: (map['pointerLocation'] as String).input(),
-      textColor: (map['textColor'] as String).input(),
-      verticalAlignment: (map['verticalAlignment'] as String).input(),
+      backgroundColor: pulumi.Input.fromValue(map['backgroundColor'] as String),
+      fontSize: pulumi.Input.fromValue(map['fontSize'] as String),
+      horizontalAlignment: pulumi.Input.fromValue(
+        map['horizontalAlignment'] as String,
+      ),
+      padding: pulumi.Input.fromValue(map['padding'] as String),
+      pointerLocation: pulumi.Input.fromValue(map['pointerLocation'] as String),
+      textColor: pulumi.Input.fromValue(map['textColor'] as String),
+      verticalAlignment: pulumi.Input.fromValue(
+        map['verticalAlignment'] as String,
+      ),
     );
   }
 }
-

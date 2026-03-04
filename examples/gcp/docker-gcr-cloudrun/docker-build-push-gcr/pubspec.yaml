@@ -6,8 +6,8 @@ environment:
   sdk: ^3.11.0
 dependencies:
   pulumi: 0.1.0
-  pulumi_docker: any
-  pulumi_gcp: any
+  pulumi_docker: 4.11.0
+  pulumi_gcp: 9.11.0
 
 dev_dependencies:
   lints: ^6.1.0

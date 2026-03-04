@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsRecordResponse {
   /// Name of the DNS record.
   final pulumi.Input<String> name;
+
   /// Represents an expiry time in seconds to represent how long this entry can be cached by the resolver, default = 3600sec.
   final pulumi.Input<int> ttl;
+
   /// Type of the DNS record. Example: TXT
   final pulumi.Input<String> type;
+
   /// Value of the DNS record.
   final pulumi.Input<String> value;
 
@@ -36,11 +39,10 @@ class DnsRecordResponse {
 
   factory DnsRecordResponse.fromMap(Map<String, dynamic> map) {
     return DnsRecordResponse(
-      name: (map['name'] as String).input(),
-      ttl: (map['ttl'] as int).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

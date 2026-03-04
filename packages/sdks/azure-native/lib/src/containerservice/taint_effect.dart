@@ -2,16 +2,15 @@
 enum TaintEffect {
   noSchedule("NoSchedule");
 
-  const TaintEffect(this.value);
-  final String value;
+  const TaintEffect(this.wireValue);
+  final String wireValue;
 
   static TaintEffect fromValue(String value) {
     for (final item in TaintEffect.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TaintEffect value: $value');
   }
 }
-

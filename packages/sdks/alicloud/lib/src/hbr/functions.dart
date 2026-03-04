@@ -36,7 +36,7 @@ import 'get_vaults_result.dart';
 
 /// This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
 /// ## Example Usage
 ///
@@ -458,7 +458,7 @@ Future<GetBackupJobsResult> getBackupJobs(
 
 /// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -627,7 +627,7 @@ Future<GetEcsBackupClientsResult> getEcsBackupClients(
 
 /// This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -746,7 +746,7 @@ Future<GetEcsBackupPlansResult> getEcsBackupPlans(
 
 /// This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in 1.198.0+
+/// &gt; **NOTE:** Available in 1.198.0+
 ///
 /// ## Example Usage
 ///
@@ -877,7 +877,7 @@ Future<GetHanaBackupClientsResult> getHanaBackupClients(
 
 /// This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.179.0+.
+/// &gt; **NOTE:** Available in v1.179.0+.
 ///
 /// ## Example Usage
 ///
@@ -1019,7 +1019,7 @@ Future<GetHanaBackupPlansResult> getHanaBackupPlans(
 
 /// This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.178.0+.
+/// &gt; **NOTE:** Available in v1.178.0+.
 ///
 /// ## Example Usage
 ///
@@ -1144,7 +1144,7 @@ Future<GetHanaInstancesResult> getHanaInstances(
 
 /// This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -1263,7 +1263,7 @@ Future<GetNasBackupPlansResult> getNasBackupPlans(
 
 /// This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.131.0+.
+/// &gt; **NOTE:** Available in v1.131.0+.
 ///
 /// ## Example Usage
 ///
@@ -1382,7 +1382,7 @@ Future<GetOssBackupPlansResult> getOssBackupPlans(
 
 /// This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.163.0+.
+/// &gt; **NOTE:** Available in v1.163.0+.
 ///
 /// ## Example Usage
 ///
@@ -1501,7 +1501,7 @@ Future<GetOtsBackupPlansResult> getOtsBackupPlans(
 
 /// This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.164.0+.
+/// &gt; **NOTE:** Available in v1.164.0+.
 ///
 /// ## Example Usage
 ///
@@ -1601,7 +1601,7 @@ Future<GetOtsSnapshotsResult> getOtsSnapshots(
 
 /// This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.152.0+.
+/// &gt; **NOTE:** Available in v1.152.0+.
 ///
 /// ## Example Usage
 ///
@@ -1711,7 +1711,7 @@ Future<GetReplicationVaultRegionsResult> getReplicationVaultRegions(
 
 /// This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.133.0+.
+/// &gt; **NOTE:** Available in v1.133.0+.
 ///
 /// ## Example Usage
 ///
@@ -1868,7 +1868,7 @@ Future<GetRestoreJobsResult> getRestoreJobs(
 
 /// This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -2050,7 +2050,7 @@ Future<GetServerBackupPlansResult> getServerBackupPlans(
 ///
 /// For information about HBR and how to use it, see [What is HBR](https://www.alibabacloud.com/help/en/hybrid-backup-recovery).
 ///
-/// > **NOTE:** Available since v1.184.0+
+/// &gt; **NOTE:** Available since v1.184.0+
 ///
 /// ## Example Usage
 ///
@@ -2159,7 +2159,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.133.0+.
+/// &gt; **NOTE:** Available in v1.133.0+.
 ///
 /// ## Example Usage
 ///
@@ -2467,7 +2467,7 @@ Future<GetSnapshotsResult> getSnapshots(
 
 /// This data source provides Hbr Udm Snapshot available to the user.[What is Udm Snapshot](https://next.api.alibabacloud.com/document/hbr/2017-09-08/DescribeUdmSnapshots)
 ///
-/// > **NOTE:** Available since v1.253.0.
+/// &gt; **NOTE:** Available since v1.253.0.
 ///
 /// ## Example Usage
 ///
@@ -2622,7 +2622,7 @@ Future<GetUdmSnapshotsResult> getUdmSnapshots(
 
 /// This data source provides the Hbr Vaults of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.129.0+.
+/// &gt; **NOTE:** Available in v1.129.0+.
 ///
 /// ## Example Usage
 ///

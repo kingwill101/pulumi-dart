@@ -6,6 +6,7 @@ class PrivateCloudManagementClusterStretchedClusterConfig {
   /// Zone that will remain operational when connection between the two zones is lost.
   /// Specify the zone in the following format: projects/{project}/locations/{location}.
   final pulumi.Input<String>? preferredLocation;
+
   /// Additional zone for a higher level of availability and load balancing.
   /// Specify the zone in the following format: projects/{project}/locations/{location}.
   final pulumi.Input<String>? secondaryLocation;
@@ -25,11 +26,20 @@ class PrivateCloudManagementClusterStretchedClusterConfig {
     };
   }
 
-  factory PrivateCloudManagementClusterStretchedClusterConfig.fromMap(Map<String, dynamic> map) {
+  factory PrivateCloudManagementClusterStretchedClusterConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateCloudManagementClusterStretchedClusterConfig(
-      preferredLocation: map['preferredLocation'] == null ? null : (map['preferredLocation']! as String).input(),
-      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation']! as String).input(),
+      preferredLocation: (() {
+        final guardedValue = map['preferredLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryLocation: (() {
+        final guardedValue = map['secondaryLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

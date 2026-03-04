@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAscriptsAscriptExtAttribute {
   /// The key of the extended attribute.
   final pulumi.Input<String> attributeKey;
+
   /// The value of the extended attribute.
   final pulumi.Input<String> attributeValue;
 
@@ -25,9 +26,8 @@ class GetAscriptsAscriptExtAttribute {
 
   factory GetAscriptsAscriptExtAttribute.fromMap(Map<String, dynamic> map) {
     return GetAscriptsAscriptExtAttribute(
-      attributeKey: (map['attributeKey'] as String).input(),
-      attributeValue: (map['attributeValue'] as String).input(),
+      attributeKey: pulumi.Input.fromValue(map['attributeKey'] as String),
+      attributeValue: pulumi.Input.fromValue(map['attributeValue'] as String),
     );
   }
 }
-

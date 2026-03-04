@@ -11,23 +11,45 @@ class ComplianceOccurrence {
   /// Creates a new [ComplianceOccurrence].
   /// [nonComplianceReason] Optional.
   /// [nonCompliantFiles] Optional.
-  ComplianceOccurrence({
-    this.nonComplianceReason,
-    this.nonCompliantFiles,
-  });
+  ComplianceOccurrence({this.nonComplianceReason, this.nonCompliantFiles});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nonComplianceReason': ?nonComplianceReason,
-      'nonCompliantFiles': ?pulumi.Input.mapOptionalInputValue<List<NonCompliantFile>, List<Map<String, dynamic>>>(nonCompliantFiles, (value) => pulumi.Input.encodeList<NonCompliantFile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nonCompliantFiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NonCompliantFile>,
+            List<Map<String, dynamic>>
+          >(
+            nonCompliantFiles,
+            (value) =>
+                pulumi.Input.encodeList<NonCompliantFile, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ComplianceOccurrence.fromMap(Map<String, dynamic> map) {
     return ComplianceOccurrence(
-      nonComplianceReason: map['nonComplianceReason'] == null ? null : (map['nonComplianceReason']! as String).input(),
-      nonCompliantFiles: map['nonCompliantFiles'] == null ? null : (pulumi.Input.decodeList<NonCompliantFile>(map['nonCompliantFiles']!, (value) => NonCompliantFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonComplianceReason: (() {
+        final guardedValue = map['nonComplianceReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nonCompliantFiles: (() {
+        final guardedValue = map['nonCompliantFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NonCompliantFile>(
+            guardedValue,
+            (value) => NonCompliantFile.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

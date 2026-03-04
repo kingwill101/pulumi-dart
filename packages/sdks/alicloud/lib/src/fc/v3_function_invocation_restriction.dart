@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3FunctionInvocationRestriction {
   /// Whether invocation is disabled
   final pulumi.Input<bool>? disable;
+
   /// Last time the function was Updated
   final pulumi.Input<String>? lastModifiedTime;
+
   /// Disable Reason
   final pulumi.Input<String>? reason;
 
@@ -30,10 +32,21 @@ class V3FunctionInvocationRestriction {
 
   factory V3FunctionInvocationRestriction.fromMap(Map<String, dynamic> map) {
     return V3FunctionInvocationRestriction(
-      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      disable: (() {
+        final guardedValue = map['disable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

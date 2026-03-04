@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPostgresInstanceArgs {
   /// Name of Postgres Instance
   final pulumi.Input<String> postgresInstanceName;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetPostgresInstanceArgs {
 
   factory GetPostgresInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetPostgresInstanceArgs(
-      postgresInstanceName: (map['postgresInstanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      postgresInstanceName: pulumi.Input.fromValue(
+        map['postgresInstanceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

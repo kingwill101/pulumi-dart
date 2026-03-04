@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseUserIdentityResponse {
   /// The Azure Active Directory client id.
   final pulumi.Input<String> clientId;
+
   /// The Azure Active Directory principal id.
   final pulumi.Input<String> principalId;
 
@@ -18,17 +19,13 @@ class DatabaseUserIdentityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientId': clientId,
-      'principalId': principalId,
-    };
+    return <String, dynamic>{'clientId': clientId, 'principalId': principalId};
   }
 
   factory DatabaseUserIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseUserIdentityResponse(
-      clientId: (map['clientId'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
     );
   }
 }
-

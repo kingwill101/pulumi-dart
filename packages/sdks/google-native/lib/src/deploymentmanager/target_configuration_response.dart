@@ -7,29 +7,52 @@ import 'import_file_response.dart';
 class TargetConfigurationResponse {
   /// The configuration to use for this deployment.
   final pulumi.Input<ConfigFileResponse> config;
+
   /// Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
   final pulumi.Input<List<ImportFileResponse>> imports;
 
   /// Creates a new [TargetConfigurationResponse].
   /// [config] The configuration to use for this deployment.
   /// [imports] Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
-  TargetConfigurationResponse({
-    required this.config,
-    required this.imports,
-  });
+  TargetConfigurationResponse({required this.config, required this.imports});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': pulumi.Input.mapInputValue<ConfigFileResponse, Map<String, dynamic>>(config, (value) => value.toMap()),
-      'imports': pulumi.Input.mapInputValue<List<ImportFileResponse>, List<Map<String, dynamic>>>(imports, (value) => pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'config':
+          pulumi.Input.mapInputValue<ConfigFileResponse, Map<String, dynamic>>(
+            config,
+            (value) => value.toMap(),
+          ),
+      'imports':
+          pulumi.Input.mapInputValue<
+            List<ImportFileResponse>,
+            List<Map<String, dynamic>>
+          >(
+            imports,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ImportFileResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TargetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TargetConfigurationResponse(
-      config: (ConfigFileResponse.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      imports: (pulumi.Input.decodeList<ImportFileResponse>(map['imports'], (value) => ImportFileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: pulumi.Input.fromValue(
+        ConfigFileResponse.fromMap(
+          (map['config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      imports: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ImportFileResponse>(
+          map['imports']!,
+          (value) => ImportFileResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

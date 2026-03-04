@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiDeploymentParameterMetadataResponse {
   /// The description.
   final pulumi.Input<String>? description;
+
   /// The display name.
   final pulumi.Input<String>? displayName;
+
   /// Indicates whether its required.
   final pulumi.Input<bool>? isRequired;
+
   /// The type.
   final pulumi.Input<String>? type;
+
   /// The visibility.
   final pulumi.Input<String>? visibility;
 
@@ -39,14 +43,35 @@ class ApiDeploymentParameterMetadataResponse {
     };
   }
 
-  factory ApiDeploymentParameterMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory ApiDeploymentParameterMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiDeploymentParameterMetadataResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      isRequired: map['isRequired'] == null ? null : (map['isRequired']! as bool).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isRequired: (() {
+        final guardedValue = map['isRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      visibility: (() {
+        final guardedValue = map['visibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

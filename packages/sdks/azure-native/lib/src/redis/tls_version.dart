@@ -4,16 +4,15 @@ enum TlsVersion {
   resource11("1.1"),
   resource12("1.2");
 
-  const TlsVersion(this.value);
-  final String value;
+  const TlsVersion(this.wireValue);
+  final String wireValue;
 
   static TlsVersion fromValue(String value) {
     for (final item in TlsVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TlsVersion value: $value');
   }
 }
-

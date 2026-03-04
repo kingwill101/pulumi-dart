@@ -10,18 +10,26 @@ import 'weekly_schedule_alloydb_v1beta.dart';
 class AutomatedBackupPolicyAlloydbV1beta {
   /// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed. The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it defaults to 1 hour.
   final pulumi.Input<String>? backupWindow;
+
   /// Whether automated automated backups are enabled. If not set, defaults to true.
   final pulumi.Input<bool>? enabled;
+
   /// Optional. The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
   final pulumi.Input<EncryptionConfigAlloydbV1beta>? encryptionConfig;
+
   /// Labels to apply to backups created using this configuration.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster. If empty, defaults to the region of the cluster.
   final pulumi.Input<String>? location;
+
   /// Quantity-based Backup retention policy to retain recent backups.
-  final pulumi.Input<QuantityBasedRetentionAlloydbV1beta>? quantityBasedRetention;
+  final pulumi.Input<QuantityBasedRetentionAlloydbV1beta>?
+  quantityBasedRetention;
+
   /// Time-based Backup retention policy.
   final pulumi.Input<TimeBasedRetentionAlloydbV1beta>? timeBasedRetention;
+
   /// Weekly schedule for the Backup.
   final pulumi.Input<WeeklyScheduleAlloydbV1beta>? weeklySchedule;
 
@@ -49,26 +57,91 @@ class AutomatedBackupPolicyAlloydbV1beta {
     return <String, dynamic>{
       'backupWindow': ?backupWindow,
       'enabled': ?enabled,
-      'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<EncryptionConfigAlloydbV1beta, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
+      'encryptionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            EncryptionConfigAlloydbV1beta,
+            Map<String, dynamic>
+          >(encryptionConfig, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
-      'quantityBasedRetention': ?pulumi.Input.mapOptionalInputValue<QuantityBasedRetentionAlloydbV1beta, Map<String, dynamic>>(quantityBasedRetention, (value) => value.toMap()),
-      'timeBasedRetention': ?pulumi.Input.mapOptionalInputValue<TimeBasedRetentionAlloydbV1beta, Map<String, dynamic>>(timeBasedRetention, (value) => value.toMap()),
-      'weeklySchedule': ?pulumi.Input.mapOptionalInputValue<WeeklyScheduleAlloydbV1beta, Map<String, dynamic>>(weeklySchedule, (value) => value.toMap()),
+      'quantityBasedRetention':
+          ?pulumi.Input.mapOptionalInputValue<
+            QuantityBasedRetentionAlloydbV1beta,
+            Map<String, dynamic>
+          >(quantityBasedRetention, (value) => value.toMap()),
+      'timeBasedRetention':
+          ?pulumi.Input.mapOptionalInputValue<
+            TimeBasedRetentionAlloydbV1beta,
+            Map<String, dynamic>
+          >(timeBasedRetention, (value) => value.toMap()),
+      'weeklySchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            WeeklyScheduleAlloydbV1beta,
+            Map<String, dynamic>
+          >(weeklySchedule, (value) => value.toMap()),
     };
   }
 
   factory AutomatedBackupPolicyAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return AutomatedBackupPolicyAlloydbV1beta(
-      backupWindow: map['backupWindow'] == null ? null : (map['backupWindow']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1beta.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      quantityBasedRetention: map['quantityBasedRetention'] == null ? null : (QuantityBasedRetentionAlloydbV1beta.fromMap((map['quantityBasedRetention']! as Map).cast<String, dynamic>())).input(),
-      timeBasedRetention: map['timeBasedRetention'] == null ? null : (TimeBasedRetentionAlloydbV1beta.fromMap((map['timeBasedRetention']! as Map).cast<String, dynamic>())).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklyScheduleAlloydbV1beta.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
+      backupWindow: (() {
+        final guardedValue = map['backupWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptionConfig: (() {
+        final guardedValue = map['encryptionConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EncryptionConfigAlloydbV1beta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      quantityBasedRetention: (() {
+        final guardedValue = map['quantityBasedRetention'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          QuantityBasedRetentionAlloydbV1beta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeBasedRetention: (() {
+        final guardedValue = map['timeBasedRetention'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TimeBasedRetentionAlloydbV1beta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      weeklySchedule: (() {
+        final guardedValue = map['weeklySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WeeklyScheduleAlloydbV1beta.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

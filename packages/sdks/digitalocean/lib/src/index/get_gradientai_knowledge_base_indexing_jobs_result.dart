@@ -27,19 +27,39 @@ class GetGradientaiKnowledgeBaseIndexingJobsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'jobs': pulumi.Input.encodeList<GetGradientaiKnowledgeBaseIndexingJobsJob, Map<String, dynamic>>(jobs, (value) => value.toMap()),
+      'jobs':
+          pulumi.Input.encodeList<
+            GetGradientaiKnowledgeBaseIndexingJobsJob,
+            Map<String, dynamic>
+          >(jobs, (value) => value.toMap()),
       'knowledgeBaseUuid': knowledgeBaseUuid,
-      'metas': pulumi.Input.encodeList<GetGradientaiKnowledgeBaseIndexingJobsMeta, Map<String, dynamic>>(metas, (value) => value.toMap()),
+      'metas':
+          pulumi.Input.encodeList<
+            GetGradientaiKnowledgeBaseIndexingJobsMeta,
+            Map<String, dynamic>
+          >(metas, (value) => value.toMap()),
     };
   }
 
-  factory GetGradientaiKnowledgeBaseIndexingJobsResult.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiKnowledgeBaseIndexingJobsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiKnowledgeBaseIndexingJobsResult(
       id: map['id'] as String,
-      jobs: pulumi.Input.decodeList<GetGradientaiKnowledgeBaseIndexingJobsJob>(map['jobs'], (value) => GetGradientaiKnowledgeBaseIndexingJobsJob.fromMap((value as Map).cast<String, dynamic>())),
+      jobs: pulumi.Input.decodeList<GetGradientaiKnowledgeBaseIndexingJobsJob>(
+        map['jobs']!,
+        (value) => GetGradientaiKnowledgeBaseIndexingJobsJob.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       knowledgeBaseUuid: map['knowledgeBaseUuid'] as String,
-      metas: pulumi.Input.decodeList<GetGradientaiKnowledgeBaseIndexingJobsMeta>(map['metas'], (value) => GetGradientaiKnowledgeBaseIndexingJobsMeta.fromMap((value as Map).cast<String, dynamic>())),
+      metas:
+          pulumi.Input.decodeList<GetGradientaiKnowledgeBaseIndexingJobsMeta>(
+            map['metas']!,
+            (value) => GetGradientaiKnowledgeBaseIndexingJobsMeta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

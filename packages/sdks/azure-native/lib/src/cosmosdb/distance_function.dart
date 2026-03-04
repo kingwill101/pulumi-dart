@@ -4,16 +4,15 @@ enum DistanceFunction {
   valueCosine("cosine"),
   valueDotproduct("dotproduct");
 
-  const DistanceFunction(this.value);
-  final String value;
+  const DistanceFunction(this.wireValue);
+  final String wireValue;
 
   static DistanceFunction fromValue(String value) {
     for (final item in DistanceFunction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DistanceFunction value: $value');
   }
 }
-

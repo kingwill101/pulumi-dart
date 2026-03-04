@@ -6,30 +6,43 @@ import 'authorization_profile_response.dart';
 class SubscriptionFeatureRegistrationResponseProperties {
   /// The feature approval type.
   final pulumi.Input<String> approvalType;
+
   /// Authorization Profile
   final pulumi.Input<AuthorizationProfileResponse>? authorizationProfile;
+
   /// The feature description.
   final pulumi.Input<String>? description;
+
   /// The featureDisplayName.
   final pulumi.Input<String> displayName;
+
   /// The feature documentation link.
   final pulumi.Input<String> documentationLink;
+
   /// The featureName.
   final pulumi.Input<String> featureName;
+
   /// Key-value pairs for meta data.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The providerNamespace.
   final pulumi.Input<String> providerNamespace;
+
   /// The feature registration date.
   final pulumi.Input<String> registrationDate;
+
   /// The feature release date.
   final pulumi.Input<String> releaseDate;
+
   /// Indicates whether feature should be displayed in Portal.
   final pulumi.Input<bool>? shouldFeatureDisplayInPortal;
+
   /// The state.
   final pulumi.Input<String>? state;
+
   /// The subscriptionId.
   final pulumi.Input<String> subscriptionId;
+
   /// The tenantId.
   final pulumi.Input<String> tenantId;
 
@@ -68,7 +81,11 @@ class SubscriptionFeatureRegistrationResponseProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'approvalType': approvalType,
-      'authorizationProfile': ?pulumi.Input.mapOptionalInputValue<AuthorizationProfileResponse, Map<String, dynamic>>(authorizationProfile, (value) => value.toMap()),
+      'authorizationProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthorizationProfileResponse,
+            Map<String, dynamic>
+          >(authorizationProfile, (value) => value.toMap()),
       'description': ?description,
       'displayName': displayName,
       'documentationLink': documentationLink,
@@ -84,23 +101,56 @@ class SubscriptionFeatureRegistrationResponseProperties {
     };
   }
 
-  factory SubscriptionFeatureRegistrationResponseProperties.fromMap(Map<String, dynamic> map) {
+  factory SubscriptionFeatureRegistrationResponseProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubscriptionFeatureRegistrationResponseProperties(
-      approvalType: (map['approvalType'] as String).input(),
-      authorizationProfile: map['authorizationProfile'] == null ? null : (AuthorizationProfileResponse.fromMap((map['authorizationProfile']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      documentationLink: (map['documentationLink'] as String).input(),
-      featureName: (map['featureName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      providerNamespace: (map['providerNamespace'] as String).input(),
-      registrationDate: (map['registrationDate'] as String).input(),
-      releaseDate: (map['releaseDate'] as String).input(),
-      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal']! as bool).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      approvalType: pulumi.Input.fromValue(map['approvalType'] as String),
+      authorizationProfile: (() {
+        final guardedValue = map['authorizationProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthorizationProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      documentationLink: pulumi.Input.fromValue(
+        map['documentationLink'] as String,
+      ),
+      featureName: pulumi.Input.fromValue(map['featureName'] as String),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
+      registrationDate: pulumi.Input.fromValue(
+        map['registrationDate'] as String,
+      ),
+      releaseDate: pulumi.Input.fromValue(map['releaseDate'] as String),
+      shouldFeatureDisplayInPortal: (() {
+        final guardedValue = map['shouldFeatureDisplayInPortal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

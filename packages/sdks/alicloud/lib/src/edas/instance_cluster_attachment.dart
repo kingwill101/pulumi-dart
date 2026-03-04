@@ -4,7 +4,7 @@ import 'instance_cluster_attachment_state.dart';
 
 /// Provides an EDAS instance cluster attachment resource, see [What is EDAS Instance Cluster Attachment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-installagent).
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 ///
 /// ## Example Usage
@@ -477,12 +477,16 @@ import 'instance_cluster_attachment_state.dart';
 class InstanceClusterAttachment extends pulumi.CustomResource {
   /// The ID of the cluster that you want to create the application.
   late final pulumi.Output<String> clusterId;
+
   /// The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
   late final pulumi.Output<Map<String, String>> clusterMemberIds;
+
   /// The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
   late final pulumi.Output<Map<String, String>> ecuMap;
+
   /// The ID of instance. Type: list.
   late final pulumi.Output<List<String>> instanceIds;
+
   /// The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
   late final pulumi.Output<Map<String, int>> statusMap;
 
@@ -495,16 +499,16 @@ class InstanceClusterAttachment extends pulumi.CustomResource {
     InstanceClusterAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.clusterMemberIds = registerOutput<Map<String, String>>('clusterMemberIds');
-    this.ecuMap = registerOutput<Map<String, String>>('ecuMap');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.statusMap = registerOutput<Map<String, int>>('statusMap');
+         'alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    clusterMemberIds = registerOutput<Map<String, String>>('clusterMemberIds');
+    ecuMap = registerOutput<Map<String, String>>('ecuMap');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    statusMap = registerOutput<Map<String, int>>('statusMap');
   }
 
   /// Gets an existing [InstanceClusterAttachment] resource's state with the given [name] and [id].
@@ -525,15 +529,15 @@ class InstanceClusterAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.clusterMemberIds = registerOutput<Map<String, String>>('clusterMemberIds');
-    this.ecuMap = registerOutput<Map<String, String>>('ecuMap');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.statusMap = registerOutput<Map<String, int>>('statusMap');
+         'alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    clusterMemberIds = registerOutput<Map<String, String>>('clusterMemberIds');
+    ecuMap = registerOutput<Map<String, String>>('ecuMap');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    statusMap = registerOutput<Map<String, int>>('statusMap');
   }
 }

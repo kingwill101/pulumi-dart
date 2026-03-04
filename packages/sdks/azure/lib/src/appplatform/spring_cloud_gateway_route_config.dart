@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_gateway_route_config_args.dart';
 import 'spring_cloud_gateway_route_config_open_api.dart';
-import 'spring_cloud_gateway_route_config_route.dart';
 import 'spring_cloud_gateway_route_config_state.dart';
 
 /// Manages a Spring Cloud Gateway Route Config.
 ///
-/// > **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
+/// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGatewayRouteConfig` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudGatewayRouteConfig` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -391,22 +390,30 @@ import 'spring_cloud_gateway_route_config_state.dart';
 class SpringCloudGatewayRouteConfig extends pulumi.CustomResource {
   /// Specifies a list of filters which are used to modify the request before sending it to the target endpoint, or the received response in app level.
   late final pulumi.Output<List<String>?> filters;
+
   /// The name which should be used for this Spring Cloud Gateway Route Config. Changing this forces a new Spring Cloud Gateway Route Config to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `open_api` blocks as defined below.
   late final pulumi.Output<SpringCloudGatewayRouteConfigOpenApi?> openApi;
+
   /// Specifies a list of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
   late final pulumi.Output<List<String>?> predicates;
+
   /// Specifies the protocol of routed Spring Cloud App. Allowed values are `HTTP` and `HTTPS`.
   ///
-  /// > **Note:** You likely want to use `HTTPS` in a production environment, since `HTTP` offers no encryption.
+  /// &gt; **Note:** You likely want to use `HTTPS` in a production environment, since `HTTP` offers no encryption.
   late final pulumi.Output<String> protocol;
+
   /// One or more `route` blocks as defined below.
-  late final pulumi.Output<List<SpringCloudGatewayRouteConfigRoute>?> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+
   /// The ID of the Spring Cloud App.
   late final pulumi.Output<String?> springCloudAppId;
+
   /// The ID of the Spring Cloud Gateway. Changing this forces a new Spring Cloud Gateway Route Config to be created.
   late final pulumi.Output<String> springCloudGatewayId;
+
   /// Should the sso validation be enabled in app level?
   late final pulumi.Output<bool?> ssoValidationEnabled;
 
@@ -419,20 +426,20 @@ class SpringCloudGatewayRouteConfig extends pulumi.CustomResource {
     SpringCloudGatewayRouteConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudGatewayRouteConfig:SpringCloudGatewayRouteConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<List<String>?>('filters');
+         'azure:appplatform/springCloudGatewayRouteConfig:SpringCloudGatewayRouteConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<List<String>?>('filters');
     this.name = registerOutput<String>('name');
-    this.openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>('openApi');
-    this.predicates = registerOutput<List<String>?>('predicates');
-    this.protocol = registerOutput<String>('protocol');
-    this.routes = registerOutput<List<SpringCloudGatewayRouteConfigRoute>?>('routes');
-    this.springCloudAppId = registerOutput<String?>('springCloudAppId');
-    this.springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
-    this.ssoValidationEnabled = registerOutput<bool?>('ssoValidationEnabled');
+    openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>('openApi');
+    predicates = registerOutput<List<String>?>('predicates');
+    protocol = registerOutput<String>('protocol');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    springCloudAppId = registerOutput<String?>('springCloudAppId');
+    springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
+    ssoValidationEnabled = registerOutput<bool?>('ssoValidationEnabled');
   }
 
   /// Gets an existing [SpringCloudGatewayRouteConfig] resource's state with the given [name] and [id].
@@ -453,19 +460,19 @@ class SpringCloudGatewayRouteConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudGatewayRouteConfig:SpringCloudGatewayRouteConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<List<String>?>('filters');
+         'azure:appplatform/springCloudGatewayRouteConfig:SpringCloudGatewayRouteConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<List<String>?>('filters');
     this.name = registerOutput<String>('name');
-    this.openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>('openApi');
-    this.predicates = registerOutput<List<String>?>('predicates');
-    this.protocol = registerOutput<String>('protocol');
-    this.routes = registerOutput<List<SpringCloudGatewayRouteConfigRoute>?>('routes');
-    this.springCloudAppId = registerOutput<String?>('springCloudAppId');
-    this.springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
-    this.ssoValidationEnabled = registerOutput<bool?>('ssoValidationEnabled');
+    openApi = registerOutput<SpringCloudGatewayRouteConfigOpenApi?>('openApi');
+    predicates = registerOutput<List<String>?>('predicates');
+    protocol = registerOutput<String>('protocol');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    springCloudAppId = registerOutput<String?>('springCloudAppId');
+    springCloudGatewayId = registerOutput<String>('springCloudGatewayId');
+    ssoValidationEnabled = registerOutput<bool?>('ssoValidationEnabled');
   }
 }

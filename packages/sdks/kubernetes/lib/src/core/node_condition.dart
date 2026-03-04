@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeCondition {
   /// Last time we got an update on a given condition.
   final pulumi.Input<String>? lastHeartbeatTime;
+
   /// Last time the condition transit from one status to another.
   final pulumi.Input<String>? lastTransitionTime;
+
   /// Human readable message indicating details about last transition.
   final pulumi.Input<String>? message;
+
   /// (brief) reason for the condition's last transition.
   final pulumi.Input<String>? reason;
+
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String> status;
+
   /// Type of node condition.
   final pulumi.Input<String> type;
 
@@ -46,13 +51,28 @@ class NodeCondition {
 
   factory NodeCondition.fromMap(Map<String, dynamic> map) {
     return NodeCondition(
-      lastHeartbeatTime: map['lastHeartbeatTime'] == null ? null : (map['lastHeartbeatTime']! as String).input(),
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
-      status: (map['status'] as String).input(),
-      type: (map['type'] as String).input(),
+      lastHeartbeatTime: (() {
+        final guardedValue = map['lastHeartbeatTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastTransitionTime: (() {
+        final guardedValue = map['lastTransitionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

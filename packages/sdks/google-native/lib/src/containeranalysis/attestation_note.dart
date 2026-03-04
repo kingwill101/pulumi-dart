@@ -10,20 +10,26 @@ class AttestationNote {
 
   /// Creates a new [AttestationNote].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AttestationNote({
-    this.hint,
-  });
+  AttestationNote({this.hint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': ?pulumi.Input.mapOptionalInputValue<Hint, Map<String, dynamic>>(hint, (value) => value.toMap()),
+      'hint': ?pulumi.Input.mapOptionalInputValue<Hint, Map<String, dynamic>>(
+        hint,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory AttestationNote.fromMap(Map<String, dynamic> map) {
     return AttestationNote(
-      hint: map['hint'] == null ? null : (Hint.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
+      hint: (() {
+        final guardedValue = map['hint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Hint.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

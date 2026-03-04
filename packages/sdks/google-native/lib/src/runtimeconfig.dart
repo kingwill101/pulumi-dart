@@ -1,5 +1,3 @@
-library module_runtimeconfig;
-
 export 'runtimeconfig/binding.dart';
 export 'runtimeconfig/binding_response.dart';
 export 'runtimeconfig/cardinality.dart';

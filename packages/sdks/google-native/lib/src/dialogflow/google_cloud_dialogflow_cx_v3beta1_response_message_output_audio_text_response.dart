@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse {
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   final pulumi.Input<bool> allowPlaybackInterruption;
+
   /// The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
   final pulumi.Input<String> ssml;
+
   /// The raw text to be synthesized.
   final pulumi.Input<String> text;
 
@@ -29,12 +31,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse(
-      allowPlaybackInterruption: (map['allowPlaybackInterruption'] as bool).input(),
-      ssml: (map['ssml'] as String).input(),
-      text: (map['text'] as String).input(),
+      allowPlaybackInterruption: pulumi.Input.fromValue(
+        map['allowPlaybackInterruption'] as bool,
+      ),
+      ssml: pulumi.Input.fromValue(map['ssml'] as String),
+      text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
-

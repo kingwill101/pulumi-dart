@@ -7,10 +7,13 @@ import 'virtual_machine_properties_ssh_ssh.dart';
 class VirtualMachinePropertiesWindowsConfiguration {
   /// Whether to EnableAutomaticUpdates on the machine
   final pulumi.Input<bool>? enableAutomaticUpdates;
+
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
   final pulumi.Input<bool>? provisionVMAgent;
+
   /// SSH Configuration
   final pulumi.Input<VirtualMachinePropertiesSshSsh>? ssh;
+
   /// TimeZone for the virtual machine
   final pulumi.Input<String>? timeZone;
 
@@ -30,18 +33,43 @@ class VirtualMachinePropertiesWindowsConfiguration {
     return <String, dynamic>{
       'enableAutomaticUpdates': ?enableAutomaticUpdates,
       'provisionVMAgent': ?provisionVMAgent,
-      'ssh': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePropertiesSshSsh, Map<String, dynamic>>(ssh, (value) => value.toMap()),
+      'ssh':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachinePropertiesSshSsh,
+            Map<String, dynamic>
+          >(ssh, (value) => value.toMap()),
       'timeZone': ?timeZone,
     };
   }
 
-  factory VirtualMachinePropertiesWindowsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesWindowsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesWindowsConfiguration(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
-      ssh: map['ssh'] == null ? null : (VirtualMachinePropertiesSshSsh.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      enableAutomaticUpdates: (() {
+        final guardedValue = map['enableAutomaticUpdates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      provisionVMAgent: (() {
+        final guardedValue = map['provisionVMAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ssh: (() {
+        final guardedValue = map['ssh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachinePropertiesSshSsh.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

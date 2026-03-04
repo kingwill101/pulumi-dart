@@ -21,11 +21,12 @@ class GetApplicationPortalOptionSignInOption {
     };
   }
 
-  factory GetApplicationPortalOptionSignInOption.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationPortalOptionSignInOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationPortalOptionSignInOption(
-      applicationUrl: (map['applicationUrl'] as String).input(),
-      origin: (map['origin'] as String).input(),
+      applicationUrl: pulumi.Input.fromValue(map['applicationUrl'] as String),
+      origin: pulumi.Input.fromValue(map['origin'] as String),
     );
   }
 }
-

@@ -15,30 +15,69 @@ import 'web_acl_rule_statement_regex_match_statement_field_to_match_uri_fragment
 class WebAclRuleStatementRegexMatchStatementFieldToMatch {
   /// Inspect all query arguments.
   final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
+
   /// Inspect the request body, which immediately follows the request headers. See `body` below for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchBody>? body;
+  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchBody>?
+  body;
+
   /// Inspect the cookies in the web request. See `cookies` below for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchCookies>? cookies;
+  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchCookies>?
+  cookies;
+
   /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request that AWS WAF receives for inspection. See `header_order` below for details.
-  final pulumi.Input<List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder>>? headerOrders;
+  final pulumi.Input<
+    List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder>
+  >?
+  headerOrders;
+
   /// Inspect the request headers. See `headers` below for details.
-  final pulumi.Input<List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeader>>? headers;
+  final pulumi.Input<
+    List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeader>
+  >?
+  headers;
+
   /// Inspect the JA3 fingerprint. See `ja3_fingerprint` below for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<
+    WebAclRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint
+  >?
+  ja3Fingerprint;
+
   /// Inspect the JA3 fingerprint. See `ja4_fingerprint` below for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<
+    WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint
+  >?
+  ja4Fingerprint;
+
   /// Inspect the request body as JSON. See `json_body` for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBody>? jsonBody;
+  final pulumi.Input<
+    WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBody
+  >?
+  jsonBody;
+
   /// Inspect the HTTP method. The method indicates the type of operation that the request is asking the origin to perform.
   final pulumi.Input<Map<String, dynamic>>? method;
+
   /// Inspect the query string. This is the part of a URL that appears after a `?` character, if any.
   final pulumi.Input<Map<String, dynamic>>? queryString;
+
   /// Inspect a single header. See `single_header` below for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader>? singleHeader;
+  final pulumi.Input<
+    WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader
+  >?
+  singleHeader;
+
   /// Inspect a single query argument. See `single_query_argument` below for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
+  final pulumi.Input<
+    WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument
+  >?
+  singleQueryArgument;
+
   /// Inspect the part of a URL that follows the "#" symbol, providing additional information about the resource. See `uri_fragment` below for details.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment>? uriFragment;
+  final pulumi.Input<
+    WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment
+  >?
+  uriFragment;
+
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, `/images/daily-ad.jpg`.
   final pulumi.Input<Map<String, dynamic>>? uriPath;
 
@@ -77,39 +116,210 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allQueryArguments': ?allQueryArguments,
-      'body': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchBody, Map<String, dynamic>>(body, (value) => value.toMap()),
-      'cookies': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchCookies, Map<String, dynamic>>(cookies, (value) => value.toMap()),
-      'headerOrders': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder>, List<Map<String, dynamic>>>(headerOrders, (value) => pulumi.Input.encodeList<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'headers': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<WebAclRuleStatementRegexMatchStatementFieldToMatchHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ja3Fingerprint': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint, Map<String, dynamic>>(ja3Fingerprint, (value) => value.toMap()),
-      'ja4Fingerprint': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint, Map<String, dynamic>>(ja4Fingerprint, (value) => value.toMap()),
-      'jsonBody': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBody, Map<String, dynamic>>(jsonBody, (value) => value.toMap()),
+      'body':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchBody,
+            Map<String, dynamic>
+          >(body, (value) => value.toMap()),
+      'cookies':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchCookies,
+            Map<String, dynamic>
+          >(cookies, (value) => value.toMap()),
+      'headerOrders':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder>,
+            List<Map<String, dynamic>>
+          >(
+            headerOrders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'headers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WebAclRuleStatementRegexMatchStatementFieldToMatchHeader>,
+            List<Map<String, dynamic>>
+          >(
+            headers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclRuleStatementRegexMatchStatementFieldToMatchHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ja3Fingerprint':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint,
+            Map<String, dynamic>
+          >(ja3Fingerprint, (value) => value.toMap()),
+      'ja4Fingerprint':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint,
+            Map<String, dynamic>
+          >(ja4Fingerprint, (value) => value.toMap()),
+      'jsonBody':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBody,
+            Map<String, dynamic>
+          >(jsonBody, (value) => value.toMap()),
       'method': ?method,
       'queryString': ?queryString,
-      'singleHeader': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader, Map<String, dynamic>>(singleHeader, (value) => value.toMap()),
-      'singleQueryArgument': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument, Map<String, dynamic>>(singleQueryArgument, (value) => value.toMap()),
-      'uriFragment': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment, Map<String, dynamic>>(uriFragment, (value) => value.toMap()),
+      'singleHeader':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader,
+            Map<String, dynamic>
+          >(singleHeader, (value) => value.toMap()),
+      'singleQueryArgument':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument,
+            Map<String, dynamic>
+          >(singleQueryArgument, (value) => value.toMap()),
+      'uriFragment':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment,
+            Map<String, dynamic>
+          >(uriFragment, (value) => value.toMap()),
       'uriPath': ?uriPath,
     };
   }
 
-  factory WebAclRuleStatementRegexMatchStatementFieldToMatch.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRegexMatchStatementFieldToMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRegexMatchStatementFieldToMatch(
-      allQueryArguments: map['allQueryArguments'] == null ? null : (((map['allQueryArguments'] as Map).cast<String, dynamic>()).input()).input(),
-      body: map['body'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchBody.fromMap((map['body']! as Map).cast<String, dynamic>())).input()).input(),
-      cookies: map['cookies'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchCookies.fromMap((map['cookies']! as Map).cast<String, dynamic>())).input()).input(),
-      headerOrders: map['headerOrders'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder>(map['headerOrders']!, (value) => WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementRegexMatchStatementFieldToMatchHeader>(map['headers']!, (value) => WebAclRuleStatementRegexMatchStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint.fromMap((map['ja3Fingerprint']! as Map).cast<String, dynamic>())).input()).input(),
-      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint.fromMap((map['ja4Fingerprint']! as Map).cast<String, dynamic>())).input()).input(),
-      jsonBody: map['jsonBody'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBody.fromMap((map['jsonBody']! as Map).cast<String, dynamic>())).input()).input(),
-      method: map['method'] == null ? null : (((map['method'] as Map).cast<String, dynamic>()).input()).input(),
-      queryString: map['queryString'] == null ? null : (((map['queryString'] as Map).cast<String, dynamic>()).input()).input(),
-      singleHeader: map['singleHeader'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader.fromMap((map['singleHeader']! as Map).cast<String, dynamic>())).input()).input(),
-      singleQueryArgument: map['singleQueryArgument'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument.fromMap((map['singleQueryArgument']! as Map).cast<String, dynamic>())).input()).input(),
-      uriFragment: map['uriFragment'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment.fromMap((map['uriFragment']! as Map).cast<String, dynamic>())).input()).input(),
-      uriPath: map['uriPath'] == null ? null : (((map['uriPath'] as Map).cast<String, dynamic>()).input()).input(),
+      allQueryArguments: (() {
+        final guardedValue = map['allQueryArguments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      body: (() {
+        final guardedValue = map['body'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchBody.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cookies: (() {
+        final guardedValue = map['cookies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchCookies.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      headerOrders: (() {
+        final guardedValue = map['headerOrders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder
+          >(
+            guardedValue,
+            (value) =>
+                WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      headers: (() {
+        final guardedValue = map['headers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            WebAclRuleStatementRegexMatchStatementFieldToMatchHeader
+          >(
+            guardedValue,
+            (value) =>
+                WebAclRuleStatementRegexMatchStatementFieldToMatchHeader.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      ja3Fingerprint: (() {
+        final guardedValue = map['ja3Fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ja4Fingerprint: (() {
+        final guardedValue = map['ja4Fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      jsonBody: (() {
+        final guardedValue = map['jsonBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBody.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      queryString: (() {
+        final guardedValue = map['queryString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      singleHeader: (() {
+        final guardedValue = map['singleHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      singleQueryArgument: (() {
+        final guardedValue = map['singleQueryArgument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchSingleQueryArgument.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uriFragment: (() {
+        final guardedValue = map['uriFragment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uriPath: (() {
+        final guardedValue = map['uriPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

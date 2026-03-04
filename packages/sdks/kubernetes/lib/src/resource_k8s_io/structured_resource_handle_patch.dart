@@ -7,10 +7,13 @@ import 'driver_allocation_result_patch.dart';
 class StructuredResourceHandlePatch {
   /// NodeName is the name of the node providing the necessary resources if the resources are local to a node.
   final pulumi.Input<String>? nodeName;
+
   /// Results lists all allocated driver resources.
   final pulumi.Input<List<DriverAllocationResultPatch>>? results;
+
   /// VendorClaimParameters are the per-claim configuration parameters from the resource claim parameters at the time that the claim was allocated.
   final pulumi.Input<dynamic>? vendorClaimParameters;
+
   /// VendorClassParameters are the per-claim configuration parameters from the resource class at the time that the claim was allocated.
   final pulumi.Input<dynamic>? vendorClassParameters;
 
@@ -29,7 +32,18 @@ class StructuredResourceHandlePatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nodeName': ?nodeName,
-      'results': ?pulumi.Input.mapOptionalInputValue<List<DriverAllocationResultPatch>, List<Map<String, dynamic>>>(results, (value) => pulumi.Input.encodeList<DriverAllocationResultPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'results':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DriverAllocationResultPatch>,
+            List<Map<String, dynamic>>
+          >(
+            results,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DriverAllocationResultPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'vendorClaimParameters': ?vendorClaimParameters,
       'vendorClassParameters': ?vendorClassParameters,
     };
@@ -37,11 +51,33 @@ class StructuredResourceHandlePatch {
 
   factory StructuredResourceHandlePatch.fromMap(Map<String, dynamic> map) {
     return StructuredResourceHandlePatch(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
-      results: map['results'] == null ? null : (pulumi.Input.decodeList<DriverAllocationResultPatch>(map['results']!, (value) => DriverAllocationResultPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vendorClaimParameters: map['vendorClaimParameters'] == null ? null : (map['vendorClaimParameters']!).input(),
-      vendorClassParameters: map['vendorClassParameters'] == null ? null : (map['vendorClassParameters']!).input(),
+      nodeName: (() {
+        final guardedValue = map['nodeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      results: (() {
+        final guardedValue = map['results'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DriverAllocationResultPatch>(
+            guardedValue,
+            (value) => DriverAllocationResultPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      vendorClaimParameters: (() {
+        final guardedValue = map['vendorClaimParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      vendorClassParameters: (() {
+        final guardedValue = map['vendorClassParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

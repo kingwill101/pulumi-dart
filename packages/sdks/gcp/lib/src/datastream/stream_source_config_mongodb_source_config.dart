@@ -7,10 +7,14 @@ import 'stream_source_config_mongodb_source_config_include_objects.dart';
 class StreamSourceConfigMongodbSourceConfig {
   /// MongoDB collections to include in the stream.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigMongodbSourceConfigExcludeObjects>? excludeObjects;
+  final pulumi.Input<StreamSourceConfigMongodbSourceConfigExcludeObjects>?
+  excludeObjects;
+
   /// MongoDB collections to include in the stream.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigMongodbSourceConfigIncludeObjects>? includeObjects;
+  final pulumi.Input<StreamSourceConfigMongodbSourceConfigIncludeObjects>?
+  includeObjects;
+
   /// Optional. Maximum number of concurrent backfill tasks. The number
   /// should be non-negative and less than or equal to 50. If not set
   /// (or set to 0), the system''s default value is used
@@ -28,18 +32,47 @@ class StreamSourceConfigMongodbSourceConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'excludeObjects': ?pulumi.Input.mapOptionalInputValue<StreamSourceConfigMongodbSourceConfigExcludeObjects, Map<String, dynamic>>(excludeObjects, (value) => value.toMap()),
-      'includeObjects': ?pulumi.Input.mapOptionalInputValue<StreamSourceConfigMongodbSourceConfigIncludeObjects, Map<String, dynamic>>(includeObjects, (value) => value.toMap()),
+      'excludeObjects':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamSourceConfigMongodbSourceConfigExcludeObjects,
+            Map<String, dynamic>
+          >(excludeObjects, (value) => value.toMap()),
+      'includeObjects':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamSourceConfigMongodbSourceConfigIncludeObjects,
+            Map<String, dynamic>
+          >(includeObjects, (value) => value.toMap()),
       'maxConcurrentBackfillTasks': ?maxConcurrentBackfillTasks,
     };
   }
 
-  factory StreamSourceConfigMongodbSourceConfig.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigMongodbSourceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigMongodbSourceConfig(
-      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigMongodbSourceConfigExcludeObjects.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
-      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigMongodbSourceConfigIncludeObjects.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks']! as int).input(),
+      excludeObjects: (() {
+        final guardedValue = map['excludeObjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamSourceConfigMongodbSourceConfigExcludeObjects.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      includeObjects: (() {
+        final guardedValue = map['includeObjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamSourceConfigMongodbSourceConfigIncludeObjects.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      maxConcurrentBackfillTasks: (() {
+        final guardedValue = map['maxConcurrentBackfillTasks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

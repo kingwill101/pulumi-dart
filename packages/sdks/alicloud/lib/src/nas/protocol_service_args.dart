@@ -15,21 +15,27 @@ class ProtocolServiceArgs {
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   final pulumi.Input<String>? description;
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the file system.
   final pulumi.Input<String> fileSystemId;
+
   /// The specification of the protocol machine cluster.
   /// - Value range: General、CL1、CL2
   /// - Default value: General
   final pulumi.Input<String> protocolSpec;
+
   /// The throughput of the protocol service. Unit: MB/s.
   final pulumi.Input<int>? protocolThroughput;
+
   /// The protocol type supported by the protocol service.
   ///
   /// Value range:
   /// - NFS: Protocol Service supports NFS protocol access.
   final pulumi.Input<String> protocolType;
+
   /// The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   final pulumi.Input<String>? vpcId;
+
   /// The VSwitchId of the protocol service.
   final pulumi.Input<String>? vswitchId;
 
@@ -68,15 +74,34 @@ class ProtocolServiceArgs {
 
   factory ProtocolServiceArgs.fromMap(Map<String, dynamic> map) {
     return ProtocolServiceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      protocolSpec: (map['protocolSpec'] as String).input(),
-      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput']! as int).input(),
-      protocolType: (map['protocolType'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      protocolSpec: pulumi.Input.fromValue(map['protocolSpec'] as String),
+      protocolThroughput: (() {
+        final guardedValue = map['protocolThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocolType: pulumi.Input.fromValue(map['protocolType'] as String),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

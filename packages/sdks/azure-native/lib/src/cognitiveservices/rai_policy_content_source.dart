@@ -7,16 +7,15 @@ enum RaiPolicyContentSource {
   valuePreRun("PreRun"),
   valuePostRun("PostRun");
 
-  const RaiPolicyContentSource(this.value);
-  final String value;
+  const RaiPolicyContentSource(this.wireValue);
+  final String wireValue;
 
   static RaiPolicyContentSource fromValue(String value) {
     for (final item in RaiPolicyContentSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RaiPolicyContentSource value: $value');
   }
 }
-

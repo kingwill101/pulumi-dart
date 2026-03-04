@@ -1,5 +1,3 @@
-library module_connections;
-
 export 'connections/api_connection.dart';
 export 'connections/api_connection_args.dart';
 export 'connections/api_connection_state.dart';

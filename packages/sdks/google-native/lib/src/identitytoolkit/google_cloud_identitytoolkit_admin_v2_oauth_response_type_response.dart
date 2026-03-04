@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse {
   /// If true, authorization code is returned from IdP's authorization endpoint.
   final pulumi.Input<bool> code;
+
   /// If true, ID token is returned from IdP's authorization endpoint.
   final pulumi.Input<bool> idToken;
+
   /// Do not use. The `token` response type is not supported at the moment.
   final pulumi.Input<bool> token;
 
@@ -22,19 +24,16 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'idToken': idToken,
-      'token': token,
-    };
+    return <String, dynamic>{'code': code, 'idToken': idToken, 'token': token};
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse(
-      code: (map['code'] as bool).input(),
-      idToken: (map['idToken'] as bool).input(),
-      token: (map['token'] as bool).input(),
+      code: pulumi.Input.fromValue(map['code'] as bool),
+      idToken: pulumi.Input.fromValue(map['idToken'] as bool),
+      token: pulumi.Input.fromValue(map['token'] as bool),
     );
   }
 }
-

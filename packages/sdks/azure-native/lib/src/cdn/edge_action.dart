@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edge_action_args.dart';
-import 'edge_action_attachment_response.dart';
 import 'sku_type_response.dart';
 import 'system_data_response.dart';
 
@@ -161,21 +160,29 @@ import 'system_data_response.dart';
 /// ```
 class EdgeAction extends pulumi.CustomResource {
   /// A list of attachments for the edge action
-  late final pulumi.Output<List<EdgeActionAttachmentResponse>> attachments;
+  late final pulumi.Output<List<Map<String, dynamic>>> attachments;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the edge action
   late final pulumi.Output<String> provisioningState;
+
   /// The sku type of the edge action
   late final pulumi.Output<SkuTypeResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -188,19 +195,19 @@ class EdgeAction extends pulumi.CustomResource {
     EdgeActionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:EdgeAction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachments = registerOutput<List<EdgeActionAttachmentResponse>>('attachments');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:cdn:EdgeAction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuTypeResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuTypeResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

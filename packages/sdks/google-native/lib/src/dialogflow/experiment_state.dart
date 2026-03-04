@@ -1,4 +1,4 @@
-/// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
+/// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT-&gt;RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT-&gt;DONE or RUNNING-&gt;DONE.
 enum ExperimentState {
   stateUnspecified("STATE_UNSPECIFIED"),
   draft("DRAFT"),
@@ -6,16 +6,15 @@ enum ExperimentState {
   done("DONE"),
   rolloutFailed("ROLLOUT_FAILED");
 
-  const ExperimentState(this.value);
-  final String value;
+  const ExperimentState(this.wireValue);
+  final String wireValue;
 
   static ExperimentState fromValue(String value) {
     for (final item in ExperimentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExperimentState value: $value');
   }
 }
-

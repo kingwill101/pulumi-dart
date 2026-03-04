@@ -9,20 +9,19 @@ class PrivateServiceConnectConnectivityResponse {
 
   /// Creates a new [PrivateServiceConnectConnectivityResponse].
   /// [serviceAttachment] A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
-  PrivateServiceConnectConnectivityResponse({
-    required this.serviceAttachment,
-  });
+  PrivateServiceConnectConnectivityResponse({required this.serviceAttachment});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAttachment': serviceAttachment,
-    };
+    return <String, dynamic>{'serviceAttachment': serviceAttachment};
   }
 
-  factory PrivateServiceConnectConnectivityResponse.fromMap(Map<String, dynamic> map) {
+  factory PrivateServiceConnectConnectivityResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateServiceConnectConnectivityResponse(
-      serviceAttachment: (map['serviceAttachment'] as String).input(),
+      serviceAttachment: pulumi.Input.fromValue(
+        map['serviceAttachment'] as String,
+      ),
     );
   }
 }
-

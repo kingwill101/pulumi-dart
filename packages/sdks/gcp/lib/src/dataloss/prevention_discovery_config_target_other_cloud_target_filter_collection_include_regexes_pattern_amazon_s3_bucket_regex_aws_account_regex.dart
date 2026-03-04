@@ -13,15 +13,18 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountIdRegex': ?accountIdRegex,
-    };
+    return <String, dynamic>{'accountIdRegex': ?accountIdRegex};
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex(
-      accountIdRegex: map['accountIdRegex'] == null ? null : (map['accountIdRegex']! as String).input(),
+      accountIdRegex: (() {
+        final guardedValue = map['accountIdRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

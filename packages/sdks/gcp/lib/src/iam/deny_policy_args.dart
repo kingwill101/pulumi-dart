@@ -10,10 +10,13 @@ import 'deny_policy_rule.dart';
 class DenyPolicyArgs {
   /// The display name of the rule.
   final pulumi.Input<String>? displayName;
+
   /// The name of the policy.
   final pulumi.Input<String>? name;
+
   /// The attachment point is identified by its URL-encoded full resource name.
   final pulumi.Input<String> parent;
+
   /// Rules to be applied.
   /// Structure is documented below.
   final pulumi.Input<List<DenyPolicyRule>> rules;
@@ -35,17 +38,41 @@ class DenyPolicyArgs {
       'displayName': ?displayName,
       'name': ?name,
       'parent': parent,
-      'rules': pulumi.Input.mapInputValue<List<DenyPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<DenyPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<DenyPolicyRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<DenyPolicyRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory DenyPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DenyPolicyArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: (map['parent'] as String).input(),
-      rules: (pulumi.Input.decodeList<DenyPolicyRule>(map['rules'], (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DenyPolicyRule>(
+          map['rules']!,
+          (value) =>
+              DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

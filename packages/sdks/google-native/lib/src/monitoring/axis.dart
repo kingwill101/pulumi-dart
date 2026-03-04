@@ -7,29 +7,39 @@ import 'axis_scale.dart';
 class Axis {
   /// The label of the axis.
   final pulumi.Input<String>? label;
+
   /// The axis scale. By default, a linear scale is used.
   final pulumi.Input<AxisScale>? scale;
 
   /// Creates a new [Axis].
   /// [label] The label of the axis.
   /// [scale] The axis scale. By default, a linear scale is used.
-  Axis({
-    this.label,
-    this.scale,
-  });
+  Axis({this.label, this.scale});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'label': ?label,
-      'scale': ?pulumi.Input.mapOptionalInputValue<AxisScale, String>(scale, (value) => value.value),
+      'scale': ?pulumi.Input.mapOptionalInputValue<AxisScale, String>(
+        scale,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory Axis.fromMap(Map<String, dynamic> map) {
     return Axis(
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      scale: map['scale'] == null ? null : (AxisScale.fromValue(map['scale']! as String)).input(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scale: (() {
+        final guardedValue = map['scale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AxisScale.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ class GetSecurityGroupRulesFilter {
   /// Name of the field to filter by, as defined by
   /// [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroupRules.html).
   final pulumi.Input<String> name;
+
   /// Set of values that are accepted for the given field.
   ///
   /// Security group rule IDs will be selected if any one of the given values match.
@@ -14,23 +15,16 @@ class GetSecurityGroupRulesFilter {
   /// Creates a new [GetSecurityGroupRulesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetSecurityGroupRulesFilter({
-    required this.name,
-    required this.values,
-  });
+  GetSecurityGroupRulesFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetSecurityGroupRulesFilter.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRulesFilter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

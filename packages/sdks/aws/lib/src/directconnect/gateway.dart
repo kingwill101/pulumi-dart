@@ -122,14 +122,19 @@ import 'gateway_state.dart';
 class Gateway extends pulumi.CustomResource {
   /// The ASN to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
   late final pulumi.Output<String> amazonSideAsn;
+
   /// The ARN of the gateway.
   late final pulumi.Output<String> arn;
+
   /// The name of the connection.
   late final pulumi.Output<String> name;
+
   /// AWS Account ID of the gateway.
   late final pulumi.Output<String> ownerAccountId;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -142,17 +147,17 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directconnect/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
-    this.arn = registerOutput<String>('arn');
+         'aws:directconnect/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Gateway] resource's state with the given [name] and [id].
@@ -173,16 +178,16 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directconnect/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
-    this.arn = registerOutput<String>('arn');
+         'aws:directconnect/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

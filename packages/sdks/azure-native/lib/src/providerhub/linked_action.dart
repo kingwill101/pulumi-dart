@@ -5,16 +5,15 @@ enum LinkedAction {
   validate("Validate"),
   enabled("Enabled");
 
-  const LinkedAction(this.value);
-  final String value;
+  const LinkedAction(this.wireValue);
+  final String wireValue;
 
   static LinkedAction fromValue(String value) {
     for (final item in LinkedAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LinkedAction value: $value');
   }
 }
-

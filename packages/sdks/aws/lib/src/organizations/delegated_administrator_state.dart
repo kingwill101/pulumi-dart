@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegatedAdministratorState {
   /// The account ID number of the member account in the organization to register as a delegated administrator.
   final pulumi.Input<String>? accountId;
+
   /// The Amazon Resource Name (ARN) of the delegated administrator's account.
   final pulumi.Input<String>? arn;
+
   /// The date when the account was made a delegated administrator.
   final pulumi.Input<String>? delegationEnabledDate;
+
   /// The email address that is associated with the delegated administrator's AWS account.
   final pulumi.Input<String>? email;
+
   /// The method by which the delegated administrator's account joined the organization.
   final pulumi.Input<String>? joinedMethod;
+
   /// The date when the delegated administrator's account became a part of the organization.
   final pulumi.Input<String>? joinedTimestamp;
+
   /// The friendly name of the delegated administrator's account.
   final pulumi.Input<String>? name;
+
   /// The service principal of the AWS service for which you want to make the member account a delegated administrator.
   final pulumi.Input<String>? servicePrincipal;
+
   /// The status of the delegated administrator's account in the organization.
   final pulumi.Input<String>? status;
 
@@ -61,16 +69,51 @@ class DelegatedAdministratorState {
 
   factory DelegatedAdministratorState.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorState(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      delegationEnabledDate: map['delegationEnabledDate'] == null ? null : ((map['delegationEnabledDate'] as String).input()).input(),
-      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
-      joinedMethod: map['joinedMethod'] == null ? null : ((map['joinedMethod'] as String).input()).input(),
-      joinedTimestamp: map['joinedTimestamp'] == null ? null : ((map['joinedTimestamp'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : ((map['servicePrincipal'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      delegationEnabledDate: (() {
+        final guardedValue = map['delegationEnabledDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      joinedMethod: (() {
+        final guardedValue = map['joinedMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      joinedTimestamp: (() {
+        final guardedValue = map['joinedTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicePrincipal: (() {
+        final guardedValue = map['servicePrincipal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerZoneMappingLoadBalancerAddress {
   /// An IP address of the IPv4 type.
   final pulumi.Input<String>? address;
+
   /// The elastic IP identifier.
   final pulumi.Input<String>? allocationId;
+
   /// The type of the public EIP. Value:
   final pulumi.Input<String>? eipType;
+
   /// IPv4 private network address.
   final pulumi.Input<String>? intranetAddress;
+
   /// The private network IPv4 address detection status of the application-oriented load balancing instance.
   final pulumi.Input<String>? intranetAddressHcStatus;
+
   /// IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
   final pulumi.Input<List<String>>? ipv4LocalAddresses;
+
   /// An IP address of the IPv6 type.
   final pulumi.Input<String>? ipv6Address;
+
   /// The IPv6 address detection status of the application-based load balancing instance.
   final pulumi.Input<String>? ipv6AddressHcStatus;
+
   /// IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
   final pulumi.Input<List<String>>? ipv6LocalAddresses;
 
@@ -58,18 +66,55 @@ class LoadBalancerZoneMappingLoadBalancerAddress {
     };
   }
 
-  factory LoadBalancerZoneMappingLoadBalancerAddress.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerZoneMappingLoadBalancerAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerZoneMappingLoadBalancerAddress(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
-      eipType: map['eipType'] == null ? null : (map['eipType']! as String).input(),
-      intranetAddress: map['intranetAddress'] == null ? null : (map['intranetAddress']! as String).input(),
-      intranetAddressHcStatus: map['intranetAddressHcStatus'] == null ? null : (map['intranetAddressHcStatus']! as String).input(),
-      ipv4LocalAddresses: map['ipv4LocalAddresses'] == null ? null : ((map['ipv4LocalAddresses']! as List).cast<String>()).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
-      ipv6AddressHcStatus: map['ipv6AddressHcStatus'] == null ? null : (map['ipv6AddressHcStatus']! as String).input(),
-      ipv6LocalAddresses: map['ipv6LocalAddresses'] == null ? null : ((map['ipv6LocalAddresses']! as List).cast<String>()).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      allocationId: (() {
+        final guardedValue = map['allocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eipType: (() {
+        final guardedValue = map['eipType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      intranetAddress: (() {
+        final guardedValue = map['intranetAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      intranetAddressHcStatus: (() {
+        final guardedValue = map['intranetAddressHcStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4LocalAddresses: (() {
+        final guardedValue = map['ipv4LocalAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipv6Address: (() {
+        final guardedValue = map['ipv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6AddressHcStatus: (() {
+        final guardedValue = map['ipv6AddressHcStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6LocalAddresses: (() {
+        final guardedValue = map['ipv6LocalAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

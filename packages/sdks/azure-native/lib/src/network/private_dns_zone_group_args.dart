@@ -10,14 +10,19 @@ import 'private_dns_zone_config.dart';
 class PrivateDnsZoneGroupArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// A collection of private dns zone configurations of the private dns zone group.
   final pulumi.Input<List<PrivateDnsZoneConfig>>? privateDnsZoneConfigs;
+
   /// The name of the private dns zone group.
   final pulumi.Input<String>? privateDnsZoneGroupName;
+
   /// The name of the private endpoint.
   final pulumi.Input<String> privateEndpointName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -41,7 +46,18 @@ class PrivateDnsZoneGroupArgs {
     return <String, dynamic>{
       'id': ?id,
       'name': ?name,
-      'privateDnsZoneConfigs': ?pulumi.Input.mapOptionalInputValue<List<PrivateDnsZoneConfig>, List<Map<String, dynamic>>>(privateDnsZoneConfigs, (value) => pulumi.Input.encodeList<PrivateDnsZoneConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateDnsZoneConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrivateDnsZoneConfig>,
+            List<Map<String, dynamic>>
+          >(
+            privateDnsZoneConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrivateDnsZoneConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'privateDnsZoneGroupName': ?privateDnsZoneGroupName,
       'privateEndpointName': privateEndpointName,
       'resourceGroupName': resourceGroupName,
@@ -50,13 +66,39 @@ class PrivateDnsZoneGroupArgs {
 
   factory PrivateDnsZoneGroupArgs.fromMap(Map<String, dynamic> map) {
     return PrivateDnsZoneGroupArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : (pulumi.Input.decodeList<PrivateDnsZoneConfig>(map['privateDnsZoneConfigs']!, (value) => PrivateDnsZoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateDnsZoneGroupName: map['privateDnsZoneGroupName'] == null ? null : (map['privateDnsZoneGroupName']! as String).input(),
-      privateEndpointName: (map['privateEndpointName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsZoneConfigs: (() {
+        final guardedValue = map['privateDnsZoneConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrivateDnsZoneConfig>(
+            guardedValue,
+            (value) => PrivateDnsZoneConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      privateDnsZoneGroupName: (() {
+        final guardedValue = map['privateDnsZoneGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateEndpointName: pulumi.Input.fromValue(
+        map['privateEndpointName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

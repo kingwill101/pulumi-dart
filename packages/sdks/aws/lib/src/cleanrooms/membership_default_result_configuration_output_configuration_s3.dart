@@ -25,12 +25,17 @@ class MembershipDefaultResultConfigurationOutputConfigurationS3 {
     };
   }
 
-  factory MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap(Map<String, dynamic> map) {
+  factory MembershipDefaultResultConfigurationOutputConfigurationS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MembershipDefaultResultConfigurationOutputConfigurationS3(
-      bucket: (map['bucket'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
-      resultFormat: (map['resultFormat'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      keyPrefix: (() {
+        final guardedValue = map['keyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resultFormat: pulumi.Input.fromValue(map['resultFormat'] as String),
     );
   }
 }
-

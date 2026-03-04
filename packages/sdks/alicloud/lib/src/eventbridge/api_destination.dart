@@ -7,7 +7,7 @@ import 'api_destination_state.dart';
 ///
 /// For information about Event Bridge Api Destination and how to use it, see [What is Api Destination](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createapidestination).
 ///
-/// > **NOTE:** Available since v1.211.0.
+/// &gt; **NOTE:** Available since v1.211.0.
 ///
 /// ## Example Usage
 ///
@@ -230,12 +230,16 @@ import 'api_destination_state.dart';
 class ApiDestination extends pulumi.CustomResource {
   /// The name of the API destination.
   late final pulumi.Output<String> apiDestinationName;
+
   /// The name of the connection.
   late final pulumi.Output<String> connectionName;
+
   /// The creation time of the Api Destination.
   late final pulumi.Output<int> createTime;
+
   /// The description of the API destination.
   late final pulumi.Output<String?> description;
+
   /// The parameters that are configured for the API destination. See `http_api_parameters` below.
   late final pulumi.Output<ApiDestinationHttpApiParameters> httpApiParameters;
 
@@ -248,16 +252,18 @@ class ApiDestination extends pulumi.CustomResource {
     ApiDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/apiDestination:ApiDestination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiDestinationName = registerOutput<String>('apiDestinationName');
-    this.connectionName = registerOutput<String>('connectionName');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.httpApiParameters = registerOutput<ApiDestinationHttpApiParameters>('httpApiParameters');
+         'alicloud:eventbridge/apiDestination:ApiDestination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiDestinationName = registerOutput<String>('apiDestinationName');
+    connectionName = registerOutput<String>('connectionName');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    httpApiParameters = registerOutput<ApiDestinationHttpApiParameters>(
+      'httpApiParameters',
+    );
   }
 
   /// Gets an existing [ApiDestination] resource's state with the given [name] and [id].
@@ -278,15 +284,17 @@ class ApiDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/apiDestination:ApiDestination',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiDestinationName = registerOutput<String>('apiDestinationName');
-    this.connectionName = registerOutput<String>('connectionName');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.httpApiParameters = registerOutput<ApiDestinationHttpApiParameters>('httpApiParameters');
+         'alicloud:eventbridge/apiDestination:ApiDestination',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiDestinationName = registerOutput<String>('apiDestinationName');
+    connectionName = registerOutput<String>('connectionName');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    httpApiParameters = registerOutput<ApiDestinationHttpApiParameters>(
+      'httpApiParameters',
+    );
   }
 }

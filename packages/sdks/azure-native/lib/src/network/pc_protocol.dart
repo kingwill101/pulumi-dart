@@ -4,16 +4,15 @@ enum PcProtocol {
   valueUDP("UDP"),
   valueAny("Any");
 
-  const PcProtocol(this.value);
-  final String value;
+  const PcProtocol(this.wireValue);
+  final String wireValue;
 
   static PcProtocol fromValue(String value) {
     for (final item in PcProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PcProtocol value: $value');
   }
 }
-

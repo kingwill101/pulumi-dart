@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_template_auto_run_response.dart';
-import 'image_template_file_customizer_response.dart';
 import 'image_template_identity_response.dart';
 import 'image_template_last_run_status_response.dart';
-import 'image_template_managed_image_distributor_response.dart';
 import 'image_template_managed_image_source_response.dart';
 import 'image_template_properties_response_error_handling.dart';
 import 'image_template_properties_response_optimize.dart';
@@ -28,46 +26,68 @@ import 'virtual_machine_image_template_args.dart';
 class VirtualMachineImageTemplate extends pulumi.CustomResource {
   /// Indicates whether or not to automatically run the image template build on template creation or update.
   late final pulumi.Output<ImageTemplateAutoRunResponse?> autoRun;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
   late final pulumi.Output<int?> buildTimeoutInMinutes;
+
   /// Specifies the properties used to describe the customization steps of the image, like Image source etc
-  late final pulumi.Output<List<ImageTemplateFileCustomizerResponse>?> customize;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customize;
+
   /// The distribution targets where the image output needs to go to.
-  late final pulumi.Output<List<ImageTemplateManagedImageDistributorResponse>> distribute;
+  late final pulumi.Output<List<Map<String, dynamic>>> distribute;
+
   /// Error handling options upon a build failure
-  late final pulumi.Output<ImageTemplatePropertiesResponseErrorHandling?> errorHandling;
+  late final pulumi.Output<ImageTemplatePropertiesResponseErrorHandling?>
+  errorHandling;
+
   /// The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
   late final pulumi.Output<String> exactStagingResourceGroup;
+
   /// The identity of the image template, if configured.
   late final pulumi.Output<ImageTemplateIdentityResponse> identity;
+
   /// State of 'run' that is currently executing or was last executed.
   late final pulumi.Output<ImageTemplateLastRunStatusResponse> lastRunStatus;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Tags that will be applied to the resource group and/or resources created by the service.
   late final pulumi.Output<Map<String, String>?> managedResourceTags;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies optimization to be performed on image.
   late final pulumi.Output<ImageTemplatePropertiesResponseOptimize?> optimize;
+
   /// Provisioning error, if any
   late final pulumi.Output<ProvisioningErrorResponse> provisioningError;
+
   /// Provisioning state of the resource
   late final pulumi.Output<String> provisioningState;
+
   /// Specifies the properties used to describe the source image.
   late final pulumi.Output<ImageTemplateManagedImageSourceResponse> source;
+
   /// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
   late final pulumi.Output<String?> stagingResourceGroup;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Configuration options and list of validations to be performed on the resulting image.
   late final pulumi.Output<ImageTemplatePropertiesResponseValidate?> validate;
+
   /// Describes how virtual machine is set up to build images
   late final pulumi.Output<ImageTemplateVmProfileResponse?> vmProfile;
 
@@ -80,32 +100,47 @@ class VirtualMachineImageTemplate extends pulumi.CustomResource {
     VirtualMachineImageTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:virtualmachineimages:VirtualMachineImageTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoRun = registerOutput<ImageTemplateAutoRunResponse?>('autoRun');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.buildTimeoutInMinutes = registerOutput<int?>('buildTimeoutInMinutes');
-    this.customize = registerOutput<List<ImageTemplateFileCustomizerResponse>?>('customize');
-    this.distribute = registerOutput<List<ImageTemplateManagedImageDistributorResponse>>('distribute');
-    this.errorHandling = registerOutput<ImageTemplatePropertiesResponseErrorHandling?>('errorHandling');
-    this.exactStagingResourceGroup = registerOutput<String>('exactStagingResourceGroup');
-    this.identity = registerOutput<ImageTemplateIdentityResponse>('identity');
-    this.lastRunStatus = registerOutput<ImageTemplateLastRunStatusResponse>('lastRunStatus');
-    this.location = registerOutput<String>('location');
-    this.managedResourceTags = registerOutput<Map<String, String>?>('managedResourceTags');
+         'azure-native:virtualmachineimages:VirtualMachineImageTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoRun = registerOutput<ImageTemplateAutoRunResponse?>('autoRun');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    buildTimeoutInMinutes = registerOutput<int?>('buildTimeoutInMinutes');
+    customize = registerOutput<List<Map<String, dynamic>>?>('customize');
+    distribute = registerOutput<List<Map<String, dynamic>>>('distribute');
+    errorHandling =
+        registerOutput<ImageTemplatePropertiesResponseErrorHandling?>(
+          'errorHandling',
+        );
+    exactStagingResourceGroup = registerOutput<String>(
+      'exactStagingResourceGroup',
+    );
+    identity = registerOutput<ImageTemplateIdentityResponse>('identity');
+    lastRunStatus = registerOutput<ImageTemplateLastRunStatusResponse>(
+      'lastRunStatus',
+    );
+    location = registerOutput<String>('location');
+    managedResourceTags = registerOutput<Map<String, String>?>(
+      'managedResourceTags',
+    );
     this.name = registerOutput<String>('name');
-    this.optimize = registerOutput<ImageTemplatePropertiesResponseOptimize?>('optimize');
-    this.provisioningError = registerOutput<ProvisioningErrorResponse>('provisioningError');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.source = registerOutput<ImageTemplateManagedImageSourceResponse>('source');
-    this.stagingResourceGroup = registerOutput<String?>('stagingResourceGroup');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.validate = registerOutput<ImageTemplatePropertiesResponseValidate?>('validate');
-    this.vmProfile = registerOutput<ImageTemplateVmProfileResponse?>('vmProfile');
+    optimize = registerOutput<ImageTemplatePropertiesResponseOptimize?>(
+      'optimize',
+    );
+    provisioningError = registerOutput<ProvisioningErrorResponse>(
+      'provisioningError',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    source = registerOutput<ImageTemplateManagedImageSourceResponse>('source');
+    stagingResourceGroup = registerOutput<String?>('stagingResourceGroup');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    validate = registerOutput<ImageTemplatePropertiesResponseValidate?>(
+      'validate',
+    );
+    vmProfile = registerOutput<ImageTemplateVmProfileResponse?>('vmProfile');
   }
 }

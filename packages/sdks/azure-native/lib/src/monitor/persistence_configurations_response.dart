@@ -9,20 +9,17 @@ class PersistenceConfigurationsResponse {
 
   /// Creates a new [PersistenceConfigurationsResponse].
   /// [persistentVolumeName] The name of the mounted persistent volume.
-  PersistenceConfigurationsResponse({
-    required this.persistentVolumeName,
-  });
+  PersistenceConfigurationsResponse({required this.persistentVolumeName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'persistentVolumeName': persistentVolumeName,
-    };
+    return <String, dynamic>{'persistentVolumeName': persistentVolumeName};
   }
 
   factory PersistenceConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return PersistenceConfigurationsResponse(
-      persistentVolumeName: (map['persistentVolumeName'] as String).input(),
+      persistentVolumeName: pulumi.Input.fromValue(
+        map['persistentVolumeName'] as String,
+      ),
     );
   }
 }
-

@@ -634,8 +634,8 @@ import 'aws_integrations_xray.dart';
 ///
 /// ## Supported AWS Integrations
 ///
-/// <details>
-/// <summary>Expand this section to view all supported AWS services supported, that may be integrated via this resource.</summary>
+/// &lt;details&gt;
+/// &lt;summary&gt;Expand this section to view all supported AWS services supported, that may be integrated via this resource.&lt;/summary&gt;
 ///
 /// | Block                   | Description                   |
 /// |-------------------------|-------------------------------|
@@ -693,7 +693,7 @@ import 'aws_integrations_xray.dart';
 /// | `vpc`                   | VPC Integration               |
 /// | `x_ray`                 | X-Ray Integration             |
 ///
-/// </details>
+/// &lt;/details&gt;
 ///
 /// ## Integration Blocks
 ///
@@ -701,10 +701,10 @@ import 'aws_integrations_xray.dart';
 ///
 /// As specified above in the Arguments to be Specified with Integration Blocks section, except for `linked_account_id` and `account_id`, all aforementioned arguments are to be specified within an integration block as they are supported by a specific set of integrations each; the following list of integration blocks elucidates the same with samples of what each integration block would look like.
 ///
-/// <details>
-/// <summary> Expand this list to see a list of all integration blocks supported by this resource, the arguments which go with them and a sample of what the block would look like with these arguments. </summary>
-/// <details>
-/// <summary>cloudtrail</summary>
+/// &lt;details&gt;
+/// &lt;summary&gt; Expand this list to see a list of all integration blocks supported by this resource, the arguments which go with them and a sample of what the block would look like with these arguments. &lt;/summary&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;cloudtrail&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -713,9 +713,9 @@ import 'aws_integrations_xray.dart';
 ///         aws_regions              = ["us-east-1", "us-east-2"]
 ///      }
 /// ```
-/// </details>
-/// <details>
-/// <summary>vpc</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;vpc&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_nat_gateway` `fetch_vpn` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -728,9 +728,9 @@ import 'aws_integrations_xray.dart';
 ///       tag_value                = "tag value"
 ///     }
 /// ```
-/// </details>
-/// <details>
-/// <summary>x_ray</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;x_ray&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 60,300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -739,9 +739,9 @@ import 'aws_integrations_xray.dart';
 ///       aws_regions              = ["us-east-1", "us-east-2"]
 ///     }
 /// ```
-/// </details>
-/// <details>
-/// <summary>s3</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;s3&lt;/summary&gt;
 /// *  Supported Arguments: `fetch_extended_inventory` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -753,9 +753,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///      }
 /// ```
-/// </details>
-/// <details>
-/// <summary>doc_db</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;doc_db&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -764,9 +764,9 @@ import 'aws_integrations_xray.dart';
 ///           aws_regions              = ["us-east-1", "us-east-2"]
 ///        }
 /// ```
-/// </details>
-/// <details>
-/// <summary>sqs</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;sqs&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_extended_inventory` `fetch_tags` `queue_prefixes` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -780,9 +780,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>ebs</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;ebs&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_extended_inventory` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -794,9 +794,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///       }
 /// ```
-/// </details>
-/// <details>
-/// <summary>alb</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;alb&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_extended_inventory` `fetch_tags` `load_balancer_prefixes` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -810,9 +810,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>elasticache</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;elasticache&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -824,9 +824,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///       }
 /// ```
-/// </details>
-/// <details>
-/// <summary>api_gateway</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;api_gateway&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `tag_key` `tag_value` `stage_prefixes`
 /// ```hcl
 ///        api_gateway {
@@ -837,9 +837,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///       }
 /// ```
-/// </details>
-/// <details>
-/// <summary>cloudfront</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;cloudfront&lt;/summary&gt;
 /// *  Supported Arguments: `fetch_lambdas_at_edge` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -851,9 +851,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///       }
 /// ```
-/// </details>
-/// <details>
-/// <summary>dynamodb</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;dynamodb&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_extended_inventory` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -866,9 +866,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>ec2</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;ec2&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `duplicate_ec2_tags` `fetch_ip_addresses` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -881,9 +881,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///       }
 /// ```
-/// </details>
-/// <details>
-/// <summary>ecs</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;ecs&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -895,9 +895,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>efs</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;efs&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -909,9 +909,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>elasticbeanstalk</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;elasticbeanstalk&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_extended_inventory` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -924,9 +924,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///       }
 /// ```
-/// </details>
-/// <details>
-/// <summary>elasticsearch</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;elasticsearch&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_nodes` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -938,9 +938,9 @@ import 'aws_integrations_xray.dart';
 ///         tag_value                = "tag value"
 ///       }
 /// ```
-/// </details>
-/// <details>
-/// <summary>elb</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;elb&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_extended_inventory` `fetch_tags` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -951,9 +951,9 @@ import 'aws_integrations_xray.dart';
 ///           metrics_polling_interval = 300
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>emr</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;emr&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -965,9 +965,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>iam</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;iam&lt;/summary&gt;
 /// *  Supported Arguments: `tag_key` `tag_value` `metrics_polling_interval`
 /// ```hcl
 ///         iam {
@@ -976,9 +976,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary> kinesis </summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt; kinesis &lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_shards` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -991,9 +991,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>lambda</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;lambda&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -1005,9 +1005,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>rds</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;rds&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_tags` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -1019,9 +1019,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>redshift</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;redshift&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `tag_key` `tag_value` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -1032,9 +1032,9 @@ import 'aws_integrations_xray.dart';
 ///           tag_value                = "tag value"
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>route53</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;route53&lt;/summary&gt;
 /// *  Supported Arguments: `fetch_extended_inventory` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -1043,9 +1043,9 @@ import 'aws_integrations_xray.dart';
 ///           metrics_polling_interval = 300
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>sns</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;sns&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `fetch_extended_inventory` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 300, 900, 1800, 3600 (seconds)
 /// ```hcl
@@ -1055,9 +1055,9 @@ import 'aws_integrations_xray.dart';
 ///           metrics_polling_interval = 300
 ///         }
 /// ```
-/// </details>
-/// <details>
-/// <summary>security hub</summary>
+/// &lt;/details&gt;
+/// &lt;details&gt;
+/// &lt;summary&gt;security hub&lt;/summary&gt;
 /// *  Supported Arguments: `aws_regions` `metrics_polling_interval`
 /// *  Valid `metrics_polling_interval` values: 21600, 43200, 86400 (seconds)
 /// ```hcl
@@ -1066,8 +1066,8 @@ import 'aws_integrations_xray.dart';
 ///           metrics_polling_interval = 86400
 ///         }
 /// ```
-/// </details>
-/// </details>
+/// &lt;/details&gt;
+/// &lt;/details&gt;
 ///
 ///
 /// ## Additional Examples
@@ -3182,114 +3182,172 @@ import 'aws_integrations_xray.dart';
 class AwsIntegrations extends pulumi.CustomResource {
   /// The New Relic account ID to operate on.  This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
+
   /// ALB integration
   late final pulumi.Output<AwsIntegrationsAlb?> alb;
+
   /// API Gateway integration
   late final pulumi.Output<AwsIntegrationsApiGateway?> apiGateway;
+
   /// AutoScaling integration
   late final pulumi.Output<AwsIntegrationsAutoScaling?> autoScaling;
+
   /// Aws Appsync integration
   late final pulumi.Output<AwsIntegrationsAwsAppSync?> awsAppSync;
+
   /// Aws Athena integration
   late final pulumi.Output<AwsIntegrationsAwsAthena?> awsAthena;
+
   /// Aws Auto Discovery Integration
   late final pulumi.Output<AwsIntegrationsAwsAutoDiscovery?> awsAutoDiscovery;
+
   /// Aws Cognito integration
   late final pulumi.Output<AwsIntegrationsAwsCognito?> awsCognito;
+
   /// Aws Connect integration
   late final pulumi.Output<AwsIntegrationsAwsConnect?> awsConnect;
+
   /// Aws Direct Connect integration
   late final pulumi.Output<AwsIntegrationsAwsDirectConnect?> awsDirectConnect;
+
   /// Aws Fsx integration
   late final pulumi.Output<AwsIntegrationsAwsFsx?> awsFsx;
+
   /// Aws Glue integration
   late final pulumi.Output<AwsIntegrationsAwsGlue?> awsGlue;
+
   /// Aws Kinesis Analytics integration
-  late final pulumi.Output<AwsIntegrationsAwsKinesisAnalytics?> awsKinesisAnalytics;
+  late final pulumi.Output<AwsIntegrationsAwsKinesisAnalytics?>
+  awsKinesisAnalytics;
+
   /// Aws Media Convert integration
   late final pulumi.Output<AwsIntegrationsAwsMediaConvert?> awsMediaConvert;
+
   /// Aws Media PackageVod integration
-  late final pulumi.Output<AwsIntegrationsAwsMediaPackageVod?> awsMediaPackageVod;
+  late final pulumi.Output<AwsIntegrationsAwsMediaPackageVod?>
+  awsMediaPackageVod;
+
   /// Aws Mq integration
   late final pulumi.Output<AwsIntegrationsAwsMq?> awsMq;
+
   /// Aws Msk integration
   late final pulumi.Output<AwsIntegrationsAwsMsk?> awsMsk;
+
   /// Aws Neptune integration
   late final pulumi.Output<AwsIntegrationsAwsNeptune?> awsNeptune;
+
   /// Aws Qldb integration
   late final pulumi.Output<AwsIntegrationsAwsQldb?> awsQldb;
+
   /// Aws Route53resolver integration
-  late final pulumi.Output<AwsIntegrationsAwsRoute53resolver?> awsRoute53resolver;
+  late final pulumi.Output<AwsIntegrationsAwsRoute53resolver?>
+  awsRoute53resolver;
+
   /// Aws states integration
   late final pulumi.Output<AwsIntegrationsAwsStates?> awsStates;
+
   /// Aws Transit Gateway integration
   late final pulumi.Output<AwsIntegrationsAwsTransitGateway?> awsTransitGateway;
+
   /// Aws Waf integration
   late final pulumi.Output<AwsIntegrationsAwsWaf?> awsWaf;
+
   /// Aws Wafv2 integration
   late final pulumi.Output<AwsIntegrationsAwsWafv2?> awsWafv2;
+
   /// Billing integration
   late final pulumi.Output<AwsIntegrationsBilling?> billing;
+
   /// Cloudfront integration
   late final pulumi.Output<AwsIntegrationsCloudfront?> cloudfront;
+
   /// CloudTrail integration
   late final pulumi.Output<AwsIntegrationsCloudtrail?> cloudtrail;
+
   /// Doc DB integration
   late final pulumi.Output<AwsIntegrationsDocDb?> docDb;
+
   /// Dynamo DB integration
   late final pulumi.Output<AwsIntegrationsDynamodb?> dynamodb;
+
   /// EBS integration
   late final pulumi.Output<AwsIntegrationsEbs?> ebs;
+
   /// Ec2 integration
   late final pulumi.Output<AwsIntegrationsEc2?> ec2;
+
   /// Ecs integration
   late final pulumi.Output<AwsIntegrationsEcs?> ecs;
+
   /// Efs integration
   late final pulumi.Output<AwsIntegrationsEfs?> efs;
+
   /// Elasticache integration
   late final pulumi.Output<AwsIntegrationsElasticache?> elasticache;
+
   /// Elastic Bean Stalk integration
   late final pulumi.Output<AwsIntegrationsElasticbeanstalk?> elasticbeanstalk;
+
   /// Elastic Search integration
   late final pulumi.Output<AwsIntegrationsElasticsearch?> elasticsearch;
+
   /// Elb integration
   late final pulumi.Output<AwsIntegrationsElb?> elb;
+
   /// Emr integration
   late final pulumi.Output<AwsIntegrationsEmr?> emr;
+
   /// Health integration
   late final pulumi.Output<AwsIntegrationsHealth?> health;
+
   /// Iam integration
   late final pulumi.Output<AwsIntegrationsIam?> iam;
+
   /// Iot integration
   late final pulumi.Output<AwsIntegrationsIot?> iot;
+
   /// Kinesis integration
   late final pulumi.Output<AwsIntegrationsKinesis?> kinesis;
+
   /// Kinesis Firehose integration
   late final pulumi.Output<AwsIntegrationsKinesisFirehose?> kinesisFirehose;
+
   /// Lambda integration
   late final pulumi.Output<AwsIntegrationsLambda?> lambda;
+
   /// The ID of the linked AWS account in New Relic.
   late final pulumi.Output<String> linkedAccountId;
+
   /// Rds integration
   late final pulumi.Output<AwsIntegrationsRds?> rds;
+
   /// Redshift integration
   late final pulumi.Output<AwsIntegrationsRedshift?> redshift;
+
   /// Route53 integration
   late final pulumi.Output<AwsIntegrationsRoute53?> route53;
+
   /// S3 integration
   late final pulumi.Output<AwsIntegrationsS3?> s3;
+
   /// Security Hub integration
   late final pulumi.Output<AwsIntegrationsSecurityHub?> securityHub;
+
   /// Ses integration
   late final pulumi.Output<AwsIntegrationsSes?> ses;
+
   /// Sns integration
   late final pulumi.Output<AwsIntegrationsSns?> sns;
+
   /// SQS integration
   late final pulumi.Output<AwsIntegrationsSqs?> sqs;
+
   /// Trusted Advisor integration
   late final pulumi.Output<AwsIntegrationsTrustedAdvisor?> trustedAdvisor;
+
   /// VPC integration
   late final pulumi.Output<AwsIntegrationsVpc?> vpc;
+
   /// X-Ray integration
   late final pulumi.Output<AwsIntegrationsXRay?> xRay;
 
@@ -3302,67 +3360,89 @@ class AwsIntegrations extends pulumi.CustomResource {
     AwsIntegrationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsIntegrations:AwsIntegrations',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.alb = registerOutput<AwsIntegrationsAlb?>('alb');
-    this.apiGateway = registerOutput<AwsIntegrationsApiGateway?>('apiGateway');
-    this.autoScaling = registerOutput<AwsIntegrationsAutoScaling?>('autoScaling');
-    this.awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>('awsAppSync');
-    this.awsAthena = registerOutput<AwsIntegrationsAwsAthena?>('awsAthena');
-    this.awsAutoDiscovery = registerOutput<AwsIntegrationsAwsAutoDiscovery?>('awsAutoDiscovery');
-    this.awsCognito = registerOutput<AwsIntegrationsAwsCognito?>('awsCognito');
-    this.awsConnect = registerOutput<AwsIntegrationsAwsConnect?>('awsConnect');
-    this.awsDirectConnect = registerOutput<AwsIntegrationsAwsDirectConnect?>('awsDirectConnect');
-    this.awsFsx = registerOutput<AwsIntegrationsAwsFsx?>('awsFsx');
-    this.awsGlue = registerOutput<AwsIntegrationsAwsGlue?>('awsGlue');
-    this.awsKinesisAnalytics = registerOutput<AwsIntegrationsAwsKinesisAnalytics?>('awsKinesisAnalytics');
-    this.awsMediaConvert = registerOutput<AwsIntegrationsAwsMediaConvert?>('awsMediaConvert');
-    this.awsMediaPackageVod = registerOutput<AwsIntegrationsAwsMediaPackageVod?>('awsMediaPackageVod');
-    this.awsMq = registerOutput<AwsIntegrationsAwsMq?>('awsMq');
-    this.awsMsk = registerOutput<AwsIntegrationsAwsMsk?>('awsMsk');
-    this.awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>('awsNeptune');
-    this.awsQldb = registerOutput<AwsIntegrationsAwsQldb?>('awsQldb');
-    this.awsRoute53resolver = registerOutput<AwsIntegrationsAwsRoute53resolver?>('awsRoute53resolver');
-    this.awsStates = registerOutput<AwsIntegrationsAwsStates?>('awsStates');
-    this.awsTransitGateway = registerOutput<AwsIntegrationsAwsTransitGateway?>('awsTransitGateway');
-    this.awsWaf = registerOutput<AwsIntegrationsAwsWaf?>('awsWaf');
-    this.awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>('awsWafv2');
-    this.billing = registerOutput<AwsIntegrationsBilling?>('billing');
-    this.cloudfront = registerOutput<AwsIntegrationsCloudfront?>('cloudfront');
-    this.cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>('cloudtrail');
-    this.docDb = registerOutput<AwsIntegrationsDocDb?>('docDb');
-    this.dynamodb = registerOutput<AwsIntegrationsDynamodb?>('dynamodb');
-    this.ebs = registerOutput<AwsIntegrationsEbs?>('ebs');
-    this.ec2 = registerOutput<AwsIntegrationsEc2?>('ec2');
-    this.ecs = registerOutput<AwsIntegrationsEcs?>('ecs');
-    this.efs = registerOutput<AwsIntegrationsEfs?>('efs');
-    this.elasticache = registerOutput<AwsIntegrationsElasticache?>('elasticache');
-    this.elasticbeanstalk = registerOutput<AwsIntegrationsElasticbeanstalk?>('elasticbeanstalk');
-    this.elasticsearch = registerOutput<AwsIntegrationsElasticsearch?>('elasticsearch');
-    this.elb = registerOutput<AwsIntegrationsElb?>('elb');
-    this.emr = registerOutput<AwsIntegrationsEmr?>('emr');
-    this.health = registerOutput<AwsIntegrationsHealth?>('health');
-    this.iam = registerOutput<AwsIntegrationsIam?>('iam');
-    this.iot = registerOutput<AwsIntegrationsIot?>('iot');
-    this.kinesis = registerOutput<AwsIntegrationsKinesis?>('kinesis');
-    this.kinesisFirehose = registerOutput<AwsIntegrationsKinesisFirehose?>('kinesisFirehose');
-    this.lambda = registerOutput<AwsIntegrationsLambda?>('lambda');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.rds = registerOutput<AwsIntegrationsRds?>('rds');
-    this.redshift = registerOutput<AwsIntegrationsRedshift?>('redshift');
-    this.route53 = registerOutput<AwsIntegrationsRoute53?>('route53');
-    this.s3 = registerOutput<AwsIntegrationsS3?>('s3');
-    this.securityHub = registerOutput<AwsIntegrationsSecurityHub?>('securityHub');
-    this.ses = registerOutput<AwsIntegrationsSes?>('ses');
-    this.sns = registerOutput<AwsIntegrationsSns?>('sns');
-    this.sqs = registerOutput<AwsIntegrationsSqs?>('sqs');
-    this.trustedAdvisor = registerOutput<AwsIntegrationsTrustedAdvisor?>('trustedAdvisor');
-    this.vpc = registerOutput<AwsIntegrationsVpc?>('vpc');
-    this.xRay = registerOutput<AwsIntegrationsXRay?>('xRay');
+         'newrelic:cloud/awsIntegrations:AwsIntegrations',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    alb = registerOutput<AwsIntegrationsAlb?>('alb');
+    apiGateway = registerOutput<AwsIntegrationsApiGateway?>('apiGateway');
+    autoScaling = registerOutput<AwsIntegrationsAutoScaling?>('autoScaling');
+    awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>('awsAppSync');
+    awsAthena = registerOutput<AwsIntegrationsAwsAthena?>('awsAthena');
+    awsAutoDiscovery = registerOutput<AwsIntegrationsAwsAutoDiscovery?>(
+      'awsAutoDiscovery',
+    );
+    awsCognito = registerOutput<AwsIntegrationsAwsCognito?>('awsCognito');
+    awsConnect = registerOutput<AwsIntegrationsAwsConnect?>('awsConnect');
+    awsDirectConnect = registerOutput<AwsIntegrationsAwsDirectConnect?>(
+      'awsDirectConnect',
+    );
+    awsFsx = registerOutput<AwsIntegrationsAwsFsx?>('awsFsx');
+    awsGlue = registerOutput<AwsIntegrationsAwsGlue?>('awsGlue');
+    awsKinesisAnalytics = registerOutput<AwsIntegrationsAwsKinesisAnalytics?>(
+      'awsKinesisAnalytics',
+    );
+    awsMediaConvert = registerOutput<AwsIntegrationsAwsMediaConvert?>(
+      'awsMediaConvert',
+    );
+    awsMediaPackageVod = registerOutput<AwsIntegrationsAwsMediaPackageVod?>(
+      'awsMediaPackageVod',
+    );
+    awsMq = registerOutput<AwsIntegrationsAwsMq?>('awsMq');
+    awsMsk = registerOutput<AwsIntegrationsAwsMsk?>('awsMsk');
+    awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>('awsNeptune');
+    awsQldb = registerOutput<AwsIntegrationsAwsQldb?>('awsQldb');
+    awsRoute53resolver = registerOutput<AwsIntegrationsAwsRoute53resolver?>(
+      'awsRoute53resolver',
+    );
+    awsStates = registerOutput<AwsIntegrationsAwsStates?>('awsStates');
+    awsTransitGateway = registerOutput<AwsIntegrationsAwsTransitGateway?>(
+      'awsTransitGateway',
+    );
+    awsWaf = registerOutput<AwsIntegrationsAwsWaf?>('awsWaf');
+    awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>('awsWafv2');
+    billing = registerOutput<AwsIntegrationsBilling?>('billing');
+    cloudfront = registerOutput<AwsIntegrationsCloudfront?>('cloudfront');
+    cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>('cloudtrail');
+    docDb = registerOutput<AwsIntegrationsDocDb?>('docDb');
+    dynamodb = registerOutput<AwsIntegrationsDynamodb?>('dynamodb');
+    ebs = registerOutput<AwsIntegrationsEbs?>('ebs');
+    ec2 = registerOutput<AwsIntegrationsEc2?>('ec2');
+    ecs = registerOutput<AwsIntegrationsEcs?>('ecs');
+    efs = registerOutput<AwsIntegrationsEfs?>('efs');
+    elasticache = registerOutput<AwsIntegrationsElasticache?>('elasticache');
+    elasticbeanstalk = registerOutput<AwsIntegrationsElasticbeanstalk?>(
+      'elasticbeanstalk',
+    );
+    elasticsearch = registerOutput<AwsIntegrationsElasticsearch?>(
+      'elasticsearch',
+    );
+    elb = registerOutput<AwsIntegrationsElb?>('elb');
+    emr = registerOutput<AwsIntegrationsEmr?>('emr');
+    health = registerOutput<AwsIntegrationsHealth?>('health');
+    iam = registerOutput<AwsIntegrationsIam?>('iam');
+    iot = registerOutput<AwsIntegrationsIot?>('iot');
+    kinesis = registerOutput<AwsIntegrationsKinesis?>('kinesis');
+    kinesisFirehose = registerOutput<AwsIntegrationsKinesisFirehose?>(
+      'kinesisFirehose',
+    );
+    lambda = registerOutput<AwsIntegrationsLambda?>('lambda');
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    rds = registerOutput<AwsIntegrationsRds?>('rds');
+    redshift = registerOutput<AwsIntegrationsRedshift?>('redshift');
+    route53 = registerOutput<AwsIntegrationsRoute53?>('route53');
+    s3 = registerOutput<AwsIntegrationsS3?>('s3');
+    securityHub = registerOutput<AwsIntegrationsSecurityHub?>('securityHub');
+    ses = registerOutput<AwsIntegrationsSes?>('ses');
+    sns = registerOutput<AwsIntegrationsSns?>('sns');
+    sqs = registerOutput<AwsIntegrationsSqs?>('sqs');
+    trustedAdvisor = registerOutput<AwsIntegrationsTrustedAdvisor?>(
+      'trustedAdvisor',
+    );
+    vpc = registerOutput<AwsIntegrationsVpc?>('vpc');
+    xRay = registerOutput<AwsIntegrationsXRay?>('xRay');
   }
 
   /// Gets an existing [AwsIntegrations] resource's state with the given [name] and [id].
@@ -3383,66 +3463,88 @@ class AwsIntegrations extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsIntegrations:AwsIntegrations',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.alb = registerOutput<AwsIntegrationsAlb?>('alb');
-    this.apiGateway = registerOutput<AwsIntegrationsApiGateway?>('apiGateway');
-    this.autoScaling = registerOutput<AwsIntegrationsAutoScaling?>('autoScaling');
-    this.awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>('awsAppSync');
-    this.awsAthena = registerOutput<AwsIntegrationsAwsAthena?>('awsAthena');
-    this.awsAutoDiscovery = registerOutput<AwsIntegrationsAwsAutoDiscovery?>('awsAutoDiscovery');
-    this.awsCognito = registerOutput<AwsIntegrationsAwsCognito?>('awsCognito');
-    this.awsConnect = registerOutput<AwsIntegrationsAwsConnect?>('awsConnect');
-    this.awsDirectConnect = registerOutput<AwsIntegrationsAwsDirectConnect?>('awsDirectConnect');
-    this.awsFsx = registerOutput<AwsIntegrationsAwsFsx?>('awsFsx');
-    this.awsGlue = registerOutput<AwsIntegrationsAwsGlue?>('awsGlue');
-    this.awsKinesisAnalytics = registerOutput<AwsIntegrationsAwsKinesisAnalytics?>('awsKinesisAnalytics');
-    this.awsMediaConvert = registerOutput<AwsIntegrationsAwsMediaConvert?>('awsMediaConvert');
-    this.awsMediaPackageVod = registerOutput<AwsIntegrationsAwsMediaPackageVod?>('awsMediaPackageVod');
-    this.awsMq = registerOutput<AwsIntegrationsAwsMq?>('awsMq');
-    this.awsMsk = registerOutput<AwsIntegrationsAwsMsk?>('awsMsk');
-    this.awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>('awsNeptune');
-    this.awsQldb = registerOutput<AwsIntegrationsAwsQldb?>('awsQldb');
-    this.awsRoute53resolver = registerOutput<AwsIntegrationsAwsRoute53resolver?>('awsRoute53resolver');
-    this.awsStates = registerOutput<AwsIntegrationsAwsStates?>('awsStates');
-    this.awsTransitGateway = registerOutput<AwsIntegrationsAwsTransitGateway?>('awsTransitGateway');
-    this.awsWaf = registerOutput<AwsIntegrationsAwsWaf?>('awsWaf');
-    this.awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>('awsWafv2');
-    this.billing = registerOutput<AwsIntegrationsBilling?>('billing');
-    this.cloudfront = registerOutput<AwsIntegrationsCloudfront?>('cloudfront');
-    this.cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>('cloudtrail');
-    this.docDb = registerOutput<AwsIntegrationsDocDb?>('docDb');
-    this.dynamodb = registerOutput<AwsIntegrationsDynamodb?>('dynamodb');
-    this.ebs = registerOutput<AwsIntegrationsEbs?>('ebs');
-    this.ec2 = registerOutput<AwsIntegrationsEc2?>('ec2');
-    this.ecs = registerOutput<AwsIntegrationsEcs?>('ecs');
-    this.efs = registerOutput<AwsIntegrationsEfs?>('efs');
-    this.elasticache = registerOutput<AwsIntegrationsElasticache?>('elasticache');
-    this.elasticbeanstalk = registerOutput<AwsIntegrationsElasticbeanstalk?>('elasticbeanstalk');
-    this.elasticsearch = registerOutput<AwsIntegrationsElasticsearch?>('elasticsearch');
-    this.elb = registerOutput<AwsIntegrationsElb?>('elb');
-    this.emr = registerOutput<AwsIntegrationsEmr?>('emr');
-    this.health = registerOutput<AwsIntegrationsHealth?>('health');
-    this.iam = registerOutput<AwsIntegrationsIam?>('iam');
-    this.iot = registerOutput<AwsIntegrationsIot?>('iot');
-    this.kinesis = registerOutput<AwsIntegrationsKinesis?>('kinesis');
-    this.kinesisFirehose = registerOutput<AwsIntegrationsKinesisFirehose?>('kinesisFirehose');
-    this.lambda = registerOutput<AwsIntegrationsLambda?>('lambda');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.rds = registerOutput<AwsIntegrationsRds?>('rds');
-    this.redshift = registerOutput<AwsIntegrationsRedshift?>('redshift');
-    this.route53 = registerOutput<AwsIntegrationsRoute53?>('route53');
-    this.s3 = registerOutput<AwsIntegrationsS3?>('s3');
-    this.securityHub = registerOutput<AwsIntegrationsSecurityHub?>('securityHub');
-    this.ses = registerOutput<AwsIntegrationsSes?>('ses');
-    this.sns = registerOutput<AwsIntegrationsSns?>('sns');
-    this.sqs = registerOutput<AwsIntegrationsSqs?>('sqs');
-    this.trustedAdvisor = registerOutput<AwsIntegrationsTrustedAdvisor?>('trustedAdvisor');
-    this.vpc = registerOutput<AwsIntegrationsVpc?>('vpc');
-    this.xRay = registerOutput<AwsIntegrationsXRay?>('xRay');
+         'newrelic:cloud/awsIntegrations:AwsIntegrations',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    alb = registerOutput<AwsIntegrationsAlb?>('alb');
+    apiGateway = registerOutput<AwsIntegrationsApiGateway?>('apiGateway');
+    autoScaling = registerOutput<AwsIntegrationsAutoScaling?>('autoScaling');
+    awsAppSync = registerOutput<AwsIntegrationsAwsAppSync?>('awsAppSync');
+    awsAthena = registerOutput<AwsIntegrationsAwsAthena?>('awsAthena');
+    awsAutoDiscovery = registerOutput<AwsIntegrationsAwsAutoDiscovery?>(
+      'awsAutoDiscovery',
+    );
+    awsCognito = registerOutput<AwsIntegrationsAwsCognito?>('awsCognito');
+    awsConnect = registerOutput<AwsIntegrationsAwsConnect?>('awsConnect');
+    awsDirectConnect = registerOutput<AwsIntegrationsAwsDirectConnect?>(
+      'awsDirectConnect',
+    );
+    awsFsx = registerOutput<AwsIntegrationsAwsFsx?>('awsFsx');
+    awsGlue = registerOutput<AwsIntegrationsAwsGlue?>('awsGlue');
+    awsKinesisAnalytics = registerOutput<AwsIntegrationsAwsKinesisAnalytics?>(
+      'awsKinesisAnalytics',
+    );
+    awsMediaConvert = registerOutput<AwsIntegrationsAwsMediaConvert?>(
+      'awsMediaConvert',
+    );
+    awsMediaPackageVod = registerOutput<AwsIntegrationsAwsMediaPackageVod?>(
+      'awsMediaPackageVod',
+    );
+    awsMq = registerOutput<AwsIntegrationsAwsMq?>('awsMq');
+    awsMsk = registerOutput<AwsIntegrationsAwsMsk?>('awsMsk');
+    awsNeptune = registerOutput<AwsIntegrationsAwsNeptune?>('awsNeptune');
+    awsQldb = registerOutput<AwsIntegrationsAwsQldb?>('awsQldb');
+    awsRoute53resolver = registerOutput<AwsIntegrationsAwsRoute53resolver?>(
+      'awsRoute53resolver',
+    );
+    awsStates = registerOutput<AwsIntegrationsAwsStates?>('awsStates');
+    awsTransitGateway = registerOutput<AwsIntegrationsAwsTransitGateway?>(
+      'awsTransitGateway',
+    );
+    awsWaf = registerOutput<AwsIntegrationsAwsWaf?>('awsWaf');
+    awsWafv2 = registerOutput<AwsIntegrationsAwsWafv2?>('awsWafv2');
+    billing = registerOutput<AwsIntegrationsBilling?>('billing');
+    cloudfront = registerOutput<AwsIntegrationsCloudfront?>('cloudfront');
+    cloudtrail = registerOutput<AwsIntegrationsCloudtrail?>('cloudtrail');
+    docDb = registerOutput<AwsIntegrationsDocDb?>('docDb');
+    dynamodb = registerOutput<AwsIntegrationsDynamodb?>('dynamodb');
+    ebs = registerOutput<AwsIntegrationsEbs?>('ebs');
+    ec2 = registerOutput<AwsIntegrationsEc2?>('ec2');
+    ecs = registerOutput<AwsIntegrationsEcs?>('ecs');
+    efs = registerOutput<AwsIntegrationsEfs?>('efs');
+    elasticache = registerOutput<AwsIntegrationsElasticache?>('elasticache');
+    elasticbeanstalk = registerOutput<AwsIntegrationsElasticbeanstalk?>(
+      'elasticbeanstalk',
+    );
+    elasticsearch = registerOutput<AwsIntegrationsElasticsearch?>(
+      'elasticsearch',
+    );
+    elb = registerOutput<AwsIntegrationsElb?>('elb');
+    emr = registerOutput<AwsIntegrationsEmr?>('emr');
+    health = registerOutput<AwsIntegrationsHealth?>('health');
+    iam = registerOutput<AwsIntegrationsIam?>('iam');
+    iot = registerOutput<AwsIntegrationsIot?>('iot');
+    kinesis = registerOutput<AwsIntegrationsKinesis?>('kinesis');
+    kinesisFirehose = registerOutput<AwsIntegrationsKinesisFirehose?>(
+      'kinesisFirehose',
+    );
+    lambda = registerOutput<AwsIntegrationsLambda?>('lambda');
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    rds = registerOutput<AwsIntegrationsRds?>('rds');
+    redshift = registerOutput<AwsIntegrationsRedshift?>('redshift');
+    route53 = registerOutput<AwsIntegrationsRoute53?>('route53');
+    s3 = registerOutput<AwsIntegrationsS3?>('s3');
+    securityHub = registerOutput<AwsIntegrationsSecurityHub?>('securityHub');
+    ses = registerOutput<AwsIntegrationsSes?>('ses');
+    sns = registerOutput<AwsIntegrationsSns?>('sns');
+    sqs = registerOutput<AwsIntegrationsSqs?>('sqs');
+    trustedAdvisor = registerOutput<AwsIntegrationsTrustedAdvisor?>(
+      'trustedAdvisor',
+    );
+    vpc = registerOutput<AwsIntegrationsVpc?>('vpc');
+    xRay = registerOutput<AwsIntegrationsXRay?>('xRay');
   }
 }

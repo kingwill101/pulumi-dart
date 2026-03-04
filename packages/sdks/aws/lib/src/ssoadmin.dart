@@ -1,5 +1,3 @@
-library module_ssoadmin;
-
 export 'ssoadmin/account_assignment.dart';
 export 'ssoadmin/account_assignment_args.dart';
 export 'ssoadmin/account_assignment_state.dart';

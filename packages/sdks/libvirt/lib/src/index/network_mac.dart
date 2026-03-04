@@ -8,20 +8,19 @@ class NetworkMac {
 
   /// Creates a new [NetworkMac].
   /// [address] Specifies the actual MAC address associated with the network.
-  NetworkMac({
-    this.address,
-  });
+  NetworkMac({this.address});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': ?address,
-    };
+    return <String, dynamic>{'address': ?address};
   }
 
   factory NetworkMac.fromMap(Map<String, dynamic> map) {
     return NetworkMac(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

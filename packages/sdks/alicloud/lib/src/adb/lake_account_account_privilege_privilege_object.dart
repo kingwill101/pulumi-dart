@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LakeAccountAccountPrivilegePrivilegeObject {
   /// The name of column.
   final pulumi.Input<String>? column;
+
   /// The name of database.
   final pulumi.Input<String>? database;
+
   /// The name of table.
   final pulumi.Input<String>? table;
 
@@ -28,12 +30,25 @@ class LakeAccountAccountPrivilegePrivilegeObject {
     };
   }
 
-  factory LakeAccountAccountPrivilegePrivilegeObject.fromMap(Map<String, dynamic> map) {
+  factory LakeAccountAccountPrivilegePrivilegeObject.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LakeAccountAccountPrivilegePrivilegeObject(
-      column: map['column'] == null ? null : (map['column']! as String).input(),
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      table: map['table'] == null ? null : (map['table']! as String).input(),
+      column: (() {
+        final guardedValue = map['column'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      table: (() {
+        final guardedValue = map['table'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

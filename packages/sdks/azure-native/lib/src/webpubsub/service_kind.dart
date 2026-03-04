@@ -3,16 +3,15 @@ enum ServiceKind {
   valueWebPubSub("WebPubSub"),
   valueSocketIO("SocketIO");
 
-  const ServiceKind(this.value);
-  final String value;
+  const ServiceKind(this.wireValue);
+  final String wireValue;
 
   static ServiceKind fromValue(String value) {
     for (final item in ServiceKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceKind value: $value');
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyAttachmentsArgs {
   /// The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
   final pulumi.Input<String>? language;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   final pulumi.Input<String>? policyName;
+
   /// The type of the policy. Valid values: `Custom` and `System`.
   final pulumi.Input<String>? policyType;
+
   /// The name of the object to which the policy is attached.
   final pulumi.Input<String>? principalName;
+
   /// The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   final pulumi.Input<String>? principalType;
+
   /// The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
   final pulumi.Input<String>? resourceGroupId;
 
@@ -54,14 +60,41 @@ class GetPolicyAttachmentsArgs {
 
   factory GetPolicyAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyAttachmentsArgs(
-      language: map['language'] == null ? null : (map['language']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
-      principalName: map['principalName'] == null ? null : (map['principalName']! as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      language: (() {
+        final guardedValue = map['language'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyType: (() {
+        final guardedValue = map['policyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalName: (() {
+        final guardedValue = map['principalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalType: (() {
+        final guardedValue = map['principalType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

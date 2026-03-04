@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentConfigWorkloadsConfigDagProcessor {
   /// Number of DAG processors.
   final pulumi.Input<int>? count;
+
   /// CPU request and limit for DAG processor.
   final pulumi.Input<double>? cpu;
+
   /// Memory (GB) request and limit for DAG processor.
   final pulumi.Input<double>? memoryGb;
+
   /// Storage (GB) request and limit for DAG processor.
   final pulumi.Input<double>? storageGb;
 
@@ -33,13 +36,30 @@ class EnvironmentConfigWorkloadsConfigDagProcessor {
     };
   }
 
-  factory EnvironmentConfigWorkloadsConfigDagProcessor.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentConfigWorkloadsConfigDagProcessor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentConfigWorkloadsConfigDagProcessor(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      memoryGb: (() {
+        final guardedValue = map['memoryGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      storageGb: (() {
+        final guardedValue = map['storageGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

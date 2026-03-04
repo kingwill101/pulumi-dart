@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AndroidAppInfoResponse {
   /// The name of the app. Optional
   final pulumi.Input<String> name;
+
   /// The package name of the app. Required.
   final pulumi.Input<String> packageName;
+
   /// The internal version code of the app. Optional.
   final pulumi.Input<String> versionCode;
+
   /// The version name of the app. Optional.
   final pulumi.Input<String> versionName;
 
@@ -36,11 +39,10 @@ class AndroidAppInfoResponse {
 
   factory AndroidAppInfoResponse.fromMap(Map<String, dynamic> map) {
     return AndroidAppInfoResponse(
-      name: (map['name'] as String).input(),
-      packageName: (map['packageName'] as String).input(),
-      versionCode: (map['versionCode'] as String).input(),
-      versionName: (map['versionName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      packageName: pulumi.Input.fromValue(map['packageName'] as String),
+      versionCode: pulumi.Input.fromValue(map['versionCode'] as String),
+      versionName: pulumi.Input.fromValue(map['versionName'] as String),
     );
   }
 }
-

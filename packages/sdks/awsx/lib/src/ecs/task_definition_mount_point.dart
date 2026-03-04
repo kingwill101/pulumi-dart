@@ -27,10 +27,21 @@ class TaskDefinitionMountPoint {
 
   factory TaskDefinitionMountPoint.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionMountPoint(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      sourceVolume: map['sourceVolume'] == null ? null : (map['sourceVolume']! as String).input(),
+      containerPath: (() {
+        final guardedValue = map['containerPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourceVolume: (() {
+        final guardedValue = map['sourceVolume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,8 +8,10 @@ import 'get_projects_sort.dart';
 /// Result data returned by getProjects.
 class GetProjectsResult {
   final List<GetProjectsFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A set of projects satisfying any `filter` and `sort` criteria. Each project has
   /// the following attributes:
   final List<GetProjectsProject> projects;
@@ -29,20 +31,57 @@ class GetProjectsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetProjectsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetProjectsFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
-      'projects': pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(projects, (value) => value.toMap()),
-      'sorts': ?sorts == null ? null : pulumi.Input.encodeList<GetProjectsSort, Map<String, dynamic>>(sorts!, (value) => value.toMap()),
+      'projects':
+          pulumi.Input.encodeList<GetProjectsProject, Map<String, dynamic>>(
+            projects,
+            (value) => value.toMap(),
+          ),
+      'sorts': ?(() {
+        final guardedValue = sorts;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetProjectsSort, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
     };
   }
 
   factory GetProjectsResult.fromMap(Map<String, dynamic> map) {
     return GetProjectsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetProjectsFilter>(map['filters']!, (value) => GetProjectsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetProjectsFilter>(
+          guardedValue,
+          (value) =>
+              GetProjectsFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      projects: pulumi.Input.decodeList<GetProjectsProject>(map['projects'], (value) => GetProjectsProject.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetProjectsSort>(map['sorts']!, (value) => GetProjectsSort.fromMap((value as Map).cast<String, dynamic>())),
+      projects: pulumi.Input.decodeList<GetProjectsProject>(
+        map['projects']!,
+        (value) =>
+            GetProjectsProject.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      sorts: (() {
+        final guardedValue = map['sorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetProjectsSort>(
+          guardedValue,
+          (value) =>
+              GetProjectsSort.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

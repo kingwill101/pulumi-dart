@@ -20,16 +20,17 @@ enum PkixPublicKeySignatureAlgorithm {
   ecdsaP521Sha512("ECDSA_P521_SHA512"),
   ecSignP521Sha512("EC_SIGN_P521_SHA512");
 
-  const PkixPublicKeySignatureAlgorithm(this.value);
-  final String value;
+  const PkixPublicKeySignatureAlgorithm(this.wireValue);
+  final String wireValue;
 
   static PkixPublicKeySignatureAlgorithm fromValue(String value) {
     for (final item in PkixPublicKeySignatureAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PkixPublicKeySignatureAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown PkixPublicKeySignatureAlgorithm value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum VpnGatewayStackType {
   ipv4Only("IPV4_ONLY"),
   ipv6Only("IPV6_ONLY");
 
-  const VpnGatewayStackType(this.value);
-  final String value;
+  const VpnGatewayStackType(this.wireValue);
+  final String wireValue;
 
   static VpnGatewayStackType fromValue(String value) {
     for (final item in VpnGatewayStackType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnGatewayStackType value: $value');
   }
 }
-

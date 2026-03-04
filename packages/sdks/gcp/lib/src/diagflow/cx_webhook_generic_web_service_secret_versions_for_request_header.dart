@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxWebhookGenericWebServiceSecretVersionsForRequestHeader {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> key;
+
   /// The SecretManager secret version resource storing the header value.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
   final pulumi.Input<String> secretVersion;
@@ -18,17 +19,15 @@ class CxWebhookGenericWebServiceSecretVersionsForRequestHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'key': key, 'secretVersion': secretVersion};
   }
 
-  factory CxWebhookGenericWebServiceSecretVersionsForRequestHeader.fromMap(Map<String, dynamic> map) {
+  factory CxWebhookGenericWebServiceSecretVersionsForRequestHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxWebhookGenericWebServiceSecretVersionsForRequestHeader(
-      key: (map['key'] as String).input(),
-      secretVersion: (map['secretVersion'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

@@ -7,22 +7,31 @@ import 'scope_response.dart';
 class GetManagedNetworkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The collection of groups and policies concerned with connectivity
   final ConnectivityCollectionResponse connectivity;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning state of the ManagedNetwork resource.
   final String provisioningState;
+
   /// The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
   final ScopeResponse? scope;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   final String type;
 
@@ -59,7 +68,7 @@ class GetManagedNetworkResult {
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
-      'scope': ?scope == null ? null : scope!.toMap(),
+      'scope': ?scope?.toMap(),
       'tags': ?tags,
       'type': type,
     };
@@ -68,16 +77,27 @@ class GetManagedNetworkResult {
   factory GetManagedNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetManagedNetworkResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectivity: ConnectivityCollectionResponse.fromMap((map['connectivity'] as Map).cast<String, dynamic>()),
+      connectivity: ConnectivityCollectionResponse.fromMap(
+        (map['connectivity']! as Map).cast<String, dynamic>(),
+      ),
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      scope: map['scope'] == null ? null : ScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return ScopeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

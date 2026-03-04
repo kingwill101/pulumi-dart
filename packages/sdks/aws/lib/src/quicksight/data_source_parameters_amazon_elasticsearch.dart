@@ -8,20 +8,17 @@ class DataSourceParametersAmazonElasticsearch {
 
   /// Creates a new [DataSourceParametersAmazonElasticsearch].
   /// [domain] The OpenSearch domain.
-  DataSourceParametersAmazonElasticsearch({
-    required this.domain,
-  });
+  DataSourceParametersAmazonElasticsearch({required this.domain});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': domain,
-    };
+    return <String, dynamic>{'domain': domain};
   }
 
-  factory DataSourceParametersAmazonElasticsearch.fromMap(Map<String, dynamic> map) {
+  factory DataSourceParametersAmazonElasticsearch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceParametersAmazonElasticsearch(
-      domain: (map['domain'] as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
     );
   }
 }
-

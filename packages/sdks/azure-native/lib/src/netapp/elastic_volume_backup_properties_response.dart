@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticVolumeBackupPropertiesResponse {
   /// ResourceId used to identify Elastic Backup Policy
   final pulumi.Input<String>? elasticBackupPolicyResourceId;
+
   /// ResourceId used to identify Elastic Backup Vault
   final pulumi.Input<String>? elasticBackupVaultResourceId;
+
   /// The property to decide policy is enforced or not on the volume
   final pulumi.Input<String>? policyEnforcement;
 
@@ -29,12 +31,25 @@ class ElasticVolumeBackupPropertiesResponse {
     };
   }
 
-  factory ElasticVolumeBackupPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ElasticVolumeBackupPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ElasticVolumeBackupPropertiesResponse(
-      elasticBackupPolicyResourceId: map['elasticBackupPolicyResourceId'] == null ? null : (map['elasticBackupPolicyResourceId']! as String).input(),
-      elasticBackupVaultResourceId: map['elasticBackupVaultResourceId'] == null ? null : (map['elasticBackupVaultResourceId']! as String).input(),
-      policyEnforcement: map['policyEnforcement'] == null ? null : (map['policyEnforcement']! as String).input(),
+      elasticBackupPolicyResourceId: (() {
+        final guardedValue = map['elasticBackupPolicyResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticBackupVaultResourceId: (() {
+        final guardedValue = map['elasticBackupVaultResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyEnforcement: (() {
+        final guardedValue = map['policyEnforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -12,15 +12,14 @@ class GetCloudExadataInfrastructureCustomerContactsToSendToOci {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': email,
-    };
+    return <String, dynamic>{'email': email};
   }
 
-  factory GetCloudExadataInfrastructureCustomerContactsToSendToOci.fromMap(Map<String, dynamic> map) {
+  factory GetCloudExadataInfrastructureCustomerContactsToSendToOci.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCloudExadataInfrastructureCustomerContactsToSendToOci(
-      email: (map['email'] as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
-

@@ -11,20 +11,19 @@ class WebPubSubSocketIOSettings {
 
   /// Creates a new [WebPubSubSocketIOSettings].
   /// [serviceMode] The service mode of Web PubSub for Socket.IO. Values allowed:
-  WebPubSubSocketIOSettings({
-    this.serviceMode,
-  });
+  WebPubSubSocketIOSettings({this.serviceMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceMode': ?serviceMode,
-    };
+    return <String, dynamic>{'serviceMode': ?serviceMode};
   }
 
   factory WebPubSubSocketIOSettings.fromMap(Map<String, dynamic> map) {
     return WebPubSubSocketIOSettings(
-      serviceMode: map['serviceMode'] == null ? null : (map['serviceMode']! as String).input(),
+      serviceMode: (() {
+        final guardedValue = map['serviceMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

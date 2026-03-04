@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineJobMappingPipelineJobFhirStreamingSource {
   /// Describes the streaming FHIR data source.
   final pulumi.Input<String>? description;
+
   /// The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
   final pulumi.Input<String> fhirStore;
 
@@ -23,11 +24,16 @@ class PipelineJobMappingPipelineJobFhirStreamingSource {
     };
   }
 
-  factory PipelineJobMappingPipelineJobFhirStreamingSource.fromMap(Map<String, dynamic> map) {
+  factory PipelineJobMappingPipelineJobFhirStreamingSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineJobMappingPipelineJobFhirStreamingSource(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      fhirStore: (map['fhirStore'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fhirStore: pulumi.Input.fromValue(map['fhirStore'] as String),
     );
   }
 }
-

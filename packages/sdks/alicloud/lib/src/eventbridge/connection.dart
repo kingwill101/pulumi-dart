@@ -8,7 +8,7 @@ import 'connection_state.dart';
 ///
 /// For information about Event Bridge Connection and how to use it, see [What is Connection](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createconnection).
 ///
-/// > **NOTE:** Available since v1.210.0.
+/// &gt; **NOTE:** Available since v1.210.0.
 ///
 /// ## Example Usage
 ///
@@ -561,12 +561,16 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// The parameters that are configured for authentication. See `auth_parameters` below.
   late final pulumi.Output<ConnectionAuthParameters?> authParameters;
+
   /// The name of the connection.
   late final pulumi.Output<String> connectionName;
+
   /// The creation time of the Connection.
   late final pulumi.Output<String> createTime;
+
   /// The description of the connection.
   late final pulumi.Output<String?> description;
+
   /// The parameters that are configured for the network. See `network_parameters` below.
   late final pulumi.Output<ConnectionNetworkParameters> networkParameters;
 
@@ -579,16 +583,20 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authParameters = registerOutput<ConnectionAuthParameters?>('authParameters');
-    this.connectionName = registerOutput<String>('connectionName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.networkParameters = registerOutput<ConnectionNetworkParameters>('networkParameters');
+         'alicloud:eventbridge/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authParameters = registerOutput<ConnectionAuthParameters?>(
+      'authParameters',
+    );
+    connectionName = registerOutput<String>('connectionName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    networkParameters = registerOutput<ConnectionNetworkParameters>(
+      'networkParameters',
+    );
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -609,15 +617,19 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authParameters = registerOutput<ConnectionAuthParameters?>('authParameters');
-    this.connectionName = registerOutput<String>('connectionName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.networkParameters = registerOutput<ConnectionNetworkParameters>('networkParameters');
+         'alicloud:eventbridge/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authParameters = registerOutput<ConnectionAuthParameters?>(
+      'authParameters',
+    );
+    connectionName = registerOutput<String>('connectionName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    networkParameters = registerOutput<ConnectionNetworkParameters>(
+      'networkParameters',
+    );
   }
 }

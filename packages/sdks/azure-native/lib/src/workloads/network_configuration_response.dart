@@ -9,20 +9,19 @@ class NetworkConfigurationResponse {
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [isSecondaryIpEnabled] Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
-  NetworkConfigurationResponse({
-    this.isSecondaryIpEnabled,
-  });
+  NetworkConfigurationResponse({this.isSecondaryIpEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'isSecondaryIpEnabled': ?isSecondaryIpEnabled,
-    };
+    return <String, dynamic>{'isSecondaryIpEnabled': ?isSecondaryIpEnabled};
   }
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      isSecondaryIpEnabled: map['isSecondaryIpEnabled'] == null ? null : (map['isSecondaryIpEnabled']! as bool).input(),
+      isSecondaryIpEnabled: (() {
+        final guardedValue = map['isSecondaryIpEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

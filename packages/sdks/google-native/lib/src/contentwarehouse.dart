@@ -1,5 +1,3 @@
-library module_contentwarehouse;
-
 export 'contentwarehouse/document.dart';
 export 'contentwarehouse/document_args.dart';
 export 'contentwarehouse/document_content_category.dart';

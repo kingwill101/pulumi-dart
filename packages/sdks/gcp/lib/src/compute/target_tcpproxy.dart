@@ -241,10 +241,13 @@ import 'target_tcpproxy_state.dart';
 class TargetTCPProxy extends pulumi.CustomResource {
   /// A reference to the BackendService resource.
   late final pulumi.Output<String> backendService;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -253,19 +256,24 @@ class TargetTCPProxy extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// This field only applies when the forwarding rule that references
   /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   late final pulumi.Output<bool> proxyBind;
+
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
   late final pulumi.Output<String?> proxyHeader;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> proxyId;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -278,20 +286,20 @@ class TargetTCPProxy extends pulumi.CustomResource {
     TargetTCPProxyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/targetTCPProxy:TargetTCPProxy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendService = registerOutput<String>('backendService');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
+         'gcp:compute/targetTCPProxy:TargetTCPProxy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendService = registerOutput<String>('backendService');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.proxyBind = registerOutput<bool>('proxyBind');
-    this.proxyHeader = registerOutput<String?>('proxyHeader');
-    this.proxyId = registerOutput<int>('proxyId');
-    this.selfLink = registerOutput<String>('selfLink');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    proxyHeader = registerOutput<String?>('proxyHeader');
+    proxyId = registerOutput<int>('proxyId');
+    selfLink = registerOutput<String>('selfLink');
   }
 
   /// Gets an existing [TargetTCPProxy] resource's state with the given [name] and [id].
@@ -312,19 +320,19 @@ class TargetTCPProxy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/targetTCPProxy:TargetTCPProxy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendService = registerOutput<String>('backendService');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
+         'gcp:compute/targetTCPProxy:TargetTCPProxy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendService = registerOutput<String>('backendService');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.proxyBind = registerOutput<bool>('proxyBind');
-    this.proxyHeader = registerOutput<String?>('proxyHeader');
-    this.proxyId = registerOutput<int>('proxyId');
-    this.selfLink = registerOutput<String>('selfLink');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    proxyHeader = registerOutput<String?>('proxyHeader');
+    proxyId = registerOutput<int>('proxyId');
+    selfLink = registerOutput<String>('selfLink');
   }
 }

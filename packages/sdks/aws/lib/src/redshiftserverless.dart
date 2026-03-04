@@ -1,5 +1,3 @@
-library module_redshiftserverless;
-
 export 'redshiftserverless/custom_domain_association.dart';
 export 'redshiftserverless/custom_domain_association_args.dart';
 export 'redshiftserverless/custom_domain_association_state.dart';

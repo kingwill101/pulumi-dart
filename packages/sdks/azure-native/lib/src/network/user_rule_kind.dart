@@ -3,16 +3,15 @@ enum UserRuleKind {
   valueCustom("Custom"),
   valueDefault("Default");
 
-  const UserRuleKind(this.value);
-  final String value;
+  const UserRuleKind(this.wireValue);
+  final String wireValue;
 
   static UserRuleKind fromValue(String value) {
     for (final item in UserRuleKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserRuleKind value: $value');
   }
 }
-

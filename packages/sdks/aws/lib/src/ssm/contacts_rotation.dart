@@ -5,7 +5,7 @@ import 'contacts_rotation_state.dart';
 
 /// Provides a Terraform resource for managing a Contacts Rotation in AWS Systems Manager Incident Manager.
 ///
-/// > **NOTE:** A rotation implicitly depends on a replication set. If you configured your replication set in Terraform, we recommend you add it to the `depends_on` argument for the Terraform Contact Resource.
+/// &gt; **NOTE:** A rotation implicitly depends on a replication set. If you configured your replication set in Terraform, we recommend you add it to the `depends_on` argument for the Terraform Contact Resource.
 ///
 /// ## Example Usage
 ///
@@ -809,22 +809,30 @@ import 'contacts_rotation_state.dart';
 class ContactsRotation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the rotation.
   late final pulumi.Output<String> arn;
+
   /// Amazon Resource Names (ARNs) of the contacts to add to the rotation. The order in which you list the contacts is their shift order in the rotation schedule.
   late final pulumi.Output<List<String>> contactIds;
+
   /// The name for the rotation.
   late final pulumi.Output<String> name;
+
   /// Information about when an on-call rotation is in effect and how long the rotation period lasts. Exactly one of either `daily_settings`, `monthly_settings`, or `weekly_settings` must be populated. See Recurrence for more details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<ContactsRotationRecurrence> recurrence;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The date and time, in RFC 3339 format, that the rotation goes into effect.
   late final pulumi.Output<String?> startTime;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
   late final pulumi.Output<String> timeZoneId;
 
@@ -837,20 +845,20 @@ class ContactsRotation extends pulumi.CustomResource {
     ContactsRotationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/contactsRotation:ContactsRotation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.contactIds = registerOutput<List<String>>('contactIds');
+         'aws:ssm/contactsRotation:ContactsRotation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    contactIds = registerOutput<List<String>>('contactIds');
     this.name = registerOutput<String>('name');
-    this.recurrence = registerOutput<ContactsRotationRecurrence>('recurrence');
-    this.region = registerOutput<String>('region');
-    this.startTime = registerOutput<String?>('startTime');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeZoneId = registerOutput<String>('timeZoneId');
+    recurrence = registerOutput<ContactsRotationRecurrence>('recurrence');
+    region = registerOutput<String>('region');
+    startTime = registerOutput<String?>('startTime');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeZoneId = registerOutput<String>('timeZoneId');
   }
 
   /// Gets an existing [ContactsRotation] resource's state with the given [name] and [id].
@@ -871,19 +879,19 @@ class ContactsRotation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/contactsRotation:ContactsRotation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.contactIds = registerOutput<List<String>>('contactIds');
+         'aws:ssm/contactsRotation:ContactsRotation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    contactIds = registerOutput<List<String>>('contactIds');
     this.name = registerOutput<String>('name');
-    this.recurrence = registerOutput<ContactsRotationRecurrence>('recurrence');
-    this.region = registerOutput<String>('region');
-    this.startTime = registerOutput<String?>('startTime');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeZoneId = registerOutput<String>('timeZoneId');
+    recurrence = registerOutput<ContactsRotationRecurrence>('recurrence');
+    region = registerOutput<String>('region');
+    startTime = registerOutput<String?>('startTime');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeZoneId = registerOutput<String>('timeZoneId');
   }
 }

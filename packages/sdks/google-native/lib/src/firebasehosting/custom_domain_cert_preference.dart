@@ -6,16 +6,15 @@ enum CustomDomainCertPreference {
   projectGrouped("PROJECT_GROUPED"),
   dedicated("DEDICATED");
 
-  const CustomDomainCertPreference(this.value);
-  final String value;
+  const CustomDomainCertPreference(this.wireValue);
+  final String wireValue;
 
   static CustomDomainCertPreference fromValue(String value) {
     for (final item in CustomDomainCertPreference.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CustomDomainCertPreference value: $value');
   }
 }
-

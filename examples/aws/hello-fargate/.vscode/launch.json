@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach Pulumi Dart VM Service",
+      "type": "dart",
+      "request": "attach",
+      "vmServiceUri": "${input:pulumiVmServiceUri}"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "pulumiVmServiceUri",
+      "type": "promptString",
+      "description": "Paste VM service URI from Pulumi output (for example: http://127.0.0.1:45881/)"
+    }
+  ]
+}

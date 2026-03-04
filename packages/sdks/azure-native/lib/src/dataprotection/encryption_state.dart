@@ -4,16 +4,15 @@ enum EncryptionState {
   valueDisabled("Disabled"),
   valueInconsistent("Inconsistent");
 
-  const EncryptionState(this.value);
-  final String value;
+  const EncryptionState(this.wireValue);
+  final String wireValue;
 
   static EncryptionState fromValue(String value) {
     for (final item in EncryptionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncryptionState value: $value');
   }
 }
-

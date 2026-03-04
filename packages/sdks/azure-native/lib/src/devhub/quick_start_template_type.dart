@@ -6,16 +6,15 @@ enum QuickStartTemplateType {
   valueHCIARCVM("HCIARCVM"),
   valueALL("ALL");
 
-  const QuickStartTemplateType(this.value);
-  final String value;
+  const QuickStartTemplateType(this.wireValue);
+  final String wireValue;
 
   static QuickStartTemplateType fromValue(String value) {
     for (final item in QuickStartTemplateType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QuickStartTemplateType value: $value');
   }
 }
-

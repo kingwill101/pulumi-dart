@@ -5,25 +5,34 @@ import 'instance_auto_recovery_state_enum_value.dart';
 
 /// Definition of InstanceMaintenanceOptions
 class InstanceMaintenanceOptions {
-  /// <p>Provides information on the current automatic recovery behavior of your instance.</p>
+  /// &lt;p&gt;Provides information on the current automatic recovery behavior of your instance.&lt;/p&gt;
   final pulumi.Input<InstanceAutoRecoveryStateEnumValue>? autoRecovery;
 
   /// Creates a new [InstanceMaintenanceOptions].
-  /// [autoRecovery] <p>Provides information on the current automatic recovery behavior of your instance.</p>
-  InstanceMaintenanceOptions({
-    this.autoRecovery,
-  });
+  /// [autoRecovery] &lt;p&gt;Provides information on the current automatic recovery behavior of your instance.&lt;/p&gt;
+  InstanceMaintenanceOptions({this.autoRecovery});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoRecovery': ?pulumi.Input.mapOptionalInputValue<InstanceAutoRecoveryStateEnumValue, Map<String, dynamic>>(autoRecovery, (value) => value.toMap()),
+      'autoRecovery':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceAutoRecoveryStateEnumValue,
+            Map<String, dynamic>
+          >(autoRecovery, (value) => value.toMap()),
     };
   }
 
   factory InstanceMaintenanceOptions.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenanceOptions(
-      autoRecovery: map['autoRecovery'] == null ? null : (InstanceAutoRecoveryStateEnumValue.fromMap((map['autoRecovery']! as Map).cast<String, dynamic>())).input(),
+      autoRecovery: (() {
+        final guardedValue = map['autoRecovery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceAutoRecoveryStateEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

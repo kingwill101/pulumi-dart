@@ -3,16 +3,15 @@ enum VpnGatewayGatewayIpVersion {
   ipv4("IPV4"),
   ipv6("IPV6");
 
-  const VpnGatewayGatewayIpVersion(this.value);
-  final String value;
+  const VpnGatewayGatewayIpVersion(this.wireValue);
+  final String wireValue;
 
   static VpnGatewayGatewayIpVersion fromValue(String value) {
     for (final item in VpnGatewayGatewayIpVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnGatewayGatewayIpVersion value: $value');
   }
 }
-

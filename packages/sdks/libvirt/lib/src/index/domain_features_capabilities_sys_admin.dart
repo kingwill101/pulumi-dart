@@ -8,20 +8,19 @@ class DomainFeaturesCapabilitiesSysAdmin {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysAdmin].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysAdmin({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesSysAdmin({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesCapabilitiesSysAdmin.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysAdmin(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

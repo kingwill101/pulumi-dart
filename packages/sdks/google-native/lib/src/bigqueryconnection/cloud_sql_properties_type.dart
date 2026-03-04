@@ -4,16 +4,15 @@ enum CloudSqlPropertiesType {
   postgres("POSTGRES"),
   mysql("MYSQL");
 
-  const CloudSqlPropertiesType(this.value);
-  final String value;
+  const CloudSqlPropertiesType(this.wireValue);
+  final String wireValue;
 
   static CloudSqlPropertiesType fromValue(String value) {
     for (final item in CloudSqlPropertiesType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CloudSqlPropertiesType value: $value');
   }
 }
-

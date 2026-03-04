@@ -11,60 +11,84 @@ import 'workspace_serverless_compute.dart';
 class WorkspaceState {
   /// The ID of the Application Insights associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applicationInsightsId;
+
   /// The ID of the container registry associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `admin_enabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
+  /// &gt; **Note:** The `admin_enabled` should be `true` in order to associate the Container Registry to this Machine Learning Workspace.
   final pulumi.Input<String>? containerRegistryId;
+
   /// The description of this Machine Learning Workspace.
   final pulumi.Input<String>? description;
+
   /// The url for the discovery service to identify regional endpoints for machine learning experimentation services.
   final pulumi.Input<String>? discoveryUrl;
+
   /// An `encryption` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<WorkspaceEncryption>? encryption;
+
   /// A `feature_store` block as defined below.
   final pulumi.Input<WorkspaceFeatureStore>? featureStore;
+
   /// Display name for this Machine Learning Workspace.
   final pulumi.Input<String>? friendlyName;
+
   /// Flag to signal High Business Impact (HBI) data in the workspace and reduce diagnostic data collected by the service. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? highBusinessImpact;
+
   /// An `identity` block as defined below.
   final pulumi.Input<WorkspaceIdentity>? identity;
+
   /// The compute name for image build of the Machine Learning Workspace.
   final pulumi.Input<String>? imageBuildComputeName;
+
   /// The ID of key vault associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? keyVaultId;
+
   /// The type of the Workspace. Possible values are `Default`, `FeatureStore`. Defaults to `Default`
   final pulumi.Input<String>? kind;
+
   /// Specifies the supported Azure location where the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// A `managed_network` block as defined below.
   final pulumi.Input<WorkspaceManagedNetwork>? managedNetwork;
+
   /// Specifies the name of the Machine Learning Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The user assigned identity id that represents the workspace identity.
   final pulumi.Input<String>? primaryUserAssignedIdentity;
+
   /// Enable public access when this Machine Learning Workspace is behind VNet. Defaults to `true`.
   ///
-  /// > **Note:** `public_access_behind_virtual_network_enabled` is deprecated and will be removed in favour of the property `public_network_access_enabled`.
+  /// &gt; **Note:** `public_access_behind_virtual_network_enabled` is deprecated and will be removed in favour of the property `public_network_access_enabled`.
   final pulumi.Input<bool>? publicNetworkAccessEnabled;
+
   /// Specifies the name of the Resource Group in which the Machine Learning Workspace should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `serverless_compute` block as defined below.
   final pulumi.Input<WorkspaceServerlessCompute>? serverlessCompute;
+
   /// Whether to enable service-side encryption with customer-managed keys (CMK). Default to `false`. Changing this forces a new resource to be created.
   ///
-  /// !> **Note:** Setting `service_side_encryption_enabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
+  /// !&gt; **Note:** Setting `service_side_encryption_enabled` requires the `encryption` block to be set. When you use service-side encryption, Azure charges will continue to accrue during the soft delete retention period.
   final pulumi.Input<bool>? serviceSideEncryptionEnabled;
+
   /// SKU/edition of the Machine Learning Workspace, possible values are `Free`, `Basic`, `Standard` and `Premium`. Defaults to `Basic`.
   final pulumi.Input<String>? skuName;
+
   /// The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `account_tier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
+  /// &gt; **Note:** The `account_tier` cannot be `Premium` in order to associate the Storage Account to this Machine Learning Workspace.
   final pulumi.Input<String>? storageAccountId;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Enable V1 API features, enabling `v1_legacy_mode` may prevent you from using features provided by the v2 API. Defaults to `false`.
   final pulumi.Input<bool>? v1LegacyModeEnabled;
+
   /// The immutable id associated with this workspace.
   final pulumi.Input<String>? workspaceId;
 
@@ -128,21 +152,41 @@ class WorkspaceState {
       'containerRegistryId': ?containerRegistryId,
       'description': ?description,
       'discoveryUrl': ?discoveryUrl,
-      'encryption': ?pulumi.Input.mapOptionalInputValue<WorkspaceEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
-      'featureStore': ?pulumi.Input.mapOptionalInputValue<WorkspaceFeatureStore, Map<String, dynamic>>(featureStore, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceEncryption,
+            Map<String, dynamic>
+          >(encryption, (value) => value.toMap()),
+      'featureStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceFeatureStore,
+            Map<String, dynamic>
+          >(featureStore, (value) => value.toMap()),
       'friendlyName': ?friendlyName,
       'highBusinessImpact': ?highBusinessImpact,
-      'identity': ?pulumi.Input.mapOptionalInputValue<WorkspaceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'imageBuildComputeName': ?imageBuildComputeName,
       'keyVaultId': ?keyVaultId,
       'kind': ?kind,
       'location': ?location,
-      'managedNetwork': ?pulumi.Input.mapOptionalInputValue<WorkspaceManagedNetwork, Map<String, dynamic>>(managedNetwork, (value) => value.toMap()),
+      'managedNetwork':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceManagedNetwork,
+            Map<String, dynamic>
+          >(managedNetwork, (value) => value.toMap()),
       'name': ?name,
       'primaryUserAssignedIdentity': ?primaryUserAssignedIdentity,
       'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
       'resourceGroupName': ?resourceGroupName,
-      'serverlessCompute': ?pulumi.Input.mapOptionalInputValue<WorkspaceServerlessCompute, Map<String, dynamic>>(serverlessCompute, (value) => value.toMap()),
+      'serverlessCompute':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkspaceServerlessCompute,
+            Map<String, dynamic>
+          >(serverlessCompute, (value) => value.toMap()),
       'serviceSideEncryptionEnabled': ?serviceSideEncryptionEnabled,
       'skuName': ?skuName,
       'storageAccountId': ?storageAccountId,
@@ -154,32 +198,153 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId']! as String).input(),
-      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      discoveryUrl: map['discoveryUrl'] == null ? null : (map['discoveryUrl']! as String).input(),
-      encryption: map['encryption'] == null ? null : (WorkspaceEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      featureStore: map['featureStore'] == null ? null : (WorkspaceFeatureStore.fromMap((map['featureStore']! as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
-      highBusinessImpact: map['highBusinessImpact'] == null ? null : (map['highBusinessImpact']! as bool).input(),
-      identity: map['identity'] == null ? null : (WorkspaceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      imageBuildComputeName: map['imageBuildComputeName'] == null ? null : (map['imageBuildComputeName']! as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managedNetwork: map['managedNetwork'] == null ? null : (WorkspaceManagedNetwork.fromMap((map['managedNetwork']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      primaryUserAssignedIdentity: map['primaryUserAssignedIdentity'] == null ? null : (map['primaryUserAssignedIdentity']! as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      serverlessCompute: map['serverlessCompute'] == null ? null : (WorkspaceServerlessCompute.fromMap((map['serverlessCompute']! as Map).cast<String, dynamic>())).input(),
-      serviceSideEncryptionEnabled: map['serviceSideEncryptionEnabled'] == null ? null : (map['serviceSideEncryptionEnabled']! as bool).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      v1LegacyModeEnabled: map['v1LegacyModeEnabled'] == null ? null : (map['v1LegacyModeEnabled']! as bool).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      applicationInsightsId: (() {
+        final guardedValue = map['applicationInsightsId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerRegistryId: (() {
+        final guardedValue = map['containerRegistryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      discoveryUrl: (() {
+        final guardedValue = map['discoveryUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      featureStore: (() {
+        final guardedValue = map['featureStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceFeatureStore.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      friendlyName: (() {
+        final guardedValue = map['friendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      highBusinessImpact: (() {
+        final guardedValue = map['highBusinessImpact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageBuildComputeName: (() {
+        final guardedValue = map['imageBuildComputeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedNetwork: (() {
+        final guardedValue = map['managedNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceManagedNetwork.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryUserAssignedIdentity: (() {
+        final guardedValue = map['primaryUserAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccessEnabled: (() {
+        final guardedValue = map['publicNetworkAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverlessCompute: (() {
+        final guardedValue = map['serverlessCompute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkspaceServerlessCompute.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceSideEncryptionEnabled: (() {
+        final guardedValue = map['serviceSideEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      skuName: (() {
+        final guardedValue = map['skuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      v1LegacyModeEnabled: (() {
+        final guardedValue = map['v1LegacyModeEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

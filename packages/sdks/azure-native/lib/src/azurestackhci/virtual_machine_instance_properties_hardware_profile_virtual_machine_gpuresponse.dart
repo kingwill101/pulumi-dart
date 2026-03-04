@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse {
   /// GPU assignment type
   final pulumi.Input<String> assignmentType;
+
   /// Name of the GPU
   final pulumi.Input<String>? gpuName;
+
   /// Size of gpu partition in MB for GPU-P
   final pulumi.Input<double>? partitionSizeMB;
 
@@ -29,12 +31,21 @@ class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse {
     };
   }
 
-  factory VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse(
-      assignmentType: (map['assignmentType'] as String).input(),
-      gpuName: map['gpuName'] == null ? null : (map['gpuName']! as String).input(),
-      partitionSizeMB: map['partitionSizeMB'] == null ? null : (map['partitionSizeMB']! as double).input(),
+      assignmentType: pulumi.Input.fromValue(map['assignmentType'] as String),
+      gpuName: (() {
+        final guardedValue = map['gpuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partitionSizeMB: (() {
+        final guardedValue = map['partitionSizeMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

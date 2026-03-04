@@ -193,20 +193,28 @@ import 'approval_rule_template_state.dart';
 class ApprovalRuleTemplate extends pulumi.CustomResource {
   /// The ID of the approval rule template
   late final pulumi.Output<String> approvalRuleTemplateId;
+
   /// The content of the approval rule template. Maximum of 3000 characters.
   late final pulumi.Output<String> content;
+
   /// The date the approval rule template was created, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> creationDate;
+
   /// The description of the approval rule template. Maximum of 1000 characters.
   late final pulumi.Output<String?> description;
+
   /// The date the approval rule template was most recently changed, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> lastModifiedDate;
+
   /// The Amazon Resource Name (ARN) of the user who made the most recent changes to the approval rule template.
   late final pulumi.Output<String> lastModifiedUser;
+
   /// The name for the approval rule template. Maximum of 100 characters.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The SHA-256 hash signature for the content of the approval rule template.
   late final pulumi.Output<String> ruleContentSha256;
 
@@ -219,20 +227,20 @@ class ApprovalRuleTemplate extends pulumi.CustomResource {
     ApprovalRuleTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
-    this.content = registerOutput<String>('content');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.description = registerOutput<String?>('description');
-    this.lastModifiedDate = registerOutput<String>('lastModifiedDate');
-    this.lastModifiedUser = registerOutput<String>('lastModifiedUser');
+         'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
+    content = registerOutput<String>('content');
+    creationDate = registerOutput<String>('creationDate');
+    description = registerOutput<String?>('description');
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    lastModifiedUser = registerOutput<String>('lastModifiedUser');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.ruleContentSha256 = registerOutput<String>('ruleContentSha256');
+    region = registerOutput<String>('region');
+    ruleContentSha256 = registerOutput<String>('ruleContentSha256');
   }
 
   /// Gets an existing [ApprovalRuleTemplate] resource's state with the given [name] and [id].
@@ -253,19 +261,19 @@ class ApprovalRuleTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
-    this.content = registerOutput<String>('content');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.description = registerOutput<String?>('description');
-    this.lastModifiedDate = registerOutput<String>('lastModifiedDate');
-    this.lastModifiedUser = registerOutput<String>('lastModifiedUser');
+         'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
+    content = registerOutput<String>('content');
+    creationDate = registerOutput<String>('creationDate');
+    description = registerOutput<String?>('description');
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    lastModifiedUser = registerOutput<String>('lastModifiedUser');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.ruleContentSha256 = registerOutput<String>('ruleContentSha256');
+    region = registerOutput<String>('region');
+    ruleContentSha256 = registerOutput<String>('ruleContentSha256');
   }
 }

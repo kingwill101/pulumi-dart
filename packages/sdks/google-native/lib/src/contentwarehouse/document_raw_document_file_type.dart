@@ -8,16 +8,15 @@ enum DocumentRawDocumentFileType {
   rawDocumentFileTypeText("RAW_DOCUMENT_FILE_TYPE_TEXT"),
   rawDocumentFileTypeTiff("RAW_DOCUMENT_FILE_TYPE_TIFF");
 
-  const DocumentRawDocumentFileType(this.value);
-  final String value;
+  const DocumentRawDocumentFileType(this.wireValue);
+  final String wireValue;
 
   static DocumentRawDocumentFileType fromValue(String value) {
     for (final item in DocumentRawDocumentFileType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DocumentRawDocumentFileType value: $value');
   }
 }
-

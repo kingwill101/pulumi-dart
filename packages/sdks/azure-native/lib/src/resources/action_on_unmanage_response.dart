@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionOnUnmanageResponse {
   /// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
   final pulumi.Input<String>? managementGroups;
+
   /// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
   final pulumi.Input<String>? resourceGroups;
+
   /// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
   final pulumi.Input<String> resources;
+
   /// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
   final pulumi.Input<String>? resourcesWithoutDeleteSupport;
 
@@ -36,11 +39,22 @@ class ActionOnUnmanageResponse {
 
   factory ActionOnUnmanageResponse.fromMap(Map<String, dynamic> map) {
     return ActionOnUnmanageResponse(
-      managementGroups: map['managementGroups'] == null ? null : (map['managementGroups']! as String).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups']! as String).input(),
-      resources: (map['resources'] as String).input(),
-      resourcesWithoutDeleteSupport: map['resourcesWithoutDeleteSupport'] == null ? null : (map['resourcesWithoutDeleteSupport']! as String).input(),
+      managementGroups: (() {
+        final guardedValue = map['managementGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroups: (() {
+        final guardedValue = map['resourceGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resources: pulumi.Input.fromValue(map['resources'] as String),
+      resourcesWithoutDeleteSupport: (() {
+        final guardedValue = map['resourcesWithoutDeleteSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

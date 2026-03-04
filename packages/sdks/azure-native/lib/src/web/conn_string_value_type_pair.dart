@@ -7,29 +7,31 @@ import 'connection_string_type.dart';
 class ConnStringValueTypePair {
   /// Type of database.
   final pulumi.Input<ConnectionStringType> type;
+
   /// Value of pair.
   final pulumi.Input<String> value;
 
   /// Creates a new [ConnStringValueTypePair].
   /// [type] Type of database.
   /// [value] Value of pair.
-  ConnStringValueTypePair({
-    required this.type,
-    required this.value,
-  });
+  ConnStringValueTypePair({required this.type, required this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': pulumi.Input.mapInputValue<ConnectionStringType, String>(type, (value) => value.value),
+      'type': pulumi.Input.mapInputValue<ConnectionStringType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
       'value': value,
     };
   }
 
   factory ConnStringValueTypePair.fromMap(Map<String, dynamic> map) {
     return ConnStringValueTypePair(
-      type: (ConnectionStringType.fromValue(map['type'] as String)).input(),
-      value: (map['value'] as String).input(),
+      type: pulumi.Input.fromValue(
+        ConnectionStringType.fromValue(map['type']! as String),
+      ),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

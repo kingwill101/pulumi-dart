@@ -1,5 +1,3 @@
-library module_workflows;
-
 export 'workflows/functions.dart';
 export 'workflows/get_workflow_args.dart';
 export 'workflows/get_workflow_result.dart';

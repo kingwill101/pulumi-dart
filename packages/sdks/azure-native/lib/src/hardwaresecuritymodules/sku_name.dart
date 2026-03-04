@@ -8,16 +8,15 @@ enum SkuName {
   valuePayShield10KLMK2CPS250("payShield10K_LMK2_CPS250"),
   valuePayShield10KLMK2CPS2500("payShield10K_LMK2_CPS2500");
 
-  const SkuName(this.value);
-  final String value;
+  const SkuName(this.wireValue);
+  final String wireValue;
 
   static SkuName fromValue(String value) {
     for (final item in SkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuName value: $value');
   }
 }
-

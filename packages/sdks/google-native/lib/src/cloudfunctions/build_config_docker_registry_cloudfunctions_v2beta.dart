@@ -4,16 +4,17 @@ enum BuildConfigDockerRegistryCloudfunctionsV2beta {
   containerRegistry("CONTAINER_REGISTRY"),
   artifactRegistry("ARTIFACT_REGISTRY");
 
-  const BuildConfigDockerRegistryCloudfunctionsV2beta(this.value);
-  final String value;
+  const BuildConfigDockerRegistryCloudfunctionsV2beta(this.wireValue);
+  final String wireValue;
 
   static BuildConfigDockerRegistryCloudfunctionsV2beta fromValue(String value) {
     for (final item in BuildConfigDockerRegistryCloudfunctionsV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BuildConfigDockerRegistryCloudfunctionsV2beta value: $value');
+    throw ArgumentError(
+      'Unknown BuildConfigDockerRegistryCloudfunctionsV2beta value: $value',
+    );
   }
 }
-

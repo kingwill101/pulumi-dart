@@ -5,7 +5,6 @@ import 'data_collection_rule_resource_response_system_data.dart';
 import 'data_collection_rule_response_data_sources.dart';
 import 'data_collection_rule_response_destinations.dart';
 import 'data_collection_rule_response_metadata.dart';
-import 'data_flow_response.dart';
 import 'stream_declaration_response.dart';
 
 /// Definition of ARM tracked top level resource.
@@ -638,39 +637,60 @@ import 'stream_declaration_response.dart';
 class DataCollectionRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource ID of the data collection endpoint that this rule can be used with.
   late final pulumi.Output<String?> dataCollectionEndpointId;
+
   /// The specification of data flows.
-  late final pulumi.Output<List<DataFlowResponse>?> dataFlows;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataFlows;
+
   /// The specification of data sources.
   /// This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
   late final pulumi.Output<DataCollectionRuleResponseDataSources?> dataSources;
+
   /// Description of the data collection rule.
   late final pulumi.Output<String?> description;
+
   /// The specification of destinations.
-  late final pulumi.Output<DataCollectionRuleResponseDestinations?> destinations;
+  late final pulumi.Output<DataCollectionRuleResponseDestinations?>
+  destinations;
+
   /// Resource entity tag (ETag).
   late final pulumi.Output<String> etag;
+
   /// Managed service identity of the resource.
-  late final pulumi.Output<DataCollectionRuleResourceResponseIdentity?> identity;
+  late final pulumi.Output<DataCollectionRuleResourceResponseIdentity?>
+  identity;
+
   /// The immutable ID of this data collection rule. This property is READ-ONLY.
   late final pulumi.Output<String> immutableId;
+
   /// The kind of the resource.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives.
   late final pulumi.Output<String> location;
+
   /// Metadata about the resource
   late final pulumi.Output<DataCollectionRuleResponseMetadata> metadata;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The resource provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Declaration of custom streams used in this rule.
-  late final pulumi.Output<Map<String, StreamDeclarationResponse>?> streamDeclarations;
+  late final pulumi.Output<Map<String, StreamDeclarationResponse>?>
+  streamDeclarations;
+
   /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<DataCollectionRuleResourceResponseSystemData> systemData;
+  late final pulumi.Output<DataCollectionRuleResourceResponseSystemData>
+  systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -683,28 +703,41 @@ class DataCollectionRule extends pulumi.CustomResource {
     DataCollectionRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:monitor:DataCollectionRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
-    this.dataFlows = registerOutput<List<DataFlowResponse>?>('dataFlows');
-    this.dataSources = registerOutput<DataCollectionRuleResponseDataSources?>('dataSources');
-    this.description = registerOutput<String?>('description');
-    this.destinations = registerOutput<DataCollectionRuleResponseDestinations?>('destinations');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<DataCollectionRuleResourceResponseIdentity?>('identity');
-    this.immutableId = registerOutput<String>('immutableId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<DataCollectionRuleResponseMetadata>('metadata');
+         'azure-native:monitor:DataCollectionRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataCollectionEndpointId = registerOutput<String?>(
+      'dataCollectionEndpointId',
+    );
+    dataFlows = registerOutput<List<Map<String, dynamic>>?>('dataFlows');
+    dataSources = registerOutput<DataCollectionRuleResponseDataSources?>(
+      'dataSources',
+    );
+    description = registerOutput<String?>('description');
+    destinations = registerOutput<DataCollectionRuleResponseDestinations?>(
+      'destinations',
+    );
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<DataCollectionRuleResourceResponseIdentity?>(
+      'identity',
+    );
+    immutableId = registerOutput<String>('immutableId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<DataCollectionRuleResponseMetadata>('metadata');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.streamDeclarations = registerOutput<Map<String, StreamDeclarationResponse>?>('streamDeclarations');
-    this.systemData = registerOutput<DataCollectionRuleResourceResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    streamDeclarations =
+        registerOutput<Map<String, StreamDeclarationResponse>?>(
+          'streamDeclarations',
+        );
+    systemData = registerOutput<DataCollectionRuleResourceResponseSystemData>(
+      'systemData',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

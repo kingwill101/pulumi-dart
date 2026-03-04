@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceDataSyncS3Destination {
   /// Name of S3 bucket where the aggregated data is stored.
   final pulumi.Input<String> bucketName;
+
   /// ARN of an encryption key for a destination in Amazon S3.
   final pulumi.Input<String>? kmsKeyArn;
+
   /// Prefix for the bucket.
   final pulumi.Input<String>? prefix;
+
   /// Region with the bucket targeted by the Resource Data Sync.
   final pulumi.Input<String> region;
+
   /// A supported sync format. Only JsonSerDe is currently supported. Defaults to JsonSerDe.
   final pulumi.Input<String>? syncFormat;
 
@@ -40,12 +44,23 @@ class ResourceDataSyncS3Destination {
 
   factory ResourceDataSyncS3Destination.fromMap(Map<String, dynamic> map) {
     return ResourceDataSyncS3Destination(
-      bucketName: (map['bucketName'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
-      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
-      region: (map['region'] as String).input(),
-      syncFormat: map['syncFormat'] == null ? null : ((map['syncFormat'] as String).input()).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      kmsKeyArn: (() {
+        final guardedValue = map['kmsKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      syncFormat: (() {
+        final guardedValue = map['syncFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

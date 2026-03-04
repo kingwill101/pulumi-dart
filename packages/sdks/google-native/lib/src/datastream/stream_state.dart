@@ -10,16 +10,15 @@ enum StreamState {
   starting("STARTING"),
   draining("DRAINING");
 
-  const StreamState(this.value);
-  final String value;
+  const StreamState(this.wireValue);
+  final String wireValue;
 
   static StreamState fromValue(String value) {
     for (final item in StreamState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StreamState value: $value');
   }
 }
-

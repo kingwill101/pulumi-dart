@@ -7,18 +7,26 @@ import 'aws_code_build_source_credentials_info_properties.dart';
 class CodeBuildSourceCredentialsInfoProperties {
   /// Amazon Resource Name (ARN)
   final pulumi.Input<String>? arn;
+
   /// AWS Account ID
   final pulumi.Input<String>? awsAccountId;
+
   /// AWS Properties
-  final pulumi.Input<AwsCodeBuildSourceCredentialsInfoProperties>? awsProperties;
+  final pulumi.Input<AwsCodeBuildSourceCredentialsInfoProperties>?
+  awsProperties;
+
   /// AWS Region
   final pulumi.Input<String>? awsRegion;
+
   /// AWS Source Schema
   final pulumi.Input<String>? awsSourceSchema;
+
   /// AWS Tags
   final pulumi.Input<Map<String, String>>? awsTags;
+
   /// Public Cloud Connectors Resource ID
   final pulumi.Input<String>? publicCloudConnectorsResourceId;
+
   /// Public Cloud Resource Name
   final pulumi.Input<String>? publicCloudResourceName;
 
@@ -46,7 +54,11 @@ class CodeBuildSourceCredentialsInfoProperties {
     return <String, dynamic>{
       'arn': ?arn,
       'awsAccountId': ?awsAccountId,
-      'awsProperties': ?pulumi.Input.mapOptionalInputValue<AwsCodeBuildSourceCredentialsInfoProperties, Map<String, dynamic>>(awsProperties, (value) => value.toMap()),
+      'awsProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AwsCodeBuildSourceCredentialsInfoProperties,
+            Map<String, dynamic>
+          >(awsProperties, (value) => value.toMap()),
       'awsRegion': ?awsRegion,
       'awsSourceSchema': ?awsSourceSchema,
       'awsTags': ?awsTags,
@@ -55,17 +67,56 @@ class CodeBuildSourceCredentialsInfoProperties {
     };
   }
 
-  factory CodeBuildSourceCredentialsInfoProperties.fromMap(Map<String, dynamic> map) {
+  factory CodeBuildSourceCredentialsInfoProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CodeBuildSourceCredentialsInfoProperties(
-      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId']! as String).input(),
-      awsProperties: map['awsProperties'] == null ? null : (AwsCodeBuildSourceCredentialsInfoProperties.fromMap((map['awsProperties']! as Map).cast<String, dynamic>())).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
-      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema']! as String).input(),
-      awsTags: map['awsTags'] == null ? null : ((map['awsTags']! as Map).cast<String, String>()).input(),
-      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId']! as String).input(),
-      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName']! as String).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsProperties: (() {
+        final guardedValue = map['awsProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AwsCodeBuildSourceCredentialsInfoProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsSourceSchema: (() {
+        final guardedValue = map['awsSourceSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsTags: (() {
+        final guardedValue = map['awsTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      publicCloudConnectorsResourceId: (() {
+        final guardedValue = map['publicCloudConnectorsResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicCloudResourceName: (() {
+        final guardedValue = map['publicCloudResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

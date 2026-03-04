@@ -8,34 +8,49 @@ import 'operation_error_response.dart';
 class GetBackupRunResult {
   /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
   final String backupKind;
+
   /// The description of this run, only applicable to on-demand backups.
   final String description;
+
   /// Encryption configuration specific to a backup.
   final DiskEncryptionConfigurationResponse diskEncryptionConfiguration;
+
   /// Encryption status specific to a backup.
   final DiskEncryptionStatusResponse diskEncryptionStatus;
+
   /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final String endTime;
+
   /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final String enqueuedTime;
+
   /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
   final OperationErrorResponse error;
+
   /// Name of the database instance.
   final String instance;
+
   /// This is always `sql#backupRun`.
   final String kind;
+
   /// Location of the backups.
   final String location;
+
   /// The URI of this resource.
   final String selfLink;
+
   /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final String startTime;
+
   /// The status of this run.
   final String status;
+
   /// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
   final String timeZone;
+
   /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
   final String type;
+
   /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final String windowStartTime;
 
@@ -100,11 +115,17 @@ class GetBackupRunResult {
     return GetBackupRunResult(
       backupKind: map['backupKind'] as String,
       description: map['description'] as String,
-      diskEncryptionConfiguration: DiskEncryptionConfigurationResponse.fromMap((map['diskEncryptionConfiguration'] as Map).cast<String, dynamic>()),
-      diskEncryptionStatus: DiskEncryptionStatusResponse.fromMap((map['diskEncryptionStatus'] as Map).cast<String, dynamic>()),
+      diskEncryptionConfiguration: DiskEncryptionConfigurationResponse.fromMap(
+        (map['diskEncryptionConfiguration']! as Map).cast<String, dynamic>(),
+      ),
+      diskEncryptionStatus: DiskEncryptionStatusResponse.fromMap(
+        (map['diskEncryptionStatus']! as Map).cast<String, dynamic>(),
+      ),
       endTime: map['endTime'] as String,
       enqueuedTime: map['enqueuedTime'] as String,
-      error: OperationErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: OperationErrorResponse.fromMap(
+        (map['error']! as Map).cast<String, dynamic>(),
+      ),
       instance: map['instance'] as String,
       kind: map['kind'] as String,
       location: map['location'] as String,
@@ -117,4 +138,3 @@ class GetBackupRunResult {
     );
   }
 }
-

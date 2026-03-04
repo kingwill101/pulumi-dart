@@ -157,30 +157,43 @@ import 'system_data_response.dart';
 class CapacityPoolBackup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// UUID v4 used to identify the Backup
   late final pulumi.Output<String> backupId;
+
   /// Type of backup Manual or Scheduled
   late final pulumi.Output<String> backupType;
+
   /// The creation date of the backup
   late final pulumi.Output<String> creationDate;
+
   /// Failure reason
   late final pulumi.Output<String> failureReason;
+
   /// Label for backup
   late final pulumi.Output<String?> label;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Size of backup
   late final pulumi.Output<double> size;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   late final pulumi.Output<bool?> useExistingSnapshot;
+
   /// Volume name
   late final pulumi.Output<String> volumeName;
 
@@ -193,24 +206,24 @@ class CapacityPoolBackup extends pulumi.CustomResource {
     CapacityPoolBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:CapacityPoolBackup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupId = registerOutput<String>('backupId');
-    this.backupType = registerOutput<String>('backupType');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.failureReason = registerOutput<String>('failureReason');
-    this.label = registerOutput<String?>('label');
-    this.location = registerOutput<String>('location');
+         'azure-native:netapp:CapacityPoolBackup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupId = registerOutput<String>('backupId');
+    backupType = registerOutput<String>('backupType');
+    creationDate = registerOutput<String>('creationDate');
+    failureReason = registerOutput<String>('failureReason');
+    label = registerOutput<String?>('label');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.size = registerOutput<double>('size');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
-    this.volumeName = registerOutput<String>('volumeName');
+    provisioningState = registerOutput<String>('provisioningState');
+    size = registerOutput<double>('size');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
+    volumeName = registerOutput<String>('volumeName');
   }
 }

@@ -4,16 +4,17 @@ enum InternalRangeUsageNetworkconnectivityV1alpha1 {
   forVpc("FOR_VPC"),
   externalToVpc("EXTERNAL_TO_VPC");
 
-  const InternalRangeUsageNetworkconnectivityV1alpha1(this.value);
-  final String value;
+  const InternalRangeUsageNetworkconnectivityV1alpha1(this.wireValue);
+  final String wireValue;
 
   static InternalRangeUsageNetworkconnectivityV1alpha1 fromValue(String value) {
     for (final item in InternalRangeUsageNetworkconnectivityV1alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InternalRangeUsageNetworkconnectivityV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown InternalRangeUsageNetworkconnectivityV1alpha1 value: $value',
+    );
   }
 }
-

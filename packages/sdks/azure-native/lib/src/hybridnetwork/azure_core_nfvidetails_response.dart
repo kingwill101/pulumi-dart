@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureCoreNFVIDetailsResponse {
   /// Location of the Azure core.
   final pulumi.Input<String>? location;
+
   /// Name of the nfvi.
   final pulumi.Input<String>? name;
+
   /// The NFVI type.
   /// Expected value is 'AzureCore'.
   final pulumi.Input<String> nfviType;
@@ -32,10 +34,17 @@ class AzureCoreNFVIDetailsResponse {
 
   factory AzureCoreNFVIDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureCoreNFVIDetailsResponse(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nfviType: (map['nfviType'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfviType: pulumi.Input.fromValue(map['nfviType'] as String),
     );
   }
 }
-

@@ -13,6 +13,7 @@ class GetSecretResult {
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
   final String expireTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -83,11 +84,22 @@ class GetSecretResult {
       'name': name,
       'project': ?project,
       'pulumiLabels': pulumiLabels,
-      'replications': pulumi.Input.encodeList<GetSecretReplication, Map<String, dynamic>>(replications, (value) => value.toMap()),
-      'rotations': pulumi.Input.encodeList<GetSecretRotation, Map<String, dynamic>>(rotations, (value) => value.toMap()),
+      'replications':
+          pulumi.Input.encodeList<GetSecretReplication, Map<String, dynamic>>(
+            replications,
+            (value) => value.toMap(),
+          ),
+      'rotations':
+          pulumi.Input.encodeList<GetSecretRotation, Map<String, dynamic>>(
+            rotations,
+            (value) => value.toMap(),
+          ),
       'secretId': secretId,
       'tags': tags,
-      'topics': pulumi.Input.encodeList<GetSecretTopic, Map<String, dynamic>>(topics, (value) => value.toMap()),
+      'topics': pulumi.Input.encodeList<GetSecretTopic, Map<String, dynamic>>(
+        topics,
+        (value) => value.toMap(),
+      ),
       'ttl': ttl,
       'versionAliases': versionAliases,
       'versionDestroyTtl': versionDestroyTtl,
@@ -99,23 +111,40 @@ class GetSecretResult {
       annotations: (map['annotations'] as Map).cast<String, String>(),
       createTime: map['createTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
-      effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
+      effectiveAnnotations: (map['effectiveAnnotations'] as Map)
+          .cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       expireTime: map['expireTime'] as String,
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      replications: pulumi.Input.decodeList<GetSecretReplication>(map['replications'], (value) => GetSecretReplication.fromMap((value as Map).cast<String, dynamic>())),
-      rotations: pulumi.Input.decodeList<GetSecretRotation>(map['rotations'], (value) => GetSecretRotation.fromMap((value as Map).cast<String, dynamic>())),
+      replications: pulumi.Input.decodeList<GetSecretReplication>(
+        map['replications']!,
+        (value) => GetSecretReplication.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      rotations: pulumi.Input.decodeList<GetSecretRotation>(
+        map['rotations']!,
+        (value) =>
+            GetSecretRotation.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       secretId: map['secretId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      topics: pulumi.Input.decodeList<GetSecretTopic>(map['topics'], (value) => GetSecretTopic.fromMap((value as Map).cast<String, dynamic>())),
+      topics: pulumi.Input.decodeList<GetSecretTopic>(
+        map['topics']!,
+        (value) =>
+            GetSecretTopic.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       ttl: map['ttl'] as String,
       versionAliases: (map['versionAliases'] as Map).cast<String, String>(),
       versionDestroyTtl: map['versionDestroyTtl'] as String,
     );
   }
 }
-

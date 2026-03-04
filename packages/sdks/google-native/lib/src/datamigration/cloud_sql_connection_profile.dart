@@ -10,20 +10,29 @@ class CloudSqlConnectionProfile {
 
   /// Creates a new [CloudSqlConnectionProfile].
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfile({
-    this.settings,
-  });
+  CloudSqlConnectionProfile({this.settings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'settings': ?pulumi.Input.mapOptionalInputValue<CloudSqlSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudSqlSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
     };
   }
 
   factory CloudSqlConnectionProfile.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfile(
-      settings: map['settings'] == null ? null : (CloudSqlSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudSqlSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

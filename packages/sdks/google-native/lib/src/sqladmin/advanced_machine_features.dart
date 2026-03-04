@@ -9,20 +9,19 @@ class AdvancedMachineFeatures {
 
   /// Creates a new [AdvancedMachineFeatures].
   /// [threadsPerCore] The number of threads per physical core.
-  AdvancedMachineFeatures({
-    this.threadsPerCore,
-  });
+  AdvancedMachineFeatures({this.threadsPerCore});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'threadsPerCore': ?threadsPerCore,
-    };
+    return <String, dynamic>{'threadsPerCore': ?threadsPerCore};
   }
 
   factory AdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeatures(
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
+      threadsPerCore: (() {
+        final guardedValue = map['threadsPerCore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

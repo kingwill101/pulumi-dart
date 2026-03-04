@@ -6,11 +6,18 @@ import 'workgroup_configuration_result_configuration_encryption_configuration.da
 
 class WorkgroupConfigurationResultConfiguration {
   /// That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
-  final pulumi.Input<WorkgroupConfigurationResultConfigurationAclConfiguration>? aclConfiguration;
+  final pulumi.Input<WorkgroupConfigurationResultConfigurationAclConfiguration>?
+  aclConfiguration;
+
   /// Configuration block with encryption settings. See Encryption Configuration below.
-  final pulumi.Input<WorkgroupConfigurationResultConfigurationEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<
+    WorkgroupConfigurationResultConfigurationEncryptionConfiguration
+  >?
+  encryptionConfiguration;
+
   /// AWS account ID that you expect to be the owner of the Amazon S3 bucket.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Location in Amazon S3 where your query results are stored, such as `s3://path/to/query/bucket/`. For more information, see [Queries and Query Result Files](https://docs.aws.amazon.com/athena/latest/ug/querying.html).
   final pulumi.Input<String>? outputLocation;
 
@@ -28,20 +35,53 @@ class WorkgroupConfigurationResultConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aclConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationResultConfigurationAclConfiguration, Map<String, dynamic>>(aclConfiguration, (value) => value.toMap()),
-      'encryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<WorkgroupConfigurationResultConfigurationEncryptionConfiguration, Map<String, dynamic>>(encryptionConfiguration, (value) => value.toMap()),
+      'aclConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkgroupConfigurationResultConfigurationAclConfiguration,
+            Map<String, dynamic>
+          >(aclConfiguration, (value) => value.toMap()),
+      'encryptionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkgroupConfigurationResultConfigurationEncryptionConfiguration,
+            Map<String, dynamic>
+          >(encryptionConfiguration, (value) => value.toMap()),
       'expectedBucketOwner': ?expectedBucketOwner,
       'outputLocation': ?outputLocation,
     };
   }
 
-  factory WorkgroupConfigurationResultConfiguration.fromMap(Map<String, dynamic> map) {
+  factory WorkgroupConfigurationResultConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkgroupConfigurationResultConfiguration(
-      aclConfiguration: map['aclConfiguration'] == null ? null : ((WorkgroupConfigurationResultConfigurationAclConfiguration.fromMap((map['aclConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((WorkgroupConfigurationResultConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
-      outputLocation: map['outputLocation'] == null ? null : ((map['outputLocation'] as String).input()).input(),
+      aclConfiguration: (() {
+        final guardedValue = map['aclConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkgroupConfigurationResultConfigurationAclConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      encryptionConfiguration: (() {
+        final guardedValue = map['encryptionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkgroupConfigurationResultConfigurationEncryptionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      expectedBucketOwner: (() {
+        final guardedValue = map['expectedBucketOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputLocation: (() {
+        final guardedValue = map['outputLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

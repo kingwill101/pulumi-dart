@@ -3,16 +3,15 @@ enum OperatingSystemTypes {
   valueWindows("Windows"),
   valueLinux("Linux");
 
-  const OperatingSystemTypes(this.value);
-  final String value;
+  const OperatingSystemTypes(this.wireValue);
+  final String wireValue;
 
   static OperatingSystemTypes fromValue(String value) {
     for (final item in OperatingSystemTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperatingSystemTypes value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum NamespaceStatus {
   suspended("Suspended"),
   deleting("Deleting");
 
-  const NamespaceStatus(this.value);
-  final String value;
+  const NamespaceStatus(this.wireValue);
+  final String wireValue;
 
   static NamespaceStatus fromValue(String value) {
     for (final item in NamespaceStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NamespaceStatus value: $value');
   }
 }
-

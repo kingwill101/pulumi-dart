@@ -508,10 +508,13 @@ import 'function_args.dart';
 class FunctionStreamanalytics extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name
   late final pulumi.Output<String?> name;
+
   /// The properties that are associated with a function.
   late final pulumi.Output<AggregateFunctionPropertiesResponse> properties;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -524,14 +527,16 @@ class FunctionStreamanalytics extends pulumi.CustomResource {
     FunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:streamanalytics:Function',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:streamanalytics:Function',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    this.properties = registerOutput<AggregateFunctionPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<AggregateFunctionPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

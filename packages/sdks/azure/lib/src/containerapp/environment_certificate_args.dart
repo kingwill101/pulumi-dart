@@ -10,20 +10,26 @@ import 'environment_certificate_certificate_key_vault.dart';
 class EnvironmentCertificateArgs {
   /// The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** One of `certificate_blob_base64` and `certificate_key_vault` must be set.
+  /// &gt; **Note:** One of `certificate_blob_base64` and `certificate_key_vault` must be set.
   final pulumi.Input<String>? certificateBlobBase64;
+
   /// A `certificate_key_vault` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** one of `certificate_blob_base64` and `certificate_key_vault` must be set.
-  final pulumi.Input<EnvironmentCertificateCertificateKeyVault>? certificateKeyVault;
+  /// &gt; **Note:** one of `certificate_blob_base64` and `certificate_key_vault` must be set.
+  final pulumi.Input<EnvironmentCertificateCertificateKeyVault>?
+  certificateKeyVault;
+
   /// The password for the Certificate. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** required if `certificate_blob_base64` is specified.
+  /// &gt; **Note:** required if `certificate_blob_base64` is specified.
   final pulumi.Input<String>? certificatePassword;
+
   /// The Container App Managed Environment ID to configure this Certificate on. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerAppEnvironmentId;
+
   /// The name of the Container Apps Environment Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -46,7 +52,11 @@ class EnvironmentCertificateArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificateBlobBase64': ?certificateBlobBase64,
-      'certificateKeyVault': ?pulumi.Input.mapOptionalInputValue<EnvironmentCertificateCertificateKeyVault, Map<String, dynamic>>(certificateKeyVault, (value) => value.toMap()),
+      'certificateKeyVault':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentCertificateCertificateKeyVault,
+            Map<String, dynamic>
+          >(certificateKeyVault, (value) => value.toMap()),
       'certificatePassword': ?certificatePassword,
       'containerAppEnvironmentId': containerAppEnvironmentId,
       'name': ?name,
@@ -56,13 +66,40 @@ class EnvironmentCertificateArgs {
 
   factory EnvironmentCertificateArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentCertificateArgs(
-      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64']! as String).input(),
-      certificateKeyVault: map['certificateKeyVault'] == null ? null : (EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault']! as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
-      containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      certificateBlobBase64: (() {
+        final guardedValue = map['certificateBlobBase64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateKeyVault: (() {
+        final guardedValue = map['certificateKeyVault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnvironmentCertificateCertificateKeyVault.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      certificatePassword: (() {
+        final guardedValue = map['certificatePassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerAppEnvironmentId: pulumi.Input.fromValue(
+        map['containerAppEnvironmentId'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

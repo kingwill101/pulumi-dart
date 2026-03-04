@@ -5,16 +5,15 @@ enum Intent {
   dEFERREDACCESSCHECK("DEFERRED_ACCESS_CHECK"),
   rPCONTRACT("RP_CONTRACT");
 
-  const Intent(this.value);
-  final String value;
+  const Intent(this.wireValue);
+  final String wireValue;
 
   static Intent fromValue(String value) {
     for (final item in Intent.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Intent value: $value');
   }
 }
-

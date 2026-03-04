@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles {
   /// Unique name of the Amazon Connect Customer Profiles domain.
   final pulumi.Input<String> domainName;
+
   /// Object specified in the Amazon Connect Customer Profiles flow destination.
   final pulumi.Input<String>? objectTypeName;
 
@@ -23,11 +24,16 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles {
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles(
-      domainName: (map['domainName'] as String).input(),
-      objectTypeName: map['objectTypeName'] == null ? null : ((map['objectTypeName'] as String).input()).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      objectTypeName: (() {
+        final guardedValue = map['objectTypeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

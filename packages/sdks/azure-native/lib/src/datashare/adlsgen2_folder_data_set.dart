@@ -853,25 +853,35 @@ import 'system_data_response.dart';
 class ADLSGen2FolderDataSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Unique id for identifying a data set resource
   late final pulumi.Output<String> dataSetId;
+
   /// File system to which the folder belongs.
   late final pulumi.Output<String> fileSystem;
+
   /// Folder path within the file system.
   late final pulumi.Output<String> folderPath;
+
   /// Kind of data set.
   /// Expected value is 'AdlsGen2Folder'.
   late final pulumi.Output<String> kind;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// Resource group of storage account
   late final pulumi.Output<String> resourceGroup;
+
   /// Storage account name of the source data set
   late final pulumi.Output<String> storageAccountName;
+
   /// Subscription id of storage account
   late final pulumi.Output<String> subscriptionId;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -884,21 +894,21 @@ class ADLSGen2FolderDataSet extends pulumi.CustomResource {
     ADLSGen2FolderDataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:ADLSGen2FolderDataSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataSetId = registerOutput<String>('dataSetId');
-    this.fileSystem = registerOutput<String>('fileSystem');
-    this.folderPath = registerOutput<String>('folderPath');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:datashare:ADLSGen2FolderDataSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSetId = registerOutput<String>('dataSetId');
+    fileSystem = registerOutput<String>('fileSystem');
+    folderPath = registerOutput<String>('folderPath');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.resourceGroup = registerOutput<String>('resourceGroup');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    resourceGroup = registerOutput<String>('resourceGroup');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

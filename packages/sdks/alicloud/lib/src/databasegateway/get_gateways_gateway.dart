@@ -6,21 +6,29 @@ import 'get_gateways_gateway_gateway_instance.dart';
 class GetGatewaysGateway {
   /// The creation time of Gateway.
   final pulumi.Input<String> createTime;
+
   /// The description of Gateway.
   final pulumi.Input<String> gatewayDesc;
   final pulumi.Input<List<GetGatewaysGatewayGatewayInstance>> gatewayInstances;
+
   /// The name of the Gateway.
   final pulumi.Input<String> gatewayName;
+
   /// A host of information.
   final pulumi.Input<String> hosts;
+
   /// The ID of Gateway.
   final pulumi.Input<String> id;
+
   /// The Modify time of Gateway.
   final pulumi.Input<String> modifiedTime;
+
   /// The parent node Id of Gateway.
   final pulumi.Input<String> parentId;
+
   /// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
   final pulumi.Input<String> status;
+
   /// The user's id.
   final pulumi.Input<String> userId;
 
@@ -52,7 +60,18 @@ class GetGatewaysGateway {
     return <String, dynamic>{
       'createTime': createTime,
       'gatewayDesc': gatewayDesc,
-      'gatewayInstances': pulumi.Input.mapInputValue<List<GetGatewaysGatewayGatewayInstance>, List<Map<String, dynamic>>>(gatewayInstances, (value) => pulumi.Input.encodeList<GetGatewaysGatewayGatewayInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'gatewayInstances':
+          pulumi.Input.mapInputValue<
+            List<GetGatewaysGatewayGatewayInstance>,
+            List<Map<String, dynamic>>
+          >(
+            gatewayInstances,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGatewaysGatewayGatewayInstance,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'gatewayName': gatewayName,
       'hosts': hosts,
       'id': id,
@@ -65,17 +84,23 @@ class GetGatewaysGateway {
 
   factory GetGatewaysGateway.fromMap(Map<String, dynamic> map) {
     return GetGatewaysGateway(
-      createTime: (map['createTime'] as String).input(),
-      gatewayDesc: (map['gatewayDesc'] as String).input(),
-      gatewayInstances: (pulumi.Input.decodeList<GetGatewaysGatewayGatewayInstance>(map['gatewayInstances'], (value) => GetGatewaysGatewayGatewayInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gatewayName: (map['gatewayName'] as String).input(),
-      hosts: (map['hosts'] as String).input(),
-      id: (map['id'] as String).input(),
-      modifiedTime: (map['modifiedTime'] as String).input(),
-      parentId: (map['parentId'] as String).input(),
-      status: (map['status'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      gatewayDesc: pulumi.Input.fromValue(map['gatewayDesc'] as String),
+      gatewayInstances: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetGatewaysGatewayGatewayInstance>(
+          map['gatewayInstances']!,
+          (value) => GetGatewaysGatewayGatewayInstance.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      hosts: pulumi.Input.fromValue(map['hosts'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      modifiedTime: pulumi.Input.fromValue(map['modifiedTime'] as String),
+      parentId: pulumi.Input.fromValue(map['parentId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

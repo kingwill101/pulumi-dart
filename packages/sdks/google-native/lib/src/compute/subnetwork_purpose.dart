@@ -10,16 +10,15 @@ enum SubnetworkPurpose {
   privateServiceConnect("PRIVATE_SERVICE_CONNECT"),
   regionalManagedProxy("REGIONAL_MANAGED_PROXY");
 
-  const SubnetworkPurpose(this.value);
-  final String value;
+  const SubnetworkPurpose(this.wireValue);
+  final String wireValue;
 
   static SubnetworkPurpose fromValue(String value) {
     for (final item in SubnetworkPurpose.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkPurpose value: $value');
   }
 }
-

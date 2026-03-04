@@ -9,20 +9,21 @@ class TargetSiteFailureReasonQuotaFailure {
 
   /// Creates a new [TargetSiteFailureReasonQuotaFailure].
   /// [totalRequiredQuota] This number is an estimation on how much total quota this project
-  TargetSiteFailureReasonQuotaFailure({
-    this.totalRequiredQuota,
-  });
+  TargetSiteFailureReasonQuotaFailure({this.totalRequiredQuota});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'totalRequiredQuota': ?totalRequiredQuota,
-    };
+    return <String, dynamic>{'totalRequiredQuota': ?totalRequiredQuota};
   }
 
-  factory TargetSiteFailureReasonQuotaFailure.fromMap(Map<String, dynamic> map) {
+  factory TargetSiteFailureReasonQuotaFailure.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TargetSiteFailureReasonQuotaFailure(
-      totalRequiredQuota: map['totalRequiredQuota'] == null ? null : (map['totalRequiredQuota']! as int).input(),
+      totalRequiredQuota: (() {
+        final guardedValue = map['totalRequiredQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

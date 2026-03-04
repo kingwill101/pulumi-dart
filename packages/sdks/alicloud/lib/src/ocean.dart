@@ -1,5 +1,3 @@
-library module_ocean;
-
 export 'ocean/base_instance.dart';
 export 'ocean/base_instance_args.dart';
 export 'ocean/base_instance_state.dart';

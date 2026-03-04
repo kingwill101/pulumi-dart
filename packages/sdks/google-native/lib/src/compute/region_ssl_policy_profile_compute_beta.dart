@@ -5,16 +5,17 @@ enum RegionSslPolicyProfileComputeBeta {
   modern("MODERN"),
   restricted("RESTRICTED");
 
-  const RegionSslPolicyProfileComputeBeta(this.value);
-  final String value;
+  const RegionSslPolicyProfileComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RegionSslPolicyProfileComputeBeta fromValue(String value) {
     for (final item in RegionSslPolicyProfileComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSslPolicyProfileComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionSslPolicyProfileComputeBeta value: $value',
+    );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsProfileForVMInstance {
   /// Admin password of the virtual machine.
   final pulumi.Input<String>? adminPassword;
+
   /// Gets or sets computer name.
   final pulumi.Input<String>? computerName;
 
   /// Creates a new [OsProfileForVMInstance].
   /// [adminPassword] Admin password of the virtual machine.
   /// [computerName] Gets or sets computer name.
-  OsProfileForVMInstance({
-    this.adminPassword,
-    this.computerName,
-  });
+  OsProfileForVMInstance({this.adminPassword, this.computerName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class OsProfileForVMInstance {
 
   factory OsProfileForVMInstance.fromMap(Map<String, dynamic> map) {
     return OsProfileForVMInstance(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      adminPassword: (() {
+        final guardedValue = map['adminPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computerName: (() {
+        final guardedValue = map['computerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

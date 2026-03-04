@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPoolV2Member {
   final pulumi.Input<String> address;
+
   /// The administrative state of the Pool, which is up (true)
   /// or down (false).
   final pulumi.Input<bool> adminStateUp;
@@ -11,20 +12,26 @@ class GetPoolV2Member {
   final pulumi.Input<String> id;
   final pulumi.Input<String> monitorAddress;
   final pulumi.Input<int> monitorPort;
+
   /// The name of the pool. Exactly one of `name`, `pool_id`
   /// is required to be set.
   final pulumi.Input<String> name;
+
   /// The operating status of the pool.
   final pulumi.Input<String> operatingStatus;
+
   /// The ID of the pool. Exactly one of `name`, `pool_id`
   /// is required to be set.
   final pulumi.Input<String> poolId;
+
   /// The owner (project/tenant) ID of the pool.
   final pulumi.Input<String> projectId;
   final pulumi.Input<int> protocolPort;
+
   /// The provisioning status of the pool.
   final pulumi.Input<String> provisioningStatus;
   final pulumi.Input<String> subnetId;
+
   /// A set of tags applied to the loadbalancer's pool. The
   /// loadbalancer' pool will be returned if it has all of the specified tags.
   final pulumi.Input<List<String>> tags;
@@ -86,22 +93,23 @@ class GetPoolV2Member {
 
   factory GetPoolV2Member.fromMap(Map<String, dynamic> map) {
     return GetPoolV2Member(
-      address: (map['address'] as String).input(),
-      adminStateUp: (map['adminStateUp'] as bool).input(),
-      backup: (map['backup'] as bool).input(),
-      id: (map['id'] as String).input(),
-      monitorAddress: (map['monitorAddress'] as String).input(),
-      monitorPort: (map['monitorPort'] as int).input(),
-      name: (map['name'] as String).input(),
-      operatingStatus: (map['operatingStatus'] as String).input(),
-      poolId: (map['poolId'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
-      protocolPort: (map['protocolPort'] as int).input(),
-      provisioningStatus: (map['provisioningStatus'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      tags: ((map['tags'] as List).cast<String>()).input(),
-      weight: (map['weight'] as int).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      adminStateUp: pulumi.Input.fromValue(map['adminStateUp'] as bool),
+      backup: pulumi.Input.fromValue(map['backup'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      monitorAddress: pulumi.Input.fromValue(map['monitorAddress'] as String),
+      monitorPort: pulumi.Input.fromValue(map['monitorPort'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operatingStatus: pulumi.Input.fromValue(map['operatingStatus'] as String),
+      poolId: pulumi.Input.fromValue(map['poolId'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      protocolPort: pulumi.Input.fromValue(map['protocolPort'] as int),
+      provisioningStatus: pulumi.Input.fromValue(
+        map['provisioningStatus'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

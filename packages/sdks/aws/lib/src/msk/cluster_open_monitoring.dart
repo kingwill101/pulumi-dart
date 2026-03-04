@@ -9,20 +9,25 @@ class ClusterOpenMonitoring {
 
   /// Creates a new [ClusterOpenMonitoring].
   /// [prometheus] Configuration block for Prometheus settings for open monitoring. See open_monitoring prometheus Argument Reference below.
-  ClusterOpenMonitoring({
-    required this.prometheus,
-  });
+  ClusterOpenMonitoring({required this.prometheus});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'prometheus': pulumi.Input.mapInputValue<ClusterOpenMonitoringPrometheus, Map<String, dynamic>>(prometheus, (value) => value.toMap()),
+      'prometheus':
+          pulumi.Input.mapInputValue<
+            ClusterOpenMonitoringPrometheus,
+            Map<String, dynamic>
+          >(prometheus, (value) => value.toMap()),
     };
   }
 
   factory ClusterOpenMonitoring.fromMap(Map<String, dynamic> map) {
     return ClusterOpenMonitoring(
-      prometheus: (ClusterOpenMonitoringPrometheus.fromMap((map['prometheus']! as Map).cast<String, dynamic>())).input(),
+      prometheus: pulumi.Input.fromValue(
+        ClusterOpenMonitoringPrometheus.fromMap(
+          (map['prometheus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -19,16 +19,15 @@ enum EntityMappingType {
   valueMailMessage("MailMessage"),
   valueSubmissionMail("SubmissionMail");
 
-  const EntityMappingType(this.value);
-  final String value;
+  const EntityMappingType(this.wireValue);
+  final String wireValue;
 
   static EntityMappingType fromValue(String value) {
     for (final item in EntityMappingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityMappingType value: $value');
   }
 }
-

@@ -6,16 +6,15 @@ enum ConnectionProfileProvider {
   aurora("AURORA"),
   alloydb("ALLOYDB");
 
-  const ConnectionProfileProvider(this.value);
-  final String value;
+  const ConnectionProfileProvider(this.wireValue);
+  final String wireValue;
 
   static ConnectionProfileProvider fromValue(String value) {
     for (final item in ConnectionProfileProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionProfileProvider value: $value');
   }
 }
-

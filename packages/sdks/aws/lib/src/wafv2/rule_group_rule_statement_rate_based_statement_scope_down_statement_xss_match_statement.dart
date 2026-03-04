@@ -6,11 +6,20 @@ import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_xss_
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement {
   /// The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<
+    RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch
+  >?
+  fieldToMatch;
+
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.
   /// At least one required.
   /// See Text Transformation below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation>> textTransformations;
+  final pulumi.Input<
+    List<
+      RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation
+    >
+  >
+  textTransformations;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement].
   /// [fieldToMatch] The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
@@ -22,16 +31,52 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatemen
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldToMatch': ?pulumi.Input.mapOptionalInputValue<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
-      'textTransformations': pulumi.Input.mapInputValue<List<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fieldToMatch':
+          ?pulumi.Input.mapOptionalInputValue<
+            RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch,
+            Map<String, dynamic>
+          >(fieldToMatch, (value) => value.toMap()),
+      'textTransformations':
+          pulumi.Input.mapInputValue<
+            List<
+              RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation
+            >,
+            List<Map<String, dynamic>>
+          >(
+            textTransformations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: (() {
+        final guardedValue = map['fieldToMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      textTransformations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation
+        >(
+          map['textTransformations']!,
+          (value) =>
+              RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

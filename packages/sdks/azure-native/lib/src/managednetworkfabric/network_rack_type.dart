@@ -4,16 +4,15 @@ enum NetworkRackType {
   valueCompute("Compute"),
   valueCombined("Combined");
 
-  const NetworkRackType(this.value);
-  final String value;
+  const NetworkRackType(this.wireValue);
+  final String wireValue;
 
   static NetworkRackType fromValue(String value) {
     for (final item in NetworkRackType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkRackType value: $value');
   }
 }
-

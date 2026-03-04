@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSasArgs {
   /// The connection string for the Event Hub to which this SAS applies.
   final pulumi.Input<String> connectionString;
+
   /// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
   final pulumi.Input<String> expiry;
 
   /// Creates a new [GetSasArgs].
   /// [connectionString] The connection string for the Event Hub to which this SAS applies.
   /// [expiry] The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
-  GetSasArgs({
-    required this.connectionString,
-    required this.expiry,
-  });
+  GetSasArgs({required this.connectionString, required this.expiry});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetSasArgs {
 
   factory GetSasArgs.fromMap(Map<String, dynamic> map) {
     return GetSasArgs(
-      connectionString: (map['connectionString'] as String).input(),
-      expiry: (map['expiry'] as String).input(),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      expiry: pulumi.Input.fromValue(map['expiry'] as String),
     );
   }
 }
-

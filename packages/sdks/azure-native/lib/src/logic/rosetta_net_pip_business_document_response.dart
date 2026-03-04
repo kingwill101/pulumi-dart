@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RosettaNetPipBusinessDocumentResponse {
   /// The business document description.
   final pulumi.Input<String>? description;
+
   /// The business document name.
   final pulumi.Input<String> name;
+
   /// The business document version.
   final pulumi.Input<String> version;
 
@@ -29,12 +31,17 @@ class RosettaNetPipBusinessDocumentResponse {
     };
   }
 
-  factory RosettaNetPipBusinessDocumentResponse.fromMap(Map<String, dynamic> map) {
+  factory RosettaNetPipBusinessDocumentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RosettaNetPipBusinessDocumentResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      version: (map['version'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

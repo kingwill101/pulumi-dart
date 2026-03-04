@@ -9,12 +9,16 @@ class GetTransitRouterRouteTablePropagationsResult {
   final String id;
   final List<String> ids;
   final String? outputFile;
+
   /// A list of Transit Router Route Table Propagations. Each element contains the following attributes:
   final List<GetTransitRouterRouteTablePropagationsPropagation> propagations;
+
   /// The status of the route learning correlation.
   final String? status;
+
   /// The ID of the network instance connection.
   final String? transitRouterAttachmentId;
+
   /// The ID of the route table of the Enterprise Edition transit router.
   final String transitRouterRouteTableId;
 
@@ -41,23 +45,49 @@ class GetTransitRouterRouteTablePropagationsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'propagations': pulumi.Input.encodeList<GetTransitRouterRouteTablePropagationsPropagation, Map<String, dynamic>>(propagations, (value) => value.toMap()),
+      'propagations':
+          pulumi.Input.encodeList<
+            GetTransitRouterRouteTablePropagationsPropagation,
+            Map<String, dynamic>
+          >(propagations, (value) => value.toMap()),
       'status': ?status,
       'transitRouterAttachmentId': ?transitRouterAttachmentId,
       'transitRouterRouteTableId': transitRouterRouteTableId,
     };
   }
 
-  factory GetTransitRouterRouteTablePropagationsResult.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterRouteTablePropagationsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterRouteTablePropagationsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      propagations: pulumi.Input.decodeList<GetTransitRouterRouteTablePropagationsPropagation>(map['propagations'], (value) => GetTransitRouterRouteTablePropagationsPropagation.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      propagations:
+          pulumi.Input.decodeList<
+            GetTransitRouterRouteTablePropagationsPropagation
+          >(
+            map['propagations']!,
+            (value) =>
+                GetTransitRouterRouteTablePropagationsPropagation.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      transitRouterAttachmentId: (() {
+        final guardedValue = map['transitRouterAttachmentId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       transitRouterRouteTableId: map['transitRouterRouteTableId'] as String,
     );
   }
 }
-

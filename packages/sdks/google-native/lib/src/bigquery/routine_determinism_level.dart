@@ -4,16 +4,15 @@ enum RoutineDeterminismLevel {
   deterministic("DETERMINISTIC"),
   notDeterministic("NOT_DETERMINISTIC");
 
-  const RoutineDeterminismLevel(this.value);
-  final String value;
+  const RoutineDeterminismLevel(this.wireValue);
+  final String wireValue;
 
   static RoutineDeterminismLevel fromValue(String value) {
     for (final item in RoutineDeterminismLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutineDeterminismLevel value: $value');
   }
 }
-

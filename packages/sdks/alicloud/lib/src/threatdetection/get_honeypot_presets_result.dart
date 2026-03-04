@@ -7,21 +7,27 @@ import 'get_honeypot_presets_preset.dart';
 class GetHoneypotPresetsResult {
   final int? currentPage;
   final bool? enableDetails;
+
   /// Honeypot mirror name.
   final String? honeypotImageName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Honeypot Preset IDs.
   final List<String> ids;
   final String? lang;
+
   /// Unique id of management node.
   final String? nodeId;
   final String? nodeName;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
+
   /// Honeypot template custom name.
   final String? presetName;
+
   /// A list of Honeypot Preset Entries. Each element contains the following attributes:
   final List<GetHoneypotPresetsPreset> presets;
 
@@ -69,26 +75,74 @@ class GetHoneypotPresetsResult {
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
       'presetName': ?presetName,
-      'presets': pulumi.Input.encodeList<GetHoneypotPresetsPreset, Map<String, dynamic>>(presets, (value) => value.toMap()),
+      'presets':
+          pulumi.Input.encodeList<
+            GetHoneypotPresetsPreset,
+            Map<String, dynamic>
+          >(presets, (value) => value.toMap()),
     };
   }
 
   factory GetHoneypotPresetsResult.fromMap(Map<String, dynamic> map) {
     return GetHoneypotPresetsResult(
-      currentPage: map['currentPage'] == null ? null : map['currentPage']! as int,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
-      honeypotImageName: map['honeypotImageName'] == null ? null : map['honeypotImageName']! as String,
+      currentPage: (() {
+        final guardedValue = map['currentPage'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      honeypotImageName: (() {
+        final guardedValue = map['honeypotImageName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang']! as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId']! as String,
-      nodeName: map['nodeName'] == null ? null : map['nodeName']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      presetName: map['presetName'] == null ? null : map['presetName']! as String,
-      presets: pulumi.Input.decodeList<GetHoneypotPresetsPreset>(map['presets'], (value) => GetHoneypotPresetsPreset.fromMap((value as Map).cast<String, dynamic>())),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nodeId: (() {
+        final guardedValue = map['nodeId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nodeName: (() {
+        final guardedValue = map['nodeName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      presetName: (() {
+        final guardedValue = map['presetName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      presets: pulumi.Input.decodeList<GetHoneypotPresetsPreset>(
+        map['presets']!,
+        (value) => GetHoneypotPresetsPreset.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

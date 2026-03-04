@@ -1,5 +1,3 @@
-library module_gkeonprem;
-
 export 'gkeonprem/authorization.dart';
 export 'gkeonprem/authorization_response.dart';
 export 'gkeonprem/bare_metal_admin_api_server_argument.dart';

@@ -8,7 +8,7 @@ import 'control_policy_state.dart';
 ///
 /// For information about Resource Manager Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-createcontrolpolicy).
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -245,21 +245,26 @@ class ControlPolicy extends pulumi.CustomResource {
   /// The new name of the access control policy.
   /// The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
   late final pulumi.Output<String> controlPolicyName;
+
   /// The time when the access control policy was created.
   late final pulumi.Output<String> createTime;
+
   /// The new description of the access control policy.
   /// The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
   late final pulumi.Output<String?> description;
+
   /// The effective scope of the access control policy. Valid values:
   ///
   /// - All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
   /// - RAM: The access control policy is in effect only for RAM users and RAM roles.
   late final pulumi.Output<String> effectScope;
+
   /// The new document of the access control policy.
   /// The document can be a maximum of 4,096 characters in length.
   /// For more information about the languages of access control policies, see [Languages of access control policies](https://www.alibabacloud.com/help/en/doc-detail/179096.html).
   /// For more information about the examples of access control policies, see [Examples of custom access control policies](https://www.alibabacloud.com/help/en/doc-detail/181474.html).
   late final pulumi.Output<String> policyDocument;
+
   /// The tags.
   /// You can specify a maximum of 20 tags.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -273,17 +278,17 @@ class ControlPolicy extends pulumi.CustomResource {
     ControlPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/controlPolicy:ControlPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.controlPolicyName = registerOutput<String>('controlPolicyName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectScope = registerOutput<String>('effectScope');
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:resourcemanager/controlPolicy:ControlPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    controlPolicyName = registerOutput<String>('controlPolicyName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectScope = registerOutput<String>('effectScope');
+    policyDocument = registerOutput<String>('policyDocument');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ControlPolicy] resource's state with the given [name] and [id].
@@ -304,16 +309,16 @@ class ControlPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/controlPolicy:ControlPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.controlPolicyName = registerOutput<String>('controlPolicyName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectScope = registerOutput<String>('effectScope');
-    this.policyDocument = registerOutput<String>('policyDocument');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:resourcemanager/controlPolicy:ControlPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    controlPolicyName = registerOutput<String>('controlPolicyName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectScope = registerOutput<String>('effectScope');
+    policyDocument = registerOutput<String>('policyDocument');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -6,16 +6,15 @@ enum RegionSecurityPolicyType {
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK"),
   firewall("FIREWALL");
 
-  const RegionSecurityPolicyType(this.value);
-  final String value;
+  const RegionSecurityPolicyType(this.wireValue);
+  final String wireValue;
 
   static RegionSecurityPolicyType fromValue(String value) {
     for (final item in RegionSecurityPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionSecurityPolicyType value: $value');
   }
 }
-

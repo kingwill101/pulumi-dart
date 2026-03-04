@@ -185,10 +185,13 @@ import 'key_group_state.dart';
 class KeyGroup extends pulumi.CustomResource {
   /// A comment to describe the key group..
   late final pulumi.Output<String?> comment;
+
   /// The identifier for this version of the key group.
   late final pulumi.Output<String> etag;
+
   /// A list of the identifiers of the public keys in the key group.
   late final pulumi.Output<List<String>> items;
+
   /// A name to identify the key group.
   late final pulumi.Output<String> name;
 
@@ -201,14 +204,14 @@ class KeyGroup extends pulumi.CustomResource {
     KeyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyGroup:KeyGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String?>('comment');
-    this.etag = registerOutput<String>('etag');
-    this.items = registerOutput<List<String>>('items');
+         'aws:cloudfront/keyGroup:KeyGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    items = registerOutput<List<String>>('items');
     this.name = registerOutput<String>('name');
   }
 
@@ -230,14 +233,14 @@ class KeyGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyGroup:KeyGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String?>('comment');
-    this.etag = registerOutput<String>('etag');
-    this.items = registerOutput<List<String>>('items');
+         'aws:cloudfront/keyGroup:KeyGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    items = registerOutput<List<String>>('items');
     this.name = registerOutput<String>('name');
   }
 }

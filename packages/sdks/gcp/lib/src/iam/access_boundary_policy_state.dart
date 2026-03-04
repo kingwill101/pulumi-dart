@@ -7,12 +7,16 @@ import 'access_boundary_policy_rule.dart';
 class AccessBoundaryPolicyState {
   /// The display name of the rule.
   final pulumi.Input<String>? displayName;
+
   /// The hash of the resource. Used internally during updates.
   final pulumi.Input<String>? etag;
+
   /// The name of the policy.
   final pulumi.Input<String>? name;
+
   /// The attachment point is identified by its URL-encoded full resource name.
   final pulumi.Input<String>? parent;
+
   /// Rules to be applied.
   /// Structure is documented below.
   final pulumi.Input<List<AccessBoundaryPolicyRule>>? rules;
@@ -37,18 +41,55 @@ class AccessBoundaryPolicyState {
       'etag': ?etag,
       'name': ?name,
       'parent': ?parent,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<AccessBoundaryPolicyRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AccessBoundaryPolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AccessBoundaryPolicyRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AccessBoundaryPolicyRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AccessBoundaryPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyState(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AccessBoundaryPolicyRule>(map['rules']!, (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AccessBoundaryPolicyRule>(
+            guardedValue,
+            (value) => AccessBoundaryPolicyRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

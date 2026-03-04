@@ -4,16 +4,20 @@ enum InstancePropertiesPrivateIpv6GoogleAccessComputeBeta {
   enableOutboundVmAccessToGoogle("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"),
   inheritFromSubnetwork("INHERIT_FROM_SUBNETWORK");
 
-  const InstancePropertiesPrivateIpv6GoogleAccessComputeBeta(this.value);
-  final String value;
+  const InstancePropertiesPrivateIpv6GoogleAccessComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static InstancePropertiesPrivateIpv6GoogleAccessComputeBeta fromValue(String value) {
-    for (final item in InstancePropertiesPrivateIpv6GoogleAccessComputeBeta.values) {
-      if (item.value == value) {
+  static InstancePropertiesPrivateIpv6GoogleAccessComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstancePropertiesPrivateIpv6GoogleAccessComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstancePropertiesPrivateIpv6GoogleAccessComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstancePropertiesPrivateIpv6GoogleAccessComputeBeta value: $value',
+    );
   }
 }
-

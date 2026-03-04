@@ -3,7 +3,6 @@ import 'compute_resource_response.dart';
 import 'io_tdevice_info_response.dart';
 import 'io_tedge_agent_info_response.dart';
 import 'io_trole_args.dart';
-import 'mount_point_map_response.dart';
 import 'system_data_response.dart';
 
 /// Compute role.
@@ -321,29 +320,41 @@ import 'system_data_response.dart';
 class IoTRole extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource allocation
   late final pulumi.Output<ComputeResourceResponse?> computeResource;
+
   /// Host OS supported by the IoT role.
   late final pulumi.Output<String> hostPlatform;
+
   /// Platform where the Iot runtime is hosted.
   late final pulumi.Output<String> hostPlatformType;
+
   /// IoT device metadata to which data box edge device needs to be connected.
   late final pulumi.Output<IoTDeviceInfoResponse> ioTDeviceDetails;
+
   /// Iot edge agent details to download the agent and bootstrap iot runtime.
   late final pulumi.Output<IoTEdgeAgentInfoResponse?> ioTEdgeAgentInfo;
+
   /// IoT edge device to which the IoT role needs to be configured.
   late final pulumi.Output<IoTDeviceInfoResponse> ioTEdgeDeviceDetails;
+
   /// Role type.
   /// Expected value is 'IOT'.
   late final pulumi.Output<String> kind;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Role status.
   late final pulumi.Output<String> roleStatus;
+
   /// Mount points of shares in role(s).
-  late final pulumi.Output<List<MountPointMapResponse>?> shareMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> shareMappings;
+
   /// Metadata pertaining to creation and last modification of Role
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -356,23 +367,33 @@ class IoTRole extends pulumi.CustomResource {
     IoTRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:IoTRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.computeResource = registerOutput<ComputeResourceResponse?>('computeResource');
-    this.hostPlatform = registerOutput<String>('hostPlatform');
-    this.hostPlatformType = registerOutput<String>('hostPlatformType');
-    this.ioTDeviceDetails = registerOutput<IoTDeviceInfoResponse>('ioTDeviceDetails');
-    this.ioTEdgeAgentInfo = registerOutput<IoTEdgeAgentInfoResponse?>('ioTEdgeAgentInfo');
-    this.ioTEdgeDeviceDetails = registerOutput<IoTDeviceInfoResponse>('ioTEdgeDeviceDetails');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:databoxedge:IoTRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computeResource = registerOutput<ComputeResourceResponse?>(
+      'computeResource',
+    );
+    hostPlatform = registerOutput<String>('hostPlatform');
+    hostPlatformType = registerOutput<String>('hostPlatformType');
+    ioTDeviceDetails = registerOutput<IoTDeviceInfoResponse>(
+      'ioTDeviceDetails',
+    );
+    ioTEdgeAgentInfo = registerOutput<IoTEdgeAgentInfoResponse?>(
+      'ioTEdgeAgentInfo',
+    );
+    ioTEdgeDeviceDetails = registerOutput<IoTDeviceInfoResponse>(
+      'ioTEdgeDeviceDetails',
+    );
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.roleStatus = registerOutput<String>('roleStatus');
-    this.shareMappings = registerOutput<List<MountPointMapResponse>?>('shareMappings');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    roleStatus = registerOutput<String>('roleStatus');
+    shareMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'shareMappings',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

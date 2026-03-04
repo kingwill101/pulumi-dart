@@ -172,10 +172,13 @@ import 'data_center_resource_response_properties.dart';
 class CassandraDataCenter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the database account.
   late final pulumi.Output<String> name;
+
   /// Properties of a managed Cassandra data center.
   late final pulumi.Output<DataCenterResourceResponseProperties> properties;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -188,14 +191,16 @@ class CassandraDataCenter extends pulumi.CustomResource {
     CassandraDataCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:CassandraDataCenter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:cosmosdb:CassandraDataCenter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<DataCenterResourceResponseProperties>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<DataCenterResourceResponseProperties>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

@@ -5,29 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelectionConditionStringLike {
   /// Key for the filter.
   final pulumi.Input<String> key;
+
   /// Value for the filter.
   final pulumi.Input<String> value;
 
   /// Creates a new [SelectionConditionStringLike].
   /// [key] Key for the filter.
   /// [value] Value for the filter.
-  SelectionConditionStringLike({
-    required this.key,
-    required this.value,
-  });
+  SelectionConditionStringLike({required this.key, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
   factory SelectionConditionStringLike.fromMap(Map<String, dynamic> map) {
     return SelectionConditionStringLike(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

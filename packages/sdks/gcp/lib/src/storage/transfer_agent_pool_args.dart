@@ -11,8 +11,10 @@ class TransferAgentPoolArgs {
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   /// Structure is documented below.
   final pulumi.Input<TransferAgentPoolBandwidthLimit>? bandwidthLimit;
+
   /// Specifies the client-specified AgentPool description.
   final pulumi.Input<String>? displayName;
+
   /// The ID of the agent pool to create.
   /// The agentPoolId must meet the following requirements:
   /// * Length of 128 characters or less.
@@ -22,6 +24,7 @@ class TransferAgentPoolArgs {
   /// * One or more numerals or lowercase ASCII characters.
   /// As expressed by the regular expression: ^(?!goog)a-z?$.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -40,7 +43,11 @@ class TransferAgentPoolArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bandwidthLimit': ?pulumi.Input.mapOptionalInputValue<TransferAgentPoolBandwidthLimit, Map<String, dynamic>>(bandwidthLimit, (value) => value.toMap()),
+      'bandwidthLimit':
+          ?pulumi.Input.mapOptionalInputValue<
+            TransferAgentPoolBandwidthLimit,
+            Map<String, dynamic>
+          >(bandwidthLimit, (value) => value.toMap()),
       'displayName': ?displayName,
       'name': ?name,
       'project': ?project,
@@ -49,11 +56,30 @@ class TransferAgentPoolArgs {
 
   factory TransferAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return TransferAgentPoolArgs(
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : (TransferAgentPoolBandwidthLimit.fromMap((map['bandwidthLimit']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      bandwidthLimit: (() {
+        final guardedValue = map['bandwidthLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TransferAgentPoolBandwidthLimit.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

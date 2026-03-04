@@ -9,23 +9,16 @@ class StepDimensionValueEntryResponse {
   /// Creates a new [StepDimensionValueEntryResponse].
   /// [key] Required.
   /// [value] Required.
-  StepDimensionValueEntryResponse({
-    required this.key,
-    required this.value,
-  });
+  StepDimensionValueEntryResponse({required this.key, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
   factory StepDimensionValueEntryResponse.fromMap(Map<String, dynamic> map) {
     return StepDimensionValueEntryResponse(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

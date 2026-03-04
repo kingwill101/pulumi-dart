@@ -3,16 +3,17 @@ enum RegionDiskStorageTypeComputeBeta {
   hdd("HDD"),
   ssd("SSD");
 
-  const RegionDiskStorageTypeComputeBeta(this.value);
-  final String value;
+  const RegionDiskStorageTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RegionDiskStorageTypeComputeBeta fromValue(String value) {
     for (final item in RegionDiskStorageTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionDiskStorageTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionDiskStorageTypeComputeBeta value: $value',
+    );
   }
 }
-

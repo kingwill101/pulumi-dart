@@ -9,6 +9,7 @@ class GetDnsAuthorizationResult {
   final List<GetDnsAuthorizationDnsResourceRecord> dnsResourceRecords;
   final String domain;
   final Map<String, String> effectiveLabels;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -47,7 +48,11 @@ class GetDnsAuthorizationResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'dnsResourceRecords': pulumi.Input.encodeList<GetDnsAuthorizationDnsResourceRecord, Map<String, dynamic>>(dnsResourceRecords, (value) => value.toMap()),
+      'dnsResourceRecords':
+          pulumi.Input.encodeList<
+            GetDnsAuthorizationDnsResourceRecord,
+            Map<String, dynamic>
+          >(dnsResourceRecords, (value) => value.toMap()),
       'domain': domain,
       'effectiveLabels': effectiveLabels,
       'id': id,
@@ -63,17 +68,30 @@ class GetDnsAuthorizationResult {
   factory GetDnsAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationResult(
       description: map['description'] as String,
-      dnsResourceRecords: pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(map['dnsResourceRecords'], (value) => GetDnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>())),
+      dnsResourceRecords:
+          pulumi.Input.decodeList<GetDnsAuthorizationDnsResourceRecord>(
+            map['dnsResourceRecords']!,
+            (value) => GetDnsAuthorizationDnsResourceRecord.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       domain: map['domain'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }
 }
-

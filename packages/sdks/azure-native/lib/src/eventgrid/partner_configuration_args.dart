@@ -10,12 +10,16 @@ import 'partner_authorization.dart';
 class PartnerConfigurationArgs {
   /// Location of the resource.
   final pulumi.Input<String>? location;
+
   /// The details of authorized partners.
   final pulumi.Input<PartnerAuthorization>? partnerAuthorization;
+
   /// Provisioning state of the partner configuration.
   final pulumi.Input<String>? provisioningState;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// Tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,7 +40,11 @@ class PartnerConfigurationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'partnerAuthorization': ?pulumi.Input.mapOptionalInputValue<PartnerAuthorization, Map<String, dynamic>>(partnerAuthorization, (value) => value.toMap()),
+      'partnerAuthorization':
+          ?pulumi.Input.mapOptionalInputValue<
+            PartnerAuthorization,
+            Map<String, dynamic>
+          >(partnerAuthorization, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -45,12 +53,35 @@ class PartnerConfigurationArgs {
 
   factory PartnerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerConfigurationArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      partnerAuthorization: map['partnerAuthorization'] == null ? null : (PartnerAuthorization.fromMap((map['partnerAuthorization']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerAuthorization: (() {
+        final guardedValue = map['partnerAuthorization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PartnerAuthorization.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

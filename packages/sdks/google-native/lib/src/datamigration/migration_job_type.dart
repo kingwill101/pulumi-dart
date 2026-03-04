@@ -4,16 +4,15 @@ enum MigrationJobType {
   oneTime("ONE_TIME"),
   continuous("CONTINUOUS");
 
-  const MigrationJobType(this.value);
-  final String value;
+  const MigrationJobType(this.wireValue);
+  final String wireValue;
 
   static MigrationJobType fromValue(String value) {
     for (final item in MigrationJobType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MigrationJobType value: $value');
   }
 }
-

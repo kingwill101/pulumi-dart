@@ -8,10 +8,13 @@ import 'cloud_sql_properties_type.dart';
 class CloudSqlProperties {
   /// Input only. Cloud SQL credential.
   final pulumi.Input<CloudSqlCredential>? credential;
+
   /// Database name.
   final pulumi.Input<String>? database;
+
   /// Cloud SQL instance ID in the form `project:location:instance`.
   final pulumi.Input<String>? instanceId;
+
   /// Type of the Cloud SQL database.
   final pulumi.Input<CloudSqlPropertiesType>? type;
 
@@ -29,20 +32,49 @@ class CloudSqlProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credential': ?pulumi.Input.mapOptionalInputValue<CloudSqlCredential, Map<String, dynamic>>(credential, (value) => value.toMap()),
+      'credential':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudSqlCredential,
+            Map<String, dynamic>
+          >(credential, (value) => value.toMap()),
       'database': ?database,
       'instanceId': ?instanceId,
-      'type': ?pulumi.Input.mapOptionalInputValue<CloudSqlPropertiesType, String>(type, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<CloudSqlPropertiesType, String>(
+            type,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory CloudSqlProperties.fromMap(Map<String, dynamic> map) {
     return CloudSqlProperties(
-      credential: map['credential'] == null ? null : (CloudSqlCredential.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      type: map['type'] == null ? null : (CloudSqlPropertiesType.fromValue(map['type']! as String)).input(),
+      credential: (() {
+        final guardedValue = map['credential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudSqlCredential.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudSqlPropertiesType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

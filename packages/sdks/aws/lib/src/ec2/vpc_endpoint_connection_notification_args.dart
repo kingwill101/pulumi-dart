@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointConnectionNotificationArgs {
   /// One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
   ///
-  /// > **NOTE:** One of `vpc_endpoint_service_id` or `vpc_endpoint_id` must be specified.
+  /// &gt; **NOTE:** One of `vpc_endpoint_service_id` or `vpc_endpoint_id` must be specified.
   final pulumi.Input<List<String>> connectionEvents;
+
   /// The ARN of the SNS topic for the notifications.
   final pulumi.Input<String> connectionNotificationArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the VPC Endpoint to receive notifications for.
   final pulumi.Input<String>? vpcEndpointId;
+
   /// The ID of the VPC Endpoint Service to receive notifications for.
   final pulumi.Input<String>? vpcEndpointServiceId;
 
@@ -44,14 +48,31 @@ class VpcEndpointConnectionNotificationArgs {
     };
   }
 
-  factory VpcEndpointConnectionNotificationArgs.fromMap(Map<String, dynamic> map) {
+  factory VpcEndpointConnectionNotificationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEndpointConnectionNotificationArgs(
-      connectionEvents: ((map['connectionEvents'] as List).cast<String>()).input(),
-      connectionNotificationArn: (map['connectionNotificationArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : ((map['vpcEndpointServiceId'] as String).input()).input(),
+      connectionEvents: pulumi.Input.fromValue(
+        (map['connectionEvents'] as List).cast<String>(),
+      ),
+      connectionNotificationArn: pulumi.Input.fromValue(
+        map['connectionNotificationArn'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointId: (() {
+        final guardedValue = map['vpcEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointServiceId: (() {
+        final guardedValue = map['vpcEndpointServiceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

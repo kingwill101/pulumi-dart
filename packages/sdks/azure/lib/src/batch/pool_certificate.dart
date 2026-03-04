@@ -32,11 +32,18 @@ class PoolCertificate {
 
   factory PoolCertificate.fromMap(Map<String, dynamic> map) {
     return PoolCertificate(
-      id: (map['id'] as String).input(),
-      storeLocation: (map['storeLocation'] as String).input(),
-      storeName: map['storeName'] == null ? null : (map['storeName']! as String).input(),
-      visibilities: map['visibilities'] == null ? null : ((map['visibilities']! as List).cast<String>()).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      storeLocation: pulumi.Input.fromValue(map['storeLocation'] as String),
+      storeName: (() {
+        final guardedValue = map['storeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      visibilities: (() {
+        final guardedValue = map['visibilities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

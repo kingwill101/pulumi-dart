@@ -5,7 +5,7 @@ import 'application_state.dart';
 
 /// Resource for managing an AWS SSO Admin Application.
 ///
-/// > The `CreateApplication` API only supports custom OAuth 2.0 applications.
+/// &gt; The `CreateApplication` API only supports custom OAuth 2.0 applications.
 /// Creation of 3rd party SAML or OAuth 2.0 applications require setup to be done through the associated app service or AWS console.
 /// See this issue for additional context.
 ///
@@ -314,30 +314,42 @@ import 'application_state.dart';
 class Application extends pulumi.CustomResource {
   /// AWS account ID.
   late final pulumi.Output<String> applicationAccount;
+
   /// (**Deprecated** Reference `arn` instead) ARN of the application.
   late final pulumi.Output<String> applicationArn;
+
   /// ARN of the application provider.
   late final pulumi.Output<String> applicationProviderArn;
+
   /// ARN of the application.
   late final pulumi.Output<String> arn;
+
   /// A unique, case-sensitive ID that you provide to ensure the idempotency of the request. AWS generates a random value when not provided.
   late final pulumi.Output<String?> clientToken;
+
   /// Description of the application.
   late final pulumi.Output<String?> description;
+
   /// ARN of the instance of IAM Identity Center.
   late final pulumi.Output<String> instanceArn;
+
   /// Name of the application.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Options for the portal associated with an application. See `portal_options` below.
   late final pulumi.Output<ApplicationPortalOptions?> portalOptions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Status of the application. Valid values are `ENABLED` and `DISABLED`.
   late final pulumi.Output<String> status;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -350,24 +362,24 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationAccount = registerOutput<String>('applicationAccount');
-    this.applicationArn = registerOutput<String>('applicationArn');
-    this.applicationProviderArn = registerOutput<String>('applicationProviderArn');
-    this.arn = registerOutput<String>('arn');
-    this.clientToken = registerOutput<String?>('clientToken');
-    this.description = registerOutput<String?>('description');
-    this.instanceArn = registerOutput<String>('instanceArn');
+         'aws:ssoadmin/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationAccount = registerOutput<String>('applicationAccount');
+    applicationArn = registerOutput<String>('applicationArn');
+    applicationProviderArn = registerOutput<String>('applicationProviderArn');
+    arn = registerOutput<String>('arn');
+    clientToken = registerOutput<String?>('clientToken');
+    description = registerOutput<String?>('description');
+    instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
-    this.portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -388,23 +400,23 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationAccount = registerOutput<String>('applicationAccount');
-    this.applicationArn = registerOutput<String>('applicationArn');
-    this.applicationProviderArn = registerOutput<String>('applicationProviderArn');
-    this.arn = registerOutput<String>('arn');
-    this.clientToken = registerOutput<String?>('clientToken');
-    this.description = registerOutput<String?>('description');
-    this.instanceArn = registerOutput<String>('instanceArn');
+         'aws:ssoadmin/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationAccount = registerOutput<String>('applicationAccount');
+    applicationArn = registerOutput<String>('applicationArn');
+    applicationProviderArn = registerOutput<String>('applicationProviderArn');
+    arn = registerOutput<String>('arn');
+    clientToken = registerOutput<String?>('clientToken');
+    description = registerOutput<String?>('description');
+    instanceArn = registerOutput<String>('instanceArn');
     this.name = registerOutput<String>('name');
-    this.portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    portalOptions = registerOutput<ApplicationPortalOptions?>('portalOptions');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

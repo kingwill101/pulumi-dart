@@ -7,10 +7,13 @@ import 'target_response.dart';
 class CompilationErrorResponse {
   /// The identifier of the action where this error occurred, if available.
   final pulumi.Input<TargetResponse> actionTarget;
+
   /// The error's top level message.
   final pulumi.Input<String> message;
+
   /// The path of the file where this error occurred, if available, relative to the project root.
   final pulumi.Input<String> path;
+
   /// The error's full stack trace.
   final pulumi.Input<String> stack;
 
@@ -28,7 +31,11 @@ class CompilationErrorResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionTarget': pulumi.Input.mapInputValue<TargetResponse, Map<String, dynamic>>(actionTarget, (value) => value.toMap()),
+      'actionTarget':
+          pulumi.Input.mapInputValue<TargetResponse, Map<String, dynamic>>(
+            actionTarget,
+            (value) => value.toMap(),
+          ),
       'message': message,
       'path': path,
       'stack': stack,
@@ -37,11 +44,14 @@ class CompilationErrorResponse {
 
   factory CompilationErrorResponse.fromMap(Map<String, dynamic> map) {
     return CompilationErrorResponse(
-      actionTarget: (TargetResponse.fromMap((map['actionTarget'] as Map).cast<String, dynamic>())).input(),
-      message: (map['message'] as String).input(),
-      path: (map['path'] as String).input(),
-      stack: (map['stack'] as String).input(),
+      actionTarget: pulumi.Input.fromValue(
+        TargetResponse.fromMap(
+          (map['actionTarget']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      stack: pulumi.Input.fromValue(map['stack'] as String),
     );
   }
 }
-

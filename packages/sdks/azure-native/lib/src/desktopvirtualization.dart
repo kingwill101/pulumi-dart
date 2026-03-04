@@ -1,5 +1,3 @@
-library module_desktopvirtualization;
-
 export 'desktopvirtualization/agent_update_properties.dart';
 export 'desktopvirtualization/agent_update_properties_response.dart';
 export 'desktopvirtualization/app_attach_package.dart';

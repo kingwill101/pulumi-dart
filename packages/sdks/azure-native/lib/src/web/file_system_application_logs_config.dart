@@ -10,20 +10,26 @@ class FileSystemApplicationLogsConfig {
 
   /// Creates a new [FileSystemApplicationLogsConfig].
   /// [level] Log level.
-  FileSystemApplicationLogsConfig({
-    this.level,
-  });
+  FileSystemApplicationLogsConfig({this.level});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'level': ?pulumi.Input.mapOptionalInputValue<LogLevel, String>(level, (value) => value.value),
+      'level': ?pulumi.Input.mapOptionalInputValue<LogLevel, String>(
+        level,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory FileSystemApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return FileSystemApplicationLogsConfig(
-      level: map['level'] == null ? null : (LogLevel.fromValue(map['level']! as String)).input(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogLevel.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

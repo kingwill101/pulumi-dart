@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogTransformerTransformerConfigTypeConverterEntry {
   /// Specifies the key with the value that will be converted to a different type.
   final pulumi.Input<String> key;
+
   /// Specifies the type to convert the field value to. Allowed values are: `integer`, `double`, `string` and `boolean`.
   final pulumi.Input<String> type;
 
@@ -17,17 +18,15 @@ class LogTransformerTransformerConfigTypeConverterEntry {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'type': type,
-    };
+    return <String, dynamic>{'key': key, 'type': type};
   }
 
-  factory LogTransformerTransformerConfigTypeConverterEntry.fromMap(Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigTypeConverterEntry.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogTransformerTransformerConfigTypeConverterEntry(
-      key: (map['key'] as String).input(),
-      type: (map['type'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

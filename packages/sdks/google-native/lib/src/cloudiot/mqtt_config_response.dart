@@ -9,20 +9,17 @@ class MqttConfigResponse {
 
   /// Creates a new [MqttConfigResponse].
   /// [mqttEnabledState] If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-  MqttConfigResponse({
-    required this.mqttEnabledState,
-  });
+  MqttConfigResponse({required this.mqttEnabledState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mqttEnabledState': mqttEnabledState,
-    };
+    return <String, dynamic>{'mqttEnabledState': mqttEnabledState};
   }
 
   factory MqttConfigResponse.fromMap(Map<String, dynamic> map) {
     return MqttConfigResponse(
-      mqttEnabledState: (map['mqttEnabledState'] as String).input(),
+      mqttEnabledState: pulumi.Input.fromValue(
+        map['mqttEnabledState'] as String,
+      ),
     );
   }
 }
-

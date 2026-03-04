@@ -1,5 +1,3 @@
-library module_paymentcryptography;
-
 export 'paymentcryptography/key.dart';
 export 'paymentcryptography/key_alias.dart';
 export 'paymentcryptography/key_alias_args.dart';

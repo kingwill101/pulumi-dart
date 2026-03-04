@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iot_hub_dps_args.dart';
-import 'iot_hub_dps_ip_filter_rule.dart';
-import 'iot_hub_dps_linked_hub.dart';
 import 'iot_hub_dps_sku.dart';
 import 'iot_hub_dps_state.dart';
 
@@ -176,7 +174,7 @@ import 'iot_hub_dps_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Devices` - 2022-02-05
@@ -191,28 +189,40 @@ import 'iot_hub_dps_state.dart';
 class IotHubDps extends pulumi.CustomResource {
   /// The allocation policy of the IoT Device Provisioning Service (`Hashed`, `GeoLatency` or `Static`). Defaults to `Hashed`.
   late final pulumi.Output<String?> allocationPolicy;
+
   /// Specifies if the IoT Device Provisioning Service has data residency enabled, removing the cross geo-pair disaster recovery. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> dataResidencyEnabled;
+
   /// The device endpoint of the IoT Device Provisioning Service.
   late final pulumi.Output<String> deviceProvisioningHostName;
+
   /// The unique identifier of the IoT Device Provisioning Service.
   late final pulumi.Output<String> idScope;
+
   /// An `ip_filter_rule` block as defined below.
-  late final pulumi.Output<List<IotHubDpsIpFilterRule>?> ipFilterRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipFilterRules;
+
   /// A `linked_hub` block as defined below.
-  late final pulumi.Output<List<IotHubDpsLinkedHub>?> linkedHubs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> linkedHubs;
+
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Iot Device Provisioning Service resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Whether requests from Public Network are allowed. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group under which the Iot Device Provisioning Service resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The service endpoint of the IoT Device Provisioning Service.
   late final pulumi.Output<String> serviceOperationsHostName;
+
   /// A `sku` block as defined below.
   late final pulumi.Output<IotHubDpsSku> sku;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -225,24 +235,32 @@ class IotHubDps extends pulumi.CustomResource {
     IotHubDpsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/iotHubDps:IotHubDps',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationPolicy = registerOutput<String?>('allocationPolicy');
-    this.dataResidencyEnabled = registerOutput<bool?>('dataResidencyEnabled');
-    this.deviceProvisioningHostName = registerOutput<String>('deviceProvisioningHostName');
-    this.idScope = registerOutput<String>('idScope');
-    this.ipFilterRules = registerOutput<List<IotHubDpsIpFilterRule>?>('ipFilterRules');
-    this.linkedHubs = registerOutput<List<IotHubDpsLinkedHub>?>('linkedHubs');
-    this.location = registerOutput<String>('location');
+         'azure:iot/iotHubDps:IotHubDps',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationPolicy = registerOutput<String?>('allocationPolicy');
+    dataResidencyEnabled = registerOutput<bool?>('dataResidencyEnabled');
+    deviceProvisioningHostName = registerOutput<String>(
+      'deviceProvisioningHostName',
+    );
+    idScope = registerOutput<String>('idScope');
+    ipFilterRules = registerOutput<List<Map<String, dynamic>>?>(
+      'ipFilterRules',
+    );
+    linkedHubs = registerOutput<List<Map<String, dynamic>>?>('linkedHubs');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceOperationsHostName = registerOutput<String>('serviceOperationsHostName');
-    this.sku = registerOutput<IotHubDpsSku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceOperationsHostName = registerOutput<String>(
+      'serviceOperationsHostName',
+    );
+    sku = registerOutput<IotHubDpsSku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [IotHubDps] resource's state with the given [name] and [id].
@@ -263,23 +281,31 @@ class IotHubDps extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/iotHubDps:IotHubDps',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationPolicy = registerOutput<String?>('allocationPolicy');
-    this.dataResidencyEnabled = registerOutput<bool?>('dataResidencyEnabled');
-    this.deviceProvisioningHostName = registerOutput<String>('deviceProvisioningHostName');
-    this.idScope = registerOutput<String>('idScope');
-    this.ipFilterRules = registerOutput<List<IotHubDpsIpFilterRule>?>('ipFilterRules');
-    this.linkedHubs = registerOutput<List<IotHubDpsLinkedHub>?>('linkedHubs');
-    this.location = registerOutput<String>('location');
+         'azure:iot/iotHubDps:IotHubDps',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationPolicy = registerOutput<String?>('allocationPolicy');
+    dataResidencyEnabled = registerOutput<bool?>('dataResidencyEnabled');
+    deviceProvisioningHostName = registerOutput<String>(
+      'deviceProvisioningHostName',
+    );
+    idScope = registerOutput<String>('idScope');
+    ipFilterRules = registerOutput<List<Map<String, dynamic>>?>(
+      'ipFilterRules',
+    );
+    linkedHubs = registerOutput<List<Map<String, dynamic>>?>('linkedHubs');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceOperationsHostName = registerOutput<String>('serviceOperationsHostName');
-    this.sku = registerOutput<IotHubDpsSku>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceOperationsHostName = registerOutput<String>(
+      'serviceOperationsHostName',
+    );
+    sku = registerOutput<IotHubDpsSku>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceNetworkConfiguration {
   /// Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
   final pulumi.Input<bool>? assignPublicIp;
+
   /// Security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
   final pulumi.Input<List<String>>? securityGroups;
+
   /// Subnets associated with the task or service.
   ///
   /// For more information, see [Task Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
@@ -32,10 +34,17 @@ class ServiceNetworkConfiguration {
 
   factory ServiceNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkConfiguration(
-      assignPublicIp: map['assignPublicIp'] == null ? null : ((map['assignPublicIp'] as bool).input()).input(),
-      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      assignPublicIp: (() {
+        final guardedValue = map['assignPublicIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      securityGroups: (() {
+        final guardedValue = map['securityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

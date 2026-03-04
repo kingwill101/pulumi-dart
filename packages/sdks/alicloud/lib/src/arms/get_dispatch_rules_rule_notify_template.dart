@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDispatchRulesRuleNotifyTemplate {
   /// The content of the email.
   final pulumi.Input<String> emailContent;
+
   /// The content of the email.
   final pulumi.Input<String> emailRecoverContent;
+
   /// The title of the email.
   final pulumi.Input<String> emailRecoverTitle;
+
   /// The title of the email.
   final pulumi.Input<String> emailTitle;
+
   /// The content of the robot.
   final pulumi.Input<String> robotContent;
+
   /// The content of the SMS.
   final pulumi.Input<String> smsContent;
+
   /// The content of the SMS.
   final pulumi.Input<String> smsRecoverContent;
+
   /// The content of the TTS.
   final pulumi.Input<String> ttsContent;
+
   /// The content of the TTS.
   final pulumi.Input<String> ttsRecoverContent;
 
@@ -60,16 +68,23 @@ class GetDispatchRulesRuleNotifyTemplate {
 
   factory GetDispatchRulesRuleNotifyTemplate.fromMap(Map<String, dynamic> map) {
     return GetDispatchRulesRuleNotifyTemplate(
-      emailContent: (map['emailContent'] as String).input(),
-      emailRecoverContent: (map['emailRecoverContent'] as String).input(),
-      emailRecoverTitle: (map['emailRecoverTitle'] as String).input(),
-      emailTitle: (map['emailTitle'] as String).input(),
-      robotContent: (map['robotContent'] as String).input(),
-      smsContent: (map['smsContent'] as String).input(),
-      smsRecoverContent: (map['smsRecoverContent'] as String).input(),
-      ttsContent: (map['ttsContent'] as String).input(),
-      ttsRecoverContent: (map['ttsRecoverContent'] as String).input(),
+      emailContent: pulumi.Input.fromValue(map['emailContent'] as String),
+      emailRecoverContent: pulumi.Input.fromValue(
+        map['emailRecoverContent'] as String,
+      ),
+      emailRecoverTitle: pulumi.Input.fromValue(
+        map['emailRecoverTitle'] as String,
+      ),
+      emailTitle: pulumi.Input.fromValue(map['emailTitle'] as String),
+      robotContent: pulumi.Input.fromValue(map['robotContent'] as String),
+      smsContent: pulumi.Input.fromValue(map['smsContent'] as String),
+      smsRecoverContent: pulumi.Input.fromValue(
+        map['smsRecoverContent'] as String,
+      ),
+      ttsContent: pulumi.Input.fromValue(map['ttsContent'] as String),
+      ttsRecoverContent: pulumi.Input.fromValue(
+        map['ttsRecoverContent'] as String,
+      ),
     );
   }
 }
-

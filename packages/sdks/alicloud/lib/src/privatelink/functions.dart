@@ -18,7 +18,7 @@ import 'get_vpc_endpoints_result.dart';
 ///
 /// For information about Privatelink and how to use it, see [What is Privatelink](https://www.alibabacloud.com/help/en/product/120462.htm).
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
 /// ## Example Usage
 ///
@@ -125,7 +125,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.110.0.
+/// &gt; **NOTE:** Available since v1.110.0.
 ///
 /// ## Example Usage
 ///
@@ -250,7 +250,7 @@ Future<GetVpcEndpointConnectionsResult> getVpcEndpointConnections(
 
 /// This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.110.0.
+/// &gt; **NOTE:** Available since v1.110.0.
 ///
 /// ## Example Usage
 ///
@@ -369,7 +369,7 @@ Future<GetVpcEndpointServiceResourcesResult> getVpcEndpointServiceResources(
 
 /// This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.110.0.
+/// &gt; **NOTE:** Available since v1.110.0.
 ///
 /// ## Example Usage
 ///
@@ -488,7 +488,7 @@ Future<GetVpcEndpointServiceUsersResult> getVpcEndpointServiceUsers(
 
 /// This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.109.0.
+/// &gt; **NOTE:** Available since v1.109.0.
 ///
 /// ## Example Usage
 ///
@@ -665,7 +665,7 @@ Future<GetVpcEndpointServicesResult> getVpcEndpointServices(
 
 /// This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -784,7 +784,7 @@ Future<GetVpcEndpointZonesResult> getVpcEndpointZones(
 
 /// This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.109.0.
+/// &gt; **NOTE:** Available since v1.109.0.
 ///
 /// ## Example Usage
 ///

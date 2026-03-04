@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterProfile {
   /// The domain for the cluster.
   final pulumi.Input<String>? domain;
+
   /// If FIPS validated crypto modules are used
   final pulumi.Input<String>? fipsValidatedModules;
+
   /// The pull secret for the cluster.
   final pulumi.Input<String>? pullSecret;
+
   /// The ID of the cluster resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The version of the cluster.
   final pulumi.Input<String>? version;
 
@@ -41,12 +45,31 @@ class ClusterProfile {
 
   factory ClusterProfile.fromMap(Map<String, dynamic> map) {
     return ClusterProfile(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      fipsValidatedModules: map['fipsValidatedModules'] == null ? null : (map['fipsValidatedModules']! as String).input(),
-      pullSecret: map['pullSecret'] == null ? null : (map['pullSecret']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fipsValidatedModules: (() {
+        final guardedValue = map['fipsValidatedModules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pullSecret: (() {
+        final guardedValue = map['pullSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

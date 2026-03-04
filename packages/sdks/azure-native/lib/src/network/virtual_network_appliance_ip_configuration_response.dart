@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkApplianceIpConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of virtual network appliance ip configuration.
   final pulumi.Input<String>? name;
+
   /// Whether the ip configuration is primary or not.
   final pulumi.Input<bool>? primary;
+
   /// The private IP address of the IP configuration.
   final pulumi.Input<String>? privateIPAddress;
+
   /// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
   final pulumi.Input<String>? privateIPAddressVersion;
+
   /// The private IP address allocation method.
   final pulumi.Input<String>? privateIPAllocationMethod;
+
   /// The provisioning state of the private link service IP configuration resource.
   final pulumi.Input<String> provisioningState;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -59,18 +67,45 @@ class VirtualNetworkApplianceIpConfigurationResponse {
     };
   }
 
-  factory VirtualNetworkApplianceIpConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkApplianceIpConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkApplianceIpConfigurationResponse(
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion']! as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      type: (map['type'] as String).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primary: (() {
+        final guardedValue = map['primary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      privateIPAddress: (() {
+        final guardedValue = map['privateIPAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIPAddressVersion: (() {
+        final guardedValue = map['privateIPAddressVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIPAllocationMethod: (() {
+        final guardedValue = map['privateIPAllocationMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

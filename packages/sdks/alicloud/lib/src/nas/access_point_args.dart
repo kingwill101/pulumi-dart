@@ -11,20 +11,28 @@ import 'access_point_root_path_permission.dart';
 class AccessPointArgs {
   /// The name of the permission group.
   final pulumi.Input<String> accessGroup;
+
   /// The name of the access point.
   final pulumi.Input<String>? accessPointName;
+
   /// Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
   final pulumi.Input<bool>? enabledRam;
+
   /// The ID of the file system.
   final pulumi.Input<String> fileSystemId;
+
   /// The Posix user. See `posix_user` below.
   final pulumi.Input<AccessPointPosixUser>? posixUser;
+
   /// The root directory of the access point.
   final pulumi.Input<String>? rootPath;
+
   /// Root permissions. See `root_path_permission` below.
   final pulumi.Input<AccessPointRootPathPermission>? rootPathPermission;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
+
   /// The vSwitch ID.
   final pulumi.Input<String> vswitchId;
 
@@ -56,9 +64,17 @@ class AccessPointArgs {
       'accessPointName': ?accessPointName,
       'enabledRam': ?enabledRam,
       'fileSystemId': fileSystemId,
-      'posixUser': ?pulumi.Input.mapOptionalInputValue<AccessPointPosixUser, Map<String, dynamic>>(posixUser, (value) => value.toMap()),
+      'posixUser':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccessPointPosixUser,
+            Map<String, dynamic>
+          >(posixUser, (value) => value.toMap()),
       'rootPath': ?rootPath,
-      'rootPathPermission': ?pulumi.Input.mapOptionalInputValue<AccessPointRootPathPermission, Map<String, dynamic>>(rootPathPermission, (value) => value.toMap()),
+      'rootPathPermission':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccessPointRootPathPermission,
+            Map<String, dynamic>
+          >(rootPathPermission, (value) => value.toMap()),
       'vpcId': vpcId,
       'vswitchId': vswitchId,
     };
@@ -66,16 +82,43 @@ class AccessPointArgs {
 
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
-      accessGroup: (map['accessGroup'] as String).input(),
-      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName']! as String).input(),
-      enabledRam: map['enabledRam'] == null ? null : (map['enabledRam']! as bool).input(),
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser']! as Map).cast<String, dynamic>())).input(),
-      rootPath: map['rootPath'] == null ? null : (map['rootPath']! as String).input(),
-      rootPathPermission: map['rootPathPermission'] == null ? null : (AccessPointRootPathPermission.fromMap((map['rootPathPermission']! as Map).cast<String, dynamic>())).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      accessGroup: pulumi.Input.fromValue(map['accessGroup'] as String),
+      accessPointName: (() {
+        final guardedValue = map['accessPointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabledRam: (() {
+        final guardedValue = map['enabledRam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      posixUser: (() {
+        final guardedValue = map['posixUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccessPointPosixUser.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rootPath: (() {
+        final guardedValue = map['rootPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootPathPermission: (() {
+        final guardedValue = map['rootPathPermission'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccessPointRootPathPermission.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

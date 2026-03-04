@@ -10,18 +10,28 @@ import 'virtual_machine_scale_set_public_ipaddress_configuration_dns_settings_re
 class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   /// Specify what happens to the public IP when the VM is deleted
   final pulumi.Input<String>? deleteOption;
+
   /// The dns settings to be applied on the publicIP addresses .
-  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse>? dnsSettings;
+  final pulumi.Input<
+    VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse
+  >?
+  dnsSettings;
+
   /// The idle timeout of the public IP address.
   final pulumi.Input<int>? idleTimeoutInMinutes;
+
   /// The list of IP tags associated with the public IP address.
   final pulumi.Input<List<VirtualMachineScaleSetIpTagResponse>>? ipTags;
+
   /// The publicIP address configuration name.
   final pulumi.Input<String> name;
+
   /// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
   final pulumi.Input<String>? publicIPAddressVersion;
+
   /// The PublicIPPrefix from which to allocate publicIP addresses.
   final pulumi.Input<SubResourceResponse>? publicIPPrefix;
+
   /// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
   final pulumi.Input<PublicIPAddressSkuResponse>? sku;
 
@@ -48,27 +58,98 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deleteOption': ?deleteOption,
-      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
+      'dnsSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse,
+            Map<String, dynamic>
+          >(dnsSettings, (value) => value.toMap()),
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
-      'ipTags': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineScaleSetIpTagResponse>, List<Map<String, dynamic>>>(ipTags, (value) => pulumi.Input.encodeList<VirtualMachineScaleSetIpTagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipTags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachineScaleSetIpTagResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipTags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineScaleSetIpTagResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
       'publicIPAddressVersion': ?publicIPAddressVersion,
-      'publicIPPrefix': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(publicIPPrefix, (value) => value.toMap()),
-      'sku': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'publicIPPrefix':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(publicIPPrefix, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            PublicIPAddressSkuResponse,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineScaleSetPublicIPAddressConfigurationResponse(
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
-      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetIpTagResponse>(map['ipTags']!, (value) => VirtualMachineScaleSetIpTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion']! as String).input(),
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResourceResponse.fromMap((map['publicIPPrefix']! as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (PublicIPAddressSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      deleteOption: (() {
+        final guardedValue = map['deleteOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsSettings: (() {
+        final guardedValue = map['dnsSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      idleTimeoutInMinutes: (() {
+        final guardedValue = map['idleTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipTags: (() {
+        final guardedValue = map['ipTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualMachineScaleSetIpTagResponse>(
+            guardedValue,
+            (value) => VirtualMachineScaleSetIpTagResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicIPAddressVersion: (() {
+        final guardedValue = map['publicIPAddressVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIPPrefix: (() {
+        final guardedValue = map['publicIPPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PublicIPAddressSkuResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

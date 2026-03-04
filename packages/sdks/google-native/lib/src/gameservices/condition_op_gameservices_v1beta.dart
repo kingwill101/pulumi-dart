@@ -7,16 +7,15 @@ enum ConditionOpGameservicesV1beta {
   notIn("NOT_IN"),
   discharged("DISCHARGED");
 
-  const ConditionOpGameservicesV1beta(this.value);
-  final String value;
+  const ConditionOpGameservicesV1beta(this.wireValue);
+  final String wireValue;
 
   static ConditionOpGameservicesV1beta fromValue(String value) {
     for (final item in ConditionOpGameservicesV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionOpGameservicesV1beta value: $value');
   }
 }
-

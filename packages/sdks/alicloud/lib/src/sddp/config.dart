@@ -6,7 +6,7 @@ import 'config_state.dart';
 ///
 /// For information about Data Security Center Config and how to use it, see [What is Config](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createconfig).
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///
@@ -119,10 +119,13 @@ import 'config_state.dart';
 class Config extends pulumi.CustomResource {
   /// Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
   late final pulumi.Output<String?> code;
+
   /// Abnormal Alarm General Description of the Configuration Item.
   late final pulumi.Output<String> description;
+
   /// The language of the request and response. Valid values: `zh`,`en`.
   late final pulumi.Output<String?> lang;
+
   /// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
   late final pulumi.Output<String?> value;
 
@@ -130,20 +133,17 @@ class Config extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Config]. {@macro pulumi_sddp_config_config_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Config(
-    String name, {
-    ConfigArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:sddp/config:Config',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.code = registerOutput<String?>('code');
-    this.description = registerOutput<String>('description');
-    this.lang = registerOutput<String?>('lang');
-    this.value = registerOutput<String?>('value');
+  Config(String name, {ConfigArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:sddp/config:Config',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    code = registerOutput<String?>('code');
+    description = registerOutput<String>('description');
+    lang = registerOutput<String?>('lang');
+    value = registerOutput<String?>('value');
   }
 
   /// Gets an existing [Config] resource's state with the given [name] and [id].
@@ -164,14 +164,14 @@ class Config extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sddp/config:Config',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.code = registerOutput<String?>('code');
-    this.description = registerOutput<String>('description');
-    this.lang = registerOutput<String?>('lang');
-    this.value = registerOutput<String?>('value');
+         'alicloud:sddp/config:Config',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    code = registerOutput<String?>('code');
+    description = registerOutput<String>('description');
+    lang = registerOutput<String?>('lang');
+    value = registerOutput<String?>('value');
   }
 }

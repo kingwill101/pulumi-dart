@@ -9,20 +9,15 @@ class ActiveDirectoryDomainController {
 
   /// Creates a new [ActiveDirectoryDomainController].
   /// [hostname] Fully-qualified domain name of a domain controller in the AD domain.
-  ActiveDirectoryDomainController({
-    required this.hostname,
-  });
+  ActiveDirectoryDomainController({required this.hostname});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostname': hostname,
-    };
+    return <String, dynamic>{'hostname': hostname};
   }
 
   factory ActiveDirectoryDomainController.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryDomainController(
-      hostname: (map['hostname'] as String).input(),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
     );
   }
 }
-

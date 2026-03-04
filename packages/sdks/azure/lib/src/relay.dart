@@ -1,5 +1,3 @@
-library module_relay;
-
 export 'relay/hybrid_connection.dart';
 export 'relay/hybrid_connection_args.dart';
 export 'relay/hybrid_connection_authorization_rule.dart';

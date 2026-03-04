@@ -5,31 +5,44 @@ import 'product_code_values_enum_value.dart';
 
 /// Definition of ProductCode
 class ProductCode {
-  /// <p>The product code.</p>
+  /// &lt;p&gt;The product code.&lt;/p&gt;
   final pulumi.Input<String>? productCodeId;
-  /// <p>The type of product code.</p>
+
+  /// &lt;p&gt;The type of product code.&lt;/p&gt;
   final pulumi.Input<ProductCodeValuesEnumValue>? productCodeType;
 
   /// Creates a new [ProductCode].
-  /// [productCodeId] <p>The product code.</p>
-  /// [productCodeType] <p>The type of product code.</p>
-  ProductCode({
-    this.productCodeId,
-    this.productCodeType,
-  });
+  /// [productCodeId] &lt;p&gt;The product code.&lt;/p&gt;
+  /// [productCodeType] &lt;p&gt;The type of product code.&lt;/p&gt;
+  ProductCode({this.productCodeId, this.productCodeType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'productCodeId': ?productCodeId,
-      'productCodeType': ?pulumi.Input.mapOptionalInputValue<ProductCodeValuesEnumValue, Map<String, dynamic>>(productCodeType, (value) => value.toMap()),
+      'productCodeType':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProductCodeValuesEnumValue,
+            Map<String, dynamic>
+          >(productCodeType, (value) => value.toMap()),
     };
   }
 
   factory ProductCode.fromMap(Map<String, dynamic> map) {
     return ProductCode(
-      productCodeId: map['productCodeId'] == null ? null : (map['productCodeId']! as String).input(),
-      productCodeType: map['productCodeType'] == null ? null : (ProductCodeValuesEnumValue.fromMap((map['productCodeType']! as Map).cast<String, dynamic>())).input(),
+      productCodeId: (() {
+        final guardedValue = map['productCodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productCodeType: (() {
+        final guardedValue = map['productCodeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProductCodeValuesEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

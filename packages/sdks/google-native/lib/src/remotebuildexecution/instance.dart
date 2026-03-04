@@ -6,14 +6,21 @@ import 'instance_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class Instance extends pulumi.CustomResource {
   /// The policy to define whether or not RBE features can be used or how they can be used.
-  late final pulumi.Output<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse> featurePolicy;
+  late final pulumi.Output<
+    GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
+  >
+  featurePolicy;
+
   /// The location is a GCP region. Currently only `us-central1` is supported.
   late final pulumi.Output<String> location;
+
   /// Whether stack driver logging is enabled for the instance.
   late final pulumi.Output<bool> loggingEnabled;
+
   /// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// State of the instance.
   late final pulumi.Output<String> state;
 
@@ -26,16 +33,19 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:remotebuildexecution/v1alpha:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.featurePolicy = registerOutput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>('featurePolicy');
-    this.location = registerOutput<String>('location');
-    this.loggingEnabled = registerOutput<bool>('loggingEnabled');
+         'google-native:remotebuildexecution/v1alpha:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    featurePolicy =
+        registerOutput<
+          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse
+        >('featurePolicy');
+    location = registerOutput<String>('location');
+    loggingEnabled = registerOutput<bool>('loggingEnabled');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.state = registerOutput<String>('state');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
   }
 }

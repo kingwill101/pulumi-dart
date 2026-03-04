@@ -8,7 +8,7 @@ import 'rds_account_state.dart';
 ///
 /// For information about RDS Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createaccount).
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -413,8 +413,9 @@ import 'rds_account_state.dart';
 class RdsAccount extends pulumi.CustomResource {
   /// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
   ///
-  /// > **NOTE:** The name cannot start with http:// or https://.
+  /// &gt; **NOTE:** The name cannot start with http:// or https://.
   late final pulumi.Output<String> accountDescription;
+
   /// The name of the database account.
   /// * The name must be unique.
   /// * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
@@ -429,41 +430,54 @@ class RdsAccount extends pulumi.CustomResource {
   /// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
   /// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
   late final pulumi.Output<String> accountName;
+
   /// The password of the account.
   /// * The value must be 8 to 32 characters in length.
   /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
   /// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
   late final pulumi.Output<String> accountPassword;
+
   /// The account type. Valid values:
   /// * Normal: standard account (default).
   /// * Super: privileged account.
   /// * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
   ///
-  /// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+  /// &gt; **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
   late final pulumi.Output<String> accountType;
+
   /// Whether to apply password policy
   late final pulumi.Output<bool?> checkPolicy;
+
   /// The ID of the instance.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The attribute has been deprecated from 1.120.0 and using `account_description` instead.
   late final pulumi.Output<String> description;
+
   /// The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
   late final pulumi.Output<String> instanceId;
+
   /// An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
   late final pulumi.Output<String?> kmsEncryptedPassword;
+
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
+
   /// The attribute has been deprecated from 1.120.0 and using `account_name` instead.
   late final pulumi.Output<String> name;
+
   /// The attribute has been deprecated from 1.120.0 and using `account_password` instead.
   late final pulumi.Output<String> password;
+
   /// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
   late final pulumi.Output<bool?> resetPermissionFlag;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
   ///
-  /// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+  /// &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
   late final pulumi.Output<String> type;
 
   /// Creates a new [RdsAccount].
@@ -475,26 +489,28 @@ class RdsAccount extends pulumi.CustomResource {
     RdsAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsAccount:RdsAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String>('accountType');
-    this.checkPolicy = registerOutput<bool?>('checkPolicy');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.description = registerOutput<String>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    this.kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
+         'alicloud:rds/rdsAccount:RdsAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String>('accountType');
+    checkPolicy = registerOutput<bool?>('checkPolicy');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    description = registerOutput<String>('description');
+    instanceId = registerOutput<String>('instanceId');
+    kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
+    kmsEncryptionContext = registerOutput<Map<String, String>?>(
+      'kmsEncryptionContext',
+    );
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.resetPermissionFlag = registerOutput<bool?>('resetPermissionFlag');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    password = registerOutput<String>('password');
+    resetPermissionFlag = registerOutput<bool?>('resetPermissionFlag');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [RdsAccount] resource's state with the given [name] and [id].
@@ -515,25 +531,27 @@ class RdsAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsAccount:RdsAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String>('accountType');
-    this.checkPolicy = registerOutput<bool?>('checkPolicy');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.description = registerOutput<String>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    this.kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
+         'alicloud:rds/rdsAccount:RdsAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String>('accountType');
+    checkPolicy = registerOutput<bool?>('checkPolicy');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    description = registerOutput<String>('description');
+    instanceId = registerOutput<String>('instanceId');
+    kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
+    kmsEncryptionContext = registerOutput<Map<String, String>?>(
+      'kmsEncryptionContext',
+    );
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.resetPermissionFlag = registerOutput<bool?>('resetPermissionFlag');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    password = registerOutput<String>('password');
+    resetPermissionFlag = registerOutput<bool?>('resetPermissionFlag');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 }

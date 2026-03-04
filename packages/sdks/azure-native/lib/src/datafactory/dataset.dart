@@ -564,12 +564,16 @@ import 'dataset_args.dart';
 class Dataset extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> etag;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// Dataset properties.
   late final pulumi.Output<AmazonMWSObjectDatasetResponse> properties;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -582,15 +586,15 @@ class Dataset extends pulumi.CustomResource {
     DatasetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datafactory:Dataset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:datafactory:Dataset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<AmazonMWSObjectDatasetResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<AmazonMWSObjectDatasetResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

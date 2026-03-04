@@ -223,7 +223,7 @@ import 'virtual_network_subnet.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevTestLab` - 2018-09-15
@@ -238,16 +238,22 @@ import 'virtual_network_subnet.dart';
 class VirtualNetwork extends pulumi.CustomResource {
   /// A description for the Virtual Network.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name of the Dev Test Lab in which the Virtual Network should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labName;
+
   /// Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `subnet` block as defined below.
   late final pulumi.Output<VirtualNetworkSubnet> subnet;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The unique immutable identifier of the Dev Test Virtual Network.
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -260,18 +266,18 @@ class VirtualNetwork extends pulumi.CustomResource {
     VirtualNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devtest/virtualNetwork:VirtualNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.labName = registerOutput<String>('labName');
+         'azure:devtest/virtualNetwork:VirtualNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    labName = registerOutput<String>('labName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subnet = registerOutput<VirtualNetworkSubnet>('subnet');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnet = registerOutput<VirtualNetworkSubnet>('subnet');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 
   /// Gets an existing [VirtualNetwork] resource's state with the given [name] and [id].
@@ -292,17 +298,17 @@ class VirtualNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devtest/virtualNetwork:VirtualNetwork',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.labName = registerOutput<String>('labName');
+         'azure:devtest/virtualNetwork:VirtualNetwork',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    labName = registerOutput<String>('labName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subnet = registerOutput<VirtualNetworkSubnet>('subnet');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnet = registerOutput<VirtualNetworkSubnet>('subnet');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 }

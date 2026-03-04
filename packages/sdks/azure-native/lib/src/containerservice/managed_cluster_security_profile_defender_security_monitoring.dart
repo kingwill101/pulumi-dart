@@ -9,20 +9,21 @@ class ManagedClusterSecurityProfileDefenderSecurityMonitoring {
 
   /// Creates a new [ManagedClusterSecurityProfileDefenderSecurityMonitoring].
   /// [enabled] Whether to enable Defender threat detection
-  ManagedClusterSecurityProfileDefenderSecurityMonitoring({
-    this.enabled,
-  });
+  ManagedClusterSecurityProfileDefenderSecurityMonitoring({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory ManagedClusterSecurityProfileDefenderSecurityMonitoring.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterSecurityProfileDefenderSecurityMonitoring.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterSecurityProfileDefenderSecurityMonitoring(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

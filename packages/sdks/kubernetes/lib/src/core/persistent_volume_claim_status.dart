@@ -8,6 +8,7 @@ import 'persistent_volume_claim_condition.dart';
 class PersistentVolumeClaimStatus {
   /// accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
   final pulumi.Input<List<String>>? accessModes;
+
   /// allocatedResourceStatuses stores status of resource being resized for the given PVC. Key names follow standard Kubernetes label syntax. Valid values are either:
   /// * Un-prefixed keys:
   /// - storage - the capacity of the volume.
@@ -37,6 +38,7 @@ class PersistentVolumeClaimStatus {
   ///
   /// A controller that receives PVC update with previously unknown resourceName or ClaimResourceStatus should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.
   final pulumi.Input<Map<String, String>>? allocatedResourceStatuses;
+
   /// allocatedResources tracks the resources allocated to a PVC including its capacity. Key names follow standard Kubernetes label syntax. Valid values are either:
   /// * Un-prefixed keys:
   /// - storage - the capacity of the volume.
@@ -47,16 +49,22 @@ class PersistentVolumeClaimStatus {
   ///
   /// A controller that receives PVC update with previously unknown resourceName should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.
   final pulumi.Input<Map<String, String>>? allocatedResources;
+
   /// capacity represents the actual resources of the underlying volume.
   final pulumi.Input<Map<String, String>>? capacity;
+
   /// conditions is the current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'Resizing'.
   final pulumi.Input<List<PersistentVolumeClaimCondition>>? conditions;
+
   /// currentVolumeAttributesClassName is the current name of the VolumeAttributesClass the PVC is using. When unset, there is no VolumeAttributeClass applied to this PersistentVolumeClaim
   final pulumi.Input<String>? currentVolumeAttributesClassName;
+
   /// ModifyVolumeStatus represents the status object of ControllerModifyVolume operation. When this is unset, there is no ModifyVolume operation being attempted.
   final pulumi.Input<ModifyVolumeStatus>? modifyVolumeStatus;
+
   /// phase represents the current phase of PersistentVolumeClaim.
   final pulumi.Input<String>? phase;
+
   /// resizeStatus stores status of resize operation. ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty string by resize controller or kubelet. This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
   final pulumi.Input<String>? resizeStatus;
 
@@ -88,9 +96,24 @@ class PersistentVolumeClaimStatus {
       'allocatedResourceStatuses': ?allocatedResourceStatuses,
       'allocatedResources': ?allocatedResources,
       'capacity': ?capacity,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<PersistentVolumeClaimCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<PersistentVolumeClaimCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PersistentVolumeClaimCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PersistentVolumeClaimCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'currentVolumeAttributesClassName': ?currentVolumeAttributesClassName,
-      'modifyVolumeStatus': ?pulumi.Input.mapOptionalInputValue<ModifyVolumeStatus, Map<String, dynamic>>(modifyVolumeStatus, (value) => value.toMap()),
+      'modifyVolumeStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModifyVolumeStatus,
+            Map<String, dynamic>
+          >(modifyVolumeStatus, (value) => value.toMap()),
       'phase': ?phase,
       'resizeStatus': ?resizeStatus,
     };
@@ -98,16 +121,68 @@ class PersistentVolumeClaimStatus {
 
   factory PersistentVolumeClaimStatus.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeClaimStatus(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
-      allocatedResourceStatuses: map['allocatedResourceStatuses'] == null ? null : ((map['allocatedResourceStatuses']! as Map).cast<String, String>()).input(),
-      allocatedResources: map['allocatedResources'] == null ? null : ((map['allocatedResources']! as Map).cast<String, String>()).input(),
-      capacity: map['capacity'] == null ? null : ((map['capacity']! as Map).cast<String, String>()).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PersistentVolumeClaimCondition>(map['conditions']!, (value) => PersistentVolumeClaimCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentVolumeAttributesClassName: map['currentVolumeAttributesClassName'] == null ? null : (map['currentVolumeAttributesClassName']! as String).input(),
-      modifyVolumeStatus: map['modifyVolumeStatus'] == null ? null : (ModifyVolumeStatus.fromMap((map['modifyVolumeStatus']! as Map).cast<String, dynamic>())).input(),
-      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
-      resizeStatus: map['resizeStatus'] == null ? null : (map['resizeStatus']! as String).input(),
+      accessModes: (() {
+        final guardedValue = map['accessModes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allocatedResourceStatuses: (() {
+        final guardedValue = map['allocatedResourceStatuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      allocatedResources: (() {
+        final guardedValue = map['allocatedResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PersistentVolumeClaimCondition>(
+            guardedValue,
+            (value) => PersistentVolumeClaimCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      currentVolumeAttributesClassName: (() {
+        final guardedValue = map['currentVolumeAttributesClassName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modifyVolumeStatus: (() {
+        final guardedValue = map['modifyVolumeStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModifyVolumeStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      phase: (() {
+        final guardedValue = map['phase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resizeStatus: (() {
+        final guardedValue = map['resizeStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

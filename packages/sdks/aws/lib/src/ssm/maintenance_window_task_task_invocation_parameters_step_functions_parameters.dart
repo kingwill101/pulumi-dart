@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
   /// The inputs for the STEP_FUNCTION task.
   final pulumi.Input<String>? input;
+
   /// The name of the STEP_FUNCTION task.
   final pulumi.Input<String>? name;
 
@@ -17,17 +18,23 @@ class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'input': ?input,
-      'name': ?name,
-    };
+    return <String, dynamic>{'input': ?input, 'name': ?name};
   }
 
-  factory MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters(
-      input: map['input'] == null ? null : ((map['input'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      input: (() {
+        final guardedValue = map['input'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

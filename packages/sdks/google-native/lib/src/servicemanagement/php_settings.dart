@@ -10,20 +10,29 @@ class PhpSettings {
 
   /// Creates a new [PhpSettings].
   /// [common] Some settings.
-  PhpSettings({
-    this.common,
-  });
+  PhpSettings({this.common});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'common': ?pulumi.Input.mapOptionalInputValue<CommonLanguageSettings, Map<String, dynamic>>(common, (value) => value.toMap()),
+      'common':
+          ?pulumi.Input.mapOptionalInputValue<
+            CommonLanguageSettings,
+            Map<String, dynamic>
+          >(common, (value) => value.toMap()),
     };
   }
 
   factory PhpSettings.fromMap(Map<String, dynamic> map) {
     return PhpSettings(
-      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common']! as Map).cast<String, dynamic>())).input(),
+      common: (() {
+        final guardedValue = map['common'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CommonLanguageSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

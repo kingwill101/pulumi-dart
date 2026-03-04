@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1 {
   /// Name of the user-defined field, as given in the definition.
   final pulumi.Input<String> name;
+
   /// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
-  factory SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

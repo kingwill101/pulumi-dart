@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SiteMachineKeyResponse {
   /// Algorithm used for decryption.
   final pulumi.Input<String>? decryption;
+
   /// Decryption key.
   final pulumi.Input<String>? decryptionKey;
+
   /// MachineKey validation.
   final pulumi.Input<String>? validation;
+
   /// Validation key.
   final pulumi.Input<String>? validationKey;
 
@@ -36,11 +39,26 @@ class SiteMachineKeyResponse {
 
   factory SiteMachineKeyResponse.fromMap(Map<String, dynamic> map) {
     return SiteMachineKeyResponse(
-      decryption: map['decryption'] == null ? null : (map['decryption']! as String).input(),
-      decryptionKey: map['decryptionKey'] == null ? null : (map['decryptionKey']! as String).input(),
-      validation: map['validation'] == null ? null : (map['validation']! as String).input(),
-      validationKey: map['validationKey'] == null ? null : (map['validationKey']! as String).input(),
+      decryption: (() {
+        final guardedValue = map['decryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      decryptionKey: (() {
+        final guardedValue = map['decryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validation: (() {
+        final guardedValue = map['validation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validationKey: (() {
+        final guardedValue = map['validationKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

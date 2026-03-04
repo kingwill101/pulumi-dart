@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListListPendingConnectionArgs {
   /// The name for the connection that is to be requested.
   final pulumi.Input<String> connectionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class ListListPendingConnectionArgs {
 
   factory ListListPendingConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ListListPendingConnectionArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

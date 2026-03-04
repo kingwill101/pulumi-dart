@@ -9,20 +9,19 @@ class UniqueKey {
 
   /// Creates a new [UniqueKey].
   /// [paths] List of paths must be unique for each document in the Azure Cosmos DB service
-  UniqueKey({
-    this.paths,
-  });
+  UniqueKey({this.paths});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'paths': ?paths,
-    };
+    return <String, dynamic>{'paths': ?paths};
   }
 
   factory UniqueKey.fromMap(Map<String, dynamic> map) {
     return UniqueKey(
-      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      paths: (() {
+        final guardedValue = map['paths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

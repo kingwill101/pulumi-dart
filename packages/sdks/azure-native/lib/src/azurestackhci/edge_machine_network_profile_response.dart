@@ -8,6 +8,7 @@ import 'switch_detail_response.dart';
 class EdgeMachineNetworkProfileResponse {
   /// List of Network Interface Card (NIC) Details of edge machine.
   final pulumi.Input<List<EdgeMachineNicDetailResponse>> nicDetails;
+
   /// List of switch Details of edge machine.
   final pulumi.Input<List<SwitchDetailResponse>> switchDetails;
 
@@ -21,16 +22,51 @@ class EdgeMachineNetworkProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nicDetails': pulumi.Input.mapInputValue<List<EdgeMachineNicDetailResponse>, List<Map<String, dynamic>>>(nicDetails, (value) => pulumi.Input.encodeList<EdgeMachineNicDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'switchDetails': pulumi.Input.mapInputValue<List<SwitchDetailResponse>, List<Map<String, dynamic>>>(switchDetails, (value) => pulumi.Input.encodeList<SwitchDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nicDetails':
+          pulumi.Input.mapInputValue<
+            List<EdgeMachineNicDetailResponse>,
+            List<Map<String, dynamic>>
+          >(
+            nicDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EdgeMachineNicDetailResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'switchDetails':
+          pulumi.Input.mapInputValue<
+            List<SwitchDetailResponse>,
+            List<Map<String, dynamic>>
+          >(
+            switchDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SwitchDetailResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory EdgeMachineNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineNetworkProfileResponse(
-      nicDetails: (pulumi.Input.decodeList<EdgeMachineNicDetailResponse>(map['nicDetails'], (value) => EdgeMachineNicDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      switchDetails: (pulumi.Input.decodeList<SwitchDetailResponse>(map['switchDetails'], (value) => SwitchDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nicDetails: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<EdgeMachineNicDetailResponse>(
+          map['nicDetails']!,
+          (value) => EdgeMachineNicDetailResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      switchDetails: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SwitchDetailResponse>(
+          map['switchDetails']!,
+          (value) => SwitchDetailResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

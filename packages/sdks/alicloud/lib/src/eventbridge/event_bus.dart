@@ -6,7 +6,7 @@ import 'event_bus_state.dart';
 ///
 /// For information about Event Bridge Event Bus and how to use it, see [What is Event Bus](https://www.alibabacloud.com/help/en/eventbridge/latest/api-eventbridge-2020-04-01-createeventbus).
 ///
-/// > **NOTE:** Available since v1.129.0.
+/// &gt; **NOTE:** Available since v1.129.0.
 ///
 /// ## Example Usage
 ///
@@ -130,6 +130,7 @@ import 'event_bus_state.dart';
 class EventBus extends pulumi.CustomResource {
   /// The description of event bus.
   late final pulumi.Output<String?> description;
+
   /// The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
   late final pulumi.Output<String> eventBusName;
 
@@ -142,13 +143,13 @@ class EventBus extends pulumi.CustomResource {
     EventBusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/eventBus:EventBus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.eventBusName = registerOutput<String>('eventBusName');
+         'alicloud:eventbridge/eventBus:EventBus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    eventBusName = registerOutput<String>('eventBusName');
   }
 
   /// Gets an existing [EventBus] resource's state with the given [name] and [id].
@@ -169,12 +170,12 @@ class EventBus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/eventBus:EventBus',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.eventBusName = registerOutput<String>('eventBusName');
+         'alicloud:eventbridge/eventBus:EventBus',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    eventBusName = registerOutput<String>('eventBusName');
   }
 }

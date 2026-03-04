@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageCacheImageRegistryCredential {
   /// The password of the Image Registry.
   final pulumi.Input<String>? password;
+
   /// The address of Image Registry without `http://` or `https://`.
   final pulumi.Input<String>? server;
+
   /// The user name of Image Registry.
   final pulumi.Input<String>? userName;
 
@@ -30,10 +32,21 @@ class ImageCacheImageRegistryCredential {
 
   factory ImageCacheImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ImageCacheImageRegistryCredential(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      server: map['server'] == null ? null : (map['server']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

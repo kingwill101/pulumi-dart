@@ -116,12 +116,16 @@ import 'secure_credential_state.dart';
 class SecureCredential extends pulumi.CustomResource {
   /// Determines the New Relic account where the secure credential will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// The secure credential's description.
   late final pulumi.Output<String?> description;
+
   /// The secure credential's key name.  Regardless of the case used in the configuration, the provider will provide an upcased key to the underlying API.
   late final pulumi.Output<String> key;
+
   /// The time the secure credential was last updated.
   late final pulumi.Output<String> lastUpdated;
+
   /// The secure credential's value.
   late final pulumi.Output<String> value;
 
@@ -134,16 +138,16 @@ class SecureCredential extends pulumi.CustomResource {
     SecureCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/secureCredential:SecureCredential',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.key = registerOutput<String>('key');
-    this.lastUpdated = registerOutput<String>('lastUpdated');
-    this.value = registerOutput<String>('value');
+         'newrelic:synthetics/secureCredential:SecureCredential',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    key = registerOutput<String>('key');
+    lastUpdated = registerOutput<String>('lastUpdated');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [SecureCredential] resource's state with the given [name] and [id].
@@ -164,15 +168,15 @@ class SecureCredential extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/secureCredential:SecureCredential',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.key = registerOutput<String>('key');
-    this.lastUpdated = registerOutput<String>('lastUpdated');
-    this.value = registerOutput<String>('value');
+         'newrelic:synthetics/secureCredential:SecureCredential',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    key = registerOutput<String>('key');
+    lastUpdated = registerOutput<String>('lastUpdated');
+    value = registerOutput<String>('value');
   }
 }

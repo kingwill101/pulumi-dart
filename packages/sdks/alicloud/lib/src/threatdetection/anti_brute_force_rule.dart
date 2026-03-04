@@ -9,7 +9,7 @@ import 'anti_brute_force_rule_state.dart';
 ///
 /// For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -146,16 +146,22 @@ import 'anti_brute_force_rule_state.dart';
 class AntiBruteForceRule extends pulumi.CustomResource {
   /// The name of the defense rule.
   late final pulumi.Output<String> antiBruteForceRuleName;
+
   /// Specifies whether to set the defense rule as the default rule. Valid values:
   late final pulumi.Output<bool?> defaultRule;
+
   /// FailCount
   late final pulumi.Output<int> failCount;
+
   /// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
   late final pulumi.Output<int> forbiddenTime;
+
   /// The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
   late final pulumi.Output<AntiBruteForceRuleProtocolType> protocolType;
+
   /// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
   late final pulumi.Output<int> span;
+
   /// The UUIDs of the servers to which you want to apply the defense rule.
   late final pulumi.Output<List<String>> uuidLists;
 
@@ -168,18 +174,20 @@ class AntiBruteForceRule extends pulumi.CustomResource {
     AntiBruteForceRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.antiBruteForceRuleName = registerOutput<String>('antiBruteForceRuleName');
-    this.defaultRule = registerOutput<bool?>('defaultRule');
-    this.failCount = registerOutput<int>('failCount');
-    this.forbiddenTime = registerOutput<int>('forbiddenTime');
-    this.protocolType = registerOutput<AntiBruteForceRuleProtocolType>('protocolType');
-    this.span = registerOutput<int>('span');
-    this.uuidLists = registerOutput<List<String>>('uuidLists');
+         'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    antiBruteForceRuleName = registerOutput<String>('antiBruteForceRuleName');
+    defaultRule = registerOutput<bool?>('defaultRule');
+    failCount = registerOutput<int>('failCount');
+    forbiddenTime = registerOutput<int>('forbiddenTime');
+    protocolType = registerOutput<AntiBruteForceRuleProtocolType>(
+      'protocolType',
+    );
+    span = registerOutput<int>('span');
+    uuidLists = registerOutput<List<String>>('uuidLists');
   }
 
   /// Gets an existing [AntiBruteForceRule] resource's state with the given [name] and [id].
@@ -200,17 +208,19 @@ class AntiBruteForceRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.antiBruteForceRuleName = registerOutput<String>('antiBruteForceRuleName');
-    this.defaultRule = registerOutput<bool?>('defaultRule');
-    this.failCount = registerOutput<int>('failCount');
-    this.forbiddenTime = registerOutput<int>('forbiddenTime');
-    this.protocolType = registerOutput<AntiBruteForceRuleProtocolType>('protocolType');
-    this.span = registerOutput<int>('span');
-    this.uuidLists = registerOutput<List<String>>('uuidLists');
+         'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    antiBruteForceRuleName = registerOutput<String>('antiBruteForceRuleName');
+    defaultRule = registerOutput<bool?>('defaultRule');
+    failCount = registerOutput<int>('failCount');
+    forbiddenTime = registerOutput<int>('forbiddenTime');
+    protocolType = registerOutput<AntiBruteForceRuleProtocolType>(
+      'protocolType',
+    );
+    span = registerOutput<int>('span');
+    uuidLists = registerOutput<List<String>>('uuidLists');
   }
 }

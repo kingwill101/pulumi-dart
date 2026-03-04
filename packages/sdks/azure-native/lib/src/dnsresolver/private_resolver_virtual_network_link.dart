@@ -171,18 +171,25 @@ import 'system_data_response.dart';
 class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// ETag of the virtual network link.
   late final pulumi.Output<String> etag;
+
   /// Metadata attached to the virtual network link.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current provisioning state of the virtual network link. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The reference to the virtual network. This cannot be changed after creation.
   late final pulumi.Output<SubResourceResponse> virtualNetwork;
 
@@ -195,18 +202,18 @@ class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
     PrivateResolverVirtualNetworkLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dnsresolver:PrivateResolverVirtualNetworkLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure-native:dnsresolver:PrivateResolverVirtualNetworkLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.virtualNetwork = registerOutput<SubResourceResponse>('virtualNetwork');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    virtualNetwork = registerOutput<SubResourceResponse>('virtualNetwork');
   }
 }

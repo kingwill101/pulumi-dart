@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserIdentity {
   /// Set to the app Id of the client JWT making the request.
   final pulumi.Input<String>? appId;
+
   /// Set to the object Id of the client JWT making the request. Not all users have object Id. For CSP (reseller) scenarios for example, object Id is not available.
   final pulumi.Input<String>? objectId;
+
   /// Set to the principal Id of the client JWT making the request. Service principal will not have the principal Id.
   final pulumi.Input<String>? principalId;
+
   /// Set to the principal name / UPN of the client JWT making the request.
   final pulumi.Input<String>? principalName;
+
   /// Set to the tenant ID of the client JWT making the request.
   final pulumi.Input<String>? tenantId;
 
@@ -41,12 +45,31 @@ class UserIdentity {
 
   factory UserIdentity.fromMap(Map<String, dynamic> map) {
     return UserIdentity(
-      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      principalName: map['principalName'] == null ? null : (map['principalName']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      appId: (() {
+        final guardedValue = map['appId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalName: (() {
+        final guardedValue = map['principalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

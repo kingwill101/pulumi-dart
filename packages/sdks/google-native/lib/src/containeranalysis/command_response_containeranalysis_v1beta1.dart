@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommandResponseContaineranalysisV1beta1 {
   /// Command-line arguments used when executing this command.
   final pulumi.Input<List<String>> args;
+
   /// Working directory (relative to project source root) used when running this command.
   final pulumi.Input<String> dir;
+
   /// Environment variables set before running this command.
   final pulumi.Input<List<String>> env;
+
   /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
   final pulumi.Input<String> name;
+
   /// The ID(s) of the command(s) that this command depends on.
   final pulumi.Input<List<String>> waitFor;
 
@@ -39,14 +43,15 @@ class CommandResponseContaineranalysisV1beta1 {
     };
   }
 
-  factory CommandResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CommandResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CommandResponseContaineranalysisV1beta1(
-      args: ((map['args'] as List).cast<String>()).input(),
-      dir: (map['dir'] as String).input(),
-      env: ((map['env'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      waitFor: ((map['waitFor'] as List).cast<String>()).input(),
+      args: pulumi.Input.fromValue((map['args'] as List).cast<String>()),
+      dir: pulumi.Input.fromValue(map['dir'] as String),
+      env: pulumi.Input.fromValue((map['env'] as List).cast<String>()),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      waitFor: pulumi.Input.fromValue((map['waitFor'] as List).cast<String>()),
     );
   }
 }
-

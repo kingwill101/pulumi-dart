@@ -3,16 +3,15 @@ enum PlacementConstraintType {
   distinctInstance("distinctInstance"),
   memberOf("memberOf");
 
-  const PlacementConstraintType(this.value);
-  final String value;
+  const PlacementConstraintType(this.wireValue);
+  final String wireValue;
 
   static PlacementConstraintType fromValue(String value) {
     for (final item in PlacementConstraintType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlacementConstraintType value: $value');
   }
 }
-

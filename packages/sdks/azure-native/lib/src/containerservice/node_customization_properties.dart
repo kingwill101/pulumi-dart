@@ -7,6 +7,7 @@ import 'node_customization_script.dart';
 class NodeCustomizationProperties {
   /// The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
   final pulumi.Input<List<String>>? containerImages;
+
   /// The scripts to customize the node before or after image capture.
   final pulumi.Input<List<NodeCustomizationScript>>? customizationScripts;
 
@@ -21,15 +22,40 @@ class NodeCustomizationProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerImages': ?containerImages,
-      'customizationScripts': ?pulumi.Input.mapOptionalInputValue<List<NodeCustomizationScript>, List<Map<String, dynamic>>>(customizationScripts, (value) => pulumi.Input.encodeList<NodeCustomizationScript, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customizationScripts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeCustomizationScript>,
+            List<Map<String, dynamic>>
+          >(
+            customizationScripts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodeCustomizationScript,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NodeCustomizationProperties.fromMap(Map<String, dynamic> map) {
     return NodeCustomizationProperties(
-      containerImages: map['containerImages'] == null ? null : ((map['containerImages']! as List).cast<String>()).input(),
-      customizationScripts: map['customizationScripts'] == null ? null : (pulumi.Input.decodeList<NodeCustomizationScript>(map['customizationScripts']!, (value) => NodeCustomizationScript.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerImages: (() {
+        final guardedValue = map['containerImages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      customizationScripts: (() {
+        final guardedValue = map['customizationScripts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeCustomizationScript>(
+            guardedValue,
+            (value) => NodeCustomizationScript.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -29,12 +29,17 @@ class GetOrganizationEnvironmentIamPolicyArgs {
     };
   }
 
-  factory GetOrganizationEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationEnvironmentIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationEnvironmentIamPolicyArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

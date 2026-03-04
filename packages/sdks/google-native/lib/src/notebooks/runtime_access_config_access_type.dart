@@ -4,16 +4,15 @@ enum RuntimeAccessConfigAccessType {
   singleUser("SINGLE_USER"),
   serviceAccount("SERVICE_ACCOUNT");
 
-  const RuntimeAccessConfigAccessType(this.value);
-  final String value;
+  const RuntimeAccessConfigAccessType(this.wireValue);
+  final String wireValue;
 
   static RuntimeAccessConfigAccessType fromValue(String value) {
     for (final item in RuntimeAccessConfigAccessType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuntimeAccessConfigAccessType value: $value');
   }
 }
-

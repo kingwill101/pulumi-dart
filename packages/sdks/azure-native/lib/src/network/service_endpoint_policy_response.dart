@@ -8,28 +8,41 @@ import 'subnet_response.dart';
 class ServiceEndpointPolicyResponse {
   /// A collection of contextual service endpoint policy.
   final pulumi.Input<List<String>>? contextualServiceEndpointPolicies;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Kind of service endpoint policy. This is metadata used for the Azure portal experience.
   final pulumi.Input<String> kind;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// Resource name.
   final pulumi.Input<String> name;
+
   /// The provisioning state of the service endpoint policy resource.
   final pulumi.Input<String> provisioningState;
+
   /// The resource GUID property of the service endpoint policy resource.
   final pulumi.Input<String> resourceGuid;
+
   /// The alias indicating if the policy belongs to a service
   final pulumi.Input<String>? serviceAlias;
+
   /// A collection of service endpoint policy definitions of the service endpoint policy.
-  final pulumi.Input<List<ServiceEndpointPolicyDefinitionResponse>>? serviceEndpointPolicyDefinitions;
+  final pulumi.Input<List<ServiceEndpointPolicyDefinitionResponse>>?
+  serviceEndpointPolicyDefinitions;
+
   /// A collection of references to subnets.
   final pulumi.Input<List<SubnetResponse>> subnets;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -74,8 +87,30 @@ class ServiceEndpointPolicyResponse {
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
       'serviceAlias': ?serviceAlias,
-      'serviceEndpointPolicyDefinitions': ?pulumi.Input.mapOptionalInputValue<List<ServiceEndpointPolicyDefinitionResponse>, List<Map<String, dynamic>>>(serviceEndpointPolicyDefinitions, (value) => pulumi.Input.encodeList<ServiceEndpointPolicyDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'subnets': pulumi.Input.mapInputValue<List<SubnetResponse>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceEndpointPolicyDefinitions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceEndpointPolicyDefinitionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            serviceEndpointPolicyDefinitions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceEndpointPolicyDefinitionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'subnets':
+          pulumi.Input.mapInputValue<
+            List<SubnetResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subnets,
+            (value) =>
+                pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
       'type': type,
     };
@@ -83,20 +118,60 @@ class ServiceEndpointPolicyResponse {
 
   factory ServiceEndpointPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPolicyResponse(
-      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : ((map['contextualServiceEndpointPolicies']! as List).cast<String>()).input(),
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      resourceGuid: (map['resourceGuid'] as String).input(),
-      serviceAlias: map['serviceAlias'] == null ? null : (map['serviceAlias']! as String).input(),
-      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(map['serviceEndpointPolicyDefinitions']!, (value) => ServiceEndpointPolicyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnets: (pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      contextualServiceEndpointPolicies: (() {
+        final guardedValue = map['contextualServiceEndpointPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      resourceGuid: pulumi.Input.fromValue(map['resourceGuid'] as String),
+      serviceAlias: (() {
+        final guardedValue = map['serviceAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceEndpointPolicyDefinitions: (() {
+        final guardedValue = map['serviceEndpointPolicyDefinitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(
+            guardedValue,
+            (value) => ServiceEndpointPolicyDefinitionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      subnets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SubnetResponse>(
+          map['subnets']!,
+          (value) =>
+              SubnetResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

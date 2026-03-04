@@ -7,9 +7,14 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
   /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
   /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
   final pulumi.Input<String> name;
+
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore>? sensitivityScore;
+  final pulumi.Input<
+    PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore
+  >?
+  sensitivityScore;
+
   /// Version name for this InfoType.
   final pulumi.Input<String>? version;
 
@@ -26,17 +31,34 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'sensitivityScore': ?pulumi.Input.mapOptionalInputValue<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore, Map<String, dynamic>>(sensitivityScore, (value) => value.toMap()),
+      'sensitivityScore':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore,
+            Map<String, dynamic>
+          >(sensitivityScore, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType(
-      name: (map['name'] as String).input(),
-      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      sensitivityScore: (() {
+        final guardedValue = map['sensitivityScore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

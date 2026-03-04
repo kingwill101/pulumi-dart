@@ -7,19 +7,25 @@ import 'get_image_caches_cache.dart';
 class GetImageCachesResult {
   /// A list of caches. Each element contains the following attributes:
   final List<GetImageCachesCache> caches;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list ids of ECI Image Cache.
   final List<String> ids;
   final String? image;
+
   /// The name of the ECI Image Cache.
   final String? imageCacheName;
   final String? nameRegex;
+
   /// A list of ECI Image Cache names.
   final List<String> names;
   final String? outputFile;
+
   /// The id of snapshot.
   final String? snapshotId;
+
   /// The status of ECI Image Cache.
   final String? status;
 
@@ -49,7 +55,11 @@ class GetImageCachesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caches': pulumi.Input.encodeList<GetImageCachesCache, Map<String, dynamic>>(caches, (value) => value.toMap()),
+      'caches':
+          pulumi.Input.encodeList<GetImageCachesCache, Map<String, dynamic>>(
+            caches,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'image': ?image,
@@ -64,17 +74,44 @@ class GetImageCachesResult {
 
   factory GetImageCachesResult.fromMap(Map<String, dynamic> map) {
     return GetImageCachesResult(
-      caches: pulumi.Input.decodeList<GetImageCachesCache>(map['caches'], (value) => GetImageCachesCache.fromMap((value as Map).cast<String, dynamic>())),
+      caches: pulumi.Input.decodeList<GetImageCachesCache>(
+        map['caches']!,
+        (value) =>
+            GetImageCachesCache.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      image: map['image'] == null ? null : map['image']! as String,
-      imageCacheName: map['imageCacheName'] == null ? null : map['imageCacheName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      imageCacheName: (() {
+        final guardedValue = map['imageCacheName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      snapshotId: map['snapshotId'] == null ? null : map['snapshotId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      snapshotId: (() {
+        final guardedValue = map['snapshotId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

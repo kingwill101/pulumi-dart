@@ -183,16 +183,23 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionPowerbi extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Specifies the private endpoint.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
+
   /// Specifies the connection state.
-  late final pulumi.Output<ConnectionStateResponse?> privateLinkServiceConnectionState;
+  late final pulumi.Output<ConnectionStateResponse?>
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the Private Endpoint Connection.
   late final pulumi.Output<String?> provisioningState;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Specifies the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -205,17 +212,22 @@ class PrivateEndpointConnectionPowerbi extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:powerbi:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:powerbi:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<ConnectionStateResponse?>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<PrivateEndpointResponse?>(
+      'privateEndpoint',
+    );
+    privateLinkServiceConnectionState =
+        registerOutput<ConnectionStateResponse?>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,3 @@
-library module_storagegateway;
-
 export 'storagegateway/cache.dart';
 export 'storagegateway/cache_args.dart';
 export 'storagegateway/cache_state.dart';

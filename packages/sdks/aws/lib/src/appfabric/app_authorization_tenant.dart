@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppAuthorizationTenant {
   /// The display name of the tenant.
   final pulumi.Input<String> tenantDisplayName;
+
   /// The ID of the application tenant.
   final pulumi.Input<String> tenantIdentifier;
 
@@ -25,9 +26,12 @@ class AppAuthorizationTenant {
 
   factory AppAuthorizationTenant.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationTenant(
-      tenantDisplayName: (map['tenantDisplayName'] as String).input(),
-      tenantIdentifier: (map['tenantIdentifier'] as String).input(),
+      tenantDisplayName: pulumi.Input.fromValue(
+        map['tenantDisplayName'] as String,
+      ),
+      tenantIdentifier: pulumi.Input.fromValue(
+        map['tenantIdentifier'] as String,
+      ),
     );
   }
 }
-

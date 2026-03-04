@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_args.dart';
-import 'workflow_destination.dart';
 import 'workflow_enrichments.dart';
 import 'workflow_issues_filter.dart';
 import 'workflow_state.dart';
@@ -1072,27 +1071,38 @@ import 'workflow_state.dart';
 class Workflow extends pulumi.CustomResource {
   /// Determines the New Relic account in which the workflow is created. Defaults to the account defined in the provider section.
   late final pulumi.Output<String> accountId;
+
   /// Notification configuration. See Nested destination blocks below for details.
-  late final pulumi.Output<List<WorkflowDestination>> destinations;
+  late final pulumi.Output<List<Map<String, dynamic>>> destinations;
+
   /// **DEPRECATED** Whether destinations are enabled. Please use `enabled` instead:
   /// these two are different flags, but they are functionally identical. Defaults to true.
   late final pulumi.Output<bool?> destinationsEnabled;
+
   /// Whether workflow is enabled. Defaults to true.
   late final pulumi.Output<bool?> enabled;
+
   /// Workflow's enrichments. See Nested enrichments blocks below for details.
   late final pulumi.Output<WorkflowEnrichments?> enrichments;
+
   /// Whether enrichments are enabled. Defaults to true.
   late final pulumi.Output<bool?> enrichmentsEnabled;
+
   /// Workflow entity GUID
   late final pulumi.Output<String> guid;
+
   /// A filter used to identify issues handled by this workflow. See Nested issues_filter blocks below for details.
   late final pulumi.Output<WorkflowIssuesFilter> issuesFilter;
+
   /// The last time notification was sent for this workflow.
   late final pulumi.Output<String> lastRun;
+
   /// How to handle muted issues. See Muting Rules below for details.
   late final pulumi.Output<String> mutingRulesHandling;
+
   /// The name of the workflow.
   late final pulumi.Output<String> name;
+
   /// The id of the workflow.
   late final pulumi.Output<String> workflowId;
 
@@ -1105,23 +1115,23 @@ class Workflow extends pulumi.CustomResource {
     WorkflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/workflow:Workflow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.destinations = registerOutput<List<WorkflowDestination>>('destinations');
-    this.destinationsEnabled = registerOutput<bool?>('destinationsEnabled');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.enrichments = registerOutput<WorkflowEnrichments?>('enrichments');
-    this.enrichmentsEnabled = registerOutput<bool?>('enrichmentsEnabled');
-    this.guid = registerOutput<String>('guid');
-    this.issuesFilter = registerOutput<WorkflowIssuesFilter>('issuesFilter');
-    this.lastRun = registerOutput<String>('lastRun');
-    this.mutingRulesHandling = registerOutput<String>('mutingRulesHandling');
+         'newrelic:index/workflow:Workflow',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinationsEnabled = registerOutput<bool?>('destinationsEnabled');
+    enabled = registerOutput<bool?>('enabled');
+    enrichments = registerOutput<WorkflowEnrichments?>('enrichments');
+    enrichmentsEnabled = registerOutput<bool?>('enrichmentsEnabled');
+    guid = registerOutput<String>('guid');
+    issuesFilter = registerOutput<WorkflowIssuesFilter>('issuesFilter');
+    lastRun = registerOutput<String>('lastRun');
+    mutingRulesHandling = registerOutput<String>('mutingRulesHandling');
     this.name = registerOutput<String>('name');
-    this.workflowId = registerOutput<String>('workflowId');
+    workflowId = registerOutput<String>('workflowId');
   }
 
   /// Gets an existing [Workflow] resource's state with the given [name] and [id].
@@ -1142,22 +1152,22 @@ class Workflow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/workflow:Workflow',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.destinations = registerOutput<List<WorkflowDestination>>('destinations');
-    this.destinationsEnabled = registerOutput<bool?>('destinationsEnabled');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.enrichments = registerOutput<WorkflowEnrichments?>('enrichments');
-    this.enrichmentsEnabled = registerOutput<bool?>('enrichmentsEnabled');
-    this.guid = registerOutput<String>('guid');
-    this.issuesFilter = registerOutput<WorkflowIssuesFilter>('issuesFilter');
-    this.lastRun = registerOutput<String>('lastRun');
-    this.mutingRulesHandling = registerOutput<String>('mutingRulesHandling');
+         'newrelic:index/workflow:Workflow',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinationsEnabled = registerOutput<bool?>('destinationsEnabled');
+    enabled = registerOutput<bool?>('enabled');
+    enrichments = registerOutput<WorkflowEnrichments?>('enrichments');
+    enrichmentsEnabled = registerOutput<bool?>('enrichmentsEnabled');
+    guid = registerOutput<String>('guid');
+    issuesFilter = registerOutput<WorkflowIssuesFilter>('issuesFilter');
+    lastRun = registerOutput<String>('lastRun');
+    mutingRulesHandling = registerOutput<String>('mutingRulesHandling');
     this.name = registerOutput<String>('name');
-    this.workflowId = registerOutput<String>('workflowId');
+    workflowId = registerOutput<String>('workflowId');
   }
 }

@@ -4,16 +4,15 @@ enum InternalCheckerState {
   creating("CREATING"),
   running("RUNNING");
 
-  const InternalCheckerState(this.value);
-  final String value;
+  const InternalCheckerState(this.wireValue);
+  final String wireValue;
 
   static InternalCheckerState fromValue(String value) {
     for (final item in InternalCheckerState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InternalCheckerState value: $value');
   }
 }
-

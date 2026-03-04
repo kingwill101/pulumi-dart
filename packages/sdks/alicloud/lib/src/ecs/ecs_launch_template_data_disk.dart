@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsLaunchTemplateDataDisk {
   /// The category of the disk.
   final pulumi.Input<String>? category;
+
   /// Indicates whether the data disk is released with the instance.
   final pulumi.Input<bool>? deleteWithInstance;
+
   /// The description of the data disk.
   final pulumi.Input<String>? description;
+
   /// The mount point of the data disk.
   final pulumi.Input<String>? device;
+
   /// Encrypted the data in this disk.
   final pulumi.Input<bool>? encrypted;
+
   /// The ID of the KMS key used for the data disk.
   final pulumi.Input<String>? kmsKeyId;
+
   /// The name of the data disk.
   final pulumi.Input<String>? name;
+
   /// The performance level of the ESSD used as the data disk.
   final pulumi.Input<String>? performanceLevel;
+
   /// The size of the data disk.
   final pulumi.Input<int>? size;
+
   /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
   final pulumi.Input<String>? snapshotId;
 
@@ -65,17 +74,56 @@ class EcsLaunchTemplateDataDisk {
 
   factory EcsLaunchTemplateDataDisk.fromMap(Map<String, dynamic> map) {
     return EcsLaunchTemplateDataDisk(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      device: map['device'] == null ? null : (map['device']! as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteWithInstance: (() {
+        final guardedValue = map['deleteWithInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      device: (() {
+        final guardedValue = map['device'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performanceLevel: (() {
+        final guardedValue = map['performanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotId: (() {
+        final guardedValue = map['snapshotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

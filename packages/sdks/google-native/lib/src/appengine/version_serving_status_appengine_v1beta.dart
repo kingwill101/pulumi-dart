@@ -4,16 +4,17 @@ enum VersionServingStatusAppengineV1beta {
   serving("SERVING"),
   stopped("STOPPED");
 
-  const VersionServingStatusAppengineV1beta(this.value);
-  final String value;
+  const VersionServingStatusAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static VersionServingStatusAppengineV1beta fromValue(String value) {
     for (final item in VersionServingStatusAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VersionServingStatusAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown VersionServingStatusAppengineV1beta value: $value',
+    );
   }
 }
-

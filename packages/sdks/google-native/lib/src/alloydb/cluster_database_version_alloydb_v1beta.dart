@@ -5,16 +5,17 @@ enum ClusterDatabaseVersionAlloydbV1beta {
   postgres14("POSTGRES_14"),
   postgres15("POSTGRES_15");
 
-  const ClusterDatabaseVersionAlloydbV1beta(this.value);
-  final String value;
+  const ClusterDatabaseVersionAlloydbV1beta(this.wireValue);
+  final String wireValue;
 
   static ClusterDatabaseVersionAlloydbV1beta fromValue(String value) {
     for (final item in ClusterDatabaseVersionAlloydbV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClusterDatabaseVersionAlloydbV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ClusterDatabaseVersionAlloydbV1beta value: $value',
+    );
   }
 }
-

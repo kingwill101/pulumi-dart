@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerPlansPlan {
   /// The peak bandwidth. Unit: Mbit/s.
   final pulumi.Input<int> bandwidth;
+
   /// The number of CPU cores.
   final pulumi.Input<int> core;
+
   /// The size of the enhanced SSD (ESSD). Unit: GB.
   final pulumi.Input<int> diskSize;
+
   /// The monthly data transfer quota. Unit: GB.
   final pulumi.Input<int> flow;
+
   /// The ID of the Instance Plan.
   final pulumi.Input<String> id;
+
   /// The memory size. Unit: GB.
   final pulumi.Input<double> memory;
+
   /// The ID of the Instance Plan.
   final pulumi.Input<String> planId;
+
   /// The platform of Plan supported.
   final pulumi.Input<String> supportPlatform;
 
@@ -55,15 +62,14 @@ class GetServerPlansPlan {
 
   factory GetServerPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetServerPlansPlan(
-      bandwidth: (map['bandwidth'] as int).input(),
-      core: (map['core'] as int).input(),
-      diskSize: (map['diskSize'] as int).input(),
-      flow: (map['flow'] as int).input(),
-      id: (map['id'] as String).input(),
-      memory: (map['memory'] as double).input(),
-      planId: (map['planId'] as String).input(),
-      supportPlatform: (map['supportPlatform'] as String).input(),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
+      core: pulumi.Input.fromValue(map['core'] as int),
+      diskSize: pulumi.Input.fromValue(map['diskSize'] as int),
+      flow: pulumi.Input.fromValue(map['flow'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      memory: pulumi.Input.fromValue(map['memory'] as double),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      supportPlatform: pulumi.Input.fromValue(map['supportPlatform'] as String),
     );
   }
 }
-

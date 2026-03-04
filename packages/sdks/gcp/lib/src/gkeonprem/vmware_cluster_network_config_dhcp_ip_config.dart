@@ -9,20 +9,17 @@ class VMwareClusterNetworkConfigDhcpIpConfig {
 
   /// Creates a new [VMwareClusterNetworkConfigDhcpIpConfig].
   /// [enabled] enabled is a flag to mark if DHCP IP allocation is
-  VMwareClusterNetworkConfigDhcpIpConfig({
-    required this.enabled,
-  });
+  VMwareClusterNetworkConfigDhcpIpConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory VMwareClusterNetworkConfigDhcpIpConfig.fromMap(Map<String, dynamic> map) {
+  factory VMwareClusterNetworkConfigDhcpIpConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareClusterNetworkConfigDhcpIpConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

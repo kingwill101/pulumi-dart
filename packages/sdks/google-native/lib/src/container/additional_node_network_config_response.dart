@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalNodeNetworkConfigResponse {
   /// Name of the VPC where the additional interface belongs
   final pulumi.Input<String> network;
+
   /// Name of the subnetwork where the additional interface belongs
   final pulumi.Input<String> subnetwork;
 
@@ -18,17 +19,15 @@ class AdditionalNodeNetworkConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'network': network,
-      'subnetwork': subnetwork,
-    };
+    return <String, dynamic>{'network': network, 'subnetwork': subnetwork};
   }
 
-  factory AdditionalNodeNetworkConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory AdditionalNodeNetworkConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AdditionalNodeNetworkConfigResponse(
-      network: (map['network'] as String).input(),
-      subnetwork: (map['subnetwork'] as String).input(),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );
   }
 }
-

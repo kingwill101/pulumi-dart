@@ -585,17 +585,23 @@ class DataPolicy extends pulumi.CustomResource {
   /// The data masking policy that specifies the data masking rule to use.
   /// Structure is documented below.
   late final pulumi.Output<DataPolicyDataMaskingPolicy?> dataMaskingPolicy;
+
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
   late final pulumi.Output<String> dataPolicyId;
+
   /// The enrollment level of the service.
   /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
   late final pulumi.Output<String> dataPolicyType;
+
   /// The name of the location of the data policy.
   late final pulumi.Output<String> location;
+
   /// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
   late final pulumi.Output<String> name;
+
   /// Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
   late final pulumi.Output<String> policyTag;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -609,18 +615,20 @@ class DataPolicy extends pulumi.CustomResource {
     DataPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigquerydatapolicy/dataPolicy:DataPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy');
-    this.dataPolicyId = registerOutput<String>('dataPolicyId');
-    this.dataPolicyType = registerOutput<String>('dataPolicyType');
-    this.location = registerOutput<String>('location');
+         'gcp:bigquerydatapolicy/dataPolicy:DataPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>(
+      'dataMaskingPolicy',
+    );
+    dataPolicyId = registerOutput<String>('dataPolicyId');
+    dataPolicyType = registerOutput<String>('dataPolicyType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.policyTag = registerOutput<String>('policyTag');
-    this.project = registerOutput<String>('project');
+    policyTag = registerOutput<String>('policyTag');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [DataPolicy] resource's state with the given [name] and [id].
@@ -641,17 +649,19 @@ class DataPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigquerydatapolicy/dataPolicy:DataPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>('dataMaskingPolicy');
-    this.dataPolicyId = registerOutput<String>('dataPolicyId');
-    this.dataPolicyType = registerOutput<String>('dataPolicyType');
-    this.location = registerOutput<String>('location');
+         'gcp:bigquerydatapolicy/dataPolicy:DataPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataMaskingPolicy = registerOutput<DataPolicyDataMaskingPolicy?>(
+      'dataMaskingPolicy',
+    );
+    dataPolicyId = registerOutput<String>('dataPolicyId');
+    dataPolicyType = registerOutput<String>('dataPolicyType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.policyTag = registerOutput<String>('policyTag');
-    this.project = registerOutput<String>('project');
+    policyTag = registerOutput<String>('policyTag');
+    project = registerOutput<String>('project');
   }
 }

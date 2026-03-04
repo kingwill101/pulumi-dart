@@ -5,16 +5,15 @@ enum X12CharacterSet {
   valueExtended("Extended"),
   valueUTF8("UTF8");
 
-  const X12CharacterSet(this.value);
-  final String value;
+  const X12CharacterSet(this.wireValue);
+  final String wireValue;
 
   static X12CharacterSet fromValue(String value) {
     for (final item in X12CharacterSet.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown X12CharacterSet value: $value');
   }
 }
-

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterSKU {
   /// The name of a managed cluster SKU.
   final pulumi.Input<String>? name;
+
   /// The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
   final pulumi.Input<String>? tier;
 
   /// Creates a new [ManagedClusterSKU].
   /// [name] The name of a managed cluster SKU.
   /// [tier] The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
-  ManagedClusterSKU({
-    this.name,
-    this.tier,
-  });
+  ManagedClusterSKU({this.name, this.tier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'tier': ?tier,
-    };
+    return <String, dynamic>{'name': ?name, 'tier': ?tier};
   }
 
   factory ManagedClusterSKU.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSKU(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitHubWorkflowProfileOidcCredentials {
   /// Azure Application Client ID
   final pulumi.Input<String>? azureClientId;
+
   /// Azure Directory (tenant) ID
   final pulumi.Input<String>? azureTenantId;
 
@@ -24,11 +25,20 @@ class GitHubWorkflowProfileOidcCredentials {
     };
   }
 
-  factory GitHubWorkflowProfileOidcCredentials.fromMap(Map<String, dynamic> map) {
+  factory GitHubWorkflowProfileOidcCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GitHubWorkflowProfileOidcCredentials(
-      azureClientId: map['azureClientId'] == null ? null : (map['azureClientId']! as String).input(),
-      azureTenantId: map['azureTenantId'] == null ? null : (map['azureTenantId']! as String).input(),
+      azureClientId: (() {
+        final guardedValue = map['azureClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureTenantId: (() {
+        final guardedValue = map['azureTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

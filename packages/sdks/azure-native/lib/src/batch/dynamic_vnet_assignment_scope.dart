@@ -3,16 +3,15 @@ enum DynamicVNetAssignmentScope {
   none("none"),
   job("job");
 
-  const DynamicVNetAssignmentScope(this.value);
-  final String value;
+  const DynamicVNetAssignmentScope(this.wireValue);
+  final String wireValue;
 
   static DynamicVNetAssignmentScope fromValue(String value) {
     for (final item in DynamicVNetAssignmentScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DynamicVNetAssignmentScope value: $value');
   }
 }
-

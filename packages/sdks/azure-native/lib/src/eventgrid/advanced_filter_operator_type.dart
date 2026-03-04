@@ -20,16 +20,15 @@ enum AdvancedFilterOperatorType {
   valueIsNullOrUndefined("IsNullOrUndefined"),
   valueIsNotNull("IsNotNull");
 
-  const AdvancedFilterOperatorType(this.value);
-  final String value;
+  const AdvancedFilterOperatorType(this.wireValue);
+  final String wireValue;
 
   static AdvancedFilterOperatorType fromValue(String value) {
     for (final item in AdvancedFilterOperatorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdvancedFilterOperatorType value: $value');
   }
 }
-

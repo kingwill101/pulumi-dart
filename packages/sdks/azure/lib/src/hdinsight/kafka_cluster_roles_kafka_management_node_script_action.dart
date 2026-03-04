@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaClusterRolesKafkaManagementNodeScriptAction {
   /// The name of the script action.
   final pulumi.Input<String> name;
+
   /// The parameters for the script provided.
   final pulumi.Input<String>? parameters;
+
   /// The URI to the script.
   final pulumi.Input<String> uri;
 
@@ -28,12 +30,17 @@ class KafkaClusterRolesKafkaManagementNodeScriptAction {
     };
   }
 
-  factory KafkaClusterRolesKafkaManagementNodeScriptAction.fromMap(Map<String, dynamic> map) {
+  factory KafkaClusterRolesKafkaManagementNodeScriptAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KafkaClusterRolesKafkaManagementNodeScriptAction(
-      name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
-      uri: (map['uri'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

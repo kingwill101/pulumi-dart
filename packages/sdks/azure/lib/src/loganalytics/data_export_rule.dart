@@ -270,7 +270,7 @@ import 'data_export_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2020-08-01
@@ -285,16 +285,22 @@ import 'data_export_rule_state.dart';
 class DataExportRule extends pulumi.CustomResource {
   /// The destination resource ID. It should be a storage account, an event hub namespace or an event hub. If the destination is an event hub namespace, an event hub would be created for each table automatically.
   late final pulumi.Output<String> destinationResourceId;
+
   /// Is this Log Analytics Data Export Rule enabled? Possible values include `true` or `false`. Defaults to `false`.
   late final pulumi.Output<bool?> enabled;
+
   /// The ID of the created Data Export Rule.
   late final pulumi.Output<String> exportRuleId;
+
   /// The name of the Log Analytics Data Export Rule. Changing this forces a new Log Analytics Data Export Rule to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Log Analytics Data Export should exist. Changing this forces a new Log Analytics Data Export Rule to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A list of table names to export to the destination resource, for example: `["Heartbeat", "SecurityEvent"]`.
   late final pulumi.Output<List<String>> tableNames;
+
   /// The resource ID of the workspace. Changing this forces a new Log Analytics Data Export Rule to be created.
   late final pulumi.Output<String> workspaceResourceId;
 
@@ -307,18 +313,18 @@ class DataExportRule extends pulumi.CustomResource {
     DataExportRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/dataExportRule:DataExportRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationResourceId = registerOutput<String>('destinationResourceId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.exportRuleId = registerOutput<String>('exportRuleId');
+         'azure:loganalytics/dataExportRule:DataExportRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationResourceId = registerOutput<String>('destinationResourceId');
+    enabled = registerOutput<bool?>('enabled');
+    exportRuleId = registerOutput<String>('exportRuleId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tableNames = registerOutput<List<String>>('tableNames');
-    this.workspaceResourceId = registerOutput<String>('workspaceResourceId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tableNames = registerOutput<List<String>>('tableNames');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 
   /// Gets an existing [DataExportRule] resource's state with the given [name] and [id].
@@ -339,17 +345,17 @@ class DataExportRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/dataExportRule:DataExportRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationResourceId = registerOutput<String>('destinationResourceId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.exportRuleId = registerOutput<String>('exportRuleId');
+         'azure:loganalytics/dataExportRule:DataExportRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationResourceId = registerOutput<String>('destinationResourceId');
+    enabled = registerOutput<bool?>('enabled');
+    exportRuleId = registerOutput<String>('exportRuleId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tableNames = registerOutput<List<String>>('tableNames');
-    this.workspaceResourceId = registerOutput<String>('workspaceResourceId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tableNames = registerOutput<List<String>>('tableNames');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 }

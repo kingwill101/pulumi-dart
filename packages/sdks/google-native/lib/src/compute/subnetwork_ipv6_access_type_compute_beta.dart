@@ -3,16 +3,17 @@ enum SubnetworkIpv6AccessTypeComputeBeta {
   external("EXTERNAL"),
   internal("INTERNAL");
 
-  const SubnetworkIpv6AccessTypeComputeBeta(this.value);
-  final String value;
+  const SubnetworkIpv6AccessTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SubnetworkIpv6AccessTypeComputeBeta fromValue(String value) {
     for (final item in SubnetworkIpv6AccessTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkIpv6AccessTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkIpv6AccessTypeComputeBeta value: $value',
+    );
   }
 }
-

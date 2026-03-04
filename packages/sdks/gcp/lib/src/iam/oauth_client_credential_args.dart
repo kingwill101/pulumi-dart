@@ -10,18 +10,23 @@ class OauthClientCredentialArgs {
   /// Whether the OauthClientCredential is disabled. You cannot use a
   /// disabled OauthClientCredential.
   final pulumi.Input<bool>? disabled;
+
   /// A user-specified display name of the OauthClientCredential.
   /// Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// Required. The ID to use for the OauthClientCredential, which becomes the
   /// final component of the resource name. This value should be 4-32 characters,
   /// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
   /// reserved for use by Google, and may not be specified.
   final pulumi.Input<String> oauthClientCredentialId;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> oauthclient;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -55,13 +60,26 @@ class OauthClientCredentialArgs {
 
   factory OauthClientCredentialArgs.fromMap(Map<String, dynamic> map) {
     return OauthClientCredentialArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: (map['location'] as String).input(),
-      oauthClientCredentialId: (map['oauthClientCredentialId'] as String).input(),
-      oauthclient: (map['oauthclient'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      oauthClientCredentialId: pulumi.Input.fromValue(
+        map['oauthClientCredentialId'] as String,
+      ),
+      oauthclient: pulumi.Input.fromValue(map['oauthclient'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

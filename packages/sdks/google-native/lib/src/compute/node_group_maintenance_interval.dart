@@ -4,16 +4,15 @@ enum NodeGroupMaintenanceInterval {
   periodic("PERIODIC"),
   recurrent("RECURRENT");
 
-  const NodeGroupMaintenanceInterval(this.value);
-  final String value;
+  const NodeGroupMaintenanceInterval(this.wireValue);
+  final String wireValue;
 
   static NodeGroupMaintenanceInterval fromValue(String value) {
     for (final item in NodeGroupMaintenanceInterval.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeGroupMaintenanceInterval value: $value');
   }
 }
-

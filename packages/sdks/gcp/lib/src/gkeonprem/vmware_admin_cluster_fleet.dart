@@ -6,25 +6,24 @@ class VmwareAdminClusterFleet {
   /// (Output)
   /// The name of the managed Fleet Membership resource associated to this cluster.
   /// Membership names are formatted as
-  /// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+  /// `projects/&lt;project-number&gt;/locations/&lt;location&gt;/memberships/&lt;cluster-id&gt;`.
   final pulumi.Input<String>? membership;
 
   /// Creates a new [VmwareAdminClusterFleet].
   /// [membership] (Output)
-  VmwareAdminClusterFleet({
-    this.membership,
-  });
+  VmwareAdminClusterFleet({this.membership});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'membership': ?membership,
-    };
+    return <String, dynamic>{'membership': ?membership};
   }
 
   factory VmwareAdminClusterFleet.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
+      membership: (() {
+        final guardedValue = map['membership'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

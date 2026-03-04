@@ -10,10 +10,13 @@ import 'private_link_connection_approval_request.dart';
 class PrivateEndpointConnectionArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The private endpoint connection name.
   final pulumi.Input<String>? privateEndpointConnectionName;
+
   /// Core resource properties
   final pulumi.Input<PrivateLinkConnectionApprovalRequest>? properties;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,35 @@ class PrivateEndpointConnectionArgs {
     return <String, dynamic>{
       'factoryName': factoryName,
       'privateEndpointConnectionName': ?privateEndpointConnectionName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<PrivateLinkConnectionApprovalRequest, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateLinkConnectionApprovalRequest,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
-      properties: map['properties'] == null ? null : (PrivateLinkConnectionApprovalRequest.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      privateEndpointConnectionName: (() {
+        final guardedValue = map['privateEndpointConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateLinkConnectionApprovalRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

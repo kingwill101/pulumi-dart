@@ -8,7 +8,7 @@ import 'namespace_state.dart';
 ///
 /// For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-listnamespaces).
 ///
-/// > **NOTE:** Available since v1.173.0.
+/// &gt; **NOTE:** Available since v1.173.0.
 ///
 /// ## Example Usage
 ///
@@ -141,8 +141,10 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Namespace description.
   late final pulumi.Output<String?> description;
+
   /// Namespace name.
   late final pulumi.Output<String> namespaceName;
+
   /// namespace uid
   late final pulumi.Output<String> namespaceUid;
 
@@ -155,14 +157,14 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:schedulerx/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.namespaceUid = registerOutput<String>('namespaceUid');
+         'alicloud:schedulerx/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    namespaceName = registerOutput<String>('namespaceName');
+    namespaceUid = registerOutput<String>('namespaceUid');
   }
 
   /// Gets an existing [Namespace] resource's state with the given [name] and [id].
@@ -183,13 +185,13 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:schedulerx/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.namespaceUid = registerOutput<String>('namespaceUid');
+         'alicloud:schedulerx/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    namespaceName = registerOutput<String>('namespaceName');
+    namespaceUid = registerOutput<String>('namespaceUid');
   }
 }

@@ -12,16 +12,15 @@ enum DiskCreateOption {
   uploadPreparedSecure("UploadPreparedSecure"),
   copyFromSanSnapshot("CopyFromSanSnapshot");
 
-  const DiskCreateOption(this.value);
-  final String value;
+  const DiskCreateOption(this.wireValue);
+  final String wireValue;
 
   static DiskCreateOption fromValue(String value) {
     for (final item in DiskCreateOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskCreateOption value: $value');
   }
 }
-

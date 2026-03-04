@@ -3,16 +3,15 @@ enum LogonType {
   service("Service"),
   interactive("Interactive");
 
-  const LogonType(this.value);
-  final String value;
+  const LogonType(this.wireValue);
+  final String wireValue;
 
   static LogonType fromValue(String value) {
     for (final item in LogonType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogonType value: $value');
   }
 }
-

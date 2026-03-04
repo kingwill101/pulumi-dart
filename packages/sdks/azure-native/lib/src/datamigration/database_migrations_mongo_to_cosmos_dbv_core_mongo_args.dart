@@ -11,24 +11,34 @@ import 'mongo_migration_collection.dart';
 class DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs {
   /// List of Mongo Collections to be migrated.
   final pulumi.Input<List<MongoMigrationCollection>>? collectionList;
+
   /// Expected value is 'MongoToCosmosDbMongo'.
   final pulumi.Input<String> kind;
+
   /// Name of the migration.
   final pulumi.Input<String>? migrationName;
+
   /// ID for current migration operation.
   final pulumi.Input<String>? migrationOperationId;
+
   /// Resource Id of the Migration Service.
   final pulumi.Input<String>? migrationService;
+
   /// Error message for migration provisioning failure, if any.
   final pulumi.Input<String>? provisioningError;
+
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource Id of the target resource.
   final pulumi.Input<String>? scope;
+
   /// Source Mongo connection details.
   final pulumi.Input<MongoConnectionInformation>? sourceMongoConnection;
+
   /// Target Cosmos DB Mongo connection details.
   final pulumi.Input<MongoConnectionInformation>? targetMongoConnection;
+
   /// The name of the target resource/account.
   final pulumi.Input<String> targetResourceName;
 
@@ -60,7 +70,18 @@ class DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'collectionList': ?pulumi.Input.mapOptionalInputValue<List<MongoMigrationCollection>, List<Map<String, dynamic>>>(collectionList, (value) => pulumi.Input.encodeList<MongoMigrationCollection, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'collectionList':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MongoMigrationCollection>,
+            List<Map<String, dynamic>>
+          >(
+            collectionList,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MongoMigrationCollection,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'kind': kind,
       'migrationName': ?migrationName,
       'migrationOperationId': ?migrationOperationId,
@@ -68,26 +89,86 @@ class DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs {
       'provisioningError': ?provisioningError,
       'resourceGroupName': resourceGroupName,
       'scope': ?scope,
-      'sourceMongoConnection': ?pulumi.Input.mapOptionalInputValue<MongoConnectionInformation, Map<String, dynamic>>(sourceMongoConnection, (value) => value.toMap()),
-      'targetMongoConnection': ?pulumi.Input.mapOptionalInputValue<MongoConnectionInformation, Map<String, dynamic>>(targetMongoConnection, (value) => value.toMap()),
+      'sourceMongoConnection':
+          ?pulumi.Input.mapOptionalInputValue<
+            MongoConnectionInformation,
+            Map<String, dynamic>
+          >(sourceMongoConnection, (value) => value.toMap()),
+      'targetMongoConnection':
+          ?pulumi.Input.mapOptionalInputValue<
+            MongoConnectionInformation,
+            Map<String, dynamic>
+          >(targetMongoConnection, (value) => value.toMap()),
       'targetResourceName': targetResourceName,
     };
   }
 
-  factory DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs.fromMap(Map<String, dynamic> map) {
+  factory DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs(
-      collectionList: map['collectionList'] == null ? null : (pulumi.Input.decodeList<MongoMigrationCollection>(map['collectionList']!, (value) => MongoMigrationCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: (map['kind'] as String).input(),
-      migrationName: map['migrationName'] == null ? null : (map['migrationName']! as String).input(),
-      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId']! as String).input(),
-      migrationService: map['migrationService'] == null ? null : (map['migrationService']! as String).input(),
-      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      sourceMongoConnection: map['sourceMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['sourceMongoConnection']! as Map).cast<String, dynamic>())).input(),
-      targetMongoConnection: map['targetMongoConnection'] == null ? null : (MongoConnectionInformation.fromMap((map['targetMongoConnection']! as Map).cast<String, dynamic>())).input(),
-      targetResourceName: (map['targetResourceName'] as String).input(),
+      collectionList: (() {
+        final guardedValue = map['collectionList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MongoMigrationCollection>(
+            guardedValue,
+            (value) => MongoMigrationCollection.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      migrationName: (() {
+        final guardedValue = map['migrationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      migrationOperationId: (() {
+        final guardedValue = map['migrationOperationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      migrationService: (() {
+        final guardedValue = map['migrationService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningError: (() {
+        final guardedValue = map['provisioningError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceMongoConnection: (() {
+        final guardedValue = map['sourceMongoConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MongoConnectionInformation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetMongoConnection: (() {
+        final guardedValue = map['targetMongoConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MongoConnectionInformation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetResourceName: pulumi.Input.fromValue(
+        map['targetResourceName'] as String,
+      ),
     );
   }
 }
-

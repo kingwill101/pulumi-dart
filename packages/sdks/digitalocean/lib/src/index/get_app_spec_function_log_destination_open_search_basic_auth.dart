@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
   /// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
   final pulumi.Input<String>? password;
+
   /// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
   final pulumi.Input<String>? user;
 
@@ -17,17 +18,23 @@ class GetAppSpecFunctionLogDestinationOpenSearchBasicAuth {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': ?password,
-      'user': ?user,
-    };
+    return <String, dynamic>{'password': ?password, 'user': ?user};
   }
 
-  factory GetAppSpecFunctionLogDestinationOpenSearchBasicAuth.fromMap(Map<String, dynamic> map) {
+  factory GetAppSpecFunctionLogDestinationOpenSearchBasicAuth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppSpecFunctionLogDestinationOpenSearchBasicAuth(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      user: map['user'] == null ? null : (map['user']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

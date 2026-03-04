@@ -13,23 +13,20 @@ class GetMuteConfigArgs {
   /// Creates a new [GetMuteConfigArgs].
   /// [muteConfigId] Required.
   /// [project] Optional.
-  GetMuteConfigArgs({
-    required this.muteConfigId,
-    this.project,
-  });
+  GetMuteConfigArgs({required this.muteConfigId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'muteConfigId': muteConfigId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'muteConfigId': muteConfigId, 'project': ?project};
   }
 
   factory GetMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetMuteConfigArgs(
-      muteConfigId: (map['muteConfigId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      muteConfigId: pulumi.Input.fromValue(map['muteConfigId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

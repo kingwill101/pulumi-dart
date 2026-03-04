@@ -1074,13 +1074,17 @@ import 'nat_address_state.dart';
 class NatAddress extends pulumi.CustomResource {
   /// Flag that specifies whether the reserved NAT address should be activate.
   late final pulumi.Output<bool?> activate;
+
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
   late final pulumi.Output<String> instanceId;
+
   /// The allocated NAT IP address.
   late final pulumi.Output<String> ipAddress;
+
   /// Resource ID of the NAT address.
   late final pulumi.Output<String> name;
+
   /// State of the NAT IP address.
   late final pulumi.Output<String> state;
 
@@ -1093,16 +1097,16 @@ class NatAddress extends pulumi.CustomResource {
     NatAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/natAddress:NatAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activate = registerOutput<bool?>('activate');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipAddress = registerOutput<String>('ipAddress');
+         'gcp:apigee/natAddress:NatAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activate = registerOutput<bool?>('activate');
+    instanceId = registerOutput<String>('instanceId');
+    ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
-    this.state = registerOutput<String>('state');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [NatAddress] resource's state with the given [name] and [id].
@@ -1123,14 +1127,14 @@ class NatAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/natAddress:NatAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activate = registerOutput<bool?>('activate');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipAddress = registerOutput<String>('ipAddress');
+         'gcp:apigee/natAddress:NatAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activate = registerOutput<bool?>('activate');
+    instanceId = registerOutput<String>('instanceId');
+    ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
     this.state = registerOutput<String>('state');
   }

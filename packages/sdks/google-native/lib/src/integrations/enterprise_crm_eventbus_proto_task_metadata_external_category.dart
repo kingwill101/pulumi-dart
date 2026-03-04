@@ -15,16 +15,20 @@ enum EnterpriseCrmEventbusProtoTaskMetadataExternalCategory {
   externalArtificialInteligence("EXTERNAL_ARTIFICIAL_INTELIGENCE"),
   externalDataManipulation("EXTERNAL_DATA_MANIPULATION");
 
-  const EnterpriseCrmEventbusProtoTaskMetadataExternalCategory(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoTaskMetadataExternalCategory(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoTaskMetadataExternalCategory.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoTaskMetadataExternalCategory.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataExternalCategory value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoTaskMetadataExternalCategory value: $value',
+    );
   }
 }
-

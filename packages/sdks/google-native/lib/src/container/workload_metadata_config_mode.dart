@@ -4,16 +4,15 @@ enum WorkloadMetadataConfigMode {
   gceMetadata("GCE_METADATA"),
   gkeMetadata("GKE_METADATA");
 
-  const WorkloadMetadataConfigMode(this.value);
-  final String value;
+  const WorkloadMetadataConfigMode(this.wireValue);
+  final String wireValue;
 
   static WorkloadMetadataConfigMode fromValue(String value) {
     for (final item in WorkloadMetadataConfigMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadMetadataConfigMode value: $value');
   }
 }
-

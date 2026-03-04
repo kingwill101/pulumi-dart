@@ -9,20 +9,17 @@ class AppEngineVersionEndpointResponseNetworkmanagementV1beta1 {
 
   /// Creates a new [AppEngineVersionEndpointResponseNetworkmanagementV1beta1].
   /// [uri] An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
-  AppEngineVersionEndpointResponseNetworkmanagementV1beta1({
-    required this.uri,
-  });
+  AppEngineVersionEndpointResponseNetworkmanagementV1beta1({required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory AppEngineVersionEndpointResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory AppEngineVersionEndpointResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppEngineVersionEndpointResponseNetworkmanagementV1beta1(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

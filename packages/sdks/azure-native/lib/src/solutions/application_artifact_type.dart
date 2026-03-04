@@ -4,16 +4,15 @@ enum ApplicationArtifactType {
   valueTemplate("Template"),
   valueCustom("Custom");
 
-  const ApplicationArtifactType(this.value);
-  final String value;
+  const ApplicationArtifactType(this.wireValue);
+  final String wireValue;
 
   static ApplicationArtifactType fromValue(String value) {
     for (final item in ApplicationArtifactType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationArtifactType value: $value');
   }
 }
-

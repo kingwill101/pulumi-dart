@@ -9,24 +9,32 @@ import 'app_authorization_timeouts.dart';
 class AppAuthorizationState {
   /// The name of the application for valid values see https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html.
   final pulumi.Input<String>? app;
+
   /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String>? appBundleArn;
+
   /// ARN of the App Authorization. Do not begin the description with "An", "The", "Defines", "Indicates", or "Specifies," as these are verbose. In other words, "Indicates the amount of storage," can be rewritten as "Amount of storage," without losing any information.
   final pulumi.Input<String>? arn;
+
   /// The authorization type for the app authorization valid values are oauth2 and apiKey.
   final pulumi.Input<String>? authType;
+
   /// The application URL for the OAuth flow.
   final pulumi.Input<String>? authUrl;
   final pulumi.Input<String>? createdAt;
+
   /// Contains credentials for the application, such as an API key or OAuth2 client ID and secret.
   /// Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (oauth2), then you should provide only the OAuth2 credentials.
   final pulumi.Input<AppAuthorizationCredential>? credential;
+
   /// The user persona of the app authorization.
   final pulumi.Input<String>? persona;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Contains information about an application tenant, such as the application display name and identifier.
   final pulumi.Input<List<AppAuthorizationTenant>>? tenants;
   final pulumi.Input<AppAuthorizationTimeouts>? timeouts;
@@ -72,34 +80,127 @@ class AppAuthorizationState {
       'authType': ?authType,
       'authUrl': ?authUrl,
       'createdAt': ?createdAt,
-      'credential': ?pulumi.Input.mapOptionalInputValue<AppAuthorizationCredential, Map<String, dynamic>>(credential, (value) => value.toMap()),
+      'credential':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAuthorizationCredential,
+            Map<String, dynamic>
+          >(credential, (value) => value.toMap()),
       'persona': ?persona,
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'tenants': ?pulumi.Input.mapOptionalInputValue<List<AppAuthorizationTenant>, List<Map<String, dynamic>>>(tenants, (value) => pulumi.Input.encodeList<AppAuthorizationTenant, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AppAuthorizationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'tenants':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppAuthorizationTenant>,
+            List<Map<String, dynamic>>
+          >(
+            tenants,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppAuthorizationTenant,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAuthorizationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'updatedAt': ?updatedAt,
     };
   }
 
   factory AppAuthorizationState.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationState(
-      app: map['app'] == null ? null : ((map['app'] as String).input()).input(),
-      appBundleArn: map['appBundleArn'] == null ? null : ((map['appBundleArn'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      authType: map['authType'] == null ? null : ((map['authType'] as String).input()).input(),
-      authUrl: map['authUrl'] == null ? null : ((map['authUrl'] as String).input()).input(),
-      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
-      credential: map['credential'] == null ? null : ((AppAuthorizationCredential.fromMap((map['credential']! as Map).cast<String, dynamic>())).input()).input(),
-      persona: map['persona'] == null ? null : ((map['persona'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      tenants: map['tenants'] == null ? null : ((pulumi.Input.decodeList<AppAuthorizationTenant>(map['tenants']!, (value) => AppAuthorizationTenant.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((AppAuthorizationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
+      app: (() {
+        final guardedValue = map['app'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appBundleArn: (() {
+        final guardedValue = map['appBundleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authUrl: (() {
+        final guardedValue = map['authUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credential: (() {
+        final guardedValue = map['credential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAuthorizationCredential.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      persona: (() {
+        final guardedValue = map['persona'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tenants: (() {
+        final guardedValue = map['tenants'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppAuthorizationTenant>(
+            guardedValue,
+            (value) => AppAuthorizationTenant.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAuthorizationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

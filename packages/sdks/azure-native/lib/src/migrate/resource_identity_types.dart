@@ -3,16 +3,15 @@ enum ResourceIdentityTypes {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
-  const ResourceIdentityTypes(this.value);
-  final String value;
+  const ResourceIdentityTypes(this.wireValue);
+  final String wireValue;
 
   static ResourceIdentityTypes fromValue(String value) {
     for (final item in ResourceIdentityTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceIdentityTypes value: $value');
   }
 }
-

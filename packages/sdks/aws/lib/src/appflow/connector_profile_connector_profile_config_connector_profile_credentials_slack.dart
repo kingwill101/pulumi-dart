@@ -7,7 +7,10 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
   final pulumi.Input<String>? accessToken;
   final pulumi.Input<String> clientId;
   final pulumi.Input<String> clientSecret;
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest>? oauthRequest;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest
+  >?
+  oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack].
   /// [accessToken] Optional.
@@ -26,17 +29,34 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack {
       'accessToken': ?accessToken,
       'clientId': clientId,
       'clientSecret': clientSecret,
-      'oauthRequest': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest, Map<String, dynamic>>(oauthRequest, (value) => value.toMap()),
+      'oauthRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest,
+            Map<String, dynamic>
+          >(oauthRequest, (value) => value.toMap()),
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack(
-      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      oauthRequest: (() {
+        final guardedValue = map['oauthRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlackOauthRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrometheusRuleResolveConfiguration {
   /// Enable alert auto-resolution.
   final pulumi.Input<bool>? autoResolved;
+
   /// Alert auto-resolution timeout.
   final pulumi.Input<String>? timeToResolve;
 
   /// Creates a new [PrometheusRuleResolveConfiguration].
   /// [autoResolved] Enable alert auto-resolution.
   /// [timeToResolve] Alert auto-resolution timeout.
-  PrometheusRuleResolveConfiguration({
-    this.autoResolved,
-    this.timeToResolve,
-  });
+  PrometheusRuleResolveConfiguration({this.autoResolved, this.timeToResolve});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class PrometheusRuleResolveConfiguration {
 
   factory PrometheusRuleResolveConfiguration.fromMap(Map<String, dynamic> map) {
     return PrometheusRuleResolveConfiguration(
-      autoResolved: map['autoResolved'] == null ? null : (map['autoResolved']! as bool).input(),
-      timeToResolve: map['timeToResolve'] == null ? null : (map['timeToResolve']! as String).input(),
+      autoResolved: (() {
+        final guardedValue = map['autoResolved'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeToResolve: (() {
+        final guardedValue = map['timeToResolve'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

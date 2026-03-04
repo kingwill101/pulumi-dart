@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppAuthSettingTwitter {
   /// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerKey;
+
   /// The OAuth 1.0a consumer secret of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerSecret;
+
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in.
   final pulumi.Input<String> consumerSecretSettingName;
 
@@ -28,12 +30,15 @@ class GetWindowsFunctionAppAuthSettingTwitter {
     };
   }
 
-  factory GetWindowsFunctionAppAuthSettingTwitter.fromMap(Map<String, dynamic> map) {
+  factory GetWindowsFunctionAppAuthSettingTwitter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWindowsFunctionAppAuthSettingTwitter(
-      consumerKey: (map['consumerKey'] as String).input(),
-      consumerSecret: (map['consumerSecret'] as String).input(),
-      consumerSecretSettingName: (map['consumerSecretSettingName'] as String).input(),
+      consumerKey: pulumi.Input.fromValue(map['consumerKey'] as String),
+      consumerSecret: pulumi.Input.fromValue(map['consumerSecret'] as String),
+      consumerSecretSettingName: pulumi.Input.fromValue(
+        map['consumerSecretSettingName'] as String,
+      ),
     );
   }
 }
-

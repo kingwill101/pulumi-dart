@@ -3,16 +3,15 @@ enum InstanceBootModeValues {
   legacyBios("legacy-bios"),
   uefi("uefi");
 
-  const InstanceBootModeValues(this.value);
-  final String value;
+  const InstanceBootModeValues(this.wireValue);
+  final String wireValue;
 
   static InstanceBootModeValues fromValue(String value) {
     for (final item in InstanceBootModeValues.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceBootModeValues value: $value');
   }
 }
-

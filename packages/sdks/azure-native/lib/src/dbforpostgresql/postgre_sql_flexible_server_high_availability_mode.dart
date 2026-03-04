@@ -4,16 +4,17 @@ enum PostgreSqlFlexibleServerHighAvailabilityMode {
   zoneRedundant("ZoneRedundant"),
   sameZone("SameZone");
 
-  const PostgreSqlFlexibleServerHighAvailabilityMode(this.value);
-  final String value;
+  const PostgreSqlFlexibleServerHighAvailabilityMode(this.wireValue);
+  final String wireValue;
 
   static PostgreSqlFlexibleServerHighAvailabilityMode fromValue(String value) {
     for (final item in PostgreSqlFlexibleServerHighAvailabilityMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PostgreSqlFlexibleServerHighAvailabilityMode value: $value');
+    throw ArgumentError(
+      'Unknown PostgreSqlFlexibleServerHighAvailabilityMode value: $value',
+    );
   }
 }
-

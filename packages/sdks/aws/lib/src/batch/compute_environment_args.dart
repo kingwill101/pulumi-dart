@@ -12,22 +12,31 @@ import 'compute_environment_update_policy.dart';
 class ComputeEnvironmentArgs {
   /// Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
   final pulumi.Input<ComputeEnvironmentComputeResources>? computeResources;
+
   /// Details for the Amazon EKS cluster that supports the compute environment. See details below.
   final pulumi.Input<ComputeEnvironmentEksConfiguration>? eksConfiguration;
+
   /// The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String>? name;
+
   /// Creates a unique compute environment name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
   final pulumi.Input<String>? serviceRole;
+
   /// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   final pulumi.Input<String>? state;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   final pulumi.Input<String> type;
+
   /// Specifies the infrastructure update policy for the compute environment. See details below.
   final pulumi.Input<ComputeEnvironmentUpdatePolicy>? updatePolicy;
 
@@ -57,8 +66,16 @@ class ComputeEnvironmentArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeResources': ?pulumi.Input.mapOptionalInputValue<ComputeEnvironmentComputeResources, Map<String, dynamic>>(computeResources, (value) => value.toMap()),
-      'eksConfiguration': ?pulumi.Input.mapOptionalInputValue<ComputeEnvironmentEksConfiguration, Map<String, dynamic>>(eksConfiguration, (value) => value.toMap()),
+      'computeResources':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeEnvironmentComputeResources,
+            Map<String, dynamic>
+          >(computeResources, (value) => value.toMap()),
+      'eksConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeEnvironmentEksConfiguration,
+            Map<String, dynamic>
+          >(eksConfiguration, (value) => value.toMap()),
       'name': ?name,
       'namePrefix': ?namePrefix,
       'region': ?region,
@@ -66,23 +83,76 @@ class ComputeEnvironmentArgs {
       'state': ?state,
       'tags': ?tags,
       'type': type,
-      'updatePolicy': ?pulumi.Input.mapOptionalInputValue<ComputeEnvironmentUpdatePolicy, Map<String, dynamic>>(updatePolicy, (value) => value.toMap()),
+      'updatePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeEnvironmentUpdatePolicy,
+            Map<String, dynamic>
+          >(updatePolicy, (value) => value.toMap()),
     };
   }
 
   factory ComputeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentArgs(
-      computeResources: map['computeResources'] == null ? null : ((ComputeEnvironmentComputeResources.fromMap((map['computeResources']! as Map).cast<String, dynamic>())).input()).input(),
-      eksConfiguration: map['eksConfiguration'] == null ? null : ((ComputeEnvironmentEksConfiguration.fromMap((map['eksConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serviceRole: map['serviceRole'] == null ? null : ((map['serviceRole'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      type: (map['type'] as String).input(),
-      updatePolicy: map['updatePolicy'] == null ? null : ((ComputeEnvironmentUpdatePolicy.fromMap((map['updatePolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      computeResources: (() {
+        final guardedValue = map['computeResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeEnvironmentComputeResources.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      eksConfiguration: (() {
+        final guardedValue = map['eksConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeEnvironmentEksConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceRole: (() {
+        final guardedValue = map['serviceRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      updatePolicy: (() {
+        final guardedValue = map['updatePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeEnvironmentUpdatePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

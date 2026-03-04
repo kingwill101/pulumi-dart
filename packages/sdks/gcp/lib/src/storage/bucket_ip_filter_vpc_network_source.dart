@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketIpFilterVpcNetworkSource {
   /// The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.
   final pulumi.Input<List<String>> allowedIpCidrRanges;
+
   /// Name of the network. Format: `projects/PROJECT_ID/global/networks/NETWORK_NAME`
   final pulumi.Input<String> network;
 
@@ -25,9 +26,10 @@ class BucketIpFilterVpcNetworkSource {
 
   factory BucketIpFilterVpcNetworkSource.fromMap(Map<String, dynamic> map) {
     return BucketIpFilterVpcNetworkSource(
-      allowedIpCidrRanges: ((map['allowedIpCidrRanges'] as List).cast<String>()).input(),
-      network: (map['network'] as String).input(),
+      allowedIpCidrRanges: pulumi.Input.fromValue(
+        (map['allowedIpCidrRanges'] as List).cast<String>(),
+      ),
+      network: pulumi.Input.fromValue(map['network'] as String),
     );
   }
 }
-

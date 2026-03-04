@@ -6,8 +6,10 @@ import 'channel_namespace_handler_configs_on_subscribe_integration.dart';
 class ChannelNamespaceHandlerConfigsOnSubscribe {
   /// Behavior for the handler. Valid values: `CODE`, `DIRECT`.
   final pulumi.Input<String> behavior;
+
   /// Integration data source configuration for the handler. See Integration below.
-  final pulumi.Input<ChannelNamespaceHandlerConfigsOnSubscribeIntegration> integration;
+  final pulumi.Input<ChannelNamespaceHandlerConfigsOnSubscribeIntegration>
+  integration;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnSubscribe].
   /// [behavior] Behavior for the handler. Valid values: `CODE`, `DIRECT`.
@@ -20,15 +22,24 @@ class ChannelNamespaceHandlerConfigsOnSubscribe {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'behavior': behavior,
-      'integration': pulumi.Input.mapInputValue<ChannelNamespaceHandlerConfigsOnSubscribeIntegration, Map<String, dynamic>>(integration, (value) => value.toMap()),
+      'integration':
+          pulumi.Input.mapInputValue<
+            ChannelNamespaceHandlerConfigsOnSubscribeIntegration,
+            Map<String, dynamic>
+          >(integration, (value) => value.toMap()),
     };
   }
 
-  factory ChannelNamespaceHandlerConfigsOnSubscribe.fromMap(Map<String, dynamic> map) {
+  factory ChannelNamespaceHandlerConfigsOnSubscribe.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelNamespaceHandlerConfigsOnSubscribe(
-      behavior: (map['behavior'] as String).input(),
-      integration: (ChannelNamespaceHandlerConfigsOnSubscribeIntegration.fromMap((map['integration']! as Map).cast<String, dynamic>())).input(),
+      behavior: pulumi.Input.fromValue(map['behavior'] as String),
+      integration: pulumi.Input.fromValue(
+        ChannelNamespaceHandlerConfigsOnSubscribeIntegration.fromMap(
+          (map['integration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

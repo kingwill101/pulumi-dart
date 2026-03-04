@@ -7,8 +7,10 @@ import 'container_registry_response.dart';
 class ContainerConfigurationResponse {
   /// This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
   final pulumi.Input<List<String>>? containerImageNames;
+
   /// If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
   final pulumi.Input<List<ContainerRegistryResponse>>? containerRegistries;
+
   /// The container technology to be used.
   final pulumi.Input<String> type;
 
@@ -25,17 +27,42 @@ class ContainerConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerImageNames': ?containerImageNames,
-      'containerRegistries': ?pulumi.Input.mapOptionalInputValue<List<ContainerRegistryResponse>, List<Map<String, dynamic>>>(containerRegistries, (value) => pulumi.Input.encodeList<ContainerRegistryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'containerRegistries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContainerRegistryResponse>,
+            List<Map<String, dynamic>>
+          >(
+            containerRegistries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContainerRegistryResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
     };
   }
 
   factory ContainerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ContainerConfigurationResponse(
-      containerImageNames: map['containerImageNames'] == null ? null : ((map['containerImageNames']! as List).cast<String>()).input(),
-      containerRegistries: map['containerRegistries'] == null ? null : (pulumi.Input.decodeList<ContainerRegistryResponse>(map['containerRegistries']!, (value) => ContainerRegistryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
+      containerImageNames: (() {
+        final guardedValue = map['containerImageNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      containerRegistries: (() {
+        final guardedValue = map['containerRegistries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ContainerRegistryResponse>(
+            guardedValue,
+            (value) => ContainerRegistryResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

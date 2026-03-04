@@ -154,10 +154,13 @@ import 'capability_host_response.dart';
 class AccountCapabilityHost extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// [Required] Additional attributes of the entity.
   late final pulumi.Output<CapabilityHostResponse> capabilityHostProperties;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -170,14 +173,16 @@ class AccountCapabilityHost extends pulumi.CustomResource {
     AccountCapabilityHostArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cognitiveservices:AccountCapabilityHost',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.capabilityHostProperties = registerOutput<CapabilityHostResponse>('capabilityHostProperties');
+         'azure-native:cognitiveservices:AccountCapabilityHost',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capabilityHostProperties = registerOutput<CapabilityHostResponse>(
+      'capabilityHostProperties',
+    );
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

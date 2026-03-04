@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayCacheDisksDisk {
   /// The category of eht cache disk.
   final pulumi.Input<String> cacheDiskCategory;
+
   /// The size of the cache disk.
   final pulumi.Input<int> cacheDiskSizeInGb;
+
   /// The ID of the cache disk.
   final pulumi.Input<String> cacheId;
+
   /// The expiration time. Time stamp in seconds (s).
   final pulumi.Input<int> expiredTime;
+
   /// The ID of the gateway.
   final pulumi.Input<String> gatewayId;
+
   /// The ID of the Gateway Cache Disk.
   final pulumi.Input<String> id;
+
   /// Per second of the input output.
   final pulumi.Input<int> iops;
+
   /// Whether it is used.
   final pulumi.Input<bool> isUsed;
+
   /// The cache disk inside the device name.
   final pulumi.Input<String> localFilePath;
+
   /// A renewal link of the cache disk.
   final pulumi.Input<String> renewUrl;
+
   /// The status of the resource.
   final pulumi.Input<int> status;
 
@@ -70,18 +80,21 @@ class GetGatewayCacheDisksDisk {
 
   factory GetGatewayCacheDisksDisk.fromMap(Map<String, dynamic> map) {
     return GetGatewayCacheDisksDisk(
-      cacheDiskCategory: (map['cacheDiskCategory'] as String).input(),
-      cacheDiskSizeInGb: (map['cacheDiskSizeInGb'] as int).input(),
-      cacheId: (map['cacheId'] as String).input(),
-      expiredTime: (map['expiredTime'] as int).input(),
-      gatewayId: (map['gatewayId'] as String).input(),
-      id: (map['id'] as String).input(),
-      iops: (map['iops'] as int).input(),
-      isUsed: (map['isUsed'] as bool).input(),
-      localFilePath: (map['localFilePath'] as String).input(),
-      renewUrl: (map['renewUrl'] as String).input(),
-      status: (map['status'] as int).input(),
+      cacheDiskCategory: pulumi.Input.fromValue(
+        map['cacheDiskCategory'] as String,
+      ),
+      cacheDiskSizeInGb: pulumi.Input.fromValue(
+        map['cacheDiskSizeInGb'] as int,
+      ),
+      cacheId: pulumi.Input.fromValue(map['cacheId'] as String),
+      expiredTime: pulumi.Input.fromValue(map['expiredTime'] as int),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      iops: pulumi.Input.fromValue(map['iops'] as int),
+      isUsed: pulumi.Input.fromValue(map['isUsed'] as bool),
+      localFilePath: pulumi.Input.fromValue(map['localFilePath'] as String),
+      renewUrl: pulumi.Input.fromValue(map['renewUrl'] as String),
+      status: pulumi.Input.fromValue(map['status'] as int),
     );
   }
 }
-

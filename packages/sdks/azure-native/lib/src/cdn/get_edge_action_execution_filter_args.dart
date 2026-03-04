@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEdgeActionExecutionFilterArgs {
   /// The name of the Edge Action
   final pulumi.Input<String> edgeActionName;
+
   /// The name of the execution filter
   final pulumi.Input<String> executionFilter;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetEdgeActionExecutionFilterArgs {
 
   factory GetEdgeActionExecutionFilterArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeActionExecutionFilterArgs(
-      edgeActionName: (map['edgeActionName'] as String).input(),
-      executionFilter: (map['executionFilter'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      edgeActionName: pulumi.Input.fromValue(map['edgeActionName'] as String),
+      executionFilter: pulumi.Input.fromValue(map['executionFilter'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

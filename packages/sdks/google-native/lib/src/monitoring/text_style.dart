@@ -11,16 +11,22 @@ import 'text_style_vertical_alignment.dart';
 class TextStyle {
   /// The background color as a hex string. "#RRGGBB" or "#RGB"
   final pulumi.Input<String>? backgroundColor;
+
   /// Font sizes for both the title and content. The title will still be larger relative to the content.
   final pulumi.Input<TextStyleFontSize>? fontSize;
+
   /// The horizontal alignment of both the title and content
   final pulumi.Input<TextStyleHorizontalAlignment>? horizontalAlignment;
+
   /// The amount of padding around the widget
   final pulumi.Input<TextStylePadding>? padding;
+
   /// The pointer location for this widget (also sometimes called a "tail")
   final pulumi.Input<TextStylePointerLocation>? pointerLocation;
+
   /// The text color as a hex string. "#RRGGBB" or "#RGB"
   final pulumi.Input<String>? textColor;
+
   /// The vertical alignment of both the title and content
   final pulumi.Input<TextStyleVerticalAlignment>? verticalAlignment;
 
@@ -45,25 +51,81 @@ class TextStyle {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backgroundColor': ?backgroundColor,
-      'fontSize': ?pulumi.Input.mapOptionalInputValue<TextStyleFontSize, String>(fontSize, (value) => value.value),
-      'horizontalAlignment': ?pulumi.Input.mapOptionalInputValue<TextStyleHorizontalAlignment, String>(horizontalAlignment, (value) => value.value),
-      'padding': ?pulumi.Input.mapOptionalInputValue<TextStylePadding, String>(padding, (value) => value.value),
-      'pointerLocation': ?pulumi.Input.mapOptionalInputValue<TextStylePointerLocation, String>(pointerLocation, (value) => value.value),
+      'fontSize':
+          ?pulumi.Input.mapOptionalInputValue<TextStyleFontSize, String>(
+            fontSize,
+            (value) => value.wireValue,
+          ),
+      'horizontalAlignment':
+          ?pulumi.Input.mapOptionalInputValue<
+            TextStyleHorizontalAlignment,
+            String
+          >(horizontalAlignment, (value) => value.wireValue),
+      'padding': ?pulumi.Input.mapOptionalInputValue<TextStylePadding, String>(
+        padding,
+        (value) => value.wireValue,
+      ),
+      'pointerLocation':
+          ?pulumi.Input.mapOptionalInputValue<TextStylePointerLocation, String>(
+            pointerLocation,
+            (value) => value.wireValue,
+          ),
       'textColor': ?textColor,
-      'verticalAlignment': ?pulumi.Input.mapOptionalInputValue<TextStyleVerticalAlignment, String>(verticalAlignment, (value) => value.value),
+      'verticalAlignment':
+          ?pulumi.Input.mapOptionalInputValue<
+            TextStyleVerticalAlignment,
+            String
+          >(verticalAlignment, (value) => value.wireValue),
     };
   }
 
   factory TextStyle.fromMap(Map<String, dynamic> map) {
     return TextStyle(
-      backgroundColor: map['backgroundColor'] == null ? null : (map['backgroundColor']! as String).input(),
-      fontSize: map['fontSize'] == null ? null : (TextStyleFontSize.fromValue(map['fontSize']! as String)).input(),
-      horizontalAlignment: map['horizontalAlignment'] == null ? null : (TextStyleHorizontalAlignment.fromValue(map['horizontalAlignment']! as String)).input(),
-      padding: map['padding'] == null ? null : (TextStylePadding.fromValue(map['padding']! as String)).input(),
-      pointerLocation: map['pointerLocation'] == null ? null : (TextStylePointerLocation.fromValue(map['pointerLocation']! as String)).input(),
-      textColor: map['textColor'] == null ? null : (map['textColor']! as String).input(),
-      verticalAlignment: map['verticalAlignment'] == null ? null : (TextStyleVerticalAlignment.fromValue(map['verticalAlignment']! as String)).input(),
+      backgroundColor: (() {
+        final guardedValue = map['backgroundColor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fontSize: (() {
+        final guardedValue = map['fontSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TextStyleFontSize.fromValue(guardedValue as String),
+        );
+      })(),
+      horizontalAlignment: (() {
+        final guardedValue = map['horizontalAlignment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TextStyleHorizontalAlignment.fromValue(guardedValue as String),
+        );
+      })(),
+      padding: (() {
+        final guardedValue = map['padding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TextStylePadding.fromValue(guardedValue as String),
+        );
+      })(),
+      pointerLocation: (() {
+        final guardedValue = map['pointerLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TextStylePointerLocation.fromValue(guardedValue as String),
+        );
+      })(),
+      textColor: (() {
+        final guardedValue = map['textColor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verticalAlignment: (() {
+        final guardedValue = map['verticalAlignment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TextStyleVerticalAlignment.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

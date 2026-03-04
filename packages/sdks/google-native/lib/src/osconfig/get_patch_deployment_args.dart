@@ -13,10 +13,7 @@ class GetPatchDeploymentArgs {
   /// Creates a new [GetPatchDeploymentArgs].
   /// [patchDeploymentId] Required.
   /// [project] Optional.
-  GetPatchDeploymentArgs({
-    required this.patchDeploymentId,
-    this.project,
-  });
+  GetPatchDeploymentArgs({required this.patchDeploymentId, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,14 @@ class GetPatchDeploymentArgs {
 
   factory GetPatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchDeploymentArgs(
-      patchDeploymentId: (map['patchDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      patchDeploymentId: pulumi.Input.fromValue(
+        map['patchDeploymentId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

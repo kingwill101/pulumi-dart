@@ -5,26 +5,28 @@ import 'amd_sev_snp_specification_enum_value.dart';
 
 /// Definition of CpuOptions
 class CpuOptions {
-  /// <p>Indicates whether the instance is enabled for AMD SEV-SNP. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html'>AMD SEV-SNP</a>.</p>
+  /// &lt;p&gt;Indicates whether the instance is enabled for AMD SEV-SNP. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html'&gt;AMD SEV-SNP&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<AmdSevSnpSpecificationEnumValue>? amdSevSnp;
-  /// <p>The number of CPU cores for the instance.</p>
+
+  /// &lt;p&gt;The number of CPU cores for the instance.&lt;/p&gt;
   final pulumi.Input<int>? coreCount;
-  /// <p>The number of threads per CPU core.</p>
+
+  /// &lt;p&gt;The number of threads per CPU core.&lt;/p&gt;
   final pulumi.Input<int>? threadsPerCore;
 
   /// Creates a new [CpuOptions].
-  /// [amdSevSnp] <p>Indicates whether the instance is enabled for AMD SEV-SNP. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html'>AMD SEV-SNP</a>.</p>
-  /// [coreCount] <p>The number of CPU cores for the instance.</p>
-  /// [threadsPerCore] <p>The number of threads per CPU core.</p>
-  CpuOptions({
-    this.amdSevSnp,
-    this.coreCount,
-    this.threadsPerCore,
-  });
+  /// [amdSevSnp] &lt;p&gt;Indicates whether the instance is enabled for AMD SEV-SNP. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html'&gt;AMD SEV-SNP&lt;/a&gt;.&lt;/p&gt;
+  /// [coreCount] &lt;p&gt;The number of CPU cores for the instance.&lt;/p&gt;
+  /// [threadsPerCore] &lt;p&gt;The number of threads per CPU core.&lt;/p&gt;
+  CpuOptions({this.amdSevSnp, this.coreCount, this.threadsPerCore});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amdSevSnp': ?pulumi.Input.mapOptionalInputValue<AmdSevSnpSpecificationEnumValue, Map<String, dynamic>>(amdSevSnp, (value) => value.toMap()),
+      'amdSevSnp':
+          ?pulumi.Input.mapOptionalInputValue<
+            AmdSevSnpSpecificationEnumValue,
+            Map<String, dynamic>
+          >(amdSevSnp, (value) => value.toMap()),
       'coreCount': ?coreCount,
       'threadsPerCore': ?threadsPerCore,
     };
@@ -32,10 +34,25 @@ class CpuOptions {
 
   factory CpuOptions.fromMap(Map<String, dynamic> map) {
     return CpuOptions(
-      amdSevSnp: map['amdSevSnp'] == null ? null : (AmdSevSnpSpecificationEnumValue.fromMap((map['amdSevSnp']! as Map).cast<String, dynamic>())).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
+      amdSevSnp: (() {
+        final guardedValue = map['amdSevSnp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AmdSevSnpSpecificationEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      coreCount: (() {
+        final guardedValue = map['coreCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      threadsPerCore: (() {
+        final guardedValue = map['threadsPerCore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

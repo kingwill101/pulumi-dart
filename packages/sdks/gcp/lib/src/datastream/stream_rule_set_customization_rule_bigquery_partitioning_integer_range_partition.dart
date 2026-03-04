@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
   /// The partitioning column.
   final pulumi.Input<String> column;
+
   /// The ending value for range partitioning (exclusive).
   final pulumi.Input<int> end;
+
   /// The interval of each range within the partition.
   final pulumi.Input<int> interval;
+
   /// The starting value for range partitioning (inclusive).
   final pulumi.Input<int> start;
 
@@ -33,13 +36,14 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
     };
   }
 
-  factory StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap(Map<String, dynamic> map) {
+  factory StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition(
-      column: (map['column'] as String).input(),
-      end: (map['end'] as int).input(),
-      interval: (map['interval'] as int).input(),
-      start: (map['start'] as int).input(),
+      column: pulumi.Input.fromValue(map['column'] as String),
+      end: pulumi.Input.fromValue(map['end'] as int),
+      interval: pulumi.Input.fromValue(map['interval'] as int),
+      start: pulumi.Input.fromValue(map['start'] as int),
     );
   }
 }
-

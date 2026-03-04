@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndPointResponse {
   /// Name of an end point.
   final pulumi.Input<String> endPointName;
+
   /// IP Address (IPv4).
   final pulumi.Input<String> ipAddress;
+
   /// TCP port to listen on to receive data.
   final pulumi.Input<String> port;
+
   /// Protocol either UDP or TCP.
   final pulumi.Input<String> protocol;
 
@@ -36,11 +39,10 @@ class EndPointResponse {
 
   factory EndPointResponse.fromMap(Map<String, dynamic> map) {
     return EndPointResponse(
-      endPointName: (map['endPointName'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      port: (map['port'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
+      endPointName: pulumi.Input.fromValue(map['endPointName'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

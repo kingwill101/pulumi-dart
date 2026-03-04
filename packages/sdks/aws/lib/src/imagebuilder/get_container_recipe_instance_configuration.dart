@@ -5,7 +5,11 @@ import 'get_container_recipe_instance_configuration_block_device_mapping.dart';
 
 class GetContainerRecipeInstanceConfiguration {
   /// Set of objects with block device mappings for the instance configuration.
-  final pulumi.Input<List<GetContainerRecipeInstanceConfigurationBlockDeviceMapping>> blockDeviceMappings;
+  final pulumi.Input<
+    List<GetContainerRecipeInstanceConfigurationBlockDeviceMapping>
+  >
+  blockDeviceMappings;
+
   /// AMI ID of the base image for container build and test instance.
   final pulumi.Input<String> image;
 
@@ -19,16 +23,38 @@ class GetContainerRecipeInstanceConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blockDeviceMappings': pulumi.Input.mapInputValue<List<GetContainerRecipeInstanceConfigurationBlockDeviceMapping>, List<Map<String, dynamic>>>(blockDeviceMappings, (value) => pulumi.Input.encodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'blockDeviceMappings':
+          pulumi.Input.mapInputValue<
+            List<GetContainerRecipeInstanceConfigurationBlockDeviceMapping>,
+            List<Map<String, dynamic>>
+          >(
+            blockDeviceMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetContainerRecipeInstanceConfigurationBlockDeviceMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'image': image,
     };
   }
 
-  factory GetContainerRecipeInstanceConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetContainerRecipeInstanceConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetContainerRecipeInstanceConfiguration(
-      blockDeviceMappings: (pulumi.Input.decodeList<GetContainerRecipeInstanceConfigurationBlockDeviceMapping>(map['blockDeviceMappings']!, (value) => GetContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: (map['image'] as String).input(),
+      blockDeviceMappings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetContainerRecipeInstanceConfigurationBlockDeviceMapping
+        >(
+          map['blockDeviceMappings']!,
+          (value) =>
+              GetContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      image: pulumi.Input.fromValue(map['image'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscaleTimeAndCapacity {
   /// The maximum instance count of the cluster
   final pulumi.Input<int>? maxInstanceCount;
+
   /// The minimum instance count of the cluster
   final pulumi.Input<int>? minInstanceCount;
+
   /// 24-hour time in the form xx:xx
   final pulumi.Input<String>? time;
 
@@ -31,10 +33,21 @@ class AutoscaleTimeAndCapacity {
 
   factory AutoscaleTimeAndCapacity.fromMap(Map<String, dynamic> map) {
     return AutoscaleTimeAndCapacity(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
-      time: map['time'] == null ? null : (map['time']! as String).input(),
+      maxInstanceCount: (() {
+        final guardedValue = map['maxInstanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minInstanceCount: (() {
+        final guardedValue = map['minInstanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      time: (() {
+        final guardedValue = map['time'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

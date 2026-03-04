@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceExperimentArgs {
   /// Experimental Visibility
   final pulumi.Input<String>? accessibility;
+
   /// ArtifactUri is default OSS storage path of the output of trials in the experiment
   final pulumi.Input<String> artifactUri;
+
   /// Name is the name of the experiment, unique in a namespace
   final pulumi.Input<String> experimentName;
+
   /// WorkspaceId is the workspace id which contains the experiment
   final pulumi.Input<String> workspaceId;
 
@@ -39,11 +42,14 @@ class WorkspaceExperimentArgs {
 
   factory WorkspaceExperimentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceExperimentArgs(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
-      artifactUri: (map['artifactUri'] as String).input(),
-      experimentName: (map['experimentName'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      accessibility: (() {
+        final guardedValue = map['accessibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      artifactUri: pulumi.Input.fromValue(map['artifactUri'] as String),
+      experimentName: pulumi.Input.fromValue(map['experimentName'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

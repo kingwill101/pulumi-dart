@@ -7,6 +7,7 @@ class JFrogEnvironmentDataResponse {
   /// The type of the environment data.
   /// Expected value is 'JFrogArtifactory'.
   final pulumi.Input<String> environmentType;
+
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
   final pulumi.Input<int>? scanInterval;
 
@@ -27,9 +28,12 @@ class JFrogEnvironmentDataResponse {
 
   factory JFrogEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return JFrogEnvironmentDataResponse(
-      environmentType: (map['environmentType'] as String).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as int).input(),
+      environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
+      scanInterval: (() {
+        final guardedValue = map['scanInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

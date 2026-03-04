@@ -5,16 +5,17 @@ enum HashTypeContaineranalysisV1beta1 {
   goModuleH1("GO_MODULE_H1"),
   sha512("SHA512");
 
-  const HashTypeContaineranalysisV1beta1(this.value);
-  final String value;
+  const HashTypeContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static HashTypeContaineranalysisV1beta1 fromValue(String value) {
     for (final item in HashTypeContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HashTypeContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown HashTypeContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

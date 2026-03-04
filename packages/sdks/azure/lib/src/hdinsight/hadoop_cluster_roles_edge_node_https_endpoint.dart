@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HadoopClusterRolesEdgeNodeHttpsEndpoint {
   /// A list of access modes for the application.
   final pulumi.Input<List<String>>? accessModes;
+
   /// The destination port to connect to.
   final pulumi.Input<int>? destinationPort;
+
   /// The value indicates whether the gateway authentication is enabled or not.
   final pulumi.Input<bool>? disableGatewayAuth;
+
   /// The private ip address of the endpoint.
   final pulumi.Input<String>? privateIpAddress;
+
   /// The application's subdomain suffix.
   final pulumi.Input<String>? subDomainSuffix;
 
@@ -38,14 +42,35 @@ class HadoopClusterRolesEdgeNodeHttpsEndpoint {
     };
   }
 
-  factory HadoopClusterRolesEdgeNodeHttpsEndpoint.fromMap(Map<String, dynamic> map) {
+  factory HadoopClusterRolesEdgeNodeHttpsEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HadoopClusterRolesEdgeNodeHttpsEndpoint(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
-      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth']! as bool).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
-      subDomainSuffix: map['subDomainSuffix'] == null ? null : (map['subDomainSuffix']! as String).input(),
+      accessModes: (() {
+        final guardedValue = map['accessModes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationPort: (() {
+        final guardedValue = map['destinationPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      disableGatewayAuth: (() {
+        final guardedValue = map['disableGatewayAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subDomainSuffix: (() {
+        final guardedValue = map['subDomainSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class EndpointDeploymentConfigAutoRollbackConfigurationAlarm {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'alarmName': alarmName,
-    };
+    return <String, dynamic>{'alarmName': alarmName};
   }
 
-  factory EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap(Map<String, dynamic> map) {
+  factory EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointDeploymentConfigAutoRollbackConfigurationAlarm(
-      alarmName: (map['alarmName'] as String).input(),
+      alarmName: pulumi.Input.fromValue(map['alarmName'] as String),
     );
   }
 }
-

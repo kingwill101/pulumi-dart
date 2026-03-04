@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListFeaturesetVersionMaterializationJobsArgs {
   /// End time of the feature window to filter materialization jobs.
   final pulumi.Input<String>? featureWindowEnd;
+
   /// Start time of the feature window to filter materialization jobs.
   final pulumi.Input<String>? featureWindowStart;
+
   /// Comma-separated list of tag names (and optionally values). Example: tag1,tag2=value2
   final pulumi.Input<String>? filters;
+
   /// Container name. This is case-sensitive.
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Continuation token for pagination.
   final pulumi.Input<String>? skip;
+
   /// Version identifier. This is case-sensitive.
   final pulumi.Input<String> version;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -57,17 +64,36 @@ class ListFeaturesetVersionMaterializationJobsArgs {
     };
   }
 
-  factory ListFeaturesetVersionMaterializationJobsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListFeaturesetVersionMaterializationJobsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListFeaturesetVersionMaterializationJobsArgs(
-      featureWindowEnd: map['featureWindowEnd'] == null ? null : (map['featureWindowEnd']! as String).input(),
-      featureWindowStart: map['featureWindowStart'] == null ? null : (map['featureWindowStart']! as String).input(),
-      filters: map['filters'] == null ? null : (map['filters']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
-      version: (map['version'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      featureWindowEnd: (() {
+        final guardedValue = map['featureWindowEnd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      featureWindowStart: (() {
+        final guardedValue = map['featureWindowStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skip: (() {
+        final guardedValue = map['skip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

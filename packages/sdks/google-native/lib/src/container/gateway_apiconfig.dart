@@ -10,20 +10,27 @@ class GatewayAPIConfig {
 
   /// Creates a new [GatewayAPIConfig].
   /// [channel] The Gateway API release channel to use for Gateway API.
-  GatewayAPIConfig({
-    this.channel,
-  });
+  GatewayAPIConfig({this.channel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channel': ?pulumi.Input.mapOptionalInputValue<GatewayAPIConfigChannel, String>(channel, (value) => value.value),
+      'channel':
+          ?pulumi.Input.mapOptionalInputValue<GatewayAPIConfigChannel, String>(
+            channel,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory GatewayAPIConfig.fromMap(Map<String, dynamic> map) {
     return GatewayAPIConfig(
-      channel: map['channel'] == null ? null : (GatewayAPIConfigChannel.fromValue(map['channel']! as String)).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GatewayAPIConfigChannel.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

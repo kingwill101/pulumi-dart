@@ -9,20 +9,17 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageText].
   /// [text] A collection of text responses.
-  GoogleCloudDialogflowCxV3ResponseMessageText({
-    required this.text,
-  });
+  GoogleCloudDialogflowCxV3ResponseMessageText({required this.text});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': text,
-    };
+    return <String, dynamic>{'text': text};
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessageText.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ResponseMessageText.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3ResponseMessageText(
-      text: ((map['text'] as List).cast<String>()).input(),
+      text: pulumi.Input.fromValue((map['text'] as List).cast<String>()),
     );
   }
 }
-

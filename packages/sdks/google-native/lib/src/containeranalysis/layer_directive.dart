@@ -19,16 +19,15 @@ enum LayerDirective {
   healthcheck("HEALTHCHECK"),
   shell("SHELL");
 
-  const LayerDirective(this.value);
-  final String value;
+  const LayerDirective(this.wireValue);
+  final String wireValue;
 
   static LayerDirective fromValue(String value) {
     for (final item in LayerDirective.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LayerDirective value: $value');
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedHardwareSecurityModuleRoleAssignmentArgs {
   /// The ID of a Managed Hardware Security Module resource. Changing this forces a new Managed Hardware Security Module to be created.
   final pulumi.Input<String> managedHsmId;
+
   /// The name in GUID notation which should be used for this Managed Hardware Security Module Role Assignment. Changing this forces a new Managed Hardware Security Module to be created.
   final pulumi.Input<String>? name;
+
   /// The principal ID to be assigned to this role. It can point to a user, service principal, or security group. Changing this forces a new Managed Hardware Security Module to be created.
   final pulumi.Input<String> principalId;
+
   /// The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.
   final pulumi.Input<String> roleDefinitionId;
+
   /// Specifies the scope to create the role assignment. Changing this forces a new Managed Hardware Security Module to be created.
   final pulumi.Input<String> scope;
 
@@ -42,14 +46,21 @@ class ManagedHardwareSecurityModuleRoleAssignmentArgs {
     };
   }
 
-  factory ManagedHardwareSecurityModuleRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
+  factory ManagedHardwareSecurityModuleRoleAssignmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedHardwareSecurityModuleRoleAssignmentArgs(
-      managedHsmId: (map['managedHsmId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
-      scope: (map['scope'] as String).input(),
+      managedHsmId: pulumi.Input.fromValue(map['managedHsmId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      roleDefinitionId: pulumi.Input.fromValue(
+        map['roleDefinitionId'] as String,
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

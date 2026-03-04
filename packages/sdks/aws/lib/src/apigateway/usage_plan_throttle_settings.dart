@@ -9,10 +9,7 @@ class UsagePlanThrottleSettings {
   /// Creates a new [UsagePlanThrottleSettings].
   /// [burstLimit] Optional.
   /// [rateLimit] Optional.
-  UsagePlanThrottleSettings({
-    this.burstLimit,
-    this.rateLimit,
-  });
+  UsagePlanThrottleSettings({this.burstLimit, this.rateLimit});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,16 @@ class UsagePlanThrottleSettings {
 
   factory UsagePlanThrottleSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanThrottleSettings(
-      burstLimit: map['burstLimit'] == null ? null : ((map['burstLimit'] as int).input()).input(),
-      rateLimit: map['rateLimit'] == null ? null : ((map['rateLimit'] as double).input()).input(),
+      burstLimit: (() {
+        final guardedValue = map['burstLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      rateLimit: (() {
+        final guardedValue = map['rateLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

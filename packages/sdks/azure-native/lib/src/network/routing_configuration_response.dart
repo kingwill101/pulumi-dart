@@ -9,12 +9,16 @@ import 'vnet_route_response.dart';
 class RoutingConfigurationResponse {
   /// The resource id RouteTable associated with this RoutingConfiguration.
   final pulumi.Input<SubResourceResponse>? associatedRouteTable;
+
   /// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
   final pulumi.Input<SubResourceResponse>? inboundRouteMap;
+
   /// The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
   final pulumi.Input<SubResourceResponse>? outboundRouteMap;
+
   /// The list of RouteTables to advertise the routes to.
   final pulumi.Input<PropagatedRouteTableResponse>? propagatedRouteTables;
+
   /// List of routes that control routing from VirtualHub into a virtual network connection.
   final pulumi.Input<VnetRouteResponse>? vnetRoutes;
 
@@ -34,22 +38,81 @@ class RoutingConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associatedRouteTable': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(associatedRouteTable, (value) => value.toMap()),
-      'inboundRouteMap': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(inboundRouteMap, (value) => value.toMap()),
-      'outboundRouteMap': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(outboundRouteMap, (value) => value.toMap()),
-      'propagatedRouteTables': ?pulumi.Input.mapOptionalInputValue<PropagatedRouteTableResponse, Map<String, dynamic>>(propagatedRouteTables, (value) => value.toMap()),
-      'vnetRoutes': ?pulumi.Input.mapOptionalInputValue<VnetRouteResponse, Map<String, dynamic>>(vnetRoutes, (value) => value.toMap()),
+      'associatedRouteTable':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(associatedRouteTable, (value) => value.toMap()),
+      'inboundRouteMap':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(inboundRouteMap, (value) => value.toMap()),
+      'outboundRouteMap':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(outboundRouteMap, (value) => value.toMap()),
+      'propagatedRouteTables':
+          ?pulumi.Input.mapOptionalInputValue<
+            PropagatedRouteTableResponse,
+            Map<String, dynamic>
+          >(propagatedRouteTables, (value) => value.toMap()),
+      'vnetRoutes':
+          ?pulumi.Input.mapOptionalInputValue<
+            VnetRouteResponse,
+            Map<String, dynamic>
+          >(vnetRoutes, (value) => value.toMap()),
     };
   }
 
   factory RoutingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return RoutingConfigurationResponse(
-      associatedRouteTable: map['associatedRouteTable'] == null ? null : (SubResourceResponse.fromMap((map['associatedRouteTable']! as Map).cast<String, dynamic>())).input(),
-      inboundRouteMap: map['inboundRouteMap'] == null ? null : (SubResourceResponse.fromMap((map['inboundRouteMap']! as Map).cast<String, dynamic>())).input(),
-      outboundRouteMap: map['outboundRouteMap'] == null ? null : (SubResourceResponse.fromMap((map['outboundRouteMap']! as Map).cast<String, dynamic>())).input(),
-      propagatedRouteTables: map['propagatedRouteTables'] == null ? null : (PropagatedRouteTableResponse.fromMap((map['propagatedRouteTables']! as Map).cast<String, dynamic>())).input(),
-      vnetRoutes: map['vnetRoutes'] == null ? null : (VnetRouteResponse.fromMap((map['vnetRoutes']! as Map).cast<String, dynamic>())).input(),
+      associatedRouteTable: (() {
+        final guardedValue = map['associatedRouteTable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inboundRouteMap: (() {
+        final guardedValue = map['inboundRouteMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      outboundRouteMap: (() {
+        final guardedValue = map['outboundRouteMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      propagatedRouteTables: (() {
+        final guardedValue = map['propagatedRouteTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PropagatedRouteTableResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vnetRoutes: (() {
+        final guardedValue = map['vnetRoutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VnetRouteResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

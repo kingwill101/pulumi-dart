@@ -1,5 +1,3 @@
-library module_resourcehealth;
-
 export 'resourcehealth/event_impacted_resource_response.dart';
 export 'resourcehealth/functions.dart';
 export 'resourcehealth/key_value_item_response.dart';

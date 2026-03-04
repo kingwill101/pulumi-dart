@@ -6,9 +6,11 @@ class MigrationJobError {
   /// (Output)
   /// The status code, which should be an enum value of google.rpc.Code.
   final pulumi.Input<int>? code;
+
   /// (Output)
   /// A list of messages that carry the error details.
   final pulumi.Input<List<Map<String, String>>>? details;
+
   /// (Output)
   /// Human readable message indicating details about the current status.
   final pulumi.Input<String>? message;
@@ -17,11 +19,7 @@ class MigrationJobError {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  MigrationJobError({
-    this.code,
-    this.details,
-    this.message,
-  });
+  MigrationJobError({this.code, this.details, this.message});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,23 @@ class MigrationJobError {
 
   factory MigrationJobError.fromMap(Map<String, dynamic> map) {
     return MigrationJobError(
-      code: map['code'] == null ? null : (map['code']! as int).input(),
-      details: map['details'] == null ? null : ((map['details']! as List).cast<Map<String, String>>()).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<Map<String, String>>(),
+        );
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

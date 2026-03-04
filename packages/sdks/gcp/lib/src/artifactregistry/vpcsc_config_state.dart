@@ -6,12 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcscConfigState {
   /// The name of the location this config is located in.
   final pulumi.Input<String>? location;
+
   /// The name of the project's VPC SC Config.
   /// Always of the form: projects/{project}/location/{location}/vpcscConfig
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The VPC SC policy for project and location.
   /// Possible values are: `DENY`, `ALLOW`.
   final pulumi.Input<String>? vpcscPolicy;
@@ -21,12 +24,7 @@ class VpcscConfigState {
   /// [name] The name of the project's VPC SC Config.
   /// [project] The ID of the project in which the resource belongs.
   /// [vpcscPolicy] The VPC SC policy for project and location.
-  VpcscConfigState({
-    this.location,
-    this.name,
-    this.project,
-    this.vpcscPolicy,
-  });
+  VpcscConfigState({this.location, this.name, this.project, this.vpcscPolicy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,11 +37,26 @@ class VpcscConfigState {
 
   factory VpcscConfigState.fromMap(Map<String, dynamic> map) {
     return VpcscConfigState(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      vpcscPolicy: map['vpcscPolicy'] == null ? null : (map['vpcscPolicy']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcscPolicy: (() {
+        final guardedValue = map['vpcscPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

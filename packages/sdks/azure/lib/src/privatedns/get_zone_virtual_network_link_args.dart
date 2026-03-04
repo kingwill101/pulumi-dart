@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneVirtualNetworkLinkArgs {
   /// The name of the Private DNS Zone Virtual Network Link.
   final pulumi.Input<String> name;
+
   /// The name of the Private DNS zone (without a terminating dot).
   final pulumi.Input<String> privateDnsZoneName;
+
   /// Specifies the resource group where the Private DNS Zone exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetZoneVirtualNetworkLinkArgs {
 
   factory GetZoneVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneVirtualNetworkLinkArgs(
-      name: (map['name'] as String).input(),
-      privateDnsZoneName: (map['privateDnsZoneName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateDnsZoneName: pulumi.Input.fromValue(
+        map['privateDnsZoneName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

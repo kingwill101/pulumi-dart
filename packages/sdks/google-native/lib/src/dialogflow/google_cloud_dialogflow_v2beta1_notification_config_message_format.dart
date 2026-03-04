@@ -4,16 +4,22 @@ enum GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat {
   proto("PROTO"),
   json("JSON");
 
-  const GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat value: $value',
+    );
   }
 }
-

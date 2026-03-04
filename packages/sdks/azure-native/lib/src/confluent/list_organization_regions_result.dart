@@ -10,20 +10,33 @@ class ListOrganizationRegionsResult {
 
   /// Creates a new [ListOrganizationRegionsResult].
   /// [data] List of regions supported by confluent
-  ListOrganizationRegionsResult({
-    this.data,
-  });
+  ListOrganizationRegionsResult({this.data});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'data': ?data == null ? null : pulumi.Input.encodeList<RegionRecordResponse, Map<String, dynamic>>(data!, (value) => value.toMap()),
+      'data': ?(() {
+        final guardedValue = data;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          RegionRecordResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory ListOrganizationRegionsResult.fromMap(Map<String, dynamic> map) {
     return ListOrganizationRegionsResult(
-      data: map['data'] == null ? null : pulumi.Input.decodeList<RegionRecordResponse>(map['data']!, (value) => RegionRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<RegionRecordResponse>(
+          guardedValue,
+          (value) => RegionRecordResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

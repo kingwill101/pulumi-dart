@@ -6,10 +6,13 @@ import 'domain_os_nv_ram_source_volume_sec_label.dart';
 class DomainOsNvRamSourceVolume {
   /// Sets the mode for the volume source in the backing store configuration.
   final pulumi.Input<String>? mode;
+
   /// Specifies the pool from which the volume source is derived in the backing store.
   final pulumi.Input<String>? pool;
+
   /// Configures the security label settings for the volume in the backing store.
   final pulumi.Input<List<DomainOsNvRamSourceVolumeSecLabel>>? secLabels;
+
   /// Provides the volume definition used as the backing store source.
   final pulumi.Input<String>? volume;
 
@@ -29,18 +32,51 @@ class DomainOsNvRamSourceVolume {
     return <String, dynamic>{
       'mode': ?mode,
       'pool': ?pool,
-      'secLabels': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceVolumeSecLabel>, List<Map<String, dynamic>>>(secLabels, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceVolumeSecLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'secLabels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainOsNvRamSourceVolumeSecLabel>,
+            List<Map<String, dynamic>>
+          >(
+            secLabels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainOsNvRamSourceVolumeSecLabel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'volume': ?volume,
     };
   }
 
   factory DomainOsNvRamSourceVolume.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVolume(
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVolumeSecLabel>(map['secLabels']!, (value) => DomainOsNvRamSourceVolumeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volume: map['volume'] == null ? null : (map['volume']! as String).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pool: (() {
+        final guardedValue = map['pool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secLabels: (() {
+        final guardedValue = map['secLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainOsNvRamSourceVolumeSecLabel>(
+            guardedValue,
+            (value) => DomainOsNvRamSourceVolumeSecLabel.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      volume: (() {
+        final guardedValue = map['volume'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

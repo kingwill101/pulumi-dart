@@ -6,13 +6,16 @@ import 'hl7_store_iam_member_condition.dart';
 /// Input properties used for looking up and filtering Hl7StoreIamMember resources.
 class Hl7StoreIamMemberState {
   final pulumi.Input<Hl7StoreIamMemberCondition>? condition;
+
   /// (Computed) The etag of the HL7v2 store's IAM policy.
   final pulumi.Input<String>? etag;
+
   /// The HL7v2 store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
   /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   final pulumi.Input<String>? hl7V2StoreId;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -22,6 +25,7 @@ class Hl7StoreIamMemberState {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String>? member;
+
   /// The role that should be applied. Only one
   /// `gcp.healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -43,7 +47,11 @@ class Hl7StoreIamMemberState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<Hl7StoreIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            Hl7StoreIamMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'etag': ?etag,
       'hl7V2StoreId': ?hl7V2StoreId,
       'member': ?member,
@@ -53,12 +61,35 @@ class Hl7StoreIamMemberState {
 
   factory Hl7StoreIamMemberState.fromMap(Map<String, dynamic> map) {
     return Hl7StoreIamMemberState(
-      condition: map['condition'] == null ? null : (Hl7StoreIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId']! as String).input(),
-      member: map['member'] == null ? null : (map['member']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Hl7StoreIamMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hl7V2StoreId: (() {
+        final guardedValue = map['hl7V2StoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      member: (() {
+        final guardedValue = map['member'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

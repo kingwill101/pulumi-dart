@@ -56,7 +56,8 @@ class DockerConfig {
     return (raw).toBool();
   }
 
-  bool get disableDockerDaemonCheckIsSecret => _isSecret('disableDockerDaemonCheck');
+  bool get disableDockerDaemonCheckIsSecret =>
+      _isSecret('disableDockerDaemonCheck');
 
   /// The Docker daemon address
   String? get host {
@@ -84,7 +85,14 @@ class DockerConfig {
 
   List<RegistryAuth>? get registryAuth {
     final raw = _raw('registryAuth');
-    return raw == null ? null : pulumi.Input.decodeList<RegistryAuth>(jsonDecode(raw), (value) => RegistryAuth.fromMap((value as Map).cast<String, dynamic>()));
+    return (() {
+      final guardedValue = raw;
+      if (guardedValue == null) return null;
+      return pulumi.Input.decodeList<RegistryAuth>(
+        jsonDecode(guardedValue),
+        (value) => RegistryAuth.fromMap((value as Map).cast<String, dynamic>()),
+      );
+    })();
   }
 
   bool get registryAuthIsSecret => _isSecret('registryAuth');
@@ -92,12 +100,14 @@ class DockerConfig {
   /// Additional SSH option flags to be appended when using `ssh://` protocol
   List<String>? get sshOpts {
     final raw = _raw('sshOpts');
-    return raw == null ? null : (jsonDecode(raw) as List).cast<String>();
+    return (() {
+      final guardedValue = raw;
+      if (guardedValue == null) return null;
+      return (jsonDecode(guardedValue) as List).cast<String>();
+    })();
   }
 
   bool get sshOptsIsSecret => _isSecret('sshOpts');
-
 }
 
 final config = DockerConfig();
-

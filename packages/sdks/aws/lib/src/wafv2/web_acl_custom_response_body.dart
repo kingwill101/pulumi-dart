@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAclCustomResponseBody {
   /// Payload of the custom response.
   final pulumi.Input<String> content;
+
   /// Type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
   final pulumi.Input<String> contentType;
+
   /// Unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the `custom_response` block.
   final pulumi.Input<String> key;
 
@@ -30,10 +32,9 @@ class WebAclCustomResponseBody {
 
   factory WebAclCustomResponseBody.fromMap(Map<String, dynamic> map) {
     return WebAclCustomResponseBody(
-      content: (map['content'] as String).input(),
-      contentType: (map['contentType'] as String).input(),
-      key: (map['key'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

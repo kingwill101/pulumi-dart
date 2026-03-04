@@ -5,16 +5,15 @@ enum TextStyleVerticalAlignment {
   vCenter("V_CENTER"),
   vBottom("V_BOTTOM");
 
-  const TextStyleVerticalAlignment(this.value);
-  final String value;
+  const TextStyleVerticalAlignment(this.wireValue);
+  final String wireValue;
 
   static TextStyleVerticalAlignment fromValue(String value) {
     for (final item in TextStyleVerticalAlignment.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TextStyleVerticalAlignment value: $value');
   }
 }
-

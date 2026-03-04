@@ -11,20 +11,19 @@ class Authorization {
 
   /// Creates a new [Authorization].
   /// [code] Gets or sets one-time OAuth code to exchange for refresh and access tokens.
-  Authorization({
-    this.code,
-  });
+  Authorization({this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-    };
+    return <String, dynamic>{'code': ?code};
   }
 
   factory Authorization.fromMap(Map<String, dynamic> map) {
     return Authorization(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,6 +8,7 @@ class SSH {
   ///
   /// A value of `default` is appropriate if only dealing with a single host.
   final pulumi.Input<String> id;
+
   /// SSH agent socket or private keys to expose to the build under the given
   /// identifier.
   ///
@@ -21,23 +22,20 @@ class SSH {
   /// Creates a new [SSH].
   /// [id] Useful for distinguishing different servers that are part of the same
   /// [paths] SSH agent socket or private keys to expose to the build under the given
-  SSH({
-    required this.id,
-    this.paths,
-  });
+  SSH({required this.id, this.paths});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'paths': ?paths,
-    };
+    return <String, dynamic>{'id': id, 'paths': ?paths};
   }
 
   factory SSH.fromMap(Map<String, dynamic> map) {
     return SSH(
-      id: (map['id'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      paths: (() {
+        final guardedValue = map['paths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

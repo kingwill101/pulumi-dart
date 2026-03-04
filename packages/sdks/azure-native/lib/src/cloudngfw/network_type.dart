@@ -3,16 +3,15 @@ enum NetworkType {
   valueVNET("VNET"),
   valueVWAN("VWAN");
 
-  const NetworkType(this.value);
-  final String value;
+  const NetworkType(this.wireValue);
+  final String wireValue;
 
   static NetworkType fromValue(String value) {
     for (final item in NetworkType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkType value: $value');
   }
 }
-

@@ -8,8 +8,10 @@ import 'approval_result_response.dart';
 class BuildApprovalResponse {
   /// Configuration for manual approval of this build.
   final pulumi.Input<ApprovalConfigResponse> config;
+
   /// Result of manual approval for this Build.
   final pulumi.Input<ApprovalResultResponse> result;
+
   /// The state of this build's approval.
   final pulumi.Input<String> state;
 
@@ -25,18 +27,33 @@ class BuildApprovalResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': pulumi.Input.mapInputValue<ApprovalConfigResponse, Map<String, dynamic>>(config, (value) => value.toMap()),
-      'result': pulumi.Input.mapInputValue<ApprovalResultResponse, Map<String, dynamic>>(result, (value) => value.toMap()),
+      'config':
+          pulumi.Input.mapInputValue<
+            ApprovalConfigResponse,
+            Map<String, dynamic>
+          >(config, (value) => value.toMap()),
+      'result':
+          pulumi.Input.mapInputValue<
+            ApprovalResultResponse,
+            Map<String, dynamic>
+          >(result, (value) => value.toMap()),
       'state': state,
     };
   }
 
   factory BuildApprovalResponse.fromMap(Map<String, dynamic> map) {
     return BuildApprovalResponse(
-      config: (ApprovalConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      result: (ApprovalResultResponse.fromMap((map['result'] as Map).cast<String, dynamic>())).input(),
-      state: (map['state'] as String).input(),
+      config: pulumi.Input.fromValue(
+        ApprovalConfigResponse.fromMap(
+          (map['config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      result: pulumi.Input.fromValue(
+        ApprovalResultResponse.fromMap(
+          (map['result']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

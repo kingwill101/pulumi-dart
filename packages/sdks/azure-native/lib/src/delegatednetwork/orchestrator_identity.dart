@@ -9,20 +9,26 @@ class OrchestratorIdentity {
 
   /// Creates a new [OrchestratorIdentity].
   /// [type] The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
-  OrchestratorIdentity({
-    this.type,
-  });
+  OrchestratorIdentity({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory OrchestratorIdentity.fromMap(Map<String, dynamic> map) {
     return OrchestratorIdentity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceIdentityType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

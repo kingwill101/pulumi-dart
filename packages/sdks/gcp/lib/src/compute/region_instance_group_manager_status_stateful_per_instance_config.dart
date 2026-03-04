@@ -13,15 +13,18 @@ class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allEffective': ?allEffective,
-    };
+    return <String, dynamic>{'allEffective': ?allEffective};
   }
 
-  factory RegionInstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap(Map<String, dynamic> map) {
+  factory RegionInstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionInstanceGroupManagerStatusStatefulPerInstanceConfig(
-      allEffective: map['allEffective'] == null ? null : (map['allEffective']! as bool).input(),
+      allEffective: (() {
+        final guardedValue = map['allEffective'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationRecoveryServicesProviderArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
+
   /// Recovery services provider name.
   final pulumi.Input<String> providerName;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -37,13 +40,16 @@ class GetReplicationRecoveryServicesProviderArgs {
     };
   }
 
-  factory GetReplicationRecoveryServicesProviderArgs.fromMap(Map<String, dynamic> map) {
+  factory GetReplicationRecoveryServicesProviderArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReplicationRecoveryServicesProviderArgs(
-      fabricName: (map['fabricName'] as String).input(),
-      providerName: (map['providerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      providerName: pulumi.Input.fromValue(map['providerName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum SessionAffinityEnabledState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SessionAffinityEnabledState(this.value);
-  final String value;
+  const SessionAffinityEnabledState(this.wireValue);
+  final String wireValue;
 
   static SessionAffinityEnabledState fromValue(String value) {
     for (final item in SessionAffinityEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SessionAffinityEnabledState value: $value');
   }
 }
-

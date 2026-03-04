@@ -4,16 +4,15 @@ enum CustomDomainValidationState {
   valueApproved("Approved"),
   valueErrorRetrievingDnsRecord("ErrorRetrievingDnsRecord");
 
-  const CustomDomainValidationState(this.value);
-  final String value;
+  const CustomDomainValidationState(this.wireValue);
+  final String wireValue;
 
   static CustomDomainValidationState fromValue(String value) {
     for (final item in CustomDomainValidationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CustomDomainValidationState value: $value');
   }
 }
-

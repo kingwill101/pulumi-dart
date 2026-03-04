@@ -17,8 +17,9 @@ class V2PolicyOrchestratorForFolderOrchestratedResource {
   /// PolicyOrchestrator creation.
   ///
   ///
-  /// <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
+  /// &lt;a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
   final pulumi.Input<String>? id;
+
   /// OS policy assignment is an API resource that is used to
   /// apply a set of OS policies to a dynamically targeted group of Compute Engine
   /// VM instances.
@@ -31,7 +32,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResource {
   /// [OS policy and OS policy
   /// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload>? osPolicyAssignmentV1Payload;
+  final pulumi.Input<
+    V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload
+  >?
+  osPolicyAssignmentV1Payload;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResource].
   /// [id] ID of the resource to be used while generating set of affected resources.
@@ -44,15 +48,32 @@ class V2PolicyOrchestratorForFolderOrchestratedResource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'osPolicyAssignmentV1Payload': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload, Map<String, dynamic>>(osPolicyAssignmentV1Payload, (value) => value.toMap()),
+      'osPolicyAssignmentV1Payload':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload,
+            Map<String, dynamic>
+          >(osPolicyAssignmentV1Payload, (value) => value.toMap()),
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResource.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForFolderOrchestratedResource(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      osPolicyAssignmentV1Payload: map['osPolicyAssignmentV1Payload'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap((map['osPolicyAssignmentV1Payload']! as Map).cast<String, dynamic>())).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osPolicyAssignmentV1Payload: (() {
+        final guardedValue = map['osPolicyAssignmentV1Payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

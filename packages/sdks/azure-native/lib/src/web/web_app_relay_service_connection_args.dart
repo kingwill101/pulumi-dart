@@ -11,12 +11,15 @@ class WebAppRelayServiceConnectionArgs {
   final pulumi.Input<String>? entityConnectionString;
   final pulumi.Input<String>? entityName;
   final pulumi.Input<String>? hostname;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
   final pulumi.Input<int>? port;
   final pulumi.Input<String>? resourceConnectionString;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String>? resourceType;
@@ -62,17 +65,50 @@ class WebAppRelayServiceConnectionArgs {
 
   factory WebAppRelayServiceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return WebAppRelayServiceConnectionArgs(
-      biztalkUri: map['biztalkUri'] == null ? null : (map['biztalkUri']! as String).input(),
-      entityConnectionString: map['entityConnectionString'] == null ? null : (map['entityConnectionString']! as String).input(),
-      entityName: map['entityName'] == null ? null : (map['entityName']! as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      resourceConnectionString: map['resourceConnectionString'] == null ? null : (map['resourceConnectionString']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      biztalkUri: (() {
+        final guardedValue = map['biztalkUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityConnectionString: (() {
+        final guardedValue = map['entityConnectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityName: (() {
+        final guardedValue = map['entityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceConnectionString: (() {
+        final guardedValue = map['resourceConnectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

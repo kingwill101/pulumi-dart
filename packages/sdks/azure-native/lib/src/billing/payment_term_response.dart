@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PaymentTermResponse {
   /// The date on when the defined 'Payment Term' will end and is always in UTC.
   final pulumi.Input<String>? endDate;
+
   /// Indicates payment term is the standard payment term.
   final pulumi.Input<bool> isDefault;
+
   /// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
   final pulumi.Input<String>? startDate;
+
   /// Represents duration in netXX format. Always in days.
   final pulumi.Input<String>? term;
 
@@ -36,11 +39,22 @@ class PaymentTermResponse {
 
   factory PaymentTermResponse.fromMap(Map<String, dynamic> map) {
     return PaymentTermResponse(
-      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
-      isDefault: (map['isDefault'] as bool).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
-      term: map['term'] == null ? null : (map['term']! as String).input(),
+      endDate: (() {
+        final guardedValue = map['endDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      startDate: (() {
+        final guardedValue = map['startDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      term: (() {
+        final guardedValue = map['term'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

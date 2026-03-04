@@ -55,17 +55,22 @@ class GetFloatingIpsFloatingIp {
 
   factory GetFloatingIpsFloatingIp.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpsFloatingIp(
-      deleteProtection: (map['deleteProtection'] as bool).input(),
-      description: (map['description'] as String).input(),
-      homeLocation: (map['homeLocation'] as String).input(),
-      id: (map['id'] as int).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      ipNetwork: (map['ipNetwork'] as String).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      serverId: (map['serverId'] as int).input(),
-      type: (map['type'] as String).input(),
+      deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      homeLocation: pulumi.Input.fromValue(map['homeLocation'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      ipNetwork: pulumi.Input.fromValue(map['ipNetwork'] as String),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverId: pulumi.Input.fromValue(map['serverId'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

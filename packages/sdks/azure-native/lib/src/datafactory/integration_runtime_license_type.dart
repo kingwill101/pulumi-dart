@@ -3,16 +3,15 @@ enum IntegrationRuntimeLicenseType {
   valueBasePrice("BasePrice"),
   valueLicenseIncluded("LicenseIncluded");
 
-  const IntegrationRuntimeLicenseType(this.value);
-  final String value;
+  const IntegrationRuntimeLicenseType(this.wireValue);
+  final String wireValue;
 
   static IntegrationRuntimeLicenseType fromValue(String value) {
     for (final item in IntegrationRuntimeLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IntegrationRuntimeLicenseType value: $value');
   }
 }
-

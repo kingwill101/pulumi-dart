@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyvaluestoreKeyState {
   /// Key to put.
   final pulumi.Input<String>? key;
+
   /// Amazon Resource Name (ARN) of the Key Value Store.
   final pulumi.Input<String>? keyValueStoreArn;
+
   /// Total size of the Key Value Store in bytes.
   final pulumi.Input<int>? totalSizeInBytes;
+
   /// Value to put.
   final pulumi.Input<String>? value;
 
@@ -36,11 +39,26 @@ class KeyvaluestoreKeyState {
 
   factory KeyvaluestoreKeyState.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeyState(
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      keyValueStoreArn: map['keyValueStoreArn'] == null ? null : ((map['keyValueStoreArn'] as String).input()).input(),
-      totalSizeInBytes: map['totalSizeInBytes'] == null ? null : ((map['totalSizeInBytes'] as int).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyValueStoreArn: (() {
+        final guardedValue = map['keyValueStoreArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalSizeInBytes: (() {
+        final guardedValue = map['totalSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

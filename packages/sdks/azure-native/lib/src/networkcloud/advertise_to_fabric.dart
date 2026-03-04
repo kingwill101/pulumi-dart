@@ -3,16 +3,15 @@ enum AdvertiseToFabric {
   valueTrue("True"),
   valueFalse("False");
 
-  const AdvertiseToFabric(this.value);
-  final String value;
+  const AdvertiseToFabric(this.wireValue);
+  final String wireValue;
 
   static AdvertiseToFabric fromValue(String value) {
     for (final item in AdvertiseToFabric.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdvertiseToFabric value: $value');
   }
 }
-

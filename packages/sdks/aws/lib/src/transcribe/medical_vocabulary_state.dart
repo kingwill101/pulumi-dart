@@ -6,17 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MedicalVocabularyState {
   /// ARN of the MedicalVocabulary.
   final pulumi.Input<String>? arn;
+
   /// Generated download URI.
   final pulumi.Input<String>? downloadUri;
+
   /// The language code you selected for your medical vocabulary. US English (en-US) is the only language supported with Amazon Transcribe Medical.
   final pulumi.Input<String>? languageCode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the MedicalVocabulary. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The Amazon S3 location (URI) of the text file that contains your custom medical vocabulary.
   final pulumi.Input<String>? vocabularyFileUri;
+
   /// The name of the Medical Vocabulary.
   ///
   /// The following arguments are optional:
@@ -57,15 +63,50 @@ class MedicalVocabularyState {
 
   factory MedicalVocabularyState.fromMap(Map<String, dynamic> map) {
     return MedicalVocabularyState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      downloadUri: map['downloadUri'] == null ? null : ((map['downloadUri'] as String).input()).input(),
-      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vocabularyFileUri: map['vocabularyFileUri'] == null ? null : ((map['vocabularyFileUri'] as String).input()).input(),
-      vocabularyName: map['vocabularyName'] == null ? null : ((map['vocabularyName'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      downloadUri: (() {
+        final guardedValue = map['downloadUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      languageCode: (() {
+        final guardedValue = map['languageCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vocabularyFileUri: (() {
+        final guardedValue = map['vocabularyFileUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vocabularyName: (() {
+        final guardedValue = map['vocabularyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

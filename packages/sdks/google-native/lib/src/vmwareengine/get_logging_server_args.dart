@@ -35,11 +35,14 @@ class GetLoggingServerArgs {
 
   factory GetLoggingServerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoggingServerArgs(
-      location: (map['location'] as String).input(),
-      loggingServerId: (map['loggingServerId'] as String).input(),
-      privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      loggingServerId: pulumi.Input.fromValue(map['loggingServerId'] as String),
+      privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

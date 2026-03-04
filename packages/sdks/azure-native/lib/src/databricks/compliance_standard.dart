@@ -4,16 +4,15 @@ enum ComplianceStandard {
   valueHIPAA("HIPAA"),
   valuePCIDSS("PCI_DSS");
 
-  const ComplianceStandard(this.value);
-  final String value;
+  const ComplianceStandard(this.wireValue);
+  final String wireValue;
 
   static ComplianceStandard fromValue(String value) {
     for (final item in ComplianceStandard.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComplianceStandard value: $value');
   }
 }
-

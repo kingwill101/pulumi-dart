@@ -8,20 +8,15 @@ class AppSpecWorkerLogDestinationLogtail {
 
   /// Creates a new [AppSpecWorkerLogDestinationLogtail].
   /// [token] Logtail token.
-  AppSpecWorkerLogDestinationLogtail({
-    required this.token,
-  });
+  AppSpecWorkerLogDestinationLogtail({required this.token});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'token': token,
-    };
+    return <String, dynamic>{'token': token};
   }
 
   factory AppSpecWorkerLogDestinationLogtail.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerLogDestinationLogtail(
-      token: (map['token'] as String).input(),
+      token: pulumi.Input.fromValue(map['token'] as String),
     );
   }
 }
-

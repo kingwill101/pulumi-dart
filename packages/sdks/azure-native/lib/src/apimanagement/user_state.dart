@@ -5,16 +5,15 @@ enum UserState {
   valuePending("pending"),
   valueDeleted("deleted");
 
-  const UserState(this.value);
-  final String value;
+  const UserState(this.wireValue);
+  final String wireValue;
 
   static UserState fromValue(String value) {
     for (final item in UserState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserState value: $value');
   }
 }
-

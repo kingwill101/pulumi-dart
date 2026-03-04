@@ -2,18 +2,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_interface_connection_args.dart';
 import 'router_interface_connection_state.dart';
 
-/// > **DEPRECATED:**  This resource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
+/// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
 ///
 /// Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
 /// After that, all of the two router interfaces will be active.
 ///
-/// > **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
+/// &gt; **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
 ///
-/// > **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
+/// &gt; **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
 ///
-/// > **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+/// &gt; **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
 ///
-/// > **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+/// &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
 ///
 /// ## Example Usage
 ///
@@ -403,15 +403,19 @@ import 'router_interface_connection_state.dart';
 class RouterInterfaceConnection extends pulumi.CustomResource {
   /// One side router interface ID.
   late final pulumi.Output<String> interfaceId;
+
   /// Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
   late final pulumi.Output<String> oppositeInterfaceId;
-  /// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
+
+  /// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
   late final pulumi.Output<String> oppositeInterfaceOwnerId;
+
   /// Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
   late final pulumi.Output<String> oppositeRouterId;
+
   /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
   ///
-  /// > **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
+  /// &gt; **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
   late final pulumi.Output<String?> oppositeRouterType;
 
   /// Creates a new [RouterInterfaceConnection].
@@ -423,16 +427,18 @@ class RouterInterfaceConnection extends pulumi.CustomResource {
     RouterInterfaceConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.interfaceId = registerOutput<String>('interfaceId');
-    this.oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
-    this.oppositeInterfaceOwnerId = registerOutput<String>('oppositeInterfaceOwnerId');
-    this.oppositeRouterId = registerOutput<String>('oppositeRouterId');
-    this.oppositeRouterType = registerOutput<String?>('oppositeRouterType');
+         'alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    interfaceId = registerOutput<String>('interfaceId');
+    oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
+    oppositeInterfaceOwnerId = registerOutput<String>(
+      'oppositeInterfaceOwnerId',
+    );
+    oppositeRouterId = registerOutput<String>('oppositeRouterId');
+    oppositeRouterType = registerOutput<String?>('oppositeRouterType');
   }
 
   /// Gets an existing [RouterInterfaceConnection] resource's state with the given [name] and [id].
@@ -453,15 +459,17 @@ class RouterInterfaceConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.interfaceId = registerOutput<String>('interfaceId');
-    this.oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
-    this.oppositeInterfaceOwnerId = registerOutput<String>('oppositeInterfaceOwnerId');
-    this.oppositeRouterId = registerOutput<String>('oppositeRouterId');
-    this.oppositeRouterType = registerOutput<String?>('oppositeRouterType');
+         'alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    interfaceId = registerOutput<String>('interfaceId');
+    oppositeInterfaceId = registerOutput<String>('oppositeInterfaceId');
+    oppositeInterfaceOwnerId = registerOutput<String>(
+      'oppositeInterfaceOwnerId',
+    );
+    oppositeRouterId = registerOutput<String>('oppositeRouterId');
+    oppositeRouterType = registerOutput<String?>('oppositeRouterType');
   }
 }

@@ -377,31 +377,44 @@ import 'system_data_response.dart';
 class FusionAlertRule extends pulumi.CustomResource {
   /// The Name of the alert rule template used to create this rule.
   late final pulumi.Output<String> alertRuleTemplateName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The description of the alert rule.
   late final pulumi.Output<String> description;
+
   /// The display name for alerts created by this alert rule.
   late final pulumi.Output<String> displayName;
+
   /// Determines whether this alert rule is enabled or disabled.
   late final pulumi.Output<bool> enabled;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The kind of the alert rule
   /// Expected value is 'Fusion'.
   late final pulumi.Output<String> kind;
+
   /// The last time that this alert has been modified.
   late final pulumi.Output<String> lastModifiedUtc;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The severity for alerts created by this alert rule.
   late final pulumi.Output<String> severity;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tactics of the alert rule
   late final pulumi.Output<List<String>> tactics;
+
   /// The techniques of the alert rule
   late final pulumi.Output<List<String>> techniques;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -414,24 +427,24 @@ class FusionAlertRule extends pulumi.CustomResource {
     FusionAlertRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:FusionAlertRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertRuleTemplateName = registerOutput<String>('alertRuleTemplateName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String?>('etag');
-    this.kind = registerOutput<String>('kind');
-    this.lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
+         'azure-native:securityinsights:FusionAlertRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertRuleTemplateName = registerOutput<String>('alertRuleTemplateName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
+    lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
     this.name = registerOutput<String>('name');
-    this.severity = registerOutput<String>('severity');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tactics = registerOutput<List<String>>('tactics');
-    this.techniques = registerOutput<List<String>>('techniques');
-    this.type = registerOutput<String>('type');
+    severity = registerOutput<String>('severity');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tactics = registerOutput<List<String>>('tactics');
+    techniques = registerOutput<List<String>>('techniques');
+    type = registerOutput<String>('type');
   }
 }

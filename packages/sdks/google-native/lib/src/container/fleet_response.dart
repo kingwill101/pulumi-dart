@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetResponse {
   /// [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
   final pulumi.Input<String> membership;
+
   /// [Output only] Whether the cluster has been registered through the fleet API.
   final pulumi.Input<bool> preRegistered;
+
   /// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
   final pulumi.Input<String> project;
 
@@ -31,10 +33,9 @@ class FleetResponse {
 
   factory FleetResponse.fromMap(Map<String, dynamic> map) {
     return FleetResponse(
-      membership: (map['membership'] as String).input(),
-      preRegistered: (map['preRegistered'] as bool).input(),
-      project: (map['project'] as String).input(),
+      membership: pulumi.Input.fromValue(map['membership'] as String),
+      preRegistered: pulumi.Input.fromValue(map['preRegistered'] as bool),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

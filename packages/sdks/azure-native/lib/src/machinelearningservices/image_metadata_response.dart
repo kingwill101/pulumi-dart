@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageMetadataResponse {
   /// Specifies the current operating system image version this compute instance is running on.
   final pulumi.Input<String>? currentImageVersion;
+
   /// Specifies whether this compute instance is running on the latest operating system image.
   final pulumi.Input<bool>? isLatestOsImageVersion;
+
   /// Specifies the latest available operating system image version.
   final pulumi.Input<String>? latestImageVersion;
 
@@ -31,10 +33,21 @@ class ImageMetadataResponse {
 
   factory ImageMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ImageMetadataResponse(
-      currentImageVersion: map['currentImageVersion'] == null ? null : (map['currentImageVersion']! as String).input(),
-      isLatestOsImageVersion: map['isLatestOsImageVersion'] == null ? null : (map['isLatestOsImageVersion']! as bool).input(),
-      latestImageVersion: map['latestImageVersion'] == null ? null : (map['latestImageVersion']! as String).input(),
+      currentImageVersion: (() {
+        final guardedValue = map['currentImageVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isLatestOsImageVersion: (() {
+        final guardedValue = map['isLatestOsImageVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      latestImageVersion: (() {
+        final guardedValue = map['latestImageVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

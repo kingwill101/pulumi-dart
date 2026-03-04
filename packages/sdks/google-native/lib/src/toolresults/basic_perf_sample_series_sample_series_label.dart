@@ -13,16 +13,17 @@ enum BasicPerfSampleSeriesSampleSeriesLabel {
   networkReceived("networkReceived"),
   graphicsFrameRate("graphicsFrameRate");
 
-  const BasicPerfSampleSeriesSampleSeriesLabel(this.value);
-  final String value;
+  const BasicPerfSampleSeriesSampleSeriesLabel(this.wireValue);
+  final String wireValue;
 
   static BasicPerfSampleSeriesSampleSeriesLabel fromValue(String value) {
     for (final item in BasicPerfSampleSeriesSampleSeriesLabel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BasicPerfSampleSeriesSampleSeriesLabel value: $value');
+    throw ArgumentError(
+      'Unknown BasicPerfSampleSeriesSampleSeriesLabel value: $value',
+    );
   }
 }
-

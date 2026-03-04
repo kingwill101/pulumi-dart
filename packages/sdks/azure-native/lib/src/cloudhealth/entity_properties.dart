@@ -10,20 +10,28 @@ import 'signal_group.dart';
 class EntityProperties {
   /// Alert configuration for this entity
   final pulumi.Input<EntityAlerts>? alerts;
+
   /// Positioning of the entity on the model canvas
   final pulumi.Input<EntityCoordinates>? canvasPosition;
+
   /// Display name
   final pulumi.Input<String>? displayName;
+
   /// Health objective as a percentage of time the entity should be healthy.
   final pulumi.Input<double>? healthObjective;
+
   /// Visual icon definition. If not set, a default icon is used.
   final pulumi.Input<IconDefinition>? icon;
+
   /// Impact of the entity in health state propagation
   final pulumi.Input<String>? impact;
+
   /// Entity kind
   final pulumi.Input<String>? kind;
+
   /// Optional set of labels (key-value pairs)
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Signal groups which are assigned to this entity
   final pulumi.Input<SignalGroup>? signals;
 
@@ -51,30 +59,93 @@ class EntityProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': ?pulumi.Input.mapOptionalInputValue<EntityAlerts, Map<String, dynamic>>(alerts, (value) => value.toMap()),
-      'canvasPosition': ?pulumi.Input.mapOptionalInputValue<EntityCoordinates, Map<String, dynamic>>(canvasPosition, (value) => value.toMap()),
+      'alerts':
+          ?pulumi.Input.mapOptionalInputValue<
+            EntityAlerts,
+            Map<String, dynamic>
+          >(alerts, (value) => value.toMap()),
+      'canvasPosition':
+          ?pulumi.Input.mapOptionalInputValue<
+            EntityCoordinates,
+            Map<String, dynamic>
+          >(canvasPosition, (value) => value.toMap()),
       'displayName': ?displayName,
       'healthObjective': ?healthObjective,
-      'icon': ?pulumi.Input.mapOptionalInputValue<IconDefinition, Map<String, dynamic>>(icon, (value) => value.toMap()),
+      'icon':
+          ?pulumi.Input.mapOptionalInputValue<
+            IconDefinition,
+            Map<String, dynamic>
+          >(icon, (value) => value.toMap()),
       'impact': ?impact,
       'kind': ?kind,
       'labels': ?labels,
-      'signals': ?pulumi.Input.mapOptionalInputValue<SignalGroup, Map<String, dynamic>>(signals, (value) => value.toMap()),
+      'signals':
+          ?pulumi.Input.mapOptionalInputValue<
+            SignalGroup,
+            Map<String, dynamic>
+          >(signals, (value) => value.toMap()),
     };
   }
 
   factory EntityProperties.fromMap(Map<String, dynamic> map) {
     return EntityProperties(
-      alerts: map['alerts'] == null ? null : (EntityAlerts.fromMap((map['alerts']! as Map).cast<String, dynamic>())).input(),
-      canvasPosition: map['canvasPosition'] == null ? null : (EntityCoordinates.fromMap((map['canvasPosition']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      healthObjective: map['healthObjective'] == null ? null : (map['healthObjective']! as double).input(),
-      icon: map['icon'] == null ? null : (IconDefinition.fromMap((map['icon']! as Map).cast<String, dynamic>())).input(),
-      impact: map['impact'] == null ? null : (map['impact']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      signals: map['signals'] == null ? null : (SignalGroup.fromMap((map['signals']! as Map).cast<String, dynamic>())).input(),
+      alerts: (() {
+        final guardedValue = map['alerts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EntityAlerts.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      canvasPosition: (() {
+        final guardedValue = map['canvasPosition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EntityCoordinates.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthObjective: (() {
+        final guardedValue = map['healthObjective'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      icon: (() {
+        final guardedValue = map['icon'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IconDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      impact: (() {
+        final guardedValue = map['impact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      signals: (() {
+        final guardedValue = map['signals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SignalGroup.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

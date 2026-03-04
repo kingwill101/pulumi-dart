@@ -1,5 +1,3 @@
-library module_databasefilesystem;
-
 export 'databasefilesystem/auto_snap_shot_policy.dart';
 export 'databasefilesystem/auto_snap_shot_policy_args.dart';
 export 'databasefilesystem/auto_snap_shot_policy_state.dart';

@@ -5,16 +5,17 @@ enum DistributionPolicyTargetShapeComputeBeta {
   balanced("BALANCED"),
   even("EVEN");
 
-  const DistributionPolicyTargetShapeComputeBeta(this.value);
-  final String value;
+  const DistributionPolicyTargetShapeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static DistributionPolicyTargetShapeComputeBeta fromValue(String value) {
     for (final item in DistributionPolicyTargetShapeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DistributionPolicyTargetShapeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown DistributionPolicyTargetShapeComputeBeta value: $value',
+    );
   }
 }
-

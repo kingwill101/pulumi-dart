@@ -13,20 +13,19 @@ class ProjectArgs {
 
   /// Creates a new [ProjectArgs].
   /// [project] The ID of the project in which the resource belongs.
-  ProjectArgs({
-    this.project,
-  });
+  ProjectArgs({this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,29 +9,27 @@ class ContainerRestartRuleOnExitCodes {
   /// - NotIn: the requirement is satisfied if the container exit code is
   /// not in the set of specified values.
   final pulumi.Input<String> operator;
+
   /// Specifies the set of values to check for container exit codes. At most 255 elements are allowed.
   final pulumi.Input<List<int>>? values;
 
   /// Creates a new [ContainerRestartRuleOnExitCodes].
   /// [operator] Represents the relationship between the container exit code(s) and the specified values. Possible values are: - In: the requirement is satisfied if the container exit code is in the
   /// [values] Specifies the set of values to check for container exit codes. At most 255 elements are allowed.
-  ContainerRestartRuleOnExitCodes({
-    required this.operator,
-    this.values,
-  });
+  ContainerRestartRuleOnExitCodes({required this.operator, this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operator': operator,
-      'values': ?values,
-    };
+    return <String, dynamic>{'operator': operator, 'values': ?values};
   }
 
   factory ContainerRestartRuleOnExitCodes.fromMap(Map<String, dynamic> map) {
     return ContainerRestartRuleOnExitCodes(
-      operator: (map['operator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<int>()).input(),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
     );
   }
 }
-

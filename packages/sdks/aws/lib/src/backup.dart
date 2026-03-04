@@ -1,5 +1,3 @@
-library module_backup;
-
 export 'backup/framework.dart';
 export 'backup/framework_args.dart';
 export 'backup/framework_control.dart';

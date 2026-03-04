@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkConnectionArgs {
   /// Name of the Network Connection that can be applied to a Pool.
   final pulumi.Input<String> networkConnectionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetNetworkConnectionArgs {
 
   factory GetNetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkConnectionArgs(
-      networkConnectionName: (map['networkConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkConnectionName: pulumi.Input.fromValue(
+        map['networkConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

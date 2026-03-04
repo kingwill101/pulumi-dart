@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_profile_args.dart';
-import 'certificate_response.dart';
 import 'system_data_response.dart';
 
 /// Certificate profile resource.
@@ -160,30 +159,43 @@ import 'system_data_response.dart';
 class CertificateProfile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of renewed certificates.
-  late final pulumi.Output<List<CertificateResponse>> certificates;
+  late final pulumi.Output<List<Map<String, dynamic>>> certificates;
+
   /// Identity validation id used for the certificate subject name.
   late final pulumi.Output<String> identityValidationId;
+
   /// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
   late final pulumi.Output<bool?> includeCity;
+
   /// Whether to include C in the certificate subject name. Applicable only for private trust, private trust ci profile types
   late final pulumi.Output<bool?> includeCountry;
+
   /// Whether to include PC in the certificate subject name.
   late final pulumi.Output<bool?> includePostalCode;
+
   /// Whether to include S in the certificate subject name. Applicable only for private trust, private trust ci profile types
   late final pulumi.Output<bool?> includeState;
+
   /// Whether to include STREET in the certificate subject name.
   late final pulumi.Output<bool?> includeStreetAddress;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Profile type of the certificate.
   late final pulumi.Output<String> profileType;
+
   /// Status of the current operation on certificate profile.
   late final pulumi.Output<String> provisioningState;
+
   /// Status of the certificate profile.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -196,24 +208,24 @@ class CertificateProfile extends pulumi.CustomResource {
     CertificateProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:codesigning:CertificateProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.certificates = registerOutput<List<CertificateResponse>>('certificates');
-    this.identityValidationId = registerOutput<String>('identityValidationId');
-    this.includeCity = registerOutput<bool?>('includeCity');
-    this.includeCountry = registerOutput<bool?>('includeCountry');
-    this.includePostalCode = registerOutput<bool?>('includePostalCode');
-    this.includeState = registerOutput<bool?>('includeState');
-    this.includeStreetAddress = registerOutput<bool?>('includeStreetAddress');
+         'azure-native:codesigning:CertificateProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
+    identityValidationId = registerOutput<String>('identityValidationId');
+    includeCity = registerOutput<bool?>('includeCity');
+    includeCountry = registerOutput<bool?>('includeCountry');
+    includePostalCode = registerOutput<bool?>('includePostalCode');
+    includeState = registerOutput<bool?>('includeState');
+    includeStreetAddress = registerOutput<bool?>('includeStreetAddress');
     this.name = registerOutput<String>('name');
-    this.profileType = registerOutput<String>('profileType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    profileType = registerOutput<String>('profileType');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

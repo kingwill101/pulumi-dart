@@ -6,60 +6,81 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticityAssuranceState {
   /// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
   final pulumi.Input<String>? assuranceTimes;
+
   /// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
   /// - true
   /// - false
   ///
   /// Default value: `false`.
   final pulumi.Input<bool>? autoRenew;
+
   /// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
   /// - Default value when `PeriodUnit` is set to Month: 1.
   /// - Default value when `PeriodUnit` is set to Year: 12.
   ///
-  /// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+  /// &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
   final pulumi.Input<int>? autoRenewPeriod;
+
   /// Unit of duration. Value range:
   /// - Month: Month
   /// - Year: Year
   ///
   /// Default value: Year
   final pulumi.Input<String>? autoRenewPeriodUnit;
+
   /// Description of flexible guarantee service.
   final pulumi.Input<String>? description;
+
   /// The first ID of the resource
   final pulumi.Input<String>? elasticityAssuranceId;
+
   /// Flexible guarantee service failure time.
   final pulumi.Input<String>? endTime;
+
   /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
   final pulumi.Input<int>? instanceAmount;
+
   /// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
   final pulumi.Input<String>? instanceChargeType;
+
   /// Instance type. Currently, only one instance type is supported.
   final pulumi.Input<String>? instanceType;
+
   /// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
   /// - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
   /// - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
   final pulumi.Input<int>? period;
+
   /// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
   final pulumi.Input<String>? periodUnit;
+
   /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
   final pulumi.Input<String>? privatePoolOptionsMatchCriteria;
+
   /// The name of the flexible protection service.
   final pulumi.Input<String>? privatePoolOptionsName;
+
   /// (Available since v1.261.0) The region ID of the elasticity assurance.
   final pulumi.Input<String>? regionId;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// Flexible guarantee service effective time.
   final pulumi.Input<String>? startTime;
+
   /// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
   final pulumi.Input<String>? startTimeType;
+
   /// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
   final pulumi.Input<String>? status;
+
   /// The tag key-value pair information bound by the elastic guarantee service.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// This parameter is not yet available.
   final pulumi.Input<int>? usedAssuranceTimes;
+
   /// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
   final pulumi.Input<List<String>>? zoneIds;
 
@@ -140,29 +161,118 @@ class ElasticityAssuranceState {
 
   factory ElasticityAssuranceState.fromMap(Map<String, dynamic> map) {
     return ElasticityAssuranceState(
-      assuranceTimes: map['assuranceTimes'] == null ? null : (map['assuranceTimes']! as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
-      autoRenewPeriodUnit: map['autoRenewPeriodUnit'] == null ? null : (map['autoRenewPeriodUnit']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      elasticityAssuranceId: map['elasticityAssuranceId'] == null ? null : (map['elasticityAssuranceId']! as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      instanceAmount: map['instanceAmount'] == null ? null : (map['instanceAmount']! as int).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
-      privatePoolOptionsMatchCriteria: map['privatePoolOptionsMatchCriteria'] == null ? null : (map['privatePoolOptionsMatchCriteria']! as String).input(),
-      privatePoolOptionsName: map['privatePoolOptionsName'] == null ? null : (map['privatePoolOptionsName']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      startTimeType: map['startTimeType'] == null ? null : (map['startTimeType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      usedAssuranceTimes: map['usedAssuranceTimes'] == null ? null : (map['usedAssuranceTimes']! as int).input(),
-      zoneIds: map['zoneIds'] == null ? null : ((map['zoneIds']! as List).cast<String>()).input(),
+      assuranceTimes: (() {
+        final guardedValue = map['assuranceTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenewPeriod: (() {
+        final guardedValue = map['autoRenewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      autoRenewPeriodUnit: (() {
+        final guardedValue = map['autoRenewPeriodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticityAssuranceId: (() {
+        final guardedValue = map['elasticityAssuranceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceAmount: (() {
+        final guardedValue = map['instanceAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceChargeType: (() {
+        final guardedValue = map['instanceChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      periodUnit: (() {
+        final guardedValue = map['periodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privatePoolOptionsMatchCriteria: (() {
+        final guardedValue = map['privatePoolOptionsMatchCriteria'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privatePoolOptionsName: (() {
+        final guardedValue = map['privatePoolOptionsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTimeType: (() {
+        final guardedValue = map['startTimeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      usedAssuranceTimes: (() {
+        final guardedValue = map['usedAssuranceTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      zoneIds: (() {
+        final guardedValue = map['zoneIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

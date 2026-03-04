@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceMetadataResponse {
   /// Account Id. For example - the AWS account id.
   final pulumi.Input<String>? accountId;
+
   /// Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
   final pulumi.Input<String> resourceId;
+
   /// Resource kind.
   final pulumi.Input<String>? resourceKind;
+
   /// Resource Origin.
   final pulumi.Input<String>? resourceOrigin;
+
   /// Resource type. e.g. "Microsoft.Compute/virtualMachines"
   final pulumi.Input<String>? resourceType;
 
@@ -41,12 +45,27 @@ class ResourceMetadataResponse {
 
   factory ResourceMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMetadataResponse(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind']! as String).input(),
-      resourceOrigin: map['resourceOrigin'] == null ? null : (map['resourceOrigin']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceKind: (() {
+        final guardedValue = map['resourceKind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceOrigin: (() {
+        final guardedValue = map['resourceOrigin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

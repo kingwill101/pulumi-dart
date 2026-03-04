@@ -6,20 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterVpcAssociationState {
   /// The list of allowed route prefixes.
   final pulumi.Input<List<String>>? allowedPrefixes;
+
   /// The ID of the association between the ECR and the VPC.
   final pulumi.Input<String>? associationId;
+
   /// The region ID of the resource to be associated.
   final pulumi.Input<String>? associationRegionId;
+
   /// The time when the association was created.
   final pulumi.Input<String>? createTime;
+
   /// The ECR ID.
   final pulumi.Input<String>? ecrId;
+
   /// The deployment state of the associated resource.
   final pulumi.Input<String>? status;
+
   /// The VPC ID.
   final pulumi.Input<String>? vpcId;
+
   /// The ID of the Alibaba Cloud account that owns the VPC.
-  /// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+  /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
   final pulumi.Input<int>? vpcOwnerId;
 
   /// Creates a new [RouterVpcAssociationState].
@@ -57,15 +64,46 @@ class RouterVpcAssociationState {
 
   factory RouterVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterVpcAssociationState(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes']! as List).cast<String>()).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId']! as String).input(),
-      associationRegionId: map['associationRegionId'] == null ? null : (map['associationRegionId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      ecrId: map['ecrId'] == null ? null : (map['ecrId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId']! as int).input(),
+      allowedPrefixes: (() {
+        final guardedValue = map['allowedPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      associationId: (() {
+        final guardedValue = map['associationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associationRegionId: (() {
+        final guardedValue = map['associationRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecrId: (() {
+        final guardedValue = map['ecrId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcOwnerId: (() {
+        final guardedValue = map['vpcOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

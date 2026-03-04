@@ -7,8 +7,10 @@ import 'virtual_appliance_network_interface_configuration_properties.dart';
 class VirtualApplianceNetworkInterfaceConfiguration {
   /// NIC type. This should be either PublicNic or PrivateNic.
   final pulumi.Input<String>? nicType;
+
   /// Represents a single NIC configuration properties.
-  final pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationProperties>? properties;
+  final pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationProperties>?
+  properties;
 
   /// Creates a new [VirtualApplianceNetworkInterfaceConfiguration].
   /// [nicType] NIC type. This should be either PublicNic or PrivateNic.
@@ -21,15 +23,32 @@ class VirtualApplianceNetworkInterfaceConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nicType': ?nicType,
-      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualApplianceNetworkInterfaceConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualApplianceNetworkInterfaceConfigurationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
-  factory VirtualApplianceNetworkInterfaceConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VirtualApplianceNetworkInterfaceConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualApplianceNetworkInterfaceConfiguration(
-      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
-      properties: map['properties'] == null ? null : (VirtualApplianceNetworkInterfaceConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      nicType: (() {
+        final guardedValue = map['nicType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualApplianceNetworkInterfaceConfigurationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

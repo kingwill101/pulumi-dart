@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppPublicCertificateArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Public certificate name.
   final pulumi.Input<String> publicCertificateName;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetWebAppPublicCertificateArgs {
 
   factory GetWebAppPublicCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppPublicCertificateArgs(
-      name: (map['name'] as String).input(),
-      publicCertificateName: (map['publicCertificateName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicCertificateName: pulumi.Input.fromValue(
+        map['publicCertificateName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

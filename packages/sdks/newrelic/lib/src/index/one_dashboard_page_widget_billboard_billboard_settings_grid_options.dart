@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardPageWidgetBillboardBillboardSettingsGridOptions {
   /// (Optional) Number of columns to use for the grid layout.
   final pulumi.Input<int>? columns;
+
   /// (Optional) Grid configuration for label.
   final pulumi.Input<int>? label;
+
   /// (Required) A possible variable value
   final pulumi.Input<int>? value;
 
@@ -28,12 +30,25 @@ class OneDashboardPageWidgetBillboardBillboardSettingsGridOptions {
     };
   }
 
-  factory OneDashboardPageWidgetBillboardBillboardSettingsGridOptions.fromMap(Map<String, dynamic> map) {
+  factory OneDashboardPageWidgetBillboardBillboardSettingsGridOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OneDashboardPageWidgetBillboardBillboardSettingsGridOptions(
-      columns: map['columns'] == null ? null : (map['columns']! as int).input(),
-      label: map['label'] == null ? null : (map['label']! as int).input(),
-      value: map['value'] == null ? null : (map['value']! as int).input(),
+      columns: (() {
+        final guardedValue = map['columns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

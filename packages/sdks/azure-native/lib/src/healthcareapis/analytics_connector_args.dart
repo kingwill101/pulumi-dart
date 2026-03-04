@@ -13,20 +13,31 @@ import 'service_managed_identity_identity.dart';
 class AnalyticsConnectorArgs {
   /// The name of Analytics Connector resource.
   final pulumi.Input<String>? analyticsConnectorName;
+
   /// Data destination configuration for Analytics Connector.
-  final pulumi.Input<AnalyticsConnectorDataLakeDataDestination> dataDestinationConfiguration;
+  final pulumi.Input<AnalyticsConnectorDataLakeDataDestination>
+  dataDestinationConfiguration;
+
   /// Data mapping configuration for Analytics Connector.
-  final pulumi.Input<AnalyticsConnectorFhirToParquetMapping> dataMappingConfiguration;
+  final pulumi.Input<AnalyticsConnectorFhirToParquetMapping>
+  dataMappingConfiguration;
+
   /// Data source for Analytics Connector.
-  final pulumi.Input<AnalyticsConnectorFhirServiceDataSource> dataSourceConfiguration;
+  final pulumi.Input<AnalyticsConnectorFhirServiceDataSource>
+  dataSourceConfiguration;
+
   /// Setting indicating whether the service has a managed identity associated with it.
   final pulumi.Input<ServiceManagedIdentityIdentity>? identity;
+
   /// The resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -55,10 +66,26 @@ class AnalyticsConnectorArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'analyticsConnectorName': ?analyticsConnectorName,
-      'dataDestinationConfiguration': pulumi.Input.mapInputValue<AnalyticsConnectorDataLakeDataDestination, Map<String, dynamic>>(dataDestinationConfiguration, (value) => value.toMap()),
-      'dataMappingConfiguration': pulumi.Input.mapInputValue<AnalyticsConnectorFhirToParquetMapping, Map<String, dynamic>>(dataMappingConfiguration, (value) => value.toMap()),
-      'dataSourceConfiguration': pulumi.Input.mapInputValue<AnalyticsConnectorFhirServiceDataSource, Map<String, dynamic>>(dataSourceConfiguration, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<ServiceManagedIdentityIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'dataDestinationConfiguration':
+          pulumi.Input.mapInputValue<
+            AnalyticsConnectorDataLakeDataDestination,
+            Map<String, dynamic>
+          >(dataDestinationConfiguration, (value) => value.toMap()),
+      'dataMappingConfiguration':
+          pulumi.Input.mapInputValue<
+            AnalyticsConnectorFhirToParquetMapping,
+            Map<String, dynamic>
+          >(dataMappingConfiguration, (value) => value.toMap()),
+      'dataSourceConfiguration':
+          pulumi.Input.mapInputValue<
+            AnalyticsConnectorFhirServiceDataSource,
+            Map<String, dynamic>
+          >(dataSourceConfiguration, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceManagedIdentityIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -68,16 +95,51 @@ class AnalyticsConnectorArgs {
 
   factory AnalyticsConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsConnectorArgs(
-      analyticsConnectorName: map['analyticsConnectorName'] == null ? null : (map['analyticsConnectorName']! as String).input(),
-      dataDestinationConfiguration: (AnalyticsConnectorDataLakeDataDestination.fromMap((map['dataDestinationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      dataMappingConfiguration: (AnalyticsConnectorFhirToParquetMapping.fromMap((map['dataMappingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      dataSourceConfiguration: (AnalyticsConnectorFhirServiceDataSource.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      analyticsConnectorName: (() {
+        final guardedValue = map['analyticsConnectorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataDestinationConfiguration: pulumi.Input.fromValue(
+        AnalyticsConnectorDataLakeDataDestination.fromMap(
+          (map['dataDestinationConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dataMappingConfiguration: pulumi.Input.fromValue(
+        AnalyticsConnectorFhirToParquetMapping.fromMap(
+          (map['dataMappingConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dataSourceConfiguration: pulumi.Input.fromValue(
+        AnalyticsConnectorFhirServiceDataSource.fromMap(
+          (map['dataSourceConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceManagedIdentityIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

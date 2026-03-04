@@ -9,12 +9,16 @@ import 'identity_service_oidc_config.dart';
 class IdentityServiceAuthMethod {
   /// AzureAD specific Configuration.
   final pulumi.Input<IdentityServiceAzureADConfig>? azureadConfig;
+
   /// GoogleConfig specific configuration.
   final pulumi.Input<IdentityServiceGoogleConfig>? googleConfig;
+
   /// Identifier for auth config.
   final pulumi.Input<String>? name;
+
   /// OIDC specific configuration.
   final pulumi.Input<IdentityServiceOidcConfig>? oidcConfig;
+
   /// Proxy server address to use for auth method.
   final pulumi.Input<String>? proxy;
 
@@ -34,22 +38,65 @@ class IdentityServiceAuthMethod {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureadConfig': ?pulumi.Input.mapOptionalInputValue<IdentityServiceAzureADConfig, Map<String, dynamic>>(azureadConfig, (value) => value.toMap()),
-      'googleConfig': ?pulumi.Input.mapOptionalInputValue<IdentityServiceGoogleConfig, Map<String, dynamic>>(googleConfig, (value) => value.toMap()),
+      'azureadConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityServiceAzureADConfig,
+            Map<String, dynamic>
+          >(azureadConfig, (value) => value.toMap()),
+      'googleConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityServiceGoogleConfig,
+            Map<String, dynamic>
+          >(googleConfig, (value) => value.toMap()),
       'name': ?name,
-      'oidcConfig': ?pulumi.Input.mapOptionalInputValue<IdentityServiceOidcConfig, Map<String, dynamic>>(oidcConfig, (value) => value.toMap()),
+      'oidcConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityServiceOidcConfig,
+            Map<String, dynamic>
+          >(oidcConfig, (value) => value.toMap()),
       'proxy': ?proxy,
     };
   }
 
   factory IdentityServiceAuthMethod.fromMap(Map<String, dynamic> map) {
     return IdentityServiceAuthMethod(
-      azureadConfig: map['azureadConfig'] == null ? null : (IdentityServiceAzureADConfig.fromMap((map['azureadConfig']! as Map).cast<String, dynamic>())).input(),
-      googleConfig: map['googleConfig'] == null ? null : (IdentityServiceGoogleConfig.fromMap((map['googleConfig']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      oidcConfig: map['oidcConfig'] == null ? null : (IdentityServiceOidcConfig.fromMap((map['oidcConfig']! as Map).cast<String, dynamic>())).input(),
-      proxy: map['proxy'] == null ? null : (map['proxy']! as String).input(),
+      azureadConfig: (() {
+        final guardedValue = map['azureadConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityServiceAzureADConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      googleConfig: (() {
+        final guardedValue = map['googleConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityServiceGoogleConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oidcConfig: (() {
+        final guardedValue = map['oidcConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityServiceOidcConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      proxy: (() {
+        final guardedValue = map['proxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

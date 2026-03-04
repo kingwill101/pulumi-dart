@@ -11,7 +11,7 @@ import 'bucket_website_state.dart';
 ///
 /// For information about OSS Bucket Website and how to use it, see [What is Bucket Website](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketwebsite).
 ///
-/// > **NOTE:** Available since v1.237.0.
+/// &gt; **NOTE:** Available since v1.237.0.
 ///
 /// ## Example Usage
 ///
@@ -354,10 +354,13 @@ import 'bucket_website_state.dart';
 class BucketWebsiteOss extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
+
   /// The container that holds the error page configuration information. See `error_document` below.
   late final pulumi.Output<BucketWebsiteErrorDocument?> errorDocument;
+
   /// Static Website Default Home Page Configuration See `index_document` below.
   late final pulumi.Output<BucketWebsiteIndexDocument?> indexDocument;
+
   /// The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
   late final pulumi.Output<BucketWebsiteRoutingRules?> routingRules;
 
@@ -370,15 +373,19 @@ class BucketWebsiteOss extends pulumi.CustomResource {
     BucketWebsiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketWebsite:BucketWebsite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.errorDocument = registerOutput<BucketWebsiteErrorDocument?>('errorDocument');
-    this.indexDocument = registerOutput<BucketWebsiteIndexDocument?>('indexDocument');
-    this.routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules');
+         'alicloud:oss/bucketWebsite:BucketWebsite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    errorDocument = registerOutput<BucketWebsiteErrorDocument?>(
+      'errorDocument',
+    );
+    indexDocument = registerOutput<BucketWebsiteIndexDocument?>(
+      'indexDocument',
+    );
+    routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules');
   }
 
   /// Gets an existing [BucketWebsiteOss] resource's state with the given [name] and [id].
@@ -399,14 +406,18 @@ class BucketWebsiteOss extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketWebsite:BucketWebsite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.errorDocument = registerOutput<BucketWebsiteErrorDocument?>('errorDocument');
-    this.indexDocument = registerOutput<BucketWebsiteIndexDocument?>('indexDocument');
-    this.routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules');
+         'alicloud:oss/bucketWebsite:BucketWebsite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    errorDocument = registerOutput<BucketWebsiteErrorDocument?>(
+      'errorDocument',
+    );
+    indexDocument = registerOutput<BucketWebsiteIndexDocument?>(
+      'indexDocument',
+    );
+    routingRules = registerOutput<BucketWebsiteRoutingRules?>('routingRules');
   }
 }

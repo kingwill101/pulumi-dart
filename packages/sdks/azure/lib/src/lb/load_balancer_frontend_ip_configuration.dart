@@ -5,31 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerFrontendIpConfiguration {
   /// The Frontend IP Configuration ID of a Gateway SKU Load Balancer.
   final pulumi.Input<String>? gatewayLoadBalancerFrontendIpConfigurationId;
+
   /// The id of the Frontend IP Configuration.
   final pulumi.Input<String>? id;
+
   /// The list of IDs of inbound rules that use this frontend IP.
   final pulumi.Input<List<String>>? inboundNatRules;
+
   /// The list of IDs of load balancing rules that use this frontend IP.
   final pulumi.Input<List<String>>? loadBalancerRules;
+
   /// Specifies the name of the frontend IP configuration.
   final pulumi.Input<String> name;
+
   /// The list of IDs outbound rules that use this frontend IP.
   final pulumi.Input<List<String>>? outboundRules;
+
   /// Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
   final pulumi.Input<String>? privateIpAddress;
+
   /// The allocation method for the Private IP Address used by this Load Balancer. Possible values as `Dynamic` and `Static`.
   final pulumi.Input<String>? privateIpAddressAllocation;
+
   /// The version of IP that the Private IP Address is. Possible values are `IPv4` or `IPv6`.
   final pulumi.Input<String>? privateIpAddressVersion;
+
   /// The ID of a Public IP Address which should be associated with the Load Balancer.
   final pulumi.Input<String>? publicIpAddressId;
+
   /// The ID of a Public IP Prefix which should be associated with the Load Balancer. Public IP Prefix can only be used with outbound rules.
   final pulumi.Input<String>? publicIpPrefixId;
+
   /// The ID of the Subnet which should be associated with the IP Configuration.
   final pulumi.Input<String>? subnetId;
+
   /// Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located.
   ///
-  /// > **Note:** Availability Zones are only supported with a [Standard SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) and [in select regions](https://docs.microsoft.com/azure/availability-zones/az-overview) at this time.
+  /// &gt; **Note:** Availability Zones are only supported with a [Standard SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) and [in select regions](https://docs.microsoft.com/azure/availability-zones/az-overview) at this time.
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [LoadBalancerFrontendIpConfiguration].
@@ -64,7 +76,8 @@ class LoadBalancerFrontendIpConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gatewayLoadBalancerFrontendIpConfigurationId': ?gatewayLoadBalancerFrontendIpConfigurationId,
+      'gatewayLoadBalancerFrontendIpConfigurationId':
+          ?gatewayLoadBalancerFrontendIpConfigurationId,
       'id': ?id,
       'inboundNatRules': ?inboundNatRules,
       'loadBalancerRules': ?loadBalancerRules,
@@ -80,22 +93,72 @@ class LoadBalancerFrontendIpConfiguration {
     };
   }
 
-  factory LoadBalancerFrontendIpConfiguration.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerFrontendIpConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerFrontendIpConfiguration(
-      gatewayLoadBalancerFrontendIpConfigurationId: map['gatewayLoadBalancerFrontendIpConfigurationId'] == null ? null : (map['gatewayLoadBalancerFrontendIpConfigurationId']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules']! as List).cast<String>()).input(),
-      loadBalancerRules: map['loadBalancerRules'] == null ? null : ((map['loadBalancerRules']! as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      outboundRules: map['outboundRules'] == null ? null : ((map['outboundRules']! as List).cast<String>()).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation']! as String).input(),
-      privateIpAddressVersion: map['privateIpAddressVersion'] == null ? null : (map['privateIpAddressVersion']! as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
-      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      gatewayLoadBalancerFrontendIpConfigurationId: (() {
+        final guardedValue =
+            map['gatewayLoadBalancerFrontendIpConfigurationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inboundNatRules: (() {
+        final guardedValue = map['inboundNatRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      loadBalancerRules: (() {
+        final guardedValue = map['loadBalancerRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      outboundRules: (() {
+        final guardedValue = map['outboundRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpAddressAllocation: (() {
+        final guardedValue = map['privateIpAddressAllocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpAddressVersion: (() {
+        final guardedValue = map['privateIpAddressVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpAddressId: (() {
+        final guardedValue = map['publicIpAddressId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpPrefixId: (() {
+        final guardedValue = map['publicIpPrefixId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

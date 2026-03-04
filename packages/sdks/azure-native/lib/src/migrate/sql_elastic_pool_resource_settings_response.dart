@@ -7,12 +7,16 @@ class SqlElasticPoolResourceSettingsResponse {
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Sql/servers/elasticPools'.
   final pulumi.Input<String> resourceType;
+
   /// Gets or sets the Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Gets or sets the target resource group name.
   final pulumi.Input<String>? targetResourceGroupName;
+
   /// Gets or sets the target Resource name.
   final pulumi.Input<String>? targetResourceName;
+
   /// Defines the zone redundant resource setting.
   final pulumi.Input<String>? zoneRedundant;
 
@@ -40,14 +44,33 @@ class SqlElasticPoolResourceSettingsResponse {
     };
   }
 
-  factory SqlElasticPoolResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory SqlElasticPoolResourceSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlElasticPoolResourceSettingsResponse(
-      resourceType: (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as String).input(),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetResourceGroupName: (() {
+        final guardedValue = map['targetResourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceName: (() {
+        final guardedValue = map['targetResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneRedundant: (() {
+        final guardedValue = map['zoneRedundant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

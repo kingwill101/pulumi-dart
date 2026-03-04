@@ -10,16 +10,15 @@ enum WebhookFilterType {
   tAGNAME("TAG_NAME"),
   wORKFLOWNAME("WORKFLOW_NAME");
 
-  const WebhookFilterType(this.value);
-  final String value;
+  const WebhookFilterType(this.wireValue);
+  final String wireValue;
 
   static WebhookFilterType fromValue(String value) {
     for (final item in WebhookFilterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebhookFilterType value: $value');
   }
 }
-

@@ -3,10 +3,7 @@ import 'region_url_map_args.dart';
 import 'region_url_map_default_route_action.dart';
 import 'region_url_map_default_url_redirect.dart';
 import 'region_url_map_header_action.dart';
-import 'region_url_map_host_rule.dart';
-import 'region_url_map_path_matcher.dart';
 import 'region_url_map_state.dart';
-import 'region_url_map_test.dart';
 
 /// UrlMaps are used to route requests to a backend service based on rules
 /// that you define for the host and path of an incoming URL.
@@ -7258,12 +7255,14 @@ import 'region_url_map_test.dart';
 class RegionUrlMap extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
   /// URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
   /// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
   /// Structure is documented below.
   late final pulumi.Output<RegionUrlMapDefaultRouteAction?> defaultRouteAction;
+
   /// The full or partial URL of the defaultService resource to which traffic is directed if
   /// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
   /// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
@@ -7272,28 +7271,35 @@ class RegionUrlMap extends pulumi.CustomResource {
   /// weightedBackendServices, service must not be specified.  Only one of defaultService,
   /// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
   late final pulumi.Output<String?> defaultService;
+
   /// When none of the specified hostRules match, the request is redirected to a URL specified
   /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
   late final pulumi.Output<RegionUrlMapDefaultUrlRedirect?> defaultUrlRedirect;
+
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
+
   /// Fingerprint of this resource. This field is used internally during
   /// updates of this resource.
   late final pulumi.Output<String> fingerprint;
+
   /// Specifies changes to request and response headers that need to take effect for the selected backendService.
   /// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
   /// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
   late final pulumi.Output<RegionUrlMapHeaderAction?> headerAction;
+
   /// The list of HostRules to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<RegionUrlMapHostRule>?> hostRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hostRules;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> mapId;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -7302,21 +7308,26 @@ class RegionUrlMap extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The list of named PathMatchers to use against the URL.
   /// Structure is documented below.
-  late final pulumi.Output<List<RegionUrlMapPathMatcher>?> pathMatchers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> pathMatchers;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The Region in which the url map should reside.
   /// If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The list of expected URL mappings. Requests to update this UrlMap will
   /// succeed only if all of the test cases pass.
   /// Structure is documented below.
-  late final pulumi.Output<List<RegionUrlMapTest>?> tests;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tests;
 
   /// Creates a new [RegionUrlMap].
   /// [name] The Pulumi resource name.
@@ -7327,26 +7338,30 @@ class RegionUrlMap extends pulumi.CustomResource {
     RegionUrlMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionUrlMap:RegionUrlMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>('defaultRouteAction');
-    this.defaultService = registerOutput<String?>('defaultService');
-    this.defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>('defaultUrlRedirect');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction');
-    this.hostRules = registerOutput<List<RegionUrlMapHostRule>?>('hostRules');
-    this.mapId = registerOutput<int>('mapId');
+         'gcp:compute/regionUrlMap:RegionUrlMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>(
+      'defaultRouteAction',
+    );
+    defaultService = registerOutput<String?>('defaultService');
+    defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>(
+      'defaultUrlRedirect',
+    );
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction');
+    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    this.pathMatchers = registerOutput<List<RegionUrlMapPathMatcher>?>('pathMatchers');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.tests = registerOutput<List<RegionUrlMapTest>?>('tests');
+    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
   }
 
   /// Gets an existing [RegionUrlMap] resource's state with the given [name] and [id].
@@ -7367,25 +7382,29 @@ class RegionUrlMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionUrlMap:RegionUrlMap',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>('defaultRouteAction');
-    this.defaultService = registerOutput<String?>('defaultService');
-    this.defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>('defaultUrlRedirect');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction');
-    this.hostRules = registerOutput<List<RegionUrlMapHostRule>?>('hostRules');
-    this.mapId = registerOutput<int>('mapId');
+         'gcp:compute/regionUrlMap:RegionUrlMap',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultRouteAction = registerOutput<RegionUrlMapDefaultRouteAction?>(
+      'defaultRouteAction',
+    );
+    defaultService = registerOutput<String?>('defaultService');
+    defaultUrlRedirect = registerOutput<RegionUrlMapDefaultUrlRedirect?>(
+      'defaultUrlRedirect',
+    );
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    headerAction = registerOutput<RegionUrlMapHeaderAction?>('headerAction');
+    hostRules = registerOutput<List<Map<String, dynamic>>?>('hostRules');
+    mapId = registerOutput<int>('mapId');
     this.name = registerOutput<String>('name');
-    this.pathMatchers = registerOutput<List<RegionUrlMapPathMatcher>?>('pathMatchers');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.tests = registerOutput<List<RegionUrlMapTest>?>('tests');
+    pathMatchers = registerOutput<List<Map<String, dynamic>>?>('pathMatchers');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
   }
 }

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComponentProperties {
   /// Component dependencies.
   final pulumi.Input<List<String>>? dependencies;
+
   /// Name of the component.
   final pulumi.Input<String> name;
+
   /// Properties of the component.
   final pulumi.Input<dynamic>? properties;
+
   /// Component type.
   final pulumi.Input<String> type;
 
@@ -36,11 +39,18 @@ class ComponentProperties {
 
   factory ComponentProperties.fromMap(Map<String, dynamic> map) {
     return ComponentProperties(
-      dependencies: map['dependencies'] == null ? null : ((map['dependencies']! as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties']!).input(),
-      type: (map['type'] as String).input(),
+      dependencies: (() {
+        final guardedValue = map['dependencies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

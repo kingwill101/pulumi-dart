@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservedIpv6AssignmentArgs {
   /// The ID of Droplet that the reserved IPv6 will be assigned to.
   final pulumi.Input<int> dropletId;
+
   /// The reserved IPv6 to assign to the Droplet.
   final pulumi.Input<String> ip;
 
   /// Creates a new [ReservedIpv6AssignmentArgs].
   /// [dropletId] The ID of Droplet that the reserved IPv6 will be assigned to.
   /// [ip] The reserved IPv6 to assign to the Droplet.
-  ReservedIpv6AssignmentArgs({
-    required this.dropletId,
-    required this.ip,
-  });
+  ReservedIpv6AssignmentArgs({required this.dropletId, required this.ip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dropletId': dropletId,
-      'ip': ip,
-    };
+    return <String, dynamic>{'dropletId': dropletId, 'ip': ip};
   }
 
   factory ReservedIpv6AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6AssignmentArgs(
-      dropletId: (map['dropletId'] as int).input(),
-      ip: (map['ip'] as String).input(),
+      dropletId: pulumi.Input.fromValue(map['dropletId'] as int),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
     );
   }
 }
-

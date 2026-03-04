@@ -4,16 +4,15 @@ enum CloudSqlSettingsEdition {
   enterprise("ENTERPRISE"),
   enterprisePlus("ENTERPRISE_PLUS");
 
-  const CloudSqlSettingsEdition(this.value);
-  final String value;
+  const CloudSqlSettingsEdition(this.wireValue);
+  final String wireValue;
 
   static CloudSqlSettingsEdition fromValue(String value) {
     for (final item in CloudSqlSettingsEdition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CloudSqlSettingsEdition value: $value');
   }
 }
-

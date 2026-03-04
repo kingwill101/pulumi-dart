@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'posture_args.dart';
-import 'posture_policy_set.dart';
 import 'posture_state.dart';
 
 /// A Posture represents a collection of policy set including its name, state, description
@@ -734,29 +733,40 @@ import 'posture_state.dart';
 class Posture extends pulumi.CustomResource {
   /// Time the Posture was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Description of the posture.
   late final pulumi.Output<String?> description;
+
   /// For Resource freshness validation (https://google.aip.dev/154)
   late final pulumi.Output<String> etag;
+
   /// Location of the resource, eg: global.
   late final pulumi.Output<String> location;
+
   /// Name of the posture.
   late final pulumi.Output<String> name;
+
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   late final pulumi.Output<String> parent;
+
   /// List of policy sets for the posture.
   /// Structure is documented below.
-  late final pulumi.Output<List<PosturePolicySet>> policySets;
+  late final pulumi.Output<List<Map<String, dynamic>>> policySets;
+
   /// Id of the posture. It is an immutable field.
   late final pulumi.Output<String> postureId;
+
   /// If set, there are currently changes in flight to the posture.
   late final pulumi.Output<bool> reconciling;
+
   /// Revision_id of the posture.
   late final pulumi.Output<String> revisionId;
+
   /// State of the posture. Update to state field should not be triggered along with
   /// with other field updates.
   /// Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
   late final pulumi.Output<String> state;
+
   /// Time the Posture was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -769,23 +779,23 @@ class Posture extends pulumi.CustomResource {
     PostureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securityposture/posture:Posture',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:securityposture/posture:Posture',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.policySets = registerOutput<List<PosturePolicySet>>('policySets');
-    this.postureId = registerOutput<String>('postureId');
-    this.reconciling = registerOutput<bool>('reconciling');
-    this.revisionId = registerOutput<String>('revisionId');
-    this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    policySets = registerOutput<List<Map<String, dynamic>>>('policySets');
+    postureId = registerOutput<String>('postureId');
+    reconciling = registerOutput<bool>('reconciling');
+    revisionId = registerOutput<String>('revisionId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Posture] resource's state with the given [name] and [id].
@@ -806,22 +816,22 @@ class Posture extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securityposture/posture:Posture',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:securityposture/posture:Posture',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.policySets = registerOutput<List<PosturePolicySet>>('policySets');
-    this.postureId = registerOutput<String>('postureId');
-    this.reconciling = registerOutput<bool>('reconciling');
-    this.revisionId = registerOutput<String>('revisionId');
+    parent = registerOutput<String>('parent');
+    policySets = registerOutput<List<Map<String, dynamic>>>('policySets');
+    postureId = registerOutput<String>('postureId');
+    reconciling = registerOutput<bool>('reconciling');
+    revisionId = registerOutput<String>('revisionId');
     this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

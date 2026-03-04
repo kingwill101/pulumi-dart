@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainAdvancedSecurityOption {
   /// Whether node to node encryption is enabled.
   final pulumi.Input<bool> enabled;
+
   /// Whether the internal user database is enabled.
   final pulumi.Input<bool> internalUserDatabaseEnabled;
 
@@ -25,9 +26,10 @@ class GetDomainAdvancedSecurityOption {
 
   factory GetDomainAdvancedSecurityOption.fromMap(Map<String, dynamic> map) {
     return GetDomainAdvancedSecurityOption(
-      enabled: (map['enabled'] as bool).input(),
-      internalUserDatabaseEnabled: (map['internalUserDatabaseEnabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      internalUserDatabaseEnabled: pulumi.Input.fromValue(
+        map['internalUserDatabaseEnabled'] as bool,
+      ),
     );
   }
 }
-

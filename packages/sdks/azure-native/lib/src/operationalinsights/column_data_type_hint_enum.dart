@@ -5,16 +5,15 @@ enum ColumnDataTypeHintEnum {
   valueArmPath("armPath"),
   valueIp("ip");
 
-  const ColumnDataTypeHintEnum(this.value);
-  final String value;
+  const ColumnDataTypeHintEnum(this.wireValue);
+  final String wireValue;
 
   static ColumnDataTypeHintEnum fromValue(String value) {
     for (final item in ColumnDataTypeHintEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ColumnDataTypeHintEnum value: $value');
   }
 }
-

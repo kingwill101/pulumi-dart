@@ -9,12 +9,16 @@ import 'api_config_handler_security_level.dart';
 class ApiConfigHandler {
   /// Action to take when users access resources that require authentication. Defaults to redirect.
   final pulumi.Input<ApiConfigHandlerAuthFailAction>? authFailAction;
+
   /// Level of login required to access this resource. Defaults to optional.
   final pulumi.Input<ApiConfigHandlerLogin>? login;
+
   /// Path to the script from the application root directory.
   final pulumi.Input<String>? script;
+
   /// Security (HTTPS) enforcement for this URL.
   final pulumi.Input<ApiConfigHandlerSecurityLevel>? securityLevel;
+
   /// URL to serve the endpoint at.
   final pulumi.Input<String>? url;
 
@@ -34,22 +38,59 @@ class ApiConfigHandler {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authFailAction': ?pulumi.Input.mapOptionalInputValue<ApiConfigHandlerAuthFailAction, String>(authFailAction, (value) => value.value),
-      'login': ?pulumi.Input.mapOptionalInputValue<ApiConfigHandlerLogin, String>(login, (value) => value.value),
+      'authFailAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiConfigHandlerAuthFailAction,
+            String
+          >(authFailAction, (value) => value.wireValue),
+      'login':
+          ?pulumi.Input.mapOptionalInputValue<ApiConfigHandlerLogin, String>(
+            login,
+            (value) => value.wireValue,
+          ),
       'script': ?script,
-      'securityLevel': ?pulumi.Input.mapOptionalInputValue<ApiConfigHandlerSecurityLevel, String>(securityLevel, (value) => value.value),
+      'securityLevel':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiConfigHandlerSecurityLevel,
+            String
+          >(securityLevel, (value) => value.wireValue),
       'url': ?url,
     };
   }
 
   factory ApiConfigHandler.fromMap(Map<String, dynamic> map) {
     return ApiConfigHandler(
-      authFailAction: map['authFailAction'] == null ? null : (ApiConfigHandlerAuthFailAction.fromValue(map['authFailAction']! as String)).input(),
-      login: map['login'] == null ? null : (ApiConfigHandlerLogin.fromValue(map['login']! as String)).input(),
-      script: map['script'] == null ? null : (map['script']! as String).input(),
-      securityLevel: map['securityLevel'] == null ? null : (ApiConfigHandlerSecurityLevel.fromValue(map['securityLevel']! as String)).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      authFailAction: (() {
+        final guardedValue = map['authFailAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiConfigHandlerAuthFailAction.fromValue(guardedValue as String),
+        );
+      })(),
+      login: (() {
+        final guardedValue = map['login'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiConfigHandlerLogin.fromValue(guardedValue as String),
+        );
+      })(),
+      script: (() {
+        final guardedValue = map['script'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityLevel: (() {
+        final guardedValue = map['securityLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiConfigHandlerSecurityLevel.fromValue(guardedValue as String),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

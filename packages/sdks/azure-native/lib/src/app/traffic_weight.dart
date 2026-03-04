@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficWeight {
   /// Associates a traffic label with a revision
   final pulumi.Input<String>? label;
+
   /// Indicates that the traffic weight belongs to a latest stable revision
   final pulumi.Input<bool>? latestRevision;
+
   /// Name of a revision
   final pulumi.Input<String>? revisionName;
+
   /// Traffic weight assigned to a revision
   final pulumi.Input<int>? weight;
 
@@ -36,11 +39,26 @@ class TrafficWeight {
 
   factory TrafficWeight.fromMap(Map<String, dynamic> map) {
     return TrafficWeight(
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      latestRevision: map['latestRevision'] == null ? null : (map['latestRevision']! as bool).input(),
-      revisionName: map['revisionName'] == null ? null : (map['revisionName']! as String).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      latestRevision: (() {
+        final guardedValue = map['latestRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      revisionName: (() {
+        final guardedValue = map['revisionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

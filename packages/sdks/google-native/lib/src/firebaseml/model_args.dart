@@ -11,13 +11,17 @@ import 'tf_lite_model.dart';
 class ModelArgs {
   /// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
   final pulumi.Input<String> displayName;
+
   /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// State common to all model types. Includes publishing and validation information.
   final pulumi.Input<ModelState>? state;
+
   /// User defined tags which can be used to group/filter models during listing
   final pulumi.Input<List<String>>? tags;
+
   /// A TFLite Model
   final pulumi.Input<TfLiteModel>? tfliteModel;
 
@@ -42,21 +46,52 @@ class ModelArgs {
       'displayName': displayName,
       'name': ?name,
       'project': ?project,
-      'state': ?pulumi.Input.mapOptionalInputValue<ModelState, Map<String, dynamic>>(state, (value) => value.toMap()),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<ModelState, Map<String, dynamic>>(
+            state,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
-      'tfliteModel': ?pulumi.Input.mapOptionalInputValue<TfLiteModel, Map<String, dynamic>>(tfliteModel, (value) => value.toMap()),
+      'tfliteModel':
+          ?pulumi.Input.mapOptionalInputValue<
+            TfLiteModel,
+            Map<String, dynamic>
+          >(tfliteModel, (value) => value.toMap()),
     };
   }
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      state: map['state'] == null ? null : (ModelState.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      tfliteModel: map['tfliteModel'] == null ? null : (TfLiteModel.fromMap((map['tfliteModel']! as Map).cast<String, dynamic>())).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModelState.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tfliteModel: (() {
+        final guardedValue = map['tfliteModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TfLiteModel.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

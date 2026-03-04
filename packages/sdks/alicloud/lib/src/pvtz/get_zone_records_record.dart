@@ -5,24 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneRecordsRecord {
   /// The ID of the Private Zone Record.
   final pulumi.Input<String> id;
+
   /// The priority of the MX record.
   final pulumi.Input<int> priority;
+
   /// The ID of the Record.
   final pulumi.Input<String> recordId;
+
   /// The description of the Private Zone Record.
   final pulumi.Input<String> remark;
+
   /// The hostname of the Private Zone Record.
   final pulumi.Input<String> resourceRecord;
+
   /// The hostname of the Private Zone Record.
   final pulumi.Input<String> rr;
+
   /// The status of the Resolve record. Valid values:
   /// - `ENABLE`: Enable resolution.
   /// - `DISABLE`: Pause parsing.
   final pulumi.Input<String> status;
+
   /// The time to live (TTL) of the Private Zone Record.
   final pulumi.Input<int> ttl;
+
   /// The type of the Private Zone Record.
   final pulumi.Input<String> type;
+
   /// The value of the Private Zone Record.
   final pulumi.Input<String> value;
 
@@ -67,17 +76,16 @@ class GetZoneRecordsRecord {
 
   factory GetZoneRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetZoneRecordsRecord(
-      id: (map['id'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      recordId: (map['recordId'] as String).input(),
-      remark: (map['remark'] as String).input(),
-      resourceRecord: (map['resourceRecord'] as String).input(),
-      rr: (map['rr'] as String).input(),
-      status: (map['status'] as String).input(),
-      ttl: (map['ttl'] as int).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      recordId: pulumi.Input.fromValue(map['recordId'] as String),
+      remark: pulumi.Input.fromValue(map['remark'] as String),
+      resourceRecord: pulumi.Input.fromValue(map['resourceRecord'] as String),
+      rr: pulumi.Input.fromValue(map['rr'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

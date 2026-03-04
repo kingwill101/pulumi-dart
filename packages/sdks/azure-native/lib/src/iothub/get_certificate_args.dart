@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// The name of the certificate
   final pulumi.Input<String> certificateName;
+
   /// The name of the resource group that contains the IoT hub.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the IoT hub.
   final pulumi.Input<String> resourceName;
 
@@ -34,10 +36,11 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      certificateName: (map['certificateName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlServerAvailabilityGroupDetailViewArgs {
   /// Name of SQL Availability Group
   final pulumi.Input<String> availabilityGroupName;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server Instance
   final pulumi.Input<String> sqlServerInstanceName;
 
@@ -32,12 +34,19 @@ class GetSqlServerAvailabilityGroupDetailViewArgs {
     };
   }
 
-  factory GetSqlServerAvailabilityGroupDetailViewArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSqlServerAvailabilityGroupDetailViewArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSqlServerAvailabilityGroupDetailViewArgs(
-      availabilityGroupName: (map['availabilityGroupName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
+      availabilityGroupName: pulumi.Input.fromValue(
+        map['availabilityGroupName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerInstanceName: pulumi.Input.fromValue(
+        map['sqlServerInstanceName'] as String,
+      ),
     );
   }
 }
-

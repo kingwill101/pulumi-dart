@@ -5,36 +5,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledSqlScheduledSqlConfiguration {
   /// Write mode.
   final pulumi.Input<String>? dataFormat;
+
   /// The destination endpoint.
   final pulumi.Input<String>? destEndpoint;
+
   /// The destination Logstore.
   final pulumi.Input<String>? destLogstore;
+
   /// The destination project.
   final pulumi.Input<String>? destProject;
+
   /// Destination write role ARN.
   final pulumi.Input<String>? destRoleArn;
+
   /// The start time of the schedule.
   final pulumi.Input<int>? fromTime;
+
   /// SQL time window - start.
   final pulumi.Input<String>? fromTimeExpr;
+
   /// Maximum number of retries.
   final pulumi.Input<int>? maxRetries;
+
   /// SQL timeout.
   final pulumi.Input<int>? maxRunTimeInSeconds;
+
   /// Parameter configuration.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Resource pool.
   final pulumi.Input<String>? resourcePool;
+
   /// Source read role ARN.
   final pulumi.Input<String>? roleArn;
+
   /// SQL statement.
   final pulumi.Input<String>? script;
+
   /// The source Logstore.
   final pulumi.Input<String>? sourceLogstore;
+
   /// SQL type.
   final pulumi.Input<String>? sqlType;
+
   /// Scheduled end time.
   final pulumi.Input<int>? toTime;
+
   /// End of the SQL time window.
   final pulumi.Input<String>? toTimeExpr;
 
@@ -98,26 +114,97 @@ class ScheduledSqlScheduledSqlConfiguration {
     };
   }
 
-  factory ScheduledSqlScheduledSqlConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ScheduledSqlScheduledSqlConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledSqlScheduledSqlConfiguration(
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
-      destEndpoint: map['destEndpoint'] == null ? null : (map['destEndpoint']! as String).input(),
-      destLogstore: map['destLogstore'] == null ? null : (map['destLogstore']! as String).input(),
-      destProject: map['destProject'] == null ? null : (map['destProject']! as String).input(),
-      destRoleArn: map['destRoleArn'] == null ? null : (map['destRoleArn']! as String).input(),
-      fromTime: map['fromTime'] == null ? null : (map['fromTime']! as int).input(),
-      fromTimeExpr: map['fromTimeExpr'] == null ? null : (map['fromTimeExpr']! as String).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
-      maxRunTimeInSeconds: map['maxRunTimeInSeconds'] == null ? null : (map['maxRunTimeInSeconds']! as int).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      resourcePool: map['resourcePool'] == null ? null : (map['resourcePool']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
-      script: map['script'] == null ? null : (map['script']! as String).input(),
-      sourceLogstore: map['sourceLogstore'] == null ? null : (map['sourceLogstore']! as String).input(),
-      sqlType: map['sqlType'] == null ? null : (map['sqlType']! as String).input(),
-      toTime: map['toTime'] == null ? null : (map['toTime']! as int).input(),
-      toTimeExpr: map['toTimeExpr'] == null ? null : (map['toTimeExpr']! as String).input(),
+      dataFormat: (() {
+        final guardedValue = map['dataFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destEndpoint: (() {
+        final guardedValue = map['destEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destLogstore: (() {
+        final guardedValue = map['destLogstore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destProject: (() {
+        final guardedValue = map['destProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destRoleArn: (() {
+        final guardedValue = map['destRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fromTime: (() {
+        final guardedValue = map['fromTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fromTimeExpr: (() {
+        final guardedValue = map['fromTimeExpr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxRetries: (() {
+        final guardedValue = map['maxRetries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRunTimeInSeconds: (() {
+        final guardedValue = map['maxRunTimeInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourcePool: (() {
+        final guardedValue = map['resourcePool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      script: (() {
+        final guardedValue = map['script'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceLogstore: (() {
+        final guardedValue = map['sourceLogstore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sqlType: (() {
+        final guardedValue = map['sqlType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      toTime: (() {
+        final guardedValue = map['toTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      toTimeExpr: (() {
+        final guardedValue = map['toTimeExpr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

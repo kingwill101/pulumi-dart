@@ -7,6 +7,7 @@ import 'duration_response_compute_v1.dart';
 class HttpFaultDelayResponseComputeV1 {
   /// Specifies the value of the fixed delay interval.
   final pulumi.Input<DurationResponseComputeV1> fixedDelay;
+
   /// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
   final pulumi.Input<double> percentage;
 
@@ -20,16 +21,23 @@ class HttpFaultDelayResponseComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fixedDelay': pulumi.Input.mapInputValue<DurationResponseComputeV1, Map<String, dynamic>>(fixedDelay, (value) => value.toMap()),
+      'fixedDelay':
+          pulumi.Input.mapInputValue<
+            DurationResponseComputeV1,
+            Map<String, dynamic>
+          >(fixedDelay, (value) => value.toMap()),
       'percentage': percentage,
     };
   }
 
   factory HttpFaultDelayResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpFaultDelayResponseComputeV1(
-      fixedDelay: (DurationResponseComputeV1.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>())).input(),
-      percentage: (map['percentage'] as double).input(),
+      fixedDelay: pulumi.Input.fromValue(
+        DurationResponseComputeV1.fromMap(
+          (map['fixedDelay']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      percentage: pulumi.Input.fromValue(map['percentage'] as double),
     );
   }
 }
-

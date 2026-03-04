@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listQnAMakerEndpointKey.
 class ListQnAMakerEndpointKeyResult {
   /// Current version of runtime.
   final String? installedVersion;
+
   /// Latest version of runtime.
   final String? lastStableVersion;
+
   /// Primary Access Key.
   final String? primaryEndpointKey;
+
   /// Secondary Access Key.
   final String? secondaryEndpointKey;
 
@@ -35,11 +37,26 @@ class ListQnAMakerEndpointKeyResult {
 
   factory ListQnAMakerEndpointKeyResult.fromMap(Map<String, dynamic> map) {
     return ListQnAMakerEndpointKeyResult(
-      installedVersion: map['installedVersion'] == null ? null : map['installedVersion']! as String,
-      lastStableVersion: map['lastStableVersion'] == null ? null : map['lastStableVersion']! as String,
-      primaryEndpointKey: map['primaryEndpointKey'] == null ? null : map['primaryEndpointKey']! as String,
-      secondaryEndpointKey: map['secondaryEndpointKey'] == null ? null : map['secondaryEndpointKey']! as String,
+      installedVersion: (() {
+        final guardedValue = map['installedVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lastStableVersion: (() {
+        final guardedValue = map['lastStableVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      primaryEndpointKey: (() {
+        final guardedValue = map['primaryEndpointKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secondaryEndpointKey: (() {
+        final guardedValue = map['secondaryEndpointKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'duration_response.dart';
 class NodeGroupMaintenanceWindowResponse {
   /// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
   final pulumi.Input<String> duration;
+
   /// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
   final pulumi.Input<DurationResponse> maintenanceDuration;
+
   /// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
   final pulumi.Input<String> startTime;
 
@@ -25,17 +27,24 @@ class NodeGroupMaintenanceWindowResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'duration': duration,
-      'maintenanceDuration': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(maintenanceDuration, (value) => value.toMap()),
+      'maintenanceDuration':
+          pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(
+            maintenanceDuration,
+            (value) => value.toMap(),
+          ),
       'startTime': startTime,
     };
   }
 
   factory NodeGroupMaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return NodeGroupMaintenanceWindowResponse(
-      duration: (map['duration'] as String).input(),
-      maintenanceDuration: (DurationResponse.fromMap((map['maintenanceDuration'] as Map).cast<String, dynamic>())).input(),
-      startTime: (map['startTime'] as String).input(),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      maintenanceDuration: pulumi.Input.fromValue(
+        DurationResponse.fromMap(
+          (map['maintenanceDuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

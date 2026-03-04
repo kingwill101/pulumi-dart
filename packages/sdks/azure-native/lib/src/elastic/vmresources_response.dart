@@ -9,20 +9,19 @@ class VMResourcesResponse {
 
   /// Creates a new [VMResourcesResponse].
   /// [vmResourceId] The ARM id of the VM resource.
-  VMResourcesResponse({
-    this.vmResourceId,
-  });
+  VMResourcesResponse({this.vmResourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vmResourceId': ?vmResourceId,
-    };
+    return <String, dynamic>{'vmResourceId': ?vmResourceId};
   }
 
   factory VMResourcesResponse.fromMap(Map<String, dynamic> map) {
     return VMResourcesResponse(
-      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId']! as String).input(),
+      vmResourceId: (() {
+        final guardedValue = map['vmResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

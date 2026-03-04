@@ -3,16 +3,15 @@ enum SmbEncryptionState {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const SmbEncryptionState(this.value);
-  final String value;
+  const SmbEncryptionState(this.wireValue);
+  final String wireValue;
 
   static SmbEncryptionState fromValue(String value) {
     for (final item in SmbEncryptionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SmbEncryptionState value: $value');
   }
 }
-

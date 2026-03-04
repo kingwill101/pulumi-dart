@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionedProductOutput {
   /// The description of the output.
   final pulumi.Input<String>? description;
+
   /// The output key.
   final pulumi.Input<String>? key;
+
   /// The output value.
   final pulumi.Input<String>? value;
 
@@ -14,11 +16,7 @@ class ProvisionedProductOutput {
   /// [description] The description of the output.
   /// [key] The output key.
   /// [value] The output value.
-  ProvisionedProductOutput({
-    this.description,
-    this.key,
-    this.value,
-  });
+  ProvisionedProductOutput({this.description, this.key, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class ProvisionedProductOutput {
 
   factory ProvisionedProductOutput.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductOutput(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

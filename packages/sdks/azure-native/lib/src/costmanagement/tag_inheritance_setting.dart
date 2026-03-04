@@ -152,13 +152,17 @@ import 'tag_inheritance_setting_args.dart';
 class TagInheritanceSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the kind of settings.
   /// Expected value is 'taginheritance'.
   late final pulumi.Output<String> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The properties of the tag inheritance setting.
   late final pulumi.Output<TagInheritancePropertiesResponse> properties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,15 +175,15 @@ class TagInheritanceSetting extends pulumi.CustomResource {
     TagInheritanceSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:costmanagement:TagInheritanceSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:costmanagement:TagInheritanceSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<TagInheritancePropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<TagInheritancePropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

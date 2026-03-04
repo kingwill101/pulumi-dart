@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostEcsLevelInfosArgs {
   /// The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
   final pulumi.Input<String> dbType;
+
   /// Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
   final pulumi.Input<String>? imageCategory;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
   final pulumi.Input<String> storageType;
+
   /// The ID of the zone in the region.
   final pulumi.Input<String> zoneId;
 
@@ -44,12 +48,19 @@ class GetHostEcsLevelInfosArgs {
 
   factory GetHostEcsLevelInfosArgs.fromMap(Map<String, dynamic> map) {
     return GetHostEcsLevelInfosArgs(
-      dbType: (map['dbType'] as String).input(),
-      imageCategory: map['imageCategory'] == null ? null : (map['imageCategory']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      storageType: (map['storageType'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      dbType: pulumi.Input.fromValue(map['dbType'] as String),
+      imageCategory: (() {
+        final guardedValue = map['imageCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageType: pulumi.Input.fromValue(map['storageType'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

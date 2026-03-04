@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSchemaReferenceArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// The name of the SchemaReference
   final pulumi.Input<String> schemaReferenceName;
 
@@ -29,9 +30,10 @@ class GetSchemaReferenceArgs {
 
   factory GetSchemaReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaReferenceArgs(
-      resourceUri: (map['resourceUri'] as String).input(),
-      schemaReferenceName: (map['schemaReferenceName'] as String).input(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      schemaReferenceName: pulumi.Input.fromValue(
+        map['schemaReferenceName'] as String,
+      ),
     );
   }
 }
-

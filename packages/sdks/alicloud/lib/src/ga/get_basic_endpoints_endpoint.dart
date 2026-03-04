@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBasicEndpointsEndpoint {
   /// The ID of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The name of the Basic Endpoint.
   final pulumi.Input<String> basicEndpointName;
+
   /// The address of the Basic Endpoint.
   final pulumi.Input<String> endpointAddress;
+
   /// The ID of the Basic Endpoint Group.
   final pulumi.Input<String> endpointGroupId;
+
   /// The ID of the Basic Endpoint.
   final pulumi.Input<String> endpointId;
+
   /// The sub address of the Basic Endpoint.
   final pulumi.Input<String> endpointSubAddress;
+
   /// The sub address type of the Basic Endpoint.
   final pulumi.Input<String> endpointSubAddressType;
+
   /// The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
   final pulumi.Input<String> endpointType;
+
   /// The zone id of the Basic Endpoint.
   final pulumi.Input<String> endpointZoneId;
-  /// The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
+
+  /// The id of the Global Accelerator Basic Endpoint. It formats as `&lt;endpoint_group_id&gt;:&lt;endpoint_id&gt;`.
   final pulumi.Input<String> id;
+
   /// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
   final pulumi.Input<String> status;
 
@@ -36,7 +46,7 @@ class GetBasicEndpointsEndpoint {
   /// [endpointSubAddressType] The sub address type of the Basic Endpoint.
   /// [endpointType] The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
   /// [endpointZoneId] The zone id of the Basic Endpoint.
-  /// [id] The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
+  /// [id] The id of the Global Accelerator Basic Endpoint. It formats as `&lt;endpoint_group_id&gt;:&lt;endpoint_id&gt;`.
   /// [status] The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
   GetBasicEndpointsEndpoint({
     required this.acceleratorId,
@@ -70,18 +80,23 @@ class GetBasicEndpointsEndpoint {
 
   factory GetBasicEndpointsEndpoint.fromMap(Map<String, dynamic> map) {
     return GetBasicEndpointsEndpoint(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      basicEndpointName: (map['basicEndpointName'] as String).input(),
-      endpointAddress: (map['endpointAddress'] as String).input(),
-      endpointGroupId: (map['endpointGroupId'] as String).input(),
-      endpointId: (map['endpointId'] as String).input(),
-      endpointSubAddress: (map['endpointSubAddress'] as String).input(),
-      endpointSubAddressType: (map['endpointSubAddressType'] as String).input(),
-      endpointType: (map['endpointType'] as String).input(),
-      endpointZoneId: (map['endpointZoneId'] as String).input(),
-      id: (map['id'] as String).input(),
-      status: (map['status'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      basicEndpointName: pulumi.Input.fromValue(
+        map['basicEndpointName'] as String,
+      ),
+      endpointAddress: pulumi.Input.fromValue(map['endpointAddress'] as String),
+      endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
+      endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
+      endpointSubAddress: pulumi.Input.fromValue(
+        map['endpointSubAddress'] as String,
+      ),
+      endpointSubAddressType: pulumi.Input.fromValue(
+        map['endpointSubAddressType'] as String,
+      ),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      endpointZoneId: pulumi.Input.fromValue(map['endpointZoneId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

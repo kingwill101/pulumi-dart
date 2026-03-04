@@ -14,15 +14,18 @@ class RegistryEndpointSystemAssignedManagedIdentitySettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audience': ?audience,
-    };
+    return <String, dynamic>{'audience': ?audience};
   }
 
-  factory RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory RegistryEndpointSystemAssignedManagedIdentitySettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryEndpointSystemAssignedManagedIdentitySettingsResponse(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

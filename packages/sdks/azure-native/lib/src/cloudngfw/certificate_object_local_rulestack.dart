@@ -278,22 +278,31 @@ import 'system_data_response.dart';
 class CertificateObjectLocalRulestack extends pulumi.CustomResource {
   /// comment for this object
   late final pulumi.Output<String?> auditComment;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// use certificate self signed
   late final pulumi.Output<String> certificateSelfSigned;
+
   /// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
   late final pulumi.Output<String?> certificateSignerResourceId;
+
   /// user description for this object
   late final pulumi.Output<String?> description;
+
   /// read only string representing last create or update
   late final pulumi.Output<String?> etag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -306,20 +315,22 @@ class CertificateObjectLocalRulestack extends pulumi.CustomResource {
     CertificateObjectLocalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cloudngfw:CertificateObjectLocalRulestack',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.certificateSelfSigned = registerOutput<String>('certificateSelfSigned');
-    this.certificateSignerResourceId = registerOutput<String?>('certificateSignerResourceId');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
+         'azure-native:cloudngfw:CertificateObjectLocalRulestack',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditComment = registerOutput<String?>('auditComment');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificateSelfSigned = registerOutput<String>('certificateSelfSigned');
+    certificateSignerResourceId = registerOutput<String?>(
+      'certificateSignerResourceId',
+    );
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

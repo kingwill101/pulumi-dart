@@ -4,16 +4,15 @@ enum MonitoringFeatureFilterType {
   valueTopNByAttribution("TopNByAttribution"),
   valueFeatureSubset("FeatureSubset");
 
-  const MonitoringFeatureFilterType(this.value);
-  final String value;
+  const MonitoringFeatureFilterType(this.wireValue);
+  final String wireValue;
 
   static MonitoringFeatureFilterType fromValue(String value) {
     for (final item in MonitoringFeatureFilterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitoringFeatureFilterType value: $value');
   }
 }
-

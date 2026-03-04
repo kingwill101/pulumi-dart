@@ -6,7 +6,9 @@ import 'akri_connectors_container_registry_settings_response.dart';
 /// AkriConnectorsContainerRegistry properties.
 class AkriConnectorsContainerRegistryResponse {
   /// The registry settings for the container registry.
-  final pulumi.Input<AkriConnectorsContainerRegistrySettingsResponse> containerRegistrySettings;
+  final pulumi.Input<AkriConnectorsContainerRegistrySettingsResponse>
+  containerRegistrySettings;
+
   /// AkriConnectorsRegistrySettings properties.
   /// Expected value is 'ContainerRegistry'.
   final pulumi.Input<String> registrySettingsType;
@@ -21,16 +23,27 @@ class AkriConnectorsContainerRegistryResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerRegistrySettings': pulumi.Input.mapInputValue<AkriConnectorsContainerRegistrySettingsResponse, Map<String, dynamic>>(containerRegistrySettings, (value) => value.toMap()),
+      'containerRegistrySettings':
+          pulumi.Input.mapInputValue<
+            AkriConnectorsContainerRegistrySettingsResponse,
+            Map<String, dynamic>
+          >(containerRegistrySettings, (value) => value.toMap()),
       'registrySettingsType': registrySettingsType,
     };
   }
 
-  factory AkriConnectorsContainerRegistryResponse.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorsContainerRegistryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorsContainerRegistryResponse(
-      containerRegistrySettings: (AkriConnectorsContainerRegistrySettingsResponse.fromMap((map['containerRegistrySettings'] as Map).cast<String, dynamic>())).input(),
-      registrySettingsType: (map['registrySettingsType'] as String).input(),
+      containerRegistrySettings: pulumi.Input.fromValue(
+        AkriConnectorsContainerRegistrySettingsResponse.fromMap(
+          (map['containerRegistrySettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      registrySettingsType: pulumi.Input.fromValue(
+        map['registrySettingsType'] as String,
+      ),
     );
   }
 }
-

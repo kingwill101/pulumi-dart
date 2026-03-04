@@ -8,20 +8,17 @@ class RecordsExclusiveResourceRecordSetResourceRecord {
 
   /// Creates a new [RecordsExclusiveResourceRecordSetResourceRecord].
   /// [value] DNS record value.
-  RecordsExclusiveResourceRecordSetResourceRecord({
-    required this.value,
-  });
+  RecordsExclusiveResourceRecordSetResourceRecord({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory RecordsExclusiveResourceRecordSetResourceRecord.fromMap(Map<String, dynamic> map) {
+  factory RecordsExclusiveResourceRecordSetResourceRecord.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecordsExclusiveResourceRecordSetResourceRecord(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

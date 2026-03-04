@@ -1,5 +1,3 @@
-library module_polardb;
-
 export 'polardb/account.dart';
 export 'polardb/account_args.dart';
 export 'polardb/account_privilege.dart';

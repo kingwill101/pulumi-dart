@@ -4,16 +4,17 @@ enum OwnershipControlsRuleObjectOwnership {
   bucketOwnerPreferred("BucketOwnerPreferred"),
   objectWriter("ObjectWriter");
 
-  const OwnershipControlsRuleObjectOwnership(this.value);
-  final String value;
+  const OwnershipControlsRuleObjectOwnership(this.wireValue);
+  final String wireValue;
 
   static OwnershipControlsRuleObjectOwnership fromValue(String value) {
     for (final item in OwnershipControlsRuleObjectOwnership.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OwnershipControlsRuleObjectOwnership value: $value');
+    throw ArgumentError(
+      'Unknown OwnershipControlsRuleObjectOwnership value: $value',
+    );
   }
 }
-

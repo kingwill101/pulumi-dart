@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscaleSettingNotificationEmail {
   /// Specifies a list of custom email addresses to which the email notifications will be sent.
   final pulumi.Input<List<String>>? customEmails;
+
   /// Should email notifications be sent to the subscription administrator? Defaults to `false`.
   final pulumi.Input<bool>? sendToSubscriptionAdministrator;
+
   /// Should email notifications be sent to the subscription co-administrator? Defaults to `false`.
   final pulumi.Input<bool>? sendToSubscriptionCoAdministrator;
 
@@ -30,10 +32,21 @@ class AutoscaleSettingNotificationEmail {
 
   factory AutoscaleSettingNotificationEmail.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingNotificationEmail(
-      customEmails: map['customEmails'] == null ? null : ((map['customEmails']! as List).cast<String>()).input(),
-      sendToSubscriptionAdministrator: map['sendToSubscriptionAdministrator'] == null ? null : (map['sendToSubscriptionAdministrator']! as bool).input(),
-      sendToSubscriptionCoAdministrator: map['sendToSubscriptionCoAdministrator'] == null ? null : (map['sendToSubscriptionCoAdministrator']! as bool).input(),
+      customEmails: (() {
+        final guardedValue = map['customEmails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sendToSubscriptionAdministrator: (() {
+        final guardedValue = map['sendToSubscriptionAdministrator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sendToSubscriptionCoAdministrator: (() {
+        final guardedValue = map['sendToSubscriptionCoAdministrator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

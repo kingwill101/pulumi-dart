@@ -3,16 +3,15 @@ enum PrincipalPermissionsAction {
   valueRetainPermissionOnScriptCompletion("RetainPermissionOnScriptCompletion"),
   valueRemovePermissionOnScriptCompletion("RemovePermissionOnScriptCompletion");
 
-  const PrincipalPermissionsAction(this.value);
-  final String value;
+  const PrincipalPermissionsAction(this.wireValue);
+  final String wireValue;
 
   static PrincipalPermissionsAction fromValue(String value) {
     for (final item in PrincipalPermissionsAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrincipalPermissionsAction value: $value');
   }
 }
-

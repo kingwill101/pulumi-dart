@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'address_pool_address.dart';
 import 'address_pool_args.dart';
 import 'address_pool_state.dart';
 
@@ -7,7 +6,7 @@ import 'address_pool_state.dart';
 ///
 /// For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
 ///
-/// > **NOTE:** Available since v1.152.0.
+/// &gt; **NOTE:** Available since v1.152.0.
 ///
 /// ## Example Usage
 ///
@@ -426,12 +425,16 @@ import 'address_pool_state.dart';
 class AddressPool extends pulumi.CustomResource {
   /// The name of the address pool.
   late final pulumi.Output<String> addressPoolName;
+
   /// The address lists of the Address Pool. See `address` below for details.
-  late final pulumi.Output<List<AddressPoolAddress>> addresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> addresses;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
   late final pulumi.Output<String> lbaStrategy;
+
   /// The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   late final pulumi.Output<String> type;
 
@@ -444,16 +447,16 @@ class AddressPool extends pulumi.CustomResource {
     AddressPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/addressPool:AddressPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPoolName = registerOutput<String>('addressPoolName');
-    this.addresses = registerOutput<List<AddressPoolAddress>>('addresses');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.lbaStrategy = registerOutput<String>('lbaStrategy');
-    this.type = registerOutput<String>('type');
+         'alicloud:dns/addressPool:AddressPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPoolName = registerOutput<String>('addressPoolName');
+    addresses = registerOutput<List<Map<String, dynamic>>>('addresses');
+    instanceId = registerOutput<String>('instanceId');
+    lbaStrategy = registerOutput<String>('lbaStrategy');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [AddressPool] resource's state with the given [name] and [id].
@@ -474,15 +477,15 @@ class AddressPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/addressPool:AddressPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPoolName = registerOutput<String>('addressPoolName');
-    this.addresses = registerOutput<List<AddressPoolAddress>>('addresses');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.lbaStrategy = registerOutput<String>('lbaStrategy');
-    this.type = registerOutput<String>('type');
+         'alicloud:dns/addressPool:AddressPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPoolName = registerOutput<String>('addressPoolName');
+    addresses = registerOutput<List<Map<String, dynamic>>>('addresses');
+    instanceId = registerOutput<String>('instanceId');
+    lbaStrategy = registerOutput<String>('lbaStrategy');
+    type = registerOutput<String>('type');
   }
 }

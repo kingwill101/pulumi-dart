@@ -228,7 +228,7 @@ import 'product_api_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -243,10 +243,13 @@ import 'product_api_state.dart';
 class ProductApi extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The Name of the API Management API within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiName;
+
   /// The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> productId;
+
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -259,15 +262,15 @@ class ProductApi extends pulumi.CustomResource {
     ProductApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/productApi:ProductApi',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.apiName = registerOutput<String>('apiName');
-    this.productId = registerOutput<String>('productId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:apimanagement/productApi:ProductApi',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiName = registerOutput<String>('apiName');
+    productId = registerOutput<String>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ProductApi] resource's state with the given [name] and [id].
@@ -288,14 +291,14 @@ class ProductApi extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/productApi:ProductApi',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.apiName = registerOutput<String>('apiName');
-    this.productId = registerOutput<String>('productId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:apimanagement/productApi:ProductApi',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiName = registerOutput<String>('apiName');
+    productId = registerOutput<String>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

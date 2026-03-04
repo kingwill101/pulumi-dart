@@ -3,16 +3,15 @@ enum LicenseEdition {
   valueStandard("Standard"),
   valueDatacenter("Datacenter");
 
-  const LicenseEdition(this.value);
-  final String value;
+  const LicenseEdition(this.wireValue);
+  final String wireValue;
 
   static LicenseEdition fromValue(String value) {
     for (final item in LicenseEdition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LicenseEdition value: $value');
   }
 }
-

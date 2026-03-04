@@ -9,43 +9,59 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubnetIdsV2Args {
   /// The CIDR of the subnet.
   final pulumi.Input<String>? cidr;
+
   /// Human-readable description of the subnet.
   final pulumi.Input<String>? description;
+
   /// If the subnet has DHCP enabled.
   final pulumi.Input<bool>? dhcpEnabled;
+
   /// If the subnet publishes DNS records.
   final pulumi.Input<bool>? dnsPublishFixedIp;
+
   /// The IP of the subnet's gateway.
   final pulumi.Input<String>? gatewayIp;
+
   /// The IP version of the subnet (either 4 or 6).
   final pulumi.Input<int>? ipVersion;
+
   /// The IPv6 address mode. Valid values are
   /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
   final pulumi.Input<String>? ipv6AddressMode;
+
   /// The IPv6 Router Advertisement mode. Valid values
   /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
   final pulumi.Input<String>? ipv6RaMode;
+
   /// The name of the subnet.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? nameRegex;
+
   /// The ID of the network the subnet belongs to.
   final pulumi.Input<String>? networkId;
+
   /// The region in which to obtain the V2 Neutron client.
   /// A Neutron client is needed to retrieve subnet ids. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String>? region;
+
   /// The ID of the segment the subnet belongs to.
   /// Available when neutron segment extension is enabled.
   final pulumi.Input<String>? segmentId;
+
   /// Order the results in either `asc` or `desc`.
   /// Defaults to none.
   final pulumi.Input<String>? sortDirection;
+
   /// Sort subnets based on a certain key. Defaults to none.
   final pulumi.Input<String>? sortKey;
+
   /// The ID of the subnetpool associated with the subnet.
   final pulumi.Input<String>? subnetpoolId;
+
   /// The list of subnet tags to filter.
   final pulumi.Input<List<String>>? tags;
+
   /// The owner of the subnet.
   final pulumi.Input<String>? tenantId;
 
@@ -114,25 +130,96 @@ class GetSubnetIdsV2Args {
 
   factory GetSubnetIdsV2Args.fromMap(Map<String, dynamic> map) {
     return GetSubnetIdsV2Args(
-      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dhcpEnabled: map['dhcpEnabled'] == null ? null : (map['dhcpEnabled']! as bool).input(),
-      dnsPublishFixedIp: map['dnsPublishFixedIp'] == null ? null : (map['dnsPublishFixedIp']! as bool).input(),
-      gatewayIp: map['gatewayIp'] == null ? null : (map['gatewayIp']! as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
-      ipv6AddressMode: map['ipv6AddressMode'] == null ? null : (map['ipv6AddressMode']! as String).input(),
-      ipv6RaMode: map['ipv6RaMode'] == null ? null : (map['ipv6RaMode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      segmentId: map['segmentId'] == null ? null : (map['segmentId']! as String).input(),
-      sortDirection: map['sortDirection'] == null ? null : (map['sortDirection']! as String).input(),
-      sortKey: map['sortKey'] == null ? null : (map['sortKey']! as String).input(),
-      subnetpoolId: map['subnetpoolId'] == null ? null : (map['subnetpoolId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dhcpEnabled: (() {
+        final guardedValue = map['dhcpEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dnsPublishFixedIp: (() {
+        final guardedValue = map['dnsPublishFixedIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gatewayIp: (() {
+        final guardedValue = map['gatewayIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipv6AddressMode: (() {
+        final guardedValue = map['ipv6AddressMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6RaMode: (() {
+        final guardedValue = map['ipv6RaMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentId: (() {
+        final guardedValue = map['segmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sortDirection: (() {
+        final guardedValue = map['sortDirection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sortKey: (() {
+        final guardedValue = map['sortKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetpoolId: (() {
+        final guardedValue = map['subnetpoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

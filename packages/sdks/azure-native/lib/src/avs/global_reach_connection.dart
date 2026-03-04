@@ -148,25 +148,34 @@ class GlobalReachConnection extends pulumi.CustomResource {
   /// The network used for global reach carved out from the original network block
   /// provided for the private cloud
   late final pulumi.Output<String> addressPrefix;
+
   /// Authorization key from the peer express route used for the global reach
   /// connection
   late final pulumi.Output<String?> authorizationKey;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The connection status of the global reach connection
   late final pulumi.Output<String> circuitConnectionStatus;
+
   /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
   /// global reach connection
   late final pulumi.Output<String?> expressRouteId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Identifier of the ExpressRoute Circuit to peer with in the global reach
   /// connection
   late final pulumi.Output<String?> peerExpressRouteCircuit;
+
   /// The state of the  ExpressRoute Circuit Authorization provisioning
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,20 +188,22 @@ class GlobalReachConnection extends pulumi.CustomResource {
     GlobalReachConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:GlobalReachConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefix = registerOutput<String>('addressPrefix');
-    this.authorizationKey = registerOutput<String?>('authorizationKey');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.circuitConnectionStatus = registerOutput<String>('circuitConnectionStatus');
-    this.expressRouteId = registerOutput<String?>('expressRouteId');
+         'azure-native:avs:GlobalReachConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefix = registerOutput<String>('addressPrefix');
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    circuitConnectionStatus = registerOutput<String>('circuitConnectionStatus');
+    expressRouteId = registerOutput<String?>('expressRouteId');
     this.name = registerOutput<String>('name');
-    this.peerExpressRouteCircuit = registerOutput<String?>('peerExpressRouteCircuit');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    peerExpressRouteCircuit = registerOutput<String?>(
+      'peerExpressRouteCircuit',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

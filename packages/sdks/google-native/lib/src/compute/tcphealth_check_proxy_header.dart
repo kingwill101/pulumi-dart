@@ -3,16 +3,15 @@ enum TCPHealthCheckProxyHeader {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const TCPHealthCheckProxyHeader(this.value);
-  final String value;
+  const TCPHealthCheckProxyHeader(this.wireValue);
+  final String wireValue;
 
   static TCPHealthCheckProxyHeader fromValue(String value) {
     for (final item in TCPHealthCheckProxyHeader.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TCPHealthCheckProxyHeader value: $value');
   }
 }
-

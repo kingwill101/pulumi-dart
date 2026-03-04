@@ -13,16 +13,15 @@ enum ConnectionAuthType {
   valueOAuth2("OAuth2"),
   valueAAD("AAD");
 
-  const ConnectionAuthType(this.value);
-  final String value;
+  const ConnectionAuthType(this.wireValue);
+  final String wireValue;
 
   static ConnectionAuthType fromValue(String value) {
     for (final item in ConnectionAuthType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionAuthType value: $value');
   }
 }
-

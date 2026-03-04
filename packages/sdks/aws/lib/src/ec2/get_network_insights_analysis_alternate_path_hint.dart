@@ -21,11 +21,12 @@ class GetNetworkInsightsAnalysisAlternatePathHint {
     };
   }
 
-  factory GetNetworkInsightsAnalysisAlternatePathHint.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisAlternatePathHint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisAlternatePathHint(
-      componentArn: (map['componentArn'] as String).input(),
-      componentId: (map['componentId'] as String).input(),
+      componentArn: pulumi.Input.fromValue(map['componentArn'] as String),
+      componentId: pulumi.Input.fromValue(map['componentId'] as String),
     );
   }
 }
-

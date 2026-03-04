@@ -9,20 +9,19 @@ class EntryBigqueryTableSpecViewSpec {
 
   /// Creates a new [EntryBigqueryTableSpecViewSpec].
   /// [viewQuery] (Output)
-  EntryBigqueryTableSpecViewSpec({
-    this.viewQuery,
-  });
+  EntryBigqueryTableSpecViewSpec({this.viewQuery});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'viewQuery': ?viewQuery,
-    };
+    return <String, dynamic>{'viewQuery': ?viewQuery};
   }
 
   factory EntryBigqueryTableSpecViewSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryTableSpecViewSpec(
-      viewQuery: map['viewQuery'] == null ? null : (map['viewQuery']! as String).input(),
+      viewQuery: (() {
+        final guardedValue = map['viewQuery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

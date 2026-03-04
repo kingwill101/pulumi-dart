@@ -4,16 +4,15 @@ enum SqlWorkloadType {
   oLTP("OLTP"),
   dW("DW");
 
-  const SqlWorkloadType(this.value);
-  final String value;
+  const SqlWorkloadType(this.wireValue);
+  final String wireValue;
 
   static SqlWorkloadType fromValue(String value) {
     for (final item in SqlWorkloadType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlWorkloadType value: $value');
   }
 }
-

@@ -6,10 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse {
   /// Specific details for the resource. This is for internal use only.
   final pulumi.Input<Map<String, String>> resource;
+
   /// Overall health status. Overall status is derived based on the status of each sub level resources.
   final pulumi.Input<String> status;
+
   /// List of Info for the sub level resources.
-  final pulumi.Input<List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse>> sub;
+  final pulumi.Input<
+    List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse>
+  >
+  sub;
+
   /// The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
   final pulumi.Input<String> time;
 
@@ -29,18 +35,42 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse {
     return <String, dynamic>{
       'resource': resource,
       'status': status,
-      'sub': pulumi.Input.mapInputValue<List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse>, List<Map<String, dynamic>>>(sub, (value) => pulumi.Input.encodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sub':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse>,
+            List<Map<String, dynamic>>
+          >(
+            sub,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'time': time,
     };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse(
-      resource: ((map['resource'] as Map).cast<String, String>()).input(),
-      status: (map['status'] as String).input(),
-      sub: (pulumi.Input.decodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse>(map['sub'], (value) => GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      time: (map['time'] as String).input(),
+      resource: pulumi.Input.fromValue(
+        (map['resource'] as Map).cast<String, String>(),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      sub: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse
+        >(
+          map['sub']!,
+          (value) =>
+              GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      time: pulumi.Input.fromValue(map['time'] as String),
     );
   }
 }
-

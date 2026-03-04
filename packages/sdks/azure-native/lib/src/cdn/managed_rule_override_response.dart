@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedRuleOverrideResponse {
   /// Describes the override action to be applied when rule matches.
   final pulumi.Input<String>? action;
+
   /// Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
   final pulumi.Input<String>? enabledState;
+
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
 
@@ -31,10 +33,17 @@ class ManagedRuleOverrideResponse {
 
   factory ManagedRuleOverrideResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRuleOverrideResponse(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
-      ruleId: (map['ruleId'] as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabledState: (() {
+        final guardedValue = map['enabledState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
     );
   }
 }
-

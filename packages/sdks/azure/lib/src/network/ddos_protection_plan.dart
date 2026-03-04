@@ -4,9 +4,9 @@ import 'ddos_protection_plan_state.dart';
 
 /// Manages an AzureNetwork DDoS Protection Plan.
 ///
-/// > **Note:** Azure only allows `one` DDoS Protection Plan per region.
+/// &gt; **Note:** Azure only allows `one` DDoS Protection Plan per region.
 ///
-/// > **Note:** The DDoS Protection Plan is a [high-cost service](https://azure.microsoft.com/en-us/pricing/details/ddos-protection/#pricing). Please keep this in mind while testing and learning.
+/// &gt; **Note:** The DDoS Protection Plan is a [high-cost service](https://azure.microsoft.com/en-us/pricing/details/ddos-protection/#pricing). Please keep this in mind while testing and learning.
 ///
 /// ## Example Usage
 ///
@@ -146,7 +146,7 @@ import 'ddos_protection_plan_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -161,12 +161,16 @@ import 'ddos_protection_plan_state.dart';
 class DdosProtectionPlan extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Network DDoS Protection Plan. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A list of Virtual Network IDs associated with the DDoS Protection Plan.
   late final pulumi.Output<List<String>> virtualNetworkIds;
 
@@ -179,16 +183,16 @@ class DdosProtectionPlan extends pulumi.CustomResource {
     DdosProtectionPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/ddosProtectionPlan:DdosProtectionPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:network/ddosProtectionPlan:DdosProtectionPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds');
   }
 
   /// Gets an existing [DdosProtectionPlan] resource's state with the given [name] and [id].
@@ -209,15 +213,15 @@ class DdosProtectionPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/ddosProtectionPlan:DdosProtectionPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:network/ddosProtectionPlan:DdosProtectionPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualNetworkIds = registerOutput<List<String>>('virtualNetworkIds');
   }
 }

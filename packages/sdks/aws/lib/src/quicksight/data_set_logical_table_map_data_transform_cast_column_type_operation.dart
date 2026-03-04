@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetLogicalTableMapDataTransformCastColumnTypeOperation {
   /// Column name.
   final pulumi.Input<String> columnName;
+
   /// When casting a column from string to datetime type, you can supply a string in a format supported by Amazon QuickSight to denote the source data format.
   final pulumi.Input<String>? format;
+
   /// New column data type. Valid values are `STRING`, `INTEGER`, `DECIMAL`, `DATETIME`.
   final pulumi.Input<String> newColumnType;
 
@@ -28,12 +30,17 @@ class DataSetLogicalTableMapDataTransformCastColumnTypeOperation {
     };
   }
 
-  factory DataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(Map<String, dynamic> map) {
+  factory DataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetLogicalTableMapDataTransformCastColumnTypeOperation(
-      columnName: (map['columnName'] as String).input(),
-      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
-      newColumnType: (map['newColumnType'] as String).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      newColumnType: pulumi.Input.fromValue(map['newColumnType'] as String),
     );
   }
 }
-

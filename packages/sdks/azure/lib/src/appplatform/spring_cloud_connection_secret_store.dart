@@ -8,20 +8,15 @@ class SpringCloudConnectionSecretStore {
 
   /// Creates a new [SpringCloudConnectionSecretStore].
   /// [keyVaultId] The key vault id to store secret.
-  SpringCloudConnectionSecretStore({
-    required this.keyVaultId,
-  });
+  SpringCloudConnectionSecretStore({required this.keyVaultId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyVaultId': keyVaultId,
-    };
+    return <String, dynamic>{'keyVaultId': keyVaultId};
   }
 
   factory SpringCloudConnectionSecretStore.fromMap(Map<String, dynamic> map) {
     return SpringCloudConnectionSecretStore(
-      keyVaultId: (map['keyVaultId'] as String).input(),
+      keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
     );
   }
 }
-

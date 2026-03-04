@@ -8,20 +8,19 @@ class ComputeRuntimeDtoResponse {
 
   /// Creates a new [ComputeRuntimeDtoResponse].
   /// [sparkRuntimeVersion] Optional.
-  ComputeRuntimeDtoResponse({
-    this.sparkRuntimeVersion,
-  });
+  ComputeRuntimeDtoResponse({this.sparkRuntimeVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sparkRuntimeVersion': ?sparkRuntimeVersion,
-    };
+    return <String, dynamic>{'sparkRuntimeVersion': ?sparkRuntimeVersion};
   }
 
   factory ComputeRuntimeDtoResponse.fromMap(Map<String, dynamic> map) {
     return ComputeRuntimeDtoResponse(
-      sparkRuntimeVersion: map['sparkRuntimeVersion'] == null ? null : (map['sparkRuntimeVersion']! as String).input(),
+      sparkRuntimeVersion: (() {
+        final guardedValue = map['sparkRuntimeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

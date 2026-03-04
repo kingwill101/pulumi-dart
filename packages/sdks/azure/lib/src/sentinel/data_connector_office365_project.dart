@@ -214,11 +214,13 @@ import 'data_connector_office365_project_state.dart';
 class DataConnectorOffice365Project extends pulumi.CustomResource {
   /// The ID of the Log Analytics Workspace that this Office 365 Project Data Connector resides in. Changing this forces a new Office 365 Project Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Office 365 Project Data Connector. Changing this forces a new Office 365 Project Data Connector to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the tenant that this Office 365 Project Data Connector connects to. Changing this forces a new Office 365 Project Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   late final pulumi.Output<String> tenantId;
 
   /// Creates a new [DataConnectorOffice365Project].
@@ -230,14 +232,14 @@ class DataConnectorOffice365Project extends pulumi.CustomResource {
     DataConnectorOffice365ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorOffice365Project:DataConnectorOffice365Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorOffice365Project:DataConnectorOffice365Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [DataConnectorOffice365Project] resource's state with the given [name] and [id].
@@ -258,13 +260,13 @@ class DataConnectorOffice365Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorOffice365Project:DataConnectorOffice365Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorOffice365Project:DataConnectorOffice365Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

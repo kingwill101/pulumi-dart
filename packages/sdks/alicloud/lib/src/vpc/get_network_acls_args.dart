@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkAclsArgs {
   /// A list of Network Acl ID.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Network Acl name.
   final pulumi.Input<String>? nameRegex;
+
   /// The name of the network ACL.
   final pulumi.Input<String>? networkAclName;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the associated resource.
   final pulumi.Input<String>? resourceId;
+
   /// The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
   final pulumi.Input<String>? resourceType;
+
   /// The state of the network ACL. Valid values: `Available` and `Modifying`.
   final pulumi.Input<String>? status;
+
   /// The ID of the associated VPC.
   final pulumi.Input<String>? vpcId;
 
@@ -59,15 +66,46 @@ class GetNetworkAclsArgs {
 
   factory GetNetworkAclsArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      networkAclName: map['networkAclName'] == null ? null : (map['networkAclName']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkAclName: (() {
+        final guardedValue = map['networkAclName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

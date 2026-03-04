@@ -6,6 +6,7 @@ import 'get_local_gateway_route_table_filter.dart';
 /// Result data returned by getLocalGatewayRouteTable.
 class GetLocalGatewayRouteTableResult {
   final List<GetLocalGatewayRouteTableFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String localGatewayId;
@@ -37,7 +38,14 @@ class GetLocalGatewayRouteTableResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetLocalGatewayRouteTableFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetLocalGatewayRouteTableFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'localGatewayId': localGatewayId,
       'localGatewayRouteTableId': localGatewayRouteTableId,
@@ -50,7 +58,16 @@ class GetLocalGatewayRouteTableResult {
 
   factory GetLocalGatewayRouteTableResult.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayRouteTableResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayRouteTableFilter>(map['filters']!, (value) => GetLocalGatewayRouteTableFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetLocalGatewayRouteTableFilter>(
+          guardedValue,
+          (value) => GetLocalGatewayRouteTableFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       localGatewayId: map['localGatewayId'] as String,
       localGatewayRouteTableId: map['localGatewayRouteTableId'] as String,
@@ -61,4 +78,3 @@ class GetLocalGatewayRouteTableResult {
     );
   }
 }
-

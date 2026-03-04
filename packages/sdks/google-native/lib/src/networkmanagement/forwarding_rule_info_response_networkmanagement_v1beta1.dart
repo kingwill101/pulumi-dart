@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForwardingRuleInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Compute Engine forwarding rule.
   final pulumi.Input<String> displayName;
+
   /// Port range defined in the forwarding rule that matches the test.
   final pulumi.Input<String> matchedPortRange;
+
   /// Protocol defined in the forwarding rule that matches the test.
   final pulumi.Input<String> matchedProtocol;
+
   /// Network URI. Only valid for Internal Load Balancer.
   final pulumi.Input<String> networkUri;
+
   /// Target type of the forwarding rule.
   final pulumi.Input<String> target;
+
   /// URI of a Compute Engine forwarding rule.
   final pulumi.Input<String> uri;
+
   /// VIP of the forwarding rule.
   final pulumi.Input<String> vip;
 
@@ -49,16 +55,19 @@ class ForwardingRuleInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory ForwardingRuleInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ForwardingRuleInfoResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ForwardingRuleInfoResponseNetworkmanagementV1beta1(
-      displayName: (map['displayName'] as String).input(),
-      matchedPortRange: (map['matchedPortRange'] as String).input(),
-      matchedProtocol: (map['matchedProtocol'] as String).input(),
-      networkUri: (map['networkUri'] as String).input(),
-      target: (map['target'] as String).input(),
-      uri: (map['uri'] as String).input(),
-      vip: (map['vip'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      matchedPortRange: pulumi.Input.fromValue(
+        map['matchedPortRange'] as String,
+      ),
+      matchedProtocol: pulumi.Input.fromValue(map['matchedProtocol'] as String),
+      networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      vip: pulumi.Input.fromValue(map['vip'] as String),
     );
   }
 }
-

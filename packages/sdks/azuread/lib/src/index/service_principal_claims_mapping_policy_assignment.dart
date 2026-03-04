@@ -115,9 +115,11 @@ import 'service_principal_claims_mapping_policy_assignment_state.dart';
 /// ```sh
 /// $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app /servicePrincipals/00000000-0000-0000-0000-000000000000/claimsMappingPolicies/11111111-0000-0000-0000-000000000000
 /// ```
-class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.CustomResource {
+class ServicePrincipalClaimsMappingPolicyAssignment
+    extends pulumi.CustomResource {
   /// The ID of the claims mapping policy to assign.
   late final pulumi.Output<String> claimsMappingPolicyId;
+
   /// The ID of the service principal for the policy assignment.
   late final pulumi.Output<String> servicePrincipalId;
 
@@ -130,13 +132,13 @@ class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.CustomResourc
     ServicePrincipalClaimsMappingPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.claimsMappingPolicyId = registerOutput<String>('claimsMappingPolicyId');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
+         'azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    claimsMappingPolicyId = registerOutput<String>('claimsMappingPolicyId');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }
 
   /// Gets an existing [ServicePrincipalClaimsMappingPolicyAssignment] resource's state with the given [name] and [id].
@@ -157,12 +159,12 @@ class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.CustomResourc
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.claimsMappingPolicyId = registerOutput<String>('claimsMappingPolicyId');
-    this.servicePrincipalId = registerOutput<String>('servicePrincipalId');
+         'azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    claimsMappingPolicyId = registerOutput<String>('claimsMappingPolicyId');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }
 }

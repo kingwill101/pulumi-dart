@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcNatGatewayArgs {
   /// The ID of VPC NAT Gateway.
   final pulumi.Input<String>? id;
+
   /// The name of VPC NAT Gateway.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetVpcNatGatewayArgs].
   /// [id] The ID of VPC NAT Gateway.
   /// [name] The name of VPC NAT Gateway.
-  GetVpcNatGatewayArgs({
-    this.id,
-    this.name,
-  });
+  GetVpcNatGatewayArgs({this.id, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name};
   }
 
   factory GetVpcNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcNatGatewayArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

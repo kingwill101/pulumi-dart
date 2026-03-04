@@ -5,7 +5,6 @@ import 'gateway_vpn_attachment_health_check_config.dart';
 import 'gateway_vpn_attachment_ike_config.dart';
 import 'gateway_vpn_attachment_ipsec_config.dart';
 import 'gateway_vpn_attachment_state.dart';
-import 'gateway_vpn_attachment_tunnel_options_specification.dart';
 
 /// Provides a VPN Gateway Vpn Attachment resource.
 ///
@@ -13,7 +12,7 @@ import 'gateway_vpn_attachment_tunnel_options_specification.dart';
 ///
 /// For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
 ///
-/// > **NOTE:** Available since v1.181.0.
+/// &gt; **NOTE:** Available since v1.181.0.
 ///
 /// ## Example Usage
 ///
@@ -996,56 +995,75 @@ class GatewayVpnAttachment extends pulumi.CustomResource {
   /// Bgp configuration information.
   /// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
   late final pulumi.Output<GatewayVpnAttachmentBgpConfig> bgpConfig;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Customer gateway ID.
   /// - This parameter is required when creating a single-tunnel mode vpn attachment.
   late final pulumi.Output<String?> customerGatewayId;
+
   /// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
   late final pulumi.Output<bool> effectImmediately;
+
   /// This parameter is supported if you create an vpn attachment in single-tunnel mode.
   /// Whether to enable the DPD (peer survival detection) function.
   /// - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
   /// - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
   late final pulumi.Output<bool> enableDpd;
+
   /// This parameter is supported if you create an vpn attachment in single-tunnel mode.
   /// Specifies whether to enable NAT traversal. Valid values:
   /// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
   /// - false: disables NAT traversal.
   late final pulumi.Output<bool> enableNatTraversal;
+
   /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
   ///
-  /// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+  /// &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
   late final pulumi.Output<bool> enableTunnelsBgp;
+
   /// This parameter is supported if you create an vpn attachment in single-tunnel mode.
   /// Health check configuration information. See `health_check_config` below.
-  late final pulumi.Output<GatewayVpnAttachmentHealthCheckConfig> healthCheckConfig;
+  late final pulumi.Output<GatewayVpnAttachmentHealthCheckConfig>
+  healthCheckConfig;
+
   /// The configurations of Phase 1 negotiations.
   /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
   late final pulumi.Output<GatewayVpnAttachmentIkeConfig> ikeConfig;
+
   /// Configuration negotiated in the second stage.
   /// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
   late final pulumi.Output<GatewayVpnAttachmentIpsecConfig> ipsecConfig;
+
   /// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
   /// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
   /// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
   late final pulumi.Output<String> localSubnet;
+
   /// network type
   late final pulumi.Output<String> networkType;
+
   /// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
   /// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
   /// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
   late final pulumi.Output<String> remoteSubnet;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The negotiation status of Tunnel.
   late final pulumi.Output<String> status;
+
   /// Tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Configure the tunnel.
   /// - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
   /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
-  late final pulumi.Output<List<GatewayVpnAttachmentTunnelOptionsSpecification>> tunnelOptionsSpecifications;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  tunnelOptionsSpecifications;
+
   /// vpn attachment name
   late final pulumi.Output<String?> vpnAttachmentName;
 
@@ -1058,29 +1076,35 @@ class GatewayVpnAttachment extends pulumi.CustomResource {
     GatewayVpnAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>('bgpConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.customerGatewayId = registerOutput<String?>('customerGatewayId');
-    this.effectImmediately = registerOutput<bool>('effectImmediately');
-    this.enableDpd = registerOutput<bool>('enableDpd');
-    this.enableNatTraversal = registerOutput<bool>('enableNatTraversal');
-    this.enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
-    this.healthCheckConfig = registerOutput<GatewayVpnAttachmentHealthCheckConfig>('healthCheckConfig');
-    this.ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>('ikeConfig');
-    this.ipsecConfig = registerOutput<GatewayVpnAttachmentIpsecConfig>('ipsecConfig');
-    this.localSubnet = registerOutput<String>('localSubnet');
-    this.networkType = registerOutput<String>('networkType');
-    this.remoteSubnet = registerOutput<String>('remoteSubnet');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tunnelOptionsSpecifications = registerOutput<List<GatewayVpnAttachmentTunnelOptionsSpecification>>('tunnelOptionsSpecifications');
-    this.vpnAttachmentName = registerOutput<String?>('vpnAttachmentName');
+         'alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>('bgpConfig');
+    createTime = registerOutput<String>('createTime');
+    customerGatewayId = registerOutput<String?>('customerGatewayId');
+    effectImmediately = registerOutput<bool>('effectImmediately');
+    enableDpd = registerOutput<bool>('enableDpd');
+    enableNatTraversal = registerOutput<bool>('enableNatTraversal');
+    enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
+    healthCheckConfig = registerOutput<GatewayVpnAttachmentHealthCheckConfig>(
+      'healthCheckConfig',
+    );
+    ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>('ikeConfig');
+    ipsecConfig = registerOutput<GatewayVpnAttachmentIpsecConfig>(
+      'ipsecConfig',
+    );
+    localSubnet = registerOutput<String>('localSubnet');
+    networkType = registerOutput<String>('networkType');
+    remoteSubnet = registerOutput<String>('remoteSubnet');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tunnelOptionsSpecifications = registerOutput<List<Map<String, dynamic>>>(
+      'tunnelOptionsSpecifications',
+    );
+    vpnAttachmentName = registerOutput<String?>('vpnAttachmentName');
   }
 
   /// Gets an existing [GatewayVpnAttachment] resource's state with the given [name] and [id].
@@ -1101,28 +1125,34 @@ class GatewayVpnAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>('bgpConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.customerGatewayId = registerOutput<String?>('customerGatewayId');
-    this.effectImmediately = registerOutput<bool>('effectImmediately');
-    this.enableDpd = registerOutput<bool>('enableDpd');
-    this.enableNatTraversal = registerOutput<bool>('enableNatTraversal');
-    this.enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
-    this.healthCheckConfig = registerOutput<GatewayVpnAttachmentHealthCheckConfig>('healthCheckConfig');
-    this.ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>('ikeConfig');
-    this.ipsecConfig = registerOutput<GatewayVpnAttachmentIpsecConfig>('ipsecConfig');
-    this.localSubnet = registerOutput<String>('localSubnet');
-    this.networkType = registerOutput<String>('networkType');
-    this.remoteSubnet = registerOutput<String>('remoteSubnet');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tunnelOptionsSpecifications = registerOutput<List<GatewayVpnAttachmentTunnelOptionsSpecification>>('tunnelOptionsSpecifications');
-    this.vpnAttachmentName = registerOutput<String?>('vpnAttachmentName');
+         'alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgpConfig = registerOutput<GatewayVpnAttachmentBgpConfig>('bgpConfig');
+    createTime = registerOutput<String>('createTime');
+    customerGatewayId = registerOutput<String?>('customerGatewayId');
+    effectImmediately = registerOutput<bool>('effectImmediately');
+    enableDpd = registerOutput<bool>('enableDpd');
+    enableNatTraversal = registerOutput<bool>('enableNatTraversal');
+    enableTunnelsBgp = registerOutput<bool>('enableTunnelsBgp');
+    healthCheckConfig = registerOutput<GatewayVpnAttachmentHealthCheckConfig>(
+      'healthCheckConfig',
+    );
+    ikeConfig = registerOutput<GatewayVpnAttachmentIkeConfig>('ikeConfig');
+    ipsecConfig = registerOutput<GatewayVpnAttachmentIpsecConfig>(
+      'ipsecConfig',
+    );
+    localSubnet = registerOutput<String>('localSubnet');
+    networkType = registerOutput<String>('networkType');
+    remoteSubnet = registerOutput<String>('remoteSubnet');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tunnelOptionsSpecifications = registerOutput<List<Map<String, dynamic>>>(
+      'tunnelOptionsSpecifications',
+    );
+    vpnAttachmentName = registerOutput<String?>('vpnAttachmentName');
   }
 }

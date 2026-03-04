@@ -13,15 +13,14 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'event': event,
-    };
+    return <String, dynamic>{'event': event};
   }
 
-  factory CxTestCaseLastTestResultConversationTurnUserInputInputEvent.fromMap(Map<String, dynamic> map) {
+  factory CxTestCaseLastTestResultConversationTurnUserInputInputEvent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxTestCaseLastTestResultConversationTurnUserInputInputEvent(
-      event: (map['event'] as String).input(),
+      event: pulumi.Input.fromValue(map['event'] as String),
     );
   }
 }
-

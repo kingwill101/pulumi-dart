@@ -9,16 +9,15 @@ enum SecretPermissions {
   valueRecover("recover"),
   valuePurge("purge");
 
-  const SecretPermissions(this.value);
-  final String value;
+  const SecretPermissions(this.wireValue);
+  final String wireValue;
 
   static SecretPermissions fromValue(String value) {
     for (final item in SecretPermissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecretPermissions value: $value');
   }
 }
-

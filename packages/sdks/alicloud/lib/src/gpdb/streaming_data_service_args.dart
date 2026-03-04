@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamingDataServiceArgs {
   /// The ID of the associated instance.
   final pulumi.Input<String> dbInstanceId;
+
   /// The description of the service.
   final pulumi.Input<String>? serviceDescription;
+
   /// Service Name
   final pulumi.Input<String> serviceName;
+
   /// Resource Specifications
   final pulumi.Input<String> serviceSpec;
 
@@ -39,11 +42,14 @@ class StreamingDataServiceArgs {
 
   factory StreamingDataServiceArgs.fromMap(Map<String, dynamic> map) {
     return StreamingDataServiceArgs(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription']! as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      serviceSpec: (map['serviceSpec'] as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      serviceDescription: (() {
+        final guardedValue = map['serviceDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      serviceSpec: pulumi.Input.fromValue(map['serviceSpec'] as String),
     );
   }
 }
-

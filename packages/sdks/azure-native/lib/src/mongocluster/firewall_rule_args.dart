@@ -10,10 +10,13 @@ import 'firewall_rule_properties.dart';
 class FirewallRuleArgs {
   /// The name of the mongo cluster firewall rule.
   final pulumi.Input<String>? firewallRuleName;
+
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<FirewallRuleProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,37 @@ class FirewallRuleArgs {
     return <String, dynamic>{
       'firewallRuleName': ?firewallRuleName,
       'mongoClusterName': mongoClusterName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<FirewallRuleProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirewallRuleProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
-      mongoClusterName: (map['mongoClusterName'] as String).input(),
-      properties: map['properties'] == null ? null : (FirewallRuleProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      firewallRuleName: (() {
+        final guardedValue = map['firewallRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mongoClusterName: pulumi.Input.fromValue(
+        map['mongoClusterName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirewallRuleProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

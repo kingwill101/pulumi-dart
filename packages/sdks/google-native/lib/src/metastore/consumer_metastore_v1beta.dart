@@ -9,20 +9,19 @@ class ConsumerMetastoreV1beta {
 
   /// Creates a new [ConsumerMetastoreV1beta].
   /// [subnetwork] Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ConsumerMetastoreV1beta({
-    this.subnetwork,
-  });
+  ConsumerMetastoreV1beta({this.subnetwork});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subnetwork': ?subnetwork,
-    };
+    return <String, dynamic>{'subnetwork': ?subnetwork};
   }
 
   factory ConsumerMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return ConsumerMetastoreV1beta(
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

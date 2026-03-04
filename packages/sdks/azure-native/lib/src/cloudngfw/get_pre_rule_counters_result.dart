@@ -6,22 +6,31 @@ import 'app_seen_data_response.dart';
 class GetPreRuleCountersResult {
   /// apps seen
   final AppSeenDataResponse? appSeen;
+
   /// firewall name
   final String? firewallName;
+
   /// hit count
   final int? hitCount;
+
   /// last updated timestamp
   final String? lastUpdatedTimestamp;
+
   /// priority number
   final String priority;
+
   /// timestamp of request
   final String? requestTimestamp;
+
   /// rule list name
   final String? ruleListName;
+
   /// rule name
   final String ruleName;
+
   /// rule Stack Name
   final String? ruleStackName;
+
   /// timestamp of response
   final String? timestamp;
 
@@ -51,7 +60,7 @@ class GetPreRuleCountersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appSeen': ?appSeen == null ? null : appSeen!.toMap(),
+      'appSeen': ?appSeen?.toMap(),
       'firewallName': ?firewallName,
       'hitCount': ?hitCount,
       'lastUpdatedTimestamp': ?lastUpdatedTimestamp,
@@ -66,17 +75,50 @@ class GetPreRuleCountersResult {
 
   factory GetPreRuleCountersResult.fromMap(Map<String, dynamic> map) {
     return GetPreRuleCountersResult(
-      appSeen: map['appSeen'] == null ? null : AppSeenDataResponse.fromMap((map['appSeen']! as Map).cast<String, dynamic>()),
-      firewallName: map['firewallName'] == null ? null : map['firewallName']! as String,
-      hitCount: map['hitCount'] == null ? null : map['hitCount']! as int,
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : map['lastUpdatedTimestamp']! as String,
+      appSeen: (() {
+        final guardedValue = map['appSeen'];
+        if (guardedValue == null) return null;
+        return AppSeenDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      firewallName: (() {
+        final guardedValue = map['firewallName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      hitCount: (() {
+        final guardedValue = map['hitCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      lastUpdatedTimestamp: (() {
+        final guardedValue = map['lastUpdatedTimestamp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       priority: map['priority'] as String,
-      requestTimestamp: map['requestTimestamp'] == null ? null : map['requestTimestamp']! as String,
-      ruleListName: map['ruleListName'] == null ? null : map['ruleListName']! as String,
+      requestTimestamp: (() {
+        final guardedValue = map['requestTimestamp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ruleListName: (() {
+        final guardedValue = map['ruleListName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       ruleName: map['ruleName'] as String,
-      ruleStackName: map['ruleStackName'] == null ? null : map['ruleStackName']! as String,
-      timestamp: map['timestamp'] == null ? null : map['timestamp']! as String,
+      ruleStackName: (() {
+        final guardedValue = map['ruleStackName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      timestamp: (() {
+        final guardedValue = map['timestamp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

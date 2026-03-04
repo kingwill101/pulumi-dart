@@ -1,5 +1,3 @@
-library module_ddos;
-
 export 'ddos/basic_defense_threshold.dart';
 export 'ddos/basic_defense_threshold_args.dart';
 export 'ddos/basic_defense_threshold_state.dart';

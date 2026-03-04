@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'central_server_vm_details_response.dart';
 import 'enqueue_replication_server_properties_response.dart';
 import 'enqueue_server_properties_response.dart';
 import 'gateway_server_properties_response.dart';
@@ -279,44 +278,67 @@ import 'system_data_response.dart';
 class SapCentralServerInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Defines the SAP Enqueue Replication Server (ERS) properties.
-  late final pulumi.Output<EnqueueReplicationServerPropertiesResponse?> enqueueReplicationServerProperties;
+  late final pulumi.Output<EnqueueReplicationServerPropertiesResponse?>
+  enqueueReplicationServerProperties;
+
   /// Defines the SAP Enqueue Server properties.
-  late final pulumi.Output<EnqueueServerPropertiesResponse?> enqueueServerProperties;
+  late final pulumi.Output<EnqueueServerPropertiesResponse?>
+  enqueueServerProperties;
+
   /// Defines the errors related to SAP Central Services Instance resource.
   late final pulumi.Output<SAPVirtualInstanceErrorResponse> errors;
+
   /// Defines the SAP Gateway Server properties.
-  late final pulumi.Output<GatewayServerPropertiesResponse?> gatewayServerProperties;
+  late final pulumi.Output<GatewayServerPropertiesResponse?>
+  gatewayServerProperties;
+
   /// Defines the health of SAP Instances.
   late final pulumi.Output<String> health;
+
   /// The central services instance number.
   late final pulumi.Output<String> instanceNo;
+
   /// The central services instance Kernel Patch level.
   late final pulumi.Output<String> kernelPatch;
+
   /// The central services instance Kernel Version.
   late final pulumi.Output<String> kernelVersion;
+
   /// The Load Balancer details such as LoadBalancer ID attached to ASCS Virtual Machines
   late final pulumi.Output<LoadBalancerDetailsResponse> loadBalancerDetails;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Defines the SAP message server properties.
-  late final pulumi.Output<MessageServerPropertiesResponse?> messageServerProperties;
+  late final pulumi.Output<MessageServerPropertiesResponse?>
+  messageServerProperties;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
+
   /// Defines the SAP Instance status.
   late final pulumi.Output<String> status;
+
   /// The central services instance subnet.
   late final pulumi.Output<String> subnet;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The list of virtual machines corresponding to the Central Services instance.
-  late final pulumi.Output<List<CentralServerVmDetailsResponse>> vmDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>> vmDetails;
 
   /// Creates a new [SapCentralServerInstance].
   /// [name] The Pulumi resource name.
@@ -327,30 +349,41 @@ class SapCentralServerInstance extends pulumi.CustomResource {
     SapCentralServerInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:SapCentralServerInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enqueueReplicationServerProperties = registerOutput<EnqueueReplicationServerPropertiesResponse?>('enqueueReplicationServerProperties');
-    this.enqueueServerProperties = registerOutput<EnqueueServerPropertiesResponse?>('enqueueServerProperties');
-    this.errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
-    this.gatewayServerProperties = registerOutput<GatewayServerPropertiesResponse?>('gatewayServerProperties');
-    this.health = registerOutput<String>('health');
-    this.instanceNo = registerOutput<String>('instanceNo');
-    this.kernelPatch = registerOutput<String>('kernelPatch');
-    this.kernelVersion = registerOutput<String>('kernelVersion');
-    this.loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>('loadBalancerDetails');
-    this.location = registerOutput<String>('location');
-    this.messageServerProperties = registerOutput<MessageServerPropertiesResponse?>('messageServerProperties');
+         'azure-native:workloads:SapCentralServerInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enqueueReplicationServerProperties =
+        registerOutput<EnqueueReplicationServerPropertiesResponse?>(
+          'enqueueReplicationServerProperties',
+        );
+    enqueueServerProperties = registerOutput<EnqueueServerPropertiesResponse?>(
+      'enqueueServerProperties',
+    );
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
+    gatewayServerProperties = registerOutput<GatewayServerPropertiesResponse?>(
+      'gatewayServerProperties',
+    );
+    health = registerOutput<String>('health');
+    instanceNo = registerOutput<String>('instanceNo');
+    kernelPatch = registerOutput<String>('kernelPatch');
+    kernelVersion = registerOutput<String>('kernelVersion');
+    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>(
+      'loadBalancerDetails',
+    );
+    location = registerOutput<String>('location');
+    messageServerProperties = registerOutput<MessageServerPropertiesResponse?>(
+      'messageServerProperties',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String>('status');
-    this.subnet = registerOutput<String>('subnet');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vmDetails = registerOutput<List<CentralServerVmDetailsResponse>>('vmDetails');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    subnet = registerOutput<String>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');
   }
 }

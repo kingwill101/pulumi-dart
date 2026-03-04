@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
   /// Whether shrinkage is prohibited. The values are described as follows:
   final pulumi.Input<bool> disabled;
+
   /// Expansion cooling time.
   final pulumi.Input<int> stabilizationWindowSeconds;
+
   /// Flexible expansion step. The maximum number of instances per unit time.
   final pulumi.Input<int> step;
 
@@ -28,12 +30,15 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
     };
   }
 
-  factory GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule(
-      disabled: (map['disabled'] as bool).input(),
-      stabilizationWindowSeconds: (map['stabilizationWindowSeconds'] as int).input(),
-      step: (map['step'] as int).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      stabilizationWindowSeconds: pulumi.Input.fromValue(
+        map['stabilizationWindowSeconds'] as int,
+      ),
+      step: pulumi.Input.fromValue(map['step'] as int),
     );
   }
 }
-

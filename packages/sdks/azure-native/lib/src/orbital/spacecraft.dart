@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spacecraft_args.dart';
-import 'spacecraft_link_response.dart';
 import 'system_data_response.dart';
 
 /// Customer creates a spacecraft resource to schedule a contact.
@@ -252,24 +251,34 @@ import 'system_data_response.dart';
 class Spacecraft extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Immutable list of Spacecraft links.
-  late final pulumi.Output<List<SpacecraftLinkResponse>> links;
+  late final pulumi.Output<List<Map<String, dynamic>>> links;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// NORAD ID of the spacecraft.
   late final pulumi.Output<String?> noradId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Title line of the two-line element set (TLE).
   late final pulumi.Output<String> titleLine;
+
   /// Line 1 of the two-line element set (TLE).
   late final pulumi.Output<String> tleLine1;
+
   /// Line 2 of the two-line element set (TLE).
   late final pulumi.Output<String> tleLine2;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -282,21 +291,21 @@ class Spacecraft extends pulumi.CustomResource {
     SpacecraftArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:orbital:Spacecraft',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.links = registerOutput<List<SpacecraftLinkResponse>>('links');
-    this.location = registerOutput<String>('location');
+         'azure-native:orbital:Spacecraft',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    links = registerOutput<List<Map<String, dynamic>>>('links');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.noradId = registerOutput<String?>('noradId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.titleLine = registerOutput<String>('titleLine');
-    this.tleLine1 = registerOutput<String>('tleLine1');
-    this.tleLine2 = registerOutput<String>('tleLine2');
-    this.type = registerOutput<String>('type');
+    noradId = registerOutput<String?>('noradId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    titleLine = registerOutput<String>('titleLine');
+    tleLine1 = registerOutput<String>('tleLine1');
+    tleLine2 = registerOutput<String>('tleLine2');
+    type = registerOutput<String>('type');
   }
 }

@@ -13,15 +13,18 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metadata': ?metadata,
-    };
+    return <String, dynamic>{'metadata': ?metadata};
   }
 
-  factory CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
+  factory CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

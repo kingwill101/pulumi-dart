@@ -1,5 +1,3 @@
-library module_remotebuildexecution;
-
 export 'remotebuildexecution/functions.dart';
 export 'remotebuildexecution/get_instance_args.dart';
 export 'remotebuildexecution/get_instance_result.dart';

@@ -243,8 +243,10 @@ class TransferAgentPool extends pulumi.CustomResource {
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   /// Structure is documented below.
   late final pulumi.Output<TransferAgentPoolBandwidthLimit?> bandwidthLimit;
+
   /// Specifies the client-specified AgentPool description.
   late final pulumi.Output<String?> displayName;
+
   /// The ID of the agent pool to create.
   /// The agentPoolId must meet the following requirements:
   /// * Length of 128 characters or less.
@@ -254,9 +256,11 @@ class TransferAgentPool extends pulumi.CustomResource {
   /// * One or more numerals or lowercase ASCII characters.
   /// As expressed by the regular expression: ^(?!goog)a-z?$.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Specifies the state of the AgentPool.
   late final pulumi.Output<String> state;
 
@@ -269,16 +273,18 @@ class TransferAgentPool extends pulumi.CustomResource {
     TransferAgentPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/transferAgentPool:TransferAgentPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit');
-    this.displayName = registerOutput<String?>('displayName');
+         'gcp:storage/transferAgentPool:TransferAgentPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>(
+      'bandwidthLimit',
+    );
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.state = registerOutput<String>('state');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [TransferAgentPool] resource's state with the given [name] and [id].
@@ -299,15 +305,17 @@ class TransferAgentPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/transferAgentPool:TransferAgentPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit');
-    this.displayName = registerOutput<String?>('displayName');
+         'gcp:storage/transferAgentPool:TransferAgentPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>(
+      'bandwidthLimit',
+    );
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
   }
 }

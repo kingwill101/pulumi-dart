@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCharacterSetNames.
 class GetCharacterSetNamesResult {
   final String engine;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> names;
@@ -35,8 +35,11 @@ class GetCharacterSetNamesResult {
       engine: map['engine'] as String,
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

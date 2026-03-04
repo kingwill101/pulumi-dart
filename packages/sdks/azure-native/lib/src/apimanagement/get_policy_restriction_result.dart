@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPolicyRestriction.
 class GetPolicyRestrictionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Indicates if base policy should be enforced for the policy document.
   final String? requireBase;
+
   /// Path to the policy document.
   final String? scope;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -48,10 +52,17 @@ class GetPolicyRestrictionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      requireBase: map['requireBase'] == null ? null : map['requireBase']! as String,
-      scope: map['scope'] == null ? null : map['scope']! as String,
+      requireBase: (() {
+        final guardedValue = map['requireBase'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

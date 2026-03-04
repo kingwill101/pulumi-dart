@@ -13,23 +13,16 @@ class GetInterfaceArgs {
   /// Creates a new [GetInterfaceArgs].
   /// [id] Required.
   /// [linodeId] Required.
-  GetInterfaceArgs({
-    required this.id,
-    required this.linodeId,
-  });
+  GetInterfaceArgs({required this.id, required this.linodeId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'linodeId': linodeId,
-    };
+    return <String, dynamic>{'id': id, 'linodeId': linodeId};
   }
 
   factory GetInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetInterfaceArgs(
-      id: (map['id'] as String).input(),
-      linodeId: (map['linodeId'] as int).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
     );
   }
 }
-

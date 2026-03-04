@@ -9,20 +9,15 @@ class MpegCommonEncryptionResponse {
 
   /// Creates a new [MpegCommonEncryptionResponse].
   /// [scheme] Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`
-  MpegCommonEncryptionResponse({
-    required this.scheme,
-  });
+  MpegCommonEncryptionResponse({required this.scheme});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scheme': scheme,
-    };
+    return <String, dynamic>{'scheme': scheme};
   }
 
   factory MpegCommonEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return MpegCommonEncryptionResponse(
-      scheme: (map['scheme'] as String).input(),
+      scheme: pulumi.Input.fromValue(map['scheme'] as String),
     );
   }
 }
-

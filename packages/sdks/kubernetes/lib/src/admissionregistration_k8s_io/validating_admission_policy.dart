@@ -9,12 +9,16 @@ import 'validating_admission_policy_status.dart';
 class ValidatingAdmissionPolicy {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   final pulumi.Input<ObjectMeta>? metadata;
+
   /// Specification of the desired behavior of the ValidatingAdmissionPolicy.
   final pulumi.Input<ValidatingAdmissionPolicySpec>? spec;
+
   /// The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only.
   final pulumi.Input<ValidatingAdmissionPolicyStatus>? status;
 
@@ -36,20 +40,61 @@ class ValidatingAdmissionPolicy {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<ValidatingAdmissionPolicySpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
-      'status': ?pulumi.Input.mapOptionalInputValue<ValidatingAdmissionPolicyStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            ValidatingAdmissionPolicySpec,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            ValidatingAdmissionPolicyStatus,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory ValidatingAdmissionPolicy.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicy(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ValidatingAdmissionPolicySpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (ValidatingAdmissionPolicyStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ValidatingAdmissionPolicySpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ValidatingAdmissionPolicyStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

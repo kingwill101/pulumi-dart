@@ -9,20 +9,17 @@ class BigQueryDestinationResponseContainerV1beta1 {
 
   /// Creates a new [BigQueryDestinationResponseContainerV1beta1].
   /// [datasetId] The ID of a BigQuery Dataset.
-  BigQueryDestinationResponseContainerV1beta1({
-    required this.datasetId,
-  });
+  BigQueryDestinationResponseContainerV1beta1({required this.datasetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': datasetId,
-    };
+    return <String, dynamic>{'datasetId': datasetId};
   }
 
-  factory BigQueryDestinationResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory BigQueryDestinationResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BigQueryDestinationResponseContainerV1beta1(
-      datasetId: (map['datasetId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
     );
   }
 }
-

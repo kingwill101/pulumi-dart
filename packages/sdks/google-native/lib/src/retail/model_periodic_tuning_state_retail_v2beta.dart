@@ -5,16 +5,17 @@ enum ModelPeriodicTuningStateRetailV2beta {
   allTuningDisabled("ALL_TUNING_DISABLED"),
   periodicTuningEnabled("PERIODIC_TUNING_ENABLED");
 
-  const ModelPeriodicTuningStateRetailV2beta(this.value);
-  final String value;
+  const ModelPeriodicTuningStateRetailV2beta(this.wireValue);
+  final String wireValue;
 
   static ModelPeriodicTuningStateRetailV2beta fromValue(String value) {
     for (final item in ModelPeriodicTuningStateRetailV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ModelPeriodicTuningStateRetailV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ModelPeriodicTuningStateRetailV2beta value: $value',
+    );
   }
 }
-

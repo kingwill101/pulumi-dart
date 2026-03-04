@@ -9,66 +9,94 @@ import 'system_data_response.dart';
 class GetResourcePoolResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets the max CPU usage across all cores on the pool in MHz.
   final double cpuCapacityMHz;
+
   /// Gets or sets CPULimitMHz which specifies a CPU usage limit in MHz.
   /// Utilization will not exceed this limit even if there are available resources.
   final double cpuLimitMHz;
+
   /// Gets the used CPU usage across all cores on the pool in MHz.
   final double cpuOverallUsageMHz;
+
   /// Gets or sets CPUReservationMHz which specifies the CPU size in MHz that is guaranteed
   /// to be available.
   final double cpuReservationMHz;
+
   /// Gets or sets CPUSharesLevel which specifies the CPU allocation level for this pool.
   /// This property is used in relative allocation between resource consumers.
   final String cpuSharesLevel;
+
   /// Gets the name of the corresponding resource in Kubernetes.
   final String customResourceName;
+
   /// Gets the datastore ARM ids.
   final List<String> datastoreIds;
+
   /// Gets or sets the extended location.
   final ExtendedLocationResponse? extendedLocation;
+
   /// Gets or sets the Id.
   final String id;
+
   /// Gets or sets the inventory Item ID for the resource pool.
   final String? inventoryItemId;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final String? kind;
+
   /// Gets or sets the location.
   final String location;
+
   /// Gets the total amount of physical memory on the pool in GB.
   final double memCapacityGB;
+
   /// Gets or sets MemLimitMB specifies a memory usage limit in megabytes.
   /// Utilization will not exceed the specified limit even if there are available resources.
   final double memLimitMB;
+
   /// Gets the used physical memory on the pool in GB.
   final double memOverallUsageGB;
+
   /// Gets or sets MemReservationMB which specifies the guaranteed available memory in
   /// megabytes.
   final double memReservationMB;
+
   /// Gets or sets CPUSharesLevel which specifies the memory allocation level for this pool.
   /// This property is used in relative allocation between resource consumers.
   final String memSharesLevel;
+
   /// Gets or sets the vCenter Managed Object name for the resource pool.
   final String moName;
+
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the resource pool.
   final String? moRefId;
+
   /// Gets or sets the name.
   final String name;
+
   /// Gets the network ARM ids.
   final List<String> networkIds;
+
   /// Gets the provisioning state.
   final String provisioningState;
+
   /// The resource status information.
   final List<ResourceStatusResponse> statuses;
+
   /// The system data.
   final SystemDataResponse systemData;
+
   /// Gets or sets the Resource tags.
   final Map<String, String>? tags;
+
   /// Gets or sets the type of the resource.
   final String type;
+
   /// Gets or sets a unique identifier for this resource.
   final String uuid;
+
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
   final String? vCenterId;
 
@@ -144,7 +172,7 @@ class GetResourcePoolResult {
       'cpuSharesLevel': cpuSharesLevel,
       'customResourceName': customResourceName,
       'datastoreIds': datastoreIds,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'id': id,
       'inventoryItemId': ?inventoryItemId,
       'kind': ?kind,
@@ -159,7 +187,11 @@ class GetResourcePoolResult {
       'name': name,
       'networkIds': networkIds,
       'provisioningState': provisioningState,
-      'statuses': pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(statuses, (value) => value.toMap()),
+      'statuses':
+          pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(
+            statuses,
+            (value) => value.toMap(),
+          ),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -178,10 +210,24 @@ class GetResourcePoolResult {
       cpuSharesLevel: map['cpuSharesLevel'] as String,
       customResourceName: map['customResourceName'] as String,
       datastoreIds: (map['datastoreIds'] as List).cast<String>(),
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      inventoryItemId: map['inventoryItemId'] == null ? null : map['inventoryItemId']! as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      inventoryItemId: (() {
+        final guardedValue = map['inventoryItemId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
       memCapacityGB: map['memCapacityGB'] as double,
       memLimitMB: map['memLimitMB'] as double,
@@ -189,17 +235,35 @@ class GetResourcePoolResult {
       memReservationMB: map['memReservationMB'] as double,
       memSharesLevel: map['memSharesLevel'] as String,
       moName: map['moName'] as String,
-      moRefId: map['moRefId'] == null ? null : map['moRefId']! as String,
+      moRefId: (() {
+        final guardedValue = map['moRefId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       networkIds: (map['networkIds'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
-      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(map['statuses'], (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(
+        map['statuses']!,
+        (value) => ResourceStatusResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       uuid: map['uuid'] as String,
-      vCenterId: map['vCenterId'] == null ? null : map['vCenterId']! as String,
+      vCenterId: (() {
+        final guardedValue = map['vCenterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -7,16 +7,22 @@ import 'error_detail_response.dart';
 class OperationDetailResponse {
   /// operation description.
   final pulumi.Input<String> description;
+
   /// error details.
   final pulumi.Input<ErrorDetailResponse> error;
+
   /// operation id.
   final pulumi.Input<String> id;
+
   /// operation name.
   final pulumi.Input<String> name;
+
   /// operation resource id.
   final pulumi.Input<String> resourceId;
+
   /// operation status.
   final pulumi.Input<String> status;
+
   /// operation type.
   final pulumi.Input<String> type;
 
@@ -41,7 +47,11 @@ class OperationDetailResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
+            error,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'name': name,
       'resourceId': resourceId,
@@ -52,14 +62,17 @@ class OperationDetailResponse {
 
   factory OperationDetailResponse.fromMap(Map<String, dynamic> map) {
     return OperationDetailResponse(
-      description: (map['description'] as String).input(),
-      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      status: (map['status'] as String).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      error: pulumi.Input.fromValue(
+        ErrorDetailResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

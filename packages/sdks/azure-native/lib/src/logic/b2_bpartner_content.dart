@@ -10,20 +10,39 @@ class B2BPartnerContent {
 
   /// Creates a new [B2BPartnerContent].
   /// [businessIdentities] The list of partner business identities.
-  B2BPartnerContent({
-    this.businessIdentities,
-  });
+  B2BPartnerContent({this.businessIdentities});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'businessIdentities': ?pulumi.Input.mapOptionalInputValue<List<BusinessIdentity>, List<Map<String, dynamic>>>(businessIdentities, (value) => pulumi.Input.encodeList<BusinessIdentity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'businessIdentities':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BusinessIdentity>,
+            List<Map<String, dynamic>>
+          >(
+            businessIdentities,
+            (value) =>
+                pulumi.Input.encodeList<BusinessIdentity, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory B2BPartnerContent.fromMap(Map<String, dynamic> map) {
     return B2BPartnerContent(
-      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<BusinessIdentity>(map['businessIdentities']!, (value) => BusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessIdentities: (() {
+        final guardedValue = map['businessIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BusinessIdentity>(
+            guardedValue,
+            (value) => BusinessIdentity.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

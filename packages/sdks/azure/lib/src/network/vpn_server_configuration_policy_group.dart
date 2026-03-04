@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_server_configuration_policy_group_args.dart';
-import 'vpn_server_configuration_policy_group_policy.dart';
 import 'vpn_server_configuration_policy_group_state.dart';
 
 /// Manages a VPN Server Configuration Policy Group.
@@ -272,7 +271,7 @@ import 'vpn_server_configuration_policy_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -287,12 +286,16 @@ import 'vpn_server_configuration_policy_group_state.dart';
 class VpnServerConfigurationPolicyGroup extends pulumi.CustomResource {
   /// Is this a default VPN Server Configuration Policy Group? Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> isDefault;
+
   /// The Name which should be used for this VPN Server Configuration Policy Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `policy` blocks as documented below.
-  late final pulumi.Output<List<VpnServerConfigurationPolicyGroupPolicy>> policies;
+  late final pulumi.Output<List<Map<String, dynamic>>> policies;
+
   /// The priority of this VPN Server Configuration Policy Group. Defaults to `0`.
   late final pulumi.Output<int?> priority;
+
   /// The ID of the VPN Server Configuration that the VPN Server Configuration Policy Group belongs to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vpnServerConfigurationId;
 
@@ -305,16 +308,18 @@ class VpnServerConfigurationPolicyGroup extends pulumi.CustomResource {
     VpnServerConfigurationPolicyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnServerConfigurationPolicyGroup:VpnServerConfigurationPolicyGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'azure:network/vpnServerConfigurationPolicyGroup:VpnServerConfigurationPolicyGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.policies = registerOutput<List<VpnServerConfigurationPolicyGroupPolicy>>('policies');
-    this.priority = registerOutput<int?>('priority');
-    this.vpnServerConfigurationId = registerOutput<String>('vpnServerConfigurationId');
+    policies = registerOutput<List<Map<String, dynamic>>>('policies');
+    priority = registerOutput<int?>('priority');
+    vpnServerConfigurationId = registerOutput<String>(
+      'vpnServerConfigurationId',
+    );
   }
 
   /// Gets an existing [VpnServerConfigurationPolicyGroup] resource's state with the given [name] and [id].
@@ -335,15 +340,17 @@ class VpnServerConfigurationPolicyGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnServerConfigurationPolicyGroup:VpnServerConfigurationPolicyGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'azure:network/vpnServerConfigurationPolicyGroup:VpnServerConfigurationPolicyGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.policies = registerOutput<List<VpnServerConfigurationPolicyGroupPolicy>>('policies');
-    this.priority = registerOutput<int?>('priority');
-    this.vpnServerConfigurationId = registerOutput<String>('vpnServerConfigurationId');
+    policies = registerOutput<List<Map<String, dynamic>>>('policies');
+    priority = registerOutput<int?>('priority');
+    vpnServerConfigurationId = registerOutput<String>(
+      'vpnServerConfigurationId',
+    );
   }
 }

@@ -6,24 +6,49 @@ import 'folder_custom_module_custom_config_custom_output_property.dart';
 class FolderCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final pulumi.Input<List<FolderCustomModuleCustomConfigCustomOutputProperty>>? properties;
+  final pulumi.Input<List<FolderCustomModuleCustomConfigCustomOutputProperty>>?
+  properties;
 
   /// Creates a new [FolderCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  FolderCustomModuleCustomConfigCustomOutput({
-    this.properties,
-  });
+  FolderCustomModuleCustomConfigCustomOutput({this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<List<FolderCustomModuleCustomConfigCustomOutputProperty>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<FolderCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FolderCustomModuleCustomConfigCustomOutputProperty>,
+            List<Map<String, dynamic>>
+          >(
+            properties,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FolderCustomModuleCustomConfigCustomOutputProperty,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory FolderCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
+  factory FolderCustomModuleCustomConfigCustomOutput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FolderCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<FolderCustomModuleCustomConfigCustomOutputProperty>(map['properties']!, (value) => FolderCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            FolderCustomModuleCustomConfigCustomOutputProperty
+          >(
+            guardedValue,
+            (value) =>
+                FolderCustomModuleCustomConfigCustomOutputProperty.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariableAtManagementGroupArgs {
   /// The ID of the management group.
   final pulumi.Input<String> managementGroupId;
+
   /// The name of the variable to operate on.
   final pulumi.Input<String> variableName;
 
@@ -29,9 +30,10 @@ class GetVariableAtManagementGroupArgs {
 
   factory GetVariableAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableAtManagementGroupArgs(
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      variableName: (map['variableName'] as String).input(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      variableName: pulumi.Input.fromValue(map['variableName'] as String),
     );
   }
 }
-

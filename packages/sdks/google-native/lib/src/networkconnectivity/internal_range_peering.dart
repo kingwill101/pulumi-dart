@@ -5,16 +5,15 @@ enum InternalRangePeering {
   forPeer("FOR_PEER"),
   notShared("NOT_SHARED");
 
-  const InternalRangePeering(this.value);
-  final String value;
+  const InternalRangePeering(this.wireValue);
+  final String wireValue;
 
   static InternalRangePeering fromValue(String value) {
     for (final item in InternalRangePeering.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InternalRangePeering value: $value');
   }
 }
-

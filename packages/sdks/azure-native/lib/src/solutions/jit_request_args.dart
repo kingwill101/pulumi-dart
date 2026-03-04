@@ -11,16 +11,22 @@ import 'jit_scheduling_policy.dart';
 class JitRequestArgs {
   /// The parent application id.
   final pulumi.Input<String> applicationResourceId;
+
   /// The JIT authorization policies.
   final pulumi.Input<List<JitAuthorizationPolicies>> jitAuthorizationPolicies;
+
   /// The name of the JIT request.
   final pulumi.Input<String>? jitRequestName;
+
   /// The JIT request properties.
   final pulumi.Input<JitSchedulingPolicy> jitSchedulingPolicy;
+
   /// Resource location
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,9 +51,24 @@ class JitRequestArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationResourceId': applicationResourceId,
-      'jitAuthorizationPolicies': pulumi.Input.mapInputValue<List<JitAuthorizationPolicies>, List<Map<String, dynamic>>>(jitAuthorizationPolicies, (value) => pulumi.Input.encodeList<JitAuthorizationPolicies, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'jitAuthorizationPolicies':
+          pulumi.Input.mapInputValue<
+            List<JitAuthorizationPolicies>,
+            List<Map<String, dynamic>>
+          >(
+            jitAuthorizationPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JitAuthorizationPolicies,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'jitRequestName': ?jitRequestName,
-      'jitSchedulingPolicy': pulumi.Input.mapInputValue<JitSchedulingPolicy, Map<String, dynamic>>(jitSchedulingPolicy, (value) => value.toMap()),
+      'jitSchedulingPolicy':
+          pulumi.Input.mapInputValue<JitSchedulingPolicy, Map<String, dynamic>>(
+            jitSchedulingPolicy,
+            (value) => value.toMap(),
+          ),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -56,14 +77,42 @@ class JitRequestArgs {
 
   factory JitRequestArgs.fromMap(Map<String, dynamic> map) {
     return JitRequestArgs(
-      applicationResourceId: (map['applicationResourceId'] as String).input(),
-      jitAuthorizationPolicies: (pulumi.Input.decodeList<JitAuthorizationPolicies>(map['jitAuthorizationPolicies'], (value) => JitAuthorizationPolicies.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jitRequestName: map['jitRequestName'] == null ? null : (map['jitRequestName']! as String).input(),
-      jitSchedulingPolicy: (JitSchedulingPolicy.fromMap((map['jitSchedulingPolicy'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      applicationResourceId: pulumi.Input.fromValue(
+        map['applicationResourceId'] as String,
+      ),
+      jitAuthorizationPolicies: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<JitAuthorizationPolicies>(
+          map['jitAuthorizationPolicies']!,
+          (value) => JitAuthorizationPolicies.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      jitRequestName: (() {
+        final guardedValue = map['jitRequestName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jitSchedulingPolicy: pulumi.Input.fromValue(
+        JitSchedulingPolicy.fromMap(
+          (map['jitSchedulingPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

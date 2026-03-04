@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitor_group_instances_args.dart';
-import 'monitor_group_instances_instance.dart';
 import 'monitor_group_instances_state.dart';
 
 /// Provides a Cloud Monitor Service Monitor Group Instances resource.
 ///
 /// For information about Cloud Monitor Service Monitor Group Instances and how to use it, see [What is Monitor Group Instances](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createmonitorgroupinstances).
 ///
-/// > **NOTE:** Available since v1.115.0.
+/// &gt; **NOTE:** Available since v1.115.0.
 ///
 /// ## Example Usage
 ///
@@ -262,8 +261,9 @@ import 'monitor_group_instances_state.dart';
 class MonitorGroupInstances extends pulumi.CustomResource {
   /// The id of Cms Group.
   late final pulumi.Output<String> groupId;
+
   /// Instance information added to the Cms Group. See `instances` below.
-  late final pulumi.Output<List<MonitorGroupInstancesInstance>> instances;
+  late final pulumi.Output<List<Map<String, dynamic>>> instances;
 
   /// Creates a new [MonitorGroupInstances].
   /// [name] The Pulumi resource name.
@@ -274,13 +274,13 @@ class MonitorGroupInstances extends pulumi.CustomResource {
     MonitorGroupInstancesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupId = registerOutput<String>('groupId');
-    this.instances = registerOutput<List<MonitorGroupInstancesInstance>>('instances');
+         'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupId = registerOutput<String>('groupId');
+    instances = registerOutput<List<Map<String, dynamic>>>('instances');
   }
 
   /// Gets an existing [MonitorGroupInstances] resource's state with the given [name] and [id].
@@ -301,12 +301,12 @@ class MonitorGroupInstances extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupId = registerOutput<String>('groupId');
-    this.instances = registerOutput<List<MonitorGroupInstancesInstance>>('instances');
+         'alicloud:cms/monitorGroupInstances:MonitorGroupInstances',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupId = registerOutput<String>('groupId');
+    instances = registerOutput<List<Map<String, dynamic>>>('instances');
   }
 }

@@ -4,16 +4,15 @@ enum AxisScale {
   linear("LINEAR"),
   log10("LOG10");
 
-  const AxisScale(this.value);
-  final String value;
+  const AxisScale(this.wireValue);
+  final String wireValue;
 
   static AxisScale fromValue(String value) {
     for (final item in AxisScale.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AxisScale value: $value');
   }
 }
-

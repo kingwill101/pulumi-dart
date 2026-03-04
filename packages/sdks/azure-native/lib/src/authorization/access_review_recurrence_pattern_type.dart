@@ -3,16 +3,17 @@ enum AccessReviewRecurrencePatternType {
   valueWeekly("weekly"),
   valueAbsoluteMonthly("absoluteMonthly");
 
-  const AccessReviewRecurrencePatternType(this.value);
-  final String value;
+  const AccessReviewRecurrencePatternType(this.wireValue);
+  final String wireValue;
 
   static AccessReviewRecurrencePatternType fromValue(String value) {
     for (final item in AccessReviewRecurrencePatternType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AccessReviewRecurrencePatternType value: $value');
+    throw ArgumentError(
+      'Unknown AccessReviewRecurrencePatternType value: $value',
+    );
   }
 }
-

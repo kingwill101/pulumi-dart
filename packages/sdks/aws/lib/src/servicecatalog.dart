@@ -1,5 +1,3 @@
-library module_servicecatalog;
-
 export 'servicecatalog/appregistry_application.dart';
 export 'servicecatalog/appregistry_application_args.dart';
 export 'servicecatalog/appregistry_application_state.dart';

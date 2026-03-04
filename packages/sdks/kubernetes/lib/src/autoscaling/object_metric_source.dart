@@ -9,8 +9,10 @@ import 'metric_target.dart';
 class ObjectMetricSource {
   /// describedObject specifies the descriptions of a object,such as kind,name apiVersion
   final pulumi.Input<CrossVersionObjectReferenceAutoscalingV2> describedObject;
+
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifier> metric;
+
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTarget> target;
 
@@ -26,18 +28,38 @@ class ObjectMetricSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'describedObject': pulumi.Input.mapInputValue<CrossVersionObjectReferenceAutoscalingV2, Map<String, dynamic>>(describedObject, (value) => value.toMap()),
-      'metric': pulumi.Input.mapInputValue<MetricIdentifier, Map<String, dynamic>>(metric, (value) => value.toMap()),
-      'target': pulumi.Input.mapInputValue<MetricTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'describedObject':
+          pulumi.Input.mapInputValue<
+            CrossVersionObjectReferenceAutoscalingV2,
+            Map<String, dynamic>
+          >(describedObject, (value) => value.toMap()),
+      'metric':
+          pulumi.Input.mapInputValue<MetricIdentifier, Map<String, dynamic>>(
+            metric,
+            (value) => value.toMap(),
+          ),
+      'target': pulumi.Input.mapInputValue<MetricTarget, Map<String, dynamic>>(
+        target,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory ObjectMetricSource.fromMap(Map<String, dynamic> map) {
     return ObjectMetricSource(
-      describedObject: (CrossVersionObjectReferenceAutoscalingV2.fromMap((map['describedObject'] as Map).cast<String, dynamic>())).input(),
-      metric: (MetricIdentifier.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      target: (MetricTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      describedObject: pulumi.Input.fromValue(
+        CrossVersionObjectReferenceAutoscalingV2.fromMap(
+          (map['describedObject']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      metric: pulumi.Input.fromValue(
+        MetricIdentifier.fromMap(
+          (map['metric']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      target: pulumi.Input.fromValue(
+        MetricTarget.fromMap((map['target']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

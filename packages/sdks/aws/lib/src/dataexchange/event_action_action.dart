@@ -10,20 +10,25 @@ class EventActionAction {
 
   /// Creates a new [EventActionAction].
   /// [exportRevisionToS3] Configuration for an Export Revision to S3 action.
-  EventActionAction({
-    required this.exportRevisionToS3,
-  });
+  EventActionAction({required this.exportRevisionToS3});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exportRevisionToS3': pulumi.Input.mapInputValue<EventActionActionExportRevisionToS3, Map<String, dynamic>>(exportRevisionToS3, (value) => value.toMap()),
+      'exportRevisionToS3':
+          pulumi.Input.mapInputValue<
+            EventActionActionExportRevisionToS3,
+            Map<String, dynamic>
+          >(exportRevisionToS3, (value) => value.toMap()),
     };
   }
 
   factory EventActionAction.fromMap(Map<String, dynamic> map) {
     return EventActionAction(
-      exportRevisionToS3: (EventActionActionExportRevisionToS3.fromMap((map['exportRevisionToS3']! as Map).cast<String, dynamic>())).input(),
+      exportRevisionToS3: pulumi.Input.fromValue(
+        EventActionActionExportRevisionToS3.fromMap(
+          (map['exportRevisionToS3']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

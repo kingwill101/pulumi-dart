@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration {
   /// If set to `false`, snapshots are only deleted from table metadata, and the underlying data and metadata files are not deleted. Defaults to `false`.
   final pulumi.Input<bool>? cleanExpiredFiles;
+
   /// The number of Iceberg snapshots to retain within the retention period. Defaults to `1` or the corresponding Iceberg table configuration field if it exists.
   final pulumi.Input<int>? numberOfSnapshotsToRetain;
+
   /// Interval in hours between retention job runs. Defaults to `24`.
   final pulumi.Input<int>? runRateInHours;
+
   /// The number of days to retain the Iceberg snapshots. Defaults to `5`, or the corresponding Iceberg table configuration field if it exists.
   final pulumi.Input<int>? snapshotRetentionPeriodInDays;
 
@@ -33,13 +36,30 @@ class CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfigurati
     };
   }
 
-  factory CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration(
-      cleanExpiredFiles: map['cleanExpiredFiles'] == null ? null : ((map['cleanExpiredFiles'] as bool).input()).input(),
-      numberOfSnapshotsToRetain: map['numberOfSnapshotsToRetain'] == null ? null : ((map['numberOfSnapshotsToRetain'] as int).input()).input(),
-      runRateInHours: map['runRateInHours'] == null ? null : ((map['runRateInHours'] as int).input()).input(),
-      snapshotRetentionPeriodInDays: map['snapshotRetentionPeriodInDays'] == null ? null : ((map['snapshotRetentionPeriodInDays'] as int).input()).input(),
+      cleanExpiredFiles: (() {
+        final guardedValue = map['cleanExpiredFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      numberOfSnapshotsToRetain: (() {
+        final guardedValue = map['numberOfSnapshotsToRetain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      runRateInHours: (() {
+        final guardedValue = map['runRateInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotRetentionPeriodInDays: (() {
+        final guardedValue = map['snapshotRetentionPeriodInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

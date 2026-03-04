@@ -8,56 +8,71 @@ import 'tag.dart';
 
 /// Definition of awsEc2Ipam
 class AwsEc2IpamProperties {
-  /// <p>The IPAM's default resource discovery association ID.</p>
+  /// &lt;p&gt;The IPAM's default resource discovery association ID.&lt;/p&gt;
   final pulumi.Input<String>? defaultResourceDiscoveryAssociationId;
-  /// <p>The IPAM's default resource discovery ID.</p>
+
+  /// &lt;p&gt;The IPAM's default resource discovery ID.&lt;/p&gt;
   final pulumi.Input<String>? defaultResourceDiscoveryId;
-  /// <p>The description for the IPAM.</p>
+
+  /// &lt;p&gt;The description for the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? description;
-  /// <p>The Amazon Resource Name (ARN) of the IPAM.</p>
+
+  /// &lt;p&gt;The Amazon Resource Name (ARN) of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ipamArn;
-  /// <p>The ID of the IPAM.</p>
+
+  /// &lt;p&gt;The ID of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ipamId;
-  /// <p>The Amazon Web Services Region of the IPAM.</p>
+
+  /// &lt;p&gt;The Amazon Web Services Region of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ipamRegion;
-  /// <p>The operating Regions for an IPAM. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions.</p> <p>For more information about operating Regions, see <a href='https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html'>Create an IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
+
+  /// &lt;p&gt;The operating Regions for an IPAM. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions.&lt;/p&gt; &lt;p&gt;For more information about operating Regions, see &lt;a href='https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html'&gt;Create an IPAM&lt;/a&gt; in the &lt;i&gt;Amazon VPC IPAM User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<List<IpamOperatingRegion>>? operatingRegions;
-  /// <p>The Amazon Web Services account ID of the owner of the IPAM.</p>
+
+  /// &lt;p&gt;The Amazon Web Services account ID of the owner of the IPAM.&lt;/p&gt;
   final pulumi.Input<String>? ownerId;
-  /// <p>The ID of the IPAM's default private scope.</p>
+
+  /// &lt;p&gt;The ID of the IPAM's default private scope.&lt;/p&gt;
   final pulumi.Input<String>? privateDefaultScopeId;
-  /// <p>The ID of the IPAM's default public scope.</p>
+
+  /// &lt;p&gt;The ID of the IPAM's default public scope.&lt;/p&gt;
   final pulumi.Input<String>? publicDefaultScopeId;
-  /// <p>The IPAM's resource discovery association count.</p>
+
+  /// &lt;p&gt;The IPAM's resource discovery association count.&lt;/p&gt;
   final pulumi.Input<int>? resourceDiscoveryAssociationCount;
-  /// <p>The number of scopes in the IPAM. The scope quota is 5. For more information on quotas, see <a href='https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html'>Quotas in IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>. </p>
+
+  /// &lt;p&gt;The number of scopes in the IPAM. The scope quota is 5. For more information on quotas, see &lt;a href='https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html'&gt;Quotas in IPAM&lt;/a&gt; in the &lt;i&gt;Amazon VPC IPAM User Guide&lt;/i&gt;. &lt;/p&gt;
   final pulumi.Input<int>? scopeCount;
-  /// <p>The state of the IPAM.</p>
+
+  /// &lt;p&gt;The state of the IPAM.&lt;/p&gt;
   final pulumi.Input<IpamStateEnumValue>? state;
-  /// <p>The state message.</p>
+
+  /// &lt;p&gt;The state message.&lt;/p&gt;
   final pulumi.Input<String>? stateMessage;
-  /// <p>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key <code>Owner</code> and the value <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter value.</p>
+
+  /// &lt;p&gt;The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key &lt;code&gt;Owner&lt;/code&gt; and the value &lt;code&gt;TeamA&lt;/code&gt;, specify &lt;code&gt;tag:Owner&lt;/code&gt; for the filter name and &lt;code&gt;TeamA&lt;/code&gt; for the filter value.&lt;/p&gt;
   final pulumi.Input<List<Tag>>? tags;
-  /// <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information about the features available in each tier and the costs associated with the tiers, see <a href='http://aws.amazon.com/vpc/pricing/'>Amazon VPC pricing &gt; IPAM tab</a>.</p>
+
+  /// &lt;p&gt;IPAM is offered in a Free Tier and an Advanced Tier. For more information about the features available in each tier and the costs associated with the tiers, see &lt;a href='http://aws.amazon.com/vpc/pricing/'&gt;Amazon VPC pricing &gt; IPAM tab&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<IpamTierEnumValue>? tier;
 
   /// Creates a new [AwsEc2IpamProperties].
-  /// [defaultResourceDiscoveryAssociationId] <p>The IPAM's default resource discovery association ID.</p>
-  /// [defaultResourceDiscoveryId] <p>The IPAM's default resource discovery ID.</p>
-  /// [description] <p>The description for the IPAM.</p>
-  /// [ipamArn] <p>The Amazon Resource Name (ARN) of the IPAM.</p>
-  /// [ipamId] <p>The ID of the IPAM.</p>
-  /// [ipamRegion] <p>The Amazon Web Services Region of the IPAM.</p>
-  /// [operatingRegions] <p>The operating Regions for an IPAM. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions.</p> <p>For more information about operating Regions, see <a href='https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html'>Create an IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>
-  /// [ownerId] <p>The Amazon Web Services account ID of the owner of the IPAM.</p>
-  /// [privateDefaultScopeId] <p>The ID of the IPAM's default private scope.</p>
-  /// [publicDefaultScopeId] <p>The ID of the IPAM's default public scope.</p>
-  /// [resourceDiscoveryAssociationCount] <p>The IPAM's resource discovery association count.</p>
-  /// [scopeCount] <p>The number of scopes in the IPAM. The scope quota is 5. For more information on quotas, see <a href='https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html'>Quotas in IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>. </p>
-  /// [state] <p>The state of the IPAM.</p>
-  /// [stateMessage] <p>The state message.</p>
-  /// [tags] <p>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key <code>Owner</code> and the value <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter value.</p>
-  /// [tier] <p>IPAM is offered in a Free Tier and an Advanced Tier. For more information about the features available in each tier and the costs associated with the tiers, see <a href='http://aws.amazon.com/vpc/pricing/'>Amazon VPC pricing &gt; IPAM tab</a>.</p>
+  /// [defaultResourceDiscoveryAssociationId] &lt;p&gt;The IPAM's default resource discovery association ID.&lt;/p&gt;
+  /// [defaultResourceDiscoveryId] &lt;p&gt;The IPAM's default resource discovery ID.&lt;/p&gt;
+  /// [description] &lt;p&gt;The description for the IPAM.&lt;/p&gt;
+  /// [ipamArn] &lt;p&gt;The Amazon Resource Name (ARN) of the IPAM.&lt;/p&gt;
+  /// [ipamId] &lt;p&gt;The ID of the IPAM.&lt;/p&gt;
+  /// [ipamRegion] &lt;p&gt;The Amazon Web Services Region of the IPAM.&lt;/p&gt;
+  /// [operatingRegions] &lt;p&gt;The operating Regions for an IPAM. Operating Regions are Amazon Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM only discovers and monitors resources in the Amazon Web Services Regions you select as operating Regions.&lt;/p&gt; &lt;p&gt;For more information about operating Regions, see &lt;a href='https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html'&gt;Create an IPAM&lt;/a&gt; in the &lt;i&gt;Amazon VPC IPAM User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [ownerId] &lt;p&gt;The Amazon Web Services account ID of the owner of the IPAM.&lt;/p&gt;
+  /// [privateDefaultScopeId] &lt;p&gt;The ID of the IPAM's default private scope.&lt;/p&gt;
+  /// [publicDefaultScopeId] &lt;p&gt;The ID of the IPAM's default public scope.&lt;/p&gt;
+  /// [resourceDiscoveryAssociationCount] &lt;p&gt;The IPAM's resource discovery association count.&lt;/p&gt;
+  /// [scopeCount] &lt;p&gt;The number of scopes in the IPAM. The scope quota is 5. For more information on quotas, see &lt;a href='https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html'&gt;Quotas in IPAM&lt;/a&gt; in the &lt;i&gt;Amazon VPC IPAM User Guide&lt;/i&gt;. &lt;/p&gt;
+  /// [state] &lt;p&gt;The state of the IPAM.&lt;/p&gt;
+  /// [stateMessage] &lt;p&gt;The state message.&lt;/p&gt;
+  /// [tags] &lt;p&gt;The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key &lt;code&gt;Owner&lt;/code&gt; and the value &lt;code&gt;TeamA&lt;/code&gt;, specify &lt;code&gt;tag:Owner&lt;/code&gt; for the filter name and &lt;code&gt;TeamA&lt;/code&gt; for the filter value.&lt;/p&gt;
+  /// [tier] &lt;p&gt;IPAM is offered in a Free Tier and an Advanced Tier. For more information about the features available in each tier and the costs associated with the tiers, see &lt;a href='http://aws.amazon.com/vpc/pricing/'&gt;Amazon VPC pricing &gt; IPAM tab&lt;/a&gt;.&lt;/p&gt;
   AwsEc2IpamProperties({
     this.defaultResourceDiscoveryAssociationId,
     this.defaultResourceDiscoveryId,
@@ -79,44 +94,157 @@ class AwsEc2IpamProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultResourceDiscoveryAssociationId': ?defaultResourceDiscoveryAssociationId,
+      'defaultResourceDiscoveryAssociationId':
+          ?defaultResourceDiscoveryAssociationId,
       'defaultResourceDiscoveryId': ?defaultResourceDiscoveryId,
       'description': ?description,
       'ipamArn': ?ipamArn,
       'ipamId': ?ipamId,
       'ipamRegion': ?ipamRegion,
-      'operatingRegions': ?pulumi.Input.mapOptionalInputValue<List<IpamOperatingRegion>, List<Map<String, dynamic>>>(operatingRegions, (value) => pulumi.Input.encodeList<IpamOperatingRegion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operatingRegions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpamOperatingRegion>,
+            List<Map<String, dynamic>>
+          >(
+            operatingRegions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpamOperatingRegion,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ownerId': ?ownerId,
       'privateDefaultScopeId': ?privateDefaultScopeId,
       'publicDefaultScopeId': ?publicDefaultScopeId,
       'resourceDiscoveryAssociationCount': ?resourceDiscoveryAssociationCount,
       'scopeCount': ?scopeCount,
-      'state': ?pulumi.Input.mapOptionalInputValue<IpamStateEnumValue, Map<String, dynamic>>(state, (value) => value.toMap()),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            IpamStateEnumValue,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
       'stateMessage': ?stateMessage,
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'tier': ?pulumi.Input.mapOptionalInputValue<IpamTierEnumValue, Map<String, dynamic>>(tier, (value) => value.toMap()),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Tag>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'tier':
+          ?pulumi.Input.mapOptionalInputValue<
+            IpamTierEnumValue,
+            Map<String, dynamic>
+          >(tier, (value) => value.toMap()),
     };
   }
 
   factory AwsEc2IpamProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2IpamProperties(
-      defaultResourceDiscoveryAssociationId: map['defaultResourceDiscoveryAssociationId'] == null ? null : (map['defaultResourceDiscoveryAssociationId']! as String).input(),
-      defaultResourceDiscoveryId: map['defaultResourceDiscoveryId'] == null ? null : (map['defaultResourceDiscoveryId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipamArn: map['ipamArn'] == null ? null : (map['ipamArn']! as String).input(),
-      ipamId: map['ipamId'] == null ? null : (map['ipamId']! as String).input(),
-      ipamRegion: map['ipamRegion'] == null ? null : (map['ipamRegion']! as String).input(),
-      operatingRegions: map['operatingRegions'] == null ? null : (pulumi.Input.decodeList<IpamOperatingRegion>(map['operatingRegions']!, (value) => IpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
-      privateDefaultScopeId: map['privateDefaultScopeId'] == null ? null : (map['privateDefaultScopeId']! as String).input(),
-      publicDefaultScopeId: map['publicDefaultScopeId'] == null ? null : (map['publicDefaultScopeId']! as String).input(),
-      resourceDiscoveryAssociationCount: map['resourceDiscoveryAssociationCount'] == null ? null : (map['resourceDiscoveryAssociationCount']! as int).input(),
-      scopeCount: map['scopeCount'] == null ? null : (map['scopeCount']! as int).input(),
-      state: map['state'] == null ? null : (IpamStateEnumValue.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
-      stateMessage: map['stateMessage'] == null ? null : (map['stateMessage']! as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tier: map['tier'] == null ? null : (IpamTierEnumValue.fromMap((map['tier']! as Map).cast<String, dynamic>())).input(),
+      defaultResourceDiscoveryAssociationId: (() {
+        final guardedValue = map['defaultResourceDiscoveryAssociationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultResourceDiscoveryId: (() {
+        final guardedValue = map['defaultResourceDiscoveryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamArn: (() {
+        final guardedValue = map['ipamArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamId: (() {
+        final guardedValue = map['ipamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamRegion: (() {
+        final guardedValue = map['ipamRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operatingRegions: (() {
+        final guardedValue = map['operatingRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpamOperatingRegion>(
+            guardedValue,
+            (value) => IpamOperatingRegion.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDefaultScopeId: (() {
+        final guardedValue = map['privateDefaultScopeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicDefaultScopeId: (() {
+        final guardedValue = map['publicDefaultScopeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceDiscoveryAssociationCount: (() {
+        final guardedValue = map['resourceDiscoveryAssociationCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scopeCount: (() {
+        final guardedValue = map['scopeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IpamStateEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stateMessage: (() {
+        final guardedValue = map['stateMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Tag>(
+            guardedValue,
+            (value) => Tag.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IpamTierEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

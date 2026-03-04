@@ -10,10 +10,13 @@ import 'identity_source_configuration.dart';
 class IdentitySourceArgs {
   /// Specifies the details required to communicate with the identity provider (IdP) associated with this identity source. See Configuration below.
   final pulumi.Input<IdentitySourceConfiguration> configuration;
+
   /// Specifies the ID of the policy store in which you want to store this identity source.
   final pulumi.Input<String> policyStoreId;
+
   /// Specifies the namespace and data type of the principals generated for identities authenticated by the new identity source.
   final pulumi.Input<String>? principalEntityType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,7 +34,11 @@ class IdentitySourceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': pulumi.Input.mapInputValue<IdentitySourceConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          pulumi.Input.mapInputValue<
+            IdentitySourceConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'policyStoreId': policyStoreId,
       'principalEntityType': ?principalEntityType,
       'region': ?region,
@@ -40,11 +47,22 @@ class IdentitySourceArgs {
 
   factory IdentitySourceArgs.fromMap(Map<String, dynamic> map) {
     return IdentitySourceArgs(
-      configuration: (IdentitySourceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      policyStoreId: (map['policyStoreId'] as String).input(),
-      principalEntityType: map['principalEntityType'] == null ? null : ((map['principalEntityType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      configuration: pulumi.Input.fromValue(
+        IdentitySourceConfiguration.fromMap(
+          (map['configuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      policyStoreId: pulumi.Input.fromValue(map['policyStoreId'] as String),
+      principalEntityType: (() {
+        final guardedValue = map['principalEntityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

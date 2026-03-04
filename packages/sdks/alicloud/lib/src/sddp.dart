@@ -1,5 +1,3 @@
-library module_sddp;
-
 export 'sddp/config.dart';
 export 'sddp/config_args.dart';
 export 'sddp/config_state.dart';

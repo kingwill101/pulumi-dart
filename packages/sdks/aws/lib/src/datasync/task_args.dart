@@ -14,28 +14,39 @@ import 'task_task_report_config.dart';
 class TaskArgs {
   /// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
   final pulumi.Input<String>? cloudwatchLogGroupArn;
+
   /// Amazon Resource Name (ARN) of destination DataSync Location.
   final pulumi.Input<String> destinationLocationArn;
+
   /// Filter rules that determines which files to exclude from a task.
   final pulumi.Input<TaskExcludes>? excludes;
+
   /// Filter rules that determines which files to include in a task.
   final pulumi.Input<TaskIncludes>? includes;
+
   /// Name of the DataSync Task.
   final pulumi.Input<String>? name;
+
   /// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
   final pulumi.Input<TaskOptions>? options;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies a schedule used to periodically transfer files from a source to a destination location.
   final pulumi.Input<TaskSchedule>? schedule;
+
   /// Amazon Resource Name (ARN) of source DataSync Location.
   final pulumi.Input<String> sourceLocationArn;
+
   /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// One of the following task modes for your data transfer:
   /// * `BASIC` (default) - Transfer files or objects between Amazon Web Services storage and on-premises, edge, or other cloud storage.
   /// * `ENHANCED` - Transfer virtually unlimited numbers of objects with enhanced metrics, more detailed logs, and higher performance than Basic mode. Currently available for transfers between Amazon S3 locations.
   final pulumi.Input<String>? taskMode;
+
   /// Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
   final pulumi.Input<TaskTaskReportConfig>? taskReportConfig;
 
@@ -71,34 +82,111 @@ class TaskArgs {
     return <String, dynamic>{
       'cloudwatchLogGroupArn': ?cloudwatchLogGroupArn,
       'destinationLocationArn': destinationLocationArn,
-      'excludes': ?pulumi.Input.mapOptionalInputValue<TaskExcludes, Map<String, dynamic>>(excludes, (value) => value.toMap()),
-      'includes': ?pulumi.Input.mapOptionalInputValue<TaskIncludes, Map<String, dynamic>>(includes, (value) => value.toMap()),
+      'excludes':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskExcludes,
+            Map<String, dynamic>
+          >(excludes, (value) => value.toMap()),
+      'includes':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskIncludes,
+            Map<String, dynamic>
+          >(includes, (value) => value.toMap()),
       'name': ?name,
-      'options': ?pulumi.Input.mapOptionalInputValue<TaskOptions, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskOptions,
+            Map<String, dynamic>
+          >(options, (value) => value.toMap()),
       'region': ?region,
-      'schedule': ?pulumi.Input.mapOptionalInputValue<TaskSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'sourceLocationArn': sourceLocationArn,
       'tags': ?tags,
       'taskMode': ?taskMode,
-      'taskReportConfig': ?pulumi.Input.mapOptionalInputValue<TaskTaskReportConfig, Map<String, dynamic>>(taskReportConfig, (value) => value.toMap()),
+      'taskReportConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskTaskReportConfig,
+            Map<String, dynamic>
+          >(taskReportConfig, (value) => value.toMap()),
     };
   }
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : ((map['cloudwatchLogGroupArn'] as String).input()).input(),
-      destinationLocationArn: (map['destinationLocationArn'] as String).input(),
-      excludes: map['excludes'] == null ? null : ((TaskExcludes.fromMap((map['excludes']! as Map).cast<String, dynamic>())).input()).input(),
-      includes: map['includes'] == null ? null : ((TaskIncludes.fromMap((map['includes']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      options: map['options'] == null ? null : ((TaskOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      schedule: map['schedule'] == null ? null : ((TaskSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input()).input(),
-      sourceLocationArn: (map['sourceLocationArn'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      taskMode: map['taskMode'] == null ? null : ((map['taskMode'] as String).input()).input(),
-      taskReportConfig: map['taskReportConfig'] == null ? null : ((TaskTaskReportConfig.fromMap((map['taskReportConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      cloudwatchLogGroupArn: (() {
+        final guardedValue = map['cloudwatchLogGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationLocationArn: pulumi.Input.fromValue(
+        map['destinationLocationArn'] as String,
+      ),
+      excludes: (() {
+        final guardedValue = map['excludes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskExcludes.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      includes: (() {
+        final guardedValue = map['includes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskIncludes.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskOptions.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      sourceLocationArn: pulumi.Input.fromValue(
+        map['sourceLocationArn'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      taskMode: (() {
+        final guardedValue = map['taskMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskReportConfig: (() {
+        final guardedValue = map['taskReportConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskTaskReportConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

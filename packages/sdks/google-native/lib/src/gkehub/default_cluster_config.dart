@@ -8,6 +8,7 @@ import 'security_posture_config.dart';
 class DefaultClusterConfig {
   /// Optional. Enable/Disable binary authorization features for the cluster.
   final pulumi.Input<BinaryAuthorizationConfig>? binaryAuthorizationConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   final pulumi.Input<SecurityPostureConfig>? securityPostureConfig;
 
@@ -21,16 +22,39 @@ class DefaultClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binaryAuthorizationConfig': ?pulumi.Input.mapOptionalInputValue<BinaryAuthorizationConfig, Map<String, dynamic>>(binaryAuthorizationConfig, (value) => value.toMap()),
-      'securityPostureConfig': ?pulumi.Input.mapOptionalInputValue<SecurityPostureConfig, Map<String, dynamic>>(securityPostureConfig, (value) => value.toMap()),
+      'binaryAuthorizationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BinaryAuthorizationConfig,
+            Map<String, dynamic>
+          >(binaryAuthorizationConfig, (value) => value.toMap()),
+      'securityPostureConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityPostureConfig,
+            Map<String, dynamic>
+          >(securityPostureConfig, (value) => value.toMap()),
     };
   }
 
   factory DefaultClusterConfig.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfig(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (BinaryAuthorizationConfig.fromMap((map['binaryAuthorizationConfig']! as Map).cast<String, dynamic>())).input(),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : (SecurityPostureConfig.fromMap((map['securityPostureConfig']! as Map).cast<String, dynamic>())).input(),
+      binaryAuthorizationConfig: (() {
+        final guardedValue = map['binaryAuthorizationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BinaryAuthorizationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      securityPostureConfig: (() {
+        final guardedValue = map['securityPostureConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityPostureConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

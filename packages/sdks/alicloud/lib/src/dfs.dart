@@ -1,5 +1,3 @@
-library module_dfs;
-
 export 'dfs/access_group.dart';
 export 'dfs/access_group_args.dart';
 export 'dfs/access_group_state.dart';

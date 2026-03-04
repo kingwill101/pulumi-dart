@@ -5,16 +5,15 @@ enum DimensionSortOrder {
   sortOrderAscending("SORT_ORDER_ASCENDING"),
   sortOrderDescending("SORT_ORDER_DESCENDING");
 
-  const DimensionSortOrder(this.value);
-  final String value;
+  const DimensionSortOrder(this.wireValue);
+  final String wireValue;
 
   static DimensionSortOrder fromValue(String value) {
     for (final item in DimensionSortOrder.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DimensionSortOrder value: $value');
   }
 }
-

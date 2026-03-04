@@ -212,18 +212,25 @@ import 'system_data_response.dart';
 class PartnerConfiguration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Location of the resource.
   late final pulumi.Output<String?> location;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// The details of authorized partners.
   late final pulumi.Output<PartnerAuthorizationResponse?> partnerAuthorization;
+
   /// Provisioning state of the partner configuration.
   late final pulumi.Output<String?> provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -236,18 +243,20 @@ class PartnerConfiguration extends pulumi.CustomResource {
     PartnerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:PartnerConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:eventgrid:PartnerConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.partnerAuthorization = registerOutput<PartnerAuthorizationResponse?>('partnerAuthorization');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    partnerAuthorization = registerOutput<PartnerAuthorizationResponse?>(
+      'partnerAuthorization',
+    );
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

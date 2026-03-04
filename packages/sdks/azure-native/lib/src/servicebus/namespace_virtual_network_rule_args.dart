@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceVirtualNetworkRuleArgs {
   /// The namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Virtual Network Rule name.
   final pulumi.Input<String>? virtualNetworkRuleName;
+
   /// Resource ID of Virtual Network Subnet
   final pulumi.Input<String>? virtualNetworkSubnetId;
 
@@ -39,11 +42,20 @@ class NamespaceVirtualNetworkRuleArgs {
 
   factory NamespaceVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceVirtualNetworkRuleArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName']! as String).input(),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId']! as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualNetworkRuleName: (() {
+        final guardedValue = map['virtualNetworkRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkSubnetId: (() {
+        final guardedValue = map['virtualNetworkSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

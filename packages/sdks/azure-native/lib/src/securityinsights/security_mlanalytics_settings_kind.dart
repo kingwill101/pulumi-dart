@@ -2,16 +2,17 @@
 enum SecurityMLAnalyticsSettingsKind {
   valueAnomaly("Anomaly");
 
-  const SecurityMLAnalyticsSettingsKind(this.value);
-  final String value;
+  const SecurityMLAnalyticsSettingsKind(this.wireValue);
+  final String wireValue;
 
   static SecurityMLAnalyticsSettingsKind fromValue(String value) {
     for (final item in SecurityMLAnalyticsSettingsKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityMLAnalyticsSettingsKind value: $value');
+    throw ArgumentError(
+      'Unknown SecurityMLAnalyticsSettingsKind value: $value',
+    );
   }
 }
-

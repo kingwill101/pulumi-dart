@@ -366,14 +366,19 @@ import 'system_data_response.dart';
 class RegistrationDefinition extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the registration definition.
   late final pulumi.Output<String> name;
+
   /// The details for the Managed Services offer’s plan in Azure Marketplace.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// The properties of a registration definition.
   late final pulumi.Output<RegistrationDefinitionPropertiesResponse> properties;
+
   /// The metadata for the registration assignment resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
   late final pulumi.Output<String> type;
 
@@ -386,16 +391,18 @@ class RegistrationDefinition extends pulumi.CustomResource {
     RegistrationDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managedservices:RegistrationDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:managedservices:RegistrationDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.properties = registerOutput<RegistrationDefinitionPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    plan = registerOutput<PlanResponse?>('plan');
+    properties = registerOutput<RegistrationDefinitionPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

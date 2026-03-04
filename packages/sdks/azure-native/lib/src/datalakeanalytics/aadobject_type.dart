@@ -4,16 +4,15 @@ enum AADObjectType {
   valueGroup("Group"),
   valueServicePrincipal("ServicePrincipal");
 
-  const AADObjectType(this.value);
-  final String value;
+  const AADObjectType(this.wireValue);
+  final String wireValue;
 
   static AADObjectType fromValue(String value) {
     for (final item in AADObjectType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AADObjectType value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum ClusterAuthorizationMode {
   authModeIamAuth("AUTH_MODE_IAM_AUTH"),
   authModeDisabled("AUTH_MODE_DISABLED");
 
-  const ClusterAuthorizationMode(this.value);
-  final String value;
+  const ClusterAuthorizationMode(this.wireValue);
+  final String wireValue;
 
   static ClusterAuthorizationMode fromValue(String value) {
     for (final item in ClusterAuthorizationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterAuthorizationMode value: $value');
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateArgs {
   /// Specifies the name of the Batch account. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
+
   /// The base64-encoded contents of the certificate.
   final pulumi.Input<String> certificate;
+
   /// The format of the certificate. Possible values are `Cer` or `Pfx`.
   final pulumi.Input<String> format;
+
   /// The password to access the certificate's private key. This can only be specified when `format` is `Pfx`.
   final pulumi.Input<String>? password;
+
   /// The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The thumbprint of the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> thumbprint;
+
   /// The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
   final pulumi.Input<String> thumbprintAlgorithm;
 
@@ -54,14 +60,21 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      accountName: (map['accountName'] as String).input(),
-      certificate: (map['certificate'] as String).input(),
-      format: (map['format'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
-      thumbprintAlgorithm: (map['thumbprintAlgorithm'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
+      thumbprintAlgorithm: pulumi.Input.fromValue(
+        map['thumbprintAlgorithm'] as String,
+      ),
     );
   }
 }
-

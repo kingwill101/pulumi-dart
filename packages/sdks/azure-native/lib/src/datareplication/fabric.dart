@@ -181,15 +181,20 @@ import 'fabric_model_response_system_data.dart';
 class Fabric extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the location of the fabric.
   late final pulumi.Output<String> location;
+
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Fabric model properties.
   late final pulumi.Output<FabricModelPropertiesResponse> properties;
   late final pulumi.Output<FabricModelResponseSystemData> systemData;
+
   /// Gets or sets the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -197,22 +202,19 @@ class Fabric extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Fabric]. {@macro pulumi_datareplication_fabric_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Fabric(
-    String name, {
-    FabricArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:datareplication:Fabric',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+  Fabric(String name, {FabricArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:datareplication:Fabric',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<FabricModelPropertiesResponse>('properties');
-    this.systemData = registerOutput<FabricModelResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<FabricModelPropertiesResponse>('properties');
+    systemData = registerOutput<FabricModelResponseSystemData>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

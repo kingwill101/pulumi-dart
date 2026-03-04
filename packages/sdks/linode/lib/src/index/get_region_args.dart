@@ -12,20 +12,13 @@ class GetRegionArgs {
 
   /// Creates a new [GetRegionArgs].
   /// [id] The code name of the region to select.
-  GetRegionArgs({
-    required this.id,
-  });
+  GetRegionArgs({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetRegionArgs.fromMap(Map<String, dynamic> map) {
-    return GetRegionArgs(
-      id: (map['id'] as String).input(),
-    );
+    return GetRegionArgs(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

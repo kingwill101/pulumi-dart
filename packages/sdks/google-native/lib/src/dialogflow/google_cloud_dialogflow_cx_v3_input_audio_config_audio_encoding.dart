@@ -9,16 +9,20 @@ enum GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding {
   audioEncodingOggOpus("AUDIO_ENCODING_OGG_OPUS"),
   audioEncodingSpeexWithHeaderByte("AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE");
 
-  const GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding(this.value);
-  final String value;
+  const GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding fromValue(String value) {
-    for (final item in GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding value: $value',
+    );
   }
 }
-

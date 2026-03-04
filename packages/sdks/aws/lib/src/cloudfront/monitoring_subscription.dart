@@ -137,8 +137,10 @@ import 'monitoring_subscription_state.dart';
 class MonitoringSubscription extends pulumi.CustomResource {
   /// The ID of the distribution that you are enabling metrics for.
   late final pulumi.Output<String> distributionId;
+
   /// A monitoring subscription. This structure contains information about whether additional CloudWatch metrics are enabled for a given CloudFront distribution.
-  late final pulumi.Output<MonitoringSubscriptionMonitoringSubscription> monitoringSubscription;
+  late final pulumi.Output<MonitoringSubscriptionMonitoringSubscription>
+  monitoringSubscription;
 
   /// Creates a new [MonitoringSubscription].
   /// [name] The Pulumi resource name.
@@ -149,13 +151,16 @@ class MonitoringSubscription extends pulumi.CustomResource {
     MonitoringSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.distributionId = registerOutput<String>('distributionId');
-    this.monitoringSubscription = registerOutput<MonitoringSubscriptionMonitoringSubscription>('monitoringSubscription');
+         'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    distributionId = registerOutput<String>('distributionId');
+    monitoringSubscription =
+        registerOutput<MonitoringSubscriptionMonitoringSubscription>(
+          'monitoringSubscription',
+        );
   }
 
   /// Gets an existing [MonitoringSubscription] resource's state with the given [name] and [id].
@@ -176,12 +181,15 @@ class MonitoringSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.distributionId = registerOutput<String>('distributionId');
-    this.monitoringSubscription = registerOutput<MonitoringSubscriptionMonitoringSubscription>('monitoringSubscription');
+         'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    distributionId = registerOutput<String>('distributionId');
+    monitoringSubscription =
+        registerOutput<MonitoringSubscriptionMonitoringSubscription>(
+          'monitoringSubscription',
+        );
   }
 }

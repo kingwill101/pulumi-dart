@@ -8,20 +8,21 @@ class DomainDevicesGraphicSpiceListenerSocket {
 
   /// Creates a new [DomainDevicesGraphicSpiceListenerSocket].
   /// [socket] Defines the socket's attributes for listener configurations in the Spice protocol.
-  DomainDevicesGraphicSpiceListenerSocket({
-    this.socket,
-  });
+  DomainDevicesGraphicSpiceListenerSocket({this.socket});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'socket': ?socket,
-    };
+    return <String, dynamic>{'socket': ?socket};
   }
 
-  factory DomainDevicesGraphicSpiceListenerSocket.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesGraphicSpiceListenerSocket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesGraphicSpiceListenerSocket(
-      socket: map['socket'] == null ? null : (map['socket']! as String).input(),
+      socket: (() {
+        final guardedValue = map['socket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

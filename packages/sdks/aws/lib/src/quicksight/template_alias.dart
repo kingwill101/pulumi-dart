@@ -118,14 +118,19 @@ import 'template_alias_state.dart';
 class TemplateAlias extends pulumi.CustomResource {
   /// Display name of the template alias.
   late final pulumi.Output<String> aliasName;
+
   /// Amazon Resource Name (ARN) of the template alias.
   late final pulumi.Output<String> arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the template.
   late final pulumi.Output<String> templateId;
+
   /// Version number of the template.
   ///
   /// The following arguments are optional:
@@ -140,17 +145,17 @@ class TemplateAlias extends pulumi.CustomResource {
     TemplateAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/templateAlias:TemplateAlias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliasName = registerOutput<String>('aliasName');
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.region = registerOutput<String>('region');
-    this.templateId = registerOutput<String>('templateId');
-    this.templateVersionNumber = registerOutput<int>('templateVersionNumber');
+         'aws:quicksight/templateAlias:TemplateAlias',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliasName = registerOutput<String>('aliasName');
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    region = registerOutput<String>('region');
+    templateId = registerOutput<String>('templateId');
+    templateVersionNumber = registerOutput<int>('templateVersionNumber');
   }
 
   /// Gets an existing [TemplateAlias] resource's state with the given [name] and [id].
@@ -171,16 +176,16 @@ class TemplateAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/templateAlias:TemplateAlias',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliasName = registerOutput<String>('aliasName');
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.region = registerOutput<String>('region');
-    this.templateId = registerOutput<String>('templateId');
-    this.templateVersionNumber = registerOutput<int>('templateVersionNumber');
+         'aws:quicksight/templateAlias:TemplateAlias',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliasName = registerOutput<String>('aliasName');
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    region = registerOutput<String>('region');
+    templateId = registerOutput<String>('templateId');
+    templateVersionNumber = registerOutput<int>('templateVersionNumber');
   }
 }

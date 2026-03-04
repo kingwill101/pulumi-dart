@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeGroupAckConfigToleration {
   /// The effect of ack cluster tolerations.
   final pulumi.Input<String>? effect;
+
   /// The tag key for this scaling rule specific metrics trigger.
   final pulumi.Input<String>? key;
+
   /// The operator of ack cluster tolerations.
   final pulumi.Input<String>? operator;
+
   /// The tag value for this scaling rule specific metrics trigger.
   final pulumi.Input<String>? value;
 
@@ -33,13 +36,30 @@ class ClusterNodeGroupAckConfigToleration {
     };
   }
 
-  factory ClusterNodeGroupAckConfigToleration.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeGroupAckConfigToleration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeGroupAckConfigToleration(
-      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

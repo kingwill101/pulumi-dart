@@ -1,5 +1,3 @@
-library module_ots;
-
 export 'ots/functions.dart';
 export 'ots/get_instance_attachments_args.dart';
 export 'ots/get_instance_attachments_attachment.dart';

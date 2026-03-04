@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcNetworkAclAttachmentArgs {
   /// The ID of the network ACL instance.
   final pulumi.Input<String> networkAclId;
+
   /// The ID of the associated  vswitch instance.
   final pulumi.Input<String> resourceId;
+
   /// The type of the associated resource. Valid values: `VSwitch`.
   final pulumi.Input<String> resourceType;
 
@@ -34,10 +36,9 @@ class VpcNetworkAclAttachmentArgs {
 
   factory VpcNetworkAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpcNetworkAclAttachmentArgs(
-      networkAclId: (map['networkAclId'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      networkAclId: pulumi.Input.fromValue(map['networkAclId'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

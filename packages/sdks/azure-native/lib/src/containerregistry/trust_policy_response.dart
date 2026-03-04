@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustPolicyResponse {
   /// The value that indicates whether the policy is enabled or not.
   final pulumi.Input<String>? status;
+
   /// The type of trust policy.
   final pulumi.Input<String>? type;
 
   /// Creates a new [TrustPolicyResponse].
   /// [status] The value that indicates whether the policy is enabled or not.
   /// [type] The type of trust policy.
-  TrustPolicyResponse({
-    this.status,
-    this.type,
-  });
+  TrustPolicyResponse({this.status, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-      'type': ?type,
-    };
+    return <String, dynamic>{'status': ?status, 'type': ?type};
   }
 
   factory TrustPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TrustPolicyResponse(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

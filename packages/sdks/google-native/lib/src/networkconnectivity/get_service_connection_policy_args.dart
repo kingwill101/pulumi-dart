@@ -31,10 +31,15 @@ class GetServiceConnectionPolicyArgs {
 
   factory GetServiceConnectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceConnectionPolicyArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceConnectionPolicyId: (map['serviceConnectionPolicyId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceConnectionPolicyId: pulumi.Input.fromValue(
+        map['serviceConnectionPolicyId'] as String,
+      ),
     );
   }
 }
-

@@ -12,15 +12,14 @@ class GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': items,
-    };
+    return <String, dynamic>{'items': items};
   }
 
-  factory GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod.fromMap(Map<String, dynamic> map) {
+  factory GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod(
-      items: ((map['items'] as List).cast<String>()).input(),
+      items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
     );
   }
 }
-

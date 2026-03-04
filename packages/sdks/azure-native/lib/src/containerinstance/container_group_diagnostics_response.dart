@@ -10,20 +10,29 @@ class ContainerGroupDiagnosticsResponse {
 
   /// Creates a new [ContainerGroupDiagnosticsResponse].
   /// [logAnalytics] Container group log analytics information.
-  ContainerGroupDiagnosticsResponse({
-    this.logAnalytics,
-  });
+  ContainerGroupDiagnosticsResponse({this.logAnalytics});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logAnalytics': ?pulumi.Input.mapOptionalInputValue<LogAnalyticsResponse, Map<String, dynamic>>(logAnalytics, (value) => value.toMap()),
+      'logAnalytics':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogAnalyticsResponse,
+            Map<String, dynamic>
+          >(logAnalytics, (value) => value.toMap()),
     };
   }
 
   factory ContainerGroupDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupDiagnosticsResponse(
-      logAnalytics: map['logAnalytics'] == null ? null : (LogAnalyticsResponse.fromMap((map['logAnalytics']! as Map).cast<String, dynamic>())).input(),
+      logAnalytics: (() {
+        final guardedValue = map['logAnalytics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogAnalyticsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

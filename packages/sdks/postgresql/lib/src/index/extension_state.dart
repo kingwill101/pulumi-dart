@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionState {
   /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
   final pulumi.Input<bool>? createCascade;
+
   /// Which database to create the extension on. Defaults to provider database.
   final pulumi.Input<String>? database;
+
   /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
   final pulumi.Input<bool>? dropCascade;
+
   /// The name of the extension.
   final pulumi.Input<String>? name;
+
   /// Sets the schema of an extension.
   final pulumi.Input<String>? schema;
+
   /// Sets the version number of the extension.
   final pulumi.Input<String>? version;
 
@@ -46,13 +51,36 @@ class ExtensionState {
 
   factory ExtensionState.fromMap(Map<String, dynamic> map) {
     return ExtensionState(
-      createCascade: map['createCascade'] == null ? null : (map['createCascade']! as bool).input(),
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      createCascade: (() {
+        final guardedValue = map['createCascade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dropCascade: (() {
+        final guardedValue = map['dropCascade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

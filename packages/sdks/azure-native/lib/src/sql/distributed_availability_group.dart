@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distributed_availability_group_args.dart';
-import 'distributed_availability_group_database_response.dart';
 
 /// Distributed availability group between box and Sql Managed Instance.
 ///
@@ -350,30 +349,43 @@ import 'distributed_availability_group_database_response.dart';
 class DistributedAvailabilityGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Databases in the distributed availability group
-  late final pulumi.Output<List<DistributedAvailabilityGroupDatabaseResponse>?> databases;
+  late final pulumi.Output<List<Map<String, dynamic>>?> databases;
+
   /// ID of the distributed availability group
   late final pulumi.Output<String> distributedAvailabilityGroupId;
+
   /// Name of the distributed availability group
   late final pulumi.Output<String> distributedAvailabilityGroupName;
+
   /// The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
   late final pulumi.Output<String?> failoverMode;
+
   /// Managed instance side availability group name
   late final pulumi.Output<String?> instanceAvailabilityGroupName;
+
   /// Managed instance side link role
   late final pulumi.Output<String?> instanceLinkRole;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// SQL server side availability group name
   late final pulumi.Output<String?> partnerAvailabilityGroupName;
+
   /// SQL server side endpoint - IP or DNS resolvable name
   late final pulumi.Output<String?> partnerEndpoint;
+
   /// SQL server side link role
   late final pulumi.Output<String> partnerLinkRole;
+
   /// Replication mode of the link
   late final pulumi.Output<String?> replicationMode;
+
   /// Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
   late final pulumi.Output<String?> seedingMode;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -386,24 +398,32 @@ class DistributedAvailabilityGroup extends pulumi.CustomResource {
     DistributedAvailabilityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:DistributedAvailabilityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.databases = registerOutput<List<DistributedAvailabilityGroupDatabaseResponse>?>('databases');
-    this.distributedAvailabilityGroupId = registerOutput<String>('distributedAvailabilityGroupId');
-    this.distributedAvailabilityGroupName = registerOutput<String>('distributedAvailabilityGroupName');
-    this.failoverMode = registerOutput<String?>('failoverMode');
-    this.instanceAvailabilityGroupName = registerOutput<String?>('instanceAvailabilityGroupName');
-    this.instanceLinkRole = registerOutput<String?>('instanceLinkRole');
+         'azure-native:sql:DistributedAvailabilityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databases = registerOutput<List<Map<String, dynamic>>?>('databases');
+    distributedAvailabilityGroupId = registerOutput<String>(
+      'distributedAvailabilityGroupId',
+    );
+    distributedAvailabilityGroupName = registerOutput<String>(
+      'distributedAvailabilityGroupName',
+    );
+    failoverMode = registerOutput<String?>('failoverMode');
+    instanceAvailabilityGroupName = registerOutput<String?>(
+      'instanceAvailabilityGroupName',
+    );
+    instanceLinkRole = registerOutput<String?>('instanceLinkRole');
     this.name = registerOutput<String>('name');
-    this.partnerAvailabilityGroupName = registerOutput<String?>('partnerAvailabilityGroupName');
-    this.partnerEndpoint = registerOutput<String?>('partnerEndpoint');
-    this.partnerLinkRole = registerOutput<String>('partnerLinkRole');
-    this.replicationMode = registerOutput<String?>('replicationMode');
-    this.seedingMode = registerOutput<String?>('seedingMode');
-    this.type = registerOutput<String>('type');
+    partnerAvailabilityGroupName = registerOutput<String?>(
+      'partnerAvailabilityGroupName',
+    );
+    partnerEndpoint = registerOutput<String?>('partnerEndpoint');
+    partnerLinkRole = registerOutput<String>('partnerLinkRole');
+    replicationMode = registerOutput<String?>('replicationMode');
+    seedingMode = registerOutput<String?>('seedingMode');
+    type = registerOutput<String>('type');
   }
 }

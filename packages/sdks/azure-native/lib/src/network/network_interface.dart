@@ -2,8 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 import 'network_interface_args.dart';
 import 'network_interface_dns_settings_response.dart';
-import 'network_interface_ipconfiguration_response.dart';
-import 'network_interface_tap_configuration_response.dart';
 import 'network_security_group_response.dart';
 import 'private_endpoint_response.dart';
 import 'private_link_service_response.dart';
@@ -444,62 +442,91 @@ import 'sub_resource_response.dart';
 class NetworkInterface extends pulumi.CustomResource {
   /// Auxiliary mode of Network Interface resource.
   late final pulumi.Output<String?> auxiliaryMode;
+
   /// Auxiliary sku of Network Interface resource.
   late final pulumi.Output<String?> auxiliarySku;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Whether default outbound connectivity for nic was configured or not.
   late final pulumi.Output<bool> defaultOutboundConnectivityEnabled;
+
   /// Indicates whether to disable tcp state tracking.
   late final pulumi.Output<bool?> disableTcpStateTracking;
+
   /// The DNS settings in network interface.
   late final pulumi.Output<NetworkInterfaceDnsSettingsResponse?> dnsSettings;
+
   /// A reference to the dscp configuration to which the network interface is linked.
   late final pulumi.Output<SubResourceResponse> dscpConfiguration;
+
   /// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
   late final pulumi.Output<bool?> enableAcceleratedNetworking;
+
   /// Indicates whether IP forwarding is enabled on this network interface.
   late final pulumi.Output<bool?> enableIPForwarding;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the network interface.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// A list of references to linked BareMetal resources.
   late final pulumi.Output<List<String>> hostedWorkloads;
+
   /// A list of IPConfigurations of the network interface.
-  late final pulumi.Output<List<NetworkInterfaceIPConfigurationResponse>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The MAC address of the network interface.
   late final pulumi.Output<String> macAddress;
+
   /// Migration phase of Network Interface resource.
   late final pulumi.Output<String?> migrationPhase;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The reference to the NetworkSecurityGroup resource.
   late final pulumi.Output<NetworkSecurityGroupResponse?> networkSecurityGroup;
+
   /// Type of Network Interface resource.
   late final pulumi.Output<String?> nicType;
+
   /// Whether this is a primary network interface on a virtual machine.
   late final pulumi.Output<bool> primary;
+
   /// A reference to the private endpoint to which the network interface is linked.
   late final pulumi.Output<PrivateEndpointResponse> privateEndpoint;
+
   /// Privatelinkservice of the network interface resource.
   late final pulumi.Output<PrivateLinkServiceResponse?> privateLinkService;
+
   /// The provisioning state of the network interface resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource GUID property of the network interface resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A list of TapConfigurations of the network interface.
-  late final pulumi.Output<List<NetworkInterfaceTapConfigurationResponse>> tapConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> tapConfigurations;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The reference to a virtual machine.
   late final pulumi.Output<SubResourceResponse> virtualMachine;
+
   /// Whether the virtual machine this nic is attached to supports encryption.
   late final pulumi.Output<bool> vnetEncryptionSupported;
+
   /// WorkloadType of the NetworkInterface for BareMetal resources
   late final pulumi.Output<String?> workloadType;
 
@@ -512,40 +539,60 @@ class NetworkInterface extends pulumi.CustomResource {
     NetworkInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NetworkInterface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auxiliaryMode = registerOutput<String?>('auxiliaryMode');
-    this.auxiliarySku = registerOutput<String?>('auxiliarySku');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultOutboundConnectivityEnabled = registerOutput<bool>('defaultOutboundConnectivityEnabled');
-    this.disableTcpStateTracking = registerOutput<bool?>('disableTcpStateTracking');
-    this.dnsSettings = registerOutput<NetworkInterfaceDnsSettingsResponse?>('dnsSettings');
-    this.dscpConfiguration = registerOutput<SubResourceResponse>('dscpConfiguration');
-    this.enableAcceleratedNetworking = registerOutput<bool?>('enableAcceleratedNetworking');
-    this.enableIPForwarding = registerOutput<bool?>('enableIPForwarding');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.hostedWorkloads = registerOutput<List<String>>('hostedWorkloads');
-    this.ipConfigurations = registerOutput<List<NetworkInterfaceIPConfigurationResponse>?>('ipConfigurations');
-    this.location = registerOutput<String?>('location');
-    this.macAddress = registerOutput<String>('macAddress');
-    this.migrationPhase = registerOutput<String?>('migrationPhase');
+         'azure-native:network:NetworkInterface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auxiliaryMode = registerOutput<String?>('auxiliaryMode');
+    auxiliarySku = registerOutput<String?>('auxiliarySku');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultOutboundConnectivityEnabled = registerOutput<bool>(
+      'defaultOutboundConnectivityEnabled',
+    );
+    disableTcpStateTracking = registerOutput<bool?>('disableTcpStateTracking');
+    dnsSettings = registerOutput<NetworkInterfaceDnsSettingsResponse?>(
+      'dnsSettings',
+    );
+    dscpConfiguration = registerOutput<SubResourceResponse>(
+      'dscpConfiguration',
+    );
+    enableAcceleratedNetworking = registerOutput<bool?>(
+      'enableAcceleratedNetworking',
+    );
+    enableIPForwarding = registerOutput<bool?>('enableIPForwarding');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    hostedWorkloads = registerOutput<List<String>>('hostedWorkloads');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String?>('location');
+    macAddress = registerOutput<String>('macAddress');
+    migrationPhase = registerOutput<String?>('migrationPhase');
     this.name = registerOutput<String>('name');
-    this.networkSecurityGroup = registerOutput<NetworkSecurityGroupResponse?>('networkSecurityGroup');
-    this.nicType = registerOutput<String?>('nicType');
-    this.primary = registerOutput<bool>('primary');
-    this.privateEndpoint = registerOutput<PrivateEndpointResponse>('privateEndpoint');
-    this.privateLinkService = registerOutput<PrivateLinkServiceResponse?>('privateLinkService');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tapConfigurations = registerOutput<List<NetworkInterfaceTapConfigurationResponse>>('tapConfigurations');
-    this.type = registerOutput<String>('type');
-    this.virtualMachine = registerOutput<SubResourceResponse>('virtualMachine');
-    this.vnetEncryptionSupported = registerOutput<bool>('vnetEncryptionSupported');
-    this.workloadType = registerOutput<String?>('workloadType');
+    networkSecurityGroup = registerOutput<NetworkSecurityGroupResponse?>(
+      'networkSecurityGroup',
+    );
+    nicType = registerOutput<String?>('nicType');
+    primary = registerOutput<bool>('primary');
+    privateEndpoint = registerOutput<PrivateEndpointResponse>(
+      'privateEndpoint',
+    );
+    privateLinkService = registerOutput<PrivateLinkServiceResponse?>(
+      'privateLinkService',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tapConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'tapConfigurations',
+    );
+    type = registerOutput<String>('type');
+    virtualMachine = registerOutput<SubResourceResponse>('virtualMachine');
+    vnetEncryptionSupported = registerOutput<bool>('vnetEncryptionSupported');
+    workloadType = registerOutput<String?>('workloadType');
   }
 }

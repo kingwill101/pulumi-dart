@@ -6,8 +6,10 @@ import 'error_detail_response.dart';
 class GetNetworkFabricTopologyResult {
   /// Gets the configuration state.
   final String configurationState;
+
   /// The error object.
   final ErrorDetailResponse? error;
+
   /// URL for the details of the response.
   final String? url;
 
@@ -24,7 +26,7 @@ class GetNetworkFabricTopologyResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configurationState': configurationState,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?error?.toMap(),
       'url': ?url,
     };
   }
@@ -32,9 +34,18 @@ class GetNetworkFabricTopologyResult {
   factory GetNetworkFabricTopologyResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkFabricTopologyResult(
       configurationState: map['configurationState'] as String,
-      error: map['error'] == null ? null : ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      url: map['url'] == null ? null : map['url']! as String,
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return ErrorDetailResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

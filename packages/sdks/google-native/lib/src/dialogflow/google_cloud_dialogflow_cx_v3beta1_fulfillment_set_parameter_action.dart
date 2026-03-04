@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
   /// Display name of the parameter.
   final pulumi.Input<String>? parameter;
+
   /// The new value of the parameter. A null value clears the parameter.
   final pulumi.Input<dynamic>? value;
 
@@ -18,17 +19,23 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parameter': ?parameter,
-      'value': ?value,
-    };
+    return <String, dynamic>{'parameter': ?parameter, 'value': ?value};
   }
 
-  factory GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction(
-      parameter: map['parameter'] == null ? null : (map['parameter']! as String).input(),
-      value: map['value'] == null ? null : (map['value']!).input(),
+      parameter: (() {
+        final guardedValue = map['parameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Parquet write settings.
 class ParquetWriteSettings {
-  /// Specifies the file name pattern <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
+  /// Specifies the file name pattern &lt;fileNamePrefix&gt;_&lt;fileIndex&gt;.&lt;fileExtension&gt; when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileNamePrefix;
+
   /// Limit the written file's row count to be smaller than or equal to the specified count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxRowsPerFile;
+
   /// The write setting type.
   /// Expected value is 'ParquetWriteSettings'.
   final pulumi.Input<String> type;
 
   /// Creates a new [ParquetWriteSettings].
-  /// [fileNamePrefix] Specifies the file name pattern <fileNamePrefix>_<fileIndex>.<fileExtension> when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
+  /// [fileNamePrefix] Specifies the file name pattern &lt;fileNamePrefix&gt;_&lt;fileIndex&gt;.&lt;fileExtension&gt; when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
   /// [maxRowsPerFile] Limit the written file's row count to be smaller than or equal to the specified count. Type: integer (or Expression with resultType integer).
   /// [type] The write setting type.
   ParquetWriteSettings({
@@ -32,10 +34,17 @@ class ParquetWriteSettings {
 
   factory ParquetWriteSettings.fromMap(Map<String, dynamic> map) {
     return ParquetWriteSettings(
-      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']!).input(),
-      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']!).input(),
-      type: (map['type'] as String).input(),
+      fileNamePrefix: (() {
+        final guardedValue = map['fileNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      maxRowsPerFile: (() {
+        final guardedValue = map['maxRowsPerFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

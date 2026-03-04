@@ -7,16 +7,15 @@ enum RoutineLanguage {
   java("JAVA"),
   scala("SCALA");
 
-  const RoutineLanguage(this.value);
-  final String value;
+  const RoutineLanguage(this.wireValue);
+  final String wireValue;
 
   static RoutineLanguage fromValue(String value) {
     for (final item in RoutineLanguage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutineLanguage value: $value');
   }
 }
-

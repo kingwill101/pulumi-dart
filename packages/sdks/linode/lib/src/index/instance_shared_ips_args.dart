@@ -9,29 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceSharedIpsArgs {
   /// The set of IPs to share with the Linode.
   final pulumi.Input<List<String>> addresses;
+
   /// The ID of the Linode to share the IPs to.
   final pulumi.Input<int> linodeId;
 
   /// Creates a new [InstanceSharedIpsArgs].
   /// [addresses] The set of IPs to share with the Linode.
   /// [linodeId] The ID of the Linode to share the IPs to.
-  InstanceSharedIpsArgs({
-    required this.addresses,
-    required this.linodeId,
-  });
+  InstanceSharedIpsArgs({required this.addresses, required this.linodeId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'addresses': addresses,
-      'linodeId': linodeId,
-    };
+    return <String, dynamic>{'addresses': addresses, 'linodeId': linodeId};
   }
 
   factory InstanceSharedIpsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceSharedIpsArgs(
-      addresses: ((map['addresses'] as List).cast<String>()).input(),
-      linodeId: (map['linodeId'] as int).input(),
+      addresses: pulumi.Input.fromValue(
+        (map['addresses'] as List).cast<String>(),
+      ),
+      linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
     );
   }
 }
-

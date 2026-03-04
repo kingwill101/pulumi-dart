@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardsSubscriptionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of a standard - see below.
   ///
   /// Currently available standards (remember to replace `${var.partition}` and `${var.region}` as appropriate):
@@ -29,23 +30,20 @@ class StandardsSubscriptionArgs {
   /// Creates a new [StandardsSubscriptionArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [standardsArn] The ARN of a standard - see below.
-  StandardsSubscriptionArgs({
-    this.region,
-    required this.standardsArn,
-  });
+  StandardsSubscriptionArgs({this.region, required this.standardsArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'standardsArn': standardsArn,
-    };
+    return <String, dynamic>{'region': ?region, 'standardsArn': standardsArn};
   }
 
   factory StandardsSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return StandardsSubscriptionArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      standardsArn: (map['standardsArn'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      standardsArn: pulumi.Input.fromValue(map['standardsArn'] as String),
     );
   }
 }
-

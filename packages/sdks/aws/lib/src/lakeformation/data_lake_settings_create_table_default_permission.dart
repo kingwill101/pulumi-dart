@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataLakeSettingsCreateTableDefaultPermission {
   /// List of permissions that are granted to the principal. Valid values may include `ALL`, `SELECT`, `ALTER`, `DROP`, `DELETE`, `INSERT`, and `DESCRIBE`. For more details, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   final pulumi.Input<List<String>>? permissions;
+
   /// Principal who is granted permissions. To enforce metadata and underlying data access control only by IAM on new databases and tables set `principal` to `IAM_ALLOWED_PRINCIPALS` and `permissions` to `["ALL"]`.
   final pulumi.Input<String>? principal;
 
@@ -23,11 +24,20 @@ class DataLakeSettingsCreateTableDefaultPermission {
     };
   }
 
-  factory DataLakeSettingsCreateTableDefaultPermission.fromMap(Map<String, dynamic> map) {
+  factory DataLakeSettingsCreateTableDefaultPermission.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataLakeSettingsCreateTableDefaultPermission(
-      permissions: map['permissions'] == null ? null : (((map['permissions'] as List).cast<String>()).input()).input(),
-      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      principal: (() {
+        final guardedValue = map['principal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

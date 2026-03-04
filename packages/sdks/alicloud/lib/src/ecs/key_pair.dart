@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_pair_args.dart';
 import 'key_pair_state.dart';
 
-/// > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPair from version 1.121.0.
+/// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPair from version 1.121.0.
 ///
 /// Provides a key pair resource.
 ///
@@ -170,14 +170,18 @@ import 'key_pair_state.dart';
 class KeyPair extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> fingerPrint;
+
   /// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
   late final pulumi.Output<String?> keyFile;
+
   /// The key pair's name. It is the only in one Alicloud account.
   late final pulumi.Output<String> keyName;
   late final pulumi.Output<String?> keyNamePrefix;
   late final pulumi.Output<String> keyPairName;
+
   /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
   late final pulumi.Output<String?> publicKey;
+
   /// The Id of resource group which the key pair belongs.
   late final pulumi.Output<String> resourceGroupId;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -191,20 +195,20 @@ class KeyPair extends pulumi.CustomResource {
     KeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/keyPair:KeyPair',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.fingerPrint = registerOutput<String>('fingerPrint');
-    this.keyFile = registerOutput<String?>('keyFile');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyNamePrefix = registerOutput<String?>('keyNamePrefix');
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.publicKey = registerOutput<String?>('publicKey');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ecs/keyPair:KeyPair',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    fingerPrint = registerOutput<String>('fingerPrint');
+    keyFile = registerOutput<String?>('keyFile');
+    keyName = registerOutput<String>('keyName');
+    keyNamePrefix = registerOutput<String?>('keyNamePrefix');
+    keyPairName = registerOutput<String>('keyPairName');
+    publicKey = registerOutput<String?>('publicKey');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [KeyPair] resource's state with the given [name] and [id].
@@ -225,19 +229,19 @@ class KeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/keyPair:KeyPair',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.fingerPrint = registerOutput<String>('fingerPrint');
-    this.keyFile = registerOutput<String?>('keyFile');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyNamePrefix = registerOutput<String?>('keyNamePrefix');
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.publicKey = registerOutput<String?>('publicKey');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ecs/keyPair:KeyPair',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    fingerPrint = registerOutput<String>('fingerPrint');
+    keyFile = registerOutput<String?>('keyFile');
+    keyName = registerOutput<String>('keyName');
+    keyNamePrefix = registerOutput<String?>('keyNamePrefix');
+    keyPairName = registerOutput<String>('keyPairName');
+    publicKey = registerOutput<String?>('publicKey');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -1,5 +1,3 @@
-library module_container;
-
 export 'container/attached_cluster.dart';
 export 'container/attached_cluster_args.dart';
 export 'container/attached_cluster_authorization.dart';

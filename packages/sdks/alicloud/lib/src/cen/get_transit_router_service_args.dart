@@ -9,25 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterServiceArgs {
   /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
   ///
-  /// > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
+  /// &gt; **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
   final pulumi.Input<String>? enable;
 
   /// Creates a new [GetTransitRouterServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
-  GetTransitRouterServiceArgs({
-    this.enable,
-  });
+  GetTransitRouterServiceArgs({this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': ?enable,
-    };
+    return <String, dynamic>{'enable': ?enable};
   }
 
   factory GetTransitRouterServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterServiceArgs(
-      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

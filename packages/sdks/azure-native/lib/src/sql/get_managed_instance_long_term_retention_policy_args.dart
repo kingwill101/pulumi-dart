@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedInstanceLongTermRetentionPolicyArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
+
   /// The policy name. Should always be Default.
   final pulumi.Input<String> policyName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,18 @@ class GetManagedInstanceLongTermRetentionPolicyArgs {
     };
   }
 
-  factory GetManagedInstanceLongTermRetentionPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetManagedInstanceLongTermRetentionPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedInstanceLongTermRetentionPolicyArgs(
-      databaseName: (map['databaseName'] as String).input(),
-      managedInstanceName: (map['managedInstanceName'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      managedInstanceName: pulumi.Input.fromValue(
+        map['managedInstanceName'] as String,
+      ),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

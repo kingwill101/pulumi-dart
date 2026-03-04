@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcFirewallAclEngineModeState {
   /// The ID of member account.
   final pulumi.Input<String>? memberUid;
+
   /// The mode of the ACL engine. Possible values are `0`, `1`.
   final pulumi.Input<int>? strictMode;
+
   /// The ID of the VPC firewall.
   final pulumi.Input<String>? vpcFirewallId;
 
@@ -31,10 +33,21 @@ class VpcFirewallAclEngineModeState {
 
   factory VpcFirewallAclEngineModeState.fromMap(Map<String, dynamic> map) {
     return VpcFirewallAclEngineModeState(
-      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
-      strictMode: map['strictMode'] == null ? null : (map['strictMode']! as int).input(),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId']! as String).input(),
+      memberUid: (() {
+        final guardedValue = map['memberUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      strictMode: (() {
+        final guardedValue = map['strictMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vpcFirewallId: (() {
+        final guardedValue = map['vpcFirewallId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

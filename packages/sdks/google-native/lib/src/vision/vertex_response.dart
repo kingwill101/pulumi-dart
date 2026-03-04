@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VertexResponse {
   /// X coordinate.
   final pulumi.Input<int> x;
+
   /// Y coordinate.
   final pulumi.Input<int> y;
 
   /// Creates a new [VertexResponse].
   /// [x] X coordinate.
   /// [y] Y coordinate.
-  VertexResponse({
-    required this.x,
-    required this.y,
-  });
+  VertexResponse({required this.x, required this.y});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'x': x,
-      'y': y,
-    };
+    return <String, dynamic>{'x': x, 'y': y};
   }
 
   factory VertexResponse.fromMap(Map<String, dynamic> map) {
     return VertexResponse(
-      x: (map['x'] as int).input(),
-      y: (map['y'] as int).input(),
+      x: pulumi.Input.fromValue(map['x'] as int),
+      y: pulumi.Input.fromValue(map['y'] as int),
     );
   }
 }
-

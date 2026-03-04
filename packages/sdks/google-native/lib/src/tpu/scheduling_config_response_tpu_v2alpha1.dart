@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchedulingConfigResponseTpuV2alpha1 {
   /// Defines whether the node is preemptible.
   final pulumi.Input<bool> preemptible;
+
   /// Whether the node is created under a reservation.
   final pulumi.Input<bool> reserved;
 
@@ -18,17 +19,15 @@ class SchedulingConfigResponseTpuV2alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'preemptible': preemptible,
-      'reserved': reserved,
-    };
+    return <String, dynamic>{'preemptible': preemptible, 'reserved': reserved};
   }
 
-  factory SchedulingConfigResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
+  factory SchedulingConfigResponseTpuV2alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SchedulingConfigResponseTpuV2alpha1(
-      preemptible: (map['preemptible'] as bool).input(),
-      reserved: (map['reserved'] as bool).input(),
+      preemptible: pulumi.Input.fromValue(map['preemptible'] as bool),
+      reserved: pulumi.Input.fromValue(map['reserved'] as bool),
     );
   }
 }
-

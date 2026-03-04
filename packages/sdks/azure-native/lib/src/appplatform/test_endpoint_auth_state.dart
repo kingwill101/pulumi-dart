@@ -3,16 +3,15 @@ enum TestEndpointAuthState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const TestEndpointAuthState(this.value);
-  final String value;
+  const TestEndpointAuthState(this.wireValue);
+  final String wireValue;
 
   static TestEndpointAuthState fromValue(String value) {
     for (final item in TestEndpointAuthState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TestEndpointAuthState value: $value');
   }
 }
-

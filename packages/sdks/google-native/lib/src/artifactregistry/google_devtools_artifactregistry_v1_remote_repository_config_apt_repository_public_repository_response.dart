@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse {
   /// A common public repository base for Apt.
   final pulumi.Input<String> repositoryBase;
+
   /// A custom field to define a path to a specific repository from the base.
   final pulumi.Input<String> repositoryPath;
 
@@ -24,11 +25,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
     };
   }
 
-  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse(
-      repositoryBase: (map['repositoryBase'] as String).input(),
-      repositoryPath: (map['repositoryPath'] as String).input(),
+      repositoryBase: pulumi.Input.fromValue(map['repositoryBase'] as String),
+      repositoryPath: pulumi.Input.fromValue(map['repositoryPath'] as String),
     );
   }
 }
-

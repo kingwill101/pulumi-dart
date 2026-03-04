@@ -8,15 +8,22 @@ import 'os_constraint.dart';
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
 class DevicePolicy {
   /// Allowed device management levels, an empty list allows all management levels.
-  final pulumi.Input<List<DevicePolicyAllowedDeviceManagementLevelsItem>>? allowedDeviceManagementLevels;
+  final pulumi.Input<List<DevicePolicyAllowedDeviceManagementLevelsItem>>?
+  allowedDeviceManagementLevels;
+
   /// Allowed encryptions statuses, an empty list allows all statuses.
-  final pulumi.Input<List<DevicePolicyAllowedEncryptionStatusesItem>>? allowedEncryptionStatuses;
+  final pulumi.Input<List<DevicePolicyAllowedEncryptionStatusesItem>>?
+  allowedEncryptionStatuses;
+
   /// Allowed OS versions, an empty list allows all types and all versions.
   final pulumi.Input<List<OsConstraint>>? osConstraints;
+
   /// Whether the device needs to be approved by the customer admin.
   final pulumi.Input<bool>? requireAdminApproval;
+
   /// Whether the device needs to be corp owned.
   final pulumi.Input<bool>? requireCorpOwned;
+
   /// Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`.
   final pulumi.Input<bool>? requireScreenlock;
 
@@ -38,9 +45,42 @@ class DevicePolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedDeviceManagementLevels': ?pulumi.Input.mapOptionalInputValue<List<DevicePolicyAllowedDeviceManagementLevelsItem>, List<String>>(allowedDeviceManagementLevels, (value) => pulumi.Input.encodeList<DevicePolicyAllowedDeviceManagementLevelsItem, String>(value, (value) => value.value)),
-      'allowedEncryptionStatuses': ?pulumi.Input.mapOptionalInputValue<List<DevicePolicyAllowedEncryptionStatusesItem>, List<String>>(allowedEncryptionStatuses, (value) => pulumi.Input.encodeList<DevicePolicyAllowedEncryptionStatusesItem, String>(value, (value) => value.value)),
-      'osConstraints': ?pulumi.Input.mapOptionalInputValue<List<OsConstraint>, List<Map<String, dynamic>>>(osConstraints, (value) => pulumi.Input.encodeList<OsConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allowedDeviceManagementLevels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DevicePolicyAllowedDeviceManagementLevelsItem>,
+            List<String>
+          >(
+            allowedDeviceManagementLevels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DevicePolicyAllowedDeviceManagementLevelsItem,
+                  String
+                >(value, (value) => value.wireValue),
+          ),
+      'allowedEncryptionStatuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DevicePolicyAllowedEncryptionStatusesItem>,
+            List<String>
+          >(
+            allowedEncryptionStatuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DevicePolicyAllowedEncryptionStatusesItem,
+                  String
+                >(value, (value) => value.wireValue),
+          ),
+      'osConstraints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<OsConstraint>,
+            List<Map<String, dynamic>>
+          >(
+            osConstraints,
+            (value) =>
+                pulumi.Input.encodeList<OsConstraint, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'requireAdminApproval': ?requireAdminApproval,
       'requireCorpOwned': ?requireCorpOwned,
       'requireScreenlock': ?requireScreenlock,
@@ -49,13 +89,57 @@ class DevicePolicy {
 
   factory DevicePolicy.fromMap(Map<String, dynamic> map) {
     return DevicePolicy(
-      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedDeviceManagementLevelsItem>(map['allowedDeviceManagementLevels']!, (value) => DevicePolicyAllowedDeviceManagementLevelsItem.fromValue(value as String))).input(),
-      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedEncryptionStatusesItem>(map['allowedEncryptionStatuses']!, (value) => DevicePolicyAllowedEncryptionStatusesItem.fromValue(value as String))).input(),
-      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<OsConstraint>(map['osConstraints']!, (value) => OsConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval']! as bool).input(),
-      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned']! as bool).input(),
-      requireScreenlock: map['requireScreenlock'] == null ? null : (map['requireScreenlock']! as bool).input(),
+      allowedDeviceManagementLevels: (() {
+        final guardedValue = map['allowedDeviceManagementLevels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<DevicePolicyAllowedDeviceManagementLevelsItem>(
+            guardedValue,
+            (value) => DevicePolicyAllowedDeviceManagementLevelsItem.fromValue(
+              value as String,
+            ),
+          ),
+        );
+      })(),
+      allowedEncryptionStatuses: (() {
+        final guardedValue = map['allowedEncryptionStatuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DevicePolicyAllowedEncryptionStatusesItem>(
+            guardedValue,
+            (value) => DevicePolicyAllowedEncryptionStatusesItem.fromValue(
+              value as String,
+            ),
+          ),
+        );
+      })(),
+      osConstraints: (() {
+        final guardedValue = map['osConstraints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<OsConstraint>(
+            guardedValue,
+            (value) =>
+                OsConstraint.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      requireAdminApproval: (() {
+        final guardedValue = map['requireAdminApproval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireCorpOwned: (() {
+        final guardedValue = map['requireCorpOwned'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireScreenlock: (() {
+        final guardedValue = map['requireScreenlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

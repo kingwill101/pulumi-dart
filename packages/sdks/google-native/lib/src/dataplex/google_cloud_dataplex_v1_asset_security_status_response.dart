@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1AssetSecurityStatusResponse {
   /// Additional information about the current state.
   final pulumi.Input<String> message;
+
   /// The current state of the security policy applied to the attached resource.
   final pulumi.Input<String> state;
+
   /// Last update time of the status.
   final pulumi.Input<String> updateTime;
 
@@ -29,12 +31,13 @@ class GoogleCloudDataplexV1AssetSecurityStatusResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1AssetSecurityStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1AssetSecurityStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1AssetSecurityStatusResponse(
-      message: (map['message'] as String).input(),
-      state: (map['state'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

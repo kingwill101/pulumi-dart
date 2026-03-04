@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponseHeadersPolicyCustomHeadersConfigItem {
   final pulumi.Input<String> header;
   final pulumi.Input<bool> override;
+
   /// The value for the HTTP response header.
   final pulumi.Input<String> value;
 
@@ -26,12 +27,13 @@ class ResponseHeadersPolicyCustomHeadersConfigItem {
     };
   }
 
-  factory ResponseHeadersPolicyCustomHeadersConfigItem.fromMap(Map<String, dynamic> map) {
+  factory ResponseHeadersPolicyCustomHeadersConfigItem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResponseHeadersPolicyCustomHeadersConfigItem(
-      header: (map['header'] as String).input(),
-      override: (map['override'] as bool).input(),
-      value: (map['value'] as String).input(),
+      header: pulumi.Input.fromValue(map['header'] as String),
+      override: pulumi.Input.fromValue(map['override'] as bool),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

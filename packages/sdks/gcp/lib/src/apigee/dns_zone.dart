@@ -255,16 +255,21 @@ import 'dns_zone_state.dart';
 class DnsZone extends pulumi.CustomResource {
   /// Description for the zone.
   late final pulumi.Output<String> description;
+
   /// ID of the dns zone.
   late final pulumi.Output<String> dnsZoneId;
+
   /// Doamin for the zone.
   late final pulumi.Output<String> domain;
+
   /// Name of the Dns Zone in the following format:
   /// organizations/{organization}/dnsZones/{dnsZone}.
   late final pulumi.Output<String> name;
+
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
+
   /// Peering zone config
   /// Structure is documented below.
   late final pulumi.Output<DnsZonePeeringConfig> peeringConfig;
@@ -278,17 +283,17 @@ class DnsZone extends pulumi.CustomResource {
     DnsZoneArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/dnsZone:DnsZone',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.dnsZoneId = registerOutput<String>('dnsZoneId');
-    this.domain = registerOutput<String>('domain');
+         'gcp:apigee/dnsZone:DnsZone',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    dnsZoneId = registerOutput<String>('dnsZoneId');
+    domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
-    this.peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig');
+    orgId = registerOutput<String>('orgId');
+    peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig');
   }
 
   /// Gets an existing [DnsZone] resource's state with the given [name] and [id].
@@ -309,16 +314,16 @@ class DnsZone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/dnsZone:DnsZone',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.dnsZoneId = registerOutput<String>('dnsZoneId');
-    this.domain = registerOutput<String>('domain');
+         'gcp:apigee/dnsZone:DnsZone',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    dnsZoneId = registerOutput<String>('dnsZoneId');
+    domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    this.orgId = registerOutput<String>('orgId');
-    this.peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig');
+    orgId = registerOutput<String>('orgId');
+    peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig');
   }
 }

@@ -9,20 +9,25 @@ class PipelineStageOnSuccess {
 
   /// Creates a new [PipelineStageOnSuccess].
   /// [condition] The conditions that are success conditions. Defined as a `condition` block below.
-  PipelineStageOnSuccess({
-    required this.condition,
-  });
+  PipelineStageOnSuccess({required this.condition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': pulumi.Input.mapInputValue<PipelineStageOnSuccessCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          pulumi.Input.mapInputValue<
+            PipelineStageOnSuccessCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
     };
   }
 
   factory PipelineStageOnSuccess.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnSuccess(
-      condition: (PipelineStageOnSuccessCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      condition: pulumi.Input.fromValue(
+        PipelineStageOnSuccessCondition.fromMap(
+          (map['condition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

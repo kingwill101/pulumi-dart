@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRoutePortAuthorizationArgs {
   /// The name of the authorization.
   final pulumi.Input<String> authorizationName;
+
   /// The name of the express route port.
   final pulumi.Input<String> expressRoutePortName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,19 @@ class GetExpressRoutePortAuthorizationArgs {
     };
   }
 
-  factory GetExpressRoutePortAuthorizationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExpressRoutePortAuthorizationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExpressRoutePortAuthorizationArgs(
-      authorizationName: (map['authorizationName'] as String).input(),
-      expressRoutePortName: (map['expressRoutePortName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authorizationName: pulumi.Input.fromValue(
+        map['authorizationName'] as String,
+      ),
+      expressRoutePortName: pulumi.Input.fromValue(
+        map['expressRoutePortName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

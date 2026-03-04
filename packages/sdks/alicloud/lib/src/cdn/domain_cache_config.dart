@@ -35,12 +35,19 @@ class DomainCacheConfig {
 
   factory DomainCacheConfig.fromMap(Map<String, dynamic> map) {
     return DomainCacheConfig(
-      cacheContent: (map['cacheContent'] as String).input(),
-      cacheId: map['cacheId'] == null ? null : (map['cacheId']! as String).input(),
-      cacheType: (map['cacheType'] as String).input(),
-      ttl: (map['ttl'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      cacheContent: pulumi.Input.fromValue(map['cacheContent'] as String),
+      cacheId: (() {
+        final guardedValue = map['cacheId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cacheType: pulumi.Input.fromValue(map['cacheType'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_devtestlab;
-
 export 'devtestlab/applicable_schedule_response.dart';
 export 'devtestlab/arm_template_parameter_properties.dart';
 export 'devtestlab/arm_template_parameter_properties_response.dart';

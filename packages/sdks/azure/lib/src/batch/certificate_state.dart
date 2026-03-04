@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateState {
   /// Specifies the name of the Batch account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? accountName;
+
   /// The base64-encoded contents of the certificate.
   final pulumi.Input<String>? certificate;
+
   /// The format of the certificate. Possible values are `Cer` or `Pfx`.
   final pulumi.Input<String>? format;
+
   /// The generated name of the certificate.
   final pulumi.Input<String>? name;
+
   /// The password to access the certificate's private key. This can only be specified when `format` is `Pfx`.
   final pulumi.Input<String>? password;
+
   /// The public key of the certificate.
   final pulumi.Input<String>? publicData;
+
   /// The name of the resource group in which to create the Batch account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The thumbprint of the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? thumbprint;
+
   /// The algorithm of the certificate thumbprint. At this time the only supported value is `SHA1`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? thumbprintAlgorithm;
 
@@ -61,16 +69,51 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      publicData: map['publicData'] == null ? null : (map['publicData']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
-      thumbprintAlgorithm: map['thumbprintAlgorithm'] == null ? null : (map['thumbprintAlgorithm']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicData: (() {
+        final guardedValue = map['publicData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprintAlgorithm: (() {
+        final guardedValue = map['thumbprintAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

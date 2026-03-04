@@ -9,20 +9,15 @@ class WorkloadIdentityConfigResponse {
 
   /// Creates a new [WorkloadIdentityConfigResponse].
   /// [workloadPool] The workload pool to attach all Kubernetes service accounts to.
-  WorkloadIdentityConfigResponse({
-    required this.workloadPool,
-  });
+  WorkloadIdentityConfigResponse({required this.workloadPool});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'workloadPool': workloadPool,
-    };
+    return <String, dynamic>{'workloadPool': workloadPool};
   }
 
   factory WorkloadIdentityConfigResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityConfigResponse(
-      workloadPool: (map['workloadPool'] as String).input(),
+      workloadPool: pulumi.Input.fromValue(map['workloadPool'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum CmkIdentityType {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
-  const CmkIdentityType(this.value);
-  final String value;
+  const CmkIdentityType(this.wireValue);
+  final String wireValue;
 
   static CmkIdentityType fromValue(String value) {
     for (final item in CmkIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CmkIdentityType value: $value');
   }
 }
-

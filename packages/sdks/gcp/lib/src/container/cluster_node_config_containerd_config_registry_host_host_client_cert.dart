@@ -18,10 +18,15 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostClientCert {
     };
   }
 
-  factory ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigContainerdConfigRegistryHostHostClientCert(
-      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri']! as String).input(),
+      gcpSecretManagerSecretUri: (() {
+        final guardedValue = map['gcpSecretManagerSecretUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

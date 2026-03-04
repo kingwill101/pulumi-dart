@@ -6,9 +6,9 @@ import 'network_grant_state.dart';
 ///
 /// For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/grantinstancetocbn).
 ///
-/// > **NOTE:** Available since v1.63.0.
+/// &gt; **NOTE:** Available since v1.63.0.
 ///
-/// > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -272,8 +272,10 @@ import 'network_grant_state.dart';
 class NetworkGrant extends pulumi.CustomResource {
   /// The ID of the CCN instance.
   late final pulumi.Output<String> ccnId;
+
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
+
   /// The ID of the account to which the CEN instance belongs.
   late final pulumi.Output<String> cenUid;
 
@@ -286,14 +288,14 @@ class NetworkGrant extends pulumi.CustomResource {
     NetworkGrantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudconnect/networkGrant:NetworkGrant',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ccnId = registerOutput<String>('ccnId');
-    this.cenId = registerOutput<String>('cenId');
-    this.cenUid = registerOutput<String>('cenUid');
+         'alicloud:cloudconnect/networkGrant:NetworkGrant',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ccnId = registerOutput<String>('ccnId');
+    cenId = registerOutput<String>('cenId');
+    cenUid = registerOutput<String>('cenUid');
   }
 
   /// Gets an existing [NetworkGrant] resource's state with the given [name] and [id].
@@ -314,13 +316,13 @@ class NetworkGrant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudconnect/networkGrant:NetworkGrant',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ccnId = registerOutput<String>('ccnId');
-    this.cenId = registerOutput<String>('cenId');
-    this.cenUid = registerOutput<String>('cenUid');
+         'alicloud:cloudconnect/networkGrant:NetworkGrant',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ccnId = registerOutput<String>('ccnId');
+    cenId = registerOutput<String>('cenId');
+    cenUid = registerOutput<String>('cenUid');
   }
 }

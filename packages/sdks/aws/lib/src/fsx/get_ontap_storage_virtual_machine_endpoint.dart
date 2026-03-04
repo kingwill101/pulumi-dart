@@ -8,10 +8,14 @@ import 'get_ontap_storage_virtual_machine_endpoint_smb.dart';
 
 class GetOntapStorageVirtualMachineEndpoint {
   final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointIscsi>> iscsis;
+
   /// An endpoint for managing SVMs using the NetApp ONTAP CLI, NetApp ONTAP API, or NetApp CloudManager. See SVM Endpoint below.
-  final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointManagement>> managements;
+  final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointManagement>>
+  managements;
+
   /// An endpoint for connecting using the Network File System (NFS) protocol. See SVM Endpoint below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointNf>> nfs;
+
   /// An endpoint for connecting using the Server Message Block (SMB) protocol. See SVM Endpoint below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointSmb>> smbs;
 
@@ -29,20 +33,94 @@ class GetOntapStorageVirtualMachineEndpoint {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iscsis': pulumi.Input.mapInputValue<List<GetOntapStorageVirtualMachineEndpointIscsi>, List<Map<String, dynamic>>>(iscsis, (value) => pulumi.Input.encodeList<GetOntapStorageVirtualMachineEndpointIscsi, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'managements': pulumi.Input.mapInputValue<List<GetOntapStorageVirtualMachineEndpointManagement>, List<Map<String, dynamic>>>(managements, (value) => pulumi.Input.encodeList<GetOntapStorageVirtualMachineEndpointManagement, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'nfs': pulumi.Input.mapInputValue<List<GetOntapStorageVirtualMachineEndpointNf>, List<Map<String, dynamic>>>(nfs, (value) => pulumi.Input.encodeList<GetOntapStorageVirtualMachineEndpointNf, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'smbs': pulumi.Input.mapInputValue<List<GetOntapStorageVirtualMachineEndpointSmb>, List<Map<String, dynamic>>>(smbs, (value) => pulumi.Input.encodeList<GetOntapStorageVirtualMachineEndpointSmb, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'iscsis':
+          pulumi.Input.mapInputValue<
+            List<GetOntapStorageVirtualMachineEndpointIscsi>,
+            List<Map<String, dynamic>>
+          >(
+            iscsis,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetOntapStorageVirtualMachineEndpointIscsi,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'managements':
+          pulumi.Input.mapInputValue<
+            List<GetOntapStorageVirtualMachineEndpointManagement>,
+            List<Map<String, dynamic>>
+          >(
+            managements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetOntapStorageVirtualMachineEndpointManagement,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'nfs':
+          pulumi.Input.mapInputValue<
+            List<GetOntapStorageVirtualMachineEndpointNf>,
+            List<Map<String, dynamic>>
+          >(
+            nfs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetOntapStorageVirtualMachineEndpointNf,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'smbs':
+          pulumi.Input.mapInputValue<
+            List<GetOntapStorageVirtualMachineEndpointSmb>,
+            List<Map<String, dynamic>>
+          >(
+            smbs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetOntapStorageVirtualMachineEndpointSmb,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetOntapStorageVirtualMachineEndpoint.fromMap(Map<String, dynamic> map) {
+  factory GetOntapStorageVirtualMachineEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOntapStorageVirtualMachineEndpoint(
-      iscsis: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointIscsi>(map['iscsis']!, (value) => GetOntapStorageVirtualMachineEndpointIscsi.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managements: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointManagement>(map['managements']!, (value) => GetOntapStorageVirtualMachineEndpointManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nfs: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointNf>(map['nfs']!, (value) => GetOntapStorageVirtualMachineEndpointNf.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      smbs: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointSmb>(map['smbs']!, (value) => GetOntapStorageVirtualMachineEndpointSmb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iscsis: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointIscsi>(
+          map['iscsis']!,
+          (value) => GetOntapStorageVirtualMachineEndpointIscsi.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      managements: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<GetOntapStorageVirtualMachineEndpointManagement>(
+          map['managements']!,
+          (value) => GetOntapStorageVirtualMachineEndpointManagement.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      nfs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointNf>(
+          map['nfs']!,
+          (value) => GetOntapStorageVirtualMachineEndpointNf.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      smbs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointSmb>(
+          map['smbs']!,
+          (value) => GetOntapStorageVirtualMachineEndpointSmb.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

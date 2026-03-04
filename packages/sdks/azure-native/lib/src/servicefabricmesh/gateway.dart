@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_args.dart';
-import 'http_config_response.dart';
 import 'network_ref_response.dart';
-import 'tcp_config_response.dart';
 
 /// This type describes a gateway resource.
 ///
@@ -429,30 +427,43 @@ import 'tcp_config_response.dart';
 class Gateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// User readable description of the gateway.
   late final pulumi.Output<String?> description;
+
   /// Network that the Application is using.
   late final pulumi.Output<NetworkRefResponse> destinationNetwork;
+
   /// Configuration for http connectivity for this gateway.
-  late final pulumi.Output<List<HttpConfigResponse>?> http;
+  late final pulumi.Output<List<Map<String, dynamic>>?> http;
+
   /// IP address of the gateway. This is populated in the response and is ignored for incoming requests.
   late final pulumi.Output<String> ipAddress;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Network the gateway should listen on for requests.
   late final pulumi.Output<NetworkRefResponse> sourceNetwork;
+
   /// Status of the resource.
   late final pulumi.Output<String> status;
+
   /// Gives additional information about the current status of the gateway.
   late final pulumi.Output<String> statusDetails;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Configuration for tcp connectivity for this gateway.
-  late final pulumi.Output<List<TcpConfigResponse>?> tcp;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tcp;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -465,24 +476,26 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicefabricmesh:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.destinationNetwork = registerOutput<NetworkRefResponse>('destinationNetwork');
-    this.http = registerOutput<List<HttpConfigResponse>?>('http');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.location = registerOutput<String>('location');
+         'azure-native:servicefabricmesh:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    destinationNetwork = registerOutput<NetworkRefResponse>(
+      'destinationNetwork',
+    );
+    http = registerOutput<List<Map<String, dynamic>>?>('http');
+    ipAddress = registerOutput<String>('ipAddress');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceNetwork = registerOutput<NetworkRefResponse>('sourceNetwork');
-    this.status = registerOutput<String>('status');
-    this.statusDetails = registerOutput<String>('statusDetails');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tcp = registerOutput<List<TcpConfigResponse>?>('tcp');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceNetwork = registerOutput<NetworkRefResponse>('sourceNetwork');
+    status = registerOutput<String>('status');
+    statusDetails = registerOutput<String>('statusDetails');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tcp = registerOutput<List<Map<String, dynamic>>?>('tcp');
+    type = registerOutput<String>('type');
   }
 }

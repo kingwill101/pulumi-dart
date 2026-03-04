@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDashboardDefinitionArgs {
   /// The name of the Azure Managed Dashboard.
   final pulumi.Input<String> dashboardName;
+
   /// The name of the Dashboard Definition.
   final pulumi.Input<String> definitionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetDashboardDefinitionArgs {
 
   factory GetDashboardDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetDashboardDefinitionArgs(
-      dashboardName: (map['dashboardName'] as String).input(),
-      definitionName: (map['definitionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dashboardName: pulumi.Input.fromValue(map['dashboardName'] as String),
+      definitionName: pulumi.Input.fromValue(map['definitionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

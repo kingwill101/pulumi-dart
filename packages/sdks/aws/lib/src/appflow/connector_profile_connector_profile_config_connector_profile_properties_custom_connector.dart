@@ -5,7 +5,11 @@ import 'connector_profile_connector_profile_config_connector_profile_properties_
 
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector {
   /// The OAuth 2.0 properties required for OAuth 2.0 authentication.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties>? oauth2Properties;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties
+  >?
+  oauth2Properties;
+
   /// A map of properties that are required to create a profile for the custom connector.
   final pulumi.Input<Map<String, String>>? profileProperties;
 
@@ -19,16 +23,35 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConn
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oauth2Properties': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties, Map<String, dynamic>>(oauth2Properties, (value) => value.toMap()),
+      'oauth2Properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties,
+            Map<String, dynamic>
+          >(oauth2Properties, (value) => value.toMap()),
       'profileProperties': ?profileProperties,
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector(
-      oauth2Properties: map['oauth2Properties'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties.fromMap((map['oauth2Properties']! as Map).cast<String, dynamic>())).input()).input(),
-      profileProperties: map['profileProperties'] == null ? null : (((map['profileProperties'] as Map).cast<String, String>()).input()).input(),
+      oauth2Properties: (() {
+        final guardedValue = map['oauth2Properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      profileProperties: (() {
+        final guardedValue = map['profileProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_connectedcache;
-
 export 'connectedcache/additional_cache_node_properties.dart';
 export 'connectedcache/additional_cache_node_properties_response.dart';
 export 'connectedcache/additional_customer_properties.dart';

@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolArgs {
   /// Pool Object
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPoolArgs].
   /// [poolName] Pool Object
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPoolArgs({
-    required this.poolName,
-    required this.resourceGroupName,
-  });
+  GetPoolArgs({required this.poolName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetPoolArgs {
 
   factory GetPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetPoolArgs(
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

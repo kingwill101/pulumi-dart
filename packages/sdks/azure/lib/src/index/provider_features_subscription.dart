@@ -7,9 +7,7 @@ class ProviderFeaturesSubscription {
 
   /// Creates a new [ProviderFeaturesSubscription].
   /// [preventCancellationOnDestroy] Optional.
-  ProviderFeaturesSubscription({
-    this.preventCancellationOnDestroy,
-  });
+  ProviderFeaturesSubscription({this.preventCancellationOnDestroy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,8 +17,11 @@ class ProviderFeaturesSubscription {
 
   factory ProviderFeaturesSubscription.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesSubscription(
-      preventCancellationOnDestroy: map['preventCancellationOnDestroy'] == null ? null : (map['preventCancellationOnDestroy']! as bool).input(),
+      preventCancellationOnDestroy: (() {
+        final guardedValue = map['preventCancellationOnDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum IntegrationType {
   valueHttpProxy("http_proxy"),
   valueMock("mock");
 
-  const IntegrationType(this.value);
-  final String value;
+  const IntegrationType(this.wireValue);
+  final String wireValue;
 
   static IntegrationType fromValue(String value) {
     for (final item in IntegrationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IntegrationType value: $value');
   }
 }
-

@@ -15,15 +15,16 @@ class TableExternalDataConfigurationAvroOptions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'useAvroLogicalTypes': useAvroLogicalTypes,
-    };
+    return <String, dynamic>{'useAvroLogicalTypes': useAvroLogicalTypes};
   }
 
-  factory TableExternalDataConfigurationAvroOptions.fromMap(Map<String, dynamic> map) {
+  factory TableExternalDataConfigurationAvroOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableExternalDataConfigurationAvroOptions(
-      useAvroLogicalTypes: (map['useAvroLogicalTypes'] as bool).input(),
+      useAvroLogicalTypes: pulumi.Input.fromValue(
+        map['useAvroLogicalTypes'] as bool,
+      ),
     );
   }
 }
-

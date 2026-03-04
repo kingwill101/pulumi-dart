@@ -7,8 +7,10 @@ class PrivateLinkAssociationPropertiesExpandedResponse {
   /// The rmpl Resource ID.
   final pulumi.Input<String>? privateLink;
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// The scope of the private link association.
   final pulumi.Input<String>? scope;
+
   /// The TenantID.
   final pulumi.Input<String>? tenantID;
 
@@ -33,13 +35,30 @@ class PrivateLinkAssociationPropertiesExpandedResponse {
     };
   }
 
-  factory PrivateLinkAssociationPropertiesExpandedResponse.fromMap(Map<String, dynamic> map) {
+  factory PrivateLinkAssociationPropertiesExpandedResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateLinkAssociationPropertiesExpandedResponse(
-      privateLink: map['privateLink'] == null ? null : (map['privateLink']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      tenantID: map['tenantID'] == null ? null : (map['tenantID']! as String).input(),
+      privateLink: (() {
+        final guardedValue = map['privateLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantID: (() {
+        final guardedValue = map['tenantID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

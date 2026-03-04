@@ -27,9 +27,12 @@ class GetSecurityPolicyComputeBetaArgs {
 
   factory GetSecurityPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      securityPolicy: (map['securityPolicy'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityPolicy: pulumi.Input.fromValue(map['securityPolicy'] as String),
     );
   }
 }
-

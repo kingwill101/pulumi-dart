@@ -10,20 +10,15 @@ class CmekConfigSingleRegionKey {
 
   /// Creates a new [CmekConfigSingleRegionKey].
   /// [kmsKey] Single-regional kms key resource name which will be used to encrypt
-  CmekConfigSingleRegionKey({
-    required this.kmsKey,
-  });
+  CmekConfigSingleRegionKey({required this.kmsKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKey': kmsKey,
-    };
+    return <String, dynamic>{'kmsKey': kmsKey};
   }
 
   factory CmekConfigSingleRegionKey.fromMap(Map<String, dynamic> map) {
     return CmekConfigSingleRegionKey(
-      kmsKey: (map['kmsKey'] as String).input(),
+      kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
     );
   }
 }
-

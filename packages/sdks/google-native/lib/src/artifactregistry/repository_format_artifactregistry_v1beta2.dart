@@ -9,16 +9,17 @@ enum RepositoryFormatArtifactregistryV1beta2 {
   googet("GOOGET"),
   python("PYTHON");
 
-  const RepositoryFormatArtifactregistryV1beta2(this.value);
-  final String value;
+  const RepositoryFormatArtifactregistryV1beta2(this.wireValue);
+  final String wireValue;
 
   static RepositoryFormatArtifactregistryV1beta2 fromValue(String value) {
     for (final item in RepositoryFormatArtifactregistryV1beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RepositoryFormatArtifactregistryV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown RepositoryFormatArtifactregistryV1beta2 value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum DiscountAppliedScopeType {
   billingProfile("BillingProfile"),
   customer("Customer");
 
-  const DiscountAppliedScopeType(this.value);
-  final String value;
+  const DiscountAppliedScopeType(this.wireValue);
+  final String wireValue;
 
   static DiscountAppliedScopeType fromValue(String value) {
     for (final item in DiscountAppliedScopeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscountAppliedScopeType value: $value');
   }
 }
-

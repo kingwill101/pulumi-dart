@@ -1,5 +1,3 @@
-library module_datasync;
-
 export 'datasync/agent.dart';
 export 'datasync/agent_args.dart';
 export 'datasync/agent_state.dart';

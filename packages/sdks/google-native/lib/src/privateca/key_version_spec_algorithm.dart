@@ -10,16 +10,15 @@ enum KeyVersionSpecAlgorithm {
   ecP256Sha256("EC_P256_SHA256"),
   ecP384Sha384("EC_P384_SHA384");
 
-  const KeyVersionSpecAlgorithm(this.value);
-  final String value;
+  const KeyVersionSpecAlgorithm(this.wireValue);
+  final String wireValue;
 
   static KeyVersionSpecAlgorithm fromValue(String value) {
     for (final item in KeyVersionSpecAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyVersionSpecAlgorithm value: $value');
   }
 }
-

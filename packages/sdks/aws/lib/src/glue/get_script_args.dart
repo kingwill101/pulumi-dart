@@ -11,10 +11,13 @@ import 'get_script_dag_node.dart';
 class GetScriptArgs {
   /// List of the edges in the DAG. Defined below.
   final pulumi.Input<List<GetScriptDagEdge>> dagEdges;
+
   /// List of the nodes in the DAG. Defined below.
   final pulumi.Input<List<GetScriptDagNode>> dagNodes;
+
   /// Programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
   final pulumi.Input<String>? language;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -32,8 +35,30 @@ class GetScriptArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dagEdges': pulumi.Input.mapInputValue<List<GetScriptDagEdge>, List<Map<String, dynamic>>>(dagEdges, (value) => pulumi.Input.encodeList<GetScriptDagEdge, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'dagNodes': pulumi.Input.mapInputValue<List<GetScriptDagNode>, List<Map<String, dynamic>>>(dagNodes, (value) => pulumi.Input.encodeList<GetScriptDagNode, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dagEdges':
+          pulumi.Input.mapInputValue<
+            List<GetScriptDagEdge>,
+            List<Map<String, dynamic>>
+          >(
+            dagEdges,
+            (value) =>
+                pulumi.Input.encodeList<GetScriptDagEdge, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'dagNodes':
+          pulumi.Input.mapInputValue<
+            List<GetScriptDagNode>,
+            List<Map<String, dynamic>>
+          >(
+            dagNodes,
+            (value) =>
+                pulumi.Input.encodeList<GetScriptDagNode, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'language': ?language,
       'region': ?region,
     };
@@ -41,11 +66,30 @@ class GetScriptArgs {
 
   factory GetScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetScriptArgs(
-      dagEdges: (pulumi.Input.decodeList<GetScriptDagEdge>(map['dagEdges']!, (value) => GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dagNodes: (pulumi.Input.decodeList<GetScriptDagNode>(map['dagNodes']!, (value) => GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      language: map['language'] == null ? null : ((map['language'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      dagEdges: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetScriptDagEdge>(
+          map['dagEdges']!,
+          (value) =>
+              GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      dagNodes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetScriptDagNode>(
+          map['dagNodes']!,
+          (value) =>
+              GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      language: (() {
+        final guardedValue = map['language'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

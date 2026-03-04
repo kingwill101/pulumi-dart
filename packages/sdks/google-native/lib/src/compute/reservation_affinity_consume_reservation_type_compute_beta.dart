@@ -7,16 +7,20 @@ enum ReservationAffinityConsumeReservationTypeComputeBeta {
   specificThenNoReservation("SPECIFIC_THEN_NO_RESERVATION"),
   unspecified("UNSPECIFIED");
 
-  const ReservationAffinityConsumeReservationTypeComputeBeta(this.value);
-  final String value;
+  const ReservationAffinityConsumeReservationTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static ReservationAffinityConsumeReservationTypeComputeBeta fromValue(String value) {
-    for (final item in ReservationAffinityConsumeReservationTypeComputeBeta.values) {
-      if (item.value == value) {
+  static ReservationAffinityConsumeReservationTypeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ReservationAffinityConsumeReservationTypeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ReservationAffinityConsumeReservationTypeComputeBeta value: $value',
+    );
   }
 }
-

@@ -7,29 +7,35 @@ import 'file_reference.dart';
 class IosTestLoop {
   /// The .ipa of the application to test.
   final pulumi.Input<FileReference> appIpa;
+
   /// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
   final pulumi.Input<List<int>>? scenarios;
 
   /// Creates a new [IosTestLoop].
   /// [appIpa] The .ipa of the application to test.
   /// [scenarios] The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
-  IosTestLoop({
-    required this.appIpa,
-    this.scenarios,
-  });
+  IosTestLoop({required this.appIpa, this.scenarios});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appIpa': pulumi.Input.mapInputValue<FileReference, Map<String, dynamic>>(appIpa, (value) => value.toMap()),
+      'appIpa': pulumi.Input.mapInputValue<FileReference, Map<String, dynamic>>(
+        appIpa,
+        (value) => value.toMap(),
+      ),
       'scenarios': ?scenarios,
     };
   }
 
   factory IosTestLoop.fromMap(Map<String, dynamic> map) {
     return IosTestLoop(
-      appIpa: (FileReference.fromMap((map['appIpa'] as Map).cast<String, dynamic>())).input(),
-      scenarios: map['scenarios'] == null ? null : ((map['scenarios']! as List).cast<int>()).input(),
+      appIpa: pulumi.Input.fromValue(
+        FileReference.fromMap((map['appIpa']! as Map).cast<String, dynamic>()),
+      ),
+      scenarios: (() {
+        final guardedValue = map['scenarios'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
     );
   }
 }
-

@@ -14,15 +14,18 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'containerPort': ?containerPort,
-    };
+    return <String, dynamic>{'containerPort': ?containerPort};
   }
 
-  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort.fromMap(Map<String, dynamic> map) {
+  factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort(
-      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
+      containerPort: (() {
+        final guardedValue = map['containerPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

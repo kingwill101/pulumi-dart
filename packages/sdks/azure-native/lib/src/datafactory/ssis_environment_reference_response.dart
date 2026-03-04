@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SsisEnvironmentReferenceResponse {
   /// Environment folder name.
   final pulumi.Input<String>? environmentFolderName;
+
   /// Environment name.
   final pulumi.Input<String>? environmentName;
+
   /// Environment reference id.
   final pulumi.Input<double>? id;
+
   /// Reference type
   final pulumi.Input<String>? referenceType;
 
@@ -36,11 +39,26 @@ class SsisEnvironmentReferenceResponse {
 
   factory SsisEnvironmentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return SsisEnvironmentReferenceResponse(
-      environmentFolderName: map['environmentFolderName'] == null ? null : (map['environmentFolderName']! as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as double).input(),
-      referenceType: map['referenceType'] == null ? null : (map['referenceType']! as String).input(),
+      environmentFolderName: (() {
+        final guardedValue = map['environmentFolderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentName: (() {
+        final guardedValue = map['environmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      referenceType: (() {
+        final guardedValue = map['referenceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

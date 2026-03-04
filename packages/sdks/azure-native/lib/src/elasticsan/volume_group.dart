@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_properties_response.dart';
 import 'identity_response.dart';
 import 'network_rule_set_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 import 'volume_group_args.dart';
 
@@ -139,26 +138,38 @@ import 'volume_group_args.dart';
 class VolumeGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Type of encryption
   late final pulumi.Output<String?> encryption;
+
   /// Encryption Properties describing Key Vault and Identity information
   late final pulumi.Output<EncryptionPropertiesResponse?> encryptionProperties;
+
   /// A boolean indicating whether or not Data Integrity Check is enabled
   late final pulumi.Output<bool?> enforceDataIntegrityCheckForIscsi;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A collection of rules governing the accessibility from specific network locations.
   late final pulumi.Output<NetworkRuleSetResponse?> networkAcls;
+
   /// The list of Private Endpoint Connections.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Type of storage target
   late final pulumi.Output<String?> protocolType;
+
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,22 +182,28 @@ class VolumeGroup extends pulumi.CustomResource {
     VolumeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:elasticsan:VolumeGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.encryption = registerOutput<String?>('encryption');
-    this.encryptionProperties = registerOutput<EncryptionPropertiesResponse?>('encryptionProperties');
-    this.enforceDataIntegrityCheckForIscsi = registerOutput<bool?>('enforceDataIntegrityCheckForIscsi');
-    this.identity = registerOutput<IdentityResponse?>('identity');
+         'azure-native:elasticsan:VolumeGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryption = registerOutput<String?>('encryption');
+    encryptionProperties = registerOutput<EncryptionPropertiesResponse?>(
+      'encryptionProperties',
+    );
+    enforceDataIntegrityCheckForIscsi = registerOutput<bool?>(
+      'enforceDataIntegrityCheckForIscsi',
+    );
+    identity = registerOutput<IdentityResponse?>('identity');
     this.name = registerOutput<String>('name');
-    this.networkAcls = registerOutput<NetworkRuleSetResponse?>('networkAcls');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.protocolType = registerOutput<String?>('protocolType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    networkAcls = registerOutput<NetworkRuleSetResponse?>('networkAcls');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    protocolType = registerOutput<String?>('protocolType');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

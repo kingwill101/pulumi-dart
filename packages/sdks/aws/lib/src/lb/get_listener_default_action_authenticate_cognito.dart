@@ -45,17 +45,26 @@ class GetListenerDefaultActionAuthenticateCognito {
     };
   }
 
-  factory GetListenerDefaultActionAuthenticateCognito.fromMap(Map<String, dynamic> map) {
+  factory GetListenerDefaultActionAuthenticateCognito.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerDefaultActionAuthenticateCognito(
-      authenticationRequestExtraParams: ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
-      onUnauthenticatedRequest: (map['onUnauthenticatedRequest'] as String).input(),
-      scope: (map['scope'] as String).input(),
-      sessionCookieName: (map['sessionCookieName'] as String).input(),
-      sessionTimeout: (map['sessionTimeout'] as int).input(),
-      userPoolArn: (map['userPoolArn'] as String).input(),
-      userPoolClientId: (map['userPoolClientId'] as String).input(),
-      userPoolDomain: (map['userPoolDomain'] as String).input(),
+      authenticationRequestExtraParams: pulumi.Input.fromValue(
+        (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
+      ),
+      onUnauthenticatedRequest: pulumi.Input.fromValue(
+        map['onUnauthenticatedRequest'] as String,
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      sessionCookieName: pulumi.Input.fromValue(
+        map['sessionCookieName'] as String,
+      ),
+      sessionTimeout: pulumi.Input.fromValue(map['sessionTimeout'] as int),
+      userPoolArn: pulumi.Input.fromValue(map['userPoolArn'] as String),
+      userPoolClientId: pulumi.Input.fromValue(
+        map['userPoolClientId'] as String,
+      ),
+      userPoolDomain: pulumi.Input.fromValue(map['userPoolDomain'] as String),
     );
   }
 }
-

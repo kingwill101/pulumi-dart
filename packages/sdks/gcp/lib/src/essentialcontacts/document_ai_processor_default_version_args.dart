@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentAiProcessorDefaultVersionArgs {
   /// The processor to set the version on.
   final pulumi.Input<String> processor;
+
   /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
   /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
   final pulumi.Input<String> version;
@@ -22,17 +23,15 @@ class DocumentAiProcessorDefaultVersionArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'processor': processor,
-      'version': version,
-    };
+    return <String, dynamic>{'processor': processor, 'version': version};
   }
 
-  factory DocumentAiProcessorDefaultVersionArgs.fromMap(Map<String, dynamic> map) {
+  factory DocumentAiProcessorDefaultVersionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DocumentAiProcessorDefaultVersionArgs(
-      processor: (map['processor'] as String).input(),
-      version: (map['version'] as String).input(),
+      processor: pulumi.Input.fromValue(map['processor'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

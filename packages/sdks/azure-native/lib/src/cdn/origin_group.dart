@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'health_probe_parameters_response.dart';
 import 'origin_group_args.dart';
-import 'resource_reference_response.dart';
 import 'response_based_origin_error_detection_parameters_response.dart';
 import 'system_data_response.dart';
 
@@ -230,22 +229,33 @@ import 'system_data_response.dart';
 class OriginGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Health probe settings to the origin that is used to determine the health of the origin.
   late final pulumi.Output<HealthProbeParametersResponse?> healthProbeSettings;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The source of the content being delivered via CDN within given origin group.
-  late final pulumi.Output<List<ResourceReferenceResponse>?> origins;
+  late final pulumi.Output<List<Map<String, dynamic>>?> origins;
+
   /// Provisioning status of the origin group.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource status of the origin group.
   late final pulumi.Output<String> resourceState;
+
   /// The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
-  late final pulumi.Output<ResponseBasedOriginErrorDetectionParametersResponse?> responseBasedOriginErrorDetectionSettings;
+  late final pulumi.Output<ResponseBasedOriginErrorDetectionParametersResponse?>
+  responseBasedOriginErrorDetectionSettings;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
-  late final pulumi.Output<int?> trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
+  late final pulumi.Output<int?>
+  trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -258,20 +268,28 @@ class OriginGroup extends pulumi.CustomResource {
     OriginGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:OriginGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.healthProbeSettings = registerOutput<HealthProbeParametersResponse?>('healthProbeSettings');
+         'azure-native:cdn:OriginGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    healthProbeSettings = registerOutput<HealthProbeParametersResponse?>(
+      'healthProbeSettings',
+    );
     this.name = registerOutput<String>('name');
-    this.origins = registerOutput<List<ResourceReferenceResponse>?>('origins');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.responseBasedOriginErrorDetectionSettings = registerOutput<ResponseBasedOriginErrorDetectionParametersResponse?>('responseBasedOriginErrorDetectionSettings');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.trafficRestorationTimeToHealedOrNewEndpointsInMinutes = registerOutput<int?>('trafficRestorationTimeToHealedOrNewEndpointsInMinutes');
-    this.type = registerOutput<String>('type');
+    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    responseBasedOriginErrorDetectionSettings =
+        registerOutput<ResponseBasedOriginErrorDetectionParametersResponse?>(
+          'responseBasedOriginErrorDetectionSettings',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes =
+        registerOutput<int?>(
+          'trafficRestorationTimeToHealedOrNewEndpointsInMinutes',
+        );
+    type = registerOutput<String>('type');
   }
 }

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDnsAuthorizationArgs {
   /// The name of the DNS Authorization.
   final pulumi.Input<String> domain;
+
   /// The Certificate Manager location. If not specified, "global" is used.
   final pulumi.Input<String>? location;
+
   /// The name of the DNS Authorization.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -39,11 +42,18 @@ class GetDnsAuthorizationArgs {
 
   factory GetDnsAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsAuthorizationArgs(
-      domain: (map['domain'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum InputDeliveryMode {
   valueEvalMount("EvalMount"),
   valueEvalDownload("EvalDownload");
 
-  const InputDeliveryMode(this.value);
-  final String value;
+  const InputDeliveryMode(this.wireValue);
+  final String wireValue;
 
   static InputDeliveryMode fromValue(String value) {
     for (final item in InputDeliveryMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InputDeliveryMode value: $value');
   }
 }
-

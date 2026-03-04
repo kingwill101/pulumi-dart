@@ -10,12 +10,16 @@ import 'backup_instance_dataprotection.dart';
 class BackupInstanceArgs {
   /// The name of the backup instance.
   final pulumi.Input<String>? backupInstanceName;
+
   /// BackupInstanceResource properties
   final pulumi.Input<BackupInstanceDataprotection>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Proxy Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the backup vault.
   final pulumi.Input<String> vaultName;
 
@@ -45,12 +49,29 @@ class BackupInstanceArgs {
 
   factory BackupInstanceArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceArgs(
-      backupInstanceName: map['backupInstanceName'] == null ? null : (map['backupInstanceName']! as String).input(),
-      properties: map['properties'] == null ? null : (map['properties']! as BackupInstanceDataprotection).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      backupInstanceName: (() {
+        final guardedValue = map['backupInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          guardedValue as BackupInstanceDataprotection,
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum KafkaPartitionStrategy {
   topic("topic"),
   property("property");
 
-  const KafkaPartitionStrategy(this.value);
-  final String value;
+  const KafkaPartitionStrategy(this.wireValue);
+  final String wireValue;
 
   static KafkaPartitionStrategy fromValue(String value) {
     for (final item in KafkaPartitionStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KafkaPartitionStrategy value: $value');
   }
 }
-

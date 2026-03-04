@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskEncryptionStatus {
   /// This is always `sql#diskEncryptionStatus`.
   final pulumi.Input<String>? kind;
+
   /// KMS key version used to encrypt the Cloud SQL instance resource
   final pulumi.Input<String>? kmsKeyVersionName;
 
   /// Creates a new [DiskEncryptionStatus].
   /// [kind] This is always `sql#diskEncryptionStatus`.
   /// [kmsKeyVersionName] KMS key version used to encrypt the Cloud SQL instance resource
-  DiskEncryptionStatus({
-    this.kind,
-    this.kmsKeyVersionName,
-  });
+  DiskEncryptionStatus({this.kind, this.kmsKeyVersionName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class DiskEncryptionStatus {
 
   factory DiskEncryptionStatus.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionStatus(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName']! as String).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyVersionName: (() {
+        final guardedValue = map['kmsKeyVersionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

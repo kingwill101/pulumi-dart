@@ -3,16 +3,15 @@ enum AlwaysServe {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const AlwaysServe(this.value);
-  final String value;
+  const AlwaysServe(this.wireValue);
+  final String wireValue;
 
   static AlwaysServe fromValue(String value) {
     for (final item in AlwaysServe.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlwaysServe value: $value');
   }
 }
-

@@ -2,9 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
 import 'event_type_info_response.dart';
 import 'identity_info_response.dart';
-import 'inbound_ip_rule_response.dart';
 import 'json_input_schema_mapping_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// EventGrid Domain.
@@ -234,6 +232,7 @@ class Domain extends pulumi.CustomResource {
   /// flexibility to perform less operations and manage fewer resources by the user. Also, note that in auto-managed creation mode, user is allowed to create the
   /// domain topic on demand if needed.
   late final pulumi.Output<bool?> autoCreateTopicWithFirstSubscription;
+
   /// This Boolean is used to specify the deletion mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.
   /// In this context, deletion of domain topic can be auto-managed (when true) or self-managed (when false). The default value for this property is true.
   /// When this property is set to true, Event Grid is responsible of automatically deleting the domain topic when the last event subscription at the scope
@@ -242,44 +241,64 @@ class Domain extends pulumi.CustomResource {
   /// control of when the domain topic needs to be deleted, while auto-managed mode provides the flexibility to perform less operations and manage fewer
   /// resources by the user.
   late final pulumi.Output<bool?> autoDeleteTopicWithLastSubscription;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Data Residency Boundary of the resource.
   late final pulumi.Output<String?> dataResidencyBoundary;
+
   /// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the domain.
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// Endpoint for the Event Grid Domain Resource which is used for publishing the events.
   late final pulumi.Output<String> endpoint;
+
   /// Event Type Information for the domain. This information is provided by the publisher and can be used by the
   /// subscriber to view different types of events that are published.
   late final pulumi.Output<EventTypeInfoResponse?> eventTypeInfo;
+
   /// Identity information for the Event Grid Domain resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
+
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
-  late final pulumi.Output<List<InboundIpRuleResponse>?> inboundIpRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+
   /// This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource.
   late final pulumi.Output<String?> inputSchema;
+
   /// Information about the InputSchemaMapping which specified the info about mapping event payload.
   late final pulumi.Output<JsonInputSchemaMappingResponse?> inputSchemaMapping;
+
   /// Location of the resource.
   late final pulumi.Output<String> location;
+
   /// Metric resource id for the Event Grid Domain Resource.
   late final pulumi.Output<String> metricResourceId;
+
   /// Minimum TLS version of the publisher allowed to publish to this domain
   late final pulumi.Output<String?> minimumTlsVersionAllowed;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// List of private endpoint connections.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Provisioning state of the Event Grid Domain Resource.
   late final pulumi.Output<String> provisioningState;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
-  /// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" />
+  /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" /&gt;
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -287,36 +306,45 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_eventgrid_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:eventgrid:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreateTopicWithFirstSubscription = registerOutput<bool?>('autoCreateTopicWithFirstSubscription');
-    this.autoDeleteTopicWithLastSubscription = registerOutput<bool?>('autoDeleteTopicWithLastSubscription');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataResidencyBoundary = registerOutput<String?>('dataResidencyBoundary');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo');
-    this.identity = registerOutput<IdentityInfoResponse?>('identity');
-    this.inboundIpRules = registerOutput<List<InboundIpRuleResponse>?>('inboundIpRules');
-    this.inputSchema = registerOutput<String?>('inputSchema');
-    this.inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>('inputSchemaMapping');
-    this.location = registerOutput<String>('location');
-    this.metricResourceId = registerOutput<String>('metricResourceId');
-    this.minimumTlsVersionAllowed = registerOutput<String?>('minimumTlsVersionAllowed');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:eventgrid:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    autoCreateTopicWithFirstSubscription = registerOutput<bool?>(
+      'autoCreateTopicWithFirstSubscription',
+    );
+    autoDeleteTopicWithLastSubscription = registerOutput<bool?>(
+      'autoDeleteTopicWithLastSubscription',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataResidencyBoundary = registerOutput<String?>('dataResidencyBoundary');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    endpoint = registerOutput<String>('endpoint');
+    eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo');
+    identity = registerOutput<IdentityInfoResponse?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    inputSchema = registerOutput<String?>('inputSchema');
+    inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>(
+      'inputSchemaMapping',
+    );
+    location = registerOutput<String>('location');
+    metricResourceId = registerOutput<String>('metricResourceId');
+    minimumTlsVersionAllowed = registerOutput<String?>(
+      'minimumTlsVersionAllowed',
+    );
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

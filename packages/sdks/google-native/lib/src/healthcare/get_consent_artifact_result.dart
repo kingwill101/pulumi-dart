@@ -8,18 +8,25 @@ import 'signature_response.dart';
 class GetConsentArtifactResult {
   /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
   final List<ImageResponse> consentContentScreenshots;
+
   /// Optional. An string indicating the version of the consent information shown to the user.
   final String consentContentVersion;
+
   /// Optional. A signature from a guardian.
   final SignatureResponse guardianSignature;
+
   /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
   final Map<String, String> metadata;
+
   /// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
   final String name;
+
   /// User's UUID provided by the client.
   final String userId;
+
   /// Optional. User's signature.
   final SignatureResponse userSignature;
+
   /// Optional. A signature from a witness.
   final SignatureResponse witnessSignature;
 
@@ -45,7 +52,11 @@ class GetConsentArtifactResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consentContentScreenshots': pulumi.Input.encodeList<ImageResponse, Map<String, dynamic>>(consentContentScreenshots, (value) => value.toMap()),
+      'consentContentScreenshots':
+          pulumi.Input.encodeList<ImageResponse, Map<String, dynamic>>(
+            consentContentScreenshots,
+            (value) => value.toMap(),
+          ),
       'consentContentVersion': consentContentVersion,
       'guardianSignature': guardianSignature.toMap(),
       'metadata': metadata,
@@ -58,15 +69,24 @@ class GetConsentArtifactResult {
 
   factory GetConsentArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetConsentArtifactResult(
-      consentContentScreenshots: pulumi.Input.decodeList<ImageResponse>(map['consentContentScreenshots'], (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      consentContentScreenshots: pulumi.Input.decodeList<ImageResponse>(
+        map['consentContentScreenshots']!,
+        (value) =>
+            ImageResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       consentContentVersion: map['consentContentVersion'] as String,
-      guardianSignature: SignatureResponse.fromMap((map['guardianSignature'] as Map).cast<String, dynamic>()),
+      guardianSignature: SignatureResponse.fromMap(
+        (map['guardianSignature']! as Map).cast<String, dynamic>(),
+      ),
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       userId: map['userId'] as String,
-      userSignature: SignatureResponse.fromMap((map['userSignature'] as Map).cast<String, dynamic>()),
-      witnessSignature: SignatureResponse.fromMap((map['witnessSignature'] as Map).cast<String, dynamic>()),
+      userSignature: SignatureResponse.fromMap(
+        (map['userSignature']! as Map).cast<String, dynamic>(),
+      ),
+      witnessSignature: SignatureResponse.fromMap(
+        (map['witnessSignature']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

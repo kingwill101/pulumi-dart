@@ -11,16 +11,15 @@ enum RegressionModels {
   valueLightGBM("LightGBM"),
   valueXGBoostRegressor("XGBoostRegressor");
 
-  const RegressionModels(this.value);
-  final String value;
+  const RegressionModels(this.wireValue);
+  final String wireValue;
 
   static RegressionModels fromValue(String value) {
     for (final item in RegressionModels.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegressionModels value: $value');
   }
 }
-

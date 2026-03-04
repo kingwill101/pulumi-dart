@@ -7,10 +7,13 @@ import 'sql_connection_info_response.dart';
 class GetUserTablesSqlSyncTaskInputResponse {
   /// List of source database names to collect tables for
   final pulumi.Input<List<String>> selectedSourceDatabases;
+
   /// List of target database names to collect tables for
   final pulumi.Input<List<String>> selectedTargetDatabases;
+
   /// Connection information for SQL Server
   final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
+
   /// Connection information for SQL DB
   final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -30,18 +33,39 @@ class GetUserTablesSqlSyncTaskInputResponse {
     return <String, dynamic>{
       'selectedSourceDatabases': selectedSourceDatabases,
       'selectedTargetDatabases': selectedTargetDatabases,
-      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
-      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo':
+          pulumi.Input.mapInputValue<
+            SqlConnectionInfoResponse,
+            Map<String, dynamic>
+          >(sourceConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo':
+          pulumi.Input.mapInputValue<
+            SqlConnectionInfoResponse,
+            Map<String, dynamic>
+          >(targetConnectionInfo, (value) => value.toMap()),
     };
   }
 
-  factory GetUserTablesSqlSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
+  factory GetUserTablesSqlSyncTaskInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserTablesSqlSyncTaskInputResponse(
-      selectedSourceDatabases: ((map['selectedSourceDatabases'] as List).cast<String>()).input(),
-      selectedTargetDatabases: ((map['selectedTargetDatabases'] as List).cast<String>()).input(),
-      sourceConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      targetConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      selectedSourceDatabases: pulumi.Input.fromValue(
+        (map['selectedSourceDatabases'] as List).cast<String>(),
+      ),
+      selectedTargetDatabases: pulumi.Input.fromValue(
+        (map['selectedTargetDatabases'] as List).cast<String>(),
+      ),
+      sourceConnectionInfo: pulumi.Input.fromValue(
+        SqlConnectionInfoResponse.fromMap(
+          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetConnectionInfo: pulumi.Input.fromValue(
+        SqlConnectionInfoResponse.fromMap(
+          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

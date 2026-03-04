@@ -365,12 +365,16 @@ import 'as3_state.dart';
 class As3 extends pulumi.CustomResource {
   /// List of applications currently deployed on the Big-Ip
   late final pulumi.Output<String> applicationList;
+
   /// Path/Filename of Declarative AS3 JSON which is a json file used with builtin ```file``` function
   late final pulumi.Output<String?> as3Json;
+
   /// A map that allows you to configure specific behavior controls for the AS3 declaration. Each key represents a particular control setting, and the corresponding value defines its configuration.
   late final pulumi.Output<Map<String, String>?> controls;
+
   /// Block for specifying tenant name and applications to delete from BIG-IP. **Mutually exclusive with `as3_json`**: only one of `delete_apps` or `as3_json` can be set in a resource block.
   late final pulumi.Output<As3DeleteApps?> deleteApps;
+
   /// Set True if you want to ignore metadata changes during update. By default it is set to false
   ///
   /// * `as3_example1.json` - Example  AS3 Declarative JSON file with single tenant
@@ -555,16 +559,21 @@ class As3 extends pulumi.CustomResource {
   ///
   /// The `f5bigip.As3` resource allows you to **post full AS3 declarations** or **selectively delete one or more applications** from a specific tenant in BIG-IP.
   ///
-  /// > **Note**: `delete_apps` and `as3_json` are **mutually exclusive**. You must use only one of them in a single `f5bigip.As3` resource block.
+  /// &gt; **Note**: `delete_apps` and `as3_json` are **mutually exclusive**. You must use only one of them in a single `f5bigip.As3` resource block.
   late final pulumi.Output<bool?> ignoreMetadata;
+
   /// Will specify whether is deployment is done via Per-Application Way or Traditional Way
   late final pulumi.Output<bool> perAppMode;
+
   /// ID of AS3 post declaration async task
   late final pulumi.Output<String> taskId;
+
   /// If there are multiple tenants on a BIG-IP, this attribute helps the user to set a particular tenant to which he want to reflect the changes. Other tenants will neither be created nor be modified.
   late final pulumi.Output<String> tenantFilter;
+
   /// List of tenants currently deployed on the Big-Ip
   late final pulumi.Output<String> tenantList;
+
   /// Name of Tenant. This name is used only in the case of Per-Application Deployment. If it is not provided, then a random name would be generated.
   late final pulumi.Output<String> tenantName;
 
@@ -572,34 +581,27 @@ class As3 extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [As3]. {@macro pulumi_index_as3_as3_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  As3(
-    String name, {
-    As3Args? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:index/as3:As3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationList = registerOutput<String>('applicationList');
-    this.as3Json = registerOutput<String?>('as3Json');
-    this.controls = registerOutput<Map<String, String>?>('controls');
-    this.deleteApps = registerOutput<As3DeleteApps?>('deleteApps');
-    this.ignoreMetadata = registerOutput<bool?>('ignoreMetadata');
-    this.perAppMode = registerOutput<bool>('perAppMode');
-    this.taskId = registerOutput<String>('taskId');
-    this.tenantFilter = registerOutput<String>('tenantFilter');
-    this.tenantList = registerOutput<String>('tenantList');
-    this.tenantName = registerOutput<String>('tenantName');
+  As3(String name, {As3Args? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:index/as3:As3',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    applicationList = registerOutput<String>('applicationList');
+    as3Json = registerOutput<String?>('as3Json');
+    controls = registerOutput<Map<String, String>?>('controls');
+    deleteApps = registerOutput<As3DeleteApps?>('deleteApps');
+    ignoreMetadata = registerOutput<bool?>('ignoreMetadata');
+    perAppMode = registerOutput<bool>('perAppMode');
+    taskId = registerOutput<String>('taskId');
+    tenantFilter = registerOutput<String>('tenantFilter');
+    tenantList = registerOutput<String>('tenantList');
+    tenantName = registerOutput<String>('tenantName');
   }
 
   /// Gets an existing [As3] resource's state with the given [name] and [id].
-  static As3 get(
-    String name,
-    pulumi.Input<String> id, {
-    As3State? state,
-  }) {
+  static As3 get(String name, pulumi.Input<String> id, {As3State? state}) {
     return As3._get(
       name,
       state: state?.toMap(),
@@ -612,20 +614,20 @@ class As3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/as3:As3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationList = registerOutput<String>('applicationList');
-    this.as3Json = registerOutput<String?>('as3Json');
-    this.controls = registerOutput<Map<String, String>?>('controls');
-    this.deleteApps = registerOutput<As3DeleteApps?>('deleteApps');
-    this.ignoreMetadata = registerOutput<bool?>('ignoreMetadata');
-    this.perAppMode = registerOutput<bool>('perAppMode');
-    this.taskId = registerOutput<String>('taskId');
-    this.tenantFilter = registerOutput<String>('tenantFilter');
-    this.tenantList = registerOutput<String>('tenantList');
-    this.tenantName = registerOutput<String>('tenantName');
+         'f5bigip:index/as3:As3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationList = registerOutput<String>('applicationList');
+    as3Json = registerOutput<String?>('as3Json');
+    controls = registerOutput<Map<String, String>?>('controls');
+    deleteApps = registerOutput<As3DeleteApps?>('deleteApps');
+    ignoreMetadata = registerOutput<bool?>('ignoreMetadata');
+    perAppMode = registerOutput<bool>('perAppMode');
+    taskId = registerOutput<String>('taskId');
+    tenantFilter = registerOutput<String>('tenantFilter');
+    tenantList = registerOutput<String>('tenantList');
+    tenantName = registerOutput<String>('tenantName');
   }
 }

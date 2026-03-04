@@ -7,16 +7,21 @@ import 'annotation_args.dart';
 class Annotation extends pulumi.CustomResource {
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
+
   /// Labels as key value pairs.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
+
   /// name of resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Optional. An optional request ID to identify requests.
   late final pulumi.Output<String?> requestId;
+
   /// Type of an annotation.
   late final pulumi.Output<String> type;
+
   /// Update time stamp.
   late final pulumi.Output<String> updateTime;
 
@@ -29,18 +34,18 @@ class Annotation extends pulumi.CustomResource {
     AnnotationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:rapidmigrationassessment/v1:Annotation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.location = registerOutput<String>('location');
+         'google-native:rapidmigrationassessment/v1:Annotation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    labels = registerOutput<Map<String, String>>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.requestId = registerOutput<String?>('requestId');
-    this.type = registerOutput<String>('type');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

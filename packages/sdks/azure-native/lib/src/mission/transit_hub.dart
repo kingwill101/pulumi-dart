@@ -202,22 +202,31 @@ import 'transit_option_response.dart';
 class TransitHub extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// List of resource ids modified by transitHubs.
   late final pulumi.Output<List<String>> resourceCollection;
+
   /// The state of the transitHub.
   late final pulumi.Output<String?> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The TransitOption of the transitHub.
   late final pulumi.Output<TransitOptionResponse?> transitOption;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -230,20 +239,20 @@ class TransitHub extends pulumi.CustomResource {
     TransitHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:mission:TransitHub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:mission:TransitHub',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceCollection = registerOutput<List<String>>('resourceCollection');
-    this.state = registerOutput<String?>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transitOption = registerOutput<TransitOptionResponse?>('transitOption');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCollection = registerOutput<List<String>>('resourceCollection');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transitOption = registerOutput<TransitOptionResponse?>('transitOption');
+    type = registerOutput<String>('type');
   }
 }

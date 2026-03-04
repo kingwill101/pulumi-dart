@@ -8,7 +8,7 @@ import 'db_resource_group_state.dart';
 ///
 /// For information about AnalyticDB for PostgreSQL (GPDB) Db Resource Group and how to use it, see [What is Db Resource Group](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateDBResourceGroup).
 ///
-/// > **NOTE:** Available since v1.225.0.
+/// &gt; **NOTE:** Available since v1.225.0.
 ///
 /// ## Example Usage
 ///
@@ -400,12 +400,15 @@ import 'db_resource_group_state.dart';
 /// $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example <db_instance_id>:<resource_group_name>
 /// ```
 class DbResourceGroup extends pulumi.CustomResource {
-  /// The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
+  /// The instance ID.&gt; You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Resource group configuration.
   late final pulumi.Output<String> resourceGroupConfig;
+
   /// Resource group name.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Role List
   late final pulumi.Output<List<String>?> roleLists;
 
@@ -418,15 +421,15 @@ class DbResourceGroup extends pulumi.CustomResource {
     DbResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.resourceGroupConfig = registerOutput<String>('resourceGroupConfig');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roleLists = registerOutput<List<String>?>('roleLists');
+         'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    resourceGroupConfig = registerOutput<String>('resourceGroupConfig');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roleLists = registerOutput<List<String>?>('roleLists');
   }
 
   /// Gets an existing [DbResourceGroup] resource's state with the given [name] and [id].
@@ -447,14 +450,14 @@ class DbResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.resourceGroupConfig = registerOutput<String>('resourceGroupConfig');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roleLists = registerOutput<List<String>?>('roleLists');
+         'alicloud:gpdb/dbResourceGroup:DbResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    resourceGroupConfig = registerOutput<String>('resourceGroupConfig');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roleLists = registerOutput<List<String>?>('roleLists');
   }
 }

@@ -3,16 +3,15 @@ enum SyncConflictResolutionPolicy {
   valueHubWin("HubWin"),
   valueMemberWin("MemberWin");
 
-  const SyncConflictResolutionPolicy(this.value);
-  final String value;
+  const SyncConflictResolutionPolicy(this.wireValue);
+  final String wireValue;
 
   static SyncConflictResolutionPolicy fromValue(String value) {
     for (final item in SyncConflictResolutionPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SyncConflictResolutionPolicy value: $value');
   }
 }
-

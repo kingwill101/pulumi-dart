@@ -8,6 +8,7 @@ import 'referenced_resource_response.dart';
 class AzureArcKubernetesArtifactProfileResponse {
   /// The reference to artifact store.
   final pulumi.Input<ReferencedResourceResponse>? artifactStore;
+
   /// Helm artifact profile.
   final pulumi.Input<HelmArtifactProfileResponse>? helmArtifactProfile;
 
@@ -21,16 +22,41 @@ class AzureArcKubernetesArtifactProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactStore': ?pulumi.Input.mapOptionalInputValue<ReferencedResourceResponse, Map<String, dynamic>>(artifactStore, (value) => value.toMap()),
-      'helmArtifactProfile': ?pulumi.Input.mapOptionalInputValue<HelmArtifactProfileResponse, Map<String, dynamic>>(helmArtifactProfile, (value) => value.toMap()),
+      'artifactStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReferencedResourceResponse,
+            Map<String, dynamic>
+          >(artifactStore, (value) => value.toMap()),
+      'helmArtifactProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            HelmArtifactProfileResponse,
+            Map<String, dynamic>
+          >(helmArtifactProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureArcKubernetesArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureArcKubernetesArtifactProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureArcKubernetesArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
-      helmArtifactProfile: map['helmArtifactProfile'] == null ? null : (HelmArtifactProfileResponse.fromMap((map['helmArtifactProfile']! as Map).cast<String, dynamic>())).input(),
+      artifactStore: (() {
+        final guardedValue = map['artifactStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReferencedResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      helmArtifactProfile: (() {
+        final guardedValue = map['helmArtifactProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HelmArtifactProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

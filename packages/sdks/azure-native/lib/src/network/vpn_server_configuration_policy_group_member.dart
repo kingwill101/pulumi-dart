@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigurationPolicyGroupMember {
   /// The Vpn Policy member attribute type.
   final pulumi.Input<String>? attributeType;
+
   /// The value of Attribute used for this VpnServerConfigurationPolicyGroupMember.
   final pulumi.Input<String>? attributeValue;
+
   /// Name of the VpnServerConfigurationPolicyGroupMember.
   final pulumi.Input<String>? name;
 
@@ -29,12 +31,25 @@ class VpnServerConfigurationPolicyGroupMember {
     };
   }
 
-  factory VpnServerConfigurationPolicyGroupMember.fromMap(Map<String, dynamic> map) {
+  factory VpnServerConfigurationPolicyGroupMember.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpnServerConfigurationPolicyGroupMember(
-      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
-      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      attributeType: (() {
+        final guardedValue = map['attributeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attributeValue: (() {
+        final guardedValue = map['attributeValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

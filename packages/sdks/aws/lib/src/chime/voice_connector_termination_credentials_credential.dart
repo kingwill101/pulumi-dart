@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VoiceConnectorTerminationCredentialsCredential {
   /// RFC2617 compliant password associated with the SIP credentials.
   final pulumi.Input<String> password;
+
   /// RFC2617 compliant username associated with the SIP credentials.
   final pulumi.Input<String> username;
 
@@ -17,17 +18,15 @@ class VoiceConnectorTerminationCredentialsCredential {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
-  factory VoiceConnectorTerminationCredentialsCredential.fromMap(Map<String, dynamic> map) {
+  factory VoiceConnectorTerminationCredentialsCredential.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VoiceConnectorTerminationCredentialsCredential(
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

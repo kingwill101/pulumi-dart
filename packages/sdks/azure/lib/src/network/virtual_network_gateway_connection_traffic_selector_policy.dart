@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkGatewayConnectionTrafficSelectorPolicy {
   /// List of local CIDRs.
   final pulumi.Input<List<String>> localAddressCidrs;
+
   /// List of remote CIDRs.
   final pulumi.Input<List<String>> remoteAddressCidrs;
 
@@ -23,11 +24,16 @@ class VirtualNetworkGatewayConnectionTrafficSelectorPolicy {
     };
   }
 
-  factory VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkGatewayConnectionTrafficSelectorPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkGatewayConnectionTrafficSelectorPolicy(
-      localAddressCidrs: ((map['localAddressCidrs'] as List).cast<String>()).input(),
-      remoteAddressCidrs: ((map['remoteAddressCidrs'] as List).cast<String>()).input(),
+      localAddressCidrs: pulumi.Input.fromValue(
+        (map['localAddressCidrs'] as List).cast<String>(),
+      ),
+      remoteAddressCidrs: pulumi.Input.fromValue(
+        (map['remoteAddressCidrs'] as List).cast<String>(),
+      ),
     );
   }
 }
-

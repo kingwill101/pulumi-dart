@@ -175,24 +175,34 @@ import 'system_data_response.dart';
 class Schema extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Human-readable description of the schema.
   late final pulumi.Output<String?> description;
+
   /// Human-readable display name.
   late final pulumi.Output<String?> displayName;
+
   /// Format of the schema.
   late final pulumi.Output<String> format;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Type of the schema.
   late final pulumi.Output<String> schemaType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Schema tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Globally unique, immutable, non-reusable id.
   late final pulumi.Output<String> uuid;
 
@@ -200,26 +210,23 @@ class Schema extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Schema]. {@macro pulumi_deviceregistry_schema_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Schema(
-    String name, {
-    SchemaArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:deviceregistry:Schema',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.format = registerOutput<String>('format');
+  Schema(String name, {SchemaArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:deviceregistry:Schema',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    format = registerOutput<String>('format');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.schemaType = registerOutput<String>('schemaType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
+    provisioningState = registerOutput<String>('provisioningState');
+    schemaType = registerOutput<String>('schemaType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
   }
 }

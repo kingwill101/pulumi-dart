@@ -4,7 +4,7 @@ import 'get_agents_result.dart';
 
 /// This data source provides the Chatbot Agents of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.203.0+.
+/// &gt; **NOTE:** Available in v1.203.0+.
 ///
 /// ## Example Usage
 ///

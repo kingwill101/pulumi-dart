@@ -2,16 +2,15 @@
 enum NetworkKind {
   valueLocal("Local");
 
-  const NetworkKind(this.value);
-  final String value;
+  const NetworkKind(this.wireValue);
+  final String wireValue;
 
   static NetworkKind fromValue(String value) {
     for (final item in NetworkKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkKind value: $value');
   }
 }
-

@@ -13,15 +13,14 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': items,
-    };
+    return <String, dynamic>{'items': items};
   }
 
-  factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader.fromMap(Map<String, dynamic> map) {
+  factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader(
-      items: ((map['items'] as List).cast<String>()).input(),
+      items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
     );
   }
 }
-

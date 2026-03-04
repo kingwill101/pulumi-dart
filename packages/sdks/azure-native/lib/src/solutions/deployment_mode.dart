@@ -4,16 +4,15 @@ enum DeploymentMode {
   valueIncremental("Incremental"),
   valueComplete("Complete");
 
-  const DeploymentMode(this.value);
-  final String value;
+  const DeploymentMode(this.wireValue);
+  final String wireValue;
 
   static DeploymentMode fromValue(String value) {
     for (final item in DeploymentMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeploymentMode value: $value');
   }
 }
-

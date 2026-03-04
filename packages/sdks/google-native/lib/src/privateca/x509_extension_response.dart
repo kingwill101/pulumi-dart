@@ -7,8 +7,10 @@ import 'object_id_response.dart';
 class X509ExtensionResponse {
   /// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
   final pulumi.Input<bool> critical;
+
   /// The OID for this X.509 extension.
   final pulumi.Input<ObjectIdResponse> objectId;
+
   /// The value of this X.509 extension.
   final pulumi.Input<String> value;
 
@@ -25,17 +27,24 @@ class X509ExtensionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'critical': critical,
-      'objectId': pulumi.Input.mapInputValue<ObjectIdResponse, Map<String, dynamic>>(objectId, (value) => value.toMap()),
+      'objectId':
+          pulumi.Input.mapInputValue<ObjectIdResponse, Map<String, dynamic>>(
+            objectId,
+            (value) => value.toMap(),
+          ),
       'value': value,
     };
   }
 
   factory X509ExtensionResponse.fromMap(Map<String, dynamic> map) {
     return X509ExtensionResponse(
-      critical: (map['critical'] as bool).input(),
-      objectId: (ObjectIdResponse.fromMap((map['objectId'] as Map).cast<String, dynamic>())).input(),
-      value: (map['value'] as String).input(),
+      critical: pulumi.Input.fromValue(map['critical'] as bool),
+      objectId: pulumi.Input.fromValue(
+        ObjectIdResponse.fromMap(
+          (map['objectId']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

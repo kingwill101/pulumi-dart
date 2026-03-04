@@ -9,25 +9,34 @@ import 'cx_test_case_test_config.dart';
 class CxTestCaseState {
   /// When the test was created. A timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTime;
+
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   final pulumi.Input<String>? displayName;
+
   /// The latest test result.
   /// Structure is documented below.
   final pulumi.Input<List<CxTestCaseLastTestResult>>? lastTestResults;
+
   /// The unique identifier of the page.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
   final pulumi.Input<String>? name;
+
   /// Additional freeform notes about the test case. Limit of 400 characters.
   final pulumi.Input<String>? notes;
+
   /// The agent to create the test case for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   final pulumi.Input<String>? parent;
+
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
   /// Each tag should start with "#" and has a limit of 30 characters
   final pulumi.Input<List<String>>? tags;
+
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// Structure is documented below.
-  final pulumi.Input<List<CxTestCaseTestCaseConversationTurn>>? testCaseConversationTurns;
+  final pulumi.Input<List<CxTestCaseTestCaseConversationTurn>>?
+  testCaseConversationTurns;
+
   /// Config for the test case.
   /// Structure is documented below.
   final pulumi.Input<CxTestCaseTestConfig>? testConfig;
@@ -58,28 +67,107 @@ class CxTestCaseState {
     return <String, dynamic>{
       'creationTime': ?creationTime,
       'displayName': ?displayName,
-      'lastTestResults': ?pulumi.Input.mapOptionalInputValue<List<CxTestCaseLastTestResult>, List<Map<String, dynamic>>>(lastTestResults, (value) => pulumi.Input.encodeList<CxTestCaseLastTestResult, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lastTestResults':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CxTestCaseLastTestResult>,
+            List<Map<String, dynamic>>
+          >(
+            lastTestResults,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CxTestCaseLastTestResult,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'notes': ?notes,
       'parent': ?parent,
       'tags': ?tags,
-      'testCaseConversationTurns': ?pulumi.Input.mapOptionalInputValue<List<CxTestCaseTestCaseConversationTurn>, List<Map<String, dynamic>>>(testCaseConversationTurns, (value) => pulumi.Input.encodeList<CxTestCaseTestCaseConversationTurn, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'testConfig': ?pulumi.Input.mapOptionalInputValue<CxTestCaseTestConfig, Map<String, dynamic>>(testConfig, (value) => value.toMap()),
+      'testCaseConversationTurns':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CxTestCaseTestCaseConversationTurn>,
+            List<Map<String, dynamic>>
+          >(
+            testCaseConversationTurns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CxTestCaseTestCaseConversationTurn,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'testConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxTestCaseTestConfig,
+            Map<String, dynamic>
+          >(testConfig, (value) => value.toMap()),
     };
   }
 
   factory CxTestCaseState.fromMap(Map<String, dynamic> map) {
     return CxTestCaseState(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      lastTestResults: map['lastTestResults'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResult>(map['lastTestResults']!, (value) => CxTestCaseLastTestResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : (pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurn>(map['testCaseConversationTurns']!, (value) => CxTestCaseTestCaseConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testConfig: map['testConfig'] == null ? null : (CxTestCaseTestConfig.fromMap((map['testConfig']! as Map).cast<String, dynamic>())).input(),
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastTestResults: (() {
+        final guardedValue = map['lastTestResults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CxTestCaseLastTestResult>(
+            guardedValue,
+            (value) => CxTestCaseLastTestResult.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      testCaseConversationTurns: (() {
+        final guardedValue = map['testCaseConversationTurns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CxTestCaseTestCaseConversationTurn>(
+            guardedValue,
+            (value) => CxTestCaseTestCaseConversationTurn.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      testConfig: (() {
+        final guardedValue = map['testConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxTestCaseTestConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

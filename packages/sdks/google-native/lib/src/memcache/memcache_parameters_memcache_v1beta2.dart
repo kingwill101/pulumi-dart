@@ -8,20 +8,21 @@ class MemcacheParametersMemcacheV1beta2 {
 
   /// Creates a new [MemcacheParametersMemcacheV1beta2].
   /// [params] User defined set of parameters to use in the memcached process.
-  MemcacheParametersMemcacheV1beta2({
-    this.params,
-  });
+  MemcacheParametersMemcacheV1beta2({this.params});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'params': ?params,
-    };
+    return <String, dynamic>{'params': ?params};
   }
 
   factory MemcacheParametersMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return MemcacheParametersMemcacheV1beta2(
-      params: map['params'] == null ? null : ((map['params']! as Map).cast<String, String>()).input(),
+      params: (() {
+        final guardedValue = map['params'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

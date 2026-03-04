@@ -7,16 +7,15 @@ enum PipelineState {
   stateArchived("STATE_ARCHIVED"),
   statePaused("STATE_PAUSED");
 
-  const PipelineState(this.value);
-  final String value;
+  const PipelineState(this.wireValue);
+  final String wireValue;
 
   static PipelineState fromValue(String value) {
     for (final item in PipelineState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PipelineState value: $value');
   }
 }
-

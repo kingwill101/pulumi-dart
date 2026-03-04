@@ -6,17 +6,20 @@ import 'get_app_spec_job_log_destination_open_search_basic_auth.dart';
 class GetAppSpecJobLogDestinationOpenSearch {
   /// OpenSearch basic auth
   final pulumi.Input<GetAppSpecJobLogDestinationOpenSearchBasicAuth> basicAuth;
+
   /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
   final pulumi.Input<String>? clusterName;
-  /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+
+  /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
   final pulumi.Input<String>? endpoint;
+
   /// The index name to use for the logs. If not set, the default index name is `logs`.
   final pulumi.Input<String>? indexName;
 
   /// Creates a new [GetAppSpecJobLogDestinationOpenSearch].
   /// [basicAuth] OpenSearch basic auth
   /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
-  /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+  /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
   /// [indexName] The index name to use for the logs. If not set, the default index name is `logs`.
   GetAppSpecJobLogDestinationOpenSearch({
     required this.basicAuth,
@@ -27,20 +30,41 @@ class GetAppSpecJobLogDestinationOpenSearch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicAuth': pulumi.Input.mapInputValue<GetAppSpecJobLogDestinationOpenSearchBasicAuth, Map<String, dynamic>>(basicAuth, (value) => value.toMap()),
+      'basicAuth':
+          pulumi.Input.mapInputValue<
+            GetAppSpecJobLogDestinationOpenSearchBasicAuth,
+            Map<String, dynamic>
+          >(basicAuth, (value) => value.toMap()),
       'clusterName': ?clusterName,
       'endpoint': ?endpoint,
       'indexName': ?indexName,
     };
   }
 
-  factory GetAppSpecJobLogDestinationOpenSearch.fromMap(Map<String, dynamic> map) {
+  factory GetAppSpecJobLogDestinationOpenSearch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppSpecJobLogDestinationOpenSearch(
-      basicAuth: (GetAppSpecJobLogDestinationOpenSearchBasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
+      basicAuth: pulumi.Input.fromValue(
+        GetAppSpecJobLogDestinationOpenSearchBasicAuth.fromMap(
+          (map['basicAuth']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexName: (() {
+        final guardedValue = map['indexName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

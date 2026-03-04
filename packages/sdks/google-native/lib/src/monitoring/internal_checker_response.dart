@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InternalCheckerResponse {
   /// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
   final pulumi.Input<String> displayName;
+
   /// The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
   final pulumi.Input<String> gcpZone;
+
   /// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
   final pulumi.Input<String> name;
+
   /// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
   final pulumi.Input<String> network;
+
   /// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
   final pulumi.Input<String> peerProjectId;
+
   /// The current operational state of the internal checker.
   final pulumi.Input<String> state;
 
@@ -46,13 +51,12 @@ class InternalCheckerResponse {
 
   factory InternalCheckerResponse.fromMap(Map<String, dynamic> map) {
     return InternalCheckerResponse(
-      displayName: (map['displayName'] as String).input(),
-      gcpZone: (map['gcpZone'] as String).input(),
-      name: (map['name'] as String).input(),
-      network: (map['network'] as String).input(),
-      peerProjectId: (map['peerProjectId'] as String).input(),
-      state: (map['state'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      gcpZone: pulumi.Input.fromValue(map['gcpZone'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      peerProjectId: pulumi.Input.fromValue(map['peerProjectId'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

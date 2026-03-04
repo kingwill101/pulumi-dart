@@ -1,5 +1,3 @@
-library module_mns;
-
 export 'mns/functions.dart';
 export 'mns/get_queues_args.dart';
 export 'mns/get_queues_queue.dart';

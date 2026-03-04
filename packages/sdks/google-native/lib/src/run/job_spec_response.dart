@@ -10,20 +10,25 @@ class JobSpecResponse {
 
   /// Creates a new [JobSpecResponse].
   /// [template] Optional. Describes the execution that will be created when running a job.
-  JobSpecResponse({
-    required this.template,
-  });
+  JobSpecResponse({required this.template});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'template': pulumi.Input.mapInputValue<ExecutionTemplateSpecResponse, Map<String, dynamic>>(template, (value) => value.toMap()),
+      'template':
+          pulumi.Input.mapInputValue<
+            ExecutionTemplateSpecResponse,
+            Map<String, dynamic>
+          >(template, (value) => value.toMap()),
     };
   }
 
   factory JobSpecResponse.fromMap(Map<String, dynamic> map) {
     return JobSpecResponse(
-      template: (ExecutionTemplateSpecResponse.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      template: pulumi.Input.fromValue(
+        ExecutionTemplateSpecResponse.fromMap(
+          (map['template']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

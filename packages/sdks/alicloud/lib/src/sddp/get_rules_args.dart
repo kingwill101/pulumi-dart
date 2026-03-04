@@ -9,27 +9,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesArgs {
   /// Sensitive Data Identification Rules for the Type of. Valid values:
   final pulumi.Input<int>? category;
+
   /// The Content Classification.
   final pulumi.Input<String>? contentCategory;
+
   /// Sensitive Data Identification Rules of Type. Valid values:
   final pulumi.Input<int>? customType;
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The name of rule.
   final pulumi.Input<String>? name;
+
   /// A regex string to filter results by Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Product ID. Valid values:
   final pulumi.Input<String>? productId;
+
   /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
   final pulumi.Input<String>? riskLevelId;
+
   /// Rule Type.
   final pulumi.Input<int>? ruleType;
+
   /// Sensitive Data Identification Rules Detection State of.
   final pulumi.Input<String>? status;
+
   /// The Level of Risk. Valid values:
   final pulumi.Input<int>? warnLevel;
 
@@ -83,20 +94,71 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      category: map['category'] == null ? null : (map['category']! as int).input(),
-      contentCategory: map['contentCategory'] == null ? null : (map['contentCategory']! as String).input(),
-      customType: map['customType'] == null ? null : (map['customType']! as int).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
-      riskLevelId: map['riskLevelId'] == null ? null : (map['riskLevelId']! as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      warnLevel: map['warnLevel'] == null ? null : (map['warnLevel']! as int).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      contentCategory: (() {
+        final guardedValue = map['contentCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customType: (() {
+        final guardedValue = map['customType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productId: (() {
+        final guardedValue = map['productId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      riskLevelId: (() {
+        final guardedValue = map['riskLevelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleType: (() {
+        final guardedValue = map['ruleType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      warnLevel: (() {
+        final guardedValue = map['warnLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

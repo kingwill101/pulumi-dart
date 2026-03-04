@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_args.dart';
-import 'policy_custom_rule.dart';
 import 'policy_managed_rules.dart';
 import 'policy_policy_settings.dart';
 import 'policy_state.dart';
@@ -681,7 +680,7 @@ import 'policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -695,21 +694,29 @@ import 'policy_state.dart';
 /// ```
 class Policy extends pulumi.CustomResource {
   /// One or more `custom_rules` blocks as defined below.
-  late final pulumi.Output<List<PolicyCustomRule>?> customRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customRules;
+
   /// A list of HTTP Listener IDs from an `azure.network.ApplicationGateway`.
   late final pulumi.Output<List<String>> httpListenerIds;
+
   /// Resource location. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `managed_rules` blocks as defined below.
   late final pulumi.Output<PolicyManagedRules> managedRules;
+
   /// The name of the policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of URL Path Map Path Rule IDs from an `azure.network.ApplicationGateway`.
   late final pulumi.Output<List<String>> pathBasedRuleIds;
+
   /// A `policy_settings` block as defined below.
   late final pulumi.Output<PolicyPolicySettings?> policySettings;
+
   /// The name of the resource group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the Web Application Firewall Policy.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -717,25 +724,22 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_waf_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:waf/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customRules = registerOutput<List<PolicyCustomRule>?>('customRules');
-    this.httpListenerIds = registerOutput<List<String>>('httpListenerIds');
-    this.location = registerOutput<String>('location');
-    this.managedRules = registerOutput<PolicyManagedRules>('managedRules');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:waf/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    httpListenerIds = registerOutput<List<String>>('httpListenerIds');
+    location = registerOutput<String>('location');
+    managedRules = registerOutput<PolicyManagedRules>('managedRules');
     this.name = registerOutput<String>('name');
-    this.pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
-    this.policySettings = registerOutput<PolicyPolicySettings?>('policySettings');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
+    policySettings = registerOutput<PolicyPolicySettings?>('policySettings');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -756,19 +760,19 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:waf/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customRules = registerOutput<List<PolicyCustomRule>?>('customRules');
-    this.httpListenerIds = registerOutput<List<String>>('httpListenerIds');
-    this.location = registerOutput<String>('location');
-    this.managedRules = registerOutput<PolicyManagedRules>('managedRules');
+         'azure:waf/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customRules = registerOutput<List<Map<String, dynamic>>?>('customRules');
+    httpListenerIds = registerOutput<List<String>>('httpListenerIds');
+    location = registerOutput<String>('location');
+    managedRules = registerOutput<PolicyManagedRules>('managedRules');
     this.name = registerOutput<String>('name');
-    this.pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
-    this.policySettings = registerOutput<PolicyPolicySettings?>('policySettings');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    pathBasedRuleIds = registerOutput<List<String>>('pathBasedRuleIds');
+    policySettings = registerOutput<PolicyPolicySettings?>('policySettings');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

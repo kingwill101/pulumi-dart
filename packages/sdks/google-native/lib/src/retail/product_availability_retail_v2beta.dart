@@ -6,16 +6,17 @@ enum ProductAvailabilityRetailV2beta {
   preorder("PREORDER"),
   backorder("BACKORDER");
 
-  const ProductAvailabilityRetailV2beta(this.value);
-  final String value;
+  const ProductAvailabilityRetailV2beta(this.wireValue);
+  final String wireValue;
 
   static ProductAvailabilityRetailV2beta fromValue(String value) {
     for (final item in ProductAvailabilityRetailV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ProductAvailabilityRetailV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ProductAvailabilityRetailV2beta value: $value',
+    );
   }
 }
-

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiSchemaState {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
+
   /// The name of the API within the API Management Service where this API Schema should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiName;
+
   /// Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only.
   final pulumi.Input<String>? components;
+
   /// The content type of the API Schema.
   final pulumi.Input<String>? contentType;
+
   /// Types definitions. Used for Swagger/OpenAPI v1 schemas only.
   final pulumi.Input<String>? definitions;
+
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A unique identifier for this API Schema. Changing this forces a new resource to be created.
   final pulumi.Input<String>? schemaId;
+
   /// The JSON escaped string defining the document representing the Schema.
   final pulumi.Input<String>? value;
 
@@ -56,15 +63,46 @@ class ApiSchemaState {
 
   factory ApiSchemaState.fromMap(Map<String, dynamic> map) {
     return ApiSchemaState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
-      apiName: map['apiName'] == null ? null : (map['apiName']! as String).input(),
-      components: map['components'] == null ? null : (map['components']! as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
-      definitions: map['definitions'] == null ? null : (map['definitions']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      apiManagementName: (() {
+        final guardedValue = map['apiManagementName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiName: (() {
+        final guardedValue = map['apiName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      components: (() {
+        final guardedValue = map['components'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      definitions: (() {
+        final guardedValue = map['definitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaId: (() {
+        final guardedValue = map['schemaId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

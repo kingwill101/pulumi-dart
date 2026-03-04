@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RaiExternalSafetyProviderSchemaPropertiesResponse {
   /// Creation time of the safety provider.
   final pulumi.Input<String> createdAt;
+
   /// The Key Vault URI that contains the api key for safety provider urls.
   final pulumi.Input<String>? keyVaultUri;
+
   /// Last modified time of the safety provider.
   final pulumi.Input<String> lastModifiedAt;
+
   /// The managed identity to access the Key Vault.
   final pulumi.Input<String>? managedIdentity;
+
   /// Safety provider mode sync/async.
   final pulumi.Input<String>? mode;
+
   /// The unique identifier of the safety provider.
   final pulumi.Input<String>? providerId;
+
   /// Name of the safety provider.
   final pulumi.Input<String>? providerName;
+
   /// The name of the secret in Key Vault that contains the api key to access the webhook.
   final pulumi.Input<String>? secretName;
+
   /// Webhook URL for the safety provider.
   final pulumi.Input<String>? url;
 
@@ -59,18 +67,47 @@ class RaiExternalSafetyProviderSchemaPropertiesResponse {
     };
   }
 
-  factory RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory RaiExternalSafetyProviderSchemaPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RaiExternalSafetyProviderSchemaPropertiesResponse(
-      createdAt: (map['createdAt'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
-      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
-      managedIdentity: map['managedIdentity'] == null ? null : (map['managedIdentity']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedAt: pulumi.Input.fromValue(map['lastModifiedAt'] as String),
+      managedIdentity: (() {
+        final guardedValue = map['managedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerId: (() {
+        final guardedValue = map['providerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretName: (() {
+        final guardedValue = map['secretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

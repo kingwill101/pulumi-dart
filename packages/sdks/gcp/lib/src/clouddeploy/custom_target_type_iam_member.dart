@@ -21,18 +21,20 @@ class CustomTargetTypeIamMember extends pulumi.CustomResource {
     CustomTargetTypeIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<CustomTargetTypeIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.member = registerOutput<String>('member');
+         'gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<CustomTargetTypeIamMemberCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [CustomTargetTypeIamMember] resource's state with the given [name] and [id].
@@ -53,17 +55,19 @@ class CustomTargetTypeIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<CustomTargetTypeIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.member = registerOutput<String>('member');
+         'gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<CustomTargetTypeIamMemberCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

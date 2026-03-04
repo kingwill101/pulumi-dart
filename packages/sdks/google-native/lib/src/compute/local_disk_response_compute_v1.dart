@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalDiskResponseComputeV1 {
   /// Specifies the number of such disks.
   final pulumi.Input<int> diskCount;
+
   /// Specifies the size of the disk in base-2 GB.
   final pulumi.Input<int> diskSizeGb;
+
   /// Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
   final pulumi.Input<String> diskType;
 
@@ -30,10 +32,9 @@ class LocalDiskResponseComputeV1 {
 
   factory LocalDiskResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return LocalDiskResponseComputeV1(
-      diskCount: (map['diskCount'] as int).input(),
-      diskSizeGb: (map['diskSizeGb'] as int).input(),
-      diskType: (map['diskType'] as String).input(),
+      diskCount: pulumi.Input.fromValue(map['diskCount'] as int),
+      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskType: pulumi.Input.fromValue(map['diskType'] as String),
     );
   }
 }
-

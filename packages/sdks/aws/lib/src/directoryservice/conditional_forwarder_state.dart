@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionalForwarderState {
   /// ID of directory.
   final pulumi.Input<String>? directoryId;
+
   /// A list of forwarder IP addresses.
   final pulumi.Input<List<String>>? dnsIps;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The fully qualified domain name of the remote domain for which forwarders will be used.
   final pulumi.Input<String>? remoteDomainName;
 
@@ -36,11 +39,26 @@ class ConditionalForwarderState {
 
   factory ConditionalForwarderState.fromMap(Map<String, dynamic> map) {
     return ConditionalForwarderState(
-      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
-      dnsIps: map['dnsIps'] == null ? null : (((map['dnsIps'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      remoteDomainName: map['remoteDomainName'] == null ? null : ((map['remoteDomainName'] as String).input()).input(),
+      directoryId: (() {
+        final guardedValue = map['directoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsIps: (() {
+        final guardedValue = map['dnsIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteDomainName: (() {
+        final guardedValue = map['remoteDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

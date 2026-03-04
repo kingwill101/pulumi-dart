@@ -7,10 +7,20 @@ import 'policy_security_service_policy_data_policy_option_third_party_firewall_p
 
 class PolicySecurityServicePolicyDataPolicyOption {
   /// Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
-  final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy>? networkAclCommonPolicy;
+  final pulumi.Input<
+    PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy
+  >?
+  networkAclCommonPolicy;
+
   /// Defines the deployment model to use for the firewall policy.  See the `network_firewall_policy` block.
-  final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy>? networkFirewallPolicy;
-  final pulumi.Input<PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy>? thirdPartyFirewallPolicy;
+  final pulumi.Input<
+    PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy
+  >?
+  networkFirewallPolicy;
+  final pulumi.Input<
+    PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy
+  >?
+  thirdPartyFirewallPolicy;
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOption].
   /// [networkAclCommonPolicy] Defines NACL rules across accounts in their AWS Organization. See the `network_acl_common_policy` block.
@@ -24,18 +34,55 @@ class PolicySecurityServicePolicyDataPolicyOption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkAclCommonPolicy': ?pulumi.Input.mapOptionalInputValue<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy, Map<String, dynamic>>(networkAclCommonPolicy, (value) => value.toMap()),
-      'networkFirewallPolicy': ?pulumi.Input.mapOptionalInputValue<PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy, Map<String, dynamic>>(networkFirewallPolicy, (value) => value.toMap()),
-      'thirdPartyFirewallPolicy': ?pulumi.Input.mapOptionalInputValue<PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy, Map<String, dynamic>>(thirdPartyFirewallPolicy, (value) => value.toMap()),
+      'networkAclCommonPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy,
+            Map<String, dynamic>
+          >(networkAclCommonPolicy, (value) => value.toMap()),
+      'networkFirewallPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy,
+            Map<String, dynamic>
+          >(networkFirewallPolicy, (value) => value.toMap()),
+      'thirdPartyFirewallPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy,
+            Map<String, dynamic>
+          >(thirdPartyFirewallPolicy, (value) => value.toMap()),
     };
   }
 
-  factory PolicySecurityServicePolicyDataPolicyOption.fromMap(Map<String, dynamic> map) {
+  factory PolicySecurityServicePolicyDataPolicyOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicySecurityServicePolicyDataPolicyOption(
-      networkAclCommonPolicy: map['networkAclCommonPolicy'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy.fromMap((map['networkAclCommonPolicy']! as Map).cast<String, dynamic>())).input()).input(),
-      networkFirewallPolicy: map['networkFirewallPolicy'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy.fromMap((map['networkFirewallPolicy']! as Map).cast<String, dynamic>())).input()).input(),
-      thirdPartyFirewallPolicy: map['thirdPartyFirewallPolicy'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy.fromMap((map['thirdPartyFirewallPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      networkAclCommonPolicy: (() {
+        final guardedValue = map['networkAclCommonPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkFirewallPolicy: (() {
+        final guardedValue = map['networkFirewallPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      thirdPartyFirewallPolicy: (() {
+        final guardedValue = map['thirdPartyFirewallPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

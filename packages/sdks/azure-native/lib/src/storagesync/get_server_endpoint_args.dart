@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerEndpointArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Server Endpoint object.
   final pulumi.Input<String> serverEndpointName;
+
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
+
   /// Name of Sync Group resource.
   final pulumi.Input<String> syncGroupName;
 
@@ -39,11 +42,16 @@ class GetServerEndpointArgs {
 
   factory GetServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetServerEndpointArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverEndpointName: (map['serverEndpointName'] as String).input(),
-      storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
-      syncGroupName: (map['syncGroupName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverEndpointName: pulumi.Input.fromValue(
+        map['serverEndpointName'] as String,
+      ),
+      storageSyncServiceName: pulumi.Input.fromValue(
+        map['storageSyncServiceName'] as String,
+      ),
+      syncGroupName: pulumi.Input.fromValue(map['syncGroupName'] as String),
     );
   }
 }
-

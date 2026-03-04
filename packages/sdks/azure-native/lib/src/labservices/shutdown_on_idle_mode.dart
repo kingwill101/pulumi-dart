@@ -4,16 +4,15 @@ enum ShutdownOnIdleMode {
   valueUserAbsence("UserAbsence"),
   valueLowUsage("LowUsage");
 
-  const ShutdownOnIdleMode(this.value);
-  final String value;
+  const ShutdownOnIdleMode(this.wireValue);
+  final String wireValue;
 
   static ShutdownOnIdleMode fromValue(String value) {
     for (final item in ShutdownOnIdleMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShutdownOnIdleMode value: $value');
   }
 }
-

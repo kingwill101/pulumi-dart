@@ -146,28 +146,40 @@ import 'identity_provider_args.dart';
 class IdentityProvider extends pulumi.CustomResource {
   /// List of Allowed Tenants when configuring Azure Active Directory login.
   late final pulumi.Output<List<String>?> allowedTenants;
+
   /// OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
   late final pulumi.Output<String?> authority;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
   late final pulumi.Output<String> clientId;
+
   /// The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
   late final pulumi.Output<String?> clientLibrary;
+
   /// Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   late final pulumi.Output<String?> clientSecret;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
   late final pulumi.Output<String?> passwordResetPolicyName;
+
   /// Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
   late final pulumi.Output<String?> profileEditingPolicyName;
+
   /// Signin Policy Name. Only applies to AAD B2C Identity Provider.
   late final pulumi.Output<String?> signinPolicyName;
+
   /// The TenantId to use instead of Common when logging into Active Directory
   late final pulumi.Output<String?> signinTenant;
+
   /// Signup Policy Name. Only applies to AAD B2C Identity Provider.
   late final pulumi.Output<String?> signupPolicyName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -180,23 +192,27 @@ class IdentityProvider extends pulumi.CustomResource {
     IdentityProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:IdentityProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedTenants = registerOutput<List<String>?>('allowedTenants');
-    this.authority = registerOutput<String?>('authority');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientLibrary = registerOutput<String?>('clientLibrary');
-    this.clientSecret = registerOutput<String?>('clientSecret');
+         'azure-native:apimanagement:IdentityProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedTenants = registerOutput<List<String>?>('allowedTenants');
+    authority = registerOutput<String?>('authority');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientId = registerOutput<String>('clientId');
+    clientLibrary = registerOutput<String?>('clientLibrary');
+    clientSecret = registerOutput<String?>('clientSecret');
     this.name = registerOutput<String>('name');
-    this.passwordResetPolicyName = registerOutput<String?>('passwordResetPolicyName');
-    this.profileEditingPolicyName = registerOutput<String?>('profileEditingPolicyName');
-    this.signinPolicyName = registerOutput<String?>('signinPolicyName');
-    this.signinTenant = registerOutput<String?>('signinTenant');
-    this.signupPolicyName = registerOutput<String?>('signupPolicyName');
-    this.type = registerOutput<String>('type');
+    passwordResetPolicyName = registerOutput<String?>(
+      'passwordResetPolicyName',
+    );
+    profileEditingPolicyName = registerOutput<String?>(
+      'profileEditingPolicyName',
+    );
+    signinPolicyName = registerOutput<String?>('signinPolicyName');
+    signinTenant = registerOutput<String?>('signinTenant');
+    signupPolicyName = registerOutput<String?>('signupPolicyName');
+    type = registerOutput<String>('type');
   }
 }

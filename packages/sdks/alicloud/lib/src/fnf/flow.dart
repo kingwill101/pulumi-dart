@@ -6,7 +6,7 @@ import 'flow_state.dart';
 ///
 /// For information about Serverless Workflow Flow and how to use it, see [What is Flow](https://www.alibabacloud.com/help/en/doc-detail/123079.htm).
 ///
-/// > **NOTE:** Available since v1.105.0.
+/// &gt; **NOTE:** Available since v1.105.0.
 ///
 /// ## Example Usage
 ///
@@ -286,16 +286,22 @@ import 'flow_state.dart';
 class Flow extends pulumi.CustomResource {
   /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
   late final pulumi.Output<String> definition;
+
   /// The description of the flow.
   late final pulumi.Output<String> description;
+
   /// The unique ID of the flow.
   late final pulumi.Output<String> flowId;
+
   /// The time when the flow was last modified.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The name of the flow. The name must be unique in an Alibaba Cloud account.
   late final pulumi.Output<String> name;
+
   /// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   late final pulumi.Output<String?> roleArn;
+
   /// The type of the flow. Valid values are `FDL` or `DEFAULT`.
   late final pulumi.Output<String> type;
 
@@ -303,31 +309,24 @@ class Flow extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Flow]. {@macro pulumi_fnf_flow_flow_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Flow(
-    String name, {
-    FlowArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:fnf/flow:Flow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.definition = registerOutput<String>('definition');
-    this.description = registerOutput<String>('description');
-    this.flowId = registerOutput<String>('flowId');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+  Flow(String name, {FlowArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:fnf/flow:Flow',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    definition = registerOutput<String>('definition');
+    description = registerOutput<String>('description');
+    flowId = registerOutput<String>('flowId');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.type = registerOutput<String>('type');
+    roleArn = registerOutput<String?>('roleArn');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Flow] resource's state with the given [name] and [id].
-  static Flow get(
-    String name,
-    pulumi.Input<String> id, {
-    FlowState? state,
-  }) {
+  static Flow get(String name, pulumi.Input<String> id, {FlowState? state}) {
     return Flow._get(
       name,
       state: state?.toMap(),
@@ -340,17 +339,17 @@ class Flow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fnf/flow:Flow',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.definition = registerOutput<String>('definition');
-    this.description = registerOutput<String>('description');
-    this.flowId = registerOutput<String>('flowId');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'alicloud:fnf/flow:Flow',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    definition = registerOutput<String>('definition');
+    description = registerOutput<String>('description');
+    flowId = registerOutput<String>('flowId');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.type = registerOutput<String>('type');
+    roleArn = registerOutput<String?>('roleArn');
+    type = registerOutput<String>('type');
   }
 }

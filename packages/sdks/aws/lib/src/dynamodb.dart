@@ -1,5 +1,3 @@
-library module_dynamodb;
-
 export 'dynamodb/contributor_insights.dart';
 export 'dynamodb/contributor_insights_args.dart';
 export 'dynamodb/contributor_insights_state.dart';

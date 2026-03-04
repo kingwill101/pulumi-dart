@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataTransferServiceResourceCreateUpdateProperties {
   /// Instance count for the service.
   final pulumi.Input<int>? instanceCount;
+
   /// Instance type for the service.
   final pulumi.Input<String>? instanceSize;
+
   /// ServiceType for the service.
   /// Expected value is 'DataTransfer'.
   final pulumi.Input<String> serviceType;
@@ -30,12 +32,21 @@ class DataTransferServiceResourceCreateUpdateProperties {
     };
   }
 
-  factory DataTransferServiceResourceCreateUpdateProperties.fromMap(Map<String, dynamic> map) {
+  factory DataTransferServiceResourceCreateUpdateProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataTransferServiceResourceCreateUpdateProperties(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
-      serviceType: (map['serviceType'] as String).input(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceSize: (() {
+        final guardedValue = map['instanceSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
     );
   }
 }
-

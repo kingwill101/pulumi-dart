@@ -5,16 +5,15 @@ enum KnownDataFlowStreams {
   valueMicrosoftSyslog("Microsoft-Syslog"),
   valueMicrosoftWindowsEvent("Microsoft-WindowsEvent");
 
-  const KnownDataFlowStreams(this.value);
-  final String value;
+  const KnownDataFlowStreams(this.wireValue);
+  final String wireValue;
 
   static KnownDataFlowStreams fromValue(String value) {
     for (final item in KnownDataFlowStreams.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KnownDataFlowStreams value: $value');
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointDeliveryRuleDeviceCondition {
   /// Valid values are `Desktop` and `Mobile`.
   final pulumi.Input<List<String>> matchValues;
+
   /// Defaults to `false`.
   final pulumi.Input<bool>? negateCondition;
+
   /// Valid values are `Equal`. Defaults to `Equal`.
   final pulumi.Input<String>? operator;
 
@@ -28,12 +30,23 @@ class EndpointDeliveryRuleDeviceCondition {
     };
   }
 
-  factory EndpointDeliveryRuleDeviceCondition.fromMap(Map<String, dynamic> map) {
+  factory EndpointDeliveryRuleDeviceCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointDeliveryRuleDeviceCondition(
-      matchValues: ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      matchValues: pulumi.Input.fromValue(
+        (map['matchValues'] as List).cast<String>(),
+      ),
+      negateCondition: (() {
+        final guardedValue = map['negateCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

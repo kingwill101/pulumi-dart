@@ -9,20 +9,13 @@ class AutoTargetLags {
 
   /// Creates a new [AutoTargetLags].
   /// [mode] Target lags selection modes.
-  AutoTargetLags({
-    required this.mode,
-  });
+  AutoTargetLags({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory AutoTargetLags.fromMap(Map<String, dynamic> map) {
-    return AutoTargetLags(
-      mode: (map['mode'] as String).input(),
-    );
+    return AutoTargetLags(mode: pulumi.Input.fromValue(map['mode'] as String));
   }
 }
-

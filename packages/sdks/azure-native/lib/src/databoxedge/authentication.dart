@@ -10,20 +10,27 @@ class Authentication {
 
   /// Creates a new [Authentication].
   /// [symmetricKey] Symmetric key for authentication.
-  Authentication({
-    this.symmetricKey,
-  });
+  Authentication({this.symmetricKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'symmetricKey': ?pulumi.Input.mapOptionalInputValue<SymmetricKey, Map<String, dynamic>>(symmetricKey, (value) => value.toMap()),
+      'symmetricKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            SymmetricKey,
+            Map<String, dynamic>
+          >(symmetricKey, (value) => value.toMap()),
     };
   }
 
   factory Authentication.fromMap(Map<String, dynamic> map) {
     return Authentication(
-      symmetricKey: map['symmetricKey'] == null ? null : (SymmetricKey.fromMap((map['symmetricKey']! as Map).cast<String, dynamic>())).input(),
+      symmetricKey: (() {
+        final guardedValue = map['symmetricKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SymmetricKey.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

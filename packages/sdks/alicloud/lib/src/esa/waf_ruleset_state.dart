@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WafRulesetState {
   /// The ruleset name.
   final pulumi.Input<String>? name;
+
   /// The WAF phase
   final pulumi.Input<String>? phase;
+
   /// waf rule set id
   final pulumi.Input<int>? rulesetId;
+
   /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   final pulumi.Input<String>? siteId;
   final pulumi.Input<int>? siteVersion;
+
   /// Rule Set Status
   final pulumi.Input<String>? status;
 
@@ -45,13 +49,36 @@ class WafRulesetState {
 
   factory WafRulesetState.fromMap(Map<String, dynamic> map) {
     return WafRulesetState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
-      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId']! as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phase: (() {
+        final guardedValue = map['phase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rulesetId: (() {
+        final guardedValue = map['rulesetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteVersion: (() {
+        final guardedValue = map['siteVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

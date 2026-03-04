@@ -15,16 +15,22 @@ enum EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType {
   integrationConnectorTrigger("INTEGRATION_CONNECTOR_TRIGGER"),
   privateTrigger("PRIVATE_TRIGGER");
 
-  const EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType(this.value);
-  final String value;
+  const EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType fromValue(String value) {
-    for (final item in EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType value: $value',
+    );
   }
 }
-

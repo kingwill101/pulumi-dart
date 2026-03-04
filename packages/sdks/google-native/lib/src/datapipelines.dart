@@ -1,5 +1,3 @@
-library module_datapipelines;
-
 export 'datapipelines/functions.dart';
 export 'datapipelines/get_pipeline_args.dart';
 export 'datapipelines/get_pipeline_result.dart';

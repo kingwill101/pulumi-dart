@@ -9,20 +9,27 @@ class FrontdoorSecurityPolicySecurityPolicies {
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPolicies].
   /// [firewall] An `firewall` block as defined below.
-  FrontdoorSecurityPolicySecurityPolicies({
-    required this.firewall,
-  });
+  FrontdoorSecurityPolicySecurityPolicies({required this.firewall});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'firewall': pulumi.Input.mapInputValue<FrontdoorSecurityPolicySecurityPoliciesFirewall, Map<String, dynamic>>(firewall, (value) => value.toMap()),
+      'firewall':
+          pulumi.Input.mapInputValue<
+            FrontdoorSecurityPolicySecurityPoliciesFirewall,
+            Map<String, dynamic>
+          >(firewall, (value) => value.toMap()),
     };
   }
 
-  factory FrontdoorSecurityPolicySecurityPolicies.fromMap(Map<String, dynamic> map) {
+  factory FrontdoorSecurityPolicySecurityPolicies.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrontdoorSecurityPolicySecurityPolicies(
-      firewall: (FrontdoorSecurityPolicySecurityPoliciesFirewall.fromMap((map['firewall'] as Map).cast<String, dynamic>())).input(),
+      firewall: pulumi.Input.fromValue(
+        FrontdoorSecurityPolicySecurityPoliciesFirewall.fromMap(
+          (map['firewall']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

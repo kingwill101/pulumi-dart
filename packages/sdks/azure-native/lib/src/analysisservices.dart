@@ -1,5 +1,3 @@
-library module_analysisservices;
-
 export 'analysisservices/connection_mode.dart';
 export 'analysisservices/functions.dart';
 export 'analysisservices/gateway_details.dart';

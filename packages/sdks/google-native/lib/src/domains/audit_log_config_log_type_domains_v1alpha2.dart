@@ -5,16 +5,17 @@ enum AuditLogConfigLogTypeDomainsV1alpha2 {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const AuditLogConfigLogTypeDomainsV1alpha2(this.value);
-  final String value;
+  const AuditLogConfigLogTypeDomainsV1alpha2(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogTypeDomainsV1alpha2 fromValue(String value) {
     for (final item in AuditLogConfigLogTypeDomainsV1alpha2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeDomainsV1alpha2 value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeDomainsV1alpha2 value: $value',
+    );
   }
 }
-

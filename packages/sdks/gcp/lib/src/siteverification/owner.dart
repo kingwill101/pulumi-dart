@@ -17,7 +17,7 @@ import 'owner_state.dart';
 /// resource then you (or the identity was used to create the resource, such as a
 /// service account) are already an owner.
 ///
-/// > **Note:** The email address of the owner must belong to a Google account,
+/// &gt; **Note:** The email address of the owner must belong to a Google account,
 /// such as a Gmail account, a Google Workspace account, or a GCP service account.
 ///
 /// Working with site verification requires the `https://www.googleapis.com/auth/siteverification`
@@ -371,7 +371,8 @@ class Owner extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> email;
-  /// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
+
+  /// The id of of the web resource to which the owner will be added, in the form `webResource/&lt;resource_id&gt;`,
   /// such as `webResource/https://www.example.com/`
   late final pulumi.Output<String> webResourceId;
 
@@ -379,26 +380,19 @@ class Owner extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Owner]. {@macro pulumi_siteverification_owner_owner_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Owner(
-    String name, {
-    OwnerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:siteverification/owner:Owner',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.email = registerOutput<String>('email');
-    this.webResourceId = registerOutput<String>('webResourceId');
+  Owner(String name, {OwnerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:siteverification/owner:Owner',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    email = registerOutput<String>('email');
+    webResourceId = registerOutput<String>('webResourceId');
   }
 
   /// Gets an existing [Owner] resource's state with the given [name] and [id].
-  static Owner get(
-    String name,
-    pulumi.Input<String> id, {
-    OwnerState? state,
-  }) {
+  static Owner get(String name, pulumi.Input<String> id, {OwnerState? state}) {
     return Owner._get(
       name,
       state: state?.toMap(),
@@ -411,12 +405,12 @@ class Owner extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:siteverification/owner:Owner',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.email = registerOutput<String>('email');
-    this.webResourceId = registerOutput<String>('webResourceId');
+         'gcp:siteverification/owner:Owner',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    email = registerOutput<String>('email');
+    webResourceId = registerOutput<String>('webResourceId');
   }
 }

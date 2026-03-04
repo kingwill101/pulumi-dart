@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExadataInfrastructureArgs {
   /// The name of this Cloud Exadata Infrastructure.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Cloud Exadata Infrastructure exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetExadataInfrastructureArgs {
 
   factory GetExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

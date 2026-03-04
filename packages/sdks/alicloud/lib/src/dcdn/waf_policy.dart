@@ -6,7 +6,7 @@ import 'waf_policy_state.dart';
 ///
 /// For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createdcdnwafpolicy).
 ///
-/// > **NOTE:** Available since v1.184.0.
+/// &gt; **NOTE:** Available since v1.184.0.
 ///
 /// ## Example Usage
 ///
@@ -189,10 +189,13 @@ import 'waf_policy_state.dart';
 class WafPolicy extends pulumi.CustomResource {
   /// The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
   late final pulumi.Output<String> defenseScene;
+
   /// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
   late final pulumi.Output<String> policyName;
+
   /// The type of the protection policy. Valid values: `default`, `custom`.
   late final pulumi.Output<String> policyType;
+
   /// The status of the resource. Valid values: `on`, `off`.
   late final pulumi.Output<String> status;
 
@@ -205,15 +208,15 @@ class WafPolicy extends pulumi.CustomResource {
     WafPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafPolicy:WafPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.policyName = registerOutput<String>('policyName');
-    this.policyType = registerOutput<String>('policyType');
-    this.status = registerOutput<String>('status');
+         'alicloud:dcdn/wafPolicy:WafPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defenseScene = registerOutput<String>('defenseScene');
+    policyName = registerOutput<String>('policyName');
+    policyType = registerOutput<String>('policyType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [WafPolicy] resource's state with the given [name] and [id].
@@ -234,14 +237,14 @@ class WafPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafPolicy:WafPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.policyName = registerOutput<String>('policyName');
-    this.policyType = registerOutput<String>('policyType');
-    this.status = registerOutput<String>('status');
+         'alicloud:dcdn/wafPolicy:WafPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defenseScene = registerOutput<String>('defenseScene');
+    policyName = registerOutput<String>('policyName');
+    policyType = registerOutput<String>('policyType');
+    status = registerOutput<String>('status');
   }
 }

@@ -4,16 +4,15 @@ enum RuleBasicProfile {
   allow("ALLOW"),
   deny("DENY");
 
-  const RuleBasicProfile(this.value);
-  final String value;
+  const RuleBasicProfile(this.wireValue);
+  final String wireValue;
 
   static RuleBasicProfile fromValue(String value) {
     for (final item in RuleBasicProfile.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleBasicProfile value: $value');
   }
 }
-

@@ -6,9 +6,16 @@ import 'virtual_node_spec_backend_defaults_client_policy_tls_validation_trust.da
 
 class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation {
   /// SANs for a TLS validation context.
-  final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames>? subjectAlternativeNames;
+  final pulumi.Input<
+    VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames
+  >?
+  subjectAlternativeNames;
+
   /// TLS validation context trust.
-  final pulumi.Input<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust> trust;
+  final pulumi.Input<
+    VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust
+  >
+  trust;
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation].
   /// [subjectAlternativeNames] SANs for a TLS validation context.
@@ -20,16 +27,37 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subjectAlternativeNames': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames, Map<String, dynamic>>(subjectAlternativeNames, (value) => value.toMap()),
-      'trust': pulumi.Input.mapInputValue<VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust, Map<String, dynamic>>(trust, (value) => value.toMap()),
+      'subjectAlternativeNames':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames,
+            Map<String, dynamic>
+          >(subjectAlternativeNames, (value) => value.toMap()),
+      'trust':
+          pulumi.Input.mapInputValue<
+            VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust,
+            Map<String, dynamic>
+          >(trust, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames']! as Map).cast<String, dynamic>())).input()).input(),
-      trust: (VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap((map['trust']! as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeNames: (() {
+        final guardedValue = map['subjectAlternativeNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      trust: pulumi.Input.fromValue(
+        VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrust.fromMap(
+          (map['trust']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

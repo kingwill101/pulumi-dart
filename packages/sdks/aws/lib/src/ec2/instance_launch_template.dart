@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceLaunchTemplate {
   /// ID of the launch template. Conflicts with `name`.
   final pulumi.Input<String>? id;
+
   /// Name of the launch template. Conflicts with `id`.
   final pulumi.Input<String>? name;
+
   /// Template version. Can be a specific version number, `$Latest` or `$Default`. The default value is `$Default`.
   final pulumi.Input<String>? version;
 
@@ -14,26 +16,29 @@ class InstanceLaunchTemplate {
   /// [id] ID of the launch template. Conflicts with `name`.
   /// [name] Name of the launch template. Conflicts with `id`.
   /// [version] Template version. Can be a specific version number, `$Latest` or `$Default`. The default value is `$Default`.
-  InstanceLaunchTemplate({
-    this.id,
-    this.name,
-    this.version,
-  });
+  InstanceLaunchTemplate({this.id, this.name, this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-      'version': ?version,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name, 'version': ?version};
   }
 
   factory InstanceLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return InstanceLaunchTemplate(
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

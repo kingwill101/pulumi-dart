@@ -164,21 +164,30 @@ import 'private_link_service_connection_state_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:network:ApplicationGatewayPrivateEndpointConnection testPlePeConnection /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}
 /// ```
-class ApplicationGatewayPrivateEndpointConnection extends pulumi.CustomResource {
+class ApplicationGatewayPrivateEndpointConnection
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The consumer link id.
   late final pulumi.Output<String> linkIdentifier;
+
   /// Name of the private endpoint connection on an application gateway.
   late final pulumi.Output<String?> name;
+
   /// The resource of private end point.
   late final pulumi.Output<PrivateEndpointResponse> privateEndpoint;
+
   /// A collection of information about the state of the connection between service consumer and provider.
-  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?> privateLinkServiceConnectionState;
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?>
+  privateLinkServiceConnectionState;
+
   /// The provisioning state of the application gateway private endpoint connection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -191,18 +200,23 @@ class ApplicationGatewayPrivateEndpointConnection extends pulumi.CustomResource 
     ApplicationGatewayPrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ApplicationGatewayPrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.linkIdentifier = registerOutput<String>('linkIdentifier');
+         'azure-native:network:ApplicationGatewayPrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    linkIdentifier = registerOutput<String>('linkIdentifier');
     this.name = registerOutput<String?>('name');
-    this.privateEndpoint = registerOutput<PrivateEndpointResponse>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse?>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<PrivateEndpointResponse>(
+      'privateEndpoint',
+    );
+    privateLinkServiceConnectionState =
+        registerOutput<PrivateLinkServiceConnectionStateResponse?>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

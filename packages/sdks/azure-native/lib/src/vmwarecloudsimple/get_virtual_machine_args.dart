@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineArgs {
   /// The name of the resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// virtual machine name
   final pulumi.Input<String> virtualMachineName;
 
@@ -29,9 +30,12 @@ class GetVirtualMachineArgs {
 
   factory GetVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualMachineName: (map['virtualMachineName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualMachineName: pulumi.Input.fromValue(
+        map['virtualMachineName'] as String,
+      ),
     );
   }
 }
-

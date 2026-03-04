@@ -607,10 +607,13 @@ import 'delegation_signer_record_timeouts.dart';
 class DelegationSignerRecord extends pulumi.CustomResource {
   /// An ID assigned to the created DS record.
   late final pulumi.Output<String> dnssecKeyId;
+
   /// The name of the domain that will have its parent DNS zone updated with the Delegation Signer record.
   late final pulumi.Output<String> domainName;
+
   /// The information about a key, including the algorithm, public key-value, and flags.
-  late final pulumi.Output<DelegationSignerRecordSigningAttributes?> signingAttributes;
+  late final pulumi.Output<DelegationSignerRecordSigningAttributes?>
+  signingAttributes;
   late final pulumi.Output<DelegationSignerRecordTimeouts?> timeouts;
 
   /// Creates a new [DelegationSignerRecord].
@@ -622,15 +625,18 @@ class DelegationSignerRecord extends pulumi.CustomResource {
     DelegationSignerRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53domains/delegationSignerRecord:DelegationSignerRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnssecKeyId = registerOutput<String>('dnssecKeyId');
-    this.domainName = registerOutput<String>('domainName');
-    this.signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes?>('signingAttributes');
-    this.timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts');
+         'aws:route53domains/delegationSignerRecord:DelegationSignerRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnssecKeyId = registerOutput<String>('dnssecKeyId');
+    domainName = registerOutput<String>('domainName');
+    signingAttributes =
+        registerOutput<DelegationSignerRecordSigningAttributes?>(
+          'signingAttributes',
+        );
+    timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts');
   }
 
   /// Gets an existing [DelegationSignerRecord] resource's state with the given [name] and [id].
@@ -651,14 +657,17 @@ class DelegationSignerRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53domains/delegationSignerRecord:DelegationSignerRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnssecKeyId = registerOutput<String>('dnssecKeyId');
-    this.domainName = registerOutput<String>('domainName');
-    this.signingAttributes = registerOutput<DelegationSignerRecordSigningAttributes?>('signingAttributes');
-    this.timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts');
+         'aws:route53domains/delegationSignerRecord:DelegationSignerRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnssecKeyId = registerOutput<String>('dnssecKeyId');
+    domainName = registerOutput<String>('domainName');
+    signingAttributes =
+        registerOutput<DelegationSignerRecordSigningAttributes?>(
+          'signingAttributes',
+        );
+    timeouts = registerOutput<DelegationSignerRecordTimeouts?>('timeouts');
   }
 }

@@ -4,16 +4,15 @@ enum NfsExportPermissions {
   readOnly("READ_ONLY"),
   readWrite("READ_WRITE");
 
-  const NfsExportPermissions(this.value);
-  final String value;
+  const NfsExportPermissions(this.wireValue);
+  final String wireValue;
 
   static NfsExportPermissions fromValue(String value) {
     for (final item in NfsExportPermissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NfsExportPermissions value: $value');
   }
 }
-

@@ -4,9 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GreyTagRouteScRuleItem {
   final pulumi.Input<String>? cond;
+
   /// The name of the parameter.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? operator;
+
   /// The compare types. Valid values: `param`, `cookie`, `header`.
   final pulumi.Input<String>? type;
   final pulumi.Input<String>? value;
@@ -37,12 +39,31 @@ class GreyTagRouteScRuleItem {
 
   factory GreyTagRouteScRuleItem.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteScRuleItem(
-      cond: map['cond'] == null ? null : (map['cond']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      cond: (() {
+        final guardedValue = map['cond'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

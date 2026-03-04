@@ -3,16 +3,15 @@ enum AnalyticalStorageSchemaType {
   valueWellDefined("WellDefined"),
   valueFullFidelity("FullFidelity");
 
-  const AnalyticalStorageSchemaType(this.value);
-  final String value;
+  const AnalyticalStorageSchemaType(this.wireValue);
+  final String wireValue;
 
   static AnalyticalStorageSchemaType fromValue(String value) {
     for (final item in AnalyticalStorageSchemaType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AnalyticalStorageSchemaType value: $value');
   }
 }
-

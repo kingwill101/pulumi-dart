@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'db_instance_endpoint_args.dart';
-import 'db_instance_endpoint_node_item.dart';
 import 'db_instance_endpoint_state.dart';
 
 /// Provide RDS cluster instance endpoint connection resources, see [What is RDS DB Instance Endpoint](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbinstanceendpoint).
 ///
-/// > **NOTE:** Available since v1.203.0.
+/// &gt; **NOTE:** Available since v1.203.0.
 ///
 /// ## Example Usage
 ///
@@ -548,26 +547,37 @@ import 'db_instance_endpoint_state.dart';
 class DbInstanceEndpoint extends pulumi.CustomResource {
   /// The internal endpoint.
   late final pulumi.Output<String> connectionString;
+
   /// The IP address of the internal endpoint.
   late final pulumi.Output<String> connectionStringPrefix;
+
   /// The user-defined description of the endpoint.
   late final pulumi.Output<String> dbInstanceEndpointDescription;
+
   /// The Endpoint ID of the instance.
   late final pulumi.Output<String> dbInstanceEndpointId;
+
   /// The type of the endpoint.
   late final pulumi.Output<String> dbInstanceEndpointType;
+
   /// The ID of the instance.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The type of the IP address.
   late final pulumi.Output<String> ipType;
+
   /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
-  late final pulumi.Output<List<DbInstanceEndpointNodeItem>> nodeItems;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodeItems;
+
   /// The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
   late final pulumi.Output<String> port;
+
   /// The IP address of the internal endpoint.
   late final pulumi.Output<String> privateIpAddress;
+
   /// The virtual private cloud (VPC) ID of the internal endpoint.
   late final pulumi.Output<String> vpcId;
+
   /// The vSwitch ID of the internal endpoint.
   late final pulumi.Output<String> vswitchId;
 
@@ -580,23 +590,25 @@ class DbInstanceEndpoint extends pulumi.CustomResource {
     DbInstanceEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceEndpointDescription = registerOutput<String>('dbInstanceEndpointDescription');
-    this.dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
-    this.dbInstanceEndpointType = registerOutput<String>('dbInstanceEndpointType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.ipType = registerOutput<String>('ipType');
-    this.nodeItems = registerOutput<List<DbInstanceEndpointNodeItem>>('nodeItems');
-    this.port = registerOutput<String>('port');
-    this.privateIpAddress = registerOutput<String>('privateIpAddress');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceEndpointDescription = registerOutput<String>(
+      'dbInstanceEndpointDescription',
+    );
+    dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
+    dbInstanceEndpointType = registerOutput<String>('dbInstanceEndpointType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    ipType = registerOutput<String>('ipType');
+    nodeItems = registerOutput<List<Map<String, dynamic>>>('nodeItems');
+    port = registerOutput<String>('port');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [DbInstanceEndpoint] resource's state with the given [name] and [id].
@@ -617,22 +629,24 @@ class DbInstanceEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceEndpointDescription = registerOutput<String>('dbInstanceEndpointDescription');
-    this.dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
-    this.dbInstanceEndpointType = registerOutput<String>('dbInstanceEndpointType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.ipType = registerOutput<String>('ipType');
-    this.nodeItems = registerOutput<List<DbInstanceEndpointNodeItem>>('nodeItems');
-    this.port = registerOutput<String>('port');
-    this.privateIpAddress = registerOutput<String>('privateIpAddress');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceEndpointDescription = registerOutput<String>(
+      'dbInstanceEndpointDescription',
+    );
+    dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
+    dbInstanceEndpointType = registerOutput<String>('dbInstanceEndpointType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    ipType = registerOutput<String>('ipType');
+    nodeItems = registerOutput<List<Map<String, dynamic>>>('nodeItems');
+    port = registerOutput<String>('port');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

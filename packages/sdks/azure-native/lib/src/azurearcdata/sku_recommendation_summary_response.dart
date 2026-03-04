@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkuRecommendationSummaryResponse {
   /// Number of blocker issues to fix before migrating this database to the target platform.
   final pulumi.Input<int>? numOfBlockerIssues;
+
   /// The target recommendation Status for this database.
   final pulumi.Input<String>? recommendationStatus;
 
@@ -26,9 +27,16 @@ class SkuRecommendationSummaryResponse {
 
   factory SkuRecommendationSummaryResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationSummaryResponse(
-      numOfBlockerIssues: map['numOfBlockerIssues'] == null ? null : (map['numOfBlockerIssues']! as int).input(),
-      recommendationStatus: map['recommendationStatus'] == null ? null : (map['recommendationStatus']! as String).input(),
+      numOfBlockerIssues: (() {
+        final guardedValue = map['numOfBlockerIssues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      recommendationStatus: (() {
+        final guardedValue = map['recommendationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

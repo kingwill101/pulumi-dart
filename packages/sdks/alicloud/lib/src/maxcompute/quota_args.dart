@@ -11,23 +11,27 @@ class QuotaArgs {
   /// Valid values: odps_intl/odpsplus_intl/odps/odpsplus
   /// - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment
   final pulumi.Input<String> commodityCode;
+
   /// Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
   /// CU (minimum quota resource size is 50)
   /// ord_time 1:Month/Year (1 means quantity: Month/Year is the unit)
   /// autoRenew (whether to enable automatic renewal)
   /// If PaymentType is PayAsYouGo, you do not need to fill in
   final pulumi.Input<String>? commodityData;
+
   /// Quota partial nickname, supports English letters and numbers, up to 24 characters
   ///
-  /// > **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
+  /// &gt; **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
   final pulumi.Input<String>? partNickName;
+
   /// Payment type. Valid values: Subscription/PayAsYouGo
   ///
-  /// > **NOTE:** -- PayAsYouGo only needs to be opened once per region
+  /// &gt; **NOTE:** -- PayAsYouGo only needs to be opened once per region
   final pulumi.Input<String> paymentType;
+
   /// Secondary Quota list
   ///
-  /// > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
+  /// &gt; **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
   /// See `sub_quota_info_list` below.
   final pulumi.Input<List<QuotaSubQuotaInfoList>>? subQuotaInfoLists;
 
@@ -51,18 +55,47 @@ class QuotaArgs {
       'commodityData': ?commodityData,
       'partNickName': ?partNickName,
       'paymentType': paymentType,
-      'subQuotaInfoLists': ?pulumi.Input.mapOptionalInputValue<List<QuotaSubQuotaInfoList>, List<Map<String, dynamic>>>(subQuotaInfoLists, (value) => pulumi.Input.encodeList<QuotaSubQuotaInfoList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subQuotaInfoLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<QuotaSubQuotaInfoList>,
+            List<Map<String, dynamic>>
+          >(
+            subQuotaInfoLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  QuotaSubQuotaInfoList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory QuotaArgs.fromMap(Map<String, dynamic> map) {
     return QuotaArgs(
-      commodityCode: (map['commodityCode'] as String).input(),
-      commodityData: map['commodityData'] == null ? null : (map['commodityData']! as String).input(),
-      partNickName: map['partNickName'] == null ? null : (map['partNickName']! as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      subQuotaInfoLists: map['subQuotaInfoLists'] == null ? null : (pulumi.Input.decodeList<QuotaSubQuotaInfoList>(map['subQuotaInfoLists']!, (value) => QuotaSubQuotaInfoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commodityCode: pulumi.Input.fromValue(map['commodityCode'] as String),
+      commodityData: (() {
+        final guardedValue = map['commodityData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partNickName: (() {
+        final guardedValue = map['partNickName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      subQuotaInfoLists: (() {
+        final guardedValue = map['subQuotaInfoLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<QuotaSubQuotaInfoList>(
+            guardedValue,
+            (value) => QuotaSubQuotaInfoList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class NodePoolTeeConfig {
 
   /// Creates a new [NodePoolTeeConfig].
   /// [teeEnable] Specifies whether to enable confidential computing for the cluster.
-  NodePoolTeeConfig({
-    this.teeEnable,
-  });
+  NodePoolTeeConfig({this.teeEnable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'teeEnable': ?teeEnable,
-    };
+    return <String, dynamic>{'teeEnable': ?teeEnable};
   }
 
   factory NodePoolTeeConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolTeeConfig(
-      teeEnable: map['teeEnable'] == null ? null : (map['teeEnable']! as bool).input(),
+      teeEnable: (() {
+        final guardedValue = map['teeEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

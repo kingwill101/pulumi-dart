@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerTypesServerTypeLocation {
   /// Date of the Server Type deprecation announcement.
   final pulumi.Input<String> deprecationAnnounced;
+
   /// ID of the Location.
   final pulumi.Input<int> id;
+
   /// Whether the Server Type is deprecated.
   final pulumi.Input<bool> isDeprecated;
+
   /// Name of the Location.
   final pulumi.Input<String> name;
+
   /// Date of the Server Type removal. After this date, the Server Type cannot be used anymore.
   final pulumi.Input<String> unavailableAfter;
 
@@ -40,12 +44,15 @@ class GetServerTypesServerTypeLocation {
 
   factory GetServerTypesServerTypeLocation.fromMap(Map<String, dynamic> map) {
     return GetServerTypesServerTypeLocation(
-      deprecationAnnounced: (map['deprecationAnnounced'] as String).input(),
-      id: (map['id'] as int).input(),
-      isDeprecated: (map['isDeprecated'] as bool).input(),
-      name: (map['name'] as String).input(),
-      unavailableAfter: (map['unavailableAfter'] as String).input(),
+      deprecationAnnounced: pulumi.Input.fromValue(
+        map['deprecationAnnounced'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      isDeprecated: pulumi.Input.fromValue(map['isDeprecated'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      unavailableAfter: pulumi.Input.fromValue(
+        map['unavailableAfter'] as String,
+      ),
     );
   }
 }
-

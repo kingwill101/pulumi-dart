@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicSubscriptionsArgs {
   /// A string to filter resulting subscriptions of the topic by their name prefixs.
   final pulumi.Input<String>? namePrefix;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   final pulumi.Input<String> topicName;
 
@@ -34,10 +36,17 @@ class GetTopicSubscriptionsArgs {
 
   factory GetTopicSubscriptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicSubscriptionsArgs(
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      topicName: (map['topicName'] as String).input(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
-

@@ -236,7 +236,7 @@ import 'network_manager_routing_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -251,10 +251,13 @@ import 'network_manager_routing_configuration_state.dart';
 class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
   /// The description of the Network Manager Routing Configuration.
   late final pulumi.Output<String?> description;
+
   /// The name which should be used for this Network Manager Routing Configuration. Changing this forces a new Network Manager Routing Configuration to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Network Manager. Changing this forces a new Network Manager Routing Configuration to be created.
   late final pulumi.Output<String> networkManagerId;
+
   /// The route table usage mode for the Network Manager Routing Configuration. Possible values are `ManagedOnly` and `UseExisting`. Defaults to `ManagedOnly`.
   late final pulumi.Output<String?> routeTableUsageMode;
 
@@ -267,15 +270,15 @@ class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
     NetworkManagerRoutingConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerRoutingConfiguration:NetworkManagerRoutingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'azure:network/networkManagerRoutingConfiguration:NetworkManagerRoutingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
-    this.routeTableUsageMode = registerOutput<String?>('routeTableUsageMode');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    routeTableUsageMode = registerOutput<String?>('routeTableUsageMode');
   }
 
   /// Gets an existing [NetworkManagerRoutingConfiguration] resource's state with the given [name] and [id].
@@ -296,14 +299,14 @@ class NetworkManagerRoutingConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerRoutingConfiguration:NetworkManagerRoutingConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'azure:network/networkManagerRoutingConfiguration:NetworkManagerRoutingConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
-    this.routeTableUsageMode = registerOutput<String?>('routeTableUsageMode');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    routeTableUsageMode = registerOutput<String?>('routeTableUsageMode');
   }
 }

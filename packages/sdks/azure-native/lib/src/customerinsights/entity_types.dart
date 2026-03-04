@@ -5,16 +5,15 @@ enum EntityTypes {
   valueInteraction("Interaction"),
   valueRelationship("Relationship");
 
-  const EntityTypes(this.value);
-  final String value;
+  const EntityTypes(this.wireValue);
+  final String wireValue;
 
   static EntityTypes fromValue(String value) {
     for (final item in EntityTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityTypes value: $value');
   }
 }
-

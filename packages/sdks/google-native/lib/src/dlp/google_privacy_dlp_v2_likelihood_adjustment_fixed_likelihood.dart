@@ -7,16 +7,20 @@ enum GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood {
   likely("LIKELY"),
   veryLikely("VERY_LIKELY");
 
-  const GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood(this.value);
-  final String value;
+  const GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood(this.wireValue);
+  final String wireValue;
 
-  static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood.values) {
-      if (item.value == value) {
+  static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood value: $value',
+    );
   }
 }
-

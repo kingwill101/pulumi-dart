@@ -10,12 +10,17 @@ class ComputeProfileResponse {
   /// ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs.
   /// hibernationEnabled: Enables the hibernation capability on the VMSS VMs.
   /// Default value is null if not specified. This property cannot be updated once set.
-  final pulumi.Input<AdditionalCapabilitiesResponse>? additionalVirtualMachineCapabilities;
+  final pulumi.Input<AdditionalCapabilitiesResponse>?
+  additionalVirtualMachineCapabilities;
+
   /// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
-  final pulumi.Input<BaseVirtualMachineProfileResponse> baseVirtualMachineProfile;
+  final pulumi.Input<BaseVirtualMachineProfileResponse>
+  baseVirtualMachineProfile;
+
   /// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
   /// The default value will be the latest supported computeApiVersion by Compute Fleet.
   final pulumi.Input<String>? computeApiVersion;
+
   /// Specifies the number of fault domains to use when creating the underlying VMSS.
   /// A fault domain is a logical group of hardware within an Azure datacenter.
   /// VMs in the same fault domain share a common power source and network switch.
@@ -37,8 +42,16 @@ class ComputeProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalVirtualMachineCapabilities': ?pulumi.Input.mapOptionalInputValue<AdditionalCapabilitiesResponse, Map<String, dynamic>>(additionalVirtualMachineCapabilities, (value) => value.toMap()),
-      'baseVirtualMachineProfile': pulumi.Input.mapInputValue<BaseVirtualMachineProfileResponse, Map<String, dynamic>>(baseVirtualMachineProfile, (value) => value.toMap()),
+      'additionalVirtualMachineCapabilities':
+          ?pulumi.Input.mapOptionalInputValue<
+            AdditionalCapabilitiesResponse,
+            Map<String, dynamic>
+          >(additionalVirtualMachineCapabilities, (value) => value.toMap()),
+      'baseVirtualMachineProfile':
+          pulumi.Input.mapInputValue<
+            BaseVirtualMachineProfileResponse,
+            Map<String, dynamic>
+          >(baseVirtualMachineProfile, (value) => value.toMap()),
       'computeApiVersion': ?computeApiVersion,
       'platformFaultDomainCount': ?platformFaultDomainCount,
     };
@@ -46,11 +59,30 @@ class ComputeProfileResponse {
 
   factory ComputeProfileResponse.fromMap(Map<String, dynamic> map) {
     return ComputeProfileResponse(
-      additionalVirtualMachineCapabilities: map['additionalVirtualMachineCapabilities'] == null ? null : (AdditionalCapabilitiesResponse.fromMap((map['additionalVirtualMachineCapabilities']! as Map).cast<String, dynamic>())).input(),
-      baseVirtualMachineProfile: (BaseVirtualMachineProfileResponse.fromMap((map['baseVirtualMachineProfile'] as Map).cast<String, dynamic>())).input(),
-      computeApiVersion: map['computeApiVersion'] == null ? null : (map['computeApiVersion']! as String).input(),
-      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : (map['platformFaultDomainCount']! as int).input(),
+      additionalVirtualMachineCapabilities: (() {
+        final guardedValue = map['additionalVirtualMachineCapabilities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AdditionalCapabilitiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      baseVirtualMachineProfile: pulumi.Input.fromValue(
+        BaseVirtualMachineProfileResponse.fromMap(
+          (map['baseVirtualMachineProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      computeApiVersion: (() {
+        final guardedValue = map['computeApiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      platformFaultDomainCount: (() {
+        final guardedValue = map['platformFaultDomainCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

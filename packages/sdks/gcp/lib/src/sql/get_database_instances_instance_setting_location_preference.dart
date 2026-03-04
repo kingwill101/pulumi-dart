@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstancesInstanceSettingLocationPreference {
   /// A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
   final pulumi.Input<String> followGaeApplication;
+
   /// The preferred Compute Engine zone for the secondary/failover
   final pulumi.Input<String> secondaryZone;
+
   /// To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
   final pulumi.Input<String> zone;
 
@@ -28,12 +30,15 @@ class GetDatabaseInstancesInstanceSettingLocationPreference {
     };
   }
 
-  factory GetDatabaseInstancesInstanceSettingLocationPreference.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingLocationPreference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceSettingLocationPreference(
-      followGaeApplication: (map['followGaeApplication'] as String).input(),
-      secondaryZone: (map['secondaryZone'] as String).input(),
-      zone: (map['zone'] as String).input(),
+      followGaeApplication: pulumi.Input.fromValue(
+        map['followGaeApplication'] as String,
+      ),
+      secondaryZone: pulumi.Input.fromValue(map['secondaryZone'] as String),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

@@ -9,23 +9,16 @@ class GetTableReplica {
   /// Creates a new [GetTableReplica].
   /// [kmsKeyArn] Required.
   /// [regionName] Required.
-  GetTableReplica({
-    required this.kmsKeyArn,
-    required this.regionName,
-  });
+  GetTableReplica({required this.kmsKeyArn, required this.regionName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyArn': kmsKeyArn,
-      'regionName': regionName,
-    };
+    return <String, dynamic>{'kmsKeyArn': kmsKeyArn, 'regionName': regionName};
   }
 
   factory GetTableReplica.fromMap(Map<String, dynamic> map) {
     return GetTableReplica(
-      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
-      regionName: (map['regionName'] as String).input(),
+      kmsKeyArn: pulumi.Input.fromValue(map['kmsKeyArn'] as String),
+      regionName: pulumi.Input.fromValue(map['regionName'] as String),
     );
   }
 }
-

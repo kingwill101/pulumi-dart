@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_args.dart';
-import 'user_role.dart';
 import 'user_state.dart';
 
 /// Manages a Mongo Cluster User.
@@ -299,7 +298,7 @@ import 'user_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DocumentDB` - 2025-09-01
@@ -314,42 +313,39 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// The identity provider type for the Mongo Cluster User. The only possible value is `MicrosoftEntraID`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> identityProviderType;
+
   /// The ID of the Mongo Cluster where the User should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> mongoClusterId;
+
   /// The Object ID of the Entra ID User or Service Principal. Changing this forces a new resource to be created.
   late final pulumi.Output<String> objectId;
+
   /// The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalType;
+
   /// One or more `role` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<UserRole>> roles;
+  late final pulumi.Output<List<Map<String, dynamic>>> roles;
 
   /// Creates a new [User].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_mongocluster_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:mongocluster/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identityProviderType = registerOutput<String>('identityProviderType');
-    this.mongoClusterId = registerOutput<String>('mongoClusterId');
-    this.objectId = registerOutput<String>('objectId');
-    this.principalType = registerOutput<String>('principalType');
-    this.roles = registerOutput<List<UserRole>>('roles');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:mongocluster/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    identityProviderType = registerOutput<String>('identityProviderType');
+    mongoClusterId = registerOutput<String>('mongoClusterId');
+    objectId = registerOutput<String>('objectId');
+    principalType = registerOutput<String>('principalType');
+    roles = registerOutput<List<Map<String, dynamic>>>('roles');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -362,15 +358,15 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mongocluster/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identityProviderType = registerOutput<String>('identityProviderType');
-    this.mongoClusterId = registerOutput<String>('mongoClusterId');
-    this.objectId = registerOutput<String>('objectId');
-    this.principalType = registerOutput<String>('principalType');
-    this.roles = registerOutput<List<UserRole>>('roles');
+         'azure:mongocluster/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identityProviderType = registerOutput<String>('identityProviderType');
+    mongoClusterId = registerOutput<String>('mongoClusterId');
+    objectId = registerOutput<String>('objectId');
+    principalType = registerOutput<String>('principalType');
+    roles = registerOutput<List<Map<String, dynamic>>>('roles');
   }
 }

@@ -1,5 +1,3 @@
-library module_selectdb;
-
 export 'selectdb/db_cluster.dart';
 export 'selectdb/db_cluster_args.dart';
 export 'selectdb/db_cluster_desired_param.dart';

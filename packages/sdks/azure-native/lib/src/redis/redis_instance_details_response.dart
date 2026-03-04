@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedisInstanceDetailsResponse {
   /// Specifies whether the instance is a primary node.
   final pulumi.Input<bool> isMaster;
+
   /// Specifies whether the instance is a primary node.
   final pulumi.Input<bool> isPrimary;
+
   /// If enableNonSslPort is true, provides Redis instance Non-SSL port.
   final pulumi.Input<int> nonSslPort;
+
   /// If clustering is enabled, the Shard ID of Redis Instance
   final pulumi.Input<int> shardId;
+
   /// Redis instance SSL port.
   final pulumi.Input<int> sslPort;
+
   /// If the Cache uses availability zones, specifies availability zone where this instance is located.
   final pulumi.Input<String> zone;
 
@@ -46,13 +51,12 @@ class RedisInstanceDetailsResponse {
 
   factory RedisInstanceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RedisInstanceDetailsResponse(
-      isMaster: (map['isMaster'] as bool).input(),
-      isPrimary: (map['isPrimary'] as bool).input(),
-      nonSslPort: (map['nonSslPort'] as int).input(),
-      shardId: (map['shardId'] as int).input(),
-      sslPort: (map['sslPort'] as int).input(),
-      zone: (map['zone'] as String).input(),
+      isMaster: pulumi.Input.fromValue(map['isMaster'] as bool),
+      isPrimary: pulumi.Input.fromValue(map['isPrimary'] as bool),
+      nonSslPort: pulumi.Input.fromValue(map['nonSslPort'] as int),
+      shardId: pulumi.Input.fromValue(map['shardId'] as int),
+      sslPort: pulumi.Input.fromValue(map['sslPort'] as int),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

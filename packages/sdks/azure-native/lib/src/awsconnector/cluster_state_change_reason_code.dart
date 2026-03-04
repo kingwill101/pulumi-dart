@@ -9,16 +9,15 @@ enum ClusterStateChangeReasonCode {
   uSERREQUEST("USER_REQUEST"),
   vALIDATIONERROR("VALIDATION_ERROR");
 
-  const ClusterStateChangeReasonCode(this.value);
-  final String value;
+  const ClusterStateChangeReasonCode(this.wireValue);
+  final String wireValue;
 
   static ClusterStateChangeReasonCode fromValue(String value) {
     for (final item in ClusterStateChangeReasonCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterStateChangeReasonCode value: $value');
   }
 }
-

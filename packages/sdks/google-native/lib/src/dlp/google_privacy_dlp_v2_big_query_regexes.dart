@@ -10,20 +10,39 @@ class GooglePrivacyDlpV2BigQueryRegexes {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryRegexes].
   /// [patterns] A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
-  GooglePrivacyDlpV2BigQueryRegexes({
-    this.patterns,
-  });
+  GooglePrivacyDlpV2BigQueryRegexes({this.patterns});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'patterns': ?pulumi.Input.mapOptionalInputValue<List<GooglePrivacyDlpV2BigQueryRegex>, List<Map<String, dynamic>>>(patterns, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryRegex, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'patterns':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GooglePrivacyDlpV2BigQueryRegex>,
+            List<Map<String, dynamic>>
+          >(
+            patterns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GooglePrivacyDlpV2BigQueryRegex,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GooglePrivacyDlpV2BigQueryRegexes.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryRegexes(
-      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(map['patterns']!, (value) => GooglePrivacyDlpV2BigQueryRegex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patterns: (() {
+        final guardedValue = map['patterns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(
+            guardedValue,
+            (value) => GooglePrivacyDlpV2BigQueryRegex.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSapVirtualInstanceInvokeDiskConfigurationsArgs {
   /// The geo-location where the SAP resources will be created.
   final pulumi.Input<String> appLocation;
+
   /// The database type. Eg: HANA, DB2, etc
   final pulumi.Input<String> databaseType;
+
   /// The VM SKU for database instance.
   final pulumi.Input<String> dbVmSku;
+
   /// The deployment type. Eg: SingleServer/ThreeTier
   final pulumi.Input<String> deploymentType;
+
   /// Defines the environment type - Production/Non Production.
   final pulumi.Input<String> environment;
+
   /// The name of the Azure region.
   final pulumi.Input<String> location;
+
   /// Defines the SAP Product type.
   final pulumi.Input<String> sapProduct;
 
@@ -52,16 +58,17 @@ class GetSapVirtualInstanceInvokeDiskConfigurationsArgs {
     };
   }
 
-  factory GetSapVirtualInstanceInvokeDiskConfigurationsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSapVirtualInstanceInvokeDiskConfigurationsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSapVirtualInstanceInvokeDiskConfigurationsArgs(
-      appLocation: (map['appLocation'] as String).input(),
-      databaseType: (map['databaseType'] as String).input(),
-      dbVmSku: (map['dbVmSku'] as String).input(),
-      deploymentType: (map['deploymentType'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      location: (map['location'] as String).input(),
-      sapProduct: (map['sapProduct'] as String).input(),
+      appLocation: pulumi.Input.fromValue(map['appLocation'] as String),
+      databaseType: pulumi.Input.fromValue(map['databaseType'] as String),
+      dbVmSku: pulumi.Input.fromValue(map['dbVmSku'] as String),
+      deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      sapProduct: pulumi.Input.fromValue(map['sapProduct'] as String),
     );
   }
 }
-

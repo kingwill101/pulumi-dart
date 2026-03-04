@@ -14,22 +14,31 @@ import 'unknown_target.dart';
 class StorageTargetArgs {
   /// Properties when targetType is blobNfs.
   final pulumi.Input<BlobNfsTarget>? blobNfs;
+
   /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   final pulumi.Input<String> cacheName;
+
   /// Properties when targetType is clfs.
   final pulumi.Input<ClfsTarget>? clfs;
+
   /// List of cache namespace junctions to target for namespace associations.
   final pulumi.Input<List<NamespaceJunction>>? junctions;
+
   /// Properties when targetType is nfs3.
   final pulumi.Input<Nfs3Target>? nfs3;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Storage target operational state.
   final pulumi.Input<String>? state;
+
   /// Name of Storage Target.
   final pulumi.Input<String>? storageTargetName;
+
   /// Type of the Storage Target.
   final pulumi.Input<String> targetType;
+
   /// Properties when targetType is unknown.
   final pulumi.Input<UnknownTarget>? unknown;
 
@@ -59,32 +68,103 @@ class StorageTargetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blobNfs': ?pulumi.Input.mapOptionalInputValue<BlobNfsTarget, Map<String, dynamic>>(blobNfs, (value) => value.toMap()),
+      'blobNfs':
+          ?pulumi.Input.mapOptionalInputValue<
+            BlobNfsTarget,
+            Map<String, dynamic>
+          >(blobNfs, (value) => value.toMap()),
       'cacheName': cacheName,
-      'clfs': ?pulumi.Input.mapOptionalInputValue<ClfsTarget, Map<String, dynamic>>(clfs, (value) => value.toMap()),
-      'junctions': ?pulumi.Input.mapOptionalInputValue<List<NamespaceJunction>, List<Map<String, dynamic>>>(junctions, (value) => pulumi.Input.encodeList<NamespaceJunction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'nfs3': ?pulumi.Input.mapOptionalInputValue<Nfs3Target, Map<String, dynamic>>(nfs3, (value) => value.toMap()),
+      'clfs':
+          ?pulumi.Input.mapOptionalInputValue<ClfsTarget, Map<String, dynamic>>(
+            clfs,
+            (value) => value.toMap(),
+          ),
+      'junctions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamespaceJunction>,
+            List<Map<String, dynamic>>
+          >(
+            junctions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NamespaceJunction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'nfs3':
+          ?pulumi.Input.mapOptionalInputValue<Nfs3Target, Map<String, dynamic>>(
+            nfs3,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
       'state': ?state,
       'storageTargetName': ?storageTargetName,
       'targetType': targetType,
-      'unknown': ?pulumi.Input.mapOptionalInputValue<UnknownTarget, Map<String, dynamic>>(unknown, (value) => value.toMap()),
+      'unknown':
+          ?pulumi.Input.mapOptionalInputValue<
+            UnknownTarget,
+            Map<String, dynamic>
+          >(unknown, (value) => value.toMap()),
     };
   }
 
   factory StorageTargetArgs.fromMap(Map<String, dynamic> map) {
     return StorageTargetArgs(
-      blobNfs: map['blobNfs'] == null ? null : (BlobNfsTarget.fromMap((map['blobNfs']! as Map).cast<String, dynamic>())).input(),
-      cacheName: (map['cacheName'] as String).input(),
-      clfs: map['clfs'] == null ? null : (ClfsTarget.fromMap((map['clfs']! as Map).cast<String, dynamic>())).input(),
-      junctions: map['junctions'] == null ? null : (pulumi.Input.decodeList<NamespaceJunction>(map['junctions']!, (value) => NamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nfs3: map['nfs3'] == null ? null : (Nfs3Target.fromMap((map['nfs3']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      storageTargetName: map['storageTargetName'] == null ? null : (map['storageTargetName']! as String).input(),
-      targetType: (map['targetType'] as String).input(),
-      unknown: map['unknown'] == null ? null : (UnknownTarget.fromMap((map['unknown']! as Map).cast<String, dynamic>())).input(),
+      blobNfs: (() {
+        final guardedValue = map['blobNfs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BlobNfsTarget.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      cacheName: pulumi.Input.fromValue(map['cacheName'] as String),
+      clfs: (() {
+        final guardedValue = map['clfs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClfsTarget.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      junctions: (() {
+        final guardedValue = map['junctions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NamespaceJunction>(
+            guardedValue,
+            (value) => NamespaceJunction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nfs3: (() {
+        final guardedValue = map['nfs3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Nfs3Target.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageTargetName: (() {
+        final guardedValue = map['storageTargetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetType: pulumi.Input.fromValue(map['targetType'] as String),
+      unknown: (() {
+        final guardedValue = map['unknown'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UnknownTarget.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

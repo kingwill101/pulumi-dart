@@ -9,16 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedResourceArgs {
   /// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? permissionName;
+
   /// Associated resource ARN.
   ///
-  /// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+  /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
   final pulumi.Input<String>? resourceArn;
+
   /// The ID of the shared resource.
   final pulumi.Input<String>? resourceId;
+
   /// The ID of the resource share.
   final pulumi.Input<String> resourceShareId;
+
   /// The type of the shared resource.
   final pulumi.Input<String>? resourceType;
 
@@ -48,12 +52,27 @@ class SharedResourceArgs {
 
   factory SharedResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedResourceArgs(
-      permissionName: map['permissionName'] == null ? null : (map['permissionName']! as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceShareId: (map['resourceShareId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      permissionName: (() {
+        final guardedValue = map['permissionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceShareId: pulumi.Input.fromValue(map['resourceShareId'] as String),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

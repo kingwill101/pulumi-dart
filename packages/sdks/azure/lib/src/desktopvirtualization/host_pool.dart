@@ -239,7 +239,7 @@ import 'host_pool_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DesktopVirtualization` - 2024-04-03
@@ -254,41 +254,58 @@ import 'host_pool_state.dart';
 class HostPool extends pulumi.CustomResource {
   /// A valid custom RDP properties string for the Virtual Desktop Host Pool, available properties can be [found in this article](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files).
   late final pulumi.Output<String?> customRdpProperties;
+
   /// A description for the Virtual Desktop Host Pool.
   late final pulumi.Output<String?> description;
+
   /// A friendly name for the Virtual Desktop Host Pool.
   late final pulumi.Output<String?> friendlyName;
+
   /// `BreadthFirst` load balancing distributes new user sessions across all available session hosts in the host pool. Possible values are `BreadthFirst`, `DepthFirst` and `Persistent`.
   /// `DepthFirst` load balancing distributes new user sessions to an available session host with the highest number of connections but has not reached its maximum session limit threshold.
   /// `Persistent` should be used if the host pool type is `Personal`
   late final pulumi.Output<String> loadBalancerType;
+
   /// The location/region where the Virtual Desktop Host Pool is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A valid integer value from 0 to 999999 for the maximum number of users that have concurrent sessions on a session host.
   /// Should only be set if the `type` of your Virtual Desktop Host Pool is `Pooled`.
   late final pulumi.Output<int?> maximumSessionsAllowed;
+
   /// The name of the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// `Automatic` assignment – The service will select an available host and assign it to an user. Possible values are `Automatic` and `Direct`. `Direct` Assignment – Admin selects a specific host to assign to an user. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `personal_desktop_assignment_type` is required if the `type` of your Virtual Desktop Host Pool is `Personal`
+  /// &gt; **Note:** `personal_desktop_assignment_type` is required if the `type` of your Virtual Desktop Host Pool is `Personal`
   late final pulumi.Output<String?> personalDesktopAssignmentType;
+
   /// Option to specify the preferred Application Group type for the Virtual Desktop Host Pool. Valid options are `None`, `Desktop` or `RailApplications`. Default is `Desktop`.
   late final pulumi.Output<String?> preferredAppGroupType;
+
   /// Whether public network access is allowed for the Virtual Desktop Host Pool. Possible values are `Enabled`, `Disabled`, `EnabledForClientsOnly` and `EnabledForSessionHostsOnly`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The name of the resource group in which to create the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `scheduled_agent_updates` block as defined below. This enables control of when Agent Updates will be applied to Session Hosts.
-  late final pulumi.Output<HostPoolScheduledAgentUpdates?> scheduledAgentUpdates;
+  late final pulumi.Output<HostPoolScheduledAgentUpdates?>
+  scheduledAgentUpdates;
+
   /// Enables or disables the Start VM on Connection Feature. Defaults to `false`.
   late final pulumi.Output<bool?> startVmOnConnect;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the Virtual Desktop Host Pool. Valid options are `Personal` or `Pooled`. Changing the type forces a new resource to be created.
   late final pulumi.Output<String> type;
+
   /// Allows you to test service changes before they are deployed to production. Defaults to `false`.
   late final pulumi.Output<bool?> validateEnvironment;
+
   /// A VM template for session hosts configuration within hostpool. This is a JSON string.
   late final pulumi.Output<String?> vmTemplate;
 
@@ -301,28 +318,32 @@ class HostPool extends pulumi.CustomResource {
     HostPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/hostPool:HostPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customRdpProperties = registerOutput<String?>('customRdpProperties');
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.loadBalancerType = registerOutput<String>('loadBalancerType');
-    this.location = registerOutput<String>('location');
-    this.maximumSessionsAllowed = registerOutput<int?>('maximumSessionsAllowed');
+         'azure:desktopvirtualization/hostPool:HostPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customRdpProperties = registerOutput<String?>('customRdpProperties');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    loadBalancerType = registerOutput<String>('loadBalancerType');
+    location = registerOutput<String>('location');
+    maximumSessionsAllowed = registerOutput<int?>('maximumSessionsAllowed');
     this.name = registerOutput<String>('name');
-    this.personalDesktopAssignmentType = registerOutput<String?>('personalDesktopAssignmentType');
-    this.preferredAppGroupType = registerOutput<String?>('preferredAppGroupType');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>('scheduledAgentUpdates');
-    this.startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.validateEnvironment = registerOutput<bool?>('validateEnvironment');
-    this.vmTemplate = registerOutput<String?>('vmTemplate');
+    personalDesktopAssignmentType = registerOutput<String?>(
+      'personalDesktopAssignmentType',
+    );
+    preferredAppGroupType = registerOutput<String?>('preferredAppGroupType');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>(
+      'scheduledAgentUpdates',
+    );
+    startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    validateEnvironment = registerOutput<bool?>('validateEnvironment');
+    vmTemplate = registerOutput<String?>('vmTemplate');
   }
 
   /// Gets an existing [HostPool] resource's state with the given [name] and [id].
@@ -343,27 +364,31 @@ class HostPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/hostPool:HostPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customRdpProperties = registerOutput<String?>('customRdpProperties');
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.loadBalancerType = registerOutput<String>('loadBalancerType');
-    this.location = registerOutput<String>('location');
-    this.maximumSessionsAllowed = registerOutput<int?>('maximumSessionsAllowed');
+         'azure:desktopvirtualization/hostPool:HostPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customRdpProperties = registerOutput<String?>('customRdpProperties');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    loadBalancerType = registerOutput<String>('loadBalancerType');
+    location = registerOutput<String>('location');
+    maximumSessionsAllowed = registerOutput<int?>('maximumSessionsAllowed');
     this.name = registerOutput<String>('name');
-    this.personalDesktopAssignmentType = registerOutput<String?>('personalDesktopAssignmentType');
-    this.preferredAppGroupType = registerOutput<String?>('preferredAppGroupType');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>('scheduledAgentUpdates');
-    this.startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.validateEnvironment = registerOutput<bool?>('validateEnvironment');
-    this.vmTemplate = registerOutput<String?>('vmTemplate');
+    personalDesktopAssignmentType = registerOutput<String?>(
+      'personalDesktopAssignmentType',
+    );
+    preferredAppGroupType = registerOutput<String?>('preferredAppGroupType');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>(
+      'scheduledAgentUpdates',
+    );
+    startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    validateEnvironment = registerOutput<bool?>('validateEnvironment');
+    vmTemplate = registerOutput<String?>('vmTemplate');
   }
 }

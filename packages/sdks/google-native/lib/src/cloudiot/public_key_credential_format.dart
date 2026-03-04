@@ -6,16 +6,15 @@ enum PublicKeyCredentialFormat {
   es256Pem("ES256_PEM"),
   es256X509Pem("ES256_X509_PEM");
 
-  const PublicKeyCredentialFormat(this.value);
-  final String value;
+  const PublicKeyCredentialFormat(this.wireValue);
+  final String wireValue;
 
   static PublicKeyCredentialFormat fromValue(String value) {
     for (final item in PublicKeyCredentialFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicKeyCredentialFormat value: $value');
   }
 }
-

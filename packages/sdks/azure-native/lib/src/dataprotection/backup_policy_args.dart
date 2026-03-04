@@ -10,10 +10,13 @@ import 'backup_policy_dataprotection.dart';
 class BackupPolicyArgs {
   /// Name of the policy
   final pulumi.Input<String>? backupPolicyName;
+
   /// BaseBackupPolicyResource properties
   final pulumi.Input<BackupPolicyDataprotection>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the backup vault.
   final pulumi.Input<String> vaultName;
 
@@ -40,11 +43,22 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName']! as String).input(),
-      properties: map['properties'] == null ? null : (map['properties']! as BackupPolicyDataprotection).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      backupPolicyName: (() {
+        final guardedValue = map['backupPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          guardedValue as BackupPolicyDataprotection,
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

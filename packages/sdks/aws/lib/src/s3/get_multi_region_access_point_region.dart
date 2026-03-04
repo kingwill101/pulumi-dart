@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMultiRegionAccessPointRegion {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// The AWS account ID that owns the bucket.
   final pulumi.Input<String> bucketAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
 
@@ -30,10 +32,9 @@ class GetMultiRegionAccessPointRegion {
 
   factory GetMultiRegionAccessPointRegion.fromMap(Map<String, dynamic> map) {
     return GetMultiRegionAccessPointRegion(
-      bucket: (map['bucket'] as String).input(),
-      bucketAccountId: (map['bucketAccountId'] as String).input(),
-      region: (map['region'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      bucketAccountId: pulumi.Input.fromValue(map['bucketAccountId'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

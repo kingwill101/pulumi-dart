@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iam_audit_config_args.dart';
-import 'iam_audit_config_audit_log_config.dart';
 import 'iam_audit_config_state.dart';
 
 /// Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -11,16 +10,16 @@ import 'iam_audit_config_state.dart';
 /// * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 ///
 ///
-/// > **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+/// &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 /// IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
 ///
 /// ## gcp.folder.IAMPolicy
 ///
-/// !> **Be careful!** You can accidentally lock yourself out of your folder
+/// !&gt; **Be careful!** You can accidentally lock yourself out of your folder
 /// using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
 /// from anyone without permissions on its parent folder/organization. Proceed with caution.
 /// It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
@@ -1661,11 +1660,14 @@ import 'iam_audit_config_state.dart';
 /// ```
 class IamAuditConfig extends pulumi.CustomResource {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  late final pulumi.Output<List<IamAuditConfigAuditLogConfig>> auditLogConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> auditLogConfigs;
+
   /// (Computed) The etag of the folder's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   late final pulumi.Output<String> folder;
+
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   late final pulumi.Output<String> service;
 
@@ -1678,15 +1680,17 @@ class IamAuditConfig extends pulumi.CustomResource {
     IamAuditConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:folder/iamAuditConfig:IamAuditConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditLogConfigs = registerOutput<List<IamAuditConfigAuditLogConfig>>('auditLogConfigs');
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.service = registerOutput<String>('service');
+         'gcp:folder/iamAuditConfig:IamAuditConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'auditLogConfigs',
+    );
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    service = registerOutput<String>('service');
   }
 
   /// Gets an existing [IamAuditConfig] resource's state with the given [name] and [id].
@@ -1707,14 +1711,16 @@ class IamAuditConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:folder/iamAuditConfig:IamAuditConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditLogConfigs = registerOutput<List<IamAuditConfigAuditLogConfig>>('auditLogConfigs');
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.service = registerOutput<String>('service');
+         'gcp:folder/iamAuditConfig:IamAuditConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'auditLogConfigs',
+    );
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    service = registerOutput<String>('service');
   }
 }

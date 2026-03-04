@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAlarmConfigContactConfig {
   /// The email address of the contact.
   final pulumi.Input<String>? email;
+
   /// The mobile phone number of the contact.
   final pulumi.Input<String>? mobilePhone;
+
   /// The name of the contact.
   final pulumi.Input<String>? name;
+
   /// The status of the contact configuration. Possible values are: `0` disable, `1` enable.
   final pulumi.Input<String>? status;
 
@@ -35,11 +38,26 @@ class UserAlarmConfigContactConfig {
 
   factory UserAlarmConfigContactConfig.fromMap(Map<String, dynamic> map) {
     return UserAlarmConfigContactConfig(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      mobilePhone: map['mobilePhone'] == null ? null : (map['mobilePhone']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mobilePhone: (() {
+        final guardedValue = map['mobilePhone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

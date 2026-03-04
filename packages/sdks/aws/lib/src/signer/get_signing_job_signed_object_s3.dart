@@ -9,23 +9,16 @@ class GetSigningJobSignedObjectS3 {
   /// Creates a new [GetSigningJobSignedObjectS3].
   /// [bucket] Required.
   /// [key] Required.
-  GetSigningJobSignedObjectS3({
-    required this.bucket,
-    required this.key,
-  });
+  GetSigningJobSignedObjectS3({required this.bucket, required this.key});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'key': key,
-    };
+    return <String, dynamic>{'bucket': bucket, 'key': key};
   }
 
   factory GetSigningJobSignedObjectS3.fromMap(Map<String, dynamic> map) {
     return GetSigningJobSignedObjectS3(
-      bucket: (map['bucket'] as String).input(),
-      key: (map['key'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

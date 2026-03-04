@@ -1,5 +1,3 @@
-library module_eipanycast;
-
 export 'eipanycast/anycast_eip_address.dart';
 export 'eipanycast/anycast_eip_address_args.dart';
 export 'eipanycast/anycast_eip_address_attachment.dart';

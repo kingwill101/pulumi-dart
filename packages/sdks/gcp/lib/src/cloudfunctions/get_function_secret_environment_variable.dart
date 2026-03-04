@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionSecretEnvironmentVariable {
   /// Name of the environment variable.
   final pulumi.Input<String> key;
+
   /// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
   final pulumi.Input<String> projectId;
+
   /// ID of the secret in secret manager (not the full resource name).
   final pulumi.Input<String> secret;
+
   /// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
   final pulumi.Input<String> version;
 
@@ -33,13 +36,14 @@ class GetFunctionSecretEnvironmentVariable {
     };
   }
 
-  factory GetFunctionSecretEnvironmentVariable.fromMap(Map<String, dynamic> map) {
+  factory GetFunctionSecretEnvironmentVariable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFunctionSecretEnvironmentVariable(
-      key: (map['key'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
-      secret: (map['secret'] as String).input(),
-      version: (map['version'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      secret: pulumi.Input.fromValue(map['secret'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

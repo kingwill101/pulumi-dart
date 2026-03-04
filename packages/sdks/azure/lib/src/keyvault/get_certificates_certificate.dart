@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificatesCertificate {
   /// Whether this certificate is enabled.
   final pulumi.Input<bool> enabled;
+
   /// The ID of this certificate.
   final pulumi.Input<String> id;
+
   /// The name of certificate.
   final pulumi.Input<String> name;
+
   /// The tags of this certificate.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -35,11 +38,10 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
-      enabled: (map['enabled'] as bool).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
-

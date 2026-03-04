@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageDataDisk {
   /// the URI in Azure storage of the blob used to create the image.
   final pulumi.Input<String> blobUri;
+
   /// the caching mode for the Data Disk, such as `ReadWrite`, `ReadOnly`, or `None`.
   final pulumi.Input<String> caching;
+
   /// the logical unit number of the data disk.
   final pulumi.Input<int> lun;
+
   /// the ID of the Managed Disk used as the Data Disk Image.
   final pulumi.Input<String> managedDiskId;
+
   /// the size of this Data Disk in GB.
   final pulumi.Input<int> sizeGb;
 
@@ -40,12 +44,11 @@ class GetImageDataDisk {
 
   factory GetImageDataDisk.fromMap(Map<String, dynamic> map) {
     return GetImageDataDisk(
-      blobUri: (map['blobUri'] as String).input(),
-      caching: (map['caching'] as String).input(),
-      lun: (map['lun'] as int).input(),
-      managedDiskId: (map['managedDiskId'] as String).input(),
-      sizeGb: (map['sizeGb'] as int).input(),
+      blobUri: pulumi.Input.fromValue(map['blobUri'] as String),
+      caching: pulumi.Input.fromValue(map['caching'] as String),
+      lun: pulumi.Input.fromValue(map['lun'] as int),
+      managedDiskId: pulumi.Input.fromValue(map['managedDiskId'] as String),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
     );
   }
 }
-

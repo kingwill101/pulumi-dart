@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMongoDatabaseArgs {
   /// The name of the Cosmos DB Account where the Mongo Database exists.
   final pulumi.Input<String> accountName;
+
   /// The name of this Cosmos DB Mongo Database.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Cosmos DB Mongo Database exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetMongoDatabaseArgs {
 
   factory GetMongoDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetMongoDatabaseArgs(
-      accountName: (map['accountName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

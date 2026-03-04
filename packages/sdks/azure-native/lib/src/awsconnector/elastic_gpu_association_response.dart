@@ -4,20 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ElasticGpuAssociation
 class ElasticGpuAssociationResponse {
-  /// <p>The ID of the association.</p>
+  /// &lt;p&gt;The ID of the association.&lt;/p&gt;
   final pulumi.Input<String>? elasticGpuAssociationId;
-  /// <p>The state of the association between the instance and the Elastic Graphics accelerator.</p>
+
+  /// &lt;p&gt;The state of the association between the instance and the Elastic Graphics accelerator.&lt;/p&gt;
   final pulumi.Input<String>? elasticGpuAssociationState;
-  /// <p>The time the Elastic Graphics accelerator was associated with the instance.</p>
+
+  /// &lt;p&gt;The time the Elastic Graphics accelerator was associated with the instance.&lt;/p&gt;
   final pulumi.Input<String>? elasticGpuAssociationTime;
-  /// <p>The ID of the Elastic Graphics accelerator.</p>
+
+  /// &lt;p&gt;The ID of the Elastic Graphics accelerator.&lt;/p&gt;
   final pulumi.Input<String>? elasticGpuId;
 
   /// Creates a new [ElasticGpuAssociationResponse].
-  /// [elasticGpuAssociationId] <p>The ID of the association.</p>
-  /// [elasticGpuAssociationState] <p>The state of the association between the instance and the Elastic Graphics accelerator.</p>
-  /// [elasticGpuAssociationTime] <p>The time the Elastic Graphics accelerator was associated with the instance.</p>
-  /// [elasticGpuId] <p>The ID of the Elastic Graphics accelerator.</p>
+  /// [elasticGpuAssociationId] &lt;p&gt;The ID of the association.&lt;/p&gt;
+  /// [elasticGpuAssociationState] &lt;p&gt;The state of the association between the instance and the Elastic Graphics accelerator.&lt;/p&gt;
+  /// [elasticGpuAssociationTime] &lt;p&gt;The time the Elastic Graphics accelerator was associated with the instance.&lt;/p&gt;
+  /// [elasticGpuId] &lt;p&gt;The ID of the Elastic Graphics accelerator.&lt;/p&gt;
   ElasticGpuAssociationResponse({
     this.elasticGpuAssociationId,
     this.elasticGpuAssociationState,
@@ -36,11 +39,26 @@ class ElasticGpuAssociationResponse {
 
   factory ElasticGpuAssociationResponse.fromMap(Map<String, dynamic> map) {
     return ElasticGpuAssociationResponse(
-      elasticGpuAssociationId: map['elasticGpuAssociationId'] == null ? null : (map['elasticGpuAssociationId']! as String).input(),
-      elasticGpuAssociationState: map['elasticGpuAssociationState'] == null ? null : (map['elasticGpuAssociationState']! as String).input(),
-      elasticGpuAssociationTime: map['elasticGpuAssociationTime'] == null ? null : (map['elasticGpuAssociationTime']! as String).input(),
-      elasticGpuId: map['elasticGpuId'] == null ? null : (map['elasticGpuId']! as String).input(),
+      elasticGpuAssociationId: (() {
+        final guardedValue = map['elasticGpuAssociationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticGpuAssociationState: (() {
+        final guardedValue = map['elasticGpuAssociationState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticGpuAssociationTime: (() {
+        final guardedValue = map['elasticGpuAssociationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticGpuId: (() {
+        final guardedValue = map['elasticGpuId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

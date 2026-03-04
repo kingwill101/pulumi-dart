@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LayerResponseContaineranalysisV1alpha1 {
   /// The recovered arguments to the Dockerfile directive.
   final pulumi.Input<String> arguments;
+
   /// The recovered Dockerfile directive used to construct this layer.
   final pulumi.Input<String> directive;
 
@@ -18,17 +19,15 @@ class LayerResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arguments': arguments,
-      'directive': directive,
-    };
+    return <String, dynamic>{'arguments': arguments, 'directive': directive};
   }
 
-  factory LayerResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory LayerResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LayerResponseContaineranalysisV1alpha1(
-      arguments: (map['arguments'] as String).input(),
-      directive: (map['directive'] as String).input(),
+      arguments: pulumi.Input.fromValue(map['arguments'] as String),
+      directive: pulumi.Input.fromValue(map['directive'] as String),
     );
   }
 }
-

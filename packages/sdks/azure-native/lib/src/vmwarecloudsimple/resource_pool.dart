@@ -9,20 +9,13 @@ class ResourcePool {
 
   /// Creates a new [ResourcePool].
   /// [id] resource pool id (privateCloudId:vsphereId)
-  ResourcePool({
-    required this.id,
-  });
+  ResourcePool({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory ResourcePool.fromMap(Map<String, dynamic> map) {
-    return ResourcePool(
-      id: (map['id'] as String).input(),
-    );
+    return ResourcePool(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

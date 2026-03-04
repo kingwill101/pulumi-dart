@@ -5,16 +5,15 @@ enum AccessTier {
   valuePremium("Premium"),
   valueCold("Cold");
 
-  const AccessTier(this.value);
-  final String value;
+  const AccessTier(this.wireValue);
+  final String wireValue;
 
   static AccessTier fromValue(String value) {
     for (final item in AccessTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessTier value: $value');
   }
 }
-

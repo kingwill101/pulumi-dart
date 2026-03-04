@@ -1,5 +1,3 @@
-library module_openenergyplatform;
-
 export 'openenergyplatform/data_partition_names.dart';
 export 'openenergyplatform/data_partition_names_response.dart';
 export 'openenergyplatform/data_partition_properties_response.dart';

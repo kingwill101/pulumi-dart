@@ -39,7 +39,11 @@ class GetChartNamespacesResult {
       'instanceId': instanceId,
       'nameRegex': ?nameRegex,
       'names': names,
-      'namespaces': pulumi.Input.encodeList<GetChartNamespacesNamespace, Map<String, dynamic>>(namespaces, (value) => value.toMap()),
+      'namespaces':
+          pulumi.Input.encodeList<
+            GetChartNamespacesNamespace,
+            Map<String, dynamic>
+          >(namespaces, (value) => value.toMap()),
       'outputFile': ?outputFile,
     };
   }
@@ -49,11 +53,23 @@ class GetChartNamespacesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      namespaces: pulumi.Input.decodeList<GetChartNamespacesNamespace>(map['namespaces'], (value) => GetChartNamespacesNamespace.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      namespaces: pulumi.Input.decodeList<GetChartNamespacesNamespace>(
+        map['namespaces']!,
+        (value) => GetChartNamespacesNamespace.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

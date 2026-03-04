@@ -3,16 +3,15 @@ enum BooleanEnumProperty {
   valueTrue("True"),
   valueFalse("False");
 
-  const BooleanEnumProperty(this.value);
-  final String value;
+  const BooleanEnumProperty(this.wireValue);
+  final String wireValue;
 
   static BooleanEnumProperty fromValue(String value) {
     for (final item in BooleanEnumProperty.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BooleanEnumProperty value: $value');
   }
 }
-

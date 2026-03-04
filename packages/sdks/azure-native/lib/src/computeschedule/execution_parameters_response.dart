@@ -7,29 +7,42 @@ import 'retry_policy_response.dart';
 class ExecutionParametersResponse {
   /// Details that could optimize the user's request
   final pulumi.Input<String>? optimizationPreference;
+
   /// Retry policy the user can pass
   final pulumi.Input<RetryPolicyResponse>? retryPolicy;
 
   /// Creates a new [ExecutionParametersResponse].
   /// [optimizationPreference] Details that could optimize the user's request
   /// [retryPolicy] Retry policy the user can pass
-  ExecutionParametersResponse({
-    this.optimizationPreference,
-    this.retryPolicy,
-  });
+  ExecutionParametersResponse({this.optimizationPreference, this.retryPolicy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'optimizationPreference': ?optimizationPreference,
-      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<RetryPolicyResponse, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'retryPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetryPolicyResponse,
+            Map<String, dynamic>
+          >(retryPolicy, (value) => value.toMap()),
     };
   }
 
   factory ExecutionParametersResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionParametersResponse(
-      optimizationPreference: map['optimizationPreference'] == null ? null : (map['optimizationPreference']! as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicyResponse.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      optimizationPreference: (() {
+        final guardedValue = map['optimizationPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retryPolicy: (() {
+        final guardedValue = map['retryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetryPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

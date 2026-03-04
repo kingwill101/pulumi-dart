@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkConfig {
   /// Management CIDR used by VMware management appliances.
   final pulumi.Input<String> managementCidr;
+
   /// Optional. The relative resource name of the VMware Engine network attached to the private cloud. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
   final pulumi.Input<String>? vmwareEngineNetwork;
 
   /// Creates a new [NetworkConfig].
   /// [managementCidr] Management CIDR used by VMware management appliances.
   /// [vmwareEngineNetwork] Optional. The relative resource name of the VMware Engine network attached to the private cloud. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
-  NetworkConfig({
-    required this.managementCidr,
-    this.vmwareEngineNetwork,
-  });
+  NetworkConfig({required this.managementCidr, this.vmwareEngineNetwork});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class NetworkConfig {
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      managementCidr: (map['managementCidr'] as String).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
+      managementCidr: pulumi.Input.fromValue(map['managementCidr'] as String),
+      vmwareEngineNetwork: (() {
+        final guardedValue = map['vmwareEngineNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

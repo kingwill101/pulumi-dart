@@ -8,7 +8,7 @@ import 'get_versions_result.dart';
 
 /// This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.191.0+.
+/// &gt; **NOTE:** Available in v1.191.0+.
 ///
 /// ## Example Usage
 ///
@@ -187,7 +187,7 @@ Future<GetExtensionProvidersResult> getExtensionProviders(
 
 /// This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.138.0.
+/// &gt; **NOTE:** Available since v1.138.0.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicemesh_get_service_meshes_get_service_meshes_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetServiceMeshesResult> getServiceMeshes(
@@ -205,7 +205,7 @@ Future<GetServiceMeshesResult> getServiceMeshes(
 
 /// This data source provides ASM available versions in the specified region.
 ///
-/// > **NOTE:** Available in v1.161.0+.
+/// &gt; **NOTE:** Available in v1.161.0+.
 ///
 /// ## Example Usage
 ///

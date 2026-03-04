@@ -23,12 +23,12 @@ class AccountAlias extends pulumi.CustomResource {
     AccountAliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/accountAlias:AccountAlias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountAlias = registerOutput<String>('accountAlias');
+         'alicloud:ram/accountAlias:AccountAlias',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountAlias = registerOutput<String>('accountAlias');
   }
 
   /// Gets an existing [AccountAlias] resource's state with the given [name] and [id].
@@ -49,11 +49,11 @@ class AccountAlias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/accountAlias:AccountAlias',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountAlias = registerOutput<String>('accountAlias');
+         'alicloud:ram/accountAlias:AccountAlias',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountAlias = registerOutput<String>('accountAlias');
   }
 }

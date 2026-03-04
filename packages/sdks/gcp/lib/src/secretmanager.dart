@@ -1,5 +1,3 @@
-library module_secretmanager;
-
 export 'secretmanager/functions.dart';
 export 'secretmanager/get_regional_secret_args.dart';
 export 'secretmanager/get_regional_secret_customer_managed_encryption.dart';

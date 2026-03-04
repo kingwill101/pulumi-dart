@@ -3,16 +3,17 @@ enum VirtualMachineSchedulingExecution {
   valueHard("Hard"),
   valueSoft("Soft");
 
-  const VirtualMachineSchedulingExecution(this.value);
-  final String value;
+  const VirtualMachineSchedulingExecution(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineSchedulingExecution fromValue(String value) {
     for (final item in VirtualMachineSchedulingExecution.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachineSchedulingExecution value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachineSchedulingExecution value: $value',
+    );
   }
 }
-

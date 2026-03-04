@@ -6,7 +6,11 @@ import 'stream_backfill_all_oracle_excluded_objects_oracle_schema_oracle_table.d
 class StreamBackfillAllOracleExcludedObjectsOracleSchema {
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>>? oracleTables;
+  final pulumi.Input<
+    List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>
+  >?
+  oracleTables;
+
   /// Schema name.
   final pulumi.Input<String> schema;
 
@@ -20,16 +24,42 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleTables': ?pulumi.Input.mapOptionalInputValue<List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>, List<Map<String, dynamic>>>(oracleTables, (value) => pulumi.Input.encodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'oracleTables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>,
+            List<Map<String, dynamic>>
+          >(
+            oracleTables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'schema': schema,
     };
   }
 
-  factory StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllOracleExcludedObjectsOracleSchema(
-      oracleTables: map['oracleTables'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>(map['oracleTables']!, (value) => StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schema: (map['schema'] as String).input(),
+      oracleTables: (() {
+        final guardedValue = map['oracleTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
+          >(
+            guardedValue,
+            (value) =>
+                StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
     );
   }
 }
-

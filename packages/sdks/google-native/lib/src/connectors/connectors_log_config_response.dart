@@ -9,20 +9,15 @@ class ConnectorsLogConfigResponse {
 
   /// Creates a new [ConnectorsLogConfigResponse].
   /// [enabled] Enabled represents whether logging is enabled or not for a connection.
-  ConnectorsLogConfigResponse({
-    required this.enabled,
-  });
+  ConnectorsLogConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory ConnectorsLogConfigResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorsLogConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

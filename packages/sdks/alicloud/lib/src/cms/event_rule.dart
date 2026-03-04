@@ -1,19 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_rule_args.dart';
-import 'event_rule_contact_parameter.dart';
 import 'event_rule_event_pattern.dart';
-import 'event_rule_fc_parameter.dart';
-import 'event_rule_mns_parameter.dart';
-import 'event_rule_open_api_parameter.dart';
-import 'event_rule_sls_parameter.dart';
 import 'event_rule_state.dart';
-import 'event_rule_webhook_parameter.dart';
 
 /// Provides a Cloud Monitor Service Event Rule resource.
 ///
 /// For information about Cloud Monitor Service Event Rule and how to use it, see [What is Event Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/puteventrule).
 ///
-/// > **NOTE:** Available since v1.182.0.
+/// &gt; **NOTE:** Available since v1.182.0.
 ///
 /// ## Example Usage
 ///
@@ -247,29 +241,40 @@ import 'event_rule_webhook_parameter.dart';
 /// ```
 class EventRule extends pulumi.CustomResource {
   /// The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
-  late final pulumi.Output<List<EventRuleContactParameter>?> contactParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> contactParameters;
+
   /// The description of the event-triggered alert rule.
   late final pulumi.Output<String?> description;
+
   /// Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
   late final pulumi.Output<EventRuleEventPattern> eventPattern;
+
   /// The information about the recipients in Function Compute. See `fc_parameters` below.
-  late final pulumi.Output<List<EventRuleFcParameter>?> fcParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> fcParameters;
+
   /// The ID of the application group to which the event-triggered alert rule belongs.
   late final pulumi.Output<String?> groupId;
+
   /// The information about the recipients in Message Service (MNS). See `mns_parameters` below.
-  late final pulumi.Output<List<EventRuleMnsParameter>?> mnsParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> mnsParameters;
+
   /// The parameters of API callback notification. See `open_api_parameters` below.
-  late final pulumi.Output<List<EventRuleOpenApiParameter>?> openApiParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> openApiParameters;
+
   /// The name of the event-triggered alert rule.
   late final pulumi.Output<String> ruleName;
+
   /// The silence time.
   late final pulumi.Output<int?> silenceTime;
+
   /// The information about the recipients in Simple Log Service. See `sls_parameters` below.
-  late final pulumi.Output<List<EventRuleSlsParameter>?> slsParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> slsParameters;
+
   /// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> status;
+
   /// The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
-  late final pulumi.Output<List<EventRuleWebhookParameter>?> webhookParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> webhookParameters;
 
   /// Creates a new [EventRule].
   /// [name] The Pulumi resource name.
@@ -280,23 +285,33 @@ class EventRule extends pulumi.CustomResource {
     EventRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/eventRule:EventRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactParameters = registerOutput<List<EventRuleContactParameter>?>('contactParameters');
-    this.description = registerOutput<String?>('description');
-    this.eventPattern = registerOutput<EventRuleEventPattern>('eventPattern');
-    this.fcParameters = registerOutput<List<EventRuleFcParameter>?>('fcParameters');
-    this.groupId = registerOutput<String?>('groupId');
-    this.mnsParameters = registerOutput<List<EventRuleMnsParameter>?>('mnsParameters');
-    this.openApiParameters = registerOutput<List<EventRuleOpenApiParameter>?>('openApiParameters');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.silenceTime = registerOutput<int?>('silenceTime');
-    this.slsParameters = registerOutput<List<EventRuleSlsParameter>?>('slsParameters');
-    this.status = registerOutput<String>('status');
-    this.webhookParameters = registerOutput<List<EventRuleWebhookParameter>?>('webhookParameters');
+         'alicloud:cms/eventRule:EventRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'contactParameters',
+    );
+    description = registerOutput<String?>('description');
+    eventPattern = registerOutput<EventRuleEventPattern>('eventPattern');
+    fcParameters = registerOutput<List<Map<String, dynamic>>?>('fcParameters');
+    groupId = registerOutput<String?>('groupId');
+    mnsParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'mnsParameters',
+    );
+    openApiParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'openApiParameters',
+    );
+    ruleName = registerOutput<String>('ruleName');
+    silenceTime = registerOutput<int?>('silenceTime');
+    slsParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'slsParameters',
+    );
+    status = registerOutput<String>('status');
+    webhookParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'webhookParameters',
+    );
   }
 
   /// Gets an existing [EventRule] resource's state with the given [name] and [id].
@@ -317,22 +332,32 @@ class EventRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/eventRule:EventRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contactParameters = registerOutput<List<EventRuleContactParameter>?>('contactParameters');
-    this.description = registerOutput<String?>('description');
-    this.eventPattern = registerOutput<EventRuleEventPattern>('eventPattern');
-    this.fcParameters = registerOutput<List<EventRuleFcParameter>?>('fcParameters');
-    this.groupId = registerOutput<String?>('groupId');
-    this.mnsParameters = registerOutput<List<EventRuleMnsParameter>?>('mnsParameters');
-    this.openApiParameters = registerOutput<List<EventRuleOpenApiParameter>?>('openApiParameters');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.silenceTime = registerOutput<int?>('silenceTime');
-    this.slsParameters = registerOutput<List<EventRuleSlsParameter>?>('slsParameters');
-    this.status = registerOutput<String>('status');
-    this.webhookParameters = registerOutput<List<EventRuleWebhookParameter>?>('webhookParameters');
+         'alicloud:cms/eventRule:EventRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contactParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'contactParameters',
+    );
+    description = registerOutput<String?>('description');
+    eventPattern = registerOutput<EventRuleEventPattern>('eventPattern');
+    fcParameters = registerOutput<List<Map<String, dynamic>>?>('fcParameters');
+    groupId = registerOutput<String?>('groupId');
+    mnsParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'mnsParameters',
+    );
+    openApiParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'openApiParameters',
+    );
+    ruleName = registerOutput<String>('ruleName');
+    silenceTime = registerOutput<int?>('silenceTime');
+    slsParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'slsParameters',
+    );
+    status = registerOutput<String>('status');
+    webhookParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'webhookParameters',
+    );
   }
 }

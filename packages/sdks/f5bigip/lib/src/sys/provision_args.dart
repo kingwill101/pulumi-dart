@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionArgs {
   /// Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   final pulumi.Input<int>? cpuRatio;
+
   /// Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   final pulumi.Input<int>? diskRatio;
   final pulumi.Input<String>? fullPath;
+
   /// Sets the provisioning level for the requested modules. Changing the level for one module may require modifying the level of another module. For example, changing one module to `dedicated` requires setting all others to `none`. Setting the level of a module to `none` means the module is not activated.
   /// default is `nominal`
   /// possible options:
@@ -20,8 +22,10 @@ class ProvisionArgs {
   /// * none
   /// * dedicated
   final pulumi.Input<String>? level;
+
   /// Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   final pulumi.Input<int>? memoryRatio;
+
   /// Name of module to provision in BIG-IP.
   /// possible options:
   /// * afm
@@ -71,13 +75,32 @@ class ProvisionArgs {
 
   factory ProvisionArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionArgs(
-      cpuRatio: map['cpuRatio'] == null ? null : (map['cpuRatio']! as int).input(),
-      diskRatio: map['diskRatio'] == null ? null : (map['diskRatio']! as int).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
-      level: map['level'] == null ? null : (map['level']! as String).input(),
-      memoryRatio: map['memoryRatio'] == null ? null : (map['memoryRatio']! as int).input(),
-      name: (map['name'] as String).input(),
+      cpuRatio: (() {
+        final guardedValue = map['cpuRatio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diskRatio: (() {
+        final guardedValue = map['diskRatio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fullPath: (() {
+        final guardedValue = map['fullPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryRatio: (() {
+        final guardedValue = map['memoryRatio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

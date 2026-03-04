@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'oss_export_args.dart';
-import 'oss_export_config_column.dart';
 import 'oss_export_state.dart';
 
 /// Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage. [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
 ///
-/// > **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_oss_export_sink.
+/// &gt; **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_oss_export_sink.
 /// Refer to details.
 ///
-/// > **NOTE:** Available since v1.187.0.
+/// &gt; **NOTE:** Available since v1.187.0.
 ///
 /// ## Example Usage
 ///
@@ -363,53 +362,77 @@ import 'oss_export_state.dart';
 class OssExport extends pulumi.CustomResource {
   /// The name of the oss bucket.
   late final pulumi.Output<String> bucket;
+
   /// How often is it delivered every interval.
   late final pulumi.Output<int> bufferInterval;
+
   /// Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
   late final pulumi.Output<int> bufferSize;
+
   /// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
   late final pulumi.Output<String> compressType;
+
   /// Configure columns when `content_type` is `parquet` or `orc`.
-  late final pulumi.Output<List<OssExportConfigColumn>?> configColumns;
+  late final pulumi.Output<List<Map<String, dynamic>>?> configColumns;
+
   /// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
   /// **According to the different format, please select the following parameters**
   late final pulumi.Output<String> contentType;
+
   /// Field configuration in csv content_type.
   late final pulumi.Output<List<String>?> csvConfigColumns;
+
   /// Separator configuration in csv content_type.
   late final pulumi.Output<String?> csvConfigDelimiter;
+
   /// escape in csv content_type.
   late final pulumi.Output<String?> csvConfigEscape;
+
   /// Indicates whether to write the field name to the CSV file, the default value is `false`.
   late final pulumi.Output<bool?> csvConfigHeader;
+
   /// lineFeed in csv content_type.
   late final pulumi.Output<String?> csvConfigLinefeed;
+
   /// Invalid field content in csv content_type.
   late final pulumi.Output<String?> csvConfigNull;
+
   /// Escape character in csv content_type.
   late final pulumi.Output<String?> csvConfigQuote;
+
   /// The display name for oss export.
   late final pulumi.Output<String?> displayName;
+
   /// Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
   late final pulumi.Output<String> exportName;
+
   /// The log from when to export to oss.
   late final pulumi.Output<int?> fromTime;
+
   /// Whether to deliver the label when `content_type` = `json`.
   late final pulumi.Output<bool?> jsonEnableTag;
+
   /// Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
   late final pulumi.Output<String?> logReadRoleArn;
+
   /// The name of the log logstore.
   late final pulumi.Output<String> logstoreName;
+
   /// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
   late final pulumi.Output<String> pathFormat;
+
   /// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
   late final pulumi.Output<String?> prefix;
+
   /// The name of the log project. It is the only in one Alicloud account.
   late final pulumi.Output<String> projectName;
+
   /// Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
   late final pulumi.Output<String?> roleArn;
+
   /// The suffix for the objects in which the shipped data is stored.
   late final pulumi.Output<String?> suffix;
+
   /// This time zone that is used to format the time, `+0800` e.g.
   late final pulumi.Output<String> timeZone;
 
@@ -422,36 +445,38 @@ class OssExport extends pulumi.CustomResource {
     OssExportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/ossExport:OssExport',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.bufferInterval = registerOutput<int>('bufferInterval');
-    this.bufferSize = registerOutput<int>('bufferSize');
-    this.compressType = registerOutput<String>('compressType');
-    this.configColumns = registerOutput<List<OssExportConfigColumn>?>('configColumns');
-    this.contentType = registerOutput<String>('contentType');
-    this.csvConfigColumns = registerOutput<List<String>?>('csvConfigColumns');
-    this.csvConfigDelimiter = registerOutput<String?>('csvConfigDelimiter');
-    this.csvConfigEscape = registerOutput<String?>('csvConfigEscape');
-    this.csvConfigHeader = registerOutput<bool?>('csvConfigHeader');
-    this.csvConfigLinefeed = registerOutput<String?>('csvConfigLinefeed');
-    this.csvConfigNull = registerOutput<String?>('csvConfigNull');
-    this.csvConfigQuote = registerOutput<String?>('csvConfigQuote');
-    this.displayName = registerOutput<String?>('displayName');
-    this.exportName = registerOutput<String>('exportName');
-    this.fromTime = registerOutput<int?>('fromTime');
-    this.jsonEnableTag = registerOutput<bool?>('jsonEnableTag');
-    this.logReadRoleArn = registerOutput<String?>('logReadRoleArn');
-    this.logstoreName = registerOutput<String>('logstoreName');
-    this.pathFormat = registerOutput<String>('pathFormat');
-    this.prefix = registerOutput<String?>('prefix');
-    this.projectName = registerOutput<String>('projectName');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.suffix = registerOutput<String?>('suffix');
-    this.timeZone = registerOutput<String>('timeZone');
+         'alicloud:log/ossExport:OssExport',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    bufferInterval = registerOutput<int>('bufferInterval');
+    bufferSize = registerOutput<int>('bufferSize');
+    compressType = registerOutput<String>('compressType');
+    configColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'configColumns',
+    );
+    contentType = registerOutput<String>('contentType');
+    csvConfigColumns = registerOutput<List<String>?>('csvConfigColumns');
+    csvConfigDelimiter = registerOutput<String?>('csvConfigDelimiter');
+    csvConfigEscape = registerOutput<String?>('csvConfigEscape');
+    csvConfigHeader = registerOutput<bool?>('csvConfigHeader');
+    csvConfigLinefeed = registerOutput<String?>('csvConfigLinefeed');
+    csvConfigNull = registerOutput<String?>('csvConfigNull');
+    csvConfigQuote = registerOutput<String?>('csvConfigQuote');
+    displayName = registerOutput<String?>('displayName');
+    exportName = registerOutput<String>('exportName');
+    fromTime = registerOutput<int?>('fromTime');
+    jsonEnableTag = registerOutput<bool?>('jsonEnableTag');
+    logReadRoleArn = registerOutput<String?>('logReadRoleArn');
+    logstoreName = registerOutput<String>('logstoreName');
+    pathFormat = registerOutput<String>('pathFormat');
+    prefix = registerOutput<String?>('prefix');
+    projectName = registerOutput<String>('projectName');
+    roleArn = registerOutput<String?>('roleArn');
+    suffix = registerOutput<String?>('suffix');
+    timeZone = registerOutput<String>('timeZone');
   }
 
   /// Gets an existing [OssExport] resource's state with the given [name] and [id].
@@ -472,35 +497,37 @@ class OssExport extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/ossExport:OssExport',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.bufferInterval = registerOutput<int>('bufferInterval');
-    this.bufferSize = registerOutput<int>('bufferSize');
-    this.compressType = registerOutput<String>('compressType');
-    this.configColumns = registerOutput<List<OssExportConfigColumn>?>('configColumns');
-    this.contentType = registerOutput<String>('contentType');
-    this.csvConfigColumns = registerOutput<List<String>?>('csvConfigColumns');
-    this.csvConfigDelimiter = registerOutput<String?>('csvConfigDelimiter');
-    this.csvConfigEscape = registerOutput<String?>('csvConfigEscape');
-    this.csvConfigHeader = registerOutput<bool?>('csvConfigHeader');
-    this.csvConfigLinefeed = registerOutput<String?>('csvConfigLinefeed');
-    this.csvConfigNull = registerOutput<String?>('csvConfigNull');
-    this.csvConfigQuote = registerOutput<String?>('csvConfigQuote');
-    this.displayName = registerOutput<String?>('displayName');
-    this.exportName = registerOutput<String>('exportName');
-    this.fromTime = registerOutput<int?>('fromTime');
-    this.jsonEnableTag = registerOutput<bool?>('jsonEnableTag');
-    this.logReadRoleArn = registerOutput<String?>('logReadRoleArn');
-    this.logstoreName = registerOutput<String>('logstoreName');
-    this.pathFormat = registerOutput<String>('pathFormat');
-    this.prefix = registerOutput<String?>('prefix');
-    this.projectName = registerOutput<String>('projectName');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.suffix = registerOutput<String?>('suffix');
-    this.timeZone = registerOutput<String>('timeZone');
+         'alicloud:log/ossExport:OssExport',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    bufferInterval = registerOutput<int>('bufferInterval');
+    bufferSize = registerOutput<int>('bufferSize');
+    compressType = registerOutput<String>('compressType');
+    configColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'configColumns',
+    );
+    contentType = registerOutput<String>('contentType');
+    csvConfigColumns = registerOutput<List<String>?>('csvConfigColumns');
+    csvConfigDelimiter = registerOutput<String?>('csvConfigDelimiter');
+    csvConfigEscape = registerOutput<String?>('csvConfigEscape');
+    csvConfigHeader = registerOutput<bool?>('csvConfigHeader');
+    csvConfigLinefeed = registerOutput<String?>('csvConfigLinefeed');
+    csvConfigNull = registerOutput<String?>('csvConfigNull');
+    csvConfigQuote = registerOutput<String?>('csvConfigQuote');
+    displayName = registerOutput<String?>('displayName');
+    exportName = registerOutput<String>('exportName');
+    fromTime = registerOutput<int?>('fromTime');
+    jsonEnableTag = registerOutput<bool?>('jsonEnableTag');
+    logReadRoleArn = registerOutput<String?>('logReadRoleArn');
+    logstoreName = registerOutput<String>('logstoreName');
+    pathFormat = registerOutput<String>('pathFormat');
+    prefix = registerOutput<String?>('prefix');
+    projectName = registerOutput<String>('projectName');
+    roleArn = registerOutput<String?>('roleArn');
+    suffix = registerOutput<String?>('suffix');
+    timeZone = registerOutput<String>('timeZone');
   }
 }

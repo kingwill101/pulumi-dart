@@ -7,6 +7,7 @@ import 'get_security_group_filter.dart';
 class GetSecurityGroupResult {
   /// Computed ARN of the security group.
   final String arn;
+
   /// Description of the security group.
   final String description;
   final List<GetSecurityGroupFilter>? filters;
@@ -40,7 +41,14 @@ class GetSecurityGroupResult {
     return <String, dynamic>{
       'arn': arn,
       'description': description,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetSecurityGroupFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetSecurityGroupFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'name': name,
       'region': region,
@@ -53,7 +61,16 @@ class GetSecurityGroupResult {
     return GetSecurityGroupResult(
       arn: map['arn'] as String,
       description: map['description'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSecurityGroupFilter>(map['filters']!, (value) => GetSecurityGroupFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetSecurityGroupFilter>(
+          guardedValue,
+          (value) => GetSecurityGroupFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
@@ -62,4 +79,3 @@ class GetSecurityGroupResult {
     );
   }
 }
-

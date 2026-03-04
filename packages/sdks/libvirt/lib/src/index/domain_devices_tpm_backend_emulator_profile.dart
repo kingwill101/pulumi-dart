@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesTpmBackendEmulatorProfile {
   /// Specifies the name of the profile for the emulator TPM backend.
   final pulumi.Input<String>? name;
+
   /// Configures whether to remove disabled profiles for the emulator TPM backend.
   final pulumi.Input<String>? removeDisabled;
+
   /// Sets the source configuration for the profile of the emulator TPM backend.
   final pulumi.Input<String>? source;
 
@@ -28,12 +30,25 @@ class DomainDevicesTpmBackendEmulatorProfile {
     };
   }
 
-  factory DomainDevicesTpmBackendEmulatorProfile.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesTpmBackendEmulatorProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesTpmBackendEmulatorProfile(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      removeDisabled: map['removeDisabled'] == null ? null : (map['removeDisabled']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      removeDisabled: (() {
+        final guardedValue = map['removeDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

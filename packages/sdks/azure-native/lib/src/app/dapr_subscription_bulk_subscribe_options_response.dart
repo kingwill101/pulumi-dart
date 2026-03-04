@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DaprSubscriptionBulkSubscribeOptionsResponse {
   /// Enable bulk subscription
   final pulumi.Input<bool>? enabled;
+
   /// Maximum duration in milliseconds to wait before a bulk message is sent to the app.
   final pulumi.Input<int>? maxAwaitDurationMs;
+
   /// Maximum number of messages to deliver in a bulk message.
   final pulumi.Input<int>? maxMessagesCount;
 
@@ -29,12 +31,25 @@ class DaprSubscriptionBulkSubscribeOptionsResponse {
     };
   }
 
-  factory DaprSubscriptionBulkSubscribeOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory DaprSubscriptionBulkSubscribeOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DaprSubscriptionBulkSubscribeOptionsResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      maxAwaitDurationMs: map['maxAwaitDurationMs'] == null ? null : (map['maxAwaitDurationMs']! as int).input(),
-      maxMessagesCount: map['maxMessagesCount'] == null ? null : (map['maxMessagesCount']! as int).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxAwaitDurationMs: (() {
+        final guardedValue = map['maxAwaitDurationMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxMessagesCount: (() {
+        final guardedValue = map['maxMessagesCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

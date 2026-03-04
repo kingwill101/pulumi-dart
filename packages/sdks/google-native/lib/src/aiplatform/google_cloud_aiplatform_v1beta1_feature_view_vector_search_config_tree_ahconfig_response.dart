@@ -13,15 +13,16 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigRespo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'leafNodeEmbeddingCount': leafNodeEmbeddingCount,
-    };
+    return <String, dynamic>{'leafNodeEmbeddingCount': leafNodeEmbeddingCount};
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse(
-      leafNodeEmbeddingCount: (map['leafNodeEmbeddingCount'] as String).input(),
+      leafNodeEmbeddingCount: pulumi.Input.fromValue(
+        map['leafNodeEmbeddingCount'] as String,
+      ),
     );
   }
 }
-

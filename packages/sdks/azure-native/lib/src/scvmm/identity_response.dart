@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityResponse {
   /// The principal id of managed service identity.
   final pulumi.Input<String> principalId;
+
   /// The tenant of managed service identity.
   final pulumi.Input<String> tenantId;
+
   /// The type of managed service identity.
   final pulumi.Input<String> type;
 
@@ -31,10 +33,9 @@ class IdentityResponse {
 
   factory IdentityResponse.fromMap(Map<String, dynamic> map) {
     return IdentityResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: (map['type'] as String).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

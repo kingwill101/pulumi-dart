@@ -6,16 +6,15 @@ enum PublicIPAddressMigrationPhase {
   valueAbort("Abort"),
   valueCommitted("Committed");
 
-  const PublicIPAddressMigrationPhase(this.value);
-  final String value;
+  const PublicIPAddressMigrationPhase(this.wireValue);
+  final String wireValue;
 
   static PublicIPAddressMigrationPhase fromValue(String value) {
     for (final item in PublicIPAddressMigrationPhase.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicIPAddressMigrationPhase value: $value');
   }
 }
-

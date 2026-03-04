@@ -3,16 +3,17 @@ enum AutomationAccountAuthenticationType {
   valueRunAsAccount("RunAsAccount"),
   valueSystemAssignedIdentity("SystemAssignedIdentity");
 
-  const AutomationAccountAuthenticationType(this.value);
-  final String value;
+  const AutomationAccountAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static AutomationAccountAuthenticationType fromValue(String value) {
     for (final item in AutomationAccountAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AutomationAccountAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown AutomationAccountAuthenticationType value: $value',
+    );
   }
 }
-

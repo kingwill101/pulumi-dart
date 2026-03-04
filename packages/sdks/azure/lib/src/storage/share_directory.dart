@@ -4,7 +4,7 @@ import 'share_directory_state.dart';
 
 /// Manages a Directory within an Azure Storage File Share.
 ///
-/// > **Note:** When using Azure Active Directory Authentication (i.e. setting the provider property `storage_use_azuread = true`), the principal running Terraform must have the *Storage File Data Privileged Contributor* IAM role assigned. The *Storage File Data SMB Share Contributor* does not have sufficient permissions to create directories. Refer to [official documentation](https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-file-service-operations) for more details.
+/// &gt; **Note:** When using Azure Active Directory Authentication (i.e. setting the provider property `storage_use_azuread = true`), the principal running Terraform must have the *Storage File Data Privileged Contributor* IAM role assigned. The *Storage File Data SMB Share Contributor* does not have sufficient permissions to create directories. Refer to [official documentation](https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-file-service-operations) for more details.
 ///
 /// ## Example Usage
 ///
@@ -236,9 +236,11 @@ import 'share_directory_state.dart';
 class ShareDirectory extends pulumi.CustomResource {
   /// A mapping of metadata to assign to this Directory.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name (or path) of the Directory that should be created within this File Share. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> storageShareId;
+
   /// The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageShareUrl;
 
@@ -251,15 +253,15 @@ class ShareDirectory extends pulumi.CustomResource {
     ShareDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/shareDirectory:ShareDirectory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:storage/shareDirectory:ShareDirectory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.storageShareId = registerOutput<String>('storageShareId');
-    this.storageShareUrl = registerOutput<String>('storageShareUrl');
+    storageShareId = registerOutput<String>('storageShareId');
+    storageShareUrl = registerOutput<String>('storageShareUrl');
   }
 
   /// Gets an existing [ShareDirectory] resource's state with the given [name] and [id].
@@ -280,14 +282,14 @@ class ShareDirectory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/shareDirectory:ShareDirectory',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:storage/shareDirectory:ShareDirectory',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.storageShareId = registerOutput<String>('storageShareId');
-    this.storageShareUrl = registerOutput<String>('storageShareUrl');
+    storageShareId = registerOutput<String>('storageShareId');
+    storageShareUrl = registerOutput<String>('storageShareUrl');
   }
 }

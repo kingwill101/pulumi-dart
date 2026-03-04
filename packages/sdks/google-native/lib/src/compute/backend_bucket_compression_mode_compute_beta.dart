@@ -3,16 +3,17 @@ enum BackendBucketCompressionModeComputeBeta {
   automatic("AUTOMATIC"),
   disabled("DISABLED");
 
-  const BackendBucketCompressionModeComputeBeta(this.value);
-  final String value;
+  const BackendBucketCompressionModeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static BackendBucketCompressionModeComputeBeta fromValue(String value) {
     for (final item in BackendBucketCompressionModeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendBucketCompressionModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown BackendBucketCompressionModeComputeBeta value: $value',
+    );
   }
 }
-

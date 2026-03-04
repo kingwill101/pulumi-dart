@@ -3,25 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource {
-  /// Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+  /// Knowledge bases to query. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/knowledgeBases/&lt;Knowledge Base ID&gt;.
   final pulumi.Input<List<String>> knowledgeBases;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource].
-  /// [knowledgeBases] Knowledge bases to query. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<Knowledge Base ID>.
+  /// [knowledgeBases] Knowledge bases to query. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/knowledgeBases/&lt;Knowledge Base ID&gt;.
   ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource({
     required this.knowledgeBases,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'knowledgeBases': knowledgeBases,
-    };
+    return <String, dynamic>{'knowledgeBases': knowledgeBases};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource(
-      knowledgeBases: ((map['knowledgeBases'] as List).cast<String>()).input(),
+      knowledgeBases: pulumi.Input.fromValue(
+        (map['knowledgeBases'] as List).cast<String>(),
+      ),
     );
   }
 }
-

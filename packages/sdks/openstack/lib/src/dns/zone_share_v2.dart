@@ -124,13 +124,16 @@ class ZoneShareV2 extends pulumi.CustomResource {
   /// `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target
   /// project).
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 DNS client. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new DNS zone share.
   late final pulumi.Output<String> region;
+
   /// The ID of the target project with which the
   /// DNS zone will be shared.
   late final pulumi.Output<String> targetProjectId;
+
   /// The ID of the DNS zone to be shared.
   late final pulumi.Output<String> zoneId;
 
@@ -143,15 +146,15 @@ class ZoneShareV2 extends pulumi.CustomResource {
     ZoneShareV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/zoneShareV2:ZoneShareV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.targetProjectId = registerOutput<String>('targetProjectId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'openstack:dns/zoneShareV2:ZoneShareV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    targetProjectId = registerOutput<String>('targetProjectId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [ZoneShareV2] resource's state with the given [name] and [id].
@@ -172,14 +175,14 @@ class ZoneShareV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/zoneShareV2:ZoneShareV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.targetProjectId = registerOutput<String>('targetProjectId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'openstack:dns/zoneShareV2:ZoneShareV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    targetProjectId = registerOutput<String>('targetProjectId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

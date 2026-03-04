@@ -17,12 +17,17 @@ import 'web_app_connection_strings_args.dart';
 class WebAppConnectionStrings extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Connection strings.
-  late final pulumi.Output<Map<String, ConnStringValueTypePairResponse>> properties;
+  late final pulumi.Output<Map<String, ConnStringValueTypePairResponse>>
+  properties;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -35,15 +40,17 @@ class WebAppConnectionStrings extends pulumi.CustomResource {
     WebAppConnectionStringsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppConnectionStrings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppConnectionStrings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<Map<String, ConnStringValueTypePairResponse>>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<Map<String, ConnStringValueTypePairResponse>>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

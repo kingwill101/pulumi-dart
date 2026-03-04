@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureDevOpsPermissionProfileResponse {
   /// Group email addresses
   final pulumi.Input<List<String>>? groups;
+
   /// Determines who has admin permissions to the Azure DevOps pool.
   final pulumi.Input<String> kind;
+
   /// User email addresses
   final pulumi.Input<List<String>>? users;
 
@@ -22,19 +24,24 @@ class AzureDevOpsPermissionProfileResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groups': ?groups,
-      'kind': kind,
-      'users': ?users,
-    };
+    return <String, dynamic>{'groups': ?groups, 'kind': kind, 'users': ?users};
   }
 
-  factory AzureDevOpsPermissionProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureDevOpsPermissionProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureDevOpsPermissionProfileResponse(
-      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
-      kind: (map['kind'] as String).input(),
-      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      users: (() {
+        final guardedValue = map['users'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

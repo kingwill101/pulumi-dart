@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyntheticTaskMonitor {
   /// The city code of monitor.
   final pulumi.Input<String> cityCode;
+
   /// The type of monitor.
   final pulumi.Input<int> clientType;
+
   /// The operator code of monitor.
   final pulumi.Input<String> operatorCode;
 
@@ -30,10 +32,9 @@ class SyntheticTaskMonitor {
 
   factory SyntheticTaskMonitor.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitor(
-      cityCode: (map['cityCode'] as String).input(),
-      clientType: (map['clientType'] as int).input(),
-      operatorCode: (map['operatorCode'] as String).input(),
+      cityCode: pulumi.Input.fromValue(map['cityCode'] as String),
+      clientType: pulumi.Input.fromValue(map['clientType'] as int),
+      operatorCode: pulumi.Input.fromValue(map['operatorCode'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPartnerNamespaceInboundIpRule {
   /// The action to take when the rule is matched.
   final pulumi.Input<String> action;
+
   /// The IP mask (CIDR) to match on.
   final pulumi.Input<String> ipMask;
 
@@ -17,17 +18,13 @@ class GetPartnerNamespaceInboundIpRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': action,
-      'ipMask': ipMask,
-    };
+    return <String, dynamic>{'action': action, 'ipMask': ipMask};
   }
 
   factory GetPartnerNamespaceInboundIpRule.fromMap(Map<String, dynamic> map) {
     return GetPartnerNamespaceInboundIpRule(
-      action: (map['action'] as String).input(),
-      ipMask: (map['ipMask'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      ipMask: pulumi.Input.fromValue(map['ipMask'] as String),
     );
   }
 }
-

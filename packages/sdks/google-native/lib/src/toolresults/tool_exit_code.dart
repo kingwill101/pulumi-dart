@@ -9,20 +9,19 @@ class ToolExitCode {
 
   /// Creates a new [ToolExitCode].
   /// [number] Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
-  ToolExitCode({
-    this.number,
-  });
+  ToolExitCode({this.number});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'number': ?number,
-    };
+    return <String, dynamic>{'number': ?number};
   }
 
   factory ToolExitCode.fromMap(Map<String, dynamic> map) {
     return ToolExitCode(
-      number: map['number'] == null ? null : (map['number']! as int).input(),
+      number: (() {
+        final guardedValue = map['number'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

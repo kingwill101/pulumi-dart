@@ -6,30 +6,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcAttachmentAccepterState {
   /// Whether Appliance Mode support is enabled. Valid values: `disable`, `enable`.
   final pulumi.Input<String>? applianceModeSupport;
+
   /// Whether DNS support is enabled. Valid values: `disable`, `enable`.
   final pulumi.Input<String>? dnsSupport;
+
   /// Whether IPv6 support is enabled. Valid values: `disable`, `enable`.
   final pulumi.Input<String>? ipv6Support;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether Security Group Referencing Support is enabled. Valid values: `disable`, `enable`.
   final pulumi.Input<String>? securityGroupReferencingSupport;
+
   /// Identifiers of EC2 Subnets.
   final pulumi.Input<List<String>>? subnetIds;
+
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The ID of the EC2 Transit Gateway Attachment to manage.
   final pulumi.Input<String>? transitGatewayAttachmentId;
+
   /// Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. Default value: `true`.
   final pulumi.Input<bool>? transitGatewayDefaultRouteTableAssociation;
+
   /// Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Default value: `true`.
   final pulumi.Input<bool>? transitGatewayDefaultRouteTablePropagation;
+
   /// Identifier of EC2 Transit Gateway.
   final pulumi.Input<String>? transitGatewayId;
+
   /// Identifier of EC2 VPC.
   final pulumi.Input<String>? vpcId;
+
   /// Identifier of the AWS account that owns the EC2 VPC.
   final pulumi.Input<String>? vpcOwnerId;
 
@@ -76,8 +89,10 @@ class VpcAttachmentAccepterState {
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'transitGatewayAttachmentId': ?transitGatewayAttachmentId,
-      'transitGatewayDefaultRouteTableAssociation': ?transitGatewayDefaultRouteTableAssociation,
-      'transitGatewayDefaultRouteTablePropagation': ?transitGatewayDefaultRouteTablePropagation,
+      'transitGatewayDefaultRouteTableAssociation':
+          ?transitGatewayDefaultRouteTableAssociation,
+      'transitGatewayDefaultRouteTablePropagation':
+          ?transitGatewayDefaultRouteTablePropagation,
       'transitGatewayId': ?transitGatewayId,
       'vpcId': ?vpcId,
       'vpcOwnerId': ?vpcOwnerId,
@@ -86,21 +101,80 @@ class VpcAttachmentAccepterState {
 
   factory VpcAttachmentAccepterState.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentAccepterState(
-      applianceModeSupport: map['applianceModeSupport'] == null ? null : ((map['applianceModeSupport'] as String).input()).input(),
-      dnsSupport: map['dnsSupport'] == null ? null : ((map['dnsSupport'] as String).input()).input(),
-      ipv6Support: map['ipv6Support'] == null ? null : ((map['ipv6Support'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : ((map['securityGroupReferencingSupport'] as String).input()).input(),
-      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
-      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : ((map['transitGatewayDefaultRouteTableAssociation'] as bool).input()).input(),
-      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : ((map['transitGatewayDefaultRouteTablePropagation'] as bool).input()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
-      vpcOwnerId: map['vpcOwnerId'] == null ? null : ((map['vpcOwnerId'] as String).input()).input(),
+      applianceModeSupport: (() {
+        final guardedValue = map['applianceModeSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsSupport: (() {
+        final guardedValue = map['dnsSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6Support: (() {
+        final guardedValue = map['ipv6Support'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupReferencingSupport: (() {
+        final guardedValue = map['securityGroupReferencingSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transitGatewayAttachmentId: (() {
+        final guardedValue = map['transitGatewayAttachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayDefaultRouteTableAssociation: (() {
+        final guardedValue = map['transitGatewayDefaultRouteTableAssociation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      transitGatewayDefaultRouteTablePropagation: (() {
+        final guardedValue = map['transitGatewayDefaultRouteTablePropagation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      transitGatewayId: (() {
+        final guardedValue = map['transitGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcOwnerId: (() {
+        final guardedValue = map['vpcOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

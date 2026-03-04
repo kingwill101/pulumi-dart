@@ -2,18 +2,19 @@
 enum CloudSqlSettingsActivationPolicy {
   sqlActivationPolicyUnspecified("SQL_ACTIVATION_POLICY_UNSPECIFIED"),
   always("ALWAYS"),
-  never("NEVER");
+  never_("NEVER");
 
-  const CloudSqlSettingsActivationPolicy(this.value);
-  final String value;
+  const CloudSqlSettingsActivationPolicy(this.wireValue);
+  final String wireValue;
 
   static CloudSqlSettingsActivationPolicy fromValue(String value) {
     for (final item in CloudSqlSettingsActivationPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CloudSqlSettingsActivationPolicy value: $value');
+    throw ArgumentError(
+      'Unknown CloudSqlSettingsActivationPolicy value: $value',
+    );
   }
 }
-

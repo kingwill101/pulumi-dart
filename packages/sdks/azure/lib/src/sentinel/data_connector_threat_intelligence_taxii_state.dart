@@ -6,24 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorThreatIntelligenceTaxiiState {
   /// The API root URI of the TAXII server.
   final pulumi.Input<String>? apiRootUrl;
+
   /// The collection ID of the TAXII server.
   final pulumi.Input<String>? collectionId;
+
   /// The friendly name which should be used for this Threat Intelligence TAXII Data Connector.
   final pulumi.Input<String>? displayName;
+
   /// The ID of the Log Analytics Workspace that this Threat Intelligence TAXII Data Connector resides in. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
+
   /// The lookback date for the TAXII server in RFC3339. Defaults to `1970-01-01T00:00:00Z`.
   final pulumi.Input<String>? lookbackDate;
+
   /// The name which should be used for this Threat Intelligence TAXII Data Connector. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   final pulumi.Input<String>? name;
+
   /// The password for the TAXII server.
   final pulumi.Input<String>? password;
+
   /// The polling frequency for the TAXII server. Possible values are `OnceAMinute`, `OnceAnHour` and `OnceADay`. Defaults to `OnceAnHour`.
   final pulumi.Input<String>? pollingFrequency;
+
   /// The ID of the tenant that this Threat Intelligence TAXII Data Connector connects to. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   final pulumi.Input<String>? tenantId;
+
   /// The user name for the TAXII server.
   final pulumi.Input<String>? userName;
 
@@ -66,19 +75,60 @@ class DataConnectorThreatIntelligenceTaxiiState {
     };
   }
 
-  factory DataConnectorThreatIntelligenceTaxiiState.fromMap(Map<String, dynamic> map) {
+  factory DataConnectorThreatIntelligenceTaxiiState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataConnectorThreatIntelligenceTaxiiState(
-      apiRootUrl: map['apiRootUrl'] == null ? null : (map['apiRootUrl']! as String).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
-      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      pollingFrequency: map['pollingFrequency'] == null ? null : (map['pollingFrequency']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      apiRootUrl: (() {
+        final guardedValue = map['apiRootUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      collectionId: (() {
+        final guardedValue = map['collectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logAnalyticsWorkspaceId: (() {
+        final guardedValue = map['logAnalyticsWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lookbackDate: (() {
+        final guardedValue = map['lookbackDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pollingFrequency: (() {
+        final guardedValue = map['pollingFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

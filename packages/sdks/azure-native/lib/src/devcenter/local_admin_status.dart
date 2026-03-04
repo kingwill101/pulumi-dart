@@ -3,16 +3,15 @@ enum LocalAdminStatus {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const LocalAdminStatus(this.value);
-  final String value;
+  const LocalAdminStatus(this.wireValue);
+  final String wireValue;
 
   static LocalAdminStatus fromValue(String value) {
     for (final item in LocalAdminStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalAdminStatus value: $value');
   }
 }
-

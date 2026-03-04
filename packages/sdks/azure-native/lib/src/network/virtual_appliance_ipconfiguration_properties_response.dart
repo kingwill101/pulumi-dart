@@ -9,20 +9,21 @@ class VirtualApplianceIPConfigurationPropertiesResponse {
 
   /// Creates a new [VirtualApplianceIPConfigurationPropertiesResponse].
   /// [primary] Whether or not this is primary IP configuration of the NIC.
-  VirtualApplianceIPConfigurationPropertiesResponse({
-    this.primary,
-  });
+  VirtualApplianceIPConfigurationPropertiesResponse({this.primary});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'primary': ?primary,
-    };
+    return <String, dynamic>{'primary': ?primary};
   }
 
-  factory VirtualApplianceIPConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualApplianceIPConfigurationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualApplianceIPConfigurationPropertiesResponse(
-      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      primary: (() {
+        final guardedValue = map['primary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

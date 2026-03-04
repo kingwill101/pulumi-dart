@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceEndpointConnectionsPrivateEndpointConnection {
   /// A message indicating if changes on the service provider require any updates or not.
   final pulumi.Input<String> actionRequired;
+
   /// The resource id of the private link service connection between the private link service and the private link endpoint.
   final pulumi.Input<String> connectionId;
+
   /// The name of the connection between the private link service and the private link endpoint.
   final pulumi.Input<String> connectionName;
+
   /// The request for approval message or the reason for rejection message.
   final pulumi.Input<String> description;
+
   /// The resource id of the private link endpoint.
   final pulumi.Input<String> privateEndpointId;
+
   /// The name of the private link endpoint.
   final pulumi.Input<String> privateEndpointName;
+
   /// Indicates the state of the connection between the private link service and the private link endpoint, possible values are `Pending`, `Approved` or `Rejected`.
   final pulumi.Input<String> status;
 
@@ -48,16 +54,21 @@ class GetServiceEndpointConnectionsPrivateEndpointConnection {
     };
   }
 
-  factory GetServiceEndpointConnectionsPrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
+  factory GetServiceEndpointConnectionsPrivateEndpointConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceEndpointConnectionsPrivateEndpointConnection(
-      actionRequired: (map['actionRequired'] as String).input(),
-      connectionId: (map['connectionId'] as String).input(),
-      connectionName: (map['connectionName'] as String).input(),
-      description: (map['description'] as String).input(),
-      privateEndpointId: (map['privateEndpointId'] as String).input(),
-      privateEndpointName: (map['privateEndpointName'] as String).input(),
-      status: (map['status'] as String).input(),
+      actionRequired: pulumi.Input.fromValue(map['actionRequired'] as String),
+      connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      privateEndpointId: pulumi.Input.fromValue(
+        map['privateEndpointId'] as String,
+      ),
+      privateEndpointName: pulumi.Input.fromValue(
+        map['privateEndpointName'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

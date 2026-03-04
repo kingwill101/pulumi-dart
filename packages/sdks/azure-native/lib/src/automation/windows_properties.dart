@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsProperties {
   /// KB numbers excluded from the software update configuration.
   final pulumi.Input<List<String>>? excludedKbNumbers;
+
   /// KB numbers included from the software update configuration.
   final pulumi.Input<List<String>>? includedKbNumbers;
+
   /// Update classification included in the software update configuration. A comma separated string with required values
   final pulumi.Input<String>? includedUpdateClassifications;
+
   /// Reboot setting for the software update configuration.
   final pulumi.Input<String>? rebootSetting;
 
@@ -36,11 +39,26 @@ class WindowsProperties {
 
   factory WindowsProperties.fromMap(Map<String, dynamic> map) {
     return WindowsProperties(
-      excludedKbNumbers: map['excludedKbNumbers'] == null ? null : ((map['excludedKbNumbers']! as List).cast<String>()).input(),
-      includedKbNumbers: map['includedKbNumbers'] == null ? null : ((map['includedKbNumbers']! as List).cast<String>()).input(),
-      includedUpdateClassifications: map['includedUpdateClassifications'] == null ? null : (map['includedUpdateClassifications']! as String).input(),
-      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting']! as String).input(),
+      excludedKbNumbers: (() {
+        final guardedValue = map['excludedKbNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includedKbNumbers: (() {
+        final guardedValue = map['includedKbNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includedUpdateClassifications: (() {
+        final guardedValue = map['includedUpdateClassifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rebootSetting: (() {
+        final guardedValue = map['rebootSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -16,16 +16,15 @@ enum ServiceIdentifier {
   serviceBus("ServiceBus"),
   storage("Storage");
 
-  const ServiceIdentifier(this.value);
-  final String value;
+  const ServiceIdentifier(this.wireValue);
+  final String wireValue;
 
   static ServiceIdentifier fromValue(String value) {
     for (final item in ServiceIdentifier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceIdentifier value: $value');
   }
 }
-

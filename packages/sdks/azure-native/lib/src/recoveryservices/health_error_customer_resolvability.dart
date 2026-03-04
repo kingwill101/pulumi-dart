@@ -3,16 +3,17 @@ enum HealthErrorCustomerResolvability {
   valueAllowed("Allowed"),
   valueNotAllowed("NotAllowed");
 
-  const HealthErrorCustomerResolvability(this.value);
-  final String value;
+  const HealthErrorCustomerResolvability(this.wireValue);
+  final String wireValue;
 
   static HealthErrorCustomerResolvability fromValue(String value) {
     for (final item in HealthErrorCustomerResolvability.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HealthErrorCustomerResolvability value: $value');
+    throw ArgumentError(
+      'Unknown HealthErrorCustomerResolvability value: $value',
+    );
   }
 }
-

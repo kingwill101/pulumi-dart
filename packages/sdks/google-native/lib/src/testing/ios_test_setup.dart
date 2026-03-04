@@ -8,10 +8,13 @@ import 'ios_device_file.dart';
 class IosTestSetup {
   /// iOS apps to install in addition to those being directly tested.
   final pulumi.Input<List<FileReference>>? additionalIpas;
+
   /// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   final pulumi.Input<String>? networkProfile;
+
   /// List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.
   final pulumi.Input<List<IosDeviceFile>>? pullDirectories;
+
   /// List of files to push to the device before starting the test.
   final pulumi.Input<List<IosDeviceFile>>? pushFiles;
 
@@ -29,20 +32,86 @@ class IosTestSetup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalIpas': ?pulumi.Input.mapOptionalInputValue<List<FileReference>, List<Map<String, dynamic>>>(additionalIpas, (value) => pulumi.Input.encodeList<FileReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'additionalIpas':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FileReference>,
+            List<Map<String, dynamic>>
+          >(
+            additionalIpas,
+            (value) =>
+                pulumi.Input.encodeList<FileReference, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'networkProfile': ?networkProfile,
-      'pullDirectories': ?pulumi.Input.mapOptionalInputValue<List<IosDeviceFile>, List<Map<String, dynamic>>>(pullDirectories, (value) => pulumi.Input.encodeList<IosDeviceFile, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'pushFiles': ?pulumi.Input.mapOptionalInputValue<List<IosDeviceFile>, List<Map<String, dynamic>>>(pushFiles, (value) => pulumi.Input.encodeList<IosDeviceFile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pullDirectories':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IosDeviceFile>,
+            List<Map<String, dynamic>>
+          >(
+            pullDirectories,
+            (value) =>
+                pulumi.Input.encodeList<IosDeviceFile, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'pushFiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IosDeviceFile>,
+            List<Map<String, dynamic>>
+          >(
+            pushFiles,
+            (value) =>
+                pulumi.Input.encodeList<IosDeviceFile, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory IosTestSetup.fromMap(Map<String, dynamic> map) {
     return IosTestSetup(
-      additionalIpas: map['additionalIpas'] == null ? null : (pulumi.Input.decodeList<FileReference>(map['additionalIpas']!, (value) => FileReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile']! as String).input(),
-      pullDirectories: map['pullDirectories'] == null ? null : (pulumi.Input.decodeList<IosDeviceFile>(map['pullDirectories']!, (value) => IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pushFiles: map['pushFiles'] == null ? null : (pulumi.Input.decodeList<IosDeviceFile>(map['pushFiles']!, (value) => IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalIpas: (() {
+        final guardedValue = map['additionalIpas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FileReference>(
+            guardedValue,
+            (value) =>
+                FileReference.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pullDirectories: (() {
+        final guardedValue = map['pullDirectories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IosDeviceFile>(
+            guardedValue,
+            (value) =>
+                IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      pushFiles: (() {
+        final guardedValue = map['pushFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IosDeviceFile>(
+            guardedValue,
+            (value) =>
+                IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

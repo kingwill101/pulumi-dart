@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AcceleratorConfigResponseTpuV2alpha1 {
   /// Topology of TPU in chips.
   final pulumi.Input<String> topology;
+
   /// Type of TPU.
   final pulumi.Input<String> type;
 
@@ -18,17 +19,15 @@ class AcceleratorConfigResponseTpuV2alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topology': topology,
-      'type': type,
-    };
+    return <String, dynamic>{'topology': topology, 'type': type};
   }
 
-  factory AcceleratorConfigResponseTpuV2alpha1.fromMap(Map<String, dynamic> map) {
+  factory AcceleratorConfigResponseTpuV2alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AcceleratorConfigResponseTpuV2alpha1(
-      topology: (map['topology'] as String).input(),
-      type: (map['type'] as String).input(),
+      topology: pulumi.Input.fromValue(map['topology'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum SchedulingMaintenanceIntervalComputeBeta {
   periodic("PERIODIC"),
   recurrent("RECURRENT");
 
-  const SchedulingMaintenanceIntervalComputeBeta(this.value);
-  final String value;
+  const SchedulingMaintenanceIntervalComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SchedulingMaintenanceIntervalComputeBeta fromValue(String value) {
     for (final item in SchedulingMaintenanceIntervalComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingMaintenanceIntervalComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingMaintenanceIntervalComputeBeta value: $value',
+    );
   }
 }
-

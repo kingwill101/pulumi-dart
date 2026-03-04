@@ -6,9 +6,11 @@ class AutomationRuleCriteriaCriticality {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   final pulumi.Input<double>? eq;
   final pulumi.Input<double>? gt;
+
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final pulumi.Input<double>? gte;
   final pulumi.Input<double>? lt;
+
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   final pulumi.Input<double>? lte;
 
@@ -38,12 +40,31 @@ class AutomationRuleCriteriaCriticality {
 
   factory AutomationRuleCriteriaCriticality.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaCriticality(
-      eq: map['eq'] == null ? null : ((map['eq'] as double).input()).input(),
-      gt: map['gt'] == null ? null : ((map['gt'] as double).input()).input(),
-      gte: map['gte'] == null ? null : ((map['gte'] as double).input()).input(),
-      lt: map['lt'] == null ? null : ((map['lt'] as double).input()).input(),
-      lte: map['lte'] == null ? null : ((map['lte'] as double).input()).input(),
+      eq: (() {
+        final guardedValue = map['eq'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      gt: (() {
+        final guardedValue = map['gt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      gte: (() {
+        final guardedValue = map['gte'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      lt: (() {
+        final guardedValue = map['lt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      lte: (() {
+        final guardedValue = map['lte'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

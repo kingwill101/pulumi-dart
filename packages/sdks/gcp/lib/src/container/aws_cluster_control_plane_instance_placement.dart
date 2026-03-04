@@ -8,20 +8,21 @@ class AwsClusterControlPlaneInstancePlacement {
 
   /// Creates a new [AwsClusterControlPlaneInstancePlacement].
   /// [tenancy] The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
-  AwsClusterControlPlaneInstancePlacement({
-    this.tenancy,
-  });
+  AwsClusterControlPlaneInstancePlacement({this.tenancy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tenancy': ?tenancy,
-    };
+    return <String, dynamic>{'tenancy': ?tenancy};
   }
 
-  factory AwsClusterControlPlaneInstancePlacement.fromMap(Map<String, dynamic> map) {
+  factory AwsClusterControlPlaneInstancePlacement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsClusterControlPlaneInstancePlacement(
-      tenancy: map['tenancy'] == null ? null : (map['tenancy']! as String).input(),
+      tenancy: (() {
+        final guardedValue = map['tenancy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

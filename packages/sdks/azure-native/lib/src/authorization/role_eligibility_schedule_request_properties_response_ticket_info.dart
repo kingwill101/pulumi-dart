@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleEligibilityScheduleRequestPropertiesResponseTicketInfo {
   /// Ticket number for the role eligibility
   final pulumi.Input<String>? ticketNumber;
+
   /// Ticket system name for the role eligibility
   final pulumi.Input<String>? ticketSystem;
 
@@ -24,11 +25,20 @@ class RoleEligibilityScheduleRequestPropertiesResponseTicketInfo {
     };
   }
 
-  factory RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap(Map<String, dynamic> map) {
+  factory RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RoleEligibilityScheduleRequestPropertiesResponseTicketInfo(
-      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber']! as String).input(),
-      ticketSystem: map['ticketSystem'] == null ? null : (map['ticketSystem']! as String).input(),
+      ticketNumber: (() {
+        final guardedValue = map['ticketNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ticketSystem: (() {
+        final guardedValue = map['ticketSystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

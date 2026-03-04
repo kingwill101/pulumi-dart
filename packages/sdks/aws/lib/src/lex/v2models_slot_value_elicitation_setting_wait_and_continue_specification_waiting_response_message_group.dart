@@ -7,11 +7,20 @@ import 'v2models_slot_value_elicitation_setting_wait_and_continue_specification_
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user.
   /// See the `aws.lex.V2modelsIntent` resource for details on the `message` argument reference - they are identical.
-  final pulumi.Input<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessage>? message;
+  final pulumi.Input<
+    V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessage
+  >?
+  message;
+
   /// Configuration blocks for message variations to send to the user.
   /// When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user.
   /// See the `aws.lex.V2modelsIntent` resource for details on the `variation` argument reference - they are identical.
-  final pulumi.Input<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation>>? variations;
+  final pulumi.Input<
+    List<
+      V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation
+    >
+  >?
+  variations;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user.
@@ -23,16 +32,56 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResp
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'message': ?pulumi.Input.mapOptionalInputValue<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessage, Map<String, dynamic>>(message, (value) => value.toMap()),
-      'variations': ?pulumi.Input.mapOptionalInputValue<List<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation>, List<Map<String, dynamic>>>(variations, (value) => pulumi.Input.encodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'message':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessage,
+            Map<String, dynamic>
+          >(message, (value) => value.toMap()),
+      'variations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation
+            >,
+            List<Map<String, dynamic>>
+          >(
+            variations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup(
-      message: map['message'] == null ? null : ((V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input()).input(),
-      variations: map['variations'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation>(map['variations']!, (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupMessage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      variations: (() {
+        final guardedValue = map['variations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation
+          >(
+            guardedValue,
+            (value) =>
+                V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

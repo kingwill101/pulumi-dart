@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduledActionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the ScheduledAction
   final pulumi.Input<String> scheduledActionName;
 
@@ -29,9 +30,12 @@ class GetScheduledActionArgs {
 
   factory GetScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledActionArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduledActionName: (map['scheduledActionName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scheduledActionName: pulumi.Input.fromValue(
+        map['scheduledActionName'] as String,
+      ),
     );
   }
 }
-

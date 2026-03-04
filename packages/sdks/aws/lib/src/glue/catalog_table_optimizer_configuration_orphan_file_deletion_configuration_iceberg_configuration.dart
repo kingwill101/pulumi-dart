@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration {
   /// Specifies a directory in which to look for files. You may choose a sub-directory rather than the top-level table location. Defaults to the table's location.
   final pulumi.Input<String>? location;
+
   /// The number of days that orphan files should be retained before file deletion. Defaults to `3`.
   final pulumi.Input<int>? orphanFileRetentionPeriodInDays;
+
   /// interval in hours between orphan file deletion job runs. Defaults to `24`.
   final pulumi.Input<int>? runRateInHours;
 
@@ -28,12 +30,25 @@ class CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergCo
     };
   }
 
-  factory CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration(
-      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
-      orphanFileRetentionPeriodInDays: map['orphanFileRetentionPeriodInDays'] == null ? null : ((map['orphanFileRetentionPeriodInDays'] as int).input()).input(),
-      runRateInHours: map['runRateInHours'] == null ? null : ((map['runRateInHours'] as int).input()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orphanFileRetentionPeriodInDays: (() {
+        final guardedValue = map['orphanFileRetentionPeriodInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      runRateInHours: (() {
+        final guardedValue = map['runRateInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

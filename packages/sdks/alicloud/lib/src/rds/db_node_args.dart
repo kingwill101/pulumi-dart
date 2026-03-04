@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbNodeArgs {
   /// The specification information of the node.
   final pulumi.Input<String> classCode;
+
   /// The Id of instance that can run database.
   final pulumi.Input<String> dbInstanceId;
+
   /// The zone ID of the node.
   final pulumi.Input<String> zoneId;
 
@@ -34,10 +36,9 @@ class DbNodeArgs {
 
   factory DbNodeArgs.fromMap(Map<String, dynamic> map) {
     return DbNodeArgs(
-      classCode: (map['classCode'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      classCode: pulumi.Input.fromValue(map['classCode'] as String),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

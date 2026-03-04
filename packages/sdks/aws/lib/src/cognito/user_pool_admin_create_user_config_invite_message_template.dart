@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// Message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
   final pulumi.Input<String>? emailMessage;
+
   /// Subject line for email messages.
   final pulumi.Input<String>? emailSubject;
+
   /// Message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
   final pulumi.Input<String>? smsMessage;
 
@@ -28,12 +30,25 @@ class UserPoolAdminCreateUserConfigInviteMessageTemplate {
     };
   }
 
-  factory UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(Map<String, dynamic> map) {
+  factory UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserPoolAdminCreateUserConfigInviteMessageTemplate(
-      emailMessage: map['emailMessage'] == null ? null : ((map['emailMessage'] as String).input()).input(),
-      emailSubject: map['emailSubject'] == null ? null : ((map['emailSubject'] as String).input()).input(),
-      smsMessage: map['smsMessage'] == null ? null : ((map['smsMessage'] as String).input()).input(),
+      emailMessage: (() {
+        final guardedValue = map['emailMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      emailSubject: (() {
+        final guardedValue = map['emailSubject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      smsMessage: (() {
+        final guardedValue = map['smsMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

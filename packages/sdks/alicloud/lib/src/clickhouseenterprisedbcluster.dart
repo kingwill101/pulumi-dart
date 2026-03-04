@@ -1,5 +1,3 @@
-library module_clickhouseenterprisedbcluster;
-
 export 'clickhouseenterprisedbcluster/account.dart';
 export 'clickhouseenterprisedbcluster/account_args.dart';
 export 'clickhouseenterprisedbcluster/account_dml_auth_setting.dart';

@@ -7,20 +7,17 @@ class ManagedZoneReverseLookupConfigResponse {
 
   /// Creates a new [ManagedZoneReverseLookupConfigResponse].
   /// [kind] Required.
-  ManagedZoneReverseLookupConfigResponse({
-    required this.kind,
-  });
+  ManagedZoneReverseLookupConfigResponse({required this.kind});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kind': kind,
-    };
+    return <String, dynamic>{'kind': kind};
   }
 
-  factory ManagedZoneReverseLookupConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneReverseLookupConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneReverseLookupConfigResponse(
-      kind: (map['kind'] as String).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
-

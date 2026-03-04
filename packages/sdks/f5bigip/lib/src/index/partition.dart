@@ -119,8 +119,10 @@ import 'partition_state.dart';
 class Partition extends pulumi.CustomResource {
   /// Description of the partition.
   late final pulumi.Output<String?> description;
+
   /// Name of the partition.
   late final pulumi.Output<String> name;
+
   /// Route domain id of the partition.
   late final pulumi.Output<int?> routeDomainId;
 
@@ -133,14 +135,14 @@ class Partition extends pulumi.CustomResource {
     PartitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/partition:Partition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'f5bigip:index/partition:Partition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.routeDomainId = registerOutput<int?>('routeDomainId');
+    routeDomainId = registerOutput<int?>('routeDomainId');
   }
 
   /// Gets an existing [Partition] resource's state with the given [name] and [id].
@@ -161,13 +163,13 @@ class Partition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/partition:Partition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'f5bigip:index/partition:Partition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.routeDomainId = registerOutput<int?>('routeDomainId');
+    routeDomainId = registerOutput<int?>('routeDomainId');
   }
 }

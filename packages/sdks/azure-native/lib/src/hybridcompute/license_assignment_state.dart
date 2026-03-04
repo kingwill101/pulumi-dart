@@ -3,16 +3,15 @@ enum LicenseAssignmentState {
   valueAssigned("Assigned"),
   valueNotAssigned("NotAssigned");
 
-  const LicenseAssignmentState(this.value);
-  final String value;
+  const LicenseAssignmentState(this.wireValue);
+  final String wireValue;
 
   static LicenseAssignmentState fromValue(String value) {
     for (final item in LicenseAssignmentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LicenseAssignmentState value: $value');
   }
 }
-

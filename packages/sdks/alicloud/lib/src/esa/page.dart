@@ -8,7 +8,7 @@ import 'page_state.dart';
 ///
 /// For information about ESA Page and how to use it, see [What is Page](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/customize-page).
 ///
-/// > **NOTE:** Available since v1.242.0.
+/// &gt; **NOTE:** Available since v1.242.0.
 ///
 /// ## Example Usage
 ///
@@ -153,10 +153,13 @@ import 'page_state.dart';
 class Page extends pulumi.CustomResource {
   /// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
   late final pulumi.Output<String?> content;
+
   /// The Content-Type field in the HTTP header.
   late final pulumi.Output<String> contentType;
+
   /// The description of the custom error page.
   late final pulumi.Output<String?> description;
+
   /// The name of the custom response page.
   late final pulumi.Output<String> pageName;
 
@@ -164,28 +167,21 @@ class Page extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Page]. {@macro pulumi_esa_page_page_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Page(
-    String name, {
-    PageArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:esa/page:Page',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String?>('content');
-    this.contentType = registerOutput<String>('contentType');
-    this.description = registerOutput<String?>('description');
-    this.pageName = registerOutput<String>('pageName');
+  Page(String name, {PageArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:esa/page:Page',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    content = registerOutput<String?>('content');
+    contentType = registerOutput<String>('contentType');
+    description = registerOutput<String?>('description');
+    pageName = registerOutput<String>('pageName');
   }
 
   /// Gets an existing [Page] resource's state with the given [name] and [id].
-  static Page get(
-    String name,
-    pulumi.Input<String> id, {
-    PageState? state,
-  }) {
+  static Page get(String name, pulumi.Input<String> id, {PageState? state}) {
     return Page._get(
       name,
       state: state?.toMap(),
@@ -198,14 +194,14 @@ class Page extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/page:Page',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String?>('content');
-    this.contentType = registerOutput<String>('contentType');
-    this.description = registerOutput<String?>('description');
-    this.pageName = registerOutput<String>('pageName');
+         'alicloud:esa/page:Page',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<String?>('content');
+    contentType = registerOutput<String>('contentType');
+    description = registerOutput<String?>('description');
+    pageName = registerOutput<String>('pageName');
   }
 }

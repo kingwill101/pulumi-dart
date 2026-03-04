@@ -7,6 +7,7 @@ import 'duration_response.dart';
 class QueuingPolicyResponse {
   /// Relative deadline for waiting for capacity.
   final pulumi.Input<DurationResponse> validUntilDuration;
+
   /// Absolute deadline for waiting for capacity in RFC3339 text format.
   final pulumi.Input<String> validUntilTime;
 
@@ -20,16 +21,23 @@ class QueuingPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'validUntilDuration': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(validUntilDuration, (value) => value.toMap()),
+      'validUntilDuration':
+          pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(
+            validUntilDuration,
+            (value) => value.toMap(),
+          ),
       'validUntilTime': validUntilTime,
     };
   }
 
   factory QueuingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return QueuingPolicyResponse(
-      validUntilDuration: (DurationResponse.fromMap((map['validUntilDuration'] as Map).cast<String, dynamic>())).input(),
-      validUntilTime: (map['validUntilTime'] as String).input(),
+      validUntilDuration: pulumi.Input.fromValue(
+        DurationResponse.fromMap(
+          (map['validUntilDuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      validUntilTime: pulumi.Input.fromValue(map['validUntilTime'] as String),
     );
   }
 }
-

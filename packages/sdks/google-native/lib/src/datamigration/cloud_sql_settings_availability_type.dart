@@ -4,16 +4,17 @@ enum CloudSqlSettingsAvailabilityType {
   zonal("ZONAL"),
   regional("REGIONAL");
 
-  const CloudSqlSettingsAvailabilityType(this.value);
-  final String value;
+  const CloudSqlSettingsAvailabilityType(this.wireValue);
+  final String wireValue;
 
   static CloudSqlSettingsAvailabilityType fromValue(String value) {
     for (final item in CloudSqlSettingsAvailabilityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CloudSqlSettingsAvailabilityType value: $value');
+    throw ArgumentError(
+      'Unknown CloudSqlSettingsAvailabilityType value: $value',
+    );
   }
 }
-

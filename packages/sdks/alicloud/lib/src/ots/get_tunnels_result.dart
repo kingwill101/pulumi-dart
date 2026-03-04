@@ -7,16 +7,21 @@ import 'get_tunnels_tunnel.dart';
 class GetTunnelsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of tunnel IDs.
   final List<String> ids;
+
   /// The OTS instance name.
   final String instanceName;
   final String? nameRegex;
+
   /// A list of tunnel names.
   final List<String> names;
   final String? outputFile;
+
   /// The table name of the OTS which could not be changed.
   final String tableName;
+
   /// A list of tunnels. Each element contains the following attributes:
   final List<GetTunnelsTunnel> tunnels;
 
@@ -49,7 +54,11 @@ class GetTunnelsResult {
       'names': names,
       'outputFile': ?outputFile,
       'tableName': tableName,
-      'tunnels': pulumi.Input.encodeList<GetTunnelsTunnel, Map<String, dynamic>>(tunnels, (value) => value.toMap()),
+      'tunnels':
+          pulumi.Input.encodeList<GetTunnelsTunnel, Map<String, dynamic>>(
+            tunnels,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -58,12 +67,23 @@ class GetTunnelsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceName: map['instanceName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       tableName: map['tableName'] as String,
-      tunnels: pulumi.Input.decodeList<GetTunnelsTunnel>(map['tunnels'], (value) => GetTunnelsTunnel.fromMap((value as Map).cast<String, dynamic>())),
+      tunnels: pulumi.Input.decodeList<GetTunnelsTunnel>(
+        map['tunnels']!,
+        (value) =>
+            GetTunnelsTunnel.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

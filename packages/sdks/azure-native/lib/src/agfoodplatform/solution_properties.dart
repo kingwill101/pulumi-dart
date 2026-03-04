@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SolutionProperties {
   /// SaaS application Marketplace Publisher Id.
   final pulumi.Input<String> marketplacePublisherId;
+
   /// SaaS application Offer Id.
   final pulumi.Input<String> offerId;
+
   /// SaaS application Plan Id.
   final pulumi.Input<String> planId;
+
   /// Role Assignment Id.
   final pulumi.Input<String>? roleAssignmentId;
+
   /// SaaS subscriptionId of the installed SaaS application.
   final pulumi.Input<String> saasSubscriptionId;
+
   /// SaaS subscription name of the installed SaaS application.
   final pulumi.Input<String> saasSubscriptionName;
+
   /// SaaS application Term Id.
   final pulumi.Input<String> termId;
 
@@ -51,14 +57,23 @@ class SolutionProperties {
 
   factory SolutionProperties.fromMap(Map<String, dynamic> map) {
     return SolutionProperties(
-      marketplacePublisherId: (map['marketplacePublisherId'] as String).input(),
-      offerId: (map['offerId'] as String).input(),
-      planId: (map['planId'] as String).input(),
-      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId']! as String).input(),
-      saasSubscriptionId: (map['saasSubscriptionId'] as String).input(),
-      saasSubscriptionName: (map['saasSubscriptionName'] as String).input(),
-      termId: (map['termId'] as String).input(),
+      marketplacePublisherId: pulumi.Input.fromValue(
+        map['marketplacePublisherId'] as String,
+      ),
+      offerId: pulumi.Input.fromValue(map['offerId'] as String),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      roleAssignmentId: (() {
+        final guardedValue = map['roleAssignmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      saasSubscriptionId: pulumi.Input.fromValue(
+        map['saasSubscriptionId'] as String,
+      ),
+      saasSubscriptionName: pulumi.Input.fromValue(
+        map['saasSubscriptionName'] as String,
+      ),
+      termId: pulumi.Input.fromValue(map['termId'] as String),
     );
   }
 }
-

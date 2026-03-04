@@ -9,9 +9,7 @@ class VirtualNetworkBgpCommunities {
 
   /// Creates a new [VirtualNetworkBgpCommunities].
   /// [virtualNetworkCommunity] The BGP community associated with the virtual network.
-  VirtualNetworkBgpCommunities({
-    required this.virtualNetworkCommunity,
-  });
+  VirtualNetworkBgpCommunities({required this.virtualNetworkCommunity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class VirtualNetworkBgpCommunities {
 
   factory VirtualNetworkBgpCommunities.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkBgpCommunities(
-      virtualNetworkCommunity: (map['virtualNetworkCommunity'] as String).input(),
+      virtualNetworkCommunity: pulumi.Input.fromValue(
+        map['virtualNetworkCommunity'] as String,
+      ),
     );
   }
 }
-

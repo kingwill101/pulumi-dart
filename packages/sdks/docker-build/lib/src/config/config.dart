@@ -28,12 +28,17 @@ class DockerBuildConfig {
 
   List<Registry>? get registries {
     final raw = _raw('registries');
-    return raw == null ? null : pulumi.Input.decodeList<Registry>(jsonDecode(raw), (value) => Registry.fromMap((value as Map).cast<String, dynamic>()));
+    return (() {
+      final guardedValue = raw;
+      if (guardedValue == null) return null;
+      return pulumi.Input.decodeList<Registry>(
+        jsonDecode(guardedValue),
+        (value) => Registry.fromMap((value as Map).cast<String, dynamic>()),
+      );
+    })();
   }
 
   bool get registriesIsSecret => _isSecret('registries');
-
 }
 
 final config = DockerBuildConfig();
-

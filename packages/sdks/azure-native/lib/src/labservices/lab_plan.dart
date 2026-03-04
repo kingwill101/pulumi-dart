@@ -289,34 +289,52 @@ import 'system_data_response.dart';
 class LabPlan extends pulumi.CustomResource {
   /// The allowed regions for the lab creator to use when creating labs using this lab plan.
   late final pulumi.Output<List<String>?> allowedRegions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
-  late final pulumi.Output<AutoShutdownProfileResponse?> defaultAutoShutdownProfile;
+  late final pulumi.Output<AutoShutdownProfileResponse?>
+  defaultAutoShutdownProfile;
+
   /// The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
   late final pulumi.Output<ConnectionProfileResponse?> defaultConnectionProfile;
+
   /// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
-  late final pulumi.Output<LabPlanNetworkProfileResponse?> defaultNetworkProfile;
+  late final pulumi.Output<LabPlanNetworkProfileResponse?>
+  defaultNetworkProfile;
+
   /// Managed Identity Information
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Base Url of the lms instance this lab plan can link lab rosters against.
   late final pulumi.Output<String?> linkedLmsInstance;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Current provisioning state of the lab plan.
   late final pulumi.Output<String> provisioningState;
+
   /// Error details of last operation done on lab plan.
-  late final pulumi.Output<ResourceOperationErrorResponse> resourceOperationError;
+  late final pulumi.Output<ResourceOperationErrorResponse>
+  resourceOperationError;
+
   /// Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
   late final pulumi.Output<String?> sharedGalleryId;
+
   /// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
   late final pulumi.Output<SupportInfoResponse?> supportInfo;
+
   /// Metadata pertaining to creation and last modification of the lab plan.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -329,26 +347,34 @@ class LabPlan extends pulumi.CustomResource {
     LabPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:labservices:LabPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedRegions = registerOutput<List<String>?>('allowedRegions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultAutoShutdownProfile = registerOutput<AutoShutdownProfileResponse?>('defaultAutoShutdownProfile');
-    this.defaultConnectionProfile = registerOutput<ConnectionProfileResponse?>('defaultConnectionProfile');
-    this.defaultNetworkProfile = registerOutput<LabPlanNetworkProfileResponse?>('defaultNetworkProfile');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.linkedLmsInstance = registerOutput<String?>('linkedLmsInstance');
-    this.location = registerOutput<String>('location');
+         'azure-native:labservices:LabPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedRegions = registerOutput<List<String>?>('allowedRegions');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultAutoShutdownProfile = registerOutput<AutoShutdownProfileResponse?>(
+      'defaultAutoShutdownProfile',
+    );
+    defaultConnectionProfile = registerOutput<ConnectionProfileResponse?>(
+      'defaultConnectionProfile',
+    );
+    defaultNetworkProfile = registerOutput<LabPlanNetworkProfileResponse?>(
+      'defaultNetworkProfile',
+    );
+    identity = registerOutput<IdentityResponse?>('identity');
+    linkedLmsInstance = registerOutput<String?>('linkedLmsInstance');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceOperationError = registerOutput<ResourceOperationErrorResponse>('resourceOperationError');
-    this.sharedGalleryId = registerOutput<String?>('sharedGalleryId');
-    this.supportInfo = registerOutput<SupportInfoResponse?>('supportInfo');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceOperationError = registerOutput<ResourceOperationErrorResponse>(
+      'resourceOperationError',
+    );
+    sharedGalleryId = registerOutput<String?>('sharedGalleryId');
+    supportInfo = registerOutput<SupportInfoResponse?>('supportInfo');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

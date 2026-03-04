@@ -10,37 +10,57 @@ import 'workload_instance_model_properties_response.dart';
 class WorkloadDeploymentModelPropertiesResponse {
   /// Gets or sets the allowed scenarios on the workload deployment.
   final pulumi.Input<List<String>> allowedOperations;
+
   /// Gets or sets the workload deployment correlation Id.
   final pulumi.Input<String> correlationId;
-  final pulumi.Input<WorkloadDeploymentModelPropertiesResponseCurrentJob> currentJob;
+  final pulumi.Input<WorkloadDeploymentModelPropertiesResponseCurrentJob>
+  currentJob;
+
   /// Workload deployment model custom properties.
-  final pulumi.Input<ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse>? customProperties;
+  final pulumi.Input<
+    ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse
+  >?
+  customProperties;
+
   /// Gets or sets the display name.
   final pulumi.Input<String>? displayName;
+
   /// Gets or sets the list of health errors.
   final pulumi.Input<List<HealthErrorModelResponse>> healthErrors;
+
   /// Gets or sets the Last successful unplanned migrate time.
   final pulumi.Input<String> lastSuccessfulMigrateTime;
+
   /// Gets or sets the Last successful test migrate time.
   final pulumi.Input<String> lastSuccessfulTestMigrateTime;
+
   /// Gets or sets the migrate state.
   final pulumi.Input<String> migrationStatus;
+
   /// Gets or sets the migrate state description.
   final pulumi.Input<String> migrationStatusDescription;
+
   /// Gets or sets the provisioning state of the workload deployment.
   final pulumi.Input<String> provisioningState;
+
   /// Gets or sets the workload deployment status.
   final pulumi.Input<String> status;
+
   /// Gets or sets the workload deployment status description.
   final pulumi.Input<String> statusDescription;
+
   /// Gets or sets the deployment target platform.
   final pulumi.Input<String>? targetPlatform;
+
   /// Gets or sets the test migrate state.
   final pulumi.Input<String> testMigrationStatus;
+
   /// Gets or sets the Test migrate state description.
   final pulumi.Input<String> testMigrationStatusDescription;
+
   /// Workload instance model properties.
-  final pulumi.Input<WorkloadInstanceModelPropertiesResponse>? workloadInstanceProperties;
+  final pulumi.Input<WorkloadInstanceModelPropertiesResponse>?
+  workloadInstanceProperties;
 
   /// Creates a new [WorkloadDeploymentModelPropertiesResponse].
   /// [allowedOperations] Gets or sets the allowed scenarios on the workload deployment.
@@ -84,10 +104,29 @@ class WorkloadDeploymentModelPropertiesResponse {
     return <String, dynamic>{
       'allowedOperations': allowedOperations,
       'correlationId': correlationId,
-      'currentJob': pulumi.Input.mapInputValue<WorkloadDeploymentModelPropertiesResponseCurrentJob, Map<String, dynamic>>(currentJob, (value) => value.toMap()),
-      'customProperties': ?pulumi.Input.mapOptionalInputValue<ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
+      'currentJob':
+          pulumi.Input.mapInputValue<
+            WorkloadDeploymentModelPropertiesResponseCurrentJob,
+            Map<String, dynamic>
+          >(currentJob, (value) => value.toMap()),
+      'customProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse,
+            Map<String, dynamic>
+          >(customProperties, (value) => value.toMap()),
       'displayName': ?displayName,
-      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorModelResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorModelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'healthErrors':
+          pulumi.Input.mapInputValue<
+            List<HealthErrorModelResponse>,
+            List<Map<String, dynamic>>
+          >(
+            healthErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HealthErrorModelResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'lastSuccessfulMigrateTime': lastSuccessfulMigrateTime,
       'lastSuccessfulTestMigrateTime': lastSuccessfulTestMigrateTime,
       'migrationStatus': migrationStatus,
@@ -98,30 +137,86 @@ class WorkloadDeploymentModelPropertiesResponse {
       'targetPlatform': ?targetPlatform,
       'testMigrationStatus': testMigrationStatus,
       'testMigrationStatusDescription': testMigrationStatusDescription,
-      'workloadInstanceProperties': ?pulumi.Input.mapOptionalInputValue<WorkloadInstanceModelPropertiesResponse, Map<String, dynamic>>(workloadInstanceProperties, (value) => value.toMap()),
+      'workloadInstanceProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkloadInstanceModelPropertiesResponse,
+            Map<String, dynamic>
+          >(workloadInstanceProperties, (value) => value.toMap()),
     };
   }
 
-  factory WorkloadDeploymentModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory WorkloadDeploymentModelPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadDeploymentModelPropertiesResponse(
-      allowedOperations: ((map['allowedOperations'] as List).cast<String>()).input(),
-      correlationId: (map['correlationId'] as String).input(),
-      currentJob: (WorkloadDeploymentModelPropertiesResponseCurrentJob.fromMap((map['currentJob'] as Map).cast<String, dynamic>())).input(),
-      customProperties: map['customProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse.fromMap((map['customProperties']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      healthErrors: (pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastSuccessfulMigrateTime: (map['lastSuccessfulMigrateTime'] as String).input(),
-      lastSuccessfulTestMigrateTime: (map['lastSuccessfulTestMigrateTime'] as String).input(),
-      migrationStatus: (map['migrationStatus'] as String).input(),
-      migrationStatusDescription: (map['migrationStatusDescription'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      status: (map['status'] as String).input(),
-      statusDescription: (map['statusDescription'] as String).input(),
-      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform']! as String).input(),
-      testMigrationStatus: (map['testMigrationStatus'] as String).input(),
-      testMigrationStatusDescription: (map['testMigrationStatusDescription'] as String).input(),
-      workloadInstanceProperties: map['workloadInstanceProperties'] == null ? null : (WorkloadInstanceModelPropertiesResponse.fromMap((map['workloadInstanceProperties']! as Map).cast<String, dynamic>())).input(),
+      allowedOperations: pulumi.Input.fromValue(
+        (map['allowedOperations'] as List).cast<String>(),
+      ),
+      correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
+      currentJob: pulumi.Input.fromValue(
+        WorkloadDeploymentModelPropertiesResponseCurrentJob.fromMap(
+          (map['currentJob']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      customProperties: (() {
+        final guardedValue = map['customProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HealthErrorModelResponse>(
+          map['healthErrors']!,
+          (value) => HealthErrorModelResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      lastSuccessfulMigrateTime: pulumi.Input.fromValue(
+        map['lastSuccessfulMigrateTime'] as String,
+      ),
+      lastSuccessfulTestMigrateTime: pulumi.Input.fromValue(
+        map['lastSuccessfulTestMigrateTime'] as String,
+      ),
+      migrationStatus: pulumi.Input.fromValue(map['migrationStatus'] as String),
+      migrationStatusDescription: pulumi.Input.fromValue(
+        map['migrationStatusDescription'] as String,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      statusDescription: pulumi.Input.fromValue(
+        map['statusDescription'] as String,
+      ),
+      targetPlatform: (() {
+        final guardedValue = map['targetPlatform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testMigrationStatus: pulumi.Input.fromValue(
+        map['testMigrationStatus'] as String,
+      ),
+      testMigrationStatusDescription: pulumi.Input.fromValue(
+        map['testMigrationStatusDescription'] as String,
+      ),
+      workloadInstanceProperties: (() {
+        final guardedValue = map['workloadInstanceProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkloadInstanceModelPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

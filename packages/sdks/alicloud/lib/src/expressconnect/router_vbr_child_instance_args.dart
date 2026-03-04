@@ -9,16 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterVbrChildInstanceArgs {
   /// The ID of the leased line gateway subinstance.
   final pulumi.Input<String> childInstanceId;
+
   /// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
   ///
-  /// > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
+  /// &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
   final pulumi.Input<String>? childInstanceOwnerId;
+
   /// Region of the leased line gateway sub-instance
   final pulumi.Input<String> childInstanceRegionId;
+
   /// The type of the network instance. Value: `VBR`: VBR instance.
   final pulumi.Input<String> childInstanceType;
+
   /// Resource attribute fields that represent descriptive information
   final pulumi.Input<String>? description;
+
   /// ID of the representative leased line gateway instance.
   final pulumi.Input<String> ecrId;
 
@@ -51,13 +56,24 @@ class RouterVbrChildInstanceArgs {
 
   factory RouterVbrChildInstanceArgs.fromMap(Map<String, dynamic> map) {
     return RouterVbrChildInstanceArgs(
-      childInstanceId: (map['childInstanceId'] as String).input(),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId']! as String).input(),
-      childInstanceRegionId: (map['childInstanceRegionId'] as String).input(),
-      childInstanceType: (map['childInstanceType'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ecrId: (map['ecrId'] as String).input(),
+      childInstanceId: pulumi.Input.fromValue(map['childInstanceId'] as String),
+      childInstanceOwnerId: (() {
+        final guardedValue = map['childInstanceOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      childInstanceRegionId: pulumi.Input.fromValue(
+        map['childInstanceRegionId'] as String,
+      ),
+      childInstanceType: pulumi.Input.fromValue(
+        map['childInstanceType'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecrId: pulumi.Input.fromValue(map['ecrId'] as String),
     );
   }
 }
-

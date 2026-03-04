@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigBlockingFunctionsForwardInboundCredentials {
   /// Whether to pass the user's OAuth identity provider's access token.
   final pulumi.Input<bool>? accessToken;
+
   /// Whether to pass the user's OIDC identity provider's ID token.
   final pulumi.Input<bool>? idToken;
+
   /// Whether to pass the user's OAuth identity provider's refresh token.
   final pulumi.Input<bool>? refreshToken;
 
@@ -28,12 +30,25 @@ class ConfigBlockingFunctionsForwardInboundCredentials {
     };
   }
 
-  factory ConfigBlockingFunctionsForwardInboundCredentials.fromMap(Map<String, dynamic> map) {
+  factory ConfigBlockingFunctionsForwardInboundCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigBlockingFunctionsForwardInboundCredentials(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as bool).input(),
-      idToken: map['idToken'] == null ? null : (map['idToken']! as bool).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as bool).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      idToken: (() {
+        final guardedValue = map['idToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

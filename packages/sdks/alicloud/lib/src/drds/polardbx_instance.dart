@@ -8,7 +8,7 @@ import 'polardbx_instance_state.dart';
 ///
 /// For information about Distributed Relational Database Service (DRDS) Polardbx Instance and how to use it, see [What is Polardbx Instance](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1).
 ///
-/// > **NOTE:** Available since v1.211.0.
+/// &gt; **NOTE:** Available since v1.211.0.
 ///
 /// ## Example Usage
 ///
@@ -288,40 +288,57 @@ import 'polardbx_instance_state.dart';
 class PolardbxInstance extends pulumi.CustomResource {
   /// Compute node specifications.
   late final pulumi.Output<String> cnClass;
+
   /// Number of computing nodes.
   late final pulumi.Output<int> cnNodeCount;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Instance remarks
   late final pulumi.Output<String?> description;
+
   /// Storage node specifications.
   late final pulumi.Output<String> dnClass;
+
   /// The number of storage nodes.
   late final pulumi.Output<int> dnNodeCount;
+
   /// Engine version, default 5.7
   late final pulumi.Output<String> engineVersion;
+
   /// Whether the instance is read-only.
   late final pulumi.Output<bool?> isReadDbInstance;
+
   /// If the instance is a read-only instance, you must specify the primary instance.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> primaryDbInstanceName;
+
   /// Primary Availability Zone.
   late final pulumi.Output<String> primaryZone;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// The resource group ID can be empty. This parameter is not supported for the time being.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Secondary availability zone.
   late final pulumi.Output<String?> secondaryZone;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// Third Availability Zone.
   late final pulumi.Output<String?> tertiaryZone;
+
   /// Topology type:
   late final pulumi.Output<String> topologyType;
+
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of the virtual switch.
   late final pulumi.Output<String> vswitchId;
 
@@ -334,29 +351,29 @@ class PolardbxInstance extends pulumi.CustomResource {
     PolardbxInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:drds/polardbxInstance:PolardbxInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cnClass = registerOutput<String>('cnClass');
-    this.cnNodeCount = registerOutput<int>('cnNodeCount');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dnClass = registerOutput<String>('dnClass');
-    this.dnNodeCount = registerOutput<int>('dnNodeCount');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.isReadDbInstance = registerOutput<bool?>('isReadDbInstance');
-    this.primaryDbInstanceName = registerOutput<String?>('primaryDbInstanceName');
-    this.primaryZone = registerOutput<String>('primaryZone');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.secondaryZone = registerOutput<String?>('secondaryZone');
-    this.status = registerOutput<String>('status');
-    this.tertiaryZone = registerOutput<String?>('tertiaryZone');
-    this.topologyType = registerOutput<String>('topologyType');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:drds/polardbxInstance:PolardbxInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cnClass = registerOutput<String>('cnClass');
+    cnNodeCount = registerOutput<int>('cnNodeCount');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dnClass = registerOutput<String>('dnClass');
+    dnNodeCount = registerOutput<int>('dnNodeCount');
+    engineVersion = registerOutput<String>('engineVersion');
+    isReadDbInstance = registerOutput<bool?>('isReadDbInstance');
+    primaryDbInstanceName = registerOutput<String?>('primaryDbInstanceName');
+    primaryZone = registerOutput<String>('primaryZone');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    secondaryZone = registerOutput<String?>('secondaryZone');
+    status = registerOutput<String>('status');
+    tertiaryZone = registerOutput<String?>('tertiaryZone');
+    topologyType = registerOutput<String>('topologyType');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [PolardbxInstance] resource's state with the given [name] and [id].
@@ -377,28 +394,28 @@ class PolardbxInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:drds/polardbxInstance:PolardbxInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cnClass = registerOutput<String>('cnClass');
-    this.cnNodeCount = registerOutput<int>('cnNodeCount');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dnClass = registerOutput<String>('dnClass');
-    this.dnNodeCount = registerOutput<int>('dnNodeCount');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.isReadDbInstance = registerOutput<bool?>('isReadDbInstance');
-    this.primaryDbInstanceName = registerOutput<String?>('primaryDbInstanceName');
-    this.primaryZone = registerOutput<String>('primaryZone');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.secondaryZone = registerOutput<String?>('secondaryZone');
-    this.status = registerOutput<String>('status');
-    this.tertiaryZone = registerOutput<String?>('tertiaryZone');
-    this.topologyType = registerOutput<String>('topologyType');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:drds/polardbxInstance:PolardbxInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cnClass = registerOutput<String>('cnClass');
+    cnNodeCount = registerOutput<int>('cnNodeCount');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dnClass = registerOutput<String>('dnClass');
+    dnNodeCount = registerOutput<int>('dnNodeCount');
+    engineVersion = registerOutput<String>('engineVersion');
+    isReadDbInstance = registerOutput<bool?>('isReadDbInstance');
+    primaryDbInstanceName = registerOutput<String?>('primaryDbInstanceName');
+    primaryZone = registerOutput<String>('primaryZone');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    secondaryZone = registerOutput<String?>('secondaryZone');
+    status = registerOutput<String>('status');
+    tertiaryZone = registerOutput<String?>('tertiaryZone');
+    topologyType = registerOutput<String>('topologyType');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

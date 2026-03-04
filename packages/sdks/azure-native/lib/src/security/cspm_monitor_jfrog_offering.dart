@@ -10,20 +10,15 @@ class CspmMonitorJFrogOffering {
 
   /// Creates a new [CspmMonitorJFrogOffering].
   /// [offeringType] The type of the security offering.
-  CspmMonitorJFrogOffering({
-    required this.offeringType,
-  });
+  CspmMonitorJFrogOffering({required this.offeringType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'offeringType': offeringType,
-    };
+    return <String, dynamic>{'offeringType': offeringType};
   }
 
   factory CspmMonitorJFrogOffering.fromMap(Map<String, dynamic> map) {
     return CspmMonitorJFrogOffering(
-      offeringType: (map['offeringType'] as String).input(),
+      offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
-

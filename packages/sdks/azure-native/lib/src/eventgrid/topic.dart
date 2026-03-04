@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_type_info_response.dart';
 import 'identity_info_response.dart';
-import 'inbound_ip_rule_response.dart';
 import 'json_input_schema_mapping_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 import 'topic_args.dart';
 
@@ -228,42 +226,61 @@ import 'topic_args.dart';
 class Topic extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Data Residency Boundary of the resource.
   late final pulumi.Output<String?> dataResidencyBoundary;
+
   /// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// Endpoint for the topic.
   late final pulumi.Output<String> endpoint;
+
   /// Event Type Information for the user topic. This information is provided by the publisher and can be used by the
   /// subscriber to view different types of events that are published.
   late final pulumi.Output<EventTypeInfoResponse?> eventTypeInfo;
+
   /// Identity information for the resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
+
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
-  late final pulumi.Output<List<InboundIpRuleResponse>?> inboundIpRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+
   /// This determines the format that Event Grid should expect for incoming events published to the topic.
   late final pulumi.Output<String?> inputSchema;
+
   /// This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
   late final pulumi.Output<JsonInputSchemaMappingResponse?> inputSchemaMapping;
+
   /// Location of the resource.
   late final pulumi.Output<String> location;
+
   /// Metric resource id for the topic.
   late final pulumi.Output<String> metricResourceId;
+
   /// Minimum TLS version of the publisher allowed to publish to this topic
   late final pulumi.Output<String?> minimumTlsVersionAllowed;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// List of private endpoint connections.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Provisioning state of the topic.
   late final pulumi.Output<String> provisioningState;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
-  /// You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
+  /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /&gt;
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -271,34 +288,39 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_eventgrid_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(
-    String name, {
-    TopicArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:eventgrid:Topic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataResidencyBoundary = registerOutput<String?>('dataResidencyBoundary');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo');
-    this.identity = registerOutput<IdentityInfoResponse?>('identity');
-    this.inboundIpRules = registerOutput<List<InboundIpRuleResponse>?>('inboundIpRules');
-    this.inputSchema = registerOutput<String?>('inputSchema');
-    this.inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>('inputSchemaMapping');
-    this.location = registerOutput<String>('location');
-    this.metricResourceId = registerOutput<String>('metricResourceId');
-    this.minimumTlsVersionAllowed = registerOutput<String?>('minimumTlsVersionAllowed');
+  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:eventgrid:Topic',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataResidencyBoundary = registerOutput<String?>('dataResidencyBoundary');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    endpoint = registerOutput<String>('endpoint');
+    eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo');
+    identity = registerOutput<IdentityInfoResponse?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    inputSchema = registerOutput<String?>('inputSchema');
+    inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>(
+      'inputSchemaMapping',
+    );
+    location = registerOutput<String>('location');
+    metricResourceId = registerOutput<String>('metricResourceId');
+    minimumTlsVersionAllowed = registerOutput<String?>(
+      'minimumTlsVersionAllowed',
+    );
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

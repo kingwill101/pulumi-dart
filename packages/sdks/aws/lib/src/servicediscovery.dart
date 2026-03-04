@@ -1,5 +1,3 @@
-library module_servicediscovery;
-
 export 'servicediscovery/functions.dart';
 export 'servicediscovery/get_dns_namespace_args.dart';
 export 'servicediscovery/get_dns_namespace_result.dart';

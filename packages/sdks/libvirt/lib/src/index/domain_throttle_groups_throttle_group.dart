@@ -5,42 +5,61 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainThrottleGroupsThrottleGroup {
   /// Specifies the name for a throttle group configuration.
   final pulumi.Input<String>? groupName;
+
   /// Configures the read bytes per second limit for the throttle group.
   final pulumi.Input<double>? readBytesSec;
+
   /// Sets the maximum read bytes per second limit for the throttle group.
   final pulumi.Input<double>? readBytesSecMax;
+
   /// Configures the maximum read bytes per second limit length for the throttle group.
   final pulumi.Input<double>? readBytesSecMaxLength;
+
   /// Sets the read IOPS limit for the throttle group.
   final pulumi.Input<double>? readIopsSec;
+
   /// Configures the maximum read IOPS limit for the throttle group.
   final pulumi.Input<double>? readIopsSecMax;
+
   /// Sets the maximum read IOPS limit length for the throttle group.
   final pulumi.Input<double>? readIopsSecMaxLength;
+
   /// Configures the size IOPS limit for the throttle group.
   final pulumi.Input<double>? sizeIopsSec;
+
   /// Sets the total bytes per second limit for the throttle group.
   final pulumi.Input<double>? totalBytesSec;
+
   /// Configures the maximum total bytes per second limit for the throttle group.
   final pulumi.Input<double>? totalBytesSecMax;
+
   /// Configures the maximum number of bytes per second for the throttle group, defining a limit for data transfer over time.
   final pulumi.Input<double>? totalBytesSecMaxLength;
+
   /// Sets the total number of input/output operations per second allowed for the throttle group, controlling the disk performance.
   final pulumi.Input<double>? totalIopsSec;
+
   /// Specifies the maximum limit for input/output operations per second for the throttle group, capping potential performance.
   final pulumi.Input<double>? totalIopsSecMax;
+
   /// Defines the maximum length of input/output operations per second for the throttle group, determining how much of this limit can be used.
   final pulumi.Input<double>? totalIopsSecMaxLength;
+
   /// Configures the number of bytes per second that can be written by the throttle group, limiting write operations.
   final pulumi.Input<double>? writeBytesSec;
+
   /// Sets the maximum number of bytes per second that can be written, imposing a cap on write throughput for the throttle group.
   final pulumi.Input<double>? writeBytesSecMax;
+
   /// Specifies the maximum length of write operations measured in bytes per second for the throttle group.
   final pulumi.Input<double>? writeBytesSecMaxLength;
+
   /// Configures the total number of write input/output operations per second that the throttle group can perform.
   final pulumi.Input<double>? writeIopsSec;
+
   /// Sets the maximum limit for write input/output operations per second for the throttle group, restricting performance.
   final pulumi.Input<double>? writeIopsSecMax;
+
   /// Defines the maximum length of write input/output operations per second for the throttle group, indicating the extent of its limits.
   final pulumi.Input<double>? writeIopsSecMaxLength;
 
@@ -115,27 +134,106 @@ class DomainThrottleGroupsThrottleGroup {
 
   factory DomainThrottleGroupsThrottleGroup.fromMap(Map<String, dynamic> map) {
     return DomainThrottleGroupsThrottleGroup(
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      readBytesSec: map['readBytesSec'] == null ? null : (map['readBytesSec']! as double).input(),
-      readBytesSecMax: map['readBytesSecMax'] == null ? null : (map['readBytesSecMax']! as double).input(),
-      readBytesSecMaxLength: map['readBytesSecMaxLength'] == null ? null : (map['readBytesSecMaxLength']! as double).input(),
-      readIopsSec: map['readIopsSec'] == null ? null : (map['readIopsSec']! as double).input(),
-      readIopsSecMax: map['readIopsSecMax'] == null ? null : (map['readIopsSecMax']! as double).input(),
-      readIopsSecMaxLength: map['readIopsSecMaxLength'] == null ? null : (map['readIopsSecMaxLength']! as double).input(),
-      sizeIopsSec: map['sizeIopsSec'] == null ? null : (map['sizeIopsSec']! as double).input(),
-      totalBytesSec: map['totalBytesSec'] == null ? null : (map['totalBytesSec']! as double).input(),
-      totalBytesSecMax: map['totalBytesSecMax'] == null ? null : (map['totalBytesSecMax']! as double).input(),
-      totalBytesSecMaxLength: map['totalBytesSecMaxLength'] == null ? null : (map['totalBytesSecMaxLength']! as double).input(),
-      totalIopsSec: map['totalIopsSec'] == null ? null : (map['totalIopsSec']! as double).input(),
-      totalIopsSecMax: map['totalIopsSecMax'] == null ? null : (map['totalIopsSecMax']! as double).input(),
-      totalIopsSecMaxLength: map['totalIopsSecMaxLength'] == null ? null : (map['totalIopsSecMaxLength']! as double).input(),
-      writeBytesSec: map['writeBytesSec'] == null ? null : (map['writeBytesSec']! as double).input(),
-      writeBytesSecMax: map['writeBytesSecMax'] == null ? null : (map['writeBytesSecMax']! as double).input(),
-      writeBytesSecMaxLength: map['writeBytesSecMaxLength'] == null ? null : (map['writeBytesSecMaxLength']! as double).input(),
-      writeIopsSec: map['writeIopsSec'] == null ? null : (map['writeIopsSec']! as double).input(),
-      writeIopsSecMax: map['writeIopsSecMax'] == null ? null : (map['writeIopsSecMax']! as double).input(),
-      writeIopsSecMaxLength: map['writeIopsSecMaxLength'] == null ? null : (map['writeIopsSecMaxLength']! as double).input(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readBytesSec: (() {
+        final guardedValue = map['readBytesSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      readBytesSecMax: (() {
+        final guardedValue = map['readBytesSecMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      readBytesSecMaxLength: (() {
+        final guardedValue = map['readBytesSecMaxLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      readIopsSec: (() {
+        final guardedValue = map['readIopsSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      readIopsSecMax: (() {
+        final guardedValue = map['readIopsSecMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      readIopsSecMaxLength: (() {
+        final guardedValue = map['readIopsSecMaxLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      sizeIopsSec: (() {
+        final guardedValue = map['sizeIopsSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalBytesSec: (() {
+        final guardedValue = map['totalBytesSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalBytesSecMax: (() {
+        final guardedValue = map['totalBytesSecMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalBytesSecMaxLength: (() {
+        final guardedValue = map['totalBytesSecMaxLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalIopsSec: (() {
+        final guardedValue = map['totalIopsSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalIopsSecMax: (() {
+        final guardedValue = map['totalIopsSecMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalIopsSecMaxLength: (() {
+        final guardedValue = map['totalIopsSecMaxLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      writeBytesSec: (() {
+        final guardedValue = map['writeBytesSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      writeBytesSecMax: (() {
+        final guardedValue = map['writeBytesSecMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      writeBytesSecMaxLength: (() {
+        final guardedValue = map['writeBytesSecMaxLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      writeIopsSec: (() {
+        final guardedValue = map['writeIopsSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      writeIopsSecMax: (() {
+        final guardedValue = map['writeIopsSecMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      writeIopsSecMaxLength: (() {
+        final guardedValue = map['writeIopsSecMaxLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

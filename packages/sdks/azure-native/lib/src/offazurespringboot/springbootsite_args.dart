@@ -11,14 +11,19 @@ import 'springbootsites_properties.dart';
 class SpringbootsiteArgs {
   /// The extended location definition.
   final pulumi.Input<SpringbootsitesModelExtendedLocation>? extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The springbootsites resource definition.
   final pulumi.Input<SpringbootsitesProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The springbootsites name.
   final pulumi.Input<String>? springbootsitesName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -40,9 +45,17 @@ class SpringbootsiteArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<SpringbootsitesModelExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpringbootsitesModelExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<SpringbootsitesProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpringbootsitesProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'springbootsitesName': ?springbootsitesName,
       'tags': ?tags,
@@ -51,13 +64,44 @@ class SpringbootsiteArgs {
 
   factory SpringbootsiteArgs.fromMap(Map<String, dynamic> map) {
     return SpringbootsiteArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (SpringbootsitesModelExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (SpringbootsitesProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      springbootsitesName: map['springbootsitesName'] == null ? null : (map['springbootsitesName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpringbootsitesModelExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpringbootsitesProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      springbootsitesName: (() {
+        final guardedValue = map['springbootsitesName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

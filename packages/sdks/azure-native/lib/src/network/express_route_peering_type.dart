@@ -4,16 +4,15 @@ enum ExpressRoutePeeringType {
   valueAzurePrivatePeering("AzurePrivatePeering"),
   valueMicrosoftPeering("MicrosoftPeering");
 
-  const ExpressRoutePeeringType(this.value);
-  final String value;
+  const ExpressRoutePeeringType(this.wireValue);
+  final String wireValue;
 
   static ExpressRoutePeeringType fromValue(String value) {
     for (final item in ExpressRoutePeeringType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressRoutePeeringType value: $value');
   }
 }
-

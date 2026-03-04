@@ -12,20 +12,19 @@ class GetLinksArgs {
 
   /// Creates a new [GetLinksArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetLinksArgs({
-    this.region,
-  });
+  GetLinksArgs({this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetLinksArgs.fromMap(Map<String, dynamic> map) {
     return GetLinksArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

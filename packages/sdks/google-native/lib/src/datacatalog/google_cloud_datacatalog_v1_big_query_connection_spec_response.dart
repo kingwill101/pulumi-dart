@@ -6,9 +6,14 @@ import 'google_cloud_datacatalog_v1_cloud_sql_big_query_connection_spec_response
 /// Specification for the BigQuery connection.
 class GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse {
   /// Specification for the BigQuery connection to a Cloud SQL instance.
-  final pulumi.Input<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse> cloudSql;
+  final pulumi.Input<
+    GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse
+  >
+  cloudSql;
+
   /// The type of the BigQuery connection.
   final pulumi.Input<String> connectionType;
+
   /// True if there are credentials attached to the BigQuery connection; false otherwise.
   final pulumi.Input<bool> hasCredential;
 
@@ -24,18 +29,27 @@ class GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudSql': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse, Map<String, dynamic>>(cloudSql, (value) => value.toMap()),
+      'cloudSql':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse,
+            Map<String, dynamic>
+          >(cloudSql, (value) => value.toMap()),
       'connectionType': connectionType,
       'hasCredential': hasCredential,
     };
   }
 
-  factory GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse(
-      cloudSql: (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse.fromMap((map['cloudSql'] as Map).cast<String, dynamic>())).input(),
-      connectionType: (map['connectionType'] as String).input(),
-      hasCredential: (map['hasCredential'] as bool).input(),
+      cloudSql: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse.fromMap(
+          (map['cloudSql']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      connectionType: pulumi.Input.fromValue(map['connectionType'] as String),
+      hasCredential: pulumi.Input.fromValue(map['hasCredential'] as bool),
     );
   }
 }
-

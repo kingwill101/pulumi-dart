@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_routes_v2_args.dart';
-import 'router_routes_v2_route.dart';
 import 'router_routes_v2_state.dart';
 
 /// Creates routing entries on a OpenStack V2 router.
 ///
-/// > **Note:** This resource uses the OpenStack Neutron `extraroute-atomic`
+/// &gt; **Note:** This resource uses the OpenStack Neutron `extraroute-atomic`
 /// extension. If your environment does not have this extension, you should use the
 /// `openstack.networking.RouterRoute` resource to add routes instead.
 ///
@@ -317,11 +316,13 @@ class RouterRoutesV2 extends pulumi.CustomResource {
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// new routing entries.
   late final pulumi.Output<String> region;
+
   /// ID of the router these routing entries belong to.
   /// Changing this creates new routing entries.
   late final pulumi.Output<String> routerId;
+
   /// A set of routing entries to add to the router.
-  late final pulumi.Output<List<RouterRoutesV2Route>?> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
 
   /// Creates a new [RouterRoutesV2].
   /// [name] The Pulumi resource name.
@@ -332,14 +333,14 @@ class RouterRoutesV2 extends pulumi.CustomResource {
     RouterRoutesV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/routerRoutesV2:RouterRoutesV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.routerId = registerOutput<String>('routerId');
-    this.routes = registerOutput<List<RouterRoutesV2Route>?>('routes');
+         'openstack:networking/routerRoutesV2:RouterRoutesV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    routerId = registerOutput<String>('routerId');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
   }
 
   /// Gets an existing [RouterRoutesV2] resource's state with the given [name] and [id].
@@ -360,13 +361,13 @@ class RouterRoutesV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/routerRoutesV2:RouterRoutesV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.routerId = registerOutput<String>('routerId');
-    this.routes = registerOutput<List<RouterRoutesV2Route>?>('routes');
+         'openstack:networking/routerRoutesV2:RouterRoutesV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    routerId = registerOutput<String>('routerId');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
   }
 }

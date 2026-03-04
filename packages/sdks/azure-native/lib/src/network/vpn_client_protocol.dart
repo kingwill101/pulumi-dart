@@ -4,16 +4,15 @@ enum VpnClientProtocol {
   valueSSTP("SSTP"),
   valueOpenVPN("OpenVPN");
 
-  const VpnClientProtocol(this.value);
-  final String value;
+  const VpnClientProtocol(this.wireValue);
+  final String wireValue;
 
   static VpnClientProtocol fromValue(String value) {
     for (final item in VpnClientProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnClientProtocol value: $value');
   }
 }
-

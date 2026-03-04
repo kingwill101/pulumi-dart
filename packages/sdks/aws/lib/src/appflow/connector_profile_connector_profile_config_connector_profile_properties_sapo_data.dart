@@ -6,14 +6,22 @@ import 'connector_profile_connector_profile_config_connector_profile_properties_
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
   /// The location of the SAPOData resource.
   final pulumi.Input<String> applicationHostUrl;
+
   /// The application path to catalog service.
   final pulumi.Input<String> applicationServicePath;
+
   /// The client number for the client creating the connection.
   final pulumi.Input<String> clientNumber;
+
   /// The logon language of SAPOData instance.
   final pulumi.Input<String>? logonLanguage;
+
   /// The SAPOData OAuth properties required for OAuth type authentication.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties>? oauthProperties;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties
+  >?
+  oauthProperties;
+
   /// The port number of the SAPOData instance.
   final pulumi.Input<int> portNumber;
   final pulumi.Input<String>? privateLinkServiceName;
@@ -42,22 +50,47 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
       'applicationServicePath': applicationServicePath,
       'clientNumber': clientNumber,
       'logonLanguage': ?logonLanguage,
-      'oauthProperties': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties, Map<String, dynamic>>(oauthProperties, (value) => value.toMap()),
+      'oauthProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties,
+            Map<String, dynamic>
+          >(oauthProperties, (value) => value.toMap()),
       'portNumber': portNumber,
       'privateLinkServiceName': ?privateLinkServiceName,
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData(
-      applicationHostUrl: (map['applicationHostUrl'] as String).input(),
-      applicationServicePath: (map['applicationServicePath'] as String).input(),
-      clientNumber: (map['clientNumber'] as String).input(),
-      logonLanguage: map['logonLanguage'] == null ? null : ((map['logonLanguage'] as String).input()).input(),
-      oauthProperties: map['oauthProperties'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap((map['oauthProperties']! as Map).cast<String, dynamic>())).input()).input(),
-      portNumber: (map['portNumber'] as int).input(),
-      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : ((map['privateLinkServiceName'] as String).input()).input(),
+      applicationHostUrl: pulumi.Input.fromValue(
+        map['applicationHostUrl'] as String,
+      ),
+      applicationServicePath: pulumi.Input.fromValue(
+        map['applicationServicePath'] as String,
+      ),
+      clientNumber: pulumi.Input.fromValue(map['clientNumber'] as String),
+      logonLanguage: (() {
+        final guardedValue = map['logonLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthProperties: (() {
+        final guardedValue = map['oauthProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      portNumber: pulumi.Input.fromValue(map['portNumber'] as int),
+      privateLinkServiceName: (() {
+        final guardedValue = map['privateLinkServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

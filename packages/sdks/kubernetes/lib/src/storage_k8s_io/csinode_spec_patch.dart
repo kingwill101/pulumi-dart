@@ -10,20 +10,39 @@ class CSINodeSpecPatch {
 
   /// Creates a new [CSINodeSpecPatch].
   /// [drivers] drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
-  CSINodeSpecPatch({
-    this.drivers,
-  });
+  CSINodeSpecPatch({this.drivers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'drivers': ?pulumi.Input.mapOptionalInputValue<List<CSINodeDriverPatch>, List<Map<String, dynamic>>>(drivers, (value) => pulumi.Input.encodeList<CSINodeDriverPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'drivers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CSINodeDriverPatch>,
+            List<Map<String, dynamic>>
+          >(
+            drivers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CSINodeDriverPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CSINodeSpecPatch.fromMap(Map<String, dynamic> map) {
     return CSINodeSpecPatch(
-      drivers: map['drivers'] == null ? null : (pulumi.Input.decodeList<CSINodeDriverPatch>(map['drivers']!, (value) => CSINodeDriverPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      drivers: (() {
+        final guardedValue = map['drivers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CSINodeDriverPatch>(
+            guardedValue,
+            (value) => CSINodeDriverPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

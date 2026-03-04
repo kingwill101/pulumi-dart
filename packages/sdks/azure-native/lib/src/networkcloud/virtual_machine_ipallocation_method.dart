@@ -6,16 +6,17 @@ enum VirtualMachineIPAllocationMethod {
   valueStatic("Static"),
   valueDisabled("Disabled");
 
-  const VirtualMachineIPAllocationMethod(this.value);
-  final String value;
+  const VirtualMachineIPAllocationMethod(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineIPAllocationMethod fromValue(String value) {
     for (final item in VirtualMachineIPAllocationMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachineIPAllocationMethod value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachineIPAllocationMethod value: $value',
+    );
   }
 }
-

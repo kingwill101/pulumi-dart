@@ -1,5 +1,3 @@
-library module_shield;
-
 export 'shield/application_layer_automatic_response.dart';
 export 'shield/application_layer_automatic_response_args.dart';
 export 'shield/application_layer_automatic_response_state.dart';

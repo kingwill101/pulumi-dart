@@ -6,7 +6,7 @@ import 'firewall_rule_state.dart';
 ///
 /// For information about Simple Application Server Firewall Rule and how to use it, see [What is Firewall Rule](https://www.alibabacloud.com/help/doc-detail/190449.htm).
 ///
-/// > **NOTE:** Available since v1.143.0.
+/// &gt; **NOTE:** Available since v1.143.0.
 ///
 /// ## Example Usage
 ///
@@ -243,12 +243,16 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The ID of the firewall rule.
   late final pulumi.Output<String> firewallRuleId;
+
   /// Alibaba Cloud simple application server instance ID.
   late final pulumi.Output<String> instanceId;
-  /// The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `<start port number>/<end port number>`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
+
+  /// The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `&lt;start port number&gt;/&lt;end port number&gt;`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
   late final pulumi.Output<String> port;
+
   /// The remarks of the firewall rule.
   late final pulumi.Output<String?> remark;
+
   /// The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
   late final pulumi.Output<String> ruleProtocol;
 
@@ -261,16 +265,16 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:simpleapplicationserver/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.firewallRuleId = registerOutput<String>('firewallRuleId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.port = registerOutput<String>('port');
-    this.remark = registerOutput<String?>('remark');
-    this.ruleProtocol = registerOutput<String>('ruleProtocol');
+         'alicloud:simpleapplicationserver/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    firewallRuleId = registerOutput<String>('firewallRuleId');
+    instanceId = registerOutput<String>('instanceId');
+    port = registerOutput<String>('port');
+    remark = registerOutput<String?>('remark');
+    ruleProtocol = registerOutput<String>('ruleProtocol');
   }
 
   /// Gets an existing [FirewallRule] resource's state with the given [name] and [id].
@@ -291,15 +295,15 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:simpleapplicationserver/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.firewallRuleId = registerOutput<String>('firewallRuleId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.port = registerOutput<String>('port');
-    this.remark = registerOutput<String?>('remark');
-    this.ruleProtocol = registerOutput<String>('ruleProtocol');
+         'alicloud:simpleapplicationserver/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    firewallRuleId = registerOutput<String>('firewallRuleId');
+    instanceId = registerOutput<String>('instanceId');
+    port = registerOutput<String>('port');
+    remark = registerOutput<String?>('remark');
+    ruleProtocol = registerOutput<String>('ruleProtocol');
   }
 }

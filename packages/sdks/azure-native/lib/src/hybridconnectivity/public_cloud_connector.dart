@@ -184,22 +184,31 @@ import 'system_data_response.dart';
 class PublicCloudConnector extends pulumi.CustomResource {
   /// Cloud profile for AWS.
   late final pulumi.Output<AwsCloudProfileResponse> awsCloudProfile;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Connector primary identifier.
   late final pulumi.Output<String> connectorPrimaryIdentifier;
+
   /// Host cloud the public cloud connector.
   late final pulumi.Output<String> hostType;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The resource provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -212,20 +221,24 @@ class PublicCloudConnector extends pulumi.CustomResource {
     PublicCloudConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridconnectivity:PublicCloudConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.awsCloudProfile = registerOutput<AwsCloudProfileResponse>('awsCloudProfile');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectorPrimaryIdentifier = registerOutput<String>('connectorPrimaryIdentifier');
-    this.hostType = registerOutput<String>('hostType');
-    this.location = registerOutput<String>('location');
+         'azure-native:hybridconnectivity:PublicCloudConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    awsCloudProfile = registerOutput<AwsCloudProfileResponse>(
+      'awsCloudProfile',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorPrimaryIdentifier = registerOutput<String>(
+      'connectorPrimaryIdentifier',
+    );
+    hostType = registerOutput<String>('hostType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

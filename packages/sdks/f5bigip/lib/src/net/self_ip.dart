@@ -616,12 +616,16 @@ import 'self_ip_state.dart';
 class SelfIp extends pulumi.CustomResource {
   /// The Self IP's address and netmask. The IP address could also contain the route domain, e.g. `10.12.13.14%4/24`.
   late final pulumi.Output<String> ip;
+
   /// Name of the selfip
   late final pulumi.Output<String> name;
+
   /// Specifies the port lockdown, defaults to `Allow None` if not specified.
   late final pulumi.Output<List<String>?> portLockdowns;
+
   /// Specifies the traffic group, defaults to `traffic-group-local-only` if not specified.
   late final pulumi.Output<String?> trafficGroup;
+
   /// Specifies the VLAN for which you are setting a self IP address. This setting must be provided when a self IP is created.
   late final pulumi.Output<String> vlan;
 
@@ -629,21 +633,18 @@ class SelfIp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [SelfIp]. {@macro pulumi_net_self_ip_self_ip_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  SelfIp(
-    String name, {
-    SelfIpArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:net/selfIp:SelfIp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ip = registerOutput<String>('ip');
+  SelfIp(String name, {SelfIpArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:net/selfIp:SelfIp',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    ip = registerOutput<String>('ip');
     this.name = registerOutput<String>('name');
-    this.portLockdowns = registerOutput<List<String>?>('portLockdowns');
-    this.trafficGroup = registerOutput<String?>('trafficGroup');
-    this.vlan = registerOutput<String>('vlan');
+    portLockdowns = registerOutput<List<String>?>('portLockdowns');
+    trafficGroup = registerOutput<String?>('trafficGroup');
+    vlan = registerOutput<String>('vlan');
   }
 
   /// Gets an existing [SelfIp] resource's state with the given [name] and [id].
@@ -664,15 +665,15 @@ class SelfIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:net/selfIp:SelfIp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ip = registerOutput<String>('ip');
+         'f5bigip:net/selfIp:SelfIp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ip = registerOutput<String>('ip');
     this.name = registerOutput<String>('name');
-    this.portLockdowns = registerOutput<List<String>?>('portLockdowns');
-    this.trafficGroup = registerOutput<String?>('trafficGroup');
-    this.vlan = registerOutput<String>('vlan');
+    portLockdowns = registerOutput<List<String>?>('portLockdowns');
+    trafficGroup = registerOutput<String?>('trafficGroup');
+    vlan = registerOutput<String>('vlan');
   }
 }

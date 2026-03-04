@@ -7,16 +7,20 @@ enum RegionBackendServiceLoadBalancingSchemeComputeBeta {
   internalSelfManaged("INTERNAL_SELF_MANAGED"),
   invalidLoadBalancingScheme("INVALID_LOAD_BALANCING_SCHEME");
 
-  const RegionBackendServiceLoadBalancingSchemeComputeBeta(this.value);
-  final String value;
+  const RegionBackendServiceLoadBalancingSchemeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static RegionBackendServiceLoadBalancingSchemeComputeBeta fromValue(String value) {
-    for (final item in RegionBackendServiceLoadBalancingSchemeComputeBeta.values) {
-      if (item.value == value) {
+  static RegionBackendServiceLoadBalancingSchemeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in RegionBackendServiceLoadBalancingSchemeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceLoadBalancingSchemeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceLoadBalancingSchemeComputeBeta value: $value',
+    );
   }
 }
-

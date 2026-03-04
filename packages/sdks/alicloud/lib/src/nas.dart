@@ -1,5 +1,3 @@
-library module_nas;
-
 export 'nas/access_group.dart';
 export 'nas/access_group_args.dart';
 export 'nas/access_group_state.dart';

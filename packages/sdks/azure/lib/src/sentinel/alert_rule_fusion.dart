@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_rule_fusion_args.dart';
-import 'alert_rule_fusion_source.dart';
 import 'alert_rule_fusion_state.dart';
 
 /// Manages a Sentinel Fusion Alert Rule.
@@ -207,7 +206,7 @@ import 'alert_rule_fusion_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2023-12-01-preview
@@ -222,13 +221,16 @@ import 'alert_rule_fusion_state.dart';
 class AlertRuleFusion extends pulumi.CustomResource {
   /// The GUID of the alert rule template which is used for this Sentinel Fusion Alert Rule. Changing this forces a new Sentinel Fusion Alert Rule to be created.
   late final pulumi.Output<String> alertRuleTemplateGuid;
+
   /// Should this Sentinel Fusion Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The ID of the Log Analytics Workspace this Sentinel Fusion Alert Rule belongs to. Changing this forces a new Sentinel Fusion Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
   late final pulumi.Output<String> name;
+
   /// One or more `source` blocks as defined below.
-  late final pulumi.Output<List<AlertRuleFusionSource>> sources;
+  late final pulumi.Output<List<Map<String, dynamic>>> sources;
 
   /// Creates a new [AlertRuleFusion].
   /// [name] The Pulumi resource name.
@@ -239,16 +241,16 @@ class AlertRuleFusion extends pulumi.CustomResource {
     AlertRuleFusionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/alertRuleFusion:AlertRuleFusion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/alertRuleFusion:AlertRuleFusion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
+    enabled = registerOutput<bool?>('enabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.sources = registerOutput<List<AlertRuleFusionSource>>('sources');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
   }
 
   /// Gets an existing [AlertRuleFusion] resource's state with the given [name] and [id].
@@ -269,15 +271,15 @@ class AlertRuleFusion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/alertRuleFusion:AlertRuleFusion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/alertRuleFusion:AlertRuleFusion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
+    enabled = registerOutput<bool?>('enabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.sources = registerOutput<List<AlertRuleFusionSource>>('sources');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
   }
 }

@@ -23,17 +23,44 @@ class DatadogHostMetadataResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentVersion': ?agentVersion,
-      'installMethod': ?pulumi.Input.mapOptionalInputValue<DatadogInstallMethodResponse, Map<String, dynamic>>(installMethod, (value) => value.toMap()),
-      'logsAgent': ?pulumi.Input.mapOptionalInputValue<DatadogLogsAgentResponse, Map<String, dynamic>>(logsAgent, (value) => value.toMap()),
+      'installMethod':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatadogInstallMethodResponse,
+            Map<String, dynamic>
+          >(installMethod, (value) => value.toMap()),
+      'logsAgent':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatadogLogsAgentResponse,
+            Map<String, dynamic>
+          >(logsAgent, (value) => value.toMap()),
     };
   }
 
   factory DatadogHostMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DatadogHostMetadataResponse(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
-      installMethod: map['installMethod'] == null ? null : (DatadogInstallMethodResponse.fromMap((map['installMethod']! as Map).cast<String, dynamic>())).input(),
-      logsAgent: map['logsAgent'] == null ? null : (DatadogLogsAgentResponse.fromMap((map['logsAgent']! as Map).cast<String, dynamic>())).input(),
+      agentVersion: (() {
+        final guardedValue = map['agentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      installMethod: (() {
+        final guardedValue = map['installMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatadogInstallMethodResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logsAgent: (() {
+        final guardedValue = map['logsAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatadogLogsAgentResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

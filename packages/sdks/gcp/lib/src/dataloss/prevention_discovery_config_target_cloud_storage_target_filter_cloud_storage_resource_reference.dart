@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference {
   /// The bucket to scan.
   final pulumi.Input<String>? bucketName;
+
   /// If within a project-level config, then this must match the config's project id.
   final pulumi.Input<String>? projectId;
 
@@ -23,11 +24,20 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourc
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

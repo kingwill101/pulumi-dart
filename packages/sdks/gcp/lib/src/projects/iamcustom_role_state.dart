@@ -6,21 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IAMCustomRoleState {
   /// (Optional) The current deleted state of the role.
   final pulumi.Input<bool>? deleted;
+
   /// A human-readable description for the role.
   final pulumi.Input<String>? description;
+
   /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
   final pulumi.Input<String>? name;
+
   /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
   final pulumi.Input<List<String>>? permissions;
+
   /// The project that the custom role will be created in.
   /// Defaults to the provider project configuration.
   final pulumi.Input<String>? project;
+
   /// The camel case role id to use for this role. Cannot contain `-` characters.
   final pulumi.Input<String>? roleId;
+
   /// The current launch stage of the role.
   /// Defaults to `GA`.
   /// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
   final pulumi.Input<String>? stage;
+
   /// A human-readable title for the role.
   final pulumi.Input<String>? title;
 
@@ -59,15 +66,46 @@ class IAMCustomRoleState {
 
   factory IAMCustomRoleState.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleState(
-      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
-      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      deleted: (() {
+        final guardedValue = map['deleted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleId: (() {
+        final guardedValue = map['roleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stage: (() {
+        final guardedValue = map['stage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

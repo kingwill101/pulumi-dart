@@ -7,16 +7,22 @@ import 'organizations_deidentify_template_args.dart';
 class OrganizationsDeidentifyTemplate extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate.
   late final pulumi.Output<String> createTime;
+
   /// The core content of the template.
-  late final pulumi.Output<GooglePrivacyDlpV2DeidentifyConfigResponse> deidentifyConfig;
+  late final pulumi.Output<GooglePrivacyDlpV2DeidentifyConfigResponse>
+  deidentifyConfig;
+
   /// Short description (max 256 chars).
   late final pulumi.Output<String> description;
+
   /// Display name (max 256 chars).
   late final pulumi.Output<String> displayName;
   late final pulumi.Output<String> location;
+
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
+
   /// The last update timestamp of an inspectTemplate.
   late final pulumi.Output<String> updateTime;
 
@@ -29,18 +35,21 @@ class OrganizationsDeidentifyTemplate extends pulumi.CustomResource {
     OrganizationsDeidentifyTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:dlp/v2:OrganizationsDeidentifyTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deidentifyConfig = registerOutput<GooglePrivacyDlpV2DeidentifyConfigResponse>('deidentifyConfig');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.location = registerOutput<String>('location');
+         'google-native:dlp/v2:OrganizationsDeidentifyTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deidentifyConfig =
+        registerOutput<GooglePrivacyDlpV2DeidentifyConfigResponse>(
+          'deidentifyConfig',
+        );
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.organizationId = registerOutput<String>('organizationId');
-    this.updateTime = registerOutput<String>('updateTime');
+    organizationId = registerOutput<String>('organizationId');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

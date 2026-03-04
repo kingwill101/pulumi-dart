@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
   /// The name of the application.
   final pulumi.Input<String> applicationName;
+
   /// The ID of the backup appliance.
   final pulumi.Input<String> backupApplianceId;
+
   /// The name of the backup appliance.
   final pulumi.Input<String> backupApplianceName;
+
   /// The name of the host where the application is running.
   final pulumi.Input<String> hostName;
+
   /// The ID of the SLA of this application.
   final pulumi.Input<String> slaId;
+
   /// The name of the SLP associated with the application.
   final pulumi.Input<String> slpName;
+
   /// The name of the SLT associated with the application.
   final pulumi.Input<String> sltName;
 
@@ -48,16 +54,21 @@ class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
     };
   }
 
-  factory GetDataSourceBackupConfigInfoBackupApplianceBackupConfig.fromMap(Map<String, dynamic> map) {
+  factory GetDataSourceBackupConfigInfoBackupApplianceBackupConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSourceBackupConfigInfoBackupApplianceBackupConfig(
-      applicationName: (map['applicationName'] as String).input(),
-      backupApplianceId: (map['backupApplianceId'] as String).input(),
-      backupApplianceName: (map['backupApplianceName'] as String).input(),
-      hostName: (map['hostName'] as String).input(),
-      slaId: (map['slaId'] as String).input(),
-      slpName: (map['slpName'] as String).input(),
-      sltName: (map['sltName'] as String).input(),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      backupApplianceId: pulumi.Input.fromValue(
+        map['backupApplianceId'] as String,
+      ),
+      backupApplianceName: pulumi.Input.fromValue(
+        map['backupApplianceName'] as String,
+      ),
+      hostName: pulumi.Input.fromValue(map['hostName'] as String),
+      slaId: pulumi.Input.fromValue(map['slaId'] as String),
+      slpName: pulumi.Input.fromValue(map['slpName'] as String),
+      sltName: pulumi.Input.fromValue(map['sltName'] as String),
     );
   }
 }
-

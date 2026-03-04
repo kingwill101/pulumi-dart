@@ -8,19 +8,25 @@ class GetCommonBandwidthPackagesResult {
   /// The name of bandwidth package.
   final String? bandwidthPackageName;
   final bool? dryRun;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (Optional) A list of Common Bandwidth Packages IDs.
   final List<String> ids;
   final bool? includeReservationData;
   final String? nameRegex;
+
   /// A list of Common Bandwidth Packages names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Common Bandwidth Packages. Each element contains the following attributes:
   final List<GetCommonBandwidthPackagesPackage> packages;
+
   /// The Id of resource group which the common bandwidth package belongs.
   final String? resourceGroupId;
+
   /// Status of the Common Bandwidth Package.
   final String? status;
 
@@ -60,7 +66,11 @@ class GetCommonBandwidthPackagesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'packages': pulumi.Input.encodeList<GetCommonBandwidthPackagesPackage, Map<String, dynamic>>(packages, (value) => value.toMap()),
+      'packages':
+          pulumi.Input.encodeList<
+            GetCommonBandwidthPackagesPackage,
+            Map<String, dynamic>
+          >(packages, (value) => value.toMap()),
       'resourceGroupId': ?resourceGroupId,
       'status': ?status,
     };
@@ -68,18 +78,50 @@ class GetCommonBandwidthPackagesResult {
 
   factory GetCommonBandwidthPackagesResult.fromMap(Map<String, dynamic> map) {
     return GetCommonBandwidthPackagesResult(
-      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : map['bandwidthPackageName']! as String,
-      dryRun: map['dryRun'] == null ? null : map['dryRun']! as bool,
+      bandwidthPackageName: (() {
+        final guardedValue = map['bandwidthPackageName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeReservationData: (() {
+        final guardedValue = map['includeReservationData'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      packages: pulumi.Input.decodeList<GetCommonBandwidthPackagesPackage>(map['packages'], (value) => GetCommonBandwidthPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      packages: pulumi.Input.decodeList<GetCommonBandwidthPackagesPackage>(
+        map['packages']!,
+        (value) => GetCommonBandwidthPackagesPackage.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

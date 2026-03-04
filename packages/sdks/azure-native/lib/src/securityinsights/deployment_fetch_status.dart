@@ -4,16 +4,15 @@ enum DeploymentFetchStatus {
   valueUnauthorized("Unauthorized"),
   valueNotFound("NotFound");
 
-  const DeploymentFetchStatus(this.value);
-  final String value;
+  const DeploymentFetchStatus(this.wireValue);
+  final String wireValue;
 
   static DeploymentFetchStatus fromValue(String value) {
     for (final item in DeploymentFetchStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeploymentFetchStatus value: $value');
   }
 }
-

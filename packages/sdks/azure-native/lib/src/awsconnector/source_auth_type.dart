@@ -3,16 +3,15 @@ enum SourceAuthType {
   cODECONNECTIONS("CODECONNECTIONS"),
   oAUTH("OAUTH");
 
-  const SourceAuthType(this.value);
-  final String value;
+  const SourceAuthType(this.wireValue);
+  final String wireValue;
 
   static SourceAuthType fromValue(String value) {
     for (final item in SourceAuthType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SourceAuthType value: $value');
   }
 }
-

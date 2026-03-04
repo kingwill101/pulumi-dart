@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTestResultFileArgs {
   /// The continuation token.
   final pulumi.Input<String>? continuationToken;
+
   /// The format to use when returning the webtest result.
   final pulumi.Input<String> downloadAs;
+
   /// The location ID where the webtest was physically run.
   final pulumi.Input<String> geoLocationId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The success state criteria for the webtest result.
   final pulumi.Input<bool>? testSuccessfulCriteria;
+
   /// The posix (epoch) time stamp for the webtest result.
   final pulumi.Input<int> timeStamp;
+
   /// The name of the Application Insights webtest resource.
   final pulumi.Input<String> webTestName;
 
@@ -54,14 +60,23 @@ class GetTestResultFileArgs {
 
   factory GetTestResultFileArgs.fromMap(Map<String, dynamic> map) {
     return GetTestResultFileArgs(
-      continuationToken: map['continuationToken'] == null ? null : (map['continuationToken']! as String).input(),
-      downloadAs: (map['downloadAs'] as String).input(),
-      geoLocationId: (map['geoLocationId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      testSuccessfulCriteria: map['testSuccessfulCriteria'] == null ? null : (map['testSuccessfulCriteria']! as bool).input(),
-      timeStamp: (map['timeStamp'] as int).input(),
-      webTestName: (map['webTestName'] as String).input(),
+      continuationToken: (() {
+        final guardedValue = map['continuationToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      downloadAs: pulumi.Input.fromValue(map['downloadAs'] as String),
+      geoLocationId: pulumi.Input.fromValue(map['geoLocationId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      testSuccessfulCriteria: (() {
+        final guardedValue = map['testSuccessfulCriteria'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeStamp: pulumi.Input.fromValue(map['timeStamp'] as int),
+      webTestName: pulumi.Input.fromValue(map['webTestName'] as String),
     );
   }
 }
-

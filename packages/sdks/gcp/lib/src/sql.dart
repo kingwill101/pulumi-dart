@@ -1,5 +1,3 @@
-library module_sql;
-
 export 'sql/database.dart';
 export 'sql/database_args.dart';
 export 'sql/database_instance.dart';

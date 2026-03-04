@@ -35,12 +35,13 @@ class GetLoadBalancerHealthCheck {
 
   factory GetLoadBalancerHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerHealthCheck(
-      healthyThreshold: (map['healthyThreshold'] as int).input(),
-      interval: (map['interval'] as int).input(),
-      target: (map['target'] as String).input(),
-      timeout: (map['timeout'] as int).input(),
-      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
+      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
+      interval: pulumi.Input.fromValue(map['interval'] as int),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      timeout: pulumi.Input.fromValue(map['timeout'] as int),
+      unhealthyThreshold: pulumi.Input.fromValue(
+        map['unhealthyThreshold'] as int,
+      ),
     );
   }
 }
-

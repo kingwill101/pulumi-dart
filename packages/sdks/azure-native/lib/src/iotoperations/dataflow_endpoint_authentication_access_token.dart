@@ -9,20 +9,17 @@ class DataflowEndpointAuthenticationAccessToken {
 
   /// Creates a new [DataflowEndpointAuthenticationAccessToken].
   /// [secretRef] Token secret name.
-  DataflowEndpointAuthenticationAccessToken({
-    required this.secretRef,
-  });
+  DataflowEndpointAuthenticationAccessToken({required this.secretRef});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretRef': secretRef,
-    };
+    return <String, dynamic>{'secretRef': secretRef};
   }
 
-  factory DataflowEndpointAuthenticationAccessToken.fromMap(Map<String, dynamic> map) {
+  factory DataflowEndpointAuthenticationAccessToken.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowEndpointAuthenticationAccessToken(
-      secretRef: (map['secretRef'] as String).input(),
+      secretRef: pulumi.Input.fromValue(map['secretRef'] as String),
     );
   }
 }
-

@@ -116,14 +116,19 @@ import 'subnet_cidr_reservation_state.dart';
 class SubnetCidrReservation extends pulumi.CustomResource {
   /// The CIDR block for the reservation.
   late final pulumi.Output<String> cidrBlock;
+
   /// A brief description of the reservation.
   late final pulumi.Output<String?> description;
+
   /// ID of the AWS account that owns this CIDR reservation.
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The type of reservation to create. Valid values: `explicit`, `prefix`
   late final pulumi.Output<String> reservationType;
+
   /// The ID of the subnet to create the reservation for.
   late final pulumi.Output<String> subnetId;
 
@@ -136,17 +141,17 @@ class SubnetCidrReservation extends pulumi.CustomResource {
     SubnetCidrReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/subnetCidrReservation:SubnetCidrReservation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.description = registerOutput<String?>('description');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.reservationType = registerOutput<String>('reservationType');
-    this.subnetId = registerOutput<String>('subnetId');
+         'aws:ec2/subnetCidrReservation:SubnetCidrReservation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    description = registerOutput<String?>('description');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    reservationType = registerOutput<String>('reservationType');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [SubnetCidrReservation] resource's state with the given [name] and [id].
@@ -167,16 +172,16 @@ class SubnetCidrReservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/subnetCidrReservation:SubnetCidrReservation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.description = registerOutput<String?>('description');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.reservationType = registerOutput<String>('reservationType');
-    this.subnetId = registerOutput<String>('subnetId');
+         'aws:ec2/subnetCidrReservation:SubnetCidrReservation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    description = registerOutput<String?>('description');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    reservationType = registerOutput<String>('reservationType');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

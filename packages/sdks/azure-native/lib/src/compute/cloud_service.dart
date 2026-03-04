@@ -1849,18 +1849,25 @@ import 'system_data_response.dart';
 class CloudService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Cloud service properties
   late final pulumi.Output<CloudServicePropertiesResponse> properties;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse?> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
   late final pulumi.Output<List<String>?> zones;
 
@@ -1873,18 +1880,18 @@ class CloudService extends pulumi.CustomResource {
     CloudServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:CloudService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:CloudService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<CloudServicePropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse?>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zones = registerOutput<List<String>?>('zones');
+    properties = registerOutput<CloudServicePropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse?>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

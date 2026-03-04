@@ -10,13 +10,17 @@ import 'cloud_sql_properties.dart';
 class ConnectionArgs {
   /// Cloud SQL properties.
   final pulumi.Input<CloudSqlProperties>? cloudSql;
+
   /// Optional. Connection id that should be assigned to the created connection.
   final pulumi.Input<String>? connectionId;
+
   /// User provided description.
   final pulumi.Input<String>? description;
+
   /// User provided display name for the connection.
   final pulumi.Input<String>? friendlyName;
   final pulumi.Input<String>? location;
+
   /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -41,7 +45,11 @@ class ConnectionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudSql': ?pulumi.Input.mapOptionalInputValue<CloudSqlProperties, Map<String, dynamic>>(cloudSql, (value) => value.toMap()),
+      'cloudSql':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudSqlProperties,
+            Map<String, dynamic>
+          >(cloudSql, (value) => value.toMap()),
       'connectionId': ?connectionId,
       'description': ?description,
       'friendlyName': ?friendlyName,
@@ -53,14 +61,45 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      cloudSql: map['cloudSql'] == null ? null : (CloudSqlProperties.fromMap((map['cloudSql']! as Map).cast<String, dynamic>())).input(),
-      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      cloudSql: (() {
+        final guardedValue = map['cloudSql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudSqlProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectionId: (() {
+        final guardedValue = map['connectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      friendlyName: (() {
+        final guardedValue = map['friendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

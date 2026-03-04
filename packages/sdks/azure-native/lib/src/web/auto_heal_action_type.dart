@@ -4,16 +4,15 @@ enum AutoHealActionType {
   valueLogEvent("LogEvent"),
   valueCustomAction("CustomAction");
 
-  const AutoHealActionType(this.value);
-  final String value;
+  const AutoHealActionType(this.wireValue);
+  final String wireValue;
 
   static AutoHealActionType fromValue(String value) {
     for (final item in AutoHealActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoHealActionType value: $value');
   }
 }
-

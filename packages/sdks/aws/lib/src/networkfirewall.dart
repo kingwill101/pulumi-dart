@@ -1,5 +1,3 @@
-library module_networkfirewall;
-
 export 'networkfirewall/firewall.dart';
 export 'networkfirewall/firewall_args.dart';
 export 'networkfirewall/firewall_availability_zone_mapping.dart';

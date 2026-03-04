@@ -5,7 +5,7 @@ import 'repository_state.dart';
 
 /// Provides a Public Elastic Container Registry Repository.
 ///
-/// > **NOTE:** This resource can only be used in the `us-east-1` region.
+/// &gt; **NOTE:** This resource can only be used in the `us-east-1` region.
 ///
 /// ## Example Usage
 ///
@@ -208,19 +208,26 @@ import 'repository_state.dart';
 class Repository extends pulumi.CustomResource {
   /// Full ARN of the repository.
   late final pulumi.Output<String> arn;
+
   /// Catalog data configuration for the repository. See below for schema.
   late final pulumi.Output<RepositoryCatalogData?> catalogData;
   late final pulumi.Output<bool?> forceDestroy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The registry ID where the repository was created.
   late final pulumi.Output<String> registryId;
+
   /// Name of the repository.
   late final pulumi.Output<String> repositoryName;
+
   /// The URI of the repository.
   late final pulumi.Output<String> repositoryUri;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -233,20 +240,20 @@ class Repository extends pulumi.CustomResource {
     RepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecrpublic/repository:Repository',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.catalogData = registerOutput<RepositoryCatalogData?>('catalogData');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.region = registerOutput<String>('region');
-    this.registryId = registerOutput<String>('registryId');
-    this.repositoryName = registerOutput<String>('repositoryName');
-    this.repositoryUri = registerOutput<String>('repositoryUri');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:ecrpublic/repository:Repository',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    catalogData = registerOutput<RepositoryCatalogData?>('catalogData');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repositoryName = registerOutput<String>('repositoryName');
+    repositoryUri = registerOutput<String>('repositoryUri');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Repository] resource's state with the given [name] and [id].
@@ -267,19 +274,19 @@ class Repository extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecrpublic/repository:Repository',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.catalogData = registerOutput<RepositoryCatalogData?>('catalogData');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.region = registerOutput<String>('region');
-    this.registryId = registerOutput<String>('registryId');
-    this.repositoryName = registerOutput<String>('repositoryName');
-    this.repositoryUri = registerOutput<String>('repositoryUri');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:ecrpublic/repository:Repository',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    catalogData = registerOutput<RepositoryCatalogData?>('catalogData');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repositoryName = registerOutput<String>('repositoryName');
+    repositoryUri = registerOutput<String>('repositoryUri');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

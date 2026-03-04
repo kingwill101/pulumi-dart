@@ -6,15 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalKubeletConfig {
   /// The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
   final pulumi.Input<int>? registryBurst;
+
   /// The limit of registry pulls per second. Setting this value to 0 means no limit. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 5.
   final pulumi.Input<int>? registryPullQps;
-  /// Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version < 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details.
+
+  /// Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details.
   final pulumi.Input<bool>? serializeImagePullsDisabled;
 
   /// Creates a new [BareMetalKubeletConfig].
   /// [registryBurst] The maximum size of bursty pulls, temporarily allows pulls to burst to this number, while still not exceeding registry_pull_qps. The value must not be a negative number. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 10.
   /// [registryPullQps] The limit of registry pulls per second. Setting this value to 0 means no limit. Updating this field may impact scalability by changing the amount of traffic produced by image pulls. Defaults to 5.
-  /// [serializeImagePullsDisabled] Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version < 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details.
+  /// [serializeImagePullsDisabled] Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details.
   BareMetalKubeletConfig({
     this.registryBurst,
     this.registryPullQps,
@@ -31,10 +33,21 @@ class BareMetalKubeletConfig {
 
   factory BareMetalKubeletConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalKubeletConfig(
-      registryBurst: map['registryBurst'] == null ? null : (map['registryBurst']! as int).input(),
-      registryPullQps: map['registryPullQps'] == null ? null : (map['registryPullQps']! as int).input(),
-      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : (map['serializeImagePullsDisabled']! as bool).input(),
+      registryBurst: (() {
+        final guardedValue = map['registryBurst'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      registryPullQps: (() {
+        final guardedValue = map['registryPullQps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serializeImagePullsDisabled: (() {
+        final guardedValue = map['serializeImagePullsDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

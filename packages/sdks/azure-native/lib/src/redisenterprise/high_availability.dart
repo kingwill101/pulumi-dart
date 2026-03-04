@@ -3,16 +3,15 @@ enum HighAvailability {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const HighAvailability(this.value);
-  final String value;
+  const HighAvailability(this.wireValue);
+  final String wireValue;
 
   static HighAvailability fromValue(String value) {
     for (final item in HighAvailability.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HighAvailability value: $value');
   }
 }
-

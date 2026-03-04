@@ -1,5 +1,3 @@
-library module_devtest;
-
 export 'devtest/functions.dart';
 export 'devtest/get_lab_args.dart';
 export 'devtest/get_lab_result.dart';

@@ -3,16 +3,15 @@ enum AutoProvision {
   valueOn("On"),
   valueOff("Off");
 
-  const AutoProvision(this.value);
-  final String value;
+  const AutoProvision(this.wireValue);
+  final String wireValue;
 
   static AutoProvision fromValue(String value) {
     for (final item in AutoProvision.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoProvision value: $value');
   }
 }
-

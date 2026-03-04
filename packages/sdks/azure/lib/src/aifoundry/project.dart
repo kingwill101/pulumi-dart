@@ -465,7 +465,7 @@ import 'project_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.MachineLearningServices` - 2025-06-01
@@ -480,22 +480,31 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// The AI Foundry ID under which this Project should be created. Changing this forces a new AI Foundry Project to be created.
   late final pulumi.Output<String> aiServicesHubId;
+
   /// The description of this AI Foundry Project.
   late final pulumi.Output<String?> description;
+
   /// The display name of this AI Foundry Project.
   late final pulumi.Output<String?> friendlyName;
+
   /// Whether High Business Impact (HBI) should be enabled or not. Enabling this setting will reduce diagnostic data collected by the service. Changing this forces a new AI Foundry Project to be created. Defaults to `false`.
   late final pulumi.Output<bool> highBusinessImpactEnabled;
+
   /// A `identity` block as defined below.
   late final pulumi.Output<ProjectIdentity?> identity;
+
   /// The Azure Region where the AI Foundry Project should exist. Changing this forces a new AI Foundry Project to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this AI Foundry Project. Changing this forces a new AI Foundry Project to be created.
   late final pulumi.Output<String> name;
+
   /// The user assigned identity ID that represents the AI Foundry Hub identity. This must be set when enabling encryption with a user assigned identity.
   late final pulumi.Output<String?> primaryUserAssignedIdentity;
+
   /// The immutable project ID associated with this AI Foundry Project.
   late final pulumi.Output<String> projectId;
+
   /// A mapping of tags which should be assigned to the AI Foundry Project.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -508,21 +517,25 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:aifoundry/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aiServicesHubId = registerOutput<String>('aiServicesHubId');
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.highBusinessImpactEnabled = registerOutput<bool>('highBusinessImpactEnabled');
-    this.identity = registerOutput<ProjectIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:aifoundry/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aiServicesHubId = registerOutput<String>('aiServicesHubId');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    highBusinessImpactEnabled = registerOutput<bool>(
+      'highBusinessImpactEnabled',
+    );
+    identity = registerOutput<ProjectIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
-    this.projectId = registerOutput<String>('projectId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryUserAssignedIdentity = registerOutput<String?>(
+      'primaryUserAssignedIdentity',
+    );
+    projectId = registerOutput<String>('projectId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -543,20 +556,24 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:aifoundry/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aiServicesHubId = registerOutput<String>('aiServicesHubId');
-    this.description = registerOutput<String?>('description');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.highBusinessImpactEnabled = registerOutput<bool>('highBusinessImpactEnabled');
-    this.identity = registerOutput<ProjectIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:aifoundry/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aiServicesHubId = registerOutput<String>('aiServicesHubId');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    highBusinessImpactEnabled = registerOutput<bool>(
+      'highBusinessImpactEnabled',
+    );
+    identity = registerOutput<ProjectIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
-    this.projectId = registerOutput<String>('projectId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryUserAssignedIdentity = registerOutput<String?>(
+      'primaryUserAssignedIdentity',
+    );
+    projectId = registerOutput<String>('projectId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -8,20 +8,15 @@ class GetCrossRegionsRegion {
 
   /// Creates a new [GetCrossRegionsRegion].
   /// [id] ID of the region.
-  GetCrossRegionsRegion({
-    required this.id,
-  });
+  GetCrossRegionsRegion({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetCrossRegionsRegion.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionsRegion(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

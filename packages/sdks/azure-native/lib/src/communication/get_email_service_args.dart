@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEmailServiceArgs {
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetEmailServiceArgs {
 
   factory GetEmailServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetEmailServiceArgs(
-      emailServiceName: (map['emailServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      emailServiceName: pulumi.Input.fromValue(
+        map['emailServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

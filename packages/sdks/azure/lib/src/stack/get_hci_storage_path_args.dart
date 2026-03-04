@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHciStoragePathArgs {
   /// The name of this Stack HCI Storage Path.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Stack HCI Storage Path exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetHciStoragePathArgs].
   /// [name] The name of this Stack HCI Storage Path.
   /// [resourceGroupName] The name of the Resource Group where the Stack HCI Storage Path exists.
-  GetHciStoragePathArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetHciStoragePathArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetHciStoragePathArgs {
 
   factory GetHciStoragePathArgs.fromMap(Map<String, dynamic> map) {
     return GetHciStoragePathArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

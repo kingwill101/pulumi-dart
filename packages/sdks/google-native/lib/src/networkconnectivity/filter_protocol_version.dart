@@ -3,16 +3,15 @@ enum FilterProtocolVersion {
   protocolVersionUnspecified("PROTOCOL_VERSION_UNSPECIFIED"),
   ipv4("IPV4");
 
-  const FilterProtocolVersion(this.value);
-  final String value;
+  const FilterProtocolVersion(this.wireValue);
+  final String wireValue;
 
   static FilterProtocolVersion fromValue(String value) {
     for (final item in FilterProtocolVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FilterProtocolVersion value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JsonWriteSettings {
   /// File pattern of JSON. This setting controls the way a collection of JSON objects will be treated. The default value is 'setOfObjects'. It is case-sensitive.
   final pulumi.Input<dynamic>? filePattern;
+
   /// The write setting type.
   /// Expected value is 'JsonWriteSettings'.
   final pulumi.Input<String> type;
@@ -13,23 +14,20 @@ class JsonWriteSettings {
   /// Creates a new [JsonWriteSettings].
   /// [filePattern] File pattern of JSON. This setting controls the way a collection of JSON objects will be treated. The default value is 'setOfObjects'. It is case-sensitive.
   /// [type] The write setting type.
-  JsonWriteSettings({
-    this.filePattern,
-    required this.type,
-  });
+  JsonWriteSettings({this.filePattern, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filePattern': ?filePattern,
-      'type': type,
-    };
+    return <String, dynamic>{'filePattern': ?filePattern, 'type': type};
   }
 
   factory JsonWriteSettings.fromMap(Map<String, dynamic> map) {
     return JsonWriteSettings(
-      filePattern: map['filePattern'] == null ? null : (map['filePattern']!).input(),
-      type: (map['type'] as String).input(),
+      filePattern: (() {
+        final guardedValue = map['filePattern'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

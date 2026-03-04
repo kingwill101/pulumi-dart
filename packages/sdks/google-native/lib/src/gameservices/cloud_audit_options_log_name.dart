@@ -4,16 +4,15 @@ enum CloudAuditOptionsLogName {
   adminActivity("ADMIN_ACTIVITY"),
   dataAccess("DATA_ACCESS");
 
-  const CloudAuditOptionsLogName(this.value);
-  final String value;
+  const CloudAuditOptionsLogName(this.wireValue);
+  final String wireValue;
 
   static CloudAuditOptionsLogName fromValue(String value) {
     for (final item in CloudAuditOptionsLogName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CloudAuditOptionsLogName value: $value');
   }
 }
-

@@ -27,9 +27,10 @@ class GetCustomConstraintArgs {
 
   factory GetCustomConstraintArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomConstraintArgs(
-      customConstraintId: (map['customConstraintId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      customConstraintId: pulumi.Input.fromValue(
+        map['customConstraintId'] as String,
+      ),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

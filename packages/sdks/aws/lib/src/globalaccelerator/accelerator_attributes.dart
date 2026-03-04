@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AcceleratorAttributes {
   /// Indicates whether flow logs are enabled. Defaults to `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? flowLogsEnabled;
+
   /// The name of the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
   final pulumi.Input<String>? flowLogsS3Bucket;
+
   /// The prefix for the location in the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
   final pulumi.Input<String>? flowLogsS3Prefix;
 
@@ -30,10 +32,21 @@ class AcceleratorAttributes {
 
   factory AcceleratorAttributes.fromMap(Map<String, dynamic> map) {
     return AcceleratorAttributes(
-      flowLogsEnabled: map['flowLogsEnabled'] == null ? null : ((map['flowLogsEnabled'] as bool).input()).input(),
-      flowLogsS3Bucket: map['flowLogsS3Bucket'] == null ? null : ((map['flowLogsS3Bucket'] as String).input()).input(),
-      flowLogsS3Prefix: map['flowLogsS3Prefix'] == null ? null : ((map['flowLogsS3Prefix'] as String).input()).input(),
+      flowLogsEnabled: (() {
+        final guardedValue = map['flowLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      flowLogsS3Bucket: (() {
+        final guardedValue = map['flowLogsS3Bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      flowLogsS3Prefix: (() {
+        final guardedValue = map['flowLogsS3Prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,15 @@ enum RedundancyMode {
   valueActiveActive("ActiveActive"),
   valueGeoRedundant("GeoRedundant");
 
-  const RedundancyMode(this.value);
-  final String value;
+  const RedundancyMode(this.wireValue);
+  final String wireValue;
 
   static RedundancyMode fromValue(String value) {
     for (final item in RedundancyMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RedundancyMode value: $value');
   }
 }
-

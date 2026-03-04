@@ -9,11 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateDataArgs {
   /// Specifies the ID of the Key Vault instance where the Secret resides, available on the `azure.keyvault.KeyVault` Data Source / Resource.
   final pulumi.Input<String> keyVaultId;
+
   /// Specifies the name of the Key Vault Secret.
   final pulumi.Input<String> name;
+
   /// Specifies the version of the certificate to look up.  (Defaults to latest)
   ///
-  /// > **Note:** The vault must be in the same subscription as the provider. If the vault is in another subscription, you must create an aliased provider for that subscription.
+  /// &gt; **Note:** The vault must be in the same subscription as the provider. If the vault is in another subscription, you must create an aliased provider for that subscription.
   final pulumi.Input<String>? version;
 
   /// Creates a new [GetCertificateDataArgs].
@@ -36,10 +38,13 @@ class GetCertificateDataArgs {
 
   factory GetCertificateDataArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateDataArgs(
-      keyVaultId: (map['keyVaultId'] as String).input(),
-      name: (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

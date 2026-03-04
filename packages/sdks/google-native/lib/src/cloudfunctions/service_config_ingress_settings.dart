@@ -5,16 +5,15 @@ enum ServiceConfigIngressSettings {
   allowInternalOnly("ALLOW_INTERNAL_ONLY"),
   allowInternalAndGclb("ALLOW_INTERNAL_AND_GCLB");
 
-  const ServiceConfigIngressSettings(this.value);
-  final String value;
+  const ServiceConfigIngressSettings(this.wireValue);
+  final String wireValue;
 
   static ServiceConfigIngressSettings fromValue(String value) {
     for (final item in ServiceConfigIngressSettings.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceConfigIngressSettings value: $value');
   }
 }
-

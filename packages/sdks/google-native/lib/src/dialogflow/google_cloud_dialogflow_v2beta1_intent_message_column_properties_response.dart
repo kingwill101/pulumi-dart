@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse {
   /// Column heading.
   final pulumi.Input<String> header;
+
   /// Optional. Defines text alignment for all cells in this column.
   final pulumi.Input<String> horizontalAlignment;
 
@@ -24,11 +25,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse(
-      header: (map['header'] as String).input(),
-      horizontalAlignment: (map['horizontalAlignment'] as String).input(),
+      header: pulumi.Input.fromValue(map['header'] as String),
+      horizontalAlignment: pulumi.Input.fromValue(
+        map['horizontalAlignment'] as String,
+      ),
     );
   }
 }
-

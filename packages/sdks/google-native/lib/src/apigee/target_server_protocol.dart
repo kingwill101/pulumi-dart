@@ -7,16 +7,15 @@ enum TargetServerProtocol {
   grpc("GRPC"),
   externalCallout("EXTERNAL_CALLOUT");
 
-  const TargetServerProtocol(this.value);
-  final String value;
+  const TargetServerProtocol(this.wireValue);
+  final String wireValue;
 
   static TargetServerProtocol fromValue(String value) {
     for (final item in TargetServerProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetServerProtocol value: $value');
   }
 }
-

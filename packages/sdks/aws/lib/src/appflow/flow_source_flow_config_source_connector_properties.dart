@@ -20,37 +20,69 @@ import 'flow_source_flow_config_source_connector_properties_zendesk.dart';
 
 class FlowSourceFlowConfigSourceConnectorProperties {
   /// Information that is required for querying Amplitude. See Generic Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesAmplitude>? amplitude;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesAmplitude>?
+  amplitude;
+
   /// Properties that are applied when the custom connector is being used as a source. See Custom Connector Source Properties.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector>? customConnector;
+  final pulumi.Input<
+    FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector
+  >?
+  customConnector;
+
   /// Information that is required for querying Datadog. See Generic Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDatadog>? datadog;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDatadog>?
+  datadog;
+
   /// Operation to be performed on the provided Dynatrace source fields. Valid values are `PROJECTION`, `BETWEEN`, `EQUAL_TO`, `ADDITION`, `MULTIPLICATION`, `DIVISION`, `SUBTRACTION`, `MASK_ALL`, `MASK_FIRST_N`, `MASK_LAST_N`, `VALIDATE_NON_NULL`, `VALIDATE_NON_ZERO`, `VALIDATE_NON_NEGATIVE`, `VALIDATE_NUMERIC`, and `NO_OP`.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDynatrace>? dynatrace;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesDynatrace>?
+  dynatrace;
+
   /// Operation to be performed on the provided Google Analytics source fields. Valid values are `PROJECTION` and `BETWEEN`.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics>? googleAnalytics;
+  final pulumi.Input<
+    FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics
+  >?
+  googleAnalytics;
+
   /// Information that is required for querying Infor Nexus. See Generic Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesInforNexus>? inforNexus;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesInforNexus>?
+  inforNexus;
+
   /// Information that is required for querying Marketo. See Generic Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesMarketo>? marketo;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesMarketo>?
+  marketo;
+
   /// Information that is required for querying Amazon S3. See S3 Source Properties for more details.
   final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesS3>? s3;
+
   /// Information that is required for querying Salesforce. See Salesforce Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSalesforce>? salesforce;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSalesforce>?
+  salesforce;
+
   /// Information that is required for querying SAPOData as a flow source. See SAPO Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoData>? sapoData;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSapoData>?
+  sapoData;
+
   /// Information that is required for querying ServiceNow. See Generic Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesServiceNow>? serviceNow;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesServiceNow>?
+  serviceNow;
+
   /// Information that is required for querying Singular. See Generic Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSingular>? singular;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSingular>?
+  singular;
+
   /// Information that is required for querying Slack. See Generic Source Properties for more details.
   final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesSlack>? slack;
+
   /// Operation to be performed on the provided Trend Micro source fields. Valid values are `PROJECTION`, `EQUAL_TO`, `ADDITION`, `MULTIPLICATION`, `DIVISION`, `SUBTRACTION`, `MASK_ALL`, `MASK_FIRST_N`, `MASK_LAST_N`, `VALIDATE_NON_NULL`, `VALIDATE_NON_ZERO`, `VALIDATE_NON_NEGATIVE`, `VALIDATE_NUMERIC`, and `NO_OP`.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro>? trendmicro;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro>?
+  trendmicro;
+
   /// Information that is required for querying Veeva. See Veeva Source Properties for more details.
   final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesVeeva>? veeva;
+
   /// Information that is required for querying Zendesk. See Generic Source Properties for more details.
-  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesZendesk>? zendesk;
+  final pulumi.Input<FlowSourceFlowConfigSourceConnectorPropertiesZendesk>?
+  zendesk;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorProperties].
   /// [amplitude] Information that is required for querying Amplitude. See Generic Source Properties for more details.
@@ -90,44 +122,237 @@ class FlowSourceFlowConfigSourceConnectorProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amplitude': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesAmplitude, Map<String, dynamic>>(amplitude, (value) => value.toMap()),
-      'customConnector': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector, Map<String, dynamic>>(customConnector, (value) => value.toMap()),
-      'datadog': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesDatadog, Map<String, dynamic>>(datadog, (value) => value.toMap()),
-      'dynatrace': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesDynatrace, Map<String, dynamic>>(dynatrace, (value) => value.toMap()),
-      'googleAnalytics': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics, Map<String, dynamic>>(googleAnalytics, (value) => value.toMap()),
-      'inforNexus': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesInforNexus, Map<String, dynamic>>(inforNexus, (value) => value.toMap()),
-      'marketo': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesMarketo, Map<String, dynamic>>(marketo, (value) => value.toMap()),
-      's3': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesS3, Map<String, dynamic>>(s3, (value) => value.toMap()),
-      'salesforce': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesSalesforce, Map<String, dynamic>>(salesforce, (value) => value.toMap()),
-      'sapoData': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesSapoData, Map<String, dynamic>>(sapoData, (value) => value.toMap()),
-      'serviceNow': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesServiceNow, Map<String, dynamic>>(serviceNow, (value) => value.toMap()),
-      'singular': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesSingular, Map<String, dynamic>>(singular, (value) => value.toMap()),
-      'slack': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesSlack, Map<String, dynamic>>(slack, (value) => value.toMap()),
-      'trendmicro': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro, Map<String, dynamic>>(trendmicro, (value) => value.toMap()),
-      'veeva': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesVeeva, Map<String, dynamic>>(veeva, (value) => value.toMap()),
-      'zendesk': ?pulumi.Input.mapOptionalInputValue<FlowSourceFlowConfigSourceConnectorPropertiesZendesk, Map<String, dynamic>>(zendesk, (value) => value.toMap()),
+      'amplitude':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesAmplitude,
+            Map<String, dynamic>
+          >(amplitude, (value) => value.toMap()),
+      'customConnector':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector,
+            Map<String, dynamic>
+          >(customConnector, (value) => value.toMap()),
+      'datadog':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesDatadog,
+            Map<String, dynamic>
+          >(datadog, (value) => value.toMap()),
+      'dynatrace':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesDynatrace,
+            Map<String, dynamic>
+          >(dynatrace, (value) => value.toMap()),
+      'googleAnalytics':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics,
+            Map<String, dynamic>
+          >(googleAnalytics, (value) => value.toMap()),
+      'inforNexus':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesInforNexus,
+            Map<String, dynamic>
+          >(inforNexus, (value) => value.toMap()),
+      'marketo':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesMarketo,
+            Map<String, dynamic>
+          >(marketo, (value) => value.toMap()),
+      's3':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesS3,
+            Map<String, dynamic>
+          >(s3, (value) => value.toMap()),
+      'salesforce':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesSalesforce,
+            Map<String, dynamic>
+          >(salesforce, (value) => value.toMap()),
+      'sapoData':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesSapoData,
+            Map<String, dynamic>
+          >(sapoData, (value) => value.toMap()),
+      'serviceNow':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesServiceNow,
+            Map<String, dynamic>
+          >(serviceNow, (value) => value.toMap()),
+      'singular':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesSingular,
+            Map<String, dynamic>
+          >(singular, (value) => value.toMap()),
+      'slack':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesSlack,
+            Map<String, dynamic>
+          >(slack, (value) => value.toMap()),
+      'trendmicro':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro,
+            Map<String, dynamic>
+          >(trendmicro, (value) => value.toMap()),
+      'veeva':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesVeeva,
+            Map<String, dynamic>
+          >(veeva, (value) => value.toMap()),
+      'zendesk':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowSourceFlowConfigSourceConnectorPropertiesZendesk,
+            Map<String, dynamic>
+          >(zendesk, (value) => value.toMap()),
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorProperties.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorProperties(
-      amplitude: map['amplitude'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesAmplitude.fromMap((map['amplitude']! as Map).cast<String, dynamic>())).input()).input(),
-      customConnector: map['customConnector'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap((map['customConnector']! as Map).cast<String, dynamic>())).input()).input(),
-      datadog: map['datadog'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap((map['datadog']! as Map).cast<String, dynamic>())).input()).input(),
-      dynatrace: map['dynatrace'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesDynatrace.fromMap((map['dynatrace']! as Map).cast<String, dynamic>())).input()).input(),
-      googleAnalytics: map['googleAnalytics'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap((map['googleAnalytics']! as Map).cast<String, dynamic>())).input()).input(),
-      inforNexus: map['inforNexus'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap((map['inforNexus']! as Map).cast<String, dynamic>())).input()).input(),
-      marketo: map['marketo'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap((map['marketo']! as Map).cast<String, dynamic>())).input()).input(),
-      s3: map['s3'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
-      salesforce: map['salesforce'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap((map['salesforce']! as Map).cast<String, dynamic>())).input()).input(),
-      sapoData: map['sapoData'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap((map['sapoData']! as Map).cast<String, dynamic>())).input()).input(),
-      serviceNow: map['serviceNow'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesServiceNow.fromMap((map['serviceNow']! as Map).cast<String, dynamic>())).input()).input(),
-      singular: map['singular'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSingular.fromMap((map['singular']! as Map).cast<String, dynamic>())).input()).input(),
-      slack: map['slack'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSlack.fromMap((map['slack']! as Map).cast<String, dynamic>())).input()).input(),
-      trendmicro: map['trendmicro'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap((map['trendmicro']! as Map).cast<String, dynamic>())).input()).input(),
-      veeva: map['veeva'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap((map['veeva']! as Map).cast<String, dynamic>())).input()).input(),
-      zendesk: map['zendesk'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap((map['zendesk']! as Map).cast<String, dynamic>())).input()).input(),
+      amplitude: (() {
+        final guardedValue = map['amplitude'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesAmplitude.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      customConnector: (() {
+        final guardedValue = map['customConnector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesCustomConnector.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      datadog: (() {
+        final guardedValue = map['datadog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesDatadog.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dynatrace: (() {
+        final guardedValue = map['dynatrace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesDynatrace.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      googleAnalytics: (() {
+        final guardedValue = map['googleAnalytics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inforNexus: (() {
+        final guardedValue = map['inforNexus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      marketo: (() {
+        final guardedValue = map['marketo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesMarketo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3: (() {
+        final guardedValue = map['s3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesS3.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      salesforce: (() {
+        final guardedValue = map['salesforce'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sapoData: (() {
+        final guardedValue = map['sapoData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceNow: (() {
+        final guardedValue = map['serviceNow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesServiceNow.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      singular: (() {
+        final guardedValue = map['singular'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesSingular.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      slack: (() {
+        final guardedValue = map['slack'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesSlack.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      trendmicro: (() {
+        final guardedValue = map['trendmicro'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      veeva: (() {
+        final guardedValue = map['veeva'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      zendesk: (() {
+        final guardedValue = map['zendesk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowSourceFlowConfigSourceConnectorPropertiesZendesk.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

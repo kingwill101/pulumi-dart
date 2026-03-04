@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NspProfileArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the profile resource that is unique within a perimeter. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
+
   /// The name of the NSP profile.
   final pulumi.Input<String>? profileName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,14 +60,39 @@ class NspProfileArgs {
 
   factory NspProfileArgs.fromMap(Map<String, dynamic> map) {
     return NspProfileArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(
+        map['networkSecurityPerimeterName'] as String,
+      ),
+      profileName: (() {
+        final guardedValue = map['profileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

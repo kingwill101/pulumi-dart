@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HanaBackupClientState {
   /// The alert settings. Valid value: `INHERITED`.
   final pulumi.Input<String>? alertSetting;
+
   /// The ID of the backup client.
   final pulumi.Input<String>? clientId;
+
   /// The installation information of the HBR clients.
   final pulumi.Input<String>? clientInfo;
+
   /// The ID of the SAP HANA instance.
   final pulumi.Input<String>? clusterId;
+
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
+
   /// The status of the Hana Backup Client.
   final pulumi.Input<String>? status;
+
   /// Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   final pulumi.Input<bool>? useHttps;
+
   /// The ID of the backup vault.
   final pulumi.Input<String>? vaultId;
 
@@ -56,15 +63,46 @@ class HanaBackupClientState {
 
   factory HanaBackupClientState.fromMap(Map<String, dynamic> map) {
     return HanaBackupClientState(
-      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo']! as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      useHttps: map['useHttps'] == null ? null : (map['useHttps']! as bool).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
+      alertSetting: (() {
+        final guardedValue = map['alertSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientInfo: (() {
+        final guardedValue = map['clientInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useHttps: (() {
+        final guardedValue = map['useHttps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vaultId: (() {
+        final guardedValue = map['vaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

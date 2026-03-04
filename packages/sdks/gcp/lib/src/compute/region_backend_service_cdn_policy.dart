@@ -7,26 +7,36 @@ import 'region_backend_service_cdn_policy_negative_caching_policy.dart';
 class RegionBackendServiceCdnPolicy {
   /// The CacheKeyPolicy for this CdnPolicy.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceCdnPolicyCacheKeyPolicy>? cacheKeyPolicy;
+  final pulumi.Input<RegionBackendServiceCdnPolicyCacheKeyPolicy>?
+  cacheKeyPolicy;
+
   /// Specifies the cache setting for all responses from this backend.
   /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
   /// Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
   final pulumi.Input<String>? cacheMode;
+
   /// Specifies the maximum allowed TTL for cached content served by this origin.
   final pulumi.Input<int>? clientTtl;
+
   /// Specifies the default TTL for cached content served by this origin for responses
   /// that do not have an existing valid TTL (max-age or s-max-age).
   final pulumi.Input<int>? defaultTtl;
+
   /// Specifies the maximum allowed TTL for cached content served by this origin.
   final pulumi.Input<int>? maxTtl;
+
   /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
   final pulumi.Input<bool>? negativeCaching;
+
   /// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
   /// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionBackendServiceCdnPolicyNegativeCachingPolicy>>? negativeCachingPolicies;
+  final pulumi.Input<List<RegionBackendServiceCdnPolicyNegativeCachingPolicy>>?
+  negativeCachingPolicies;
+
   /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
   final pulumi.Input<int>? serveWhileStale;
+
   /// Maximum number of seconds the response to a signed URL request
   /// will be considered fresh, defaults to 1hr (3600s). After this
   /// time period, the response will be revalidated before
@@ -62,13 +72,28 @@ class RegionBackendServiceCdnPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cacheKeyPolicy': ?pulumi.Input.mapOptionalInputValue<RegionBackendServiceCdnPolicyCacheKeyPolicy, Map<String, dynamic>>(cacheKeyPolicy, (value) => value.toMap()),
+      'cacheKeyPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionBackendServiceCdnPolicyCacheKeyPolicy,
+            Map<String, dynamic>
+          >(cacheKeyPolicy, (value) => value.toMap()),
       'cacheMode': ?cacheMode,
       'clientTtl': ?clientTtl,
       'defaultTtl': ?defaultTtl,
       'maxTtl': ?maxTtl,
       'negativeCaching': ?negativeCaching,
-      'negativeCachingPolicies': ?pulumi.Input.mapOptionalInputValue<List<RegionBackendServiceCdnPolicyNegativeCachingPolicy>, List<Map<String, dynamic>>>(negativeCachingPolicies, (value) => pulumi.Input.encodeList<RegionBackendServiceCdnPolicyNegativeCachingPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'negativeCachingPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegionBackendServiceCdnPolicyNegativeCachingPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            negativeCachingPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegionBackendServiceCdnPolicyNegativeCachingPolicy,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serveWhileStale': ?serveWhileStale,
       'signedUrlCacheMaxAgeSec': ?signedUrlCacheMaxAgeSec,
     };
@@ -76,16 +101,65 @@ class RegionBackendServiceCdnPolicy {
 
   factory RegionBackendServiceCdnPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceCdnPolicy(
-      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : (RegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap((map['cacheKeyPolicy']! as Map).cast<String, dynamic>())).input(),
-      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode']! as String).input(),
-      clientTtl: map['clientTtl'] == null ? null : (map['clientTtl']! as int).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
-      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl']! as int).input(),
-      negativeCaching: map['negativeCaching'] == null ? null : (map['negativeCaching']! as bool).input(),
-      negativeCachingPolicies: map['negativeCachingPolicies'] == null ? null : (pulumi.Input.decodeList<RegionBackendServiceCdnPolicyNegativeCachingPolicy>(map['negativeCachingPolicies']!, (value) => RegionBackendServiceCdnPolicyNegativeCachingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serveWhileStale: map['serveWhileStale'] == null ? null : (map['serveWhileStale']! as int).input(),
-      signedUrlCacheMaxAgeSec: map['signedUrlCacheMaxAgeSec'] == null ? null : (map['signedUrlCacheMaxAgeSec']! as int).input(),
+      cacheKeyPolicy: (() {
+        final guardedValue = map['cacheKeyPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cacheMode: (() {
+        final guardedValue = map['cacheMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientTtl: (() {
+        final guardedValue = map['clientTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      defaultTtl: (() {
+        final guardedValue = map['defaultTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxTtl: (() {
+        final guardedValue = map['maxTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      negativeCaching: (() {
+        final guardedValue = map['negativeCaching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      negativeCachingPolicies: (() {
+        final guardedValue = map['negativeCachingPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RegionBackendServiceCdnPolicyNegativeCachingPolicy
+          >(
+            guardedValue,
+            (value) =>
+                RegionBackendServiceCdnPolicyNegativeCachingPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      serveWhileStale: (() {
+        final guardedValue = map['serveWhileStale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      signedUrlCacheMaxAgeSec: (() {
+        final guardedValue = map['signedUrlCacheMaxAgeSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

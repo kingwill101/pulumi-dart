@@ -5,16 +5,15 @@ enum SoftwareRecipeDesiredState {
   updated("UPDATED"),
   removed("REMOVED");
 
-  const SoftwareRecipeDesiredState(this.value);
-  final String value;
+  const SoftwareRecipeDesiredState(this.wireValue);
+  final String wireValue;
 
   static SoftwareRecipeDesiredState fromValue(String value) {
     for (final item in SoftwareRecipeDesiredState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SoftwareRecipeDesiredState value: $value');
   }
 }
-

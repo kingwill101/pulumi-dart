@@ -5,7 +5,8 @@ import 'kubernetes_connection_details_response.dart';
 
 class ControllerConnectionDetailsResponse {
   /// Base class for types that supply values used to connect to container orchestrators
-  final pulumi.Input<KubernetesConnectionDetailsResponse>? orchestratorSpecificConnectionDetails;
+  final pulumi.Input<KubernetesConnectionDetailsResponse>?
+  orchestratorSpecificConnectionDetails;
 
   /// Creates a new [ControllerConnectionDetailsResponse].
   /// [orchestratorSpecificConnectionDetails] Base class for types that supply values used to connect to container orchestrators
@@ -15,14 +16,27 @@ class ControllerConnectionDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'orchestratorSpecificConnectionDetails': ?pulumi.Input.mapOptionalInputValue<KubernetesConnectionDetailsResponse, Map<String, dynamic>>(orchestratorSpecificConnectionDetails, (value) => value.toMap()),
+      'orchestratorSpecificConnectionDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            KubernetesConnectionDetailsResponse,
+            Map<String, dynamic>
+          >(orchestratorSpecificConnectionDetails, (value) => value.toMap()),
     };
   }
 
-  factory ControllerConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory ControllerConnectionDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ControllerConnectionDetailsResponse(
-      orchestratorSpecificConnectionDetails: map['orchestratorSpecificConnectionDetails'] == null ? null : (KubernetesConnectionDetailsResponse.fromMap((map['orchestratorSpecificConnectionDetails']! as Map).cast<String, dynamic>())).input(),
+      orchestratorSpecificConnectionDetails: (() {
+        final guardedValue = map['orchestratorSpecificConnectionDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KubernetesConnectionDetailsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

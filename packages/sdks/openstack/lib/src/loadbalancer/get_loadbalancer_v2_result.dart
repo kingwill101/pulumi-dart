@@ -9,46 +9,64 @@ class GetLoadbalancerV2Result {
   /// A list of additional VIP IP addresses associated with
   /// the loadbalancer.
   final List<String> additionalVips;
+
   /// The administrative state of the loadbalancer (true/false).
   final bool adminStateUp;
+
   /// The availability zone of the loadbalancer.
   final String availabilityZone;
+
   /// The description of the loadbalancer.
   final String description;
+
   /// The flavor ID used by the loadbalancer.
   final String flavorId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of listener IDs (UUIDs) associated with the loadbalancer.
   final List<GetLoadbalancerV2Listener> listeners;
   final String loadbalancerId;
+
   /// The loadbalancer driver/provider used by Octavia
   /// (for example, `amphora`).
   final String loadbalancerProvider;
+
   /// The name of the loadbalancer.
   final String name;
+
   /// The operating status of the loadbalancer.
   final String operatingStatus;
+
   /// A list of pool IDs (UUIDs) associated with the loadbalancer.
   final List<GetLoadbalancerV2Pool> pools;
+
   /// The owner (project/tenant) ID of the loadbalancer.
   final String projectId;
+
   /// The provisioning status of the loadbalancer.
   final String provisioningStatus;
   final String region;
+
   /// A set of tags applied to the loadbalancer.
   final List<String> tags;
   final List<String>? tagsAnies;
   final List<String>? tagsNotAnies;
   final List<String>? tagsNots;
+
   /// The IP address of the loadbalancer’s virtual IP (VIP).
   final String vipAddress;
+
   /// The network ID associated with the VIP.
   final String vipNetworkId;
+
   /// The port ID associated with the VIP.
   final String vipPortId;
+
   /// The QoS policy ID associated with the VIP, if any.
   final String vipQosPolicyId;
+
   /// The subnet ID associated with the VIP.
   final String vipSubnetId;
 
@@ -112,12 +130,20 @@ class GetLoadbalancerV2Result {
       'description': description,
       'flavorId': flavorId,
       'id': id,
-      'listeners': pulumi.Input.encodeList<GetLoadbalancerV2Listener, Map<String, dynamic>>(listeners, (value) => value.toMap()),
+      'listeners':
+          pulumi.Input.encodeList<
+            GetLoadbalancerV2Listener,
+            Map<String, dynamic>
+          >(listeners, (value) => value.toMap()),
       'loadbalancerId': loadbalancerId,
       'loadbalancerProvider': loadbalancerProvider,
       'name': name,
       'operatingStatus': operatingStatus,
-      'pools': pulumi.Input.encodeList<GetLoadbalancerV2Pool, Map<String, dynamic>>(pools, (value) => value.toMap()),
+      'pools':
+          pulumi.Input.encodeList<GetLoadbalancerV2Pool, Map<String, dynamic>>(
+            pools,
+            (value) => value.toMap(),
+          ),
       'projectId': projectId,
       'provisioningStatus': provisioningStatus,
       'region': region,
@@ -141,19 +167,41 @@ class GetLoadbalancerV2Result {
       description: map['description'] as String,
       flavorId: map['flavorId'] as String,
       id: map['id'] as String,
-      listeners: pulumi.Input.decodeList<GetLoadbalancerV2Listener>(map['listeners'], (value) => GetLoadbalancerV2Listener.fromMap((value as Map).cast<String, dynamic>())),
+      listeners: pulumi.Input.decodeList<GetLoadbalancerV2Listener>(
+        map['listeners']!,
+        (value) => GetLoadbalancerV2Listener.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       loadbalancerId: map['loadbalancerId'] as String,
       loadbalancerProvider: map['loadbalancerProvider'] as String,
       name: map['name'] as String,
       operatingStatus: map['operatingStatus'] as String,
-      pools: pulumi.Input.decodeList<GetLoadbalancerV2Pool>(map['pools'], (value) => GetLoadbalancerV2Pool.fromMap((value as Map).cast<String, dynamic>())),
+      pools: pulumi.Input.decodeList<GetLoadbalancerV2Pool>(
+        map['pools']!,
+        (value) => GetLoadbalancerV2Pool.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       projectId: map['projectId'] as String,
       provisioningStatus: map['provisioningStatus'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as List).cast<String>(),
-      tagsAnies: map['tagsAnies'] == null ? null : (map['tagsAnies']! as List).cast<String>(),
-      tagsNotAnies: map['tagsNotAnies'] == null ? null : (map['tagsNotAnies']! as List).cast<String>(),
-      tagsNots: map['tagsNots'] == null ? null : (map['tagsNots']! as List).cast<String>(),
+      tagsAnies: (() {
+        final guardedValue = map['tagsAnies'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      tagsNotAnies: (() {
+        final guardedValue = map['tagsNotAnies'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      tagsNots: (() {
+        final guardedValue = map['tagsNots'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       vipAddress: map['vipAddress'] as String,
       vipNetworkId: map['vipNetworkId'] as String,
       vipPortId: map['vipPortId'] as String,
@@ -162,4 +210,3 @@ class GetLoadbalancerV2Result {
     );
   }
 }
-

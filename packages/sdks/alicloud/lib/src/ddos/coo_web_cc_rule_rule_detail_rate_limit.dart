@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CooWebCcRuleRuleDetailRateLimit {
   /// Statistical interval. Unit: seconds.
   final pulumi.Input<int> interval;
+
   /// Header field name (required only when the statistic source is `header`).
   final pulumi.Input<String>? subKey;
+
   /// Statistic source. Valid values:
   final pulumi.Input<String> target;
+
   /// The trigger threshold.
   final pulumi.Input<int> threshold;
+
   /// Block duration. Unit: seconds.
   final pulumi.Input<int> ttl;
 
@@ -40,12 +44,15 @@ class CooWebCcRuleRuleDetailRateLimit {
 
   factory CooWebCcRuleRuleDetailRateLimit.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailRateLimit(
-      interval: (map['interval'] as int).input(),
-      subKey: map['subKey'] == null ? null : (map['subKey']! as String).input(),
-      target: (map['target'] as String).input(),
-      threshold: (map['threshold'] as int).input(),
-      ttl: (map['ttl'] as int).input(),
+      interval: pulumi.Input.fromValue(map['interval'] as int),
+      subKey: (() {
+        final guardedValue = map['subKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      threshold: pulumi.Input.fromValue(map['threshold'] as int),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
     );
   }
 }
-

@@ -7,7 +7,7 @@ import 'service_integration_state.dart';
 
 /// Resource for managing an AWS DevOps Guru Service Integration.
 ///
-/// > To prevent unintentional deletion of account wide settings, destruction of this resource will only remove it from the Terraform state. To disable any configured settings, explicitly set the opt-in value to `DISABLED` and apply again before destroying.
+/// &gt; To prevent unintentional deletion of account wide settings, destruction of this resource will only remove it from the Terraform state. To disable any configured settings, explicitly set the opt-in value to `DISABLED` and apply again before destroying.
 ///
 /// ## Example Usage
 ///
@@ -335,11 +335,16 @@ import 'service_integration_state.dart';
 /// ```
 class ServiceIntegration extends pulumi.CustomResource {
   /// Information about whether DevOps Guru is configured to encrypt server-side data using KMS. See `kms_server_side_encryption` below.
-  late final pulumi.Output<ServiceIntegrationKmsServerSideEncryption> kmsServerSideEncryption;
+  late final pulumi.Output<ServiceIntegrationKmsServerSideEncryption>
+  kmsServerSideEncryption;
+
   /// Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See `logs_anomaly_detection` below.
-  late final pulumi.Output<ServiceIntegrationLogsAnomalyDetection> logsAnomalyDetection;
+  late final pulumi.Output<ServiceIntegrationLogsAnomalyDetection>
+  logsAnomalyDetection;
+
   /// Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See `ops_center` below.
   late final pulumi.Output<ServiceIntegrationOpsCenter> opsCenter;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -352,15 +357,21 @@ class ServiceIntegration extends pulumi.CustomResource {
     ServiceIntegrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devopsguru/serviceIntegration:ServiceIntegration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.kmsServerSideEncryption = registerOutput<ServiceIntegrationKmsServerSideEncryption>('kmsServerSideEncryption');
-    this.logsAnomalyDetection = registerOutput<ServiceIntegrationLogsAnomalyDetection>('logsAnomalyDetection');
-    this.opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter');
-    this.region = registerOutput<String>('region');
+         'aws:devopsguru/serviceIntegration:ServiceIntegration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    kmsServerSideEncryption =
+        registerOutput<ServiceIntegrationKmsServerSideEncryption>(
+          'kmsServerSideEncryption',
+        );
+    logsAnomalyDetection =
+        registerOutput<ServiceIntegrationLogsAnomalyDetection>(
+          'logsAnomalyDetection',
+        );
+    opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [ServiceIntegration] resource's state with the given [name] and [id].
@@ -381,14 +392,20 @@ class ServiceIntegration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devopsguru/serviceIntegration:ServiceIntegration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.kmsServerSideEncryption = registerOutput<ServiceIntegrationKmsServerSideEncryption>('kmsServerSideEncryption');
-    this.logsAnomalyDetection = registerOutput<ServiceIntegrationLogsAnomalyDetection>('logsAnomalyDetection');
-    this.opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter');
-    this.region = registerOutput<String>('region');
+         'aws:devopsguru/serviceIntegration:ServiceIntegration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    kmsServerSideEncryption =
+        registerOutput<ServiceIntegrationKmsServerSideEncryption>(
+          'kmsServerSideEncryption',
+        );
+    logsAnomalyDetection =
+        registerOutput<ServiceIntegrationLogsAnomalyDetection>(
+          'logsAnomalyDetection',
+        );
+    opsCenter = registerOutput<ServiceIntegrationOpsCenter>('opsCenter');
+    region = registerOutput<String>('region');
   }
 }

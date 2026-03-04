@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayMessageBusOutputDataSource {
   /// The name of the Service Bus topic.
   final pulumi.Input<String>? topic;
+
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'GatewayMessageBus'.
   final pulumi.Input<String> type;
@@ -13,23 +14,20 @@ class GatewayMessageBusOutputDataSource {
   /// Creates a new [GatewayMessageBusOutputDataSource].
   /// [topic] The name of the Service Bus topic.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  GatewayMessageBusOutputDataSource({
-    this.topic,
-    required this.type,
-  });
+  GatewayMessageBusOutputDataSource({this.topic, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topic': ?topic,
-      'type': type,
-    };
+    return <String, dynamic>{'topic': ?topic, 'type': type};
   }
 
   factory GatewayMessageBusOutputDataSource.fromMap(Map<String, dynamic> map) {
     return GatewayMessageBusOutputDataSource(
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
-      type: (map['type'] as String).input(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

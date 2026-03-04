@@ -8,10 +8,13 @@ import 'param_ref_patch.dart';
 class ValidatingAdmissionPolicyBindingSpecPatch {
   /// MatchResources declares what resources match this binding and will be validated by it. Note that this is intersected with the policy's matchConstraints, so only requests that are matched by the policy can be selected by this. If this is unset, all resources matched by the policy are validated by this binding When resourceRules is unset, it does not constrain resource matching. If a resource is matched by the other fields of this object, it will be validated. Note that this is differs from ValidatingAdmissionPolicy matchConstraints, where resourceRules are required.
   final pulumi.Input<MatchResourcesPatch>? matchResources;
+
   /// paramRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in ParamKind of the bound ValidatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the ValidatingAdmissionPolicy applied. If the policy does not specify a ParamKind then this field is ignored, and the rules are evaluated without a param.
   final pulumi.Input<ParamRefPatch>? paramRef;
+
   /// PolicyName references a ValidatingAdmissionPolicy name which the ValidatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.
   final pulumi.Input<String>? policyName;
+
   /// validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions.
   ///
   /// Failures defined by the ValidatingAdmissionPolicy's FailurePolicy are enforced according to these actions only if the FailurePolicy is set to Fail, otherwise the failures are ignored. This includes compilation errors, runtime errors and misconfigurations of the policy.
@@ -47,20 +50,51 @@ class ValidatingAdmissionPolicyBindingSpecPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchResources': ?pulumi.Input.mapOptionalInputValue<MatchResourcesPatch, Map<String, dynamic>>(matchResources, (value) => value.toMap()),
-      'paramRef': ?pulumi.Input.mapOptionalInputValue<ParamRefPatch, Map<String, dynamic>>(paramRef, (value) => value.toMap()),
+      'matchResources':
+          ?pulumi.Input.mapOptionalInputValue<
+            MatchResourcesPatch,
+            Map<String, dynamic>
+          >(matchResources, (value) => value.toMap()),
+      'paramRef':
+          ?pulumi.Input.mapOptionalInputValue<
+            ParamRefPatch,
+            Map<String, dynamic>
+          >(paramRef, (value) => value.toMap()),
       'policyName': ?policyName,
       'validationActions': ?validationActions,
     };
   }
 
-  factory ValidatingAdmissionPolicyBindingSpecPatch.fromMap(Map<String, dynamic> map) {
+  factory ValidatingAdmissionPolicyBindingSpecPatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ValidatingAdmissionPolicyBindingSpecPatch(
-      matchResources: map['matchResources'] == null ? null : (MatchResourcesPatch.fromMap((map['matchResources']! as Map).cast<String, dynamic>())).input(),
-      paramRef: map['paramRef'] == null ? null : (ParamRefPatch.fromMap((map['paramRef']! as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
-      validationActions: map['validationActions'] == null ? null : ((map['validationActions']! as List).cast<String>()).input(),
+      matchResources: (() {
+        final guardedValue = map['matchResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MatchResourcesPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      paramRef: (() {
+        final guardedValue = map['paramRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ParamRefPatch.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validationActions: (() {
+        final guardedValue = map['validationActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

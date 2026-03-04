@@ -28,10 +28,13 @@ class SourceIamMemberCondition {
 
   factory SourceIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberCondition(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expression: (map['expression'] as String).input(),
-      title: (map['title'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

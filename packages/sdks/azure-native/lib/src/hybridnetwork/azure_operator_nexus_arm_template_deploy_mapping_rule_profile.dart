@@ -7,6 +7,7 @@ import 'arm_template_mapping_rule_profile.dart';
 class AzureOperatorNexusArmTemplateDeployMappingRuleProfile {
   /// The application enablement.
   final pulumi.Input<String>? applicationEnablement;
+
   /// The template mapping rule profile.
   final pulumi.Input<ArmTemplateMappingRuleProfile>? templateMappingRuleProfile;
 
@@ -21,15 +22,32 @@ class AzureOperatorNexusArmTemplateDeployMappingRuleProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationEnablement': ?applicationEnablement,
-      'templateMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<ArmTemplateMappingRuleProfile, Map<String, dynamic>>(templateMappingRuleProfile, (value) => value.toMap()),
+      'templateMappingRuleProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArmTemplateMappingRuleProfile,
+            Map<String, dynamic>
+          >(templateMappingRuleProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureOperatorNexusArmTemplateDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
+  factory AzureOperatorNexusArmTemplateDeployMappingRuleProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureOperatorNexusArmTemplateDeployMappingRuleProfile(
-      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement']! as String).input(),
-      templateMappingRuleProfile: map['templateMappingRuleProfile'] == null ? null : (ArmTemplateMappingRuleProfile.fromMap((map['templateMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
+      applicationEnablement: (() {
+        final guardedValue = map['applicationEnablement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateMappingRuleProfile: (() {
+        final guardedValue = map['templateMappingRuleProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArmTemplateMappingRuleProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,12 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MailFromState {
   /// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
   final pulumi.Input<String>? behaviorOnMxFailure;
+
   /// Verified domain name or email identity to generate DKIM tokens for.
   final pulumi.Input<String>? domain;
+
   /// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? mailFromDomain;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -38,11 +41,26 @@ class MailFromState {
 
   factory MailFromState.fromMap(Map<String, dynamic> map) {
     return MailFromState(
-      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : ((map['behaviorOnMxFailure'] as String).input()).input(),
-      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
-      mailFromDomain: map['mailFromDomain'] == null ? null : ((map['mailFromDomain'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      behaviorOnMxFailure: (() {
+        final guardedValue = map['behaviorOnMxFailure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mailFromDomain: (() {
+        final guardedValue = map['mailFromDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

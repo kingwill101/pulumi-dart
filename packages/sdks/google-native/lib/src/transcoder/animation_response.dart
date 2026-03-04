@@ -9,8 +9,10 @@ import 'animation_static_response.dart';
 class AnimationResponse {
   /// End previous animation.
   final pulumi.Input<AnimationEndResponse> animationEnd;
+
   /// Display overlay object with fade animation.
   final pulumi.Input<AnimationFadeResponse> animationFade;
+
   /// Display static overlay object.
   final pulumi.Input<AnimationStaticResponse> animationStatic;
 
@@ -26,18 +28,41 @@ class AnimationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'animationEnd': pulumi.Input.mapInputValue<AnimationEndResponse, Map<String, dynamic>>(animationEnd, (value) => value.toMap()),
-      'animationFade': pulumi.Input.mapInputValue<AnimationFadeResponse, Map<String, dynamic>>(animationFade, (value) => value.toMap()),
-      'animationStatic': pulumi.Input.mapInputValue<AnimationStaticResponse, Map<String, dynamic>>(animationStatic, (value) => value.toMap()),
+      'animationEnd':
+          pulumi.Input.mapInputValue<
+            AnimationEndResponse,
+            Map<String, dynamic>
+          >(animationEnd, (value) => value.toMap()),
+      'animationFade':
+          pulumi.Input.mapInputValue<
+            AnimationFadeResponse,
+            Map<String, dynamic>
+          >(animationFade, (value) => value.toMap()),
+      'animationStatic':
+          pulumi.Input.mapInputValue<
+            AnimationStaticResponse,
+            Map<String, dynamic>
+          >(animationStatic, (value) => value.toMap()),
     };
   }
 
   factory AnimationResponse.fromMap(Map<String, dynamic> map) {
     return AnimationResponse(
-      animationEnd: (AnimationEndResponse.fromMap((map['animationEnd'] as Map).cast<String, dynamic>())).input(),
-      animationFade: (AnimationFadeResponse.fromMap((map['animationFade'] as Map).cast<String, dynamic>())).input(),
-      animationStatic: (AnimationStaticResponse.fromMap((map['animationStatic'] as Map).cast<String, dynamic>())).input(),
+      animationEnd: pulumi.Input.fromValue(
+        AnimationEndResponse.fromMap(
+          (map['animationEnd']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      animationFade: pulumi.Input.fromValue(
+        AnimationFadeResponse.fromMap(
+          (map['animationFade']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      animationStatic: pulumi.Input.fromValue(
+        AnimationStaticResponse.fromMap(
+          (map['animationStatic']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

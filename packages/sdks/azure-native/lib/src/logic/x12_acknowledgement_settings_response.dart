@@ -6,32 +6,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class X12AcknowledgementSettingsResponse {
   /// The acknowledgement control number lower bound.
   final pulumi.Input<int> acknowledgementControlNumberLowerBound;
+
   /// The acknowledgement control number prefix.
   final pulumi.Input<String>? acknowledgementControlNumberPrefix;
+
   /// The acknowledgement control number suffix.
   final pulumi.Input<String>? acknowledgementControlNumberSuffix;
+
   /// The acknowledgement control number upper bound.
   final pulumi.Input<int> acknowledgementControlNumberUpperBound;
+
   /// The value indicating whether to batch functional acknowledgements.
   final pulumi.Input<bool> batchFunctionalAcknowledgements;
+
   /// The value indicating whether to batch implementation acknowledgements.
   final pulumi.Input<bool> batchImplementationAcknowledgements;
+
   /// The value indicating whether to batch the technical acknowledgements.
   final pulumi.Input<bool> batchTechnicalAcknowledgements;
+
   /// The functional acknowledgement version.
   final pulumi.Input<String>? functionalAcknowledgementVersion;
+
   /// The implementation acknowledgement version.
   final pulumi.Input<String>? implementationAcknowledgementVersion;
+
   /// The value indicating whether functional acknowledgement is needed.
   final pulumi.Input<bool> needFunctionalAcknowledgement;
+
   /// The value indicating whether implementation acknowledgement is needed.
   final pulumi.Input<bool> needImplementationAcknowledgement;
+
   /// The value indicating whether a loop is needed for valid messages.
   final pulumi.Input<bool> needLoopForValidMessages;
+
   /// The value indicating whether technical acknowledgement is needed.
   final pulumi.Input<bool> needTechnicalAcknowledgement;
+
   /// The value indicating whether to rollover acknowledgement control number.
   final pulumi.Input<bool> rolloverAcknowledgementControlNumber;
+
   /// The value indicating whether to send synchronous acknowledgement.
   final pulumi.Input<bool> sendSynchronousAcknowledgement;
 
@@ -71,42 +85,84 @@ class X12AcknowledgementSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acknowledgementControlNumberLowerBound': acknowledgementControlNumberLowerBound,
+      'acknowledgementControlNumberLowerBound':
+          acknowledgementControlNumberLowerBound,
       'acknowledgementControlNumberPrefix': ?acknowledgementControlNumberPrefix,
       'acknowledgementControlNumberSuffix': ?acknowledgementControlNumberSuffix,
-      'acknowledgementControlNumberUpperBound': acknowledgementControlNumberUpperBound,
+      'acknowledgementControlNumberUpperBound':
+          acknowledgementControlNumberUpperBound,
       'batchFunctionalAcknowledgements': batchFunctionalAcknowledgements,
-      'batchImplementationAcknowledgements': batchImplementationAcknowledgements,
+      'batchImplementationAcknowledgements':
+          batchImplementationAcknowledgements,
       'batchTechnicalAcknowledgements': batchTechnicalAcknowledgements,
       'functionalAcknowledgementVersion': ?functionalAcknowledgementVersion,
-      'implementationAcknowledgementVersion': ?implementationAcknowledgementVersion,
+      'implementationAcknowledgementVersion':
+          ?implementationAcknowledgementVersion,
       'needFunctionalAcknowledgement': needFunctionalAcknowledgement,
       'needImplementationAcknowledgement': needImplementationAcknowledgement,
       'needLoopForValidMessages': needLoopForValidMessages,
       'needTechnicalAcknowledgement': needTechnicalAcknowledgement,
-      'rolloverAcknowledgementControlNumber': rolloverAcknowledgementControlNumber,
+      'rolloverAcknowledgementControlNumber':
+          rolloverAcknowledgementControlNumber,
       'sendSynchronousAcknowledgement': sendSynchronousAcknowledgement,
     };
   }
 
   factory X12AcknowledgementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12AcknowledgementSettingsResponse(
-      acknowledgementControlNumberLowerBound: (map['acknowledgementControlNumberLowerBound'] as int).input(),
-      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : (map['acknowledgementControlNumberPrefix']! as String).input(),
-      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : (map['acknowledgementControlNumberSuffix']! as String).input(),
-      acknowledgementControlNumberUpperBound: (map['acknowledgementControlNumberUpperBound'] as int).input(),
-      batchFunctionalAcknowledgements: (map['batchFunctionalAcknowledgements'] as bool).input(),
-      batchImplementationAcknowledgements: (map['batchImplementationAcknowledgements'] as bool).input(),
-      batchTechnicalAcknowledgements: (map['batchTechnicalAcknowledgements'] as bool).input(),
-      functionalAcknowledgementVersion: map['functionalAcknowledgementVersion'] == null ? null : (map['functionalAcknowledgementVersion']! as String).input(),
-      implementationAcknowledgementVersion: map['implementationAcknowledgementVersion'] == null ? null : (map['implementationAcknowledgementVersion']! as String).input(),
-      needFunctionalAcknowledgement: (map['needFunctionalAcknowledgement'] as bool).input(),
-      needImplementationAcknowledgement: (map['needImplementationAcknowledgement'] as bool).input(),
-      needLoopForValidMessages: (map['needLoopForValidMessages'] as bool).input(),
-      needTechnicalAcknowledgement: (map['needTechnicalAcknowledgement'] as bool).input(),
-      rolloverAcknowledgementControlNumber: (map['rolloverAcknowledgementControlNumber'] as bool).input(),
-      sendSynchronousAcknowledgement: (map['sendSynchronousAcknowledgement'] as bool).input(),
+      acknowledgementControlNumberLowerBound: pulumi.Input.fromValue(
+        map['acknowledgementControlNumberLowerBound'] as int,
+      ),
+      acknowledgementControlNumberPrefix: (() {
+        final guardedValue = map['acknowledgementControlNumberPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acknowledgementControlNumberSuffix: (() {
+        final guardedValue = map['acknowledgementControlNumberSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acknowledgementControlNumberUpperBound: pulumi.Input.fromValue(
+        map['acknowledgementControlNumberUpperBound'] as int,
+      ),
+      batchFunctionalAcknowledgements: pulumi.Input.fromValue(
+        map['batchFunctionalAcknowledgements'] as bool,
+      ),
+      batchImplementationAcknowledgements: pulumi.Input.fromValue(
+        map['batchImplementationAcknowledgements'] as bool,
+      ),
+      batchTechnicalAcknowledgements: pulumi.Input.fromValue(
+        map['batchTechnicalAcknowledgements'] as bool,
+      ),
+      functionalAcknowledgementVersion: (() {
+        final guardedValue = map['functionalAcknowledgementVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      implementationAcknowledgementVersion: (() {
+        final guardedValue = map['implementationAcknowledgementVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      needFunctionalAcknowledgement: pulumi.Input.fromValue(
+        map['needFunctionalAcknowledgement'] as bool,
+      ),
+      needImplementationAcknowledgement: pulumi.Input.fromValue(
+        map['needImplementationAcknowledgement'] as bool,
+      ),
+      needLoopForValidMessages: pulumi.Input.fromValue(
+        map['needLoopForValidMessages'] as bool,
+      ),
+      needTechnicalAcknowledgement: pulumi.Input.fromValue(
+        map['needTechnicalAcknowledgement'] as bool,
+      ),
+      rolloverAcknowledgementControlNumber: pulumi.Input.fromValue(
+        map['rolloverAcknowledgementControlNumber'] as bool,
+      ),
+      sendSynchronousAcknowledgement: pulumi.Input.fromValue(
+        map['sendSynchronousAcknowledgement'] as bool,
+      ),
     );
   }
 }
-

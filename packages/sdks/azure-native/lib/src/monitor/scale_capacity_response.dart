@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleCapacityResponse {
   /// the number of instances that will be set if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default.
   final pulumi.Input<String> default_;
+
   /// the maximum number of instances for the resource. The actual maximum number of instances is limited by the cores that are available in the subscription.
   final pulumi.Input<String> maximum;
+
   /// the minimum number of instances for the resource.
   final pulumi.Input<String> minimum;
 
@@ -31,10 +33,9 @@ class ScaleCapacityResponse {
 
   factory ScaleCapacityResponse.fromMap(Map<String, dynamic> map) {
     return ScaleCapacityResponse(
-      default_: (map['default'] as String).input(),
-      maximum: (map['maximum'] as String).input(),
-      minimum: (map['minimum'] as String).input(),
+      default_: pulumi.Input.fromValue(map['default'] as String),
+      maximum: pulumi.Input.fromValue(map['maximum'] as String),
+      minimum: pulumi.Input.fromValue(map['minimum'] as String),
     );
   }
 }
-

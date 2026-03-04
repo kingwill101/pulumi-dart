@@ -9,20 +9,17 @@ class ConnectionAuthConfigUserPasswordPassword {
 
   /// Creates a new [ConnectionAuthConfigUserPasswordPassword].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionAuthConfigUserPasswordPassword({
-    required this.secretVersion,
-  });
+  ConnectionAuthConfigUserPasswordPassword({required this.secretVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
-  factory ConnectionAuthConfigUserPasswordPassword.fromMap(Map<String, dynamic> map) {
+  factory ConnectionAuthConfigUserPasswordPassword.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionAuthConfigUserPasswordPassword(
-      secretVersion: (map['secretVersion'] as String).input(),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

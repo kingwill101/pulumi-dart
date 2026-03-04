@@ -1,5 +1,3 @@
-library module_amqp;
-
 export 'amqp/binding.dart';
 export 'amqp/binding_args.dart';
 export 'amqp/binding_state.dart';

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrustedIdProviderResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
+
   /// The URL of this trusted identity provider.
   final pulumi.Input<String> idProvider;
+
   /// The resource name.
   final pulumi.Input<String> name;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -36,11 +39,10 @@ class TrustedIdProviderResponse {
 
   factory TrustedIdProviderResponse.fromMap(Map<String, dynamic> map) {
     return TrustedIdProviderResponse(
-      id: (map['id'] as String).input(),
-      idProvider: (map['idProvider'] as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      idProvider: pulumi.Input.fromValue(map['idProvider'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

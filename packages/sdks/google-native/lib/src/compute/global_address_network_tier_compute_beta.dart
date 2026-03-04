@@ -5,16 +5,17 @@ enum GlobalAddressNetworkTierComputeBeta {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const GlobalAddressNetworkTierComputeBeta(this.value);
-  final String value;
+  const GlobalAddressNetworkTierComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressNetworkTierComputeBeta fromValue(String value) {
     for (final item in GlobalAddressNetworkTierComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressNetworkTierComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressNetworkTierComputeBeta value: $value',
+    );
   }
 }
-

@@ -6,22 +6,31 @@ import 'system_data_response.dart';
 class GetDeploymentSafeguardResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   final String eTag;
+
   /// User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards
   final List<String>? excludedNamespaces;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The deployment safeguards level. Possible values are Warn and Enforce
   final String level;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning State
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// System defined list of namespaces excluded from Deployment Safeguards. These are determined by the underlying provider (such as AKS), and cannot be changed. Deployments in these namespaces will not be checked
   final List<String> systemExcludedNamespaces;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,15 +77,21 @@ class GetDeploymentSafeguardResult {
     return GetDeploymentSafeguardResult(
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : (map['excludedNamespaces']! as List).cast<String>(),
+      excludedNamespaces: (() {
+        final guardedValue = map['excludedNamespaces'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       level: map['level'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      systemExcludedNamespaces: (map['systemExcludedNamespaces'] as List).cast<String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      systemExcludedNamespaces: (map['systemExcludedNamespaces'] as List)
+          .cast<String>(),
       type: map['type'] as String,
     );
   }
 }
-

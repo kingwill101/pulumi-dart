@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listOpenShiftClusterCredentials.
 class ListOpenShiftClusterCredentialsResult {
   /// The password for the kubeadmin user.
   final String? kubeadminPassword;
+
   /// The username for the kubeadmin user.
   final String? kubeadminUsername;
 
@@ -23,11 +23,20 @@ class ListOpenShiftClusterCredentialsResult {
     };
   }
 
-  factory ListOpenShiftClusterCredentialsResult.fromMap(Map<String, dynamic> map) {
+  factory ListOpenShiftClusterCredentialsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListOpenShiftClusterCredentialsResult(
-      kubeadminPassword: map['kubeadminPassword'] == null ? null : map['kubeadminPassword']! as String,
-      kubeadminUsername: map['kubeadminUsername'] == null ? null : map['kubeadminUsername']! as String,
+      kubeadminPassword: (() {
+        final guardedValue = map['kubeadminPassword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      kubeadminUsername: (() {
+        final guardedValue = map['kubeadminUsername'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

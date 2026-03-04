@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayHostNameConfigurationArgs {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementId;
+
   /// The certificate ID to be used for TLS connection establishment.
   final pulumi.Input<String> certificateId;
+
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String> gatewayName;
+
   /// The host name to use for the API Management Gateway Host Name Configuration.
   final pulumi.Input<String> hostName;
+
   /// Whether HTTP/2.0 is supported. Defaults to `true`.
   final pulumi.Input<bool>? http2Enabled;
+
   /// The name of the API Management Gateway Host Name Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Whether the API Management Gateway requests a client certificate.
   final pulumi.Input<bool>? requestClientCertificateEnabled;
+
   /// Whether TLS 1.0 is supported.
   final pulumi.Input<bool>? tls10Enabled;
+
   /// Whether TLS 1.1 is supported.
   final pulumi.Input<bool>? tls11Enabled;
 
@@ -64,16 +72,35 @@ class GatewayHostNameConfigurationArgs {
 
   factory GatewayHostNameConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GatewayHostNameConfigurationArgs(
-      apiManagementId: (map['apiManagementId'] as String).input(),
-      certificateId: (map['certificateId'] as String).input(),
-      gatewayName: (map['gatewayName'] as String).input(),
-      hostName: (map['hostName'] as String).input(),
-      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      requestClientCertificateEnabled: map['requestClientCertificateEnabled'] == null ? null : (map['requestClientCertificateEnabled']! as bool).input(),
-      tls10Enabled: map['tls10Enabled'] == null ? null : (map['tls10Enabled']! as bool).input(),
-      tls11Enabled: map['tls11Enabled'] == null ? null : (map['tls11Enabled']! as bool).input(),
+      apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
+      certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      hostName: pulumi.Input.fromValue(map['hostName'] as String),
+      http2Enabled: (() {
+        final guardedValue = map['http2Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestClientCertificateEnabled: (() {
+        final guardedValue = map['requestClientCertificateEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tls10Enabled: (() {
+        final guardedValue = map['tls10Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tls11Enabled: (() {
+        final guardedValue = map['tls11Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

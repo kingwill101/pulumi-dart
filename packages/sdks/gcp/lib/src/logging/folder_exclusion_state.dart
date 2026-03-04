@@ -6,16 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderExclusionState {
   /// A human-readable description.
   final pulumi.Input<String>? description;
+
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   final pulumi.Input<bool>? disabled;
+
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   final pulumi.Input<String>? filter;
+
   /// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
   /// accepted.
   final pulumi.Input<String>? folder;
+
   /// The name of the logging exclusion.
   final pulumi.Input<String>? name;
 
@@ -45,12 +49,31 @@ class FolderExclusionState {
 
   factory FolderExclusionState.fromMap(Map<String, dynamic> map) {
     return FolderExclusionState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

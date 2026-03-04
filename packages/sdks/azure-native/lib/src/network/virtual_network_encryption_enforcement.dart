@@ -3,16 +3,17 @@ enum VirtualNetworkEncryptionEnforcement {
   valueDropUnencrypted("DropUnencrypted"),
   valueAllowUnencrypted("AllowUnencrypted");
 
-  const VirtualNetworkEncryptionEnforcement(this.value);
-  final String value;
+  const VirtualNetworkEncryptionEnforcement(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkEncryptionEnforcement fromValue(String value) {
     for (final item in VirtualNetworkEncryptionEnforcement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualNetworkEncryptionEnforcement value: $value');
+    throw ArgumentError(
+      'Unknown VirtualNetworkEncryptionEnforcement value: $value',
+    );
   }
 }
-

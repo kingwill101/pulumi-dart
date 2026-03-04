@@ -3,16 +3,15 @@ enum RouterBgpPeerEnable {
   false_("FALSE"),
   true_("TRUE");
 
-  const RouterBgpPeerEnable(this.value);
-  final String value;
+  const RouterBgpPeerEnable(this.wireValue);
+  final String wireValue;
 
   static RouterBgpPeerEnable fromValue(String value) {
     for (final item in RouterBgpPeerEnable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterBgpPeerEnable value: $value');
   }
 }
-

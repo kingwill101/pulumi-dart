@@ -7,16 +7,17 @@ enum GooglePrivacyDlpV2InspectConfigMinLikelihood {
   likely("LIKELY"),
   veryLikely("VERY_LIKELY");
 
-  const GooglePrivacyDlpV2InspectConfigMinLikelihood(this.value);
-  final String value;
+  const GooglePrivacyDlpV2InspectConfigMinLikelihood(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2InspectConfigMinLikelihood fromValue(String value) {
     for (final item in GooglePrivacyDlpV2InspectConfigMinLikelihood.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2InspectConfigMinLikelihood value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2InspectConfigMinLikelihood value: $value',
+    );
   }
 }
-

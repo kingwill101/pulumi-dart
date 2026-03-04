@@ -5,16 +5,17 @@ enum TimeSeriesValueTypeAiplatformV1beta1 {
   tensor("TENSOR"),
   blobSequence("BLOB_SEQUENCE");
 
-  const TimeSeriesValueTypeAiplatformV1beta1(this.value);
-  final String value;
+  const TimeSeriesValueTypeAiplatformV1beta1(this.wireValue);
+  final String wireValue;
 
   static TimeSeriesValueTypeAiplatformV1beta1 fromValue(String value) {
     for (final item in TimeSeriesValueTypeAiplatformV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TimeSeriesValueTypeAiplatformV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown TimeSeriesValueTypeAiplatformV1beta1 value: $value',
+    );
   }
 }
-

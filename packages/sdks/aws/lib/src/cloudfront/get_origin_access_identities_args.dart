@@ -12,20 +12,19 @@ class GetOriginAccessIdentitiesArgs {
 
   /// Creates a new [GetOriginAccessIdentitiesArgs].
   /// [comments] Filter origin access identities by comment.
-  GetOriginAccessIdentitiesArgs({
-    this.comments,
-  });
+  GetOriginAccessIdentitiesArgs({this.comments});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comments': ?comments,
-    };
+    return <String, dynamic>{'comments': ?comments};
   }
 
   factory GetOriginAccessIdentitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentitiesArgs(
-      comments: map['comments'] == null ? null : (((map['comments'] as List).cast<String>()).input()).input(),
+      comments: (() {
+        final guardedValue = map['comments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum InterconnectAttachmentEdgeAvailabilityDomain {
   availabilityDomain2("AVAILABILITY_DOMAIN_2"),
   availabilityDomainAny("AVAILABILITY_DOMAIN_ANY");
 
-  const InterconnectAttachmentEdgeAvailabilityDomain(this.value);
-  final String value;
+  const InterconnectAttachmentEdgeAvailabilityDomain(this.wireValue);
+  final String wireValue;
 
   static InterconnectAttachmentEdgeAvailabilityDomain fromValue(String value) {
     for (final item in InterconnectAttachmentEdgeAvailabilityDomain.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectAttachmentEdgeAvailabilityDomain value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectAttachmentEdgeAvailabilityDomain value: $value',
+    );
   }
 }
-

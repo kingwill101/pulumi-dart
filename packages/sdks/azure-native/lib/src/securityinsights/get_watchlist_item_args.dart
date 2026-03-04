@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWatchlistItemArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The watchlist alias
   final pulumi.Input<String> watchlistAlias;
+
   /// The watchlist item id (GUID)
   final pulumi.Input<String> watchlistItemId;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,12 @@ class GetWatchlistItemArgs {
 
   factory GetWatchlistItemArgs.fromMap(Map<String, dynamic> map) {
     return GetWatchlistItemArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      watchlistAlias: (map['watchlistAlias'] as String).input(),
-      watchlistItemId: (map['watchlistItemId'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      watchlistAlias: pulumi.Input.fromValue(map['watchlistAlias'] as String),
+      watchlistItemId: pulumi.Input.fromValue(map['watchlistItemId'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

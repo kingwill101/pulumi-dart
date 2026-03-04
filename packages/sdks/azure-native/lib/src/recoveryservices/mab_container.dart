@@ -8,32 +8,45 @@ import 'mabcontainer_health_details.dart';
 class MabContainer {
   /// Agent version of this container.
   final pulumi.Input<String>? agentVersion;
+
   /// Type of backup management for the container.
   final pulumi.Input<String>? backupManagementType;
+
   /// Can the container be registered one more time.
   final pulumi.Input<bool>? canReRegister;
+
   /// Health state of mab container.
   final pulumi.Input<String>? containerHealthState;
+
   /// ContainerID represents the container.
   final pulumi.Input<double>? containerId;
+
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
   /// Backup is VMAppContainer
   /// Expected value is 'Windows'.
   final pulumi.Input<String> containerType;
+
   /// Additional information for this container
   final pulumi.Input<MabContainerExtendedInfo>? extendedInfo;
+
   /// Friendly name of the container.
   final pulumi.Input<String>? friendlyName;
+
   /// Status of health of the container.
   final pulumi.Input<String>? healthStatus;
+
   /// Health details on this mab container.
-  final pulumi.Input<List<MABContainerHealthDetails>>? mabContainerHealthDetails;
+  final pulumi.Input<List<MABContainerHealthDetails>>?
+  mabContainerHealthDetails;
+
   /// Type of the protectable object associated with this container
   final pulumi.Input<String>? protectableObjectType;
+
   /// Number of items backed up in this container.
   final pulumi.Input<double>? protectedItemCount;
+
   /// Status of registration of the container with the Recovery Services Vault.
   final pulumi.Input<String>? registrationStatus;
 
@@ -75,10 +88,25 @@ class MabContainer {
       'containerHealthState': ?containerHealthState,
       'containerId': ?containerId,
       'containerType': containerType,
-      'extendedInfo': ?pulumi.Input.mapOptionalInputValue<MabContainerExtendedInfo, Map<String, dynamic>>(extendedInfo, (value) => value.toMap()),
+      'extendedInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            MabContainerExtendedInfo,
+            Map<String, dynamic>
+          >(extendedInfo, (value) => value.toMap()),
       'friendlyName': ?friendlyName,
       'healthStatus': ?healthStatus,
-      'mabContainerHealthDetails': ?pulumi.Input.mapOptionalInputValue<List<MABContainerHealthDetails>, List<Map<String, dynamic>>>(mabContainerHealthDetails, (value) => pulumi.Input.encodeList<MABContainerHealthDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mabContainerHealthDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MABContainerHealthDetails>,
+            List<Map<String, dynamic>>
+          >(
+            mabContainerHealthDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MABContainerHealthDetails,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'protectableObjectType': ?protectableObjectType,
       'protectedItemCount': ?protectedItemCount,
       'registrationStatus': ?registrationStatus,
@@ -87,20 +115,78 @@ class MabContainer {
 
   factory MabContainer.fromMap(Map<String, dynamic> map) {
     return MabContainer(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
-      canReRegister: map['canReRegister'] == null ? null : (map['canReRegister']! as bool).input(),
-      containerHealthState: map['containerHealthState'] == null ? null : (map['containerHealthState']! as String).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId']! as double).input(),
-      containerType: (map['containerType'] as String).input(),
-      extendedInfo: map['extendedInfo'] == null ? null : (MabContainerExtendedInfo.fromMap((map['extendedInfo']! as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
-      mabContainerHealthDetails: map['mabContainerHealthDetails'] == null ? null : (pulumi.Input.decodeList<MABContainerHealthDetails>(map['mabContainerHealthDetails']!, (value) => MABContainerHealthDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType']! as String).input(),
-      protectedItemCount: map['protectedItemCount'] == null ? null : (map['protectedItemCount']! as double).input(),
-      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus']! as String).input(),
+      agentVersion: (() {
+        final guardedValue = map['agentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupManagementType: (() {
+        final guardedValue = map['backupManagementType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      canReRegister: (() {
+        final guardedValue = map['canReRegister'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      containerHealthState: (() {
+        final guardedValue = map['containerHealthState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerId: (() {
+        final guardedValue = map['containerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      containerType: pulumi.Input.fromValue(map['containerType'] as String),
+      extendedInfo: (() {
+        final guardedValue = map['extendedInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MabContainerExtendedInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      friendlyName: (() {
+        final guardedValue = map['friendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthStatus: (() {
+        final guardedValue = map['healthStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mabContainerHealthDetails: (() {
+        final guardedValue = map['mabContainerHealthDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MABContainerHealthDetails>(
+            guardedValue,
+            (value) => MABContainerHealthDetails.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      protectableObjectType: (() {
+        final guardedValue = map['protectableObjectType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectedItemCount: (() {
+        final guardedValue = map['protectedItemCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      registrationStatus: (() {
+        final guardedValue = map['registrationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,14 +13,18 @@ class SacRealmArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Identifier. Resource name.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// SSE service provider associated with the realm.
   /// Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
   final pulumi.Input<String> securityService;
+
   /// Configuration required for Symantec realms.
   /// Structure is documented below.
   final pulumi.Input<SacRealmSymantecOptions>? symantecOptions;
@@ -45,18 +49,43 @@ class SacRealmArgs {
       'name': ?name,
       'project': ?project,
       'securityService': securityService,
-      'symantecOptions': ?pulumi.Input.mapOptionalInputValue<SacRealmSymantecOptions, Map<String, dynamic>>(symantecOptions, (value) => value.toMap()),
+      'symantecOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            SacRealmSymantecOptions,
+            Map<String, dynamic>
+          >(symantecOptions, (value) => value.toMap()),
     };
   }
 
   factory SacRealmArgs.fromMap(Map<String, dynamic> map) {
     return SacRealmArgs(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      securityService: (map['securityService'] as String).input(),
-      symantecOptions: map['symantecOptions'] == null ? null : (SacRealmSymantecOptions.fromMap((map['symantecOptions']! as Map).cast<String, dynamic>())).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityService: pulumi.Input.fromValue(map['securityService'] as String),
+      symantecOptions: (() {
+        final guardedValue = map['symantecOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SacRealmSymantecOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

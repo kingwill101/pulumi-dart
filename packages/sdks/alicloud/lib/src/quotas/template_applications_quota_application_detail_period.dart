@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateApplicationsQuotaApplicationDetailPeriod {
   /// Quota calculation cycle unit.
   final pulumi.Input<String>? periodUnit;
+
   /// The quota calculation period value.
   final pulumi.Input<int>? periodValue;
 
@@ -23,11 +24,20 @@ class TemplateApplicationsQuotaApplicationDetailPeriod {
     };
   }
 
-  factory TemplateApplicationsQuotaApplicationDetailPeriod.fromMap(Map<String, dynamic> map) {
+  factory TemplateApplicationsQuotaApplicationDetailPeriod.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TemplateApplicationsQuotaApplicationDetailPeriod(
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
-      periodValue: map['periodValue'] == null ? null : (map['periodValue']! as int).input(),
+      periodUnit: (() {
+        final guardedValue = map['periodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      periodValue: (() {
+        final guardedValue = map['periodValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

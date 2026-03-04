@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuntimeUpdatableParamsResponse {
   /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
   final pulumi.Input<int> maxNumWorkers;
+
   /// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
   final pulumi.Input<int> minNumWorkers;
 
@@ -26,9 +27,8 @@ class RuntimeUpdatableParamsResponse {
 
   factory RuntimeUpdatableParamsResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeUpdatableParamsResponse(
-      maxNumWorkers: (map['maxNumWorkers'] as int).input(),
-      minNumWorkers: (map['minNumWorkers'] as int).input(),
+      maxNumWorkers: pulumi.Input.fromValue(map['maxNumWorkers'] as int),
+      minNumWorkers: pulumi.Input.fromValue(map['minNumWorkers'] as int),
     );
   }
 }
-

@@ -1,11 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_monitor_args.dart';
 import 'connection_monitor_destination_response.dart';
-import 'connection_monitor_endpoint_response.dart';
-import 'connection_monitor_output_response.dart';
 import 'connection_monitor_source_response.dart';
-import 'connection_monitor_test_configuration_response.dart';
-import 'connection_monitor_test_group_response.dart';
 
 /// Information about the connection monitor.
 ///
@@ -1190,40 +1186,58 @@ import 'connection_monitor_test_group_response.dart';
 class ConnectionMonitor extends pulumi.CustomResource {
   /// Determines if the connection monitor will start automatically once created.
   late final pulumi.Output<bool?> autoStart;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Type of connection monitor.
   late final pulumi.Output<String> connectionMonitorType;
+
   /// Describes the destination of connection monitor.
   late final pulumi.Output<ConnectionMonitorDestinationResponse?> destination;
+
   /// List of connection monitor endpoints.
-  late final pulumi.Output<List<ConnectionMonitorEndpointResponse>?> endpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Connection monitor location.
   late final pulumi.Output<String?> location;
+
   /// Monitoring interval in seconds.
   late final pulumi.Output<int?> monitoringIntervalInSeconds;
+
   /// The monitoring status of the connection monitor.
   late final pulumi.Output<String> monitoringStatus;
+
   /// Name of the connection monitor.
   late final pulumi.Output<String> name;
+
   /// Optional notes to be associated with the connection monitor.
   late final pulumi.Output<String?> notes;
+
   /// List of connection monitor outputs.
-  late final pulumi.Output<List<ConnectionMonitorOutputResponse>?> outputs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> outputs;
+
   /// The provisioning state of the connection monitor.
   late final pulumi.Output<String> provisioningState;
+
   /// Describes the source of connection monitor.
   late final pulumi.Output<ConnectionMonitorSourceResponse?> source;
+
   /// The date and time when the connection monitor was started.
   late final pulumi.Output<String> startTime;
+
   /// Connection monitor tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// List of connection monitor test configurations.
-  late final pulumi.Output<List<ConnectionMonitorTestConfigurationResponse>?> testConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> testConfigurations;
+
   /// List of connection monitor test groups.
-  late final pulumi.Output<List<ConnectionMonitorTestGroupResponse>?> testGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> testGroups;
+
   /// Connection monitor type.
   late final pulumi.Output<String> type;
 
@@ -1236,29 +1250,35 @@ class ConnectionMonitor extends pulumi.CustomResource {
     ConnectionMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ConnectionMonitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoStart = registerOutput<bool?>('autoStart');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectionMonitorType = registerOutput<String>('connectionMonitorType');
-    this.destination = registerOutput<ConnectionMonitorDestinationResponse?>('destination');
-    this.endpoints = registerOutput<List<ConnectionMonitorEndpointResponse>?>('endpoints');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String?>('location');
-    this.monitoringIntervalInSeconds = registerOutput<int?>('monitoringIntervalInSeconds');
-    this.monitoringStatus = registerOutput<String>('monitoringStatus');
+         'azure-native:network:ConnectionMonitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoStart = registerOutput<bool?>('autoStart');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionMonitorType = registerOutput<String>('connectionMonitorType');
+    destination = registerOutput<ConnectionMonitorDestinationResponse?>(
+      'destination',
+    );
+    endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
+    monitoringIntervalInSeconds = registerOutput<int?>(
+      'monitoringIntervalInSeconds',
+    );
+    monitoringStatus = registerOutput<String>('monitoringStatus');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.outputs = registerOutput<List<ConnectionMonitorOutputResponse>?>('outputs');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.source = registerOutput<ConnectionMonitorSourceResponse?>('source');
-    this.startTime = registerOutput<String>('startTime');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.testConfigurations = registerOutput<List<ConnectionMonitorTestConfigurationResponse>?>('testConfigurations');
-    this.testGroups = registerOutput<List<ConnectionMonitorTestGroupResponse>?>('testGroups');
-    this.type = registerOutput<String>('type');
+    notes = registerOutput<String?>('notes');
+    outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
+    provisioningState = registerOutput<String>('provisioningState');
+    source = registerOutput<ConnectionMonitorSourceResponse?>('source');
+    startTime = registerOutput<String>('startTime');
+    tags = registerOutput<Map<String, String>?>('tags');
+    testConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'testConfigurations',
+    );
+    testGroups = registerOutput<List<Map<String, dynamic>>?>('testGroups');
+    type = registerOutput<String>('type');
   }
 }

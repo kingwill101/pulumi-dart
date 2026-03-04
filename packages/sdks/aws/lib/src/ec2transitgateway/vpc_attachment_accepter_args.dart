@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcAttachmentAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the EC2 Transit Gateway Attachment to manage.
   final pulumi.Input<String> transitGatewayAttachmentId;
+
   /// Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. Default value: `true`.
   final pulumi.Input<bool>? transitGatewayDefaultRouteTableAssociation;
+
   /// Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Default value: `true`.
   final pulumi.Input<bool>? transitGatewayDefaultRouteTablePropagation;
 
@@ -37,19 +41,40 @@ class VpcAttachmentAccepterArgs {
       'region': ?region,
       'tags': ?tags,
       'transitGatewayAttachmentId': transitGatewayAttachmentId,
-      'transitGatewayDefaultRouteTableAssociation': ?transitGatewayDefaultRouteTableAssociation,
-      'transitGatewayDefaultRouteTablePropagation': ?transitGatewayDefaultRouteTablePropagation,
+      'transitGatewayDefaultRouteTableAssociation':
+          ?transitGatewayDefaultRouteTableAssociation,
+      'transitGatewayDefaultRouteTablePropagation':
+          ?transitGatewayDefaultRouteTablePropagation,
     };
   }
 
   factory VpcAttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentAccepterArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : ((map['transitGatewayDefaultRouteTableAssociation'] as bool).input()).input(),
-      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : ((map['transitGatewayDefaultRouteTablePropagation'] as bool).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transitGatewayAttachmentId: pulumi.Input.fromValue(
+        map['transitGatewayAttachmentId'] as String,
+      ),
+      transitGatewayDefaultRouteTableAssociation: (() {
+        final guardedValue = map['transitGatewayDefaultRouteTableAssociation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      transitGatewayDefaultRouteTablePropagation: (() {
+        final guardedValue = map['transitGatewayDefaultRouteTablePropagation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

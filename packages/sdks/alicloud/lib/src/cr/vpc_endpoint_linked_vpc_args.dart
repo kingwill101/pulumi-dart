@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointLinkedVpcArgs {
   /// Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
   final pulumi.Input<bool>? enableCreateDnsRecordInPvzt;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The name of the module that you want to access. Valid Values:
   /// - `Registry`: the image repository.
   /// - `Chart`: a Helm chart.
   final pulumi.Input<String> moduleName;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
+
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
@@ -46,12 +50,15 @@ class VpcEndpointLinkedVpcArgs {
 
   factory VpcEndpointLinkedVpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointLinkedVpcArgs(
-      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt']! as bool).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      moduleName: (map['moduleName'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      enableCreateDnsRecordInPvzt: (() {
+        final guardedValue = map['enableCreateDnsRecordInPvzt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      moduleName: pulumi.Input.fromValue(map['moduleName'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

@@ -13,23 +13,20 @@ class GetDashboardArgs {
   /// Creates a new [GetDashboardArgs].
   /// [dashboardId] Required.
   /// [project] Optional.
-  GetDashboardArgs({
-    required this.dashboardId,
-    this.project,
-  });
+  GetDashboardArgs({required this.dashboardId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dashboardId': dashboardId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'dashboardId': dashboardId, 'project': ?project};
   }
 
   factory GetDashboardArgs.fromMap(Map<String, dynamic> map) {
     return GetDashboardArgs(
-      dashboardId: (map['dashboardId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dashboardId: pulumi.Input.fromValue(map['dashboardId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_certificates_k8s_io;
-
 export 'certificates_k8s_io/certificate_signing_request.dart';
 export 'certificates_k8s_io/certificate_signing_request_args.dart';
 export 'certificates_k8s_io/certificate_signing_request_certificates_k8s_io_v1.dart';

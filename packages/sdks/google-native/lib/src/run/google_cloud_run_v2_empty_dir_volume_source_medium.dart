@@ -3,16 +3,17 @@ enum GoogleCloudRunV2EmptyDirVolumeSourceMedium {
   mediumUnspecified("MEDIUM_UNSPECIFIED"),
   memory("MEMORY");
 
-  const GoogleCloudRunV2EmptyDirVolumeSourceMedium(this.value);
-  final String value;
+  const GoogleCloudRunV2EmptyDirVolumeSourceMedium(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudRunV2EmptyDirVolumeSourceMedium fromValue(String value) {
     for (final item in GoogleCloudRunV2EmptyDirVolumeSourceMedium.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRunV2EmptyDirVolumeSourceMedium value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRunV2EmptyDirVolumeSourceMedium value: $value',
+    );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingPlanHostPoolAssociationArgs {
   /// Should the Scaling Plan be enabled on this Host Pool.
   final pulumi.Input<bool> enabled;
+
   /// The resource ID for the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   final pulumi.Input<String> hostPoolId;
+
   /// The resource ID for the Virtual Desktop Scaling Plan. Changing this forces a new resource to be created.
   final pulumi.Input<String> scalingPlanId;
 
@@ -34,10 +36,9 @@ class ScalingPlanHostPoolAssociationArgs {
 
   factory ScalingPlanHostPoolAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ScalingPlanHostPoolAssociationArgs(
-      enabled: (map['enabled'] as bool).input(),
-      hostPoolId: (map['hostPoolId'] as String).input(),
-      scalingPlanId: (map['scalingPlanId'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      hostPoolId: pulumi.Input.fromValue(map['hostPoolId'] as String),
+      scalingPlanId: pulumi.Input.fromValue(map['scalingPlanId'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum AddressSpaceAggregationOption {
   valueNone("None"),
   valueManual("Manual");
 
-  const AddressSpaceAggregationOption(this.value);
-  final String value;
+  const AddressSpaceAggregationOption(this.wireValue);
+  final String wireValue;
 
   static AddressSpaceAggregationOption fromValue(String value) {
     for (final item in AddressSpaceAggregationOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressSpaceAggregationOption value: $value');
   }
 }
-

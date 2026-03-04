@@ -4,16 +4,17 @@ enum CVSSScopeContaineranalysisV1beta1 {
   scopeUnchanged("SCOPE_UNCHANGED"),
   scopeChanged("SCOPE_CHANGED");
 
-  const CVSSScopeContaineranalysisV1beta1(this.value);
-  final String value;
+  const CVSSScopeContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static CVSSScopeContaineranalysisV1beta1 fromValue(String value) {
     for (final item in CVSSScopeContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSScopeContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSScopeContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

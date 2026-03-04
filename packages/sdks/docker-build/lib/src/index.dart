@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/build_context.dart';
 export 'index/builder_config.dart';
 export 'index/cache_from.dart';

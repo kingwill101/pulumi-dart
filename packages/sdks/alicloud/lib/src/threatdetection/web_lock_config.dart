@@ -6,7 +6,7 @@ import 'web_lock_config_state.dart';
 ///
 /// For information about Threat Detection Web Lock Config and how to use it, see [What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyweblockstart).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -171,21 +171,29 @@ import 'web_lock_config_state.dart';
 class WebLockConfig extends pulumi.CustomResource {
   /// Protection mode. Value:-**block**: Intercept-**audit**: Alarm
   late final pulumi.Output<String> defenceMode;
+
   /// Specify the protection directory.
   late final pulumi.Output<String> dir;
-  /// Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+
+  /// Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
   late final pulumi.Output<String?> exclusiveDir;
-  /// Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+
+  /// Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
   late final pulumi.Output<String?> exclusiveFile;
-  /// Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+
+  /// Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
   late final pulumi.Output<String?> exclusiveFileType;
-  /// Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+
+  /// Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
   late final pulumi.Output<String?> inclusiveFileType;
+
   /// The local backup path is used to protect the safe backup of the Directory.
   late final pulumi.Output<String> localBackupDir;
+
   /// Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
   late final pulumi.Output<String> mode;
-  /// Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
+
+  /// Specify the UUID of the server to which you want to add a protection directory.&gt; You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
   late final pulumi.Output<String> uuid;
 
   /// Creates a new [WebLockConfig].
@@ -197,20 +205,20 @@ class WebLockConfig extends pulumi.CustomResource {
     WebLockConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/webLockConfig:WebLockConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defenceMode = registerOutput<String>('defenceMode');
-    this.dir = registerOutput<String>('dir');
-    this.exclusiveDir = registerOutput<String?>('exclusiveDir');
-    this.exclusiveFile = registerOutput<String?>('exclusiveFile');
-    this.exclusiveFileType = registerOutput<String?>('exclusiveFileType');
-    this.inclusiveFileType = registerOutput<String?>('inclusiveFileType');
-    this.localBackupDir = registerOutput<String>('localBackupDir');
-    this.mode = registerOutput<String>('mode');
-    this.uuid = registerOutput<String>('uuid');
+         'alicloud:threatdetection/webLockConfig:WebLockConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defenceMode = registerOutput<String>('defenceMode');
+    dir = registerOutput<String>('dir');
+    exclusiveDir = registerOutput<String?>('exclusiveDir');
+    exclusiveFile = registerOutput<String?>('exclusiveFile');
+    exclusiveFileType = registerOutput<String?>('exclusiveFileType');
+    inclusiveFileType = registerOutput<String?>('inclusiveFileType');
+    localBackupDir = registerOutput<String>('localBackupDir');
+    mode = registerOutput<String>('mode');
+    uuid = registerOutput<String>('uuid');
   }
 
   /// Gets an existing [WebLockConfig] resource's state with the given [name] and [id].
@@ -231,19 +239,19 @@ class WebLockConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/webLockConfig:WebLockConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defenceMode = registerOutput<String>('defenceMode');
-    this.dir = registerOutput<String>('dir');
-    this.exclusiveDir = registerOutput<String?>('exclusiveDir');
-    this.exclusiveFile = registerOutput<String?>('exclusiveFile');
-    this.exclusiveFileType = registerOutput<String?>('exclusiveFileType');
-    this.inclusiveFileType = registerOutput<String?>('inclusiveFileType');
-    this.localBackupDir = registerOutput<String>('localBackupDir');
-    this.mode = registerOutput<String>('mode');
-    this.uuid = registerOutput<String>('uuid');
+         'alicloud:threatdetection/webLockConfig:WebLockConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defenceMode = registerOutput<String>('defenceMode');
+    dir = registerOutput<String>('dir');
+    exclusiveDir = registerOutput<String?>('exclusiveDir');
+    exclusiveFile = registerOutput<String?>('exclusiveFile');
+    exclusiveFileType = registerOutput<String?>('exclusiveFileType');
+    inclusiveFileType = registerOutput<String?>('inclusiveFileType');
+    localBackupDir = registerOutput<String>('localBackupDir');
+    mode = registerOutput<String>('mode');
+    uuid = registerOutput<String>('uuid');
   }
 }

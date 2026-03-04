@@ -10,24 +10,34 @@ import 'snat_origin.dart';
 class SnatArgs {
   /// Specifies whether to automatically map last hop for pools or not. The default is to use next level's default.
   final pulumi.Input<String>? autolasthop;
+
   /// Fullpath
   final pulumi.Input<String>? fullPath;
+
   /// Enables or disables mirroring of SNAT connections.
   final pulumi.Input<String>? mirror;
+
   /// Name of the SNAT, name of SNAT should be full path. Full path is the combination of the `partition + SNAT name`,For example `/Common/test-snat`.
   final pulumi.Input<String> name;
+
   /// Specifies, for each SNAT that you create, the origin addresses that are to be members of that SNAT. Specify origin addresses by their IP addresses and service ports
   final pulumi.Input<List<SnatOrigin>> origins;
+
   /// Partition or path to which the SNAT belongs
   final pulumi.Input<String>? partition;
+
   /// Specifies the name of a SNAT pool. You can only use this option when `automap` and `translation` are not used.
   final pulumi.Input<String>? snatpool;
+
   /// Specifies how the SNAT object handles the client's source port. The default is `preserve`.
   final pulumi.Input<String>? sourceport;
+
   /// Specifies the IP address configured for translation. Note that translated addresses are outside the traffic management system. You can only use this option when `automap` and `snatpool` are not used.
   final pulumi.Input<String>? translation;
+
   /// Specifies the available VLANs or tunnels and those for which the SNAT is enabled or disabled.
   final pulumi.Input<List<String>>? vlans;
+
   /// Specifies the VLANs or tunnels for which the SNAT is enabled or disabled. The default is `true`, vlandisabled on VLANS specified by `vlans`,if set to `false` vlanEnabled set on VLANS specified by `vlans` .
   final pulumi.Input<bool>? vlansdisabled;
 
@@ -63,7 +73,18 @@ class SnatArgs {
       'fullPath': ?fullPath,
       'mirror': ?mirror,
       'name': name,
-      'origins': pulumi.Input.mapInputValue<List<SnatOrigin>, List<Map<String, dynamic>>>(origins, (value) => pulumi.Input.encodeList<SnatOrigin, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'origins':
+          pulumi.Input.mapInputValue<
+            List<SnatOrigin>,
+            List<Map<String, dynamic>>
+          >(
+            origins,
+            (value) =>
+                pulumi.Input.encodeList<SnatOrigin, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'partition': ?partition,
       'snatpool': ?snatpool,
       'sourceport': ?sourceport,
@@ -75,18 +96,58 @@ class SnatArgs {
 
   factory SnatArgs.fromMap(Map<String, dynamic> map) {
     return SnatArgs(
-      autolasthop: map['autolasthop'] == null ? null : (map['autolasthop']! as String).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
-      mirror: map['mirror'] == null ? null : (map['mirror']! as String).input(),
-      name: (map['name'] as String).input(),
-      origins: (pulumi.Input.decodeList<SnatOrigin>(map['origins'], (value) => SnatOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
-      snatpool: map['snatpool'] == null ? null : (map['snatpool']! as String).input(),
-      sourceport: map['sourceport'] == null ? null : (map['sourceport']! as String).input(),
-      translation: map['translation'] == null ? null : (map['translation']! as String).input(),
-      vlans: map['vlans'] == null ? null : ((map['vlans']! as List).cast<String>()).input(),
-      vlansdisabled: map['vlansdisabled'] == null ? null : (map['vlansdisabled']! as bool).input(),
+      autolasthop: (() {
+        final guardedValue = map['autolasthop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fullPath: (() {
+        final guardedValue = map['fullPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mirror: (() {
+        final guardedValue = map['mirror'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      origins: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SnatOrigin>(
+          map['origins']!,
+          (value) => SnatOrigin.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      partition: (() {
+        final guardedValue = map['partition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snatpool: (() {
+        final guardedValue = map['snatpool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceport: (() {
+        final guardedValue = map['sourceport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      translation: (() {
+        final guardedValue = map['translation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vlans: (() {
+        final guardedValue = map['vlans'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vlansdisabled: (() {
+        final guardedValue = map['vlansdisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

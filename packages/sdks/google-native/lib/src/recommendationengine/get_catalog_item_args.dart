@@ -35,11 +35,14 @@ class GetCatalogItemArgs {
 
   factory GetCatalogItemArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogItemArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      catalogItemId: (map['catalogItemId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      catalogItemId: pulumi.Input.fromValue(map['catalogItemId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

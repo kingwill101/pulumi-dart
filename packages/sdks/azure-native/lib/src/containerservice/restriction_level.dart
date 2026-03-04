@@ -3,16 +3,15 @@ enum RestrictionLevel {
   valueUnrestricted("Unrestricted"),
   valueReadOnly("ReadOnly");
 
-  const RestrictionLevel(this.value);
-  final String value;
+  const RestrictionLevel(this.wireValue);
+  final String wireValue;
 
   static RestrictionLevel fromValue(String value) {
     for (final item in RestrictionLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RestrictionLevel value: $value');
   }
 }
-

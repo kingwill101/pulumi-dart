@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceNotificationRecipientEmailArgs {
   /// Email identifier.
   final pulumi.Input<String>? email;
+
   /// Notification Name Identifier.
   final pulumi.Input<String> notificationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -42,14 +46,23 @@ class WorkspaceNotificationRecipientEmailArgs {
     };
   }
 
-  factory WorkspaceNotificationRecipientEmailArgs.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceNotificationRecipientEmailArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceNotificationRecipientEmailArgs(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      notificationName: (map['notificationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationName: pulumi.Input.fromValue(
+        map['notificationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

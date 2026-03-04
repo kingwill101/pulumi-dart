@@ -3,16 +3,15 @@ enum OrderMode {
   default_("Default"),
   doNotFulfill("DoNotFulfill");
 
-  const OrderMode(this.value);
-  final String value;
+  const OrderMode(this.wireValue);
+  final String wireValue;
 
   static OrderMode fromValue(String value) {
     for (final item in OrderMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrderMode value: $value');
   }
 }
-

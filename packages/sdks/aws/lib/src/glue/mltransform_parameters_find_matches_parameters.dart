@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MLTransformParametersFindMatchesParameters {
   /// The value that is selected when tuning your transform for a balance between accuracy and cost.
   final pulumi.Input<double>? accuracyCostTradeOff;
+
   /// The value to switch on or off to force the output to match the provided labels from users.
   final pulumi.Input<bool>? enforceProvidedLabels;
+
   /// The value selected when tuning your transform for a balance between precision and recall.
   final pulumi.Input<double>? precisionRecallTradeOff;
+
   /// The name of a column that uniquely identifies rows in the source table.
   final pulumi.Input<String>? primaryKeyColumnName;
 
@@ -33,13 +36,30 @@ class MLTransformParametersFindMatchesParameters {
     };
   }
 
-  factory MLTransformParametersFindMatchesParameters.fromMap(Map<String, dynamic> map) {
+  factory MLTransformParametersFindMatchesParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MLTransformParametersFindMatchesParameters(
-      accuracyCostTradeOff: map['accuracyCostTradeOff'] == null ? null : ((map['accuracyCostTradeOff'] as double).input()).input(),
-      enforceProvidedLabels: map['enforceProvidedLabels'] == null ? null : ((map['enforceProvidedLabels'] as bool).input()).input(),
-      precisionRecallTradeOff: map['precisionRecallTradeOff'] == null ? null : ((map['precisionRecallTradeOff'] as double).input()).input(),
-      primaryKeyColumnName: map['primaryKeyColumnName'] == null ? null : ((map['primaryKeyColumnName'] as String).input()).input(),
+      accuracyCostTradeOff: (() {
+        final guardedValue = map['accuracyCostTradeOff'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      enforceProvidedLabels: (() {
+        final guardedValue = map['enforceProvidedLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      precisionRecallTradeOff: (() {
+        final guardedValue = map['precisionRecallTradeOff'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      primaryKeyColumnName: (() {
+        final guardedValue = map['primaryKeyColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

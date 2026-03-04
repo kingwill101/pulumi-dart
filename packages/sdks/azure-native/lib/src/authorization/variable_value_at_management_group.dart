@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'policy_variable_value_column_value_response.dart';
 import 'system_data_response.dart';
 import 'variable_value_at_management_group_args.dart';
 
@@ -194,14 +193,18 @@ import 'variable_value_at_management_group_args.dart';
 class VariableValueAtManagementGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the variable.
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource (Microsoft.Authorization/variables/values).
   late final pulumi.Output<String> type;
+
   /// Variable value column value array.
-  late final pulumi.Output<List<PolicyVariableValueColumnValueResponse>> values;
+  late final pulumi.Output<List<Map<String, dynamic>>> values;
 
   /// Creates a new [VariableValueAtManagementGroup].
   /// [name] The Pulumi resource name.
@@ -212,15 +215,15 @@ class VariableValueAtManagementGroup extends pulumi.CustomResource {
     VariableValueAtManagementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:VariableValueAtManagementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:authorization:VariableValueAtManagementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.values = registerOutput<List<PolicyVariableValueColumnValueResponse>>('values');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    values = registerOutput<List<Map<String, dynamic>>>('values');
   }
 }

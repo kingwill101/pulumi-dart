@@ -4,16 +4,15 @@ enum MetadataOptionsTemporaryHold {
   temporaryHoldSkip("TEMPORARY_HOLD_SKIP"),
   temporaryHoldPreserve("TEMPORARY_HOLD_PRESERVE");
 
-  const MetadataOptionsTemporaryHold(this.value);
-  final String value;
+  const MetadataOptionsTemporaryHold(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsTemporaryHold fromValue(String value) {
     for (final item in MetadataOptionsTemporaryHold.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsTemporaryHold value: $value');
   }
 }
-

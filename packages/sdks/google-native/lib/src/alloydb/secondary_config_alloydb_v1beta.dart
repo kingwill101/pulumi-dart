@@ -9,20 +9,19 @@ class SecondaryConfigAlloydbV1beta {
 
   /// Creates a new [SecondaryConfigAlloydbV1beta].
   /// [primaryClusterName] The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
-  SecondaryConfigAlloydbV1beta({
-    this.primaryClusterName,
-  });
+  SecondaryConfigAlloydbV1beta({this.primaryClusterName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'primaryClusterName': ?primaryClusterName,
-    };
+    return <String, dynamic>{'primaryClusterName': ?primaryClusterName};
   }
 
   factory SecondaryConfigAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return SecondaryConfigAlloydbV1beta(
-      primaryClusterName: map['primaryClusterName'] == null ? null : (map['primaryClusterName']! as String).input(),
+      primaryClusterName: (() {
+        final guardedValue = map['primaryClusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleResolveConfigurationResponse {
   /// The flag that indicates whether or not to auto resolve a fired alert.
   final pulumi.Input<bool>? autoResolved;
+
   /// The duration a rule must evaluate as healthy before the fired alert is automatically resolved represented in ISO 8601 duration format.
   final pulumi.Input<String>? timeToResolve;
 
   /// Creates a new [RuleResolveConfigurationResponse].
   /// [autoResolved] The flag that indicates whether or not to auto resolve a fired alert.
   /// [timeToResolve] The duration a rule must evaluate as healthy before the fired alert is automatically resolved represented in ISO 8601 duration format.
-  RuleResolveConfigurationResponse({
-    this.autoResolved,
-    this.timeToResolve,
-  });
+  RuleResolveConfigurationResponse({this.autoResolved, this.timeToResolve});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class RuleResolveConfigurationResponse {
 
   factory RuleResolveConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return RuleResolveConfigurationResponse(
-      autoResolved: map['autoResolved'] == null ? null : (map['autoResolved']! as bool).input(),
-      timeToResolve: map['timeToResolve'] == null ? null : (map['timeToResolve']! as String).input(),
+      autoResolved: (() {
+        final guardedValue = map['autoResolved'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeToResolve: (() {
+        final guardedValue = map['timeToResolve'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

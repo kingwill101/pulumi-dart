@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OwnershipVoucherDetails {
   /// Owner key type
   final pulumi.Input<String> ownerKeyType;
+
   /// Ownership voucher in base64 encoded format
   final pulumi.Input<String> ownershipVoucher;
 
@@ -26,9 +27,10 @@ class OwnershipVoucherDetails {
 
   factory OwnershipVoucherDetails.fromMap(Map<String, dynamic> map) {
     return OwnershipVoucherDetails(
-      ownerKeyType: (map['ownerKeyType'] as String).input(),
-      ownershipVoucher: (map['ownershipVoucher'] as String).input(),
+      ownerKeyType: pulumi.Input.fromValue(map['ownerKeyType'] as String),
+      ownershipVoucher: pulumi.Input.fromValue(
+        map['ownershipVoucher'] as String,
+      ),
     );
   }
 }
-

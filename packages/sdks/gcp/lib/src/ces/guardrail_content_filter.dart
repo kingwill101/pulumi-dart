@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailContentFilter {
   /// List of banned phrases. Applies to both user inputs and agent responses.
   final pulumi.Input<List<String>>? bannedContents;
+
   /// List of banned phrases. Applies only to agent responses.
   final pulumi.Input<List<String>>? bannedContentsInAgentResponses;
+
   /// List of banned phrases. Applies only to user inputs.
   final pulumi.Input<List<String>>? bannedContentsInUserInputs;
+
   /// If true, diacritics are ignored during matching.
   final pulumi.Input<bool>? disregardDiacritics;
+
   /// Match type for the content filter.
   /// Possible values:
   /// SIMPLE_STRING_MATCH
@@ -44,12 +48,27 @@ class GuardrailContentFilter {
 
   factory GuardrailContentFilter.fromMap(Map<String, dynamic> map) {
     return GuardrailContentFilter(
-      bannedContents: map['bannedContents'] == null ? null : ((map['bannedContents']! as List).cast<String>()).input(),
-      bannedContentsInAgentResponses: map['bannedContentsInAgentResponses'] == null ? null : ((map['bannedContentsInAgentResponses']! as List).cast<String>()).input(),
-      bannedContentsInUserInputs: map['bannedContentsInUserInputs'] == null ? null : ((map['bannedContentsInUserInputs']! as List).cast<String>()).input(),
-      disregardDiacritics: map['disregardDiacritics'] == null ? null : (map['disregardDiacritics']! as bool).input(),
-      matchType: (map['matchType'] as String).input(),
+      bannedContents: (() {
+        final guardedValue = map['bannedContents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      bannedContentsInAgentResponses: (() {
+        final guardedValue = map['bannedContentsInAgentResponses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      bannedContentsInUserInputs: (() {
+        final guardedValue = map['bannedContentsInUserInputs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      disregardDiacritics: (() {
+        final guardedValue = map['disregardDiacritics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      matchType: pulumi.Input.fromValue(map['matchType'] as String),
     );
   }
 }
-

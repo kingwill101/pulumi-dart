@@ -31,10 +31,13 @@ class GetRegionHealthCheckArgs {
 
   factory GetRegionHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionHealthCheckArgs(
-      healthCheck: (map['healthCheck'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      healthCheck: pulumi.Input.fromValue(map['healthCheck'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

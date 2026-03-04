@@ -15,12 +15,15 @@ class DiJobTransformationRule {
   ///
   /// DefineIncrementalCondition
   final pulumi.Input<String>? ruleActionType;
+
   /// Regular expression, in json string format.
   ///
   /// Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
   final pulumi.Input<String>? ruleExpression;
+
   /// Rule Name
   final pulumi.Input<String>? ruleName;
+
   /// Target type of action, optional enumeration value:
   ///
   /// Table (Table)
@@ -51,11 +54,26 @@ class DiJobTransformationRule {
 
   factory DiJobTransformationRule.fromMap(Map<String, dynamic> map) {
     return DiJobTransformationRule(
-      ruleActionType: map['ruleActionType'] == null ? null : (map['ruleActionType']! as String).input(),
-      ruleExpression: map['ruleExpression'] == null ? null : (map['ruleExpression']! as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      ruleTargetType: map['ruleTargetType'] == null ? null : (map['ruleTargetType']! as String).input(),
+      ruleActionType: (() {
+        final guardedValue = map['ruleActionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleExpression: (() {
+        final guardedValue = map['ruleExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleTargetType: (() {
+        final guardedValue = map['ruleTargetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

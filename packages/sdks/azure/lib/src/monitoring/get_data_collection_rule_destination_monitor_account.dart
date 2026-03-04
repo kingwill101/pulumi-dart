@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDestinationMonitorAccount {
   /// The resource ID of the Monitor Account.
   final pulumi.Input<String> monitorAccountId;
+
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
 
@@ -23,11 +24,14 @@ class GetDataCollectionRuleDestinationMonitorAccount {
     };
   }
 
-  factory GetDataCollectionRuleDestinationMonitorAccount.fromMap(Map<String, dynamic> map) {
+  factory GetDataCollectionRuleDestinationMonitorAccount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataCollectionRuleDestinationMonitorAccount(
-      monitorAccountId: (map['monitorAccountId'] as String).input(),
-      name: (map['name'] as String).input(),
+      monitorAccountId: pulumi.Input.fromValue(
+        map['monitorAccountId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -10,20 +10,38 @@ class CustomRuleList {
 
   /// Creates a new [CustomRuleList].
   /// [rules] List of rules
-  CustomRuleList({
-    this.rules,
-  });
+  CustomRuleList({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<CustomRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<CustomRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CustomRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<CustomRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory CustomRuleList.fromMap(Map<String, dynamic> map) {
     return CustomRuleList(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CustomRule>(map['rules']!, (value) => CustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CustomRule>(
+            guardedValue,
+            (value) =>
+                CustomRule.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

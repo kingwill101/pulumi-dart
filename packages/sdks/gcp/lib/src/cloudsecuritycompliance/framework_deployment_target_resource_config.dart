@@ -7,10 +7,14 @@ class FrameworkDeploymentTargetResourceConfig {
   /// CRM node in format organizations/{organization}, folders/{folder},
   /// or projects/{project}
   final pulumi.Input<String>? existingTargetResource;
+
   /// TargetResourceCreationConfig contains the config to create a new resource to
   /// be used as the target_resource of a deployment.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig>? targetResourceCreationConfig;
+  final pulumi.Input<
+    FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig
+  >?
+  targetResourceCreationConfig;
 
   /// Creates a new [FrameworkDeploymentTargetResourceConfig].
   /// [existingTargetResource] CRM node in format organizations/{organization}, folders/{folder},
@@ -23,15 +27,32 @@ class FrameworkDeploymentTargetResourceConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'existingTargetResource': ?existingTargetResource,
-      'targetResourceCreationConfig': ?pulumi.Input.mapOptionalInputValue<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig, Map<String, dynamic>>(targetResourceCreationConfig, (value) => value.toMap()),
+      'targetResourceCreationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig,
+            Map<String, dynamic>
+          >(targetResourceCreationConfig, (value) => value.toMap()),
     };
   }
 
-  factory FrameworkDeploymentTargetResourceConfig.fromMap(Map<String, dynamic> map) {
+  factory FrameworkDeploymentTargetResourceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkDeploymentTargetResourceConfig(
-      existingTargetResource: map['existingTargetResource'] == null ? null : (map['existingTargetResource']! as String).input(),
-      targetResourceCreationConfig: map['targetResourceCreationConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig.fromMap((map['targetResourceCreationConfig']! as Map).cast<String, dynamic>())).input(),
+      existingTargetResource: (() {
+        final guardedValue = map['existingTargetResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceCreationConfig: (() {
+        final guardedValue = map['targetResourceCreationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

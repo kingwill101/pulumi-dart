@@ -1,5 +1,3 @@
-library module_cognitive;
-
 export 'cognitive/account.dart';
 export 'cognitive/account_args.dart';
 export 'cognitive/account_customer_managed_key.dart';

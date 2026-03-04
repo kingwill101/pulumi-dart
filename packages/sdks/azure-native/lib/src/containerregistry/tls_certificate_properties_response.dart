@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsCertificatePropertiesResponse {
   /// Indicates the location of the certificates.
   final pulumi.Input<String> location;
+
   /// The type of certificate location.
   final pulumi.Input<String> type;
 
@@ -18,17 +19,13 @@ class TlsCertificatePropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-      'type': type,
-    };
+    return <String, dynamic>{'location': location, 'type': type};
   }
 
   factory TlsCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TlsCertificatePropertiesResponse(
-      location: (map['location'] as String).input(),
-      type: (map['type'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

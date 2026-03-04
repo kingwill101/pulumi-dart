@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSpacesBucketObjects.
 class GetSpacesBucketObjectsResult {
   final String bucket;
+
   /// List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
   final List<String> commonPrefixes;
   final String? delimiter;
   final String? encodingType;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of strings representing object keys
   final List<String> keys;
   final int? maxKeys;
+
   /// List of strings representing object owner IDs
   final List<String> owners;
   final String? prefix;
@@ -61,15 +64,30 @@ class GetSpacesBucketObjectsResult {
     return GetSpacesBucketObjectsResult(
       bucket: map['bucket'] as String,
       commonPrefixes: (map['commonPrefixes'] as List).cast<String>(),
-      delimiter: map['delimiter'] == null ? null : map['delimiter']! as String,
-      encodingType: map['encodingType'] == null ? null : map['encodingType']! as String,
+      delimiter: (() {
+        final guardedValue = map['delimiter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      encodingType: (() {
+        final guardedValue = map['encodingType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       keys: (map['keys'] as List).cast<String>(),
-      maxKeys: map['maxKeys'] == null ? null : map['maxKeys']! as int,
+      maxKeys: (() {
+        final guardedValue = map['maxKeys'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       owners: (map['owners'] as List).cast<String>(),
-      prefix: map['prefix'] == null ? null : map['prefix']! as String,
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
     );
   }
 }
-

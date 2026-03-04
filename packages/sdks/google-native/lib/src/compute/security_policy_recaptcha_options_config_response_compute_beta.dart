@@ -13,15 +13,14 @@ class SecurityPolicyRecaptchaOptionsConfigResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'redirectSiteKey': redirectSiteKey,
-    };
+    return <String, dynamic>{'redirectSiteKey': redirectSiteKey};
   }
 
-  factory SecurityPolicyRecaptchaOptionsConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRecaptchaOptionsConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRecaptchaOptionsConfigResponseComputeBeta(
-      redirectSiteKey: (map['redirectSiteKey'] as String).input(),
+      redirectSiteKey: pulumi.Input.fromValue(map['redirectSiteKey'] as String),
     );
   }
 }
-

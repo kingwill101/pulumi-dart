@@ -10,10 +10,13 @@ import 'assessment_status.dart';
 class AssessmentArgs {
   /// A map of additional data to associate with the assessment.
   final pulumi.Input<Map<String, String>>? additionalData;
+
   /// The ID of the security Assessment policy to apply to this resource. Changing this forces a new security Assessment to be created.
   final pulumi.Input<String> assessmentPolicyId;
+
   /// A `status` block as defined below.
   final pulumi.Input<AssessmentStatus> status;
+
   /// The ID of the target resource. Changing this forces a new security Assessment to be created.
   final pulumi.Input<String> targetResourceId;
 
@@ -33,18 +36,35 @@ class AssessmentArgs {
     return <String, dynamic>{
       'additionalData': ?additionalData,
       'assessmentPolicyId': assessmentPolicyId,
-      'status': pulumi.Input.mapInputValue<AssessmentStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<AssessmentStatus, Map<String, dynamic>>(
+            status,
+            (value) => value.toMap(),
+          ),
       'targetResourceId': targetResourceId,
     };
   }
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      additionalData: map['additionalData'] == null ? null : ((map['additionalData']! as Map).cast<String, String>()).input(),
-      assessmentPolicyId: (map['assessmentPolicyId'] as String).input(),
-      status: (AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      targetResourceId: (map['targetResourceId'] as String).input(),
+      additionalData: (() {
+        final guardedValue = map['additionalData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      assessmentPolicyId: pulumi.Input.fromValue(
+        map['assessmentPolicyId'] as String,
+      ),
+      status: pulumi.Input.fromValue(
+        AssessmentStatus.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetResourceId: pulumi.Input.fromValue(
+        map['targetResourceId'] as String,
+      ),
     );
   }
 }
-

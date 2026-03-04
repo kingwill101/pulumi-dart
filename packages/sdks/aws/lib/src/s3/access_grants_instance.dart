@@ -181,18 +181,25 @@ import 'access_grants_instance_state.dart';
 class AccessGrantsInstance extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the S3 Access Grants instance.
   late final pulumi.Output<String> accessGrantsInstanceArn;
+
   /// Unique ID of the S3 Access Grants instance.
   late final pulumi.Output<String> accessGrantsInstanceId;
+
   /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> accountId;
+
   /// The ARN of the AWS IAM Identity Center instance application; a subresource of the original Identity Center instance.
   late final pulumi.Output<String> identityCenterApplicationArn;
+
   /// The ARN of the AWS IAM Identity Center instance associated with the S3 Access Grants instance.
   late final pulumi.Output<String?> identityCenterArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -205,19 +212,21 @@ class AccessGrantsInstance extends pulumi.CustomResource {
     AccessGrantsInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGrantsInstanceArn = registerOutput<String>('accessGrantsInstanceArn');
-    this.accessGrantsInstanceId = registerOutput<String>('accessGrantsInstanceId');
-    this.accountId = registerOutput<String>('accountId');
-    this.identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
-    this.identityCenterArn = registerOutput<String?>('identityCenterArn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGrantsInstanceArn = registerOutput<String>('accessGrantsInstanceArn');
+    accessGrantsInstanceId = registerOutput<String>('accessGrantsInstanceId');
+    accountId = registerOutput<String>('accountId');
+    identityCenterApplicationArn = registerOutput<String>(
+      'identityCenterApplicationArn',
+    );
+    identityCenterArn = registerOutput<String?>('identityCenterArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [AccessGrantsInstance] resource's state with the given [name] and [id].
@@ -238,18 +247,20 @@ class AccessGrantsInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGrantsInstanceArn = registerOutput<String>('accessGrantsInstanceArn');
-    this.accessGrantsInstanceId = registerOutput<String>('accessGrantsInstanceId');
-    this.accountId = registerOutput<String>('accountId');
-    this.identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
-    this.identityCenterArn = registerOutput<String?>('identityCenterArn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGrantsInstanceArn = registerOutput<String>('accessGrantsInstanceArn');
+    accessGrantsInstanceId = registerOutput<String>('accessGrantsInstanceId');
+    accountId = registerOutput<String>('accountId');
+    identityCenterApplicationArn = registerOutput<String>(
+      'identityCenterApplicationArn',
+    );
+    identityCenterArn = registerOutput<String?>('identityCenterArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

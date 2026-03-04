@@ -8,10 +8,12 @@ class ResourcePool {
   ///
   /// Combined with ResourceSliceCount, this mechanism enables consumers to detect pools which are comprised of multiple ResourceSlices and are in an incomplete state.
   final pulumi.Input<int> generation;
+
   /// Name is used to identify the pool. For node-local devices, this is often the node name, but this is not required.
   ///
   /// It must not be longer than 253 characters and must consist of one or more DNS sub-domains separated by slashes. This field is immutable.
   final pulumi.Input<String> name;
+
   /// ResourceSliceCount is the total number of ResourceSlices in the pool at this generation number. Must be greater than zero.
   ///
   /// Consumers can use this to check whether they have seen all ResourceSlices belonging to the same pool.
@@ -37,10 +39,11 @@ class ResourcePool {
 
   factory ResourcePool.fromMap(Map<String, dynamic> map) {
     return ResourcePool(
-      generation: (map['generation'] as int).input(),
-      name: (map['name'] as String).input(),
-      resourceSliceCount: (map['resourceSliceCount'] as int).input(),
+      generation: pulumi.Input.fromValue(map['generation'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceSliceCount: pulumi.Input.fromValue(
+        map['resourceSliceCount'] as int,
+      ),
     );
   }
 }
-

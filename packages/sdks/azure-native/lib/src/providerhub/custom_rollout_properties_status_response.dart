@@ -8,10 +8,14 @@ import 'extended_error_info_response.dart';
 class CustomRolloutPropertiesStatusResponse {
   /// The completed regions.
   final pulumi.Input<List<String>>? completedRegions;
+
   /// The failed or skipped regions.
-  final pulumi.Input<Map<String, ExtendedErrorInfoResponse>>? failedOrSkippedRegions;
+  final pulumi.Input<Map<String, ExtendedErrorInfoResponse>>?
+  failedOrSkippedRegions;
+
   /// The manifest checkin status.
-  final pulumi.Input<CustomRolloutStatusManifestCheckinStatusResponse>? manifestCheckinStatus;
+  final pulumi.Input<CustomRolloutStatusManifestCheckinStatusResponse>?
+  manifestCheckinStatus;
 
   /// Creates a new [CustomRolloutPropertiesStatusResponse].
   /// [completedRegions] The completed regions.
@@ -26,17 +30,56 @@ class CustomRolloutPropertiesStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'completedRegions': ?completedRegions,
-      'failedOrSkippedRegions': ?pulumi.Input.mapOptionalInputValue<Map<String, ExtendedErrorInfoResponse>, Map<String, Map<String, dynamic>>>(failedOrSkippedRegions, (value) => pulumi.Input.encodeMapValues<ExtendedErrorInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'manifestCheckinStatus': ?pulumi.Input.mapOptionalInputValue<CustomRolloutStatusManifestCheckinStatusResponse, Map<String, dynamic>>(manifestCheckinStatus, (value) => value.toMap()),
+      'failedOrSkippedRegions':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ExtendedErrorInfoResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            failedOrSkippedRegions,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ExtendedErrorInfoResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'manifestCheckinStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomRolloutStatusManifestCheckinStatusResponse,
+            Map<String, dynamic>
+          >(manifestCheckinStatus, (value) => value.toMap()),
     };
   }
 
-  factory CustomRolloutPropertiesStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory CustomRolloutPropertiesStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomRolloutPropertiesStatusResponse(
-      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions']! as List).cast<String>()).input(),
-      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfoResponse>(map['failedOrSkippedRegions']!, (value) => ExtendedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (CustomRolloutStatusManifestCheckinStatusResponse.fromMap((map['manifestCheckinStatus']! as Map).cast<String, dynamic>())).input(),
+      completedRegions: (() {
+        final guardedValue = map['completedRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      failedOrSkippedRegions: (() {
+        final guardedValue = map['failedOrSkippedRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ExtendedErrorInfoResponse>(
+            guardedValue,
+            (value) => ExtendedErrorInfoResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      manifestCheckinStatus: (() {
+        final guardedValue = map['manifestCheckinStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomRolloutStatusManifestCheckinStatusResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

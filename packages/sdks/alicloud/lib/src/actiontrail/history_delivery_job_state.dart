@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HistoryDeliveryJobState {
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// The status of the resource
   final pulumi.Input<int>? status;
+
   /// The Track Name.
   final pulumi.Input<String>? trailName;
 
@@ -15,11 +17,7 @@ class HistoryDeliveryJobState {
   /// [createTime] The creation time of the resource
   /// [status] The status of the resource
   /// [trailName] The Track Name.
-  HistoryDeliveryJobState({
-    this.createTime,
-    this.status,
-    this.trailName,
-  });
+  HistoryDeliveryJobState({this.createTime, this.status, this.trailName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class HistoryDeliveryJobState {
 
   factory HistoryDeliveryJobState.fromMap(Map<String, dynamic> map) {
     return HistoryDeliveryJobState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as int).input(),
-      trailName: map['trailName'] == null ? null : (map['trailName']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      trailName: (() {
+        final guardedValue = map['trailName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

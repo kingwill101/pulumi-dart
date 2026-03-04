@@ -9,20 +9,17 @@ class SubordinateConfigChainResponse {
 
   /// Creates a new [SubordinateConfigChainResponse].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.
-  SubordinateConfigChainResponse({
-    required this.pemCertificates,
-  });
+  SubordinateConfigChainResponse({required this.pemCertificates});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pemCertificates': pemCertificates,
-    };
+    return <String, dynamic>{'pemCertificates': pemCertificates};
   }
 
   factory SubordinateConfigChainResponse.fromMap(Map<String, dynamic> map) {
     return SubordinateConfigChainResponse(
-      pemCertificates: ((map['pemCertificates'] as List).cast<String>()).input(),
+      pemCertificates: pulumi.Input.fromValue(
+        (map['pemCertificates'] as List).cast<String>(),
+      ),
     );
   }
 }
-

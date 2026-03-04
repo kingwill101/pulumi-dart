@@ -157,26 +157,37 @@ import 'system_data_response.dart';
 class NetworkPacketBroker extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of neighbor group IDs configured on NPB.
   late final pulumi.Output<List<String>> neighborGroupIds;
+
   /// List of ARM resource IDs of Network Devices [NPB].
   late final pulumi.Output<List<String>> networkDeviceIds;
+
   /// ARM resource ID of the Network Fabric.
   late final pulumi.Output<String> networkFabricId;
+
   /// List of network Tap IDs configured on NPB.
   late final pulumi.Output<List<String>> networkTapIds;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// List of network interfaces across NPB devices that are used to mirror source traffic.
   late final pulumi.Output<List<String>> sourceInterfaceIds;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -189,22 +200,22 @@ class NetworkPacketBroker extends pulumi.CustomResource {
     NetworkPacketBrokerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:NetworkPacketBroker',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:managednetworkfabric:NetworkPacketBroker',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.neighborGroupIds = registerOutput<List<String>>('neighborGroupIds');
-    this.networkDeviceIds = registerOutput<List<String>>('networkDeviceIds');
-    this.networkFabricId = registerOutput<String>('networkFabricId');
-    this.networkTapIds = registerOutput<List<String>>('networkTapIds');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceInterfaceIds = registerOutput<List<String>>('sourceInterfaceIds');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    neighborGroupIds = registerOutput<List<String>>('neighborGroupIds');
+    networkDeviceIds = registerOutput<List<String>>('networkDeviceIds');
+    networkFabricId = registerOutput<String>('networkFabricId');
+    networkTapIds = registerOutput<List<String>>('networkTapIds');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceInterfaceIds = registerOutput<List<String>>('sourceInterfaceIds');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

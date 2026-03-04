@@ -9,20 +9,17 @@ class OSPolicyResourcePackageResourceGooGet {
 
   /// Creates a new [OSPolicyResourcePackageResourceGooGet].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceGooGet({
-    required this.name,
-  });
+  OSPolicyResourcePackageResourceGooGet({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory OSPolicyResourcePackageResourceGooGet.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceGooGet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceGooGet(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

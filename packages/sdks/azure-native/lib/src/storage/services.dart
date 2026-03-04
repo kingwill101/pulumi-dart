@@ -5,16 +5,15 @@ enum Services {
   valueT("t"),
   valueF("f");
 
-  const Services(this.value);
-  final String value;
+  const Services(this.wireValue);
+  final String wireValue;
 
   static Services fromValue(String value) {
     for (final item in Services.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Services value: $value');
   }
 }
-

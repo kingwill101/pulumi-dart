@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayFrontendPort {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String>? id;
+
   /// The name of the Frontend Port.
   final pulumi.Input<String> name;
+
   /// The port used for this Frontend Port.
   final pulumi.Input<int> port;
 
@@ -21,19 +23,18 @@ class ApplicationGatewayFrontendPort {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': name,
-      'port': port,
-    };
+    return <String, dynamic>{'id': ?id, 'name': name, 'port': port};
   }
 
   factory ApplicationGatewayFrontendPort.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendPort(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: (map['name'] as String).input(),
-      port: (map['port'] as int).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

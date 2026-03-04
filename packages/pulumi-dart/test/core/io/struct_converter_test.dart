@@ -128,6 +128,40 @@ void main() {
       },
     );
 
+    test(
+      'toValue preserves list/map structure with unknown descendants when collapse is disabled',
+      () async {
+        // Parity intent:
+        // - pulumi/sdk/nodejs/runtime/rpc.ts serializeProperty(...)
+        // - pulumi/sdk/python/lib/pulumi/runtime/rpc.py serialize_property(...)
+        // Both preserve object/array shape and keep unknown sentinels at leaves.
+        final listValue = await StructConverter.toValue([
+          Output.create('known'),
+          Output.createUnknown<int>(),
+        ], collapseUnknownCollections: false);
+        expect(listValue.whichKind(), equals(Value_Kind.listValue));
+        expect(listValue.listValue.values[0].stringValue, equals('known'));
+        expect(
+          listValue.listValue.values[1].stringValue,
+          equals(Constants.unknownNumberValue),
+        );
+
+        final mapValue = await StructConverter.toValue({
+          'known': Output.create('known'),
+          'unknown': Output.createUnknown<int>(),
+        }, collapseUnknownCollections: false);
+        expect(mapValue.whichKind(), equals(Value_Kind.structValue));
+        expect(
+          mapValue.structValue.fields['known']?.stringValue,
+          equals('known'),
+        );
+        expect(
+          mapValue.structValue.fields['unknown']?.stringValue,
+          equals(Constants.unknownNumberValue),
+        );
+      },
+    );
+
     test('fromValue handles secret wrappers and not-set values', () {
       final secret = Value()
         ..structValue = (Struct()

@@ -9,16 +9,17 @@ enum BackendServiceSessionAffinityComputeV1 {
   httpCookie("HTTP_COOKIE"),
   none("NONE");
 
-  const BackendServiceSessionAffinityComputeV1(this.value);
-  final String value;
+  const BackendServiceSessionAffinityComputeV1(this.wireValue);
+  final String wireValue;
 
   static BackendServiceSessionAffinityComputeV1 fromValue(String value) {
     for (final item in BackendServiceSessionAffinityComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceSessionAffinityComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceSessionAffinityComputeV1 value: $value',
+    );
   }
 }
-

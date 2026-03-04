@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyFragmentArgs {
   /// Policy fragment description.
   final pulumi.Input<String>? description;
+
   /// Format of the policy fragment content.
   final pulumi.Input<String>? format;
+
   /// A resource identifier.
   final pulumi.Input<String>? id;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Contents of the policy fragment.
   final pulumi.Input<String> value;
 
@@ -49,13 +54,26 @@ class PolicyFragmentArgs {
 
   factory PolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyFragmentArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      value: (map['value'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

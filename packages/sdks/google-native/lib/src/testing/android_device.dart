@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AndroidDevice {
   /// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> androidModelId;
+
   /// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> androidVersionId;
+
   /// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> locale;
+
   /// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
   final pulumi.Input<String> orientation;
 
@@ -36,11 +39,12 @@ class AndroidDevice {
 
   factory AndroidDevice.fromMap(Map<String, dynamic> map) {
     return AndroidDevice(
-      androidModelId: (map['androidModelId'] as String).input(),
-      androidVersionId: (map['androidVersionId'] as String).input(),
-      locale: (map['locale'] as String).input(),
-      orientation: (map['orientation'] as String).input(),
+      androidModelId: pulumi.Input.fromValue(map['androidModelId'] as String),
+      androidVersionId: pulumi.Input.fromValue(
+        map['androidVersionId'] as String,
+      ),
+      locale: pulumi.Input.fromValue(map['locale'] as String),
+      orientation: pulumi.Input.fromValue(map['orientation'] as String),
     );
   }
 }
-

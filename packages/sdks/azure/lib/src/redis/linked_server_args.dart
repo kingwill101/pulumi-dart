@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServerArgs {
   /// The ID of the linked Redis cache. Changing this forces a new Redis to be created.
   final pulumi.Input<String> linkedRedisCacheId;
+
   /// The location of the linked Redis cache. Changing this forces a new Redis to be created.
   final pulumi.Input<String> linkedRedisCacheLocation;
+
   /// The name of the Resource Group where the Redis caches exists. Changing this forces a new Redis to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The role of the linked Redis cache (eg "Secondary"). Changing this forces a new Redis to be created. Possible values are `Primary` and `Secondary`.
   final pulumi.Input<String> serverRole;
+
   /// The name of Redis cache to link with. Changing this forces a new Redis to be created. (eg The primary role)
   final pulumi.Input<String> targetRedisCacheName;
 
@@ -44,12 +48,19 @@ class LinkedServerArgs {
 
   factory LinkedServerArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServerArgs(
-      linkedRedisCacheId: (map['linkedRedisCacheId'] as String).input(),
-      linkedRedisCacheLocation: (map['linkedRedisCacheLocation'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverRole: (map['serverRole'] as String).input(),
-      targetRedisCacheName: (map['targetRedisCacheName'] as String).input(),
+      linkedRedisCacheId: pulumi.Input.fromValue(
+        map['linkedRedisCacheId'] as String,
+      ),
+      linkedRedisCacheLocation: pulumi.Input.fromValue(
+        map['linkedRedisCacheLocation'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverRole: pulumi.Input.fromValue(map['serverRole'] as String),
+      targetRedisCacheName: pulumi.Input.fromValue(
+        map['targetRedisCacheName'] as String,
+      ),
     );
   }
 }
-

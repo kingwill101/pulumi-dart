@@ -325,11 +325,13 @@ class DirectoryKustomize extends pulumi.ComponentResource {
   /// git repository.
   /// Example: ./helloWorld
   /// Example: https://github.com/kubernetes-sigs/kustomize/tree/master/examples/helloWorld
-  late final pulumi.Output<String> directory;
+  late final pulumi.Output<String?> directory;
+
   /// An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   late final pulumi.Output<String?> resourcePrefix;
+
   /// A set of transformations to apply to Kubernetes resource definitions before registering with engine.
-  late final pulumi.Output<List<dynamic>?> transformations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> transformations_;
 
   /// Creates a new [DirectoryKustomize].
   /// [name] The Pulumi resource name.
@@ -340,13 +342,16 @@ class DirectoryKustomize extends pulumi.ComponentResource {
     DirectoryKustomizeArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'kubernetes:kustomize:Directory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.directory = registerOutput<String>('directory');
-    this.resourcePrefix = registerOutput<String?>('resourcePrefix');
-    this.transformations = registerOutput<List<dynamic>?>('transformations');
+         'kubernetes:kustomize:Directory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    directory = registerOutput<String?>('directory');
+    resourcePrefix = registerOutput<String?>('resourcePrefix');
+    transformations_ = registerOutput<List<Map<String, dynamic>>?>(
+      'transformations',
+    );
   }
 }

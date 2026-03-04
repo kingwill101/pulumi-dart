@@ -34,7 +34,7 @@ import 'get_resolution_lines_result.dart';
 
 /// This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.152.0+.
+/// &gt; **NOTE:** Available in v1.152.0+.
 ///
 /// ## Example Usage
 ///
@@ -188,7 +188,7 @@ Future<GetAccessStrategiesResult> getAccessStrategies(
 
 /// This data source provides the Alidns Address Pools of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.152.0+.
+/// &gt; **NOTE:** Available in v1.152.0+.
 ///
 /// ## Example Usage
 ///
@@ -366,7 +366,7 @@ Future<GetAddressPoolsResult> getAddressPools(
 
 /// This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:**  Available in 1.85.0+.
+/// &gt; **NOTE:**  Available in 1.85.0+.
 ///
 /// ## Example Usage
 ///
@@ -489,7 +489,7 @@ Future<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups(
 
 /// This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.95.0.
+/// &gt; **NOTE:** Available since v1.95.0.
 ///
 /// ## Example Usage
 ///
@@ -612,7 +612,7 @@ Future<GetAlidnsDomainsResult> getAlidnsDomains(
 
 /// This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:**  Available in 1.95.0+.
+/// &gt; **NOTE:**  Available in 1.95.0+.
 ///
 /// ## Example Usage
 ///
@@ -735,7 +735,7 @@ Future<GetAlidnsInstancesResult> getAlidnsInstances(
 
 /// This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.86.0.
+/// &gt; **NOTE:** Available since v1.86.0.
 ///
 /// ## Example Usage
 ///
@@ -876,7 +876,7 @@ Future<GetAlidnsRecordsResult> getAlidnsRecords(
 
 /// This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.151.0+.
+/// &gt; **NOTE:** Available in v1.151.0+.
 ///
 /// ## Example Usage
 ///
@@ -999,7 +999,7 @@ Future<GetCustomLinesResult> getCustomLines(
   return GetCustomLinesResult.fromMap(result);
 }
 
-/// > **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
+/// &gt; **NOTE:** This datasource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getGroups` instead.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dns_get_domain_groups_get_domain_groups_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDomainGroupsResult> getDomainGroups(
@@ -1015,7 +1015,7 @@ Future<GetDomainGroupsResult> getDomainGroups(
   return GetDomainGroupsResult.fromMap(result);
 }
 
-/// > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
+/// &gt; **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dns_get_domain_records_get_domain_records_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDomainRecordsResult> getDomainRecords(
@@ -1033,7 +1033,7 @@ Future<GetDomainRecordsResult> getDomainRecords(
 
 /// Provides the generation of txt records to realize the retrieval and verification of domain names.
 ///
-/// > **NOTE:** Available in v1.80.0+.
+/// &gt; **NOTE:** Available in v1.80.0+.
 ///
 /// ## Example Usage
 ///
@@ -1160,7 +1160,7 @@ Future<GetDomainTxtGuidResult> getDomainTxtGuid(
   return GetDomainTxtGuidResult.fromMap(result);
 }
 
-/// > **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+/// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
 ///
 /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
 ///
@@ -1406,7 +1406,7 @@ Future<GetGroupsResult> getGroups(
 
 /// This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.151.0+.
+/// &gt; **NOTE:** Available in v1.151.0+.
 ///
 /// ## Example Usage
 ///
@@ -1514,11 +1514,11 @@ Future<GetGtmInstancesResult> getGtmInstances(
   return GetGtmInstancesResult.fromMap(result);
 }
 
-/// > **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+/// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
 ///
 /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:**  Available in 1.84.0+.
+/// &gt; **NOTE:**  Available in 1.84.0+.
 ///
 /// ## Example Usage
 ///
@@ -1641,7 +1641,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -1782,7 +1782,7 @@ Future<GetRecordsResult> getRecords(
 
 /// This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.60.0.
+/// &gt; **NOTE:** Available in 1.60.0.
 ///
 /// ## Example Usage
 ///

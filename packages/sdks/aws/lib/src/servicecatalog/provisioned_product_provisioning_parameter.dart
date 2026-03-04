@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionedProductProvisioningParameter {
   /// Parameter key.
   final pulumi.Input<String> key;
+
   /// Whether to ignore `value` and keep the previous parameter value. Ignored when initially provisioning a product.
   final pulumi.Input<bool>? usePreviousValue;
+
   /// Parameter value.
   final pulumi.Input<String>? value;
 
@@ -28,12 +30,21 @@ class ProvisionedProductProvisioningParameter {
     };
   }
 
-  factory ProvisionedProductProvisioningParameter.fromMap(Map<String, dynamic> map) {
+  factory ProvisionedProductProvisioningParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProvisionedProductProvisioningParameter(
-      key: (map['key'] as String).input(),
-      usePreviousValue: map['usePreviousValue'] == null ? null : ((map['usePreviousValue'] as bool).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      usePreviousValue: (() {
+        final guardedValue = map['usePreviousValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

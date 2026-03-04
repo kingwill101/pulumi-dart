@@ -9,20 +9,19 @@ class WorkloadALTSConfig {
 
   /// Creates a new [WorkloadALTSConfig].
   /// [enableAlts] enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
-  WorkloadALTSConfig({
-    this.enableAlts,
-  });
+  WorkloadALTSConfig({this.enableAlts});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableAlts': ?enableAlts,
-    };
+    return <String, dynamic>{'enableAlts': ?enableAlts};
   }
 
   factory WorkloadALTSConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadALTSConfig(
-      enableAlts: map['enableAlts'] == null ? null : (map['enableAlts']! as bool).input(),
+      enableAlts: (() {
+        final guardedValue = map['enableAlts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

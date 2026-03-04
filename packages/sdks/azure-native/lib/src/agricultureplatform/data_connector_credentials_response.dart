@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorCredentialsResponse {
   /// Client Id associated with the provider, if type of credentials is OAuthClientCredentials.
   final pulumi.Input<String>? clientId;
+
   /// Name of the key vault key.
   final pulumi.Input<String>? keyName;
+
   /// Uri of the key vault
   final pulumi.Input<String>? keyVaultUri;
+
   /// Version of the key vault key.
   final pulumi.Input<String>? keyVersion;
+
   /// Type of credential.
   final pulumi.Input<String>? kind;
 
@@ -41,12 +45,31 @@ class DataConnectorCredentialsResponse {
 
   factory DataConnectorCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return DataConnectorCredentialsResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVersion: (() {
+        final guardedValue = map['keyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

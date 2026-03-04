@@ -5,16 +5,15 @@ enum HiveAuthenticationType {
   valueUsernameAndPassword("UsernameAndPassword"),
   valueWindowsAzureHDInsightService("WindowsAzureHDInsightService");
 
-  const HiveAuthenticationType(this.value);
-  final String value;
+  const HiveAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static HiveAuthenticationType fromValue(String value) {
     for (final item in HiveAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HiveAuthenticationType value: $value');
   }
 }
-

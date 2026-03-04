@@ -3,16 +3,15 @@ enum AllowedCopyScope {
   valuePrivateLink("PrivateLink"),
   valueAAD("AAD");
 
-  const AllowedCopyScope(this.value);
-  final String value;
+  const AllowedCopyScope(this.wireValue);
+  final String wireValue;
 
   static AllowedCopyScope fromValue(String value) {
     for (final item in AllowedCopyScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllowedCopyScope value: $value');
   }
 }
-

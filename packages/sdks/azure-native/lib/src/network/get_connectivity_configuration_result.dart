@@ -9,30 +9,43 @@ import 'system_data_response.dart';
 class GetConnectivityConfigurationResult {
   /// Groups for configuration
   final List<ConnectivityGroupItemResponse> appliesToGroups;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Connectivity topology type.
   final String connectivityTopology;
+
   /// Flag if need to remove current existing peerings.
   final String? deleteExistingPeering;
+
   /// A description of the connectivity configuration.
   final String? description;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// List of hubItems
   final List<HubResponse>? hubs;
+
   /// Resource ID.
   final String id;
+
   /// Flag if global mesh is supported.
   final String? isGlobal;
+
   /// Resource name.
   final String name;
+
   /// The provisioning state of the connectivity configuration resource.
   final String provisioningState;
+
   /// Unique identifier for this resource.
   final String resourceGuid;
+
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
+
   /// Resource type.
   final String type;
 
@@ -70,13 +83,24 @@ class GetConnectivityConfigurationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesToGroups': pulumi.Input.encodeList<ConnectivityGroupItemResponse, Map<String, dynamic>>(appliesToGroups, (value) => value.toMap()),
+      'appliesToGroups':
+          pulumi.Input.encodeList<
+            ConnectivityGroupItemResponse,
+            Map<String, dynamic>
+          >(appliesToGroups, (value) => value.toMap()),
       'azureApiVersion': azureApiVersion,
       'connectivityTopology': connectivityTopology,
       'deleteExistingPeering': ?deleteExistingPeering,
       'description': ?description,
       'etag': etag,
-      'hubs': ?hubs == null ? null : pulumi.Input.encodeList<HubResponse, Map<String, dynamic>>(hubs!, (value) => value.toMap()),
+      'hubs': ?(() {
+        final guardedValue = hubs;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<HubResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
       'isGlobal': ?isGlobal,
       'name': name,
@@ -89,21 +113,47 @@ class GetConnectivityConfigurationResult {
 
   factory GetConnectivityConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetConnectivityConfigurationResult(
-      appliesToGroups: pulumi.Input.decodeList<ConnectivityGroupItemResponse>(map['appliesToGroups'], (value) => ConnectivityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      appliesToGroups: pulumi.Input.decodeList<ConnectivityGroupItemResponse>(
+        map['appliesToGroups']!,
+        (value) => ConnectivityGroupItemResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       azureApiVersion: map['azureApiVersion'] as String,
       connectivityTopology: map['connectivityTopology'] as String,
-      deleteExistingPeering: map['deleteExistingPeering'] == null ? null : map['deleteExistingPeering']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      deleteExistingPeering: (() {
+        final guardedValue = map['deleteExistingPeering'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
-      hubs: map['hubs'] == null ? null : pulumi.Input.decodeList<HubResponse>(map['hubs']!, (value) => HubResponse.fromMap((value as Map).cast<String, dynamic>())),
+      hubs: (() {
+        final guardedValue = map['hubs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<HubResponse>(
+          guardedValue,
+          (value) =>
+              HubResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      isGlobal: map['isGlobal'] == null ? null : map['isGlobal']! as String,
+      isGlobal: (() {
+        final guardedValue = map['isGlobal'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

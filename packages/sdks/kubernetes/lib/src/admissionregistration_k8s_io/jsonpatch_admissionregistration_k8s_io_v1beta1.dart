@@ -42,7 +42,7 @@ class JSONPatchAdmissionregistrationK8sIoV1beta1 {
   /// integer, array, map or object.  If set, the 'path' and 'from' fields must be set to a
   /// [JSON pointer](https://datatracker.ietf.org/doc/html/rfc6901/) string, where the 'jsonpatch.escapeKey()' CEL
   /// function may be used to escape path keys containing '/' and '~'.
-  /// - 'Object' - CEL type of the resource object. - 'Object.<fieldName>' - CEL type of object field (such as 'Object.spec') - 'Object.<fieldName1>.<fieldName2>...<fieldNameN>` - CEL type of nested field (such as 'Object.spec.containers')
+  /// - 'Object' - CEL type of the resource object. - 'Object.&lt;fieldName&gt;' - CEL type of object field (such as 'Object.spec') - 'Object.&lt;fieldName1&gt;.&lt;fieldName2&gt;...&lt;fieldNameN&gt;` - CEL type of nested field (such as 'Object.spec.containers')
   ///
   /// CEL expressions have access to the contents of the API request, organized into CEL variables as well as some other useful variables:
   ///
@@ -62,20 +62,21 @@ class JSONPatchAdmissionregistrationK8sIoV1beta1 {
 
   /// Creates a new [JSONPatchAdmissionregistrationK8sIoV1beta1].
   /// [expression] expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec
-  JSONPatchAdmissionregistrationK8sIoV1beta1({
-    this.expression,
-  });
+  JSONPatchAdmissionregistrationK8sIoV1beta1({this.expression});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expression': ?expression,
-    };
+    return <String, dynamic>{'expression': ?expression};
   }
 
-  factory JSONPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory JSONPatchAdmissionregistrationK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JSONPatchAdmissionregistrationK8sIoV1beta1(
-      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      expression: (() {
+        final guardedValue = map['expression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

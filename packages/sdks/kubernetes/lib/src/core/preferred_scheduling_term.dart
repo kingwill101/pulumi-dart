@@ -7,29 +7,34 @@ import 'node_selector_term.dart';
 class PreferredSchedulingTerm {
   /// A node selector term, associated with the corresponding weight.
   final pulumi.Input<NodeSelectorTerm> preference;
+
   /// Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
   final pulumi.Input<int> weight;
 
   /// Creates a new [PreferredSchedulingTerm].
   /// [preference] A node selector term, associated with the corresponding weight.
   /// [weight] Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
-  PreferredSchedulingTerm({
-    required this.preference,
-    required this.weight,
-  });
+  PreferredSchedulingTerm({required this.preference, required this.weight});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preference': pulumi.Input.mapInputValue<NodeSelectorTerm, Map<String, dynamic>>(preference, (value) => value.toMap()),
+      'preference':
+          pulumi.Input.mapInputValue<NodeSelectorTerm, Map<String, dynamic>>(
+            preference,
+            (value) => value.toMap(),
+          ),
       'weight': weight,
     };
   }
 
   factory PreferredSchedulingTerm.fromMap(Map<String, dynamic> map) {
     return PreferredSchedulingTerm(
-      preference: (NodeSelectorTerm.fromMap((map['preference'] as Map).cast<String, dynamic>())).input(),
-      weight: (map['weight'] as int).input(),
+      preference: pulumi.Input.fromValue(
+        NodeSelectorTerm.fromMap(
+          (map['preference']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScriptDagEdge {
   /// ID of the node at which the edge starts.
   final pulumi.Input<String> source;
+
   /// ID of the node at which the edge ends.
   final pulumi.Input<String> target;
+
   /// Target of the edge.
   final pulumi.Input<String>? targetParameter;
 
@@ -30,10 +32,13 @@ class GetScriptDagEdge {
 
   factory GetScriptDagEdge.fromMap(Map<String, dynamic> map) {
     return GetScriptDagEdge(
-      source: (map['source'] as String).input(),
-      target: (map['target'] as String).input(),
-      targetParameter: map['targetParameter'] == null ? null : ((map['targetParameter'] as String).input()).input(),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      targetParameter: (() {
+        final guardedValue = map['targetParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

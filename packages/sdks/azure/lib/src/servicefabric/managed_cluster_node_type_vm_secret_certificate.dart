@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterNodeTypeVmSecretCertificate {
   /// The certificate store on the Virtual Machine to which the certificate should be added.
   final pulumi.Input<String> store;
+
   /// The URL of a certificate that has been uploaded to Key Vault as a secret
   final pulumi.Input<String> url;
 
@@ -17,17 +18,15 @@ class ManagedClusterNodeTypeVmSecretCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'store': store,
-      'url': url,
-    };
+    return <String, dynamic>{'store': store, 'url': url};
   }
 
-  factory ManagedClusterNodeTypeVmSecretCertificate.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterNodeTypeVmSecretCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterNodeTypeVmSecretCertificate(
-      store: (map['store'] as String).input(),
-      url: (map['url'] as String).input(),
+      store: pulumi.Input.fromValue(map['store'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

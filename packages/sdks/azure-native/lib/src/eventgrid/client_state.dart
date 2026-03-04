@@ -3,16 +3,15 @@ enum ClientState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ClientState(this.value);
-  final String value;
+  const ClientState(this.wireValue);
+  final String wireValue;
 
   static ClientState fromValue(String value) {
     for (final item in ClientState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClientState value: $value');
   }
 }
-

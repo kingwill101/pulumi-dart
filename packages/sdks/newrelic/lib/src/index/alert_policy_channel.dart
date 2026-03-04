@@ -4,7 +4,7 @@ import 'alert_policy_channel_state.dart';
 
 /// Use this resource to map alert policies to alert channels in New Relic.
 ///
-/// > **WARNING:** The `newrelic.AlertPolicyChannel` resource is **deprecated** and will be **removed in a future major release**. As an alternative, you can map channels to policies using the resource `newrelic.Workflow`, with the channels to be mapped created using a combination of the newer resources `newrelic.NotificationDestination` and `newrelic.NotificationChannel`. We **strongly recommend** migrating to these new resources at the earliest. Please refer to this example for a detailed illustration on setting up channels and workflows with these resources.
+/// &gt; **WARNING:** The `newrelic.AlertPolicyChannel` resource is **deprecated** and will be **removed in a future major release**. As an alternative, you can map channels to policies using the resource `newrelic.Workflow`, with the channels to be mapped created using a combination of the newer resources `newrelic.NotificationDestination` and `newrelic.NotificationChannel`. We **strongly recommend** migrating to these new resources at the earliest. Please refer to this example for a detailed illustration on setting up channels and workflows with these resources.
 ///
 /// ## Example Usage
 ///
@@ -299,7 +299,7 @@ import 'alert_policy_channel_state.dart';
 ///
 /// ## Import
 ///
-/// Alert policy channels can be imported using the following notation: `<policyID>:<channelID>:<channelID>`, e.g.
+/// Alert policy channels can be imported using the following notation: `&lt;policyID&gt;:&lt;channelID&gt;:&lt;channelID&gt;`, e.g.
 ///
 /// ```sh
 /// $ pulumi import newrelic:index/alertPolicyChannel:AlertPolicyChannel foo 123456:3462754:2938324
@@ -309,8 +309,10 @@ import 'alert_policy_channel_state.dart';
 class AlertPolicyChannel extends pulumi.CustomResource {
   /// Determines the New Relic account where the alert policy channel will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// Array of channel IDs to apply to the specified policy. We recommended sorting channel IDs in ascending order to avoid drift your Terraform state.
   late final pulumi.Output<List<String>> channelIds;
+
   /// The ID of the policy.
   late final pulumi.Output<String> policyId;
 
@@ -323,14 +325,14 @@ class AlertPolicyChannel extends pulumi.CustomResource {
     AlertPolicyChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.channelIds = registerOutput<List<String>>('channelIds');
-    this.policyId = registerOutput<String>('policyId');
+         'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    channelIds = registerOutput<List<String>>('channelIds');
+    policyId = registerOutput<String>('policyId');
   }
 
   /// Gets an existing [AlertPolicyChannel] resource's state with the given [name] and [id].
@@ -351,13 +353,13 @@ class AlertPolicyChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.channelIds = registerOutput<List<String>>('channelIds');
-    this.policyId = registerOutput<String>('policyId');
+         'newrelic:index/alertPolicyChannel:AlertPolicyChannel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    channelIds = registerOutput<List<String>>('channelIds');
+    policyId = registerOutput<String>('policyId');
   }
 }

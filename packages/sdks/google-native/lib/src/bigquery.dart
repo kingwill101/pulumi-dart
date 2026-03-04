@@ -1,5 +1,3 @@
-library module_bigquery;
-
 export 'bigquery/argument.dart';
 export 'bigquery/argument_argument_kind.dart';
 export 'bigquery/argument_mode.dart';

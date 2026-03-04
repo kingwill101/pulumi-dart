@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterServicePrincipal {
   /// The Client ID for the Service Principal.
   final pulumi.Input<String> clientId;
+
   /// The Client Secret for the Service Principal.
   final pulumi.Input<String> clientSecret;
 
@@ -25,9 +26,8 @@ class KubernetesClusterServicePrincipal {
 
   factory KubernetesClusterServicePrincipal.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterServicePrincipal(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
     );
   }
 }
-

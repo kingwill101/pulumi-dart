@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageResourceCatalogAssociationArgs {
   /// The unique ID of the access package catalog. Changing this forces a new resource to be created.
   final pulumi.Input<String> catalogId;
+
   /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceOriginId;
+
   /// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceOriginSystem;
 
@@ -32,12 +34,17 @@ class AccessPackageResourceCatalogAssociationArgs {
     };
   }
 
-  factory AccessPackageResourceCatalogAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory AccessPackageResourceCatalogAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessPackageResourceCatalogAssociationArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      resourceOriginId: (map['resourceOriginId'] as String).input(),
-      resourceOriginSystem: (map['resourceOriginSystem'] as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      resourceOriginId: pulumi.Input.fromValue(
+        map['resourceOriginId'] as String,
+      ),
+      resourceOriginSystem: pulumi.Input.fromValue(
+        map['resourceOriginSystem'] as String,
+      ),
     );
   }
 }
-

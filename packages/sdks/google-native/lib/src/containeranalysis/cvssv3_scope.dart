@@ -3,16 +3,15 @@ enum CVSSv3Scope {
   scopeUnchanged("SCOPE_UNCHANGED"),
   scopeChanged("SCOPE_CHANGED");
 
-  const CVSSv3Scope(this.value);
-  final String value;
+  const CVSSv3Scope(this.wireValue);
+  final String wireValue;
 
   static CVSSv3Scope fromValue(String value) {
     for (final item in CVSSv3Scope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSv3Scope value: $value');
   }
 }
-

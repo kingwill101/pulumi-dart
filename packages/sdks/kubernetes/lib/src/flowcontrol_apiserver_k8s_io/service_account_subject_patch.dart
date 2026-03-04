@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAccountSubjectPatch {
   /// `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
   final pulumi.Input<String>? name;
+
   /// `namespace` is the namespace of matching ServiceAccount objects. Required.
   final pulumi.Input<String>? namespace;
 
   /// Creates a new [ServiceAccountSubjectPatch].
   /// [name] `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
   /// [namespace] `namespace` is the namespace of matching ServiceAccount objects. Required.
-  ServiceAccountSubjectPatch({
-    this.name,
-    this.namespace,
-  });
+  ServiceAccountSubjectPatch({this.name, this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'namespace': ?namespace,
-    };
+    return <String, dynamic>{'name': ?name, 'namespace': ?namespace};
   }
 
   factory ServiceAccountSubjectPatch.fromMap(Map<String, dynamic> map) {
     return ServiceAccountSubjectPatch(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

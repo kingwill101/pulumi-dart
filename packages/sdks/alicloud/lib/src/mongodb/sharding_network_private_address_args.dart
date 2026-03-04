@@ -12,14 +12,18 @@ class ShardingNetworkPrivateAddressArgs {
   /// - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
   /// - The permissions of this account are fixed to read-only.
   final pulumi.Input<String>? accountName;
+
   /// The password for the account.
   /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
   /// - The password must be 8 to 32 characters in length.
   final pulumi.Input<String>? accountPassword;
+
   /// The ID of the sharded cluster instance.
   final pulumi.Input<String> dbInstanceId;
+
   /// The ID of the Shard node or ConfigServer node.
   final pulumi.Input<String> nodeId;
+
   /// The zone ID of the instance.
   final pulumi.Input<String> zoneId;
 
@@ -49,12 +53,19 @@ class ShardingNetworkPrivateAddressArgs {
 
   factory ShardingNetworkPrivateAddressArgs.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPrivateAddressArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      nodeId: (map['nodeId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountPassword: (() {
+        final guardedValue = map['accountPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

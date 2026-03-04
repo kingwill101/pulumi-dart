@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1BuiltInAlgorithmOutputResponse {
   /// Framework on which the built-in algorithm was trained.
   final pulumi.Input<String> framework;
+
   /// The Cloud Storage path to the `model/` directory where the training job saves the trained model. Only set for successful jobs that don't use hyperparameter tuning.
   final pulumi.Input<String> modelPath;
+
   /// Python version on which the built-in algorithm was trained.
   final pulumi.Input<String> pythonVersion;
+
   /// AI Platform runtime version on which the built-in algorithm was trained.
   final pulumi.Input<String> runtimeVersion;
 
@@ -34,13 +37,14 @@ class GoogleCloudMlV1BuiltInAlgorithmOutputResponse {
     };
   }
 
-  factory GoogleCloudMlV1BuiltInAlgorithmOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1BuiltInAlgorithmOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1BuiltInAlgorithmOutputResponse(
-      framework: (map['framework'] as String).input(),
-      modelPath: (map['modelPath'] as String).input(),
-      pythonVersion: (map['pythonVersion'] as String).input(),
-      runtimeVersion: (map['runtimeVersion'] as String).input(),
+      framework: pulumi.Input.fromValue(map['framework'] as String),
+      modelPath: pulumi.Input.fromValue(map['modelPath'] as String),
+      pythonVersion: pulumi.Input.fromValue(map['pythonVersion'] as String),
+      runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),
     );
   }
 }
-

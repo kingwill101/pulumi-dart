@@ -19,18 +19,34 @@ class FeaturesRecoveryService {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'purgeProtectedItemsFromVaultOnDestroy': ?purgeProtectedItemsFromVaultOnDestroy,
-      'vmBackupStopProtectionAndRetainDataOnDestroy': ?vmBackupStopProtectionAndRetainDataOnDestroy,
-      'vmBackupSuspendProtectionAndRetainDataOnDestroy': ?vmBackupSuspendProtectionAndRetainDataOnDestroy,
+      'purgeProtectedItemsFromVaultOnDestroy':
+          ?purgeProtectedItemsFromVaultOnDestroy,
+      'vmBackupStopProtectionAndRetainDataOnDestroy':
+          ?vmBackupStopProtectionAndRetainDataOnDestroy,
+      'vmBackupSuspendProtectionAndRetainDataOnDestroy':
+          ?vmBackupSuspendProtectionAndRetainDataOnDestroy,
     };
   }
 
   factory FeaturesRecoveryService.fromMap(Map<String, dynamic> map) {
     return FeaturesRecoveryService(
-      purgeProtectedItemsFromVaultOnDestroy: map['purgeProtectedItemsFromVaultOnDestroy'] == null ? null : (map['purgeProtectedItemsFromVaultOnDestroy']! as bool).input(),
-      vmBackupStopProtectionAndRetainDataOnDestroy: map['vmBackupStopProtectionAndRetainDataOnDestroy'] == null ? null : (map['vmBackupStopProtectionAndRetainDataOnDestroy']! as bool).input(),
-      vmBackupSuspendProtectionAndRetainDataOnDestroy: map['vmBackupSuspendProtectionAndRetainDataOnDestroy'] == null ? null : (map['vmBackupSuspendProtectionAndRetainDataOnDestroy']! as bool).input(),
+      purgeProtectedItemsFromVaultOnDestroy: (() {
+        final guardedValue = map['purgeProtectedItemsFromVaultOnDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vmBackupStopProtectionAndRetainDataOnDestroy: (() {
+        final guardedValue =
+            map['vmBackupStopProtectionAndRetainDataOnDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vmBackupSuspendProtectionAndRetainDataOnDestroy: (() {
+        final guardedValue =
+            map['vmBackupSuspendProtectionAndRetainDataOnDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

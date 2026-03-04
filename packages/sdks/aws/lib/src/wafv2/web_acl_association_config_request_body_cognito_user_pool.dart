@@ -18,10 +18,13 @@ class WebAclAssociationConfigRequestBodyCognitoUserPool {
     };
   }
 
-  factory WebAclAssociationConfigRequestBodyCognitoUserPool.fromMap(Map<String, dynamic> map) {
+  factory WebAclAssociationConfigRequestBodyCognitoUserPool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclAssociationConfigRequestBodyCognitoUserPool(
-      defaultSizeInspectionLimit: (map['defaultSizeInspectionLimit'] as String).input(),
+      defaultSizeInspectionLimit: pulumi.Input.fromValue(
+        map['defaultSizeInspectionLimit'] as String,
+      ),
     );
   }
 }
-

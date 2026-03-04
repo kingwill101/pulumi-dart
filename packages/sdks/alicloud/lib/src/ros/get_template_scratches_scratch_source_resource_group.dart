@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplateScratchesScratchSourceResourceGroup {
   /// The ID of the Source Resource Group.
   final pulumi.Input<String> resourceGroupId;
+
   /// Source resource type filter list.
   final pulumi.Input<List<String>> resourceTypeFilters;
 
@@ -23,11 +24,14 @@ class GetTemplateScratchesScratchSourceResourceGroup {
     };
   }
 
-  factory GetTemplateScratchesScratchSourceResourceGroup.fromMap(Map<String, dynamic> map) {
+  factory GetTemplateScratchesScratchSourceResourceGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTemplateScratchesScratchSourceResourceGroup(
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      resourceTypeFilters: ((map['resourceTypeFilters'] as List).cast<String>()).input(),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      resourceTypeFilters: pulumi.Input.fromValue(
+        (map['resourceTypeFilters'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -6,9 +6,11 @@ class Dataset extends pulumi.CustomResource {
   /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
   late final pulumi.Output<String?> datasetId;
   late final pulumi.Output<String> location;
+
   /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
   late final pulumi.Output<String> timeZone;
 
@@ -21,15 +23,15 @@ class Dataset extends pulumi.CustomResource {
     DatasetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:healthcare/v1:Dataset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.datasetId = registerOutput<String?>('datasetId');
-    this.location = registerOutput<String>('location');
+         'google-native:healthcare/v1:Dataset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    datasetId = registerOutput<String?>('datasetId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.timeZone = registerOutput<String>('timeZone');
+    project = registerOutput<String>('project');
+    timeZone = registerOutput<String>('timeZone');
   }
 }

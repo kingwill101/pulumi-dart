@@ -5,16 +5,15 @@ enum JobTriggerStatus {
   paused("PAUSED"),
   cancelled("CANCELLED");
 
-  const JobTriggerStatus(this.value);
-  final String value;
+  const JobTriggerStatus(this.wireValue);
+  final String wireValue;
 
   static JobTriggerStatus fromValue(String value) {
     for (final item in JobTriggerStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobTriggerStatus value: $value');
   }
 }
-

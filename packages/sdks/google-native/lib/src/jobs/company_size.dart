@@ -9,16 +9,15 @@ enum CompanySize {
   bigger("BIGGER"),
   giant("GIANT");
 
-  const CompanySize(this.value);
-  final String value;
+  const CompanySize(this.wireValue);
+  final String wireValue;
 
   static CompanySize fromValue(String value) {
     for (final item in CompanySize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CompanySize value: $value');
   }
 }
-

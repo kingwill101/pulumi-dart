@@ -2,16 +2,17 @@
 enum ServerlessInferenceEndpointAuthMode {
   valueKey("Key");
 
-  const ServerlessInferenceEndpointAuthMode(this.value);
-  final String value;
+  const ServerlessInferenceEndpointAuthMode(this.wireValue);
+  final String wireValue;
 
   static ServerlessInferenceEndpointAuthMode fromValue(String value) {
     for (final item in ServerlessInferenceEndpointAuthMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServerlessInferenceEndpointAuthMode value: $value');
+    throw ArgumentError(
+      'Unknown ServerlessInferenceEndpointAuthMode value: $value',
+    );
   }
 }
-

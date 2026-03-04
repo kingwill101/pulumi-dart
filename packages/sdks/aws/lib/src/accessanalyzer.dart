@@ -1,5 +1,3 @@
-library module_accessanalyzer;
-
 export 'accessanalyzer/analyzer.dart';
 export 'accessanalyzer/analyzer_args.dart';
 export 'accessanalyzer/analyzer_configuration.dart';

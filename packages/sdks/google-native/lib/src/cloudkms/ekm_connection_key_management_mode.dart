@@ -4,16 +4,15 @@ enum EkmConnectionKeyManagementMode {
   manual("MANUAL"),
   cloudKms("CLOUD_KMS");
 
-  const EkmConnectionKeyManagementMode(this.value);
-  final String value;
+  const EkmConnectionKeyManagementMode(this.wireValue);
+  final String wireValue;
 
   static EkmConnectionKeyManagementMode fromValue(String value) {
     for (final item in EkmConnectionKeyManagementMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EkmConnectionKeyManagementMode value: $value');
   }
 }
-

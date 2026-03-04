@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbNodesArgs {
   /// The ID of the VM Cluster.
   final pulumi.Input<String> cloudVmCluster;
+
   /// The location of the resource.
   final pulumi.Input<String> location;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -35,10 +37,13 @@ class GetDbNodesArgs {
 
   factory GetDbNodesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbNodesArgs(
-      cloudVmCluster: (map['cloudVmCluster'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      cloudVmCluster: pulumi.Input.fromValue(map['cloudVmCluster'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -212,7 +212,7 @@ import 'service_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -227,44 +227,63 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// Whether to enable AAD auth? Defaults to `true`.
   late final pulumi.Output<bool?> aadAuthEnabled;
+
   /// Specifies the number of units associated with this Web PubSub resource. Valid values are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900` and `1000`.
   ///
-  /// > **Note:** The valid capacity range for sku `Free_F1` is `1`, for sku `Premium_P2` is from `100` to `1000`, and from `1` to `100` for sku `Standard_S1` and `Premium_P1`.
+  /// &gt; **Note:** The valid capacity range for sku `Free_F1` is `1`, for sku `Premium_P2` is from `100` to `1000`, and from `1` to `100` for sku `Standard_S1` and `Premium_P1`.
   late final pulumi.Output<int?> capacity;
+
   /// The publicly accessible IP of the Web PubSub service.
   late final pulumi.Output<String> externalIp;
+
   /// The FQDN of the Web PubSub service.
   late final pulumi.Output<String> hostname;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ServiceIdentity?> identity;
+
   /// A `live_trace` block as defined below.
   late final pulumi.Output<ServiceLiveTrace?> liveTrace;
+
   /// Whether to enable local auth? Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
+
   /// Specifies the supported Azure location where the Web PubSub service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Web PubSub service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The primary access key for the Web PubSub service.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// The primary connection string for the Web PubSub service.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// Whether to enable public network access? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The publicly accessible port of the Web PubSub service which is designed for browser/client use.
   late final pulumi.Output<int> publicPort;
+
   /// The name of the resource group in which to create the Web PubSub service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary access key for the Web PubSub service.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// The secondary connection string for the Web PubSub service.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// The publicly accessible port of the Web PubSub service which is designed for customer server side use.
   late final pulumi.Output<int> serverPort;
+
   /// Specifies which SKU to use. Possible values are `Free_F1`, `Standard_S1`, `Premium_P1` and `Premium_P2`.
   late final pulumi.Output<String> sku;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Whether to request client certificate during TLS handshake? Defaults to `false`.
   late final pulumi.Output<bool?> tlsClientCertEnabled;
   late final pulumi.Output<String> version;
@@ -278,32 +297,36 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/service:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
-    this.capacity = registerOutput<int?>('capacity');
-    this.externalIp = registerOutput<String>('externalIp');
-    this.hostname = registerOutput<String>('hostname');
-    this.identity = registerOutput<ServiceIdentity?>('identity');
-    this.liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:webpubsub/service:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
+    capacity = registerOutput<int?>('capacity');
+    externalIp = registerOutput<String>('externalIp');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<ServiceIdentity?>('identity');
+    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.serverPort = registerOutput<int>('serverPort');
-    this.sku = registerOutput<String>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
-    this.version = registerOutput<String>('version');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    publicPort = registerOutput<int>('publicPort');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    serverPort = registerOutput<int>('serverPort');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -324,31 +347,35 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/service:Service',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
-    this.capacity = registerOutput<int?>('capacity');
-    this.externalIp = registerOutput<String>('externalIp');
-    this.hostname = registerOutput<String>('hostname');
-    this.identity = registerOutput<ServiceIdentity?>('identity');
-    this.liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:webpubsub/service:Service',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
+    capacity = registerOutput<int?>('capacity');
+    externalIp = registerOutput<String>('externalIp');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<ServiceIdentity?>('identity');
+    liveTrace = registerOutput<ServiceLiveTrace?>('liveTrace');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.serverPort = registerOutput<int>('serverPort');
-    this.sku = registerOutput<String>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
-    this.version = registerOutput<String>('version');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    publicPort = registerOutput<int>('publicPort');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    serverPort = registerOutput<int>('serverPort');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
+    version = registerOutput<String>('version');
   }
 }

@@ -23,9 +23,10 @@ class GetEndpointClientConnectOption {
 
   factory GetEndpointClientConnectOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointClientConnectOption(
-      enabled: (map['enabled'] as bool).input(),
-      lambdaFunctionArn: (map['lambdaFunctionArn'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      lambdaFunctionArn: pulumi.Input.fromValue(
+        map['lambdaFunctionArn'] as String,
+      ),
     );
   }
 }
-

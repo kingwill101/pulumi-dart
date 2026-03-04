@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsentLinkParameterDefinition {
   /// AAD OID (user or group) if the principal type is ActiveDirectory. MSA PUID if the principal type is MicrosoftAccount
   final pulumi.Input<String>? objectId;
+
   /// Name of the parameter in the connection provider's OAuth settings
   final pulumi.Input<String>? parameterName;
+
   /// Name of the parameter in the connection provider's OAuth settings
   final pulumi.Input<String>? redirectUrl;
+
   /// The tenant id
   final pulumi.Input<String>? tenantId;
 
@@ -36,11 +39,26 @@ class ConsentLinkParameterDefinition {
 
   factory ConsentLinkParameterDefinition.fromMap(Map<String, dynamic> map) {
     return ConsentLinkParameterDefinition(
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      parameterName: map['parameterName'] == null ? null : (map['parameterName']! as String).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterName: (() {
+        final guardedValue = map['parameterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      redirectUrl: (() {
+        final guardedValue = map['redirectUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

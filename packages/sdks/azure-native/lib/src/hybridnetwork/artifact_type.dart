@@ -6,16 +6,15 @@ enum ArtifactType {
   valueArmTemplate("ArmTemplate"),
   valueImageFile("ImageFile");
 
-  const ArtifactType(this.value);
-  final String value;
+  const ArtifactType(this.wireValue);
+  final String wireValue;
 
   static ArtifactType fromValue(String value) {
     for (final item in ArtifactType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArtifactType value: $value');
   }
 }
-

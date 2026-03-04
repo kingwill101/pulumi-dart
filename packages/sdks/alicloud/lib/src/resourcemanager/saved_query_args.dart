@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SavedQueryArgs {
   /// Query Description.
   final pulumi.Input<String>? description;
+
   /// Query Expression.
   final pulumi.Input<String> expression;
+
   /// The name of the resource.
   final pulumi.Input<String> savedQueryName;
 
@@ -34,10 +36,13 @@ class SavedQueryArgs {
 
   factory SavedQueryArgs.fromMap(Map<String, dynamic> map) {
     return SavedQueryArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expression: (map['expression'] as String).input(),
-      savedQueryName: (map['savedQueryName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
+      savedQueryName: pulumi.Input.fromValue(map['savedQueryName'] as String),
     );
   }
 }
-

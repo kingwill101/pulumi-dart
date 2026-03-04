@@ -7,8 +7,10 @@ import 'networking_route.dart';
 class NetworkingConfiguration {
   /// External networking mode.
   final pulumi.Input<String> externalNetworkingMode;
+
   /// The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
   final pulumi.Input<String>? host;
+
   /// Networking routes configuration.
   final pulumi.Input<List<NetworkingRoute>> routes;
 
@@ -26,16 +28,38 @@ class NetworkingConfiguration {
     return <String, dynamic>{
       'externalNetworkingMode': externalNetworkingMode,
       'host': ?host,
-      'routes': pulumi.Input.mapInputValue<List<NetworkingRoute>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<NetworkingRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routes':
+          pulumi.Input.mapInputValue<
+            List<NetworkingRoute>,
+            List<Map<String, dynamic>>
+          >(
+            routes,
+            (value) =>
+                pulumi.Input.encodeList<NetworkingRoute, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory NetworkingConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkingConfiguration(
-      externalNetworkingMode: (map['externalNetworkingMode'] as String).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      routes: (pulumi.Input.decodeList<NetworkingRoute>(map['routes'], (value) => NetworkingRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalNetworkingMode: pulumi.Input.fromValue(
+        map['externalNetworkingMode'] as String,
+      ),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NetworkingRoute>(
+          map['routes']!,
+          (value) =>
+              NetworkingRoute.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

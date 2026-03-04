@@ -486,30 +486,45 @@ import 'data_source_state.dart';
 class DataSource extends pulumi.CustomResource {
   /// API ID for the GraphQL API for the data source.
   late final pulumi.Output<String> apiId;
+
   /// ARN
   late final pulumi.Output<String> arn;
+
   /// Description of the data source.
   late final pulumi.Output<String?> description;
+
   /// DynamoDB settings. See `dynamodb_config` Block for details.
   late final pulumi.Output<DataSourceDynamodbConfig?> dynamodbConfig;
+
   /// Amazon Elasticsearch settings. See `elasticsearch_config` Block for details.
   late final pulumi.Output<DataSourceElasticsearchConfig?> elasticsearchConfig;
+
   /// AWS EventBridge settings. See `event_bridge_config` Block for details.
   late final pulumi.Output<DataSourceEventBridgeConfig?> eventBridgeConfig;
+
   /// HTTP settings. See `http_config` Block for details.
   late final pulumi.Output<DataSourceHttpConfig?> httpConfig;
+
   /// AWS Lambda settings. See `lambda_config` Block for details.
   late final pulumi.Output<DataSourceLambdaConfig?> lambdaConfig;
+
   /// User-supplied name for the data source.
   late final pulumi.Output<String> name;
+
   /// Amazon OpenSearch Service settings. See `opensearchservice_config` Block for details.
-  late final pulumi.Output<DataSourceOpensearchserviceConfig?> opensearchserviceConfig;
+  late final pulumi.Output<DataSourceOpensearchserviceConfig?>
+  opensearchserviceConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// AWS RDS settings. See `relational_database_config` Block for details.
-  late final pulumi.Output<DataSourceRelationalDatabaseConfig?> relationalDatabaseConfig;
+  late final pulumi.Output<DataSourceRelationalDatabaseConfig?>
+  relationalDatabaseConfig;
+
   /// IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
   late final pulumi.Output<String?> serviceRoleArn;
+
   /// Type of the Data Source. Valid values: `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `HTTP`, `NONE`, `RELATIONAL_DATABASE`, `AMAZON_EVENTBRIDGE`, `AMAZON_OPENSEARCH_SERVICE`.
   late final pulumi.Output<String> type;
 
@@ -522,25 +537,37 @@ class DataSource extends pulumi.CustomResource {
     DataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appsync/dataSource:DataSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.dynamodbConfig = registerOutput<DataSourceDynamodbConfig?>('dynamodbConfig');
-    this.elasticsearchConfig = registerOutput<DataSourceElasticsearchConfig?>('elasticsearchConfig');
-    this.eventBridgeConfig = registerOutput<DataSourceEventBridgeConfig?>('eventBridgeConfig');
-    this.httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig');
-    this.lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig');
+         'aws:appsync/dataSource:DataSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    dynamodbConfig = registerOutput<DataSourceDynamodbConfig?>(
+      'dynamodbConfig',
+    );
+    elasticsearchConfig = registerOutput<DataSourceElasticsearchConfig?>(
+      'elasticsearchConfig',
+    );
+    eventBridgeConfig = registerOutput<DataSourceEventBridgeConfig?>(
+      'eventBridgeConfig',
+    );
+    httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig');
+    lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig');
     this.name = registerOutput<String>('name');
-    this.opensearchserviceConfig = registerOutput<DataSourceOpensearchserviceConfig?>('opensearchserviceConfig');
-    this.region = registerOutput<String>('region');
-    this.relationalDatabaseConfig = registerOutput<DataSourceRelationalDatabaseConfig?>('relationalDatabaseConfig');
-    this.serviceRoleArn = registerOutput<String?>('serviceRoleArn');
-    this.type = registerOutput<String>('type');
+    opensearchserviceConfig =
+        registerOutput<DataSourceOpensearchserviceConfig?>(
+          'opensearchserviceConfig',
+        );
+    region = registerOutput<String>('region');
+    relationalDatabaseConfig =
+        registerOutput<DataSourceRelationalDatabaseConfig?>(
+          'relationalDatabaseConfig',
+        );
+    serviceRoleArn = registerOutput<String?>('serviceRoleArn');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [DataSource] resource's state with the given [name] and [id].
@@ -561,24 +588,36 @@ class DataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appsync/dataSource:DataSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.dynamodbConfig = registerOutput<DataSourceDynamodbConfig?>('dynamodbConfig');
-    this.elasticsearchConfig = registerOutput<DataSourceElasticsearchConfig?>('elasticsearchConfig');
-    this.eventBridgeConfig = registerOutput<DataSourceEventBridgeConfig?>('eventBridgeConfig');
-    this.httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig');
-    this.lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig');
+         'aws:appsync/dataSource:DataSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    dynamodbConfig = registerOutput<DataSourceDynamodbConfig?>(
+      'dynamodbConfig',
+    );
+    elasticsearchConfig = registerOutput<DataSourceElasticsearchConfig?>(
+      'elasticsearchConfig',
+    );
+    eventBridgeConfig = registerOutput<DataSourceEventBridgeConfig?>(
+      'eventBridgeConfig',
+    );
+    httpConfig = registerOutput<DataSourceHttpConfig?>('httpConfig');
+    lambdaConfig = registerOutput<DataSourceLambdaConfig?>('lambdaConfig');
     this.name = registerOutput<String>('name');
-    this.opensearchserviceConfig = registerOutput<DataSourceOpensearchserviceConfig?>('opensearchserviceConfig');
-    this.region = registerOutput<String>('region');
-    this.relationalDatabaseConfig = registerOutput<DataSourceRelationalDatabaseConfig?>('relationalDatabaseConfig');
-    this.serviceRoleArn = registerOutput<String?>('serviceRoleArn');
-    this.type = registerOutput<String>('type');
+    opensearchserviceConfig =
+        registerOutput<DataSourceOpensearchserviceConfig?>(
+          'opensearchserviceConfig',
+        );
+    region = registerOutput<String>('region');
+    relationalDatabaseConfig =
+        registerOutput<DataSourceRelationalDatabaseConfig?>(
+          'relationalDatabaseConfig',
+        );
+    serviceRoleArn = registerOutput<String?>('serviceRoleArn');
+    type = registerOutput<String>('type');
   }
 }

@@ -8,16 +8,15 @@ enum AzureDiskType {
   ultra("Ultra"),
   premiumV2("PremiumV2");
 
-  const AzureDiskType(this.value);
-  final String value;
+  const AzureDiskType(this.wireValue);
+  final String wireValue;
 
   static AzureDiskType fromValue(String value) {
     for (final item in AzureDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureDiskType value: $value');
   }
 }
-

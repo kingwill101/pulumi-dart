@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu {
   /// Maximum. May be a decimal number, e.g. `0.5`.
   final pulumi.Input<double>? max;
+
   /// Minimum. May be a decimal number, e.g. `0.5`.
   final pulumi.Input<double>? min;
 
@@ -17,17 +18,23 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibP
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min};
   }
 
-  factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryGibPerVcpu(
-      max: map['max'] == null ? null : ((map['max'] as double).input()).input(),
-      min: map['min'] == null ? null : ((map['min'] as double).input()).input(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

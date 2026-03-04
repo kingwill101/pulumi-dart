@@ -13,7 +13,7 @@ import 'user_state.dart';
 ///
 ///
 ///
-/// > **Note:**  All arguments marked as write-only values will not be stored in the state: `password_wo`.
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `password_wo`.
 /// Read more about Write-only Arguments.
 ///
 /// ## Example Usage
@@ -858,24 +858,31 @@ class User extends pulumi.CustomResource {
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   late final pulumi.Output<String> cluster;
+
   /// List of database roles this database user has.
   late final pulumi.Output<List<String>?> databaseRoles;
+
   /// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
   late final pulumi.Output<String> name;
+
   /// Password for this database user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> password;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// Password for this database user.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// > **Note:** One of `password` or `password_wo` can only be set.
+  /// &gt; **Note:** One of `password` or `password_wo` can only be set.
   late final pulumi.Output<String?> passwordWo;
+
   /// Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<String?> passwordWoVersion;
+
   /// The database role name of the user.
   late final pulumi.Output<String> userId;
+
   /// The type of this user.
   /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
   late final pulumi.Output<String> userType;
@@ -884,32 +891,25 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_alloydb_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:alloydb/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cluster = registerOutput<String>('cluster');
-    this.databaseRoles = registerOutput<List<String>?>('databaseRoles');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:alloydb/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    cluster = registerOutput<String>('cluster');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.passwordWo = registerOutput<String?>('passwordWo');
-    this.passwordWoVersion = registerOutput<String?>('passwordWoVersion');
-    this.userId = registerOutput<String>('userId');
-    this.userType = registerOutput<String>('userType');
+    password = registerOutput<String?>('password');
+    passwordWo = registerOutput<String?>('passwordWo');
+    passwordWoVersion = registerOutput<String?>('passwordWoVersion');
+    userId = registerOutput<String>('userId');
+    userType = registerOutput<String>('userType');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -922,18 +922,18 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:alloydb/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cluster = registerOutput<String>('cluster');
-    this.databaseRoles = registerOutput<List<String>?>('databaseRoles');
+         'gcp:alloydb/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cluster = registerOutput<String>('cluster');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.passwordWo = registerOutput<String?>('passwordWo');
-    this.passwordWoVersion = registerOutput<String?>('passwordWoVersion');
-    this.userId = registerOutput<String>('userId');
-    this.userType = registerOutput<String>('userType');
+    password = registerOutput<String?>('password');
+    passwordWo = registerOutput<String?>('passwordWo');
+    passwordWoVersion = registerOutput<String?>('passwordWoVersion');
+    userId = registerOutput<String>('userId');
+    userType = registerOutput<String>('userType');
   }
 }

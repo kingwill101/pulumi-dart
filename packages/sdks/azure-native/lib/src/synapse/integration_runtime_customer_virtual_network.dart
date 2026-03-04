@@ -9,20 +9,21 @@ class IntegrationRuntimeCustomerVirtualNetwork {
 
   /// Creates a new [IntegrationRuntimeCustomerVirtualNetwork].
   /// [subnetId] The ID of subnet to which Azure-SSIS integration runtime will join.
-  IntegrationRuntimeCustomerVirtualNetwork({
-    this.subnetId,
-  });
+  IntegrationRuntimeCustomerVirtualNetwork({this.subnetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subnetId': ?subnetId,
-    };
+    return <String, dynamic>{'subnetId': ?subnetId};
   }
 
-  factory IntegrationRuntimeCustomerVirtualNetwork.fromMap(Map<String, dynamic> map) {
+  factory IntegrationRuntimeCustomerVirtualNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationRuntimeCustomerVirtualNetwork(
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

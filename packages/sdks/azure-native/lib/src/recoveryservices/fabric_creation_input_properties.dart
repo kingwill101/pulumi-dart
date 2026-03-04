@@ -10,20 +10,29 @@ class FabricCreationInputProperties {
 
   /// Creates a new [FabricCreationInputProperties].
   /// [customDetails] Fabric provider specific creation input.
-  FabricCreationInputProperties({
-    this.customDetails,
-  });
+  FabricCreationInputProperties({this.customDetails});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customDetails': ?pulumi.Input.mapOptionalInputValue<AzureFabricCreationInput, Map<String, dynamic>>(customDetails, (value) => value.toMap()),
+      'customDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureFabricCreationInput,
+            Map<String, dynamic>
+          >(customDetails, (value) => value.toMap()),
     };
   }
 
   factory FabricCreationInputProperties.fromMap(Map<String, dynamic> map) {
     return FabricCreationInputProperties(
-      customDetails: map['customDetails'] == null ? null : (AzureFabricCreationInput.fromMap((map['customDetails']! as Map).cast<String, dynamic>())).input(),
+      customDetails: (() {
+        final guardedValue = map['customDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureFabricCreationInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

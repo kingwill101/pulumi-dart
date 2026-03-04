@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExecutionStageStateResponse {
   /// The time at which the stage transitioned to this state.
   final pulumi.Input<String> currentStateTime;
+
   /// The name of the execution stage.
   final pulumi.Input<String> executionStageName;
+
   /// Executions stage states allow the same set of values as JobState.
   final pulumi.Input<String> executionStageState;
 
@@ -31,10 +33,15 @@ class ExecutionStageStateResponse {
 
   factory ExecutionStageStateResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStageStateResponse(
-      currentStateTime: (map['currentStateTime'] as String).input(),
-      executionStageName: (map['executionStageName'] as String).input(),
-      executionStageState: (map['executionStageState'] as String).input(),
+      currentStateTime: pulumi.Input.fromValue(
+        map['currentStateTime'] as String,
+      ),
+      executionStageName: pulumi.Input.fromValue(
+        map['executionStageName'] as String,
+      ),
+      executionStageState: pulumi.Input.fromValue(
+        map['executionStageState'] as String,
+      ),
     );
   }
 }
-

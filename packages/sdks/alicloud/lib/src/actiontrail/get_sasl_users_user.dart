@@ -4,10 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSaslUsersUser {
   final pulumi.Input<String> id;
+
   /// The password of the user.
   final pulumi.Input<String> password;
+
   /// (Available since v1.260.0) The type of the user.
   final pulumi.Input<String> type;
+
   /// The username of the user.
   final pulumi.Input<String> username;
 
@@ -34,11 +37,10 @@ class GetSaslUsersUser {
 
   factory GetSaslUsersUser.fromMap(Map<String, dynamic> map) {
     return GetSaslUsersUser(
-      id: (map['id'] as String).input(),
-      password: (map['password'] as String).input(),
-      type: (map['type'] as String).input(),
-      username: (map['username'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

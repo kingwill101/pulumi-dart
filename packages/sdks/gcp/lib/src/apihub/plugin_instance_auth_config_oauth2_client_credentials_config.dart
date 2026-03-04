@@ -6,8 +6,12 @@ import 'plugin_instance_auth_config_oauth2_client_credentials_config_client_secr
 class PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
   /// The client identifier.
   final pulumi.Input<String> clientId;
+
   /// Secret provides a reference to entries in Secret Manager.
-  final pulumi.Input<PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret> clientSecret;
+  final pulumi.Input<
+    PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret
+  >
+  clientSecret;
 
   /// Creates a new [PluginInstanceAuthConfigOauth2ClientCredentialsConfig].
   /// [clientId] The client identifier.
@@ -20,15 +24,24 @@ class PluginInstanceAuthConfigOauth2ClientCredentialsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientId': clientId,
-      'clientSecret': pulumi.Input.mapInputValue<PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'clientSecret':
+          pulumi.Input.mapInputValue<
+            PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret,
+            Map<String, dynamic>
+          >(clientSecret, (value) => value.toMap()),
     };
   }
 
-  factory PluginInstanceAuthConfigOauth2ClientCredentialsConfig.fromMap(Map<String, dynamic> map) {
+  factory PluginInstanceAuthConfigOauth2ClientCredentialsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PluginInstanceAuthConfigOauth2ClientCredentialsConfig(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(
+        PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret.fromMap(
+          (map['clientSecret']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

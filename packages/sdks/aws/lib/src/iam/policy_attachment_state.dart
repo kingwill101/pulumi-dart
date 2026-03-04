@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAttachmentState {
   /// Group(s) the policy should be applied to.
   final pulumi.Input<List<String>>? groups;
+
   /// Name of the attachment. This cannot be an empty string.
   final pulumi.Input<String>? name;
+
   /// ARN of the policy you want to apply. Typically this should be a reference to the ARN of another resource to ensure dependency ordering, such as `aws_iam_policy.example.arn`.
   final pulumi.Input<String>? policyArn;
+
   /// Role(s) the policy should be applied to.
   final pulumi.Input<List<String>>? roles;
+
   /// User(s) the policy should be applied to.
   final pulumi.Input<List<String>>? users;
 
@@ -41,12 +45,31 @@ class PolicyAttachmentState {
 
   factory PolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentState(
-      groups: map['groups'] == null ? null : (((map['groups'] as List).cast<String>()).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      policyArn: map['policyArn'] == null ? null : ((map['policyArn'] as String).input()).input(),
-      roles: map['roles'] == null ? null : (((map['roles'] as List).cast<String>()).input()).input(),
-      users: map['users'] == null ? null : (((map['users'] as List).cast<String>()).input()).input(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyArn: (() {
+        final guardedValue = map['policyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      users: (() {
+        final guardedValue = map['users'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

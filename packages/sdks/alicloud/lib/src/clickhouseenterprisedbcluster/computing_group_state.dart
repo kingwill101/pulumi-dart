@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputingGroupState {
   /// Computing group name
   final pulumi.Input<String>? computingGroupDescription;
+
   /// A list of computing group endpoint names.
   final pulumi.Input<List<String>>? computingGroupEndpointNames;
+
   /// List of computing group endpoints.
   final pulumi.Input<List<String>>? computingGroupEndpoints;
+
   /// A resource property field representing the primary resource ID.
   final pulumi.Input<String>? computingGroupId;
+
   /// List of public endpoints for the computing group.
   final pulumi.Input<List<String>>? computingGroupPublicEndpoints;
+
   /// Computing group status.
   final pulumi.Input<String>? computingGroupStatus;
+
   /// ClickHouse Enterprise Edition instance ID
   final pulumi.Input<String>? dbInstanceId;
+
   /// Computing group read-only
   final pulumi.Input<bool>? isReadonly;
+
   /// Number of computing group nodes
   final pulumi.Input<int>? nodeCount;
+
   /// Computing group node elasticity upper limit
   final pulumi.Input<int>? nodeScaleMax;
+
   /// Lower limit of computing group node elasticity
   final pulumi.Input<int>? nodeScaleMin;
 
@@ -71,18 +81,61 @@ class ComputingGroupState {
 
   factory ComputingGroupState.fromMap(Map<String, dynamic> map) {
     return ComputingGroupState(
-      computingGroupDescription: map['computingGroupDescription'] == null ? null : (map['computingGroupDescription']! as String).input(),
-      computingGroupEndpointNames: map['computingGroupEndpointNames'] == null ? null : ((map['computingGroupEndpointNames']! as List).cast<String>()).input(),
-      computingGroupEndpoints: map['computingGroupEndpoints'] == null ? null : ((map['computingGroupEndpoints']! as List).cast<String>()).input(),
-      computingGroupId: map['computingGroupId'] == null ? null : (map['computingGroupId']! as String).input(),
-      computingGroupPublicEndpoints: map['computingGroupPublicEndpoints'] == null ? null : ((map['computingGroupPublicEndpoints']! as List).cast<String>()).input(),
-      computingGroupStatus: map['computingGroupStatus'] == null ? null : (map['computingGroupStatus']! as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
-      isReadonly: map['isReadonly'] == null ? null : (map['isReadonly']! as bool).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
-      nodeScaleMax: map['nodeScaleMax'] == null ? null : (map['nodeScaleMax']! as int).input(),
-      nodeScaleMin: map['nodeScaleMin'] == null ? null : (map['nodeScaleMin']! as int).input(),
+      computingGroupDescription: (() {
+        final guardedValue = map['computingGroupDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computingGroupEndpointNames: (() {
+        final guardedValue = map['computingGroupEndpointNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      computingGroupEndpoints: (() {
+        final guardedValue = map['computingGroupEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      computingGroupId: (() {
+        final guardedValue = map['computingGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computingGroupPublicEndpoints: (() {
+        final guardedValue = map['computingGroupPublicEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      computingGroupStatus: (() {
+        final guardedValue = map['computingGroupStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: (() {
+        final guardedValue = map['dbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isReadonly: (() {
+        final guardedValue = map['isReadonly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeScaleMax: (() {
+        final guardedValue = map['nodeScaleMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeScaleMin: (() {
+        final guardedValue = map['nodeScaleMin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

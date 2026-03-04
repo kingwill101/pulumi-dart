@@ -9,13 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MscSubContractArgs {
   /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
   final pulumi.Input<String> contactName;
+
   /// The User's Contact Email Address.
   final pulumi.Input<String> email;
+
   /// The User's Telephone.
   final pulumi.Input<String> mobile;
+
   /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
   ///
-  /// > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
+  /// &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
   final pulumi.Input<String> position;
 
   /// Creates a new [MscSubContractArgs].
@@ -41,11 +44,10 @@ class MscSubContractArgs {
 
   factory MscSubContractArgs.fromMap(Map<String, dynamic> map) {
     return MscSubContractArgs(
-      contactName: (map['contactName'] as String).input(),
-      email: (map['email'] as String).input(),
-      mobile: (map['mobile'] as String).input(),
-      position: (map['position'] as String).input(),
+      contactName: pulumi.Input.fromValue(map['contactName'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      mobile: pulumi.Input.fromValue(map['mobile'] as String),
+      position: pulumi.Input.fromValue(map['position'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class ProductState {
 
   /// Creates a new [ProductState].
   /// [productName] ProductName.
-  ProductState({
-    this.productName,
-  });
+  ProductState({this.productName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'productName': ?productName,
-    };
+    return <String, dynamic>{'productName': ?productName};
   }
 
   factory ProductState.fromMap(Map<String, dynamic> map) {
     return ProductState(
-      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
+      productName: (() {
+        final guardedValue = map['productName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

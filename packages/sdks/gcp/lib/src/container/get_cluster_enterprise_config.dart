@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterEnterpriseConfig {
   /// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
   final pulumi.Input<String> clusterTier;
+
   /// Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
   final pulumi.Input<String> desiredTier;
 
@@ -25,9 +26,8 @@ class GetClusterEnterpriseConfig {
 
   factory GetClusterEnterpriseConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterEnterpriseConfig(
-      clusterTier: (map['clusterTier'] as String).input(),
-      desiredTier: (map['desiredTier'] as String).input(),
+      clusterTier: pulumi.Input.fromValue(map['clusterTier'] as String),
+      desiredTier: pulumi.Input.fromValue(map['desiredTier'] as String),
     );
   }
 }
-

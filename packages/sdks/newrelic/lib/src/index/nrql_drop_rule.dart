@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nrql_drop_rule_args.dart';
 import 'nrql_drop_rule_state.dart';
 
-/// > **WARNING ⚠️** The resource [`newrelic.NrqlDropRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_drop_rule) is <b>deprecated</b> and will be removed on <b>June 30, 2026</b>. While New Relic has automatically migrated your Drop Rules to Pipeline Cloud Rules upstream, you must update your Terraform configuration to continue managing Drop Rules as Pipeline Cloud Rules, using the <b style="color:green;">new</b> [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.<br><br>Please see our [migration guide](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/drop_rules_eol_guide) for instructions on switching to the [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.
+/// &gt; **WARNING ⚠️** The resource [`newrelic.NrqlDropRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_drop_rule) is &lt;b&gt;deprecated&lt;/b&gt; and will be removed on &lt;b&gt;June 30, 2026&lt;/b&gt;. While New Relic has automatically migrated your Drop Rules to Pipeline Cloud Rules upstream, you must update your Terraform configuration to continue managing Drop Rules as Pipeline Cloud Rules, using the &lt;b style="color:green;"&gt;new&lt;/b&gt; [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.&lt;br&gt;&lt;br&gt;Please see our [migration guide](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/drop_rules_eol_guide) for instructions on switching to the [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.
 ///
 /// Use this resource to create, and delete New Relic NRQL Drop Rules.
 ///
@@ -200,9 +200,9 @@ import 'nrql_drop_rule_state.dart';
 ///
 /// ## ⚠️ Upcoming Drop Rules EOL: Transitioning from NRQL Drop Rules to Pipeline Cloud Rules Managed via Terraform
 ///
-/// The resource [`newrelic.NrqlDropRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_drop_rule) is <b>deprecated</b> and will be removed on <b>June 30, 2026</b>. While New Relic has automatically migrated your Drop Rules to Pipeline Cloud Rules upstream, you must update your Terraform configuration to continue managing Drop Rules as Pipeline Cloud Rules, using the <b style="color:green;">new</b> [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.<br><br>Please see our [migration guide](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/drop_rules_eol_guide) for instructions on switching to the [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.
+/// The resource [`newrelic.NrqlDropRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_drop_rule) is &lt;b&gt;deprecated&lt;/b&gt; and will be removed on &lt;b&gt;June 30, 2026&lt;/b&gt;. While New Relic has automatically migrated your Drop Rules to Pipeline Cloud Rules upstream, you must update your Terraform configuration to continue managing Drop Rules as Pipeline Cloud Rules, using the &lt;b style="color:green;"&gt;new&lt;/b&gt; [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.&lt;br&gt;&lt;br&gt;Please see our [migration guide](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/drop_rules_eol_guide) for instructions on switching to the [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.
 ///
-/// While New Relic has automatically migrated your Drop Rules to Pipeline Cloud Rules upstream, you must update your Terraform configuration to continue managing Drop Rules as Pipeline Cloud Rules, using the <b style="color:green;">new</b> [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.<br><br>Please see our [migration guide](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/drop_rules_eol_guide) for instructions on switching to the [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.
+/// While New Relic has automatically migrated your Drop Rules to Pipeline Cloud Rules upstream, you must update your Terraform configuration to continue managing Drop Rules as Pipeline Cloud Rules, using the &lt;b style="color:green;"&gt;new&lt;/b&gt; [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.&lt;br&gt;&lt;br&gt;Please see our [migration guide](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/drop_rules_eol_guide) for instructions on switching to the [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource.
 ///
 /// ## Using `newrelic-cli` to List Out Drop Rules (Deprecated)
 ///
@@ -222,7 +222,7 @@ import 'nrql_drop_rule_state.dart';
 /// ## Import
 ///
 /// New Relic NRQL drop rules can be imported using a concatenated string of the format
-/// `<account_id>:<rule_id>`, e.g.
+/// `&lt;account_id&gt;:&lt;rule_id&gt;`, e.g.
 ///
 /// ```bash
 /// $ terraform import newrelic_nrql_drop_rule.foo 12345:34567
@@ -230,14 +230,19 @@ import 'nrql_drop_rule_state.dart';
 class NrqlDropRule extends pulumi.CustomResource {
   /// Account where the drop rule will be put. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// An action type specifying how to apply the NRQL string (either `drop_data`, `drop_attributes`, or ` drop_attributes_from_metric_aggregates`).
   late final pulumi.Output<String> action;
+
   /// The description of the drop rule.
   late final pulumi.Output<String?> description;
+
   /// A NRQL string that specifies what data types to drop.
   late final pulumi.Output<String> nrql;
+
   /// The ID (GUID) of the corresponding Pipeline Cloud Rule, (migrated upstream by New Relic, in light of the upcoming EOL, as stated in the Deprecation Warning above). This can be used to import the corresponding Pipeline Cloud Rule as a [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource, as explained in our Drop Rules EOL Migration Guide.
   late final pulumi.Output<String> pipelineCloudRuleEntityId;
+
   /// The id, uniquely identifying the rule.
   late final pulumi.Output<String> ruleId;
 
@@ -250,17 +255,19 @@ class NrqlDropRule extends pulumi.CustomResource {
     NrqlDropRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/nrqlDropRule:NrqlDropRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.action = registerOutput<String>('action');
-    this.description = registerOutput<String?>('description');
-    this.nrql = registerOutput<String>('nrql');
-    this.pipelineCloudRuleEntityId = registerOutput<String>('pipelineCloudRuleEntityId');
-    this.ruleId = registerOutput<String>('ruleId');
+         'newrelic:index/nrqlDropRule:NrqlDropRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    action = registerOutput<String>('action');
+    description = registerOutput<String?>('description');
+    nrql = registerOutput<String>('nrql');
+    pipelineCloudRuleEntityId = registerOutput<String>(
+      'pipelineCloudRuleEntityId',
+    );
+    ruleId = registerOutput<String>('ruleId');
   }
 
   /// Gets an existing [NrqlDropRule] resource's state with the given [name] and [id].
@@ -281,16 +288,18 @@ class NrqlDropRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/nrqlDropRule:NrqlDropRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.action = registerOutput<String>('action');
-    this.description = registerOutput<String?>('description');
-    this.nrql = registerOutput<String>('nrql');
-    this.pipelineCloudRuleEntityId = registerOutput<String>('pipelineCloudRuleEntityId');
-    this.ruleId = registerOutput<String>('ruleId');
+         'newrelic:index/nrqlDropRule:NrqlDropRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    action = registerOutput<String>('action');
+    description = registerOutput<String?>('description');
+    nrql = registerOutput<String>('nrql');
+    pipelineCloudRuleEntityId = registerOutput<String>(
+      'pipelineCloudRuleEntityId',
+    );
+    ruleId = registerOutput<String>('ruleId');
   }
 }

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryScriptParameterResponse {
   /// The default value of the parameter, only applies to string types.
   final pulumi.Input<String>? defaultValue;
+
   /// A description to help users understand what this parameter means
   final pulumi.Input<String>? description;
+
   /// A list of permissible values. Only applicable values are from 'enum' values defined in 'GalleryScriptParameter'.
   final pulumi.Input<List<String>>? enumValues;
+
   /// The minimum value of parameter.
   final pulumi.Input<String>? maxValue;
+
   /// The minimum value of parameter.
   final pulumi.Input<String>? minValue;
+
   /// The name of the parameter.
   final pulumi.Input<String> name;
+
   /// Indicates whether this parameter must be passed.
   final pulumi.Input<bool>? required;
+
   /// Specifies the type of the Gallery Script parameter. Possible values are: String, Int, Double, Boolean, Enum
   final pulumi.Input<String>? type;
 
@@ -56,15 +63,42 @@ class GalleryScriptParameterResponse {
 
   factory GalleryScriptParameterResponse.fromMap(Map<String, dynamic> map) {
     return GalleryScriptParameterResponse(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enumValues: map['enumValues'] == null ? null : ((map['enumValues']! as List).cast<String>()).input(),
-      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as String).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue']! as String).input(),
-      name: (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required']! as bool).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      defaultValue: (() {
+        final guardedValue = map['defaultValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enumValues: (() {
+        final guardedValue = map['enumValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maxValue: (() {
+        final guardedValue = map['maxValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minValue: (() {
+        final guardedValue = map['minValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      required: (() {
+        final guardedValue = map['required'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

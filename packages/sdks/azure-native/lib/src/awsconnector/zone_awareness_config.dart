@@ -4,25 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ZoneAwarenessConfig
 class ZoneAwarenessConfig {
-  /// <p>If you enabled multiple Availability Zones, this value is the number of zones that you want the domain to use. Valid values are <code>2</code> and <code>3</code>. If your domain is provisioned within a VPC, this value be equal to number of subnets.</p>
+  /// &lt;p&gt;If you enabled multiple Availability Zones, this value is the number of zones that you want the domain to use. Valid values are &lt;code&gt;2&lt;/code&gt; and &lt;code&gt;3&lt;/code&gt;. If your domain is provisioned within a VPC, this value be equal to number of subnets.&lt;/p&gt;
   final pulumi.Input<int>? availabilityZoneCount;
 
   /// Creates a new [ZoneAwarenessConfig].
-  /// [availabilityZoneCount] <p>If you enabled multiple Availability Zones, this value is the number of zones that you want the domain to use. Valid values are <code>2</code> and <code>3</code>. If your domain is provisioned within a VPC, this value be equal to number of subnets.</p>
-  ZoneAwarenessConfig({
-    this.availabilityZoneCount,
-  });
+  /// [availabilityZoneCount] &lt;p&gt;If you enabled multiple Availability Zones, this value is the number of zones that you want the domain to use. Valid values are &lt;code&gt;2&lt;/code&gt; and &lt;code&gt;3&lt;/code&gt;. If your domain is provisioned within a VPC, this value be equal to number of subnets.&lt;/p&gt;
+  ZoneAwarenessConfig({this.availabilityZoneCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'availabilityZoneCount': ?availabilityZoneCount,
-    };
+    return <String, dynamic>{'availabilityZoneCount': ?availabilityZoneCount};
   }
 
   factory ZoneAwarenessConfig.fromMap(Map<String, dynamic> map) {
     return ZoneAwarenessConfig(
-      availabilityZoneCount: map['availabilityZoneCount'] == null ? null : (map['availabilityZoneCount']! as int).input(),
+      availabilityZoneCount: (() {
+        final guardedValue = map['availabilityZoneCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

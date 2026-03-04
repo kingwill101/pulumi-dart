@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventSourcesSource {
   /// The detail describe of event source.
   final pulumi.Input<String> description;
+
   /// The code name of event source.
   final pulumi.Input<String> eventSourceName;
+
   /// The config of external data source.
   final pulumi.Input<Map<String, String>> externalSourceConfig;
+
   /// The type of external data source.
   final pulumi.Input<String> externalSourceType;
+
   /// The ID of the Event Source.
   final pulumi.Input<String> id;
+
   /// Whether to connect to an external data source.
   final pulumi.Input<bool> linkedExternalSource;
   final pulumi.Input<String> type;
@@ -49,14 +54,19 @@ class GetEventSourcesSource {
 
   factory GetEventSourcesSource.fromMap(Map<String, dynamic> map) {
     return GetEventSourcesSource(
-      description: (map['description'] as String).input(),
-      eventSourceName: (map['eventSourceName'] as String).input(),
-      externalSourceConfig: ((map['externalSourceConfig'] as Map).cast<String, String>()).input(),
-      externalSourceType: (map['externalSourceType'] as String).input(),
-      id: (map['id'] as String).input(),
-      linkedExternalSource: (map['linkedExternalSource'] as bool).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      eventSourceName: pulumi.Input.fromValue(map['eventSourceName'] as String),
+      externalSourceConfig: pulumi.Input.fromValue(
+        (map['externalSourceConfig'] as Map).cast<String, String>(),
+      ),
+      externalSourceType: pulumi.Input.fromValue(
+        map['externalSourceType'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      linkedExternalSource: pulumi.Input.fromValue(
+        map['linkedExternalSource'] as bool,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

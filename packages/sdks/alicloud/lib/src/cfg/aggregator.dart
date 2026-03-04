@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aggregator_aggregator_account.dart';
 import 'aggregator_args.dart';
 import 'aggregator_state.dart';
 
@@ -9,7 +8,7 @@ import 'aggregator_state.dart';
 ///
 /// For information about Cloud Config (Config) Aggregator and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
 ///
-/// > **NOTE:** Available since v1.124.0.
+/// &gt; **NOTE:** Available since v1.124.0.
 ///
 /// ## Example Usage
 ///
@@ -199,21 +198,27 @@ import 'aggregator_state.dart';
 /// ```
 class Aggregator extends pulumi.CustomResource {
   /// The member accounts of the account group. See `aggregator_accounts` below.
-  /// > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
-  late final pulumi.Output<List<AggregatorAggregatorAccount>> aggregatorAccounts;
+  /// &gt; **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
+  late final pulumi.Output<List<Map<String, dynamic>>> aggregatorAccounts;
+
   /// The name of the account group.
   late final pulumi.Output<String> aggregatorName;
+
   /// The type of the account group. Default value: `CUSTOM`. Valid values:
   /// - `RD`: Global account group.
   /// - `FOLDER`: Folder account group.
   /// - `CUSTOM`: Custom account group.
   late final pulumi.Output<String> aggregatorType;
+
   /// (Available since v1.262.0) The timestamp when the account group was created.
   late final pulumi.Output<int> createTime;
+
   /// The description of the account group.
   late final pulumi.Output<String> description;
+
   /// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
   late final pulumi.Output<String?> folderId;
+
   /// The status of the account group.
   late final pulumi.Output<String> status;
 
@@ -226,18 +231,20 @@ class Aggregator extends pulumi.CustomResource {
     AggregatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cfg/aggregator:Aggregator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregatorAccounts = registerOutput<List<AggregatorAggregatorAccount>>('aggregatorAccounts');
-    this.aggregatorName = registerOutput<String>('aggregatorName');
-    this.aggregatorType = registerOutput<String>('aggregatorType');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String>('description');
-    this.folderId = registerOutput<String?>('folderId');
-    this.status = registerOutput<String>('status');
+         'alicloud:cfg/aggregator:Aggregator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregatorAccounts = registerOutput<List<Map<String, dynamic>>>(
+      'aggregatorAccounts',
+    );
+    aggregatorName = registerOutput<String>('aggregatorName');
+    aggregatorType = registerOutput<String>('aggregatorType');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String>('description');
+    folderId = registerOutput<String?>('folderId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Aggregator] resource's state with the given [name] and [id].
@@ -258,17 +265,19 @@ class Aggregator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cfg/aggregator:Aggregator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregatorAccounts = registerOutput<List<AggregatorAggregatorAccount>>('aggregatorAccounts');
-    this.aggregatorName = registerOutput<String>('aggregatorName');
-    this.aggregatorType = registerOutput<String>('aggregatorType');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String>('description');
-    this.folderId = registerOutput<String?>('folderId');
-    this.status = registerOutput<String>('status');
+         'alicloud:cfg/aggregator:Aggregator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregatorAccounts = registerOutput<List<Map<String, dynamic>>>(
+      'aggregatorAccounts',
+    );
+    aggregatorName = registerOutput<String>('aggregatorName');
+    aggregatorType = registerOutput<String>('aggregatorType');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String>('description');
+    folderId = registerOutput<String?>('folderId');
+    status = registerOutput<String>('status');
   }
 }

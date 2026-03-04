@@ -146,16 +146,22 @@ import 'virtual_router_peering_args.dart';
 class VirtualRouterPeering extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Name of the virtual router peering that is unique within a virtual router.
   late final pulumi.Output<String?> name;
+
   /// Peer ASN.
   late final pulumi.Output<double?> peerAsn;
+
   /// Peer IP.
   late final pulumi.Output<String?> peerIp;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Peering type.
   late final pulumi.Output<String> type;
 
@@ -168,17 +174,17 @@ class VirtualRouterPeering extends pulumi.CustomResource {
     VirtualRouterPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VirtualRouterPeering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:VirtualRouterPeering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.peerAsn = registerOutput<double?>('peerAsn');
-    this.peerIp = registerOutput<String?>('peerIp');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    peerAsn = registerOutput<double?>('peerAsn');
+    peerIp = registerOutput<String?>('peerIp');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

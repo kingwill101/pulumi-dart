@@ -6,7 +6,7 @@ import 'resource_state.dart';
 ///
 /// For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
 ///
-/// > **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
+/// &gt; **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
 ///
 /// ## Example Usage
 ///
@@ -252,12 +252,16 @@ import 'resource_state.dart';
 class ResourceType extends pulumi.CustomResource {
   /// The meta store's description.
   late final pulumi.Output<String?> description;
+
   /// The ext info of meta store.
   late final pulumi.Output<String?> extInfo;
+
   /// The meta store's name, can be used as table name.
   late final pulumi.Output<String> name;
+
   /// The meta store's schema info, which is json string format, used to define table's fields.
   late final pulumi.Output<String> schema;
+
   /// The meta store's type, userdefine e.g.
   late final pulumi.Output<String> type;
 
@@ -270,16 +274,16 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/resource:Resource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.extInfo = registerOutput<String?>('extInfo');
+         'alicloud:log/resource:Resource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    extInfo = registerOutput<String?>('extInfo');
     this.name = registerOutput<String>('name');
-    this.schema = registerOutput<String>('schema');
-    this.type = registerOutput<String>('type');
+    schema = registerOutput<String>('schema');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [ResourceType] resource's state with the given [name] and [id].
@@ -300,15 +304,15 @@ class ResourceType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/resource:Resource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.extInfo = registerOutput<String?>('extInfo');
+         'alicloud:log/resource:Resource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    extInfo = registerOutput<String?>('extInfo');
     this.name = registerOutput<String>('name');
-    this.schema = registerOutput<String>('schema');
-    this.type = registerOutput<String>('type');
+    schema = registerOutput<String>('schema');
+    type = registerOutput<String>('type');
   }
 }

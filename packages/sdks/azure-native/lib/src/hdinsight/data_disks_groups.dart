@@ -9,20 +9,19 @@ class DataDisksGroups {
 
   /// Creates a new [DataDisksGroups].
   /// [disksPerNode] The number of disks per node.
-  DataDisksGroups({
-    this.disksPerNode,
-  });
+  DataDisksGroups({this.disksPerNode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disksPerNode': ?disksPerNode,
-    };
+    return <String, dynamic>{'disksPerNode': ?disksPerNode};
   }
 
   factory DataDisksGroups.fromMap(Map<String, dynamic> map) {
     return DataDisksGroups(
-      disksPerNode: map['disksPerNode'] == null ? null : (map['disksPerNode']! as int).input(),
+      disksPerNode: (() {
+        final guardedValue = map['disksPerNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

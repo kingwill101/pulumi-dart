@@ -7,9 +7,11 @@ import 'custom_container.dart';
 class CustomContainerUserSourceInfo {
   /// Custom container payload
   final pulumi.Input<CustomContainer>? customContainer;
+
   /// Type of the source uploaded
   /// Expected value is 'Container'.
   final pulumi.Input<String> type;
+
   /// Version of the source
   final pulumi.Input<String>? version;
 
@@ -25,7 +27,11 @@ class CustomContainerUserSourceInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customContainer': ?pulumi.Input.mapOptionalInputValue<CustomContainer, Map<String, dynamic>>(customContainer, (value) => value.toMap()),
+      'customContainer':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomContainer,
+            Map<String, dynamic>
+          >(customContainer, (value) => value.toMap()),
       'type': type,
       'version': ?version,
     };
@@ -33,10 +39,21 @@ class CustomContainerUserSourceInfo {
 
   factory CustomContainerUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return CustomContainerUserSourceInfo(
-      customContainer: map['customContainer'] == null ? null : (CustomContainer.fromMap((map['customContainer']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      customContainer: (() {
+        final guardedValue = map['customContainer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomContainer.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   /// Must be specified if type is `DOUBLE`. Maximum value of the parameter.
   final pulumi.Input<double>? maxValue;
+
   /// Must be specified if type is `DOUBLE`. Minimum value of the parameter.
   final pulumi.Input<double>? minValue;
 
@@ -17,17 +18,23 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxValue': ?maxValue,
-      'minValue': ?minValue,
-    };
+    return <String, dynamic>{'maxValue': ?maxValue, 'minValue': ?minValue};
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec(
-      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as double).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue']! as double).input(),
+      maxValue: (() {
+        final guardedValue = map['maxValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minValue: (() {
+        final guardedValue = map['minValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

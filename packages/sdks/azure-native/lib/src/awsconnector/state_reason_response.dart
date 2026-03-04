@@ -4,31 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of StateReason
 class StateReasonResponse {
-  /// <p>The reason code for the state change.</p>
+  /// &lt;p&gt;The reason code for the state change.&lt;/p&gt;
   final pulumi.Input<String>? code;
-  /// <p>The message for the state change.</p> <ul> <li> <p> <code>Server.InsufficientInstanceCapacity</code>: There was insufficient capacity available to satisfy the launch request.</p> </li> <li> <p> <code>Server.InternalError</code>: An internal error caused the instance to terminate during launch.</p> </li> <li> <p> <code>Server.ScheduledStop</code>: The instance was stopped due to a scheduled retirement.</p> </li> <li> <p> <code>Server.SpotInstanceShutdown</code>: The instance was stopped because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.</p> </li> <li> <p> <code>Server.SpotInstanceTermination</code>: The instance was terminated because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.</p> </li> <li> <p> <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down from the operating system of the instance.</p> </li> <li> <p> <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.</p> </li> <li> <p> <code>Client.InternalError</code>: A client error caused the instance to terminate during launch.</p> </li> <li> <p> <code>Client.InvalidSnapshot.NotFound</code>: The specified snapshot was not found.</p> </li> <li> <p> <code>Client.UserInitiatedHibernate</code>: Hibernation was initiated on the instance.</p> </li> <li> <p> <code>Client.UserInitiatedShutdown</code>: The instance was shut down using the Amazon EC2 API.</p> </li> <li> <p> <code>Client.VolumeLimitExceeded</code>: The limit on the number of EBS volumes or total storage was exceeded. Decrease usage or request an increase in your account limits.</p> </li> </ul>
+
+  /// &lt;p&gt;The message for the state change.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.InsufficientInstanceCapacity&lt;/code&gt;: There was insufficient capacity available to satisfy the launch request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.InternalError&lt;/code&gt;: An internal error caused the instance to terminate during launch.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.ScheduledStop&lt;/code&gt;: The instance was stopped due to a scheduled retirement.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.SpotInstanceShutdown&lt;/code&gt;: The instance was stopped because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.SpotInstanceTermination&lt;/code&gt;: The instance was terminated because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InstanceInitiatedShutdown&lt;/code&gt;: The instance was shut down from the operating system of the instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InstanceTerminated&lt;/code&gt;: The instance was terminated or rebooted during AMI creation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InternalError&lt;/code&gt;: A client error caused the instance to terminate during launch.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InvalidSnapshot.NotFound&lt;/code&gt;: The specified snapshot was not found.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.UserInitiatedHibernate&lt;/code&gt;: Hibernation was initiated on the instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.UserInitiatedShutdown&lt;/code&gt;: The instance was shut down using the Amazon EC2 API.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.VolumeLimitExceeded&lt;/code&gt;: The limit on the number of EBS volumes or total storage was exceeded. Decrease usage or request an increase in your account limits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<String>? message;
 
   /// Creates a new [StateReasonResponse].
-  /// [code] <p>The reason code for the state change.</p>
-  /// [message] <p>The message for the state change.</p> <ul> <li> <p> <code>Server.InsufficientInstanceCapacity</code>: There was insufficient capacity available to satisfy the launch request.</p> </li> <li> <p> <code>Server.InternalError</code>: An internal error caused the instance to terminate during launch.</p> </li> <li> <p> <code>Server.ScheduledStop</code>: The instance was stopped due to a scheduled retirement.</p> </li> <li> <p> <code>Server.SpotInstanceShutdown</code>: The instance was stopped because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.</p> </li> <li> <p> <code>Server.SpotInstanceTermination</code>: The instance was terminated because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.</p> </li> <li> <p> <code>Client.InstanceInitiatedShutdown</code>: The instance was shut down from the operating system of the instance.</p> </li> <li> <p> <code>Client.InstanceTerminated</code>: The instance was terminated or rebooted during AMI creation.</p> </li> <li> <p> <code>Client.InternalError</code>: A client error caused the instance to terminate during launch.</p> </li> <li> <p> <code>Client.InvalidSnapshot.NotFound</code>: The specified snapshot was not found.</p> </li> <li> <p> <code>Client.UserInitiatedHibernate</code>: Hibernation was initiated on the instance.</p> </li> <li> <p> <code>Client.UserInitiatedShutdown</code>: The instance was shut down using the Amazon EC2 API.</p> </li> <li> <p> <code>Client.VolumeLimitExceeded</code>: The limit on the number of EBS volumes or total storage was exceeded. Decrease usage or request an increase in your account limits.</p> </li> </ul>
-  StateReasonResponse({
-    this.code,
-    this.message,
-  });
+  /// [code] &lt;p&gt;The reason code for the state change.&lt;/p&gt;
+  /// [message] &lt;p&gt;The message for the state change.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.InsufficientInstanceCapacity&lt;/code&gt;: There was insufficient capacity available to satisfy the launch request.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.InternalError&lt;/code&gt;: An internal error caused the instance to terminate during launch.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.ScheduledStop&lt;/code&gt;: The instance was stopped due to a scheduled retirement.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.SpotInstanceShutdown&lt;/code&gt;: The instance was stopped because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Server.SpotInstanceTermination&lt;/code&gt;: The instance was terminated because the number of Spot requests with a maximum price equal to or higher than the Spot price exceeded available capacity or because of an increase in the Spot price.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InstanceInitiatedShutdown&lt;/code&gt;: The instance was shut down from the operating system of the instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InstanceTerminated&lt;/code&gt;: The instance was terminated or rebooted during AMI creation.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InternalError&lt;/code&gt;: A client error caused the instance to terminate during launch.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.InvalidSnapshot.NotFound&lt;/code&gt;: The specified snapshot was not found.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.UserInitiatedHibernate&lt;/code&gt;: Hibernation was initiated on the instance.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.UserInitiatedShutdown&lt;/code&gt;: The instance was shut down using the Amazon EC2 API.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Client.VolumeLimitExceeded&lt;/code&gt;: The limit on the number of EBS volumes or total storage was exceeded. Decrease usage or request an increase in your account limits.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  StateReasonResponse({this.code, this.message});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-      'message': ?message,
-    };
+    return <String, dynamic>{'code': ?code, 'message': ?message};
   }
 
   factory StateReasonResponse.fromMap(Map<String, dynamic> map) {
     return StateReasonResponse(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

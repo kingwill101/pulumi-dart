@@ -9,20 +9,19 @@ class TopicsRelatedLinkResponse {
 
   /// Creates a new [TopicsRelatedLinkResponse].
   /// [related] Relationship of the topic
-  TopicsRelatedLinkResponse({
-    this.related,
-  });
+  TopicsRelatedLinkResponse({this.related});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'related': ?related,
-    };
+    return <String, dynamic>{'related': ?related};
   }
 
   factory TopicsRelatedLinkResponse.fromMap(Map<String, dynamic> map) {
     return TopicsRelatedLinkResponse(
-      related: map['related'] == null ? null : (map['related']! as String).input(),
+      related: (() {
+        final guardedValue = map['related'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allowed_images_settings_args.dart';
-import 'allowed_images_settings_image_criterion.dart';
 import 'allowed_images_settings_state.dart';
 
 /// Provides EC2 allowed images settings for an AWS account. This feature allows you to control which AMIs can be used to launch EC2 instances in your account based on specified criteria.
 ///
 /// For more information about the image criteria that can be set, see the [AWS documentation on Allowed AMIs JSON configuration](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html#allowed-amis-json-configuration).
 ///
-/// > **NOTE:** The AWS API does not delete this resource. When you run `destroy`, the provider will attempt to disable the setting.
+/// &gt; **NOTE:** The AWS API does not delete this resource. When you run `destroy`, the provider will attempt to disable the setting.
 ///
-/// > **NOTE:** There is only one allowed images settings configuration per AWS account and region. Creating this resource will configure the account-level settings.
+/// &gt; **NOTE:** There is only one allowed images settings configuration per AWS account and region. Creating this resource will configure the account-level settings.
 ///
 /// ## Example Usage
 ///
@@ -273,9 +272,11 @@ import 'allowed_images_settings_state.dart';
 /// ```
 class AllowedImagesSettings extends pulumi.CustomResource {
   /// List of image criteria. Maximum of 10 criterion blocks allowed. See `image_criterion` below.
-  late final pulumi.Output<List<AllowedImagesSettingsImageCriterion>?> imageCriterions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> imageCriterions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
   late final pulumi.Output<String> state;
 
@@ -288,14 +289,16 @@ class AllowedImagesSettings extends pulumi.CustomResource {
     AllowedImagesSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.imageCriterions = registerOutput<List<AllowedImagesSettingsImageCriterion>?>('imageCriterions');
-    this.region = registerOutput<String>('region');
-    this.state = registerOutput<String>('state');
+         'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    imageCriterions = registerOutput<List<Map<String, dynamic>>?>(
+      'imageCriterions',
+    );
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [AllowedImagesSettings] resource's state with the given [name] and [id].
@@ -316,13 +319,15 @@ class AllowedImagesSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.imageCriterions = registerOutput<List<AllowedImagesSettingsImageCriterion>?>('imageCriterions');
-    this.region = registerOutput<String>('region');
+         'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    imageCriterions = registerOutput<List<Map<String, dynamic>>?>(
+      'imageCriterions',
+    );
+    region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
   }
 }

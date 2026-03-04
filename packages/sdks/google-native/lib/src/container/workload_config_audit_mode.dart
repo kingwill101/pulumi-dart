@@ -6,16 +6,15 @@ enum WorkloadConfigAuditMode {
   baseline("BASELINE"),
   restricted("RESTRICTED");
 
-  const WorkloadConfigAuditMode(this.value);
-  final String value;
+  const WorkloadConfigAuditMode(this.wireValue);
+  final String wireValue;
 
   static WorkloadConfigAuditMode fromValue(String value) {
     for (final item in WorkloadConfigAuditMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadConfigAuditMode value: $value');
   }
 }
-

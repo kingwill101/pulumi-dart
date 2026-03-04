@@ -36,7 +36,7 @@ import 'vpc_service_controls_state.dart';
 /// * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
 /// * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
 ///
-/// > **Note:** Destroying a `gcp.servicenetworking.VpcServiceControls`
+/// &gt; **Note:** Destroying a `gcp.servicenetworking.VpcServiceControls`
 /// resource will remove it from state, but will not change the
 /// underlying VPC Service Controls configuration for the service
 /// producer network.
@@ -335,10 +335,13 @@ class VpcServiceControls extends pulumi.CustomResource {
   /// Desired VPC Service Controls state service producer VPC network, as
   /// described at the top of this page.
   late final pulumi.Output<bool> enabled;
+
   /// The network that the consumer is using to connect with services.
   late final pulumi.Output<String> network;
+
   /// The id of the Google Cloud project containing the consumer network.
   late final pulumi.Output<String?> project;
+
   /// The service that is managing peering connectivity for a service
   /// producer's organization. For Google services that support this
   /// functionality, this value is `servicenetworking.googleapis.com`.
@@ -353,15 +356,15 @@ class VpcServiceControls extends pulumi.CustomResource {
     VpcServiceControlsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.network = registerOutput<String>('network');
-    this.project = registerOutput<String?>('project');
-    this.service = registerOutput<String>('service');
+         'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    network = registerOutput<String>('network');
+    project = registerOutput<String?>('project');
+    service = registerOutput<String>('service');
   }
 
   /// Gets an existing [VpcServiceControls] resource's state with the given [name] and [id].
@@ -382,14 +385,14 @@ class VpcServiceControls extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.network = registerOutput<String>('network');
-    this.project = registerOutput<String?>('project');
-    this.service = registerOutput<String>('service');
+         'gcp:servicenetworking/vpcServiceControls:VpcServiceControls',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    network = registerOutput<String>('network');
+    project = registerOutput<String?>('project');
+    service = registerOutput<String>('service');
   }
 }

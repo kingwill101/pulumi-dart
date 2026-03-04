@@ -500,7 +500,7 @@ import 'snapshot_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -515,14 +515,19 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the NetApp Snapshot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the NetApp pool in which the NetApp Volume should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> poolName;
+
   /// The name of the resource group where the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name of the NetApp volume in which the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> volumeName;
 
@@ -535,17 +540,17 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.location = registerOutput<String>('location');
+         'azure:netapp/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.poolName = registerOutput<String>('poolName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.volumeName = registerOutput<String>('volumeName');
+    poolName = registerOutput<String>('poolName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    volumeName = registerOutput<String>('volumeName');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -566,16 +571,16 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.location = registerOutput<String>('location');
+         'azure:netapp/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.poolName = registerOutput<String>('poolName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.volumeName = registerOutput<String>('volumeName');
+    poolName = registerOutput<String>('poolName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    volumeName = registerOutput<String>('volumeName');
   }
 }

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaRemoteBrokerConnectionTlsResponse {
   /// Tls Enabled on Remote Broker Connection.
   final pulumi.Input<bool> tlsEnabled;
+
   /// Trusted CA certificate name for Remote Broker.
   final pulumi.Input<String>? trustedCaCertificateConfigMap;
 
@@ -24,11 +25,16 @@ class KafkaRemoteBrokerConnectionTlsResponse {
     };
   }
 
-  factory KafkaRemoteBrokerConnectionTlsResponse.fromMap(Map<String, dynamic> map) {
+  factory KafkaRemoteBrokerConnectionTlsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KafkaRemoteBrokerConnectionTlsResponse(
-      tlsEnabled: (map['tlsEnabled'] as bool).input(),
-      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : (map['trustedCaCertificateConfigMap']! as String).input(),
+      tlsEnabled: pulumi.Input.fromValue(map['tlsEnabled'] as bool),
+      trustedCaCertificateConfigMap: (() {
+        final guardedValue = map['trustedCaCertificateConfigMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

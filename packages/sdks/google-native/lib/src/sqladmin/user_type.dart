@@ -7,16 +7,15 @@ enum UserType {
   cloudIamGroupUser("CLOUD_IAM_GROUP_USER"),
   cloudIamGroupServiceAccount("CLOUD_IAM_GROUP_SERVICE_ACCOUNT");
 
-  const UserType(this.value);
-  final String value;
+  const UserType(this.wireValue);
+  final String wireValue;
 
   static UserType fromValue(String value) {
     for (final item in UserType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserType value: $value');
   }
 }
-

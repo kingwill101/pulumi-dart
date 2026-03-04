@@ -4,16 +4,15 @@ enum SecondaryAllowConnections {
   valueALL("ALL"),
   valueREADONLY("READ_ONLY");
 
-  const SecondaryAllowConnections(this.value);
-  final String value;
+  const SecondaryAllowConnections(this.wireValue);
+  final String wireValue;
 
   static SecondaryAllowConnections fromValue(String value) {
     for (final item in SecondaryAllowConnections.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecondaryAllowConnections value: $value');
   }
 }
-

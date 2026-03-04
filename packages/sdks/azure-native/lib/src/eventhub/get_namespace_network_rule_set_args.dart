@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceNetworkRuleSetArgs {
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetNamespaceNetworkRuleSetArgs {
 
   factory GetNamespaceNetworkRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceNetworkRuleSetArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

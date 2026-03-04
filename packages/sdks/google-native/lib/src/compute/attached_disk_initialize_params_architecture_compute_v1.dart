@@ -4,16 +4,20 @@ enum AttachedDiskInitializeParamsArchitectureComputeV1 {
   arm64("ARM64"),
   x8664("X86_64");
 
-  const AttachedDiskInitializeParamsArchitectureComputeV1(this.value);
-  final String value;
+  const AttachedDiskInitializeParamsArchitectureComputeV1(this.wireValue);
+  final String wireValue;
 
-  static AttachedDiskInitializeParamsArchitectureComputeV1 fromValue(String value) {
-    for (final item in AttachedDiskInitializeParamsArchitectureComputeV1.values) {
-      if (item.value == value) {
+  static AttachedDiskInitializeParamsArchitectureComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in AttachedDiskInitializeParamsArchitectureComputeV1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AttachedDiskInitializeParamsArchitectureComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown AttachedDiskInitializeParamsArchitectureComputeV1 value: $value',
+    );
   }
 }
-

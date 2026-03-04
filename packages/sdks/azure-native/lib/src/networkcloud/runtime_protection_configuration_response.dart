@@ -8,20 +8,21 @@ class RuntimeProtectionConfigurationResponse {
 
   /// Creates a new [RuntimeProtectionConfigurationResponse].
   /// [enforcementLevel] The mode of operation for runtime protection.
-  RuntimeProtectionConfigurationResponse({
-    this.enforcementLevel,
-  });
+  RuntimeProtectionConfigurationResponse({this.enforcementLevel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enforcementLevel': ?enforcementLevel,
-    };
+    return <String, dynamic>{'enforcementLevel': ?enforcementLevel};
   }
 
-  factory RuntimeProtectionConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory RuntimeProtectionConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuntimeProtectionConfigurationResponse(
-      enforcementLevel: map['enforcementLevel'] == null ? null : (map['enforcementLevel']! as String).input(),
+      enforcementLevel: (() {
+        final guardedValue = map['enforcementLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

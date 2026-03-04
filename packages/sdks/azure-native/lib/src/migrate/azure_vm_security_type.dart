@@ -5,16 +5,15 @@ enum AzureVmSecurityType {
   tVM("TVM"),
   cVM("CVM");
 
-  const AzureVmSecurityType(this.value);
-  final String value;
+  const AzureVmSecurityType(this.wireValue);
+  final String wireValue;
 
   static AzureVmSecurityType fromValue(String value) {
     for (final item in AzureVmSecurityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureVmSecurityType value: $value');
   }
 }
-

@@ -10,6 +10,7 @@ class RegionHealthAggregationPolicyArgs {
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   final pulumi.Input<String>? description;
+
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
   /// percentage) of healthy endpoints required in order to consider the
@@ -22,6 +23,7 @@ class RegionHealthAggregationPolicyArgs {
   /// endpoints within a Network Endpoint Group or instances within an Instance
   /// Group.
   final pulumi.Input<int>? healthyPercentThreshold;
+
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
   /// healthy endpoints required in order to consider the aggregated health
@@ -34,6 +36,7 @@ class RegionHealthAggregationPolicyArgs {
   /// network endpoints within a Network Endpoint Group or instances within an
   /// Instance Group.
   final pulumi.Input<int>? minHealthyThreshold;
+
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
@@ -42,6 +45,7 @@ class RegionHealthAggregationPolicyArgs {
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// Specifies the type of the healthAggregationPolicy. The only allowed value
   /// for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
   /// value for regional resources is `BACKEND_SERVICE_POLICY`. Must
@@ -50,9 +54,11 @@ class RegionHealthAggregationPolicyArgs {
   /// Default value is `BACKEND_SERVICE_POLICY`.
   /// Possible values are: `DNS_PUBLIC_IP_POLICY`, `BACKEND_SERVICE_POLICY`.
   final pulumi.Input<String>? policyType;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// URL of the region where the health aggregation policy resides.
   final pulumi.Input<String> region;
 
@@ -88,14 +94,37 @@ class RegionHealthAggregationPolicyArgs {
 
   factory RegionHealthAggregationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthAggregationPolicyArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : (map['healthyPercentThreshold']! as int).input(),
-      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : (map['minHealthyThreshold']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthyPercentThreshold: (() {
+        final guardedValue = map['healthyPercentThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minHealthyThreshold: (() {
+        final guardedValue = map['minHealthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyType: (() {
+        final guardedValue = map['policyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

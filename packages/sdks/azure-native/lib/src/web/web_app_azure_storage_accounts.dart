@@ -181,12 +181,17 @@ import 'web_app_azure_storage_accounts_args.dart';
 class WebAppAzureStorageAccounts extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Azure storage accounts.
-  late final pulumi.Output<Map<String, AzureStorageInfoValueResponse>> properties;
+  late final pulumi.Output<Map<String, AzureStorageInfoValueResponse>>
+  properties;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -199,15 +204,17 @@ class WebAppAzureStorageAccounts extends pulumi.CustomResource {
     WebAppAzureStorageAccountsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppAzureStorageAccounts',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppAzureStorageAccounts',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<Map<String, AzureStorageInfoValueResponse>>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<Map<String, AzureStorageInfoValueResponse>>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

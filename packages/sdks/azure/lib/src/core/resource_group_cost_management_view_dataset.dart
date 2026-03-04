@@ -7,13 +7,19 @@ import 'resource_group_cost_management_view_dataset_sorting.dart';
 
 class ResourceGroupCostManagementViewDataset {
   /// One or more `aggregation` blocks as defined above.
-  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetAggregation>> aggregations;
+  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetAggregation>>
+  aggregations;
+
   /// The granularity of rows in the report. Possible values are `Daily` and `Monthly`.
   final pulumi.Input<String> granularity;
+
   /// One or more `grouping` blocks as defined below.
-  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetGrouping>>? groupings;
+  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetGrouping>>?
+  groupings;
+
   /// One or more `sorting` blocks as defined below, containing the order by expression to be used in the report
-  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetSorting>>? sortings;
+  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetSorting>>?
+  sortings;
 
   /// Creates a new [ResourceGroupCostManagementViewDataset].
   /// [aggregations] One or more `aggregation` blocks as defined above.
@@ -29,20 +35,87 @@ class ResourceGroupCostManagementViewDataset {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregations': pulumi.Input.mapInputValue<List<ResourceGroupCostManagementViewDatasetAggregation>, List<Map<String, dynamic>>>(aggregations, (value) => pulumi.Input.encodeList<ResourceGroupCostManagementViewDatasetAggregation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aggregations':
+          pulumi.Input.mapInputValue<
+            List<ResourceGroupCostManagementViewDatasetAggregation>,
+            List<Map<String, dynamic>>
+          >(
+            aggregations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceGroupCostManagementViewDatasetAggregation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'granularity': granularity,
-      'groupings': ?pulumi.Input.mapOptionalInputValue<List<ResourceGroupCostManagementViewDatasetGrouping>, List<Map<String, dynamic>>>(groupings, (value) => pulumi.Input.encodeList<ResourceGroupCostManagementViewDatasetGrouping, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sortings': ?pulumi.Input.mapOptionalInputValue<List<ResourceGroupCostManagementViewDatasetSorting>, List<Map<String, dynamic>>>(sortings, (value) => pulumi.Input.encodeList<ResourceGroupCostManagementViewDatasetSorting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groupings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceGroupCostManagementViewDatasetGrouping>,
+            List<Map<String, dynamic>>
+          >(
+            groupings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceGroupCostManagementViewDatasetGrouping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sortings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceGroupCostManagementViewDatasetSorting>,
+            List<Map<String, dynamic>>
+          >(
+            sortings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceGroupCostManagementViewDatasetSorting,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ResourceGroupCostManagementViewDataset.fromMap(Map<String, dynamic> map) {
+  factory ResourceGroupCostManagementViewDataset.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceGroupCostManagementViewDataset(
-      aggregations: (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetAggregation>(map['aggregations'], (value) => ResourceGroupCostManagementViewDatasetAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      granularity: (map['granularity'] as String).input(),
-      groupings: map['groupings'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetGrouping>(map['groupings']!, (value) => ResourceGroupCostManagementViewDatasetGrouping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sortings: map['sortings'] == null ? null : (pulumi.Input.decodeList<ResourceGroupCostManagementViewDatasetSorting>(map['sortings']!, (value) => ResourceGroupCostManagementViewDatasetSorting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          ResourceGroupCostManagementViewDatasetAggregation
+        >(
+          map['aggregations']!,
+          (value) => ResourceGroupCostManagementViewDatasetAggregation.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      granularity: pulumi.Input.fromValue(map['granularity'] as String),
+      groupings: (() {
+        final guardedValue = map['groupings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<ResourceGroupCostManagementViewDatasetGrouping>(
+            guardedValue,
+            (value) => ResourceGroupCostManagementViewDatasetGrouping.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sortings: (() {
+        final guardedValue = map['sortings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<ResourceGroupCostManagementViewDatasetSorting>(
+            guardedValue,
+            (value) => ResourceGroupCostManagementViewDatasetSorting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

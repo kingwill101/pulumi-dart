@@ -18,10 +18,15 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert {
     };
   }
 
-  factory NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(Map<String, dynamic> map) {
+  factory NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert(
-      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri']! as String).input(),
+      gcpSecretManagerSecretUri: (() {
+        final guardedValue = map['gcpSecretManagerSecretUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

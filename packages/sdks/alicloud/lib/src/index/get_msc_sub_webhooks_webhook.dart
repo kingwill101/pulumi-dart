@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMscSubWebhooksWebhook {
   /// The ID of the Webhook.
   final pulumi.Input<String> id;
+
   /// The serverUrl of the Subscription.
   final pulumi.Input<String> serverUrl;
+
   /// The first ID of the resource.
   final pulumi.Input<String> webhookId;
+
   /// The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
   final pulumi.Input<String> webhookName;
 
@@ -35,11 +38,10 @@ class GetMscSubWebhooksWebhook {
 
   factory GetMscSubWebhooksWebhook.fromMap(Map<String, dynamic> map) {
     return GetMscSubWebhooksWebhook(
-      id: (map['id'] as String).input(),
-      serverUrl: (map['serverUrl'] as String).input(),
-      webhookId: (map['webhookId'] as String).input(),
-      webhookName: (map['webhookName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      serverUrl: pulumi.Input.fromValue(map['serverUrl'] as String),
+      webhookId: pulumi.Input.fromValue(map['webhookId'] as String),
+      webhookName: pulumi.Input.fromValue(map['webhookName'] as String),
     );
   }
 }
-

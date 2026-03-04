@@ -7,14 +7,19 @@ import 'acrproperties.dart';
 class ContainerImageProperties {
   /// Gets or sets the dockerfile for the container image.
   final pulumi.Input<String>? dockerfile;
+
   /// Gets or sets the container image name.
   final pulumi.Input<String>? imageName;
+
   /// Gets or sets the container image tag.
   final pulumi.Input<String>? imageTag;
+
   /// Class for ACR Properties.
   final pulumi.Input<ACRProperties>? registryProperties;
+
   /// Gets or sets the RunId.
   final pulumi.Input<String>? runId;
+
   /// Gets or sets the RunStatus.
   final pulumi.Input<String>? runStatus;
 
@@ -39,7 +44,11 @@ class ContainerImageProperties {
       'dockerfile': ?dockerfile,
       'imageName': ?imageName,
       'imageTag': ?imageTag,
-      'registryProperties': ?pulumi.Input.mapOptionalInputValue<ACRProperties, Map<String, dynamic>>(registryProperties, (value) => value.toMap()),
+      'registryProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ACRProperties,
+            Map<String, dynamic>
+          >(registryProperties, (value) => value.toMap()),
       'runId': ?runId,
       'runStatus': ?runStatus,
     };
@@ -47,13 +56,38 @@ class ContainerImageProperties {
 
   factory ContainerImageProperties.fromMap(Map<String, dynamic> map) {
     return ContainerImageProperties(
-      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile']! as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
-      imageTag: map['imageTag'] == null ? null : (map['imageTag']! as String).input(),
-      registryProperties: map['registryProperties'] == null ? null : (ACRProperties.fromMap((map['registryProperties']! as Map).cast<String, dynamic>())).input(),
-      runId: map['runId'] == null ? null : (map['runId']! as String).input(),
-      runStatus: map['runStatus'] == null ? null : (map['runStatus']! as String).input(),
+      dockerfile: (() {
+        final guardedValue = map['dockerfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageName: (() {
+        final guardedValue = map['imageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageTag: (() {
+        final guardedValue = map['imageTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryProperties: (() {
+        final guardedValue = map['registryProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ACRProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      runId: (() {
+        final guardedValue = map['runId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runStatus: (() {
+        final guardedValue = map['runStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

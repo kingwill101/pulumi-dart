@@ -9,20 +9,13 @@ class ForZone {
 
   /// Creates a new [ForZone].
   /// [name] name represents the name of the zone.
-  ForZone({
-    required this.name,
-  });
+  ForZone({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory ForZone.fromMap(Map<String, dynamic> map) {
-    return ForZone(
-      name: (map['name'] as String).input(),
-    );
+    return ForZone(name: pulumi.Input.fromValue(map['name'] as String));
   }
 }
-

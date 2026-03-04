@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AliasContextResponse {
   /// The alias kind.
   final pulumi.Input<String> kind;
+
   /// The alias name.
   final pulumi.Input<String> name;
 
   /// Creates a new [AliasContextResponse].
   /// [kind] The alias kind.
   /// [name] The alias name.
-  AliasContextResponse({
-    required this.kind,
-    required this.name,
-  });
+  AliasContextResponse({required this.kind, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kind': kind,
-      'name': name,
-    };
+    return <String, dynamic>{'kind': kind, 'name': name};
   }
 
   factory AliasContextResponse.fromMap(Map<String, dynamic> map) {
     return AliasContextResponse(
-      kind: (map['kind'] as String).input(),
-      name: (map['name'] as String).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

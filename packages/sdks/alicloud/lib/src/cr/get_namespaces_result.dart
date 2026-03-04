@@ -7,11 +7,14 @@ import 'get_namespaces_namespace.dart';
 class GetNamespacesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of matched Container Registry namespaces. Its element is a namespace name.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of namespace names.
   final List<String> names;
+
   /// A list of matched Container Registry namespaces. Each element contains the following attributes:
   final List<GetNamespacesNamespace> namespaces;
   final String? outputFile;
@@ -38,7 +41,11 @@ class GetNamespacesResult {
       'ids': ids,
       'nameRegex': ?nameRegex,
       'names': names,
-      'namespaces': pulumi.Input.encodeList<GetNamespacesNamespace, Map<String, dynamic>>(namespaces, (value) => value.toMap()),
+      'namespaces':
+          pulumi.Input.encodeList<GetNamespacesNamespace, Map<String, dynamic>>(
+            namespaces,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
     };
   }
@@ -47,11 +54,23 @@ class GetNamespacesResult {
     return GetNamespacesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      namespaces: pulumi.Input.decodeList<GetNamespacesNamespace>(map['namespaces'], (value) => GetNamespacesNamespace.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      namespaces: pulumi.Input.decodeList<GetNamespacesNamespace>(
+        map['namespaces']!,
+        (value) => GetNamespacesNamespace.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

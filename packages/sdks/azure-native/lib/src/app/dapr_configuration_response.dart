@@ -9,20 +9,15 @@ class DaprConfigurationResponse {
 
   /// Creates a new [DaprConfigurationResponse].
   /// [version] The version of Dapr
-  DaprConfigurationResponse({
-    required this.version,
-  });
+  DaprConfigurationResponse({required this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'version': version,
-    };
+    return <String, dynamic>{'version': version};
   }
 
   factory DaprConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprConfigurationResponse(
-      version: (map['version'] as String).input(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

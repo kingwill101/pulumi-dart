@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Ipv6RangeState {
   /// Whether this IPv6 range is shared.
   final pulumi.Input<bool>? isBgp;
+
   /// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
   final pulumi.Input<int>? linodeId;
+
   /// A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
   final pulumi.Input<List<int>>? linodes;
+
   /// The prefix length of the IPv6 range.
   final pulumi.Input<int>? prefixLength;
+
   /// The IPv6 range of addresses in this pool.
   final pulumi.Input<String>? range;
+
   /// The region for this range of IPv6 addresses.
   final pulumi.Input<String>? region;
+
   /// The IPv6 SLAAC address to assign this range to.
   final pulumi.Input<String>? routeTarget;
 
@@ -51,14 +57,41 @@ class Ipv6RangeState {
 
   factory Ipv6RangeState.fromMap(Map<String, dynamic> map) {
     return Ipv6RangeState(
-      isBgp: map['isBgp'] == null ? null : (map['isBgp']! as bool).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
-      linodes: map['linodes'] == null ? null : ((map['linodes']! as List).cast<int>()).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
-      range: map['range'] == null ? null : (map['range']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      routeTarget: map['routeTarget'] == null ? null : (map['routeTarget']! as String).input(),
+      isBgp: (() {
+        final guardedValue = map['isBgp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      linodeId: (() {
+        final guardedValue = map['linodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      linodes: (() {
+        final guardedValue = map['linodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      prefixLength: (() {
+        final guardedValue = map['prefixLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      range: (() {
+        final guardedValue = map['range'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTarget: (() {
+        final guardedValue = map['routeTarget'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

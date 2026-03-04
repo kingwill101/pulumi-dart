@@ -22,11 +22,12 @@ class GetPlanStageTargetContactTargetInfo {
     };
   }
 
-  factory GetPlanStageTargetContactTargetInfo.fromMap(Map<String, dynamic> map) {
+  factory GetPlanStageTargetContactTargetInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPlanStageTargetContactTargetInfo(
-      contactId: (map['contactId'] as String).input(),
-      isEssential: (map['isEssential'] as bool).input(),
+      contactId: pulumi.Input.fromValue(map['contactId'] as String),
+      isEssential: pulumi.Input.fromValue(map['isEssential'] as bool),
     );
   }
 }
-

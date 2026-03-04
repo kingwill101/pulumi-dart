@@ -1,5 +1,3 @@
-library module_containeranalysis;
-
 export 'containeranalysis/alias_context.dart';
 export 'containeranalysis/alias_context_containeranalysis_v1beta1.dart';
 export 'containeranalysis/alias_context_kind.dart';

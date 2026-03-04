@@ -7,8 +7,11 @@ import 'nic_response.dart';
 class HardwareInventoryResponse {
   /// Freeform data extracted from the environment about this machine. This information varies depending on the specific hardware and configuration.
   final pulumi.Input<String> additionalHostInformation;
+
   /// The list of network interfaces and associated details for the bare metal machine.
-  final pulumi.Input<List<HardwareInventoryNetworkInterfaceResponse>> interfaces;
+  final pulumi.Input<List<HardwareInventoryNetworkInterfaceResponse>>
+  interfaces;
+
   /// Field Deprecated. Will be removed in an upcoming version. The list of network interface cards and associated details for the bare metal machine.
   final pulumi.Input<List<NicResponse>> nics;
 
@@ -25,17 +28,53 @@ class HardwareInventoryResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalHostInformation': additionalHostInformation,
-      'interfaces': pulumi.Input.mapInputValue<List<HardwareInventoryNetworkInterfaceResponse>, List<Map<String, dynamic>>>(interfaces, (value) => pulumi.Input.encodeList<HardwareInventoryNetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'nics': pulumi.Input.mapInputValue<List<NicResponse>, List<Map<String, dynamic>>>(nics, (value) => pulumi.Input.encodeList<NicResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'interfaces':
+          pulumi.Input.mapInputValue<
+            List<HardwareInventoryNetworkInterfaceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            interfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HardwareInventoryNetworkInterfaceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'nics':
+          pulumi.Input.mapInputValue<
+            List<NicResponse>,
+            List<Map<String, dynamic>>
+          >(
+            nics,
+            (value) =>
+                pulumi.Input.encodeList<NicResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory HardwareInventoryResponse.fromMap(Map<String, dynamic> map) {
     return HardwareInventoryResponse(
-      additionalHostInformation: (map['additionalHostInformation'] as String).input(),
-      interfaces: (pulumi.Input.decodeList<HardwareInventoryNetworkInterfaceResponse>(map['interfaces'], (value) => HardwareInventoryNetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nics: (pulumi.Input.decodeList<NicResponse>(map['nics'], (value) => NicResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalHostInformation: pulumi.Input.fromValue(
+        map['additionalHostInformation'] as String,
+      ),
+      interfaces: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HardwareInventoryNetworkInterfaceResponse>(
+          map['interfaces']!,
+          (value) => HardwareInventoryNetworkInterfaceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      nics: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NicResponse>(
+          map['nics']!,
+          (value) =>
+              NicResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

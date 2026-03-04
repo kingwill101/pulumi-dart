@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse {
   /// The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
   final pulumi.Input<double> confidence;
+
   /// The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent}
   final pulumi.Input<String> dialogflowIntentId;
 
@@ -24,11 +25,14 @@ class GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse(
-      confidence: (map['confidence'] as double).input(),
-      dialogflowIntentId: (map['dialogflowIntentId'] as String).input(),
+      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      dialogflowIntentId: pulumi.Input.fromValue(
+        map['dialogflowIntentId'] as String,
+      ),
     );
   }
 }
-

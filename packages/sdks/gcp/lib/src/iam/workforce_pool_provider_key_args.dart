@@ -11,15 +11,20 @@ class WorkforcePoolProviderKeyArgs {
   /// Immutable. Public half of the asymmetric key.
   /// Structure is documented below.
   final pulumi.Input<WorkforcePoolProviderKeyKeyData> keyData;
+
   /// The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   final pulumi.Input<String> keyId;
+
   /// The location for the resource.
   final pulumi.Input<String> location;
+
   /// The ID of the provider.
   final pulumi.Input<String> providerId;
+
   /// The purpose of the key.
   /// Possible values are: `ENCRYPTION`.
   final pulumi.Input<String> use;
+
   /// The ID of the workforce pool.
   final pulumi.Input<String> workforcePoolId;
 
@@ -41,7 +46,11 @@ class WorkforcePoolProviderKeyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyData': pulumi.Input.mapInputValue<WorkforcePoolProviderKeyKeyData, Map<String, dynamic>>(keyData, (value) => value.toMap()),
+      'keyData':
+          pulumi.Input.mapInputValue<
+            WorkforcePoolProviderKeyKeyData,
+            Map<String, dynamic>
+          >(keyData, (value) => value.toMap()),
       'keyId': keyId,
       'location': location,
       'providerId': providerId,
@@ -52,13 +61,16 @@ class WorkforcePoolProviderKeyArgs {
 
   factory WorkforcePoolProviderKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyArgs(
-      keyData: (WorkforcePoolProviderKeyKeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
-      keyId: (map['keyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      providerId: (map['providerId'] as String).input(),
-      use: (map['use'] as String).input(),
-      workforcePoolId: (map['workforcePoolId'] as String).input(),
+      keyData: pulumi.Input.fromValue(
+        WorkforcePoolProviderKeyKeyData.fromMap(
+          (map['keyData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      providerId: pulumi.Input.fromValue(map['providerId'] as String),
+      use: pulumi.Input.fromValue(map['use'] as String),
+      workforcePoolId: pulumi.Input.fromValue(map['workforcePoolId'] as String),
     );
   }
 }
-

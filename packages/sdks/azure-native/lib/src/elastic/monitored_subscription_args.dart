@@ -10,10 +10,13 @@ import 'subscription_list.dart';
 class MonitoredSubscriptionArgs {
   /// The configuration name. Only 'default' value is supported.
   final pulumi.Input<String>? configurationName;
+
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
+
   /// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
   final pulumi.Input<SubscriptionList>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,35 @@ class MonitoredSubscriptionArgs {
     return <String, dynamic>{
       'configurationName': ?configurationName,
       'monitorName': monitorName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<SubscriptionList, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubscriptionList,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory MonitoredSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MonitoredSubscriptionArgs(
-      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
-      monitorName: (map['monitorName'] as String).input(),
-      properties: map['properties'] == null ? null : (SubscriptionList.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      configurationName: (() {
+        final guardedValue = map['configurationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubscriptionList.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

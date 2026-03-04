@@ -6,13 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MscSubContractState {
   /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
   final pulumi.Input<String>? contactName;
+
   /// The User's Contact Email Address.
   final pulumi.Input<String>? email;
+
   /// The User's Telephone.
   final pulumi.Input<String>? mobile;
+
   /// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
   ///
-  /// > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
+  /// &gt; **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
   final pulumi.Input<String>? position;
 
   /// Creates a new [MscSubContractState].
@@ -38,11 +41,26 @@ class MscSubContractState {
 
   factory MscSubContractState.fromMap(Map<String, dynamic> map) {
     return MscSubContractState(
-      contactName: map['contactName'] == null ? null : (map['contactName']! as String).input(),
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
-      position: map['position'] == null ? null : (map['position']! as String).input(),
+      contactName: (() {
+        final guardedValue = map['contactName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mobile: (() {
+        final guardedValue = map['mobile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      position: (() {
+        final guardedValue = map['position'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

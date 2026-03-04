@@ -1,21 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWebAppConfig.
 class GetWebAppConfigResult {
   /// The API key associated with the web App.
   final String apiKey;
+
   /// The domain Firebase Auth configures for OAuth redirects, in the format:
   /// projectId.firebaseapp.com
   final String authDomain;
+
   /// The default Firebase Realtime Database URL.
   final String databaseUrl;
   final String id;
+
   /// The ID of the project's default GCP resource location. The location is one of the available GCP resource
   /// locations.
   /// This field is omitted if the default GCP resource location has not been finalized yet. To set your project's
   /// default GCP resource location, call defaultLocation.finalize after you add Firebase services to your project.
   final String locationId;
+
   /// The unique Google-assigned identifier of the Google Analytics web stream associated with the Firebase Web App.
   /// Firebase SDKs use this ID to interact with Google Analytics APIs.
   /// This field is only present if the App is linked to a web stream in a Google Analytics App + Web property.
@@ -23,9 +26,11 @@ class GetWebAppConfigResult {
   /// To generate a measurementId and link the Web App with a Google Analytics web stream,
   /// call projects.addGoogleAnalytics.
   final String measurementId;
+
   /// The sender ID for use with Firebase Cloud Messaging.
   final String messagingSenderId;
   final String? project;
+
   /// The default Cloud Storage for Firebase storage bucket name.
   final String storageBucket;
   final String webAppId;
@@ -78,10 +83,13 @@ class GetWebAppConfigResult {
       locationId: map['locationId'] as String,
       measurementId: map['measurementId'] as String,
       messagingSenderId: map['messagingSenderId'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       storageBucket: map['storageBucket'] as String,
       webAppId: map['webAppId'] as String,
     );
   }
 }
-

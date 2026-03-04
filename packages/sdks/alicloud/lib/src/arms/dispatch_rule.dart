@@ -1,16 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dispatch_rule_args.dart';
-import 'dispatch_rule_group_rule.dart';
-import 'dispatch_rule_label_match_expression_grid.dart';
-import 'dispatch_rule_notify_rule.dart';
-import 'dispatch_rule_notify_template.dart';
 import 'dispatch_rule_state.dart';
 
 /// Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateDispatchRule).
 ///
-/// > **NOTE:** Available since v1.136.0.
+/// &gt; **NOTE:** Available since v1.136.0.
 ///
 /// ## Example Usage
 ///
@@ -507,18 +503,26 @@ import 'dispatch_rule_state.dart';
 class DispatchRule extends pulumi.CustomResource {
   /// The name of the dispatch policy.
   late final pulumi.Output<String> dispatchRuleName;
+
   /// The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
   late final pulumi.Output<String?> dispatchType;
+
   /// Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
-  late final pulumi.Output<List<DispatchRuleGroupRule>> groupRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> groupRules;
+
   /// Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
   late final pulumi.Output<bool?> isRecover;
+
   /// Sets the dispatch rule. See `label_match_expression_grid` below.
-  late final pulumi.Output<List<DispatchRuleLabelMatchExpressionGrid>> labelMatchExpressionGrids;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  labelMatchExpressionGrids;
+
   /// Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
-  late final pulumi.Output<List<DispatchRuleNotifyRule>> notifyRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> notifyRules;
+
   /// Sets the notification template. See `notify_template` below.
-  late final pulumi.Output<List<DispatchRuleNotifyTemplate>?> notifyTemplates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> notifyTemplates;
+
   /// The resource status of Alert Dispatch Rule.
   late final pulumi.Output<String> status;
 
@@ -531,19 +535,23 @@ class DispatchRule extends pulumi.CustomResource {
     DispatchRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/dispatchRule:DispatchRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dispatchRuleName = registerOutput<String>('dispatchRuleName');
-    this.dispatchType = registerOutput<String?>('dispatchType');
-    this.groupRules = registerOutput<List<DispatchRuleGroupRule>>('groupRules');
-    this.isRecover = registerOutput<bool?>('isRecover');
-    this.labelMatchExpressionGrids = registerOutput<List<DispatchRuleLabelMatchExpressionGrid>>('labelMatchExpressionGrids');
-    this.notifyRules = registerOutput<List<DispatchRuleNotifyRule>>('notifyRules');
-    this.notifyTemplates = registerOutput<List<DispatchRuleNotifyTemplate>?>('notifyTemplates');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/dispatchRule:DispatchRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dispatchRuleName = registerOutput<String>('dispatchRuleName');
+    dispatchType = registerOutput<String?>('dispatchType');
+    groupRules = registerOutput<List<Map<String, dynamic>>>('groupRules');
+    isRecover = registerOutput<bool?>('isRecover');
+    labelMatchExpressionGrids = registerOutput<List<Map<String, dynamic>>>(
+      'labelMatchExpressionGrids',
+    );
+    notifyRules = registerOutput<List<Map<String, dynamic>>>('notifyRules');
+    notifyTemplates = registerOutput<List<Map<String, dynamic>>?>(
+      'notifyTemplates',
+    );
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [DispatchRule] resource's state with the given [name] and [id].
@@ -564,18 +572,22 @@ class DispatchRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/dispatchRule:DispatchRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dispatchRuleName = registerOutput<String>('dispatchRuleName');
-    this.dispatchType = registerOutput<String?>('dispatchType');
-    this.groupRules = registerOutput<List<DispatchRuleGroupRule>>('groupRules');
-    this.isRecover = registerOutput<bool?>('isRecover');
-    this.labelMatchExpressionGrids = registerOutput<List<DispatchRuleLabelMatchExpressionGrid>>('labelMatchExpressionGrids');
-    this.notifyRules = registerOutput<List<DispatchRuleNotifyRule>>('notifyRules');
-    this.notifyTemplates = registerOutput<List<DispatchRuleNotifyTemplate>?>('notifyTemplates');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/dispatchRule:DispatchRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dispatchRuleName = registerOutput<String>('dispatchRuleName');
+    dispatchType = registerOutput<String?>('dispatchType');
+    groupRules = registerOutput<List<Map<String, dynamic>>>('groupRules');
+    isRecover = registerOutput<bool?>('isRecover');
+    labelMatchExpressionGrids = registerOutput<List<Map<String, dynamic>>>(
+      'labelMatchExpressionGrids',
+    );
+    notifyRules = registerOutput<List<Map<String, dynamic>>>('notifyRules');
+    notifyTemplates = registerOutput<List<Map<String, dynamic>>?>(
+      'notifyTemplates',
+    );
+    status = registerOutput<String>('status');
   }
 }

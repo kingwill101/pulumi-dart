@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupContainerReadinessProbeHttpGet {
   /// A map of HTTP headers used to access on the container. Changing this forces a new resource to be created.
   final pulumi.Input<Map<String, String>>? httpHeaders;
+
   /// Path to access on the HTTP server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? path;
+
   /// Number of the port to access on the container. Changing this forces a new resource to be created.
   final pulumi.Input<int>? port;
+
   /// Scheme to use for connecting to the host. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? scheme;
 
@@ -33,13 +36,32 @@ class GroupContainerReadinessProbeHttpGet {
     };
   }
 
-  factory GroupContainerReadinessProbeHttpGet.fromMap(Map<String, dynamic> map) {
+  factory GroupContainerReadinessProbeHttpGet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GroupContainerReadinessProbeHttpGet(
-      httpHeaders: map['httpHeaders'] == null ? null : ((map['httpHeaders']! as Map).cast<String, String>()).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
+      httpHeaders: (() {
+        final guardedValue = map['httpHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scheme: (() {
+        final guardedValue = map['scheme'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'domain_os_nv_ram_source_vhost_user_tcp_reconnect.dart';
 class DomainOsNvRamSourceVhostUserTcp {
   /// Sets the host address for the TCP connection in the random number generator backend.
   final pulumi.Input<String>? host;
+
   /// Specifies the operation mode for TCP in the random number generator backend.
   final pulumi.Input<String>? mode;
+
   /// Configures reconnect settings for the UNIX domain socket in the backend.
   final pulumi.Input<DomainOsNvRamSourceVhostUserTcpReconnect>? reconnect;
+
   /// Defines the service attribute for the TCP connection in the random number generator backend.
   final pulumi.Input<String>? service;
+
   /// Enables or disables TLS encryption for the TCP connection in the backend.
   final pulumi.Input<String>? tls;
 
@@ -33,7 +37,11 @@ class DomainOsNvRamSourceVhostUserTcp {
     return <String, dynamic>{
       'host': ?host,
       'mode': ?mode,
-      'reconnect': ?pulumi.Input.mapOptionalInputValue<DomainOsNvRamSourceVhostUserTcpReconnect, Map<String, dynamic>>(reconnect, (value) => value.toMap()),
+      'reconnect':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainOsNvRamSourceVhostUserTcpReconnect,
+            Map<String, dynamic>
+          >(reconnect, (value) => value.toMap()),
       'service': ?service,
       'tls': ?tls,
     };
@@ -41,12 +49,35 @@ class DomainOsNvRamSourceVhostUserTcp {
 
   factory DomainOsNvRamSourceVhostUserTcp.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUserTcp(
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainOsNvRamSourceVhostUserTcpReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
-      tls: map['tls'] == null ? null : (map['tls']! as String).input(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reconnect: (() {
+        final guardedValue = map['reconnect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainOsNvRamSourceVhostUserTcpReconnect.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tls: (() {
+        final guardedValue = map['tls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

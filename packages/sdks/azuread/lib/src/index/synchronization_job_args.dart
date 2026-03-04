@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SynchronizationJobArgs {
   /// Whether the provisioning job is enabled. Default state is `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalId;
+
   /// Identifier of the synchronization template this job is based on.
   final pulumi.Input<String> templateId;
 
@@ -34,10 +36,15 @@ class SynchronizationJobArgs {
 
   factory SynchronizationJobArgs.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      servicePrincipalId: (map['servicePrincipalId'] as String).input(),
-      templateId: (map['templateId'] as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      servicePrincipalId: pulumi.Input.fromValue(
+        map['servicePrincipalId'] as String,
+      ),
+      templateId: pulumi.Input.fromValue(map['templateId'] as String),
     );
   }
 }
-

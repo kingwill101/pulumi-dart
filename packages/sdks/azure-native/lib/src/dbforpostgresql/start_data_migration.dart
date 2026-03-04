@@ -3,16 +3,15 @@ enum StartDataMigration {
   true_("True"),
   false_("False");
 
-  const StartDataMigration(this.value);
-  final String value;
+  const StartDataMigration(this.wireValue);
+  final String wireValue;
 
   static StartDataMigration fromValue(String value) {
     for (final item in StartDataMigration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StartDataMigration value: $value');
   }
 }
-

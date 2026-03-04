@@ -7,8 +7,10 @@ import 'get_templates_template.dart';
 class GetTemplatesResult {
   final String? awsRegion;
   final String id;
+
   /// AWS Region to which the template applies.
   final String? region;
+
   /// A list of quota increase templates for specified region. See `templates`.
   final List<GetTemplatesTemplate> templates;
 
@@ -29,17 +31,33 @@ class GetTemplatesResult {
       'awsRegion': ?awsRegion,
       'id': id,
       'region': ?region,
-      'templates': pulumi.Input.encodeList<GetTemplatesTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
+      'templates':
+          pulumi.Input.encodeList<GetTemplatesTemplate, Map<String, dynamic>>(
+            templates,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetTemplatesResult(
-      awsRegion: map['awsRegion'] == null ? null : map['awsRegion'] as String,
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      templates: pulumi.Input.decodeList<GetTemplatesTemplate>(map['templates']!, (value) => GetTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      templates: pulumi.Input.decodeList<GetTemplatesTemplate>(
+        map['templates']!,
+        (value) => GetTemplatesTemplate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

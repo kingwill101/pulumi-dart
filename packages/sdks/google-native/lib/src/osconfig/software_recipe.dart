@@ -9,14 +9,19 @@ import 'software_recipe_step.dart';
 class SoftwareRecipe {
   /// Resources available to be used in the steps in the recipe.
   final pulumi.Input<List<SoftwareRecipeArtifact>>? artifacts;
+
   /// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
   final pulumi.Input<SoftwareRecipeDesiredState>? desiredState;
+
   /// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
   final pulumi.Input<List<SoftwareRecipeStep>>? installSteps;
+
   /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
   final pulumi.Input<String> name;
+
   /// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
   final pulumi.Input<List<SoftwareRecipeStep>>? updateSteps;
+
   /// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
   final pulumi.Input<String>? version;
 
@@ -38,24 +43,103 @@ class SoftwareRecipe {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifacts': ?pulumi.Input.mapOptionalInputValue<List<SoftwareRecipeArtifact>, List<Map<String, dynamic>>>(artifacts, (value) => pulumi.Input.encodeList<SoftwareRecipeArtifact, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'desiredState': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeDesiredState, String>(desiredState, (value) => value.value),
-      'installSteps': ?pulumi.Input.mapOptionalInputValue<List<SoftwareRecipeStep>, List<Map<String, dynamic>>>(installSteps, (value) => pulumi.Input.encodeList<SoftwareRecipeStep, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'artifacts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SoftwareRecipeArtifact>,
+            List<Map<String, dynamic>>
+          >(
+            artifacts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareRecipeArtifact,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'desiredState':
+          ?pulumi.Input.mapOptionalInputValue<
+            SoftwareRecipeDesiredState,
+            String
+          >(desiredState, (value) => value.wireValue),
+      'installSteps':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SoftwareRecipeStep>,
+            List<Map<String, dynamic>>
+          >(
+            installSteps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareRecipeStep,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
-      'updateSteps': ?pulumi.Input.mapOptionalInputValue<List<SoftwareRecipeStep>, List<Map<String, dynamic>>>(updateSteps, (value) => pulumi.Input.encodeList<SoftwareRecipeStep, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'updateSteps':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SoftwareRecipeStep>,
+            List<Map<String, dynamic>>
+          >(
+            updateSteps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareRecipeStep,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'version': ?version,
     };
   }
 
   factory SoftwareRecipe.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipe(
-      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeArtifact>(map['artifacts']!, (value) => SoftwareRecipeArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredState: map['desiredState'] == null ? null : (SoftwareRecipeDesiredState.fromValue(map['desiredState']! as String)).input(),
-      installSteps: map['installSteps'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeStep>(map['installSteps']!, (value) => SoftwareRecipeStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      updateSteps: map['updateSteps'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeStep>(map['updateSteps']!, (value) => SoftwareRecipeStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      artifacts: (() {
+        final guardedValue = map['artifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SoftwareRecipeArtifact>(
+            guardedValue,
+            (value) => SoftwareRecipeArtifact.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      desiredState: (() {
+        final guardedValue = map['desiredState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SoftwareRecipeDesiredState.fromValue(guardedValue as String),
+        );
+      })(),
+      installSteps: (() {
+        final guardedValue = map['installSteps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SoftwareRecipeStep>(
+            guardedValue,
+            (value) => SoftwareRecipeStep.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      updateSteps: (() {
+        final guardedValue = map['updateSteps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SoftwareRecipeStep>(
+            guardedValue,
+            (value) => SoftwareRecipeStep.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

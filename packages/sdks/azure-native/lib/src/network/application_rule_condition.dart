@@ -7,21 +7,30 @@ import 'firewall_policy_rule_condition_application_protocol.dart';
 class ApplicationRuleCondition {
   /// Description of the rule condition.
   final pulumi.Input<String>? description;
+
   /// List of destination IP addresses or Service Tags.
   final pulumi.Input<List<String>>? destinationAddresses;
+
   /// List of FQDN Tags for this rule condition.
   final pulumi.Input<List<String>>? fqdnTags;
+
   /// Name of the rule condition.
   final pulumi.Input<String>? name;
+
   /// Array of Application Protocols.
-  final pulumi.Input<List<FirewallPolicyRuleConditionApplicationProtocol>>? protocols;
+  final pulumi.Input<List<FirewallPolicyRuleConditionApplicationProtocol>>?
+  protocols;
+
   /// Rule Condition Type.
   /// Expected value is 'ApplicationRuleCondition'.
   final pulumi.Input<String> ruleConditionType;
+
   /// List of source IP addresses for this rule.
   final pulumi.Input<List<String>>? sourceAddresses;
+
   /// List of source IpGroups for this rule.
   final pulumi.Input<List<String>>? sourceIpGroups;
+
   /// List of FQDNs for this rule condition.
   final pulumi.Input<List<String>>? targetFqdns;
 
@@ -53,7 +62,18 @@ class ApplicationRuleCondition {
       'destinationAddresses': ?destinationAddresses,
       'fqdnTags': ?fqdnTags,
       'name': ?name,
-      'protocols': ?pulumi.Input.mapOptionalInputValue<List<FirewallPolicyRuleConditionApplicationProtocol>, List<Map<String, dynamic>>>(protocols, (value) => pulumi.Input.encodeList<FirewallPolicyRuleConditionApplicationProtocol, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'protocols':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FirewallPolicyRuleConditionApplicationProtocol>,
+            List<Map<String, dynamic>>
+          >(
+            protocols,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirewallPolicyRuleConditionApplicationProtocol,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ruleConditionType': ruleConditionType,
       'sourceAddresses': ?sourceAddresses,
       'sourceIpGroups': ?sourceIpGroups,
@@ -63,16 +83,57 @@ class ApplicationRuleCondition {
 
   factory ApplicationRuleCondition.fromMap(Map<String, dynamic> map) {
     return ApplicationRuleCondition(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
-      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleConditionApplicationProtocol>(map['protocols']!, (value) => FirewallPolicyRuleConditionApplicationProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleConditionType: (map['ruleConditionType'] as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
-      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationAddresses: (() {
+        final guardedValue = map['destinationAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fqdnTags: (() {
+        final guardedValue = map['fqdnTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocols: (() {
+        final guardedValue = map['protocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<FirewallPolicyRuleConditionApplicationProtocol>(
+            guardedValue,
+            (value) => FirewallPolicyRuleConditionApplicationProtocol.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ruleConditionType: pulumi.Input.fromValue(
+        map['ruleConditionType'] as String,
+      ),
+      sourceAddresses: (() {
+        final guardedValue = map['sourceAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceIpGroups: (() {
+        final guardedValue = map['sourceIpGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targetFqdns: (() {
+        final guardedValue = map['targetFqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

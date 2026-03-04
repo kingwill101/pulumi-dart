@@ -7,9 +7,13 @@ import 'anomaly_subscription_threshold_expression_or_tags.dart';
 
 class AnomalySubscriptionThresholdExpressionOr {
   /// Configuration block for the filter that's based on  values. See Cost Category below.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionOrCostCategory>? costCategory;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionOrCostCategory>?
+  costCategory;
+
   /// Configuration block for the specific Dimension to use for.
-  final pulumi.Input<AnomalySubscriptionThresholdExpressionOrDimension>? dimension;
+  final pulumi.Input<AnomalySubscriptionThresholdExpressionOrDimension>?
+  dimension;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<AnomalySubscriptionThresholdExpressionOrTags>? tags;
 
@@ -25,18 +29,55 @@ class AnomalySubscriptionThresholdExpressionOr {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costCategory': ?pulumi.Input.mapOptionalInputValue<AnomalySubscriptionThresholdExpressionOrCostCategory, Map<String, dynamic>>(costCategory, (value) => value.toMap()),
-      'dimension': ?pulumi.Input.mapOptionalInputValue<AnomalySubscriptionThresholdExpressionOrDimension, Map<String, dynamic>>(dimension, (value) => value.toMap()),
-      'tags': ?pulumi.Input.mapOptionalInputValue<AnomalySubscriptionThresholdExpressionOrTags, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'costCategory':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnomalySubscriptionThresholdExpressionOrCostCategory,
+            Map<String, dynamic>
+          >(costCategory, (value) => value.toMap()),
+      'dimension':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnomalySubscriptionThresholdExpressionOrDimension,
+            Map<String, dynamic>
+          >(dimension, (value) => value.toMap()),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnomalySubscriptionThresholdExpressionOrTags,
+            Map<String, dynamic>
+          >(tags, (value) => value.toMap()),
     };
   }
 
-  factory AnomalySubscriptionThresholdExpressionOr.fromMap(Map<String, dynamic> map) {
+  factory AnomalySubscriptionThresholdExpressionOr.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnomalySubscriptionThresholdExpressionOr(
-      costCategory: map['costCategory'] == null ? null : ((AnomalySubscriptionThresholdExpressionOrCostCategory.fromMap((map['costCategory']! as Map).cast<String, dynamic>())).input()).input(),
-      dimension: map['dimension'] == null ? null : ((AnomalySubscriptionThresholdExpressionOrDimension.fromMap((map['dimension']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : ((AnomalySubscriptionThresholdExpressionOrTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
+      costCategory: (() {
+        final guardedValue = map['costCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnomalySubscriptionThresholdExpressionOrCostCategory.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dimension: (() {
+        final guardedValue = map['dimension'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnomalySubscriptionThresholdExpressionOrDimension.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnomalySubscriptionThresholdExpressionOrTags.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

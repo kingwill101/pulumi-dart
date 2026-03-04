@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FhirServiceOciArtifact {
   /// A digest of an image within Azure container registry used for export operations of the service instance to narrow the artifacts down.
   final pulumi.Input<String>? digest;
+
   /// An image within Azure container registry used for export operations of the service instance.
   final pulumi.Input<String>? imageName;
+
   /// An Azure container registry used for export operations of the service instance.
   final pulumi.Input<String> loginServer;
 
@@ -30,10 +32,17 @@ class FhirServiceOciArtifact {
 
   factory FhirServiceOciArtifact.fromMap(Map<String, dynamic> map) {
     return FhirServiceOciArtifact(
-      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
-      loginServer: (map['loginServer'] as String).input(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageName: (() {
+        final guardedValue = map['imageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginServer: pulumi.Input.fromValue(map['loginServer'] as String),
     );
   }
 }
-

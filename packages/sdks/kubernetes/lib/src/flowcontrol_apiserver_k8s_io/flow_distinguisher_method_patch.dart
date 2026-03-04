@@ -9,20 +9,19 @@ class FlowDistinguisherMethodPatch {
 
   /// Creates a new [FlowDistinguisherMethodPatch].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  FlowDistinguisherMethodPatch({
-    this.type,
-  });
+  FlowDistinguisherMethodPatch({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
   factory FlowDistinguisherMethodPatch.fromMap(Map<String, dynamic> map) {
     return FlowDistinguisherMethodPatch(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

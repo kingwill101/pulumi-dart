@@ -7,16 +7,15 @@ enum ApiKind {
   webhook("webhook"),
   websocket("websocket");
 
-  const ApiKind(this.value);
-  final String value;
+  const ApiKind(this.wireValue);
+  final String wireValue;
 
   static ApiKind fromValue(String value) {
     for (final item in ApiKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApiKind value: $value');
   }
 }
-

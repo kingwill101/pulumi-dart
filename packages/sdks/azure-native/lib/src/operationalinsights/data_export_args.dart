@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataExportArgs {
   /// The latest data export rule modification time.
   final pulumi.Input<String>? createdDate;
+
   /// The data export rule ID.
   final pulumi.Input<String>? dataExportId;
+
   /// The data export rule name.
   final pulumi.Input<String>? dataExportName;
+
   /// Active when enabled.
   final pulumi.Input<bool>? enable;
+
   /// Optional. Allows to define an Event Hub name. Not applicable when destination is Storage Account.
   final pulumi.Input<String>? eventHubName;
+
   /// Date and time when the export was last modified.
   final pulumi.Input<String>? lastModifiedDate;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
   final pulumi.Input<String> resourceId;
+
   /// An array of tables to export, for example: [“Heartbeat, SecurityEvent”].
   final pulumi.Input<List<String>> tableNames;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -69,17 +78,44 @@ class DataExportArgs {
 
   factory DataExportArgs.fromMap(Map<String, dynamic> map) {
     return DataExportArgs(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
-      dataExportId: map['dataExportId'] == null ? null : (map['dataExportId']! as String).input(),
-      dataExportName: map['dataExportName'] == null ? null : (map['dataExportName']! as String).input(),
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
-      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName']! as String).input(),
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      tableNames: ((map['tableNames'] as List).cast<String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      createdDate: (() {
+        final guardedValue = map['createdDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataExportId: (() {
+        final guardedValue = map['dataExportId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataExportName: (() {
+        final guardedValue = map['dataExportName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      eventHubName: (() {
+        final guardedValue = map['eventHubName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedDate: (() {
+        final guardedValue = map['lastModifiedDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      tableNames: pulumi.Input.fromValue(
+        (map['tableNames'] as List).cast<String>(),
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

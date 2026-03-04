@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDirectoryActiveDirectoryConfig {
   /// Fully qualified domain name of the AWS Directory Service directory.
   final pulumi.Input<String> domainName;
+
   /// ARN of the Secrets Manager secret that contains the credentials for the service account.
   final pulumi.Input<String> serviceAccountSecretArn;
 
@@ -25,9 +26,10 @@ class GetDirectoryActiveDirectoryConfig {
 
   factory GetDirectoryActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return GetDirectoryActiveDirectoryConfig(
-      domainName: (map['domainName'] as String).input(),
-      serviceAccountSecretArn: (map['serviceAccountSecretArn'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      serviceAccountSecretArn: pulumi.Input.fromValue(
+        map['serviceAccountSecretArn'] as String,
+      ),
     );
   }
 }
-

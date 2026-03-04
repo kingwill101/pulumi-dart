@@ -4,16 +4,15 @@ enum AvailabilityType {
   valueOnline("Online"),
   valueNotify("Notify");
 
-  const AvailabilityType(this.value);
-  final String value;
+  const AvailabilityType(this.wireValue);
+  final String wireValue;
 
   static AvailabilityType fromValue(String value) {
     for (final item in AvailabilityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AvailabilityType value: $value');
   }
 }
-

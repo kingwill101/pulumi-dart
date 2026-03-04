@@ -9,20 +9,17 @@ class ReservationConfigResponse {
 
   /// Creates a new [ReservationConfigResponse].
   /// [throughputReservation] The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-  ReservationConfigResponse({
-    required this.throughputReservation,
-  });
+  ReservationConfigResponse({required this.throughputReservation});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'throughputReservation': throughputReservation,
-    };
+    return <String, dynamic>{'throughputReservation': throughputReservation};
   }
 
   factory ReservationConfigResponse.fromMap(Map<String, dynamic> map) {
     return ReservationConfigResponse(
-      throughputReservation: (map['throughputReservation'] as String).input(),
+      throughputReservation: pulumi.Input.fromValue(
+        map['throughputReservation'] as String,
+      ),
     );
   }
 }
-

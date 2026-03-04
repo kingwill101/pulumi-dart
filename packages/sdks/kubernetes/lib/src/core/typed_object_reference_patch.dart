@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TypedObjectReferencePatch {
   /// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
   final pulumi.Input<String>? apiGroup;
+
   /// Kind is the type of resource being referenced
   final pulumi.Input<String>? kind;
+
   /// Name is the name of resource being referenced
   final pulumi.Input<String>? name;
+
   /// Namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details. (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
   final pulumi.Input<String>? namespace;
 
@@ -36,11 +39,26 @@ class TypedObjectReferencePatch {
 
   factory TypedObjectReferencePatch.fromMap(Map<String, dynamic> map) {
     return TypedObjectReferencePatch(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      apiGroup: (() {
+        final guardedValue = map['apiGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

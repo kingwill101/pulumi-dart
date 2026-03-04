@@ -5,7 +5,11 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage {
   /// Contains the content for the message you pass to, or receive from a model. See [Message Content] for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent>? content;
+  final pulumi.Input<
+    AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent
+  >?
+  content;
+
   /// The role that the message belongs to.
   final pulumi.Input<String> role;
 
@@ -19,16 +23,29 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent, Map<String, dynamic>>(content, (value) => value.toMap()),
+      'content':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent,
+            Map<String, dynamic>
+          >(content, (value) => value.toMap()),
       'role': role,
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage(
-      content: map['content'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input()).input(),
-      role: (map['role'] as String).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

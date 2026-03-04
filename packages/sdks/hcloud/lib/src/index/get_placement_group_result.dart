@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPlacementGroup.
 class GetPlacementGroupResult {
   /// (int) Unique ID of the Placement Group.
   final int id;
+
   /// (map) User-defined labels (key-value pairs)
   final Map<String, String> labels;
   final bool? mostRecent;
+
   /// (string) Name of the Placement Group.
   final String name;
   final List<int> servers;
+
   /// (string) Type of the Placement Group.
   final String type;
   final String? withSelector;
@@ -49,12 +51,19 @@ class GetPlacementGroupResult {
     return GetPlacementGroupResult(
       id: map['id'] as int,
       labels: (map['labels'] as Map).cast<String, String>(),
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       name: map['name'] as String,
       servers: (map['servers'] as List).cast<int>(),
       type: map['type'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

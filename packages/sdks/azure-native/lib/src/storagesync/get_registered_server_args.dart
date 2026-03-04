@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegisteredServerArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// GUID identifying the on-premises server.
   final pulumi.Input<String> serverId;
+
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
 
@@ -34,10 +36,13 @@ class GetRegisteredServerArgs {
 
   factory GetRegisteredServerArgs.fromMap(Map<String, dynamic> map) {
     return GetRegisteredServerArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverId: (map['serverId'] as String).input(),
-      storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
+      storageSyncServiceName: pulumi.Input.fromValue(
+        map['storageSyncServiceName'] as String,
+      ),
     );
   }
 }
-

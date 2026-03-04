@@ -4,16 +4,15 @@ enum BackendPreferenceComputeBeta {
   preferenceUnspecified("PREFERENCE_UNSPECIFIED"),
   preferred("PREFERRED");
 
-  const BackendPreferenceComputeBeta(this.value);
-  final String value;
+  const BackendPreferenceComputeBeta(this.wireValue);
+  final String wireValue;
 
   static BackendPreferenceComputeBeta fromValue(String value) {
     for (final item in BackendPreferenceComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendPreferenceComputeBeta value: $value');
   }
 }
-

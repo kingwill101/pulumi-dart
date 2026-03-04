@@ -2,16 +2,17 @@
 enum SearchDataExfiltrationProtection {
   blockAll("BlockAll");
 
-  const SearchDataExfiltrationProtection(this.value);
-  final String value;
+  const SearchDataExfiltrationProtection(this.wireValue);
+  final String wireValue;
 
   static SearchDataExfiltrationProtection fromValue(String value) {
     for (final item in SearchDataExfiltrationProtection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SearchDataExfiltrationProtection value: $value');
+    throw ArgumentError(
+      'Unknown SearchDataExfiltrationProtection value: $value',
+    );
   }
 }
-

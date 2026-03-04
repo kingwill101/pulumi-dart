@@ -3,16 +3,15 @@ enum RecordPropertyAndItemRemovals {
   valueTrue("true"),
   valueFalse("false");
 
-  const RecordPropertyAndItemRemovals(this.value);
-  final String value;
+  const RecordPropertyAndItemRemovals(this.wireValue);
+  final String wireValue;
 
   static RecordPropertyAndItemRemovals fromValue(String value) {
     for (final item in RecordPropertyAndItemRemovals.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecordPropertyAndItemRemovals value: $value');
   }
 }
-

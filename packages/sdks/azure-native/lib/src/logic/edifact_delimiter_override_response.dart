@@ -6,26 +6,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdifactDelimiterOverrideResponse {
   /// The component separator.
   final pulumi.Input<int> componentSeparator;
+
   /// The data element separator.
   final pulumi.Input<int> dataElementSeparator;
+
   /// The decimal point indicator.
   final pulumi.Input<String> decimalPointIndicator;
+
   /// The message association assigned code.
   final pulumi.Input<String>? messageAssociationAssignedCode;
+
   /// The message id.
   final pulumi.Input<String>? messageId;
+
   /// The message release.
   final pulumi.Input<String>? messageRelease;
+
   /// The message version.
   final pulumi.Input<String>? messageVersion;
+
   /// The release indicator.
   final pulumi.Input<int> releaseIndicator;
+
   /// The repetition separator.
   final pulumi.Input<int> repetitionSeparator;
+
   /// The segment terminator.
   final pulumi.Input<int> segmentTerminator;
+
   /// The segment terminator suffix.
   final pulumi.Input<String> segmentTerminatorSuffix;
+
   /// The target namespace on which this delimiter settings has to be applied.
   final pulumi.Input<String>? targetNamespace;
 
@@ -76,19 +87,50 @@ class EdifactDelimiterOverrideResponse {
 
   factory EdifactDelimiterOverrideResponse.fromMap(Map<String, dynamic> map) {
     return EdifactDelimiterOverrideResponse(
-      componentSeparator: (map['componentSeparator'] as int).input(),
-      dataElementSeparator: (map['dataElementSeparator'] as int).input(),
-      decimalPointIndicator: (map['decimalPointIndicator'] as String).input(),
-      messageAssociationAssignedCode: map['messageAssociationAssignedCode'] == null ? null : (map['messageAssociationAssignedCode']! as String).input(),
-      messageId: map['messageId'] == null ? null : (map['messageId']! as String).input(),
-      messageRelease: map['messageRelease'] == null ? null : (map['messageRelease']! as String).input(),
-      messageVersion: map['messageVersion'] == null ? null : (map['messageVersion']! as String).input(),
-      releaseIndicator: (map['releaseIndicator'] as int).input(),
-      repetitionSeparator: (map['repetitionSeparator'] as int).input(),
-      segmentTerminator: (map['segmentTerminator'] as int).input(),
-      segmentTerminatorSuffix: (map['segmentTerminatorSuffix'] as String).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
+      componentSeparator: pulumi.Input.fromValue(
+        map['componentSeparator'] as int,
+      ),
+      dataElementSeparator: pulumi.Input.fromValue(
+        map['dataElementSeparator'] as int,
+      ),
+      decimalPointIndicator: pulumi.Input.fromValue(
+        map['decimalPointIndicator'] as String,
+      ),
+      messageAssociationAssignedCode: (() {
+        final guardedValue = map['messageAssociationAssignedCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageId: (() {
+        final guardedValue = map['messageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageRelease: (() {
+        final guardedValue = map['messageRelease'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageVersion: (() {
+        final guardedValue = map['messageVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseIndicator: pulumi.Input.fromValue(map['releaseIndicator'] as int),
+      repetitionSeparator: pulumi.Input.fromValue(
+        map['repetitionSeparator'] as int,
+      ),
+      segmentTerminator: pulumi.Input.fromValue(
+        map['segmentTerminator'] as int,
+      ),
+      segmentTerminatorSuffix: pulumi.Input.fromValue(
+        map['segmentTerminatorSuffix'] as String,
+      ),
+      targetNamespace: (() {
+        final guardedValue = map['targetNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

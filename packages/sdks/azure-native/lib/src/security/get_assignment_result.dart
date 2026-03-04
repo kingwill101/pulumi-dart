@@ -9,38 +9,55 @@ import 'system_data_response.dart';
 class GetAssignmentResult {
   /// Additional data about the assignment
   final AssignmentPropertiesResponseAdditionalData? additionalData;
+
   /// Component item with key as applied to this standard assignment over the given scope
   final AssignedComponentItemResponse? assignedComponent;
+
   /// Standard item with key as applied to this standard assignment over the given scope
   final AssignedStandardItemResponse? assignedStandard;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// description of the standardAssignment
   final String? description;
+
   /// display name of the standardAssignment
   final String? displayName;
+
   /// expected effect of this assignment (Disable/Exempt/etc)
   final String? effect;
+
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   final String? etag;
+
   /// Expiration date of this assignment as a full ISO date
   final String? expiresOn;
+
   /// Resource Id
   final String id;
+
   /// Kind of the resource
   final String? kind;
+
   /// Location where the resource is stored
   final String? location;
+
   /// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   final dynamic metadata;
+
   /// Resource name
   final String name;
+
   /// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   final String? scope;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// A list of key value pairs that describe the resource.
   final Map<String, String>? tags;
+
   /// Resource type
   final String type;
 
@@ -86,9 +103,9 @@ class GetAssignmentResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalData': ?additionalData == null ? null : additionalData!.toMap(),
-      'assignedComponent': ?assignedComponent == null ? null : assignedComponent!.toMap(),
-      'assignedStandard': ?assignedStandard == null ? null : assignedStandard!.toMap(),
+      'additionalData': ?additionalData?.toMap(),
+      'assignedComponent': ?assignedComponent?.toMap(),
+      'assignedStandard': ?assignedStandard?.toMap(),
       'azureApiVersion': azureApiVersion,
       'description': ?description,
       'displayName': ?displayName,
@@ -109,25 +126,84 @@ class GetAssignmentResult {
 
   factory GetAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetAssignmentResult(
-      additionalData: map['additionalData'] == null ? null : AssignmentPropertiesResponseAdditionalData.fromMap((map['additionalData']! as Map).cast<String, dynamic>()),
-      assignedComponent: map['assignedComponent'] == null ? null : AssignedComponentItemResponse.fromMap((map['assignedComponent']! as Map).cast<String, dynamic>()),
-      assignedStandard: map['assignedStandard'] == null ? null : AssignedStandardItemResponse.fromMap((map['assignedStandard']! as Map).cast<String, dynamic>()),
+      additionalData: (() {
+        final guardedValue = map['additionalData'];
+        if (guardedValue == null) return null;
+        return AssignmentPropertiesResponseAdditionalData.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      assignedComponent: (() {
+        final guardedValue = map['assignedComponent'];
+        if (guardedValue == null) return null;
+        return AssignedComponentItemResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      assignedStandard: (() {
+        final guardedValue = map['assignedStandard'];
+        if (guardedValue == null) return null;
+        return AssignedStandardItemResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
-      effect: map['effect'] == null ? null : map['effect']! as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
-      expiresOn: map['expiresOn'] == null ? null : map['expiresOn']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      expiresOn: (() {
+        final guardedValue = map['expiresOn'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
-      metadata: map['metadata'] == null ? null : map['metadata']!,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
       name: map['name'] as String,
-      scope: map['scope'] == null ? null : map['scope']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

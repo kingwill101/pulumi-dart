@@ -3,16 +3,15 @@ enum InterconnectLinkTypeComputeV1 {
   linkTypeEthernet100gLr("LINK_TYPE_ETHERNET_100G_LR"),
   linkTypeEthernet10gLr("LINK_TYPE_ETHERNET_10G_LR");
 
-  const InterconnectLinkTypeComputeV1(this.value);
-  final String value;
+  const InterconnectLinkTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static InterconnectLinkTypeComputeV1 fromValue(String value) {
     for (final item in InterconnectLinkTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InterconnectLinkTypeComputeV1 value: $value');
   }
 }
-

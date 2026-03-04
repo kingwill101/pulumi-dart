@@ -6,46 +6,67 @@ import 'get_clusters_cluster_db_node.dart';
 class GetClustersCluster {
   /// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
   final pulumi.Input<String> chargeType;
+
   /// PolarDB cluster connection string.
   final pulumi.Input<String> connectionString;
+
   /// The create_time of the db_nodes.
   final pulumi.Input<String> createTime;
+
   /// The db_node_class of the db_nodes.
   final pulumi.Input<String> dbNodeClass;
+
   /// The DBNodeNumber of the PolarDB cluster.
   final pulumi.Input<int> dbNodeNumber;
+
   /// The DBNodes of the PolarDB cluster.
   final pulumi.Input<List<GetClustersClusterDbNode>> dbNodes;
+
   /// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
   final pulumi.Input<String> dbType;
+
   /// The DBVersion of the PolarDB cluster.
   final pulumi.Input<String> dbVersion;
+
   /// The DeleteLock of the PolarDB cluster.
   final pulumi.Input<int> deleteLock;
+
   /// The description of the PolarDB cluster.
   final pulumi.Input<String> description;
+
   /// The database engine of the cluster, example: POLARDB.
   final pulumi.Input<String> engine;
+
   /// Expiration time. Pay-As-You-Go clusters never expire.
   final pulumi.Input<String> expireTime;
+
   /// The expired of the PolarDB cluster.
   final pulumi.Input<String> expired;
+
   /// The ID of the PolarDB cluster.
   final pulumi.Input<String> id;
+
   /// The LockMode of the PolarDB cluster.
   final pulumi.Input<String> lockMode;
+
   /// The DBClusterNetworkType of the PolarDB cluster.
   final pulumi.Input<String> networkType;
+
   /// PolarDB cluster connection port.
   final pulumi.Input<String> port;
+
   /// The region_id of the db_nodes.
   final pulumi.Input<String> regionId;
+
   /// status of the cluster.
   final pulumi.Input<String> status;
+
   /// The StorageUsed of the PolarDB cluster.
   final pulumi.Input<int> storageUsed;
+
   /// ID of the VPC the cluster belongs to.
   final pulumi.Input<String> vpcId;
+
   /// The zone_id of the db_nodes.
   final pulumi.Input<String> zoneId;
 
@@ -104,7 +125,18 @@ class GetClustersCluster {
       'createTime': createTime,
       'dbNodeClass': dbNodeClass,
       'dbNodeNumber': dbNodeNumber,
-      'dbNodes': pulumi.Input.mapInputValue<List<GetClustersClusterDbNode>, List<Map<String, dynamic>>>(dbNodes, (value) => pulumi.Input.encodeList<GetClustersClusterDbNode, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dbNodes':
+          pulumi.Input.mapInputValue<
+            List<GetClustersClusterDbNode>,
+            List<Map<String, dynamic>>
+          >(
+            dbNodes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClustersClusterDbNode,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dbType': dbType,
       'dbVersion': dbVersion,
       'deleteLock': deleteLock,
@@ -126,29 +158,37 @@ class GetClustersCluster {
 
   factory GetClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetClustersCluster(
-      chargeType: (map['chargeType'] as String).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      dbNodeClass: (map['dbNodeClass'] as String).input(),
-      dbNodeNumber: (map['dbNodeNumber'] as int).input(),
-      dbNodes: (pulumi.Input.decodeList<GetClustersClusterDbNode>(map['dbNodes'], (value) => GetClustersClusterDbNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbType: (map['dbType'] as String).input(),
-      dbVersion: (map['dbVersion'] as String).input(),
-      deleteLock: (map['deleteLock'] as int).input(),
-      description: (map['description'] as String).input(),
-      engine: (map['engine'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      expired: (map['expired'] as String).input(),
-      id: (map['id'] as String).input(),
-      lockMode: (map['lockMode'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      port: (map['port'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
-      status: (map['status'] as String).input(),
-      storageUsed: (map['storageUsed'] as int).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      chargeType: pulumi.Input.fromValue(map['chargeType'] as String),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      dbNodeClass: pulumi.Input.fromValue(map['dbNodeClass'] as String),
+      dbNodeNumber: pulumi.Input.fromValue(map['dbNodeNumber'] as int),
+      dbNodes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetClustersClusterDbNode>(
+          map['dbNodes']!,
+          (value) => GetClustersClusterDbNode.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      dbType: pulumi.Input.fromValue(map['dbType'] as String),
+      dbVersion: pulumi.Input.fromValue(map['dbVersion'] as String),
+      deleteLock: pulumi.Input.fromValue(map['deleteLock'] as int),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      expired: pulumi.Input.fromValue(map['expired'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lockMode: pulumi.Input.fromValue(map['lockMode'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      storageUsed: pulumi.Input.fromValue(map['storageUsed'] as int),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

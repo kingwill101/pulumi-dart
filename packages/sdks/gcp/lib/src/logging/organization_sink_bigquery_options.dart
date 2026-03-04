@@ -11,20 +11,17 @@ class OrganizationSinkBigqueryOptions {
 
   /// Creates a new [OrganizationSinkBigqueryOptions].
   /// [usePartitionedTables] Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-  OrganizationSinkBigqueryOptions({
-    required this.usePartitionedTables,
-  });
+  OrganizationSinkBigqueryOptions({required this.usePartitionedTables});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'usePartitionedTables': usePartitionedTables,
-    };
+    return <String, dynamic>{'usePartitionedTables': usePartitionedTables};
   }
 
   factory OrganizationSinkBigqueryOptions.fromMap(Map<String, dynamic> map) {
     return OrganizationSinkBigqueryOptions(
-      usePartitionedTables: (map['usePartitionedTables'] as bool).input(),
+      usePartitionedTables: pulumi.Input.fromValue(
+        map['usePartitionedTables'] as bool,
+      ),
     );
   }
 }
-

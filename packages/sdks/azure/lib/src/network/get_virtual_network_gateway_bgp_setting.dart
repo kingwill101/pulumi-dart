@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkGatewayBgpSetting {
   /// The Autonomous System Number (ASN) to use as part of the BGP.
   final pulumi.Input<int> asn;
+
   /// The weight added to routes which have been learned
   /// through BGP peering.
   final pulumi.Input<int> peerWeight;
+
   /// The BGP peer IP address of the virtual network
   /// gateway. This address is needed to configure the created gateway as a BGP Peer
   /// on the on-premises VPN devices.
@@ -33,10 +35,9 @@ class GetVirtualNetworkGatewayBgpSetting {
 
   factory GetVirtualNetworkGatewayBgpSetting.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayBgpSetting(
-      asn: (map['asn'] as int).input(),
-      peerWeight: (map['peerWeight'] as int).input(),
-      peeringAddress: (map['peeringAddress'] as String).input(),
+      asn: pulumi.Input.fromValue(map['asn'] as int),
+      peerWeight: pulumi.Input.fromValue(map['peerWeight'] as int),
+      peeringAddress: pulumi.Input.fromValue(map['peeringAddress'] as String),
     );
   }
 }
-

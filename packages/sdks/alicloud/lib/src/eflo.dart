@@ -1,5 +1,3 @@
-library module_eflo;
-
 export 'eflo/cluster.dart';
 export 'eflo/cluster_args.dart';
 export 'eflo/cluster_component.dart';

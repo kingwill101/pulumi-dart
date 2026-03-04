@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_database_args.dart';
-import 'enterprise_database_module.dart';
 import 'enterprise_database_state.dart';
 
 /// Manages a Redis Enterprise Database.
 ///
-/// > **Note:** This resource has been deprecated in favor of azurerm_managed_redis.
+/// &gt; **Note:** This resource has been deprecated in favor of azurerm_managed_redis.
 ///
 /// ## Example Usage
 ///
@@ -285,7 +284,7 @@ import 'enterprise_database_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cache` - 2024-10-01
@@ -300,28 +299,38 @@ import 'enterprise_database_state.dart';
 class EnterpriseDatabase extends pulumi.CustomResource {
   /// Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Possible values are `Encrypted` and `Plaintext`. Defaults to `Encrypted`. Changing this forces a new Redis Enterprise Database to be created.
   late final pulumi.Output<String?> clientProtocol;
+
   /// The resource id of the Redis Enterprise Cluster to deploy this Redis Enterprise Database. Changing this forces a new Redis Enterprise Database to be created.
   late final pulumi.Output<String> clusterId;
+
   /// Clustering policy Specified at create time. Possible values are `EnterpriseCluster` and `OSSCluster`. Defaults to `OSSCluster`. Changing this forces a new Redis Enterprise Database to be created.
   late final pulumi.Output<String?> clusteringPolicy;
+
   /// Redis eviction policy possible values are `AllKeysLFU`, `AllKeysLRU`, `AllKeysRandom`, `VolatileLRU`, `VolatileLFU`, `VolatileTTL`, `VolatileRandom` and `NoEviction`. Changing this forces a new Redis Enterprise Database to be created. Defaults to `VolatileLRU`.
   late final pulumi.Output<String?> evictionPolicy;
+
   /// Nickname of the group of linked databases. Changing this force a new Redis Enterprise Geo Database to be created.
   late final pulumi.Output<String?> linkedDatabaseGroupNickname;
+
   /// A list of database resources to link with this database with a maximum of 5.
   ///
-  /// > **Note:** Only the newly created databases can be added to an existing geo-replication group. Existing regular databases or recreated databases cannot be added to the existing geo-replication group. Any linked database removed from the list will be forcefully unlinked. The only recommended operation is to delete after force-unlink and the recommended scenario of force-unlink is region outage. The database cannot be linked again after force-unlink.
+  /// &gt; **Note:** Only the newly created databases can be added to an existing geo-replication group. Existing regular databases or recreated databases cannot be added to the existing geo-replication group. Any linked database removed from the list will be forcefully unlinked. The only recommended operation is to delete after force-unlink and the recommended scenario of force-unlink is region outage. The database cannot be linked again after force-unlink.
   late final pulumi.Output<List<String>?> linkedDatabaseIds;
+
   /// A `module` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Only `RediSearch` and `RedisJSON` modules are allowed with geo-replication
-  late final pulumi.Output<List<EnterpriseDatabaseModule>?> modules;
+  /// &gt; **Note:** Only `RediSearch` and `RedisJSON` modules are allowed with geo-replication
+  late final pulumi.Output<List<Map<String, dynamic>>?> modules;
+
   /// The name which should be used for this Redis Enterprise Database. Currently the acceptable value for this argument is `default`. Defaults to `default`. Changing this forces a new Redis Enterprise Database to be created.
   late final pulumi.Output<String> name;
+
   /// TCP port of the database endpoint. Specified at create time. Defaults to an available port. Changing this forces a new Redis Enterprise Database to be created. Defaults to `10000`.
   late final pulumi.Output<int?> port;
+
   /// The Primary Access Key for the Redis Enterprise Database Instance.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// The Secondary Access Key for the Redis Enterprise Database Instance.
   late final pulumi.Output<String> secondaryAccessKey;
 
@@ -334,22 +343,24 @@ class EnterpriseDatabase extends pulumi.CustomResource {
     EnterpriseDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/enterpriseDatabase:EnterpriseDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientProtocol = registerOutput<String?>('clientProtocol');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.clusteringPolicy = registerOutput<String?>('clusteringPolicy');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.linkedDatabaseGroupNickname = registerOutput<String?>('linkedDatabaseGroupNickname');
-    this.linkedDatabaseIds = registerOutput<List<String>?>('linkedDatabaseIds');
-    this.modules = registerOutput<List<EnterpriseDatabaseModule>?>('modules');
+         'azure:redis/enterpriseDatabase:EnterpriseDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientProtocol = registerOutput<String?>('clientProtocol');
+    clusterId = registerOutput<String>('clusterId');
+    clusteringPolicy = registerOutput<String?>('clusteringPolicy');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    linkedDatabaseGroupNickname = registerOutput<String?>(
+      'linkedDatabaseGroupNickname',
+    );
+    linkedDatabaseIds = registerOutput<List<String>?>('linkedDatabaseIds');
+    modules = registerOutput<List<Map<String, dynamic>>?>('modules');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int?>('port');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    port = registerOutput<int?>('port');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
   }
 
   /// Gets an existing [EnterpriseDatabase] resource's state with the given [name] and [id].
@@ -370,21 +381,23 @@ class EnterpriseDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/enterpriseDatabase:EnterpriseDatabase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientProtocol = registerOutput<String?>('clientProtocol');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.clusteringPolicy = registerOutput<String?>('clusteringPolicy');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.linkedDatabaseGroupNickname = registerOutput<String?>('linkedDatabaseGroupNickname');
-    this.linkedDatabaseIds = registerOutput<List<String>?>('linkedDatabaseIds');
-    this.modules = registerOutput<List<EnterpriseDatabaseModule>?>('modules');
+         'azure:redis/enterpriseDatabase:EnterpriseDatabase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientProtocol = registerOutput<String?>('clientProtocol');
+    clusterId = registerOutput<String>('clusterId');
+    clusteringPolicy = registerOutput<String?>('clusteringPolicy');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    linkedDatabaseGroupNickname = registerOutput<String?>(
+      'linkedDatabaseGroupNickname',
+    );
+    linkedDatabaseIds = registerOutput<List<String>?>('linkedDatabaseIds');
+    modules = registerOutput<List<Map<String, dynamic>>?>('modules');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int?>('port');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    port = registerOutput<int?>('port');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
   }
 }

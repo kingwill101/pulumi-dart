@@ -14,7 +14,7 @@ import 'get_virtual_hosts_result.dart';
 
 /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -129,7 +129,7 @@ Future<GetBindingsResult> getBindings(
 
 /// This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.128.0+.
+/// &gt; **NOTE:** Available in v1.128.0+.
 ///
 /// ## Example Usage
 ///
@@ -319,7 +319,7 @@ Future<GetExchangesResult> getExchanges(
 
 /// This data source provides the Amqp Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.128.0.
+/// &gt; **NOTE:** Available since v1.128.0.
 ///
 /// ## Example Usage
 ///
@@ -544,7 +544,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Amqp Queues of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.127.0+.
+/// &gt; **NOTE:** Available in v1.127.0+.
 ///
 /// ## Example Usage
 ///
@@ -734,7 +734,7 @@ Future<GetQueuesResult> getQueues(
 
 /// This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
 ///
-/// > **NOTE:** Available in 1.195.0+
+/// &gt; **NOTE:** Available in 1.195.0+
 ///
 /// ## Example Usage
 ///
@@ -851,7 +851,7 @@ Future<GetStaticAccountsResult> getStaticAccounts(
 
 /// This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.126.0+.
+/// &gt; **NOTE:** Available in v1.126.0+.
 ///
 /// ## Example Usage
 ///

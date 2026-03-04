@@ -12,20 +12,15 @@ class GetInstanceBackupsArgs {
 
   /// Creates a new [GetInstanceBackupsArgs].
   /// [linodeId] The Linode instance's ID.
-  GetInstanceBackupsArgs({
-    required this.linodeId,
-  });
+  GetInstanceBackupsArgs({required this.linodeId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'linodeId': linodeId,
-    };
+    return <String, dynamic>{'linodeId': linodeId};
   }
 
   factory GetInstanceBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceBackupsArgs(
-      linodeId: (map['linodeId'] as int).input(),
+      linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
     );
   }
 }
-

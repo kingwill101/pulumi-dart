@@ -9,12 +9,15 @@ class LbFlavorprofileV2State {
   /// can be used for readability as shown in the example above.
   /// Changing this updates the existing flavorprofile.
   final pulumi.Input<String>? flavorData;
+
   /// Name of the flavorprofile. Changing this updates the existing
   /// flavorprofile.
   final pulumi.Input<String>? name;
+
   /// The provider_name that the flavor_profile will use.
   /// Changing this updates the existing flavorprofile.
   final pulumi.Input<String>? providerName;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an LB member. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -44,11 +47,26 @@ class LbFlavorprofileV2State {
 
   factory LbFlavorprofileV2State.fromMap(Map<String, dynamic> map) {
     return LbFlavorprofileV2State(
-      flavorData: map['flavorData'] == null ? null : (map['flavorData']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      flavorData: (() {
+        final guardedValue = map['flavorData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

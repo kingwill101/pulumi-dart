@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterprisePolicyIdentityResponse {
   /// The principal id of EnterprisePolicy identity.
   final pulumi.Input<String> systemAssignedIdentityPrincipalId;
+
   /// The tenant id associated with the EnterprisePolicy.
   final pulumi.Input<String> tenantId;
+
   /// The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
   final pulumi.Input<String>? type;
 
@@ -31,10 +33,15 @@ class EnterprisePolicyIdentityResponse {
 
   factory EnterprisePolicyIdentityResponse.fromMap(Map<String, dynamic> map) {
     return EnterprisePolicyIdentityResponse(
-      systemAssignedIdentityPrincipalId: (map['systemAssignedIdentityPrincipalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      systemAssignedIdentityPrincipalId: pulumi.Input.fromValue(
+        map['systemAssignedIdentityPrincipalId'] as String,
+      ),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

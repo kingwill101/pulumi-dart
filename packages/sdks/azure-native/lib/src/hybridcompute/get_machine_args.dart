@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineArgs {
   /// The expand expression to apply on the operation.
   final pulumi.Input<String>? expand;
+
   /// The name of the hybrid machine.
   final pulumi.Input<String> machineName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetMachineArgs {
 
   factory GetMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      machineName: (map['machineName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineName: pulumi.Input.fromValue(map['machineName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

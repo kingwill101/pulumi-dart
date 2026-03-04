@@ -13,15 +13,16 @@ class SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ebsVolumeSizeInGb': ebsVolumeSizeInGb,
-    };
+    return <String, dynamic>{'ebsVolumeSizeInGb': ebsVolumeSizeInGb};
   }
 
-  factory SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap(Map<String, dynamic> map) {
+  factory SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings(
-      ebsVolumeSizeInGb: (map['ebsVolumeSizeInGb'] as int).input(),
+      ebsVolumeSizeInGb: pulumi.Input.fromValue(
+        map['ebsVolumeSizeInGb'] as int,
+      ),
     );
   }
 }
-

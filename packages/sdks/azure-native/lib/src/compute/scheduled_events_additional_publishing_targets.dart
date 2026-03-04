@@ -9,20 +9,31 @@ class ScheduledEventsAdditionalPublishingTargets {
 
   /// Creates a new [ScheduledEventsAdditionalPublishingTargets].
   /// [eventGridAndResourceGraph] The configuration parameters used while creating eventGridAndResourceGraph Scheduled Event setting.
-  ScheduledEventsAdditionalPublishingTargets({
-    this.eventGridAndResourceGraph,
-  });
+  ScheduledEventsAdditionalPublishingTargets({this.eventGridAndResourceGraph});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventGridAndResourceGraph': ?pulumi.Input.mapOptionalInputValue<EventGridAndResourceGraph, Map<String, dynamic>>(eventGridAndResourceGraph, (value) => value.toMap()),
+      'eventGridAndResourceGraph':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventGridAndResourceGraph,
+            Map<String, dynamic>
+          >(eventGridAndResourceGraph, (value) => value.toMap()),
     };
   }
 
-  factory ScheduledEventsAdditionalPublishingTargets.fromMap(Map<String, dynamic> map) {
+  factory ScheduledEventsAdditionalPublishingTargets.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledEventsAdditionalPublishingTargets(
-      eventGridAndResourceGraph: map['eventGridAndResourceGraph'] == null ? null : (EventGridAndResourceGraph.fromMap((map['eventGridAndResourceGraph']! as Map).cast<String, dynamic>())).input(),
+      eventGridAndResourceGraph: (() {
+        final guardedValue = map['eventGridAndResourceGraph'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventGridAndResourceGraph.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

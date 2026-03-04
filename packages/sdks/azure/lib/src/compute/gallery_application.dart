@@ -187,7 +187,7 @@ import 'gallery_application_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-03
@@ -202,22 +202,31 @@ import 'gallery_application_state.dart';
 class GalleryApplication extends pulumi.CustomResource {
   /// A description of the Gallery Application.
   late final pulumi.Output<String?> description;
+
   /// The end of life date in RFC3339 format of the Gallery Application.
   late final pulumi.Output<String?> endOfLifeDate;
+
   /// The End User Licence Agreement of the Gallery Application.
   late final pulumi.Output<String?> eula;
+
   /// The ID of the Shared Image Gallery. Changing this forces a new resource to be created.
   late final pulumi.Output<String> galleryId;
+
   /// The Azure Region where the Gallery Application exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Gallery Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The URI containing the Privacy Statement associated with the Gallery Application.
   late final pulumi.Output<String?> privacyStatementUri;
+
   /// The URI containing the Release Notes associated with the Gallery Application.
   late final pulumi.Output<String?> releaseNoteUri;
+
   /// The type of the Operating System supported for the Gallery Application. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> supportedOsType;
+
   /// A mapping of tags to assign to the Gallery Application.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -230,21 +239,21 @@ class GalleryApplication extends pulumi.CustomResource {
     GalleryApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/galleryApplication:GalleryApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.endOfLifeDate = registerOutput<String?>('endOfLifeDate');
-    this.eula = registerOutput<String?>('eula');
-    this.galleryId = registerOutput<String>('galleryId');
-    this.location = registerOutput<String>('location');
+         'azure:compute/galleryApplication:GalleryApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    eula = registerOutput<String?>('eula');
+    galleryId = registerOutput<String>('galleryId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privacyStatementUri = registerOutput<String?>('privacyStatementUri');
-    this.releaseNoteUri = registerOutput<String?>('releaseNoteUri');
-    this.supportedOsType = registerOutput<String>('supportedOsType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privacyStatementUri = registerOutput<String?>('privacyStatementUri');
+    releaseNoteUri = registerOutput<String?>('releaseNoteUri');
+    supportedOsType = registerOutput<String>('supportedOsType');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [GalleryApplication] resource's state with the given [name] and [id].
@@ -265,20 +274,20 @@ class GalleryApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/galleryApplication:GalleryApplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.endOfLifeDate = registerOutput<String?>('endOfLifeDate');
-    this.eula = registerOutput<String?>('eula');
-    this.galleryId = registerOutput<String>('galleryId');
-    this.location = registerOutput<String>('location');
+         'azure:compute/galleryApplication:GalleryApplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    eula = registerOutput<String?>('eula');
+    galleryId = registerOutput<String>('galleryId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privacyStatementUri = registerOutput<String?>('privacyStatementUri');
-    this.releaseNoteUri = registerOutput<String?>('releaseNoteUri');
-    this.supportedOsType = registerOutput<String>('supportedOsType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privacyStatementUri = registerOutput<String?>('privacyStatementUri');
+    releaseNoteUri = registerOutput<String?>('releaseNoteUri');
+    supportedOsType = registerOutput<String>('supportedOsType');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

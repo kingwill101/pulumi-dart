@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebAppWorkflowsConnectionsSlotArgs {
   /// Site name.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot.
   final pulumi.Input<String> slot;
 
@@ -32,12 +34,15 @@ class ListWebAppWorkflowsConnectionsSlotArgs {
     };
   }
 
-  factory ListWebAppWorkflowsConnectionsSlotArgs.fromMap(Map<String, dynamic> map) {
+  factory ListWebAppWorkflowsConnectionsSlotArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWebAppWorkflowsConnectionsSlotArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

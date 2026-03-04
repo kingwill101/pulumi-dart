@@ -7,8 +7,10 @@ import 'subnet_response.dart';
 class IpAddressResponse {
   /// Represents the IP Address.
   final pulumi.Input<String>? address;
+
   /// Represents the Ip Address Version.
   final pulumi.Input<String>? ipAddressVersion;
+
   /// The subnet to which this IP address belongs.
   final pulumi.Input<SubnetResponse> subnet;
 
@@ -26,16 +28,29 @@ class IpAddressResponse {
     return <String, dynamic>{
       'address': ?address,
       'ipAddressVersion': ?ipAddressVersion,
-      'subnet': pulumi.Input.mapInputValue<SubnetResponse, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet':
+          pulumi.Input.mapInputValue<SubnetResponse, Map<String, dynamic>>(
+            subnet,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory IpAddressResponse.fromMap(Map<String, dynamic> map) {
     return IpAddressResponse(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      ipAddressVersion: map['ipAddressVersion'] == null ? null : (map['ipAddressVersion']! as String).input(),
-      subnet: (SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddressVersion: (() {
+        final guardedValue = map['ipAddressVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnet: pulumi.Input.fromValue(
+        SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

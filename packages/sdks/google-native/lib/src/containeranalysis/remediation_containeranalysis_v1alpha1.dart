@@ -8,8 +8,11 @@ import 'uri.dart';
 class RemediationContaineranalysisV1alpha1 {
   /// Contains a comprehensive human-readable discussion of the remediation.
   final pulumi.Input<String>? details;
+
   /// The type of remediation that can be applied.
-  final pulumi.Input<RemediationRemediationTypeContaineranalysisV1alpha1>? remediationType;
+  final pulumi.Input<RemediationRemediationTypeContaineranalysisV1alpha1>?
+  remediationType;
+
   /// Contains the URL where to obtain the remediation.
   final pulumi.Input<URI>? remediationUri;
 
@@ -26,17 +29,44 @@ class RemediationContaineranalysisV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'details': ?details,
-      'remediationType': ?pulumi.Input.mapOptionalInputValue<RemediationRemediationTypeContaineranalysisV1alpha1, String>(remediationType, (value) => value.value),
-      'remediationUri': ?pulumi.Input.mapOptionalInputValue<URI, Map<String, dynamic>>(remediationUri, (value) => value.toMap()),
+      'remediationType':
+          ?pulumi.Input.mapOptionalInputValue<
+            RemediationRemediationTypeContaineranalysisV1alpha1,
+            String
+          >(remediationType, (value) => value.wireValue),
+      'remediationUri':
+          ?pulumi.Input.mapOptionalInputValue<URI, Map<String, dynamic>>(
+            remediationUri,
+            (value) => value.toMap(),
+          ),
     };
   }
 
-  factory RemediationContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory RemediationContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RemediationContaineranalysisV1alpha1(
-      details: map['details'] == null ? null : (map['details']! as String).input(),
-      remediationType: map['remediationType'] == null ? null : (RemediationRemediationTypeContaineranalysisV1alpha1.fromValue(map['remediationType']! as String)).input(),
-      remediationUri: map['remediationUri'] == null ? null : (URI.fromMap((map['remediationUri']! as Map).cast<String, dynamic>())).input(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remediationType: (() {
+        final guardedValue = map['remediationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RemediationRemediationTypeContaineranalysisV1alpha1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      remediationUri: (() {
+        final guardedValue = map['remediationUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          URI.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

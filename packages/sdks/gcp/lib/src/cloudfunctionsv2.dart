@@ -1,5 +1,3 @@
-library module_cloudfunctionsv2;
-
 export 'cloudfunctionsv2/function_args.dart';
 export 'cloudfunctionsv2/function_build_config.dart';
 export 'cloudfunctionsv2/function_build_config_on_deploy_update_policy.dart';

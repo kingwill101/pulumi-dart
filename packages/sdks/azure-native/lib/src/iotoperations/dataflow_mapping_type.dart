@@ -6,16 +6,15 @@ enum DataflowMappingType {
   passThrough("PassThrough"),
   builtInFunction("BuiltInFunction");
 
-  const DataflowMappingType(this.value);
-  final String value;
+  const DataflowMappingType(this.wireValue);
+  final String wireValue;
 
   static DataflowMappingType fromValue(String value) {
     for (final item in DataflowMappingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataflowMappingType value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum GeographicallyRedundantBackup {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const GeographicallyRedundantBackup(this.value);
-  final String value;
+  const GeographicallyRedundantBackup(this.wireValue);
+  final String wireValue;
 
   static GeographicallyRedundantBackup fromValue(String value) {
     for (final item in GeographicallyRedundantBackup.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GeographicallyRedundantBackup value: $value');
   }
 }
-

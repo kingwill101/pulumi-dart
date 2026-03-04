@@ -21,11 +21,18 @@ class ListenerRuleActionForwardTargetGroup {
     };
   }
 
-  factory ListenerRuleActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
+  factory ListenerRuleActionForwardTargetGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerRuleActionForwardTargetGroup(
-      targetGroupIdentifier: (map['targetGroupIdentifier'] as String).input(),
-      weight: map['weight'] == null ? null : ((map['weight'] as int).input()).input(),
+      targetGroupIdentifier: pulumi.Input.fromValue(
+        map['targetGroupIdentifier'] as String,
+      ),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

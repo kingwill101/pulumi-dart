@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudAppMysqlAssociationArgs {
   /// Specifies the name of the MySQL Database which the Spring Cloud App should be associated with.
   final pulumi.Input<String> databaseName;
+
   /// Specifies the ID of the MySQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> mysqlServerId;
+
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the password which should be used when connecting to the MySQL Database from the Spring Cloud App.
   final pulumi.Input<String> password;
+
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> springCloudAppId;
+
   /// Specifies the username which should be used when connecting to the MySQL Database from the Spring Cloud App.
   final pulumi.Input<String> username;
 
@@ -49,13 +54,18 @@ class SpringCloudAppMysqlAssociationArgs {
 
   factory SpringCloudAppMysqlAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppMysqlAssociationArgs(
-      databaseName: (map['databaseName'] as String).input(),
-      mysqlServerId: (map['mysqlServerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: (map['password'] as String).input(),
-      springCloudAppId: (map['springCloudAppId'] as String).input(),
-      username: (map['username'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      mysqlServerId: pulumi.Input.fromValue(map['mysqlServerId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      springCloudAppId: pulumi.Input.fromValue(
+        map['springCloudAppId'] as String,
+      ),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

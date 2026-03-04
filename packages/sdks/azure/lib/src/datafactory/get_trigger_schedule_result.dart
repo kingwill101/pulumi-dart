@@ -7,26 +7,36 @@ import 'get_trigger_schedule_schedule.dart';
 class GetTriggerScheduleResult {
   /// Specifies if the Data Factory Schedule Trigger is activated.
   final bool activated;
+
   /// List of tags that can be used for describing the Data Factory Schedule Trigger.
   final List<String> annotations;
   final String dataFactoryId;
+
   /// The Schedule Trigger's description.
   final String description;
+
   /// The time the Schedule Trigger should end. The time will be represented in UTC.
   final String endTime;
+
   /// The trigger frequency.
   final String frequency;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The interval for how often the trigger occurs.
   final int interval;
   final String name;
+
   /// The Data Factory Pipeline name that the trigger will act on.
   final String pipelineName;
+
   /// A `schedule` block as described below, which further specifies the recurrence schedule for the trigger.
   final List<GetTriggerScheduleSchedule> schedules;
+
   /// The time the Schedule Trigger will start. The time will be represented in UTC.
   final String startTime;
+
   /// The timezone of the start/end time.
   final String timeZone;
 
@@ -72,7 +82,11 @@ class GetTriggerScheduleResult {
       'interval': interval,
       'name': name,
       'pipelineName': pipelineName,
-      'schedules': pulumi.Input.encodeList<GetTriggerScheduleSchedule, Map<String, dynamic>>(schedules, (value) => value.toMap()),
+      'schedules':
+          pulumi.Input.encodeList<
+            GetTriggerScheduleSchedule,
+            Map<String, dynamic>
+          >(schedules, (value) => value.toMap()),
       'startTime': startTime,
       'timeZone': timeZone,
     };
@@ -90,10 +104,14 @@ class GetTriggerScheduleResult {
       interval: map['interval'] as int,
       name: map['name'] as String,
       pipelineName: map['pipelineName'] as String,
-      schedules: pulumi.Input.decodeList<GetTriggerScheduleSchedule>(map['schedules'], (value) => GetTriggerScheduleSchedule.fromMap((value as Map).cast<String, dynamic>())),
+      schedules: pulumi.Input.decodeList<GetTriggerScheduleSchedule>(
+        map['schedules']!,
+        (value) => GetTriggerScheduleSchedule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       startTime: map['startTime'] as String,
       timeZone: map['timeZone'] as String,
     );
   }
 }
-

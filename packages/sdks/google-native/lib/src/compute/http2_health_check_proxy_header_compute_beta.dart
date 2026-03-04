@@ -3,16 +3,17 @@ enum HTTP2HealthCheckProxyHeaderComputeBeta {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const HTTP2HealthCheckProxyHeaderComputeBeta(this.value);
-  final String value;
+  const HTTP2HealthCheckProxyHeaderComputeBeta(this.wireValue);
+  final String wireValue;
 
   static HTTP2HealthCheckProxyHeaderComputeBeta fromValue(String value) {
     for (final item in HTTP2HealthCheckProxyHeaderComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HTTP2HealthCheckProxyHeaderComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown HTTP2HealthCheckProxyHeaderComputeBeta value: $value',
+    );
   }
 }
-

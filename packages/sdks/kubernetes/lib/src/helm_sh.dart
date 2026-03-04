@@ -1,5 +1,3 @@
-library module_helm_sh;
-
 export 'helm_sh/chart.dart';
 export 'helm_sh/chart_args.dart';
 export 'helm_sh/chart_helm_sh_v4.dart';

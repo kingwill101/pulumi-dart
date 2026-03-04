@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsFunctionAppSlotAuthSettingsGoogle {
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
+
   /// The client secret associated with the Google web application. Cannot be specified with `client_secret_setting_name`.
   final pulumi.Input<String>? clientSecret;
+
   /// The app setting name that contains the `client_secret` value used for Google login. Cannot be specified with `client_secret`.
   final pulumi.Input<String>? clientSecretSettingName;
+
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. If not specified, "openid", "profile", and "email" are used as default scopes.
   final pulumi.Input<List<String>>? oauthScopes;
 
@@ -33,13 +36,26 @@ class WindowsFunctionAppSlotAuthSettingsGoogle {
     };
   }
 
-  factory WindowsFunctionAppSlotAuthSettingsGoogle.fromMap(Map<String, dynamic> map) {
+  factory WindowsFunctionAppSlotAuthSettingsGoogle.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsFunctionAppSlotAuthSettingsGoogle(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName']! as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecretSettingName: (() {
+        final guardedValue = map['clientSecretSettingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthScopes: (() {
+        final guardedValue = map['oauthScopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

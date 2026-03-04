@@ -8,7 +8,7 @@ import 'flow_pipeline_state.dart';
 ///
 /// For information about Pai Flow Pipeline and how to use it, see [What is Pipeline](https://www.alibabacloud.com/help/en/pai/developer-reference/api-paiflow-2021-02-02-createpipeline).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -795,8 +795,10 @@ import 'flow_pipeline_state.dart';
 class FlowPipeline extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// The pipeline definition. For more information, see the sample pipeline definition).
   late final pulumi.Output<String> manifest;
+
   /// The ID of the workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -809,14 +811,14 @@ class FlowPipeline extends pulumi.CustomResource {
     FlowPipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/flowPipeline:FlowPipeline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.manifest = registerOutput<String>('manifest');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/flowPipeline:FlowPipeline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    manifest = registerOutput<String>('manifest');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [FlowPipeline] resource's state with the given [name] and [id].
@@ -837,13 +839,13 @@ class FlowPipeline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/flowPipeline:FlowPipeline',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.manifest = registerOutput<String>('manifest');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/flowPipeline:FlowPipeline',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    manifest = registerOutput<String>('manifest');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

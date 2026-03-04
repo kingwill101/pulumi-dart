@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleManagementPolicyAssignmentArgs {
   /// The name of format {guid_guid} the role management policy assignment to get.
   final pulumi.Input<String> roleManagementPolicyAssignmentName;
+
   /// The scope of the role management policy.
   final pulumi.Input<String> scope;
 
@@ -27,11 +28,14 @@ class GetRoleManagementPolicyAssignmentArgs {
     };
   }
 
-  factory GetRoleManagementPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRoleManagementPolicyAssignmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRoleManagementPolicyAssignmentArgs(
-      roleManagementPolicyAssignmentName: (map['roleManagementPolicyAssignmentName'] as String).input(),
-      scope: (map['scope'] as String).input(),
+      roleManagementPolicyAssignmentName: pulumi.Input.fromValue(
+        map['roleManagementPolicyAssignmentName'] as String,
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

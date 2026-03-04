@@ -19,7 +19,7 @@ import 'get_trails_result.dart';
 
 /// This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.56.0+
+/// &gt; **NOTE:** Available in 1.56.0+
 ///
 /// ## Example Usage
 ///
@@ -148,7 +148,7 @@ Future<GetConsumerGroupsResult> getConsumerGroups(
 
 /// This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.201.0+.
+/// &gt; **NOTE:** Available in v1.201.0+.
 ///
 /// ## Example Usage
 ///
@@ -240,8 +240,7 @@ Future<GetConsumerGroupsResult> getConsumerGroups(
 ///   alicloudActiontrailGlobalEventsStorageRegion1: ${default.storageRegion}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(
-  {
+Future<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -255,7 +254,7 @@ Future<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(
 
 /// This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.139.0+.
+/// &gt; **NOTE:** Available in v1.139.0+.
 ///
 /// ## Example Usage
 ///
@@ -422,7 +421,7 @@ Future<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobs(
 
 /// This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.59.0+
+/// &gt; **NOTE:** Available in 1.59.0+
 ///
 /// ## Example Usage
 ///
@@ -721,7 +720,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.66.0+
+/// &gt; **NOTE:** Available in 1.66.0+
 ///
 /// ## Example Usage
 ///
@@ -862,7 +861,7 @@ Future<GetSaslAclsResult> getSaslAcls(
 
 /// This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.66.0.
+/// &gt; **NOTE:** Available since v1.66.0.
 ///
 /// ## Example Usage
 ///
@@ -1287,7 +1286,7 @@ Future<GetSaslUsersResult> getSaslUsers(
 
 /// This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.56.0+
+/// &gt; **NOTE:** Available in 1.56.0+
 ///
 /// ## Example Usage
 ///
@@ -1416,7 +1415,7 @@ Future<GetTopicsResult> getTopics(
 
 /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.95.0+
+/// &gt; **NOTE:** Available in 1.95.0+
 ///
 /// ## Example Usage
 ///
@@ -1531,7 +1530,7 @@ Future<GetTrailsResult> getTrails(
   return GetTrailsResult.fromMap(result);
 }
 
-/// > **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+/// &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
 ///
 /// This data source provides a list of action trail of the current Alibaba Cloud user.
 ///

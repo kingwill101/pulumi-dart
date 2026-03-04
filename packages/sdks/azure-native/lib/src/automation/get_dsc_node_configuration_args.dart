@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDscNodeConfigurationArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// The Dsc node configuration name.
   final pulumi.Input<String> nodeConfigurationName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetDscNodeConfigurationArgs {
 
   factory GetDscNodeConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetDscNodeConfigurationArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      nodeConfigurationName: (map['nodeConfigurationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      nodeConfigurationName: pulumi.Input.fromValue(
+        map['nodeConfigurationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum NotificationConfigPayloadFormat {
   none("NONE"),
   json("JSON");
 
-  const NotificationConfigPayloadFormat(this.value);
-  final String value;
+  const NotificationConfigPayloadFormat(this.wireValue);
+  final String wireValue;
 
   static NotificationConfigPayloadFormat fromValue(String value) {
     for (final item in NotificationConfigPayloadFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NotificationConfigPayloadFormat value: $value');
+    throw ArgumentError(
+      'Unknown NotificationConfigPayloadFormat value: $value',
+    );
   }
 }
-

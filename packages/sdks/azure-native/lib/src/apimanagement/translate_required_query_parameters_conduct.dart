@@ -3,16 +3,17 @@ enum TranslateRequiredQueryParametersConduct {
   template("template"),
   query("query");
 
-  const TranslateRequiredQueryParametersConduct(this.value);
-  final String value;
+  const TranslateRequiredQueryParametersConduct(this.wireValue);
+  final String wireValue;
 
   static TranslateRequiredQueryParametersConduct fromValue(String value) {
     for (final item in TranslateRequiredQueryParametersConduct.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TranslateRequiredQueryParametersConduct value: $value');
+    throw ArgumentError(
+      'Unknown TranslateRequiredQueryParametersConduct value: $value',
+    );
   }
 }
-

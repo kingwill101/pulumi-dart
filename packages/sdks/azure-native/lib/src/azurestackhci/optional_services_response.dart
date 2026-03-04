@@ -9,20 +9,19 @@ class OptionalServicesResponse {
 
   /// Creates a new [OptionalServicesResponse].
   /// [customLocation] The name of custom location.
-  OptionalServicesResponse({
-    this.customLocation,
-  });
+  OptionalServicesResponse({this.customLocation});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'customLocation': ?customLocation,
-    };
+    return <String, dynamic>{'customLocation': ?customLocation};
   }
 
   factory OptionalServicesResponse.fromMap(Map<String, dynamic> map) {
     return OptionalServicesResponse(
-      customLocation: map['customLocation'] == null ? null : (map['customLocation']! as String).input(),
+      customLocation: (() {
+        final guardedValue = map['customLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

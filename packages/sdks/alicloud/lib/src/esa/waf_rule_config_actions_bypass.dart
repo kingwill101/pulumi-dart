@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WafRuleConfigActionsBypass {
   /// The IDs of custom rules to skip.
   final pulumi.Input<List<int>>? customRules;
+
   /// The IDs of specific managed rules to skip.
   final pulumi.Input<List<int>>? regularRules;
+
   /// The types of managed rules to skip.
   final pulumi.Input<List<String>>? regularTypes;
+
   /// The scope that is skipped when requests match conditions defined in the whitelist rule.
   final pulumi.Input<String>? skip;
+
   /// The rule categories that are skipped when requests match conditions defined in the whitelist rule.
   final pulumi.Input<List<String>>? tags;
 
@@ -40,12 +44,31 @@ class WafRuleConfigActionsBypass {
 
   factory WafRuleConfigActionsBypass.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigActionsBypass(
-      customRules: map['customRules'] == null ? null : ((map['customRules']! as List).cast<int>()).input(),
-      regularRules: map['regularRules'] == null ? null : ((map['regularRules']! as List).cast<int>()).input(),
-      regularTypes: map['regularTypes'] == null ? null : ((map['regularTypes']! as List).cast<String>()).input(),
-      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      customRules: (() {
+        final guardedValue = map['customRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      regularRules: (() {
+        final guardedValue = map['regularRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      regularTypes: (() {
+        final guardedValue = map['regularTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      skip: (() {
+        final guardedValue = map['skip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

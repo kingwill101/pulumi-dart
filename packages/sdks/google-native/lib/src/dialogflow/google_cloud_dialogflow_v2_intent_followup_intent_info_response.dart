@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse {
   /// The unique identifier of the followup intent. Format: `projects//agent/intents/`.
   final pulumi.Input<String> followupIntentName;
+
   /// The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.
   final pulumi.Input<String> parentFollowupIntentName;
 
@@ -24,11 +25,16 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse(
-      followupIntentName: (map['followupIntentName'] as String).input(),
-      parentFollowupIntentName: (map['parentFollowupIntentName'] as String).input(),
+      followupIntentName: pulumi.Input.fromValue(
+        map['followupIntentName'] as String,
+      ),
+      parentFollowupIntentName: pulumi.Input.fromValue(
+        map['parentFollowupIntentName'] as String,
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum DomainManagement {
   valueCustomerManaged("CustomerManaged"),
   valueCustomerManagedInExchangeOnline("CustomerManagedInExchangeOnline");
 
-  const DomainManagement(this.value);
-  final String value;
+  const DomainManagement(this.wireValue);
+  final String wireValue;
 
   static DomainManagement fromValue(String value) {
     for (final item in DomainManagement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DomainManagement value: $value');
   }
 }
-

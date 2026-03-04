@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyEncryptionKeyInfo {
   /// The key URL / identifier.
   final pulumi.Input<String>? keyIdentifier;
+
   /// The KeyVault resource ARM Id for key.
   final pulumi.Input<String>? keyVaultResourceArmId;
 
   /// Creates a new [KeyEncryptionKeyInfo].
   /// [keyIdentifier] The key URL / identifier.
   /// [keyVaultResourceArmId] The KeyVault resource ARM Id for key.
-  KeyEncryptionKeyInfo({
-    this.keyIdentifier,
-    this.keyVaultResourceArmId,
-  });
+  KeyEncryptionKeyInfo({this.keyIdentifier, this.keyVaultResourceArmId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class KeyEncryptionKeyInfo {
 
   factory KeyEncryptionKeyInfo.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKeyInfo(
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
-      keyVaultResourceArmId: map['keyVaultResourceArmId'] == null ? null : (map['keyVaultResourceArmId']! as String).input(),
+      keyIdentifier: (() {
+        final guardedValue = map['keyIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultResourceArmId: (() {
+        final guardedValue = map['keyVaultResourceArmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

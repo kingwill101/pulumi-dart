@@ -7,10 +7,13 @@ import 'blue_green_settings_response.dart';
 class UpgradeSettingsResponse {
   /// Settings for blue-green upgrade strategy.
   final pulumi.Input<BlueGreenSettingsResponse> blueGreenSettings;
+
   /// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
   final pulumi.Input<int> maxSurge;
+
   /// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
   final pulumi.Input<int> maxUnavailable;
+
   /// Update strategy of the node pool.
   final pulumi.Input<String> strategy;
 
@@ -28,7 +31,11 @@ class UpgradeSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blueGreenSettings': pulumi.Input.mapInputValue<BlueGreenSettingsResponse, Map<String, dynamic>>(blueGreenSettings, (value) => value.toMap()),
+      'blueGreenSettings':
+          pulumi.Input.mapInputValue<
+            BlueGreenSettingsResponse,
+            Map<String, dynamic>
+          >(blueGreenSettings, (value) => value.toMap()),
       'maxSurge': maxSurge,
       'maxUnavailable': maxUnavailable,
       'strategy': strategy,
@@ -37,11 +44,14 @@ class UpgradeSettingsResponse {
 
   factory UpgradeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeSettingsResponse(
-      blueGreenSettings: (BlueGreenSettingsResponse.fromMap((map['blueGreenSettings'] as Map).cast<String, dynamic>())).input(),
-      maxSurge: (map['maxSurge'] as int).input(),
-      maxUnavailable: (map['maxUnavailable'] as int).input(),
-      strategy: (map['strategy'] as String).input(),
+      blueGreenSettings: pulumi.Input.fromValue(
+        BlueGreenSettingsResponse.fromMap(
+          (map['blueGreenSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      maxSurge: pulumi.Input.fromValue(map['maxSurge'] as int),
+      maxUnavailable: pulumi.Input.fromValue(map['maxUnavailable'] as int),
+      strategy: pulumi.Input.fromValue(map['strategy'] as String),
     );
   }
 }
-

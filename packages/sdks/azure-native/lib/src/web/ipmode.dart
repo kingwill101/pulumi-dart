@@ -4,16 +4,15 @@ enum IPMode {
   valueIPv6("IPv6"),
   valueIPv4AndIPv6("IPv4AndIPv6");
 
-  const IPMode(this.value);
-  final String value;
+  const IPMode(this.wireValue);
+  final String wireValue;
 
   static IPMode fromValue(String value) {
     for (final item in IPMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IPMode value: $value');
   }
 }
-

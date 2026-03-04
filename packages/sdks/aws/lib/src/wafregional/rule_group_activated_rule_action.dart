@@ -7,20 +7,15 @@ class RuleGroupActivatedRuleAction {
 
   /// Creates a new [RuleGroupActivatedRuleAction].
   /// [type] Required.
-  RuleGroupActivatedRuleAction({
-    required this.type,
-  });
+  RuleGroupActivatedRuleAction({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory RuleGroupActivatedRuleAction.fromMap(Map<String, dynamic> map) {
     return RuleGroupActivatedRuleAction(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbInstancePlanPlanConfigPause {
   /// The executed time of the Plan.
   final pulumi.Input<String>? executeTime;
+
   /// The Cron Time of the plan.
   final pulumi.Input<String>? planCronTime;
+
   /// (Available since v1.231.0) The status of the plan task.
   final pulumi.Input<String>? planTaskStatus;
 
@@ -30,10 +32,21 @@ class DbInstancePlanPlanConfigPause {
 
   factory DbInstancePlanPlanConfigPause.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanPlanConfigPause(
-      executeTime: map['executeTime'] == null ? null : (map['executeTime']! as String).input(),
-      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime']! as String).input(),
-      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus']! as String).input(),
+      executeTime: (() {
+        final guardedValue = map['executeTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      planCronTime: (() {
+        final guardedValue = map['planCronTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      planTaskStatus: (() {
+        final guardedValue = map['planTaskStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

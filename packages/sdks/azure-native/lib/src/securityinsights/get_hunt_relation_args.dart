@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHuntRelationArgs {
   /// The hunt id (GUID)
   final pulumi.Input<String> huntId;
+
   /// The hunt relation id (GUID)
   final pulumi.Input<String> huntRelationId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,12 @@ class GetHuntRelationArgs {
 
   factory GetHuntRelationArgs.fromMap(Map<String, dynamic> map) {
     return GetHuntRelationArgs(
-      huntId: (map['huntId'] as String).input(),
-      huntRelationId: (map['huntRelationId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      huntId: pulumi.Input.fromValue(map['huntId'] as String),
+      huntRelationId: pulumi.Input.fromValue(map['huntRelationId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

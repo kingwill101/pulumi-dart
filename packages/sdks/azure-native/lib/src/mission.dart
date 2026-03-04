@@ -1,5 +1,3 @@
-library module_mission;
-
 export 'mission/action_performed.dart';
 export 'mission/approval.dart';
 export 'mission/approval_args.dart';

@@ -8,52 +8,77 @@ import 'terminal_server_configuration_response.dart';
 class GetNetworkFabricResult {
   /// Administrative state of the resource.
   final String administrativeState;
+
   /// Switch configuration description.
   final String? annotation;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Configuration state of the resource.
   final String configurationState;
+
   /// ASN of CE devices for CE/PE connectivity.
   final double fabricASN;
+
   /// The version of Network Fabric.
   final String? fabricVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
   final String ipv4Prefix;
+
   /// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
   final String? ipv6Prefix;
+
   /// List of L2 Isolation Domain resource IDs under the Network Fabric.
   final List<String> l2IsolationDomains;
+
   /// List of L3 Isolation Domain resource IDs under the Network Fabric.
   final List<String> l3IsolationDomains;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Configuration to be used to setup the management network.
-  final ManagementNetworkConfigurationPropertiesResponse managementNetworkConfiguration;
+  final ManagementNetworkConfigurationPropertiesResponse
+  managementNetworkConfiguration;
+
   /// The name of the resource
   final String name;
+
   /// Azure resource ID for the NetworkFabricController the NetworkFabric belongs.
   final String networkFabricControllerId;
+
   /// Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
   final String networkFabricSku;
+
   /// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning.
   final String provisioningState;
+
   /// Number of compute racks associated to Network Fabric.
   final int? rackCount;
+
   /// List of NetworkRack resource IDs under the Network Fabric. The number of racks allowed depends on the Network Fabric SKU.
   final List<String> racks;
+
   /// Array of router IDs.
   final List<String> routerIds;
+
   /// Number of servers.Possible values are from 1-16.
   final int serverCountPerRack;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Network and credentials configuration currently applied to terminal server.
   final TerminalServerConfigurationResponse terminalServerConfiguration;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -144,31 +169,58 @@ class GetNetworkFabricResult {
   factory GetNetworkFabricResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkFabricResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation']! as String,
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       fabricASN: map['fabricASN'] as double,
-      fabricVersion: map['fabricVersion'] == null ? null : map['fabricVersion']! as String,
+      fabricVersion: (() {
+        final guardedValue = map['fabricVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ipv4Prefix: map['ipv4Prefix'] as String,
-      ipv6Prefix: map['ipv6Prefix'] == null ? null : map['ipv6Prefix']! as String,
+      ipv6Prefix: (() {
+        final guardedValue = map['ipv6Prefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       l2IsolationDomains: (map['l2IsolationDomains'] as List).cast<String>(),
       l3IsolationDomains: (map['l3IsolationDomains'] as List).cast<String>(),
       location: map['location'] as String,
-      managementNetworkConfiguration: ManagementNetworkConfigurationPropertiesResponse.fromMap((map['managementNetworkConfiguration'] as Map).cast<String, dynamic>()),
+      managementNetworkConfiguration:
+          ManagementNetworkConfigurationPropertiesResponse.fromMap(
+            (map['managementNetworkConfiguration']! as Map)
+                .cast<String, dynamic>(),
+          ),
       name: map['name'] as String,
       networkFabricControllerId: map['networkFabricControllerId'] as String,
       networkFabricSku: map['networkFabricSku'] as String,
       provisioningState: map['provisioningState'] as String,
-      rackCount: map['rackCount'] == null ? null : map['rackCount']! as int,
+      rackCount: (() {
+        final guardedValue = map['rackCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       racks: (map['racks'] as List).cast<String>(),
       routerIds: (map['routerIds'] as List).cast<String>(),
       serverCountPerRack: map['serverCountPerRack'] as int,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      terminalServerConfiguration: TerminalServerConfigurationResponse.fromMap((map['terminalServerConfiguration'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      terminalServerConfiguration: TerminalServerConfigurationResponse.fromMap(
+        (map['terminalServerConfiguration']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

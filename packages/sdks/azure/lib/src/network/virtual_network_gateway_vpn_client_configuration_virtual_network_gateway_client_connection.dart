@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection {
   /// A list of address prefixes for P2S VPN Client.
   final pulumi.Input<List<String>> addressPrefixes;
+
   /// The name of the Virtual Network Gateway Client Connection.
   final pulumi.Input<String> name;
+
   /// A list of names of Virtual Network Gateway Policy Groups.
   final pulumi.Input<List<String>> policyGroupNames;
 
@@ -28,12 +30,17 @@ class VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConn
     };
   }
 
-  factory VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection(
-      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      policyGroupNames: ((map['policyGroupNames'] as List).cast<String>()).input(),
+      addressPrefixes: pulumi.Input.fromValue(
+        (map['addressPrefixes'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      policyGroupNames: pulumi.Input.fromValue(
+        (map['policyGroupNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

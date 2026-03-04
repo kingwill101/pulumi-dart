@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'store_index_args.dart';
-import 'store_index_field_search.dart';
 import 'store_index_full_text.dart';
 import 'store_index_state.dart';
 
 /// Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
 /// You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -330,20 +329,27 @@ import 'store_index_state.dart';
 class StoreIndex extends pulumi.CustomResource {
   /// List configurations of field search index. See `field_search` below.
   ///
-  /// > **Note:** At least one of the "full_text" and "field_search" should be specified.
-  late final pulumi.Output<List<StoreIndexFieldSearch>?> fieldSearches;
+  /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
+  late final pulumi.Output<List<Map<String, dynamic>>?> fieldSearches;
+
   /// The configuration of full text index. See `full_text` below.
   late final pulumi.Output<StoreIndexFullText?> fullText;
+
   /// Whether to enable log reduce. Default to false.
   late final pulumi.Output<bool?> logReduce;
+
   /// The black list of log reduce.
   late final pulumi.Output<List<String>?> logReduceBlackLists;
+
   /// The white list of log reduce.
   late final pulumi.Output<List<String>?> logReduceWhiteLists;
+
   /// The log store name to the query index belongs.
   late final pulumi.Output<String> logstore;
+
   /// The max text length.
   late final pulumi.Output<int?> maxTextLen;
+
   /// The project name to the log store belongs.
   late final pulumi.Output<String> project;
 
@@ -356,19 +362,21 @@ class StoreIndex extends pulumi.CustomResource {
     StoreIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/storeIndex:StoreIndex',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fieldSearches = registerOutput<List<StoreIndexFieldSearch>?>('fieldSearches');
-    this.fullText = registerOutput<StoreIndexFullText?>('fullText');
-    this.logReduce = registerOutput<bool?>('logReduce');
-    this.logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
-    this.logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
-    this.logstore = registerOutput<String>('logstore');
-    this.maxTextLen = registerOutput<int?>('maxTextLen');
-    this.project = registerOutput<String>('project');
+         'alicloud:log/storeIndex:StoreIndex',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fieldSearches = registerOutput<List<Map<String, dynamic>>?>(
+      'fieldSearches',
+    );
+    fullText = registerOutput<StoreIndexFullText?>('fullText');
+    logReduce = registerOutput<bool?>('logReduce');
+    logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
+    logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
+    logstore = registerOutput<String>('logstore');
+    maxTextLen = registerOutput<int?>('maxTextLen');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [StoreIndex] resource's state with the given [name] and [id].
@@ -389,18 +397,20 @@ class StoreIndex extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/storeIndex:StoreIndex',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fieldSearches = registerOutput<List<StoreIndexFieldSearch>?>('fieldSearches');
-    this.fullText = registerOutput<StoreIndexFullText?>('fullText');
-    this.logReduce = registerOutput<bool?>('logReduce');
-    this.logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
-    this.logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
-    this.logstore = registerOutput<String>('logstore');
-    this.maxTextLen = registerOutput<int?>('maxTextLen');
-    this.project = registerOutput<String>('project');
+         'alicloud:log/storeIndex:StoreIndex',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fieldSearches = registerOutput<List<Map<String, dynamic>>?>(
+      'fieldSearches',
+    );
+    fullText = registerOutput<StoreIndexFullText?>('fullText');
+    logReduce = registerOutput<bool?>('logReduce');
+    logReduceBlackLists = registerOutput<List<String>?>('logReduceBlackLists');
+    logReduceWhiteLists = registerOutput<List<String>?>('logReduceWhiteLists');
+    logstore = registerOutput<String>('logstore');
+    maxTextLen = registerOutput<int?>('maxTextLen');
+    project = registerOutput<String>('project');
   }
 }

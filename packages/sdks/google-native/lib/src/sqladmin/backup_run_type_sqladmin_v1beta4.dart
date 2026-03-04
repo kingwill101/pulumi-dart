@@ -4,16 +4,15 @@ enum BackupRunTypeSqladminV1beta4 {
   automated("AUTOMATED"),
   onDemand("ON_DEMAND");
 
-  const BackupRunTypeSqladminV1beta4(this.value);
-  final String value;
+  const BackupRunTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static BackupRunTypeSqladminV1beta4 fromValue(String value) {
     for (final item in BackupRunTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupRunTypeSqladminV1beta4 value: $value');
   }
 }
-

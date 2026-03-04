@@ -5,15 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVirtualMachineScaleSetAutomaticInstanceRepair {
   /// The repair action that will be used for repairing unhealthy virtual machines in the scale set. Possible values include `Replace`, `Restart`, `Reimage`.
   ///
-  /// > **Note:** Once the `action` field has been set it will always return the last value it was assigned if it is removed from the configuration file.
+  /// &gt; **Note:** Once the `action` field has been set it will always return the last value it was assigned if it is removed from the configuration file.
   ///
-  /// > **Note:** If you wish to update the repair `action` of an existing `automatic_instance_repair` policy, you must first `disable` the `automatic_instance_repair` policy before you can re-enable the `automatic_instance_repair` policy with the new repair `action` defined.
+  /// &gt; **Note:** If you wish to update the repair `action` of an existing `automatic_instance_repair` policy, you must first `disable` the `automatic_instance_repair` policy before you can re-enable the `automatic_instance_repair` policy with the new repair `action` defined.
   final pulumi.Input<String>? action;
+
   /// Should the automatic instance repair be enabled on this Virtual Machine Scale Set?
   final pulumi.Input<bool> enabled;
+
   /// Amount of time for which automatic repairs will be delayed. The grace period starts right after the VM is found unhealthy. Possible values are between `10` and `90` minutes. The time duration should be specified in `ISO 8601` format (e.g. `PT10M` to `PT90M`).
   ///
-  /// > **Note:** Once the `grace_period` field has been set it will always return the last value it was assigned if it is removed from the configuration file.
+  /// &gt; **Note:** Once the `grace_period` field has been set it will always return the last value it was assigned if it is removed from the configuration file.
   final pulumi.Input<String>? gracePeriod;
 
   /// Creates a new [LinuxVirtualMachineScaleSetAutomaticInstanceRepair].
@@ -34,12 +36,21 @@ class LinuxVirtualMachineScaleSetAutomaticInstanceRepair {
     };
   }
 
-  factory LinuxVirtualMachineScaleSetAutomaticInstanceRepair.fromMap(Map<String, dynamic> map) {
+  factory LinuxVirtualMachineScaleSetAutomaticInstanceRepair.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxVirtualMachineScaleSetAutomaticInstanceRepair(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      gracePeriod: map['gracePeriod'] == null ? null : (map['gracePeriod']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      gracePeriod: (() {
+        final guardedValue = map['gracePeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

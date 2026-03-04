@@ -8,7 +8,7 @@ import 'airflow_state.dart';
 ///
 /// For information about Dms Airflow and how to use it, see [What is Airflow](https://next.api.alibabacloud.com/document/Dms/2025-04-14/CreateAirflow).
 ///
-/// > **NOTE:** Available since v1.260.0.
+/// &gt; **NOTE:** Available since v1.260.0.
 ///
 /// ## Example Usage
 ///
@@ -369,36 +369,52 @@ import 'airflow_state.dart';
 class Airflow extends pulumi.CustomResource {
   /// AirflowId
   late final pulumi.Output<String> airflowId;
+
   /// Name of the Airflow instance
   late final pulumi.Output<String> airflowName;
+
   /// Airflow instance specifications
   late final pulumi.Output<String> appSpec;
+
   /// Dag scan path
   late final pulumi.Output<String?> dagsDir;
+
   /// Description of the airflow instance
   late final pulumi.Output<String> description;
+
   /// OSS bucket name
   late final pulumi.Output<String> ossBucketName;
+
   /// OSS path
   late final pulumi.Output<String> ossPath;
+
   /// The path of the plugin scanned by the airflow instance.
   late final pulumi.Output<String?> pluginsDir;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// Path to installable package
   late final pulumi.Output<String?> requirementFile;
+
   /// Security group ID
   late final pulumi.Output<String> securityGroupId;
+
   /// Launch script for the airflow container
   late final pulumi.Output<String?> startupFile;
+
   /// Vpc id
   late final pulumi.Output<String> vpcId;
+
   /// Switch ID
   late final pulumi.Output<String> vswitchId;
+
   /// Worker Node extension
   late final pulumi.Output<int> workerServerlessReplicas;
+
   /// DMS workspace ID
   late final pulumi.Output<String> workspaceId;
+
   /// Zone ID in the region
   late final pulumi.Output<String> zoneId;
 
@@ -411,28 +427,28 @@ class Airflow extends pulumi.CustomResource {
     AirflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/airflow:Airflow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.airflowId = registerOutput<String>('airflowId');
-    this.airflowName = registerOutput<String>('airflowName');
-    this.appSpec = registerOutput<String>('appSpec');
-    this.dagsDir = registerOutput<String?>('dagsDir');
-    this.description = registerOutput<String>('description');
-    this.ossBucketName = registerOutput<String>('ossBucketName');
-    this.ossPath = registerOutput<String>('ossPath');
-    this.pluginsDir = registerOutput<String?>('pluginsDir');
-    this.regionId = registerOutput<String>('regionId');
-    this.requirementFile = registerOutput<String?>('requirementFile');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.startupFile = registerOutput<String?>('startupFile');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.workerServerlessReplicas = registerOutput<int>('workerServerlessReplicas');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:dms/airflow:Airflow',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    airflowId = registerOutput<String>('airflowId');
+    airflowName = registerOutput<String>('airflowName');
+    appSpec = registerOutput<String>('appSpec');
+    dagsDir = registerOutput<String?>('dagsDir');
+    description = registerOutput<String>('description');
+    ossBucketName = registerOutput<String>('ossBucketName');
+    ossPath = registerOutput<String>('ossPath');
+    pluginsDir = registerOutput<String?>('pluginsDir');
+    regionId = registerOutput<String>('regionId');
+    requirementFile = registerOutput<String?>('requirementFile');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    startupFile = registerOutput<String?>('startupFile');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    workerServerlessReplicas = registerOutput<int>('workerServerlessReplicas');
+    workspaceId = registerOutput<String>('workspaceId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Airflow] resource's state with the given [name] and [id].
@@ -453,27 +469,27 @@ class Airflow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/airflow:Airflow',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.airflowId = registerOutput<String>('airflowId');
-    this.airflowName = registerOutput<String>('airflowName');
-    this.appSpec = registerOutput<String>('appSpec');
-    this.dagsDir = registerOutput<String?>('dagsDir');
-    this.description = registerOutput<String>('description');
-    this.ossBucketName = registerOutput<String>('ossBucketName');
-    this.ossPath = registerOutput<String>('ossPath');
-    this.pluginsDir = registerOutput<String?>('pluginsDir');
-    this.regionId = registerOutput<String>('regionId');
-    this.requirementFile = registerOutput<String?>('requirementFile');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.startupFile = registerOutput<String?>('startupFile');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.workerServerlessReplicas = registerOutput<int>('workerServerlessReplicas');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:dms/airflow:Airflow',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    airflowId = registerOutput<String>('airflowId');
+    airflowName = registerOutput<String>('airflowName');
+    appSpec = registerOutput<String>('appSpec');
+    dagsDir = registerOutput<String?>('dagsDir');
+    description = registerOutput<String>('description');
+    ossBucketName = registerOutput<String>('ossBucketName');
+    ossPath = registerOutput<String>('ossPath');
+    pluginsDir = registerOutput<String?>('pluginsDir');
+    regionId = registerOutput<String>('regionId');
+    requirementFile = registerOutput<String?>('requirementFile');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    startupFile = registerOutput<String?>('startupFile');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    workerServerlessReplicas = registerOutput<int>('workerServerlessReplicas');
+    workspaceId = registerOutput<String>('workspaceId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

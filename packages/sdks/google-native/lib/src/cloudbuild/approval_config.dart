@@ -9,20 +9,19 @@ class ApprovalConfig {
 
   /// Creates a new [ApprovalConfig].
   /// [approvalRequired] Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
-  ApprovalConfig({
-    this.approvalRequired,
-  });
+  ApprovalConfig({this.approvalRequired});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'approvalRequired': ?approvalRequired,
-    };
+    return <String, dynamic>{'approvalRequired': ?approvalRequired};
   }
 
   factory ApprovalConfig.fromMap(Map<String, dynamic> map) {
     return ApprovalConfig(
-      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired']! as bool).input(),
+      approvalRequired: (() {
+        final guardedValue = map['approvalRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

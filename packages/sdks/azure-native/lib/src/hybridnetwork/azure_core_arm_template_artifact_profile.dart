@@ -8,6 +8,7 @@ import 'referenced_resource.dart';
 class AzureCoreArmTemplateArtifactProfile {
   /// The reference to artifact store.
   final pulumi.Input<ReferencedResource>? artifactStore;
+
   /// Template artifact profile.
   final pulumi.Input<ArmTemplateArtifactProfile>? templateArtifactProfile;
 
@@ -21,16 +22,41 @@ class AzureCoreArmTemplateArtifactProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'artifactStore': ?pulumi.Input.mapOptionalInputValue<ReferencedResource, Map<String, dynamic>>(artifactStore, (value) => value.toMap()),
-      'templateArtifactProfile': ?pulumi.Input.mapOptionalInputValue<ArmTemplateArtifactProfile, Map<String, dynamic>>(templateArtifactProfile, (value) => value.toMap()),
+      'artifactStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReferencedResource,
+            Map<String, dynamic>
+          >(artifactStore, (value) => value.toMap()),
+      'templateArtifactProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArmTemplateArtifactProfile,
+            Map<String, dynamic>
+          >(templateArtifactProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureCoreArmTemplateArtifactProfile.fromMap(Map<String, dynamic> map) {
+  factory AzureCoreArmTemplateArtifactProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureCoreArmTemplateArtifactProfile(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResource.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
-      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : (ArmTemplateArtifactProfile.fromMap((map['templateArtifactProfile']! as Map).cast<String, dynamic>())).input(),
+      artifactStore: (() {
+        final guardedValue = map['artifactStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReferencedResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      templateArtifactProfile: (() {
+        final guardedValue = map['templateArtifactProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArmTemplateArtifactProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

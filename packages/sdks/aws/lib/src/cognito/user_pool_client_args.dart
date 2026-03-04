@@ -12,52 +12,76 @@ import 'user_pool_client_token_validity_units.dart';
 class UserPoolClientArgs {
   /// Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.access_token`.
   final pulumi.Input<int>? accessTokenValidity;
+
   /// List of allowed OAuth flows, including `code`, `implicit`, and `client_credentials`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   final pulumi.Input<List<String>>? allowedOauthFlows;
+
   /// Whether the client is allowed to use OAuth 2.0 features. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure the following arguments: `callback_urls`, `logout_urls`, `allowed_oauth_scopes` and `allowed_oauth_flows`.
   final pulumi.Input<bool>? allowedOauthFlowsUserPoolClient;
+
   /// List of allowed OAuth scopes, including `phone`, `email`, `openid`, `profile`, and `aws.cognito.signin.user.admin`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   final pulumi.Input<List<String>>? allowedOauthScopes;
+
   /// Configuration block for Amazon Pinpoint analytics that collects metrics for this user pool. See details below.
-  final pulumi.Input<UserPoolClientAnalyticsConfiguration>? analyticsConfiguration;
+  final pulumi.Input<UserPoolClientAnalyticsConfiguration>?
+  analyticsConfiguration;
+
   /// Duration, in minutes, of the session token created by Amazon Cognito for each API request in an authentication flow. The session token must be responded to by the native user of the user pool before it expires. Valid values for `auth_session_validity` are between `3` and `15`, with a default value of `3`.
   final pulumi.Input<int>? authSessionValidity;
+
   /// List of allowed callback URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   final pulumi.Input<List<String>>? callbackUrls;
+
   /// Default redirect URI and must be included in the list of callback URLs.
   final pulumi.Input<String>? defaultRedirectUri;
+
   /// Enables the propagation of additional user context data.
   final pulumi.Input<bool>? enablePropagateAdditionalUserContextData;
+
   /// Enables or disables token revocation.
   final pulumi.Input<bool>? enableTokenRevocation;
+
   /// List of authentication flows. The available options include `ADMIN_NO_SRP_AUTH`, `CUSTOM_AUTH_FLOW_ONLY`, `USER_PASSWORD_AUTH`, `ALLOW_ADMIN_USER_PASSWORD_AUTH`, `ALLOW_CUSTOM_AUTH`, `ALLOW_USER_PASSWORD_AUTH`, `ALLOW_USER_SRP_AUTH`, `ALLOW_REFRESH_TOKEN_AUTH`, and `ALLOW_USER_AUTH`.
   final pulumi.Input<List<String>>? explicitAuthFlows;
+
   /// Boolean flag indicating whether an application secret should be generated.
   final pulumi.Input<bool>? generateSecret;
+
   /// Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.id_token`.
   final pulumi.Input<int>? idTokenValidity;
+
   /// List of allowed logout URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
   final pulumi.Input<List<String>>? logoutUrls;
+
   /// Name of the application client.
   final pulumi.Input<String>? name;
+
   /// Setting determines the errors and responses returned by Cognito APIs when a user does not exist in the user pool during authentication, account confirmation, and password recovery.
   final pulumi.Input<String>? preventUserExistenceErrors;
+
   /// List of user pool attributes that the application client can read from.
   final pulumi.Input<List<String>>? readAttributes;
+
   /// A block that specifies the configuration of refresh token rotation. Detailed below.
   final pulumi.Input<UserPoolClientRefreshTokenRotation>? refreshTokenRotation;
+
   /// Time limit, between 60 minutes and 10 years, after which the refresh token is no longer valid and cannot be used. By default, the unit is days. The unit can be overridden by a value in `token_validity_units.refresh_token`.
   final pulumi.Input<int>? refreshTokenValidity;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of provider names for the identity providers that are supported on this client. It uses the `provider_name` attribute of the `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
   final pulumi.Input<List<String>>? supportedIdentityProviders;
+
   /// Configuration block for representing the validity times in units. See details below. Detailed below.
   final pulumi.Input<UserPoolClientTokenValidityUnits>? tokenValidityUnits;
+
   /// User pool the client belongs to.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> userPoolId;
+
   /// List of user pool attributes that the application client can write to.
   final pulumi.Input<List<String>>? writeAttributes;
 
@@ -119,11 +143,16 @@ class UserPoolClientArgs {
       'allowedOauthFlows': ?allowedOauthFlows,
       'allowedOauthFlowsUserPoolClient': ?allowedOauthFlowsUserPoolClient,
       'allowedOauthScopes': ?allowedOauthScopes,
-      'analyticsConfiguration': ?pulumi.Input.mapOptionalInputValue<UserPoolClientAnalyticsConfiguration, Map<String, dynamic>>(analyticsConfiguration, (value) => value.toMap()),
+      'analyticsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserPoolClientAnalyticsConfiguration,
+            Map<String, dynamic>
+          >(analyticsConfiguration, (value) => value.toMap()),
       'authSessionValidity': ?authSessionValidity,
       'callbackUrls': ?callbackUrls,
       'defaultRedirectUri': ?defaultRedirectUri,
-      'enablePropagateAdditionalUserContextData': ?enablePropagateAdditionalUserContextData,
+      'enablePropagateAdditionalUserContextData':
+          ?enablePropagateAdditionalUserContextData,
       'enableTokenRevocation': ?enableTokenRevocation,
       'explicitAuthFlows': ?explicitAuthFlows,
       'generateSecret': ?generateSecret,
@@ -132,11 +161,19 @@ class UserPoolClientArgs {
       'name': ?name,
       'preventUserExistenceErrors': ?preventUserExistenceErrors,
       'readAttributes': ?readAttributes,
-      'refreshTokenRotation': ?pulumi.Input.mapOptionalInputValue<UserPoolClientRefreshTokenRotation, Map<String, dynamic>>(refreshTokenRotation, (value) => value.toMap()),
+      'refreshTokenRotation':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserPoolClientRefreshTokenRotation,
+            Map<String, dynamic>
+          >(refreshTokenRotation, (value) => value.toMap()),
       'refreshTokenValidity': ?refreshTokenValidity,
       'region': ?region,
       'supportedIdentityProviders': ?supportedIdentityProviders,
-      'tokenValidityUnits': ?pulumi.Input.mapOptionalInputValue<UserPoolClientTokenValidityUnits, Map<String, dynamic>>(tokenValidityUnits, (value) => value.toMap()),
+      'tokenValidityUnits':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserPoolClientTokenValidityUnits,
+            Map<String, dynamic>
+          >(tokenValidityUnits, (value) => value.toMap()),
       'userPoolId': userPoolId,
       'writeAttributes': ?writeAttributes,
     };
@@ -144,31 +181,134 @@ class UserPoolClientArgs {
 
   factory UserPoolClientArgs.fromMap(Map<String, dynamic> map) {
     return UserPoolClientArgs(
-      accessTokenValidity: map['accessTokenValidity'] == null ? null : ((map['accessTokenValidity'] as int).input()).input(),
-      allowedOauthFlows: map['allowedOauthFlows'] == null ? null : (((map['allowedOauthFlows'] as List).cast<String>()).input()).input(),
-      allowedOauthFlowsUserPoolClient: map['allowedOauthFlowsUserPoolClient'] == null ? null : ((map['allowedOauthFlowsUserPoolClient'] as bool).input()).input(),
-      allowedOauthScopes: map['allowedOauthScopes'] == null ? null : (((map['allowedOauthScopes'] as List).cast<String>()).input()).input(),
-      analyticsConfiguration: map['analyticsConfiguration'] == null ? null : ((UserPoolClientAnalyticsConfiguration.fromMap((map['analyticsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      authSessionValidity: map['authSessionValidity'] == null ? null : ((map['authSessionValidity'] as int).input()).input(),
-      callbackUrls: map['callbackUrls'] == null ? null : (((map['callbackUrls'] as List).cast<String>()).input()).input(),
-      defaultRedirectUri: map['defaultRedirectUri'] == null ? null : ((map['defaultRedirectUri'] as String).input()).input(),
-      enablePropagateAdditionalUserContextData: map['enablePropagateAdditionalUserContextData'] == null ? null : ((map['enablePropagateAdditionalUserContextData'] as bool).input()).input(),
-      enableTokenRevocation: map['enableTokenRevocation'] == null ? null : ((map['enableTokenRevocation'] as bool).input()).input(),
-      explicitAuthFlows: map['explicitAuthFlows'] == null ? null : (((map['explicitAuthFlows'] as List).cast<String>()).input()).input(),
-      generateSecret: map['generateSecret'] == null ? null : ((map['generateSecret'] as bool).input()).input(),
-      idTokenValidity: map['idTokenValidity'] == null ? null : ((map['idTokenValidity'] as int).input()).input(),
-      logoutUrls: map['logoutUrls'] == null ? null : (((map['logoutUrls'] as List).cast<String>()).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      preventUserExistenceErrors: map['preventUserExistenceErrors'] == null ? null : ((map['preventUserExistenceErrors'] as String).input()).input(),
-      readAttributes: map['readAttributes'] == null ? null : (((map['readAttributes'] as List).cast<String>()).input()).input(),
-      refreshTokenRotation: map['refreshTokenRotation'] == null ? null : ((UserPoolClientRefreshTokenRotation.fromMap((map['refreshTokenRotation']! as Map).cast<String, dynamic>())).input()).input(),
-      refreshTokenValidity: map['refreshTokenValidity'] == null ? null : ((map['refreshTokenValidity'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      supportedIdentityProviders: map['supportedIdentityProviders'] == null ? null : (((map['supportedIdentityProviders'] as List).cast<String>()).input()).input(),
-      tokenValidityUnits: map['tokenValidityUnits'] == null ? null : ((UserPoolClientTokenValidityUnits.fromMap((map['tokenValidityUnits']! as Map).cast<String, dynamic>())).input()).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
-      writeAttributes: map['writeAttributes'] == null ? null : (((map['writeAttributes'] as List).cast<String>()).input()).input(),
+      accessTokenValidity: (() {
+        final guardedValue = map['accessTokenValidity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      allowedOauthFlows: (() {
+        final guardedValue = map['allowedOauthFlows'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowedOauthFlowsUserPoolClient: (() {
+        final guardedValue = map['allowedOauthFlowsUserPoolClient'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowedOauthScopes: (() {
+        final guardedValue = map['allowedOauthScopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      analyticsConfiguration: (() {
+        final guardedValue = map['analyticsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserPoolClientAnalyticsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      authSessionValidity: (() {
+        final guardedValue = map['authSessionValidity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      callbackUrls: (() {
+        final guardedValue = map['callbackUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      defaultRedirectUri: (() {
+        final guardedValue = map['defaultRedirectUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enablePropagateAdditionalUserContextData: (() {
+        final guardedValue = map['enablePropagateAdditionalUserContextData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableTokenRevocation: (() {
+        final guardedValue = map['enableTokenRevocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      explicitAuthFlows: (() {
+        final guardedValue = map['explicitAuthFlows'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      generateSecret: (() {
+        final guardedValue = map['generateSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      idTokenValidity: (() {
+        final guardedValue = map['idTokenValidity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      logoutUrls: (() {
+        final guardedValue = map['logoutUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preventUserExistenceErrors: (() {
+        final guardedValue = map['preventUserExistenceErrors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readAttributes: (() {
+        final guardedValue = map['readAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      refreshTokenRotation: (() {
+        final guardedValue = map['refreshTokenRotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserPoolClientRefreshTokenRotation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      refreshTokenValidity: (() {
+        final guardedValue = map['refreshTokenValidity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportedIdentityProviders: (() {
+        final guardedValue = map['supportedIdentityProviders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tokenValidityUnits: (() {
+        final guardedValue = map['tokenValidityUnits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserPoolClientTokenValidityUnits.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
+      writeAttributes: (() {
+        final guardedValue = map['writeAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

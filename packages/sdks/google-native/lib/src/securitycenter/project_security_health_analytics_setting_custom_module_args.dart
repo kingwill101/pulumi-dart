@@ -11,10 +11,16 @@ import 'project_security_health_analytics_setting_custom_module_enablement_state
 class ProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// The user specified custom configuration for the module.
   final pulumi.Input<GoogleCloudSecuritycenterV1CustomConfig>? customConfig;
+
   /// The display name of the Security Health Analytics custom module. This display name becomes the finding category for all findings that are returned by this custom module. The display name must be between 1 and 128 characters, start with a lowercase letter, and contain alphanumeric characters or underscores only.
   final pulumi.Input<String>? displayName;
+
   /// The enablement state of the custom module.
-  final pulumi.Input<ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState>? enablementState;
+  final pulumi.Input<
+    ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState
+  >?
+  enablementState;
+
   /// Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -35,22 +41,59 @@ class ProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudSecuritycenterV1CustomConfig, Map<String, dynamic>>(customConfig, (value) => value.toMap()),
+      'customConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudSecuritycenterV1CustomConfig,
+            Map<String, dynamic>
+          >(customConfig, (value) => value.toMap()),
       'displayName': ?displayName,
-      'enablementState': ?pulumi.Input.mapOptionalInputValue<ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState, String>(enablementState, (value) => value.value),
+      'enablementState':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState,
+            String
+          >(enablementState, (value) => value.wireValue),
       'name': ?name,
       'project': ?project,
     };
   }
 
-  factory ProjectSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
+  factory ProjectSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProjectSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enablementState: map['enablementState'] == null ? null : (ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState']! as String)).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      customConfig: (() {
+        final guardedValue = map['customConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudSecuritycenterV1CustomConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enablementState: (() {
+        final guardedValue = map['enablementState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum MongoDbAuthenticationType {
   valueBasic("Basic"),
   valueAnonymous("Anonymous");
 
-  const MongoDbAuthenticationType(this.value);
-  final String value;
+  const MongoDbAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static MongoDbAuthenticationType fromValue(String value) {
     for (final item in MongoDbAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MongoDbAuthenticationType value: $value');
   }
 }
-

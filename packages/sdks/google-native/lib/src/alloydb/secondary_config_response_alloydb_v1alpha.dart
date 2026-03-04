@@ -9,20 +9,19 @@ class SecondaryConfigResponseAlloydbV1alpha {
 
   /// Creates a new [SecondaryConfigResponseAlloydbV1alpha].
   /// [primaryClusterName] The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
-  SecondaryConfigResponseAlloydbV1alpha({
-    required this.primaryClusterName,
-  });
+  SecondaryConfigResponseAlloydbV1alpha({required this.primaryClusterName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'primaryClusterName': primaryClusterName,
-    };
+    return <String, dynamic>{'primaryClusterName': primaryClusterName};
   }
 
-  factory SecondaryConfigResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
+  factory SecondaryConfigResponseAlloydbV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecondaryConfigResponseAlloydbV1alpha(
-      primaryClusterName: (map['primaryClusterName'] as String).input(),
+      primaryClusterName: pulumi.Input.fromValue(
+        map['primaryClusterName'] as String,
+      ),
     );
   }
 }
-

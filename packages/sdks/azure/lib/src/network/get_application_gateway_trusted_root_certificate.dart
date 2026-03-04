@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayTrustedRootCertificate {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
+
   /// The Secret ID of (base-64 encoded unencrypted pfx) the `Secret` or `Certificate` object stored in Azure KeyVault.
   final pulumi.Input<String> keyVaultSecretId;
+
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
 
@@ -28,12 +30,15 @@ class GetApplicationGatewayTrustedRootCertificate {
     };
   }
 
-  factory GetApplicationGatewayTrustedRootCertificate.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayTrustedRootCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayTrustedRootCertificate(
-      id: (map['id'] as String).input(),
-      keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
-      name: (map['name'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      keyVaultSecretId: pulumi.Input.fromValue(
+        map['keyVaultSecretId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

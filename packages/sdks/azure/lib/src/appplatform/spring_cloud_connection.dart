@@ -6,7 +6,7 @@ import 'spring_cloud_connection_state.dart';
 
 /// Manages a service connector for spring cloud app.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudConnection` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudConnection` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -504,7 +504,7 @@ import 'spring_cloud_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceLinker` - 2024-04-01, 2022-05-01
@@ -520,11 +520,14 @@ class SpringCloudConnection extends pulumi.CustomResource {
   /// The authentication info. An `authentication` block as defined below.
   late final pulumi.Output<SpringCloudConnectionAuthentication> authentication;
   late final pulumi.Output<String?> clientType;
+
   /// The name of the service connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   late final pulumi.Output<SpringCloudConnectionSecretStore?> secretStore;
+
   /// The ID of the data source spring cloud. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudId;
+
   /// The ID of the target resource. Changing this forces a new resource to be created. Possible target resources are `Postgres`, `PostgresFlexible`, `Mysql`, `Sql`, `Redis`, `RedisEnterprise`, `CosmosCassandra`, `CosmosGremlin`, `CosmosMongo`, `CosmosSql`, `CosmosTable`, `StorageBlob`, `StorageQueue`, `StorageFile`, `StorageTable`, `AppConfig`, `EventHub`, `ServiceBus`, `SignalR`, `WebPubSub`, `ConfluentKafka`. The integration guide can be found [here](https://learn.microsoft.com/en-us/azure/service-connector/how-to-integrate-postgres).
   late final pulumi.Output<String> targetResourceId;
   late final pulumi.Output<String?> vnetSolution;
@@ -538,18 +541,22 @@ class SpringCloudConnection extends pulumi.CustomResource {
     SpringCloudConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudConnection:SpringCloudConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<SpringCloudConnectionAuthentication>('authentication');
-    this.clientType = registerOutput<String?>('clientType');
+         'azure:appplatform/springCloudConnection:SpringCloudConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<SpringCloudConnectionAuthentication>(
+      'authentication',
+    );
+    clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
-    this.secretStore = registerOutput<SpringCloudConnectionSecretStore?>('secretStore');
-    this.springCloudId = registerOutput<String>('springCloudId');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.vnetSolution = registerOutput<String?>('vnetSolution');
+    secretStore = registerOutput<SpringCloudConnectionSecretStore?>(
+      'secretStore',
+    );
+    springCloudId = registerOutput<String>('springCloudId');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    vnetSolution = registerOutput<String?>('vnetSolution');
   }
 
   /// Gets an existing [SpringCloudConnection] resource's state with the given [name] and [id].
@@ -570,17 +577,21 @@ class SpringCloudConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudConnection:SpringCloudConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<SpringCloudConnectionAuthentication>('authentication');
-    this.clientType = registerOutput<String?>('clientType');
+         'azure:appplatform/springCloudConnection:SpringCloudConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<SpringCloudConnectionAuthentication>(
+      'authentication',
+    );
+    clientType = registerOutput<String?>('clientType');
     this.name = registerOutput<String>('name');
-    this.secretStore = registerOutput<SpringCloudConnectionSecretStore?>('secretStore');
-    this.springCloudId = registerOutput<String>('springCloudId');
-    this.targetResourceId = registerOutput<String>('targetResourceId');
-    this.vnetSolution = registerOutput<String?>('vnetSolution');
+    secretStore = registerOutput<SpringCloudConnectionSecretStore?>(
+      'secretStore',
+    );
+    springCloudId = registerOutput<String>('springCloudId');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    vnetSolution = registerOutput<String?>('vnetSolution');
   }
 }

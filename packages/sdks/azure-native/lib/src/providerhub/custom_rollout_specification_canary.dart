@@ -8,20 +8,19 @@ class CustomRolloutSpecificationCanary {
 
   /// Creates a new [CustomRolloutSpecificationCanary].
   /// [regions] Optional.
-  CustomRolloutSpecificationCanary({
-    this.regions,
-  });
+  CustomRolloutSpecificationCanary({this.regions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'regions': ?regions,
-    };
+    return <String, dynamic>{'regions': ?regions};
   }
 
   factory CustomRolloutSpecificationCanary.fromMap(Map<String, dynamic> map) {
     return CustomRolloutSpecificationCanary(
-      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

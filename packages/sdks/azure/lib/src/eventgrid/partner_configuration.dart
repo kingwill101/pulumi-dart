@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'partner_configuration_args.dart';
-import 'partner_configuration_partner_authorization.dart';
 import 'partner_configuration_state.dart';
 
 /// Manages an Event Grid Partner Configuration.
@@ -189,7 +188,7 @@ import 'partner_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -204,10 +203,13 @@ import 'partner_configuration_state.dart';
 class PartnerConfiguration extends pulumi.CustomResource {
   /// Time used to validate the authorization expiration time for each authorized partner. Defaults to `7`.
   late final pulumi.Output<int?> defaultMaximumExpirationTimeInDays;
+
   /// One or more `partner_authorization` blocks as defined below.
-  late final pulumi.Output<List<PartnerConfigurationPartnerAuthorization>?> partnerAuthorizations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> partnerAuthorizations;
+
   /// The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Event Grid Partner Configuration.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -220,15 +222,19 @@ class PartnerConfiguration extends pulumi.CustomResource {
     PartnerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
-    this.partnerAuthorizations = registerOutput<List<PartnerConfigurationPartnerAuthorization>?>('partnerAuthorizations');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultMaximumExpirationTimeInDays = registerOutput<int?>(
+      'defaultMaximumExpirationTimeInDays',
+    );
+    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'partnerAuthorizations',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [PartnerConfiguration] resource's state with the given [name] and [id].
@@ -249,14 +255,18 @@ class PartnerConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
-    this.partnerAuthorizations = registerOutput<List<PartnerConfigurationPartnerAuthorization>?>('partnerAuthorizations');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultMaximumExpirationTimeInDays = registerOutput<int?>(
+      'defaultMaximumExpirationTimeInDays',
+    );
+    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'partnerAuthorizations',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

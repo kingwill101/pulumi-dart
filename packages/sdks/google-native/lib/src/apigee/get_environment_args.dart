@@ -27,9 +27,8 @@ class GetEnvironmentArgs {
 
   factory GetEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

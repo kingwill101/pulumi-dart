@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureStorageInfoValueResponse {
   /// Access key for the storage account.
   final pulumi.Input<String>? accessKey;
+
   /// Name of the storage account.
   final pulumi.Input<String>? accountName;
+
   /// Path to mount the storage within the site's runtime environment.
   final pulumi.Input<String>? mountPath;
+
   /// Mounting protocol to use for the storage account.
   final pulumi.Input<String>? protocol;
+
   /// Name of the file share (container name, for Blob storage).
   final pulumi.Input<String>? shareName;
+
   /// State of the storage account.
   final pulumi.Input<String> state;
+
   /// Type of storage.
   final pulumi.Input<String>? type;
 
@@ -51,14 +57,37 @@ class AzureStorageInfoValueResponse {
 
   factory AzureStorageInfoValueResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageInfoValueResponse(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
-      state: (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      accessKey: (() {
+        final guardedValue = map['accessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountPath: (() {
+        final guardedValue = map['mountPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareName: (() {
+        final guardedValue = map['shareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

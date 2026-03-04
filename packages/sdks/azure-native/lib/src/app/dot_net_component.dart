@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dot_net_component_args.dart';
-import 'dot_net_component_configuration_property_response.dart';
-import 'dot_net_component_service_bind_response.dart';
 import 'system_data_response.dart';
 
 /// .NET Component.
@@ -352,18 +350,25 @@ import 'system_data_response.dart';
 class DotNetComponent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Type of the .NET Component.
   late final pulumi.Output<String?> componentType;
+
   /// List of .NET Components configuration properties
-  late final pulumi.Output<List<DotNetComponentConfigurationPropertyResponse>?> configurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> configurations;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the .NET Component.
   late final pulumi.Output<String> provisioningState;
+
   /// List of .NET Components that are bound to the .NET component
-  late final pulumi.Output<List<DotNetComponentServiceBindResponse>?> serviceBinds;
+  late final pulumi.Output<List<Map<String, dynamic>>?> serviceBinds;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -376,18 +381,20 @@ class DotNetComponent extends pulumi.CustomResource {
     DotNetComponentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:DotNetComponent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.componentType = registerOutput<String?>('componentType');
-    this.configurations = registerOutput<List<DotNetComponentConfigurationPropertyResponse>?>('configurations');
+         'azure-native:app:DotNetComponent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    componentType = registerOutput<String?>('componentType');
+    configurations = registerOutput<List<Map<String, dynamic>>?>(
+      'configurations',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serviceBinds = registerOutput<List<DotNetComponentServiceBindResponse>?>('serviceBinds');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceBinds = registerOutput<List<Map<String, dynamic>>?>('serviceBinds');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

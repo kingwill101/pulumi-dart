@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListShareSubscriptionSourceShareSynchronizationSettingsArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the shareSubscription.
   final pulumi.Input<String> shareSubscriptionName;
+
   /// Continuation token
   final pulumi.Input<String>? skipToken;
 
@@ -37,13 +40,22 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsArgs {
     };
   }
 
-  factory ListShareSubscriptionSourceShareSynchronizationSettingsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListShareSubscriptionSourceShareSynchronizationSettingsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListShareSubscriptionSourceShareSynchronizationSettingsArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareSubscriptionName: pulumi.Input.fromValue(
+        map['shareSubscriptionName'] as String,
+      ),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum GatewayConfigGatewayAuthMethod {
   deviceAuthTokenOnly("DEVICE_AUTH_TOKEN_ONLY"),
   associationAndDeviceAuthToken("ASSOCIATION_AND_DEVICE_AUTH_TOKEN");
 
-  const GatewayConfigGatewayAuthMethod(this.value);
-  final String value;
+  const GatewayConfigGatewayAuthMethod(this.wireValue);
+  final String wireValue;
 
   static GatewayConfigGatewayAuthMethod fromValue(String value) {
     for (final item in GatewayConfigGatewayAuthMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GatewayConfigGatewayAuthMethod value: $value');
   }
 }
-

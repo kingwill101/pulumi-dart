@@ -5,16 +5,17 @@ enum SourceNumericFilterNumericFilterOption {
   numericFilterOptionLimit("NUMERIC_FILTER_OPTION_LIMIT"),
   numericFilterOptionLimitless("NUMERIC_FILTER_OPTION_LIMITLESS");
 
-  const SourceNumericFilterNumericFilterOption(this.value);
-  final String value;
+  const SourceNumericFilterNumericFilterOption(this.wireValue);
+  final String wireValue;
 
   static SourceNumericFilterNumericFilterOption fromValue(String value) {
     for (final item in SourceNumericFilterNumericFilterOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SourceNumericFilterNumericFilterOption value: $value');
+    throw ArgumentError(
+      'Unknown SourceNumericFilterNumericFilterOption value: $value',
+    );
   }
 }
-

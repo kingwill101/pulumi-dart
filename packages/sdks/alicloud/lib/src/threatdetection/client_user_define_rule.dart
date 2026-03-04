@@ -6,7 +6,7 @@ import 'client_user_define_rule_state.dart';
 ///
 /// For information about Threat Detection Client User Define Rule and how to use it, see [What is Client User Define Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addclientuserdefinerule).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -189,37 +189,52 @@ class ClientUserDefineRule extends pulumi.CustomResource {
   /// - **0**: plus White
   /// - **1**: Plus Black.
   late final pulumi.Output<int> actionType;
+
   /// The custom rule name.
   late final pulumi.Output<String> clientUserDefineRuleName;
+
   /// Command line. When the value of the Type attribute is 2, 3, 4, 5, 6, or 7, the command line field is required.
   late final pulumi.Output<String?> cmdline;
+
   /// The creation time of the resource.
   late final pulumi.Output<int> createTime;
+
   /// The file path. When the value of the Type attribute is 4 or 6, 7, the FilePath field is required.
   late final pulumi.Output<String?> filePath;
+
   /// Process hash list. When the value of the Type attribute is 1, the Hash attribute is required.
   late final pulumi.Output<String?> hash;
+
   /// IP address. When the value of the Type attribute is 3, the Ip attribute is required.
   late final pulumi.Output<String?> ip;
+
   /// The new file path to rename the file. When the value of the Type attribute is 7, the NewFilePath attribute is required.
   late final pulumi.Output<String?> newFilePath;
+
   /// The parent command line.
   late final pulumi.Output<String?> parentCmdline;
+
   /// Parent process path.
   late final pulumi.Output<String?> parentProcPath;
+
   /// The operating system type. Value:
   /// - **windows**:widows
   /// - **linux**:linux
   /// - **all**: all.
   late final pulumi.Output<String> platform;
+
   /// The port number. When the value of the Type attribute is 3, the PortStr attribute is required. Value range: **1-65535**.
   late final pulumi.Output<String> portStr;
+
   /// The process path. When the Type attribute is set to 2, 3, 4, 5, 6, or 7, the ProcPath attribute is required.
   late final pulumi.Output<String?> procPath;
+
   /// The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   late final pulumi.Output<String?> registryContent;
+
   /// The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   late final pulumi.Output<String?> registryKey;
+
   /// The rule type. Value:
   /// - **1**: Process hash
   /// - **2**: command line
@@ -239,27 +254,29 @@ class ClientUserDefineRule extends pulumi.CustomResource {
     ClientUserDefineRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionType = registerOutput<int>('actionType');
-    this.clientUserDefineRuleName = registerOutput<String>('clientUserDefineRuleName');
-    this.cmdline = registerOutput<String?>('cmdline');
-    this.createTime = registerOutput<int>('createTime');
-    this.filePath = registerOutput<String?>('filePath');
-    this.hash = registerOutput<String?>('hash');
-    this.ip = registerOutput<String?>('ip');
-    this.newFilePath = registerOutput<String?>('newFilePath');
-    this.parentCmdline = registerOutput<String?>('parentCmdline');
-    this.parentProcPath = registerOutput<String?>('parentProcPath');
-    this.platform = registerOutput<String>('platform');
-    this.portStr = registerOutput<String>('portStr');
-    this.procPath = registerOutput<String?>('procPath');
-    this.registryContent = registerOutput<String?>('registryContent');
-    this.registryKey = registerOutput<String?>('registryKey');
-    this.type = registerOutput<int>('type');
+         'alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionType = registerOutput<int>('actionType');
+    clientUserDefineRuleName = registerOutput<String>(
+      'clientUserDefineRuleName',
+    );
+    cmdline = registerOutput<String?>('cmdline');
+    createTime = registerOutput<int>('createTime');
+    filePath = registerOutput<String?>('filePath');
+    hash = registerOutput<String?>('hash');
+    ip = registerOutput<String?>('ip');
+    newFilePath = registerOutput<String?>('newFilePath');
+    parentCmdline = registerOutput<String?>('parentCmdline');
+    parentProcPath = registerOutput<String?>('parentProcPath');
+    platform = registerOutput<String>('platform');
+    portStr = registerOutput<String>('portStr');
+    procPath = registerOutput<String?>('procPath');
+    registryContent = registerOutput<String?>('registryContent');
+    registryKey = registerOutput<String?>('registryKey');
+    type = registerOutput<int>('type');
   }
 
   /// Gets an existing [ClientUserDefineRule] resource's state with the given [name] and [id].
@@ -280,26 +297,28 @@ class ClientUserDefineRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionType = registerOutput<int>('actionType');
-    this.clientUserDefineRuleName = registerOutput<String>('clientUserDefineRuleName');
-    this.cmdline = registerOutput<String?>('cmdline');
-    this.createTime = registerOutput<int>('createTime');
-    this.filePath = registerOutput<String?>('filePath');
-    this.hash = registerOutput<String?>('hash');
-    this.ip = registerOutput<String?>('ip');
-    this.newFilePath = registerOutput<String?>('newFilePath');
-    this.parentCmdline = registerOutput<String?>('parentCmdline');
-    this.parentProcPath = registerOutput<String?>('parentProcPath');
-    this.platform = registerOutput<String>('platform');
-    this.portStr = registerOutput<String>('portStr');
-    this.procPath = registerOutput<String?>('procPath');
-    this.registryContent = registerOutput<String?>('registryContent');
-    this.registryKey = registerOutput<String?>('registryKey');
-    this.type = registerOutput<int>('type');
+         'alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionType = registerOutput<int>('actionType');
+    clientUserDefineRuleName = registerOutput<String>(
+      'clientUserDefineRuleName',
+    );
+    cmdline = registerOutput<String?>('cmdline');
+    createTime = registerOutput<int>('createTime');
+    filePath = registerOutput<String?>('filePath');
+    hash = registerOutput<String?>('hash');
+    ip = registerOutput<String?>('ip');
+    newFilePath = registerOutput<String?>('newFilePath');
+    parentCmdline = registerOutput<String?>('parentCmdline');
+    parentProcPath = registerOutput<String?>('parentProcPath');
+    platform = registerOutput<String>('platform');
+    portStr = registerOutput<String>('portStr');
+    procPath = registerOutput<String?>('procPath');
+    registryContent = registerOutput<String?>('registryContent');
+    registryKey = registerOutput<String?>('registryKey');
+    type = registerOutput<int>('type');
   }
 }

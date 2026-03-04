@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionProfileMongodbProfileHostAddress {
   /// Hostname for the connection.
   final pulumi.Input<String> hostname;
+
   /// Port for the connection.
   final pulumi.Input<int>? port;
 
@@ -17,17 +18,19 @@ class ConnectionProfileMongodbProfileHostAddress {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostname': hostname,
-      'port': ?port,
-    };
+    return <String, dynamic>{'hostname': hostname, 'port': ?port};
   }
 
-  factory ConnectionProfileMongodbProfileHostAddress.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileMongodbProfileHostAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileMongodbProfileHostAddress(
-      hostname: (map['hostname'] as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterPscConfig {
   /// Create an instance that allows connections from Private Service Connect endpoints to the instance.
   final pulumi.Input<bool> pscEnabled;
+
   /// The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
   /// In case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.
   final pulumi.Input<int> serviceOwnedProjectNumber;
@@ -26,9 +27,10 @@ class GetClusterPscConfig {
 
   factory GetClusterPscConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterPscConfig(
-      pscEnabled: (map['pscEnabled'] as bool).input(),
-      serviceOwnedProjectNumber: (map['serviceOwnedProjectNumber'] as int).input(),
+      pscEnabled: pulumi.Input.fromValue(map['pscEnabled'] as bool),
+      serviceOwnedProjectNumber: pulumi.Input.fromValue(
+        map['serviceOwnedProjectNumber'] as int,
+      ),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlSyncRecordResponse {
   /// The Id of the control. e.g. "Operational_Security_10"
   final pulumi.Input<String>? controlId;
+
   /// Control status synchronized from app compliance.
   final pulumi.Input<String>? controlStatus;
 
   /// Creates a new [ControlSyncRecordResponse].
   /// [controlId] The Id of the control. e.g. "Operational_Security_10"
   /// [controlStatus] Control status synchronized from app compliance.
-  ControlSyncRecordResponse({
-    this.controlId,
-    this.controlStatus,
-  });
+  ControlSyncRecordResponse({this.controlId, this.controlStatus});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ControlSyncRecordResponse {
 
   factory ControlSyncRecordResponse.fromMap(Map<String, dynamic> map) {
     return ControlSyncRecordResponse(
-      controlId: map['controlId'] == null ? null : (map['controlId']! as String).input(),
-      controlStatus: map['controlStatus'] == null ? null : (map['controlStatus']! as String).input(),
+      controlId: (() {
+        final guardedValue = map['controlId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlStatus: (() {
+        final guardedValue = map['controlStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

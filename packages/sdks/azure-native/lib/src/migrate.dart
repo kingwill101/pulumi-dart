@@ -1,5 +1,3 @@
-library module_migrate;
-
 export 'migrate/acrproperties.dart';
 export 'migrate/acrproperties_response.dart';
 export 'migrate/aks_assessment_operation.dart';

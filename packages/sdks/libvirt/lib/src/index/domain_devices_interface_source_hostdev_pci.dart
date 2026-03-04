@@ -6,29 +6,44 @@ import 'domain_devices_interface_source_hostdev_pci_address.dart';
 class DomainDevicesInterfaceSourceHostdevPci {
   /// Defines the address settings for the PCI device source.
   final pulumi.Input<DomainDevicesInterfaceSourceHostdevPciAddress>? address;
+
   /// Controls whether write filtering is enabled for the PCI device source.
   final pulumi.Input<String>? writeFiltering;
 
   /// Creates a new [DomainDevicesInterfaceSourceHostdevPci].
   /// [address] Defines the address settings for the PCI device source.
   /// [writeFiltering] Controls whether write filtering is enabled for the PCI device source.
-  DomainDevicesInterfaceSourceHostdevPci({
-    this.address,
-    this.writeFiltering,
-  });
+  DomainDevicesInterfaceSourceHostdevPci({this.address, this.writeFiltering});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'address': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceSourceHostdevPciAddress, Map<String, dynamic>>(address, (value) => value.toMap()),
+      'address':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesInterfaceSourceHostdevPciAddress,
+            Map<String, dynamic>
+          >(address, (value) => value.toMap()),
       'writeFiltering': ?writeFiltering,
     };
   }
 
-  factory DomainDevicesInterfaceSourceHostdevPci.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesInterfaceSourceHostdevPci.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesInterfaceSourceHostdevPci(
-      address: map['address'] == null ? null : (DomainDevicesInterfaceSourceHostdevPciAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
-      writeFiltering: map['writeFiltering'] == null ? null : (map['writeFiltering']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesInterfaceSourceHostdevPciAddress.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      writeFiltering: (() {
+        final guardedValue = map['writeFiltering'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

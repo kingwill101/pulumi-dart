@@ -4,11 +4,11 @@ import 'configuration_state.dart';
 
 /// Sets a PostgreSQL Configuration value on a PostgreSQL Server.
 ///
-/// > **Note:** The `azure.postgresql.Configuration` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28, please use the `azure.postgresql.FlexibleServerConfiguration` resource instead. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
+/// &gt; **Note:** The `azure.postgresql.Configuration` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28, please use the `azure.postgresql.FlexibleServerConfiguration` resource instead. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
 ///
 /// ## Disclaimers
 ///
-/// > **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
+/// &gt; **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
 ///
 /// ## Example Usage
 ///
@@ -247,7 +247,7 @@ import 'configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2017-12-01
@@ -262,10 +262,13 @@ import 'configuration_state.dart';
 class Configuration extends pulumi.CustomResource {
   /// Specifies the name of the PostgreSQL Configuration, which needs [to be a valid PostgreSQL configuration name](https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIER). Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
+
   /// Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values. Changing this forces a new resource to be created.
   late final pulumi.Output<String> value;
 
@@ -278,15 +281,15 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/configuration:Configuration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:postgresql/configuration:Configuration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.value = registerOutput<String>('value');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [Configuration] resource's state with the given [name] and [id].
@@ -307,14 +310,14 @@ class Configuration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/configuration:Configuration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:postgresql/configuration:Configuration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.value = registerOutput<String>('value');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    value = registerOutput<String>('value');
   }
 }

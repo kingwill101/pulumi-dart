@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSpecFunctionAlertDestinationsSlackWebhook {
   /// The Slack channel to send notifications to.
   final pulumi.Input<String> channel;
+
   /// The Slack webhook URL.
   final pulumi.Input<String> url;
 
@@ -17,17 +18,15 @@ class AppSpecFunctionAlertDestinationsSlackWebhook {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': channel,
-      'url': url,
-    };
+    return <String, dynamic>{'channel': channel, 'url': url};
   }
 
-  factory AppSpecFunctionAlertDestinationsSlackWebhook.fromMap(Map<String, dynamic> map) {
+  factory AppSpecFunctionAlertDestinationsSlackWebhook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppSpecFunctionAlertDestinationsSlackWebhook(
-      channel: (map['channel'] as String).input(),
-      url: (map['url'] as String).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

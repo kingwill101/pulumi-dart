@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityLabelArgs {
   /// The value of the security label.
   final pulumi.Input<String> label;
+
   /// The name of the provider with which this label is to be associated.
   final pulumi.Input<String> labelProvider;
+
   /// The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   final pulumi.Input<String> objectName;
+
   /// The PostgreSQL object type to apply this security label to.
   final pulumi.Input<String> objectType;
 
@@ -39,11 +42,10 @@ class SecurityLabelArgs {
 
   factory SecurityLabelArgs.fromMap(Map<String, dynamic> map) {
     return SecurityLabelArgs(
-      label: (map['label'] as String).input(),
-      labelProvider: (map['labelProvider'] as String).input(),
-      objectName: (map['objectName'] as String).input(),
-      objectType: (map['objectType'] as String).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      labelProvider: pulumi.Input.fromValue(map['labelProvider'] as String),
+      objectName: pulumi.Input.fromValue(map['objectName'] as String),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
     );
   }
 }
-

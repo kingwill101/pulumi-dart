@@ -7,18 +7,25 @@ import 'logging_config_response_dataproc_v1beta2.dart';
 class HadoopJobResponseDataprocV1beta2 {
   /// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
   final pulumi.Input<List<String>> archiveUris;
+
   /// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
   final pulumi.Input<List<String>> args;
+
   /// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
   final pulumi.Input<List<String>> fileUris;
+
   /// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
   final pulumi.Input<List<String>> jarFileUris;
+
   /// Optional. The runtime log config for job execution.
   final pulumi.Input<LoggingConfigResponseDataprocV1beta2> loggingConfig;
+
   /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
   final pulumi.Input<String> mainClass;
+
   /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
   final pulumi.Input<String> mainJarFileUri;
+
   /// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
   final pulumi.Input<Map<String, String>> properties;
 
@@ -48,7 +55,11 @@ class HadoopJobResponseDataprocV1beta2 {
       'args': args,
       'fileUris': fileUris,
       'jarFileUris': jarFileUris,
-      'loggingConfig': pulumi.Input.mapInputValue<LoggingConfigResponseDataprocV1beta2, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'loggingConfig':
+          pulumi.Input.mapInputValue<
+            LoggingConfigResponseDataprocV1beta2,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
       'mainClass': mainClass,
       'mainJarFileUri': mainJarFileUri,
       'properties': properties,
@@ -57,15 +68,26 @@ class HadoopJobResponseDataprocV1beta2 {
 
   factory HadoopJobResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return HadoopJobResponseDataprocV1beta2(
-      archiveUris: ((map['archiveUris'] as List).cast<String>()).input(),
-      args: ((map['args'] as List).cast<String>()).input(),
-      fileUris: ((map['fileUris'] as List).cast<String>()).input(),
-      jarFileUris: ((map['jarFileUris'] as List).cast<String>()).input(),
-      loggingConfig: (LoggingConfigResponseDataprocV1beta2.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      mainClass: (map['mainClass'] as String).input(),
-      mainJarFileUri: (map['mainJarFileUri'] as String).input(),
-      properties: ((map['properties'] as Map).cast<String, String>()).input(),
+      archiveUris: pulumi.Input.fromValue(
+        (map['archiveUris'] as List).cast<String>(),
+      ),
+      args: pulumi.Input.fromValue((map['args'] as List).cast<String>()),
+      fileUris: pulumi.Input.fromValue(
+        (map['fileUris'] as List).cast<String>(),
+      ),
+      jarFileUris: pulumi.Input.fromValue(
+        (map['jarFileUris'] as List).cast<String>(),
+      ),
+      loggingConfig: pulumi.Input.fromValue(
+        LoggingConfigResponseDataprocV1beta2.fromMap(
+          (map['loggingConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      mainClass: pulumi.Input.fromValue(map['mainClass'] as String),
+      mainJarFileUri: pulumi.Input.fromValue(map['mainJarFileUri'] as String),
+      properties: pulumi.Input.fromValue(
+        (map['properties'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

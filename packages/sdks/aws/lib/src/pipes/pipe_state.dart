@@ -10,38 +10,54 @@ import 'pipe_target_parameters.dart';
 class PipeState {
   /// ARN of this pipe.
   final pulumi.Input<String>? arn;
+
   /// A description of the pipe. At most 512 characters.
   final pulumi.Input<String>? description;
+
   /// The state the pipe should be in. One of: `RUNNING`, `STOPPED`.
   final pulumi.Input<String>? desiredState;
+
   /// Enrichment resource of the pipe (typically an ARN). Read more about enrichment in the [User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html#pipes-enrichment).
   final pulumi.Input<String>? enrichment;
+
   /// Parameters to configure enrichment for your pipe. Detailed below.
   final pulumi.Input<PipeEnrichmentParameters>? enrichmentParameters;
+
   /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt pipe data. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN. If not set, EventBridge uses an AWS owned key to encrypt pipe data.
   final pulumi.Input<String>? kmsKeyIdentifier;
+
   /// Logging configuration settings for the pipe. Detailed below.
   final pulumi.Input<PipeLogConfiguration>? logConfiguration;
+
   /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the role that allows the pipe to send data to the target.
   final pulumi.Input<String>? roleArn;
+
   /// Source resource of the pipe. This field typically requires an ARN (Amazon Resource Name). However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
   final pulumi.Input<String>? source;
+
   /// Parameters to configure a source for the pipe. Detailed below.
   final pulumi.Input<PipeSourceParameters>? sourceParameters;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Target resource of the pipe (typically an ARN).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? target;
+
   /// Parameters to configure a target for your pipe. Detailed below.
   final pulumi.Input<PipeTargetParameters>? targetParameters;
 
@@ -89,42 +105,145 @@ class PipeState {
       'description': ?description,
       'desiredState': ?desiredState,
       'enrichment': ?enrichment,
-      'enrichmentParameters': ?pulumi.Input.mapOptionalInputValue<PipeEnrichmentParameters, Map<String, dynamic>>(enrichmentParameters, (value) => value.toMap()),
+      'enrichmentParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipeEnrichmentParameters,
+            Map<String, dynamic>
+          >(enrichmentParameters, (value) => value.toMap()),
       'kmsKeyIdentifier': ?kmsKeyIdentifier,
-      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<PipeLogConfiguration, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
+      'logConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipeLogConfiguration,
+            Map<String, dynamic>
+          >(logConfiguration, (value) => value.toMap()),
       'name': ?name,
       'namePrefix': ?namePrefix,
       'region': ?region,
       'roleArn': ?roleArn,
       'source': ?source,
-      'sourceParameters': ?pulumi.Input.mapOptionalInputValue<PipeSourceParameters, Map<String, dynamic>>(sourceParameters, (value) => value.toMap()),
+      'sourceParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipeSourceParameters,
+            Map<String, dynamic>
+          >(sourceParameters, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'target': ?target,
-      'targetParameters': ?pulumi.Input.mapOptionalInputValue<PipeTargetParameters, Map<String, dynamic>>(targetParameters, (value) => value.toMap()),
+      'targetParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipeTargetParameters,
+            Map<String, dynamic>
+          >(targetParameters, (value) => value.toMap()),
     };
   }
 
   factory PipeState.fromMap(Map<String, dynamic> map) {
     return PipeState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      desiredState: map['desiredState'] == null ? null : ((map['desiredState'] as String).input()).input(),
-      enrichment: map['enrichment'] == null ? null : ((map['enrichment'] as String).input()).input(),
-      enrichmentParameters: map['enrichmentParameters'] == null ? null : ((PipeEnrichmentParameters.fromMap((map['enrichmentParameters']! as Map).cast<String, dynamic>())).input()).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : ((PipeLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
-      sourceParameters: map['sourceParameters'] == null ? null : ((PipeSourceParameters.fromMap((map['sourceParameters']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
-      targetParameters: map['targetParameters'] == null ? null : ((PipeTargetParameters.fromMap((map['targetParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      desiredState: (() {
+        final guardedValue = map['desiredState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enrichment: (() {
+        final guardedValue = map['enrichment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enrichmentParameters: (() {
+        final guardedValue = map['enrichmentParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipeEnrichmentParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kmsKeyIdentifier: (() {
+        final guardedValue = map['kmsKeyIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logConfiguration: (() {
+        final guardedValue = map['logConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipeLogConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceParameters: (() {
+        final guardedValue = map['sourceParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipeSourceParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetParameters: (() {
+        final guardedValue = map['targetParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipeTargetParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

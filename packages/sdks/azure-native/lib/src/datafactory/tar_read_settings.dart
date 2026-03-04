@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TarReadSettings {
   /// Preserve the compression file name as folder path. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? preserveCompressionFileNameAsFolder;
+
   /// The Compression setting type.
   /// Expected value is 'TarReadSettings'.
   final pulumi.Input<String> type;
@@ -20,16 +21,20 @@ class TarReadSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preserveCompressionFileNameAsFolder': ?preserveCompressionFileNameAsFolder,
+      'preserveCompressionFileNameAsFolder':
+          ?preserveCompressionFileNameAsFolder,
       'type': type,
     };
   }
 
   factory TarReadSettings.fromMap(Map<String, dynamic> map) {
     return TarReadSettings(
-      preserveCompressionFileNameAsFolder: map['preserveCompressionFileNameAsFolder'] == null ? null : (map['preserveCompressionFileNameAsFolder']!).input(),
-      type: (map['type'] as String).input(),
+      preserveCompressionFileNameAsFolder: (() {
+        final guardedValue = map['preserveCompressionFileNameAsFolder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

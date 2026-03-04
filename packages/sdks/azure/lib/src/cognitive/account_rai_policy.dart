@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_rai_policy_args.dart';
-import 'account_rai_policy_content_filter.dart';
 import 'account_rai_policy_state.dart';
 
 /// Manages a Cognitive Services Account RAI Policy.
@@ -242,7 +241,7 @@ import 'account_rai_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CognitiveServices` - 2025-06-01
@@ -257,14 +256,19 @@ import 'account_rai_policy_state.dart';
 class AccountRaiPolicy extends pulumi.CustomResource {
   /// The name of the base policy to use for this RAI Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> basePolicyName;
+
   /// The ID of the Cognitive Service Account to which this RAI Policy should be associated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cognitiveAccountId;
+
   /// A `content_filter` block as defined below.
-  late final pulumi.Output<List<AccountRaiPolicyContentFilter>> contentFilters;
+  late final pulumi.Output<List<Map<String, dynamic>>> contentFilters;
+
   /// The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
   late final pulumi.Output<String?> mode;
+
   /// The name of the Cognitive Service Account RAI Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -277,17 +281,19 @@ class AccountRaiPolicy extends pulumi.CustomResource {
     AccountRaiPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/accountRaiPolicy:AccountRaiPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basePolicyName = registerOutput<String>('basePolicyName');
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.contentFilters = registerOutput<List<AccountRaiPolicyContentFilter>>('contentFilters');
-    this.mode = registerOutput<String?>('mode');
+         'azure:cognitive/accountRaiPolicy:AccountRaiPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basePolicyName = registerOutput<String>('basePolicyName');
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    contentFilters = registerOutput<List<Map<String, dynamic>>>(
+      'contentFilters',
+    );
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [AccountRaiPolicy] resource's state with the given [name] and [id].
@@ -308,16 +314,18 @@ class AccountRaiPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/accountRaiPolicy:AccountRaiPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basePolicyName = registerOutput<String>('basePolicyName');
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.contentFilters = registerOutput<List<AccountRaiPolicyContentFilter>>('contentFilters');
-    this.mode = registerOutput<String?>('mode');
+         'azure:cognitive/accountRaiPolicy:AccountRaiPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basePolicyName = registerOutput<String>('basePolicyName');
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    contentFilters = registerOutput<List<Map<String, dynamic>>>(
+      'contentFilters',
+    );
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

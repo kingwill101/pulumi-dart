@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
   final pulumi.Input<String>? resourceArn;
+
   /// Amazon Resource Name (ARN) of the RAM Resource Share.
   final pulumi.Input<String>? resourceShareArn;
 
@@ -31,10 +33,21 @@ class ResourceAssociationState {
 
   factory ResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return ResourceAssociationState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
-      resourceShareArn: map['resourceShareArn'] == null ? null : ((map['resourceShareArn'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceShareArn: (() {
+        final guardedValue = map['resourceShareArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

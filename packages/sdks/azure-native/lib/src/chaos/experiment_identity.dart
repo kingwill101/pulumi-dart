@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExperimentIdentity {
   /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
   final pulumi.Input<String> type;
+
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [ExperimentIdentity].
   /// [type] Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
   /// [userAssignedIdentities] The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  ExperimentIdentity({
-    required this.type,
-    this.userAssignedIdentities,
-  });
+  ExperimentIdentity({required this.type, this.userAssignedIdentities});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class ExperimentIdentity {
 
   factory ExperimentIdentity.fromMap(Map<String, dynamic> map) {
     return ExperimentIdentity(
-      type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

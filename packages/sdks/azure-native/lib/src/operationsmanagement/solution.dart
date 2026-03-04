@@ -236,16 +236,22 @@ import 'solution_properties_response.dart';
 class Solution extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Plan for solution object supported by the OperationsManagement resource provider.
   late final pulumi.Output<SolutionPlanResponse?> plan;
+
   /// Properties for solution object supported by the OperationsManagement resource provider.
   late final pulumi.Output<SolutionPropertiesResponse> properties;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -258,17 +264,17 @@ class Solution extends pulumi.CustomResource {
     SolutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationsmanagement:Solution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:operationsmanagement:Solution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<SolutionPlanResponse?>('plan');
-    this.properties = registerOutput<SolutionPropertiesResponse>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    plan = registerOutput<SolutionPlanResponse?>('plan');
+    properties = registerOutput<SolutionPropertiesResponse>('properties');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

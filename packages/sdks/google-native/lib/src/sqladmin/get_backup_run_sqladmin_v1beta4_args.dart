@@ -31,10 +31,13 @@ class GetBackupRunSqladminV1beta4Args {
 
   factory GetBackupRunSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return GetBackupRunSqladminV1beta4Args(
-      id: (map['id'] as String).input(),
-      instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

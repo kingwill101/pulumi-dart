@@ -3,16 +3,17 @@ enum TransparentDataEncryptionStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const TransparentDataEncryptionStatus(this.value);
-  final String value;
+  const TransparentDataEncryptionStatus(this.wireValue);
+  final String wireValue;
 
   static TransparentDataEncryptionStatus fromValue(String value) {
     for (final item in TransparentDataEncryptionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TransparentDataEncryptionStatus value: $value');
+    throw ArgumentError(
+      'Unknown TransparentDataEncryptionStatus value: $value',
+    );
   }
 }
-

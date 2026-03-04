@@ -13,10 +13,12 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
   /// * _aliyun_arms_alert_type: alert type
   /// * _aliyun_arms_alert_level: alert severity
   final pulumi.Input<String> key;
+
   /// The operator used in the dispatch rule. Valid values:
   /// * eq: equals to.
   /// * re: matches a regular expression.
   final pulumi.Input<String> operator;
+
   /// The value of the tag.
   final pulumi.Input<String> value;
 
@@ -31,19 +33,16 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'operator': operator,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'operator': operator, 'value': value};
   }
 
-  factory DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap(Map<String, dynamic> map) {
+  factory DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(
-      key: (map['key'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

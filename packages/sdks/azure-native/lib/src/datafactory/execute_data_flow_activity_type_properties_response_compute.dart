@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExecuteDataFlowActivityTypePropertiesResponseCompute {
   /// Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? computeType;
+
   /// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or Expression with resultType integer)
   final pulumi.Input<dynamic>? coreCount;
 
@@ -24,11 +25,20 @@ class ExecuteDataFlowActivityTypePropertiesResponseCompute {
     };
   }
 
-  factory ExecuteDataFlowActivityTypePropertiesResponseCompute.fromMap(Map<String, dynamic> map) {
+  factory ExecuteDataFlowActivityTypePropertiesResponseCompute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExecuteDataFlowActivityTypePropertiesResponseCompute(
-      computeType: map['computeType'] == null ? null : (map['computeType']!).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount']!).input(),
+      computeType: (() {
+        final guardedValue = map['computeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      coreCount: (() {
+        final guardedValue = map['coreCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

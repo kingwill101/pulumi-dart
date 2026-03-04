@@ -15,11 +15,7 @@ class TrialArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [studyId] Required.
-  TrialArgs({
-    this.location,
-    this.project,
-    required this.studyId,
-  });
+  TrialArgs({this.location, this.project, required this.studyId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,17 @@ class TrialArgs {
 
   factory TrialArgs.fromMap(Map<String, dynamic> map) {
     return TrialArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      studyId: (map['studyId'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      studyId: pulumi.Input.fromValue(map['studyId'] as String),
     );
   }
 }
-

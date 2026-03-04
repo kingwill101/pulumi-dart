@@ -7,16 +7,15 @@ enum DashboardFilterFilterType {
   systemMetadataLabel("SYSTEM_METADATA_LABEL"),
   group("GROUP");
 
-  const DashboardFilterFilterType(this.value);
-  final String value;
+  const DashboardFilterFilterType(this.wireValue);
+  final String wireValue;
 
   static DashboardFilterFilterType fromValue(String value) {
     for (final item in DashboardFilterFilterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DashboardFilterFilterType value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum PartitionKind {
   valueRange("Range"),
   valueMultiHash("MultiHash");
 
-  const PartitionKind(this.value);
-  final String value;
+  const PartitionKind(this.wireValue);
+  final String wireValue;
 
   static PartitionKind fromValue(String value) {
     for (final item in PartitionKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PartitionKind value: $value');
   }
 }
-

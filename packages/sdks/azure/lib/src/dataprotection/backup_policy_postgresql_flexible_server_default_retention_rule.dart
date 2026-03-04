@@ -5,7 +5,10 @@ import 'backup_policy_postgresql_flexible_server_default_retention_rule_life_cyc
 
 class BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule {
   /// A `life_cycle` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle>> lifeCycles;
+  final pulumi.Input<
+    List<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle>
+  >
+  lifeCycles;
 
   /// Creates a new [BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule].
   /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
@@ -15,14 +18,38 @@ class BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lifeCycles': pulumi.Input.mapInputValue<List<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle>, List<Map<String, dynamic>>>(lifeCycles, (value) => pulumi.Input.encodeList<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lifeCycles':
+          pulumi.Input.mapInputValue<
+            List<
+              BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle
+            >,
+            List<Map<String, dynamic>>
+          >(
+            lifeCycles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap(Map<String, dynamic> map) {
+  factory BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule(
-      lifeCycles: (pulumi.Input.decodeList<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle>(map['lifeCycles'], (value) => BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifeCycles: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle
+        >(
+          map['lifeCycles']!,
+          (value) =>
+              BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

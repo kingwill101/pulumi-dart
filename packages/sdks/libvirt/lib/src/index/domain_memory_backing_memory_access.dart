@@ -8,20 +8,19 @@ class DomainMemoryBackingMemoryAccess {
 
   /// Creates a new [DomainMemoryBackingMemoryAccess].
   /// [mode] Specifies the mode for memory access, determining how memory can be accessed, such as shared or exclusive.
-  DomainMemoryBackingMemoryAccess({
-    this.mode,
-  });
+  DomainMemoryBackingMemoryAccess({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode,
-    };
+    return <String, dynamic>{'mode': ?mode};
   }
 
   factory DomainMemoryBackingMemoryAccess.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemoryAccess(
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ class InstancePscConfigServiceAttachment {
   /// (Output)
   /// Status of the service attachment connection.
   final pulumi.Input<String>? connectionStatus;
+
   /// Fully qualified domain name that will be used in the private DNS record created for the service attachment.
   final pulumi.Input<String>? localFqdn;
+
   /// URI of the service attachment to connect to.
   final pulumi.Input<String>? targetServiceAttachmentUri;
 
@@ -31,10 +33,21 @@ class InstancePscConfigServiceAttachment {
 
   factory InstancePscConfigServiceAttachment.fromMap(Map<String, dynamic> map) {
     return InstancePscConfigServiceAttachment(
-      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus']! as String).input(),
-      localFqdn: map['localFqdn'] == null ? null : (map['localFqdn']! as String).input(),
-      targetServiceAttachmentUri: map['targetServiceAttachmentUri'] == null ? null : (map['targetServiceAttachmentUri']! as String).input(),
+      connectionStatus: (() {
+        final guardedValue = map['connectionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localFqdn: (() {
+        final guardedValue = map['localFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetServiceAttachmentUri: (() {
+        final guardedValue = map['targetServiceAttachmentUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

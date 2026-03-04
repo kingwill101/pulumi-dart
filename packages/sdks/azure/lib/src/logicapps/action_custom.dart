@@ -272,15 +272,17 @@ import 'action_custom_state.dart';
 /// $ pulumi import azure:logicapps/actionCustom:ActionCustom custom1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Logic/workflows/workflow1/actions/custom1
 /// ```
 ///
-/// > **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/actions/{name of the action}`.
+/// &gt; **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/actions/{name of the action}`.
 class ActionCustom extends pulumi.CustomResource {
   /// Specifies the JSON Blob defining the Body of this Custom Action.
   late final pulumi.Output<String> body;
+
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
+
   /// Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
+  /// &gt; **NOTE:** This name must be unique across all Actions within the Logic App Workflow.
   late final pulumi.Output<String> name;
 
   /// Creates a new [ActionCustom].
@@ -292,13 +294,13 @@ class ActionCustom extends pulumi.CustomResource {
     ActionCustomArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/actionCustom:ActionCustom',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.logicAppId = registerOutput<String>('logicAppId');
+         'azure:logicapps/actionCustom:ActionCustom',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
   }
 
@@ -320,13 +322,13 @@ class ActionCustom extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/actionCustom:ActionCustom',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.logicAppId = registerOutput<String>('logicAppId');
+         'azure:logicapps/actionCustom:ActionCustom',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
   }
 }

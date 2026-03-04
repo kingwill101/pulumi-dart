@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFileShareSnapshotArgs {
   /// The name of the FileShareSnapshot
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource name of the file share, as seen by the administrator through Azure Resource Manager.
   final pulumi.Input<String> resourceName;
 
@@ -34,10 +36,11 @@ class GetFileShareSnapshotArgs {
 
   factory GetFileShareSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareSnapshotArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

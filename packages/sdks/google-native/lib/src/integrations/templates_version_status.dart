@@ -6,16 +6,15 @@ enum TemplatesVersionStatus {
   archived("ARCHIVED"),
   snapshot("SNAPSHOT");
 
-  const TemplatesVersionStatus(this.value);
-  final String value;
+  const TemplatesVersionStatus(this.wireValue);
+  final String wireValue;
 
   static TemplatesVersionStatus fromValue(String value) {
     for (final item in TemplatesVersionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TemplatesVersionStatus value: $value');
   }
 }
-

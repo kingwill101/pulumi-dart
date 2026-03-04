@@ -4,16 +4,17 @@ enum SessionEntityTypeEntityOverrideMode {
   entityOverrideModeOverride("ENTITY_OVERRIDE_MODE_OVERRIDE"),
   entityOverrideModeSupplement("ENTITY_OVERRIDE_MODE_SUPPLEMENT");
 
-  const SessionEntityTypeEntityOverrideMode(this.value);
-  final String value;
+  const SessionEntityTypeEntityOverrideMode(this.wireValue);
+  final String wireValue;
 
   static SessionEntityTypeEntityOverrideMode fromValue(String value) {
     for (final item in SessionEntityTypeEntityOverrideMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SessionEntityTypeEntityOverrideMode value: $value');
+    throw ArgumentError(
+      'Unknown SessionEntityTypeEntityOverrideMode value: $value',
+    );
   }
 }
-

@@ -21,50 +21,78 @@ import 'storage_profile_response.dart';
 class ClusterGetPropertiesResponse {
   /// The cluster definition.
   final pulumi.Input<ClusterDefinitionResponse> clusterDefinition;
+
   /// The hdp version of the cluster.
   final pulumi.Input<String>? clusterHdpVersion;
+
   /// The cluster id.
   final pulumi.Input<String>? clusterId;
+
   /// The state of the cluster.
   final pulumi.Input<String>? clusterState;
+
   /// The version of the cluster.
   final pulumi.Input<String>? clusterVersion;
+
   /// The compute isolation properties.
-  final pulumi.Input<ComputeIsolationPropertiesResponse>? computeIsolationProperties;
+  final pulumi.Input<ComputeIsolationPropertiesResponse>?
+  computeIsolationProperties;
+
   /// The compute profile.
   final pulumi.Input<ComputeProfileResponse>? computeProfile;
+
   /// The list of connectivity endpoints.
   final pulumi.Input<List<ConnectivityEndpointResponse>>? connectivityEndpoints;
+
   /// The date on which the cluster was created.
   final pulumi.Input<String>? createdDate;
+
   /// The disk encryption properties.
-  final pulumi.Input<DiskEncryptionPropertiesResponse>? diskEncryptionProperties;
+  final pulumi.Input<DiskEncryptionPropertiesResponse>?
+  diskEncryptionProperties;
+
   /// The encryption-in-transit properties.
-  final pulumi.Input<EncryptionInTransitPropertiesResponse>? encryptionInTransitProperties;
+  final pulumi.Input<EncryptionInTransitPropertiesResponse>?
+  encryptionInTransitProperties;
+
   /// The list of errors.
   final pulumi.Input<List<ErrorsResponse>>? errors;
+
   /// The excluded services config.
   final pulumi.Input<ExcludedServicesConfigResponse>? excludedServicesConfig;
+
   /// The cluster kafka rest proxy configuration.
   final pulumi.Input<KafkaRestPropertiesResponse>? kafkaRestProperties;
+
   /// The minimal supported tls version.
   final pulumi.Input<String>? minSupportedTlsVersion;
+
   /// The network properties.
   final pulumi.Input<NetworkPropertiesResponse>? networkProperties;
+
   /// The type of operating system.
   final pulumi.Input<String>? osType;
+
   /// The list of private endpoint connections.
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>>
+  privateEndpointConnections;
+
   /// The private link configurations.
-  final pulumi.Input<List<PrivateLinkConfigurationResponse>>? privateLinkConfigurations;
+  final pulumi.Input<List<PrivateLinkConfigurationResponse>>?
+  privateLinkConfigurations;
+
   /// The provisioning state, which only appears in the response.
   final pulumi.Input<String>? provisioningState;
+
   /// The quota information.
   final pulumi.Input<QuotaInfoResponse>? quotaInfo;
+
   /// The security profile.
   final pulumi.Input<SecurityProfileResponse>? securityProfile;
+
   /// The storage profile.
   final pulumi.Input<StorageProfileResponse>? storageProfile;
+
   /// The cluster tier.
   final pulumi.Input<String>? tier;
 
@@ -122,60 +150,306 @@ class ClusterGetPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterDefinition': pulumi.Input.mapInputValue<ClusterDefinitionResponse, Map<String, dynamic>>(clusterDefinition, (value) => value.toMap()),
+      'clusterDefinition':
+          pulumi.Input.mapInputValue<
+            ClusterDefinitionResponse,
+            Map<String, dynamic>
+          >(clusterDefinition, (value) => value.toMap()),
       'clusterHdpVersion': ?clusterHdpVersion,
       'clusterId': ?clusterId,
       'clusterState': ?clusterState,
       'clusterVersion': ?clusterVersion,
-      'computeIsolationProperties': ?pulumi.Input.mapOptionalInputValue<ComputeIsolationPropertiesResponse, Map<String, dynamic>>(computeIsolationProperties, (value) => value.toMap()),
-      'computeProfile': ?pulumi.Input.mapOptionalInputValue<ComputeProfileResponse, Map<String, dynamic>>(computeProfile, (value) => value.toMap()),
-      'connectivityEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ConnectivityEndpointResponse>, List<Map<String, dynamic>>>(connectivityEndpoints, (value) => pulumi.Input.encodeList<ConnectivityEndpointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'computeIsolationProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeIsolationPropertiesResponse,
+            Map<String, dynamic>
+          >(computeIsolationProperties, (value) => value.toMap()),
+      'computeProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeProfileResponse,
+            Map<String, dynamic>
+          >(computeProfile, (value) => value.toMap()),
+      'connectivityEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConnectivityEndpointResponse>,
+            List<Map<String, dynamic>>
+          >(
+            connectivityEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConnectivityEndpointResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'createdDate': ?createdDate,
-      'diskEncryptionProperties': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionPropertiesResponse, Map<String, dynamic>>(diskEncryptionProperties, (value) => value.toMap()),
-      'encryptionInTransitProperties': ?pulumi.Input.mapOptionalInputValue<EncryptionInTransitPropertiesResponse, Map<String, dynamic>>(encryptionInTransitProperties, (value) => value.toMap()),
-      'errors': ?pulumi.Input.mapOptionalInputValue<List<ErrorsResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ErrorsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'excludedServicesConfig': ?pulumi.Input.mapOptionalInputValue<ExcludedServicesConfigResponse, Map<String, dynamic>>(excludedServicesConfig, (value) => value.toMap()),
-      'kafkaRestProperties': ?pulumi.Input.mapOptionalInputValue<KafkaRestPropertiesResponse, Map<String, dynamic>>(kafkaRestProperties, (value) => value.toMap()),
+      'diskEncryptionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskEncryptionPropertiesResponse,
+            Map<String, dynamic>
+          >(diskEncryptionProperties, (value) => value.toMap()),
+      'encryptionInTransitProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            EncryptionInTransitPropertiesResponse,
+            Map<String, dynamic>
+          >(encryptionInTransitProperties, (value) => value.toMap()),
+      'errors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ErrorsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            errors,
+            (value) =>
+                pulumi.Input.encodeList<ErrorsResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'excludedServicesConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExcludedServicesConfigResponse,
+            Map<String, dynamic>
+          >(excludedServicesConfig, (value) => value.toMap()),
+      'kafkaRestProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            KafkaRestPropertiesResponse,
+            Map<String, dynamic>
+          >(kafkaRestProperties, (value) => value.toMap()),
       'minSupportedTlsVersion': ?minSupportedTlsVersion,
-      'networkProperties': ?pulumi.Input.mapOptionalInputValue<NetworkPropertiesResponse, Map<String, dynamic>>(networkProperties, (value) => value.toMap()),
+      'networkProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkPropertiesResponse,
+            Map<String, dynamic>
+          >(networkProperties, (value) => value.toMap()),
       'osType': ?osType,
-      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'privateLinkConfigurations': ?pulumi.Input.mapOptionalInputValue<List<PrivateLinkConfigurationResponse>, List<Map<String, dynamic>>>(privateLinkConfigurations, (value) => pulumi.Input.encodeList<PrivateLinkConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateEndpointConnections':
+          pulumi.Input.mapInputValue<
+            List<PrivateEndpointConnectionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            privateEndpointConnections,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrivateEndpointConnectionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'privateLinkConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrivateLinkConfigurationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            privateLinkConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrivateLinkConfigurationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': ?provisioningState,
-      'quotaInfo': ?pulumi.Input.mapOptionalInputValue<QuotaInfoResponse, Map<String, dynamic>>(quotaInfo, (value) => value.toMap()),
-      'securityProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileResponse, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
-      'storageProfile': ?pulumi.Input.mapOptionalInputValue<StorageProfileResponse, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
+      'quotaInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            QuotaInfoResponse,
+            Map<String, dynamic>
+          >(quotaInfo, (value) => value.toMap()),
+      'securityProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityProfileResponse,
+            Map<String, dynamic>
+          >(securityProfile, (value) => value.toMap()),
+      'storageProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageProfileResponse,
+            Map<String, dynamic>
+          >(storageProfile, (value) => value.toMap()),
       'tier': ?tier,
     };
   }
 
   factory ClusterGetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ClusterGetPropertiesResponse(
-      clusterDefinition: (ClusterDefinitionResponse.fromMap((map['clusterDefinition'] as Map).cast<String, dynamic>())).input(),
-      clusterHdpVersion: map['clusterHdpVersion'] == null ? null : (map['clusterHdpVersion']! as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      clusterState: map['clusterState'] == null ? null : (map['clusterState']! as String).input(),
-      clusterVersion: map['clusterVersion'] == null ? null : (map['clusterVersion']! as String).input(),
-      computeIsolationProperties: map['computeIsolationProperties'] == null ? null : (ComputeIsolationPropertiesResponse.fromMap((map['computeIsolationProperties']! as Map).cast<String, dynamic>())).input(),
-      computeProfile: map['computeProfile'] == null ? null : (ComputeProfileResponse.fromMap((map['computeProfile']! as Map).cast<String, dynamic>())).input(),
-      connectivityEndpoints: map['connectivityEndpoints'] == null ? null : (pulumi.Input.decodeList<ConnectivityEndpointResponse>(map['connectivityEndpoints']!, (value) => ConnectivityEndpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
-      diskEncryptionProperties: map['diskEncryptionProperties'] == null ? null : (DiskEncryptionPropertiesResponse.fromMap((map['diskEncryptionProperties']! as Map).cast<String, dynamic>())).input(),
-      encryptionInTransitProperties: map['encryptionInTransitProperties'] == null ? null : (EncryptionInTransitPropertiesResponse.fromMap((map['encryptionInTransitProperties']! as Map).cast<String, dynamic>())).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ErrorsResponse>(map['errors']!, (value) => ErrorsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedServicesConfig: map['excludedServicesConfig'] == null ? null : (ExcludedServicesConfigResponse.fromMap((map['excludedServicesConfig']! as Map).cast<String, dynamic>())).input(),
-      kafkaRestProperties: map['kafkaRestProperties'] == null ? null : (KafkaRestPropertiesResponse.fromMap((map['kafkaRestProperties']! as Map).cast<String, dynamic>())).input(),
-      minSupportedTlsVersion: map['minSupportedTlsVersion'] == null ? null : (map['minSupportedTlsVersion']! as String).input(),
-      networkProperties: map['networkProperties'] == null ? null : (NetworkPropertiesResponse.fromMap((map['networkProperties']! as Map).cast<String, dynamic>())).input(),
-      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
-      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateLinkConfigurations: map['privateLinkConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkConfigurationResponse>(map['privateLinkConfigurations']!, (value) => PrivateLinkConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      quotaInfo: map['quotaInfo'] == null ? null : (QuotaInfoResponse.fromMap((map['quotaInfo']! as Map).cast<String, dynamic>())).input(),
-      securityProfile: map['securityProfile'] == null ? null : (SecurityProfileResponse.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      clusterDefinition: pulumi.Input.fromValue(
+        ClusterDefinitionResponse.fromMap(
+          (map['clusterDefinition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      clusterHdpVersion: (() {
+        final guardedValue = map['clusterHdpVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterState: (() {
+        final guardedValue = map['clusterState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterVersion: (() {
+        final guardedValue = map['clusterVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computeIsolationProperties: (() {
+        final guardedValue = map['computeIsolationProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeIsolationPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      computeProfile: (() {
+        final guardedValue = map['computeProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectivityEndpoints: (() {
+        final guardedValue = map['connectivityEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConnectivityEndpointResponse>(
+            guardedValue,
+            (value) => ConnectivityEndpointResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      createdDate: (() {
+        final guardedValue = map['createdDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskEncryptionProperties: (() {
+        final guardedValue = map['diskEncryptionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskEncryptionPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      encryptionInTransitProperties: (() {
+        final guardedValue = map['encryptionInTransitProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EncryptionInTransitPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      errors: (() {
+        final guardedValue = map['errors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ErrorsResponse>(
+            guardedValue,
+            (value) =>
+                ErrorsResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      excludedServicesConfig: (() {
+        final guardedValue = map['excludedServicesConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExcludedServicesConfigResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kafkaRestProperties: (() {
+        final guardedValue = map['kafkaRestProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KafkaRestPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      minSupportedTlsVersion: (() {
+        final guardedValue = map['minSupportedTlsVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkProperties: (() {
+        final guardedValue = map['networkProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateEndpointConnections: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+          map['privateEndpointConnections']!,
+          (value) => PrivateEndpointConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      privateLinkConfigurations: (() {
+        final guardedValue = map['privateLinkConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrivateLinkConfigurationResponse>(
+            guardedValue,
+            (value) => PrivateLinkConfigurationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      quotaInfo: (() {
+        final guardedValue = map['quotaInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          QuotaInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      securityProfile: (() {
+        final guardedValue = map['securityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageProfile: (() {
+        final guardedValue = map['storageProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

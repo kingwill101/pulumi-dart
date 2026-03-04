@@ -13,15 +13,16 @@ class GetConfigurationSetVdmOptionDashboardOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'engagementMetrics': engagementMetrics,
-    };
+    return <String, dynamic>{'engagementMetrics': engagementMetrics};
   }
 
-  factory GetConfigurationSetVdmOptionDashboardOption.fromMap(Map<String, dynamic> map) {
+  factory GetConfigurationSetVdmOptionDashboardOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConfigurationSetVdmOptionDashboardOption(
-      engagementMetrics: (map['engagementMetrics'] as String).input(),
+      engagementMetrics: pulumi.Input.fromValue(
+        map['engagementMetrics'] as String,
+      ),
     );
   }
 }
-

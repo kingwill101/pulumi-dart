@@ -1,5 +1,3 @@
-library module_connectors;
-
 export 'connectors/audit_config.dart';
 export 'connectors/audit_config_response.dart';
 export 'connectors/audit_log_config.dart';

@@ -10,20 +10,22 @@ class TaskSchedulingPolicy {
 
   /// Creates a new [TaskSchedulingPolicy].
   /// [nodeFillType] How tasks should be distributed across compute nodes.
-  TaskSchedulingPolicy({
-    required this.nodeFillType,
-  });
+  TaskSchedulingPolicy({required this.nodeFillType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeFillType': pulumi.Input.mapInputValue<ComputeNodeFillType, String>(nodeFillType, (value) => value.value),
+      'nodeFillType': pulumi.Input.mapInputValue<ComputeNodeFillType, String>(
+        nodeFillType,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory TaskSchedulingPolicy.fromMap(Map<String, dynamic> map) {
     return TaskSchedulingPolicy(
-      nodeFillType: (ComputeNodeFillType.fromValue(map['nodeFillType'] as String)).input(),
+      nodeFillType: pulumi.Input.fromValue(
+        ComputeNodeFillType.fromValue(map['nodeFillType']! as String),
+      ),
     );
   }
 }
-

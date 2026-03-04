@@ -5,16 +5,15 @@ enum SSOSecretType {
   valueSharedKeyInKeyVault("SharedKeyInKeyVault"),
   valueCertificateInKeyVault("CertificateInKeyVault");
 
-  const SSOSecretType(this.value);
-  final String value;
+  const SSOSecretType(this.wireValue);
+  final String wireValue;
 
   static SSOSecretType fromValue(String value) {
     for (final item in SSOSecretType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SSOSecretType value: $value');
   }
 }
-

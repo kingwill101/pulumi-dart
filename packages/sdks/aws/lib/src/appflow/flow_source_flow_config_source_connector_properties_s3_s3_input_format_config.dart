@@ -13,15 +13,18 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3InputFileType': ?s3InputFileType,
-    };
+    return <String, dynamic>{'s3InputFileType': ?s3InputFileType};
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig(
-      s3InputFileType: map['s3InputFileType'] == null ? null : ((map['s3InputFileType'] as String).input()).input(),
+      s3InputFileType: (() {
+        final guardedValue = map['s3InputFileType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

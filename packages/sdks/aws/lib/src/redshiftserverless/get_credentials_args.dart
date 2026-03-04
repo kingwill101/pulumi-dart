@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCredentialsArgs {
   /// The name of the database to get temporary authorization to log on to.
   final pulumi.Input<String>? dbName;
+
   /// The number of seconds until the returned temporary password expires. The minimum is 900 seconds, and the maximum is 3600 seconds.
   final pulumi.Input<int>? durationSeconds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the workgroup associated with the database.
   final pulumi.Input<String> workgroupName;
 
@@ -39,11 +42,22 @@ class GetCredentialsArgs {
 
   factory GetCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialsArgs(
-      dbName: map['dbName'] == null ? null : ((map['dbName'] as String).input()).input(),
-      durationSeconds: map['durationSeconds'] == null ? null : ((map['durationSeconds'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      workgroupName: (map['workgroupName'] as String).input(),
+      dbName: (() {
+        final guardedValue = map['dbName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      durationSeconds: (() {
+        final guardedValue = map['durationSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workgroupName: pulumi.Input.fromValue(map['workgroupName'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum MatchingMethod {
   valueAnyAlert("AnyAlert"),
   valueSelected("Selected");
 
-  const MatchingMethod(this.value);
-  final String value;
+  const MatchingMethod(this.wireValue);
+  final String wireValue;
 
   static MatchingMethod fromValue(String value) {
     for (final item in MatchingMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MatchingMethod value: $value');
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQosDscpMarkingRuleArgs {
   /// The value of a DSCP mark.
   final pulumi.Input<int>? dscpMark;
+
   /// The QoS policy reference.
   final pulumi.Input<String> qosPolicyId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
   /// `region` argument of the provider is used.
@@ -36,10 +38,17 @@ class GetQosDscpMarkingRuleArgs {
 
   factory GetQosDscpMarkingRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetQosDscpMarkingRuleArgs(
-      dscpMark: map['dscpMark'] == null ? null : (map['dscpMark']! as int).input(),
-      qosPolicyId: (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      dscpMark: (() {
+        final guardedValue = map['dscpMark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      qosPolicyId: pulumi.Input.fromValue(map['qosPolicyId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

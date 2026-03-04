@@ -4,16 +4,15 @@ enum AllocationStrategy {
   capacityOptimized("CapacityOptimized"),
   prioritized("Prioritized");
 
-  const AllocationStrategy(this.value);
-  final String value;
+  const AllocationStrategy(this.wireValue);
+  final String wireValue;
 
   static AllocationStrategy fromValue(String value) {
     for (final item in AllocationStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllocationStrategy value: $value');
   }
 }
-

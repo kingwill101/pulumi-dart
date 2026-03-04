@@ -9,11 +9,14 @@ import 'dc_access_security_code_response.dart';
 class DataboxJobSecretsResponse {
   /// Dc Access Security Code for Customer Managed Shipping
   final pulumi.Input<DcAccessSecurityCodeResponse> dcAccessSecurityCode;
+
   /// Error while fetching the secrets.
   final pulumi.Input<CloudErrorResponse> error;
+
   /// Used to indicate what type of job secrets object.
   /// Expected value is 'DataBox'.
   final pulumi.Input<String> jobSecretsType;
+
   /// Contains the list of secret objects for a job.
   final pulumi.Input<List<DataBoxSecretResponse>>? podSecrets;
 
@@ -31,20 +34,57 @@ class DataboxJobSecretsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dcAccessSecurityCode': pulumi.Input.mapInputValue<DcAccessSecurityCodeResponse, Map<String, dynamic>>(dcAccessSecurityCode, (value) => value.toMap()),
-      'error': pulumi.Input.mapInputValue<CloudErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'dcAccessSecurityCode':
+          pulumi.Input.mapInputValue<
+            DcAccessSecurityCodeResponse,
+            Map<String, dynamic>
+          >(dcAccessSecurityCode, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<CloudErrorResponse, Map<String, dynamic>>(
+            error,
+            (value) => value.toMap(),
+          ),
       'jobSecretsType': jobSecretsType,
-      'podSecrets': ?pulumi.Input.mapOptionalInputValue<List<DataBoxSecretResponse>, List<Map<String, dynamic>>>(podSecrets, (value) => pulumi.Input.encodeList<DataBoxSecretResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'podSecrets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataBoxSecretResponse>,
+            List<Map<String, dynamic>>
+          >(
+            podSecrets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataBoxSecretResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DataboxJobSecretsResponse.fromMap(Map<String, dynamic> map) {
     return DataboxJobSecretsResponse(
-      dcAccessSecurityCode: (DcAccessSecurityCodeResponse.fromMap((map['dcAccessSecurityCode'] as Map).cast<String, dynamic>())).input(),
-      error: (CloudErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      jobSecretsType: (map['jobSecretsType'] as String).input(),
-      podSecrets: map['podSecrets'] == null ? null : (pulumi.Input.decodeList<DataBoxSecretResponse>(map['podSecrets']!, (value) => DataBoxSecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dcAccessSecurityCode: pulumi.Input.fromValue(
+        DcAccessSecurityCodeResponse.fromMap(
+          (map['dcAccessSecurityCode']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      error: pulumi.Input.fromValue(
+        CloudErrorResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      jobSecretsType: pulumi.Input.fromValue(map['jobSecretsType'] as String),
+      podSecrets: (() {
+        final guardedValue = map['podSecrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataBoxSecretResponse>(
+            guardedValue,
+            (value) => DataBoxSecretResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

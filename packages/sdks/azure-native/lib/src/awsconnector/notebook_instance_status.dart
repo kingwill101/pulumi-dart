@@ -8,16 +8,15 @@ enum NotebookInstanceStatus {
   stopping("Stopping"),
   updating("Updating");
 
-  const NotebookInstanceStatus(this.value);
-  final String value;
+  const NotebookInstanceStatus(this.wireValue);
+  final String wireValue;
 
   static NotebookInstanceStatus fromValue(String value) {
     for (final item in NotebookInstanceStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotebookInstanceStatus value: $value');
   }
 }
-

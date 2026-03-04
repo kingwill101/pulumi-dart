@@ -5,16 +5,17 @@ enum CVSSAttackComplexityContaineranalysisV1alpha1 {
   attackComplexityHigh("ATTACK_COMPLEXITY_HIGH"),
   attackComplexityMedium("ATTACK_COMPLEXITY_MEDIUM");
 
-  const CVSSAttackComplexityContaineranalysisV1alpha1(this.value);
-  final String value;
+  const CVSSAttackComplexityContaineranalysisV1alpha1(this.wireValue);
+  final String wireValue;
 
   static CVSSAttackComplexityContaineranalysisV1alpha1 fromValue(String value) {
     for (final item in CVSSAttackComplexityContaineranalysisV1alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSAttackComplexityContaineranalysisV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSAttackComplexityContaineranalysisV1alpha1 value: $value',
+    );
   }
 }
-

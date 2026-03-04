@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationClientDetailsResponse {
   /// The client application Id.
   final pulumi.Input<String>? applicationId;
+
   /// The client Oid.
   final pulumi.Input<String>? oid;
+
   /// The client Puid
   final pulumi.Input<String>? puid;
 
@@ -15,11 +17,7 @@ class ApplicationClientDetailsResponse {
   /// [applicationId] The client application Id.
   /// [oid] The client Oid.
   /// [puid] The client Puid
-  ApplicationClientDetailsResponse({
-    this.applicationId,
-    this.oid,
-    this.puid,
-  });
+  ApplicationClientDetailsResponse({this.applicationId, this.oid, this.puid});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ApplicationClientDetailsResponse {
 
   factory ApplicationClientDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationClientDetailsResponse(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      oid: map['oid'] == null ? null : (map['oid']! as String).input(),
-      puid: map['puid'] == null ? null : (map['puid']! as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oid: (() {
+        final guardedValue = map['oid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      puid: (() {
+        final guardedValue = map['puid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

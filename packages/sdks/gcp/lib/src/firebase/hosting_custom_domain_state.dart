@@ -12,26 +12,33 @@ class HostingCustomDomainState {
   /// `GROUPED` cert type, while Blaze plan can select any option.
   /// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
   final pulumi.Input<String>? certPreference;
+
   /// The SSL certificate Hosting has for this `CustomDomain`'s domain name.
   /// For new `CustomDomain`s, this often represents Hosting's intent to create
   /// a certificate, rather than an actual cert. Check the `state` field for
   /// more.
   /// Structure is documented below.
   final pulumi.Input<List<HostingCustomDomainCert>>? certs;
+
   /// The `CustomDomain`'s create time.
   final pulumi.Input<String>? createTime;
+
   /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
   final pulumi.Input<String>? customDomain;
+
   /// The time the `CustomDomain` was deleted; null for `CustomDomains` that
   /// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
   /// days, after which time Hosting removes them completely.
   final pulumi.Input<String>? deleteTime;
+
   /// A string that represents the current state of the `CustomDomain` and
   /// allows you to confirm its initial state in requests that would modify it.
   final pulumi.Input<String>? etag;
+
   /// The minimum time before a soft-deleted `CustomDomain` is completely removed
   /// from Hosting; null for `CustomDomains` that haven't been deleted.
   final pulumi.Input<String>? expireTime;
+
   /// The host state of your domain name. Host state is determined by checking each
   /// IP address associated with your domain name to see if it's serving
   /// Hosting content.
@@ -53,13 +60,16 @@ class HostingCustomDomainState {
   /// Hosting. If the `CustomDomain`'s `OwnershipState` is also `ACTIVE`, Hosting
   /// serves your Hosting Site's content on the domain name.
   final pulumi.Input<String>? hostState;
+
   /// A set of errors Hosting systems encountered when trying to establish
   /// Hosting's ability to serve secure content for your domain name. Resolve
   /// these issues to ensure your `CustomDomain` behaves properly.
   /// Structure is documented below.
   final pulumi.Input<List<HostingCustomDomainIssue>>? issues;
+
   /// The fully-qualified name of the `CustomDomain`.
   final pulumi.Input<String>? name;
+
   /// The ownership state of your domain name. Ownership is determined at a
   /// Firebase project level, and established by adding `TXT` records to your
   /// domain name's DNS records.
@@ -93,25 +103,32 @@ class HostingCustomDomainState {
   /// Your `CustomDomain`'s domain name has `TXT` records that grant its project
   /// permission to act on its behalf.
   final pulumi.Input<String>? ownershipState;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// if true, indicates that Hosting's systems are attempting to
   /// make the `CustomDomain`'s state match your preferred state. This is most
   /// frequently `true` when initially provisioning a `CustomDomain` or when creating
   /// a new SSL certificate to match an updated `cert_preference`
   final pulumi.Input<bool>? reconciling;
+
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
   /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
   /// instead.
   final pulumi.Input<String>? redirectTarget;
+
   /// A set of updates you should make to the domain name's DNS records to
   /// let Hosting serve secure content on its behalf.
   /// Structure is documented below.
-  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdate>>? requiredDnsUpdates;
+  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdate>>?
+  requiredDnsUpdates;
+
   /// The ID of the site in which to create this custom domain association.
   final pulumi.Input<String>? siteId;
+
   /// The last time the `CustomDomain` was updated.
   final pulumi.Input<String>? updateTime;
   final pulumi.Input<bool>? waitDnsVerification;
@@ -159,20 +176,53 @@ class HostingCustomDomainState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certPreference': ?certPreference,
-      'certs': ?pulumi.Input.mapOptionalInputValue<List<HostingCustomDomainCert>, List<Map<String, dynamic>>>(certs, (value) => pulumi.Input.encodeList<HostingCustomDomainCert, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'certs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HostingCustomDomainCert>,
+            List<Map<String, dynamic>>
+          >(
+            certs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HostingCustomDomainCert,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'createTime': ?createTime,
       'customDomain': ?customDomain,
       'deleteTime': ?deleteTime,
       'etag': ?etag,
       'expireTime': ?expireTime,
       'hostState': ?hostState,
-      'issues': ?pulumi.Input.mapOptionalInputValue<List<HostingCustomDomainIssue>, List<Map<String, dynamic>>>(issues, (value) => pulumi.Input.encodeList<HostingCustomDomainIssue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'issues':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HostingCustomDomainIssue>,
+            List<Map<String, dynamic>>
+          >(
+            issues,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HostingCustomDomainIssue,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'ownershipState': ?ownershipState,
       'project': ?project,
       'reconciling': ?reconciling,
       'redirectTarget': ?redirectTarget,
-      'requiredDnsUpdates': ?pulumi.Input.mapOptionalInputValue<List<HostingCustomDomainRequiredDnsUpdate>, List<Map<String, dynamic>>>(requiredDnsUpdates, (value) => pulumi.Input.encodeList<HostingCustomDomainRequiredDnsUpdate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requiredDnsUpdates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HostingCustomDomainRequiredDnsUpdate>,
+            List<Map<String, dynamic>>
+          >(
+            requiredDnsUpdates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HostingCustomDomainRequiredDnsUpdate,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'siteId': ?siteId,
       'updateTime': ?updateTime,
       'waitDnsVerification': ?waitDnsVerification,
@@ -181,25 +231,117 @@ class HostingCustomDomainState {
 
   factory HostingCustomDomainState.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainState(
-      certPreference: map['certPreference'] == null ? null : (map['certPreference']! as String).input(),
-      certs: map['certs'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainCert>(map['certs']!, (value) => HostingCustomDomainCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      customDomain: map['customDomain'] == null ? null : (map['customDomain']! as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      hostState: map['hostState'] == null ? null : (map['hostState']! as String).input(),
-      issues: map['issues'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainIssue>(map['issues']!, (value) => HostingCustomDomainIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ownershipState: map['ownershipState'] == null ? null : (map['ownershipState']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
-      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget']! as String).input(),
-      requiredDnsUpdates: map['requiredDnsUpdates'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdate>(map['requiredDnsUpdates']!, (value) => HostingCustomDomainRequiredDnsUpdate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
-      waitDnsVerification: map['waitDnsVerification'] == null ? null : (map['waitDnsVerification']! as bool).input(),
+      certPreference: (() {
+        final guardedValue = map['certPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certs: (() {
+        final guardedValue = map['certs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HostingCustomDomainCert>(
+            guardedValue,
+            (value) => HostingCustomDomainCert.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customDomain: (() {
+        final guardedValue = map['customDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteTime: (() {
+        final guardedValue = map['deleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostState: (() {
+        final guardedValue = map['hostState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      issues: (() {
+        final guardedValue = map['issues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HostingCustomDomainIssue>(
+            guardedValue,
+            (value) => HostingCustomDomainIssue.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownershipState: (() {
+        final guardedValue = map['ownershipState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reconciling: (() {
+        final guardedValue = map['reconciling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      redirectTarget: (() {
+        final guardedValue = map['redirectTarget'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requiredDnsUpdates: (() {
+        final guardedValue = map['requiredDnsUpdates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdate>(
+            guardedValue,
+            (value) => HostingCustomDomainRequiredDnsUpdate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      waitDnsVerification: (() {
+        final guardedValue = map['waitDnsVerification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

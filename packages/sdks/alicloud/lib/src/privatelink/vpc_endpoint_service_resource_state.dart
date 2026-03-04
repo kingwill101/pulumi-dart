@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServiceResourceState {
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
+
   /// (Available since v1.235.0) The ID of the region where the service resource is deployed.
   final pulumi.Input<String>? regionId;
+
   /// The service resource ID.
   final pulumi.Input<String>? resourceId;
+
   /// Service resource type, value:
   final pulumi.Input<String>? resourceType;
+
   /// The endpoint service ID.
   final pulumi.Input<String>? serviceId;
+
   /// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
   final pulumi.Input<String>? zoneId;
 
@@ -46,13 +51,36 @@ class VpcEndpointServiceResourceState {
 
   factory VpcEndpointServiceResourceState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceResourceState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: (() {
+        final guardedValue = map['serviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAuthorizationArgs {
   /// The Amazon Web Services account ID to grant access to.
   final pulumi.Input<String> account;
+
   /// The cluster identifier of the cluster to grant access to.
   final pulumi.Input<String> clusterIdentifier;
+
   /// Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted. Default value is `false`.
   final pulumi.Input<bool>? forceDelete;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
   final pulumi.Input<List<String>>? vpcIds;
 
@@ -44,12 +48,25 @@ class EndpointAuthorizationArgs {
 
   factory EndpointAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAuthorizationArgs(
-      account: (map['account'] as String).input(),
-      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      forceDelete: map['forceDelete'] == null ? null : ((map['forceDelete'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcIds: map['vpcIds'] == null ? null : (((map['vpcIds'] as List).cast<String>()).input()).input(),
+      account: pulumi.Input.fromValue(map['account'] as String),
+      clusterIdentifier: pulumi.Input.fromValue(
+        map['clusterIdentifier'] as String,
+      ),
+      forceDelete: (() {
+        final guardedValue = map['forceDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcIds: (() {
+        final guardedValue = map['vpcIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

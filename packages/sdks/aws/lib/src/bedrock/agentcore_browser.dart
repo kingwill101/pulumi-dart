@@ -612,24 +612,34 @@ import 'agentcore_browser_timeouts.dart';
 class AgentcoreBrowser extends pulumi.CustomResource {
   /// ARN of the Browser.
   late final pulumi.Output<String> browserArn;
+
   /// Unique identifier of the Browser.
   late final pulumi.Output<String> browserId;
+
   /// Description of the browser.
   late final pulumi.Output<String?> description;
+
   /// ARN of the IAM role that the browser assumes for execution.
   late final pulumi.Output<String?> executionRoleArn;
+
   /// Name of the browser.
   late final pulumi.Output<String> name;
+
   /// Network configuration for the browser. See `network_configuration` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreBrowserNetworkConfiguration> networkConfiguration;
+  late final pulumi.Output<AgentcoreBrowserNetworkConfiguration>
+  networkConfiguration;
+
   /// Recording configuration for browser sessions. See `recording` below.
   late final pulumi.Output<AgentcoreBrowserRecording?> recording;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreBrowserTimeouts?> timeouts;
@@ -643,22 +653,24 @@ class AgentcoreBrowser extends pulumi.CustomResource {
     AgentcoreBrowserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.browserArn = registerOutput<String>('browserArn');
-    this.browserId = registerOutput<String>('browserId');
-    this.description = registerOutput<String?>('description');
-    this.executionRoleArn = registerOutput<String?>('executionRoleArn');
+         'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    browserArn = registerOutput<String>('browserArn');
+    browserId = registerOutput<String>('browserId');
+    description = registerOutput<String?>('description');
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
-    this.networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>('networkConfiguration');
-    this.recording = registerOutput<AgentcoreBrowserRecording?>('recording');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts');
+    networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>(
+      'networkConfiguration',
+    );
+    recording = registerOutput<AgentcoreBrowserRecording?>('recording');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts');
   }
 
   /// Gets an existing [AgentcoreBrowser] resource's state with the given [name] and [id].
@@ -679,21 +691,23 @@ class AgentcoreBrowser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.browserArn = registerOutput<String>('browserArn');
-    this.browserId = registerOutput<String>('browserId');
-    this.description = registerOutput<String?>('description');
-    this.executionRoleArn = registerOutput<String?>('executionRoleArn');
+         'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    browserArn = registerOutput<String>('browserArn');
+    browserId = registerOutput<String>('browserId');
+    description = registerOutput<String?>('description');
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
-    this.networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>('networkConfiguration');
-    this.recording = registerOutput<AgentcoreBrowserRecording?>('recording');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts');
+    networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>(
+      'networkConfiguration',
+    );
+    recording = registerOutput<AgentcoreBrowserRecording?>('recording');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts');
   }
 }

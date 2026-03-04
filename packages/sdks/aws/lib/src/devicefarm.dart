@@ -1,5 +1,3 @@
-library module_devicefarm;
-
 export 'devicefarm/device_pool.dart';
 export 'devicefarm/device_pool_args.dart';
 export 'devicefarm/device_pool_rule.dart';

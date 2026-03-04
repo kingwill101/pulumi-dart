@@ -8,12 +8,16 @@ import 'configuration_protected_file.dart';
 class ConfigurationState {
   /// One or more `config_file` blocks as defined below.
   final pulumi.Input<List<ConfigurationConfigFile>>? configFiles;
+
   /// The ID of the Nginx Deployment. Changing this forces a new Nginx Configuration to be created.
   final pulumi.Input<String>? nginxDeploymentId;
+
   /// Specifies the package data for this configuration.
   final pulumi.Input<String>? packageData;
+
   /// One or more `protected_file` blocks with sensitive information as defined below. If specified `config_file` must also be specified.
   final pulumi.Input<List<ConfigurationProtectedFile>>? protectedFiles;
+
   /// Specifies the root file path of this Nginx Configuration.
   final pulumi.Input<String>? rootFile;
 
@@ -33,22 +37,77 @@ class ConfigurationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configFiles': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationConfigFile>, List<Map<String, dynamic>>>(configFiles, (value) => pulumi.Input.encodeList<ConfigurationConfigFile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configFiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationConfigFile>,
+            List<Map<String, dynamic>>
+          >(
+            configFiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationConfigFile,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'nginxDeploymentId': ?nginxDeploymentId,
       'packageData': ?packageData,
-      'protectedFiles': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationProtectedFile>, List<Map<String, dynamic>>>(protectedFiles, (value) => pulumi.Input.encodeList<ConfigurationProtectedFile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'protectedFiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationProtectedFile>,
+            List<Map<String, dynamic>>
+          >(
+            protectedFiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationProtectedFile,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'rootFile': ?rootFile,
     };
   }
 
   factory ConfigurationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationState(
-      configFiles: map['configFiles'] == null ? null : (pulumi.Input.decodeList<ConfigurationConfigFile>(map['configFiles']!, (value) => ConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId']! as String).input(),
-      packageData: map['packageData'] == null ? null : (map['packageData']! as String).input(),
-      protectedFiles: map['protectedFiles'] == null ? null : (pulumi.Input.decodeList<ConfigurationProtectedFile>(map['protectedFiles']!, (value) => ConfigurationProtectedFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rootFile: map['rootFile'] == null ? null : (map['rootFile']! as String).input(),
+      configFiles: (() {
+        final guardedValue = map['configFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationConfigFile>(
+            guardedValue,
+            (value) => ConfigurationConfigFile.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nginxDeploymentId: (() {
+        final guardedValue = map['nginxDeploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageData: (() {
+        final guardedValue = map['packageData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectedFiles: (() {
+        final guardedValue = map['protectedFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationProtectedFile>(
+            guardedValue,
+            (value) => ConfigurationProtectedFile.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      rootFile: (() {
+        final guardedValue = map['rootFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

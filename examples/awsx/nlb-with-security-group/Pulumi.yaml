@@ -1,0 +1,6 @@
+name: awsx-dart-ts-nlb-with-security-group
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX network load balancer with security group in Dart.

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRulePropertiesResponse {
   /// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
   final pulumi.Input<String> endIpAddress;
+
   /// The provisioning state of the firewall rule.
   final pulumi.Input<String> provisioningState;
+
   /// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
   final pulumi.Input<String> startIpAddress;
 
@@ -31,10 +33,11 @@ class FirewallRulePropertiesResponse {
 
   factory FirewallRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FirewallRulePropertiesResponse(
-      endIpAddress: (map['endIpAddress'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      startIpAddress: (map['startIpAddress'] as String).input(),
+      endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
     );
   }
 }
-

@@ -7,16 +7,22 @@ import 'public_delegated_prefix_public_delegated_sub_prefix_mode.dart';
 class PublicDelegatedPrefixPublicDelegatedSubPrefix {
   /// The allocatable prefix length supported by this PublicDelegatedSubPrefix.
   final pulumi.Input<int>? allocatablePrefixLength;
+
   /// Name of the project scoping this PublicDelegatedSubPrefix.
   final pulumi.Input<String>? delegateeProject;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
+
   /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
   final pulumi.Input<String>? ipCidrRange;
+
   /// Whether the sub prefix is delegated to create Address resources in the delegatee project.
   final pulumi.Input<bool>? isAddress;
+
   /// The PublicDelegatedSubPrefix mode for IPv6 only.
   final pulumi.Input<PublicDelegatedPrefixPublicDelegatedSubPrefixMode>? mode;
+
   /// The name of the sub public delegated prefix.
   final pulumi.Input<String>? name;
 
@@ -45,21 +51,58 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
       'description': ?description,
       'ipCidrRange': ?ipCidrRange,
       'isAddress': ?isAddress,
-      'mode': ?pulumi.Input.mapOptionalInputValue<PublicDelegatedPrefixPublicDelegatedSubPrefixMode, String>(mode, (value) => value.value),
+      'mode':
+          ?pulumi.Input.mapOptionalInputValue<
+            PublicDelegatedPrefixPublicDelegatedSubPrefixMode,
+            String
+          >(mode, (value) => value.wireValue),
       'name': ?name,
     };
   }
 
-  factory PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap(Map<String, dynamic> map) {
+  factory PublicDelegatedPrefixPublicDelegatedSubPrefix.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefix(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength']! as int).input(),
-      delegateeProject: map['delegateeProject'] == null ? null : (map['delegateeProject']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
-      isAddress: map['isAddress'] == null ? null : (map['isAddress']! as bool).input(),
-      mode: map['mode'] == null ? null : (PublicDelegatedPrefixPublicDelegatedSubPrefixMode.fromValue(map['mode']! as String)).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      allocatablePrefixLength: (() {
+        final guardedValue = map['allocatablePrefixLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      delegateeProject: (() {
+        final guardedValue = map['delegateeProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipCidrRange: (() {
+        final guardedValue = map['ipCidrRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isAddress: (() {
+        final guardedValue = map['isAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PublicDelegatedPrefixPublicDelegatedSubPrefixMode.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_bigquerydatapolicy;
-
 export 'bigquerydatapolicy/audit_config.dart';
 export 'bigquerydatapolicy/audit_config_response.dart';
 export 'bigquerydatapolicy/audit_log_config.dart';

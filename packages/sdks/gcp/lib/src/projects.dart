@@ -1,5 +1,3 @@
-library module_projects;
-
 export 'projects/access_approval_settings.dart';
 export 'projects/access_approval_settings_args.dart';
 export 'projects/access_approval_settings_enrolled_service.dart';

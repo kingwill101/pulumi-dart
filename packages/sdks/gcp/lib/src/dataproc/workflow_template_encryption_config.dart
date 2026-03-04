@@ -8,20 +8,19 @@ class WorkflowTemplateEncryptionConfig {
 
   /// Creates a new [WorkflowTemplateEncryptionConfig].
   /// [kmsKey] Optional. The Cloud KMS key name to use for encryption.
-  WorkflowTemplateEncryptionConfig({
-    this.kmsKey,
-  });
+  WorkflowTemplateEncryptionConfig({this.kmsKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKey': ?kmsKey,
-    };
+    return <String, dynamic>{'kmsKey': ?kmsKey};
   }
 
   factory WorkflowTemplateEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateEncryptionConfig(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

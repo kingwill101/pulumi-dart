@@ -4,16 +4,15 @@ enum CIAMResourceSKUName {
   valuePremiumP1("PremiumP1"),
   valuePremiumP2("PremiumP2");
 
-  const CIAMResourceSKUName(this.value);
-  final String value;
+  const CIAMResourceSKUName(this.wireValue);
+  final String wireValue;
 
   static CIAMResourceSKUName fromValue(String value) {
     for (final item in CIAMResourceSKUName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CIAMResourceSKUName value: $value');
   }
 }
-

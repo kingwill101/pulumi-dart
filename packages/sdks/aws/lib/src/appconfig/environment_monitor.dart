@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentMonitor {
   /// ARN of the Amazon CloudWatch alarm.
   final pulumi.Input<String> alarmArn;
+
   /// ARN of an IAM role for AWS AppConfig to monitor `alarm_arn`.
   final pulumi.Input<String>? alarmRoleArn;
 
   /// Creates a new [EnvironmentMonitor].
   /// [alarmArn] ARN of the Amazon CloudWatch alarm.
   /// [alarmRoleArn] ARN of an IAM role for AWS AppConfig to monitor `alarm_arn`.
-  EnvironmentMonitor({
-    required this.alarmArn,
-    this.alarmRoleArn,
-  });
+  EnvironmentMonitor({required this.alarmArn, this.alarmRoleArn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,12 @@ class EnvironmentMonitor {
 
   factory EnvironmentMonitor.fromMap(Map<String, dynamic> map) {
     return EnvironmentMonitor(
-      alarmArn: (map['alarmArn'] as String).input(),
-      alarmRoleArn: map['alarmRoleArn'] == null ? null : ((map['alarmRoleArn'] as String).input()).input(),
+      alarmArn: pulumi.Input.fromValue(map['alarmArn'] as String),
+      alarmRoleArn: (() {
+        final guardedValue = map['alarmRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

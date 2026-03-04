@@ -9,16 +9,15 @@ enum HttpRequestHttpMethod {
   patch("PATCH"),
   options("OPTIONS");
 
-  const HttpRequestHttpMethod(this.value);
-  final String value;
+  const HttpRequestHttpMethod(this.wireValue);
+  final String wireValue;
 
   static HttpRequestHttpMethod fromValue(String value) {
     for (final item in HttpRequestHttpMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpRequestHttpMethod value: $value');
   }
 }
-

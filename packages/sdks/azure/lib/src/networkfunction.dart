@@ -1,5 +1,3 @@
-library module_networkfunction;
-
 export 'networkfunction/azure_traffic_collector.dart';
 export 'networkfunction/azure_traffic_collector_args.dart';
 export 'networkfunction/azure_traffic_collector_state.dart';

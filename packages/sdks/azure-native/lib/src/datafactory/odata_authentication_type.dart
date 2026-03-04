@@ -6,16 +6,15 @@ enum ODataAuthenticationType {
   valueAadServicePrincipal("AadServicePrincipal"),
   valueManagedServiceIdentity("ManagedServiceIdentity");
 
-  const ODataAuthenticationType(this.value);
-  final String value;
+  const ODataAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static ODataAuthenticationType fromValue(String value) {
     for (final item in ODataAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ODataAuthenticationType value: $value');
   }
 }
-

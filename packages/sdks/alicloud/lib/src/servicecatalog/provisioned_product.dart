@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'provisioned_product_args.dart';
-import 'provisioned_product_output.dart';
-import 'provisioned_product_parameter.dart';
 import 'provisioned_product_state.dart';
 
 /// Provides a Service Catalog Provisioned Product resource.
 ///
 /// For information about Service Catalog Provisioned Product and how to use it, see [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct).
 ///
-/// > **NOTE:** Available since v1.196.0.
+/// &gt; **NOTE:** Available since v1.196.0.
 ///
 /// ## Example Usage
 ///
@@ -205,46 +203,67 @@ import 'provisioned_product_state.dart';
 class ProvisionedProduct extends pulumi.CustomResource {
   /// The creation time of the product instance
   late final pulumi.Output<String> createTime;
+
   /// The ID of the last instance operation task
   late final pulumi.Output<String> lastProvisioningTaskId;
+
   /// The ID of the last successful instance operation task
   late final pulumi.Output<String> lastSuccessfulProvisioningTaskId;
+
   /// The ID of the last task
   late final pulumi.Output<String> lastTaskId;
+
   /// The output value of the template.
-  late final pulumi.Output<List<ProvisionedProductOutput>> outputs;
+  late final pulumi.Output<List<Map<String, dynamic>>> outputs;
+
   /// The RAM entity ID of the owner
   late final pulumi.Output<String> ownerPrincipalId;
+
   /// The RAM entity type of the owner
   late final pulumi.Output<String> ownerPrincipalType;
+
   /// Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
-  late final pulumi.Output<List<ProvisionedProductParameter>?> parameters;
-  /// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
+  /// Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
   late final pulumi.Output<String?> portfolioId;
+
   /// Product ID.
   late final pulumi.Output<String> productId;
+
   /// The name of the product
   late final pulumi.Output<String> productName;
+
   /// Product version ID.
   late final pulumi.Output<String> productVersionId;
+
   /// The name of the product version
   late final pulumi.Output<String> productVersionName;
+
   /// The ARN of the product instance
   late final pulumi.Output<String> provisionedProductArn;
+
   /// The ID of the instance.
   late final pulumi.Output<String> provisionedProductId;
+
   /// The name of the instance.The length is 1~128 characters.
   late final pulumi.Output<String> provisionedProductName;
+
   /// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
   late final pulumi.Output<String> provisionedProductType;
+
   /// The ID of the ROS stack
   late final pulumi.Output<String> stackId;
+
   /// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
   late final pulumi.Output<String> stackRegionId;
+
   /// Instance status
   late final pulumi.Output<String> status;
+
   /// The status message of the product instance
   late final pulumi.Output<String> statusMessage;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -257,33 +276,35 @@ class ProvisionedProduct extends pulumi.CustomResource {
     ProvisionedProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.lastProvisioningTaskId = registerOutput<String>('lastProvisioningTaskId');
-    this.lastSuccessfulProvisioningTaskId = registerOutput<String>('lastSuccessfulProvisioningTaskId');
-    this.lastTaskId = registerOutput<String>('lastTaskId');
-    this.outputs = registerOutput<List<ProvisionedProductOutput>>('outputs');
-    this.ownerPrincipalId = registerOutput<String>('ownerPrincipalId');
-    this.ownerPrincipalType = registerOutput<String>('ownerPrincipalType');
-    this.parameters = registerOutput<List<ProvisionedProductParameter>?>('parameters');
-    this.portfolioId = registerOutput<String?>('portfolioId');
-    this.productId = registerOutput<String>('productId');
-    this.productName = registerOutput<String>('productName');
-    this.productVersionId = registerOutput<String>('productVersionId');
-    this.productVersionName = registerOutput<String>('productVersionName');
-    this.provisionedProductArn = registerOutput<String>('provisionedProductArn');
-    this.provisionedProductId = registerOutput<String>('provisionedProductId');
-    this.provisionedProductName = registerOutput<String>('provisionedProductName');
-    this.provisionedProductType = registerOutput<String>('provisionedProductType');
-    this.stackId = registerOutput<String>('stackId');
-    this.stackRegionId = registerOutput<String>('stackRegionId');
-    this.status = registerOutput<String>('status');
-    this.statusMessage = registerOutput<String>('statusMessage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    lastProvisioningTaskId = registerOutput<String>('lastProvisioningTaskId');
+    lastSuccessfulProvisioningTaskId = registerOutput<String>(
+      'lastSuccessfulProvisioningTaskId',
+    );
+    lastTaskId = registerOutput<String>('lastTaskId');
+    outputs = registerOutput<List<Map<String, dynamic>>>('outputs');
+    ownerPrincipalId = registerOutput<String>('ownerPrincipalId');
+    ownerPrincipalType = registerOutput<String>('ownerPrincipalType');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    portfolioId = registerOutput<String?>('portfolioId');
+    productId = registerOutput<String>('productId');
+    productName = registerOutput<String>('productName');
+    productVersionId = registerOutput<String>('productVersionId');
+    productVersionName = registerOutput<String>('productVersionName');
+    provisionedProductArn = registerOutput<String>('provisionedProductArn');
+    provisionedProductId = registerOutput<String>('provisionedProductId');
+    provisionedProductName = registerOutput<String>('provisionedProductName');
+    provisionedProductType = registerOutput<String>('provisionedProductType');
+    stackId = registerOutput<String>('stackId');
+    stackRegionId = registerOutput<String>('stackRegionId');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ProvisionedProduct] resource's state with the given [name] and [id].
@@ -304,32 +325,34 @@ class ProvisionedProduct extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.lastProvisioningTaskId = registerOutput<String>('lastProvisioningTaskId');
-    this.lastSuccessfulProvisioningTaskId = registerOutput<String>('lastSuccessfulProvisioningTaskId');
-    this.lastTaskId = registerOutput<String>('lastTaskId');
-    this.outputs = registerOutput<List<ProvisionedProductOutput>>('outputs');
-    this.ownerPrincipalId = registerOutput<String>('ownerPrincipalId');
-    this.ownerPrincipalType = registerOutput<String>('ownerPrincipalType');
-    this.parameters = registerOutput<List<ProvisionedProductParameter>?>('parameters');
-    this.portfolioId = registerOutput<String?>('portfolioId');
-    this.productId = registerOutput<String>('productId');
-    this.productName = registerOutput<String>('productName');
-    this.productVersionId = registerOutput<String>('productVersionId');
-    this.productVersionName = registerOutput<String>('productVersionName');
-    this.provisionedProductArn = registerOutput<String>('provisionedProductArn');
-    this.provisionedProductId = registerOutput<String>('provisionedProductId');
-    this.provisionedProductName = registerOutput<String>('provisionedProductName');
-    this.provisionedProductType = registerOutput<String>('provisionedProductType');
-    this.stackId = registerOutput<String>('stackId');
-    this.stackRegionId = registerOutput<String>('stackRegionId');
-    this.status = registerOutput<String>('status');
-    this.statusMessage = registerOutput<String>('statusMessage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:servicecatalog/provisionedProduct:ProvisionedProduct',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    lastProvisioningTaskId = registerOutput<String>('lastProvisioningTaskId');
+    lastSuccessfulProvisioningTaskId = registerOutput<String>(
+      'lastSuccessfulProvisioningTaskId',
+    );
+    lastTaskId = registerOutput<String>('lastTaskId');
+    outputs = registerOutput<List<Map<String, dynamic>>>('outputs');
+    ownerPrincipalId = registerOutput<String>('ownerPrincipalId');
+    ownerPrincipalType = registerOutput<String>('ownerPrincipalType');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    portfolioId = registerOutput<String?>('portfolioId');
+    productId = registerOutput<String>('productId');
+    productName = registerOutput<String>('productName');
+    productVersionId = registerOutput<String>('productVersionId');
+    productVersionName = registerOutput<String>('productVersionName');
+    provisionedProductArn = registerOutput<String>('provisionedProductArn');
+    provisionedProductId = registerOutput<String>('provisionedProductId');
+    provisionedProductName = registerOutput<String>('provisionedProductName');
+    provisionedProductType = registerOutput<String>('provisionedProductType');
+    stackId = registerOutput<String>('stackId');
+    stackRegionId = registerOutput<String>('stackRegionId');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

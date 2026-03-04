@@ -1,5 +1,3 @@
-library module_dlp;
-
 export 'dlp/deidentify_template.dart';
 export 'dlp/deidentify_template_args.dart';
 export 'dlp/discovery_config.dart';

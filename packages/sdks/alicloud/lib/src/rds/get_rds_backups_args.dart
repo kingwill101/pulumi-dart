@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRdsBackupsArgs {
   /// BackupMode. Valid values: `Automated` and `Manual`.
   final pulumi.Input<String>? backupMode;
+
   /// Backup task status. Valid values: `Automated` and `Manual`.
   final pulumi.Input<String>? backupStatus;
+
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
+
   /// The end time.
   final pulumi.Input<String>? endTime;
+
   /// A list of Backup IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The start time.
   final pulumi.Input<String>? startTime;
 
@@ -54,14 +60,37 @@ class GetRdsBackupsArgs {
 
   factory GetRdsBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetRdsBackupsArgs(
-      backupMode: map['backupMode'] == null ? null : (map['backupMode']! as String).input(),
-      backupStatus: map['backupStatus'] == null ? null : (map['backupStatus']! as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      backupMode: (() {
+        final guardedValue = map['backupMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupStatus: (() {
+        final guardedValue = map['backupStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

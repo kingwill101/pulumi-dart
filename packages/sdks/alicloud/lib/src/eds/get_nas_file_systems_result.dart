@@ -44,7 +44,11 @@ class GetNasFileSystemsResult {
       'officeSiteId': ?officeSiteId,
       'outputFile': ?outputFile,
       'status': ?status,
-      'systems': pulumi.Input.encodeList<GetNasFileSystemsSystem, Map<String, dynamic>>(systems, (value) => value.toMap()),
+      'systems':
+          pulumi.Input.encodeList<
+            GetNasFileSystemsSystem,
+            Map<String, dynamic>
+          >(systems, (value) => value.toMap()),
     };
   }
 
@@ -52,13 +56,33 @@ class GetNasFileSystemsResult {
     return GetNasFileSystemsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      officeSiteId: map['officeSiteId'] == null ? null : map['officeSiteId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      systems: pulumi.Input.decodeList<GetNasFileSystemsSystem>(map['systems'], (value) => GetNasFileSystemsSystem.fromMap((value as Map).cast<String, dynamic>())),
+      officeSiteId: (() {
+        final guardedValue = map['officeSiteId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systems: pulumi.Input.decodeList<GetNasFileSystemsSystem>(
+        map['systems']!,
+        (value) => GetNasFileSystemsSystem.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

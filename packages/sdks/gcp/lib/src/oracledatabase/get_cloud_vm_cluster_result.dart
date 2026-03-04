@@ -15,6 +15,7 @@ class GetCloudVmClusterResult {
   final Map<String, String> effectiveLabels;
   final String exadataInfrastructure;
   final String gcpOracleZone;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -91,7 +92,11 @@ class GetCloudVmClusterResult {
       'odbNetwork': odbNetwork,
       'odbSubnet': odbSubnet,
       'project': ?project,
-      'properties': pulumi.Input.encodeList<GetCloudVmClusterProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.encodeList<
+            GetCloudVmClusterProperty,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'pulumiLabels': pulumiLabels,
     };
   }
@@ -115,10 +120,18 @@ class GetCloudVmClusterResult {
       network: map['network'] as String,
       odbNetwork: map['odbNetwork'] as String,
       odbSubnet: map['odbSubnet'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
-      properties: pulumi.Input.decodeList<GetCloudVmClusterProperty>(map['properties'], (value) => GetCloudVmClusterProperty.fromMap((value as Map).cast<String, dynamic>())),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      properties: pulumi.Input.decodeList<GetCloudVmClusterProperty>(
+        map['properties']!,
+        (value) => GetCloudVmClusterProperty.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
     );
   }
 }
-

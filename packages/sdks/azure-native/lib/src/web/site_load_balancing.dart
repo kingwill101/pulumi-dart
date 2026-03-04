@@ -8,16 +8,15 @@ enum SiteLoadBalancing {
   valuePerSiteRoundRobin("PerSiteRoundRobin"),
   valueLeastRequestsWithTieBreaker("LeastRequestsWithTieBreaker");
 
-  const SiteLoadBalancing(this.value);
-  final String value;
+  const SiteLoadBalancing(this.wireValue);
+  final String wireValue;
 
   static SiteLoadBalancing fromValue(String value) {
     for (final item in SiteLoadBalancing.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SiteLoadBalancing value: $value');
   }
 }
-

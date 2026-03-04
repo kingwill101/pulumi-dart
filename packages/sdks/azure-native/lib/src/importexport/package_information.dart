@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PackageInformation {
   /// The name of the carrier that is used to ship the import or export drives.
   final pulumi.Input<String> carrierName;
+
   /// The number of drives included in the package.
   final pulumi.Input<double> driveCount;
+
   /// The date when the package is shipped.
   final pulumi.Input<String> shipDate;
+
   /// The tracking number of the package.
   final pulumi.Input<String> trackingNumber;
 
@@ -36,11 +39,10 @@ class PackageInformation {
 
   factory PackageInformation.fromMap(Map<String, dynamic> map) {
     return PackageInformation(
-      carrierName: (map['carrierName'] as String).input(),
-      driveCount: (map['driveCount'] as double).input(),
-      shipDate: (map['shipDate'] as String).input(),
-      trackingNumber: (map['trackingNumber'] as String).input(),
+      carrierName: pulumi.Input.fromValue(map['carrierName'] as String),
+      driveCount: pulumi.Input.fromValue(map['driveCount'] as double),
+      shipDate: pulumi.Input.fromValue(map['shipDate'] as String),
+      trackingNumber: pulumi.Input.fromValue(map['trackingNumber'] as String),
     );
   }
 }
-

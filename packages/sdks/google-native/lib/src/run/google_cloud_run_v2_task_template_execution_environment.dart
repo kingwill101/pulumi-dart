@@ -4,16 +4,20 @@ enum GoogleCloudRunV2TaskTemplateExecutionEnvironment {
   executionEnvironmentGen1("EXECUTION_ENVIRONMENT_GEN1"),
   executionEnvironmentGen2("EXECUTION_ENVIRONMENT_GEN2");
 
-  const GoogleCloudRunV2TaskTemplateExecutionEnvironment(this.value);
-  final String value;
+  const GoogleCloudRunV2TaskTemplateExecutionEnvironment(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudRunV2TaskTemplateExecutionEnvironment fromValue(String value) {
-    for (final item in GoogleCloudRunV2TaskTemplateExecutionEnvironment.values) {
-      if (item.value == value) {
+  static GoogleCloudRunV2TaskTemplateExecutionEnvironment fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudRunV2TaskTemplateExecutionEnvironment.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRunV2TaskTemplateExecutionEnvironment value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRunV2TaskTemplateExecutionEnvironment value: $value',
+    );
   }
 }
-

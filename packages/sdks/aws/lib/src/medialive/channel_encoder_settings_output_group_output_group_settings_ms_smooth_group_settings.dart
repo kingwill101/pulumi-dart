@@ -6,19 +6,26 @@ import 'channel_encoder_settings_output_group_output_group_settings_ms_smooth_gr
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings {
   final pulumi.Input<String>? acquisitionPointId;
   final pulumi.Input<String>? audioOnlyTimecodeControl;
+
   /// Setting to allow self signed or verified RTMP certificates.
   final pulumi.Input<String>? certificateMode;
+
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
   final pulumi.Input<int>? connectionRetryInterval;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination> destination;
+  final pulumi.Input<
+    ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination
+  >
+  destination;
   final pulumi.Input<String>? eventId;
   final pulumi.Input<String>? eventIdMode;
   final pulumi.Input<String>? eventStopBehavior;
   final pulumi.Input<int>? filecacheDuration;
   final pulumi.Input<int>? fragmentLength;
   final pulumi.Input<String>? inputLossAction;
+
   /// Number of retry attempts.
   final pulumi.Input<int>? numRetries;
+
   /// Number of seconds to wait until a restart is initiated.
   final pulumi.Input<int>? restartDelay;
   final pulumi.Input<String>? segmentationMode;
@@ -76,7 +83,11 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings 
       'audioOnlyTimecodeControl': ?audioOnlyTimecodeControl,
       'certificateMode': ?certificateMode,
       'connectionRetryInterval': ?connectionRetryInterval,
-      'destination': pulumi.Input.mapInputValue<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          pulumi.Input.mapInputValue<
+            ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'eventId': ?eventId,
       'eventIdMode': ?eventIdMode,
       'eventStopBehavior': ?eventStopBehavior,
@@ -94,28 +105,105 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings 
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings(
-      acquisitionPointId: map['acquisitionPointId'] == null ? null : ((map['acquisitionPointId'] as String).input()).input(),
-      audioOnlyTimecodeControl: map['audioOnlyTimecodeControl'] == null ? null : ((map['audioOnlyTimecodeControl'] as String).input()).input(),
-      certificateMode: map['certificateMode'] == null ? null : ((map['certificateMode'] as String).input()).input(),
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : ((map['connectionRetryInterval'] as int).input()).input(),
-      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
-      eventId: map['eventId'] == null ? null : ((map['eventId'] as String).input()).input(),
-      eventIdMode: map['eventIdMode'] == null ? null : ((map['eventIdMode'] as String).input()).input(),
-      eventStopBehavior: map['eventStopBehavior'] == null ? null : ((map['eventStopBehavior'] as String).input()).input(),
-      filecacheDuration: map['filecacheDuration'] == null ? null : ((map['filecacheDuration'] as int).input()).input(),
-      fragmentLength: map['fragmentLength'] == null ? null : ((map['fragmentLength'] as int).input()).input(),
-      inputLossAction: map['inputLossAction'] == null ? null : ((map['inputLossAction'] as String).input()).input(),
-      numRetries: map['numRetries'] == null ? null : ((map['numRetries'] as int).input()).input(),
-      restartDelay: map['restartDelay'] == null ? null : ((map['restartDelay'] as int).input()).input(),
-      segmentationMode: map['segmentationMode'] == null ? null : ((map['segmentationMode'] as String).input()).input(),
-      sendDelayMs: map['sendDelayMs'] == null ? null : ((map['sendDelayMs'] as int).input()).input(),
-      sparseTrackType: map['sparseTrackType'] == null ? null : ((map['sparseTrackType'] as String).input()).input(),
-      streamManifestBehavior: map['streamManifestBehavior'] == null ? null : ((map['streamManifestBehavior'] as String).input()).input(),
-      timestampOffset: map['timestampOffset'] == null ? null : ((map['timestampOffset'] as String).input()).input(),
-      timestampOffsetMode: map['timestampOffsetMode'] == null ? null : ((map['timestampOffsetMode'] as String).input()).input(),
+      acquisitionPointId: (() {
+        final guardedValue = map['acquisitionPointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audioOnlyTimecodeControl: (() {
+        final guardedValue = map['audioOnlyTimecodeControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateMode: (() {
+        final guardedValue = map['certificateMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionRetryInterval: (() {
+        final guardedValue = map['connectionRetryInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      destination: pulumi.Input.fromValue(
+        ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination.fromMap(
+          (map['destination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      eventId: (() {
+        final guardedValue = map['eventId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventIdMode: (() {
+        final guardedValue = map['eventIdMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventStopBehavior: (() {
+        final guardedValue = map['eventStopBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filecacheDuration: (() {
+        final guardedValue = map['filecacheDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fragmentLength: (() {
+        final guardedValue = map['fragmentLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      inputLossAction: (() {
+        final guardedValue = map['inputLossAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numRetries: (() {
+        final guardedValue = map['numRetries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      restartDelay: (() {
+        final guardedValue = map['restartDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      segmentationMode: (() {
+        final guardedValue = map['segmentationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendDelayMs: (() {
+        final guardedValue = map['sendDelayMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sparseTrackType: (() {
+        final guardedValue = map['sparseTrackType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamManifestBehavior: (() {
+        final guardedValue = map['streamManifestBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timestampOffset: (() {
+        final guardedValue = map['timestampOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timestampOffsetMode: (() {
+        final guardedValue = map['timestampOffsetMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
   /// remote repository. Must be in the format of
   /// `projects/{project}/secrets/{secret}/versions/{version}`.
   final pulumi.Input<String>? passwordSecretVersion;
+
   /// The username to access the remote repository.
   final pulumi.Input<String>? username;
 
@@ -25,11 +26,20 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
     };
   }
 
-  factory RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials.fromMap(Map<String, dynamic> map) {
+  factory RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials(
-      passwordSecretVersion: map['passwordSecretVersion'] == null ? null : (map['passwordSecretVersion']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      passwordSecretVersion: (() {
+        final guardedValue = map['passwordSecretVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

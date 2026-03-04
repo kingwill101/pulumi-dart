@@ -1,5 +1,3 @@
-library module_ecp;
-
 export 'ecp/functions.dart';
 export 'ecp/get_instance_types_args.dart';
 export 'ecp/get_instance_types_instance_type.dart';

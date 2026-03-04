@@ -3,16 +3,17 @@ enum GlobalPublicDelegatedPrefixMode {
   delegation("DELEGATION"),
   externalIpv6ForwardingRuleCreation("EXTERNAL_IPV6_FORWARDING_RULE_CREATION");
 
-  const GlobalPublicDelegatedPrefixMode(this.value);
-  final String value;
+  const GlobalPublicDelegatedPrefixMode(this.wireValue);
+  final String wireValue;
 
   static GlobalPublicDelegatedPrefixMode fromValue(String value) {
     for (final item in GlobalPublicDelegatedPrefixMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalPublicDelegatedPrefixMode value: $value');
+    throw ArgumentError(
+      'Unknown GlobalPublicDelegatedPrefixMode value: $value',
+    );
   }
 }
-

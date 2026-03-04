@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeContainerAppRecordState {
   /// The application ID
   final pulumi.Input<String>? appId;
+
   /// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
   final pulumi.Input<String>? createTime;
+
   /// The associated domain name.
   final pulumi.Input<String>? recordName;
+
   /// The website ID.
   final pulumi.Input<String>? siteId;
 
@@ -36,11 +39,26 @@ class EdgeContainerAppRecordState {
 
   factory EdgeContainerAppRecordState.fromMap(Map<String, dynamic> map) {
     return EdgeContainerAppRecordState(
-      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      recordName: map['recordName'] == null ? null : (map['recordName']! as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      appId: (() {
+        final guardedValue = map['appId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordName: (() {
+        final guardedValue = map['recordName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

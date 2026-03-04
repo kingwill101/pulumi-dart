@@ -10,20 +10,28 @@ import 'node_group_attachment_data_disk.dart';
 class NodeGroupAttachmentArgs {
   /// Cluster ID
   final pulumi.Input<String>? clusterId;
+
   /// The data disk of the cloud disk to be attached to the node. See `data_disk` below.
   final pulumi.Input<List<NodeGroupAttachmentDataDisk>>? dataDisks;
+
   /// Node hostname
   final pulumi.Input<String> hostname;
+
   /// Node login password
   final pulumi.Input<String>? loginPassword;
+
   /// Node group ID
   final pulumi.Input<String>? nodeGroupId;
+
   /// Node ID
   final pulumi.Input<String>? nodeId;
+
   /// User-defined data
   final pulumi.Input<String>? userData;
+
   /// Vpc id
   final pulumi.Input<String> vpcId;
+
   /// vswitch id
   final pulumi.Input<String> vswitchId;
 
@@ -52,7 +60,18 @@ class NodeGroupAttachmentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': ?clusterId,
-      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupAttachmentDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<NodeGroupAttachmentDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataDisks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeGroupAttachmentDataDisk>,
+            List<Map<String, dynamic>>
+          >(
+            dataDisks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodeGroupAttachmentDataDisk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'hostname': hostname,
       'loginPassword': ?loginPassword,
       'nodeGroupId': ?nodeGroupId,
@@ -65,16 +84,46 @@ class NodeGroupAttachmentArgs {
 
   factory NodeGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupAttachmentArgs(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<NodeGroupAttachmentDataDisk>(map['dataDisks']!, (value) => NodeGroupAttachmentDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostname: (map['hostname'] as String).input(),
-      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword']! as String).input(),
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
-      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataDisks: (() {
+        final guardedValue = map['dataDisks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeGroupAttachmentDataDisk>(
+            guardedValue,
+            (value) => NodeGroupAttachmentDataDisk.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      loginPassword: (() {
+        final guardedValue = map['loginPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupId: (() {
+        final guardedValue = map['nodeGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeId: (() {
+        final guardedValue = map['nodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userData: (() {
+        final guardedValue = map['userData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

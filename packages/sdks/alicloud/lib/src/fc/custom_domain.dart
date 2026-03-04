@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_domain_args.dart';
 import 'custom_domain_cert_config.dart';
-import 'custom_domain_route_config.dart';
 import 'custom_domain_state.dart';
 
 /// Provides an Alicloud Function Compute custom domain resource.
 /// For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
 ///
-/// > **NOTE:** Available since v1.98.0.
+/// &gt; **NOTE:** Available since v1.98.0.
 ///
 ///
 /// ## Example Usage
@@ -730,20 +729,27 @@ import 'custom_domain_state.dart';
 class CustomDomain extends pulumi.CustomResource {
   /// The account id.
   late final pulumi.Output<String> accountId;
+
   /// The api version of Function Compute.
   late final pulumi.Output<String> apiVersion;
+
   /// The configuration of HTTPS certificate.See `cert_config` below.
   late final pulumi.Output<CustomDomainCertConfig?> certConfig;
+
   /// The date this resource was created.
   late final pulumi.Output<String> createdTime;
+
   /// The custom domain name. For example, "example.com".
   late final pulumi.Output<String> domainName;
+
   /// The date this resource was last modified.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The protocol, `HTTP` or `HTTP,HTTPS`.
   late final pulumi.Output<String> protocol;
+
   /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
-  late final pulumi.Output<List<CustomDomainRouteConfig>?> routeConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routeConfigs;
 
   /// Creates a new [CustomDomain].
   /// [name] The Pulumi resource name.
@@ -754,19 +760,19 @@ class CustomDomain extends pulumi.CustomResource {
     CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/customDomain:CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.certConfig = registerOutput<CustomDomainCertConfig?>('certConfig');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.domainName = registerOutput<String>('domainName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.protocol = registerOutput<String>('protocol');
-    this.routeConfigs = registerOutput<List<CustomDomainRouteConfig>?>('routeConfigs');
+         'alicloud:fc/customDomain:CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    apiVersion = registerOutput<String>('apiVersion');
+    certConfig = registerOutput<CustomDomainCertConfig?>('certConfig');
+    createdTime = registerOutput<String>('createdTime');
+    domainName = registerOutput<String>('domainName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    protocol = registerOutput<String>('protocol');
+    routeConfigs = registerOutput<List<Map<String, dynamic>>?>('routeConfigs');
   }
 
   /// Gets an existing [CustomDomain] resource's state with the given [name] and [id].
@@ -787,18 +793,18 @@ class CustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/customDomain:CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.certConfig = registerOutput<CustomDomainCertConfig?>('certConfig');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.domainName = registerOutput<String>('domainName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.protocol = registerOutput<String>('protocol');
-    this.routeConfigs = registerOutput<List<CustomDomainRouteConfig>?>('routeConfigs');
+         'alicloud:fc/customDomain:CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    apiVersion = registerOutput<String>('apiVersion');
+    certConfig = registerOutput<CustomDomainCertConfig?>('certConfig');
+    createdTime = registerOutput<String>('createdTime');
+    domainName = registerOutput<String>('domainName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    protocol = registerOutput<String>('protocol');
+    routeConfigs = registerOutput<List<Map<String, dynamic>>?>('routeConfigs');
   }
 }

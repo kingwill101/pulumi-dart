@@ -328,7 +328,7 @@ import 'job_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -343,8 +343,10 @@ import 'job_state.dart';
 class Job extends pulumi.CustomResource {
   /// The description of the Elastic Job.
   late final pulumi.Output<String?> description;
+
   /// The ID of the Elastic Job Agent. Changing this forces a new Elastic Job to be created.
   late final pulumi.Output<String> jobAgentId;
+
   /// The name which should be used for this Elastic Job. Changing this forces a new Elastic Job to be created.
   late final pulumi.Output<String> name;
 
@@ -352,27 +354,20 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_mssql_job_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:mssql/job:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.jobAgentId = registerOutput<String>('jobAgentId');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:mssql/job:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String?>('description');
+    jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
-  static Job get(
-    String name,
-    pulumi.Input<String> id, {
-    JobState? state,
-  }) {
+  static Job get(String name, pulumi.Input<String> id, {JobState? state}) {
     return Job._get(
       name,
       state: state?.toMap(),
@@ -385,13 +380,13 @@ class Job extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/job:Job',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.jobAgentId = registerOutput<String>('jobAgentId');
+         'azure:mssql/job:Job',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
   }
 }

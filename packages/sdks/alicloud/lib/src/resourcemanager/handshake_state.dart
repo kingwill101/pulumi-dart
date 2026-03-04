@@ -6,23 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HandshakeState {
   /// The time when the invitation was created. The time is displayed in UTC.
   final pulumi.Input<String>? createTime;
+
   /// The time when the invitation expires. The time is displayed in UTC.
   final pulumi.Input<String>? expireTime;
+
   /// The ID of the management account of the resource directory.
   final pulumi.Input<String>? masterAccountId;
+
   /// The name of the management account of the resource directory.
   final pulumi.Input<String>? masterAccountName;
+
   /// The time when the invitation was modified. The time is displayed in UTC.
   final pulumi.Input<String>? modifyTime;
+
   /// The description of the invitation.
   /// The description can be up to 1,024 characters in length.
   final pulumi.Input<String>? note;
+
   /// The ID of the resource directory.
   final pulumi.Input<String>? resourceDirectoryId;
+
   /// The status of the invitation.
   final pulumi.Input<String>? status;
+
   /// The ID or logon email address of the account that you want to invite.
   final pulumi.Input<String>? targetEntity;
+
   /// The type of the invited account. Valid values:
   ///
   /// - Account: indicates the ID of the account.
@@ -70,17 +79,56 @@ class HandshakeState {
 
   factory HandshakeState.fromMap(Map<String, dynamic> map) {
     return HandshakeState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId']! as String).input(),
-      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName']! as String).input(),
-      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime']! as String).input(),
-      note: map['note'] == null ? null : (map['note']! as String).input(),
-      resourceDirectoryId: map['resourceDirectoryId'] == null ? null : (map['resourceDirectoryId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      targetEntity: map['targetEntity'] == null ? null : (map['targetEntity']! as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterAccountId: (() {
+        final guardedValue = map['masterAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterAccountName: (() {
+        final guardedValue = map['masterAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modifyTime: (() {
+        final guardedValue = map['modifyTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      note: (() {
+        final guardedValue = map['note'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceDirectoryId: (() {
+        final guardedValue = map['resourceDirectoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetEntity: (() {
+        final guardedValue = map['targetEntity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetType: (() {
+        final guardedValue = map['targetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

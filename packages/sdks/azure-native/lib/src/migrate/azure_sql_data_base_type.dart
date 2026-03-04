@@ -5,16 +5,15 @@ enum AzureSqlDataBaseType {
   singleDatabase("SingleDatabase"),
   elasticPool("ElasticPool");
 
-  const AzureSqlDataBaseType(this.value);
-  final String value;
+  const AzureSqlDataBaseType(this.wireValue);
+  final String wireValue;
 
   static AzureSqlDataBaseType fromValue(String value) {
     for (final item in AzureSqlDataBaseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureSqlDataBaseType value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedTargetsTarget {
   /// The ID of the Shared Target.
   final pulumi.Input<String> id;
+
   /// The resource share ID of resource manager.
   final pulumi.Input<String> resourceShareId;
+
   /// The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
   final pulumi.Input<String> status;
+
   /// The ID of the Shared Target.
   final pulumi.Input<String> targetId;
 
@@ -35,11 +38,10 @@ class GetSharedTargetsTarget {
 
   factory GetSharedTargetsTarget.fromMap(Map<String, dynamic> map) {
     return GetSharedTargetsTarget(
-      id: (map['id'] as String).input(),
-      resourceShareId: (map['resourceShareId'] as String).input(),
-      status: (map['status'] as String).input(),
-      targetId: (map['targetId'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      resourceShareId: pulumi.Input.fromValue(map['resourceShareId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

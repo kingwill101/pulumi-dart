@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1 {
   /// The path to the field that refers the expression. For example, the reference to the expression of the first item of validations is "spec.validations[0].expression"
   final pulumi.Input<String>? fieldRef;
+
   /// The content of type checking information in a human-readable form. Each line of the warning contains the type that the expression is checked against, followed by the type check error from the compiler.
   final pulumi.Input<String>? warning;
 
@@ -18,17 +19,23 @@ class ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fieldRef': ?fieldRef,
-      'warning': ?warning,
-    };
+    return <String, dynamic>{'fieldRef': ?fieldRef, 'warning': ?warning};
   }
 
-  factory ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1(
-      fieldRef: map['fieldRef'] == null ? null : (map['fieldRef']! as String).input(),
-      warning: map['warning'] == null ? null : (map['warning']! as String).input(),
+      fieldRef: (() {
+        final guardedValue = map['fieldRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      warning: (() {
+        final guardedValue = map['warning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

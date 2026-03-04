@@ -13,15 +13,18 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'backends': ?backends,
-    };
+    return <String, dynamic>{'backends': ?backends};
   }
 
-  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap(Map<String, dynamic> map) {
+  factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring(
-      backends: map['backends'] == null ? null : ((map['backends']! as List).cast<String>()).input(),
+      backends: (() {
+        final guardedValue = map['backends'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

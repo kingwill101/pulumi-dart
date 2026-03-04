@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GremlinDatabaseRestoreResource {
   /// The name of the gremlin database available for restore.
   final pulumi.Input<String>? databaseName;
+
   /// The names of the graphs available for restore.
   final pulumi.Input<List<String>>? graphNames;
 
   /// Creates a new [GremlinDatabaseRestoreResource].
   /// [databaseName] The name of the gremlin database available for restore.
   /// [graphNames] The names of the graphs available for restore.
-  GremlinDatabaseRestoreResource({
-    this.databaseName,
-    this.graphNames,
-  });
+  GremlinDatabaseRestoreResource({this.databaseName, this.graphNames});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class GremlinDatabaseRestoreResource {
 
   factory GremlinDatabaseRestoreResource.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseRestoreResource(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
-      graphNames: map['graphNames'] == null ? null : ((map['graphNames']! as List).cast<String>()).input(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      graphNames: (() {
+        final guardedValue = map['graphNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

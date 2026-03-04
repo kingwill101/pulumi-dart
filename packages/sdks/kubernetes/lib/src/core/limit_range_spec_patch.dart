@@ -10,20 +10,39 @@ class LimitRangeSpecPatch {
 
   /// Creates a new [LimitRangeSpecPatch].
   /// [limits] Limits is the list of LimitRangeItem objects that are enforced.
-  LimitRangeSpecPatch({
-    this.limits,
-  });
+  LimitRangeSpecPatch({this.limits});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'limits': ?pulumi.Input.mapOptionalInputValue<List<LimitRangeItemPatch>, List<Map<String, dynamic>>>(limits, (value) => pulumi.Input.encodeList<LimitRangeItemPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'limits':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LimitRangeItemPatch>,
+            List<Map<String, dynamic>>
+          >(
+            limits,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LimitRangeItemPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LimitRangeSpecPatch.fromMap(Map<String, dynamic> map) {
     return LimitRangeSpecPatch(
-      limits: map['limits'] == null ? null : (pulumi.Input.decodeList<LimitRangeItemPatch>(map['limits']!, (value) => LimitRangeItemPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: (() {
+        final guardedValue = map['limits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LimitRangeItemPatch>(
+            guardedValue,
+            (value) => LimitRangeItemPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

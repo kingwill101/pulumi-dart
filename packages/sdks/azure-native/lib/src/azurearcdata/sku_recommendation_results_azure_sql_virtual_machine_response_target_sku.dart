@@ -4,7 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sku_recommendation_results_azure_sql_virtual_machine_response_category.dart';
 
 class SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
-  final pulumi.Input<SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory>? category;
+  final pulumi.Input<
+    SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory
+  >?
+  category;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku].
   /// [category] Optional.
@@ -14,14 +17,27 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'category': ?pulumi.Input.mapOptionalInputValue<SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory, Map<String, dynamic>>(category, (value) => value.toMap()),
+      'category':
+          ?pulumi.Input.mapOptionalInputValue<
+            SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory,
+            Map<String, dynamic>
+          >(category, (value) => value.toMap()),
     };
   }
 
-  factory SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku.fromMap(Map<String, dynamic> map) {
+  factory SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku(
-      category: map['category'] == null ? null : (SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap((map['category']! as Map).cast<String, dynamic>())).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

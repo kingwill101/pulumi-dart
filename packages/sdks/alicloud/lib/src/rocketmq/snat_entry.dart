@@ -6,9 +6,9 @@ import 'snat_entry_state.dart';
 ///
 /// For information about Sag SnatEntry and how to use it, see [What is Sag SnatEntry](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/addsnatentry).
 ///
-/// > **NOTE:** Available since v1.61.0.
+/// &gt; **NOTE:** Available since v1.61.0.
 ///
-/// > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -147,8 +147,10 @@ import 'snat_entry_state.dart';
 class SnatEntry extends pulumi.CustomResource {
   /// The destination CIDR block.
   late final pulumi.Output<String> cidrBlock;
+
   /// The ID of the SAG instance.
   late final pulumi.Output<String> sagId;
+
   /// The public IP address.
   late final pulumi.Output<String> snatIp;
 
@@ -161,14 +163,14 @@ class SnatEntry extends pulumi.CustomResource {
     SnatEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/snatEntry:SnatEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.sagId = registerOutput<String>('sagId');
-    this.snatIp = registerOutput<String>('snatIp');
+         'alicloud:rocketmq/snatEntry:SnatEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    sagId = registerOutput<String>('sagId');
+    snatIp = registerOutput<String>('snatIp');
   }
 
   /// Gets an existing [SnatEntry] resource's state with the given [name] and [id].
@@ -189,13 +191,13 @@ class SnatEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/snatEntry:SnatEntry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.sagId = registerOutput<String>('sagId');
-    this.snatIp = registerOutput<String>('snatIp');
+         'alicloud:rocketmq/snatEntry:SnatEntry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    sagId = registerOutput<String>('sagId');
+    snatIp = registerOutput<String>('snatIp');
   }
 }

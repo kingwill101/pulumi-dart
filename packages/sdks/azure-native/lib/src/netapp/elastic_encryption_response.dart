@@ -8,8 +8,10 @@ import 'elastic_key_vault_properties_response.dart';
 class ElasticEncryptionResponse {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   final pulumi.Input<ElasticEncryptionIdentityResponse>? identity;
+
   /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
   final pulumi.Input<String>? keySource;
+
   /// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   final pulumi.Input<ElasticKeyVaultPropertiesResponse>? keyVaultProperties;
 
@@ -25,18 +27,45 @@ class ElasticEncryptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<ElasticEncryptionIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticEncryptionIdentityResponse,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'keySource': ?keySource,
-      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<ElasticKeyVaultPropertiesResponse, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
+      'keyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticKeyVaultPropertiesResponse,
+            Map<String, dynamic>
+          >(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory ElasticEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return ElasticEncryptionResponse(
-      identity: map['identity'] == null ? null : (ElasticEncryptionIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (ElasticKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticEncryptionIdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keySource: (() {
+        final guardedValue = map['keySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultProperties: (() {
+        final guardedValue = map['keyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticKeyVaultPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -381,45 +381,70 @@ import 'conversation_profile_tts_config.dart';
 class ConversationProfile extends pulumi.CustomResource {
   /// Configuration for an automated agent to use with this profile
   /// Structure is documented below.
-  late final pulumi.Output<ConversationProfileAutomatedAgentConfig?> automatedAgentConfig;
+  late final pulumi.Output<ConversationProfileAutomatedAgentConfig?>
+  automatedAgentConfig;
+
   /// Required. Human readable name for this profile. Max length 1024 bytes.
   late final pulumi.Output<String> displayName;
+
   /// Configuration for connecting to a live agent
   /// Structure is documented below.
-  late final pulumi.Output<ConversationProfileHumanAgentAssistantConfig?> humanAgentAssistantConfig;
+  late final pulumi.Output<ConversationProfileHumanAgentAssistantConfig?>
+  humanAgentAssistantConfig;
+
   /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
   /// Structure is documented below.
-  late final pulumi.Output<ConversationProfileHumanAgentHandoffConfig?> humanAgentHandoffConfig;
+  late final pulumi.Output<ConversationProfileHumanAgentHandoffConfig?>
+  humanAgentHandoffConfig;
+
   /// Language code for the conversation profile. This should be a BCP-47 language tag.
   late final pulumi.Output<String> languageCode;
+
   /// desc
   late final pulumi.Output<String> location;
+
   /// Defines logging behavior for conversation lifecycle events.
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileLoggingConfig?> loggingConfig;
+
   /// name
   late final pulumi.Output<String> name;
+
   /// Pub/Sub topic on which to publish new agent assistant events.
-  /// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+  /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;"
   /// Structure is documented below.
-  late final pulumi.Output<ConversationProfileNewMessageEventNotificationConfig?> newMessageEventNotificationConfig;
+  late final pulumi.Output<
+    ConversationProfileNewMessageEventNotificationConfig?
+  >
+  newMessageEventNotificationConfig;
+
   /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
   /// Structure is documented below.
-  late final pulumi.Output<ConversationProfileNewRecognitionResultNotificationConfig?> newRecognitionResultNotificationConfig;
+  late final pulumi.Output<
+    ConversationProfileNewRecognitionResultNotificationConfig?
+  >
+  newRecognitionResultNotificationConfig;
+
   /// Pub/Sub topic on which to publish new agent assistant events.
-  /// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
+  /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/topics/&lt;Topic ID&gt;"
   /// Structure is documented below.
-  late final pulumi.Output<ConversationProfileNotificationConfig?> notificationConfig;
+  late final pulumi.Output<ConversationProfileNotificationConfig?>
+  notificationConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Name of the CX SecuritySettings reference for the agent.
   late final pulumi.Output<String?> securitySettings;
+
   /// Settings for speech transcription.
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileSttConfig?> sttConfig;
+
   /// The time zone of this conversational profile.
   late final pulumi.Output<String?> timeZone;
+
   /// Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
   /// Structure is documented below.
   late final pulumi.Output<ConversationProfileTtsConfig?> ttsConfig;
@@ -433,27 +458,46 @@ class ConversationProfile extends pulumi.CustomResource {
     ConversationProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/conversationProfile:ConversationProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig');
-    this.displayName = registerOutput<String>('displayName');
-    this.humanAgentAssistantConfig = registerOutput<ConversationProfileHumanAgentAssistantConfig?>('humanAgentAssistantConfig');
-    this.humanAgentHandoffConfig = registerOutput<ConversationProfileHumanAgentHandoffConfig?>('humanAgentHandoffConfig');
-    this.languageCode = registerOutput<String>('languageCode');
-    this.location = registerOutput<String>('location');
-    this.loggingConfig = registerOutput<ConversationProfileLoggingConfig?>('loggingConfig');
+         'gcp:diagflow/conversationProfile:ConversationProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automatedAgentConfig =
+        registerOutput<ConversationProfileAutomatedAgentConfig?>(
+          'automatedAgentConfig',
+        );
+    displayName = registerOutput<String>('displayName');
+    humanAgentAssistantConfig =
+        registerOutput<ConversationProfileHumanAgentAssistantConfig?>(
+          'humanAgentAssistantConfig',
+        );
+    humanAgentHandoffConfig =
+        registerOutput<ConversationProfileHumanAgentHandoffConfig?>(
+          'humanAgentHandoffConfig',
+        );
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<ConversationProfileLoggingConfig?>(
+      'loggingConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.newMessageEventNotificationConfig = registerOutput<ConversationProfileNewMessageEventNotificationConfig?>('newMessageEventNotificationConfig');
-    this.newRecognitionResultNotificationConfig = registerOutput<ConversationProfileNewRecognitionResultNotificationConfig?>('newRecognitionResultNotificationConfig');
-    this.notificationConfig = registerOutput<ConversationProfileNotificationConfig?>('notificationConfig');
-    this.project = registerOutput<String>('project');
-    this.securitySettings = registerOutput<String?>('securitySettings');
-    this.sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig');
-    this.timeZone = registerOutput<String?>('timeZone');
-    this.ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig');
+    newMessageEventNotificationConfig =
+        registerOutput<ConversationProfileNewMessageEventNotificationConfig?>(
+          'newMessageEventNotificationConfig',
+        );
+    newRecognitionResultNotificationConfig =
+        registerOutput<
+          ConversationProfileNewRecognitionResultNotificationConfig?
+        >('newRecognitionResultNotificationConfig');
+    notificationConfig = registerOutput<ConversationProfileNotificationConfig?>(
+      'notificationConfig',
+    );
+    project = registerOutput<String>('project');
+    securitySettings = registerOutput<String?>('securitySettings');
+    sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig');
+    timeZone = registerOutput<String?>('timeZone');
+    ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig');
   }
 
   /// Gets an existing [ConversationProfile] resource's state with the given [name] and [id].
@@ -474,26 +518,45 @@ class ConversationProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/conversationProfile:ConversationProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig');
-    this.displayName = registerOutput<String>('displayName');
-    this.humanAgentAssistantConfig = registerOutput<ConversationProfileHumanAgentAssistantConfig?>('humanAgentAssistantConfig');
-    this.humanAgentHandoffConfig = registerOutput<ConversationProfileHumanAgentHandoffConfig?>('humanAgentHandoffConfig');
-    this.languageCode = registerOutput<String>('languageCode');
-    this.location = registerOutput<String>('location');
-    this.loggingConfig = registerOutput<ConversationProfileLoggingConfig?>('loggingConfig');
+         'gcp:diagflow/conversationProfile:ConversationProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automatedAgentConfig =
+        registerOutput<ConversationProfileAutomatedAgentConfig?>(
+          'automatedAgentConfig',
+        );
+    displayName = registerOutput<String>('displayName');
+    humanAgentAssistantConfig =
+        registerOutput<ConversationProfileHumanAgentAssistantConfig?>(
+          'humanAgentAssistantConfig',
+        );
+    humanAgentHandoffConfig =
+        registerOutput<ConversationProfileHumanAgentHandoffConfig?>(
+          'humanAgentHandoffConfig',
+        );
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<ConversationProfileLoggingConfig?>(
+      'loggingConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.newMessageEventNotificationConfig = registerOutput<ConversationProfileNewMessageEventNotificationConfig?>('newMessageEventNotificationConfig');
-    this.newRecognitionResultNotificationConfig = registerOutput<ConversationProfileNewRecognitionResultNotificationConfig?>('newRecognitionResultNotificationConfig');
-    this.notificationConfig = registerOutput<ConversationProfileNotificationConfig?>('notificationConfig');
-    this.project = registerOutput<String>('project');
-    this.securitySettings = registerOutput<String?>('securitySettings');
-    this.sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig');
-    this.timeZone = registerOutput<String?>('timeZone');
-    this.ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig');
+    newMessageEventNotificationConfig =
+        registerOutput<ConversationProfileNewMessageEventNotificationConfig?>(
+          'newMessageEventNotificationConfig',
+        );
+    newRecognitionResultNotificationConfig =
+        registerOutput<
+          ConversationProfileNewRecognitionResultNotificationConfig?
+        >('newRecognitionResultNotificationConfig');
+    notificationConfig = registerOutput<ConversationProfileNotificationConfig?>(
+      'notificationConfig',
+    );
+    project = registerOutput<String>('project');
+    securitySettings = registerOutput<String?>('securitySettings');
+    sttConfig = registerOutput<ConversationProfileSttConfig?>('sttConfig');
+    timeZone = registerOutput<String?>('timeZone');
+    ttsConfig = registerOutput<ConversationProfileTtsConfig?>('ttsConfig');
   }
 }

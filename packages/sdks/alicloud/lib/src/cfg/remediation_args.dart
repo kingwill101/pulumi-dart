@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemediationArgs {
   /// Rule ID.
   final pulumi.Input<String> configRuleId;
+
   /// Execution type, valid values: `Manual`, `Automatic`.
   final pulumi.Input<String> invokeType;
+
   /// Remediation parameter.
   final pulumi.Input<String> params;
+
   /// Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
   final pulumi.Input<String>? remediationSourceType;
+
   /// Remediation template ID.
   final pulumi.Input<String> remediationTemplateId;
+
   /// Remediation type, valid values: `OOS`, `FC`.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -51,13 +56,18 @@ class RemediationArgs {
 
   factory RemediationArgs.fromMap(Map<String, dynamic> map) {
     return RemediationArgs(
-      configRuleId: (map['configRuleId'] as String).input(),
-      invokeType: (map['invokeType'] as String).input(),
-      params: (map['params'] as String).input(),
-      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType']! as String).input(),
-      remediationTemplateId: (map['remediationTemplateId'] as String).input(),
-      remediationType: (map['remediationType'] as String).input(),
+      configRuleId: pulumi.Input.fromValue(map['configRuleId'] as String),
+      invokeType: pulumi.Input.fromValue(map['invokeType'] as String),
+      params: pulumi.Input.fromValue(map['params'] as String),
+      remediationSourceType: (() {
+        final guardedValue = map['remediationSourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remediationTemplateId: pulumi.Input.fromValue(
+        map['remediationTemplateId'] as String,
+      ),
+      remediationType: pulumi.Input.fromValue(map['remediationType'] as String),
     );
   }
 }
-

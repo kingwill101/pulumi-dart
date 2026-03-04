@@ -47,15 +47,38 @@ class TrafficMirrorFilterIngressRule {
 
   factory TrafficMirrorFilterIngressRule.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterIngressRule(
-      action: (map['action'] as String).input(),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock']! as String).input(),
-      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange']! as String).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      protocol: (map['protocol'] as String).input(),
-      sourceCidrBlock: map['sourceCidrBlock'] == null ? null : (map['sourceCidrBlock']! as String).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange']! as String).input(),
-      trafficMirrorFilterRuleStatus: map['trafficMirrorFilterRuleStatus'] == null ? null : (map['trafficMirrorFilterRuleStatus']! as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      destinationCidrBlock: (() {
+        final guardedValue = map['destinationCidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationPortRange: (() {
+        final guardedValue = map['destinationPortRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      sourceCidrBlock: (() {
+        final guardedValue = map['sourceCidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourcePortRange: (() {
+        final guardedValue = map['sourcePortRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trafficMirrorFilterRuleStatus: (() {
+        final guardedValue = map['trafficMirrorFilterRuleStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

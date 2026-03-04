@@ -10,16 +10,21 @@ import 'framework_control_set.dart';
 class FrameworkArgs {
   /// Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
   final pulumi.Input<String>? complianceType;
+
   /// Configuration block(s) for the control sets that are associated with the framework. See `control_sets` Block below for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<FrameworkControlSet>>? controlSets;
+
   /// Description of the framework.
   final pulumi.Input<String>? description;
+
   /// Name of the framework.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the framework. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,7 +47,18 @@ class FrameworkArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'complianceType': ?complianceType,
-      'controlSets': ?pulumi.Input.mapOptionalInputValue<List<FrameworkControlSet>, List<Map<String, dynamic>>>(controlSets, (value) => pulumi.Input.encodeList<FrameworkControlSet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'controlSets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FrameworkControlSet>,
+            List<Map<String, dynamic>>
+          >(
+            controlSets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FrameworkControlSet,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'name': ?name,
       'region': ?region,
@@ -52,13 +68,45 @@ class FrameworkArgs {
 
   factory FrameworkArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkArgs(
-      complianceType: map['complianceType'] == null ? null : ((map['complianceType'] as String).input()).input(),
-      controlSets: map['controlSets'] == null ? null : ((pulumi.Input.decodeList<FrameworkControlSet>(map['controlSets']!, (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      complianceType: (() {
+        final guardedValue = map['complianceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlSets: (() {
+        final guardedValue = map['controlSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FrameworkControlSet>(
+            guardedValue,
+            (value) => FrameworkControlSet.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

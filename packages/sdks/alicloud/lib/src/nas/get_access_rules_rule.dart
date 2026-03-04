@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessRulesRule {
   /// AccessRuleId of the AccessRule.
   final pulumi.Input<String> accessRuleId;
+
   /// Priority of the AccessRule.
   final pulumi.Input<int> priority;
+
   /// Filter results by a specific RWAccess.
   final pulumi.Input<String> rwAccess;
+
   /// Filter results by a specific SourceCidrIp.
   final pulumi.Input<String> sourceCidrIp;
+
   /// Filter results by a specific UserAccess.
   final pulumi.Input<String> userAccess;
 
@@ -40,12 +44,11 @@ class GetAccessRulesRule {
 
   factory GetAccessRulesRule.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesRule(
-      accessRuleId: (map['accessRuleId'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      rwAccess: (map['rwAccess'] as String).input(),
-      sourceCidrIp: (map['sourceCidrIp'] as String).input(),
-      userAccess: (map['userAccess'] as String).input(),
+      accessRuleId: pulumi.Input.fromValue(map['accessRuleId'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      rwAccess: pulumi.Input.fromValue(map['rwAccess'] as String),
+      sourceCidrIp: pulumi.Input.fromValue(map['sourceCidrIp'] as String),
+      userAccess: pulumi.Input.fromValue(map['userAccess'] as String),
     );
   }
 }
-

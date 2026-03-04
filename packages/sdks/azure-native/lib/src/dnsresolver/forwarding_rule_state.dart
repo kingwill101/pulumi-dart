@@ -3,16 +3,15 @@ enum ForwardingRuleState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ForwardingRuleState(this.value);
-  final String value;
+  const ForwardingRuleState(this.wireValue);
+  final String wireValue;
 
   static ForwardingRuleState fromValue(String value) {
     for (final item in ForwardingRuleState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ForwardingRuleState value: $value');
   }
 }
-

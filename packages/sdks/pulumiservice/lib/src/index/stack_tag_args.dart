@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StackTagArgs {
   /// Name of the tag. The 'key' part of the key=value pair
   final pulumi.Input<String> name;
+
   /// Organization name.
   final pulumi.Input<String> organization;
+
   /// Project name.
   final pulumi.Input<String> project;
+
   /// Stack name.
   final pulumi.Input<String> stack;
+
   /// Value of the tag. The 'value' part of the key=value pair
   final pulumi.Input<String> value;
 
@@ -44,12 +48,11 @@ class StackTagArgs {
 
   factory StackTagArgs.fromMap(Map<String, dynamic> map) {
     return StackTagArgs(
-      name: (map['name'] as String).input(),
-      organization: (map['organization'] as String).input(),
-      project: (map['project'] as String).input(),
-      stack: (map['stack'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      stack: pulumi.Input.fromValue(map['stack'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

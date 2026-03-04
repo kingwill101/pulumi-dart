@@ -6,29 +6,40 @@ import 'access_policy.dart';
 class SignedIdentifier {
   /// Access policy
   final pulumi.Input<AccessPolicy>? accessPolicy;
+
   /// An unique identifier of the stored access policy.
   final pulumi.Input<String>? id;
 
   /// Creates a new [SignedIdentifier].
   /// [accessPolicy] Access policy
   /// [id] An unique identifier of the stored access policy.
-  SignedIdentifier({
-    this.accessPolicy,
-    this.id,
-  });
+  SignedIdentifier({this.accessPolicy, this.id});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicy': ?pulumi.Input.mapOptionalInputValue<AccessPolicy, Map<String, dynamic>>(accessPolicy, (value) => value.toMap()),
+      'accessPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccessPolicy,
+            Map<String, dynamic>
+          >(accessPolicy, (value) => value.toMap()),
       'id': ?id,
     };
   }
 
   factory SignedIdentifier.fromMap(Map<String, dynamic> map) {
     return SignedIdentifier(
-      accessPolicy: map['accessPolicy'] == null ? null : (AccessPolicy.fromMap((map['accessPolicy']! as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      accessPolicy: (() {
+        final guardedValue = map['accessPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

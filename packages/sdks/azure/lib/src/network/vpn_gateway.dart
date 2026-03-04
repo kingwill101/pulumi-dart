@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_gateway_args.dart';
 import 'vpn_gateway_bgp_settings.dart';
-import 'vpn_gateway_ip_configuration.dart';
 import 'vpn_gateway_state.dart';
 
 /// Manages a VPN Gateway within a Virtual Hub, which enables Site-to-Site communication.
@@ -291,7 +290,7 @@ import 'vpn_gateway_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -306,22 +305,31 @@ import 'vpn_gateway_state.dart';
 class VpnGateway extends pulumi.CustomResource {
   /// Is BGP route translation for NAT on this VPN Gateway enabled? Defaults to `false`.
   late final pulumi.Output<bool?> bgpRouteTranslationForNatEnabled;
+
   /// A `bgp_settings` block as defined below.
   late final pulumi.Output<VpnGatewayBgpSettings> bgpSettings;
+
   /// An `ip_configuration` block as defined below.
-  late final pulumi.Output<List<VpnGatewayIpConfiguration>> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+
   /// The Azure location where this VPN Gateway should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The Name which should be used for this VPN Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Name of the Resource Group in which this VPN Gateway should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Azure routing preference lets you to choose how your traffic routes between Azure and the internet. You can choose to route traffic either via the Microsoft network (default value, `Microsoft Network`), or via the ISP network (public internet, set to `Internet`). More context of the configuration can be found in the [Microsoft Docs](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-site-to-site-portal#gateway) to create a VPN Gateway. Defaults to `Microsoft Network`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> routingPreference;
+
   /// The Scale Unit for this VPN Gateway. Defaults to `1`.
   late final pulumi.Output<int?> scaleUnit;
+
   /// A mapping of tags to assign to the VPN Gateway.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the Virtual Hub within which this VPN Gateway should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualHubId;
 
@@ -334,21 +342,25 @@ class VpnGateway extends pulumi.CustomResource {
     VpnGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnGateway:VpnGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
-    this.bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings');
-    this.ipConfigurations = registerOutput<List<VpnGatewayIpConfiguration>>('ipConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:network/vpnGateway:VpnGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgpRouteTranslationForNatEnabled = registerOutput<bool?>(
+      'bgpRouteTranslationForNatEnabled',
+    );
+    bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routingPreference = registerOutput<String?>('routingPreference');
-    this.scaleUnit = registerOutput<int?>('scaleUnit');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingPreference = registerOutput<String?>('routingPreference');
+    scaleUnit = registerOutput<int?>('scaleUnit');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 
   /// Gets an existing [VpnGateway] resource's state with the given [name] and [id].
@@ -369,20 +381,24 @@ class VpnGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/vpnGateway:VpnGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bgpRouteTranslationForNatEnabled = registerOutput<bool?>('bgpRouteTranslationForNatEnabled');
-    this.bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings');
-    this.ipConfigurations = registerOutput<List<VpnGatewayIpConfiguration>>('ipConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:network/vpnGateway:VpnGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bgpRouteTranslationForNatEnabled = registerOutput<bool?>(
+      'bgpRouteTranslationForNatEnabled',
+    );
+    bgpSettings = registerOutput<VpnGatewayBgpSettings>('bgpSettings');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routingPreference = registerOutput<String?>('routingPreference');
-    this.scaleUnit = registerOutput<int?>('scaleUnit');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingPreference = registerOutput<String?>('routingPreference');
+    scaleUnit = registerOutput<int?>('scaleUnit');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

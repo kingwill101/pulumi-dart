@@ -5,16 +5,20 @@ enum ReservationAffinityConsumeReservationTypeComputeV1 {
   specificReservation("SPECIFIC_RESERVATION"),
   unspecified("UNSPECIFIED");
 
-  const ReservationAffinityConsumeReservationTypeComputeV1(this.value);
-  final String value;
+  const ReservationAffinityConsumeReservationTypeComputeV1(this.wireValue);
+  final String wireValue;
 
-  static ReservationAffinityConsumeReservationTypeComputeV1 fromValue(String value) {
-    for (final item in ReservationAffinityConsumeReservationTypeComputeV1.values) {
-      if (item.value == value) {
+  static ReservationAffinityConsumeReservationTypeComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in ReservationAffinityConsumeReservationTypeComputeV1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown ReservationAffinityConsumeReservationTypeComputeV1 value: $value',
+    );
   }
 }
-

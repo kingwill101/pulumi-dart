@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountStaticWebsiteArgs {
   /// The name of the storage account within the specified resource group.
   final pulumi.Input<String> accountName;
+
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
   final pulumi.Input<String>? error404Document;
+
   /// The webpage that Azure Storage serves for requests to the root of a website or any sub-folder. For example, 'index.html'. The value is case-sensitive.
   final pulumi.Input<String>? indexDocument;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,20 @@ class StorageAccountStaticWebsiteArgs {
 
   factory StorageAccountStaticWebsiteArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountStaticWebsiteArgs(
-      accountName: (map['accountName'] as String).input(),
-      error404Document: map['error404Document'] == null ? null : (map['error404Document']! as String).input(),
-      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      error404Document: (() {
+        final guardedValue = map['error404Document'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexDocument: (() {
+        final guardedValue = map['indexDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

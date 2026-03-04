@@ -6,16 +6,22 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint 
   /// The action to take if the condition is met.
   /// Possible values are: `ALLOW`, `DENY`.
   final pulumi.Input<String> actionType;
+
   /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
   final pulumi.Input<String> condition;
+
   /// A human-friendly description of the constraint to display as an error message when the policy is violated.
   final pulumi.Input<String>? description;
+
   /// A human-friendly name for the constraint.
   final pulumi.Input<String>? displayName;
+
   /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
   final pulumi.Input<List<String>> methodTypes;
+
   /// Immutable. The name of the custom constraint. This is unique within the organization.
   final pulumi.Input<String> name;
+
   /// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
   final pulumi.Input<List<String>> resourceTypes;
 
@@ -49,16 +55,29 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint 
     };
   }
 
-  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint.fromMap(Map<String, dynamic> map) {
+  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint(
-      actionType: (map['actionType'] as String).input(),
-      condition: (map['condition'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      methodTypes: ((map['methodTypes'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      actionType: pulumi.Input.fromValue(map['actionType'] as String),
+      condition: pulumi.Input.fromValue(map['condition'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      methodTypes: pulumi.Input.fromValue(
+        (map['methodTypes'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceTypes: pulumi.Input.fromValue(
+        (map['resourceTypes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

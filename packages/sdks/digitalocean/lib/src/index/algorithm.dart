@@ -2,16 +2,15 @@ enum Algorithm {
   roundRobin("round_robin"),
   leastConnections("least_connections");
 
-  const Algorithm(this.value);
-  final String value;
+  const Algorithm(this.wireValue);
+  final String wireValue;
 
   static Algorithm fromValue(String value) {
     for (final item in Algorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Algorithm value: $value');
   }
 }
-

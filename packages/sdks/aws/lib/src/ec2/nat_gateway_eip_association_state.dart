@@ -8,10 +8,12 @@ class NatGatewayEipAssociationState {
   /// The ID of the Elastic IP Allocation to associate with the NAT Gateway.
   final pulumi.Input<String>? allocationId;
   final pulumi.Input<String>? associationId;
+
   /// The ID of the NAT Gateway to associate the Elastic IP Allocation to.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? natGatewayId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<NatGatewayEipAssociationTimeouts>? timeouts;
@@ -36,18 +38,45 @@ class NatGatewayEipAssociationState {
       'associationId': ?associationId,
       'natGatewayId': ?natGatewayId,
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<NatGatewayEipAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            NatGatewayEipAssociationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory NatGatewayEipAssociationState.fromMap(Map<String, dynamic> map) {
     return NatGatewayEipAssociationState(
-      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
-      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : ((map['natGatewayId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((NatGatewayEipAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      allocationId: (() {
+        final guardedValue = map['allocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associationId: (() {
+        final guardedValue = map['associationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natGatewayId: (() {
+        final guardedValue = map['natGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NatGatewayEipAssociationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

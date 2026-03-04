@@ -1,5 +1,3 @@
-library module_gkebackup;
-
 export 'gkebackup/backup_channel.dart';
 export 'gkebackup/backup_channel_args.dart';
 export 'gkebackup/backup_channel_state.dart';

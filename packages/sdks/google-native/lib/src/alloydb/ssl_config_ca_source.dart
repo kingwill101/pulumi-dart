@@ -3,16 +3,15 @@ enum SslConfigCaSource {
   caSourceUnspecified("CA_SOURCE_UNSPECIFIED"),
   caSourceManaged("CA_SOURCE_MANAGED");
 
-  const SslConfigCaSource(this.value);
-  final String value;
+  const SslConfigCaSource(this.wireValue);
+  final String wireValue;
 
   static SslConfigCaSource fromValue(String value) {
     for (final item in SslConfigCaSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslConfigCaSource value: $value');
   }
 }
-

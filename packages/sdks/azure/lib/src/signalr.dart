@@ -1,5 +1,3 @@
-library module_signalr;
-
 export 'signalr/functions.dart';
 export 'signalr/get_service_args.dart';
 export 'signalr/get_service_result.dart';

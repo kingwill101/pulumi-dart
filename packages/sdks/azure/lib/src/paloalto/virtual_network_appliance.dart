@@ -243,7 +243,7 @@ import 'virtual_network_appliance_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -258,9 +258,10 @@ import 'virtual_network_appliance_state.dart';
 class VirtualNetworkAppliance extends pulumi.CustomResource {
   /// The name which should be used for this Palo Alto Local Network Virtual Appliance. Changing this forces a new Palo Alto Local Network Virtual Appliance to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Virtual Hub to deploy this appliance onto. Changing this forces a new Palo Alto Local Network Virtual Appliance to be created.
   ///
-  /// > **Note:** THe Virtual Hub must be created with the tag `"hubSaaSPreview" = "true"` to be compatible with this resource.
+  /// &gt; **Note:** THe Virtual Hub must be created with the tag `"hubSaaSPreview" = "true"` to be compatible with this resource.
   late final pulumi.Output<String> virtualHubId;
 
   /// Creates a new [VirtualNetworkAppliance].
@@ -272,13 +273,13 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     VirtualNetworkApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 
   /// Gets an existing [VirtualNetworkAppliance] resource's state with the given [name] and [id].
@@ -299,12 +300,12 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.virtualHubId = registerOutput<String>('virtualHubId');
+    virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'app_gateway_allocated_connection.dart';
 import 'app_gateway_args.dart';
 import 'app_gateway_state.dart';
 
@@ -297,36 +296,47 @@ import 'app_gateway_state.dart';
 class AppGateway extends pulumi.CustomResource {
   /// A list of connections allocated for the Gateway.
   /// Structure is documented below.
-  late final pulumi.Output<List<AppGatewayAllocatedConnection>> allocatedConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>> allocatedConnections;
+
   /// An arbitrary user-provided name for the AppGateway.
   late final pulumi.Output<String?> displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The type of hosting used by the AppGateway.
   /// Default value is `HOST_TYPE_UNSPECIFIED`.
   /// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
   late final pulumi.Output<String?> hostType;
+
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// ID of the AppGateway.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The region of the AppGateway.
   late final pulumi.Output<String?> region;
+
   /// Represents the different states of a AppGateway.
   late final pulumi.Output<String> state;
+
   /// The type of network connectivity used by the AppGateway.
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
   late final pulumi.Output<String?> type;
+
   /// Server-defined URI for this resource.
   late final pulumi.Output<String> uri;
 
@@ -339,23 +349,25 @@ class AppGateway extends pulumi.CustomResource {
     AppGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:beyondcorp/appGateway:AppGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatedConnections = registerOutput<List<AppGatewayAllocatedConnection>>('allocatedConnections');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.hostType = registerOutput<String?>('hostType');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'gcp:beyondcorp/appGateway:AppGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatedConnections = registerOutput<List<Map<String, dynamic>>>(
+      'allocatedConnections',
+    );
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    hostType = registerOutput<String?>('hostType');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.region = registerOutput<String?>('region');
-    this.state = registerOutput<String>('state');
-    this.type = registerOutput<String?>('type');
-    this.uri = registerOutput<String>('uri');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    region = registerOutput<String?>('region');
+    state = registerOutput<String>('state');
+    type = registerOutput<String?>('type');
+    uri = registerOutput<String>('uri');
   }
 
   /// Gets an existing [AppGateway] resource's state with the given [name] and [id].
@@ -376,22 +388,24 @@ class AppGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:beyondcorp/appGateway:AppGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatedConnections = registerOutput<List<AppGatewayAllocatedConnection>>('allocatedConnections');
-    this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.hostType = registerOutput<String?>('hostType');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'gcp:beyondcorp/appGateway:AppGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatedConnections = registerOutput<List<Map<String, dynamic>>>(
+      'allocatedConnections',
+    );
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    hostType = registerOutput<String?>('hostType');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.region = registerOutput<String?>('region');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    region = registerOutput<String?>('region');
     this.state = registerOutput<String>('state');
-    this.type = registerOutput<String?>('type');
-    this.uri = registerOutput<String>('uri');
+    type = registerOutput<String?>('type');
+    uri = registerOutput<String>('uri');
   }
 }

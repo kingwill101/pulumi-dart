@@ -31,10 +31,9 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: (map['project'] as String).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

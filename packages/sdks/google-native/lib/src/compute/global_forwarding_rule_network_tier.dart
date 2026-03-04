@@ -6,16 +6,17 @@ enum GlobalForwardingRuleNetworkTier {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const GlobalForwardingRuleNetworkTier(this.value);
-  final String value;
+  const GlobalForwardingRuleNetworkTier(this.wireValue);
+  final String wireValue;
 
   static GlobalForwardingRuleNetworkTier fromValue(String value) {
     for (final item in GlobalForwardingRuleNetworkTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleNetworkTier value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleNetworkTier value: $value',
+    );
   }
 }
-

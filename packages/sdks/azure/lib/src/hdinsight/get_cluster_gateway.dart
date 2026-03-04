@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterGateway {
   /// Is the Ambari Portal enabled?
   final pulumi.Input<bool> enabled;
+
   /// The password used for the Ambari Portal.
   final pulumi.Input<String> password;
+
   /// The username used for the Ambari Portal.
   final pulumi.Input<String> username;
 
@@ -30,10 +32,9 @@ class GetClusterGateway {
 
   factory GetClusterGateway.fromMap(Map<String, dynamic> map) {
     return GetClusterGateway(
-      enabled: (map['enabled'] as bool).input(),
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

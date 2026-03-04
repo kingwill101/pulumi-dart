@@ -3,16 +3,17 @@ enum RouterBgpPeerAdvertiseModeComputeV1 {
   custom("CUSTOM"),
   default_("DEFAULT");
 
-  const RouterBgpPeerAdvertiseModeComputeV1(this.value);
-  final String value;
+  const RouterBgpPeerAdvertiseModeComputeV1(this.wireValue);
+  final String wireValue;
 
   static RouterBgpPeerAdvertiseModeComputeV1 fromValue(String value) {
     for (final item in RouterBgpPeerAdvertiseModeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterBgpPeerAdvertiseModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RouterBgpPeerAdvertiseModeComputeV1 value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum SslConfigType {
   tls("TLS"),
   mtls("MTLS");
 
-  const SslConfigType(this.value);
-  final String value;
+  const SslConfigType(this.wireValue);
+  final String wireValue;
 
   static SslConfigType fromValue(String value) {
     for (final item in SslConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslConfigType value: $value');
   }
 }
-

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostedConfigurationVersionState {
   /// Application ID.
   final pulumi.Input<String>? applicationId;
+
   /// ARN of the AppConfig  hosted configuration version.
   final pulumi.Input<String>? arn;
+
   /// Configuration profile ID.
   final pulumi.Input<String>? configurationProfileId;
+
   /// Content of the configuration or the configuration data.
   final pulumi.Input<String>? content;
+
   /// Standard MIME type describing the format of the configuration content. For more information, see [Content-Type](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
   final pulumi.Input<String>? contentType;
+
   /// Description of the configuration.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Version number of the hosted configuration.
   final pulumi.Input<int>? versionNumber;
 
@@ -56,15 +63,46 @@ class HostedConfigurationVersionState {
 
   factory HostedConfigurationVersionState.fromMap(Map<String, dynamic> map) {
     return HostedConfigurationVersionState(
-      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      configurationProfileId: map['configurationProfileId'] == null ? null : ((map['configurationProfileId'] as String).input()).input(),
-      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
-      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      versionNumber: map['versionNumber'] == null ? null : ((map['versionNumber'] as int).input()).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationProfileId: (() {
+        final guardedValue = map['configurationProfileId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionNumber: (() {
+        final guardedValue = map['versionNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

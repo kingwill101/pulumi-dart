@@ -10,14 +10,19 @@ import 'saas_creation_properties.dart';
 class SaasSubscriptionLevelArgs {
   /// Resource location. Only value allowed for SaaS is 'global'
   final pulumi.Input<String>? location;
+
   /// The resource name
   final pulumi.Input<String>? name;
+
   /// Properties of the SaaS resource that are relevant for creation.
   final pulumi.Input<SaasCreationProperties>? properties;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource.
   final pulumi.Input<String>? resourceName;
+
   /// the resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,7 +46,11 @@ class SaasSubscriptionLevelArgs {
     return <String, dynamic>{
       'location': ?location,
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<SaasCreationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SaasCreationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': ?resourceName,
       'tags': ?tags,
@@ -50,13 +59,40 @@ class SaasSubscriptionLevelArgs {
 
   factory SaasSubscriptionLevelArgs.fromMap(Map<String, dynamic> map) {
     return SaasSubscriptionLevelArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (SaasCreationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SaasCreationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

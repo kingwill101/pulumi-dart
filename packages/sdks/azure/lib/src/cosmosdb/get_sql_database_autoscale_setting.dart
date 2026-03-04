@@ -8,20 +8,15 @@ class GetSqlDatabaseAutoscaleSetting {
 
   /// Creates a new [GetSqlDatabaseAutoscaleSetting].
   /// [maxThroughput] The maximum throughput of the SQL database (RU/s).
-  GetSqlDatabaseAutoscaleSetting({
-    required this.maxThroughput,
-  });
+  GetSqlDatabaseAutoscaleSetting({required this.maxThroughput});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxThroughput': maxThroughput,
-    };
+    return <String, dynamic>{'maxThroughput': maxThroughput};
   }
 
   factory GetSqlDatabaseAutoscaleSetting.fromMap(Map<String, dynamic> map) {
     return GetSqlDatabaseAutoscaleSetting(
-      maxThroughput: (map['maxThroughput'] as int).input(),
+      maxThroughput: pulumi.Input.fromValue(map['maxThroughput'] as int),
     );
   }
 }
-

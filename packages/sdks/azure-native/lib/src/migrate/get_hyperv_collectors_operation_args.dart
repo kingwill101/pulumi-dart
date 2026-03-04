@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHypervCollectorsOperationArgs {
   /// Hyper-V collector ARM name
   final pulumi.Input<String> hypervCollectorName;
+
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetHypervCollectorsOperationArgs {
 
   factory GetHypervCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetHypervCollectorsOperationArgs(
-      hypervCollectorName: (map['hypervCollectorName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      hypervCollectorName: pulumi.Input.fromValue(
+        map['hypervCollectorName'] as String,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

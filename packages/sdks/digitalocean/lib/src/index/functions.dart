@@ -242,10 +242,7 @@ import 'get_vpc_result.dart';
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountResult> getAccount(
-  {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<GetAccountResult> getAccount({pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'digitalocean:index/getAccount:getAccount',
@@ -1421,8 +1418,7 @@ Future<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(
 ///   metricsPassword: ${example.password}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(
-  {
+Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -3238,7 +3234,7 @@ Future<GetFirewallResult> getFirewall(
   return GetFirewallResult.fromMap(result);
 }
 
-/// > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+/// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
 ///
 /// Get information on a floating ip. This data source provides the region and Droplet id
 /// as configured on your DigitalOcean account. This is useful if the floating IP
@@ -3498,7 +3494,8 @@ Future<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_knowledge_base_indexing_jobs_get_genai_knowledge_base_indexing_jobs_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(
+Future<GetGenaiKnowledgeBaseIndexingJobsResult>
+getGenaiKnowledgeBaseIndexingJobs(
   GetGenaiKnowledgeBaseIndexingJobsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3633,7 +3630,8 @@ Future<GetGradientaiAgentsResult> getGradientaiAgents(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_agents_by_openai_api_key_get_gradientai_agents_by_openai_api_key_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(
+Future<GetGradientaiAgentsByOpenaiApiKeyResult>
+getGradientaiAgentsByOpenaiApiKey(
   GetGradientaiAgentsByOpenaiApiKeyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3663,7 +3661,8 @@ Future<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_indexing_job_data_sources_get_gradientai_indexing_job_data_sources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(
+Future<GetGradientaiIndexingJobDataSourcesResult>
+getGradientaiIndexingJobDataSources(
   GetGradientaiIndexingJobDataSourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3693,7 +3692,8 @@ Future<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_base_data_sources_get_gradientai_knowledge_base_data_sources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(
+Future<GetGradientaiKnowledgeBaseDataSourcesResult>
+getGradientaiKnowledgeBaseDataSources(
   GetGradientaiKnowledgeBaseDataSourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3708,7 +3708,8 @@ Future<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDa
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_base_indexing_jobs_get_gradientai_knowledge_base_indexing_jobs_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(
+Future<GetGradientaiKnowledgeBaseIndexingJobsResult>
+getGradientaiKnowledgeBaseIndexingJobs(
   GetGradientaiKnowledgeBaseIndexingJobsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -7394,7 +7395,7 @@ Future<GetSpacesBucketResult> getSpacesBucket(
 /// The Spaces object data source allows access to the metadata and
 /// _optionally_ (see below) content of an object stored inside a Spaces bucket.
 ///
-/// > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
+/// &gt; **Note:** The content of an object (`body` field) is available only for objects which have a human-readable
 /// `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially
 /// downloading large amount of data which would be thrown away in favor of metadata.
 ///
@@ -7567,7 +7568,7 @@ Future<GetSpacesBucketObjectResult> getSpacesBucketObject(
   return GetSpacesBucketObjectResult.fromMap(result);
 }
 
-/// > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
+/// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
 ///
 /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_spaces_bucket_objects_get_spaces_bucket_objects_args_doc}

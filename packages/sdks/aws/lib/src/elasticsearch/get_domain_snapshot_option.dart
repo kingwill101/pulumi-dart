@@ -8,9 +8,7 @@ class GetDomainSnapshotOption {
 
   /// Creates a new [GetDomainSnapshotOption].
   /// [automatedSnapshotStartHour] Hour during which the service takes an automated daily snapshot of the indices in the domain.
-  GetDomainSnapshotOption({
-    required this.automatedSnapshotStartHour,
-  });
+  GetDomainSnapshotOption({required this.automatedSnapshotStartHour});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,9 @@ class GetDomainSnapshotOption {
 
   factory GetDomainSnapshotOption.fromMap(Map<String, dynamic> map) {
     return GetDomainSnapshotOption(
-      automatedSnapshotStartHour: (map['automatedSnapshotStartHour'] as int).input(),
+      automatedSnapshotStartHour: pulumi.Input.fromValue(
+        map['automatedSnapshotStartHour'] as int,
+      ),
     );
   }
 }
-

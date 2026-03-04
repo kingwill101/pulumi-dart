@@ -9,31 +9,60 @@ class InterconnectGroupPhysicalStructureMetroFacility {
   /// "5467". This is the third component of the location of Interconnects
   /// in this facility.
   final pulumi.Input<String>? facility;
+
   /// (Output)
   /// Zones used to explain this blocker in more detail.
   /// Zone names are "zone1" and/or "zone2".
-  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacilityZone>>? zones;
+  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacilityZone>>?
+  zones;
 
   /// Creates a new [InterconnectGroupPhysicalStructureMetroFacility].
   /// [facility] (Output)
   /// [zones] (Output)
-  InterconnectGroupPhysicalStructureMetroFacility({
-    this.facility,
-    this.zones,
-  });
+  InterconnectGroupPhysicalStructureMetroFacility({this.facility, this.zones});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'facility': ?facility,
-      'zones': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupPhysicalStructureMetroFacilityZone>, List<Map<String, dynamic>>>(zones, (value) => pulumi.Input.encodeList<InterconnectGroupPhysicalStructureMetroFacilityZone, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'zones':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InterconnectGroupPhysicalStructureMetroFacilityZone>,
+            List<Map<String, dynamic>>
+          >(
+            zones,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InterconnectGroupPhysicalStructureMetroFacilityZone,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory InterconnectGroupPhysicalStructureMetroFacility.fromMap(Map<String, dynamic> map) {
+  factory InterconnectGroupPhysicalStructureMetroFacility.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectGroupPhysicalStructureMetroFacility(
-      facility: map['facility'] == null ? null : (map['facility']! as String).input(),
-      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetroFacilityZone>(map['zones']!, (value) => InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facility: (() {
+        final guardedValue = map['facility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            InterconnectGroupPhysicalStructureMetroFacilityZone
+          >(
+            guardedValue,
+            (value) =>
+                InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

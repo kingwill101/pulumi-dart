@@ -6,16 +6,20 @@ enum HttpRedirectActionRedirectResponseCodeComputeBeta {
   seeOther("SEE_OTHER"),
   temporaryRedirect("TEMPORARY_REDIRECT");
 
-  const HttpRedirectActionRedirectResponseCodeComputeBeta(this.value);
-  final String value;
+  const HttpRedirectActionRedirectResponseCodeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static HttpRedirectActionRedirectResponseCodeComputeBeta fromValue(String value) {
-    for (final item in HttpRedirectActionRedirectResponseCodeComputeBeta.values) {
-      if (item.value == value) {
+  static HttpRedirectActionRedirectResponseCodeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in HttpRedirectActionRedirectResponseCodeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HttpRedirectActionRedirectResponseCodeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown HttpRedirectActionRedirectResponseCodeComputeBeta value: $value',
+    );
   }
 }
-

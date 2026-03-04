@@ -185,26 +185,37 @@ import 'favorite_args.dart';
 class Favorite extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Favorite category, as defined by the user at creation time.
   late final pulumi.Output<String?> category;
+
   /// Configuration of this particular favorite, which are driven by the Azure portal UX. Configuration data is a string containing valid JSON
   late final pulumi.Output<String?> config;
+
   /// Internally assigned unique id of the favorite definition.
   late final pulumi.Output<String> favoriteId;
+
   /// Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   late final pulumi.Output<String?> favoriteType;
+
   /// Flag denoting wether or not this favorite was generated from a template.
   late final pulumi.Output<bool?> isGeneratedFromTemplate;
+
   /// The user-defined name of the favorite.
   late final pulumi.Output<String?> name;
+
   /// The source of the favorite definition.
   late final pulumi.Output<String?> sourceType;
+
   /// A list of 0 or more tags that are associated with this favorite definition
   late final pulumi.Output<List<String>?> tags;
+
   /// Date and time in UTC of the last modification that was made to this favorite definition.
   late final pulumi.Output<String> timeModified;
+
   /// Unique user id of the specific user that owns this favorite.
   late final pulumi.Output<String> userId;
+
   /// This instance's version of the data model. This can change as new features are added that can be marked favorite. Current examples include MetricsExplorer (ME) and Search.
   late final pulumi.Output<String?> version;
 
@@ -217,22 +228,22 @@ class Favorite extends pulumi.CustomResource {
     FavoriteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:applicationinsights:Favorite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.category = registerOutput<String?>('category');
-    this.config = registerOutput<String?>('config');
-    this.favoriteId = registerOutput<String>('favoriteId');
-    this.favoriteType = registerOutput<String?>('favoriteType');
-    this.isGeneratedFromTemplate = registerOutput<bool?>('isGeneratedFromTemplate');
+         'azure-native:applicationinsights:Favorite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String?>('category');
+    config = registerOutput<String?>('config');
+    favoriteId = registerOutput<String>('favoriteId');
+    favoriteType = registerOutput<String?>('favoriteType');
+    isGeneratedFromTemplate = registerOutput<bool?>('isGeneratedFromTemplate');
     this.name = registerOutput<String?>('name');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.timeModified = registerOutput<String>('timeModified');
-    this.userId = registerOutput<String>('userId');
-    this.version = registerOutput<String?>('version');
+    sourceType = registerOutput<String?>('sourceType');
+    tags = registerOutput<List<String>?>('tags');
+    timeModified = registerOutput<String>('timeModified');
+    userId = registerOutput<String>('userId');
+    version = registerOutput<String?>('version');
   }
 }

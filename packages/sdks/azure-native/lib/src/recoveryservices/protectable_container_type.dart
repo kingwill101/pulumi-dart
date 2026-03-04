@@ -18,20 +18,21 @@ enum ProtectableContainerType {
   valueSQLAGWorkLoadContainer("SQLAGWorkLoadContainer"),
   valueStorageContainer("StorageContainer"),
   valueGenericContainer("GenericContainer"),
-  valueMicrosoftClassicComputeVirtualMachines("Microsoft.ClassicCompute/virtualMachines"),
+  valueMicrosoftClassicComputeVirtualMachines(
+    "Microsoft.ClassicCompute/virtualMachines",
+  ),
   valueMicrosoftComputeVirtualMachines("Microsoft.Compute/virtualMachines"),
   valueAzureWorkloadContainer("AzureWorkloadContainer");
 
-  const ProtectableContainerType(this.value);
-  final String value;
+  const ProtectableContainerType(this.wireValue);
+  final String wireValue;
 
   static ProtectableContainerType fromValue(String value) {
     for (final item in ProtectableContainerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProtectableContainerType value: $value');
   }
 }
-

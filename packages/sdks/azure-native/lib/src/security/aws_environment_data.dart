@@ -8,10 +8,13 @@ class AwsEnvironmentData {
   /// The type of the environment data.
   /// Expected value is 'AwsAccount'.
   final pulumi.Input<String> environmentType;
+
   /// The AWS account's organizational data
   final pulumi.Input<AwsOrganizationalDataMaster>? organizationalData;
+
   /// list of regions to scan
   final pulumi.Input<List<String>>? regions;
+
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
   final pulumi.Input<double>? scanInterval;
 
@@ -30,7 +33,11 @@ class AwsEnvironmentData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'environmentType': environmentType,
-      'organizationalData': ?pulumi.Input.mapOptionalInputValue<AwsOrganizationalDataMaster, Map<String, dynamic>>(organizationalData, (value) => value.toMap()),
+      'organizationalData':
+          ?pulumi.Input.mapOptionalInputValue<
+            AwsOrganizationalDataMaster,
+            Map<String, dynamic>
+          >(organizationalData, (value) => value.toMap()),
       'regions': ?regions,
       'scanInterval': ?scanInterval,
     };
@@ -38,11 +45,26 @@ class AwsEnvironmentData {
 
   factory AwsEnvironmentData.fromMap(Map<String, dynamic> map) {
     return AwsEnvironmentData(
-      environmentType: (map['environmentType'] as String).input(),
-      organizationalData: map['organizationalData'] == null ? null : (AwsOrganizationalDataMaster.fromMap((map['organizationalData']! as Map).cast<String, dynamic>())).input(),
-      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as double).input(),
+      environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
+      organizationalData: (() {
+        final guardedValue = map['organizationalData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AwsOrganizationalDataMaster.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scanInterval: (() {
+        final guardedValue = map['scanInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

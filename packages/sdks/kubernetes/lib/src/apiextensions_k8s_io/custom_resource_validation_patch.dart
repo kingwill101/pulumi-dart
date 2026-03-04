@@ -10,20 +10,29 @@ class CustomResourceValidationPatch {
 
   /// Creates a new [CustomResourceValidationPatch].
   /// [openAPIV3Schema] openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-  CustomResourceValidationPatch({
-    this.openAPIV3Schema,
-  });
+  CustomResourceValidationPatch({this.openAPIV3Schema});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'openAPIV3Schema': ?pulumi.Input.mapOptionalInputValue<JSONSchemaPropsPatch, Map<String, dynamic>>(openAPIV3Schema, (value) => value.toMap()),
+      'openAPIV3Schema':
+          ?pulumi.Input.mapOptionalInputValue<
+            JSONSchemaPropsPatch,
+            Map<String, dynamic>
+          >(openAPIV3Schema, (value) => value.toMap()),
     };
   }
 
   factory CustomResourceValidationPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceValidationPatch(
-      openAPIV3Schema: map['openAPIV3Schema'] == null ? null : (JSONSchemaPropsPatch.fromMap((map['openAPIV3Schema']! as Map).cast<String, dynamic>())).input(),
+      openAPIV3Schema: (() {
+        final guardedValue = map['openAPIV3Schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JSONSchemaPropsPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

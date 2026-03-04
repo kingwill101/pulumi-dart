@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDatabase.
 class GetDatabaseResult {
   final String charset;
   final String collation;
   final String deletionPolicy;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
@@ -54,9 +54,12 @@ class GetDatabaseResult {
       id: map['id'] as String,
       instance: map['instance'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       selfLink: map['selfLink'] as String,
     );
   }
 }
-

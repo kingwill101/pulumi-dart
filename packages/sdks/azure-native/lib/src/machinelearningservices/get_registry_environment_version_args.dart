@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryEnvironmentVersionArgs {
   /// Container name. This is case-sensitive.
   final pulumi.Input<String> environmentName;
+
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Version identifier. This is case-sensitive.
   final pulumi.Input<String> version;
 
@@ -39,11 +42,12 @@ class GetRegistryEnvironmentVersionArgs {
 
   factory GetRegistryEnvironmentVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnvironmentVersionArgs(
-      environmentName: (map['environmentName'] as String).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: (map['version'] as String).input(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

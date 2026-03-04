@@ -6,9 +6,11 @@ class JobAppEngineHttpTargetAppEngineRouting {
   /// App instance.
   /// By default, the job is sent to an instance which is available when the job is attempted.
   final pulumi.Input<String>? instance;
+
   /// App service.
   /// By default, the job is sent to the service which is the default service when the job is attempted.
   final pulumi.Input<String>? service;
+
   /// App version.
   /// By default, the job is sent to the version which is the default version when the job is attempted.
   final pulumi.Input<String>? version;
@@ -31,12 +33,25 @@ class JobAppEngineHttpTargetAppEngineRouting {
     };
   }
 
-  factory JobAppEngineHttpTargetAppEngineRouting.fromMap(Map<String, dynamic> map) {
+  factory JobAppEngineHttpTargetAppEngineRouting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobAppEngineHttpTargetAppEngineRouting(
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_property_response.dart';
 import 'kafka_connector_topic_map_args.dart';
-import 'kafka_routes_response.dart';
 import 'kafka_topic_map_batching_response.dart';
 import 'system_data_response.dart';
 
@@ -376,32 +375,46 @@ import 'system_data_response.dart';
 class KafkaConnectorTopicMap extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The batching settings for kafka messages.
   late final pulumi.Output<KafkaTopicMapBatchingResponse?> batching;
+
   /// The compression to use for kafka messages.
   late final pulumi.Output<String?> compression;
+
   /// The flag to copy Mqtt properties.
   late final pulumi.Output<String?> copyMqttProperties;
+
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
+
   /// The kafkaConnector CRD it refers to.
   late final pulumi.Output<String> kafkaConnectorRef;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The partition to use for Kafka.
   late final pulumi.Output<String?> partitionKeyProperty;
+
   /// The partition strategy to use for Kafka.
   late final pulumi.Output<String?> partitionStrategy;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// The route details for Kafka connector.
-  late final pulumi.Output<List<KafkaRoutesResponse>> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -414,25 +427,27 @@ class KafkaConnectorTopicMap extends pulumi.CustomResource {
     KafkaConnectorTopicMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsmq:KafkaConnectorTopicMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.batching = registerOutput<KafkaTopicMapBatchingResponse?>('batching');
-    this.compression = registerOutput<String?>('compression');
-    this.copyMqttProperties = registerOutput<String?>('copyMqttProperties');
-    this.extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation');
-    this.kafkaConnectorRef = registerOutput<String>('kafkaConnectorRef');
-    this.location = registerOutput<String>('location');
+         'azure-native:iotoperationsmq:KafkaConnectorTopicMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    batching = registerOutput<KafkaTopicMapBatchingResponse?>('batching');
+    compression = registerOutput<String?>('compression');
+    copyMqttProperties = registerOutput<String?>('copyMqttProperties');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
+      'extendedLocation',
+    );
+    kafkaConnectorRef = registerOutput<String>('kafkaConnectorRef');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.partitionKeyProperty = registerOutput<String?>('partitionKeyProperty');
-    this.partitionStrategy = registerOutput<String?>('partitionStrategy');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.routes = registerOutput<List<KafkaRoutesResponse>>('routes');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    partitionKeyProperty = registerOutput<String?>('partitionKeyProperty');
+    partitionStrategy = registerOutput<String?>('partitionStrategy');
+    provisioningState = registerOutput<String>('provisioningState');
+    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

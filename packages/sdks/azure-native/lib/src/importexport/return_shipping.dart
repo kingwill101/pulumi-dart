@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReturnShipping {
   /// The customer's account number with the carrier.
   final pulumi.Input<String> carrierAccountNumber;
+
   /// The carrier's name.
   final pulumi.Input<String> carrierName;
 
@@ -26,9 +27,10 @@ class ReturnShipping {
 
   factory ReturnShipping.fromMap(Map<String, dynamic> map) {
     return ReturnShipping(
-      carrierAccountNumber: (map['carrierAccountNumber'] as String).input(),
-      carrierName: (map['carrierName'] as String).input(),
+      carrierAccountNumber: pulumi.Input.fromValue(
+        map['carrierAccountNumber'] as String,
+      ),
+      carrierName: pulumi.Input.fromValue(map['carrierName'] as String),
     );
   }
 }
-

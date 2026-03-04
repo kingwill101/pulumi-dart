@@ -1,5 +1,3 @@
-library module_ssmcontacts;
-
 export 'ssmcontacts/contact.dart';
 export 'ssmcontacts/contact_args.dart';
 export 'ssmcontacts/contact_channel.dart';

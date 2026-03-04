@@ -4,16 +4,15 @@ enum EndpointNetworkType {
   gcpNetwork("GCP_NETWORK"),
   nonGcpNetwork("NON_GCP_NETWORK");
 
-  const EndpointNetworkType(this.value);
-  final String value;
+  const EndpointNetworkType(this.wireValue);
+  final String wireValue;
 
   static EndpointNetworkType fromValue(String value) {
     for (final item in EndpointNetworkType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointNetworkType value: $value');
   }
 }
-

@@ -31,10 +31,11 @@ class GetBillingAccountBucketArgs {
 
   factory GetBillingAccountBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountBucketArgs(
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      bucketId: (map['bucketId'] as String).input(),
-      location: (map['location'] as String).input(),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

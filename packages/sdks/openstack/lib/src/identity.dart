@@ -1,5 +1,3 @@
-library module_identity;
-
 export 'identity/application_credential.dart';
 export 'identity/application_credential_access_rule.dart';
 export 'identity/application_credential_args.dart';

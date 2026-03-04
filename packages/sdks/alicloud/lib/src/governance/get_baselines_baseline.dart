@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBaselinesBaseline {
   /// Baseline ID
   final pulumi.Input<String> baselineId;
+
   /// Baseline Name.
   final pulumi.Input<String> baselineName;
+
   /// Baseline Description.
   final pulumi.Input<String> description;
 
@@ -30,10 +32,9 @@ class GetBaselinesBaseline {
 
   factory GetBaselinesBaseline.fromMap(Map<String, dynamic> map) {
     return GetBaselinesBaseline(
-      baselineId: (map['baselineId'] as String).input(),
-      baselineName: (map['baselineName'] as String).input(),
-      description: (map['description'] as String).input(),
+      baselineId: pulumi.Input.fromValue(map['baselineId'] as String),
+      baselineName: pulumi.Input.fromValue(map['baselineName'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

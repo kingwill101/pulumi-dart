@@ -4,16 +4,15 @@ enum FontStyle {
   valueMonospace("Monospace"),
   valueCourier("Courier");
 
-  const FontStyle(this.value);
-  final String value;
+  const FontStyle(this.wireValue);
+  final String wireValue;
 
   static FontStyle fromValue(String value) {
     for (final item in FontStyle.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FontStyle value: $value');
   }
 }
-

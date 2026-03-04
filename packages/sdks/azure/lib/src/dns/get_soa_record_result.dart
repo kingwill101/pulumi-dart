@@ -1,31 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSoaRecord.
 class GetSoaRecordResult {
   /// The email contact for the SOA record.
   final String email;
+
   /// The expire time for the SOA record.
   final int expireTime;
+
   /// The FQDN of the DNS SOA Record.
   final String fqdn;
+
   /// The domain name of the authoritative name server for the SOA record.
   final String hostName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The minimum Time To Live for the SOA record. By convention, it is used to determine the negative caching duration.
   final int minimumTtl;
+
   /// The name of the DNS SOA Record.
   final String? name;
+
   /// The refresh time for the SOA record.
   final int refreshTime;
   final String resourceGroupName;
+
   /// The retry time for the SOA record.
   final int retryTime;
+
   /// The serial number for the SOA record.
   final int serialNumber;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// The Time To Live (TTL) of the DNS record in seconds.
   final int ttl;
   final String zoneName;
@@ -89,7 +99,11 @@ class GetSoaRecordResult {
       hostName: map['hostName'] as String,
       id: map['id'] as String,
       minimumTtl: map['minimumTtl'] as int,
-      name: map['name'] == null ? null : map['name']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       refreshTime: map['refreshTime'] as int,
       resourceGroupName: map['resourceGroupName'] as String,
       retryTime: map['retryTime'] as int,
@@ -100,4 +114,3 @@ class GetSoaRecordResult {
     );
   }
 }
-

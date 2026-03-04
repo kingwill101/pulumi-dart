@@ -367,7 +367,7 @@ import 'resolver_outbound_endpoint_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2022-07-01
@@ -382,12 +382,16 @@ import 'resolver_outbound_endpoint_state.dart';
 class ResolverOutboundEndpoint extends pulumi.CustomResource {
   /// Specifies the Azure Region where the Private DNS Resolver Outbound Endpoint should exist. Changing this forces a new Private DNS Resolver Outbound Endpoint to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Private DNS Resolver Outbound Endpoint. Changing this forces a new Private DNS Resolver Outbound Endpoint to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the Private DNS Resolver Outbound Endpoint. Changing this forces a new Private DNS Resolver Outbound Endpoint to be created.
   late final pulumi.Output<String> privateDnsResolverId;
+
   /// The ID of the Subnet that is linked to the Private DNS Resolver Outbound Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags which should be assigned to the Private DNS Resolver Outbound Endpoint.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -400,16 +404,16 @@ class ResolverOutboundEndpoint extends pulumi.CustomResource {
     ResolverOutboundEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/resolverOutboundEndpoint:ResolverOutboundEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:privatedns/resolverOutboundEndpoint:ResolverOutboundEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ResolverOutboundEndpoint] resource's state with the given [name] and [id].
@@ -430,15 +434,15 @@ class ResolverOutboundEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/resolverOutboundEndpoint:ResolverOutboundEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:privatedns/resolverOutboundEndpoint:ResolverOutboundEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

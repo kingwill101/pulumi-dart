@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWebPubSubKeysArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
 
@@ -29,9 +30,10 @@ class ListWebPubSubKeysArgs {
 
   factory ListWebPubSubKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListWebPubSubKeysArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

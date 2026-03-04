@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SingleClusterRouting {
   /// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
   final pulumi.Input<bool>? allowTransactionalWrites;
+
   /// The cluster to which read/write requests should be routed.
   final pulumi.Input<String>? clusterId;
 
   /// Creates a new [SingleClusterRouting].
   /// [allowTransactionalWrites] Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
   /// [clusterId] The cluster to which read/write requests should be routed.
-  SingleClusterRouting({
-    this.allowTransactionalWrites,
-    this.clusterId,
-  });
+  SingleClusterRouting({this.allowTransactionalWrites, this.clusterId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SingleClusterRouting {
 
   factory SingleClusterRouting.fromMap(Map<String, dynamic> map) {
     return SingleClusterRouting(
-      allowTransactionalWrites: map['allowTransactionalWrites'] == null ? null : (map['allowTransactionalWrites']! as bool).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      allowTransactionalWrites: (() {
+        final guardedValue = map['allowTransactionalWrites'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

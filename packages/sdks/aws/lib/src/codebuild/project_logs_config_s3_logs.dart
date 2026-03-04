@@ -9,11 +9,14 @@ class ProjectLogsConfigS3Logs {
   /// `READ_ONLY`, and `FULL`. your CodeBuild service role must have the `s3:PutBucketAcl` permission. This permission
   /// allows CodeBuild to modify the access control list for the bucket.
   final pulumi.Input<String>? bucketOwnerAccess;
+
   /// Whether to disable encrypting S3 logs. Defaults to `false`.
   final pulumi.Input<bool>? encryptionDisabled;
+
   /// Name of the S3 bucket and the path prefix for S3 logs. Must be set if status is `ENABLED`,
   /// otherwise it must be empty.
   final pulumi.Input<String>? location;
+
   /// Current status of logs in S3 for a build project. Valid values: `ENABLED`, `DISABLED`. Defaults
   /// to `DISABLED`.
   final pulumi.Input<String>? status;
@@ -41,11 +44,26 @@ class ProjectLogsConfigS3Logs {
 
   factory ProjectLogsConfigS3Logs.fromMap(Map<String, dynamic> map) {
     return ProjectLogsConfigS3Logs(
-      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : ((map['bucketOwnerAccess'] as String).input()).input(),
-      encryptionDisabled: map['encryptionDisabled'] == null ? null : ((map['encryptionDisabled'] as bool).input()).input(),
-      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      bucketOwnerAccess: (() {
+        final guardedValue = map['bucketOwnerAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionDisabled: (() {
+        final guardedValue = map['encryptionDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

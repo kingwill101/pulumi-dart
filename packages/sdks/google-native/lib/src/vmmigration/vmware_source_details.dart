@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareSourceDetails {
   /// Input only. The credentials password. This is write only and can not be read in a GET operation.
   final pulumi.Input<String>? password;
+
   /// The hostname of the vcenter.
   final pulumi.Input<String>? resolvedVcenterHost;
+
   /// The thumbprint representing the certificate for the vcenter.
   final pulumi.Input<String>? thumbprint;
+
   /// The credentials username.
   final pulumi.Input<String>? username;
+
   /// The ip address of the vcenter this Source represents.
   final pulumi.Input<String>? vcenterIp;
 
@@ -41,12 +45,31 @@ class VmwareSourceDetails {
 
   factory VmwareSourceDetails.fromMap(Map<String, dynamic> map) {
     return VmwareSourceDetails(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      resolvedVcenterHost: map['resolvedVcenterHost'] == null ? null : (map['resolvedVcenterHost']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
-      vcenterIp: map['vcenterIp'] == null ? null : (map['vcenterIp']! as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resolvedVcenterHost: (() {
+        final guardedValue = map['resolvedVcenterHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vcenterIp: (() {
+        final guardedValue = map['vcenterIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

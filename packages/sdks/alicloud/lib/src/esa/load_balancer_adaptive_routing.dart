@@ -8,20 +8,19 @@ class LoadBalancerAdaptiveRouting {
 
   /// Creates a new [LoadBalancerAdaptiveRouting].
   /// [failoverAcrossPools] Whether to failover across pools.
-  LoadBalancerAdaptiveRouting({
-    this.failoverAcrossPools,
-  });
+  LoadBalancerAdaptiveRouting({this.failoverAcrossPools});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'failoverAcrossPools': ?failoverAcrossPools,
-    };
+    return <String, dynamic>{'failoverAcrossPools': ?failoverAcrossPools};
   }
 
   factory LoadBalancerAdaptiveRouting.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAdaptiveRouting(
-      failoverAcrossPools: map['failoverAcrossPools'] == null ? null : (map['failoverAcrossPools']! as bool).input(),
+      failoverAcrossPools: (() {
+        final guardedValue = map['failoverAcrossPools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

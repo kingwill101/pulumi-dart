@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceTableCustomLogColumn {
   /// The description of the column.
   final pulumi.Input<String>? description;
+
   /// The display name of the column.
   final pulumi.Input<String>? displayName;
+
   /// Specifies the name of the column.
   final pulumi.Input<String> name;
+
   /// The data type of the column. Possible values are `boolean`, `datetime`, `dynamic`, `guid`, `int`, `long`, `real`, and `string`.
   final pulumi.Input<String> type;
 
@@ -35,11 +38,18 @@ class WorkspaceTableCustomLogColumn {
 
   factory WorkspaceTableCustomLogColumn.fromMap(Map<String, dynamic> map) {
     return WorkspaceTableCustomLogColumn(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

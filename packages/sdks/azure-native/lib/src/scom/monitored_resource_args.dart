@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoredResourceArgs {
   /// Name of the SCOM managed instance.
   final pulumi.Input<String> instanceName;
+
   /// The monitored resource name.
   final pulumi.Input<String>? monitoredResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class MonitoredResourceArgs {
 
   factory MonitoredResourceArgs.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceArgs(
-      instanceName: (map['instanceName'] as String).input(),
-      monitoredResourceName: map['monitoredResourceName'] == null ? null : (map['monitoredResourceName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      monitoredResourceName: (() {
+        final guardedValue = map['monitoredResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

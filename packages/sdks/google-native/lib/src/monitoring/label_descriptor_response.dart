@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabelDescriptorResponse {
   /// A human-readable description for the label.
   final pulumi.Input<String> description;
+
   /// The key for this label. The key must meet the following criteria: Does not exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case letter. The remaining characters must be letters, digits, or underscores.
   final pulumi.Input<String> key;
+
   /// The type of data that can be assigned to the label.
   final pulumi.Input<String> valueType;
 
@@ -31,10 +33,9 @@ class LabelDescriptorResponse {
 
   factory LabelDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return LabelDescriptorResponse(
-      description: (map['description'] as String).input(),
-      key: (map['key'] as String).input(),
-      valueType: (map['valueType'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      valueType: pulumi.Input.fromValue(map['valueType'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRuleRuleActionRewriteConfig {
   /// The host name of the destination to which requests are redirected within ALB.
   final pulumi.Input<String> host;
+
   /// The path to which requests are to be redirected within ALB.
   final pulumi.Input<String> path;
+
   /// The query string of the request to be redirected within ALB.
   final pulumi.Input<String> query;
 
@@ -21,19 +23,16 @@ class GetRulesRuleRuleActionRewriteConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'host': host,
-      'path': path,
-      'query': query,
-    };
+    return <String, dynamic>{'host': host, 'path': path, 'query': query};
   }
 
-  factory GetRulesRuleRuleActionRewriteConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRulesRuleRuleActionRewriteConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRulesRuleRuleActionRewriteConfig(
-      host: (map['host'] as String).input(),
-      path: (map['path'] as String).input(),
-      query: (map['query'] as String).input(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
-

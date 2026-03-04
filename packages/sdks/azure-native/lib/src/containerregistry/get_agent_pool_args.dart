@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgentPoolArgs {
   /// The name of the agent pool.
   final pulumi.Input<String> agentPoolName;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetAgentPoolArgs {
 
   factory GetAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolArgs(
-      agentPoolName: (map['agentPoolName'] as String).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      agentPoolName: pulumi.Input.fromValue(map['agentPoolName'] as String),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

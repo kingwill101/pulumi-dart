@@ -10,16 +10,15 @@ enum PublicAdvertisedPrefixStatus {
   reverseDnsLookupFailed("REVERSE_DNS_LOOKUP_FAILED"),
   validated("VALIDATED");
 
-  const PublicAdvertisedPrefixStatus(this.value);
-  final String value;
+  const PublicAdvertisedPrefixStatus(this.wireValue);
+  final String wireValue;
 
   static PublicAdvertisedPrefixStatus fromValue(String value) {
     for (final item in PublicAdvertisedPrefixStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicAdvertisedPrefixStatus value: $value');
   }
 }
-

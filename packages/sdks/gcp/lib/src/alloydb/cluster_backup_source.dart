@@ -8,20 +8,19 @@ class ClusterBackupSource {
 
   /// Creates a new [ClusterBackupSource].
   /// [backupName] The name of the backup resource.
-  ClusterBackupSource({
-    this.backupName,
-  });
+  ClusterBackupSource({this.backupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'backupName': ?backupName,
-    };
+    return <String, dynamic>{'backupName': ?backupName};
   }
 
   factory ClusterBackupSource.fromMap(Map<String, dynamic> map) {
     return ClusterBackupSource(
-      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
+      backupName: (() {
+        final guardedValue = map['backupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

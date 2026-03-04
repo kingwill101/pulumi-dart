@@ -9,34 +9,49 @@ import 'system_data_response.dart';
 class GetNamespaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The time the namespace was created.
   final String createdAt;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Identifier for Azure Insights metrics.
   final String metricId;
+
   /// The name of the resource
   final String name;
+
   /// List of private endpoint connections.
   final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
+
   /// Provisioning state of the Namespace.
   final String provisioningState;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
   final String? publicNetworkAccess;
+
   /// Endpoint you can use to perform Service Bus operations.
   final String serviceBusEndpoint;
+
   /// SKU of the namespace.
   final SkuResponse? sku;
+
   /// Status of the Namespace.
   final String status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The time the namespace was updated.
   final String updatedAt;
 
@@ -84,11 +99,18 @@ class GetNamespaceResult {
       'location': location,
       'metricId': metricId,
       'name': name,
-      'privateEndpointConnections': ?privateEndpointConnections == null ? null : pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections!, (value) => value.toMap()),
+      'privateEndpointConnections': ?(() {
+        final guardedValue = privateEndpointConnections;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PrivateEndpointConnectionResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'provisioningState': provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'serviceBusEndpoint': serviceBusEndpoint,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'status': status,
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -105,17 +127,41 @@ class GetNamespaceResult {
       location: map['location'] as String,
       metricId: map['metricId'] as String,
       name: map['name'] as String,
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections: (() {
+        final guardedValue = map['privateEndpointConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+          guardedValue,
+          (value) => PrivateEndpointConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       serviceBusEndpoint: map['serviceBusEndpoint'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
     );
   }
 }
-

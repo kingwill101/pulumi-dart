@@ -8,11 +8,13 @@ class InstanceShieldedInstanceConfig {
   /// This baseline is initially derived from the implicitly trusted boot image when the instance is created.
   /// Enabled by default.
   final pulumi.Input<bool>? enableIntegrityMonitoring;
+
   /// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
   /// authentic software by verifying the digital signature of all boot components, and halting the boot process
   /// if signature verification fails.
   /// Disabled by default.
   final pulumi.Input<bool>? enableSecureBoot;
+
   /// Defines whether the instance has the vTPM enabled.
   /// Enabled by default.
   final pulumi.Input<bool>? enableVtpm;
@@ -37,10 +39,21 @@ class InstanceShieldedInstanceConfig {
 
   factory InstanceShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring']! as bool).input(),
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
-      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm']! as bool).input(),
+      enableIntegrityMonitoring: (() {
+        final guardedValue = map['enableIntegrityMonitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableSecureBoot: (() {
+        final guardedValue = map['enableSecureBoot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableVtpm: (() {
+        final guardedValue = map['enableVtpm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_resource_args.dart';
-import 'domain_resource_proxy_type.dart';
 import 'domain_resource_state.dart';
 
 /// Provides a Ddos Coo Domain Resource resource.
@@ -9,7 +8,7 @@ import 'domain_resource_state.dart';
 ///
 /// For information about Ddos Coo Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/anti-ddos/anti-ddos-pro-and-premium/developer-reference/api-ddoscoo-2020-01-01-createdomainresource).
 ///
-/// > **NOTE:** Available since v1.123.0.
+/// &gt; **NOTE:** Available since v1.123.0.
 ///
 /// ## Example Usage
 ///
@@ -323,37 +322,47 @@ class DomainResource extends pulumi.CustomResource {
   /// - watch: the Warning mode
   /// - defense: the Defense mode
   late final pulumi.Output<String> aiMode;
+
   /// the level of the Intelligent Protection policy.
   /// - level30: the Low level
   /// - level60: the Normal level
   /// - level90: the Strict level
   late final pulumi.Output<String> aiTemplate;
+
   /// ip blacklist
   late final pulumi.Output<List<String>?> blackLists;
+
   /// The status of the blacklist and whitelist feature. Valid values:
   /// - 0: Disabled
   /// - 1: Enabled
   late final pulumi.Output<int> bwListEnable;
+
   /// CC safety protection switch.
   /// - 0: Disabled
   /// - 1: Enabled
   late final pulumi.Output<String> ccGlobalSwitch;
+
   /// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
   ///
-  /// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+  /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
   late final pulumi.Output<String?> cert;
+
   /// The name of the certificate.
   ///
-  /// > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
+  /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `cert_identifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `cert_identifier` is `123-cn-hangzhou`.
   late final pulumi.Output<String?> certIdentifier;
+
   /// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
   ///
-  /// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+  /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
   late final pulumi.Output<String> certName;
+
   /// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
   late final pulumi.Output<String?> certRegion;
+
   /// The CNAME address to query.
   late final pulumi.Output<String> cname;
+
   /// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
   /// Take note of the following items:
   /// - Do not use the following default HTTP headers:
@@ -362,10 +371,12 @@ class DomainResource extends pulumi.CustomResource {
   /// - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
   /// - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
   late final pulumi.Output<String> customHeaders;
+
   /// The domain name for which you want to configure the Static Page Caching policy.
   ///
-  /// > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+  /// &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
   late final pulumi.Output<String> domain;
+
   /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
   ///
   /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
@@ -380,20 +391,27 @@ class DomainResource extends pulumi.CustomResource {
   ///
   /// After you turn on the switch, HTTP/2 is used.
   late final pulumi.Output<String> httpsExt;
+
   /// InstanceIds
   late final pulumi.Output<List<String>> instanceIds;
+
   /// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
   ///
-  /// > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+  /// &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
   late final pulumi.Output<String?> key;
+
   /// Specifies whether to enable the OCSP feature. Valid values:
   late final pulumi.Output<bool?> ocspEnabled;
+
   /// Protocol type and port number information. See `proxy_types` below.
-  late final pulumi.Output<List<DomainResourceProxyType>> proxyTypes;
+  late final pulumi.Output<List<Map<String, dynamic>>> proxyTypes;
+
   /// Server address information of the source station.
   late final pulumi.Output<List<String>> realServers;
+
   /// The address type of the origin server. Valid values:
   late final pulumi.Output<int> rsType;
+
   /// IP whitelist list.
   late final pulumi.Output<List<String>?> whiteLists;
 
@@ -406,31 +424,31 @@ class DomainResource extends pulumi.CustomResource {
     DomainResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/domainResource:DomainResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aiMode = registerOutput<String>('aiMode');
-    this.aiTemplate = registerOutput<String>('aiTemplate');
-    this.blackLists = registerOutput<List<String>?>('blackLists');
-    this.bwListEnable = registerOutput<int>('bwListEnable');
-    this.ccGlobalSwitch = registerOutput<String>('ccGlobalSwitch');
-    this.cert = registerOutput<String?>('cert');
-    this.certIdentifier = registerOutput<String?>('certIdentifier');
-    this.certName = registerOutput<String>('certName');
-    this.certRegion = registerOutput<String?>('certRegion');
-    this.cname = registerOutput<String>('cname');
-    this.customHeaders = registerOutput<String>('customHeaders');
-    this.domain = registerOutput<String>('domain');
-    this.httpsExt = registerOutput<String>('httpsExt');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.key = registerOutput<String?>('key');
-    this.ocspEnabled = registerOutput<bool?>('ocspEnabled');
-    this.proxyTypes = registerOutput<List<DomainResourceProxyType>>('proxyTypes');
-    this.realServers = registerOutput<List<String>>('realServers');
-    this.rsType = registerOutput<int>('rsType');
-    this.whiteLists = registerOutput<List<String>?>('whiteLists');
+         'alicloud:ddos/domainResource:DomainResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aiMode = registerOutput<String>('aiMode');
+    aiTemplate = registerOutput<String>('aiTemplate');
+    blackLists = registerOutput<List<String>?>('blackLists');
+    bwListEnable = registerOutput<int>('bwListEnable');
+    ccGlobalSwitch = registerOutput<String>('ccGlobalSwitch');
+    cert = registerOutput<String?>('cert');
+    certIdentifier = registerOutput<String?>('certIdentifier');
+    certName = registerOutput<String>('certName');
+    certRegion = registerOutput<String?>('certRegion');
+    cname = registerOutput<String>('cname');
+    customHeaders = registerOutput<String>('customHeaders');
+    domain = registerOutput<String>('domain');
+    httpsExt = registerOutput<String>('httpsExt');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    key = registerOutput<String?>('key');
+    ocspEnabled = registerOutput<bool?>('ocspEnabled');
+    proxyTypes = registerOutput<List<Map<String, dynamic>>>('proxyTypes');
+    realServers = registerOutput<List<String>>('realServers');
+    rsType = registerOutput<int>('rsType');
+    whiteLists = registerOutput<List<String>?>('whiteLists');
   }
 
   /// Gets an existing [DomainResource] resource's state with the given [name] and [id].
@@ -451,30 +469,30 @@ class DomainResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/domainResource:DomainResource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aiMode = registerOutput<String>('aiMode');
-    this.aiTemplate = registerOutput<String>('aiTemplate');
-    this.blackLists = registerOutput<List<String>?>('blackLists');
-    this.bwListEnable = registerOutput<int>('bwListEnable');
-    this.ccGlobalSwitch = registerOutput<String>('ccGlobalSwitch');
-    this.cert = registerOutput<String?>('cert');
-    this.certIdentifier = registerOutput<String?>('certIdentifier');
-    this.certName = registerOutput<String>('certName');
-    this.certRegion = registerOutput<String?>('certRegion');
-    this.cname = registerOutput<String>('cname');
-    this.customHeaders = registerOutput<String>('customHeaders');
-    this.domain = registerOutput<String>('domain');
-    this.httpsExt = registerOutput<String>('httpsExt');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.key = registerOutput<String?>('key');
-    this.ocspEnabled = registerOutput<bool?>('ocspEnabled');
-    this.proxyTypes = registerOutput<List<DomainResourceProxyType>>('proxyTypes');
-    this.realServers = registerOutput<List<String>>('realServers');
-    this.rsType = registerOutput<int>('rsType');
-    this.whiteLists = registerOutput<List<String>?>('whiteLists');
+         'alicloud:ddos/domainResource:DomainResource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aiMode = registerOutput<String>('aiMode');
+    aiTemplate = registerOutput<String>('aiTemplate');
+    blackLists = registerOutput<List<String>?>('blackLists');
+    bwListEnable = registerOutput<int>('bwListEnable');
+    ccGlobalSwitch = registerOutput<String>('ccGlobalSwitch');
+    cert = registerOutput<String?>('cert');
+    certIdentifier = registerOutput<String?>('certIdentifier');
+    certName = registerOutput<String>('certName');
+    certRegion = registerOutput<String?>('certRegion');
+    cname = registerOutput<String>('cname');
+    customHeaders = registerOutput<String>('customHeaders');
+    domain = registerOutput<String>('domain');
+    httpsExt = registerOutput<String>('httpsExt');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    key = registerOutput<String?>('key');
+    ocspEnabled = registerOutput<bool?>('ocspEnabled');
+    proxyTypes = registerOutput<List<Map<String, dynamic>>>('proxyTypes');
+    realServers = registerOutput<List<String>>('realServers');
+    rsType = registerOutput<int>('rsType');
+    whiteLists = registerOutput<List<String>?>('whiteLists');
   }
 }

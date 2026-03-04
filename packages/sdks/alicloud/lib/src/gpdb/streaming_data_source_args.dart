@@ -9,16 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamingDataSourceArgs {
   /// The configurations of the data source.
   final pulumi.Input<String> dataSourceConfig;
+
   /// The description of the data source.
   final pulumi.Input<String>? dataSourceDescription;
+
   /// Data Source Name
   final pulumi.Input<String> dataSourceName;
+
   /// Data Source Type
   final pulumi.Input<String> dataSourceType;
+
   /// The instance ID.
   ///
-  /// > **NOTE:**   You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+  /// &gt; **NOTE:**   You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
   final pulumi.Input<String> dbInstanceId;
+
   /// The real-time data service ID.
   final pulumi.Input<int> serviceId;
 
@@ -51,13 +56,18 @@ class StreamingDataSourceArgs {
 
   factory StreamingDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return StreamingDataSourceArgs(
-      dataSourceConfig: (map['dataSourceConfig'] as String).input(),
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription']! as String).input(),
-      dataSourceName: (map['dataSourceName'] as String).input(),
-      dataSourceType: (map['dataSourceType'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      serviceId: (map['serviceId'] as int).input(),
+      dataSourceConfig: pulumi.Input.fromValue(
+        map['dataSourceConfig'] as String,
+      ),
+      dataSourceDescription: (() {
+        final guardedValue = map['dataSourceDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSourceName: pulumi.Input.fromValue(map['dataSourceName'] as String),
+      dataSourceType: pulumi.Input.fromValue(map['dataSourceType'] as String),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as int),
     );
   }
 }
-

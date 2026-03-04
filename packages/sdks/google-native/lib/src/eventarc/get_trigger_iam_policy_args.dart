@@ -35,11 +35,18 @@ class GetTriggerIamPolicyArgs {
 
   factory GetTriggerIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerIamPolicyArgs(
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      triggerId: (map['triggerId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
     );
   }
 }
-

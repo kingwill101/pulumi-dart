@@ -5,16 +5,15 @@ enum AlertSeverity {
   valueLow("Low"),
   valueInformational("Informational");
 
-  const AlertSeverity(this.value);
-  final String value;
+  const AlertSeverity(this.wireValue);
+  final String wireValue;
 
   static AlertSeverity fromValue(String value) {
     for (final item in AlertSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlertSeverity value: $value');
   }
 }
-

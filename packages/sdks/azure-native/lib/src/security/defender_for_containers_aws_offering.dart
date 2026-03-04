@@ -12,30 +12,51 @@ import 'defender_for_containers_aws_offering_vm_scanners.dart';
 /// The Defender for Containers AWS offering
 class DefenderForContainersAwsOffering {
   /// The cloudwatch to kinesis connection configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingCloudWatchToKinesis>? cloudWatchToKinesis;
+  final pulumi.Input<DefenderForContainersAwsOfferingCloudWatchToKinesis>?
+  cloudWatchToKinesis;
+
   /// The externalId used by the data reader to prevent the confused deputy attack
   final pulumi.Input<String>? dataCollectionExternalId;
+
   /// Is audit logs data collection enabled
   final pulumi.Input<bool>? enableAuditLogsAutoProvisioning;
+
   /// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
   final pulumi.Input<bool>? enableDefenderAgentAutoProvisioning;
+
   /// Is Policy Kubernetes agent auto provisioning enabled
   final pulumi.Input<bool>? enablePolicyAgentAutoProvisioning;
+
   /// The kinesis to s3 connection configuration
   final pulumi.Input<DefenderForContainersAwsOfferingKinesisToS3>? kinesisToS3;
+
   /// The retention time in days of kube audit logs set on the CloudWatch log group
   final pulumi.Input<double>? kubeAuditRetentionTime;
+
   /// The kubernetes data collection connection configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesDataCollection>? kubernetesDataCollection;
+  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesDataCollection>?
+  kubernetesDataCollection;
+
   /// The kubernetes service connection configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesService>? kubernetesService;
+  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesService>?
+  kubernetesService;
+
   /// The Microsoft Defender container agentless discovery K8s configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s>? mdcContainersAgentlessDiscoveryK8s;
+  final pulumi.Input<
+    DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s
+  >?
+  mdcContainersAgentlessDiscoveryK8s;
+
   /// The Microsoft Defender container image assessment configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingMdcContainersImageAssessment>? mdcContainersImageAssessment;
+  final pulumi.Input<
+    DefenderForContainersAwsOfferingMdcContainersImageAssessment
+  >?
+  mdcContainersImageAssessment;
+
   /// The type of the security offering.
   /// Expected value is 'DefenderForContainersAws'.
   final pulumi.Input<String> offeringType;
+
   /// The Microsoft Defender for Container K8s VM host scanning configuration
   final pulumi.Input<DefenderForContainersAwsOfferingVmScanners>? vmScanners;
 
@@ -71,38 +92,142 @@ class DefenderForContainersAwsOffering {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudWatchToKinesis': ?pulumi.Input.mapOptionalInputValue<DefenderForContainersAwsOfferingCloudWatchToKinesis, Map<String, dynamic>>(cloudWatchToKinesis, (value) => value.toMap()),
+      'cloudWatchToKinesis':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForContainersAwsOfferingCloudWatchToKinesis,
+            Map<String, dynamic>
+          >(cloudWatchToKinesis, (value) => value.toMap()),
       'dataCollectionExternalId': ?dataCollectionExternalId,
       'enableAuditLogsAutoProvisioning': ?enableAuditLogsAutoProvisioning,
-      'enableDefenderAgentAutoProvisioning': ?enableDefenderAgentAutoProvisioning,
+      'enableDefenderAgentAutoProvisioning':
+          ?enableDefenderAgentAutoProvisioning,
       'enablePolicyAgentAutoProvisioning': ?enablePolicyAgentAutoProvisioning,
-      'kinesisToS3': ?pulumi.Input.mapOptionalInputValue<DefenderForContainersAwsOfferingKinesisToS3, Map<String, dynamic>>(kinesisToS3, (value) => value.toMap()),
+      'kinesisToS3':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForContainersAwsOfferingKinesisToS3,
+            Map<String, dynamic>
+          >(kinesisToS3, (value) => value.toMap()),
       'kubeAuditRetentionTime': ?kubeAuditRetentionTime,
-      'kubernetesDataCollection': ?pulumi.Input.mapOptionalInputValue<DefenderForContainersAwsOfferingKubernetesDataCollection, Map<String, dynamic>>(kubernetesDataCollection, (value) => value.toMap()),
-      'kubernetesService': ?pulumi.Input.mapOptionalInputValue<DefenderForContainersAwsOfferingKubernetesService, Map<String, dynamic>>(kubernetesService, (value) => value.toMap()),
-      'mdcContainersAgentlessDiscoveryK8s': ?pulumi.Input.mapOptionalInputValue<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s, Map<String, dynamic>>(mdcContainersAgentlessDiscoveryK8s, (value) => value.toMap()),
-      'mdcContainersImageAssessment': ?pulumi.Input.mapOptionalInputValue<DefenderForContainersAwsOfferingMdcContainersImageAssessment, Map<String, dynamic>>(mdcContainersImageAssessment, (value) => value.toMap()),
+      'kubernetesDataCollection':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForContainersAwsOfferingKubernetesDataCollection,
+            Map<String, dynamic>
+          >(kubernetesDataCollection, (value) => value.toMap()),
+      'kubernetesService':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForContainersAwsOfferingKubernetesService,
+            Map<String, dynamic>
+          >(kubernetesService, (value) => value.toMap()),
+      'mdcContainersAgentlessDiscoveryK8s':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s,
+            Map<String, dynamic>
+          >(mdcContainersAgentlessDiscoveryK8s, (value) => value.toMap()),
+      'mdcContainersImageAssessment':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForContainersAwsOfferingMdcContainersImageAssessment,
+            Map<String, dynamic>
+          >(mdcContainersImageAssessment, (value) => value.toMap()),
       'offeringType': offeringType,
-      'vmScanners': ?pulumi.Input.mapOptionalInputValue<DefenderForContainersAwsOfferingVmScanners, Map<String, dynamic>>(vmScanners, (value) => value.toMap()),
+      'vmScanners':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForContainersAwsOfferingVmScanners,
+            Map<String, dynamic>
+          >(vmScanners, (value) => value.toMap()),
     };
   }
 
   factory DefenderForContainersAwsOffering.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOffering(
-      cloudWatchToKinesis: map['cloudWatchToKinesis'] == null ? null : (DefenderForContainersAwsOfferingCloudWatchToKinesis.fromMap((map['cloudWatchToKinesis']! as Map).cast<String, dynamic>())).input(),
-      dataCollectionExternalId: map['dataCollectionExternalId'] == null ? null : (map['dataCollectionExternalId']! as String).input(),
-      enableAuditLogsAutoProvisioning: map['enableAuditLogsAutoProvisioning'] == null ? null : (map['enableAuditLogsAutoProvisioning']! as bool).input(),
-      enableDefenderAgentAutoProvisioning: map['enableDefenderAgentAutoProvisioning'] == null ? null : (map['enableDefenderAgentAutoProvisioning']! as bool).input(),
-      enablePolicyAgentAutoProvisioning: map['enablePolicyAgentAutoProvisioning'] == null ? null : (map['enablePolicyAgentAutoProvisioning']! as bool).input(),
-      kinesisToS3: map['kinesisToS3'] == null ? null : (DefenderForContainersAwsOfferingKinesisToS3.fromMap((map['kinesisToS3']! as Map).cast<String, dynamic>())).input(),
-      kubeAuditRetentionTime: map['kubeAuditRetentionTime'] == null ? null : (map['kubeAuditRetentionTime']! as double).input(),
-      kubernetesDataCollection: map['kubernetesDataCollection'] == null ? null : (DefenderForContainersAwsOfferingKubernetesDataCollection.fromMap((map['kubernetesDataCollection']! as Map).cast<String, dynamic>())).input(),
-      kubernetesService: map['kubernetesService'] == null ? null : (DefenderForContainersAwsOfferingKubernetesService.fromMap((map['kubernetesService']! as Map).cast<String, dynamic>())).input(),
-      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s']! as Map).cast<String, dynamic>())).input(),
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderForContainersAwsOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
-      offeringType: (map['offeringType'] as String).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderForContainersAwsOfferingVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
+      cloudWatchToKinesis: (() {
+        final guardedValue = map['cloudWatchToKinesis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForContainersAwsOfferingCloudWatchToKinesis.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataCollectionExternalId: (() {
+        final guardedValue = map['dataCollectionExternalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableAuditLogsAutoProvisioning: (() {
+        final guardedValue = map['enableAuditLogsAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDefenderAgentAutoProvisioning: (() {
+        final guardedValue = map['enableDefenderAgentAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enablePolicyAgentAutoProvisioning: (() {
+        final guardedValue = map['enablePolicyAgentAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kinesisToS3: (() {
+        final guardedValue = map['kinesisToS3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForContainersAwsOfferingKinesisToS3.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kubeAuditRetentionTime: (() {
+        final guardedValue = map['kubeAuditRetentionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      kubernetesDataCollection: (() {
+        final guardedValue = map['kubernetesDataCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForContainersAwsOfferingKubernetesDataCollection.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kubernetesService: (() {
+        final guardedValue = map['kubernetesService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForContainersAwsOfferingKubernetesService.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mdcContainersAgentlessDiscoveryK8s: (() {
+        final guardedValue = map['mdcContainersAgentlessDiscoveryK8s'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8s.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mdcContainersImageAssessment: (() {
+        final guardedValue = map['mdcContainersImageAssessment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForContainersAwsOfferingMdcContainersImageAssessment.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
+      vmScanners: (() {
+        final guardedValue = map['vmScanners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForContainersAwsOfferingVmScanners.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

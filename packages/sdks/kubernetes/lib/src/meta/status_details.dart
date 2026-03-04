@@ -7,14 +7,19 @@ import 'status_cause.dart';
 class StatusDetails {
   /// The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.
   final pulumi.Input<List<StatusCause>>? causes;
+
   /// The group attribute of the resource associated with the status StatusReason.
   final pulumi.Input<String>? group;
+
   /// The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).
   final pulumi.Input<String>? name;
+
   /// If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.
   final pulumi.Input<int>? retryAfterSeconds;
+
   /// UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
   final pulumi.Input<String>? uid;
 
@@ -36,7 +41,18 @@ class StatusDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'causes': ?pulumi.Input.mapOptionalInputValue<List<StatusCause>, List<Map<String, dynamic>>>(causes, (value) => pulumi.Input.encodeList<StatusCause, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'causes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StatusCause>,
+            List<Map<String, dynamic>>
+          >(
+            causes,
+            (value) =>
+                pulumi.Input.encodeList<StatusCause, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'group': ?group,
       'kind': ?kind,
       'name': ?name,
@@ -47,13 +63,42 @@ class StatusDetails {
 
   factory StatusDetails.fromMap(Map<String, dynamic> map) {
     return StatusDetails(
-      causes: map['causes'] == null ? null : (pulumi.Input.decodeList<StatusCause>(map['causes']!, (value) => StatusCause.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      group: map['group'] == null ? null : (map['group']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      retryAfterSeconds: map['retryAfterSeconds'] == null ? null : (map['retryAfterSeconds']! as int).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      causes: (() {
+        final guardedValue = map['causes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StatusCause>(
+            guardedValue,
+            (value) =>
+                StatusCause.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retryAfterSeconds: (() {
+        final guardedValue = map['retryAfterSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

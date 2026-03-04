@@ -39,12 +39,17 @@ class GetRolloutArgs {
 
   factory GetRolloutArgs.fromMap(Map<String, dynamic> map) {
     return GetRolloutArgs(
-      deliveryPipelineId: (map['deliveryPipelineId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      releaseId: (map['releaseId'] as String).input(),
-      rolloutId: (map['rolloutId'] as String).input(),
+      deliveryPipelineId: pulumi.Input.fromValue(
+        map['deliveryPipelineId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseId: pulumi.Input.fromValue(map['releaseId'] as String),
+      rolloutId: pulumi.Input.fromValue(map['rolloutId'] as String),
     );
   }
 }
-

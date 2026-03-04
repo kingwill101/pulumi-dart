@@ -4,16 +4,19 @@ enum VpcAccessConnectorEgressSettingAppengineV1beta {
   allTraffic("ALL_TRAFFIC"),
   privateIpRanges("PRIVATE_IP_RANGES");
 
-  const VpcAccessConnectorEgressSettingAppengineV1beta(this.value);
-  final String value;
+  const VpcAccessConnectorEgressSettingAppengineV1beta(this.wireValue);
+  final String wireValue;
 
-  static VpcAccessConnectorEgressSettingAppengineV1beta fromValue(String value) {
+  static VpcAccessConnectorEgressSettingAppengineV1beta fromValue(
+    String value,
+  ) {
     for (final item in VpcAccessConnectorEgressSettingAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VpcAccessConnectorEgressSettingAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown VpcAccessConnectorEgressSettingAppengineV1beta value: $value',
+    );
   }
 }
-

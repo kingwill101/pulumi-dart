@@ -6,7 +6,7 @@ import 'hana_backup_client_state.dart';
 ///
 /// For information about Hybrid Backup Recovery (HBR) Hana Backup Client and how to use it, see [What is Hana Backup Client](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createclients).
 ///
-/// > **NOTE:** Available since v1.198.0.
+/// &gt; **NOTE:** Available since v1.198.0.
 ///
 /// ## Example Usage
 ///
@@ -567,18 +567,25 @@ import 'hana_backup_client_state.dart';
 class HanaBackupClient extends pulumi.CustomResource {
   /// The alert settings. Valid value: `INHERITED`.
   late final pulumi.Output<String> alertSetting;
+
   /// The ID of the backup client.
   late final pulumi.Output<String> clientId;
+
   /// The installation information of the HBR clients.
   late final pulumi.Output<String?> clientInfo;
+
   /// The ID of the SAP HANA instance.
   late final pulumi.Output<String> clusterId;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The status of the Hana Backup Client.
   late final pulumi.Output<String> status;
+
   /// Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> useHttps;
+
   /// The ID of the backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -591,19 +598,19 @@ class HanaBackupClient extends pulumi.CustomResource {
     HanaBackupClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/hanaBackupClient:HanaBackupClient',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertSetting = registerOutput<String>('alertSetting');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientInfo = registerOutput<String?>('clientInfo');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String>('status');
-    this.useHttps = registerOutput<bool?>('useHttps');
-    this.vaultId = registerOutput<String>('vaultId');
+         'alicloud:hbr/hanaBackupClient:HanaBackupClient',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertSetting = registerOutput<String>('alertSetting');
+    clientId = registerOutput<String>('clientId');
+    clientInfo = registerOutput<String?>('clientInfo');
+    clusterId = registerOutput<String>('clusterId');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String>('status');
+    useHttps = registerOutput<bool?>('useHttps');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [HanaBackupClient] resource's state with the given [name] and [id].
@@ -624,18 +631,18 @@ class HanaBackupClient extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/hanaBackupClient:HanaBackupClient',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertSetting = registerOutput<String>('alertSetting');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientInfo = registerOutput<String?>('clientInfo');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String>('status');
-    this.useHttps = registerOutput<bool?>('useHttps');
-    this.vaultId = registerOutput<String>('vaultId');
+         'alicloud:hbr/hanaBackupClient:HanaBackupClient',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertSetting = registerOutput<String>('alertSetting');
+    clientId = registerOutput<String>('clientId');
+    clientInfo = registerOutput<String?>('clientInfo');
+    clusterId = registerOutput<String>('clusterId');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String>('status');
+    useHttps = registerOutput<bool?>('useHttps');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

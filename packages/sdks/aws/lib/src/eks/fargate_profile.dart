@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fargate_profile_args.dart';
-import 'fargate_profile_selector.dart';
 import 'fargate_profile_state.dart';
 
 /// Manages an EKS Fargate Profile.
@@ -344,24 +343,33 @@ import 'fargate_profile_state.dart';
 class FargateProfile extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the EKS Fargate Profile.
   late final pulumi.Output<String> arn;
+
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
+
   /// Name of the EKS Fargate Profile.
   late final pulumi.Output<String> fargateProfileName;
+
   /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
   late final pulumi.Output<String> podExecutionRoleArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
-  late final pulumi.Output<List<FargateProfileSelector>> selectors;
+  late final pulumi.Output<List<Map<String, dynamic>>> selectors;
+
   /// Status of the EKS Fargate Profile.
   late final pulumi.Output<String> status;
+
   /// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>?> subnetIds;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -374,21 +382,21 @@ class FargateProfile extends pulumi.CustomResource {
     FargateProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:eks/fargateProfile:FargateProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.fargateProfileName = registerOutput<String>('fargateProfileName');
-    this.podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
-    this.region = registerOutput<String>('region');
-    this.selectors = registerOutput<List<FargateProfileSelector>>('selectors');
-    this.status = registerOutput<String>('status');
-    this.subnetIds = registerOutput<List<String>?>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:eks/fargateProfile:FargateProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    clusterName = registerOutput<String>('clusterName');
+    fargateProfileName = registerOutput<String>('fargateProfileName');
+    podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
+    region = registerOutput<String>('region');
+    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
+    status = registerOutput<String>('status');
+    subnetIds = registerOutput<List<String>?>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [FargateProfile] resource's state with the given [name] and [id].
@@ -409,20 +417,20 @@ class FargateProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:eks/fargateProfile:FargateProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.fargateProfileName = registerOutput<String>('fargateProfileName');
-    this.podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
-    this.region = registerOutput<String>('region');
-    this.selectors = registerOutput<List<FargateProfileSelector>>('selectors');
-    this.status = registerOutput<String>('status');
-    this.subnetIds = registerOutput<List<String>?>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:eks/fargateProfile:FargateProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    clusterName = registerOutput<String>('clusterName');
+    fargateProfileName = registerOutput<String>('fargateProfileName');
+    podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
+    region = registerOutput<String>('region');
+    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
+    status = registerOutput<String>('status');
+    subnetIds = registerOutput<List<String>?>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

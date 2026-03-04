@@ -2,16 +2,15 @@
 enum IPRuleAction {
   allow("Allow");
 
-  const IPRuleAction(this.value);
-  final String value;
+  const IPRuleAction(this.wireValue);
+  final String wireValue;
 
   static IPRuleAction fromValue(String value) {
     for (final item in IPRuleAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IPRuleAction value: $value');
   }
 }
-

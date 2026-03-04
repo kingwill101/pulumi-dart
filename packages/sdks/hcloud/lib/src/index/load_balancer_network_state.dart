@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerNetworkState {
   /// Wether the Load Balancer public interface is enabled. Default is `true`.
   final pulumi.Input<bool>? enablePublicInterface;
+
   /// IP to assign to the Load Balancer.
   final pulumi.Input<String>? ip;
+
   /// ID of the Load Balancer.
   final pulumi.Input<int>? loadBalancerId;
+
   /// ID of the Network to attach the Load Balancer to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ip_range`).
   final pulumi.Input<int>? networkId;
+
   /// ID of the Subnet to attach the Load Balancer to. Required if `network_id` is not set.
   final pulumi.Input<String>? subnetId;
 
@@ -41,12 +45,31 @@ class LoadBalancerNetworkState {
 
   factory LoadBalancerNetworkState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerNetworkState(
-      enablePublicInterface: map['enablePublicInterface'] == null ? null : (map['enablePublicInterface']! as bool).input(),
-      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as int).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      enablePublicInterface: (() {
+        final guardedValue = map['enablePublicInterface'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerId: (() {
+        final guardedValue = map['loadBalancerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

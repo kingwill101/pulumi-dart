@@ -4,7 +4,7 @@ import 'queue_policy_state.dart';
 
 /// Allows you to set a policy of an SQS Queue while referencing the ARN of the queue within the policy.
 ///
-/// !> AWS will hang indefinitely when creating or updating an `aws.sqs.Queue` with an associated policy if `Version = "2012-10-17"` is not explicitly set in the policy. See below for an example of how to avoid this issue.
+/// !&gt; AWS will hang indefinitely when creating or updating an `aws.sqs.Queue` with an associated policy if `Version = "2012-10-17"` is not explicitly set in the policy. See below for an example of how to avoid this issue.
 ///
 /// ## Example Usage
 ///
@@ -558,8 +558,10 @@ import 'queue_policy_state.dart';
 class QueuePolicy extends pulumi.CustomResource {
   /// JSON policy for the SQS queue. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide. Ensure that `Version = "2012-10-17"` is set in the policy or AWS may hang in creating the queue.
   late final pulumi.Output<String> policy;
+
   /// URL of the SQS Queue to which to attach the policy.
   late final pulumi.Output<String> queueUrl;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -572,14 +574,14 @@ class QueuePolicy extends pulumi.CustomResource {
     QueuePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sqs/queuePolicy:QueuePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.queueUrl = registerOutput<String>('queueUrl');
-    this.region = registerOutput<String>('region');
+         'aws:sqs/queuePolicy:QueuePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    queueUrl = registerOutput<String>('queueUrl');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [QueuePolicy] resource's state with the given [name] and [id].
@@ -600,13 +602,13 @@ class QueuePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sqs/queuePolicy:QueuePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.queueUrl = registerOutput<String>('queueUrl');
-    this.region = registerOutput<String>('region');
+         'aws:sqs/queuePolicy:QueuePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    queueUrl = registerOutput<String>('queueUrl');
+    region = registerOutput<String>('region');
   }
 }

@@ -4,7 +4,7 @@ import 'registered_limit_v3_state.dart';
 
 /// Manages a V3 Registered Limit resource within OpenStack Keystone.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -153,16 +153,20 @@ import 'registered_limit_v3_state.dart';
 class RegisteredLimitV3 extends pulumi.CustomResource {
   /// Integer for the actual limit.
   late final pulumi.Output<int> defaultLimit;
+
   /// Description of the limit
   late final pulumi.Output<String?> description;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new registered limit.
   late final pulumi.Output<String> region;
+
   /// The resource that the limit applies to. On
   /// updates, either service_id, resource_name or region_id must be different than
   /// existing value otherwise it will raise 409.
   late final pulumi.Output<String> resourceName;
+
   /// The service the limit applies to. On updates,
   /// either service_id, resource_name or region_id must be different than existing
   /// value otherwise it will raise 409.
@@ -177,16 +181,16 @@ class RegisteredLimitV3 extends pulumi.CustomResource {
     RegisteredLimitV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/registeredLimitV3:RegisteredLimitV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultLimit = registerOutput<int>('defaultLimit');
-    this.description = registerOutput<String?>('description');
-    this.region = registerOutput<String>('region');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.serviceId = registerOutput<String>('serviceId');
+         'openstack:identity/registeredLimitV3:RegisteredLimitV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultLimit = registerOutput<int>('defaultLimit');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    resourceName = registerOutput<String>('resourceName');
+    serviceId = registerOutput<String>('serviceId');
   }
 
   /// Gets an existing [RegisteredLimitV3] resource's state with the given [name] and [id].
@@ -207,15 +211,15 @@ class RegisteredLimitV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/registeredLimitV3:RegisteredLimitV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultLimit = registerOutput<int>('defaultLimit');
-    this.description = registerOutput<String?>('description');
-    this.region = registerOutput<String>('region');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.serviceId = registerOutput<String>('serviceId');
+         'openstack:identity/registeredLimitV3:RegisteredLimitV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultLimit = registerOutput<int>('defaultLimit');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    resourceName = registerOutput<String>('resourceName');
+    serviceId = registerOutput<String>('serviceId');
   }
 }

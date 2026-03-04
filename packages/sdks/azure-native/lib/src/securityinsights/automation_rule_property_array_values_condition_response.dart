@@ -7,6 +7,7 @@ import 'boolean_condition_properties_response.dart';
 class AutomationRulePropertyArrayValuesConditionResponse {
   /// Describes an array condition evaluation type.
   final pulumi.Input<String>? arrayConditionType;
+
   /// Describes an array condition evaluated array type.
   final pulumi.Input<String>? arrayType;
   final pulumi.Input<List<BooleanConditionPropertiesResponse>>? itemConditions;
@@ -25,16 +26,47 @@ class AutomationRulePropertyArrayValuesConditionResponse {
     return <String, dynamic>{
       'arrayConditionType': ?arrayConditionType,
       'arrayType': ?arrayType,
-      'itemConditions': ?pulumi.Input.mapOptionalInputValue<List<BooleanConditionPropertiesResponse>, List<Map<String, dynamic>>>(itemConditions, (value) => pulumi.Input.encodeList<BooleanConditionPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'itemConditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BooleanConditionPropertiesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            itemConditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BooleanConditionPropertiesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory AutomationRulePropertyArrayValuesConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory AutomationRulePropertyArrayValuesConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRulePropertyArrayValuesConditionResponse(
-      arrayConditionType: map['arrayConditionType'] == null ? null : (map['arrayConditionType']! as String).input(),
-      arrayType: map['arrayType'] == null ? null : (map['arrayType']! as String).input(),
-      itemConditions: map['itemConditions'] == null ? null : (pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(map['itemConditions']!, (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arrayConditionType: (() {
+        final guardedValue = map['arrayConditionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arrayType: (() {
+        final guardedValue = map['arrayType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      itemConditions: (() {
+        final guardedValue = map['itemConditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(
+            guardedValue,
+            (value) => BooleanConditionPropertiesResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

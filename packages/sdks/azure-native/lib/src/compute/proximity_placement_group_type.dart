@@ -3,16 +3,15 @@ enum ProximityPlacementGroupType {
   standard("Standard"),
   ultra("Ultra");
 
-  const ProximityPlacementGroupType(this.value);
-  final String value;
+  const ProximityPlacementGroupType(this.wireValue);
+  final String wireValue;
 
   static ProximityPlacementGroupType fromValue(String value) {
     for (final item in ProximityPlacementGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProximityPlacementGroupType value: $value');
   }
 }
-

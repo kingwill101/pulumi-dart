@@ -7,16 +7,15 @@ enum LogVerbosity {
   valueError("Error"),
   valueCritical("Critical");
 
-  const LogVerbosity(this.value);
-  final String value;
+  const LogVerbosity(this.wireValue);
+  final String wireValue;
 
   static LogVerbosity fromValue(String value) {
     for (final item in LogVerbosity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogVerbosity value: $value');
   }
 }
-

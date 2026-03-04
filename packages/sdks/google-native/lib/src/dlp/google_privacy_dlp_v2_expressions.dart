@@ -8,29 +8,51 @@ import 'google_privacy_dlp_v2_expressions_logical_operator.dart';
 class GooglePrivacyDlpV2Expressions {
   /// Conditions to apply to the expression.
   final pulumi.Input<GooglePrivacyDlpV2Conditions>? conditions;
+
   /// The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
-  final pulumi.Input<GooglePrivacyDlpV2ExpressionsLogicalOperator>? logicalOperator;
+  final pulumi.Input<GooglePrivacyDlpV2ExpressionsLogicalOperator>?
+  logicalOperator;
 
   /// Creates a new [GooglePrivacyDlpV2Expressions].
   /// [conditions] Conditions to apply to the expression.
   /// [logicalOperator] The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
-  GooglePrivacyDlpV2Expressions({
-    this.conditions,
-    this.logicalOperator,
-  });
+  GooglePrivacyDlpV2Expressions({this.conditions, this.logicalOperator});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2Conditions, Map<String, dynamic>>(conditions, (value) => value.toMap()),
-      'logicalOperator': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2ExpressionsLogicalOperator, String>(logicalOperator, (value) => value.value),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2Conditions,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
+      'logicalOperator':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2ExpressionsLogicalOperator,
+            String
+          >(logicalOperator, (value) => value.wireValue),
     };
   }
 
   factory GooglePrivacyDlpV2Expressions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Expressions(
-      conditions: map['conditions'] == null ? null : (GooglePrivacyDlpV2Conditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
-      logicalOperator: map['logicalOperator'] == null ? null : (GooglePrivacyDlpV2ExpressionsLogicalOperator.fromValue(map['logicalOperator']! as String)).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2Conditions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logicalOperator: (() {
+        final guardedValue = map['logicalOperator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2ExpressionsLogicalOperator.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

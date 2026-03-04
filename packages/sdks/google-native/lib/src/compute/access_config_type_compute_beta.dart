@@ -3,16 +3,15 @@ enum AccessConfigTypeComputeBeta {
   directIpv6("DIRECT_IPV6"),
   oneToOneNat("ONE_TO_ONE_NAT");
 
-  const AccessConfigTypeComputeBeta(this.value);
-  final String value;
+  const AccessConfigTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static AccessConfigTypeComputeBeta fromValue(String value) {
     for (final item in AccessConfigTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessConfigTypeComputeBeta value: $value');
   }
 }
-

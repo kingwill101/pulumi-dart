@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CompoundAssessmentDetailsResponse {
   /// Timestamp when the assessment was created.
   final pulumi.Input<String>? createdTimestamp;
+
   /// Status of the assessment.
   final pulumi.Input<String> status;
+
   /// Timestamp when the assessment was last updated.
   final pulumi.Input<String>? updatedTimestamp;
 
@@ -31,10 +33,17 @@ class CompoundAssessmentDetailsResponse {
 
   factory CompoundAssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentDetailsResponse(
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp']! as String).input(),
-      status: (map['status'] as String).input(),
-      updatedTimestamp: map['updatedTimestamp'] == null ? null : (map['updatedTimestamp']! as String).input(),
+      createdTimestamp: (() {
+        final guardedValue = map['createdTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      updatedTimestamp: (() {
+        final guardedValue = map['updatedTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

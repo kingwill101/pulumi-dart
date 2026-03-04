@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionGatewayArgs {
   /// The connection gateway name
   final pulumi.Input<String> connectionGatewayName;
+
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
 
@@ -34,10 +36,17 @@ class GetConnectionGatewayArgs {
 
   factory GetConnectionGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionGatewayArgs(
-      connectionGatewayName: (map['connectionGatewayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      connectionGatewayName: pulumi.Input.fromValue(
+        map['connectionGatewayName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

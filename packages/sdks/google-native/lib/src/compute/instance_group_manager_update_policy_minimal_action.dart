@@ -5,16 +5,17 @@ enum InstanceGroupManagerUpdatePolicyMinimalAction {
   replace("REPLACE"),
   restart("RESTART");
 
-  const InstanceGroupManagerUpdatePolicyMinimalAction(this.value);
-  final String value;
+  const InstanceGroupManagerUpdatePolicyMinimalAction(this.wireValue);
+  final String wireValue;
 
   static InstanceGroupManagerUpdatePolicyMinimalAction fromValue(String value) {
     for (final item in InstanceGroupManagerUpdatePolicyMinimalAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMinimalAction value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerUpdatePolicyMinimalAction value: $value',
+    );
   }
 }
-

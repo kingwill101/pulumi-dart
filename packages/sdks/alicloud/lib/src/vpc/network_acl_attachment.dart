@@ -1,16 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_acl_attachment_args.dart';
-import 'network_acl_attachment_resource.dart';
 import 'network_acl_attachment_state.dart';
 
 /// Provides a network acl attachment resource to associate network acls to vswitches.
 ///
-/// > **DEPRECATED:**  This resource  has been deprecated from version `1.124.0`. Replace by `resources` with the resource alicloud_network_acl.
+/// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.124.0`. Replace by `resources` with the resource alicloud_network_acl.
 /// Note that because this resource conflicts with the `resources` attribute of `alicloud.vpc.NetworkAcl`, this resource can no be used.
 ///
-/// > **WARNING:** Do not mix the use of this deprecated resource with the `resources` field in the `alicloud.vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. This resource is deprecated and should be replaced with the `resources` field in `alicloud.vpc.NetworkAcl`.
+/// &gt; **WARNING:** Do not mix the use of this deprecated resource with the `resources` field in the `alicloud.vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. This resource is deprecated and should be replaced with the `resources` field in `alicloud.vpc.NetworkAcl`.
 ///
-/// > **NOTE:** Available since v1.44.0.
+/// &gt; **NOTE:** Available since v1.44.0.
 ///
 /// ## Example Usage
 ///
@@ -298,8 +297,9 @@ import 'network_acl_attachment_state.dart';
 class NetworkAclAttachment extends pulumi.CustomResource {
   /// The id of the network acl, the field can't be changed.
   late final pulumi.Output<String> networkAclId;
+
   /// List of the resources associated with the network acl. The details see Block Resources.
-  late final pulumi.Output<List<NetworkAclAttachmentResource>> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>> resources;
 
   /// Creates a new [NetworkAclAttachment].
   /// [name] The Pulumi resource name.
@@ -310,13 +310,13 @@ class NetworkAclAttachment extends pulumi.CustomResource {
     NetworkAclAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkAclId = registerOutput<String>('networkAclId');
-    this.resources = registerOutput<List<NetworkAclAttachmentResource>>('resources');
+         'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkAclId = registerOutput<String>('networkAclId');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
   }
 
   /// Gets an existing [NetworkAclAttachment] resource's state with the given [name] and [id].
@@ -337,12 +337,12 @@ class NetworkAclAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkAclId = registerOutput<String>('networkAclId');
-    this.resources = registerOutput<List<NetworkAclAttachmentResource>>('resources');
+         'alicloud:vpc/networkAclAttachment:NetworkAclAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkAclId = registerOutput<String>('networkAclId');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
   }
 }

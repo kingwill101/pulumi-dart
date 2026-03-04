@@ -6,8 +6,10 @@ import 'job_event_trigger_config_scale.dart';
 class JobEventTriggerConfig {
   /// Number of parallel replicas of a job that can run at a given time.
   final pulumi.Input<int>? parallelism;
+
   /// Minimum number of successful replica completions before overall job completion.
   final pulumi.Input<int>? replicaCompletionCount;
+
   /// A `scale` block as defined below.
   final pulumi.Input<List<JobEventTriggerConfigScale>>? scales;
 
@@ -25,16 +27,45 @@ class JobEventTriggerConfig {
     return <String, dynamic>{
       'parallelism': ?parallelism,
       'replicaCompletionCount': ?replicaCompletionCount,
-      'scales': ?pulumi.Input.mapOptionalInputValue<List<JobEventTriggerConfigScale>, List<Map<String, dynamic>>>(scales, (value) => pulumi.Input.encodeList<JobEventTriggerConfigScale, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scales':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<JobEventTriggerConfigScale>,
+            List<Map<String, dynamic>>
+          >(
+            scales,
+            (value) =>
+                pulumi.Input.encodeList<
+                  JobEventTriggerConfigScale,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory JobEventTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfig(
-      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
-      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount']! as int).input(),
-      scales: map['scales'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScale>(map['scales']!, (value) => JobEventTriggerConfigScale.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parallelism: (() {
+        final guardedValue = map['parallelism'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicaCompletionCount: (() {
+        final guardedValue = map['replicaCompletionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scales: (() {
+        final guardedValue = map['scales'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<JobEventTriggerConfigScale>(
+            guardedValue,
+            (value) => JobEventTriggerConfigScale.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

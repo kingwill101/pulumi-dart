@@ -10,20 +10,25 @@ class TableMetadata {
 
   /// Creates a new [TableMetadata].
   /// [iceberg] Contains details about the metadata for an Iceberg table. This block defines the schema structure for the Apache Iceberg table format.
-  TableMetadata({
-    required this.iceberg,
-  });
+  TableMetadata({required this.iceberg});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iceberg': pulumi.Input.mapInputValue<TableMetadataIceberg, Map<String, dynamic>>(iceberg, (value) => value.toMap()),
+      'iceberg':
+          pulumi.Input.mapInputValue<
+            TableMetadataIceberg,
+            Map<String, dynamic>
+          >(iceberg, (value) => value.toMap()),
     };
   }
 
   factory TableMetadata.fromMap(Map<String, dynamic> map) {
     return TableMetadata(
-      iceberg: (TableMetadataIceberg.fromMap((map['iceberg']! as Map).cast<String, dynamic>())).input(),
+      iceberg: pulumi.Input.fromValue(
+        TableMetadataIceberg.fromMap(
+          (map['iceberg']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

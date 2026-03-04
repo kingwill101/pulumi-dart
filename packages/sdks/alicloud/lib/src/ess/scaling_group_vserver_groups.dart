@@ -1,27 +1,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scaling_group_vserver_groups_args.dart';
 import 'scaling_group_vserver_groups_state.dart';
-import 'scaling_group_vserver_groups_vserver_group.dart';
 
 /// Attaches/Detaches vserver groups to a specified scaling group.
 ///
-/// > **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.
+/// &gt; **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.
 ///
-/// > **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.
+/// &gt; **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.
 ///
-/// > **NOTE:** A scaling group can have at most 5 vserver groups attached by default.
+/// &gt; **NOTE:** A scaling group can have at most 5 vserver groups attached by default.
 ///
-/// > **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.
+/// &gt; **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.
 ///
-/// > **NOTE:** When attach vserver groups to scaling group, existing ECS instances will be added to vserver groups; Instead, ECS instances will be removed from vserver group when detach.
+/// &gt; **NOTE:** When attach vserver groups to scaling group, existing ECS instances will be added to vserver groups; Instead, ECS instances will be removed from vserver group when detach.
 ///
-/// > **NOTE:** Detach action will be executed before attach action.
+/// &gt; **NOTE:** Detach action will be executed before attach action.
 ///
-/// > **NOTE:** Vserver group is defined uniquely by `loadbalancer_id`, `vserver_group_id`, `port`.
+/// &gt; **NOTE:** Vserver group is defined uniquely by `loadbalancer_id`, `vserver_group_id`, `port`.
 ///
-/// > **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
+/// &gt; **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
 ///
-/// > **NOTE:** Available since v1.53.0.
+/// &gt; **NOTE:** Available since v1.53.0.
 ///
 /// ## Import
 ///
@@ -33,10 +32,12 @@ import 'scaling_group_vserver_groups_vserver_group.dart';
 class ScalingGroupVServerGroups extends pulumi.CustomResource {
   /// If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
   late final pulumi.Output<bool?> force;
+
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
+
   /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
-  late final pulumi.Output<List<ScalingGroupVServerGroupsVserverGroup>> vserverGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> vserverGroups;
 
   /// Creates a new [ScalingGroupVServerGroups].
   /// [name] The Pulumi resource name.
@@ -47,14 +48,14 @@ class ScalingGroupVServerGroups extends pulumi.CustomResource {
     ScalingGroupVServerGroupsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.force = registerOutput<bool?>('force');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.vserverGroups = registerOutput<List<ScalingGroupVServerGroupsVserverGroup>>('vserverGroups');
+         'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    force = registerOutput<bool?>('force');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    vserverGroups = registerOutput<List<Map<String, dynamic>>>('vserverGroups');
   }
 
   /// Gets an existing [ScalingGroupVServerGroups] resource's state with the given [name] and [id].
@@ -75,13 +76,13 @@ class ScalingGroupVServerGroups extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.force = registerOutput<bool?>('force');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.vserverGroups = registerOutput<List<ScalingGroupVServerGroupsVserverGroup>>('vserverGroups');
+         'alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    force = registerOutput<bool?>('force');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    vserverGroups = registerOutput<List<Map<String, dynamic>>>('vserverGroups');
   }
 }

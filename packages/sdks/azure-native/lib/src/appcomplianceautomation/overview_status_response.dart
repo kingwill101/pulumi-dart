@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OverviewStatusResponse {
   /// The count of all failed control.
   final pulumi.Input<int> failedCount;
+
   /// The count of all manual control.
   final pulumi.Input<int> manualCount;
+
   /// The count of all not applicable control.
   final pulumi.Input<int> notApplicableCount;
+
   /// The count of all passed control.
   final pulumi.Input<int> passedCount;
+
   /// The count of all pending for approval control.
   final pulumi.Input<int> pendingCount;
 
@@ -41,12 +45,13 @@ class OverviewStatusResponse {
 
   factory OverviewStatusResponse.fromMap(Map<String, dynamic> map) {
     return OverviewStatusResponse(
-      failedCount: (map['failedCount'] as int).input(),
-      manualCount: (map['manualCount'] as int).input(),
-      notApplicableCount: (map['notApplicableCount'] as int).input(),
-      passedCount: (map['passedCount'] as int).input(),
-      pendingCount: (map['pendingCount'] as int).input(),
+      failedCount: pulumi.Input.fromValue(map['failedCount'] as int),
+      manualCount: pulumi.Input.fromValue(map['manualCount'] as int),
+      notApplicableCount: pulumi.Input.fromValue(
+        map['notApplicableCount'] as int,
+      ),
+      passedCount: pulumi.Input.fromValue(map['passedCount'] as int),
+      pendingCount: pulumi.Input.fromValue(map['pendingCount'] as int),
     );
   }
 }
-

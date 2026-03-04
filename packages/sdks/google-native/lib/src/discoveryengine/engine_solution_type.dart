@@ -5,16 +5,15 @@ enum EngineSolutionType {
   solutionTypeSearch("SOLUTION_TYPE_SEARCH"),
   solutionTypeChat("SOLUTION_TYPE_CHAT");
 
-  const EngineSolutionType(this.value);
-  final String value;
+  const EngineSolutionType(this.wireValue);
+  final String wireValue;
 
   static EngineSolutionType fromValue(String value) {
     for (final item in EngineSolutionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EngineSolutionType value: $value');
   }
 }
-

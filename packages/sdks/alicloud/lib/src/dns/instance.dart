@@ -4,9 +4,9 @@ import 'instance_state.dart';
 
 /// Create an DNS Instance resource.
 ///
-/// > **DEPRECATED:** This resource has been renamed to alicloud.dns.AlidnsInstance from version 1.95.0.
+/// &gt; **DEPRECATED:** This resource has been renamed to alicloud.dns.AlidnsInstance from version 1.95.0.
 ///
-/// > **NOTE:** Available in v1.80.0+.
+/// &gt; **NOTE:** Available in v1.80.0+.
 ///
 /// ## Example Usage
 ///
@@ -142,17 +142,23 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// DNS security level. Valid values: `no`, `basic`, `advanced`.
   late final pulumi.Output<String> dnsSecurity;
+
   /// Number of domain names bound.
   late final pulumi.Output<String> domainNumbers;
   late final pulumi.Output<String?> paymentType;
+
   /// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
   late final pulumi.Output<int?> period;
+
   /// Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
   late final pulumi.Output<int?> renewPeriod;
+
   /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
   late final pulumi.Output<String> renewalStatus;
+
   /// Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
   late final pulumi.Output<String> versionCode;
+
   /// Paid package version name.
   late final pulumi.Output<String> versionName;
 
@@ -165,19 +171,19 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsSecurity = registerOutput<String>('dnsSecurity');
-    this.domainNumbers = registerOutput<String>('domainNumbers');
-    this.paymentType = registerOutput<String?>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.versionCode = registerOutput<String>('versionCode');
-    this.versionName = registerOutput<String>('versionName');
+         'alicloud:dns/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsSecurity = registerOutput<String>('dnsSecurity');
+    domainNumbers = registerOutput<String>('domainNumbers');
+    paymentType = registerOutput<String?>('paymentType');
+    period = registerOutput<int?>('period');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    versionCode = registerOutput<String>('versionCode');
+    versionName = registerOutput<String>('versionName');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -198,18 +204,18 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsSecurity = registerOutput<String>('dnsSecurity');
-    this.domainNumbers = registerOutput<String>('domainNumbers');
-    this.paymentType = registerOutput<String?>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.versionCode = registerOutput<String>('versionCode');
-    this.versionName = registerOutput<String>('versionName');
+         'alicloud:dns/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsSecurity = registerOutput<String>('dnsSecurity');
+    domainNumbers = registerOutput<String>('domainNumbers');
+    paymentType = registerOutput<String?>('paymentType');
+    period = registerOutput<int?>('period');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    versionCode = registerOutput<String>('versionCode');
+    versionName = registerOutput<String>('versionName');
   }
 }

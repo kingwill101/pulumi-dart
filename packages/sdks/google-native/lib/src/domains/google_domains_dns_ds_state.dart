@@ -4,16 +4,15 @@ enum GoogleDomainsDnsDsState {
   dsRecordsUnpublished("DS_RECORDS_UNPUBLISHED"),
   dsRecordsPublished("DS_RECORDS_PUBLISHED");
 
-  const GoogleDomainsDnsDsState(this.value);
-  final String value;
+  const GoogleDomainsDnsDsState(this.wireValue);
+  final String wireValue;
 
   static GoogleDomainsDnsDsState fromValue(String value) {
     for (final item in GoogleDomainsDnsDsState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GoogleDomainsDnsDsState value: $value');
   }
 }
-

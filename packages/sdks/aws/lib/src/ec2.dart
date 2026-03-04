@@ -1,5 +1,3 @@
-library module_ec2;
-
 export 'ec2/allowed_images_settings.dart';
 export 'ec2/allowed_images_settings_args.dart';
 export 'ec2/allowed_images_settings_image_criterion.dart';

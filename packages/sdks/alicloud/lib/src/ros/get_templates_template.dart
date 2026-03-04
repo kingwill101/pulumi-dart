@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplatesTemplate {
   /// The ID of the change set.
   final pulumi.Input<String> changeSetId;
+
   /// The description of the template. The description can be up to 256 characters in length.
   final pulumi.Input<String> description;
+
   /// The ID of the Template.
   final pulumi.Input<String> id;
+
   /// Share Type.
   final pulumi.Input<String> shareType;
+
   /// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   final pulumi.Input<String> stackGroupName;
+
   /// The ID of the stack.
   final pulumi.Input<String> stackId;
+
   /// Tags.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
   final pulumi.Input<String> templateBody;
+
   /// The ID of the template.
   final pulumi.Input<String> templateId;
+
   /// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   final pulumi.Input<String> templateName;
+
   /// Template Version.
   final pulumi.Input<String> templateVersion;
 
@@ -70,18 +80,17 @@ class GetTemplatesTemplate {
 
   factory GetTemplatesTemplate.fromMap(Map<String, dynamic> map) {
     return GetTemplatesTemplate(
-      changeSetId: (map['changeSetId'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      shareType: (map['shareType'] as String).input(),
-      stackGroupName: (map['stackGroupName'] as String).input(),
-      stackId: (map['stackId'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      templateBody: (map['templateBody'] as String).input(),
-      templateId: (map['templateId'] as String).input(),
-      templateName: (map['templateName'] as String).input(),
-      templateVersion: (map['templateVersion'] as String).input(),
+      changeSetId: pulumi.Input.fromValue(map['changeSetId'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
+      stackGroupName: pulumi.Input.fromValue(map['stackGroupName'] as String),
+      stackId: pulumi.Input.fromValue(map['stackId'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      templateBody: pulumi.Input.fromValue(map['templateBody'] as String),
+      templateId: pulumi.Input.fromValue(map['templateId'] as String),
+      templateName: pulumi.Input.fromValue(map['templateName'] as String),
+      templateVersion: pulumi.Input.fromValue(map['templateVersion'] as String),
     );
   }
 }
-

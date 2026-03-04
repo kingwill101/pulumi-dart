@@ -1,5 +1,3 @@
-library module_folder;
-
 export 'folder/access_approval_settings.dart';
 export 'folder/access_approval_settings_args.dart';
 export 'folder/access_approval_settings_enrolled_service.dart';

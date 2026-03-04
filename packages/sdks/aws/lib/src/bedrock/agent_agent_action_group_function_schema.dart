@@ -7,24 +7,36 @@ class AgentAgentActionGroupFunctionSchema {
   /// Contains a list of functions.
   /// Each function describes and action in the action group.
   /// See `member_functions` Block for details.
-  final pulumi.Input<AgentAgentActionGroupFunctionSchemaMemberFunctions>? memberFunctions;
+  final pulumi.Input<AgentAgentActionGroupFunctionSchemaMemberFunctions>?
+  memberFunctions;
 
   /// Creates a new [AgentAgentActionGroupFunctionSchema].
   /// [memberFunctions] Contains a list of functions.
-  AgentAgentActionGroupFunctionSchema({
-    this.memberFunctions,
-  });
+  AgentAgentActionGroupFunctionSchema({this.memberFunctions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'memberFunctions': ?pulumi.Input.mapOptionalInputValue<AgentAgentActionGroupFunctionSchemaMemberFunctions, Map<String, dynamic>>(memberFunctions, (value) => value.toMap()),
+      'memberFunctions':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentAgentActionGroupFunctionSchemaMemberFunctions,
+            Map<String, dynamic>
+          >(memberFunctions, (value) => value.toMap()),
     };
   }
 
-  factory AgentAgentActionGroupFunctionSchema.fromMap(Map<String, dynamic> map) {
+  factory AgentAgentActionGroupFunctionSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentAgentActionGroupFunctionSchema(
-      memberFunctions: map['memberFunctions'] == null ? null : ((AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap((map['memberFunctions']! as Map).cast<String, dynamic>())).input()).input(),
+      memberFunctions: (() {
+        final guardedValue = map['memberFunctions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

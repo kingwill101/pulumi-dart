@@ -6,8 +6,10 @@ import 'connection_auth_config_oauth2_client_credentials_client_secret.dart';
 class ConnectionAuthConfigOauth2ClientCredentials {
   /// Secret version of Password for Authentication.
   final pulumi.Input<String> clientId;
+
   /// Secret version reference containing the client secret.
-  final pulumi.Input<ConnectionAuthConfigOauth2ClientCredentialsClientSecret>? clientSecret;
+  final pulumi.Input<ConnectionAuthConfigOauth2ClientCredentialsClientSecret>?
+  clientSecret;
 
   /// Creates a new [ConnectionAuthConfigOauth2ClientCredentials].
   /// [clientId] Secret version of Password for Authentication.
@@ -20,15 +22,28 @@ class ConnectionAuthConfigOauth2ClientCredentials {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientId': clientId,
-      'clientSecret': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfigOauth2ClientCredentialsClientSecret, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'clientSecret':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionAuthConfigOauth2ClientCredentialsClientSecret,
+            Map<String, dynamic>
+          >(clientSecret, (value) => value.toMap()),
     };
   }
 
-  factory ConnectionAuthConfigOauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
+  factory ConnectionAuthConfigOauth2ClientCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionAuthConfigOauth2ClientCredentials(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (ConnectionAuthConfigOauth2ClientCredentialsClientSecret.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionAuthConfigOauth2ClientCredentialsClientSecret.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

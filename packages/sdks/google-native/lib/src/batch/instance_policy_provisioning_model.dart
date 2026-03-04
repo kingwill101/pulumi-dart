@@ -5,16 +5,17 @@ enum InstancePolicyProvisioningModel {
   spot("SPOT"),
   preemptible("PREEMPTIBLE");
 
-  const InstancePolicyProvisioningModel(this.value);
-  final String value;
+  const InstancePolicyProvisioningModel(this.wireValue);
+  final String wireValue;
 
   static InstancePolicyProvisioningModel fromValue(String value) {
     for (final item in InstancePolicyProvisioningModel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstancePolicyProvisioningModel value: $value');
+    throw ArgumentError(
+      'Unknown InstancePolicyProvisioningModel value: $value',
+    );
   }
 }
-

@@ -133,8 +133,10 @@ import 'fast_template_state.dart';
 class FastTemplate extends pulumi.CustomResource {
   /// MD5 hash of the zip archive file containing FAST template
   late final pulumi.Output<String> md5Hash;
+
   /// Name of the FAST template set to be created on to BIGIP
   late final pulumi.Output<String?> name;
+
   /// Path to the zip archive file containing FAST template set on Local Disk
   late final pulumi.Output<String> source;
 
@@ -147,14 +149,14 @@ class FastTemplate extends pulumi.CustomResource {
     FastTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/fastTemplate:FastTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.md5Hash = registerOutput<String>('md5Hash');
+         'f5bigip:index/fastTemplate:FastTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    md5Hash = registerOutput<String>('md5Hash');
     this.name = registerOutput<String?>('name');
-    this.source = registerOutput<String>('source');
+    source = registerOutput<String>('source');
   }
 
   /// Gets an existing [FastTemplate] resource's state with the given [name] and [id].
@@ -175,13 +177,13 @@ class FastTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/fastTemplate:FastTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.md5Hash = registerOutput<String>('md5Hash');
+         'f5bigip:index/fastTemplate:FastTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    md5Hash = registerOutput<String>('md5Hash');
     this.name = registerOutput<String?>('name');
-    this.source = registerOutput<String>('source');
+    source = registerOutput<String>('source');
   }
 }

@@ -4,16 +4,17 @@ enum GoogleCloudDialogflowCxV3NluSettingsModelType {
   modelTypeStandard("MODEL_TYPE_STANDARD"),
   modelTypeAdvanced("MODEL_TYPE_ADVANCED");
 
-  const GoogleCloudDialogflowCxV3NluSettingsModelType(this.value);
-  final String value;
+  const GoogleCloudDialogflowCxV3NluSettingsModelType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDialogflowCxV3NluSettingsModelType fromValue(String value) {
     for (final item in GoogleCloudDialogflowCxV3NluSettingsModelType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3NluSettingsModelType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3NluSettingsModelType value: $value',
+    );
   }
 }
-

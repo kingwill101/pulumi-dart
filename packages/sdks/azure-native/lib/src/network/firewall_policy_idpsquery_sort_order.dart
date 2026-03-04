@@ -3,16 +3,17 @@ enum FirewallPolicyIDPSQuerySortOrder {
   valueAscending("Ascending"),
   valueDescending("Descending");
 
-  const FirewallPolicyIDPSQuerySortOrder(this.value);
-  final String value;
+  const FirewallPolicyIDPSQuerySortOrder(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyIDPSQuerySortOrder fromValue(String value) {
     for (final item in FirewallPolicyIDPSQuerySortOrder.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyIDPSQuerySortOrder value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyIDPSQuerySortOrder value: $value',
+    );
   }
 }
-

@@ -7,7 +7,7 @@ import 'honeypot_preset_state.dart';
 ///
 /// For information about Threat Detection Honeypot Preset and how to use it, see [What is Honeypot Preset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotpreset).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -250,12 +250,16 @@ import 'honeypot_preset_state.dart';
 class HoneypotPreset extends pulumi.CustomResource {
   /// Honeypot mirror name
   late final pulumi.Output<String> honeypotImageName;
+
   /// Unique ID of honeypot Template
   late final pulumi.Output<String> honeypotPresetId;
+
   /// Honeypot template custom parameters. See `meta` below.
   late final pulumi.Output<HoneypotPresetMeta> meta;
+
   /// Unique id of management node
   late final pulumi.Output<String> nodeId;
+
   /// Honeypot template custom name
   late final pulumi.Output<String> presetName;
 
@@ -268,16 +272,16 @@ class HoneypotPreset extends pulumi.CustomResource {
     HoneypotPresetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.honeypotImageName = registerOutput<String>('honeypotImageName');
-    this.honeypotPresetId = registerOutput<String>('honeypotPresetId');
-    this.meta = registerOutput<HoneypotPresetMeta>('meta');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.presetName = registerOutput<String>('presetName');
+         'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    honeypotImageName = registerOutput<String>('honeypotImageName');
+    honeypotPresetId = registerOutput<String>('honeypotPresetId');
+    meta = registerOutput<HoneypotPresetMeta>('meta');
+    nodeId = registerOutput<String>('nodeId');
+    presetName = registerOutput<String>('presetName');
   }
 
   /// Gets an existing [HoneypotPreset] resource's state with the given [name] and [id].
@@ -298,15 +302,15 @@ class HoneypotPreset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.honeypotImageName = registerOutput<String>('honeypotImageName');
-    this.honeypotPresetId = registerOutput<String>('honeypotPresetId');
-    this.meta = registerOutput<HoneypotPresetMeta>('meta');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.presetName = registerOutput<String>('presetName');
+         'alicloud:threatdetection/honeypotPreset:HoneypotPreset',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    honeypotImageName = registerOutput<String>('honeypotImageName');
+    honeypotPresetId = registerOutput<String>('honeypotPresetId');
+    meta = registerOutput<HoneypotPresetMeta>('meta');
+    nodeId = registerOutput<String>('nodeId');
+    presetName = registerOutput<String>('presetName');
   }
 }

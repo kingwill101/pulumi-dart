@@ -4,7 +4,7 @@ import 'alert_condition_state.dart';
 
 /// Use this resource to create and manage synthetics alert conditions in New Relic.
 ///
-/// > **WARNING:** The `newrelic.synthetics.AlertCondition` resource is deprecated and will be removed in the next major release. The resource newrelic.NrqlAlertCondition would be a preferred alternative to configure alert conditions - in most cases, feature parity can be achieved with a NRQL query. For more details and examples on moving away from synthetics alert conditions to the NRQL based alternative, please check out this example.
+/// &gt; **WARNING:** The `newrelic.synthetics.AlertCondition` resource is deprecated and will be removed in the next major release. The resource newrelic.NrqlAlertCondition would be a preferred alternative to configure alert conditions - in most cases, feature parity can be achieved with a NRQL query. For more details and examples on moving away from synthetics alert conditions to the NRQL based alternative, please check out this example.
 ///
 /// ## Example Usage
 ///
@@ -512,7 +512,7 @@ import 'alert_condition_state.dart';
 ///
 /// ## Import
 ///
-/// Synthetics alert conditions can be imported using a composite ID of `<policy_id>:<condition_id>`, e.g.
+/// Synthetics alert conditions can be imported using a composite ID of `&lt;policy_id&gt;:&lt;condition_id&gt;`, e.g.
 ///
 /// ```sh
 /// $ pulumi import newrelic:synthetics/alertCondition:AlertCondition main 12345:67890
@@ -524,14 +524,19 @@ class AlertCondition extends pulumi.CustomResource {
   /// Warning: This resource will use the account ID linked to your API key. At the moment it is not possible to dynamically set the account ID.
   /// ```
   late final pulumi.Output<bool?> enabled;
+
   /// The unique entity identifier of the condition in New Relic.
   late final pulumi.Output<String> entityGuid;
+
   /// The GUID of the Synthetics monitor to be referenced in the alert condition.
   late final pulumi.Output<String> monitorId;
+
   /// The title of this condition.
   late final pulumi.Output<String> name;
+
   /// The ID of the policy where this condition should be used.
   late final pulumi.Output<String> policyId;
+
   /// Runbook URL to display in notifications.
   late final pulumi.Output<String?> runbookUrl;
 
@@ -544,17 +549,17 @@ class AlertCondition extends pulumi.CustomResource {
     AlertConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/alertCondition:AlertCondition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityGuid = registerOutput<String>('entityGuid');
-    this.monitorId = registerOutput<String>('monitorId');
+         'newrelic:synthetics/alertCondition:AlertCondition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    entityGuid = registerOutput<String>('entityGuid');
+    monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
+    policyId = registerOutput<String>('policyId');
+    runbookUrl = registerOutput<String?>('runbookUrl');
   }
 
   /// Gets an existing [AlertCondition] resource's state with the given [name] and [id].
@@ -575,16 +580,16 @@ class AlertCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:synthetics/alertCondition:AlertCondition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityGuid = registerOutput<String>('entityGuid');
-    this.monitorId = registerOutput<String>('monitorId');
+         'newrelic:synthetics/alertCondition:AlertCondition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
+    entityGuid = registerOutput<String>('entityGuid');
+    monitorId = registerOutput<String>('monitorId');
     this.name = registerOutput<String>('name');
-    this.policyId = registerOutput<String>('policyId');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
+    policyId = registerOutput<String>('policyId');
+    runbookUrl = registerOutput<String?>('runbookUrl');
   }
 }

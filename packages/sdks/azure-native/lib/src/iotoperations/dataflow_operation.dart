@@ -8,13 +8,18 @@ import 'dataflow_source_operation_settings.dart';
 /// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
 class DataflowOperation {
   /// Built In Transformation configuration.
-  final pulumi.Input<DataflowBuiltInTransformationSettings>? builtInTransformationSettings;
+  final pulumi.Input<DataflowBuiltInTransformationSettings>?
+  builtInTransformationSettings;
+
   /// Destination configuration.
   final pulumi.Input<DataflowDestinationOperationSettings>? destinationSettings;
+
   /// Optional user provided name of the transformation.
   final pulumi.Input<String>? name;
+
   /// Type of operation.
   final pulumi.Input<String> operationType;
+
   /// Source configuration.
   final pulumi.Input<DataflowSourceOperationSettings>? sourceSettings;
 
@@ -34,22 +39,61 @@ class DataflowOperation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'builtInTransformationSettings': ?pulumi.Input.mapOptionalInputValue<DataflowBuiltInTransformationSettings, Map<String, dynamic>>(builtInTransformationSettings, (value) => value.toMap()),
-      'destinationSettings': ?pulumi.Input.mapOptionalInputValue<DataflowDestinationOperationSettings, Map<String, dynamic>>(destinationSettings, (value) => value.toMap()),
+      'builtInTransformationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataflowBuiltInTransformationSettings,
+            Map<String, dynamic>
+          >(builtInTransformationSettings, (value) => value.toMap()),
+      'destinationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataflowDestinationOperationSettings,
+            Map<String, dynamic>
+          >(destinationSettings, (value) => value.toMap()),
       'name': ?name,
       'operationType': operationType,
-      'sourceSettings': ?pulumi.Input.mapOptionalInputValue<DataflowSourceOperationSettings, Map<String, dynamic>>(sourceSettings, (value) => value.toMap()),
+      'sourceSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataflowSourceOperationSettings,
+            Map<String, dynamic>
+          >(sourceSettings, (value) => value.toMap()),
     };
   }
 
   factory DataflowOperation.fromMap(Map<String, dynamic> map) {
     return DataflowOperation(
-      builtInTransformationSettings: map['builtInTransformationSettings'] == null ? null : (DataflowBuiltInTransformationSettings.fromMap((map['builtInTransformationSettings']! as Map).cast<String, dynamic>())).input(),
-      destinationSettings: map['destinationSettings'] == null ? null : (DataflowDestinationOperationSettings.fromMap((map['destinationSettings']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      operationType: (map['operationType'] as String).input(),
-      sourceSettings: map['sourceSettings'] == null ? null : (DataflowSourceOperationSettings.fromMap((map['sourceSettings']! as Map).cast<String, dynamic>())).input(),
+      builtInTransformationSettings: (() {
+        final guardedValue = map['builtInTransformationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataflowBuiltInTransformationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      destinationSettings: (() {
+        final guardedValue = map['destinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataflowDestinationOperationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operationType: pulumi.Input.fromValue(map['operationType'] as String),
+      sourceSettings: (() {
+        final guardedValue = map['sourceSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataflowSourceOperationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

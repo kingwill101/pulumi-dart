@@ -376,7 +376,7 @@ import 'monitor_user.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `NewRelic.Observability` - 2024-03-01
@@ -391,30 +391,41 @@ import 'monitor_user.dart';
 class Monitor extends pulumi.CustomResource {
   /// Specifies the source of account creation. Possible values are `LIFTR` and `NEWRELIC`. Defaults to `LIFTR`. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> accountCreationSource;
+
   /// Specifies the account id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
-  /// > **Note:** The value of `account_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
+  /// &gt; **Note:** The value of `account_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
   late final pulumi.Output<String> accountId;
+
   /// An `identity` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorIdentity?> identity;
+
   /// Specifies the ingestion key of account. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> ingestionKey;
+
   /// Specifies the Azure Region where the Azure Native New Relic Monitor should exist. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Azure Native New Relic Monitor. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the source of org creation. Possible values are `LIFTR` and `NEWRELIC`. Defaults to `LIFTR`. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> orgCreationSource;
+
   /// Specifies the organization id. Changing this forces a new Azure Native New Relic Monitor to be created.
   ///
-  /// > **Note:** The value of `organization_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
+  /// &gt; **Note:** The value of `organization_id` must come from an Azure Native New Relic Monitor instance of another different subscription.
   late final pulumi.Output<String> organizationId;
+
   /// A `plan` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorPlan> plan;
+
   /// Specifies the name of the Resource Group where the Azure Native New Relic Monitor should exist. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `user` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<MonitorUser> user;
+
   /// Specifies the user id. Changing this forces a new Azure Native New Relic Monitor to be created.
   late final pulumi.Output<String?> userId;
 
@@ -427,23 +438,23 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:newrelic/monitor:Monitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountCreationSource = registerOutput<String?>('accountCreationSource');
-    this.accountId = registerOutput<String>('accountId');
-    this.identity = registerOutput<MonitorIdentity?>('identity');
-    this.ingestionKey = registerOutput<String?>('ingestionKey');
-    this.location = registerOutput<String>('location');
+         'azure:newrelic/monitor:Monitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountCreationSource = registerOutput<String?>('accountCreationSource');
+    accountId = registerOutput<String>('accountId');
+    identity = registerOutput<MonitorIdentity?>('identity');
+    ingestionKey = registerOutput<String?>('ingestionKey');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.orgCreationSource = registerOutput<String?>('orgCreationSource');
-    this.organizationId = registerOutput<String>('organizationId');
-    this.plan = registerOutput<MonitorPlan>('plan');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.user = registerOutput<MonitorUser>('user');
-    this.userId = registerOutput<String?>('userId');
+    orgCreationSource = registerOutput<String?>('orgCreationSource');
+    organizationId = registerOutput<String>('organizationId');
+    plan = registerOutput<MonitorPlan>('plan');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    user = registerOutput<MonitorUser>('user');
+    userId = registerOutput<String?>('userId');
   }
 
   /// Gets an existing [Monitor] resource's state with the given [name] and [id].
@@ -464,22 +475,22 @@ class Monitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:newrelic/monitor:Monitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountCreationSource = registerOutput<String?>('accountCreationSource');
-    this.accountId = registerOutput<String>('accountId');
-    this.identity = registerOutput<MonitorIdentity?>('identity');
-    this.ingestionKey = registerOutput<String?>('ingestionKey');
-    this.location = registerOutput<String>('location');
+         'azure:newrelic/monitor:Monitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountCreationSource = registerOutput<String?>('accountCreationSource');
+    accountId = registerOutput<String>('accountId');
+    identity = registerOutput<MonitorIdentity?>('identity');
+    ingestionKey = registerOutput<String?>('ingestionKey');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.orgCreationSource = registerOutput<String?>('orgCreationSource');
-    this.organizationId = registerOutput<String>('organizationId');
-    this.plan = registerOutput<MonitorPlan>('plan');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.user = registerOutput<MonitorUser>('user');
-    this.userId = registerOutput<String?>('userId');
+    orgCreationSource = registerOutput<String?>('orgCreationSource');
+    organizationId = registerOutput<String>('organizationId');
+    plan = registerOutput<MonitorPlan>('plan');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    user = registerOutput<MonitorUser>('user');
+    userId = registerOutput<String?>('userId');
   }
 }

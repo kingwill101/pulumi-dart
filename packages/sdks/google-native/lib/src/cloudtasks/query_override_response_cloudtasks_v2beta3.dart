@@ -9,20 +9,17 @@ class QueryOverrideResponseCloudtasksV2beta3 {
 
   /// Creates a new [QueryOverrideResponseCloudtasksV2beta3].
   /// [queryParams] The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-  QueryOverrideResponseCloudtasksV2beta3({
-    required this.queryParams,
-  });
+  QueryOverrideResponseCloudtasksV2beta3({required this.queryParams});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'queryParams': queryParams,
-    };
+    return <String, dynamic>{'queryParams': queryParams};
   }
 
-  factory QueryOverrideResponseCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
+  factory QueryOverrideResponseCloudtasksV2beta3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return QueryOverrideResponseCloudtasksV2beta3(
-      queryParams: (map['queryParams'] as String).input(),
+      queryParams: pulumi.Input.fromValue(map['queryParams'] as String),
     );
   }
 }
-

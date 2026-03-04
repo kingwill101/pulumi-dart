@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRunV2RevisionScaling {
   /// Maximum number of serving instances that this resource should have.
   final pulumi.Input<int>? maxInstanceCount;
+
   /// Minimum number of serving instances that this resource should have.
   final pulumi.Input<int>? minInstanceCount;
 
@@ -26,9 +27,16 @@ class GoogleCloudRunV2RevisionScaling {
 
   factory GoogleCloudRunV2RevisionScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2RevisionScaling(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
+      maxInstanceCount: (() {
+        final guardedValue = map['maxInstanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minInstanceCount: (() {
+        final guardedValue = map['minInstanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

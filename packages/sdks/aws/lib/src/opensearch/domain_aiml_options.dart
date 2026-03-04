@@ -7,11 +7,15 @@ import 'domain_aiml_options_serverless_vector_acceleration.dart';
 
 class DomainAimlOptions {
   /// Configuration block for parameters required for natural language query generation on the specified domain.
-  final pulumi.Input<DomainAimlOptionsNaturalLanguageQueryGenerationOptions>? naturalLanguageQueryGenerationOptions;
+  final pulumi.Input<DomainAimlOptionsNaturalLanguageQueryGenerationOptions>?
+  naturalLanguageQueryGenerationOptions;
+
   /// Configuration block for parameters required to enable S3 vectors engine features on the specified domain.
   final pulumi.Input<DomainAimlOptionsS3VectorsEngine>? s3VectorsEngine;
+
   /// Configuration block for parameters required to enable GPU-accelerated vector search on the specified domain.
-  final pulumi.Input<DomainAimlOptionsServerlessVectorAcceleration>? serverlessVectorAcceleration;
+  final pulumi.Input<DomainAimlOptionsServerlessVectorAcceleration>?
+  serverlessVectorAcceleration;
 
   /// Creates a new [DomainAimlOptions].
   /// [naturalLanguageQueryGenerationOptions] Configuration block for parameters required for natural language query generation on the specified domain.
@@ -25,18 +29,53 @@ class DomainAimlOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'naturalLanguageQueryGenerationOptions': ?pulumi.Input.mapOptionalInputValue<DomainAimlOptionsNaturalLanguageQueryGenerationOptions, Map<String, dynamic>>(naturalLanguageQueryGenerationOptions, (value) => value.toMap()),
-      's3VectorsEngine': ?pulumi.Input.mapOptionalInputValue<DomainAimlOptionsS3VectorsEngine, Map<String, dynamic>>(s3VectorsEngine, (value) => value.toMap()),
-      'serverlessVectorAcceleration': ?pulumi.Input.mapOptionalInputValue<DomainAimlOptionsServerlessVectorAcceleration, Map<String, dynamic>>(serverlessVectorAcceleration, (value) => value.toMap()),
+      'naturalLanguageQueryGenerationOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainAimlOptionsNaturalLanguageQueryGenerationOptions,
+            Map<String, dynamic>
+          >(naturalLanguageQueryGenerationOptions, (value) => value.toMap()),
+      's3VectorsEngine':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainAimlOptionsS3VectorsEngine,
+            Map<String, dynamic>
+          >(s3VectorsEngine, (value) => value.toMap()),
+      'serverlessVectorAcceleration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainAimlOptionsServerlessVectorAcceleration,
+            Map<String, dynamic>
+          >(serverlessVectorAcceleration, (value) => value.toMap()),
     };
   }
 
   factory DomainAimlOptions.fromMap(Map<String, dynamic> map) {
     return DomainAimlOptions(
-      naturalLanguageQueryGenerationOptions: map['naturalLanguageQueryGenerationOptions'] == null ? null : ((DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap((map['naturalLanguageQueryGenerationOptions']! as Map).cast<String, dynamic>())).input()).input(),
-      s3VectorsEngine: map['s3VectorsEngine'] == null ? null : ((DomainAimlOptionsS3VectorsEngine.fromMap((map['s3VectorsEngine']! as Map).cast<String, dynamic>())).input()).input(),
-      serverlessVectorAcceleration: map['serverlessVectorAcceleration'] == null ? null : ((DomainAimlOptionsServerlessVectorAcceleration.fromMap((map['serverlessVectorAcceleration']! as Map).cast<String, dynamic>())).input()).input(),
+      naturalLanguageQueryGenerationOptions: (() {
+        final guardedValue = map['naturalLanguageQueryGenerationOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3VectorsEngine: (() {
+        final guardedValue = map['s3VectorsEngine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainAimlOptionsS3VectorsEngine.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serverlessVectorAcceleration: (() {
+        final guardedValue = map['serverlessVectorAcceleration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainAimlOptionsServerlessVectorAcceleration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

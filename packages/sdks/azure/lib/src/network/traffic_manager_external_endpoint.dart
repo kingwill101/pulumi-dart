@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'traffic_manager_external_endpoint_args.dart';
-import 'traffic_manager_external_endpoint_custom_header.dart';
 import 'traffic_manager_external_endpoint_state.dart';
-import 'traffic_manager_external_endpoint_subnet.dart';
 
 /// Manages an External Endpoint within a Traffic Manager Profile.
 ///
@@ -285,7 +283,7 @@ import 'traffic_manager_external_endpoint_subnet.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2022-04-01
@@ -300,24 +298,34 @@ import 'traffic_manager_external_endpoint_subnet.dart';
 class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
   /// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. Defaults to `false`.
   late final pulumi.Output<bool?> alwaysServeEnabled;
+
   /// One or more `custom_header` blocks as defined below.
-  late final pulumi.Output<List<TrafficManagerExternalEndpointCustomHeader>?> customHeaders;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
+
   /// Is the endpoint enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Specifies the Azure location of the Endpoint, this must be specified for Profiles using the `Performance` routing method.
   late final pulumi.Output<String> endpointLocation;
+
   /// A list of Geographic Regions used to distribute traffic, such as `WORLD`, `UK` or `DE`. The same location can't be specified in two endpoints. [See the Geographic Hierarchies documentation for more information](https://docs.microsoft.com/rest/api/trafficmanager/geographichierarchies/getdefault).
   late final pulumi.Output<List<String>?> geoMappings;
+
   /// The name of the External Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the priority of this Endpoint, this must be specified for Profiles using the `Priority` traffic routing method. Supports values between 1 and 1000, with no Endpoints sharing the same value. If omitted the value will be computed in order of creation.
   late final pulumi.Output<int> priority;
+
   /// The ID of the Traffic Manager Profile that this External Endpoint should be created within. Changing this forces a new resource to be created.
   late final pulumi.Output<String> profileId;
+
   /// One or more `subnet` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<TrafficManagerExternalEndpointSubnet>?> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+
   /// The FQDN DNS name of the target.
   late final pulumi.Output<String> target;
+
   /// Specifies how much traffic should be distributed to this endpoint, this must be specified for Profiles using the Weighted traffic routing method. Valid values are between `1` and `1000`. Defaults to `1`.
   late final pulumi.Output<int?> weight;
 
@@ -330,22 +338,24 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
     TrafficManagerExternalEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/trafficManagerExternalEndpoint:TrafficManagerExternalEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
-    this.customHeaders = registerOutput<List<TrafficManagerExternalEndpointCustomHeader>?>('customHeaders');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.endpointLocation = registerOutput<String>('endpointLocation');
-    this.geoMappings = registerOutput<List<String>?>('geoMappings');
+         'azure:network/trafficManagerExternalEndpoint:TrafficManagerExternalEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
+    customHeaders = registerOutput<List<Map<String, dynamic>>?>(
+      'customHeaders',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    endpointLocation = registerOutput<String>('endpointLocation');
+    geoMappings = registerOutput<List<String>?>('geoMappings');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.profileId = registerOutput<String>('profileId');
-    this.subnets = registerOutput<List<TrafficManagerExternalEndpointSubnet>?>('subnets');
-    this.target = registerOutput<String>('target');
-    this.weight = registerOutput<int?>('weight');
+    priority = registerOutput<int>('priority');
+    profileId = registerOutput<String>('profileId');
+    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    target = registerOutput<String>('target');
+    weight = registerOutput<int?>('weight');
   }
 
   /// Gets an existing [TrafficManagerExternalEndpoint] resource's state with the given [name] and [id].
@@ -366,21 +376,23 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/trafficManagerExternalEndpoint:TrafficManagerExternalEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
-    this.customHeaders = registerOutput<List<TrafficManagerExternalEndpointCustomHeader>?>('customHeaders');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.endpointLocation = registerOutput<String>('endpointLocation');
-    this.geoMappings = registerOutput<List<String>?>('geoMappings');
+         'azure:network/trafficManagerExternalEndpoint:TrafficManagerExternalEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
+    customHeaders = registerOutput<List<Map<String, dynamic>>?>(
+      'customHeaders',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    endpointLocation = registerOutput<String>('endpointLocation');
+    geoMappings = registerOutput<List<String>?>('geoMappings');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.profileId = registerOutput<String>('profileId');
-    this.subnets = registerOutput<List<TrafficManagerExternalEndpointSubnet>?>('subnets');
-    this.target = registerOutput<String>('target');
-    this.weight = registerOutput<int?>('weight');
+    priority = registerOutput<int>('priority');
+    profileId = registerOutput<String>('profileId');
+    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    target = registerOutput<String>('target');
+    weight = registerOutput<int?>('weight');
   }
 }

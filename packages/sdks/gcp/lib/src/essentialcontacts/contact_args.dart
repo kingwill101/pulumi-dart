@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactArgs {
   /// The email address to send notifications to. This does not need to be a Google account.
   final pulumi.Input<String> email;
+
   /// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
   final pulumi.Input<String> languageTag;
+
   /// The categories of notifications that the contact will receive communications for.
   final pulumi.Input<List<String>> notificationCategorySubscriptions;
+
   /// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
   final pulumi.Input<String> parent;
 
@@ -39,11 +42,12 @@ class ContactArgs {
 
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
-      email: (map['email'] as String).input(),
-      languageTag: (map['languageTag'] as String).input(),
-      notificationCategorySubscriptions: ((map['notificationCategorySubscriptions'] as List).cast<String>()).input(),
-      parent: (map['parent'] as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      languageTag: pulumi.Input.fromValue(map['languageTag'] as String),
+      notificationCategorySubscriptions: pulumi.Input.fromValue(
+        (map['notificationCategorySubscriptions'] as List).cast<String>(),
+      ),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listAccountKeys.
 class ListAccountKeysResult {
   /// Gets or sets the primary connection string.
   final String? atlasKafkaPrimaryEndpoint;
+
   /// Gets or sets the secondary connection string.
   final String? atlasKafkaSecondaryEndpoint;
 
@@ -25,9 +25,16 @@ class ListAccountKeysResult {
 
   factory ListAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListAccountKeysResult(
-      atlasKafkaPrimaryEndpoint: map['atlasKafkaPrimaryEndpoint'] == null ? null : map['atlasKafkaPrimaryEndpoint']! as String,
-      atlasKafkaSecondaryEndpoint: map['atlasKafkaSecondaryEndpoint'] == null ? null : map['atlasKafkaSecondaryEndpoint']! as String,
+      atlasKafkaPrimaryEndpoint: (() {
+        final guardedValue = map['atlasKafkaPrimaryEndpoint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      atlasKafkaSecondaryEndpoint: (() {
+        final guardedValue = map['atlasKafkaSecondaryEndpoint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

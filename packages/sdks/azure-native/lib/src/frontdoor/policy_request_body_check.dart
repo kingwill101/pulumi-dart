@@ -3,16 +3,15 @@ enum PolicyRequestBodyCheck {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const PolicyRequestBodyCheck(this.value);
-  final String value;
+  const PolicyRequestBodyCheck(this.wireValue);
+  final String wireValue;
 
   static PolicyRequestBodyCheck fromValue(String value) {
     for (final item in PolicyRequestBodyCheck.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyRequestBodyCheck value: $value');
   }
 }
-

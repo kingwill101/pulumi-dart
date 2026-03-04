@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosCooPortsPort {
   /// The source station port.
   final pulumi.Input<String> backendPort;
+
   /// The forwarding port.
   final pulumi.Input<String> frontendPort;
+
   /// The forwarding protocol. Valid values `tcp` and `udp`.
   final pulumi.Input<String> frontendProtocol;
+
   /// The ID of the Port.
   final pulumi.Input<String> id;
+
   /// The DdosCoo instance ID.
   final pulumi.Input<String> instanceId;
+
   /// List of source IP addresses.
   final pulumi.Input<List<String>> realServers;
 
@@ -45,13 +50,16 @@ class GetDdosCooPortsPort {
 
   factory GetDdosCooPortsPort.fromMap(Map<String, dynamic> map) {
     return GetDdosCooPortsPort(
-      backendPort: (map['backendPort'] as String).input(),
-      frontendPort: (map['frontendPort'] as String).input(),
-      frontendProtocol: (map['frontendProtocol'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      realServers: ((map['realServers'] as List).cast<String>()).input(),
+      backendPort: pulumi.Input.fromValue(map['backendPort'] as String),
+      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as String),
+      frontendProtocol: pulumi.Input.fromValue(
+        map['frontendProtocol'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      realServers: pulumi.Input.fromValue(
+        (map['realServers'] as List).cast<String>(),
+      ),
     );
   }
 }
-

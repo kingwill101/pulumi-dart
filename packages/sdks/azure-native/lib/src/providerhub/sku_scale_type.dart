@@ -4,16 +4,15 @@ enum SkuScaleType {
   manual("Manual"),
   automatic("Automatic");
 
-  const SkuScaleType(this.value);
-  final String value;
+  const SkuScaleType(this.wireValue);
+  final String wireValue;
 
   static SkuScaleType fromValue(String value) {
     for (final item in SkuScaleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuScaleType value: $value');
   }
 }
-

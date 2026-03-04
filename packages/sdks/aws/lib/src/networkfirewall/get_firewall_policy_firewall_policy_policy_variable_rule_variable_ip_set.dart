@@ -12,15 +12,16 @@ class GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'definitions': definitions,
-    };
+    return <String, dynamic>{'definitions': definitions};
   }
 
-  factory GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariableIpSet(
-      definitions: ((map['definitions'] as List).cast<String>()).input(),
+      definitions: pulumi.Input.fromValue(
+        (map['definitions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

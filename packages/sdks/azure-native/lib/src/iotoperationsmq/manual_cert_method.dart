@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManualCertMethod {
   /// secret containing TLS cert.
   final pulumi.Input<String> secretName;
+
   /// namespace of secret; omit to use default namespace.
   final pulumi.Input<String>? secretNamespace;
 
   /// Creates a new [ManualCertMethod].
   /// [secretName] secret containing TLS cert.
   /// [secretNamespace] namespace of secret; omit to use default namespace.
-  ManualCertMethod({
-    required this.secretName,
-    this.secretNamespace,
-  });
+  ManualCertMethod({required this.secretName, this.secretNamespace});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class ManualCertMethod {
 
   factory ManualCertMethod.fromMap(Map<String, dynamic> map) {
     return ManualCertMethod(
-      secretName: (map['secretName'] as String).input(),
-      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace']! as String).input(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      secretNamespace: (() {
+        final guardedValue = map['secretNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

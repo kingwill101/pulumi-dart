@@ -9,16 +9,15 @@ enum JsonWebKeyOperation {
   valueImport("import"),
   valueRelease("release");
 
-  const JsonWebKeyOperation(this.value);
-  final String value;
+  const JsonWebKeyOperation(this.wireValue);
+  final String wireValue;
 
   static JsonWebKeyOperation fromValue(String value) {
     for (final item in JsonWebKeyOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JsonWebKeyOperation value: $value');
   }
 }
-

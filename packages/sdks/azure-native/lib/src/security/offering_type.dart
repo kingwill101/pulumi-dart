@@ -20,16 +20,15 @@ enum OfferingType {
   valueDefenderForContainersJFrog("DefenderForContainersJFrog"),
   valueDefenderCspmJFrog("DefenderCspmJFrog");
 
-  const OfferingType(this.value);
-  final String value;
+  const OfferingType(this.wireValue);
+  final String wireValue;
 
   static OfferingType fromValue(String value) {
     for (final item in OfferingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OfferingType value: $value');
   }
 }
-

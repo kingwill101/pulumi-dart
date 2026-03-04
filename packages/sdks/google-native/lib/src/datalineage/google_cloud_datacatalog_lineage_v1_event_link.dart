@@ -7,6 +7,7 @@ import 'google_cloud_datacatalog_lineage_v1_entity_reference.dart';
 class GoogleCloudDatacatalogLineageV1EventLink {
   /// Reference to the source entity
   final pulumi.Input<GoogleCloudDatacatalogLineageV1EntityReference> source;
+
   /// Reference to the target entity
   final pulumi.Input<GoogleCloudDatacatalogLineageV1EntityReference> target;
 
@@ -20,16 +21,33 @@ class GoogleCloudDatacatalogLineageV1EventLink {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'source': pulumi.Input.mapInputValue<GoogleCloudDatacatalogLineageV1EntityReference, Map<String, dynamic>>(source, (value) => value.toMap()),
-      'target': pulumi.Input.mapInputValue<GoogleCloudDatacatalogLineageV1EntityReference, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogLineageV1EntityReference,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
+      'target':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogLineageV1EntityReference,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDatacatalogLineageV1EventLink.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogLineageV1EventLink.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogLineageV1EventLink(
-      source: (GoogleCloudDatacatalogLineageV1EntityReference.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: (GoogleCloudDatacatalogLineageV1EntityReference.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      source: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogLineageV1EntityReference.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      target: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogLineageV1EntityReference.fromMap(
+          (map['target']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

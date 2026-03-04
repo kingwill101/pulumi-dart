@@ -6,6 +6,7 @@ class GetJobQueueJobStateTimeLimitAction {
   final pulumi.Input<String> action;
   final pulumi.Input<int> maxTimeSeconds;
   final pulumi.Input<String> reason;
+
   /// Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
   final pulumi.Input<String> state;
 
@@ -32,11 +33,10 @@ class GetJobQueueJobStateTimeLimitAction {
 
   factory GetJobQueueJobStateTimeLimitAction.fromMap(Map<String, dynamic> map) {
     return GetJobQueueJobStateTimeLimitAction(
-      action: (map['action'] as String).input(),
-      maxTimeSeconds: (map['maxTimeSeconds'] as int).input(),
-      reason: (map['reason'] as String).input(),
-      state: (map['state'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      maxTimeSeconds: pulumi.Input.fromValue(map['maxTimeSeconds'] as int),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

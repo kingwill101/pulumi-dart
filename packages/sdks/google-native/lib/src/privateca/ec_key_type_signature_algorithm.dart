@@ -5,16 +5,15 @@ enum EcKeyTypeSignatureAlgorithm {
   ecdsaP384("ECDSA_P384"),
   eddsa25519("EDDSA_25519");
 
-  const EcKeyTypeSignatureAlgorithm(this.value);
-  final String value;
+  const EcKeyTypeSignatureAlgorithm(this.wireValue);
+  final String wireValue;
 
   static EcKeyTypeSignatureAlgorithm fromValue(String value) {
     for (final item in EcKeyTypeSignatureAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EcKeyTypeSignatureAlgorithm value: $value');
   }
 }
-

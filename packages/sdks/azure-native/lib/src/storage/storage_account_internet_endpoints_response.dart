@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountInternetEndpointsResponse {
   /// Gets the blob endpoint.
   final pulumi.Input<String> blob;
+
   /// Gets the dfs endpoint.
   final pulumi.Input<String> dfs;
+
   /// Gets the file endpoint.
   final pulumi.Input<String> file;
+
   /// Gets the web endpoint.
   final pulumi.Input<String> web;
 
@@ -34,13 +37,14 @@ class StorageAccountInternetEndpointsResponse {
     };
   }
 
-  factory StorageAccountInternetEndpointsResponse.fromMap(Map<String, dynamic> map) {
+  factory StorageAccountInternetEndpointsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageAccountInternetEndpointsResponse(
-      blob: (map['blob'] as String).input(),
-      dfs: (map['dfs'] as String).input(),
-      file: (map['file'] as String).input(),
-      web: (map['web'] as String).input(),
+      blob: pulumi.Input.fromValue(map['blob'] as String),
+      dfs: pulumi.Input.fromValue(map['dfs'] as String),
+      file: pulumi.Input.fromValue(map['file'] as String),
+      web: pulumi.Input.fromValue(map['web'] as String),
     );
   }
 }
-

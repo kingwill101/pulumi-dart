@@ -15,13 +15,16 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// - SUNDAY: Sunday
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final pulumi.Input<String> day;
+
   /// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
   final pulumi.Input<String> duration;
+
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTime;
+  final pulumi.Input<InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime>
+  startTime;
 
   /// Creates a new [InstanceMaintenancePolicyWeeklyMaintenanceWindow].
   /// [day] Required. The day of week that maintenance updates occur.
@@ -37,16 +40,25 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
     return <String, dynamic>{
       'day': day,
       'duration': duration,
-      'startTime': pulumi.Input.mapInputValue<InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime, Map<String, dynamic>>(startTime, (value) => value.toMap()),
+      'startTime':
+          pulumi.Input.mapInputValue<
+            InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime,
+            Map<String, dynamic>
+          >(startTime, (value) => value.toMap()),
     };
   }
 
-  factory InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceMaintenancePolicyWeeklyMaintenanceWindow(
-      day: (map['day'] as String).input(),
-      duration: (map['duration'] as String).input(),
-      startTime: (InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
+      day: pulumi.Input.fromValue(map['day'] as String),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      startTime: pulumi.Input.fromValue(
+        InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap(
+          (map['startTime']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'event_impacted_resource_response.dart';
 class ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult {
   /// The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource.
   final String? nextLink;
+
   /// The list of eventImpactedResources.
   final List<EventImpactedResourceResponse> value;
 
@@ -21,15 +22,29 @@ class ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<EventImpactedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<
+            EventImpactedResourceResponse,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
-  factory ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult.fromMap(Map<String, dynamic> map) {
+  factory ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: pulumi.Input.decodeList<EventImpactedResourceResponse>(map['value'], (value) => EventImpactedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: pulumi.Input.decodeList<EventImpactedResourceResponse>(
+        map['value']!,
+        (value) => EventImpactedResourceResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

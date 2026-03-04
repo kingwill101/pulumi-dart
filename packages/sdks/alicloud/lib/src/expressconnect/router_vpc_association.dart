@@ -6,7 +6,7 @@ import 'router_vpc_association_state.dart';
 ///
 /// For information about Express Connect Router Express Connect Router Vpc Association and how to use it, see [What is Express Connect Router Vpc Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-createexpressconnectrouterassociation).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -250,20 +250,27 @@ import 'router_vpc_association_state.dart';
 class RouterVpcAssociation extends pulumi.CustomResource {
   /// The list of allowed route prefixes.
   late final pulumi.Output<List<String>?> allowedPrefixes;
+
   /// The ID of the association between the ECR and the VPC.
   late final pulumi.Output<String> associationId;
+
   /// The region ID of the resource to be associated.
   late final pulumi.Output<String> associationRegionId;
+
   /// The time when the association was created.
   late final pulumi.Output<String> createTime;
+
   /// The ECR ID.
   late final pulumi.Output<String> ecrId;
+
   /// The deployment state of the associated resource.
   late final pulumi.Output<String> status;
+
   /// The VPC ID.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of the Alibaba Cloud account that owns the VPC.
-  /// > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
+  /// &gt; **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
   late final pulumi.Output<int> vpcOwnerId;
 
   /// Creates a new [RouterVpcAssociation].
@@ -275,19 +282,19 @@ class RouterVpcAssociation extends pulumi.CustomResource {
     RouterVpcAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
-    this.associationId = registerOutput<String>('associationId');
-    this.associationRegionId = registerOutput<String>('associationRegionId');
-    this.createTime = registerOutput<String>('createTime');
-    this.ecrId = registerOutput<String>('ecrId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpcOwnerId = registerOutput<int>('vpcOwnerId');
+         'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
+    associationId = registerOutput<String>('associationId');
+    associationRegionId = registerOutput<String>('associationRegionId');
+    createTime = registerOutput<String>('createTime');
+    ecrId = registerOutput<String>('ecrId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vpcOwnerId = registerOutput<int>('vpcOwnerId');
   }
 
   /// Gets an existing [RouterVpcAssociation] resource's state with the given [name] and [id].
@@ -308,18 +315,18 @@ class RouterVpcAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
-    this.associationId = registerOutput<String>('associationId');
-    this.associationRegionId = registerOutput<String>('associationRegionId');
-    this.createTime = registerOutput<String>('createTime');
-    this.ecrId = registerOutput<String>('ecrId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpcOwnerId = registerOutput<int>('vpcOwnerId');
+         'alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
+    associationId = registerOutput<String>('associationId');
+    associationRegionId = registerOutput<String>('associationRegionId');
+    createTime = registerOutput<String>('createTime');
+    ecrId = registerOutput<String>('ecrId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vpcOwnerId = registerOutput<int>('vpcOwnerId');
   }
 }

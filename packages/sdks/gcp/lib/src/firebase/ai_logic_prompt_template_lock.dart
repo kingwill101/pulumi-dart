@@ -192,14 +192,18 @@ import 'ai_logic_prompt_template_lock_state.dart';
 class AiLogicPromptTemplateLock extends pulumi.CustomResource {
   /// The location of the prompt template.
   late final pulumi.Output<String> location;
+
   /// Indicates if the prompt template is currently locked.
   /// This is verified against the server-side PromptTemplate resource.
   late final pulumi.Output<bool> locked;
+
   /// The resource name of the prompt template.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The ID of the prompt template.
   late final pulumi.Output<String> templateId;
 
@@ -212,16 +216,16 @@ class AiLogicPromptTemplateLock extends pulumi.CustomResource {
     AiLogicPromptTemplateLockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.locked = registerOutput<bool>('locked');
+         'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.templateId = registerOutput<String>('templateId');
+    project = registerOutput<String>('project');
+    templateId = registerOutput<String>('templateId');
   }
 
   /// Gets an existing [AiLogicPromptTemplateLock] resource's state with the given [name] and [id].
@@ -242,15 +246,15 @@ class AiLogicPromptTemplateLock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.locked = registerOutput<bool>('locked');
+         'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.templateId = registerOutput<String>('templateId');
+    project = registerOutput<String>('project');
+    templateId = registerOutput<String>('templateId');
   }
 }

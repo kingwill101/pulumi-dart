@@ -3,16 +3,15 @@ enum ScriptLevel {
   valueDatabase("Database"),
   valueCluster("Cluster");
 
-  const ScriptLevel(this.value);
-  final String value;
+  const ScriptLevel(this.wireValue);
+  final String wireValue;
 
   static ScriptLevel fromValue(String value) {
     for (final item in ScriptLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScriptLevel value: $value');
   }
 }
-

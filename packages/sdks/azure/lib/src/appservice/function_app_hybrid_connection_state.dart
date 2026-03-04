@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionAppHybridConnectionState {
   /// The ID of the Function App for this Hybrid Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? functionAppId;
+
   /// The hostname of the endpoint.
   final pulumi.Input<String>? hostname;
+
   /// The name of the Relay Namespace.
   final pulumi.Input<String>? namespaceName;
+
   /// The port to use for the endpoint
   final pulumi.Input<int>? port;
+
   /// The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   final pulumi.Input<String>? relayId;
+
   /// The name of the Relay in use.
   final pulumi.Input<String>? relayName;
+
   /// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
   final pulumi.Input<String>? sendKeyName;
+
   /// The Primary Access Key for the `send_key_name`
   final pulumi.Input<String>? sendKeyValue;
+
   /// The Service Bus Namespace.
   final pulumi.Input<String>? serviceBusNamespace;
+
   /// The suffix for the endpoint.
   final pulumi.Input<String>? serviceBusSuffix;
 
@@ -66,17 +75,56 @@ class FunctionAppHybridConnectionState {
 
   factory FunctionAppHybridConnectionState.fromMap(Map<String, dynamic> map) {
     return FunctionAppHybridConnectionState(
-      functionAppId: map['functionAppId'] == null ? null : (map['functionAppId']! as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      relayId: map['relayId'] == null ? null : (map['relayId']! as String).input(),
-      relayName: map['relayName'] == null ? null : (map['relayName']! as String).input(),
-      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName']! as String).input(),
-      sendKeyValue: map['sendKeyValue'] == null ? null : (map['sendKeyValue']! as String).input(),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace']! as String).input(),
-      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : (map['serviceBusSuffix']! as String).input(),
+      functionAppId: (() {
+        final guardedValue = map['functionAppId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      relayId: (() {
+        final guardedValue = map['relayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relayName: (() {
+        final guardedValue = map['relayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendKeyName: (() {
+        final guardedValue = map['sendKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendKeyValue: (() {
+        final guardedValue = map['sendKeyValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceBusNamespace: (() {
+        final guardedValue = map['serviceBusNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceBusSuffix: (() {
+        final guardedValue = map['serviceBusSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

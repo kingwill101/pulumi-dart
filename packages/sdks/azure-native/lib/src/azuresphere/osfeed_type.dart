@@ -3,16 +3,15 @@ enum OSFeedType {
   retail("Retail"),
   retailEval("RetailEval");
 
-  const OSFeedType(this.value);
-  final String value;
+  const OSFeedType(this.wireValue);
+  final String wireValue;
 
   static OSFeedType fromValue(String value) {
     for (final item in OSFeedType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OSFeedType value: $value');
   }
 }
-

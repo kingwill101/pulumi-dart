@@ -1,5 +1,3 @@
-library module_certificatemanager;
-
 export 'certificatemanager/authorization_attempt_info_response.dart';
 export 'certificatemanager/certificate.dart';
 export 'certificatemanager/certificate_args.dart';

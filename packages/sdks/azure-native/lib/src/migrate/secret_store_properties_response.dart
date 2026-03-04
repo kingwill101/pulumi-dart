@@ -9,10 +9,7 @@ class SecretStorePropertiesResponse {
   /// Creates a new [SecretStorePropertiesResponse].
   /// [inputType] Required.
   /// [secretStoreId] Optional.
-  SecretStorePropertiesResponse({
-    required this.inputType,
-    this.secretStoreId,
-  });
+  SecretStorePropertiesResponse({required this.inputType, this.secretStoreId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,12 @@ class SecretStorePropertiesResponse {
 
   factory SecretStorePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretStorePropertiesResponse(
-      inputType: (map['inputType'] as String).input(),
-      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId']! as String).input(),
+      inputType: pulumi.Input.fromValue(map['inputType'] as String),
+      secretStoreId: (() {
+        final guardedValue = map['secretStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

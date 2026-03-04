@@ -216,22 +216,31 @@ import 'partner_content_response.dart';
 class IntegrationAccountPartner extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The changed time.
   late final pulumi.Output<String> changedTime;
+
   /// The partner content.
   late final pulumi.Output<PartnerContentResponse> content;
+
   /// The created time.
   late final pulumi.Output<String> createdTime;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The partner type.
   late final pulumi.Output<String> partnerType;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -244,20 +253,20 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
     IntegrationAccountPartnerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationAccountPartner',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.changedTime = registerOutput<String>('changedTime');
-    this.content = registerOutput<PartnerContentResponse>('content');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.location = registerOutput<String?>('location');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:logic:IntegrationAccountPartner',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<PartnerContentResponse>('content');
+    createdTime = registerOutput<String>('createdTime');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.partnerType = registerOutput<String>('partnerType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    partnerType = registerOutput<String>('partnerType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,22 +7,31 @@ import 'deployment_status_response.dart';
 class TargetPropertiesResponse {
   /// List of capabilities
   final pulumi.Input<List<String>> capabilities;
+
   /// ArmId of Context
   final pulumi.Input<String> contextId;
+
   /// Description of target
   final pulumi.Input<String> description;
+
   /// Display name of target
   final pulumi.Input<String> displayName;
+
   /// Hierarchy Level
   final pulumi.Input<String> hierarchyLevel;
+
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
+
   /// Scope of the target resource
   final pulumi.Input<String>? solutionScope;
+
   /// State of resource
   final pulumi.Input<String>? state;
+
   /// Status of target
   final pulumi.Input<DeploymentStatusResponse> status;
+
   /// target spec
   final pulumi.Input<dynamic> targetSpecification;
 
@@ -60,24 +69,43 @@ class TargetPropertiesResponse {
       'provisioningState': provisioningState,
       'solutionScope': ?solutionScope,
       'state': ?state,
-      'status': pulumi.Input.mapInputValue<DeploymentStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            DeploymentStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'targetSpecification': targetSpecification,
     };
   }
 
   factory TargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TargetPropertiesResponse(
-      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
-      contextId: (map['contextId'] as String).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      hierarchyLevel: (map['hierarchyLevel'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      status: (DeploymentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      targetSpecification: (map['targetSpecification']).input(),
+      capabilities: pulumi.Input.fromValue(
+        (map['capabilities'] as List).cast<String>(),
+      ),
+      contextId: pulumi.Input.fromValue(map['contextId'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      hierarchyLevel: pulumi.Input.fromValue(map['hierarchyLevel'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      solutionScope: (() {
+        final guardedValue = map['solutionScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(
+        DeploymentStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetSpecification: pulumi.Input.fromValue(map['targetSpecification']),
     );
   }
 }
-

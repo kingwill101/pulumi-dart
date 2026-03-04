@@ -9,6 +9,7 @@ class GetPythonPackagesResult {
   final String id;
   final String location;
   final String? project;
+
   /// A list of all retrieved Artifact Registry Python packages. Structure is defined below.
   final List<GetPythonPackagesPythonPackage> pythonPackages;
   final String repositoryId;
@@ -32,7 +33,11 @@ class GetPythonPackagesResult {
       'id': id,
       'location': location,
       'project': ?project,
-      'pythonPackages': pulumi.Input.encodeList<GetPythonPackagesPythonPackage, Map<String, dynamic>>(pythonPackages, (value) => value.toMap()),
+      'pythonPackages':
+          pulumi.Input.encodeList<
+            GetPythonPackagesPythonPackage,
+            Map<String, dynamic>
+          >(pythonPackages, (value) => value.toMap()),
       'repositoryId': repositoryId,
     };
   }
@@ -41,10 +46,18 @@ class GetPythonPackagesResult {
     return GetPythonPackagesResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
-      pythonPackages: pulumi.Input.decodeList<GetPythonPackagesPythonPackage>(map['pythonPackages'], (value) => GetPythonPackagesPythonPackage.fromMap((value as Map).cast<String, dynamic>())),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pythonPackages: pulumi.Input.decodeList<GetPythonPackagesPythonPackage>(
+        map['pythonPackages']!,
+        (value) => GetPythonPackagesPythonPackage.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       repositoryId: map['repositoryId'] as String,
     );
   }
 }
-

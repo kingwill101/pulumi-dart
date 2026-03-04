@@ -10,16 +10,22 @@ import 'managed_service_identity.dart';
 class CommunicationServiceArgs {
   /// The name of the CommunicationService resource.
   final pulumi.Input<String>? communicationServiceName;
+
   /// The location where the communication service stores its data at rest.
   final pulumi.Input<String> dataLocation;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// List of email Domain resource Ids.
   final pulumi.Input<List<String>>? linkedDomains;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,7 +51,11 @@ class CommunicationServiceArgs {
     return <String, dynamic>{
       'communicationServiceName': ?communicationServiceName,
       'dataLocation': dataLocation,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'linkedDomains': ?linkedDomains,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
@@ -55,14 +65,41 @@ class CommunicationServiceArgs {
 
   factory CommunicationServiceArgs.fromMap(Map<String, dynamic> map) {
     return CommunicationServiceArgs(
-      communicationServiceName: map['communicationServiceName'] == null ? null : (map['communicationServiceName']! as String).input(),
-      dataLocation: (map['dataLocation'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      linkedDomains: map['linkedDomains'] == null ? null : ((map['linkedDomains']! as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      communicationServiceName: (() {
+        final guardedValue = map['communicationServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataLocation: pulumi.Input.fromValue(map['dataLocation'] as String),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      linkedDomains: (() {
+        final guardedValue = map['linkedDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

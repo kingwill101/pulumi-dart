@@ -3,7 +3,6 @@ import 'extended_location_response.dart';
 import 'system_data_response.dart';
 import 'virtual_network_args.dart';
 import 'virtual_network_properties_response_dhcp_options.dart';
-import 'virtual_network_properties_response_subnets.dart';
 import 'virtual_network_status_response.dart';
 
 /// The virtual network resource definition.
@@ -170,28 +169,41 @@ import 'virtual_network_status_response.dart';
 class VirtualNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
-  late final pulumi.Output<VirtualNetworkPropertiesResponseDhcpOptions?> dhcpOptions;
+  late final pulumi.Output<VirtualNetworkPropertiesResponseDhcpOptions?>
+  dhcpOptions;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Type of the network
   late final pulumi.Output<String?> networkType;
+
   /// Provisioning state of the virtual network.
   late final pulumi.Output<String> provisioningState;
+
   /// The observed state of virtual networks
   late final pulumi.Output<VirtualNetworkStatusResponse> status;
+
   /// Subnet - list of subnets under the virtual network
-  late final pulumi.Output<List<VirtualNetworkPropertiesResponseSubnets>?> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// name of the network switch to be used for VMs
   late final pulumi.Output<String?> vmSwitchName;
 
@@ -204,23 +216,27 @@ class VirtualNetwork extends pulumi.CustomResource {
     VirtualNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:VirtualNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dhcpOptions = registerOutput<VirtualNetworkPropertiesResponseDhcpOptions?>('dhcpOptions');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.location = registerOutput<String>('location');
+         'azure-native:azurestackhci:VirtualNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dhcpOptions = registerOutput<VirtualNetworkPropertiesResponseDhcpOptions?>(
+      'dhcpOptions',
+    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkType = registerOutput<String?>('networkType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<VirtualNetworkStatusResponse>('status');
-    this.subnets = registerOutput<List<VirtualNetworkPropertiesResponseSubnets>?>('subnets');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vmSwitchName = registerOutput<String?>('vmSwitchName');
+    networkType = registerOutput<String?>('networkType');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<VirtualNetworkStatusResponse>('status');
+    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vmSwitchName = registerOutput<String?>('vmSwitchName');
   }
 }

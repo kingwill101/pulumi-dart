@@ -7,11 +7,14 @@ import 'get_groups_group.dart';
 class GetGroupsResult {
   /// A list of groups. Each element contains the following attributes:
   final List<GetGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of group IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of group names.
   final List<String> names;
   final String? outputFile;
@@ -34,7 +37,10 @@ class GetGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(
+        groups,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -45,13 +51,24 @@ class GetGroupsResult {
 
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
-      groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups'], (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetGroupsGroup>(
+        map['groups']!,
+        (value) =>
+            GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

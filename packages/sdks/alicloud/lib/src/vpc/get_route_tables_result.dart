@@ -7,31 +7,42 @@ import 'get_route_tables_table.dart';
 class GetRouteTablesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (Optional) A list of Route Tables IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Route Tables names.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
+
   /// The Id of resource group which route tables belongs.
   final String? resourceGroupId;
+
   /// The route table name.
   final String? routeTableName;
+
   /// The type of route table.
   final String? routeTableType;
+
   /// Router Id of the route table.
   final String? routerId;
+
   /// The route type.
   final String? routerType;
+
   /// The status of route table.
   final String? status;
+
   /// A list of Route Tables. Each element contains the following attributes:
   final List<GetRouteTablesTable> tables;
+
   /// A mapping of tags to assign to the resource.
   final Map<String, String>? tags;
   final int totalCount;
+
   /// The VPC ID.
   final String? vpcId;
 
@@ -88,7 +99,11 @@ class GetRouteTablesResult {
       'routerId': ?routerId,
       'routerType': ?routerType,
       'status': ?status,
-      'tables': pulumi.Input.encodeList<GetRouteTablesTable, Map<String, dynamic>>(tables, (value) => value.toMap()),
+      'tables':
+          pulumi.Input.encodeList<GetRouteTablesTable, Map<String, dynamic>>(
+            tables,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'totalCount': totalCount,
       'vpcId': ?vpcId,
@@ -99,22 +114,73 @@ class GetRouteTablesResult {
     return GetRouteTablesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      routeTableName: map['routeTableName'] == null ? null : map['routeTableName']! as String,
-      routeTableType: map['routeTableType'] == null ? null : map['routeTableType']! as String,
-      routerId: map['routerId'] == null ? null : map['routerId']! as String,
-      routerType: map['routerType'] == null ? null : map['routerType']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tables: pulumi.Input.decodeList<GetRouteTablesTable>(map['tables'], (value) => GetRouteTablesTable.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routeTableName: (() {
+        final guardedValue = map['routeTableName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routeTableType: (() {
+        final guardedValue = map['routeTableType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routerId: (() {
+        final guardedValue = map['routerId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routerType: (() {
+        final guardedValue = map['routerType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tables: pulumi.Input.decodeList<GetRouteTablesTable>(
+        map['tables']!,
+        (value) =>
+            GetRouteTablesTable.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       totalCount: map['totalCount'] as int,
-      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceServiceRegistry {
   /// Name of the container to associate with the load balancer.
   final pulumi.Input<String> containerName;
+
   /// Port on the container to associate with the load balancer.
   final pulumi.Input<int> containerPort;
+
   /// Port value for service discovery
   final pulumi.Input<int> port;
+
   /// ARN of the service registry
   final pulumi.Input<String> registryArn;
 
@@ -35,11 +38,10 @@ class GetServiceServiceRegistry {
 
   factory GetServiceServiceRegistry.fromMap(Map<String, dynamic> map) {
     return GetServiceServiceRegistry(
-      containerName: (map['containerName'] as String).input(),
-      containerPort: (map['containerPort'] as int).input(),
-      port: (map['port'] as int).input(),
-      registryArn: (map['registryArn'] as String).input(),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      registryArn: pulumi.Input.fromValue(map['registryArn'] as String),
     );
   }
 }
-

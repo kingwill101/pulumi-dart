@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUser {
   /// Alibaba Cloud account ID.
   final pulumi.Input<String> accountId;
+
   /// An Alibaba Cloud account, Alibaba Cloud name.
   final pulumi.Input<String> accountName;
+
   /// Whether it is the administrator. Valid values: `true` and `false`.
   final pulumi.Input<bool> adminUser;
+
   /// Whether this is a permissions administrator. Valid values: `true` and `false`.
   final pulumi.Input<bool> authAdminUser;
+
   /// The email of the user.
   final pulumi.Input<String> email;
+
   /// The ID of the User.
   final pulumi.Input<String> id;
+
   /// The nickname of the user.
   final pulumi.Input<String> nickName;
+
   /// The phone number of the user.
   final pulumi.Input<String> phone;
+
   /// The ID of the User.
   final pulumi.Input<String> userId;
+
   /// The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
   final pulumi.Input<String> userType;
 
@@ -65,17 +74,16 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      accountId: (map['accountId'] as String).input(),
-      accountName: (map['accountName'] as String).input(),
-      adminUser: (map['adminUser'] as bool).input(),
-      authAdminUser: (map['authAdminUser'] as bool).input(),
-      email: (map['email'] as String).input(),
-      id: (map['id'] as String).input(),
-      nickName: (map['nickName'] as String).input(),
-      phone: (map['phone'] as String).input(),
-      userId: (map['userId'] as String).input(),
-      userType: (map['userType'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      adminUser: pulumi.Input.fromValue(map['adminUser'] as bool),
+      authAdminUser: pulumi.Input.fromValue(map['authAdminUser'] as bool),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      nickName: pulumi.Input.fromValue(map['nickName'] as String),
+      phone: pulumi.Input.fromValue(map['phone'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      userType: pulumi.Input.fromValue(map['userType'] as String),
     );
   }
 }
-

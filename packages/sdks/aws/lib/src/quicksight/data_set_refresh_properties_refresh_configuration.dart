@@ -5,7 +5,10 @@ import 'data_set_refresh_properties_refresh_configuration_incremental_refresh.da
 
 class DataSetRefreshPropertiesRefreshConfiguration {
   /// The incremental refresh for the data set. See incremental_refresh.
-  final pulumi.Input<DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh> incrementalRefresh;
+  final pulumi.Input<
+    DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh
+  >
+  incrementalRefresh;
 
   /// Creates a new [DataSetRefreshPropertiesRefreshConfiguration].
   /// [incrementalRefresh] The incremental refresh for the data set. See incremental_refresh.
@@ -15,14 +18,23 @@ class DataSetRefreshPropertiesRefreshConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'incrementalRefresh': pulumi.Input.mapInputValue<DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh, Map<String, dynamic>>(incrementalRefresh, (value) => value.toMap()),
+      'incrementalRefresh':
+          pulumi.Input.mapInputValue<
+            DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh,
+            Map<String, dynamic>
+          >(incrementalRefresh, (value) => value.toMap()),
     };
   }
 
-  factory DataSetRefreshPropertiesRefreshConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DataSetRefreshPropertiesRefreshConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetRefreshPropertiesRefreshConfiguration(
-      incrementalRefresh: (DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh.fromMap((map['incrementalRefresh']! as Map).cast<String, dynamic>())).input(),
+      incrementalRefresh: pulumi.Input.fromValue(
+        DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh.fromMap(
+          (map['incrementalRefresh']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

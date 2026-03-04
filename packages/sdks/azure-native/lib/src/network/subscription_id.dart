@@ -8,20 +8,19 @@ class SubscriptionId {
 
   /// Creates a new [SubscriptionId].
   /// [id] Subscription id in the ARM id format.
-  SubscriptionId({
-    this.id,
-  });
+  SubscriptionId({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory SubscriptionId.fromMap(Map<String, dynamic> map) {
     return SubscriptionId(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

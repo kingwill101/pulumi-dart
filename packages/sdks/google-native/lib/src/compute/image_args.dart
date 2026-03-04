@@ -17,59 +17,86 @@ import 'rollout_policy.dart';
 class ImageArgs {
   /// The architecture of the image. Valid values are ARM64 or X86_64.
   final pulumi.Input<ImageArchitecture>? architecture;
+
   /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
   final pulumi.Input<String>? archiveSizeBytes;
+
   /// The deprecation status associated with this image.
   final pulumi.Input<DeprecationStatus>? deprecated;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
+
   /// Size of the image when restored onto a persistent disk (in GB).
   final pulumi.Input<String>? diskSizeGb;
+
   /// Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
   final pulumi.Input<bool>? enableConfidentialCompute;
+
   /// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
   final pulumi.Input<String>? family;
+
   /// Force image creation if true.
   final pulumi.Input<bool>? forceCreate;
+
   /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
   final pulumi.Input<List<GuestOsFeature>>? guestOsFeatures;
+
   /// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
   final pulumi.Input<CustomerEncryptionKey>? imageEncryptionKey;
+
   /// Labels to apply to this image. These can be later modified by the setLabels method.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Integer license codes indicating which licenses are attached to this image.
   final pulumi.Input<List<String>>? licenseCodes;
+
   /// Any applicable license URI.
   final pulumi.Input<List<String>>? licenses;
+
   /// A flag for marketplace VM disk created from the image, which is designed for marketplace VM disk to prevent the proprietary data on the disk from being accessed unwantedly. The flag will be inherited by the disk created from the image. The disk with locked flag set to true will be prohibited from performing the operations below: - R/W or R/O disk attach - Disk detach, if disk is created via create-on-create - Create images - Create snapshots - Create disk clone (create disk from the current disk) The image with the locked field set to true will be prohibited from performing the operations below: - Create images from the current image - Update the locked field for the current image The instance with at least one disk with locked flag set to true will be prohibited from performing the operations below: - Secondary disk attach - Create instant snapshot - Create machine images - Create instance template - Delete the instance with --keep-disk parameter set to true
   final pulumi.Input<bool>? locked;
+
   /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// The parameters of the raw disk image.
   final pulumi.Input<ImageRawDisk>? rawDisk;
+
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
   final pulumi.Input<RolloutPolicy>? rolloutOverride;
+
   /// Set the secure boot keys of shielded instance.
   final pulumi.Input<InitialStateConfig>? shieldedInstanceInitialState;
+
   /// URL of the source disk used to create this image. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
   final pulumi.Input<String>? sourceDisk;
+
   /// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
   final pulumi.Input<CustomerEncryptionKey>? sourceDiskEncryptionKey;
+
   /// URL of the source image used to create this image. The following are valid formats for the URL: - https://www.googleapis.com/compute/v1/projects/project_id/global/ images/image_name - projects/project_id/global/images/image_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
   final pulumi.Input<String>? sourceImage;
+
   /// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
   final pulumi.Input<CustomerEncryptionKey>? sourceImageEncryptionKey;
+
   /// URL of the source snapshot used to create this image. The following are valid formats for the URL: - https://www.googleapis.com/compute/v1/projects/project_id/global/ snapshots/snapshot_name - projects/project_id/global/snapshots/snapshot_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
   final pulumi.Input<String>? sourceSnapshot;
+
   /// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
   final pulumi.Input<CustomerEncryptionKey>? sourceSnapshotEncryptionKey;
+
   /// The type of the image used to create this disk. The default and only valid value is RAW.
   final pulumi.Input<ImageSourceType>? sourceType;
+
   /// Cloud Storage bucket storage location of the image (regional or multi-regional).
   final pulumi.Input<List<String>>? storageLocations;
+
   /// A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
   final pulumi.Input<List<String>>? userLicenses;
 
@@ -137,33 +164,84 @@ class ImageArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'architecture': ?pulumi.Input.mapOptionalInputValue<ImageArchitecture, String>(architecture, (value) => value.value),
+      'architecture':
+          ?pulumi.Input.mapOptionalInputValue<ImageArchitecture, String>(
+            architecture,
+            (value) => value.wireValue,
+          ),
       'archiveSizeBytes': ?archiveSizeBytes,
-      'deprecated': ?pulumi.Input.mapOptionalInputValue<DeprecationStatus, Map<String, dynamic>>(deprecated, (value) => value.toMap()),
+      'deprecated':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeprecationStatus,
+            Map<String, dynamic>
+          >(deprecated, (value) => value.toMap()),
       'description': ?description,
       'diskSizeGb': ?diskSizeGb,
       'enableConfidentialCompute': ?enableConfidentialCompute,
       'family': ?family,
       'forceCreate': ?forceCreate,
-      'guestOsFeatures': ?pulumi.Input.mapOptionalInputValue<List<GuestOsFeature>, List<Map<String, dynamic>>>(guestOsFeatures, (value) => pulumi.Input.encodeList<GuestOsFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'imageEncryptionKey': ?pulumi.Input.mapOptionalInputValue<CustomerEncryptionKey, Map<String, dynamic>>(imageEncryptionKey, (value) => value.toMap()),
+      'guestOsFeatures':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GuestOsFeature>,
+            List<Map<String, dynamic>>
+          >(
+            guestOsFeatures,
+            (value) =>
+                pulumi.Input.encodeList<GuestOsFeature, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'imageEncryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerEncryptionKey,
+            Map<String, dynamic>
+          >(imageEncryptionKey, (value) => value.toMap()),
       'labels': ?labels,
       'licenseCodes': ?licenseCodes,
       'licenses': ?licenses,
       'locked': ?locked,
       'name': ?name,
       'project': ?project,
-      'rawDisk': ?pulumi.Input.mapOptionalInputValue<ImageRawDisk, Map<String, dynamic>>(rawDisk, (value) => value.toMap()),
+      'rawDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageRawDisk,
+            Map<String, dynamic>
+          >(rawDisk, (value) => value.toMap()),
       'requestId': ?requestId,
-      'rolloutOverride': ?pulumi.Input.mapOptionalInputValue<RolloutPolicy, Map<String, dynamic>>(rolloutOverride, (value) => value.toMap()),
-      'shieldedInstanceInitialState': ?pulumi.Input.mapOptionalInputValue<InitialStateConfig, Map<String, dynamic>>(shieldedInstanceInitialState, (value) => value.toMap()),
+      'rolloutOverride':
+          ?pulumi.Input.mapOptionalInputValue<
+            RolloutPolicy,
+            Map<String, dynamic>
+          >(rolloutOverride, (value) => value.toMap()),
+      'shieldedInstanceInitialState':
+          ?pulumi.Input.mapOptionalInputValue<
+            InitialStateConfig,
+            Map<String, dynamic>
+          >(shieldedInstanceInitialState, (value) => value.toMap()),
       'sourceDisk': ?sourceDisk,
-      'sourceDiskEncryptionKey': ?pulumi.Input.mapOptionalInputValue<CustomerEncryptionKey, Map<String, dynamic>>(sourceDiskEncryptionKey, (value) => value.toMap()),
+      'sourceDiskEncryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerEncryptionKey,
+            Map<String, dynamic>
+          >(sourceDiskEncryptionKey, (value) => value.toMap()),
       'sourceImage': ?sourceImage,
-      'sourceImageEncryptionKey': ?pulumi.Input.mapOptionalInputValue<CustomerEncryptionKey, Map<String, dynamic>>(sourceImageEncryptionKey, (value) => value.toMap()),
+      'sourceImageEncryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerEncryptionKey,
+            Map<String, dynamic>
+          >(sourceImageEncryptionKey, (value) => value.toMap()),
       'sourceSnapshot': ?sourceSnapshot,
-      'sourceSnapshotEncryptionKey': ?pulumi.Input.mapOptionalInputValue<CustomerEncryptionKey, Map<String, dynamic>>(sourceSnapshotEncryptionKey, (value) => value.toMap()),
-      'sourceType': ?pulumi.Input.mapOptionalInputValue<ImageSourceType, String>(sourceType, (value) => value.value),
+      'sourceSnapshotEncryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerEncryptionKey,
+            Map<String, dynamic>
+          >(sourceSnapshotEncryptionKey, (value) => value.toMap()),
+      'sourceType':
+          ?pulumi.Input.mapOptionalInputValue<ImageSourceType, String>(
+            sourceType,
+            (value) => value.wireValue,
+          ),
       'storageLocations': ?storageLocations,
       'userLicenses': ?userLicenses,
     };
@@ -171,36 +249,191 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      architecture: map['architecture'] == null ? null : (ImageArchitecture.fromValue(map['architecture']! as String)).input(),
-      archiveSizeBytes: map['archiveSizeBytes'] == null ? null : (map['archiveSizeBytes']! as String).input(),
-      deprecated: map['deprecated'] == null ? null : (DeprecationStatus.fromMap((map['deprecated']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
-      family: map['family'] == null ? null : (map['family']! as String).input(),
-      forceCreate: map['forceCreate'] == null ? null : (map['forceCreate']! as bool).input(),
-      guestOsFeatures: map['guestOsFeatures'] == null ? null : (pulumi.Input.decodeList<GuestOsFeature>(map['guestOsFeatures']!, (value) => GuestOsFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageEncryptionKey: map['imageEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['imageEncryptionKey']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      licenseCodes: map['licenseCodes'] == null ? null : ((map['licenseCodes']! as List).cast<String>()).input(),
-      licenses: map['licenses'] == null ? null : ((map['licenses']! as List).cast<String>()).input(),
-      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rawDisk: map['rawDisk'] == null ? null : (ImageRawDisk.fromMap((map['rawDisk']! as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      rolloutOverride: map['rolloutOverride'] == null ? null : (RolloutPolicy.fromMap((map['rolloutOverride']! as Map).cast<String, dynamic>())).input(),
-      shieldedInstanceInitialState: map['shieldedInstanceInitialState'] == null ? null : (InitialStateConfig.fromMap((map['shieldedInstanceInitialState']! as Map).cast<String, dynamic>())).input(),
-      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk']! as String).input(),
-      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['sourceDiskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
-      sourceImage: map['sourceImage'] == null ? null : (map['sourceImage']! as String).input(),
-      sourceImageEncryptionKey: map['sourceImageEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['sourceImageEncryptionKey']! as Map).cast<String, dynamic>())).input(),
-      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot']! as String).input(),
-      sourceSnapshotEncryptionKey: map['sourceSnapshotEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['sourceSnapshotEncryptionKey']! as Map).cast<String, dynamic>())).input(),
-      sourceType: map['sourceType'] == null ? null : (ImageSourceType.fromValue(map['sourceType']! as String)).input(),
-      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations']! as List).cast<String>()).input(),
-      userLicenses: map['userLicenses'] == null ? null : ((map['userLicenses']! as List).cast<String>()).input(),
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageArchitecture.fromValue(guardedValue as String),
+        );
+      })(),
+      archiveSizeBytes: (() {
+        final guardedValue = map['archiveSizeBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deprecated: (() {
+        final guardedValue = map['deprecated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeprecationStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskSizeGb: (() {
+        final guardedValue = map['diskSizeGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableConfidentialCompute: (() {
+        final guardedValue = map['enableConfidentialCompute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      family: (() {
+        final guardedValue = map['family'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceCreate: (() {
+        final guardedValue = map['forceCreate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      guestOsFeatures: (() {
+        final guardedValue = map['guestOsFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GuestOsFeature>(
+            guardedValue,
+            (value) =>
+                GuestOsFeature.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      imageEncryptionKey: (() {
+        final guardedValue = map['imageEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomerEncryptionKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      licenseCodes: (() {
+        final guardedValue = map['licenseCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      licenses: (() {
+        final guardedValue = map['licenses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      locked: (() {
+        final guardedValue = map['locked'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rawDisk: (() {
+        final guardedValue = map['rawDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageRawDisk.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rolloutOverride: (() {
+        final guardedValue = map['rolloutOverride'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RolloutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      shieldedInstanceInitialState: (() {
+        final guardedValue = map['shieldedInstanceInitialState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InitialStateConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceDisk: (() {
+        final guardedValue = map['sourceDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceDiskEncryptionKey: (() {
+        final guardedValue = map['sourceDiskEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomerEncryptionKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceImage: (() {
+        final guardedValue = map['sourceImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceImageEncryptionKey: (() {
+        final guardedValue = map['sourceImageEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomerEncryptionKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceSnapshot: (() {
+        final guardedValue = map['sourceSnapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceSnapshotEncryptionKey: (() {
+        final guardedValue = map['sourceSnapshotEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomerEncryptionKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceType: (() {
+        final guardedValue = map['sourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageSourceType.fromValue(guardedValue as String),
+        );
+      })(),
+      storageLocations: (() {
+        final guardedValue = map['storageLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      userLicenses: (() {
+        final guardedValue = map['userLicenses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

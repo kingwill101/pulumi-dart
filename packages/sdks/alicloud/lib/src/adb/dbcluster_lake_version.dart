@@ -6,7 +6,7 @@ import 'dbcluster_lake_version_state.dart';
 ///
 /// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
 ///
-/// > **NOTE:** Available since v1.190.0.
+/// &gt; **NOTE:** Available since v1.190.0.
 ///
 /// ## Example Usage
 ///
@@ -232,81 +232,116 @@ import 'dbcluster_lake_version_state.dart';
 class DBClusterLakeVersion extends pulumi.CustomResource {
   /// The ID of the backup set that you want to use to restore data.
   late final pulumi.Output<String?> backupSetId;
+
   /// The name of the service.
   late final pulumi.Output<String> commodityCode;
+
   /// The computing resources of the cluster.
   late final pulumi.Output<String> computeResource;
+
   /// The endpoint of the cluster.
   late final pulumi.Output<String> connectionString;
+
   /// The createTime of the cluster.
   late final pulumi.Output<String> createTime;
+
   /// The description of the cluster.
   late final pulumi.Output<String> dbClusterDescription;
+
   /// The version of the cluster. Valid values: `5.0`.
   late final pulumi.Output<String> dbClusterVersion;
+
   /// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> diskEncryption;
+
   /// Whether to enable default allocation of resources to user_default resource groups.
   late final pulumi.Output<bool?> enableDefaultResourceGroup;
+
   /// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> enableSsl;
+
   /// The engine of the database.
   late final pulumi.Output<String> engine;
+
   /// The engine version of the database.
   late final pulumi.Output<String> engineVersion;
+
   /// The time when the cluster expires.
   late final pulumi.Output<String> expireTime;
+
   /// Indicates whether the cluster has expired.
   late final pulumi.Output<bool> expired;
+
   /// The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
   late final pulumi.Output<String?> kmsId;
+
   /// The lock mode of the cluster.
   late final pulumi.Output<String> lockMode;
+
   /// The reason why the cluster is locked.
   late final pulumi.Output<String> lockReason;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
   late final pulumi.Output<int?> period;
+
   /// The port that is used to access the cluster.
   late final pulumi.Output<String> port;
+
   /// The product form of the cluster. Valid values:
   /// - `IntegrationForm`: Integrated.
   /// - `LegacyForm`: Data Lakehouse Edition.
   late final pulumi.Output<String> productForm;
+
   /// The edition of the cluster. Valid values:
   /// - `BasicVersion`: Basic Edition.
   /// - `EnterpriseVersion`: Enterprise Edition.
-  /// > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+  /// &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
   late final pulumi.Output<String> productVersion;
+
   /// The number of reserved resource nodes.
   late final pulumi.Output<int> reservedNodeCount;
+
   /// The specifications of reserved resource nodes.
   late final pulumi.Output<String> reservedNodeSize;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The point in time to which you want to restore data from the backup set.
   late final pulumi.Output<String?> restoreToTime;
+
   /// The method that you want to use to restore data. Valid values:
   late final pulumi.Output<String?> restoreType;
+
   /// The ID of the secondary zone.
   late final pulumi.Output<String?> secondaryVswitchId;
+
   /// The ID of the secondary vSwitch.
   late final pulumi.Output<String?> secondaryZoneId;
+
   /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
   /// - IP addresses, such as 10.23.XX.XX.
   /// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
   late final pulumi.Output<String> securityIps;
+
   /// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
   late final pulumi.Output<String?> sourceDbClusterId;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// The storage resources of the cluster.
   late final pulumi.Output<String> storageResource;
+
   /// The vpc ID of the resource.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of the vSwitch.
   late final pulumi.Output<String> vswitchId;
+
   /// The zone ID of the resource.
   late final pulumi.Output<String> zoneId;
 
@@ -319,47 +354,49 @@ class DBClusterLakeVersion extends pulumi.CustomResource {
     DBClusterLakeVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupSetId = registerOutput<String?>('backupSetId');
-    this.commodityCode = registerOutput<String>('commodityCode');
-    this.computeResource = registerOutput<String>('computeResource');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.createTime = registerOutput<String>('createTime');
-    this.dbClusterDescription = registerOutput<String>('dbClusterDescription');
-    this.dbClusterVersion = registerOutput<String>('dbClusterVersion');
-    this.diskEncryption = registerOutput<bool?>('diskEncryption');
-    this.enableDefaultResourceGroup = registerOutput<bool?>('enableDefaultResourceGroup');
-    this.enableSsl = registerOutput<bool?>('enableSsl');
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.expireTime = registerOutput<String>('expireTime');
-    this.expired = registerOutput<bool>('expired');
-    this.kmsId = registerOutput<String?>('kmsId');
-    this.lockMode = registerOutput<String>('lockMode');
-    this.lockReason = registerOutput<String>('lockReason');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.port = registerOutput<String>('port');
-    this.productForm = registerOutput<String>('productForm');
-    this.productVersion = registerOutput<String>('productVersion');
-    this.reservedNodeCount = registerOutput<int>('reservedNodeCount');
-    this.reservedNodeSize = registerOutput<String>('reservedNodeSize');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.restoreToTime = registerOutput<String?>('restoreToTime');
-    this.restoreType = registerOutput<String?>('restoreType');
-    this.secondaryVswitchId = registerOutput<String?>('secondaryVswitchId');
-    this.secondaryZoneId = registerOutput<String?>('secondaryZoneId');
-    this.securityIps = registerOutput<String>('securityIps');
-    this.sourceDbClusterId = registerOutput<String?>('sourceDbClusterId');
-    this.status = registerOutput<String>('status');
-    this.storageResource = registerOutput<String>('storageResource');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupSetId = registerOutput<String?>('backupSetId');
+    commodityCode = registerOutput<String>('commodityCode');
+    computeResource = registerOutput<String>('computeResource');
+    connectionString = registerOutput<String>('connectionString');
+    createTime = registerOutput<String>('createTime');
+    dbClusterDescription = registerOutput<String>('dbClusterDescription');
+    dbClusterVersion = registerOutput<String>('dbClusterVersion');
+    diskEncryption = registerOutput<bool?>('diskEncryption');
+    enableDefaultResourceGroup = registerOutput<bool?>(
+      'enableDefaultResourceGroup',
+    );
+    enableSsl = registerOutput<bool?>('enableSsl');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    expireTime = registerOutput<String>('expireTime');
+    expired = registerOutput<bool>('expired');
+    kmsId = registerOutput<String?>('kmsId');
+    lockMode = registerOutput<String>('lockMode');
+    lockReason = registerOutput<String>('lockReason');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    port = registerOutput<String>('port');
+    productForm = registerOutput<String>('productForm');
+    productVersion = registerOutput<String>('productVersion');
+    reservedNodeCount = registerOutput<int>('reservedNodeCount');
+    reservedNodeSize = registerOutput<String>('reservedNodeSize');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    restoreToTime = registerOutput<String?>('restoreToTime');
+    restoreType = registerOutput<String?>('restoreType');
+    secondaryVswitchId = registerOutput<String?>('secondaryVswitchId');
+    secondaryZoneId = registerOutput<String?>('secondaryZoneId');
+    securityIps = registerOutput<String>('securityIps');
+    sourceDbClusterId = registerOutput<String?>('sourceDbClusterId');
+    status = registerOutput<String>('status');
+    storageResource = registerOutput<String>('storageResource');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [DBClusterLakeVersion] resource's state with the given [name] and [id].
@@ -380,46 +417,48 @@ class DBClusterLakeVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupSetId = registerOutput<String?>('backupSetId');
-    this.commodityCode = registerOutput<String>('commodityCode');
-    this.computeResource = registerOutput<String>('computeResource');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.createTime = registerOutput<String>('createTime');
-    this.dbClusterDescription = registerOutput<String>('dbClusterDescription');
-    this.dbClusterVersion = registerOutput<String>('dbClusterVersion');
-    this.diskEncryption = registerOutput<bool?>('diskEncryption');
-    this.enableDefaultResourceGroup = registerOutput<bool?>('enableDefaultResourceGroup');
-    this.enableSsl = registerOutput<bool?>('enableSsl');
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.expireTime = registerOutput<String>('expireTime');
-    this.expired = registerOutput<bool>('expired');
-    this.kmsId = registerOutput<String?>('kmsId');
-    this.lockMode = registerOutput<String>('lockMode');
-    this.lockReason = registerOutput<String>('lockReason');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.port = registerOutput<String>('port');
-    this.productForm = registerOutput<String>('productForm');
-    this.productVersion = registerOutput<String>('productVersion');
-    this.reservedNodeCount = registerOutput<int>('reservedNodeCount');
-    this.reservedNodeSize = registerOutput<String>('reservedNodeSize');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.restoreToTime = registerOutput<String?>('restoreToTime');
-    this.restoreType = registerOutput<String?>('restoreType');
-    this.secondaryVswitchId = registerOutput<String?>('secondaryVswitchId');
-    this.secondaryZoneId = registerOutput<String?>('secondaryZoneId');
-    this.securityIps = registerOutput<String>('securityIps');
-    this.sourceDbClusterId = registerOutput<String?>('sourceDbClusterId');
-    this.status = registerOutput<String>('status');
-    this.storageResource = registerOutput<String>('storageResource');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupSetId = registerOutput<String?>('backupSetId');
+    commodityCode = registerOutput<String>('commodityCode');
+    computeResource = registerOutput<String>('computeResource');
+    connectionString = registerOutput<String>('connectionString');
+    createTime = registerOutput<String>('createTime');
+    dbClusterDescription = registerOutput<String>('dbClusterDescription');
+    dbClusterVersion = registerOutput<String>('dbClusterVersion');
+    diskEncryption = registerOutput<bool?>('diskEncryption');
+    enableDefaultResourceGroup = registerOutput<bool?>(
+      'enableDefaultResourceGroup',
+    );
+    enableSsl = registerOutput<bool?>('enableSsl');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    expireTime = registerOutput<String>('expireTime');
+    expired = registerOutput<bool>('expired');
+    kmsId = registerOutput<String?>('kmsId');
+    lockMode = registerOutput<String>('lockMode');
+    lockReason = registerOutput<String>('lockReason');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    port = registerOutput<String>('port');
+    productForm = registerOutput<String>('productForm');
+    productVersion = registerOutput<String>('productVersion');
+    reservedNodeCount = registerOutput<int>('reservedNodeCount');
+    reservedNodeSize = registerOutput<String>('reservedNodeSize');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    restoreToTime = registerOutput<String?>('restoreToTime');
+    restoreType = registerOutput<String?>('restoreType');
+    secondaryVswitchId = registerOutput<String?>('secondaryVswitchId');
+    secondaryZoneId = registerOutput<String?>('secondaryZoneId');
+    securityIps = registerOutput<String>('securityIps');
+    sourceDbClusterId = registerOutput<String?>('sourceDbClusterId');
+    status = registerOutput<String>('status');
+    storageResource = registerOutput<String>('storageResource');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

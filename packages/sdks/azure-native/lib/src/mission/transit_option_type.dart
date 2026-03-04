@@ -4,16 +4,15 @@ enum TransitOptionType {
   gateway("Gateway"),
   peering("Peering");
 
-  const TransitOptionType(this.value);
-  final String value;
+  const TransitOptionType(this.wireValue);
+  final String wireValue;
 
   static TransitOptionType fromValue(String value) {
     for (final item in TransitOptionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransitOptionType value: $value');
   }
 }
-

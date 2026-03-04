@@ -5,36 +5,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFileSystemsSystem {
   /// (Optional, Available in v1.140.0+) The capacity of the file system.
   final pulumi.Input<int> capacity;
+
   /// Time of creation.
   final pulumi.Input<String> createTime;
+
   /// Description of the FileSystem.
   final pulumi.Input<String> description;
+
   /// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
   /// * Valid values:
   final pulumi.Input<int> encryptType;
+
   /// The type of the file system.
   /// Valid values:
   /// `standard` (Default),
   /// `extreme`.
   final pulumi.Input<String> fileSystemType;
+
   /// ID of the FileSystem.
   final pulumi.Input<String> id;
+
   /// (Optional, Available in v1.140.0+) The id of the KMS key.
   final pulumi.Input<String> kmsKeyId;
+
   /// MeteredSize of the FileSystem.
   final pulumi.Input<int> meteredSize;
+
   /// The protocol type of the file system.
   /// Valid values:
   /// `NFS`,
   /// `SMB` (Available when the `file_system_type` is `standard`).
   final pulumi.Input<String> protocolType;
+
   /// ID of the region where the FileSystem is located.
   final pulumi.Input<String> regionId;
+
   /// The storage type of the file system.
   /// * Valid values:
   /// * `Performance` (Available when the `file_system_type` is `standard`)
   /// * `Capacity` (Available when the `file_system_type` is `standard`)
   final pulumi.Input<String> storageType;
+
   /// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
   final pulumi.Input<String> zoneId;
 
@@ -85,19 +96,18 @@ class GetFileSystemsSystem {
 
   factory GetFileSystemsSystem.fromMap(Map<String, dynamic> map) {
     return GetFileSystemsSystem(
-      capacity: (map['capacity'] as int).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      encryptType: (map['encryptType'] as int).input(),
-      fileSystemType: (map['fileSystemType'] as String).input(),
-      id: (map['id'] as String).input(),
-      kmsKeyId: (map['kmsKeyId'] as String).input(),
-      meteredSize: (map['meteredSize'] as int).input(),
-      protocolType: (map['protocolType'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
-      storageType: (map['storageType'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      encryptType: pulumi.Input.fromValue(map['encryptType'] as int),
+      fileSystemType: pulumi.Input.fromValue(map['fileSystemType'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
+      meteredSize: pulumi.Input.fromValue(map['meteredSize'] as int),
+      protocolType: pulumi.Input.fromValue(map['protocolType'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      storageType: pulumi.Input.fromValue(map['storageType'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

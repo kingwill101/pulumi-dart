@@ -12,12 +12,16 @@ class ContactListArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> contactListName;
+
   /// Description of what the contact list is about.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags for the contact list. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Configuration block(s) with topic for the contact list. Detailed below.
   final pulumi.Input<List<ContactListTopic>>? topics;
 
@@ -41,18 +45,53 @@ class ContactListArgs {
       'description': ?description,
       'region': ?region,
       'tags': ?tags,
-      'topics': ?pulumi.Input.mapOptionalInputValue<List<ContactListTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<ContactListTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'topics':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContactListTopic>,
+            List<Map<String, dynamic>>
+          >(
+            topics,
+            (value) =>
+                pulumi.Input.encodeList<ContactListTopic, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ContactListArgs.fromMap(Map<String, dynamic> map) {
     return ContactListArgs(
-      contactListName: (map['contactListName'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      topics: map['topics'] == null ? null : ((pulumi.Input.decodeList<ContactListTopic>(map['topics']!, (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      contactListName: pulumi.Input.fromValue(map['contactListName'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      topics: (() {
+        final guardedValue = map['topics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ContactListTopic>(
+            guardedValue,
+            (value) => ContactListTopic.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

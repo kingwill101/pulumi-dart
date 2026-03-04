@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatasetArgs {
   /// The dataset name.
   final pulumi.Input<String> datasetName;
+
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetDatasetArgs {
 
   factory GetDatasetArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetArgs(
-      datasetName: (map['datasetName'] as String).input(),
-      factoryName: (map['factoryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      datasetName: pulumi.Input.fromValue(map['datasetName'] as String),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

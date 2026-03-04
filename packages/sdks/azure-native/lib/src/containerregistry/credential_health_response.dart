@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CredentialHealthResponse {
   /// Error code representing the health check error.
   final pulumi.Input<String>? errorCode;
+
   /// Descriptive message representing the health check error.
   final pulumi.Input<String>? errorMessage;
+
   /// The health status of credential.
   final pulumi.Input<String>? status;
 
@@ -15,11 +17,7 @@ class CredentialHealthResponse {
   /// [errorCode] Error code representing the health check error.
   /// [errorMessage] Descriptive message representing the health check error.
   /// [status] The health status of credential.
-  CredentialHealthResponse({
-    this.errorCode,
-    this.errorMessage,
-    this.status,
-  });
+  CredentialHealthResponse({this.errorCode, this.errorMessage, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class CredentialHealthResponse {
 
   factory CredentialHealthResponse.fromMap(Map<String, dynamic> map) {
     return CredentialHealthResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

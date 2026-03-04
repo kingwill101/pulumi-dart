@@ -8,7 +8,7 @@ import 'workspace_member_state.dart';
 ///
 /// For information about PAI Workspace Member and how to use it, see [What is Member](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
 ///
-/// > **NOTE:** Available since v1.249.0.
+/// &gt; **NOTE:** Available since v1.249.0.
 ///
 /// ## Example Usage
 ///
@@ -285,12 +285,16 @@ import 'workspace_member_state.dart';
 class WorkspaceMember extends pulumi.CustomResource {
   /// The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
   late final pulumi.Output<String> createTime;
+
   /// The member ID.
   late final pulumi.Output<String> memberId;
+
   /// The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
   late final pulumi.Output<List<String>> roles;
+
   /// The ID of the User.
   late final pulumi.Output<String> userId;
+
   /// The ID of the Workspace.
   late final pulumi.Output<String> workspaceId;
 
@@ -303,16 +307,16 @@ class WorkspaceMember extends pulumi.CustomResource {
     WorkspaceMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceMember:WorkspaceMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.memberId = registerOutput<String>('memberId');
-    this.roles = registerOutput<List<String>>('roles');
-    this.userId = registerOutput<String>('userId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/workspaceMember:WorkspaceMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    memberId = registerOutput<String>('memberId');
+    roles = registerOutput<List<String>>('roles');
+    userId = registerOutput<String>('userId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceMember] resource's state with the given [name] and [id].
@@ -333,15 +337,15 @@ class WorkspaceMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceMember:WorkspaceMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.memberId = registerOutput<String>('memberId');
-    this.roles = registerOutput<List<String>>('roles');
-    this.userId = registerOutput<String>('userId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/workspaceMember:WorkspaceMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    memberId = registerOutput<String>('memberId');
+    roles = registerOutput<List<String>>('roles');
+    userId = registerOutput<String>('userId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

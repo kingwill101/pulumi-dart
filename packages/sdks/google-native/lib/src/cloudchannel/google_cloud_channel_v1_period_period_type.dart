@@ -5,16 +5,17 @@ enum GoogleCloudChannelV1PeriodPeriodType {
   month("MONTH"),
   year("YEAR");
 
-  const GoogleCloudChannelV1PeriodPeriodType(this.value);
-  final String value;
+  const GoogleCloudChannelV1PeriodPeriodType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudChannelV1PeriodPeriodType fromValue(String value) {
     for (final item in GoogleCloudChannelV1PeriodPeriodType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudChannelV1PeriodPeriodType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudChannelV1PeriodPeriodType value: $value',
+    );
   }
 }
-

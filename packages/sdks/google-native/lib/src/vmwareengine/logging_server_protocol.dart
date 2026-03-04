@@ -4,16 +4,15 @@ enum LoggingServerProtocol {
   udp("UDP"),
   tcp("TCP");
 
-  const LoggingServerProtocol(this.value);
-  final String value;
+  const LoggingServerProtocol(this.wireValue);
+  final String wireValue;
 
   static LoggingServerProtocol fromValue(String value) {
     for (final item in LoggingServerProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingServerProtocol value: $value');
   }
 }
-

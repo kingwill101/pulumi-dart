@@ -33,13 +33,22 @@ class GetDomainBackupIamPolicyManagedidentitiesV1alpha1Args {
     };
   }
 
-  factory GetDomainBackupIamPolicyManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetDomainBackupIamPolicyManagedidentitiesV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDomainBackupIamPolicyManagedidentitiesV1alpha1Args(
-      backupId: (map['backupId'] as String).input(),
-      domainId: (map['domainId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backupId: pulumi.Input.fromValue(map['backupId'] as String),
+      domainId: pulumi.Input.fromValue(map['domainId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

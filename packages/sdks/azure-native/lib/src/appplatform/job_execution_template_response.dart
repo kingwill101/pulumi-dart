@@ -8,8 +8,10 @@ import 'job_resource_requests_response.dart';
 class JobExecutionTemplateResponse {
   /// Arguments for the Job execution.
   final pulumi.Input<List<String>>? args;
+
   /// Environment variables of Job execution
   final pulumi.Input<List<EnvVarResponse>>? environmentVariables;
+
   /// The requested resource quantity for required CPU and Memory.
   final pulumi.Input<JobResourceRequestsResponse>? resourceRequests;
 
@@ -26,17 +28,53 @@ class JobExecutionTemplateResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'args': ?args,
-      'environmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvVarResponse>, List<Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeList<EnvVarResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'resourceRequests': ?pulumi.Input.mapOptionalInputValue<JobResourceRequestsResponse, Map<String, dynamic>>(resourceRequests, (value) => value.toMap()),
+      'environmentVariables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EnvVarResponse>,
+            List<Map<String, dynamic>>
+          >(
+            environmentVariables,
+            (value) =>
+                pulumi.Input.encodeList<EnvVarResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'resourceRequests':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobResourceRequestsResponse,
+            Map<String, dynamic>
+          >(resourceRequests, (value) => value.toMap()),
     };
   }
 
   factory JobExecutionTemplateResponse.fromMap(Map<String, dynamic> map) {
     return JobExecutionTemplateResponse(
-      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvVarResponse>(map['environmentVariables']!, (value) => EnvVarResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRequests: map['resourceRequests'] == null ? null : (JobResourceRequestsResponse.fromMap((map['resourceRequests']! as Map).cast<String, dynamic>())).input(),
+      args: (() {
+        final guardedValue = map['args'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      environmentVariables: (() {
+        final guardedValue = map['environmentVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EnvVarResponse>(
+            guardedValue,
+            (value) =>
+                EnvVarResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      resourceRequests: (() {
+        final guardedValue = map['resourceRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobResourceRequestsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

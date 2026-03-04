@@ -7,16 +7,15 @@ enum CryptoKeyPurpose {
   rawEncryptDecrypt("RAW_ENCRYPT_DECRYPT"),
   mac("MAC");
 
-  const CryptoKeyPurpose(this.value);
-  final String value;
+  const CryptoKeyPurpose(this.wireValue);
+  final String wireValue;
 
   static CryptoKeyPurpose fromValue(String value) {
     for (final item in CryptoKeyPurpose.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CryptoKeyPurpose value: $value');
   }
 }
-

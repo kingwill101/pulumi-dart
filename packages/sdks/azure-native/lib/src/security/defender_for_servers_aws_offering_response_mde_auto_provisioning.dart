@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderForServersAwsOfferingResponseMdeAutoProvisioning {
   /// configuration for Microsoft Defender for Endpoint autoprovisioning
   final pulumi.Input<dynamic>? configuration;
+
   /// Is Microsoft Defender for Endpoint auto provisioning enabled
   final pulumi.Input<bool>? enabled;
 
@@ -24,11 +25,20 @@ class DefenderForServersAwsOfferingResponseMdeAutoProvisioning {
     };
   }
 
-  factory DefenderForServersAwsOfferingResponseMdeAutoProvisioning.fromMap(Map<String, dynamic> map) {
+  factory DefenderForServersAwsOfferingResponseMdeAutoProvisioning.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForServersAwsOfferingResponseMdeAutoProvisioning(
-      configuration: map['configuration'] == null ? null : (map['configuration']!).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

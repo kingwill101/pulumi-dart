@@ -19,17 +19,19 @@ class GetWorkerPoolCloudbuildV1alpha1Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'workerPoolId': workerPoolId,
-    };
+    return <String, dynamic>{'project': ?project, 'workerPoolId': workerPoolId};
   }
 
-  factory GetWorkerPoolCloudbuildV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetWorkerPoolCloudbuildV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkerPoolCloudbuildV1alpha1Args(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workerPoolId: (map['workerPoolId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workerPoolId: pulumi.Input.fromValue(map['workerPoolId'] as String),
     );
   }
 }
-

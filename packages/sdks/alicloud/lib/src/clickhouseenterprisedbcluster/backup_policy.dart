@@ -8,7 +8,7 @@ import 'backup_policy_state.dart';
 ///
 /// For information about Click House Enterprise Db Cluster Backup Policy and how to use it, see [What is Enterprise Db Cluster Backup Policy](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateBackupPolicy).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -318,10 +318,13 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// Backup retention time.
   late final pulumi.Output<int> backupRetentionPeriod;
+
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Backup period.
   late final pulumi.Output<String> preferredBackupPeriod;
+
   /// Backup time.
   late final pulumi.Output<String> preferredBackupTime;
 
@@ -334,15 +337,15 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
-    this.preferredBackupTime = registerOutput<String>('preferredBackupTime');
+         'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
+    preferredBackupTime = registerOutput<String>('preferredBackupTime');
   }
 
   /// Gets an existing [BackupPolicy] resource's state with the given [name] and [id].
@@ -363,14 +366,14 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
-    this.preferredBackupTime = registerOutput<String>('preferredBackupTime');
+         'alicloud:clickhouseenterprisedbcluster/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    preferredBackupPeriod = registerOutput<String>('preferredBackupPeriod');
+    preferredBackupTime = registerOutput<String>('preferredBackupTime');
   }
 }

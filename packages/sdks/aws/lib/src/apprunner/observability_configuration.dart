@@ -147,22 +147,31 @@ import 'observability_configuration_trace_configuration.dart';
 class ObservabilityConfiguration extends pulumi.CustomResource {
   /// ARN of this observability configuration.
   late final pulumi.Output<String> arn;
+
   /// Whether the observability configuration has the highest `observability_configuration_revision` among all configurations that share the same `observability_configuration_name`.
   late final pulumi.Output<bool> latest;
+
   /// Name of the observability configuration.
   late final pulumi.Output<String> observabilityConfigurationName;
+
   /// The revision of this observability configuration.
   late final pulumi.Output<int> observabilityConfigurationRevision;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Current state of the observability configuration. An INACTIVE configuration revision has been deleted and can't be used. It is permanently removed some time after deletion.
   late final pulumi.Output<String> status;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Configuration of the tracing feature within this observability configuration. If you don't specify it, App Runner doesn't enable tracing. See Trace Configuration below for more details.
-  late final pulumi.Output<ObservabilityConfigurationTraceConfiguration?> traceConfiguration;
+  late final pulumi.Output<ObservabilityConfigurationTraceConfiguration?>
+  traceConfiguration;
 
   /// Creates a new [ObservabilityConfiguration].
   /// [name] The Pulumi resource name.
@@ -173,20 +182,27 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
     ObservabilityConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apprunner/observabilityConfiguration:ObservabilityConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.latest = registerOutput<bool>('latest');
-    this.observabilityConfigurationName = registerOutput<String>('observabilityConfigurationName');
-    this.observabilityConfigurationRevision = registerOutput<int>('observabilityConfigurationRevision');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.traceConfiguration = registerOutput<ObservabilityConfigurationTraceConfiguration?>('traceConfiguration');
+         'aws:apprunner/observabilityConfiguration:ObservabilityConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    latest = registerOutput<bool>('latest');
+    observabilityConfigurationName = registerOutput<String>(
+      'observabilityConfigurationName',
+    );
+    observabilityConfigurationRevision = registerOutput<int>(
+      'observabilityConfigurationRevision',
+    );
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    traceConfiguration =
+        registerOutput<ObservabilityConfigurationTraceConfiguration?>(
+          'traceConfiguration',
+        );
   }
 
   /// Gets an existing [ObservabilityConfiguration] resource's state with the given [name] and [id].
@@ -207,19 +223,26 @@ class ObservabilityConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apprunner/observabilityConfiguration:ObservabilityConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.latest = registerOutput<bool>('latest');
-    this.observabilityConfigurationName = registerOutput<String>('observabilityConfigurationName');
-    this.observabilityConfigurationRevision = registerOutput<int>('observabilityConfigurationRevision');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.traceConfiguration = registerOutput<ObservabilityConfigurationTraceConfiguration?>('traceConfiguration');
+         'aws:apprunner/observabilityConfiguration:ObservabilityConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    latest = registerOutput<bool>('latest');
+    observabilityConfigurationName = registerOutput<String>(
+      'observabilityConfigurationName',
+    );
+    observabilityConfigurationRevision = registerOutput<int>(
+      'observabilityConfigurationRevision',
+    );
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    traceConfiguration =
+        registerOutput<ObservabilityConfigurationTraceConfiguration?>(
+          'traceConfiguration',
+        );
   }
 }

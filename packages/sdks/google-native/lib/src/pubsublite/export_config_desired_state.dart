@@ -6,16 +6,15 @@ enum ExportConfigDesiredState {
   permissionDenied("PERMISSION_DENIED"),
   notFound("NOT_FOUND");
 
-  const ExportConfigDesiredState(this.value);
-  final String value;
+  const ExportConfigDesiredState(this.wireValue);
+  final String wireValue;
 
   static ExportConfigDesiredState fromValue(String value) {
     for (final item in ExportConfigDesiredState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExportConfigDesiredState value: $value');
   }
 }
-

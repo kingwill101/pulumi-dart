@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSkusArgs {
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
+
   /// The resource type.
   final pulumi.Input<String> resourceType;
+
   /// The SKU.
   final pulumi.Input<String> sku;
 
@@ -34,10 +36,11 @@ class GetSkusArgs {
 
   factory GetSkusArgs.fromMap(Map<String, dynamic> map) {
     return GetSkusArgs(
-      providerNamespace: (map['providerNamespace'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      sku: (map['sku'] as String).input(),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
     );
   }
 }
-

@@ -6,20 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedResourceState {
   /// The time when the shared resource was associated with the resource share.
   final pulumi.Input<String>? createTime;
+
   /// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? permissionName;
+
   /// Associated resource ARN.
   ///
-  /// > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
+  /// &gt; **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
   final pulumi.Input<String>? resourceArn;
+
   /// The ID of the shared resource.
   final pulumi.Input<String>? resourceId;
+
   /// The ID of the resource share.
   final pulumi.Input<String>? resourceShareId;
+
   /// The type of the shared resource.
   final pulumi.Input<String>? resourceType;
+
   /// The association status.
   final pulumi.Input<String>? status;
 
@@ -55,14 +61,41 @@ class SharedResourceState {
 
   factory SharedResourceState.fromMap(Map<String, dynamic> map) {
     return SharedResourceState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      permissionName: map['permissionName'] == null ? null : (map['permissionName']! as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissionName: (() {
+        final guardedValue = map['permissionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceShareId: (() {
+        final guardedValue = map['resourceShareId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

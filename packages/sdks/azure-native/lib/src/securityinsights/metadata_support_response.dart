@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataSupportResponse {
   /// Email of support contact
   final pulumi.Input<String>? email;
+
   /// Link for support help, like to support page to open a ticket etc.
   final pulumi.Input<String>? link;
+
   /// Name of the support contact. Company or person.
   final pulumi.Input<String>? name;
+
   /// Type of support for content item
   final pulumi.Input<String> tier;
 
@@ -36,11 +39,22 @@ class MetadataSupportResponse {
 
   factory MetadataSupportResponse.fromMap(Map<String, dynamic> map) {
     return MetadataSupportResponse(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      link: map['link'] == null ? null : (map['link']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tier: (map['tier'] as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      link: (() {
+        final guardedValue = map['link'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
-

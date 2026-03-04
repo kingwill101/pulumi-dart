@@ -9,29 +9,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAwsServiceDiscoveryArgs {
   /// Specifies whether to look for public or private IP addresses,default `private`.
   final pulumi.Input<String>? addressRealm;
+
   /// Information for discovering AWS nodes that are not in the same region as your BIG-IP (also requires the `aws_secret_access_key` field)
   final pulumi.Input<String>? awsAccessKey;
+
   /// AWS region in which ADC is running,default Empty string.
   final pulumi.Input<String>? awsRegion;
+
   /// Information for discovering AWS nodes that are not in the same region as your BIG-IP (also requires the `aws_secret_access_key` field)
   final pulumi.Input<String>? awsSecretAccessKey;
+
   /// Specifies whether you are updating your credentials,default `false`.
   final pulumi.Input<bool>? credentialUpdate;
+
   /// AWS externalID field.
   final pulumi.Input<String>? externalId;
+
   /// Member is down when fewer than minimum monitors report it healthy.
   final pulumi.Input<String>? minimumMonitors;
+
   /// Port to be used for AWS service discovery,default `80`.
   final pulumi.Input<int>? port;
+
   /// Assume a role (also requires the `external_id` field)
   final pulumi.Input<String>? roleArn;
+
   /// The tag key associated with the node to add to this pool.
   final pulumi.Input<String> tagKey;
+
   /// The tag value associated with the node to add to this pool.
   final pulumi.Input<String> tagValue;
   final pulumi.Input<String>? type;
+
   /// Action to take when node cannot be detected,default `remove`.
   final pulumi.Input<String>? undetectableAction;
+
   /// Update interval for service discovery.
   final pulumi.Input<String>? updateInterval;
 
@@ -88,21 +100,68 @@ class GetAwsServiceDiscoveryArgs {
 
   factory GetAwsServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetAwsServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm']! as String).input(),
-      awsAccessKey: map['awsAccessKey'] == null ? null : (map['awsAccessKey']! as String).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
-      awsSecretAccessKey: map['awsSecretAccessKey'] == null ? null : (map['awsSecretAccessKey']! as String).input(),
-      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate']! as bool).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
-      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
-      tagKey: (map['tagKey'] as String).input(),
-      tagValue: (map['tagValue'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction']! as String).input(),
-      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval']! as String).input(),
+      addressRealm: (() {
+        final guardedValue = map['addressRealm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsAccessKey: (() {
+        final guardedValue = map['awsAccessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsSecretAccessKey: (() {
+        final guardedValue = map['awsSecretAccessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialUpdate: (() {
+        final guardedValue = map['credentialUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minimumMonitors: (() {
+        final guardedValue = map['minimumMonitors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagKey: pulumi.Input.fromValue(map['tagKey'] as String),
+      tagValue: pulumi.Input.fromValue(map['tagValue'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      undetectableAction: (() {
+        final guardedValue = map['undetectableAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateInterval: (() {
+        final guardedValue = map['updateInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

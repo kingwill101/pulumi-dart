@@ -6,18 +6,25 @@ import 'system_data_response.dart';
 class GetWorkspaceManagerMemberResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Etag.
   final String etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
   final String targetWorkspaceResourceId;
+
   /// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
   final String targetWorkspaceTenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -60,11 +67,12 @@ class GetWorkspaceManagerMemberResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       targetWorkspaceResourceId: map['targetWorkspaceResourceId'] as String,
       targetWorkspaceTenantId: map['targetWorkspaceTenantId'] as String,
       type: map['type'] as String,
     );
   }
 }
-

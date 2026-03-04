@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiIndexArgs {
   /// The name of the index.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
+
   /// The region of the index.
   ///
   /// - - -
@@ -20,11 +22,7 @@ class GetAiIndexArgs {
   /// [name] The name of the index.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the index.
-  GetAiIndexArgs({
-    required this.name,
-    this.project,
-    required this.region,
-  });
+  GetAiIndexArgs({required this.name, this.project, required this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,13 @@ class GetAiIndexArgs {
 
   factory GetAiIndexArgs.fromMap(Map<String, dynamic> map) {
     return GetAiIndexArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

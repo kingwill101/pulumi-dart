@@ -7,64 +7,94 @@ import 'time_response.dart';
 class GetScalingPlanPersonalScheduleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Set of days of the week on which this schedule is active.
   final List<String>? daysOfWeek;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Action to be taken after a user disconnect during the off-peak period.
   final String? offPeakActionOnDisconnect;
+
   /// Action to be taken after a logoff during the off-peak period.
   final String? offPeakActionOnLogoff;
+
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
   final int? offPeakMinutesToWaitOnDisconnect;
+
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
   final int? offPeakMinutesToWaitOnLogoff;
+
   /// Starting time for off-peak period.
   final TimeResponse? offPeakStartTime;
+
   /// The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
   final String? offPeakStartVMOnConnect;
+
   /// Action to be taken after a user disconnect during the peak period.
   final String? peakActionOnDisconnect;
+
   /// Action to be taken after a logoff during the peak period.
   final String? peakActionOnLogoff;
+
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
   final int? peakMinutesToWaitOnDisconnect;
+
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
   final int? peakMinutesToWaitOnLogoff;
+
   /// Starting time for peak period.
   final TimeResponse? peakStartTime;
+
   /// The desired configuration of Start VM On Connect for the hostpool during the peak phase.
   final String? peakStartVMOnConnect;
+
   /// Action to be taken after a user disconnect during the ramp down period.
   final String? rampDownActionOnDisconnect;
+
   /// Action to be taken after a logoff during the ramp down period.
   final String? rampDownActionOnLogoff;
+
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
   final int? rampDownMinutesToWaitOnDisconnect;
+
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
   final int? rampDownMinutesToWaitOnLogoff;
+
   /// Starting time for ramp down period.
   final TimeResponse? rampDownStartTime;
+
   /// The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
   final String? rampDownStartVMOnConnect;
+
   /// Action to be taken after a user disconnect during the ramp up period.
   final String? rampUpActionOnDisconnect;
+
   /// Action to be taken after a logoff during the ramp up period.
   final String? rampUpActionOnLogoff;
+
   /// The desired startup behavior during the ramp up period for personal vms in the hostpool.
   final String? rampUpAutoStartHosts;
+
   /// The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
   final int? rampUpMinutesToWaitOnDisconnect;
+
   /// The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
   final int? rampUpMinutesToWaitOnLogoff;
+
   /// Starting time for ramp up period.
   final TimeResponse? rampUpStartTime;
+
   /// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
   final String? rampUpStartVMOnConnect;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -144,66 +174,181 @@ class GetScalingPlanPersonalScheduleResult {
       'offPeakActionOnLogoff': ?offPeakActionOnLogoff,
       'offPeakMinutesToWaitOnDisconnect': ?offPeakMinutesToWaitOnDisconnect,
       'offPeakMinutesToWaitOnLogoff': ?offPeakMinutesToWaitOnLogoff,
-      'offPeakStartTime': ?offPeakStartTime == null ? null : offPeakStartTime!.toMap(),
+      'offPeakStartTime': ?offPeakStartTime?.toMap(),
       'offPeakStartVMOnConnect': ?offPeakStartVMOnConnect,
       'peakActionOnDisconnect': ?peakActionOnDisconnect,
       'peakActionOnLogoff': ?peakActionOnLogoff,
       'peakMinutesToWaitOnDisconnect': ?peakMinutesToWaitOnDisconnect,
       'peakMinutesToWaitOnLogoff': ?peakMinutesToWaitOnLogoff,
-      'peakStartTime': ?peakStartTime == null ? null : peakStartTime!.toMap(),
+      'peakStartTime': ?peakStartTime?.toMap(),
       'peakStartVMOnConnect': ?peakStartVMOnConnect,
       'rampDownActionOnDisconnect': ?rampDownActionOnDisconnect,
       'rampDownActionOnLogoff': ?rampDownActionOnLogoff,
       'rampDownMinutesToWaitOnDisconnect': ?rampDownMinutesToWaitOnDisconnect,
       'rampDownMinutesToWaitOnLogoff': ?rampDownMinutesToWaitOnLogoff,
-      'rampDownStartTime': ?rampDownStartTime == null ? null : rampDownStartTime!.toMap(),
+      'rampDownStartTime': ?rampDownStartTime?.toMap(),
       'rampDownStartVMOnConnect': ?rampDownStartVMOnConnect,
       'rampUpActionOnDisconnect': ?rampUpActionOnDisconnect,
       'rampUpActionOnLogoff': ?rampUpActionOnLogoff,
       'rampUpAutoStartHosts': ?rampUpAutoStartHosts,
       'rampUpMinutesToWaitOnDisconnect': ?rampUpMinutesToWaitOnDisconnect,
       'rampUpMinutesToWaitOnLogoff': ?rampUpMinutesToWaitOnLogoff,
-      'rampUpStartTime': ?rampUpStartTime == null ? null : rampUpStartTime!.toMap(),
+      'rampUpStartTime': ?rampUpStartTime?.toMap(),
       'rampUpStartVMOnConnect': ?rampUpStartVMOnConnect,
       'systemData': systemData.toMap(),
       'type': type,
     };
   }
 
-  factory GetScalingPlanPersonalScheduleResult.fromMap(Map<String, dynamic> map) {
+  factory GetScalingPlanPersonalScheduleResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetScalingPlanPersonalScheduleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      daysOfWeek: map['daysOfWeek'] == null ? null : (map['daysOfWeek']! as List).cast<String>(),
+      daysOfWeek: (() {
+        final guardedValue = map['daysOfWeek'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      offPeakActionOnDisconnect: map['offPeakActionOnDisconnect'] == null ? null : map['offPeakActionOnDisconnect']! as String,
-      offPeakActionOnLogoff: map['offPeakActionOnLogoff'] == null ? null : map['offPeakActionOnLogoff']! as String,
-      offPeakMinutesToWaitOnDisconnect: map['offPeakMinutesToWaitOnDisconnect'] == null ? null : map['offPeakMinutesToWaitOnDisconnect']! as int,
-      offPeakMinutesToWaitOnLogoff: map['offPeakMinutesToWaitOnLogoff'] == null ? null : map['offPeakMinutesToWaitOnLogoff']! as int,
-      offPeakStartTime: map['offPeakStartTime'] == null ? null : TimeResponse.fromMap((map['offPeakStartTime']! as Map).cast<String, dynamic>()),
-      offPeakStartVMOnConnect: map['offPeakStartVMOnConnect'] == null ? null : map['offPeakStartVMOnConnect']! as String,
-      peakActionOnDisconnect: map['peakActionOnDisconnect'] == null ? null : map['peakActionOnDisconnect']! as String,
-      peakActionOnLogoff: map['peakActionOnLogoff'] == null ? null : map['peakActionOnLogoff']! as String,
-      peakMinutesToWaitOnDisconnect: map['peakMinutesToWaitOnDisconnect'] == null ? null : map['peakMinutesToWaitOnDisconnect']! as int,
-      peakMinutesToWaitOnLogoff: map['peakMinutesToWaitOnLogoff'] == null ? null : map['peakMinutesToWaitOnLogoff']! as int,
-      peakStartTime: map['peakStartTime'] == null ? null : TimeResponse.fromMap((map['peakStartTime']! as Map).cast<String, dynamic>()),
-      peakStartVMOnConnect: map['peakStartVMOnConnect'] == null ? null : map['peakStartVMOnConnect']! as String,
-      rampDownActionOnDisconnect: map['rampDownActionOnDisconnect'] == null ? null : map['rampDownActionOnDisconnect']! as String,
-      rampDownActionOnLogoff: map['rampDownActionOnLogoff'] == null ? null : map['rampDownActionOnLogoff']! as String,
-      rampDownMinutesToWaitOnDisconnect: map['rampDownMinutesToWaitOnDisconnect'] == null ? null : map['rampDownMinutesToWaitOnDisconnect']! as int,
-      rampDownMinutesToWaitOnLogoff: map['rampDownMinutesToWaitOnLogoff'] == null ? null : map['rampDownMinutesToWaitOnLogoff']! as int,
-      rampDownStartTime: map['rampDownStartTime'] == null ? null : TimeResponse.fromMap((map['rampDownStartTime']! as Map).cast<String, dynamic>()),
-      rampDownStartVMOnConnect: map['rampDownStartVMOnConnect'] == null ? null : map['rampDownStartVMOnConnect']! as String,
-      rampUpActionOnDisconnect: map['rampUpActionOnDisconnect'] == null ? null : map['rampUpActionOnDisconnect']! as String,
-      rampUpActionOnLogoff: map['rampUpActionOnLogoff'] == null ? null : map['rampUpActionOnLogoff']! as String,
-      rampUpAutoStartHosts: map['rampUpAutoStartHosts'] == null ? null : map['rampUpAutoStartHosts']! as String,
-      rampUpMinutesToWaitOnDisconnect: map['rampUpMinutesToWaitOnDisconnect'] == null ? null : map['rampUpMinutesToWaitOnDisconnect']! as int,
-      rampUpMinutesToWaitOnLogoff: map['rampUpMinutesToWaitOnLogoff'] == null ? null : map['rampUpMinutesToWaitOnLogoff']! as int,
-      rampUpStartTime: map['rampUpStartTime'] == null ? null : TimeResponse.fromMap((map['rampUpStartTime']! as Map).cast<String, dynamic>()),
-      rampUpStartVMOnConnect: map['rampUpStartVMOnConnect'] == null ? null : map['rampUpStartVMOnConnect']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      offPeakActionOnDisconnect: (() {
+        final guardedValue = map['offPeakActionOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      offPeakActionOnLogoff: (() {
+        final guardedValue = map['offPeakActionOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      offPeakMinutesToWaitOnDisconnect: (() {
+        final guardedValue = map['offPeakMinutesToWaitOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      offPeakMinutesToWaitOnLogoff: (() {
+        final guardedValue = map['offPeakMinutesToWaitOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      offPeakStartTime: (() {
+        final guardedValue = map['offPeakStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      offPeakStartVMOnConnect: (() {
+        final guardedValue = map['offPeakStartVMOnConnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      peakActionOnDisconnect: (() {
+        final guardedValue = map['peakActionOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      peakActionOnLogoff: (() {
+        final guardedValue = map['peakActionOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      peakMinutesToWaitOnDisconnect: (() {
+        final guardedValue = map['peakMinutesToWaitOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      peakMinutesToWaitOnLogoff: (() {
+        final guardedValue = map['peakMinutesToWaitOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      peakStartTime: (() {
+        final guardedValue = map['peakStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      peakStartVMOnConnect: (() {
+        final guardedValue = map['peakStartVMOnConnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampDownActionOnDisconnect: (() {
+        final guardedValue = map['rampDownActionOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampDownActionOnLogoff: (() {
+        final guardedValue = map['rampDownActionOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampDownMinutesToWaitOnDisconnect: (() {
+        final guardedValue = map['rampDownMinutesToWaitOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampDownMinutesToWaitOnLogoff: (() {
+        final guardedValue = map['rampDownMinutesToWaitOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampDownStartTime: (() {
+        final guardedValue = map['rampDownStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rampDownStartVMOnConnect: (() {
+        final guardedValue = map['rampDownStartVMOnConnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampUpActionOnDisconnect: (() {
+        final guardedValue = map['rampUpActionOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampUpActionOnLogoff: (() {
+        final guardedValue = map['rampUpActionOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampUpAutoStartHosts: (() {
+        final guardedValue = map['rampUpAutoStartHosts'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rampUpMinutesToWaitOnDisconnect: (() {
+        final guardedValue = map['rampUpMinutesToWaitOnDisconnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampUpMinutesToWaitOnLogoff: (() {
+        final guardedValue = map['rampUpMinutesToWaitOnLogoff'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      rampUpStartTime: (() {
+        final guardedValue = map['rampUpStartTime'];
+        if (guardedValue == null) return null;
+        return TimeResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rampUpStartVMOnConnect: (() {
+        final guardedValue = map['rampUpStartVMOnConnect'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

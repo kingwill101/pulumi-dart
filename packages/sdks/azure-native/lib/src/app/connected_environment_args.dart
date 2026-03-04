@@ -11,18 +11,25 @@ import 'extended_location.dart';
 class ConnectedEnvironmentArgs {
   /// Name of the connectedEnvironment.
   final pulumi.Input<String>? connectedEnvironmentName;
+
   /// Custom domain configuration for the environment
   final pulumi.Input<CustomDomainConfiguration>? customDomainConfiguration;
+
   /// Application Insights connection string used by Dapr to export Service to Service communication telemetry
   final pulumi.Input<String>? daprAIConnectionString;
+
   /// The complex type of the extended location.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Static IP of the connectedEnvironment
   final pulumi.Input<String>? staticIp;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,9 +56,17 @@ class ConnectedEnvironmentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectedEnvironmentName': ?connectedEnvironmentName,
-      'customDomainConfiguration': ?pulumi.Input.mapOptionalInputValue<CustomDomainConfiguration, Map<String, dynamic>>(customDomainConfiguration, (value) => value.toMap()),
+      'customDomainConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomDomainConfiguration,
+            Map<String, dynamic>
+          >(customDomainConfiguration, (value) => value.toMap()),
       'daprAIConnectionString': ?daprAIConnectionString,
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'staticIp': ?staticIp,
@@ -61,15 +76,54 @@ class ConnectedEnvironmentArgs {
 
   factory ConnectedEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentArgs(
-      connectedEnvironmentName: map['connectedEnvironmentName'] == null ? null : (map['connectedEnvironmentName']! as String).input(),
-      customDomainConfiguration: map['customDomainConfiguration'] == null ? null : (CustomDomainConfiguration.fromMap((map['customDomainConfiguration']! as Map).cast<String, dynamic>())).input(),
-      daprAIConnectionString: map['daprAIConnectionString'] == null ? null : (map['daprAIConnectionString']! as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      staticIp: map['staticIp'] == null ? null : (map['staticIp']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      connectedEnvironmentName: (() {
+        final guardedValue = map['connectedEnvironmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customDomainConfiguration: (() {
+        final guardedValue = map['customDomainConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomDomainConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      daprAIConnectionString: (() {
+        final guardedValue = map['daprAIConnectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      staticIp: (() {
+        final guardedValue = map['staticIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

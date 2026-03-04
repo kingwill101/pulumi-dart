@@ -4,7 +4,7 @@ import 'registry_cache_rule_state.dart';
 
 /// Manages an Azure Container Registry Cache Rule.
 ///
-/// > **Note:** All arguments including the access key will be stored in the raw state as plain-text.
+/// &gt; **Note:** All arguments including the access key will be stored in the raw state as plain-text.
 /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
 /// ## Example Usage
@@ -205,7 +205,7 @@ import 'registry_cache_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2023-07-01
@@ -220,12 +220,16 @@ import 'registry_cache_rule_state.dart';
 class RegistryCacheRule extends pulumi.CustomResource {
   /// The ID of the Container Registry where the Cache Rule should apply. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerRegistryId;
+
   /// The ARM resource ID of the Credential Store which is associated with the Cache Rule.
   late final pulumi.Output<String?> credentialSetId;
+
   /// Specifies the name of the Container Registry Cache Rule. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the source repository path. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceRepo;
+
   /// The name of the new repository path to store artifacts. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetRepo;
 
@@ -238,16 +242,16 @@ class RegistryCacheRule extends pulumi.CustomResource {
     RegistryCacheRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryCacheRule:RegistryCacheRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.credentialSetId = registerOutput<String?>('credentialSetId');
+         'azure:containerservice/registryCacheRule:RegistryCacheRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    credentialSetId = registerOutput<String?>('credentialSetId');
     this.name = registerOutput<String>('name');
-    this.sourceRepo = registerOutput<String>('sourceRepo');
-    this.targetRepo = registerOutput<String>('targetRepo');
+    sourceRepo = registerOutput<String>('sourceRepo');
+    targetRepo = registerOutput<String>('targetRepo');
   }
 
   /// Gets an existing [RegistryCacheRule] resource's state with the given [name] and [id].
@@ -268,15 +272,15 @@ class RegistryCacheRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryCacheRule:RegistryCacheRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.credentialSetId = registerOutput<String?>('credentialSetId');
+         'azure:containerservice/registryCacheRule:RegistryCacheRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    credentialSetId = registerOutput<String?>('credentialSetId');
     this.name = registerOutput<String>('name');
-    this.sourceRepo = registerOutput<String>('sourceRepo');
-    this.targetRepo = registerOutput<String>('targetRepo');
+    sourceRepo = registerOutput<String>('sourceRepo');
+    targetRepo = registerOutput<String>('targetRepo');
   }
 }

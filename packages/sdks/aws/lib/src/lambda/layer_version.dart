@@ -6,7 +6,7 @@ import 'layer_version_state.dart';
 ///
 /// For information about Lambda Layers and how to use them, see [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 ///
-/// > **Note:** Setting `skip_destroy` to `true` means that the AWS Provider will not destroy any layer version, even when running `pulumi destroy`. Layer versions are thus intentional dangling resources that are not managed by Pulumi and may incur extra expense in your AWS account.
+/// &gt; **Note:** Setting `skip_destroy` to `true` means that the AWS Provider will not destroy any layer version, even when running `pulumi destroy`. Layer versions are thus intentional dangling resources that are not managed by Pulumi and may incur extra expense in your AWS account.
 ///
 /// ## Example Usage
 ///
@@ -484,44 +484,63 @@ import 'layer_version_state.dart';
 class LayerVersion extends pulumi.CustomResource {
   /// ARN of the Lambda Layer with version.
   late final pulumi.Output<String> arn;
+
   /// Path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
   late final pulumi.Output<dynamic> code;
+
   /// Base64-encoded representation of raw SHA-256 sum of the zip file.
   late final pulumi.Output<String> codeSha256;
+
   /// List of [Architectures](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleArchitectures) this layer is compatible with. Currently `x86_64` and `arm64` can be specified.
   late final pulumi.Output<List<String>?> compatibleArchitectures;
+
   /// List of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 15 runtimes can be specified.
   late final pulumi.Output<List<String>?> compatibleRuntimes;
+
   /// Date this resource was created.
   late final pulumi.Output<String> createdDate;
+
   /// Description of what your Lambda Layer does.
   late final pulumi.Output<String?> description;
+
   /// ARN of the Lambda Layer without version.
   late final pulumi.Output<String> layerArn;
+
   /// Unique name for your Lambda Layer.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> layerName;
+
   /// License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
   late final pulumi.Output<String?> licenseInfo;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
   late final pulumi.Output<String?> s3Bucket;
+
   /// S3 key of an object containing the function's deployment package. Conflicts with `filename`.
   late final pulumi.Output<String?> s3Key;
+
   /// Object version containing the function's deployment package. Conflicts with `filename`.
   late final pulumi.Output<String?> s3ObjectVersion;
+
   /// ARN of a signing job.
   late final pulumi.Output<String> signingJobArn;
+
   /// ARN for a signing profile version.
   late final pulumi.Output<String> signingProfileVersionArn;
+
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_architectures`, `compatible_runtimes`, `description`, `filename`, `layer_name`, `license_info`, `s3_bucket`, `s3_key`, `s3_object_version`, or `source_code_hash` forces deletion of the existing layer version and creation of a new layer version.
   late final pulumi.Output<bool?> skipDestroy;
+
   /// Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
   late final pulumi.Output<String> sourceCodeHash;
+
   /// Size in bytes of the function .zip file.
   late final pulumi.Output<int> sourceCodeSize;
+
   /// Lambda Layer version.
   late final pulumi.Output<String> version;
 
@@ -534,31 +553,35 @@ class LayerVersion extends pulumi.CustomResource {
     LayerVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/layerVersion:LayerVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.code = registerOutput<dynamic>('code');
-    this.codeSha256 = registerOutput<String>('codeSha256');
-    this.compatibleArchitectures = registerOutput<List<String>?>('compatibleArchitectures');
-    this.compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.layerArn = registerOutput<String>('layerArn');
-    this.layerName = registerOutput<String>('layerName');
-    this.licenseInfo = registerOutput<String?>('licenseInfo');
-    this.region = registerOutput<String>('region');
-    this.s3Bucket = registerOutput<String?>('s3Bucket');
-    this.s3Key = registerOutput<String?>('s3Key');
-    this.s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
-    this.signingJobArn = registerOutput<String>('signingJobArn');
-    this.signingProfileVersionArn = registerOutput<String>('signingProfileVersionArn');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.sourceCodeHash = registerOutput<String>('sourceCodeHash');
-    this.sourceCodeSize = registerOutput<int>('sourceCodeSize');
-    this.version = registerOutput<String>('version');
+         'aws:lambda/layerVersion:LayerVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    code = registerOutput<dynamic>('code');
+    codeSha256 = registerOutput<String>('codeSha256');
+    compatibleArchitectures = registerOutput<List<String>?>(
+      'compatibleArchitectures',
+    );
+    compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    layerArn = registerOutput<String>('layerArn');
+    layerName = registerOutput<String>('layerName');
+    licenseInfo = registerOutput<String?>('licenseInfo');
+    region = registerOutput<String>('region');
+    s3Bucket = registerOutput<String?>('s3Bucket');
+    s3Key = registerOutput<String?>('s3Key');
+    s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
+    signingJobArn = registerOutput<String>('signingJobArn');
+    signingProfileVersionArn = registerOutput<String>(
+      'signingProfileVersionArn',
+    );
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    sourceCodeHash = registerOutput<String>('sourceCodeHash');
+    sourceCodeSize = registerOutput<int>('sourceCodeSize');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [LayerVersion] resource's state with the given [name] and [id].
@@ -579,30 +602,34 @@ class LayerVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/layerVersion:LayerVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.code = registerOutput<dynamic>('code');
-    this.codeSha256 = registerOutput<String>('codeSha256');
-    this.compatibleArchitectures = registerOutput<List<String>?>('compatibleArchitectures');
-    this.compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.description = registerOutput<String?>('description');
-    this.layerArn = registerOutput<String>('layerArn');
-    this.layerName = registerOutput<String>('layerName');
-    this.licenseInfo = registerOutput<String?>('licenseInfo');
-    this.region = registerOutput<String>('region');
-    this.s3Bucket = registerOutput<String?>('s3Bucket');
-    this.s3Key = registerOutput<String?>('s3Key');
-    this.s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
-    this.signingJobArn = registerOutput<String>('signingJobArn');
-    this.signingProfileVersionArn = registerOutput<String>('signingProfileVersionArn');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.sourceCodeHash = registerOutput<String>('sourceCodeHash');
-    this.sourceCodeSize = registerOutput<int>('sourceCodeSize');
-    this.version = registerOutput<String>('version');
+         'aws:lambda/layerVersion:LayerVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    code = registerOutput<dynamic>('code');
+    codeSha256 = registerOutput<String>('codeSha256');
+    compatibleArchitectures = registerOutput<List<String>?>(
+      'compatibleArchitectures',
+    );
+    compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    layerArn = registerOutput<String>('layerArn');
+    layerName = registerOutput<String>('layerName');
+    licenseInfo = registerOutput<String?>('licenseInfo');
+    region = registerOutput<String>('region');
+    s3Bucket = registerOutput<String?>('s3Bucket');
+    s3Key = registerOutput<String?>('s3Key');
+    s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
+    signingJobArn = registerOutput<String>('signingJobArn');
+    signingProfileVersionArn = registerOutput<String>(
+      'signingProfileVersionArn',
+    );
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    sourceCodeHash = registerOutput<String>('sourceCodeHash');
+    sourceCodeSize = registerOutput<int>('sourceCodeSize');
+    version = registerOutput<String>('version');
   }
 }

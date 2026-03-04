@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCloudAccount.
 class GetCloudAccountResult {
   final String? accountId;
   final String cloudProvider;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -32,11 +32,14 @@ class GetCloudAccountResult {
 
   factory GetCloudAccountResult.fromMap(Map<String, dynamic> map) {
     return GetCloudAccountResult(
-      accountId: map['accountId'] == null ? null : map['accountId']! as String,
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       cloudProvider: map['cloudProvider'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
     );
   }
 }
-

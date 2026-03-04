@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeResourceResponse {
   /// Memory in GB
   final pulumi.Input<double> memoryInGB;
+
   /// Processor count
   final pulumi.Input<int> processorCount;
 
@@ -26,9 +27,8 @@ class ComputeResourceResponse {
 
   factory ComputeResourceResponse.fromMap(Map<String, dynamic> map) {
     return ComputeResourceResponse(
-      memoryInGB: (map['memoryInGB'] as double).input(),
-      processorCount: (map['processorCount'] as int).input(),
+      memoryInGB: pulumi.Input.fromValue(map['memoryInGB'] as double),
+      processorCount: pulumi.Input.fromValue(map['processorCount'] as int),
     );
   }
 }
-

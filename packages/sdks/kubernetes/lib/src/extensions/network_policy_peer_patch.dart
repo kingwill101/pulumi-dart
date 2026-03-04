@@ -8,10 +8,12 @@ import 'ipblock_patch.dart';
 class NetworkPolicyPeerPatch {
   /// IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
   final pulumi.Input<IPBlockPatch>? ipBlock;
+
   /// Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.
   ///
   /// If PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.
   final pulumi.Input<LabelSelectorPatch>? namespaceSelector;
+
   /// This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.
   ///
   /// If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.
@@ -29,18 +31,51 @@ class NetworkPolicyPeerPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipBlock': ?pulumi.Input.mapOptionalInputValue<IPBlockPatch, Map<String, dynamic>>(ipBlock, (value) => value.toMap()),
-      'namespaceSelector': ?pulumi.Input.mapOptionalInputValue<LabelSelectorPatch, Map<String, dynamic>>(namespaceSelector, (value) => value.toMap()),
-      'podSelector': ?pulumi.Input.mapOptionalInputValue<LabelSelectorPatch, Map<String, dynamic>>(podSelector, (value) => value.toMap()),
+      'ipBlock':
+          ?pulumi.Input.mapOptionalInputValue<
+            IPBlockPatch,
+            Map<String, dynamic>
+          >(ipBlock, (value) => value.toMap()),
+      'namespaceSelector':
+          ?pulumi.Input.mapOptionalInputValue<
+            LabelSelectorPatch,
+            Map<String, dynamic>
+          >(namespaceSelector, (value) => value.toMap()),
+      'podSelector':
+          ?pulumi.Input.mapOptionalInputValue<
+            LabelSelectorPatch,
+            Map<String, dynamic>
+          >(podSelector, (value) => value.toMap()),
     };
   }
 
   factory NetworkPolicyPeerPatch.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyPeerPatch(
-      ipBlock: map['ipBlock'] == null ? null : (IPBlockPatch.fromMap((map['ipBlock']! as Map).cast<String, dynamic>())).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
-      podSelector: map['podSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['podSelector']! as Map).cast<String, dynamic>())).input(),
+      ipBlock: (() {
+        final guardedValue = map['ipBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IPBlockPatch.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      namespaceSelector: (() {
+        final guardedValue = map['namespaceSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LabelSelectorPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      podSelector: (() {
+        final guardedValue = map['podSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LabelSelectorPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -12,15 +12,14 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStr
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'streamName': streamName,
-    };
+    return <String, dynamic>{'streamName': streamName};
   }
 
-  factory IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap(Map<String, dynamic> map) {
+  factory IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream(
-      streamName: (map['streamName'] as String).input(),
+      streamName: pulumi.Input.fromValue(map['streamName'] as String),
     );
   }
 }
-

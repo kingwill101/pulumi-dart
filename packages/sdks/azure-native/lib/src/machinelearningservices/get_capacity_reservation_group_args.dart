@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCapacityReservationGroupArgs {
   /// Group ID
   final pulumi.Input<String> groupId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetCapacityReservationGroupArgs {
 
   factory GetCapacityReservationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityReservationGroupArgs(
-      groupId: (map['groupId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

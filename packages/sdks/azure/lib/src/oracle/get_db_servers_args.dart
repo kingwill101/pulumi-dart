@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbServersArgs {
   /// The name of the Cloud Exadata Infrastructure.
   final pulumi.Input<String> cloudExadataInfrastructureName;
+
   /// The name of the Resource Group where the DB Server exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetDbServersArgs {
 
   factory GetDbServersArgs.fromMap(Map<String, dynamic> map) {
     return GetDbServersArgs(
-      cloudExadataInfrastructureName: (map['cloudExadataInfrastructureName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      cloudExadataInfrastructureName: pulumi.Input.fromValue(
+        map['cloudExadataInfrastructureName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

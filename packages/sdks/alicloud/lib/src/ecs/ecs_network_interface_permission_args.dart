@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsNetworkInterfacePermissionArgs {
   /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
   final pulumi.Input<String> accountId;
+
   /// Whether to force deletion of Network Interface Permission. Default value: `true`.
   final pulumi.Input<bool>? force;
+
   /// The ID of the network interface.
   final pulumi.Input<String> networkInterfaceId;
+
   /// The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
   final pulumi.Input<String> permission;
 
@@ -39,11 +42,16 @@ class EcsNetworkInterfacePermissionArgs {
 
   factory EcsNetworkInterfacePermissionArgs.fromMap(Map<String, dynamic> map) {
     return EcsNetworkInterfacePermissionArgs(
-      accountId: (map['accountId'] as String).input(),
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      permission: (map['permission'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      permission: pulumi.Input.fromValue(map['permission'] as String),
     );
   }
 }
-

@@ -310,20 +310,28 @@ import 'system_data_response.dart';
 class ContainerAppsSourceControl extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The branch which will trigger the auto deployment
   late final pulumi.Output<String?> branch;
+
   /// Container App Revision Template with all possible settings and the
   /// defaults if user did not provide them. The defaults are populated
   /// as they were at the creation time
-  late final pulumi.Output<GithubActionConfigurationResponse?> githubActionConfiguration;
+  late final pulumi.Output<GithubActionConfigurationResponse?>
+  githubActionConfiguration;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Current provisioning State of the operation
   late final pulumi.Output<String> operationState;
+
   /// The repo url which will be integrated to ContainerApp.
   late final pulumi.Output<String?> repoUrl;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -336,18 +344,21 @@ class ContainerAppsSourceControl extends pulumi.CustomResource {
     ContainerAppsSourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:ContainerAppsSourceControl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.branch = registerOutput<String?>('branch');
-    this.githubActionConfiguration = registerOutput<GithubActionConfigurationResponse?>('githubActionConfiguration');
+         'azure-native:app:ContainerAppsSourceControl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    branch = registerOutput<String?>('branch');
+    githubActionConfiguration =
+        registerOutput<GithubActionConfigurationResponse?>(
+          'githubActionConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.operationState = registerOutput<String>('operationState');
-    this.repoUrl = registerOutput<String?>('repoUrl');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    operationState = registerOutput<String>('operationState');
+    repoUrl = registerOutput<String?>('repoUrl');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

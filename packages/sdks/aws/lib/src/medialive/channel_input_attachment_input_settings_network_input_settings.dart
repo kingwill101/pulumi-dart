@@ -5,7 +5,11 @@ import 'channel_input_attachment_input_settings_network_input_settings_hls_input
 
 class ChannelInputAttachmentInputSettingsNetworkInputSettings {
   /// Specifies HLS input settings when the uri is for a HLS manifest. See HLS Input Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings>? hlsInputSettings;
+  final pulumi.Input<
+    ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings
+  >?
+  hlsInputSettings;
+
   /// Check HTTPS server certificates.
   final pulumi.Input<String>? serverValidation;
 
@@ -19,16 +23,33 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hlsInputSettings': ?pulumi.Input.mapOptionalInputValue<ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings, Map<String, dynamic>>(hlsInputSettings, (value) => value.toMap()),
+      'hlsInputSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings,
+            Map<String, dynamic>
+          >(hlsInputSettings, (value) => value.toMap()),
       'serverValidation': ?serverValidation,
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsNetworkInputSettings(
-      hlsInputSettings: map['hlsInputSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap((map['hlsInputSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      serverValidation: map['serverValidation'] == null ? null : ((map['serverValidation'] as String).input()).input(),
+      hlsInputSettings: (() {
+        final guardedValue = map['hlsInputSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serverValidation: (() {
+        final guardedValue = map['serverValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum RegionDiskStorageType {
   hdd("HDD"),
   ssd("SSD");
 
-  const RegionDiskStorageType(this.value);
-  final String value;
+  const RegionDiskStorageType(this.wireValue);
+  final String wireValue;
 
   static RegionDiskStorageType fromValue(String value) {
     for (final item in RegionDiskStorageType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionDiskStorageType value: $value');
   }
 }
-

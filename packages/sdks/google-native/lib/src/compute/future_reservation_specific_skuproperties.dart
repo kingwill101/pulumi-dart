@@ -5,9 +5,12 @@ import 'allocation_specific_skuallocation_reserved_instance_properties.dart';
 
 class FutureReservationSpecificSKUProperties {
   /// Properties of the SKU instances being reserved.
-  final pulumi.Input<AllocationSpecificSKUAllocationReservedInstanceProperties>? instanceProperties;
+  final pulumi.Input<AllocationSpecificSKUAllocationReservedInstanceProperties>?
+  instanceProperties;
+
   /// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
   final pulumi.Input<String>? sourceInstanceTemplate;
+
   /// Total number of instances for which capacity assurance is requested at a future time period.
   final pulumi.Input<String>? totalCount;
 
@@ -23,18 +26,39 @@ class FutureReservationSpecificSKUProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instanceProperties': ?pulumi.Input.mapOptionalInputValue<AllocationSpecificSKUAllocationReservedInstanceProperties, Map<String, dynamic>>(instanceProperties, (value) => value.toMap()),
+      'instanceProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AllocationSpecificSKUAllocationReservedInstanceProperties,
+            Map<String, dynamic>
+          >(instanceProperties, (value) => value.toMap()),
       'sourceInstanceTemplate': ?sourceInstanceTemplate,
       'totalCount': ?totalCount,
     };
   }
 
-  factory FutureReservationSpecificSKUProperties.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationSpecificSKUProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationSpecificSKUProperties(
-      instanceProperties: map['instanceProperties'] == null ? null : (AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap((map['instanceProperties']! as Map).cast<String, dynamic>())).input(),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate']! as String).input(),
-      totalCount: map['totalCount'] == null ? null : (map['totalCount']! as String).input(),
+      instanceProperties: (() {
+        final guardedValue = map['instanceProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceInstanceTemplate: (() {
+        final guardedValue = map['sourceInstanceTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalCount: (() {
+        final guardedValue = map['totalCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

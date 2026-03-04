@@ -7,16 +7,15 @@ enum GlobalParameterType {
   valueBool("Bool"),
   valueArray("Array");
 
-  const GlobalParameterType(this.value);
-  final String value;
+  const GlobalParameterType(this.wireValue);
+  final String wireValue;
 
   static GlobalParameterType fromValue(String value) {
     for (final item in GlobalParameterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GlobalParameterType value: $value');
   }
 }
-

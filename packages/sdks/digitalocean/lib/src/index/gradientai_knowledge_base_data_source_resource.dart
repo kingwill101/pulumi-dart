@@ -7,8 +7,12 @@ import 'gradientai_knowledge_base_data_source_web_crawler_data_source.dart';
 class GradientaiKnowledgeBaseDataSourceResource extends pulumi.CustomResource {
   /// UUID of the Knowledge Base
   late final pulumi.Output<String> knowledgeBaseUuid;
-  late final pulumi.Output<GradientaiKnowledgeBaseDataSourceSpacesDataSource?> spacesDataSource;
-  late final pulumi.Output<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?> webCrawlerDataSource;
+  late final pulumi.Output<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>
+  spacesDataSource;
+  late final pulumi.Output<
+    GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?
+  >
+  webCrawlerDataSource;
 
   /// Creates a new [GradientaiKnowledgeBaseDataSourceResource].
   /// [name] The Pulumi resource name.
@@ -19,14 +23,20 @@ class GradientaiKnowledgeBaseDataSourceResource extends pulumi.CustomResource {
     GradientaiKnowledgeBaseDataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
-    this.spacesDataSource = registerOutput<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>('spacesDataSource');
-    this.webCrawlerDataSource = registerOutput<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?>('webCrawlerDataSource');
+         'digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+    spacesDataSource =
+        registerOutput<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>(
+          'spacesDataSource',
+        );
+    webCrawlerDataSource =
+        registerOutput<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
+          'webCrawlerDataSource',
+        );
   }
 
   /// Gets an existing [GradientaiKnowledgeBaseDataSourceResource] resource's state with the given [name] and [id].
@@ -47,13 +57,19 @@ class GradientaiKnowledgeBaseDataSourceResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
-    this.spacesDataSource = registerOutput<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>('spacesDataSource');
-    this.webCrawlerDataSource = registerOutput<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?>('webCrawlerDataSource');
+         'digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+    spacesDataSource =
+        registerOutput<GradientaiKnowledgeBaseDataSourceSpacesDataSource?>(
+          'spacesDataSource',
+        );
+    webCrawlerDataSource =
+        registerOutput<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource?>(
+          'webCrawlerDataSource',
+        );
   }
 }

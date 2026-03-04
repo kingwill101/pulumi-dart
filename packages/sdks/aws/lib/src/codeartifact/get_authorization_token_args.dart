@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorizationTokenArgs {
   /// Name of the domain that is in scope for the generated authorization token.
   final pulumi.Input<String> domain;
+
   /// Account number of the AWS account that owns the domain.
   final pulumi.Input<String>? domainOwner;
+
   /// Time, in seconds, that the generated authorization token is valid. Valid values are `0` and between `900` and `43200`.
   final pulumi.Input<int>? durationSeconds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,22 @@ class GetAuthorizationTokenArgs {
 
   factory GetAuthorizationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationTokenArgs(
-      domain: (map['domain'] as String).input(),
-      domainOwner: map['domainOwner'] == null ? null : ((map['domainOwner'] as String).input()).input(),
-      durationSeconds: map['durationSeconds'] == null ? null : ((map['durationSeconds'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      domainOwner: (() {
+        final guardedValue = map['domainOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      durationSeconds: (() {
+        final guardedValue = map['durationSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

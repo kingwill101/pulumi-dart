@@ -10,14 +10,19 @@ import 'ip_prefix_rule.dart';
 class IpPrefixArgs {
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
+
   /// Name of the IP Prefix.
   final pulumi.Input<String>? ipPrefixName;
+
   /// The list of IP Prefix Rules.
   final pulumi.Input<List<IpPrefixRule>> ipPrefixRules;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,7 +46,18 @@ class IpPrefixArgs {
     return <String, dynamic>{
       'annotation': ?annotation,
       'ipPrefixName': ?ipPrefixName,
-      'ipPrefixRules': pulumi.Input.mapInputValue<List<IpPrefixRule>, List<Map<String, dynamic>>>(ipPrefixRules, (value) => pulumi.Input.encodeList<IpPrefixRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipPrefixRules':
+          pulumi.Input.mapInputValue<
+            List<IpPrefixRule>,
+            List<Map<String, dynamic>>
+          >(
+            ipPrefixRules,
+            (value) =>
+                pulumi.Input.encodeList<IpPrefixRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -50,13 +66,38 @@ class IpPrefixArgs {
 
   factory IpPrefixArgs.fromMap(Map<String, dynamic> map) {
     return IpPrefixArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
-      ipPrefixName: map['ipPrefixName'] == null ? null : (map['ipPrefixName']! as String).input(),
-      ipPrefixRules: (pulumi.Input.decodeList<IpPrefixRule>(map['ipPrefixRules'], (value) => IpPrefixRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipPrefixName: (() {
+        final guardedValue = map['ipPrefixName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipPrefixRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<IpPrefixRule>(
+          map['ipPrefixRules']!,
+          (value) =>
+              IpPrefixRule.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

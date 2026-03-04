@@ -9,16 +9,15 @@ enum ReplicationRegion {
   southAfricaNorth("SouthAfricaNorth"),
   none("None");
 
-  const ReplicationRegion(this.value);
-  final String value;
+  const ReplicationRegion(this.wireValue);
+  final String wireValue;
 
   static ReplicationRegion fromValue(String value) {
     for (final item in ReplicationRegion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReplicationRegion value: $value');
   }
 }
-

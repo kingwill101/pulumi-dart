@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatadogOrganizationPropertiesResponse {
   /// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
   final pulumi.Input<bool>? cspm;
+
   /// Id of the Datadog organization.
   final pulumi.Input<String>? id;
+
   /// Name of the Datadog organization.
   final pulumi.Input<String>? name;
 
@@ -15,26 +17,31 @@ class DatadogOrganizationPropertiesResponse {
   /// [cspm] The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
   /// [id] Id of the Datadog organization.
   /// [name] Name of the Datadog organization.
-  DatadogOrganizationPropertiesResponse({
-    this.cspm,
-    this.id,
-    this.name,
-  });
+  DatadogOrganizationPropertiesResponse({this.cspm, this.id, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cspm': ?cspm,
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'cspm': ?cspm, 'id': ?id, 'name': ?name};
   }
 
-  factory DatadogOrganizationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory DatadogOrganizationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatadogOrganizationPropertiesResponse(
-      cspm: map['cspm'] == null ? null : (map['cspm']! as bool).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      cspm: (() {
+        final guardedValue = map['cspm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

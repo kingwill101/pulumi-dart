@@ -11,12 +11,16 @@ class RuntimeManagementConfigArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> functionName;
+
   /// Version of the function. This can be `$LATEST` or a published version number. If omitted, this resource will manage the runtime configuration for `$LATEST`.
   final pulumi.Input<String>? qualifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
   final pulumi.Input<String>? runtimeVersionArn;
+
   /// Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
   final pulumi.Input<String>? updateRuntimeOn;
 
@@ -46,12 +50,27 @@ class RuntimeManagementConfigArgs {
 
   factory RuntimeManagementConfigArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeManagementConfigArgs(
-      functionName: (map['functionName'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      runtimeVersionArn: map['runtimeVersionArn'] == null ? null : ((map['runtimeVersionArn'] as String).input()).input(),
-      updateRuntimeOn: map['updateRuntimeOn'] == null ? null : ((map['updateRuntimeOn'] as String).input()).input(),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
+      qualifier: (() {
+        final guardedValue = map['qualifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeVersionArn: (() {
+        final guardedValue = map['runtimeVersionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateRuntimeOn: (() {
+        final guardedValue = map['updateRuntimeOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

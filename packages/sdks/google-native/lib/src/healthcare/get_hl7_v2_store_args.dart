@@ -35,11 +35,14 @@ class GetHl7V2StoreArgs {
 
   factory GetHl7V2StoreArgs.fromMap(Map<String, dynamic> map) {
     return GetHl7V2StoreArgs(
-      datasetId: (map['datasetId'] as String).input(),
-      hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      hl7V2StoreId: pulumi.Input.fromValue(map['hl7V2StoreId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

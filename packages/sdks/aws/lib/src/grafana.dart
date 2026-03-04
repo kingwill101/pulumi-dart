@@ -1,5 +1,3 @@
-library module_grafana;
-
 export 'grafana/functions.dart';
 export 'grafana/get_workspace_args.dart';
 export 'grafana/get_workspace_result.dart';

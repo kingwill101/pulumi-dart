@@ -5,16 +5,15 @@ enum NetworkInterfaceAuxiliaryMode {
   acceleratedConnections("AcceleratedConnections"),
   floating("Floating");
 
-  const NetworkInterfaceAuxiliaryMode(this.value);
-  final String value;
+  const NetworkInterfaceAuxiliaryMode(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceAuxiliaryMode fromValue(String value) {
     for (final item in NetworkInterfaceAuxiliaryMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkInterfaceAuxiliaryMode value: $value');
   }
 }
-

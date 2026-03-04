@@ -11,29 +11,54 @@ class CounterSetPatchResourceK8sIoV1beta1 {
   ///
   /// The maximum number of counters is 32.
   final pulumi.Input<Map<String, CounterResourceK8sIoV1beta1>>? counters;
+
   /// Name defines the name of the counter set. It must be a DNS label.
   final pulumi.Input<String>? name;
 
   /// Creates a new [CounterSetPatchResourceK8sIoV1beta1].
   /// [counters] Counters defines the set of counters for this CounterSet The name of each counter must be unique in that set and must be a DNS label.
   /// [name] Name defines the name of the counter set. It must be a DNS label.
-  CounterSetPatchResourceK8sIoV1beta1({
-    this.counters,
-    this.name,
-  });
+  CounterSetPatchResourceK8sIoV1beta1({this.counters, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'counters': ?pulumi.Input.mapOptionalInputValue<Map<String, CounterResourceK8sIoV1beta1>, Map<String, Map<String, dynamic>>>(counters, (value) => pulumi.Input.encodeMapValues<CounterResourceK8sIoV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'counters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, CounterResourceK8sIoV1beta1>,
+            Map<String, Map<String, dynamic>>
+          >(
+            counters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  CounterResourceK8sIoV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
     };
   }
 
-  factory CounterSetPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CounterSetPatchResourceK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CounterSetPatchResourceK8sIoV1beta1(
-      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta1>(map['counters']!, (value) => CounterResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      counters: (() {
+        final guardedValue = map['counters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta1>(
+            guardedValue,
+            (value) => CounterResourceK8sIoV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

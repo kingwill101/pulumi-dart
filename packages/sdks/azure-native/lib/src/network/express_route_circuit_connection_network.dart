@@ -210,24 +210,35 @@ import 'sub_resource_response.dart';
 class ExpressRouteCircuitConnectionNetwork extends pulumi.CustomResource {
   /// /29 IP address space to carve out Customer addresses for tunnels.
   late final pulumi.Output<String?> addressPrefix;
+
   /// The authorization key.
   late final pulumi.Output<String?> authorizationKey;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Express Route Circuit connection state.
   late final pulumi.Output<String> circuitConnectionStatus;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
   late final pulumi.Output<SubResourceResponse?> expressRouteCircuitPeering;
+
   /// IPv6 Address PrefixProperties of the express route circuit connection.
-  late final pulumi.Output<Ipv6CircuitConnectionConfigResponse?> ipv6CircuitConnectionConfig;
+  late final pulumi.Output<Ipv6CircuitConnectionConfigResponse?>
+  ipv6CircuitConnectionConfig;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// Reference to Express Route Circuit Private Peering Resource of the peered circuit.
   late final pulumi.Output<SubResourceResponse?> peerExpressRouteCircuitPeering;
+
   /// The provisioning state of the express route circuit connection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -240,21 +251,28 @@ class ExpressRouteCircuitConnectionNetwork extends pulumi.CustomResource {
     ExpressRouteCircuitConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ExpressRouteCircuitConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefix = registerOutput<String?>('addressPrefix');
-    this.authorizationKey = registerOutput<String?>('authorizationKey');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.circuitConnectionStatus = registerOutput<String>('circuitConnectionStatus');
-    this.etag = registerOutput<String>('etag');
-    this.expressRouteCircuitPeering = registerOutput<SubResourceResponse?>('expressRouteCircuitPeering');
-    this.ipv6CircuitConnectionConfig = registerOutput<Ipv6CircuitConnectionConfigResponse?>('ipv6CircuitConnectionConfig');
+         'azure-native:network:ExpressRouteCircuitConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    circuitConnectionStatus = registerOutput<String>('circuitConnectionStatus');
+    etag = registerOutput<String>('etag');
+    expressRouteCircuitPeering = registerOutput<SubResourceResponse?>(
+      'expressRouteCircuitPeering',
+    );
+    ipv6CircuitConnectionConfig =
+        registerOutput<Ipv6CircuitConnectionConfigResponse?>(
+          'ipv6CircuitConnectionConfig',
+        );
     this.name = registerOutput<String?>('name');
-    this.peerExpressRouteCircuitPeering = registerOutput<SubResourceResponse?>('peerExpressRouteCircuitPeering');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    peerExpressRouteCircuitPeering = registerOutput<SubResourceResponse?>(
+      'peerExpressRouteCircuitPeering',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

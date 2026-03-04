@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooRepositoryResponse {
   /// The name of the repository.
   final pulumi.Input<String> name;
+
   /// The url of the repository.
   final pulumi.Input<String> url;
 
   /// Creates a new [GooRepositoryResponse].
   /// [name] The name of the repository.
   /// [url] The url of the repository.
-  GooRepositoryResponse({
-    required this.name,
-    required this.url,
-  });
+  GooRepositoryResponse({required this.name, required this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'url': url,
-    };
+    return <String, dynamic>{'name': name, 'url': url};
   }
 
   factory GooRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return GooRepositoryResponse(
-      name: (map['name'] as String).input(),
-      url: (map['url'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImagePurchasePlan {
   /// The plan ID.
   final pulumi.Input<String>? name;
+
   /// The product ID.
   final pulumi.Input<String>? product;
+
   /// The publisher ID.
   final pulumi.Input<String>? publisher;
 
@@ -15,11 +17,7 @@ class ImagePurchasePlan {
   /// [name] The plan ID.
   /// [product] The product ID.
   /// [publisher] The publisher ID.
-  ImagePurchasePlan({
-    this.name,
-    this.product,
-    this.publisher,
-  });
+  ImagePurchasePlan({this.name, this.product, this.publisher});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ImagePurchasePlan {
 
   factory ImagePurchasePlan.fromMap(Map<String, dynamic> map) {
     return ImagePurchasePlan(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      product: map['product'] == null ? null : (map['product']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      product: (() {
+        final guardedValue = map['product'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

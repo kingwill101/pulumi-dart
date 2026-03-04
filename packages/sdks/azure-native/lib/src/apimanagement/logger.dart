@@ -311,19 +311,26 @@ import 'logger_args.dart';
 class Logger extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name and SendRule connection string of the event hub for azureEventHub logger.
   /// Instrumentation key for applicationInsights logger.
   late final pulumi.Output<Map<String, String>?> credentials;
+
   /// Logger description.
   late final pulumi.Output<String?> description;
+
   /// Whether records are buffered in the logger before publishing. Default is assumed to be true.
   late final pulumi.Output<bool?> isBuffered;
+
   /// Logger type.
   late final pulumi.Output<String> loggerType;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
   late final pulumi.Output<String?> resourceId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -331,23 +338,20 @@ class Logger extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Logger]. {@macro pulumi_apimanagement_logger_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Logger(
-    String name, {
-    LoggerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:apimanagement:Logger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.credentials = registerOutput<Map<String, String>?>('credentials');
-    this.description = registerOutput<String?>('description');
-    this.isBuffered = registerOutput<bool?>('isBuffered');
-    this.loggerType = registerOutput<String>('loggerType');
+  Logger(String name, {LoggerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:apimanagement:Logger',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    credentials = registerOutput<Map<String, String>?>('credentials');
+    description = registerOutput<String?>('description');
+    isBuffered = registerOutput<bool?>('isBuffered');
+    loggerType = registerOutput<String>('loggerType');
     this.name = registerOutput<String>('name');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.type = registerOutput<String>('type');
+    resourceId = registerOutput<String?>('resourceId');
+    type = registerOutput<String>('type');
   }
 }

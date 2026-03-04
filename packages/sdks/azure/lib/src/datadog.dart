@@ -1,5 +1,3 @@
-library module_datadog;
-
 export 'datadog/monitor.dart';
 export 'datadog/monitor_args.dart';
 export 'datadog/monitor_datadog_organization.dart';

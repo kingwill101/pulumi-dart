@@ -135,16 +135,22 @@ import 'system_data_response.dart';
 class HierarchySetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
   late final pulumi.Output<String?> defaultManagementGroup;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
   late final pulumi.Output<bool?> requireAuthorizationForGroupCreation;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
   late final pulumi.Output<String?> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -157,17 +163,19 @@ class HierarchySetting extends pulumi.CustomResource {
     HierarchySettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:management:HierarchySetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultManagementGroup = registerOutput<String?>('defaultManagementGroup');
+         'azure-native:management:HierarchySetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultManagementGroup = registerOutput<String?>('defaultManagementGroup');
     this.name = registerOutput<String>('name');
-    this.requireAuthorizationForGroupCreation = registerOutput<bool?>('requireAuthorizationForGroupCreation');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    requireAuthorizationForGroupCreation = registerOutput<bool?>(
+      'requireAuthorizationForGroupCreation',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

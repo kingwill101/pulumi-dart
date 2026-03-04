@@ -332,7 +332,7 @@ import 'api_tag_description_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -347,10 +347,13 @@ import 'api_tag_description_state.dart';
 class ApiTagDescription extends pulumi.CustomResource {
   /// The The ID of the API Management API Tag. Changing this forces a new API Management API Tag Description to be created.
   late final pulumi.Output<String> apiTagId;
+
   /// The description of the Tag.
   late final pulumi.Output<String?> description;
+
   /// The description of the external documentation resources describing the tag.
   late final pulumi.Output<String?> externalDocumentationDescription;
+
   /// The URL of external documentation resources describing the tag.
   late final pulumi.Output<String?> externalDocumentationUrl;
 
@@ -363,15 +366,19 @@ class ApiTagDescription extends pulumi.CustomResource {
     ApiTagDescriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/apiTagDescription:ApiTagDescription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiTagId = registerOutput<String>('apiTagId');
-    this.description = registerOutput<String?>('description');
-    this.externalDocumentationDescription = registerOutput<String?>('externalDocumentationDescription');
-    this.externalDocumentationUrl = registerOutput<String?>('externalDocumentationUrl');
+         'azure:apimanagement/apiTagDescription:ApiTagDescription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiTagId = registerOutput<String>('apiTagId');
+    description = registerOutput<String?>('description');
+    externalDocumentationDescription = registerOutput<String?>(
+      'externalDocumentationDescription',
+    );
+    externalDocumentationUrl = registerOutput<String?>(
+      'externalDocumentationUrl',
+    );
   }
 
   /// Gets an existing [ApiTagDescription] resource's state with the given [name] and [id].
@@ -392,14 +399,18 @@ class ApiTagDescription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/apiTagDescription:ApiTagDescription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiTagId = registerOutput<String>('apiTagId');
-    this.description = registerOutput<String?>('description');
-    this.externalDocumentationDescription = registerOutput<String?>('externalDocumentationDescription');
-    this.externalDocumentationUrl = registerOutput<String?>('externalDocumentationUrl');
+         'azure:apimanagement/apiTagDescription:ApiTagDescription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiTagId = registerOutput<String>('apiTagId');
+    description = registerOutput<String?>('description');
+    externalDocumentationDescription = registerOutput<String?>(
+      'externalDocumentationDescription',
+    );
+    externalDocumentationUrl = registerOutput<String?>(
+      'externalDocumentationUrl',
+    );
   }
 }

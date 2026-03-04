@@ -4,16 +4,15 @@ enum MetadataOptionsUid {
   uidSkip("UID_SKIP"),
   uidNumber("UID_NUMBER");
 
-  const MetadataOptionsUid(this.value);
-  final String value;
+  const MetadataOptionsUid(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsUid fromValue(String value) {
     for (final item in MetadataOptionsUid.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsUid value: $value');
   }
 }
-

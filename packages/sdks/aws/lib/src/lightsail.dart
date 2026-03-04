@@ -1,5 +1,3 @@
-library module_lightsail;
-
 export 'lightsail/bucket.dart';
 export 'lightsail/bucket_access_key.dart';
 export 'lightsail/bucket_access_key_args.dart';

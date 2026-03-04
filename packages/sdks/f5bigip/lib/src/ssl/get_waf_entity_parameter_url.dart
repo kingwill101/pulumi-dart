@@ -31,11 +31,10 @@ class GetWafEntityParameterUrl {
 
   factory GetWafEntityParameterUrl.fromMap(Map<String, dynamic> map) {
     return GetWafEntityParameterUrl(
-      method: (map['method'] as String).input(),
-      name: (map['name'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      type: (map['type'] as String).input(),
+      method: pulumi.Input.fromValue(map['method'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

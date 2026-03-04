@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Package {
   /// The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
   final pulumi.Input<String>? location;
+
   /// The name of the package.
   final pulumi.Input<String>? name;
 
   /// Creates a new [Package].
   /// [location] The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
   /// [name] The name of the package.
-  Package({
-    this.location,
-    this.name,
-  });
+  Package({this.location, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': ?location,
-      'name': ?name,
-    };
+    return <String, dynamic>{'location': ?location, 'name': ?name};
   }
 
   factory Package.fromMap(Map<String, dynamic> map) {
     return Package(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

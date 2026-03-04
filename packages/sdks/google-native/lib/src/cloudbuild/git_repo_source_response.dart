@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitRepoSourceResponse {
   /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
   final pulumi.Input<String> bitbucketServerConfig;
+
   /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
   final pulumi.Input<String> githubEnterpriseConfig;
+
   /// The branch or tag to use. Must start with "refs/" (required).
   final pulumi.Input<String> ref;
+
   /// See RepoType below.
   final pulumi.Input<String> repoType;
+
   /// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
   final pulumi.Input<String> repository;
+
   /// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
   final pulumi.Input<String> uri;
 
@@ -46,13 +51,16 @@ class GitRepoSourceResponse {
 
   factory GitRepoSourceResponse.fromMap(Map<String, dynamic> map) {
     return GitRepoSourceResponse(
-      bitbucketServerConfig: (map['bitbucketServerConfig'] as String).input(),
-      githubEnterpriseConfig: (map['githubEnterpriseConfig'] as String).input(),
-      ref: (map['ref'] as String).input(),
-      repoType: (map['repoType'] as String).input(),
-      repository: (map['repository'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      bitbucketServerConfig: pulumi.Input.fromValue(
+        map['bitbucketServerConfig'] as String,
+      ),
+      githubEnterpriseConfig: pulumi.Input.fromValue(
+        map['githubEnterpriseConfig'] as String,
+      ),
+      ref: pulumi.Input.fromValue(map['ref'] as String),
+      repoType: pulumi.Input.fromValue(map['repoType'] as String),
+      repository: pulumi.Input.fromValue(map['repository'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

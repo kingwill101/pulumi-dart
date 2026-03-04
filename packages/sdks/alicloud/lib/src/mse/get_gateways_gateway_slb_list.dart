@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewaysGatewaySlbList {
   /// The associate id.
   final pulumi.Input<String> associateId;
+
   /// The Mode of the gateway slb.
   final pulumi.Input<String> gatewaySlbMode;
+
   /// The Status of the gateway slb.
   final pulumi.Input<String> gatewaySlbStatus;
+
   /// The creation time of the gateway slb.
   final pulumi.Input<String> gmtCreate;
+
   /// The ID of the gateway slb.
   final pulumi.Input<String> slbId;
+
   /// The ip of the gateway slb.
   final pulumi.Input<String> slbIp;
+
   /// The port of the gateway slb.
   final pulumi.Input<String> slbPort;
+
   /// The type of the gateway slb.
   final pulumi.Input<String> type;
 
@@ -55,15 +62,16 @@ class GetGatewaysGatewaySlbList {
 
   factory GetGatewaysGatewaySlbList.fromMap(Map<String, dynamic> map) {
     return GetGatewaysGatewaySlbList(
-      associateId: (map['associateId'] as String).input(),
-      gatewaySlbMode: (map['gatewaySlbMode'] as String).input(),
-      gatewaySlbStatus: (map['gatewaySlbStatus'] as String).input(),
-      gmtCreate: (map['gmtCreate'] as String).input(),
-      slbId: (map['slbId'] as String).input(),
-      slbIp: (map['slbIp'] as String).input(),
-      slbPort: (map['slbPort'] as String).input(),
-      type: (map['type'] as String).input(),
+      associateId: pulumi.Input.fromValue(map['associateId'] as String),
+      gatewaySlbMode: pulumi.Input.fromValue(map['gatewaySlbMode'] as String),
+      gatewaySlbStatus: pulumi.Input.fromValue(
+        map['gatewaySlbStatus'] as String,
+      ),
+      gmtCreate: pulumi.Input.fromValue(map['gmtCreate'] as String),
+      slbId: pulumi.Input.fromValue(map['slbId'] as String),
+      slbIp: pulumi.Input.fromValue(map['slbIp'] as String),
+      slbPort: pulumi.Input.fromValue(map['slbPort'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

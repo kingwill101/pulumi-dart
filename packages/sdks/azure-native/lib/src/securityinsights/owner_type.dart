@@ -4,16 +4,15 @@ enum OwnerType {
   valueUser("User"),
   valueGroup("Group");
 
-  const OwnerType(this.value);
-  final String value;
+  const OwnerType(this.wireValue);
+  final String wireValue;
 
   static OwnerType fromValue(String value) {
     for (final item in OwnerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OwnerType value: $value');
   }
 }
-

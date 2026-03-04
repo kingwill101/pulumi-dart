@@ -2,16 +2,15 @@
 enum LicenseCategory {
   valueCore("Core");
 
-  const LicenseCategory(this.value);
-  final String value;
+  const LicenseCategory(this.wireValue);
+  final String wireValue;
 
   static LicenseCategory fromValue(String value) {
     for (final item in LicenseCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LicenseCategory value: $value');
   }
 }
-

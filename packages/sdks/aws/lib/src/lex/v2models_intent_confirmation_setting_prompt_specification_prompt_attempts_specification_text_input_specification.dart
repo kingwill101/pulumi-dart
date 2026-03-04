@@ -13,15 +13,14 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTimeoutMs': startTimeoutMs,
-    };
+    return <String, dynamic>{'startTimeoutMs': startTimeoutMs};
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification(
-      startTimeoutMs: (map['startTimeoutMs'] as int).input(),
+      startTimeoutMs: pulumi.Input.fromValue(map['startTimeoutMs'] as int),
     );
   }
 }
-

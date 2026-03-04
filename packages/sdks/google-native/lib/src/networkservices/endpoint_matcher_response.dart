@@ -6,24 +6,30 @@ import 'endpoint_matcher_metadata_label_matcher_response.dart';
 /// A definition of a matcher that selects endpoints to which the policies should be applied.
 class EndpointMatcherResponse {
   /// The matcher is based on node metadata presented by xDS clients.
-  final pulumi.Input<EndpointMatcherMetadataLabelMatcherResponse> metadataLabelMatcher;
+  final pulumi.Input<EndpointMatcherMetadataLabelMatcherResponse>
+  metadataLabelMatcher;
 
   /// Creates a new [EndpointMatcherResponse].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointMatcherResponse({
-    required this.metadataLabelMatcher,
-  });
+  EndpointMatcherResponse({required this.metadataLabelMatcher});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadataLabelMatcher': pulumi.Input.mapInputValue<EndpointMatcherMetadataLabelMatcherResponse, Map<String, dynamic>>(metadataLabelMatcher, (value) => value.toMap()),
+      'metadataLabelMatcher':
+          pulumi.Input.mapInputValue<
+            EndpointMatcherMetadataLabelMatcherResponse,
+            Map<String, dynamic>
+          >(metadataLabelMatcher, (value) => value.toMap()),
     };
   }
 
   factory EndpointMatcherResponse.fromMap(Map<String, dynamic> map) {
     return EndpointMatcherResponse(
-      metadataLabelMatcher: (EndpointMatcherMetadataLabelMatcherResponse.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>())).input(),
+      metadataLabelMatcher: pulumi.Input.fromValue(
+        EndpointMatcherMetadataLabelMatcherResponse.fromMap(
+          (map['metadataLabelMatcher']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

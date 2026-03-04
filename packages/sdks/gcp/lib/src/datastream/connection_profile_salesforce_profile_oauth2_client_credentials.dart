@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionProfileSalesforceProfileOauth2ClientCredentials {
   /// Client ID to use for authentication.
   final pulumi.Input<String>? clientId;
+
   /// Client secret to use for authentication.
   final pulumi.Input<String>? clientSecret;
+
   /// A reference to a Secret Manager resource name storing the client secret.
   final pulumi.Input<String>? secretManagerStoredClientSecret;
 
@@ -28,12 +30,25 @@ class ConnectionProfileSalesforceProfileOauth2ClientCredentials {
     };
   }
 
-  factory ConnectionProfileSalesforceProfileOauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileSalesforceProfileOauth2ClientCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileSalesforceProfileOauth2ClientCredentials(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      secretManagerStoredClientSecret: map['secretManagerStoredClientSecret'] == null ? null : (map['secretManagerStoredClientSecret']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretManagerStoredClientSecret: (() {
+        final guardedValue = map['secretManagerStoredClientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

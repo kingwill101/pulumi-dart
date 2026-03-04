@@ -10,16 +10,15 @@ enum IpsecEncryption {
   valueGCMAES192("GCMAES192"),
   valueGCMAES256("GCMAES256");
 
-  const IpsecEncryption(this.value);
-  final String value;
+  const IpsecEncryption(this.wireValue);
+  final String wireValue;
 
   static IpsecEncryption fromValue(String value) {
     for (final item in IpsecEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpsecEncryption value: $value');
   }
 }
-

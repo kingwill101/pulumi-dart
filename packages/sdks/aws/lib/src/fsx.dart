@@ -1,5 +1,3 @@
-library module_fsx;
-
 export 'fsx/backup.dart';
 export 'fsx/backup_args.dart';
 export 'fsx/backup_state.dart';

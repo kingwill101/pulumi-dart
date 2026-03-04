@@ -9,20 +9,19 @@ class PodIPPatch {
 
   /// Creates a new [PodIPPatch].
   /// [ip] IP is the IP address assigned to the pod
-  PodIPPatch({
-    this.ip,
-  });
+  PodIPPatch({this.ip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ip': ?ip,
-    };
+    return <String, dynamic>{'ip': ?ip};
   }
 
   factory PodIPPatch.fromMap(Map<String, dynamic> map) {
     return PodIPPatch(
-      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

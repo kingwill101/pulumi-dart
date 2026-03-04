@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkBgpCommunitiesResponse {
   /// The BGP community associated with the region of the virtual network.
   final pulumi.Input<String> regionalCommunity;
+
   /// The BGP community associated with the virtual network.
   final pulumi.Input<String> virtualNetworkCommunity;
 
@@ -24,11 +25,16 @@ class VirtualNetworkBgpCommunitiesResponse {
     };
   }
 
-  factory VirtualNetworkBgpCommunitiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkBgpCommunitiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkBgpCommunitiesResponse(
-      regionalCommunity: (map['regionalCommunity'] as String).input(),
-      virtualNetworkCommunity: (map['virtualNetworkCommunity'] as String).input(),
+      regionalCommunity: pulumi.Input.fromValue(
+        map['regionalCommunity'] as String,
+      ),
+      virtualNetworkCommunity: pulumi.Input.fromValue(
+        map['virtualNetworkCommunity'] as String,
+      ),
     );
   }
 }
-

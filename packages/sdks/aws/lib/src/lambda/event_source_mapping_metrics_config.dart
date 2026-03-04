@@ -8,20 +8,15 @@ class EventSourceMappingMetricsConfig {
 
   /// Creates a new [EventSourceMappingMetricsConfig].
   /// [metrics] List containing the metrics to be produced by the event source mapping. Valid values: `EventCount`.
-  EventSourceMappingMetricsConfig({
-    required this.metrics,
-  });
+  EventSourceMappingMetricsConfig({required this.metrics});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metrics': metrics,
-    };
+    return <String, dynamic>{'metrics': metrics};
   }
 
   factory EventSourceMappingMetricsConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingMetricsConfig(
-      metrics: ((map['metrics'] as List).cast<String>()).input(),
+      metrics: pulumi.Input.fromValue((map['metrics'] as List).cast<String>()),
     );
   }
 }
-

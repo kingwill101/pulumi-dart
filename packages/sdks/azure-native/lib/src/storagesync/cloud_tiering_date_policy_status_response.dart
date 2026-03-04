@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudTieringDatePolicyStatusResponse {
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
+
   /// Most recent access time of tiered files
   final pulumi.Input<String> tieredFilesMostRecentAccessTimestamp;
 
@@ -20,15 +21,21 @@ class CloudTieringDatePolicyStatusResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'lastUpdatedTimestamp': lastUpdatedTimestamp,
-      'tieredFilesMostRecentAccessTimestamp': tieredFilesMostRecentAccessTimestamp,
+      'tieredFilesMostRecentAccessTimestamp':
+          tieredFilesMostRecentAccessTimestamp,
     };
   }
 
-  factory CloudTieringDatePolicyStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory CloudTieringDatePolicyStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudTieringDatePolicyStatusResponse(
-      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
-      tieredFilesMostRecentAccessTimestamp: (map['tieredFilesMostRecentAccessTimestamp'] as String).input(),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(
+        map['lastUpdatedTimestamp'] as String,
+      ),
+      tieredFilesMostRecentAccessTimestamp: pulumi.Input.fromValue(
+        map['tieredFilesMostRecentAccessTimestamp'] as String,
+      ),
     );
   }
 }
-

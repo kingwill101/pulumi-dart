@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtendedLocation {
   /// The name of the extended location.
   final pulumi.Input<String> name;
+
   /// The extended location type.
   final pulumi.Input<String> type;
 
   /// Creates a new [ExtendedLocation].
   /// [name] The name of the extended location.
   /// [type] The extended location type.
-  ExtendedLocation({
-    required this.name,
-    required this.type,
-  });
+  ExtendedLocation({required this.name, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'type': type};
   }
 
   factory ExtendedLocation.fromMap(Map<String, dynamic> map) {
     return ExtendedLocation(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

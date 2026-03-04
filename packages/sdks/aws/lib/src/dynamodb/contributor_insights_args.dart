@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContributorInsightsArgs {
   /// The global secondary index name
   final pulumi.Input<String>? indexName;
+
   /// argument to specify the [CloudWatch contributor insights mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/contributorinsights_HowItWorks.html#contributorinsights_HowItWorks.Modes)
   final pulumi.Input<String>? mode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the table to enable contributor insights
   final pulumi.Input<String> tableName;
 
@@ -39,11 +42,22 @@ class ContributorInsightsArgs {
 
   factory ContributorInsightsArgs.fromMap(Map<String, dynamic> map) {
     return ContributorInsightsArgs(
-      indexName: map['indexName'] == null ? null : ((map['indexName'] as String).input()).input(),
-      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tableName: (map['tableName'] as String).input(),
+      indexName: (() {
+        final guardedValue = map['indexName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

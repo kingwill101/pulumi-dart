@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceControlGithubActionConfigurationContainerConfiguration {
   /// The image name for the build. Changing this forces a new resource to be created.
   final pulumi.Input<String> imageName;
+
   /// The password used to upload the image to the container registry. Changing this forces a new resource to be created.
   final pulumi.Input<String>? registryPassword;
+
   /// The server URL for the container registry where the build will be hosted. Changing this forces a new resource to be created.
   final pulumi.Input<String> registryUrl;
+
   /// The username used to upload the image to the container registry. Changing this forces a new resource to be created.
   final pulumi.Input<String>? registryUsername;
 
@@ -33,13 +36,22 @@ class SourceControlGithubActionConfigurationContainerConfiguration {
     };
   }
 
-  factory SourceControlGithubActionConfigurationContainerConfiguration.fromMap(Map<String, dynamic> map) {
+  factory SourceControlGithubActionConfigurationContainerConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SourceControlGithubActionConfigurationContainerConfiguration(
-      imageName: (map['imageName'] as String).input(),
-      registryPassword: map['registryPassword'] == null ? null : (map['registryPassword']! as String).input(),
-      registryUrl: (map['registryUrl'] as String).input(),
-      registryUsername: map['registryUsername'] == null ? null : (map['registryUsername']! as String).input(),
+      imageName: pulumi.Input.fromValue(map['imageName'] as String),
+      registryPassword: (() {
+        final guardedValue = map['registryPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryUrl: pulumi.Input.fromValue(map['registryUrl'] as String),
+      registryUsername: (() {
+        final guardedValue = map['registryUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

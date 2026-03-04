@@ -9,20 +9,21 @@ class ClusterAutomatedBackupPolicyTimeBasedRetention {
 
   /// Creates a new [ClusterAutomatedBackupPolicyTimeBasedRetention].
   /// [retentionPeriod] The retention period.
-  ClusterAutomatedBackupPolicyTimeBasedRetention({
-    this.retentionPeriod,
-  });
+  ClusterAutomatedBackupPolicyTimeBasedRetention({this.retentionPeriod});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'retentionPeriod': ?retentionPeriod,
-    };
+    return <String, dynamic>{'retentionPeriod': ?retentionPeriod};
   }
 
-  factory ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(Map<String, dynamic> map) {
+  factory ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterAutomatedBackupPolicyTimeBasedRetention(
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as String).input(),
+      retentionPeriod: (() {
+        final guardedValue = map['retentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

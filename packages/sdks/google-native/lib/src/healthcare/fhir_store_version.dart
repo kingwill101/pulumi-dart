@@ -5,16 +5,15 @@ enum FhirStoreVersion {
   stu3("STU3"),
   r4("R4");
 
-  const FhirStoreVersion(this.value);
-  final String value;
+  const FhirStoreVersion(this.wireValue);
+  final String wireValue;
 
   static FhirStoreVersion fromValue(String value) {
     for (final item in FhirStoreVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FhirStoreVersion value: $value');
   }
 }
-

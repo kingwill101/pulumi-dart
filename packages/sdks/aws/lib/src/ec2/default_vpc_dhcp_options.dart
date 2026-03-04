@@ -125,15 +125,20 @@ class DefaultVpcDhcpOptions extends pulumi.CustomResource {
   late final pulumi.Output<String> domainName;
   late final pulumi.Output<String> domainNameServers;
   late final pulumi.Output<String> ipv6AddressPreferredLeaseTime;
+
   /// List of NETBIOS name servers.
   late final pulumi.Output<String> netbiosNameServers;
+
   /// The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
   late final pulumi.Output<String> netbiosNodeType;
   late final pulumi.Output<String> ntpServers;
+
   /// The ID of the AWS account that owns the DHCP options set.
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -147,22 +152,24 @@ class DefaultVpcDhcpOptions extends pulumi.CustomResource {
     DefaultVpcDhcpOptionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.domainName = registerOutput<String>('domainName');
-    this.domainNameServers = registerOutput<String>('domainNameServers');
-    this.ipv6AddressPreferredLeaseTime = registerOutput<String>('ipv6AddressPreferredLeaseTime');
-    this.netbiosNameServers = registerOutput<String>('netbiosNameServers');
-    this.netbiosNodeType = registerOutput<String>('netbiosNodeType');
-    this.ntpServers = registerOutput<String>('ntpServers');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    domainName = registerOutput<String>('domainName');
+    domainNameServers = registerOutput<String>('domainNameServers');
+    ipv6AddressPreferredLeaseTime = registerOutput<String>(
+      'ipv6AddressPreferredLeaseTime',
+    );
+    netbiosNameServers = registerOutput<String>('netbiosNameServers');
+    netbiosNodeType = registerOutput<String>('netbiosNodeType');
+    ntpServers = registerOutput<String>('ntpServers');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [DefaultVpcDhcpOptions] resource's state with the given [name] and [id].
@@ -183,21 +190,23 @@ class DefaultVpcDhcpOptions extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.domainName = registerOutput<String>('domainName');
-    this.domainNameServers = registerOutput<String>('domainNameServers');
-    this.ipv6AddressPreferredLeaseTime = registerOutput<String>('ipv6AddressPreferredLeaseTime');
-    this.netbiosNameServers = registerOutput<String>('netbiosNameServers');
-    this.netbiosNodeType = registerOutput<String>('netbiosNodeType');
-    this.ntpServers = registerOutput<String>('ntpServers');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    domainName = registerOutput<String>('domainName');
+    domainNameServers = registerOutput<String>('domainNameServers');
+    ipv6AddressPreferredLeaseTime = registerOutput<String>(
+      'ipv6AddressPreferredLeaseTime',
+    );
+    netbiosNameServers = registerOutput<String>('netbiosNameServers');
+    netbiosNodeType = registerOutput<String>('netbiosNodeType');
+    ntpServers = registerOutput<String>('ntpServers');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

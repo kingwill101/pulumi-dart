@@ -13,15 +13,16 @@ class GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowChangingZone': allowChangingZone,
-    };
+    return <String, dynamic>{'allowChangingZone': allowChangingZone};
   }
 
-  factory GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceGroupManagerInstanceLifecyclePolicyOnRepair(
-      allowChangingZone: (map['allowChangingZone'] as String).input(),
+      allowChangingZone: pulumi.Input.fromValue(
+        map['allowChangingZone'] as String,
+      ),
     );
   }
 }
-

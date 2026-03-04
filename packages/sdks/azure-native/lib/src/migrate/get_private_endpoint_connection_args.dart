@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateEndpointConnectionArgs {
   /// Unique name of a private endpoint connection within a project.
   final pulumi.Input<String> privateEndpointConnectionName;
+
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetPrivateEndpointConnectionArgs {
 
   factory GetPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionArgs(
-      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      privateEndpointConnectionName: pulumi.Input.fromValue(
+        map['privateEndpointConnectionName'] as String,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

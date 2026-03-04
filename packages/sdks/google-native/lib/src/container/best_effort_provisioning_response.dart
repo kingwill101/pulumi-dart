@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BestEffortProvisioningResponse {
   /// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
   final pulumi.Input<bool> enabled;
+
   /// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
   final pulumi.Input<int> minProvisionNodes;
 
@@ -26,9 +27,10 @@ class BestEffortProvisioningResponse {
 
   factory BestEffortProvisioningResponse.fromMap(Map<String, dynamic> map) {
     return BestEffortProvisioningResponse(
-      enabled: (map['enabled'] as bool).input(),
-      minProvisionNodes: (map['minProvisionNodes'] as int).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      minProvisionNodes: pulumi.Input.fromValue(
+        map['minProvisionNodes'] as int,
+      ),
     );
   }
 }
-

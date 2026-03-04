@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshKeyArgs {
   /// Fingerprint of the SSH Key.
   final pulumi.Input<String>? fingerprint;
+
   /// ID of the SSH Key.
   final pulumi.Input<int>? id;
+
   /// Name of the SSH Key.
   final pulumi.Input<String>? name;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final pulumi.Input<String>? selector;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final pulumi.Input<String>? withSelector;
 
@@ -44,12 +48,31 @@ class GetSshKeyArgs {
 
   factory GetSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeyArgs(
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

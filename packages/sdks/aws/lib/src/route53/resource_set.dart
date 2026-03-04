@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_set_args.dart';
-import 'resource_set_resource.dart';
 import 'resource_set_state.dart';
 
 /// Provides an AWS Route 53 Recovery Readiness Resource Set.
@@ -136,16 +135,21 @@ class ResourceSet extends pulumi.CustomResource {
   /// ARN of the resource set
   /// * `resources.#.component_id` - Unique identified for DNS Target Resources, use for readiness checks.
   late final pulumi.Output<String> arn;
+
   /// Unique name describing the resource set.
   late final pulumi.Output<String> resourceSetName;
+
   /// Type of the resources in the resource set.
   late final pulumi.Output<String> resourceSetType;
+
   /// List of resources to add to this resource set. See below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<ResourceSetResource>> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -158,17 +162,17 @@ class ResourceSet extends pulumi.CustomResource {
     ResourceSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53recoveryreadiness/resourceSet:ResourceSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.resourceSetName = registerOutput<String>('resourceSetName');
-    this.resourceSetType = registerOutput<String>('resourceSetType');
-    this.resources = registerOutput<List<ResourceSetResource>>('resources');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:route53recoveryreadiness/resourceSet:ResourceSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    resourceSetName = registerOutput<String>('resourceSetName');
+    resourceSetType = registerOutput<String>('resourceSetType');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ResourceSet] resource's state with the given [name] and [id].
@@ -189,16 +193,16 @@ class ResourceSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53recoveryreadiness/resourceSet:ResourceSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.resourceSetName = registerOutput<String>('resourceSetName');
-    this.resourceSetType = registerOutput<String>('resourceSetType');
-    this.resources = registerOutput<List<ResourceSetResource>>('resources');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:route53recoveryreadiness/resourceSet:ResourceSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    resourceSetName = registerOutput<String>('resourceSetName');
+    resourceSetType = registerOutput<String>('resourceSetType');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

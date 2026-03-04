@@ -8,20 +8,21 @@ class InsightsDatasetConfigSourceProjects {
 
   /// Creates a new [InsightsDatasetConfigSourceProjects].
   /// [projectNumbers] The list of project numbers to include in the DatasetConfig.
-  InsightsDatasetConfigSourceProjects({
-    this.projectNumbers,
-  });
+  InsightsDatasetConfigSourceProjects({this.projectNumbers});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'projectNumbers': ?projectNumbers,
-    };
+    return <String, dynamic>{'projectNumbers': ?projectNumbers};
   }
 
-  factory InsightsDatasetConfigSourceProjects.fromMap(Map<String, dynamic> map) {
+  factory InsightsDatasetConfigSourceProjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightsDatasetConfigSourceProjects(
-      projectNumbers: map['projectNumbers'] == null ? null : ((map['projectNumbers']! as List).cast<String>()).input(),
+      projectNumbers: (() {
+        final guardedValue = map['projectNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

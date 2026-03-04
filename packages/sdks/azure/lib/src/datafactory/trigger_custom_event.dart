@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_custom_event_args.dart';
-import 'trigger_custom_event_pipeline.dart';
 import 'trigger_custom_event_state.dart';
 
 /// Manages a Custom Event Trigger inside an Azure Data Factory.
@@ -397,24 +396,34 @@ import 'trigger_custom_event_state.dart';
 class TriggerCustomEvent extends pulumi.CustomResource {
   /// Specifies if the Data Factory Custom Event Trigger is activated. Defaults to `true`.
   late final pulumi.Output<bool?> activated;
+
   /// A map of additional properties to associate with the Data Factory Custom Event Trigger.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Custom Event Trigger.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The ID of Data Factory in which to associate the Trigger with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Custom Event Trigger.
   late final pulumi.Output<String?> description;
+
   /// The ID of Event Grid Topic in which event will be listened. Changing this forces a new resource.
   late final pulumi.Output<String> eventgridTopicId;
+
   /// List of events that will fire this trigger. At least one event must be specified.
   late final pulumi.Output<List<String>> events;
+
   /// Specifies the name of the Data Factory Custom Event Trigger. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `pipeline` blocks as defined below.
-  late final pulumi.Output<List<TriggerCustomEventPipeline>> pipelines;
+  late final pulumi.Output<List<Map<String, dynamic>>> pipelines;
+
   /// The pattern that event subject starts with for trigger to fire.
   late final pulumi.Output<String?> subjectBeginsWith;
+
   /// The pattern that event subject ends with for trigger to fire.
   late final pulumi.Output<String?> subjectEndsWith;
 
@@ -427,22 +436,24 @@ class TriggerCustomEvent extends pulumi.CustomResource {
     TriggerCustomEventArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/triggerCustomEvent:TriggerCustomEvent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activated = registerOutput<bool?>('activated');
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.eventgridTopicId = registerOutput<String>('eventgridTopicId');
-    this.events = registerOutput<List<String>>('events');
+         'azure:datafactory/triggerCustomEvent:TriggerCustomEvent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activated = registerOutput<bool?>('activated');
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    eventgridTopicId = registerOutput<String>('eventgridTopicId');
+    events = registerOutput<List<String>>('events');
     this.name = registerOutput<String>('name');
-    this.pipelines = registerOutput<List<TriggerCustomEventPipeline>>('pipelines');
-    this.subjectBeginsWith = registerOutput<String?>('subjectBeginsWith');
-    this.subjectEndsWith = registerOutput<String?>('subjectEndsWith');
+    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    subjectBeginsWith = registerOutput<String?>('subjectBeginsWith');
+    subjectEndsWith = registerOutput<String?>('subjectEndsWith');
   }
 
   /// Gets an existing [TriggerCustomEvent] resource's state with the given [name] and [id].
@@ -463,21 +474,23 @@ class TriggerCustomEvent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/triggerCustomEvent:TriggerCustomEvent',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activated = registerOutput<bool?>('activated');
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.eventgridTopicId = registerOutput<String>('eventgridTopicId');
-    this.events = registerOutput<List<String>>('events');
+         'azure:datafactory/triggerCustomEvent:TriggerCustomEvent',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activated = registerOutput<bool?>('activated');
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    eventgridTopicId = registerOutput<String>('eventgridTopicId');
+    events = registerOutput<List<String>>('events');
     this.name = registerOutput<String>('name');
-    this.pipelines = registerOutput<List<TriggerCustomEventPipeline>>('pipelines');
-    this.subjectBeginsWith = registerOutput<String?>('subjectBeginsWith');
-    this.subjectEndsWith = registerOutput<String?>('subjectEndsWith');
+    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    subjectBeginsWith = registerOutput<String?>('subjectBeginsWith');
+    subjectEndsWith = registerOutput<String?>('subjectEndsWith');
   }
 }

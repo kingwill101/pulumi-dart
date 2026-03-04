@@ -1,20 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'container_group_acr_registry_info.dart';
 import 'container_group_args.dart';
-import 'container_group_container.dart';
 import 'container_group_dns_config.dart';
-import 'container_group_host_alias.dart';
-import 'container_group_image_registry_credential.dart';
-import 'container_group_init_container.dart';
 import 'container_group_security_context.dart';
 import 'container_group_state.dart';
-import 'container_group_volume.dart';
 
 /// Provides ECI Container Group resource.
 ///
 /// For information about ECI Container Group and how to use it, see [What is Container Group](https://www.alibabacloud.com/help/en/elastic-container-instance/latest/api-eci-2018-08-08-createcontainergroup).
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -766,72 +760,105 @@ import 'container_group_volume.dart';
 /// ```
 class ContainerGroup extends pulumi.CustomResource {
   /// The ACR enterprise edition example properties. See `acr_registry_info` below.
-  late final pulumi.Output<List<ContainerGroupAcrRegistryInfo>?> acrRegistryInfos;
+  late final pulumi.Output<List<Map<String, dynamic>>?> acrRegistryInfos;
+
   /// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
   late final pulumi.Output<bool?> autoCreateEip;
+
   /// Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
   late final pulumi.Output<bool> autoMatchImageCache;
+
   /// The name of the container group.
   late final pulumi.Output<String> containerGroupName;
+
   /// The list of containers. See `containers` below.
-  late final pulumi.Output<List<ContainerGroupContainer>> containers;
+  late final pulumi.Output<List<Map<String, dynamic>>> containers;
+
   /// The amount of CPU resources allocated to the container group.
   late final pulumi.Output<double> cpu;
+
   /// The structure of dnsConfig. See `dns_config` below.
   late final pulumi.Output<ContainerGroupDnsConfig?> dnsConfig;
+
   /// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
   late final pulumi.Output<String> dnsPolicy;
+
   /// The bandwidth of the EIP. Default value: `5`.
   late final pulumi.Output<int?> eipBandwidth;
+
   /// The ID of the elastic IP address (EIP).
   late final pulumi.Output<String?> eipInstanceId;
+
   /// The size of the temporary storage space to add. Unit: GiB.
   late final pulumi.Output<int?> ephemeralStorage;
+
   /// HostAliases. See `host_aliases` below.
-  late final pulumi.Output<List<ContainerGroupHostAlias>?> hostAliases;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hostAliases;
+
   /// The image registry credential. See `image_registry_credential` below.
-  late final pulumi.Output<List<ContainerGroupImageRegistryCredential>?> imageRegistryCredentials;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  imageRegistryCredentials;
+
   /// The list of initContainers. See `init_containers` below.
-  late final pulumi.Output<List<ContainerGroupInitContainer>?> initContainers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> initContainers;
+
   /// The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
   late final pulumi.Output<String?> insecureRegistry;
+
   /// The type of the ECS instance.
   late final pulumi.Output<String> instanceType;
+
   /// (Available since v1.170.0) The Public IP of the container group.
   late final pulumi.Output<String> internetIp;
+
   /// (Available since v1.170.0) The Private IP of the container group.
   late final pulumi.Output<String> intranetIp;
+
   /// The amount of memory resources allocated to the container group.
   late final pulumi.Output<double> memory;
+
   /// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
   late final pulumi.Output<String?> plainHttpRegistry;
+
   /// The RAM role that the container group assumes. ECI and ECS share the same RAM role.
   late final pulumi.Output<String?> ramRoleName;
+
   /// The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
   late final pulumi.Output<String> restartPolicy;
+
   /// The security context of the container group. See `security_context` below.
   late final pulumi.Output<ContainerGroupSecurityContext?> securityContext;
+
   /// The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
   late final pulumi.Output<String> securityGroupId;
+
   /// The maximum hourly price of the ECI spot instance.
   late final pulumi.Output<double> spotPriceLimit;
+
   /// Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
   late final pulumi.Output<String> spotStrategy;
+
   /// The status of container group.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The buffer time during which the program handles operations before the program stops. Unit: seconds.
   late final pulumi.Output<int?> terminationGracePeriodSeconds;
+
   /// The list of volumes. See `volumes` below.
-  late final pulumi.Output<List<ContainerGroupVolume>?> volumes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+
   /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
   /// **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
   late final pulumi.Output<String> vswitchId;
+
   /// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
   late final pulumi.Output<String> zoneId;
 
@@ -844,44 +871,54 @@ class ContainerGroup extends pulumi.CustomResource {
     ContainerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eci/containerGroup:ContainerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acrRegistryInfos = registerOutput<List<ContainerGroupAcrRegistryInfo>?>('acrRegistryInfos');
-    this.autoCreateEip = registerOutput<bool?>('autoCreateEip');
-    this.autoMatchImageCache = registerOutput<bool>('autoMatchImageCache');
-    this.containerGroupName = registerOutput<String>('containerGroupName');
-    this.containers = registerOutput<List<ContainerGroupContainer>>('containers');
-    this.cpu = registerOutput<double>('cpu');
-    this.dnsConfig = registerOutput<ContainerGroupDnsConfig?>('dnsConfig');
-    this.dnsPolicy = registerOutput<String>('dnsPolicy');
-    this.eipBandwidth = registerOutput<int?>('eipBandwidth');
-    this.eipInstanceId = registerOutput<String?>('eipInstanceId');
-    this.ephemeralStorage = registerOutput<int?>('ephemeralStorage');
-    this.hostAliases = registerOutput<List<ContainerGroupHostAlias>?>('hostAliases');
-    this.imageRegistryCredentials = registerOutput<List<ContainerGroupImageRegistryCredential>?>('imageRegistryCredentials');
-    this.initContainers = registerOutput<List<ContainerGroupInitContainer>?>('initContainers');
-    this.insecureRegistry = registerOutput<String?>('insecureRegistry');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.internetIp = registerOutput<String>('internetIp');
-    this.intranetIp = registerOutput<String>('intranetIp');
-    this.memory = registerOutput<double>('memory');
-    this.plainHttpRegistry = registerOutput<String?>('plainHttpRegistry');
-    this.ramRoleName = registerOutput<String?>('ramRoleName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.restartPolicy = registerOutput<String>('restartPolicy');
-    this.securityContext = registerOutput<ContainerGroupSecurityContext?>('securityContext');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.spotPriceLimit = registerOutput<double>('spotPriceLimit');
-    this.spotStrategy = registerOutput<String>('spotStrategy');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.terminationGracePeriodSeconds = registerOutput<int?>('terminationGracePeriodSeconds');
-    this.volumes = registerOutput<List<ContainerGroupVolume>?>('volumes');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:eci/containerGroup:ContainerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acrRegistryInfos = registerOutput<List<Map<String, dynamic>>?>(
+      'acrRegistryInfos',
+    );
+    autoCreateEip = registerOutput<bool?>('autoCreateEip');
+    autoMatchImageCache = registerOutput<bool>('autoMatchImageCache');
+    containerGroupName = registerOutput<String>('containerGroupName');
+    containers = registerOutput<List<Map<String, dynamic>>>('containers');
+    cpu = registerOutput<double>('cpu');
+    dnsConfig = registerOutput<ContainerGroupDnsConfig?>('dnsConfig');
+    dnsPolicy = registerOutput<String>('dnsPolicy');
+    eipBandwidth = registerOutput<int?>('eipBandwidth');
+    eipInstanceId = registerOutput<String?>('eipInstanceId');
+    ephemeralStorage = registerOutput<int?>('ephemeralStorage');
+    hostAliases = registerOutput<List<Map<String, dynamic>>?>('hostAliases');
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
+      'imageRegistryCredentials',
+    );
+    initContainers = registerOutput<List<Map<String, dynamic>>?>(
+      'initContainers',
+    );
+    insecureRegistry = registerOutput<String?>('insecureRegistry');
+    instanceType = registerOutput<String>('instanceType');
+    internetIp = registerOutput<String>('internetIp');
+    intranetIp = registerOutput<String>('intranetIp');
+    memory = registerOutput<double>('memory');
+    plainHttpRegistry = registerOutput<String?>('plainHttpRegistry');
+    ramRoleName = registerOutput<String?>('ramRoleName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    restartPolicy = registerOutput<String>('restartPolicy');
+    securityContext = registerOutput<ContainerGroupSecurityContext?>(
+      'securityContext',
+    );
+    securityGroupId = registerOutput<String>('securityGroupId');
+    spotPriceLimit = registerOutput<double>('spotPriceLimit');
+    spotStrategy = registerOutput<String>('spotStrategy');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    terminationGracePeriodSeconds = registerOutput<int?>(
+      'terminationGracePeriodSeconds',
+    );
+    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [ContainerGroup] resource's state with the given [name] and [id].
@@ -902,43 +939,53 @@ class ContainerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eci/containerGroup:ContainerGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acrRegistryInfos = registerOutput<List<ContainerGroupAcrRegistryInfo>?>('acrRegistryInfos');
-    this.autoCreateEip = registerOutput<bool?>('autoCreateEip');
-    this.autoMatchImageCache = registerOutput<bool>('autoMatchImageCache');
-    this.containerGroupName = registerOutput<String>('containerGroupName');
-    this.containers = registerOutput<List<ContainerGroupContainer>>('containers');
-    this.cpu = registerOutput<double>('cpu');
-    this.dnsConfig = registerOutput<ContainerGroupDnsConfig?>('dnsConfig');
-    this.dnsPolicy = registerOutput<String>('dnsPolicy');
-    this.eipBandwidth = registerOutput<int?>('eipBandwidth');
-    this.eipInstanceId = registerOutput<String?>('eipInstanceId');
-    this.ephemeralStorage = registerOutput<int?>('ephemeralStorage');
-    this.hostAliases = registerOutput<List<ContainerGroupHostAlias>?>('hostAliases');
-    this.imageRegistryCredentials = registerOutput<List<ContainerGroupImageRegistryCredential>?>('imageRegistryCredentials');
-    this.initContainers = registerOutput<List<ContainerGroupInitContainer>?>('initContainers');
-    this.insecureRegistry = registerOutput<String?>('insecureRegistry');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.internetIp = registerOutput<String>('internetIp');
-    this.intranetIp = registerOutput<String>('intranetIp');
-    this.memory = registerOutput<double>('memory');
-    this.plainHttpRegistry = registerOutput<String?>('plainHttpRegistry');
-    this.ramRoleName = registerOutput<String?>('ramRoleName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.restartPolicy = registerOutput<String>('restartPolicy');
-    this.securityContext = registerOutput<ContainerGroupSecurityContext?>('securityContext');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.spotPriceLimit = registerOutput<double>('spotPriceLimit');
-    this.spotStrategy = registerOutput<String>('spotStrategy');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.terminationGracePeriodSeconds = registerOutput<int?>('terminationGracePeriodSeconds');
-    this.volumes = registerOutput<List<ContainerGroupVolume>?>('volumes');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:eci/containerGroup:ContainerGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acrRegistryInfos = registerOutput<List<Map<String, dynamic>>?>(
+      'acrRegistryInfos',
+    );
+    autoCreateEip = registerOutput<bool?>('autoCreateEip');
+    autoMatchImageCache = registerOutput<bool>('autoMatchImageCache');
+    containerGroupName = registerOutput<String>('containerGroupName');
+    containers = registerOutput<List<Map<String, dynamic>>>('containers');
+    cpu = registerOutput<double>('cpu');
+    dnsConfig = registerOutput<ContainerGroupDnsConfig?>('dnsConfig');
+    dnsPolicy = registerOutput<String>('dnsPolicy');
+    eipBandwidth = registerOutput<int?>('eipBandwidth');
+    eipInstanceId = registerOutput<String?>('eipInstanceId');
+    ephemeralStorage = registerOutput<int?>('ephemeralStorage');
+    hostAliases = registerOutput<List<Map<String, dynamic>>?>('hostAliases');
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
+      'imageRegistryCredentials',
+    );
+    initContainers = registerOutput<List<Map<String, dynamic>>?>(
+      'initContainers',
+    );
+    insecureRegistry = registerOutput<String?>('insecureRegistry');
+    instanceType = registerOutput<String>('instanceType');
+    internetIp = registerOutput<String>('internetIp');
+    intranetIp = registerOutput<String>('intranetIp');
+    memory = registerOutput<double>('memory');
+    plainHttpRegistry = registerOutput<String?>('plainHttpRegistry');
+    ramRoleName = registerOutput<String?>('ramRoleName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    restartPolicy = registerOutput<String>('restartPolicy');
+    securityContext = registerOutput<ContainerGroupSecurityContext?>(
+      'securityContext',
+    );
+    securityGroupId = registerOutput<String>('securityGroupId');
+    spotPriceLimit = registerOutput<double>('spotPriceLimit');
+    spotStrategy = registerOutput<String>('spotStrategy');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    terminationGracePeriodSeconds = registerOutput<int?>(
+      'terminationGracePeriodSeconds',
+    );
+    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse {
   /// The largest blob sequence length (number of blobs) of all data points in this time series, if its ValueType is BLOB_SEQUENCE.
   final pulumi.Input<String> maxBlobSequenceLength;
+
   /// Max step index of all data points within a TensorboardTimeSeries.
   final pulumi.Input<String> maxStep;
+
   /// Max wall clock timestamp of all data points within a TensorboardTimeSeries.
   final pulumi.Input<String> maxWallTime;
 
@@ -29,12 +31,15 @@ class GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse(
-      maxBlobSequenceLength: (map['maxBlobSequenceLength'] as String).input(),
-      maxStep: (map['maxStep'] as String).input(),
-      maxWallTime: (map['maxWallTime'] as String).input(),
+      maxBlobSequenceLength: pulumi.Input.fromValue(
+        map['maxBlobSequenceLength'] as String,
+      ),
+      maxStep: pulumi.Input.fromValue(map['maxStep'] as String),
+      maxWallTime: pulumi.Input.fromValue(map['maxWallTime'] as String),
     );
   }
 }
-

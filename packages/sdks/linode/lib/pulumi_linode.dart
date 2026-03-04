@@ -1,1403 +1,2017 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_linode;
-
-import 'package:pulumi_linode/index.dart' as _index;
-import 'package:pulumi_linode/providers.dart' as _providers;
+import 'package:pulumi_linode/index.dart' as module_index;
+import 'package:pulumi_linode/providers.dart' as module_providers;
 
 final index = _IndexModuleNamespace();
 final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final AccountSettings = _index.AccountSettings.new;
-  final AccountSettingsArgs = _index.AccountSettingsArgs.new;
-  final AccountSettingsState = _index.AccountSettingsState.new;
-  final AccountSettingsStateArgs = _index.AccountSettingsState.new;
-  final ConsumerImageShareGroupToken = _index.ConsumerImageShareGroupToken.new;
-  final ConsumerImageShareGroupTokenArgs = _index.ConsumerImageShareGroupTokenArgs.new;
-  final ConsumerImageShareGroupTokenState = _index.ConsumerImageShareGroupTokenState.new;
-  final ConsumerImageShareGroupTokenStateArgs = _index.ConsumerImageShareGroupTokenState.new;
-  final DatabaseAccessControls = _index.DatabaseAccessControls.new;
-  final DatabaseAccessControlsArgs = _index.DatabaseAccessControlsArgs.new;
-  final DatabaseAccessControlsState = _index.DatabaseAccessControlsState.new;
-  final DatabaseAccessControlsStateArgs = _index.DatabaseAccessControlsState.new;
-  final DatabaseMysql = _index.DatabaseMysql.new;
-  final DatabaseMysqlArgs = _index.DatabaseMysqlArgs.new;
-  final DatabaseMysqlState = _index.DatabaseMysqlState.new;
-  final DatabaseMysqlStateArgs = _index.DatabaseMysqlState.new;
-  final DatabaseMysqlUpdates = _index.DatabaseMysqlUpdates.new;
-  final DatabaseMysqlUpdatesArgs = _index.DatabaseMysqlUpdates.new;
-  final DatabaseMysqlV2 = _index.DatabaseMysqlV2.new;
-  final DatabaseMysqlV2Args = _index.DatabaseMysqlV2Args.new;
-  final DatabaseMysqlV2PendingUpdate = _index.DatabaseMysqlV2PendingUpdate.new;
-  final DatabaseMysqlV2PendingUpdateArgs = _index.DatabaseMysqlV2PendingUpdate.new;
-  final DatabaseMysqlV2PrivateNetwork = _index.DatabaseMysqlV2PrivateNetwork.new;
-  final DatabaseMysqlV2PrivateNetworkArgs = _index.DatabaseMysqlV2PrivateNetwork.new;
-  final DatabaseMysqlV2State = _index.DatabaseMysqlV2State.new;
-  final DatabaseMysqlV2StateArgs = _index.DatabaseMysqlV2State.new;
-  final DatabaseMysqlV2Timeouts = _index.DatabaseMysqlV2Timeouts.new;
-  final DatabaseMysqlV2TimeoutsArgs = _index.DatabaseMysqlV2Timeouts.new;
-  final DatabaseMysqlV2Updates = _index.DatabaseMysqlV2Updates.new;
-  final DatabaseMysqlV2UpdatesArgs = _index.DatabaseMysqlV2Updates.new;
-  final DatabasePostgresql = _index.DatabasePostgresql.new;
-  final DatabasePostgresqlArgs = _index.DatabasePostgresqlArgs.new;
-  final DatabasePostgresqlState = _index.DatabasePostgresqlState.new;
-  final DatabasePostgresqlStateArgs = _index.DatabasePostgresqlState.new;
-  final DatabasePostgresqlUpdates = _index.DatabasePostgresqlUpdates.new;
-  final DatabasePostgresqlUpdatesArgs = _index.DatabasePostgresqlUpdates.new;
-  final DatabasePostgresqlV2 = _index.DatabasePostgresqlV2.new;
-  final DatabasePostgresqlV2Args = _index.DatabasePostgresqlV2Args.new;
-  final DatabasePostgresqlV2PendingUpdate = _index.DatabasePostgresqlV2PendingUpdate.new;
-  final DatabasePostgresqlV2PendingUpdateArgs = _index.DatabasePostgresqlV2PendingUpdate.new;
-  final DatabasePostgresqlV2PrivateNetwork = _index.DatabasePostgresqlV2PrivateNetwork.new;
-  final DatabasePostgresqlV2PrivateNetworkArgs = _index.DatabasePostgresqlV2PrivateNetwork.new;
-  final DatabasePostgresqlV2State = _index.DatabasePostgresqlV2State.new;
-  final DatabasePostgresqlV2StateArgs = _index.DatabasePostgresqlV2State.new;
-  final DatabasePostgresqlV2Timeouts = _index.DatabasePostgresqlV2Timeouts.new;
-  final DatabasePostgresqlV2TimeoutsArgs = _index.DatabasePostgresqlV2Timeouts.new;
-  final DatabasePostgresqlV2Updates = _index.DatabasePostgresqlV2Updates.new;
-  final DatabasePostgresqlV2UpdatesArgs = _index.DatabasePostgresqlV2Updates.new;
-  final Domain = _index.Domain.new;
-  final DomainArgs = _index.DomainArgs.new;
-  final DomainRecord = _index.DomainRecord.new;
-  final DomainRecordArgs = _index.DomainRecordArgs.new;
-  final DomainRecordState = _index.DomainRecordState.new;
-  final DomainRecordStateArgs = _index.DomainRecordState.new;
-  final DomainState = _index.DomainState.new;
-  final DomainStateArgs = _index.DomainState.new;
-  final Firewall = _index.Firewall.new;
-  final FirewallArgs = _index.FirewallArgs.new;
-  final FirewallDevice = _index.FirewallDevice.new;
-  final FirewallDeviceArgs = _index.FirewallDevice.new;
-  final FirewallDeviceState = _index.FirewallDeviceState.new;
-  final FirewallDeviceStateArgs = _index.FirewallDeviceState.new;
-  final FirewallInbound = _index.FirewallInbound.new;
-  final FirewallInboundArgs = _index.FirewallInbound.new;
-  final FirewallOutbound = _index.FirewallOutbound.new;
-  final FirewallOutboundArgs = _index.FirewallOutbound.new;
-  final FirewallSettings = _index.FirewallSettings.new;
-  final FirewallSettingsArgs = _index.FirewallSettingsArgs.new;
-  final FirewallSettingsDefaultFirewallIds = _index.FirewallSettingsDefaultFirewallIds.new;
-  final FirewallSettingsDefaultFirewallIdsArgs = _index.FirewallSettingsDefaultFirewallIds.new;
-  final FirewallSettingsState = _index.FirewallSettingsState.new;
-  final FirewallSettingsStateArgs = _index.FirewallSettingsState.new;
-  final FirewallState = _index.FirewallState.new;
-  final FirewallStateArgs = _index.FirewallState.new;
-  final GetAccountAvailabilitiesArgs = _index.GetAccountAvailabilitiesArgs.new;
-  final GetAccountAvailabilitiesAvailability = _index.GetAccountAvailabilitiesAvailability.new;
-  final GetAccountAvailabilitiesAvailabilityArgs = _index.GetAccountAvailabilitiesAvailability.new;
-  final GetAccountAvailabilitiesFilter = _index.GetAccountAvailabilitiesFilter.new;
-  final GetAccountAvailabilitiesFilterArgs = _index.GetAccountAvailabilitiesFilter.new;
-  final GetAccountAvailabilitiesResult = _index.GetAccountAvailabilitiesResult.new;
-  final GetAccountAvailabilitiesResultArgs = _index.GetAccountAvailabilitiesResult.new;
-  final GetAccountAvailabilityArgs = _index.GetAccountAvailabilityArgs.new;
-  final GetAccountAvailabilityResult = _index.GetAccountAvailabilityResult.new;
-  final GetAccountAvailabilityResultArgs = _index.GetAccountAvailabilityResult.new;
-  final GetAccountLoginArgs = _index.GetAccountLoginArgs.new;
-  final GetAccountLoginResult = _index.GetAccountLoginResult.new;
-  final GetAccountLoginResultArgs = _index.GetAccountLoginResult.new;
-  final GetAccountLoginsArgs = _index.GetAccountLoginsArgs.new;
-  final GetAccountLoginsFilter = _index.GetAccountLoginsFilter.new;
-  final GetAccountLoginsFilterArgs = _index.GetAccountLoginsFilter.new;
-  final GetAccountLoginsLogin = _index.GetAccountLoginsLogin.new;
-  final GetAccountLoginsLoginArgs = _index.GetAccountLoginsLogin.new;
-  final GetAccountLoginsResult = _index.GetAccountLoginsResult.new;
-  final GetAccountLoginsResultArgs = _index.GetAccountLoginsResult.new;
-  final GetAccountResult = _index.GetAccountResult.new;
-  final GetAccountResultArgs = _index.GetAccountResult.new;
-  final GetAccountSettingsResult = _index.GetAccountSettingsResult.new;
-  final GetAccountSettingsResultArgs = _index.GetAccountSettingsResult.new;
-  final GetChildAccountArgs = _index.GetChildAccountArgs.new;
-  final GetChildAccountResult = _index.GetChildAccountResult.new;
-  final GetChildAccountResultArgs = _index.GetChildAccountResult.new;
-  final GetChildAccountsArgs = _index.GetChildAccountsArgs.new;
-  final GetChildAccountsChildAccount = _index.GetChildAccountsChildAccount.new;
-  final GetChildAccountsChildAccountArgs = _index.GetChildAccountsChildAccount.new;
-  final GetChildAccountsFilter = _index.GetChildAccountsFilter.new;
-  final GetChildAccountsFilterArgs = _index.GetChildAccountsFilter.new;
-  final GetChildAccountsResult = _index.GetChildAccountsResult.new;
-  final GetChildAccountsResultArgs = _index.GetChildAccountsResult.new;
-  final GetConsumerImageShareGroupArgs = _index.GetConsumerImageShareGroupArgs.new;
-  final GetConsumerImageShareGroupImageSharesArgs = _index.GetConsumerImageShareGroupImageSharesArgs.new;
-  final GetConsumerImageShareGroupImageSharesFilter = _index.GetConsumerImageShareGroupImageSharesFilter.new;
-  final GetConsumerImageShareGroupImageSharesFilterArgs = _index.GetConsumerImageShareGroupImageSharesFilter.new;
-  final GetConsumerImageShareGroupImageSharesImageShare = _index.GetConsumerImageShareGroupImageSharesImageShare.new;
-  final GetConsumerImageShareGroupImageSharesImageShareArgs = _index.GetConsumerImageShareGroupImageSharesImageShare.new;
-  final GetConsumerImageShareGroupImageSharesImageShareImageSharing = _index.GetConsumerImageShareGroupImageSharesImageShareImageSharing.new;
-  final GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs = _index.GetConsumerImageShareGroupImageSharesImageShareImageSharing.new;
-  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy = _index.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy.new;
-  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs = _index.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy.new;
-  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith = _index.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith.new;
-  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs = _index.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith.new;
-  final GetConsumerImageShareGroupImageSharesResult = _index.GetConsumerImageShareGroupImageSharesResult.new;
-  final GetConsumerImageShareGroupImageSharesResultArgs = _index.GetConsumerImageShareGroupImageSharesResult.new;
-  final GetConsumerImageShareGroupResult = _index.GetConsumerImageShareGroupResult.new;
-  final GetConsumerImageShareGroupResultArgs = _index.GetConsumerImageShareGroupResult.new;
-  final GetConsumerImageShareGroupTokenArgs = _index.GetConsumerImageShareGroupTokenArgs.new;
-  final GetConsumerImageShareGroupTokenResult = _index.GetConsumerImageShareGroupTokenResult.new;
-  final GetConsumerImageShareGroupTokenResultArgs = _index.GetConsumerImageShareGroupTokenResult.new;
-  final GetConsumerImageShareGroupTokensArgs = _index.GetConsumerImageShareGroupTokensArgs.new;
-  final GetConsumerImageShareGroupTokensFilter = _index.GetConsumerImageShareGroupTokensFilter.new;
-  final GetConsumerImageShareGroupTokensFilterArgs = _index.GetConsumerImageShareGroupTokensFilter.new;
-  final GetConsumerImageShareGroupTokensResult = _index.GetConsumerImageShareGroupTokensResult.new;
-  final GetConsumerImageShareGroupTokensResultArgs = _index.GetConsumerImageShareGroupTokensResult.new;
-  final GetConsumerImageShareGroupTokensToken = _index.GetConsumerImageShareGroupTokensToken.new;
-  final GetConsumerImageShareGroupTokensTokenArgs = _index.GetConsumerImageShareGroupTokensToken.new;
-  final GetDatabaseBackupsArgs = _index.GetDatabaseBackupsArgs.new;
-  final GetDatabaseBackupsBackup = _index.GetDatabaseBackupsBackup.new;
-  final GetDatabaseBackupsBackupArgs = _index.GetDatabaseBackupsBackup.new;
-  final GetDatabaseBackupsFilter = _index.GetDatabaseBackupsFilter.new;
-  final GetDatabaseBackupsFilterArgs = _index.GetDatabaseBackupsFilter.new;
-  final GetDatabaseBackupsResult = _index.GetDatabaseBackupsResult.new;
-  final GetDatabaseBackupsResultArgs = _index.GetDatabaseBackupsResult.new;
-  final GetDatabaseEnginesArgs = _index.GetDatabaseEnginesArgs.new;
-  final GetDatabaseEnginesEngine = _index.GetDatabaseEnginesEngine.new;
-  final GetDatabaseEnginesEngineArgs = _index.GetDatabaseEnginesEngine.new;
-  final GetDatabaseEnginesFilter = _index.GetDatabaseEnginesFilter.new;
-  final GetDatabaseEnginesFilterArgs = _index.GetDatabaseEnginesFilter.new;
-  final GetDatabaseEnginesResult = _index.GetDatabaseEnginesResult.new;
-  final GetDatabaseEnginesResultArgs = _index.GetDatabaseEnginesResult.new;
-  final GetDatabaseMysqlArgs = _index.GetDatabaseMysqlArgs.new;
-  final GetDatabaseMysqlBackupsArgs = _index.GetDatabaseMysqlBackupsArgs.new;
-  final GetDatabaseMysqlBackupsBackup = _index.GetDatabaseMysqlBackupsBackup.new;
-  final GetDatabaseMysqlBackupsBackupArgs = _index.GetDatabaseMysqlBackupsBackup.new;
-  final GetDatabaseMysqlBackupsFilter = _index.GetDatabaseMysqlBackupsFilter.new;
-  final GetDatabaseMysqlBackupsFilterArgs = _index.GetDatabaseMysqlBackupsFilter.new;
-  final GetDatabaseMysqlBackupsResult = _index.GetDatabaseMysqlBackupsResult.new;
-  final GetDatabaseMysqlBackupsResultArgs = _index.GetDatabaseMysqlBackupsResult.new;
-  final GetDatabaseMysqlConfigBinlogRetentionPeriod = _index.GetDatabaseMysqlConfigBinlogRetentionPeriod.new;
-  final GetDatabaseMysqlConfigBinlogRetentionPeriodArgs = _index.GetDatabaseMysqlConfigBinlogRetentionPeriod.new;
-  final GetDatabaseMysqlConfigMysql = _index.GetDatabaseMysqlConfigMysql.new;
-  final GetDatabaseMysqlConfigMysqlArgs = _index.GetDatabaseMysqlConfigMysql.new;
-  final GetDatabaseMysqlConfigMysqlConnectTimeout = _index.GetDatabaseMysqlConfigMysqlConnectTimeout.new;
-  final GetDatabaseMysqlConfigMysqlConnectTimeoutArgs = _index.GetDatabaseMysqlConfigMysqlConnectTimeout.new;
-  final GetDatabaseMysqlConfigMysqlDefaultTimeZone = _index.GetDatabaseMysqlConfigMysqlDefaultTimeZone.new;
-  final GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs = _index.GetDatabaseMysqlConfigMysqlDefaultTimeZone.new;
-  final GetDatabaseMysqlConfigMysqlGroupConcatMaxLen = _index.GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.new;
-  final GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs = _index.GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.new;
-  final GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry = _index.GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.new;
-  final GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs = _index.GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.new;
-  final GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize = _index.GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs = _index.GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors = _index.GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.new;
-  final GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs = _index.GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.new;
-  final GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize = _index.GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs = _index.GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable = _index.GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.new;
-  final GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs = _index.GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.new;
-  final GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout = _index.GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout.new;
-  final GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs = _index.GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout.new;
-  final GetDatabaseMysqlConfigMysqlInnodbLogBufferSize = _index.GetDatabaseMysqlConfigMysqlInnodbLogBufferSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs = _index.GetDatabaseMysqlConfigMysqlInnodbLogBufferSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize = _index.GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs = _index.GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.new;
-  final GetDatabaseMysqlConfigMysqlInnodbReadIoThreads = _index.GetDatabaseMysqlConfigMysqlInnodbReadIoThreads.new;
-  final GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs = _index.GetDatabaseMysqlConfigMysqlInnodbReadIoThreads.new;
-  final GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout = _index.GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.new;
-  final GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs = _index.GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.new;
-  final GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency = _index.GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.new;
-  final GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs = _index.GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.new;
-  final GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads = _index.GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.new;
-  final GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs = _index.GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.new;
-  final GetDatabaseMysqlConfigMysqlInteractiveTimeout = _index.GetDatabaseMysqlConfigMysqlInteractiveTimeout.new;
-  final GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs = _index.GetDatabaseMysqlConfigMysqlInteractiveTimeout.new;
-  final GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine = _index.GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.new;
-  final GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs = _index.GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.new;
-  final GetDatabaseMysqlConfigMysqlMaxAllowedPacket = _index.GetDatabaseMysqlConfigMysqlMaxAllowedPacket.new;
-  final GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs = _index.GetDatabaseMysqlConfigMysqlMaxAllowedPacket.new;
-  final GetDatabaseMysqlConfigMysqlMaxHeapTableSize = _index.GetDatabaseMysqlConfigMysqlMaxHeapTableSize.new;
-  final GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs = _index.GetDatabaseMysqlConfigMysqlMaxHeapTableSize.new;
-  final GetDatabaseMysqlConfigMysqlNetBufferLength = _index.GetDatabaseMysqlConfigMysqlNetBufferLength.new;
-  final GetDatabaseMysqlConfigMysqlNetBufferLengthArgs = _index.GetDatabaseMysqlConfigMysqlNetBufferLength.new;
-  final GetDatabaseMysqlConfigMysqlNetReadTimeout = _index.GetDatabaseMysqlConfigMysqlNetReadTimeout.new;
-  final GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs = _index.GetDatabaseMysqlConfigMysqlNetReadTimeout.new;
-  final GetDatabaseMysqlConfigMysqlNetWriteTimeout = _index.GetDatabaseMysqlConfigMysqlNetWriteTimeout.new;
-  final GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs = _index.GetDatabaseMysqlConfigMysqlNetWriteTimeout.new;
-  final GetDatabaseMysqlConfigMysqlSortBufferSize = _index.GetDatabaseMysqlConfigMysqlSortBufferSize.new;
-  final GetDatabaseMysqlConfigMysqlSortBufferSizeArgs = _index.GetDatabaseMysqlConfigMysqlSortBufferSize.new;
-  final GetDatabaseMysqlConfigMysqlSqlMode = _index.GetDatabaseMysqlConfigMysqlSqlMode.new;
-  final GetDatabaseMysqlConfigMysqlSqlModeArgs = _index.GetDatabaseMysqlConfigMysqlSqlMode.new;
-  final GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey = _index.GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.new;
-  final GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs = _index.GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.new;
-  final GetDatabaseMysqlConfigMysqlTmpTableSize = _index.GetDatabaseMysqlConfigMysqlTmpTableSize.new;
-  final GetDatabaseMysqlConfigMysqlTmpTableSizeArgs = _index.GetDatabaseMysqlConfigMysqlTmpTableSize.new;
-  final GetDatabaseMysqlConfigMysqlWaitTimeout = _index.GetDatabaseMysqlConfigMysqlWaitTimeout.new;
-  final GetDatabaseMysqlConfigMysqlWaitTimeoutArgs = _index.GetDatabaseMysqlConfigMysqlWaitTimeout.new;
-  final GetDatabaseMysqlConfigResult = _index.GetDatabaseMysqlConfigResult.new;
-  final GetDatabaseMysqlConfigResultArgs = _index.GetDatabaseMysqlConfigResult.new;
-  final GetDatabaseMysqlResult = _index.GetDatabaseMysqlResult.new;
-  final GetDatabaseMysqlResultArgs = _index.GetDatabaseMysqlResult.new;
-  final GetDatabaseMysqlUpdate = _index.GetDatabaseMysqlUpdate.new;
-  final GetDatabaseMysqlUpdateArgs = _index.GetDatabaseMysqlUpdate.new;
-  final GetDatabaseMysqlV2Args = _index.GetDatabaseMysqlV2Args.new;
-  final GetDatabaseMysqlV2PendingUpdate = _index.GetDatabaseMysqlV2PendingUpdate.new;
-  final GetDatabaseMysqlV2PendingUpdateArgs = _index.GetDatabaseMysqlV2PendingUpdate.new;
-  final GetDatabaseMysqlV2PrivateNetwork = _index.GetDatabaseMysqlV2PrivateNetwork.new;
-  final GetDatabaseMysqlV2PrivateNetworkArgs = _index.GetDatabaseMysqlV2PrivateNetwork.new;
-  final GetDatabaseMysqlV2Result = _index.GetDatabaseMysqlV2Result.new;
-  final GetDatabaseMysqlV2ResultArgs = _index.GetDatabaseMysqlV2Result.new;
-  final GetDatabaseMysqlV2Updates = _index.GetDatabaseMysqlV2Updates.new;
-  final GetDatabaseMysqlV2UpdatesArgs = _index.GetDatabaseMysqlV2Updates.new;
-  final GetDatabasePostgresqlArgs = _index.GetDatabasePostgresqlArgs.new;
-  final GetDatabasePostgresqlConfigPgStatMonitorEnable = _index.GetDatabasePostgresqlConfigPgStatMonitorEnable.new;
-  final GetDatabasePostgresqlConfigPgStatMonitorEnableArgs = _index.GetDatabasePostgresqlConfigPgStatMonitorEnable.new;
-  final GetDatabasePostgresqlConfigPglookout = _index.GetDatabasePostgresqlConfigPglookout.new;
-  final GetDatabasePostgresqlConfigPglookoutArgs = _index.GetDatabasePostgresqlConfigPglookout.new;
-  final GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag = _index.GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag.new;
-  final GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs = _index.GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag.new;
-  final GetDatabasePostgresqlConfigResult = _index.GetDatabasePostgresqlConfigResult.new;
-  final GetDatabasePostgresqlConfigResultArgs = _index.GetDatabasePostgresqlConfigResult.new;
-  final GetDatabasePostgresqlConfigSharedBuffersPercentage = _index.GetDatabasePostgresqlConfigSharedBuffersPercentage.new;
-  final GetDatabasePostgresqlConfigSharedBuffersPercentageArgs = _index.GetDatabasePostgresqlConfigSharedBuffersPercentage.new;
-  final GetDatabasePostgresqlConfigWorkMem = _index.GetDatabasePostgresqlConfigWorkMem.new;
-  final GetDatabasePostgresqlConfigWorkMemArgs = _index.GetDatabasePostgresqlConfigWorkMem.new;
-  final GetDatabasePostgresqlResult = _index.GetDatabasePostgresqlResult.new;
-  final GetDatabasePostgresqlResultArgs = _index.GetDatabasePostgresqlResult.new;
-  final GetDatabasePostgresqlUpdate = _index.GetDatabasePostgresqlUpdate.new;
-  final GetDatabasePostgresqlUpdateArgs = _index.GetDatabasePostgresqlUpdate.new;
-  final GetDatabasePostgresqlV2Args = _index.GetDatabasePostgresqlV2Args.new;
-  final GetDatabasePostgresqlV2PendingUpdate = _index.GetDatabasePostgresqlV2PendingUpdate.new;
-  final GetDatabasePostgresqlV2PendingUpdateArgs = _index.GetDatabasePostgresqlV2PendingUpdate.new;
-  final GetDatabasePostgresqlV2PrivateNetwork = _index.GetDatabasePostgresqlV2PrivateNetwork.new;
-  final GetDatabasePostgresqlV2PrivateNetworkArgs = _index.GetDatabasePostgresqlV2PrivateNetwork.new;
-  final GetDatabasePostgresqlV2Result = _index.GetDatabasePostgresqlV2Result.new;
-  final GetDatabasePostgresqlV2ResultArgs = _index.GetDatabasePostgresqlV2Result.new;
-  final GetDatabasePostgresqlV2Updates = _index.GetDatabasePostgresqlV2Updates.new;
-  final GetDatabasePostgresqlV2UpdatesArgs = _index.GetDatabasePostgresqlV2Updates.new;
-  final GetDatabasesArgs = _index.GetDatabasesArgs.new;
-  final GetDatabasesDatabase = _index.GetDatabasesDatabase.new;
-  final GetDatabasesDatabaseArgs = _index.GetDatabasesDatabase.new;
-  final GetDatabasesDatabasePrivateNetwork = _index.GetDatabasesDatabasePrivateNetwork.new;
-  final GetDatabasesDatabasePrivateNetworkArgs = _index.GetDatabasesDatabasePrivateNetwork.new;
-  final GetDatabasesFilter = _index.GetDatabasesFilter.new;
-  final GetDatabasesFilterArgs = _index.GetDatabasesFilter.new;
-  final GetDatabasesResult = _index.GetDatabasesResult.new;
-  final GetDatabasesResultArgs = _index.GetDatabasesResult.new;
-  final GetDomainArgs = _index.GetDomainArgs.new;
-  final GetDomainRecordArgs = _index.GetDomainRecordArgs.new;
-  final GetDomainRecordResult = _index.GetDomainRecordResult.new;
-  final GetDomainRecordResultArgs = _index.GetDomainRecordResult.new;
-  final GetDomainResult = _index.GetDomainResult.new;
-  final GetDomainResultArgs = _index.GetDomainResult.new;
-  final GetDomainZonefileArgs = _index.GetDomainZonefileArgs.new;
-  final GetDomainZonefileResult = _index.GetDomainZonefileResult.new;
-  final GetDomainZonefileResultArgs = _index.GetDomainZonefileResult.new;
-  final GetDomainsArgs = _index.GetDomainsArgs.new;
-  final GetDomainsDomain = _index.GetDomainsDomain.new;
-  final GetDomainsDomainArgs = _index.GetDomainsDomain.new;
-  final GetDomainsFilter = _index.GetDomainsFilter.new;
-  final GetDomainsFilterArgs = _index.GetDomainsFilter.new;
-  final GetDomainsResult = _index.GetDomainsResult.new;
-  final GetDomainsResultArgs = _index.GetDomainsResult.new;
-  final GetFirewallArgs = _index.GetFirewallArgs.new;
-  final GetFirewallDevice = _index.GetFirewallDevice.new;
-  final GetFirewallDeviceArgs = _index.GetFirewallDevice.new;
-  final GetFirewallInbound = _index.GetFirewallInbound.new;
-  final GetFirewallInboundArgs = _index.GetFirewallInbound.new;
-  final GetFirewallOutbound = _index.GetFirewallOutbound.new;
-  final GetFirewallOutboundArgs = _index.GetFirewallOutbound.new;
-  final GetFirewallResult = _index.GetFirewallResult.new;
-  final GetFirewallResultArgs = _index.GetFirewallResult.new;
-  final GetFirewallSettingsDefaultFirewallIds = _index.GetFirewallSettingsDefaultFirewallIds.new;
-  final GetFirewallSettingsDefaultFirewallIdsArgs = _index.GetFirewallSettingsDefaultFirewallIds.new;
-  final GetFirewallSettingsResult = _index.GetFirewallSettingsResult.new;
-  final GetFirewallSettingsResultArgs = _index.GetFirewallSettingsResult.new;
-  final GetFirewallTemplateArgs = _index.GetFirewallTemplateArgs.new;
-  final GetFirewallTemplateInbound = _index.GetFirewallTemplateInbound.new;
-  final GetFirewallTemplateInboundArgs = _index.GetFirewallTemplateInbound.new;
-  final GetFirewallTemplateOutbound = _index.GetFirewallTemplateOutbound.new;
-  final GetFirewallTemplateOutboundArgs = _index.GetFirewallTemplateOutbound.new;
-  final GetFirewallTemplateResult = _index.GetFirewallTemplateResult.new;
-  final GetFirewallTemplateResultArgs = _index.GetFirewallTemplateResult.new;
-  final GetFirewallTemplatesArgs = _index.GetFirewallTemplatesArgs.new;
-  final GetFirewallTemplatesFilter = _index.GetFirewallTemplatesFilter.new;
-  final GetFirewallTemplatesFilterArgs = _index.GetFirewallTemplatesFilter.new;
-  final GetFirewallTemplatesFirewallTemplate = _index.GetFirewallTemplatesFirewallTemplate.new;
-  final GetFirewallTemplatesFirewallTemplateArgs = _index.GetFirewallTemplatesFirewallTemplate.new;
-  final GetFirewallTemplatesFirewallTemplateInbound = _index.GetFirewallTemplatesFirewallTemplateInbound.new;
-  final GetFirewallTemplatesFirewallTemplateInboundArgs = _index.GetFirewallTemplatesFirewallTemplateInbound.new;
-  final GetFirewallTemplatesFirewallTemplateOutbound = _index.GetFirewallTemplatesFirewallTemplateOutbound.new;
-  final GetFirewallTemplatesFirewallTemplateOutboundArgs = _index.GetFirewallTemplatesFirewallTemplateOutbound.new;
-  final GetFirewallTemplatesResult = _index.GetFirewallTemplatesResult.new;
-  final GetFirewallTemplatesResultArgs = _index.GetFirewallTemplatesResult.new;
-  final GetFirewallsArgs = _index.GetFirewallsArgs.new;
-  final GetFirewallsFilter = _index.GetFirewallsFilter.new;
-  final GetFirewallsFilterArgs = _index.GetFirewallsFilter.new;
-  final GetFirewallsFirewall = _index.GetFirewallsFirewall.new;
-  final GetFirewallsFirewallArgs = _index.GetFirewallsFirewall.new;
-  final GetFirewallsFirewallDevice = _index.GetFirewallsFirewallDevice.new;
-  final GetFirewallsFirewallDeviceArgs = _index.GetFirewallsFirewallDevice.new;
-  final GetFirewallsFirewallInbound = _index.GetFirewallsFirewallInbound.new;
-  final GetFirewallsFirewallInboundArgs = _index.GetFirewallsFirewallInbound.new;
-  final GetFirewallsFirewallOutbound = _index.GetFirewallsFirewallOutbound.new;
-  final GetFirewallsFirewallOutboundArgs = _index.GetFirewallsFirewallOutbound.new;
-  final GetFirewallsResult = _index.GetFirewallsResult.new;
-  final GetFirewallsResultArgs = _index.GetFirewallsResult.new;
-  final GetImageArgs = _index.GetImageArgs.new;
-  final GetImageImageSharing = _index.GetImageImageSharing.new;
-  final GetImageImageSharingArgs = _index.GetImageImageSharing.new;
-  final GetImageImageSharingSharedBy = _index.GetImageImageSharingSharedBy.new;
-  final GetImageImageSharingSharedByArgs = _index.GetImageImageSharingSharedBy.new;
-  final GetImageImageSharingSharedWith = _index.GetImageImageSharingSharedWith.new;
-  final GetImageImageSharingSharedWithArgs = _index.GetImageImageSharingSharedWith.new;
-  final GetImageReplication = _index.GetImageReplication.new;
-  final GetImageReplicationArgs = _index.GetImageReplication.new;
-  final GetImageResult = _index.GetImageResult.new;
-  final GetImageResultArgs = _index.GetImageResult.new;
-  final GetImagesArgs = _index.GetImagesArgs.new;
-  final GetImagesFilter = _index.GetImagesFilter.new;
-  final GetImagesFilterArgs = _index.GetImagesFilter.new;
-  final GetImagesImage = _index.GetImagesImage.new;
-  final GetImagesImageArgs = _index.GetImagesImage.new;
-  final GetImagesImageImageSharing = _index.GetImagesImageImageSharing.new;
-  final GetImagesImageImageSharingArgs = _index.GetImagesImageImageSharing.new;
-  final GetImagesImageImageSharingSharedBy = _index.GetImagesImageImageSharingSharedBy.new;
-  final GetImagesImageImageSharingSharedByArgs = _index.GetImagesImageImageSharingSharedBy.new;
-  final GetImagesImageImageSharingSharedWith = _index.GetImagesImageImageSharingSharedWith.new;
-  final GetImagesImageImageSharingSharedWithArgs = _index.GetImagesImageImageSharingSharedWith.new;
-  final GetImagesImageReplication = _index.GetImagesImageReplication.new;
-  final GetImagesImageReplicationArgs = _index.GetImagesImageReplication.new;
-  final GetImagesResult = _index.GetImagesResult.new;
-  final GetImagesResultArgs = _index.GetImagesResult.new;
-  final GetInstanceBackupsArgs = _index.GetInstanceBackupsArgs.new;
-  final GetInstanceBackupsAutomatic = _index.GetInstanceBackupsAutomatic.new;
-  final GetInstanceBackupsAutomaticArgs = _index.GetInstanceBackupsAutomatic.new;
-  final GetInstanceBackupsAutomaticDisk = _index.GetInstanceBackupsAutomaticDisk.new;
-  final GetInstanceBackupsAutomaticDiskArgs = _index.GetInstanceBackupsAutomaticDisk.new;
-  final GetInstanceBackupsCurrent = _index.GetInstanceBackupsCurrent.new;
-  final GetInstanceBackupsCurrentArgs = _index.GetInstanceBackupsCurrent.new;
-  final GetInstanceBackupsCurrentDisk = _index.GetInstanceBackupsCurrentDisk.new;
-  final GetInstanceBackupsCurrentDiskArgs = _index.GetInstanceBackupsCurrentDisk.new;
-  final GetInstanceBackupsInProgress = _index.GetInstanceBackupsInProgress.new;
-  final GetInstanceBackupsInProgressArgs = _index.GetInstanceBackupsInProgress.new;
-  final GetInstanceBackupsInProgressDisk = _index.GetInstanceBackupsInProgressDisk.new;
-  final GetInstanceBackupsInProgressDiskArgs = _index.GetInstanceBackupsInProgressDisk.new;
-  final GetInstanceBackupsResult = _index.GetInstanceBackupsResult.new;
-  final GetInstanceBackupsResultArgs = _index.GetInstanceBackupsResult.new;
-  final GetInstanceNetworkingArgs = _index.GetInstanceNetworkingArgs.new;
-  final GetInstanceNetworkingIpv4 = _index.GetInstanceNetworkingIpv4.new;
-  final GetInstanceNetworkingIpv4Args = _index.GetInstanceNetworkingIpv4.new;
-  final GetInstanceNetworkingIpv4Private = _index.GetInstanceNetworkingIpv4Private.new;
-  final GetInstanceNetworkingIpv4PrivateArgs = _index.GetInstanceNetworkingIpv4Private.new;
-  final GetInstanceNetworkingIpv4PrivateVpcNat11 = _index.GetInstanceNetworkingIpv4PrivateVpcNat11.new;
-  final GetInstanceNetworkingIpv4PrivateVpcNat11Args = _index.GetInstanceNetworkingIpv4PrivateVpcNat11.new;
-  final GetInstanceNetworkingIpv4Public = _index.GetInstanceNetworkingIpv4Public.new;
-  final GetInstanceNetworkingIpv4PublicArgs = _index.GetInstanceNetworkingIpv4Public.new;
-  final GetInstanceNetworkingIpv4PublicVpcNat11 = _index.GetInstanceNetworkingIpv4PublicVpcNat11.new;
-  final GetInstanceNetworkingIpv4PublicVpcNat11Args = _index.GetInstanceNetworkingIpv4PublicVpcNat11.new;
-  final GetInstanceNetworkingIpv4Reserved = _index.GetInstanceNetworkingIpv4Reserved.new;
-  final GetInstanceNetworkingIpv4ReservedArgs = _index.GetInstanceNetworkingIpv4Reserved.new;
-  final GetInstanceNetworkingIpv4ReservedVpcNat11 = _index.GetInstanceNetworkingIpv4ReservedVpcNat11.new;
-  final GetInstanceNetworkingIpv4ReservedVpcNat11Args = _index.GetInstanceNetworkingIpv4ReservedVpcNat11.new;
-  final GetInstanceNetworkingIpv4Shared = _index.GetInstanceNetworkingIpv4Shared.new;
-  final GetInstanceNetworkingIpv4SharedArgs = _index.GetInstanceNetworkingIpv4Shared.new;
-  final GetInstanceNetworkingIpv4SharedVpcNat11 = _index.GetInstanceNetworkingIpv4SharedVpcNat11.new;
-  final GetInstanceNetworkingIpv4SharedVpcNat11Args = _index.GetInstanceNetworkingIpv4SharedVpcNat11.new;
-  final GetInstanceNetworkingIpv4Vpc = _index.GetInstanceNetworkingIpv4Vpc.new;
-  final GetInstanceNetworkingIpv4VpcArgs = _index.GetInstanceNetworkingIpv4Vpc.new;
-  final GetInstanceNetworkingIpv6 = _index.GetInstanceNetworkingIpv6.new;
-  final GetInstanceNetworkingIpv6Args = _index.GetInstanceNetworkingIpv6.new;
-  final GetInstanceNetworkingIpv6Global = _index.GetInstanceNetworkingIpv6Global.new;
-  final GetInstanceNetworkingIpv6GlobalArgs = _index.GetInstanceNetworkingIpv6Global.new;
-  final GetInstanceNetworkingIpv6LinkLocal = _index.GetInstanceNetworkingIpv6LinkLocal.new;
-  final GetInstanceNetworkingIpv6LinkLocalArgs = _index.GetInstanceNetworkingIpv6LinkLocal.new;
-  final GetInstanceNetworkingIpv6LinkLocalVpcNat11 = _index.GetInstanceNetworkingIpv6LinkLocalVpcNat11.new;
-  final GetInstanceNetworkingIpv6LinkLocalVpcNat11Args = _index.GetInstanceNetworkingIpv6LinkLocalVpcNat11.new;
-  final GetInstanceNetworkingIpv6Slaac = _index.GetInstanceNetworkingIpv6Slaac.new;
-  final GetInstanceNetworkingIpv6SlaacArgs = _index.GetInstanceNetworkingIpv6Slaac.new;
-  final GetInstanceNetworkingIpv6SlaacVpcNat11 = _index.GetInstanceNetworkingIpv6SlaacVpcNat11.new;
-  final GetInstanceNetworkingIpv6SlaacVpcNat11Args = _index.GetInstanceNetworkingIpv6SlaacVpcNat11.new;
-  final GetInstanceNetworkingResult = _index.GetInstanceNetworkingResult.new;
-  final GetInstanceNetworkingResultArgs = _index.GetInstanceNetworkingResult.new;
-  final GetInstanceTypeAddon = _index.GetInstanceTypeAddon.new;
-  final GetInstanceTypeAddonArgs = _index.GetInstanceTypeAddon.new;
-  final GetInstanceTypeAddonBackup = _index.GetInstanceTypeAddonBackup.new;
-  final GetInstanceTypeAddonBackupArgs = _index.GetInstanceTypeAddonBackup.new;
-  final GetInstanceTypeAddonBackupPrice = _index.GetInstanceTypeAddonBackupPrice.new;
-  final GetInstanceTypeAddonBackupPriceArgs = _index.GetInstanceTypeAddonBackupPrice.new;
-  final GetInstanceTypeAddonBackupRegionPrice = _index.GetInstanceTypeAddonBackupRegionPrice.new;
-  final GetInstanceTypeAddonBackupRegionPriceArgs = _index.GetInstanceTypeAddonBackupRegionPrice.new;
-  final GetInstanceTypeArgs = _index.GetInstanceTypeArgs.new;
-  final GetInstanceTypePrice = _index.GetInstanceTypePrice.new;
-  final GetInstanceTypePriceArgs = _index.GetInstanceTypePrice.new;
-  final GetInstanceTypeRegionPrice = _index.GetInstanceTypeRegionPrice.new;
-  final GetInstanceTypeRegionPriceArgs = _index.GetInstanceTypeRegionPrice.new;
-  final GetInstanceTypeResult = _index.GetInstanceTypeResult.new;
-  final GetInstanceTypeResultArgs = _index.GetInstanceTypeResult.new;
-  final GetInstanceTypesArgs = _index.GetInstanceTypesArgs.new;
-  final GetInstanceTypesFilter = _index.GetInstanceTypesFilter.new;
-  final GetInstanceTypesFilterArgs = _index.GetInstanceTypesFilter.new;
-  final GetInstanceTypesResult = _index.GetInstanceTypesResult.new;
-  final GetInstanceTypesResultArgs = _index.GetInstanceTypesResult.new;
-  final GetInstanceTypesType = _index.GetInstanceTypesType.new;
-  final GetInstanceTypesTypeAddon = _index.GetInstanceTypesTypeAddon.new;
-  final GetInstanceTypesTypeAddonArgs = _index.GetInstanceTypesTypeAddon.new;
-  final GetInstanceTypesTypeAddonBackup = _index.GetInstanceTypesTypeAddonBackup.new;
-  final GetInstanceTypesTypeAddonBackupArgs = _index.GetInstanceTypesTypeAddonBackup.new;
-  final GetInstanceTypesTypeAddonBackupPrice = _index.GetInstanceTypesTypeAddonBackupPrice.new;
-  final GetInstanceTypesTypeAddonBackupPriceArgs = _index.GetInstanceTypesTypeAddonBackupPrice.new;
-  final GetInstanceTypesTypeAddonBackupRegionPrice = _index.GetInstanceTypesTypeAddonBackupRegionPrice.new;
-  final GetInstanceTypesTypeAddonBackupRegionPriceArgs = _index.GetInstanceTypesTypeAddonBackupRegionPrice.new;
-  final GetInstanceTypesTypeArgs = _index.GetInstanceTypesType.new;
-  final GetInstanceTypesTypePrice = _index.GetInstanceTypesTypePrice.new;
-  final GetInstanceTypesTypePriceArgs = _index.GetInstanceTypesTypePrice.new;
-  final GetInstanceTypesTypeRegionPrice = _index.GetInstanceTypesTypeRegionPrice.new;
-  final GetInstanceTypesTypeRegionPriceArgs = _index.GetInstanceTypesTypeRegionPrice.new;
-  final GetInstancesArgs = _index.GetInstancesArgs.new;
-  final GetInstancesFilter = _index.GetInstancesFilter.new;
-  final GetInstancesFilterArgs = _index.GetInstancesFilter.new;
-  final GetInstancesInstance = _index.GetInstancesInstance.new;
-  final GetInstancesInstanceAlerts = _index.GetInstancesInstanceAlerts.new;
-  final GetInstancesInstanceAlertsArgs = _index.GetInstancesInstanceAlerts.new;
-  final GetInstancesInstanceArgs = _index.GetInstancesInstance.new;
-  final GetInstancesInstanceBackup = _index.GetInstancesInstanceBackup.new;
-  final GetInstancesInstanceBackupArgs = _index.GetInstancesInstanceBackup.new;
-  final GetInstancesInstanceBackupSchedule = _index.GetInstancesInstanceBackupSchedule.new;
-  final GetInstancesInstanceBackupScheduleArgs = _index.GetInstancesInstanceBackupSchedule.new;
-  final GetInstancesInstanceConfig = _index.GetInstancesInstanceConfig.new;
-  final GetInstancesInstanceConfigArgs = _index.GetInstancesInstanceConfig.new;
-  final GetInstancesInstanceConfigDevice = _index.GetInstancesInstanceConfigDevice.new;
-  final GetInstancesInstanceConfigDeviceArgs = _index.GetInstancesInstanceConfigDevice.new;
-  final GetInstancesInstanceConfigDeviceSda = _index.GetInstancesInstanceConfigDeviceSda.new;
-  final GetInstancesInstanceConfigDeviceSdaArgs = _index.GetInstancesInstanceConfigDeviceSda.new;
-  final GetInstancesInstanceConfigDeviceSdb = _index.GetInstancesInstanceConfigDeviceSdb.new;
-  final GetInstancesInstanceConfigDeviceSdbArgs = _index.GetInstancesInstanceConfigDeviceSdb.new;
-  final GetInstancesInstanceConfigDeviceSdc = _index.GetInstancesInstanceConfigDeviceSdc.new;
-  final GetInstancesInstanceConfigDeviceSdcArgs = _index.GetInstancesInstanceConfigDeviceSdc.new;
-  final GetInstancesInstanceConfigDeviceSdd = _index.GetInstancesInstanceConfigDeviceSdd.new;
-  final GetInstancesInstanceConfigDeviceSddArgs = _index.GetInstancesInstanceConfigDeviceSdd.new;
-  final GetInstancesInstanceConfigDeviceSde = _index.GetInstancesInstanceConfigDeviceSde.new;
-  final GetInstancesInstanceConfigDeviceSdeArgs = _index.GetInstancesInstanceConfigDeviceSde.new;
-  final GetInstancesInstanceConfigDeviceSdf = _index.GetInstancesInstanceConfigDeviceSdf.new;
-  final GetInstancesInstanceConfigDeviceSdfArgs = _index.GetInstancesInstanceConfigDeviceSdf.new;
-  final GetInstancesInstanceConfigDeviceSdg = _index.GetInstancesInstanceConfigDeviceSdg.new;
-  final GetInstancesInstanceConfigDeviceSdgArgs = _index.GetInstancesInstanceConfigDeviceSdg.new;
-  final GetInstancesInstanceConfigDeviceSdh = _index.GetInstancesInstanceConfigDeviceSdh.new;
-  final GetInstancesInstanceConfigDeviceSdhArgs = _index.GetInstancesInstanceConfigDeviceSdh.new;
-  final GetInstancesInstanceConfigHelper = _index.GetInstancesInstanceConfigHelper.new;
-  final GetInstancesInstanceConfigHelperArgs = _index.GetInstancesInstanceConfigHelper.new;
-  final GetInstancesInstanceConfigInterface = _index.GetInstancesInstanceConfigInterface.new;
-  final GetInstancesInstanceConfigInterfaceArgs = _index.GetInstancesInstanceConfigInterface.new;
-  final GetInstancesInstanceConfigInterfaceIpv4 = _index.GetInstancesInstanceConfigInterfaceIpv4.new;
-  final GetInstancesInstanceConfigInterfaceIpv4Args = _index.GetInstancesInstanceConfigInterfaceIpv4.new;
-  final GetInstancesInstanceConfigInterfaceIpv6 = _index.GetInstancesInstanceConfigInterfaceIpv6.new;
-  final GetInstancesInstanceConfigInterfaceIpv6Args = _index.GetInstancesInstanceConfigInterfaceIpv6.new;
-  final GetInstancesInstanceConfigInterfaceIpv6Range = _index.GetInstancesInstanceConfigInterfaceIpv6Range.new;
-  final GetInstancesInstanceConfigInterfaceIpv6RangeArgs = _index.GetInstancesInstanceConfigInterfaceIpv6Range.new;
-  final GetInstancesInstanceConfigInterfaceIpv6Slaac = _index.GetInstancesInstanceConfigInterfaceIpv6Slaac.new;
-  final GetInstancesInstanceConfigInterfaceIpv6SlaacArgs = _index.GetInstancesInstanceConfigInterfaceIpv6Slaac.new;
-  final GetInstancesInstanceDisk = _index.GetInstancesInstanceDisk.new;
-  final GetInstancesInstanceDiskArgs = _index.GetInstancesInstanceDisk.new;
-  final GetInstancesInstancePlacementGroup = _index.GetInstancesInstancePlacementGroup.new;
-  final GetInstancesInstancePlacementGroupArgs = _index.GetInstancesInstancePlacementGroup.new;
-  final GetInstancesInstanceSpec = _index.GetInstancesInstanceSpec.new;
-  final GetInstancesInstanceSpecArgs = _index.GetInstancesInstanceSpec.new;
-  final GetInstancesResult = _index.GetInstancesResult.new;
-  final GetInstancesResultArgs = _index.GetInstancesResult.new;
-  final GetInterfaceArgs = _index.GetInterfaceArgs.new;
-  final GetInterfaceDefaultRoute = _index.GetInterfaceDefaultRoute.new;
-  final GetInterfaceDefaultRouteArgs = _index.GetInterfaceDefaultRoute.new;
-  final GetInterfacePublic = _index.GetInterfacePublic.new;
-  final GetInterfacePublicArgs = _index.GetInterfacePublic.new;
-  final GetInterfacePublicIpv4 = _index.GetInterfacePublicIpv4.new;
-  final GetInterfacePublicIpv4Address = _index.GetInterfacePublicIpv4Address.new;
-  final GetInterfacePublicIpv4AddressArgs = _index.GetInterfacePublicIpv4Address.new;
-  final GetInterfacePublicIpv4Args = _index.GetInterfacePublicIpv4.new;
-  final GetInterfacePublicIpv4Shared = _index.GetInterfacePublicIpv4Shared.new;
-  final GetInterfacePublicIpv4SharedArgs = _index.GetInterfacePublicIpv4Shared.new;
-  final GetInterfacePublicIpv6 = _index.GetInterfacePublicIpv6.new;
-  final GetInterfacePublicIpv6Args = _index.GetInterfacePublicIpv6.new;
-  final GetInterfacePublicIpv6Range = _index.GetInterfacePublicIpv6Range.new;
-  final GetInterfacePublicIpv6RangeArgs = _index.GetInterfacePublicIpv6Range.new;
-  final GetInterfacePublicIpv6Shared = _index.GetInterfacePublicIpv6Shared.new;
-  final GetInterfacePublicIpv6SharedArgs = _index.GetInterfacePublicIpv6Shared.new;
-  final GetInterfacePublicIpv6Slaac = _index.GetInterfacePublicIpv6Slaac.new;
-  final GetInterfacePublicIpv6SlaacArgs = _index.GetInterfacePublicIpv6Slaac.new;
-  final GetInterfaceResult = _index.GetInterfaceResult.new;
-  final GetInterfaceResultArgs = _index.GetInterfaceResult.new;
-  final GetInterfaceVlan = _index.GetInterfaceVlan.new;
-  final GetInterfaceVlanArgs = _index.GetInterfaceVlan.new;
-  final GetInterfaceVpc = _index.GetInterfaceVpc.new;
-  final GetInterfaceVpcArgs = _index.GetInterfaceVpc.new;
-  final GetInterfaceVpcIpv4 = _index.GetInterfaceVpcIpv4.new;
-  final GetInterfaceVpcIpv4Address = _index.GetInterfaceVpcIpv4Address.new;
-  final GetInterfaceVpcIpv4AddressArgs = _index.GetInterfaceVpcIpv4Address.new;
-  final GetInterfaceVpcIpv4Args = _index.GetInterfaceVpcIpv4.new;
-  final GetInterfaceVpcIpv4Range = _index.GetInterfaceVpcIpv4Range.new;
-  final GetInterfaceVpcIpv4RangeArgs = _index.GetInterfaceVpcIpv4Range.new;
-  final GetInterfaceVpcIpv6 = _index.GetInterfaceVpcIpv6.new;
-  final GetInterfaceVpcIpv6Args = _index.GetInterfaceVpcIpv6.new;
-  final GetInterfaceVpcIpv6Range = _index.GetInterfaceVpcIpv6Range.new;
-  final GetInterfaceVpcIpv6RangeArgs = _index.GetInterfaceVpcIpv6Range.new;
-  final GetInterfaceVpcIpv6Slaac = _index.GetInterfaceVpcIpv6Slaac.new;
-  final GetInterfaceVpcIpv6SlaacArgs = _index.GetInterfaceVpcIpv6Slaac.new;
-  final GetIpv6RangeArgs = _index.GetIpv6RangeArgs.new;
-  final GetIpv6RangeResult = _index.GetIpv6RangeResult.new;
-  final GetIpv6RangeResultArgs = _index.GetIpv6RangeResult.new;
-  final GetIpv6RangesArgs = _index.GetIpv6RangesArgs.new;
-  final GetIpv6RangesFilter = _index.GetIpv6RangesFilter.new;
-  final GetIpv6RangesFilterArgs = _index.GetIpv6RangesFilter.new;
-  final GetIpv6RangesRange = _index.GetIpv6RangesRange.new;
-  final GetIpv6RangesRangeArgs = _index.GetIpv6RangesRange.new;
-  final GetIpv6RangesResult = _index.GetIpv6RangesResult.new;
-  final GetIpv6RangesResultArgs = _index.GetIpv6RangesResult.new;
-  final GetKernelArgs = _index.GetKernelArgs.new;
-  final GetKernelResult = _index.GetKernelResult.new;
-  final GetKernelResultArgs = _index.GetKernelResult.new;
-  final GetKernelsArgs = _index.GetKernelsArgs.new;
-  final GetKernelsFilter = _index.GetKernelsFilter.new;
-  final GetKernelsFilterArgs = _index.GetKernelsFilter.new;
-  final GetKernelsKernel = _index.GetKernelsKernel.new;
-  final GetKernelsKernelArgs = _index.GetKernelsKernel.new;
-  final GetKernelsResult = _index.GetKernelsResult.new;
-  final GetKernelsResultArgs = _index.GetKernelsResult.new;
-  final GetLinodeObjectStorageBucketArgs = _index.GetLinodeObjectStorageBucketArgs.new;
-  final GetLinodeObjectStorageBucketResult = _index.GetLinodeObjectStorageBucketResult.new;
-  final GetLinodeObjectStorageBucketResultArgs = _index.GetLinodeObjectStorageBucketResult.new;
-  final GetLkeClusterArgs = _index.GetLkeClusterArgs.new;
-  final GetLkeClusterControlPlane = _index.GetLkeClusterControlPlane.new;
-  final GetLkeClusterControlPlaneAcl = _index.GetLkeClusterControlPlaneAcl.new;
-  final GetLkeClusterControlPlaneAclAddress = _index.GetLkeClusterControlPlaneAclAddress.new;
-  final GetLkeClusterControlPlaneAclAddressArgs = _index.GetLkeClusterControlPlaneAclAddress.new;
-  final GetLkeClusterControlPlaneAclArgs = _index.GetLkeClusterControlPlaneAcl.new;
-  final GetLkeClusterControlPlaneArgs = _index.GetLkeClusterControlPlane.new;
-  final GetLkeClusterPool = _index.GetLkeClusterPool.new;
-  final GetLkeClusterPoolArgs = _index.GetLkeClusterPool.new;
-  final GetLkeClusterPoolAutoscaler = _index.GetLkeClusterPoolAutoscaler.new;
-  final GetLkeClusterPoolAutoscalerArgs = _index.GetLkeClusterPoolAutoscaler.new;
-  final GetLkeClusterPoolDisk = _index.GetLkeClusterPoolDisk.new;
-  final GetLkeClusterPoolDiskArgs = _index.GetLkeClusterPoolDisk.new;
-  final GetLkeClusterPoolNode = _index.GetLkeClusterPoolNode.new;
-  final GetLkeClusterPoolNodeArgs = _index.GetLkeClusterPoolNode.new;
-  final GetLkeClusterPoolTaint = _index.GetLkeClusterPoolTaint.new;
-  final GetLkeClusterPoolTaintArgs = _index.GetLkeClusterPoolTaint.new;
-  final GetLkeClusterResult = _index.GetLkeClusterResult.new;
-  final GetLkeClusterResultArgs = _index.GetLkeClusterResult.new;
-  final GetLkeClustersArgs = _index.GetLkeClustersArgs.new;
-  final GetLkeClustersFilter = _index.GetLkeClustersFilter.new;
-  final GetLkeClustersFilterArgs = _index.GetLkeClustersFilter.new;
-  final GetLkeClustersLkeCluster = _index.GetLkeClustersLkeCluster.new;
-  final GetLkeClustersLkeClusterArgs = _index.GetLkeClustersLkeCluster.new;
-  final GetLkeClustersLkeClusterControlPlane = _index.GetLkeClustersLkeClusterControlPlane.new;
-  final GetLkeClustersLkeClusterControlPlaneArgs = _index.GetLkeClustersLkeClusterControlPlane.new;
-  final GetLkeClustersResult = _index.GetLkeClustersResult.new;
-  final GetLkeClustersResultArgs = _index.GetLkeClustersResult.new;
-  final GetLkeTypesArgs = _index.GetLkeTypesArgs.new;
-  final GetLkeTypesFilter = _index.GetLkeTypesFilter.new;
-  final GetLkeTypesFilterArgs = _index.GetLkeTypesFilter.new;
-  final GetLkeTypesResult = _index.GetLkeTypesResult.new;
-  final GetLkeTypesResultArgs = _index.GetLkeTypesResult.new;
-  final GetLkeTypesType = _index.GetLkeTypesType.new;
-  final GetLkeTypesTypeArgs = _index.GetLkeTypesType.new;
-  final GetLkeTypesTypePrice = _index.GetLkeTypesTypePrice.new;
-  final GetLkeTypesTypePriceArgs = _index.GetLkeTypesTypePrice.new;
-  final GetLkeTypesTypeRegionPrice = _index.GetLkeTypesTypeRegionPrice.new;
-  final GetLkeTypesTypeRegionPriceArgs = _index.GetLkeTypesTypeRegionPrice.new;
-  final GetLkeVersionArgs = _index.GetLkeVersionArgs.new;
-  final GetLkeVersionResult = _index.GetLkeVersionResult.new;
-  final GetLkeVersionResultArgs = _index.GetLkeVersionResult.new;
-  final GetLkeVersionsArgs = _index.GetLkeVersionsArgs.new;
-  final GetLkeVersionsResult = _index.GetLkeVersionsResult.new;
-  final GetLkeVersionsResultArgs = _index.GetLkeVersionsResult.new;
-  final GetLkeVersionsVersion = _index.GetLkeVersionsVersion.new;
-  final GetLkeVersionsVersionArgs = _index.GetLkeVersionsVersion.new;
-  final GetLockArgs = _index.GetLockArgs.new;
-  final GetLockResult = _index.GetLockResult.new;
-  final GetLockResultArgs = _index.GetLockResult.new;
-  final GetLocksArgs = _index.GetLocksArgs.new;
-  final GetLocksFilter = _index.GetLocksFilter.new;
-  final GetLocksFilterArgs = _index.GetLocksFilter.new;
-  final GetLocksLock = _index.GetLocksLock.new;
-  final GetLocksLockArgs = _index.GetLocksLock.new;
-  final GetLocksResult = _index.GetLocksResult.new;
-  final GetLocksResultArgs = _index.GetLocksResult.new;
-  final GetMaintenancePoliciesArgs = _index.GetMaintenancePoliciesArgs.new;
-  final GetMaintenancePoliciesFilter = _index.GetMaintenancePoliciesFilter.new;
-  final GetMaintenancePoliciesFilterArgs = _index.GetMaintenancePoliciesFilter.new;
-  final GetMaintenancePoliciesMaintenancePolicy = _index.GetMaintenancePoliciesMaintenancePolicy.new;
-  final GetMaintenancePoliciesMaintenancePolicyArgs = _index.GetMaintenancePoliciesMaintenancePolicy.new;
-  final GetMaintenancePoliciesResult = _index.GetMaintenancePoliciesResult.new;
-  final GetMaintenancePoliciesResultArgs = _index.GetMaintenancePoliciesResult.new;
-  final GetNbTypesArgs = _index.GetNbTypesArgs.new;
-  final GetNbTypesFilter = _index.GetNbTypesFilter.new;
-  final GetNbTypesFilterArgs = _index.GetNbTypesFilter.new;
-  final GetNbTypesResult = _index.GetNbTypesResult.new;
-  final GetNbTypesResultArgs = _index.GetNbTypesResult.new;
-  final GetNbTypesType = _index.GetNbTypesType.new;
-  final GetNbTypesTypeArgs = _index.GetNbTypesType.new;
-  final GetNbTypesTypePrice = _index.GetNbTypesTypePrice.new;
-  final GetNbTypesTypePriceArgs = _index.GetNbTypesTypePrice.new;
-  final GetNbTypesTypeRegionPrice = _index.GetNbTypesTypeRegionPrice.new;
-  final GetNbTypesTypeRegionPriceArgs = _index.GetNbTypesTypeRegionPrice.new;
-  final GetNetworkTransferPricesArgs = _index.GetNetworkTransferPricesArgs.new;
-  final GetNetworkTransferPricesFilter = _index.GetNetworkTransferPricesFilter.new;
-  final GetNetworkTransferPricesFilterArgs = _index.GetNetworkTransferPricesFilter.new;
-  final GetNetworkTransferPricesResult = _index.GetNetworkTransferPricesResult.new;
-  final GetNetworkTransferPricesResultArgs = _index.GetNetworkTransferPricesResult.new;
-  final GetNetworkTransferPricesType = _index.GetNetworkTransferPricesType.new;
-  final GetNetworkTransferPricesTypeArgs = _index.GetNetworkTransferPricesType.new;
-  final GetNetworkTransferPricesTypePrice = _index.GetNetworkTransferPricesTypePrice.new;
-  final GetNetworkTransferPricesTypePriceArgs = _index.GetNetworkTransferPricesTypePrice.new;
-  final GetNetworkTransferPricesTypeRegionPrice = _index.GetNetworkTransferPricesTypeRegionPrice.new;
-  final GetNetworkTransferPricesTypeRegionPriceArgs = _index.GetNetworkTransferPricesTypeRegionPrice.new;
-  final GetNetworkingIpArgs = _index.GetNetworkingIpArgs.new;
-  final GetNetworkingIpResult = _index.GetNetworkingIpResult.new;
-  final GetNetworkingIpResultArgs = _index.GetNetworkingIpResult.new;
-  final GetNetworkingIpVpcNat11 = _index.GetNetworkingIpVpcNat11.new;
-  final GetNetworkingIpVpcNat11Args = _index.GetNetworkingIpVpcNat11.new;
-  final GetNetworkingIpsArgs = _index.GetNetworkingIpsArgs.new;
-  final GetNetworkingIpsFilter = _index.GetNetworkingIpsFilter.new;
-  final GetNetworkingIpsFilterArgs = _index.GetNetworkingIpsFilter.new;
-  final GetNetworkingIpsIpAddress = _index.GetNetworkingIpsIpAddress.new;
-  final GetNetworkingIpsIpAddressArgs = _index.GetNetworkingIpsIpAddress.new;
-  final GetNetworkingIpsIpAddressVpcNat11 = _index.GetNetworkingIpsIpAddressVpcNat11.new;
-  final GetNetworkingIpsIpAddressVpcNat11Args = _index.GetNetworkingIpsIpAddressVpcNat11.new;
-  final GetNetworkingIpsResult = _index.GetNetworkingIpsResult.new;
-  final GetNetworkingIpsResultArgs = _index.GetNetworkingIpsResult.new;
-  final GetNodeBalancerArgs = _index.GetNodeBalancerArgs.new;
-  final GetNodeBalancerConfigArgs = _index.GetNodeBalancerConfigArgs.new;
-  final GetNodeBalancerConfigNodeStatus = _index.GetNodeBalancerConfigNodeStatus.new;
-  final GetNodeBalancerConfigNodeStatusArgs = _index.GetNodeBalancerConfigNodeStatus.new;
-  final GetNodeBalancerConfigResult = _index.GetNodeBalancerConfigResult.new;
-  final GetNodeBalancerConfigResultArgs = _index.GetNodeBalancerConfigResult.new;
-  final GetNodeBalancerFirewall = _index.GetNodeBalancerFirewall.new;
-  final GetNodeBalancerFirewallArgs = _index.GetNodeBalancerFirewall.new;
-  final GetNodeBalancerFirewallInbound = _index.GetNodeBalancerFirewallInbound.new;
-  final GetNodeBalancerFirewallInboundArgs = _index.GetNodeBalancerFirewallInbound.new;
-  final GetNodeBalancerFirewallOutbound = _index.GetNodeBalancerFirewallOutbound.new;
-  final GetNodeBalancerFirewallOutboundArgs = _index.GetNodeBalancerFirewallOutbound.new;
-  final GetNodeBalancerNodeArgs = _index.GetNodeBalancerNodeArgs.new;
-  final GetNodeBalancerNodeResult = _index.GetNodeBalancerNodeResult.new;
-  final GetNodeBalancerNodeResultArgs = _index.GetNodeBalancerNodeResult.new;
-  final GetNodeBalancerResult = _index.GetNodeBalancerResult.new;
-  final GetNodeBalancerResultArgs = _index.GetNodeBalancerResult.new;
-  final GetNodeBalancerTransfer = _index.GetNodeBalancerTransfer.new;
-  final GetNodeBalancerTransferArgs = _index.GetNodeBalancerTransfer.new;
-  final GetNodeBalancerVpc = _index.GetNodeBalancerVpc.new;
-  final GetNodeBalancerVpcArgs = _index.GetNodeBalancerVpc.new;
-  final GetNodebalancerConfigsArgs = _index.GetNodebalancerConfigsArgs.new;
-  final GetNodebalancerConfigsFilter = _index.GetNodebalancerConfigsFilter.new;
-  final GetNodebalancerConfigsFilterArgs = _index.GetNodebalancerConfigsFilter.new;
-  final GetNodebalancerConfigsNodebalancerConfig = _index.GetNodebalancerConfigsNodebalancerConfig.new;
-  final GetNodebalancerConfigsNodebalancerConfigArgs = _index.GetNodebalancerConfigsNodebalancerConfig.new;
-  final GetNodebalancerConfigsNodebalancerConfigNodeStatus = _index.GetNodebalancerConfigsNodebalancerConfigNodeStatus.new;
-  final GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs = _index.GetNodebalancerConfigsNodebalancerConfigNodeStatus.new;
-  final GetNodebalancerConfigsResult = _index.GetNodebalancerConfigsResult.new;
-  final GetNodebalancerConfigsResultArgs = _index.GetNodebalancerConfigsResult.new;
-  final GetNodebalancerVpcArgs = _index.GetNodebalancerVpcArgs.new;
-  final GetNodebalancerVpcResult = _index.GetNodebalancerVpcResult.new;
-  final GetNodebalancerVpcResultArgs = _index.GetNodebalancerVpcResult.new;
-  final GetNodebalancerVpcsArgs = _index.GetNodebalancerVpcsArgs.new;
-  final GetNodebalancerVpcsFilter = _index.GetNodebalancerVpcsFilter.new;
-  final GetNodebalancerVpcsFilterArgs = _index.GetNodebalancerVpcsFilter.new;
-  final GetNodebalancerVpcsResult = _index.GetNodebalancerVpcsResult.new;
-  final GetNodebalancerVpcsResultArgs = _index.GetNodebalancerVpcsResult.new;
-  final GetNodebalancerVpcsVpcConfig = _index.GetNodebalancerVpcsVpcConfig.new;
-  final GetNodebalancerVpcsVpcConfigArgs = _index.GetNodebalancerVpcsVpcConfig.new;
-  final GetNodebalancersArgs = _index.GetNodebalancersArgs.new;
-  final GetNodebalancersFilter = _index.GetNodebalancersFilter.new;
-  final GetNodebalancersFilterArgs = _index.GetNodebalancersFilter.new;
-  final GetNodebalancersNodebalancer = _index.GetNodebalancersNodebalancer.new;
-  final GetNodebalancersNodebalancerArgs = _index.GetNodebalancersNodebalancer.new;
-  final GetNodebalancersNodebalancerTransfer = _index.GetNodebalancersNodebalancerTransfer.new;
-  final GetNodebalancersNodebalancerTransferArgs = _index.GetNodebalancersNodebalancerTransfer.new;
-  final GetNodebalancersResult = _index.GetNodebalancersResult.new;
-  final GetNodebalancersResultArgs = _index.GetNodebalancersResult.new;
-  final GetObjectStorageClusterArgs = _index.GetObjectStorageClusterArgs.new;
-  final GetObjectStorageClusterResult = _index.GetObjectStorageClusterResult.new;
-  final GetObjectStorageClusterResultArgs = _index.GetObjectStorageClusterResult.new;
-  final GetObjectStorageEndpointsArgs = _index.GetObjectStorageEndpointsArgs.new;
-  final GetObjectStorageEndpointsEndpoint = _index.GetObjectStorageEndpointsEndpoint.new;
-  final GetObjectStorageEndpointsEndpointArgs = _index.GetObjectStorageEndpointsEndpoint.new;
-  final GetObjectStorageEndpointsFilter = _index.GetObjectStorageEndpointsFilter.new;
-  final GetObjectStorageEndpointsFilterArgs = _index.GetObjectStorageEndpointsFilter.new;
-  final GetObjectStorageEndpointsResult = _index.GetObjectStorageEndpointsResult.new;
-  final GetObjectStorageEndpointsResultArgs = _index.GetObjectStorageEndpointsResult.new;
-  final GetObjectStorageQuotaArgs = _index.GetObjectStorageQuotaArgs.new;
-  final GetObjectStorageQuotaQuotaUsage = _index.GetObjectStorageQuotaQuotaUsage.new;
-  final GetObjectStorageQuotaQuotaUsageArgs = _index.GetObjectStorageQuotaQuotaUsage.new;
-  final GetObjectStorageQuotaResult = _index.GetObjectStorageQuotaResult.new;
-  final GetObjectStorageQuotaResultArgs = _index.GetObjectStorageQuotaResult.new;
-  final GetObjectStorageQuotasArgs = _index.GetObjectStorageQuotasArgs.new;
-  final GetObjectStorageQuotasFilter = _index.GetObjectStorageQuotasFilter.new;
-  final GetObjectStorageQuotasFilterArgs = _index.GetObjectStorageQuotasFilter.new;
-  final GetObjectStorageQuotasQuota = _index.GetObjectStorageQuotasQuota.new;
-  final GetObjectStorageQuotasQuotaArgs = _index.GetObjectStorageQuotasQuota.new;
-  final GetObjectStorageQuotasResult = _index.GetObjectStorageQuotasResult.new;
-  final GetObjectStorageQuotasResultArgs = _index.GetObjectStorageQuotasResult.new;
-  final GetPlacementGroupArgs = _index.GetPlacementGroupArgs.new;
-  final GetPlacementGroupMember = _index.GetPlacementGroupMember.new;
-  final GetPlacementGroupMemberArgs = _index.GetPlacementGroupMember.new;
-  final GetPlacementGroupMigrations = _index.GetPlacementGroupMigrations.new;
-  final GetPlacementGroupMigrationsArgs = _index.GetPlacementGroupMigrations.new;
-  final GetPlacementGroupMigrationsInbound = _index.GetPlacementGroupMigrationsInbound.new;
-  final GetPlacementGroupMigrationsInboundArgs = _index.GetPlacementGroupMigrationsInbound.new;
-  final GetPlacementGroupMigrationsOutbound = _index.GetPlacementGroupMigrationsOutbound.new;
-  final GetPlacementGroupMigrationsOutboundArgs = _index.GetPlacementGroupMigrationsOutbound.new;
-  final GetPlacementGroupResult = _index.GetPlacementGroupResult.new;
-  final GetPlacementGroupResultArgs = _index.GetPlacementGroupResult.new;
-  final GetPlacementGroupsArgs = _index.GetPlacementGroupsArgs.new;
-  final GetPlacementGroupsFilter = _index.GetPlacementGroupsFilter.new;
-  final GetPlacementGroupsFilterArgs = _index.GetPlacementGroupsFilter.new;
-  final GetPlacementGroupsPlacementGroup = _index.GetPlacementGroupsPlacementGroup.new;
-  final GetPlacementGroupsPlacementGroupArgs = _index.GetPlacementGroupsPlacementGroup.new;
-  final GetPlacementGroupsPlacementGroupMember = _index.GetPlacementGroupsPlacementGroupMember.new;
-  final GetPlacementGroupsPlacementGroupMemberArgs = _index.GetPlacementGroupsPlacementGroupMember.new;
-  final GetPlacementGroupsPlacementGroupMigrations = _index.GetPlacementGroupsPlacementGroupMigrations.new;
-  final GetPlacementGroupsPlacementGroupMigrationsArgs = _index.GetPlacementGroupsPlacementGroupMigrations.new;
-  final GetPlacementGroupsPlacementGroupMigrationsInbound = _index.GetPlacementGroupsPlacementGroupMigrationsInbound.new;
-  final GetPlacementGroupsPlacementGroupMigrationsInboundArgs = _index.GetPlacementGroupsPlacementGroupMigrationsInbound.new;
-  final GetPlacementGroupsPlacementGroupMigrationsOutbound = _index.GetPlacementGroupsPlacementGroupMigrationsOutbound.new;
-  final GetPlacementGroupsPlacementGroupMigrationsOutboundArgs = _index.GetPlacementGroupsPlacementGroupMigrationsOutbound.new;
-  final GetPlacementGroupsResult = _index.GetPlacementGroupsResult.new;
-  final GetPlacementGroupsResultArgs = _index.GetPlacementGroupsResult.new;
-  final GetProducerImageShareGroupArgs = _index.GetProducerImageShareGroupArgs.new;
-  final GetProducerImageShareGroupImageSharesArgs = _index.GetProducerImageShareGroupImageSharesArgs.new;
-  final GetProducerImageShareGroupImageSharesFilter = _index.GetProducerImageShareGroupImageSharesFilter.new;
-  final GetProducerImageShareGroupImageSharesFilterArgs = _index.GetProducerImageShareGroupImageSharesFilter.new;
-  final GetProducerImageShareGroupImageSharesImageShare = _index.GetProducerImageShareGroupImageSharesImageShare.new;
-  final GetProducerImageShareGroupImageSharesImageShareArgs = _index.GetProducerImageShareGroupImageSharesImageShare.new;
-  final GetProducerImageShareGroupImageSharesImageShareImageSharing = _index.GetProducerImageShareGroupImageSharesImageShareImageSharing.new;
-  final GetProducerImageShareGroupImageSharesImageShareImageSharingArgs = _index.GetProducerImageShareGroupImageSharesImageShareImageSharing.new;
-  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy = _index.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy.new;
-  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs = _index.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy.new;
-  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith = _index.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith.new;
-  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs = _index.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith.new;
-  final GetProducerImageShareGroupImageSharesResult = _index.GetProducerImageShareGroupImageSharesResult.new;
-  final GetProducerImageShareGroupImageSharesResultArgs = _index.GetProducerImageShareGroupImageSharesResult.new;
-  final GetProducerImageShareGroupMemberArgs = _index.GetProducerImageShareGroupMemberArgs.new;
-  final GetProducerImageShareGroupMemberResult = _index.GetProducerImageShareGroupMemberResult.new;
-  final GetProducerImageShareGroupMemberResultArgs = _index.GetProducerImageShareGroupMemberResult.new;
-  final GetProducerImageShareGroupMembersArgs = _index.GetProducerImageShareGroupMembersArgs.new;
-  final GetProducerImageShareGroupMembersFilter = _index.GetProducerImageShareGroupMembersFilter.new;
-  final GetProducerImageShareGroupMembersFilterArgs = _index.GetProducerImageShareGroupMembersFilter.new;
-  final GetProducerImageShareGroupMembersMember = _index.GetProducerImageShareGroupMembersMember.new;
-  final GetProducerImageShareGroupMembersMemberArgs = _index.GetProducerImageShareGroupMembersMember.new;
-  final GetProducerImageShareGroupMembersResult = _index.GetProducerImageShareGroupMembersResult.new;
-  final GetProducerImageShareGroupMembersResultArgs = _index.GetProducerImageShareGroupMembersResult.new;
-  final GetProducerImageShareGroupResult = _index.GetProducerImageShareGroupResult.new;
-  final GetProducerImageShareGroupResultArgs = _index.GetProducerImageShareGroupResult.new;
-  final GetProducerImageShareGroupsArgs = _index.GetProducerImageShareGroupsArgs.new;
-  final GetProducerImageShareGroupsFilter = _index.GetProducerImageShareGroupsFilter.new;
-  final GetProducerImageShareGroupsFilterArgs = _index.GetProducerImageShareGroupsFilter.new;
-  final GetProducerImageShareGroupsImageShareGroup = _index.GetProducerImageShareGroupsImageShareGroup.new;
-  final GetProducerImageShareGroupsImageShareGroupArgs = _index.GetProducerImageShareGroupsImageShareGroup.new;
-  final GetProducerImageShareGroupsResult = _index.GetProducerImageShareGroupsResult.new;
-  final GetProducerImageShareGroupsResultArgs = _index.GetProducerImageShareGroupsResult.new;
-  final GetProfileReferral = _index.GetProfileReferral.new;
-  final GetProfileReferralArgs = _index.GetProfileReferral.new;
-  final GetProfileResult = _index.GetProfileResult.new;
-  final GetProfileResultArgs = _index.GetProfileResult.new;
-  final GetRegionArgs = _index.GetRegionArgs.new;
-  final GetRegionMonitors = _index.GetRegionMonitors.new;
-  final GetRegionMonitorsArgs = _index.GetRegionMonitors.new;
-  final GetRegionPlacementGroupLimit = _index.GetRegionPlacementGroupLimit.new;
-  final GetRegionPlacementGroupLimitArgs = _index.GetRegionPlacementGroupLimit.new;
-  final GetRegionResolver = _index.GetRegionResolver.new;
-  final GetRegionResolverArgs = _index.GetRegionResolver.new;
-  final GetRegionResult = _index.GetRegionResult.new;
-  final GetRegionResultArgs = _index.GetRegionResult.new;
-  final GetRegionsArgs = _index.GetRegionsArgs.new;
-  final GetRegionsFilter = _index.GetRegionsFilter.new;
-  final GetRegionsFilterArgs = _index.GetRegionsFilter.new;
-  final GetRegionsRegion = _index.GetRegionsRegion.new;
-  final GetRegionsRegionArgs = _index.GetRegionsRegion.new;
-  final GetRegionsRegionMonitors = _index.GetRegionsRegionMonitors.new;
-  final GetRegionsRegionMonitorsArgs = _index.GetRegionsRegionMonitors.new;
-  final GetRegionsRegionPlacementGroupLimit = _index.GetRegionsRegionPlacementGroupLimit.new;
-  final GetRegionsRegionPlacementGroupLimitArgs = _index.GetRegionsRegionPlacementGroupLimit.new;
-  final GetRegionsRegionResolver = _index.GetRegionsRegionResolver.new;
-  final GetRegionsRegionResolverArgs = _index.GetRegionsRegionResolver.new;
-  final GetRegionsResult = _index.GetRegionsResult.new;
-  final GetRegionsResultArgs = _index.GetRegionsResult.new;
-  final GetSshKeyArgs = _index.GetSshKeyArgs.new;
-  final GetSshKeyResult = _index.GetSshKeyResult.new;
-  final GetSshKeyResultArgs = _index.GetSshKeyResult.new;
-  final GetSshkeysArgs = _index.GetSshkeysArgs.new;
-  final GetSshkeysFilter = _index.GetSshkeysFilter.new;
-  final GetSshkeysFilterArgs = _index.GetSshkeysFilter.new;
-  final GetSshkeysResult = _index.GetSshkeysResult.new;
-  final GetSshkeysResultArgs = _index.GetSshkeysResult.new;
-  final GetSshkeysSshkey = _index.GetSshkeysSshkey.new;
-  final GetSshkeysSshkeyArgs = _index.GetSshkeysSshkey.new;
-  final GetStackScriptArgs = _index.GetStackScriptArgs.new;
-  final GetStackScriptResult = _index.GetStackScriptResult.new;
-  final GetStackScriptResultArgs = _index.GetStackScriptResult.new;
-  final GetStackScriptUserDefinedField = _index.GetStackScriptUserDefinedField.new;
-  final GetStackScriptUserDefinedFieldArgs = _index.GetStackScriptUserDefinedField.new;
-  final GetStackScriptsArgs = _index.GetStackScriptsArgs.new;
-  final GetStackScriptsFilter = _index.GetStackScriptsFilter.new;
-  final GetStackScriptsFilterArgs = _index.GetStackScriptsFilter.new;
-  final GetStackScriptsResult = _index.GetStackScriptsResult.new;
-  final GetStackScriptsResultArgs = _index.GetStackScriptsResult.new;
-  final GetStackScriptsStackscript = _index.GetStackScriptsStackscript.new;
-  final GetStackScriptsStackscriptArgs = _index.GetStackScriptsStackscript.new;
-  final GetStackScriptsStackscriptUserDefinedField = _index.GetStackScriptsStackscriptUserDefinedField.new;
-  final GetStackScriptsStackscriptUserDefinedFieldArgs = _index.GetStackScriptsStackscriptUserDefinedField.new;
-  final GetUserArgs = _index.GetUserArgs.new;
-  final GetUserDatabaseGrant = _index.GetUserDatabaseGrant.new;
-  final GetUserDatabaseGrantArgs = _index.GetUserDatabaseGrant.new;
-  final GetUserDomainGrant = _index.GetUserDomainGrant.new;
-  final GetUserDomainGrantArgs = _index.GetUserDomainGrant.new;
-  final GetUserFirewallGrant = _index.GetUserFirewallGrant.new;
-  final GetUserFirewallGrantArgs = _index.GetUserFirewallGrant.new;
-  final GetUserGlobalGrant = _index.GetUserGlobalGrant.new;
-  final GetUserGlobalGrantArgs = _index.GetUserGlobalGrant.new;
-  final GetUserImageGrant = _index.GetUserImageGrant.new;
-  final GetUserImageGrantArgs = _index.GetUserImageGrant.new;
-  final GetUserLinodeGrant = _index.GetUserLinodeGrant.new;
-  final GetUserLinodeGrantArgs = _index.GetUserLinodeGrant.new;
-  final GetUserLongviewGrant = _index.GetUserLongviewGrant.new;
-  final GetUserLongviewGrantArgs = _index.GetUserLongviewGrant.new;
-  final GetUserNodebalancerGrant = _index.GetUserNodebalancerGrant.new;
-  final GetUserNodebalancerGrantArgs = _index.GetUserNodebalancerGrant.new;
-  final GetUserResult = _index.GetUserResult.new;
-  final GetUserResultArgs = _index.GetUserResult.new;
-  final GetUserStackscriptGrant = _index.GetUserStackscriptGrant.new;
-  final GetUserStackscriptGrantArgs = _index.GetUserStackscriptGrant.new;
-  final GetUserVolumeGrant = _index.GetUserVolumeGrant.new;
-  final GetUserVolumeGrantArgs = _index.GetUserVolumeGrant.new;
-  final GetUserVpcGrant = _index.GetUserVpcGrant.new;
-  final GetUserVpcGrantArgs = _index.GetUserVpcGrant.new;
-  final GetUsersArgs = _index.GetUsersArgs.new;
-  final GetUsersFilter = _index.GetUsersFilter.new;
-  final GetUsersFilterArgs = _index.GetUsersFilter.new;
-  final GetUsersResult = _index.GetUsersResult.new;
-  final GetUsersResultArgs = _index.GetUsersResult.new;
-  final GetUsersUser = _index.GetUsersUser.new;
-  final GetUsersUserArgs = _index.GetUsersUser.new;
-  final GetUsersUserDatabaseGrant = _index.GetUsersUserDatabaseGrant.new;
-  final GetUsersUserDatabaseGrantArgs = _index.GetUsersUserDatabaseGrant.new;
-  final GetUsersUserDomainGrant = _index.GetUsersUserDomainGrant.new;
-  final GetUsersUserDomainGrantArgs = _index.GetUsersUserDomainGrant.new;
-  final GetUsersUserFirewallGrant = _index.GetUsersUserFirewallGrant.new;
-  final GetUsersUserFirewallGrantArgs = _index.GetUsersUserFirewallGrant.new;
-  final GetUsersUserGlobalGrant = _index.GetUsersUserGlobalGrant.new;
-  final GetUsersUserGlobalGrantArgs = _index.GetUsersUserGlobalGrant.new;
-  final GetUsersUserImageGrant = _index.GetUsersUserImageGrant.new;
-  final GetUsersUserImageGrantArgs = _index.GetUsersUserImageGrant.new;
-  final GetUsersUserLinodeGrant = _index.GetUsersUserLinodeGrant.new;
-  final GetUsersUserLinodeGrantArgs = _index.GetUsersUserLinodeGrant.new;
-  final GetUsersUserLongviewGrant = _index.GetUsersUserLongviewGrant.new;
-  final GetUsersUserLongviewGrantArgs = _index.GetUsersUserLongviewGrant.new;
-  final GetUsersUserNodebalancerGrant = _index.GetUsersUserNodebalancerGrant.new;
-  final GetUsersUserNodebalancerGrantArgs = _index.GetUsersUserNodebalancerGrant.new;
-  final GetUsersUserStackscriptGrant = _index.GetUsersUserStackscriptGrant.new;
-  final GetUsersUserStackscriptGrantArgs = _index.GetUsersUserStackscriptGrant.new;
-  final GetUsersUserVolumeGrant = _index.GetUsersUserVolumeGrant.new;
-  final GetUsersUserVolumeGrantArgs = _index.GetUsersUserVolumeGrant.new;
-  final GetUsersUserVpcGrant = _index.GetUsersUserVpcGrant.new;
-  final GetUsersUserVpcGrantArgs = _index.GetUsersUserVpcGrant.new;
-  final GetVlansArgs = _index.GetVlansArgs.new;
-  final GetVlansFilter = _index.GetVlansFilter.new;
-  final GetVlansFilterArgs = _index.GetVlansFilter.new;
-  final GetVlansResult = _index.GetVlansResult.new;
-  final GetVlansResultArgs = _index.GetVlansResult.new;
-  final GetVlansVlan = _index.GetVlansVlan.new;
-  final GetVlansVlanArgs = _index.GetVlansVlan.new;
-  final GetVolumeArgs = _index.GetVolumeArgs.new;
-  final GetVolumeResult = _index.GetVolumeResult.new;
-  final GetVolumeResultArgs = _index.GetVolumeResult.new;
-  final GetVolumeTypesArgs = _index.GetVolumeTypesArgs.new;
-  final GetVolumeTypesFilter = _index.GetVolumeTypesFilter.new;
-  final GetVolumeTypesFilterArgs = _index.GetVolumeTypesFilter.new;
-  final GetVolumeTypesResult = _index.GetVolumeTypesResult.new;
-  final GetVolumeTypesResultArgs = _index.GetVolumeTypesResult.new;
-  final GetVolumeTypesType = _index.GetVolumeTypesType.new;
-  final GetVolumeTypesTypeArgs = _index.GetVolumeTypesType.new;
-  final GetVolumeTypesTypePrice = _index.GetVolumeTypesTypePrice.new;
-  final GetVolumeTypesTypePriceArgs = _index.GetVolumeTypesTypePrice.new;
-  final GetVolumeTypesTypeRegionPrice = _index.GetVolumeTypesTypeRegionPrice.new;
-  final GetVolumeTypesTypeRegionPriceArgs = _index.GetVolumeTypesTypeRegionPrice.new;
-  final GetVolumesArgs = _index.GetVolumesArgs.new;
-  final GetVolumesFilter = _index.GetVolumesFilter.new;
-  final GetVolumesFilterArgs = _index.GetVolumesFilter.new;
-  final GetVolumesResult = _index.GetVolumesResult.new;
-  final GetVolumesResultArgs = _index.GetVolumesResult.new;
-  final GetVolumesVolume = _index.GetVolumesVolume.new;
-  final GetVolumesVolumeArgs = _index.GetVolumesVolume.new;
-  final GetVpcArgs = _index.GetVpcArgs.new;
-  final GetVpcIpsArgs = _index.GetVpcIpsArgs.new;
-  final GetVpcIpsFilter = _index.GetVpcIpsFilter.new;
-  final GetVpcIpsFilterArgs = _index.GetVpcIpsFilter.new;
-  final GetVpcIpsResult = _index.GetVpcIpsResult.new;
-  final GetVpcIpsResultArgs = _index.GetVpcIpsResult.new;
-  final GetVpcIpsVpcIp = _index.GetVpcIpsVpcIp.new;
-  final GetVpcIpsVpcIpArgs = _index.GetVpcIpsVpcIp.new;
-  final GetVpcIpsVpcIpIpv6Address = _index.GetVpcIpsVpcIpIpv6Address.new;
-  final GetVpcIpsVpcIpIpv6AddressArgs = _index.GetVpcIpsVpcIpIpv6Address.new;
-  final GetVpcIpv6 = _index.GetVpcIpv6.new;
-  final GetVpcIpv6Args = _index.GetVpcIpv6.new;
-  final GetVpcResult = _index.GetVpcResult.new;
-  final GetVpcResultArgs = _index.GetVpcResult.new;
-  final GetVpcSubnetArgs = _index.GetVpcSubnetArgs.new;
-  final GetVpcSubnetIpv6 = _index.GetVpcSubnetIpv6.new;
-  final GetVpcSubnetIpv6Args = _index.GetVpcSubnetIpv6.new;
-  final GetVpcSubnetLinode = _index.GetVpcSubnetLinode.new;
-  final GetVpcSubnetLinodeArgs = _index.GetVpcSubnetLinode.new;
-  final GetVpcSubnetLinodeInterface = _index.GetVpcSubnetLinodeInterface.new;
-  final GetVpcSubnetLinodeInterfaceArgs = _index.GetVpcSubnetLinodeInterface.new;
-  final GetVpcSubnetResult = _index.GetVpcSubnetResult.new;
-  final GetVpcSubnetResultArgs = _index.GetVpcSubnetResult.new;
-  final GetVpcSubnetsArgs = _index.GetVpcSubnetsArgs.new;
-  final GetVpcSubnetsFilter = _index.GetVpcSubnetsFilter.new;
-  final GetVpcSubnetsFilterArgs = _index.GetVpcSubnetsFilter.new;
-  final GetVpcSubnetsResult = _index.GetVpcSubnetsResult.new;
-  final GetVpcSubnetsResultArgs = _index.GetVpcSubnetsResult.new;
-  final GetVpcSubnetsVpcSubnet = _index.GetVpcSubnetsVpcSubnet.new;
-  final GetVpcSubnetsVpcSubnetArgs = _index.GetVpcSubnetsVpcSubnet.new;
-  final GetVpcSubnetsVpcSubnetIpv6 = _index.GetVpcSubnetsVpcSubnetIpv6.new;
-  final GetVpcSubnetsVpcSubnetIpv6Args = _index.GetVpcSubnetsVpcSubnetIpv6.new;
-  final GetVpcSubnetsVpcSubnetLinode = _index.GetVpcSubnetsVpcSubnetLinode.new;
-  final GetVpcSubnetsVpcSubnetLinodeArgs = _index.GetVpcSubnetsVpcSubnetLinode.new;
-  final GetVpcSubnetsVpcSubnetLinodeInterface = _index.GetVpcSubnetsVpcSubnetLinodeInterface.new;
-  final GetVpcSubnetsVpcSubnetLinodeInterfaceArgs = _index.GetVpcSubnetsVpcSubnetLinodeInterface.new;
-  final GetVpcsArgs = _index.GetVpcsArgs.new;
-  final GetVpcsFilter = _index.GetVpcsFilter.new;
-  final GetVpcsFilterArgs = _index.GetVpcsFilter.new;
-  final GetVpcsResult = _index.GetVpcsResult.new;
-  final GetVpcsResultArgs = _index.GetVpcsResult.new;
-  final GetVpcsVpc = _index.GetVpcsVpc.new;
-  final GetVpcsVpcArgs = _index.GetVpcsVpc.new;
-  final GetVpcsVpcIpv6 = _index.GetVpcsVpcIpv6.new;
-  final GetVpcsVpcIpv6Args = _index.GetVpcsVpcIpv6.new;
-  final Image = _index.Image.new;
-  final ImageArgs = _index.ImageArgs.new;
-  final ImageImageSharing = _index.ImageImageSharing.new;
-  final ImageImageSharingArgs = _index.ImageImageSharing.new;
-  final ImageImageSharingSharedBy = _index.ImageImageSharingSharedBy.new;
-  final ImageImageSharingSharedByArgs = _index.ImageImageSharingSharedBy.new;
-  final ImageImageSharingSharedWith = _index.ImageImageSharingSharedWith.new;
-  final ImageImageSharingSharedWithArgs = _index.ImageImageSharingSharedWith.new;
-  final ImageReplication = _index.ImageReplication.new;
-  final ImageReplicationArgs = _index.ImageReplication.new;
-  final ImageState = _index.ImageState.new;
-  final ImageStateArgs = _index.ImageState.new;
-  final ImageTimeouts = _index.ImageTimeouts.new;
-  final ImageTimeoutsArgs = _index.ImageTimeouts.new;
-  final Instance = _index.Instance.new;
-  final InstanceAlerts = _index.InstanceAlerts.new;
-  final InstanceAlertsArgs = _index.InstanceAlerts.new;
-  final InstanceArgs = _index.InstanceArgs.new;
-  final InstanceBackup = _index.InstanceBackup.new;
-  final InstanceBackupArgs = _index.InstanceBackup.new;
-  final InstanceBackupSchedule = _index.InstanceBackupSchedule.new;
-  final InstanceBackupScheduleArgs = _index.InstanceBackupSchedule.new;
-  final InstanceConfig = _index.InstanceConfig.new;
-  final InstanceConfigArgs = _index.InstanceConfig.new;
-  final InstanceConfigDevice = _index.InstanceConfigDevice.new;
-  final InstanceConfigDeviceArgs = _index.InstanceConfigDevice.new;
-  final InstanceConfigDevices = _index.InstanceConfigDevices.new;
-  final InstanceConfigDevicesArgs = _index.InstanceConfigDevices.new;
-  final InstanceConfigDevicesSda = _index.InstanceConfigDevicesSda.new;
-  final InstanceConfigDevicesSdaArgs = _index.InstanceConfigDevicesSda.new;
-  final InstanceConfigDevicesSdb = _index.InstanceConfigDevicesSdb.new;
-  final InstanceConfigDevicesSdbArgs = _index.InstanceConfigDevicesSdb.new;
-  final InstanceConfigDevicesSdc = _index.InstanceConfigDevicesSdc.new;
-  final InstanceConfigDevicesSdcArgs = _index.InstanceConfigDevicesSdc.new;
-  final InstanceConfigDevicesSdd = _index.InstanceConfigDevicesSdd.new;
-  final InstanceConfigDevicesSddArgs = _index.InstanceConfigDevicesSdd.new;
-  final InstanceConfigDevicesSde = _index.InstanceConfigDevicesSde.new;
-  final InstanceConfigDevicesSdeArgs = _index.InstanceConfigDevicesSde.new;
-  final InstanceConfigDevicesSdf = _index.InstanceConfigDevicesSdf.new;
-  final InstanceConfigDevicesSdfArgs = _index.InstanceConfigDevicesSdf.new;
-  final InstanceConfigDevicesSdg = _index.InstanceConfigDevicesSdg.new;
-  final InstanceConfigDevicesSdgArgs = _index.InstanceConfigDevicesSdg.new;
-  final InstanceConfigDevicesSdh = _index.InstanceConfigDevicesSdh.new;
-  final InstanceConfigDevicesSdhArgs = _index.InstanceConfigDevicesSdh.new;
-  final InstanceConfigHelper = _index.InstanceConfigHelper.new;
-  final InstanceConfigHelperArgs = _index.InstanceConfigHelper.new;
-  final InstanceConfigHelpers = _index.InstanceConfigHelpers.new;
-  final InstanceConfigHelpersArgs = _index.InstanceConfigHelpers.new;
-  final InstanceConfigInterface = _index.InstanceConfigInterface.new;
-  final InstanceConfigInterfaceArgs = _index.InstanceConfigInterface.new;
-  final InstanceConfigInterfaceIpv4 = _index.InstanceConfigInterfaceIpv4.new;
-  final InstanceConfigInterfaceIpv4Args = _index.InstanceConfigInterfaceIpv4.new;
-  final InstanceConfigInterfaceIpv6 = _index.InstanceConfigInterfaceIpv6.new;
-  final InstanceConfigInterfaceIpv6Args = _index.InstanceConfigInterfaceIpv6.new;
-  final InstanceConfigInterfaceIpv6Range = _index.InstanceConfigInterfaceIpv6Range.new;
-  final InstanceConfigInterfaceIpv6RangeArgs = _index.InstanceConfigInterfaceIpv6Range.new;
-  final InstanceConfigInterfaceIpv6Slaac = _index.InstanceConfigInterfaceIpv6Slaac.new;
-  final InstanceConfigInterfaceIpv6SlaacArgs = _index.InstanceConfigInterfaceIpv6Slaac.new;
-  final InstanceConfigState = _index.InstanceConfigState.new;
-  final InstanceConfigStateArgs = _index.InstanceConfigState.new;
-  final InstanceDisk = _index.InstanceDisk.new;
-  final InstanceDiskArgs = _index.InstanceDisk.new;
-  final InstanceDiskState = _index.InstanceDiskState.new;
-  final InstanceDiskStateArgs = _index.InstanceDiskState.new;
-  final InstanceDiskTimeouts = _index.InstanceDiskTimeouts.new;
-  final InstanceDiskTimeoutsArgs = _index.InstanceDiskTimeouts.new;
-  final InstanceInterface = _index.InstanceInterface.new;
-  final InstanceInterfaceArgs = _index.InstanceInterface.new;
-  final InstanceInterfaceIpv4 = _index.InstanceInterfaceIpv4.new;
-  final InstanceInterfaceIpv4Args = _index.InstanceInterfaceIpv4.new;
-  final InstanceInterfaceIpv6 = _index.InstanceInterfaceIpv6.new;
-  final InstanceInterfaceIpv6Args = _index.InstanceInterfaceIpv6.new;
-  final InstanceInterfaceIpv6Range = _index.InstanceInterfaceIpv6Range.new;
-  final InstanceInterfaceIpv6RangeArgs = _index.InstanceInterfaceIpv6Range.new;
-  final InstanceInterfaceIpv6Slaac = _index.InstanceInterfaceIpv6Slaac.new;
-  final InstanceInterfaceIpv6SlaacArgs = _index.InstanceInterfaceIpv6Slaac.new;
-  final InstanceIp = _index.InstanceIp.new;
-  final InstanceIpArgs = _index.InstanceIpArgs.new;
-  final InstanceIpState = _index.InstanceIpState.new;
-  final InstanceIpStateArgs = _index.InstanceIpState.new;
-  final InstanceIpVpcNat11 = _index.InstanceIpVpcNat11.new;
-  final InstanceIpVpcNat11Args = _index.InstanceIpVpcNat11.new;
-  final InstanceMetadata = _index.InstanceMetadata.new;
-  final InstanceMetadataArgs = _index.InstanceMetadata.new;
-  final InstancePlacementGroup = _index.InstancePlacementGroup.new;
-  final InstancePlacementGroupArgs = _index.InstancePlacementGroup.new;
-  final InstanceSharedIps = _index.InstanceSharedIps.new;
-  final InstanceSharedIpsArgs = _index.InstanceSharedIpsArgs.new;
-  final InstanceSharedIpsState = _index.InstanceSharedIpsState.new;
-  final InstanceSharedIpsStateArgs = _index.InstanceSharedIpsState.new;
-  final InstanceSpec = _index.InstanceSpec.new;
-  final InstanceSpecArgs = _index.InstanceSpec.new;
-  final InstanceState = _index.InstanceState.new;
-  final InstanceStateArgs = _index.InstanceState.new;
-  final Interface = _index.Interface.new;
-  final InterfaceArgs = _index.InterfaceArgs.new;
-  final InterfaceDefaultRoute = _index.InterfaceDefaultRoute.new;
-  final InterfaceDefaultRouteArgs = _index.InterfaceDefaultRoute.new;
-  final InterfacePublic = _index.InterfacePublic.new;
-  final InterfacePublicArgs = _index.InterfacePublic.new;
-  final InterfacePublicIpv4 = _index.InterfacePublicIpv4.new;
-  final InterfacePublicIpv4Address = _index.InterfacePublicIpv4Address.new;
-  final InterfacePublicIpv4AddressArgs = _index.InterfacePublicIpv4Address.new;
-  final InterfacePublicIpv4Args = _index.InterfacePublicIpv4.new;
-  final InterfacePublicIpv4AssignedAddress = _index.InterfacePublicIpv4AssignedAddress.new;
-  final InterfacePublicIpv4AssignedAddressArgs = _index.InterfacePublicIpv4AssignedAddress.new;
-  final InterfacePublicIpv4Shared = _index.InterfacePublicIpv4Shared.new;
-  final InterfacePublicIpv4SharedArgs = _index.InterfacePublicIpv4Shared.new;
-  final InterfacePublicIpv6 = _index.InterfacePublicIpv6.new;
-  final InterfacePublicIpv6Args = _index.InterfacePublicIpv6.new;
-  final InterfacePublicIpv6AssignedRange = _index.InterfacePublicIpv6AssignedRange.new;
-  final InterfacePublicIpv6AssignedRangeArgs = _index.InterfacePublicIpv6AssignedRange.new;
-  final InterfacePublicIpv6Range = _index.InterfacePublicIpv6Range.new;
-  final InterfacePublicIpv6RangeArgs = _index.InterfacePublicIpv6Range.new;
-  final InterfacePublicIpv6Shared = _index.InterfacePublicIpv6Shared.new;
-  final InterfacePublicIpv6SharedArgs = _index.InterfacePublicIpv6Shared.new;
-  final InterfacePublicIpv6Slaac = _index.InterfacePublicIpv6Slaac.new;
-  final InterfacePublicIpv6SlaacArgs = _index.InterfacePublicIpv6Slaac.new;
-  final InterfaceState = _index.InterfaceState.new;
-  final InterfaceStateArgs = _index.InterfaceState.new;
-  final InterfaceVlan = _index.InterfaceVlan.new;
-  final InterfaceVlanArgs = _index.InterfaceVlan.new;
-  final InterfaceVpc = _index.InterfaceVpc.new;
-  final InterfaceVpcArgs = _index.InterfaceVpc.new;
-  final InterfaceVpcIpv4 = _index.InterfaceVpcIpv4.new;
-  final InterfaceVpcIpv4Address = _index.InterfaceVpcIpv4Address.new;
-  final InterfaceVpcIpv4AddressArgs = _index.InterfaceVpcIpv4Address.new;
-  final InterfaceVpcIpv4Args = _index.InterfaceVpcIpv4.new;
-  final InterfaceVpcIpv4AssignedAddress = _index.InterfaceVpcIpv4AssignedAddress.new;
-  final InterfaceVpcIpv4AssignedAddressArgs = _index.InterfaceVpcIpv4AssignedAddress.new;
-  final InterfaceVpcIpv4AssignedRange = _index.InterfaceVpcIpv4AssignedRange.new;
-  final InterfaceVpcIpv4AssignedRangeArgs = _index.InterfaceVpcIpv4AssignedRange.new;
-  final InterfaceVpcIpv4Range = _index.InterfaceVpcIpv4Range.new;
-  final InterfaceVpcIpv4RangeArgs = _index.InterfaceVpcIpv4Range.new;
-  final InterfaceVpcIpv6 = _index.InterfaceVpcIpv6.new;
-  final InterfaceVpcIpv6Args = _index.InterfaceVpcIpv6.new;
-  final InterfaceVpcIpv6AssignedRange = _index.InterfaceVpcIpv6AssignedRange.new;
-  final InterfaceVpcIpv6AssignedRangeArgs = _index.InterfaceVpcIpv6AssignedRange.new;
-  final InterfaceVpcIpv6AssignedSlaac = _index.InterfaceVpcIpv6AssignedSlaac.new;
-  final InterfaceVpcIpv6AssignedSlaacArgs = _index.InterfaceVpcIpv6AssignedSlaac.new;
-  final InterfaceVpcIpv6Range = _index.InterfaceVpcIpv6Range.new;
-  final InterfaceVpcIpv6RangeArgs = _index.InterfaceVpcIpv6Range.new;
-  final InterfaceVpcIpv6Slaac = _index.InterfaceVpcIpv6Slaac.new;
-  final InterfaceVpcIpv6SlaacArgs = _index.InterfaceVpcIpv6Slaac.new;
-  final Ipv6Range = _index.Ipv6Range.new;
-  final Ipv6RangeArgs = _index.Ipv6RangeArgs.new;
-  final Ipv6RangeState = _index.Ipv6RangeState.new;
-  final Ipv6RangeStateArgs = _index.Ipv6RangeState.new;
-  final LkeCluster = _index.LkeCluster.new;
-  final LkeClusterArgs = _index.LkeClusterArgs.new;
-  final LkeClusterControlPlane = _index.LkeClusterControlPlane.new;
-  final LkeClusterControlPlaneAcl = _index.LkeClusterControlPlaneAcl.new;
-  final LkeClusterControlPlaneAclAddress = _index.LkeClusterControlPlaneAclAddress.new;
-  final LkeClusterControlPlaneAclAddressArgs = _index.LkeClusterControlPlaneAclAddress.new;
-  final LkeClusterControlPlaneAclArgs = _index.LkeClusterControlPlaneAcl.new;
-  final LkeClusterControlPlaneArgs = _index.LkeClusterControlPlane.new;
-  final LkeClusterPool = _index.LkeClusterPool.new;
-  final LkeClusterPoolArgs = _index.LkeClusterPool.new;
-  final LkeClusterPoolAutoscaler = _index.LkeClusterPoolAutoscaler.new;
-  final LkeClusterPoolAutoscalerArgs = _index.LkeClusterPoolAutoscaler.new;
-  final LkeClusterPoolNode = _index.LkeClusterPoolNode.new;
-  final LkeClusterPoolNodeArgs = _index.LkeClusterPoolNode.new;
-  final LkeClusterPoolTaint = _index.LkeClusterPoolTaint.new;
-  final LkeClusterPoolTaintArgs = _index.LkeClusterPoolTaint.new;
-  final LkeClusterState = _index.LkeClusterState.new;
-  final LkeClusterStateArgs = _index.LkeClusterState.new;
-  final LkeNodePool = _index.LkeNodePool.new;
-  final LkeNodePoolArgs = _index.LkeNodePoolArgs.new;
-  final LkeNodePoolAutoscaler = _index.LkeNodePoolAutoscaler.new;
-  final LkeNodePoolAutoscalerArgs = _index.LkeNodePoolAutoscaler.new;
-  final LkeNodePoolNode = _index.LkeNodePoolNode.new;
-  final LkeNodePoolNodeArgs = _index.LkeNodePoolNode.new;
-  final LkeNodePoolState = _index.LkeNodePoolState.new;
-  final LkeNodePoolStateArgs = _index.LkeNodePoolState.new;
-  final LkeNodePoolTaint = _index.LkeNodePoolTaint.new;
-  final LkeNodePoolTaintArgs = _index.LkeNodePoolTaint.new;
-  final Lock = _index.Lock.new;
-  final LockArgs = _index.LockArgs.new;
-  final LockState = _index.LockState.new;
-  final LockStateArgs = _index.LockState.new;
-  final NetworkingIp = _index.NetworkingIp.new;
-  final NetworkingIpArgs = _index.NetworkingIpArgs.new;
-  final NetworkingIpAssignment = _index.NetworkingIpAssignment.new;
-  final NetworkingIpAssignmentArgs = _index.NetworkingIpAssignmentArgs.new;
-  final NetworkingIpAssignmentAssignment = _index.NetworkingIpAssignmentAssignment.new;
-  final NetworkingIpAssignmentAssignmentArgs = _index.NetworkingIpAssignmentAssignment.new;
-  final NetworkingIpAssignmentState = _index.NetworkingIpAssignmentState.new;
-  final NetworkingIpAssignmentStateArgs = _index.NetworkingIpAssignmentState.new;
-  final NetworkingIpState = _index.NetworkingIpState.new;
-  final NetworkingIpStateArgs = _index.NetworkingIpState.new;
-  final NetworkingIpVpcNat11 = _index.NetworkingIpVpcNat11.new;
-  final NetworkingIpVpcNat11Args = _index.NetworkingIpVpcNat11.new;
-  final NodeBalancer = _index.NodeBalancer.new;
-  final NodeBalancerArgs = _index.NodeBalancerArgs.new;
-  final NodeBalancerConfig = _index.NodeBalancerConfig.new;
-  final NodeBalancerConfigArgs = _index.NodeBalancerConfigArgs.new;
-  final NodeBalancerConfigNodeStatus = _index.NodeBalancerConfigNodeStatus.new;
-  final NodeBalancerConfigNodeStatusArgs = _index.NodeBalancerConfigNodeStatus.new;
-  final NodeBalancerConfigState = _index.NodeBalancerConfigState.new;
-  final NodeBalancerConfigStateArgs = _index.NodeBalancerConfigState.new;
-  final NodeBalancerFirewall = _index.NodeBalancerFirewall.new;
-  final NodeBalancerFirewallArgs = _index.NodeBalancerFirewall.new;
-  final NodeBalancerFirewallInbound = _index.NodeBalancerFirewallInbound.new;
-  final NodeBalancerFirewallInboundArgs = _index.NodeBalancerFirewallInbound.new;
-  final NodeBalancerFirewallOutbound = _index.NodeBalancerFirewallOutbound.new;
-  final NodeBalancerFirewallOutboundArgs = _index.NodeBalancerFirewallOutbound.new;
-  final NodeBalancerNode = _index.NodeBalancerNode.new;
-  final NodeBalancerNodeArgs = _index.NodeBalancerNodeArgs.new;
-  final NodeBalancerNodeState = _index.NodeBalancerNodeState.new;
-  final NodeBalancerNodeStateArgs = _index.NodeBalancerNodeState.new;
-  final NodeBalancerState = _index.NodeBalancerState.new;
-  final NodeBalancerStateArgs = _index.NodeBalancerState.new;
-  final NodeBalancerTransfer = _index.NodeBalancerTransfer.new;
-  final NodeBalancerTransferArgs = _index.NodeBalancerTransfer.new;
-  final NodeBalancerVpc = _index.NodeBalancerVpc.new;
-  final NodeBalancerVpcArgs = _index.NodeBalancerVpc.new;
-  final ObjectStorageBucket = _index.ObjectStorageBucket.new;
-  final ObjectStorageBucketArgs = _index.ObjectStorageBucketArgs.new;
-  final ObjectStorageBucketCert = _index.ObjectStorageBucketCert.new;
-  final ObjectStorageBucketCertArgs = _index.ObjectStorageBucketCert.new;
-  final ObjectStorageBucketLifecycleRule = _index.ObjectStorageBucketLifecycleRule.new;
-  final ObjectStorageBucketLifecycleRuleArgs = _index.ObjectStorageBucketLifecycleRule.new;
-  final ObjectStorageBucketLifecycleRuleExpiration = _index.ObjectStorageBucketLifecycleRuleExpiration.new;
-  final ObjectStorageBucketLifecycleRuleExpirationArgs = _index.ObjectStorageBucketLifecycleRuleExpiration.new;
-  final ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration = _index.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.new;
-  final ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs = _index.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.new;
-  final ObjectStorageBucketState = _index.ObjectStorageBucketState.new;
-  final ObjectStorageBucketStateArgs = _index.ObjectStorageBucketState.new;
-  final ObjectStorageKey = _index.ObjectStorageKey.new;
-  final ObjectStorageKeyArgs = _index.ObjectStorageKeyArgs.new;
-  final ObjectStorageKeyBucketAccess = _index.ObjectStorageKeyBucketAccess.new;
-  final ObjectStorageKeyBucketAccessArgs = _index.ObjectStorageKeyBucketAccess.new;
-  final ObjectStorageKeyRegionsDetail = _index.ObjectStorageKeyRegionsDetail.new;
-  final ObjectStorageKeyRegionsDetailArgs = _index.ObjectStorageKeyRegionsDetail.new;
-  final ObjectStorageKeyState = _index.ObjectStorageKeyState.new;
-  final ObjectStorageKeyStateArgs = _index.ObjectStorageKeyState.new;
-  final ObjectStorageObject = _index.ObjectStorageObject.new;
-  final ObjectStorageObjectArgs = _index.ObjectStorageObjectArgs.new;
-  final ObjectStorageObjectState = _index.ObjectStorageObjectState.new;
-  final ObjectStorageObjectStateArgs = _index.ObjectStorageObjectState.new;
-  final PlacementGroup = _index.PlacementGroup.new;
-  final PlacementGroupArgs = _index.PlacementGroupArgs.new;
-  final PlacementGroupAssignment = _index.PlacementGroupAssignment.new;
-  final PlacementGroupAssignmentArgs = _index.PlacementGroupAssignmentArgs.new;
-  final PlacementGroupAssignmentState = _index.PlacementGroupAssignmentState.new;
-  final PlacementGroupAssignmentStateArgs = _index.PlacementGroupAssignmentState.new;
-  final PlacementGroupMember = _index.PlacementGroupMember.new;
-  final PlacementGroupMemberArgs = _index.PlacementGroupMember.new;
-  final PlacementGroupState = _index.PlacementGroupState.new;
-  final PlacementGroupStateArgs = _index.PlacementGroupState.new;
-  final ProducerImageShareGroup = _index.ProducerImageShareGroup.new;
-  final ProducerImageShareGroupArgs = _index.ProducerImageShareGroupArgs.new;
-  final ProducerImageShareGroupImage = _index.ProducerImageShareGroupImage.new;
-  final ProducerImageShareGroupImageArgs = _index.ProducerImageShareGroupImage.new;
-  final ProducerImageShareGroupMember = _index.ProducerImageShareGroupMember.new;
-  final ProducerImageShareGroupMemberArgs = _index.ProducerImageShareGroupMemberArgs.new;
-  final ProducerImageShareGroupMemberState = _index.ProducerImageShareGroupMemberState.new;
-  final ProducerImageShareGroupMemberStateArgs = _index.ProducerImageShareGroupMemberState.new;
-  final ProducerImageShareGroupState = _index.ProducerImageShareGroupState.new;
-  final ProducerImageShareGroupStateArgs = _index.ProducerImageShareGroupState.new;
-  final Rdns = _index.Rdns.new;
-  final RdnsArgs = _index.RdnsArgs.new;
-  final RdnsState = _index.RdnsState.new;
-  final RdnsStateArgs = _index.RdnsState.new;
-  final RdnsTimeouts = _index.RdnsTimeouts.new;
-  final RdnsTimeoutsArgs = _index.RdnsTimeouts.new;
-  final ReservedIpAssignment = _index.ReservedIpAssignment.new;
-  final ReservedIpAssignmentArgs = _index.ReservedIpAssignmentArgs.new;
-  final ReservedIpAssignmentState = _index.ReservedIpAssignmentState.new;
-  final ReservedIpAssignmentStateArgs = _index.ReservedIpAssignmentState.new;
-  final ReservedIpAssignmentVpcNat11 = _index.ReservedIpAssignmentVpcNat11.new;
-  final ReservedIpAssignmentVpcNat11Args = _index.ReservedIpAssignmentVpcNat11.new;
-  final SshKey = _index.SshKey.new;
-  final SshKeyArgs = _index.SshKeyArgs.new;
-  final SshKeyState = _index.SshKeyState.new;
-  final SshKeyStateArgs = _index.SshKeyState.new;
-  final StackScript = _index.StackScript.new;
-  final StackScriptArgs = _index.StackScriptArgs.new;
-  final StackScriptState = _index.StackScriptState.new;
-  final StackScriptStateArgs = _index.StackScriptState.new;
-  final StackScriptUserDefinedField = _index.StackScriptUserDefinedField.new;
-  final StackScriptUserDefinedFieldArgs = _index.StackScriptUserDefinedField.new;
-  final Token = _index.Token.new;
-  final TokenArgs = _index.TokenArgs.new;
-  final TokenState = _index.TokenState.new;
-  final TokenStateArgs = _index.TokenState.new;
-  final User = _index.User.new;
-  final UserArgs = _index.UserArgs.new;
-  final UserDomainGrant = _index.UserDomainGrant.new;
-  final UserDomainGrantArgs = _index.UserDomainGrant.new;
-  final UserFirewallGrant = _index.UserFirewallGrant.new;
-  final UserFirewallGrantArgs = _index.UserFirewallGrant.new;
-  final UserGlobalGrants = _index.UserGlobalGrants.new;
-  final UserGlobalGrantsArgs = _index.UserGlobalGrants.new;
-  final UserImageGrant = _index.UserImageGrant.new;
-  final UserImageGrantArgs = _index.UserImageGrant.new;
-  final UserLinodeGrant = _index.UserLinodeGrant.new;
-  final UserLinodeGrantArgs = _index.UserLinodeGrant.new;
-  final UserLongviewGrant = _index.UserLongviewGrant.new;
-  final UserLongviewGrantArgs = _index.UserLongviewGrant.new;
-  final UserNodebalancerGrant = _index.UserNodebalancerGrant.new;
-  final UserNodebalancerGrantArgs = _index.UserNodebalancerGrant.new;
-  final UserStackscriptGrant = _index.UserStackscriptGrant.new;
-  final UserStackscriptGrantArgs = _index.UserStackscriptGrant.new;
-  final UserState = _index.UserState.new;
-  final UserStateArgs = _index.UserState.new;
-  final UserVolumeGrant = _index.UserVolumeGrant.new;
-  final UserVolumeGrantArgs = _index.UserVolumeGrant.new;
-  final UserVpcGrant = _index.UserVpcGrant.new;
-  final UserVpcGrantArgs = _index.UserVpcGrant.new;
-  final Volume = _index.Volume.new;
-  final VolumeArgs = _index.VolumeArgs.new;
-  final VolumeState = _index.VolumeState.new;
-  final VolumeStateArgs = _index.VolumeState.new;
-  final VolumeTimeouts = _index.VolumeTimeouts.new;
-  final VolumeTimeoutsArgs = _index.VolumeTimeouts.new;
-  final Vpc = _index.Vpc.new;
-  final VpcArgs = _index.VpcArgs.new;
-  final VpcIpv6 = _index.VpcIpv6.new;
-  final VpcIpv6Args = _index.VpcIpv6.new;
-  final VpcState = _index.VpcState.new;
-  final VpcStateArgs = _index.VpcState.new;
-  final VpcSubnet = _index.VpcSubnet.new;
-  final VpcSubnetArgs = _index.VpcSubnetArgs.new;
-  final VpcSubnetIpv6 = _index.VpcSubnetIpv6.new;
-  final VpcSubnetIpv6Args = _index.VpcSubnetIpv6.new;
-  final VpcSubnetLinode = _index.VpcSubnetLinode.new;
-  final VpcSubnetLinodeArgs = _index.VpcSubnetLinode.new;
-  final VpcSubnetLinodeInterface = _index.VpcSubnetLinodeInterface.new;
-  final VpcSubnetLinodeInterfaceArgs = _index.VpcSubnetLinodeInterface.new;
-  final VpcSubnetState = _index.VpcSubnetState.new;
-  final VpcSubnetStateArgs = _index.VpcSubnetState.new;
-  final getAccount = _index.getAccount;
-  final getAccountAvailabilities = _index.getAccountAvailabilities;
-  final getAccountAvailability = _index.getAccountAvailability;
-  final getAccountLogin = _index.getAccountLogin;
-  final getAccountLogins = _index.getAccountLogins;
-  final getAccountSettings = _index.getAccountSettings;
-  final getChildAccount = _index.getChildAccount;
-  final getChildAccounts = _index.getChildAccounts;
-  final getConsumerImageShareGroup = _index.getConsumerImageShareGroup;
-  final getConsumerImageShareGroupImageShares = _index.getConsumerImageShareGroupImageShares;
-  final getConsumerImageShareGroupToken = _index.getConsumerImageShareGroupToken;
-  final getConsumerImageShareGroupTokens = _index.getConsumerImageShareGroupTokens;
-  final getDatabaseBackups = _index.getDatabaseBackups;
-  final getDatabaseEngines = _index.getDatabaseEngines;
-  final getDatabaseMysql = _index.getDatabaseMysql;
-  final getDatabaseMysqlBackups = _index.getDatabaseMysqlBackups;
-  final getDatabaseMysqlConfig = _index.getDatabaseMysqlConfig;
-  final getDatabaseMysqlV2 = _index.getDatabaseMysqlV2;
-  final getDatabasePostgresql = _index.getDatabasePostgresql;
-  final getDatabasePostgresqlConfig = _index.getDatabasePostgresqlConfig;
-  final getDatabasePostgresqlV2 = _index.getDatabasePostgresqlV2;
-  final getDatabases = _index.getDatabases;
-  final getDomain = _index.getDomain;
-  final getDomainRecord = _index.getDomainRecord;
-  final getDomainZonefile = _index.getDomainZonefile;
-  final getDomains = _index.getDomains;
-  final getFirewall = _index.getFirewall;
-  final getFirewallSettings = _index.getFirewallSettings;
-  final getFirewallTemplate = _index.getFirewallTemplate;
-  final getFirewallTemplates = _index.getFirewallTemplates;
-  final getFirewalls = _index.getFirewalls;
-  final getImage = _index.getImage;
-  final getImages = _index.getImages;
-  final getInstanceBackups = _index.getInstanceBackups;
-  final getInstanceNetworking = _index.getInstanceNetworking;
-  final getInstanceType = _index.getInstanceType;
-  final getInstanceTypes = _index.getInstanceTypes;
-  final getInstances = _index.getInstances;
-  final getInterface = _index.getInterface;
-  final getIpv6Range = _index.getIpv6Range;
-  final getIpv6Ranges = _index.getIpv6Ranges;
-  final getKernel = _index.getKernel;
-  final getKernels = _index.getKernels;
-  final getLinodeObjectStorageBucket = _index.getLinodeObjectStorageBucket;
-  final getLkeCluster = _index.getLkeCluster;
-  final getLkeClusters = _index.getLkeClusters;
-  final getLkeTypes = _index.getLkeTypes;
-  final getLkeVersion = _index.getLkeVersion;
-  final getLkeVersions = _index.getLkeVersions;
-  final getLock = _index.getLock;
-  final getLocks = _index.getLocks;
-  final getMaintenancePolicies = _index.getMaintenancePolicies;
-  final getNbTypes = _index.getNbTypes;
-  final getNetworkTransferPrices = _index.getNetworkTransferPrices;
-  final getNetworkingIp = _index.getNetworkingIp;
-  final getNetworkingIps = _index.getNetworkingIps;
-  final getNodeBalancer = _index.getNodeBalancer;
-  final getNodeBalancerConfig = _index.getNodeBalancerConfig;
-  final getNodeBalancerNode = _index.getNodeBalancerNode;
-  final getNodebalancerConfigs = _index.getNodebalancerConfigs;
-  final getNodebalancerVpc = _index.getNodebalancerVpc;
-  final getNodebalancerVpcs = _index.getNodebalancerVpcs;
-  final getNodebalancers = _index.getNodebalancers;
-  final getObjectStorageCluster = _index.getObjectStorageCluster;
-  final getObjectStorageEndpoints = _index.getObjectStorageEndpoints;
-  final getObjectStorageQuota = _index.getObjectStorageQuota;
-  final getObjectStorageQuotas = _index.getObjectStorageQuotas;
-  final getPlacementGroup = _index.getPlacementGroup;
-  final getPlacementGroups = _index.getPlacementGroups;
-  final getProducerImageShareGroup = _index.getProducerImageShareGroup;
-  final getProducerImageShareGroupImageShares = _index.getProducerImageShareGroupImageShares;
-  final getProducerImageShareGroupMember = _index.getProducerImageShareGroupMember;
-  final getProducerImageShareGroupMembers = _index.getProducerImageShareGroupMembers;
-  final getProducerImageShareGroups = _index.getProducerImageShareGroups;
-  final getProfile = _index.getProfile;
-  final getRegion = _index.getRegion;
-  final getRegions = _index.getRegions;
-  final getSshKey = _index.getSshKey;
-  final getSshkeys = _index.getSshkeys;
-  final getStackScript = _index.getStackScript;
-  final getStackScripts = _index.getStackScripts;
-  final getUser = _index.getUser;
-  final getUsers = _index.getUsers;
-  final getVlans = _index.getVlans;
-  final getVolume = _index.getVolume;
-  final getVolumeTypes = _index.getVolumeTypes;
-  final getVolumes = _index.getVolumes;
-  final getVpc = _index.getVpc;
-  final getVpcIps = _index.getVpcIps;
-  final getVpcSubnet = _index.getVpcSubnet;
-  final getVpcSubnets = _index.getVpcSubnets;
-  final getVpcs = _index.getVpcs;
+  final AccountSettings = module_index.AccountSettings.new;
+  final AccountSettingsArgs = module_index.AccountSettingsArgs.new;
+  final AccountSettingsState = module_index.AccountSettingsState.new;
+  final AccountSettingsStateArgs = module_index.AccountSettingsState.new;
+  final ConsumerImageShareGroupToken =
+      module_index.ConsumerImageShareGroupToken.new;
+  final ConsumerImageShareGroupTokenArgs =
+      module_index.ConsumerImageShareGroupTokenArgs.new;
+  final ConsumerImageShareGroupTokenState =
+      module_index.ConsumerImageShareGroupTokenState.new;
+  final ConsumerImageShareGroupTokenStateArgs =
+      module_index.ConsumerImageShareGroupTokenState.new;
+  final DatabaseAccessControls = module_index.DatabaseAccessControls.new;
+  final DatabaseAccessControlsArgs =
+      module_index.DatabaseAccessControlsArgs.new;
+  final DatabaseAccessControlsState =
+      module_index.DatabaseAccessControlsState.new;
+  final DatabaseAccessControlsStateArgs =
+      module_index.DatabaseAccessControlsState.new;
+  final DatabaseMysql = module_index.DatabaseMysql.new;
+  final DatabaseMysqlArgs = module_index.DatabaseMysqlArgs.new;
+  final DatabaseMysqlState = module_index.DatabaseMysqlState.new;
+  final DatabaseMysqlStateArgs = module_index.DatabaseMysqlState.new;
+  final DatabaseMysqlUpdates = module_index.DatabaseMysqlUpdates.new;
+  final DatabaseMysqlUpdatesArgs = module_index.DatabaseMysqlUpdates.new;
+  final DatabaseMysqlV2 = module_index.DatabaseMysqlV2.new;
+  final DatabaseMysqlV2Args = module_index.DatabaseMysqlV2Args.new;
+  final DatabaseMysqlV2PendingUpdate =
+      module_index.DatabaseMysqlV2PendingUpdate.new;
+  final DatabaseMysqlV2PendingUpdateArgs =
+      module_index.DatabaseMysqlV2PendingUpdate.new;
+  final DatabaseMysqlV2PrivateNetwork =
+      module_index.DatabaseMysqlV2PrivateNetwork.new;
+  final DatabaseMysqlV2PrivateNetworkArgs =
+      module_index.DatabaseMysqlV2PrivateNetwork.new;
+  final DatabaseMysqlV2State = module_index.DatabaseMysqlV2State.new;
+  final DatabaseMysqlV2StateArgs = module_index.DatabaseMysqlV2State.new;
+  final DatabaseMysqlV2Timeouts = module_index.DatabaseMysqlV2Timeouts.new;
+  final DatabaseMysqlV2TimeoutsArgs = module_index.DatabaseMysqlV2Timeouts.new;
+  final DatabaseMysqlV2Updates = module_index.DatabaseMysqlV2Updates.new;
+  final DatabaseMysqlV2UpdatesArgs = module_index.DatabaseMysqlV2Updates.new;
+  final DatabasePostgresql = module_index.DatabasePostgresql.new;
+  final DatabasePostgresqlArgs = module_index.DatabasePostgresqlArgs.new;
+  final DatabasePostgresqlState = module_index.DatabasePostgresqlState.new;
+  final DatabasePostgresqlStateArgs = module_index.DatabasePostgresqlState.new;
+  final DatabasePostgresqlUpdates = module_index.DatabasePostgresqlUpdates.new;
+  final DatabasePostgresqlUpdatesArgs =
+      module_index.DatabasePostgresqlUpdates.new;
+  final DatabasePostgresqlV2 = module_index.DatabasePostgresqlV2.new;
+  final DatabasePostgresqlV2Args = module_index.DatabasePostgresqlV2Args.new;
+  final DatabasePostgresqlV2PendingUpdate =
+      module_index.DatabasePostgresqlV2PendingUpdate.new;
+  final DatabasePostgresqlV2PendingUpdateArgs =
+      module_index.DatabasePostgresqlV2PendingUpdate.new;
+  final DatabasePostgresqlV2PrivateNetwork =
+      module_index.DatabasePostgresqlV2PrivateNetwork.new;
+  final DatabasePostgresqlV2PrivateNetworkArgs =
+      module_index.DatabasePostgresqlV2PrivateNetwork.new;
+  final DatabasePostgresqlV2State = module_index.DatabasePostgresqlV2State.new;
+  final DatabasePostgresqlV2StateArgs =
+      module_index.DatabasePostgresqlV2State.new;
+  final DatabasePostgresqlV2Timeouts =
+      module_index.DatabasePostgresqlV2Timeouts.new;
+  final DatabasePostgresqlV2TimeoutsArgs =
+      module_index.DatabasePostgresqlV2Timeouts.new;
+  final DatabasePostgresqlV2Updates =
+      module_index.DatabasePostgresqlV2Updates.new;
+  final DatabasePostgresqlV2UpdatesArgs =
+      module_index.DatabasePostgresqlV2Updates.new;
+  final Domain = module_index.Domain.new;
+  final DomainArgs = module_index.DomainArgs.new;
+  final DomainRecord = module_index.DomainRecord.new;
+  final DomainRecordArgs = module_index.DomainRecordArgs.new;
+  final DomainRecordState = module_index.DomainRecordState.new;
+  final DomainRecordStateArgs = module_index.DomainRecordState.new;
+  final DomainState = module_index.DomainState.new;
+  final DomainStateArgs = module_index.DomainState.new;
+  final Firewall = module_index.Firewall.new;
+  final FirewallArgs = module_index.FirewallArgs.new;
+  final FirewallDevice = module_index.FirewallDevice.new;
+  final FirewallDeviceArgs = module_index.FirewallDevice.new;
+  final FirewallDeviceState = module_index.FirewallDeviceState.new;
+  final FirewallDeviceStateArgs = module_index.FirewallDeviceState.new;
+  final FirewallInbound = module_index.FirewallInbound.new;
+  final FirewallInboundArgs = module_index.FirewallInbound.new;
+  final FirewallOutbound = module_index.FirewallOutbound.new;
+  final FirewallOutboundArgs = module_index.FirewallOutbound.new;
+  final FirewallSettings = module_index.FirewallSettings.new;
+  final FirewallSettingsArgs = module_index.FirewallSettingsArgs.new;
+  final FirewallSettingsDefaultFirewallIds =
+      module_index.FirewallSettingsDefaultFirewallIds.new;
+  final FirewallSettingsDefaultFirewallIdsArgs =
+      module_index.FirewallSettingsDefaultFirewallIds.new;
+  final FirewallSettingsState = module_index.FirewallSettingsState.new;
+  final FirewallSettingsStateArgs = module_index.FirewallSettingsState.new;
+  final FirewallState = module_index.FirewallState.new;
+  final FirewallStateArgs = module_index.FirewallState.new;
+  final GetAccountAvailabilitiesArgs =
+      module_index.GetAccountAvailabilitiesArgs.new;
+  final GetAccountAvailabilitiesAvailability =
+      module_index.GetAccountAvailabilitiesAvailability.new;
+  final GetAccountAvailabilitiesAvailabilityArgs =
+      module_index.GetAccountAvailabilitiesAvailability.new;
+  final GetAccountAvailabilitiesFilter =
+      module_index.GetAccountAvailabilitiesFilter.new;
+  final GetAccountAvailabilitiesFilterArgs =
+      module_index.GetAccountAvailabilitiesFilter.new;
+  final GetAccountAvailabilitiesResult =
+      module_index.GetAccountAvailabilitiesResult.new;
+  final GetAccountAvailabilitiesResultArgs =
+      module_index.GetAccountAvailabilitiesResult.new;
+  final GetAccountAvailabilityArgs =
+      module_index.GetAccountAvailabilityArgs.new;
+  final GetAccountAvailabilityResult =
+      module_index.GetAccountAvailabilityResult.new;
+  final GetAccountAvailabilityResultArgs =
+      module_index.GetAccountAvailabilityResult.new;
+  final GetAccountLoginArgs = module_index.GetAccountLoginArgs.new;
+  final GetAccountLoginResult = module_index.GetAccountLoginResult.new;
+  final GetAccountLoginResultArgs = module_index.GetAccountLoginResult.new;
+  final GetAccountLoginsArgs = module_index.GetAccountLoginsArgs.new;
+  final GetAccountLoginsFilter = module_index.GetAccountLoginsFilter.new;
+  final GetAccountLoginsFilterArgs = module_index.GetAccountLoginsFilter.new;
+  final GetAccountLoginsLogin = module_index.GetAccountLoginsLogin.new;
+  final GetAccountLoginsLoginArgs = module_index.GetAccountLoginsLogin.new;
+  final GetAccountLoginsResult = module_index.GetAccountLoginsResult.new;
+  final GetAccountLoginsResultArgs = module_index.GetAccountLoginsResult.new;
+  final GetAccountResult = module_index.GetAccountResult.new;
+  final GetAccountResultArgs = module_index.GetAccountResult.new;
+  final GetAccountSettingsResult = module_index.GetAccountSettingsResult.new;
+  final GetAccountSettingsResultArgs =
+      module_index.GetAccountSettingsResult.new;
+  final GetChildAccountArgs = module_index.GetChildAccountArgs.new;
+  final GetChildAccountResult = module_index.GetChildAccountResult.new;
+  final GetChildAccountResultArgs = module_index.GetChildAccountResult.new;
+  final GetChildAccountsArgs = module_index.GetChildAccountsArgs.new;
+  final GetChildAccountsChildAccount =
+      module_index.GetChildAccountsChildAccount.new;
+  final GetChildAccountsChildAccountArgs =
+      module_index.GetChildAccountsChildAccount.new;
+  final GetChildAccountsFilter = module_index.GetChildAccountsFilter.new;
+  final GetChildAccountsFilterArgs = module_index.GetChildAccountsFilter.new;
+  final GetChildAccountsResult = module_index.GetChildAccountsResult.new;
+  final GetChildAccountsResultArgs = module_index.GetChildAccountsResult.new;
+  final GetConsumerImageShareGroupArgs =
+      module_index.GetConsumerImageShareGroupArgs.new;
+  final GetConsumerImageShareGroupImageSharesArgs =
+      module_index.GetConsumerImageShareGroupImageSharesArgs.new;
+  final GetConsumerImageShareGroupImageSharesFilter =
+      module_index.GetConsumerImageShareGroupImageSharesFilter.new;
+  final GetConsumerImageShareGroupImageSharesFilterArgs =
+      module_index.GetConsumerImageShareGroupImageSharesFilter.new;
+  final GetConsumerImageShareGroupImageSharesImageShare =
+      module_index.GetConsumerImageShareGroupImageSharesImageShare.new;
+  final GetConsumerImageShareGroupImageSharesImageShareArgs =
+      module_index.GetConsumerImageShareGroupImageSharesImageShare.new;
+  final GetConsumerImageShareGroupImageSharesImageShareImageSharing =
+      module_index
+          .GetConsumerImageShareGroupImageSharesImageShareImageSharing
+          .new;
+  final GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs =
+      module_index
+          .GetConsumerImageShareGroupImageSharesImageShareImageSharing
+          .new;
+  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy =
+      module_index
+          .GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy
+          .new;
+  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs =
+      module_index
+          .GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy
+          .new;
+  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith =
+      module_index
+          .GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith
+          .new;
+  final GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs =
+      module_index
+          .GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith
+          .new;
+  final GetConsumerImageShareGroupImageSharesResult =
+      module_index.GetConsumerImageShareGroupImageSharesResult.new;
+  final GetConsumerImageShareGroupImageSharesResultArgs =
+      module_index.GetConsumerImageShareGroupImageSharesResult.new;
+  final GetConsumerImageShareGroupResult =
+      module_index.GetConsumerImageShareGroupResult.new;
+  final GetConsumerImageShareGroupResultArgs =
+      module_index.GetConsumerImageShareGroupResult.new;
+  final GetConsumerImageShareGroupTokenArgs =
+      module_index.GetConsumerImageShareGroupTokenArgs.new;
+  final GetConsumerImageShareGroupTokenResult =
+      module_index.GetConsumerImageShareGroupTokenResult.new;
+  final GetConsumerImageShareGroupTokenResultArgs =
+      module_index.GetConsumerImageShareGroupTokenResult.new;
+  final GetConsumerImageShareGroupTokensArgs =
+      module_index.GetConsumerImageShareGroupTokensArgs.new;
+  final GetConsumerImageShareGroupTokensFilter =
+      module_index.GetConsumerImageShareGroupTokensFilter.new;
+  final GetConsumerImageShareGroupTokensFilterArgs =
+      module_index.GetConsumerImageShareGroupTokensFilter.new;
+  final GetConsumerImageShareGroupTokensResult =
+      module_index.GetConsumerImageShareGroupTokensResult.new;
+  final GetConsumerImageShareGroupTokensResultArgs =
+      module_index.GetConsumerImageShareGroupTokensResult.new;
+  final GetConsumerImageShareGroupTokensToken =
+      module_index.GetConsumerImageShareGroupTokensToken.new;
+  final GetConsumerImageShareGroupTokensTokenArgs =
+      module_index.GetConsumerImageShareGroupTokensToken.new;
+  final GetDatabaseBackupsArgs = module_index.GetDatabaseBackupsArgs.new;
+  final GetDatabaseBackupsBackup = module_index.GetDatabaseBackupsBackup.new;
+  final GetDatabaseBackupsBackupArgs =
+      module_index.GetDatabaseBackupsBackup.new;
+  final GetDatabaseBackupsFilter = module_index.GetDatabaseBackupsFilter.new;
+  final GetDatabaseBackupsFilterArgs =
+      module_index.GetDatabaseBackupsFilter.new;
+  final GetDatabaseBackupsResult = module_index.GetDatabaseBackupsResult.new;
+  final GetDatabaseBackupsResultArgs =
+      module_index.GetDatabaseBackupsResult.new;
+  final GetDatabaseEnginesArgs = module_index.GetDatabaseEnginesArgs.new;
+  final GetDatabaseEnginesEngine = module_index.GetDatabaseEnginesEngine.new;
+  final GetDatabaseEnginesEngineArgs =
+      module_index.GetDatabaseEnginesEngine.new;
+  final GetDatabaseEnginesFilter = module_index.GetDatabaseEnginesFilter.new;
+  final GetDatabaseEnginesFilterArgs =
+      module_index.GetDatabaseEnginesFilter.new;
+  final GetDatabaseEnginesResult = module_index.GetDatabaseEnginesResult.new;
+  final GetDatabaseEnginesResultArgs =
+      module_index.GetDatabaseEnginesResult.new;
+  final GetDatabaseMysqlArgs = module_index.GetDatabaseMysqlArgs.new;
+  final GetDatabaseMysqlBackupsArgs =
+      module_index.GetDatabaseMysqlBackupsArgs.new;
+  final GetDatabaseMysqlBackupsBackup =
+      module_index.GetDatabaseMysqlBackupsBackup.new;
+  final GetDatabaseMysqlBackupsBackupArgs =
+      module_index.GetDatabaseMysqlBackupsBackup.new;
+  final GetDatabaseMysqlBackupsFilter =
+      module_index.GetDatabaseMysqlBackupsFilter.new;
+  final GetDatabaseMysqlBackupsFilterArgs =
+      module_index.GetDatabaseMysqlBackupsFilter.new;
+  final GetDatabaseMysqlBackupsResult =
+      module_index.GetDatabaseMysqlBackupsResult.new;
+  final GetDatabaseMysqlBackupsResultArgs =
+      module_index.GetDatabaseMysqlBackupsResult.new;
+  final GetDatabaseMysqlConfigBinlogRetentionPeriod =
+      module_index.GetDatabaseMysqlConfigBinlogRetentionPeriod.new;
+  final GetDatabaseMysqlConfigBinlogRetentionPeriodArgs =
+      module_index.GetDatabaseMysqlConfigBinlogRetentionPeriod.new;
+  final GetDatabaseMysqlConfigMysql =
+      module_index.GetDatabaseMysqlConfigMysql.new;
+  final GetDatabaseMysqlConfigMysqlArgs =
+      module_index.GetDatabaseMysqlConfigMysql.new;
+  final GetDatabaseMysqlConfigMysqlConnectTimeout =
+      module_index.GetDatabaseMysqlConfigMysqlConnectTimeout.new;
+  final GetDatabaseMysqlConfigMysqlConnectTimeoutArgs =
+      module_index.GetDatabaseMysqlConfigMysqlConnectTimeout.new;
+  final GetDatabaseMysqlConfigMysqlDefaultTimeZone =
+      module_index.GetDatabaseMysqlConfigMysqlDefaultTimeZone.new;
+  final GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs =
+      module_index.GetDatabaseMysqlConfigMysqlDefaultTimeZone.new;
+  final GetDatabaseMysqlConfigMysqlGroupConcatMaxLen =
+      module_index.GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.new;
+  final GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs =
+      module_index.GetDatabaseMysqlConfigMysqlGroupConcatMaxLen.new;
+  final GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry =
+      module_index.GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.new;
+  final GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry.new;
+  final GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.new;
+  final GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors.new;
+  final GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.new;
+  final GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.new;
+  final GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout.new;
+  final GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout.new;
+  final GetDatabaseMysqlConfigMysqlInnodbLogBufferSize =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbLogBufferSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbLogBufferSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize.new;
+  final GetDatabaseMysqlConfigMysqlInnodbReadIoThreads =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbReadIoThreads.new;
+  final GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbReadIoThreads.new;
+  final GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.new;
+  final GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout.new;
+  final GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.new;
+  final GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency.new;
+  final GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.new;
+  final GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads.new;
+  final GetDatabaseMysqlConfigMysqlInteractiveTimeout =
+      module_index.GetDatabaseMysqlConfigMysqlInteractiveTimeout.new;
+  final GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInteractiveTimeout.new;
+  final GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine =
+      module_index.GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.new;
+  final GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs =
+      module_index.GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.new;
+  final GetDatabaseMysqlConfigMysqlMaxAllowedPacket =
+      module_index.GetDatabaseMysqlConfigMysqlMaxAllowedPacket.new;
+  final GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs =
+      module_index.GetDatabaseMysqlConfigMysqlMaxAllowedPacket.new;
+  final GetDatabaseMysqlConfigMysqlMaxHeapTableSize =
+      module_index.GetDatabaseMysqlConfigMysqlMaxHeapTableSize.new;
+  final GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlMaxHeapTableSize.new;
+  final GetDatabaseMysqlConfigMysqlNetBufferLength =
+      module_index.GetDatabaseMysqlConfigMysqlNetBufferLength.new;
+  final GetDatabaseMysqlConfigMysqlNetBufferLengthArgs =
+      module_index.GetDatabaseMysqlConfigMysqlNetBufferLength.new;
+  final GetDatabaseMysqlConfigMysqlNetReadTimeout =
+      module_index.GetDatabaseMysqlConfigMysqlNetReadTimeout.new;
+  final GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs =
+      module_index.GetDatabaseMysqlConfigMysqlNetReadTimeout.new;
+  final GetDatabaseMysqlConfigMysqlNetWriteTimeout =
+      module_index.GetDatabaseMysqlConfigMysqlNetWriteTimeout.new;
+  final GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs =
+      module_index.GetDatabaseMysqlConfigMysqlNetWriteTimeout.new;
+  final GetDatabaseMysqlConfigMysqlSortBufferSize =
+      module_index.GetDatabaseMysqlConfigMysqlSortBufferSize.new;
+  final GetDatabaseMysqlConfigMysqlSortBufferSizeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlSortBufferSize.new;
+  final GetDatabaseMysqlConfigMysqlSqlMode =
+      module_index.GetDatabaseMysqlConfigMysqlSqlMode.new;
+  final GetDatabaseMysqlConfigMysqlSqlModeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlSqlMode.new;
+  final GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey =
+      module_index.GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.new;
+  final GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs =
+      module_index.GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.new;
+  final GetDatabaseMysqlConfigMysqlTmpTableSize =
+      module_index.GetDatabaseMysqlConfigMysqlTmpTableSize.new;
+  final GetDatabaseMysqlConfigMysqlTmpTableSizeArgs =
+      module_index.GetDatabaseMysqlConfigMysqlTmpTableSize.new;
+  final GetDatabaseMysqlConfigMysqlWaitTimeout =
+      module_index.GetDatabaseMysqlConfigMysqlWaitTimeout.new;
+  final GetDatabaseMysqlConfigMysqlWaitTimeoutArgs =
+      module_index.GetDatabaseMysqlConfigMysqlWaitTimeout.new;
+  final GetDatabaseMysqlConfigResult =
+      module_index.GetDatabaseMysqlConfigResult.new;
+  final GetDatabaseMysqlConfigResultArgs =
+      module_index.GetDatabaseMysqlConfigResult.new;
+  final GetDatabaseMysqlResult = module_index.GetDatabaseMysqlResult.new;
+  final GetDatabaseMysqlResultArgs = module_index.GetDatabaseMysqlResult.new;
+  final GetDatabaseMysqlUpdate = module_index.GetDatabaseMysqlUpdate.new;
+  final GetDatabaseMysqlUpdateArgs = module_index.GetDatabaseMysqlUpdate.new;
+  final GetDatabaseMysqlV2Args = module_index.GetDatabaseMysqlV2Args.new;
+  final GetDatabaseMysqlV2PendingUpdate =
+      module_index.GetDatabaseMysqlV2PendingUpdate.new;
+  final GetDatabaseMysqlV2PendingUpdateArgs =
+      module_index.GetDatabaseMysqlV2PendingUpdate.new;
+  final GetDatabaseMysqlV2PrivateNetwork =
+      module_index.GetDatabaseMysqlV2PrivateNetwork.new;
+  final GetDatabaseMysqlV2PrivateNetworkArgs =
+      module_index.GetDatabaseMysqlV2PrivateNetwork.new;
+  final GetDatabaseMysqlV2Result = module_index.GetDatabaseMysqlV2Result.new;
+  final GetDatabaseMysqlV2ResultArgs =
+      module_index.GetDatabaseMysqlV2Result.new;
+  final GetDatabaseMysqlV2Updates = module_index.GetDatabaseMysqlV2Updates.new;
+  final GetDatabaseMysqlV2UpdatesArgs =
+      module_index.GetDatabaseMysqlV2Updates.new;
+  final GetDatabasePostgresqlArgs = module_index.GetDatabasePostgresqlArgs.new;
+  final GetDatabasePostgresqlConfigPgStatMonitorEnable =
+      module_index.GetDatabasePostgresqlConfigPgStatMonitorEnable.new;
+  final GetDatabasePostgresqlConfigPgStatMonitorEnableArgs =
+      module_index.GetDatabasePostgresqlConfigPgStatMonitorEnable.new;
+  final GetDatabasePostgresqlConfigPglookout =
+      module_index.GetDatabasePostgresqlConfigPglookout.new;
+  final GetDatabasePostgresqlConfigPglookoutArgs =
+      module_index.GetDatabasePostgresqlConfigPglookout.new;
+  final GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag =
+      module_index
+          .GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag
+          .new;
+  final GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs =
+      module_index
+          .GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag
+          .new;
+  final GetDatabasePostgresqlConfigResult =
+      module_index.GetDatabasePostgresqlConfigResult.new;
+  final GetDatabasePostgresqlConfigResultArgs =
+      module_index.GetDatabasePostgresqlConfigResult.new;
+  final GetDatabasePostgresqlConfigSharedBuffersPercentage =
+      module_index.GetDatabasePostgresqlConfigSharedBuffersPercentage.new;
+  final GetDatabasePostgresqlConfigSharedBuffersPercentageArgs =
+      module_index.GetDatabasePostgresqlConfigSharedBuffersPercentage.new;
+  final GetDatabasePostgresqlConfigWorkMem =
+      module_index.GetDatabasePostgresqlConfigWorkMem.new;
+  final GetDatabasePostgresqlConfigWorkMemArgs =
+      module_index.GetDatabasePostgresqlConfigWorkMem.new;
+  final GetDatabasePostgresqlResult =
+      module_index.GetDatabasePostgresqlResult.new;
+  final GetDatabasePostgresqlResultArgs =
+      module_index.GetDatabasePostgresqlResult.new;
+  final GetDatabasePostgresqlUpdate =
+      module_index.GetDatabasePostgresqlUpdate.new;
+  final GetDatabasePostgresqlUpdateArgs =
+      module_index.GetDatabasePostgresqlUpdate.new;
+  final GetDatabasePostgresqlV2Args =
+      module_index.GetDatabasePostgresqlV2Args.new;
+  final GetDatabasePostgresqlV2PendingUpdate =
+      module_index.GetDatabasePostgresqlV2PendingUpdate.new;
+  final GetDatabasePostgresqlV2PendingUpdateArgs =
+      module_index.GetDatabasePostgresqlV2PendingUpdate.new;
+  final GetDatabasePostgresqlV2PrivateNetwork =
+      module_index.GetDatabasePostgresqlV2PrivateNetwork.new;
+  final GetDatabasePostgresqlV2PrivateNetworkArgs =
+      module_index.GetDatabasePostgresqlV2PrivateNetwork.new;
+  final GetDatabasePostgresqlV2Result =
+      module_index.GetDatabasePostgresqlV2Result.new;
+  final GetDatabasePostgresqlV2ResultArgs =
+      module_index.GetDatabasePostgresqlV2Result.new;
+  final GetDatabasePostgresqlV2Updates =
+      module_index.GetDatabasePostgresqlV2Updates.new;
+  final GetDatabasePostgresqlV2UpdatesArgs =
+      module_index.GetDatabasePostgresqlV2Updates.new;
+  final GetDatabasesArgs = module_index.GetDatabasesArgs.new;
+  final GetDatabasesDatabase = module_index.GetDatabasesDatabase.new;
+  final GetDatabasesDatabaseArgs = module_index.GetDatabasesDatabase.new;
+  final GetDatabasesDatabasePrivateNetwork =
+      module_index.GetDatabasesDatabasePrivateNetwork.new;
+  final GetDatabasesDatabasePrivateNetworkArgs =
+      module_index.GetDatabasesDatabasePrivateNetwork.new;
+  final GetDatabasesFilter = module_index.GetDatabasesFilter.new;
+  final GetDatabasesFilterArgs = module_index.GetDatabasesFilter.new;
+  final GetDatabasesResult = module_index.GetDatabasesResult.new;
+  final GetDatabasesResultArgs = module_index.GetDatabasesResult.new;
+  final GetDomainArgs = module_index.GetDomainArgs.new;
+  final GetDomainRecordArgs = module_index.GetDomainRecordArgs.new;
+  final GetDomainRecordResult = module_index.GetDomainRecordResult.new;
+  final GetDomainRecordResultArgs = module_index.GetDomainRecordResult.new;
+  final GetDomainResult = module_index.GetDomainResult.new;
+  final GetDomainResultArgs = module_index.GetDomainResult.new;
+  final GetDomainZonefileArgs = module_index.GetDomainZonefileArgs.new;
+  final GetDomainZonefileResult = module_index.GetDomainZonefileResult.new;
+  final GetDomainZonefileResultArgs = module_index.GetDomainZonefileResult.new;
+  final GetDomainsArgs = module_index.GetDomainsArgs.new;
+  final GetDomainsDomain = module_index.GetDomainsDomain.new;
+  final GetDomainsDomainArgs = module_index.GetDomainsDomain.new;
+  final GetDomainsFilter = module_index.GetDomainsFilter.new;
+  final GetDomainsFilterArgs = module_index.GetDomainsFilter.new;
+  final GetDomainsResult = module_index.GetDomainsResult.new;
+  final GetDomainsResultArgs = module_index.GetDomainsResult.new;
+  final GetFirewallArgs = module_index.GetFirewallArgs.new;
+  final GetFirewallDevice = module_index.GetFirewallDevice.new;
+  final GetFirewallDeviceArgs = module_index.GetFirewallDevice.new;
+  final GetFirewallInbound = module_index.GetFirewallInbound.new;
+  final GetFirewallInboundArgs = module_index.GetFirewallInbound.new;
+  final GetFirewallOutbound = module_index.GetFirewallOutbound.new;
+  final GetFirewallOutboundArgs = module_index.GetFirewallOutbound.new;
+  final GetFirewallResult = module_index.GetFirewallResult.new;
+  final GetFirewallResultArgs = module_index.GetFirewallResult.new;
+  final GetFirewallSettingsDefaultFirewallIds =
+      module_index.GetFirewallSettingsDefaultFirewallIds.new;
+  final GetFirewallSettingsDefaultFirewallIdsArgs =
+      module_index.GetFirewallSettingsDefaultFirewallIds.new;
+  final GetFirewallSettingsResult = module_index.GetFirewallSettingsResult.new;
+  final GetFirewallSettingsResultArgs =
+      module_index.GetFirewallSettingsResult.new;
+  final GetFirewallTemplateArgs = module_index.GetFirewallTemplateArgs.new;
+  final GetFirewallTemplateInbound =
+      module_index.GetFirewallTemplateInbound.new;
+  final GetFirewallTemplateInboundArgs =
+      module_index.GetFirewallTemplateInbound.new;
+  final GetFirewallTemplateOutbound =
+      module_index.GetFirewallTemplateOutbound.new;
+  final GetFirewallTemplateOutboundArgs =
+      module_index.GetFirewallTemplateOutbound.new;
+  final GetFirewallTemplateResult = module_index.GetFirewallTemplateResult.new;
+  final GetFirewallTemplateResultArgs =
+      module_index.GetFirewallTemplateResult.new;
+  final GetFirewallTemplatesArgs = module_index.GetFirewallTemplatesArgs.new;
+  final GetFirewallTemplatesFilter =
+      module_index.GetFirewallTemplatesFilter.new;
+  final GetFirewallTemplatesFilterArgs =
+      module_index.GetFirewallTemplatesFilter.new;
+  final GetFirewallTemplatesFirewallTemplate =
+      module_index.GetFirewallTemplatesFirewallTemplate.new;
+  final GetFirewallTemplatesFirewallTemplateArgs =
+      module_index.GetFirewallTemplatesFirewallTemplate.new;
+  final GetFirewallTemplatesFirewallTemplateInbound =
+      module_index.GetFirewallTemplatesFirewallTemplateInbound.new;
+  final GetFirewallTemplatesFirewallTemplateInboundArgs =
+      module_index.GetFirewallTemplatesFirewallTemplateInbound.new;
+  final GetFirewallTemplatesFirewallTemplateOutbound =
+      module_index.GetFirewallTemplatesFirewallTemplateOutbound.new;
+  final GetFirewallTemplatesFirewallTemplateOutboundArgs =
+      module_index.GetFirewallTemplatesFirewallTemplateOutbound.new;
+  final GetFirewallTemplatesResult =
+      module_index.GetFirewallTemplatesResult.new;
+  final GetFirewallTemplatesResultArgs =
+      module_index.GetFirewallTemplatesResult.new;
+  final GetFirewallsArgs = module_index.GetFirewallsArgs.new;
+  final GetFirewallsFilter = module_index.GetFirewallsFilter.new;
+  final GetFirewallsFilterArgs = module_index.GetFirewallsFilter.new;
+  final GetFirewallsFirewall = module_index.GetFirewallsFirewall.new;
+  final GetFirewallsFirewallArgs = module_index.GetFirewallsFirewall.new;
+  final GetFirewallsFirewallDevice =
+      module_index.GetFirewallsFirewallDevice.new;
+  final GetFirewallsFirewallDeviceArgs =
+      module_index.GetFirewallsFirewallDevice.new;
+  final GetFirewallsFirewallInbound =
+      module_index.GetFirewallsFirewallInbound.new;
+  final GetFirewallsFirewallInboundArgs =
+      module_index.GetFirewallsFirewallInbound.new;
+  final GetFirewallsFirewallOutbound =
+      module_index.GetFirewallsFirewallOutbound.new;
+  final GetFirewallsFirewallOutboundArgs =
+      module_index.GetFirewallsFirewallOutbound.new;
+  final GetFirewallsResult = module_index.GetFirewallsResult.new;
+  final GetFirewallsResultArgs = module_index.GetFirewallsResult.new;
+  final GetImageArgs = module_index.GetImageArgs.new;
+  final GetImageImageSharing = module_index.GetImageImageSharing.new;
+  final GetImageImageSharingArgs = module_index.GetImageImageSharing.new;
+  final GetImageImageSharingSharedBy =
+      module_index.GetImageImageSharingSharedBy.new;
+  final GetImageImageSharingSharedByArgs =
+      module_index.GetImageImageSharingSharedBy.new;
+  final GetImageImageSharingSharedWith =
+      module_index.GetImageImageSharingSharedWith.new;
+  final GetImageImageSharingSharedWithArgs =
+      module_index.GetImageImageSharingSharedWith.new;
+  final GetImageReplication = module_index.GetImageReplication.new;
+  final GetImageReplicationArgs = module_index.GetImageReplication.new;
+  final GetImageResult = module_index.GetImageResult.new;
+  final GetImageResultArgs = module_index.GetImageResult.new;
+  final GetImagesArgs = module_index.GetImagesArgs.new;
+  final GetImagesFilter = module_index.GetImagesFilter.new;
+  final GetImagesFilterArgs = module_index.GetImagesFilter.new;
+  final GetImagesImage = module_index.GetImagesImage.new;
+  final GetImagesImageArgs = module_index.GetImagesImage.new;
+  final GetImagesImageImageSharing =
+      module_index.GetImagesImageImageSharing.new;
+  final GetImagesImageImageSharingArgs =
+      module_index.GetImagesImageImageSharing.new;
+  final GetImagesImageImageSharingSharedBy =
+      module_index.GetImagesImageImageSharingSharedBy.new;
+  final GetImagesImageImageSharingSharedByArgs =
+      module_index.GetImagesImageImageSharingSharedBy.new;
+  final GetImagesImageImageSharingSharedWith =
+      module_index.GetImagesImageImageSharingSharedWith.new;
+  final GetImagesImageImageSharingSharedWithArgs =
+      module_index.GetImagesImageImageSharingSharedWith.new;
+  final GetImagesImageReplication = module_index.GetImagesImageReplication.new;
+  final GetImagesImageReplicationArgs =
+      module_index.GetImagesImageReplication.new;
+  final GetImagesResult = module_index.GetImagesResult.new;
+  final GetImagesResultArgs = module_index.GetImagesResult.new;
+  final GetInstanceBackupsArgs = module_index.GetInstanceBackupsArgs.new;
+  final GetInstanceBackupsAutomatic =
+      module_index.GetInstanceBackupsAutomatic.new;
+  final GetInstanceBackupsAutomaticArgs =
+      module_index.GetInstanceBackupsAutomatic.new;
+  final GetInstanceBackupsAutomaticDisk =
+      module_index.GetInstanceBackupsAutomaticDisk.new;
+  final GetInstanceBackupsAutomaticDiskArgs =
+      module_index.GetInstanceBackupsAutomaticDisk.new;
+  final GetInstanceBackupsCurrent = module_index.GetInstanceBackupsCurrent.new;
+  final GetInstanceBackupsCurrentArgs =
+      module_index.GetInstanceBackupsCurrent.new;
+  final GetInstanceBackupsCurrentDisk =
+      module_index.GetInstanceBackupsCurrentDisk.new;
+  final GetInstanceBackupsCurrentDiskArgs =
+      module_index.GetInstanceBackupsCurrentDisk.new;
+  final GetInstanceBackupsInProgress =
+      module_index.GetInstanceBackupsInProgress.new;
+  final GetInstanceBackupsInProgressArgs =
+      module_index.GetInstanceBackupsInProgress.new;
+  final GetInstanceBackupsInProgressDisk =
+      module_index.GetInstanceBackupsInProgressDisk.new;
+  final GetInstanceBackupsInProgressDiskArgs =
+      module_index.GetInstanceBackupsInProgressDisk.new;
+  final GetInstanceBackupsResult = module_index.GetInstanceBackupsResult.new;
+  final GetInstanceBackupsResultArgs =
+      module_index.GetInstanceBackupsResult.new;
+  final GetInstanceNetworkingArgs = module_index.GetInstanceNetworkingArgs.new;
+  final GetInstanceNetworkingIpv4 = module_index.GetInstanceNetworkingIpv4.new;
+  final GetInstanceNetworkingIpv4Args =
+      module_index.GetInstanceNetworkingIpv4.new;
+  final GetInstanceNetworkingIpv4Private =
+      module_index.GetInstanceNetworkingIpv4Private.new;
+  final GetInstanceNetworkingIpv4PrivateArgs =
+      module_index.GetInstanceNetworkingIpv4Private.new;
+  final GetInstanceNetworkingIpv4PrivateVpcNat11 =
+      module_index.GetInstanceNetworkingIpv4PrivateVpcNat11.new;
+  final GetInstanceNetworkingIpv4PrivateVpcNat11Args =
+      module_index.GetInstanceNetworkingIpv4PrivateVpcNat11.new;
+  final GetInstanceNetworkingIpv4Public =
+      module_index.GetInstanceNetworkingIpv4Public.new;
+  final GetInstanceNetworkingIpv4PublicArgs =
+      module_index.GetInstanceNetworkingIpv4Public.new;
+  final GetInstanceNetworkingIpv4PublicVpcNat11 =
+      module_index.GetInstanceNetworkingIpv4PublicVpcNat11.new;
+  final GetInstanceNetworkingIpv4PublicVpcNat11Args =
+      module_index.GetInstanceNetworkingIpv4PublicVpcNat11.new;
+  final GetInstanceNetworkingIpv4Reserved =
+      module_index.GetInstanceNetworkingIpv4Reserved.new;
+  final GetInstanceNetworkingIpv4ReservedArgs =
+      module_index.GetInstanceNetworkingIpv4Reserved.new;
+  final GetInstanceNetworkingIpv4ReservedVpcNat11 =
+      module_index.GetInstanceNetworkingIpv4ReservedVpcNat11.new;
+  final GetInstanceNetworkingIpv4ReservedVpcNat11Args =
+      module_index.GetInstanceNetworkingIpv4ReservedVpcNat11.new;
+  final GetInstanceNetworkingIpv4Shared =
+      module_index.GetInstanceNetworkingIpv4Shared.new;
+  final GetInstanceNetworkingIpv4SharedArgs =
+      module_index.GetInstanceNetworkingIpv4Shared.new;
+  final GetInstanceNetworkingIpv4SharedVpcNat11 =
+      module_index.GetInstanceNetworkingIpv4SharedVpcNat11.new;
+  final GetInstanceNetworkingIpv4SharedVpcNat11Args =
+      module_index.GetInstanceNetworkingIpv4SharedVpcNat11.new;
+  final GetInstanceNetworkingIpv4Vpc =
+      module_index.GetInstanceNetworkingIpv4Vpc.new;
+  final GetInstanceNetworkingIpv4VpcArgs =
+      module_index.GetInstanceNetworkingIpv4Vpc.new;
+  final GetInstanceNetworkingIpv6 = module_index.GetInstanceNetworkingIpv6.new;
+  final GetInstanceNetworkingIpv6Args =
+      module_index.GetInstanceNetworkingIpv6.new;
+  final GetInstanceNetworkingIpv6Global =
+      module_index.GetInstanceNetworkingIpv6Global.new;
+  final GetInstanceNetworkingIpv6GlobalArgs =
+      module_index.GetInstanceNetworkingIpv6Global.new;
+  final GetInstanceNetworkingIpv6LinkLocal =
+      module_index.GetInstanceNetworkingIpv6LinkLocal.new;
+  final GetInstanceNetworkingIpv6LinkLocalArgs =
+      module_index.GetInstanceNetworkingIpv6LinkLocal.new;
+  final GetInstanceNetworkingIpv6LinkLocalVpcNat11 =
+      module_index.GetInstanceNetworkingIpv6LinkLocalVpcNat11.new;
+  final GetInstanceNetworkingIpv6LinkLocalVpcNat11Args =
+      module_index.GetInstanceNetworkingIpv6LinkLocalVpcNat11.new;
+  final GetInstanceNetworkingIpv6Slaac =
+      module_index.GetInstanceNetworkingIpv6Slaac.new;
+  final GetInstanceNetworkingIpv6SlaacArgs =
+      module_index.GetInstanceNetworkingIpv6Slaac.new;
+  final GetInstanceNetworkingIpv6SlaacVpcNat11 =
+      module_index.GetInstanceNetworkingIpv6SlaacVpcNat11.new;
+  final GetInstanceNetworkingIpv6SlaacVpcNat11Args =
+      module_index.GetInstanceNetworkingIpv6SlaacVpcNat11.new;
+  final GetInstanceNetworkingResult =
+      module_index.GetInstanceNetworkingResult.new;
+  final GetInstanceNetworkingResultArgs =
+      module_index.GetInstanceNetworkingResult.new;
+  final GetInstanceTypeAddon = module_index.GetInstanceTypeAddon.new;
+  final GetInstanceTypeAddonArgs = module_index.GetInstanceTypeAddon.new;
+  final GetInstanceTypeAddonBackup =
+      module_index.GetInstanceTypeAddonBackup.new;
+  final GetInstanceTypeAddonBackupArgs =
+      module_index.GetInstanceTypeAddonBackup.new;
+  final GetInstanceTypeAddonBackupPrice =
+      module_index.GetInstanceTypeAddonBackupPrice.new;
+  final GetInstanceTypeAddonBackupPriceArgs =
+      module_index.GetInstanceTypeAddonBackupPrice.new;
+  final GetInstanceTypeAddonBackupRegionPrice =
+      module_index.GetInstanceTypeAddonBackupRegionPrice.new;
+  final GetInstanceTypeAddonBackupRegionPriceArgs =
+      module_index.GetInstanceTypeAddonBackupRegionPrice.new;
+  final GetInstanceTypeArgs = module_index.GetInstanceTypeArgs.new;
+  final GetInstanceTypePrice = module_index.GetInstanceTypePrice.new;
+  final GetInstanceTypePriceArgs = module_index.GetInstanceTypePrice.new;
+  final GetInstanceTypeRegionPrice =
+      module_index.GetInstanceTypeRegionPrice.new;
+  final GetInstanceTypeRegionPriceArgs =
+      module_index.GetInstanceTypeRegionPrice.new;
+  final GetInstanceTypeResult = module_index.GetInstanceTypeResult.new;
+  final GetInstanceTypeResultArgs = module_index.GetInstanceTypeResult.new;
+  final GetInstanceTypesArgs = module_index.GetInstanceTypesArgs.new;
+  final GetInstanceTypesFilter = module_index.GetInstanceTypesFilter.new;
+  final GetInstanceTypesFilterArgs = module_index.GetInstanceTypesFilter.new;
+  final GetInstanceTypesResult = module_index.GetInstanceTypesResult.new;
+  final GetInstanceTypesResultArgs = module_index.GetInstanceTypesResult.new;
+  final GetInstanceTypesType = module_index.GetInstanceTypesType.new;
+  final GetInstanceTypesTypeAddon = module_index.GetInstanceTypesTypeAddon.new;
+  final GetInstanceTypesTypeAddonArgs =
+      module_index.GetInstanceTypesTypeAddon.new;
+  final GetInstanceTypesTypeAddonBackup =
+      module_index.GetInstanceTypesTypeAddonBackup.new;
+  final GetInstanceTypesTypeAddonBackupArgs =
+      module_index.GetInstanceTypesTypeAddonBackup.new;
+  final GetInstanceTypesTypeAddonBackupPrice =
+      module_index.GetInstanceTypesTypeAddonBackupPrice.new;
+  final GetInstanceTypesTypeAddonBackupPriceArgs =
+      module_index.GetInstanceTypesTypeAddonBackupPrice.new;
+  final GetInstanceTypesTypeAddonBackupRegionPrice =
+      module_index.GetInstanceTypesTypeAddonBackupRegionPrice.new;
+  final GetInstanceTypesTypeAddonBackupRegionPriceArgs =
+      module_index.GetInstanceTypesTypeAddonBackupRegionPrice.new;
+  final GetInstanceTypesTypeArgs = module_index.GetInstanceTypesType.new;
+  final GetInstanceTypesTypePrice = module_index.GetInstanceTypesTypePrice.new;
+  final GetInstanceTypesTypePriceArgs =
+      module_index.GetInstanceTypesTypePrice.new;
+  final GetInstanceTypesTypeRegionPrice =
+      module_index.GetInstanceTypesTypeRegionPrice.new;
+  final GetInstanceTypesTypeRegionPriceArgs =
+      module_index.GetInstanceTypesTypeRegionPrice.new;
+  final GetInstancesArgs = module_index.GetInstancesArgs.new;
+  final GetInstancesFilter = module_index.GetInstancesFilter.new;
+  final GetInstancesFilterArgs = module_index.GetInstancesFilter.new;
+  final GetInstancesInstance = module_index.GetInstancesInstance.new;
+  final GetInstancesInstanceAlerts =
+      module_index.GetInstancesInstanceAlerts.new;
+  final GetInstancesInstanceAlertsArgs =
+      module_index.GetInstancesInstanceAlerts.new;
+  final GetInstancesInstanceArgs = module_index.GetInstancesInstance.new;
+  final GetInstancesInstanceBackup =
+      module_index.GetInstancesInstanceBackup.new;
+  final GetInstancesInstanceBackupArgs =
+      module_index.GetInstancesInstanceBackup.new;
+  final GetInstancesInstanceBackupSchedule =
+      module_index.GetInstancesInstanceBackupSchedule.new;
+  final GetInstancesInstanceBackupScheduleArgs =
+      module_index.GetInstancesInstanceBackupSchedule.new;
+  final GetInstancesInstanceConfig =
+      module_index.GetInstancesInstanceConfig.new;
+  final GetInstancesInstanceConfigArgs =
+      module_index.GetInstancesInstanceConfig.new;
+  final GetInstancesInstanceConfigDevice =
+      module_index.GetInstancesInstanceConfigDevice.new;
+  final GetInstancesInstanceConfigDeviceArgs =
+      module_index.GetInstancesInstanceConfigDevice.new;
+  final GetInstancesInstanceConfigDeviceSda =
+      module_index.GetInstancesInstanceConfigDeviceSda.new;
+  final GetInstancesInstanceConfigDeviceSdaArgs =
+      module_index.GetInstancesInstanceConfigDeviceSda.new;
+  final GetInstancesInstanceConfigDeviceSdb =
+      module_index.GetInstancesInstanceConfigDeviceSdb.new;
+  final GetInstancesInstanceConfigDeviceSdbArgs =
+      module_index.GetInstancesInstanceConfigDeviceSdb.new;
+  final GetInstancesInstanceConfigDeviceSdc =
+      module_index.GetInstancesInstanceConfigDeviceSdc.new;
+  final GetInstancesInstanceConfigDeviceSdcArgs =
+      module_index.GetInstancesInstanceConfigDeviceSdc.new;
+  final GetInstancesInstanceConfigDeviceSdd =
+      module_index.GetInstancesInstanceConfigDeviceSdd.new;
+  final GetInstancesInstanceConfigDeviceSddArgs =
+      module_index.GetInstancesInstanceConfigDeviceSdd.new;
+  final GetInstancesInstanceConfigDeviceSde =
+      module_index.GetInstancesInstanceConfigDeviceSde.new;
+  final GetInstancesInstanceConfigDeviceSdeArgs =
+      module_index.GetInstancesInstanceConfigDeviceSde.new;
+  final GetInstancesInstanceConfigDeviceSdf =
+      module_index.GetInstancesInstanceConfigDeviceSdf.new;
+  final GetInstancesInstanceConfigDeviceSdfArgs =
+      module_index.GetInstancesInstanceConfigDeviceSdf.new;
+  final GetInstancesInstanceConfigDeviceSdg =
+      module_index.GetInstancesInstanceConfigDeviceSdg.new;
+  final GetInstancesInstanceConfigDeviceSdgArgs =
+      module_index.GetInstancesInstanceConfigDeviceSdg.new;
+  final GetInstancesInstanceConfigDeviceSdh =
+      module_index.GetInstancesInstanceConfigDeviceSdh.new;
+  final GetInstancesInstanceConfigDeviceSdhArgs =
+      module_index.GetInstancesInstanceConfigDeviceSdh.new;
+  final GetInstancesInstanceConfigHelper =
+      module_index.GetInstancesInstanceConfigHelper.new;
+  final GetInstancesInstanceConfigHelperArgs =
+      module_index.GetInstancesInstanceConfigHelper.new;
+  final GetInstancesInstanceConfigInterface =
+      module_index.GetInstancesInstanceConfigInterface.new;
+  final GetInstancesInstanceConfigInterfaceArgs =
+      module_index.GetInstancesInstanceConfigInterface.new;
+  final GetInstancesInstanceConfigInterfaceIpv4 =
+      module_index.GetInstancesInstanceConfigInterfaceIpv4.new;
+  final GetInstancesInstanceConfigInterfaceIpv4Args =
+      module_index.GetInstancesInstanceConfigInterfaceIpv4.new;
+  final GetInstancesInstanceConfigInterfaceIpv6 =
+      module_index.GetInstancesInstanceConfigInterfaceIpv6.new;
+  final GetInstancesInstanceConfigInterfaceIpv6Args =
+      module_index.GetInstancesInstanceConfigInterfaceIpv6.new;
+  final GetInstancesInstanceConfigInterfaceIpv6Range =
+      module_index.GetInstancesInstanceConfigInterfaceIpv6Range.new;
+  final GetInstancesInstanceConfigInterfaceIpv6RangeArgs =
+      module_index.GetInstancesInstanceConfigInterfaceIpv6Range.new;
+  final GetInstancesInstanceConfigInterfaceIpv6Slaac =
+      module_index.GetInstancesInstanceConfigInterfaceIpv6Slaac.new;
+  final GetInstancesInstanceConfigInterfaceIpv6SlaacArgs =
+      module_index.GetInstancesInstanceConfigInterfaceIpv6Slaac.new;
+  final GetInstancesInstanceDisk = module_index.GetInstancesInstanceDisk.new;
+  final GetInstancesInstanceDiskArgs =
+      module_index.GetInstancesInstanceDisk.new;
+  final GetInstancesInstancePlacementGroup =
+      module_index.GetInstancesInstancePlacementGroup.new;
+  final GetInstancesInstancePlacementGroupArgs =
+      module_index.GetInstancesInstancePlacementGroup.new;
+  final GetInstancesInstanceSpec = module_index.GetInstancesInstanceSpec.new;
+  final GetInstancesInstanceSpecArgs =
+      module_index.GetInstancesInstanceSpec.new;
+  final GetInstancesResult = module_index.GetInstancesResult.new;
+  final GetInstancesResultArgs = module_index.GetInstancesResult.new;
+  final GetInterfaceArgs = module_index.GetInterfaceArgs.new;
+  final GetInterfaceDefaultRoute = module_index.GetInterfaceDefaultRoute.new;
+  final GetInterfaceDefaultRouteArgs =
+      module_index.GetInterfaceDefaultRoute.new;
+  final GetInterfacePublic = module_index.GetInterfacePublic.new;
+  final GetInterfacePublicArgs = module_index.GetInterfacePublic.new;
+  final GetInterfacePublicIpv4 = module_index.GetInterfacePublicIpv4.new;
+  final GetInterfacePublicIpv4Address =
+      module_index.GetInterfacePublicIpv4Address.new;
+  final GetInterfacePublicIpv4AddressArgs =
+      module_index.GetInterfacePublicIpv4Address.new;
+  final GetInterfacePublicIpv4Args = module_index.GetInterfacePublicIpv4.new;
+  final GetInterfacePublicIpv4Shared =
+      module_index.GetInterfacePublicIpv4Shared.new;
+  final GetInterfacePublicIpv4SharedArgs =
+      module_index.GetInterfacePublicIpv4Shared.new;
+  final GetInterfacePublicIpv6 = module_index.GetInterfacePublicIpv6.new;
+  final GetInterfacePublicIpv6Args = module_index.GetInterfacePublicIpv6.new;
+  final GetInterfacePublicIpv6Range =
+      module_index.GetInterfacePublicIpv6Range.new;
+  final GetInterfacePublicIpv6RangeArgs =
+      module_index.GetInterfacePublicIpv6Range.new;
+  final GetInterfacePublicIpv6Shared =
+      module_index.GetInterfacePublicIpv6Shared.new;
+  final GetInterfacePublicIpv6SharedArgs =
+      module_index.GetInterfacePublicIpv6Shared.new;
+  final GetInterfacePublicIpv6Slaac =
+      module_index.GetInterfacePublicIpv6Slaac.new;
+  final GetInterfacePublicIpv6SlaacArgs =
+      module_index.GetInterfacePublicIpv6Slaac.new;
+  final GetInterfaceResult = module_index.GetInterfaceResult.new;
+  final GetInterfaceResultArgs = module_index.GetInterfaceResult.new;
+  final GetInterfaceVlan = module_index.GetInterfaceVlan.new;
+  final GetInterfaceVlanArgs = module_index.GetInterfaceVlan.new;
+  final GetInterfaceVpc = module_index.GetInterfaceVpc.new;
+  final GetInterfaceVpcArgs = module_index.GetInterfaceVpc.new;
+  final GetInterfaceVpcIpv4 = module_index.GetInterfaceVpcIpv4.new;
+  final GetInterfaceVpcIpv4Address =
+      module_index.GetInterfaceVpcIpv4Address.new;
+  final GetInterfaceVpcIpv4AddressArgs =
+      module_index.GetInterfaceVpcIpv4Address.new;
+  final GetInterfaceVpcIpv4Args = module_index.GetInterfaceVpcIpv4.new;
+  final GetInterfaceVpcIpv4Range = module_index.GetInterfaceVpcIpv4Range.new;
+  final GetInterfaceVpcIpv4RangeArgs =
+      module_index.GetInterfaceVpcIpv4Range.new;
+  final GetInterfaceVpcIpv6 = module_index.GetInterfaceVpcIpv6.new;
+  final GetInterfaceVpcIpv6Args = module_index.GetInterfaceVpcIpv6.new;
+  final GetInterfaceVpcIpv6Range = module_index.GetInterfaceVpcIpv6Range.new;
+  final GetInterfaceVpcIpv6RangeArgs =
+      module_index.GetInterfaceVpcIpv6Range.new;
+  final GetInterfaceVpcIpv6Slaac = module_index.GetInterfaceVpcIpv6Slaac.new;
+  final GetInterfaceVpcIpv6SlaacArgs =
+      module_index.GetInterfaceVpcIpv6Slaac.new;
+  final GetIpv6RangeArgs = module_index.GetIpv6RangeArgs.new;
+  final GetIpv6RangeResult = module_index.GetIpv6RangeResult.new;
+  final GetIpv6RangeResultArgs = module_index.GetIpv6RangeResult.new;
+  final GetIpv6RangesArgs = module_index.GetIpv6RangesArgs.new;
+  final GetIpv6RangesFilter = module_index.GetIpv6RangesFilter.new;
+  final GetIpv6RangesFilterArgs = module_index.GetIpv6RangesFilter.new;
+  final GetIpv6RangesRange = module_index.GetIpv6RangesRange.new;
+  final GetIpv6RangesRangeArgs = module_index.GetIpv6RangesRange.new;
+  final GetIpv6RangesResult = module_index.GetIpv6RangesResult.new;
+  final GetIpv6RangesResultArgs = module_index.GetIpv6RangesResult.new;
+  final GetKernelArgs = module_index.GetKernelArgs.new;
+  final GetKernelResult = module_index.GetKernelResult.new;
+  final GetKernelResultArgs = module_index.GetKernelResult.new;
+  final GetKernelsArgs = module_index.GetKernelsArgs.new;
+  final GetKernelsFilter = module_index.GetKernelsFilter.new;
+  final GetKernelsFilterArgs = module_index.GetKernelsFilter.new;
+  final GetKernelsKernel = module_index.GetKernelsKernel.new;
+  final GetKernelsKernelArgs = module_index.GetKernelsKernel.new;
+  final GetKernelsResult = module_index.GetKernelsResult.new;
+  final GetKernelsResultArgs = module_index.GetKernelsResult.new;
+  final GetLinodeObjectStorageBucketArgs =
+      module_index.GetLinodeObjectStorageBucketArgs.new;
+  final GetLinodeObjectStorageBucketResult =
+      module_index.GetLinodeObjectStorageBucketResult.new;
+  final GetLinodeObjectStorageBucketResultArgs =
+      module_index.GetLinodeObjectStorageBucketResult.new;
+  final GetLkeClusterArgs = module_index.GetLkeClusterArgs.new;
+  final GetLkeClusterControlPlane = module_index.GetLkeClusterControlPlane.new;
+  final GetLkeClusterControlPlaneAcl =
+      module_index.GetLkeClusterControlPlaneAcl.new;
+  final GetLkeClusterControlPlaneAclAddress =
+      module_index.GetLkeClusterControlPlaneAclAddress.new;
+  final GetLkeClusterControlPlaneAclAddressArgs =
+      module_index.GetLkeClusterControlPlaneAclAddress.new;
+  final GetLkeClusterControlPlaneAclArgs =
+      module_index.GetLkeClusterControlPlaneAcl.new;
+  final GetLkeClusterControlPlaneArgs =
+      module_index.GetLkeClusterControlPlane.new;
+  final GetLkeClusterPool = module_index.GetLkeClusterPool.new;
+  final GetLkeClusterPoolArgs = module_index.GetLkeClusterPool.new;
+  final GetLkeClusterPoolAutoscaler =
+      module_index.GetLkeClusterPoolAutoscaler.new;
+  final GetLkeClusterPoolAutoscalerArgs =
+      module_index.GetLkeClusterPoolAutoscaler.new;
+  final GetLkeClusterPoolDisk = module_index.GetLkeClusterPoolDisk.new;
+  final GetLkeClusterPoolDiskArgs = module_index.GetLkeClusterPoolDisk.new;
+  final GetLkeClusterPoolNode = module_index.GetLkeClusterPoolNode.new;
+  final GetLkeClusterPoolNodeArgs = module_index.GetLkeClusterPoolNode.new;
+  final GetLkeClusterPoolTaint = module_index.GetLkeClusterPoolTaint.new;
+  final GetLkeClusterPoolTaintArgs = module_index.GetLkeClusterPoolTaint.new;
+  final GetLkeClusterResult = module_index.GetLkeClusterResult.new;
+  final GetLkeClusterResultArgs = module_index.GetLkeClusterResult.new;
+  final GetLkeClustersArgs = module_index.GetLkeClustersArgs.new;
+  final GetLkeClustersFilter = module_index.GetLkeClustersFilter.new;
+  final GetLkeClustersFilterArgs = module_index.GetLkeClustersFilter.new;
+  final GetLkeClustersLkeCluster = module_index.GetLkeClustersLkeCluster.new;
+  final GetLkeClustersLkeClusterArgs =
+      module_index.GetLkeClustersLkeCluster.new;
+  final GetLkeClustersLkeClusterControlPlane =
+      module_index.GetLkeClustersLkeClusterControlPlane.new;
+  final GetLkeClustersLkeClusterControlPlaneArgs =
+      module_index.GetLkeClustersLkeClusterControlPlane.new;
+  final GetLkeClustersResult = module_index.GetLkeClustersResult.new;
+  final GetLkeClustersResultArgs = module_index.GetLkeClustersResult.new;
+  final GetLkeTypesArgs = module_index.GetLkeTypesArgs.new;
+  final GetLkeTypesFilter = module_index.GetLkeTypesFilter.new;
+  final GetLkeTypesFilterArgs = module_index.GetLkeTypesFilter.new;
+  final GetLkeTypesResult = module_index.GetLkeTypesResult.new;
+  final GetLkeTypesResultArgs = module_index.GetLkeTypesResult.new;
+  final GetLkeTypesType = module_index.GetLkeTypesType.new;
+  final GetLkeTypesTypeArgs = module_index.GetLkeTypesType.new;
+  final GetLkeTypesTypePrice = module_index.GetLkeTypesTypePrice.new;
+  final GetLkeTypesTypePriceArgs = module_index.GetLkeTypesTypePrice.new;
+  final GetLkeTypesTypeRegionPrice =
+      module_index.GetLkeTypesTypeRegionPrice.new;
+  final GetLkeTypesTypeRegionPriceArgs =
+      module_index.GetLkeTypesTypeRegionPrice.new;
+  final GetLkeVersionArgs = module_index.GetLkeVersionArgs.new;
+  final GetLkeVersionResult = module_index.GetLkeVersionResult.new;
+  final GetLkeVersionResultArgs = module_index.GetLkeVersionResult.new;
+  final GetLkeVersionsArgs = module_index.GetLkeVersionsArgs.new;
+  final GetLkeVersionsResult = module_index.GetLkeVersionsResult.new;
+  final GetLkeVersionsResultArgs = module_index.GetLkeVersionsResult.new;
+  final GetLkeVersionsVersion = module_index.GetLkeVersionsVersion.new;
+  final GetLkeVersionsVersionArgs = module_index.GetLkeVersionsVersion.new;
+  final GetLockArgs = module_index.GetLockArgs.new;
+  final GetLockResult = module_index.GetLockResult.new;
+  final GetLockResultArgs = module_index.GetLockResult.new;
+  final GetLocksArgs = module_index.GetLocksArgs.new;
+  final GetLocksFilter = module_index.GetLocksFilter.new;
+  final GetLocksFilterArgs = module_index.GetLocksFilter.new;
+  final GetLocksLock = module_index.GetLocksLock.new;
+  final GetLocksLockArgs = module_index.GetLocksLock.new;
+  final GetLocksResult = module_index.GetLocksResult.new;
+  final GetLocksResultArgs = module_index.GetLocksResult.new;
+  final GetMaintenancePoliciesArgs =
+      module_index.GetMaintenancePoliciesArgs.new;
+  final GetMaintenancePoliciesFilter =
+      module_index.GetMaintenancePoliciesFilter.new;
+  final GetMaintenancePoliciesFilterArgs =
+      module_index.GetMaintenancePoliciesFilter.new;
+  final GetMaintenancePoliciesMaintenancePolicy =
+      module_index.GetMaintenancePoliciesMaintenancePolicy.new;
+  final GetMaintenancePoliciesMaintenancePolicyArgs =
+      module_index.GetMaintenancePoliciesMaintenancePolicy.new;
+  final GetMaintenancePoliciesResult =
+      module_index.GetMaintenancePoliciesResult.new;
+  final GetMaintenancePoliciesResultArgs =
+      module_index.GetMaintenancePoliciesResult.new;
+  final GetNbTypesArgs = module_index.GetNbTypesArgs.new;
+  final GetNbTypesFilter = module_index.GetNbTypesFilter.new;
+  final GetNbTypesFilterArgs = module_index.GetNbTypesFilter.new;
+  final GetNbTypesResult = module_index.GetNbTypesResult.new;
+  final GetNbTypesResultArgs = module_index.GetNbTypesResult.new;
+  final GetNbTypesType = module_index.GetNbTypesType.new;
+  final GetNbTypesTypeArgs = module_index.GetNbTypesType.new;
+  final GetNbTypesTypePrice = module_index.GetNbTypesTypePrice.new;
+  final GetNbTypesTypePriceArgs = module_index.GetNbTypesTypePrice.new;
+  final GetNbTypesTypeRegionPrice = module_index.GetNbTypesTypeRegionPrice.new;
+  final GetNbTypesTypeRegionPriceArgs =
+      module_index.GetNbTypesTypeRegionPrice.new;
+  final GetNetworkTransferPricesArgs =
+      module_index.GetNetworkTransferPricesArgs.new;
+  final GetNetworkTransferPricesFilter =
+      module_index.GetNetworkTransferPricesFilter.new;
+  final GetNetworkTransferPricesFilterArgs =
+      module_index.GetNetworkTransferPricesFilter.new;
+  final GetNetworkTransferPricesResult =
+      module_index.GetNetworkTransferPricesResult.new;
+  final GetNetworkTransferPricesResultArgs =
+      module_index.GetNetworkTransferPricesResult.new;
+  final GetNetworkTransferPricesType =
+      module_index.GetNetworkTransferPricesType.new;
+  final GetNetworkTransferPricesTypeArgs =
+      module_index.GetNetworkTransferPricesType.new;
+  final GetNetworkTransferPricesTypePrice =
+      module_index.GetNetworkTransferPricesTypePrice.new;
+  final GetNetworkTransferPricesTypePriceArgs =
+      module_index.GetNetworkTransferPricesTypePrice.new;
+  final GetNetworkTransferPricesTypeRegionPrice =
+      module_index.GetNetworkTransferPricesTypeRegionPrice.new;
+  final GetNetworkTransferPricesTypeRegionPriceArgs =
+      module_index.GetNetworkTransferPricesTypeRegionPrice.new;
+  final GetNetworkingIpArgs = module_index.GetNetworkingIpArgs.new;
+  final GetNetworkingIpResult = module_index.GetNetworkingIpResult.new;
+  final GetNetworkingIpResultArgs = module_index.GetNetworkingIpResult.new;
+  final GetNetworkingIpVpcNat11 = module_index.GetNetworkingIpVpcNat11.new;
+  final GetNetworkingIpVpcNat11Args = module_index.GetNetworkingIpVpcNat11.new;
+  final GetNetworkingIpsArgs = module_index.GetNetworkingIpsArgs.new;
+  final GetNetworkingIpsFilter = module_index.GetNetworkingIpsFilter.new;
+  final GetNetworkingIpsFilterArgs = module_index.GetNetworkingIpsFilter.new;
+  final GetNetworkingIpsIpAddress = module_index.GetNetworkingIpsIpAddress.new;
+  final GetNetworkingIpsIpAddressArgs =
+      module_index.GetNetworkingIpsIpAddress.new;
+  final GetNetworkingIpsIpAddressVpcNat11 =
+      module_index.GetNetworkingIpsIpAddressVpcNat11.new;
+  final GetNetworkingIpsIpAddressVpcNat11Args =
+      module_index.GetNetworkingIpsIpAddressVpcNat11.new;
+  final GetNetworkingIpsResult = module_index.GetNetworkingIpsResult.new;
+  final GetNetworkingIpsResultArgs = module_index.GetNetworkingIpsResult.new;
+  final GetNodeBalancerArgs = module_index.GetNodeBalancerArgs.new;
+  final GetNodeBalancerConfigArgs = module_index.GetNodeBalancerConfigArgs.new;
+  final GetNodeBalancerConfigNodeStatus =
+      module_index.GetNodeBalancerConfigNodeStatus.new;
+  final GetNodeBalancerConfigNodeStatusArgs =
+      module_index.GetNodeBalancerConfigNodeStatus.new;
+  final GetNodeBalancerConfigResult =
+      module_index.GetNodeBalancerConfigResult.new;
+  final GetNodeBalancerConfigResultArgs =
+      module_index.GetNodeBalancerConfigResult.new;
+  final GetNodeBalancerFirewall = module_index.GetNodeBalancerFirewall.new;
+  final GetNodeBalancerFirewallArgs = module_index.GetNodeBalancerFirewall.new;
+  final GetNodeBalancerFirewallInbound =
+      module_index.GetNodeBalancerFirewallInbound.new;
+  final GetNodeBalancerFirewallInboundArgs =
+      module_index.GetNodeBalancerFirewallInbound.new;
+  final GetNodeBalancerFirewallOutbound =
+      module_index.GetNodeBalancerFirewallOutbound.new;
+  final GetNodeBalancerFirewallOutboundArgs =
+      module_index.GetNodeBalancerFirewallOutbound.new;
+  final GetNodeBalancerNodeArgs = module_index.GetNodeBalancerNodeArgs.new;
+  final GetNodeBalancerNodeResult = module_index.GetNodeBalancerNodeResult.new;
+  final GetNodeBalancerNodeResultArgs =
+      module_index.GetNodeBalancerNodeResult.new;
+  final GetNodeBalancerResult = module_index.GetNodeBalancerResult.new;
+  final GetNodeBalancerResultArgs = module_index.GetNodeBalancerResult.new;
+  final GetNodeBalancerTransfer = module_index.GetNodeBalancerTransfer.new;
+  final GetNodeBalancerTransferArgs = module_index.GetNodeBalancerTransfer.new;
+  final GetNodeBalancerVpc = module_index.GetNodeBalancerVpc.new;
+  final GetNodeBalancerVpcArgs = module_index.GetNodeBalancerVpc.new;
+  final GetNodebalancerConfigsArgs =
+      module_index.GetNodebalancerConfigsArgs.new;
+  final GetNodebalancerConfigsFilter =
+      module_index.GetNodebalancerConfigsFilter.new;
+  final GetNodebalancerConfigsFilterArgs =
+      module_index.GetNodebalancerConfigsFilter.new;
+  final GetNodebalancerConfigsNodebalancerConfig =
+      module_index.GetNodebalancerConfigsNodebalancerConfig.new;
+  final GetNodebalancerConfigsNodebalancerConfigArgs =
+      module_index.GetNodebalancerConfigsNodebalancerConfig.new;
+  final GetNodebalancerConfigsNodebalancerConfigNodeStatus =
+      module_index.GetNodebalancerConfigsNodebalancerConfigNodeStatus.new;
+  final GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs =
+      module_index.GetNodebalancerConfigsNodebalancerConfigNodeStatus.new;
+  final GetNodebalancerConfigsResult =
+      module_index.GetNodebalancerConfigsResult.new;
+  final GetNodebalancerConfigsResultArgs =
+      module_index.GetNodebalancerConfigsResult.new;
+  final GetNodebalancerVpcArgs = module_index.GetNodebalancerVpcArgs.new;
+  final GetNodebalancerVpcResult = module_index.GetNodebalancerVpcResult.new;
+  final GetNodebalancerVpcResultArgs =
+      module_index.GetNodebalancerVpcResult.new;
+  final GetNodebalancerVpcsArgs = module_index.GetNodebalancerVpcsArgs.new;
+  final GetNodebalancerVpcsFilter = module_index.GetNodebalancerVpcsFilter.new;
+  final GetNodebalancerVpcsFilterArgs =
+      module_index.GetNodebalancerVpcsFilter.new;
+  final GetNodebalancerVpcsResult = module_index.GetNodebalancerVpcsResult.new;
+  final GetNodebalancerVpcsResultArgs =
+      module_index.GetNodebalancerVpcsResult.new;
+  final GetNodebalancerVpcsVpcConfig =
+      module_index.GetNodebalancerVpcsVpcConfig.new;
+  final GetNodebalancerVpcsVpcConfigArgs =
+      module_index.GetNodebalancerVpcsVpcConfig.new;
+  final GetNodebalancersArgs = module_index.GetNodebalancersArgs.new;
+  final GetNodebalancersFilter = module_index.GetNodebalancersFilter.new;
+  final GetNodebalancersFilterArgs = module_index.GetNodebalancersFilter.new;
+  final GetNodebalancersNodebalancer =
+      module_index.GetNodebalancersNodebalancer.new;
+  final GetNodebalancersNodebalancerArgs =
+      module_index.GetNodebalancersNodebalancer.new;
+  final GetNodebalancersNodebalancerTransfer =
+      module_index.GetNodebalancersNodebalancerTransfer.new;
+  final GetNodebalancersNodebalancerTransferArgs =
+      module_index.GetNodebalancersNodebalancerTransfer.new;
+  final GetNodebalancersResult = module_index.GetNodebalancersResult.new;
+  final GetNodebalancersResultArgs = module_index.GetNodebalancersResult.new;
+  final GetObjectStorageClusterArgs =
+      module_index.GetObjectStorageClusterArgs.new;
+  final GetObjectStorageClusterResult =
+      module_index.GetObjectStorageClusterResult.new;
+  final GetObjectStorageClusterResultArgs =
+      module_index.GetObjectStorageClusterResult.new;
+  final GetObjectStorageEndpointsArgs =
+      module_index.GetObjectStorageEndpointsArgs.new;
+  final GetObjectStorageEndpointsEndpoint =
+      module_index.GetObjectStorageEndpointsEndpoint.new;
+  final GetObjectStorageEndpointsEndpointArgs =
+      module_index.GetObjectStorageEndpointsEndpoint.new;
+  final GetObjectStorageEndpointsFilter =
+      module_index.GetObjectStorageEndpointsFilter.new;
+  final GetObjectStorageEndpointsFilterArgs =
+      module_index.GetObjectStorageEndpointsFilter.new;
+  final GetObjectStorageEndpointsResult =
+      module_index.GetObjectStorageEndpointsResult.new;
+  final GetObjectStorageEndpointsResultArgs =
+      module_index.GetObjectStorageEndpointsResult.new;
+  final GetObjectStorageQuotaArgs = module_index.GetObjectStorageQuotaArgs.new;
+  final GetObjectStorageQuotaQuotaUsage =
+      module_index.GetObjectStorageQuotaQuotaUsage.new;
+  final GetObjectStorageQuotaQuotaUsageArgs =
+      module_index.GetObjectStorageQuotaQuotaUsage.new;
+  final GetObjectStorageQuotaResult =
+      module_index.GetObjectStorageQuotaResult.new;
+  final GetObjectStorageQuotaResultArgs =
+      module_index.GetObjectStorageQuotaResult.new;
+  final GetObjectStorageQuotasArgs =
+      module_index.GetObjectStorageQuotasArgs.new;
+  final GetObjectStorageQuotasFilter =
+      module_index.GetObjectStorageQuotasFilter.new;
+  final GetObjectStorageQuotasFilterArgs =
+      module_index.GetObjectStorageQuotasFilter.new;
+  final GetObjectStorageQuotasQuota =
+      module_index.GetObjectStorageQuotasQuota.new;
+  final GetObjectStorageQuotasQuotaArgs =
+      module_index.GetObjectStorageQuotasQuota.new;
+  final GetObjectStorageQuotasResult =
+      module_index.GetObjectStorageQuotasResult.new;
+  final GetObjectStorageQuotasResultArgs =
+      module_index.GetObjectStorageQuotasResult.new;
+  final GetPlacementGroupArgs = module_index.GetPlacementGroupArgs.new;
+  final GetPlacementGroupMember = module_index.GetPlacementGroupMember.new;
+  final GetPlacementGroupMemberArgs = module_index.GetPlacementGroupMember.new;
+  final GetPlacementGroupMigrations =
+      module_index.GetPlacementGroupMigrations.new;
+  final GetPlacementGroupMigrationsArgs =
+      module_index.GetPlacementGroupMigrations.new;
+  final GetPlacementGroupMigrationsInbound =
+      module_index.GetPlacementGroupMigrationsInbound.new;
+  final GetPlacementGroupMigrationsInboundArgs =
+      module_index.GetPlacementGroupMigrationsInbound.new;
+  final GetPlacementGroupMigrationsOutbound =
+      module_index.GetPlacementGroupMigrationsOutbound.new;
+  final GetPlacementGroupMigrationsOutboundArgs =
+      module_index.GetPlacementGroupMigrationsOutbound.new;
+  final GetPlacementGroupResult = module_index.GetPlacementGroupResult.new;
+  final GetPlacementGroupResultArgs = module_index.GetPlacementGroupResult.new;
+  final GetPlacementGroupsArgs = module_index.GetPlacementGroupsArgs.new;
+  final GetPlacementGroupsFilter = module_index.GetPlacementGroupsFilter.new;
+  final GetPlacementGroupsFilterArgs =
+      module_index.GetPlacementGroupsFilter.new;
+  final GetPlacementGroupsPlacementGroup =
+      module_index.GetPlacementGroupsPlacementGroup.new;
+  final GetPlacementGroupsPlacementGroupArgs =
+      module_index.GetPlacementGroupsPlacementGroup.new;
+  final GetPlacementGroupsPlacementGroupMember =
+      module_index.GetPlacementGroupsPlacementGroupMember.new;
+  final GetPlacementGroupsPlacementGroupMemberArgs =
+      module_index.GetPlacementGroupsPlacementGroupMember.new;
+  final GetPlacementGroupsPlacementGroupMigrations =
+      module_index.GetPlacementGroupsPlacementGroupMigrations.new;
+  final GetPlacementGroupsPlacementGroupMigrationsArgs =
+      module_index.GetPlacementGroupsPlacementGroupMigrations.new;
+  final GetPlacementGroupsPlacementGroupMigrationsInbound =
+      module_index.GetPlacementGroupsPlacementGroupMigrationsInbound.new;
+  final GetPlacementGroupsPlacementGroupMigrationsInboundArgs =
+      module_index.GetPlacementGroupsPlacementGroupMigrationsInbound.new;
+  final GetPlacementGroupsPlacementGroupMigrationsOutbound =
+      module_index.GetPlacementGroupsPlacementGroupMigrationsOutbound.new;
+  final GetPlacementGroupsPlacementGroupMigrationsOutboundArgs =
+      module_index.GetPlacementGroupsPlacementGroupMigrationsOutbound.new;
+  final GetPlacementGroupsResult = module_index.GetPlacementGroupsResult.new;
+  final GetPlacementGroupsResultArgs =
+      module_index.GetPlacementGroupsResult.new;
+  final GetProducerImageShareGroupArgs =
+      module_index.GetProducerImageShareGroupArgs.new;
+  final GetProducerImageShareGroupImageSharesArgs =
+      module_index.GetProducerImageShareGroupImageSharesArgs.new;
+  final GetProducerImageShareGroupImageSharesFilter =
+      module_index.GetProducerImageShareGroupImageSharesFilter.new;
+  final GetProducerImageShareGroupImageSharesFilterArgs =
+      module_index.GetProducerImageShareGroupImageSharesFilter.new;
+  final GetProducerImageShareGroupImageSharesImageShare =
+      module_index.GetProducerImageShareGroupImageSharesImageShare.new;
+  final GetProducerImageShareGroupImageSharesImageShareArgs =
+      module_index.GetProducerImageShareGroupImageSharesImageShare.new;
+  final GetProducerImageShareGroupImageSharesImageShareImageSharing =
+      module_index
+          .GetProducerImageShareGroupImageSharesImageShareImageSharing
+          .new;
+  final GetProducerImageShareGroupImageSharesImageShareImageSharingArgs =
+      module_index
+          .GetProducerImageShareGroupImageSharesImageShareImageSharing
+          .new;
+  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy =
+      module_index
+          .GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy
+          .new;
+  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs =
+      module_index
+          .GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy
+          .new;
+  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith =
+      module_index
+          .GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith
+          .new;
+  final GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs =
+      module_index
+          .GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith
+          .new;
+  final GetProducerImageShareGroupImageSharesResult =
+      module_index.GetProducerImageShareGroupImageSharesResult.new;
+  final GetProducerImageShareGroupImageSharesResultArgs =
+      module_index.GetProducerImageShareGroupImageSharesResult.new;
+  final GetProducerImageShareGroupMemberArgs =
+      module_index.GetProducerImageShareGroupMemberArgs.new;
+  final GetProducerImageShareGroupMemberResult =
+      module_index.GetProducerImageShareGroupMemberResult.new;
+  final GetProducerImageShareGroupMemberResultArgs =
+      module_index.GetProducerImageShareGroupMemberResult.new;
+  final GetProducerImageShareGroupMembersArgs =
+      module_index.GetProducerImageShareGroupMembersArgs.new;
+  final GetProducerImageShareGroupMembersFilter =
+      module_index.GetProducerImageShareGroupMembersFilter.new;
+  final GetProducerImageShareGroupMembersFilterArgs =
+      module_index.GetProducerImageShareGroupMembersFilter.new;
+  final GetProducerImageShareGroupMembersMember =
+      module_index.GetProducerImageShareGroupMembersMember.new;
+  final GetProducerImageShareGroupMembersMemberArgs =
+      module_index.GetProducerImageShareGroupMembersMember.new;
+  final GetProducerImageShareGroupMembersResult =
+      module_index.GetProducerImageShareGroupMembersResult.new;
+  final GetProducerImageShareGroupMembersResultArgs =
+      module_index.GetProducerImageShareGroupMembersResult.new;
+  final GetProducerImageShareGroupResult =
+      module_index.GetProducerImageShareGroupResult.new;
+  final GetProducerImageShareGroupResultArgs =
+      module_index.GetProducerImageShareGroupResult.new;
+  final GetProducerImageShareGroupsArgs =
+      module_index.GetProducerImageShareGroupsArgs.new;
+  final GetProducerImageShareGroupsFilter =
+      module_index.GetProducerImageShareGroupsFilter.new;
+  final GetProducerImageShareGroupsFilterArgs =
+      module_index.GetProducerImageShareGroupsFilter.new;
+  final GetProducerImageShareGroupsImageShareGroup =
+      module_index.GetProducerImageShareGroupsImageShareGroup.new;
+  final GetProducerImageShareGroupsImageShareGroupArgs =
+      module_index.GetProducerImageShareGroupsImageShareGroup.new;
+  final GetProducerImageShareGroupsResult =
+      module_index.GetProducerImageShareGroupsResult.new;
+  final GetProducerImageShareGroupsResultArgs =
+      module_index.GetProducerImageShareGroupsResult.new;
+  final GetProfileReferral = module_index.GetProfileReferral.new;
+  final GetProfileReferralArgs = module_index.GetProfileReferral.new;
+  final GetProfileResult = module_index.GetProfileResult.new;
+  final GetProfileResultArgs = module_index.GetProfileResult.new;
+  final GetRegionArgs = module_index.GetRegionArgs.new;
+  final GetRegionMonitors = module_index.GetRegionMonitors.new;
+  final GetRegionMonitorsArgs = module_index.GetRegionMonitors.new;
+  final GetRegionPlacementGroupLimit =
+      module_index.GetRegionPlacementGroupLimit.new;
+  final GetRegionPlacementGroupLimitArgs =
+      module_index.GetRegionPlacementGroupLimit.new;
+  final GetRegionResolver = module_index.GetRegionResolver.new;
+  final GetRegionResolverArgs = module_index.GetRegionResolver.new;
+  final GetRegionResult = module_index.GetRegionResult.new;
+  final GetRegionResultArgs = module_index.GetRegionResult.new;
+  final GetRegionsArgs = module_index.GetRegionsArgs.new;
+  final GetRegionsFilter = module_index.GetRegionsFilter.new;
+  final GetRegionsFilterArgs = module_index.GetRegionsFilter.new;
+  final GetRegionsRegion = module_index.GetRegionsRegion.new;
+  final GetRegionsRegionArgs = module_index.GetRegionsRegion.new;
+  final GetRegionsRegionMonitors = module_index.GetRegionsRegionMonitors.new;
+  final GetRegionsRegionMonitorsArgs =
+      module_index.GetRegionsRegionMonitors.new;
+  final GetRegionsRegionPlacementGroupLimit =
+      module_index.GetRegionsRegionPlacementGroupLimit.new;
+  final GetRegionsRegionPlacementGroupLimitArgs =
+      module_index.GetRegionsRegionPlacementGroupLimit.new;
+  final GetRegionsRegionResolver = module_index.GetRegionsRegionResolver.new;
+  final GetRegionsRegionResolverArgs =
+      module_index.GetRegionsRegionResolver.new;
+  final GetRegionsResult = module_index.GetRegionsResult.new;
+  final GetRegionsResultArgs = module_index.GetRegionsResult.new;
+  final GetSshKeyArgs = module_index.GetSshKeyArgs.new;
+  final GetSshKeyResult = module_index.GetSshKeyResult.new;
+  final GetSshKeyResultArgs = module_index.GetSshKeyResult.new;
+  final GetSshkeysArgs = module_index.GetSshkeysArgs.new;
+  final GetSshkeysFilter = module_index.GetSshkeysFilter.new;
+  final GetSshkeysFilterArgs = module_index.GetSshkeysFilter.new;
+  final GetSshkeysResult = module_index.GetSshkeysResult.new;
+  final GetSshkeysResultArgs = module_index.GetSshkeysResult.new;
+  final GetSshkeysSshkey = module_index.GetSshkeysSshkey.new;
+  final GetSshkeysSshkeyArgs = module_index.GetSshkeysSshkey.new;
+  final GetStackScriptArgs = module_index.GetStackScriptArgs.new;
+  final GetStackScriptResult = module_index.GetStackScriptResult.new;
+  final GetStackScriptResultArgs = module_index.GetStackScriptResult.new;
+  final GetStackScriptUserDefinedField =
+      module_index.GetStackScriptUserDefinedField.new;
+  final GetStackScriptUserDefinedFieldArgs =
+      module_index.GetStackScriptUserDefinedField.new;
+  final GetStackScriptsArgs = module_index.GetStackScriptsArgs.new;
+  final GetStackScriptsFilter = module_index.GetStackScriptsFilter.new;
+  final GetStackScriptsFilterArgs = module_index.GetStackScriptsFilter.new;
+  final GetStackScriptsResult = module_index.GetStackScriptsResult.new;
+  final GetStackScriptsResultArgs = module_index.GetStackScriptsResult.new;
+  final GetStackScriptsStackscript =
+      module_index.GetStackScriptsStackscript.new;
+  final GetStackScriptsStackscriptArgs =
+      module_index.GetStackScriptsStackscript.new;
+  final GetStackScriptsStackscriptUserDefinedField =
+      module_index.GetStackScriptsStackscriptUserDefinedField.new;
+  final GetStackScriptsStackscriptUserDefinedFieldArgs =
+      module_index.GetStackScriptsStackscriptUserDefinedField.new;
+  final GetUserArgs = module_index.GetUserArgs.new;
+  final GetUserDatabaseGrant = module_index.GetUserDatabaseGrant.new;
+  final GetUserDatabaseGrantArgs = module_index.GetUserDatabaseGrant.new;
+  final GetUserDomainGrant = module_index.GetUserDomainGrant.new;
+  final GetUserDomainGrantArgs = module_index.GetUserDomainGrant.new;
+  final GetUserFirewallGrant = module_index.GetUserFirewallGrant.new;
+  final GetUserFirewallGrantArgs = module_index.GetUserFirewallGrant.new;
+  final GetUserGlobalGrant = module_index.GetUserGlobalGrant.new;
+  final GetUserGlobalGrantArgs = module_index.GetUserGlobalGrant.new;
+  final GetUserImageGrant = module_index.GetUserImageGrant.new;
+  final GetUserImageGrantArgs = module_index.GetUserImageGrant.new;
+  final GetUserLinodeGrant = module_index.GetUserLinodeGrant.new;
+  final GetUserLinodeGrantArgs = module_index.GetUserLinodeGrant.new;
+  final GetUserLongviewGrant = module_index.GetUserLongviewGrant.new;
+  final GetUserLongviewGrantArgs = module_index.GetUserLongviewGrant.new;
+  final GetUserNodebalancerGrant = module_index.GetUserNodebalancerGrant.new;
+  final GetUserNodebalancerGrantArgs =
+      module_index.GetUserNodebalancerGrant.new;
+  final GetUserResult = module_index.GetUserResult.new;
+  final GetUserResultArgs = module_index.GetUserResult.new;
+  final GetUserStackscriptGrant = module_index.GetUserStackscriptGrant.new;
+  final GetUserStackscriptGrantArgs = module_index.GetUserStackscriptGrant.new;
+  final GetUserVolumeGrant = module_index.GetUserVolumeGrant.new;
+  final GetUserVolumeGrantArgs = module_index.GetUserVolumeGrant.new;
+  final GetUserVpcGrant = module_index.GetUserVpcGrant.new;
+  final GetUserVpcGrantArgs = module_index.GetUserVpcGrant.new;
+  final GetUsersArgs = module_index.GetUsersArgs.new;
+  final GetUsersFilter = module_index.GetUsersFilter.new;
+  final GetUsersFilterArgs = module_index.GetUsersFilter.new;
+  final GetUsersResult = module_index.GetUsersResult.new;
+  final GetUsersResultArgs = module_index.GetUsersResult.new;
+  final GetUsersUser = module_index.GetUsersUser.new;
+  final GetUsersUserArgs = module_index.GetUsersUser.new;
+  final GetUsersUserDatabaseGrant = module_index.GetUsersUserDatabaseGrant.new;
+  final GetUsersUserDatabaseGrantArgs =
+      module_index.GetUsersUserDatabaseGrant.new;
+  final GetUsersUserDomainGrant = module_index.GetUsersUserDomainGrant.new;
+  final GetUsersUserDomainGrantArgs = module_index.GetUsersUserDomainGrant.new;
+  final GetUsersUserFirewallGrant = module_index.GetUsersUserFirewallGrant.new;
+  final GetUsersUserFirewallGrantArgs =
+      module_index.GetUsersUserFirewallGrant.new;
+  final GetUsersUserGlobalGrant = module_index.GetUsersUserGlobalGrant.new;
+  final GetUsersUserGlobalGrantArgs = module_index.GetUsersUserGlobalGrant.new;
+  final GetUsersUserImageGrant = module_index.GetUsersUserImageGrant.new;
+  final GetUsersUserImageGrantArgs = module_index.GetUsersUserImageGrant.new;
+  final GetUsersUserLinodeGrant = module_index.GetUsersUserLinodeGrant.new;
+  final GetUsersUserLinodeGrantArgs = module_index.GetUsersUserLinodeGrant.new;
+  final GetUsersUserLongviewGrant = module_index.GetUsersUserLongviewGrant.new;
+  final GetUsersUserLongviewGrantArgs =
+      module_index.GetUsersUserLongviewGrant.new;
+  final GetUsersUserNodebalancerGrant =
+      module_index.GetUsersUserNodebalancerGrant.new;
+  final GetUsersUserNodebalancerGrantArgs =
+      module_index.GetUsersUserNodebalancerGrant.new;
+  final GetUsersUserStackscriptGrant =
+      module_index.GetUsersUserStackscriptGrant.new;
+  final GetUsersUserStackscriptGrantArgs =
+      module_index.GetUsersUserStackscriptGrant.new;
+  final GetUsersUserVolumeGrant = module_index.GetUsersUserVolumeGrant.new;
+  final GetUsersUserVolumeGrantArgs = module_index.GetUsersUserVolumeGrant.new;
+  final GetUsersUserVpcGrant = module_index.GetUsersUserVpcGrant.new;
+  final GetUsersUserVpcGrantArgs = module_index.GetUsersUserVpcGrant.new;
+  final GetVlansArgs = module_index.GetVlansArgs.new;
+  final GetVlansFilter = module_index.GetVlansFilter.new;
+  final GetVlansFilterArgs = module_index.GetVlansFilter.new;
+  final GetVlansResult = module_index.GetVlansResult.new;
+  final GetVlansResultArgs = module_index.GetVlansResult.new;
+  final GetVlansVlan = module_index.GetVlansVlan.new;
+  final GetVlansVlanArgs = module_index.GetVlansVlan.new;
+  final GetVolumeArgs = module_index.GetVolumeArgs.new;
+  final GetVolumeResult = module_index.GetVolumeResult.new;
+  final GetVolumeResultArgs = module_index.GetVolumeResult.new;
+  final GetVolumeTypesArgs = module_index.GetVolumeTypesArgs.new;
+  final GetVolumeTypesFilter = module_index.GetVolumeTypesFilter.new;
+  final GetVolumeTypesFilterArgs = module_index.GetVolumeTypesFilter.new;
+  final GetVolumeTypesResult = module_index.GetVolumeTypesResult.new;
+  final GetVolumeTypesResultArgs = module_index.GetVolumeTypesResult.new;
+  final GetVolumeTypesType = module_index.GetVolumeTypesType.new;
+  final GetVolumeTypesTypeArgs = module_index.GetVolumeTypesType.new;
+  final GetVolumeTypesTypePrice = module_index.GetVolumeTypesTypePrice.new;
+  final GetVolumeTypesTypePriceArgs = module_index.GetVolumeTypesTypePrice.new;
+  final GetVolumeTypesTypeRegionPrice =
+      module_index.GetVolumeTypesTypeRegionPrice.new;
+  final GetVolumeTypesTypeRegionPriceArgs =
+      module_index.GetVolumeTypesTypeRegionPrice.new;
+  final GetVolumesArgs = module_index.GetVolumesArgs.new;
+  final GetVolumesFilter = module_index.GetVolumesFilter.new;
+  final GetVolumesFilterArgs = module_index.GetVolumesFilter.new;
+  final GetVolumesResult = module_index.GetVolumesResult.new;
+  final GetVolumesResultArgs = module_index.GetVolumesResult.new;
+  final GetVolumesVolume = module_index.GetVolumesVolume.new;
+  final GetVolumesVolumeArgs = module_index.GetVolumesVolume.new;
+  final GetVpcArgs = module_index.GetVpcArgs.new;
+  final GetVpcIpsArgs = module_index.GetVpcIpsArgs.new;
+  final GetVpcIpsFilter = module_index.GetVpcIpsFilter.new;
+  final GetVpcIpsFilterArgs = module_index.GetVpcIpsFilter.new;
+  final GetVpcIpsResult = module_index.GetVpcIpsResult.new;
+  final GetVpcIpsResultArgs = module_index.GetVpcIpsResult.new;
+  final GetVpcIpsVpcIp = module_index.GetVpcIpsVpcIp.new;
+  final GetVpcIpsVpcIpArgs = module_index.GetVpcIpsVpcIp.new;
+  final GetVpcIpsVpcIpIpv6Address = module_index.GetVpcIpsVpcIpIpv6Address.new;
+  final GetVpcIpsVpcIpIpv6AddressArgs =
+      module_index.GetVpcIpsVpcIpIpv6Address.new;
+  final GetVpcIpv6 = module_index.GetVpcIpv6.new;
+  final GetVpcIpv6Args = module_index.GetVpcIpv6.new;
+  final GetVpcResult = module_index.GetVpcResult.new;
+  final GetVpcResultArgs = module_index.GetVpcResult.new;
+  final GetVpcSubnetArgs = module_index.GetVpcSubnetArgs.new;
+  final GetVpcSubnetIpv6 = module_index.GetVpcSubnetIpv6.new;
+  final GetVpcSubnetIpv6Args = module_index.GetVpcSubnetIpv6.new;
+  final GetVpcSubnetLinode = module_index.GetVpcSubnetLinode.new;
+  final GetVpcSubnetLinodeArgs = module_index.GetVpcSubnetLinode.new;
+  final GetVpcSubnetLinodeInterface =
+      module_index.GetVpcSubnetLinodeInterface.new;
+  final GetVpcSubnetLinodeInterfaceArgs =
+      module_index.GetVpcSubnetLinodeInterface.new;
+  final GetVpcSubnetResult = module_index.GetVpcSubnetResult.new;
+  final GetVpcSubnetResultArgs = module_index.GetVpcSubnetResult.new;
+  final GetVpcSubnetsArgs = module_index.GetVpcSubnetsArgs.new;
+  final GetVpcSubnetsFilter = module_index.GetVpcSubnetsFilter.new;
+  final GetVpcSubnetsFilterArgs = module_index.GetVpcSubnetsFilter.new;
+  final GetVpcSubnetsResult = module_index.GetVpcSubnetsResult.new;
+  final GetVpcSubnetsResultArgs = module_index.GetVpcSubnetsResult.new;
+  final GetVpcSubnetsVpcSubnet = module_index.GetVpcSubnetsVpcSubnet.new;
+  final GetVpcSubnetsVpcSubnetArgs = module_index.GetVpcSubnetsVpcSubnet.new;
+  final GetVpcSubnetsVpcSubnetIpv6 =
+      module_index.GetVpcSubnetsVpcSubnetIpv6.new;
+  final GetVpcSubnetsVpcSubnetIpv6Args =
+      module_index.GetVpcSubnetsVpcSubnetIpv6.new;
+  final GetVpcSubnetsVpcSubnetLinode =
+      module_index.GetVpcSubnetsVpcSubnetLinode.new;
+  final GetVpcSubnetsVpcSubnetLinodeArgs =
+      module_index.GetVpcSubnetsVpcSubnetLinode.new;
+  final GetVpcSubnetsVpcSubnetLinodeInterface =
+      module_index.GetVpcSubnetsVpcSubnetLinodeInterface.new;
+  final GetVpcSubnetsVpcSubnetLinodeInterfaceArgs =
+      module_index.GetVpcSubnetsVpcSubnetLinodeInterface.new;
+  final GetVpcsArgs = module_index.GetVpcsArgs.new;
+  final GetVpcsFilter = module_index.GetVpcsFilter.new;
+  final GetVpcsFilterArgs = module_index.GetVpcsFilter.new;
+  final GetVpcsResult = module_index.GetVpcsResult.new;
+  final GetVpcsResultArgs = module_index.GetVpcsResult.new;
+  final GetVpcsVpc = module_index.GetVpcsVpc.new;
+  final GetVpcsVpcArgs = module_index.GetVpcsVpc.new;
+  final GetVpcsVpcIpv6 = module_index.GetVpcsVpcIpv6.new;
+  final GetVpcsVpcIpv6Args = module_index.GetVpcsVpcIpv6.new;
+  final Image = module_index.Image.new;
+  final ImageArgs = module_index.ImageArgs.new;
+  final ImageImageSharing = module_index.ImageImageSharing.new;
+  final ImageImageSharingArgs = module_index.ImageImageSharing.new;
+  final ImageImageSharingSharedBy = module_index.ImageImageSharingSharedBy.new;
+  final ImageImageSharingSharedByArgs =
+      module_index.ImageImageSharingSharedBy.new;
+  final ImageImageSharingSharedWith =
+      module_index.ImageImageSharingSharedWith.new;
+  final ImageImageSharingSharedWithArgs =
+      module_index.ImageImageSharingSharedWith.new;
+  final ImageReplication = module_index.ImageReplication.new;
+  final ImageReplicationArgs = module_index.ImageReplication.new;
+  final ImageState = module_index.ImageState.new;
+  final ImageStateArgs = module_index.ImageState.new;
+  final ImageTimeouts = module_index.ImageTimeouts.new;
+  final ImageTimeoutsArgs = module_index.ImageTimeouts.new;
+  final Instance = module_index.Instance.new;
+  final InstanceAlerts = module_index.InstanceAlerts.new;
+  final InstanceAlertsArgs = module_index.InstanceAlerts.new;
+  final InstanceArgs = module_index.InstanceArgs.new;
+  final InstanceBackup = module_index.InstanceBackup.new;
+  final InstanceBackupArgs = module_index.InstanceBackup.new;
+  final InstanceBackupSchedule = module_index.InstanceBackupSchedule.new;
+  final InstanceBackupScheduleArgs = module_index.InstanceBackupSchedule.new;
+  final InstanceConfig = module_index.InstanceConfig.new;
+  final InstanceConfigArgs = module_index.InstanceConfig.new;
+  final InstanceConfigDevice = module_index.InstanceConfigDevice.new;
+  final InstanceConfigDeviceArgs = module_index.InstanceConfigDevice.new;
+  final InstanceConfigDevices = module_index.InstanceConfigDevices.new;
+  final InstanceConfigDevicesArgs = module_index.InstanceConfigDevices.new;
+  final InstanceConfigDevicesSda = module_index.InstanceConfigDevicesSda.new;
+  final InstanceConfigDevicesSdaArgs =
+      module_index.InstanceConfigDevicesSda.new;
+  final InstanceConfigDevicesSdb = module_index.InstanceConfigDevicesSdb.new;
+  final InstanceConfigDevicesSdbArgs =
+      module_index.InstanceConfigDevicesSdb.new;
+  final InstanceConfigDevicesSdc = module_index.InstanceConfigDevicesSdc.new;
+  final InstanceConfigDevicesSdcArgs =
+      module_index.InstanceConfigDevicesSdc.new;
+  final InstanceConfigDevicesSdd = module_index.InstanceConfigDevicesSdd.new;
+  final InstanceConfigDevicesSddArgs =
+      module_index.InstanceConfigDevicesSdd.new;
+  final InstanceConfigDevicesSde = module_index.InstanceConfigDevicesSde.new;
+  final InstanceConfigDevicesSdeArgs =
+      module_index.InstanceConfigDevicesSde.new;
+  final InstanceConfigDevicesSdf = module_index.InstanceConfigDevicesSdf.new;
+  final InstanceConfigDevicesSdfArgs =
+      module_index.InstanceConfigDevicesSdf.new;
+  final InstanceConfigDevicesSdg = module_index.InstanceConfigDevicesSdg.new;
+  final InstanceConfigDevicesSdgArgs =
+      module_index.InstanceConfigDevicesSdg.new;
+  final InstanceConfigDevicesSdh = module_index.InstanceConfigDevicesSdh.new;
+  final InstanceConfigDevicesSdhArgs =
+      module_index.InstanceConfigDevicesSdh.new;
+  final InstanceConfigHelper = module_index.InstanceConfigHelper.new;
+  final InstanceConfigHelperArgs = module_index.InstanceConfigHelper.new;
+  final InstanceConfigHelpers = module_index.InstanceConfigHelpers.new;
+  final InstanceConfigHelpersArgs = module_index.InstanceConfigHelpers.new;
+  final InstanceConfigInterface = module_index.InstanceConfigInterface.new;
+  final InstanceConfigInterfaceArgs = module_index.InstanceConfigInterface.new;
+  final InstanceConfigInterfaceIpv4 =
+      module_index.InstanceConfigInterfaceIpv4.new;
+  final InstanceConfigInterfaceIpv4Args =
+      module_index.InstanceConfigInterfaceIpv4.new;
+  final InstanceConfigInterfaceIpv6 =
+      module_index.InstanceConfigInterfaceIpv6.new;
+  final InstanceConfigInterfaceIpv6Args =
+      module_index.InstanceConfigInterfaceIpv6.new;
+  final InstanceConfigInterfaceIpv6Range =
+      module_index.InstanceConfigInterfaceIpv6Range.new;
+  final InstanceConfigInterfaceIpv6RangeArgs =
+      module_index.InstanceConfigInterfaceIpv6Range.new;
+  final InstanceConfigInterfaceIpv6Slaac =
+      module_index.InstanceConfigInterfaceIpv6Slaac.new;
+  final InstanceConfigInterfaceIpv6SlaacArgs =
+      module_index.InstanceConfigInterfaceIpv6Slaac.new;
+  final InstanceConfigState = module_index.InstanceConfigState.new;
+  final InstanceConfigStateArgs = module_index.InstanceConfigState.new;
+  final InstanceDisk = module_index.InstanceDisk.new;
+  final InstanceDiskArgs = module_index.InstanceDisk.new;
+  final InstanceDiskState = module_index.InstanceDiskState.new;
+  final InstanceDiskStateArgs = module_index.InstanceDiskState.new;
+  final InstanceDiskTimeouts = module_index.InstanceDiskTimeouts.new;
+  final InstanceDiskTimeoutsArgs = module_index.InstanceDiskTimeouts.new;
+  final InstanceInterface = module_index.InstanceInterface.new;
+  final InstanceInterfaceArgs = module_index.InstanceInterface.new;
+  final InstanceInterfaceIpv4 = module_index.InstanceInterfaceIpv4.new;
+  final InstanceInterfaceIpv4Args = module_index.InstanceInterfaceIpv4.new;
+  final InstanceInterfaceIpv6 = module_index.InstanceInterfaceIpv6.new;
+  final InstanceInterfaceIpv6Args = module_index.InstanceInterfaceIpv6.new;
+  final InstanceInterfaceIpv6Range =
+      module_index.InstanceInterfaceIpv6Range.new;
+  final InstanceInterfaceIpv6RangeArgs =
+      module_index.InstanceInterfaceIpv6Range.new;
+  final InstanceInterfaceIpv6Slaac =
+      module_index.InstanceInterfaceIpv6Slaac.new;
+  final InstanceInterfaceIpv6SlaacArgs =
+      module_index.InstanceInterfaceIpv6Slaac.new;
+  final InstanceIp = module_index.InstanceIp.new;
+  final InstanceIpArgs = module_index.InstanceIpArgs.new;
+  final InstanceIpState = module_index.InstanceIpState.new;
+  final InstanceIpStateArgs = module_index.InstanceIpState.new;
+  final InstanceIpVpcNat11 = module_index.InstanceIpVpcNat11.new;
+  final InstanceIpVpcNat11Args = module_index.InstanceIpVpcNat11.new;
+  final InstanceMetadata = module_index.InstanceMetadata.new;
+  final InstanceMetadataArgs = module_index.InstanceMetadata.new;
+  final InstancePlacementGroup = module_index.InstancePlacementGroup.new;
+  final InstancePlacementGroupArgs = module_index.InstancePlacementGroup.new;
+  final InstanceSharedIps = module_index.InstanceSharedIps.new;
+  final InstanceSharedIpsArgs = module_index.InstanceSharedIpsArgs.new;
+  final InstanceSharedIpsState = module_index.InstanceSharedIpsState.new;
+  final InstanceSharedIpsStateArgs = module_index.InstanceSharedIpsState.new;
+  final InstanceSpec = module_index.InstanceSpec.new;
+  final InstanceSpecArgs = module_index.InstanceSpec.new;
+  final InstanceState = module_index.InstanceState.new;
+  final InstanceStateArgs = module_index.InstanceState.new;
+  final Interface = module_index.Interface.new;
+  final InterfaceArgs = module_index.InterfaceArgs.new;
+  final InterfaceDefaultRoute = module_index.InterfaceDefaultRoute.new;
+  final InterfaceDefaultRouteArgs = module_index.InterfaceDefaultRoute.new;
+  final InterfacePublic = module_index.InterfacePublic.new;
+  final InterfacePublicArgs = module_index.InterfacePublic.new;
+  final InterfacePublicIpv4 = module_index.InterfacePublicIpv4.new;
+  final InterfacePublicIpv4Address =
+      module_index.InterfacePublicIpv4Address.new;
+  final InterfacePublicIpv4AddressArgs =
+      module_index.InterfacePublicIpv4Address.new;
+  final InterfacePublicIpv4Args = module_index.InterfacePublicIpv4.new;
+  final InterfacePublicIpv4AssignedAddress =
+      module_index.InterfacePublicIpv4AssignedAddress.new;
+  final InterfacePublicIpv4AssignedAddressArgs =
+      module_index.InterfacePublicIpv4AssignedAddress.new;
+  final InterfacePublicIpv4Shared = module_index.InterfacePublicIpv4Shared.new;
+  final InterfacePublicIpv4SharedArgs =
+      module_index.InterfacePublicIpv4Shared.new;
+  final InterfacePublicIpv6 = module_index.InterfacePublicIpv6.new;
+  final InterfacePublicIpv6Args = module_index.InterfacePublicIpv6.new;
+  final InterfacePublicIpv6AssignedRange =
+      module_index.InterfacePublicIpv6AssignedRange.new;
+  final InterfacePublicIpv6AssignedRangeArgs =
+      module_index.InterfacePublicIpv6AssignedRange.new;
+  final InterfacePublicIpv6Range = module_index.InterfacePublicIpv6Range.new;
+  final InterfacePublicIpv6RangeArgs =
+      module_index.InterfacePublicIpv6Range.new;
+  final InterfacePublicIpv6Shared = module_index.InterfacePublicIpv6Shared.new;
+  final InterfacePublicIpv6SharedArgs =
+      module_index.InterfacePublicIpv6Shared.new;
+  final InterfacePublicIpv6Slaac = module_index.InterfacePublicIpv6Slaac.new;
+  final InterfacePublicIpv6SlaacArgs =
+      module_index.InterfacePublicIpv6Slaac.new;
+  final InterfaceState = module_index.InterfaceState.new;
+  final InterfaceStateArgs = module_index.InterfaceState.new;
+  final InterfaceVlan = module_index.InterfaceVlan.new;
+  final InterfaceVlanArgs = module_index.InterfaceVlan.new;
+  final InterfaceVpc = module_index.InterfaceVpc.new;
+  final InterfaceVpcArgs = module_index.InterfaceVpc.new;
+  final InterfaceVpcIpv4 = module_index.InterfaceVpcIpv4.new;
+  final InterfaceVpcIpv4Address = module_index.InterfaceVpcIpv4Address.new;
+  final InterfaceVpcIpv4AddressArgs = module_index.InterfaceVpcIpv4Address.new;
+  final InterfaceVpcIpv4Args = module_index.InterfaceVpcIpv4.new;
+  final InterfaceVpcIpv4AssignedAddress =
+      module_index.InterfaceVpcIpv4AssignedAddress.new;
+  final InterfaceVpcIpv4AssignedAddressArgs =
+      module_index.InterfaceVpcIpv4AssignedAddress.new;
+  final InterfaceVpcIpv4AssignedRange =
+      module_index.InterfaceVpcIpv4AssignedRange.new;
+  final InterfaceVpcIpv4AssignedRangeArgs =
+      module_index.InterfaceVpcIpv4AssignedRange.new;
+  final InterfaceVpcIpv4Range = module_index.InterfaceVpcIpv4Range.new;
+  final InterfaceVpcIpv4RangeArgs = module_index.InterfaceVpcIpv4Range.new;
+  final InterfaceVpcIpv6 = module_index.InterfaceVpcIpv6.new;
+  final InterfaceVpcIpv6Args = module_index.InterfaceVpcIpv6.new;
+  final InterfaceVpcIpv6AssignedRange =
+      module_index.InterfaceVpcIpv6AssignedRange.new;
+  final InterfaceVpcIpv6AssignedRangeArgs =
+      module_index.InterfaceVpcIpv6AssignedRange.new;
+  final InterfaceVpcIpv6AssignedSlaac =
+      module_index.InterfaceVpcIpv6AssignedSlaac.new;
+  final InterfaceVpcIpv6AssignedSlaacArgs =
+      module_index.InterfaceVpcIpv6AssignedSlaac.new;
+  final InterfaceVpcIpv6Range = module_index.InterfaceVpcIpv6Range.new;
+  final InterfaceVpcIpv6RangeArgs = module_index.InterfaceVpcIpv6Range.new;
+  final InterfaceVpcIpv6Slaac = module_index.InterfaceVpcIpv6Slaac.new;
+  final InterfaceVpcIpv6SlaacArgs = module_index.InterfaceVpcIpv6Slaac.new;
+  final Ipv6Range = module_index.Ipv6Range.new;
+  final Ipv6RangeArgs = module_index.Ipv6RangeArgs.new;
+  final Ipv6RangeState = module_index.Ipv6RangeState.new;
+  final Ipv6RangeStateArgs = module_index.Ipv6RangeState.new;
+  final LkeCluster = module_index.LkeCluster.new;
+  final LkeClusterArgs = module_index.LkeClusterArgs.new;
+  final LkeClusterControlPlane = module_index.LkeClusterControlPlane.new;
+  final LkeClusterControlPlaneAcl = module_index.LkeClusterControlPlaneAcl.new;
+  final LkeClusterControlPlaneAclAddress =
+      module_index.LkeClusterControlPlaneAclAddress.new;
+  final LkeClusterControlPlaneAclAddressArgs =
+      module_index.LkeClusterControlPlaneAclAddress.new;
+  final LkeClusterControlPlaneAclArgs =
+      module_index.LkeClusterControlPlaneAcl.new;
+  final LkeClusterControlPlaneArgs = module_index.LkeClusterControlPlane.new;
+  final LkeClusterPool = module_index.LkeClusterPool.new;
+  final LkeClusterPoolArgs = module_index.LkeClusterPool.new;
+  final LkeClusterPoolAutoscaler = module_index.LkeClusterPoolAutoscaler.new;
+  final LkeClusterPoolAutoscalerArgs =
+      module_index.LkeClusterPoolAutoscaler.new;
+  final LkeClusterPoolNode = module_index.LkeClusterPoolNode.new;
+  final LkeClusterPoolNodeArgs = module_index.LkeClusterPoolNode.new;
+  final LkeClusterPoolTaint = module_index.LkeClusterPoolTaint.new;
+  final LkeClusterPoolTaintArgs = module_index.LkeClusterPoolTaint.new;
+  final LkeClusterState = module_index.LkeClusterState.new;
+  final LkeClusterStateArgs = module_index.LkeClusterState.new;
+  final LkeNodePool = module_index.LkeNodePool.new;
+  final LkeNodePoolArgs = module_index.LkeNodePoolArgs.new;
+  final LkeNodePoolAutoscaler = module_index.LkeNodePoolAutoscaler.new;
+  final LkeNodePoolAutoscalerArgs = module_index.LkeNodePoolAutoscaler.new;
+  final LkeNodePoolNode = module_index.LkeNodePoolNode.new;
+  final LkeNodePoolNodeArgs = module_index.LkeNodePoolNode.new;
+  final LkeNodePoolState = module_index.LkeNodePoolState.new;
+  final LkeNodePoolStateArgs = module_index.LkeNodePoolState.new;
+  final LkeNodePoolTaint = module_index.LkeNodePoolTaint.new;
+  final LkeNodePoolTaintArgs = module_index.LkeNodePoolTaint.new;
+  final Lock = module_index.Lock.new;
+  final LockArgs = module_index.LockArgs.new;
+  final LockState = module_index.LockState.new;
+  final LockStateArgs = module_index.LockState.new;
+  final NetworkingIp = module_index.NetworkingIp.new;
+  final NetworkingIpArgs = module_index.NetworkingIpArgs.new;
+  final NetworkingIpAssignment = module_index.NetworkingIpAssignment.new;
+  final NetworkingIpAssignmentArgs =
+      module_index.NetworkingIpAssignmentArgs.new;
+  final NetworkingIpAssignmentAssignment =
+      module_index.NetworkingIpAssignmentAssignment.new;
+  final NetworkingIpAssignmentAssignmentArgs =
+      module_index.NetworkingIpAssignmentAssignment.new;
+  final NetworkingIpAssignmentState =
+      module_index.NetworkingIpAssignmentState.new;
+  final NetworkingIpAssignmentStateArgs =
+      module_index.NetworkingIpAssignmentState.new;
+  final NetworkingIpState = module_index.NetworkingIpState.new;
+  final NetworkingIpStateArgs = module_index.NetworkingIpState.new;
+  final NetworkingIpVpcNat11 = module_index.NetworkingIpVpcNat11.new;
+  final NetworkingIpVpcNat11Args = module_index.NetworkingIpVpcNat11.new;
+  final NodeBalancer = module_index.NodeBalancer.new;
+  final NodeBalancerArgs = module_index.NodeBalancerArgs.new;
+  final NodeBalancerConfig = module_index.NodeBalancerConfig.new;
+  final NodeBalancerConfigArgs = module_index.NodeBalancerConfigArgs.new;
+  final NodeBalancerConfigNodeStatus =
+      module_index.NodeBalancerConfigNodeStatus.new;
+  final NodeBalancerConfigNodeStatusArgs =
+      module_index.NodeBalancerConfigNodeStatus.new;
+  final NodeBalancerConfigState = module_index.NodeBalancerConfigState.new;
+  final NodeBalancerConfigStateArgs = module_index.NodeBalancerConfigState.new;
+  final NodeBalancerFirewall = module_index.NodeBalancerFirewall.new;
+  final NodeBalancerFirewallArgs = module_index.NodeBalancerFirewall.new;
+  final NodeBalancerFirewallInbound =
+      module_index.NodeBalancerFirewallInbound.new;
+  final NodeBalancerFirewallInboundArgs =
+      module_index.NodeBalancerFirewallInbound.new;
+  final NodeBalancerFirewallOutbound =
+      module_index.NodeBalancerFirewallOutbound.new;
+  final NodeBalancerFirewallOutboundArgs =
+      module_index.NodeBalancerFirewallOutbound.new;
+  final NodeBalancerNode = module_index.NodeBalancerNode.new;
+  final NodeBalancerNodeArgs = module_index.NodeBalancerNodeArgs.new;
+  final NodeBalancerNodeState = module_index.NodeBalancerNodeState.new;
+  final NodeBalancerNodeStateArgs = module_index.NodeBalancerNodeState.new;
+  final NodeBalancerState = module_index.NodeBalancerState.new;
+  final NodeBalancerStateArgs = module_index.NodeBalancerState.new;
+  final NodeBalancerTransfer = module_index.NodeBalancerTransfer.new;
+  final NodeBalancerTransferArgs = module_index.NodeBalancerTransfer.new;
+  final NodeBalancerVpc = module_index.NodeBalancerVpc.new;
+  final NodeBalancerVpcArgs = module_index.NodeBalancerVpc.new;
+  final ObjectStorageBucket = module_index.ObjectStorageBucket.new;
+  final ObjectStorageBucketArgs = module_index.ObjectStorageBucketArgs.new;
+  final ObjectStorageBucketCert = module_index.ObjectStorageBucketCert.new;
+  final ObjectStorageBucketCertArgs = module_index.ObjectStorageBucketCert.new;
+  final ObjectStorageBucketLifecycleRule =
+      module_index.ObjectStorageBucketLifecycleRule.new;
+  final ObjectStorageBucketLifecycleRuleArgs =
+      module_index.ObjectStorageBucketLifecycleRule.new;
+  final ObjectStorageBucketLifecycleRuleExpiration =
+      module_index.ObjectStorageBucketLifecycleRuleExpiration.new;
+  final ObjectStorageBucketLifecycleRuleExpirationArgs =
+      module_index.ObjectStorageBucketLifecycleRuleExpiration.new;
+  final ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration =
+      module_index
+          .ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration
+          .new;
+  final ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs =
+      module_index
+          .ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration
+          .new;
+  final ObjectStorageBucketState = module_index.ObjectStorageBucketState.new;
+  final ObjectStorageBucketStateArgs =
+      module_index.ObjectStorageBucketState.new;
+  final ObjectStorageKey = module_index.ObjectStorageKey.new;
+  final ObjectStorageKeyArgs = module_index.ObjectStorageKeyArgs.new;
+  final ObjectStorageKeyBucketAccess =
+      module_index.ObjectStorageKeyBucketAccess.new;
+  final ObjectStorageKeyBucketAccessArgs =
+      module_index.ObjectStorageKeyBucketAccess.new;
+  final ObjectStorageKeyRegionsDetail =
+      module_index.ObjectStorageKeyRegionsDetail.new;
+  final ObjectStorageKeyRegionsDetailArgs =
+      module_index.ObjectStorageKeyRegionsDetail.new;
+  final ObjectStorageKeyState = module_index.ObjectStorageKeyState.new;
+  final ObjectStorageKeyStateArgs = module_index.ObjectStorageKeyState.new;
+  final ObjectStorageObject = module_index.ObjectStorageObject.new;
+  final ObjectStorageObjectArgs = module_index.ObjectStorageObjectArgs.new;
+  final ObjectStorageObjectState = module_index.ObjectStorageObjectState.new;
+  final ObjectStorageObjectStateArgs =
+      module_index.ObjectStorageObjectState.new;
+  final PlacementGroup = module_index.PlacementGroup.new;
+  final PlacementGroupArgs = module_index.PlacementGroupArgs.new;
+  final PlacementGroupAssignment = module_index.PlacementGroupAssignment.new;
+  final PlacementGroupAssignmentArgs =
+      module_index.PlacementGroupAssignmentArgs.new;
+  final PlacementGroupAssignmentState =
+      module_index.PlacementGroupAssignmentState.new;
+  final PlacementGroupAssignmentStateArgs =
+      module_index.PlacementGroupAssignmentState.new;
+  final PlacementGroupMember = module_index.PlacementGroupMember.new;
+  final PlacementGroupMemberArgs = module_index.PlacementGroupMember.new;
+  final PlacementGroupState = module_index.PlacementGroupState.new;
+  final PlacementGroupStateArgs = module_index.PlacementGroupState.new;
+  final ProducerImageShareGroup = module_index.ProducerImageShareGroup.new;
+  final ProducerImageShareGroupArgs =
+      module_index.ProducerImageShareGroupArgs.new;
+  final ProducerImageShareGroupImage =
+      module_index.ProducerImageShareGroupImage.new;
+  final ProducerImageShareGroupImageArgs =
+      module_index.ProducerImageShareGroupImage.new;
+  final ProducerImageShareGroupMember =
+      module_index.ProducerImageShareGroupMember.new;
+  final ProducerImageShareGroupMemberArgs =
+      module_index.ProducerImageShareGroupMemberArgs.new;
+  final ProducerImageShareGroupMemberState =
+      module_index.ProducerImageShareGroupMemberState.new;
+  final ProducerImageShareGroupMemberStateArgs =
+      module_index.ProducerImageShareGroupMemberState.new;
+  final ProducerImageShareGroupState =
+      module_index.ProducerImageShareGroupState.new;
+  final ProducerImageShareGroupStateArgs =
+      module_index.ProducerImageShareGroupState.new;
+  final Rdns = module_index.Rdns.new;
+  final RdnsArgs = module_index.RdnsArgs.new;
+  final RdnsState = module_index.RdnsState.new;
+  final RdnsStateArgs = module_index.RdnsState.new;
+  final RdnsTimeouts = module_index.RdnsTimeouts.new;
+  final RdnsTimeoutsArgs = module_index.RdnsTimeouts.new;
+  final ReservedIpAssignment = module_index.ReservedIpAssignment.new;
+  final ReservedIpAssignmentArgs = module_index.ReservedIpAssignmentArgs.new;
+  final ReservedIpAssignmentState = module_index.ReservedIpAssignmentState.new;
+  final ReservedIpAssignmentStateArgs =
+      module_index.ReservedIpAssignmentState.new;
+  final ReservedIpAssignmentVpcNat11 =
+      module_index.ReservedIpAssignmentVpcNat11.new;
+  final ReservedIpAssignmentVpcNat11Args =
+      module_index.ReservedIpAssignmentVpcNat11.new;
+  final SshKey = module_index.SshKey.new;
+  final SshKeyArgs = module_index.SshKeyArgs.new;
+  final SshKeyState = module_index.SshKeyState.new;
+  final SshKeyStateArgs = module_index.SshKeyState.new;
+  final StackScript = module_index.StackScript.new;
+  final StackScriptArgs = module_index.StackScriptArgs.new;
+  final StackScriptState = module_index.StackScriptState.new;
+  final StackScriptStateArgs = module_index.StackScriptState.new;
+  final StackScriptUserDefinedField =
+      module_index.StackScriptUserDefinedField.new;
+  final StackScriptUserDefinedFieldArgs =
+      module_index.StackScriptUserDefinedField.new;
+  final Token = module_index.Token.new;
+  final TokenArgs = module_index.TokenArgs.new;
+  final TokenState = module_index.TokenState.new;
+  final TokenStateArgs = module_index.TokenState.new;
+  final User = module_index.User.new;
+  final UserArgs = module_index.UserArgs.new;
+  final UserDomainGrant = module_index.UserDomainGrant.new;
+  final UserDomainGrantArgs = module_index.UserDomainGrant.new;
+  final UserFirewallGrant = module_index.UserFirewallGrant.new;
+  final UserFirewallGrantArgs = module_index.UserFirewallGrant.new;
+  final UserGlobalGrants = module_index.UserGlobalGrants.new;
+  final UserGlobalGrantsArgs = module_index.UserGlobalGrants.new;
+  final UserImageGrant = module_index.UserImageGrant.new;
+  final UserImageGrantArgs = module_index.UserImageGrant.new;
+  final UserLinodeGrant = module_index.UserLinodeGrant.new;
+  final UserLinodeGrantArgs = module_index.UserLinodeGrant.new;
+  final UserLongviewGrant = module_index.UserLongviewGrant.new;
+  final UserLongviewGrantArgs = module_index.UserLongviewGrant.new;
+  final UserNodebalancerGrant = module_index.UserNodebalancerGrant.new;
+  final UserNodebalancerGrantArgs = module_index.UserNodebalancerGrant.new;
+  final UserStackscriptGrant = module_index.UserStackscriptGrant.new;
+  final UserStackscriptGrantArgs = module_index.UserStackscriptGrant.new;
+  final UserState = module_index.UserState.new;
+  final UserStateArgs = module_index.UserState.new;
+  final UserVolumeGrant = module_index.UserVolumeGrant.new;
+  final UserVolumeGrantArgs = module_index.UserVolumeGrant.new;
+  final UserVpcGrant = module_index.UserVpcGrant.new;
+  final UserVpcGrantArgs = module_index.UserVpcGrant.new;
+  final Volume = module_index.Volume.new;
+  final VolumeArgs = module_index.VolumeArgs.new;
+  final VolumeState = module_index.VolumeState.new;
+  final VolumeStateArgs = module_index.VolumeState.new;
+  final VolumeTimeouts = module_index.VolumeTimeouts.new;
+  final VolumeTimeoutsArgs = module_index.VolumeTimeouts.new;
+  final Vpc = module_index.Vpc.new;
+  final VpcArgs = module_index.VpcArgs.new;
+  final VpcIpv6 = module_index.VpcIpv6.new;
+  final VpcIpv6Args = module_index.VpcIpv6.new;
+  final VpcState = module_index.VpcState.new;
+  final VpcStateArgs = module_index.VpcState.new;
+  final VpcSubnet = module_index.VpcSubnet.new;
+  final VpcSubnetArgs = module_index.VpcSubnetArgs.new;
+  final VpcSubnetIpv6 = module_index.VpcSubnetIpv6.new;
+  final VpcSubnetIpv6Args = module_index.VpcSubnetIpv6.new;
+  final VpcSubnetLinode = module_index.VpcSubnetLinode.new;
+  final VpcSubnetLinodeArgs = module_index.VpcSubnetLinode.new;
+  final VpcSubnetLinodeInterface = module_index.VpcSubnetLinodeInterface.new;
+  final VpcSubnetLinodeInterfaceArgs =
+      module_index.VpcSubnetLinodeInterface.new;
+  final VpcSubnetState = module_index.VpcSubnetState.new;
+  final VpcSubnetStateArgs = module_index.VpcSubnetState.new;
+  final getAccount = module_index.getAccount;
+  final getAccountAvailabilities = module_index.getAccountAvailabilities;
+  final getAccountAvailability = module_index.getAccountAvailability;
+  final getAccountLogin = module_index.getAccountLogin;
+  final getAccountLogins = module_index.getAccountLogins;
+  final getAccountSettings = module_index.getAccountSettings;
+  final getChildAccount = module_index.getChildAccount;
+  final getChildAccounts = module_index.getChildAccounts;
+  final getConsumerImageShareGroup = module_index.getConsumerImageShareGroup;
+  final getConsumerImageShareGroupImageShares =
+      module_index.getConsumerImageShareGroupImageShares;
+  final getConsumerImageShareGroupToken =
+      module_index.getConsumerImageShareGroupToken;
+  final getConsumerImageShareGroupTokens =
+      module_index.getConsumerImageShareGroupTokens;
+  final getDatabaseBackups = module_index.getDatabaseBackups;
+  final getDatabaseEngines = module_index.getDatabaseEngines;
+  final getDatabaseMysql = module_index.getDatabaseMysql;
+  final getDatabaseMysqlBackups = module_index.getDatabaseMysqlBackups;
+  final getDatabaseMysqlConfig = module_index.getDatabaseMysqlConfig;
+  final getDatabaseMysqlV2 = module_index.getDatabaseMysqlV2;
+  final getDatabasePostgresql = module_index.getDatabasePostgresql;
+  final getDatabasePostgresqlConfig = module_index.getDatabasePostgresqlConfig;
+  final getDatabasePostgresqlV2 = module_index.getDatabasePostgresqlV2;
+  final getDatabases = module_index.getDatabases;
+  final getDomain = module_index.getDomain;
+  final getDomainRecord = module_index.getDomainRecord;
+  final getDomainZonefile = module_index.getDomainZonefile;
+  final getDomains = module_index.getDomains;
+  final getFirewall = module_index.getFirewall;
+  final getFirewallSettings = module_index.getFirewallSettings;
+  final getFirewallTemplate = module_index.getFirewallTemplate;
+  final getFirewallTemplates = module_index.getFirewallTemplates;
+  final getFirewalls = module_index.getFirewalls;
+  final getImage = module_index.getImage;
+  final getImages = module_index.getImages;
+  final getInstanceBackups = module_index.getInstanceBackups;
+  final getInstanceNetworking = module_index.getInstanceNetworking;
+  final getInstanceType = module_index.getInstanceType;
+  final getInstanceTypes = module_index.getInstanceTypes;
+  final getInstances = module_index.getInstances;
+  final getInterface = module_index.getInterface;
+  final getIpv6Range = module_index.getIpv6Range;
+  final getIpv6Ranges = module_index.getIpv6Ranges;
+  final getKernel = module_index.getKernel;
+  final getKernels = module_index.getKernels;
+  final getLinodeObjectStorageBucket =
+      module_index.getLinodeObjectStorageBucket;
+  final getLkeCluster = module_index.getLkeCluster;
+  final getLkeClusters = module_index.getLkeClusters;
+  final getLkeTypes = module_index.getLkeTypes;
+  final getLkeVersion = module_index.getLkeVersion;
+  final getLkeVersions = module_index.getLkeVersions;
+  final getLock = module_index.getLock;
+  final getLocks = module_index.getLocks;
+  final getMaintenancePolicies = module_index.getMaintenancePolicies;
+  final getNbTypes = module_index.getNbTypes;
+  final getNetworkTransferPrices = module_index.getNetworkTransferPrices;
+  final getNetworkingIp = module_index.getNetworkingIp;
+  final getNetworkingIps = module_index.getNetworkingIps;
+  final getNodeBalancer = module_index.getNodeBalancer;
+  final getNodeBalancerConfig = module_index.getNodeBalancerConfig;
+  final getNodeBalancerNode = module_index.getNodeBalancerNode;
+  final getNodebalancerConfigs = module_index.getNodebalancerConfigs;
+  final getNodebalancerVpc = module_index.getNodebalancerVpc;
+  final getNodebalancerVpcs = module_index.getNodebalancerVpcs;
+  final getNodebalancers = module_index.getNodebalancers;
+  final getObjectStorageCluster = module_index.getObjectStorageCluster;
+  final getObjectStorageEndpoints = module_index.getObjectStorageEndpoints;
+  final getObjectStorageQuota = module_index.getObjectStorageQuota;
+  final getObjectStorageQuotas = module_index.getObjectStorageQuotas;
+  final getPlacementGroup = module_index.getPlacementGroup;
+  final getPlacementGroups = module_index.getPlacementGroups;
+  final getProducerImageShareGroup = module_index.getProducerImageShareGroup;
+  final getProducerImageShareGroupImageShares =
+      module_index.getProducerImageShareGroupImageShares;
+  final getProducerImageShareGroupMember =
+      module_index.getProducerImageShareGroupMember;
+  final getProducerImageShareGroupMembers =
+      module_index.getProducerImageShareGroupMembers;
+  final getProducerImageShareGroups = module_index.getProducerImageShareGroups;
+  final getProfile = module_index.getProfile;
+  final getRegion = module_index.getRegion;
+  final getRegions = module_index.getRegions;
+  final getSshKey = module_index.getSshKey;
+  final getSshkeys = module_index.getSshkeys;
+  final getStackScript = module_index.getStackScript;
+  final getStackScripts = module_index.getStackScripts;
+  final getUser = module_index.getUser;
+  final getUsers = module_index.getUsers;
+  final getVlans = module_index.getVlans;
+  final getVolume = module_index.getVolume;
+  final getVolumeTypes = module_index.getVolumeTypes;
+  final getVolumes = module_index.getVolumes;
+  final getVpc = module_index.getVpc;
+  final getVpcIps = module_index.getVpcIps;
+  final getVpcSubnet = module_index.getVpcSubnet;
+  final getVpcSubnets = module_index.getVpcSubnets;
+  final getVpcs = module_index.getVpcs;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final Linode = _providers.ProviderProvider.new;
-  final LinodeArgs = _providers.ProviderArgs.new;
-  final ProviderArgs = _providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult = _providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs = _providers.ProviderTerraformConfigResult.new;
-  final TerraformConfigArgs = _providers.TerraformConfigArgs.new;
-  final TerraformConfigResult = _providers.TerraformConfigResult.new;
-  final TerraformConfigResultArgs = _providers.TerraformConfigResult.new;
-  final terraformConfig = _providers.terraformConfig;
+  final Linode = module_providers.ProviderProvider.new;
+  final LinodeArgs = module_providers.ProviderArgs.new;
+  final ProviderArgs = module_providers.ProviderArgs.new;
+  final ProviderTerraformConfigResult =
+      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs =
+      module_providers.ProviderTerraformConfigResult.new;
+  final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
+  final TerraformConfigResult = module_providers.TerraformConfigResult.new;
+  final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
+  final terraformConfig = module_providers.terraformConfig;
 }
-

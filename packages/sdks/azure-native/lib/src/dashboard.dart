@@ -1,5 +1,3 @@
-library module_dashboard;
-
 export 'dashboard/api_key.dart';
 export 'dashboard/auto_generated_domain_name_label_scope.dart';
 export 'dashboard/azure_monitor_workspace_integration.dart';

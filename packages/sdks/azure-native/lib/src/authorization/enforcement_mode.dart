@@ -4,16 +4,15 @@ enum EnforcementMode {
   valueDoNotEnforce("DoNotEnforce"),
   valueEnroll("Enroll");
 
-  const EnforcementMode(this.value);
-  final String value;
+  const EnforcementMode(this.wireValue);
+  final String wireValue;
 
   static EnforcementMode fromValue(String value) {
     for (final item in EnforcementMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnforcementMode value: $value');
   }
 }
-

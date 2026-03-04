@@ -13,23 +13,34 @@ import 'google_cloud_contentwarehouse_v1_timestamp_array.dart';
 /// Property of a document.
 class GoogleCloudContentwarehouseV1Property {
   /// Date time property values. It is not supported by CMEK compliant deployment.
-  final pulumi.Input<GoogleCloudContentwarehouseV1DateTimeArray>? dateTimeValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1DateTimeArray>?
+  dateTimeValues;
+
   /// Enum property values.
   final pulumi.Input<GoogleCloudContentwarehouseV1EnumArray>? enumValues;
+
   /// Float property values.
   final pulumi.Input<GoogleCloudContentwarehouseV1FloatArray>? floatValues;
+
   /// Integer property values.
   final pulumi.Input<GoogleCloudContentwarehouseV1IntegerArray>? integerValues;
+
   /// Map property values.
   final pulumi.Input<GoogleCloudContentwarehouseV1MapProperty>? mapProperty;
+
   /// Must match the name of a PropertyDefinition in the DocumentSchema.
   final pulumi.Input<String> name;
+
   /// Nested structured data property values.
-  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyArray>? propertyValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyArray>?
+  propertyValues;
+
   /// String/text property values.
   final pulumi.Input<GoogleCloudContentwarehouseV1TextArray>? textValues;
+
   /// Timestamp property values. It is not supported by CMEK compliant deployment.
-  final pulumi.Input<GoogleCloudContentwarehouseV1TimestampArray>? timestampValues;
+  final pulumi.Input<GoogleCloudContentwarehouseV1TimestampArray>?
+  timestampValues;
 
   /// Creates a new [GoogleCloudContentwarehouseV1Property].
   /// [dateTimeValues] Date time property values. It is not supported by CMEK compliant deployment.
@@ -55,30 +66,127 @@ class GoogleCloudContentwarehouseV1Property {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dateTimeValues': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1DateTimeArray, Map<String, dynamic>>(dateTimeValues, (value) => value.toMap()),
-      'enumValues': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1EnumArray, Map<String, dynamic>>(enumValues, (value) => value.toMap()),
-      'floatValues': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1FloatArray, Map<String, dynamic>>(floatValues, (value) => value.toMap()),
-      'integerValues': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1IntegerArray, Map<String, dynamic>>(integerValues, (value) => value.toMap()),
-      'mapProperty': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1MapProperty, Map<String, dynamic>>(mapProperty, (value) => value.toMap()),
+      'dateTimeValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1DateTimeArray,
+            Map<String, dynamic>
+          >(dateTimeValues, (value) => value.toMap()),
+      'enumValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1EnumArray,
+            Map<String, dynamic>
+          >(enumValues, (value) => value.toMap()),
+      'floatValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1FloatArray,
+            Map<String, dynamic>
+          >(floatValues, (value) => value.toMap()),
+      'integerValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1IntegerArray,
+            Map<String, dynamic>
+          >(integerValues, (value) => value.toMap()),
+      'mapProperty':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1MapProperty,
+            Map<String, dynamic>
+          >(mapProperty, (value) => value.toMap()),
       'name': name,
-      'propertyValues': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1PropertyArray, Map<String, dynamic>>(propertyValues, (value) => value.toMap()),
-      'textValues': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1TextArray, Map<String, dynamic>>(textValues, (value) => value.toMap()),
-      'timestampValues': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1TimestampArray, Map<String, dynamic>>(timestampValues, (value) => value.toMap()),
+      'propertyValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1PropertyArray,
+            Map<String, dynamic>
+          >(propertyValues, (value) => value.toMap()),
+      'textValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1TextArray,
+            Map<String, dynamic>
+          >(textValues, (value) => value.toMap()),
+      'timestampValues':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1TimestampArray,
+            Map<String, dynamic>
+          >(timestampValues, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudContentwarehouseV1Property.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1Property.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1Property(
-      dateTimeValues: map['dateTimeValues'] == null ? null : (GoogleCloudContentwarehouseV1DateTimeArray.fromMap((map['dateTimeValues']! as Map).cast<String, dynamic>())).input(),
-      enumValues: map['enumValues'] == null ? null : (GoogleCloudContentwarehouseV1EnumArray.fromMap((map['enumValues']! as Map).cast<String, dynamic>())).input(),
-      floatValues: map['floatValues'] == null ? null : (GoogleCloudContentwarehouseV1FloatArray.fromMap((map['floatValues']! as Map).cast<String, dynamic>())).input(),
-      integerValues: map['integerValues'] == null ? null : (GoogleCloudContentwarehouseV1IntegerArray.fromMap((map['integerValues']! as Map).cast<String, dynamic>())).input(),
-      mapProperty: map['mapProperty'] == null ? null : (GoogleCloudContentwarehouseV1MapProperty.fromMap((map['mapProperty']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      propertyValues: map['propertyValues'] == null ? null : (GoogleCloudContentwarehouseV1PropertyArray.fromMap((map['propertyValues']! as Map).cast<String, dynamic>())).input(),
-      textValues: map['textValues'] == null ? null : (GoogleCloudContentwarehouseV1TextArray.fromMap((map['textValues']! as Map).cast<String, dynamic>())).input(),
-      timestampValues: map['timestampValues'] == null ? null : (GoogleCloudContentwarehouseV1TimestampArray.fromMap((map['timestampValues']! as Map).cast<String, dynamic>())).input(),
+      dateTimeValues: (() {
+        final guardedValue = map['dateTimeValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1DateTimeArray.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enumValues: (() {
+        final guardedValue = map['enumValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1EnumArray.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      floatValues: (() {
+        final guardedValue = map['floatValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1FloatArray.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      integerValues: (() {
+        final guardedValue = map['integerValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1IntegerArray.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mapProperty: (() {
+        final guardedValue = map['mapProperty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1MapProperty.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      propertyValues: (() {
+        final guardedValue = map['propertyValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1PropertyArray.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      textValues: (() {
+        final guardedValue = map['textValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1TextArray.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timestampValues: (() {
+        final guardedValue = map['timestampValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1TimestampArray.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

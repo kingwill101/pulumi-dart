@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrackingDataStoreResponse {
   /// The data store ingestion URI.
   final pulumi.Input<String>? dataStoreIngestionUri;
+
   /// The data store resource id.
   final pulumi.Input<String>? dataStoreResourceId;
+
   /// The data store URI.
   final pulumi.Input<String>? dataStoreUri;
+
   /// The database name.
   final pulumi.Input<String>? databaseName;
 
@@ -36,11 +39,26 @@ class TrackingDataStoreResponse {
 
   factory TrackingDataStoreResponse.fromMap(Map<String, dynamic> map) {
     return TrackingDataStoreResponse(
-      dataStoreIngestionUri: map['dataStoreIngestionUri'] == null ? null : (map['dataStoreIngestionUri']! as String).input(),
-      dataStoreResourceId: map['dataStoreResourceId'] == null ? null : (map['dataStoreResourceId']! as String).input(),
-      dataStoreUri: map['dataStoreUri'] == null ? null : (map['dataStoreUri']! as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      dataStoreIngestionUri: (() {
+        final guardedValue = map['dataStoreIngestionUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataStoreResourceId: (() {
+        final guardedValue = map['dataStoreResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataStoreUri: (() {
+        final guardedValue = map['dataStoreUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayTrustedClientCertificateResponse {
   /// Distinguished name of client certificate issuer.
   final pulumi.Input<String> clientCertIssuerDN;
+
   /// Certificate public data.
   final pulumi.Input<String>? data;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Name of the trusted client certificate that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
+
   /// The provisioning state of the trusted client certificate resource.
   final pulumi.Input<String> provisioningState;
+
   /// Type of the resource.
   final pulumi.Input<String> type;
+
   /// Validated certificate data.
   final pulumi.Input<String> validatedCertData;
 
@@ -54,17 +61,36 @@ class ApplicationGatewayTrustedClientCertificateResponse {
     };
   }
 
-  factory ApplicationGatewayTrustedClientCertificateResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayTrustedClientCertificateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayTrustedClientCertificateResponse(
-      clientCertIssuerDN: (map['clientCertIssuerDN'] as String).input(),
-      data: map['data'] == null ? null : (map['data']! as String).input(),
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      type: (map['type'] as String).input(),
-      validatedCertData: (map['validatedCertData'] as String).input(),
+      clientCertIssuerDN: pulumi.Input.fromValue(
+        map['clientCertIssuerDN'] as String,
+      ),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      validatedCertData: pulumi.Input.fromValue(
+        map['validatedCertData'] as String,
+      ),
     );
   }
 }
-

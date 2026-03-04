@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'waf_rule_args.dart';
-import 'waf_rule_condition.dart';
 import 'waf_rule_rate_limit.dart';
 import 'waf_rule_state.dart';
 
@@ -8,7 +7,7 @@ import 'waf_rule_state.dart';
 ///
 /// For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules).
 ///
-/// > **NOTE:** Available since v1.201.0.
+/// &gt; **NOTE:** Available since v1.201.0.
 ///
 /// ## Example Usage
 ///
@@ -374,36 +373,52 @@ import 'waf_rule_state.dart';
 class WafRule extends pulumi.CustomResource {
   /// Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
   late final pulumi.Output<String?> action;
+
   /// Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
   late final pulumi.Output<String> ccStatus;
+
   /// The blocked regions in the Chinese mainland, separated by commas (,).
   late final pulumi.Output<String?> cnRegionList;
+
   /// Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
-  late final pulumi.Output<List<WafRuleCondition>?> conditions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
+
   /// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
   late final pulumi.Output<String> defenseScene;
+
   /// The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
   late final pulumi.Output<String?> effect;
+
   /// Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
   late final pulumi.Output<String> gmtModified;
+
   /// Blocked regions outside the Chinese mainland, separated by commas (,).
   late final pulumi.Output<String?> otherRegionList;
+
   /// The protection policy ID.
   late final pulumi.Output<String> policyId;
+
   /// The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
   late final pulumi.Output<WafRuleRateLimit?> rateLimit;
+
   /// The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
   late final pulumi.Output<List<String>?> regularRules;
+
   /// Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
   late final pulumi.Output<List<String>?> regularTypes;
+
   /// Filter by IP address.
   late final pulumi.Output<List<String>?> remoteAddrs;
+
   /// The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
   late final pulumi.Output<String> ruleName;
+
   /// The types of the protection policies.
   late final pulumi.Output<List<String>?> scenes;
+
   /// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
   late final pulumi.Output<String> status;
+
   /// The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
   late final pulumi.Output<String?> wafGroupIds;
 
@@ -416,28 +431,28 @@ class WafRule extends pulumi.CustomResource {
     WafRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafRule:WafRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.ccStatus = registerOutput<String>('ccStatus');
-    this.cnRegionList = registerOutput<String?>('cnRegionList');
-    this.conditions = registerOutput<List<WafRuleCondition>?>('conditions');
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.effect = registerOutput<String?>('effect');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.otherRegionList = registerOutput<String?>('otherRegionList');
-    this.policyId = registerOutput<String>('policyId');
-    this.rateLimit = registerOutput<WafRuleRateLimit?>('rateLimit');
-    this.regularRules = registerOutput<List<String>?>('regularRules');
-    this.regularTypes = registerOutput<List<String>?>('regularTypes');
-    this.remoteAddrs = registerOutput<List<String>?>('remoteAddrs');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.scenes = registerOutput<List<String>?>('scenes');
-    this.status = registerOutput<String>('status');
-    this.wafGroupIds = registerOutput<String?>('wafGroupIds');
+         'alicloud:dcdn/wafRule:WafRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    ccStatus = registerOutput<String>('ccStatus');
+    cnRegionList = registerOutput<String?>('cnRegionList');
+    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    defenseScene = registerOutput<String>('defenseScene');
+    effect = registerOutput<String?>('effect');
+    gmtModified = registerOutput<String>('gmtModified');
+    otherRegionList = registerOutput<String?>('otherRegionList');
+    policyId = registerOutput<String>('policyId');
+    rateLimit = registerOutput<WafRuleRateLimit?>('rateLimit');
+    regularRules = registerOutput<List<String>?>('regularRules');
+    regularTypes = registerOutput<List<String>?>('regularTypes');
+    remoteAddrs = registerOutput<List<String>?>('remoteAddrs');
+    ruleName = registerOutput<String>('ruleName');
+    scenes = registerOutput<List<String>?>('scenes');
+    status = registerOutput<String>('status');
+    wafGroupIds = registerOutput<String?>('wafGroupIds');
   }
 
   /// Gets an existing [WafRule] resource's state with the given [name] and [id].
@@ -458,27 +473,27 @@ class WafRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafRule:WafRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.ccStatus = registerOutput<String>('ccStatus');
-    this.cnRegionList = registerOutput<String?>('cnRegionList');
-    this.conditions = registerOutput<List<WafRuleCondition>?>('conditions');
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.effect = registerOutput<String?>('effect');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.otherRegionList = registerOutput<String?>('otherRegionList');
-    this.policyId = registerOutput<String>('policyId');
-    this.rateLimit = registerOutput<WafRuleRateLimit?>('rateLimit');
-    this.regularRules = registerOutput<List<String>?>('regularRules');
-    this.regularTypes = registerOutput<List<String>?>('regularTypes');
-    this.remoteAddrs = registerOutput<List<String>?>('remoteAddrs');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.scenes = registerOutput<List<String>?>('scenes');
-    this.status = registerOutput<String>('status');
-    this.wafGroupIds = registerOutput<String?>('wafGroupIds');
+         'alicloud:dcdn/wafRule:WafRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    ccStatus = registerOutput<String>('ccStatus');
+    cnRegionList = registerOutput<String?>('cnRegionList');
+    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    defenseScene = registerOutput<String>('defenseScene');
+    effect = registerOutput<String?>('effect');
+    gmtModified = registerOutput<String>('gmtModified');
+    otherRegionList = registerOutput<String?>('otherRegionList');
+    policyId = registerOutput<String>('policyId');
+    rateLimit = registerOutput<WafRuleRateLimit?>('rateLimit');
+    regularRules = registerOutput<List<String>?>('regularRules');
+    regularTypes = registerOutput<List<String>?>('regularTypes');
+    remoteAddrs = registerOutput<List<String>?>('remoteAddrs');
+    ruleName = registerOutput<String>('ruleName');
+    scenes = registerOutput<List<String>?>('scenes');
+    status = registerOutput<String>('status');
+    wafGroupIds = registerOutput<String?>('wafGroupIds');
   }
 }

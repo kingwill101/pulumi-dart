@@ -7,8 +7,10 @@ import 'private_link_service_connection_state.dart';
 class PrivateEndpointConnectionProperties {
   /// The private link resource group ids.
   final pulumi.Input<List<String>>? groupIds;
+
   /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState>
+  privateLinkServiceConnectionState;
 
   /// Creates a new [PrivateEndpointConnectionProperties].
   /// [groupIds] The private link resource group ids.
@@ -21,15 +23,29 @@ class PrivateEndpointConnectionProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupIds': ?groupIds,
-      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateLinkServiceConnectionState':
+          pulumi.Input.mapInputValue<
+            PrivateLinkServiceConnectionState,
+            Map<String, dynamic>
+          >(privateLinkServiceConnectionState, (value) => value.toMap()),
     };
   }
 
-  factory PrivateEndpointConnectionProperties.fromMap(Map<String, dynamic> map) {
+  factory PrivateEndpointConnectionProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateEndpointConnectionProperties(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
-      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      groupIds: (() {
+        final guardedValue = map['groupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      privateLinkServiceConnectionState: pulumi.Input.fromValue(
+        PrivateLinkServiceConnectionState.fromMap(
+          (map['privateLinkServiceConnectionState']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSapApplicationServerInstanceArgs {
   /// The name of SAP Application Server instance resource.
   final pulumi.Input<String> applicationInstanceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Virtual Instances for SAP solutions resource
   final pulumi.Input<String> sapVirtualInstanceName;
 
@@ -32,12 +34,19 @@ class GetSapApplicationServerInstanceArgs {
     };
   }
 
-  factory GetSapApplicationServerInstanceArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSapApplicationServerInstanceArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSapApplicationServerInstanceArgs(
-      applicationInstanceName: (map['applicationInstanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sapVirtualInstanceName: (map['sapVirtualInstanceName'] as String).input(),
+      applicationInstanceName: pulumi.Input.fromValue(
+        map['applicationInstanceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sapVirtualInstanceName: pulumi.Input.fromValue(
+        map['sapVirtualInstanceName'] as String,
+      ),
     );
   }
 }
-

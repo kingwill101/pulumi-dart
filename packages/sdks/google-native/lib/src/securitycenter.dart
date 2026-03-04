@@ -1,5 +1,3 @@
-library module_securitycenter;
-
 export 'securitycenter/audit_config.dart';
 export 'securitycenter/audit_config_response.dart';
 export 'securitycenter/audit_config_response_securitycenter_v1beta1.dart';

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeArgs {
   /// Text describing a block storage volume.
   final pulumi.Input<String>? description;
+
   /// The name of block storage volume.
   final pulumi.Input<String> name;
+
   /// The region the block storage volume is provisioned in.
   final pulumi.Input<String>? region;
 
@@ -18,11 +20,7 @@ class GetVolumeArgs {
   /// [description] Text describing a block storage volume.
   /// [name] The name of block storage volume.
   /// [region] The region the block storage volume is provisioned in.
-  GetVolumeArgs({
-    this.description,
-    required this.name,
-    this.region,
-  });
+  GetVolumeArgs({this.description, required this.name, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

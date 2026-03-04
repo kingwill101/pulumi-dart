@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlUserDefinedFunctionGetPropertiesResponseResource {
   /// Body of the User Defined Function
   final pulumi.Input<String>? body;
+
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final pulumi.Input<String> etag;
+
   /// Name of the Cosmos DB SQL userDefinedFunction
   final pulumi.Input<String> id;
+
   /// A system generated property. A unique identifier.
   final pulumi.Input<String> rid;
+
   /// A system generated property that denotes the last updated timestamp of the resource.
   final pulumi.Input<double> ts;
 
@@ -38,14 +42,19 @@ class SqlUserDefinedFunctionGetPropertiesResponseResource {
     };
   }
 
-  factory SqlUserDefinedFunctionGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
+  factory SqlUserDefinedFunctionGetPropertiesResponseResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlUserDefinedFunctionGetPropertiesResponseResource(
-      body: map['body'] == null ? null : (map['body']! as String).input(),
-      etag: (map['etag'] as String).input(),
-      id: (map['id'] as String).input(),
-      rid: (map['rid'] as String).input(),
-      ts: (map['ts'] as double).input(),
+      body: (() {
+        final guardedValue = map['body'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      rid: pulumi.Input.fromValue(map['rid'] as String),
+      ts: pulumi.Input.fromValue(map['ts'] as double),
     );
   }
 }
-

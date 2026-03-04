@@ -39,12 +39,19 @@ class GetDeveloperAppArgs {
 
   factory GetDeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperAppArgs(
-      appId: (map['appId'] as String).input(),
-      developerId: (map['developerId'] as String).input(),
-      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      query: map['query'] == null ? null : (map['query']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      developerId: pulumi.Input.fromValue(map['developerId'] as String),
+      entity: (() {
+        final guardedValue = map['entity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      query: (() {
+        final guardedValue = map['query'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

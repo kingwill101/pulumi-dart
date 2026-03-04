@@ -7,14 +7,19 @@ import 'provider_resource_type_response.dart';
 class ProviderResponse {
   /// The provider ID.
   final pulumi.Input<String> id;
+
   /// The namespace of the resource provider.
   final pulumi.Input<String>? namespace;
+
   /// The provider authorization consent state.
   final pulumi.Input<String>? providerAuthorizationConsentState;
+
   /// The registration policy of the resource provider.
   final pulumi.Input<String> registrationPolicy;
+
   /// The registration state of the resource provider.
   final pulumi.Input<String> registrationState;
+
   /// The collection of provider resource types.
   final pulumi.Input<List<ProviderResourceTypeResponse>> resourceTypes;
 
@@ -41,19 +46,48 @@ class ProviderResponse {
       'providerAuthorizationConsentState': ?providerAuthorizationConsentState,
       'registrationPolicy': registrationPolicy,
       'registrationState': registrationState,
-      'resourceTypes': pulumi.Input.mapInputValue<List<ProviderResourceTypeResponse>, List<Map<String, dynamic>>>(resourceTypes, (value) => pulumi.Input.encodeList<ProviderResourceTypeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceTypes':
+          pulumi.Input.mapInputValue<
+            List<ProviderResourceTypeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            resourceTypes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ProviderResourceTypeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ProviderResponse.fromMap(Map<String, dynamic> map) {
     return ProviderResponse(
-      id: (map['id'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      providerAuthorizationConsentState: map['providerAuthorizationConsentState'] == null ? null : (map['providerAuthorizationConsentState']! as String).input(),
-      registrationPolicy: (map['registrationPolicy'] as String).input(),
-      registrationState: (map['registrationState'] as String).input(),
-      resourceTypes: (pulumi.Input.decodeList<ProviderResourceTypeResponse>(map['resourceTypes'], (value) => ProviderResourceTypeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerAuthorizationConsentState: (() {
+        final guardedValue = map['providerAuthorizationConsentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationPolicy: pulumi.Input.fromValue(
+        map['registrationPolicy'] as String,
+      ),
+      registrationState: pulumi.Input.fromValue(
+        map['registrationState'] as String,
+      ),
+      resourceTypes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ProviderResourceTypeResponse>(
+          map['resourceTypes']!,
+          (value) => ProviderResourceTypeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableGlobalSecondaryIndexKeySchema {
   /// Name of the attribute; must be defined as an attribute in the resource.
   final pulumi.Input<String> attributeName;
+
   /// The type of key. Valid values are `HASH` (partition key) or `RANGE` (sort key). You can specify up to 4 attributes with `key_type = "HASH"` and up to 4 attributes with `key_type = "RANGE"`.
   final pulumi.Input<String> keyType;
 
@@ -25,9 +26,8 @@ class TableGlobalSecondaryIndexKeySchema {
 
   factory TableGlobalSecondaryIndexKeySchema.fromMap(Map<String, dynamic> map) {
     return TableGlobalSecondaryIndexKeySchema(
-      attributeName: (map['attributeName'] as String).input(),
-      keyType: (map['keyType'] as String).input(),
+      attributeName: pulumi.Input.fromValue(map['attributeName'] as String),
+      keyType: pulumi.Input.fromValue(map['keyType'] as String),
     );
   }
 }
-

@@ -13,23 +13,20 @@ class GetSecretArgs {
   /// Creates a new [GetSecretArgs].
   /// [project] Optional.
   /// [secretId] Required.
-  GetSecretArgs({
-    this.project,
-    required this.secretId,
-  });
+  GetSecretArgs({this.project, required this.secretId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'secretId': secretId,
-    };
+    return <String, dynamic>{'project': ?project, 'secretId': secretId};
   }
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      secretId: (map['secretId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretId: pulumi.Input.fromValue(map['secretId'] as String),
     );
   }
 }
-

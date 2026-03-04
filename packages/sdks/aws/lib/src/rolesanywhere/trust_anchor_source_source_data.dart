@@ -10,10 +10,7 @@ class TrustAnchorSourceSourceData {
   /// Creates a new [TrustAnchorSourceSourceData].
   /// [acmPcaArn] The ARN of an ACM Private Certificate Authority.
   /// [x509CertificateData] Optional.
-  TrustAnchorSourceSourceData({
-    this.acmPcaArn,
-    this.x509CertificateData,
-  });
+  TrustAnchorSourceSourceData({this.acmPcaArn, this.x509CertificateData});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,9 +21,16 @@ class TrustAnchorSourceSourceData {
 
   factory TrustAnchorSourceSourceData.fromMap(Map<String, dynamic> map) {
     return TrustAnchorSourceSourceData(
-      acmPcaArn: map['acmPcaArn'] == null ? null : ((map['acmPcaArn'] as String).input()).input(),
-      x509CertificateData: map['x509CertificateData'] == null ? null : ((map['x509CertificateData'] as String).input()).input(),
+      acmPcaArn: (() {
+        final guardedValue = map['acmPcaArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      x509CertificateData: (() {
+        final guardedValue = map['x509CertificateData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

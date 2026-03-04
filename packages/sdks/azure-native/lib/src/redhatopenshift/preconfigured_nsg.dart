@@ -3,16 +3,15 @@ enum PreconfiguredNSG {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const PreconfiguredNSG(this.value);
-  final String value;
+  const PreconfiguredNSG(this.wireValue);
+  final String wireValue;
 
   static PreconfiguredNSG fromValue(String value) {
     for (final item in PreconfiguredNSG.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PreconfiguredNSG value: $value');
   }
 }
-

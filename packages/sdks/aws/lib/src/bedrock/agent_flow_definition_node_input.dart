@@ -6,6 +6,7 @@ class AgentFlowDefinitionNodeInput {
   /// How input data flows between iterations in a DoWhile loop.
   final pulumi.Input<String>? category;
   final pulumi.Input<String> expression;
+
   /// A name for the flow.
   final pulumi.Input<String> name;
   final pulumi.Input<String> type;
@@ -33,11 +34,14 @@ class AgentFlowDefinitionNodeInput {
 
   factory AgentFlowDefinitionNodeInput.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeInput(
-      category: map['category'] == null ? null : ((map['category'] as String).input()).input(),
-      expression: (map['expression'] as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

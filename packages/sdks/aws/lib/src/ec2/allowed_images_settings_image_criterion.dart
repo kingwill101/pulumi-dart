@@ -6,13 +6,21 @@ import 'allowed_images_settings_image_criterion_deprecation_time_condition.dart'
 
 class AllowedImagesSettingsImageCriterion {
   /// Condition based on AMI creation date. See `creation_date_condition` below.
-  final pulumi.Input<AllowedImagesSettingsImageCriterionCreationDateCondition>? creationDateCondition;
+  final pulumi.Input<AllowedImagesSettingsImageCriterionCreationDateCondition>?
+  creationDateCondition;
+
   /// Condition based on AMI deprecation time. See `deprecation_time_condition` below.
-  final pulumi.Input<AllowedImagesSettingsImageCriterionDeprecationTimeCondition>? deprecationTimeCondition;
+  final pulumi.Input<
+    AllowedImagesSettingsImageCriterionDeprecationTimeCondition
+  >?
+  deprecationTimeCondition;
+
   /// Set of AMI name patterns to allow. Maximum of 50 names.
   final pulumi.Input<List<String>>? imageNames;
+
   /// Set of image providers to allow. Maximum of 200 providers. Valid values include `amazon`, `aws-marketplace`, `aws-backup-vault`, `none`, or a 12-digit AWS account ID.
   final pulumi.Input<List<String>>? imageProviders;
+
   /// Set of AWS Marketplace product codes to allow. Maximum of 50 product codes.
   final pulumi.Input<List<String>>? marketplaceProductCodes;
 
@@ -32,22 +40,59 @@ class AllowedImagesSettingsImageCriterion {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationDateCondition': ?pulumi.Input.mapOptionalInputValue<AllowedImagesSettingsImageCriterionCreationDateCondition, Map<String, dynamic>>(creationDateCondition, (value) => value.toMap()),
-      'deprecationTimeCondition': ?pulumi.Input.mapOptionalInputValue<AllowedImagesSettingsImageCriterionDeprecationTimeCondition, Map<String, dynamic>>(deprecationTimeCondition, (value) => value.toMap()),
+      'creationDateCondition':
+          ?pulumi.Input.mapOptionalInputValue<
+            AllowedImagesSettingsImageCriterionCreationDateCondition,
+            Map<String, dynamic>
+          >(creationDateCondition, (value) => value.toMap()),
+      'deprecationTimeCondition':
+          ?pulumi.Input.mapOptionalInputValue<
+            AllowedImagesSettingsImageCriterionDeprecationTimeCondition,
+            Map<String, dynamic>
+          >(deprecationTimeCondition, (value) => value.toMap()),
       'imageNames': ?imageNames,
       'imageProviders': ?imageProviders,
       'marketplaceProductCodes': ?marketplaceProductCodes,
     };
   }
 
-  factory AllowedImagesSettingsImageCriterion.fromMap(Map<String, dynamic> map) {
+  factory AllowedImagesSettingsImageCriterion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllowedImagesSettingsImageCriterion(
-      creationDateCondition: map['creationDateCondition'] == null ? null : ((AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap((map['creationDateCondition']! as Map).cast<String, dynamic>())).input()).input(),
-      deprecationTimeCondition: map['deprecationTimeCondition'] == null ? null : ((AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap((map['deprecationTimeCondition']! as Map).cast<String, dynamic>())).input()).input(),
-      imageNames: map['imageNames'] == null ? null : (((map['imageNames'] as List).cast<String>()).input()).input(),
-      imageProviders: map['imageProviders'] == null ? null : (((map['imageProviders'] as List).cast<String>()).input()).input(),
-      marketplaceProductCodes: map['marketplaceProductCodes'] == null ? null : (((map['marketplaceProductCodes'] as List).cast<String>()).input()).input(),
+      creationDateCondition: (() {
+        final guardedValue = map['creationDateCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deprecationTimeCondition: (() {
+        final guardedValue = map['deprecationTimeCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageNames: (() {
+        final guardedValue = map['imageNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      imageProviders: (() {
+        final guardedValue = map['imageProviders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      marketplaceProductCodes: (() {
+        final guardedValue = map['marketplaceProductCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

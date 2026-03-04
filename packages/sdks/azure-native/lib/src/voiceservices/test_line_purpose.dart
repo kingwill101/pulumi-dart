@@ -3,16 +3,15 @@ enum TestLinePurpose {
   manual("Manual"),
   automated("Automated");
 
-  const TestLinePurpose(this.value);
-  final String value;
+  const TestLinePurpose(this.wireValue);
+  final String wireValue;
 
   static TestLinePurpose fromValue(String value) {
     for (final item in TestLinePurpose.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TestLinePurpose value: $value');
   }
 }
-

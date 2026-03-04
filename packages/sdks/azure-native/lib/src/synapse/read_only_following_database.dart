@@ -140,29 +140,41 @@ import 'system_data_response.dart';
 class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
   /// The name of the attached database configuration cluster
   late final pulumi.Output<String> attachedDatabaseConfigurationName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   late final pulumi.Output<String?> hotCachePeriod;
+
   /// Kind of the database
   /// Expected value is 'ReadOnlyFollowing'.
   late final pulumi.Output<String> kind;
+
   /// The name of the leader cluster
   late final pulumi.Output<String> leaderClusterResourceId;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The principals modification kind of the database
   late final pulumi.Output<String> principalsModificationKind;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   late final pulumi.Output<String> softDeletePeriod;
+
   /// The statistics of the database.
   late final pulumi.Output<DatabaseStatisticsResponse> statistics;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -175,23 +187,27 @@ class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     ReadOnlyFollowingDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:ReadOnlyFollowingDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachedDatabaseConfigurationName = registerOutput<String>('attachedDatabaseConfigurationName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hotCachePeriod = registerOutput<String?>('hotCachePeriod');
-    this.kind = registerOutput<String>('kind');
-    this.leaderClusterResourceId = registerOutput<String>('leaderClusterResourceId');
-    this.location = registerOutput<String?>('location');
+         'azure-native:synapse:ReadOnlyFollowingDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachedDatabaseConfigurationName = registerOutput<String>(
+      'attachedDatabaseConfigurationName',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    kind = registerOutput<String>('kind');
+    leaderClusterResourceId = registerOutput<String>('leaderClusterResourceId');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.principalsModificationKind = registerOutput<String>('principalsModificationKind');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.softDeletePeriod = registerOutput<String>('softDeletePeriod');
-    this.statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    principalsModificationKind = registerOutput<String>(
+      'principalsModificationKind',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    softDeletePeriod = registerOutput<String>('softDeletePeriod');
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,24 +6,34 @@ import 'system_data_response.dart';
 class GetSecurityAdminConfigurationResult {
   /// Enum list of network intent policy based services.
   final List<String>? applyOnNetworkIntentPolicyBasedServices;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A description of the security configuration.
   final String? description;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Determine update behavior for changes to network groups referenced within the rules in this configuration.
   final String? networkGroupAddressSpaceAggregationOption;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// Unique identifier for this resource.
   final String resourceGuid;
+
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
+
   /// Resource type.
   final String type;
 
@@ -55,13 +65,15 @@ class GetSecurityAdminConfigurationResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applyOnNetworkIntentPolicyBasedServices': ?applyOnNetworkIntentPolicyBasedServices,
+      'applyOnNetworkIntentPolicyBasedServices':
+          ?applyOnNetworkIntentPolicyBasedServices,
       'azureApiVersion': azureApiVersion,
       'description': ?description,
       'etag': etag,
       'id': id,
       'name': name,
-      'networkGroupAddressSpaceAggregationOption': ?networkGroupAddressSpaceAggregationOption,
+      'networkGroupAddressSpaceAggregationOption':
+          ?networkGroupAddressSpaceAggregationOption,
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
       'systemData': systemData.toMap(),
@@ -69,20 +81,35 @@ class GetSecurityAdminConfigurationResult {
     };
   }
 
-  factory GetSecurityAdminConfigurationResult.fromMap(Map<String, dynamic> map) {
+  factory GetSecurityAdminConfigurationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSecurityAdminConfigurationResult(
-      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices']! as List).cast<String>(),
+      applyOnNetworkIntentPolicyBasedServices: (() {
+        final guardedValue = map['applyOnNetworkIntentPolicyBasedServices'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      networkGroupAddressSpaceAggregationOption: map['networkGroupAddressSpaceAggregationOption'] == null ? null : map['networkGroupAddressSpaceAggregationOption']! as String,
+      networkGroupAddressSpaceAggregationOption: (() {
+        final guardedValue = map['networkGroupAddressSpaceAggregationOption'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

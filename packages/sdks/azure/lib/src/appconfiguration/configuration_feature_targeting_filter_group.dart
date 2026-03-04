@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationFeatureTargetingFilterGroup {
   /// The name of the group.
   final pulumi.Input<String> name;
+
   /// Rollout percentage of the group.
   final pulumi.Input<int> rolloutPercentage;
 
@@ -23,11 +24,14 @@ class ConfigurationFeatureTargetingFilterGroup {
     };
   }
 
-  factory ConfigurationFeatureTargetingFilterGroup.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationFeatureTargetingFilterGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationFeatureTargetingFilterGroup(
-      name: (map['name'] as String).input(),
-      rolloutPercentage: (map['rolloutPercentage'] as int).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      rolloutPercentage: pulumi.Input.fromValue(
+        map['rolloutPercentage'] as int,
+      ),
     );
   }
 }
-

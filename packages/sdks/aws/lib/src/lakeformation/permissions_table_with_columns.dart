@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionsTableWithColumns {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final pulumi.Input<String>? catalogId;
+
   /// Set of column names for the table.
   final pulumi.Input<List<String>>? columnNames;
+
   /// Name of the database for the table with columns resource. Unique to the Data Catalog.
   final pulumi.Input<String> databaseName;
+
   /// Set of column names for the table to exclude. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   final pulumi.Input<List<String>>? excludedColumnNames;
+
   /// Name of the table resource.
   final pulumi.Input<String> name;
+
   /// Whether to use a column wildcard. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   ///
   /// The following arguments are optional:
@@ -47,13 +52,28 @@ class PermissionsTableWithColumns {
 
   factory PermissionsTableWithColumns.fromMap(Map<String, dynamic> map) {
     return PermissionsTableWithColumns(
-      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
-      columnNames: map['columnNames'] == null ? null : (((map['columnNames'] as List).cast<String>()).input()).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : (((map['excludedColumnNames'] as List).cast<String>()).input()).input(),
-      name: (map['name'] as String).input(),
-      wildcard: map['wildcard'] == null ? null : ((map['wildcard'] as bool).input()).input(),
+      catalogId: (() {
+        final guardedValue = map['catalogId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      columnNames: (() {
+        final guardedValue = map['columnNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      excludedColumnNames: (() {
+        final guardedValue = map['excludedColumnNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      wildcard: (() {
+        final guardedValue = map['wildcard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -1325,52 +1325,76 @@ import 'system_data_response.dart';
 class Job extends pulumi.CustomResource {
   /// Flag to indicate if all devices associated with the job are lost.
   late final pulumi.Output<bool> allDevicesLost;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Reason for cancellation.
   late final pulumi.Output<String> cancellationReason;
+
   /// Name of the stage where delay might be present.
   late final pulumi.Output<String> delayedStage;
+
   /// Delivery Info of Job.
   late final pulumi.Output<JobDeliveryInfoResponse?> deliveryInfo;
+
   /// Delivery type of Job.
   late final pulumi.Output<String?> deliveryType;
+
   /// Details of a job run. This field will only be sent for expand details filter.
   late final pulumi.Output<DataBoxCustomerDiskJobDetailsResponse?> details;
+
   /// Top level error for the job.
   late final pulumi.Output<CloudErrorResponse> error;
+
   /// Msi identity of the resource
   late final pulumi.Output<ResourceIdentityResponse?> identity;
+
   /// Describes whether the job is cancellable or not.
   late final pulumi.Output<bool> isCancellable;
+
   /// Flag to indicate cancellation of scheduled job.
   late final pulumi.Output<bool> isCancellableWithoutFee;
+
   /// Describes whether the job is deletable or not.
   late final pulumi.Output<bool> isDeletable;
+
   /// Is Prepare To Ship Enabled on this job
   late final pulumi.Output<bool> isPrepareToShipEnabled;
+
   /// Describes whether the shipping address is editable or not.
   late final pulumi.Output<bool> isShippingAddressEditable;
+
   /// The location of the resource. This will be one of the supported and registered Azure Regions (e.g. West US, East US, Southeast Asia, etc.). The region of a resource cannot be changed once it is created, but if an identical region is specified on update the request will succeed.
   late final pulumi.Output<String> location;
+
   /// Name of the object.
   late final pulumi.Output<String> name;
+
   /// The Editable status for Reverse Shipping Address and Contact Info
   late final pulumi.Output<String> reverseShippingDetailsUpdate;
+
   /// The Editable status for Reverse Transport preferences
   late final pulumi.Output<String> reverseTransportPreferenceUpdate;
+
   /// The sku type.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Time at which the job was started in UTC ISO 8601 format.
   late final pulumi.Output<String> startTime;
+
   /// Name of the stage which is in progress.
   late final pulumi.Output<String> status;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Type of the data transfer.
   late final pulumi.Output<String> transferType;
+
   /// Type of the object.
   late final pulumi.Output<String> type;
 
@@ -1378,40 +1402,43 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_databox_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:databox:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allDevicesLost = registerOutput<bool>('allDevicesLost');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cancellationReason = registerOutput<String>('cancellationReason');
-    this.delayedStage = registerOutput<String>('delayedStage');
-    this.deliveryInfo = registerOutput<JobDeliveryInfoResponse?>('deliveryInfo');
-    this.deliveryType = registerOutput<String?>('deliveryType');
-    this.details = registerOutput<DataBoxCustomerDiskJobDetailsResponse?>('details');
-    this.error = registerOutput<CloudErrorResponse>('error');
-    this.identity = registerOutput<ResourceIdentityResponse?>('identity');
-    this.isCancellable = registerOutput<bool>('isCancellable');
-    this.isCancellableWithoutFee = registerOutput<bool>('isCancellableWithoutFee');
-    this.isDeletable = registerOutput<bool>('isDeletable');
-    this.isPrepareToShipEnabled = registerOutput<bool>('isPrepareToShipEnabled');
-    this.isShippingAddressEditable = registerOutput<bool>('isShippingAddressEditable');
-    this.location = registerOutput<String>('location');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:databox:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allDevicesLost = registerOutput<bool>('allDevicesLost');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cancellationReason = registerOutput<String>('cancellationReason');
+    delayedStage = registerOutput<String>('delayedStage');
+    deliveryInfo = registerOutput<JobDeliveryInfoResponse?>('deliveryInfo');
+    deliveryType = registerOutput<String?>('deliveryType');
+    details = registerOutput<DataBoxCustomerDiskJobDetailsResponse?>('details');
+    error = registerOutput<CloudErrorResponse>('error');
+    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    isCancellable = registerOutput<bool>('isCancellable');
+    isCancellableWithoutFee = registerOutput<bool>('isCancellableWithoutFee');
+    isDeletable = registerOutput<bool>('isDeletable');
+    isPrepareToShipEnabled = registerOutput<bool>('isPrepareToShipEnabled');
+    isShippingAddressEditable = registerOutput<bool>(
+      'isShippingAddressEditable',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.reverseShippingDetailsUpdate = registerOutput<String>('reverseShippingDetailsUpdate');
-    this.reverseTransportPreferenceUpdate = registerOutput<String>('reverseTransportPreferenceUpdate');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.startTime = registerOutput<String>('startTime');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.transferType = registerOutput<String>('transferType');
-    this.type = registerOutput<String>('type');
+    reverseShippingDetailsUpdate = registerOutput<String>(
+      'reverseShippingDetailsUpdate',
+    );
+    reverseTransportPreferenceUpdate = registerOutput<String>(
+      'reverseTransportPreferenceUpdate',
+    );
+    sku = registerOutput<SkuResponse>('sku');
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    transferType = registerOutput<String>('transferType');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlFunctionArgs {
   /// Body of the User Defined Function.
   final pulumi.Input<String> body;
+
   /// The id of the Cosmos DB SQL Container to create the SQL User Defined Function within. Changing this forces a new SQL User Defined Function to be created.
   final pulumi.Input<String> containerId;
+
   /// The name which should be used for this SQL User Defined Function. Changing this forces a new SQL User Defined Function to be created.
   final pulumi.Input<String>? name;
 
@@ -18,11 +20,7 @@ class SqlFunctionArgs {
   /// [body] Body of the User Defined Function.
   /// [containerId] The id of the Cosmos DB SQL Container to create the SQL User Defined Function within. Changing this forces a new SQL User Defined Function to be created.
   /// [name] The name which should be used for this SQL User Defined Function. Changing this forces a new SQL User Defined Function to be created.
-  SqlFunctionArgs({
-    required this.body,
-    required this.containerId,
-    this.name,
-  });
+  SqlFunctionArgs({required this.body, required this.containerId, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,13 @@ class SqlFunctionArgs {
 
   factory SqlFunctionArgs.fromMap(Map<String, dynamic> map) {
     return SqlFunctionArgs(
-      body: (map['body'] as String).input(),
-      containerId: (map['containerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      body: pulumi.Input.fromValue(map['body'] as String),
+      containerId: pulumi.Input.fromValue(map['containerId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,39 @@ class DomainOsNvRamSourceCookies {
 
   /// Creates a new [DomainOsNvRamSourceCookies].
   /// [cookies] Configures cookies for the backing store source, allowing additional parameters for storage.
-  DomainOsNvRamSourceCookies({
-    this.cookies,
-  });
+  DomainOsNvRamSourceCookies({this.cookies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cookies': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceCookiesCookie>, List<Map<String, dynamic>>>(cookies, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceCookiesCookie, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cookies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainOsNvRamSourceCookiesCookie>,
+            List<Map<String, dynamic>>
+          >(
+            cookies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainOsNvRamSourceCookiesCookie,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainOsNvRamSourceCookies.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceCookies(
-      cookies: map['cookies'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceCookiesCookie>(map['cookies']!, (value) => DomainOsNvRamSourceCookiesCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cookies: (() {
+        final guardedValue = map['cookies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainOsNvRamSourceCookiesCookie>(
+            guardedValue,
+            (value) => DomainOsNvRamSourceCookiesCookie.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

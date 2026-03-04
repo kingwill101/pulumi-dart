@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration {
   /// Whether to return exact responses from Kendra. Defaults to `false`.
   final pulumi.Input<bool>? exactResponse;
+
   /// ARN of the Kendra index.
   final pulumi.Input<String> kendraIndex;
+
   /// Query filter string for Kendra.
   final pulumi.Input<String>? queryFilterString;
+
   /// Whether the query filter string is enabled.
   final pulumi.Input<bool>? queryFilterStringEnabled;
 
@@ -33,13 +36,26 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfigura
     };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration(
-      exactResponse: map['exactResponse'] == null ? null : ((map['exactResponse'] as bool).input()).input(),
-      kendraIndex: (map['kendraIndex'] as String).input(),
-      queryFilterString: map['queryFilterString'] == null ? null : ((map['queryFilterString'] as String).input()).input(),
-      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : ((map['queryFilterStringEnabled'] as bool).input()).input(),
+      exactResponse: (() {
+        final guardedValue = map['exactResponse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kendraIndex: pulumi.Input.fromValue(map['kendraIndex'] as String),
+      queryFilterString: (() {
+        final guardedValue = map['queryFilterString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryFilterStringEnabled: (() {
+        final guardedValue = map['queryFilterStringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

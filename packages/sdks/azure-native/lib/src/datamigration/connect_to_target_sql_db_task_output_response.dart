@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectToTargetSqlDbTaskOutputResponse {
   /// Source databases as a map from database name to database id
   final pulumi.Input<Map<String, String>> databases;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// Target server brand version
   final pulumi.Input<String> targetServerBrandVersion;
+
   /// Version of the target server
   final pulumi.Input<String> targetServerVersion;
 
@@ -34,13 +37,20 @@ class ConnectToTargetSqlDbTaskOutputResponse {
     };
   }
 
-  factory ConnectToTargetSqlDbTaskOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectToTargetSqlDbTaskOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToTargetSqlDbTaskOutputResponse(
-      databases: ((map['databases'] as Map).cast<String, String>()).input(),
-      id: (map['id'] as String).input(),
-      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
-      targetServerVersion: (map['targetServerVersion'] as String).input(),
+      databases: pulumi.Input.fromValue(
+        (map['databases'] as Map).cast<String, String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      targetServerBrandVersion: pulumi.Input.fromValue(
+        map['targetServerBrandVersion'] as String,
+      ),
+      targetServerVersion: pulumi.Input.fromValue(
+        map['targetServerVersion'] as String,
+      ),
     );
   }
 }
-

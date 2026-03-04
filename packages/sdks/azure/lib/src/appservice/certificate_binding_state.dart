@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateBindingState {
   /// The name of the App Service to which the certificate was bound.
   final pulumi.Input<String>? appServiceName;
+
   /// The ID of the certificate to bind to the custom domain. Changing this forces a new App Service Certificate Binding to be created.
   final pulumi.Input<String>? certificateId;
+
   /// The hostname of the bound certificate.
   final pulumi.Input<String>? hostname;
+
   /// The ID of the Custom Domain/Hostname Binding. Changing this forces a new App Service Certificate Binding to be created.
   final pulumi.Input<String>? hostnameBindingId;
+
   /// The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
   final pulumi.Input<String>? sslState;
+
   /// The certificate thumbprint.
   final pulumi.Input<String>? thumbprint;
 
@@ -46,13 +51,36 @@ class CertificateBindingState {
 
   factory CertificateBindingState.fromMap(Map<String, dynamic> map) {
     return CertificateBindingState(
-      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName']! as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      hostnameBindingId: map['hostnameBindingId'] == null ? null : (map['hostnameBindingId']! as String).input(),
-      sslState: map['sslState'] == null ? null : (map['sslState']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      appServiceName: (() {
+        final guardedValue = map['appServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateId: (() {
+        final guardedValue = map['certificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostnameBindingId: (() {
+        final guardedValue = map['hostnameBindingId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslState: (() {
+        final guardedValue = map['sslState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

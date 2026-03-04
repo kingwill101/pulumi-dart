@@ -264,7 +264,7 @@ import 'role_assignment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2022-05-01-preview, 2022-04-01
@@ -277,7 +277,7 @@ import 'role_assignment_state.dart';
 /// $ pulumi import azure:marketplace/roleAssignment:RoleAssignment example /providers/Microsoft.Marketplace/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000
 /// ```
 ///
-/// > **Note:** For cross tenant scenarios, the format of the `resource id` consists of the Azure resource ID and the tenant ID, for example:
+/// &gt; **Note:** For cross tenant scenarios, the format of the `resource id` consists of the Azure resource ID and the tenant ID, for example:
 ///
 /// ```text
 /// /providers/Microsoft.Marketplace/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000|00000000-0000-0000-0000-000000000000
@@ -285,31 +285,40 @@ import 'role_assignment_state.dart';
 class RoleAssignment extends pulumi.CustomResource {
   /// The condition that limits the resources that the role can be assigned to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> condition;
+
   /// The version of the condition. Possible values are `1.0` or `2.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> conditionVersion;
+
   /// The delegated Azure Resource ID which contains a Managed Identity. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This field is only used in cross tenant scenarios.
+  /// &gt; **Note:** This field is only used in cross tenant scenarios.
   late final pulumi.Output<String?> delegatedManagedIdentityResourceId;
+
   /// The description for this Role Assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> description;
+
   /// A unique UUID/GUID for this Role Assignment - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Principal (User, Group or Service Principal) to assign the Role Definition to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The Principal ID is also known as the Object ID (i.e. not the "Application ID" for applications). To assign Azure roles, the Principal must have `Microsoft.Authorization/roleAssignments/write` permissions. See [documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) for more information.
+  /// &gt; **Note:** The Principal ID is also known as the Object ID (i.e. not the "Application ID" for applications). To assign Azure roles, the Principal must have `Microsoft.Authorization/roleAssignments/write` permissions. See [documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) for more information.
   late final pulumi.Output<String> principalId;
+
   /// The type of the `principal_id`, e.g. User, Group, Service Principal, Application, etc.
   late final pulumi.Output<String> principalType;
+
   /// The Scoped-ID of the Role Definition. Changing this forces a new resource to be created. Conflicts with `role_definition_name`.
   late final pulumi.Output<String?> roleDefinitionId;
+
   /// The name of a built-in Role. Changing this forces a new resource to be created. Conflicts with `role_definition_id`.
   ///
-  /// > **Note:** To assign `Marketplace Admin` role, the calling Principal must first be assigned Privileged Role Administrator (like `Owner` role) or Global Administrator. See [documentation](https://learn.microsoft.com/en-us/marketplace/create-manage-private-azure-marketplace-new#prerequisites) for more information.
+  /// &gt; **Note:** To assign `Marketplace Admin` role, the calling Principal must first be assigned Privileged Role Administrator (like `Owner` role) or Global Administrator. See [documentation](https://learn.microsoft.com/en-us/marketplace/create-manage-private-azure-marketplace-new#prerequisites) for more information.
   late final pulumi.Output<String?> roleDefinitionName;
+
   /// If the `principal_id` is a newly provisioned `Service Principal` set this value to `true` to skip the `Azure Active Directory` check which may fail due to replication lag. This argument is only valid if the `principal_id` is a `Service Principal` identity. Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This field takes effect only when `principal_id` is a `Service Principal` identity.
+  /// &gt; **Note:** This field takes effect only when `principal_id` is a `Service Principal` identity.
   late final pulumi.Output<bool?> skipServicePrincipalAadCheck;
 
   /// Creates a new [RoleAssignment].
@@ -321,21 +330,25 @@ class RoleAssignment extends pulumi.CustomResource {
     RoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:marketplace/roleAssignment:RoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<String?>('condition');
-    this.conditionVersion = registerOutput<String?>('conditionVersion');
-    this.delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');
-    this.description = registerOutput<String?>('description');
+         'azure:marketplace/roleAssignment:RoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String?>('conditionVersion');
+    delegatedManagedIdentityResourceId = registerOutput<String?>(
+      'delegatedManagedIdentityResourceId',
+    );
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.roleDefinitionId = registerOutput<String?>('roleDefinitionId');
-    this.roleDefinitionName = registerOutput<String?>('roleDefinitionName');
-    this.skipServicePrincipalAadCheck = registerOutput<bool?>('skipServicePrincipalAadCheck');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    roleDefinitionId = registerOutput<String?>('roleDefinitionId');
+    roleDefinitionName = registerOutput<String?>('roleDefinitionName');
+    skipServicePrincipalAadCheck = registerOutput<bool?>(
+      'skipServicePrincipalAadCheck',
+    );
   }
 
   /// Gets an existing [RoleAssignment] resource's state with the given [name] and [id].
@@ -356,20 +369,24 @@ class RoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:marketplace/roleAssignment:RoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<String?>('condition');
-    this.conditionVersion = registerOutput<String?>('conditionVersion');
-    this.delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');
-    this.description = registerOutput<String?>('description');
+         'azure:marketplace/roleAssignment:RoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String?>('conditionVersion');
+    delegatedManagedIdentityResourceId = registerOutput<String?>(
+      'delegatedManagedIdentityResourceId',
+    );
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.roleDefinitionId = registerOutput<String?>('roleDefinitionId');
-    this.roleDefinitionName = registerOutput<String?>('roleDefinitionName');
-    this.skipServicePrincipalAadCheck = registerOutput<bool?>('skipServicePrincipalAadCheck');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    roleDefinitionId = registerOutput<String?>('roleDefinitionId');
+    roleDefinitionName = registerOutput<String?>('roleDefinitionName');
+    skipServicePrincipalAadCheck = registerOutput<bool?>(
+      'skipServicePrincipalAadCheck',
+    );
   }
 }

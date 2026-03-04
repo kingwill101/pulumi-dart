@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState {
   /// The ID of the Application Gateway's Backend Address Pool which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? backendAddressPoolId;
+
   /// The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
   final pulumi.Input<String>? ipConfigurationName;
+
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   final pulumi.Input<String>? networkInterfaceId;
 
@@ -29,12 +31,25 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState {
     };
   }
 
-  factory NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationState(
-      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId']! as String).input(),
-      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName']! as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
+      backendAddressPoolId: (() {
+        final guardedValue = map['backendAddressPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipConfigurationName: (() {
+        final guardedValue = map['ipConfigurationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

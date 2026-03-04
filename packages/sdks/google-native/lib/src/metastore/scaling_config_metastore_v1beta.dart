@@ -7,29 +7,42 @@ import 'scaling_config_instance_size_metastore_v1beta.dart';
 class ScalingConfigMetastoreV1beta {
   /// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
   final pulumi.Input<ScalingConfigInstanceSizeMetastoreV1beta>? instanceSize;
+
   /// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
   final pulumi.Input<double>? scalingFactor;
 
   /// Creates a new [ScalingConfigMetastoreV1beta].
   /// [instanceSize] An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
   /// [scalingFactor] Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
-  ScalingConfigMetastoreV1beta({
-    this.instanceSize,
-    this.scalingFactor,
-  });
+  ScalingConfigMetastoreV1beta({this.instanceSize, this.scalingFactor});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instanceSize': ?pulumi.Input.mapOptionalInputValue<ScalingConfigInstanceSizeMetastoreV1beta, String>(instanceSize, (value) => value.value),
+      'instanceSize':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScalingConfigInstanceSizeMetastoreV1beta,
+            String
+          >(instanceSize, (value) => value.wireValue),
       'scalingFactor': ?scalingFactor,
     };
   }
 
   factory ScalingConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return ScalingConfigMetastoreV1beta(
-      instanceSize: map['instanceSize'] == null ? null : (ScalingConfigInstanceSizeMetastoreV1beta.fromValue(map['instanceSize']! as String)).input(),
-      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor']! as double).input(),
+      instanceSize: (() {
+        final guardedValue = map['instanceSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScalingConfigInstanceSizeMetastoreV1beta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      scalingFactor: (() {
+        final guardedValue = map['scalingFactor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

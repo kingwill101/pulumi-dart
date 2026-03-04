@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultSigningKeyParameters {
   /// Resource group of the user's Key Vault containing the secret
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of secret in Key Vault.
   final pulumi.Input<String> secretName;
+
   /// The version(GUID) of secret in Key Vault.
   final pulumi.Input<String> secretVersion;
+
   /// Subscription Id of the user's Key Vault containing the secret
   final pulumi.Input<String> subscriptionId;
   final pulumi.Input<String> typeName;
+
   /// The name of the user's Key Vault containing the secret
   final pulumi.Input<String> vaultName;
 
@@ -45,13 +49,14 @@ class KeyVaultSigningKeyParameters {
 
   factory KeyVaultSigningKeyParameters.fromMap(Map<String, dynamic> map) {
     return KeyVaultSigningKeyParameters(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
-      secretVersion: (map['secretVersion'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      typeName: (map['typeName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      typeName: pulumi.Input.fromValue(map['typeName'] as String),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

@@ -8,16 +8,15 @@ enum ModelSize {
   valueLarge("Large"),
   valueExtraLarge("ExtraLarge");
 
-  const ModelSize(this.value);
-  final String value;
+  const ModelSize(this.wireValue);
+  final String wireValue;
 
   static ModelSize fromValue(String value) {
     for (final item in ModelSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ModelSize value: $value');
   }
 }
-

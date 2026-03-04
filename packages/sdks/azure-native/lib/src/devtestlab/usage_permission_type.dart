@@ -4,16 +4,15 @@ enum UsagePermissionType {
   deny("Deny"),
   allow("Allow");
 
-  const UsagePermissionType(this.value);
-  final String value;
+  const UsagePermissionType(this.wireValue);
+  final String wireValue;
 
   static UsagePermissionType fromValue(String value) {
     for (final item in UsagePermissionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UsagePermissionType value: $value');
   }
 }
-

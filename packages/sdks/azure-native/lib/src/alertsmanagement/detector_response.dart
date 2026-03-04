@@ -7,18 +7,26 @@ import 'detector_parameter_definition_response.dart';
 class DetectorResponse {
   /// The Smart Detector description.
   final pulumi.Input<String> description;
+
   /// The detector id.
   final pulumi.Input<String> id;
+
   /// The Smart Detector image path. By default this is not populated, unless it's specified in expandDetector
   final pulumi.Input<List<String>> imagePaths;
+
   /// The Smart Detector name.
   final pulumi.Input<String> name;
+
   /// The Smart Detector parameters definitions.'
-  final pulumi.Input<List<DetectorParameterDefinitionResponse>> parameterDefinitions;
+  final pulumi.Input<List<DetectorParameterDefinitionResponse>>
+  parameterDefinitions;
+
   /// The detector's parameters.'
   final pulumi.Input<Map<String, dynamic>>? parameters;
+
   /// The Smart Detector supported cadences.
   final pulumi.Input<List<int>> supportedCadences;
+
   /// The Smart Detector supported resource types.
   final pulumi.Input<List<String>> supportedResourceTypes;
 
@@ -48,7 +56,18 @@ class DetectorResponse {
       'id': id,
       'imagePaths': imagePaths,
       'name': name,
-      'parameterDefinitions': pulumi.Input.mapInputValue<List<DetectorParameterDefinitionResponse>, List<Map<String, dynamic>>>(parameterDefinitions, (value) => pulumi.Input.encodeList<DetectorParameterDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameterDefinitions':
+          pulumi.Input.mapInputValue<
+            List<DetectorParameterDefinitionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parameterDefinitions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DetectorParameterDefinitionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'parameters': ?parameters,
       'supportedCadences': supportedCadences,
       'supportedResourceTypes': supportedResourceTypes,
@@ -57,15 +76,33 @@ class DetectorResponse {
 
   factory DetectorResponse.fromMap(Map<String, dynamic> map) {
     return DetectorResponse(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      imagePaths: ((map['imagePaths'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      parameterDefinitions: (pulumi.Input.decodeList<DetectorParameterDefinitionResponse>(map['parameterDefinitions'], (value) => DetectorParameterDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
-      supportedCadences: ((map['supportedCadences'] as List).cast<int>()).input(),
-      supportedResourceTypes: ((map['supportedResourceTypes'] as List).cast<String>()).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      imagePaths: pulumi.Input.fromValue(
+        (map['imagePaths'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameterDefinitions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DetectorParameterDefinitionResponse>(
+          map['parameterDefinitions']!,
+          (value) => DetectorParameterDefinitionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      supportedCadences: pulumi.Input.fromValue(
+        (map['supportedCadences'] as List).cast<int>(),
+      ),
+      supportedResourceTypes: pulumi.Input.fromValue(
+        (map['supportedResourceTypes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

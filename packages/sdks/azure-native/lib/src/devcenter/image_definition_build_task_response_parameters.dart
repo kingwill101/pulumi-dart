@@ -15,17 +15,15 @@ class ImageDefinitionBuildTaskResponseParameters {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory ImageDefinitionBuildTaskResponseParameters.fromMap(Map<String, dynamic> map) {
+  factory ImageDefinitionBuildTaskResponseParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImageDefinitionBuildTaskResponseParameters(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

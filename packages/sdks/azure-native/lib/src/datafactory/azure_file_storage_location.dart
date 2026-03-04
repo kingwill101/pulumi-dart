@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileStorageLocation {
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
+
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
+
   /// Type of dataset storage location.
   /// Expected value is 'AzureFileStorageLocation'.
   final pulumi.Input<String> type;
@@ -32,10 +34,17 @@ class AzureFileStorageLocation {
 
   factory AzureFileStorageLocation.fromMap(Map<String, dynamic> map) {
     return AzureFileStorageLocation(
-      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
-      type: (map['type'] as String).input(),
+      fileName: (() {
+        final guardedValue = map['fileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      folderPath: (() {
+        final guardedValue = map['folderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

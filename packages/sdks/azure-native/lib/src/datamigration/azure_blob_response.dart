@@ -7,12 +7,16 @@ import 'managed_service_identity_response.dart';
 class AzureBlobResponse {
   /// Storage Account Key.
   final pulumi.Input<String>? accountKey;
+
   /// Authentication type used for accessing Azure Blob Storage.
   final pulumi.Input<String>? authType;
+
   /// Blob container name where backups are stored.
   final pulumi.Input<String>? blobContainerName;
+
   /// Identity details for authentication using a Managed Identity.
   final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+
   /// Resource Id of the storage account where backups are stored.
   final pulumi.Input<String>? storageAccountResourceId;
 
@@ -35,19 +39,46 @@ class AzureBlobResponse {
       'accountKey': ?accountKey,
       'authType': ?authType,
       'blobContainerName': ?blobContainerName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentityResponse,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'storageAccountResourceId': ?storageAccountResourceId,
     };
   }
 
   factory AzureBlobResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
-      blobContainerName: map['blobContainerName'] == null ? null : (map['blobContainerName']! as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      blobContainerName: (() {
+        final guardedValue = map['blobContainerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageAccountResourceId: (() {
+        final guardedValue = map['storageAccountResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

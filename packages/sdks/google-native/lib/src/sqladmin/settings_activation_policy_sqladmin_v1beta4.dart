@@ -2,19 +2,20 @@
 enum SettingsActivationPolicySqladminV1beta4 {
   sqlActivationPolicyUnspecified("SQL_ACTIVATION_POLICY_UNSPECIFIED"),
   always("ALWAYS"),
-  never("NEVER"),
+  never_("NEVER"),
   onDemand("ON_DEMAND");
 
-  const SettingsActivationPolicySqladminV1beta4(this.value);
-  final String value;
+  const SettingsActivationPolicySqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static SettingsActivationPolicySqladminV1beta4 fromValue(String value) {
     for (final item in SettingsActivationPolicySqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SettingsActivationPolicySqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown SettingsActivationPolicySqladminV1beta4 value: $value',
+    );
   }
 }
-

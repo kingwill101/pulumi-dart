@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IAppVariable {
   /// Name of origin
   final pulumi.Input<String>? encrypted;
+
   /// Name of the iApp.
   final pulumi.Input<String>? name;
+
   /// Name of origin
   final pulumi.Input<String>? value;
 
@@ -14,11 +16,7 @@ class IAppVariable {
   /// [encrypted] Name of origin
   /// [name] Name of the iApp.
   /// [value] Name of origin
-  IAppVariable({
-    this.encrypted,
-    this.name,
-    this.value,
-  });
+  IAppVariable({this.encrypted, this.name, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class IAppVariable {
 
   factory IAppVariable.fromMap(Map<String, dynamic> map) {
     return IAppVariable(
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

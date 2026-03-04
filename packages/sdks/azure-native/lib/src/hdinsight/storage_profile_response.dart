@@ -10,20 +10,39 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [storageaccounts] The list of storage accounts in the cluster.
-  StorageProfileResponse({
-    this.storageaccounts,
-  });
+  StorageProfileResponse({this.storageaccounts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'storageaccounts': ?pulumi.Input.mapOptionalInputValue<List<StorageAccountResponse>, List<Map<String, dynamic>>>(storageaccounts, (value) => pulumi.Input.encodeList<StorageAccountResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'storageaccounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StorageAccountResponse>,
+            List<Map<String, dynamic>>
+          >(
+            storageaccounts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StorageAccountResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      storageaccounts: map['storageaccounts'] == null ? null : (pulumi.Input.decodeList<StorageAccountResponse>(map['storageaccounts']!, (value) => StorageAccountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageaccounts: (() {
+        final guardedValue = map['storageaccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StorageAccountResponse>(
+            guardedValue,
+            (value) => StorageAccountResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

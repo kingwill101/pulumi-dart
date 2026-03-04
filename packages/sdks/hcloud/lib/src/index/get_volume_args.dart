@@ -9,15 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeArgs {
   /// ID of the volume.
   final pulumi.Input<int>? id;
+
   /// (string) The location name. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final pulumi.Input<String>? location;
+
   /// Name of the volume.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? selector;
+
   /// (Optional, int) Server ID the volume is attached to
   final pulumi.Input<int>? serverId;
+
   /// Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final pulumi.Input<String>? withSelector;
+
   /// List only volumes with the specified status, could contain `creating` or `available`.
   final pulumi.Input<List<String>>? withStatuses;
 
@@ -53,14 +58,41 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
-      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses']! as List).cast<String>()).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverId: (() {
+        final guardedValue = map['serverId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withStatuses: (() {
+        final guardedValue = map['withStatuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -101,8 +101,10 @@ import 'receipt_rule_set_state.dart';
 class ReceiptRuleSet extends pulumi.CustomResource {
   /// SES receipt rule set ARN.
   late final pulumi.Output<String> arn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Name of the rule set.
   late final pulumi.Output<String> ruleSetName;
 
@@ -115,14 +117,14 @@ class ReceiptRuleSet extends pulumi.CustomResource {
     ReceiptRuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/receiptRuleSet:ReceiptRuleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.region = registerOutput<String>('region');
-    this.ruleSetName = registerOutput<String>('ruleSetName');
+         'aws:ses/receiptRuleSet:ReceiptRuleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    ruleSetName = registerOutput<String>('ruleSetName');
   }
 
   /// Gets an existing [ReceiptRuleSet] resource's state with the given [name] and [id].
@@ -143,13 +145,13 @@ class ReceiptRuleSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/receiptRuleSet:ReceiptRuleSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.region = registerOutput<String>('region');
-    this.ruleSetName = registerOutput<String>('ruleSetName');
+         'aws:ses/receiptRuleSet:ReceiptRuleSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    ruleSetName = registerOutput<String>('ruleSetName');
   }
 }

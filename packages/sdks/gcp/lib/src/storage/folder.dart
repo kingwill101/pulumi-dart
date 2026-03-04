@@ -223,17 +223,23 @@ import 'folder_state.dart';
 class Folder extends pulumi.CustomResource {
   /// The name of the bucket that contains the folder.
   late final pulumi.Output<String> bucket;
+
   /// The timestamp at which this folder was created.
   late final pulumi.Output<String> createTime;
+
   /// If set to true, items within folder if any will be force destroyed.
   late final pulumi.Output<bool?> forceDestroy;
+
   /// The metadata generation of the folder.
   late final pulumi.Output<String> metageneration;
+
   /// The name of the folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
   late final pulumi.Output<String> name;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The timestamp at which this folder was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -241,23 +247,20 @@ class Folder extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Folder]. {@macro pulumi_storage_folder_folder_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Folder(
-    String name, {
-    FolderArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:storage/folder:Folder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.metageneration = registerOutput<String>('metageneration');
+  Folder(String name, {FolderArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:storage/folder:Folder',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.updateTime = registerOutput<String>('updateTime');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Folder] resource's state with the given [name] and [id].
@@ -278,17 +281,17 @@ class Folder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/folder:Folder',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.metageneration = registerOutput<String>('metageneration');
+         'gcp:storage/folder:Folder',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    metageneration = registerOutput<String>('metageneration');
     this.name = registerOutput<String>('name');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.updateTime = registerOutput<String>('updateTime');
+    selfLink = registerOutput<String>('selfLink');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

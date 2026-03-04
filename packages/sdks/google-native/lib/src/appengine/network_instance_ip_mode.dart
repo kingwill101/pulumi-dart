@@ -4,16 +4,15 @@ enum NetworkInstanceIpMode {
   external("EXTERNAL"),
   internal("INTERNAL");
 
-  const NetworkInstanceIpMode(this.value);
-  final String value;
+  const NetworkInstanceIpMode(this.wireValue);
+  final String wireValue;
 
   static NetworkInstanceIpMode fromValue(String value) {
     for (final item in NetworkInstanceIpMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkInstanceIpMode value: $value');
   }
 }
-

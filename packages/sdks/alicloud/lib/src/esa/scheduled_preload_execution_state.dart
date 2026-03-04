@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduledPreloadExecutionState {
   /// The end time of the prefetch plan.
   final pulumi.Input<String>? endTime;
+
   /// The time interval between each batch execution. Unit: seconds.
   final pulumi.Input<int>? interval;
+
   /// The ID of the prefetch plan.
   final pulumi.Input<String>? scheduledPreloadExecutionId;
+
   /// The ID of the prefetch task.
   final pulumi.Input<String>? scheduledPreloadJobId;
+
   /// The number of URLs prefetched in each batch.
   final pulumi.Input<int>? sliceLen;
+
   /// The start time of the prefetch plan.
   final pulumi.Input<String>? startTime;
+
   /// The status of the prefetch plan, including the following statuses.
   final pulumi.Input<String>? status;
 
@@ -51,14 +57,41 @@ class ScheduledPreloadExecutionState {
 
   factory ScheduledPreloadExecutionState.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadExecutionState(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
-      scheduledPreloadExecutionId: map['scheduledPreloadExecutionId'] == null ? null : (map['scheduledPreloadExecutionId']! as String).input(),
-      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : (map['scheduledPreloadJobId']! as String).input(),
-      sliceLen: map['sliceLen'] == null ? null : (map['sliceLen']! as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scheduledPreloadExecutionId: (() {
+        final guardedValue = map['scheduledPreloadExecutionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduledPreloadJobId: (() {
+        final guardedValue = map['scheduledPreloadJobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sliceLen: (() {
+        final guardedValue = map['sliceLen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

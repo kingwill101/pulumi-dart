@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetResourceGroupFilterNotTag {
   /// The name of this Consumption Budget.
   final pulumi.Input<String> name;
+
   /// The operator used for comparison.
   final pulumi.Input<String> operator;
+
   /// A list of values for the tag.
   final pulumi.Input<List<String>> values;
 
@@ -30,10 +32,9 @@ class GetBudgetResourceGroupFilterNotTag {
 
   factory GetBudgetResourceGroupFilterNotTag.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupFilterNotTag(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

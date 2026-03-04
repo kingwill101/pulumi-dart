@@ -563,25 +563,32 @@ class FolderCustomModule extends pulumi.CustomResource {
   /// or project in which you are viewing the custom module. Otherwise, ancestor_module
   /// specifies the organization or folder from which the custom module is inherited.
   late final pulumi.Output<String> ancestorModule;
+
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
   late final pulumi.Output<FolderCustomModuleCustomConfig> customConfig;
+
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
   late final pulumi.Output<String> displayName;
+
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> enablementState;
+
   /// Numerical ID of the parent folder.
   late final pulumi.Output<String> folder;
+
   /// The editor that last updated the custom module.
   late final pulumi.Output<String> lastEditor;
+
   /// The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
   /// The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   late final pulumi.Output<String> name;
+
   /// The time at which the custom module was last updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -596,19 +603,21 @@ class FolderCustomModule extends pulumi.CustomResource {
     FolderCustomModuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/folderCustomModule:FolderCustomModule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ancestorModule = registerOutput<String>('ancestorModule');
-    this.customConfig = registerOutput<FolderCustomModuleCustomConfig>('customConfig');
-    this.displayName = registerOutput<String>('displayName');
-    this.enablementState = registerOutput<String>('enablementState');
-    this.folder = registerOutput<String>('folder');
-    this.lastEditor = registerOutput<String>('lastEditor');
+         'gcp:securitycenter/folderCustomModule:FolderCustomModule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ancestorModule = registerOutput<String>('ancestorModule');
+    customConfig = registerOutput<FolderCustomModuleCustomConfig>(
+      'customConfig',
+    );
+    displayName = registerOutput<String>('displayName');
+    enablementState = registerOutput<String>('enablementState');
+    folder = registerOutput<String>('folder');
+    lastEditor = registerOutput<String>('lastEditor');
     this.name = registerOutput<String>('name');
-    this.updateTime = registerOutput<String>('updateTime');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [FolderCustomModule] resource's state with the given [name] and [id].
@@ -629,18 +638,20 @@ class FolderCustomModule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/folderCustomModule:FolderCustomModule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ancestorModule = registerOutput<String>('ancestorModule');
-    this.customConfig = registerOutput<FolderCustomModuleCustomConfig>('customConfig');
-    this.displayName = registerOutput<String>('displayName');
-    this.enablementState = registerOutput<String>('enablementState');
-    this.folder = registerOutput<String>('folder');
-    this.lastEditor = registerOutput<String>('lastEditor');
+         'gcp:securitycenter/folderCustomModule:FolderCustomModule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ancestorModule = registerOutput<String>('ancestorModule');
+    customConfig = registerOutput<FolderCustomModuleCustomConfig>(
+      'customConfig',
+    );
+    displayName = registerOutput<String>('displayName');
+    enablementState = registerOutput<String>('enablementState');
+    folder = registerOutput<String>('folder');
+    lastEditor = registerOutput<String>('lastEditor');
     this.name = registerOutput<String>('name');
-    this.updateTime = registerOutput<String>('updateTime');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

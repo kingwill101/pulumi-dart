@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_target_group_args.dart';
-import 'job_target_group_job_target.dart';
 import 'job_target_group_state.dart';
 
 /// Manages a Job Target Group.
@@ -353,7 +352,7 @@ import 'job_target_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -368,8 +367,10 @@ import 'job_target_group_state.dart';
 class JobTargetGroup extends pulumi.CustomResource {
   /// The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> jobAgentId;
+
   /// One or more `job_target` blocks as defined below.
-  late final pulumi.Output<List<JobTargetGroupJobTarget>?> jobTargets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> jobTargets;
+
   /// The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> name;
 
@@ -382,13 +383,13 @@ class JobTargetGroup extends pulumi.CustomResource {
     JobTargetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobTargetGroup:JobTargetGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.jobAgentId = registerOutput<String>('jobAgentId');
-    this.jobTargets = registerOutput<List<JobTargetGroupJobTarget>?>('jobTargets');
+         'azure:mssql/jobTargetGroup:JobTargetGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    jobAgentId = registerOutput<String>('jobAgentId');
+    jobTargets = registerOutput<List<Map<String, dynamic>>?>('jobTargets');
     this.name = registerOutput<String>('name');
   }
 
@@ -410,13 +411,13 @@ class JobTargetGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobTargetGroup:JobTargetGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.jobAgentId = registerOutput<String>('jobAgentId');
-    this.jobTargets = registerOutput<List<JobTargetGroupJobTarget>?>('jobTargets');
+         'azure:mssql/jobTargetGroup:JobTargetGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    jobAgentId = registerOutput<String>('jobAgentId');
+    jobTargets = registerOutput<List<Map<String, dynamic>>?>('jobTargets');
     this.name = registerOutput<String>('name');
   }
 }

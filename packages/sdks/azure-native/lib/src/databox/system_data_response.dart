@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemDataResponse {
   /// The timestamp of resource creation (UTC)
   final pulumi.Input<String> createdAt;
+
   /// A string identifier for the identity that created the resource
   final pulumi.Input<String> createdBy;
+
   /// The type of identity that created the resource: user, application, managedIdentity
   final pulumi.Input<String> createdByType;
+
   /// The timestamp of resource last modification (UTC)
   final pulumi.Input<String> lastModifiedAt;
+
   /// A string identifier for the identity that last modified the resource
   final pulumi.Input<String> lastModifiedBy;
+
   /// The type of identity that last modified the resource: user, application, managedIdentity
   final pulumi.Input<String> lastModifiedByType;
 
@@ -46,13 +51,14 @@ class SystemDataResponse {
 
   factory SystemDataResponse.fromMap(Map<String, dynamic> map) {
     return SystemDataResponse(
-      createdAt: (map['createdAt'] as String).input(),
-      createdBy: (map['createdBy'] as String).input(),
-      createdByType: (map['createdByType'] as String).input(),
-      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
-      lastModifiedBy: (map['lastModifiedBy'] as String).input(),
-      lastModifiedByType: (map['lastModifiedByType'] as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      createdByType: pulumi.Input.fromValue(map['createdByType'] as String),
+      lastModifiedAt: pulumi.Input.fromValue(map['lastModifiedAt'] as String),
+      lastModifiedBy: pulumi.Input.fromValue(map['lastModifiedBy'] as String),
+      lastModifiedByType: pulumi.Input.fromValue(
+        map['lastModifiedByType'] as String,
+      ),
     );
   }
 }
-

@@ -6,9 +6,16 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs {
   /// Input object for the batch transform job. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput>? batchTransformInput;
+  final pulumi.Input<
+    MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput
+  >?
+  batchTransformInput;
+
   /// Endpoint for a monitoring job. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput>? endpointInput;
+  final pulumi.Input<
+    MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput
+  >?
+  endpointInput;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs].
   /// [batchTransformInput] Input object for the batch transform job. Fields are documented below.
@@ -20,16 +27,41 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'batchTransformInput': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput, Map<String, dynamic>>(batchTransformInput, (value) => value.toMap()),
-      'endpointInput': ?pulumi.Input.mapOptionalInputValue<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput, Map<String, dynamic>>(endpointInput, (value) => value.toMap()),
+      'batchTransformInput':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput,
+            Map<String, dynamic>
+          >(batchTransformInput, (value) => value.toMap()),
+      'endpointInput':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput,
+            Map<String, dynamic>
+          >(endpointInput, (value) => value.toMap()),
     };
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap(Map<String, dynamic> map) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs(
-      batchTransformInput: map['batchTransformInput'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput.fromMap((map['batchTransformInput']! as Map).cast<String, dynamic>())).input()).input(),
-      endpointInput: map['endpointInput'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap((map['endpointInput']! as Map).cast<String, dynamic>())).input()).input(),
+      batchTransformInput: (() {
+        final guardedValue = map['batchTransformInput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      endpointInput: (() {
+        final guardedValue = map['endpointInput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

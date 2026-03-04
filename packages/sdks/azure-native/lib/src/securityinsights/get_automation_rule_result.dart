@@ -10,30 +10,43 @@ import 'system_data_response.dart';
 class GetAutomationRuleResult {
   /// The actions to execute when the automation rule is triggered.
   final List<AutomationRuleAddIncidentTaskActionResponse> actions;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Information on the client (user or application) that made some action
   final ClientInfoResponse createdBy;
+
   /// The time the automation rule was created.
   final String createdTimeUtc;
+
   /// The display name of the automation rule.
   final String displayName;
+
   /// Etag of the azure resource
   final String? etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Information on the client (user or application) that made some action
   final ClientInfoResponse lastModifiedBy;
+
   /// The last time the automation rule was updated.
   final String lastModifiedTimeUtc;
+
   /// The name of the resource
   final String name;
+
   /// The order of execution of the automation rule.
   final int order;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Describes automation rule triggering logic.
   final AutomationRuleTriggeringLogicResponse triggeringLogic;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -71,7 +84,11 @@ class GetAutomationRuleResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<AutomationRuleAddIncidentTaskActionResponse, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'actions':
+          pulumi.Input.encodeList<
+            AutomationRuleAddIncidentTaskActionResponse,
+            Map<String, dynamic>
+          >(actions, (value) => value.toMap()),
       'azureApiVersion': azureApiVersion,
       'createdBy': createdBy.toMap(),
       'createdTimeUtc': createdTimeUtc,
@@ -90,21 +107,38 @@ class GetAutomationRuleResult {
 
   factory GetAutomationRuleResult.fromMap(Map<String, dynamic> map) {
     return GetAutomationRuleResult(
-      actions: pulumi.Input.decodeList<AutomationRuleAddIncidentTaskActionResponse>(map['actions'], (value) => AutomationRuleAddIncidentTaskActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      actions:
+          pulumi.Input.decodeList<AutomationRuleAddIncidentTaskActionResponse>(
+            map['actions']!,
+            (value) => AutomationRuleAddIncidentTaskActionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       azureApiVersion: map['azureApiVersion'] as String,
-      createdBy: ClientInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>()),
+      createdBy: ClientInfoResponse.fromMap(
+        (map['createdBy']! as Map).cast<String, dynamic>(),
+      ),
       createdTimeUtc: map['createdTimeUtc'] as String,
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      lastModifiedBy: ClientInfoResponse.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>()),
+      lastModifiedBy: ClientInfoResponse.fromMap(
+        (map['lastModifiedBy']! as Map).cast<String, dynamic>(),
+      ),
       lastModifiedTimeUtc: map['lastModifiedTimeUtc'] as String,
       name: map['name'] as String,
       order: map['order'] as int,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      triggeringLogic: AutomationRuleTriggeringLogicResponse.fromMap((map['triggeringLogic'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      triggeringLogic: AutomationRuleTriggeringLogicResponse.fromMap(
+        (map['triggeringLogic']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

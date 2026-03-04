@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleMapping {
   /// A list of groups within Kubernetes to which the role is mapped.
   final pulumi.Input<List<String>> groups;
+
   /// The ARN of the IAM role to add.
   final pulumi.Input<String> roleArn;
+
   /// The user name within Kubernetes to map to the IAM role. By default, the user name is the ARN of the IAM role.
   final pulumi.Input<String> username;
 
@@ -31,10 +33,9 @@ class RoleMapping {
 
   factory RoleMapping.fromMap(Map<String, dynamic> map) {
     return RoleMapping(
-      groups: ((map['groups'] as List).cast<String>()).input(),
-      roleArn: (map['roleArn'] as String).input(),
-      username: (map['username'] as String).input(),
+      groups: pulumi.Input.fromValue((map['groups'] as List).cast<String>()),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

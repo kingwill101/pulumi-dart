@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationStoreReplica {
   /// The URL of the App Configuration Replica.
   final pulumi.Input<String> endpoint;
+
   /// The ID of the Access Key.
   final pulumi.Input<String> id;
+
   /// The supported Azure location where the App Configuration Replica exists.
   final pulumi.Input<String> location;
+
   /// The Name of this App Configuration.
   final pulumi.Input<String> name;
 
@@ -35,11 +38,10 @@ class GetConfigurationStoreReplica {
 
   factory GetConfigurationStoreReplica.fromMap(Map<String, dynamic> map) {
     return GetConfigurationStoreReplica(
-      endpoint: (map['endpoint'] as String).input(),
-      id: (map['id'] as String).input(),
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

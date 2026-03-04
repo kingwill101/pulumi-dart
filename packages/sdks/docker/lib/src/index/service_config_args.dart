@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceConfigArgs {
   /// Base64-url-safe-encoded config data
   final pulumi.Input<String> data;
+
   /// User-defined name of the config
   final pulumi.Input<String>? name;
 
   /// Creates a new [ServiceConfigArgs].
   /// [data] Base64-url-safe-encoded config data
   /// [name] User-defined name of the config
-  ServiceConfigArgs({
-    required this.data,
-    this.name,
-  });
+  ServiceConfigArgs({required this.data, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'data': data,
-      'name': ?name,
-    };
+    return <String, dynamic>{'data': data, 'name': ?name};
   }
 
   factory ServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigArgs(
-      data: (map['data'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      data: pulumi.Input.fromValue(map['data'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

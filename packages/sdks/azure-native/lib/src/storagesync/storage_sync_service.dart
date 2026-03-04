@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_service_identity_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'storage_sync_service_args.dart';
 import 'system_data_response.dart';
 
@@ -169,32 +168,47 @@ import 'system_data_response.dart';
 class StorageSyncService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Incoming Traffic Policy
   late final pulumi.Output<String?> incomingTrafficPolicy;
+
   /// Resource Last Operation Name
   late final pulumi.Output<String> lastOperationName;
+
   /// StorageSyncService lastWorkflowId
   late final pulumi.Output<String> lastWorkflowId;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of private endpoint connection associated with the specified storage sync service
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// StorageSyncService Provisioning State
   late final pulumi.Output<String> provisioningState;
+
   /// Storage Sync service status.
   late final pulumi.Output<int> storageSyncServiceStatus;
+
   /// Storage Sync service Uid
   late final pulumi.Output<String> storageSyncServiceUid;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Use Identity authorization when customer have finished setup RBAC permissions.
   late final pulumi.Output<bool> useIdentity;
 
@@ -207,25 +221,27 @@ class StorageSyncService extends pulumi.CustomResource {
     StorageSyncServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storagesync:StorageSyncService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
-    this.lastOperationName = registerOutput<String>('lastOperationName');
-    this.lastWorkflowId = registerOutput<String>('lastWorkflowId');
-    this.location = registerOutput<String>('location');
+         'azure-native:storagesync:StorageSyncService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    incomingTrafficPolicy = registerOutput<String?>('incomingTrafficPolicy');
+    lastOperationName = registerOutput<String>('lastOperationName');
+    lastWorkflowId = registerOutput<String>('lastWorkflowId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storageSyncServiceStatus = registerOutput<int>('storageSyncServiceStatus');
-    this.storageSyncServiceUid = registerOutput<String>('storageSyncServiceUid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.useIdentity = registerOutput<bool>('useIdentity');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    storageSyncServiceStatus = registerOutput<int>('storageSyncServiceStatus');
+    storageSyncServiceUid = registerOutput<String>('storageSyncServiceUid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    useIdentity = registerOutput<bool>('useIdentity');
   }
 }

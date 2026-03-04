@@ -3,16 +3,15 @@ enum SsisMigrationOverwriteOption {
   valueIgnore("Ignore"),
   valueOverwrite("Overwrite");
 
-  const SsisMigrationOverwriteOption(this.value);
-  final String value;
+  const SsisMigrationOverwriteOption(this.wireValue);
+  final String wireValue;
 
   static SsisMigrationOverwriteOption fromValue(String value) {
     for (final item in SsisMigrationOverwriteOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SsisMigrationOverwriteOption value: $value');
   }
 }
-

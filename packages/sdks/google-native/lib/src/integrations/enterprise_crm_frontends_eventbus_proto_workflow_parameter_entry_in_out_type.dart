@@ -5,16 +5,22 @@ enum EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType {
   out("OUT"),
   inOut("IN_OUT");
 
-  const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType(this.value);
-  final String value;
+  const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType fromValue(String value) {
-    for (final item in EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType
+  fromValue(String value) {
+    for (final item
+        in EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType value: $value',
+    );
   }
 }
-

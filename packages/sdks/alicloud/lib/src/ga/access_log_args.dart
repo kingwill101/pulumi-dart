@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessLogArgs {
   /// The ID of the global acceleration instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The ID of the endpoint group instance.
   final pulumi.Input<String> endpointGroupId;
+
   /// The ID of the listener.
   final pulumi.Input<String> listenerId;
+
   /// The name of the Log Store.
   final pulumi.Input<String> slsLogStoreName;
+
   /// The name of the Log Service project.
   final pulumi.Input<String> slsProjectName;
+
   /// The region ID of the Log Service project.
   final pulumi.Input<String> slsRegionId;
 
@@ -49,13 +54,12 @@ class AccessLogArgs {
 
   factory AccessLogArgs.fromMap(Map<String, dynamic> map) {
     return AccessLogArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      endpointGroupId: (map['endpointGroupId'] as String).input(),
-      listenerId: (map['listenerId'] as String).input(),
-      slsLogStoreName: (map['slsLogStoreName'] as String).input(),
-      slsProjectName: (map['slsProjectName'] as String).input(),
-      slsRegionId: (map['slsRegionId'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      endpointGroupId: pulumi.Input.fromValue(map['endpointGroupId'] as String),
+      listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
+      slsLogStoreName: pulumi.Input.fromValue(map['slsLogStoreName'] as String),
+      slsProjectName: pulumi.Input.fromValue(map['slsProjectName'] as String),
+      slsRegionId: pulumi.Input.fromValue(map['slsRegionId'] as String),
     );
   }
 }
-

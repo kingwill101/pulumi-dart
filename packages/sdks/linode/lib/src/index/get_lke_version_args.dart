@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLkeVersionArgs {
   /// The unique ID of this Linode LKE Version.
   final pulumi.Input<String> id;
+
   /// The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
   final pulumi.Input<String>? tier;
 
   /// Creates a new [GetLkeVersionArgs].
   /// [id] The unique ID of this Linode LKE Version.
   /// [tier] The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
-  GetLkeVersionArgs({
-    required this.id,
-    this.tier,
-  });
+  GetLkeVersionArgs({required this.id, this.tier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'tier': ?tier,
-    };
+    return <String, dynamic>{'id': id, 'tier': ?tier};
   }
 
   factory GetLkeVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetLkeVersionArgs(
-      id: (map['id'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

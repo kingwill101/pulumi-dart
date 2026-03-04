@@ -5,9 +5,14 @@ import 'service_service_connect_configuration_service_tls_issuer_cert_authority.
 
 class ServiceServiceConnectConfigurationServiceTls {
   /// Details of the certificate authority which will issue the certificate.
-  final pulumi.Input<ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority> issuerCertAuthority;
+  final pulumi.Input<
+    ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority
+  >
+  issuerCertAuthority;
+
   /// KMS key used to encrypt the private key in Secrets Manager.
   final pulumi.Input<String>? kmsKey;
+
   /// ARN of the IAM Role that's associated with the Service Connect TLS.
   final pulumi.Input<String>? roleArn;
 
@@ -23,18 +28,35 @@ class ServiceServiceConnectConfigurationServiceTls {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'issuerCertAuthority': pulumi.Input.mapInputValue<ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority, Map<String, dynamic>>(issuerCertAuthority, (value) => value.toMap()),
+      'issuerCertAuthority':
+          pulumi.Input.mapInputValue<
+            ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority,
+            Map<String, dynamic>
+          >(issuerCertAuthority, (value) => value.toMap()),
       'kmsKey': ?kmsKey,
       'roleArn': ?roleArn,
     };
   }
 
-  factory ServiceServiceConnectConfigurationServiceTls.fromMap(Map<String, dynamic> map) {
+  factory ServiceServiceConnectConfigurationServiceTls.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceServiceConnectConfigurationServiceTls(
-      issuerCertAuthority: (ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap((map['issuerCertAuthority']! as Map).cast<String, dynamic>())).input(),
-      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      issuerCertAuthority: pulumi.Input.fromValue(
+        ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap(
+          (map['issuerCertAuthority']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

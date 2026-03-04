@@ -4,13 +4,12 @@ import 'nrql_alert_condition_critical.dart';
 import 'nrql_alert_condition_nrql.dart';
 import 'nrql_alert_condition_outlier_configuration.dart';
 import 'nrql_alert_condition_state.dart';
-import 'nrql_alert_condition_term.dart';
 import 'nrql_alert_condition_warning.dart';
 
 /// Use this resource to create and manage NRQL alert conditions in New Relic.
 ///
-/// > **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
-/// <br><br>
+/// &gt; **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
+/// &lt;br&gt;&lt;br&gt;
 /// Before upgrading to version 2.0.0 or later, it is recommended to upgrade to the most recent 1.x version of the provider and ensure that your environment successfully runs `pulumi preview` without unexpected changes.
 ///
 /// ## Example Usage
@@ -342,12 +341,12 @@ import 'nrql_alert_condition_warning.dart';
 ///
 /// - `query` - (Required) The NRQL query to execute for the condition.
 /// - `data_account_id` - (Optional) The account ID to use for the alert condition's query as specified in the the `query` field. If `data_account_id` is not specified, then the condition's query will be evaluated against the `account_id`. Note that the `account_id` must have read privileges for the `data_account_id` or else the condition will be invalid.
-/// - `evaluation_offset` - (Optional) **DEPRECATED:** Use `aggregation_method` instead. Represented in minutes and must be within 1-20 minutes (inclusive). NRQL queries are evaluated based on their `aggregation_window` size. The start time depends on this value. It's recommended to set this to 3 windows. An offset of less than 3 windows will trigger incidents sooner, but you may see more false positives and negatives due to data latency. With `evaluation_offset` set to 3 windows and an `aggregation_window` of 60 seconds, the NRQL time window applied to your query will be: `SINCE 3 minutes ago UNTIL 2 minutes ago`. `evaluation_offset` cannot be set with `aggregation_method`, `aggregation_delay`, or `aggregation_timer`.<br>
-/// - `since_value` - (Optional)  **DEPRECATED:** Use `aggregation_method` instead. The value to be used in the `SINCE <X> minutes ago` clause for the NRQL query. Must be between 1-20 (inclusive). <br>
+/// - `evaluation_offset` - (Optional) **DEPRECATED:** Use `aggregation_method` instead. Represented in minutes and must be within 1-20 minutes (inclusive). NRQL queries are evaluated based on their `aggregation_window` size. The start time depends on this value. It's recommended to set this to 3 windows. An offset of less than 3 windows will trigger incidents sooner, but you may see more false positives and negatives due to data latency. With `evaluation_offset` set to 3 windows and an `aggregation_window` of 60 seconds, the NRQL time window applied to your query will be: `SINCE 3 minutes ago UNTIL 2 minutes ago`. `evaluation_offset` cannot be set with `aggregation_method`, `aggregation_delay`, or `aggregation_timer`.&lt;br&gt;
+/// - `since_value` - (Optional)  **DEPRECATED:** Use `aggregation_method` instead. The value to be used in the `SINCE &lt;X&gt; minutes ago` clause for the NRQL query. Must be between 1-20 (inclusive). &lt;br&gt;
 ///
 /// ## Terms
 ///
-/// > **NOTE:** The direct use of the `term` has been deprecated, and users should use `critical` and `warning` instead.  What follows now applies to the named priority attributes for `critical` and `warning`, but for those attributes the priority is not allowed. At least one `critical` or `warning` term must be defined.
+/// &gt; **NOTE:** The direct use of the `term` has been deprecated, and users should use `critical` and `warning` instead.  What follows now applies to the named priority attributes for `critical` and `warning`, but for those attributes the priority is not allowed. At least one `critical` or `warning` term must be defined.
 ///
 /// NRQL alert conditions support up to two terms. At least one `term` must have `priority` set to `critical` and the second optional `term` must have `priority` set to `warning`.
 ///
@@ -356,10 +355,10 @@ import 'nrql_alert_condition_warning.dart';
 /// - `operator` - (Optional) Valid values are `above`, `above_or_equals`, `below`, `below_or_equals`, `equals`, or `not_equals` (case insensitive). Defaults to `equals`. Note that when using a `type` of `baseline`, the only valid option here is `above`.
 /// - `priority` - (Optional) `critical` or `warning`. Defaults to `critical`.
 /// - `threshold` - (Required) The value which will trigger an incident.
-/// <br>For _baseline_ NRQL alert conditions, the value must be in the range [1, 1000]. The value is the number of standard deviations from the baseline that the metric must exceed in order to create an incident.
+/// &lt;br&gt;For _baseline_ NRQL alert conditions, the value must be in the range [1, 1000]. The value is the number of standard deviations from the baseline that the metric must exceed in order to create an incident.
 /// - `threshold_duration` - (Optional) The duration, in seconds, that the threshold must violate in order to create an incident. Value must be a multiple of the `aggregation_window` (which has a default of 60 seconds).
-/// <br>For _baseline_ NRQL alert conditions, the value must be within 120-86400 seconds (inclusive).
-/// <br>For _static_ NRQL alert conditions, the value must be within 60-86400 seconds (inclusive).
+/// &lt;br&gt;For _baseline_ NRQL alert conditions, the value must be within 120-86400 seconds (inclusive).
+/// &lt;br&gt;For _static_ NRQL alert conditions, the value must be within 60-86400 seconds (inclusive).
 ///
 /// - `threshold_occurrences` - (Optional) The criteria for how many data points must be in violation for the specified threshold duration. Valid values are: `all` or `at_least_once` (case insensitive).
 /// - `duration` - (Optional) **DEPRECATED:** Use `threshold_duration` instead. The duration of time, in _minutes_, that the threshold must violate for in order to create an incident. Must be within 1-120 (inclusive).
@@ -367,15 +366,15 @@ import 'nrql_alert_condition_warning.dart';
 /// - `prediction` - (Optional) **BETA PREVIEW: the `prediction` field is in limited release and only enabled for preview on a per-account basis.** Use `prediction` to open alerts when your static threshold is predicted to be reached in the future. The `prediction` field is only available for _static_ NRQL alert conditions. See Prediction below for details.
 /// - `disable_health_status_reporting` - (Optional) `true` or `false`. Defaults to `false` when field not included in TF config. Violations will not change system health status for this term.
 ///
-/// > **NOTE:** When a `critical` or `warning` block is added to this resource, using either `duration` or `threshold_duration` (one of the two) is mandatory. Both of these should not be specified.
+/// &gt; **NOTE:** When a `critical` or `warning` block is added to this resource, using either `duration` or `threshold_duration` (one of the two) is mandatory. Both of these should not be specified.
 ///
-/// > **NOTE:** When a `critical` or `warning` block is added to this resource, using either `time_function` or `threshold_occurrences` (one of the two) is mandatory. Both of these should not be specified.
+/// &gt; **NOTE:** When a `critical` or `warning` block is added to this resource, using either `time_function` or `threshold_occurrences` (one of the two) is mandatory. Both of these should not be specified.
 ///
 /// ### Prediction
 ///
-/// > **BETA PREVIEW:** The `prediction` block is in limited release and only enabled for preview on a per-account basis.
+/// &gt; **BETA PREVIEW:** The `prediction` block is in limited release and only enabled for preview on a per-account basis.
 ///
-/// > **NOTE:** The `prediction` block is only available for _static_ NRQL alert conditions.
+/// &gt; **NOTE:** The `prediction` block is only available for _static_ NRQL alert conditions.
 ///
 /// The `prediction` block supports the following arguments:
 ///
@@ -384,16 +383,16 @@ import 'nrql_alert_condition_warning.dart';
 ///
 /// ## Outlier Configuration
 ///
-/// > **BETA PREVIEW:** The `outlier` condition type is in limited release and only enabled for preview on a per-account basis.
+/// &gt; **BETA PREVIEW:** The `outlier` condition type is in limited release and only enabled for preview on a per-account basis.
 ///
-/// > **NOTE:** The `outlier_configuration` block is only available for _outlier_ NRQL alert conditions.
+/// &gt; **NOTE:** The `outlier_configuration` block is only available for _outlier_ NRQL alert conditions.
 ///
 /// The `outlier_configuration` block supports the following nested block:
 /// - `dbscan` - (Required) The DBSCAN algorithm configuration block.
 ///
 /// `dbscan` supports the following arguments:
-/// - `epsilon` - (Required) The maximum distance between two samples for one to be considered as in the neighborhood of the other. Value must be > 0.
-/// - `minimum_points` - (Required) The number of samples in a neighborhood for a point to be considered as a core point. This includes the point itself. Value must be >= 1.
+/// - `epsilon` - (Required) The maximum distance between two samples for one to be considered as in the neighborhood of the other. Value must be &gt; 0.
+/// - `minimum_points` - (Required) The number of samples in a neighborhood for a point to be considered as a core point. This includes the point itself. Value must be &gt;= 1.
 /// - `evaluation_group_facet` - (Optional) NRQL facet attribute used to segment data into groups (e.g. `host`, `region`) before running outlier detection. Omit to evaluate all results together.
 ///
 /// Notes:
@@ -682,11 +681,11 @@ import 'nrql_alert_condition_warning.dart';
 ///         thresholdOccurrences: all
 /// ```
 ///
-/// <br>
+/// &lt;br&gt;
 ///
 /// ##### Type: `outlier`
 ///
-/// > **BETA PREVIEW:** The `outlier` condition type is in limited release and only enabled for preview on a per-account basis.
+/// &gt; **BETA PREVIEW:** The `outlier` condition type is in limited release and only enabled for preview on a per-account basis.
 ///
 /// [Outlier NRQL alert conditions](https://docs.newrelic.com/docs/alerts/create-alert/set-thresholds/outlier-detection/) are dynamic in nature and adjust to the behavior of your data. The example below demonstrates an outlier NRQL alert condition for detecting anomalies using the DBSCAN clustering algorithm.
 ///
@@ -951,7 +950,7 @@ import 'nrql_alert_condition_warning.dart';
 /// ```
 ///
 ///
-/// <br>
+/// &lt;br&gt;
 ///
 /// ## Tags
 ///
@@ -1739,7 +1738,7 @@ import 'nrql_alert_condition_warning.dart';
 ///
 /// ## Import
 ///
-/// NRQL alert conditions can be imported using a composite ID of `<policy_id>:<condition_id>:<conditionType>`, e.g.
+/// NRQL alert conditions can be imported using a composite ID of `&lt;policy_id&gt;:&lt;condition_id&gt;:&lt;conditionType&gt;`, e.g.
 ///
 /// // For `baseline` conditions
 ///
@@ -1750,73 +1749,104 @@ import 'nrql_alert_condition_warning.dart';
 /// $ pulumi import newrelic:index/nrqlAlertCondition:NrqlAlertCondition foo 538291:6789035:static
 /// ```
 ///
-/// > **NOTE:** The value of `conditionType` in the import composite ID must be a valid condition type - `static` or `baseline`. Also note that deprecated arguments will *not* be set when importing.
+/// &gt; **NOTE:** The value of `conditionType` in the import composite ID must be a valid condition type - `static` or `baseline`. Also note that deprecated arguments will *not* be set when importing.
 ///
 /// Users can find the actual values for `policy_id` and `condition_id` from the New Relic One UI under respective policy and condition.
 class NrqlAlertCondition extends pulumi.CustomResource {
   /// The New Relic account ID of the account you wish to create the condition. Defaults to the account ID set in your environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
+
   /// How long we wait for data that belongs in each aggregation window. Depending on your data, a longer delay may increase accuracy but delay notifications. Use `aggregation_delay` with the `event_flow` and `cadence` methods. The maximum delay is 1200 seconds (20 minutes) when using `event_flow` and 3600 seconds (60 minutes) when using `cadence`. In both cases, the minimum delay is 0 seconds and the default is 120 seconds. `aggregation_delay` cannot be set with `nrql.evaluation_offset`.
   late final pulumi.Output<String?> aggregationDelay;
+
   /// Determines when we consider an aggregation window to be complete so that we can evaluate the signal for incidents. Possible values are `cadence`, `event_flow` or `event_timer`. Default is `event_flow`. `aggregation_method` cannot be set with `nrql.evaluation_offset`.
   late final pulumi.Output<String?> aggregationMethod;
+
   /// How long we wait after each data point arrives to make sure we've processed the whole batch. Use `aggregation_timer` with the `event_timer` method. The timer value can range from 0 seconds to 1200 seconds (20 minutes); the default is 60 seconds. `aggregation_timer` cannot be set with `nrql.evaluation_offset`.
   late final pulumi.Output<String?> aggregationTimer;
+
   /// The duration of the time window used to evaluate the NRQL query, in seconds. The value must be at least 30 seconds, and no more than 21600 seconds (6 hours). Default is 60 seconds.
   late final pulumi.Output<int> aggregationWindow;
+
   /// The baseline direction of a _baseline_ NRQL alert condition. Valid values are: `lower_only`, `upper_and_lower`, `upper_only` (case insensitive).
   late final pulumi.Output<String?> baselineDirection;
+
   /// Whether to close all open incidents when the signal expires.
   late final pulumi.Output<bool?> closeViolationsOnExpiration;
+
   /// A list containing the `critical` threshold values. At least one `critical` or `warning` threshold must be defined. See Terms below for details.
   late final pulumi.Output<NrqlAlertConditionCritical?> critical;
+
   /// The description of the NRQL alert condition.
   late final pulumi.Output<String?> description;
+
   /// Whether to enable the alert condition. Valid values are `true` and `false`. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The unique entity identifier of the NRQL Condition in New Relic.
   late final pulumi.Output<String> entityGuid;
+
   /// How long we wait until the signal starts evaluating. The maximum delay is 7200 seconds (120 minutes).
   late final pulumi.Output<int?> evaluationDelay;
+
   /// The amount of time (in seconds) to wait before considering the signal expired. The value must be at least 30 seconds, and no more than 172800 seconds (48 hours).
   late final pulumi.Output<int?> expirationDuration;
+
   /// Which strategy to use when filling gaps in the signal. Possible values are `none`, `last_value` or `static`. If `static`, the `fill_value` field will be used for filling gaps in the signal.
   late final pulumi.Output<String?> fillOption;
+
   /// This value will be used for filling gaps in the signal.
   late final pulumi.Output<double?> fillValue;
+
   /// Whether an alert condition should ignore expected termination of a signal when considering whether to create a loss of signal incident. Defaults to false.
   late final pulumi.Output<bool?> ignoreOnExpectedTermination;
+
   /// The title of the condition.
   late final pulumi.Output<String> name;
+
   /// A NRQL query. See NRQL below for details.
   late final pulumi.Output<NrqlAlertConditionNrql> nrql;
+
   /// Whether to create a new incident to capture that the signal expired.
   late final pulumi.Output<bool?> openViolationOnExpiration;
+
   /// **BETA PREVIEW:** The configuration block for `outlier` NRQL alert conditions. See Outlier Configuration below for details.
-  late final pulumi.Output<NrqlAlertConditionOutlierConfiguration?> outlierConfiguration;
+  late final pulumi.Output<NrqlAlertConditionOutlierConfiguration?>
+  outlierConfiguration;
+
   /// The ID of the policy where this condition should be used.
   late final pulumi.Output<String> policyId;
+
   /// Runbook URL to display in notifications.
   late final pulumi.Output<String?> runbookUrl;
+
   /// Seasonality under which a condition's signal(s) are evaluated. Only available for baseline conditions. Valid values are: `NEW_RELIC_CALCULATION`, `HOURLY`, `DAILY`, `WEEKLY`, or `NONE`. To have New Relic calculate seasonality automatically, set to `NEW_RELIC_CALCULATION`. To turn off seasonality completely, set to `NONE`.
   late final pulumi.Output<String?> signalSeasonality;
+
   /// Gathers data in overlapping time windows to smooth the chart line, making it easier to spot trends. The `slide_by` value is specified in seconds and must be smaller than and a factor of the `aggregation_window`.
   late final pulumi.Output<int?> slideBy;
+
   /// BETA PREVIEW: The GUID of the entity explicitly targeted by the condition. Issues triggered by this condition will affect the health status of this entity instead of having the affected entity detected automatically. The entity's account ID must be either `account_id` or `nrql.data_account_id`.
   late final pulumi.Output<String?> targetEntity;
+
   /// **DEPRECATED** Use `critical`, and `warning` instead. A list of terms for this condition. See Terms below for details.
-  late final pulumi.Output<List<NrqlAlertConditionTerm>?> terms;
+  late final pulumi.Output<List<Map<String, dynamic>>?> terms;
+
   /// The custom title to be used when incidents are opened by the condition. Setting this field will override the default title. Must be [Handlebars](https://handlebarsjs.com/) format.
   late final pulumi.Output<String?> titleTemplate;
+
   /// The type of the condition. Valid values are `static`, `baseline`, or `outlier`. Defaults to `static`.
-  /// <small>\***Note**: **BETA PREVIEW: the `outlier` field is in limited release and only enabled for preview on a per-account basis.**</small>
+  /// &lt;small&gt;\***Note**: **BETA PREVIEW: the `outlier` field is in limited release and only enabled for preview on a per-account basis.**&lt;/small&gt;
   late final pulumi.Output<String?> type;
-  /// **DEPRECATED:** Use `violation_time_limit_seconds` instead. Sets a time limit, in hours, that will automatically force-close a long-lasting incident after the time limit you select. Possible values are `ONE_HOUR`, `TWO_HOURS`, `FOUR_HOURS`, `EIGHT_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`, `THIRTY_DAYS` (case insensitive).<br>
-  /// <small>\***Note**: One of `violation_time_limit` _or_ `violation_time_limit_seconds` must be set, but not both.</small>
+
+  /// **DEPRECATED:** Use `violation_time_limit_seconds` instead. Sets a time limit, in hours, that will automatically force-close a long-lasting incident after the time limit you select. Possible values are `ONE_HOUR`, `TWO_HOURS`, `FOUR_HOURS`, `EIGHT_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`, `THIRTY_DAYS` (case insensitive).&lt;br&gt;
+  /// &lt;small&gt;\***Note**: One of `violation_time_limit` _or_ `violation_time_limit_seconds` must be set, but not both.&lt;/small&gt;
   late final pulumi.Output<String> violationTimeLimit;
-  /// Sets a time limit, in seconds, that will automatically force-close a long-lasting incident after the time limit you select. The value must be between 300 seconds (5 minutes) to 2592000 seconds (30 days) (inclusive). <br>
-  /// <small>\***Note**: One of `violation_time_limit` _or_ `violation_time_limit_seconds` must be set, but not both.</small>
+
+  /// Sets a time limit, in seconds, that will automatically force-close a long-lasting incident after the time limit you select. The value must be between 300 seconds (5 minutes) to 2592000 seconds (30 days) (inclusive). &lt;br&gt;
+  /// &lt;small&gt;\***Note**: One of `violation_time_limit` _or_ `violation_time_limit_seconds` must be set, but not both.&lt;/small&gt;
   late final pulumi.Output<int?> violationTimeLimitSeconds;
+
   /// A list containing the `warning` threshold values. At least one `critical` or `warning` threshold must be defined. See Terms below for details.
   late final pulumi.Output<NrqlAlertConditionWarning?> warning;
 
@@ -1829,42 +1859,53 @@ class NrqlAlertCondition extends pulumi.CustomResource {
     NrqlAlertConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/nrqlAlertCondition:NrqlAlertCondition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.aggregationDelay = registerOutput<String?>('aggregationDelay');
-    this.aggregationMethod = registerOutput<String?>('aggregationMethod');
-    this.aggregationTimer = registerOutput<String?>('aggregationTimer');
-    this.aggregationWindow = registerOutput<int>('aggregationWindow');
-    this.baselineDirection = registerOutput<String?>('baselineDirection');
-    this.closeViolationsOnExpiration = registerOutput<bool?>('closeViolationsOnExpiration');
-    this.critical = registerOutput<NrqlAlertConditionCritical?>('critical');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityGuid = registerOutput<String>('entityGuid');
-    this.evaluationDelay = registerOutput<int?>('evaluationDelay');
-    this.expirationDuration = registerOutput<int?>('expirationDuration');
-    this.fillOption = registerOutput<String?>('fillOption');
-    this.fillValue = registerOutput<double?>('fillValue');
-    this.ignoreOnExpectedTermination = registerOutput<bool?>('ignoreOnExpectedTermination');
+         'newrelic:index/nrqlAlertCondition:NrqlAlertCondition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    aggregationDelay = registerOutput<String?>('aggregationDelay');
+    aggregationMethod = registerOutput<String?>('aggregationMethod');
+    aggregationTimer = registerOutput<String?>('aggregationTimer');
+    aggregationWindow = registerOutput<int>('aggregationWindow');
+    baselineDirection = registerOutput<String?>('baselineDirection');
+    closeViolationsOnExpiration = registerOutput<bool?>(
+      'closeViolationsOnExpiration',
+    );
+    critical = registerOutput<NrqlAlertConditionCritical?>('critical');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    entityGuid = registerOutput<String>('entityGuid');
+    evaluationDelay = registerOutput<int?>('evaluationDelay');
+    expirationDuration = registerOutput<int?>('expirationDuration');
+    fillOption = registerOutput<String?>('fillOption');
+    fillValue = registerOutput<double?>('fillValue');
+    ignoreOnExpectedTermination = registerOutput<bool?>(
+      'ignoreOnExpectedTermination',
+    );
     this.name = registerOutput<String>('name');
-    this.nrql = registerOutput<NrqlAlertConditionNrql>('nrql');
-    this.openViolationOnExpiration = registerOutput<bool?>('openViolationOnExpiration');
-    this.outlierConfiguration = registerOutput<NrqlAlertConditionOutlierConfiguration?>('outlierConfiguration');
-    this.policyId = registerOutput<String>('policyId');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
-    this.signalSeasonality = registerOutput<String?>('signalSeasonality');
-    this.slideBy = registerOutput<int?>('slideBy');
-    this.targetEntity = registerOutput<String?>('targetEntity');
-    this.terms = registerOutput<List<NrqlAlertConditionTerm>?>('terms');
-    this.titleTemplate = registerOutput<String?>('titleTemplate');
-    this.type = registerOutput<String?>('type');
-    this.violationTimeLimit = registerOutput<String>('violationTimeLimit');
-    this.violationTimeLimitSeconds = registerOutput<int?>('violationTimeLimitSeconds');
-    this.warning = registerOutput<NrqlAlertConditionWarning?>('warning');
+    nrql = registerOutput<NrqlAlertConditionNrql>('nrql');
+    openViolationOnExpiration = registerOutput<bool?>(
+      'openViolationOnExpiration',
+    );
+    outlierConfiguration =
+        registerOutput<NrqlAlertConditionOutlierConfiguration?>(
+          'outlierConfiguration',
+        );
+    policyId = registerOutput<String>('policyId');
+    runbookUrl = registerOutput<String?>('runbookUrl');
+    signalSeasonality = registerOutput<String?>('signalSeasonality');
+    slideBy = registerOutput<int?>('slideBy');
+    targetEntity = registerOutput<String?>('targetEntity');
+    terms = registerOutput<List<Map<String, dynamic>>?>('terms');
+    titleTemplate = registerOutput<String?>('titleTemplate');
+    type = registerOutput<String?>('type');
+    violationTimeLimit = registerOutput<String>('violationTimeLimit');
+    violationTimeLimitSeconds = registerOutput<int?>(
+      'violationTimeLimitSeconds',
+    );
+    warning = registerOutput<NrqlAlertConditionWarning?>('warning');
   }
 
   /// Gets an existing [NrqlAlertCondition] resource's state with the given [name] and [id].
@@ -1885,41 +1926,52 @@ class NrqlAlertCondition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/nrqlAlertCondition:NrqlAlertCondition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.aggregationDelay = registerOutput<String?>('aggregationDelay');
-    this.aggregationMethod = registerOutput<String?>('aggregationMethod');
-    this.aggregationTimer = registerOutput<String?>('aggregationTimer');
-    this.aggregationWindow = registerOutput<int>('aggregationWindow');
-    this.baselineDirection = registerOutput<String?>('baselineDirection');
-    this.closeViolationsOnExpiration = registerOutput<bool?>('closeViolationsOnExpiration');
-    this.critical = registerOutput<NrqlAlertConditionCritical?>('critical');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityGuid = registerOutput<String>('entityGuid');
-    this.evaluationDelay = registerOutput<int?>('evaluationDelay');
-    this.expirationDuration = registerOutput<int?>('expirationDuration');
-    this.fillOption = registerOutput<String?>('fillOption');
-    this.fillValue = registerOutput<double?>('fillValue');
-    this.ignoreOnExpectedTermination = registerOutput<bool?>('ignoreOnExpectedTermination');
+         'newrelic:index/nrqlAlertCondition:NrqlAlertCondition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    aggregationDelay = registerOutput<String?>('aggregationDelay');
+    aggregationMethod = registerOutput<String?>('aggregationMethod');
+    aggregationTimer = registerOutput<String?>('aggregationTimer');
+    aggregationWindow = registerOutput<int>('aggregationWindow');
+    baselineDirection = registerOutput<String?>('baselineDirection');
+    closeViolationsOnExpiration = registerOutput<bool?>(
+      'closeViolationsOnExpiration',
+    );
+    critical = registerOutput<NrqlAlertConditionCritical?>('critical');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    entityGuid = registerOutput<String>('entityGuid');
+    evaluationDelay = registerOutput<int?>('evaluationDelay');
+    expirationDuration = registerOutput<int?>('expirationDuration');
+    fillOption = registerOutput<String?>('fillOption');
+    fillValue = registerOutput<double?>('fillValue');
+    ignoreOnExpectedTermination = registerOutput<bool?>(
+      'ignoreOnExpectedTermination',
+    );
     this.name = registerOutput<String>('name');
-    this.nrql = registerOutput<NrqlAlertConditionNrql>('nrql');
-    this.openViolationOnExpiration = registerOutput<bool?>('openViolationOnExpiration');
-    this.outlierConfiguration = registerOutput<NrqlAlertConditionOutlierConfiguration?>('outlierConfiguration');
-    this.policyId = registerOutput<String>('policyId');
-    this.runbookUrl = registerOutput<String?>('runbookUrl');
-    this.signalSeasonality = registerOutput<String?>('signalSeasonality');
-    this.slideBy = registerOutput<int?>('slideBy');
-    this.targetEntity = registerOutput<String?>('targetEntity');
-    this.terms = registerOutput<List<NrqlAlertConditionTerm>?>('terms');
-    this.titleTemplate = registerOutput<String?>('titleTemplate');
-    this.type = registerOutput<String?>('type');
-    this.violationTimeLimit = registerOutput<String>('violationTimeLimit');
-    this.violationTimeLimitSeconds = registerOutput<int?>('violationTimeLimitSeconds');
-    this.warning = registerOutput<NrqlAlertConditionWarning?>('warning');
+    nrql = registerOutput<NrqlAlertConditionNrql>('nrql');
+    openViolationOnExpiration = registerOutput<bool?>(
+      'openViolationOnExpiration',
+    );
+    outlierConfiguration =
+        registerOutput<NrqlAlertConditionOutlierConfiguration?>(
+          'outlierConfiguration',
+        );
+    policyId = registerOutput<String>('policyId');
+    runbookUrl = registerOutput<String?>('runbookUrl');
+    signalSeasonality = registerOutput<String?>('signalSeasonality');
+    slideBy = registerOutput<int?>('slideBy');
+    targetEntity = registerOutput<String?>('targetEntity');
+    terms = registerOutput<List<Map<String, dynamic>>?>('terms');
+    titleTemplate = registerOutput<String?>('titleTemplate');
+    type = registerOutput<String?>('type');
+    violationTimeLimit = registerOutput<String>('violationTimeLimit');
+    violationTimeLimitSeconds = registerOutput<int?>(
+      'violationTimeLimitSeconds',
+    );
+    warning = registerOutput<NrqlAlertConditionWarning?>('warning');
   }
 }

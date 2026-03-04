@@ -9,20 +9,25 @@ class VolumeCreate {
 
   /// Creates a new [VolumeCreate].
   /// [content] Upload content from a URL or local file
-  VolumeCreate({
-    required this.content,
-  });
+  VolumeCreate({required this.content});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': pulumi.Input.mapInputValue<VolumeCreateContent, Map<String, dynamic>>(content, (value) => value.toMap()),
+      'content':
+          pulumi.Input.mapInputValue<VolumeCreateContent, Map<String, dynamic>>(
+            content,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory VolumeCreate.fromMap(Map<String, dynamic> map) {
     return VolumeCreate(
-      content: (VolumeCreateContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      content: pulumi.Input.fromValue(
+        VolumeCreateContent.fromMap(
+          (map['content']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

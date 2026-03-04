@@ -6,7 +6,7 @@ import 'default_patch_baseline_state.dart';
 ///
 /// For information about Oos Default Patch Baseline and how to use it, see [What is Default Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/api-oos-2019-06-01-registerdefaultpatchbaseline).
 ///
-/// > **NOTE:** Available since v1.203.0.
+/// &gt; **NOTE:** Available since v1.203.0.
 ///
 /// ## Example Usage
 ///
@@ -155,6 +155,7 @@ import 'default_patch_baseline_state.dart';
 class DefaultPatchBaseline extends pulumi.CustomResource {
   /// The ID of the patch baseline.
   late final pulumi.Output<String> patchBaselineId;
+
   /// The name of the patch baseline.
   late final pulumi.Output<String> patchBaselineName;
 
@@ -167,13 +168,13 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
     DefaultPatchBaselineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.patchBaselineId = registerOutput<String>('patchBaselineId');
-    this.patchBaselineName = registerOutput<String>('patchBaselineName');
+         'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    patchBaselineId = registerOutput<String>('patchBaselineId');
+    patchBaselineName = registerOutput<String>('patchBaselineName');
   }
 
   /// Gets an existing [DefaultPatchBaseline] resource's state with the given [name] and [id].
@@ -194,12 +195,12 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.patchBaselineId = registerOutput<String>('patchBaselineId');
-    this.patchBaselineName = registerOutput<String>('patchBaselineName');
+         'alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    patchBaselineId = registerOutput<String>('patchBaselineId');
+    patchBaselineName = registerOutput<String>('patchBaselineName');
   }
 }

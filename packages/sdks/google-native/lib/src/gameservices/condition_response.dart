@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionResponse {
   /// Trusted attributes supplied by the IAM system.
   final pulumi.Input<String> iam;
+
   /// An operator to apply the subject with.
   final pulumi.Input<String> op;
+
   /// Trusted attributes discharged by the service.
   final pulumi.Input<String> svc;
+
   /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
   final pulumi.Input<String> sys;
+
   /// The objects of the condition.
   final pulumi.Input<List<String>> values;
 
@@ -41,12 +45,11 @@ class ConditionResponse {
 
   factory ConditionResponse.fromMap(Map<String, dynamic> map) {
     return ConditionResponse(
-      iam: (map['iam'] as String).input(),
-      op: (map['op'] as String).input(),
-      svc: (map['svc'] as String).input(),
-      sys: (map['sys'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      iam: pulumi.Input.fromValue(map['iam'] as String),
+      op: pulumi.Input.fromValue(map['op'] as String),
+      svc: pulumi.Input.fromValue(map['svc'] as String),
+      sys: pulumi.Input.fromValue(map['sys'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

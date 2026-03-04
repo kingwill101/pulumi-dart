@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainPermissionsArgs {
   /// The name of the domain on which to set the resource policy.
   final pulumi.Input<String> domain;
+
   /// The account number of the AWS account that owns the domain.
   final pulumi.Input<String>? domainOwner;
+
   /// A JSON policy string to be set as the access control resource policy on the provided domain.
   final pulumi.Input<String>? policyDocument;
+
   /// The current revision of the resource policy to be set. This revision is used for optimistic locking, which prevents others from overwriting your changes to the domain's resource policy.
   final pulumi.Input<String>? policyRevision;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -44,12 +48,27 @@ class DomainPermissionsArgs {
 
   factory DomainPermissionsArgs.fromMap(Map<String, dynamic> map) {
     return DomainPermissionsArgs(
-      domain: (map['domain'] as String).input(),
-      domainOwner: map['domainOwner'] == null ? null : ((map['domainOwner'] as String).input()).input(),
-      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
-      policyRevision: map['policyRevision'] == null ? null : ((map['policyRevision'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      domainOwner: (() {
+        final guardedValue = map['domainOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyDocument: (() {
+        final guardedValue = map['policyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyRevision: (() {
+        final guardedValue = map['policyRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

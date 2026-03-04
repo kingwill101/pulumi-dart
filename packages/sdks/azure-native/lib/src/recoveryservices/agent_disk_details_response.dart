@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentDiskDetailsResponse {
   /// The disk capacity in bytes.
   final pulumi.Input<double> capacityInBytes;
+
   /// The disk Id.
   final pulumi.Input<String> diskId;
+
   /// The disk name.
   final pulumi.Input<String> diskName;
+
   /// A value indicating whether the disk is the OS disk.
   final pulumi.Input<String> isOSDisk;
+
   /// The lun of disk.
   final pulumi.Input<int> lunId;
 
@@ -41,12 +45,11 @@ class AgentDiskDetailsResponse {
 
   factory AgentDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AgentDiskDetailsResponse(
-      capacityInBytes: (map['capacityInBytes'] as double).input(),
-      diskId: (map['diskId'] as String).input(),
-      diskName: (map['diskName'] as String).input(),
-      isOSDisk: (map['isOSDisk'] as String).input(),
-      lunId: (map['lunId'] as int).input(),
+      capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      diskName: pulumi.Input.fromValue(map['diskName'] as String),
+      isOSDisk: pulumi.Input.fromValue(map['isOSDisk'] as String),
+      lunId: pulumi.Input.fromValue(map['lunId'] as int),
     );
   }
 }
-

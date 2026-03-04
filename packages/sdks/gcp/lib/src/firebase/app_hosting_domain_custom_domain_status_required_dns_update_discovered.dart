@@ -13,14 +13,24 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>>? checkErrors;
+  final pulumi.Input<
+    List<
+      AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError
+    >
+  >?
+  checkErrors;
+
   /// (Output)
   /// The domain the record pertains to, e.g. `foo.bar.com.`.
   final pulumi.Input<String>? domainName;
+
   /// (Output)
   /// Records on the domain.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>>? records;
+  final pulumi.Input<
+    List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>
+  >?
+  records;
 
   /// Creates a new [AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered].
   /// [checkErrors] (Output)
@@ -34,18 +44,77 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'checkErrors': ?pulumi.Input.mapOptionalInputValue<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>, List<Map<String, dynamic>>>(checkErrors, (value) => pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'checkErrors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError
+            >,
+            List<Map<String, dynamic>>
+          >(
+            checkErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'domainName': ?domainName,
-      'records': ?pulumi.Input.mapOptionalInputValue<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>, List<Map<String, dynamic>>>(records, (value) => pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'records':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord
+            >,
+            List<Map<String, dynamic>>
+          >(
+            records,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap(Map<String, dynamic> map) {
+  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered(
-      checkErrors: map['checkErrors'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>(map['checkErrors']!, (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>(map['records']!, (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      checkErrors: (() {
+        final guardedValue = map['checkErrors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError
+          >(
+            guardedValue,
+            (value) =>
+                AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      records: (() {
+        final guardedValue = map['records'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord
+          >(
+            guardedValue,
+            (value) =>
+                AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

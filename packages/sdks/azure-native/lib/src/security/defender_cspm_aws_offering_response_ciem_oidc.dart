@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefenderCspmAwsOfferingResponseCiemOidc {
   /// the azure active directory app name used of authenticating against AWS
   final pulumi.Input<String>? azureActiveDirectoryAppName;
+
   /// The cloud role ARN in AWS for Permissions Management used for oidc connection
   final pulumi.Input<String>? cloudRoleArn;
 
@@ -24,11 +25,20 @@ class DefenderCspmAwsOfferingResponseCiemOidc {
     };
   }
 
-  factory DefenderCspmAwsOfferingResponseCiemOidc.fromMap(Map<String, dynamic> map) {
+  factory DefenderCspmAwsOfferingResponseCiemOidc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderCspmAwsOfferingResponseCiemOidc(
-      azureActiveDirectoryAppName: map['azureActiveDirectoryAppName'] == null ? null : (map['azureActiveDirectoryAppName']! as String).input(),
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      azureActiveDirectoryAppName: (() {
+        final guardedValue = map['azureActiveDirectoryAppName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudRoleArn: (() {
+        final guardedValue = map['cloudRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

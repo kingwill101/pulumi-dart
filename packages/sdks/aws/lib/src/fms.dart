@@ -1,5 +1,3 @@
-library module_fms;
-
 export 'fms/admin_account.dart';
 export 'fms/admin_account_args.dart';
 export 'fms/admin_account_state.dart';

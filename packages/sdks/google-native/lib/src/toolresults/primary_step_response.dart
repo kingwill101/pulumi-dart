@@ -7,29 +7,44 @@ import 'individual_outcome_response.dart';
 class PrimaryStepResponse {
   /// Step Id and outcome of each individual step.
   final pulumi.Input<List<IndividualOutcomeResponse>> individualOutcome;
+
   /// Rollup test status of multiple steps that were run with the same configuration as a group.
   final pulumi.Input<String> rollUp;
 
   /// Creates a new [PrimaryStepResponse].
   /// [individualOutcome] Step Id and outcome of each individual step.
   /// [rollUp] Rollup test status of multiple steps that were run with the same configuration as a group.
-  PrimaryStepResponse({
-    required this.individualOutcome,
-    required this.rollUp,
-  });
+  PrimaryStepResponse({required this.individualOutcome, required this.rollUp});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'individualOutcome': pulumi.Input.mapInputValue<List<IndividualOutcomeResponse>, List<Map<String, dynamic>>>(individualOutcome, (value) => pulumi.Input.encodeList<IndividualOutcomeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'individualOutcome':
+          pulumi.Input.mapInputValue<
+            List<IndividualOutcomeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            individualOutcome,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IndividualOutcomeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'rollUp': rollUp,
     };
   }
 
   factory PrimaryStepResponse.fromMap(Map<String, dynamic> map) {
     return PrimaryStepResponse(
-      individualOutcome: (pulumi.Input.decodeList<IndividualOutcomeResponse>(map['individualOutcome'], (value) => IndividualOutcomeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rollUp: (map['rollUp'] as String).input(),
+      individualOutcome: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<IndividualOutcomeResponse>(
+          map['individualOutcome']!,
+          (value) => IndividualOutcomeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      rollUp: pulumi.Input.fromValue(map['rollUp'] as String),
     );
   }
 }
-

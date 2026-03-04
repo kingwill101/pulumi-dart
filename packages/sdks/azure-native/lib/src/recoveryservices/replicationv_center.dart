@@ -184,12 +184,16 @@ import 'vcenter_properties_response.dart';
 class ReplicationvCenter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource Location
   late final pulumi.Output<String?> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// VCenter related data.
   late final pulumi.Output<VCenterPropertiesResponse> properties;
+
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -202,15 +206,15 @@ class ReplicationvCenter extends pulumi.CustomResource {
     ReplicationvCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:recoveryservices:ReplicationvCenter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:recoveryservices:ReplicationvCenter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<VCenterPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<VCenterPropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

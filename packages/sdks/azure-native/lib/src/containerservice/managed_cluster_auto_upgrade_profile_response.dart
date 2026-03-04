@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterAutoUpgradeProfileResponse {
   /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
   final pulumi.Input<String>? nodeOSUpgradeChannel;
+
   /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
   final pulumi.Input<String>? upgradeChannel;
 
@@ -24,11 +25,20 @@ class ManagedClusterAutoUpgradeProfileResponse {
     };
   }
 
-  factory ManagedClusterAutoUpgradeProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterAutoUpgradeProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterAutoUpgradeProfileResponse(
-      nodeOSUpgradeChannel: map['nodeOSUpgradeChannel'] == null ? null : (map['nodeOSUpgradeChannel']! as String).input(),
-      upgradeChannel: map['upgradeChannel'] == null ? null : (map['upgradeChannel']! as String).input(),
+      nodeOSUpgradeChannel: (() {
+        final guardedValue = map['nodeOSUpgradeChannel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      upgradeChannel: (() {
+        final guardedValue = map['upgradeChannel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

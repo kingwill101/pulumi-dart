@@ -3,15 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFhirServiceAuthentication {
-  /// The intended audience to receive authentication tokens for the service. The default value is `https://<name>.fhir.azurehealthcareapis.com`.
+  /// The intended audience to receive authentication tokens for the service. The default value is `https://&lt;name&gt;.fhir.azurehealthcareapis.com`.
   final pulumi.Input<String> audience;
+
   /// The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
-  /// Authority must be registered to Azure AD and in the following format: <https://{Azure-AD-endpoint}/{tenant-id>}.
+  /// Authority must be registered to Azure AD and in the following format: &lt;https://{Azure-AD-endpoint}/{tenant-id&gt;}.
   final pulumi.Input<String> authority;
   final pulumi.Input<bool> smartProxyEnabled;
 
   /// Creates a new [GetFhirServiceAuthentication].
-  /// [audience] The intended audience to receive authentication tokens for the service. The default value is `https://<name>.fhir.azurehealthcareapis.com`.
+  /// [audience] The intended audience to receive authentication tokens for the service. The default value is `https://&lt;name&gt;.fhir.azurehealthcareapis.com`.
   /// [authority] The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
   /// [smartProxyEnabled] Required.
   GetFhirServiceAuthentication({
@@ -30,10 +31,11 @@ class GetFhirServiceAuthentication {
 
   factory GetFhirServiceAuthentication.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceAuthentication(
-      audience: (map['audience'] as String).input(),
-      authority: (map['authority'] as String).input(),
-      smartProxyEnabled: (map['smartProxyEnabled'] as bool).input(),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
+      authority: pulumi.Input.fromValue(map['authority'] as String),
+      smartProxyEnabled: pulumi.Input.fromValue(
+        map['smartProxyEnabled'] as bool,
+      ),
     );
   }
 }
-

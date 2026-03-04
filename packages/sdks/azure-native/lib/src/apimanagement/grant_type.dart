@@ -4,16 +4,15 @@ enum GrantType {
   valueResourceOwnerPassword("resourceOwnerPassword"),
   valueClientCredentials("clientCredentials");
 
-  const GrantType(this.value);
-  final String value;
+  const GrantType(this.wireValue);
+  final String wireValue;
 
   static GrantType fromValue(String value) {
     for (final item in GrantType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GrantType value: $value');
   }
 }
-

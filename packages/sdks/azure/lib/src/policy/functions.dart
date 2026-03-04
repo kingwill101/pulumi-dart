@@ -120,7 +120,7 @@ import 'get_virtual_machine_configuration_assignment_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2022-06-01
@@ -600,13 +600,14 @@ Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-04-05
 /// [args] Arguments passed to this invoke. {@macro pulumi_policy_get_virtual_machine_configuration_assignment_get_virtual_machine_configuration_assignment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualMachineConfigurationAssignmentResult> getVirtualMachineConfigurationAssignment(
+Future<GetVirtualMachineConfigurationAssignmentResult>
+getVirtualMachineConfigurationAssignment(
   GetVirtualMachineConfigurationAssignmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

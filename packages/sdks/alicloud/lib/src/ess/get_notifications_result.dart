@@ -7,11 +7,14 @@ import 'get_notifications_notification.dart';
 class GetNotificationsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of notification ids.
   final List<String>? ids;
+
   /// A list of notifications. Each element contains the following attributes:
   final List<GetNotificationsNotification> notifications;
   final String? outputFile;
+
   /// ID of the scaling group.
   final String scalingGroupId;
 
@@ -33,7 +36,11 @@ class GetNotificationsResult {
     return <String, dynamic>{
       'id': id,
       'ids': ?ids,
-      'notifications': pulumi.Input.encodeList<GetNotificationsNotification, Map<String, dynamic>>(notifications, (value) => value.toMap()),
+      'notifications':
+          pulumi.Input.encodeList<
+            GetNotificationsNotification,
+            Map<String, dynamic>
+          >(notifications, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'scalingGroupId': scalingGroupId,
     };
@@ -42,11 +49,23 @@ class GetNotificationsResult {
   factory GetNotificationsResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationsResult(
       id: map['id'] as String,
-      ids: map['ids'] == null ? null : (map['ids']! as List).cast<String>(),
-      notifications: pulumi.Input.decodeList<GetNotificationsNotification>(map['notifications'], (value) => GetNotificationsNotification.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      notifications: pulumi.Input.decodeList<GetNotificationsNotification>(
+        map['notifications']!,
+        (value) => GetNotificationsNotification.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       scalingGroupId: map['scalingGroupId'] as String,
     );
   }
 }
-

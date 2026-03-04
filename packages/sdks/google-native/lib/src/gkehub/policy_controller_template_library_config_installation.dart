@@ -4,16 +4,20 @@ enum PolicyControllerTemplateLibraryConfigInstallation {
   notInstalled("NOT_INSTALLED"),
   all("ALL");
 
-  const PolicyControllerTemplateLibraryConfigInstallation(this.value);
-  final String value;
+  const PolicyControllerTemplateLibraryConfigInstallation(this.wireValue);
+  final String wireValue;
 
-  static PolicyControllerTemplateLibraryConfigInstallation fromValue(String value) {
-    for (final item in PolicyControllerTemplateLibraryConfigInstallation.values) {
-      if (item.value == value) {
+  static PolicyControllerTemplateLibraryConfigInstallation fromValue(
+    String value,
+  ) {
+    for (final item
+        in PolicyControllerTemplateLibraryConfigInstallation.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyControllerTemplateLibraryConfigInstallation value: $value');
+    throw ArgumentError(
+      'Unknown PolicyControllerTemplateLibraryConfigInstallation value: $value',
+    );
   }
 }
-

@@ -8,10 +8,13 @@ import 'propagation_policy.dart';
 class FleetManagedNamespaceProperties {
   /// Action if the managed namespace with the same name already exists. Default is Never.
   final pulumi.Input<String> adoptionPolicy;
+
   /// Delete options of a fleet managed namespace. Default is Keep.
   final pulumi.Input<String> deletePolicy;
+
   /// The namespace properties for the fleet managed namespace.
   final pulumi.Input<ManagedNamespaceProperties>? managedNamespaceProperties;
+
   /// The profile of the propagation to create the namespace.
   final pulumi.Input<PropagationPolicy>? propagationPolicy;
 
@@ -31,18 +34,41 @@ class FleetManagedNamespaceProperties {
     return <String, dynamic>{
       'adoptionPolicy': adoptionPolicy,
       'deletePolicy': deletePolicy,
-      'managedNamespaceProperties': ?pulumi.Input.mapOptionalInputValue<ManagedNamespaceProperties, Map<String, dynamic>>(managedNamespaceProperties, (value) => value.toMap()),
-      'propagationPolicy': ?pulumi.Input.mapOptionalInputValue<PropagationPolicy, Map<String, dynamic>>(propagationPolicy, (value) => value.toMap()),
+      'managedNamespaceProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedNamespaceProperties,
+            Map<String, dynamic>
+          >(managedNamespaceProperties, (value) => value.toMap()),
+      'propagationPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            PropagationPolicy,
+            Map<String, dynamic>
+          >(propagationPolicy, (value) => value.toMap()),
     };
   }
 
   factory FleetManagedNamespaceProperties.fromMap(Map<String, dynamic> map) {
     return FleetManagedNamespaceProperties(
-      adoptionPolicy: (map['adoptionPolicy'] as String).input(),
-      deletePolicy: (map['deletePolicy'] as String).input(),
-      managedNamespaceProperties: map['managedNamespaceProperties'] == null ? null : (ManagedNamespaceProperties.fromMap((map['managedNamespaceProperties']! as Map).cast<String, dynamic>())).input(),
-      propagationPolicy: map['propagationPolicy'] == null ? null : (PropagationPolicy.fromMap((map['propagationPolicy']! as Map).cast<String, dynamic>())).input(),
+      adoptionPolicy: pulumi.Input.fromValue(map['adoptionPolicy'] as String),
+      deletePolicy: pulumi.Input.fromValue(map['deletePolicy'] as String),
+      managedNamespaceProperties: (() {
+        final guardedValue = map['managedNamespaceProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedNamespaceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      propagationPolicy: (() {
+        final guardedValue = map['propagationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PropagationPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

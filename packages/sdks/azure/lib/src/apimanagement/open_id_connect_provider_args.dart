@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenIdConnectProviderArgs {
   /// The name of the API Management Service in which this OpenID Connect Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
+
   /// The Client ID used for the Client Application.
   final pulumi.Input<String> clientId;
+
   /// The Client Secret used for the Client Application.
   final pulumi.Input<String> clientSecret;
+
   /// A description of this OpenID Connect Provider.
   final pulumi.Input<String>? description;
+
   /// A user-friendly name for this OpenID Connect Provider.
   final pulumi.Input<String> displayName;
+
   /// The URI of the Metadata endpoint.
   final pulumi.Input<String> metadataEndpoint;
+
   /// the Name of the OpenID Connect Provider which should be created within the API Management Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -59,15 +66,28 @@ class OpenIdConnectProviderArgs {
 
   factory OpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectProviderArgs(
-      apiManagementName: (map['apiManagementName'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      metadataEndpoint: (map['metadataEndpoint'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      apiManagementName: pulumi.Input.fromValue(
+        map['apiManagementName'] as String,
+      ),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      metadataEndpoint: pulumi.Input.fromValue(
+        map['metadataEndpoint'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

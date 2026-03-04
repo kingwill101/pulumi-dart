@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAs3DeviceInformation.
 class GetAs3DeviceInformationResult {
   final List<String>? applications;
   final String as3Json;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String tenant;
@@ -32,11 +32,14 @@ class GetAs3DeviceInformationResult {
 
   factory GetAs3DeviceInformationResult.fromMap(Map<String, dynamic> map) {
     return GetAs3DeviceInformationResult(
-      applications: map['applications'] == null ? null : (map['applications']! as List).cast<String>(),
+      applications: (() {
+        final guardedValue = map['applications'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       as3Json: map['as3Json'] as String,
       id: map['id'] as String,
       tenant: map['tenant'] as String,
     );
   }
 }
-

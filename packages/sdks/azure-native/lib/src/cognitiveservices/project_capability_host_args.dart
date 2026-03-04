@@ -10,12 +10,17 @@ import 'project_capability_host_cognitiveservices.dart';
 class ProjectCapabilityHostArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// The name of the capability host associated with the Cognitive Services Resource
   final pulumi.Input<String>? capabilityHostName;
+
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<ProjectCapabilityHostCognitiveservices> projectCapabilityHostProperties;
+  final pulumi.Input<ProjectCapabilityHostCognitiveservices>
+  projectCapabilityHostProperties;
+
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -45,12 +50,20 @@ class ProjectCapabilityHostArgs {
 
   factory ProjectCapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return ProjectCapabilityHostArgs(
-      accountName: (map['accountName'] as String).input(),
-      capabilityHostName: map['capabilityHostName'] == null ? null : (map['capabilityHostName']! as String).input(),
-      projectCapabilityHostProperties: (map['projectCapabilityHostProperties'] as ProjectCapabilityHostCognitiveservices).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      capabilityHostName: (() {
+        final guardedValue = map['capabilityHostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectCapabilityHostProperties: pulumi.Input.fromValue(
+        map['projectCapabilityHostProperties']
+            as ProjectCapabilityHostCognitiveservices,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

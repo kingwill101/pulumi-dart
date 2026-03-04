@@ -8,29 +8,47 @@ import 'host_caching.dart';
 class GalleryOSDiskImage {
   /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
   final pulumi.Input<HostCaching>? hostCaching;
+
   /// The source for the disk image.
   final pulumi.Input<GalleryDiskImageSource>? source;
 
   /// Creates a new [GalleryOSDiskImage].
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
   /// [source] The source for the disk image.
-  GalleryOSDiskImage({
-    this.hostCaching,
-    this.source,
-  });
+  GalleryOSDiskImage({this.hostCaching, this.source});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hostCaching': ?pulumi.Input.mapOptionalInputValue<HostCaching, String>(hostCaching, (value) => value.value),
-      'source': ?pulumi.Input.mapOptionalInputValue<GalleryDiskImageSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'hostCaching': ?pulumi.Input.mapOptionalInputValue<HostCaching, String>(
+        hostCaching,
+        (value) => value.wireValue,
+      ),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            GalleryDiskImageSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory GalleryOSDiskImage.fromMap(Map<String, dynamic> map) {
     return GalleryOSDiskImage(
-      hostCaching: map['hostCaching'] == null ? null : (HostCaching.fromValue(map['hostCaching']! as String)).input(),
-      source: map['source'] == null ? null : (GalleryDiskImageSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      hostCaching: (() {
+        final guardedValue = map['hostCaching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HostCaching.fromValue(guardedValue as String),
+        );
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GalleryDiskImageSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

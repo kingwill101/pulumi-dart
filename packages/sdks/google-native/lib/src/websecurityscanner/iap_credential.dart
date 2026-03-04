@@ -10,20 +10,29 @@ class IapCredential {
 
   /// Creates a new [IapCredential].
   /// [iapTestServiceAccountInfo] Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
-  IapCredential({
-    this.iapTestServiceAccountInfo,
-  });
+  IapCredential({this.iapTestServiceAccountInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iapTestServiceAccountInfo': ?pulumi.Input.mapOptionalInputValue<IapTestServiceAccountInfo, Map<String, dynamic>>(iapTestServiceAccountInfo, (value) => value.toMap()),
+      'iapTestServiceAccountInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            IapTestServiceAccountInfo,
+            Map<String, dynamic>
+          >(iapTestServiceAccountInfo, (value) => value.toMap()),
     };
   }
 
   factory IapCredential.fromMap(Map<String, dynamic> map) {
     return IapCredential(
-      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null ? null : (IapTestServiceAccountInfo.fromMap((map['iapTestServiceAccountInfo']! as Map).cast<String, dynamic>())).input(),
+      iapTestServiceAccountInfo: (() {
+        final guardedValue = map['iapTestServiceAccountInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IapTestServiceAccountInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

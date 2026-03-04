@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse {
   /// The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters long.
   final pulumi.Input<String> attributeName;
+
   /// This is the position in the request as explained above. It should be strictly positive be at most 100.
   final pulumi.Input<int> position;
 
@@ -24,11 +25,12 @@ class GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentRe
     };
   }
 
-  factory GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustmentResponse(
-      attributeName: (map['attributeName'] as String).input(),
-      position: (map['position'] as int).input(),
+      attributeName: pulumi.Input.fromValue(map['attributeName'] as String),
+      position: pulumi.Input.fromValue(map['position'] as int),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum DockerSpecificationType {
   valueBuild("Build"),
   valueImage("Image");
 
-  const DockerSpecificationType(this.value);
-  final String value;
+  const DockerSpecificationType(this.wireValue);
+  final String wireValue;
 
   static DockerSpecificationType fromValue(String value) {
     for (final item in DockerSpecificationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DockerSpecificationType value: $value');
   }
 }
-

@@ -10,20 +10,35 @@ class GetVirtualNetworkGatewayLearnedRoutesResult {
 
   /// Creates a new [GetVirtualNetworkGatewayLearnedRoutesResult].
   /// [value] List of gateway routes.
-  GetVirtualNetworkGatewayLearnedRoutesResult({
-    this.value,
-  });
+  GetVirtualNetworkGatewayLearnedRoutesResult({this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<GatewayRouteResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GatewayRouteResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory GetVirtualNetworkGatewayLearnedRoutesResult.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNetworkGatewayLearnedRoutesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNetworkGatewayLearnedRoutesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<GatewayRouteResponse>(map['value']!, (value) => GatewayRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GatewayRouteResponse>(
+          guardedValue,
+          (value) => GatewayRouteResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

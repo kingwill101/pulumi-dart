@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BandwidthScheduleArgs {
   /// The days of the week when this schedule is applicable.
   final pulumi.Input<List<String>> days;
+
   /// The device name.
   final pulumi.Input<String> deviceName;
+
   /// The bandwidth schedule name which needs to be added/updated.
   final pulumi.Input<String>? name;
+
   /// The bandwidth rate in Mbps.
   final pulumi.Input<int> rateInMbps;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The start time of the schedule in UTC.
   final pulumi.Input<String> start;
+
   /// The stop time of the schedule in UTC.
   final pulumi.Input<String> stop;
 
@@ -54,14 +60,19 @@ class BandwidthScheduleArgs {
 
   factory BandwidthScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthScheduleArgs(
-      days: ((map['days'] as List).cast<String>()).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      rateInMbps: (map['rateInMbps'] as int).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      start: (map['start'] as String).input(),
-      stop: (map['stop'] as String).input(),
+      days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rateInMbps: pulumi.Input.fromValue(map['rateInMbps'] as int),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      start: pulumi.Input.fromValue(map['start'] as String),
+      stop: pulumi.Input.fromValue(map['stop'] as String),
     );
   }
 }
-

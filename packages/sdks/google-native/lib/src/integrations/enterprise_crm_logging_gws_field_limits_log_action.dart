@@ -3,16 +3,17 @@ enum EnterpriseCrmLoggingGwsFieldLimitsLogAction {
   dontLog("DONT_LOG"),
   log("LOG");
 
-  const EnterpriseCrmLoggingGwsFieldLimitsLogAction(this.value);
-  final String value;
+  const EnterpriseCrmLoggingGwsFieldLimitsLogAction(this.wireValue);
+  final String wireValue;
 
   static EnterpriseCrmLoggingGwsFieldLimitsLogAction fromValue(String value) {
     for (final item in EnterpriseCrmLoggingGwsFieldLimitsLogAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsFieldLimitsLogAction value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmLoggingGwsFieldLimitsLogAction value: $value',
+    );
   }
 }
-

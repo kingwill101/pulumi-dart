@@ -5,16 +5,17 @@ enum GoogleIamV1AuditLogConfigLogType {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const GoogleIamV1AuditLogConfigLogType(this.value);
-  final String value;
+  const GoogleIamV1AuditLogConfigLogType(this.wireValue);
+  final String wireValue;
 
   static GoogleIamV1AuditLogConfigLogType fromValue(String value) {
     for (final item in GoogleIamV1AuditLogConfigLogType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleIamV1AuditLogConfigLogType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleIamV1AuditLogConfigLogType value: $value',
+    );
   }
 }
-

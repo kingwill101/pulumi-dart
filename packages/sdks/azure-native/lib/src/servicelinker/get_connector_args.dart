@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorArgs {
   /// The name of resource.
   final pulumi.Input<String> connectorName;
+
   /// The name of Azure region.
   final pulumi.Input<String> location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The ID of the target subscription.
   final pulumi.Input<String>? subscriptionId;
 
@@ -39,11 +42,16 @@ class GetConnectorArgs {
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      connectorName: (map['connectorName'] as String).input(),
-      location: (map['location'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

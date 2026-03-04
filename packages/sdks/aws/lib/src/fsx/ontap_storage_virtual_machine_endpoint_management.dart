@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OntapStorageVirtualMachineEndpointManagement {
   /// The Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
   final pulumi.Input<String>? dnsName;
+
   /// IP addresses of the storage virtual machine endpoint.
   final pulumi.Input<List<String>>? ipAddresses;
 
@@ -17,17 +18,23 @@ class OntapStorageVirtualMachineEndpointManagement {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dnsName': ?dnsName,
-      'ipAddresses': ?ipAddresses,
-    };
+    return <String, dynamic>{'dnsName': ?dnsName, 'ipAddresses': ?ipAddresses};
   }
 
-  factory OntapStorageVirtualMachineEndpointManagement.fromMap(Map<String, dynamic> map) {
+  factory OntapStorageVirtualMachineEndpointManagement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OntapStorageVirtualMachineEndpointManagement(
-      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : (((map['ipAddresses'] as List).cast<String>()).input()).input(),
+      dnsName: (() {
+        final guardedValue = map['dnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddresses: (() {
+        final guardedValue = map['ipAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

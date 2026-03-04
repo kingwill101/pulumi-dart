@@ -186,6 +186,7 @@ import 'floating_ip_assignment_state.dart';
 class FloatingIpAssignment extends pulumi.CustomResource {
   /// ID of the Floating IP.
   late final pulumi.Output<int> floatingIpId;
+
   /// Server to assign the Floating IP to.
   late final pulumi.Output<int> serverId;
 
@@ -198,13 +199,13 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     FloatingIpAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.floatingIpId = registerOutput<int>('floatingIpId');
-    this.serverId = registerOutput<int>('serverId');
+         'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    floatingIpId = registerOutput<int>('floatingIpId');
+    serverId = registerOutput<int>('serverId');
   }
 
   /// Gets an existing [FloatingIpAssignment] resource's state with the given [name] and [id].
@@ -225,12 +226,12 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.floatingIpId = registerOutput<int>('floatingIpId');
-    this.serverId = registerOutput<int>('serverId');
+         'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    floatingIpId = registerOutput<int>('floatingIpId');
+    serverId = registerOutput<int>('serverId');
   }
 }

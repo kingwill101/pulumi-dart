@@ -4,16 +4,15 @@ enum AnnotationType {
   typeLegacyExportConsent("TYPE_LEGACY_EXPORT_CONSENT"),
   typeQwiklab("TYPE_QWIKLAB");
 
-  const AnnotationType(this.value);
-  final String value;
+  const AnnotationType(this.wireValue);
+  final String wireValue;
 
   static AnnotationType fromValue(String value) {
     for (final item in AnnotationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AnnotationType value: $value');
   }
 }
-

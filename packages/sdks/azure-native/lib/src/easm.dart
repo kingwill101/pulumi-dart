@@ -1,5 +1,3 @@
-library module_easm;
-
 export 'easm/functions.dart';
 export 'easm/get_label_by_workspace_args.dart';
 export 'easm/get_label_by_workspace_result.dart';

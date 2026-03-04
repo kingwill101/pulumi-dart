@@ -6,6 +6,7 @@ import 'table_reference_response.dart';
 class SnapshotDefinitionResponse {
   /// [Required] Reference describing the ID of the table that was snapshot.
   final pulumi.Input<TableReferenceResponse> baseTableReference;
+
   /// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
   final pulumi.Input<String> snapshotTime;
 
@@ -19,16 +20,23 @@ class SnapshotDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseTableReference': pulumi.Input.mapInputValue<TableReferenceResponse, Map<String, dynamic>>(baseTableReference, (value) => value.toMap()),
+      'baseTableReference':
+          pulumi.Input.mapInputValue<
+            TableReferenceResponse,
+            Map<String, dynamic>
+          >(baseTableReference, (value) => value.toMap()),
       'snapshotTime': snapshotTime,
     };
   }
 
   factory SnapshotDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotDefinitionResponse(
-      baseTableReference: (TableReferenceResponse.fromMap((map['baseTableReference'] as Map).cast<String, dynamic>())).input(),
-      snapshotTime: (map['snapshotTime'] as String).input(),
+      baseTableReference: pulumi.Input.fromValue(
+        TableReferenceResponse.fromMap(
+          (map['baseTableReference']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      snapshotTime: pulumi.Input.fromValue(map['snapshotTime'] as String),
     );
   }
 }
-

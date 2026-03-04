@@ -175,28 +175,40 @@ import 'system_data_response.dart';
 class EnclaveConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Community Resource Id.
   late final pulumi.Output<String> communityResourceId;
+
   /// Destination Endpoint Resource Id.
   late final pulumi.Output<String> destinationEndpointId;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning State.
   late final pulumi.Output<String> provisioningState;
+
   /// List of resource ids modified by enclave Connections.
   late final pulumi.Output<List<String>> resourceCollection;
+
   /// Source CIDR.
   late final pulumi.Output<String?> sourceCidr;
+
   /// Source Resource Id.
   late final pulumi.Output<String> sourceResourceId;
+
   /// The state of the enclaveConnection.
   late final pulumi.Output<String> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -209,23 +221,23 @@ class EnclaveConnection extends pulumi.CustomResource {
     EnclaveConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:mission:EnclaveConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.communityResourceId = registerOutput<String>('communityResourceId');
-    this.destinationEndpointId = registerOutput<String>('destinationEndpointId');
-    this.location = registerOutput<String>('location');
+         'azure-native:mission:EnclaveConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    communityResourceId = registerOutput<String>('communityResourceId');
+    destinationEndpointId = registerOutput<String>('destinationEndpointId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceCollection = registerOutput<List<String>>('resourceCollection');
-    this.sourceCidr = registerOutput<String?>('sourceCidr');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
-    this.state = registerOutput<String>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCollection = registerOutput<List<String>>('resourceCollection');
+    sourceCidr = registerOutput<String?>('sourceCidr');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

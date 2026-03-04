@@ -39,13 +39,14 @@ class GetStorageBundlesBundle {
 
   factory GetStorageBundlesBundle.fromMap(Map<String, dynamic> map) {
     return GetStorageBundlesBundle(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      location: (map['location'] as String).input(),
-      storageBundleId: (map['storageBundleId'] as String).input(),
-      storageBundleName: (map['storageBundleName'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      storageBundleId: pulumi.Input.fromValue(map['storageBundleId'] as String),
+      storageBundleName: pulumi.Input.fromValue(
+        map['storageBundleName'] as String,
+      ),
     );
   }
 }
-

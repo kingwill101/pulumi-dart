@@ -4,16 +4,15 @@ enum EnvironmentVariableType {
   pLAINTEXT("PLAINTEXT"),
   sECRETSMANAGER("SECRETS_MANAGER");
 
-  const EnvironmentVariableType(this.value);
-  final String value;
+  const EnvironmentVariableType(this.wireValue);
+  final String wireValue;
 
   static EnvironmentVariableType fromValue(String value) {
     for (final item in EnvironmentVariableType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentVariableType value: $value');
   }
 }
-

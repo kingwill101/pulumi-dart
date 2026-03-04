@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventBusesBus {
   /// The time of this bus was created.
   final pulumi.Input<String> createTime;
+
   /// The description of event bus.
   final pulumi.Input<String> description;
+
   /// The name of event bus.
   final pulumi.Input<String> eventBusName;
+
   /// The ID of the Event Bus. Its value is same as Queue Name.
   final pulumi.Input<String> id;
 
@@ -35,11 +38,10 @@ class GetEventBusesBus {
 
   factory GetEventBusesBus.fromMap(Map<String, dynamic> map) {
     return GetEventBusesBus(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      eventBusName: (map['eventBusName'] as String).input(),
-      id: (map['id'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      eventBusName: pulumi.Input.fromValue(map['eventBusName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

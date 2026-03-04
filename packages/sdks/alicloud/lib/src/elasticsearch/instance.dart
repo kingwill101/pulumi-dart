@@ -13,7 +13,7 @@ import 'instance_warm_node_configuration.dart';
 ///
 /// For information about Elasticsearch Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/elasticsearch/2017-06-13/createInstance).
 ///
-/// > **NOTE:** Available since v1.30.0.
+/// &gt; **NOTE:** Available since v1.30.0.
 ///
 /// ## Example Usage
 ///
@@ -323,42 +323,60 @@ import 'instance_warm_node_configuration.dart';
 class Instance extends pulumi.CustomResource {
   /// Schema Type:.
   late final pulumi.Output<String> archType;
+
   /// Renewal Period
   late final pulumi.Output<int?> autoRenewDuration;
+
   /// The Elasticsearch cluster's client node quantity, between 2 and 25.
   late final pulumi.Output<int> clientNodeAmount;
+
   /// Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
-  late final pulumi.Output<InstanceClientNodeConfiguration> clientNodeConfiguration;
+  late final pulumi.Output<InstanceClientNodeConfiguration>
+  clientNodeConfiguration;
+
   /// The client node spec. If specified, client node will be created.
   late final pulumi.Output<String> clientNodeSpec;
+
   /// Instance creation time.
   late final pulumi.Output<String> createTime;
+
   /// The Elasticsearch cluster's data node quantity, between 2 and 50.
   late final pulumi.Output<int> dataNodeAmount;
+
   /// Elasticsearch data node information See `data_node_configuration` below.
   late final pulumi.Output<InstanceDataNodeConfiguration> dataNodeConfiguration;
+
   /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
   late final pulumi.Output<bool> dataNodeDiskEncrypted;
+
   /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
   late final pulumi.Output<String> dataNodeDiskPerformanceLevel;
+
   /// The single data node storage space.
   late final pulumi.Output<int> dataNodeDiskSize;
+
   /// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
   late final pulumi.Output<String> dataNodeDiskType;
+
   /// The data node specifications of the Elasticsearch instance.
   late final pulumi.Output<String> dataNodeSpec;
+
   /// Instance name
   late final pulumi.Output<String> description;
+
   /// Elasticsearch cluster private domain name.
   late final pulumi.Output<String> domain;
+
   /// Whether to enable Kibana private network access.
   ///
   /// The meaning of the value is as follows:
   /// - true: On.
   /// - false: does not open.
   late final pulumi.Output<bool> enableKibanaPrivateNetwork;
+
   /// Does Kibana enable public access
   late final pulumi.Output<bool> enableKibanaPublicNetwork;
+
   /// Whether to enable Kibana public network access.
   ///
   /// The meaning of the value is as follows:
@@ -366,82 +384,120 @@ class Instance extends pulumi.CustomResource {
   /// - false: does not open.
   late final pulumi.Output<bool> enablePublic;
   late final pulumi.Output<bool?> force;
+
   /// Version type.
   late final pulumi.Output<String> instanceCategory;
+
   /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
   late final pulumi.Output<String> instanceChargeType;
+
   /// Elasticsearch Kibana node settings See `kibana_configuration` below.
   late final pulumi.Output<InstanceKibanaConfiguration> kibanaConfiguration;
+
   /// Kibana address.
   late final pulumi.Output<String> kibanaDomain;
+
   /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
   late final pulumi.Output<String> kibanaNodeSpec;
+
   /// The port assigned by the Kibana node.
   late final pulumi.Output<int> kibanaPort;
+
   /// Kibana private network security group ID
   late final pulumi.Output<String?> kibanaPrivateSecurityGroupId;
+
   /// Cluster Kibana node private network access whitelist
   late final pulumi.Output<List<String>> kibanaPrivateWhitelists;
+
   /// Kibana private network access whitelist
   late final pulumi.Output<List<String>> kibanaWhitelists;
+
   /// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
   late final pulumi.Output<String?> kmsEncryptedPassword;
+
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   late final pulumi.Output<Map<String, String>?> kmsEncryptionContext;
+
   /// Elasticsearch proprietary master node configuration information See `master_configuration` below.
   late final pulumi.Output<InstanceMasterConfiguration> masterConfiguration;
+
   /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
   late final pulumi.Output<String> masterNodeDiskType;
+
   /// The dedicated master node spec. If specified, dedicated master node will be created.
   late final pulumi.Output<String> masterNodeSpec;
   late final pulumi.Output<String?> orderActionType;
+
   /// The access password of the instance.
   late final pulumi.Output<String?> password;
+
   /// The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
   late final pulumi.Output<String> paymentType;
+
   /// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
   late final pulumi.Output<int> period;
+
   /// Instance connection port.
   late final pulumi.Output<int> port;
+
   /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
   late final pulumi.Output<List<String>> privateWhitelists;
+
   /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
   late final pulumi.Output<String> protocol;
+
   /// The public network address of the current instance.
   late final pulumi.Output<String> publicDomain;
+
   /// Elasticsearch cluster public network access port
   late final pulumi.Output<int> publicPort;
+
   /// Elasticseach public network access whitelist IP list
   late final pulumi.Output<List<String>> publicWhitelists;
+
   /// Renewal Status
   late final pulumi.Output<String> renewStatus;
+
   /// Renewal Period Unit
   late final pulumi.Output<String> renewalDurationUnit;
+
   /// Resource group to which the instance belongs
   late final pulumi.Output<String> resourceGroupId;
+
   /// Configuration information
   late final pulumi.Output<Map<String, String>> settingConfig;
+
   /// Instance change status
   late final pulumi.Output<String> status;
+
   /// Collection of tag key-value pairs
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String?> updateStrategy;
+
   /// Instance version
   late final pulumi.Output<String> version;
+
   /// The ID of VSwitch.
   late final pulumi.Output<String> vswitchId;
+
   /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
   late final pulumi.Output<int> warmNodeAmount;
+
   /// Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
   late final pulumi.Output<InstanceWarmNodeConfiguration> warmNodeConfiguration;
+
   /// If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
   late final pulumi.Output<bool> warmNodeDiskEncrypted;
+
   /// The single warm node storage space, should between 500 and 20480
   late final pulumi.Output<int> warmNodeDiskSize;
+
   /// The warm node disk type. Supported values:  cloud_efficiency.
   late final pulumi.Output<String> warmNodeDiskType;
+
   /// The warm node specifications of the Elasticsearch instance.
   late final pulumi.Output<String> warmNodeSpec;
+
   /// The number of zones in the Elasticsearch instance.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -456,70 +512,92 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:elasticsearch/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.archType = registerOutput<String>('archType');
-    this.autoRenewDuration = registerOutput<int?>('autoRenewDuration');
-    this.clientNodeAmount = registerOutput<int>('clientNodeAmount');
-    this.clientNodeConfiguration = registerOutput<InstanceClientNodeConfiguration>('clientNodeConfiguration');
-    this.clientNodeSpec = registerOutput<String>('clientNodeSpec');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataNodeAmount = registerOutput<int>('dataNodeAmount');
-    this.dataNodeConfiguration = registerOutput<InstanceDataNodeConfiguration>('dataNodeConfiguration');
-    this.dataNodeDiskEncrypted = registerOutput<bool>('dataNodeDiskEncrypted');
-    this.dataNodeDiskPerformanceLevel = registerOutput<String>('dataNodeDiskPerformanceLevel');
-    this.dataNodeDiskSize = registerOutput<int>('dataNodeDiskSize');
-    this.dataNodeDiskType = registerOutput<String>('dataNodeDiskType');
-    this.dataNodeSpec = registerOutput<String>('dataNodeSpec');
-    this.description = registerOutput<String>('description');
-    this.domain = registerOutput<String>('domain');
-    this.enableKibanaPrivateNetwork = registerOutput<bool>('enableKibanaPrivateNetwork');
-    this.enableKibanaPublicNetwork = registerOutput<bool>('enableKibanaPublicNetwork');
-    this.enablePublic = registerOutput<bool>('enablePublic');
-    this.force = registerOutput<bool?>('force');
-    this.instanceCategory = registerOutput<String>('instanceCategory');
-    this.instanceChargeType = registerOutput<String>('instanceChargeType');
-    this.kibanaConfiguration = registerOutput<InstanceKibanaConfiguration>('kibanaConfiguration');
-    this.kibanaDomain = registerOutput<String>('kibanaDomain');
-    this.kibanaNodeSpec = registerOutput<String>('kibanaNodeSpec');
-    this.kibanaPort = registerOutput<int>('kibanaPort');
-    this.kibanaPrivateSecurityGroupId = registerOutput<String?>('kibanaPrivateSecurityGroupId');
-    this.kibanaPrivateWhitelists = registerOutput<List<String>>('kibanaPrivateWhitelists');
-    this.kibanaWhitelists = registerOutput<List<String>>('kibanaWhitelists');
-    this.kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    this.kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
-    this.masterConfiguration = registerOutput<InstanceMasterConfiguration>('masterConfiguration');
-    this.masterNodeDiskType = registerOutput<String>('masterNodeDiskType');
-    this.masterNodeSpec = registerOutput<String>('masterNodeSpec');
-    this.orderActionType = registerOutput<String?>('orderActionType');
-    this.password = registerOutput<String?>('password');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int>('period');
-    this.port = registerOutput<int>('port');
-    this.privateWhitelists = registerOutput<List<String>>('privateWhitelists');
-    this.protocol = registerOutput<String>('protocol');
-    this.publicDomain = registerOutput<String>('publicDomain');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.publicWhitelists = registerOutput<List<String>>('publicWhitelists');
-    this.renewStatus = registerOutput<String>('renewStatus');
-    this.renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.settingConfig = registerOutput<Map<String, String>>('settingConfig');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.updateStrategy = registerOutput<String?>('updateStrategy');
-    this.version = registerOutput<String>('version');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.warmNodeAmount = registerOutput<int>('warmNodeAmount');
-    this.warmNodeConfiguration = registerOutput<InstanceWarmNodeConfiguration>('warmNodeConfiguration');
-    this.warmNodeDiskEncrypted = registerOutput<bool>('warmNodeDiskEncrypted');
-    this.warmNodeDiskSize = registerOutput<int>('warmNodeDiskSize');
-    this.warmNodeDiskType = registerOutput<String>('warmNodeDiskType');
-    this.warmNodeSpec = registerOutput<String>('warmNodeSpec');
-    this.zoneCount = registerOutput<int>('zoneCount');
+         'alicloud:elasticsearch/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    archType = registerOutput<String>('archType');
+    autoRenewDuration = registerOutput<int?>('autoRenewDuration');
+    clientNodeAmount = registerOutput<int>('clientNodeAmount');
+    clientNodeConfiguration = registerOutput<InstanceClientNodeConfiguration>(
+      'clientNodeConfiguration',
+    );
+    clientNodeSpec = registerOutput<String>('clientNodeSpec');
+    createTime = registerOutput<String>('createTime');
+    dataNodeAmount = registerOutput<int>('dataNodeAmount');
+    dataNodeConfiguration = registerOutput<InstanceDataNodeConfiguration>(
+      'dataNodeConfiguration',
+    );
+    dataNodeDiskEncrypted = registerOutput<bool>('dataNodeDiskEncrypted');
+    dataNodeDiskPerformanceLevel = registerOutput<String>(
+      'dataNodeDiskPerformanceLevel',
+    );
+    dataNodeDiskSize = registerOutput<int>('dataNodeDiskSize');
+    dataNodeDiskType = registerOutput<String>('dataNodeDiskType');
+    dataNodeSpec = registerOutput<String>('dataNodeSpec');
+    description = registerOutput<String>('description');
+    domain = registerOutput<String>('domain');
+    enableKibanaPrivateNetwork = registerOutput<bool>(
+      'enableKibanaPrivateNetwork',
+    );
+    enableKibanaPublicNetwork = registerOutput<bool>(
+      'enableKibanaPublicNetwork',
+    );
+    enablePublic = registerOutput<bool>('enablePublic');
+    force = registerOutput<bool?>('force');
+    instanceCategory = registerOutput<String>('instanceCategory');
+    instanceChargeType = registerOutput<String>('instanceChargeType');
+    kibanaConfiguration = registerOutput<InstanceKibanaConfiguration>(
+      'kibanaConfiguration',
+    );
+    kibanaDomain = registerOutput<String>('kibanaDomain');
+    kibanaNodeSpec = registerOutput<String>('kibanaNodeSpec');
+    kibanaPort = registerOutput<int>('kibanaPort');
+    kibanaPrivateSecurityGroupId = registerOutput<String?>(
+      'kibanaPrivateSecurityGroupId',
+    );
+    kibanaPrivateWhitelists = registerOutput<List<String>>(
+      'kibanaPrivateWhitelists',
+    );
+    kibanaWhitelists = registerOutput<List<String>>('kibanaWhitelists');
+    kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
+    kmsEncryptionContext = registerOutput<Map<String, String>?>(
+      'kmsEncryptionContext',
+    );
+    masterConfiguration = registerOutput<InstanceMasterConfiguration>(
+      'masterConfiguration',
+    );
+    masterNodeDiskType = registerOutput<String>('masterNodeDiskType');
+    masterNodeSpec = registerOutput<String>('masterNodeSpec');
+    orderActionType = registerOutput<String?>('orderActionType');
+    password = registerOutput<String?>('password');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int>('period');
+    port = registerOutput<int>('port');
+    privateWhitelists = registerOutput<List<String>>('privateWhitelists');
+    protocol = registerOutput<String>('protocol');
+    publicDomain = registerOutput<String>('publicDomain');
+    publicPort = registerOutput<int>('publicPort');
+    publicWhitelists = registerOutput<List<String>>('publicWhitelists');
+    renewStatus = registerOutput<String>('renewStatus');
+    renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    settingConfig = registerOutput<Map<String, String>>('settingConfig');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    updateStrategy = registerOutput<String?>('updateStrategy');
+    version = registerOutput<String>('version');
+    vswitchId = registerOutput<String>('vswitchId');
+    warmNodeAmount = registerOutput<int>('warmNodeAmount');
+    warmNodeConfiguration = registerOutput<InstanceWarmNodeConfiguration>(
+      'warmNodeConfiguration',
+    );
+    warmNodeDiskEncrypted = registerOutput<bool>('warmNodeDiskEncrypted');
+    warmNodeDiskSize = registerOutput<int>('warmNodeDiskSize');
+    warmNodeDiskType = registerOutput<String>('warmNodeDiskType');
+    warmNodeSpec = registerOutput<String>('warmNodeSpec');
+    zoneCount = registerOutput<int>('zoneCount');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -540,69 +618,91 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:elasticsearch/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.archType = registerOutput<String>('archType');
-    this.autoRenewDuration = registerOutput<int?>('autoRenewDuration');
-    this.clientNodeAmount = registerOutput<int>('clientNodeAmount');
-    this.clientNodeConfiguration = registerOutput<InstanceClientNodeConfiguration>('clientNodeConfiguration');
-    this.clientNodeSpec = registerOutput<String>('clientNodeSpec');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataNodeAmount = registerOutput<int>('dataNodeAmount');
-    this.dataNodeConfiguration = registerOutput<InstanceDataNodeConfiguration>('dataNodeConfiguration');
-    this.dataNodeDiskEncrypted = registerOutput<bool>('dataNodeDiskEncrypted');
-    this.dataNodeDiskPerformanceLevel = registerOutput<String>('dataNodeDiskPerformanceLevel');
-    this.dataNodeDiskSize = registerOutput<int>('dataNodeDiskSize');
-    this.dataNodeDiskType = registerOutput<String>('dataNodeDiskType');
-    this.dataNodeSpec = registerOutput<String>('dataNodeSpec');
-    this.description = registerOutput<String>('description');
-    this.domain = registerOutput<String>('domain');
-    this.enableKibanaPrivateNetwork = registerOutput<bool>('enableKibanaPrivateNetwork');
-    this.enableKibanaPublicNetwork = registerOutput<bool>('enableKibanaPublicNetwork');
-    this.enablePublic = registerOutput<bool>('enablePublic');
-    this.force = registerOutput<bool?>('force');
-    this.instanceCategory = registerOutput<String>('instanceCategory');
-    this.instanceChargeType = registerOutput<String>('instanceChargeType');
-    this.kibanaConfiguration = registerOutput<InstanceKibanaConfiguration>('kibanaConfiguration');
-    this.kibanaDomain = registerOutput<String>('kibanaDomain');
-    this.kibanaNodeSpec = registerOutput<String>('kibanaNodeSpec');
-    this.kibanaPort = registerOutput<int>('kibanaPort');
-    this.kibanaPrivateSecurityGroupId = registerOutput<String?>('kibanaPrivateSecurityGroupId');
-    this.kibanaPrivateWhitelists = registerOutput<List<String>>('kibanaPrivateWhitelists');
-    this.kibanaWhitelists = registerOutput<List<String>>('kibanaWhitelists');
-    this.kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
-    this.kmsEncryptionContext = registerOutput<Map<String, String>?>('kmsEncryptionContext');
-    this.masterConfiguration = registerOutput<InstanceMasterConfiguration>('masterConfiguration');
-    this.masterNodeDiskType = registerOutput<String>('masterNodeDiskType');
-    this.masterNodeSpec = registerOutput<String>('masterNodeSpec');
-    this.orderActionType = registerOutput<String?>('orderActionType');
-    this.password = registerOutput<String?>('password');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int>('period');
-    this.port = registerOutput<int>('port');
-    this.privateWhitelists = registerOutput<List<String>>('privateWhitelists');
-    this.protocol = registerOutput<String>('protocol');
-    this.publicDomain = registerOutput<String>('publicDomain');
-    this.publicPort = registerOutput<int>('publicPort');
-    this.publicWhitelists = registerOutput<List<String>>('publicWhitelists');
-    this.renewStatus = registerOutput<String>('renewStatus');
-    this.renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.settingConfig = registerOutput<Map<String, String>>('settingConfig');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.updateStrategy = registerOutput<String?>('updateStrategy');
-    this.version = registerOutput<String>('version');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.warmNodeAmount = registerOutput<int>('warmNodeAmount');
-    this.warmNodeConfiguration = registerOutput<InstanceWarmNodeConfiguration>('warmNodeConfiguration');
-    this.warmNodeDiskEncrypted = registerOutput<bool>('warmNodeDiskEncrypted');
-    this.warmNodeDiskSize = registerOutput<int>('warmNodeDiskSize');
-    this.warmNodeDiskType = registerOutput<String>('warmNodeDiskType');
-    this.warmNodeSpec = registerOutput<String>('warmNodeSpec');
-    this.zoneCount = registerOutput<int>('zoneCount');
+         'alicloud:elasticsearch/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    archType = registerOutput<String>('archType');
+    autoRenewDuration = registerOutput<int?>('autoRenewDuration');
+    clientNodeAmount = registerOutput<int>('clientNodeAmount');
+    clientNodeConfiguration = registerOutput<InstanceClientNodeConfiguration>(
+      'clientNodeConfiguration',
+    );
+    clientNodeSpec = registerOutput<String>('clientNodeSpec');
+    createTime = registerOutput<String>('createTime');
+    dataNodeAmount = registerOutput<int>('dataNodeAmount');
+    dataNodeConfiguration = registerOutput<InstanceDataNodeConfiguration>(
+      'dataNodeConfiguration',
+    );
+    dataNodeDiskEncrypted = registerOutput<bool>('dataNodeDiskEncrypted');
+    dataNodeDiskPerformanceLevel = registerOutput<String>(
+      'dataNodeDiskPerformanceLevel',
+    );
+    dataNodeDiskSize = registerOutput<int>('dataNodeDiskSize');
+    dataNodeDiskType = registerOutput<String>('dataNodeDiskType');
+    dataNodeSpec = registerOutput<String>('dataNodeSpec');
+    description = registerOutput<String>('description');
+    domain = registerOutput<String>('domain');
+    enableKibanaPrivateNetwork = registerOutput<bool>(
+      'enableKibanaPrivateNetwork',
+    );
+    enableKibanaPublicNetwork = registerOutput<bool>(
+      'enableKibanaPublicNetwork',
+    );
+    enablePublic = registerOutput<bool>('enablePublic');
+    force = registerOutput<bool?>('force');
+    instanceCategory = registerOutput<String>('instanceCategory');
+    instanceChargeType = registerOutput<String>('instanceChargeType');
+    kibanaConfiguration = registerOutput<InstanceKibanaConfiguration>(
+      'kibanaConfiguration',
+    );
+    kibanaDomain = registerOutput<String>('kibanaDomain');
+    kibanaNodeSpec = registerOutput<String>('kibanaNodeSpec');
+    kibanaPort = registerOutput<int>('kibanaPort');
+    kibanaPrivateSecurityGroupId = registerOutput<String?>(
+      'kibanaPrivateSecurityGroupId',
+    );
+    kibanaPrivateWhitelists = registerOutput<List<String>>(
+      'kibanaPrivateWhitelists',
+    );
+    kibanaWhitelists = registerOutput<List<String>>('kibanaWhitelists');
+    kmsEncryptedPassword = registerOutput<String?>('kmsEncryptedPassword');
+    kmsEncryptionContext = registerOutput<Map<String, String>?>(
+      'kmsEncryptionContext',
+    );
+    masterConfiguration = registerOutput<InstanceMasterConfiguration>(
+      'masterConfiguration',
+    );
+    masterNodeDiskType = registerOutput<String>('masterNodeDiskType');
+    masterNodeSpec = registerOutput<String>('masterNodeSpec');
+    orderActionType = registerOutput<String?>('orderActionType');
+    password = registerOutput<String?>('password');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int>('period');
+    port = registerOutput<int>('port');
+    privateWhitelists = registerOutput<List<String>>('privateWhitelists');
+    protocol = registerOutput<String>('protocol');
+    publicDomain = registerOutput<String>('publicDomain');
+    publicPort = registerOutput<int>('publicPort');
+    publicWhitelists = registerOutput<List<String>>('publicWhitelists');
+    renewStatus = registerOutput<String>('renewStatus');
+    renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    settingConfig = registerOutput<Map<String, String>>('settingConfig');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    updateStrategy = registerOutput<String?>('updateStrategy');
+    version = registerOutput<String>('version');
+    vswitchId = registerOutput<String>('vswitchId');
+    warmNodeAmount = registerOutput<int>('warmNodeAmount');
+    warmNodeConfiguration = registerOutput<InstanceWarmNodeConfiguration>(
+      'warmNodeConfiguration',
+    );
+    warmNodeDiskEncrypted = registerOutput<bool>('warmNodeDiskEncrypted');
+    warmNodeDiskSize = registerOutput<int>('warmNodeDiskSize');
+    warmNodeDiskType = registerOutput<String>('warmNodeDiskType');
+    warmNodeSpec = registerOutput<String>('warmNodeSpec');
+    zoneCount = registerOutput<int>('zoneCount');
   }
 }

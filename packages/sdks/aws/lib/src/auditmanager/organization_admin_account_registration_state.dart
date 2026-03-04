@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationAdminAccountRegistrationState {
   /// Identifier for the organization administrator account.
   final pulumi.Input<String>? adminAccountId;
+
   /// Identifier for the organization.
   final pulumi.Input<String>? organizationId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -29,12 +31,25 @@ class OrganizationAdminAccountRegistrationState {
     };
   }
 
-  factory OrganizationAdminAccountRegistrationState.fromMap(Map<String, dynamic> map) {
+  factory OrganizationAdminAccountRegistrationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationAdminAccountRegistrationState(
-      adminAccountId: map['adminAccountId'] == null ? null : ((map['adminAccountId'] as String).input()).input(),
-      organizationId: map['organizationId'] == null ? null : ((map['organizationId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      adminAccountId: (() {
+        final guardedValue = map['adminAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: (() {
+        final guardedValue = map['organizationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

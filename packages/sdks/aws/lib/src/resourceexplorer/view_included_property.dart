@@ -8,20 +8,15 @@ class ViewIncludedProperty {
 
   /// Creates a new [ViewIncludedProperty].
   /// [name] The name of the property that is included in this view. Valid values: `tags`.
-  ViewIncludedProperty({
-    required this.name,
-  });
+  ViewIncludedProperty({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory ViewIncludedProperty.fromMap(Map<String, dynamic> map) {
     return ViewIncludedProperty(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

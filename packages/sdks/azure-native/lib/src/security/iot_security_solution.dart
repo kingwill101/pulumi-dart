@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'additional_workspaces_properties_response.dart';
 import 'iot_security_solution_args.dart';
-import 'recommendation_configuration_properties_response.dart';
 import 'system_data_response.dart';
 import 'user_defined_resources_properties_response.dart';
 
@@ -281,37 +279,55 @@ import 'user_defined_resources_properties_response.dart';
 /// ```
 class IotSecuritySolution extends pulumi.CustomResource {
   /// List of additional workspaces
-  late final pulumi.Output<List<AdditionalWorkspacesPropertiesResponse>?> additionalWorkspaces;
+  late final pulumi.Output<List<Map<String, dynamic>>?> additionalWorkspaces;
+
   /// List of resources that were automatically discovered as relevant to the security solution.
   late final pulumi.Output<List<String>> autoDiscoveredResources;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Disabled data sources. Disabling these data sources compromises the system.
   late final pulumi.Output<List<String>?> disabledDataSources;
+
   /// Resource display name.
   late final pulumi.Output<String> displayName;
+
   /// List of additional options for exporting to workspace data.
   late final pulumi.Output<List<String>?> export;
+
   /// IoT Hub resource IDs
   late final pulumi.Output<List<String>> iotHubs;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// List of the configuration status for each recommendation type.
-  late final pulumi.Output<List<RecommendationConfigurationPropertiesResponse>?> recommendationsConfiguration;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  recommendationsConfiguration;
+
   /// Status of the IoT Security solution.
   late final pulumi.Output<String?> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// Unmasked IP address logging status
   late final pulumi.Output<String?> unmaskedIpLoggingStatus;
+
   /// Properties of the IoT Security solution's user defined resources.
-  late final pulumi.Output<UserDefinedResourcesPropertiesResponse?> userDefinedResources;
+  late final pulumi.Output<UserDefinedResourcesPropertiesResponse?>
+  userDefinedResources;
+
   /// Workspace resource ID
   late final pulumi.Output<String?> workspace;
 
@@ -324,27 +340,38 @@ class IotSecuritySolution extends pulumi.CustomResource {
     IotSecuritySolutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:IotSecuritySolution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalWorkspaces = registerOutput<List<AdditionalWorkspacesPropertiesResponse>?>('additionalWorkspaces');
-    this.autoDiscoveredResources = registerOutput<List<String>>('autoDiscoveredResources');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.disabledDataSources = registerOutput<List<String>?>('disabledDataSources');
-    this.displayName = registerOutput<String>('displayName');
-    this.export = registerOutput<List<String>?>('export');
-    this.iotHubs = registerOutput<List<String>>('iotHubs');
-    this.location = registerOutput<String?>('location');
+         'azure-native:security:IotSecuritySolution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>(
+      'additionalWorkspaces',
+    );
+    autoDiscoveredResources = registerOutput<List<String>>(
+      'autoDiscoveredResources',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disabledDataSources = registerOutput<List<String>?>('disabledDataSources');
+    displayName = registerOutput<String>('displayName');
+    export = registerOutput<List<String>?>('export');
+    iotHubs = registerOutput<List<String>>('iotHubs');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.recommendationsConfiguration = registerOutput<List<RecommendationConfigurationPropertiesResponse>?>('recommendationsConfiguration');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.unmaskedIpLoggingStatus = registerOutput<String?>('unmaskedIpLoggingStatus');
-    this.userDefinedResources = registerOutput<UserDefinedResourcesPropertiesResponse?>('userDefinedResources');
-    this.workspace = registerOutput<String?>('workspace');
+    recommendationsConfiguration = registerOutput<List<Map<String, dynamic>>?>(
+      'recommendationsConfiguration',
+    );
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    unmaskedIpLoggingStatus = registerOutput<String?>(
+      'unmaskedIpLoggingStatus',
+    );
+    userDefinedResources =
+        registerOutput<UserDefinedResourcesPropertiesResponse?>(
+          'userDefinedResources',
+        );
+    workspace = registerOutput<String?>('workspace');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionalAccessPolicyConditionsPlatforms {
   /// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
   final pulumi.Input<List<String>>? excludedPlatforms;
+
   /// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
   final pulumi.Input<List<String>> includedPlatforms;
 
@@ -23,11 +24,18 @@ class ConditionalAccessPolicyConditionsPlatforms {
     };
   }
 
-  factory ConditionalAccessPolicyConditionsPlatforms.fromMap(Map<String, dynamic> map) {
+  factory ConditionalAccessPolicyConditionsPlatforms.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConditionalAccessPolicyConditionsPlatforms(
-      excludedPlatforms: map['excludedPlatforms'] == null ? null : ((map['excludedPlatforms']! as List).cast<String>()).input(),
-      includedPlatforms: ((map['includedPlatforms'] as List).cast<String>()).input(),
+      excludedPlatforms: (() {
+        final guardedValue = map['excludedPlatforms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includedPlatforms: pulumi.Input.fromValue(
+        (map['includedPlatforms'] as List).cast<String>(),
+      ),
     );
   }
 }
-

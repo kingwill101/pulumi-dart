@@ -11,20 +11,27 @@ class DataProductArgs {
   /// Custom user defined access groups at the data product level.
   /// Structure is documented below.
   final pulumi.Input<List<DataProductAccessGroup>>? accessGroups;
+
   /// The ID of the data product.
   final pulumi.Input<String> dataProductId;
+
   /// Description of the data product.
   final pulumi.Input<String>? description;
+
   /// User-friendly display name.
   final pulumi.Input<String> displayName;
+
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location for the data product.
   final pulumi.Input<String> location;
+
   /// Emails of the owners.
   final pulumi.Input<List<String>> ownerEmails;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -51,7 +58,18 @@ class DataProductArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessGroups': ?pulumi.Input.mapOptionalInputValue<List<DataProductAccessGroup>, List<Map<String, dynamic>>>(accessGroups, (value) => pulumi.Input.encodeList<DataProductAccessGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'accessGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataProductAccessGroup>,
+            List<Map<String, dynamic>>
+          >(
+            accessGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataProductAccessGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dataProductId': dataProductId,
       'description': ?description,
       'displayName': displayName,
@@ -64,15 +82,41 @@ class DataProductArgs {
 
   factory DataProductArgs.fromMap(Map<String, dynamic> map) {
     return DataProductArgs(
-      accessGroups: map['accessGroups'] == null ? null : (pulumi.Input.decodeList<DataProductAccessGroup>(map['accessGroups']!, (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataProductId: (map['dataProductId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      ownerEmails: ((map['ownerEmails'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      accessGroups: (() {
+        final guardedValue = map['accessGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataProductAccessGroup>(
+            guardedValue,
+            (value) => DataProductAccessGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      dataProductId: pulumi.Input.fromValue(map['dataProductId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      ownerEmails: pulumi.Input.fromValue(
+        (map['ownerEmails'] as List).cast<String>(),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

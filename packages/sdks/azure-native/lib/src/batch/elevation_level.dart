@@ -3,16 +3,15 @@ enum ElevationLevel {
   nonAdmin("NonAdmin"),
   admin("Admin");
 
-  const ElevationLevel(this.value);
-  final String value;
+  const ElevationLevel(this.wireValue);
+  final String wireValue;
 
   static ElevationLevel fromValue(String value) {
     for (final item in ElevationLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElevationLevel value: $value');
   }
 }
-

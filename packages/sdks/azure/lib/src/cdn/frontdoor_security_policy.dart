@@ -541,7 +541,7 @@ import 'frontdoor_security_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cdn` - 2024-02-01
@@ -556,10 +556,13 @@ import 'frontdoor_security_policy_state.dart';
 class FrontdoorSecurityPolicy extends pulumi.CustomResource {
   /// The Front Door Profile Resource Id that is linked to this Front Door Security Policy. Changing this forces a new Front Door Security Policy to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
+
   /// The name which should be used for this Front Door Security Policy. Possible values must not be an empty string. Changing this forces a new Front Door Security Policy to be created.
   late final pulumi.Output<String> name;
+
   /// An `security_policies` block as defined below.
-  late final pulumi.Output<FrontdoorSecurityPolicySecurityPolicies> securityPolicies;
+  late final pulumi.Output<FrontdoorSecurityPolicySecurityPolicies>
+  securityPolicies;
 
   /// Creates a new [FrontdoorSecurityPolicy].
   /// [name] The Pulumi resource name.
@@ -570,14 +573,16 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
     FrontdoorSecurityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+         'azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');
-    this.securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>('securityPolicies');
+    securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>(
+      'securityPolicies',
+    );
   }
 
   /// Gets an existing [FrontdoorSecurityPolicy] resource's state with the given [name] and [id].
@@ -598,13 +603,15 @@ class FrontdoorSecurityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+         'azure:cdn/frontdoorSecurityPolicy:FrontdoorSecurityPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     this.name = registerOutput<String>('name');
-    this.securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>('securityPolicies');
+    securityPolicies = registerOutput<FrontdoorSecurityPolicySecurityPolicies>(
+      'securityPolicies',
+    );
   }
 }

@@ -142,7 +142,7 @@ import 'virtual_wan_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -157,18 +157,25 @@ import 'virtual_wan_state.dart';
 class VirtualWan extends pulumi.CustomResource {
   /// Boolean flag to specify whether branch to branch traffic is allowed. Defaults to `true`.
   late final pulumi.Output<bool?> allowBranchToBranchTraffic;
+
   /// Boolean flag to specify whether VPN encryption is disabled. Defaults to `false`.
   late final pulumi.Output<bool?> disableVpnEncryption;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Virtual WAN. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the Office365 local breakout category. Possible values include: `Optimize`, `OptimizeAndAllow`, `All`, `None`. Defaults to `None`.
   late final pulumi.Output<String?> office365LocalBreakoutCategory;
+
   /// The name of the resource group in which to create the Virtual WAN. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the Virtual WAN.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Virtual WAN type. Possible Values include: `Basic` and `Standard`. Defaults to `Standard`.
   late final pulumi.Output<String?> type;
 
@@ -181,19 +188,23 @@ class VirtualWan extends pulumi.CustomResource {
     VirtualWanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualWan:VirtualWan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowBranchToBranchTraffic = registerOutput<bool?>('allowBranchToBranchTraffic');
-    this.disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
-    this.location = registerOutput<String>('location');
+         'azure:network/virtualWan:VirtualWan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowBranchToBranchTraffic = registerOutput<bool?>(
+      'allowBranchToBranchTraffic',
+    );
+    disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.office365LocalBreakoutCategory = registerOutput<String?>('office365LocalBreakoutCategory');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String?>('type');
+    office365LocalBreakoutCategory = registerOutput<String?>(
+      'office365LocalBreakoutCategory',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [VirtualWan] resource's state with the given [name] and [id].
@@ -214,18 +225,22 @@ class VirtualWan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualWan:VirtualWan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowBranchToBranchTraffic = registerOutput<bool?>('allowBranchToBranchTraffic');
-    this.disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
-    this.location = registerOutput<String>('location');
+         'azure:network/virtualWan:VirtualWan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowBranchToBranchTraffic = registerOutput<bool?>(
+      'allowBranchToBranchTraffic',
+    );
+    disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.office365LocalBreakoutCategory = registerOutput<String?>('office365LocalBreakoutCategory');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String?>('type');
+    office365LocalBreakoutCategory = registerOutput<String?>(
+      'office365LocalBreakoutCategory',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String?>('type');
   }
 }

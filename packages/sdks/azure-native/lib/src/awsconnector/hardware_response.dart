@@ -7,8 +7,10 @@ import 'disk_response.dart';
 class HardwareResponse {
   /// CPU count of the Instance.
   final pulumi.Input<int>? cpuCount;
+
   /// Disks attached to the Instance.
   final pulumi.Input<List<DiskResponse>>? disks;
+
   /// RAM Size of the Instance.
   final pulumi.Input<int>? ramSizeInGb;
 
@@ -16,26 +18,50 @@ class HardwareResponse {
   /// [cpuCount] CPU count of the Instance.
   /// [disks] Disks attached to the Instance.
   /// [ramSizeInGb] RAM Size of the Instance.
-  HardwareResponse({
-    this.cpuCount,
-    this.disks,
-    this.ramSizeInGb,
-  });
+  HardwareResponse({this.cpuCount, this.disks, this.ramSizeInGb});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cpuCount': ?cpuCount,
-      'disks': ?pulumi.Input.mapOptionalInputValue<List<DiskResponse>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<DiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'disks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DiskResponse>,
+            List<Map<String, dynamic>>
+          >(
+            disks,
+            (value) =>
+                pulumi.Input.encodeList<DiskResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'ramSizeInGb': ?ramSizeInGb,
     };
   }
 
   factory HardwareResponse.fromMap(Map<String, dynamic> map) {
     return HardwareResponse(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<DiskResponse>(map['disks']!, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ramSizeInGb: map['ramSizeInGb'] == null ? null : (map['ramSizeInGb']! as int).input(),
+      cpuCount: (() {
+        final guardedValue = map['cpuCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      disks: (() {
+        final guardedValue = map['disks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DiskResponse>(
+            guardedValue,
+            (value) =>
+                DiskResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      ramSizeInGb: (() {
+        final guardedValue = map['ramSizeInGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

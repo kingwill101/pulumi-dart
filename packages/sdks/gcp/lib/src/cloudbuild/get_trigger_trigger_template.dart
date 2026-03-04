@@ -6,21 +6,27 @@ class GetTriggerTriggerTemplate {
   /// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
   /// This field is a regular expression.
   final pulumi.Input<String> branchName;
+
   /// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
   final pulumi.Input<String> commitSha;
+
   /// Directory, relative to the source root, in which to run the build.
   ///
   /// This must be a relative path. If a step's dir is specified and
   /// is an absolute path, this value is ignored for that step's
   /// execution.
   final pulumi.Input<String> dir;
+
   /// Only trigger a build if the revision regex does NOT match the revision regex.
   final pulumi.Input<bool> invertRegex;
+
   /// ID of the project that owns the Cloud Source Repository. If
   /// omitted, the project ID requesting the build is assumed.
   final pulumi.Input<String> projectId;
+
   /// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
   final pulumi.Input<String> repoName;
+
   /// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
   /// This field is a regular expression.
   final pulumi.Input<String> tagName;
@@ -57,14 +63,13 @@ class GetTriggerTriggerTemplate {
 
   factory GetTriggerTriggerTemplate.fromMap(Map<String, dynamic> map) {
     return GetTriggerTriggerTemplate(
-      branchName: (map['branchName'] as String).input(),
-      commitSha: (map['commitSha'] as String).input(),
-      dir: (map['dir'] as String).input(),
-      invertRegex: (map['invertRegex'] as bool).input(),
-      projectId: (map['projectId'] as String).input(),
-      repoName: (map['repoName'] as String).input(),
-      tagName: (map['tagName'] as String).input(),
+      branchName: pulumi.Input.fromValue(map['branchName'] as String),
+      commitSha: pulumi.Input.fromValue(map['commitSha'] as String),
+      dir: pulumi.Input.fromValue(map['dir'] as String),
+      invertRegex: pulumi.Input.fromValue(map['invertRegex'] as bool),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      repoName: pulumi.Input.fromValue(map['repoName'] as String),
+      tagName: pulumi.Input.fromValue(map['tagName'] as String),
     );
   }
 }
-

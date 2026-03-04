@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRunV1ConditionResponse {
   /// Optional. Last time the condition transitioned from one status to another.
   final pulumi.Input<String> lastTransitionTime;
+
   /// Optional. Human readable message indicating details about the current status.
   final pulumi.Input<String> message;
+
   /// Optional. One-word CamelCase reason for the condition's last transition. These are intended to be stable, unique values which the client may use to trigger error handling logic, whereas messages which may be changed later by the server.
   final pulumi.Input<String> reason;
+
   /// Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness.
   final pulumi.Input<String> severity;
+
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String> status;
+
   /// type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
   final pulumi.Input<String> type;
 
@@ -46,13 +51,14 @@ class GoogleCloudRunV1ConditionResponse {
 
   factory GoogleCloudRunV1ConditionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV1ConditionResponse(
-      lastTransitionTime: (map['lastTransitionTime'] as String).input(),
-      message: (map['message'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      severity: (map['severity'] as String).input(),
-      status: (map['status'] as String).input(),
-      type: (map['type'] as String).input(),
+      lastTransitionTime: pulumi.Input.fromValue(
+        map['lastTransitionTime'] as String,
+      ),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

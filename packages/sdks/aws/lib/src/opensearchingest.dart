@@ -1,5 +1,3 @@
-library module_opensearchingest;
-
 export 'opensearchingest/pipeline.dart';
 export 'opensearchingest/pipeline_args.dart';
 export 'opensearchingest/pipeline_buffer_options.dart';

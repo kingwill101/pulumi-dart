@@ -6,16 +6,15 @@ enum OrganizationSecurityPolicyType {
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK"),
   firewall("FIREWALL");
 
-  const OrganizationSecurityPolicyType(this.value);
-  final String value;
+  const OrganizationSecurityPolicyType(this.wireValue);
+  final String wireValue;
 
   static OrganizationSecurityPolicyType fromValue(String value) {
     for (final item in OrganizationSecurityPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationSecurityPolicyType value: $value');
   }
 }
-

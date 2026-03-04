@@ -162,28 +162,41 @@ import 'system_data_response.dart';
 class Appliance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Represents a supported Fabric/Infra. (AKSEdge etc...).
   late final pulumi.Output<String?> distro;
+
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Contains infrastructure information about the Appliance
-  late final pulumi.Output<AppliancePropertiesInfrastructureConfigResponse?> infrastructureConfig;
+  late final pulumi.Output<AppliancePropertiesInfrastructureConfigResponse?>
+  infrastructureConfig;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current deployment or provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Certificates pair used to download MSI certificate from HIS. Can only be set once.
   late final pulumi.Output<String?> publicKey;
+
   /// Appliance’s health and state of connection to on-prem. This list of values is not exhaustive.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Version of the Appliance
   late final pulumi.Output<String?> version;
 
@@ -196,23 +209,26 @@ class Appliance extends pulumi.CustomResource {
     ApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:resourceconnector:Appliance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.distro = registerOutput<String?>('distro');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.infrastructureConfig = registerOutput<AppliancePropertiesInfrastructureConfigResponse?>('infrastructureConfig');
-    this.location = registerOutput<String>('location');
+         'azure-native:resourceconnector:Appliance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    distro = registerOutput<String?>('distro');
+    identity = registerOutput<IdentityResponse?>('identity');
+    infrastructureConfig =
+        registerOutput<AppliancePropertiesInfrastructureConfigResponse?>(
+          'infrastructureConfig',
+        );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicKey = registerOutput<String?>('publicKey');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicKey = registerOutput<String?>('publicKey');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

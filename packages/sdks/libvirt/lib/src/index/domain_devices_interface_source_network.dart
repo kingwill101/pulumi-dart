@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesInterfaceSourceNetwork {
   /// Defines the bridge device that connects the network interface to the host's network.
   final pulumi.Input<String>? bridge;
+
   /// Sets the name of the virtual network to which the network interface connects.
   final pulumi.Input<String>? network;
+
   /// Configures the port group for the network interface, categorizing it within network management frameworks.
   final pulumi.Input<String>? portGroup;
+
   /// Defines the identifier for the port within the network configuration, aiding in managing network traffic.
   final pulumi.Input<String>? portId;
 
@@ -33,13 +36,30 @@ class DomainDevicesInterfaceSourceNetwork {
     };
   }
 
-  factory DomainDevicesInterfaceSourceNetwork.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesInterfaceSourceNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesInterfaceSourceNetwork(
-      bridge: map['bridge'] == null ? null : (map['bridge']! as String).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      portGroup: map['portGroup'] == null ? null : (map['portGroup']! as String).input(),
-      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      bridge: (() {
+        final guardedValue = map['bridge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portGroup: (() {
+        final guardedValue = map['portGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portId: (() {
+        final guardedValue = map['portId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

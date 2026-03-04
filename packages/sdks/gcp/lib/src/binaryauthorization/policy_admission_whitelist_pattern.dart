@@ -11,20 +11,15 @@ class PolicyAdmissionWhitelistPattern {
 
   /// Creates a new [PolicyAdmissionWhitelistPattern].
   /// [namePattern] An image name pattern to whitelist, in the form
-  PolicyAdmissionWhitelistPattern({
-    required this.namePattern,
-  });
+  PolicyAdmissionWhitelistPattern({required this.namePattern});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namePattern': namePattern,
-    };
+    return <String, dynamic>{'namePattern': namePattern};
   }
 
   factory PolicyAdmissionWhitelistPattern.fromMap(Map<String, dynamic> map) {
     return PolicyAdmissionWhitelistPattern(
-      namePattern: (map['namePattern'] as String).input(),
+      namePattern: pulumi.Input.fromValue(map['namePattern'] as String),
     );
   }
 }
-

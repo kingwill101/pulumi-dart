@@ -6,16 +6,20 @@ enum GoogleCloudDatalabelingV1beta1InputConfigDataType {
   text("TEXT"),
   generalData("GENERAL_DATA");
 
-  const GoogleCloudDatalabelingV1beta1InputConfigDataType(this.value);
-  final String value;
+  const GoogleCloudDatalabelingV1beta1InputConfigDataType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDatalabelingV1beta1InputConfigDataType fromValue(String value) {
-    for (final item in GoogleCloudDatalabelingV1beta1InputConfigDataType.values) {
-      if (item.value == value) {
+  static GoogleCloudDatalabelingV1beta1InputConfigDataType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDatalabelingV1beta1InputConfigDataType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatalabelingV1beta1InputConfigDataType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatalabelingV1beta1InputConfigDataType value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum ServiceSpecType {
   valueNodePort("NodePort"),
   valueLoadBalancer("LoadBalancer");
 
-  const ServiceSpecType(this.value);
-  final String value;
+  const ServiceSpecType(this.wireValue);
+  final String wireValue;
 
   static ServiceSpecType fromValue(String value) {
     for (final item in ServiceSpecType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceSpecType value: $value');
   }
 }
-

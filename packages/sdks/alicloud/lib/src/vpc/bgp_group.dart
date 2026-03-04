@@ -8,7 +8,7 @@ import 'bgp_group_state.dart';
 ///
 /// For information about Express Connect Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 ///
-/// > **NOTE:** Available since v1.152.0.
+/// &gt; **NOTE:** Available since v1.152.0.
 ///
 /// ## Example Usage
 ///
@@ -306,30 +306,41 @@ import 'bgp_group_state.dart';
 class BgpGroup extends pulumi.CustomResource {
   /// The authentication key of the BGP group.
   late final pulumi.Output<String?> authKey;
+
   /// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
   late final pulumi.Output<String?> bgpGroupName;
+
   /// Specifies whether to clear the secret key. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> clearAuthKey;
+
   /// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// The IP version. Valid values:
   /// - `IPv4`: This is the default value.
   /// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
   late final pulumi.Output<String> ipVersion;
+
   /// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
   ///
-  /// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
+  /// &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
   late final pulumi.Output<bool> isFakeAsn;
+
   /// The custom ASN on the Alibaba Cloud side. Valid values:
   late final pulumi.Output<int> localAsn;
+
   /// The ASN of the gateway device in the data center.
   late final pulumi.Output<int> peerAsn;
+
   /// The Region ID of the BGP group.
   late final pulumi.Output<String> regionId;
+
   /// The maximum number of routes supported by a BGP peer. Default value: 110.
   late final pulumi.Output<int> routeLimit;
+
   /// The ID of the virtual border router (VBR) that is associated with the BGP group.
   late final pulumi.Output<String> routerId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -342,23 +353,23 @@ class BgpGroup extends pulumi.CustomResource {
     BgpGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/bgpGroup:BgpGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authKey = registerOutput<String?>('authKey');
-    this.bgpGroupName = registerOutput<String?>('bgpGroupName');
-    this.clearAuthKey = registerOutput<bool?>('clearAuthKey');
-    this.description = registerOutput<String?>('description');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.isFakeAsn = registerOutput<bool>('isFakeAsn');
-    this.localAsn = registerOutput<int>('localAsn');
-    this.peerAsn = registerOutput<int>('peerAsn');
-    this.regionId = registerOutput<String>('regionId');
-    this.routeLimit = registerOutput<int>('routeLimit');
-    this.routerId = registerOutput<String>('routerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/bgpGroup:BgpGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authKey = registerOutput<String?>('authKey');
+    bgpGroupName = registerOutput<String?>('bgpGroupName');
+    clearAuthKey = registerOutput<bool?>('clearAuthKey');
+    description = registerOutput<String?>('description');
+    ipVersion = registerOutput<String>('ipVersion');
+    isFakeAsn = registerOutput<bool>('isFakeAsn');
+    localAsn = registerOutput<int>('localAsn');
+    peerAsn = registerOutput<int>('peerAsn');
+    regionId = registerOutput<String>('regionId');
+    routeLimit = registerOutput<int>('routeLimit');
+    routerId = registerOutput<String>('routerId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BgpGroup] resource's state with the given [name] and [id].
@@ -379,22 +390,22 @@ class BgpGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/bgpGroup:BgpGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authKey = registerOutput<String?>('authKey');
-    this.bgpGroupName = registerOutput<String?>('bgpGroupName');
-    this.clearAuthKey = registerOutput<bool?>('clearAuthKey');
-    this.description = registerOutput<String?>('description');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.isFakeAsn = registerOutput<bool>('isFakeAsn');
-    this.localAsn = registerOutput<int>('localAsn');
-    this.peerAsn = registerOutput<int>('peerAsn');
-    this.regionId = registerOutput<String>('regionId');
-    this.routeLimit = registerOutput<int>('routeLimit');
-    this.routerId = registerOutput<String>('routerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/bgpGroup:BgpGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authKey = registerOutput<String?>('authKey');
+    bgpGroupName = registerOutput<String?>('bgpGroupName');
+    clearAuthKey = registerOutput<bool?>('clearAuthKey');
+    description = registerOutput<String?>('description');
+    ipVersion = registerOutput<String>('ipVersion');
+    isFakeAsn = registerOutput<bool>('isFakeAsn');
+    localAsn = registerOutput<int>('localAsn');
+    peerAsn = registerOutput<int>('peerAsn');
+    regionId = registerOutput<String>('regionId');
+    routeLimit = registerOutput<int>('routeLimit');
+    routerId = registerOutput<String>('routerId');
+    status = registerOutput<String>('status');
   }
 }

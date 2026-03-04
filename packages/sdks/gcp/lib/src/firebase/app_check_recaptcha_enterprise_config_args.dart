@@ -10,12 +10,15 @@ class AppCheckRecaptchaEnterpriseConfigArgs {
   /// The ID of an
   /// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
   final pulumi.Input<String> appId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
   /// **Important**: This is not the siteSecret (as it is in reCAPTCHA v3), but rather your score-based reCAPTCHA Enterprise site key.
   final pulumi.Input<String> siteKey;
+
   /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA Enterprise artifacts will be valid.
   /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -42,13 +45,22 @@ class AppCheckRecaptchaEnterpriseConfigArgs {
     };
   }
 
-  factory AppCheckRecaptchaEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
+  factory AppCheckRecaptchaEnterpriseConfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppCheckRecaptchaEnterpriseConfigArgs(
-      appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      siteKey: (map['siteKey'] as String).input(),
-      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteKey: pulumi.Input.fromValue(map['siteKey'] as String),
+      tokenTtl: (() {
+        final guardedValue = map['tokenTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

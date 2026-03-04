@@ -9,20 +9,37 @@ class GetRulesRuleRuleConditionCookieConfig {
 
   /// Creates a new [GetRulesRuleRuleConditionCookieConfig].
   /// [values] Add one or more IP addresses or IP address segments.
-  GetRulesRuleRuleConditionCookieConfig({
-    required this.values,
-  });
+  GetRulesRuleRuleConditionCookieConfig({required this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'values': pulumi.Input.mapInputValue<List<GetRulesRuleRuleConditionCookieConfigValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<GetRulesRuleRuleConditionCookieConfigValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'values':
+          pulumi.Input.mapInputValue<
+            List<GetRulesRuleRuleConditionCookieConfigValue>,
+            List<Map<String, dynamic>>
+          >(
+            values,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRulesRuleRuleConditionCookieConfigValue,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetRulesRuleRuleConditionCookieConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRulesRuleRuleConditionCookieConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRulesRuleRuleConditionCookieConfig(
-      values: (pulumi.Input.decodeList<GetRulesRuleRuleConditionCookieConfigValue>(map['values'], (value) => GetRulesRuleRuleConditionCookieConfigValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetRulesRuleRuleConditionCookieConfigValue>(
+          map['values']!,
+          (value) => GetRulesRuleRuleConditionCookieConfigValue.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

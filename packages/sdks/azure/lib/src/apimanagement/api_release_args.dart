@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiReleaseArgs {
   /// The ID of the API Management API. Changing this forces a new API Management API Release to be created.
   final pulumi.Input<String> apiId;
+
   /// The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
   final pulumi.Input<String>? name;
+
   /// The Release Notes.
   final pulumi.Input<String>? notes;
 
@@ -18,26 +20,25 @@ class ApiReleaseArgs {
   /// [apiId] The ID of the API Management API. Changing this forces a new API Management API Release to be created.
   /// [name] The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
   /// [notes] The Release Notes.
-  ApiReleaseArgs({
-    required this.apiId,
-    this.name,
-    this.notes,
-  });
+  ApiReleaseArgs({required this.apiId, this.name, this.notes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiId': apiId,
-      'name': ?name,
-      'notes': ?notes,
-    };
+    return <String, dynamic>{'apiId': apiId, 'name': ?name, 'notes': ?notes};
   }
 
   factory ApiReleaseArgs.fromMap(Map<String, dynamic> map) {
     return ApiReleaseArgs(
-      apiId: (map['apiId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -12,20 +12,24 @@ class TrafficQosQueueArgs {
   /// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
   /// - When the QoS queue type is `Default`, this field is "-".
   final pulumi.Input<String>? bandwidthPercent;
+
   /// The ID of the QoS policy.
   final pulumi.Input<String> qosId;
+
   /// The description of the QoS queue.
   /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? queueDescription;
+
   /// The name of the QoS queue.
   /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? queueName;
+
   /// QoS queue type, value:
   /// - `High`: High priority queue.
   /// - `Medium`: Normal priority queue.
   /// - `Default`: the Default priority queue.
   ///
-  /// > **NOTE:**  Default priority queue cannot be created.
+  /// &gt; **NOTE:**  Default priority queue cannot be created.
   final pulumi.Input<String> queueType;
 
   /// Creates a new [TrafficQosQueueArgs].
@@ -54,12 +58,23 @@ class TrafficQosQueueArgs {
 
   factory TrafficQosQueueArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosQueueArgs(
-      bandwidthPercent: map['bandwidthPercent'] == null ? null : (map['bandwidthPercent']! as String).input(),
-      qosId: (map['qosId'] as String).input(),
-      queueDescription: map['queueDescription'] == null ? null : (map['queueDescription']! as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
-      queueType: (map['queueType'] as String).input(),
+      bandwidthPercent: (() {
+        final guardedValue = map['bandwidthPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      qosId: pulumi.Input.fromValue(map['qosId'] as String),
+      queueDescription: (() {
+        final guardedValue = map['queueDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueType: pulumi.Input.fromValue(map['queueType'] as String),
     );
   }
 }
-

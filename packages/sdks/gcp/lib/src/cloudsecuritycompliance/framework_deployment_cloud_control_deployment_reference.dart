@@ -15,15 +15,18 @@ class FrameworkDeploymentCloudControlDeploymentReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudControlDeployment': ?cloudControlDeployment,
-    };
+    return <String, dynamic>{'cloudControlDeployment': ?cloudControlDeployment};
   }
 
-  factory FrameworkDeploymentCloudControlDeploymentReference.fromMap(Map<String, dynamic> map) {
+  factory FrameworkDeploymentCloudControlDeploymentReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkDeploymentCloudControlDeploymentReference(
-      cloudControlDeployment: map['cloudControlDeployment'] == null ? null : (map['cloudControlDeployment']! as String).input(),
+      cloudControlDeployment: (() {
+        final guardedValue = map['cloudControlDeployment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

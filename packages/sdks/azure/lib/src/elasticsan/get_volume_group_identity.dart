@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeGroupIdentity {
   /// A list of the User Assigned Identity IDs assigned to this Elastic SAN Volume Group.
   final pulumi.Input<List<String>> identityIds;
+
   /// The Principal ID associated with the Managed Service Identity assigned to this Elastic SAN Volume Group.
   final pulumi.Input<String> principalId;
+
   /// The Tenant ID associated with this Managed Service Identity assigned to this Elastic SAN Volume Group.
   final pulumi.Input<String> tenantId;
+
   /// The type of Managed Identity assigned to this Elastic SAN Volume Group.
   final pulumi.Input<String> type;
 
@@ -35,11 +38,12 @@ class GetVolumeGroupIdentity {
 
   factory GetVolumeGroupIdentity.fromMap(Map<String, dynamic> map) {
     return GetVolumeGroupIdentity(
-      identityIds: ((map['identityIds'] as List).cast<String>()).input(),
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: (map['type'] as String).input(),
+      identityIds: pulumi.Input.fromValue(
+        (map['identityIds'] as List).cast<String>(),
+      ),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

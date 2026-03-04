@@ -1,5 +1,3 @@
-library module_resourcegraph;
-
 export 'resourcegraph/functions.dart';
 export 'resourcegraph/get_graph_query_args.dart';
 export 'resourcegraph/get_graph_query_result.dart';

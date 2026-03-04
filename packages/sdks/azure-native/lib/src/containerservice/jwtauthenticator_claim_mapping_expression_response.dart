@@ -9,20 +9,17 @@ class JWTAuthenticatorClaimMappingExpressionResponse {
 
   /// Creates a new [JWTAuthenticatorClaimMappingExpressionResponse].
   /// [expression] The CEL expression used to access token claims.
-  JWTAuthenticatorClaimMappingExpressionResponse({
-    required this.expression,
-  });
+  JWTAuthenticatorClaimMappingExpressionResponse({required this.expression});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expression': expression,
-    };
+    return <String, dynamic>{'expression': expression};
   }
 
-  factory JWTAuthenticatorClaimMappingExpressionResponse.fromMap(Map<String, dynamic> map) {
+  factory JWTAuthenticatorClaimMappingExpressionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JWTAuthenticatorClaimMappingExpressionResponse(
-      expression: (map['expression'] as String).input(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
     );
   }
 }
-

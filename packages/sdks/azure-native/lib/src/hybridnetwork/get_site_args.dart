@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the network service site.
   final pulumi.Input<String> siteName;
 
   /// Creates a new [GetSiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of the network service site.
-  GetSiteArgs({
-    required this.resourceGroupName,
-    required this.siteName,
-  });
+  GetSiteArgs({required this.resourceGroupName, required this.siteName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetSiteArgs {
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: (map['siteName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
-

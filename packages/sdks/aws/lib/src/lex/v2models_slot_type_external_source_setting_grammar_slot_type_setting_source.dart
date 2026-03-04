@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
   /// KMS key required to decrypt the contents of the grammar, if any.
   final pulumi.Input<String> kmsKeyArn;
+
   /// Name of the Amazon S3 bucket that contains the grammar source.
   final pulumi.Input<String> s3BucketName;
+
   /// Path to the grammar in the Amazon S3 bucket.
   final pulumi.Input<String> s3ObjectKey;
 
@@ -28,12 +30,13 @@ class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
     };
   }
 
-  factory V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource(
-      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
-      s3BucketName: (map['s3BucketName'] as String).input(),
-      s3ObjectKey: (map['s3ObjectKey'] as String).input(),
+      kmsKeyArn: pulumi.Input.fromValue(map['kmsKeyArn'] as String),
+      s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
+      s3ObjectKey: pulumi.Input.fromValue(map['s3ObjectKey'] as String),
     );
   }
 }
-

@@ -7,6 +7,7 @@ class StaticCidrProperties {
   /// List of IP address prefixes of the resource.
   final pulumi.Input<List<String>>? addressPrefixes;
   final pulumi.Input<String>? description;
+
   /// Number of IP addresses to allocate for a static CIDR resource. The IP addresses will be assigned based on IpamPools available space.
   final pulumi.Input<String>? numberOfIPAddressesToAllocate;
 
@@ -30,10 +31,21 @@ class StaticCidrProperties {
 
   factory StaticCidrProperties.fromMap(Map<String, dynamic> map) {
     return StaticCidrProperties(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      numberOfIPAddressesToAllocate: map['numberOfIPAddressesToAllocate'] == null ? null : (map['numberOfIPAddressesToAllocate']! as String).input(),
+      addressPrefixes: (() {
+        final guardedValue = map['addressPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfIPAddressesToAllocate: (() {
+        final guardedValue = map['numberOfIPAddressesToAllocate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

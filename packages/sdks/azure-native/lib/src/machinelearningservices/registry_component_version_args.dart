@@ -10,12 +10,17 @@ import 'component_version_machinelearningservices.dart';
 class RegistryComponentVersionArgs {
   /// Container name.
   final pulumi.Input<String> componentName;
+
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<ComponentVersionMachinelearningservices> componentVersionProperties;
+  final pulumi.Input<ComponentVersionMachinelearningservices>
+  componentVersionProperties;
+
   /// Name of Azure Machine Learning registry. This is case-insensitive
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Version identifier.
   final pulumi.Input<String>? version;
 
@@ -45,12 +50,20 @@ class RegistryComponentVersionArgs {
 
   factory RegistryComponentVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegistryComponentVersionArgs(
-      componentName: (map['componentName'] as String).input(),
-      componentVersionProperties: (map['componentVersionProperties'] as ComponentVersionMachinelearningservices).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      componentName: pulumi.Input.fromValue(map['componentName'] as String),
+      componentVersionProperties: pulumi.Input.fromValue(
+        map['componentVersionProperties']
+            as ComponentVersionMachinelearningservices,
+      ),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

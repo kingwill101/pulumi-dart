@@ -8,7 +8,7 @@ import 'ipam_ipam_pool_cidr_state.dart';
 ///
 /// For information about Vpc Ipam Ipam Pool Cidr and how to use it, see [What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr).
 ///
-/// > **NOTE:** Available since v1.234.0.
+/// &gt; **NOTE:** Available since v1.234.0.
 ///
 /// ## Example Usage
 ///
@@ -208,10 +208,12 @@ import 'ipam_ipam_pool_cidr_state.dart';
 class IpamIpamPoolCidr extends pulumi.CustomResource {
   /// The CIDR address segment to be preset.
   ///
-  /// > **NOTE:**  currently, only IPv4 address segments are supported.
+  /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
   late final pulumi.Output<String> cidr;
+
   /// The ID of the IPAM pool instance.
   late final pulumi.Output<String> ipamPoolId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -224,14 +226,14 @@ class IpamIpamPoolCidr extends pulumi.CustomResource {
     IpamIpamPoolCidrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [IpamIpamPoolCidr] resource's state with the given [name] and [id].
@@ -252,13 +254,13 @@ class IpamIpamPoolCidr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    status = registerOutput<String>('status');
   }
 }

@@ -17,20 +17,28 @@ import 'storage_profile.dart';
 class VirtualMachineInstanceArgs {
   /// Gets or sets the extended location.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// Hardware properties.
   final pulumi.Input<HardwareProfile>? hardwareProfile;
+
   /// Gets the infrastructure profile.
   final pulumi.Input<InfrastructureProfile>? infrastructureProfile;
+
   /// Network properties.
   final pulumi.Input<NetworkProfile>? networkProfile;
+
   /// OS properties.
   final pulumi.Input<OsProfileForVMInstance>? osProfile;
+
   /// Placement properties.
   final pulumi.Input<PlacementProfile>? placementProfile;
+
   /// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   final pulumi.Input<String> resourceUri;
+
   /// Gets the security profile.
   final pulumi.Input<SecurityProfile>? securityProfile;
+
   /// Storage properties.
   final pulumi.Input<StorageProfile>? storageProfile;
 
@@ -58,30 +66,121 @@ class VirtualMachineInstanceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
-      'hardwareProfile': ?pulumi.Input.mapOptionalInputValue<HardwareProfile, Map<String, dynamic>>(hardwareProfile, (value) => value.toMap()),
-      'infrastructureProfile': ?pulumi.Input.mapOptionalInputValue<InfrastructureProfile, Map<String, dynamic>>(infrastructureProfile, (value) => value.toMap()),
-      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
-      'osProfile': ?pulumi.Input.mapOptionalInputValue<OsProfileForVMInstance, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
-      'placementProfile': ?pulumi.Input.mapOptionalInputValue<PlacementProfile, Map<String, dynamic>>(placementProfile, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
+      'hardwareProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            HardwareProfile,
+            Map<String, dynamic>
+          >(hardwareProfile, (value) => value.toMap()),
+      'infrastructureProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            InfrastructureProfile,
+            Map<String, dynamic>
+          >(infrastructureProfile, (value) => value.toMap()),
+      'networkProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkProfile,
+            Map<String, dynamic>
+          >(networkProfile, (value) => value.toMap()),
+      'osProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            OsProfileForVMInstance,
+            Map<String, dynamic>
+          >(osProfile, (value) => value.toMap()),
+      'placementProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlacementProfile,
+            Map<String, dynamic>
+          >(placementProfile, (value) => value.toMap()),
       'resourceUri': resourceUri,
-      'securityProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfile, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
-      'storageProfile': ?pulumi.Input.mapOptionalInputValue<StorageProfile, Map<String, dynamic>>(storageProfile, (value) => value.toMap()),
+      'securityProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityProfile,
+            Map<String, dynamic>
+          >(securityProfile, (value) => value.toMap()),
+      'storageProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageProfile,
+            Map<String, dynamic>
+          >(storageProfile, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
-      infrastructureProfile: map['infrastructureProfile'] == null ? null : (InfrastructureProfile.fromMap((map['infrastructureProfile']! as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfileForVMInstance.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
-      placementProfile: map['placementProfile'] == null ? null : (PlacementProfile.fromMap((map['placementProfile']! as Map).cast<String, dynamic>())).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
-      securityProfile: map['securityProfile'] == null ? null : (SecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hardwareProfile: (() {
+        final guardedValue = map['hardwareProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HardwareProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      infrastructureProfile: (() {
+        final guardedValue = map['infrastructureProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InfrastructureProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      osProfile: (() {
+        final guardedValue = map['osProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OsProfileForVMInstance.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      placementProfile: (() {
+        final guardedValue = map['placementProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlacementProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      securityProfile: (() {
+        final guardedValue = map['securityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageProfile: (() {
+        final guardedValue = map['storageProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

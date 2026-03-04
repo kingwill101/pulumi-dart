@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegisteredAsnArgs {
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
+
   /// The name of the registered ASN.
   final pulumi.Input<String> registeredAsnName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetRegisteredAsnArgs {
 
   factory GetRegisteredAsnArgs.fromMap(Map<String, dynamic> map) {
     return GetRegisteredAsnArgs(
-      peeringName: (map['peeringName'] as String).input(),
-      registeredAsnName: (map['registeredAsnName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
+      registeredAsnName: pulumi.Input.fromValue(
+        map['registeredAsnName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

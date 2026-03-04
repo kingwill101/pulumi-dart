@@ -8,7 +8,7 @@ import 'hadoop_data_source_state.dart';
 ///
 /// For information about GPDB Hadoop Data Source and how to use it, see [What is Hadoop Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createhadoopdatasource).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -1189,12 +1189,16 @@ import 'hadoop_data_source_state.dart';
 class HadoopDataSource extends pulumi.CustomResource {
   /// Creation time
   late final pulumi.Output<String> createTime;
+
   /// Data Source Description
   late final pulumi.Output<String?> dataSourceDescription;
+
   /// The data source ID.
   late final pulumi.Output<int> dataSourceId;
+
   /// Data Source Name
   late final pulumi.Output<String?> dataSourceName;
+
   /// The type of the data source. Valid values:
   ///
   /// *   mysql
@@ -1203,26 +1207,36 @@ class HadoopDataSource extends pulumi.CustomResource {
   /// *   hdfs
   /// - hive
   late final pulumi.Output<String?> dataSourceType;
+
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The ID of the Emr instance.
   late final pulumi.Output<String?> emrInstanceId;
+
   /// The string that specifies the content of the Hadoop core-site.xml file.
   late final pulumi.Output<String?> hadoopCoreConf;
+
   /// The type of the external service. Valid values:
   /// - emr: E-MapReduce (EMR) Hadoop cluster.
   /// - selfCreate: self-managed Hadoop cluster.
   late final pulumi.Output<String?> hadoopCreateType;
+
   /// The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
   late final pulumi.Output<String?> hadoopHostsAddress;
+
   /// The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
   late final pulumi.Output<String?> hdfsConf;
+
   /// The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
   late final pulumi.Output<String?> hiveConf;
+
   /// The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
   late final pulumi.Output<String?> mapReduceConf;
+
   /// Data Source Status
   late final pulumi.Output<String> status;
+
   /// The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
   late final pulumi.Output<String?> yarnConf;
 
@@ -1235,26 +1249,26 @@ class HadoopDataSource extends pulumi.CustomResource {
     HadoopDataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/hadoopDataSource:HadoopDataSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceDescription = registerOutput<String?>('dataSourceDescription');
-    this.dataSourceId = registerOutput<int>('dataSourceId');
-    this.dataSourceName = registerOutput<String?>('dataSourceName');
-    this.dataSourceType = registerOutput<String?>('dataSourceType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.emrInstanceId = registerOutput<String?>('emrInstanceId');
-    this.hadoopCoreConf = registerOutput<String?>('hadoopCoreConf');
-    this.hadoopCreateType = registerOutput<String?>('hadoopCreateType');
-    this.hadoopHostsAddress = registerOutput<String?>('hadoopHostsAddress');
-    this.hdfsConf = registerOutput<String?>('hdfsConf');
-    this.hiveConf = registerOutput<String?>('hiveConf');
-    this.mapReduceConf = registerOutput<String?>('mapReduceConf');
-    this.status = registerOutput<String>('status');
-    this.yarnConf = registerOutput<String?>('yarnConf');
+         'alicloud:gpdb/hadoopDataSource:HadoopDataSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataSourceDescription = registerOutput<String?>('dataSourceDescription');
+    dataSourceId = registerOutput<int>('dataSourceId');
+    dataSourceName = registerOutput<String?>('dataSourceName');
+    dataSourceType = registerOutput<String?>('dataSourceType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    emrInstanceId = registerOutput<String?>('emrInstanceId');
+    hadoopCoreConf = registerOutput<String?>('hadoopCoreConf');
+    hadoopCreateType = registerOutput<String?>('hadoopCreateType');
+    hadoopHostsAddress = registerOutput<String?>('hadoopHostsAddress');
+    hdfsConf = registerOutput<String?>('hdfsConf');
+    hiveConf = registerOutput<String?>('hiveConf');
+    mapReduceConf = registerOutput<String?>('mapReduceConf');
+    status = registerOutput<String>('status');
+    yarnConf = registerOutput<String?>('yarnConf');
   }
 
   /// Gets an existing [HadoopDataSource] resource's state with the given [name] and [id].
@@ -1275,25 +1289,25 @@ class HadoopDataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/hadoopDataSource:HadoopDataSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dataSourceDescription = registerOutput<String?>('dataSourceDescription');
-    this.dataSourceId = registerOutput<int>('dataSourceId');
-    this.dataSourceName = registerOutput<String?>('dataSourceName');
-    this.dataSourceType = registerOutput<String?>('dataSourceType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.emrInstanceId = registerOutput<String?>('emrInstanceId');
-    this.hadoopCoreConf = registerOutput<String?>('hadoopCoreConf');
-    this.hadoopCreateType = registerOutput<String?>('hadoopCreateType');
-    this.hadoopHostsAddress = registerOutput<String?>('hadoopHostsAddress');
-    this.hdfsConf = registerOutput<String?>('hdfsConf');
-    this.hiveConf = registerOutput<String?>('hiveConf');
-    this.mapReduceConf = registerOutput<String?>('mapReduceConf');
-    this.status = registerOutput<String>('status');
-    this.yarnConf = registerOutput<String?>('yarnConf');
+         'alicloud:gpdb/hadoopDataSource:HadoopDataSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dataSourceDescription = registerOutput<String?>('dataSourceDescription');
+    dataSourceId = registerOutput<int>('dataSourceId');
+    dataSourceName = registerOutput<String?>('dataSourceName');
+    dataSourceType = registerOutput<String?>('dataSourceType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    emrInstanceId = registerOutput<String?>('emrInstanceId');
+    hadoopCoreConf = registerOutput<String?>('hadoopCoreConf');
+    hadoopCreateType = registerOutput<String?>('hadoopCreateType');
+    hadoopHostsAddress = registerOutput<String?>('hadoopHostsAddress');
+    hdfsConf = registerOutput<String?>('hdfsConf');
+    hiveConf = registerOutput<String?>('hiveConf');
+    mapReduceConf = registerOutput<String?>('mapReduceConf');
+    status = registerOutput<String>('status');
+    yarnConf = registerOutput<String?>('yarnConf');
   }
 }

@@ -9,20 +9,15 @@ class SchemaReferenceProperties {
 
   /// Creates a new [SchemaReferenceProperties].
   /// [schemaId] Schema Id of schema reference
-  SchemaReferenceProperties({
-    required this.schemaId,
-  });
+  SchemaReferenceProperties({required this.schemaId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'schemaId': schemaId,
-    };
+    return <String, dynamic>{'schemaId': schemaId};
   }
 
   factory SchemaReferenceProperties.fromMap(Map<String, dynamic> map) {
     return SchemaReferenceProperties(
-      schemaId: (map['schemaId'] as String).input(),
+      schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
     );
   }
 }
-

@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetAccountConfigurationArgs {
   /// Account ID of the target account.
   final pulumi.Input<String> accountId;
+
   /// Description of the target account.
   final pulumi.Input<String>? description;
+
   /// Experiment Template ID.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> experimentTemplateId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the IAM Role for the target account.
   final pulumi.Input<String>? roleArn;
 
@@ -46,12 +50,25 @@ class TargetAccountConfigurationArgs {
 
   factory TargetAccountConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TargetAccountConfigurationArgs(
-      accountId: (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      experimentTemplateId: (map['experimentTemplateId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      experimentTemplateId: pulumi.Input.fromValue(
+        map['experimentTemplateId'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

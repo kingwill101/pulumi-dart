@@ -4,16 +4,17 @@ enum MasterSitePropertiesPublicNetworkAccess {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const MasterSitePropertiesPublicNetworkAccess(this.value);
-  final String value;
+  const MasterSitePropertiesPublicNetworkAccess(this.wireValue);
+  final String wireValue;
 
   static MasterSitePropertiesPublicNetworkAccess fromValue(String value) {
     for (final item in MasterSitePropertiesPublicNetworkAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MasterSitePropertiesPublicNetworkAccess value: $value');
+    throw ArgumentError(
+      'Unknown MasterSitePropertiesPublicNetworkAccess value: $value',
+    );
   }
 }
-

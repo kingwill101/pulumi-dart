@@ -3,16 +3,15 @@ enum IpAllocationMethodEnum {
   valueDynamic("Dynamic"),
   valueStatic("Static");
 
-  const IpAllocationMethodEnum(this.value);
-  final String value;
+  const IpAllocationMethodEnum(this.wireValue);
+  final String wireValue;
 
   static IpAllocationMethodEnum fromValue(String value) {
     for (final item in IpAllocationMethodEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpAllocationMethodEnum value: $value');
   }
 }
-

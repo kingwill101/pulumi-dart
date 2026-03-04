@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRouteCircuitConnectionArgs {
   /// The name of the express route circuit.
   final pulumi.Input<String> circuitName;
+
   /// The name of the express route circuit connection.
   final pulumi.Input<String> connectionName;
+
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,16 @@ class GetExpressRouteCircuitConnectionArgs {
     };
   }
 
-  factory GetExpressRouteCircuitConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExpressRouteCircuitConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExpressRouteCircuitConnectionArgs(
-      circuitName: (map['circuitName'] as String).input(),
-      connectionName: (map['connectionName'] as String).input(),
-      peeringName: (map['peeringName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      circuitName: pulumi.Input.fromValue(map['circuitName'] as String),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      peeringName: pulumi.Input.fromValue(map['peeringName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

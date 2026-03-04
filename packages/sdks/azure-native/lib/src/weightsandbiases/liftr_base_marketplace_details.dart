@@ -7,6 +7,7 @@ import 'liftr_base_offer_details.dart';
 class LiftrBaseMarketplaceDetails {
   /// Offer details for the marketplace that is selected by the user
   final pulumi.Input<LiftrBaseOfferDetails> offerDetails;
+
   /// Azure subscription id for the the marketplace offer is purchased from
   final pulumi.Input<String>? subscriptionId;
 
@@ -20,16 +21,27 @@ class LiftrBaseMarketplaceDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'offerDetails': pulumi.Input.mapInputValue<LiftrBaseOfferDetails, Map<String, dynamic>>(offerDetails, (value) => value.toMap()),
+      'offerDetails':
+          pulumi.Input.mapInputValue<
+            LiftrBaseOfferDetails,
+            Map<String, dynamic>
+          >(offerDetails, (value) => value.toMap()),
       'subscriptionId': ?subscriptionId,
     };
   }
 
   factory LiftrBaseMarketplaceDetails.fromMap(Map<String, dynamic> map) {
     return LiftrBaseMarketplaceDetails(
-      offerDetails: (LiftrBaseOfferDetails.fromMap((map['offerDetails'] as Map).cast<String, dynamic>())).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      offerDetails: pulumi.Input.fromValue(
+        LiftrBaseOfferDetails.fromMap(
+          (map['offerDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

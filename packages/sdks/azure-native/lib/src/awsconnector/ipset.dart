@@ -9,20 +9,19 @@ class IPSet {
 
   /// Creates a new [IPSet].
   /// [definition] Property definition
-  IPSet({
-    this.definition,
-  });
+  IPSet({this.definition});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'definition': ?definition,
-    };
+    return <String, dynamic>{'definition': ?definition};
   }
 
   factory IPSet.fromMap(Map<String, dynamic> map) {
     return IPSet(
-      definition: map['definition'] == null ? null : ((map['definition']! as List).cast<String>()).input(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

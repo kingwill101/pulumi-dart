@@ -16,42 +16,53 @@ class PipelineArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt the event data. If not set, an internal Google-owned key
   /// will be used to encrypt messages. It must match the pattern
   /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
   final pulumi.Input<String>? cryptoKeyName;
+
   /// List of destinations to which messages will be forwarded. Currently,
   /// exactly one destination is supported per Pipeline.
   /// Structure is documented below.
   final pulumi.Input<List<PipelineDestination>> destinations;
+
   /// Display name of resource.
   final pulumi.Input<String>? displayName;
+
   /// Represents the format of message data.
   /// Structure is documented below.
   final pulumi.Input<PipelineInputPayloadFormat>? inputPayloadFormat;
+
   /// User labels attached to the Pipeline that can be used to group
   /// resources. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// The configuration for Platform Telemetry logging for Eventarc Advanced
   /// resources.
   /// Structure is documented below.
   final pulumi.Input<PipelineLoggingConfig>? loggingConfig;
+
   /// List of mediation operations to be performed on the message. Currently,
   /// only one Transformation operation is allowed in each Pipeline.
   /// Structure is documented below.
   final pulumi.Input<List<PipelineMediation>>? mediations;
+
   /// The user-provided ID to be assigned to the Pipeline. It should match the
   /// format `^a-z?$`.
   final pulumi.Input<String> pipelineId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The retry policy configuration for the Pipeline. The pipeline
   /// exponentially backs off in case the destination is non responsive or
   /// returns a retryable error code. The default semantics are as follows:
@@ -95,34 +106,133 @@ class PipelineArgs {
     return <String, dynamic>{
       'annotations': ?annotations,
       'cryptoKeyName': ?cryptoKeyName,
-      'destinations': pulumi.Input.mapInputValue<List<PipelineDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<PipelineDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'destinations':
+          pulumi.Input.mapInputValue<
+            List<PipelineDestination>,
+            List<Map<String, dynamic>>
+          >(
+            destinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PipelineDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'displayName': ?displayName,
-      'inputPayloadFormat': ?pulumi.Input.mapOptionalInputValue<PipelineInputPayloadFormat, Map<String, dynamic>>(inputPayloadFormat, (value) => value.toMap()),
+      'inputPayloadFormat':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipelineInputPayloadFormat,
+            Map<String, dynamic>
+          >(inputPayloadFormat, (value) => value.toMap()),
       'labels': ?labels,
       'location': location,
-      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<PipelineLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
-      'mediations': ?pulumi.Input.mapOptionalInputValue<List<PipelineMediation>, List<Map<String, dynamic>>>(mediations, (value) => pulumi.Input.encodeList<PipelineMediation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loggingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipelineLoggingConfig,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
+      'mediations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PipelineMediation>,
+            List<Map<String, dynamic>>
+          >(
+            mediations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PipelineMediation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'pipelineId': pipelineId,
       'project': ?project,
-      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<PipelineRetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'retryPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipelineRetryPolicy,
+            Map<String, dynamic>
+          >(retryPolicy, (value) => value.toMap()),
     };
   }
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName']! as String).input(),
-      destinations: (pulumi.Input.decodeList<PipelineDestination>(map['destinations'], (value) => PipelineDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      inputPayloadFormat: map['inputPayloadFormat'] == null ? null : (PipelineInputPayloadFormat.fromMap((map['inputPayloadFormat']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (PipelineLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
-      mediations: map['mediations'] == null ? null : (pulumi.Input.decodeList<PipelineMediation>(map['mediations']!, (value) => PipelineMediation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pipelineId: (map['pipelineId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (PipelineRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      cryptoKeyName: (() {
+        final guardedValue = map['cryptoKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PipelineDestination>(
+          map['destinations']!,
+          (value) => PipelineDestination.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputPayloadFormat: (() {
+        final guardedValue = map['inputPayloadFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipelineInputPayloadFormat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      loggingConfig: (() {
+        final guardedValue = map['loggingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipelineLoggingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mediations: (() {
+        final guardedValue = map['mediations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PipelineMediation>(
+            guardedValue,
+            (value) => PipelineMediation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      pipelineId: pulumi.Input.fromValue(map['pipelineId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retryPolicy: (() {
+        final guardedValue = map['retryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipelineRetryPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

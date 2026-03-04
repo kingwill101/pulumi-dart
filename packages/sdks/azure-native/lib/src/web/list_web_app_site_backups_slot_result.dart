@@ -7,6 +7,7 @@ import 'backup_item_response.dart';
 class ListWebAppSiteBackupsSlotResult {
   /// Link to next page of resources.
   final String nextLink;
+
   /// Collection of resources.
   final List<BackupItemResponse> value;
 
@@ -21,15 +22,22 @@ class ListWebAppSiteBackupsSlotResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': pulumi.Input.encodeList<BackupItemResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<BackupItemResponse, Map<String, dynamic>>(
+            value,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory ListWebAppSiteBackupsSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppSiteBackupsSlotResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<BackupItemResponse>(map['value'], (value) => BackupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: pulumi.Input.decodeList<BackupItemResponse>(
+        map['value']!,
+        (value) =>
+            BackupItemResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

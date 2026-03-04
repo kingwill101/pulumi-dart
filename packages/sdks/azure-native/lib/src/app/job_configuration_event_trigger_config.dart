@@ -7,8 +7,10 @@ import 'job_scale.dart';
 class JobConfigurationEventTriggerConfig {
   /// Number of parallel replicas of a job that can run at a given time.
   final pulumi.Input<int>? parallelism;
+
   /// Minimum number of successful replica completions before overall job completion.
   final pulumi.Input<int>? replicaCompletionCount;
+
   /// Scaling configurations for event driven jobs.
   final pulumi.Input<JobScale>? scale;
 
@@ -26,16 +28,33 @@ class JobConfigurationEventTriggerConfig {
     return <String, dynamic>{
       'parallelism': ?parallelism,
       'replicaCompletionCount': ?replicaCompletionCount,
-      'scale': ?pulumi.Input.mapOptionalInputValue<JobScale, Map<String, dynamic>>(scale, (value) => value.toMap()),
+      'scale':
+          ?pulumi.Input.mapOptionalInputValue<JobScale, Map<String, dynamic>>(
+            scale,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory JobConfigurationEventTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobConfigurationEventTriggerConfig(
-      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
-      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount']! as int).input(),
-      scale: map['scale'] == null ? null : (JobScale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      parallelism: (() {
+        final guardedValue = map['parallelism'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicaCompletionCount: (() {
+        final guardedValue = map['replicaCompletionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scale: (() {
+        final guardedValue = map['scale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobScale.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

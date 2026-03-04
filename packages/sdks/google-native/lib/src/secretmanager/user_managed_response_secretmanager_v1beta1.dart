@@ -10,20 +10,37 @@ class UserManagedResponseSecretmanagerV1beta1 {
 
   /// Creates a new [UserManagedResponseSecretmanagerV1beta1].
   /// [replicas] The list of Replicas for this Secret. Cannot be empty.
-  UserManagedResponseSecretmanagerV1beta1({
-    required this.replicas,
-  });
+  UserManagedResponseSecretmanagerV1beta1({required this.replicas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicas': pulumi.Input.mapInputValue<List<ReplicaResponseSecretmanagerV1beta1>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<ReplicaResponseSecretmanagerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'replicas':
+          pulumi.Input.mapInputValue<
+            List<ReplicaResponseSecretmanagerV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            replicas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReplicaResponseSecretmanagerV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory UserManagedResponseSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory UserManagedResponseSecretmanagerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserManagedResponseSecretmanagerV1beta1(
-      replicas: (pulumi.Input.decodeList<ReplicaResponseSecretmanagerV1beta1>(map['replicas'], (value) => ReplicaResponseSecretmanagerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicas: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ReplicaResponseSecretmanagerV1beta1>(
+          map['replicas']!,
+          (value) => ReplicaResponseSecretmanagerV1beta1.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

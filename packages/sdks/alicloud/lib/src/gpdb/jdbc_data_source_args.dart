@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JdbcDataSourceArgs {
   /// Data Source Description
   final pulumi.Input<String>? dataSourceDescription;
+
   /// Data Source Name
   final pulumi.Input<String>? dataSourceName;
+
   /// Data Source Type
   final pulumi.Input<String>? dataSourceType;
+
   /// The instance ID.
   final pulumi.Input<String> dbInstanceId;
+
   /// The JDBC connection string.
   final pulumi.Input<String>? jdbcConnectionString;
+
   /// The password of the database account.
   final pulumi.Input<String>? jdbcPassword;
+
   /// The name of the database account.
   final pulumi.Input<String> jdbcUserName;
 
@@ -54,14 +60,33 @@ class JdbcDataSourceArgs {
 
   factory JdbcDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return JdbcDataSourceArgs(
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription']! as String).input(),
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : (map['jdbcConnectionString']! as String).input(),
-      jdbcPassword: map['jdbcPassword'] == null ? null : (map['jdbcPassword']! as String).input(),
-      jdbcUserName: (map['jdbcUserName'] as String).input(),
+      dataSourceDescription: (() {
+        final guardedValue = map['dataSourceDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSourceName: (() {
+        final guardedValue = map['dataSourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSourceType: (() {
+        final guardedValue = map['dataSourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      jdbcConnectionString: (() {
+        final guardedValue = map['jdbcConnectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jdbcPassword: (() {
+        final guardedValue = map['jdbcPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jdbcUserName: pulumi.Input.fromValue(map['jdbcUserName'] as String),
     );
   }
 }
-

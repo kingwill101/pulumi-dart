@@ -29,12 +29,17 @@ class GetBackupManagedidentitiesV1alpha1Args {
     };
   }
 
-  factory GetBackupManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetBackupManagedidentitiesV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackupManagedidentitiesV1alpha1Args(
-      backupId: (map['backupId'] as String).input(),
-      domainId: (map['domainId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backupId: pulumi.Input.fromValue(map['backupId'] as String),
+      domainId: pulumi.Input.fromValue(map['domainId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

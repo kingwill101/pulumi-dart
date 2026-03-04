@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedisAccessKeysResponse {
   /// The current primary key that clients can use to authenticate with Redis cache.
   final pulumi.Input<String> primaryKey;
+
   /// The current secondary key that clients can use to authenticate with Redis cache.
   final pulumi.Input<String> secondaryKey;
 
@@ -26,9 +27,8 @@ class RedisAccessKeysResponse {
 
   factory RedisAccessKeysResponse.fromMap(Map<String, dynamic> map) {
     return RedisAccessKeysResponse(
-      primaryKey: (map['primaryKey'] as String).input(),
-      secondaryKey: (map['secondaryKey'] as String).input(),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as String),
+      secondaryKey: pulumi.Input.fromValue(map['secondaryKey'] as String),
     );
   }
 }
-

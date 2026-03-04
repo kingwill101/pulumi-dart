@@ -144,25 +144,35 @@ import 'video_stream_state.dart';
 class VideoStream extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
   late final pulumi.Output<String> arn;
+
   /// A time stamp that indicates when the stream was created.
   late final pulumi.Output<String> creationTime;
+
   /// The number of hours that you want to retain the data in the stream. Kinesis Video Streams retains the data in a data store that is associated with the stream. The default value is `0`, indicating that the stream does not persist data.
   late final pulumi.Output<int?> dataRetentionInHours;
+
   /// The name of the device that is writing to the stream. **In the current implementation, Kinesis Video Streams does not use this name.**
   late final pulumi.Output<String?> deviceName;
+
   /// The ID of the AWS Key Management Service (AWS KMS) key that you want Kinesis Video Streams to use to encrypt stream data. If no key ID is specified, the default, Kinesis Video-managed key (`aws/kinesisvideo`) is used.
   late final pulumi.Output<String> kmsKeyId;
+
   /// The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see [Media Types](http://www.iana.org/assignments/media-types/media-types.xhtml). If you choose to specify the MediaType, see [Naming Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for guidelines.
   late final pulumi.Output<String?> mediaType;
+
   /// A name to identify the stream. This is unique to the
   /// AWS account and region the Stream is created in.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The version of the stream.
   late final pulumi.Output<String> version;
 
@@ -175,22 +185,22 @@ class VideoStream extends pulumi.CustomResource {
     VideoStreamArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kinesis/videoStream:VideoStream',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.dataRetentionInHours = registerOutput<int?>('dataRetentionInHours');
-    this.deviceName = registerOutput<String?>('deviceName');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.mediaType = registerOutput<String?>('mediaType');
+         'aws:kinesis/videoStream:VideoStream',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    dataRetentionInHours = registerOutput<int?>('dataRetentionInHours');
+    deviceName = registerOutput<String?>('deviceName');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    mediaType = registerOutput<String?>('mediaType');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.version = registerOutput<String>('version');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [VideoStream] resource's state with the given [name] and [id].
@@ -211,21 +221,21 @@ class VideoStream extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kinesis/videoStream:VideoStream',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.dataRetentionInHours = registerOutput<int?>('dataRetentionInHours');
-    this.deviceName = registerOutput<String?>('deviceName');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.mediaType = registerOutput<String?>('mediaType');
+         'aws:kinesis/videoStream:VideoStream',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    dataRetentionInHours = registerOutput<int?>('dataRetentionInHours');
+    deviceName = registerOutput<String?>('deviceName');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    mediaType = registerOutput<String?>('mediaType');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.version = registerOutput<String>('version');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    version = registerOutput<String>('version');
   }
 }

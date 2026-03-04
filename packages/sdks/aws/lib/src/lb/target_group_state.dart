@@ -11,61 +11,88 @@ import 'target_group_target_health_state.dart';
 class TargetGroupState {
   /// ARN of the Target Group (matches `id`).
   final pulumi.Input<String>? arn;
+
   /// ARN suffix for use with CloudWatch Metrics.
   final pulumi.Input<String>? arnSuffix;
+
   /// Whether to terminate connections at the end of the deregistration timeout on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay) for more information. Default is `false`.
   final pulumi.Input<bool>? connectionTermination;
+
   /// Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
   final pulumi.Input<int>? deregistrationDelay;
+
   /// Health Check configuration block. Detailed below.
   final pulumi.Input<TargetGroupHealthCheck>? healthCheck;
+
   /// The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`.
   final pulumi.Input<String>? ipAddressType;
+
   /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `target_type` is `lambda`. Default is `false`.
   final pulumi.Input<bool>? lambdaMultiValueHeadersEnabled;
+
   /// ARNs of the Load Balancers associated with the Target Group.
   final pulumi.Input<List<String>>? loadBalancerArns;
+
   /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `round_robin`, `least_outstanding_requests`, or `weighted_random`. The default is `round_robin`.
   final pulumi.Input<String>? loadBalancingAlgorithmType;
+
   /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weighted_random` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
   final pulumi.Input<String>? loadBalancingAnomalyMitigation;
+
   /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"use_load_balancer_configuration"`. The default is `"use_load_balancer_configuration"`.
   final pulumi.Input<String>? loadBalancingCrossZoneEnabled;
+
   /// Name of the target group. If omitted, this provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   final pulumi.Input<String>? name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
   final pulumi.Input<String>? namePrefix;
+
   /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
   final pulumi.Input<int>? port;
+
   /// Whether client IP preservation is enabled. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) for more information.
   final pulumi.Input<String>? preserveClientIp;
+
   /// Protocol to use for routing traffic to the targets.
   /// Should be one of `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, `UDP`, `QUIC`, or `TCP_QUIC`.
   /// Required when `target_type` is `instance`, `ip`, or `alb`.
   /// Does not apply when `target_type` is `lambda`.
   final pulumi.Input<String>? protocol;
+
   /// Only applicable when `protocol` is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
   final pulumi.Input<String>? protocolVersion;
+
   /// Whether to enable support for proxy protocol v2 on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#proxy-protocol) for more information. Default is `false`.
   final pulumi.Input<bool>? proxyProtocolV2;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
   final pulumi.Input<int>? slowStart;
+
   /// Stickiness configuration block. Detailed below.
   final pulumi.Input<TargetGroupStickiness>? stickiness;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `target_type` is `instance` or `ip`.
   final pulumi.Input<int>? targetControlPort;
+
   /// Target failover block. Only applicable for Gateway Load Balancer target groups. See target_failover for more information.
   final pulumi.Input<List<TargetGroupTargetFailover>>? targetFailovers;
+
   /// Target health requirements block. See target_group_health for more information.
   final pulumi.Input<TargetGroupTargetGroupHealth>? targetGroupHealth;
+
   /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
   final pulumi.Input<List<TargetGroupTargetHealthState>>? targetHealthStates;
+
   /// Type of target that you must specify when registering targets with this target group.
   /// See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_CreateTargetGroup.html) for supported values.
   /// The default is `instance`.
@@ -78,6 +105,7 @@ class TargetGroupState {
   ///
   /// Application Load Balancers do not support the `alb` target type.
   final pulumi.Input<String>? targetType;
+
   /// Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
   final pulumi.Input<String>? vpcId;
 
@@ -149,7 +177,11 @@ class TargetGroupState {
       'arnSuffix': ?arnSuffix,
       'connectionTermination': ?connectionTermination,
       'deregistrationDelay': ?deregistrationDelay,
-      'healthCheck': ?pulumi.Input.mapOptionalInputValue<TargetGroupHealthCheck, Map<String, dynamic>>(healthCheck, (value) => value.toMap()),
+      'healthCheck':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetGroupHealthCheck,
+            Map<String, dynamic>
+          >(healthCheck, (value) => value.toMap()),
       'ipAddressType': ?ipAddressType,
       'lambdaMultiValueHeadersEnabled': ?lambdaMultiValueHeadersEnabled,
       'loadBalancerArns': ?loadBalancerArns,
@@ -165,13 +197,43 @@ class TargetGroupState {
       'proxyProtocolV2': ?proxyProtocolV2,
       'region': ?region,
       'slowStart': ?slowStart,
-      'stickiness': ?pulumi.Input.mapOptionalInputValue<TargetGroupStickiness, Map<String, dynamic>>(stickiness, (value) => value.toMap()),
+      'stickiness':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetGroupStickiness,
+            Map<String, dynamic>
+          >(stickiness, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'targetControlPort': ?targetControlPort,
-      'targetFailovers': ?pulumi.Input.mapOptionalInputValue<List<TargetGroupTargetFailover>, List<Map<String, dynamic>>>(targetFailovers, (value) => pulumi.Input.encodeList<TargetGroupTargetFailover, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'targetGroupHealth': ?pulumi.Input.mapOptionalInputValue<TargetGroupTargetGroupHealth, Map<String, dynamic>>(targetGroupHealth, (value) => value.toMap()),
-      'targetHealthStates': ?pulumi.Input.mapOptionalInputValue<List<TargetGroupTargetHealthState>, List<Map<String, dynamic>>>(targetHealthStates, (value) => pulumi.Input.encodeList<TargetGroupTargetHealthState, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetFailovers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TargetGroupTargetFailover>,
+            List<Map<String, dynamic>>
+          >(
+            targetFailovers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TargetGroupTargetFailover,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'targetGroupHealth':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetGroupTargetGroupHealth,
+            Map<String, dynamic>
+          >(targetGroupHealth, (value) => value.toMap()),
+      'targetHealthStates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TargetGroupTargetHealthState>,
+            List<Map<String, dynamic>>
+          >(
+            targetHealthStates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TargetGroupTargetHealthState,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'targetType': ?targetType,
       'vpcId': ?vpcId,
     };
@@ -179,36 +241,181 @@ class TargetGroupState {
 
   factory TargetGroupState.fromMap(Map<String, dynamic> map) {
     return TargetGroupState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      arnSuffix: map['arnSuffix'] == null ? null : ((map['arnSuffix'] as String).input()).input(),
-      connectionTermination: map['connectionTermination'] == null ? null : ((map['connectionTermination'] as bool).input()).input(),
-      deregistrationDelay: map['deregistrationDelay'] == null ? null : ((map['deregistrationDelay'] as int).input()).input(),
-      healthCheck: map['healthCheck'] == null ? null : ((TargetGroupHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input()).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
-      lambdaMultiValueHeadersEnabled: map['lambdaMultiValueHeadersEnabled'] == null ? null : ((map['lambdaMultiValueHeadersEnabled'] as bool).input()).input(),
-      loadBalancerArns: map['loadBalancerArns'] == null ? null : (((map['loadBalancerArns'] as List).cast<String>()).input()).input(),
-      loadBalancingAlgorithmType: map['loadBalancingAlgorithmType'] == null ? null : ((map['loadBalancingAlgorithmType'] as String).input()).input(),
-      loadBalancingAnomalyMitigation: map['loadBalancingAnomalyMitigation'] == null ? null : ((map['loadBalancingAnomalyMitigation'] as String).input()).input(),
-      loadBalancingCrossZoneEnabled: map['loadBalancingCrossZoneEnabled'] == null ? null : ((map['loadBalancingCrossZoneEnabled'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
-      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
-      preserveClientIp: map['preserveClientIp'] == null ? null : ((map['preserveClientIp'] as String).input()).input(),
-      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
-      protocolVersion: map['protocolVersion'] == null ? null : ((map['protocolVersion'] as String).input()).input(),
-      proxyProtocolV2: map['proxyProtocolV2'] == null ? null : ((map['proxyProtocolV2'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      slowStart: map['slowStart'] == null ? null : ((map['slowStart'] as int).input()).input(),
-      stickiness: map['stickiness'] == null ? null : ((TargetGroupStickiness.fromMap((map['stickiness']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      targetControlPort: map['targetControlPort'] == null ? null : ((map['targetControlPort'] as int).input()).input(),
-      targetFailovers: map['targetFailovers'] == null ? null : ((pulumi.Input.decodeList<TargetGroupTargetFailover>(map['targetFailovers']!, (value) => TargetGroupTargetFailover.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      targetGroupHealth: map['targetGroupHealth'] == null ? null : ((TargetGroupTargetGroupHealth.fromMap((map['targetGroupHealth']! as Map).cast<String, dynamic>())).input()).input(),
-      targetHealthStates: map['targetHealthStates'] == null ? null : ((pulumi.Input.decodeList<TargetGroupTargetHealthState>(map['targetHealthStates']!, (value) => TargetGroupTargetHealthState.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      targetType: map['targetType'] == null ? null : ((map['targetType'] as String).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arnSuffix: (() {
+        final guardedValue = map['arnSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionTermination: (() {
+        final guardedValue = map['connectionTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deregistrationDelay: (() {
+        final guardedValue = map['deregistrationDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthCheck: (() {
+        final guardedValue = map['healthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetGroupHealthCheck.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipAddressType: (() {
+        final guardedValue = map['ipAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lambdaMultiValueHeadersEnabled: (() {
+        final guardedValue = map['lambdaMultiValueHeadersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loadBalancerArns: (() {
+        final guardedValue = map['loadBalancerArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      loadBalancingAlgorithmType: (() {
+        final guardedValue = map['loadBalancingAlgorithmType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancingAnomalyMitigation: (() {
+        final guardedValue = map['loadBalancingAnomalyMitigation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancingCrossZoneEnabled: (() {
+        final guardedValue = map['loadBalancingCrossZoneEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      preserveClientIp: (() {
+        final guardedValue = map['preserveClientIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolVersion: (() {
+        final guardedValue = map['protocolVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxyProtocolV2: (() {
+        final guardedValue = map['proxyProtocolV2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slowStart: (() {
+        final guardedValue = map['slowStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      stickiness: (() {
+        final guardedValue = map['stickiness'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetGroupStickiness.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetControlPort: (() {
+        final guardedValue = map['targetControlPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetFailovers: (() {
+        final guardedValue = map['targetFailovers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TargetGroupTargetFailover>(
+            guardedValue,
+            (value) => TargetGroupTargetFailover.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      targetGroupHealth: (() {
+        final guardedValue = map['targetGroupHealth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetGroupTargetGroupHealth.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetHealthStates: (() {
+        final guardedValue = map['targetHealthStates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TargetGroupTargetHealthState>(
+            guardedValue,
+            (value) => TargetGroupTargetHealthState.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      targetType: (() {
+        final guardedValue = map['targetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

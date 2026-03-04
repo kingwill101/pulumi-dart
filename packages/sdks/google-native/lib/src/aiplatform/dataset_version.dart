@@ -6,15 +6,19 @@ import 'dataset_version_args.dart';
 class DatasetVersion extends pulumi.CustomResource {
   /// Name of the associated BigQuery dataset.
   late final pulumi.Output<String> bigQueryDatasetName;
+
   /// Timestamp when this DatasetVersion was created.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> datasetId;
+
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> location;
+
   /// The resource name of the DatasetVersion.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Timestamp when this DatasetVersion was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -27,18 +31,18 @@ class DatasetVersion extends pulumi.CustomResource {
     DatasetVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:aiplatform/v1:DatasetVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bigQueryDatasetName = registerOutput<String>('bigQueryDatasetName');
-    this.createTime = registerOutput<String>('createTime');
-    this.datasetId = registerOutput<String>('datasetId');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'google-native:aiplatform/v1:DatasetVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bigQueryDatasetName = registerOutput<String>('bigQueryDatasetName');
+    createTime = registerOutput<String>('createTime');
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

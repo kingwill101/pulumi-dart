@@ -10,20 +10,27 @@ class NotificationConfigResponseContainerV1beta1 {
 
   /// Creates a new [NotificationConfigResponseContainerV1beta1].
   /// [pubsub] Notification config for Pub/Sub.
-  NotificationConfigResponseContainerV1beta1({
-    required this.pubsub,
-  });
+  NotificationConfigResponseContainerV1beta1({required this.pubsub});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsub': pulumi.Input.mapInputValue<PubSubResponseContainerV1beta1, Map<String, dynamic>>(pubsub, (value) => value.toMap()),
+      'pubsub':
+          pulumi.Input.mapInputValue<
+            PubSubResponseContainerV1beta1,
+            Map<String, dynamic>
+          >(pubsub, (value) => value.toMap()),
     };
   }
 
-  factory NotificationConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory NotificationConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NotificationConfigResponseContainerV1beta1(
-      pubsub: (PubSubResponseContainerV1beta1.fromMap((map['pubsub'] as Map).cast<String, dynamic>())).input(),
+      pubsub: pulumi.Input.fromValue(
+        PubSubResponseContainerV1beta1.fromMap(
+          (map['pubsub']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

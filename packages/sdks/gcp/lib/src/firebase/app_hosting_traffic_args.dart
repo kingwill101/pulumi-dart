@@ -11,14 +11,18 @@ import 'app_hosting_traffic_target.dart';
 class AppHostingTrafficArgs {
   /// Id of the backend that this Traffic config applies to
   final pulumi.Input<String> backend;
+
   /// The location the Backend that this Traffic config applies to
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The policy for how builds and rollouts are triggered and rolled out.
   /// Structure is documented below.
   final pulumi.Input<AppHostingTrafficRolloutPolicy>? rolloutPolicy;
+
   /// Set to manually control the desired traffic for the backend. This will
   /// cause current to eventually match this value. The percentages must add
   /// up to 100.
@@ -44,19 +48,46 @@ class AppHostingTrafficArgs {
       'backend': backend,
       'location': location,
       'project': ?project,
-      'rolloutPolicy': ?pulumi.Input.mapOptionalInputValue<AppHostingTrafficRolloutPolicy, Map<String, dynamic>>(rolloutPolicy, (value) => value.toMap()),
-      'target': ?pulumi.Input.mapOptionalInputValue<AppHostingTrafficTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'rolloutPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppHostingTrafficRolloutPolicy,
+            Map<String, dynamic>
+          >(rolloutPolicy, (value) => value.toMap()),
+      'target':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppHostingTrafficTarget,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
   factory AppHostingTrafficArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficArgs(
-      backend: (map['backend'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rolloutPolicy: map['rolloutPolicy'] == null ? null : (AppHostingTrafficRolloutPolicy.fromMap((map['rolloutPolicy']! as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (AppHostingTrafficTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      backend: pulumi.Input.fromValue(map['backend'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rolloutPolicy: (() {
+        final guardedValue = map['rolloutPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppHostingTrafficRolloutPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppHostingTrafficTarget.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

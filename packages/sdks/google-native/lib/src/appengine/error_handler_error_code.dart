@@ -6,16 +6,15 @@ enum ErrorHandlerErrorCode {
   errorCodeDosApiDenial("ERROR_CODE_DOS_API_DENIAL"),
   errorCodeTimeout("ERROR_CODE_TIMEOUT");
 
-  const ErrorHandlerErrorCode(this.value);
-  final String value;
+  const ErrorHandlerErrorCode(this.wireValue);
+  final String wireValue;
 
   static ErrorHandlerErrorCode fromValue(String value) {
     for (final item in ErrorHandlerErrorCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ErrorHandlerErrorCode value: $value');
   }
 }
-

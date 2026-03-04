@@ -6,16 +6,17 @@ enum ExceptionEntryValueMatchOperator {
   valueEndsWith("EndsWith"),
   valueIPMatch("IPMatch");
 
-  const ExceptionEntryValueMatchOperator(this.value);
-  final String value;
+  const ExceptionEntryValueMatchOperator(this.wireValue);
+  final String wireValue;
 
   static ExceptionEntryValueMatchOperator fromValue(String value) {
     for (final item in ExceptionEntryValueMatchOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExceptionEntryValueMatchOperator value: $value');
+    throw ArgumentError(
+      'Unknown ExceptionEntryValueMatchOperator value: $value',
+    );
   }
 }
-

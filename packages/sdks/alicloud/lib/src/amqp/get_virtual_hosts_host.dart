@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHostsHost {
   /// The ID of the Virtual Host.
   final pulumi.Input<String> id;
+
   /// InstanceId.
   final pulumi.Input<String> instanceId;
+
   /// VirtualHostName.
   final pulumi.Input<String> virtualHostName;
 
@@ -30,10 +32,9 @@ class GetVirtualHostsHost {
 
   factory GetVirtualHostsHost.fromMap(Map<String, dynamic> map) {
     return GetVirtualHostsHost(
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      virtualHostName: (map['virtualHostName'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      virtualHostName: pulumi.Input.fromValue(map['virtualHostName'] as String),
     );
   }
 }
-

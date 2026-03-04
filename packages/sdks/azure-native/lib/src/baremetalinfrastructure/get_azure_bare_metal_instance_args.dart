@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureBareMetalInstanceArgs {
   /// Name of the Azure Bare Metal Instance, also known as the ResourceName.
   final pulumi.Input<String> azureBareMetalInstanceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetAzureBareMetalInstanceArgs {
 
   factory GetAzureBareMetalInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureBareMetalInstanceArgs(
-      azureBareMetalInstanceName: (map['azureBareMetalInstanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      azureBareMetalInstanceName: pulumi.Input.fromValue(
+        map['azureBareMetalInstanceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

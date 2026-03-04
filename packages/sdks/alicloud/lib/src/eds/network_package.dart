@@ -6,7 +6,7 @@ import 'network_package_state.dart';
 ///
 /// For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createnetworkpackage).
 ///
-/// > **NOTE:** Available since v1.142.0.
+/// &gt; **NOTE:** Available since v1.142.0.
 ///
 /// ## Example Usage
 ///
@@ -203,10 +203,13 @@ import 'network_package_state.dart';
 class NetworkPackage extends pulumi.CustomResource {
   /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   late final pulumi.Output<int> bandwidth;
+
   /// The internet charge type  of  package.
   late final pulumi.Output<String> internetChargeType;
+
   /// The ID of office site.
   late final pulumi.Output<String> officeSiteId;
+
   /// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
   late final pulumi.Output<String> status;
 
@@ -219,15 +222,15 @@ class NetworkPackage extends pulumi.CustomResource {
     NetworkPackageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/networkPackage:NetworkPackage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.internetChargeType = registerOutput<String>('internetChargeType');
-    this.officeSiteId = registerOutput<String>('officeSiteId');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/networkPackage:NetworkPackage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    internetChargeType = registerOutput<String>('internetChargeType');
+    officeSiteId = registerOutput<String>('officeSiteId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [NetworkPackage] resource's state with the given [name] and [id].
@@ -248,14 +251,14 @@ class NetworkPackage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/networkPackage:NetworkPackage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.internetChargeType = registerOutput<String>('internetChargeType');
-    this.officeSiteId = registerOutput<String>('officeSiteId');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/networkPackage:NetworkPackage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    internetChargeType = registerOutput<String>('internetChargeType');
+    officeSiteId = registerOutput<String>('officeSiteId');
+    status = registerOutput<String>('status');
   }
 }

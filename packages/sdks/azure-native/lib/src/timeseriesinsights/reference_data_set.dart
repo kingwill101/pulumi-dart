@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reference_data_set_args.dart';
-import 'reference_data_set_key_property_response.dart';
 
 /// A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
 ///
@@ -199,20 +198,28 @@ import 'reference_data_set_key_property_response.dart';
 class ReferenceDataSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the resource was created.
   late final pulumi.Output<String> creationTime;
+
   /// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
   late final pulumi.Output<String?> dataStringComparisonBehavior;
+
   /// The list of key properties for the reference data set.
-  late final pulumi.Output<List<ReferenceDataSetKeyPropertyResponse>> keyProperties;
+  late final pulumi.Output<List<Map<String, dynamic>>> keyProperties;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -225,19 +232,21 @@ class ReferenceDataSet extends pulumi.CustomResource {
     ReferenceDataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:timeseriesinsights:ReferenceDataSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.dataStringComparisonBehavior = registerOutput<String?>('dataStringComparisonBehavior');
-    this.keyProperties = registerOutput<List<ReferenceDataSetKeyPropertyResponse>>('keyProperties');
-    this.location = registerOutput<String>('location');
+         'azure-native:timeseriesinsights:ReferenceDataSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    dataStringComparisonBehavior = registerOutput<String?>(
+      'dataStringComparisonBehavior',
+    );
+    keyProperties = registerOutput<List<Map<String, dynamic>>>('keyProperties');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

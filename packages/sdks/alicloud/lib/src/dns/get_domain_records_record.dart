@@ -55,17 +55,16 @@ class GetDomainRecordsRecord {
 
   factory GetDomainRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordsRecord(
-      domainName: (map['domainName'] as String).input(),
-      hostRecord: (map['hostRecord'] as String).input(),
-      line: (map['line'] as String).input(),
-      locked: (map['locked'] as bool).input(),
-      priority: (map['priority'] as int).input(),
-      recordId: (map['recordId'] as String).input(),
-      status: (map['status'] as String).input(),
-      ttl: (map['ttl'] as double).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      hostRecord: pulumi.Input.fromValue(map['hostRecord'] as String),
+      line: pulumi.Input.fromValue(map['line'] as String),
+      locked: pulumi.Input.fromValue(map['locked'] as bool),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      recordId: pulumi.Input.fromValue(map['recordId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as double),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

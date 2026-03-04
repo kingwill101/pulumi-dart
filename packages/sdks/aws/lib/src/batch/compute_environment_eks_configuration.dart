@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeEnvironmentEksConfiguration {
   /// The Amazon Resource Name (ARN) of the Amazon EKS cluster.
   final pulumi.Input<String> eksClusterArn;
+
   /// The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
   final pulumi.Input<String> kubernetesNamespace;
 
@@ -25,9 +26,10 @@ class ComputeEnvironmentEksConfiguration {
 
   factory ComputeEnvironmentEksConfiguration.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentEksConfiguration(
-      eksClusterArn: (map['eksClusterArn'] as String).input(),
-      kubernetesNamespace: (map['kubernetesNamespace'] as String).input(),
+      eksClusterArn: pulumi.Input.fromValue(map['eksClusterArn'] as String),
+      kubernetesNamespace: pulumi.Input.fromValue(
+        map['kubernetesNamespace'] as String,
+      ),
     );
   }
 }
-

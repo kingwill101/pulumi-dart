@@ -12,14 +12,19 @@ import 'report_schedule.dart';
 class ReportByBillingAccountArgs {
   /// BillingAccount ID
   final pulumi.Input<String> billingAccountId;
+
   /// Has definition for the report.
   final pulumi.Input<ReportDefinition> definition;
+
   /// Has delivery information for the report.
   final pulumi.Input<ReportDeliveryInfo> deliveryInfo;
+
   /// The format of the report being delivered.
   final pulumi.Input<String>? format;
+
   /// Report Name.
   final pulumi.Input<String>? reportName;
+
   /// Has schedule information for the report.
   final pulumi.Input<ReportSchedule>? schedule;
 
@@ -42,23 +47,58 @@ class ReportByBillingAccountArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'billingAccountId': billingAccountId,
-      'definition': pulumi.Input.mapInputValue<ReportDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
-      'deliveryInfo': pulumi.Input.mapInputValue<ReportDeliveryInfo, Map<String, dynamic>>(deliveryInfo, (value) => value.toMap()),
+      'definition':
+          pulumi.Input.mapInputValue<ReportDefinition, Map<String, dynamic>>(
+            definition,
+            (value) => value.toMap(),
+          ),
+      'deliveryInfo':
+          pulumi.Input.mapInputValue<ReportDeliveryInfo, Map<String, dynamic>>(
+            deliveryInfo,
+            (value) => value.toMap(),
+          ),
       'format': ?format,
       'reportName': ?reportName,
-      'schedule': ?pulumi.Input.mapOptionalInputValue<ReportSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReportSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
     };
   }
 
   factory ReportByBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return ReportByBillingAccountArgs(
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      definition: (ReportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      deliveryInfo: (ReportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      reportName: map['reportName'] == null ? null : (map['reportName']! as String).input(),
-      schedule: map['schedule'] == null ? null : (ReportSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      definition: pulumi.Input.fromValue(
+        ReportDefinition.fromMap(
+          (map['definition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      deliveryInfo: pulumi.Input.fromValue(
+        ReportDeliveryInfo.fromMap(
+          (map['deliveryInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reportName: (() {
+        final guardedValue = map['reportName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReportSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

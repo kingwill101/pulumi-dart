@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'kubernetes_cluster_extension_aks_assigned_identity.dart';
 import 'kubernetes_cluster_extension_args.dart';
 import 'kubernetes_cluster_extension_plan.dart';
 import 'kubernetes_cluster_extension_state.dart';
@@ -239,7 +238,7 @@ import 'kubernetes_cluster_extension_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.KubernetesConfiguration` - 2024-11-01
@@ -253,27 +252,38 @@ import 'kubernetes_cluster_extension_state.dart';
 /// ```
 class KubernetesClusterExtension extends pulumi.CustomResource {
   /// An `aks_assigned_identity` block as defined below.
-  late final pulumi.Output<List<KubernetesClusterExtensionAksAssignedIdentity>> aksAssignedIdentities;
+  late final pulumi.Output<List<Map<String, dynamic>>> aksAssignedIdentities;
+
   /// Specifies the Cluster ID. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> clusterId;
+
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationProtectedSettings;
+
   /// Configuration settings, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationSettings;
+
   /// The current version of the extension.
   late final pulumi.Output<String> currentVersion;
+
   /// Specifies the type of extension. It must be one of the extension types registered with Microsoft.KubernetesConfiguration by the Extension publisher. For more information, please refer to [Available Extensions for AKS](https://learn.microsoft.com/en-us/azure/aks/cluster-extensions?tabs=azure-cli#currently-available-extensions). Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> extensionType;
+
   /// Specifies the name which should be used for this Kubernetes Cluster Extension. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> name;
+
   /// A `plan` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<KubernetesClusterExtensionPlan?> plan;
+
   /// Namespace where the extension release must be placed for a cluster scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> releaseNamespace;
+
   /// The release train used by this extension. Possible values include but are not limited to `Stable`, `Preview`. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> releaseTrain;
+
   /// Namespace where the extension will be created for a namespace scoped extension. If this namespace does not exist, it will be created. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> targetNamespace;
+
   /// User-specified version that the extension should pin to. If it is not set, Azure will use the latest version and auto upgrade it. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String?> version;
 
@@ -286,23 +296,29 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
     KubernetesClusterExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aksAssignedIdentities = registerOutput<List<KubernetesClusterExtensionAksAssignedIdentity>>('aksAssignedIdentities');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    this.configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
-    this.currentVersion = registerOutput<String>('currentVersion');
-    this.extensionType = registerOutput<String>('extensionType');
+         'azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aksAssignedIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'aksAssignedIdentities',
+    );
+    clusterId = registerOutput<String>('clusterId');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>(
+      'configurationProtectedSettings',
+    );
+    configurationSettings = registerOutput<Map<String, String>?>(
+      'configurationSettings',
+    );
+    currentVersion = registerOutput<String>('currentVersion');
+    extensionType = registerOutput<String>('extensionType');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<KubernetesClusterExtensionPlan?>('plan');
-    this.releaseNamespace = registerOutput<String>('releaseNamespace');
-    this.releaseTrain = registerOutput<String>('releaseTrain');
-    this.targetNamespace = registerOutput<String>('targetNamespace');
-    this.version = registerOutput<String?>('version');
+    plan = registerOutput<KubernetesClusterExtensionPlan?>('plan');
+    releaseNamespace = registerOutput<String>('releaseNamespace');
+    releaseTrain = registerOutput<String>('releaseTrain');
+    targetNamespace = registerOutput<String>('targetNamespace');
+    version = registerOutput<String?>('version');
   }
 
   /// Gets an existing [KubernetesClusterExtension] resource's state with the given [name] and [id].
@@ -323,22 +339,28 @@ class KubernetesClusterExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aksAssignedIdentities = registerOutput<List<KubernetesClusterExtensionAksAssignedIdentity>>('aksAssignedIdentities');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    this.configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
-    this.currentVersion = registerOutput<String>('currentVersion');
-    this.extensionType = registerOutput<String>('extensionType');
+         'azure:containerservice/kubernetesClusterExtension:KubernetesClusterExtension',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aksAssignedIdentities = registerOutput<List<Map<String, dynamic>>>(
+      'aksAssignedIdentities',
+    );
+    clusterId = registerOutput<String>('clusterId');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>(
+      'configurationProtectedSettings',
+    );
+    configurationSettings = registerOutput<Map<String, String>?>(
+      'configurationSettings',
+    );
+    currentVersion = registerOutput<String>('currentVersion');
+    extensionType = registerOutput<String>('extensionType');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<KubernetesClusterExtensionPlan?>('plan');
-    this.releaseNamespace = registerOutput<String>('releaseNamespace');
-    this.releaseTrain = registerOutput<String>('releaseTrain');
-    this.targetNamespace = registerOutput<String>('targetNamespace');
-    this.version = registerOutput<String?>('version');
+    plan = registerOutput<KubernetesClusterExtensionPlan?>('plan');
+    releaseNamespace = registerOutput<String>('releaseNamespace');
+    releaseTrain = registerOutput<String>('releaseTrain');
+    targetNamespace = registerOutput<String>('targetNamespace');
+    version = registerOutput<String?>('version');
   }
 }

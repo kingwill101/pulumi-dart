@@ -8,20 +8,17 @@ class ProjectSecondarySourceGitSubmodulesConfig {
 
   /// Creates a new [ProjectSecondarySourceGitSubmodulesConfig].
   /// [fetchSubmodules] Whether to fetch Git submodules for the AWS CodeBuild build project.
-  ProjectSecondarySourceGitSubmodulesConfig({
-    required this.fetchSubmodules,
-  });
+  ProjectSecondarySourceGitSubmodulesConfig({required this.fetchSubmodules});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fetchSubmodules': fetchSubmodules,
-    };
+    return <String, dynamic>{'fetchSubmodules': fetchSubmodules};
   }
 
-  factory ProjectSecondarySourceGitSubmodulesConfig.fromMap(Map<String, dynamic> map) {
+  factory ProjectSecondarySourceGitSubmodulesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProjectSecondarySourceGitSubmodulesConfig(
-      fetchSubmodules: (map['fetchSubmodules'] as bool).input(),
+      fetchSubmodules: pulumi.Input.fromValue(map['fetchSubmodules'] as bool),
     );
   }
 }
-

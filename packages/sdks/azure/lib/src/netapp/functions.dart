@@ -132,7 +132,7 @@ import 'get_volume_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -255,7 +255,7 @@ Future<GetAccountResult> getAccount(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -390,7 +390,7 @@ Future<GetAccountEncryptionResult> getAccountEncryption(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -525,7 +525,7 @@ Future<GetBackupPolicyResult> getBackupPolicy(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -660,7 +660,7 @@ Future<GetBackupVaultResult> getBackupVault(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -807,7 +807,7 @@ Future<GetPoolResult> getPool(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -978,7 +978,7 @@ Future<GetSnapshotResult> getSnapshot(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -1119,7 +1119,7 @@ Future<GetSnapshotPolicyResult> getSnapshotPolicy(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -1254,7 +1254,7 @@ Future<GetVolumeResult> getVolume(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -1389,7 +1389,7 @@ Future<GetVolumeGroupOracleResult> getVolumeGroupOracle(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -1518,7 +1518,7 @@ Future<GetVolumeGroupSapHanaResult> getVolumeGroupSapHana(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01

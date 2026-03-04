@@ -6,19 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SaslUserState {
   /// The instance ID.
   final pulumi.Input<String>? instanceId;
+
   /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
   final pulumi.Input<String>? kmsEncryptedPassword;
+
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   final pulumi.Input<Map<String, String>>? kmsEncryptionContext;
+
   /// The encryption method. Valid values:
   /// - SCRAM-SHA-512. This is the default value.
   /// - SCRAM-SHA-256
-  /// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+  /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
   final pulumi.Input<String>? mechanism;
+
   /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
   final pulumi.Input<String>? password;
+
   /// The authentication mechanism. Default value: `plain`. Valid values:
   final pulumi.Input<String>? type;
+
   /// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
   final pulumi.Input<String>? username;
 
@@ -54,14 +60,43 @@ class SaslUserState {
 
   factory SaslUserState.fromMap(Map<String, dynamic> map) {
     return SaslUserState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
-      mechanism: map['mechanism'] == null ? null : (map['mechanism']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncryptedPassword: (() {
+        final guardedValue = map['kmsEncryptedPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncryptionContext: (() {
+        final guardedValue = map['kmsEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      mechanism: (() {
+        final guardedValue = map['mechanism'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

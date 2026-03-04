@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerConnectivityConfigurationAppliesToGroup {
   /// Indicates whether to global mesh is supported for this group. Possible values are `true` and `false`.
   ///
-  /// > **Note:** A group can be global only if the `group_connectivity` is `DirectlyConnected`.
+  /// &gt; **Note:** A group can be global only if the `group_connectivity` is `DirectlyConnected`.
   final pulumi.Input<bool>? globalMeshEnabled;
+
   /// Specifies the group connectivity type. Possible values are `None` and `DirectlyConnected`.
   final pulumi.Input<String> groupConnectivity;
+
   /// Specifies the resource ID of Network Group which the configuration applies to.
   final pulumi.Input<String> networkGroupId;
+
   /// Indicates whether the hub gateway is used. Possible values are `true` and `false`.
   final pulumi.Input<bool>? useHubGateway;
 
@@ -35,13 +38,24 @@ class NetworkManagerConnectivityConfigurationAppliesToGroup {
     };
   }
 
-  factory NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap(Map<String, dynamic> map) {
+  factory NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkManagerConnectivityConfigurationAppliesToGroup(
-      globalMeshEnabled: map['globalMeshEnabled'] == null ? null : (map['globalMeshEnabled']! as bool).input(),
-      groupConnectivity: (map['groupConnectivity'] as String).input(),
-      networkGroupId: (map['networkGroupId'] as String).input(),
-      useHubGateway: map['useHubGateway'] == null ? null : (map['useHubGateway']! as bool).input(),
+      globalMeshEnabled: (() {
+        final guardedValue = map['globalMeshEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      groupConnectivity: pulumi.Input.fromValue(
+        map['groupConnectivity'] as String,
+      ),
+      networkGroupId: pulumi.Input.fromValue(map['networkGroupId'] as String),
+      useHubGateway: (() {
+        final guardedValue = map['useHubGateway'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

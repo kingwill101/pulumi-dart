@@ -10,13 +10,17 @@ import 'connection_gateway_definition_properties.dart';
 class ConnectionGatewayArgs {
   /// The connection gateway name
   final pulumi.Input<String>? connectionGatewayName;
+
   /// Resource location
   final pulumi.Input<String>? location;
   final pulumi.Input<ConnectionGatewayDefinitionProperties>? properties;
+
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
+
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -40,7 +44,11 @@ class ConnectionGatewayArgs {
     return <String, dynamic>{
       'connectionGatewayName': ?connectionGatewayName,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ConnectionGatewayDefinitionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionGatewayDefinitionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'subscriptionId': ?subscriptionId,
       'tags': ?tags,
@@ -49,13 +57,40 @@ class ConnectionGatewayArgs {
 
   factory ConnectionGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionGatewayArgs(
-      connectionGatewayName: map['connectionGatewayName'] == null ? null : (map['connectionGatewayName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (ConnectionGatewayDefinitionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      connectionGatewayName: (() {
+        final guardedValue = map['connectionGatewayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionGatewayDefinitionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

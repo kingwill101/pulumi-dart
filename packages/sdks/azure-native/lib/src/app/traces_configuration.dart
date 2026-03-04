@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TracesConfiguration {
   /// Open telemetry traces destinations
   final pulumi.Input<List<String>>? destinations;
+
   /// Boolean indicating if including dapr traces
   final pulumi.Input<bool>? includeDapr;
 
   /// Creates a new [TracesConfiguration].
   /// [destinations] Open telemetry traces destinations
   /// [includeDapr] Boolean indicating if including dapr traces
-  TracesConfiguration({
-    this.destinations,
-    this.includeDapr,
-  });
+  TracesConfiguration({this.destinations, this.includeDapr});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class TracesConfiguration {
 
   factory TracesConfiguration.fromMap(Map<String, dynamic> map) {
     return TracesConfiguration(
-      destinations: map['destinations'] == null ? null : ((map['destinations']! as List).cast<String>()).input(),
-      includeDapr: map['includeDapr'] == null ? null : (map['includeDapr']! as bool).input(),
+      destinations: (() {
+        final guardedValue = map['destinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includeDapr: (() {
+        final guardedValue = map['includeDapr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

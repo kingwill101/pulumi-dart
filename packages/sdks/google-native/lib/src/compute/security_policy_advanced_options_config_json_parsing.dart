@@ -3,16 +3,19 @@ enum SecurityPolicyAdvancedOptionsConfigJsonParsing {
   standard("STANDARD"),
   standardWithGraphql("STANDARD_WITH_GRAPHQL");
 
-  const SecurityPolicyAdvancedOptionsConfigJsonParsing(this.value);
-  final String value;
+  const SecurityPolicyAdvancedOptionsConfigJsonParsing(this.wireValue);
+  final String wireValue;
 
-  static SecurityPolicyAdvancedOptionsConfigJsonParsing fromValue(String value) {
+  static SecurityPolicyAdvancedOptionsConfigJsonParsing fromValue(
+    String value,
+  ) {
     for (final item in SecurityPolicyAdvancedOptionsConfigJsonParsing.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyAdvancedOptionsConfigJsonParsing value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyAdvancedOptionsConfigJsonParsing value: $value',
+    );
   }
 }
-

@@ -10,20 +10,31 @@ class CustomResourceValidationApiextensionsK8sIoV1beta1 {
 
   /// Creates a new [CustomResourceValidationApiextensionsK8sIoV1beta1].
   /// [openAPIV3Schema] openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-  CustomResourceValidationApiextensionsK8sIoV1beta1({
-    this.openAPIV3Schema,
-  });
+  CustomResourceValidationApiextensionsK8sIoV1beta1({this.openAPIV3Schema});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'openAPIV3Schema': ?pulumi.Input.mapOptionalInputValue<JSONSchemaPropsApiextensionsK8sIoV1beta1, Map<String, dynamic>>(openAPIV3Schema, (value) => value.toMap()),
+      'openAPIV3Schema':
+          ?pulumi.Input.mapOptionalInputValue<
+            JSONSchemaPropsApiextensionsK8sIoV1beta1,
+            Map<String, dynamic>
+          >(openAPIV3Schema, (value) => value.toMap()),
     };
   }
 
-  factory CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomResourceValidationApiextensionsK8sIoV1beta1(
-      openAPIV3Schema: map['openAPIV3Schema'] == null ? null : (JSONSchemaPropsApiextensionsK8sIoV1beta1.fromMap((map['openAPIV3Schema']! as Map).cast<String, dynamic>())).input(),
+      openAPIV3Schema: (() {
+        final guardedValue = map['openAPIV3Schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JSONSchemaPropsApiextensionsK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_plan_args.dart';
-import 'backup_plan_backup_rule.dart';
 import 'backup_plan_state.dart';
 
 /// A backup plan defines when and how to back up a resource, including the backup's schedule, retention, and location.
@@ -758,33 +757,46 @@ import 'backup_plan_state.dart';
 class BackupPlan extends pulumi.CustomResource {
   /// The ID of the backup plan
   late final pulumi.Output<String> backupPlanId;
+
   /// The backup rules for this `BackupPlan`. There must be at least one `BackupRule` message.
   /// Structure is documented below.
-  late final pulumi.Output<List<BackupPlanBackupRule>> backupRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> backupRules;
+
   /// Backup vault where the backups gets stored using this Backup plan.
   late final pulumi.Output<String> backupVault;
+
   /// The Google Cloud Platform Service Account to be used by the BackupVault for taking backups.
   late final pulumi.Output<String> backupVaultServiceAccount;
+
   /// When the `BackupPlan` was created.
   late final pulumi.Output<String> createTime;
+
   /// The description allows for additional details about `BackupPlan` and its use cases to be provided.
   late final pulumi.Output<String?> description;
+
   /// The location for the backup plan
   late final pulumi.Output<String> location;
+
   /// This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
   late final pulumi.Output<int?> logRetentionDays;
+
   /// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
   late final pulumi.Output<int?> maxCustomOnDemandRetentionDays;
+
   /// The name of backup plan resource created
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The resource type to which the `BackupPlan` will be applied.
   /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
   late final pulumi.Output<String> resourceType;
+
   /// The list of all resource types to which the `BackupPlan` can be applied.
   late final pulumi.Output<List<String>> supportedResourceTypes;
+
   /// When the `BackupPlan` was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -797,25 +809,31 @@ class BackupPlan extends pulumi.CustomResource {
     BackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPlanId = registerOutput<String>('backupPlanId');
-    this.backupRules = registerOutput<List<BackupPlanBackupRule>>('backupRules');
-    this.backupVault = registerOutput<String>('backupVault');
-    this.backupVaultServiceAccount = registerOutput<String>('backupVaultServiceAccount');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
-    this.logRetentionDays = registerOutput<int?>('logRetentionDays');
-    this.maxCustomOnDemandRetentionDays = registerOutput<int?>('maxCustomOnDemandRetentionDays');
+         'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPlanId = registerOutput<String>('backupPlanId');
+    backupRules = registerOutput<List<Map<String, dynamic>>>('backupRules');
+    backupVault = registerOutput<String>('backupVault');
+    backupVaultServiceAccount = registerOutput<String>(
+      'backupVaultServiceAccount',
+    );
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    logRetentionDays = registerOutput<int?>('logRetentionDays');
+    maxCustomOnDemandRetentionDays = registerOutput<int?>(
+      'maxCustomOnDemandRetentionDays',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.supportedResourceTypes = registerOutput<List<String>>('supportedResourceTypes');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    resourceType = registerOutput<String>('resourceType');
+    supportedResourceTypes = registerOutput<List<String>>(
+      'supportedResourceTypes',
+    );
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [BackupPlan] resource's state with the given [name] and [id].
@@ -836,24 +854,30 @@ class BackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPlanId = registerOutput<String>('backupPlanId');
-    this.backupRules = registerOutput<List<BackupPlanBackupRule>>('backupRules');
-    this.backupVault = registerOutput<String>('backupVault');
-    this.backupVaultServiceAccount = registerOutput<String>('backupVaultServiceAccount');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
-    this.logRetentionDays = registerOutput<int?>('logRetentionDays');
-    this.maxCustomOnDemandRetentionDays = registerOutput<int?>('maxCustomOnDemandRetentionDays');
+         'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPlanId = registerOutput<String>('backupPlanId');
+    backupRules = registerOutput<List<Map<String, dynamic>>>('backupRules');
+    backupVault = registerOutput<String>('backupVault');
+    backupVaultServiceAccount = registerOutput<String>(
+      'backupVaultServiceAccount',
+    );
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    logRetentionDays = registerOutput<int?>('logRetentionDays');
+    maxCustomOnDemandRetentionDays = registerOutput<int?>(
+      'maxCustomOnDemandRetentionDays',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.supportedResourceTypes = registerOutput<List<String>>('supportedResourceTypes');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    resourceType = registerOutput<String>('resourceType');
+    supportedResourceTypes = registerOutput<List<String>>(
+      'supportedResourceTypes',
+    );
+    updateTime = registerOutput<String>('updateTime');
   }
 }

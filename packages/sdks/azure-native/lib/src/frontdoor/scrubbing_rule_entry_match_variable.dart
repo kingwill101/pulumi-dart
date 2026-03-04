@@ -8,16 +8,17 @@ enum ScrubbingRuleEntryMatchVariable {
   valueRequestBodyPostArgNames("RequestBodyPostArgNames"),
   valueRequestBodyJsonArgNames("RequestBodyJsonArgNames");
 
-  const ScrubbingRuleEntryMatchVariable(this.value);
-  final String value;
+  const ScrubbingRuleEntryMatchVariable(this.wireValue);
+  final String wireValue;
 
   static ScrubbingRuleEntryMatchVariable fromValue(String value) {
     for (final item in ScrubbingRuleEntryMatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScrubbingRuleEntryMatchVariable value: $value');
+    throw ArgumentError(
+      'Unknown ScrubbingRuleEntryMatchVariable value: $value',
+    );
   }
 }
-

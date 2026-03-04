@@ -10,16 +10,15 @@ enum DeliveryRuleActionName {
   originGroupOverride("OriginGroupOverride"),
   routeConfigurationOverride("RouteConfigurationOverride");
 
-  const DeliveryRuleActionName(this.value);
-  final String value;
+  const DeliveryRuleActionName(this.wireValue);
+  final String wireValue;
 
   static DeliveryRuleActionName fromValue(String value) {
     for (final item in DeliveryRuleActionName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeliveryRuleActionName value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_backupdisasterrecovery;
-
 export 'backupdisasterrecovery/backup_plan.dart';
 export 'backupdisasterrecovery/backup_plan_args.dart';
 export 'backupdisasterrecovery/backup_plan_association.dart';

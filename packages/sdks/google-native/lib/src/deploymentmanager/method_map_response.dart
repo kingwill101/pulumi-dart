@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MethodMapResponse {
   /// The action identifier for the create method to be used for this collection
   final pulumi.Input<String> create;
+
   /// The action identifier for the delete method to be used for this collection
   final pulumi.Input<String> delete;
+
   /// The action identifier for the get method to be used for this collection
   final pulumi.Input<String> get;
+
   /// The action identifier for the setIamPolicy method to be used for this collection
   final pulumi.Input<String> setIamPolicy;
+
   /// The action identifier for the update method to be used for this collection
   final pulumi.Input<String> update;
 
@@ -41,12 +45,11 @@ class MethodMapResponse {
 
   factory MethodMapResponse.fromMap(Map<String, dynamic> map) {
     return MethodMapResponse(
-      create: (map['create'] as String).input(),
-      delete: (map['delete'] as String).input(),
-      get: (map['get'] as String).input(),
-      setIamPolicy: (map['setIamPolicy'] as String).input(),
-      update: (map['update'] as String).input(),
+      create: pulumi.Input.fromValue(map['create'] as String),
+      delete: pulumi.Input.fromValue(map['delete'] as String),
+      get: pulumi.Input.fromValue(map['get'] as String),
+      setIamPolicy: pulumi.Input.fromValue(map['setIamPolicy'] as String),
+      update: pulumi.Input.fromValue(map['update'] as String),
     );
   }
 }
-

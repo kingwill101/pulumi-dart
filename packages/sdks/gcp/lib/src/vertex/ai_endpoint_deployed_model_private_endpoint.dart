@@ -6,12 +6,15 @@ class AiEndpointDeployedModelPrivateEndpoint {
   /// (Output)
   /// Output only. Http(s) path to send explain requests.
   final pulumi.Input<String>? explainHttpUri;
+
   /// (Output)
   /// Output only. Http(s) path to send health check requests.
   final pulumi.Input<String>? healthHttpUri;
+
   /// (Output)
   /// Output only. Http(s) path to send prediction requests.
   final pulumi.Input<String>? predictHttpUri;
+
   /// (Output)
   /// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
   final pulumi.Input<String>? serviceAttachment;
@@ -37,13 +40,30 @@ class AiEndpointDeployedModelPrivateEndpoint {
     };
   }
 
-  factory AiEndpointDeployedModelPrivateEndpoint.fromMap(Map<String, dynamic> map) {
+  factory AiEndpointDeployedModelPrivateEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiEndpointDeployedModelPrivateEndpoint(
-      explainHttpUri: map['explainHttpUri'] == null ? null : (map['explainHttpUri']! as String).input(),
-      healthHttpUri: map['healthHttpUri'] == null ? null : (map['healthHttpUri']! as String).input(),
-      predictHttpUri: map['predictHttpUri'] == null ? null : (map['predictHttpUri']! as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
+      explainHttpUri: (() {
+        final guardedValue = map['explainHttpUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthHttpUri: (() {
+        final guardedValue = map['healthHttpUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      predictHttpUri: (() {
+        final guardedValue = map['predictHttpUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAttachment: (() {
+        final guardedValue = map['serviceAttachment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

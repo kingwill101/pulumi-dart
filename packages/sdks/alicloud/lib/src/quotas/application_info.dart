@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_info_args.dart';
-import 'application_info_dimension.dart';
 import 'application_info_state.dart';
 
 class ApplicationInfo extends pulumi.CustomResource {
@@ -9,7 +8,7 @@ class ApplicationInfo extends pulumi.CustomResource {
   late final pulumi.Output<String> auditReason;
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<double> desireValue;
-  late final pulumi.Output<List<ApplicationInfoDimension>?> dimensions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dimensions;
   late final pulumi.Output<String?> effectiveTime;
   late final pulumi.Output<String?> envLanguage;
   late final pulumi.Output<String?> expireTime;
@@ -32,29 +31,29 @@ class ApplicationInfo extends pulumi.CustomResource {
     ApplicationInfoArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:quotas/applicationInfo:ApplicationInfo',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approveValue = registerOutput<String>('approveValue');
-    this.auditMode = registerOutput<String>('auditMode');
-    this.auditReason = registerOutput<String>('auditReason');
-    this.createTime = registerOutput<String>('createTime');
-    this.desireValue = registerOutput<double>('desireValue');
-    this.dimensions = registerOutput<List<ApplicationInfoDimension>?>('dimensions');
-    this.effectiveTime = registerOutput<String?>('effectiveTime');
-    this.envLanguage = registerOutput<String?>('envLanguage');
-    this.expireTime = registerOutput<String?>('expireTime');
-    this.noticeType = registerOutput<int>('noticeType');
-    this.productCode = registerOutput<String>('productCode');
-    this.quotaActionCode = registerOutput<String>('quotaActionCode');
-    this.quotaCategory = registerOutput<String?>('quotaCategory');
-    this.quotaDescription = registerOutput<String>('quotaDescription');
-    this.quotaName = registerOutput<String>('quotaName');
-    this.quotaUnit = registerOutput<String>('quotaUnit');
-    this.reason = registerOutput<String>('reason');
-    this.status = registerOutput<String>('status');
+         'alicloud:quotas/applicationInfo:ApplicationInfo',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approveValue = registerOutput<String>('approveValue');
+    auditMode = registerOutput<String>('auditMode');
+    auditReason = registerOutput<String>('auditReason');
+    createTime = registerOutput<String>('createTime');
+    desireValue = registerOutput<double>('desireValue');
+    dimensions = registerOutput<List<Map<String, dynamic>>?>('dimensions');
+    effectiveTime = registerOutput<String?>('effectiveTime');
+    envLanguage = registerOutput<String?>('envLanguage');
+    expireTime = registerOutput<String?>('expireTime');
+    noticeType = registerOutput<int>('noticeType');
+    productCode = registerOutput<String>('productCode');
+    quotaActionCode = registerOutput<String>('quotaActionCode');
+    quotaCategory = registerOutput<String?>('quotaCategory');
+    quotaDescription = registerOutput<String>('quotaDescription');
+    quotaName = registerOutput<String>('quotaName');
+    quotaUnit = registerOutput<String>('quotaUnit');
+    reason = registerOutput<String>('reason');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ApplicationInfo] resource's state with the given [name] and [id].
@@ -75,28 +74,28 @@ class ApplicationInfo extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:quotas/applicationInfo:ApplicationInfo',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approveValue = registerOutput<String>('approveValue');
-    this.auditMode = registerOutput<String>('auditMode');
-    this.auditReason = registerOutput<String>('auditReason');
-    this.createTime = registerOutput<String>('createTime');
-    this.desireValue = registerOutput<double>('desireValue');
-    this.dimensions = registerOutput<List<ApplicationInfoDimension>?>('dimensions');
-    this.effectiveTime = registerOutput<String?>('effectiveTime');
-    this.envLanguage = registerOutput<String?>('envLanguage');
-    this.expireTime = registerOutput<String?>('expireTime');
-    this.noticeType = registerOutput<int>('noticeType');
-    this.productCode = registerOutput<String>('productCode');
-    this.quotaActionCode = registerOutput<String>('quotaActionCode');
-    this.quotaCategory = registerOutput<String?>('quotaCategory');
-    this.quotaDescription = registerOutput<String>('quotaDescription');
-    this.quotaName = registerOutput<String>('quotaName');
-    this.quotaUnit = registerOutput<String>('quotaUnit');
-    this.reason = registerOutput<String>('reason');
-    this.status = registerOutput<String>('status');
+         'alicloud:quotas/applicationInfo:ApplicationInfo',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approveValue = registerOutput<String>('approveValue');
+    auditMode = registerOutput<String>('auditMode');
+    auditReason = registerOutput<String>('auditReason');
+    createTime = registerOutput<String>('createTime');
+    desireValue = registerOutput<double>('desireValue');
+    dimensions = registerOutput<List<Map<String, dynamic>>?>('dimensions');
+    effectiveTime = registerOutput<String?>('effectiveTime');
+    envLanguage = registerOutput<String?>('envLanguage');
+    expireTime = registerOutput<String?>('expireTime');
+    noticeType = registerOutput<int>('noticeType');
+    productCode = registerOutput<String>('productCode');
+    quotaActionCode = registerOutput<String>('quotaActionCode');
+    quotaCategory = registerOutput<String?>('quotaCategory');
+    quotaDescription = registerOutput<String>('quotaDescription');
+    quotaName = registerOutput<String>('quotaName');
+    quotaUnit = registerOutput<String>('quotaUnit');
+    reason = registerOutput<String>('reason');
+    status = registerOutput<String>('status');
   }
 }

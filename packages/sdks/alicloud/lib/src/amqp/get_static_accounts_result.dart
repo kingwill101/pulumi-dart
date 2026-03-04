@@ -7,9 +7,11 @@ import 'get_static_accounts_account.dart';
 class GetStaticAccountsResult {
   /// A list of Static Account Entries. Each element contains the following attributes:
   final List<GetStaticAccountsAccount> accounts;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// Amqp instance ID.
   final String? instanceId;
   final String? outputFile;
@@ -30,7 +32,11 @@ class GetStaticAccountsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts': pulumi.Input.encodeList<GetStaticAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'accounts':
+          pulumi.Input.encodeList<
+            GetStaticAccountsAccount,
+            Map<String, dynamic>
+          >(accounts, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'instanceId': ?instanceId,
@@ -40,12 +46,24 @@ class GetStaticAccountsResult {
 
   factory GetStaticAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetStaticAccountsResult(
-      accounts: pulumi.Input.decodeList<GetStaticAccountsAccount>(map['accounts'], (value) => GetStaticAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: pulumi.Input.decodeList<GetStaticAccountsAccount>(
+        map['accounts']!,
+        (value) => GetStaticAccountsAccount.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

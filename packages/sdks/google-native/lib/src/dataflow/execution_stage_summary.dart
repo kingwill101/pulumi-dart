@@ -10,18 +10,25 @@ import 'stage_source.dart';
 class ExecutionStageSummary {
   /// Collections produced and consumed by component transforms of this stage.
   final pulumi.Input<List<ComponentSource>>? componentSource;
+
   /// Transforms that comprise this execution stage.
   final pulumi.Input<List<ComponentTransform>>? componentTransform;
+
   /// Dataflow service generated id for this stage.
   final pulumi.Input<String>? id;
+
   /// Input sources for this stage.
   final pulumi.Input<List<StageSource>>? inputSource;
+
   /// Type of transform this stage is executing.
   final pulumi.Input<ExecutionStageSummaryKind>? kind;
+
   /// Dataflow service generated name for this stage.
   final pulumi.Input<String>? name;
+
   /// Output sources for this stage.
   final pulumi.Input<List<StageSource>>? outputSource;
+
   /// Other stages that must complete before this stage can run.
   final pulumi.Input<List<String>>? prerequisiteStage;
 
@@ -47,28 +54,134 @@ class ExecutionStageSummary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentSource': ?pulumi.Input.mapOptionalInputValue<List<ComponentSource>, List<Map<String, dynamic>>>(componentSource, (value) => pulumi.Input.encodeList<ComponentSource, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'componentTransform': ?pulumi.Input.mapOptionalInputValue<List<ComponentTransform>, List<Map<String, dynamic>>>(componentTransform, (value) => pulumi.Input.encodeList<ComponentTransform, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'componentSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ComponentSource>,
+            List<Map<String, dynamic>>
+          >(
+            componentSource,
+            (value) =>
+                pulumi.Input.encodeList<ComponentSource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'componentTransform':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ComponentTransform>,
+            List<Map<String, dynamic>>
+          >(
+            componentTransform,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ComponentTransform,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
-      'inputSource': ?pulumi.Input.mapOptionalInputValue<List<StageSource>, List<Map<String, dynamic>>>(inputSource, (value) => pulumi.Input.encodeList<StageSource, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'kind': ?pulumi.Input.mapOptionalInputValue<ExecutionStageSummaryKind, String>(kind, (value) => value.value),
+      'inputSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StageSource>,
+            List<Map<String, dynamic>>
+          >(
+            inputSource,
+            (value) =>
+                pulumi.Input.encodeList<StageSource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'kind':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecutionStageSummaryKind,
+            String
+          >(kind, (value) => value.wireValue),
       'name': ?name,
-      'outputSource': ?pulumi.Input.mapOptionalInputValue<List<StageSource>, List<Map<String, dynamic>>>(outputSource, (value) => pulumi.Input.encodeList<StageSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outputSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StageSource>,
+            List<Map<String, dynamic>>
+          >(
+            outputSource,
+            (value) =>
+                pulumi.Input.encodeList<StageSource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'prerequisiteStage': ?prerequisiteStage,
     };
   }
 
   factory ExecutionStageSummary.fromMap(Map<String, dynamic> map) {
     return ExecutionStageSummary(
-      componentSource: map['componentSource'] == null ? null : (pulumi.Input.decodeList<ComponentSource>(map['componentSource']!, (value) => ComponentSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      componentTransform: map['componentTransform'] == null ? null : (pulumi.Input.decodeList<ComponentTransform>(map['componentTransform']!, (value) => ComponentTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      inputSource: map['inputSource'] == null ? null : (pulumi.Input.decodeList<StageSource>(map['inputSource']!, (value) => StageSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (ExecutionStageSummaryKind.fromValue(map['kind']! as String)).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      outputSource: map['outputSource'] == null ? null : (pulumi.Input.decodeList<StageSource>(map['outputSource']!, (value) => StageSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prerequisiteStage: map['prerequisiteStage'] == null ? null : ((map['prerequisiteStage']! as List).cast<String>()).input(),
+      componentSource: (() {
+        final guardedValue = map['componentSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ComponentSource>(
+            guardedValue,
+            (value) =>
+                ComponentSource.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      componentTransform: (() {
+        final guardedValue = map['componentTransform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ComponentTransform>(
+            guardedValue,
+            (value) => ComponentTransform.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputSource: (() {
+        final guardedValue = map['inputSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StageSource>(
+            guardedValue,
+            (value) =>
+                StageSource.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecutionStageSummaryKind.fromValue(guardedValue as String),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputSource: (() {
+        final guardedValue = map['outputSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StageSource>(
+            guardedValue,
+            (value) =>
+                StageSource.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      prerequisiteStage: (() {
+        final guardedValue = map['prerequisiteStage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

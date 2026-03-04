@@ -198,18 +198,25 @@ import 'schedule_association_property_response.dart';
 class JobSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the id of job schedule.
   late final pulumi.Output<String?> jobScheduleId;
+
   /// Gets the name of the variable.
   late final pulumi.Output<String> name;
+
   /// Gets or sets the parameters of the job schedule.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// Gets or sets the hybrid worker group that the scheduled job should run on.
   late final pulumi.Output<String?> runOn;
+
   /// Gets or sets the runbook.
   late final pulumi.Output<RunbookAssociationPropertyResponse?> runbook;
+
   /// Gets or sets the schedule.
   late final pulumi.Output<ScheduleAssociationPropertyResponse?> schedule;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -222,18 +229,18 @@ class JobSchedule extends pulumi.CustomResource {
     JobScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:JobSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.jobScheduleId = registerOutput<String?>('jobScheduleId');
+         'azure-native:automation:JobSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    jobScheduleId = registerOutput<String?>('jobScheduleId');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.runOn = registerOutput<String?>('runOn');
-    this.runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook');
-    this.schedule = registerOutput<ScheduleAssociationPropertyResponse?>('schedule');
-    this.type = registerOutput<String>('type');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    runOn = registerOutput<String?>('runOn');
+    runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook');
+    schedule = registerOutput<ScheduleAssociationPropertyResponse?>('schedule');
+    type = registerOutput<String>('type');
   }
 }

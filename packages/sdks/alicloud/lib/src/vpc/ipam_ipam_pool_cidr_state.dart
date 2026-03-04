@@ -6,10 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpamIpamPoolCidrState {
   /// The CIDR address segment to be preset.
   ///
-  /// > **NOTE:**  currently, only IPv4 address segments are supported.
+  /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
   final pulumi.Input<String>? cidr;
+
   /// The ID of the IPAM pool instance.
   final pulumi.Input<String>? ipamPoolId;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
 
@@ -17,11 +19,7 @@ class IpamIpamPoolCidrState {
   /// [cidr] The CIDR address segment to be preset.
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [status] The status of the resource
-  IpamIpamPoolCidrState({
-    this.cidr,
-    this.ipamPoolId,
-    this.status,
-  });
+  IpamIpamPoolCidrState({this.cidr, this.ipamPoolId, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,21 @@ class IpamIpamPoolCidrState {
 
   factory IpamIpamPoolCidrState.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolCidrState(
-      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamPoolId: (() {
+        final guardedValue = map['ipamPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

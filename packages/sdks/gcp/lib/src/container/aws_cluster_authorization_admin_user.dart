@@ -8,20 +8,15 @@ class AwsClusterAuthorizationAdminUser {
 
   /// Creates a new [AwsClusterAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  AwsClusterAuthorizationAdminUser({
-    required this.username,
-  });
+  AwsClusterAuthorizationAdminUser({required this.username});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'username': username,
-    };
+    return <String, dynamic>{'username': username};
   }
 
   factory AwsClusterAuthorizationAdminUser.fromMap(Map<String, dynamic> map) {
     return AwsClusterAuthorizationAdminUser(
-      username: (map['username'] as String).input(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

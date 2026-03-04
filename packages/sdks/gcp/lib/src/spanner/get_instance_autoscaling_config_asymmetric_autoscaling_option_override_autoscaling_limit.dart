@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit {
   /// The maximum number of nodes for this specific replica.
   final pulumi.Input<int> maxNodes;
+
   /// The minimum number of nodes for this specific replica.
   final pulumi.Input<int> minNodes;
 
@@ -17,17 +18,15 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscaling
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxNodes': maxNodes,
-      'minNodes': minNodes,
-    };
+    return <String, dynamic>{'maxNodes': maxNodes, 'minNodes': minNodes};
   }
 
-  factory GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit(
-      maxNodes: (map['maxNodes'] as int).input(),
-      minNodes: (map['minNodes'] as int).input(),
+      maxNodes: pulumi.Input.fromValue(map['maxNodes'] as int),
+      minNodes: pulumi.Input.fromValue(map['minNodes'] as int),
     );
   }
 }
-

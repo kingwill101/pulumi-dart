@@ -305,7 +305,7 @@ import 'file_system_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageCache` - 2024-07-01
@@ -320,32 +320,45 @@ import 'file_system_state.dart';
 class FileSystem extends pulumi.CustomResource {
   /// An `encryption_key` block as defined below.
   ///
-  /// > **Note:** Removing `encryption_key` forces a new resource to be created.
+  /// &gt; **Note:** Removing `encryption_key` forces a new resource to be created.
   late final pulumi.Output<FileSystemEncryptionKey?> encryptionKey;
+
   /// A `hsm_setting` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<FileSystemHsmSetting?> hsmSetting;
+
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<FileSystemIdentity?> identity;
+
   /// The Azure Region where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `maintenance_window` block as defined below.
   late final pulumi.Output<FileSystemMaintenanceWindow> maintenanceWindow;
+
   /// IP Address of Managed Lustre File System Services.
   late final pulumi.Output<String> mgsAddress;
+
   /// The name which should be used for this Azure Managed Lustre File System. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Azure Managed Lustre File System should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `root_squash` block as defined below.
   late final pulumi.Output<FileSystemRootSquash?> rootSquash;
+
   /// The SKU name for the Azure Managed Lustre File System. Possible values are `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250` and `AMLFS-Durable-Premium-500`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuName;
+
   /// The size of the Azure Managed Lustre File System in TiB. The valid values for this field are dependant on which `sku_name` has been defined in the configuration file. For more information on the valid values for this field please see the [product documentation](https://learn.microsoft.com/azure/azure-managed-lustre/create-file-system-resource-manager#file-system-type-and-size-options). Changing this forces a new resource to be created.
   late final pulumi.Output<int> storageCapacityInTb;
+
   /// The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags which should be assigned to the Azure Managed Lustre File System.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A list of availability zones for the Azure Managed Lustre File System. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> zones;
 
@@ -358,25 +371,27 @@ class FileSystem extends pulumi.CustomResource {
     FileSystemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedlustre/fileSystem:FileSystem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey');
-    this.hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting');
-    this.identity = registerOutput<FileSystemIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>('maintenanceWindow');
-    this.mgsAddress = registerOutput<String>('mgsAddress');
+         'azure:managedlustre/fileSystem:FileSystem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey');
+    hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting');
+    identity = registerOutput<FileSystemIdentity?>('identity');
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>(
+      'maintenanceWindow',
+    );
+    mgsAddress = registerOutput<String>('mgsAddress');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash');
+    skuName = registerOutput<String>('skuName');
+    storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>>('zones');
   }
 
   /// Gets an existing [FileSystem] resource's state with the given [name] and [id].
@@ -397,24 +412,26 @@ class FileSystem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedlustre/fileSystem:FileSystem',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey');
-    this.hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting');
-    this.identity = registerOutput<FileSystemIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>('maintenanceWindow');
-    this.mgsAddress = registerOutput<String>('mgsAddress');
+         'azure:managedlustre/fileSystem:FileSystem',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptionKey = registerOutput<FileSystemEncryptionKey?>('encryptionKey');
+    hsmSetting = registerOutput<FileSystemHsmSetting?>('hsmSetting');
+    identity = registerOutput<FileSystemIdentity?>('identity');
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<FileSystemMaintenanceWindow>(
+      'maintenanceWindow',
+    );
+    mgsAddress = registerOutput<String>('mgsAddress');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rootSquash = registerOutput<FileSystemRootSquash?>('rootSquash');
+    skuName = registerOutput<String>('skuName');
+    storageCapacityInTb = registerOutput<int>('storageCapacityInTb');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>>('zones');
   }
 }

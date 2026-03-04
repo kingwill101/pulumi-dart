@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupQuotasEntityResponseProperties {
   /// Display name of the GroupQuota entity.
   final pulumi.Input<String>? displayName;
+
   /// Provisioning state of the operation.
   final pulumi.Input<String> provisioningState;
 
@@ -23,11 +24,18 @@ class GroupQuotasEntityResponseProperties {
     };
   }
 
-  factory GroupQuotasEntityResponseProperties.fromMap(Map<String, dynamic> map) {
+  factory GroupQuotasEntityResponseProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GroupQuotasEntityResponseProperties(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

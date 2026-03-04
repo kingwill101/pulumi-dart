@@ -16,27 +16,38 @@ import 'web_app_hybrid_connection_args.dart';
 class WebAppHybridConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The hostname of the endpoint.
   late final pulumi.Output<String?> hostname;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// The port of the endpoint.
   late final pulumi.Output<int?> port;
+
   /// The ARM URI to the Service Bus relay.
   late final pulumi.Output<String?> relayArmUri;
+
   /// The name of the Service Bus relay.
   late final pulumi.Output<String?> relayName;
+
   /// The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
   late final pulumi.Output<String?> sendKeyName;
+
   /// The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
   /// normally, use the POST /listKeys API instead.
   late final pulumi.Output<String?> sendKeyValue;
+
   /// The name of the Service Bus namespace.
   late final pulumi.Output<String?> serviceBusNamespace;
+
   /// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
   late final pulumi.Output<String?> serviceBusSuffix;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -49,22 +60,22 @@ class WebAppHybridConnection extends pulumi.CustomResource {
     WebAppHybridConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppHybridConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hostname = registerOutput<String?>('hostname');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppHybridConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hostname = registerOutput<String?>('hostname');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int?>('port');
-    this.relayArmUri = registerOutput<String?>('relayArmUri');
-    this.relayName = registerOutput<String?>('relayName');
-    this.sendKeyName = registerOutput<String?>('sendKeyName');
-    this.sendKeyValue = registerOutput<String?>('sendKeyValue');
-    this.serviceBusNamespace = registerOutput<String?>('serviceBusNamespace');
-    this.serviceBusSuffix = registerOutput<String?>('serviceBusSuffix');
-    this.type = registerOutput<String>('type');
+    port = registerOutput<int?>('port');
+    relayArmUri = registerOutput<String?>('relayArmUri');
+    relayName = registerOutput<String?>('relayName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String?>('sendKeyValue');
+    serviceBusNamespace = registerOutput<String?>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String?>('serviceBusSuffix');
+    type = registerOutput<String>('type');
   }
 }

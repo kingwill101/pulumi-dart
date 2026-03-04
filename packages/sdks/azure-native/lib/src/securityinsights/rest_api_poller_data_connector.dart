@@ -477,33 +477,47 @@ import 'system_data_response.dart';
 class RestApiPollerDataConnector extends pulumi.CustomResource {
   /// The add on attributes. The key name will become attribute name (a column) and the value will become the attribute value in the payload.
   late final pulumi.Output<Map<String, String>?> addOnAttributes;
+
   /// The a authentication model.
   late final pulumi.Output<AWSAuthModelResponse> auth;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The connector definition name (the dataConnectorDefinition resource id).
   late final pulumi.Output<String> connectorDefinitionName;
+
   /// The Log Analytics table destination.
   late final pulumi.Output<String?> dataType;
+
   /// The DCR related properties.
   late final pulumi.Output<DCRConfigurationResponse?> dcrConfig;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// Indicates whether the connector is active or not.
   late final pulumi.Output<bool?> isActive;
+
   /// The kind of the data connector
   /// Expected value is 'RestApiPoller'.
   late final pulumi.Output<String> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The paging configuration.
   late final pulumi.Output<RestApiPollerRequestPagingConfigResponse?> paging;
+
   /// The request configuration.
   late final pulumi.Output<RestApiPollerRequestConfigResponse> request;
+
   /// The response configuration.
   late final pulumi.Output<CcpResponseConfigResponse?> response;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -516,25 +530,27 @@ class RestApiPollerDataConnector extends pulumi.CustomResource {
     RestApiPollerDataConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:RestApiPollerDataConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addOnAttributes = registerOutput<Map<String, String>?>('addOnAttributes');
-    this.auth = registerOutput<AWSAuthModelResponse>('auth');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectorDefinitionName = registerOutput<String>('connectorDefinitionName');
-    this.dataType = registerOutput<String?>('dataType');
-    this.dcrConfig = registerOutput<DCRConfigurationResponse?>('dcrConfig');
-    this.etag = registerOutput<String?>('etag');
-    this.isActive = registerOutput<bool?>('isActive');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:securityinsights:RestApiPollerDataConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addOnAttributes = registerOutput<Map<String, String>?>('addOnAttributes');
+    auth = registerOutput<AWSAuthModelResponse>('auth');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorDefinitionName = registerOutput<String>('connectorDefinitionName');
+    dataType = registerOutput<String?>('dataType');
+    dcrConfig = registerOutput<DCRConfigurationResponse?>('dcrConfig');
+    etag = registerOutput<String?>('etag');
+    isActive = registerOutput<bool?>('isActive');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.paging = registerOutput<RestApiPollerRequestPagingConfigResponse?>('paging');
-    this.request = registerOutput<RestApiPollerRequestConfigResponse>('request');
-    this.response = registerOutput<CcpResponseConfigResponse?>('response');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    paging = registerOutput<RestApiPollerRequestPagingConfigResponse?>(
+      'paging',
+    );
+    request = registerOutput<RestApiPollerRequestConfigResponse>('request');
+    response = registerOutput<CcpResponseConfigResponse?>('response');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

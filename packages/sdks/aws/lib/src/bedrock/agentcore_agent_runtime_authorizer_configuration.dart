@@ -5,24 +5,38 @@ import 'agentcore_agent_runtime_authorizer_configuration_custom_jwt_authorizer.d
 
 class AgentcoreAgentRuntimeAuthorizerConfiguration {
   /// JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer>? customJwtAuthorizer;
+  final pulumi.Input<
+    AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer
+  >?
+  customJwtAuthorizer;
 
   /// Creates a new [AgentcoreAgentRuntimeAuthorizerConfiguration].
   /// [customJwtAuthorizer] JWT-based authorization configuration block. See `custom_jwt_authorizer` below.
-  AgentcoreAgentRuntimeAuthorizerConfiguration({
-    this.customJwtAuthorizer,
-  });
+  AgentcoreAgentRuntimeAuthorizerConfiguration({this.customJwtAuthorizer});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customJwtAuthorizer': ?pulumi.Input.mapOptionalInputValue<AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer, Map<String, dynamic>>(customJwtAuthorizer, (value) => value.toMap()),
+      'customJwtAuthorizer':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer,
+            Map<String, dynamic>
+          >(customJwtAuthorizer, (value) => value.toMap()),
     };
   }
 
-  factory AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreAgentRuntimeAuthorizerConfiguration(
-      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : ((AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer']! as Map).cast<String, dynamic>())).input()).input(),
+      customJwtAuthorizer: (() {
+        final guardedValue = map['customJwtAuthorizer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

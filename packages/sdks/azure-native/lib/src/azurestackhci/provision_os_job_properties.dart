@@ -7,9 +7,11 @@ import 'provisioning_request.dart';
 class ProvisionOsJobProperties {
   /// Deployment mode to trigger job.
   final pulumi.Input<String>? deploymentMode;
+
   /// Job Type supported.
   /// Expected value is 'ProvisionOs'.
   final pulumi.Input<String> jobType;
+
   /// Os Provisioning request.
   final pulumi.Input<ProvisioningRequest> provisioningRequest;
 
@@ -27,16 +29,27 @@ class ProvisionOsJobProperties {
     return <String, dynamic>{
       'deploymentMode': ?deploymentMode,
       'jobType': jobType,
-      'provisioningRequest': pulumi.Input.mapInputValue<ProvisioningRequest, Map<String, dynamic>>(provisioningRequest, (value) => value.toMap()),
+      'provisioningRequest':
+          pulumi.Input.mapInputValue<ProvisioningRequest, Map<String, dynamic>>(
+            provisioningRequest,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory ProvisionOsJobProperties.fromMap(Map<String, dynamic> map) {
     return ProvisionOsJobProperties(
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
-      jobType: (map['jobType'] as String).input(),
-      provisioningRequest: (ProvisioningRequest.fromMap((map['provisioningRequest'] as Map).cast<String, dynamic>())).input(),
+      deploymentMode: (() {
+        final guardedValue = map['deploymentMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobType: pulumi.Input.fromValue(map['jobType'] as String),
+      provisioningRequest: pulumi.Input.fromValue(
+        ProvisioningRequest.fromMap(
+          (map['provisioningRequest']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

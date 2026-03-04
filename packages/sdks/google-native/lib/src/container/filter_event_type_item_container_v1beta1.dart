@@ -4,16 +4,17 @@ enum FilterEventTypeItemContainerV1beta1 {
   upgradeEvent("UPGRADE_EVENT"),
   securityBulletinEvent("SECURITY_BULLETIN_EVENT");
 
-  const FilterEventTypeItemContainerV1beta1(this.value);
-  final String value;
+  const FilterEventTypeItemContainerV1beta1(this.wireValue);
+  final String wireValue;
 
   static FilterEventTypeItemContainerV1beta1 fromValue(String value) {
     for (final item in FilterEventTypeItemContainerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FilterEventTypeItemContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown FilterEventTypeItemContainerV1beta1 value: $value',
+    );
   }
 }
-

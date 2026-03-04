@@ -4,16 +4,15 @@ enum PartnerTopicRoutingMode {
   valueSourceEventAttribute("SourceEventAttribute"),
   valueChannelNameHeader("ChannelNameHeader");
 
-  const PartnerTopicRoutingMode(this.value);
-  final String value;
+  const PartnerTopicRoutingMode(this.wireValue);
+  final String wireValue;
 
   static PartnerTopicRoutingMode fromValue(String value) {
     for (final item in PartnerTopicRoutingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PartnerTopicRoutingMode value: $value');
   }
 }
-

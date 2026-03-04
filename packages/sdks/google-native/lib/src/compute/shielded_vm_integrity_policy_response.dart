@@ -9,20 +9,17 @@ class ShieldedVmIntegrityPolicyResponse {
 
   /// Creates a new [ShieldedVmIntegrityPolicyResponse].
   /// [updateAutoLearnPolicy] Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
-  ShieldedVmIntegrityPolicyResponse({
-    required this.updateAutoLearnPolicy,
-  });
+  ShieldedVmIntegrityPolicyResponse({required this.updateAutoLearnPolicy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'updateAutoLearnPolicy': updateAutoLearnPolicy,
-    };
+    return <String, dynamic>{'updateAutoLearnPolicy': updateAutoLearnPolicy};
   }
 
   factory ShieldedVmIntegrityPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ShieldedVmIntegrityPolicyResponse(
-      updateAutoLearnPolicy: (map['updateAutoLearnPolicy'] as bool).input(),
+      updateAutoLearnPolicy: pulumi.Input.fromValue(
+        map['updateAutoLearnPolicy'] as bool,
+      ),
     );
   }
 }
-

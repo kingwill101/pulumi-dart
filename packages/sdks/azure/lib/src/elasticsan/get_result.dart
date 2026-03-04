@@ -7,29 +7,41 @@ import 'get_skus.dart';
 class GetResult {
   /// The base size of the Elastic SAN resource in TiB.
   final int baseSizeInTib;
+
   /// The base size of the Elastic SAN resource in TiB.
   final int extendedSizeInTib;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the Elastic SAN exists.
   final String location;
+
   /// The SKU name.
   final String name;
   final String resourceGroupName;
+
   /// A `sku` block as defined below.
   final List<GetSkus> skus;
+
   /// A mapping of tags assigned to the Elastic SAN.
   final Map<String, String> tags;
+
   /// Total Provisioned IOps of the Elastic SAN resource.
   final int totalIops;
+
   /// Total Provisioned MBps Elastic SAN resource.
   final int totalMbps;
+
   /// Total size of the Elastic SAN resource in TB.
   final int totalSizeInTib;
+
   /// Total size of the provisioned Volumes in GiB.
   final int totalVolumeSizeInGib;
+
   /// Total number of volume groups in this Elastic SAN resource.
   final int volumeGroupCount;
+
   /// Logical zone for the Elastic SAN resource.
   final List<String> zones;
 
@@ -73,7 +85,10 @@ class GetResult {
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'skus': pulumi.Input.encodeList<GetSkus, Map<String, dynamic>>(skus, (value) => value.toMap()),
+      'skus': pulumi.Input.encodeList<GetSkus, Map<String, dynamic>>(
+        skus,
+        (value) => value.toMap(),
+      ),
       'tags': tags,
       'totalIops': totalIops,
       'totalMbps': totalMbps,
@@ -92,7 +107,10 @@ class GetResult {
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      skus: pulumi.Input.decodeList<GetSkus>(map['skus'], (value) => GetSkus.fromMap((value as Map).cast<String, dynamic>())),
+      skus: pulumi.Input.decodeList<GetSkus>(
+        map['skus']!,
+        (value) => GetSkus.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
       totalIops: map['totalIops'] as int,
       totalMbps: map['totalMbps'] as int,
@@ -103,4 +121,3 @@ class GetResult {
     );
   }
 }
-

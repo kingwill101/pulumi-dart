@@ -7,16 +7,15 @@ enum RuntimeName {
   valuePython("python"),
   valueCustom("custom");
 
-  const RuntimeName(this.value);
-  final String value;
+  const RuntimeName(this.wireValue);
+  final String wireValue;
 
   static RuntimeName fromValue(String value) {
     for (final item in RuntimeName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuntimeName value: $value');
   }
 }
-

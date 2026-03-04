@@ -2,16 +2,17 @@
 enum AkriConnectorTemplateAllocationPolicy {
   bucketized("Bucketized");
 
-  const AkriConnectorTemplateAllocationPolicy(this.value);
-  final String value;
+  const AkriConnectorTemplateAllocationPolicy(this.wireValue);
+  final String wireValue;
 
   static AkriConnectorTemplateAllocationPolicy fromValue(String value) {
     for (final item in AkriConnectorTemplateAllocationPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AkriConnectorTemplateAllocationPolicy value: $value');
+    throw ArgumentError(
+      'Unknown AkriConnectorTemplateAllocationPolicy value: $value',
+    );
   }
 }
-

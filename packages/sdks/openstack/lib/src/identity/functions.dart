@@ -33,7 +33,7 @@ Future<GetAuthScopeResult> getAuthScope(
 
 /// Use this data source to get the ID of an OpenStack endpoint.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
 /// ## Example Usage
 ///
@@ -140,7 +140,7 @@ Future<GetEndpointResult> getEndpoint(
 
 /// Use this data source to get the ID of an OpenStack group.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -354,7 +354,7 @@ Future<GetProjectResult> getProject(
 /// Use this data source to get a list of OpenStack Project IDs matching the
 /// specified criteria.
 ///
-/// > **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
 /// this datasource.
 ///
 /// ## Example Usage
@@ -567,7 +567,7 @@ Future<GetRoleResult> getRole(
 
 /// Use this data source to get the ID of an OpenStack service.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
 /// ## Example Usage
 ///

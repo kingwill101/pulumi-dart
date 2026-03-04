@@ -1,5 +1,3 @@
-library module_datafactory;
-
 export 'datafactory/activity_dependency.dart';
 export 'datafactory/activity_dependency_response.dart';
 export 'datafactory/activity_on_inactive_mark_as.dart';

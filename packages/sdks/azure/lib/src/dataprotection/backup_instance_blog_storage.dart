@@ -374,7 +374,7 @@ import 'backup_instance_blog_storage_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataProtection` - 2024-04-01
@@ -389,18 +389,24 @@ import 'backup_instance_blog_storage_state.dart';
 class BackupInstanceBlogStorage extends pulumi.CustomResource {
   /// The ID of the Backup Policy.
   late final pulumi.Output<String> backupPolicyId;
+
   /// The location of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Backup Instance Blob Storage. Changing this forces a new Backup Instance Blob Storage to be created.
   late final pulumi.Output<String> name;
+
   /// The protection state of the Backup Instance Blob Storage.
   late final pulumi.Output<String> protectionState;
+
   /// The list of the container names of the source Storage Account.
   ///
-  /// > **Note:** The `storage_account_container_names` should be specified in the vaulted backup policy/operational and vaulted hybrid backup policy. Removing the `storage_account_container_names` will force a new resource to be created since it can't be removed once specified.
+  /// &gt; **Note:** The `storage_account_container_names` should be specified in the vaulted backup policy/operational and vaulted hybrid backup policy. Removing the `storage_account_container_names` will force a new resource to be created since it can't be removed once specified.
   late final pulumi.Output<List<String>?> storageAccountContainerNames;
+
   /// The ID of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   late final pulumi.Output<String> storageAccountId;
+
   /// The ID of the Backup Vault within which the Backup Instance Blob Storage should exist. Changing this forces a new Backup Instance Blob Storage to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -413,18 +419,20 @@ class BackupInstanceBlogStorage extends pulumi.CustomResource {
     BackupInstanceBlogStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupInstanceBlogStorage:BackupInstanceBlogStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPolicyId = registerOutput<String>('backupPolicyId');
-    this.location = registerOutput<String>('location');
+         'azure:dataprotection/backupInstanceBlogStorage:BackupInstanceBlogStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.protectionState = registerOutput<String>('protectionState');
-    this.storageAccountContainerNames = registerOutput<List<String>?>('storageAccountContainerNames');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.vaultId = registerOutput<String>('vaultId');
+    protectionState = registerOutput<String>('protectionState');
+    storageAccountContainerNames = registerOutput<List<String>?>(
+      'storageAccountContainerNames',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [BackupInstanceBlogStorage] resource's state with the given [name] and [id].
@@ -445,17 +453,19 @@ class BackupInstanceBlogStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupInstanceBlogStorage:BackupInstanceBlogStorage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPolicyId = registerOutput<String>('backupPolicyId');
-    this.location = registerOutput<String>('location');
+         'azure:dataprotection/backupInstanceBlogStorage:BackupInstanceBlogStorage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.protectionState = registerOutput<String>('protectionState');
-    this.storageAccountContainerNames = registerOutput<List<String>?>('storageAccountContainerNames');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.vaultId = registerOutput<String>('vaultId');
+    protectionState = registerOutput<String>('protectionState');
+    storageAccountContainerNames = registerOutput<List<String>?>(
+      'storageAccountContainerNames',
+    );
+    storageAccountId = registerOutput<String>('storageAccountId');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

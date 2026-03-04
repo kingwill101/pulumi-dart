@@ -13,15 +13,14 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsername
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identifier': identifier,
-    };
+    return <String, dynamic>{'identifier': identifier};
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField(
-      identifier: (map['identifier'] as String).input(),
+      identifier: pulumi.Input.fromValue(map['identifier'] as String),
     );
   }
 }
-

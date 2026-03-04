@@ -20,16 +20,31 @@ class DSSEAttestationOccurrenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'envelope': pulumi.Input.mapInputValue<EnvelopeResponse, Map<String, dynamic>>(envelope, (value) => value.toMap()),
-      'statement': pulumi.Input.mapInputValue<InTotoStatementResponse, Map<String, dynamic>>(statement, (value) => value.toMap()),
+      'envelope':
+          pulumi.Input.mapInputValue<EnvelopeResponse, Map<String, dynamic>>(
+            envelope,
+            (value) => value.toMap(),
+          ),
+      'statement':
+          pulumi.Input.mapInputValue<
+            InTotoStatementResponse,
+            Map<String, dynamic>
+          >(statement, (value) => value.toMap()),
     };
   }
 
   factory DSSEAttestationOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationOccurrenceResponse(
-      envelope: (EnvelopeResponse.fromMap((map['envelope'] as Map).cast<String, dynamic>())).input(),
-      statement: (InTotoStatementResponse.fromMap((map['statement'] as Map).cast<String, dynamic>())).input(),
+      envelope: pulumi.Input.fromValue(
+        EnvelopeResponse.fromMap(
+          (map['envelope']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      statement: pulumi.Input.fromValue(
+        InTotoStatementResponse.fromMap(
+          (map['statement']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

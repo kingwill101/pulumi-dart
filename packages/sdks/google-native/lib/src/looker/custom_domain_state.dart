@@ -8,16 +8,15 @@ enum CustomDomainState {
   unavailable("UNAVAILABLE"),
   unknown("UNKNOWN");
 
-  const CustomDomainState(this.value);
-  final String value;
+  const CustomDomainState(this.wireValue);
+  final String wireValue;
 
   static CustomDomainState fromValue(String value) {
     for (final item in CustomDomainState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CustomDomainState value: $value');
   }
 }
-

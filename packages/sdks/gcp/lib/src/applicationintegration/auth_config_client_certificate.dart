@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthConfigClientCertificate {
   /// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
   final pulumi.Input<String> encryptedPrivateKey;
+
   /// 'passphrase' should be left unset if private key is not encrypted.
   /// Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key.
   final pulumi.Input<String>? passphrase;
+
   /// The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
   final pulumi.Input<String> sslCertificate;
 
@@ -31,10 +33,15 @@ class AuthConfigClientCertificate {
 
   factory AuthConfigClientCertificate.fromMap(Map<String, dynamic> map) {
     return AuthConfigClientCertificate(
-      encryptedPrivateKey: (map['encryptedPrivateKey'] as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
-      sslCertificate: (map['sslCertificate'] as String).input(),
+      encryptedPrivateKey: pulumi.Input.fromValue(
+        map['encryptedPrivateKey'] as String,
+      ),
+      passphrase: (() {
+        final guardedValue = map['passphrase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslCertificate: pulumi.Input.fromValue(map['sslCertificate'] as String),
     );
   }
 }
-

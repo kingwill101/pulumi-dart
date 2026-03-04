@@ -7,8 +7,12 @@ import 'google_cloud_dialogflow_v2_intent_message_column_properties_horizontal_a
 class GoogleCloudDialogflowV2IntentMessageColumnProperties {
   /// Column heading.
   final pulumi.Input<String> header;
+
   /// Optional. Defines text alignment for all cells in this column.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment>? horizontalAlignment;
+  final pulumi.Input<
+    GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+  >?
+  horizontalAlignment;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageColumnProperties].
   /// [header] Column heading.
@@ -21,15 +25,28 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'header': header,
-      'horizontalAlignment': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment, String>(horizontalAlignment, (value) => value.value),
+      'horizontalAlignment':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment,
+            String
+          >(horizontalAlignment, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageColumnProperties.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageColumnProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageColumnProperties(
-      header: (map['header'] as String).input(),
-      horizontalAlignment: map['horizontalAlignment'] == null ? null : (GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment.fromValue(map['horizontalAlignment']! as String)).input(),
+      header: pulumi.Input.fromValue(map['header'] as String),
+      horizontalAlignment: (() {
+        final guardedValue = map['horizontalAlignment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

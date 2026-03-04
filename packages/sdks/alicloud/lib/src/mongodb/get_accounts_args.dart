@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountsArgs {
   /// The name of the account. Valid values: `root`.
   final pulumi.Input<String>? accountName;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -34,10 +36,17 @@ class GetAccountsArgs {
 
   factory GetAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountsArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

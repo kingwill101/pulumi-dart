@@ -9,20 +9,19 @@ class NeighborAddress {
 
   /// Creates a new [NeighborAddress].
   /// [address] IP Address.
-  NeighborAddress({
-    this.address,
-  });
+  NeighborAddress({this.address});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': ?address,
-    };
+    return <String, dynamic>{'address': ?address};
   }
 
   factory NeighborAddress.fromMap(Map<String, dynamic> map) {
     return NeighborAddress(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

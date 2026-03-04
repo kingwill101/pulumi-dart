@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceArgs {
   /// The name of the Windows IoT Device Service.
   final pulumi.Input<String> deviceName;
+
   /// The name of the resource group that contains the Windows IoT Device Service.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetServiceArgs].
   /// [deviceName] The name of the Windows IoT Device Service.
   /// [resourceGroupName] The name of the resource group that contains the Windows IoT Device Service.
-  GetServiceArgs({
-    required this.deviceName,
-    required this.resourceGroupName,
-  });
+  GetServiceArgs({required this.deviceName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      deviceName: (map['deviceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

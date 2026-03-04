@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigMapArgs {
   /// ConfigMap instance data.
   final pulumi.Input<String> data;
+
   /// The Description of ConfigMap.
   final pulumi.Input<String>? description;
+
   /// ConfigMap instance name.
   final pulumi.Input<String>? name;
+
   /// The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
   final pulumi.Input<String> namespaceId;
 
@@ -39,11 +42,18 @@ class ConfigMapArgs {
 
   factory ConfigMapArgs.fromMap(Map<String, dynamic> map) {
     return ConfigMapArgs(
-      data: (map['data'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
+      data: pulumi.Input.fromValue(map['data'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
     );
   }
 }
-

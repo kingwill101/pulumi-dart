@@ -9,20 +9,39 @@ class AutomationRuleSetResponse {
 
   /// Creates a new [AutomationRuleSetResponse].
   /// [rules] Optional.
-  AutomationRuleSetResponse({
-    this.rules,
-  });
+  AutomationRuleSetResponse({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<AutomationTriggeringRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AutomationTriggeringRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AutomationTriggeringRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AutomationTriggeringRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AutomationRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleSetResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AutomationTriggeringRuleResponse>(map['rules']!, (value) => AutomationTriggeringRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AutomationTriggeringRuleResponse>(
+            guardedValue,
+            (value) => AutomationTriggeringRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

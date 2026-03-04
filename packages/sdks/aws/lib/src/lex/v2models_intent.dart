@@ -5,12 +5,8 @@ import 'v2models_intent_confirmation_setting.dart';
 import 'v2models_intent_dialog_code_hook.dart';
 import 'v2models_intent_fulfillment_code_hook.dart';
 import 'v2models_intent_initial_response_setting.dart';
-import 'v2models_intent_input_context.dart';
 import 'v2models_intent_kendra_configuration.dart';
-import 'v2models_intent_output_context.dart';
 import 'v2models_intent_qna_intent_configuration.dart';
-import 'v2models_intent_sample_utterance.dart';
-import 'v2models_intent_slot_priority.dart';
 import 'v2models_intent_state.dart';
 import 'v2models_intent_timeouts.dart';
 
@@ -1114,48 +1110,73 @@ import 'v2models_intent_timeouts.dart';
 class V2modelsIntent extends pulumi.CustomResource {
   /// Identifier of the bot associated with this intent.
   late final pulumi.Output<String> botId;
+
   /// Version of the bot associated with this intent.
   late final pulumi.Output<String> botVersion;
+
   /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See `closing_setting`.
   late final pulumi.Output<V2modelsIntentClosingSetting?> closingSetting;
+
   /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` `prompt_attempts_specification`s. This will cause Terraform to report differences. Use the `confirmation_setting` configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See `confirmation_setting`.
-  late final pulumi.Output<V2modelsIntentConfirmationSetting?> confirmationSetting;
+  late final pulumi.Output<V2modelsIntentConfirmationSetting?>
+  confirmationSetting;
+
   /// Timestamp of the date and time that the intent was created.
   late final pulumi.Output<String> creationDateTime;
+
   /// Description of the intent. Use the description to help identify the intent in lists.
   late final pulumi.Output<String?> description;
+
   /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See `dialog_code_hook`.
   late final pulumi.Output<V2modelsIntentDialogCodeHook?> dialogCodeHook;
+
   /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See `fulfillment_code_hook`.
-  late final pulumi.Output<V2modelsIntentFulfillmentCodeHook?> fulfillmentCodeHook;
+  late final pulumi.Output<V2modelsIntentFulfillmentCodeHook?>
+  fulfillmentCodeHook;
+
   /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See `initial_response_setting`.
-  late final pulumi.Output<V2modelsIntentInitialResponseSetting?> initialResponseSetting;
+  late final pulumi.Output<V2modelsIntentInitialResponseSetting?>
+  initialResponseSetting;
+
   /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See `input_context`.
-  late final pulumi.Output<List<V2modelsIntentInputContext>?> inputContexts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inputContexts;
+
   /// Unique identifier for the intent.
   late final pulumi.Output<String> intentId;
+
   /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with `qna_intent_configuration`. See `kendra_configuration`.
-  late final pulumi.Output<V2modelsIntentKendraConfiguration?> kendraConfiguration;
+  late final pulumi.Output<V2modelsIntentKendraConfiguration?>
+  kendraConfiguration;
+
   /// Timestamp of the last time that the intent was modified.
   late final pulumi.Output<String> lastUpdatedDateTime;
+
   /// Identifier of the language and locale where this intent is used. All of the bots, slot types, and slots used by the intent must have the same locale.
   late final pulumi.Output<String> localeId;
+
   /// Name of the intent. Intent names must be unique in the locale that contains the intent and cannot match the name of any built-in intent.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See `output_context`.
-  late final pulumi.Output<List<V2modelsIntentOutputContext>?> outputContexts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> outputContexts;
+
   /// Identifier for the built-in intent to base this intent on.
   late final pulumi.Output<String?> parentIntentSignature;
+
   /// Configuration block for QnA intent settings. This is used when `parent_intent_signature` is set to `AMAZON.QnAIntent`. Cannot be used with `kendra_configuration`. See `qna_intent_configuration`.
-  late final pulumi.Output<V2modelsIntentQnaIntentConfiguration?> qnaIntentConfiguration;
+  late final pulumi.Output<V2modelsIntentQnaIntentConfiguration?>
+  qnaIntentConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for strings that a user might say to signal the intent. See `sample_utterance`.
-  late final pulumi.Output<List<V2modelsIntentSampleUtterance>?> sampleUtterances;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sampleUtterances;
+
   /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slot_priority`.
-  late final pulumi.Output<List<V2modelsIntentSlotPriority>?> slotPriorities;
+  late final pulumi.Output<List<Map<String, dynamic>>?> slotPriorities;
   late final pulumi.Output<V2modelsIntentTimeouts?> timeouts;
 
   /// Creates a new [V2modelsIntent].
@@ -1167,33 +1188,57 @@ class V2modelsIntent extends pulumi.CustomResource {
     V2modelsIntentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/v2modelsIntent:V2modelsIntent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botId = registerOutput<String>('botId');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.closingSetting = registerOutput<V2modelsIntentClosingSetting?>('closingSetting');
-    this.confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>('confirmationSetting');
-    this.creationDateTime = registerOutput<String>('creationDateTime');
-    this.description = registerOutput<String?>('description');
-    this.dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>('dialogCodeHook');
-    this.fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>('fulfillmentCodeHook');
-    this.initialResponseSetting = registerOutput<V2modelsIntentInitialResponseSetting?>('initialResponseSetting');
-    this.inputContexts = registerOutput<List<V2modelsIntentInputContext>?>('inputContexts');
-    this.intentId = registerOutput<String>('intentId');
-    this.kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>('kendraConfiguration');
-    this.lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
-    this.localeId = registerOutput<String>('localeId');
+         'aws:lex/v2modelsIntent:V2modelsIntent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    closingSetting = registerOutput<V2modelsIntentClosingSetting?>(
+      'closingSetting',
+    );
+    confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>(
+      'confirmationSetting',
+    );
+    creationDateTime = registerOutput<String>('creationDateTime');
+    description = registerOutput<String?>('description');
+    dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>(
+      'dialogCodeHook',
+    );
+    fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>(
+      'fulfillmentCodeHook',
+    );
+    initialResponseSetting =
+        registerOutput<V2modelsIntentInitialResponseSetting?>(
+          'initialResponseSetting',
+        );
+    inputContexts = registerOutput<List<Map<String, dynamic>>?>(
+      'inputContexts',
+    );
+    intentId = registerOutput<String>('intentId');
+    kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>(
+      'kendraConfiguration',
+    );
+    lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
+    localeId = registerOutput<String>('localeId');
     this.name = registerOutput<String>('name');
-    this.outputContexts = registerOutput<List<V2modelsIntentOutputContext>?>('outputContexts');
-    this.parentIntentSignature = registerOutput<String?>('parentIntentSignature');
-    this.qnaIntentConfiguration = registerOutput<V2modelsIntentQnaIntentConfiguration?>('qnaIntentConfiguration');
-    this.region = registerOutput<String>('region');
-    this.sampleUtterances = registerOutput<List<V2modelsIntentSampleUtterance>?>('sampleUtterances');
-    this.slotPriorities = registerOutput<List<V2modelsIntentSlotPriority>?>('slotPriorities');
-    this.timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts');
+    outputContexts = registerOutput<List<Map<String, dynamic>>?>(
+      'outputContexts',
+    );
+    parentIntentSignature = registerOutput<String?>('parentIntentSignature');
+    qnaIntentConfiguration =
+        registerOutput<V2modelsIntentQnaIntentConfiguration?>(
+          'qnaIntentConfiguration',
+        );
+    region = registerOutput<String>('region');
+    sampleUtterances = registerOutput<List<Map<String, dynamic>>?>(
+      'sampleUtterances',
+    );
+    slotPriorities = registerOutput<List<Map<String, dynamic>>?>(
+      'slotPriorities',
+    );
+    timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts');
   }
 
   /// Gets an existing [V2modelsIntent] resource's state with the given [name] and [id].
@@ -1214,32 +1259,56 @@ class V2modelsIntent extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/v2modelsIntent:V2modelsIntent',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botId = registerOutput<String>('botId');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.closingSetting = registerOutput<V2modelsIntentClosingSetting?>('closingSetting');
-    this.confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>('confirmationSetting');
-    this.creationDateTime = registerOutput<String>('creationDateTime');
-    this.description = registerOutput<String?>('description');
-    this.dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>('dialogCodeHook');
-    this.fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>('fulfillmentCodeHook');
-    this.initialResponseSetting = registerOutput<V2modelsIntentInitialResponseSetting?>('initialResponseSetting');
-    this.inputContexts = registerOutput<List<V2modelsIntentInputContext>?>('inputContexts');
-    this.intentId = registerOutput<String>('intentId');
-    this.kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>('kendraConfiguration');
-    this.lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
-    this.localeId = registerOutput<String>('localeId');
+         'aws:lex/v2modelsIntent:V2modelsIntent',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    closingSetting = registerOutput<V2modelsIntentClosingSetting?>(
+      'closingSetting',
+    );
+    confirmationSetting = registerOutput<V2modelsIntentConfirmationSetting?>(
+      'confirmationSetting',
+    );
+    creationDateTime = registerOutput<String>('creationDateTime');
+    description = registerOutput<String?>('description');
+    dialogCodeHook = registerOutput<V2modelsIntentDialogCodeHook?>(
+      'dialogCodeHook',
+    );
+    fulfillmentCodeHook = registerOutput<V2modelsIntentFulfillmentCodeHook?>(
+      'fulfillmentCodeHook',
+    );
+    initialResponseSetting =
+        registerOutput<V2modelsIntentInitialResponseSetting?>(
+          'initialResponseSetting',
+        );
+    inputContexts = registerOutput<List<Map<String, dynamic>>?>(
+      'inputContexts',
+    );
+    intentId = registerOutput<String>('intentId');
+    kendraConfiguration = registerOutput<V2modelsIntentKendraConfiguration?>(
+      'kendraConfiguration',
+    );
+    lastUpdatedDateTime = registerOutput<String>('lastUpdatedDateTime');
+    localeId = registerOutput<String>('localeId');
     this.name = registerOutput<String>('name');
-    this.outputContexts = registerOutput<List<V2modelsIntentOutputContext>?>('outputContexts');
-    this.parentIntentSignature = registerOutput<String?>('parentIntentSignature');
-    this.qnaIntentConfiguration = registerOutput<V2modelsIntentQnaIntentConfiguration?>('qnaIntentConfiguration');
-    this.region = registerOutput<String>('region');
-    this.sampleUtterances = registerOutput<List<V2modelsIntentSampleUtterance>?>('sampleUtterances');
-    this.slotPriorities = registerOutput<List<V2modelsIntentSlotPriority>?>('slotPriorities');
-    this.timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts');
+    outputContexts = registerOutput<List<Map<String, dynamic>>?>(
+      'outputContexts',
+    );
+    parentIntentSignature = registerOutput<String?>('parentIntentSignature');
+    qnaIntentConfiguration =
+        registerOutput<V2modelsIntentQnaIntentConfiguration?>(
+          'qnaIntentConfiguration',
+        );
+    region = registerOutput<String>('region');
+    sampleUtterances = registerOutput<List<Map<String, dynamic>>?>(
+      'sampleUtterances',
+    );
+    slotPriorities = registerOutput<List<Map<String, dynamic>>?>(
+      'slotPriorities',
+    );
+    timeouts = registerOutput<V2modelsIntentTimeouts?>('timeouts');
   }
 }

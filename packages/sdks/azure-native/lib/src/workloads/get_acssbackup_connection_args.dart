@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetACSSBackupConnectionArgs {
   /// The name of the backup connection resource of virtual instance for SAP.
   final pulumi.Input<String> backupName;
+
   /// The name of the connector resource
   final pulumi.Input<String> connectorName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetACSSBackupConnectionArgs {
 
   factory GetACSSBackupConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetACSSBackupConnectionArgs(
-      backupName: (map['backupName'] as String).input(),
-      connectorName: (map['connectorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      backupName: pulumi.Input.fromValue(map['backupName'] as String),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

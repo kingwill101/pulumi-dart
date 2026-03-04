@@ -8,20 +8,23 @@ import 'error_detail_response.dart';
 
 /// Definition of ClusterStatus
 class EmrClusterStatusResponse {
-  /// <p>A list of tuples that provides information about the errors that caused a cluster to terminate. This structure can contain up to 10 different <code>ErrorDetail</code> tuples.</p>
+  /// &lt;p&gt;A list of tuples that provides information about the errors that caused a cluster to terminate. This structure can contain up to 10 different &lt;code&gt;ErrorDetail&lt;/code&gt; tuples.&lt;/p&gt;
   final pulumi.Input<List<ErrorDetailResponse>>? errorDetails;
-  /// <p>The current state of the cluster.</p>
+
+  /// &lt;p&gt;The current state of the cluster.&lt;/p&gt;
   final pulumi.Input<ClusterStateEnumValueResponse>? state;
-  /// <p>The reason for the cluster status change.</p>
+
+  /// &lt;p&gt;The reason for the cluster status change.&lt;/p&gt;
   final pulumi.Input<ClusterStateChangeReasonResponse>? stateChangeReason;
-  /// <p>A timeline that represents the status of a cluster over the lifetime of the cluster.</p>
+
+  /// &lt;p&gt;A timeline that represents the status of a cluster over the lifetime of the cluster.&lt;/p&gt;
   final pulumi.Input<ClusterTimelineResponse>? timeline;
 
   /// Creates a new [EmrClusterStatusResponse].
-  /// [errorDetails] <p>A list of tuples that provides information about the errors that caused a cluster to terminate. This structure can contain up to 10 different <code>ErrorDetail</code> tuples.</p>
-  /// [state] <p>The current state of the cluster.</p>
-  /// [stateChangeReason] <p>The reason for the cluster status change.</p>
-  /// [timeline] <p>A timeline that represents the status of a cluster over the lifetime of the cluster.</p>
+  /// [errorDetails] &lt;p&gt;A list of tuples that provides information about the errors that caused a cluster to terminate. This structure can contain up to 10 different &lt;code&gt;ErrorDetail&lt;/code&gt; tuples.&lt;/p&gt;
+  /// [state] &lt;p&gt;The current state of the cluster.&lt;/p&gt;
+  /// [stateChangeReason] &lt;p&gt;The reason for the cluster status change.&lt;/p&gt;
+  /// [timeline] &lt;p&gt;A timeline that represents the status of a cluster over the lifetime of the cluster.&lt;/p&gt;
   EmrClusterStatusResponse({
     this.errorDetails,
     this.state,
@@ -31,20 +34,77 @@ class EmrClusterStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorDetails': ?pulumi.Input.mapOptionalInputValue<List<ErrorDetailResponse>, List<Map<String, dynamic>>>(errorDetails, (value) => pulumi.Input.encodeList<ErrorDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'state': ?pulumi.Input.mapOptionalInputValue<ClusterStateEnumValueResponse, Map<String, dynamic>>(state, (value) => value.toMap()),
-      'stateChangeReason': ?pulumi.Input.mapOptionalInputValue<ClusterStateChangeReasonResponse, Map<String, dynamic>>(stateChangeReason, (value) => value.toMap()),
-      'timeline': ?pulumi.Input.mapOptionalInputValue<ClusterTimelineResponse, Map<String, dynamic>>(timeline, (value) => value.toMap()),
+      'errorDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ErrorDetailResponse>,
+            List<Map<String, dynamic>>
+          >(
+            errorDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ErrorDetailResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterStateEnumValueResponse,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
+      'stateChangeReason':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterStateChangeReasonResponse,
+            Map<String, dynamic>
+          >(stateChangeReason, (value) => value.toMap()),
+      'timeline':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterTimelineResponse,
+            Map<String, dynamic>
+          >(timeline, (value) => value.toMap()),
     };
   }
 
   factory EmrClusterStatusResponse.fromMap(Map<String, dynamic> map) {
     return EmrClusterStatusResponse(
-      errorDetails: map['errorDetails'] == null ? null : (pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails']!, (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (ClusterStateEnumValueResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
-      stateChangeReason: map['stateChangeReason'] == null ? null : (ClusterStateChangeReasonResponse.fromMap((map['stateChangeReason']! as Map).cast<String, dynamic>())).input(),
-      timeline: map['timeline'] == null ? null : (ClusterTimelineResponse.fromMap((map['timeline']! as Map).cast<String, dynamic>())).input(),
+      errorDetails: (() {
+        final guardedValue = map['errorDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ErrorDetailResponse>(
+            guardedValue,
+            (value) => ErrorDetailResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterStateEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stateChangeReason: (() {
+        final guardedValue = map['stateChangeReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterStateChangeReasonResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeline: (() {
+        final guardedValue = map['timeline'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterTimelineResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

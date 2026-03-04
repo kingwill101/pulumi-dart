@@ -4,16 +4,15 @@ enum RatePlanState {
   draft("DRAFT"),
   published("PUBLISHED");
 
-  const RatePlanState(this.value);
-  final String value;
+  const RatePlanState(this.wireValue);
+  final String wireValue;
 
   static RatePlanState fromValue(String value) {
     for (final item in RatePlanState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RatePlanState value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRuleActionFindingFieldsUpdateNote {
   /// The updated note text.
   final pulumi.Input<String> text;
+
   /// The principal that updated the note.
   final pulumi.Input<String> updatedBy;
 
@@ -17,17 +18,15 @@ class AutomationRuleActionFindingFieldsUpdateNote {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': text,
-      'updatedBy': updatedBy,
-    };
+    return <String, dynamic>{'text': text, 'updatedBy': updatedBy};
   }
 
-  factory AutomationRuleActionFindingFieldsUpdateNote.fromMap(Map<String, dynamic> map) {
+  factory AutomationRuleActionFindingFieldsUpdateNote.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRuleActionFindingFieldsUpdateNote(
-      text: (map['text'] as String).input(),
-      updatedBy: (map['updatedBy'] as String).input(),
+      text: pulumi.Input.fromValue(map['text'] as String),
+      updatedBy: pulumi.Input.fromValue(map['updatedBy'] as String),
     );
   }
 }
-

@@ -10,11 +10,14 @@ import 'resource_association_response.dart';
 class NetworkSecurityPerimeterConfigurationPropertiesResponse {
   /// Information about Network Security Perimeter
   final pulumi.Input<NetworkSecurityPerimeterResponse> networkSecurityPerimeter;
+
   /// Information about profile
   final pulumi.Input<ProfileResponse> profile;
+
   /// List of Provisioning Issues if any
   final pulumi.Input<List<ProvisioningIssueResponse>>? provisioningIssues;
   final pulumi.Input<String>? provisioningState;
+
   /// Information about resource association
   final pulumi.Input<ResourceAssociationResponse> resourceAssociation;
 
@@ -34,22 +37,73 @@ class NetworkSecurityPerimeterConfigurationPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkSecurityPerimeter': pulumi.Input.mapInputValue<NetworkSecurityPerimeterResponse, Map<String, dynamic>>(networkSecurityPerimeter, (value) => value.toMap()),
-      'profile': pulumi.Input.mapInputValue<ProfileResponse, Map<String, dynamic>>(profile, (value) => value.toMap()),
-      'provisioningIssues': ?pulumi.Input.mapOptionalInputValue<List<ProvisioningIssueResponse>, List<Map<String, dynamic>>>(provisioningIssues, (value) => pulumi.Input.encodeList<ProvisioningIssueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkSecurityPerimeter':
+          pulumi.Input.mapInputValue<
+            NetworkSecurityPerimeterResponse,
+            Map<String, dynamic>
+          >(networkSecurityPerimeter, (value) => value.toMap()),
+      'profile':
+          pulumi.Input.mapInputValue<ProfileResponse, Map<String, dynamic>>(
+            profile,
+            (value) => value.toMap(),
+          ),
+      'provisioningIssues':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ProvisioningIssueResponse>,
+            List<Map<String, dynamic>>
+          >(
+            provisioningIssues,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ProvisioningIssueResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': ?provisioningState,
-      'resourceAssociation': pulumi.Input.mapInputValue<ResourceAssociationResponse, Map<String, dynamic>>(resourceAssociation, (value) => value.toMap()),
+      'resourceAssociation':
+          pulumi.Input.mapInputValue<
+            ResourceAssociationResponse,
+            Map<String, dynamic>
+          >(resourceAssociation, (value) => value.toMap()),
     };
   }
 
-  factory NetworkSecurityPerimeterConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory NetworkSecurityPerimeterConfigurationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkSecurityPerimeterConfigurationPropertiesResponse(
-      networkSecurityPerimeter: (NetworkSecurityPerimeterResponse.fromMap((map['networkSecurityPerimeter'] as Map).cast<String, dynamic>())).input(),
-      profile: (ProfileResponse.fromMap((map['profile'] as Map).cast<String, dynamic>())).input(),
-      provisioningIssues: map['provisioningIssues'] == null ? null : (pulumi.Input.decodeList<ProvisioningIssueResponse>(map['provisioningIssues']!, (value) => ProvisioningIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      resourceAssociation: (ResourceAssociationResponse.fromMap((map['resourceAssociation'] as Map).cast<String, dynamic>())).input(),
+      networkSecurityPerimeter: pulumi.Input.fromValue(
+        NetworkSecurityPerimeterResponse.fromMap(
+          (map['networkSecurityPerimeter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      profile: pulumi.Input.fromValue(
+        ProfileResponse.fromMap(
+          (map['profile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisioningIssues: (() {
+        final guardedValue = map['provisioningIssues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ProvisioningIssueResponse>(
+            guardedValue,
+            (value) => ProvisioningIssueResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceAssociation: pulumi.Input.fromValue(
+        ResourceAssociationResponse.fromMap(
+          (map['resourceAssociation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

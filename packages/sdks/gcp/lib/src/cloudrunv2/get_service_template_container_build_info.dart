@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTemplateContainerBuildInfo {
   /// Entry point of the function when the image is a Cloud Run function.
   final pulumi.Input<String> functionTarget;
+
   /// Source code location of the image.
   final pulumi.Input<String> sourceLocation;
 
@@ -23,11 +24,12 @@ class GetServiceTemplateContainerBuildInfo {
     };
   }
 
-  factory GetServiceTemplateContainerBuildInfo.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateContainerBuildInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateContainerBuildInfo(
-      functionTarget: (map['functionTarget'] as String).input(),
-      sourceLocation: (map['sourceLocation'] as String).input(),
+      functionTarget: pulumi.Input.fromValue(map['functionTarget'] as String),
+      sourceLocation: pulumi.Input.fromValue(map['sourceLocation'] as String),
     );
   }
 }
-

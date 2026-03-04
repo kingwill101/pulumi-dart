@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainCognitoOptions {
   /// Whether Amazon Cognito authentication with Dashboard is enabled or not. Default is `false`.
   final pulumi.Input<bool>? enabled;
+
   /// ID of the Cognito Identity Pool to use.
   final pulumi.Input<String> identityPoolId;
+
   /// ARN of the IAM role that has the AmazonOpenSearchServiceCognitoAccess policy attached.
   final pulumi.Input<String> roleArn;
+
   /// ID of the Cognito User Pool to use.
   final pulumi.Input<String> userPoolId;
 
@@ -35,11 +38,14 @@ class DomainCognitoOptions {
 
   factory DomainCognitoOptions.fromMap(Map<String, dynamic> map) {
     return DomainCognitoOptions(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      identityPoolId: (map['identityPoolId'] as String).input(),
-      roleArn: (map['roleArn'] as String).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identityPoolId: pulumi.Input.fromValue(map['identityPoolId'] as String),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
-

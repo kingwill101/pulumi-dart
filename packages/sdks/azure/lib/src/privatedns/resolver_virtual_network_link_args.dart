@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverVirtualNetworkLinkArgs {
   /// Specifies the ID of the Private DNS Resolver DNS Forwarding Ruleset. Changing this forces a new Private DNS Resolver Virtual Network Link to be created.
   final pulumi.Input<String> dnsForwardingRulesetId;
+
   /// Metadata attached to the Private DNS Resolver Virtual Network Link.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// Specifies the name which should be used for this Private DNS Resolver Virtual Network Link. Changing this forces a new Private DNS Resolver Virtual Network Link to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualNetworkId;
 
@@ -39,11 +42,24 @@ class ResolverVirtualNetworkLinkArgs {
 
   factory ResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return ResolverVirtualNetworkLinkArgs(
-      dnsForwardingRulesetId: (map['dnsForwardingRulesetId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      virtualNetworkId: (map['virtualNetworkId'] as String).input(),
+      dnsForwardingRulesetId: pulumi.Input.fromValue(
+        map['dnsForwardingRulesetId'] as String,
+      ),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkId: pulumi.Input.fromValue(
+        map['virtualNetworkId'] as String,
+      ),
     );
   }
 }
-

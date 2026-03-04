@@ -3,16 +3,15 @@ enum ScaleDownMode {
   valueDelete("Delete"),
   valueDeallocate("Deallocate");
 
-  const ScaleDownMode(this.value);
-  final String value;
+  const ScaleDownMode(this.wireValue);
+  final String wireValue;
 
   static ScaleDownMode fromValue(String value) {
     for (final item in ScaleDownMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScaleDownMode value: $value');
   }
 }
-

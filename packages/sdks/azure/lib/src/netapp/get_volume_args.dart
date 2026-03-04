@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeArgs {
   /// The name of the NetApp account where the NetApp pool exists.
   final pulumi.Input<String> accountName;
+
   /// The name of the NetApp Volume.
   final pulumi.Input<String> name;
+
   /// The name of the NetApp pool where the NetApp volume exists.
   final pulumi.Input<String> poolName;
+
   /// The Name of the Resource Group where the NetApp Volume exists.
   final pulumi.Input<String> resourceGroupName;
+
   /// Volume security style
   final pulumi.Input<String>? securityStyle;
 
@@ -44,12 +48,17 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      accountName: (map['accountName'] as String).input(),
-      name: (map['name'] as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityStyle: map['securityStyle'] == null ? null : (map['securityStyle']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityStyle: (() {
+        final guardedValue = map['securityStyle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

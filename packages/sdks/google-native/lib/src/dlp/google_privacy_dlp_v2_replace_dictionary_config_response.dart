@@ -10,20 +10,27 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceDictionaryConfigResponse].
   /// [wordList] A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-  GooglePrivacyDlpV2ReplaceDictionaryConfigResponse({
-    required this.wordList,
-  });
+  GooglePrivacyDlpV2ReplaceDictionaryConfigResponse({required this.wordList});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'wordList': pulumi.Input.mapInputValue<GooglePrivacyDlpV2WordListResponse, Map<String, dynamic>>(wordList, (value) => value.toMap()),
+      'wordList':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2WordListResponse,
+            Map<String, dynamic>
+          >(wordList, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2ReplaceDictionaryConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ReplaceDictionaryConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2ReplaceDictionaryConfigResponse(
-      wordList: (GooglePrivacyDlpV2WordListResponse.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
+      wordList: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2WordListResponse.fromMap(
+          (map['wordList']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

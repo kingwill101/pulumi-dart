@@ -8,10 +8,13 @@ import 'flow_tracking_definition_response.dart';
 class TrackingProfileDefinitionResponse {
   /// The business process reference.
   final pulumi.Input<BusinessProcessReferenceResponse>? businessProcess;
+
   /// The tracking definition schema uri.
   final pulumi.Input<String>? schema;
+
   /// The tracking definitions.
-  final pulumi.Input<Map<String, FlowTrackingDefinitionResponse>>? trackingDefinitions;
+  final pulumi.Input<Map<String, FlowTrackingDefinitionResponse>>?
+  trackingDefinitions;
 
   /// Creates a new [TrackingProfileDefinitionResponse].
   /// [businessProcess] The business process reference.
@@ -25,18 +28,55 @@ class TrackingProfileDefinitionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'businessProcess': ?pulumi.Input.mapOptionalInputValue<BusinessProcessReferenceResponse, Map<String, dynamic>>(businessProcess, (value) => value.toMap()),
+      'businessProcess':
+          ?pulumi.Input.mapOptionalInputValue<
+            BusinessProcessReferenceResponse,
+            Map<String, dynamic>
+          >(businessProcess, (value) => value.toMap()),
       'schema': ?schema,
-      'trackingDefinitions': ?pulumi.Input.mapOptionalInputValue<Map<String, FlowTrackingDefinitionResponse>, Map<String, Map<String, dynamic>>>(trackingDefinitions, (value) => pulumi.Input.encodeMapValues<FlowTrackingDefinitionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trackingDefinitions':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, FlowTrackingDefinitionResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            trackingDefinitions,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  FlowTrackingDefinitionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TrackingProfileDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return TrackingProfileDefinitionResponse(
-      businessProcess: map['businessProcess'] == null ? null : (BusinessProcessReferenceResponse.fromMap((map['businessProcess']! as Map).cast<String, dynamic>())).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
-      trackingDefinitions: map['trackingDefinitions'] == null ? null : (pulumi.Input.decodeMapValues<FlowTrackingDefinitionResponse>(map['trackingDefinitions']!, (value) => FlowTrackingDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessProcess: (() {
+        final guardedValue = map['businessProcess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BusinessProcessReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trackingDefinitions: (() {
+        final guardedValue = map['trackingDefinitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<FlowTrackingDefinitionResponse>(
+            guardedValue,
+            (value) => FlowTrackingDefinitionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

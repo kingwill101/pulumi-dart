@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorUser {
   /// Specifies the user Email. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> email;
+
   /// Specifies the first name. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> firstName;
+
   /// Specifies the last name. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> lastName;
+
   /// Specifies the contact phone number. Changing this forces a new Azure Native New Relic Monitor to be created.
   final pulumi.Input<String> phoneNumber;
 
@@ -35,11 +38,10 @@ class MonitorUser {
 
   factory MonitorUser.fromMap(Map<String, dynamic> map) {
     return MonitorUser(
-      email: (map['email'] as String).input(),
-      firstName: (map['firstName'] as String).input(),
-      lastName: (map['lastName'] as String).input(),
-      phoneNumber: (map['phoneNumber'] as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      firstName: pulumi.Input.fromValue(map['firstName'] as String),
+      lastName: pulumi.Input.fromValue(map['lastName'] as String),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
-

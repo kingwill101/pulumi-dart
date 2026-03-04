@@ -5,32 +5,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHanaBackupClientsHanaBackupClient {
   /// The alert settings.
   final pulumi.Input<String> alertSetting;
+
   /// The ID of the backup client.
   final pulumi.Input<String> clientId;
+
   /// The name of the backup client.
   final pulumi.Input<String> clientName;
+
   /// The type of the backup client.
   final pulumi.Input<String> clientType;
+
   /// The version number of the backup client.
   final pulumi.Input<String> clientVersion;
+
   /// The ID of the SAP HANA instance.
   final pulumi.Input<String> clusterId;
-  /// The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+
+  /// The id of the Hana Backup Client. It formats as `&lt;vault_id&gt;:&lt;client_id&gt;`.
   final pulumi.Input<String> id;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The name of the ECS instance.
   final pulumi.Input<String> instanceName;
+
   /// The maximum version number of the backup client.
   final pulumi.Input<String> maxVersion;
+
   /// The network type.
   final pulumi.Input<String> networkType;
+
   /// The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
   final pulumi.Input<String> status;
+
   /// The status information.
   final pulumi.Input<String> statusMessage;
+
   /// Indicates whether data is transmitted over HTTPS.
   final pulumi.Input<bool> useHttps;
+
   /// The ID of the backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -41,7 +55,7 @@ class GetHanaBackupClientsHanaBackupClient {
   /// [clientType] The type of the backup client.
   /// [clientVersion] The version number of the backup client.
   /// [clusterId] The ID of the SAP HANA instance.
-  /// [id] The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+  /// [id] The id of the Hana Backup Client. It formats as `&lt;vault_id&gt;:&lt;client_id&gt;`.
   /// [instanceId] The ID of the instance.
   /// [instanceName] The name of the ECS instance.
   /// [maxVersion] The maximum version number of the backup client.
@@ -88,24 +102,25 @@ class GetHanaBackupClientsHanaBackupClient {
     };
   }
 
-  factory GetHanaBackupClientsHanaBackupClient.fromMap(Map<String, dynamic> map) {
+  factory GetHanaBackupClientsHanaBackupClient.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetHanaBackupClientsHanaBackupClient(
-      alertSetting: (map['alertSetting'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientName: (map['clientName'] as String).input(),
-      clientType: (map['clientType'] as String).input(),
-      clientVersion: (map['clientVersion'] as String).input(),
-      clusterId: (map['clusterId'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      maxVersion: (map['maxVersion'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      status: (map['status'] as String).input(),
-      statusMessage: (map['statusMessage'] as String).input(),
-      useHttps: (map['useHttps'] as bool).input(),
-      vaultId: (map['vaultId'] as String).input(),
+      alertSetting: pulumi.Input.fromValue(map['alertSetting'] as String),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientName: pulumi.Input.fromValue(map['clientName'] as String),
+      clientType: pulumi.Input.fromValue(map['clientType'] as String),
+      clientVersion: pulumi.Input.fromValue(map['clientVersion'] as String),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      maxVersion: pulumi.Input.fromValue(map['maxVersion'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
+      useHttps: pulumi.Input.fromValue(map['useHttps'] as bool),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
-

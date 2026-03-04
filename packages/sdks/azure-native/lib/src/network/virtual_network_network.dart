@@ -2,13 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_space_response.dart';
 import 'dhcp_options_response.dart';
 import 'extended_location_response.dart';
-import 'flow_log_response.dart';
 import 'sub_resource_response.dart';
-import 'subnet_response.dart';
 import 'virtual_network_args.dart';
 import 'virtual_network_bgp_communities_response.dart';
 import 'virtual_network_encryption_response.dart';
-import 'virtual_network_peering_response.dart';
 
 /// Virtual Network resource.
 ///
@@ -1717,48 +1714,70 @@ import 'virtual_network_peering_response.dart';
 class VirtualNetworkNetwork extends pulumi.CustomResource {
   /// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
   late final pulumi.Output<AddressSpaceResponse?> addressSpace;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
-  late final pulumi.Output<VirtualNetworkBgpCommunitiesResponse?> bgpCommunities;
+  late final pulumi.Output<VirtualNetworkBgpCommunitiesResponse?>
+  bgpCommunities;
+
   /// The DDoS protection plan associated with the virtual network.
   late final pulumi.Output<SubResourceResponse?> ddosProtectionPlan;
+
   /// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
   late final pulumi.Output<DhcpOptionsResponse?> dhcpOptions;
+
   /// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
   late final pulumi.Output<bool?> enableDdosProtection;
+
   /// Indicates if VM protection is enabled for all the subnets in the virtual network.
   late final pulumi.Output<bool?> enableVmProtection;
+
   /// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
   late final pulumi.Output<VirtualNetworkEncryptionResponse?> encryption;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the virtual network.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// A collection of references to flow log resources.
-  late final pulumi.Output<List<FlowLogResponse>> flowLogs;
+  late final pulumi.Output<List<Map<String, dynamic>>> flowLogs;
+
   /// The FlowTimeout value (in minutes) for the Virtual Network
   late final pulumi.Output<int?> flowTimeoutInMinutes;
+
   /// Array of IpAllocation which reference this VNET.
-  late final pulumi.Output<List<SubResourceResponse>?> ipAllocations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipAllocations;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Private Endpoint VNet Policies.
   late final pulumi.Output<String?> privateEndpointVNetPolicies;
+
   /// The provisioning state of the virtual network resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resourceGuid property of the Virtual Network resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// A list of subnets in a Virtual Network.
-  late final pulumi.Output<List<SubnetResponse>?> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// A list of peerings in a Virtual Network.
-  late final pulumi.Output<List<VirtualNetworkPeeringResponse>?> virtualNetworkPeerings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkPeerings;
 
   /// Creates a new [VirtualNetworkNetwork].
   /// [name] The Pulumi resource name.
@@ -1769,32 +1788,46 @@ class VirtualNetworkNetwork extends pulumi.CustomResource {
     VirtualNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VirtualNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressSpace = registerOutput<AddressSpaceResponse?>('addressSpace');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bgpCommunities = registerOutput<VirtualNetworkBgpCommunitiesResponse?>('bgpCommunities');
-    this.ddosProtectionPlan = registerOutput<SubResourceResponse?>('ddosProtectionPlan');
-    this.dhcpOptions = registerOutput<DhcpOptionsResponse?>('dhcpOptions');
-    this.enableDdosProtection = registerOutput<bool?>('enableDdosProtection');
-    this.enableVmProtection = registerOutput<bool?>('enableVmProtection');
-    this.encryption = registerOutput<VirtualNetworkEncryptionResponse?>('encryption');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.flowLogs = registerOutput<List<FlowLogResponse>>('flowLogs');
-    this.flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
-    this.ipAllocations = registerOutput<List<SubResourceResponse>?>('ipAllocations');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:VirtualNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressSpace = registerOutput<AddressSpaceResponse?>('addressSpace');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpCommunities = registerOutput<VirtualNetworkBgpCommunitiesResponse?>(
+      'bgpCommunities',
+    );
+    ddosProtectionPlan = registerOutput<SubResourceResponse?>(
+      'ddosProtectionPlan',
+    );
+    dhcpOptions = registerOutput<DhcpOptionsResponse?>('dhcpOptions');
+    enableDdosProtection = registerOutput<bool?>('enableDdosProtection');
+    enableVmProtection = registerOutput<bool?>('enableVmProtection');
+    encryption = registerOutput<VirtualNetworkEncryptionResponse?>(
+      'encryption',
+    );
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    flowLogs = registerOutput<List<Map<String, dynamic>>>('flowLogs');
+    flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
+    ipAllocations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipAllocations',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointVNetPolicies = registerOutput<String?>('privateEndpointVNetPolicies');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.subnets = registerOutput<List<SubnetResponse>?>('subnets');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworkPeerings = registerOutput<List<VirtualNetworkPeeringResponse>?>('virtualNetworkPeerings');
+    privateEndpointVNetPolicies = registerOutput<String?>(
+      'privateEndpointVNetPolicies',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualNetworkPeerings = registerOutput<List<Map<String, dynamic>>?>(
+      'virtualNetworkPeerings',
+    );
   }
 }

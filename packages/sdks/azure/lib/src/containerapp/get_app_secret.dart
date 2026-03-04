@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppSecret {
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
   final pulumi.Input<String> identity;
+
   /// The ID of a Key Vault secret.
   final pulumi.Input<String> keyVaultSecretId;
+
   /// The name of the Container App.
   final pulumi.Input<String> name;
+
   /// The HTTP Header value.
   final pulumi.Input<String> value;
 
@@ -35,11 +38,12 @@ class GetAppSecret {
 
   factory GetAppSecret.fromMap(Map<String, dynamic> map) {
     return GetAppSecret(
-      identity: (map['identity'] as String).input(),
-      keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      identity: pulumi.Input.fromValue(map['identity'] as String),
+      keyVaultSecretId: pulumi.Input.fromValue(
+        map['keyVaultSecretId'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

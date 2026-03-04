@@ -9,10 +9,13 @@ import 'secret_volume_source_response.dart';
 class VolumeResponse {
   /// Not supported in Cloud Run.
   final pulumi.Input<ConfigMapVolumeSourceResponse> configMap;
+
   /// Ephemeral storage used as a shared volume.
   final pulumi.Input<EmptyDirVolumeSourceResponse> emptyDir;
+
   /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
   final pulumi.Input<String> name;
+
   /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
   final pulumi.Input<SecretVolumeSourceResponse> secret;
 
@@ -30,20 +33,43 @@ class VolumeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configMap': pulumi.Input.mapInputValue<ConfigMapVolumeSourceResponse, Map<String, dynamic>>(configMap, (value) => value.toMap()),
-      'emptyDir': pulumi.Input.mapInputValue<EmptyDirVolumeSourceResponse, Map<String, dynamic>>(emptyDir, (value) => value.toMap()),
+      'configMap':
+          pulumi.Input.mapInputValue<
+            ConfigMapVolumeSourceResponse,
+            Map<String, dynamic>
+          >(configMap, (value) => value.toMap()),
+      'emptyDir':
+          pulumi.Input.mapInputValue<
+            EmptyDirVolumeSourceResponse,
+            Map<String, dynamic>
+          >(emptyDir, (value) => value.toMap()),
       'name': name,
-      'secret': pulumi.Input.mapInputValue<SecretVolumeSourceResponse, Map<String, dynamic>>(secret, (value) => value.toMap()),
+      'secret':
+          pulumi.Input.mapInputValue<
+            SecretVolumeSourceResponse,
+            Map<String, dynamic>
+          >(secret, (value) => value.toMap()),
     };
   }
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      configMap: (ConfigMapVolumeSourceResponse.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: (EmptyDirVolumeSourceResponse.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      secret: (SecretVolumeSourceResponse.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      configMap: pulumi.Input.fromValue(
+        ConfigMapVolumeSourceResponse.fromMap(
+          (map['configMap']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      emptyDir: pulumi.Input.fromValue(
+        EmptyDirVolumeSourceResponse.fromMap(
+          (map['emptyDir']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      secret: pulumi.Input.fromValue(
+        SecretVolumeSourceResponse.fromMap(
+          (map['secret']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

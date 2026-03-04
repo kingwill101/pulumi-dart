@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertProcessingRuleActionGroupConditionMonitorCondition {
   /// The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   final pulumi.Input<String> operator;
+
   /// Specifies a list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class AlertProcessingRuleActionGroupConditionMonitorCondition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operator': operator,
-      'values': values,
-    };
+    return <String, dynamic>{'operator': operator, 'values': values};
   }
 
-  factory AlertProcessingRuleActionGroupConditionMonitorCondition.fromMap(Map<String, dynamic> map) {
+  factory AlertProcessingRuleActionGroupConditionMonitorCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertProcessingRuleActionGroupConditionMonitorCondition(
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

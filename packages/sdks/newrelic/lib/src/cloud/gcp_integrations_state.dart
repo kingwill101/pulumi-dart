@@ -32,60 +32,87 @@ import 'gcp_integrations_vpc_access.dart';
 class GcpIntegrationsState {
   /// The New Relic account ID to operate on.  This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   final pulumi.Input<String>? accountId;
+
   /// Alloy DB integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsAlloyDb>? alloyDb;
+
   /// App Engine integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsAppEngine>? appEngine;
+
   /// Biq Query integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsBigQuery>? bigQuery;
+
   /// Big Table. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsBigTable>? bigTable;
+
   /// Composer integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsComposer>? composer;
+
   /// Data Flow integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsDataFlow>? dataFlow;
+
   /// Data Proc integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsDataProc>? dataProc;
+
   /// Data Store integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsDataStore>? dataStore;
+
   /// Fire Base Database integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsFireBaseDatabase>? fireBaseDatabase;
+
   /// Fire Base Hosting integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsFireBaseHosting>? fireBaseHosting;
+
   /// Fire Base Storage integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsFireBaseStorage>? fireBaseStorage;
+
   /// Fire Store integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsFireStore>? fireStore;
+
   /// Functions integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsFunctions>? functions;
+
   /// Interconnect integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsInterconnect>? interconnect;
+
   /// Kubernetes integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsKubernetes>? kubernetes;
+
   /// The ID of the linked GCP account in New Relic.
   ///
   /// The following arguments/integration blocks are intended to be used with a minimum `metrics_polling_interval` of 300 seconds.
   final pulumi.Input<String>? linkedAccountId;
+
   /// Load Balancing integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsLoadBalancing>? loadBalancing;
+
   /// Mem cache integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsMemCache>? memCache;
+
   /// Pub/Sub integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsPubSub>? pubSub;
+
   /// Redis integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsRedis>? redis;
+
   /// Router integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsRouter>? router;
+
   /// Run integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsRun>? run;
+
   /// Spanner integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsSpanner>? spanner;
+
   /// SQL integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsSql>? sql;
+
   /// Storage integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsStorage>? storage;
+
   /// Virtual machines integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsVirtualMachines>? virtualMachines;
+
   /// VPC Access integration. See Integration blocks below for details.
   final pulumi.Input<GcpIntegrationsVpcAccess>? vpcAccess;
 
@@ -152,67 +179,386 @@ class GcpIntegrationsState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
-      'alloyDb': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsAlloyDb, Map<String, dynamic>>(alloyDb, (value) => value.toMap()),
-      'appEngine': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsAppEngine, Map<String, dynamic>>(appEngine, (value) => value.toMap()),
-      'bigQuery': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsBigQuery, Map<String, dynamic>>(bigQuery, (value) => value.toMap()),
-      'bigTable': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsBigTable, Map<String, dynamic>>(bigTable, (value) => value.toMap()),
-      'composer': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsComposer, Map<String, dynamic>>(composer, (value) => value.toMap()),
-      'dataFlow': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsDataFlow, Map<String, dynamic>>(dataFlow, (value) => value.toMap()),
-      'dataProc': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsDataProc, Map<String, dynamic>>(dataProc, (value) => value.toMap()),
-      'dataStore': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsDataStore, Map<String, dynamic>>(dataStore, (value) => value.toMap()),
-      'fireBaseDatabase': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsFireBaseDatabase, Map<String, dynamic>>(fireBaseDatabase, (value) => value.toMap()),
-      'fireBaseHosting': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsFireBaseHosting, Map<String, dynamic>>(fireBaseHosting, (value) => value.toMap()),
-      'fireBaseStorage': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsFireBaseStorage, Map<String, dynamic>>(fireBaseStorage, (value) => value.toMap()),
-      'fireStore': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsFireStore, Map<String, dynamic>>(fireStore, (value) => value.toMap()),
-      'functions': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsFunctions, Map<String, dynamic>>(functions, (value) => value.toMap()),
-      'interconnect': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsInterconnect, Map<String, dynamic>>(interconnect, (value) => value.toMap()),
-      'kubernetes': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsKubernetes, Map<String, dynamic>>(kubernetes, (value) => value.toMap()),
+      'alloyDb':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsAlloyDb,
+            Map<String, dynamic>
+          >(alloyDb, (value) => value.toMap()),
+      'appEngine':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsAppEngine,
+            Map<String, dynamic>
+          >(appEngine, (value) => value.toMap()),
+      'bigQuery':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsBigQuery,
+            Map<String, dynamic>
+          >(bigQuery, (value) => value.toMap()),
+      'bigTable':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsBigTable,
+            Map<String, dynamic>
+          >(bigTable, (value) => value.toMap()),
+      'composer':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsComposer,
+            Map<String, dynamic>
+          >(composer, (value) => value.toMap()),
+      'dataFlow':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsDataFlow,
+            Map<String, dynamic>
+          >(dataFlow, (value) => value.toMap()),
+      'dataProc':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsDataProc,
+            Map<String, dynamic>
+          >(dataProc, (value) => value.toMap()),
+      'dataStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsDataStore,
+            Map<String, dynamic>
+          >(dataStore, (value) => value.toMap()),
+      'fireBaseDatabase':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsFireBaseDatabase,
+            Map<String, dynamic>
+          >(fireBaseDatabase, (value) => value.toMap()),
+      'fireBaseHosting':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsFireBaseHosting,
+            Map<String, dynamic>
+          >(fireBaseHosting, (value) => value.toMap()),
+      'fireBaseStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsFireBaseStorage,
+            Map<String, dynamic>
+          >(fireBaseStorage, (value) => value.toMap()),
+      'fireStore':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsFireStore,
+            Map<String, dynamic>
+          >(fireStore, (value) => value.toMap()),
+      'functions':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsFunctions,
+            Map<String, dynamic>
+          >(functions, (value) => value.toMap()),
+      'interconnect':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsInterconnect,
+            Map<String, dynamic>
+          >(interconnect, (value) => value.toMap()),
+      'kubernetes':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsKubernetes,
+            Map<String, dynamic>
+          >(kubernetes, (value) => value.toMap()),
       'linkedAccountId': ?linkedAccountId,
-      'loadBalancing': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsLoadBalancing, Map<String, dynamic>>(loadBalancing, (value) => value.toMap()),
-      'memCache': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsMemCache, Map<String, dynamic>>(memCache, (value) => value.toMap()),
-      'pubSub': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsPubSub, Map<String, dynamic>>(pubSub, (value) => value.toMap()),
-      'redis': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsRedis, Map<String, dynamic>>(redis, (value) => value.toMap()),
-      'router': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsRouter, Map<String, dynamic>>(router, (value) => value.toMap()),
-      'run': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsRun, Map<String, dynamic>>(run, (value) => value.toMap()),
-      'spanner': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsSpanner, Map<String, dynamic>>(spanner, (value) => value.toMap()),
-      'sql': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsSql, Map<String, dynamic>>(sql, (value) => value.toMap()),
-      'storage': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
-      'virtualMachines': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsVirtualMachines, Map<String, dynamic>>(virtualMachines, (value) => value.toMap()),
-      'vpcAccess': ?pulumi.Input.mapOptionalInputValue<GcpIntegrationsVpcAccess, Map<String, dynamic>>(vpcAccess, (value) => value.toMap()),
+      'loadBalancing':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsLoadBalancing,
+            Map<String, dynamic>
+          >(loadBalancing, (value) => value.toMap()),
+      'memCache':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsMemCache,
+            Map<String, dynamic>
+          >(memCache, (value) => value.toMap()),
+      'pubSub':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsPubSub,
+            Map<String, dynamic>
+          >(pubSub, (value) => value.toMap()),
+      'redis':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsRedis,
+            Map<String, dynamic>
+          >(redis, (value) => value.toMap()),
+      'router':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsRouter,
+            Map<String, dynamic>
+          >(router, (value) => value.toMap()),
+      'run':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsRun,
+            Map<String, dynamic>
+          >(run, (value) => value.toMap()),
+      'spanner':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsSpanner,
+            Map<String, dynamic>
+          >(spanner, (value) => value.toMap()),
+      'sql':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsSql,
+            Map<String, dynamic>
+          >(sql, (value) => value.toMap()),
+      'storage':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsStorage,
+            Map<String, dynamic>
+          >(storage, (value) => value.toMap()),
+      'virtualMachines':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsVirtualMachines,
+            Map<String, dynamic>
+          >(virtualMachines, (value) => value.toMap()),
+      'vpcAccess':
+          ?pulumi.Input.mapOptionalInputValue<
+            GcpIntegrationsVpcAccess,
+            Map<String, dynamic>
+          >(vpcAccess, (value) => value.toMap()),
     };
   }
 
   factory GcpIntegrationsState.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      alloyDb: map['alloyDb'] == null ? null : (GcpIntegrationsAlloyDb.fromMap((map['alloyDb']! as Map).cast<String, dynamic>())).input(),
-      appEngine: map['appEngine'] == null ? null : (GcpIntegrationsAppEngine.fromMap((map['appEngine']! as Map).cast<String, dynamic>())).input(),
-      bigQuery: map['bigQuery'] == null ? null : (GcpIntegrationsBigQuery.fromMap((map['bigQuery']! as Map).cast<String, dynamic>())).input(),
-      bigTable: map['bigTable'] == null ? null : (GcpIntegrationsBigTable.fromMap((map['bigTable']! as Map).cast<String, dynamic>())).input(),
-      composer: map['composer'] == null ? null : (GcpIntegrationsComposer.fromMap((map['composer']! as Map).cast<String, dynamic>())).input(),
-      dataFlow: map['dataFlow'] == null ? null : (GcpIntegrationsDataFlow.fromMap((map['dataFlow']! as Map).cast<String, dynamic>())).input(),
-      dataProc: map['dataProc'] == null ? null : (GcpIntegrationsDataProc.fromMap((map['dataProc']! as Map).cast<String, dynamic>())).input(),
-      dataStore: map['dataStore'] == null ? null : (GcpIntegrationsDataStore.fromMap((map['dataStore']! as Map).cast<String, dynamic>())).input(),
-      fireBaseDatabase: map['fireBaseDatabase'] == null ? null : (GcpIntegrationsFireBaseDatabase.fromMap((map['fireBaseDatabase']! as Map).cast<String, dynamic>())).input(),
-      fireBaseHosting: map['fireBaseHosting'] == null ? null : (GcpIntegrationsFireBaseHosting.fromMap((map['fireBaseHosting']! as Map).cast<String, dynamic>())).input(),
-      fireBaseStorage: map['fireBaseStorage'] == null ? null : (GcpIntegrationsFireBaseStorage.fromMap((map['fireBaseStorage']! as Map).cast<String, dynamic>())).input(),
-      fireStore: map['fireStore'] == null ? null : (GcpIntegrationsFireStore.fromMap((map['fireStore']! as Map).cast<String, dynamic>())).input(),
-      functions: map['functions'] == null ? null : (GcpIntegrationsFunctions.fromMap((map['functions']! as Map).cast<String, dynamic>())).input(),
-      interconnect: map['interconnect'] == null ? null : (GcpIntegrationsInterconnect.fromMap((map['interconnect']! as Map).cast<String, dynamic>())).input(),
-      kubernetes: map['kubernetes'] == null ? null : (GcpIntegrationsKubernetes.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input(),
-      linkedAccountId: map['linkedAccountId'] == null ? null : (map['linkedAccountId']! as String).input(),
-      loadBalancing: map['loadBalancing'] == null ? null : (GcpIntegrationsLoadBalancing.fromMap((map['loadBalancing']! as Map).cast<String, dynamic>())).input(),
-      memCache: map['memCache'] == null ? null : (GcpIntegrationsMemCache.fromMap((map['memCache']! as Map).cast<String, dynamic>())).input(),
-      pubSub: map['pubSub'] == null ? null : (GcpIntegrationsPubSub.fromMap((map['pubSub']! as Map).cast<String, dynamic>())).input(),
-      redis: map['redis'] == null ? null : (GcpIntegrationsRedis.fromMap((map['redis']! as Map).cast<String, dynamic>())).input(),
-      router: map['router'] == null ? null : (GcpIntegrationsRouter.fromMap((map['router']! as Map).cast<String, dynamic>())).input(),
-      run: map['run'] == null ? null : (GcpIntegrationsRun.fromMap((map['run']! as Map).cast<String, dynamic>())).input(),
-      spanner: map['spanner'] == null ? null : (GcpIntegrationsSpanner.fromMap((map['spanner']! as Map).cast<String, dynamic>())).input(),
-      sql: map['sql'] == null ? null : (GcpIntegrationsSql.fromMap((map['sql']! as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (GcpIntegrationsStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
-      virtualMachines: map['virtualMachines'] == null ? null : (GcpIntegrationsVirtualMachines.fromMap((map['virtualMachines']! as Map).cast<String, dynamic>())).input(),
-      vpcAccess: map['vpcAccess'] == null ? null : (GcpIntegrationsVpcAccess.fromMap((map['vpcAccess']! as Map).cast<String, dynamic>())).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      alloyDb: (() {
+        final guardedValue = map['alloyDb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsAlloyDb.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      appEngine: (() {
+        final guardedValue = map['appEngine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsAppEngine.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bigQuery: (() {
+        final guardedValue = map['bigQuery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsBigQuery.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bigTable: (() {
+        final guardedValue = map['bigTable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsBigTable.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      composer: (() {
+        final guardedValue = map['composer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsComposer.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataFlow: (() {
+        final guardedValue = map['dataFlow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsDataFlow.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataProc: (() {
+        final guardedValue = map['dataProc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsDataProc.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataStore: (() {
+        final guardedValue = map['dataStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsDataStore.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fireBaseDatabase: (() {
+        final guardedValue = map['fireBaseDatabase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsFireBaseDatabase.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fireBaseHosting: (() {
+        final guardedValue = map['fireBaseHosting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsFireBaseHosting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fireBaseStorage: (() {
+        final guardedValue = map['fireBaseStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsFireBaseStorage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fireStore: (() {
+        final guardedValue = map['fireStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsFireStore.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      functions: (() {
+        final guardedValue = map['functions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsFunctions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      interconnect: (() {
+        final guardedValue = map['interconnect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsInterconnect.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kubernetes: (() {
+        final guardedValue = map['kubernetes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsKubernetes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      linkedAccountId: (() {
+        final guardedValue = map['linkedAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancing: (() {
+        final guardedValue = map['loadBalancing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsLoadBalancing.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      memCache: (() {
+        final guardedValue = map['memCache'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsMemCache.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pubSub: (() {
+        final guardedValue = map['pubSub'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsPubSub.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      redis: (() {
+        final guardedValue = map['redis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsRedis.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      router: (() {
+        final guardedValue = map['router'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsRouter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      run: (() {
+        final guardedValue = map['run'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsRun.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spanner: (() {
+        final guardedValue = map['spanner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsSpanner.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sql: (() {
+        final guardedValue = map['sql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsSql.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storage: (() {
+        final guardedValue = map['storage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsStorage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      virtualMachines: (() {
+        final guardedValue = map['virtualMachines'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsVirtualMachines.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcAccess: (() {
+        final guardedValue = map['vpcAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GcpIntegrationsVpcAccess.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

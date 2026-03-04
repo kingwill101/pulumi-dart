@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadinessCheckState {
   /// ARN of the readiness_check
   final pulumi.Input<String>? arn;
+
   /// Unique name describing the readiness check.
   final pulumi.Input<String>? readinessCheckName;
+
   /// Name describing the resource set that will be monitored for readiness.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? resourceSetName;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -43,12 +47,35 @@ class ReadinessCheckState {
 
   factory ReadinessCheckState.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      readinessCheckName: map['readinessCheckName'] == null ? null : ((map['readinessCheckName'] as String).input()).input(),
-      resourceSetName: map['resourceSetName'] == null ? null : ((map['resourceSetName'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readinessCheckName: (() {
+        final guardedValue = map['readinessCheckName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceSetName: (() {
+        final guardedValue = map['resourceSetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

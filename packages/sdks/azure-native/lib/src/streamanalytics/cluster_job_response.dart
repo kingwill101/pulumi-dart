@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterJobResponse {
   /// Resource ID of the streaming job.
   final pulumi.Input<String> id;
+
   /// The current execution state of the streaming job.
   final pulumi.Input<String> jobState;
+
   /// The number of streaming units that are used by the streaming job.
   final pulumi.Input<int> streamingUnits;
 
@@ -31,10 +33,9 @@ class ClusterJobResponse {
 
   factory ClusterJobResponse.fromMap(Map<String, dynamic> map) {
     return ClusterJobResponse(
-      id: (map['id'] as String).input(),
-      jobState: (map['jobState'] as String).input(),
-      streamingUnits: (map['streamingUnits'] as int).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      jobState: pulumi.Input.fromValue(map['jobState'] as String),
+      streamingUnits: pulumi.Input.fromValue(map['streamingUnits'] as int),
     );
   }
 }
-

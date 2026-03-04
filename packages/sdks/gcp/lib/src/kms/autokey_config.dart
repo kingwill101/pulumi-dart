@@ -629,11 +629,13 @@ import 'autokey_config_state.dart';
 class AutokeyConfig extends pulumi.CustomResource {
   /// The etag of the AutokeyConfig for optimistic concurrency control.
   late final pulumi.Output<String> etag;
+
   /// The folder for which to retrieve config.
   late final pulumi.Output<String> folder;
+
   /// The target key project for a given folder where KMS Autokey will provision a
   /// CryptoKey for any new KeyHandle the Developer creates. Should have the form
-  /// `projects/<project_id_or_number>`.
+  /// `projects/&lt;project_id_or_number&gt;`.
   late final pulumi.Output<String?> keyProject;
 
   /// Creates a new [AutokeyConfig].
@@ -645,14 +647,14 @@ class AutokeyConfig extends pulumi.CustomResource {
     AutokeyConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/autokeyConfig:AutokeyConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.keyProject = registerOutput<String?>('keyProject');
+         'gcp:kms/autokeyConfig:AutokeyConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    keyProject = registerOutput<String?>('keyProject');
   }
 
   /// Gets an existing [AutokeyConfig] resource's state with the given [name] and [id].
@@ -673,13 +675,13 @@ class AutokeyConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/autokeyConfig:AutokeyConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.keyProject = registerOutput<String?>('keyProject');
+         'gcp:kms/autokeyConfig:AutokeyConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    keyProject = registerOutput<String?>('keyProject');
   }
 }

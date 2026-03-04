@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
   /// A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
   final pulumi.Input<String> repositoryBase;
+
   /// Specific repository from the base.
   final pulumi.Input<String> repositoryPath;
 
@@ -23,11 +24,12 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
     };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository(
-      repositoryBase: (map['repositoryBase'] as String).input(),
-      repositoryPath: (map['repositoryPath'] as String).input(),
+      repositoryBase: pulumi.Input.fromValue(map['repositoryBase'] as String),
+      repositoryPath: pulumi.Input.fromValue(map['repositoryPath'] as String),
     );
   }
 }
-

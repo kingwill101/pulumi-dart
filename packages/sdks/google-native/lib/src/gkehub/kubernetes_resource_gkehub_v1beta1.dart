@@ -7,6 +7,7 @@ import 'resource_options_gkehub_v1beta1.dart';
 class KubernetesResourceGkehubV1beta1 {
   /// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
   final pulumi.Input<String>? membershipCrManifest;
+
   /// Optional. Options for Kubernetes resource generation.
   final pulumi.Input<ResourceOptionsGkehubV1beta1>? resourceOptions;
 
@@ -21,15 +22,30 @@ class KubernetesResourceGkehubV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'membershipCrManifest': ?membershipCrManifest,
-      'resourceOptions': ?pulumi.Input.mapOptionalInputValue<ResourceOptionsGkehubV1beta1, Map<String, dynamic>>(resourceOptions, (value) => value.toMap()),
+      'resourceOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceOptionsGkehubV1beta1,
+            Map<String, dynamic>
+          >(resourceOptions, (value) => value.toMap()),
     };
   }
 
   factory KubernetesResourceGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return KubernetesResourceGkehubV1beta1(
-      membershipCrManifest: map['membershipCrManifest'] == null ? null : (map['membershipCrManifest']! as String).input(),
-      resourceOptions: map['resourceOptions'] == null ? null : (ResourceOptionsGkehubV1beta1.fromMap((map['resourceOptions']! as Map).cast<String, dynamic>())).input(),
+      membershipCrManifest: (() {
+        final guardedValue = map['membershipCrManifest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceOptions: (() {
+        final guardedValue = map['resourceOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceOptionsGkehubV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

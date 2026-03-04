@@ -5,11 +5,19 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable {
   /// Information about a column in the table. See `column` block for details.
-  final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>>? columns;
+  final pulumi.Input<
+    List<
+      AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn
+    >
+  >?
+  columns;
+
   /// Description of the table that helps the query engine understand the contents of the table.
   final pulumi.Input<String>? description;
+
   /// Whether to include or exclude the table during query generation. Valid values `INCLUDE`, `EXCLUDE`.
   final pulumi.Input<String>? inclusion;
+
   /// Name of the table for which the other fields in this object apply.
   final pulumi.Input<String> name;
 
@@ -27,20 +35,56 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?pulumi.Input.mapOptionalInputValue<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'columns':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn
+            >,
+            List<Map<String, dynamic>>
+          >(
+            columns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'inclusion': ?inclusion,
       'name': name,
     };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable(
-      columns: map['columns'] == null ? null : ((pulumi.Input.decodeList<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>(map['columns']!, (value) => AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      inclusion: map['inclusion'] == null ? null : ((map['inclusion'] as String).input()).input(),
-      name: (map['name'] as String).input(),
+      columns: (() {
+        final guardedValue = map['columns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn
+          >(
+            guardedValue,
+            (value) =>
+                AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inclusion: (() {
+        final guardedValue = map['inclusion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

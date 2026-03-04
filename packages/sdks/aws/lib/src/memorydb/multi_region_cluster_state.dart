@@ -7,32 +7,44 @@ import 'multi_region_cluster_timeouts.dart';
 class MultiRegionClusterState {
   /// The ARN of the multi-region cluster.
   final pulumi.Input<String>? arn;
+
   /// description for the multi-region cluster.
   final pulumi.Input<String>? description;
+
   /// The name of the engine to be used for the multi-region cluster. Valid values are `redis` and `valkey`.
   final pulumi.Input<String>? engine;
+
   /// The version of the engine to be used for the multi-region cluster. Downgrades are not supported.
   final pulumi.Input<String>? engineVersion;
+
   /// The name of the multi-region cluster.
   final pulumi.Input<String>? multiRegionClusterName;
+
   /// A suffix to be added to the multi-region cluster name. An AWS generated prefix is automatically applied to the multi-region cluster name when it is created.
   final pulumi.Input<String>? multiRegionClusterNameSuffix;
+
   /// The name of the multi-region parameter group to be associated with the cluster.
   final pulumi.Input<String>? multiRegionParameterGroupName;
+
   /// The node type to be used for the multi-region cluster.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? nodeType;
+
   /// The number of shards for the multi-region cluster.
   final pulumi.Input<int>? numShards;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<String>? status;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<MultiRegionClusterTimeouts>? timeouts;
+
   /// A flag to enable in-transit encryption on the cluster.
   final pulumi.Input<bool>? tlsEnabled;
   final pulumi.Input<String>? updateStrategy;
@@ -88,7 +100,11 @@ class MultiRegionClusterState {
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<MultiRegionClusterTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            MultiRegionClusterTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'tlsEnabled': ?tlsEnabled,
       'updateStrategy': ?updateStrategy,
     };
@@ -96,23 +112,94 @@ class MultiRegionClusterState {
 
   factory MultiRegionClusterState.fromMap(Map<String, dynamic> map) {
     return MultiRegionClusterState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
-      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
-      multiRegionClusterName: map['multiRegionClusterName'] == null ? null : ((map['multiRegionClusterName'] as String).input()).input(),
-      multiRegionClusterNameSuffix: map['multiRegionClusterNameSuffix'] == null ? null : ((map['multiRegionClusterNameSuffix'] as String).input()).input(),
-      multiRegionParameterGroupName: map['multiRegionParameterGroupName'] == null ? null : ((map['multiRegionParameterGroupName'] as String).input()).input(),
-      nodeType: map['nodeType'] == null ? null : ((map['nodeType'] as String).input()).input(),
-      numShards: map['numShards'] == null ? null : ((map['numShards'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((MultiRegionClusterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      tlsEnabled: map['tlsEnabled'] == null ? null : ((map['tlsEnabled'] as bool).input()).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : ((map['updateStrategy'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiRegionClusterName: (() {
+        final guardedValue = map['multiRegionClusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiRegionClusterNameSuffix: (() {
+        final guardedValue = map['multiRegionClusterNameSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiRegionParameterGroupName: (() {
+        final guardedValue = map['multiRegionParameterGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeType: (() {
+        final guardedValue = map['nodeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numShards: (() {
+        final guardedValue = map['numShards'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MultiRegionClusterTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tlsEnabled: (() {
+        final guardedValue = map['tlsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      updateStrategy: (() {
+        final guardedValue = map['updateStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

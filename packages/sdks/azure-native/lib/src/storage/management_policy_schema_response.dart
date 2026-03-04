@@ -10,20 +10,35 @@ class ManagementPolicySchemaResponse {
 
   /// Creates a new [ManagementPolicySchemaResponse].
   /// [rules] The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
-  ManagementPolicySchemaResponse({
-    required this.rules,
-  });
+  ManagementPolicySchemaResponse({required this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.mapInputValue<List<ManagementPolicyRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ManagementPolicyRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<ManagementPolicyRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ManagementPolicyRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ManagementPolicySchemaResponse.fromMap(Map<String, dynamic> map) {
     return ManagementPolicySchemaResponse(
-      rules: (pulumi.Input.decodeList<ManagementPolicyRuleResponse>(map['rules'], (value) => ManagementPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ManagementPolicyRuleResponse>(
+          map['rules']!,
+          (value) => ManagementPolicyRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

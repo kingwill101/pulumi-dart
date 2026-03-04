@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaRegistryArgs {
   /// dictionary object for SchemaGroup group properties
   final pulumi.Input<Map<String, String>>? groupProperties;
+
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String>? schemaCompatibility;
+
   /// The Schema Group name
   final pulumi.Input<String>? schemaGroupName;
   final pulumi.Input<String>? schemaType;
@@ -47,13 +50,32 @@ class SchemaRegistryArgs {
 
   factory SchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return SchemaRegistryArgs(
-      groupProperties: map['groupProperties'] == null ? null : ((map['groupProperties']! as Map).cast<String, String>()).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaCompatibility: map['schemaCompatibility'] == null ? null : (map['schemaCompatibility']! as String).input(),
-      schemaGroupName: map['schemaGroupName'] == null ? null : (map['schemaGroupName']! as String).input(),
-      schemaType: map['schemaType'] == null ? null : (map['schemaType']! as String).input(),
+      groupProperties: (() {
+        final guardedValue = map['groupProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaCompatibility: (() {
+        final guardedValue = map['schemaCompatibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaGroupName: (() {
+        final guardedValue = map['schemaGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaType: (() {
+        final guardedValue = map['schemaType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

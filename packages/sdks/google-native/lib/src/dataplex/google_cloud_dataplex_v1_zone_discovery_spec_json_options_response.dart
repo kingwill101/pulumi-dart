@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse {
   /// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
   final pulumi.Input<bool> disableTypeInference;
+
   /// Optional. The character encoding of the data. The default is UTF-8.
   final pulumi.Input<String> encoding;
 
@@ -24,11 +25,14 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse(
-      disableTypeInference: (map['disableTypeInference'] as bool).input(),
-      encoding: (map['encoding'] as String).input(),
+      disableTypeInference: pulumi.Input.fromValue(
+        map['disableTypeInference'] as bool,
+      ),
+      encoding: pulumi.Input.fromValue(map['encoding'] as String),
     );
   }
 }
-

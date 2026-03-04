@@ -3,16 +3,15 @@ enum ImageOSState {
   valueGeneralized("Generalized"),
   valueSpecialized("Specialized");
 
-  const ImageOSState(this.value);
-  final String value;
+  const ImageOSState(this.wireValue);
+  final String wireValue;
 
   static ImageOSState fromValue(String value) {
     for (final item in ImageOSState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageOSState value: $value');
   }
 }
-

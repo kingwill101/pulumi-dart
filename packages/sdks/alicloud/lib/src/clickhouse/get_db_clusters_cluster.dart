@@ -7,79 +7,117 @@ import 'get_db_clusters_cluster_scale_out_status.dart';
 class GetDbClustersCluster {
   /// Alibaba Cloud account Id.
   final pulumi.Input<String> aliUid;
+
   /// The ID of the business process flow.
   final pulumi.Input<String> bid;
+
   /// Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
   final pulumi.Input<String> category;
+
   /// The Commodity Code of the DBCluster.
   final pulumi.Input<String> commodityCode;
+
   /// Connection string.
   final pulumi.Input<String> connectionString;
+
   /// The control version of the DBCluster.
   final pulumi.Input<String> controlVersion;
+
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
+
   /// The db cluster access white list.
-  final pulumi.Input<List<GetDbClustersClusterDbClusterAccessWhiteList>> dbClusterAccessWhiteLists;
+  final pulumi.Input<List<GetDbClustersClusterDbClusterAccessWhiteList>>
+  dbClusterAccessWhiteLists;
+
   /// The DBCluster description.
   final pulumi.Input<String> dbClusterDescription;
   final pulumi.Input<String> dbClusterId;
+
   /// The DBCluster network type.
   final pulumi.Input<String> dbClusterNetworkType;
+
   /// The DBCluster type.
   final pulumi.Input<String> dbClusterType;
+
   /// The node class of the DBCluster.
   final pulumi.Input<String> dbNodeClass;
+
   /// The node count of the DBCluster.
   final pulumi.Input<String> dbNodeCount;
+
   /// The node storage of the DBCluster.
   final pulumi.Input<String> dbNodeStorage;
+
   /// Key management service KMS key ID.
   final pulumi.Input<String> encryptionKey;
+
   /// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
   final pulumi.Input<String> encryptionType;
+
   /// The Engine of the DBCluster.
   final pulumi.Input<String> engine;
+
   /// The engine version of the DBCluster.
   final pulumi.Input<String> engineVersion;
+
   /// The expiration time of the DBCluster.
   final pulumi.Input<String> expireTime;
+
   /// The ID of the DBCluster.
   final pulumi.Input<String> id;
+
   /// If the instance has expired.
   final pulumi.Input<String> isExpired;
+
   /// The lock mode of the DBCluster.
   final pulumi.Input<String> lockMode;
+
   /// Lock reason of the DBCluster.
   final pulumi.Input<String> lockReason;
+
   /// Examples of the maintenance window, in the format of hh:mmZ-hh:mm Z.
   final pulumi.Input<String> maintainTime;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   final pulumi.Input<String> paymentType;
+
   /// Connection port.
   final pulumi.Input<int> port;
+
   /// A public IP address for the connection.
   final pulumi.Input<String> publicConnectionString;
+
   /// Public network port.
   final pulumi.Input<String> publicPort;
+
   /// Scale state.
   final pulumi.Input<List<GetDbClustersClusterScaleOutStatus>> scaleOutStatuses;
+
   /// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
   final pulumi.Input<String> status;
+
   /// Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
   final pulumi.Input<String> storageType;
+
   /// Support fallback scheme.
   final pulumi.Input<int> supportBackup;
+
   /// The system supports http port number.
   final pulumi.Input<bool> supportHttpsPort;
+
   /// Supports Mysql, and those of the ports.
   final pulumi.Input<bool> supportMysqlPort;
+
   /// Virtual Private Cloud (VPC cloud instance ID.
   final pulumi.Input<String> vpcCloudInstanceId;
+
   /// The VPC ID of the DBCluster.
   final pulumi.Input<String> vpcId;
+
   /// The vswitch id of the DBCluster.
   final pulumi.Input<String> vswitchId;
+
   /// The zone ID of the DBCluster.
   final pulumi.Input<String> zoneId;
 
@@ -174,7 +212,18 @@ class GetDbClustersCluster {
       'connectionString': connectionString,
       'controlVersion': controlVersion,
       'createTime': createTime,
-      'dbClusterAccessWhiteLists': pulumi.Input.mapInputValue<List<GetDbClustersClusterDbClusterAccessWhiteList>, List<Map<String, dynamic>>>(dbClusterAccessWhiteLists, (value) => pulumi.Input.encodeList<GetDbClustersClusterDbClusterAccessWhiteList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dbClusterAccessWhiteLists':
+          pulumi.Input.mapInputValue<
+            List<GetDbClustersClusterDbClusterAccessWhiteList>,
+            List<Map<String, dynamic>>
+          >(
+            dbClusterAccessWhiteLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDbClustersClusterDbClusterAccessWhiteList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dbClusterDescription': dbClusterDescription,
       'dbClusterId': dbClusterId,
       'dbClusterNetworkType': dbClusterNetworkType,
@@ -196,7 +245,18 @@ class GetDbClustersCluster {
       'port': port,
       'publicConnectionString': publicConnectionString,
       'publicPort': publicPort,
-      'scaleOutStatuses': pulumi.Input.mapInputValue<List<GetDbClustersClusterScaleOutStatus>, List<Map<String, dynamic>>>(scaleOutStatuses, (value) => pulumi.Input.encodeList<GetDbClustersClusterScaleOutStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scaleOutStatuses':
+          pulumi.Input.mapInputValue<
+            List<GetDbClustersClusterScaleOutStatus>,
+            List<Map<String, dynamic>>
+          >(
+            scaleOutStatuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDbClustersClusterScaleOutStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': status,
       'storageType': storageType,
       'supportBackup': supportBackup,
@@ -211,46 +271,69 @@ class GetDbClustersCluster {
 
   factory GetDbClustersCluster.fromMap(Map<String, dynamic> map) {
     return GetDbClustersCluster(
-      aliUid: (map['aliUid'] as String).input(),
-      bid: (map['bid'] as String).input(),
-      category: (map['category'] as String).input(),
-      commodityCode: (map['commodityCode'] as String).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      controlVersion: (map['controlVersion'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      dbClusterAccessWhiteLists: (pulumi.Input.decodeList<GetDbClustersClusterDbClusterAccessWhiteList>(map['dbClusterAccessWhiteLists'], (value) => GetDbClustersClusterDbClusterAccessWhiteList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbClusterDescription: (map['dbClusterDescription'] as String).input(),
-      dbClusterId: (map['dbClusterId'] as String).input(),
-      dbClusterNetworkType: (map['dbClusterNetworkType'] as String).input(),
-      dbClusterType: (map['dbClusterType'] as String).input(),
-      dbNodeClass: (map['dbNodeClass'] as String).input(),
-      dbNodeCount: (map['dbNodeCount'] as String).input(),
-      dbNodeStorage: (map['dbNodeStorage'] as String).input(),
-      encryptionKey: (map['encryptionKey'] as String).input(),
-      encryptionType: (map['encryptionType'] as String).input(),
-      engine: (map['engine'] as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      isExpired: (map['isExpired'] as String).input(),
-      lockMode: (map['lockMode'] as String).input(),
-      lockReason: (map['lockReason'] as String).input(),
-      maintainTime: (map['maintainTime'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      port: (map['port'] as int).input(),
-      publicConnectionString: (map['publicConnectionString'] as String).input(),
-      publicPort: (map['publicPort'] as String).input(),
-      scaleOutStatuses: (pulumi.Input.decodeList<GetDbClustersClusterScaleOutStatus>(map['scaleOutStatuses'], (value) => GetDbClustersClusterScaleOutStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: (map['status'] as String).input(),
-      storageType: (map['storageType'] as String).input(),
-      supportBackup: (map['supportBackup'] as int).input(),
-      supportHttpsPort: (map['supportHttpsPort'] as bool).input(),
-      supportMysqlPort: (map['supportMysqlPort'] as bool).input(),
-      vpcCloudInstanceId: (map['vpcCloudInstanceId'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      aliUid: pulumi.Input.fromValue(map['aliUid'] as String),
+      bid: pulumi.Input.fromValue(map['bid'] as String),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      commodityCode: pulumi.Input.fromValue(map['commodityCode'] as String),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      controlVersion: pulumi.Input.fromValue(map['controlVersion'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      dbClusterAccessWhiteLists: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetDbClustersClusterDbClusterAccessWhiteList>(
+          map['dbClusterAccessWhiteLists']!,
+          (value) => GetDbClustersClusterDbClusterAccessWhiteList.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      dbClusterDescription: pulumi.Input.fromValue(
+        map['dbClusterDescription'] as String,
+      ),
+      dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
+      dbClusterNetworkType: pulumi.Input.fromValue(
+        map['dbClusterNetworkType'] as String,
+      ),
+      dbClusterType: pulumi.Input.fromValue(map['dbClusterType'] as String),
+      dbNodeClass: pulumi.Input.fromValue(map['dbNodeClass'] as String),
+      dbNodeCount: pulumi.Input.fromValue(map['dbNodeCount'] as String),
+      dbNodeStorage: pulumi.Input.fromValue(map['dbNodeStorage'] as String),
+      encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
+      encryptionType: pulumi.Input.fromValue(map['encryptionType'] as String),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isExpired: pulumi.Input.fromValue(map['isExpired'] as String),
+      lockMode: pulumi.Input.fromValue(map['lockMode'] as String),
+      lockReason: pulumi.Input.fromValue(map['lockReason'] as String),
+      maintainTime: pulumi.Input.fromValue(map['maintainTime'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      publicConnectionString: pulumi.Input.fromValue(
+        map['publicConnectionString'] as String,
+      ),
+      publicPort: pulumi.Input.fromValue(map['publicPort'] as String),
+      scaleOutStatuses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetDbClustersClusterScaleOutStatus>(
+          map['scaleOutStatuses']!,
+          (value) => GetDbClustersClusterScaleOutStatus.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      storageType: pulumi.Input.fromValue(map['storageType'] as String),
+      supportBackup: pulumi.Input.fromValue(map['supportBackup'] as int),
+      supportHttpsPort: pulumi.Input.fromValue(map['supportHttpsPort'] as bool),
+      supportMysqlPort: pulumi.Input.fromValue(map['supportMysqlPort'] as bool),
+      vpcCloudInstanceId: pulumi.Input.fromValue(
+        map['vpcCloudInstanceId'] as String,
+      ),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

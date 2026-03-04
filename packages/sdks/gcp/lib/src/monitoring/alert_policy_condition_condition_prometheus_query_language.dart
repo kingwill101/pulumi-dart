@@ -14,17 +14,20 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// valid Prometheus label name.
   final pulumi.Input<String>? alertRule;
   final pulumi.Input<bool>? disableMetricValidation;
+
   /// Alerts are considered firing once their PromQL expression evaluated
   /// to be "true" for this long. Alerts whose PromQL expression was not
   /// evaluated to be "true" for long enough are considered pending. The
   /// default value is zero. Must be zero or positive.
   final pulumi.Input<String>? duration;
+
   /// How often this rule should be evaluated. Must be a positive multiple
   /// of 30 seconds or missing. The default value is 30 seconds. If this
   /// PrometheusQueryLanguageCondition was generated from a Prometheus
   /// alerting rule, then this value should be taken from the enclosing
   /// rule group.
   final pulumi.Input<String>? evaluationInterval;
+
   /// Labels to add to or overwrite in the PromQL query result. Label names
   /// must be valid.
   /// Label values can be templatized by using variables. The only available
@@ -33,10 +36,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// internal use. "labels" may be empty. This field is intended to be used
   /// for organizing and identifying the AlertPolicy.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The PromQL expression to evaluate. Every evaluation cycle this
   /// expression is evaluated at the current time, and all resultant time
   /// series become pending/firing alerts. This field must not be empty.
   final pulumi.Input<String> query;
+
   /// The rule group name of this alert in the corresponding Prometheus
   /// configuration file.
   /// Some external tools may require this field to be populated correctly
@@ -76,16 +81,43 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
     };
   }
 
-  factory AlertPolicyConditionConditionPrometheusQueryLanguage.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionPrometheusQueryLanguage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionPrometheusQueryLanguage(
-      alertRule: map['alertRule'] == null ? null : (map['alertRule']! as String).input(),
-      disableMetricValidation: map['disableMetricValidation'] == null ? null : (map['disableMetricValidation']! as bool).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      query: (map['query'] as String).input(),
-      ruleGroup: map['ruleGroup'] == null ? null : (map['ruleGroup']! as String).input(),
+      alertRule: (() {
+        final guardedValue = map['alertRule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableMetricValidation: (() {
+        final guardedValue = map['disableMetricValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      evaluationInterval: (() {
+        final guardedValue = map['evaluationInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      ruleGroup: (() {
+        final guardedValue = map['ruleGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

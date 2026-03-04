@@ -9,16 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegisteredLimitV3Args {
   /// Integer for the actual limit.
   final pulumi.Input<int> defaultLimit;
+
   /// Description of the limit
   final pulumi.Input<String>? description;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new registered limit.
   final pulumi.Input<String>? region;
+
   /// The resource that the limit applies to. On
   /// updates, either service_id, resource_name or region_id must be different than
   /// existing value otherwise it will raise 409.
   final pulumi.Input<String> resourceName;
+
   /// The service the limit applies to. On updates,
   /// either service_id, resource_name or region_id must be different than existing
   /// value otherwise it will raise 409.
@@ -50,12 +54,19 @@ class RegisteredLimitV3Args {
 
   factory RegisteredLimitV3Args.fromMap(Map<String, dynamic> map) {
     return RegisteredLimitV3Args(
-      defaultLimit: (map['defaultLimit'] as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
+      defaultLimit: pulumi.Input.fromValue(map['defaultLimit'] as int),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
-

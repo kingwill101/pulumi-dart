@@ -7,16 +7,22 @@ import 'shared_image_gallery_sharing.dart';
 class SharedImageGalleryState {
   /// A description for this Shared Image Gallery.
   final pulumi.Input<String>? description;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Shared Image Gallery. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which to create the Shared Image Gallery. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `sharing` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<SharedImageGallerySharing>? sharing;
+
   /// A mapping of tags to assign to the Shared Image Gallery.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The Unique Name for this Shared Image Gallery.
   final pulumi.Input<String>? uniqueName;
 
@@ -44,7 +50,11 @@ class SharedImageGalleryState {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'sharing': ?pulumi.Input.mapOptionalInputValue<SharedImageGallerySharing, Map<String, dynamic>>(sharing, (value) => value.toMap()),
+      'sharing':
+          ?pulumi.Input.mapOptionalInputValue<
+            SharedImageGallerySharing,
+            Map<String, dynamic>
+          >(sharing, (value) => value.toMap()),
       'tags': ?tags,
       'uniqueName': ?uniqueName,
     };
@@ -52,14 +62,47 @@ class SharedImageGalleryState {
 
   factory SharedImageGalleryState.fromMap(Map<String, dynamic> map) {
     return SharedImageGalleryState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      sharing: map['sharing'] == null ? null : (SharedImageGallerySharing.fromMap((map['sharing']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharing: (() {
+        final guardedValue = map['sharing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SharedImageGallerySharing.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uniqueName: (() {
+        final guardedValue = map['uniqueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

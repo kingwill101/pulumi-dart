@@ -8,16 +8,15 @@ enum EnvironmentServerType {
   kubernetes("Kubernetes"),
   muleSoftAPIManagement("MuleSoft API Management");
 
-  const EnvironmentServerType(this.value);
-  final String value;
+  const EnvironmentServerType(this.wireValue);
+  final String wireValue;
 
   static EnvironmentServerType fromValue(String value) {
     for (final item in EnvironmentServerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentServerType value: $value');
   }
 }
-

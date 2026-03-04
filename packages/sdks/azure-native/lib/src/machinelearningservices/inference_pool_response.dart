@@ -8,10 +8,13 @@ import 'string_string_key_value_pair_response.dart';
 class InferencePoolResponse {
   /// Description of the resource.
   final pulumi.Input<String>? description;
+
   /// Property dictionary. Properties can be added, but not removed or altered.
   final pulumi.Input<List<StringStringKeyValuePairResponse>>? properties;
+
   /// Provisioning state for the pool.
   final pulumi.Input<String> provisioningState;
+
   /// Gets or sets ScaleUnitConfiguration for the inference pool. Used if PoolType=ScaleUnit.
   final pulumi.Input<ScaleUnitConfigurationResponse>? scaleUnitConfiguration;
 
@@ -30,19 +33,58 @@ class InferencePoolResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'properties': ?pulumi.Input.mapOptionalInputValue<List<StringStringKeyValuePairResponse>, List<Map<String, dynamic>>>(properties, (value) => pulumi.Input.encodeList<StringStringKeyValuePairResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StringStringKeyValuePairResponse>,
+            List<Map<String, dynamic>>
+          >(
+            properties,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StringStringKeyValuePairResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
-      'scaleUnitConfiguration': ?pulumi.Input.mapOptionalInputValue<ScaleUnitConfigurationResponse, Map<String, dynamic>>(scaleUnitConfiguration, (value) => value.toMap()),
+      'scaleUnitConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScaleUnitConfigurationResponse,
+            Map<String, dynamic>
+          >(scaleUnitConfiguration, (value) => value.toMap()),
     };
   }
 
   factory InferencePoolResponse.fromMap(Map<String, dynamic> map) {
     return InferencePoolResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePairResponse>(map['properties']!, (value) => StringStringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      scaleUnitConfiguration: map['scaleUnitConfiguration'] == null ? null : (ScaleUnitConfigurationResponse.fromMap((map['scaleUnitConfiguration']! as Map).cast<String, dynamic>())).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StringStringKeyValuePairResponse>(
+            guardedValue,
+            (value) => StringStringKeyValuePairResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      scaleUnitConfiguration: (() {
+        final guardedValue = map['scaleUnitConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScaleUnitConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

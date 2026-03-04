@@ -8,12 +8,16 @@ import 'target_action_type.dart';
 class ApprovalRule extends pulumi.CustomResource {
   /// The approval rule configuration.
   late final pulumi.Output<ApprovalRuleConfig> approvalRuleConfig;
+
   /// Whether the approval rule is enabled.
   late final pulumi.Output<bool> enabled;
+
   /// The environment this rule applies to.
   late final pulumi.Output<EnvironmentIdentifier> environmentIdentifier;
+
   /// Name of the approval rule.
   late final pulumi.Output<String> name;
+
   /// The type of action this rule applies to.
   late final pulumi.Output<List<TargetActionType>> targetActionTypes;
 
@@ -26,15 +30,21 @@ class ApprovalRule extends pulumi.CustomResource {
     ApprovalRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:ApprovalRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalRuleConfig = registerOutput<ApprovalRuleConfig>('approvalRuleConfig');
-    this.enabled = registerOutput<bool>('enabled');
-    this.environmentIdentifier = registerOutput<EnvironmentIdentifier>('environmentIdentifier');
+         'pulumiservice:index:ApprovalRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalRuleConfig = registerOutput<ApprovalRuleConfig>(
+      'approvalRuleConfig',
+    );
+    enabled = registerOutput<bool>('enabled');
+    environmentIdentifier = registerOutput<EnvironmentIdentifier>(
+      'environmentIdentifier',
+    );
     this.name = registerOutput<String>('name');
-    this.targetActionTypes = registerOutput<List<TargetActionType>>('targetActionTypes');
+    targetActionTypes = registerOutput<List<TargetActionType>>(
+      'targetActionTypes',
+    );
   }
 }

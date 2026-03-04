@@ -7,8 +7,10 @@ class ListenerDefaultActionFixedResponse {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> contentType;
+
   /// Message body.
   final pulumi.Input<String>? messageBody;
+
   /// HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
   final pulumi.Input<String>? statusCode;
 
@@ -32,10 +34,17 @@ class ListenerDefaultActionFixedResponse {
 
   factory ListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionFixedResponse(
-      contentType: (map['contentType'] as String).input(),
-      messageBody: map['messageBody'] == null ? null : ((map['messageBody'] as String).input()).input(),
-      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      messageBody: (() {
+        final guardedValue = map['messageBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

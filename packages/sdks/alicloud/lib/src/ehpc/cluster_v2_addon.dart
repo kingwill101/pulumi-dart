@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterV2Addon {
   /// Customize the specific configuration information of the service component.
   final pulumi.Input<String> name;
+
   /// Customize the resource configuration of the service component.
   final pulumi.Input<String>? resourcesSpec;
+
   /// Customize the service configuration of the service component.
   final pulumi.Input<String>? servicesSpec;
+
   /// Customize the service component version.
   final pulumi.Input<String> version;
 
@@ -35,11 +38,18 @@ class ClusterV2Addon {
 
   factory ClusterV2Addon.fromMap(Map<String, dynamic> map) {
     return ClusterV2Addon(
-      name: (map['name'] as String).input(),
-      resourcesSpec: map['resourcesSpec'] == null ? null : (map['resourcesSpec']! as String).input(),
-      servicesSpec: map['servicesSpec'] == null ? null : (map['servicesSpec']! as String).input(),
-      version: (map['version'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourcesSpec: (() {
+        final guardedValue = map['resourcesSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicesSpec: (() {
+        final guardedValue = map['servicesSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

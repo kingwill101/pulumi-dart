@@ -11,20 +11,28 @@ import 'container_service_public_domain_names.dart';
 class ContainerServiceArgs {
   /// Whether to disable the container service. Defaults to `false`.
   final pulumi.Input<bool>? isDisabled;
+
   /// Name of the container service. Names must be of length 1 to 63, and be unique within each AWS Region in your Lightsail account.
   final pulumi.Input<String>? name;
+
   /// Power specification for the container service. The power specifies the amount of memory, the number of vCPUs, and the monthly price of each node of the container service. Possible values: `nano`, `micro`, `small`, `medium`, `large`, `xlarge`.
   final pulumi.Input<String> power;
+
   /// Configuration for the container service to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.
-  final pulumi.Input<ContainerServicePrivateRegistryAccess>? privateRegistryAccess;
+  final pulumi.Input<ContainerServicePrivateRegistryAccess>?
+  privateRegistryAccess;
+
   /// Public domain names to use with the container service, such as example.com and www.example.com. You can specify up to four public domain names for a container service. The domain names that you specify are used when you create a deployment with a container configured as the public endpoint of your container service. If you don't specify public domain names, then you can use the default domain of the container service. See below.
   final pulumi.Input<ContainerServicePublicDomainNames>? publicDomainNames;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Scale specification for the container service. The scale specifies the allocated compute nodes of the container service.
   ///
   /// The following arguments are optional:
   final pulumi.Input<int> scale;
+
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -53,8 +61,16 @@ class ContainerServiceArgs {
       'isDisabled': ?isDisabled,
       'name': ?name,
       'power': power,
-      'privateRegistryAccess': ?pulumi.Input.mapOptionalInputValue<ContainerServicePrivateRegistryAccess, Map<String, dynamic>>(privateRegistryAccess, (value) => value.toMap()),
-      'publicDomainNames': ?pulumi.Input.mapOptionalInputValue<ContainerServicePublicDomainNames, Map<String, dynamic>>(publicDomainNames, (value) => value.toMap()),
+      'privateRegistryAccess':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerServicePrivateRegistryAccess,
+            Map<String, dynamic>
+          >(privateRegistryAccess, (value) => value.toMap()),
+      'publicDomainNames':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerServicePublicDomainNames,
+            Map<String, dynamic>
+          >(publicDomainNames, (value) => value.toMap()),
       'region': ?region,
       'scale': scale,
       'tags': ?tags,
@@ -63,15 +79,48 @@ class ContainerServiceArgs {
 
   factory ContainerServiceArgs.fromMap(Map<String, dynamic> map) {
     return ContainerServiceArgs(
-      isDisabled: map['isDisabled'] == null ? null : ((map['isDisabled'] as bool).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      power: (map['power'] as String).input(),
-      privateRegistryAccess: map['privateRegistryAccess'] == null ? null : ((ContainerServicePrivateRegistryAccess.fromMap((map['privateRegistryAccess']! as Map).cast<String, dynamic>())).input()).input(),
-      publicDomainNames: map['publicDomainNames'] == null ? null : ((ContainerServicePublicDomainNames.fromMap((map['publicDomainNames']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scale: (map['scale'] as int).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      isDisabled: (() {
+        final guardedValue = map['isDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      power: pulumi.Input.fromValue(map['power'] as String),
+      privateRegistryAccess: (() {
+        final guardedValue = map['privateRegistryAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerServicePrivateRegistryAccess.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      publicDomainNames: (() {
+        final guardedValue = map['publicDomainNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerServicePublicDomainNames.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scale: pulumi.Input.fromValue(map['scale'] as int),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

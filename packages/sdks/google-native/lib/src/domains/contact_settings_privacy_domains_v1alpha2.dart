@@ -5,16 +5,17 @@ enum ContactSettingsPrivacyDomainsV1alpha2 {
   privateContactData("PRIVATE_CONTACT_DATA"),
   redactedContactData("REDACTED_CONTACT_DATA");
 
-  const ContactSettingsPrivacyDomainsV1alpha2(this.value);
-  final String value;
+  const ContactSettingsPrivacyDomainsV1alpha2(this.wireValue);
+  final String wireValue;
 
   static ContactSettingsPrivacyDomainsV1alpha2 fromValue(String value) {
     for (final item in ContactSettingsPrivacyDomainsV1alpha2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ContactSettingsPrivacyDomainsV1alpha2 value: $value');
+    throw ArgumentError(
+      'Unknown ContactSettingsPrivacyDomainsV1alpha2 value: $value',
+    );
   }
 }
-

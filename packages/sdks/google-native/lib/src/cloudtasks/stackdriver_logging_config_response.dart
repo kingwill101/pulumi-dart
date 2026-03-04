@@ -9,20 +9,15 @@ class StackdriverLoggingConfigResponse {
 
   /// Creates a new [StackdriverLoggingConfigResponse].
   /// [samplingRatio] Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
-  StackdriverLoggingConfigResponse({
-    required this.samplingRatio,
-  });
+  StackdriverLoggingConfigResponse({required this.samplingRatio});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'samplingRatio': samplingRatio,
-    };
+    return <String, dynamic>{'samplingRatio': samplingRatio};
   }
 
   factory StackdriverLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return StackdriverLoggingConfigResponse(
-      samplingRatio: (map['samplingRatio'] as double).input(),
+      samplingRatio: pulumi.Input.fromValue(map['samplingRatio'] as double),
     );
   }
 }
-

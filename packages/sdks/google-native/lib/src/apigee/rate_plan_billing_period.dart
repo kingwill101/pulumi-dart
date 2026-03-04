@@ -4,16 +4,15 @@ enum RatePlanBillingPeriod {
   weekly("WEEKLY"),
   monthly("MONTHLY");
 
-  const RatePlanBillingPeriod(this.value);
-  final String value;
+  const RatePlanBillingPeriod(this.wireValue);
+  final String wireValue;
 
   static RatePlanBillingPeriod fromValue(String value) {
     for (final item in RatePlanBillingPeriod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RatePlanBillingPeriod value: $value');
   }
 }
-

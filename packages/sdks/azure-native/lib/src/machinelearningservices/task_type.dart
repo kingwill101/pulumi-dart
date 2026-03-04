@@ -11,16 +11,15 @@ enum TaskType {
   valueTextClassificationMultilabel("TextClassificationMultilabel"),
   valueTextNER("TextNER");
 
-  const TaskType(this.value);
-  final String value;
+  const TaskType(this.wireValue);
+  final String wireValue;
 
   static TaskType fromValue(String value) {
     for (final item in TaskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TaskType value: $value');
   }
 }
-

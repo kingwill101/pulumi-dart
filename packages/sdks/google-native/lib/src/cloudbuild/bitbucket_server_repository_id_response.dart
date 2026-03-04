@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BitbucketServerRepositoryIdResponse {
   /// Identifier for the project storing the repository.
   final pulumi.Input<String> projectKey;
+
   /// Identifier for the repository.
   final pulumi.Input<String> repoSlug;
+
   /// The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
   final pulumi.Input<int> webhookId;
 
@@ -29,12 +31,13 @@ class BitbucketServerRepositoryIdResponse {
     };
   }
 
-  factory BitbucketServerRepositoryIdResponse.fromMap(Map<String, dynamic> map) {
+  factory BitbucketServerRepositoryIdResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BitbucketServerRepositoryIdResponse(
-      projectKey: (map['projectKey'] as String).input(),
-      repoSlug: (map['repoSlug'] as String).input(),
-      webhookId: (map['webhookId'] as int).input(),
+      projectKey: pulumi.Input.fromValue(map['projectKey'] as String),
+      repoSlug: pulumi.Input.fromValue(map['repoSlug'] as String),
+      webhookId: pulumi.Input.fromValue(map['webhookId'] as int),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum EntitySystem {
   cloudStorage("CLOUD_STORAGE"),
   bigquery("BIGQUERY");
 
-  const EntitySystem(this.value);
-  final String value;
+  const EntitySystem(this.wireValue);
+  final String wireValue;
 
   static EntitySystem fromValue(String value) {
     for (final item in EntitySystem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntitySystem value: $value');
   }
 }
-

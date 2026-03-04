@@ -9,16 +9,17 @@ enum GoogleCloudDocumentaiV1DocumentProvenanceType {
   evalApproved("EVAL_APPROVED"),
   evalSkipped("EVAL_SKIPPED");
 
-  const GoogleCloudDocumentaiV1DocumentProvenanceType(this.value);
-  final String value;
+  const GoogleCloudDocumentaiV1DocumentProvenanceType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDocumentaiV1DocumentProvenanceType fromValue(String value) {
     for (final item in GoogleCloudDocumentaiV1DocumentProvenanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentProvenanceType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDocumentaiV1DocumentProvenanceType value: $value',
+    );
   }
 }
-

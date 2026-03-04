@@ -158,14 +158,19 @@ import 'access_policy_args.dart';
 class AccessPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// An description of the access policy.
   late final pulumi.Output<String?> description;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The objectId of the principal in Azure Active Directory.
   late final pulumi.Output<String?> principalObjectId;
+
   /// The list of roles the principal is assigned on the environment.
   late final pulumi.Output<List<String>?> roles;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -178,16 +183,16 @@ class AccessPolicy extends pulumi.CustomResource {
     AccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:timeseriesinsights:AccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
+         'azure-native:timeseriesinsights:AccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.principalObjectId = registerOutput<String?>('principalObjectId');
-    this.roles = registerOutput<List<String>?>('roles');
-    this.type = registerOutput<String>('type');
+    principalObjectId = registerOutput<String?>('principalObjectId');
+    roles = registerOutput<List<String>?>('roles');
+    type = registerOutput<String>('type');
   }
 }

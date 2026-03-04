@@ -10,14 +10,18 @@ class GetSecretVersionArgs {
   /// If set to `false`, the `secret_data`
   /// will not be fetched. Default is `true`.
   final pulumi.Input<bool>? fetchSecretData;
+
   /// If set to `true`, the secret data is
   /// expected to be base64-encoded string.
   final pulumi.Input<bool>? isSecretDataBase64;
+
   /// The project to get the secret version for. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The secret to get the secret version for.
   final pulumi.Input<String> secret;
+
   /// The version of the secret to get. If it
   /// is not provided, the latest version is retrieved.
   final pulumi.Input<String>? version;
@@ -48,12 +52,27 @@ class GetSecretVersionArgs {
 
   factory GetSecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionArgs(
-      fetchSecretData: map['fetchSecretData'] == null ? null : (map['fetchSecretData']! as bool).input(),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64']! as bool).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      secret: (map['secret'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      fetchSecretData: (() {
+        final guardedValue = map['fetchSecretData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isSecretDataBase64: (() {
+        final guardedValue = map['isSecretDataBase64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secret: pulumi.Input.fromValue(map['secret'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

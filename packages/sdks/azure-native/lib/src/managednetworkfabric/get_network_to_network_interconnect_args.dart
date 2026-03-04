@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkToNetworkInterconnectArgs {
   /// Name of the Network Fabric.
   final pulumi.Input<String> networkFabricName;
+
   /// Name of the Network to Network Interconnect.
   final pulumi.Input<String> networkToNetworkInterconnectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,19 @@ class GetNetworkToNetworkInterconnectArgs {
     };
   }
 
-  factory GetNetworkToNetworkInterconnectArgs.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkToNetworkInterconnectArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkToNetworkInterconnectArgs(
-      networkFabricName: (map['networkFabricName'] as String).input(),
-      networkToNetworkInterconnectName: (map['networkToNetworkInterconnectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkFabricName: pulumi.Input.fromValue(
+        map['networkFabricName'] as String,
+      ),
+      networkToNetworkInterconnectName: pulumi.Input.fromValue(
+        map['networkToNetworkInterconnectName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

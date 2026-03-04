@@ -4,16 +4,15 @@ enum SizeTypes {
   valueMedium("Medium"),
   valueLarge("Large");
 
-  const SizeTypes(this.value);
-  final String value;
+  const SizeTypes(this.wireValue);
+  final String wireValue;
 
   static SizeTypes fromValue(String value) {
     for (final item in SizeTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SizeTypes value: $value');
   }
 }
-

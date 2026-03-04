@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LockConfigResponse {
   /// Indicates whether or not the connection is locked.
   final pulumi.Input<bool> locked;
+
   /// Describes why a connection is locked.
   final pulumi.Input<String> reason;
 
   /// Creates a new [LockConfigResponse].
   /// [locked] Indicates whether or not the connection is locked.
   /// [reason] Describes why a connection is locked.
-  LockConfigResponse({
-    required this.locked,
-    required this.reason,
-  });
+  LockConfigResponse({required this.locked, required this.reason});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'locked': locked,
-      'reason': reason,
-    };
+    return <String, dynamic>{'locked': locked, 'reason': reason};
   }
 
   factory LockConfigResponse.fromMap(Map<String, dynamic> map) {
     return LockConfigResponse(
-      locked: (map['locked'] as bool).input(),
-      reason: (map['reason'] as String).input(),
+      locked: pulumi.Input.fromValue(map['locked'] as bool),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
     );
   }
 }
-

@@ -448,24 +448,34 @@ import 'data_quality_ruleset_target_table.dart';
 class DataQualityRuleset extends pulumi.CustomResource {
   /// ARN of the Glue Data Quality Ruleset.
   late final pulumi.Output<String> arn;
+
   /// The time and date that this data quality ruleset was created.
   late final pulumi.Output<String> createdOn;
+
   /// Description of the data quality ruleset.
   late final pulumi.Output<String?> description;
+
   /// The time and date that this data quality ruleset was created.
   late final pulumi.Output<String> lastModifiedOn;
+
   /// Name of the data quality ruleset.
   late final pulumi.Output<String> name;
+
   /// When a ruleset was created from a recommendation run, this run ID is generated to link the two together.
   late final pulumi.Output<String> recommendationRunId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   late final pulumi.Output<String> ruleset;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
   late final pulumi.Output<DataQualityRulesetTargetTable?> targetTable;
 
@@ -478,22 +488,22 @@ class DataQualityRuleset extends pulumi.CustomResource {
     DataQualityRulesetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:glue/dataQualityRuleset:DataQualityRuleset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.description = registerOutput<String?>('description');
-    this.lastModifiedOn = registerOutput<String>('lastModifiedOn');
+         'aws:glue/dataQualityRuleset:DataQualityRuleset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdOn = registerOutput<String>('createdOn');
+    description = registerOutput<String?>('description');
+    lastModifiedOn = registerOutput<String>('lastModifiedOn');
     this.name = registerOutput<String>('name');
-    this.recommendationRunId = registerOutput<String>('recommendationRunId');
-    this.region = registerOutput<String>('region');
-    this.ruleset = registerOutput<String>('ruleset');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetTable = registerOutput<DataQualityRulesetTargetTable?>('targetTable');
+    recommendationRunId = registerOutput<String>('recommendationRunId');
+    region = registerOutput<String>('region');
+    ruleset = registerOutput<String>('ruleset');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetTable = registerOutput<DataQualityRulesetTargetTable?>('targetTable');
   }
 
   /// Gets an existing [DataQualityRuleset] resource's state with the given [name] and [id].
@@ -514,21 +524,21 @@ class DataQualityRuleset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:glue/dataQualityRuleset:DataQualityRuleset',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.description = registerOutput<String?>('description');
-    this.lastModifiedOn = registerOutput<String>('lastModifiedOn');
+         'aws:glue/dataQualityRuleset:DataQualityRuleset',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    createdOn = registerOutput<String>('createdOn');
+    description = registerOutput<String?>('description');
+    lastModifiedOn = registerOutput<String>('lastModifiedOn');
     this.name = registerOutput<String>('name');
-    this.recommendationRunId = registerOutput<String>('recommendationRunId');
-    this.region = registerOutput<String>('region');
-    this.ruleset = registerOutput<String>('ruleset');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetTable = registerOutput<DataQualityRulesetTargetTable?>('targetTable');
+    recommendationRunId = registerOutput<String>('recommendationRunId');
+    region = registerOutput<String>('region');
+    ruleset = registerOutput<String>('ruleset');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetTable = registerOutput<DataQualityRulesetTargetTable?>('targetTable');
   }
 }

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscalingSettingsResponse {
   /// The algorithm to use for autoscaling.
   final pulumi.Input<String> algorithm;
+
   /// The maximum number of workers to cap scaling at.
   final pulumi.Input<int> maxNumWorkers;
 
@@ -26,9 +27,8 @@ class AutoscalingSettingsResponse {
 
   factory AutoscalingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingSettingsResponse(
-      algorithm: (map['algorithm'] as String).input(),
-      maxNumWorkers: (map['maxNumWorkers'] as int).input(),
+      algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
+      maxNumWorkers: pulumi.Input.fromValue(map['maxNumWorkers'] as int),
     );
   }
 }
-

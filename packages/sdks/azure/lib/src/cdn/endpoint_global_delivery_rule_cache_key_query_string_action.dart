@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointGlobalDeliveryRuleCacheKeyQueryStringAction {
   /// The behavior of the cache key for query strings. Valid values are `Exclude`, `ExcludeAll`, `Include` and `IncludeAll`.
   final pulumi.Input<String> behavior;
+
   /// Comma separated list of parameter values.
   final pulumi.Input<String>? parameters;
 
@@ -17,17 +18,19 @@ class EndpointGlobalDeliveryRuleCacheKeyQueryStringAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'behavior': behavior,
-      'parameters': ?parameters,
-    };
+    return <String, dynamic>{'behavior': behavior, 'parameters': ?parameters};
   }
 
-  factory EndpointGlobalDeliveryRuleCacheKeyQueryStringAction.fromMap(Map<String, dynamic> map) {
+  factory EndpointGlobalDeliveryRuleCacheKeyQueryStringAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointGlobalDeliveryRuleCacheKeyQueryStringAction(
-      behavior: (map['behavior'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      behavior: pulumi.Input.fromValue(map['behavior'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

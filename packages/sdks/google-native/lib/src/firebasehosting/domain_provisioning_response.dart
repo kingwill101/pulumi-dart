@@ -8,18 +8,25 @@ import 'cert_http_challenge_response.dart';
 class DomainProvisioningResponse {
   /// The TXT records (for the certificate challenge) that were found at the last DNS fetch.
   final pulumi.Input<List<String>> certChallengeDiscoveredTxt;
+
   /// The DNS challenge for generating a certificate.
   final pulumi.Input<CertDnsChallengeResponse> certChallengeDns;
+
   /// The HTTP challenge for generating a certificate.
   final pulumi.Input<CertHttpChallengeResponse> certChallengeHttp;
+
   /// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain.
   final pulumi.Input<String> certStatus;
+
   /// The IPs found at the last DNS fetch.
   final pulumi.Input<List<String>> discoveredIps;
+
   /// The time at which the last DNS fetch occurred.
   final pulumi.Input<String> dnsFetchTime;
+
   /// The DNS record match status as of the last DNS fetch.
   final pulumi.Input<String> dnsStatus;
+
   /// The list of IPs to which the domain is expected to resolve.
   final pulumi.Input<List<String>> expectedIps;
 
@@ -46,8 +53,16 @@ class DomainProvisioningResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certChallengeDiscoveredTxt': certChallengeDiscoveredTxt,
-      'certChallengeDns': pulumi.Input.mapInputValue<CertDnsChallengeResponse, Map<String, dynamic>>(certChallengeDns, (value) => value.toMap()),
-      'certChallengeHttp': pulumi.Input.mapInputValue<CertHttpChallengeResponse, Map<String, dynamic>>(certChallengeHttp, (value) => value.toMap()),
+      'certChallengeDns':
+          pulumi.Input.mapInputValue<
+            CertDnsChallengeResponse,
+            Map<String, dynamic>
+          >(certChallengeDns, (value) => value.toMap()),
+      'certChallengeHttp':
+          pulumi.Input.mapInputValue<
+            CertHttpChallengeResponse,
+            Map<String, dynamic>
+          >(certChallengeHttp, (value) => value.toMap()),
       'certStatus': certStatus,
       'discoveredIps': discoveredIps,
       'dnsFetchTime': dnsFetchTime,
@@ -58,15 +73,28 @@ class DomainProvisioningResponse {
 
   factory DomainProvisioningResponse.fromMap(Map<String, dynamic> map) {
     return DomainProvisioningResponse(
-      certChallengeDiscoveredTxt: ((map['certChallengeDiscoveredTxt'] as List).cast<String>()).input(),
-      certChallengeDns: (CertDnsChallengeResponse.fromMap((map['certChallengeDns'] as Map).cast<String, dynamic>())).input(),
-      certChallengeHttp: (CertHttpChallengeResponse.fromMap((map['certChallengeHttp'] as Map).cast<String, dynamic>())).input(),
-      certStatus: (map['certStatus'] as String).input(),
-      discoveredIps: ((map['discoveredIps'] as List).cast<String>()).input(),
-      dnsFetchTime: (map['dnsFetchTime'] as String).input(),
-      dnsStatus: (map['dnsStatus'] as String).input(),
-      expectedIps: ((map['expectedIps'] as List).cast<String>()).input(),
+      certChallengeDiscoveredTxt: pulumi.Input.fromValue(
+        (map['certChallengeDiscoveredTxt'] as List).cast<String>(),
+      ),
+      certChallengeDns: pulumi.Input.fromValue(
+        CertDnsChallengeResponse.fromMap(
+          (map['certChallengeDns']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      certChallengeHttp: pulumi.Input.fromValue(
+        CertHttpChallengeResponse.fromMap(
+          (map['certChallengeHttp']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      certStatus: pulumi.Input.fromValue(map['certStatus'] as String),
+      discoveredIps: pulumi.Input.fromValue(
+        (map['discoveredIps'] as List).cast<String>(),
+      ),
+      dnsFetchTime: pulumi.Input.fromValue(map['dnsFetchTime'] as String),
+      dnsStatus: pulumi.Input.fromValue(map['dnsStatus'] as String),
+      expectedIps: pulumi.Input.fromValue(
+        (map['expectedIps'] as List).cast<String>(),
+      ),
     );
   }
 }
-

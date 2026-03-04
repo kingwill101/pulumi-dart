@@ -6,7 +6,7 @@ import 'auto_snap_shot_policy_state.dart';
 ///
 /// For information about Dbfs Auto Snap Shot Policy and how to use it.
 ///
-/// > **NOTE:** Available since v1.202.0.
+/// &gt; **NOTE:** Available since v1.202.0.
 ///
 /// ## Example Usage
 ///
@@ -143,22 +143,31 @@ import 'auto_snap_shot_policy_state.dart';
 class AutoSnapShotPolicy extends pulumi.CustomResource {
   /// The number of database file systems set by the automatic snapshot policy.
   late final pulumi.Output<int> appliedDbfsNumber;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Last modification time of automatic snapshot policy
   late final pulumi.Output<String> lastModified;
+
   /// Automatic snapshot policy ID
   late final pulumi.Output<String> policyId;
+
   /// Automatic snapshot policy name
   late final pulumi.Output<String> policyName;
+
   /// A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
   late final pulumi.Output<List<String>> repeatWeekdays;
+
   /// Automatic snapshot retention days.
   late final pulumi.Output<int> retentionDays;
+
   /// Automatic snapshot policy status
   late final pulumi.Output<String> status;
+
   /// Automatic snapshot policy status details
   late final pulumi.Output<String> statusDetail;
+
   /// The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
   late final pulumi.Output<List<String>> timePoints;
 
@@ -171,21 +180,21 @@ class AutoSnapShotPolicy extends pulumi.CustomResource {
     AutoSnapShotPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appliedDbfsNumber = registerOutput<int>('appliedDbfsNumber');
-    this.createTime = registerOutput<String>('createTime');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.policyId = registerOutput<String>('policyId');
-    this.policyName = registerOutput<String>('policyName');
-    this.repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
-    this.retentionDays = registerOutput<int>('retentionDays');
-    this.status = registerOutput<String>('status');
-    this.statusDetail = registerOutput<String>('statusDetail');
-    this.timePoints = registerOutput<List<String>>('timePoints');
+         'alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appliedDbfsNumber = registerOutput<int>('appliedDbfsNumber');
+    createTime = registerOutput<String>('createTime');
+    lastModified = registerOutput<String>('lastModified');
+    policyId = registerOutput<String>('policyId');
+    policyName = registerOutput<String>('policyName');
+    repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
+    retentionDays = registerOutput<int>('retentionDays');
+    status = registerOutput<String>('status');
+    statusDetail = registerOutput<String>('statusDetail');
+    timePoints = registerOutput<List<String>>('timePoints');
   }
 
   /// Gets an existing [AutoSnapShotPolicy] resource's state with the given [name] and [id].
@@ -206,20 +215,20 @@ class AutoSnapShotPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appliedDbfsNumber = registerOutput<int>('appliedDbfsNumber');
-    this.createTime = registerOutput<String>('createTime');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.policyId = registerOutput<String>('policyId');
-    this.policyName = registerOutput<String>('policyName');
-    this.repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
-    this.retentionDays = registerOutput<int>('retentionDays');
-    this.status = registerOutput<String>('status');
-    this.statusDetail = registerOutput<String>('statusDetail');
-    this.timePoints = registerOutput<List<String>>('timePoints');
+         'alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appliedDbfsNumber = registerOutput<int>('appliedDbfsNumber');
+    createTime = registerOutput<String>('createTime');
+    lastModified = registerOutput<String>('lastModified');
+    policyId = registerOutput<String>('policyId');
+    policyName = registerOutput<String>('policyName');
+    repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
+    retentionDays = registerOutput<int>('retentionDays');
+    status = registerOutput<String>('status');
+    statusDetail = registerOutput<String>('statusDetail');
+    timePoints = registerOutput<List<String>>('timePoints');
   }
 }

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualDiskControllerResponse {
   /// Controller's id
   final pulumi.Input<String> id;
+
   /// The display name of Controller
   final pulumi.Input<String> name;
+
   /// dik controller subtype (VMWARE_PARAVIRTUAL, BUS_PARALLEL, LSI_PARALLEL, LSI_SAS)
   final pulumi.Input<String> subType;
+
   /// disk controller type (SCSI)
   final pulumi.Input<String> type;
 
@@ -36,11 +39,10 @@ class VirtualDiskControllerResponse {
 
   factory VirtualDiskControllerResponse.fromMap(Map<String, dynamic> map) {
     return VirtualDiskControllerResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      subType: (map['subType'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      subType: pulumi.Input.fromValue(map['subType'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

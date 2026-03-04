@@ -247,24 +247,34 @@ import 'system_data_response.dart';
 class Address extends pulumi.CustomResource {
   /// Type of address based on its usage context.
   late final pulumi.Output<String?> addressClassification;
+
   /// Status of address validation.
   late final pulumi.Output<String> addressValidationStatus;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Contact details for the address.
   late final pulumi.Output<ContactDetailsResponse?> contactDetails;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// Shipping details for the address.
   late final pulumi.Output<ShippingAddressResponse?> shippingAddress;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -277,21 +287,23 @@ class Address extends pulumi.CustomResource {
     AddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:edgeorder:Address',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressClassification = registerOutput<String?>('addressClassification');
-    this.addressValidationStatus = registerOutput<String>('addressValidationStatus');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contactDetails = registerOutput<ContactDetailsResponse?>('contactDetails');
-    this.location = registerOutput<String>('location');
+         'azure-native:edgeorder:Address',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressClassification = registerOutput<String?>('addressClassification');
+    addressValidationStatus = registerOutput<String>('addressValidationStatus');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contactDetails = registerOutput<ContactDetailsResponse?>('contactDetails');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.shippingAddress = registerOutput<ShippingAddressResponse?>('shippingAddress');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    shippingAddress = registerOutput<ShippingAddressResponse?>(
+      'shippingAddress',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

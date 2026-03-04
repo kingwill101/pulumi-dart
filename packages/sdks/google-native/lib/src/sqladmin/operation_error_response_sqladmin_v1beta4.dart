@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OperationErrorResponseSqladminV1beta4 {
   /// Identifies the specific error that occurred.
   final pulumi.Input<String> code;
+
   /// This is always `sql#operationError`.
   final pulumi.Input<String> kind;
+
   /// Additional information about the error encountered.
   final pulumi.Input<String> message;
 
@@ -22,19 +24,16 @@ class OperationErrorResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'kind': kind,
-      'message': message,
-    };
+    return <String, dynamic>{'code': code, 'kind': kind, 'message': message};
   }
 
-  factory OperationErrorResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory OperationErrorResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OperationErrorResponseSqladminV1beta4(
-      code: (map['code'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

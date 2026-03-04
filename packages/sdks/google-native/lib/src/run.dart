@@ -1,5 +1,3 @@
-library module_run;
-
 export 'run/addressable.dart';
 export 'run/addressable_response.dart';
 export 'run/audit_config.dart';

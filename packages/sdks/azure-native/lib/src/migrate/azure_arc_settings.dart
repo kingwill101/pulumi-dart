@@ -7,8 +7,10 @@ import 'azure_arc_management_settings.dart';
 class AzureArcSettings {
   /// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
   final pulumi.Input<String> azureArcState;
+
   /// Gets Azure arc labour cost percentage.
   final pulumi.Input<double>? laborCostPercentage;
+
   /// Management settings.
   final pulumi.Input<AzureArcManagementSettings>? managementSettings;
 
@@ -26,16 +28,31 @@ class AzureArcSettings {
     return <String, dynamic>{
       'azureArcState': azureArcState,
       'laborCostPercentage': ?laborCostPercentage,
-      'managementSettings': ?pulumi.Input.mapOptionalInputValue<AzureArcManagementSettings, Map<String, dynamic>>(managementSettings, (value) => value.toMap()),
+      'managementSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureArcManagementSettings,
+            Map<String, dynamic>
+          >(managementSettings, (value) => value.toMap()),
     };
   }
 
   factory AzureArcSettings.fromMap(Map<String, dynamic> map) {
     return AzureArcSettings(
-      azureArcState: (map['azureArcState'] as String).input(),
-      laborCostPercentage: map['laborCostPercentage'] == null ? null : (map['laborCostPercentage']! as double).input(),
-      managementSettings: map['managementSettings'] == null ? null : (AzureArcManagementSettings.fromMap((map['managementSettings']! as Map).cast<String, dynamic>())).input(),
+      azureArcState: pulumi.Input.fromValue(map['azureArcState'] as String),
+      laborCostPercentage: (() {
+        final guardedValue = map['laborCostPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      managementSettings: (() {
+        final guardedValue = map['managementSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureArcManagementSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

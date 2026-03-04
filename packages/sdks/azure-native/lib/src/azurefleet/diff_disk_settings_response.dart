@@ -8,6 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiffDiskSettingsResponse {
   /// Specifies the ephemeral disk settings for operating system disk.
   final pulumi.Input<String>? option;
+
   /// Specifies the ephemeral disk placement for operating system disk. Possible
   /// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
   /// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
@@ -20,23 +21,24 @@ class DiffDiskSettingsResponse {
   /// Creates a new [DiffDiskSettingsResponse].
   /// [option] Specifies the ephemeral disk settings for operating system disk.
   /// [placement] Specifies the ephemeral disk placement for operating system disk. Possible
-  DiffDiskSettingsResponse({
-    this.option,
-    this.placement,
-  });
+  DiffDiskSettingsResponse({this.option, this.placement});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'option': ?option,
-      'placement': ?placement,
-    };
+    return <String, dynamic>{'option': ?option, 'placement': ?placement};
   }
 
   factory DiffDiskSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DiffDiskSettingsResponse(
-      option: map['option'] == null ? null : (map['option']! as String).input(),
-      placement: map['placement'] == null ? null : (map['placement']! as String).input(),
+      option: (() {
+        final guardedValue = map['option'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      placement: (() {
+        final guardedValue = map['placement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

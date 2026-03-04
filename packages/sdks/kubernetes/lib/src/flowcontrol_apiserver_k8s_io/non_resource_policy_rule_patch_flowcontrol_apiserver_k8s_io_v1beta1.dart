@@ -12,6 +12,7 @@ class NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta1 {
   /// - "/healthz/*" matches all per-component health checks.
   /// "*" matches all non-resource urls. if it is present, it must be the only entry. Required.
   final pulumi.Input<List<String>>? nonResourceURLs;
+
   /// `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required.
   final pulumi.Input<List<String>>? verbs;
 
@@ -30,11 +31,20 @@ class NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta1 {
     };
   }
 
-  factory NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NonResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta1(
-      nonResourceURLs: map['nonResourceURLs'] == null ? null : ((map['nonResourceURLs']! as List).cast<String>()).input(),
-      verbs: map['verbs'] == null ? null : ((map['verbs']! as List).cast<String>()).input(),
+      nonResourceURLs: (() {
+        final guardedValue = map['nonResourceURLs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      verbs: (() {
+        final guardedValue = map['verbs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

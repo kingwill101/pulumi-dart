@@ -6,9 +6,9 @@ import 'fallback_route_state.dart';
 ///
 /// ## Disclaimers
 ///
-/// > **Note:** Fallback route can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.FallbackRoute` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
+/// &gt; **Note:** Fallback route can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.FallbackRoute` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 ///
-/// > **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
+/// &gt; **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
 ///
 /// ## Example Usage
 ///
@@ -412,18 +412,23 @@ import 'fallback_route_state.dart';
 /// $ pulumi import azure:iot/fallbackRoute:FallbackRoute route1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Devices/iotHubs/hub1/fallbackRoute/default
 /// ```
 ///
-/// > **Note:** As there may only be a single fallback route per IoTHub, the id always ends with `/fallbackRoute/default`.
+/// &gt; **Note:** As there may only be a single fallback route per IoTHub, the id always ends with `/fallbackRoute/default`.
 class FallbackRoute extends pulumi.CustomResource {
-  /// The condition that is evaluated to apply the routing rule. For grammar, see: <https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language>. Defaults to `true`.
+  /// The condition that is evaluated to apply the routing rule. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;. Defaults to `true`.
   late final pulumi.Output<String?> condition;
+
   /// Used to specify whether the fallback route is enabled.
   late final pulumi.Output<bool> enabled;
+
   /// The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
   late final pulumi.Output<String> endpointNames;
+
   /// The name of the IoTHub to which this Fallback Route belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
+
   /// The name of the resource group under which the IotHub Storage Container Endpoint resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The source that the routing rule is to be applied to. Possible values include: `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents`, `DeviceLifecycleEvents`, `DeviceMessages`, `DigitalTwinChangeEvents`, `Invalid`, `TwinChangeEvents`. Defaults to `DeviceMessages`.
   late final pulumi.Output<String?> source;
 
@@ -436,17 +441,17 @@ class FallbackRoute extends pulumi.CustomResource {
     FallbackRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/fallbackRoute:FallbackRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<String?>('condition');
-    this.enabled = registerOutput<bool>('enabled');
-    this.endpointNames = registerOutput<String>('endpointNames');
-    this.iothubName = registerOutput<String>('iothubName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.source = registerOutput<String?>('source');
+         'azure:iot/fallbackRoute:FallbackRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<String?>('condition');
+    enabled = registerOutput<bool>('enabled');
+    endpointNames = registerOutput<String>('endpointNames');
+    iothubName = registerOutput<String>('iothubName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    source = registerOutput<String?>('source');
   }
 
   /// Gets an existing [FallbackRoute] resource's state with the given [name] and [id].
@@ -467,16 +472,16 @@ class FallbackRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/fallbackRoute:FallbackRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<String?>('condition');
-    this.enabled = registerOutput<bool>('enabled');
-    this.endpointNames = registerOutput<String>('endpointNames');
-    this.iothubName = registerOutput<String>('iothubName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.source = registerOutput<String?>('source');
+         'azure:iot/fallbackRoute:FallbackRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<String?>('condition');
+    enabled = registerOutput<bool>('enabled');
+    endpointNames = registerOutput<String>('endpointNames');
+    iothubName = registerOutput<String>('iothubName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    source = registerOutput<String?>('source');
   }
 }

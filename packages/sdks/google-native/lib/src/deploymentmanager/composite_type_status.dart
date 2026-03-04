@@ -4,16 +4,15 @@ enum CompositeTypeStatus {
   experimental("EXPERIMENTAL"),
   supported("SUPPORTED");
 
-  const CompositeTypeStatus(this.value);
-  final String value;
+  const CompositeTypeStatus(this.wireValue);
+  final String wireValue;
 
   static CompositeTypeStatus fromValue(String value) {
     for (final item in CompositeTypeStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CompositeTypeStatus value: $value');
   }
 }
-

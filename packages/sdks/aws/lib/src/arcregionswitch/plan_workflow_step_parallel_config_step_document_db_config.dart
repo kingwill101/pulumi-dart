@@ -10,7 +10,10 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
   final pulumi.Input<String>? externalId;
   final pulumi.Input<String> globalClusterIdentifier;
   final pulumi.Input<int>? timeoutMinutes;
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>>? ungracefuls;
+  final pulumi.Input<
+    List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>
+  >?
+  ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepDocumentDbConfig].
   /// [behavior] Required.
@@ -38,20 +41,62 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
       'externalId': ?externalId,
       'globalClusterIdentifier': globalClusterIdentifier,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>, List<Map<String, dynamic>>>(ungracefuls, (value) => pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ungracefuls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>,
+            List<Map<String, dynamic>>
+          >(
+            ungracefuls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepDocumentDbConfig.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepDocumentDbConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepDocumentDbConfig(
-      behavior: (map['behavior'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
-      databaseClusterArns: ((map['databaseClusterArns'] as List).cast<String>()).input(),
-      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
-      globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
-      ungracefuls: map['ungracefuls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>(map['ungracefuls']!, (value) => PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      behavior: pulumi.Input.fromValue(map['behavior'] as String),
+      crossAccountRole: (() {
+        final guardedValue = map['crossAccountRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseClusterArns: pulumi.Input.fromValue(
+        (map['databaseClusterArns'] as List).cast<String>(),
+      ),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalClusterIdentifier: pulumi.Input.fromValue(
+        map['globalClusterIdentifier'] as String,
+      ),
+      timeoutMinutes: (() {
+        final guardedValue = map['timeoutMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ungracefuls: (() {
+        final guardedValue = map['ungracefuls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful
+          >(
+            guardedValue,
+            (value) =>
+                PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

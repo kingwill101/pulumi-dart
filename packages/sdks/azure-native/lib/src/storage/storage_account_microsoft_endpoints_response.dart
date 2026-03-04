@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountMicrosoftEndpointsResponse {
   /// Gets the blob endpoint.
   final pulumi.Input<String> blob;
+
   /// Gets the dfs endpoint.
   final pulumi.Input<String> dfs;
+
   /// Gets the file endpoint.
   final pulumi.Input<String> file;
+
   /// Gets the queue endpoint.
   final pulumi.Input<String> queue;
+
   /// Gets the table endpoint.
   final pulumi.Input<String> table;
+
   /// Gets the web endpoint.
   final pulumi.Input<String> web;
 
@@ -44,15 +49,16 @@ class StorageAccountMicrosoftEndpointsResponse {
     };
   }
 
-  factory StorageAccountMicrosoftEndpointsResponse.fromMap(Map<String, dynamic> map) {
+  factory StorageAccountMicrosoftEndpointsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageAccountMicrosoftEndpointsResponse(
-      blob: (map['blob'] as String).input(),
-      dfs: (map['dfs'] as String).input(),
-      file: (map['file'] as String).input(),
-      queue: (map['queue'] as String).input(),
-      table: (map['table'] as String).input(),
-      web: (map['web'] as String).input(),
+      blob: pulumi.Input.fromValue(map['blob'] as String),
+      dfs: pulumi.Input.fromValue(map['dfs'] as String),
+      file: pulumi.Input.fromValue(map['file'] as String),
+      queue: pulumi.Input.fromValue(map['queue'] as String),
+      table: pulumi.Input.fromValue(map['table'] as String),
+      web: pulumi.Input.fromValue(map['web'] as String),
     );
   }
 }
-

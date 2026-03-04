@@ -435,16 +435,20 @@ class Index extends pulumi.CustomResource {
   ///
   /// Defaults to `true`.
   late final pulumi.Output<bool?> push;
+
   /// The pushed tag with digest.
   ///
   /// Identical to the tag if the index was not pushed.
   late final pulumi.Output<String> ref;
+
   /// Authentication for the registry where the tagged index will be pushed.
   ///
   /// Credentials can also be included with the provider's configuration.
   late final pulumi.Output<Registry?> registry;
+
   /// Existing images to include in the index.
   late final pulumi.Output<List<String>> sources;
+
   /// The tag to apply to the index.
   late final pulumi.Output<String> tag;
 
@@ -452,20 +456,17 @@ class Index extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Index]. {@macro pulumi_index_index_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Index(
-    String name, {
-    IndexArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'docker-build:index:Index',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.push = registerOutput<bool?>('push');
-    this.ref = registerOutput<String>('ref');
-    this.registry = registerOutput<Registry?>('registry');
-    this.sources = registerOutput<List<String>>('sources');
-    this.tag = registerOutput<String>('tag');
+  Index(String name, {IndexArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'docker-build:index:Index',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    push = registerOutput<bool?>('push');
+    ref = registerOutput<String>('ref');
+    registry = registerOutput<Registry?>('registry');
+    sources = registerOutput<List<String>>('sources');
+    tag = registerOutput<String>('tag');
   }
 }

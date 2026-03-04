@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbInstanceSecurityIpList {
   /// Security group name.
   final pulumi.Input<String>? groupName;
+
   /// The tag of Security group.
   final pulumi.Input<String>? groupTag;
+
   /// The network type of Security group.
   final pulumi.Input<String>? listNetType;
+
   /// The IP list of Security group. Each single IP value should be Separated by comma.
   final pulumi.Input<String>? securityIpList;
+
   /// The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
   final pulumi.Input<String>? securityIpType;
 
@@ -40,12 +44,31 @@ class DbInstanceSecurityIpList {
 
   factory DbInstanceSecurityIpList.fromMap(Map<String, dynamic> map) {
     return DbInstanceSecurityIpList(
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      groupTag: map['groupTag'] == null ? null : (map['groupTag']! as String).input(),
-      listNetType: map['listNetType'] == null ? null : (map['listNetType']! as String).input(),
-      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList']! as String).input(),
-      securityIpType: map['securityIpType'] == null ? null : (map['securityIpType']! as String).input(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupTag: (() {
+        final guardedValue = map['groupTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      listNetType: (() {
+        final guardedValue = map['listNetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityIpList: (() {
+        final guardedValue = map['securityIpList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityIpType: (() {
+        final guardedValue = map['securityIpType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

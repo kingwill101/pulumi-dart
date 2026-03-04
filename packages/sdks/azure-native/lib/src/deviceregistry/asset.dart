@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asset_args.dart';
 import 'asset_status_response.dart';
-import 'dataset_response.dart';
-import 'event_response.dart';
 import 'extended_location_response.dart';
 import 'system_data_response.dart';
 import 'topic_response.dart';
@@ -2078,64 +2076,94 @@ import 'topic_response.dart';
 class Asset extends pulumi.CustomResource {
   /// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
   late final pulumi.Output<String> assetEndpointProfileRef;
+
   /// A set of key-value pairs that contain custom attributes set by the customer.
   late final pulumi.Output<dynamic> attributes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
-  late final pulumi.Output<List<DatasetResponse>?> datasets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> datasets;
+
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultDatasetsConfiguration;
+
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultEventsConfiguration;
+
   /// Object that describes the default topic information for the asset.
   late final pulumi.Output<TopicResponse?> defaultTopic;
+
   /// Human-readable description of the asset.
   late final pulumi.Output<String?> description;
+
   /// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
   late final pulumi.Output<List<String>?> discoveredAssetRefs;
+
   /// Human-readable display name.
   late final pulumi.Output<String?> displayName;
+
   /// Reference to the documentation.
   late final pulumi.Output<String?> documentationUri;
+
   /// Enabled/Disabled status of the asset.
   late final pulumi.Output<bool?> enabled;
+
   /// Array of events that are part of the asset. Each event can have per-event configuration.
-  late final pulumi.Output<List<EventResponse>?> events;
+  late final pulumi.Output<List<Map<String, dynamic>>?> events;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Asset id provided by the customer.
   late final pulumi.Output<String?> externalAssetId;
+
   /// Revision number of the hardware.
   late final pulumi.Output<String?> hardwareRevision;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Asset manufacturer name.
   late final pulumi.Output<String?> manufacturer;
+
   /// Asset manufacturer URI.
   late final pulumi.Output<String?> manufacturerUri;
+
   /// Asset model name.
   late final pulumi.Output<String?> model;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Asset product code.
   late final pulumi.Output<String?> productCode;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Asset serial number.
   late final pulumi.Output<String?> serialNumber;
+
   /// Revision number of the software.
   late final pulumi.Output<String?> softwareRevision;
+
   /// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
   late final pulumi.Output<AssetStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Globally unique, immutable, non-reusable id.
   late final pulumi.Output<String> uuid;
+
   /// An integer that is incremented each time the resource is modified.
   late final pulumi.Output<double> version;
 
@@ -2143,46 +2171,49 @@ class Asset extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Asset]. {@macro pulumi_deviceregistry_asset_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Asset(
-    String name, {
-    AssetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:deviceregistry:Asset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assetEndpointProfileRef = registerOutput<String>('assetEndpointProfileRef');
-    this.attributes = registerOutput<dynamic>('attributes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.datasets = registerOutput<List<DatasetResponse>?>('datasets');
-    this.defaultDatasetsConfiguration = registerOutput<String?>('defaultDatasetsConfiguration');
-    this.defaultEventsConfiguration = registerOutput<String?>('defaultEventsConfiguration');
-    this.defaultTopic = registerOutput<TopicResponse?>('defaultTopic');
-    this.description = registerOutput<String?>('description');
-    this.discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
-    this.displayName = registerOutput<String?>('displayName');
-    this.documentationUri = registerOutput<String?>('documentationUri');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.events = registerOutput<List<EventResponse>?>('events');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.externalAssetId = registerOutput<String?>('externalAssetId');
-    this.hardwareRevision = registerOutput<String?>('hardwareRevision');
-    this.location = registerOutput<String>('location');
-    this.manufacturer = registerOutput<String?>('manufacturer');
-    this.manufacturerUri = registerOutput<String?>('manufacturerUri');
-    this.model = registerOutput<String?>('model');
+  Asset(String name, {AssetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:deviceregistry:Asset',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    assetEndpointProfileRef = registerOutput<String>('assetEndpointProfileRef');
+    attributes = registerOutput<dynamic>('attributes');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    datasets = registerOutput<List<Map<String, dynamic>>?>('datasets');
+    defaultDatasetsConfiguration = registerOutput<String?>(
+      'defaultDatasetsConfiguration',
+    );
+    defaultEventsConfiguration = registerOutput<String?>(
+      'defaultEventsConfiguration',
+    );
+    defaultTopic = registerOutput<TopicResponse?>('defaultTopic');
+    description = registerOutput<String?>('description');
+    discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
+    displayName = registerOutput<String?>('displayName');
+    documentationUri = registerOutput<String?>('documentationUri');
+    enabled = registerOutput<bool?>('enabled');
+    events = registerOutput<List<Map<String, dynamic>>?>('events');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    externalAssetId = registerOutput<String?>('externalAssetId');
+    hardwareRevision = registerOutput<String?>('hardwareRevision');
+    location = registerOutput<String>('location');
+    manufacturer = registerOutput<String?>('manufacturer');
+    manufacturerUri = registerOutput<String?>('manufacturerUri');
+    model = registerOutput<String?>('model');
     this.name = registerOutput<String>('name');
-    this.productCode = registerOutput<String?>('productCode');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serialNumber = registerOutput<String?>('serialNumber');
-    this.softwareRevision = registerOutput<String?>('softwareRevision');
-    this.status = registerOutput<AssetStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
-    this.version = registerOutput<double>('version');
+    productCode = registerOutput<String?>('productCode');
+    provisioningState = registerOutput<String>('provisioningState');
+    serialNumber = registerOutput<String?>('serialNumber');
+    softwareRevision = registerOutput<String?>('softwareRevision');
+    status = registerOutput<AssetStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    version = registerOutput<double>('version');
   }
 }

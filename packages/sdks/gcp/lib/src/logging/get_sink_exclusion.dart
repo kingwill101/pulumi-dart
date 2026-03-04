@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSinkExclusion {
   /// A description of this exclusion.
   final pulumi.Input<String> description;
+
   /// Whether this exclusion is disabled and it does not exclude any log entries.
   final pulumi.Input<bool> disabled;
+
   /// An advanced logs filter that matches the log entries to be excluded.
   final pulumi.Input<String> filter;
+
   /// A client-assigned identifier, such as `load-balancer-exclusion`.
   final pulumi.Input<String> name;
 
@@ -35,11 +38,10 @@ class GetSinkExclusion {
 
   factory GetSinkExclusion.fromMap(Map<String, dynamic> map) {
     return GetSinkExclusion(
-      description: (map['description'] as String).input(),
-      disabled: (map['disabled'] as bool).input(),
-      filter: (map['filter'] as String).input(),
-      name: (map['name'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

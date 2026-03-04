@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionKeyVaultPropertiesResponse {
   /// For future use - The client id of the identity which will be used to access key vault.
   final pulumi.Input<String>? identityClientId;
+
   /// Key vault uri to access the encryption key.
   final pulumi.Input<String> keyIdentifier;
+
   /// The ArmId of the keyVault where the customer owned encryption key is present.
   final pulumi.Input<String> keyVaultArmId;
 
@@ -28,12 +30,17 @@ class EncryptionKeyVaultPropertiesResponse {
     };
   }
 
-  factory EncryptionKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory EncryptionKeyVaultPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EncryptionKeyVaultPropertiesResponse(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
-      keyIdentifier: (map['keyIdentifier'] as String).input(),
-      keyVaultArmId: (map['keyVaultArmId'] as String).input(),
+      identityClientId: (() {
+        final guardedValue = map['identityClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyIdentifier: pulumi.Input.fromValue(map['keyIdentifier'] as String),
+      keyVaultArmId: pulumi.Input.fromValue(map['keyVaultArmId'] as String),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatGatewayRegionalNatGatewayAddress {
   /// The Allocation ID of the Elastic IP address for the NAT Gateway. Required when `connectivity_type` is set to `public` and `availability_mode` is set to `zonal`. When `availability_mode` is set to `regional`, this must not be set; instead, use the `availability_zone_address` block to specify EIPs for each AZ.
   final pulumi.Input<String>? allocationId;
+
   /// Association ID of the Elastic IP address.
   final pulumi.Input<String>? associationId;
+
   /// Availability Zone where this specific NAT gateway configuration is active.
   final pulumi.Input<String>? availabilityZone;
+
   /// Availability Zone ID where this specific NAT gateway configuration is active
   final pulumi.Input<String>? availabilityZoneId;
+
   /// ID of the network interface.
   final pulumi.Input<String>? networkInterfaceId;
+
   /// Public IP address.
   final pulumi.Input<String>? publicIp;
+
   /// Status of the NAT gateway address.
   final pulumi.Input<String>? status;
 
@@ -48,16 +54,45 @@ class NatGatewayRegionalNatGatewayAddress {
     };
   }
 
-  factory NatGatewayRegionalNatGatewayAddress.fromMap(Map<String, dynamic> map) {
+  factory NatGatewayRegionalNatGatewayAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NatGatewayRegionalNatGatewayAddress(
-      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
-      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
-      publicIp: map['publicIp'] == null ? null : ((map['publicIp'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      allocationId: (() {
+        final guardedValue = map['allocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associationId: (() {
+        final guardedValue = map['associationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZoneId: (() {
+        final guardedValue = map['availabilityZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceId: (() {
+        final guardedValue = map['networkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIp: (() {
+        final guardedValue = map['publicIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

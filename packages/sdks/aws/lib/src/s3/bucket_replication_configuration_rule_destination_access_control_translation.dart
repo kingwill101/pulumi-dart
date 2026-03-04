@@ -13,15 +13,14 @@ class BucketReplicationConfigurationRuleDestinationAccessControlTranslation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'owner': owner,
-    };
+    return <String, dynamic>{'owner': owner};
   }
 
-  factory BucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap(Map<String, dynamic> map) {
+  factory BucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketReplicationConfigurationRuleDestinationAccessControlTranslation(
-      owner: (map['owner'] as String).input(),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
     );
   }
 }
-

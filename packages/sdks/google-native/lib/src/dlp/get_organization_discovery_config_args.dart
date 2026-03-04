@@ -31,10 +31,11 @@ class GetOrganizationDiscoveryConfigArgs {
 
   factory GetOrganizationDiscoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationDiscoveryConfigArgs(
-      discoveryConfigId: (map['discoveryConfigId'] as String).input(),
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      discoveryConfigId: pulumi.Input.fromValue(
+        map['discoveryConfigId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

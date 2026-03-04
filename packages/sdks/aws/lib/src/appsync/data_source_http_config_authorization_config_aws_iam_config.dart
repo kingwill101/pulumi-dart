@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceHttpConfigAuthorizationConfigAwsIamConfig {
   /// Signing Amazon Web Services Region for IAM authorization.
   final pulumi.Input<String>? signingRegion;
+
   /// Signing service name for IAM authorization.
   final pulumi.Input<String>? signingServiceName;
 
@@ -23,11 +24,20 @@ class DataSourceHttpConfigAuthorizationConfigAwsIamConfig {
     };
   }
 
-  factory DataSourceHttpConfigAuthorizationConfigAwsIamConfig.fromMap(Map<String, dynamic> map) {
+  factory DataSourceHttpConfigAuthorizationConfigAwsIamConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceHttpConfigAuthorizationConfigAwsIamConfig(
-      signingRegion: map['signingRegion'] == null ? null : ((map['signingRegion'] as String).input()).input(),
-      signingServiceName: map['signingServiceName'] == null ? null : ((map['signingServiceName'] as String).input()).input(),
+      signingRegion: (() {
+        final guardedValue = map['signingRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signingServiceName: (() {
+        final guardedValue = map['signingServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class ConnectionProfilePostgresqlProfileSslConfigServerVerification {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'caCertificate': caCertificate,
-    };
+    return <String, dynamic>{'caCertificate': caCertificate};
   }
 
-  factory ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfilePostgresqlProfileSslConfigServerVerification(
-      caCertificate: (map['caCertificate'] as String).input(),
+      caCertificate: pulumi.Input.fromValue(map['caCertificate'] as String),
     );
   }
 }
-

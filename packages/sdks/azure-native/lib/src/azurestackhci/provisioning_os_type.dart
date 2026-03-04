@@ -3,16 +3,15 @@ enum ProvisioningOsType {
   azureLinux("AzureLinux"),
   hCI("HCI");
 
-  const ProvisioningOsType(this.value);
-  final String value;
+  const ProvisioningOsType(this.wireValue);
+  final String wireValue;
 
   static ProvisioningOsType fromValue(String value) {
     for (final item in ProvisioningOsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProvisioningOsType value: $value');
   }
 }
-

@@ -11,20 +11,28 @@ import 'activity_log_alert_criteria.dart';
 class ActivityLogAlertArgs {
   /// One or more `action` blocks as defined below.
   final pulumi.Input<List<ActivityLogAlertAction>>? actions;
+
   /// A `criteria` block as defined below.
   final pulumi.Input<ActivityLogAlertCriteria> criteria;
+
   /// The description of this activity log alert.
   final pulumi.Input<String>? description;
+
   /// Should this Activity Log Alert be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The Azure Region where the activity log alert rule should exist. Possible values are `global`, `westeurope`, `northeurope`, and `eastus2euap`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the activity log alert. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which to create the activity log alert instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Scope at which the Activity Log should be applied. A list of strings which could be a resource group , or a subscription, or a resource ID (such as a Storage Account).
   final pulumi.Input<List<String>> scopes;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -52,8 +60,23 @@ class ActivityLogAlertArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<ActivityLogAlertAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<ActivityLogAlertAction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'criteria': pulumi.Input.mapInputValue<ActivityLogAlertCriteria, Map<String, dynamic>>(criteria, (value) => value.toMap()),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ActivityLogAlertAction>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ActivityLogAlertAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'criteria':
+          pulumi.Input.mapInputValue<
+            ActivityLogAlertCriteria,
+            Map<String, dynamic>
+          >(criteria, (value) => value.toMap()),
       'description': ?description,
       'enabled': ?enabled,
       'location': ?location,
@@ -66,16 +89,54 @@ class ActivityLogAlertArgs {
 
   factory ActivityLogAlertArgs.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ActivityLogAlertAction>(map['actions']!, (value) => ActivityLogAlertAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      criteria: (ActivityLogAlertCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopes: ((map['scopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ActivityLogAlertAction>(
+            guardedValue,
+            (value) => ActivityLogAlertAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      criteria: pulumi.Input.fromValue(
+        ActivityLogAlertCriteria.fromMap(
+          (map['criteria']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

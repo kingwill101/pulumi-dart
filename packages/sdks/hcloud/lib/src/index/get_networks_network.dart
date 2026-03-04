@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNetworksNetwork {
   final pulumi.Input<bool> deleteProtection;
+
   /// Indicates if the routes from this network should be exposed to the vSwitch connection. The exposing only takes effect if a vSwitch connection is active.
   final pulumi.Input<bool> exposeRoutesToVswitch;
   final pulumi.Input<int> id;
@@ -40,13 +41,16 @@ class GetNetworksNetwork {
 
   factory GetNetworksNetwork.fromMap(Map<String, dynamic> map) {
     return GetNetworksNetwork(
-      deleteProtection: (map['deleteProtection'] as bool).input(),
-      exposeRoutesToVswitch: (map['exposeRoutesToVswitch'] as bool).input(),
-      id: (map['id'] as int).input(),
-      ipRange: (map['ipRange'] as String).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      name: (map['name'] as String).input(),
+      deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
+      exposeRoutesToVswitch: pulumi.Input.fromValue(
+        map['exposeRoutesToVswitch'] as bool,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

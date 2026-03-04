@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityRequirementsPatchResourceK8sIoV1beta1 {
   /// Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
   ///
-  /// This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[<domain>].<name>.compareTo(quantity(<request quantity>)) >= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) >= 0.
+  /// This value is used as an additional filtering condition against the available capacity on the device. This is semantically equivalent to a CEL selector with `device.capacity[&lt;domain&gt;].&lt;name&gt;.compareTo(quantity(&lt;request quantity&gt;)) &gt;= 0`. For example, device.capacity['test-driver.cdi.k8s.io'].counters.compareTo(quantity('2')) &gt;= 0.
   ///
   /// When a requestPolicy is defined, the requested amount is adjusted upward to the nearest valid value based on the policy. If the requested amount cannot be adjusted to a valid value—because it exceeds what the requestPolicy allows— the device is considered ineligible for allocation.
   ///
@@ -19,20 +19,23 @@ class CapacityRequirementsPatchResourceK8sIoV1beta1 {
 
   /// Creates a new [CapacityRequirementsPatchResourceK8sIoV1beta1].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
-  CapacityRequirementsPatchResourceK8sIoV1beta1({
-    this.requests,
-  });
+  CapacityRequirementsPatchResourceK8sIoV1beta1({this.requests});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'requests': ?requests,
-    };
+    return <String, dynamic>{'requests': ?requests};
   }
 
-  factory CapacityRequirementsPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CapacityRequirementsPatchResourceK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityRequirementsPatchResourceK8sIoV1beta1(
-      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
+      requests: (() {
+        final guardedValue = map['requests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

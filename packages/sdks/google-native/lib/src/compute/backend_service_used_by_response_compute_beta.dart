@@ -7,20 +7,17 @@ class BackendServiceUsedByResponseComputeBeta {
 
   /// Creates a new [BackendServiceUsedByResponseComputeBeta].
   /// [reference] Required.
-  BackendServiceUsedByResponseComputeBeta({
-    required this.reference,
-  });
+  BackendServiceUsedByResponseComputeBeta({required this.reference});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'reference': reference,
-    };
+    return <String, dynamic>{'reference': reference};
   }
 
-  factory BackendServiceUsedByResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory BackendServiceUsedByResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendServiceUsedByResponseComputeBeta(
-      reference: (map['reference'] as String).input(),
+      reference: pulumi.Input.fromValue(map['reference'] as String),
     );
   }
 }
-

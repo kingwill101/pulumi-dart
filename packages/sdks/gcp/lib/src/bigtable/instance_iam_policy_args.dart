@@ -34,10 +34,13 @@ class InstanceIamPolicyArgs {
 
   factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyArgs(
-      instance: (map['instance'] as String).input(),
-      policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      policyData: pulumi.Input.fromValue(map['policyData'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

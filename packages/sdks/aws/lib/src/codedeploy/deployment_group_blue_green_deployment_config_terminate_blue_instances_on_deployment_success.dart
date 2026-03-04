@@ -7,6 +7,7 @@ class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployment
   /// * `TERMINATE`: Instances are terminated after a specified wait time.
   /// * `KEEP_ALIVE`: Instances are left running after they are deregistered from the load balancer and removed from the deployment group.
   final pulumi.Input<String>? action;
+
   /// The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
   final pulumi.Input<int>? terminationWaitTimeInMinutes;
 
@@ -25,11 +26,20 @@ class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployment
     };
   }
 
-  factory DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess.fromMap(Map<String, dynamic> map) {
+  factory DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess(
-      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
-      terminationWaitTimeInMinutes: map['terminationWaitTimeInMinutes'] == null ? null : ((map['terminationWaitTimeInMinutes'] as int).input()).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      terminationWaitTimeInMinutes: (() {
+        final guardedValue = map['terminationWaitTimeInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

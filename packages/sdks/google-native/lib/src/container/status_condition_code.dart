@@ -8,16 +8,15 @@ enum StatusConditionCode {
   cloudKmsKeyError("CLOUD_KMS_KEY_ERROR"),
   caExpiring("CA_EXPIRING");
 
-  const StatusConditionCode(this.value);
-  final String value;
+  const StatusConditionCode(this.wireValue);
+  final String wireValue;
 
   static StatusConditionCode fromValue(String value) {
     for (final item in StatusConditionCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StatusConditionCode value: $value');
   }
 }
-

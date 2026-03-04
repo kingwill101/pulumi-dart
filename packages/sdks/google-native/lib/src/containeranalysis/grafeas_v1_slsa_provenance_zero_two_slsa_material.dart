@@ -10,23 +10,28 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial].
   /// [digest] Optional.
   /// [uri] Optional.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial({
-    this.digest,
-    this.uri,
-  });
+  GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial({this.digest, this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': ?digest,
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'digest': ?digest, 'uri': ?uri};
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(
-      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

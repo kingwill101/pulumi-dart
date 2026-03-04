@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegatedResourceResponse {
   /// The source resource location - internal use only.
   final pulumi.Input<String>? location;
+
   /// The delegation id of the referral delegation (optional) - internal use only.
   final pulumi.Input<String>? referralResource;
+
   /// The ARM resource id of the delegated resource - internal use only.
   final pulumi.Input<String>? resourceId;
+
   /// The tenant id of the delegated resource - internal use only.
   final pulumi.Input<String>? tenantId;
 
@@ -36,11 +39,26 @@ class DelegatedResourceResponse {
 
   factory DelegatedResourceResponse.fromMap(Map<String, dynamic> map) {
     return DelegatedResourceResponse(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      referralResource: map['referralResource'] == null ? null : (map['referralResource']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      referralResource: (() {
+        final guardedValue = map['referralResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

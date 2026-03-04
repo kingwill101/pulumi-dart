@@ -8,20 +8,19 @@ class OptInCondition {
 
   /// Creates a new [OptInCondition].
   /// [expression] List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
-  OptInCondition({
-    this.expression,
-  });
+  OptInCondition({this.expression});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expression': ?expression,
-    };
+    return <String, dynamic>{'expression': ?expression};
   }
 
   factory OptInCondition.fromMap(Map<String, dynamic> map) {
     return OptInCondition(
-      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
+      expression: (() {
+        final guardedValue = map['expression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

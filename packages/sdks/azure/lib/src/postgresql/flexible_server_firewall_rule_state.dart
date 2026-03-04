@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleServerFirewallRuleState {
   /// The IPv4 Address defining the end of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.
   final pulumi.Input<String>? endIpAddress;
+
   /// The name which should be used for this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Firewall Rule. Changing this forces a new PostgreSQL Flexible Server Firewall Rule to be created.
   final pulumi.Input<String>? serverId;
+
   /// The IPv4 Address defining the start of the range of addresses associated with this PostgreSQL Flexible Server Firewall Rule.
   final pulumi.Input<String>? startIpAddress;
 
@@ -36,11 +39,26 @@ class FlexibleServerFirewallRuleState {
 
   factory FlexibleServerFirewallRuleState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerFirewallRuleState(
-      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
-      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress']! as String).input(),
+      endIpAddress: (() {
+        final guardedValue = map['endIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverId: (() {
+        final guardedValue = map['serverId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startIpAddress: (() {
+        final guardedValue = map['startIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

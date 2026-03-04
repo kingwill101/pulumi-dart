@@ -3,16 +3,15 @@ enum NetworkPolicy {
   valueCalico("calico"),
   valueFlannel("flannel");
 
-  const NetworkPolicy(this.value);
-  final String value;
+  const NetworkPolicy(this.wireValue);
+  final String wireValue;
 
   static NetworkPolicy fromValue(String value) {
     for (final item in NetworkPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkPolicy value: $value');
   }
 }
-

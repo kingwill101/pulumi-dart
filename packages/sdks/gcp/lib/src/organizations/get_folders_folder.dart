@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFoldersFolder {
   /// The timestamp of when the folder was created
   final pulumi.Input<String> createTime;
+
   /// The timestamp of when the folder was requested to be deleted (if applicable)
   final pulumi.Input<String> deleteTime;
+
   /// The display name of the folder
   final pulumi.Input<String> displayName;
+
   /// Entity tag identifier of the folder
   final pulumi.Input<String> etag;
+
   /// The id of the folder
   final pulumi.Input<String> name;
+
   /// The parent id of the folder
   final pulumi.Input<String> parent;
+
   /// The lifecycle state of the folder
   final pulumi.Input<String> state;
+
   /// The timestamp of when the folder was last modified
   final pulumi.Input<String> updateTime;
 
@@ -55,15 +62,14 @@ class GetFoldersFolder {
 
   factory GetFoldersFolder.fromMap(Map<String, dynamic> map) {
     return GetFoldersFolder(
-      createTime: (map['createTime'] as String).input(),
-      deleteTime: (map['deleteTime'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      etag: (map['etag'] as String).input(),
-      name: (map['name'] as String).input(),
-      parent: (map['parent'] as String).input(),
-      state: (map['state'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deleteTime: pulumi.Input.fromValue(map['deleteTime'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

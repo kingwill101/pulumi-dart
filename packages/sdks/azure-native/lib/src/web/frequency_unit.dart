@@ -3,16 +3,15 @@ enum FrequencyUnit {
   valueDay("Day"),
   valueHour("Hour");
 
-  const FrequencyUnit(this.value);
-  final String value;
+  const FrequencyUnit(this.wireValue);
+  final String wireValue;
 
   static FrequencyUnit fromValue(String value) {
     for (final item in FrequencyUnit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FrequencyUnit value: $value');
   }
 }
-

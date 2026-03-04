@@ -10,10 +10,13 @@ import 'managed_integration_runtime.dart';
 class IntegrationRuntimeArgs {
   /// Integration runtime name
   final pulumi.Input<String>? integrationRuntimeName;
+
   /// Integration runtime properties.
   final pulumi.Input<ManagedIntegrationRuntime> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -32,7 +35,11 @@ class IntegrationRuntimeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'integrationRuntimeName': ?integrationRuntimeName,
-      'properties': pulumi.Input.mapInputValue<ManagedIntegrationRuntime, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ManagedIntegrationRuntime,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -40,11 +47,20 @@ class IntegrationRuntimeArgs {
 
   factory IntegrationRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeArgs(
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
-      properties: (ManagedIntegrationRuntime.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      integrationRuntimeName: (() {
+        final guardedValue = map['integrationRuntimeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        ManagedIntegrationRuntime.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

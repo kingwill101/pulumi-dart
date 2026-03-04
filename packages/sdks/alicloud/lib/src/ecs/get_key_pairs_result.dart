@@ -8,18 +8,23 @@ import 'get_key_pairs_pair.dart';
 class GetKeyPairsResult {
   /// Finger print of the key pair.
   final String? fingerPrint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// A list of key pairs. Each element contains the following attributes:
   final List<GetKeyPairsKeyPair> keyPairs;
   final String? nameRegex;
+
   /// A list of key pair names.
   final List<String> names;
   final String? outputFile;
   final List<GetKeyPairsPair> pairs;
+
   /// The Id of resource group.
   final String? resourceGroupId;
+
   /// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
   final Map<String, String>? tags;
 
@@ -52,11 +57,18 @@ class GetKeyPairsResult {
       'fingerPrint': ?fingerPrint,
       'id': id,
       'ids': ids,
-      'keyPairs': pulumi.Input.encodeList<GetKeyPairsKeyPair, Map<String, dynamic>>(keyPairs, (value) => value.toMap()),
+      'keyPairs':
+          pulumi.Input.encodeList<GetKeyPairsKeyPair, Map<String, dynamic>>(
+            keyPairs,
+            (value) => value.toMap(),
+          ),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'pairs': pulumi.Input.encodeList<GetKeyPairsPair, Map<String, dynamic>>(pairs, (value) => value.toMap()),
+      'pairs': pulumi.Input.encodeList<GetKeyPairsPair, Map<String, dynamic>>(
+        pairs,
+        (value) => value.toMap(),
+      ),
       'resourceGroupId': ?resourceGroupId,
       'tags': ?tags,
     };
@@ -64,17 +76,44 @@ class GetKeyPairsResult {
 
   factory GetKeyPairsResult.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsResult(
-      fingerPrint: map['fingerPrint'] == null ? null : map['fingerPrint']! as String,
+      fingerPrint: (() {
+        final guardedValue = map['fingerPrint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyPairs: pulumi.Input.decodeList<GetKeyPairsKeyPair>(map['keyPairs'], (value) => GetKeyPairsKeyPair.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      keyPairs: pulumi.Input.decodeList<GetKeyPairsKeyPair>(
+        map['keyPairs']!,
+        (value) =>
+            GetKeyPairsKeyPair.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pairs: pulumi.Input.decodeList<GetKeyPairsPair>(map['pairs'], (value) => GetKeyPairsPair.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pairs: pulumi.Input.decodeList<GetKeyPairsPair>(
+        map['pairs']!,
+        (value) =>
+            GetKeyPairsPair.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

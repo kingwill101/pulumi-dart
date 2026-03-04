@@ -9,8 +9,10 @@ class AdditionalUnattendContentResponse {
   /// The component name. Currently, the only allowable value is
   /// Microsoft-Windows-Shell-Setup.
   final pulumi.Input<String>? componentName;
+
   /// The pass name. Currently, the only allowable value is OobeSystem.
   final pulumi.Input<String>? passName;
+
   /// Specifies the name of the setting to which the content applies. Possible values
   /// are: FirstLogonCommands and AutoLogon.
   final pulumi.Input<String>? settingName;
@@ -35,10 +37,21 @@ class AdditionalUnattendContentResponse {
 
   factory AdditionalUnattendContentResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalUnattendContentResponse(
-      componentName: map['componentName'] == null ? null : (map['componentName']! as String).input(),
-      passName: map['passName'] == null ? null : (map['passName']! as String).input(),
-      settingName: map['settingName'] == null ? null : (map['settingName']! as String).input(),
+      componentName: (() {
+        final guardedValue = map['componentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passName: (() {
+        final guardedValue = map['passName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settingName: (() {
+        final guardedValue = map['settingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

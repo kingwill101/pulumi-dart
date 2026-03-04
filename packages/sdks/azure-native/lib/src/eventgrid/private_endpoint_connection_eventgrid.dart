@@ -171,16 +171,23 @@ import 'private_endpoint_response.dart';
 class PrivateEndpointConnectionEventgrid extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// GroupIds from the private link service resource.
   late final pulumi.Output<List<String>?> groupIds;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// The Private Endpoint resource for this Connection.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
+
   /// Details about the state of the connection.
-  late final pulumi.Output<ConnectionStateResponse?> privateLinkServiceConnectionState;
+  late final pulumi.Output<ConnectionStateResponse?>
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the Private Endpoint Connection.
   late final pulumi.Output<String?> provisioningState;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -193,17 +200,22 @@ class PrivateEndpointConnectionEventgrid extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.groupIds = registerOutput<List<String>?>('groupIds');
+         'azure-native:eventgrid:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupIds = registerOutput<List<String>?>('groupIds');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<ConnectionStateResponse?>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<PrivateEndpointResponse?>(
+      'privateEndpoint',
+    );
+    privateLinkServiceConnectionState =
+        registerOutput<ConnectionStateResponse?>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String?>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

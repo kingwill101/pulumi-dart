@@ -17,16 +17,15 @@ enum MigrationJobState {
   restarting("RESTARTING"),
   resuming("RESUMING");
 
-  const MigrationJobState(this.value);
-  final String value;
+  const MigrationJobState(this.wireValue);
+  final String wireValue;
 
   static MigrationJobState fromValue(String value) {
     for (final item in MigrationJobState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MigrationJobState value: $value');
   }
 }
-

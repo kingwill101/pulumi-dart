@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRetailV2RuleReplacementAction {
   /// Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
   final pulumi.Input<List<String>>? queryTerms;
+
   /// Term that will be used for replacement.
   final pulumi.Input<String>? replacementTerm;
+
   /// Will be [deprecated = true] post migration;
   final pulumi.Input<String>? term;
 
@@ -29,12 +31,25 @@ class GoogleCloudRetailV2RuleReplacementAction {
     };
   }
 
-  factory GoogleCloudRetailV2RuleReplacementAction.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2RuleReplacementAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2RuleReplacementAction(
-      queryTerms: map['queryTerms'] == null ? null : ((map['queryTerms']! as List).cast<String>()).input(),
-      replacementTerm: map['replacementTerm'] == null ? null : (map['replacementTerm']! as String).input(),
-      term: map['term'] == null ? null : (map['term']! as String).input(),
+      queryTerms: (() {
+        final guardedValue = map['queryTerms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      replacementTerm: (() {
+        final guardedValue = map['replacementTerm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      term: (() {
+        final guardedValue = map['term'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,29 @@ class DomainDevicesHostdevCapsMisc {
 
   /// Creates a new [DomainDevicesHostdevCapsMisc].
   /// [source] Specifies the source attributes for the miscellaneous capabilities of the host device.
-  DomainDevicesHostdevCapsMisc({
-    this.source,
-  });
+  DomainDevicesHostdevCapsMisc({this.source});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevCapsMiscSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesHostdevCapsMiscSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesHostdevCapsMisc.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsMisc(
-      source: map['source'] == null ? null : (DomainDevicesHostdevCapsMiscSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesHostdevCapsMiscSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxGenerativeSettingsKnowledgeConnectorSettings {
   /// Name of the virtual agent. Used for LLM prompt. Can be left empty.
   final pulumi.Input<String>? agent;
+
   /// Identity of the agent, e.g. "virtual agent", "AI assistant".
   final pulumi.Input<String>? agentIdentity;
+
   /// Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of car owner".
   final pulumi.Input<String>? agentScope;
+
   /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
   final pulumi.Input<String>? business;
+
   /// Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".``
   final pulumi.Input<String>? businessDescription;
+
   /// Whether to disable fallback to Data Store search results (in case the LLM couldn't pick a proper answer). Per default the feature is enabled.
   final pulumi.Input<bool>? disableDataStoreFallback;
 
@@ -43,15 +48,40 @@ class CxGenerativeSettingsKnowledgeConnectorSettings {
     };
   }
 
-  factory CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(Map<String, dynamic> map) {
+  factory CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxGenerativeSettingsKnowledgeConnectorSettings(
-      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
-      agentIdentity: map['agentIdentity'] == null ? null : (map['agentIdentity']! as String).input(),
-      agentScope: map['agentScope'] == null ? null : (map['agentScope']! as String).input(),
-      business: map['business'] == null ? null : (map['business']! as String).input(),
-      businessDescription: map['businessDescription'] == null ? null : (map['businessDescription']! as String).input(),
-      disableDataStoreFallback: map['disableDataStoreFallback'] == null ? null : (map['disableDataStoreFallback']! as bool).input(),
+      agent: (() {
+        final guardedValue = map['agent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentIdentity: (() {
+        final guardedValue = map['agentIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      agentScope: (() {
+        final guardedValue = map['agentScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      business: (() {
+        final guardedValue = map['business'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      businessDescription: (() {
+        final guardedValue = map['businessDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableDataStoreFallback: (() {
+        final guardedValue = map['disableDataStoreFallback'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

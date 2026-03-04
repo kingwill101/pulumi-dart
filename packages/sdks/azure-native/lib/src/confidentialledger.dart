@@ -1,5 +1,3 @@
-library module_confidentialledger;
-
 export 'confidentialledger/aadbased_security_principal.dart';
 export 'confidentialledger/aadbased_security_principal_response.dart';
 export 'confidentialledger/cert_based_security_principal.dart';

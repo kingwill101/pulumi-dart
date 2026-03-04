@@ -4,16 +4,15 @@ enum ModelingFrequency {
   valueMedium("Medium"),
   valueHigh("High");
 
-  const ModelingFrequency(this.value);
-  final String value;
+  const ModelingFrequency(this.wireValue);
+  final String wireValue;
 
   static ModelingFrequency fromValue(String value) {
     for (final item in ModelingFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ModelingFrequency value: $value');
   }
 }
-

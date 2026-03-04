@@ -9,7 +9,7 @@ import 'bgp_policy_state.dart';
 ///
 /// For information about Ddos Bgp Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/anti-ddos/anti-ddos-origin/developer-reference/api-ddosbgp-2018-07-20-createpolicy).
 ///
-/// > **NOTE:** Available since v1.226.0.
+/// &gt; **NOTE:** Available since v1.226.0.
 ///
 /// ## Example Usage
 ///
@@ -262,8 +262,10 @@ import 'bgp_policy_state.dart';
 class BgpPolicy extends pulumi.CustomResource {
   /// Configuration Content See `content` below.
   late final pulumi.Output<BgpPolicyContent> content;
+
   /// The name of the resource
   late final pulumi.Output<String> policyName;
+
   /// Type
   late final pulumi.Output<String> type;
 
@@ -276,14 +278,14 @@ class BgpPolicy extends pulumi.CustomResource {
     BgpPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/bgpPolicy:BgpPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<BgpPolicyContent>('content');
-    this.policyName = registerOutput<String>('policyName');
-    this.type = registerOutput<String>('type');
+         'alicloud:ddos/bgpPolicy:BgpPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<BgpPolicyContent>('content');
+    policyName = registerOutput<String>('policyName');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [BgpPolicy] resource's state with the given [name] and [id].
@@ -304,13 +306,13 @@ class BgpPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/bgpPolicy:BgpPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<BgpPolicyContent>('content');
-    this.policyName = registerOutput<String>('policyName');
-    this.type = registerOutput<String>('type');
+         'alicloud:ddos/bgpPolicy:BgpPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<BgpPolicyContent>('content');
+    policyName = registerOutput<String>('policyName');
+    type = registerOutput<String>('type');
   }
 }

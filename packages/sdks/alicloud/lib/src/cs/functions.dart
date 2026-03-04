@@ -36,7 +36,7 @@ import 'get_serverless_kubernetes_clusters_result.dart';
 ///
 /// For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
 ///
-/// > **NOTE:** Available in v1.113.0+
+/// &gt; **NOTE:** Available in v1.113.0+
 ///
 /// ## Example Usage
 ///
@@ -149,9 +149,9 @@ Future<GetAckServiceResult> getAckService(
 
 /// This data source provides Container Service cluster credential on Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.187.0
+/// &gt; **NOTE:** Available since v1.187.0
 ///
-/// > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+/// &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
 ///
 /// ## Example Usage
 ///
@@ -226,7 +226,7 @@ Future<GetClusterCredentialResult> getClusterCredential(
 
 /// This data source provides Ack Cluster available to the user.[What is Cluster](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateCluster)
 ///
-/// > **NOTE:** Available since v1.269.0.
+/// &gt; **NOTE:** Available since v1.269.0.
 ///
 /// ## Example Usage
 ///
@@ -659,7 +659,7 @@ Future<GetClustersResult> getClusters(
 
 /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.103.0.
+/// &gt; **NOTE:** Available since v1.103.0.
 ///
 /// ## Example Usage
 ///
@@ -788,7 +788,7 @@ Future<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters(
 
 /// This data source provides metadata of kubernetes cluster addons.
 ///
-/// > **NOTE:** Available in 1.166.0+.
+/// &gt; **NOTE:** Available in 1.166.0+.
 ///
 /// ## Example Usage
 ///
@@ -1187,8 +1187,8 @@ Future<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(
 
 /// This data source provides a list of available addons that the cluster can install.
 ///
-/// > **NOTE:** Available since v1.150.0.
-/// > **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+/// &gt; **NOTE:** Available since v1.150.0.
+/// &gt; **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
 ///
 /// ## Example Usage
 ///
@@ -1566,9 +1566,9 @@ Future<GetKubernetesAddonsResult> getKubernetesAddons(
 
 /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.34.0.
+/// &gt; **NOTE:** Available since v1.34.0.
 ///
-/// > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+/// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 ///
 /// ## Example Usage
 ///
@@ -1703,7 +1703,7 @@ Future<GetKubernetesClustersResult> getKubernetesClusters(
 
 /// This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
 ///
-/// > **NOTE:** Available since v1.246.0.
+/// &gt; **NOTE:** Available since v1.246.0.
 ///
 /// ## Example Usage
 ///
@@ -2306,7 +2306,7 @@ Future<GetKubernetesNodePoolsResult> getKubernetesNodePools(
 
 /// This data source provides a list of Ram user permissions.
 ///
-/// > **NOTE:** Available since v1.122.0.
+/// &gt; **NOTE:** Available since v1.122.0.
 ///
 /// ## Example Usage
 ///
@@ -2453,7 +2453,7 @@ Future<GetKubernetesPermissionResult> getKubernetesPermission(
 
 /// This data source provides the details of the Kubernetes version supported by ACK.
 ///
-/// > **NOTE:** Available since v1.170.0.
+/// &gt; **NOTE:** Available since v1.170.0.
 ///
 /// ## Example Usage
 ///
@@ -2936,9 +2936,9 @@ Future<GetKubernetesVersionResult> getKubernetesVersion(
 
 /// This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.35.0
+/// &gt; **NOTE:** Available since v1.35.0
 ///
-/// > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+/// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 ///
 /// ## Example Usage
 ///
@@ -3073,7 +3073,7 @@ Future<GetManagedKubernetesClustersResult> getManagedKubernetesClusters(
 
 /// This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
 ///
-/// > **NOTE:** Available in v1.86.0+
+/// &gt; **NOTE:** Available in v1.86.0+
 ///
 /// ## Example Usage
 ///
@@ -3202,7 +3202,7 @@ Future<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances(
 
 /// This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
 ///
-/// > **NOTE:** Available in v1.86.0+
+/// &gt; **NOTE:** Available in v1.86.0+
 ///
 /// ## Example Usage
 ///
@@ -3337,7 +3337,7 @@ Future<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespaces(
 
 /// This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.87.0.
+/// &gt; **NOTE:** Available since v1.87.0.
 ///
 /// ## Example Usage
 ///
@@ -3609,7 +3609,7 @@ Future<GetRegistryEnterpriseReposResult> getRegistryEnterpriseRepos(
 
 /// This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
 ///
-/// > **NOTE:** Available in v1.90.0+
+/// &gt; **NOTE:** Available in v1.90.0+
 ///
 /// ## Example Usage
 ///
@@ -3740,9 +3740,9 @@ Future<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRules(
 
 /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.58.0
+/// &gt; **NOTE:** Available since v1.58.0
 ///
-/// > **NOTE:** From version v1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
+/// &gt; **NOTE:** From version v1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 ///
 /// ## Example Usage
 ///

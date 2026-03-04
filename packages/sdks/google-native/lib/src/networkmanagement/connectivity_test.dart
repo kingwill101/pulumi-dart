@@ -9,29 +9,41 @@ import 'reachability_details_response.dart';
 class ConnectivityTest extends pulumi.CustomResource {
   /// The time the test was created.
   late final pulumi.Output<String> createTime;
+
   /// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
   late final pulumi.Output<String> description;
+
   /// Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
   late final pulumi.Output<EndpointResponse> destination;
+
   /// The display name of a Connectivity Test.
   late final pulumi.Output<String> displayName;
+
   /// Resource labels to represent user-provided metadata.
   late final pulumi.Output<Map<String, String>> labels;
+
   /// Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   late final pulumi.Output<String> name;
+
   /// The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
   late final pulumi.Output<ProbingDetailsResponse> probingDetails;
   late final pulumi.Output<String> project;
+
   /// IP Protocol of the test. When not provided, "TCP" is assumed.
   late final pulumi.Output<String> protocol;
+
   /// The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
   late final pulumi.Output<ReachabilityDetailsResponse> reachabilityDetails;
+
   /// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
   late final pulumi.Output<List<String>> relatedProjects;
+
   /// Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
   late final pulumi.Output<EndpointResponse> source;
+
   /// Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
   late final pulumi.Output<String> testId;
+
   /// The time the test's configuration was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -44,24 +56,26 @@ class ConnectivityTest extends pulumi.CustomResource {
     ConnectivityTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:networkmanagement/v1:ConnectivityTest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String>('description');
-    this.destination = registerOutput<EndpointResponse>('destination');
-    this.displayName = registerOutput<String>('displayName');
-    this.labels = registerOutput<Map<String, String>>('labels');
+         'google-native:networkmanagement/v1:ConnectivityTest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    destination = registerOutput<EndpointResponse>('destination');
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
-    this.probingDetails = registerOutput<ProbingDetailsResponse>('probingDetails');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String>('protocol');
-    this.reachabilityDetails = registerOutput<ReachabilityDetailsResponse>('reachabilityDetails');
-    this.relatedProjects = registerOutput<List<String>>('relatedProjects');
-    this.source = registerOutput<EndpointResponse>('source');
-    this.testId = registerOutput<String>('testId');
-    this.updateTime = registerOutput<String>('updateTime');
+    probingDetails = registerOutput<ProbingDetailsResponse>('probingDetails');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    reachabilityDetails = registerOutput<ReachabilityDetailsResponse>(
+      'reachabilityDetails',
+    );
+    relatedProjects = registerOutput<List<String>>('relatedProjects');
+    source = registerOutput<EndpointResponse>('source');
+    testId = registerOutput<String>('testId');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

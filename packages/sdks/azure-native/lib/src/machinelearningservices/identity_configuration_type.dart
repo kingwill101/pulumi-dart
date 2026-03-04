@@ -4,16 +4,15 @@ enum IdentityConfigurationType {
   valueAMLToken("AMLToken"),
   valueUserIdentity("UserIdentity");
 
-  const IdentityConfigurationType(this.value);
-  final String value;
+  const IdentityConfigurationType(this.wireValue);
+  final String wireValue;
 
   static IdentityConfigurationType fromValue(String value) {
     for (final item in IdentityConfigurationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IdentityConfigurationType value: $value');
   }
 }
-

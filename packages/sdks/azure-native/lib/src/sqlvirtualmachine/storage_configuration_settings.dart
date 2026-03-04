@@ -8,16 +8,22 @@ import 'sqltemp_db_settings.dart';
 class StorageConfigurationSettings {
   /// Disk configuration to apply to SQL Server.
   final pulumi.Input<String>? diskConfigurationType;
+
   /// Enable SQL IaaS Agent storage configuration blade in Azure Portal.
   final pulumi.Input<bool>? enableStorageConfigBlade;
+
   /// SQL Server Data Storage Settings.
   final pulumi.Input<SQLStorageSettings>? sqlDataSettings;
+
   /// SQL Server Log Storage Settings.
   final pulumi.Input<SQLStorageSettings>? sqlLogSettings;
+
   /// SQL Server SystemDb Storage on DataPool if true.
   final pulumi.Input<bool>? sqlSystemDbOnDataDisk;
+
   /// SQL Server TempDb Storage Settings.
   final pulumi.Input<SQLTempDbSettings>? sqlTempDbSettings;
+
   /// Storage workload type.
   final pulumi.Input<String>? storageWorkloadType;
 
@@ -43,24 +49,75 @@ class StorageConfigurationSettings {
     return <String, dynamic>{
       'diskConfigurationType': ?diskConfigurationType,
       'enableStorageConfigBlade': ?enableStorageConfigBlade,
-      'sqlDataSettings': ?pulumi.Input.mapOptionalInputValue<SQLStorageSettings, Map<String, dynamic>>(sqlDataSettings, (value) => value.toMap()),
-      'sqlLogSettings': ?pulumi.Input.mapOptionalInputValue<SQLStorageSettings, Map<String, dynamic>>(sqlLogSettings, (value) => value.toMap()),
+      'sqlDataSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SQLStorageSettings,
+            Map<String, dynamic>
+          >(sqlDataSettings, (value) => value.toMap()),
+      'sqlLogSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SQLStorageSettings,
+            Map<String, dynamic>
+          >(sqlLogSettings, (value) => value.toMap()),
       'sqlSystemDbOnDataDisk': ?sqlSystemDbOnDataDisk,
-      'sqlTempDbSettings': ?pulumi.Input.mapOptionalInputValue<SQLTempDbSettings, Map<String, dynamic>>(sqlTempDbSettings, (value) => value.toMap()),
+      'sqlTempDbSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SQLTempDbSettings,
+            Map<String, dynamic>
+          >(sqlTempDbSettings, (value) => value.toMap()),
       'storageWorkloadType': ?storageWorkloadType,
     };
   }
 
   factory StorageConfigurationSettings.fromMap(Map<String, dynamic> map) {
     return StorageConfigurationSettings(
-      diskConfigurationType: map['diskConfigurationType'] == null ? null : (map['diskConfigurationType']! as String).input(),
-      enableStorageConfigBlade: map['enableStorageConfigBlade'] == null ? null : (map['enableStorageConfigBlade']! as bool).input(),
-      sqlDataSettings: map['sqlDataSettings'] == null ? null : (SQLStorageSettings.fromMap((map['sqlDataSettings']! as Map).cast<String, dynamic>())).input(),
-      sqlLogSettings: map['sqlLogSettings'] == null ? null : (SQLStorageSettings.fromMap((map['sqlLogSettings']! as Map).cast<String, dynamic>())).input(),
-      sqlSystemDbOnDataDisk: map['sqlSystemDbOnDataDisk'] == null ? null : (map['sqlSystemDbOnDataDisk']! as bool).input(),
-      sqlTempDbSettings: map['sqlTempDbSettings'] == null ? null : (SQLTempDbSettings.fromMap((map['sqlTempDbSettings']! as Map).cast<String, dynamic>())).input(),
-      storageWorkloadType: map['storageWorkloadType'] == null ? null : (map['storageWorkloadType']! as String).input(),
+      diskConfigurationType: (() {
+        final guardedValue = map['diskConfigurationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableStorageConfigBlade: (() {
+        final guardedValue = map['enableStorageConfigBlade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sqlDataSettings: (() {
+        final guardedValue = map['sqlDataSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SQLStorageSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sqlLogSettings: (() {
+        final guardedValue = map['sqlLogSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SQLStorageSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sqlSystemDbOnDataDisk: (() {
+        final guardedValue = map['sqlSystemDbOnDataDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sqlTempDbSettings: (() {
+        final guardedValue = map['sqlTempDbSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SQLTempDbSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageWorkloadType: (() {
+        final guardedValue = map['storageWorkloadType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

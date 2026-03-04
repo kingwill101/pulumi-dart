@@ -1,5 +1,3 @@
-library module_ivs;
-
 export 'ivs/channel.dart';
 export 'ivs/channel_args.dart';
 export 'ivs/channel_state.dart';

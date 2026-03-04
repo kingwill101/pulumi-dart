@@ -10,20 +10,23 @@ class HeaderOverrideResponse {
 
   /// Creates a new [HeaderOverrideResponse].
   /// [header] header embodying a key and a value.
-  HeaderOverrideResponse({
-    required this.header,
-  });
+  HeaderOverrideResponse({required this.header});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'header': pulumi.Input.mapInputValue<HeaderResponse, Map<String, dynamic>>(header, (value) => value.toMap()),
+      'header':
+          pulumi.Input.mapInputValue<HeaderResponse, Map<String, dynamic>>(
+            header,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory HeaderOverrideResponse.fromMap(Map<String, dynamic> map) {
     return HeaderOverrideResponse(
-      header: (HeaderResponse.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
+      header: pulumi.Input.fromValue(
+        HeaderResponse.fromMap((map['header']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

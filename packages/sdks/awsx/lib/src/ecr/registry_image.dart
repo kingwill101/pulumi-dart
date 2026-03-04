@@ -121,7 +121,7 @@ import 'package:pulumi_docker/index.dart' as pulumi_docker_index;
 /// {{% /examples %}}
 class RegistryImage extends pulumi.ComponentResource {
   /// The underlying RegistryImage resource.
-  late final pulumi.Output<pulumi_docker_index.RegistryImage> image;
+  late final pulumi.Output<pulumi_docker_index.RegistryImage?> image;
 
   /// Creates a new [RegistryImage].
   /// [name] The Pulumi resource name.
@@ -132,11 +132,12 @@ class RegistryImage extends pulumi.ComponentResource {
     RegistryImageArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'awsx:ecr:RegistryImage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.image = registerOutput<pulumi_docker_index.RegistryImage>('image');
+         'awsx:ecr:RegistryImage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    image = registerOutput<pulumi_docker_index.RegistryImage?>('image');
   }
 }

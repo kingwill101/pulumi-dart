@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsDomainArgs {
   /// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   final pulumi.Input<String> domainName;
+
   /// Id of the group in which the domain will add. If not supplied, then use default group.
   final pulumi.Input<String>? groupId;
+
   /// User language.
   final pulumi.Input<String>? lang;
+
   /// Remarks information for your domain name.
   final pulumi.Input<String>? remark;
+
   /// The Id of resource group which the dns domain belongs.
   final pulumi.Input<String>? resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -51,13 +56,34 @@ class DnsDomainArgs {
 
   factory DnsDomainArgs.fromMap(Map<String, dynamic> map) {
     return DnsDomainArgs(
-      domainName: (map['domainName'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remark: (() {
+        final guardedValue = map['remark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum GlobalFileLockingState {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const GlobalFileLockingState(this.value);
-  final String value;
+  const GlobalFileLockingState(this.wireValue);
+  final String wireValue;
 
   static GlobalFileLockingState fromValue(String value) {
     for (final item in GlobalFileLockingState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GlobalFileLockingState value: $value');
   }
 }
-

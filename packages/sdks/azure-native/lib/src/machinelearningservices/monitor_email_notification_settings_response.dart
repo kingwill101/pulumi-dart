@@ -8,20 +8,21 @@ class MonitorEmailNotificationSettingsResponse {
 
   /// Creates a new [MonitorEmailNotificationSettingsResponse].
   /// [emails] The email recipient list which has a limitation of 499 characters in total.
-  MonitorEmailNotificationSettingsResponse({
-    this.emails,
-  });
+  MonitorEmailNotificationSettingsResponse({this.emails});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'emails': ?emails,
-    };
+    return <String, dynamic>{'emails': ?emails};
   }
 
-  factory MonitorEmailNotificationSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory MonitorEmailNotificationSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitorEmailNotificationSettingsResponse(
-      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
+      emails: (() {
+        final guardedValue = map['emails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

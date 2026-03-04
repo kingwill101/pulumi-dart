@@ -156,24 +156,34 @@ import 'service_args.dart';
 class Service extends pulumi.CustomResource {
   /// Windows IoT Device Service OEM AAD domain
   late final pulumi.Output<String?> adminDomainName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Windows IoT Device Service ODM AAD domain
   late final pulumi.Output<String?> billingDomainName;
+
   /// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
   late final pulumi.Output<String?> etag;
+
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Windows IoT Device Service notes.
   late final pulumi.Output<String?> notes;
+
   /// Windows IoT Device Service device allocation,
   late final pulumi.Output<double?> quantity;
+
   /// Windows IoT Device Service start date,
   late final pulumi.Output<String> startDate;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -186,21 +196,21 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:windowsiot:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminDomainName = registerOutput<String?>('adminDomainName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.billingDomainName = registerOutput<String?>('billingDomainName');
-    this.etag = registerOutput<String?>('etag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:windowsiot:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminDomainName = registerOutput<String?>('adminDomainName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingDomainName = registerOutput<String?>('billingDomainName');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.quantity = registerOutput<double?>('quantity');
-    this.startDate = registerOutput<String>('startDate');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    notes = registerOutput<String?>('notes');
+    quantity = registerOutput<double?>('quantity');
+    startDate = registerOutput<String>('startDate');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

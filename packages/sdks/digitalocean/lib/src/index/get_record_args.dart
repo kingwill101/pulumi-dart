@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordArgs {
   /// The domain name of the record.
   final pulumi.Input<String> domain;
+
   /// The name of the record.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetRecordArgs].
   /// [domain] The domain name of the record.
   /// [name] The name of the record.
-  GetRecordArgs({
-    required this.domain,
-    required this.name,
-  });
+  GetRecordArgs({required this.domain, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': domain,
-      'name': name,
-    };
+    return <String, dynamic>{'domain': domain, 'name': name};
   }
 
   factory GetRecordArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordArgs(
-      domain: (map['domain'] as String).input(),
-      name: (map['name'] as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

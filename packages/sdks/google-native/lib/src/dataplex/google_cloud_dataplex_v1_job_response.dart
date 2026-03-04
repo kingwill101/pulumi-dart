@@ -7,26 +7,38 @@ import 'google_cloud_dataplex_v1_task_execution_spec_response.dart';
 class GoogleCloudDataplexV1JobResponse {
   /// The time when the job ended.
   final pulumi.Input<String> endTime;
+
   /// Spec related to how a task is executed.
-  final pulumi.Input<GoogleCloudDataplexV1TaskExecutionSpecResponse> executionSpec;
+  final pulumi.Input<GoogleCloudDataplexV1TaskExecutionSpecResponse>
+  executionSpec;
+
   /// User-defined labels for the task.
   final pulumi.Input<Map<String, String>> labels;
+
   /// Additional information about the current state.
   final pulumi.Input<String> message;
+
   /// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}/jobs/{job_id}.
   final pulumi.Input<String> name;
+
   /// The number of times the job has been retried (excluding the initial attempt).
   final pulumi.Input<int> retryCount;
+
   /// The underlying service running a job.
   final pulumi.Input<String> service;
+
   /// The full resource name for the job run under a particular service.
   final pulumi.Input<String> serviceJob;
+
   /// The time when the job was started.
   final pulumi.Input<String> startTime;
+
   /// Execution state for the job.
   final pulumi.Input<String> state;
+
   /// Job execution trigger.
   final pulumi.Input<String> trigger;
+
   /// System generated globally unique ID for the job.
   final pulumi.Input<String> uid;
 
@@ -61,7 +73,11 @@ class GoogleCloudDataplexV1JobResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'executionSpec': pulumi.Input.mapInputValue<GoogleCloudDataplexV1TaskExecutionSpecResponse, Map<String, dynamic>>(executionSpec, (value) => value.toMap()),
+      'executionSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1TaskExecutionSpecResponse,
+            Map<String, dynamic>
+          >(executionSpec, (value) => value.toMap()),
       'labels': labels,
       'message': message,
       'name': name,
@@ -77,19 +93,24 @@ class GoogleCloudDataplexV1JobResponse {
 
   factory GoogleCloudDataplexV1JobResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1JobResponse(
-      endTime: (map['endTime'] as String).input(),
-      executionSpec: (GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      message: (map['message'] as String).input(),
-      name: (map['name'] as String).input(),
-      retryCount: (map['retryCount'] as int).input(),
-      service: (map['service'] as String).input(),
-      serviceJob: (map['serviceJob'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      state: (map['state'] as String).input(),
-      trigger: (map['trigger'] as String).input(),
-      uid: (map['uid'] as String).input(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      executionSpec: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap(
+          (map['executionSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
+      service: pulumi.Input.fromValue(map['service'] as String),
+      serviceJob: pulumi.Input.fromValue(map['serviceJob'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      trigger: pulumi.Input.fromValue(map['trigger'] as String),
+      uid: pulumi.Input.fromValue(map['uid'] as String),
     );
   }
 }
-

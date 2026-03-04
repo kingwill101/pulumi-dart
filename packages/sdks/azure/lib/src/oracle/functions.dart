@@ -140,7 +140,7 @@ import 'get_resource_anchor_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -267,7 +267,7 @@ Future<GetAdbsCharacterSetsResult> getAdbsCharacterSets(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -396,7 +396,7 @@ Future<GetAdbsNationalCharacterSetsResult> getAdbsNationalCharacterSets(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -509,7 +509,7 @@ Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -622,7 +622,7 @@ Future<GetAutonomousDatabaseBackupResult> getAutonomousDatabaseBackup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -751,13 +751,14 @@ Future<GetAutonomousDatabaseBackupsResult> getAutonomousDatabaseBackups(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracle_get_autonomous_database_clone_from_backup_get_autonomous_database_clone_from_backup_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseCloneFromBackup(
+Future<GetAutonomousDatabaseCloneFromBackupResult>
+getAutonomousDatabaseCloneFromBackup(
   GetAutonomousDatabaseCloneFromBackupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -880,13 +881,14 @@ Future<GetAutonomousDatabaseCloneFromBackupResult> getAutonomousDatabaseCloneFro
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracle_get_autonomous_database_clone_from_database_get_autonomous_database_clone_from_database_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabaseCloneFromDatabase(
+Future<GetAutonomousDatabaseCloneFromDatabaseResult>
+getAutonomousDatabaseCloneFromDatabase(
   GetAutonomousDatabaseCloneFromDatabaseArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1009,7 +1011,7 @@ Future<GetAutonomousDatabaseCloneFromDatabaseResult> getAutonomousDatabaseCloneF
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -1132,7 +1134,7 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -1259,7 +1261,7 @@ Future<GetDatabaseSystemVersionsResult> getDatabaseSystemVersions(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -1388,7 +1390,7 @@ Future<GetDbNodesResult> getDbNodes(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -1523,7 +1525,7 @@ Future<GetDbServersResult> getDbServers(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -1652,7 +1654,7 @@ Future<GetDbSystemShapesResult> getDbSystemShapes(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -1781,7 +1783,7 @@ Future<GetExadataInfrastructureResult> getExadataInfrastructure(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -1922,7 +1924,7 @@ Future<GetExascaleDatabaseStorageVaultResult> getExascaleDatabaseStorageVault(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -2051,7 +2053,7 @@ Future<GetGiVersionsResult> getGiVersions(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01

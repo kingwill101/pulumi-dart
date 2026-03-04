@@ -4,16 +4,15 @@ enum CertificateSubjectMode {
   default_("DEFAULT"),
   reflectedSpiffe("REFLECTED_SPIFFE");
 
-  const CertificateSubjectMode(this.value);
-  final String value;
+  const CertificateSubjectMode(this.wireValue);
+  final String wireValue;
 
   static CertificateSubjectMode fromValue(String value) {
     for (final item in CertificateSubjectMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CertificateSubjectMode value: $value');
   }
 }
-

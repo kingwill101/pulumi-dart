@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeStateCountsResponse {
   /// Number of compute nodes in idle state.
   final pulumi.Input<int> idleNodeCount;
+
   /// Number of compute nodes which are leaving the amlCompute.
   final pulumi.Input<int> leavingNodeCount;
+
   /// Number of compute nodes which are in preempted state.
   final pulumi.Input<int> preemptedNodeCount;
+
   /// Number of compute nodes which are being prepared.
   final pulumi.Input<int> preparingNodeCount;
+
   /// Number of compute nodes which are running jobs.
   final pulumi.Input<int> runningNodeCount;
+
   /// Number of compute nodes which are in unusable state.
   final pulumi.Input<int> unusableNodeCount;
 
@@ -46,13 +51,18 @@ class NodeStateCountsResponse {
 
   factory NodeStateCountsResponse.fromMap(Map<String, dynamic> map) {
     return NodeStateCountsResponse(
-      idleNodeCount: (map['idleNodeCount'] as int).input(),
-      leavingNodeCount: (map['leavingNodeCount'] as int).input(),
-      preemptedNodeCount: (map['preemptedNodeCount'] as int).input(),
-      preparingNodeCount: (map['preparingNodeCount'] as int).input(),
-      runningNodeCount: (map['runningNodeCount'] as int).input(),
-      unusableNodeCount: (map['unusableNodeCount'] as int).input(),
+      idleNodeCount: pulumi.Input.fromValue(map['idleNodeCount'] as int),
+      leavingNodeCount: pulumi.Input.fromValue(map['leavingNodeCount'] as int),
+      preemptedNodeCount: pulumi.Input.fromValue(
+        map['preemptedNodeCount'] as int,
+      ),
+      preparingNodeCount: pulumi.Input.fromValue(
+        map['preparingNodeCount'] as int,
+      ),
+      runningNodeCount: pulumi.Input.fromValue(map['runningNodeCount'] as int),
+      unusableNodeCount: pulumi.Input.fromValue(
+        map['unusableNodeCount'] as int,
+      ),
     );
   }
 }
-

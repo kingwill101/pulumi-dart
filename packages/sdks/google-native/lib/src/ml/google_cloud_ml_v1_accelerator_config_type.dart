@@ -13,16 +13,17 @@ enum GoogleCloudMlV1AcceleratorConfigType {
   tpuV3Pod("TPU_V3_POD"),
   tpuV4Pod("TPU_V4_POD");
 
-  const GoogleCloudMlV1AcceleratorConfigType(this.value);
-  final String value;
+  const GoogleCloudMlV1AcceleratorConfigType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1AcceleratorConfigType fromValue(String value) {
     for (final item in GoogleCloudMlV1AcceleratorConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1AcceleratorConfigType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1AcceleratorConfigType value: $value',
+    );
   }
 }
-

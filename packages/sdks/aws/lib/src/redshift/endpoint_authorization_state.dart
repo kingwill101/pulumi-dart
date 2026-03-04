@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAuthorizationState {
   /// The Amazon Web Services account ID to grant access to.
   final pulumi.Input<String>? account;
+
   /// Indicates whether all VPCs in the grantee account are allowed access to the cluster.
   final pulumi.Input<bool>? allowedAllVpcs;
+
   /// The cluster identifier of the cluster to grant access to.
   final pulumi.Input<String>? clusterIdentifier;
+
   /// The number of Redshift-managed VPC endpoints created for the authorization.
   final pulumi.Input<int>? endpointCount;
+
   /// Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted. Default value is `false`.
   final pulumi.Input<bool>? forceDelete;
+
   /// The Amazon Web Services account ID of the grantee of the cluster.
   final pulumi.Input<String>? grantee;
+
   /// The Amazon Web Services account ID of the cluster owner.
   final pulumi.Input<String>? grantor;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
   final pulumi.Input<List<String>>? vpcIds;
 
@@ -61,16 +69,51 @@ class EndpointAuthorizationState {
 
   factory EndpointAuthorizationState.fromMap(Map<String, dynamic> map) {
     return EndpointAuthorizationState(
-      account: map['account'] == null ? null : ((map['account'] as String).input()).input(),
-      allowedAllVpcs: map['allowedAllVpcs'] == null ? null : ((map['allowedAllVpcs'] as bool).input()).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
-      endpointCount: map['endpointCount'] == null ? null : ((map['endpointCount'] as int).input()).input(),
-      forceDelete: map['forceDelete'] == null ? null : ((map['forceDelete'] as bool).input()).input(),
-      grantee: map['grantee'] == null ? null : ((map['grantee'] as String).input()).input(),
-      grantor: map['grantor'] == null ? null : ((map['grantor'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcIds: map['vpcIds'] == null ? null : (((map['vpcIds'] as List).cast<String>()).input()).input(),
+      account: (() {
+        final guardedValue = map['account'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      allowedAllVpcs: (() {
+        final guardedValue = map['allowedAllVpcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterIdentifier: (() {
+        final guardedValue = map['clusterIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointCount: (() {
+        final guardedValue = map['endpointCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      forceDelete: (() {
+        final guardedValue = map['forceDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      grantee: (() {
+        final guardedValue = map['grantee'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      grantor: (() {
+        final guardedValue = map['grantor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcIds: (() {
+        final guardedValue = map['vpcIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -223,7 +223,7 @@ import 'integration_account_map_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Logic` - 2019-05-01
@@ -238,14 +238,19 @@ import 'integration_account_map_state.dart';
 class IntegrationAccountMap extends pulumi.CustomResource {
   /// The content of the Logic App Integration Account Map.
   late final pulumi.Output<String> content;
+
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Map to be created.
   late final pulumi.Output<String> integrationAccountName;
+
   /// The type of the Logic App Integration Account Map. Possible values are `Liquid`, `NotSpecified`, `Xslt`, `Xslt30` and `Xslt20`.
   late final pulumi.Output<String> mapType;
+
   /// The metadata of the Logic App Integration Account Map.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name which should be used for this Logic App Integration Account Map. Changing this forces a new Logic App Integration Account Map to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Logic App Integration Account Map should exist. Changing this forces a new Logic App Integration Account Map to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -258,17 +263,17 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     IntegrationAccountMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String>('content');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.mapType = registerOutput<String>('mapType');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<String>('content');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    mapType = registerOutput<String>('mapType');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IntegrationAccountMap] resource's state with the given [name] and [id].
@@ -289,16 +294,16 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String>('content');
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.mapType = registerOutput<String>('mapType');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:logicapps/integrationAccountMap:IntegrationAccountMap',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<String>('content');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    mapType = registerOutput<String>('mapType');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

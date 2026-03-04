@@ -6,6 +6,7 @@ import 'get_metric_rule_templates_template.dart';
 /// Result data returned by getMetricRuleTemplates.
 class GetMetricRuleTemplatesResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -52,23 +53,55 @@ class GetMetricRuleTemplatesResult {
       'names': names,
       'outputFile': ?outputFile,
       'templateId': ?templateId,
-      'templates': pulumi.Input.encodeList<GetMetricRuleTemplatesTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
+      'templates':
+          pulumi.Input.encodeList<
+            GetMetricRuleTemplatesTemplate,
+            Map<String, dynamic>
+          >(templates, (value) => value.toMap()),
     };
   }
 
   factory GetMetricRuleTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleTemplatesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword']! as String,
-      metricRuleTemplateName: map['metricRuleTemplateName'] == null ? null : map['metricRuleTemplateName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      metricRuleTemplateName: (() {
+        final guardedValue = map['metricRuleTemplateName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      templateId: map['templateId'] == null ? null : map['templateId']! as String,
-      templates: pulumi.Input.decodeList<GetMetricRuleTemplatesTemplate>(map['templates'], (value) => GetMetricRuleTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      templates: pulumi.Input.decodeList<GetMetricRuleTemplatesTemplate>(
+        map['templates']!,
+        (value) => GetMetricRuleTemplatesTemplate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

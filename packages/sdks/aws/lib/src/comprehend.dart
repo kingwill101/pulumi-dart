@@ -1,5 +1,3 @@
-library module_comprehend;
-
 export 'comprehend/document_classifier.dart';
 export 'comprehend/document_classifier_args.dart';
 export 'comprehend/document_classifier_input_data_config.dart';

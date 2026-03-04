@@ -4,20 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsRoute53DomainsDomainSummary
 class AwsRoute53DomainsDomainSummaryProperties {
-  /// <p>Indicates whether the domain is automatically renewed upon expiration.</p>
+  /// &lt;p&gt;Indicates whether the domain is automatically renewed upon expiration.&lt;/p&gt;
   final pulumi.Input<bool>? autoRenew;
-  /// <p>The name of the domain that the summary information applies to.</p>
+
+  /// &lt;p&gt;The name of the domain that the summary information applies to.&lt;/p&gt;
   final pulumi.Input<String>? domainName;
-  /// <p>Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).</p>
+
+  /// &lt;p&gt;Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).&lt;/p&gt;
   final pulumi.Input<String>? expiry;
-  /// <p>Indicates whether a domain is locked from unauthorized transfer to another party.</p>
+
+  /// &lt;p&gt;Indicates whether a domain is locked from unauthorized transfer to another party.&lt;/p&gt;
   final pulumi.Input<bool>? transferLock;
 
   /// Creates a new [AwsRoute53DomainsDomainSummaryProperties].
-  /// [autoRenew] <p>Indicates whether the domain is automatically renewed upon expiration.</p>
-  /// [domainName] <p>The name of the domain that the summary information applies to.</p>
-  /// [expiry] <p>Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).</p>
-  /// [transferLock] <p>Indicates whether a domain is locked from unauthorized transfer to another party.</p>
+  /// [autoRenew] &lt;p&gt;Indicates whether the domain is automatically renewed upon expiration.&lt;/p&gt;
+  /// [domainName] &lt;p&gt;The name of the domain that the summary information applies to.&lt;/p&gt;
+  /// [expiry] &lt;p&gt;Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).&lt;/p&gt;
+  /// [transferLock] &lt;p&gt;Indicates whether a domain is locked from unauthorized transfer to another party.&lt;/p&gt;
   AwsRoute53DomainsDomainSummaryProperties({
     this.autoRenew,
     this.domainName,
@@ -34,13 +37,30 @@ class AwsRoute53DomainsDomainSummaryProperties {
     };
   }
 
-  factory AwsRoute53DomainsDomainSummaryProperties.fromMap(Map<String, dynamic> map) {
+  factory AwsRoute53DomainsDomainSummaryProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsRoute53DomainsDomainSummaryProperties(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
-      transferLock: map['transferLock'] == null ? null : (map['transferLock']! as bool).input(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiry: (() {
+        final guardedValue = map['expiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transferLock: (() {
+        final guardedValue = map['transferLock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

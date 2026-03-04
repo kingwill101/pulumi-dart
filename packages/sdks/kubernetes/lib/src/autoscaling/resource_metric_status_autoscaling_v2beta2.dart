@@ -7,6 +7,7 @@ import 'metric_value_status_autoscaling_v2beta2.dart';
 class ResourceMetricStatusAutoscalingV2beta2 {
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatusAutoscalingV2beta2> current;
+
   /// Name is the name of the resource in question.
   final pulumi.Input<String> name;
 
@@ -20,16 +21,25 @@ class ResourceMetricStatusAutoscalingV2beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'current': pulumi.Input.mapInputValue<MetricValueStatusAutoscalingV2beta2, Map<String, dynamic>>(current, (value) => value.toMap()),
+      'current':
+          pulumi.Input.mapInputValue<
+            MetricValueStatusAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(current, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory ResourceMetricStatusAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
+  factory ResourceMetricStatusAutoscalingV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceMetricStatusAutoscalingV2beta2(
-      current: (MetricValueStatusAutoscalingV2beta2.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      current: pulumi.Input.fromValue(
+        MetricValueStatusAutoscalingV2beta2.fromMap(
+          (map['current']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -5,9 +5,9 @@ import 'trigger_state.dart';
 /// Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
 /// For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createtrigger).
 ///
-/// > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+/// &gt; **NOTE:** The resource requires a provider field 'account_id'. See account_id.
 ///
-/// > **NOTE:** Available since v1.93.0.
+/// &gt; **NOTE:** Available since v1.93.0.
 ///
 /// ## Example Usage
 ///
@@ -3841,29 +3841,39 @@ import 'trigger_state.dart';
 class Trigger extends pulumi.CustomResource {
   /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
   late final pulumi.Output<String?> config;
+
   /// The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
   late final pulumi.Output<String?> configMns;
+
   /// The Function Compute function name.
   late final pulumi.Output<String> function;
+
   /// The date this resource was last modified.
   late final pulumi.Output<String> lastModified;
+
   /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
   late final pulumi.Output<String> name;
+
   /// Setting a prefix to get a only trigger name. It is conflict with "name".
   late final pulumi.Output<String?> namePrefix;
+
   /// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   late final pulumi.Output<String?> role;
+
   /// The Function Compute service name.
   late final pulumi.Output<String> service;
+
   /// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   late final pulumi.Output<String?> sourceArn;
+
   /// The Function Compute trigger ID.
   late final pulumi.Output<String> triggerId;
+
   /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
   ///
-  /// > **NOTE:** Config does not support modification when type is mns_topic.
-  /// > **NOTE:** type = cdn_events, available in 1.47.0+.
-  /// > **NOTE:** type = eventbridge, available in 1.173.0+.
+  /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+  /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+  /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
   late final pulumi.Output<String> type;
 
   /// Creates a new [Trigger].
@@ -3875,22 +3885,22 @@ class Trigger extends pulumi.CustomResource {
     TriggerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/trigger:Trigger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<String?>('config');
-    this.configMns = registerOutput<String?>('configMns');
-    this.function = registerOutput<String>('function');
-    this.lastModified = registerOutput<String>('lastModified');
+         'alicloud:fc/trigger:Trigger',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<String?>('config');
+    configMns = registerOutput<String?>('configMns');
+    function = registerOutput<String>('function');
+    lastModified = registerOutput<String>('lastModified');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String?>('namePrefix');
-    this.role = registerOutput<String?>('role');
-    this.service = registerOutput<String>('service');
-    this.sourceArn = registerOutput<String?>('sourceArn');
-    this.triggerId = registerOutput<String>('triggerId');
-    this.type = registerOutput<String>('type');
+    namePrefix = registerOutput<String?>('namePrefix');
+    role = registerOutput<String?>('role');
+    service = registerOutput<String>('service');
+    sourceArn = registerOutput<String?>('sourceArn');
+    triggerId = registerOutput<String>('triggerId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Trigger] resource's state with the given [name] and [id].
@@ -3911,21 +3921,21 @@ class Trigger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/trigger:Trigger',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<String?>('config');
-    this.configMns = registerOutput<String?>('configMns');
-    this.function = registerOutput<String>('function');
-    this.lastModified = registerOutput<String>('lastModified');
+         'alicloud:fc/trigger:Trigger',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<String?>('config');
+    configMns = registerOutput<String?>('configMns');
+    function = registerOutput<String>('function');
+    lastModified = registerOutput<String>('lastModified');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String?>('namePrefix');
-    this.role = registerOutput<String?>('role');
-    this.service = registerOutput<String>('service');
-    this.sourceArn = registerOutput<String?>('sourceArn');
-    this.triggerId = registerOutput<String>('triggerId');
-    this.type = registerOutput<String>('type');
+    namePrefix = registerOutput<String?>('namePrefix');
+    role = registerOutput<String?>('role');
+    service = registerOutput<String>('service');
+    sourceArn = registerOutput<String?>('sourceArn');
+    triggerId = registerOutput<String>('triggerId');
+    type = registerOutput<String>('type');
   }
 }

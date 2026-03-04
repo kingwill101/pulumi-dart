@@ -7,10 +7,13 @@ import 'certificate_information.dart';
 class CertificateConfiguration {
   /// Certificate information.
   final pulumi.Input<CertificateInformation>? certificate;
+
   /// Certificate Password.
   final pulumi.Input<String>? certificatePassword;
+
   /// Base64 Encoded certificate.
   final pulumi.Input<String>? encodedCertificate;
+
   /// The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations.
   final pulumi.Input<String> storeName;
 
@@ -28,7 +31,11 @@ class CertificateConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate': ?pulumi.Input.mapOptionalInputValue<CertificateInformation, Map<String, dynamic>>(certificate, (value) => value.toMap()),
+      'certificate':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateInformation,
+            Map<String, dynamic>
+          >(certificate, (value) => value.toMap()),
       'certificatePassword': ?certificatePassword,
       'encodedCertificate': ?encodedCertificate,
       'storeName': storeName,
@@ -37,11 +44,26 @@ class CertificateConfiguration {
 
   factory CertificateConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateConfiguration(
-      certificate: map['certificate'] == null ? null : (CertificateInformation.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
-      encodedCertificate: map['encodedCertificate'] == null ? null : (map['encodedCertificate']! as String).input(),
-      storeName: (map['storeName'] as String).input(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateInformation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      certificatePassword: (() {
+        final guardedValue = map['certificatePassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encodedCertificate: (() {
+        final guardedValue = map['encodedCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storeName: pulumi.Input.fromValue(map['storeName'] as String),
     );
   }
 }
-

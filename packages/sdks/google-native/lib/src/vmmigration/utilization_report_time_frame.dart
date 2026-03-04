@@ -5,16 +5,15 @@ enum UtilizationReportTimeFrame {
   month("MONTH"),
   year("YEAR");
 
-  const UtilizationReportTimeFrame(this.value);
-  final String value;
+  const UtilizationReportTimeFrame(this.wireValue);
+  final String wireValue;
 
   static UtilizationReportTimeFrame fromValue(String value) {
     for (final item in UtilizationReportTimeFrame.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UtilizationReportTimeFrame value: $value');
   }
 }
-

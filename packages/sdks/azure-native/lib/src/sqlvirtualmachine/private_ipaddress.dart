@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateIPAddress {
   /// Private IP address bound to the availability group listener.
   final pulumi.Input<String>? ipAddress;
+
   /// Subnet used to include private IP.
   final pulumi.Input<String>? subnetResourceId;
 
   /// Creates a new [PrivateIPAddress].
   /// [ipAddress] Private IP address bound to the availability group listener.
   /// [subnetResourceId] Subnet used to include private IP.
-  PrivateIPAddress({
-    this.ipAddress,
-    this.subnetResourceId,
-  });
+  PrivateIPAddress({this.ipAddress, this.subnetResourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class PrivateIPAddress {
 
   factory PrivateIPAddress.fromMap(Map<String, dynamic> map) {
     return PrivateIPAddress(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetResourceId: (() {
+        final guardedValue = map['subnetResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

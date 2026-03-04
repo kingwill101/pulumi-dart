@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterWorkloadAutoscalerProfile {
   /// Specifies whether KEDA Autoscaler can be used for workloads.
   final pulumi.Input<bool>? kedaEnabled;
+
   /// Specifies whether Vertical Pod Autoscaler should be enabled.
   final pulumi.Input<bool>? verticalPodAutoscalerEnabled;
 
@@ -23,11 +24,20 @@ class KubernetesClusterWorkloadAutoscalerProfile {
     };
   }
 
-  factory KubernetesClusterWorkloadAutoscalerProfile.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterWorkloadAutoscalerProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterWorkloadAutoscalerProfile(
-      kedaEnabled: map['kedaEnabled'] == null ? null : (map['kedaEnabled']! as bool).input(),
-      verticalPodAutoscalerEnabled: map['verticalPodAutoscalerEnabled'] == null ? null : (map['verticalPodAutoscalerEnabled']! as bool).input(),
+      kedaEnabled: (() {
+        final guardedValue = map['kedaEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      verticalPodAutoscalerEnabled: (() {
+        final guardedValue = map['verticalPodAutoscalerEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

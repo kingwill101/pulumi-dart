@@ -4,16 +4,15 @@ enum RecoveryMode {
   valueBulkLogged("Bulk-logged"),
   valueSimple("Simple");
 
-  const RecoveryMode(this.value);
-  final String value;
+  const RecoveryMode(this.wireValue);
+  final String wireValue;
 
   static RecoveryMode fromValue(String value) {
     for (final item in RecoveryMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecoveryMode value: $value');
   }
 }
-

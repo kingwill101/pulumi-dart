@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventRuleWebhookParameter {
   /// The HTTP request method.
   final pulumi.Input<String>? method;
+
   /// The name of the protocol.
   final pulumi.Input<String>? protocol;
+
   /// The callback URL.
   final pulumi.Input<String>? url;
+
   /// The ID of the recipient that receives alert notifications.
   final pulumi.Input<String>? webhookParametersId;
 
@@ -35,11 +38,26 @@ class EventRuleWebhookParameter {
 
   factory EventRuleWebhookParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleWebhookParameter(
-      method: map['method'] == null ? null : (map['method']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      webhookParametersId: map['webhookParametersId'] == null ? null : (map['webhookParametersId']! as String).input(),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webhookParametersId: (() {
+        final guardedValue = map['webhookParametersId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

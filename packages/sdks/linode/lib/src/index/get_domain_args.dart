@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainArgs {
   /// The unique domain name of the Domain record to query.
   final pulumi.Input<String>? domain;
+
   /// The unique numeric ID of the Domain record to query.
   final pulumi.Input<int>? id;
 
   /// Creates a new [GetDomainArgs].
   /// [domain] The unique domain name of the Domain record to query.
   /// [id] The unique numeric ID of the Domain record to query.
-  GetDomainArgs({
-    this.domain,
-    this.id,
-  });
+  GetDomainArgs({this.domain, this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': ?domain,
-      'id': ?id,
-    };
+    return <String, dynamic>{'domain': ?domain, 'id': ?id};
   }
 
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainArgs(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as int).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

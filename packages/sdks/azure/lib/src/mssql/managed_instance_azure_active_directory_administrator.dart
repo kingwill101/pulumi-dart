@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceAzureActiveDirectoryAdministrator {
   /// Specifies whether only Azure AD authentication can be used to log in to this SQL Managed Instance. When `true`, the `administrator_login` and `administrator_login_password` properties can be omitted. Defaults to `false`.
   final pulumi.Input<bool>? azureadAuthenticationOnlyEnabled;
+
   /// The login username of the Azure AD Administrator of this SQL Managed Instance.
   final pulumi.Input<String> loginUsername;
+
   /// The object id of the Azure AD Administrator of this SQL Managed Instance.
   final pulumi.Input<String> objectId;
+
   /// The principal type of the Azure AD Administrator of this SQL Managed Instance. Possible values are `Application`, `Group`, `User`.
   final pulumi.Input<String> principalType;
+
   /// The tenant id of the Azure AD Administrator of this SQL Managed Instance. Should be specified if the Azure AD Administrator is homed in a different tenant to the SQL Managed Instance.
   final pulumi.Input<String>? tenantId;
 
@@ -38,14 +42,23 @@ class ManagedInstanceAzureActiveDirectoryAdministrator {
     };
   }
 
-  factory ManagedInstanceAzureActiveDirectoryAdministrator.fromMap(Map<String, dynamic> map) {
+  factory ManagedInstanceAzureActiveDirectoryAdministrator.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedInstanceAzureActiveDirectoryAdministrator(
-      azureadAuthenticationOnlyEnabled: map['azureadAuthenticationOnlyEnabled'] == null ? null : (map['azureadAuthenticationOnlyEnabled']! as bool).input(),
-      loginUsername: (map['loginUsername'] as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      azureadAuthenticationOnlyEnabled: (() {
+        final guardedValue = map['azureadAuthenticationOnlyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loginUsername: pulumi.Input.fromValue(map['loginUsername'] as String),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

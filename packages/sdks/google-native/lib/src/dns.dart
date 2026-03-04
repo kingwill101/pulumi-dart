@@ -1,5 +1,3 @@
-library module_dns;
-
 export 'dns/change.dart';
 export 'dns/change_args.dart';
 export 'dns/change_dns_v1beta2.dart';

@@ -10,12 +10,16 @@ import 'auto_execute_status.dart';
 class DatabaseAdvisorArgs {
   /// The name of the Database Advisor.
   final pulumi.Input<String>? advisorName;
+
   /// Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
   final pulumi.Input<AutoExecuteStatus> autoExecuteStatus;
+
   /// The name of the database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -36,7 +40,11 @@ class DatabaseAdvisorArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advisorName': ?advisorName,
-      'autoExecuteStatus': pulumi.Input.mapInputValue<AutoExecuteStatus, String>(autoExecuteStatus, (value) => value.value),
+      'autoExecuteStatus':
+          pulumi.Input.mapInputValue<AutoExecuteStatus, String>(
+            autoExecuteStatus,
+            (value) => value.wireValue,
+          ),
       'databaseName': databaseName,
       'resourceGroupName': resourceGroupName,
       'serverName': serverName,
@@ -45,12 +53,19 @@ class DatabaseAdvisorArgs {
 
   factory DatabaseAdvisorArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAdvisorArgs(
-      advisorName: map['advisorName'] == null ? null : (map['advisorName']! as String).input(),
-      autoExecuteStatus: (AutoExecuteStatus.fromValue(map['autoExecuteStatus'] as String)).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      advisorName: (() {
+        final guardedValue = map['advisorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoExecuteStatus: pulumi.Input.fromValue(
+        AutoExecuteStatus.fromValue(map['autoExecuteStatus']! as String),
+      ),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

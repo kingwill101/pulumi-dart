@@ -1,5 +1,3 @@
-library module_spanner;
-
 export 'spanner/backup_schedule.dart';
 export 'spanner/backup_schedule_args.dart';
 export 'spanner/backup_schedule_encryption_config.dart';

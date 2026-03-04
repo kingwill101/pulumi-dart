@@ -212,7 +212,7 @@ import 'named_value_value_from_key_vault.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -227,20 +227,27 @@ import 'named_value_value_from_key_vault.dart';
 class NamedValue extends pulumi.CustomResource {
   /// The name of the API Management Service in which the API Management Named Value should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The display name of this API Management Named Value.
   late final pulumi.Output<String> displayName;
+
   /// The name of the API Management Named Value. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group in which the API Management Named Value should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies whether the API Management Named Value is secret. Valid values are `true` or `false`. The default value is `false`.
   ///
-  /// > **NOTE:** setting the field `secret` to `true` doesn't make this field sensitive in the provider, instead it marks the value as secret and encrypts the value in Azure.
+  /// &gt; **NOTE:** setting the field `secret` to `true` doesn't make this field sensitive in the provider, instead it marks the value as secret and encrypts the value in Azure.
   late final pulumi.Output<bool?> secret;
+
   /// A list of tags to be applied to the API Management Named Value.
   late final pulumi.Output<List<String>?> tags;
+
   /// The value of this API Management Named Value.
   late final pulumi.Output<String?> value;
+
   /// A `value_from_key_vault` block as defined below. If specified, `secret` must also be set to `true`.
   late final pulumi.Output<NamedValueValueFromKeyVault?> valueFromKeyVault;
 
@@ -253,19 +260,21 @@ class NamedValue extends pulumi.CustomResource {
     NamedValueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/namedValue:NamedValue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/namedValue:NamedValue',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secret = registerOutput<bool?>('secret');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.value = registerOutput<String?>('value');
-    this.valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>('valueFromKeyVault');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secret = registerOutput<bool?>('secret');
+    tags = registerOutput<List<String>?>('tags');
+    value = registerOutput<String?>('value');
+    valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>(
+      'valueFromKeyVault',
+    );
   }
 
   /// Gets an existing [NamedValue] resource's state with the given [name] and [id].
@@ -286,18 +295,20 @@ class NamedValue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/namedValue:NamedValue',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/namedValue:NamedValue',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secret = registerOutput<bool?>('secret');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.value = registerOutput<String?>('value');
-    this.valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>('valueFromKeyVault');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secret = registerOutput<bool?>('secret');
+    tags = registerOutput<List<String>?>('tags');
+    value = registerOutput<String?>('value');
+    valueFromKeyVault = registerOutput<NamedValueValueFromKeyVault?>(
+      'valueFromKeyVault',
+    );
   }
 }

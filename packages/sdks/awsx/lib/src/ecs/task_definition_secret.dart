@@ -9,23 +9,16 @@ class TaskDefinitionSecret {
   /// Creates a new [TaskDefinitionSecret].
   /// [name] Required.
   /// [valueFrom] Required.
-  TaskDefinitionSecret({
-    required this.name,
-    required this.valueFrom,
-  });
+  TaskDefinitionSecret({required this.name, required this.valueFrom});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'valueFrom': valueFrom,
-    };
+    return <String, dynamic>{'name': name, 'valueFrom': valueFrom};
   }
 
   factory TaskDefinitionSecret.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionSecret(
-      name: (map['name'] as String).input(),
-      valueFrom: (map['valueFrom'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      valueFrom: pulumi.Input.fromValue(map['valueFrom'] as String),
     );
   }
 }
-

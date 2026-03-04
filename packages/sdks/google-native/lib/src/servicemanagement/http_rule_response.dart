@@ -7,22 +7,31 @@ import 'custom_http_pattern_response.dart';
 class HttpRuleResponse {
   /// Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep).
   final pulumi.Input<List<HttpRuleResponse>> additionalBindings;
+
   /// The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body. NOTE: the referred field must be present at the top-level of the request message type.
   final pulumi.Input<String> body;
+
   /// The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients.
   final pulumi.Input<CustomHttpPatternResponse> custom;
+
   /// Maps to HTTP DELETE. Used for deleting a resource.
   final pulumi.Input<String> delete;
+
   /// Maps to HTTP GET. Used for listing and getting information about resources.
   final pulumi.Input<String> get;
+
   /// Maps to HTTP PATCH. Used for updating a resource.
   final pulumi.Input<String> patch;
+
   /// Maps to HTTP POST. Used for creating a resource or performing an action.
   final pulumi.Input<String> post;
+
   /// Maps to HTTP PUT. Used for replacing a resource.
   final pulumi.Input<String> put;
+
   /// Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must be present at the top-level of the response message type.
   final pulumi.Input<String> responseBody;
+
   /// Selects a method to which this rule applies. Refer to selector for syntax details.
   final pulumi.Input<String> selector;
 
@@ -52,9 +61,24 @@ class HttpRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalBindings': pulumi.Input.mapInputValue<List<HttpRuleResponse>, List<Map<String, dynamic>>>(additionalBindings, (value) => pulumi.Input.encodeList<HttpRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'additionalBindings':
+          pulumi.Input.mapInputValue<
+            List<HttpRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            additionalBindings,
+            (value) =>
+                pulumi.Input.encodeList<HttpRuleResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'body': body,
-      'custom': pulumi.Input.mapInputValue<CustomHttpPatternResponse, Map<String, dynamic>>(custom, (value) => value.toMap()),
+      'custom':
+          pulumi.Input.mapInputValue<
+            CustomHttpPatternResponse,
+            Map<String, dynamic>
+          >(custom, (value) => value.toMap()),
       'delete': delete,
       'get': get,
       'patch': patch,
@@ -67,17 +91,26 @@ class HttpRuleResponse {
 
   factory HttpRuleResponse.fromMap(Map<String, dynamic> map) {
     return HttpRuleResponse(
-      additionalBindings: (pulumi.Input.decodeList<HttpRuleResponse>(map['additionalBindings'], (value) => HttpRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      body: (map['body'] as String).input(),
-      custom: (CustomHttpPatternResponse.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      delete: (map['delete'] as String).input(),
-      get: (map['get'] as String).input(),
-      patch: (map['patch'] as String).input(),
-      post: (map['post'] as String).input(),
-      put: (map['put'] as String).input(),
-      responseBody: (map['responseBody'] as String).input(),
-      selector: (map['selector'] as String).input(),
+      additionalBindings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HttpRuleResponse>(
+          map['additionalBindings']!,
+          (value) =>
+              HttpRuleResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      body: pulumi.Input.fromValue(map['body'] as String),
+      custom: pulumi.Input.fromValue(
+        CustomHttpPatternResponse.fromMap(
+          (map['custom']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      delete: pulumi.Input.fromValue(map['delete'] as String),
+      get: pulumi.Input.fromValue(map['get'] as String),
+      patch: pulumi.Input.fromValue(map['patch'] as String),
+      post: pulumi.Input.fromValue(map['post'] as String),
+      put: pulumi.Input.fromValue(map['put'] as String),
+      responseBody: pulumi.Input.fromValue(map['responseBody'] as String),
+      selector: pulumi.Input.fromValue(map['selector'] as String),
     );
   }
 }
-

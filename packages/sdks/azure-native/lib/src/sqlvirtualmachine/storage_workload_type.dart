@@ -4,16 +4,15 @@ enum StorageWorkloadType {
   oLTP("OLTP"),
   dW("DW");
 
-  const StorageWorkloadType(this.value);
-  final String value;
+  const StorageWorkloadType(this.wireValue);
+  final String wireValue;
 
   static StorageWorkloadType fromValue(String value) {
     for (final item in StorageWorkloadType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageWorkloadType value: $value');
   }
 }
-

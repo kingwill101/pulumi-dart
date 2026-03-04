@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerStateResponse {
   /// Human-readable status of this state.
   final pulumi.Input<String>? detailStatus;
+
   /// The container exit code.
   final pulumi.Input<String>? exitCode;
+
   /// Date/time when the container state finished.
   final pulumi.Input<String>? finishTime;
+
   /// Date/time when the container state started.
   final pulumi.Input<String>? startTime;
+
   /// The state of this container
   final pulumi.Input<String>? state;
 
@@ -41,12 +45,31 @@ class ContainerStateResponse {
 
   factory ContainerStateResponse.fromMap(Map<String, dynamic> map) {
     return ContainerStateResponse(
-      detailStatus: map['detailStatus'] == null ? null : (map['detailStatus']! as String).input(),
-      exitCode: map['exitCode'] == null ? null : (map['exitCode']! as String).input(),
-      finishTime: map['finishTime'] == null ? null : (map['finishTime']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      detailStatus: (() {
+        final guardedValue = map['detailStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exitCode: (() {
+        final guardedValue = map['exitCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      finishTime: (() {
+        final guardedValue = map['finishTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

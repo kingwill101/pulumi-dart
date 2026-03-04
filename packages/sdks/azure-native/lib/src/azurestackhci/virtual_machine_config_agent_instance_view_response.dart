@@ -7,6 +7,7 @@ import 'instance_view_status_response.dart';
 class VirtualMachineConfigAgentInstanceViewResponse {
   /// The resource status information.
   final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+
   /// The VM Config Agent full version.
   final pulumi.Input<String>? vmConfigAgentVersion;
 
@@ -20,16 +21,43 @@ class VirtualMachineConfigAgentInstanceViewResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceViewStatusResponse>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceViewStatusResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'vmConfigAgentVersion': ?vmConfigAgentVersion,
     };
   }
 
-  factory VirtualMachineConfigAgentInstanceViewResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineConfigAgentInstanceViewResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineConfigAgentInstanceViewResponse(
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmConfigAgentVersion: map['vmConfigAgentVersion'] == null ? null : (map['vmConfigAgentVersion']! as String).input(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceViewStatusResponse>(
+            guardedValue,
+            (value) => InstanceViewStatusResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      vmConfigAgentVersion: (() {
+        final guardedValue = map['vmConfigAgentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum ClusterUpdateDesiredDatapathProvider {
   legacyDatapath("LEGACY_DATAPATH"),
   advancedDatapath("ADVANCED_DATAPATH");
 
-  const ClusterUpdateDesiredDatapathProvider(this.value);
-  final String value;
+  const ClusterUpdateDesiredDatapathProvider(this.wireValue);
+  final String wireValue;
 
   static ClusterUpdateDesiredDatapathProvider fromValue(String value) {
     for (final item in ClusterUpdateDesiredDatapathProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClusterUpdateDesiredDatapathProvider value: $value');
+    throw ArgumentError(
+      'Unknown ClusterUpdateDesiredDatapathProvider value: $value',
+    );
   }
 }
-

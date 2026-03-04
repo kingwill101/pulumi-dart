@@ -17,7 +17,7 @@ import 'managed_ssl_certificate_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 ///
-/// > **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
+/// &gt; **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
 /// certificate is complex.  Ensure that you understand the lifecycle of a
 /// certificate before attempting complex tasks like cert rotation automatically.
 /// This resource will "return" as soon as the certificate object is created,
@@ -493,16 +493,21 @@ import 'managed_ssl_certificate_state.dart';
 class ManagedSslCertificate extends pulumi.CustomResource {
   /// The unique identifier for the resource.
   late final pulumi.Output<int> certificateId;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Expire time of the certificate in RFC3339 text format.
   late final pulumi.Output<String> expireTime;
+
   /// Properties relevant to a managed certificate.  These will be used if the
   /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
   /// Structure is documented below.
   late final pulumi.Output<ManagedSslCertificateManaged?> managed;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -512,13 +517,17 @@ class ManagedSslCertificate extends pulumi.CustomResource {
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// Domains associated with the certificate via Subject Alternative Name.
   late final pulumi.Output<List<String>> subjectAlternativeNames;
+
   /// Enum field whose value is always `MANAGED` - used to signal to the API
   /// which type this is.
   /// Default value is `MANAGED`.
@@ -534,21 +543,23 @@ class ManagedSslCertificate extends pulumi.CustomResource {
     ManagedSslCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/managedSslCertificate:ManagedSslCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateId = registerOutput<int>('certificateId');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.expireTime = registerOutput<String>('expireTime');
-    this.managed = registerOutput<ManagedSslCertificateManaged?>('managed');
+         'gcp:compute/managedSslCertificate:ManagedSslCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateId = registerOutput<int>('certificateId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
+    managed = registerOutput<ManagedSslCertificateManaged?>('managed');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
-    this.type = registerOutput<String?>('type');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    subjectAlternativeNames = registerOutput<List<String>>(
+      'subjectAlternativeNames',
+    );
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [ManagedSslCertificate] resource's state with the given [name] and [id].
@@ -569,20 +580,22 @@ class ManagedSslCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/managedSslCertificate:ManagedSslCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateId = registerOutput<int>('certificateId');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.expireTime = registerOutput<String>('expireTime');
-    this.managed = registerOutput<ManagedSslCertificateManaged?>('managed');
+         'gcp:compute/managedSslCertificate:ManagedSslCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateId = registerOutput<int>('certificateId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
+    managed = registerOutput<ManagedSslCertificateManaged?>('managed');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
-    this.type = registerOutput<String?>('type');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    subjectAlternativeNames = registerOutput<List<String>>(
+      'subjectAlternativeNames',
+    );
+    type = registerOutput<String?>('type');
   }
 }

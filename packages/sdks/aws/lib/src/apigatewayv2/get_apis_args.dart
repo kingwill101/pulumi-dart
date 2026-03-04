@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApisArgs {
   /// API name.
   final pulumi.Input<String>? name;
+
   /// API protocol.
   final pulumi.Input<String>? protocolType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired APIs.
   final pulumi.Input<Map<String, String>>? tags;
@@ -22,12 +25,7 @@ class GetApisArgs {
   /// [protocolType] API protocol.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match
-  GetApisArgs({
-    this.name,
-    this.protocolType,
-    this.region,
-    this.tags,
-  });
+  GetApisArgs({this.name, this.protocolType, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,11 +38,28 @@ class GetApisArgs {
 
   factory GetApisArgs.fromMap(Map<String, dynamic> map) {
     return GetApisArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      protocolType: map['protocolType'] == null ? null : ((map['protocolType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolType: (() {
+        final guardedValue = map['protocolType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

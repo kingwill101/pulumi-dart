@@ -3,16 +3,17 @@ enum ODataAadServicePrincipalCredentialType {
   valueServicePrincipalKey("ServicePrincipalKey"),
   valueServicePrincipalCert("ServicePrincipalCert");
 
-  const ODataAadServicePrincipalCredentialType(this.value);
-  final String value;
+  const ODataAadServicePrincipalCredentialType(this.wireValue);
+  final String wireValue;
 
   static ODataAadServicePrincipalCredentialType fromValue(String value) {
     for (final item in ODataAadServicePrincipalCredentialType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ODataAadServicePrincipalCredentialType value: $value');
+    throw ArgumentError(
+      'Unknown ODataAadServicePrincipalCredentialType value: $value',
+    );
   }
 }
-

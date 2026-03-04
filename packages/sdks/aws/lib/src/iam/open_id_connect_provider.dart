@@ -239,14 +239,19 @@ import 'open_id_connect_provider_state.dart';
 class OpenIdConnectProvider extends pulumi.CustomResource {
   /// ARN assigned by AWS for this provider.
   late final pulumi.Output<String> arn;
+
   /// List of client IDs (audiences) that identify the application registered with the OpenID Connect provider. This is the value sent as the `client_id` parameter in OAuth requests.
   late final pulumi.Output<List<String>> clientIdLists;
+
   /// Map of resource tags for the IAM OIDC provider. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// List of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). For certain OIDC identity providers (e.g., Auth0, GitHub, GitLab, Google, or those using an Amazon S3-hosted JWKS endpoint), AWS relies on its own library of trusted root certificate authorities (CAs) for validation instead of using any configured thumbprints. In these cases, any configured `thumbprint_list` is retained in the configuration but not used for verification. For other IdPs, if no `thumbprint_list` is provided, IAM automatically retrieves and uses the top intermediate CA thumbprint from the OIDC IdP server certificate. However, if a `thumbprint_list` is initially configured and later removed, Terraform does not prompt IAM to retrieve a thumbprint the same way. Instead, it continues using the original thumbprint list from the initial configuration. This differs from the behavior when creating an `aws.iam.OpenIdConnectProvider` without a `thumbprint_list`.
   late final pulumi.Output<List<String>> thumbprintLists;
+
   /// URL of the identity provider, corresponding to the `iss` claim.
   late final pulumi.Output<String> url;
 
@@ -259,17 +264,17 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
     OpenIdConnectProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/openIdConnectProvider:OpenIdConnectProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.clientIdLists = registerOutput<List<String>>('clientIdLists');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.thumbprintLists = registerOutput<List<String>>('thumbprintLists');
-    this.url = registerOutput<String>('url');
+         'aws:iam/openIdConnectProvider:OpenIdConnectProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    clientIdLists = registerOutput<List<String>>('clientIdLists');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    thumbprintLists = registerOutput<List<String>>('thumbprintLists');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [OpenIdConnectProvider] resource's state with the given [name] and [id].
@@ -290,16 +295,16 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/openIdConnectProvider:OpenIdConnectProvider',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.clientIdLists = registerOutput<List<String>>('clientIdLists');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.thumbprintLists = registerOutput<List<String>>('thumbprintLists');
-    this.url = registerOutput<String>('url');
+         'aws:iam/openIdConnectProvider:OpenIdConnectProvider',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    clientIdLists = registerOutput<List<String>>('clientIdLists');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    thumbprintLists = registerOutput<List<String>>('thumbprintLists');
+    url = registerOutput<String>('url');
   }
 }

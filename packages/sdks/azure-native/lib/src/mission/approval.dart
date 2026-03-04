@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'approval_args.dart';
-import 'approver_response.dart';
 import 'request_metadata_response.dart';
 import 'system_data_response.dart';
 
@@ -250,27 +249,38 @@ import 'system_data_response.dart';
 /// ```
 class Approval extends pulumi.CustomResource {
   /// List of approvers for the approval request
-  late final pulumi.Output<List<ApproverResponse>?> approvers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> approvers;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Approval request creation time
   late final pulumi.Output<String?> createdAt;
+
   /// Parameter for optimizing query results
   late final pulumi.Output<String?> grandparentResourceId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Parameter for optimizing query results
   late final pulumi.Output<String?> parentResourceId;
+
   /// Provisioning State.
   late final pulumi.Output<String> provisioningState;
+
   /// Request metadata for the approval request.
   late final pulumi.Output<RequestMetadataResponse> requestMetadata;
+
   /// Approval request state change time, time at which approval request state changed from pending to approved or rejected.
   late final pulumi.Output<String?> stateChangedAt;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Ticket ID for the approval request
   late final pulumi.Output<String?> ticketId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -283,22 +293,24 @@ class Approval extends pulumi.CustomResource {
     ApprovalArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:mission:Approval',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvers = registerOutput<List<ApproverResponse>?>('approvers');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String?>('createdAt');
-    this.grandparentResourceId = registerOutput<String?>('grandparentResourceId');
+         'azure-native:mission:Approval',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvers = registerOutput<List<Map<String, dynamic>>?>('approvers');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String?>('createdAt');
+    grandparentResourceId = registerOutput<String?>('grandparentResourceId');
     this.name = registerOutput<String>('name');
-    this.parentResourceId = registerOutput<String?>('parentResourceId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.requestMetadata = registerOutput<RequestMetadataResponse>('requestMetadata');
-    this.stateChangedAt = registerOutput<String?>('stateChangedAt');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.ticketId = registerOutput<String?>('ticketId');
-    this.type = registerOutput<String>('type');
+    parentResourceId = registerOutput<String?>('parentResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    requestMetadata = registerOutput<RequestMetadataResponse>(
+      'requestMetadata',
+    );
+    stateChangedAt = registerOutput<String?>('stateChangedAt');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    ticketId = registerOutput<String?>('ticketId');
+    type = registerOutput<String>('type');
   }
 }

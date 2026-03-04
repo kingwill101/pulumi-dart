@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespacedGkeDeploymentTargetResponse {
   /// Optional. A namespace within the GKE cluster to deploy into.
   final pulumi.Input<String> clusterNamespace;
+
   /// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   final pulumi.Input<String> targetGkeCluster;
 
@@ -24,11 +25,16 @@ class NamespacedGkeDeploymentTargetResponse {
     };
   }
 
-  factory NamespacedGkeDeploymentTargetResponse.fromMap(Map<String, dynamic> map) {
+  factory NamespacedGkeDeploymentTargetResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NamespacedGkeDeploymentTargetResponse(
-      clusterNamespace: (map['clusterNamespace'] as String).input(),
-      targetGkeCluster: (map['targetGkeCluster'] as String).input(),
+      clusterNamespace: pulumi.Input.fromValue(
+        map['clusterNamespace'] as String,
+      ),
+      targetGkeCluster: pulumi.Input.fromValue(
+        map['targetGkeCluster'] as String,
+      ),
     );
   }
 }
-

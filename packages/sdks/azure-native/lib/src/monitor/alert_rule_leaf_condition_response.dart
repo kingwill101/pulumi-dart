@@ -7,8 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleLeafConditionResponse {
   /// The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
   final pulumi.Input<List<String>>? containsAny;
+
   /// The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
   final pulumi.Input<String>? equals;
+
   /// The name of the Activity Log event's field that this condition will examine.
   /// The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
   final pulumi.Input<String>? field;
@@ -17,11 +19,7 @@ class AlertRuleLeafConditionResponse {
   /// [containsAny] The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
   /// [equals] The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
   /// [field] The name of the Activity Log event's field that this condition will examine.
-  AlertRuleLeafConditionResponse({
-    this.containsAny,
-    this.equals,
-    this.field,
-  });
+  AlertRuleLeafConditionResponse({this.containsAny, this.equals, this.field});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,21 @@ class AlertRuleLeafConditionResponse {
 
   factory AlertRuleLeafConditionResponse.fromMap(Map<String, dynamic> map) {
     return AlertRuleLeafConditionResponse(
-      containsAny: map['containsAny'] == null ? null : ((map['containsAny']! as List).cast<String>()).input(),
-      equals: map['equals'] == null ? null : (map['equals']! as String).input(),
-      field: map['field'] == null ? null : (map['field']! as String).input(),
+      containsAny: (() {
+        final guardedValue = map['containsAny'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      equals: (() {
+        final guardedValue = map['equals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

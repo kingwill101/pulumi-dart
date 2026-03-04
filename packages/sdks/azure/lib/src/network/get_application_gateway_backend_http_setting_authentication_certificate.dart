@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayBackendHttpSettingAuthenticationCertificate {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
+
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
 
@@ -17,17 +18,15 @@ class GetApplicationGatewayBackendHttpSettingAuthenticationCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-    };
+    return <String, dynamic>{'id': id, 'name': name};
   }
 
-  factory GetApplicationGatewayBackendHttpSettingAuthenticationCertificate.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayBackendHttpSettingAuthenticationCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayBackendHttpSettingAuthenticationCertificate(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

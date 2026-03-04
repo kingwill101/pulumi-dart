@@ -7,25 +7,36 @@ import 'log_collection_reported_properties_response.dart';
 class HciCollectLogJobPropertiesResponse {
   /// Deployment mode to trigger job.
   final pulumi.Input<String>? deploymentMode;
+
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
+
   /// From date for log collection.
   final pulumi.Input<String> fromDate;
+
   /// Unique, immutable job id.
   final pulumi.Input<String> jobId;
+
   /// Job Type supported.
   /// Expected value is 'CollectLog'.
   final pulumi.Input<String> jobType;
+
   /// To date for log collection.
   final pulumi.Input<String> lastLogGenerated;
+
   /// Job provisioning state
   final pulumi.Input<String> provisioningState;
+
   /// log collection job reported properties.
-  final pulumi.Input<LogCollectionReportedPropertiesResponse> reportedProperties;
+  final pulumi.Input<LogCollectionReportedPropertiesResponse>
+  reportedProperties;
+
   /// The UTC date and time at which the job started.
   final pulumi.Input<String> startTimeUtc;
+
   /// Status of Edge device job.
   final pulumi.Input<String> status;
+
   /// To date for log collection.
   final pulumi.Input<String> toDate;
 
@@ -64,7 +75,11 @@ class HciCollectLogJobPropertiesResponse {
       'jobType': jobType,
       'lastLogGenerated': lastLogGenerated,
       'provisioningState': provisioningState,
-      'reportedProperties': pulumi.Input.mapInputValue<LogCollectionReportedPropertiesResponse, Map<String, dynamic>>(reportedProperties, (value) => value.toMap()),
+      'reportedProperties':
+          pulumi.Input.mapInputValue<
+            LogCollectionReportedPropertiesResponse,
+            Map<String, dynamic>
+          >(reportedProperties, (value) => value.toMap()),
       'startTimeUtc': startTimeUtc,
       'status': status,
       'toDate': toDate,
@@ -73,18 +88,29 @@ class HciCollectLogJobPropertiesResponse {
 
   factory HciCollectLogJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HciCollectLogJobPropertiesResponse(
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
-      endTimeUtc: (map['endTimeUtc'] as String).input(),
-      fromDate: (map['fromDate'] as String).input(),
-      jobId: (map['jobId'] as String).input(),
-      jobType: (map['jobType'] as String).input(),
-      lastLogGenerated: (map['lastLogGenerated'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      reportedProperties: (LogCollectionReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
-      startTimeUtc: (map['startTimeUtc'] as String).input(),
-      status: (map['status'] as String).input(),
-      toDate: (map['toDate'] as String).input(),
+      deploymentMode: (() {
+        final guardedValue = map['deploymentMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTimeUtc: pulumi.Input.fromValue(map['endTimeUtc'] as String),
+      fromDate: pulumi.Input.fromValue(map['fromDate'] as String),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      jobType: pulumi.Input.fromValue(map['jobType'] as String),
+      lastLogGenerated: pulumi.Input.fromValue(
+        map['lastLogGenerated'] as String,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      reportedProperties: pulumi.Input.fromValue(
+        LogCollectionReportedPropertiesResponse.fromMap(
+          (map['reportedProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startTimeUtc: pulumi.Input.fromValue(map['startTimeUtc'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      toDate: pulumi.Input.fromValue(map['toDate'] as String),
     );
   }
 }
-

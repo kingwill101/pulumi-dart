@@ -4,16 +4,17 @@ enum PersistenceConfigPersistenceMode {
   disabled("DISABLED"),
   rdb("RDB");
 
-  const PersistenceConfigPersistenceMode(this.value);
-  final String value;
+  const PersistenceConfigPersistenceMode(this.wireValue);
+  final String wireValue;
 
   static PersistenceConfigPersistenceMode fromValue(String value) {
     for (final item in PersistenceConfigPersistenceMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PersistenceConfigPersistenceMode value: $value');
+    throw ArgumentError(
+      'Unknown PersistenceConfigPersistenceMode value: $value',
+    );
   }
 }
-

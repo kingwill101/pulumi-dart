@@ -14,15 +14,18 @@ class VirtualMachineInstancePropertiesSecurityProfileUefiSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secureBootEnabled': ?secureBootEnabled,
-    };
+    return <String, dynamic>{'secureBootEnabled': ?secureBootEnabled};
   }
 
-  factory VirtualMachineInstancePropertiesSecurityProfileUefiSettings.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineInstancePropertiesSecurityProfileUefiSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineInstancePropertiesSecurityProfileUefiSettings(
-      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled']! as bool).input(),
+      secureBootEnabled: (() {
+        final guardedValue = map['secureBootEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

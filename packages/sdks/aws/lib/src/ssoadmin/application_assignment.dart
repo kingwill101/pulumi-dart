@@ -220,10 +220,13 @@ import 'application_assignment_state.dart';
 class ApplicationAssignment extends pulumi.CustomResource {
   /// ARN of the application.
   late final pulumi.Output<String> applicationArn;
+
   /// An identifier for an object in IAM Identity Center, such as a user or group.
   late final pulumi.Output<String> principalId;
+
   /// Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   late final pulumi.Output<String> principalType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -236,15 +239,15 @@ class ApplicationAssignment extends pulumi.CustomResource {
     ApplicationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/applicationAssignment:ApplicationAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationArn = registerOutput<String>('applicationArn');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.region = registerOutput<String>('region');
+         'aws:ssoadmin/applicationAssignment:ApplicationAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationArn = registerOutput<String>('applicationArn');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [ApplicationAssignment] resource's state with the given [name] and [id].
@@ -265,14 +268,14 @@ class ApplicationAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/applicationAssignment:ApplicationAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationArn = registerOutput<String>('applicationArn');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.region = registerOutput<String>('region');
+         'aws:ssoadmin/applicationAssignment:ApplicationAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationArn = registerOutput<String>('applicationArn');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    region = registerOutput<String>('region');
   }
 }

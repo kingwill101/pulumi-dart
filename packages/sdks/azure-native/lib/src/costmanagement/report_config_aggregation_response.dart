@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportConfigAggregationResponse {
   /// The name of the aggregation function to use.
   final pulumi.Input<String> function;
+
   /// The name of the column to aggregate.
   final pulumi.Input<String> name;
 
   /// Creates a new [ReportConfigAggregationResponse].
   /// [function] The name of the aggregation function to use.
   /// [name] The name of the column to aggregate.
-  ReportConfigAggregationResponse({
-    required this.function,
-    required this.name,
-  });
+  ReportConfigAggregationResponse({required this.function, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'function': function,
-      'name': name,
-    };
+    return <String, dynamic>{'function': function, 'name': name};
   }
 
   factory ReportConfigAggregationResponse.fromMap(Map<String, dynamic> map) {
     return ReportConfigAggregationResponse(
-      function: (map['function'] as String).input(),
-      name: (map['name'] as String).input(),
+      function: pulumi.Input.fromValue(map['function'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

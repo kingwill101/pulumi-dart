@@ -55,17 +55,32 @@ class GetEndpointKinesisSetting {
 
   factory GetEndpointKinesisSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointKinesisSetting(
-      includeControlDetails: (map['includeControlDetails'] as bool).input(),
-      includeNullAndEmpty: (map['includeNullAndEmpty'] as bool).input(),
-      includePartitionValue: (map['includePartitionValue'] as bool).input(),
-      includeTableAlterOperations: (map['includeTableAlterOperations'] as bool).input(),
-      includeTransactionDetails: (map['includeTransactionDetails'] as bool).input(),
-      messageFormat: (map['messageFormat'] as String).input(),
-      partitionIncludeSchemaTable: (map['partitionIncludeSchemaTable'] as bool).input(),
-      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
-      streamArn: (map['streamArn'] as String).input(),
-      useLargeIntegerValue: (map['useLargeIntegerValue'] as bool).input(),
+      includeControlDetails: pulumi.Input.fromValue(
+        map['includeControlDetails'] as bool,
+      ),
+      includeNullAndEmpty: pulumi.Input.fromValue(
+        map['includeNullAndEmpty'] as bool,
+      ),
+      includePartitionValue: pulumi.Input.fromValue(
+        map['includePartitionValue'] as bool,
+      ),
+      includeTableAlterOperations: pulumi.Input.fromValue(
+        map['includeTableAlterOperations'] as bool,
+      ),
+      includeTransactionDetails: pulumi.Input.fromValue(
+        map['includeTransactionDetails'] as bool,
+      ),
+      messageFormat: pulumi.Input.fromValue(map['messageFormat'] as String),
+      partitionIncludeSchemaTable: pulumi.Input.fromValue(
+        map['partitionIncludeSchemaTable'] as bool,
+      ),
+      serviceAccessRoleArn: pulumi.Input.fromValue(
+        map['serviceAccessRoleArn'] as String,
+      ),
+      streamArn: pulumi.Input.fromValue(map['streamArn'] as String),
+      useLargeIntegerValue: pulumi.Input.fromValue(
+        map['useLargeIntegerValue'] as bool,
+      ),
     );
   }
 }
-

@@ -11,20 +11,15 @@ class GuardrailActionTransferAgent {
 
   /// Creates a new [GuardrailActionTransferAgent].
   /// [agent] The name of the agent to transfer the conversation to. The agent must be
-  GuardrailActionTransferAgent({
-    required this.agent,
-  });
+  GuardrailActionTransferAgent({required this.agent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agent': agent,
-    };
+    return <String, dynamic>{'agent': agent};
   }
 
   factory GuardrailActionTransferAgent.fromMap(Map<String, dynamic> map) {
     return GuardrailActionTransferAgent(
-      agent: (map['agent'] as String).input(),
+      agent: pulumi.Input.fromValue(map['agent'] as String),
     );
   }
 }
-

@@ -7,26 +7,38 @@ import 'get_genai_agents_agent_template_model.dart';
 class GetGenaiAgentsAgentTemplate {
   /// Created At timestamp for the Knowledge Base
   final pulumi.Input<String> createdAt;
+
   /// Description of the Agent Template
   final pulumi.Input<String>? description;
+
   /// Instruction for the Agent
   final pulumi.Input<String>? instruction;
+
   /// K value for the Agent Template
   final pulumi.Input<int>? k;
+
   /// List of Knowledge Bases
-  final pulumi.Input<List<GetGenaiAgentsAgentTemplateKnowledgeBase>>? knowledgeBases;
+  final pulumi.Input<List<GetGenaiAgentsAgentTemplateKnowledgeBase>>?
+  knowledgeBases;
+
   /// Maximum tokens allowed
   final pulumi.Input<int>? maxTokens;
+
   /// Model of the Agent Template
   final pulumi.Input<List<GetGenaiAgentsAgentTemplateModel>>? models;
+
   /// Name of the Agent Template
   final pulumi.Input<String>? name;
+
   /// Agent temperature setting
   final pulumi.Input<double>? temperature;
+
   /// Top P sampling parameter
   final pulumi.Input<double>? topP;
+
   /// Updated At timestamp for the Agent Template
   final pulumi.Input<String> updatedAt;
+
   /// uuid of the Agent Template
   final pulumi.Input<String>? uuid;
 
@@ -64,9 +76,31 @@ class GetGenaiAgentsAgentTemplate {
       'description': ?description,
       'instruction': ?instruction,
       'k': ?k,
-      'knowledgeBases': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiAgentsAgentTemplateKnowledgeBase>, List<Map<String, dynamic>>>(knowledgeBases, (value) => pulumi.Input.encodeList<GetGenaiAgentsAgentTemplateKnowledgeBase, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'knowledgeBases':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGenaiAgentsAgentTemplateKnowledgeBase>,
+            List<Map<String, dynamic>>
+          >(
+            knowledgeBases,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGenaiAgentsAgentTemplateKnowledgeBase,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'maxTokens': ?maxTokens,
-      'models': ?pulumi.Input.mapOptionalInputValue<List<GetGenaiAgentsAgentTemplateModel>, List<Map<String, dynamic>>>(models, (value) => pulumi.Input.encodeList<GetGenaiAgentsAgentTemplateModel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'models':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetGenaiAgentsAgentTemplateModel>,
+            List<Map<String, dynamic>>
+          >(
+            models,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGenaiAgentsAgentTemplateModel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'temperature': ?temperature,
       'topP': ?topP,
@@ -77,19 +111,72 @@ class GetGenaiAgentsAgentTemplate {
 
   factory GetGenaiAgentsAgentTemplate.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsAgentTemplate(
-      createdAt: (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instruction: map['instruction'] == null ? null : (map['instruction']! as String).input(),
-      k: map['k'] == null ? null : (map['k']! as int).input(),
-      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateKnowledgeBase>(map['knowledgeBases']!, (value) => GetGenaiAgentsAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens']! as int).input(),
-      models: map['models'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateModel>(map['models']!, (value) => GetGenaiAgentsAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
-      topP: map['topP'] == null ? null : (map['topP']! as double).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instruction: (() {
+        final guardedValue = map['instruction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      k: (() {
+        final guardedValue = map['k'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      knowledgeBases: (() {
+        final guardedValue = map['knowledgeBases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateKnowledgeBase>(
+            guardedValue,
+            (value) => GetGenaiAgentsAgentTemplateKnowledgeBase.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      maxTokens: (() {
+        final guardedValue = map['maxTokens'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      models: (() {
+        final guardedValue = map['models'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateModel>(
+            guardedValue,
+            (value) => GetGenaiAgentsAgentTemplateModel.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      temperature: (() {
+        final guardedValue = map['temperature'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      topP: (() {
+        final guardedValue = map['topP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

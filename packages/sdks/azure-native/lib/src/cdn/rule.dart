@@ -1,6 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'delivery_rule_cache_expiration_action_response.dart';
-import 'delivery_rule_client_port_condition_response.dart';
 import 'rule_args.dart';
 import 'system_data_response.dart';
 
@@ -272,24 +270,33 @@ import 'system_data_response.dart';
 /// ```
 class Rule extends pulumi.CustomResource {
   /// A list of actions that are executed when all the conditions of a rule are satisfied.
-  late final pulumi.Output<List<DeliveryRuleCacheExpirationActionResponse>?> actions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A list of conditions that must be matched for the actions to be executed
-  late final pulumi.Output<List<DeliveryRuleClientPortConditionResponse>?> conditions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
   late final pulumi.Output<String> deploymentStatus;
+
   /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
   late final pulumi.Output<String?> matchProcessingBehavior;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
   late final pulumi.Output<int?> order;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// The name of the rule set containing the rule.
   late final pulumi.Output<String> ruleSetName;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -297,26 +304,25 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_cdn_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(
-    String name, {
-    RuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:cdn:Rule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<DeliveryRuleCacheExpirationActionResponse>?>('actions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.conditions = registerOutput<List<DeliveryRuleClientPortConditionResponse>?>('conditions');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
-    this.matchProcessingBehavior = registerOutput<String?>('matchProcessingBehavior');
+  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:cdn:Rule',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    matchProcessingBehavior = registerOutput<String?>(
+      'matchProcessingBehavior',
+    );
     this.name = registerOutput<String>('name');
-    this.order = registerOutput<int?>('order');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.ruleSetName = registerOutput<String>('ruleSetName');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    order = registerOutput<int?>('order');
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleSetName = registerOutput<String>('ruleSetName');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

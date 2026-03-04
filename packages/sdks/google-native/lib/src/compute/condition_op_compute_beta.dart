@@ -7,16 +7,15 @@ enum ConditionOpComputeBeta {
   notIn("NOT_IN"),
   noOp("NO_OP");
 
-  const ConditionOpComputeBeta(this.value);
-  final String value;
+  const ConditionOpComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ConditionOpComputeBeta fromValue(String value) {
     for (final item in ConditionOpComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionOpComputeBeta value: $value');
   }
 }
-

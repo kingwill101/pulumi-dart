@@ -6,14 +6,20 @@ import 'vpcroute_entry_next_hop_next_hop_related_info.dart';
 class VPCRouteEntryNextHop {
   /// Whether the route is available.
   final pulumi.Input<int>? enabled;
+
   /// The region of the next instance.
   final pulumi.Input<String>? nextHopRegionId;
+
   /// Next hop information.
-  final pulumi.Input<VPCRouteEntryNextHopNextHopRelatedInfo>? nextHopRelatedInfo;
+  final pulumi.Input<VPCRouteEntryNextHopNextHopRelatedInfo>?
+  nextHopRelatedInfo;
+
   /// ID of next hop
   final pulumi.Input<String>? nexthopId;
+
   /// type of next hop
   final pulumi.Input<String>? nexthopType;
+
   /// The weight of the route entry.
   final pulumi.Input<int>? weight;
 
@@ -37,7 +43,11 @@ class VPCRouteEntryNextHop {
     return <String, dynamic>{
       'enabled': ?enabled,
       'nextHopRegionId': ?nextHopRegionId,
-      'nextHopRelatedInfo': ?pulumi.Input.mapOptionalInputValue<VPCRouteEntryNextHopNextHopRelatedInfo, Map<String, dynamic>>(nextHopRelatedInfo, (value) => value.toMap()),
+      'nextHopRelatedInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            VPCRouteEntryNextHopNextHopRelatedInfo,
+            Map<String, dynamic>
+          >(nextHopRelatedInfo, (value) => value.toMap()),
       'nexthopId': ?nexthopId,
       'nexthopType': ?nexthopType,
       'weight': ?weight,
@@ -46,13 +56,40 @@ class VPCRouteEntryNextHop {
 
   factory VPCRouteEntryNextHop.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryNextHop(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as int).input(),
-      nextHopRegionId: map['nextHopRegionId'] == null ? null : (map['nextHopRegionId']! as String).input(),
-      nextHopRelatedInfo: map['nextHopRelatedInfo'] == null ? null : (VPCRouteEntryNextHopNextHopRelatedInfo.fromMap((map['nextHopRelatedInfo']! as Map).cast<String, dynamic>())).input(),
-      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId']! as String).input(),
-      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType']! as String).input(),
-      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nextHopRegionId: (() {
+        final guardedValue = map['nextHopRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextHopRelatedInfo: (() {
+        final guardedValue = map['nextHopRelatedInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VPCRouteEntryNextHopNextHopRelatedInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nexthopId: (() {
+        final guardedValue = map['nexthopId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nexthopType: (() {
+        final guardedValue = map['nexthopType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weight: (() {
+        final guardedValue = map['weight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

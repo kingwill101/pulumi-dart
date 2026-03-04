@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressGatewayServicePrimaryContainerAwsLogsConfiguration {
   /// CloudWatch log group name.
   final pulumi.Input<String> logGroup;
+
   /// Prefix for log stream names. If not specified, a default prefix will be used.
   final pulumi.Input<String> logStreamPrefix;
 
@@ -23,11 +24,12 @@ class ExpressGatewayServicePrimaryContainerAwsLogsConfiguration {
     };
   }
 
-  factory ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ExpressGatewayServicePrimaryContainerAwsLogsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressGatewayServicePrimaryContainerAwsLogsConfiguration(
-      logGroup: (map['logGroup'] as String).input(),
-      logStreamPrefix: (map['logStreamPrefix'] as String).input(),
+      logGroup: pulumi.Input.fromValue(map['logGroup'] as String),
+      logStreamPrefix: pulumi.Input.fromValue(map['logStreamPrefix'] as String),
     );
   }
 }
-

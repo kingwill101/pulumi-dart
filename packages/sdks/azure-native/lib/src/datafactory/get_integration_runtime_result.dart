@@ -6,14 +6,19 @@ import 'managed_integration_runtime_response.dart';
 class GetIntegrationRuntimeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Etag identifies change in the resource.
   final String etag;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// Integration runtime properties.
   final ManagedIntegrationRuntimeResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -50,9 +55,10 @@ class GetIntegrationRuntimeResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ManagedIntegrationRuntimeResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: ManagedIntegrationRuntimeResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

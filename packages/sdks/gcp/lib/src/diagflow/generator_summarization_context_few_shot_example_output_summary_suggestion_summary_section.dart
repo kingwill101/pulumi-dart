@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection {
   /// Required. Name of the section.
   final pulumi.Input<String> section;
+
   /// Required. Summary text for the section.
   final pulumi.Input<String> summary;
 
@@ -17,17 +18,15 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummaryS
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'section': section,
-      'summary': summary,
-    };
+    return <String, dynamic>{'section': section, 'summary': summary};
   }
 
-  factory GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection.fromMap(Map<String, dynamic> map) {
+  factory GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection(
-      section: (map['section'] as String).input(),
-      summary: (map['summary'] as String).input(),
+      section: pulumi.Input.fromValue(map['section'] as String),
+      summary: pulumi.Input.fromValue(map['summary'] as String),
     );
   }
 }
-

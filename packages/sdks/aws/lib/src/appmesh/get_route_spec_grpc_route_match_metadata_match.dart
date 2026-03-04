@@ -28,20 +28,39 @@ class GetRouteSpecGrpcRouteMatchMetadataMatch {
     return <String, dynamic>{
       'exact': exact,
       'prefix': prefix,
-      'ranges': pulumi.Input.mapInputValue<List<GetRouteSpecGrpcRouteMatchMetadataMatchRange>, List<Map<String, dynamic>>>(ranges, (value) => pulumi.Input.encodeList<GetRouteSpecGrpcRouteMatchMetadataMatchRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ranges':
+          pulumi.Input.mapInputValue<
+            List<GetRouteSpecGrpcRouteMatchMetadataMatchRange>,
+            List<Map<String, dynamic>>
+          >(
+            ranges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRouteSpecGrpcRouteMatchMetadataMatchRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'regex': regex,
       'suffix': suffix,
     };
   }
 
-  factory GetRouteSpecGrpcRouteMatchMetadataMatch.fromMap(Map<String, dynamic> map) {
+  factory GetRouteSpecGrpcRouteMatchMetadataMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRouteSpecGrpcRouteMatchMetadataMatch(
-      exact: (map['exact'] as String).input(),
-      prefix: (map['prefix'] as String).input(),
-      ranges: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatchRange>(map['ranges']!, (value) => GetRouteSpecGrpcRouteMatchMetadataMatchRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regex: (map['regex'] as String).input(),
-      suffix: (map['suffix'] as String).input(),
+      exact: pulumi.Input.fromValue(map['exact'] as String),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
+      ranges: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatchRange>(
+          map['ranges']!,
+          (value) => GetRouteSpecGrpcRouteMatchMetadataMatchRange.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      regex: pulumi.Input.fromValue(map['regex'] as String),
+      suffix: pulumi.Input.fromValue(map['suffix'] as String),
     );
   }
 }
-

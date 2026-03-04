@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IotHubDefinitionDescriptionResponse {
   /// weight to apply for a given iot h.
   final pulumi.Input<int>? allocationWeight;
+
   /// flag for applying allocationPolicy or not for a given iot hub.
   final pulumi.Input<bool>? applyAllocationPolicy;
+
   /// Connection string of the IoT hub.
   final pulumi.Input<String> connectionString;
+
   /// ARM region of the IoT hub.
   final pulumi.Input<String> location;
+
   /// Host name of the IoT hub.
   final pulumi.Input<String> name;
 
@@ -39,14 +43,25 @@ class IotHubDefinitionDescriptionResponse {
     };
   }
 
-  factory IotHubDefinitionDescriptionResponse.fromMap(Map<String, dynamic> map) {
+  factory IotHubDefinitionDescriptionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IotHubDefinitionDescriptionResponse(
-      allocationWeight: map['allocationWeight'] == null ? null : (map['allocationWeight']! as int).input(),
-      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : (map['applyAllocationPolicy']! as bool).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
+      allocationWeight: (() {
+        final guardedValue = map['allocationWeight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      applyAllocationPolicy: (() {
+        final guardedValue = map['applyAllocationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

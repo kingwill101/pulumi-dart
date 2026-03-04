@@ -471,7 +471,7 @@ import 'manangement_lock_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2020-05-01
@@ -486,12 +486,15 @@ import 'manangement_lock_state.dart';
 class ManangementLock extends pulumi.CustomResource {
   /// Specifies the Level to be used for this Lock. Possible values are `CanNotDelete` and `ReadOnly`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
+  /// &gt; **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
   late final pulumi.Output<String> lockLevel;
+
   /// Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> notes;
+
   /// Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
 
@@ -504,15 +507,15 @@ class ManangementLock extends pulumi.CustomResource {
     ManangementLockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managementresource/manangementLock:ManangementLock',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lockLevel = registerOutput<String>('lockLevel');
+         'azure:managementresource/manangementLock:ManangementLock',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.scope = registerOutput<String>('scope');
+    notes = registerOutput<String?>('notes');
+    scope = registerOutput<String>('scope');
   }
 
   /// Gets an existing [ManangementLock] resource's state with the given [name] and [id].
@@ -533,14 +536,14 @@ class ManangementLock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managementresource/manangementLock:ManangementLock',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lockLevel = registerOutput<String>('lockLevel');
+         'azure:managementresource/manangementLock:ManangementLock',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.scope = registerOutput<String>('scope');
+    notes = registerOutput<String?>('notes');
+    scope = registerOutput<String>('scope');
   }
 }

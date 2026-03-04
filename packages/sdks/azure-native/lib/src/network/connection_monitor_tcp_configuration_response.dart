@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionMonitorTcpConfigurationResponse {
   /// Destination port behavior.
   final pulumi.Input<String>? destinationPortBehavior;
+
   /// Value indicating whether path evaluation with trace route should be disabled.
   final pulumi.Input<bool>? disableTraceRoute;
+
   /// The port to connect to.
   final pulumi.Input<int>? port;
 
@@ -29,12 +31,25 @@ class ConnectionMonitorTcpConfigurationResponse {
     };
   }
 
-  factory ConnectionMonitorTcpConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectionMonitorTcpConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionMonitorTcpConfigurationResponse(
-      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : (map['destinationPortBehavior']! as String).input(),
-      disableTraceRoute: map['disableTraceRoute'] == null ? null : (map['disableTraceRoute']! as bool).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
+      destinationPortBehavior: (() {
+        final guardedValue = map['destinationPortBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableTraceRoute: (() {
+        final guardedValue = map['disableTraceRoute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

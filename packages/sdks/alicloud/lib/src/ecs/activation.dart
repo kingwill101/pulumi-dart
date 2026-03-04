@@ -6,7 +6,7 @@ import 'activation_state.dart';
 ///
 /// For information about ECS Activation and how to use it, see [What is Activation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createactivation#doc-api-Ecs-CreateActivation).
 ///
-/// > **NOTE:** Available since v1.177.0.
+/// &gt; **NOTE:** Available since v1.177.0.
 ///
 /// ## Example Usage
 ///
@@ -137,14 +137,18 @@ import 'activation_state.dart';
 class Activation extends pulumi.CustomResource {
   /// The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
   late final pulumi.Output<int> instanceCount;
+
   /// The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
   /// - If you use the activation code created by the CreateActivation operation to register managed instances, the instances are assigned sequential names that are prefixed by the value of this parameter. You can also specify a new instance name to override the assigned sequential name when you register a managed instance.
-  /// - If you specify InstanceName when you register a managed instance, an instance name in the format of `<InstanceName>-<Number>` is generated. The number of digits in the <Number> value is determined by that in the InstanceCount value. Example: 001. If you do not specify InstanceName, the hostname (Hostname) is used as the instance name.
+  /// - If you specify InstanceName when you register a managed instance, an instance name in the format of `&lt;InstanceName&gt;-&lt;Number&gt;` is generated. The number of digits in the &lt;Number&gt; value is determined by that in the InstanceCount value. Example: 001. If you do not specify InstanceName, the hostname (Hostname) is used as the instance name.
   late final pulumi.Output<String?> instanceName;
+
   /// The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
   late final pulumi.Output<String> ipAddressRange;
+
   /// The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
   late final pulumi.Output<int> timeToLiveInHours;
 
@@ -157,16 +161,16 @@ class Activation extends pulumi.CustomResource {
     ActivationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/activation:Activation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.instanceCount = registerOutput<int>('instanceCount');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.ipAddressRange = registerOutput<String>('ipAddressRange');
-    this.timeToLiveInHours = registerOutput<int>('timeToLiveInHours');
+         'alicloud:ecs/activation:Activation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    instanceCount = registerOutput<int>('instanceCount');
+    instanceName = registerOutput<String?>('instanceName');
+    ipAddressRange = registerOutput<String>('ipAddressRange');
+    timeToLiveInHours = registerOutput<int>('timeToLiveInHours');
   }
 
   /// Gets an existing [Activation] resource's state with the given [name] and [id].
@@ -187,15 +191,15 @@ class Activation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/activation:Activation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.instanceCount = registerOutput<int>('instanceCount');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.ipAddressRange = registerOutput<String>('ipAddressRange');
-    this.timeToLiveInHours = registerOutput<int>('timeToLiveInHours');
+         'alicloud:ecs/activation:Activation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    instanceCount = registerOutput<int>('instanceCount');
+    instanceName = registerOutput<String?>('instanceName');
+    ipAddressRange = registerOutput<String>('ipAddressRange');
+    timeToLiveInHours = registerOutput<int>('timeToLiveInHours');
   }
 }

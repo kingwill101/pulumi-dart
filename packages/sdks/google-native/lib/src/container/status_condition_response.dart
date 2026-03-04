@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusConditionResponse {
   /// Canonical code of the condition.
   final pulumi.Input<String> canonicalCode;
+
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final pulumi.Input<String> code;
+
   /// Human-friendly representation of the condition
   final pulumi.Input<String> message;
 
@@ -31,10 +33,9 @@ class StatusConditionResponse {
 
   factory StatusConditionResponse.fromMap(Map<String, dynamic> map) {
     return StatusConditionResponse(
-      canonicalCode: (map['canonicalCode'] as String).input(),
-      code: (map['code'] as String).input(),
-      message: (map['message'] as String).input(),
+      canonicalCode: pulumi.Input.fromValue(map['canonicalCode'] as String),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

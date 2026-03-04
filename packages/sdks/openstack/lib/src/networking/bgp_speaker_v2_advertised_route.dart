@@ -9,23 +9,24 @@ class BgpSpeakerV2AdvertisedRoute {
   /// Creates a new [BgpSpeakerV2AdvertisedRoute].
   /// [destination] Optional.
   /// [nextHop] Optional.
-  BgpSpeakerV2AdvertisedRoute({
-    this.destination,
-    this.nextHop,
-  });
+  BgpSpeakerV2AdvertisedRoute({this.destination, this.nextHop});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destination': ?destination,
-      'nextHop': ?nextHop,
-    };
+    return <String, dynamic>{'destination': ?destination, 'nextHop': ?nextHop};
   }
 
   factory BgpSpeakerV2AdvertisedRoute.fromMap(Map<String, dynamic> map) {
     return BgpSpeakerV2AdvertisedRoute(
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
-      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextHop: (() {
+        final guardedValue = map['nextHop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

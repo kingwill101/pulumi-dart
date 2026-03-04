@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleResponse {
   /// The action of virtual network rule.
   final pulumi.Input<String>? action;
+
   /// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
   final pulumi.Input<String> virtualNetworkResourceId;
 
@@ -26,9 +27,14 @@ class VirtualNetworkRuleResponse {
 
   factory VirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleResponse(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      virtualNetworkResourceId: (map['virtualNetworkResourceId'] as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkResourceId: pulumi.Input.fromValue(
+        map['virtualNetworkResourceId'] as String,
+      ),
     );
   }
 }
-

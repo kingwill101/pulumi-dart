@@ -10,12 +10,16 @@ import 'binding_resource_properties.dart';
 class BindingArgs {
   /// The name of the App resource.
   final pulumi.Input<String> appName;
+
   /// The name of the Binding resource.
   final pulumi.Input<String>? bindingName;
+
   /// Properties of the Binding resource
   final pulumi.Input<BindingResourceProperties>? properties;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -37,7 +41,11 @@ class BindingArgs {
     return <String, dynamic>{
       'appName': appName,
       'bindingName': ?bindingName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<BindingResourceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            BindingResourceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -45,12 +53,25 @@ class BindingArgs {
 
   factory BindingArgs.fromMap(Map<String, dynamic> map) {
     return BindingArgs(
-      appName: (map['appName'] as String).input(),
-      bindingName: map['bindingName'] == null ? null : (map['bindingName']! as String).input(),
-      properties: map['properties'] == null ? null : (BindingResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      appName: pulumi.Input.fromValue(map['appName'] as String),
+      bindingName: (() {
+        final guardedValue = map['bindingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BindingResourceProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

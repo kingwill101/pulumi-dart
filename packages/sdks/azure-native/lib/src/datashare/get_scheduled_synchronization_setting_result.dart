@@ -6,25 +6,35 @@ import 'system_data_response.dart';
 class GetScheduledSynchronizationSettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Time at which the synchronization setting was created.
   final String createdAt;
+
   /// The resource id of the azure resource
   final String id;
+
   /// Kind of synchronization setting.
   /// Expected value is 'ScheduleBased'.
   final String kind;
+
   /// Name of the azure resource
   final String name;
+
   /// Gets or sets the provisioning state
   final String provisioningState;
+
   /// Recurrence Interval
   final String recurrenceInterval;
+
   /// Synchronization time
   final String synchronizationTime;
+
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
+
   /// Type of the azure resource
   final String type;
+
   /// Name of the user who created the synchronization setting.
   final String userName;
 
@@ -70,7 +80,9 @@ class GetScheduledSynchronizationSettingResult {
     };
   }
 
-  factory GetScheduledSynchronizationSettingResult.fromMap(Map<String, dynamic> map) {
+  factory GetScheduledSynchronizationSettingResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetScheduledSynchronizationSettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdAt: map['createdAt'] as String,
@@ -80,10 +92,11 @@ class GetScheduledSynchronizationSettingResult {
       provisioningState: map['provisioningState'] as String,
       recurrenceInterval: map['recurrenceInterval'] as String,
       synchronizationTime: map['synchronizationTime'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
       userName: map['userName'] as String,
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetObservabilityFeatureErrorResponse {
   /// The code of the error.
   final pulumi.Input<String> code;
+
   /// A human-readable description of the current status.
   final pulumi.Input<String> description;
 
@@ -18,17 +19,15 @@ class FleetObservabilityFeatureErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'description': description,
-    };
+    return <String, dynamic>{'code': code, 'description': description};
   }
 
-  factory FleetObservabilityFeatureErrorResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureErrorResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFeatureErrorResponse(
-      code: (map['code'] as String).input(),
-      description: (map['description'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

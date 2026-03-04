@@ -7,6 +7,7 @@ import 'get_region_route_entries_entry.dart';
 class GetRegionRouteEntriesResult {
   /// A list of CEN Route Entries. Each element contains the following attributes:
   final List<GetRegionRouteEntriesEntry> entries;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -29,7 +30,11 @@ class GetRegionRouteEntriesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': pulumi.Input.encodeList<GetRegionRouteEntriesEntry, Map<String, dynamic>>(entries, (value) => value.toMap()),
+      'entries':
+          pulumi.Input.encodeList<
+            GetRegionRouteEntriesEntry,
+            Map<String, dynamic>
+          >(entries, (value) => value.toMap()),
       'id': id,
       'instanceId': instanceId,
       'outputFile': ?outputFile,
@@ -39,12 +44,20 @@ class GetRegionRouteEntriesResult {
 
   factory GetRegionRouteEntriesResult.fromMap(Map<String, dynamic> map) {
     return GetRegionRouteEntriesResult(
-      entries: pulumi.Input.decodeList<GetRegionRouteEntriesEntry>(map['entries'], (value) => GetRegionRouteEntriesEntry.fromMap((value as Map).cast<String, dynamic>())),
+      entries: pulumi.Input.decodeList<GetRegionRouteEntriesEntry>(
+        map['entries']!,
+        (value) => GetRegionRouteEntriesEntry.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       regionId: map['regionId'] as String,
     );
   }
 }
-

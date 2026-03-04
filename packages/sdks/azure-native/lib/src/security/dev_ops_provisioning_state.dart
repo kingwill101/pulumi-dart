@@ -16,16 +16,15 @@ enum DevOpsProvisioningState {
   valueDeletionSuccess("DeletionSuccess"),
   valueDeletionFailure("DeletionFailure");
 
-  const DevOpsProvisioningState(this.value);
-  final String value;
+  const DevOpsProvisioningState(this.wireValue);
+  final String wireValue;
 
   static DevOpsProvisioningState fromValue(String value) {
     for (final item in DevOpsProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DevOpsProvisioningState value: $value');
   }
 }
-

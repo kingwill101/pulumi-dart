@@ -7,6 +7,7 @@ import 'workload_config_response.dart';
 class ProtectConfigResponse {
   /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
   final pulumi.Input<WorkloadConfigResponse> workloadConfig;
+
   /// Sets which mode to use for Protect workload vulnerability scanning feature.
   final pulumi.Input<String> workloadVulnerabilityMode;
 
@@ -20,16 +21,25 @@ class ProtectConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'workloadConfig': pulumi.Input.mapInputValue<WorkloadConfigResponse, Map<String, dynamic>>(workloadConfig, (value) => value.toMap()),
+      'workloadConfig':
+          pulumi.Input.mapInputValue<
+            WorkloadConfigResponse,
+            Map<String, dynamic>
+          >(workloadConfig, (value) => value.toMap()),
       'workloadVulnerabilityMode': workloadVulnerabilityMode,
     };
   }
 
   factory ProtectConfigResponse.fromMap(Map<String, dynamic> map) {
     return ProtectConfigResponse(
-      workloadConfig: (WorkloadConfigResponse.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>())).input(),
-      workloadVulnerabilityMode: (map['workloadVulnerabilityMode'] as String).input(),
+      workloadConfig: pulumi.Input.fromValue(
+        WorkloadConfigResponse.fromMap(
+          (map['workloadConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      workloadVulnerabilityMode: pulumi.Input.fromValue(
+        map['workloadVulnerabilityMode'] as String,
+      ),
     );
   }
 }
-

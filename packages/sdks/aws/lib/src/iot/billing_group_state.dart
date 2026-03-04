@@ -9,15 +9,20 @@ class BillingGroupState {
   /// The ARN of the Billing Group.
   final pulumi.Input<String>? arn;
   final pulumi.Input<List<BillingGroupMetadata>>? metadatas;
+
   /// The name of the Billing Group.
   final pulumi.Input<String>? name;
+
   /// The Billing Group properties. Defined below.
   final pulumi.Input<BillingGroupProperties>? properties;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value mapping of resource tags
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The current version of the Billing Group record in the registry.
   final pulumi.Input<int>? version;
 
@@ -44,9 +49,24 @@ class BillingGroupState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'metadatas': ?pulumi.Input.mapOptionalInputValue<List<BillingGroupMetadata>, List<Map<String, dynamic>>>(metadatas, (value) => pulumi.Input.encodeList<BillingGroupMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metadatas':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BillingGroupMetadata>,
+            List<Map<String, dynamic>>
+          >(
+            metadatas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BillingGroupMetadata,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<BillingGroupProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            BillingGroupProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -56,15 +76,61 @@ class BillingGroupState {
 
   factory BillingGroupState.fromMap(Map<String, dynamic> map) {
     return BillingGroupState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      metadatas: map['metadatas'] == null ? null : ((pulumi.Input.decodeList<BillingGroupMetadata>(map['metadatas']!, (value) => BillingGroupMetadata.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      properties: map['properties'] == null ? null : ((BillingGroupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadatas: (() {
+        final guardedValue = map['metadatas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BillingGroupMetadata>(
+            guardedValue,
+            (value) => BillingGroupMetadata.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BillingGroupProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

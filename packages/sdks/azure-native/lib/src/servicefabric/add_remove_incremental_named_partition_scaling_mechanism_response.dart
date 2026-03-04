@@ -7,10 +7,13 @@ class AddRemoveIncrementalNamedPartitionScalingMechanismResponse {
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'AddRemoveIncrementalNamedPartition'.
   final pulumi.Input<String> kind;
+
   /// Maximum number of named partitions of the service.
   final pulumi.Input<int> maxPartitionCount;
+
   /// Minimum number of named partitions of the service.
   final pulumi.Input<int> minPartitionCount;
+
   /// The number of instances to add or remove during a scaling operation.
   final pulumi.Input<int> scaleIncrement;
 
@@ -35,13 +38,18 @@ class AddRemoveIncrementalNamedPartitionScalingMechanismResponse {
     };
   }
 
-  factory AddRemoveIncrementalNamedPartitionScalingMechanismResponse.fromMap(Map<String, dynamic> map) {
+  factory AddRemoveIncrementalNamedPartitionScalingMechanismResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AddRemoveIncrementalNamedPartitionScalingMechanismResponse(
-      kind: (map['kind'] as String).input(),
-      maxPartitionCount: (map['maxPartitionCount'] as int).input(),
-      minPartitionCount: (map['minPartitionCount'] as int).input(),
-      scaleIncrement: (map['scaleIncrement'] as int).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      maxPartitionCount: pulumi.Input.fromValue(
+        map['maxPartitionCount'] as int,
+      ),
+      minPartitionCount: pulumi.Input.fromValue(
+        map['minPartitionCount'] as int,
+      ),
+      scaleIncrement: pulumi.Input.fromValue(map['scaleIncrement'] as int),
     );
   }
 }
-

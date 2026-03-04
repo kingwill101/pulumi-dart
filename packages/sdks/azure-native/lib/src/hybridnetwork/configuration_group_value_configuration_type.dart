@@ -4,16 +4,17 @@ enum ConfigurationGroupValueConfigurationType {
   valueSecret("Secret"),
   valueOpen("Open");
 
-  const ConfigurationGroupValueConfigurationType(this.value);
-  final String value;
+  const ConfigurationGroupValueConfigurationType(this.wireValue);
+  final String wireValue;
 
   static ConfigurationGroupValueConfigurationType fromValue(String value) {
     for (final item in ConfigurationGroupValueConfigurationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConfigurationGroupValueConfigurationType value: $value');
+    throw ArgumentError(
+      'Unknown ConfigurationGroupValueConfigurationType value: $value',
+    );
   }
 }
-

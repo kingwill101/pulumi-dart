@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPBlock {
   /// CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"
   final pulumi.Input<String> cidr;
+
   /// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" Except values will be rejected if they are outside the CIDR range
   final pulumi.Input<List<String>>? except;
 
   /// Creates a new [IPBlock].
   /// [cidr] CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"
   /// [except] Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" Except values will be rejected if they are outside the CIDR range
-  IPBlock({
-    required this.cidr,
-    this.except,
-  });
+  IPBlock({required this.cidr, this.except});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidr': cidr,
-      'except': ?except,
-    };
+    return <String, dynamic>{'cidr': cidr, 'except': ?except};
   }
 
   factory IPBlock.fromMap(Map<String, dynamic> map) {
     return IPBlock(
-      cidr: (map['cidr'] as String).input(),
-      except: map['except'] == null ? null : ((map['except']! as List).cast<String>()).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      except: (() {
+        final guardedValue = map['except'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

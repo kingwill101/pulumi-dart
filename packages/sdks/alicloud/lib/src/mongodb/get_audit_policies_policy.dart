@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuditPoliciesPolicy {
   /// The status of the log audit feature.
   final pulumi.Input<String> auditStatus;
+
   /// The ID of the instance.
   final pulumi.Input<String> dbInstanceId;
+
   /// The ID of the Audit Policy.
   final pulumi.Input<String> id;
 
@@ -30,10 +32,9 @@ class GetAuditPoliciesPolicy {
 
   factory GetAuditPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetAuditPoliciesPolicy(
-      auditStatus: (map['auditStatus'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      id: (map['id'] as String).input(),
+      auditStatus: pulumi.Input.fromValue(map['auditStatus'] as String),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

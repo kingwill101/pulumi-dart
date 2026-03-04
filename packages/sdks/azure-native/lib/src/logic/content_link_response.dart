@@ -7,12 +7,16 @@ import 'content_hash_response.dart';
 class ContentLinkResponse {
   /// The content hash.
   final pulumi.Input<ContentHashResponse> contentHash;
+
   /// The content size.
   final pulumi.Input<double> contentSize;
+
   /// The content version.
   final pulumi.Input<String> contentVersion;
+
   /// The metadata.
   final pulumi.Input<dynamic> metadata;
+
   /// The content link URI.
   final pulumi.Input<String>? uri;
 
@@ -32,7 +36,11 @@ class ContentLinkResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentHash': pulumi.Input.mapInputValue<ContentHashResponse, Map<String, dynamic>>(contentHash, (value) => value.toMap()),
+      'contentHash':
+          pulumi.Input.mapInputValue<ContentHashResponse, Map<String, dynamic>>(
+            contentHash,
+            (value) => value.toMap(),
+          ),
       'contentSize': contentSize,
       'contentVersion': contentVersion,
       'metadata': metadata,
@@ -42,12 +50,19 @@ class ContentLinkResponse {
 
   factory ContentLinkResponse.fromMap(Map<String, dynamic> map) {
     return ContentLinkResponse(
-      contentHash: (ContentHashResponse.fromMap((map['contentHash'] as Map).cast<String, dynamic>())).input(),
-      contentSize: (map['contentSize'] as double).input(),
-      contentVersion: (map['contentVersion'] as String).input(),
-      metadata: (map['metadata']).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      contentHash: pulumi.Input.fromValue(
+        ContentHashResponse.fromMap(
+          (map['contentHash']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      contentSize: pulumi.Input.fromValue(map['contentSize'] as double),
+      contentVersion: pulumi.Input.fromValue(map['contentVersion'] as String),
+      metadata: pulumi.Input.fromValue(map['metadata']),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

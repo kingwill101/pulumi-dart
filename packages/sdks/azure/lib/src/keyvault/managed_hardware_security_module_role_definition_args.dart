@@ -10,12 +10,19 @@ import 'managed_hardware_security_module_role_definition_permission.dart';
 class ManagedHardwareSecurityModuleRoleDefinitionArgs {
   /// Specifies a text description about this Key Vault Managed Hardware Security Module Role Definition.
   final pulumi.Input<String>? description;
+
   /// The ID of the Key Vault Managed Hardware Security Module. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
   final pulumi.Input<String> managedHsmId;
+
   /// The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
   final pulumi.Input<String>? name;
+
   /// One or more `permission` blocks as defined below.
-  final pulumi.Input<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>>? permissions;
+  final pulumi.Input<
+    List<ManagedHardwareSecurityModuleRoleDefinitionPermission>
+  >?
+  permissions;
+
   /// Specify a display name for this Key Vault Managed Hardware Security Module Role Definition.
   final pulumi.Input<String>? roleName;
 
@@ -38,19 +45,57 @@ class ManagedHardwareSecurityModuleRoleDefinitionArgs {
       'description': ?description,
       'managedHsmId': managedHsmId,
       'name': ?name,
-      'permissions': ?pulumi.Input.mapOptionalInputValue<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'permissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ManagedHardwareSecurityModuleRoleDefinitionPermission>,
+            List<Map<String, dynamic>>
+          >(
+            permissions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ManagedHardwareSecurityModuleRoleDefinitionPermission,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'roleName': ?roleName,
     };
   }
 
-  factory ManagedHardwareSecurityModuleRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
+  factory ManagedHardwareSecurityModuleRoleDefinitionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedHardwareSecurityModuleRoleDefinitionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      managedHsmId: (map['managedHsmId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(map['permissions']!, (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedHsmId: pulumi.Input.fromValue(map['managedHsmId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ManagedHardwareSecurityModuleRoleDefinitionPermission
+          >(
+            guardedValue,
+            (value) =>
+                ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      roleName: (() {
+        final guardedValue = map['roleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

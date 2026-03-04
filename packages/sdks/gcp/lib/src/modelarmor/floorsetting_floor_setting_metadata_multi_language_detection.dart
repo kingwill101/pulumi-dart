@@ -18,10 +18,13 @@ class FloorsettingFloorSettingMetadataMultiLanguageDetection {
     };
   }
 
-  factory FloorsettingFloorSettingMetadataMultiLanguageDetection.fromMap(Map<String, dynamic> map) {
+  factory FloorsettingFloorSettingMetadataMultiLanguageDetection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FloorsettingFloorSettingMetadataMultiLanguageDetection(
-      enableMultiLanguageDetection: (map['enableMultiLanguageDetection'] as bool).input(),
+      enableMultiLanguageDetection: pulumi.Input.fromValue(
+        map['enableMultiLanguageDetection'] as bool,
+      ),
     );
   }
 }
-

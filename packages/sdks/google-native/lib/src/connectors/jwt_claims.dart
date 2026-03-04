@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JwtClaims {
   /// Value for the "aud" claim.
   final pulumi.Input<String>? audience;
+
   /// Value for the "iss" claim.
   final pulumi.Input<String>? issuer;
+
   /// Value for the "sub" claim.
   final pulumi.Input<String>? subject;
 
@@ -15,11 +17,7 @@ class JwtClaims {
   /// [audience] Value for the "aud" claim.
   /// [issuer] Value for the "iss" claim.
   /// [subject] Value for the "sub" claim.
-  JwtClaims({
-    this.audience,
-    this.issuer,
-    this.subject,
-  });
+  JwtClaims({this.audience, this.issuer, this.subject});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class JwtClaims {
 
   factory JwtClaims.fromMap(Map<String, dynamic> map) {
     return JwtClaims(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
-      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      issuer: (() {
+        final guardedValue = map['issuer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subject: (() {
+        final guardedValue = map['subject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

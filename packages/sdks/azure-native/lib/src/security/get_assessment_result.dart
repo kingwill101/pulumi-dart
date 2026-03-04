@@ -10,24 +10,34 @@ import 'security_assessment_partner_data_response.dart';
 class GetAssessmentResult {
   /// Additional data regarding the assessment
   final Map<String, String>? additionalData;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// User friendly display name of the assessment
   final String displayName;
+
   /// Resource Id
   final String id;
+
   /// Links relevant to the assessment
   final AssessmentLinksResponse links;
+
   /// Describes properties of an assessment metadata.
   final SecurityAssessmentMetadataPropertiesResponse? metadata;
+
   /// Resource name
   final String name;
+
   /// Data regarding 3rd party partner integration
   final SecurityAssessmentPartnerDataResponse? partnersData;
+
   /// Details of the resource that was assessed
   final AzureResourceDetailsResponse resourceDetails;
+
   /// The result of the assessment
   final AssessmentStatusResponseResponse status;
+
   /// Resource type
   final String type;
 
@@ -64,9 +74,9 @@ class GetAssessmentResult {
       'displayName': displayName,
       'id': id,
       'links': links.toMap(),
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?metadata?.toMap(),
       'name': name,
-      'partnersData': ?partnersData == null ? null : partnersData!.toMap(),
+      'partnersData': ?partnersData?.toMap(),
       'resourceDetails': resourceDetails.toMap(),
       'status': status.toMap(),
       'type': type,
@@ -75,18 +85,39 @@ class GetAssessmentResult {
 
   factory GetAssessmentResult.fromMap(Map<String, dynamic> map) {
     return GetAssessmentResult(
-      additionalData: map['additionalData'] == null ? null : (map['additionalData']! as Map).cast<String, String>(),
+      additionalData: (() {
+        final guardedValue = map['additionalData'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      links: AssessmentLinksResponse.fromMap((map['links'] as Map).cast<String, dynamic>()),
-      metadata: map['metadata'] == null ? null : SecurityAssessmentMetadataPropertiesResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
+      links: AssessmentLinksResponse.fromMap(
+        (map['links']! as Map).cast<String, dynamic>(),
+      ),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return SecurityAssessmentMetadataPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
-      partnersData: map['partnersData'] == null ? null : SecurityAssessmentPartnerDataResponse.fromMap((map['partnersData']! as Map).cast<String, dynamic>()),
-      resourceDetails: AzureResourceDetailsResponse.fromMap((map['resourceDetails'] as Map).cast<String, dynamic>()),
-      status: AssessmentStatusResponseResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      partnersData: (() {
+        final guardedValue = map['partnersData'];
+        if (guardedValue == null) return null;
+        return SecurityAssessmentPartnerDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      resourceDetails: AzureResourceDetailsResponse.fromMap(
+        (map['resourceDetails']! as Map).cast<String, dynamic>(),
+      ),
+      status: AssessmentStatusResponseResponse.fromMap(
+        (map['status']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationBackupSchedulePolicy {
   /// The schedule policy type of the backup policy. Possible value is `SimpleSchedulePolicy`. Defaults to `SimpleSchedulePolicy`.
   final pulumi.Input<String>? schedulePolicyType;
+
   /// The schedule run days of the backup policy. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
   final pulumi.Input<List<String>>? scheduleRunDays;
+
   /// The schedule run frequency of the backup policy. Possible values are `Daily` and `Weekly`. Defaults to `Daily`.
   final pulumi.Input<String>? scheduleRunFrequency;
+
   /// The schedule run times of the backup policy.
   final pulumi.Input<List<String>>? scheduleRunTimes;
 
@@ -35,11 +38,26 @@ class ConfigurationBackupSchedulePolicy {
 
   factory ConfigurationBackupSchedulePolicy.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackupSchedulePolicy(
-      schedulePolicyType: map['schedulePolicyType'] == null ? null : (map['schedulePolicyType']! as String).input(),
-      scheduleRunDays: map['scheduleRunDays'] == null ? null : ((map['scheduleRunDays']! as List).cast<String>()).input(),
-      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency']! as String).input(),
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
+      schedulePolicyType: (() {
+        final guardedValue = map['schedulePolicyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleRunDays: (() {
+        final guardedValue = map['scheduleRunDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scheduleRunFrequency: (() {
+        final guardedValue = map['scheduleRunFrequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleRunTimes: (() {
+        final guardedValue = map['scheduleRunTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

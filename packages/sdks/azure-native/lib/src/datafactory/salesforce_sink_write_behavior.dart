@@ -3,16 +3,15 @@ enum SalesforceSinkWriteBehavior {
   valueInsert("Insert"),
   valueUpsert("Upsert");
 
-  const SalesforceSinkWriteBehavior(this.value);
-  final String value;
+  const SalesforceSinkWriteBehavior(this.wireValue);
+  final String wireValue;
 
   static SalesforceSinkWriteBehavior fromValue(String value) {
     for (final item in SalesforceSinkWriteBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SalesforceSinkWriteBehavior value: $value');
   }
 }
-

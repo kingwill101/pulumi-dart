@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationVpcConfiguration {
   /// The Security Group IDs used by the VPC configuration.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// The Subnet IDs used by the VPC configuration.
   final pulumi.Input<List<String>> subnetIds;
   final pulumi.Input<String>? vpcConfigurationId;
@@ -31,13 +32,26 @@ class ApplicationApplicationConfigurationVpcConfiguration {
     };
   }
 
-  factory ApplicationApplicationConfigurationVpcConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationVpcConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationVpcConfiguration(
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcConfigurationId: map['vpcConfigurationId'] == null ? null : ((map['vpcConfigurationId'] as String).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      vpcConfigurationId: (() {
+        final guardedValue = map['vpcConfigurationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

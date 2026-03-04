@@ -5,16 +5,22 @@ enum GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant {
   useStandard("USE_STANDARD"),
   useEnhanced("USE_ENHANCED");
 
-  const GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant value: $value',
+    );
   }
 }
-

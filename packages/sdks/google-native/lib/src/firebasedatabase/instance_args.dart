@@ -11,9 +11,11 @@ class InstanceArgs {
   /// The globally unique identifier of the database instance.
   final pulumi.Input<String>? databaseId;
   final pulumi.Input<String>? location;
+
   /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
   final pulumi.Input<InstanceType>? type;
 
@@ -37,18 +39,42 @@ class InstanceArgs {
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'type': ?pulumi.Input.mapOptionalInputValue<InstanceType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<InstanceType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      type: map['type'] == null ? null : (InstanceType.fromValue(map['type']! as String)).input(),
+      databaseId: (() {
+        final guardedValue = map['databaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

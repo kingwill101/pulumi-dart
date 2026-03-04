@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_slot_type_args.dart';
-import 'v2models_slot_type_composite_slot_type_setting.dart';
-import 'v2models_slot_type_external_source_setting.dart';
-import 'v2models_slot_type_slot_type_value.dart';
 import 'v2models_slot_type_state.dart';
 import 'v2models_slot_type_timeouts.dart';
 import 'v2models_slot_type_value_selection_setting.dart';
@@ -482,39 +479,52 @@ import 'v2models_slot_type_value_selection_setting.dart';
 class V2modelsSlotType extends pulumi.CustomResource {
   /// Identifier of the bot associated with this slot type.
   late final pulumi.Output<String> botId;
+
   /// Version of the bot associated with this slot type.
   late final pulumi.Output<String> botVersion;
+
   /// Specifications for a composite slot type.
   /// See `composite_slot_type_setting` argument reference below.
-  late final pulumi.Output<List<V2modelsSlotTypeCompositeSlotTypeSetting>?> compositeSlotTypeSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  compositeSlotTypeSettings;
+
   /// Description of the slot type.
   late final pulumi.Output<String?> description;
+
   /// Type of external information used to create the slot type.
   /// See `external_source_setting` argument reference below.
-  late final pulumi.Output<List<V2modelsSlotTypeExternalSourceSetting>?> externalSourceSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> externalSourceSettings;
+
   /// Identifier of the language and locale where this slot type is used.
   /// All of the bots, slot types, and slots used by the intent must have the same locale.
   late final pulumi.Output<String> localeId;
+
   /// Name of the slot type.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Built-in slot type used as a parent of this slot type.
   /// When you define a parent slot type, the new slot type has the configuration of the parent slot type.
   /// Only `AMAZON.AlphaNumeric` is supported.
   late final pulumi.Output<String?> parentSlotTypeSignature;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Unique identifier for the slot type.
   late final pulumi.Output<String> slotTypeId;
+
   /// List of SlotTypeValue objects that defines the values that the slot type can take.
   /// Each value can have a list of synonyms, additional values that help train the machine learning model about the values that it resolves for a slot.
   /// See `slot_type_values` argument reference below.
-  late final pulumi.Output<List<V2modelsSlotTypeSlotTypeValue>?> slotTypeValues;
+  late final pulumi.Output<List<Map<String, dynamic>>?> slotTypeValues;
   late final pulumi.Output<V2modelsSlotTypeTimeouts?> timeouts;
+
   /// Determines the strategy that Amazon Lex uses to select a value from the list of possible values.
   /// See `value_selection_setting` argument reference below.
-  late final pulumi.Output<V2modelsSlotTypeValueSelectionSetting?> valueSelectionSetting;
+  late final pulumi.Output<V2modelsSlotTypeValueSelectionSetting?>
+  valueSelectionSetting;
 
   /// Creates a new [V2modelsSlotType].
   /// [name] The Pulumi resource name.
@@ -525,24 +535,35 @@ class V2modelsSlotType extends pulumi.CustomResource {
     V2modelsSlotTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/v2modelsSlotType:V2modelsSlotType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botId = registerOutput<String>('botId');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.compositeSlotTypeSettings = registerOutput<List<V2modelsSlotTypeCompositeSlotTypeSetting>?>('compositeSlotTypeSettings');
-    this.description = registerOutput<String?>('description');
-    this.externalSourceSettings = registerOutput<List<V2modelsSlotTypeExternalSourceSetting>?>('externalSourceSettings');
-    this.localeId = registerOutput<String>('localeId');
+         'aws:lex/v2modelsSlotType:V2modelsSlotType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    compositeSlotTypeSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'compositeSlotTypeSettings',
+    );
+    description = registerOutput<String?>('description');
+    externalSourceSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'externalSourceSettings',
+    );
+    localeId = registerOutput<String>('localeId');
     this.name = registerOutput<String>('name');
-    this.parentSlotTypeSignature = registerOutput<String?>('parentSlotTypeSignature');
-    this.region = registerOutput<String>('region');
-    this.slotTypeId = registerOutput<String>('slotTypeId');
-    this.slotTypeValues = registerOutput<List<V2modelsSlotTypeSlotTypeValue>?>('slotTypeValues');
-    this.timeouts = registerOutput<V2modelsSlotTypeTimeouts?>('timeouts');
-    this.valueSelectionSetting = registerOutput<V2modelsSlotTypeValueSelectionSetting?>('valueSelectionSetting');
+    parentSlotTypeSignature = registerOutput<String?>(
+      'parentSlotTypeSignature',
+    );
+    region = registerOutput<String>('region');
+    slotTypeId = registerOutput<String>('slotTypeId');
+    slotTypeValues = registerOutput<List<Map<String, dynamic>>?>(
+      'slotTypeValues',
+    );
+    timeouts = registerOutput<V2modelsSlotTypeTimeouts?>('timeouts');
+    valueSelectionSetting =
+        registerOutput<V2modelsSlotTypeValueSelectionSetting?>(
+          'valueSelectionSetting',
+        );
   }
 
   /// Gets an existing [V2modelsSlotType] resource's state with the given [name] and [id].
@@ -563,23 +584,34 @@ class V2modelsSlotType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/v2modelsSlotType:V2modelsSlotType',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botId = registerOutput<String>('botId');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.compositeSlotTypeSettings = registerOutput<List<V2modelsSlotTypeCompositeSlotTypeSetting>?>('compositeSlotTypeSettings');
-    this.description = registerOutput<String?>('description');
-    this.externalSourceSettings = registerOutput<List<V2modelsSlotTypeExternalSourceSetting>?>('externalSourceSettings');
-    this.localeId = registerOutput<String>('localeId');
+         'aws:lex/v2modelsSlotType:V2modelsSlotType',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    compositeSlotTypeSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'compositeSlotTypeSettings',
+    );
+    description = registerOutput<String?>('description');
+    externalSourceSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'externalSourceSettings',
+    );
+    localeId = registerOutput<String>('localeId');
     this.name = registerOutput<String>('name');
-    this.parentSlotTypeSignature = registerOutput<String?>('parentSlotTypeSignature');
-    this.region = registerOutput<String>('region');
-    this.slotTypeId = registerOutput<String>('slotTypeId');
-    this.slotTypeValues = registerOutput<List<V2modelsSlotTypeSlotTypeValue>?>('slotTypeValues');
-    this.timeouts = registerOutput<V2modelsSlotTypeTimeouts?>('timeouts');
-    this.valueSelectionSetting = registerOutput<V2modelsSlotTypeValueSelectionSetting?>('valueSelectionSetting');
+    parentSlotTypeSignature = registerOutput<String?>(
+      'parentSlotTypeSignature',
+    );
+    region = registerOutput<String>('region');
+    slotTypeId = registerOutput<String>('slotTypeId');
+    slotTypeValues = registerOutput<List<Map<String, dynamic>>?>(
+      'slotTypeValues',
+    );
+    timeouts = registerOutput<V2modelsSlotTypeTimeouts?>('timeouts');
+    valueSelectionSetting =
+        registerOutput<V2modelsSlotTypeValueSelectionSetting?>(
+          'valueSelectionSetting',
+        );
   }
 }

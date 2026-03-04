@@ -7,20 +7,17 @@ class GetNotificationDestinationSecureUrl {
 
   /// Creates a new [GetNotificationDestinationSecureUrl].
   /// [prefix] Required.
-  GetNotificationDestinationSecureUrl({
-    required this.prefix,
-  });
+  GetNotificationDestinationSecureUrl({required this.prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'prefix': prefix,
-    };
+    return <String, dynamic>{'prefix': prefix};
   }
 
-  factory GetNotificationDestinationSecureUrl.fromMap(Map<String, dynamic> map) {
+  factory GetNotificationDestinationSecureUrl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNotificationDestinationSecureUrl(
-      prefix: (map['prefix'] as String).input(),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
-

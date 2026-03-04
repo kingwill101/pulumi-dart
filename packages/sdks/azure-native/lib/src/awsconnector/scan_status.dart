@@ -9,16 +9,15 @@ enum ScanStatus {
   sCANELIGIBILITYEXPIRED("SCAN_ELIGIBILITY_EXPIRED"),
   uNSUPPORTEDIMAGE("UNSUPPORTED_IMAGE");
 
-  const ScanStatus(this.value);
-  final String value;
+  const ScanStatus(this.wireValue);
+  final String wireValue;
 
   static ScanStatus fromValue(String value) {
     for (final item in ScanStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScanStatus value: $value');
   }
 }
-

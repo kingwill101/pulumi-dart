@@ -6,16 +6,20 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   /// The number of local SSD disks to attach to the node,
   /// which is limited by the maximum number of disks allowable per zone.
   final pulumi.Input<int>? localSsdCount;
+
   /// The name of a Compute Engine machine type.
   final pulumi.Input<String>? machineType;
+
   /// Minimum CPU platform to be used by this instance.
   /// The instance may be scheduled on the specified or a newer CPU platform.
   /// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
   final pulumi.Input<String>? minCpuPlatform;
+
   /// Whether the nodes are created as preemptible VM instances.
   /// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
   /// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
   final pulumi.Input<bool>? preemptible;
+
   /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
   final pulumi.Input<bool>? spot;
 
@@ -43,14 +47,35 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     };
   }
 
-  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig(
-      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount']! as int).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
-      spot: map['spot'] == null ? null : (map['spot']! as bool).input(),
+      localSsdCount: (() {
+        final guardedValue = map['localSsdCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      machineType: (() {
+        final guardedValue = map['machineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minCpuPlatform: (() {
+        final guardedValue = map['minCpuPlatform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preemptible: (() {
+        final guardedValue = map['preemptible'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      spot: (() {
+        final guardedValue = map['spot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

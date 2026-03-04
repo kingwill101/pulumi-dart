@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationFlexibleFederatedIdentityCredentialState {
   /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
   final pulumi.Input<String>? applicationId;
+
   /// The audience that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
   final pulumi.Input<String>? audience;
+
   /// The expression to match for claims. See the Preview Documentation for more information.
   final pulumi.Input<String>? claimsMatchingExpression;
+
   /// A UUID used to uniquely identify this federated identity credential.
   final pulumi.Input<String>? credentialId;
+
   /// A description for the federated identity credential.
   final pulumi.Input<String>? description;
+
   /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   final pulumi.Input<String>? displayName;
+
   /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.
   final pulumi.Input<String>? issuer;
 
@@ -49,16 +55,45 @@ class ApplicationFlexibleFederatedIdentityCredentialState {
     };
   }
 
-  factory ApplicationFlexibleFederatedIdentityCredentialState.fromMap(Map<String, dynamic> map) {
+  factory ApplicationFlexibleFederatedIdentityCredentialState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationFlexibleFederatedIdentityCredentialState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      claimsMatchingExpression: map['claimsMatchingExpression'] == null ? null : (map['claimsMatchingExpression']! as String).input(),
-      credentialId: map['credentialId'] == null ? null : (map['credentialId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      claimsMatchingExpression: (() {
+        final guardedValue = map['claimsMatchingExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialId: (() {
+        final guardedValue = map['credentialId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      issuer: (() {
+        final guardedValue = map['issuer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

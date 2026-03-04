@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationPolicyResponse {
   /// The policy name
   final pulumi.Input<String>? name;
+
   /// The policy parameters.
   final pulumi.Input<String>? parameters;
+
   /// The policy definition Id.
   final pulumi.Input<String>? policyDefinitionId;
 
@@ -31,10 +33,21 @@ class ApplicationPolicyResponse {
 
   factory ApplicationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationPolicyResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
-      policyDefinitionId: map['policyDefinitionId'] == null ? null : (map['policyDefinitionId']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyDefinitionId: (() {
+        final guardedValue = map['policyDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

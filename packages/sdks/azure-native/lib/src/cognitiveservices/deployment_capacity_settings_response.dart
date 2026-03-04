@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentCapacitySettingsResponse {
   /// The designated capacity.
   final pulumi.Input<int>? designatedCapacity;
+
   /// The priority of this capacity setting.
   final pulumi.Input<int>? priority;
 
   /// Creates a new [DeploymentCapacitySettingsResponse].
   /// [designatedCapacity] The designated capacity.
   /// [priority] The priority of this capacity setting.
-  DeploymentCapacitySettingsResponse({
-    this.designatedCapacity,
-    this.priority,
-  });
+  DeploymentCapacitySettingsResponse({this.designatedCapacity, this.priority});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class DeploymentCapacitySettingsResponse {
 
   factory DeploymentCapacitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentCapacitySettingsResponse(
-      designatedCapacity: map['designatedCapacity'] == null ? null : (map['designatedCapacity']! as int).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      designatedCapacity: (() {
+        final guardedValue = map['designatedCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

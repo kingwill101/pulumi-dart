@@ -13,15 +13,14 @@ class FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -27,9 +27,8 @@ class GetWorkforcePoolIamPolicyArgs {
 
   factory GetWorkforcePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkforcePoolIamPolicyArgs(
-      location: (map['location'] as String).input(),
-      workforcePoolId: (map['workforcePoolId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      workforcePoolId: pulumi.Input.fromValue(map['workforcePoolId'] as String),
     );
   }
 }
-

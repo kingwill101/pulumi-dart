@@ -5,34 +5,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayRequestRoutingRule {
   /// The ID of the associated Backend Address Pool.
   final pulumi.Input<String> backendAddressPoolId;
+
   /// The Name of the Backend Address Pool which is used for this Routing Rule.
   final pulumi.Input<String> backendAddressPoolName;
+
   /// The ID of the associated Backend HTTP Settings Configuration.
   final pulumi.Input<String> backendHttpSettingsId;
+
   /// The Name of the Backend HTTP Settings Collection which is used for this Routing Rule.
   final pulumi.Input<String> backendHttpSettingsName;
+
   /// The ID of the associated HTTP Listener.
   final pulumi.Input<String> httpListenerId;
+
   /// The Name of the HTTP Listener which is used for this Routing Rule.
   final pulumi.Input<String> httpListenerName;
+
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String> id;
+
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
+
   /// The Priority of this Routing Rule.
   final pulumi.Input<int> priority;
+
   /// The ID of the associated Redirect Configuration.
   final pulumi.Input<String> redirectConfigurationId;
+
   /// The Name of the Redirect Configuration which is used for this Routing Rule.
   final pulumi.Input<String> redirectConfigurationName;
+
   /// The ID of the associated Rewrite Rule Set.
   final pulumi.Input<String> rewriteRuleSetId;
+
   /// The Name of the Rewrite Rule Set which is used for this Routing Rule.
   final pulumi.Input<String> rewriteRuleSetName;
+
   /// The Type of Routing that is used for this Rule.
   final pulumi.Input<String> ruleType;
+
   /// The ID of the associated URL Path Map.
   final pulumi.Input<String> urlPathMapId;
+
   /// The Name of the URL Path Map which is associated with this Routing Rule.
   final pulumi.Input<String> urlPathMapName;
 
@@ -93,25 +108,44 @@ class GetApplicationGatewayRequestRoutingRule {
     };
   }
 
-  factory GetApplicationGatewayRequestRoutingRule.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayRequestRoutingRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayRequestRoutingRule(
-      backendAddressPoolId: (map['backendAddressPoolId'] as String).input(),
-      backendAddressPoolName: (map['backendAddressPoolName'] as String).input(),
-      backendHttpSettingsId: (map['backendHttpSettingsId'] as String).input(),
-      backendHttpSettingsName: (map['backendHttpSettingsName'] as String).input(),
-      httpListenerId: (map['httpListenerId'] as String).input(),
-      httpListenerName: (map['httpListenerName'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      redirectConfigurationId: (map['redirectConfigurationId'] as String).input(),
-      redirectConfigurationName: (map['redirectConfigurationName'] as String).input(),
-      rewriteRuleSetId: (map['rewriteRuleSetId'] as String).input(),
-      rewriteRuleSetName: (map['rewriteRuleSetName'] as String).input(),
-      ruleType: (map['ruleType'] as String).input(),
-      urlPathMapId: (map['urlPathMapId'] as String).input(),
-      urlPathMapName: (map['urlPathMapName'] as String).input(),
+      backendAddressPoolId: pulumi.Input.fromValue(
+        map['backendAddressPoolId'] as String,
+      ),
+      backendAddressPoolName: pulumi.Input.fromValue(
+        map['backendAddressPoolName'] as String,
+      ),
+      backendHttpSettingsId: pulumi.Input.fromValue(
+        map['backendHttpSettingsId'] as String,
+      ),
+      backendHttpSettingsName: pulumi.Input.fromValue(
+        map['backendHttpSettingsName'] as String,
+      ),
+      httpListenerId: pulumi.Input.fromValue(map['httpListenerId'] as String),
+      httpListenerName: pulumi.Input.fromValue(
+        map['httpListenerName'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      redirectConfigurationId: pulumi.Input.fromValue(
+        map['redirectConfigurationId'] as String,
+      ),
+      redirectConfigurationName: pulumi.Input.fromValue(
+        map['redirectConfigurationName'] as String,
+      ),
+      rewriteRuleSetId: pulumi.Input.fromValue(
+        map['rewriteRuleSetId'] as String,
+      ),
+      rewriteRuleSetName: pulumi.Input.fromValue(
+        map['rewriteRuleSetName'] as String,
+      ),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
+      urlPathMapId: pulumi.Input.fromValue(map['urlPathMapId'] as String),
+      urlPathMapName: pulumi.Input.fromValue(map['urlPathMapName'] as String),
     );
   }
 }
-

@@ -7,24 +7,34 @@ import 'routing_configuration_response.dart';
 class GetExpressRouteConnectionResult {
   /// Authorization key to establish the connection.
   final String? authorizationKey;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Enable internet security.
   final bool? enableInternetSecurity;
+
   /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
   final bool? enablePrivateLinkFastPath;
+
   /// The ExpressRoute circuit peering.
   final ExpressRouteCircuitPeeringIdResponse expressRouteCircuitPeering;
+
   /// Enable FastPath to vWan Firewall hub.
   final bool? expressRouteGatewayBypass;
+
   /// Resource ID.
   final String? id;
+
   /// The name of the resource.
   final String name;
+
   /// The provisioning state of the express route connection resource.
   final String provisioningState;
+
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
   final RoutingConfigurationResponse? routingConfiguration;
+
   /// The routing weight associated to the connection.
   final int? routingWeight;
 
@@ -65,25 +75,56 @@ class GetExpressRouteConnectionResult {
       'id': ?id,
       'name': name,
       'provisioningState': provisioningState,
-      'routingConfiguration': ?routingConfiguration == null ? null : routingConfiguration!.toMap(),
+      'routingConfiguration': ?routingConfiguration?.toMap(),
       'routingWeight': ?routingWeight,
     };
   }
 
   factory GetExpressRouteConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteConnectionResult(
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey']! as String,
+      authorizationKey: (() {
+        final guardedValue = map['authorizationKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity']! as bool,
-      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : map['enablePrivateLinkFastPath']! as bool,
-      expressRouteCircuitPeering: ExpressRouteCircuitPeeringIdResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>()),
-      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : map['expressRouteGatewayBypass']! as bool,
-      id: map['id'] == null ? null : map['id']! as String,
+      enableInternetSecurity: (() {
+        final guardedValue = map['enableInternetSecurity'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      enablePrivateLinkFastPath: (() {
+        final guardedValue = map['enablePrivateLinkFastPath'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      expressRouteCircuitPeering: ExpressRouteCircuitPeeringIdResponse.fromMap(
+        (map['expressRouteCircuitPeering']! as Map).cast<String, dynamic>(),
+      ),
+      expressRouteGatewayBypass: (() {
+        final guardedValue = map['expressRouteGatewayBypass'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>()),
-      routingWeight: map['routingWeight'] == null ? null : map['routingWeight']! as int,
+      routingConfiguration: (() {
+        final guardedValue = map['routingConfiguration'];
+        if (guardedValue == null) return null;
+        return RoutingConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      routingWeight: (() {
+        final guardedValue = map['routingWeight'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

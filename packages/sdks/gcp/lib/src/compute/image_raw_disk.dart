@@ -10,9 +10,11 @@ class ImageRawDisk {
   /// Default value is `TAR`.
   /// Possible values are: `TAR`.
   final pulumi.Input<String>? containerType;
+
   /// An optional SHA1 checksum of the disk image before unpackaging.
   /// This is provided by the client when the disk image is created.
   final pulumi.Input<String>? sha1;
+
   /// The full Google Cloud Storage URL where disk storage is stored
   /// You must provide either this property or the sourceDisk property
   /// but not both.
@@ -22,11 +24,7 @@ class ImageRawDisk {
   /// [containerType] The format used to encode and transmit the block device, which
   /// [sha1] An optional SHA1 checksum of the disk image before unpackaging.
   /// [source] The full Google Cloud Storage URL where disk storage is stored
-  ImageRawDisk({
-    this.containerType,
-    this.sha1,
-    required this.source,
-  });
+  ImageRawDisk({this.containerType, this.sha1, required this.source});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,10 +36,17 @@ class ImageRawDisk {
 
   factory ImageRawDisk.fromMap(Map<String, dynamic> map) {
     return ImageRawDisk(
-      containerType: map['containerType'] == null ? null : (map['containerType']! as String).input(),
-      sha1: map['sha1'] == null ? null : (map['sha1']! as String).input(),
-      source: (map['source'] as String).input(),
+      containerType: (() {
+        final guardedValue = map['containerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha1: (() {
+        final guardedValue = map['sha1'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

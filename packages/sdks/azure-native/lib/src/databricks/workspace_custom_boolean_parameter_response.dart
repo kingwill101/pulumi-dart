@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceCustomBooleanParameterResponse {
   /// The type of variable that this is
   final pulumi.Input<String> type;
+
   /// The value which should be used for this field.
   final pulumi.Input<bool> value;
 
@@ -18,17 +19,15 @@ class WorkspaceCustomBooleanParameterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'type': type, 'value': value};
   }
 
-  factory WorkspaceCustomBooleanParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceCustomBooleanParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceCustomBooleanParameterResponse(
-      type: (map['type'] as String).input(),
-      value: (map['value'] as bool).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as bool),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available since v1.106.0.
+/// &gt; **NOTE:** Available since v1.106.0.
 ///
 /// ## Example Usage
 ///
@@ -176,7 +176,7 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 /// The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
 /// Filters support regular expression for the instance name, ids or availability_zone.
 ///
-/// > **NOTE:**  Available in 1.67.0+
+/// &gt; **NOTE:**  Available in 1.67.0+
 ///
 /// ## Example Usage
 ///
@@ -289,7 +289,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides availability zones for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.73.0+.
+/// &gt; **NOTE:** Available in v1.73.0+.
 ///
 /// ## Example Usage
 ///

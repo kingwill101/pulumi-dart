@@ -7,10 +7,20 @@ import 'web_acl_rule_statement_rate_based_statement_scope_down_statement_regex_p
 class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement {
   /// The Amazon Resource Name (ARN) of the Regex Pattern Set that this statement references.
   final pulumi.Input<String> arn;
+
   /// Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<
+    WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch
+  >?
+  fieldToMatch;
+
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation>> textTransformations;
+  final pulumi.Input<
+    List<
+      WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation
+    >
+  >
+  textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement].
   /// [arn] The Amazon Resource Name (ARN) of the Regex Pattern Set that this statement references.
@@ -25,17 +35,53 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetRefe
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'fieldToMatch': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
-      'textTransformations': pulumi.Input.mapInputValue<List<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation>, List<Map<String, dynamic>>>(textTransformations, (value) => pulumi.Input.encodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fieldToMatch':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch,
+            Map<String, dynamic>
+          >(fieldToMatch, (value) => value.toMap()),
+      'textTransformations':
+          pulumi.Input.mapInputValue<
+            List<
+              WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation
+            >,
+            List<Map<String, dynamic>>
+          >(
+            textTransformations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement(
-      arn: (map['arn'] as String).input(),
-      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      fieldToMatch: (() {
+        final guardedValue = map['fieldToMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      textTransformations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation
+        >(
+          map['textTransformations']!,
+          (value) =>
+              WebAclRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementTextTransformation.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

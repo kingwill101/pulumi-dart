@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransferJobScheduleScheduleEndDate {
   /// Day of month. Must be from 1 to 31 and valid for the year and month.
   final pulumi.Input<int> day;
+
   /// Month of year. Must be from 1 to 12.
   final pulumi.Input<int> month;
+
   /// Year of date. Must be from 1 to 9999.
   final pulumi.Input<int> year;
 
@@ -21,19 +23,14 @@ class TransferJobScheduleScheduleEndDate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'day': day,
-      'month': month,
-      'year': year,
-    };
+    return <String, dynamic>{'day': day, 'month': month, 'year': year};
   }
 
   factory TransferJobScheduleScheduleEndDate.fromMap(Map<String, dynamic> map) {
     return TransferJobScheduleScheduleEndDate(
-      day: (map['day'] as int).input(),
-      month: (map['month'] as int).input(),
-      year: (map['year'] as int).input(),
+      day: pulumi.Input.fromValue(map['day'] as int),
+      month: pulumi.Input.fromValue(map['month'] as int),
+      year: pulumi.Input.fromValue(map['year'] as int),
     );
   }
 }
-

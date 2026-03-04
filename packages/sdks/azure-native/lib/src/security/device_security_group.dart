@@ -1,9 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'allowlist_custom_alert_rule_response.dart';
-import 'denylist_custom_alert_rule_response.dart';
 import 'device_security_group_args.dart';
-import 'threshold_custom_alert_rule_response.dart';
-import 'time_window_custom_alert_rule_response.dart';
 
 /// The device security group resource
 ///
@@ -145,17 +141,23 @@ import 'time_window_custom_alert_rule_response.dart';
 /// ```
 class DeviceSecurityGroup extends pulumi.CustomResource {
   /// The allow-list custom alert rules.
-  late final pulumi.Output<List<AllowlistCustomAlertRuleResponse>?> allowlistRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> allowlistRules;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The deny-list custom alert rules.
-  late final pulumi.Output<List<DenylistCustomAlertRuleResponse>?> denylistRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> denylistRules;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The list of custom alert threshold rules.
-  late final pulumi.Output<List<ThresholdCustomAlertRuleResponse>?> thresholdRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> thresholdRules;
+
   /// The list of custom alert time-window rules.
-  late final pulumi.Output<List<TimeWindowCustomAlertRuleResponse>?> timeWindowRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> timeWindowRules;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -168,17 +170,25 @@ class DeviceSecurityGroup extends pulumi.CustomResource {
     DeviceSecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:DeviceSecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowlistRules = registerOutput<List<AllowlistCustomAlertRuleResponse>?>('allowlistRules');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.denylistRules = registerOutput<List<DenylistCustomAlertRuleResponse>?>('denylistRules');
+         'azure-native:security:DeviceSecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowlistRules = registerOutput<List<Map<String, dynamic>>?>(
+      'allowlistRules',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    denylistRules = registerOutput<List<Map<String, dynamic>>?>(
+      'denylistRules',
+    );
     this.name = registerOutput<String>('name');
-    this.thresholdRules = registerOutput<List<ThresholdCustomAlertRuleResponse>?>('thresholdRules');
-    this.timeWindowRules = registerOutput<List<TimeWindowCustomAlertRuleResponse>?>('timeWindowRules');
-    this.type = registerOutput<String>('type');
+    thresholdRules = registerOutput<List<Map<String, dynamic>>?>(
+      'thresholdRules',
+    );
+    timeWindowRules = registerOutput<List<Map<String, dynamic>>?>(
+      'timeWindowRules',
+    );
+    type = registerOutput<String>('type');
   }
 }

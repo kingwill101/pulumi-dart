@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeMonitoringDataResponse {
   /// Unmatched properties from the message are deserialized in this collection.
   final pulumi.Input<Map<String, dynamic>> additionalProperties;
+
   /// Available memory (MB) on the integration runtime node.
   final pulumi.Input<int> availableMemoryInMB;
+
   /// Maximum concurrent jobs on the integration runtime node.
   final pulumi.Input<int> concurrentJobsLimit;
+
   /// The number of jobs currently running on the integration runtime node.
   final pulumi.Input<int> concurrentJobsRunning;
+
   /// CPU percentage on the integration runtime node.
   final pulumi.Input<int> cpuUtilization;
+
   /// The maximum concurrent jobs in this integration runtime.
   final pulumi.Input<int> maxConcurrentJobs;
+
   /// Name of the integration runtime node.
   final pulumi.Input<String> nodeName;
+
   /// Received bytes on the integration runtime node.
   final pulumi.Input<double> receivedBytes;
+
   /// Sent bytes on the integration runtime node.
   final pulumi.Input<double> sentBytes;
 
@@ -60,16 +68,25 @@ class NodeMonitoringDataResponse {
 
   factory NodeMonitoringDataResponse.fromMap(Map<String, dynamic> map) {
     return NodeMonitoringDataResponse(
-      additionalProperties: ((map['additionalProperties'] as Map).cast<String, dynamic>()).input(),
-      availableMemoryInMB: (map['availableMemoryInMB'] as int).input(),
-      concurrentJobsLimit: (map['concurrentJobsLimit'] as int).input(),
-      concurrentJobsRunning: (map['concurrentJobsRunning'] as int).input(),
-      cpuUtilization: (map['cpuUtilization'] as int).input(),
-      maxConcurrentJobs: (map['maxConcurrentJobs'] as int).input(),
-      nodeName: (map['nodeName'] as String).input(),
-      receivedBytes: (map['receivedBytes'] as double).input(),
-      sentBytes: (map['sentBytes'] as double).input(),
+      additionalProperties: pulumi.Input.fromValue(
+        (map['additionalProperties'] as Map).cast<String, dynamic>(),
+      ),
+      availableMemoryInMB: pulumi.Input.fromValue(
+        map['availableMemoryInMB'] as int,
+      ),
+      concurrentJobsLimit: pulumi.Input.fromValue(
+        map['concurrentJobsLimit'] as int,
+      ),
+      concurrentJobsRunning: pulumi.Input.fromValue(
+        map['concurrentJobsRunning'] as int,
+      ),
+      cpuUtilization: pulumi.Input.fromValue(map['cpuUtilization'] as int),
+      maxConcurrentJobs: pulumi.Input.fromValue(
+        map['maxConcurrentJobs'] as int,
+      ),
+      nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
+      receivedBytes: pulumi.Input.fromValue(map['receivedBytes'] as double),
+      sentBytes: pulumi.Input.fromValue(map['sentBytes'] as double),
     );
   }
 }
-

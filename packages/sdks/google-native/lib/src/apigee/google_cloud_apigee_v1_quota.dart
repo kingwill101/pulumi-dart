@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1Quota {
   /// Time interval over which the number of request messages is calculated.
   final pulumi.Input<String> interval;
+
   /// Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
   final pulumi.Input<String> limit;
+
   /// Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.
   final pulumi.Input<String>? timeUnit;
 
@@ -31,10 +33,13 @@ class GoogleCloudApigeeV1Quota {
 
   factory GoogleCloudApigeeV1Quota.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Quota(
-      interval: (map['interval'] as String).input(),
-      limit: (map['limit'] as String).input(),
-      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit']! as String).input(),
+      interval: pulumi.Input.fromValue(map['interval'] as String),
+      limit: pulumi.Input.fromValue(map['limit'] as String),
+      timeUnit: (() {
+        final guardedValue = map['timeUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

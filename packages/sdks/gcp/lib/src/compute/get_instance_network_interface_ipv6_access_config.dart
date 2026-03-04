@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceNetworkInterfaceIpv6AccessConfig {
   /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
   final pulumi.Input<String> externalIpv6;
+
   /// The prefix length of the external IPv6 range.
   final pulumi.Input<String> externalIpv6PrefixLength;
+
   /// The name of the instance. One of `name` or `self_link` must be provided.
   final pulumi.Input<String> name;
+
   /// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
   final pulumi.Input<String> networkTier;
+
   /// The DNS domain name for the public PTR record.
   final pulumi.Input<String> publicPtrDomainName;
+
   /// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
   final pulumi.Input<String> securityPolicy;
 
@@ -43,15 +48,20 @@ class GetInstanceNetworkInterfaceIpv6AccessConfig {
     };
   }
 
-  factory GetInstanceNetworkInterfaceIpv6AccessConfig.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceNetworkInterfaceIpv6AccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceNetworkInterfaceIpv6AccessConfig(
-      externalIpv6: (map['externalIpv6'] as String).input(),
-      externalIpv6PrefixLength: (map['externalIpv6PrefixLength'] as String).input(),
-      name: (map['name'] as String).input(),
-      networkTier: (map['networkTier'] as String).input(),
-      publicPtrDomainName: (map['publicPtrDomainName'] as String).input(),
-      securityPolicy: (map['securityPolicy'] as String).input(),
+      externalIpv6: pulumi.Input.fromValue(map['externalIpv6'] as String),
+      externalIpv6PrefixLength: pulumi.Input.fromValue(
+        map['externalIpv6PrefixLength'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkTier: pulumi.Input.fromValue(map['networkTier'] as String),
+      publicPtrDomainName: pulumi.Input.fromValue(
+        map['publicPtrDomainName'] as String,
+      ),
+      securityPolicy: pulumi.Input.fromValue(map['securityPolicy'] as String),
     );
   }
 }
-

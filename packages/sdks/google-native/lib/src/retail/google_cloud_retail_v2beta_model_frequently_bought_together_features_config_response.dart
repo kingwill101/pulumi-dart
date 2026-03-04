@@ -14,15 +14,16 @@ class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'contextProductsType': contextProductsType,
-    };
+    return <String, dynamic>{'contextProductsType': contextProductsType};
   }
 
-  factory GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse(
-      contextProductsType: (map['contextProductsType'] as String).input(),
+      contextProductsType: pulumi.Input.fromValue(
+        map['contextProductsType'] as String,
+      ),
     );
   }
 }
-

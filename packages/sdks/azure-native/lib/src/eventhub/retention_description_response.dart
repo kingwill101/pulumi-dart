@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetentionDescriptionResponse {
   /// Enumerates the possible values for cleanup policy
   final pulumi.Input<String>? cleanupPolicy;
+
   /// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
   final pulumi.Input<double>? retentionTimeInHours;
+
   /// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
   final pulumi.Input<int>? tombstoneRetentionTimeInHours;
 
@@ -31,10 +33,21 @@ class RetentionDescriptionResponse {
 
   factory RetentionDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return RetentionDescriptionResponse(
-      cleanupPolicy: map['cleanupPolicy'] == null ? null : (map['cleanupPolicy']! as String).input(),
-      retentionTimeInHours: map['retentionTimeInHours'] == null ? null : (map['retentionTimeInHours']! as double).input(),
-      tombstoneRetentionTimeInHours: map['tombstoneRetentionTimeInHours'] == null ? null : (map['tombstoneRetentionTimeInHours']! as int).input(),
+      cleanupPolicy: (() {
+        final guardedValue = map['cleanupPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionTimeInHours: (() {
+        final guardedValue = map['retentionTimeInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      tombstoneRetentionTimeInHours: (() {
+        final guardedValue = map['tombstoneRetentionTimeInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

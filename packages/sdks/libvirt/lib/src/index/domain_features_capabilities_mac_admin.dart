@@ -8,20 +8,19 @@ class DomainFeaturesCapabilitiesMacAdmin {
 
   /// Creates a new [DomainFeaturesCapabilitiesMacAdmin].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesMacAdmin({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesMacAdmin({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesCapabilitiesMacAdmin.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesMacAdmin(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

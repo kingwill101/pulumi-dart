@@ -6,8 +6,10 @@ import 'get_reservation_share_setting_project_map.dart';
 class GetReservationShareSetting {
   /// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   final pulumi.Input<List<GetReservationShareSettingProjectMap>> projectMaps;
+
   /// List of project IDs with which the reservation is shared.
   final pulumi.Input<List<String>> projects;
+
   /// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
   final pulumi.Input<String> shareType;
 
@@ -23,7 +25,18 @@ class GetReservationShareSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'projectMaps': pulumi.Input.mapInputValue<List<GetReservationShareSettingProjectMap>, List<Map<String, dynamic>>>(projectMaps, (value) => pulumi.Input.encodeList<GetReservationShareSettingProjectMap, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'projectMaps':
+          pulumi.Input.mapInputValue<
+            List<GetReservationShareSettingProjectMap>,
+            List<Map<String, dynamic>>
+          >(
+            projectMaps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetReservationShareSettingProjectMap,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'projects': projects,
       'shareType': shareType,
     };
@@ -31,10 +44,18 @@ class GetReservationShareSetting {
 
   factory GetReservationShareSetting.fromMap(Map<String, dynamic> map) {
     return GetReservationShareSetting(
-      projectMaps: (pulumi.Input.decodeList<GetReservationShareSettingProjectMap>(map['projectMaps'], (value) => GetReservationShareSettingProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projects: ((map['projects'] as List).cast<String>()).input(),
-      shareType: (map['shareType'] as String).input(),
+      projectMaps: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetReservationShareSettingProjectMap>(
+          map['projectMaps']!,
+          (value) => GetReservationShareSettingProjectMap.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      projects: pulumi.Input.fromValue(
+        (map['projects'] as List).cast<String>(),
+      ),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
     );
   }
 }
-

@@ -9,20 +9,21 @@ class VirtualMachinePropertiesImageReference {
 
   /// Creates a new [VirtualMachinePropertiesImageReference].
   /// [id] Resource ID of the image
-  VirtualMachinePropertiesImageReference({
-    this.id,
-  });
+  VirtualMachinePropertiesImageReference({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory VirtualMachinePropertiesImageReference.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesImageReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesImageReference(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

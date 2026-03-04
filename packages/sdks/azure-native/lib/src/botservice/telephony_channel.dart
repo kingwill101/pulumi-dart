@@ -8,10 +8,13 @@ class TelephonyChannel {
   /// The channel name
   /// Expected value is 'TelephonyChannel'.
   final pulumi.Input<String> channelName;
+
   /// Entity Tag of the resource
   final pulumi.Input<String>? etag;
+
   /// Specifies the location of the resource.
   final pulumi.Input<String>? location;
+
   /// The set of properties specific to Telephony channel resource
   final pulumi.Input<TelephonyChannelProperties>? properties;
 
@@ -32,17 +35,36 @@ class TelephonyChannel {
       'channelName': channelName,
       'etag': ?etag,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<TelephonyChannelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            TelephonyChannelProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory TelephonyChannel.fromMap(Map<String, dynamic> map) {
     return TelephonyChannel(
-      channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (TelephonyChannelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      channelName: pulumi.Input.fromValue(map['channelName'] as String),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TelephonyChannelProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

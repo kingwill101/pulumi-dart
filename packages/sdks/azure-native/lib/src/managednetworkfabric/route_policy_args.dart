@@ -10,20 +10,28 @@ import 'route_policy_statement_properties.dart';
 class RoutePolicyArgs {
   /// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
   final pulumi.Input<String>? addressFamilyType;
+
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
+
   /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
   final pulumi.Input<String>? defaultAction;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Arm Resource ID of Network Fabric.
   final pulumi.Input<String> networkFabricId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Route Policy.
   final pulumi.Input<String>? routePolicyName;
+
   /// Route Policy statements.
   final pulumi.Input<List<RoutePolicyStatementProperties>> statements;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -58,23 +66,68 @@ class RoutePolicyArgs {
       'networkFabricId': networkFabricId,
       'resourceGroupName': resourceGroupName,
       'routePolicyName': ?routePolicyName,
-      'statements': pulumi.Input.mapInputValue<List<RoutePolicyStatementProperties>, List<Map<String, dynamic>>>(statements, (value) => pulumi.Input.encodeList<RoutePolicyStatementProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statements':
+          pulumi.Input.mapInputValue<
+            List<RoutePolicyStatementProperties>,
+            List<Map<String, dynamic>>
+          >(
+            statements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RoutePolicyStatementProperties,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
     };
   }
 
   factory RoutePolicyArgs.fromMap(Map<String, dynamic> map) {
     return RoutePolicyArgs(
-      addressFamilyType: map['addressFamilyType'] == null ? null : (map['addressFamilyType']! as String).input(),
-      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkFabricId: (map['networkFabricId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routePolicyName: map['routePolicyName'] == null ? null : (map['routePolicyName']! as String).input(),
-      statements: (pulumi.Input.decodeList<RoutePolicyStatementProperties>(map['statements'], (value) => RoutePolicyStatementProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      addressFamilyType: (() {
+        final guardedValue = map['addressFamilyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultAction: (() {
+        final guardedValue = map['defaultAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkFabricId: pulumi.Input.fromValue(map['networkFabricId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      routePolicyName: (() {
+        final guardedValue = map['routePolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statements: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<RoutePolicyStatementProperties>(
+          map['statements']!,
+          (value) => RoutePolicyStatementProperties.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

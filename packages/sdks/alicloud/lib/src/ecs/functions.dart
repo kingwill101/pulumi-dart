@@ -70,7 +70,7 @@ import 'get_snapshots_result.dart';
 
 /// This data source provides the Ecs Activations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.177.0+.
+/// &gt; **NOTE:** Available in v1.177.0+.
 ///
 /// ## Example Usage
 ///
@@ -180,7 +180,7 @@ Future<GetActivationsResult> getActivations(
 
 /// This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.117.0+.
+/// &gt; **NOTE:** Available in v1.117.0+.
 ///
 /// ## Example Usage
 ///
@@ -311,7 +311,7 @@ Future<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(
 
 /// This data source provides Ecs Capacity Reservation available to the user.
 ///
-/// > **NOTE:** Available in 1.195.0+
+/// &gt; **NOTE:** Available in 1.195.0+
 ///
 /// ## Example Usage
 ///
@@ -451,7 +451,7 @@ Future<GetCapacityReservationsResult> getCapacityReservations(
 
 /// This data source provides the Ecs Commands of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.116.0+.
+/// &gt; **NOTE:** Available in v1.116.0+.
 ///
 /// ## Example Usage
 ///
@@ -582,7 +582,7 @@ Future<GetCommandsResult> getCommands(
 
 /// This data source provides the ECS Dedicated Hosts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.91.0.
+/// &gt; **NOTE:** Available since v1.91.0.
 ///
 /// ## Example Usage
 ///
@@ -793,7 +793,7 @@ Future<GetDedicatedHostsResult> getDedicatedHosts(
   return GetDedicatedHostsResult.fromMap(result);
 }
 
-/// > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+/// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
 ///
 /// This data source provides the disks of the current Alibaba Cloud user.
 ///
@@ -912,7 +912,7 @@ Future<GetDisksResult> getDisks(
 
 /// This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.146.0+.
+/// &gt; **NOTE:** Available in v1.146.0+.
 ///
 /// ## Example Usage
 ///
@@ -1163,7 +1163,7 @@ Future<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClusters(
 
 /// This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///
@@ -1318,7 +1318,7 @@ Future<GetEcsDeploymentSetsResult> getEcsDeploymentSets(
 
 /// This data source provides the Ecs Disks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.122.0.
+/// &gt; **NOTE:** Available since v1.122.0.
 ///
 /// ## Example Usage
 ///
@@ -1537,7 +1537,7 @@ Future<GetEcsDisksResult> getEcsDisks(
 
 /// This data source provides the Ecs Image Components of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.159.0+.
+/// &gt; **NOTE:** Available in v1.159.0+.
 ///
 /// ## Example Usage
 ///
@@ -1692,7 +1692,7 @@ Future<GetEcsImageComponentsResult> getEcsImageComponents(
 
 /// This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.163.0+.
+/// &gt; **NOTE:** Available in v1.163.0+.
 ///
 /// ## Example Usage
 ///
@@ -1847,7 +1847,7 @@ Future<GetEcsImagePipelineResult> getEcsImagePipeline(
 
 /// This data source provides the Ecs Invocations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.168.0+.
+/// &gt; **NOTE:** Available in v1.168.0+.
 ///
 /// ## Example Usage
 ///
@@ -1972,7 +1972,7 @@ Future<GetEcsInvocationsResult> getEcsInvocations(
 
 /// This data source provides the Ecs Key Pairs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.121.0.
+/// &gt; **NOTE:** Available since v1.121.0.
 ///
 /// ## Example Usage
 ///
@@ -2198,7 +2198,7 @@ Future<GetEcsKeyPairsResult> getEcsKeyPairs(
 
 /// This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -2911,7 +2911,7 @@ Future<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates(
 
 /// This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.166.0+.
+/// &gt; **NOTE:** Available in v1.166.0+.
 ///
 /// ## Example Usage
 ///
@@ -3027,7 +3027,8 @@ Future<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ecs_get_ecs_network_interface_permissions_get_ecs_network_interface_permissions_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissions(
+Future<GetEcsNetworkInterfacePermissionsResult>
+getEcsNetworkInterfacePermissions(
   GetEcsNetworkInterfacePermissionsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3042,7 +3043,7 @@ Future<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermission
 
 /// This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.123.1.
+/// &gt; **NOTE:** Available since v1.123.1.
 ///
 /// ## Example Usage
 ///
@@ -3161,7 +3162,7 @@ Future<GetEcsNetworkInterfacesResult> getEcsNetworkInterfaces(
 
 /// This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.152.0+.
+/// &gt; **NOTE:** Available in v1.152.0+.
 ///
 /// ## Example Usage
 ///
@@ -3292,7 +3293,7 @@ Future<GetEcsPrefixListsResult> getEcsPrefixLists(
 
 /// This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.160.0+.
+/// &gt; **NOTE:** Available in v1.160.0+.
 ///
 /// ## Example Usage
 ///
@@ -3507,7 +3508,7 @@ Future<GetEcsSnapshotGroupsResult> getEcsSnapshotGroups(
 
 /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -4059,7 +4060,7 @@ Future<GetEcsSnapshotsResult> getEcsSnapshots(
 
 /// This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.155.0+.
+/// &gt; **NOTE:** Available in v1.155.0+.
 ///
 /// ## Example Usage
 ///
@@ -4199,7 +4200,7 @@ Future<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnits(
 
 /// This data source provides the Eip Addresses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.126.0+.
+/// &gt; **NOTE:** Available in v1.126.0+.
 ///
 /// ## Example Usage
 ///
@@ -4328,7 +4329,7 @@ Future<GetEipAddressesResult> getEipAddresses(
   return GetEipAddressesResult.fromMap(result);
 }
 
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
 ///
 /// This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
 ///
@@ -4438,7 +4439,7 @@ Future<GetEipsResult> getEips(
 
 /// This data source provides Ecs Elasticity Assurance available to the user.
 ///
-/// > **NOTE:** Available in 1.196.0+
+/// &gt; **NOTE:** Available in 1.196.0+
 ///
 /// ## Example Usage
 ///
@@ -4560,7 +4561,7 @@ Future<GetElasticityAssurancesResult> getElasticityAssurances(
 
 /// This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.116.0+.
+/// &gt; **NOTE:** Available in v1.116.0+.
 ///
 /// ## Example Usage
 ///
@@ -4813,7 +4814,7 @@ Future<GetImagesResult> getImages(
 
 /// Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
 ///
-/// > **NOTE:** Available in v1.196.0+
+/// &gt; **NOTE:** Available in v1.196.0+
 ///
 /// ## Example Usage
 ///
@@ -4936,7 +4937,7 @@ Future<GetInstanceKeywordsResult> getInstanceKeywords(
 
 /// This data source provides the ECS instance type families of Alibaba Cloud.
 ///
-/// > **NOTE:** Available in 1.54.0+
+/// &gt; **NOTE:** Available in 1.54.0+
 ///
 /// ## Example Usage
 ///
@@ -5059,11 +5060,11 @@ Future<GetInstanceTypeFamiliesResult> getInstanceTypeFamilies(
 
 /// This data source provides the ECS instance types of Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
-/// > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+/// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
 ///
-/// > **NOTE:** If one instance type is sold out, it will not be exported.
+/// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
 ///
 /// ## Example Usage
 ///
@@ -5461,7 +5462,7 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 
 /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
 ///
-/// > **NOTE:** Available since v1.7.0.
+/// &gt; **NOTE:** Available since v1.7.0.
 ///
 /// ## Example Usage
 ///
@@ -5588,7 +5589,7 @@ Future<GetInstancesResult> getInstances(
   return GetInstancesResult.fromMap(result);
 }
 
-/// > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+/// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
 ///
 /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
 ///
@@ -5723,7 +5724,7 @@ Future<GetKeyPairsResult> getKeyPairs(
   return GetKeyPairsResult.fromMap(result);
 }
 
-/// > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+/// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
 ///
 /// Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
 ///
@@ -6648,13 +6649,13 @@ Future<GetSecurityGroupsResult> getSecurityGroups(
   return GetSecurityGroupsResult.fromMap(result);
 }
 
-/// > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+/// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
 ///
 /// Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
 ///
 /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 ///
-/// > **NOTE:**  Available in 1.40.0+.
+/// &gt; **NOTE:**  Available in 1.40.0+.
 ///
 /// ## Example Usage
 ///

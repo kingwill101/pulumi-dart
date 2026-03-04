@@ -9,20 +9,19 @@ class K8sBetaAPIConfig {
 
   /// Creates a new [K8sBetaAPIConfig].
   /// [enabledApis] Enabled k8s beta APIs.
-  K8sBetaAPIConfig({
-    this.enabledApis,
-  });
+  K8sBetaAPIConfig({this.enabledApis});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabledApis': ?enabledApis,
-    };
+    return <String, dynamic>{'enabledApis': ?enabledApis};
   }
 
   factory K8sBetaAPIConfig.fromMap(Map<String, dynamic> map) {
     return K8sBetaAPIConfig(
-      enabledApis: map['enabledApis'] == null ? null : ((map['enabledApis']! as List).cast<String>()).input(),
+      enabledApis: (() {
+        final guardedValue = map['enabledApis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -16,28 +16,40 @@ import 'web_app_host_name_binding_args.dart';
 class WebAppHostNameBinding extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure resource name.
   late final pulumi.Output<String?> azureResourceName;
+
   /// Azure resource type.
   late final pulumi.Output<String?> azureResourceType;
+
   /// Custom DNS record type.
   late final pulumi.Output<String?> customHostNameDnsRecordType;
+
   /// Fully qualified ARM domain resource URI.
   late final pulumi.Output<String?> domainId;
+
   /// Hostname type.
   late final pulumi.Output<String?> hostNameType;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// App Service app name.
   late final pulumi.Output<String?> siteName;
+
   /// SSL type
   late final pulumi.Output<String?> sslState;
+
   /// SSL certificate thumbprint
   late final pulumi.Output<String?> thumbprint;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Virtual IP address assigned to the hostname if IP based SSL is enabled.
   late final pulumi.Output<String> virtualIP;
 
@@ -50,23 +62,25 @@ class WebAppHostNameBinding extends pulumi.CustomResource {
     WebAppHostNameBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppHostNameBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureResourceName = registerOutput<String?>('azureResourceName');
-    this.azureResourceType = registerOutput<String?>('azureResourceType');
-    this.customHostNameDnsRecordType = registerOutput<String?>('customHostNameDnsRecordType');
-    this.domainId = registerOutput<String?>('domainId');
-    this.hostNameType = registerOutput<String?>('hostNameType');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppHostNameBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureResourceName = registerOutput<String?>('azureResourceName');
+    azureResourceType = registerOutput<String?>('azureResourceType');
+    customHostNameDnsRecordType = registerOutput<String?>(
+      'customHostNameDnsRecordType',
+    );
+    domainId = registerOutput<String?>('domainId');
+    hostNameType = registerOutput<String?>('hostNameType');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.siteName = registerOutput<String?>('siteName');
-    this.sslState = registerOutput<String?>('sslState');
-    this.thumbprint = registerOutput<String?>('thumbprint');
-    this.type = registerOutput<String>('type');
-    this.virtualIP = registerOutput<String>('virtualIP');
+    siteName = registerOutput<String?>('siteName');
+    sslState = registerOutput<String?>('sslState');
+    thumbprint = registerOutput<String?>('thumbprint');
+    type = registerOutput<String>('type');
+    virtualIP = registerOutput<String>('virtualIP');
   }
 }

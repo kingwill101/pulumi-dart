@@ -7,14 +7,18 @@ import 'get_lifecycle_hooks_hook.dart';
 class GetLifecycleHooksResult {
   /// A list of lifecycle hooks. Each element contains the following attributes:
   final List<GetLifecycleHooksHook> hooks;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of lifecycle hook ids.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of lifecycle hook names.
   final List<String> names;
   final String? outputFile;
+
   /// ID of the scaling group.
   final String? scalingGroupId;
 
@@ -38,7 +42,11 @@ class GetLifecycleHooksResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hooks': pulumi.Input.encodeList<GetLifecycleHooksHook, Map<String, dynamic>>(hooks, (value) => value.toMap()),
+      'hooks':
+          pulumi.Input.encodeList<GetLifecycleHooksHook, Map<String, dynamic>>(
+            hooks,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -50,14 +58,30 @@ class GetLifecycleHooksResult {
 
   factory GetLifecycleHooksResult.fromMap(Map<String, dynamic> map) {
     return GetLifecycleHooksResult(
-      hooks: pulumi.Input.decodeList<GetLifecycleHooksHook>(map['hooks'], (value) => GetLifecycleHooksHook.fromMap((value as Map).cast<String, dynamic>())),
+      hooks: pulumi.Input.decodeList<GetLifecycleHooksHook>(
+        map['hooks']!,
+        (value) => GetLifecycleHooksHook.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      scalingGroupId: map['scalingGroupId'] == null ? null : map['scalingGroupId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      scalingGroupId: (() {
+        final guardedValue = map['scalingGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

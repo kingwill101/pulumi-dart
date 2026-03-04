@@ -3,16 +3,15 @@ enum ExternalAccess {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ExternalAccess(this.value);
-  final String value;
+  const ExternalAccess(this.wireValue);
+  final String wireValue;
 
   static ExternalAccess fromValue(String value) {
     for (final item in ExternalAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExternalAccess value: $value');
   }
 }
-

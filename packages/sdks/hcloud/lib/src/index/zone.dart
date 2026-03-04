@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zone_args.dart';
 import 'zone_authoritative_nameservers.dart';
-import 'zone_primary_nameserver.dart';
 import 'zone_state.dart';
 
 /// Provides a Hetzner Cloud Zone resource.
@@ -21,19 +20,27 @@ import 'zone_state.dart';
 /// ```
 class Zone extends pulumi.CustomResource {
   /// Authoritative nameservers of the Zone.
-  late final pulumi.Output<ZoneAuthoritativeNameservers> authoritativeNameservers;
+  late final pulumi.Output<ZoneAuthoritativeNameservers>
+  authoritativeNameservers;
+
   /// Whether delete protection is enabled.
   late final pulumi.Output<bool> deleteProtection;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   late final pulumi.Output<Map<String, String>> labels;
+
   /// Mode of the Zone.
   late final pulumi.Output<String> mode;
+
   /// Name of the Zone.
   late final pulumi.Output<String> name;
+
   /// Primary nameservers of the Zone. Forbidden when mode is primary and required when mode is secondary.
-  late final pulumi.Output<List<ZonePrimaryNameserver>> primaryNameservers;
+  late final pulumi.Output<List<Map<String, dynamic>>> primaryNameservers;
+
   /// Registrar of the Zone.
   late final pulumi.Output<String> registrar;
+
   /// Default Time To Live (TTL) of the Zone.
   late final pulumi.Output<int> ttl;
 
@@ -41,32 +48,29 @@ class Zone extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Zone]. {@macro pulumi_index_zone_zone_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Zone(
-    String name, {
-    ZoneArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'hcloud:index/zone:Zone',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>('authoritativeNameservers');
-    this.deleteProtection = registerOutput<bool>('deleteProtection');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.mode = registerOutput<String>('mode');
+  Zone(String name, {ZoneArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'hcloud:index/zone:Zone',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>(
+      'authoritativeNameservers',
+    );
+    deleteProtection = registerOutput<bool>('deleteProtection');
+    labels = registerOutput<Map<String, String>>('labels');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.primaryNameservers = registerOutput<List<ZonePrimaryNameserver>>('primaryNameservers');
-    this.registrar = registerOutput<String>('registrar');
-    this.ttl = registerOutput<int>('ttl');
+    primaryNameservers = registerOutput<List<Map<String, dynamic>>>(
+      'primaryNameservers',
+    );
+    registrar = registerOutput<String>('registrar');
+    ttl = registerOutput<int>('ttl');
   }
 
   /// Gets an existing [Zone] resource's state with the given [name] and [id].
-  static Zone get(
-    String name,
-    pulumi.Input<String> id, {
-    ZoneState? state,
-  }) {
+  static Zone get(String name, pulumi.Input<String> id, {ZoneState? state}) {
     return Zone._get(
       name,
       state: state?.toMap(),
@@ -79,18 +83,22 @@ class Zone extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/zone:Zone',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>('authoritativeNameservers');
-    this.deleteProtection = registerOutput<bool>('deleteProtection');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.mode = registerOutput<String>('mode');
+         'hcloud:index/zone:Zone',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>(
+      'authoritativeNameservers',
+    );
+    deleteProtection = registerOutput<bool>('deleteProtection');
+    labels = registerOutput<Map<String, String>>('labels');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.primaryNameservers = registerOutput<List<ZonePrimaryNameserver>>('primaryNameservers');
-    this.registrar = registerOutput<String>('registrar');
-    this.ttl = registerOutput<int>('ttl');
+    primaryNameservers = registerOutput<List<Map<String, dynamic>>>(
+      'primaryNameservers',
+    );
+    registrar = registerOutput<String>('registrar');
+    ttl = registerOutput<int>('ttl');
   }
 }

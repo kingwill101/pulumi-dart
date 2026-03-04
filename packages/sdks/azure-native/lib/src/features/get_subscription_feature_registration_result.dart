@@ -6,11 +6,14 @@ import 'subscription_feature_registration_response_properties.dart';
 class GetSubscriptionFeatureRegistrationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Azure resource Id.
   final String id;
+
   /// Azure resource name.
   final String name;
   final SubscriptionFeatureRegistrationResponseProperties properties;
+
   /// Azure resource type.
   final String type;
 
@@ -38,14 +41,17 @@ class GetSubscriptionFeatureRegistrationResult {
     };
   }
 
-  factory GetSubscriptionFeatureRegistrationResult.fromMap(Map<String, dynamic> map) {
+  factory GetSubscriptionFeatureRegistrationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSubscriptionFeatureRegistrationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: SubscriptionFeatureRegistrationResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: SubscriptionFeatureRegistrationResponseProperties.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

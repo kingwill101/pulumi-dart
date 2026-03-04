@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceNetworkingResponse {
   /// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
   final pulumi.Input<String> deployment;
+
   /// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
   final pulumi.Input<bool> disablePodOverprovisioning;
+
   /// Name of the Kubernetes Service.
   final pulumi.Input<String> service;
 
@@ -31,10 +33,11 @@ class ServiceNetworkingResponse {
 
   factory ServiceNetworkingResponse.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkingResponse(
-      deployment: (map['deployment'] as String).input(),
-      disablePodOverprovisioning: (map['disablePodOverprovisioning'] as bool).input(),
-      service: (map['service'] as String).input(),
+      deployment: pulumi.Input.fromValue(map['deployment'] as String),
+      disablePodOverprovisioning: pulumi.Input.fromValue(
+        map['disablePodOverprovisioning'] as bool,
+      ),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

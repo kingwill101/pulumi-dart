@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTaskSpecContainerSpecDnsConfig {
   /// The IP addresses of the name servers
   final pulumi.Input<List<String>> nameservers;
+
   /// A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.)
   final pulumi.Input<List<String>>? options;
+
   /// A search list for host-name lookup
   final pulumi.Input<List<String>>? searches;
 
@@ -28,12 +30,23 @@ class ServiceTaskSpecContainerSpecDnsConfig {
     };
   }
 
-  factory ServiceTaskSpecContainerSpecDnsConfig.fromMap(Map<String, dynamic> map) {
+  factory ServiceTaskSpecContainerSpecDnsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTaskSpecContainerSpecDnsConfig(
-      nameservers: ((map['nameservers'] as List).cast<String>()).input(),
-      options: map['options'] == null ? null : ((map['options']! as List).cast<String>()).input(),
-      searches: map['searches'] == null ? null : ((map['searches']! as List).cast<String>()).input(),
+      nameservers: pulumi.Input.fromValue(
+        (map['nameservers'] as List).cast<String>(),
+      ),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      searches: (() {
+        final guardedValue = map['searches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

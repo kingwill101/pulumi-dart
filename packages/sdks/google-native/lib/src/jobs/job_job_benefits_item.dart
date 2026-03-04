@@ -12,16 +12,15 @@ enum JobJobBenefitsItem {
   vacation("VACATION"),
   vision("VISION");
 
-  const JobJobBenefitsItem(this.value);
-  final String value;
+  const JobJobBenefitsItem(this.wireValue);
+  final String wireValue;
 
   static JobJobBenefitsItem fromValue(String value) {
     for (final item in JobJobBenefitsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobJobBenefitsItem value: $value');
   }
 }
-

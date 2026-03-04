@@ -1145,46 +1145,67 @@ import 'system_data_response.dart';
 class NamespaceDevice extends pulumi.CustomResource {
   /// A set of key-value pairs that contain custom attributes set by the customer.
   late final pulumi.Output<dynamic> attributes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Reference to a device. Populated only if the device had been created from discovery flow. Discovered device name must be provided.
   late final pulumi.Output<String?> discoveredDeviceRef;
+
   /// Indicates if the resource is enabled or not.
   late final pulumi.Output<bool?> enabled;
+
   /// Property bag containing the device's unassigned and assigned endpoints.
   late final pulumi.Output<MessagingEndpointsResponse?> endpoints;
+
   /// Resource Tag.
   late final pulumi.Output<String> etag;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The Device ID provided by the customer.
   late final pulumi.Output<String?> externalDeviceId;
+
   /// A timestamp (in UTC) that is updated each time the resource is modified.
   late final pulumi.Output<String> lastTransitionTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Device manufacturer.
   late final pulumi.Output<String?> manufacturer;
+
   /// Device model.
   late final pulumi.Output<String?> model;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Device operating system.
   late final pulumi.Output<String?> operatingSystem;
+
   /// Device operating system version.
   late final pulumi.Output<String?> operatingSystemVersion;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Device status updates.
   late final pulumi.Output<DeviceStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A unique identifier for the device.
   late final pulumi.Output<String> uuid;
+
   /// An integer that is incremented each time the resource is modified.
   late final pulumi.Output<double> version;
 
@@ -1197,32 +1218,34 @@ class NamespaceDevice extends pulumi.CustomResource {
     NamespaceDeviceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceregistry:NamespaceDevice',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attributes = registerOutput<dynamic>('attributes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.discoveredDeviceRef = registerOutput<String?>('discoveredDeviceRef');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.endpoints = registerOutput<MessagingEndpointsResponse?>('endpoints');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.externalDeviceId = registerOutput<String?>('externalDeviceId');
-    this.lastTransitionTime = registerOutput<String>('lastTransitionTime');
-    this.location = registerOutput<String>('location');
-    this.manufacturer = registerOutput<String?>('manufacturer');
-    this.model = registerOutput<String?>('model');
+         'azure-native:deviceregistry:NamespaceDevice',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attributes = registerOutput<dynamic>('attributes');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoveredDeviceRef = registerOutput<String?>('discoveredDeviceRef');
+    enabled = registerOutput<bool?>('enabled');
+    endpoints = registerOutput<MessagingEndpointsResponse?>('endpoints');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    externalDeviceId = registerOutput<String?>('externalDeviceId');
+    lastTransitionTime = registerOutput<String>('lastTransitionTime');
+    location = registerOutput<String>('location');
+    manufacturer = registerOutput<String?>('manufacturer');
+    model = registerOutput<String?>('model');
     this.name = registerOutput<String>('name');
-    this.operatingSystem = registerOutput<String?>('operatingSystem');
-    this.operatingSystemVersion = registerOutput<String?>('operatingSystemVersion');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<DeviceStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
-    this.version = registerOutput<double>('version');
+    operatingSystem = registerOutput<String?>('operatingSystem');
+    operatingSystemVersion = registerOutput<String?>('operatingSystemVersion');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<DeviceStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    version = registerOutput<double>('version');
   }
 }

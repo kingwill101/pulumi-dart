@@ -6,6 +6,7 @@ class PlanWorkflowStepEcsCapacityIncreaseConfigService {
   final pulumi.Input<String> clusterArn;
   final pulumi.Input<String>? crossAccountRole;
   final pulumi.Input<String>? externalId;
+
   /// ARN of the ECS service.
   final pulumi.Input<String> serviceArn;
 
@@ -30,13 +31,22 @@ class PlanWorkflowStepEcsCapacityIncreaseConfigService {
     };
   }
 
-  factory PlanWorkflowStepEcsCapacityIncreaseConfigService.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepEcsCapacityIncreaseConfigService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepEcsCapacityIncreaseConfigService(
-      clusterArn: (map['clusterArn'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
-      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
-      serviceArn: (map['serviceArn'] as String).input(),
+      clusterArn: pulumi.Input.fromValue(map['clusterArn'] as String),
+      crossAccountRole: (() {
+        final guardedValue = map['crossAccountRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceArn: pulumi.Input.fromValue(map['serviceArn'] as String),
     );
   }
 }
-

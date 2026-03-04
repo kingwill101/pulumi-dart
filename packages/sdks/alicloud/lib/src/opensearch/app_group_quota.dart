@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppGroupQuota {
   /// Computing resources. Unit: LCU.
   final pulumi.Input<int> computeResource;
+
   /// Storage Size. Unit: GB.
   final pulumi.Input<int> docSize;
+
   /// Search request. Unit: times/second.
   final pulumi.Input<int>? qps;
+
   /// Specification. Valid values:
   /// * `opensearch.share.junior`: Entry-level.
   /// * `opensearch.share.common`: Shared universal.
@@ -42,11 +45,14 @@ class AppGroupQuota {
 
   factory AppGroupQuota.fromMap(Map<String, dynamic> map) {
     return AppGroupQuota(
-      computeResource: (map['computeResource'] as int).input(),
-      docSize: (map['docSize'] as int).input(),
-      qps: map['qps'] == null ? null : (map['qps']! as int).input(),
-      spec: (map['spec'] as String).input(),
+      computeResource: pulumi.Input.fromValue(map['computeResource'] as int),
+      docSize: pulumi.Input.fromValue(map['docSize'] as int),
+      qps: (() {
+        final guardedValue = map['qps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      spec: pulumi.Input.fromValue(map['spec'] as String),
     );
   }
 }
-

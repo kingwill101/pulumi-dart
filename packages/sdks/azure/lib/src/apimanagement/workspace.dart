@@ -4,7 +4,7 @@ import 'workspace_state.dart';
 
 /// Manages an API Management Workspace.
 ///
-/// > **Note:** This resource is currently available only when using the Classic Premium SKU of `azure.apimanagement.Service`. For more details, refer to [Federated API Management with Workspaces](https://learn.microsoft.com/en-us/azure/api-management/workspaces-overview).
+/// &gt; **Note:** This resource is currently available only when using the Classic Premium SKU of `azure.apimanagement.Service`. For more details, refer to [Federated API Management with Workspaces](https://learn.microsoft.com/en-us/azure/api-management/workspaces-overview).
 ///
 /// ## Example Usage
 ///
@@ -201,7 +201,7 @@ import 'workspace_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -216,10 +216,13 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Service in which the API Management Workspace should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The description of the API Management Workspace.
   late final pulumi.Output<String?> description;
+
   /// The display name of the API Management Workspace.
   late final pulumi.Output<String> displayName;
+
   /// Specifies the name which should be used for this API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
 
@@ -232,14 +235,14 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
   }
 
@@ -261,14 +264,14 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
   }
 }

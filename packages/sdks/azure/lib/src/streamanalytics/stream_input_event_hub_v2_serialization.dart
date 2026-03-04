@@ -5,12 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamInputEventHubV2Serialization {
   /// The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
   ///
-  /// > **Note:** This is required when `type` is set to `Csv` or `Json`.
+  /// &gt; **Note:** This is required when `type` is set to `Csv` or `Json`.
   final pulumi.Input<String>? encoding;
+
   /// The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
   ///
-  /// > **Note:** This is required when `type` is set to `Csv`.
+  /// &gt; **Note:** This is required when `type` is set to `Csv`.
   final pulumi.Input<String>? fieldDelimiter;
+
   /// The serialization format used for incoming data streams. Possible values are `Avro`, `Csv` and `Json`.
   final pulumi.Input<String> type;
 
@@ -34,10 +36,17 @@ class StreamInputEventHubV2Serialization {
 
   factory StreamInputEventHubV2Serialization.fromMap(Map<String, dynamic> map) {
     return StreamInputEventHubV2Serialization(
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
-      type: (map['type'] as String).input(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fieldDelimiter: (() {
+        final guardedValue = map['fieldDelimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

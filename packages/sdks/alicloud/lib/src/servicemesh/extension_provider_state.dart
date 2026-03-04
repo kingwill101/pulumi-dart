@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionProviderState {
   /// The config of the Service Mesh Extension Provider. The `config` format is json.
   final pulumi.Input<String>? config;
+
   /// The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
   final pulumi.Input<String>? extensionProviderName;
+
   /// The ID of the Service Mesh.
   final pulumi.Input<String>? serviceMeshId;
+
   /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
   final pulumi.Input<String>? type;
 
@@ -36,11 +39,26 @@ class ExtensionProviderState {
 
   factory ExtensionProviderState.fromMap(Map<String, dynamic> map) {
     return ExtensionProviderState(
-      config: map['config'] == null ? null : (map['config']! as String).input(),
-      extensionProviderName: map['extensionProviderName'] == null ? null : (map['extensionProviderName']! as String).input(),
-      serviceMeshId: map['serviceMeshId'] == null ? null : (map['serviceMeshId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extensionProviderName: (() {
+        final guardedValue = map['extensionProviderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceMeshId: (() {
+        final guardedValue = map['serviceMeshId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

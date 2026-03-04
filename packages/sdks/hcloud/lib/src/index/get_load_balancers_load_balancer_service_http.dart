@@ -33,14 +33,17 @@ class GetLoadBalancersLoadBalancerServiceHttp {
     };
   }
 
-  factory GetLoadBalancersLoadBalancerServiceHttp.fromMap(Map<String, dynamic> map) {
+  factory GetLoadBalancersLoadBalancerServiceHttp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLoadBalancersLoadBalancerServiceHttp(
-      certificates: ((map['certificates'] as List).cast<String>()).input(),
-      cookieLifetime: (map['cookieLifetime'] as int).input(),
-      cookieName: (map['cookieName'] as String).input(),
-      redirectHttp: (map['redirectHttp'] as bool).input(),
-      stickySessions: (map['stickySessions'] as bool).input(),
+      certificates: pulumi.Input.fromValue(
+        (map['certificates'] as List).cast<String>(),
+      ),
+      cookieLifetime: pulumi.Input.fromValue(map['cookieLifetime'] as int),
+      cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
+      redirectHttp: pulumi.Input.fromValue(map['redirectHttp'] as bool),
+      stickySessions: pulumi.Input.fromValue(map['stickySessions'] as bool),
     );
   }
 }
-

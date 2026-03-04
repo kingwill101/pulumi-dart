@@ -4,16 +4,15 @@ enum DestinationProtocol {
   http("Http"),
   https("Https");
 
-  const DestinationProtocol(this.value);
-  final String value;
+  const DestinationProtocol(this.wireValue);
+  final String wireValue;
 
   static DestinationProtocol fromValue(String value) {
     for (final item in DestinationProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DestinationProtocol value: $value');
   }
 }
-

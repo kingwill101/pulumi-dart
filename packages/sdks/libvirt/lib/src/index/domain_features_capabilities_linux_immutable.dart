@@ -8,20 +8,21 @@ class DomainFeaturesCapabilitiesLinuxImmutable {
 
   /// Creates a new [DomainFeaturesCapabilitiesLinuxImmutable].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesLinuxImmutable({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesLinuxImmutable({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
-  factory DomainFeaturesCapabilitiesLinuxImmutable.fromMap(Map<String, dynamic> map) {
+  factory DomainFeaturesCapabilitiesLinuxImmutable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainFeaturesCapabilitiesLinuxImmutable(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

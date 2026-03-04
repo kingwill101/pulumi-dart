@@ -15,17 +15,15 @@ class InsightFiltersResourceAwsIamAccessKeyStatus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
-  factory InsightFiltersResourceAwsIamAccessKeyStatus.fromMap(Map<String, dynamic> map) {
+  factory InsightFiltersResourceAwsIamAccessKeyStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightFiltersResourceAwsIamAccessKeyStatus(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

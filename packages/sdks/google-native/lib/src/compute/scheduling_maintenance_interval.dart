@@ -4,16 +4,15 @@ enum SchedulingMaintenanceInterval {
   periodic("PERIODIC"),
   recurrent("RECURRENT");
 
-  const SchedulingMaintenanceInterval(this.value);
-  final String value;
+  const SchedulingMaintenanceInterval(this.wireValue);
+  final String wireValue;
 
   static SchedulingMaintenanceInterval fromValue(String value) {
     for (final item in SchedulingMaintenanceInterval.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SchedulingMaintenanceInterval value: $value');
   }
 }
-

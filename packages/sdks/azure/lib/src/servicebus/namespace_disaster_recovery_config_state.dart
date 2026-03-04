@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceDisasterRecoveryConfigState {
   /// The Shared access policies used to access the connection string for the alias.
   final pulumi.Input<String>? aliasAuthorizationRuleId;
+
   /// The primary access key for the authorization rule `RootManageSharedAccessKey`.
   final pulumi.Input<String>? defaultPrimaryKey;
+
   /// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   final pulumi.Input<String>? defaultSecondaryKey;
+
   /// Specifies the name of the Disaster Recovery Config. This is the alias DNS name that will be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Service Bus Namespace to replicate to.
   final pulumi.Input<String>? partnerNamespaceId;
+
   /// The alias Primary Connection String for the ServiceBus Namespace.
   final pulumi.Input<String>? primaryConnectionStringAlias;
+
   /// The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? primaryNamespaceId;
+
   /// The alias Secondary Connection String for the ServiceBus Namespace
   final pulumi.Input<String>? secondaryConnectionStringAlias;
 
@@ -54,17 +61,50 @@ class NamespaceDisasterRecoveryConfigState {
     };
   }
 
-  factory NamespaceDisasterRecoveryConfigState.fromMap(Map<String, dynamic> map) {
+  factory NamespaceDisasterRecoveryConfigState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NamespaceDisasterRecoveryConfigState(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId']! as String).input(),
-      defaultPrimaryKey: map['defaultPrimaryKey'] == null ? null : (map['defaultPrimaryKey']! as String).input(),
-      defaultSecondaryKey: map['defaultSecondaryKey'] == null ? null : (map['defaultSecondaryKey']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId']! as String).input(),
-      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] == null ? null : (map['primaryConnectionStringAlias']! as String).input(),
-      primaryNamespaceId: map['primaryNamespaceId'] == null ? null : (map['primaryNamespaceId']! as String).input(),
-      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] == null ? null : (map['secondaryConnectionStringAlias']! as String).input(),
+      aliasAuthorizationRuleId: (() {
+        final guardedValue = map['aliasAuthorizationRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultPrimaryKey: (() {
+        final guardedValue = map['defaultPrimaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultSecondaryKey: (() {
+        final guardedValue = map['defaultSecondaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerNamespaceId: (() {
+        final guardedValue = map['partnerNamespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryConnectionStringAlias: (() {
+        final guardedValue = map['primaryConnectionStringAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryNamespaceId: (() {
+        final guardedValue = map['primaryNamespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryConnectionStringAlias: (() {
+        final guardedValue = map['secondaryConnectionStringAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

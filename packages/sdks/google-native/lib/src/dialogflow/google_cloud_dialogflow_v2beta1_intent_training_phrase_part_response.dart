@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse {
   /// Optional. The parameter name for the value extracted from the annotated part of the example. This field is required for annotated parts of the training phrase.
   final pulumi.Input<String> alias;
+
   /// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
   final pulumi.Input<String> entityType;
+
   /// The text for this part.
   final pulumi.Input<String> text;
+
   /// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
   final pulumi.Input<bool> userDefined;
 
@@ -34,13 +37,14 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse(
-      alias: (map['alias'] as String).input(),
-      entityType: (map['entityType'] as String).input(),
-      text: (map['text'] as String).input(),
-      userDefined: (map['userDefined'] as bool).input(),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      entityType: pulumi.Input.fromValue(map['entityType'] as String),
+      text: pulumi.Input.fromValue(map['text'] as String),
+      userDefined: pulumi.Input.fromValue(map['userDefined'] as bool),
     );
   }
 }
-

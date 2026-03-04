@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listSignalRKeys.
 class ListSignalRKeysResult {
   /// Connection string constructed via the primaryKey
   final String? primaryConnectionString;
+
   /// The primary access key.
   final String? primaryKey;
+
   /// Connection string constructed via the secondaryKey
   final String? secondaryConnectionString;
+
   /// The secondary access key.
   final String? secondaryKey;
 
@@ -35,11 +37,26 @@ class ListSignalRKeysResult {
 
   factory ListSignalRKeysResult.fromMap(Map<String, dynamic> map) {
     return ListSignalRKeysResult(
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : map['primaryConnectionString']! as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : map['secondaryConnectionString']! as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
+      primaryConnectionString: (() {
+        final guardedValue = map['primaryConnectionString'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secondaryConnectionString: (() {
+        final guardedValue = map['secondaryConnectionString'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

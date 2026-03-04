@@ -1,23 +1,22 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_group_args.dart';
-import 'server_group_server.dart';
 import 'server_group_state.dart';
 
 /// Provides a Load Balancer Virtual Backend Server Group resource.
 ///
 /// For information about Load Balancer Virtual Backend Server Group and how to use it, see [What is Virtual Backend Server Group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
 ///
-/// > **NOTE:** Available since v1.6.0.
+/// &gt; **NOTE:** Available since v1.6.0.
 ///
-/// > **NOTE:** One ECS instance can be added into multiple virtual server groups.
+/// &gt; **NOTE:** One ECS instance can be added into multiple virtual server groups.
 ///
-/// > **NOTE:** One virtual server group can be attached with multiple listeners in one load balancer.
+/// &gt; **NOTE:** One virtual server group can be attached with multiple listeners in one load balancer.
 ///
-/// > **NOTE:** One Classic and Internet load balancer, its virtual server group can add Classic and VPC ECS instances.
+/// &gt; **NOTE:** One Classic and Internet load balancer, its virtual server group can add Classic and VPC ECS instances.
 ///
-/// > **NOTE:** One Classic and Intranet load balancer, its virtual server group can only add Classic ECS instances.
+/// &gt; **NOTE:** One Classic and Intranet load balancer, its virtual server group can only add Classic ECS instances.
 ///
-/// > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
+/// &gt; **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
 ///
 /// ## Example Usage
 ///
@@ -297,13 +296,17 @@ import 'server_group_state.dart';
 class ServerGroup extends pulumi.CustomResource {
   /// Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
   late final pulumi.Output<bool?> deleteProtectionValidation;
+
   /// The ID of the Server Load Balancer (SLB) instance.
   late final pulumi.Output<String> loadBalancerId;
+
   /// The name of the vServer group. Default value: `tf-server-group`.
   late final pulumi.Output<String> name;
+
   /// The list of backend servers to be added. See `servers` below.
-  /// > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
-  late final pulumi.Output<List<ServerGroupServer>> servers;
+  /// &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
+  late final pulumi.Output<List<Map<String, dynamic>>> servers;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -316,16 +319,18 @@ class ServerGroup extends pulumi.CustomResource {
     ServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/serverGroup:ServerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
+         'alicloud:slb/serverGroup:ServerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
-    this.servers = registerOutput<List<ServerGroupServer>>('servers');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    servers = registerOutput<List<Map<String, dynamic>>>('servers');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ServerGroup] resource's state with the given [name] and [id].
@@ -346,15 +351,17 @@ class ServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/serverGroup:ServerGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
+         'alicloud:slb/serverGroup:ServerGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    loadBalancerId = registerOutput<String>('loadBalancerId');
     this.name = registerOutput<String>('name');
-    this.servers = registerOutput<List<ServerGroupServer>>('servers');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    servers = registerOutput<List<Map<String, dynamic>>>('servers');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -10,20 +10,27 @@ class SignInBehavior {
 
   /// Creates a new [SignInBehavior].
   /// [redirectCondition] When to redirect sign-ins to the IdP.
-  SignInBehavior({
-    this.redirectCondition,
-  });
+  SignInBehavior({this.redirectCondition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'redirectCondition': ?pulumi.Input.mapOptionalInputValue<SignInBehaviorRedirectCondition, String>(redirectCondition, (value) => value.value),
+      'redirectCondition':
+          ?pulumi.Input.mapOptionalInputValue<
+            SignInBehaviorRedirectCondition,
+            String
+          >(redirectCondition, (value) => value.wireValue),
     };
   }
 
   factory SignInBehavior.fromMap(Map<String, dynamic> map) {
     return SignInBehavior(
-      redirectCondition: map['redirectCondition'] == null ? null : (SignInBehaviorRedirectCondition.fromValue(map['redirectCondition']! as String)).input(),
+      redirectCondition: (() {
+        final guardedValue = map['redirectCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SignInBehaviorRedirectCondition.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

@@ -40,7 +40,10 @@ class GetStoresResult {
       'names': names,
       'outputFile': ?outputFile,
       'project': project,
-      'stores': pulumi.Input.encodeList<GetStoresStore, Map<String, dynamic>>(stores, (value) => value.toMap()),
+      'stores': pulumi.Input.encodeList<GetStoresStore, Map<String, dynamic>>(
+        stores,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -48,12 +51,23 @@ class GetStoresResult {
     return GetStoresResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       project: map['project'] as String,
-      stores: pulumi.Input.decodeList<GetStoresStore>(map['stores'], (value) => GetStoresStore.fromMap((value as Map).cast<String, dynamic>())),
+      stores: pulumi.Input.decodeList<GetStoresStore>(
+        map['stores']!,
+        (value) =>
+            GetStoresStore.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

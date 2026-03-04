@@ -1,5 +1,3 @@
-library module_dns;
-
 export 'dns/aaaa_record.dart';
 export 'dns/aaaa_record_response.dart';
 export 'dns/arecord.dart';

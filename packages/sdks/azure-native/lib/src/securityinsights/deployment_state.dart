@@ -5,16 +5,15 @@ enum DeploymentState {
   valueQueued("Queued"),
   valueCanceling("Canceling");
 
-  const DeploymentState(this.value);
-  final String value;
+  const DeploymentState(this.wireValue);
+  final String wireValue;
 
   static DeploymentState fromValue(String value) {
     for (final item in DeploymentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeploymentState value: $value');
   }
 }
-

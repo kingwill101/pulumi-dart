@@ -8,20 +8,17 @@ class OrganizationConfigurationDatasourcesS3Logs {
 
   /// Creates a new [OrganizationConfigurationDatasourcesS3Logs].
   /// [autoEnable] Set to `true` if you want S3 data event logs to be automatically enabled for new members of the organization. Default: `false`
-  OrganizationConfigurationDatasourcesS3Logs({
-    required this.autoEnable,
-  });
+  OrganizationConfigurationDatasourcesS3Logs({required this.autoEnable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'autoEnable': autoEnable,
-    };
+    return <String, dynamic>{'autoEnable': autoEnable};
   }
 
-  factory OrganizationConfigurationDatasourcesS3Logs.fromMap(Map<String, dynamic> map) {
+  factory OrganizationConfigurationDatasourcesS3Logs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationConfigurationDatasourcesS3Logs(
-      autoEnable: (map['autoEnable'] as bool).input(),
+      autoEnable: pulumi.Input.fromValue(map['autoEnable'] as bool),
     );
   }
 }
-

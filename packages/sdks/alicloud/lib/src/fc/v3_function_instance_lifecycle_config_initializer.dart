@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V3FunctionInstanceLifecycleConfigInitializer {
   final pulumi.Input<List<String>>? commands;
+
   /// Function Handler: the call entry for the function compute system to run your function.
   final pulumi.Input<String>? handler;
+
   /// The maximum running time of the function, in seconds.
   final pulumi.Input<int>? timeout;
 
@@ -27,12 +29,25 @@ class V3FunctionInstanceLifecycleConfigInitializer {
     };
   }
 
-  factory V3FunctionInstanceLifecycleConfigInitializer.fromMap(Map<String, dynamic> map) {
+  factory V3FunctionInstanceLifecycleConfigInitializer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V3FunctionInstanceLifecycleConfigInitializer(
-      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
-      handler: map['handler'] == null ? null : (map['handler']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      commands: (() {
+        final guardedValue = map['commands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      handler: (() {
+        final guardedValue = map['handler'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

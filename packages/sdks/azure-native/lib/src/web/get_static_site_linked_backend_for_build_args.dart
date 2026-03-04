@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticSiteLinkedBackendForBuildArgs {
   /// The stage site identifier
   final pulumi.Input<String> environmentName;
+
   /// Name of the linked backend that should be retrieved
   final pulumi.Input<String> linkedBackendName;
+
   /// Name of the static site
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,18 @@ class GetStaticSiteLinkedBackendForBuildArgs {
     };
   }
 
-  factory GetStaticSiteLinkedBackendForBuildArgs.fromMap(Map<String, dynamic> map) {
+  factory GetStaticSiteLinkedBackendForBuildArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStaticSiteLinkedBackendForBuildArgs(
-      environmentName: (map['environmentName'] as String).input(),
-      linkedBackendName: (map['linkedBackendName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      linkedBackendName: pulumi.Input.fromValue(
+        map['linkedBackendName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

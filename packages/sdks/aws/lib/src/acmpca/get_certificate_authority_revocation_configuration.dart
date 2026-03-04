@@ -6,8 +6,14 @@ import 'get_certificate_authority_revocation_configuration_ocsp_configuration.da
 
 class GetCertificateAuthorityRevocationConfiguration {
   /// Nested attribute containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority.
-  final pulumi.Input<List<GetCertificateAuthorityRevocationConfigurationCrlConfiguration>> crlConfigurations;
-  final pulumi.Input<List<GetCertificateAuthorityRevocationConfigurationOcspConfiguration>> ocspConfigurations;
+  final pulumi.Input<
+    List<GetCertificateAuthorityRevocationConfigurationCrlConfiguration>
+  >
+  crlConfigurations;
+  final pulumi.Input<
+    List<GetCertificateAuthorityRevocationConfigurationOcspConfiguration>
+  >
+  ocspConfigurations;
 
   /// Creates a new [GetCertificateAuthorityRevocationConfiguration].
   /// [crlConfigurations] Nested attribute containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority.
@@ -19,16 +25,63 @@ class GetCertificateAuthorityRevocationConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crlConfigurations': pulumi.Input.mapInputValue<List<GetCertificateAuthorityRevocationConfigurationCrlConfiguration>, List<Map<String, dynamic>>>(crlConfigurations, (value) => pulumi.Input.encodeList<GetCertificateAuthorityRevocationConfigurationCrlConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ocspConfigurations': pulumi.Input.mapInputValue<List<GetCertificateAuthorityRevocationConfigurationOcspConfiguration>, List<Map<String, dynamic>>>(ocspConfigurations, (value) => pulumi.Input.encodeList<GetCertificateAuthorityRevocationConfigurationOcspConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'crlConfigurations':
+          pulumi.Input.mapInputValue<
+            List<
+              GetCertificateAuthorityRevocationConfigurationCrlConfiguration
+            >,
+            List<Map<String, dynamic>>
+          >(
+            crlConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCertificateAuthorityRevocationConfigurationCrlConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ocspConfigurations':
+          pulumi.Input.mapInputValue<
+            List<
+              GetCertificateAuthorityRevocationConfigurationOcspConfiguration
+            >,
+            List<Map<String, dynamic>>
+          >(
+            ocspConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCertificateAuthorityRevocationConfigurationOcspConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetCertificateAuthorityRevocationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateAuthorityRevocationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateAuthorityRevocationConfiguration(
-      crlConfigurations: (pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfigurationCrlConfiguration>(map['crlConfigurations']!, (value) => GetCertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ocspConfigurations: (pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfigurationOcspConfiguration>(map['ocspConfigurations']!, (value) => GetCertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crlConfigurations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetCertificateAuthorityRevocationConfigurationCrlConfiguration
+        >(
+          map['crlConfigurations']!,
+          (value) =>
+              GetCertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      ocspConfigurations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetCertificateAuthorityRevocationConfigurationOcspConfiguration
+        >(
+          map['ocspConfigurations']!,
+          (value) =>
+              GetCertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

@@ -8,11 +8,14 @@ class PerInstanceConfigPreservedStateExternalIp {
   /// Default value is `NEVER`.
   /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
   final pulumi.Input<String>? autoDelete;
+
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> interfaceName;
+
   /// Ip address representation
   /// Structure is documented below.
-  final pulumi.Input<PerInstanceConfigPreservedStateExternalIpIpAddress>? ipAddress;
+  final pulumi.Input<PerInstanceConfigPreservedStateExternalIpIpAddress>?
+  ipAddress;
 
   /// Creates a new [PerInstanceConfigPreservedStateExternalIp].
   /// [autoDelete] These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
@@ -28,16 +31,33 @@ class PerInstanceConfigPreservedStateExternalIp {
     return <String, dynamic>{
       'autoDelete': ?autoDelete,
       'interfaceName': interfaceName,
-      'ipAddress': ?pulumi.Input.mapOptionalInputValue<PerInstanceConfigPreservedStateExternalIpIpAddress, Map<String, dynamic>>(ipAddress, (value) => value.toMap()),
+      'ipAddress':
+          ?pulumi.Input.mapOptionalInputValue<
+            PerInstanceConfigPreservedStateExternalIpIpAddress,
+            Map<String, dynamic>
+          >(ipAddress, (value) => value.toMap()),
     };
   }
 
-  factory PerInstanceConfigPreservedStateExternalIp.fromMap(Map<String, dynamic> map) {
+  factory PerInstanceConfigPreservedStateExternalIp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PerInstanceConfigPreservedStateExternalIp(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as String).input(),
-      interfaceName: (map['interfaceName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (PerInstanceConfigPreservedStateExternalIpIpAddress.fromMap((map['ipAddress']! as Map).cast<String, dynamic>())).input(),
+      autoDelete: (() {
+        final guardedValue = map['autoDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interfaceName: pulumi.Input.fromValue(map['interfaceName'] as String),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PerInstanceConfigPreservedStateExternalIpIpAddress.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

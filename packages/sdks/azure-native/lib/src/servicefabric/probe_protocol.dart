@@ -4,16 +4,15 @@ enum ProbeProtocol {
   valueHttp("http"),
   valueHttps("https");
 
-  const ProbeProtocol(this.value);
-  final String value;
+  const ProbeProtocol(this.wireValue);
+  final String wireValue;
 
   static ProbeProtocol fromValue(String value) {
     for (final item in ProbeProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProbeProtocol value: $value');
   }
 }
-

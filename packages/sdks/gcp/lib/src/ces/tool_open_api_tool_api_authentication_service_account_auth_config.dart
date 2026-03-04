@@ -10,7 +10,7 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   /// The service account must have the
   /// `roles/iam.serviceAccountTokenCreator` role granted to the
   /// CES service agent
-  /// `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+  /// `service-&lt;PROJECT-NUMBER&gt;@gcp-sa-ces.iam.gserviceaccount.com`.
   final pulumi.Input<String>? serviceAccount;
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig].
@@ -20,15 +20,18 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccount': ?serviceAccount,
-    };
+    return <String, dynamic>{'serviceAccount': ?serviceAccount};
   }
 
-  factory ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

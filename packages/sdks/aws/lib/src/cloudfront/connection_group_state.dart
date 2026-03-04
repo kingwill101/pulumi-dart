@@ -7,26 +7,37 @@ import 'connection_group_timeouts.dart';
 class ConnectionGroupState {
   /// ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
   final pulumi.Input<String>? anycastIpListId;
+
   /// ARN of the connection group.
   final pulumi.Input<String>? arn;
+
   /// Whether the connection group is enabled. Default is `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Current version of the connection group.
   final pulumi.Input<String>? etag;
+
   /// Whether IPv6 is enabled for the connection group. Default is `false`.
   final pulumi.Input<bool>? ipv6Enabled;
+
   /// Whether the connection group is the default connection group for the distribution tenants.
   final pulumi.Input<bool>? isDefault;
+
   /// Date and time when the connection group was last modified.
   final pulumi.Input<String>? lastModifiedTime;
+
   /// Name of the connection group.
   final pulumi.Input<String>? name;
+
   /// The routing endpoint (also known as the DNS name) that is assigned to the connection group, such as d111111abcdef8.cloudfront.net.
   final pulumi.Input<String>? routingEndpoint;
+
   /// Current status of the connection group.
   final pulumi.Input<String>? status;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ConnectionGroupTimeouts>? timeouts;
@@ -78,28 +89,95 @@ class ConnectionGroupState {
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ConnectionGroupTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionGroupTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'waitForDeployment': ?waitForDeployment,
     };
   }
 
   factory ConnectionGroupState.fromMap(Map<String, dynamic> map) {
     return ConnectionGroupState(
-      anycastIpListId: map['anycastIpListId'] == null ? null : ((map['anycastIpListId'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
-      ipv6Enabled: map['ipv6Enabled'] == null ? null : ((map['ipv6Enabled'] as bool).input()).input(),
-      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : ((map['lastModifiedTime'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      routingEndpoint: map['routingEndpoint'] == null ? null : ((map['routingEndpoint'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ConnectionGroupTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      waitForDeployment: map['waitForDeployment'] == null ? null : ((map['waitForDeployment'] as bool).input()).input(),
+      anycastIpListId: (() {
+        final guardedValue = map['anycastIpListId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6Enabled: (() {
+        final guardedValue = map['ipv6Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isDefault: (() {
+        final guardedValue = map['isDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingEndpoint: (() {
+        final guardedValue = map['routingEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionGroupTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      waitForDeployment: (() {
+        final guardedValue = map['waitForDeployment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

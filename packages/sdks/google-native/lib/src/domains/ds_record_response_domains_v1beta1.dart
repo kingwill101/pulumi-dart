@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DsRecordResponseDomainsV1beta1 {
   /// The algorithm used to generate the referenced DNSKEY.
   final pulumi.Input<String> algorithm;
+
   /// The digest generated from the referenced DNSKEY.
   final pulumi.Input<String> digest;
+
   /// The hash function used to generate the digest of the referenced DNSKEY.
   final pulumi.Input<String> digestType;
+
   /// The key tag of the record. Must be set in range 0 -- 65535.
   final pulumi.Input<int> keyTag;
 
@@ -36,11 +39,10 @@ class DsRecordResponseDomainsV1beta1 {
 
   factory DsRecordResponseDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return DsRecordResponseDomainsV1beta1(
-      algorithm: (map['algorithm'] as String).input(),
-      digest: (map['digest'] as String).input(),
-      digestType: (map['digestType'] as String).input(),
-      keyTag: (map['keyTag'] as int).input(),
+      algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
+      digest: pulumi.Input.fromValue(map['digest'] as String),
+      digestType: pulumi.Input.fromValue(map['digestType'] as String),
+      keyTag: pulumi.Input.fromValue(map['keyTag'] as int),
     );
   }
 }
-

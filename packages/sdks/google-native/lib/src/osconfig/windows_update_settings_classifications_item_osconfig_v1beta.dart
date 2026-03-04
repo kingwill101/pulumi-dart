@@ -10,16 +10,20 @@ enum WindowsUpdateSettingsClassificationsItemOsconfigV1beta {
   updateRollup("UPDATE_ROLLUP"),
   update("UPDATE");
 
-  const WindowsUpdateSettingsClassificationsItemOsconfigV1beta(this.value);
-  final String value;
+  const WindowsUpdateSettingsClassificationsItemOsconfigV1beta(this.wireValue);
+  final String wireValue;
 
-  static WindowsUpdateSettingsClassificationsItemOsconfigV1beta fromValue(String value) {
-    for (final item in WindowsUpdateSettingsClassificationsItemOsconfigV1beta.values) {
-      if (item.value == value) {
+  static WindowsUpdateSettingsClassificationsItemOsconfigV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in WindowsUpdateSettingsClassificationsItemOsconfigV1beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WindowsUpdateSettingsClassificationsItemOsconfigV1beta value: $value');
+    throw ArgumentError(
+      'Unknown WindowsUpdateSettingsClassificationsItemOsconfigV1beta value: $value',
+    );
   }
 }
-

@@ -4,7 +4,7 @@ import 'rest_api_policy_state.dart';
 
 /// Provides an API Gateway REST API Policy.
 ///
-/// > **Note:** Amazon API Gateway Version 1 resources are used for creating and deploying REST APIs. To create and deploy WebSocket and HTTP APIs, use Amazon API Gateway Version 2 resources.
+/// &gt; **Note:** Amazon API Gateway Version 1 resources are used for creating and deploying REST APIs. To create and deploy WebSocket and HTTP APIs, use Amazon API Gateway Version 2 resources.
 ///
 /// ## Example Usage
 ///
@@ -287,8 +287,10 @@ import 'rest_api_policy_state.dart';
 class RestApiPolicy extends pulumi.CustomResource {
   /// JSON formatted policy document that controls access to the API Gateway.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the REST API.
   late final pulumi.Output<String> restApiId;
 
@@ -301,14 +303,14 @@ class RestApiPolicy extends pulumi.CustomResource {
     RestApiPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/restApiPolicy:RestApiPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.restApiId = registerOutput<String>('restApiId');
+         'aws:apigateway/restApiPolicy:RestApiPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    restApiId = registerOutput<String>('restApiId');
   }
 
   /// Gets an existing [RestApiPolicy] resource's state with the given [name] and [id].
@@ -329,13 +331,13 @@ class RestApiPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/restApiPolicy:RestApiPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.restApiId = registerOutput<String>('restApiId');
+         'aws:apigateway/restApiPolicy:RestApiPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    restApiId = registerOutput<String>('restApiId');
   }
 }

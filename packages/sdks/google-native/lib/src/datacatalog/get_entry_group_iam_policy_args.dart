@@ -31,10 +31,13 @@ class GetEntryGroupIamPolicyArgs {
 
   factory GetEntryGroupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetEntryGroupIamPolicyArgs(
-      entryGroupId: (map['entryGroupId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      entryGroupId: pulumi.Input.fromValue(map['entryGroupId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

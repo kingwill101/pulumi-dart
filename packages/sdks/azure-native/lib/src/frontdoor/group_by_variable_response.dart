@@ -9,20 +9,15 @@ class GroupByVariableResponse {
 
   /// Creates a new [GroupByVariableResponse].
   /// [variableName] Describes the supported variable for group by
-  GroupByVariableResponse({
-    required this.variableName,
-  });
+  GroupByVariableResponse({required this.variableName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'variableName': variableName,
-    };
+    return <String, dynamic>{'variableName': variableName};
   }
 
   factory GroupByVariableResponse.fromMap(Map<String, dynamic> map) {
     return GroupByVariableResponse(
-      variableName: (map['variableName'] as String).input(),
+      variableName: pulumi.Input.fromValue(map['variableName'] as String),
     );
   }
 }
-

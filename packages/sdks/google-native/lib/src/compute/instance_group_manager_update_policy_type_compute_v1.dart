@@ -3,16 +3,17 @@ enum InstanceGroupManagerUpdatePolicyTypeComputeV1 {
   opportunistic("OPPORTUNISTIC"),
   proactive("PROACTIVE");
 
-  const InstanceGroupManagerUpdatePolicyTypeComputeV1(this.value);
-  final String value;
+  const InstanceGroupManagerUpdatePolicyTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static InstanceGroupManagerUpdatePolicyTypeComputeV1 fromValue(String value) {
     for (final item in InstanceGroupManagerUpdatePolicyTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerUpdatePolicyTypeComputeV1 value: $value',
+    );
   }
 }
-

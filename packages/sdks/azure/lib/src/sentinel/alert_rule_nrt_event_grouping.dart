@@ -8,20 +8,17 @@ class AlertRuleNrtEventGrouping {
 
   /// Creates a new [AlertRuleNrtEventGrouping].
   /// [aggregationMethod] The aggregation type of grouping the events. Possible values are `AlertPerResult` and `SingleAlert`.
-  AlertRuleNrtEventGrouping({
-    required this.aggregationMethod,
-  });
+  AlertRuleNrtEventGrouping({required this.aggregationMethod});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'aggregationMethod': aggregationMethod,
-    };
+    return <String, dynamic>{'aggregationMethod': aggregationMethod};
   }
 
   factory AlertRuleNrtEventGrouping.fromMap(Map<String, dynamic> map) {
     return AlertRuleNrtEventGrouping(
-      aggregationMethod: (map['aggregationMethod'] as String).input(),
+      aggregationMethod: pulumi.Input.fromValue(
+        map['aggregationMethod'] as String,
+      ),
     );
   }
 }
-

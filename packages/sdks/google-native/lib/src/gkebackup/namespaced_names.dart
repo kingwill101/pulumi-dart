@@ -10,20 +10,38 @@ class NamespacedNames {
 
   /// Creates a new [NamespacedNames].
   /// [namespacedNames] Optional. A list of namespaced Kubernetes resources.
-  NamespacedNames({
-    this.namespacedNames,
-  });
+  NamespacedNames({this.namespacedNames});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'namespacedNames': ?pulumi.Input.mapOptionalInputValue<List<NamespacedName>, List<Map<String, dynamic>>>(namespacedNames, (value) => pulumi.Input.encodeList<NamespacedName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'namespacedNames':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamespacedName>,
+            List<Map<String, dynamic>>
+          >(
+            namespacedNames,
+            (value) =>
+                pulumi.Input.encodeList<NamespacedName, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory NamespacedNames.fromMap(Map<String, dynamic> map) {
     return NamespacedNames(
-      namespacedNames: map['namespacedNames'] == null ? null : (pulumi.Input.decodeList<NamespacedName>(map['namespacedNames']!, (value) => NamespacedName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespacedNames: (() {
+        final guardedValue = map['namespacedNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NamespacedName>(
+            guardedValue,
+            (value) =>
+                NamespacedName.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

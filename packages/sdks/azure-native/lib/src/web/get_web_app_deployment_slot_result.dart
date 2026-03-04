@@ -1,34 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWebAppDeploymentSlot.
 class GetWebAppDeploymentSlotResult {
   /// True if deployment is currently active, false if completed and null if not started.
   final bool? active;
+
   /// Who authored the deployment.
   final String? author;
+
   /// Author email.
   final String? authorEmail;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Who performed the deployment.
   final String? deployer;
+
   /// Details on deployment.
   final String? details;
+
   /// End time.
   final String? endTime;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Details about deployment status.
   final String? message;
+
   /// Resource Name.
   final String name;
+
   /// Start time.
   final String? startTime;
+
   /// Deployment status.
   final int? status;
+
   /// Resource type.
   final String type;
 
@@ -85,21 +97,60 @@ class GetWebAppDeploymentSlotResult {
 
   factory GetWebAppDeploymentSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppDeploymentSlotResult(
-      active: map['active'] == null ? null : map['active']! as bool,
-      author: map['author'] == null ? null : map['author']! as String,
-      authorEmail: map['authorEmail'] == null ? null : map['authorEmail']! as String,
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      author: (() {
+        final guardedValue = map['author'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      authorEmail: (() {
+        final guardedValue = map['authorEmail'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      deployer: map['deployer'] == null ? null : map['deployer']! as String,
-      details: map['details'] == null ? null : map['details']! as String,
-      endTime: map['endTime'] == null ? null : map['endTime']! as String,
+      deployer: (() {
+        final guardedValue = map['deployer'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      message: map['message'] == null ? null : map['message']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime']! as String,
-      status: map['status'] == null ? null : map['status']! as int,
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

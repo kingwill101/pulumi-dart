@@ -16,7 +16,7 @@ import 'get_templates_result.dart';
 
 /// This data source provides the Ros Change Sets of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.105.0+.
+/// &gt; **NOTE:** Available in v1.105.0+.
 ///
 /// ## Example Usage
 ///
@@ -153,7 +153,7 @@ Future<GetChangeSetsResult> getChangeSets(
 
 /// This data source provides the Ros Regions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.145.0+.
+/// &gt; **NOTE:** Available in v1.145.0+.
 ///
 /// ## Example Usage
 ///
@@ -263,7 +263,7 @@ Future<GetRegionsResult> getRegions(
 
 /// This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.107.0+.
+/// &gt; **NOTE:** Available in v1.107.0+.
 ///
 /// ## Example Usage
 ///
@@ -394,7 +394,7 @@ Future<GetStackGroupsResult> getStackGroups(
 
 /// This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.145.0+.
+/// &gt; **NOTE:** Available in v1.145.0+.
 ///
 /// ## Example Usage
 ///
@@ -668,7 +668,7 @@ Future<GetStackInstancesResult> getStackInstances(
 
 /// This data source provides the Ros Stacks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.106.0+.
+/// &gt; **NOTE:** Available in v1.106.0+.
 ///
 /// ## Example Usage
 ///
@@ -799,7 +799,7 @@ Future<GetStacksResult> getStacks(
 
 /// This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.151.0+.
+/// &gt; **NOTE:** Available in v1.151.0+.
 ///
 /// ## Example Usage
 ///
@@ -984,7 +984,7 @@ Future<GetTemplateScratchesResult> getTemplateScratches(
 
 /// This data source provides the Ros Templates of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.108.0+.
+/// &gt; **NOTE:** Available in v1.108.0+.
 ///
 /// ## Example Usage
 ///

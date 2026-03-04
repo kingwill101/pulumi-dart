@@ -10,12 +10,15 @@ class VirtualMachineScaleSetNetworkProfile {
   /// instance in the virtual machine scale set. The reference will be in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
   final pulumi.Input<ApiEntityReference>? healthProbe;
+
   /// specifies the Microsoft.Network API version used when creating networking
   /// resources in the Network Interface Configurations for Virtual Machine Scale Set
   /// with orchestration mode 'Flexible'
   final pulumi.Input<String>? networkApiVersion;
+
   /// The list of network configurations.
-  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>>?
+  networkInterfaceConfigurations;
 
   /// Creates a new [VirtualMachineScaleSetNetworkProfile].
   /// [healthProbe] A reference to a load balancer probe used to determine the health of an
@@ -29,18 +32,57 @@ class VirtualMachineScaleSetNetworkProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'healthProbe': ?pulumi.Input.mapOptionalInputValue<ApiEntityReference, Map<String, dynamic>>(healthProbe, (value) => value.toMap()),
+      'healthProbe':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiEntityReference,
+            Map<String, dynamic>
+          >(healthProbe, (value) => value.toMap()),
       'networkApiVersion': ?networkApiVersion,
-      'networkInterfaceConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineScaleSetNetworkConfiguration>, List<Map<String, dynamic>>>(networkInterfaceConfigurations, (value) => pulumi.Input.encodeList<VirtualMachineScaleSetNetworkConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaceConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachineScaleSetNetworkConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaceConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineScaleSetNetworkConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory VirtualMachineScaleSetNetworkProfile.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineScaleSetNetworkProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineScaleSetNetworkProfile(
-      healthProbe: map['healthProbe'] == null ? null : (ApiEntityReference.fromMap((map['healthProbe']! as Map).cast<String, dynamic>())).input(),
-      networkApiVersion: map['networkApiVersion'] == null ? null : (map['networkApiVersion']! as String).input(),
-      networkInterfaceConfigurations: map['networkInterfaceConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetNetworkConfiguration>(map['networkInterfaceConfigurations']!, (value) => VirtualMachineScaleSetNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbe: (() {
+        final guardedValue = map['healthProbe'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiEntityReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkApiVersion: (() {
+        final guardedValue = map['networkApiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceConfigurations: (() {
+        final guardedValue = map['networkInterfaceConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualMachineScaleSetNetworkConfiguration>(
+            guardedValue,
+            (value) => VirtualMachineScaleSetNetworkConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

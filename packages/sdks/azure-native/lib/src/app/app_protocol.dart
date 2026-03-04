@@ -3,16 +3,15 @@ enum AppProtocol {
   valueHttp("http"),
   valueGrpc("grpc");
 
-  const AppProtocol(this.value);
-  final String value;
+  const AppProtocol(this.wireValue);
+  final String wireValue;
 
   static AppProtocol fromValue(String value) {
     for (final item in AppProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AppProtocol value: $value');
   }
 }
-

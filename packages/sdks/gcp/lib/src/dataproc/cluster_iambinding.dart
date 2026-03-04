@@ -9,9 +9,9 @@ import 'cluster_iambinding_state.dart';
 /// * `gcp.dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
 /// * `gcp.dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
 ///
-/// > **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
+/// &gt; **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
 ///
-/// > **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.dataproc.ClusterIAMPolicy
 ///
@@ -794,8 +794,10 @@ class ClusterIAMBinding extends pulumi.CustomResource {
   /// For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
   late final pulumi.Output<String> cluster;
   late final pulumi.Output<ClusterIAMBindingCondition?> condition;
+
   /// (Computed) The etag of the clusters's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -805,12 +807,15 @@ class ClusterIAMBinding extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<List<String>> members;
+
   /// The project in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
   late final pulumi.Output<String> project;
+
   /// The region in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
   late final pulumi.Output<String> region;
+
   /// The role that should be applied. Only one
   /// `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -827,18 +832,18 @@ class ClusterIAMBinding extends pulumi.CustomResource {
     ClusterIAMBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataproc/clusterIAMBinding:ClusterIAMBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cluster = registerOutput<String>('cluster');
-    this.condition = registerOutput<ClusterIAMBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
+         'gcp:dataproc/clusterIAMBinding:ClusterIAMBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cluster = registerOutput<String>('cluster');
+    condition = registerOutput<ClusterIAMBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [ClusterIAMBinding] resource's state with the given [name] and [id].
@@ -859,17 +864,17 @@ class ClusterIAMBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataproc/clusterIAMBinding:ClusterIAMBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cluster = registerOutput<String>('cluster');
-    this.condition = registerOutput<ClusterIAMBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
+         'gcp:dataproc/clusterIAMBinding:ClusterIAMBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cluster = registerOutput<String>('cluster');
+    condition = registerOutput<ClusterIAMBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
   }
 }

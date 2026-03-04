@@ -1,5 +1,3 @@
-library module_workloads;
-
 export 'workloads/acssbackup_connection.dart';
 export 'workloads/acssbackup_connection_args.dart';
 export 'workloads/alert.dart';

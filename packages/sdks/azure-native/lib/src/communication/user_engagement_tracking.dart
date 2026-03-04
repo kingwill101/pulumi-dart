@@ -3,16 +3,15 @@ enum UserEngagementTracking {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const UserEngagementTracking(this.value);
-  final String value;
+  const UserEngagementTracking(this.wireValue);
+  final String wireValue;
 
   static UserEngagementTracking fromValue(String value) {
     for (final item in UserEngagementTracking.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserEngagementTracking value: $value');
   }
 }
-

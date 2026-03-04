@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AttributeResponseHealthcareV1beta1 {
   /// Indicates the name of an attribute defined in the consent store.
   final pulumi.Input<String> attributeDefinitionId;
+
   /// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
   final pulumi.Input<List<String>> values;
 
@@ -26,9 +27,10 @@ class AttributeResponseHealthcareV1beta1 {
 
   factory AttributeResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return AttributeResponseHealthcareV1beta1(
-      attributeDefinitionId: (map['attributeDefinitionId'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      attributeDefinitionId: pulumi.Input.fromValue(
+        map['attributeDefinitionId'] as String,
+      ),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

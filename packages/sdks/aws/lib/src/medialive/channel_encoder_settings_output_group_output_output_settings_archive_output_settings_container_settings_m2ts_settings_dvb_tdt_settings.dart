@@ -12,15 +12,18 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'repInterval': ?repInterval,
-    };
+    return <String, dynamic>{'repInterval': ?repInterval};
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings(
-      repInterval: map['repInterval'] == null ? null : ((map['repInterval'] as int).input()).input(),
+      repInterval: (() {
+        final guardedValue = map['repInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

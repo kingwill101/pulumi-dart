@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessRuleArgs {
   /// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
   final pulumi.Input<String> accessGroupId;
+
   /// Permission rule description.  No more than 32 characters in length.
   final pulumi.Input<String>? description;
+
   /// The IP address or network segment of the authorized object.
   final pulumi.Input<String> networkSegment;
+
   /// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
   final pulumi.Input<int> priority;
+
   /// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
   final pulumi.Input<String> rwAccessType;
 
@@ -44,12 +48,15 @@ class AccessRuleArgs {
 
   factory AccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return AccessRuleArgs(
-      accessGroupId: (map['accessGroupId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      networkSegment: (map['networkSegment'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      rwAccessType: (map['rwAccessType'] as String).input(),
+      accessGroupId: pulumi.Input.fromValue(map['accessGroupId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSegment: pulumi.Input.fromValue(map['networkSegment'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      rwAccessType: pulumi.Input.fromValue(map['rwAccessType'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcCenTrFirewallsFirewallIpsConfig {
   /// Basic rule switch. Value:-**1**: On-**0**: Closed state.
   final pulumi.Input<int> basicRules;
+
   /// Virtual patch switch. Value:-**1**: On-**0**: Closed state.
   final pulumi.Input<int> enableAllPatch;
+
   /// IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
   final pulumi.Input<int> runMode;
 
@@ -28,12 +30,13 @@ class GetVpcCenTrFirewallsFirewallIpsConfig {
     };
   }
 
-  factory GetVpcCenTrFirewallsFirewallIpsConfig.fromMap(Map<String, dynamic> map) {
+  factory GetVpcCenTrFirewallsFirewallIpsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVpcCenTrFirewallsFirewallIpsConfig(
-      basicRules: (map['basicRules'] as int).input(),
-      enableAllPatch: (map['enableAllPatch'] as int).input(),
-      runMode: (map['runMode'] as int).input(),
+      basicRules: pulumi.Input.fromValue(map['basicRules'] as int),
+      enableAllPatch: pulumi.Input.fromValue(map['enableAllPatch'] as int),
+      runMode: pulumi.Input.fromValue(map['runMode'] as int),
     );
   }
 }
-

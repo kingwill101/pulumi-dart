@@ -199,34 +199,49 @@ import 'table_args.dart';
 class Table extends pulumi.CustomResource {
   /// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
   late final pulumi.Output<int> archiveRetentionInDays;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The timestamp that table plan was last modified (UTC).
   late final pulumi.Output<String> lastPlanModifiedDate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Instruct the system how to handle and charge the logs ingested to this table.
   late final pulumi.Output<String?> plan;
+
   /// Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
   late final pulumi.Output<String> provisioningState;
+
   /// Parameters of the restore operation that initiated this table.
   late final pulumi.Output<RestoredLogsResponse?> restoredLogs;
+
   /// Search job execution statistics.
   late final pulumi.Output<ResultStatisticsResponse> resultStatistics;
+
   /// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
   late final pulumi.Output<int?> retentionInDays;
+
   /// True - Value originates from workspace retention in days, False - Customer specific.
   late final pulumi.Output<bool> retentionInDaysAsDefault;
+
   /// Table schema.
   late final pulumi.Output<SchemaResponse?> schema;
+
   /// Parameters of the search job that initiated this table.
   late final pulumi.Output<SearchResultsResponse?> searchResults;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
   late final pulumi.Output<int?> totalRetentionInDays;
+
   /// True - Value originates from retention in days, False - Customer specific.
   late final pulumi.Output<bool> totalRetentionInDaysAsDefault;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -234,31 +249,32 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_operationalinsights_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(
-    String name, {
-    TableArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:operationalinsights:Table',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.archiveRetentionInDays = registerOutput<int>('archiveRetentionInDays');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.lastPlanModifiedDate = registerOutput<String>('lastPlanModifiedDate');
+  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:operationalinsights:Table',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    archiveRetentionInDays = registerOutput<int>('archiveRetentionInDays');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    lastPlanModifiedDate = registerOutput<String>('lastPlanModifiedDate');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<String?>('plan');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.restoredLogs = registerOutput<RestoredLogsResponse?>('restoredLogs');
-    this.resultStatistics = registerOutput<ResultStatisticsResponse>('resultStatistics');
-    this.retentionInDays = registerOutput<int?>('retentionInDays');
-    this.retentionInDaysAsDefault = registerOutput<bool>('retentionInDaysAsDefault');
-    this.schema = registerOutput<SchemaResponse?>('schema');
-    this.searchResults = registerOutput<SearchResultsResponse?>('searchResults');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
-    this.totalRetentionInDaysAsDefault = registerOutput<bool>('totalRetentionInDaysAsDefault');
-    this.type = registerOutput<String>('type');
+    plan = registerOutput<String?>('plan');
+    provisioningState = registerOutput<String>('provisioningState');
+    restoredLogs = registerOutput<RestoredLogsResponse?>('restoredLogs');
+    resultStatistics = registerOutput<ResultStatisticsResponse>(
+      'resultStatistics',
+    );
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    retentionInDaysAsDefault = registerOutput<bool>('retentionInDaysAsDefault');
+    schema = registerOutput<SchemaResponse?>('schema');
+    searchResults = registerOutput<SearchResultsResponse?>('searchResults');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
+    totalRetentionInDaysAsDefault = registerOutput<bool>(
+      'totalRetentionInDaysAsDefault',
+    );
+    type = registerOutput<String>('type');
   }
 }

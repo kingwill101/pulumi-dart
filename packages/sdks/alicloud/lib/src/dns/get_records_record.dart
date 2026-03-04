@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordsRecord {
   /// The domain name associated to the records.
   final pulumi.Input<String> domainName;
+
   /// Host record of the domain.
   final pulumi.Input<String> hostRecord;
+
   /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
   final pulumi.Input<String> line;
+
   /// Indicates whether the record is locked.
   final pulumi.Input<bool> locked;
+
   /// Priority of the `MX` record.
   final pulumi.Input<int> priority;
+
   /// ID of the record.
   final pulumi.Input<String> recordId;
+
   /// Record status. Valid items are `ENABLE` and `DISABLE`.
   final pulumi.Input<String> status;
+
   /// TTL of the record.
   final pulumi.Input<double> ttl;
+
   /// Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
   final pulumi.Input<String> type;
+
   /// Host record value of the domain.
   final pulumi.Input<String> value;
 
@@ -65,17 +74,16 @@ class GetRecordsRecord {
 
   factory GetRecordsRecord.fromMap(Map<String, dynamic> map) {
     return GetRecordsRecord(
-      domainName: (map['domainName'] as String).input(),
-      hostRecord: (map['hostRecord'] as String).input(),
-      line: (map['line'] as String).input(),
-      locked: (map['locked'] as bool).input(),
-      priority: (map['priority'] as int).input(),
-      recordId: (map['recordId'] as String).input(),
-      status: (map['status'] as String).input(),
-      ttl: (map['ttl'] as double).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      hostRecord: pulumi.Input.fromValue(map['hostRecord'] as String),
+      line: pulumi.Input.fromValue(map['line'] as String),
+      locked: pulumi.Input.fromValue(map['locked'] as bool),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      recordId: pulumi.Input.fromValue(map['recordId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as double),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

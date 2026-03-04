@@ -7,6 +7,7 @@ class MarketSetPricesItems {
   /// The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
   final pulumi.Input<String> currency;
   final pulumi.Input<List<String>> markets;
+
   /// The locked price for the priceable node. Validation: Required. Must be greater than or equal to 0. If the case of billing plans. This represents the price for each cycle charge.
   final pulumi.Input<double> value;
 
@@ -30,10 +31,9 @@ class MarketSetPricesItems {
 
   factory MarketSetPricesItems.fromMap(Map<String, dynamic> map) {
     return MarketSetPricesItems(
-      currency: (map['currency'] as String).input(),
-      markets: ((map['markets'] as List).cast<String>()).input(),
-      value: (map['value'] as double).input(),
+      currency: pulumi.Input.fromValue(map['currency'] as String),
+      markets: pulumi.Input.fromValue((map['markets'] as List).cast<String>()),
+      value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
-

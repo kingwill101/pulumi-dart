@@ -9,20 +9,17 @@ class X509Credentials {
 
   /// Creates a new [X509Credentials].
   /// [certificateSecretName] The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-  X509Credentials({
-    required this.certificateSecretName,
-  });
+  X509Credentials({required this.certificateSecretName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateSecretName': certificateSecretName,
-    };
+    return <String, dynamic>{'certificateSecretName': certificateSecretName};
   }
 
   factory X509Credentials.fromMap(Map<String, dynamic> map) {
     return X509Credentials(
-      certificateSecretName: (map['certificateSecretName'] as String).input(),
+      certificateSecretName: pulumi.Input.fromValue(
+        map['certificateSecretName'] as String,
+      ),
     );
   }
 }
-

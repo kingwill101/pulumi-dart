@@ -3,16 +3,20 @@ enum ServiceAttachmentTunnelingConfigEncapsulationProfile {
   geneveSecurityV1("GENEVE_SECURITY_V1"),
   unspecifiedEncapsulationProfile("UNSPECIFIED_ENCAPSULATION_PROFILE");
 
-  const ServiceAttachmentTunnelingConfigEncapsulationProfile(this.value);
-  final String value;
+  const ServiceAttachmentTunnelingConfigEncapsulationProfile(this.wireValue);
+  final String wireValue;
 
-  static ServiceAttachmentTunnelingConfigEncapsulationProfile fromValue(String value) {
-    for (final item in ServiceAttachmentTunnelingConfigEncapsulationProfile.values) {
-      if (item.value == value) {
+  static ServiceAttachmentTunnelingConfigEncapsulationProfile fromValue(
+    String value,
+  ) {
+    for (final item
+        in ServiceAttachmentTunnelingConfigEncapsulationProfile.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceAttachmentTunnelingConfigEncapsulationProfile value: $value');
+    throw ArgumentError(
+      'Unknown ServiceAttachmentTunnelingConfigEncapsulationProfile value: $value',
+    );
   }
 }
-

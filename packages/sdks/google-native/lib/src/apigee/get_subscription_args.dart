@@ -31,10 +31,9 @@ class GetSubscriptionArgs {
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
-      developerId: (map['developerId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
+      developerId: pulumi.Input.fromValue(map['developerId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
-

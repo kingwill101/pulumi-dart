@@ -11,8 +11,10 @@ class DatasetIamBindingArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<DatasetIamBindingCondition>? condition;
+
   /// The dataset ID.
   final pulumi.Input<String> datasetId;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -26,9 +28,11 @@ class DatasetIamBindingArgs {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
   final pulumi.Input<List<String>> members;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The role that should be applied. Only one
   /// `gcp.bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -50,7 +54,11 @@ class DatasetIamBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<DatasetIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatasetIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'datasetId': datasetId,
       'members': members,
       'project': ?project,
@@ -60,12 +68,23 @@ class DatasetIamBindingArgs {
 
   factory DatasetIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DatasetIamBindingArgs(
-      condition: map['condition'] == null ? null : (DatasetIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      datasetId: (map['datasetId'] as String).input(),
-      members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      role: (map['role'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatasetIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

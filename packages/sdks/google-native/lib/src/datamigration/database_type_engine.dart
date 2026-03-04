@@ -5,16 +5,15 @@ enum DatabaseTypeEngine {
   postgresql("POSTGRESQL"),
   oracle("ORACLE");
 
-  const DatabaseTypeEngine(this.value);
-  final String value;
+  const DatabaseTypeEngine(this.wireValue);
+  final String wireValue;
 
   static DatabaseTypeEngine fromValue(String value) {
     for (final item in DatabaseTypeEngine.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseTypeEngine value: $value');
   }
 }
-

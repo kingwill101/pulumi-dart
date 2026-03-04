@@ -1,14 +1,10 @@
 import 'package:pulumi/pulumi.dart';
-import 'package:pulumi_random/index.dart' as random;
 
 class RandomStack extends Stack {
   RandomStack() {
-    final pet = random.RandomPet(
-      'pet',
-      args: random.RandomPetArgs(prefix: 'dart'),
-    );
+    final petName = Output.create('pulumi-dart-random-template-disabled');
 
-    registerOutputs({'petName': pet.id});
+    registerOutputs({'petName': petName});
   }
 }
 

@@ -13,15 +13,14 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUser {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'username': username,
-    };
+    return <String, dynamic>{'username': username};
   }
 
-  factory BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterSecurityConfigAuthorizationAdminUser(
-      username: (map['username'] as String).input(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryImageBuildSecret {
   /// Environment variable source of the secret
   final pulumi.Input<String>? env;
+
   /// ID of the secret. By default, secrets are mounted to /run/secrets/\n\n
   final pulumi.Input<String> id;
+
   /// File source of the secret. Takes precedence over `env`
   final pulumi.Input<String>? src;
 
@@ -14,26 +16,25 @@ class RegistryImageBuildSecret {
   /// [env] Environment variable source of the secret
   /// [id] ID of the secret. By default, secrets are mounted to /run/secrets/\n\n
   /// [src] File source of the secret. Takes precedence over `env`
-  RegistryImageBuildSecret({
-    this.env,
-    required this.id,
-    this.src,
-  });
+  RegistryImageBuildSecret({this.env, required this.id, this.src});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'env': ?env,
-      'id': id,
-      'src': ?src,
-    };
+    return <String, dynamic>{'env': ?env, 'id': id, 'src': ?src};
   }
 
   factory RegistryImageBuildSecret.fromMap(Map<String, dynamic> map) {
     return RegistryImageBuildSecret(
-      env: map['env'] == null ? null : (map['env']! as String).input(),
-      id: (map['id'] as String).input(),
-      src: map['src'] == null ? null : (map['src']! as String).input(),
+      env: (() {
+        final guardedValue = map['env'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      src: (() {
+        final guardedValue = map['src'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

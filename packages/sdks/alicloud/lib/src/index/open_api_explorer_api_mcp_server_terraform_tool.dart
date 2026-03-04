@@ -7,6 +7,7 @@ class OpenApiExplorerApiMcpServerTerraformTool {
   final pulumi.Input<bool>? async;
   final pulumi.Input<String>? code;
   final pulumi.Input<String>? description;
+
   /// The cleanup policy applied to temporary resources after task completion, based on the task execution status:
   /// - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
   /// - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
@@ -38,14 +39,35 @@ class OpenApiExplorerApiMcpServerTerraformTool {
     };
   }
 
-  factory OpenApiExplorerApiMcpServerTerraformTool.fromMap(Map<String, dynamic> map) {
+  factory OpenApiExplorerApiMcpServerTerraformTool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OpenApiExplorerApiMcpServerTerraformTool(
-      async: map['async'] == null ? null : (map['async']! as bool).input(),
-      code: map['code'] == null ? null : (map['code']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destroyPolicy: map['destroyPolicy'] == null ? null : (map['destroyPolicy']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      async: (() {
+        final guardedValue = map['async'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destroyPolicy: (() {
+        final guardedValue = map['destroyPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

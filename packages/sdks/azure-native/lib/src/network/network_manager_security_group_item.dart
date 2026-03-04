@@ -9,20 +9,15 @@ class NetworkManagerSecurityGroupItem {
 
   /// Creates a new [NetworkManagerSecurityGroupItem].
   /// [networkGroupId] Network manager group Id.
-  NetworkManagerSecurityGroupItem({
-    required this.networkGroupId,
-  });
+  NetworkManagerSecurityGroupItem({required this.networkGroupId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'networkGroupId': networkGroupId,
-    };
+    return <String, dynamic>{'networkGroupId': networkGroupId};
   }
 
   factory NetworkManagerSecurityGroupItem.fromMap(Map<String, dynamic> map) {
     return NetworkManagerSecurityGroupItem(
-      networkGroupId: (map['networkGroupId'] as String).input(),
+      networkGroupId: pulumi.Input.fromValue(map['networkGroupId'] as String),
     );
   }
 }
-

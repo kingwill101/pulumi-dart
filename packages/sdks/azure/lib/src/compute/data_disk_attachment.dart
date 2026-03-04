@@ -4,9 +4,9 @@ import 'data_disk_attachment_state.dart';
 
 /// Manages attaching a Disk to a Virtual Machine.
 ///
-/// > **NOTE:** Data Disks can be attached either directly on the `azure.compute.VirtualMachine` resource, or using the `azure.compute.DataDiskAttachment` resource - but the two cannot be used together. If both are used against the same Virtual Machine, spurious changes will occur.
+/// &gt; **NOTE:** Data Disks can be attached either directly on the `azure.compute.VirtualMachine` resource, or using the `azure.compute.DataDiskAttachment` resource - but the two cannot be used together. If both are used against the same Virtual Machine, spurious changes will occur.
 ///
-/// > **Please Note:** only Managed Disks are supported via this separate resource, Unmanaged Disks can be attached using the `storage_data_disk` block in the `azure.compute.VirtualMachine` resource.
+/// &gt; **Please Note:** only Managed Disks are supported via this separate resource, Unmanaged Disks can be attached using the `storage_data_disk` block in the `azure.compute.VirtualMachine` resource.
 ///
 /// ## Example Usage
 ///
@@ -597,7 +597,7 @@ import 'data_disk_attachment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01, 2023-04-02
@@ -610,18 +610,23 @@ import 'data_disk_attachment_state.dart';
 /// $ pulumi import azure:compute/dataDiskAttachment:DataDiskAttachment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachines/machine1/dataDisks/disk1
 /// ```
 ///
-/// > **Note:** This is provider-specific ID matching the format: `{virtualMachineID}/dataDisks/{diskName}`
+/// &gt; **Note:** This is provider-specific ID matching the format: `{virtualMachineID}/dataDisks/{diskName}`
 class DataDiskAttachment extends pulumi.CustomResource {
   /// Specifies the caching requirements for this Data Disk. Possible values include `None`, `ReadOnly` and `ReadWrite`.
   late final pulumi.Output<String> caching;
+
   /// The Create Option of the Data Disk, such as `Empty` or `Attach`. Defaults to `Attach`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> createOption;
+
   /// The Logical Unit Number of the Data Disk, which needs to be unique within the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<int> lun;
+
   /// The ID of an existing Managed Disk which should be attached. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedDiskId;
+
   /// The ID of the Virtual Machine to which the Data Disk should be attached. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
+
   /// Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
   late final pulumi.Output<bool?> writeAcceleratorEnabled;
 
@@ -634,17 +639,17 @@ class DataDiskAttachment extends pulumi.CustomResource {
     DataDiskAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/dataDiskAttachment:DataDiskAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caching = registerOutput<String>('caching');
-    this.createOption = registerOutput<String?>('createOption');
-    this.lun = registerOutput<int>('lun');
-    this.managedDiskId = registerOutput<String>('managedDiskId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
-    this.writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
+         'azure:compute/dataDiskAttachment:DataDiskAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caching = registerOutput<String>('caching');
+    createOption = registerOutput<String?>('createOption');
+    lun = registerOutput<int>('lun');
+    managedDiskId = registerOutput<String>('managedDiskId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
   }
 
   /// Gets an existing [DataDiskAttachment] resource's state with the given [name] and [id].
@@ -665,16 +670,16 @@ class DataDiskAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/dataDiskAttachment:DataDiskAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caching = registerOutput<String>('caching');
-    this.createOption = registerOutput<String?>('createOption');
-    this.lun = registerOutput<int>('lun');
-    this.managedDiskId = registerOutput<String>('managedDiskId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
-    this.writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
+         'azure:compute/dataDiskAttachment:DataDiskAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caching = registerOutput<String>('caching');
+    createOption = registerOutput<String?>('createOption');
+    lun = registerOutput<int>('lun');
+    managedDiskId = registerOutput<String>('managedDiskId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
   }
 }

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listFirewallPolicyIdpsSignaturesFilterValue.
 class ListFirewallPolicyIdpsSignaturesFilterValueResult {
   /// Describes the possible values
@@ -8,20 +7,21 @@ class ListFirewallPolicyIdpsSignaturesFilterValueResult {
 
   /// Creates a new [ListFirewallPolicyIdpsSignaturesFilterValueResult].
   /// [filterValues] Describes the possible values
-  ListFirewallPolicyIdpsSignaturesFilterValueResult({
-    this.filterValues,
-  });
+  ListFirewallPolicyIdpsSignaturesFilterValueResult({this.filterValues});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filterValues': ?filterValues,
-    };
+    return <String, dynamic>{'filterValues': ?filterValues};
   }
 
-  factory ListFirewallPolicyIdpsSignaturesFilterValueResult.fromMap(Map<String, dynamic> map) {
+  factory ListFirewallPolicyIdpsSignaturesFilterValueResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListFirewallPolicyIdpsSignaturesFilterValueResult(
-      filterValues: map['filterValues'] == null ? null : (map['filterValues']! as List).cast<String>(),
+      filterValues: (() {
+        final guardedValue = map['filterValues'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

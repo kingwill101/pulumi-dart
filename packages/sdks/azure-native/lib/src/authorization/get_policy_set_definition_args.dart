@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicySetDefinitionArgs {
   /// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   final pulumi.Input<String>? expand;
+
   /// The name of the policy set definition to get.
   final pulumi.Input<String> policySetDefinitionName;
 
@@ -29,9 +30,14 @@ class GetPolicySetDefinitionArgs {
 
   factory GetPolicySetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policySetDefinitionName: pulumi.Input.fromValue(
+        map['policySetDefinitionName'] as String,
+      ),
     );
   }
 }
-

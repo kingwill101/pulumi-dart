@@ -12,20 +12,21 @@ class GetProviderActionCollectionCountArgs {
 
   /// Creates a new [GetProviderActionCollectionCountArgs].
   /// [type] The resource type.
-  GetProviderActionCollectionCountArgs({
-    this.type,
-  });
+  GetProviderActionCollectionCountArgs({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory GetProviderActionCollectionCountArgs.fromMap(Map<String, dynamic> map) {
+  factory GetProviderActionCollectionCountArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProviderActionCollectionCountArgs(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

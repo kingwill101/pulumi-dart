@@ -17,10 +17,13 @@ class GetLaunchTemplateLicenseSpecification {
     };
   }
 
-  factory GetLaunchTemplateLicenseSpecification.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateLicenseSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateLicenseSpecification(
-      licenseConfigurationArn: (map['licenseConfigurationArn'] as String).input(),
+      licenseConfigurationArn: pulumi.Input.fromValue(
+        map['licenseConfigurationArn'] as String,
+      ),
     );
   }
 }
-

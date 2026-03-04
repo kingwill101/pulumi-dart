@@ -156,7 +156,7 @@ import 'vault_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01, 2024-01-01
@@ -171,36 +171,49 @@ import 'vault_state.dart';
 class Vault extends pulumi.CustomResource {
   /// Whether to enable the Classic experience for VMware replication. If set to `false` VMware machines will be protected using the new stateless ASR replication appliance. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> classicVmwareReplicationEnabled;
+
   /// Is cross region restore enabled for this Vault? Only can be `true`, when `storage_mode_type` is `GeoRedundant`. Defaults to `false`.
   ///
-  /// > **Note:** Once `cross_region_restore_enabled` is set to `true`, changing it back to `false` forces a new Recovery Service Vault to be created.
+  /// &gt; **Note:** Once `cross_region_restore_enabled` is set to `true`, changing it back to `false` forces a new Recovery Service Vault to be created.
   late final pulumi.Output<bool?> crossRegionRestoreEnabled;
+
   /// An `encryption` block as defined below. Required with `identity`.
   ///
-  /// !> **Note:** Once Encryption with your own key has been Enabled it's not possible to Disable it.
+  /// !&gt; **Note:** Once Encryption with your own key has been Enabled it's not possible to Disable it.
   late final pulumi.Output<VaultEncryption?> encryption;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<VaultIdentity?> identity;
+
   /// Immutability Settings of vault, possible values include: `Locked`, `Unlocked` and `Disabled`.
   ///
-  /// > **Note:** Once `immutability` is set to `Locked`, changing it to other values forces a new Recovery Services Vault to be created.
+  /// &gt; **Note:** Once `immutability` is set to `Locked`, changing it to other values forces a new Recovery Services Vault to be created.
   late final pulumi.Output<String> immutability;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `monitoring` block as defined below.
   late final pulumi.Output<VaultMonitoring?> monitoring;
+
   /// Specifies the name of the Recovery Services Vault. Recovery Service Vault name must be 2 - 50 characters long, start with a letter, contain only letters, numbers and hyphens. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Is it enabled to access the vault from public networks. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group in which to create the Recovery Services Vault. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Sets the vault's SKU. Possible values include: `Standard`, `RS0`.
   late final pulumi.Output<String> sku;
+
   /// Is soft delete enable for this Vault? Defaults to `true`.
   late final pulumi.Output<bool?> softDeleteEnabled;
+
   /// The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`.
   late final pulumi.Output<String?> storageModeType;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -208,38 +221,37 @@ class Vault extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vault]. {@macro pulumi_recoveryservices_vault_vault_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vault(
-    String name, {
-    VaultArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:recoveryservices/vault:Vault',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.classicVmwareReplicationEnabled = registerOutput<bool?>('classicVmwareReplicationEnabled');
-    this.crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
-    this.encryption = registerOutput<VaultEncryption?>('encryption');
-    this.identity = registerOutput<VaultIdentity?>('identity');
-    this.immutability = registerOutput<String>('immutability');
-    this.location = registerOutput<String>('location');
-    this.monitoring = registerOutput<VaultMonitoring?>('monitoring');
+  Vault(String name, {VaultArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:recoveryservices/vault:Vault',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    classicVmwareReplicationEnabled = registerOutput<bool?>(
+      'classicVmwareReplicationEnabled',
+    );
+    crossRegionRestoreEnabled = registerOutput<bool?>(
+      'crossRegionRestoreEnabled',
+    );
+    encryption = registerOutput<VaultEncryption?>('encryption');
+    identity = registerOutput<VaultIdentity?>('identity');
+    immutability = registerOutput<String>('immutability');
+    location = registerOutput<String>('location');
+    monitoring = registerOutput<VaultMonitoring?>('monitoring');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.softDeleteEnabled = registerOutput<bool?>('softDeleteEnabled');
-    this.storageModeType = registerOutput<String?>('storageModeType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    softDeleteEnabled = registerOutput<bool?>('softDeleteEnabled');
+    storageModeType = registerOutput<String?>('storageModeType');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Vault] resource's state with the given [name] and [id].
-  static Vault get(
-    String name,
-    pulumi.Input<String> id, {
-    VaultState? state,
-  }) {
+  static Vault get(String name, pulumi.Input<String> id, {VaultState? state}) {
     return Vault._get(
       name,
       state: state?.toMap(),
@@ -252,24 +264,30 @@ class Vault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:recoveryservices/vault:Vault',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.classicVmwareReplicationEnabled = registerOutput<bool?>('classicVmwareReplicationEnabled');
-    this.crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
-    this.encryption = registerOutput<VaultEncryption?>('encryption');
-    this.identity = registerOutput<VaultIdentity?>('identity');
-    this.immutability = registerOutput<String>('immutability');
-    this.location = registerOutput<String>('location');
-    this.monitoring = registerOutput<VaultMonitoring?>('monitoring');
+         'azure:recoveryservices/vault:Vault',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    classicVmwareReplicationEnabled = registerOutput<bool?>(
+      'classicVmwareReplicationEnabled',
+    );
+    crossRegionRestoreEnabled = registerOutput<bool?>(
+      'crossRegionRestoreEnabled',
+    );
+    encryption = registerOutput<VaultEncryption?>('encryption');
+    identity = registerOutput<VaultIdentity?>('identity');
+    immutability = registerOutput<String>('immutability');
+    location = registerOutput<String>('location');
+    monitoring = registerOutput<VaultMonitoring?>('monitoring');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.softDeleteEnabled = registerOutput<bool?>('softDeleteEnabled');
-    this.storageModeType = registerOutput<String?>('storageModeType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    softDeleteEnabled = registerOutput<bool?>('softDeleteEnabled');
+    storageModeType = registerOutput<String?>('storageModeType');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

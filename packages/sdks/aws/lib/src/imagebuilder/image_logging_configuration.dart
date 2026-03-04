@@ -8,20 +8,15 @@ class ImageLoggingConfiguration {
 
   /// Creates a new [ImageLoggingConfiguration].
   /// [logGroupName] Name of the CloudWatch Log Group to send logs to.
-  ImageLoggingConfiguration({
-    required this.logGroupName,
-  });
+  ImageLoggingConfiguration({required this.logGroupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logGroupName': logGroupName,
-    };
+    return <String, dynamic>{'logGroupName': logGroupName};
   }
 
   factory ImageLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return ImageLoggingConfiguration(
-      logGroupName: (map['logGroupName'] as String).input(),
+      logGroupName: pulumi.Input.fromValue(map['logGroupName'] as String),
     );
   }
 }
-

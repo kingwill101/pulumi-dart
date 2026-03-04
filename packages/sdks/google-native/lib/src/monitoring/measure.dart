@@ -7,29 +7,34 @@ import 'aggregation_function.dart';
 class Measure {
   /// The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
   final pulumi.Input<AggregationFunction> aggregationFunction;
+
   /// The column name within in the dataset used for the measure.
   final pulumi.Input<String> column;
 
   /// Creates a new [Measure].
   /// [aggregationFunction] The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
   /// [column] The column name within in the dataset used for the measure.
-  Measure({
-    required this.aggregationFunction,
-    required this.column,
-  });
+  Measure({required this.aggregationFunction, required this.column});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregationFunction': pulumi.Input.mapInputValue<AggregationFunction, Map<String, dynamic>>(aggregationFunction, (value) => value.toMap()),
+      'aggregationFunction':
+          pulumi.Input.mapInputValue<AggregationFunction, Map<String, dynamic>>(
+            aggregationFunction,
+            (value) => value.toMap(),
+          ),
       'column': column,
     };
   }
 
   factory Measure.fromMap(Map<String, dynamic> map) {
     return Measure(
-      aggregationFunction: (AggregationFunction.fromMap((map['aggregationFunction'] as Map).cast<String, dynamic>())).input(),
-      column: (map['column'] as String).input(),
+      aggregationFunction: pulumi.Input.fromValue(
+        AggregationFunction.fromMap(
+          (map['aggregationFunction']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      column: pulumi.Input.fromValue(map['column'] as String),
     );
   }
 }
-

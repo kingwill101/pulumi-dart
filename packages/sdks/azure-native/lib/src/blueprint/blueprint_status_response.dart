@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlueprintStatusResponse {
   /// Last modified time of this blueprint definition.
   final pulumi.Input<String> lastModified;
+
   /// Creation time of this blueprint definition.
   final pulumi.Input<String> timeCreated;
 
@@ -26,9 +27,8 @@ class BlueprintStatusResponse {
 
   factory BlueprintStatusResponse.fromMap(Map<String, dynamic> map) {
     return BlueprintStatusResponse(
-      lastModified: (map['lastModified'] as String).input(),
-      timeCreated: (map['timeCreated'] as String).input(),
+      lastModified: pulumi.Input.fromValue(map['lastModified'] as String),
+      timeCreated: pulumi.Input.fromValue(map['timeCreated'] as String),
     );
   }
 }
-

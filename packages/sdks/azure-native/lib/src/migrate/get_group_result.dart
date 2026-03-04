@@ -6,14 +6,19 @@ import 'group_properties_response.dart';
 class GetGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// For optimistic concurrency control.
   final String? eTag;
+
   /// Path reference to this group. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}
   final String id;
+
   /// Name of the group.
   final String name;
+
   /// Properties of the group.
   final GroupPropertiesResponse properties;
+
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
   final String type;
 
@@ -47,12 +52,17 @@ class GetGroupResult {
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag']! as String,
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: GroupPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: GroupPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

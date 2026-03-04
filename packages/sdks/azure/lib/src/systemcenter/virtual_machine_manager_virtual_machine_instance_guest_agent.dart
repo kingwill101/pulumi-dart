@@ -4,7 +4,7 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 
 /// Manages a System Center Virtual Machine Manager Virtual Machine Instance Guest Agent.
 ///
-/// > **Note:** By request of the service team the provider is no longer automatically registering the `Microsoft.ScVmm` Resource Provider for this resource. To register it you can run `az provider register --namespace Microsoft.ScVmm`.
+/// &gt; **Note:** By request of the service team the provider is no longer automatically registering the `Microsoft.ScVmm` Resource Provider for this resource. To register it you can run `az provider register --namespace Microsoft.ScVmm`.
 ///
 /// ## Example Usage
 ///
@@ -542,7 +542,7 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ScVmm` - 2023-10-07
@@ -554,13 +554,17 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 /// ```sh
 /// $ pulumi import azure:systemcenter/virtualMachineManagerVirtualMachineInstanceGuestAgent:VirtualMachineManagerVirtualMachineInstanceGuestAgent example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1/providers/Microsoft.HybridCompute/machines/machine1/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default
 /// ```
-class VirtualMachineManagerVirtualMachineInstanceGuestAgent extends pulumi.CustomResource {
+class VirtualMachineManagerVirtualMachineInstanceGuestAgent
+    extends pulumi.CustomResource {
   /// The password that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.
   late final pulumi.Output<String> password;
+
   /// The provisioning action that is used to define the different types of operations for the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Possible values are `install`, `repair` and `uninstall`. Defaults to `install`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> provisioningAction;
+
   /// The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance Guest Agent is stored. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scopedResourceId;
+
   /// The username that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.
   late final pulumi.Output<String> username;
 
@@ -573,15 +577,15 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgent extends pulumi.Custo
     VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerVirtualMachineInstanceGuestAgent:VirtualMachineManagerVirtualMachineInstanceGuestAgent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.password = registerOutput<String>('password');
-    this.provisioningAction = registerOutput<String?>('provisioningAction');
-    this.scopedResourceId = registerOutput<String>('scopedResourceId');
-    this.username = registerOutput<String>('username');
+         'azure:systemcenter/virtualMachineManagerVirtualMachineInstanceGuestAgent:VirtualMachineManagerVirtualMachineInstanceGuestAgent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    password = registerOutput<String>('password');
+    provisioningAction = registerOutput<String?>('provisioningAction');
+    scopedResourceId = registerOutput<String>('scopedResourceId');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [VirtualMachineManagerVirtualMachineInstanceGuestAgent] resource's state with the given [name] and [id].
@@ -602,14 +606,14 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgent extends pulumi.Custo
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerVirtualMachineInstanceGuestAgent:VirtualMachineManagerVirtualMachineInstanceGuestAgent',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.password = registerOutput<String>('password');
-    this.provisioningAction = registerOutput<String?>('provisioningAction');
-    this.scopedResourceId = registerOutput<String>('scopedResourceId');
-    this.username = registerOutput<String>('username');
+         'azure:systemcenter/virtualMachineManagerVirtualMachineInstanceGuestAgent:VirtualMachineManagerVirtualMachineInstanceGuestAgent',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    password = registerOutput<String>('password');
+    provisioningAction = registerOutput<String?>('provisioningAction');
+    scopedResourceId = registerOutput<String>('scopedResourceId');
+    username = registerOutput<String>('username');
   }
 }

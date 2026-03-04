@@ -9,20 +9,19 @@ class CaPoolEncryptionSpec {
 
   /// Creates a new [CaPoolEncryptionSpec].
   /// [cloudKmsKey] The resource name for an existing Cloud KMS key in the format
-  CaPoolEncryptionSpec({
-    this.cloudKmsKey,
-  });
+  CaPoolEncryptionSpec({this.cloudKmsKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudKmsKey': ?cloudKmsKey,
-    };
+    return <String, dynamic>{'cloudKmsKey': ?cloudKmsKey};
   }
 
   factory CaPoolEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return CaPoolEncryptionSpec(
-      cloudKmsKey: map['cloudKmsKey'] == null ? null : (map['cloudKmsKey']! as String).input(),
+      cloudKmsKey: (() {
+        final guardedValue = map['cloudKmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

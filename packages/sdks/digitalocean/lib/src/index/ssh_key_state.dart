@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshKeyState {
   /// The fingerprint of the SSH key
   final pulumi.Input<String>? fingerprint;
+
   /// The name of the SSH key for identification
   final pulumi.Input<String>? name;
+
   /// The public key. If this is a file, it
   /// can be read using the file interpolation function
   final pulumi.Input<String>? publicKey;
@@ -16,11 +18,7 @@ class SshKeyState {
   /// [fingerprint] The fingerprint of the SSH key
   /// [name] The name of the SSH key for identification
   /// [publicKey] The public key. If this is a file, it
-  SshKeyState({
-    this.fingerprint,
-    this.name,
-    this.publicKey,
-  });
+  SshKeyState({this.fingerprint, this.name, this.publicKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,21 @@ class SshKeyState {
 
   factory SshKeyState.fromMap(Map<String, dynamic> map) {
     return SshKeyState(
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

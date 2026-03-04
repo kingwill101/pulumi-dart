@@ -22,7 +22,11 @@ class FeatureStoreSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeRuntime': ?pulumi.Input.mapOptionalInputValue<ComputeRuntimeDtoResponse, Map<String, dynamic>>(computeRuntime, (value) => value.toMap()),
+      'computeRuntime':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeRuntimeDtoResponse,
+            Map<String, dynamic>
+          >(computeRuntime, (value) => value.toMap()),
       'offlineStoreConnectionName': ?offlineStoreConnectionName,
       'onlineStoreConnectionName': ?onlineStoreConnectionName,
     };
@@ -30,10 +34,25 @@ class FeatureStoreSettingsResponse {
 
   factory FeatureStoreSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FeatureStoreSettingsResponse(
-      computeRuntime: map['computeRuntime'] == null ? null : (ComputeRuntimeDtoResponse.fromMap((map['computeRuntime']! as Map).cast<String, dynamic>())).input(),
-      offlineStoreConnectionName: map['offlineStoreConnectionName'] == null ? null : (map['offlineStoreConnectionName']! as String).input(),
-      onlineStoreConnectionName: map['onlineStoreConnectionName'] == null ? null : (map['onlineStoreConnectionName']! as String).input(),
+      computeRuntime: (() {
+        final guardedValue = map['computeRuntime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeRuntimeDtoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      offlineStoreConnectionName: (() {
+        final guardedValue = map['offlineStoreConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onlineStoreConnectionName: (() {
+        final guardedValue = map['onlineStoreConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

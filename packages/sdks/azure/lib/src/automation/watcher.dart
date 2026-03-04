@@ -370,7 +370,7 @@ import 'watcher_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2020-01-13-preview
@@ -385,24 +385,34 @@ import 'watcher_state.dart';
 class Watcher extends pulumi.CustomResource {
   /// The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
   late final pulumi.Output<String> automationAccountId;
+
   /// A description of this Automation Watcher.
   late final pulumi.Output<String?> description;
+
   /// A string of etag assigned to this Automation Watcher.
   late final pulumi.Output<String?> etag;
+
   /// Specify the frequency at which the watcher is invoked.
   late final pulumi.Output<int> executionFrequencyInSeconds;
+
   /// The Azure Region where the Automation Watcher should exist. Changing this forces a new Automation Watcher to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Automation Watcher. Changing this forces a new Automation Watcher to be created.
   late final pulumi.Output<String> name;
+
   /// Specify the name of an existing runbook this watcher is attached to. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> scriptName;
+
   /// Specifies a list of key-vaule parameters. Changing this forces a new Automation watcher to be created.
   late final pulumi.Output<Map<String, String>?> scriptParameters;
+
   /// Specify the name of the Hybrid work group the watcher will run on.
   late final pulumi.Output<String> scriptRunOn;
+
   /// The current status of the Automation Watcher.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags which should be assigned to the Automation Watcher.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -415,22 +425,24 @@ class Watcher extends pulumi.CustomResource {
     WatcherArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/watcher:Watcher',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountId = registerOutput<String>('automationAccountId');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.executionFrequencyInSeconds = registerOutput<int>('executionFrequencyInSeconds');
-    this.location = registerOutput<String>('location');
+         'azure:automation/watcher:Watcher',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    executionFrequencyInSeconds = registerOutput<int>(
+      'executionFrequencyInSeconds',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.scriptName = registerOutput<String>('scriptName');
-    this.scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
-    this.scriptRunOn = registerOutput<String>('scriptRunOn');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    scriptName = registerOutput<String>('scriptName');
+    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
+    scriptRunOn = registerOutput<String>('scriptRunOn');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Watcher] resource's state with the given [name] and [id].
@@ -451,21 +463,23 @@ class Watcher extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/watcher:Watcher',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountId = registerOutput<String>('automationAccountId');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.executionFrequencyInSeconds = registerOutput<int>('executionFrequencyInSeconds');
-    this.location = registerOutput<String>('location');
+         'azure:automation/watcher:Watcher',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    executionFrequencyInSeconds = registerOutput<int>(
+      'executionFrequencyInSeconds',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.scriptName = registerOutput<String>('scriptName');
-    this.scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
-    this.scriptRunOn = registerOutput<String>('scriptRunOn');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    scriptName = registerOutput<String>('scriptName');
+    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
+    scriptRunOn = registerOutput<String>('scriptRunOn');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

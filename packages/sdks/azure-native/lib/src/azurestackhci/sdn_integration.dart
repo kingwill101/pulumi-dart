@@ -10,20 +10,29 @@ class SdnIntegration {
 
   /// Creates a new [SdnIntegration].
   /// [networkController] network controller config for SDN Integration to deploy AzureStackHCI Cluster.
-  SdnIntegration({
-    this.networkController,
-  });
+  SdnIntegration({this.networkController});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkController': ?pulumi.Input.mapOptionalInputValue<NetworkController, Map<String, dynamic>>(networkController, (value) => value.toMap()),
+      'networkController':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkController,
+            Map<String, dynamic>
+          >(networkController, (value) => value.toMap()),
     };
   }
 
   factory SdnIntegration.fromMap(Map<String, dynamic> map) {
     return SdnIntegration(
-      networkController: map['networkController'] == null ? null : (NetworkController.fromMap((map['networkController']! as Map).cast<String, dynamic>())).input(),
+      networkController: (() {
+        final guardedValue = map['networkController'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkController.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

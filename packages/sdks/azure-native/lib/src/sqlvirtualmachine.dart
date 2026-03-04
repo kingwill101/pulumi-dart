@@ -1,5 +1,3 @@
-library module_sqlvirtualmachine;
-
 export 'sqlvirtualmachine/aadauthentication_settings.dart';
 export 'sqlvirtualmachine/aadauthentication_settings_response.dart';
 export 'sqlvirtualmachine/additional_features_server_configurations.dart';

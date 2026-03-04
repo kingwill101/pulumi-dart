@@ -7,6 +7,7 @@ import 'get_mongo_instances_instance.dart';
 class GetMongoInstancesResult {
   final String? availabilityZone;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -55,7 +56,11 @@ class GetMongoInstancesResult {
       'ids': ids,
       'instanceClass': ?instanceClass,
       'instanceType': ?instanceType,
-      'instances': pulumi.Input.encodeList<GetMongoInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetMongoInstancesInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -66,19 +71,55 @@ class GetMongoInstancesResult {
 
   factory GetMongoInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesResult(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceClass: map['instanceClass'] == null ? null : map['instanceClass']! as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
-      instances: pulumi.Input.decodeList<GetMongoInstancesInstance>(map['instances'], (value) => GetMongoInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      instanceClass: (() {
+        final guardedValue = map['instanceClass'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instances: pulumi.Input.decodeList<GetMongoInstancesInstance>(
+        map['instances']!,
+        (value) => GetMongoInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'health_error_details_response.dart';
 import 'hyperv_host_controller_args.dart';
 import 'system_data_response.dart';
 
@@ -154,24 +153,34 @@ import 'system_data_response.dart';
 class HypervHostController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the timestamp marking Hyper-V host creation.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Gets the errors.
-  late final pulumi.Output<List<HealthErrorDetailsResponse>> errors;
+  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+
   /// Gets or sets the FQDN/IPAddress of the Hyper-V host.
   late final pulumi.Output<String?> fqdn;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Gets or sets the run as account ID of the Hyper-V host.
   late final pulumi.Output<String?> runAsAccountId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Gets the timestamp marking last updated on the Hyper-V host.
   late final pulumi.Output<String> updatedTimestamp;
+
   /// Gets the version of the Hyper-V host.
   late final pulumi.Output<String> version;
 
@@ -184,21 +193,21 @@ class HypervHostController extends pulumi.CustomResource {
     HypervHostControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:offazure:HypervHostController',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.errors = registerOutput<List<HealthErrorDetailsResponse>>('errors');
-    this.fqdn = registerOutput<String?>('fqdn');
+         'azure-native:offazure:HypervHostController',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    fqdn = registerOutput<String?>('fqdn');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.runAsAccountId = registerOutput<String?>('runAsAccountId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
-    this.version = registerOutput<String>('version');
+    provisioningState = registerOutput<String?>('provisioningState');
+    runAsAccountId = registerOutput<String?>('runAsAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    version = registerOutput<String>('version');
   }
 }

@@ -4,14 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SnapshotOptions
 class SnapshotOptions {
-  /// <p>The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is <code>0</code> hours.</p>
+  /// &lt;p&gt;The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is &lt;code&gt;0&lt;/code&gt; hours.&lt;/p&gt;
   final pulumi.Input<int>? automatedSnapshotStartHour;
 
   /// Creates a new [SnapshotOptions].
-  /// [automatedSnapshotStartHour] <p>The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is <code>0</code> hours.</p>
-  SnapshotOptions({
-    this.automatedSnapshotStartHour,
-  });
+  /// [automatedSnapshotStartHour] &lt;p&gt;The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is &lt;code&gt;0&lt;/code&gt; hours.&lt;/p&gt;
+  SnapshotOptions({this.automatedSnapshotStartHour});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class SnapshotOptions {
 
   factory SnapshotOptions.fromMap(Map<String, dynamic> map) {
     return SnapshotOptions(
-      automatedSnapshotStartHour: map['automatedSnapshotStartHour'] == null ? null : (map['automatedSnapshotStartHour']! as int).input(),
+      automatedSnapshotStartHour: (() {
+        final guardedValue = map['automatedSnapshotStartHour'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StateErrorResponse {
   /// Provides specifics about the error.
   final pulumi.Input<String> details;
+
   /// The type of this state error.
   final pulumi.Input<String> type;
 
   /// Creates a new [StateErrorResponse].
   /// [details] Provides specifics about the error.
   /// [type] The type of this state error.
-  StateErrorResponse({
-    required this.details,
-    required this.type,
-  });
+  StateErrorResponse({required this.details, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'details': details,
-      'type': type,
-    };
+    return <String, dynamic>{'details': details, 'type': type};
   }
 
   factory StateErrorResponse.fromMap(Map<String, dynamic> map) {
     return StateErrorResponse(
-      details: (map['details'] as String).input(),
-      type: (map['type'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum AttachedDiskInterface {
   nvme("NVME"),
   scsi("SCSI");
 
-  const AttachedDiskInterface(this.value);
-  final String value;
+  const AttachedDiskInterface(this.wireValue);
+  final String wireValue;
 
   static AttachedDiskInterface fromValue(String value) {
     for (final item in AttachedDiskInterface.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttachedDiskInterface value: $value');
   }
 }
-

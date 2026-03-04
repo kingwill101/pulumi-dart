@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-vpc-multiple-similar-subnet-types
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC multiple similar subnet types example in Dart.

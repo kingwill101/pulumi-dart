@@ -21,16 +21,20 @@ class SecretState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// The time at which the Secret was created.
   final pulumi.Input<String>? createTime;
   final pulumi.Input<bool>? deletionProtection;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   /// Only one of `expire_time` or `ttl` can be provided.
   final pulumi.Input<String>? expireTime;
+
   /// The labels assigned to this Secret.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
   /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -43,35 +47,45 @@ class SecretState {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The resource name of the Secret. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}`
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The replication policy of the secret data attached to the Secret. It cannot be changed
   /// after the Secret has been created.
   /// Structure is documented below.
   final pulumi.Input<SecretReplication>? replication;
+
   /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
   /// Structure is documented below.
   final pulumi.Input<SecretRotation>? rotation;
+
   /// This must be unique within the project.
   final pulumi.Input<String>? secretId;
+
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
   /// Structure is documented below.
   final pulumi.Input<List<SecretTopic>>? topics;
+
   /// The TTL for the Secret.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   /// Only one of `ttl` or `expire_time` can be provided.
   final pulumi.Input<String>? ttl;
+
   /// Mapping from version alias to version name.
   /// A version alias is a string with a maximum length of 63 characters and can contain
   /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
@@ -80,9 +94,10 @@ class SecretState {
   /// An object containing a list of "key": value pairs. Example:
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final pulumi.Input<Map<String, String>>? versionAliases;
+
   /// Secret Version TTL after destruction request.
   /// This is a part of the delayed delete feature on Secret Version.
-  /// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+  /// For secret with versionDestroyTtl&gt;0, version destruction doesn't happen immediately
   /// on calling destroy instead the version goes to a disabled state and
   /// the actual destruction happens after this TTL expires.
   final pulumi.Input<String>? versionDestroyTtl;
@@ -139,11 +154,30 @@ class SecretState {
       'name': ?name,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
-      'replication': ?pulumi.Input.mapOptionalInputValue<SecretReplication, Map<String, dynamic>>(replication, (value) => value.toMap()),
-      'rotation': ?pulumi.Input.mapOptionalInputValue<SecretRotation, Map<String, dynamic>>(rotation, (value) => value.toMap()),
+      'replication':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretReplication,
+            Map<String, dynamic>
+          >(replication, (value) => value.toMap()),
+      'rotation':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretRotation,
+            Map<String, dynamic>
+          >(rotation, (value) => value.toMap()),
       'secretId': ?secretId,
       'tags': ?tags,
-      'topics': ?pulumi.Input.mapOptionalInputValue<List<SecretTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<SecretTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'topics':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SecretTopic>,
+            List<Map<String, dynamic>>
+          >(
+            topics,
+            (value) =>
+                pulumi.Input.encodeList<SecretTopic, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'ttl': ?ttl,
       'versionAliases': ?versionAliases,
       'versionDestroyTtl': ?versionDestroyTtl,
@@ -152,25 +186,122 @@ class SecretState {
 
   factory SecretState.fromMap(Map<String, dynamic> map) {
     return SecretState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      replication: map['replication'] == null ? null : (SecretReplication.fromMap((map['replication']! as Map).cast<String, dynamic>())).input(),
-      rotation: map['rotation'] == null ? null : (SecretRotation.fromMap((map['rotation']! as Map).cast<String, dynamic>())).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<SecretTopic>(map['topics']!, (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
-      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases']! as Map).cast<String, String>()).input(),
-      versionDestroyTtl: map['versionDestroyTtl'] == null ? null : (map['versionDestroyTtl']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      effectiveAnnotations: (() {
+        final guardedValue = map['effectiveAnnotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      replication: (() {
+        final guardedValue = map['replication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretReplication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rotation: (() {
+        final guardedValue = map['rotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      secretId: (() {
+        final guardedValue = map['secretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      topics: (() {
+        final guardedValue = map['topics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SecretTopic>(
+            guardedValue,
+            (value) =>
+                SecretTopic.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionAliases: (() {
+        final guardedValue = map['versionAliases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      versionDestroyTtl: (() {
+        final guardedValue = map['versionDestroyTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

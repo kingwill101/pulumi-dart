@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings {
   /// Average bitrate in bits/second.
   final pulumi.Input<double>? bitrate;
+
   /// Mono, Stereo, or 5.1 channel layout.
   final pulumi.Input<String>? codingMode;
+
   /// Set to "broadcasterMixedAd" when input contains pre-mixed main audio + AD (narration) as a stereo pair.
   final pulumi.Input<String>? inputType;
+
   /// AAC profile.
   final pulumi.Input<String>? profile;
+
   /// The rate control mode.
   final pulumi.Input<String>? rateControlMode;
+
   /// Sets LATM/LOAS AAC output for raw containers.
   final pulumi.Input<String>? rawFormat;
+
   /// Sample rate in Hz.
   final pulumi.Input<double>? sampleRate;
+
   /// Use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
   final pulumi.Input<String>? spec;
+
   /// VBR Quality Level - Only used if rateControlMode is VBR.
   final pulumi.Input<String>? vbrQuality;
 
@@ -58,18 +66,55 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings {
     };
   }
 
-  factory ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings(
-      bitrate: map['bitrate'] == null ? null : ((map['bitrate'] as double).input()).input(),
-      codingMode: map['codingMode'] == null ? null : ((map['codingMode'] as String).input()).input(),
-      inputType: map['inputType'] == null ? null : ((map['inputType'] as String).input()).input(),
-      profile: map['profile'] == null ? null : ((map['profile'] as String).input()).input(),
-      rateControlMode: map['rateControlMode'] == null ? null : ((map['rateControlMode'] as String).input()).input(),
-      rawFormat: map['rawFormat'] == null ? null : ((map['rawFormat'] as String).input()).input(),
-      sampleRate: map['sampleRate'] == null ? null : ((map['sampleRate'] as double).input()).input(),
-      spec: map['spec'] == null ? null : ((map['spec'] as String).input()).input(),
-      vbrQuality: map['vbrQuality'] == null ? null : ((map['vbrQuality'] as String).input()).input(),
+      bitrate: (() {
+        final guardedValue = map['bitrate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      codingMode: (() {
+        final guardedValue = map['codingMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputType: (() {
+        final guardedValue = map['inputType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profile: (() {
+        final guardedValue = map['profile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rateControlMode: (() {
+        final guardedValue = map['rateControlMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rawFormat: (() {
+        final guardedValue = map['rawFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sampleRate: (() {
+        final guardedValue = map['sampleRate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vbrQuality: (() {
+        final guardedValue = map['vbrQuality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

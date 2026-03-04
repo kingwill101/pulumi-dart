@@ -24,17 +24,23 @@ class DiAlarmRuleNotificationSettingsNotificationChannel {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channels': ?channels,
-      'severity': ?severity,
-    };
+    return <String, dynamic>{'channels': ?channels, 'severity': ?severity};
   }
 
-  factory DiAlarmRuleNotificationSettingsNotificationChannel.fromMap(Map<String, dynamic> map) {
+  factory DiAlarmRuleNotificationSettingsNotificationChannel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiAlarmRuleNotificationSettingsNotificationChannel(
-      channels: map['channels'] == null ? null : ((map['channels']! as List).cast<String>()).input(),
-      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      channels: (() {
+        final guardedValue = map['channels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

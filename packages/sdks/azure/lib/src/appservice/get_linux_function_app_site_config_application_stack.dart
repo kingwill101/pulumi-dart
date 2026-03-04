@@ -5,17 +5,24 @@ import 'get_linux_function_app_site_config_application_stack_docker.dart';
 
 class GetLinuxFunctionAppSiteConfigApplicationStack {
   /// One or more `docker` blocks as defined below.
-  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigApplicationStackDocker>> dockers;
+  final pulumi.Input<List<GetLinuxFunctionAppSiteConfigApplicationStackDocker>>
+  dockers;
+
   /// The version of .NET used.
   final pulumi.Input<String> dotnetVersion;
+
   /// The Version of Java used.
   final pulumi.Input<String> javaVersion;
+
   /// The version of Node used.
   final pulumi.Input<String> nodeVersion;
+
   /// The version of PowerShell Core used.
   final pulumi.Input<String> powershellCoreVersion;
+
   /// The version of Python used.
   final pulumi.Input<String> pythonVersion;
+
   /// Does the Linux Function App use a custom runtime?
   final pulumi.Input<bool> useCustomRuntime;
   final pulumi.Input<bool> useDotnetIsolatedRuntime;
@@ -42,7 +49,18 @@ class GetLinuxFunctionAppSiteConfigApplicationStack {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dockers': pulumi.Input.mapInputValue<List<GetLinuxFunctionAppSiteConfigApplicationStackDocker>, List<Map<String, dynamic>>>(dockers, (value) => pulumi.Input.encodeList<GetLinuxFunctionAppSiteConfigApplicationStackDocker, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dockers':
+          pulumi.Input.mapInputValue<
+            List<GetLinuxFunctionAppSiteConfigApplicationStackDocker>,
+            List<Map<String, dynamic>>
+          >(
+            dockers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLinuxFunctionAppSiteConfigApplicationStackDocker,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dotnetVersion': dotnetVersion,
       'javaVersion': javaVersion,
       'nodeVersion': nodeVersion,
@@ -53,17 +71,32 @@ class GetLinuxFunctionAppSiteConfigApplicationStack {
     };
   }
 
-  factory GetLinuxFunctionAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
+  factory GetLinuxFunctionAppSiteConfigApplicationStack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLinuxFunctionAppSiteConfigApplicationStack(
-      dockers: (pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigApplicationStackDocker>(map['dockers'], (value) => GetLinuxFunctionAppSiteConfigApplicationStackDocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dotnetVersion: (map['dotnetVersion'] as String).input(),
-      javaVersion: (map['javaVersion'] as String).input(),
-      nodeVersion: (map['nodeVersion'] as String).input(),
-      powershellCoreVersion: (map['powershellCoreVersion'] as String).input(),
-      pythonVersion: (map['pythonVersion'] as String).input(),
-      useCustomRuntime: (map['useCustomRuntime'] as bool).input(),
-      useDotnetIsolatedRuntime: (map['useDotnetIsolatedRuntime'] as bool).input(),
+      dockers: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetLinuxFunctionAppSiteConfigApplicationStackDocker
+        >(
+          map['dockers']!,
+          (value) =>
+              GetLinuxFunctionAppSiteConfigApplicationStackDocker.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      dotnetVersion: pulumi.Input.fromValue(map['dotnetVersion'] as String),
+      javaVersion: pulumi.Input.fromValue(map['javaVersion'] as String),
+      nodeVersion: pulumi.Input.fromValue(map['nodeVersion'] as String),
+      powershellCoreVersion: pulumi.Input.fromValue(
+        map['powershellCoreVersion'] as String,
+      ),
+      pythonVersion: pulumi.Input.fromValue(map['pythonVersion'] as String),
+      useCustomRuntime: pulumi.Input.fromValue(map['useCustomRuntime'] as bool),
+      useDotnetIsolatedRuntime: pulumi.Input.fromValue(
+        map['useDotnetIsolatedRuntime'] as bool,
+      ),
     );
   }
 }
-

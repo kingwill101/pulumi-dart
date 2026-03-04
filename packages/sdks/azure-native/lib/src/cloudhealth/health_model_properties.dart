@@ -10,20 +10,29 @@ class HealthModelProperties {
 
   /// Creates a new [HealthModelProperties].
   /// [discovery] Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
-  HealthModelProperties({
-    this.discovery,
-  });
+  HealthModelProperties({this.discovery});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'discovery': ?pulumi.Input.mapOptionalInputValue<ModelDiscoverySettings, Map<String, dynamic>>(discovery, (value) => value.toMap()),
+      'discovery':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModelDiscoverySettings,
+            Map<String, dynamic>
+          >(discovery, (value) => value.toMap()),
     };
   }
 
   factory HealthModelProperties.fromMap(Map<String, dynamic> map) {
     return HealthModelProperties(
-      discovery: map['discovery'] == null ? null : (ModelDiscoverySettings.fromMap((map['discovery']! as Map).cast<String, dynamic>())).input(),
+      discovery: (() {
+        final guardedValue = map['discovery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModelDiscoverySettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

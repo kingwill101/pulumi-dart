@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIdentityProperties {
   /// The type of managed identity.
   final pulumi.Input<String> type;
+
   /// The resource id of the managed identity.
   final pulumi.Input<String>? userAssignedIdentityResourceId;
 
@@ -26,9 +27,12 @@ class ManagedIdentityProperties {
 
   factory ManagedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityProperties(
-      type: (map['type'] as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userAssignedIdentityResourceId: (() {
+        final guardedValue = map['userAssignedIdentityResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterPolicyArgs {
   /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
   final pulumi.Input<String> clusterArn;
+
   /// Resource policy for cluster.
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,10 +36,13 @@ class ClusterPolicyArgs {
 
   factory ClusterPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ClusterPolicyArgs(
-      clusterArn: (map['clusterArn'] as String).input(),
-      policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      clusterArn: pulumi.Input.fromValue(map['clusterArn'] as String),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

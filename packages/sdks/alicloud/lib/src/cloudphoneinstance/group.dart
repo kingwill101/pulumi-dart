@@ -8,7 +8,7 @@ import 'group_state.dart';
 ///
 /// For information about Cloud Phone Instance Group and how to use it, see [What is Instance Group](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/CreateAndroidInstanceGroup).
 ///
-/// > **NOTE:** Available since v1.243.0.
+/// &gt; **NOTE:** Available since v1.243.0.
 ///
 /// ## Example Usage
 ///
@@ -335,40 +335,54 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// The number of instance groups. The default value is 1 and the maximum value is 100.
   late final pulumi.Output<int?> amount;
+
   /// Whether to pay automatically. The default is false.
   late final pulumi.Output<bool?> autoPay;
+
   /// Whether to enable automatic renewal. The default is false.
   late final pulumi.Output<bool?> autoRenew;
+
   /// The billing type.
   late final pulumi.Output<String?> chargeType;
+
   /// Whether to enable GPU acceleration. The default value is false.
   /// - true: On.
   /// - false: closed.
   late final pulumi.Output<bool?> gpuAcceleration;
+
   /// The image ID.
   late final pulumi.Output<String> imageId;
+
   /// The instance group name
   ///
-  /// > **NOTE:** >
+  /// &gt; **NOTE:** &gt;
   ///
-  /// > **NOTE:** - The instance group name must be no more than 30 characters in length. Start with an uppercase/lowercase letter or Chinese. It cannot start with http:// or https://. Only Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) are supported.
+  /// &gt; **NOTE:** - The instance group name must be no more than 30 characters in length. Start with an uppercase/lowercase letter or Chinese. It cannot start with http:// or https://. Only Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) are supported.
   late final pulumi.Output<String?> instanceGroupName;
+
   /// Instance group specifications.
   late final pulumi.Output<String> instanceGroupSpec;
+
   /// The number of instances in the instance group. The maximum value is 100.
   late final pulumi.Output<int?> numberOfInstances;
+
   /// The network ID.
-  /// - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
-  /// - Create a VPC instance: the network ID is required. Enter the network ID of `VPC` on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a VPC network, you need to create a network first.
+  /// - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console&gt; Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
+  /// - Create a VPC instance: the network ID is required. Enter the network ID of `VPC` on the [cloud mobile phone console&gt; Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a VPC network, you need to create a network first.
   late final pulumi.Output<String?> officeSiteId;
+
   /// The duration of the resource purchase. The unit is specified by PeriodUnit.
   late final pulumi.Output<int?> period;
+
   /// The unit of time for purchasing resources.
   late final pulumi.Output<String?> periodUnit;
+
   /// The policy ID. You can query the list of policies by calling ListPolicyGroups.
   late final pulumi.Output<String?> policyGroupId;
+
   /// Instance group status
   late final pulumi.Output<String> status;
+
   /// The vSwitch ID.
   late final pulumi.Output<String?> vswitchId;
 
@@ -376,39 +390,32 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_cloudphoneinstance_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(
-    String name, {
-    GroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cloudphoneinstance/group:Group',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amount = registerOutput<int?>('amount');
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.chargeType = registerOutput<String?>('chargeType');
-    this.gpuAcceleration = registerOutput<bool?>('gpuAcceleration');
-    this.imageId = registerOutput<String>('imageId');
-    this.instanceGroupName = registerOutput<String?>('instanceGroupName');
-    this.instanceGroupSpec = registerOutput<String>('instanceGroupSpec');
-    this.numberOfInstances = registerOutput<int?>('numberOfInstances');
-    this.officeSiteId = registerOutput<String?>('officeSiteId');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.policyGroupId = registerOutput<String?>('policyGroupId');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cloudphoneinstance/group:Group',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    amount = registerOutput<int?>('amount');
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    chargeType = registerOutput<String?>('chargeType');
+    gpuAcceleration = registerOutput<bool?>('gpuAcceleration');
+    imageId = registerOutput<String>('imageId');
+    instanceGroupName = registerOutput<String?>('instanceGroupName');
+    instanceGroupSpec = registerOutput<String>('instanceGroupSpec');
+    numberOfInstances = registerOutput<int?>('numberOfInstances');
+    officeSiteId = registerOutput<String?>('officeSiteId');
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    policyGroupId = registerOutput<String?>('policyGroupId');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(
-    String name,
-    pulumi.Input<String> id, {
-    GroupState? state,
-  }) {
+  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -421,25 +428,25 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudphoneinstance/group:Group',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amount = registerOutput<int?>('amount');
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.chargeType = registerOutput<String?>('chargeType');
-    this.gpuAcceleration = registerOutput<bool?>('gpuAcceleration');
-    this.imageId = registerOutput<String>('imageId');
-    this.instanceGroupName = registerOutput<String?>('instanceGroupName');
-    this.instanceGroupSpec = registerOutput<String>('instanceGroupSpec');
-    this.numberOfInstances = registerOutput<int?>('numberOfInstances');
-    this.officeSiteId = registerOutput<String?>('officeSiteId');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.policyGroupId = registerOutput<String?>('policyGroupId');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:cloudphoneinstance/group:Group',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amount = registerOutput<int?>('amount');
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    chargeType = registerOutput<String?>('chargeType');
+    gpuAcceleration = registerOutput<bool?>('gpuAcceleration');
+    imageId = registerOutput<String>('imageId');
+    instanceGroupName = registerOutput<String?>('instanceGroupName');
+    instanceGroupSpec = registerOutput<String>('instanceGroupSpec');
+    numberOfInstances = registerOutput<int?>('numberOfInstances');
+    officeSiteId = registerOutput<String?>('officeSiteId');
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    policyGroupId = registerOutput<String?>('policyGroupId');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 }

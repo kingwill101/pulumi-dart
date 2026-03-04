@@ -2,16 +2,22 @@ enum NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta {
   default_("DEFAULT"),
   tier1("TIER_1");
 
-  const NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta(this.value);
-  final String value;
+  const NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta fromValue(String value) {
-    for (final item in NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta.values) {
-      if (item.value == value) {
+  static NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta value: $value',
+    );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketServerPropertiesResponse {
   /// Certificate Common Name taken from the certificate installed on the bucket server
   final pulumi.Input<String> certificateCommonName;
+
   /// The bucket server's certificate expiry date.
   final pulumi.Input<String> certificateExpiryDate;
+
   /// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
   final pulumi.Input<String>? fqdn;
+
   /// The bucket server's IPv4 address
   final pulumi.Input<String> ipAddress;
 
@@ -36,11 +39,18 @@ class BucketServerPropertiesResponse {
 
   factory BucketServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BucketServerPropertiesResponse(
-      certificateCommonName: (map['certificateCommonName'] as String).input(),
-      certificateExpiryDate: (map['certificateExpiryDate'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
+      certificateCommonName: pulumi.Input.fromValue(
+        map['certificateCommonName'] as String,
+      ),
+      certificateExpiryDate: pulumi.Input.fromValue(
+        map['certificateExpiryDate'] as String,
+      ),
+      fqdn: (() {
+        final guardedValue = map['fqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );
   }
 }
-

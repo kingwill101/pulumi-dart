@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryImageBuildUlimit {
   /// soft limit
   final pulumi.Input<int> hard;
+
   /// type of ulimit, e.g. `nofile`
   final pulumi.Input<String> name;
+
   /// hard limit
   final pulumi.Input<int> soft;
 
@@ -21,19 +23,14 @@ class RegistryImageBuildUlimit {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hard': hard,
-      'name': name,
-      'soft': soft,
-    };
+    return <String, dynamic>{'hard': hard, 'name': name, 'soft': soft};
   }
 
   factory RegistryImageBuildUlimit.fromMap(Map<String, dynamic> map) {
     return RegistryImageBuildUlimit(
-      hard: (map['hard'] as int).input(),
-      name: (map['name'] as String).input(),
-      soft: (map['soft'] as int).input(),
+      hard: pulumi.Input.fromValue(map['hard'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      soft: pulumi.Input.fromValue(map['soft'] as int),
     );
   }
 }
-

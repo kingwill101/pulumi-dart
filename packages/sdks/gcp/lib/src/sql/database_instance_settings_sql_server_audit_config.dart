@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceSettingsSqlServerAuditConfig {
   /// The name of the destination bucket (e.g., gs://mybucket).
   final pulumi.Input<String>? bucket;
+
   /// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   final pulumi.Input<String>? retentionInterval;
+
   /// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   final pulumi.Input<String>? uploadInterval;
 
@@ -28,12 +30,25 @@ class DatabaseInstanceSettingsSqlServerAuditConfig {
     };
   }
 
-  factory DatabaseInstanceSettingsSqlServerAuditConfig.fromMap(Map<String, dynamic> map) {
+  factory DatabaseInstanceSettingsSqlServerAuditConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseInstanceSettingsSqlServerAuditConfig(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      retentionInterval: map['retentionInterval'] == null ? null : (map['retentionInterval']! as String).input(),
-      uploadInterval: map['uploadInterval'] == null ? null : (map['uploadInterval']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionInterval: (() {
+        final guardedValue = map['retentionInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uploadInterval: (() {
+        final guardedValue = map['uploadInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

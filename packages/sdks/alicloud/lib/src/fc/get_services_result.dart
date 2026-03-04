@@ -7,12 +7,15 @@ import 'get_services_service.dart';
 class GetServicesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of FC services ids.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of FC services names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of FC services. Each element contains the following attributes:
   final List<GetServicesService> services;
 
@@ -39,7 +42,11 @@ class GetServicesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'services': pulumi.Input.encodeList<GetServicesService, Map<String, dynamic>>(services, (value) => value.toMap()),
+      'services':
+          pulumi.Input.encodeList<GetServicesService, Map<String, dynamic>>(
+            services,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -47,11 +54,22 @@ class GetServicesResult {
     return GetServicesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      services: pulumi.Input.decodeList<GetServicesService>(map['services'], (value) => GetServicesService.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      services: pulumi.Input.decodeList<GetServicesService>(
+        map['services']!,
+        (value) =>
+            GetServicesService.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

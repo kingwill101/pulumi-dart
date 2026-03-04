@@ -4,16 +4,20 @@ enum AllocationAggregateReservationVmFamilyComputeBeta {
   vmFamilyCloudTpuLitePodSliceCt5lp("VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP"),
   vmFamilyCloudTpuPodSliceCt4p("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P");
 
-  const AllocationAggregateReservationVmFamilyComputeBeta(this.value);
-  final String value;
+  const AllocationAggregateReservationVmFamilyComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static AllocationAggregateReservationVmFamilyComputeBeta fromValue(String value) {
-    for (final item in AllocationAggregateReservationVmFamilyComputeBeta.values) {
-      if (item.value == value) {
+  static AllocationAggregateReservationVmFamilyComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in AllocationAggregateReservationVmFamilyComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AllocationAggregateReservationVmFamilyComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AllocationAggregateReservationVmFamilyComputeBeta value: $value',
+    );
   }
 }
-

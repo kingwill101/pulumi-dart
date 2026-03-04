@@ -6,9 +6,9 @@ import 'dedicated_host_group_state.dart';
 ///
 /// For information about ApsaraDB for MyBase Dedicated Host Group and how to use it, see [What is Dedicated Host Group](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostgroup).
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
-/// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+/// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
 ///
 /// ## Example Usage
 ///
@@ -210,21 +210,29 @@ import 'dedicated_host_group_state.dart';
 class DedicatedHostGroup extends pulumi.CustomResource {
   /// AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
   late final pulumi.Output<String> allocationPolicy;
+
   /// The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
   late final pulumi.Output<int> cpuAllocationRatio;
+
   /// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> dedicatedHostGroupDesc;
+
   /// The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
   late final pulumi.Output<int> diskAllocationRatio;
+
   /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
   late final pulumi.Output<String> engine;
+
   /// The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
   late final pulumi.Output<String> hostReplacePolicy;
+
   /// The Memory Allocation Ratio of the Dedicated Host Group.
   late final pulumi.Output<int> memAllocationRatio;
+
   /// Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
   /// **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
   late final pulumi.Output<bool> openPermission;
+
   /// The virtual private cloud (VPC) ID of the dedicated cluster.
   late final pulumi.Output<String> vpcId;
 
@@ -237,20 +245,20 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     DedicatedHostGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationPolicy = registerOutput<String>('allocationPolicy');
-    this.cpuAllocationRatio = registerOutput<int>('cpuAllocationRatio');
-    this.dedicatedHostGroupDesc = registerOutput<String?>('dedicatedHostGroupDesc');
-    this.diskAllocationRatio = registerOutput<int>('diskAllocationRatio');
-    this.engine = registerOutput<String>('engine');
-    this.hostReplacePolicy = registerOutput<String>('hostReplacePolicy');
-    this.memAllocationRatio = registerOutput<int>('memAllocationRatio');
-    this.openPermission = registerOutput<bool>('openPermission');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationPolicy = registerOutput<String>('allocationPolicy');
+    cpuAllocationRatio = registerOutput<int>('cpuAllocationRatio');
+    dedicatedHostGroupDesc = registerOutput<String?>('dedicatedHostGroupDesc');
+    diskAllocationRatio = registerOutput<int>('diskAllocationRatio');
+    engine = registerOutput<String>('engine');
+    hostReplacePolicy = registerOutput<String>('hostReplacePolicy');
+    memAllocationRatio = registerOutput<int>('memAllocationRatio');
+    openPermission = registerOutput<bool>('openPermission');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [DedicatedHostGroup] resource's state with the given [name] and [id].
@@ -271,19 +279,19 @@ class DedicatedHostGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationPolicy = registerOutput<String>('allocationPolicy');
-    this.cpuAllocationRatio = registerOutput<int>('cpuAllocationRatio');
-    this.dedicatedHostGroupDesc = registerOutput<String?>('dedicatedHostGroupDesc');
-    this.diskAllocationRatio = registerOutput<int>('diskAllocationRatio');
-    this.engine = registerOutput<String>('engine');
-    this.hostReplacePolicy = registerOutput<String>('hostReplacePolicy');
-    this.memAllocationRatio = registerOutput<int>('memAllocationRatio');
-    this.openPermission = registerOutput<bool>('openPermission');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationPolicy = registerOutput<String>('allocationPolicy');
+    cpuAllocationRatio = registerOutput<int>('cpuAllocationRatio');
+    dedicatedHostGroupDesc = registerOutput<String?>('dedicatedHostGroupDesc');
+    diskAllocationRatio = registerOutput<int>('diskAllocationRatio');
+    engine = registerOutput<String>('engine');
+    hostReplacePolicy = registerOutput<String>('hostReplacePolicy');
+    memAllocationRatio = registerOutput<int>('memAllocationRatio');
+    openPermission = registerOutput<bool>('openPermission');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

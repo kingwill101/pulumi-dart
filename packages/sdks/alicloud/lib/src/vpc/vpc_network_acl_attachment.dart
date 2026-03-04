@@ -8,9 +8,9 @@ import 'vpc_network_acl_attachment_state.dart';
 ///
 /// For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
 ///
-/// > **NOTE:** Available since v1.193.0.
+/// &gt; **NOTE:** Available since v1.193.0.
 ///
-/// > **WARNING:** Do not mix the use of this resource with the `resources` field in the `alicloud.vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
+/// &gt; **WARNING:** Do not mix the use of this resource with the `resources` field in the `alicloud.vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
 ///
 /// ## Example Usage
 ///
@@ -283,10 +283,13 @@ import 'vpc_network_acl_attachment_state.dart';
 class VpcNetworkAclAttachment extends pulumi.CustomResource {
   /// The ID of the network ACL instance.
   late final pulumi.Output<String> networkAclId;
+
   /// The ID of the associated  vswitch instance.
   late final pulumi.Output<String> resourceId;
+
   /// The type of the associated resource. Valid values: `VSwitch`.
   late final pulumi.Output<String> resourceType;
+
   /// The status of the Network Acl Attachment.
   late final pulumi.Output<String> status;
 
@@ -299,15 +302,15 @@ class VpcNetworkAclAttachment extends pulumi.CustomResource {
     VpcNetworkAclAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkAclId = registerOutput<String>('networkAclId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkAclId = registerOutput<String>('networkAclId');
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [VpcNetworkAclAttachment] resource's state with the given [name] and [id].
@@ -328,14 +331,14 @@ class VpcNetworkAclAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkAclId = registerOutput<String>('networkAclId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkAclId = registerOutput<String>('networkAclId');
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
   }
 }

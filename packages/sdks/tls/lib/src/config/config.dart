@@ -21,12 +21,16 @@ class TlsConfig {
   /// Proxy used by resources and data sources that connect to external endpoints.
   Proxy? get proxy {
     final raw = _raw('proxy');
-    return raw == null ? null : Proxy.fromMap((jsonDecode(raw) as Map).cast<String, dynamic>());
+    return (() {
+      final guardedValue = raw;
+      if (guardedValue == null) return null;
+      return Proxy.fromMap(
+        (jsonDecode(guardedValue) as Map).cast<String, dynamic>(),
+      );
+    })();
   }
 
   bool get proxyIsSecret => _isSecret('proxy');
-
 }
 
 final config = TlsConfig();
-

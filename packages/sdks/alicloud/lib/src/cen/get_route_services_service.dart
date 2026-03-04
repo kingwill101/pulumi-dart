@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteServicesService {
   /// The region of the network instances that access the cloud services.
   final pulumi.Input<String> accessRegionId;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
+
   /// The IP address of the cloud service.
   final pulumi.Input<List<String>> cidrs;
+
   /// The description of the cloud service.
   final pulumi.Input<String> description;
+
   /// The domain name or IP address of the cloud service.
   final pulumi.Input<String> host;
+
   /// The region of the cloud service.
   final pulumi.Input<String> hostRegionId;
+
   /// The VPC associated with the cloud service.
   final pulumi.Input<String> hostVpcId;
+
   /// The ID of the route service.
   final pulumi.Input<String> id;
+
   /// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
   final pulumi.Input<String> status;
+
   /// The update interval. Default value: 5. The value cannot be modified.
   final pulumi.Input<String> updateInterval;
 
@@ -65,17 +74,16 @@ class GetRouteServicesService {
 
   factory GetRouteServicesService.fromMap(Map<String, dynamic> map) {
     return GetRouteServicesService(
-      accessRegionId: (map['accessRegionId'] as String).input(),
-      cenId: (map['cenId'] as String).input(),
-      cidrs: ((map['cidrs'] as List).cast<String>()).input(),
-      description: (map['description'] as String).input(),
-      host: (map['host'] as String).input(),
-      hostRegionId: (map['hostRegionId'] as String).input(),
-      hostVpcId: (map['hostVpcId'] as String).input(),
-      id: (map['id'] as String).input(),
-      status: (map['status'] as String).input(),
-      updateInterval: (map['updateInterval'] as String).input(),
+      accessRegionId: pulumi.Input.fromValue(map['accessRegionId'] as String),
+      cenId: pulumi.Input.fromValue(map['cenId'] as String),
+      cidrs: pulumi.Input.fromValue((map['cidrs'] as List).cast<String>()),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      hostRegionId: pulumi.Input.fromValue(map['hostRegionId'] as String),
+      hostVpcId: pulumi.Input.fromValue(map['hostVpcId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      updateInterval: pulumi.Input.fromValue(map['updateInterval'] as String),
     );
   }
 }
-

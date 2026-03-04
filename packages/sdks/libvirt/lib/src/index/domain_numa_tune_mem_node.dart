@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainNumaTuneMemNode {
   /// Sets the cell ID for the NUMA nodes, identifying the specific physical memory locality.
   final pulumi.Input<double> cellId;
+
   /// Defines the allocation mode for memory on NUMA nodes, which can optimize performance based on architecture.
   final pulumi.Input<String> mode;
+
   /// Specifies the nodeset for memory allocation within the NUMA architecture, impacting memory distribution.
   final pulumi.Input<String> nodeset;
 
@@ -30,10 +32,9 @@ class DomainNumaTuneMemNode {
 
   factory DomainNumaTuneMemNode.fromMap(Map<String, dynamic> map) {
     return DomainNumaTuneMemNode(
-      cellId: (map['cellId'] as double).input(),
-      mode: (map['mode'] as String).input(),
-      nodeset: (map['nodeset'] as String).input(),
+      cellId: pulumi.Input.fromValue(map['cellId'] as double),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
+      nodeset: pulumi.Input.fromValue(map['nodeset'] as String),
     );
   }
 }
-

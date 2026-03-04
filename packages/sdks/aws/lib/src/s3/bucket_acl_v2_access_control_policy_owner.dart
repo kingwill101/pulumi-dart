@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAclV2AccessControlPolicyOwner {
   /// Display name of the owner.
   final pulumi.Input<String>? displayName;
+
   /// ID of the owner.
   final pulumi.Input<String> id;
 
   /// Creates a new [BucketAclV2AccessControlPolicyOwner].
   /// [displayName] Display name of the owner.
   /// [id] ID of the owner.
-  BucketAclV2AccessControlPolicyOwner({
-    this.displayName,
-    required this.id,
-  });
+  BucketAclV2AccessControlPolicyOwner({this.displayName, required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'displayName': ?displayName,
-      'id': id,
-    };
+    return <String, dynamic>{'displayName': ?displayName, 'id': id};
   }
 
-  factory BucketAclV2AccessControlPolicyOwner.fromMap(Map<String, dynamic> map) {
+  factory BucketAclV2AccessControlPolicyOwner.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketAclV2AccessControlPolicyOwner(
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
-      id: (map['id'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

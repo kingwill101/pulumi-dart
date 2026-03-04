@@ -1,5 +1,3 @@
-library module_databox;
-
 export 'databox/account_credential_details_response.dart';
 export 'databox/additional_error_info_response.dart';
 export 'databox/address_type.dart';

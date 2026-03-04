@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduleArgs {
   /// Name of the pool.
   final pulumi.Input<String> poolName;
+
   /// The name of the project.
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the schedule that uniquely identifies it.
   final pulumi.Input<String> scheduleName;
+
   /// The maximum number of resources to return from the operation. Example: '$top=10'.
   final pulumi.Input<int>? top;
 
@@ -44,12 +48,17 @@ class GetScheduleArgs {
 
   factory GetScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduleArgs(
-      poolName: (map['poolName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduleName: (map['scheduleName'] as String).input(),
-      top: map['top'] == null ? null : (map['top']! as int).input(),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scheduleName: pulumi.Input.fromValue(map['scheduleName'] as String),
+      top: (() {
+        final guardedValue = map['top'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

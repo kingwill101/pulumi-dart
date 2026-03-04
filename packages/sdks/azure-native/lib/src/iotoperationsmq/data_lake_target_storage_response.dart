@@ -9,8 +9,10 @@ import 'data_lake_service_storage_response.dart';
 class DataLakeTargetStorageResponse {
   /// DataLake service storage details.
   final pulumi.Input<DataLakeServiceStorageResponse>? datalakeStorage;
+
   /// Fabric one lake storage details.
   final pulumi.Input<DataLakeFabricStorageResponse>? fabricOneLake;
+
   /// Local storage details.
   final pulumi.Input<DataLakeLocalStorageResponse>? localStorage;
 
@@ -26,18 +28,53 @@ class DataLakeTargetStorageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datalakeStorage': ?pulumi.Input.mapOptionalInputValue<DataLakeServiceStorageResponse, Map<String, dynamic>>(datalakeStorage, (value) => value.toMap()),
-      'fabricOneLake': ?pulumi.Input.mapOptionalInputValue<DataLakeFabricStorageResponse, Map<String, dynamic>>(fabricOneLake, (value) => value.toMap()),
-      'localStorage': ?pulumi.Input.mapOptionalInputValue<DataLakeLocalStorageResponse, Map<String, dynamic>>(localStorage, (value) => value.toMap()),
+      'datalakeStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataLakeServiceStorageResponse,
+            Map<String, dynamic>
+          >(datalakeStorage, (value) => value.toMap()),
+      'fabricOneLake':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataLakeFabricStorageResponse,
+            Map<String, dynamic>
+          >(fabricOneLake, (value) => value.toMap()),
+      'localStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataLakeLocalStorageResponse,
+            Map<String, dynamic>
+          >(localStorage, (value) => value.toMap()),
     };
   }
 
   factory DataLakeTargetStorageResponse.fromMap(Map<String, dynamic> map) {
     return DataLakeTargetStorageResponse(
-      datalakeStorage: map['datalakeStorage'] == null ? null : (DataLakeServiceStorageResponse.fromMap((map['datalakeStorage']! as Map).cast<String, dynamic>())).input(),
-      fabricOneLake: map['fabricOneLake'] == null ? null : (DataLakeFabricStorageResponse.fromMap((map['fabricOneLake']! as Map).cast<String, dynamic>())).input(),
-      localStorage: map['localStorage'] == null ? null : (DataLakeLocalStorageResponse.fromMap((map['localStorage']! as Map).cast<String, dynamic>())).input(),
+      datalakeStorage: (() {
+        final guardedValue = map['datalakeStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataLakeServiceStorageResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fabricOneLake: (() {
+        final guardedValue = map['fabricOneLake'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataLakeFabricStorageResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      localStorage: (() {
+        final guardedValue = map['localStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataLakeLocalStorageResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

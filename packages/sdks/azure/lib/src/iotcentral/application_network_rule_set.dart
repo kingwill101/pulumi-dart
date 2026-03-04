@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_network_rule_set_args.dart';
-import 'application_network_rule_set_ip_rule.dart';
 import 'application_network_rule_set_state.dart';
 
 /// Manages an IoT Central Application Network Rule Set.
@@ -262,7 +261,7 @@ import 'application_network_rule_set_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.IoTCentral` - 2021-11-01-preview
@@ -277,12 +276,15 @@ import 'application_network_rule_set_state.dart';
 class ApplicationNetworkRuleSet extends pulumi.CustomResource {
   /// Whether these IP Rules apply for device connectivity to IoT Hub and Device Provisioning Service associated with this IoT Central Application. Possible values are `true`, `false`. Defaults to `true`
   late final pulumi.Output<bool?> applyToDevice;
+
   /// Specifies the default action for the IoT Central Application Network Rule Set. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   late final pulumi.Output<String?> defaultAction;
+
   /// The ID of the IoT Central Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iotcentralApplicationId;
+
   /// One or more `ip_rule` blocks as defined below.
-  late final pulumi.Output<List<ApplicationNetworkRuleSetIpRule>?> ipRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
 
   /// Creates a new [ApplicationNetworkRuleSet].
   /// [name] The Pulumi resource name.
@@ -293,15 +295,15 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
     ApplicationNetworkRuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iotcentral/applicationNetworkRuleSet:ApplicationNetworkRuleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applyToDevice = registerOutput<bool?>('applyToDevice');
-    this.defaultAction = registerOutput<String?>('defaultAction');
-    this.iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
-    this.ipRules = registerOutput<List<ApplicationNetworkRuleSetIpRule>?>('ipRules');
+         'azure:iotcentral/applicationNetworkRuleSet:ApplicationNetworkRuleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applyToDevice = registerOutput<bool?>('applyToDevice');
+    defaultAction = registerOutput<String?>('defaultAction');
+    iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
+    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
   }
 
   /// Gets an existing [ApplicationNetworkRuleSet] resource's state with the given [name] and [id].
@@ -322,14 +324,14 @@ class ApplicationNetworkRuleSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iotcentral/applicationNetworkRuleSet:ApplicationNetworkRuleSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applyToDevice = registerOutput<bool?>('applyToDevice');
-    this.defaultAction = registerOutput<String?>('defaultAction');
-    this.iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
-    this.ipRules = registerOutput<List<ApplicationNetworkRuleSetIpRule>?>('ipRules');
+         'azure:iotcentral/applicationNetworkRuleSet:ApplicationNetworkRuleSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applyToDevice = registerOutput<bool?>('applyToDevice');
+    defaultAction = registerOutput<String?>('defaultAction');
+    iotcentralApplicationId = registerOutput<String>('iotcentralApplicationId');
+    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
   }
 }

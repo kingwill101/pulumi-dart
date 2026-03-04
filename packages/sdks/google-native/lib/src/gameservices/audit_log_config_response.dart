@@ -7,6 +7,7 @@ class AuditLogConfigResponse {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>> exemptedMembers;
   final pulumi.Input<bool> ignoreChildExemptions;
+
   /// The log type that this config enables.
   final pulumi.Input<String> logType;
 
@@ -30,10 +31,13 @@ class AuditLogConfigResponse {
 
   factory AuditLogConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigResponse(
-      exemptedMembers: ((map['exemptedMembers'] as List).cast<String>()).input(),
-      ignoreChildExemptions: (map['ignoreChildExemptions'] as bool).input(),
-      logType: (map['logType'] as String).input(),
+      exemptedMembers: pulumi.Input.fromValue(
+        (map['exemptedMembers'] as List).cast<String>(),
+      ),
+      ignoreChildExemptions: pulumi.Input.fromValue(
+        map['ignoreChildExemptions'] as bool,
+      ),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

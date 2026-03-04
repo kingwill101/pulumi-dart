@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
   /// Rules are only automatically deployed for alerts on potential attacks with confidence scores greater than this threshold.
   final pulumi.Input<double> confidenceThreshold;
+
   /// Google Cloud Armor stops applying the action in the automatically deployed rule to an identified attacker after this duration. The rule continues to operate against new requests.
   final pulumi.Input<int> expirationSec;
+
   /// Rules are only automatically deployed when the estimated impact to baseline traffic from the suggested mitigation is below this threshold.
   final pulumi.Input<double> impactedBaselineThreshold;
+
   /// Identifies new attackers only when the load to the backend service that is under attack exceeds this threshold.
   final pulumi.Input<double> loadThreshold;
 
@@ -33,13 +36,18 @@ class GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
     };
   }
 
-  factory GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(Map<String, dynamic> map) {
+  factory GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(
-      confidenceThreshold: (map['confidenceThreshold'] as double).input(),
-      expirationSec: (map['expirationSec'] as int).input(),
-      impactedBaselineThreshold: (map['impactedBaselineThreshold'] as double).input(),
-      loadThreshold: (map['loadThreshold'] as double).input(),
+      confidenceThreshold: pulumi.Input.fromValue(
+        map['confidenceThreshold'] as double,
+      ),
+      expirationSec: pulumi.Input.fromValue(map['expirationSec'] as int),
+      impactedBaselineThreshold: pulumi.Input.fromValue(
+        map['impactedBaselineThreshold'] as double,
+      ),
+      loadThreshold: pulumi.Input.fromValue(map['loadThreshold'] as double),
     );
   }
 }
-

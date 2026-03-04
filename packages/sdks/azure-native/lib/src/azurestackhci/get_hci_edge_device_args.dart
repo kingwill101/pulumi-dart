@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHciEdgeDeviceArgs {
   /// Name of Device
   final pulumi.Input<String> edgeDeviceName;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -29,9 +30,8 @@ class GetHciEdgeDeviceArgs {
 
   factory GetHciEdgeDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetHciEdgeDeviceArgs(
-      edgeDeviceName: (map['edgeDeviceName'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      edgeDeviceName: pulumi.Input.fromValue(map['edgeDeviceName'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

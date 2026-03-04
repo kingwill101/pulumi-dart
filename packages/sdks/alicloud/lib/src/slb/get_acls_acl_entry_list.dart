@@ -9,23 +9,16 @@ class GetAclsAclEntryList {
   /// Creates a new [GetAclsAclEntryList].
   /// [comment] Required.
   /// [entry] Required.
-  GetAclsAclEntryList({
-    required this.comment,
-    required this.entry,
-  });
+  GetAclsAclEntryList({required this.comment, required this.entry});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comment': comment,
-      'entry': entry,
-    };
+    return <String, dynamic>{'comment': comment, 'entry': entry};
   }
 
   factory GetAclsAclEntryList.fromMap(Map<String, dynamic> map) {
     return GetAclsAclEntryList(
-      comment: (map['comment'] as String).input(),
-      entry: (map['entry'] as String).input(),
+      comment: pulumi.Input.fromValue(map['comment'] as String),
+      entry: pulumi.Input.fromValue(map['entry'] as String),
     );
   }
 }
-

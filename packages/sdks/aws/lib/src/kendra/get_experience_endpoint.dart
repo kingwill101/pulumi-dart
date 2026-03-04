@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperienceEndpoint {
   /// Endpoint of your Amazon Kendra Experience.
   final pulumi.Input<String> endpoint;
+
   /// Type of endpoint for your Amazon Kendra Experience.
   final pulumi.Input<String> endpointType;
 
   /// Creates a new [GetExperienceEndpoint].
   /// [endpoint] Endpoint of your Amazon Kendra Experience.
   /// [endpointType] Type of endpoint for your Amazon Kendra Experience.
-  GetExperienceEndpoint({
-    required this.endpoint,
-    required this.endpointType,
-  });
+  GetExperienceEndpoint({required this.endpoint, required this.endpointType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,8 @@ class GetExperienceEndpoint {
 
   factory GetExperienceEndpoint.fromMap(Map<String, dynamic> map) {
     return GetExperienceEndpoint(
-      endpoint: (map['endpoint'] as String).input(),
-      endpointType: (map['endpointType'] as String).input(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
     );
   }
 }
-

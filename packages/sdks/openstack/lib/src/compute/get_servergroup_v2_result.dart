@@ -7,19 +7,26 @@ import 'get_servergroup_v2_rule.dart';
 class GetServergroupV2Result {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The instances that are part of this server group.
   final List<String> members;
+
   /// Metadata of the server group.
   final Map<String, String> metadata;
+
   /// See Argument Reference above.
   final String name;
+
   /// Policy name associated with the server group.
   final List<String> policies;
+
   /// Project ID of the server group.
   final String projectId;
   final String region;
+
   /// Rules which are applied to specified policy.
   final List<GetServergroupV2Rule> rules;
+
   /// User ID of the server group.
   final String userId;
 
@@ -54,7 +61,11 @@ class GetServergroupV2Result {
       'policies': policies,
       'projectId': projectId,
       'region': region,
-      'rules': pulumi.Input.encodeList<GetServergroupV2Rule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<GetServergroupV2Rule, Map<String, dynamic>>(
+            rules,
+            (value) => value.toMap(),
+          ),
       'userId': userId,
     };
   }
@@ -68,9 +79,13 @@ class GetServergroupV2Result {
       policies: (map['policies'] as List).cast<String>(),
       projectId: map['projectId'] as String,
       region: map['region'] as String,
-      rules: pulumi.Input.decodeList<GetServergroupV2Rule>(map['rules'], (value) => GetServergroupV2Rule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetServergroupV2Rule>(
+        map['rules']!,
+        (value) => GetServergroupV2Rule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       userId: map['userId'] as String,
     );
   }
 }
-

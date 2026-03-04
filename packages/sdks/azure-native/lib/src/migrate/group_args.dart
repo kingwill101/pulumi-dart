@@ -10,12 +10,16 @@ import 'group_properties.dart';
 class GroupArgs {
   /// For optimistic concurrency control.
   final pulumi.Input<String>? eTag;
+
   /// Unique name of a group within a project.
   final pulumi.Input<String>? groupName;
+
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
+
   /// Properties of the group.
   final pulumi.Input<GroupProperties> properties;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,19 +42,36 @@ class GroupArgs {
       'eTag': ?eTag,
       'groupName': ?groupName,
       'projectName': projectName,
-      'properties': pulumi.Input.mapInputValue<GroupProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<GroupProperties, Map<String, dynamic>>(
+            properties,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      properties: (GroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      properties: pulumi.Input.fromValue(
+        GroupProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

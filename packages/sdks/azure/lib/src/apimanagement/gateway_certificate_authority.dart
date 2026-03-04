@@ -350,7 +350,7 @@ import 'gateway_certificate_authority_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -365,10 +365,13 @@ import 'gateway_certificate_authority_state.dart';
 class GatewayCertificateAuthority extends pulumi.CustomResource {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The name of the API Management Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> certificateName;
+
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> gatewayName;
+
   /// Whether the API Management Gateway Certificate Authority is trusted.
   late final pulumi.Output<bool?> isTrusted;
 
@@ -381,15 +384,15 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
     GatewayCertificateAuthorityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.certificateName = registerOutput<String>('certificateName');
-    this.gatewayName = registerOutput<String>('gatewayName');
-    this.isTrusted = registerOutput<bool?>('isTrusted');
+         'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    certificateName = registerOutput<String>('certificateName');
+    gatewayName = registerOutput<String>('gatewayName');
+    isTrusted = registerOutput<bool?>('isTrusted');
   }
 
   /// Gets an existing [GatewayCertificateAuthority] resource's state with the given [name] and [id].
@@ -410,14 +413,14 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.certificateName = registerOutput<String>('certificateName');
-    this.gatewayName = registerOutput<String>('gatewayName');
-    this.isTrusted = registerOutput<bool?>('isTrusted');
+         'azure:apimanagement/gatewayCertificateAuthority:GatewayCertificateAuthority',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    certificateName = registerOutput<String>('certificateName');
+    gatewayName = registerOutput<String>('gatewayName');
+    isTrusted = registerOutput<bool?>('isTrusted');
   }
 }

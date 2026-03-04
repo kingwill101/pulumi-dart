@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultResourceGuardAssociationArgs {
   /// ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGuardId;
+
   /// ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> vaultId;
 
@@ -29,9 +30,8 @@ class VaultResourceGuardAssociationArgs {
 
   factory VaultResourceGuardAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VaultResourceGuardAssociationArgs(
-      resourceGuardId: (map['resourceGuardId'] as String).input(),
-      vaultId: (map['vaultId'] as String).input(),
+      resourceGuardId: pulumi.Input.fromValue(map['resourceGuardId'] as String),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
-

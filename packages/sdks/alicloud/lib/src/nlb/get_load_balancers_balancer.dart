@@ -7,40 +7,59 @@ import 'get_load_balancers_balancer_zone_mapping.dart';
 class GetLoadBalancersBalancer {
   /// The IP version.
   final pulumi.Input<String> addressIpVersion;
+
   /// The type of IPv4 address used by the NLB instance.
   final pulumi.Input<String> addressType;
+
   /// The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
   final pulumi.Input<String> bandwidthPackageId;
+
   /// The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
   final pulumi.Input<String> createTime;
+
   /// Indicates whether cross-zone load balancing is enabled for the NLB instance.
   final pulumi.Input<bool> crossZoneEnabled;
+
   /// The domain name of the NLB instance.
   final pulumi.Input<String> dnsName;
+
   /// The ID of the NLB instance.
   final pulumi.Input<String> id;
+
   /// The type of IPv6 address used by the NLB instance.
   final pulumi.Input<String> ipv6AddressType;
+
   /// The business status of the NLB instance.
   final pulumi.Input<String> loadBalancerBusinessStatus;
+
   /// The ID of the NLB instance.
   final pulumi.Input<String> loadBalancerId;
+
   /// The name of the NLB instance.
   final pulumi.Input<String> loadBalancerName;
+
   /// The type of the SLB instance. Only Network is supported, which indicates NLB.
   final pulumi.Input<String> loadBalancerType;
+
   /// The configuration of the operation lock. This parameter takes effect if LoadBalancerBussinessStatus is Abnormal.
-  final pulumi.Input<List<GetLoadBalancersBalancerOperationLock>> operationLocks;
+  final pulumi.Input<List<GetLoadBalancersBalancerOperationLock>>
+  operationLocks;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The security group to which the NLB instance belongs.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// The status of the NLB instance.
   final pulumi.Input<String> status;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the VPC where the NLB instance is deployed.
   final pulumi.Input<String> vpcId;
+
   /// The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
   final pulumi.Input<List<GetLoadBalancersBalancerZoneMapping>> zoneMappings;
 
@@ -100,38 +119,91 @@ class GetLoadBalancersBalancer {
       'loadBalancerId': loadBalancerId,
       'loadBalancerName': loadBalancerName,
       'loadBalancerType': loadBalancerType,
-      'operationLocks': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerOperationLock>, List<Map<String, dynamic>>>(operationLocks, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerOperationLock, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operationLocks':
+          pulumi.Input.mapInputValue<
+            List<GetLoadBalancersBalancerOperationLock>,
+            List<Map<String, dynamic>>
+          >(
+            operationLocks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLoadBalancersBalancerOperationLock,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupId': resourceGroupId,
       'securityGroupIds': securityGroupIds,
       'status': status,
       'tags': ?tags,
       'vpcId': vpcId,
-      'zoneMappings': pulumi.Input.mapInputValue<List<GetLoadBalancersBalancerZoneMapping>, List<Map<String, dynamic>>>(zoneMappings, (value) => pulumi.Input.encodeList<GetLoadBalancersBalancerZoneMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'zoneMappings':
+          pulumi.Input.mapInputValue<
+            List<GetLoadBalancersBalancerZoneMapping>,
+            List<Map<String, dynamic>>
+          >(
+            zoneMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLoadBalancersBalancerZoneMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetLoadBalancersBalancer.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersBalancer(
-      addressIpVersion: (map['addressIpVersion'] as String).input(),
-      addressType: (map['addressType'] as String).input(),
-      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      crossZoneEnabled: (map['crossZoneEnabled'] as bool).input(),
-      dnsName: (map['dnsName'] as String).input(),
-      id: (map['id'] as String).input(),
-      ipv6AddressType: (map['ipv6AddressType'] as String).input(),
-      loadBalancerBusinessStatus: (map['loadBalancerBusinessStatus'] as String).input(),
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
-      loadBalancerName: (map['loadBalancerName'] as String).input(),
-      loadBalancerType: (map['loadBalancerType'] as String).input(),
-      operationLocks: (pulumi.Input.decodeList<GetLoadBalancersBalancerOperationLock>(map['operationLocks'], (value) => GetLoadBalancersBalancerOperationLock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      zoneMappings: (pulumi.Input.decodeList<GetLoadBalancersBalancerZoneMapping>(map['zoneMappings'], (value) => GetLoadBalancersBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addressIpVersion: pulumi.Input.fromValue(
+        map['addressIpVersion'] as String,
+      ),
+      addressType: pulumi.Input.fromValue(map['addressType'] as String),
+      bandwidthPackageId: pulumi.Input.fromValue(
+        map['bandwidthPackageId'] as String,
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      crossZoneEnabled: pulumi.Input.fromValue(map['crossZoneEnabled'] as bool),
+      dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ipv6AddressType: pulumi.Input.fromValue(map['ipv6AddressType'] as String),
+      loadBalancerBusinessStatus: pulumi.Input.fromValue(
+        map['loadBalancerBusinessStatus'] as String,
+      ),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
+      loadBalancerName: pulumi.Input.fromValue(
+        map['loadBalancerName'] as String,
+      ),
+      loadBalancerType: pulumi.Input.fromValue(
+        map['loadBalancerType'] as String,
+      ),
+      operationLocks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetLoadBalancersBalancerOperationLock>(
+          map['operationLocks']!,
+          (value) => GetLoadBalancersBalancerOperationLock.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      zoneMappings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetLoadBalancersBalancerZoneMapping>(
+          map['zoneMappings']!,
+          (value) => GetLoadBalancersBalancerZoneMapping.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

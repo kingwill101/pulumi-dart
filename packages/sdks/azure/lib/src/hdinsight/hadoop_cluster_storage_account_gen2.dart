@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HadoopClusterStorageAccountGen2 {
   /// The ID of the Gen2 Filesystem. Changing this forces a new resource to be created.
   final pulumi.Input<String> filesystemId;
+
   /// Is this the Default Storage Account for the HDInsight Hadoop Cluster? Changing this forces a new resource to be created.
   ///
-  /// > **Note:** One of the `storage_account` or `storage_account_gen2` blocks must be marked as the default.
+  /// &gt; **Note:** One of the `storage_account` or `storage_account_gen2` blocks must be marked as the default.
   final pulumi.Input<bool> isDefault;
+
   /// The ID of Managed Identity to use for accessing the Gen2 filesystem. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This can be obtained from the `id` of the `azure.storage.Container` resource.
+  /// &gt; **Note:** This can be obtained from the `id` of the `azure.storage.Container` resource.
   final pulumi.Input<String> managedIdentityResourceId;
+
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageResourceId;
 
@@ -39,11 +42,14 @@ class HadoopClusterStorageAccountGen2 {
 
   factory HadoopClusterStorageAccountGen2.fromMap(Map<String, dynamic> map) {
     return HadoopClusterStorageAccountGen2(
-      filesystemId: (map['filesystemId'] as String).input(),
-      isDefault: (map['isDefault'] as bool).input(),
-      managedIdentityResourceId: (map['managedIdentityResourceId'] as String).input(),
-      storageResourceId: (map['storageResourceId'] as String).input(),
+      filesystemId: pulumi.Input.fromValue(map['filesystemId'] as String),
+      isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      managedIdentityResourceId: pulumi.Input.fromValue(
+        map['managedIdentityResourceId'] as String,
+      ),
+      storageResourceId: pulumi.Input.fromValue(
+        map['storageResourceId'] as String,
+      ),
     );
   }
 }
-

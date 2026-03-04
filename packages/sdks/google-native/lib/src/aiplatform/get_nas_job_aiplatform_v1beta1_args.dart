@@ -31,10 +31,13 @@ class GetNasJobAiplatformV1beta1Args {
 
   factory GetNasJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetNasJobAiplatformV1beta1Args(
-      location: (map['location'] as String).input(),
-      nasJobId: (map['nasJobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      nasJobId: pulumi.Input.fromValue(map['nasJobId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

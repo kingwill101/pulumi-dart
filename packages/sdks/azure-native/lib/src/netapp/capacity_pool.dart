@@ -159,34 +159,49 @@ import 'system_data_response.dart';
 class CapacityPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// If enabled (true) the pool can contain cool Access enabled volumes.
   late final pulumi.Output<bool?> coolAccess;
+
   /// Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
   late final pulumi.Output<String?> encryptionType;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// UUID v4 used to identify the Pool
   late final pulumi.Output<String> poolId;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// The qos type of the pool
   late final pulumi.Output<String?> qosType;
+
   /// The service level of the file system
   late final pulumi.Output<String> serviceLevel;
+
   /// Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776).
   late final pulumi.Output<double> size;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Total throughput of pool in MiB/s
   late final pulumi.Output<double> totalThroughputMibps;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Utilized throughput of pool in MiB/s
   late final pulumi.Output<double> utilizedThroughputMibps;
 
@@ -199,26 +214,26 @@ class CapacityPool extends pulumi.CustomResource {
     CapacityPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:CapacityPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.coolAccess = registerOutput<bool?>('coolAccess');
-    this.encryptionType = registerOutput<String?>('encryptionType');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:netapp:CapacityPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    coolAccess = registerOutput<bool?>('coolAccess');
+    encryptionType = registerOutput<String?>('encryptionType');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.poolId = registerOutput<String>('poolId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.qosType = registerOutput<String?>('qosType');
-    this.serviceLevel = registerOutput<String>('serviceLevel');
-    this.size = registerOutput<double>('size');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalThroughputMibps = registerOutput<double>('totalThroughputMibps');
-    this.type = registerOutput<String>('type');
-    this.utilizedThroughputMibps = registerOutput<double>('utilizedThroughputMibps');
+    poolId = registerOutput<String>('poolId');
+    provisioningState = registerOutput<String>('provisioningState');
+    qosType = registerOutput<String?>('qosType');
+    serviceLevel = registerOutput<String>('serviceLevel');
+    size = registerOutput<double>('size');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalThroughputMibps = registerOutput<double>('totalThroughputMibps');
+    type = registerOutput<String>('type');
+    utilizedThroughputMibps = registerOutput<double>('utilizedThroughputMibps');
   }
 }

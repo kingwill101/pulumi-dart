@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalSecondaryIndexKeySchema {
   /// Name of the attribute.
   final pulumi.Input<String> attributeName;
+
   /// Type of the attribute in the index.
   /// Valid values are `S` (string), `N` (number), or `B` (binary).
   final pulumi.Input<String> attributeType;
+
   /// Key type.
   /// Valid values are `HASH` or `RANGE`.
   final pulumi.Input<String> keyType;
@@ -32,10 +34,9 @@ class GlobalSecondaryIndexKeySchema {
 
   factory GlobalSecondaryIndexKeySchema.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexKeySchema(
-      attributeName: (map['attributeName'] as String).input(),
-      attributeType: (map['attributeType'] as String).input(),
-      keyType: (map['keyType'] as String).input(),
+      attributeName: pulumi.Input.fromValue(map['attributeName'] as String),
+      attributeType: pulumi.Input.fromValue(map['attributeType'] as String),
+      keyType: pulumi.Input.fromValue(map['keyType'] as String),
     );
   }
 }
-

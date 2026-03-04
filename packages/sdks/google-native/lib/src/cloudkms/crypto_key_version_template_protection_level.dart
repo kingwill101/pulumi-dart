@@ -6,16 +6,17 @@ enum CryptoKeyVersionTemplateProtectionLevel {
   external("EXTERNAL"),
   externalVpc("EXTERNAL_VPC");
 
-  const CryptoKeyVersionTemplateProtectionLevel(this.value);
-  final String value;
+  const CryptoKeyVersionTemplateProtectionLevel(this.wireValue);
+  final String wireValue;
 
   static CryptoKeyVersionTemplateProtectionLevel fromValue(String value) {
     for (final item in CryptoKeyVersionTemplateProtectionLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CryptoKeyVersionTemplateProtectionLevel value: $value');
+    throw ArgumentError(
+      'Unknown CryptoKeyVersionTemplateProtectionLevel value: $value',
+    );
   }
 }
-

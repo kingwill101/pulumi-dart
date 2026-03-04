@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatalabelingV1beta1GcsSource {
   /// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
   final pulumi.Input<String> inputUri;
+
   /// The format of the source file. Only "text/csv" is supported.
   final pulumi.Input<String> mimeType;
 
@@ -18,17 +19,15 @@ class GoogleCloudDatalabelingV1beta1GcsSource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'inputUri': inputUri,
-      'mimeType': mimeType,
-    };
+    return <String, dynamic>{'inputUri': inputUri, 'mimeType': mimeType};
   }
 
-  factory GoogleCloudDatalabelingV1beta1GcsSource.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1GcsSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1GcsSource(
-      inputUri: (map['inputUri'] as String).input(),
-      mimeType: (map['mimeType'] as String).input(),
+      inputUri: pulumi.Input.fromValue(map['inputUri'] as String),
+      mimeType: pulumi.Input.fromValue(map['mimeType'] as String),
     );
   }
 }
-

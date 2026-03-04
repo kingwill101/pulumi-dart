@@ -6,7 +6,7 @@ import 'prometheus_state.dart';
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createprometheusinstance).
 ///
-/// > **NOTE:** Available since v1.203.0.
+/// &gt; **NOTE:** Available since v1.203.0.
 ///
 /// ## Example Usage
 ///
@@ -317,22 +317,31 @@ import 'prometheus_state.dart';
 class Prometheus extends pulumi.CustomResource {
   /// The ID of the Kubernetes cluster. This parameter is required, if you set `cluster_type` to `aliyun-cs`.
   late final pulumi.Output<String> clusterId;
+
   /// The name of the created cluster. This parameter is required, if you set `cluster_type` to `remote-write`, `ecs` or `global-view`.
   late final pulumi.Output<String> clusterName;
+
   /// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
   late final pulumi.Output<String> clusterType;
+
   /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafana_instance_id` to `free`.
   late final pulumi.Output<String> grafanaInstanceId;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The ID of the security group. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   late final pulumi.Output<String?> securityGroupId;
+
   /// The child instance json string of the globalView instance.
   late final pulumi.Output<String?> subClustersJson;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the VPC. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   late final pulumi.Output<String?> vpcId;
+
   /// The ID of the VSwitch. This parameter is required, if you set `cluster_type` to `ecs` or `aliyun-cs`(ASK instance).
   late final pulumi.Output<String?> vswitchId;
 
@@ -345,21 +354,21 @@ class Prometheus extends pulumi.CustomResource {
     PrometheusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/prometheus:Prometheus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<String>('clusterType');
-    this.grafanaInstanceId = registerOutput<String>('grafanaInstanceId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.subClustersJson = registerOutput<String?>('subClustersJson');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:arms/prometheus:Prometheus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<String>('clusterType');
+    grafanaInstanceId = registerOutput<String>('grafanaInstanceId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    subClustersJson = registerOutput<String?>('subClustersJson');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 
   /// Gets an existing [Prometheus] resource's state with the given [name] and [id].
@@ -380,20 +389,20 @@ class Prometheus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/prometheus:Prometheus',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<String>('clusterType');
-    this.grafanaInstanceId = registerOutput<String>('grafanaInstanceId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupId = registerOutput<String?>('securityGroupId');
-    this.subClustersJson = registerOutput<String?>('subClustersJson');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:arms/prometheus:Prometheus',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<String>('clusterType');
+    grafanaInstanceId = registerOutput<String>('grafanaInstanceId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupId = registerOutput<String?>('securityGroupId');
+    subClustersJson = registerOutput<String?>('subClustersJson');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 }

@@ -4,7 +4,7 @@ import 'resource_association_state.dart';
 
 /// Manages a Resource Access Manager (RAM) Resource Association.
 ///
-/// > *NOTE:* Certain AWS resources (e.g., EC2 Subnets) can only be shared in an AWS account that is a member of an AWS Organizations organization with organization-wide Resource Access Manager functionality enabled. See the [Resource Access Manager User Guide](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) and AWS service specific documentation for additional information.
+/// &gt; *NOTE:* Certain AWS resources (e.g., EC2 Subnets) can only be shared in an AWS account that is a member of an AWS Organizations organization with organization-wide Resource Access Manager functionality enabled. See the [Resource Access Manager User Guide](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) and AWS service specific documentation for additional information.
 ///
 /// ## Example Usage
 ///
@@ -112,8 +112,10 @@ import 'resource_association_state.dart';
 class ResourceAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
   late final pulumi.Output<String> resourceArn;
+
   /// Amazon Resource Name (ARN) of the RAM Resource Share.
   late final pulumi.Output<String> resourceShareArn;
 
@@ -126,14 +128,14 @@ class ResourceAssociation extends pulumi.CustomResource {
     ResourceAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/resourceAssociation:ResourceAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.resourceShareArn = registerOutput<String>('resourceShareArn');
+         'aws:ram/resourceAssociation:ResourceAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
   }
 
   /// Gets an existing [ResourceAssociation] resource's state with the given [name] and [id].
@@ -154,13 +156,13 @@ class ResourceAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/resourceAssociation:ResourceAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.resourceShareArn = registerOutput<String>('resourceShareArn');
+         'aws:ram/resourceAssociation:ResourceAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
   }
 }

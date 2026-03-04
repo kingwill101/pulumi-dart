@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaClusterExtension {
   /// The workspace ID of the log analytics extension.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
+
   /// The workspace key of the log analytics extension.
   final pulumi.Input<String> primaryKey;
 
@@ -25,9 +26,10 @@ class KafkaClusterExtension {
 
   factory KafkaClusterExtension.fromMap(Map<String, dynamic> map) {
     return KafkaClusterExtension(
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      primaryKey: (map['primaryKey'] as String).input(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as String),
     );
   }
 }
-

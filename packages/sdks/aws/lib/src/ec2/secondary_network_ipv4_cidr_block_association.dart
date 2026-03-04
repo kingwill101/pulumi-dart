@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecondaryNetworkIpv4CidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
   final pulumi.Input<String> associationId;
+
   /// IPv4 CIDR block.
   final pulumi.Input<String> cidrBlock;
+
   /// State of the IPv4 CIDR block association.
   final pulumi.Input<String> state;
 
@@ -28,12 +30,13 @@ class SecondaryNetworkIpv4CidrBlockAssociation {
     };
   }
 
-  factory SecondaryNetworkIpv4CidrBlockAssociation.fromMap(Map<String, dynamic> map) {
+  factory SecondaryNetworkIpv4CidrBlockAssociation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecondaryNetworkIpv4CidrBlockAssociation(
-      associationId: (map['associationId'] as String).input(),
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      state: (map['state'] as String).input(),
+      associationId: pulumi.Input.fromValue(map['associationId'] as String),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

@@ -18,15 +18,14 @@ class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccount': serviceAccount,
-    };
+    return <String, dynamic>{'serviceAccount': serviceAccount};
   }
 
-  factory CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
+  factory CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig(
-      serviceAccount: (map['serviceAccount'] as String).input(),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'on_prem_cluster_cluster_type_gkehub_v1beta1.dart';
 class OnPremClusterGkehubV1beta1 {
   /// Immutable. Whether the cluster is an admin cluster.
   final pulumi.Input<bool>? adminCluster;
+
   /// Immutable. The on prem cluster's type.
   final pulumi.Input<OnPremClusterClusterTypeGkehubV1beta1>? clusterType;
+
   /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
   final pulumi.Input<String>? resourceLink;
 
@@ -25,17 +27,36 @@ class OnPremClusterGkehubV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adminCluster': ?adminCluster,
-      'clusterType': ?pulumi.Input.mapOptionalInputValue<OnPremClusterClusterTypeGkehubV1beta1, String>(clusterType, (value) => value.value),
+      'clusterType':
+          ?pulumi.Input.mapOptionalInputValue<
+            OnPremClusterClusterTypeGkehubV1beta1,
+            String
+          >(clusterType, (value) => value.wireValue),
       'resourceLink': ?resourceLink,
     };
   }
 
   factory OnPremClusterGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return OnPremClusterGkehubV1beta1(
-      adminCluster: map['adminCluster'] == null ? null : (map['adminCluster']! as bool).input(),
-      clusterType: map['clusterType'] == null ? null : (OnPremClusterClusterTypeGkehubV1beta1.fromValue(map['clusterType']! as String)).input(),
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
+      adminCluster: (() {
+        final guardedValue = map['adminCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterType: (() {
+        final guardedValue = map['clusterType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OnPremClusterClusterTypeGkehubV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      resourceLink: (() {
+        final guardedValue = map['resourceLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

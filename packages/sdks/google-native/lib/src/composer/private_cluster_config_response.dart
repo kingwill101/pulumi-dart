@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateClusterConfigResponse {
   /// Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
   final pulumi.Input<bool> enablePrivateEndpoint;
+
   /// Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used.
   final pulumi.Input<String> masterIpv4CidrBlock;
+
   /// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
   final pulumi.Input<String> masterIpv4ReservedRange;
 
@@ -31,10 +33,15 @@ class PrivateClusterConfigResponse {
 
   factory PrivateClusterConfigResponse.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfigResponse(
-      enablePrivateEndpoint: (map['enablePrivateEndpoint'] as bool).input(),
-      masterIpv4CidrBlock: (map['masterIpv4CidrBlock'] as String).input(),
-      masterIpv4ReservedRange: (map['masterIpv4ReservedRange'] as String).input(),
+      enablePrivateEndpoint: pulumi.Input.fromValue(
+        map['enablePrivateEndpoint'] as bool,
+      ),
+      masterIpv4CidrBlock: pulumi.Input.fromValue(
+        map['masterIpv4CidrBlock'] as String,
+      ),
+      masterIpv4ReservedRange: pulumi.Input.fromValue(
+        map['masterIpv4ReservedRange'] as String,
+      ),
     );
   }
 }
-

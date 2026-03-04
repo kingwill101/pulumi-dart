@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDynamicSchemaVersionArgs {
   /// The name of the DynamicSchema
   final pulumi.Input<String> dynamicSchemaName;
+
   /// The name of the DynamicSchemaVersion
   final pulumi.Input<String> dynamicSchemaVersionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Schema
   final pulumi.Input<String> schemaName;
 
@@ -39,11 +42,16 @@ class GetDynamicSchemaVersionArgs {
 
   factory GetDynamicSchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetDynamicSchemaVersionArgs(
-      dynamicSchemaName: (map['dynamicSchemaName'] as String).input(),
-      dynamicSchemaVersionName: (map['dynamicSchemaVersionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: (map['schemaName'] as String).input(),
+      dynamicSchemaName: pulumi.Input.fromValue(
+        map['dynamicSchemaName'] as String,
+      ),
+      dynamicSchemaVersionName: pulumi.Input.fromValue(
+        map['dynamicSchemaVersionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
     );
   }
 }
-

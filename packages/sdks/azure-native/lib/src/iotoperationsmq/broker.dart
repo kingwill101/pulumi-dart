@@ -1133,42 +1133,63 @@ import 'system_data_response.dart';
 class Broker extends pulumi.CustomResource {
   /// The details of Authentication Docker Image.
   late final pulumi.Output<ContainerImageResponse> authImage;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The details of Broker Docker Image.
   late final pulumi.Output<ContainerImageResponse> brokerImage;
+
   /// The details of Node Tolerations for Broker Pods.
   late final pulumi.Output<NodeTolerationsResponse?> brokerNodeTolerations;
+
   /// The cardinality details of the broker.
   late final pulumi.Output<CardinalityResponse?> cardinality;
+
   /// The diagnostic details of the broker deployment.
   late final pulumi.Output<BrokerDiagnosticsResponse?> diagnostics;
+
   /// The settings of the disk-backed message buffer.
-  late final pulumi.Output<DiskBackedMessageBufferSettingsResponse?> diskBackedMessageBufferSettings;
+  late final pulumi.Output<DiskBackedMessageBufferSettingsResponse?>
+  diskBackedMessageBufferSettings;
+
   /// The setting to enable or disable encryption of internal Traffic.
   late final pulumi.Output<bool?> encryptInternalTraffic;
+
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
+
   /// The details of Health Manager Docker Image.
   late final pulumi.Output<ContainerImageResponse> healthManagerImage;
+
   /// The details of Node Tolerations for Health Manager Pods.
-  late final pulumi.Output<NodeTolerationsResponse?> healthManagerNodeTolerations;
+  late final pulumi.Output<NodeTolerationsResponse?>
+  healthManagerNodeTolerations;
+
   /// Details of the internal CA cert that will be used to secure communication between pods.
   late final pulumi.Output<CertManagerCertOptionsResponse?> internalCerts;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Memory profile of broker.
   late final pulumi.Output<String?> memoryProfile;
+
   /// The Running Mode of the Broker Deployment.
   late final pulumi.Output<String> mode;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1176,35 +1197,45 @@ class Broker extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Broker]. {@macro pulumi_iotoperationsmq_broker_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Broker(
-    String name, {
-    BrokerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:iotoperationsmq:Broker',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authImage = registerOutput<ContainerImageResponse>('authImage');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.brokerImage = registerOutput<ContainerImageResponse>('brokerImage');
-    this.brokerNodeTolerations = registerOutput<NodeTolerationsResponse?>('brokerNodeTolerations');
-    this.cardinality = registerOutput<CardinalityResponse?>('cardinality');
-    this.diagnostics = registerOutput<BrokerDiagnosticsResponse?>('diagnostics');
-    this.diskBackedMessageBufferSettings = registerOutput<DiskBackedMessageBufferSettingsResponse?>('diskBackedMessageBufferSettings');
-    this.encryptInternalTraffic = registerOutput<bool?>('encryptInternalTraffic');
-    this.extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation');
-    this.healthManagerImage = registerOutput<ContainerImageResponse>('healthManagerImage');
-    this.healthManagerNodeTolerations = registerOutput<NodeTolerationsResponse?>('healthManagerNodeTolerations');
-    this.internalCerts = registerOutput<CertManagerCertOptionsResponse?>('internalCerts');
-    this.location = registerOutput<String>('location');
-    this.memoryProfile = registerOutput<String?>('memoryProfile');
-    this.mode = registerOutput<String>('mode');
+  Broker(String name, {BrokerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:iotoperationsmq:Broker',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authImage = registerOutput<ContainerImageResponse>('authImage');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    brokerImage = registerOutput<ContainerImageResponse>('brokerImage');
+    brokerNodeTolerations = registerOutput<NodeTolerationsResponse?>(
+      'brokerNodeTolerations',
+    );
+    cardinality = registerOutput<CardinalityResponse?>('cardinality');
+    diagnostics = registerOutput<BrokerDiagnosticsResponse?>('diagnostics');
+    diskBackedMessageBufferSettings =
+        registerOutput<DiskBackedMessageBufferSettingsResponse?>(
+          'diskBackedMessageBufferSettings',
+        );
+    encryptInternalTraffic = registerOutput<bool?>('encryptInternalTraffic');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
+      'extendedLocation',
+    );
+    healthManagerImage = registerOutput<ContainerImageResponse>(
+      'healthManagerImage',
+    );
+    healthManagerNodeTolerations = registerOutput<NodeTolerationsResponse?>(
+      'healthManagerNodeTolerations',
+    );
+    internalCerts = registerOutput<CertManagerCertOptionsResponse?>(
+      'internalCerts',
+    );
+    location = registerOutput<String>('location');
+    memoryProfile = registerOutput<String?>('memoryProfile');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

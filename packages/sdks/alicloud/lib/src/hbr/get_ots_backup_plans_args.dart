@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOtsBackupPlansArgs {
   /// A list of OtsBackupPlan IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by OtsBackupPlan name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the backup plan.
   final pulumi.Input<String>? planId;
+
   /// The ID of the backup plan.
   final pulumi.Input<String>? planName;
+
   /// The ID of backup vault the OtsBackupPlan used.
   final pulumi.Input<String>? vaultId;
 
@@ -49,13 +54,36 @@ class GetOtsBackupPlansArgs {
 
   factory GetOtsBackupPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetOtsBackupPlansArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
-      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      planId: (() {
+        final guardedValue = map['planId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      planName: (() {
+        final guardedValue = map['planName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultId: (() {
+        final guardedValue = map['vaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

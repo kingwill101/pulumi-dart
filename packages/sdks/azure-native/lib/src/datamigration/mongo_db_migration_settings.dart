@@ -9,14 +9,19 @@ import 'mongo_db_throttling_settings.dart';
 class MongoDbMigrationSettings {
   /// The RU limit on a CosmosDB target that collections will be temporarily increased to (if lower) during the initial copy of a migration, from 10,000 to 1,000,000, or 0 to use the default boost (which is generally the maximum), or null to not boost the RUs. This setting has no effect on non-CosmosDB targets.
   final pulumi.Input<int>? boostRUs;
+
   /// The databases on the source cluster to migrate to the target. The keys are the names of the databases.
   final pulumi.Input<Map<String, MongoDbDatabaseSettings>> databases;
+
   /// Describes how changes will be replicated from the source to the target. The default is OneTime.
   final pulumi.Input<String>? replication;
+
   /// Settings used to connect to the source cluster
   final pulumi.Input<MongoDbConnectionInfo> source;
+
   /// Settings used to connect to the target cluster
   final pulumi.Input<MongoDbConnectionInfo> target;
+
   /// Settings used to limit the resource usage of the migration
   final pulumi.Input<MongoDbThrottlingSettings>? throttling;
 
@@ -39,23 +44,76 @@ class MongoDbMigrationSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'boostRUs': ?boostRUs,
-      'databases': pulumi.Input.mapInputValue<Map<String, MongoDbDatabaseSettings>, Map<String, Map<String, dynamic>>>(databases, (value) => pulumi.Input.encodeMapValues<MongoDbDatabaseSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'databases':
+          pulumi.Input.mapInputValue<
+            Map<String, MongoDbDatabaseSettings>,
+            Map<String, Map<String, dynamic>>
+          >(
+            databases,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  MongoDbDatabaseSettings,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'replication': ?replication,
-      'source': pulumi.Input.mapInputValue<MongoDbConnectionInfo, Map<String, dynamic>>(source, (value) => value.toMap()),
-      'target': pulumi.Input.mapInputValue<MongoDbConnectionInfo, Map<String, dynamic>>(target, (value) => value.toMap()),
-      'throttling': ?pulumi.Input.mapOptionalInputValue<MongoDbThrottlingSettings, Map<String, dynamic>>(throttling, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            MongoDbConnectionInfo,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
+      'target':
+          pulumi.Input.mapInputValue<
+            MongoDbConnectionInfo,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
+      'throttling':
+          ?pulumi.Input.mapOptionalInputValue<
+            MongoDbThrottlingSettings,
+            Map<String, dynamic>
+          >(throttling, (value) => value.toMap()),
     };
   }
 
   factory MongoDbMigrationSettings.fromMap(Map<String, dynamic> map) {
     return MongoDbMigrationSettings(
-      boostRUs: map['boostRUs'] == null ? null : (map['boostRUs']! as int).input(),
-      databases: (pulumi.Input.decodeMapValues<MongoDbDatabaseSettings>(map['databases'], (value) => MongoDbDatabaseSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replication: map['replication'] == null ? null : (map['replication']! as String).input(),
-      source: (MongoDbConnectionInfo.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: (MongoDbConnectionInfo.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      throttling: map['throttling'] == null ? null : (MongoDbThrottlingSettings.fromMap((map['throttling']! as Map).cast<String, dynamic>())).input(),
+      boostRUs: (() {
+        final guardedValue = map['boostRUs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      databases: pulumi.Input.fromValue(
+        pulumi.Input.decodeMapValues<MongoDbDatabaseSettings>(
+          map['databases']!,
+          (value) => MongoDbDatabaseSettings.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      replication: (() {
+        final guardedValue = map['replication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: pulumi.Input.fromValue(
+        MongoDbConnectionInfo.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      target: pulumi.Input.fromValue(
+        MongoDbConnectionInfo.fromMap(
+          (map['target']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      throttling: (() {
+        final guardedValue = map['throttling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MongoDbThrottlingSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

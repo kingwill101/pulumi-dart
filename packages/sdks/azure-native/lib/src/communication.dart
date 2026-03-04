@@ -1,5 +1,3 @@
-library module_communication;
-
 export 'communication/communication_service.dart';
 export 'communication/communication_service_args.dart';
 export 'communication/dns_record_response.dart';

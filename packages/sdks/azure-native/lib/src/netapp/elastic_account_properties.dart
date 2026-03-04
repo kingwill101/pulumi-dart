@@ -10,20 +10,29 @@ class ElasticAccountProperties {
 
   /// Creates a new [ElasticAccountProperties].
   /// [encryption] Encryption settings
-  ElasticAccountProperties({
-    this.encryption,
-  });
+  ElasticAccountProperties({this.encryption});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?pulumi.Input.mapOptionalInputValue<ElasticEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticEncryption,
+            Map<String, dynamic>
+          >(encryption, (value) => value.toMap()),
     };
   }
 
   factory ElasticAccountProperties.fromMap(Map<String, dynamic> map) {
     return ElasticAccountProperties(
-      encryption: map['encryption'] == null ? null : (ElasticEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

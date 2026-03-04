@@ -7,21 +7,29 @@ import 'reportable_exception_response.dart';
 class ConnectToSourceSqlServerTaskOutputTaskLevelResponse {
   /// Source agent jobs as a map from agent job name to id.
   final pulumi.Input<Map<String, String>> agentJobs;
+
   /// Mapping from database name to TDE certificate name, if applicable
   final pulumi.Input<Map<String, String>> databaseTdeCertificateMapping;
+
   /// Source databases as a map from database name to database id
   final pulumi.Input<Map<String, String>> databases;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// Source logins as a map from login name to login id.
   final pulumi.Input<Map<String, String>> logins;
+
   /// Type of result - database level or task level
   /// Expected value is 'TaskLevelOutput'.
   final pulumi.Input<String> resultType;
+
   /// Source server brand version
   final pulumi.Input<String> sourceServerBrandVersion;
+
   /// Source server version
   final pulumi.Input<String> sourceServerVersion;
+
   /// Validation errors
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -57,22 +65,53 @@ class ConnectToSourceSqlServerTaskOutputTaskLevelResponse {
       'resultType': resultType,
       'sourceServerBrandVersion': sourceServerBrandVersion,
       'sourceServerVersion': sourceServerVersion,
-      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationErrors':
+          pulumi.Input.mapInputValue<
+            List<ReportableExceptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            validationErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReportableExceptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ConnectToSourceSqlServerTaskOutputTaskLevelResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectToSourceSqlServerTaskOutputTaskLevelResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToSourceSqlServerTaskOutputTaskLevelResponse(
-      agentJobs: ((map['agentJobs'] as Map).cast<String, String>()).input(),
-      databaseTdeCertificateMapping: ((map['databaseTdeCertificateMapping'] as Map).cast<String, String>()).input(),
-      databases: ((map['databases'] as Map).cast<String, String>()).input(),
-      id: (map['id'] as String).input(),
-      logins: ((map['logins'] as Map).cast<String, String>()).input(),
-      resultType: (map['resultType'] as String).input(),
-      sourceServerBrandVersion: (map['sourceServerBrandVersion'] as String).input(),
-      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
-      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agentJobs: pulumi.Input.fromValue(
+        (map['agentJobs'] as Map).cast<String, String>(),
+      ),
+      databaseTdeCertificateMapping: pulumi.Input.fromValue(
+        (map['databaseTdeCertificateMapping'] as Map).cast<String, String>(),
+      ),
+      databases: pulumi.Input.fromValue(
+        (map['databases'] as Map).cast<String, String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      logins: pulumi.Input.fromValue(
+        (map['logins'] as Map).cast<String, String>(),
+      ),
+      resultType: pulumi.Input.fromValue(map['resultType'] as String),
+      sourceServerBrandVersion: pulumi.Input.fromValue(
+        map['sourceServerBrandVersion'] as String,
+      ),
+      sourceServerVersion: pulumi.Input.fromValue(
+        map['sourceServerVersion'] as String,
+      ),
+      validationErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ReportableExceptionResponse>(
+          map['validationErrors']!,
+          (value) => ReportableExceptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

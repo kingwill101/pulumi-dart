@@ -5,16 +5,15 @@ enum ConnectionStatus {
   valueRejected("Rejected"),
   valueDisconnected("Disconnected");
 
-  const ConnectionStatus(this.value);
-  final String value;
+  const ConnectionStatus(this.wireValue);
+  final String wireValue;
 
   static ConnectionStatus fromValue(String value) {
     for (final item in ConnectionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionStatus value: $value');
   }
 }
-

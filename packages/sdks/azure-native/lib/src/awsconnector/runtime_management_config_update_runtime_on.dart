@@ -4,16 +4,17 @@ enum RuntimeManagementConfigUpdateRuntimeOn {
   functionUpdate("FunctionUpdate"),
   manual("Manual");
 
-  const RuntimeManagementConfigUpdateRuntimeOn(this.value);
-  final String value;
+  const RuntimeManagementConfigUpdateRuntimeOn(this.wireValue);
+  final String wireValue;
 
   static RuntimeManagementConfigUpdateRuntimeOn fromValue(String value) {
     for (final item in RuntimeManagementConfigUpdateRuntimeOn.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RuntimeManagementConfigUpdateRuntimeOn value: $value');
+    throw ArgumentError(
+      'Unknown RuntimeManagementConfigUpdateRuntimeOn value: $value',
+    );
   }
 }
-

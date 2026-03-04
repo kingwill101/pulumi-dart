@@ -9,69 +9,100 @@ import 'sku_description_response.dart';
 class GetAppServicePlanResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
   final bool? elasticScaleEnabled;
+
   /// Extended Location.
   final ExtendedLocationResponse? extendedLocation;
+
   /// The time when the server farm free offer expires.
   final String? freeOfferExpirationTime;
+
   /// Geographical location for the App Service plan.
   final String geoRegion;
+
   /// Specification for the App Service Environment to use for the App Service plan.
   final HostingEnvironmentProfileResponse? hostingEnvironmentProfile;
-  /// If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+
+  /// If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? hyperV;
+
   /// Resource Id.
   final String id;
-  /// If <code>true</code>, this App Service Plan owns spot instances.
+
+  /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
   final bool? isSpot;
-  /// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+
+  /// Obsolete: If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? isXenon;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
+
   /// Specification for the Kubernetes Environment to use for the App Service plan.
   final KubeEnvironmentProfileResponse? kubeEnvironmentProfile;
+
   /// Resource Location.
   final String location;
+
   /// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   final int? maximumElasticWorkerCount;
+
   /// Maximum number of instances that can be assigned to this App Service plan.
   final int maximumNumberOfWorkers;
+
   /// Resource Name.
   final String name;
+
   /// Number of apps assigned to this App Service plan.
   final int numberOfSites;
+
   /// The number of instances that are assigned to this App Service plan.
   final int numberOfWorkers;
-  /// If <code>true</code>, apps assigned to this App Service plan can be scaled independently.
-  /// If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
+
+  /// If &lt;code&gt;true&lt;/code&gt;, apps assigned to this App Service plan can be scaled independently.
+  /// If &lt;code&gt;false&lt;/code&gt;, apps assigned to this App Service plan will scale to all instances of the plan.
   final bool? perSiteScaling;
+
   /// Provisioning state of the App Service Plan.
   final String provisioningState;
-  /// If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+
+  /// If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? reserved;
+
   /// Resource group of the App Service plan.
   final String resourceGroup;
+
   /// Description of a SKU for a scalable resource.
   final SkuDescriptionResponse? sku;
+
   /// The time when the server farm expires. Valid only if it is a spot server farm.
   final String? spotExpirationTime;
+
   /// App Service plan status.
   final String status;
+
   /// App Service plan subscription.
   final String subscription;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Scaling worker count.
   final int? targetWorkerCount;
+
   /// Scaling worker size ID.
   final int? targetWorkerSizeId;
+
   /// Resource type.
   final String type;
+
   /// Target worker tier assigned to the App Service plan.
   final String? workerTierName;
-  /// If <code>true</code>, this App Service Plan will perform availability zone balancing.
-  /// If <code>false</code>, this App Service Plan will not perform availability zone balancing.
+
+  /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
+  /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability zone balancing.
   final bool? zoneRedundant;
 
   /// Creates a new [GetAppServicePlanResult].
@@ -81,10 +112,10 @@ class GetAppServicePlanResult {
   /// [freeOfferExpirationTime] The time when the server farm free offer expires.
   /// [geoRegion] Geographical location for the App Service plan.
   /// [hostingEnvironmentProfile] Specification for the App Service Environment to use for the App Service plan.
-  /// [hyperV] If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  /// [hyperV] If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [id] Resource Id.
-  /// [isSpot] If <code>true</code>, this App Service Plan owns spot instances.
-  /// [isXenon] Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  /// [isSpot] If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
+  /// [isXenon] Obsolete: If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   /// [kubeEnvironmentProfile] Specification for the Kubernetes Environment to use for the App Service plan.
   /// [location] Resource Location.
@@ -93,9 +124,9 @@ class GetAppServicePlanResult {
   /// [name] Resource Name.
   /// [numberOfSites] Number of apps assigned to this App Service plan.
   /// [numberOfWorkers] The number of instances that are assigned to this App Service plan.
-  /// [perSiteScaling] If <code>true</code>, apps assigned to this App Service plan can be scaled independently.
+  /// [perSiteScaling] If &lt;code&gt;true&lt;/code&gt;, apps assigned to this App Service plan can be scaled independently.
   /// [provisioningState] Provisioning state of the App Service Plan.
-  /// [reserved] If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+  /// [reserved] If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [resourceGroup] Resource group of the App Service plan.
   /// [sku] Description of a SKU for a scalable resource.
   /// [spotExpirationTime] The time when the server farm expires. Valid only if it is a spot server farm.
@@ -106,7 +137,7 @@ class GetAppServicePlanResult {
   /// [targetWorkerSizeId] Scaling worker size ID.
   /// [type] Resource type.
   /// [workerTierName] Target worker tier assigned to the App Service plan.
-  /// [zoneRedundant] If <code>true</code>, this App Service Plan will perform availability zone balancing.
+  /// [zoneRedundant] If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
   GetAppServicePlanResult({
     required this.azureApiVersion,
     this.elasticScaleEnabled,
@@ -146,16 +177,16 @@ class GetAppServicePlanResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'elasticScaleEnabled': ?elasticScaleEnabled,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'freeOfferExpirationTime': ?freeOfferExpirationTime,
       'geoRegion': geoRegion,
-      'hostingEnvironmentProfile': ?hostingEnvironmentProfile == null ? null : hostingEnvironmentProfile!.toMap(),
+      'hostingEnvironmentProfile': ?hostingEnvironmentProfile?.toMap(),
       'hyperV': ?hyperV,
       'id': id,
       'isSpot': ?isSpot,
       'isXenon': ?isXenon,
       'kind': ?kind,
-      'kubeEnvironmentProfile': ?kubeEnvironmentProfile == null ? null : kubeEnvironmentProfile!.toMap(),
+      'kubeEnvironmentProfile': ?kubeEnvironmentProfile?.toMap(),
       'location': location,
       'maximumElasticWorkerCount': ?maximumElasticWorkerCount,
       'maximumNumberOfWorkers': maximumNumberOfWorkers,
@@ -166,7 +197,7 @@ class GetAppServicePlanResult {
       'provisioningState': provisioningState,
       'reserved': ?reserved,
       'resourceGroup': resourceGroup,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'spotExpirationTime': ?spotExpirationTime,
       'status': status,
       'subscription': subscription,
@@ -182,38 +213,121 @@ class GetAppServicePlanResult {
   factory GetAppServicePlanResult.fromMap(Map<String, dynamic> map) {
     return GetAppServicePlanResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      elasticScaleEnabled: map['elasticScaleEnabled'] == null ? null : map['elasticScaleEnabled']! as bool,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      freeOfferExpirationTime: map['freeOfferExpirationTime'] == null ? null : map['freeOfferExpirationTime']! as String,
+      elasticScaleEnabled: (() {
+        final guardedValue = map['elasticScaleEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      freeOfferExpirationTime: (() {
+        final guardedValue = map['freeOfferExpirationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       geoRegion: map['geoRegion'] as String,
-      hostingEnvironmentProfile: map['hostingEnvironmentProfile'] == null ? null : HostingEnvironmentProfileResponse.fromMap((map['hostingEnvironmentProfile']! as Map).cast<String, dynamic>()),
-      hyperV: map['hyperV'] == null ? null : map['hyperV']! as bool,
+      hostingEnvironmentProfile: (() {
+        final guardedValue = map['hostingEnvironmentProfile'];
+        if (guardedValue == null) return null;
+        return HostingEnvironmentProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      hyperV: (() {
+        final guardedValue = map['hyperV'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
-      isSpot: map['isSpot'] == null ? null : map['isSpot']! as bool,
-      isXenon: map['isXenon'] == null ? null : map['isXenon']! as bool,
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      kubeEnvironmentProfile: map['kubeEnvironmentProfile'] == null ? null : KubeEnvironmentProfileResponse.fromMap((map['kubeEnvironmentProfile']! as Map).cast<String, dynamic>()),
+      isSpot: (() {
+        final guardedValue = map['isSpot'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isXenon: (() {
+        final guardedValue = map['isXenon'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      kubeEnvironmentProfile: (() {
+        final guardedValue = map['kubeEnvironmentProfile'];
+        if (guardedValue == null) return null;
+        return KubeEnvironmentProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
-      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : map['maximumElasticWorkerCount']! as int,
+      maximumElasticWorkerCount: (() {
+        final guardedValue = map['maximumElasticWorkerCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       maximumNumberOfWorkers: map['maximumNumberOfWorkers'] as int,
       name: map['name'] as String,
       numberOfSites: map['numberOfSites'] as int,
       numberOfWorkers: map['numberOfWorkers'] as int,
-      perSiteScaling: map['perSiteScaling'] == null ? null : map['perSiteScaling']! as bool,
+      perSiteScaling: (() {
+        final guardedValue = map['perSiteScaling'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      reserved: map['reserved'] == null ? null : map['reserved']! as bool,
+      reserved: (() {
+        final guardedValue = map['reserved'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       resourceGroup: map['resourceGroup'] as String,
-      sku: map['sku'] == null ? null : SkuDescriptionResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      spotExpirationTime: map['spotExpirationTime'] == null ? null : map['spotExpirationTime']! as String,
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuDescriptionResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      spotExpirationTime: (() {
+        final guardedValue = map['spotExpirationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       status: map['status'] as String,
       subscription: map['subscription'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      targetWorkerCount: map['targetWorkerCount'] == null ? null : map['targetWorkerCount']! as int,
-      targetWorkerSizeId: map['targetWorkerSizeId'] == null ? null : map['targetWorkerSizeId']! as int,
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      targetWorkerCount: (() {
+        final guardedValue = map['targetWorkerCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      targetWorkerSizeId: (() {
+        final guardedValue = map['targetWorkerSizeId'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       type: map['type'] as String,
-      workerTierName: map['workerTierName'] == null ? null : map['workerTierName']! as String,
-      zoneRedundant: map['zoneRedundant'] == null ? null : map['zoneRedundant']! as bool,
+      workerTierName: (() {
+        final guardedValue = map['workerTierName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zoneRedundant: (() {
+        final guardedValue = map['zoneRedundant'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
     );
   }
 }
-

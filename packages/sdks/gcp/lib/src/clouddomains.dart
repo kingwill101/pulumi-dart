@@ -1,5 +1,3 @@
-library module_clouddomains;
-
 export 'clouddomains/registration.dart';
 export 'clouddomains/registration_args.dart';
 export 'clouddomains/registration_contact_settings.dart';

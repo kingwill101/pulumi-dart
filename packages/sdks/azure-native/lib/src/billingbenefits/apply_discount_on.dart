@@ -4,16 +4,15 @@ enum ApplyDiscountOn {
   consume("Consume"),
   renew("Renew");
 
-  const ApplyDiscountOn(this.value);
-  final String value;
+  const ApplyDiscountOn(this.wireValue);
+  final String wireValue;
 
   static ApplyDiscountOn fromValue(String value) {
     for (final item in ApplyDiscountOn.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplyDiscountOn value: $value');
   }
 }
-

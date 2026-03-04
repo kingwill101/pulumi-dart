@@ -6,6 +6,7 @@ import 'get_collation_time_zones_collation_time_zone.dart';
 /// Result data returned by getCollationTimeZones.
 class GetCollationTimeZonesResult {
   final List<GetCollationTimeZonesCollationTimeZone>? collationTimeZones;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -25,7 +26,14 @@ class GetCollationTimeZonesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'collationTimeZones': ?collationTimeZones == null ? null : pulumi.Input.encodeList<GetCollationTimeZonesCollationTimeZone, Map<String, dynamic>>(collationTimeZones!, (value) => value.toMap()),
+      'collationTimeZones': ?(() {
+        final guardedValue = collationTimeZones;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetCollationTimeZonesCollationTimeZone,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -34,11 +42,23 @@ class GetCollationTimeZonesResult {
 
   factory GetCollationTimeZonesResult.fromMap(Map<String, dynamic> map) {
     return GetCollationTimeZonesResult(
-      collationTimeZones: map['collationTimeZones'] == null ? null : pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones']!, (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>())),
+      collationTimeZones: (() {
+        final guardedValue = map['collationTimeZones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(
+          guardedValue,
+          (value) => GetCollationTimeZonesCollationTimeZone.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

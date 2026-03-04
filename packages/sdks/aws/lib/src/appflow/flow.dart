@@ -1,10 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_args.dart';
-import 'flow_destination_flow_config.dart';
 import 'flow_metadata_catalog_config.dart';
 import 'flow_source_flow_config.dart';
 import 'flow_state.dart';
-import 'flow_task.dart';
 import 'flow_trigger_config.dart';
 
 /// Provides an AppFlow flow resource.
@@ -786,28 +784,40 @@ import 'flow_trigger_config.dart';
 class Flow extends pulumi.CustomResource {
   /// Flow's ARN.
   late final pulumi.Output<String> arn;
+
   /// Description of the flow you want to create.
   late final pulumi.Output<String?> description;
+
   /// A Destination Flow Config that controls how Amazon AppFlow places data in the destination connector.
-  late final pulumi.Output<List<FlowDestinationFlowConfig>> destinationFlowConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> destinationFlowConfigs;
+
   /// The current status of the flow.
   late final pulumi.Output<String> flowStatus;
+
   /// ARN (Amazon Resource Name) of the Key Management Service (KMS) key you provide for encryption. This is required if you do not want to use the Amazon AppFlow-managed KMS key. If you don't provide anything here, Amazon AppFlow uses the Amazon AppFlow-managed KMS key.
   late final pulumi.Output<String> kmsArn;
+
   /// A Catalog that determines the configuration that Amazon AppFlow uses when it catalogs the data that’s transferred by the associated flow. When Amazon AppFlow catalogs the data from a flow, it stores metadata in a data catalog.
   late final pulumi.Output<FlowMetadataCatalogConfig> metadataCatalogConfig;
+
   /// Name of the flow.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Source Flow Config that controls how Amazon AppFlow retrieves data from the source connector.
   late final pulumi.Output<FlowSourceFlowConfig> sourceFlowConfig;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// A Task that Amazon AppFlow performs while transferring the data in the flow run.
-  late final pulumi.Output<List<FlowTask>> tasks;
+  late final pulumi.Output<List<Map<String, dynamic>>> tasks;
+
   /// A Trigger that determine how and when the flow runs.
   late final pulumi.Output<FlowTriggerConfig> triggerConfig;
 
@@ -815,37 +825,34 @@ class Flow extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Flow]. {@macro pulumi_appflow_flow_flow_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Flow(
-    String name, {
-    FlowArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:appflow/flow:Flow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.destinationFlowConfigs = registerOutput<List<FlowDestinationFlowConfig>>('destinationFlowConfigs');
-    this.flowStatus = registerOutput<String>('flowStatus');
-    this.kmsArn = registerOutput<String>('kmsArn');
-    this.metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>('metadataCatalogConfig');
+  Flow(String name, {FlowArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:appflow/flow:Flow',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    destinationFlowConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'destinationFlowConfigs',
+    );
+    flowStatus = registerOutput<String>('flowStatus');
+    kmsArn = registerOutput<String>('kmsArn');
+    metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>(
+      'metadataCatalogConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.tasks = registerOutput<List<FlowTask>>('tasks');
-    this.triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig');
+    region = registerOutput<String>('region');
+    sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tasks = registerOutput<List<Map<String, dynamic>>>('tasks');
+    triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig');
   }
 
   /// Gets an existing [Flow] resource's state with the given [name] and [id].
-  static Flow get(
-    String name,
-    pulumi.Input<String> id, {
-    FlowState? state,
-  }) {
+  static Flow get(String name, pulumi.Input<String> id, {FlowState? state}) {
     return Flow._get(
       name,
       state: state?.toMap(),
@@ -858,23 +865,27 @@ class Flow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appflow/flow:Flow',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.destinationFlowConfigs = registerOutput<List<FlowDestinationFlowConfig>>('destinationFlowConfigs');
-    this.flowStatus = registerOutput<String>('flowStatus');
-    this.kmsArn = registerOutput<String>('kmsArn');
-    this.metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>('metadataCatalogConfig');
+         'aws:appflow/flow:Flow',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    destinationFlowConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'destinationFlowConfigs',
+    );
+    flowStatus = registerOutput<String>('flowStatus');
+    kmsArn = registerOutput<String>('kmsArn');
+    metadataCatalogConfig = registerOutput<FlowMetadataCatalogConfig>(
+      'metadataCatalogConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.tasks = registerOutput<List<FlowTask>>('tasks');
-    this.triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig');
+    region = registerOutput<String>('region');
+    sourceFlowConfig = registerOutput<FlowSourceFlowConfig>('sourceFlowConfig');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tasks = registerOutput<List<Map<String, dynamic>>>('tasks');
+    triggerConfig = registerOutput<FlowTriggerConfig>('triggerConfig');
   }
 }

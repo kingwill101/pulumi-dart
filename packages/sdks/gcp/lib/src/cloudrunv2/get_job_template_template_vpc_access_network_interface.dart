@@ -7,10 +7,12 @@ class GetJobTemplateTemplateVpcAccessNetworkInterface {
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
   /// looked up from the subnetwork.
   final pulumi.Input<String> network;
+
   /// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
   /// subnetwork with the same name with the network will be used.
   final pulumi.Input<String> subnetwork;
+
   /// Network tags applied to this Cloud Run job.
   final pulumi.Input<List<String>> tags;
 
@@ -32,12 +34,13 @@ class GetJobTemplateTemplateVpcAccessNetworkInterface {
     };
   }
 
-  factory GetJobTemplateTemplateVpcAccessNetworkInterface.fromMap(Map<String, dynamic> map) {
+  factory GetJobTemplateTemplateVpcAccessNetworkInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobTemplateTemplateVpcAccessNetworkInterface(
-      network: (map['network'] as String).input(),
-      subnetwork: (map['subnetwork'] as String).input(),
-      tags: ((map['tags'] as List).cast<String>()).input(),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
     );
   }
 }
-

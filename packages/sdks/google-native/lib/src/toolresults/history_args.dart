@@ -10,13 +10,17 @@ import 'history_test_platform.dart';
 class HistoryArgs {
   /// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
   final pulumi.Input<String>? displayName;
+
   /// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
   final pulumi.Input<String>? historyId;
+
   /// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
   final pulumi.Input<String>? requestId;
+
   /// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
   final pulumi.Input<HistoryTestPlatform>? testPlatform;
 
@@ -43,19 +47,48 @@ class HistoryArgs {
       'name': ?name,
       'project': ?project,
       'requestId': ?requestId,
-      'testPlatform': ?pulumi.Input.mapOptionalInputValue<HistoryTestPlatform, String>(testPlatform, (value) => value.value),
+      'testPlatform':
+          ?pulumi.Input.mapOptionalInputValue<HistoryTestPlatform, String>(
+            testPlatform,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory HistoryArgs.fromMap(Map<String, dynamic> map) {
     return HistoryArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      historyId: map['historyId'] == null ? null : (map['historyId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      testPlatform: map['testPlatform'] == null ? null : (HistoryTestPlatform.fromValue(map['testPlatform']! as String)).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      historyId: (() {
+        final guardedValue = map['historyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testPlatform: (() {
+        final guardedValue = map['testPlatform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HistoryTestPlatform.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

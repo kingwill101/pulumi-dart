@@ -7,16 +7,17 @@ enum ValidationOptionsUndeclaredProperties {
   ignoreWithWarnings("IGNORE_WITH_WARNINGS"),
   fail("FAIL");
 
-  const ValidationOptionsUndeclaredProperties(this.value);
-  final String value;
+  const ValidationOptionsUndeclaredProperties(this.wireValue);
+  final String wireValue;
 
   static ValidationOptionsUndeclaredProperties fromValue(String value) {
     for (final item in ValidationOptionsUndeclaredProperties.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ValidationOptionsUndeclaredProperties value: $value');
+    throw ArgumentError(
+      'Unknown ValidationOptionsUndeclaredProperties value: $value',
+    );
   }
 }
-

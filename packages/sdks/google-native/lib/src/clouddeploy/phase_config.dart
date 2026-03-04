@@ -8,14 +8,19 @@ import 'predeploy.dart';
 class PhaseConfig {
   /// Percentage deployment for the phase.
   final pulumi.Input<int> percentage;
+
   /// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
   final pulumi.Input<String> phaseId;
+
   /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase.
   final pulumi.Input<Postdeploy>? postdeploy;
+
   /// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
   final pulumi.Input<Predeploy>? predeploy;
+
   /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
   final pulumi.Input<List<String>>? profiles;
+
   /// Whether to run verify tests after the deployment.
   final pulumi.Input<bool>? verify;
 
@@ -39,8 +44,16 @@ class PhaseConfig {
     return <String, dynamic>{
       'percentage': percentage,
       'phaseId': phaseId,
-      'postdeploy': ?pulumi.Input.mapOptionalInputValue<Postdeploy, Map<String, dynamic>>(postdeploy, (value) => value.toMap()),
-      'predeploy': ?pulumi.Input.mapOptionalInputValue<Predeploy, Map<String, dynamic>>(predeploy, (value) => value.toMap()),
+      'postdeploy':
+          ?pulumi.Input.mapOptionalInputValue<Postdeploy, Map<String, dynamic>>(
+            postdeploy,
+            (value) => value.toMap(),
+          ),
+      'predeploy':
+          ?pulumi.Input.mapOptionalInputValue<Predeploy, Map<String, dynamic>>(
+            predeploy,
+            (value) => value.toMap(),
+          ),
       'profiles': ?profiles,
       'verify': ?verify,
     };
@@ -48,13 +61,32 @@ class PhaseConfig {
 
   factory PhaseConfig.fromMap(Map<String, dynamic> map) {
     return PhaseConfig(
-      percentage: (map['percentage'] as int).input(),
-      phaseId: (map['phaseId'] as String).input(),
-      postdeploy: map['postdeploy'] == null ? null : (Postdeploy.fromMap((map['postdeploy']! as Map).cast<String, dynamic>())).input(),
-      predeploy: map['predeploy'] == null ? null : (Predeploy.fromMap((map['predeploy']! as Map).cast<String, dynamic>())).input(),
-      profiles: map['profiles'] == null ? null : ((map['profiles']! as List).cast<String>()).input(),
-      verify: map['verify'] == null ? null : (map['verify']! as bool).input(),
+      percentage: pulumi.Input.fromValue(map['percentage'] as int),
+      phaseId: pulumi.Input.fromValue(map['phaseId'] as String),
+      postdeploy: (() {
+        final guardedValue = map['postdeploy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Postdeploy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      predeploy: (() {
+        final guardedValue = map['predeploy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Predeploy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      profiles: (() {
+        final guardedValue = map['profiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      verify: (() {
+        final guardedValue = map['verify'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

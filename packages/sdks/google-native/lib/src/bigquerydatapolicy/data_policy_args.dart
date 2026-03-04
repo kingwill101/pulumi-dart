@@ -11,11 +11,14 @@ import 'data_policy_data_policy_type.dart';
 class DataPolicyArgs {
   /// The data masking policy that specifies the data masking rule to use.
   final pulumi.Input<DataMaskingPolicy>? dataMaskingPolicy;
+
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {data_policy_id} in part of the resource name.
   final pulumi.Input<String>? dataPolicyId;
+
   /// Type of data policy.
   final pulumi.Input<DataPolicyDataPolicyType>? dataPolicyType;
   final pulumi.Input<String>? location;
+
   /// Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
   final pulumi.Input<String>? policyTag;
   final pulumi.Input<String>? project;
@@ -38,9 +41,17 @@ class DataPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataMaskingPolicy': ?pulumi.Input.mapOptionalInputValue<DataMaskingPolicy, Map<String, dynamic>>(dataMaskingPolicy, (value) => value.toMap()),
+      'dataMaskingPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataMaskingPolicy,
+            Map<String, dynamic>
+          >(dataMaskingPolicy, (value) => value.toMap()),
       'dataPolicyId': ?dataPolicyId,
-      'dataPolicyType': ?pulumi.Input.mapOptionalInputValue<DataPolicyDataPolicyType, String>(dataPolicyType, (value) => value.value),
+      'dataPolicyType':
+          ?pulumi.Input.mapOptionalInputValue<DataPolicyDataPolicyType, String>(
+            dataPolicyType,
+            (value) => value.wireValue,
+          ),
       'location': ?location,
       'policyTag': ?policyTag,
       'project': ?project,
@@ -49,13 +60,42 @@ class DataPolicyArgs {
 
   factory DataPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DataPolicyArgs(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (DataMaskingPolicy.fromMap((map['dataMaskingPolicy']! as Map).cast<String, dynamic>())).input(),
-      dataPolicyId: map['dataPolicyId'] == null ? null : (map['dataPolicyId']! as String).input(),
-      dataPolicyType: map['dataPolicyType'] == null ? null : (DataPolicyDataPolicyType.fromValue(map['dataPolicyType']! as String)).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      policyTag: map['policyTag'] == null ? null : (map['policyTag']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dataMaskingPolicy: (() {
+        final guardedValue = map['dataMaskingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataMaskingPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataPolicyId: (() {
+        final guardedValue = map['dataPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataPolicyType: (() {
+        final guardedValue = map['dataPolicyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataPolicyDataPolicyType.fromValue(guardedValue as String),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyTag: (() {
+        final guardedValue = map['policyTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

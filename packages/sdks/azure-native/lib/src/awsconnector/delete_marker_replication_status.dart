@@ -3,16 +3,15 @@ enum DeleteMarkerReplicationStatus {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const DeleteMarkerReplicationStatus(this.value);
-  final String value;
+  const DeleteMarkerReplicationStatus(this.wireValue);
+  final String wireValue;
 
   static DeleteMarkerReplicationStatus fromValue(String value) {
     for (final item in DeleteMarkerReplicationStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeleteMarkerReplicationStatus value: $value');
   }
 }
-

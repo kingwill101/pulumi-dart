@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadTestMappingArgs {
   /// Load Test Mapping name
   final pulumi.Input<String> loadTestMappingName;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -29,9 +30,10 @@ class GetLoadTestMappingArgs {
 
   factory GetLoadTestMappingArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadTestMappingArgs(
-      loadTestMappingName: (map['loadTestMappingName'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      loadTestMappingName: pulumi.Input.fromValue(
+        map['loadTestMappingName'] as String,
+      ),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

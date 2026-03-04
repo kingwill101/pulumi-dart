@@ -13,15 +13,18 @@ class IndexingConfigurationThingIndexingConfigurationFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namedShadowNames': ?namedShadowNames,
-    };
+    return <String, dynamic>{'namedShadowNames': ?namedShadowNames};
   }
 
-  factory IndexingConfigurationThingIndexingConfigurationFilter.fromMap(Map<String, dynamic> map) {
+  factory IndexingConfigurationThingIndexingConfigurationFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IndexingConfigurationThingIndexingConfigurationFilter(
-      namedShadowNames: map['namedShadowNames'] == null ? null : (((map['namedShadowNames'] as List).cast<String>()).input()).input(),
+      namedShadowNames: (() {
+        final guardedValue = map['namedShadowNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

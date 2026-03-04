@@ -6,7 +6,7 @@ import 'express_sync_share_attachment_state.dart';
 ///
 /// For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/addsharestoexpresssync).
 ///
-/// > **NOTE:** Available since v1.144.0.
+/// &gt; **NOTE:** Available since v1.144.0.
 ///
 /// ## Example Usage
 ///
@@ -797,8 +797,10 @@ import 'express_sync_share_attachment_state.dart';
 class ExpressSyncShareAttachment extends pulumi.CustomResource {
   /// The ID of the ExpressSync.
   late final pulumi.Output<String> expressSyncId;
+
   /// The ID of the Gateway.
   late final pulumi.Output<String> gatewayId;
+
   /// The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
   late final pulumi.Output<String> shareName;
 
@@ -811,14 +813,14 @@ class ExpressSyncShareAttachment extends pulumi.CustomResource {
     ExpressSyncShareAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.expressSyncId = registerOutput<String>('expressSyncId');
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.shareName = registerOutput<String>('shareName');
+         'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    expressSyncId = registerOutput<String>('expressSyncId');
+    gatewayId = registerOutput<String>('gatewayId');
+    shareName = registerOutput<String>('shareName');
   }
 
   /// Gets an existing [ExpressSyncShareAttachment] resource's state with the given [name] and [id].
@@ -839,13 +841,13 @@ class ExpressSyncShareAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.expressSyncId = registerOutput<String>('expressSyncId');
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.shareName = registerOutput<String>('shareName');
+         'alicloud:cloudstoragegateway/expressSyncShareAttachment:ExpressSyncShareAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    expressSyncId = registerOutput<String>('expressSyncId');
+    gatewayId = registerOutput<String>('gatewayId');
+    shareName = registerOutput<String>('shareName');
   }
 }

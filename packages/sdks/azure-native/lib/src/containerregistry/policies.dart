@@ -11,15 +11,21 @@ import 'trust_policy.dart';
 /// The policies for a container registry.
 class Policies {
   /// The policy for using ARM audience token for a container registry.
-  final pulumi.Input<AzureADAuthenticationAsArmPolicy>? azureADAuthenticationAsArmPolicy;
+  final pulumi.Input<AzureADAuthenticationAsArmPolicy>?
+  azureADAuthenticationAsArmPolicy;
+
   /// The export policy for a container registry.
   final pulumi.Input<ExportPolicy>? exportPolicy;
+
   /// The quarantine policy for a container registry.
   final pulumi.Input<QuarantinePolicy>? quarantinePolicy;
+
   /// The retention policy for a container registry.
   final pulumi.Input<RetentionPolicy>? retentionPolicy;
+
   /// The soft delete policy for a container registry.
   final pulumi.Input<SoftDeletePolicy>? softDeletePolicy;
+
   /// The content trust policy for a container registry.
   final pulumi.Input<TrustPolicy>? trustPolicy;
 
@@ -41,24 +47,91 @@ class Policies {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureADAuthenticationAsArmPolicy': ?pulumi.Input.mapOptionalInputValue<AzureADAuthenticationAsArmPolicy, Map<String, dynamic>>(azureADAuthenticationAsArmPolicy, (value) => value.toMap()),
-      'exportPolicy': ?pulumi.Input.mapOptionalInputValue<ExportPolicy, Map<String, dynamic>>(exportPolicy, (value) => value.toMap()),
-      'quarantinePolicy': ?pulumi.Input.mapOptionalInputValue<QuarantinePolicy, Map<String, dynamic>>(quarantinePolicy, (value) => value.toMap()),
-      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<RetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
-      'softDeletePolicy': ?pulumi.Input.mapOptionalInputValue<SoftDeletePolicy, Map<String, dynamic>>(softDeletePolicy, (value) => value.toMap()),
-      'trustPolicy': ?pulumi.Input.mapOptionalInputValue<TrustPolicy, Map<String, dynamic>>(trustPolicy, (value) => value.toMap()),
+      'azureADAuthenticationAsArmPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureADAuthenticationAsArmPolicy,
+            Map<String, dynamic>
+          >(azureADAuthenticationAsArmPolicy, (value) => value.toMap()),
+      'exportPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExportPolicy,
+            Map<String, dynamic>
+          >(exportPolicy, (value) => value.toMap()),
+      'quarantinePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            QuarantinePolicy,
+            Map<String, dynamic>
+          >(quarantinePolicy, (value) => value.toMap()),
+      'retentionPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetentionPolicy,
+            Map<String, dynamic>
+          >(retentionPolicy, (value) => value.toMap()),
+      'softDeletePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            SoftDeletePolicy,
+            Map<String, dynamic>
+          >(softDeletePolicy, (value) => value.toMap()),
+      'trustPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrustPolicy,
+            Map<String, dynamic>
+          >(trustPolicy, (value) => value.toMap()),
     };
   }
 
   factory Policies.fromMap(Map<String, dynamic> map) {
     return Policies(
-      azureADAuthenticationAsArmPolicy: map['azureADAuthenticationAsArmPolicy'] == null ? null : (AzureADAuthenticationAsArmPolicy.fromMap((map['azureADAuthenticationAsArmPolicy']! as Map).cast<String, dynamic>())).input(),
-      exportPolicy: map['exportPolicy'] == null ? null : (ExportPolicy.fromMap((map['exportPolicy']! as Map).cast<String, dynamic>())).input(),
-      quarantinePolicy: map['quarantinePolicy'] == null ? null : (QuarantinePolicy.fromMap((map['quarantinePolicy']! as Map).cast<String, dynamic>())).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
-      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicy.fromMap((map['softDeletePolicy']! as Map).cast<String, dynamic>())).input(),
-      trustPolicy: map['trustPolicy'] == null ? null : (TrustPolicy.fromMap((map['trustPolicy']! as Map).cast<String, dynamic>())).input(),
+      azureADAuthenticationAsArmPolicy: (() {
+        final guardedValue = map['azureADAuthenticationAsArmPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureADAuthenticationAsArmPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      exportPolicy: (() {
+        final guardedValue = map['exportPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExportPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      quarantinePolicy: (() {
+        final guardedValue = map['quarantinePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          QuarantinePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      retentionPolicy: (() {
+        final guardedValue = map['retentionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetentionPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      softDeletePolicy: (() {
+        final guardedValue = map['softDeletePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SoftDeletePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      trustPolicy: (() {
+        final guardedValue = map['trustPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TrustPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

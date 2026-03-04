@@ -9,25 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVersionArgs {
   /// The id of the master key (CMK).
   ///
-  /// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
+  /// &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
   final pulumi.Input<String> keyId;
 
   /// Creates a new [KeyVersionArgs].
   /// [keyId] The id of the master key (CMK).
-  KeyVersionArgs({
-    required this.keyId,
-  });
+  KeyVersionArgs({required this.keyId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyId': keyId,
-    };
+    return <String, dynamic>{'keyId': keyId};
   }
 
   factory KeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return KeyVersionArgs(
-      keyId: (map['keyId'] as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
     );
   }
 }
-

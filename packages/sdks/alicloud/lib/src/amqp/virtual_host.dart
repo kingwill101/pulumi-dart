@@ -8,7 +8,7 @@ import 'virtual_host_state.dart';
 ///
 /// For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///
@@ -261,6 +261,7 @@ import 'virtual_host_state.dart';
 class VirtualHost extends pulumi.CustomResource {
   /// InstanceId.
   late final pulumi.Output<String> instanceId;
+
   /// VirtualHostName.
   late final pulumi.Output<String> virtualHostName;
 
@@ -273,13 +274,13 @@ class VirtualHost extends pulumi.CustomResource {
     VirtualHostArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:amqp/virtualHost:VirtualHost',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.virtualHostName = registerOutput<String>('virtualHostName');
+         'alicloud:amqp/virtualHost:VirtualHost',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    virtualHostName = registerOutput<String>('virtualHostName');
   }
 
   /// Gets an existing [VirtualHost] resource's state with the given [name] and [id].
@@ -300,12 +301,12 @@ class VirtualHost extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:amqp/virtualHost:VirtualHost',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.virtualHostName = registerOutput<String>('virtualHostName');
+         'alicloud:amqp/virtualHost:VirtualHost',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    virtualHostName = registerOutput<String>('virtualHostName');
   }
 }

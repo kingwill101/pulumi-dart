@@ -8,10 +8,13 @@ import 'tag.dart';
 class AwsCloudFrontDistributionProperties {
   /// The distribution's configuration. A distribution configuration.
   final pulumi.Input<DistributionConfig>? distributionConfig;
+
   /// Property domainName
   final pulumi.Input<String>? domainName;
+
   /// Property id
   final pulumi.Input<String>? id;
+
   /// A complex type that contains zero or more ``Tag`` elements.
   final pulumi.Input<List<Tag>>? tags;
 
@@ -29,20 +32,60 @@ class AwsCloudFrontDistributionProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributionConfig': ?pulumi.Input.mapOptionalInputValue<DistributionConfig, Map<String, dynamic>>(distributionConfig, (value) => value.toMap()),
+      'distributionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DistributionConfig,
+            Map<String, dynamic>
+          >(distributionConfig, (value) => value.toMap()),
       'domainName': ?domainName,
       'id': ?id,
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Tag>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
-  factory AwsCloudFrontDistributionProperties.fromMap(Map<String, dynamic> map) {
+  factory AwsCloudFrontDistributionProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsCloudFrontDistributionProperties(
-      distributionConfig: map['distributionConfig'] == null ? null : (DistributionConfig.fromMap((map['distributionConfig']! as Map).cast<String, dynamic>())).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distributionConfig: (() {
+        final guardedValue = map['distributionConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DistributionConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Tag>(
+            guardedValue,
+            (value) => Tag.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

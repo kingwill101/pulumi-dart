@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobExtractSourceModel {
   /// The ID of the dataset containing this model.
   final pulumi.Input<String> datasetId;
+
   /// The ID of the model.
   final pulumi.Input<String> modelId;
+
   /// The ID of the project containing this model.
   final pulumi.Input<String> projectId;
 
@@ -30,10 +32,9 @@ class JobExtractSourceModel {
 
   factory JobExtractSourceModel.fromMap(Map<String, dynamic> map) {
     return JobExtractSourceModel(
-      datasetId: (map['datasetId'] as String).input(),
-      modelId: (map['modelId'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
-

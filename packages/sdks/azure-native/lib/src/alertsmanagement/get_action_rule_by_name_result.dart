@@ -6,16 +6,22 @@ import 'action_group_response.dart';
 class GetActionRuleByNameResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Azure resource Id
   final String id;
+
   /// Resource location
   final String location;
+
   /// Azure resource name
   final String name;
+
   /// action rule properties
   final ActionGroupResponse properties;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// Azure resource type
   final String type;
 
@@ -55,10 +61,15 @@ class GetActionRuleByNameResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      properties: ActionGroupResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      properties: ActionGroupResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

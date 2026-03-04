@@ -1,3 +1,1 @@
-library pulumi_azure_native_dynamics365fraudprotection;
-
 export 'package:pulumi_azure_native/src/dynamics365fraudprotection.dart';

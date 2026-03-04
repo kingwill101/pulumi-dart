@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAzureServiceDiscovery.
 class GetAzureServiceDiscoveryResult {
   final String? addressRealm;
+
   /// The JSON for Azure service discovery block.
   final String azureSdJson;
   final bool? credentialUpdate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? minimumMonitors;
@@ -69,20 +70,55 @@ class GetAzureServiceDiscoveryResult {
 
   factory GetAzureServiceDiscoveryResult.fromMap(Map<String, dynamic> map) {
     return GetAzureServiceDiscoveryResult(
-      addressRealm: map['addressRealm'] == null ? null : map['addressRealm']! as String,
+      addressRealm: (() {
+        final guardedValue = map['addressRealm'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureSdJson: map['azureSdJson'] as String,
-      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate']! as bool,
+      credentialUpdate: (() {
+        final guardedValue = map['credentialUpdate'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
-      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors']! as String,
-      port: map['port'] == null ? null : map['port']! as int,
+      minimumMonitors: (() {
+        final guardedValue = map['minimumMonitors'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       resourceGroup: map['resourceGroup'] as String,
       subscriptionId: map['subscriptionId'] as String,
-      tagKey: map['tagKey'] == null ? null : map['tagKey']! as String,
-      tagValue: map['tagValue'] == null ? null : map['tagValue']! as String,
-      type: map['type'] == null ? null : map['type']! as String,
-      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction']! as String,
-      updateInterval: map['updateInterval'] == null ? null : map['updateInterval']! as String,
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tagValue: (() {
+        final guardedValue = map['tagValue'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      undetectableAction: (() {
+        final guardedValue = map['undetectableAction'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      updateInterval: (() {
+        final guardedValue = map['updateInterval'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

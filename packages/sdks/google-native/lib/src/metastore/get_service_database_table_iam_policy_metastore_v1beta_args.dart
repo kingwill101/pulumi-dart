@@ -41,15 +41,24 @@ class GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs {
     };
   }
 
-  factory GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs(
-      databaseId: (map['databaseId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
-      tableId: (map['tableId'] as String).input(),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ListApprovedSchemasDirection {
   valueSend("Send"),
   valueReceive("Receive");
 
-  const ListApprovedSchemasDirection(this.value);
-  final String value;
+  const ListApprovedSchemasDirection(this.wireValue);
+  final String wireValue;
 
   static ListApprovedSchemasDirection fromValue(String value) {
     for (final item in ListApprovedSchemasDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ListApprovedSchemasDirection value: $value');
   }
 }
-

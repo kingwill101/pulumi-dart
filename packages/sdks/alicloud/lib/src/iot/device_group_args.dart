@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceGroupArgs {
   /// The GroupDesc of the device group.
   final pulumi.Input<String>? groupDesc;
+
   /// The GroupName of the device group.
   final pulumi.Input<String> groupName;
+
   /// The id of the Iot Instance.
   final pulumi.Input<String>? iotInstanceId;
+
   /// The id of the SuperGroup.
   final pulumi.Input<String>? superGroupId;
 
@@ -39,11 +42,22 @@ class DeviceGroupArgs {
 
   factory DeviceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeviceGroupArgs(
-      groupDesc: map['groupDesc'] == null ? null : (map['groupDesc']! as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      iotInstanceId: map['iotInstanceId'] == null ? null : (map['iotInstanceId']! as String).input(),
-      superGroupId: map['superGroupId'] == null ? null : (map['superGroupId']! as String).input(),
+      groupDesc: (() {
+        final guardedValue = map['groupDesc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      iotInstanceId: (() {
+        final guardedValue = map['iotInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      superGroupId: (() {
+        final guardedValue = map['superGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'google_cloud_dialogflow_cx_v3_data_store_connection_data_store_type.dart
 class GoogleCloudDialogflowCxV3DataStoreConnection {
   /// The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
   final pulumi.Input<String>? dataStore;
+
   /// The type of the connected data store.
-  final pulumi.Input<GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType>? dataStoreType;
+  final pulumi.Input<GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType>?
+  dataStoreType;
 
   /// Creates a new [GoogleCloudDialogflowCxV3DataStoreConnection].
   /// [dataStore] The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
@@ -21,15 +23,32 @@ class GoogleCloudDialogflowCxV3DataStoreConnection {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataStore': ?dataStore,
-      'dataStoreType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType, String>(dataStoreType, (value) => value.value),
+      'dataStoreType':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType,
+            String
+          >(dataStoreType, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3DataStoreConnection.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3DataStoreConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3DataStoreConnection(
-      dataStore: map['dataStore'] == null ? null : (map['dataStore']! as String).input(),
-      dataStoreType: map['dataStoreType'] == null ? null : (GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType.fromValue(map['dataStoreType']! as String)).input(),
+      dataStore: (() {
+        final guardedValue = map['dataStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataStoreType: (() {
+        final guardedValue = map['dataStoreType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

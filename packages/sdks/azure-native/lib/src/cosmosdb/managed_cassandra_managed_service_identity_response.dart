@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedCassandraManagedServiceIdentityResponse {
   /// The object id of the identity resource.
   final pulumi.Input<String> principalId;
+
   /// The tenant id of the resource.
   final pulumi.Input<String> tenantId;
+
   /// The type of the resource.
   final pulumi.Input<String>? type;
 
@@ -29,12 +31,17 @@ class ManagedCassandraManagedServiceIdentityResponse {
     };
   }
 
-  factory ManagedCassandraManagedServiceIdentityResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedCassandraManagedServiceIdentityResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedCassandraManagedServiceIdentityResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

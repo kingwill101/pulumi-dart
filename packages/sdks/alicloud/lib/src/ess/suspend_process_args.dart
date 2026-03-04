@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SuspendProcessArgs {
   /// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   final pulumi.Input<String> process;
+
   /// ID of the scaling group.
   final pulumi.Input<String> scalingGroupId;
 
   /// Creates a new [SuspendProcessArgs].
   /// [process] Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   /// [scalingGroupId] ID of the scaling group.
-  SuspendProcessArgs({
-    required this.process,
-    required this.scalingGroupId,
-  });
+  SuspendProcessArgs({required this.process, required this.scalingGroupId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class SuspendProcessArgs {
 
   factory SuspendProcessArgs.fromMap(Map<String, dynamic> map) {
     return SuspendProcessArgs(
-      process: (map['process'] as String).input(),
-      scalingGroupId: (map['scalingGroupId'] as String).input(),
+      process: pulumi.Input.fromValue(map['process'] as String),
+      scalingGroupId: pulumi.Input.fromValue(map['scalingGroupId'] as String),
     );
   }
 }
-

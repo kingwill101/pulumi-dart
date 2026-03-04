@@ -4,16 +4,17 @@ enum PublishingOptionsEncodingFormat {
   pem("PEM"),
   der("DER");
 
-  const PublishingOptionsEncodingFormat(this.value);
-  final String value;
+  const PublishingOptionsEncodingFormat(this.wireValue);
+  final String wireValue;
 
   static PublishingOptionsEncodingFormat fromValue(String value) {
     for (final item in PublishingOptionsEncodingFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PublishingOptionsEncodingFormat value: $value');
+    throw ArgumentError(
+      'Unknown PublishingOptionsEncodingFormat value: $value',
+    );
   }
 }
-

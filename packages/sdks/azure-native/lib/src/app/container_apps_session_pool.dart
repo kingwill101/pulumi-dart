@@ -2,11 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_apps_session_pool_args.dart';
 import 'custom_container_template_response.dart';
 import 'dynamic_pool_configuration_response.dart';
-import 'managed_identity_setting_response.dart';
 import 'managed_service_identity_response.dart';
 import 'scale_configuration_response.dart';
 import 'session_network_configuration_response.dart';
-import 'session_pool_secret_response.dart';
 import 'system_data_response.dart';
 
 /// Container App session pool.
@@ -843,40 +841,61 @@ import 'system_data_response.dart';
 class ContainerAppsSessionPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The container type of the sessions.
   late final pulumi.Output<String?> containerType;
+
   /// The custom container configuration if the containerType is CustomContainer.
-  late final pulumi.Output<CustomContainerTemplateResponse?> customContainerTemplate;
+  late final pulumi.Output<CustomContainerTemplateResponse?>
+  customContainerTemplate;
+
   /// The pool configuration if the poolManagementType is dynamic.
-  late final pulumi.Output<DynamicPoolConfigurationResponse?> dynamicPoolConfiguration;
+  late final pulumi.Output<DynamicPoolConfigurationResponse?>
+  dynamicPoolConfiguration;
+
   /// Resource ID of the session pool's environment.
   late final pulumi.Output<String?> environmentId;
+
   /// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Optional settings for a Managed Identity that is assigned to the Session pool.
-  late final pulumi.Output<List<ManagedIdentitySettingResponse>?> managedIdentitySettings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> managedIdentitySettings;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The number of nodes the session pool is using.
   late final pulumi.Output<int> nodeCount;
+
   /// The endpoint to manage the pool.
   late final pulumi.Output<String> poolManagementEndpoint;
+
   /// The pool management type of the session pool.
   late final pulumi.Output<String?> poolManagementType;
+
   /// Provisioning state of the session pool.
   late final pulumi.Output<String> provisioningState;
+
   /// The scale configuration of the session pool.
   late final pulumi.Output<ScaleConfigurationResponse?> scaleConfiguration;
+
   /// The secrets of the session pool.
-  late final pulumi.Output<List<SessionPoolSecretResponse>?> secrets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+
   /// The network configuration of the sessions in the session pool.
-  late final pulumi.Output<SessionNetworkConfigurationResponse?> sessionNetworkConfiguration;
+  late final pulumi.Output<SessionNetworkConfigurationResponse?>
+  sessionNetworkConfiguration;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -889,29 +908,41 @@ class ContainerAppsSessionPool extends pulumi.CustomResource {
     ContainerAppsSessionPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:ContainerAppsSessionPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.containerType = registerOutput<String?>('containerType');
-    this.customContainerTemplate = registerOutput<CustomContainerTemplateResponse?>('customContainerTemplate');
-    this.dynamicPoolConfiguration = registerOutput<DynamicPoolConfigurationResponse?>('dynamicPoolConfiguration');
-    this.environmentId = registerOutput<String?>('environmentId');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedIdentitySettings = registerOutput<List<ManagedIdentitySettingResponse>?>('managedIdentitySettings');
+         'azure-native:app:ContainerAppsSessionPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerType = registerOutput<String?>('containerType');
+    customContainerTemplate = registerOutput<CustomContainerTemplateResponse?>(
+      'customContainerTemplate',
+    );
+    dynamicPoolConfiguration =
+        registerOutput<DynamicPoolConfigurationResponse?>(
+          'dynamicPoolConfiguration',
+        );
+    environmentId = registerOutput<String?>('environmentId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    managedIdentitySettings = registerOutput<List<Map<String, dynamic>>?>(
+      'managedIdentitySettings',
+    );
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int>('nodeCount');
-    this.poolManagementEndpoint = registerOutput<String>('poolManagementEndpoint');
-    this.poolManagementType = registerOutput<String?>('poolManagementType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scaleConfiguration = registerOutput<ScaleConfigurationResponse?>('scaleConfiguration');
-    this.secrets = registerOutput<List<SessionPoolSecretResponse>?>('secrets');
-    this.sessionNetworkConfiguration = registerOutput<SessionNetworkConfigurationResponse?>('sessionNetworkConfiguration');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    nodeCount = registerOutput<int>('nodeCount');
+    poolManagementEndpoint = registerOutput<String>('poolManagementEndpoint');
+    poolManagementType = registerOutput<String?>('poolManagementType');
+    provisioningState = registerOutput<String>('provisioningState');
+    scaleConfiguration = registerOutput<ScaleConfigurationResponse?>(
+      'scaleConfiguration',
+    );
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    sessionNetworkConfiguration =
+        registerOutput<SessionNetworkConfigurationResponse?>(
+          'sessionNetworkConfiguration',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

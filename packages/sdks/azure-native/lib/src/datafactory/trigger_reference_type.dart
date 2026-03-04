@@ -2,16 +2,15 @@
 enum TriggerReferenceType {
   valueTriggerReference("TriggerReference");
 
-  const TriggerReferenceType(this.value);
-  final String value;
+  const TriggerReferenceType(this.wireValue);
+  final String wireValue;
 
   static TriggerReferenceType fromValue(String value) {
     for (final item in TriggerReferenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TriggerReferenceType value: $value');
   }
 }
-

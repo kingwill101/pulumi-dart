@@ -16,7 +16,7 @@ import 'get_user_tenants_result.dart';
 
 /// This data source provides DMS Enterprise Database available to the user. [What is Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-listdatabases).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -141,7 +141,7 @@ Future<GetEnterpriseDatabasesResult> getEnterpriseDatabases(
 
 /// This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.88.0+
+/// &gt; **NOTE:** Available in 1.88.0+
 ///
 /// ## Example Usage
 ///
@@ -288,7 +288,7 @@ Future<GetEnterpriseInstancesResult> getEnterpriseInstances(
 
 /// This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -328,7 +328,7 @@ Future<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(
 
 /// This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.188.0+.
+/// &gt; **NOTE:** Available in v1.188.0+.
 ///
 /// ## Example Usage
 ///
@@ -438,7 +438,7 @@ Future<GetEnterpriseProxiesResult> getEnterpriseProxies(
 
 /// This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -611,7 +611,7 @@ Future<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccesses(
 
 /// This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.90.0+
+/// &gt; **NOTE:** Available in 1.90.0+
 ///
 /// ## Example Usage
 ///
@@ -752,7 +752,7 @@ Future<GetEnterpriseUsersResult> getEnterpriseUsers(
 
 /// This data source provides a list of DMS User Tenants in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.161.0+
+/// &gt; **NOTE:** Available in 1.161.0+
 ///
 /// ## Example Usage
 ///

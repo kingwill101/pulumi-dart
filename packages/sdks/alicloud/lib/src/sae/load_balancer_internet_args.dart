@@ -10,8 +10,10 @@ import 'load_balancer_internet_internet.dart';
 class LoadBalancerInternetArgs {
   /// The target application ID that needs to be bound to the SLB.
   final pulumi.Input<String> appId;
+
   /// The internet SLB ID.
   final pulumi.Input<String>? internetSlbId;
+
   /// The bound private network SLB. See `internet` below.
   final pulumi.Input<List<LoadBalancerInternetInternet>> internets;
 
@@ -29,16 +31,37 @@ class LoadBalancerInternetArgs {
     return <String, dynamic>{
       'appId': appId,
       'internetSlbId': ?internetSlbId,
-      'internets': pulumi.Input.mapInputValue<List<LoadBalancerInternetInternet>, List<Map<String, dynamic>>>(internets, (value) => pulumi.Input.encodeList<LoadBalancerInternetInternet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'internets':
+          pulumi.Input.mapInputValue<
+            List<LoadBalancerInternetInternet>,
+            List<Map<String, dynamic>>
+          >(
+            internets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LoadBalancerInternetInternet,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LoadBalancerInternetArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerInternetArgs(
-      appId: (map['appId'] as String).input(),
-      internetSlbId: map['internetSlbId'] == null ? null : (map['internetSlbId']! as String).input(),
-      internets: (pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets'], (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      internetSlbId: (() {
+        final guardedValue = map['internetSlbId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internets: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<LoadBalancerInternetInternet>(
+          map['internets']!,
+          (value) => LoadBalancerInternetInternet.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum LedgerRoleName {
   valueContributor("Contributor"),
   valueAdministrator("Administrator");
 
-  const LedgerRoleName(this.value);
-  final String value;
+  const LedgerRoleName(this.wireValue);
+  final String wireValue;
 
   static LedgerRoleName fromValue(String value) {
     for (final item in LedgerRoleName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LedgerRoleName value: $value');
   }
 }
-

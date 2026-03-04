@@ -11,49 +11,70 @@ import 'cloud_vm_cluster_timeouts.dart';
 class CloudVmClusterArgs {
   /// The ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
   final pulumi.Input<String>? cloudExadataInfrastructureArn;
+
   /// The unique identifier of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
   final pulumi.Input<String>? cloudExadataInfrastructureId;
+
   /// The name of the Grid Infrastructure (GI) cluster. Changing this will create a new resource.
   final pulumi.Input<String>? clusterName;
+
   /// The number of CPU cores to enable on the VM cluster. Changing this will create a new resource.
   final pulumi.Input<int> cpuCoreCount;
+
   /// The set of preferences for the various diagnostic collection options for the VM cluster.
   final pulumi.Input<CloudVmClusterDataCollectionOptions> dataCollectionOptions;
+
   /// The size of the data disk group, in terabytes (TBs), to allocate for the VM cluster. Changing this will create a new resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<double> dataStorageSizeInTbs;
+
   /// The amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<int>? dbNodeStorageSizeInGbs;
+
   /// The list of database servers for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<List<String>> dbServers;
+
   /// A user-friendly name for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<String> displayName;
+
   /// A valid software version of Oracle Grid Infrastructure (GI). To get the list of valid values, use the ListGiVersions operation and specify the shape of the Exadata infrastructure. Example: 19.0.0.0 Changing this will create a new resource.
   final pulumi.Input<String> giVersion;
+
   /// The host name prefix for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. Changing this will create a new resource.
   final pulumi.Input<String> hostnamePrefix;
+
   /// Specifies whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<bool>? isLocalBackupEnabled;
+
   /// Specifies whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<bool>? isSparseDiskgroupEnabled;
+
   /// The Oracle license model to apply to the VM cluster. Default: LICENSE_INCLUDED. Changing this will create a new resource.
   final pulumi.Input<String>? licenseModel;
+
   /// The amount of memory, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
   final pulumi.Input<int>? memorySizeInGbs;
+
   /// The ARN of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
   final pulumi.Input<String>? odbNetworkArn;
+
   /// The unique identifier of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
   final pulumi.Input<String>? odbNetworkId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The port number for TCP connections to the single client access name (SCAN) listener. Valid values: 1024–8999, except 2484, 6100, 6200, 7060, 7070, 7085, and 7879. Default: 1521. Changing this will create a new resource.
   final pulumi.Input<int>? scanListenerPortTcp;
+
   /// The public key portion of one or more key pairs used for SSH access to the VM cluster. Changing this will create a new resource.
   final pulumi.Input<List<String>> sshPublicKeys;
+
   /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<CloudVmClusterTimeouts>? timeouts;
+
   /// The configured time zone of the VM cluster. Changing this will create a new resource.
   final pulumi.Input<String>? timezone;
 
@@ -113,7 +134,11 @@ class CloudVmClusterArgs {
       'cloudExadataInfrastructureId': ?cloudExadataInfrastructureId,
       'clusterName': ?clusterName,
       'cpuCoreCount': cpuCoreCount,
-      'dataCollectionOptions': pulumi.Input.mapInputValue<CloudVmClusterDataCollectionOptions, Map<String, dynamic>>(dataCollectionOptions, (value) => value.toMap()),
+      'dataCollectionOptions':
+          pulumi.Input.mapInputValue<
+            CloudVmClusterDataCollectionOptions,
+            Map<String, dynamic>
+          >(dataCollectionOptions, (value) => value.toMap()),
       'dataStorageSizeInTbs': dataStorageSizeInTbs,
       'dbNodeStorageSizeInGbs': ?dbNodeStorageSizeInGbs,
       'dbServers': dbServers,
@@ -130,37 +155,116 @@ class CloudVmClusterArgs {
       'scanListenerPortTcp': ?scanListenerPortTcp,
       'sshPublicKeys': sshPublicKeys,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<CloudVmClusterTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudVmClusterTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'timezone': ?timezone,
     };
   }
 
   factory CloudVmClusterArgs.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterArgs(
-      cloudExadataInfrastructureArn: map['cloudExadataInfrastructureArn'] == null ? null : ((map['cloudExadataInfrastructureArn'] as String).input()).input(),
-      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] == null ? null : ((map['cloudExadataInfrastructureId'] as String).input()).input(),
-      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
-      cpuCoreCount: (map['cpuCoreCount'] as int).input(),
-      dataCollectionOptions: (CloudVmClusterDataCollectionOptions.fromMap((map['dataCollectionOptions']! as Map).cast<String, dynamic>())).input(),
-      dataStorageSizeInTbs: (map['dataStorageSizeInTbs'] as double).input(),
-      dbNodeStorageSizeInGbs: map['dbNodeStorageSizeInGbs'] == null ? null : ((map['dbNodeStorageSizeInGbs'] as int).input()).input(),
-      dbServers: ((map['dbServers'] as List).cast<String>()).input(),
-      displayName: (map['displayName'] as String).input(),
-      giVersion: (map['giVersion'] as String).input(),
-      hostnamePrefix: (map['hostnamePrefix'] as String).input(),
-      isLocalBackupEnabled: map['isLocalBackupEnabled'] == null ? null : ((map['isLocalBackupEnabled'] as bool).input()).input(),
-      isSparseDiskgroupEnabled: map['isSparseDiskgroupEnabled'] == null ? null : ((map['isSparseDiskgroupEnabled'] as bool).input()).input(),
-      licenseModel: map['licenseModel'] == null ? null : ((map['licenseModel'] as String).input()).input(),
-      memorySizeInGbs: map['memorySizeInGbs'] == null ? null : ((map['memorySizeInGbs'] as int).input()).input(),
-      odbNetworkArn: map['odbNetworkArn'] == null ? null : ((map['odbNetworkArn'] as String).input()).input(),
-      odbNetworkId: map['odbNetworkId'] == null ? null : ((map['odbNetworkId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scanListenerPortTcp: map['scanListenerPortTcp'] == null ? null : ((map['scanListenerPortTcp'] as int).input()).input(),
-      sshPublicKeys: ((map['sshPublicKeys'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((CloudVmClusterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
+      cloudExadataInfrastructureArn: (() {
+        final guardedValue = map['cloudExadataInfrastructureArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudExadataInfrastructureId: (() {
+        final guardedValue = map['cloudExadataInfrastructureId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpuCoreCount: pulumi.Input.fromValue(map['cpuCoreCount'] as int),
+      dataCollectionOptions: pulumi.Input.fromValue(
+        CloudVmClusterDataCollectionOptions.fromMap(
+          (map['dataCollectionOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dataStorageSizeInTbs: pulumi.Input.fromValue(
+        map['dataStorageSizeInTbs'] as double,
+      ),
+      dbNodeStorageSizeInGbs: (() {
+        final guardedValue = map['dbNodeStorageSizeInGbs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dbServers: pulumi.Input.fromValue(
+        (map['dbServers'] as List).cast<String>(),
+      ),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      giVersion: pulumi.Input.fromValue(map['giVersion'] as String),
+      hostnamePrefix: pulumi.Input.fromValue(map['hostnamePrefix'] as String),
+      isLocalBackupEnabled: (() {
+        final guardedValue = map['isLocalBackupEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isSparseDiskgroupEnabled: (() {
+        final guardedValue = map['isSparseDiskgroupEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      licenseModel: (() {
+        final guardedValue = map['licenseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memorySizeInGbs: (() {
+        final guardedValue = map['memorySizeInGbs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      odbNetworkArn: (() {
+        final guardedValue = map['odbNetworkArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      odbNetworkId: (() {
+        final guardedValue = map['odbNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scanListenerPortTcp: (() {
+        final guardedValue = map['scanListenerPortTcp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sshPublicKeys: pulumi.Input.fromValue(
+        (map['sshPublicKeys'] as List).cast<String>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudVmClusterTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timezone: (() {
+        final guardedValue = map['timezone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

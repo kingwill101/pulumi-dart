@@ -4,7 +4,7 @@ import 'get_gateways_result.dart';
 
 /// This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///

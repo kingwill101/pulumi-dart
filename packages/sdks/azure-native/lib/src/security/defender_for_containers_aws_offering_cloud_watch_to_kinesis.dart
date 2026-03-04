@@ -9,20 +9,21 @@ class DefenderForContainersAwsOfferingCloudWatchToKinesis {
 
   /// Creates a new [DefenderForContainersAwsOfferingCloudWatchToKinesis].
   /// [cloudRoleArn] The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
-  DefenderForContainersAwsOfferingCloudWatchToKinesis({
-    this.cloudRoleArn,
-  });
+  DefenderForContainersAwsOfferingCloudWatchToKinesis({this.cloudRoleArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudRoleArn': ?cloudRoleArn,
-    };
+    return <String, dynamic>{'cloudRoleArn': ?cloudRoleArn};
   }
 
-  factory DefenderForContainersAwsOfferingCloudWatchToKinesis.fromMap(Map<String, dynamic> map) {
+  factory DefenderForContainersAwsOfferingCloudWatchToKinesis.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForContainersAwsOfferingCloudWatchToKinesis(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      cloudRoleArn: (() {
+        final guardedValue = map['cloudRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

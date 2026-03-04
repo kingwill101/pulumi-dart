@@ -8,20 +8,15 @@ class TopicRuleDynamodbv2PutItem {
 
   /// Creates a new [TopicRuleDynamodbv2PutItem].
   /// [tableName] The name of the DynamoDB table.
-  TopicRuleDynamodbv2PutItem({
-    required this.tableName,
-  });
+  TopicRuleDynamodbv2PutItem({required this.tableName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tableName': tableName,
-    };
+    return <String, dynamic>{'tableName': tableName};
   }
 
   factory TopicRuleDynamodbv2PutItem.fromMap(Map<String, dynamic> map) {
     return TopicRuleDynamodbv2PutItem(
-      tableName: (map['tableName'] as String).input(),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

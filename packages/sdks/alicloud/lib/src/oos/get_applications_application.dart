@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationsApplication {
   /// The name of the application.
   final pulumi.Input<String> applicationName;
+
   /// The Created time of the application.
   final pulumi.Input<String> createTime;
+
   /// Application group description information.
   final pulumi.Input<String> description;
-  /// The ID of the Application. The value is formate as <application_name>.
+
+  /// The ID of the Application. The value is formate as &lt;application_name&gt;.
   final pulumi.Input<String> id;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The Updated time of the application.
   final pulumi.Input<String> updateTime;
 
@@ -22,7 +28,7 @@ class GetApplicationsApplication {
   /// [applicationName] The name of the application.
   /// [createTime] The Created time of the application.
   /// [description] Application group description information.
-  /// [id] The ID of the Application. The value is formate as <application_name>.
+  /// [id] The ID of the Application. The value is formate as &lt;application_name&gt;.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
   /// [updateTime] The Updated time of the application.
@@ -50,14 +56,13 @@ class GetApplicationsApplication {
 
   factory GetApplicationsApplication.fromMap(Map<String, dynamic> map) {
     return GetApplicationsApplication(
-      applicationName: (map['applicationName'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

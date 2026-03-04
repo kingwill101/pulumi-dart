@@ -15,15 +15,14 @@ class GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudSecret': cloudSecret,
-    };
+    return <String, dynamic>{'cloudSecret': cloudSecret};
   }
 
-  factory GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab.fromMap(Map<String, dynamic> map) {
+  factory GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(
-      cloudSecret: (map['cloudSecret'] as String).input(),
+      cloudSecret: pulumi.Input.fromValue(map['cloudSecret'] as String),
     );
   }
 }
-

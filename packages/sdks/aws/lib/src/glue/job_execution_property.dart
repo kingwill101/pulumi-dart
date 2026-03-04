@@ -8,20 +8,19 @@ class JobExecutionProperty {
 
   /// Creates a new [JobExecutionProperty].
   /// [maxConcurrentRuns] The maximum number of concurrent runs allowed for a job. The default is 1.
-  JobExecutionProperty({
-    this.maxConcurrentRuns,
-  });
+  JobExecutionProperty({this.maxConcurrentRuns});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxConcurrentRuns': ?maxConcurrentRuns,
-    };
+    return <String, dynamic>{'maxConcurrentRuns': ?maxConcurrentRuns};
   }
 
   factory JobExecutionProperty.fromMap(Map<String, dynamic> map) {
     return JobExecutionProperty(
-      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : ((map['maxConcurrentRuns'] as int).input()).input(),
+      maxConcurrentRuns: (() {
+        final guardedValue = map['maxConcurrentRuns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

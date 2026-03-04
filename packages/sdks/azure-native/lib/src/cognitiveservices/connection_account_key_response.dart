@@ -8,20 +8,19 @@ class ConnectionAccountKeyResponse {
 
   /// Creates a new [ConnectionAccountKeyResponse].
   /// [key] Optional.
-  ConnectionAccountKeyResponse({
-    this.key,
-  });
+  ConnectionAccountKeyResponse({this.key});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-    };
+    return <String, dynamic>{'key': ?key};
   }
 
   factory ConnectionAccountKeyResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionAccountKeyResponse(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

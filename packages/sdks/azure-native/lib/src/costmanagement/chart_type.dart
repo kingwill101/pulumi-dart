@@ -6,16 +6,15 @@ enum ChartType {
   valueGroupedColumn("GroupedColumn"),
   valueTable("Table");
 
-  const ChartType(this.value);
-  final String value;
+  const ChartType(this.wireValue);
+  final String wireValue;
 
   static ChartType fromValue(String value) {
     for (final item in ChartType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ChartType value: $value');
   }
 }
-

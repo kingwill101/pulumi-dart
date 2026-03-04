@@ -150,16 +150,22 @@ import 'single_server_server_administrator_args.dart';
 class SingleServerServerAdministrator extends pulumi.CustomResource {
   /// The type of administrator.
   late final pulumi.Output<String> administratorType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The server administrator login account name.
   late final pulumi.Output<String> login;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The server administrator Sid (Secure ID).
   late final pulumi.Output<String> sid;
+
   /// The server Active Directory Administrator tenant id.
   late final pulumi.Output<String> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -172,17 +178,17 @@ class SingleServerServerAdministrator extends pulumi.CustomResource {
     SingleServerServerAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbformysql:SingleServerServerAdministrator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorType = registerOutput<String>('administratorType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.login = registerOutput<String>('login');
+         'azure-native:dbformysql:SingleServerServerAdministrator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorType = registerOutput<String>('administratorType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    login = registerOutput<String>('login');
     this.name = registerOutput<String>('name');
-    this.sid = registerOutput<String>('sid');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    sid = registerOutput<String>('sid');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

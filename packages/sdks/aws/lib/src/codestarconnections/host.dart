@@ -5,7 +5,7 @@ import 'host_vpc_configuration.dart';
 
 /// Provides a CodeStar Host.
 ///
-/// > **NOTE:** The `aws.codestarconnections.Host` resource is created in the state `PENDING`. Authentication with the host provider must be completed in the AWS Console. For more information visit [Set up a pending host](https://docs.aws.amazon.com/dtconsole/latest/userguide/connections-host-setup.html).
+/// &gt; **NOTE:** The `aws.codestarconnections.Host` resource is created in the state `PENDING`. Authentication with the host provider must be completed in the AWS Console. For more information visit [Set up a pending host](https://docs.aws.amazon.com/dtconsole/latest/userguide/connections-host-setup.html).
 ///
 /// ## Example Usage
 ///
@@ -126,16 +126,22 @@ import 'host_vpc_configuration.dart';
 class Host extends pulumi.CustomResource {
   /// The CodeStar Host ARN.
   late final pulumi.Output<String> arn;
+
   /// The name of the host to be created. The name must be unique in the calling AWS account.
   late final pulumi.Output<String> name;
+
   /// The endpoint of the infrastructure to be represented by the host after it is created.
   late final pulumi.Output<String> providerEndpoint;
+
   /// The name of the external provider where your third-party code repository is configured.
   late final pulumi.Output<String> providerType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The CodeStar Host status. Possible values are `PENDING`, `AVAILABLE`, `VPC_CONFIG_DELETING`, `VPC_CONFIG_INITIALIZING`, and `VPC_CONFIG_FAILED_INITIALIZATION`.
   late final pulumi.Output<String> status;
+
   /// The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
   late final pulumi.Output<HostVpcConfiguration?> vpcConfiguration;
 
@@ -143,31 +149,26 @@ class Host extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Host]. {@macro pulumi_codestarconnections_host_host_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Host(
-    String name, {
-    HostArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:codestarconnections/host:Host',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+  Host(String name, {HostArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:codestarconnections/host:Host',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.providerEndpoint = registerOutput<String>('providerEndpoint');
-    this.providerType = registerOutput<String>('providerType');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.vpcConfiguration = registerOutput<HostVpcConfiguration?>('vpcConfiguration');
+    providerEndpoint = registerOutput<String>('providerEndpoint');
+    providerType = registerOutput<String>('providerType');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    vpcConfiguration = registerOutput<HostVpcConfiguration?>(
+      'vpcConfiguration',
+    );
   }
 
   /// Gets an existing [Host] resource's state with the given [name] and [id].
-  static Host get(
-    String name,
-    pulumi.Input<String> id, {
-    HostState? state,
-  }) {
+  static Host get(String name, pulumi.Input<String> id, {HostState? state}) {
     return Host._get(
       name,
       state: state?.toMap(),
@@ -180,17 +181,19 @@ class Host extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:codestarconnections/host:Host',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:codestarconnections/host:Host',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.providerEndpoint = registerOutput<String>('providerEndpoint');
-    this.providerType = registerOutput<String>('providerType');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.vpcConfiguration = registerOutput<HostVpcConfiguration?>('vpcConfiguration');
+    providerEndpoint = registerOutput<String>('providerEndpoint');
+    providerType = registerOutput<String>('providerType');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    vpcConfiguration = registerOutput<HostVpcConfiguration?>(
+      'vpcConfiguration',
+    );
   }
 }

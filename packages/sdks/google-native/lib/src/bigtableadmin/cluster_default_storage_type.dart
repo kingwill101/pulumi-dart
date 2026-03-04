@@ -4,16 +4,15 @@ enum ClusterDefaultStorageType {
   ssd("SSD"),
   hdd("HDD");
 
-  const ClusterDefaultStorageType(this.value);
-  final String value;
+  const ClusterDefaultStorageType(this.wireValue);
+  final String wireValue;
 
   static ClusterDefaultStorageType fromValue(String value) {
     for (final item in ClusterDefaultStorageType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterDefaultStorageType value: $value');
   }
 }
-

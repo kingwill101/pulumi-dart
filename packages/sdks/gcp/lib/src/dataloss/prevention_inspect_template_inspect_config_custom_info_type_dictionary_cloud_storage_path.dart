@@ -13,15 +13,14 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStorage
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

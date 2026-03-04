@@ -12,32 +12,46 @@ import 'volume_mount.dart';
 class WebAppSiteContainerSlotArgs {
   /// Auth Type
   final pulumi.Input<AuthType>? authType;
+
   /// Site Container Name
   final pulumi.Input<String>? containerName;
+
   /// List of environment variables
   final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+
   /// Image Name
   final pulumi.Input<String> image;
-  /// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
+
+  /// &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   final pulumi.Input<bool> isMain;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Password Secret
   final pulumi.Input<String>? passwordSecret;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot. If a slot is not specified, the API will create the container for the production slot.
   final pulumi.Input<String> slot;
+
   /// StartUp Command
   final pulumi.Input<String>? startUpCommand;
+
   /// Target Port
   final pulumi.Input<String>? targetPort;
+
   /// UserManagedIdentity ClientId
   final pulumi.Input<String>? userManagedIdentityClientId;
+
   /// User Name
   final pulumi.Input<String>? userName;
+
   /// List of volume mounts
   final pulumi.Input<List<VolumeMount>>? volumeMounts;
 
@@ -46,7 +60,7 @@ class WebAppSiteContainerSlotArgs {
   /// [containerName] Site Container Name
   /// [environmentVariables] List of environment variables
   /// [image] Image Name
-  /// [isMain] <code>true</code> if the container is the main site container; <code>false</code> otherwise.
+  /// [isMain] &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [passwordSecret] Password Secret
@@ -77,9 +91,23 @@ class WebAppSiteContainerSlotArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authType': ?pulumi.Input.mapOptionalInputValue<AuthType, String>(authType, (value) => value.value),
+      'authType': ?pulumi.Input.mapOptionalInputValue<AuthType, String>(
+        authType,
+        (value) => value.wireValue,
+      ),
       'containerName': ?containerName,
-      'environmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVariable>, List<Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeList<EnvironmentVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'environmentVariables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EnvironmentVariable>,
+            List<Map<String, dynamic>>
+          >(
+            environmentVariables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EnvironmentVariable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'image': image,
       'isMain': isMain,
       'kind': ?kind,
@@ -91,28 +119,95 @@ class WebAppSiteContainerSlotArgs {
       'targetPort': ?targetPort,
       'userManagedIdentityClientId': ?userManagedIdentityClientId,
       'userName': ?userName,
-      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<VolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<VolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumeMounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VolumeMount>,
+            List<Map<String, dynamic>>
+          >(
+            volumeMounts,
+            (value) =>
+                pulumi.Input.encodeList<VolumeMount, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory WebAppSiteContainerSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSiteContainerSlotArgs(
-      authType: map['authType'] == null ? null : (AuthType.fromValue(map['authType']! as String)).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: (map['image'] as String).input(),
-      isMain: (map['isMain'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      passwordSecret: map['passwordSecret'] == null ? null : (map['passwordSecret']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
-      startUpCommand: map['startUpCommand'] == null ? null : (map['startUpCommand']! as String).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as String).input(),
-      userManagedIdentityClientId: map['userManagedIdentityClientId'] == null ? null : (map['userManagedIdentityClientId']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMount>(map['volumeMounts']!, (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthType.fromValue(guardedValue as String),
+        );
+      })(),
+      containerName: (() {
+        final guardedValue = map['containerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentVariables: (() {
+        final guardedValue = map['environmentVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EnvironmentVariable>(
+            guardedValue,
+            (value) => EnvironmentVariable.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      image: pulumi.Input.fromValue(map['image'] as String),
+      isMain: pulumi.Input.fromValue(map['isMain'] as bool),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      passwordSecret: (() {
+        final guardedValue = map['passwordSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
+      startUpCommand: (() {
+        final guardedValue = map['startUpCommand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPort: (() {
+        final guardedValue = map['targetPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userManagedIdentityClientId: (() {
+        final guardedValue = map['userManagedIdentityClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeMounts: (() {
+        final guardedValue = map['volumeMounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VolumeMount>(
+            guardedValue,
+            (value) =>
+                VolumeMount.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

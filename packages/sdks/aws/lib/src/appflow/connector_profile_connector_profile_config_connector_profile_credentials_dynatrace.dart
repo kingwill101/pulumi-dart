@@ -13,15 +13,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiToken': apiToken,
-    };
+    return <String, dynamic>{'apiToken': apiToken};
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace(
-      apiToken: (map['apiToken'] as String).input(),
+      apiToken: pulumi.Input.fromValue(map['apiToken'] as String),
     );
   }
 }
-

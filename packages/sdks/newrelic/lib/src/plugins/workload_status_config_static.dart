@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadStatusConfigStatic {
   /// Relevant information about the workload.
   final pulumi.Input<String>? description;
+
   /// Whether the static status configuration is enabled or not.
   final pulumi.Input<bool> enabled;
+
   /// The status of the workload.
   final pulumi.Input<String> status;
+
   /// A short description of the status of the workload.
   final pulumi.Input<String>? summary;
 
@@ -35,11 +38,18 @@ class WorkloadStatusConfigStatic {
 
   factory WorkloadStatusConfigStatic.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigStatic(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      status: (map['status'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      summary: (() {
+        final guardedValue = map['summary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

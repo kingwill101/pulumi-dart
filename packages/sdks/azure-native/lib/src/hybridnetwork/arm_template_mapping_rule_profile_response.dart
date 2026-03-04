@@ -9,20 +9,21 @@ class ArmTemplateMappingRuleProfileResponse {
 
   /// Creates a new [ArmTemplateMappingRuleProfileResponse].
   /// [templateParameters] List of template parameters.
-  ArmTemplateMappingRuleProfileResponse({
-    this.templateParameters,
-  });
+  ArmTemplateMappingRuleProfileResponse({this.templateParameters});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'templateParameters': ?templateParameters,
-    };
+    return <String, dynamic>{'templateParameters': ?templateParameters};
   }
 
-  factory ArmTemplateMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory ArmTemplateMappingRuleProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ArmTemplateMappingRuleProfileResponse(
-      templateParameters: map['templateParameters'] == null ? null : (map['templateParameters']! as String).input(),
+      templateParameters: (() {
+        final guardedValue = map['templateParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

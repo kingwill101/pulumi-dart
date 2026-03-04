@@ -11,20 +11,17 @@ class GetRegionSecurityPolicyDdosProtectionConfig {
 
   /// Creates a new [GetRegionSecurityPolicyDdosProtectionConfig].
   /// [ddosProtection] Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
-  GetRegionSecurityPolicyDdosProtectionConfig({
-    required this.ddosProtection,
-  });
+  GetRegionSecurityPolicyDdosProtectionConfig({required this.ddosProtection});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ddosProtection': ddosProtection,
-    };
+    return <String, dynamic>{'ddosProtection': ddosProtection};
   }
 
-  factory GetRegionSecurityPolicyDdosProtectionConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRegionSecurityPolicyDdosProtectionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionSecurityPolicyDdosProtectionConfig(
-      ddosProtection: (map['ddosProtection'] as String).input(),
+      ddosProtection: pulumi.Input.fromValue(map['ddosProtection'] as String),
     );
   }
 }
-

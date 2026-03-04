@@ -6,6 +6,7 @@ class ServiceLbPoliciesIsolationConfig {
   /// The isolation granularity of the load balancer.
   /// Possible values are: `ISOLATION_GRANULARITY_UNSPECIFIED`, `REGION`.
   final pulumi.Input<String>? isolationGranularity;
+
   /// The isolation mode of the load balancer.
   /// Default value is `NEAREST`.
   /// Possible values are: `ISOLATION_MODE_UNSPECIFIED`, `NEAREST`, `STRICT`.
@@ -28,9 +29,16 @@ class ServiceLbPoliciesIsolationConfig {
 
   factory ServiceLbPoliciesIsolationConfig.fromMap(Map<String, dynamic> map) {
     return ServiceLbPoliciesIsolationConfig(
-      isolationGranularity: map['isolationGranularity'] == null ? null : (map['isolationGranularity']! as String).input(),
-      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode']! as String).input(),
+      isolationGranularity: (() {
+        final guardedValue = map['isolationGranularity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isolationMode: (() {
+        final guardedValue = map['isolationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

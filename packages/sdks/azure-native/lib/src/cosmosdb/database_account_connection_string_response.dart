@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseAccountConnectionStringResponse {
   /// Value of the connection string
   final pulumi.Input<String> connectionString;
+
   /// Description of the connection string
   final pulumi.Input<String> description;
+
   /// Kind of the connection string key
   final pulumi.Input<String> keyKind;
+
   /// Type of the connection string
   final pulumi.Input<String> type;
 
@@ -34,13 +37,16 @@ class DatabaseAccountConnectionStringResponse {
     };
   }
 
-  factory DatabaseAccountConnectionStringResponse.fromMap(Map<String, dynamic> map) {
+  factory DatabaseAccountConnectionStringResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseAccountConnectionStringResponse(
-      connectionString: (map['connectionString'] as String).input(),
-      description: (map['description'] as String).input(),
-      keyKind: (map['keyKind'] as String).input(),
-      type: (map['type'] as String).input(),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      keyKind: pulumi.Input.fromValue(map['keyKind'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

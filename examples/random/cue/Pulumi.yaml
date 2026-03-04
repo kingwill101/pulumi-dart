@@ -1,6 +1,6 @@
-name: cue
+name: random-dart-cue
+description: Random password example in Dart.
 runtime:
-  name: yaml
+  name: dart
   options:
-    compiler: cue export
-description: CUE Example
+    resolution: workspace

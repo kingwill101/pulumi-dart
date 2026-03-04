@@ -4,16 +4,15 @@ enum MetadataOptionsAcl {
   aclDestinationBucketDefault("ACL_DESTINATION_BUCKET_DEFAULT"),
   aclPreserve("ACL_PRESERVE");
 
-  const MetadataOptionsAcl(this.value);
-  final String value;
+  const MetadataOptionsAcl(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsAcl fromValue(String value) {
     for (final item in MetadataOptionsAcl.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsAcl value: $value');
   }
 }
-

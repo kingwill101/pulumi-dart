@@ -10,10 +10,13 @@ import 'dashboard_definition_properties.dart';
 class DashboardDefinitionArgs {
   /// The name of the Azure Managed Dashboard.
   final pulumi.Input<String> dashboardName;
+
   /// The name of the Dashboard Definition.
   final pulumi.Input<String>? definitionName;
+
   /// Properties specific to the dashboard definition resource.
   final pulumi.Input<DashboardDefinitionProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,35 @@ class DashboardDefinitionArgs {
     return <String, dynamic>{
       'dashboardName': dashboardName,
       'definitionName': ?definitionName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<DashboardDefinitionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DashboardDefinitionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory DashboardDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionArgs(
-      dashboardName: (map['dashboardName'] as String).input(),
-      definitionName: map['definitionName'] == null ? null : (map['definitionName']! as String).input(),
-      properties: map['properties'] == null ? null : (DashboardDefinitionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dashboardName: pulumi.Input.fromValue(map['dashboardName'] as String),
+      definitionName: (() {
+        final guardedValue = map['definitionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DashboardDefinitionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

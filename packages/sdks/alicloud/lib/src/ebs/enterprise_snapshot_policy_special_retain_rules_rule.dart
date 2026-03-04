@@ -29,12 +29,25 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRule {
     };
   }
 
-  factory EnterpriseSnapshotPolicySpecialRetainRulesRule.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseSnapshotPolicySpecialRetainRulesRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseSnapshotPolicySpecialRetainRulesRule(
-      specialPeriodUnit: map['specialPeriodUnit'] == null ? null : (map['specialPeriodUnit']! as String).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as int).input(),
-      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit']! as String).input(),
+      specialPeriodUnit: (() {
+        final guardedValue = map['specialPeriodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeInterval: (() {
+        final guardedValue = map['timeInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeUnit: (() {
+        final guardedValue = map['timeUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

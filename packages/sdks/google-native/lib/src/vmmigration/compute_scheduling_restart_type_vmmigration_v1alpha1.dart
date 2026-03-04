@@ -4,16 +4,19 @@ enum ComputeSchedulingRestartTypeVmmigrationV1alpha1 {
   automaticRestart("AUTOMATIC_RESTART"),
   noAutomaticRestart("NO_AUTOMATIC_RESTART");
 
-  const ComputeSchedulingRestartTypeVmmigrationV1alpha1(this.value);
-  final String value;
+  const ComputeSchedulingRestartTypeVmmigrationV1alpha1(this.wireValue);
+  final String wireValue;
 
-  static ComputeSchedulingRestartTypeVmmigrationV1alpha1 fromValue(String value) {
+  static ComputeSchedulingRestartTypeVmmigrationV1alpha1 fromValue(
+    String value,
+  ) {
     for (final item in ComputeSchedulingRestartTypeVmmigrationV1alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeSchedulingRestartTypeVmmigrationV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown ComputeSchedulingRestartTypeVmmigrationV1alpha1 value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum ThresholdColor {
   yellow("YELLOW"),
   red("RED");
 
-  const ThresholdColor(this.value);
-  final String value;
+  const ThresholdColor(this.wireValue);
+  final String wireValue;
 
   static ThresholdColor fromValue(String value) {
     for (final item in ThresholdColor.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ThresholdColor value: $value');
   }
 }
-

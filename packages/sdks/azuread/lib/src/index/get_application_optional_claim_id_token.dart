@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationOptionalClaimIdToken {
   /// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
   final pulumi.Input<List<String>>? additionalProperties;
+
   /// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
   final pulumi.Input<bool>? essential;
+
   /// The name of the optional claim.
   final pulumi.Input<String> name;
+
   /// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
   final pulumi.Input<String>? source;
 
@@ -35,11 +38,22 @@ class GetApplicationOptionalClaimIdToken {
 
   factory GetApplicationOptionalClaimIdToken.fromMap(Map<String, dynamic> map) {
     return GetApplicationOptionalClaimIdToken(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as List).cast<String>()).input(),
-      essential: map['essential'] == null ? null : (map['essential']! as bool).input(),
-      name: (map['name'] as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      essential: (() {
+        final guardedValue = map['essential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

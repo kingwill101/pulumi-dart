@@ -4,16 +4,17 @@ enum VpcAccessConnectorEgressSetting {
   allTraffic("ALL_TRAFFIC"),
   privateIpRanges("PRIVATE_IP_RANGES");
 
-  const VpcAccessConnectorEgressSetting(this.value);
-  final String value;
+  const VpcAccessConnectorEgressSetting(this.wireValue);
+  final String wireValue;
 
   static VpcAccessConnectorEgressSetting fromValue(String value) {
     for (final item in VpcAccessConnectorEgressSetting.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VpcAccessConnectorEgressSetting value: $value');
+    throw ArgumentError(
+      'Unknown VpcAccessConnectorEgressSetting value: $value',
+    );
   }
 }
-

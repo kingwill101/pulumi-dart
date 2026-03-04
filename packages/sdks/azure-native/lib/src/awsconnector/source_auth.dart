@@ -5,31 +5,44 @@ import 'source_auth_type_enum_value.dart';
 
 /// Definition of SourceAuth
 class SourceAuth {
-  /// <p>The resource value that applies to the specified authorization type.</p>
+  /// &lt;p&gt;The resource value that applies to the specified authorization type.&lt;/p&gt;
   final pulumi.Input<String>? resource;
-  /// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+
+  /// &lt;p&gt;The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.&lt;/p&gt;
   final pulumi.Input<SourceAuthTypeEnumValue>? type;
 
   /// Creates a new [SourceAuth].
-  /// [resource] <p>The resource value that applies to the specified authorization type.</p>
-  /// [type] <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-  SourceAuth({
-    this.resource,
-    this.type,
-  });
+  /// [resource] &lt;p&gt;The resource value that applies to the specified authorization type.&lt;/p&gt;
+  /// [type] &lt;p&gt;The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.&lt;/p&gt;
+  SourceAuth({this.resource, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'resource': ?resource,
-      'type': ?pulumi.Input.mapOptionalInputValue<SourceAuthTypeEnumValue, Map<String, dynamic>>(type, (value) => value.toMap()),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            SourceAuthTypeEnumValue,
+            Map<String, dynamic>
+          >(type, (value) => value.toMap()),
     };
   }
 
   factory SourceAuth.fromMap(Map<String, dynamic> map) {
     return SourceAuth(
-      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
-      type: map['type'] == null ? null : (SourceAuthTypeEnumValue.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceAuthTypeEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

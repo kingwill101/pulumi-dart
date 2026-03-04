@@ -7,6 +7,7 @@ import 'alloy_db_settings_response.dart';
 class AlloyDbConnectionProfileResponse {
   /// The AlloyDB cluster ID that this connection profile is associated with.
   final pulumi.Input<String> clusterId;
+
   /// Immutable. Metadata used to create the destination AlloyDB cluster.
   final pulumi.Input<AlloyDbSettingsResponse> settings;
 
@@ -21,15 +22,22 @@ class AlloyDbConnectionProfileResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': clusterId,
-      'settings': pulumi.Input.mapInputValue<AlloyDbSettingsResponse, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'settings':
+          pulumi.Input.mapInputValue<
+            AlloyDbSettingsResponse,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
     };
   }
 
   factory AlloyDbConnectionProfileResponse.fromMap(Map<String, dynamic> map) {
     return AlloyDbConnectionProfileResponse(
-      clusterId: (map['clusterId'] as String).input(),
-      settings: (AlloyDbSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      settings: pulumi.Input.fromValue(
+        AlloyDbSettingsResponse.fromMap(
+          (map['settings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

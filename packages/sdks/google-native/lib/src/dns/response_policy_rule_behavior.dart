@@ -3,16 +3,15 @@ enum ResponsePolicyRuleBehavior {
   behaviorUnspecified("behaviorUnspecified"),
   bypassResponsePolicy("bypassResponsePolicy");
 
-  const ResponsePolicyRuleBehavior(this.value);
-  final String value;
+  const ResponsePolicyRuleBehavior(this.wireValue);
+  final String wireValue;
 
   static ResponsePolicyRuleBehavior fromValue(String value) {
     for (final item in ResponsePolicyRuleBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResponsePolicyRuleBehavior value: $value');
   }
 }
-

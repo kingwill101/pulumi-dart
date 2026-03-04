@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutineArgs {
   /// The routine name, which must be unique in the same account.
   final pulumi.Input<String>? description;
+
   /// Routine Name
   final pulumi.Input<String>? name;
 
   /// Creates a new [RoutineArgs].
   /// [description] The routine name, which must be unique in the same account.
   /// [name] Routine Name
-  RoutineArgs({
-    this.description,
-    this.name,
-  });
+  RoutineArgs({this.description, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'name': ?name,
-    };
+    return <String, dynamic>{'description': ?description, 'name': ?name};
   }
 
   factory RoutineArgs.fromMap(Map<String, dynamic> map) {
     return RoutineArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

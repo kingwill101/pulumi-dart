@@ -6,6 +6,7 @@ class GetDisksDiskMountInstance {
   /// Disk attachment time.
   final pulumi.Input<String> attachedTime;
   final pulumi.Input<String> device;
+
   /// Filter the results by the specified ECS instance ID.
   final pulumi.Input<String> instanceId;
 
@@ -29,10 +30,9 @@ class GetDisksDiskMountInstance {
 
   factory GetDisksDiskMountInstance.fromMap(Map<String, dynamic> map) {
     return GetDisksDiskMountInstance(
-      attachedTime: (map['attachedTime'] as String).input(),
-      device: (map['device'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      attachedTime: pulumi.Input.fromValue(map['attachedTime'] as String),
+      device: pulumi.Input.fromValue(map['device'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

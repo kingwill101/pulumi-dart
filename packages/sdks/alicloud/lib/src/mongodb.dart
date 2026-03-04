@@ -1,5 +1,3 @@
-library module_mongodb;
-
 export 'mongodb/account.dart';
 export 'mongodb/account_args.dart';
 export 'mongodb/account_state.dart';

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiTagDescriptionArgs {
   /// The The ID of the API Management API Tag. Changing this forces a new API Management API Tag Description to be created.
   final pulumi.Input<String> apiTagId;
+
   /// The description of the Tag.
   final pulumi.Input<String>? description;
+
   /// The description of the external documentation resources describing the tag.
   final pulumi.Input<String>? externalDocumentationDescription;
+
   /// The URL of external documentation resources describing the tag.
   final pulumi.Input<String>? externalDocumentationUrl;
 
@@ -39,11 +42,22 @@ class ApiTagDescriptionArgs {
 
   factory ApiTagDescriptionArgs.fromMap(Map<String, dynamic> map) {
     return ApiTagDescriptionArgs(
-      apiTagId: (map['apiTagId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      externalDocumentationDescription: map['externalDocumentationDescription'] == null ? null : (map['externalDocumentationDescription']! as String).input(),
-      externalDocumentationUrl: map['externalDocumentationUrl'] == null ? null : (map['externalDocumentationUrl']! as String).input(),
+      apiTagId: pulumi.Input.fromValue(map['apiTagId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalDocumentationDescription: (() {
+        final guardedValue = map['externalDocumentationDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalDocumentationUrl: (() {
+        final guardedValue = map['externalDocumentationUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

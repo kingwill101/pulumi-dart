@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPlatformImageArgs {
   /// Specifies the Location to pull information about this Platform Image from.
   final pulumi.Input<String> location;
+
   /// Specifies the Offer associated with the Platform Image.
   final pulumi.Input<String> offer;
+
   /// Specifies the Publisher associated with the Platform Image.
   final pulumi.Input<String> publisher;
+
   /// Specifies the SKU of the Platform Image.
   final pulumi.Input<String> sku;
+
   /// The version of the Platform Image.
   final pulumi.Input<String>? version;
 
@@ -44,12 +48,15 @@ class GetPlatformImageArgs {
 
   factory GetPlatformImageArgs.fromMap(Map<String, dynamic> map) {
     return GetPlatformImageArgs(
-      location: (map['location'] as String).input(),
-      offer: (map['offer'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      sku: (map['sku'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      offer: pulumi.Input.fromValue(map['offer'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'server_info_response.dart';
 import 'server_trust_group_args.dart';
 
 /// A server trust group.
@@ -204,12 +203,16 @@ import 'server_trust_group_args.dart';
 class ServerTrustGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Group members information for the server trust group.
-  late final pulumi.Output<List<ServerInfoResponse>> groupMembers;
+  late final pulumi.Output<List<Map<String, dynamic>>> groupMembers;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Trust scope of the server trust group.
   late final pulumi.Output<List<String>> trustScopes;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -222,15 +225,15 @@ class ServerTrustGroup extends pulumi.CustomResource {
     ServerTrustGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ServerTrustGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.groupMembers = registerOutput<List<ServerInfoResponse>>('groupMembers');
+         'azure-native:sql:ServerTrustGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupMembers = registerOutput<List<Map<String, dynamic>>>('groupMembers');
     this.name = registerOutput<String>('name');
-    this.trustScopes = registerOutput<List<String>>('trustScopes');
-    this.type = registerOutput<String>('type');
+    trustScopes = registerOutput<List<String>>('trustScopes');
+    type = registerOutput<String>('type');
   }
 }

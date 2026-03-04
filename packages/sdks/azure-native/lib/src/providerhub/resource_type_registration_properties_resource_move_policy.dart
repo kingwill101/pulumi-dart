@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeRegistrationPropertiesResourceMovePolicy {
   /// Whether cross resource group move is enabled.
   final pulumi.Input<bool>? crossResourceGroupMoveEnabled;
+
   /// Whether cross subscription move is enabled.
   final pulumi.Input<bool>? crossSubscriptionMoveEnabled;
+
   /// Whether validation is required.
   final pulumi.Input<bool>? validationRequired;
 
@@ -29,12 +31,25 @@ class ResourceTypeRegistrationPropertiesResourceMovePolicy {
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesResourceMovePolicy.fromMap(Map<String, dynamic> map) {
+  factory ResourceTypeRegistrationPropertiesResourceMovePolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceTypeRegistrationPropertiesResourceMovePolicy(
-      crossResourceGroupMoveEnabled: map['crossResourceGroupMoveEnabled'] == null ? null : (map['crossResourceGroupMoveEnabled']! as bool).input(),
-      crossSubscriptionMoveEnabled: map['crossSubscriptionMoveEnabled'] == null ? null : (map['crossSubscriptionMoveEnabled']! as bool).input(),
-      validationRequired: map['validationRequired'] == null ? null : (map['validationRequired']! as bool).input(),
+      crossResourceGroupMoveEnabled: (() {
+        final guardedValue = map['crossResourceGroupMoveEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      crossSubscriptionMoveEnabled: (() {
+        final guardedValue = map['crossSubscriptionMoveEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      validationRequired: (() {
+        final guardedValue = map['validationRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

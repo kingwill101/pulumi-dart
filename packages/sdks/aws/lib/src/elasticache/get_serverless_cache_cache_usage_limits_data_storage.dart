@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerlessCacheCacheUsageLimitsDataStorage {
   /// The maximum number of ECPUs the cache can consume per second.
   final pulumi.Input<int> maximum;
+
   /// The minimum number of ECPUs the cache can consume per second.
   final pulumi.Input<int> minimum;
+
   /// The unit that the storage is measured in.
   final pulumi.Input<String> unit;
 
@@ -28,12 +30,13 @@ class GetServerlessCacheCacheUsageLimitsDataStorage {
     };
   }
 
-  factory GetServerlessCacheCacheUsageLimitsDataStorage.fromMap(Map<String, dynamic> map) {
+  factory GetServerlessCacheCacheUsageLimitsDataStorage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServerlessCacheCacheUsageLimitsDataStorage(
-      maximum: (map['maximum'] as int).input(),
-      minimum: (map['minimum'] as int).input(),
-      unit: (map['unit'] as String).input(),
+      maximum: pulumi.Input.fromValue(map['maximum'] as int),
+      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }
 }
-

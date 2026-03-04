@@ -31,10 +31,13 @@ class GetResourcePolicyComputeV1Args {
 
   factory GetResourcePolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicyComputeV1Args(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      resourcePolicy: (map['resourcePolicy'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      resourcePolicy: pulumi.Input.fromValue(map['resourcePolicy'] as String),
     );
   }
 }
-

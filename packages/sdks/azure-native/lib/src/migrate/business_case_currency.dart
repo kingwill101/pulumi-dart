@@ -27,16 +27,15 @@ enum BusinessCaseCurrency {
   aUD("AUD"),
   cNY("CNY");
 
-  const BusinessCaseCurrency(this.value);
-  final String value;
+  const BusinessCaseCurrency(this.wireValue);
+  final String wireValue;
 
   static BusinessCaseCurrency fromValue(String value) {
     for (final item in BusinessCaseCurrency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BusinessCaseCurrency value: $value');
   }
 }
-

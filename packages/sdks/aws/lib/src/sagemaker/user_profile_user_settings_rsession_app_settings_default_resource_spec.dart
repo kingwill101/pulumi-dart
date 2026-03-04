@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserProfileUserSettingsRSessionAppSettingsDefaultResourceSpec {
   /// The instance type that the image version runs on.. For valid values see [SageMaker AI Instance Types](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-available-instance-types.html).
   final pulumi.Input<String>? instanceType;
+
   /// The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.
   final pulumi.Input<String>? lifecycleConfigArn;
+
   /// The ARN of the SageMaker AI image that the image version belongs to.
   final pulumi.Input<String>? sagemakerImageArn;
+
   /// The SageMaker AI Image Version Alias.
   final pulumi.Input<String>? sagemakerImageVersionAlias;
+
   /// The ARN of the image version created on the instance.
   final pulumi.Input<String>? sagemakerImageVersionArn;
 
@@ -38,14 +42,35 @@ class UserProfileUserSettingsRSessionAppSettingsDefaultResourceSpec {
     };
   }
 
-  factory UserProfileUserSettingsRSessionAppSettingsDefaultResourceSpec.fromMap(Map<String, dynamic> map) {
+  factory UserProfileUserSettingsRSessionAppSettingsDefaultResourceSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserProfileUserSettingsRSessionAppSettingsDefaultResourceSpec(
-      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
-      lifecycleConfigArn: map['lifecycleConfigArn'] == null ? null : ((map['lifecycleConfigArn'] as String).input()).input(),
-      sagemakerImageArn: map['sagemakerImageArn'] == null ? null : ((map['sagemakerImageArn'] as String).input()).input(),
-      sagemakerImageVersionAlias: map['sagemakerImageVersionAlias'] == null ? null : ((map['sagemakerImageVersionAlias'] as String).input()).input(),
-      sagemakerImageVersionArn: map['sagemakerImageVersionArn'] == null ? null : ((map['sagemakerImageVersionArn'] as String).input()).input(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lifecycleConfigArn: (() {
+        final guardedValue = map['lifecycleConfigArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sagemakerImageArn: (() {
+        final guardedValue = map['sagemakerImageArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sagemakerImageVersionAlias: (() {
+        final guardedValue = map['sagemakerImageVersionAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sagemakerImageVersionArn: (() {
+        final guardedValue = map['sagemakerImageVersionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

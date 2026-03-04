@@ -5,16 +5,15 @@ enum ComputeTier {
   provisioned("Provisioned"),
   serverless("Serverless");
 
-  const ComputeTier(this.value);
-  final String value;
+  const ComputeTier(this.wireValue);
+  final String wireValue;
 
   static ComputeTier fromValue(String value) {
     for (final item in ComputeTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComputeTier value: $value');
   }
 }
-

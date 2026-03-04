@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExportTimePeriod {
   /// The start date for export data.
   final pulumi.Input<String> from;
+
   /// The end date for export data.
   final pulumi.Input<String> to;
 
   /// Creates a new [ExportTimePeriod].
   /// [from] The start date for export data.
   /// [to] The end date for export data.
-  ExportTimePeriod({
-    required this.from,
-    required this.to,
-  });
+  ExportTimePeriod({required this.from, required this.to});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'from': from,
-      'to': to,
-    };
+    return <String, dynamic>{'from': from, 'to': to};
   }
 
   factory ExportTimePeriod.fromMap(Map<String, dynamic> map) {
     return ExportTimePeriod(
-      from: (map['from'] as String).input(),
-      to: (map['to'] as String).input(),
+      from: pulumi.Input.fromValue(map['from'] as String),
+      to: pulumi.Input.fromValue(map['to'] as String),
     );
   }
 }
-

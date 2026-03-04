@@ -126,10 +126,13 @@ import 'support_plan_type_args.dart';
 class SupportPlanType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String?> provisioningState;
+
   /// Microsoft.Addons/supportProvider
   late final pulumi.Output<String> type;
 
@@ -142,14 +145,14 @@ class SupportPlanType extends pulumi.CustomResource {
     SupportPlanTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:addons:SupportPlanType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:addons:SupportPlanType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String?>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

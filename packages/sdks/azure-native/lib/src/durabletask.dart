@@ -1,5 +1,3 @@
-library module_durabletask;
-
 export 'durabletask/functions.dart';
 export 'durabletask/get_retention_policy_args.dart';
 export 'durabletask/get_retention_policy_result.dart';

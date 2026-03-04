@@ -9,20 +9,15 @@ class AutoscalingConfigResponse {
 
   /// Creates a new [AutoscalingConfigResponse].
   /// [policyUri] Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
-  AutoscalingConfigResponse({
-    required this.policyUri,
-  });
+  AutoscalingConfigResponse({required this.policyUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policyUri': policyUri,
-    };
+    return <String, dynamic>{'policyUri': policyUri};
   }
 
   factory AutoscalingConfigResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingConfigResponse(
-      policyUri: (map['policyUri'] as String).input(),
+      policyUri: pulumi.Input.fromValue(map['policyUri'] as String),
     );
   }
 }
-

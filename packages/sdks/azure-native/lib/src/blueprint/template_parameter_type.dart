@@ -8,16 +8,15 @@ enum TemplateParameterType {
   valueSecureObject("secureObject"),
   valueSecureString("secureString");
 
-  const TemplateParameterType(this.value);
-  final String value;
+  const TemplateParameterType(this.wireValue);
+  final String wireValue;
 
   static TemplateParameterType fromValue(String value) {
     for (final item in TemplateParameterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TemplateParameterType value: $value');
   }
 }
-

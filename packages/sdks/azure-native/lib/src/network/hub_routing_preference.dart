@@ -4,16 +4,15 @@ enum HubRoutingPreference {
   valueVpnGateway("VpnGateway"),
   valueASPath("ASPath");
 
-  const HubRoutingPreference(this.value);
-  final String value;
+  const HubRoutingPreference(this.wireValue);
+  final String wireValue;
 
   static HubRoutingPreference fromValue(String value) {
     for (final item in HubRoutingPreference.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HubRoutingPreference value: $value');
   }
 }
-

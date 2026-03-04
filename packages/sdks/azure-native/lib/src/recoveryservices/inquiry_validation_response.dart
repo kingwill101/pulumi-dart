@@ -7,10 +7,13 @@ import 'error_detail_response.dart';
 class InquiryValidationResponse {
   /// Error Additional Detail in case the status is non-success.
   final pulumi.Input<String> additionalDetail;
+
   /// Error Detail in case the status is non-success.
   final pulumi.Input<ErrorDetailResponse>? errorDetail;
+
   /// Dictionary to store the count of ProtectableItems with key POType.
   final pulumi.Input<dynamic> protectableItemCount;
+
   /// Status for the Inquiry Validation.
   final pulumi.Input<String>? status;
 
@@ -29,7 +32,11 @@ class InquiryValidationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalDetail': additionalDetail,
-      'errorDetail': ?pulumi.Input.mapOptionalInputValue<ErrorDetailResponse, Map<String, dynamic>>(errorDetail, (value) => value.toMap()),
+      'errorDetail':
+          ?pulumi.Input.mapOptionalInputValue<
+            ErrorDetailResponse,
+            Map<String, dynamic>
+          >(errorDetail, (value) => value.toMap()),
       'protectableItemCount': protectableItemCount,
       'status': ?status,
     };
@@ -37,11 +44,24 @@ class InquiryValidationResponse {
 
   factory InquiryValidationResponse.fromMap(Map<String, dynamic> map) {
     return InquiryValidationResponse(
-      additionalDetail: (map['additionalDetail'] as String).input(),
-      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail']! as Map).cast<String, dynamic>())).input(),
-      protectableItemCount: (map['protectableItemCount']).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      additionalDetail: pulumi.Input.fromValue(
+        map['additionalDetail'] as String,
+      ),
+      errorDetail: (() {
+        final guardedValue = map['errorDetail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ErrorDetailResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      protectableItemCount: pulumi.Input.fromValue(map['protectableItemCount']),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

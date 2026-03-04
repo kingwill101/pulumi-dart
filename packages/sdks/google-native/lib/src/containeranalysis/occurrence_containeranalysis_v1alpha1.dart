@@ -22,51 +22,84 @@ import 'vulnerability_details_response.dart';
 class OccurrenceContaineranalysisV1alpha1 extends pulumi.CustomResource {
   /// Describes an attestation of an artifact.
   late final pulumi.Output<AttestationResponse> attestation;
+
   /// Build details for a verifiable build.
   late final pulumi.Output<BuildDetailsResponse> buildDetails;
+
   /// Describes whether or not a resource passes compliance checks.
-  late final pulumi.Output<ComplianceOccurrenceResponseContaineranalysisV1alpha1> compliance;
+  late final pulumi.Output<
+    ComplianceOccurrenceResponseContaineranalysisV1alpha1
+  >
+  compliance;
+
   /// The time this `Occurrence` was created.
   late final pulumi.Output<String> createTime;
+
   /// Describes the deployment of an artifact on a runtime.
   late final pulumi.Output<DeploymentResponse> deployment;
+
   /// Describes how this resource derives from the basis in the associated note.
   late final pulumi.Output<DerivedResponse> derivedImage;
+
   /// Describes the initial scan status for this resource.
   late final pulumi.Output<DiscoveredResponse> discovered;
+
   /// This represents a DSSE attestation occurrence
-  late final pulumi.Output<DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1> dsseAttestation;
+  late final pulumi.Output<
+    DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1
+  >
+  dsseAttestation;
+
   /// https://github.com/secure-systems-lab/dsse
   late final pulumi.Output<EnvelopeResponseContaineranalysisV1alpha1> envelope;
+
   /// Describes the installation of a package on the linked resource.
   late final pulumi.Output<InstallationResponse> installation;
+
   /// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
   late final pulumi.Output<String> kind;
+
   /// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
   late final pulumi.Output<String> name;
+
   /// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
   late final pulumi.Output<String> noteName;
   late final pulumi.Output<String> project;
+
   /// A description of actions that can be taken to remedy the `Note`
   late final pulumi.Output<String> remediation;
+
   /// The resource for which the `Occurrence` applies.
   late final pulumi.Output<ResourceResponse> resource;
+
   /// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
   late final pulumi.Output<String> resourceUrl;
+
   /// Describes a specific software bill of materials document.
   late final pulumi.Output<DocumentOccurrenceResponse> sbom;
+
   /// This represents an SBOM reference occurrence
-  late final pulumi.Output<SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1> sbomReference;
+  late final pulumi.Output<
+    SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1
+  >
+  sbomReference;
+
   /// Describes a specific SPDX File.
   late final pulumi.Output<FileOccurrenceResponse> spdxFile;
+
   /// Describes a specific SPDX Package.
   late final pulumi.Output<PackageInfoOccurrenceResponse> spdxPackage;
+
   /// Describes a specific relationship between SPDX elements.
   late final pulumi.Output<RelationshipOccurrenceResponse> spdxRelationship;
+
   /// The time this `Occurrence` was last updated.
   late final pulumi.Output<String> updateTime;
+
   /// Describes an upgrade.
-  late final pulumi.Output<UpgradeOccurrenceResponseContaineranalysisV1alpha1> upgrade;
+  late final pulumi.Output<UpgradeOccurrenceResponseContaineranalysisV1alpha1>
+  upgrade;
+
   /// Details of a security vulnerability note.
   late final pulumi.Output<VulnerabilityDetailsResponse> vulnerabilityDetails;
 
@@ -79,35 +112,53 @@ class OccurrenceContaineranalysisV1alpha1 extends pulumi.CustomResource {
     OccurrenceContaineranalysisV1alpha1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:containeranalysis/v1alpha1:Occurrence',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attestation = registerOutput<AttestationResponse>('attestation');
-    this.buildDetails = registerOutput<BuildDetailsResponse>('buildDetails');
-    this.compliance = registerOutput<ComplianceOccurrenceResponseContaineranalysisV1alpha1>('compliance');
-    this.createTime = registerOutput<String>('createTime');
-    this.deployment = registerOutput<DeploymentResponse>('deployment');
-    this.derivedImage = registerOutput<DerivedResponse>('derivedImage');
-    this.discovered = registerOutput<DiscoveredResponse>('discovered');
-    this.dsseAttestation = registerOutput<DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1>('dsseAttestation');
-    this.envelope = registerOutput<EnvelopeResponseContaineranalysisV1alpha1>('envelope');
-    this.installation = registerOutput<InstallationResponse>('installation');
-    this.kind = registerOutput<String>('kind');
+         'google-native:containeranalysis/v1alpha1:Occurrence',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attestation = registerOutput<AttestationResponse>('attestation');
+    buildDetails = registerOutput<BuildDetailsResponse>('buildDetails');
+    compliance =
+        registerOutput<ComplianceOccurrenceResponseContaineranalysisV1alpha1>(
+          'compliance',
+        );
+    createTime = registerOutput<String>('createTime');
+    deployment = registerOutput<DeploymentResponse>('deployment');
+    derivedImage = registerOutput<DerivedResponse>('derivedImage');
+    discovered = registerOutput<DiscoveredResponse>('discovered');
+    dsseAttestation =
+        registerOutput<
+          DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1
+        >('dsseAttestation');
+    envelope = registerOutput<EnvelopeResponseContaineranalysisV1alpha1>(
+      'envelope',
+    );
+    installation = registerOutput<InstallationResponse>('installation');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.noteName = registerOutput<String>('noteName');
-    this.project = registerOutput<String>('project');
-    this.remediation = registerOutput<String>('remediation');
-    this.resource = registerOutput<ResourceResponse>('resource');
-    this.resourceUrl = registerOutput<String>('resourceUrl');
-    this.sbom = registerOutput<DocumentOccurrenceResponse>('sbom');
-    this.sbomReference = registerOutput<SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1>('sbomReference');
-    this.spdxFile = registerOutput<FileOccurrenceResponse>('spdxFile');
-    this.spdxPackage = registerOutput<PackageInfoOccurrenceResponse>('spdxPackage');
-    this.spdxRelationship = registerOutput<RelationshipOccurrenceResponse>('spdxRelationship');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.upgrade = registerOutput<UpgradeOccurrenceResponseContaineranalysisV1alpha1>('upgrade');
-    this.vulnerabilityDetails = registerOutput<VulnerabilityDetailsResponse>('vulnerabilityDetails');
+    noteName = registerOutput<String>('noteName');
+    project = registerOutput<String>('project');
+    remediation = registerOutput<String>('remediation');
+    resource = registerOutput<ResourceResponse>('resource');
+    resourceUrl = registerOutput<String>('resourceUrl');
+    sbom = registerOutput<DocumentOccurrenceResponse>('sbom');
+    sbomReference =
+        registerOutput<
+          SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1
+        >('sbomReference');
+    spdxFile = registerOutput<FileOccurrenceResponse>('spdxFile');
+    spdxPackage = registerOutput<PackageInfoOccurrenceResponse>('spdxPackage');
+    spdxRelationship = registerOutput<RelationshipOccurrenceResponse>(
+      'spdxRelationship',
+    );
+    updateTime = registerOutput<String>('updateTime');
+    upgrade =
+        registerOutput<UpgradeOccurrenceResponseContaineranalysisV1alpha1>(
+          'upgrade',
+        );
+    vulnerabilityDetails = registerOutput<VulnerabilityDetailsResponse>(
+      'vulnerabilityDetails',
+    );
   }
 }

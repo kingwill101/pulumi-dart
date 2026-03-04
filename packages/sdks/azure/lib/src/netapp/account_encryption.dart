@@ -701,7 +701,7 @@ import 'account_encryption_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -716,14 +716,19 @@ import 'account_encryption_state.dart';
 class AccountEncryption extends pulumi.CustomResource {
   /// The full resource ID of the cross-tenant key vault. This is recommended when using `federated_client_id` for cross-tenant scenarios to ensure proper validation by Azure APIs.
   late final pulumi.Output<String?> crossTenantKeyVaultResourceId;
+
   /// Specify the versionless ID of the encryption key.
   late final pulumi.Output<String> encryptionKey;
+
   /// The Client ID of the multi-tenant Entra ID application used to access cross-tenant key vaults. This is only required when accessing a key vault in a different tenant than the NetApp account.
   late final pulumi.Output<String?> federatedClientId;
+
   /// The ID of the NetApp account where volume under it will have customer managed keys-based encryption enabled.
   late final pulumi.Output<String> netappAccountId;
+
   /// The ID of the System Assigned Manged Identity. Conflicts with `user_assigned_identity_id`.
   late final pulumi.Output<String?> systemAssignedIdentityPrincipalId;
+
   /// The ID of the User Assigned Managed Identity. Conflicts with `system_assigned_identity_principal_id`.
   late final pulumi.Output<String?> userAssignedIdentityId;
 
@@ -736,17 +741,21 @@ class AccountEncryption extends pulumi.CustomResource {
     AccountEncryptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/accountEncryption:AccountEncryption',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crossTenantKeyVaultResourceId = registerOutput<String?>('crossTenantKeyVaultResourceId');
-    this.encryptionKey = registerOutput<String>('encryptionKey');
-    this.federatedClientId = registerOutput<String?>('federatedClientId');
-    this.netappAccountId = registerOutput<String>('netappAccountId');
-    this.systemAssignedIdentityPrincipalId = registerOutput<String?>('systemAssignedIdentityPrincipalId');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:netapp/accountEncryption:AccountEncryption',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crossTenantKeyVaultResourceId = registerOutput<String?>(
+      'crossTenantKeyVaultResourceId',
+    );
+    encryptionKey = registerOutput<String>('encryptionKey');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    netappAccountId = registerOutput<String>('netappAccountId');
+    systemAssignedIdentityPrincipalId = registerOutput<String?>(
+      'systemAssignedIdentityPrincipalId',
+    );
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 
   /// Gets an existing [AccountEncryption] resource's state with the given [name] and [id].
@@ -767,16 +776,20 @@ class AccountEncryption extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/accountEncryption:AccountEncryption',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crossTenantKeyVaultResourceId = registerOutput<String?>('crossTenantKeyVaultResourceId');
-    this.encryptionKey = registerOutput<String>('encryptionKey');
-    this.federatedClientId = registerOutput<String?>('federatedClientId');
-    this.netappAccountId = registerOutput<String>('netappAccountId');
-    this.systemAssignedIdentityPrincipalId = registerOutput<String?>('systemAssignedIdentityPrincipalId');
-    this.userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+         'azure:netapp/accountEncryption:AccountEncryption',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crossTenantKeyVaultResourceId = registerOutput<String?>(
+      'crossTenantKeyVaultResourceId',
+    );
+    encryptionKey = registerOutput<String>('encryptionKey');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    netappAccountId = registerOutput<String>('netappAccountId');
+    systemAssignedIdentityPrincipalId = registerOutput<String?>(
+      'systemAssignedIdentityPrincipalId',
+    );
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
   }
 }

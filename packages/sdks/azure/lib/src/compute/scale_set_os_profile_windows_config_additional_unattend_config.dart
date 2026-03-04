@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig {
   /// Specifies the name of the component to configure with the added content. The only allowable value is `Microsoft-Windows-Shell-Setup`.
   final pulumi.Input<String> component;
+
   /// Specifies the base-64 encoded XML formatted content that is added to the unattend.xml file for the specified path and component.
   final pulumi.Input<String> content;
+
   /// Specifies the name of the pass that the content applies to. The only allowable value is `oobeSystem`.
   final pulumi.Input<String> pass;
+
   /// Specifies the name of the setting to which the content applies. Possible values are: `FirstLogonCommands` and `AutoLogon`.
   final pulumi.Input<String> settingName;
 
@@ -33,13 +36,14 @@ class ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig {
     };
   }
 
-  factory ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig.fromMap(Map<String, dynamic> map) {
+  factory ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig(
-      component: (map['component'] as String).input(),
-      content: (map['content'] as String).input(),
-      pass: (map['pass'] as String).input(),
-      settingName: (map['settingName'] as String).input(),
+      component: pulumi.Input.fromValue(map['component'] as String),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      pass: pulumi.Input.fromValue(map['pass'] as String),
+      settingName: pulumi.Input.fromValue(map['settingName'] as String),
     );
   }
 }
-

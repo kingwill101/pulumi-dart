@@ -6,8 +6,10 @@ class InstanceInstanceEncryptionKey {
   /// The self_link of the encryption key that is
   /// stored in Google Cloud KMS to encrypt the data on this instance.
   final pulumi.Input<String>? kmsKeySelfLink;
+
   /// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
   final pulumi.Input<String>? kmsKeyServiceAccount;
+
   /// The SHA256 hash of the customer's encryption key.
   final pulumi.Input<String>? sha256;
 
@@ -31,10 +33,21 @@ class InstanceInstanceEncryptionKey {
 
   factory InstanceInstanceEncryptionKey.fromMap(Map<String, dynamic> map) {
     return InstanceInstanceEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
-      sha256: map['sha256'] == null ? null : (map['sha256']! as String).input(),
+      kmsKeySelfLink: (() {
+        final guardedValue = map['kmsKeySelfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyServiceAccount: (() {
+        final guardedValue = map['kmsKeyServiceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha256: (() {
+        final guardedValue = map['sha256'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_datahub;
-
 export 'datahub/functions.dart';
 export 'datahub/get_service_args.dart';
 export 'datahub/get_service_result.dart';

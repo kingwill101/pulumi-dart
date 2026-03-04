@@ -11,18 +11,25 @@ import 'subnet_network.dart';
 class InterfaceEndpointArgs {
   /// A reference to the service being brought into the virtual network.
   final pulumi.Input<EndpointService>? endpointService;
+
   /// A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
   final pulumi.Input<String>? fqdn;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the interface endpoint.
   final pulumi.Input<String>? interfaceEndpointName;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The ID of the subnet from which the private IP will be allocated.
   final pulumi.Input<SubnetNetwork>? subnet;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -48,7 +55,11 @@ class InterfaceEndpointArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpointService': ?pulumi.Input.mapOptionalInputValue<EndpointService, Map<String, dynamic>>(endpointService, (value) => value.toMap()),
+      'endpointService':
+          ?pulumi.Input.mapOptionalInputValue<
+            EndpointService,
+            Map<String, dynamic>
+          >(endpointService, (value) => value.toMap()),
       'fqdn': ?fqdn,
       'id': ?id,
       'interfaceEndpointName': ?interfaceEndpointName,
@@ -61,15 +72,50 @@ class InterfaceEndpointArgs {
 
   factory InterfaceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return InterfaceEndpointArgs(
-      endpointService: map['endpointService'] == null ? null : (EndpointService.fromMap((map['endpointService']! as Map).cast<String, dynamic>())).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      interfaceEndpointName: map['interfaceEndpointName'] == null ? null : (map['interfaceEndpointName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet']! as SubnetNetwork).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      endpointService: (() {
+        final guardedValue = map['endpointService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EndpointService.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fqdn: (() {
+        final guardedValue = map['fqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interfaceEndpointName: (() {
+        final guardedValue = map['interfaceEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as SubnetNetwork);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

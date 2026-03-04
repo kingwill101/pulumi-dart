@@ -1,5 +1,3 @@
-library module_eks;
-
 export 'eks/access_entry.dart';
 export 'eks/access_entry_args.dart';
 export 'eks/access_entry_state.dart';

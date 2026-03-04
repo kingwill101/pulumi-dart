@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFirewallNatRuleResponse {
   /// Description of the rule.
   final pulumi.Input<String>? description;
+
   /// List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service tags.
   final pulumi.Input<List<String>>? destinationAddresses;
+
   /// List of destination ports.
   final pulumi.Input<List<String>>? destinationPorts;
+
   /// Name of the NAT rule.
   final pulumi.Input<String>? name;
+
   /// Array of AzureFirewallNetworkRuleProtocols applicable to this NAT rule.
   final pulumi.Input<List<String>>? protocols;
+
   /// List of source IP addresses for this rule.
   final pulumi.Input<List<String>>? sourceAddresses;
+
   /// List of source IpGroups for this rule.
   final pulumi.Input<List<String>>? sourceIpGroups;
+
   /// The translated address for this NAT rule.
   final pulumi.Input<String>? translatedAddress;
+
   /// The translated FQDN for this NAT rule.
   final pulumi.Input<String>? translatedFqdn;
+
   /// The translated port for this NAT rule.
   final pulumi.Input<String>? translatedPort;
 
@@ -66,17 +75,56 @@ class AzureFirewallNatRuleResponse {
 
   factory AzureFirewallNatRuleResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNatRuleResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
-      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protocols: map['protocols'] == null ? null : ((map['protocols']! as List).cast<String>()).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
-      translatedAddress: map['translatedAddress'] == null ? null : (map['translatedAddress']! as String).input(),
-      translatedFqdn: map['translatedFqdn'] == null ? null : (map['translatedFqdn']! as String).input(),
-      translatedPort: map['translatedPort'] == null ? null : (map['translatedPort']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationAddresses: (() {
+        final guardedValue = map['destinationAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationPorts: (() {
+        final guardedValue = map['destinationPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocols: (() {
+        final guardedValue = map['protocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceAddresses: (() {
+        final guardedValue = map['sourceAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceIpGroups: (() {
+        final guardedValue = map['sourceIpGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      translatedAddress: (() {
+        final guardedValue = map['translatedAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      translatedFqdn: (() {
+        final guardedValue = map['translatedFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      translatedPort: (() {
+        final guardedValue = map['translatedPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

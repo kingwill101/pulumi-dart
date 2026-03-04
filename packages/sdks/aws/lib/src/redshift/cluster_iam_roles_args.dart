@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterIamRolesArgs {
   /// The name of the Redshift Cluster IAM Roles.
   final pulumi.Input<String> clusterIdentifier;
+
   /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
   final pulumi.Input<String>? defaultIamRoleArn;
+
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
   final pulumi.Input<List<String>>? iamRoleArns;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,24 @@ class ClusterIamRolesArgs {
 
   factory ClusterIamRolesArgs.fromMap(Map<String, dynamic> map) {
     return ClusterIamRolesArgs(
-      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : ((map['defaultIamRoleArn'] as String).input()).input(),
-      iamRoleArns: map['iamRoleArns'] == null ? null : (((map['iamRoleArns'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      clusterIdentifier: pulumi.Input.fromValue(
+        map['clusterIdentifier'] as String,
+      ),
+      defaultIamRoleArn: (() {
+        final guardedValue = map['defaultIamRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamRoleArns: (() {
+        final guardedValue = map['iamRoleArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

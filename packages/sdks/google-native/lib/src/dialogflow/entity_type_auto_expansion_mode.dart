@@ -3,16 +3,15 @@ enum EntityTypeAutoExpansionMode {
   autoExpansionModeUnspecified("AUTO_EXPANSION_MODE_UNSPECIFIED"),
   autoExpansionModeDefault("AUTO_EXPANSION_MODE_DEFAULT");
 
-  const EntityTypeAutoExpansionMode(this.value);
-  final String value;
+  const EntityTypeAutoExpansionMode(this.wireValue);
+  final String wireValue;
 
   static EntityTypeAutoExpansionMode fromValue(String value) {
     for (final item in EntityTypeAutoExpansionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityTypeAutoExpansionMode value: $value');
   }
 }
-

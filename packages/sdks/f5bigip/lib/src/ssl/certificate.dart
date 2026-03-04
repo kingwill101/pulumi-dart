@@ -133,16 +133,22 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Content of certificate on Disk
   late final pulumi.Output<String> content;
+
   /// Full Path Name of ssl certificate
   late final pulumi.Output<String> fullPath;
+
   /// Specifies the issuer certificate.
   late final pulumi.Output<String?> issuerCert;
+
   /// Specifies the type of monitoring used.
   late final pulumi.Output<String?> monitoringType;
+
   /// Name of the SSL Certificate to be Imported on to BIGIP
   late final pulumi.Output<String> name;
+
   /// Specifies the OCSP responder.
   late final pulumi.Output<String?> ocsp;
+
   /// Partition of ssl certificate
   late final pulumi.Output<String?> partition;
 
@@ -155,18 +161,18 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ssl/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String>('content');
-    this.fullPath = registerOutput<String>('fullPath');
-    this.issuerCert = registerOutput<String?>('issuerCert');
-    this.monitoringType = registerOutput<String?>('monitoringType');
+         'f5bigip:ssl/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<String>('content');
+    fullPath = registerOutput<String>('fullPath');
+    issuerCert = registerOutput<String?>('issuerCert');
+    monitoringType = registerOutput<String?>('monitoringType');
     this.name = registerOutput<String>('name');
-    this.ocsp = registerOutput<String?>('ocsp');
-    this.partition = registerOutput<String?>('partition');
+    ocsp = registerOutput<String?>('ocsp');
+    partition = registerOutput<String?>('partition');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -187,17 +193,17 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ssl/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String>('content');
-    this.fullPath = registerOutput<String>('fullPath');
-    this.issuerCert = registerOutput<String?>('issuerCert');
-    this.monitoringType = registerOutput<String?>('monitoringType');
+         'f5bigip:ssl/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<String>('content');
+    fullPath = registerOutput<String>('fullPath');
+    issuerCert = registerOutput<String?>('issuerCert');
+    monitoringType = registerOutput<String?>('monitoringType');
     this.name = registerOutput<String>('name');
-    this.ocsp = registerOutput<String?>('ocsp');
-    this.partition = registerOutput<String?>('partition');
+    ocsp = registerOutput<String?>('ocsp');
+    partition = registerOutput<String?>('partition');
   }
 }

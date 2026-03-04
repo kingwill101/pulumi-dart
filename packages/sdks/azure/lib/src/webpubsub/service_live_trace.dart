@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceLiveTrace {
   /// Whether the log category `ConnectivityLogs` is enabled? Defaults to `true`
   final pulumi.Input<bool>? connectivityLogsEnabled;
+
   /// Whether the live trace is enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Whether the log category `HttpRequestLogs` is enabled? Defaults to `true`
   final pulumi.Input<bool>? httpRequestLogsEnabled;
+
   /// Whether the log category `MessagingLogs` is enabled? Defaults to `true`
   final pulumi.Input<bool>? messagingLogsEnabled;
 
@@ -35,11 +38,26 @@ class ServiceLiveTrace {
 
   factory ServiceLiveTrace.fromMap(Map<String, dynamic> map) {
     return ServiceLiveTrace(
-      connectivityLogsEnabled: map['connectivityLogsEnabled'] == null ? null : (map['connectivityLogsEnabled']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      httpRequestLogsEnabled: map['httpRequestLogsEnabled'] == null ? null : (map['httpRequestLogsEnabled']! as bool).input(),
-      messagingLogsEnabled: map['messagingLogsEnabled'] == null ? null : (map['messagingLogsEnabled']! as bool).input(),
+      connectivityLogsEnabled: (() {
+        final guardedValue = map['connectivityLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      httpRequestLogsEnabled: (() {
+        final guardedValue = map['httpRequestLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      messagingLogsEnabled: (() {
+        final guardedValue = map['messagingLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

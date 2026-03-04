@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SandboxConfigResponseContainerV1beta1 {
   /// Type of the sandbox to use for the node (e.g. 'gvisor')
   final pulumi.Input<String> sandboxType;
+
   /// Type of the sandbox to use for the node.
   final pulumi.Input<String> type;
 
@@ -18,17 +19,15 @@ class SandboxConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sandboxType': sandboxType,
-      'type': type,
-    };
+    return <String, dynamic>{'sandboxType': sandboxType, 'type': type};
   }
 
-  factory SandboxConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory SandboxConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SandboxConfigResponseContainerV1beta1(
-      sandboxType: (map['sandboxType'] as String).input(),
-      type: (map['type'] as String).input(),
+      sandboxType: pulumi.Input.fromValue(map['sandboxType'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

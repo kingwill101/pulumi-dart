@@ -6,11 +6,16 @@ import 'vulnerability_location_containeranalysis_v1beta1.dart';
 /// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 class PackageIssueContaineranalysisV1beta1 {
   /// The location of the vulnerability.
-  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1> affectedLocation;
+  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1>
+  affectedLocation;
+
   /// The location of the available fix for vulnerability.
-  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1>? fixedLocation;
+  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1>?
+  fixedLocation;
+
   /// The type of package (e.g. OS, MAVEN, GO).
   final pulumi.Input<String>? packageType;
+
   /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
   final pulumi.Input<String>? severityName;
 
@@ -28,20 +33,49 @@ class PackageIssueContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'affectedLocation': pulumi.Input.mapInputValue<VulnerabilityLocationContaineranalysisV1beta1, Map<String, dynamic>>(affectedLocation, (value) => value.toMap()),
-      'fixedLocation': ?pulumi.Input.mapOptionalInputValue<VulnerabilityLocationContaineranalysisV1beta1, Map<String, dynamic>>(fixedLocation, (value) => value.toMap()),
+      'affectedLocation':
+          pulumi.Input.mapInputValue<
+            VulnerabilityLocationContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(affectedLocation, (value) => value.toMap()),
+      'fixedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            VulnerabilityLocationContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(fixedLocation, (value) => value.toMap()),
       'packageType': ?packageType,
       'severityName': ?severityName,
     };
   }
 
-  factory PackageIssueContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory PackageIssueContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PackageIssueContaineranalysisV1beta1(
-      affectedLocation: (VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['affectedLocation'] as Map).cast<String, dynamic>())).input(),
-      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['fixedLocation']! as Map).cast<String, dynamic>())).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
-      severityName: map['severityName'] == null ? null : (map['severityName']! as String).input(),
+      affectedLocation: pulumi.Input.fromValue(
+        VulnerabilityLocationContaineranalysisV1beta1.fromMap(
+          (map['affectedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      fixedLocation: (() {
+        final guardedValue = map['fixedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VulnerabilityLocationContaineranalysisV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      packageType: (() {
+        final guardedValue = map['packageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      severityName: (() {
+        final guardedValue = map['severityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

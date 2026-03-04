@@ -3,16 +3,15 @@ enum VersioningConfigurationStatus {
   enabled("Enabled"),
   suspended("Suspended");
 
-  const VersioningConfigurationStatus(this.value);
-  final String value;
+  const VersioningConfigurationStatus(this.wireValue);
+  final String wireValue;
 
   static VersioningConfigurationStatus fromValue(String value) {
     for (final item in VersioningConfigurationStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersioningConfigurationStatus value: $value');
   }
 }
-

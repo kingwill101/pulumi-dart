@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'admin_rule_collection_args.dart';
-import 'network_manager_security_group_item_response.dart';
 import 'system_data_response.dart';
 
 /// Defines the admin rule collection.
@@ -171,21 +170,29 @@ import 'system_data_response.dart';
 /// ```
 class AdminRuleCollection extends pulumi.CustomResource {
   /// Groups for configuration
-  late final pulumi.Output<List<NetworkManagerSecurityGroupItemResponse>> appliesToGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> appliesToGroups;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A description of the admin rule collection.
   late final pulumi.Output<String?> description;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -198,19 +205,21 @@ class AdminRuleCollection extends pulumi.CustomResource {
     AdminRuleCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:AdminRuleCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appliesToGroups = registerOutput<List<NetworkManagerSecurityGroupItemResponse>>('appliesToGroups');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:AdminRuleCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appliesToGroups = registerOutput<List<Map<String, dynamic>>>(
+      'appliesToGroups',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

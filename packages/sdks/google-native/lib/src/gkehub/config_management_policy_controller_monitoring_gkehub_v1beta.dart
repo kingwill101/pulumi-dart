@@ -6,24 +6,53 @@ import 'config_management_policy_controller_monitoring_backends_item_gkehub_v1be
 /// PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
 class ConfigManagementPolicyControllerMonitoringGkehubV1beta {
   /// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  final pulumi.Input<List<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta>>? backends;
+  final pulumi.Input<
+    List<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta>
+  >?
+  backends;
 
   /// Creates a new [ConfigManagementPolicyControllerMonitoringGkehubV1beta].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  ConfigManagementPolicyControllerMonitoringGkehubV1beta({
-    this.backends,
-  });
+  ConfigManagementPolicyControllerMonitoringGkehubV1beta({this.backends});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backends': ?pulumi.Input.mapOptionalInputValue<List<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta>, List<String>>(backends, (value) => pulumi.Input.encodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta, String>(value, (value) => value.value)),
+      'backends':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta
+            >,
+            List<String>
+          >(
+            backends,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta,
+                  String
+                >(value, (value) => value.wireValue),
+          ),
     };
   }
 
-  factory ConfigManagementPolicyControllerMonitoringGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory ConfigManagementPolicyControllerMonitoringGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigManagementPolicyControllerMonitoringGkehubV1beta(
-      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta>(map['backends']!, (value) => ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta.fromValue(value as String))).input(),
+      backends: (() {
+        final guardedValue = map['backends'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta
+          >(
+            guardedValue,
+            (value) =>
+                ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1beta.fromValue(
+                  value as String,
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

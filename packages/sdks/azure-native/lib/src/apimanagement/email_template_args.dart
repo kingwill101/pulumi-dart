@@ -10,18 +10,26 @@ import 'email_template_parameters_contract_properties.dart';
 class EmailTemplateArgs {
   /// Email Template Body. This should be a valid XDocument
   final pulumi.Input<String>? body;
+
   /// Description of the Email Template.
   final pulumi.Input<String>? description;
+
   /// Email Template Parameter values.
-  final pulumi.Input<List<EmailTemplateParametersContractProperties>>? parameters;
+  final pulumi.Input<List<EmailTemplateParametersContractProperties>>?
+  parameters;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Subject of the Template.
   final pulumi.Input<String>? subject;
+
   /// Email Template Name Identifier.
   final pulumi.Input<String>? templateName;
+
   /// Title of the Template.
   final pulumi.Input<String>? title;
 
@@ -49,7 +57,18 @@ class EmailTemplateArgs {
     return <String, dynamic>{
       'body': ?body,
       'description': ?description,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<EmailTemplateParametersContractProperties>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<EmailTemplateParametersContractProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EmailTemplateParametersContractProperties>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EmailTemplateParametersContractProperties,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
       'subject': ?subject,
@@ -60,15 +79,47 @@ class EmailTemplateArgs {
 
   factory EmailTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EmailTemplateArgs(
-      body: map['body'] == null ? null : (map['body']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<EmailTemplateParametersContractProperties>(map['parameters']!, (value) => EmailTemplateParametersContractProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      body: (() {
+        final guardedValue = map['body'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EmailTemplateParametersContractProperties>(
+            guardedValue,
+            (value) => EmailTemplateParametersContractProperties.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      subject: (() {
+        final guardedValue = map['subject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateName: (() {
+        final guardedValue = map['templateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

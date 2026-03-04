@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_package_assignment_policy_approval_settings.dart';
 import 'access_package_assignment_policy_args.dart';
 import 'access_package_assignment_policy_assignment_review_settings.dart';
-import 'access_package_assignment_policy_question.dart';
 import 'access_package_assignment_policy_requestor_settings.dart';
 import 'access_package_assignment_policy_state.dart';
 
@@ -409,24 +408,38 @@ import 'access_package_assignment_policy_state.dart';
 class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
   /// The ID of the access package that will contain the policy.
   late final pulumi.Output<String> accessPackageId;
+
   /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
-  late final pulumi.Output<AccessPackageAssignmentPolicyApprovalSettings?> approvalSettings;
+  late final pulumi.Output<AccessPackageAssignmentPolicyApprovalSettings?>
+  approvalSettings;
+
   /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
-  late final pulumi.Output<AccessPackageAssignmentPolicyAssignmentReviewSettings?> assignmentReviewSettings;
+  late final pulumi.Output<
+    AccessPackageAssignmentPolicyAssignmentReviewSettings?
+  >
+  assignmentReviewSettings;
+
   /// The description of the policy.
   late final pulumi.Output<String> description;
+
   /// The display name of the policy.
   late final pulumi.Output<String> displayName;
+
   /// How many days this assignment is valid for.
   late final pulumi.Output<int?> durationInDays;
+
   /// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
   late final pulumi.Output<String?> expirationDate;
+
   /// Whether users will be able to request extension of their access to this package before their access expires.
   late final pulumi.Output<bool?> extensionEnabled;
+
   /// One or more `question` blocks for the requestor, as documented below.
-  late final pulumi.Output<List<AccessPackageAssignmentPolicyQuestion>?> questions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> questions;
+
   /// A `requestor_settings` block to configure the users who can request access, as documented below.
-  late final pulumi.Output<AccessPackageAssignmentPolicyRequestorSettings?> requestorSettings;
+  late final pulumi.Output<AccessPackageAssignmentPolicyRequestorSettings?>
+  requestorSettings;
 
   /// Creates a new [AccessPackageAssignmentPolicy].
   /// [name] The Pulumi resource name.
@@ -437,21 +450,30 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     AccessPackageAssignmentPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPackageId = registerOutput<String>('accessPackageId');
-    this.approvalSettings = registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>('approvalSettings');
-    this.assignmentReviewSettings = registerOutput<AccessPackageAssignmentPolicyAssignmentReviewSettings?>('assignmentReviewSettings');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.durationInDays = registerOutput<int?>('durationInDays');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.extensionEnabled = registerOutput<bool?>('extensionEnabled');
-    this.questions = registerOutput<List<AccessPackageAssignmentPolicyQuestion>?>('questions');
-    this.requestorSettings = registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>('requestorSettings');
+         'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPackageId = registerOutput<String>('accessPackageId');
+    approvalSettings =
+        registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>(
+          'approvalSettings',
+        );
+    assignmentReviewSettings =
+        registerOutput<AccessPackageAssignmentPolicyAssignmentReviewSettings?>(
+          'assignmentReviewSettings',
+        );
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    durationInDays = registerOutput<int?>('durationInDays');
+    expirationDate = registerOutput<String?>('expirationDate');
+    extensionEnabled = registerOutput<bool?>('extensionEnabled');
+    questions = registerOutput<List<Map<String, dynamic>>?>('questions');
+    requestorSettings =
+        registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>(
+          'requestorSettings',
+        );
   }
 
   /// Gets an existing [AccessPackageAssignmentPolicy] resource's state with the given [name] and [id].
@@ -472,20 +494,29 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPackageId = registerOutput<String>('accessPackageId');
-    this.approvalSettings = registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>('approvalSettings');
-    this.assignmentReviewSettings = registerOutput<AccessPackageAssignmentPolicyAssignmentReviewSettings?>('assignmentReviewSettings');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.durationInDays = registerOutput<int?>('durationInDays');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.extensionEnabled = registerOutput<bool?>('extensionEnabled');
-    this.questions = registerOutput<List<AccessPackageAssignmentPolicyQuestion>?>('questions');
-    this.requestorSettings = registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>('requestorSettings');
+         'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPackageId = registerOutput<String>('accessPackageId');
+    approvalSettings =
+        registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>(
+          'approvalSettings',
+        );
+    assignmentReviewSettings =
+        registerOutput<AccessPackageAssignmentPolicyAssignmentReviewSettings?>(
+          'assignmentReviewSettings',
+        );
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    durationInDays = registerOutput<int?>('durationInDays');
+    expirationDate = registerOutput<String?>('expirationDate');
+    extensionEnabled = registerOutput<bool?>('extensionEnabled');
+    questions = registerOutput<List<Map<String, dynamic>>?>('questions');
+    requestorSettings =
+        registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>(
+          'requestorSettings',
+        );
   }
 }

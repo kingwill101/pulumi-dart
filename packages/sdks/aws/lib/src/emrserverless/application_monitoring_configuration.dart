@@ -8,13 +8,28 @@ import 'application_monitoring_configuration_s3_monitoring_configuration.dart';
 
 class ApplicationMonitoringConfiguration {
   /// The Amazon CloudWatch configuration for monitoring logs.
-  final pulumi.Input<ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration>? cloudwatchLoggingConfiguration;
+  final pulumi.Input<
+    ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration
+  >?
+  cloudwatchLoggingConfiguration;
+
   /// The managed log persistence configuration for monitoring logs.
-  final pulumi.Input<ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration>? managedPersistenceMonitoringConfiguration;
+  final pulumi.Input<
+    ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration
+  >?
+  managedPersistenceMonitoringConfiguration;
+
   /// The Prometheus configuration for monitoring metrics.
-  final pulumi.Input<ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration>? prometheusMonitoringConfiguration;
+  final pulumi.Input<
+    ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration
+  >?
+  prometheusMonitoringConfiguration;
+
   /// The Amazon S3 configuration for monitoring log publishing.
-  final pulumi.Input<ApplicationMonitoringConfigurationS3MonitoringConfiguration>? s3MonitoringConfiguration;
+  final pulumi.Input<
+    ApplicationMonitoringConfigurationS3MonitoringConfiguration
+  >?
+  s3MonitoringConfiguration;
 
   /// Creates a new [ApplicationMonitoringConfiguration].
   /// [cloudwatchLoggingConfiguration] The Amazon CloudWatch configuration for monitoring logs.
@@ -30,20 +45,70 @@ class ApplicationMonitoringConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchLoggingConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration, Map<String, dynamic>>(cloudwatchLoggingConfiguration, (value) => value.toMap()),
-      'managedPersistenceMonitoringConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration, Map<String, dynamic>>(managedPersistenceMonitoringConfiguration, (value) => value.toMap()),
-      'prometheusMonitoringConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration, Map<String, dynamic>>(prometheusMonitoringConfiguration, (value) => value.toMap()),
-      's3MonitoringConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationMonitoringConfigurationS3MonitoringConfiguration, Map<String, dynamic>>(s3MonitoringConfiguration, (value) => value.toMap()),
+      'cloudwatchLoggingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration,
+            Map<String, dynamic>
+          >(cloudwatchLoggingConfiguration, (value) => value.toMap()),
+      'managedPersistenceMonitoringConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration,
+            Map<String, dynamic>
+          >(
+            managedPersistenceMonitoringConfiguration,
+            (value) => value.toMap(),
+          ),
+      'prometheusMonitoringConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration,
+            Map<String, dynamic>
+          >(prometheusMonitoringConfiguration, (value) => value.toMap()),
+      's3MonitoringConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationMonitoringConfigurationS3MonitoringConfiguration,
+            Map<String, dynamic>
+          >(s3MonitoringConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ApplicationMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfiguration(
-      cloudwatchLoggingConfiguration: map['cloudwatchLoggingConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration.fromMap((map['cloudwatchLoggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      managedPersistenceMonitoringConfiguration: map['managedPersistenceMonitoringConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap((map['managedPersistenceMonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      prometheusMonitoringConfiguration: map['prometheusMonitoringConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap((map['prometheusMonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      s3MonitoringConfiguration: map['s3MonitoringConfiguration'] == null ? null : ((ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap((map['s3MonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      cloudwatchLoggingConfiguration: (() {
+        final guardedValue = map['cloudwatchLoggingConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      managedPersistenceMonitoringConfiguration: (() {
+        final guardedValue = map['managedPersistenceMonitoringConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      prometheusMonitoringConfiguration: (() {
+        final guardedValue = map['prometheusMonitoringConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3MonitoringConfiguration: (() {
+        final guardedValue = map['s3MonitoringConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

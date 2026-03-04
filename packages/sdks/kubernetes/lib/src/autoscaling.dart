@@ -1,5 +1,3 @@
-library module_autoscaling;
-
 export 'autoscaling/container_resource_metric_source.dart';
 export 'autoscaling/container_resource_metric_source_autoscaling_v2beta1.dart';
 export 'autoscaling/container_resource_metric_source_autoscaling_v2beta2.dart';

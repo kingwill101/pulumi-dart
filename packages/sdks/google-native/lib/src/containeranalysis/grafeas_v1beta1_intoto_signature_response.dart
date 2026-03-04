@@ -16,17 +16,15 @@ class GrafeasV1beta1IntotoSignatureResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyid': keyid,
-      'sig': sig,
-    };
+    return <String, dynamic>{'keyid': keyid, 'sig': sig};
   }
 
-  factory GrafeasV1beta1IntotoSignatureResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1beta1IntotoSignatureResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1beta1IntotoSignatureResponse(
-      keyid: (map['keyid'] as String).input(),
-      sig: (map['sig'] as String).input(),
+      keyid: pulumi.Input.fromValue(map['keyid'] as String),
+      sig: pulumi.Input.fromValue(map['sig'] as String),
     );
   }
 }
-

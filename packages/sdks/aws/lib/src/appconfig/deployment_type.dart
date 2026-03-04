@@ -156,30 +156,43 @@ import 'deployment_state.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// Application ID. Must be between 4 and 7 characters in length.
   late final pulumi.Output<String> applicationId;
+
   /// ARN of the AppConfig Deployment.
   late final pulumi.Output<String> arn;
+
   /// Configuration profile ID. Must be between 4 and 7 characters in length.
   late final pulumi.Output<String> configurationProfileId;
+
   /// Configuration version to deploy. Can be at most 1024 characters.
   late final pulumi.Output<String> configurationVersion;
+
   /// Deployment number.
   late final pulumi.Output<int> deploymentNumber;
+
   /// Deployment strategy ID or name of a predefined deployment strategy. See [Predefined Deployment Strategies](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-deployment-strategy.html#appconfig-creating-deployment-strategy-predefined) for more details.
   late final pulumi.Output<String> deploymentStrategyId;
+
   /// Description of the deployment. Can be at most 1024 characters.
   late final pulumi.Output<String?> description;
+
   /// Environment ID. Must be between 4 and 7 characters in length.
   late final pulumi.Output<String> environmentId;
+
   /// ARN of the KMS key used to encrypt configuration data.
   late final pulumi.Output<String> kmsKeyArn;
+
   /// The KMS key identifier (key ID, key alias, or key ARN). AppConfig uses this to encrypt the configuration data using a customer managed key.
   late final pulumi.Output<String?> kmsKeyIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// State of the deployment.
   late final pulumi.Output<String> state;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -192,25 +205,25 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appconfig/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.arn = registerOutput<String>('arn');
-    this.configurationProfileId = registerOutput<String>('configurationProfileId');
-    this.configurationVersion = registerOutput<String>('configurationVersion');
-    this.deploymentNumber = registerOutput<int>('deploymentNumber');
-    this.deploymentStrategyId = registerOutput<String>('deploymentStrategyId');
-    this.description = registerOutput<String?>('description');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
-    this.region = registerOutput<String>('region');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:appconfig/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    configurationProfileId = registerOutput<String>('configurationProfileId');
+    configurationVersion = registerOutput<String>('configurationVersion');
+    deploymentNumber = registerOutput<int>('deploymentNumber');
+    deploymentStrategyId = registerOutput<String>('deploymentStrategyId');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String>('environmentId');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -231,24 +244,24 @@ class DeploymentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appconfig/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.arn = registerOutput<String>('arn');
-    this.configurationProfileId = registerOutput<String>('configurationProfileId');
-    this.configurationVersion = registerOutput<String>('configurationVersion');
-    this.deploymentNumber = registerOutput<int>('deploymentNumber');
-    this.deploymentStrategyId = registerOutput<String>('deploymentStrategyId');
-    this.description = registerOutput<String?>('description');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
-    this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
-    this.region = registerOutput<String>('region');
+         'aws:appconfig/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    arn = registerOutput<String>('arn');
+    configurationProfileId = registerOutput<String>('configurationProfileId');
+    configurationVersion = registerOutput<String>('configurationVersion');
+    deploymentNumber = registerOutput<int>('deploymentNumber');
+    deploymentStrategyId = registerOutput<String>('deploymentStrategyId');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String>('environmentId');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

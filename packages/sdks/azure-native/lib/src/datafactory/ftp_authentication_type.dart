@@ -3,16 +3,15 @@ enum FtpAuthenticationType {
   valueBasic("Basic"),
   valueAnonymous("Anonymous");
 
-  const FtpAuthenticationType(this.value);
-  final String value;
+  const FtpAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static FtpAuthenticationType fromValue(String value) {
     for (final item in FtpAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FtpAuthenticationType value: $value');
   }
 }
-

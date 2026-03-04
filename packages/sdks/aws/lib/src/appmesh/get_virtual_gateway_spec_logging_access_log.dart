@@ -8,20 +8,37 @@ class GetVirtualGatewaySpecLoggingAccessLog {
 
   /// Creates a new [GetVirtualGatewaySpecLoggingAccessLog].
   /// [files] Required.
-  GetVirtualGatewaySpecLoggingAccessLog({
-    required this.files,
-  });
+  GetVirtualGatewaySpecLoggingAccessLog({required this.files});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'files': pulumi.Input.mapInputValue<List<GetVirtualGatewaySpecLoggingAccessLogFile>, List<Map<String, dynamic>>>(files, (value) => pulumi.Input.encodeList<GetVirtualGatewaySpecLoggingAccessLogFile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'files':
+          pulumi.Input.mapInputValue<
+            List<GetVirtualGatewaySpecLoggingAccessLogFile>,
+            List<Map<String, dynamic>>
+          >(
+            files,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetVirtualGatewaySpecLoggingAccessLogFile,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetVirtualGatewaySpecLoggingAccessLog.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecLoggingAccessLog.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualGatewaySpecLoggingAccessLog(
-      files: (pulumi.Input.decodeList<GetVirtualGatewaySpecLoggingAccessLogFile>(map['files']!, (value) => GetVirtualGatewaySpecLoggingAccessLogFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetVirtualGatewaySpecLoggingAccessLogFile>(
+          map['files']!,
+          (value) => GetVirtualGatewaySpecLoggingAccessLogFile.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

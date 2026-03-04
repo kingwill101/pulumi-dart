@@ -1,5 +1,3 @@
-library module_dax;
-
 export 'dax/cluster.dart';
 export 'dax/cluster_args.dart';
 export 'dax/cluster_node.dart';

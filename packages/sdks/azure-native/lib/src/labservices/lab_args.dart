@@ -15,28 +15,40 @@ import 'virtual_machine_profile.dart';
 class LabArgs {
   /// The resource auto shutdown configuration for the lab. This controls whether actions are taken on resources that are sitting idle.
   final pulumi.Input<AutoShutdownProfile> autoShutdownProfile;
+
   /// The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
   final pulumi.Input<ConnectionProfile> connectionProfile;
+
   /// The description of the lab.
   final pulumi.Input<String>? description;
+
   /// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
   final pulumi.Input<String>? labName;
+
   /// The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
   final pulumi.Input<String>? labPlanId;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The network profile for the lab, typically applied via a lab plan. This profile cannot be modified once a lab has been created.
   final pulumi.Input<LabNetworkProfile>? networkProfile;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The lab user list management profile.
   final pulumi.Input<RosterProfile>? rosterProfile;
+
   /// The lab security profile.
   final pulumi.Input<SecurityProfile> securityProfile;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The title of the lab.
   final pulumi.Input<String>? title;
+
   /// The profile used for creating lab virtual machines.
   final pulumi.Input<VirtualMachineProfile> virtualMachineProfile;
 
@@ -72,38 +84,119 @@ class LabArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoShutdownProfile': pulumi.Input.mapInputValue<AutoShutdownProfile, Map<String, dynamic>>(autoShutdownProfile, (value) => value.toMap()),
-      'connectionProfile': pulumi.Input.mapInputValue<ConnectionProfile, Map<String, dynamic>>(connectionProfile, (value) => value.toMap()),
+      'autoShutdownProfile':
+          pulumi.Input.mapInputValue<AutoShutdownProfile, Map<String, dynamic>>(
+            autoShutdownProfile,
+            (value) => value.toMap(),
+          ),
+      'connectionProfile':
+          pulumi.Input.mapInputValue<ConnectionProfile, Map<String, dynamic>>(
+            connectionProfile,
+            (value) => value.toMap(),
+          ),
       'description': ?description,
       'labName': ?labName,
       'labPlanId': ?labPlanId,
       'location': ?location,
-      'networkProfile': ?pulumi.Input.mapOptionalInputValue<LabNetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'networkProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            LabNetworkProfile,
+            Map<String, dynamic>
+          >(networkProfile, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'rosterProfile': ?pulumi.Input.mapOptionalInputValue<RosterProfile, Map<String, dynamic>>(rosterProfile, (value) => value.toMap()),
-      'securityProfile': pulumi.Input.mapInputValue<SecurityProfile, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
+      'rosterProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            RosterProfile,
+            Map<String, dynamic>
+          >(rosterProfile, (value) => value.toMap()),
+      'securityProfile':
+          pulumi.Input.mapInputValue<SecurityProfile, Map<String, dynamic>>(
+            securityProfile,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'title': ?title,
-      'virtualMachineProfile': pulumi.Input.mapInputValue<VirtualMachineProfile, Map<String, dynamic>>(virtualMachineProfile, (value) => value.toMap()),
+      'virtualMachineProfile':
+          pulumi.Input.mapInputValue<
+            VirtualMachineProfile,
+            Map<String, dynamic>
+          >(virtualMachineProfile, (value) => value.toMap()),
     };
   }
 
   factory LabArgs.fromMap(Map<String, dynamic> map) {
     return LabArgs(
-      autoShutdownProfile: (AutoShutdownProfile.fromMap((map['autoShutdownProfile'] as Map).cast<String, dynamic>())).input(),
-      connectionProfile: (ConnectionProfile.fromMap((map['connectionProfile'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labName: map['labName'] == null ? null : (map['labName']! as String).input(),
-      labPlanId: map['labPlanId'] == null ? null : (map['labPlanId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (LabNetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rosterProfile: map['rosterProfile'] == null ? null : (RosterProfile.fromMap((map['rosterProfile']! as Map).cast<String, dynamic>())).input(),
-      securityProfile: (SecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
-      virtualMachineProfile: (VirtualMachineProfile.fromMap((map['virtualMachineProfile'] as Map).cast<String, dynamic>())).input(),
+      autoShutdownProfile: pulumi.Input.fromValue(
+        AutoShutdownProfile.fromMap(
+          (map['autoShutdownProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      connectionProfile: pulumi.Input.fromValue(
+        ConnectionProfile.fromMap(
+          (map['connectionProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labName: (() {
+        final guardedValue = map['labName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labPlanId: (() {
+        final guardedValue = map['labPlanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LabNetworkProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rosterProfile: (() {
+        final guardedValue = map['rosterProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RosterProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      securityProfile: pulumi.Input.fromValue(
+        SecurityProfile.fromMap(
+          (map['securityProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualMachineProfile: pulumi.Input.fromValue(
+        VirtualMachineProfile.fromMap(
+          (map['virtualMachineProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'service_linked_role_state.dart';
 ///
 /// For information about Dbfs service-linked roles(SLR) and how to use it, see [What is service-linked roles](https://www.alibabacloud.com/help/en/resource-management/resource-group/developer-reference/api-resourcemanager-2020-03-31-createservicelinkedrole-rg).
 ///
-/// > **NOTE:** Available since v1.157.0.
+/// &gt; **NOTE:** Available since v1.157.0.
 ///
 ///
 /// ## Example Usage
@@ -110,6 +110,7 @@ import 'service_linked_role_state.dart';
 class ServiceLinkedRole extends pulumi.CustomResource {
   /// The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
   late final pulumi.Output<String> productName;
+
   /// The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
   late final pulumi.Output<bool> status;
 
@@ -122,13 +123,13 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     ServiceLinkedRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
-    this.status = registerOutput<bool>('status');
+         'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    productName = registerOutput<String>('productName');
+    status = registerOutput<bool>('status');
   }
 
   /// Gets an existing [ServiceLinkedRole] resource's state with the given [name] and [id].
@@ -149,12 +150,12 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
-    this.status = registerOutput<bool>('status');
+         'alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    productName = registerOutput<String>('productName');
+    status = registerOutput<bool>('status');
   }
 }

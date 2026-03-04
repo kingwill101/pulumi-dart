@@ -11,23 +11,45 @@ class RRSetRoutingPolicyWrrPolicy {
   /// Creates a new [RRSetRoutingPolicyWrrPolicy].
   /// [items] Optional.
   /// [kind] Optional.
-  RRSetRoutingPolicyWrrPolicy({
-    this.items,
-    this.kind,
-  });
+  RRSetRoutingPolicyWrrPolicy({this.items, this.kind});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?pulumi.Input.mapOptionalInputValue<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'items':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>,
+            List<Map<String, dynamic>>
+          >(
+            items,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RRSetRoutingPolicyWrrPolicyWrrPolicyItem,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'kind': ?kind,
     };
   }
 
   factory RRSetRoutingPolicyWrrPolicy.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyWrrPolicy(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(map['items']!, (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      items: (() {
+        final guardedValue = map['items'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(
+            guardedValue,
+            (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

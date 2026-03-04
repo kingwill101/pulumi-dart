@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogConfigState {
   /// The type the of log. Valid values: `PROVIDER`.
   final pulumi.Input<String>? logType;
+
   /// The name of the Log Store.
   final pulumi.Input<String>? slsLogStore;
+
   /// The name of the Project.
   final pulumi.Input<String>? slsProject;
 
@@ -15,11 +17,7 @@ class LogConfigState {
   /// [logType] The type the of log. Valid values: `PROVIDER`.
   /// [slsLogStore] The name of the Log Store.
   /// [slsProject] The name of the Project.
-  LogConfigState({
-    this.logType,
-    this.slsLogStore,
-    this.slsProject,
-  });
+  LogConfigState({this.logType, this.slsLogStore, this.slsProject});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class LogConfigState {
 
   factory LogConfigState.fromMap(Map<String, dynamic> map) {
     return LogConfigState(
-      logType: map['logType'] == null ? null : (map['logType']! as String).input(),
-      slsLogStore: map['slsLogStore'] == null ? null : (map['slsLogStore']! as String).input(),
-      slsProject: map['slsProject'] == null ? null : (map['slsProject']! as String).input(),
+      logType: (() {
+        final guardedValue = map['logType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsLogStore: (() {
+        final guardedValue = map['slsLogStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsProject: (() {
+        final guardedValue = map['slsProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

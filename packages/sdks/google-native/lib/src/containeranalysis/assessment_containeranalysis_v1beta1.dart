@@ -10,20 +10,28 @@ import 'remediation_containeranalysis_v1beta1.dart';
 class AssessmentContaineranalysisV1beta1 {
   /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
   final pulumi.Input<String>? cve;
+
   /// Contains information about the impact of this vulnerability, this will change with time.
   final pulumi.Input<List<String>>? impacts;
+
   /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
   final pulumi.Input<JustificationContaineranalysisV1beta1>? justification;
+
   /// A detailed description of this Vex.
   final pulumi.Input<String>? longDescription;
+
   /// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
   final pulumi.Input<List<RelatedUrlContaineranalysisV1beta1>>? relatedUris;
+
   /// Specifies details on how to handle (and presumably, fix) a vulnerability.
   final pulumi.Input<List<RemediationContaineranalysisV1beta1>>? remediations;
+
   /// A one sentence description of this Vex.
   final pulumi.Input<String>? shortDescription;
+
   /// Provides the state of this Vulnerability assessment.
   final pulumi.Input<AssessmentStateContaineranalysisV1beta1>? state;
+
   /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
   final pulumi.Input<String>? vulnerabilityId;
 
@@ -53,28 +61,115 @@ class AssessmentContaineranalysisV1beta1 {
     return <String, dynamic>{
       'cve': ?cve,
       'impacts': ?impacts,
-      'justification': ?pulumi.Input.mapOptionalInputValue<JustificationContaineranalysisV1beta1, Map<String, dynamic>>(justification, (value) => value.toMap()),
+      'justification':
+          ?pulumi.Input.mapOptionalInputValue<
+            JustificationContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(justification, (value) => value.toMap()),
       'longDescription': ?longDescription,
-      'relatedUris': ?pulumi.Input.mapOptionalInputValue<List<RelatedUrlContaineranalysisV1beta1>, List<Map<String, dynamic>>>(relatedUris, (value) => pulumi.Input.encodeList<RelatedUrlContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'remediations': ?pulumi.Input.mapOptionalInputValue<List<RemediationContaineranalysisV1beta1>, List<Map<String, dynamic>>>(remediations, (value) => pulumi.Input.encodeList<RemediationContaineranalysisV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'relatedUris':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RelatedUrlContaineranalysisV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            relatedUris,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RelatedUrlContaineranalysisV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'remediations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RemediationContaineranalysisV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            remediations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RemediationContaineranalysisV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'shortDescription': ?shortDescription,
-      'state': ?pulumi.Input.mapOptionalInputValue<AssessmentStateContaineranalysisV1beta1, String>(state, (value) => value.value),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssessmentStateContaineranalysisV1beta1,
+            String
+          >(state, (value) => value.wireValue),
       'vulnerabilityId': ?vulnerabilityId,
     };
   }
 
   factory AssessmentContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AssessmentContaineranalysisV1beta1(
-      cve: map['cve'] == null ? null : (map['cve']! as String).input(),
-      impacts: map['impacts'] == null ? null : ((map['impacts']! as List).cast<String>()).input(),
-      justification: map['justification'] == null ? null : (JustificationContaineranalysisV1beta1.fromMap((map['justification']! as Map).cast<String, dynamic>())).input(),
-      longDescription: map['longDescription'] == null ? null : (map['longDescription']! as String).input(),
-      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<RelatedUrlContaineranalysisV1beta1>(map['relatedUris']!, (value) => RelatedUrlContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<RemediationContaineranalysisV1beta1>(map['remediations']!, (value) => RemediationContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription']! as String).input(),
-      state: map['state'] == null ? null : (AssessmentStateContaineranalysisV1beta1.fromValue(map['state']! as String)).input(),
-      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId']! as String).input(),
+      cve: (() {
+        final guardedValue = map['cve'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      impacts: (() {
+        final guardedValue = map['impacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      justification: (() {
+        final guardedValue = map['justification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JustificationContaineranalysisV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      longDescription: (() {
+        final guardedValue = map['longDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relatedUris: (() {
+        final guardedValue = map['relatedUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RelatedUrlContaineranalysisV1beta1>(
+            guardedValue,
+            (value) => RelatedUrlContaineranalysisV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      remediations: (() {
+        final guardedValue = map['remediations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RemediationContaineranalysisV1beta1>(
+            guardedValue,
+            (value) => RemediationContaineranalysisV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      shortDescription: (() {
+        final guardedValue = map['shortDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssessmentStateContaineranalysisV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      vulnerabilityId: (() {
+        final guardedValue = map['vulnerabilityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

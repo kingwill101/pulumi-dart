@@ -8,20 +8,15 @@ class DomainFeaturesXenE820host {
 
   /// Creates a new [DomainFeaturesXenE820host].
   /// [state] Sets the state of the e820 host feature, indicating whether it is active or not.
-  DomainFeaturesXenE820host({
-    required this.state,
-  });
+  DomainFeaturesXenE820host({required this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-    };
+    return <String, dynamic>{'state': state};
   }
 
   factory DomainFeaturesXenE820host.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesXenE820host(
-      state: (map['state'] as String).input(),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

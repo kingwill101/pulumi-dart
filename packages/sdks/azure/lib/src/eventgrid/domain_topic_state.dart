@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainTopicState {
   /// Specifies the name of the EventGrid Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? domainName;
+
   /// Specifies the name of the EventGrid Domain Topic resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -15,11 +17,7 @@ class DomainTopicState {
   /// [domainName] Specifies the name of the EventGrid Domain. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the EventGrid Domain Topic resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
-  DomainTopicState({
-    this.domainName,
-    this.name,
-    this.resourceGroupName,
-  });
+  DomainTopicState({this.domainName, this.name, this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class DomainTopicState {
 
   factory DomainTopicState.fromMap(Map<String, dynamic> map) {
     return DomainTopicState(
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

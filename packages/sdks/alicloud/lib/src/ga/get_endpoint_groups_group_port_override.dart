@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEndpointGroupsGroupPortOverride {
   /// Forwarding port.
   final pulumi.Input<int> endpointPort;
+
   /// Listener port.
   final pulumi.Input<int> listenerPort;
 
@@ -25,9 +26,8 @@ class GetEndpointGroupsGroupPortOverride {
 
   factory GetEndpointGroupsGroupPortOverride.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupsGroupPortOverride(
-      endpointPort: (map['endpointPort'] as int).input(),
-      listenerPort: (map['listenerPort'] as int).input(),
+      endpointPort: pulumi.Input.fromValue(map['endpointPort'] as int),
+      listenerPort: pulumi.Input.fromValue(map['listenerPort'] as int),
     );
   }
 }
-

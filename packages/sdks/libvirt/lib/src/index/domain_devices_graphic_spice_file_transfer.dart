@@ -8,20 +8,17 @@ class DomainDevicesGraphicSpiceFileTransfer {
 
   /// Creates a new [DomainDevicesGraphicSpiceFileTransfer].
   /// [enable] Enables or disables file transfer functionality for the Spice connection.
-  DomainDevicesGraphicSpiceFileTransfer({
-    required this.enable,
-  });
+  DomainDevicesGraphicSpiceFileTransfer({required this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': enable,
-    };
+    return <String, dynamic>{'enable': enable};
   }
 
-  factory DomainDevicesGraphicSpiceFileTransfer.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesGraphicSpiceFileTransfer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesGraphicSpiceFileTransfer(
-      enable: (map['enable'] as String).input(),
+      enable: pulumi.Input.fromValue(map['enable'] as String),
     );
   }
 }
-

@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosBgpInstancesInstance {
   /// The instance's elastic defend bandwidth.
   final pulumi.Input<int> bandwidth;
+
   /// The instance's base defend bandwidth.
   final pulumi.Input<int> baseBandwidth;
+
   /// The instance's id.
   final pulumi.Input<String> id;
+
   /// The instance's count of ip config.
   final pulumi.Input<int> ipCount;
+
   /// The instance's IP version.
   final pulumi.Input<String> ipType;
+
   /// The instance's remark.
   final pulumi.Input<String> name;
+
   /// Normal defend bandwidth of the instance. The unit is Gbps.
   final pulumi.Input<int> normalBandwidth;
+
   /// The instance's region.
   final pulumi.Input<String> region;
+
   /// The instance's type.
   final pulumi.Input<String> type;
 
@@ -60,16 +68,15 @@ class GetDdosBgpInstancesInstance {
 
   factory GetDdosBgpInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetDdosBgpInstancesInstance(
-      bandwidth: (map['bandwidth'] as int).input(),
-      baseBandwidth: (map['baseBandwidth'] as int).input(),
-      id: (map['id'] as String).input(),
-      ipCount: (map['ipCount'] as int).input(),
-      ipType: (map['ipType'] as String).input(),
-      name: (map['name'] as String).input(),
-      normalBandwidth: (map['normalBandwidth'] as int).input(),
-      region: (map['region'] as String).input(),
-      type: (map['type'] as String).input(),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
+      baseBandwidth: pulumi.Input.fromValue(map['baseBandwidth'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ipCount: pulumi.Input.fromValue(map['ipCount'] as int),
+      ipType: pulumi.Input.fromValue(map['ipType'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      normalBandwidth: pulumi.Input.fromValue(map['normalBandwidth'] as int),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

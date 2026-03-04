@@ -8,16 +8,15 @@ enum IkeEncryption {
   valueGCMAES256("GCMAES256"),
   valueGCMAES128("GCMAES128");
 
-  const IkeEncryption(this.value);
-  final String value;
+  const IkeEncryption(this.wireValue);
+  final String wireValue;
 
   static IkeEncryption fromValue(String value) {
     for (final item in IkeEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IkeEncryption value: $value');
   }
 }
-

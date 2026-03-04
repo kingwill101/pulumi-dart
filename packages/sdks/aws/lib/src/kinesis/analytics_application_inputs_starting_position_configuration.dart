@@ -13,15 +13,18 @@ class AnalyticsApplicationInputsStartingPositionConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startingPosition': ?startingPosition,
-    };
+    return <String, dynamic>{'startingPosition': ?startingPosition};
   }
 
-  factory AnalyticsApplicationInputsStartingPositionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsApplicationInputsStartingPositionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsApplicationInputsStartingPositionConfiguration(
-      startingPosition: map['startingPosition'] == null ? null : ((map['startingPosition'] as String).input()).input(),
+      startingPosition: (() {
+        final guardedValue = map['startingPosition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

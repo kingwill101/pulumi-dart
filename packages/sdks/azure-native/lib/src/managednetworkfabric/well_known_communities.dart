@@ -10,16 +10,15 @@ enum WellKnownCommunities {
   valueNoExport("NoExport"),
   valueGShut("GShut");
 
-  const WellKnownCommunities(this.value);
-  final String value;
+  const WellKnownCommunities(this.wireValue);
+  final String wireValue;
 
   static WellKnownCommunities fromValue(String value) {
     for (final item in WellKnownCommunities.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WellKnownCommunities value: $value');
   }
 }
-

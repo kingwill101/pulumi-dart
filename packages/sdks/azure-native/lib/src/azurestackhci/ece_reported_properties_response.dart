@@ -7,6 +7,7 @@ import 'ece_action_status_response.dart';
 class EceReportedPropertiesResponse {
   /// Deployment status of AzureStackHCI Cluster Deployment.
   final pulumi.Input<EceActionStatusResponse> deploymentStatus;
+
   /// validation status of AzureStackHCI Cluster Deployment.
   final pulumi.Input<EceActionStatusResponse> validationStatus;
 
@@ -20,16 +21,31 @@ class EceReportedPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deploymentStatus': pulumi.Input.mapInputValue<EceActionStatusResponse, Map<String, dynamic>>(deploymentStatus, (value) => value.toMap()),
-      'validationStatus': pulumi.Input.mapInputValue<EceActionStatusResponse, Map<String, dynamic>>(validationStatus, (value) => value.toMap()),
+      'deploymentStatus':
+          pulumi.Input.mapInputValue<
+            EceActionStatusResponse,
+            Map<String, dynamic>
+          >(deploymentStatus, (value) => value.toMap()),
+      'validationStatus':
+          pulumi.Input.mapInputValue<
+            EceActionStatusResponse,
+            Map<String, dynamic>
+          >(validationStatus, (value) => value.toMap()),
     };
   }
 
   factory EceReportedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EceReportedPropertiesResponse(
-      deploymentStatus: (EceActionStatusResponse.fromMap((map['deploymentStatus'] as Map).cast<String, dynamic>())).input(),
-      validationStatus: (EceActionStatusResponse.fromMap((map['validationStatus'] as Map).cast<String, dynamic>())).input(),
+      deploymentStatus: pulumi.Input.fromValue(
+        EceActionStatusResponse.fromMap(
+          (map['deploymentStatus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      validationStatus: pulumi.Input.fromValue(
+        EceActionStatusResponse.fromMap(
+          (map['validationStatus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

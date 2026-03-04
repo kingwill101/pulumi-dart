@@ -141,20 +141,28 @@ import 'system_data_response.dart';
 class AttachedNetworkByDevCenter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// AAD Join type of the network. This is populated based on the referenced Network Connection.
   late final pulumi.Output<String> domainJoinType;
+
   /// Health check status values
   late final pulumi.Output<String> healthCheckStatus;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The resource ID of the NetworkConnection you want to attach.
   late final pulumi.Output<String> networkConnectionId;
+
   /// The geo-location where the NetworkConnection resource specified in 'networkConnectionResourceId' property lives.
   late final pulumi.Output<String> networkConnectionLocation;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -167,19 +175,21 @@ class AttachedNetworkByDevCenter extends pulumi.CustomResource {
     AttachedNetworkByDevCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:AttachedNetworkByDevCenter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.domainJoinType = registerOutput<String>('domainJoinType');
-    this.healthCheckStatus = registerOutput<String>('healthCheckStatus');
+         'azure-native:devcenter:AttachedNetworkByDevCenter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    domainJoinType = registerOutput<String>('domainJoinType');
+    healthCheckStatus = registerOutput<String>('healthCheckStatus');
     this.name = registerOutput<String>('name');
-    this.networkConnectionId = registerOutput<String>('networkConnectionId');
-    this.networkConnectionLocation = registerOutput<String>('networkConnectionLocation');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    networkConnectionId = registerOutput<String>('networkConnectionId');
+    networkConnectionLocation = registerOutput<String>(
+      'networkConnectionLocation',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -5,23 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ImageCopy resources.
 class ImageCopyState {
   final pulumi.Input<bool>? deleteAutoSnapshot;
+
   /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
   final pulumi.Input<String>? description;
+
   /// Indicates whether to encrypt the image.
   final pulumi.Input<bool>? encrypted;
+
   /// Indicates whether to force delete the custom image, Default is `false`.
   /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
   /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
   final pulumi.Input<bool>? force;
+
   /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
   final pulumi.Input<String>? imageName;
+
   /// Key ID used to encrypt the image.
   final pulumi.Input<String>? kmsKeyId;
   final pulumi.Input<String>? name;
+
   /// The source image ID.
   final pulumi.Input<String>? sourceImageId;
+
   /// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
   final pulumi.Input<String>? sourceRegionId;
+
   /// The tag value of an image. The value of N ranges from 1 to 20.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -66,17 +74,58 @@ class ImageCopyState {
 
   factory ImageCopyState.fromMap(Map<String, dynamic> map) {
     return ImageCopyState(
-      deleteAutoSnapshot: map['deleteAutoSnapshot'] == null ? null : (map['deleteAutoSnapshot']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId']! as String).input(),
-      sourceRegionId: map['sourceRegionId'] == null ? null : (map['sourceRegionId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      deleteAutoSnapshot: (() {
+        final guardedValue = map['deleteAutoSnapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      imageName: (() {
+        final guardedValue = map['imageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceImageId: (() {
+        final guardedValue = map['sourceImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceRegionId: (() {
+        final guardedValue = map['sourceRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum PropagateTags {
   sERVICE("SERVICE"),
   tASKDEFINITION("TASK_DEFINITION");
 
-  const PropagateTags(this.value);
-  final String value;
+  const PropagateTags(this.wireValue);
+  final String wireValue;
 
   static PropagateTags fromValue(String value) {
     for (final item in PropagateTags.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PropagateTags value: $value');
   }
 }
-

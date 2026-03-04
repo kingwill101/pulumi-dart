@@ -6,16 +6,15 @@ enum ServicePlacementPolicyType {
   requiredDomainDistribution("RequiredDomainDistribution"),
   nonPartiallyPlaceService("NonPartiallyPlaceService");
 
-  const ServicePlacementPolicyType(this.value);
-  final String value;
+  const ServicePlacementPolicyType(this.wireValue);
+  final String wireValue;
 
   static ServicePlacementPolicyType fromValue(String value) {
     for (final item in ServicePlacementPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServicePlacementPolicyType value: $value');
   }
 }
-

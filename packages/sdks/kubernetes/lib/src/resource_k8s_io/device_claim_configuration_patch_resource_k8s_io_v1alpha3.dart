@@ -6,7 +6,9 @@ import 'opaque_device_configuration_patch_resource_k8s_io_v1alpha3.dart';
 /// DeviceClaimConfiguration is used for configuration parameters in DeviceClaim.
 class DeviceClaimConfigurationPatchResourceK8sIoV1alpha3 {
   /// Opaque provides driver-specific configuration parameters.
-  final pulumi.Input<OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3>? opaque;
+  final pulumi.Input<OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3>?
+  opaque;
+
   /// Requests lists the names of requests where the configuration applies. If empty, it applies to all requests.
   final pulumi.Input<List<String>>? requests;
 
@@ -20,16 +22,33 @@ class DeviceClaimConfigurationPatchResourceK8sIoV1alpha3 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'opaque': ?pulumi.Input.mapOptionalInputValue<OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3, Map<String, dynamic>>(opaque, (value) => value.toMap()),
+      'opaque':
+          ?pulumi.Input.mapOptionalInputValue<
+            OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3,
+            Map<String, dynamic>
+          >(opaque, (value) => value.toMap()),
       'requests': ?requests,
     };
   }
 
-  factory DeviceClaimConfigurationPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
+  factory DeviceClaimConfigurationPatchResourceK8sIoV1alpha3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeviceClaimConfigurationPatchResourceK8sIoV1alpha3(
-      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3.fromMap((map['opaque']! as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : ((map['requests']! as List).cast<String>()).input(),
+      opaque: (() {
+        final guardedValue = map['opaque'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      requests: (() {
+        final guardedValue = map['requests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

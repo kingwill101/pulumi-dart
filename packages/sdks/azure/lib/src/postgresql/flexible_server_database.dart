@@ -4,7 +4,7 @@ import 'flexible_server_database_state.dart';
 
 /// Manages a PostgreSQL Flexible Server Database.
 ///
-/// !> **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -219,7 +219,7 @@ import 'flexible_server_database_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2025-08-01
@@ -234,10 +234,13 @@ import 'flexible_server_database_state.dart';
 class FlexibleServerDatabase extends pulumi.CustomResource {
   /// Specifies the Charset for the Azure PostgreSQL Flexible Server Database, which needs [to be a valid PostgreSQL Charset](https://www.postgresql.org/docs/current/static/multibyte.html). Defaults to `UTF8`. Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   late final pulumi.Output<String?> charset;
+
   /// Specifies the Collation for the Azure PostgreSQL Flexible Server Database, which needs [to be a valid PostgreSQL Collation](https://www.postgresql.org/docs/current/static/collation.html). Defaults to `en_US.utf8`. Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   late final pulumi.Output<String?> collation;
+
   /// Specifies the name of the PostgreSQL Database, which needs [to be a valid PostgreSQL identifier](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS). Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Azure PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Database. Changing this forces a new Azure PostgreSQL Flexible Server Database to be created.
   late final pulumi.Output<String> serverId;
 
@@ -250,15 +253,15 @@ class FlexibleServerDatabase extends pulumi.CustomResource {
     FlexibleServerDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerDatabase:FlexibleServerDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.charset = registerOutput<String?>('charset');
-    this.collation = registerOutput<String?>('collation');
+         'azure:postgresql/flexibleServerDatabase:FlexibleServerDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    charset = registerOutput<String?>('charset');
+    collation = registerOutput<String?>('collation');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<String>('serverId');
+    serverId = registerOutput<String>('serverId');
   }
 
   /// Gets an existing [FlexibleServerDatabase] resource's state with the given [name] and [id].
@@ -279,14 +282,14 @@ class FlexibleServerDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerDatabase:FlexibleServerDatabase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.charset = registerOutput<String?>('charset');
-    this.collation = registerOutput<String?>('collation');
+         'azure:postgresql/flexibleServerDatabase:FlexibleServerDatabase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    charset = registerOutput<String?>('charset');
+    collation = registerOutput<String?>('collation');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<String>('serverId');
+    serverId = registerOutput<String>('serverId');
   }
 }

@@ -13,15 +13,14 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpuCount': cpuCount,
-    };
+    return <String, dynamic>{'cpuCount': cpuCount};
   }
 
-  factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig(
-      cpuCount: (map['cpuCount'] as int).input(),
+      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
     );
   }
 }
-

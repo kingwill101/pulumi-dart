@@ -1,5 +1,3 @@
-library module_synthetics;
-
 export 'synthetics/alert_condition.dart';
 export 'synthetics/alert_condition_args.dart';
 export 'synthetics/alert_condition_state.dart';

@@ -6,16 +6,15 @@ enum NetworkInterfaceStatus {
   detaching("detaching"),
   inUse("in-use");
 
-  const NetworkInterfaceStatus(this.value);
-  final String value;
+  const NetworkInterfaceStatus(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceStatus fromValue(String value) {
     for (final item in NetworkInterfaceStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkInterfaceStatus value: $value');
   }
 }
-

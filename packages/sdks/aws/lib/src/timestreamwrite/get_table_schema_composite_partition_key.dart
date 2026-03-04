@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableSchemaCompositePartitionKey {
   final pulumi.Input<String> enforcementInRecord;
+
   /// Name of the Timestream table.
   final pulumi.Input<String> name;
+
   /// Type of partition key.
   final pulumi.Input<String> type;
 
@@ -27,12 +29,15 @@ class GetTableSchemaCompositePartitionKey {
     };
   }
 
-  factory GetTableSchemaCompositePartitionKey.fromMap(Map<String, dynamic> map) {
+  factory GetTableSchemaCompositePartitionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTableSchemaCompositePartitionKey(
-      enforcementInRecord: (map['enforcementInRecord'] as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      enforcementInRecord: pulumi.Input.fromValue(
+        map['enforcementInRecord'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

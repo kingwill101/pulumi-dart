@@ -1,5 +1,3 @@
-library module_resiliencehub;
-
 export 'resiliencehub/resiliency_policy.dart';
 export 'resiliencehub/resiliency_policy_args.dart';
 export 'resiliencehub/resiliency_policy_policy.dart';

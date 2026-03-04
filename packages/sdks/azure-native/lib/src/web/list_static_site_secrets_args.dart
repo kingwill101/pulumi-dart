@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListStaticSiteSecretsArgs {
   /// Name of the static site.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class ListStaticSiteSecretsArgs {
 
   factory ListStaticSiteSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListStaticSiteSecretsArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

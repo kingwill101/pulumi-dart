@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentProcessorProperties {
   /// The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
   final pulumi.Input<String> spoTenantId;
+
   /// The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
   final pulumi.Input<String> spoTenantUrl;
 
@@ -26,9 +27,8 @@ class DocumentProcessorProperties {
 
   factory DocumentProcessorProperties.fromMap(Map<String, dynamic> map) {
     return DocumentProcessorProperties(
-      spoTenantId: (map['spoTenantId'] as String).input(),
-      spoTenantUrl: (map['spoTenantUrl'] as String).input(),
+      spoTenantId: pulumi.Input.fromValue(map['spoTenantId'] as String),
+      spoTenantUrl: pulumi.Input.fromValue(map['spoTenantUrl'] as String),
     );
   }
 }
-

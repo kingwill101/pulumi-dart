@@ -306,20 +306,28 @@ import 'system_data_response.dart';
 class FqdnListLocalRulestack extends pulumi.CustomResource {
   /// comment for this object
   late final pulumi.Output<String?> auditComment;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// fqdn object description
   late final pulumi.Output<String?> description;
+
   /// etag info
   late final pulumi.Output<String?> etag;
+
   /// fqdn list
   late final pulumi.Output<List<String>> fqdnList;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -332,19 +340,19 @@ class FqdnListLocalRulestack extends pulumi.CustomResource {
     FqdnListLocalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cloudngfw:FqdnListLocalRulestack',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.fqdnList = registerOutput<List<String>>('fqdnList');
+         'azure-native:cloudngfw:FqdnListLocalRulestack',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditComment = registerOutput<String?>('auditComment');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    fqdnList = registerOutput<List<String>>('fqdnList');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

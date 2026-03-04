@@ -9,20 +9,19 @@ class LogsConfigurationResponse {
 
   /// Creates a new [LogsConfigurationResponse].
   /// [destinations] Open telemetry logs destinations
-  LogsConfigurationResponse({
-    this.destinations,
-  });
+  LogsConfigurationResponse({this.destinations});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destinations': ?destinations,
-    };
+    return <String, dynamic>{'destinations': ?destinations};
   }
 
   factory LogsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LogsConfigurationResponse(
-      destinations: map['destinations'] == null ? null : ((map['destinations']! as List).cast<String>()).input(),
+      destinations: (() {
+        final guardedValue = map['destinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

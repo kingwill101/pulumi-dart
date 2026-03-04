@@ -3,16 +3,17 @@ enum PolicyBasedRouteNextHopOtherRoutes {
   otherRoutesUnspecified("OTHER_ROUTES_UNSPECIFIED"),
   defaultRouting("DEFAULT_ROUTING");
 
-  const PolicyBasedRouteNextHopOtherRoutes(this.value);
-  final String value;
+  const PolicyBasedRouteNextHopOtherRoutes(this.wireValue);
+  final String wireValue;
 
   static PolicyBasedRouteNextHopOtherRoutes fromValue(String value) {
     for (final item in PolicyBasedRouteNextHopOtherRoutes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyBasedRouteNextHopOtherRoutes value: $value');
+    throw ArgumentError(
+      'Unknown PolicyBasedRouteNextHopOtherRoutes value: $value',
+    );
   }
 }
-

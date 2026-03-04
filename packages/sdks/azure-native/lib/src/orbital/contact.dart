@@ -171,43 +171,64 @@ import 'system_data_response.dart';
 /// ```
 class Contact extends pulumi.CustomResource {
   /// The configuration associated with the allocated antenna.
-  late final pulumi.Output<ContactsPropertiesResponseAntennaConfiguration> antennaConfiguration;
+  late final pulumi.Output<ContactsPropertiesResponseAntennaConfiguration>
+  antennaConfiguration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The reference to the contact profile resource.
-  late final pulumi.Output<ContactsPropertiesResponseContactProfile> contactProfile;
+  late final pulumi.Output<ContactsPropertiesResponseContactProfile>
+  contactProfile;
+
   /// Azimuth of the antenna at the end of the contact in decimal degrees.
   late final pulumi.Output<double> endAzimuthDegrees;
+
   /// Spacecraft elevation above the horizon at contact end.
   late final pulumi.Output<double> endElevationDegrees;
+
   /// Any error message while scheduling a contact.
   late final pulumi.Output<String> errorMessage;
+
   /// Azure Ground Station name.
   late final pulumi.Output<String> groundStationName;
+
   /// Maximum elevation of the antenna during the contact in decimal degrees.
   late final pulumi.Output<double> maximumElevationDegrees;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Reservation end time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> reservationEndTime;
+
   /// Reservation start time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> reservationStartTime;
+
   /// Receive end time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> rxEndTime;
+
   /// Receive start time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> rxStartTime;
+
   /// Azimuth of the antenna at the start of the contact in decimal degrees.
   late final pulumi.Output<double> startAzimuthDegrees;
+
   /// Spacecraft elevation above the horizon at contact start.
   late final pulumi.Output<double> startElevationDegrees;
+
   /// Status of a contact.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Transmit end time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> txEndTime;
+
   /// Transmit start time of a contact (ISO 8601 UTC standard).
   late final pulumi.Output<String> txStartTime;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -220,30 +241,35 @@ class Contact extends pulumi.CustomResource {
     ContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:orbital:Contact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.antennaConfiguration = registerOutput<ContactsPropertiesResponseAntennaConfiguration>('antennaConfiguration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contactProfile = registerOutput<ContactsPropertiesResponseContactProfile>('contactProfile');
-    this.endAzimuthDegrees = registerOutput<double>('endAzimuthDegrees');
-    this.endElevationDegrees = registerOutput<double>('endElevationDegrees');
-    this.errorMessage = registerOutput<String>('errorMessage');
-    this.groundStationName = registerOutput<String>('groundStationName');
-    this.maximumElevationDegrees = registerOutput<double>('maximumElevationDegrees');
+         'azure-native:orbital:Contact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    antennaConfiguration =
+        registerOutput<ContactsPropertiesResponseAntennaConfiguration>(
+          'antennaConfiguration',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contactProfile = registerOutput<ContactsPropertiesResponseContactProfile>(
+      'contactProfile',
+    );
+    endAzimuthDegrees = registerOutput<double>('endAzimuthDegrees');
+    endElevationDegrees = registerOutput<double>('endElevationDegrees');
+    errorMessage = registerOutput<String>('errorMessage');
+    groundStationName = registerOutput<String>('groundStationName');
+    maximumElevationDegrees = registerOutput<double>('maximumElevationDegrees');
     this.name = registerOutput<String>('name');
-    this.reservationEndTime = registerOutput<String>('reservationEndTime');
-    this.reservationStartTime = registerOutput<String>('reservationStartTime');
-    this.rxEndTime = registerOutput<String>('rxEndTime');
-    this.rxStartTime = registerOutput<String>('rxStartTime');
-    this.startAzimuthDegrees = registerOutput<double>('startAzimuthDegrees');
-    this.startElevationDegrees = registerOutput<double>('startElevationDegrees');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.txEndTime = registerOutput<String>('txEndTime');
-    this.txStartTime = registerOutput<String>('txStartTime');
-    this.type = registerOutput<String>('type');
+    reservationEndTime = registerOutput<String>('reservationEndTime');
+    reservationStartTime = registerOutput<String>('reservationStartTime');
+    rxEndTime = registerOutput<String>('rxEndTime');
+    rxStartTime = registerOutput<String>('rxStartTime');
+    startAzimuthDegrees = registerOutput<double>('startAzimuthDegrees');
+    startElevationDegrees = registerOutput<double>('startElevationDegrees');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    txEndTime = registerOutput<String>('txEndTime');
+    txStartTime = registerOutput<String>('txStartTime');
+    type = registerOutput<String>('type');
   }
 }

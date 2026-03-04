@@ -8,20 +8,19 @@ class DomainConfigurationTlsConfig {
 
   /// Creates a new [DomainConfigurationTlsConfig].
   /// [securityPolicy] The security policy for a domain configuration.
-  DomainConfigurationTlsConfig({
-    this.securityPolicy,
-  });
+  DomainConfigurationTlsConfig({this.securityPolicy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'securityPolicy': ?securityPolicy,
-    };
+    return <String, dynamic>{'securityPolicy': ?securityPolicy};
   }
 
   factory DomainConfigurationTlsConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationTlsConfig(
-      securityPolicy: map['securityPolicy'] == null ? null : ((map['securityPolicy'] as String).input()).input(),
+      securityPolicy: (() {
+        final guardedValue = map['securityPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

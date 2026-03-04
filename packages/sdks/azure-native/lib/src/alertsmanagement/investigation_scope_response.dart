@@ -7,8 +7,10 @@ import 'origin_response.dart';
 class InvestigationScopeResponse {
   /// The ID of the scope of the investigation - either an Azure alert ID or an Azure resource ID
   final pulumi.Input<String> id;
+
   /// The origin of the scope
   final pulumi.Input<OriginResponse> origin;
+
   /// The relevance of the scope
   final pulumi.Input<String>? relevance;
 
@@ -25,17 +27,26 @@ class InvestigationScopeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'origin': pulumi.Input.mapInputValue<OriginResponse, Map<String, dynamic>>(origin, (value) => value.toMap()),
+      'origin':
+          pulumi.Input.mapInputValue<OriginResponse, Map<String, dynamic>>(
+            origin,
+            (value) => value.toMap(),
+          ),
       'relevance': ?relevance,
     };
   }
 
   factory InvestigationScopeResponse.fromMap(Map<String, dynamic> map) {
     return InvestigationScopeResponse(
-      id: (map['id'] as String).input(),
-      origin: (OriginResponse.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
-      relevance: map['relevance'] == null ? null : (map['relevance']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      origin: pulumi.Input.fromValue(
+        OriginResponse.fromMap((map['origin']! as Map).cast<String, dynamic>()),
+      ),
+      relevance: (() {
+        final guardedValue = map['relevance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

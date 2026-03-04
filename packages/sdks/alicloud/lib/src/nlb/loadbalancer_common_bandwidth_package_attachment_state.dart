@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadbalancerCommonBandwidthPackageAttachmentState {
   /// Specifies whether only to precheck the request. Valid values:
   final pulumi.Input<String>? bandwidthPackageId;
+
   /// The ID of the EIP bandwidth plan.
   final pulumi.Input<String>? loadBalancerId;
+
   /// Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
   final pulumi.Input<String>? status;
 
@@ -29,12 +31,25 @@ class LoadbalancerCommonBandwidthPackageAttachmentState {
     };
   }
 
-  factory LoadbalancerCommonBandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory LoadbalancerCommonBandwidthPackageAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadbalancerCommonBandwidthPackageAttachmentState(
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId']! as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bandwidthPackageId: (() {
+        final guardedValue = map['bandwidthPackageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerId: (() {
+        final guardedValue = map['loadBalancerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

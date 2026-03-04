@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyDefinitionStatic {
   /// The description of the static policy.
   final pulumi.Input<String>? description;
+
   /// The statement of the static policy.
   final pulumi.Input<String> statement;
 
   /// Creates a new [PolicyDefinitionStatic].
   /// [description] The description of the static policy.
   /// [statement] The statement of the static policy.
-  PolicyDefinitionStatic({
-    this.description,
-    required this.statement,
-  });
+  PolicyDefinitionStatic({this.description, required this.statement});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,12 @@ class PolicyDefinitionStatic {
 
   factory PolicyDefinitionStatic.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionStatic(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      statement: (map['statement'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statement: pulumi.Input.fromValue(map['statement'] as String),
     );
   }
 }
-

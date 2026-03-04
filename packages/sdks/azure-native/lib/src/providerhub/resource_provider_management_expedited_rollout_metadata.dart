@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceProviderManagementExpeditedRolloutMetadata {
   /// Expedited rollout enabled?
   final pulumi.Input<bool>? enabled;
+
   /// Expedited rollout intent.
   final pulumi.Input<String>? expeditedRolloutIntent;
 
@@ -24,11 +25,20 @@ class ResourceProviderManagementExpeditedRolloutMetadata {
     };
   }
 
-  factory ResourceProviderManagementExpeditedRolloutMetadata.fromMap(Map<String, dynamic> map) {
+  factory ResourceProviderManagementExpeditedRolloutMetadata.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceProviderManagementExpeditedRolloutMetadata(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      expeditedRolloutIntent: map['expeditedRolloutIntent'] == null ? null : (map['expeditedRolloutIntent']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expeditedRolloutIntent: (() {
+        final guardedValue = map['expeditedRolloutIntent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

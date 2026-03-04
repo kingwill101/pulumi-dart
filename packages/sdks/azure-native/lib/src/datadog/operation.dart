@@ -6,16 +6,15 @@ enum Operation {
   valueDeleteComplete("DeleteComplete"),
   valueActive("Active");
 
-  const Operation(this.value);
-  final String value;
+  const Operation(this.wireValue);
+  final String wireValue;
 
   static Operation fromValue(String value) {
     for (final item in Operation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Operation value: $value');
   }
 }
-

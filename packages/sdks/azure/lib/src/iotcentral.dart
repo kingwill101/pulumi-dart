@@ -1,5 +1,3 @@
-library module_iotcentral;
-
 export 'iotcentral/application.dart';
 export 'iotcentral/application_args.dart';
 export 'iotcentral/application_identity.dart';

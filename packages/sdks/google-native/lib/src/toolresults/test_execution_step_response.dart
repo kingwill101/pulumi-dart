@@ -10,10 +10,13 @@ import 'tool_execution_response.dart';
 class TestExecutionStepResponse {
   /// Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
   final pulumi.Input<List<TestIssueResponse>> testIssues;
+
   /// List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)
   final pulumi.Input<List<TestSuiteOverviewResponse>> testSuiteOverviews;
+
   /// The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional
   final pulumi.Input<TestTimingResponse> testTiming;
+
   /// Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional
   final pulumi.Input<ToolExecutionResponse> toolExecution;
 
@@ -31,20 +34,70 @@ class TestExecutionStepResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'testIssues': pulumi.Input.mapInputValue<List<TestIssueResponse>, List<Map<String, dynamic>>>(testIssues, (value) => pulumi.Input.encodeList<TestIssueResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'testSuiteOverviews': pulumi.Input.mapInputValue<List<TestSuiteOverviewResponse>, List<Map<String, dynamic>>>(testSuiteOverviews, (value) => pulumi.Input.encodeList<TestSuiteOverviewResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'testTiming': pulumi.Input.mapInputValue<TestTimingResponse, Map<String, dynamic>>(testTiming, (value) => value.toMap()),
-      'toolExecution': pulumi.Input.mapInputValue<ToolExecutionResponse, Map<String, dynamic>>(toolExecution, (value) => value.toMap()),
+      'testIssues':
+          pulumi.Input.mapInputValue<
+            List<TestIssueResponse>,
+            List<Map<String, dynamic>>
+          >(
+            testIssues,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TestIssueResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'testSuiteOverviews':
+          pulumi.Input.mapInputValue<
+            List<TestSuiteOverviewResponse>,
+            List<Map<String, dynamic>>
+          >(
+            testSuiteOverviews,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TestSuiteOverviewResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'testTiming':
+          pulumi.Input.mapInputValue<TestTimingResponse, Map<String, dynamic>>(
+            testTiming,
+            (value) => value.toMap(),
+          ),
+      'toolExecution':
+          pulumi.Input.mapInputValue<
+            ToolExecutionResponse,
+            Map<String, dynamic>
+          >(toolExecution, (value) => value.toMap()),
     };
   }
 
   factory TestExecutionStepResponse.fromMap(Map<String, dynamic> map) {
     return TestExecutionStepResponse(
-      testIssues: (pulumi.Input.decodeList<TestIssueResponse>(map['testIssues'], (value) => TestIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testSuiteOverviews: (pulumi.Input.decodeList<TestSuiteOverviewResponse>(map['testSuiteOverviews'], (value) => TestSuiteOverviewResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testTiming: (TestTimingResponse.fromMap((map['testTiming'] as Map).cast<String, dynamic>())).input(),
-      toolExecution: (ToolExecutionResponse.fromMap((map['toolExecution'] as Map).cast<String, dynamic>())).input(),
+      testIssues: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<TestIssueResponse>(
+          map['testIssues']!,
+          (value) =>
+              TestIssueResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      testSuiteOverviews: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<TestSuiteOverviewResponse>(
+          map['testSuiteOverviews']!,
+          (value) => TestSuiteOverviewResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      testTiming: pulumi.Input.fromValue(
+        TestTimingResponse.fromMap(
+          (map['testTiming']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      toolExecution: pulumi.Input.fromValue(
+        ToolExecutionResponse.fromMap(
+          (map['toolExecution']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

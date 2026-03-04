@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SapDatabaseInstanceArgs {
   /// Database resource name string modeled as parameter for auto generation to work correctly.
   final pulumi.Input<String>? databaseInstanceName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Virtual Instances for SAP solutions resource
   final pulumi.Input<String> sapVirtualInstanceName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,29 @@ class SapDatabaseInstanceArgs {
 
   factory SapDatabaseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SapDatabaseInstanceArgs(
-      databaseInstanceName: map['databaseInstanceName'] == null ? null : (map['databaseInstanceName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sapVirtualInstanceName: (map['sapVirtualInstanceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      databaseInstanceName: (() {
+        final guardedValue = map['databaseInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sapVirtualInstanceName: pulumi.Input.fromValue(
+        map['sapVirtualInstanceName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

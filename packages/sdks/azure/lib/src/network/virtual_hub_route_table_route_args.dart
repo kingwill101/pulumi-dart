@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualHubRouteTableRouteArgs {
   /// A list of destination addresses for this route.
   final pulumi.Input<List<String>> destinations;
+
   /// The type of destinations. Possible values are `CIDR`, `ResourceId` and `Service`.
   final pulumi.Input<String> destinationsType;
+
   /// The name which should be used for this route. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The next hop's resource ID.
   final pulumi.Input<String> nextHop;
+
   /// The type of next hop. Currently the only possible value is `ResourceId`. Defaults to `ResourceId`.
   final pulumi.Input<String>? nextHopType;
+
   /// The ID of the Virtual Hub Route Table to link this route to. Changing this forces a new resource to be created.
   final pulumi.Input<String> routeTableId;
 
@@ -49,13 +54,24 @@ class VirtualHubRouteTableRouteArgs {
 
   factory VirtualHubRouteTableRouteArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableRouteArgs(
-      destinations: ((map['destinations'] as List).cast<String>()).input(),
-      destinationsType: (map['destinationsType'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nextHop: (map['nextHop'] as String).input(),
-      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType']! as String).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
+      destinations: pulumi.Input.fromValue(
+        (map['destinations'] as List).cast<String>(),
+      ),
+      destinationsType: pulumi.Input.fromValue(
+        map['destinationsType'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
+      nextHopType: (() {
+        final guardedValue = map['nextHopType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
     );
   }
 }
-

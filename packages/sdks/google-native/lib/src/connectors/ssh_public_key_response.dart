@@ -7,10 +7,13 @@ import 'secret_response.dart';
 class SshPublicKeyResponse {
   /// Format of SSH Client cert.
   final pulumi.Input<String> certType;
+
   /// SSH Client Cert. It should contain both public and private key.
   final pulumi.Input<SecretResponse> sshClientCert;
+
   /// Password (passphrase) for ssh client certificate if it has one.
   final pulumi.Input<SecretResponse> sshClientCertPass;
+
   /// The user account used to authenticate.
   final pulumi.Input<String> username;
 
@@ -29,19 +32,34 @@ class SshPublicKeyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certType': certType,
-      'sshClientCert': pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(sshClientCert, (value) => value.toMap()),
-      'sshClientCertPass': pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(sshClientCertPass, (value) => value.toMap()),
+      'sshClientCert':
+          pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(
+            sshClientCert,
+            (value) => value.toMap(),
+          ),
+      'sshClientCertPass':
+          pulumi.Input.mapInputValue<SecretResponse, Map<String, dynamic>>(
+            sshClientCertPass,
+            (value) => value.toMap(),
+          ),
       'username': username,
     };
   }
 
   factory SshPublicKeyResponse.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyResponse(
-      certType: (map['certType'] as String).input(),
-      sshClientCert: (SecretResponse.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>())).input(),
-      sshClientCertPass: (SecretResponse.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>())).input(),
-      username: (map['username'] as String).input(),
+      certType: pulumi.Input.fromValue(map['certType'] as String),
+      sshClientCert: pulumi.Input.fromValue(
+        SecretResponse.fromMap(
+          (map['sshClientCert']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sshClientCertPass: pulumi.Input.fromValue(
+        SecretResponse.fromMap(
+          (map['sshClientCertPass']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -1,11 +1,6 @@
-name: random
-runtime: yaml
-resources:
-  randomPassword:
-    type: random:RandomPassword
-    properties:
-      length: 16
-      special: true
-      overrideSpecial: "_%@"
-outputs:
-  password: ${randomPassword.result}
+name: random-dart-yaml
+description: Random password example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

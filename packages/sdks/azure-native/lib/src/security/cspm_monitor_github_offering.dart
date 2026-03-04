@@ -10,20 +10,15 @@ class CspmMonitorGithubOffering {
 
   /// Creates a new [CspmMonitorGithubOffering].
   /// [offeringType] The type of the security offering.
-  CspmMonitorGithubOffering({
-    required this.offeringType,
-  });
+  CspmMonitorGithubOffering({required this.offeringType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'offeringType': offeringType,
-    };
+    return <String, dynamic>{'offeringType': offeringType};
   }
 
   factory CspmMonitorGithubOffering.fromMap(Map<String, dynamic> map) {
     return CspmMonitorGithubOffering(
-      offeringType: (map['offeringType'] as String).input(),
+      offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
-

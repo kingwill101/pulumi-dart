@@ -6,9 +6,16 @@ import 'application_application_configuration_run_configuration_flink_run_config
 
 class ApplicationApplicationConfigurationRunConfiguration {
   /// The restore behavior of a restarting application.
-  final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration>? applicationRestoreConfiguration;
+  final pulumi.Input<
+    ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration
+  >?
+  applicationRestoreConfiguration;
+
   /// The starting parameters for a Flink-based Kinesis Data Analytics application.
-  final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration>? flinkRunConfiguration;
+  final pulumi.Input<
+    ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration
+  >?
+  flinkRunConfiguration;
 
   /// Creates a new [ApplicationApplicationConfigurationRunConfiguration].
   /// [applicationRestoreConfiguration] The restore behavior of a restarting application.
@@ -20,16 +27,41 @@ class ApplicationApplicationConfigurationRunConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationRestoreConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration, Map<String, dynamic>>(applicationRestoreConfiguration, (value) => value.toMap()),
-      'flinkRunConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration, Map<String, dynamic>>(flinkRunConfiguration, (value) => value.toMap()),
+      'applicationRestoreConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration,
+            Map<String, dynamic>
+          >(applicationRestoreConfiguration, (value) => value.toMap()),
+      'flinkRunConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration,
+            Map<String, dynamic>
+          >(flinkRunConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory ApplicationApplicationConfigurationRunConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationRunConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationRunConfiguration(
-      applicationRestoreConfiguration: map['applicationRestoreConfiguration'] == null ? null : ((ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration.fromMap((map['applicationRestoreConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      flinkRunConfiguration: map['flinkRunConfiguration'] == null ? null : ((ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap((map['flinkRunConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      applicationRestoreConfiguration: (() {
+        final guardedValue = map['applicationRestoreConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      flinkRunConfiguration: (() {
+        final guardedValue = map['flinkRunConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

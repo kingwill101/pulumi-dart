@@ -7,29 +7,52 @@ import 'sku_profile_vmsize_response.dart';
 class SkuProfileResponse {
   /// Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.
   final pulumi.Input<String>? allocationStrategy;
+
   /// Specifies the VM sizes for the virtual machine scale set.
   final pulumi.Input<List<SkuProfileVMSizeResponse>>? vmSizes;
 
   /// Creates a new [SkuProfileResponse].
   /// [allocationStrategy] Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.
   /// [vmSizes] Specifies the VM sizes for the virtual machine scale set.
-  SkuProfileResponse({
-    this.allocationStrategy,
-    this.vmSizes,
-  });
+  SkuProfileResponse({this.allocationStrategy, this.vmSizes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationStrategy': ?allocationStrategy,
-      'vmSizes': ?pulumi.Input.mapOptionalInputValue<List<SkuProfileVMSizeResponse>, List<Map<String, dynamic>>>(vmSizes, (value) => pulumi.Input.encodeList<SkuProfileVMSizeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vmSizes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SkuProfileVMSizeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            vmSizes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SkuProfileVMSizeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SkuProfileResponse.fromMap(Map<String, dynamic> map) {
     return SkuProfileResponse(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy']! as String).input(),
-      vmSizes: map['vmSizes'] == null ? null : (pulumi.Input.decodeList<SkuProfileVMSizeResponse>(map['vmSizes']!, (value) => SkuProfileVMSizeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocationStrategy: (() {
+        final guardedValue = map['allocationStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmSizes: (() {
+        final guardedValue = map['vmSizes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SkuProfileVMSizeResponse>(
+            guardedValue,
+            (value) => SkuProfileVMSizeResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

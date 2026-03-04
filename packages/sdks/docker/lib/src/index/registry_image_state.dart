@@ -9,14 +9,19 @@ class RegistryImageState {
   /// Authentication configuration for the Docker registry. It is only used for this resource.
   final pulumi.Input<RegistryImageAuthConfig>? authConfig;
   final pulumi.Input<RegistryImageBuild>? build;
+
   /// If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   final pulumi.Input<bool>? insecureSkipVerify;
+
   /// If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker registry on destroy operation. Defaults to `false`
   final pulumi.Input<bool>? keepRemotely;
+
   /// The name of the Docker image.
   final pulumi.Input<String>? name;
+
   /// The sha256 digest of the image.
   final pulumi.Input<String>? sha256Digest;
+
   /// A map of arbitrary strings that, when changed, will force the `docker.RegistryImage` resource to be replaced. This can be used to repush a local image
   final pulumi.Input<Map<String, String>>? triggers;
 
@@ -40,8 +45,16 @@ class RegistryImageState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authConfig': ?pulumi.Input.mapOptionalInputValue<RegistryImageAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
-      'build': ?pulumi.Input.mapOptionalInputValue<RegistryImageBuild, Map<String, dynamic>>(build, (value) => value.toMap()),
+      'authConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryImageAuthConfig,
+            Map<String, dynamic>
+          >(authConfig, (value) => value.toMap()),
+      'build':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryImageBuild,
+            Map<String, dynamic>
+          >(build, (value) => value.toMap()),
       'insecureSkipVerify': ?insecureSkipVerify,
       'keepRemotely': ?keepRemotely,
       'name': ?name,
@@ -52,14 +65,51 @@ class RegistryImageState {
 
   factory RegistryImageState.fromMap(Map<String, dynamic> map) {
     return RegistryImageState(
-      authConfig: map['authConfig'] == null ? null : (RegistryImageAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
-      build: map['build'] == null ? null : (RegistryImageBuild.fromMap((map['build']! as Map).cast<String, dynamic>())).input(),
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify']! as bool).input(),
-      keepRemotely: map['keepRemotely'] == null ? null : (map['keepRemotely']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sha256Digest: map['sha256Digest'] == null ? null : (map['sha256Digest']! as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
+      authConfig: (() {
+        final guardedValue = map['authConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryImageAuthConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      build: (() {
+        final guardedValue = map['build'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryImageBuild.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      insecureSkipVerify: (() {
+        final guardedValue = map['insecureSkipVerify'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keepRemotely: (() {
+        final guardedValue = map['keepRemotely'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha256Digest: (() {
+        final guardedValue = map['sha256Digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

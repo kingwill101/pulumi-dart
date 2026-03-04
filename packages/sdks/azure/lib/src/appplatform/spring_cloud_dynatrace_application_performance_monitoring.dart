@@ -2,11 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_dynatrace_application_performance_monitoring_args.dart';
 import 'spring_cloud_dynatrace_application_performance_monitoring_state.dart';
 
-/// > **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
+/// &gt; **Note:** This resource is only applicable for Spring Cloud Service enterprise tier
 ///
 /// Manages a Spring Cloud Application Performance Monitoring resource for Dynatrace.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudDynatraceApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudDynatraceApplicationPerformanceMonitoring` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -227,7 +227,7 @@ import 'spring_cloud_dynatrace_application_performance_monitoring_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AppPlatform` - 2024-01-01-preview
@@ -239,23 +239,32 @@ import 'spring_cloud_dynatrace_application_performance_monitoring_state.dart';
 /// ```sh
 /// $ pulumi import azure:appplatform/springCloudDynatraceApplicationPerformanceMonitoring:SpringCloudDynatraceApplicationPerformanceMonitoring example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.AppPlatform/spring/service1/apms/apm1
 /// ```
-class SpringCloudDynatraceApplicationPerformanceMonitoring extends pulumi.CustomResource {
+class SpringCloudDynatraceApplicationPerformanceMonitoring
+    extends pulumi.CustomResource {
   /// Specifies the API token of the Dynatrace environment.
   late final pulumi.Output<String?> apiToken;
+
   /// Specifies the API Url of the Dynatrace environment.
   late final pulumi.Output<String?> apiUrl;
+
   /// Specifies the endpoint to connect to the Dynatrace environment.
   late final pulumi.Output<String> connectionPoint;
+
   /// Specifies the Dynatrace environment ID.
   late final pulumi.Output<String?> environmentId;
+
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   late final pulumi.Output<bool?> globallyEnabled;
+
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for Dynatrace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudServiceId;
+
   /// Specifies the Dynatrace tenant.
   late final pulumi.Output<String> tenant;
+
   /// Specifies the internal token that is used for authentication when OneAgent connects to the Dynatrace cluster to send data.
   late final pulumi.Output<String> tenantToken;
 
@@ -268,20 +277,20 @@ class SpringCloudDynatraceApplicationPerformanceMonitoring extends pulumi.Custom
     SpringCloudDynatraceApplicationPerformanceMonitoringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudDynatraceApplicationPerformanceMonitoring:SpringCloudDynatraceApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiToken = registerOutput<String?>('apiToken');
-    this.apiUrl = registerOutput<String?>('apiUrl');
-    this.connectionPoint = registerOutput<String>('connectionPoint');
-    this.environmentId = registerOutput<String?>('environmentId');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudDynatraceApplicationPerformanceMonitoring:SpringCloudDynatraceApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiToken = registerOutput<String?>('apiToken');
+    apiUrl = registerOutput<String?>('apiUrl');
+    connectionPoint = registerOutput<String>('connectionPoint');
+    environmentId = registerOutput<String?>('environmentId');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.tenant = registerOutput<String>('tenant');
-    this.tenantToken = registerOutput<String>('tenantToken');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    tenant = registerOutput<String>('tenant');
+    tenantToken = registerOutput<String>('tenantToken');
   }
 
   /// Gets an existing [SpringCloudDynatraceApplicationPerformanceMonitoring] resource's state with the given [name] and [id].
@@ -302,19 +311,19 @@ class SpringCloudDynatraceApplicationPerformanceMonitoring extends pulumi.Custom
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudDynatraceApplicationPerformanceMonitoring:SpringCloudDynatraceApplicationPerformanceMonitoring',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiToken = registerOutput<String?>('apiToken');
-    this.apiUrl = registerOutput<String?>('apiUrl');
-    this.connectionPoint = registerOutput<String>('connectionPoint');
-    this.environmentId = registerOutput<String?>('environmentId');
-    this.globallyEnabled = registerOutput<bool?>('globallyEnabled');
+         'azure:appplatform/springCloudDynatraceApplicationPerformanceMonitoring:SpringCloudDynatraceApplicationPerformanceMonitoring',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiToken = registerOutput<String?>('apiToken');
+    apiUrl = registerOutput<String?>('apiUrl');
+    connectionPoint = registerOutput<String>('connectionPoint');
+    environmentId = registerOutput<String?>('environmentId');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.tenant = registerOutput<String>('tenant');
-    this.tenantToken = registerOutput<String>('tenantToken');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    tenant = registerOutput<String>('tenant');
+    tenantToken = registerOutput<String>('tenantToken');
   }
 }

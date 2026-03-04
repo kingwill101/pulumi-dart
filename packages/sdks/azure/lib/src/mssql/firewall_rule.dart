@@ -205,7 +205,7 @@ import 'firewall_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -220,12 +220,15 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The ending IP address to allow through the firewall for this rule.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   late final pulumi.Output<String> endIpAddress;
+
   /// The name of the firewall rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The resource ID of the SQL Server on which to create the Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
+
   /// The starting IP address to allow through the firewall for this rule.
   late final pulumi.Output<String> startIpAddress;
 
@@ -238,15 +241,15 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:mssql/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<String>('serverId');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    serverId = registerOutput<String>('serverId');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 
   /// Gets an existing [FirewallRule] resource's state with the given [name] and [id].
@@ -267,14 +270,14 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:mssql/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<String>('serverId');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    serverId = registerOutput<String>('serverId');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 }

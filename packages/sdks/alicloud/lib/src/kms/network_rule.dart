@@ -6,7 +6,7 @@ import 'network_rule_state.dart';
 ///
 /// For information about KMS Network Rule and how to use it, see [What is Network Rule](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createnetworkrule).
 ///
-/// > **NOTE:** Available since v1.210.0.
+/// &gt; **NOTE:** Available since v1.210.0.
 ///
 /// ## Example Usage
 ///
@@ -168,8 +168,10 @@ import 'network_rule_state.dart';
 class NetworkRule extends pulumi.CustomResource {
   /// Description.
   late final pulumi.Output<String?> description;
+
   /// Network Rule Name.
   late final pulumi.Output<String> networkRuleName;
+
   /// Allowed private network addresses.
   late final pulumi.Output<List<String>> sourcePrivateIps;
 
@@ -182,14 +184,14 @@ class NetworkRule extends pulumi.CustomResource {
     NetworkRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/networkRule:NetworkRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.networkRuleName = registerOutput<String>('networkRuleName');
-    this.sourcePrivateIps = registerOutput<List<String>>('sourcePrivateIps');
+         'alicloud:kms/networkRule:NetworkRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    networkRuleName = registerOutput<String>('networkRuleName');
+    sourcePrivateIps = registerOutput<List<String>>('sourcePrivateIps');
   }
 
   /// Gets an existing [NetworkRule] resource's state with the given [name] and [id].
@@ -210,13 +212,13 @@ class NetworkRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/networkRule:NetworkRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.networkRuleName = registerOutput<String>('networkRuleName');
-    this.sourcePrivateIps = registerOutput<List<String>>('sourcePrivateIps');
+         'alicloud:kms/networkRule:NetworkRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    networkRuleName = registerOutput<String>('networkRuleName');
+    sourcePrivateIps = registerOutput<List<String>>('sourcePrivateIps');
   }
 }

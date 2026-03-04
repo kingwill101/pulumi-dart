@@ -202,15 +202,19 @@ import 'app_cookie_stickiness_policy_state.dart';
 class AppCookieStickinessPolicy extends pulumi.CustomResource {
   /// Application cookie whose lifetime the ELB's cookie should follow.
   late final pulumi.Output<String> cookieName;
+
   /// Load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
   late final pulumi.Output<int> lbPort;
+
   /// Name of load balancer to which the policy
   /// should be attached.
   late final pulumi.Output<String> loadBalancer;
+
   /// Name of the stickiness policy.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -223,16 +227,16 @@ class AppCookieStickinessPolicy extends pulumi.CustomResource {
     AppCookieStickinessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/appCookieStickinessPolicy:AppCookieStickinessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookieName = registerOutput<String>('cookieName');
-    this.lbPort = registerOutput<int>('lbPort');
-    this.loadBalancer = registerOutput<String>('loadBalancer');
+         'aws:elb/appCookieStickinessPolicy:AppCookieStickinessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cookieName = registerOutput<String>('cookieName');
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [AppCookieStickinessPolicy] resource's state with the given [name] and [id].
@@ -253,15 +257,15 @@ class AppCookieStickinessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/appCookieStickinessPolicy:AppCookieStickinessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cookieName = registerOutput<String>('cookieName');
-    this.lbPort = registerOutput<int>('lbPort');
-    this.loadBalancer = registerOutput<String>('loadBalancer');
+         'aws:elb/appCookieStickinessPolicy:AppCookieStickinessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cookieName = registerOutput<String>('cookieName');
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

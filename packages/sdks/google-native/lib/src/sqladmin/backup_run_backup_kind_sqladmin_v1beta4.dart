@@ -4,16 +4,17 @@ enum BackupRunBackupKindSqladminV1beta4 {
   snapshot("SNAPSHOT"),
   physical("PHYSICAL");
 
-  const BackupRunBackupKindSqladminV1beta4(this.value);
-  final String value;
+  const BackupRunBackupKindSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static BackupRunBackupKindSqladminV1beta4 fromValue(String value) {
     for (final item in BackupRunBackupKindSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackupRunBackupKindSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown BackupRunBackupKindSqladminV1beta4 value: $value',
+    );
   }
 }
-

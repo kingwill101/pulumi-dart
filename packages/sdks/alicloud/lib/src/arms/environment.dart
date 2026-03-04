@@ -6,7 +6,7 @@ import 'environment_state.dart';
 ///
 /// For information about ARMS Environment and how to use it, see [What is Environment](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createenvironment).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -667,28 +667,37 @@ import 'environment_state.dart';
 class Environment extends pulumi.CustomResource {
   /// The locale. The default is Chinese zh | en.
   late final pulumi.Output<String?> aliyunLang;
+
   /// The id or vpcId of the bound container instance.
   late final pulumi.Output<String?> bindResourceId;
+
   /// List of abandoned indicators.
   late final pulumi.Output<String?> dropMetrics;
+
   /// The first ID of the resource.
   late final pulumi.Output<String> environmentId;
+
   /// The name of the resource.
   late final pulumi.Output<String?> environmentName;
+
   /// Subtype of environment:
   /// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
   /// - Type of ECS: currently supports ECS.
   /// - Type of Cloud: currently supports Cloud.
   late final pulumi.Output<String> environmentSubType;
+
   /// Type of environment.
   late final pulumi.Output<String> environmentType;
+
   /// Hosting type:
   /// - none: unmanaged. The default value of the ACK cluster.
   /// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
   /// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
   late final pulumi.Output<String> managedType;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -701,21 +710,21 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.bindResourceId = registerOutput<String?>('bindResourceId');
-    this.dropMetrics = registerOutput<String?>('dropMetrics');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.environmentName = registerOutput<String?>('environmentName');
-    this.environmentSubType = registerOutput<String>('environmentSubType');
-    this.environmentType = registerOutput<String>('environmentType');
-    this.managedType = registerOutput<String>('managedType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:arms/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    bindResourceId = registerOutput<String?>('bindResourceId');
+    dropMetrics = registerOutput<String?>('dropMetrics');
+    environmentId = registerOutput<String>('environmentId');
+    environmentName = registerOutput<String?>('environmentName');
+    environmentSubType = registerOutput<String>('environmentSubType');
+    environmentType = registerOutput<String>('environmentType');
+    managedType = registerOutput<String>('managedType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -736,20 +745,20 @@ class Environment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.bindResourceId = registerOutput<String?>('bindResourceId');
-    this.dropMetrics = registerOutput<String?>('dropMetrics');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.environmentName = registerOutput<String?>('environmentName');
-    this.environmentSubType = registerOutput<String>('environmentSubType');
-    this.environmentType = registerOutput<String>('environmentType');
-    this.managedType = registerOutput<String>('managedType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:arms/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    bindResourceId = registerOutput<String?>('bindResourceId');
+    dropMetrics = registerOutput<String?>('dropMetrics');
+    environmentId = registerOutput<String>('environmentId');
+    environmentName = registerOutput<String?>('environmentName');
+    environmentSubType = registerOutput<String>('environmentSubType');
+    environmentType = registerOutput<String>('environmentType');
+    managedType = registerOutput<String>('managedType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

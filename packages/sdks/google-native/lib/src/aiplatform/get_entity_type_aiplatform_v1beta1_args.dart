@@ -35,11 +35,14 @@ class GetEntityTypeAiplatformV1beta1Args {
 
   factory GetEntityTypeAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeAiplatformV1beta1Args(
-      entityTypeId: (map['entityTypeId'] as String).input(),
-      featurestoreId: (map['featurestoreId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      entityTypeId: pulumi.Input.fromValue(map['entityTypeId'] as String),
+      featurestoreId: pulumi.Input.fromValue(map['featurestoreId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

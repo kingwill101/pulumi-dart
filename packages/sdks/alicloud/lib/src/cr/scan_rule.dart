@@ -8,7 +8,7 @@ import 'scan_rule_state.dart';
 ///
 /// For information about CR Scan Rule and how to use it, see [What is Scan Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateScanRule).
 ///
-/// > **NOTE:** Available since v1.265.0.
+/// &gt; **NOTE:** Available since v1.265.0.
 ///
 /// ## Example Usage
 ///
@@ -268,30 +268,39 @@ import 'scan_rule_state.dart';
 class ScanRule extends pulumi.CustomResource {
   /// Creation time
   late final pulumi.Output<int> createTime;
+
   /// Instance ID
   late final pulumi.Output<String> instanceId;
+
   /// Set of namespaces:
   /// - This parameter must not be empty when the scan scope is NAMESPACE.
   /// - This parameter must contain exactly one namespace when the scan scope is REPO.
   late final pulumi.Output<List<String>?> namespaces;
+
   /// Repository list:
   /// - This parameter must be empty when the scan scope is NAMESPACE.
   /// - This parameter must not be empty when the scan scope is REPO.
   late final pulumi.Output<List<String>?> repoNames;
+
   /// Regular expression for matching tags that trigger a scan
   late final pulumi.Output<String> repoTagFilterPattern;
+
   /// Event rule name
   late final pulumi.Output<String> ruleName;
+
   /// Rule ID
   late final pulumi.Output<String> scanRuleId;
+
   /// Scan scope
   late final pulumi.Output<String> scanScope;
+
   /// Scan type:
   /// - `VUL`: Artifact vulnerability scan
   /// - `SBOM`: Artifact content analysis
   ///
   /// The default value of this parameter is `VUL`.
   late final pulumi.Output<String> scanType;
+
   /// Trigger type
   late final pulumi.Output<String> triggerType;
 
@@ -304,21 +313,21 @@ class ScanRule extends pulumi.CustomResource {
     ScanRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/scanRule:ScanRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaces = registerOutput<List<String>?>('namespaces');
-    this.repoNames = registerOutput<List<String>?>('repoNames');
-    this.repoTagFilterPattern = registerOutput<String>('repoTagFilterPattern');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.scanRuleId = registerOutput<String>('scanRuleId');
-    this.scanScope = registerOutput<String>('scanScope');
-    this.scanType = registerOutput<String>('scanType');
-    this.triggerType = registerOutput<String>('triggerType');
+         'alicloud:cr/scanRule:ScanRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    namespaces = registerOutput<List<String>?>('namespaces');
+    repoNames = registerOutput<List<String>?>('repoNames');
+    repoTagFilterPattern = registerOutput<String>('repoTagFilterPattern');
+    ruleName = registerOutput<String>('ruleName');
+    scanRuleId = registerOutput<String>('scanRuleId');
+    scanScope = registerOutput<String>('scanScope');
+    scanType = registerOutput<String>('scanType');
+    triggerType = registerOutput<String>('triggerType');
   }
 
   /// Gets an existing [ScanRule] resource's state with the given [name] and [id].
@@ -339,20 +348,20 @@ class ScanRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/scanRule:ScanRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaces = registerOutput<List<String>?>('namespaces');
-    this.repoNames = registerOutput<List<String>?>('repoNames');
-    this.repoTagFilterPattern = registerOutput<String>('repoTagFilterPattern');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.scanRuleId = registerOutput<String>('scanRuleId');
-    this.scanScope = registerOutput<String>('scanScope');
-    this.scanType = registerOutput<String>('scanType');
-    this.triggerType = registerOutput<String>('triggerType');
+         'alicloud:cr/scanRule:ScanRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    namespaces = registerOutput<List<String>?>('namespaces');
+    repoNames = registerOutput<List<String>?>('repoNames');
+    repoTagFilterPattern = registerOutput<String>('repoTagFilterPattern');
+    ruleName = registerOutput<String>('ruleName');
+    scanRuleId = registerOutput<String>('scanRuleId');
+    scanScope = registerOutput<String>('scanScope');
+    scanType = registerOutput<String>('scanType');
+    triggerType = registerOutput<String>('triggerType');
   }
 }

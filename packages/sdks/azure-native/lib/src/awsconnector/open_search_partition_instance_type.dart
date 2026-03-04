@@ -104,16 +104,17 @@ enum OpenSearchPartitionInstanceType {
   ultrawarm1MediumSearch("ultrawarm1.medium.search"),
   ultrawarm1XlargeSearch("ultrawarm1.xlarge.search");
 
-  const OpenSearchPartitionInstanceType(this.value);
-  final String value;
+  const OpenSearchPartitionInstanceType(this.wireValue);
+  final String wireValue;
 
   static OpenSearchPartitionInstanceType fromValue(String value) {
     for (final item in OpenSearchPartitionInstanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OpenSearchPartitionInstanceType value: $value');
+    throw ArgumentError(
+      'Unknown OpenSearchPartitionInstanceType value: $value',
+    );
   }
 }
-

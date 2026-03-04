@@ -9,15 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerIpamPoolStaticCidrArgs {
   /// Specifies a list of IPv4 or IPv6 IP address prefixes which will be allocated to the Static CIDR.
   ///
-  /// > **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
+  /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
   final pulumi.Input<List<String>>? addressPrefixes;
+
   /// The ID of the Network Manager IP Address Management (IPAM) Pool. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   final pulumi.Input<String> ipamPoolId;
+
   /// The name which should be used for this Network Manager IPAM Pool Static CIDR. Changing this forces a new Network Manager IPAM Pool Static CIDR to be created.
   final pulumi.Input<String>? name;
+
   /// The number of IP addresses to allocate to the Static CIDR. The value must be a string representing a positive integer which is a positive power of 2, e.g., `"16"`.
   ///
-  /// > **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
+  /// &gt; **Note:** Exactly one of `address_prefixes` or `number_of_ip_addresses_to_allocate` must be specified.
   final pulumi.Input<String>? numberOfIpAddressesToAllocate;
 
   /// Creates a new [NetworkManagerIpamPoolStaticCidrArgs].
@@ -41,13 +44,26 @@ class NetworkManagerIpamPoolStaticCidrArgs {
     };
   }
 
-  factory NetworkManagerIpamPoolStaticCidrArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkManagerIpamPoolStaticCidrArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkManagerIpamPoolStaticCidrArgs(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
-      ipamPoolId: (map['ipamPoolId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      numberOfIpAddressesToAllocate: map['numberOfIpAddressesToAllocate'] == null ? null : (map['numberOfIpAddressesToAllocate']! as String).input(),
+      addressPrefixes: (() {
+        final guardedValue = map['addressPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfIpAddressesToAllocate: (() {
+        final guardedValue = map['numberOfIpAddressesToAllocate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

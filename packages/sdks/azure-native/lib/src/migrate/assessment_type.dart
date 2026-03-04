@@ -6,16 +6,15 @@ enum AssessmentType {
   valueSqlAssessment("SqlAssessment"),
   valueWebAppAssessment("WebAppAssessment");
 
-  const AssessmentType(this.value);
-  final String value;
+  const AssessmentType(this.wireValue);
+  final String wireValue;
 
   static AssessmentType fromValue(String value) {
     for (final item in AssessmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssessmentType value: $value');
   }
 }
-

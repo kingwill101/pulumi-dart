@@ -10,20 +10,29 @@ class SymmetricKeyResponse {
 
   /// Creates a new [SymmetricKeyResponse].
   /// [connectionString] Connection string based on the symmetric key.
-  SymmetricKeyResponse({
-    this.connectionString,
-  });
+  SymmetricKeyResponse({this.connectionString});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionString': ?pulumi.Input.mapOptionalInputValue<AsymmetricEncryptedSecretResponse, Map<String, dynamic>>(connectionString, (value) => value.toMap()),
+      'connectionString':
+          ?pulumi.Input.mapOptionalInputValue<
+            AsymmetricEncryptedSecretResponse,
+            Map<String, dynamic>
+          >(connectionString, (value) => value.toMap()),
     };
   }
 
   factory SymmetricKeyResponse.fromMap(Map<String, dynamic> map) {
     return SymmetricKeyResponse(
-      connectionString: map['connectionString'] == null ? null : (AsymmetricEncryptedSecretResponse.fromMap((map['connectionString']! as Map).cast<String, dynamic>())).input(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AsymmetricEncryptedSecretResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

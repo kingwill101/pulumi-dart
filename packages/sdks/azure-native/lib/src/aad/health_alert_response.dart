@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HealthAlertResponse {
   /// Health Alert Id
   final pulumi.Input<String> id;
+
   /// Health Alert Issue
   final pulumi.Input<String> issue;
+
   /// Health Alert Last Detected DateTime
   final pulumi.Input<String> lastDetected;
+
   /// Health Alert Name
   final pulumi.Input<String> name;
+
   /// Health Alert Raised DateTime
   final pulumi.Input<String> raised;
+
   /// Health Alert TSG Link
   final pulumi.Input<String> resolutionUri;
+
   /// Health Alert Severity
   final pulumi.Input<String> severity;
 
@@ -51,14 +57,13 @@ class HealthAlertResponse {
 
   factory HealthAlertResponse.fromMap(Map<String, dynamic> map) {
     return HealthAlertResponse(
-      id: (map['id'] as String).input(),
-      issue: (map['issue'] as String).input(),
-      lastDetected: (map['lastDetected'] as String).input(),
-      name: (map['name'] as String).input(),
-      raised: (map['raised'] as String).input(),
-      resolutionUri: (map['resolutionUri'] as String).input(),
-      severity: (map['severity'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      issue: pulumi.Input.fromValue(map['issue'] as String),
+      lastDetected: pulumi.Input.fromValue(map['lastDetected'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      raised: pulumi.Input.fromValue(map['raised'] as String),
+      resolutionUri: pulumi.Input.fromValue(map['resolutionUri'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

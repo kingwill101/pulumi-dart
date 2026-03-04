@@ -5,16 +5,15 @@ enum DeploymentOccurrencePlatform {
   flex("FLEX"),
   custom("CUSTOM");
 
-  const DeploymentOccurrencePlatform(this.value);
-  final String value;
+  const DeploymentOccurrencePlatform(this.wireValue);
+  final String wireValue;
 
   static DeploymentOccurrencePlatform fromValue(String value) {
     for (final item in DeploymentOccurrencePlatform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeploymentOccurrencePlatform value: $value');
   }
 }
-

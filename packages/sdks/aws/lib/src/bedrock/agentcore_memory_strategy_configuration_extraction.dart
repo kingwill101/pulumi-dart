@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreMemoryStrategyConfigurationExtraction {
   /// Additional text to append to the model prompt for extraction processing.
   final pulumi.Input<String> appendToPrompt;
+
   /// ID of the foundation model to use for extraction processing.
   final pulumi.Input<String> modelId;
 
@@ -23,11 +24,12 @@ class AgentcoreMemoryStrategyConfigurationExtraction {
     };
   }
 
-  factory AgentcoreMemoryStrategyConfigurationExtraction.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreMemoryStrategyConfigurationExtraction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreMemoryStrategyConfigurationExtraction(
-      appendToPrompt: (map['appendToPrompt'] as String).input(),
-      modelId: (map['modelId'] as String).input(),
+      appendToPrompt: pulumi.Input.fromValue(map['appendToPrompt'] as String),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
     );
   }
 }
-

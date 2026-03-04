@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse {
   /// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
   final pulumi.Input<String> allowlistDocument;
+
   /// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
   final pulumi.Input<int> maxResultCount;
 
@@ -24,11 +25,14 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse(
-      allowlistDocument: (map['allowlistDocument'] as String).input(),
-      maxResultCount: (map['maxResultCount'] as int).input(),
+      allowlistDocument: pulumi.Input.fromValue(
+        map['allowlistDocument'] as String,
+      ),
+      maxResultCount: pulumi.Input.fromValue(map['maxResultCount'] as int),
     );
   }
 }
-

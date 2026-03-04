@@ -15,16 +15,17 @@ enum SoftwareConfigOptionalComponentsItem {
   zeppelin("ZEPPELIN"),
   zookeeper("ZOOKEEPER");
 
-  const SoftwareConfigOptionalComponentsItem(this.value);
-  final String value;
+  const SoftwareConfigOptionalComponentsItem(this.wireValue);
+  final String wireValue;
 
   static SoftwareConfigOptionalComponentsItem fromValue(String value) {
     for (final item in SoftwareConfigOptionalComponentsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SoftwareConfigOptionalComponentsItem value: $value');
+    throw ArgumentError(
+      'Unknown SoftwareConfigOptionalComponentsItem value: $value',
+    );
   }
 }
-

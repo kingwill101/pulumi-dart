@@ -9,16 +9,22 @@ enum BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1 {
   roundRobin("ROUND_ROBIN"),
   weightedMaglev("WEIGHTED_MAGLEV");
 
-  const BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1(this.value);
-  final String value;
+  const BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1 fromValue(String value) {
-    for (final item in BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1.values) {
-      if (item.value == value) {
+  static BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1
+  fromValue(String value) {
+    for (final item
+        in BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameComputeV1 value: $value',
+    );
   }
 }
-

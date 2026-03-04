@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings {
   /// Post filter sharpening.
   final pulumi.Input<String>? postFilterSharpening;
+
   /// Filter strength.
   final pulumi.Input<String>? strength;
 
@@ -23,11 +24,20 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSetti
     };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings(
-      postFilterSharpening: map['postFilterSharpening'] == null ? null : ((map['postFilterSharpening'] as String).input()).input(),
-      strength: map['strength'] == null ? null : ((map['strength'] as String).input()).input(),
+      postFilterSharpening: (() {
+        final guardedValue = map['postFilterSharpening'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      strength: (() {
+        final guardedValue = map['strength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

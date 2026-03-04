@@ -5,16 +5,10 @@ import 'container_group_diagnostics_response.dart';
 import 'container_group_identity_response.dart';
 import 'container_group_profile_reference_definition_response.dart';
 import 'container_group_properties_response_instance_view.dart';
-import 'container_group_subnet_id_response.dart';
-import 'container_response.dart';
-import 'deployment_extension_spec_response.dart';
 import 'dns_configuration_response.dart';
 import 'encryption_properties_response.dart';
-import 'image_registry_credential_response.dart';
-import 'init_container_definition_response.dart';
 import 'ip_address_response.dart';
 import 'standby_pool_profile_definition_response.dart';
-import 'volume_response.dart';
 
 /// A container group.
 ///
@@ -1235,59 +1229,90 @@ import 'volume_response.dart';
 class ContainerGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The properties for confidential container group
-  late final pulumi.Output<ConfidentialComputePropertiesResponse?> confidentialComputeProperties;
+  late final pulumi.Output<ConfidentialComputePropertiesResponse?>
+  confidentialComputeProperties;
+
   /// The reference container group profile properties.
-  late final pulumi.Output<ContainerGroupProfileReferenceDefinitionResponse?> containerGroupProfile;
+  late final pulumi.Output<ContainerGroupProfileReferenceDefinitionResponse?>
+  containerGroupProfile;
+
   /// The containers within the container group.
-  late final pulumi.Output<List<ContainerResponse>> containers;
+  late final pulumi.Output<List<Map<String, dynamic>>> containers;
+
   /// The diagnostic information for a container group.
   late final pulumi.Output<ContainerGroupDiagnosticsResponse?> diagnostics;
+
   /// The DNS config information for a container group.
   late final pulumi.Output<DnsConfigurationResponse?> dnsConfig;
+
   /// The encryption properties for a container group.
   late final pulumi.Output<EncryptionPropertiesResponse?> encryptionProperties;
+
   /// extensions used by virtual kubelet
-  late final pulumi.Output<List<DeploymentExtensionSpecResponse>?> extensions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+
   /// The identity of the container group, if configured.
   late final pulumi.Output<ContainerGroupIdentityResponse?> identity;
+
   /// The image registry credentials by which the container group is created from.
-  late final pulumi.Output<List<ImageRegistryCredentialResponse>?> imageRegistryCredentials;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  imageRegistryCredentials;
+
   /// The init containers for a container group.
-  late final pulumi.Output<List<InitContainerDefinitionResponse>?> initContainers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> initContainers;
+
   /// The instance view of the container group. Only valid in response.
-  late final pulumi.Output<ContainerGroupPropertiesResponseInstanceView> instanceView;
+  late final pulumi.Output<ContainerGroupPropertiesResponseInstanceView>
+  instanceView;
+
   /// The IP address type of the container group.
   late final pulumi.Output<IpAddressResponse?> ipAddress;
+
   /// The flag indicating whether the container group is created by standby pool.
   late final pulumi.Output<bool> isCreatedFromStandbyPool;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The operating system type required by the containers in the container group.
   late final pulumi.Output<String?> osType;
+
   /// The priority of the container group.
   late final pulumi.Output<String?> priority;
+
   /// The provisioning state of the container group. This only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Restart policy for all containers within the container group.
   /// - `Always` Always restart
   /// - `OnFailure` Restart on failure
   /// - `Never` Never restart
   late final pulumi.Output<String?> restartPolicy;
+
   /// The SKU for a container group.
   late final pulumi.Output<String?> sku;
+
   /// The reference standby pool profile properties.
-  late final pulumi.Output<StandbyPoolProfileDefinitionResponse?> standbyPoolProfile;
+  late final pulumi.Output<StandbyPoolProfileDefinitionResponse?>
+  standbyPoolProfile;
+
   /// The subnet resource IDs for a container group.
-  late final pulumi.Output<List<ContainerGroupSubnetIdResponse>?> subnetIds;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subnetIds;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource type.
   late final pulumi.Output<String> type;
+
   /// The list of volumes that can be mounted by containers in this container group.
-  late final pulumi.Output<List<VolumeResponse>?> volumes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+
   /// The zones for the container group.
   late final pulumi.Output<List<String>?> zones;
 
@@ -1300,37 +1325,55 @@ class ContainerGroup extends pulumi.CustomResource {
     ContainerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerinstance:ContainerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.confidentialComputeProperties = registerOutput<ConfidentialComputePropertiesResponse?>('confidentialComputeProperties');
-    this.containerGroupProfile = registerOutput<ContainerGroupProfileReferenceDefinitionResponse?>('containerGroupProfile');
-    this.containers = registerOutput<List<ContainerResponse>>('containers');
-    this.diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>('diagnostics');
-    this.dnsConfig = registerOutput<DnsConfigurationResponse?>('dnsConfig');
-    this.encryptionProperties = registerOutput<EncryptionPropertiesResponse?>('encryptionProperties');
-    this.extensions = registerOutput<List<DeploymentExtensionSpecResponse>?>('extensions');
-    this.identity = registerOutput<ContainerGroupIdentityResponse?>('identity');
-    this.imageRegistryCredentials = registerOutput<List<ImageRegistryCredentialResponse>?>('imageRegistryCredentials');
-    this.initContainers = registerOutput<List<InitContainerDefinitionResponse>?>('initContainers');
-    this.instanceView = registerOutput<ContainerGroupPropertiesResponseInstanceView>('instanceView');
-    this.ipAddress = registerOutput<IpAddressResponse?>('ipAddress');
-    this.isCreatedFromStandbyPool = registerOutput<bool>('isCreatedFromStandbyPool');
-    this.location = registerOutput<String?>('location');
+         'azure-native:containerinstance:ContainerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    confidentialComputeProperties =
+        registerOutput<ConfidentialComputePropertiesResponse?>(
+          'confidentialComputeProperties',
+        );
+    containerGroupProfile =
+        registerOutput<ContainerGroupProfileReferenceDefinitionResponse?>(
+          'containerGroupProfile',
+        );
+    containers = registerOutput<List<Map<String, dynamic>>>('containers');
+    diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>(
+      'diagnostics',
+    );
+    dnsConfig = registerOutput<DnsConfigurationResponse?>('dnsConfig');
+    encryptionProperties = registerOutput<EncryptionPropertiesResponse?>(
+      'encryptionProperties',
+    );
+    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    identity = registerOutput<ContainerGroupIdentityResponse?>('identity');
+    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>(
+      'imageRegistryCredentials',
+    );
+    initContainers = registerOutput<List<Map<String, dynamic>>?>(
+      'initContainers',
+    );
+    instanceView = registerOutput<ContainerGroupPropertiesResponseInstanceView>(
+      'instanceView',
+    );
+    ipAddress = registerOutput<IpAddressResponse?>('ipAddress');
+    isCreatedFromStandbyPool = registerOutput<bool>('isCreatedFromStandbyPool');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.osType = registerOutput<String?>('osType');
-    this.priority = registerOutput<String?>('priority');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.restartPolicy = registerOutput<String?>('restartPolicy');
-    this.sku = registerOutput<String?>('sku');
-    this.standbyPoolProfile = registerOutput<StandbyPoolProfileDefinitionResponse?>('standbyPoolProfile');
-    this.subnetIds = registerOutput<List<ContainerGroupSubnetIdResponse>?>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.volumes = registerOutput<List<VolumeResponse>?>('volumes');
-    this.zones = registerOutput<List<String>?>('zones');
+    osType = registerOutput<String?>('osType');
+    priority = registerOutput<String?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    restartPolicy = registerOutput<String?>('restartPolicy');
+    sku = registerOutput<String?>('sku');
+    standbyPoolProfile = registerOutput<StandbyPoolProfileDefinitionResponse?>(
+      'standbyPoolProfile',
+    );
+    subnetIds = registerOutput<List<Map<String, dynamic>>?>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

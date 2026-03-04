@@ -8,8 +8,10 @@ import 'folder_sink_exclusion.dart';
 class FolderSinkState {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
   final pulumi.Input<FolderSinkBigqueryOptions>? bigqueryOptions;
+
   /// A description of this sink. The maximum length of the description is 8000 characters.
   final pulumi.Input<String>? description;
+
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
   ///
   /// - `storage.googleapis.com/[GCS_BUCKET]`
@@ -20,25 +22,33 @@ class FolderSinkState {
   ///
   /// The writer associated with the sink must have access to write to the above resource.
   final pulumi.Input<String>? destination;
+
   /// If set to True, then this sink is disabled and it does not export any log entries.
   final pulumi.Input<bool>? disabled;
+
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
   final pulumi.Input<List<FolderSinkExclusion>>? exclusions;
+
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
   final pulumi.Input<String>? filter;
+
   /// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
   /// accepted.
   final pulumi.Input<String>? folder;
+
   /// Whether or not to include children folders in the sink export. If true, logs
   /// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
   final pulumi.Input<bool>? includeChildren;
+
   /// Whether or not to intercept logs from child projects. If true, matching logs will not
   /// match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
   final pulumi.Input<bool>? interceptChildren;
+
   /// The name of the logging sink.
   final pulumi.Input<String>? name;
+
   /// The identity associated with this sink. This identity must be granted write access to the
   /// configured `destination`.
   final pulumi.Input<String>? writerIdentity;
@@ -71,11 +81,26 @@ class FolderSinkState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryOptions': ?pulumi.Input.mapOptionalInputValue<FolderSinkBigqueryOptions, Map<String, dynamic>>(bigqueryOptions, (value) => value.toMap()),
+      'bigqueryOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            FolderSinkBigqueryOptions,
+            Map<String, dynamic>
+          >(bigqueryOptions, (value) => value.toMap()),
       'description': ?description,
       'destination': ?destination,
       'disabled': ?disabled,
-      'exclusions': ?pulumi.Input.mapOptionalInputValue<List<FolderSinkExclusion>, List<Map<String, dynamic>>>(exclusions, (value) => pulumi.Input.encodeList<FolderSinkExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exclusions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FolderSinkExclusion>,
+            List<Map<String, dynamic>>
+          >(
+            exclusions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FolderSinkExclusion,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'filter': ?filter,
       'folder': ?folder,
       'includeChildren': ?includeChildren,
@@ -87,18 +112,72 @@ class FolderSinkState {
 
   factory FolderSinkState.fromMap(Map<String, dynamic> map) {
     return FolderSinkState(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (FolderSinkBigqueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FolderSinkExclusion>(map['exclusions']!, (value) => FolderSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
-      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren']! as bool).input(),
-      interceptChildren: map['interceptChildren'] == null ? null : (map['interceptChildren']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      writerIdentity: map['writerIdentity'] == null ? null : (map['writerIdentity']! as String).input(),
+      bigqueryOptions: (() {
+        final guardedValue = map['bigqueryOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FolderSinkBigqueryOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      exclusions: (() {
+        final guardedValue = map['exclusions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FolderSinkExclusion>(
+            guardedValue,
+            (value) => FolderSinkExclusion.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      includeChildren: (() {
+        final guardedValue = map['includeChildren'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      interceptChildren: (() {
+        final guardedValue = map['interceptChildren'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      writerIdentity: (() {
+        final guardedValue = map['writerIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

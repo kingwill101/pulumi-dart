@@ -6,16 +6,15 @@ enum ExternalRefCategory {
   persistentId("PERSISTENT_ID"),
   other("OTHER");
 
-  const ExternalRefCategory(this.value);
-  final String value;
+  const ExternalRefCategory(this.wireValue);
+  final String wireValue;
 
   static ExternalRefCategory fromValue(String value) {
     for (final item in ExternalRefCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExternalRefCategory value: $value');
   }
 }
-

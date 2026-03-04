@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstancePairInfo {
   /// Id of Partner Managed Instance in pair.
   final pulumi.Input<String>? partnerManagedInstanceId;
+
   /// Id of Primary Managed Instance in pair.
   final pulumi.Input<String>? primaryManagedInstanceId;
 
@@ -26,9 +27,16 @@ class ManagedInstancePairInfo {
 
   factory ManagedInstancePairInfo.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePairInfo(
-      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : (map['partnerManagedInstanceId']! as String).input(),
-      primaryManagedInstanceId: map['primaryManagedInstanceId'] == null ? null : (map['primaryManagedInstanceId']! as String).input(),
+      partnerManagedInstanceId: (() {
+        final guardedValue = map['partnerManagedInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryManagedInstanceId: (() {
+        final guardedValue = map['primaryManagedInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

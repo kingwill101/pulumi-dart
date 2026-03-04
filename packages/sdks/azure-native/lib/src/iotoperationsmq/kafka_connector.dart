@@ -699,32 +699,48 @@ import 'system_data_response.dart';
 class KafkaConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The client id prefix of the dynamically generated client ids.
   late final pulumi.Output<String?> clientIdPrefix;
+
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
+
   /// The details of KafkaConnector Docker Image.
   late final pulumi.Output<ContainerImageResponse?> image;
+
   /// The number of KafkaConnector pods to spin up.
   late final pulumi.Output<int?> instances;
+
   /// The details for connecting with Remote Kafka Broker.
-  late final pulumi.Output<KafkaRemoteBrokerConnectionSpecResponse> kafkaConnection;
+  late final pulumi.Output<KafkaRemoteBrokerConnectionSpecResponse>
+  kafkaConnection;
+
   /// The details for connecting with Local Broker.
-  late final pulumi.Output<LocalBrokerConnectionSpecResponse?> localBrokerConnection;
+  late final pulumi.Output<LocalBrokerConnectionSpecResponse?>
+  localBrokerConnection;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The log level of the Bridge Connector instances.
   late final pulumi.Output<String?> logLevel;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The Node Tolerations for the Bridge Connector pods.
   late final pulumi.Output<NodeTolerationsResponse?> nodeTolerations;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -737,25 +753,33 @@ class KafkaConnector extends pulumi.CustomResource {
     KafkaConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsmq:KafkaConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientIdPrefix = registerOutput<String?>('clientIdPrefix');
-    this.extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation');
-    this.image = registerOutput<ContainerImageResponse?>('image');
-    this.instances = registerOutput<int?>('instances');
-    this.kafkaConnection = registerOutput<KafkaRemoteBrokerConnectionSpecResponse>('kafkaConnection');
-    this.localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>('localBrokerConnection');
-    this.location = registerOutput<String>('location');
-    this.logLevel = registerOutput<String?>('logLevel');
+         'azure-native:iotoperationsmq:KafkaConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientIdPrefix = registerOutput<String?>('clientIdPrefix');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
+      'extendedLocation',
+    );
+    image = registerOutput<ContainerImageResponse?>('image');
+    instances = registerOutput<int?>('instances');
+    kafkaConnection = registerOutput<KafkaRemoteBrokerConnectionSpecResponse>(
+      'kafkaConnection',
+    );
+    localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>(
+      'localBrokerConnection',
+    );
+    location = registerOutput<String>('location');
+    logLevel = registerOutput<String?>('logLevel');
     this.name = registerOutput<String>('name');
-    this.nodeTolerations = registerOutput<NodeTolerationsResponse?>('nodeTolerations');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    nodeTolerations = registerOutput<NodeTolerationsResponse?>(
+      'nodeTolerations',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

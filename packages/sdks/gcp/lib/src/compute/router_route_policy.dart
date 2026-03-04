@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_route_policy_args.dart';
 import 'router_route_policy_state.dart';
-import 'router_route_policy_term.dart';
 
 /// A route policy created in a router
 ///
@@ -624,18 +623,24 @@ class RouterRoutePolicy extends pulumi.CustomResource {
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> fingerprint;
+
   /// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Region where the router and NAT reside.
   late final pulumi.Output<String> region;
+
   /// The name of the Cloud Router in which this route policy will be configured.
   late final pulumi.Output<String> router;
+
   /// List of terms (the order in the list is not important, they are evaluated in order of priority).
   /// Structure is documented below.
-  late final pulumi.Output<List<RouterRoutePolicyTerm>> terms;
+  late final pulumi.Output<List<Map<String, dynamic>>> terms;
+
   /// This is policy's type, which is one of IMPORT or EXPORT
   /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
   late final pulumi.Output<String?> type;
@@ -649,18 +654,18 @@ class RouterRoutePolicy extends pulumi.CustomResource {
     RouterRoutePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fingerprint = registerOutput<String>('fingerprint');
+         'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.router = registerOutput<String>('router');
-    this.terms = registerOutput<List<RouterRoutePolicyTerm>>('terms');
-    this.type = registerOutput<String?>('type');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    router = registerOutput<String>('router');
+    terms = registerOutput<List<Map<String, dynamic>>>('terms');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [RouterRoutePolicy] resource's state with the given [name] and [id].
@@ -681,17 +686,17 @@ class RouterRoutePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fingerprint = registerOutput<String>('fingerprint');
+         'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.router = registerOutput<String>('router');
-    this.terms = registerOutput<List<RouterRoutePolicyTerm>>('terms');
-    this.type = registerOutput<String?>('type');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    router = registerOutput<String>('router');
+    terms = registerOutput<List<Map<String, dynamic>>>('terms');
+    type = registerOutput<String?>('type');
   }
 }

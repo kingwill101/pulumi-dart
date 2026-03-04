@@ -4,16 +4,20 @@ enum AttachedDiskInitializeParamsOnUpdateActionComputeBeta {
   recreateDiskIfSourceChanged("RECREATE_DISK_IF_SOURCE_CHANGED"),
   useExistingDisk("USE_EXISTING_DISK");
 
-  const AttachedDiskInitializeParamsOnUpdateActionComputeBeta(this.value);
-  final String value;
+  const AttachedDiskInitializeParamsOnUpdateActionComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static AttachedDiskInitializeParamsOnUpdateActionComputeBeta fromValue(String value) {
-    for (final item in AttachedDiskInitializeParamsOnUpdateActionComputeBeta.values) {
-      if (item.value == value) {
+  static AttachedDiskInitializeParamsOnUpdateActionComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in AttachedDiskInitializeParamsOnUpdateActionComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AttachedDiskInitializeParamsOnUpdateActionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AttachedDiskInitializeParamsOnUpdateActionComputeBeta value: $value',
+    );
   }
 }
-

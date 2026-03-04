@@ -3,16 +3,15 @@ enum CatalogItemSyncEnableStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const CatalogItemSyncEnableStatus(this.value);
-  final String value;
+  const CatalogItemSyncEnableStatus(this.wireValue);
+  final String wireValue;
 
   static CatalogItemSyncEnableStatus fromValue(String value) {
     for (final item in CatalogItemSyncEnableStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CatalogItemSyncEnableStatus value: $value');
   }
 }
-

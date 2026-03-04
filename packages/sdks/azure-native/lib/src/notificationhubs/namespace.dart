@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_args.dart';
 import 'network_acls_response.dart';
 import 'pns_credentials_response.dart';
-import 'private_endpoint_connection_resource_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -284,56 +283,82 @@ import 'system_data_response.dart';
 class Namespace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Time when the namespace was created.
   late final pulumi.Output<String> createdAt;
+
   /// Gets or sets whether or not the namespace is set as Critical.
   late final pulumi.Output<bool> critical;
+
   /// Deprecated.
   late final pulumi.Output<String?> dataCenter;
+
   /// Gets or sets whether or not the namespace is currently enabled.
   late final pulumi.Output<bool> enabled;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Azure Insights Metrics id.
   late final pulumi.Output<String> metricId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines values for NamespaceType.
   late final pulumi.Output<String?> namespaceType;
+
   /// A collection of network authorization rules.
   late final pulumi.Output<NetworkAclsResponse?> networkAcls;
+
   /// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
   late final pulumi.Output<PnsCredentialsResponse?> pnsCredentials;
+
   /// Private Endpoint Connections for namespace
-  late final pulumi.Output<List<PrivateEndpointConnectionResourceResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Defines values for OperationProvisioningState.
   late final pulumi.Output<String?> provisioningState;
+
   /// Type of public network access.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Region. The value is always set to the same value as Namespace.Location, so we are deprecating
   /// this property.
   late final pulumi.Output<String> region;
+
   /// Allowed replication region
   late final pulumi.Output<String?> replicationRegion;
+
   /// Gets or sets scaleUnit where the namespace gets created
   late final pulumi.Output<String?> scaleUnit;
+
   /// Gets or sets endpoint you can use to perform NotificationHub
   /// operations.
   late final pulumi.Output<String> serviceBusEndpoint;
+
   /// The Sku description for a namespace
   late final pulumi.Output<SkuResponse> sku;
+
   /// Namespace status.
   late final pulumi.Output<String?> status;
+
   /// Namespace subscription id.
   late final pulumi.Output<String> subscriptionId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Time when the namespace was updated.
   late final pulumi.Output<String> updatedAt;
+
   /// Namespace SKU name.
   late final pulumi.Output<String?> zoneRedundancy;
 
@@ -346,36 +371,38 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:notificationhubs:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.critical = registerOutput<bool>('critical');
-    this.dataCenter = registerOutput<String?>('dataCenter');
-    this.enabled = registerOutput<bool>('enabled');
-    this.location = registerOutput<String>('location');
-    this.metricId = registerOutput<String>('metricId');
+         'azure-native:notificationhubs:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    critical = registerOutput<bool>('critical');
+    dataCenter = registerOutput<String?>('dataCenter');
+    enabled = registerOutput<bool>('enabled');
+    location = registerOutput<String>('location');
+    metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
-    this.namespaceType = registerOutput<String?>('namespaceType');
-    this.networkAcls = registerOutput<NetworkAclsResponse?>('networkAcls');
-    this.pnsCredentials = registerOutput<PnsCredentialsResponse?>('pnsCredentials');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResourceResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.region = registerOutput<String>('region');
-    this.replicationRegion = registerOutput<String?>('replicationRegion');
-    this.scaleUnit = registerOutput<String?>('scaleUnit');
-    this.serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.status = registerOutput<String?>('status');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.zoneRedundancy = registerOutput<String?>('zoneRedundancy');
+    namespaceType = registerOutput<String?>('namespaceType');
+    networkAcls = registerOutput<NetworkAclsResponse?>('networkAcls');
+    pnsCredentials = registerOutput<PnsCredentialsResponse?>('pnsCredentials');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String?>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    region = registerOutput<String>('region');
+    replicationRegion = registerOutput<String?>('replicationRegion');
+    scaleUnit = registerOutput<String?>('scaleUnit');
+    serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
+    sku = registerOutput<SkuResponse>('sku');
+    status = registerOutput<String?>('status');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
+    zoneRedundancy = registerOutput<String?>('zoneRedundancy');
   }
 }

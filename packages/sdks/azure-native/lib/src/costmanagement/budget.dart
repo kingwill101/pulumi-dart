@@ -2945,28 +2945,36 @@ class Budget extends pulumi.CustomResource {
   ///
   /// Required for CategoryType(s): Cost.
   late final pulumi.Output<double?> amount;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The category of the budget.
   /// - 'Cost' defines a Budget.
   /// - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
   late final pulumi.Output<String> category;
+
   /// The current amount of cost which is being tracked for a budget.
   ///
   /// Supported for CategoryType(s): Cost.
   late final pulumi.Output<CurrentSpendResponse> currentSpend;
+
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   late final pulumi.Output<String?> eTag;
+
   /// May be used to filter budgets by user-specified dimensions and/or tags.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
   late final pulumi.Output<BudgetFilterResponse?> filter;
+
   /// The forecasted cost which is being tracked for a budget.
   ///
   /// Supported for CategoryType(s): Cost.
   late final pulumi.Output<ForecastSpendResponse> forecastSpend;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Dictionary of notifications associated with the budget.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -2974,6 +2982,7 @@ class Budget extends pulumi.CustomResource {
   /// - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted.
   /// - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable.
   late final pulumi.Output<Map<String, NotificationResponse>?> notifications;
+
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -2995,12 +3004,14 @@ class Budget extends pulumi.CustomResource {
   ///
   /// Required for CategoryType(s): Cost, ReservationUtilization.
   late final pulumi.Output<String> timeGrain;
+
   /// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
   ///
   /// Required for CategoryType(s): Cost, ReservationUtilization.
   late final pulumi.Output<BudgetTimePeriodResponse> timePeriod;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -3008,27 +3019,26 @@ class Budget extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Budget]. {@macro pulumi_costmanagement_budget_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Budget(
-    String name, {
-    BudgetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:costmanagement:Budget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amount = registerOutput<double?>('amount');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.category = registerOutput<String>('category');
-    this.currentSpend = registerOutput<CurrentSpendResponse>('currentSpend');
-    this.eTag = registerOutput<String?>('eTag');
-    this.filter = registerOutput<BudgetFilterResponse?>('filter');
-    this.forecastSpend = registerOutput<ForecastSpendResponse>('forecastSpend');
+  Budget(String name, {BudgetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:costmanagement:Budget',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    amount = registerOutput<double?>('amount');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String>('category');
+    currentSpend = registerOutput<CurrentSpendResponse>('currentSpend');
+    eTag = registerOutput<String?>('eTag');
+    filter = registerOutput<BudgetFilterResponse?>('filter');
+    forecastSpend = registerOutput<ForecastSpendResponse>('forecastSpend');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<Map<String, NotificationResponse>?>('notifications');
-    this.timeGrain = registerOutput<String>('timeGrain');
-    this.timePeriod = registerOutput<BudgetTimePeriodResponse>('timePeriod');
-    this.type = registerOutput<String>('type');
+    notifications = registerOutput<Map<String, NotificationResponse>?>(
+      'notifications',
+    );
+    timeGrain = registerOutput<String>('timeGrain');
+    timePeriod = registerOutput<BudgetTimePeriodResponse>('timePeriod');
+    type = registerOutput<String>('type');
   }
 }

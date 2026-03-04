@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_args.dart';
-import 'server_private_endpoint_connection_response.dart';
 import 'sku_response.dart';
 import 'storage_profile_response.dart';
 
@@ -783,40 +782,59 @@ import 'storage_profile_response.dart';
 class Server extends pulumi.CustomResource {
   /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   late final pulumi.Output<String?> administratorLogin;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Earliest restore point creation time (ISO8601 format)
   late final pulumi.Output<String?> earliestRestoreDate;
+
   /// The fully qualified domain name of a server.
   late final pulumi.Output<String?> fullyQualifiedDomainName;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The master server id of a replica server.
   late final pulumi.Output<String?> masterServerId;
+
   /// Enforce a minimal Tls version for the server.
   late final pulumi.Output<String?> minimalTlsVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of private endpoint connections on a server
-  late final pulumi.Output<List<ServerPrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The maximum number of replicas that a master server can have.
   late final pulumi.Output<int?> replicaCapacity;
+
   /// The replication role of the server.
   late final pulumi.Output<String?> replicationRole;
+
   /// The SKU (pricing tier) of the server.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Enable ssl enforcement or not when connect to server.
   late final pulumi.Output<String?> sslEnforcement;
+
   /// Storage profile of a server.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A state of a server that is visible to user.
   late final pulumi.Output<String?> userVisibleState;
+
   /// Server version.
   late final pulumi.Output<String?> version;
 
@@ -824,34 +842,35 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_dbformariadb_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(
-    String name, {
-    ServerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:dbformariadb:Server',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String?>('administratorLogin');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.earliestRestoreDate = registerOutput<String?>('earliestRestoreDate');
-    this.fullyQualifiedDomainName = registerOutput<String?>('fullyQualifiedDomainName');
-    this.location = registerOutput<String>('location');
-    this.masterServerId = registerOutput<String?>('masterServerId');
-    this.minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:dbformariadb:Server',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    earliestRestoreDate = registerOutput<String?>('earliestRestoreDate');
+    fullyQualifiedDomainName = registerOutput<String?>(
+      'fullyQualifiedDomainName',
+    );
+    location = registerOutput<String>('location');
+    masterServerId = registerOutput<String?>('masterServerId');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<ServerPrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.replicaCapacity = registerOutput<int?>('replicaCapacity');
-    this.replicationRole = registerOutput<String?>('replicationRole');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.sslEnforcement = registerOutput<String?>('sslEnforcement');
-    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.userVisibleState = registerOutput<String?>('userVisibleState');
-    this.version = registerOutput<String?>('version');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    replicaCapacity = registerOutput<int?>('replicaCapacity');
+    replicationRole = registerOutput<String?>('replicationRole');
+    sku = registerOutput<SkuResponse?>('sku');
+    sslEnforcement = registerOutput<String?>('sslEnforcement');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    userVisibleState = registerOutput<String?>('userVisibleState');
+    version = registerOutput<String?>('version');
   }
 }

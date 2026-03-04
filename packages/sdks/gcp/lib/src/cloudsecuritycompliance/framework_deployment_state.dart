@@ -24,18 +24,24 @@ class FrameworkDeploymentState {
   /// "organizations/{organization}/locations/{location}/cloudControlDeployments/cc-deployment-2"
   /// }
   /// Structure is documented below.
-  final pulumi.Input<List<FrameworkDeploymentCloudControlDeploymentReference>>? cloudControlDeploymentReferences;
+  final pulumi.Input<List<FrameworkDeploymentCloudControlDeploymentReference>>?
+  cloudControlDeploymentReferences;
+
   /// Deployment mode and parameters for each of the Cloud Controls in
   /// the framework. Every Cloud Control in the framework must have a
   /// CloudControlMetadata.
   /// Structure is documented below.
-  final pulumi.Input<List<FrameworkDeploymentCloudControlMetadata>>? cloudControlMetadatas;
+  final pulumi.Input<List<FrameworkDeploymentCloudControlMetadata>>?
+  cloudControlMetadatas;
+
   /// The resource on which the Framework is deployed based on the provided
   /// TargetResourceConfig in the following format:
   /// organizations/{organization}, folders/{folder} or projects/{project}
   final pulumi.Input<String>? computedTargetResource;
+
   /// The time at which the resource was created.
   final pulumi.Input<String>? createTime;
+
   /// The deployment state of the framework.
   /// Possible values:
   /// DEPLOYMENT_STATE_VALIDATING
@@ -46,33 +52,44 @@ class FrameworkDeploymentState {
   /// DEPLOYMENT_STATE_PARTIALLY_DEPLOYED
   /// DEPLOYMENT_STATE_PARTIALLY_DELETED
   final pulumi.Input<String>? deploymentState;
+
   /// User provided description of the Framework deployment
   final pulumi.Input<String>? description;
+
   /// To prevent concurrent updates from overwriting each other, always provide
   /// the `etag` when you update a FrameworkDeployment. You can also
   /// provide the `etag` when you delete a FrameworkDeployment, to help
   /// ensure that you're deleting the intended version of the
   /// FrameworkDeployment.
   final pulumi.Input<String>? etag;
+
   /// FrameworkReference contains the reference of a framework.
   /// Structure is documented below.
   final pulumi.Input<FrameworkDeploymentFramework>? framework;
+
   /// User provided identifier. It should be unique in scope of a parent.
   /// This is optional and if not provided, a random UUID will be generated.
   final pulumi.Input<String>? frameworkDeploymentId;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
+
   /// Identifier. FrameworkDeployment name in the following format:
   /// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
   final pulumi.Input<String>? name;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? organization;
+
   /// TargetResourceConfig contains either the name of the target_resource or
   /// contains the config to create a new target_resource.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkDeploymentTargetResourceConfig>? targetResourceConfig;
+  final pulumi.Input<FrameworkDeploymentTargetResourceConfig>?
+  targetResourceConfig;
+
   /// The display name of the target resource.
   final pulumi.Input<String>? targetResourceDisplayName;
+
   /// The time at which the resource last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -112,19 +129,49 @@ class FrameworkDeploymentState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudControlDeploymentReferences': ?pulumi.Input.mapOptionalInputValue<List<FrameworkDeploymentCloudControlDeploymentReference>, List<Map<String, dynamic>>>(cloudControlDeploymentReferences, (value) => pulumi.Input.encodeList<FrameworkDeploymentCloudControlDeploymentReference, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'cloudControlMetadatas': ?pulumi.Input.mapOptionalInputValue<List<FrameworkDeploymentCloudControlMetadata>, List<Map<String, dynamic>>>(cloudControlMetadatas, (value) => pulumi.Input.encodeList<FrameworkDeploymentCloudControlMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cloudControlDeploymentReferences':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FrameworkDeploymentCloudControlDeploymentReference>,
+            List<Map<String, dynamic>>
+          >(
+            cloudControlDeploymentReferences,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FrameworkDeploymentCloudControlDeploymentReference,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'cloudControlMetadatas':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FrameworkDeploymentCloudControlMetadata>,
+            List<Map<String, dynamic>>
+          >(
+            cloudControlMetadatas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FrameworkDeploymentCloudControlMetadata,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'computedTargetResource': ?computedTargetResource,
       'createTime': ?createTime,
       'deploymentState': ?deploymentState,
       'description': ?description,
       'etag': ?etag,
-      'framework': ?pulumi.Input.mapOptionalInputValue<FrameworkDeploymentFramework, Map<String, dynamic>>(framework, (value) => value.toMap()),
+      'framework':
+          ?pulumi.Input.mapOptionalInputValue<
+            FrameworkDeploymentFramework,
+            Map<String, dynamic>
+          >(framework, (value) => value.toMap()),
       'frameworkDeploymentId': ?frameworkDeploymentId,
       'location': ?location,
       'name': ?name,
       'organization': ?organization,
-      'targetResourceConfig': ?pulumi.Input.mapOptionalInputValue<FrameworkDeploymentTargetResourceConfig, Map<String, dynamic>>(targetResourceConfig, (value) => value.toMap()),
+      'targetResourceConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            FrameworkDeploymentTargetResourceConfig,
+            Map<String, dynamic>
+          >(targetResourceConfig, (value) => value.toMap()),
       'targetResourceDisplayName': ?targetResourceDisplayName,
       'updateTime': ?updateTime,
     };
@@ -132,22 +179,106 @@ class FrameworkDeploymentState {
 
   factory FrameworkDeploymentState.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentState(
-      cloudControlDeploymentReferences: map['cloudControlDeploymentReferences'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(map['cloudControlDeploymentReferences']!, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudControlMetadatas: map['cloudControlMetadatas'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(map['cloudControlMetadatas']!, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      computedTargetResource: map['computedTargetResource'] == null ? null : (map['computedTargetResource']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      framework: map['framework'] == null ? null : (FrameworkDeploymentFramework.fromMap((map['framework']! as Map).cast<String, dynamic>())).input(),
-      frameworkDeploymentId: map['frameworkDeploymentId'] == null ? null : (map['frameworkDeploymentId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
-      targetResourceConfig: map['targetResourceConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfig.fromMap((map['targetResourceConfig']! as Map).cast<String, dynamic>())).input(),
-      targetResourceDisplayName: map['targetResourceDisplayName'] == null ? null : (map['targetResourceDisplayName']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      cloudControlDeploymentReferences: (() {
+        final guardedValue = map['cloudControlDeploymentReferences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            FrameworkDeploymentCloudControlDeploymentReference
+          >(
+            guardedValue,
+            (value) =>
+                FrameworkDeploymentCloudControlDeploymentReference.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      cloudControlMetadatas: (() {
+        final guardedValue = map['cloudControlMetadatas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(
+            guardedValue,
+            (value) => FrameworkDeploymentCloudControlMetadata.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      computedTargetResource: (() {
+        final guardedValue = map['computedTargetResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentState: (() {
+        final guardedValue = map['deploymentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      framework: (() {
+        final guardedValue = map['framework'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FrameworkDeploymentFramework.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      frameworkDeploymentId: (() {
+        final guardedValue = map['frameworkDeploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organization: (() {
+        final guardedValue = map['organization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceConfig: (() {
+        final guardedValue = map['targetResourceConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FrameworkDeploymentTargetResourceConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetResourceDisplayName: (() {
+        final guardedValue = map['targetResourceDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

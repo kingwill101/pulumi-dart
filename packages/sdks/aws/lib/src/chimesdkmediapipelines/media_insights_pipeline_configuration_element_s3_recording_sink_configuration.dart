@@ -13,15 +13,18 @@ class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destination': ?destination,
-    };
+    return <String, dynamic>{'destination': ?destination};
   }
 
-  factory MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration(
-      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

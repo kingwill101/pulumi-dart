@@ -7,14 +7,18 @@ import 'network_endpoint_list_network_endpoint.dart';
 class NetworkEndpointListState {
   /// The network endpoint group these endpoints are part of.
   final pulumi.Input<String>? networkEndpointGroup;
+
   /// The network endpoints to be added to the enclosing network endpoint group
   /// (NEG). Each endpoint specifies an IP address and port, along with
   /// additional information depending on the NEG type.
   /// Structure is documented below.
-  final pulumi.Input<List<NetworkEndpointListNetworkEndpoint>>? networkEndpoints;
+  final pulumi.Input<List<NetworkEndpointListNetworkEndpoint>>?
+  networkEndpoints;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Zone where the containing network endpoint group is located.
   final pulumi.Input<String>? zone;
 
@@ -33,7 +37,18 @@ class NetworkEndpointListState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'networkEndpointGroup': ?networkEndpointGroup,
-      'networkEndpoints': ?pulumi.Input.mapOptionalInputValue<List<NetworkEndpointListNetworkEndpoint>, List<Map<String, dynamic>>>(networkEndpoints, (value) => pulumi.Input.encodeList<NetworkEndpointListNetworkEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkEndpointListNetworkEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            networkEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkEndpointListNetworkEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
       'zone': ?zone,
     };
@@ -41,11 +56,33 @@ class NetworkEndpointListState {
 
   factory NetworkEndpointListState.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointListState(
-      networkEndpointGroup: map['networkEndpointGroup'] == null ? null : (map['networkEndpointGroup']! as String).input(),
-      networkEndpoints: map['networkEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(map['networkEndpoints']!, (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      networkEndpointGroup: (() {
+        final guardedValue = map['networkEndpointGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkEndpoints: (() {
+        final guardedValue = map['networkEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(
+            guardedValue,
+            (value) => NetworkEndpointListNetworkEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

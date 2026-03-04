@@ -9,20 +9,17 @@ class RelationshipNoteResponseContaineranalysisV1beta1 {
 
   /// Creates a new [RelationshipNoteResponseContaineranalysisV1beta1].
   /// [type] The type of relationship between the source and target SPDX elements
-  RelationshipNoteResponseContaineranalysisV1beta1({
-    required this.type,
-  });
+  RelationshipNoteResponseContaineranalysisV1beta1({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory RelationshipNoteResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory RelationshipNoteResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RelationshipNoteResponseContaineranalysisV1beta1(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

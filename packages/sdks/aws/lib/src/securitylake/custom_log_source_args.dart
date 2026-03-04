@@ -10,14 +10,18 @@ import 'custom_log_source_configuration.dart';
 class CustomLogSourceArgs {
   /// The configuration for the third-party custom source.
   final pulumi.Input<CustomLogSourceConfiguration> configuration;
+
   /// The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake.
   final pulumi.Input<List<String>>? eventClasses;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specify the name for a third-party custom source.
   /// This must be a Regionally unique value.
   /// Has a maximum length of 20.
   final pulumi.Input<String> sourceName;
+
   /// Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
   final pulumi.Input<String>? sourceVersion;
 
@@ -37,7 +41,11 @@ class CustomLogSourceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': pulumi.Input.mapInputValue<CustomLogSourceConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          pulumi.Input.mapInputValue<
+            CustomLogSourceConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'eventClasses': ?eventClasses,
       'region': ?region,
       'sourceName': sourceName,
@@ -47,12 +55,27 @@ class CustomLogSourceArgs {
 
   factory CustomLogSourceArgs.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceArgs(
-      configuration: (CustomLogSourceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      eventClasses: map['eventClasses'] == null ? null : (((map['eventClasses'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sourceName: (map['sourceName'] as String).input(),
-      sourceVersion: map['sourceVersion'] == null ? null : ((map['sourceVersion'] as String).input()).input(),
+      configuration: pulumi.Input.fromValue(
+        CustomLogSourceConfiguration.fromMap(
+          (map['configuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      eventClasses: (() {
+        final guardedValue = map['eventClasses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceName: pulumi.Input.fromValue(map['sourceName'] as String),
+      sourceVersion: (() {
+        final guardedValue = map['sourceVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

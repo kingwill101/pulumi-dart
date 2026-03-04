@@ -1,23 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getConstraint.
 class GetConstraintResult {
   final String? acceptLanguage;
+
   /// Description of the constraint.
   final String description;
   final String id;
+
   /// Owner of the constraint.
   final String owner;
+
   /// Constraint parameters in JSON format.
   final String parameters;
+
   /// Portfolio identifier.
   final String portfolioId;
+
   /// Product identifier.
   final String productId;
   final String region;
+
   /// Constraint status.
   final String status;
+
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   final String type;
 
@@ -62,7 +68,11 @@ class GetConstraintResult {
 
   factory GetConstraintResult.fromMap(Map<String, dynamic> map) {
     return GetConstraintResult(
-      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       description: map['description'] as String,
       id: map['id'] as String,
       owner: map['owner'] as String,
@@ -75,4 +85,3 @@ class GetConstraintResult {
     );
   }
 }
-

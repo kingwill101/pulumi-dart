@@ -6,28 +6,40 @@ import 'system_data_response.dart';
 class GetNetworkPacketBrokerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// List of neighbor group IDs configured on NPB.
   final List<String> neighborGroupIds;
+
   /// List of ARM resource IDs of Network Devices [NPB].
   final List<String> networkDeviceIds;
+
   /// ARM resource ID of the Network Fabric.
   final String networkFabricId;
+
   /// List of network Tap IDs configured on NPB.
   final List<String> networkTapIds;
+
   /// Provisioning state of the resource.
   final String provisioningState;
+
   /// List of network interfaces across NPB devices that are used to mirror source traffic.
   final List<String> sourceInterfaceIds;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -91,10 +103,15 @@ class GetNetworkPacketBrokerResult {
       networkTapIds: (map['networkTapIds'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
       sourceInterfaceIds: (map['sourceInterfaceIds'] as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

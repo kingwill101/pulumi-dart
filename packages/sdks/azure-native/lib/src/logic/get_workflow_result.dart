@@ -12,42 +12,61 @@ import 'workflow_parameter_response.dart';
 class GetWorkflowResult {
   /// The access control configuration.
   final FlowAccessControlConfigurationResponse? accessControl;
+
   /// Gets the access endpoint.
   final String accessEndpoint;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets the changed time.
   final String changedTime;
+
   /// Gets the created time.
   final String createdTime;
+
   /// The definition.
   final dynamic definition;
+
   /// The endpoints configuration.
   final FlowEndpointsConfigurationResponse? endpointsConfiguration;
+
   /// The resource id.
   final String id;
+
   /// Managed service identity properties.
   final ManagedServiceIdentityResponse? identity;
+
   /// The integration account.
   final ResourceReferenceResponse? integrationAccount;
+
   /// The integration service environment.
   final ResourceReferenceResponse? integrationServiceEnvironment;
+
   /// The resource location.
   final String? location;
+
   /// Gets the resource name.
   final String name;
+
   /// The parameters.
   final Map<String, WorkflowParameterResponse>? parameters;
+
   /// Gets the provisioning state.
   final String provisioningState;
+
   /// The sku.
   final SkuResponse sku;
+
   /// The state.
   final String? state;
+
   /// The resource tags.
   final Map<String, String>? tags;
+
   /// Gets the resource type.
   final String type;
+
   /// Gets the version.
   final String version;
 
@@ -97,20 +116,27 @@ class GetWorkflowResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessControl': ?accessControl == null ? null : accessControl!.toMap(),
+      'accessControl': ?accessControl?.toMap(),
       'accessEndpoint': accessEndpoint,
       'azureApiVersion': azureApiVersion,
       'changedTime': changedTime,
       'createdTime': createdTime,
       'definition': ?definition,
-      'endpointsConfiguration': ?endpointsConfiguration == null ? null : endpointsConfiguration!.toMap(),
+      'endpointsConfiguration': ?endpointsConfiguration?.toMap(),
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
-      'integrationAccount': ?integrationAccount == null ? null : integrationAccount!.toMap(),
-      'integrationServiceEnvironment': ?integrationServiceEnvironment == null ? null : integrationServiceEnvironment!.toMap(),
+      'identity': ?identity?.toMap(),
+      'integrationAccount': ?integrationAccount?.toMap(),
+      'integrationServiceEnvironment': ?integrationServiceEnvironment?.toMap(),
       'location': ?location,
       'name': name,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<WorkflowParameterResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?(() {
+        final guardedValue = parameters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeMapValues<
+          WorkflowParameterResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'provisioningState': provisioningState,
       'sku': sku.toMap(),
       'state': ?state,
@@ -122,27 +148,81 @@ class GetWorkflowResult {
 
   factory GetWorkflowResult.fromMap(Map<String, dynamic> map) {
     return GetWorkflowResult(
-      accessControl: map['accessControl'] == null ? null : FlowAccessControlConfigurationResponse.fromMap((map['accessControl']! as Map).cast<String, dynamic>()),
+      accessControl: (() {
+        final guardedValue = map['accessControl'];
+        if (guardedValue == null) return null;
+        return FlowAccessControlConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       accessEndpoint: map['accessEndpoint'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       changedTime: map['changedTime'] as String,
       createdTime: map['createdTime'] as String,
-      definition: map['definition'] == null ? null : map['definition']!,
-      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : FlowEndpointsConfigurationResponse.fromMap((map['endpointsConfiguration']! as Map).cast<String, dynamic>()),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
+      endpointsConfiguration: (() {
+        final guardedValue = map['endpointsConfiguration'];
+        if (guardedValue == null) return null;
+        return FlowEndpointsConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      integrationAccount: map['integrationAccount'] == null ? null : ResourceReferenceResponse.fromMap((map['integrationAccount']! as Map).cast<String, dynamic>()),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : ResourceReferenceResponse.fromMap((map['integrationServiceEnvironment']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      integrationAccount: (() {
+        final guardedValue = map['integrationAccount'];
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      integrationServiceEnvironment: (() {
+        final guardedValue = map['integrationServiceEnvironment'];
+        if (guardedValue == null) return null;
+        return ResourceReferenceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<WorkflowParameterResponse>(map['parameters']!, (value) => WorkflowParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<WorkflowParameterResponse>(
+          guardedValue,
+          (value) => WorkflowParameterResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       version: map['version'] as String,
     );
   }
 }
-

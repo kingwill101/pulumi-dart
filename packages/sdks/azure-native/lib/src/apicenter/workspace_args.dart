@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceArgs {
   /// Workspace description.
   final pulumi.Input<String>? description;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
+
   /// Workspace title.
   final pulumi.Input<String> title;
+
   /// The name of the workspace.
   final pulumi.Input<String>? workspaceName;
 
@@ -44,12 +48,21 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      title: (map['title'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
+      workspaceName: (() {
+        final guardedValue = map['workspaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

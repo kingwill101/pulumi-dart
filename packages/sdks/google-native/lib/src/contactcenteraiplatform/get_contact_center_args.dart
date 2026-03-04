@@ -31,10 +31,13 @@ class GetContactCenterArgs {
 
   factory GetContactCenterArgs.fromMap(Map<String, dynamic> map) {
     return GetContactCenterArgs(
-      contactCenterId: (map['contactCenterId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      contactCenterId: pulumi.Input.fromValue(map['contactCenterId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

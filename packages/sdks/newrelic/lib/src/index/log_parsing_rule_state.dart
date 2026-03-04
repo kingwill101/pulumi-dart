@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogParsingRuleState {
   /// The account id associated with the obfuscation rule.
   final pulumi.Input<String>? accountId;
+
   /// The parsing rule will apply to value of this attribute. If field is not provided, value will default to message.
   final pulumi.Input<String>? attribute;
+
   /// Whether or not this rule is deleted.
   final pulumi.Input<bool>? deleted;
+
   /// Whether the rule should be applied or not to incoming data.
   final pulumi.Input<bool>? enabled;
+
   /// The Grok of what to parse.
   final pulumi.Input<String>? grok;
+
   /// The Lucene to match events to the parsing rule.
   final pulumi.Input<String>? lucene;
+
   /// Whether the Grok pattern matched.
   final pulumi.Input<bool>? matched;
+
   /// Name of rule.
   final pulumi.Input<String>? name;
+
   /// The NRQL to match events to the parsing rule.
   final pulumi.Input<String>? nrql;
 
@@ -61,16 +69,51 @@ class LogParsingRuleState {
 
   factory LogParsingRuleState.fromMap(Map<String, dynamic> map) {
     return LogParsingRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
-      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      grok: map['grok'] == null ? null : (map['grok']! as String).input(),
-      lucene: map['lucene'] == null ? null : (map['lucene']! as String).input(),
-      matched: map['matched'] == null ? null : (map['matched']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nrql: map['nrql'] == null ? null : (map['nrql']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attribute: (() {
+        final guardedValue = map['attribute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleted: (() {
+        final guardedValue = map['deleted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      grok: (() {
+        final guardedValue = map['grok'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lucene: (() {
+        final guardedValue = map['lucene'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matched: (() {
+        final guardedValue = map['matched'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nrql: (() {
+        final guardedValue = map['nrql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

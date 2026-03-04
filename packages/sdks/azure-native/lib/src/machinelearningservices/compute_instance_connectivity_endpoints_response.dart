@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeInstanceConnectivityEndpointsResponse {
   /// Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
   final pulumi.Input<String> privateIpAddress;
+
   /// Public IP Address of this ComputeInstance.
   final pulumi.Input<String> publicIpAddress;
 
@@ -24,11 +25,14 @@ class ComputeInstanceConnectivityEndpointsResponse {
     };
   }
 
-  factory ComputeInstanceConnectivityEndpointsResponse.fromMap(Map<String, dynamic> map) {
+  factory ComputeInstanceConnectivityEndpointsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ComputeInstanceConnectivityEndpointsResponse(
-      privateIpAddress: (map['privateIpAddress'] as String).input(),
-      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      privateIpAddress: pulumi.Input.fromValue(
+        map['privateIpAddress'] as String,
+      ),
+      publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
     );
   }
 }
-

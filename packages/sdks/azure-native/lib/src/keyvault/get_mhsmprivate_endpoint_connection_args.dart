@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMHSMPrivateEndpointConnectionArgs {
   /// Name of the managed HSM Pool
   final pulumi.Input<String> name;
+
   /// Name of the private endpoint connection associated with the managed hsm pool.
   final pulumi.Input<String> privateEndpointConnectionName;
+
   /// Name of the resource group that contains the managed HSM pool.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetMHSMPrivateEndpointConnectionArgs {
     };
   }
 
-  factory GetMHSMPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMHSMPrivateEndpointConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMHSMPrivateEndpointConnectionArgs(
-      name: (map['name'] as String).input(),
-      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateEndpointConnectionName: pulumi.Input.fromValue(
+        map['privateEndpointConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

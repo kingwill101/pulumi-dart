@@ -6,7 +6,7 @@ import 'snapshot_state.dart';
 ///
 /// For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsnapshot).
 ///
-/// > **NOTE:** Available since v1.169.0.
+/// &gt; **NOTE:** Available since v1.169.0.
 ///
 /// ## Example Usage
 ///
@@ -449,12 +449,16 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The description of the Snapshot.
   late final pulumi.Output<String?> description;
+
   /// The ID of the Desktop.
   late final pulumi.Output<String> desktopId;
+
   /// The name of the Snapshot.
   late final pulumi.Output<String> snapshotName;
+
   /// The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
   late final pulumi.Output<String> sourceDiskType;
+
   /// The status of the snapshot.
   late final pulumi.Output<String> status;
 
@@ -467,16 +471,16 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.desktopId = registerOutput<String>('desktopId');
-    this.snapshotName = registerOutput<String>('snapshotName');
-    this.sourceDiskType = registerOutput<String>('sourceDiskType');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    desktopId = registerOutput<String>('desktopId');
+    snapshotName = registerOutput<String>('snapshotName');
+    sourceDiskType = registerOutput<String>('sourceDiskType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -497,15 +501,15 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.desktopId = registerOutput<String>('desktopId');
-    this.snapshotName = registerOutput<String>('snapshotName');
-    this.sourceDiskType = registerOutput<String>('sourceDiskType');
-    this.status = registerOutput<String>('status');
+         'alicloud:eds/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    desktopId = registerOutput<String>('desktopId');
+    snapshotName = registerOutput<String>('snapshotName');
+    sourceDiskType = registerOutput<String>('sourceDiskType');
+    status = registerOutput<String>('status');
   }
 }

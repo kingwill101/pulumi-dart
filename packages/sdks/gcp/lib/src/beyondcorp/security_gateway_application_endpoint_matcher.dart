@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityGatewayApplicationEndpointMatcher {
   /// Required. Hostname of the application.
   final pulumi.Input<String> hostname;
+
   /// Optional. Ports of the application.
   final pulumi.Input<List<int>> ports;
 
@@ -17,17 +18,15 @@ class SecurityGatewayApplicationEndpointMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostname': hostname,
-      'ports': ports,
-    };
+    return <String, dynamic>{'hostname': hostname, 'ports': ports};
   }
 
-  factory SecurityGatewayApplicationEndpointMatcher.fromMap(Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationEndpointMatcher.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityGatewayApplicationEndpointMatcher(
-      hostname: (map['hostname'] as String).input(),
-      ports: ((map['ports'] as List).cast<int>()).input(),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      ports: pulumi.Input.fromValue((map['ports'] as List).cast<int>()),
     );
   }
 }
-

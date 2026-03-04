@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepParallelConfigStepExecutionApprovalConfig {
   /// ARN of the IAM role for approval.
   final pulumi.Input<String> approvalRole;
+
   /// Timeout in minutes for the approval.
   final pulumi.Input<int>? timeoutMinutes;
 
@@ -23,11 +24,16 @@ class PlanWorkflowStepParallelConfigStepExecutionApprovalConfig {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepExecutionApprovalConfig.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepExecutionApprovalConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepExecutionApprovalConfig(
-      approvalRole: (map['approvalRole'] as String).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
+      approvalRole: pulumi.Input.fromValue(map['approvalRole'] as String),
+      timeoutMinutes: (() {
+        final guardedValue = map['timeoutMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

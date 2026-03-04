@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_tap_args.dart';
-import 'network_tap_properties_response_destinations.dart';
 import 'system_data_response.dart';
 
 /// The Network Tap resource definition.
@@ -243,30 +242,43 @@ import 'system_data_response.dart';
 class NetworkTap extends pulumi.CustomResource {
   /// Administrative state of the resource. Example -Enabled/Disabled
   late final pulumi.Output<String> administrativeState;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the configurations state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// List of destinations to send the filter traffic.
-  late final pulumi.Output<List<NetworkTapPropertiesResponseDestinations>> destinations;
+  late final pulumi.Output<List<Map<String, dynamic>>> destinations;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ARM resource ID of the Network Packet Broker.
   late final pulumi.Output<String> networkPacketBrokerId;
+
   /// Polling type.
   late final pulumi.Output<String?> pollingType;
+
   /// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of Network Tap provisioning.
   late final pulumi.Output<String> provisioningState;
+
   /// Source Tap Rule Id. ARM Resource ID of the Network Tap Rule.
   late final pulumi.Output<String> sourceTapRuleId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -279,24 +291,24 @@ class NetworkTap extends pulumi.CustomResource {
     NetworkTapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:NetworkTap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.destinations = registerOutput<List<NetworkTapPropertiesResponseDestinations>>('destinations');
-    this.location = registerOutput<String>('location');
+         'azure-native:managednetworkfabric:NetworkTap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkPacketBrokerId = registerOutput<String>('networkPacketBrokerId');
-    this.pollingType = registerOutput<String?>('pollingType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceTapRuleId = registerOutput<String>('sourceTapRuleId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkPacketBrokerId = registerOutput<String>('networkPacketBrokerId');
+    pollingType = registerOutput<String?>('pollingType');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceTapRuleId = registerOutput<String>('sourceTapRuleId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -4,16 +4,17 @@ enum GoogleCloudDatacatalogV1DatabaseTableSpecType {
   native("NATIVE"),
   external("EXTERNAL");
 
-  const GoogleCloudDatacatalogV1DatabaseTableSpecType(this.value);
-  final String value;
+  const GoogleCloudDatacatalogV1DatabaseTableSpecType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDatacatalogV1DatabaseTableSpecType fromValue(String value) {
     for (final item in GoogleCloudDatacatalogV1DatabaseTableSpecType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogV1DatabaseTableSpecType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogV1DatabaseTableSpecType value: $value',
+    );
   }
 }
-

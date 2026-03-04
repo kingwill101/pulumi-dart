@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizationProfileResponse {
   /// The approved time
   final pulumi.Input<String> approvedTime;
+
   /// The approver
   final pulumi.Input<String> approver;
+
   /// The requested time
   final pulumi.Input<String> requestedTime;
+
   /// The requester
   final pulumi.Input<String> requester;
+
   /// The requester object id
   final pulumi.Input<String> requesterObjectId;
 
@@ -41,12 +45,13 @@ class AuthorizationProfileResponse {
 
   factory AuthorizationProfileResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationProfileResponse(
-      approvedTime: (map['approvedTime'] as String).input(),
-      approver: (map['approver'] as String).input(),
-      requestedTime: (map['requestedTime'] as String).input(),
-      requester: (map['requester'] as String).input(),
-      requesterObjectId: (map['requesterObjectId'] as String).input(),
+      approvedTime: pulumi.Input.fromValue(map['approvedTime'] as String),
+      approver: pulumi.Input.fromValue(map['approver'] as String),
+      requestedTime: pulumi.Input.fromValue(map['requestedTime'] as String),
+      requester: pulumi.Input.fromValue(map['requester'] as String),
+      requesterObjectId: pulumi.Input.fromValue(
+        map['requesterObjectId'] as String,
+      ),
     );
   }
 }
-

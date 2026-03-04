@@ -267,29 +267,40 @@ import 'order_v1_state.dart';
 class OrderV1 extends pulumi.CustomResource {
   /// The container reference / where to find the container.
   late final pulumi.Output<String> containerRef;
+
   /// The date the order was created.
   late final pulumi.Output<String> created;
+
   /// The creator of the order.
   late final pulumi.Output<String> creatorId;
+
   /// Dictionary containing the order metadata used to generate the order. The structure is described below.
   late final pulumi.Output<OrderV1Meta> meta;
+
   /// The order reference / where to find the order.
   late final pulumi.Output<String> orderRef;
+
   /// The region in which to obtain the V1 KeyManager client.
   /// A KeyManager client is needed to create a order. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// V1 order.
   late final pulumi.Output<String> region;
+
   /// The secret reference / where to find the secret.
   late final pulumi.Output<String> secretRef;
+
   /// The status of the order.
   late final pulumi.Output<String> status;
+
   /// The sub status of the order.
   late final pulumi.Output<String> subStatus;
+
   /// The sub status message of the order.
   late final pulumi.Output<String> subStatusMessage;
+
   /// The type of key to be generated. Must be one of `asymmetric`, `key`.
   late final pulumi.Output<String> type;
+
   /// The date the order was last updated.
   late final pulumi.Output<String> updated;
 
@@ -302,23 +313,23 @@ class OrderV1 extends pulumi.CustomResource {
     OrderV1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:keymanager/orderV1:OrderV1',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRef = registerOutput<String>('containerRef');
-    this.created = registerOutput<String>('created');
-    this.creatorId = registerOutput<String>('creatorId');
-    this.meta = registerOutput<OrderV1Meta>('meta');
-    this.orderRef = registerOutput<String>('orderRef');
-    this.region = registerOutput<String>('region');
-    this.secretRef = registerOutput<String>('secretRef');
-    this.status = registerOutput<String>('status');
-    this.subStatus = registerOutput<String>('subStatus');
-    this.subStatusMessage = registerOutput<String>('subStatusMessage');
-    this.type = registerOutput<String>('type');
-    this.updated = registerOutput<String>('updated');
+         'openstack:keymanager/orderV1:OrderV1',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRef = registerOutput<String>('containerRef');
+    created = registerOutput<String>('created');
+    creatorId = registerOutput<String>('creatorId');
+    meta = registerOutput<OrderV1Meta>('meta');
+    orderRef = registerOutput<String>('orderRef');
+    region = registerOutput<String>('region');
+    secretRef = registerOutput<String>('secretRef');
+    status = registerOutput<String>('status');
+    subStatus = registerOutput<String>('subStatus');
+    subStatusMessage = registerOutput<String>('subStatusMessage');
+    type = registerOutput<String>('type');
+    updated = registerOutput<String>('updated');
   }
 
   /// Gets an existing [OrderV1] resource's state with the given [name] and [id].
@@ -339,22 +350,22 @@ class OrderV1 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:keymanager/orderV1:OrderV1',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerRef = registerOutput<String>('containerRef');
-    this.created = registerOutput<String>('created');
-    this.creatorId = registerOutput<String>('creatorId');
-    this.meta = registerOutput<OrderV1Meta>('meta');
-    this.orderRef = registerOutput<String>('orderRef');
-    this.region = registerOutput<String>('region');
-    this.secretRef = registerOutput<String>('secretRef');
-    this.status = registerOutput<String>('status');
-    this.subStatus = registerOutput<String>('subStatus');
-    this.subStatusMessage = registerOutput<String>('subStatusMessage');
-    this.type = registerOutput<String>('type');
-    this.updated = registerOutput<String>('updated');
+         'openstack:keymanager/orderV1:OrderV1',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerRef = registerOutput<String>('containerRef');
+    created = registerOutput<String>('created');
+    creatorId = registerOutput<String>('creatorId');
+    meta = registerOutput<OrderV1Meta>('meta');
+    orderRef = registerOutput<String>('orderRef');
+    region = registerOutput<String>('region');
+    secretRef = registerOutput<String>('secretRef');
+    status = registerOutput<String>('status');
+    subStatus = registerOutput<String>('subStatus');
+    subStatusMessage = registerOutput<String>('subStatusMessage');
+    type = registerOutput<String>('type');
+    updated = registerOutput<String>('updated');
   }
 }

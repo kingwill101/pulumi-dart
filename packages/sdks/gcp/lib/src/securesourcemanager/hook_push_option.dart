@@ -11,20 +11,19 @@ class HookPushOption {
 
   /// Creates a new [HookPushOption].
   /// [branchFilter] Trigger hook for matching branches only.
-  HookPushOption({
-    this.branchFilter,
-  });
+  HookPushOption({this.branchFilter});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'branchFilter': ?branchFilter,
-    };
+    return <String, dynamic>{'branchFilter': ?branchFilter};
   }
 
   factory HookPushOption.fromMap(Map<String, dynamic> map) {
     return HookPushOption(
-      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter']! as String).input(),
+      branchFilter: (() {
+        final guardedValue = map['branchFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

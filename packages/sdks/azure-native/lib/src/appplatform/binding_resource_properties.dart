@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BindingResourceProperties {
   /// Binding parameters of the Binding resource
   final pulumi.Input<Map<String, String>>? bindingParameters;
+
   /// The key of the bound resource
   final pulumi.Input<String>? key;
+
   /// The Azure resource id of the bound resource
   final pulumi.Input<String>? resourceId;
 
@@ -31,10 +33,23 @@ class BindingResourceProperties {
 
   factory BindingResourceProperties.fromMap(Map<String, dynamic> map) {
     return BindingResourceProperties(
-      bindingParameters: map['bindingParameters'] == null ? null : ((map['bindingParameters']! as Map).cast<String, String>()).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      bindingParameters: (() {
+        final guardedValue = map['bindingParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

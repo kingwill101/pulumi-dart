@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceSecurity {
   /// Whether to enable Kerberos Armoring. Defaults to `false`.
   final pulumi.Input<bool>? kerberosArmoringEnabled;
+
   /// Whether to enable Kerberos RC4 Encryption. Defaults to `false`.
   final pulumi.Input<bool>? kerberosRc4EncryptionEnabled;
+
   /// Whether to enable legacy NTLM v1 support. Defaults to `false`.
   final pulumi.Input<bool>? ntlmV1Enabled;
+
   /// Whether to synchronize Kerberos password hashes to the managed domain. Defaults to `false`.
   final pulumi.Input<bool>? syncKerberosPasswords;
+
   /// Whether to synchronize NTLM password hashes to the managed domain. Defaults to `false`.
   final pulumi.Input<bool>? syncNtlmPasswords;
+
   /// Whether to synchronize on-premises password hashes to the managed domain. Defaults to `false`.
   final pulumi.Input<bool>? syncOnPremPasswords;
+
   /// Whether to enable legacy TLS v1 support. Defaults to `false`.
   final pulumi.Input<bool>? tlsV1Enabled;
 
@@ -50,14 +56,41 @@ class ServiceSecurity {
 
   factory ServiceSecurity.fromMap(Map<String, dynamic> map) {
     return ServiceSecurity(
-      kerberosArmoringEnabled: map['kerberosArmoringEnabled'] == null ? null : (map['kerberosArmoringEnabled']! as bool).input(),
-      kerberosRc4EncryptionEnabled: map['kerberosRc4EncryptionEnabled'] == null ? null : (map['kerberosRc4EncryptionEnabled']! as bool).input(),
-      ntlmV1Enabled: map['ntlmV1Enabled'] == null ? null : (map['ntlmV1Enabled']! as bool).input(),
-      syncKerberosPasswords: map['syncKerberosPasswords'] == null ? null : (map['syncKerberosPasswords']! as bool).input(),
-      syncNtlmPasswords: map['syncNtlmPasswords'] == null ? null : (map['syncNtlmPasswords']! as bool).input(),
-      syncOnPremPasswords: map['syncOnPremPasswords'] == null ? null : (map['syncOnPremPasswords']! as bool).input(),
-      tlsV1Enabled: map['tlsV1Enabled'] == null ? null : (map['tlsV1Enabled']! as bool).input(),
+      kerberosArmoringEnabled: (() {
+        final guardedValue = map['kerberosArmoringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kerberosRc4EncryptionEnabled: (() {
+        final guardedValue = map['kerberosRc4EncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ntlmV1Enabled: (() {
+        final guardedValue = map['ntlmV1Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      syncKerberosPasswords: (() {
+        final guardedValue = map['syncKerberosPasswords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      syncNtlmPasswords: (() {
+        final guardedValue = map['syncNtlmPasswords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      syncOnPremPasswords: (() {
+        final guardedValue = map['syncOnPremPasswords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsV1Enabled: (() {
+        final guardedValue = map['tlsV1Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

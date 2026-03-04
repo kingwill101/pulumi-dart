@@ -339,13 +339,17 @@ import 'migrate_agent_model_response_system_data.dart';
 class MigrateAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// MigrateAgent model properties.
   late final pulumi.Output<MigrateAgentModelPropertiesResponse> properties;
   late final pulumi.Output<MigrateAgentModelResponseSystemData> systemData;
+
   /// Gets or sets the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -358,16 +362,20 @@ class MigrateAgent extends pulumi.CustomResource {
     MigrateAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:MigrateAgent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:migrate:MigrateAgent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MigrateAgentModelPropertiesResponse>('properties');
-    this.systemData = registerOutput<MigrateAgentModelResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MigrateAgentModelPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<MigrateAgentModelResponseSystemData>(
+      'systemData',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

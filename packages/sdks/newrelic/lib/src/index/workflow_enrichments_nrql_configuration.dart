@@ -8,20 +8,17 @@ class WorkflowEnrichmentsNrqlConfiguration {
 
   /// Creates a new [WorkflowEnrichmentsNrqlConfiguration].
   /// [query] enrichment's NRQL query
-  WorkflowEnrichmentsNrqlConfiguration({
-    required this.query,
-  });
+  WorkflowEnrichmentsNrqlConfiguration({required this.query});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'query': query,
-    };
+    return <String, dynamic>{'query': query};
   }
 
-  factory WorkflowEnrichmentsNrqlConfiguration.fromMap(Map<String, dynamic> map) {
+  factory WorkflowEnrichmentsNrqlConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowEnrichmentsNrqlConfiguration(
-      query: (map['query'] as String).input(),
+      query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
-

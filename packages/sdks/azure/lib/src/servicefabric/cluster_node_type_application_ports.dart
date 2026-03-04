@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeTypeApplicationPorts {
   /// The end of the Application Port Range on this Node Type.
   final pulumi.Input<int> endPort;
+
   /// The start of the Application Port Range on this Node Type.
   final pulumi.Input<int> startPort;
 
@@ -17,17 +18,13 @@ class ClusterNodeTypeApplicationPorts {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endPort': endPort,
-      'startPort': startPort,
-    };
+    return <String, dynamic>{'endPort': endPort, 'startPort': startPort};
   }
 
   factory ClusterNodeTypeApplicationPorts.fromMap(Map<String, dynamic> map) {
     return ClusterNodeTypeApplicationPorts(
-      endPort: (map['endPort'] as int).input(),
-      startPort: (map['startPort'] as int).input(),
+      endPort: pulumi.Input.fromValue(map['endPort'] as int),
+      startPort: pulumi.Input.fromValue(map['startPort'] as int),
     );
   }
 }
-

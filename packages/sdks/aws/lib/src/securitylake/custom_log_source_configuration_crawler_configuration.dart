@@ -8,20 +8,17 @@ class CustomLogSourceConfigurationCrawlerConfiguration {
 
   /// Creates a new [CustomLogSourceConfigurationCrawlerConfiguration].
   /// [roleArn] The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to be used by the AWS Glue crawler.
-  CustomLogSourceConfigurationCrawlerConfiguration({
-    required this.roleArn,
-  });
+  CustomLogSourceConfigurationCrawlerConfiguration({required this.roleArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'roleArn': roleArn,
-    };
+    return <String, dynamic>{'roleArn': roleArn};
   }
 
-  factory CustomLogSourceConfigurationCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CustomLogSourceConfigurationCrawlerConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomLogSourceConfigurationCrawlerConfiguration(
-      roleArn: (map['roleArn'] as String).input(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

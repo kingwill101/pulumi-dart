@@ -6,34 +6,49 @@ import 'system_data_response.dart';
 class GetNetworkConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// AAD Join type.
   final String domainJoinType;
+
   /// Active Directory domain name
   final String? domainName;
+
   /// The password for the account used to join domain
   final String? domainPassword;
+
   /// The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
   final String? domainUsername;
+
   /// Overall health status of the network connection. Health checks are run on creation, update, and periodically to validate the network connection.
   final String healthCheckStatus;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The name for resource group where NICs will be placed.
   final String? networkingResourceGroupName;
+
   /// Active Directory domain Organization Unit (OU)
   final String? organizationUnit;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// The subnet to attach Virtual Machines to
   final String subnetId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -98,21 +113,46 @@ class GetNetworkConnectionResult {
     return GetNetworkConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       domainJoinType: map['domainJoinType'] as String,
-      domainName: map['domainName'] == null ? null : map['domainName']! as String,
-      domainPassword: map['domainPassword'] == null ? null : map['domainPassword']! as String,
-      domainUsername: map['domainUsername'] == null ? null : map['domainUsername']! as String,
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      domainPassword: (() {
+        final guardedValue = map['domainPassword'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      domainUsername: (() {
+        final guardedValue = map['domainUsername'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       healthCheckStatus: map['healthCheckStatus'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      networkingResourceGroupName: map['networkingResourceGroupName'] == null ? null : map['networkingResourceGroupName']! as String,
-      organizationUnit: map['organizationUnit'] == null ? null : map['organizationUnit']! as String,
+      networkingResourceGroupName: (() {
+        final guardedValue = map['networkingResourceGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      organizationUnit: (() {
+        final guardedValue = map['organizationUnit'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
       subnetId: map['subnetId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

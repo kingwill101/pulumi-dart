@@ -3,16 +3,15 @@ enum DnsEndpointType {
   valueStandard("Standard"),
   valueAzureDnsZone("AzureDnsZone");
 
-  const DnsEndpointType(this.value);
-  final String value;
+  const DnsEndpointType(this.wireValue);
+  final String wireValue;
 
   static DnsEndpointType fromValue(String value) {
     for (final item in DnsEndpointType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DnsEndpointType value: $value');
   }
 }
-

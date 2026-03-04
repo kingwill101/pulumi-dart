@@ -9,20 +9,19 @@ class AaaaRecordResponse {
 
   /// Creates a new [AaaaRecordResponse].
   /// [ipv6Address] The IPv6 address of this AAAA record.
-  AaaaRecordResponse({
-    this.ipv6Address,
-  });
+  AaaaRecordResponse({this.ipv6Address});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipv6Address': ?ipv6Address,
-    };
+    return <String, dynamic>{'ipv6Address': ?ipv6Address};
   }
 
   factory AaaaRecordResponse.fromMap(Map<String, dynamic> map) {
     return AaaaRecordResponse(
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      ipv6Address: (() {
+        final guardedValue = map['ipv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

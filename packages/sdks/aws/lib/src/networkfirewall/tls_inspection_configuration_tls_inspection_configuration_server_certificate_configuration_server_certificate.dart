@@ -13,15 +13,18 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceArn': ?resourceArn,
-    };
+    return <String, dynamic>{'resourceArn': ?resourceArn};
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap(Map<String, dynamic> map) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate(
-      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'domain_devices_hostdev_subsys_pci_source_address_zpci.dart';
 class DomainDevicesHostdevSubsysPciSourceAddress {
   /// Sets the bus number for the PCI device's address.
   final pulumi.Input<double>? bus;
+
   /// Specifies the domain number for the PCI device's address.
   final pulumi.Input<double>? domain;
+
   /// Defines the function number of the PCI device's address.
   final pulumi.Input<double>? function;
+
   /// Indicates whether multi-function capability is enabled for the PCI device.
   final pulumi.Input<String>? multiFunction;
+
   /// Specifies the slot number in the PCI bus for the device.
   final pulumi.Input<double>? slot;
+
   /// Configures the settings specific to zPCI addressing for the PCI device.
   final pulumi.Input<DomainDevicesHostdevSubsysPciSourceAddressZpci>? zpci;
 
@@ -40,19 +45,52 @@ class DomainDevicesHostdevSubsysPciSourceAddress {
       'function': ?function,
       'multiFunction': ?multiFunction,
       'slot': ?slot,
-      'zpci': ?pulumi.Input.mapOptionalInputValue<DomainDevicesHostdevSubsysPciSourceAddressZpci, Map<String, dynamic>>(zpci, (value) => value.toMap()),
+      'zpci':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesHostdevSubsysPciSourceAddressZpci,
+            Map<String, dynamic>
+          >(zpci, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesHostdevSubsysPciSourceAddress.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesHostdevSubsysPciSourceAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesHostdevSubsysPciSourceAddress(
-      bus: map['bus'] == null ? null : (map['bus']! as double).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as double).input(),
-      function: map['function'] == null ? null : (map['function']! as double).input(),
-      multiFunction: map['multiFunction'] == null ? null : (map['multiFunction']! as String).input(),
-      slot: map['slot'] == null ? null : (map['slot']! as double).input(),
-      zpci: map['zpci'] == null ? null : (DomainDevicesHostdevSubsysPciSourceAddressZpci.fromMap((map['zpci']! as Map).cast<String, dynamic>())).input(),
+      bus: (() {
+        final guardedValue = map['bus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      function: (() {
+        final guardedValue = map['function'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      multiFunction: (() {
+        final guardedValue = map['multiFunction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slot: (() {
+        final guardedValue = map['slot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      zpci: (() {
+        final guardedValue = map['zpci'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesHostdevSubsysPciSourceAddressZpci.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

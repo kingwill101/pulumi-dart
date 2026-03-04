@@ -2,16 +2,15 @@
 enum NotificationType {
   email("Email");
 
-  const NotificationType(this.value);
-  final String value;
+  const NotificationType(this.wireValue);
+  final String wireValue;
 
   static NotificationType fromValue(String value) {
     for (final item in NotificationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotificationType value: $value');
   }
 }
-

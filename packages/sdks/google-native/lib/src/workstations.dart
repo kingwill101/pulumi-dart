@@ -1,5 +1,3 @@
-library module_workstations;
-
 export 'workstations/accelerator.dart';
 export 'workstations/accelerator_response.dart';
 export 'workstations/audit_config.dart';

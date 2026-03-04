@@ -7,28 +7,40 @@ import 'honeypot_probe_honeypot_bind_list.dart';
 class HoneypotProbeState {
   /// ARP spoofing detection.**true**: Enable **false**: Disabled
   final pulumi.Input<bool>? arp;
+
   /// The ID of the management node.
   final pulumi.Input<String>? controlNodeId;
+
   /// Probe display name.
   final pulumi.Input<String>? displayName;
+
   /// Configure the service.See the following `Block HoneypotBindList`.
   final pulumi.Input<List<HoneypotProbeHoneypotBindList>>? honeypotBindLists;
+
   /// The first ID of the resource
   final pulumi.Input<String>? honeypotProbeId;
+
   /// Ping scan detection. Value: **true**: Enable **false**: Disabled
   final pulumi.Input<bool>? ping;
+
   /// Probe type, support `host_probe` and `vpc_black_hole_probe`.
   final pulumi.Input<String>? probeType;
+
   /// The version of the probe.
   final pulumi.Input<String>? probeVersion;
+
   /// The IP address of the proxy.
   final pulumi.Input<String>? proxyIp;
+
   /// Listen to the IP address list.
   final pulumi.Input<List<String>>? serviceIpLists;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
+
   /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
   final pulumi.Input<String>? uuid;
+
   /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
   final pulumi.Input<String>? vpcId;
 
@@ -67,7 +79,18 @@ class HoneypotProbeState {
       'arp': ?arp,
       'controlNodeId': ?controlNodeId,
       'displayName': ?displayName,
-      'honeypotBindLists': ?pulumi.Input.mapOptionalInputValue<List<HoneypotProbeHoneypotBindList>, List<Map<String, dynamic>>>(honeypotBindLists, (value) => pulumi.Input.encodeList<HoneypotProbeHoneypotBindList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'honeypotBindLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HoneypotProbeHoneypotBindList>,
+            List<Map<String, dynamic>>
+          >(
+            honeypotBindLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HoneypotProbeHoneypotBindList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'honeypotProbeId': ?honeypotProbeId,
       'ping': ?ping,
       'probeType': ?probeType,
@@ -82,20 +105,78 @@ class HoneypotProbeState {
 
   factory HoneypotProbeState.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeState(
-      arp: map['arp'] == null ? null : (map['arp']! as bool).input(),
-      controlNodeId: map['controlNodeId'] == null ? null : (map['controlNodeId']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      honeypotBindLists: map['honeypotBindLists'] == null ? null : (pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(map['honeypotBindLists']!, (value) => HoneypotProbeHoneypotBindList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      honeypotProbeId: map['honeypotProbeId'] == null ? null : (map['honeypotProbeId']! as String).input(),
-      ping: map['ping'] == null ? null : (map['ping']! as bool).input(),
-      probeType: map['probeType'] == null ? null : (map['probeType']! as String).input(),
-      probeVersion: map['probeVersion'] == null ? null : (map['probeVersion']! as String).input(),
-      proxyIp: map['proxyIp'] == null ? null : (map['proxyIp']! as String).input(),
-      serviceIpLists: map['serviceIpLists'] == null ? null : ((map['serviceIpLists']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      arp: (() {
+        final guardedValue = map['arp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      controlNodeId: (() {
+        final guardedValue = map['controlNodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      honeypotBindLists: (() {
+        final guardedValue = map['honeypotBindLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(
+            guardedValue,
+            (value) => HoneypotProbeHoneypotBindList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      honeypotProbeId: (() {
+        final guardedValue = map['honeypotProbeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ping: (() {
+        final guardedValue = map['ping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      probeType: (() {
+        final guardedValue = map['probeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      probeVersion: (() {
+        final guardedValue = map['probeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxyIp: (() {
+        final guardedValue = map['proxyIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceIpLists: (() {
+        final guardedValue = map['serviceIpLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

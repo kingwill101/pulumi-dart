@@ -13,31 +13,43 @@ class V2PolicyOrchestratorState {
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   final pulumi.Input<String>? action;
+
   /// Output only. Timestamp when the policy orchestrator resource was created.
   final pulumi.Input<String>? createTime;
+
   /// Optional. Freeform text describing the purpose of the resource.
   final pulumi.Input<String>? description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Immutable. Identifier. In form of
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
   final pulumi.Input<String>? name;
+
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResource>? orchestratedResource;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResource>?
+  orchestratedResource;
+
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestrationScope>? orchestrationScope;
+  final pulumi.Input<V2PolicyOrchestratorOrchestrationScope>?
+  orchestrationScope;
+
   /// Describes the state of the orchestration process.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorOrchestrationState>>? orchestrationStates;
+  final pulumi.Input<List<V2PolicyOrchestratorOrchestrationState>>?
+  orchestrationStates;
+
   /// Required. The logical identifier of the policy orchestrator, with the following
   /// restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -46,15 +58,19 @@ class V2PolicyOrchestratorState {
   /// * Must end with a number or a letter.
   /// * Must be unique within the parent.
   final pulumi.Input<String>? policyOrchestratorId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// Output only. Set to true, if the there are ongoing changes being applied by the
   /// orchestrator.
   final pulumi.Input<bool>? reconciling;
+
   /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -63,6 +79,7 @@ class V2PolicyOrchestratorState {
   /// instead of an enum, to avoid the need of propagating new states to all the
   /// client code.
   final pulumi.Input<String>? state;
+
   /// Output only. Timestamp when the policy orchestrator resource was last modified.
   final pulumi.Input<String>? updateTime;
 
@@ -108,9 +125,28 @@ class V2PolicyOrchestratorState {
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
       'name': ?name,
-      'orchestratedResource': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestratedResource, Map<String, dynamic>>(orchestratedResource, (value) => value.toMap()),
-      'orchestrationScope': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestrationScope, Map<String, dynamic>>(orchestrationScope, (value) => value.toMap()),
-      'orchestrationStates': ?pulumi.Input.mapOptionalInputValue<List<V2PolicyOrchestratorOrchestrationState>, List<Map<String, dynamic>>>(orchestrationStates, (value) => pulumi.Input.encodeList<V2PolicyOrchestratorOrchestrationState, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'orchestratedResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorOrchestratedResource,
+            Map<String, dynamic>
+          >(orchestratedResource, (value) => value.toMap()),
+      'orchestrationScope':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorOrchestrationScope,
+            Map<String, dynamic>
+          >(orchestrationScope, (value) => value.toMap()),
+      'orchestrationStates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<V2PolicyOrchestratorOrchestrationState>,
+            List<Map<String, dynamic>>
+          >(
+            orchestrationStates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  V2PolicyOrchestratorOrchestrationState,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'policyOrchestratorId': ?policyOrchestratorId,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
@@ -122,22 +158,102 @@ class V2PolicyOrchestratorState {
 
   factory V2PolicyOrchestratorState.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorState(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orchestratedResource: map['orchestratedResource'] == null ? null : (V2PolicyOrchestratorOrchestratedResource.fromMap((map['orchestratedResource']! as Map).cast<String, dynamic>())).input(),
-      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorOrchestrationScope.fromMap((map['orchestrationScope']! as Map).cast<String, dynamic>())).input(),
-      orchestrationStates: map['orchestrationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorOrchestrationState>(map['orchestrationStates']!, (value) => V2PolicyOrchestratorOrchestrationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyOrchestratorId: map['policyOrchestratorId'] == null ? null : (map['policyOrchestratorId']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orchestratedResource: (() {
+        final guardedValue = map['orchestratedResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorOrchestratedResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      orchestrationScope: (() {
+        final guardedValue = map['orchestrationScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorOrchestrationScope.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      orchestrationStates: (() {
+        final guardedValue = map['orchestrationStates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<V2PolicyOrchestratorOrchestrationState>(
+            guardedValue,
+            (value) => V2PolicyOrchestratorOrchestrationState.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      policyOrchestratorId: (() {
+        final guardedValue = map['policyOrchestratorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      reconciling: (() {
+        final guardedValue = map['reconciling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

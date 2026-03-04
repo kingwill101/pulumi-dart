@@ -5,16 +5,15 @@ enum ReportState {
   succeeded("SUCCEEDED"),
   failed("FAILED");
 
-  const ReportState(this.value);
-  final String value;
+  const ReportState(this.wireValue);
+  final String wireValue;
 
   static ReportState fromValue(String value) {
     for (final item in ReportState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReportState value: $value');
   }
 }
-

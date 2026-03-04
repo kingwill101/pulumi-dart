@@ -7,9 +7,12 @@ import 'target_cost_allocation_resource_response.dart';
 /// Resource details of the cost allocation rule
 class CostAllocationRuleDetailsResponse {
   /// Source resources for cost allocation. At this time, this list can contain no more than one element.
-  final pulumi.Input<List<SourceCostAllocationResourceResponse>>? sourceResources;
+  final pulumi.Input<List<SourceCostAllocationResourceResponse>>?
+  sourceResources;
+
   /// Target resources for cost allocation. At this time, this list can contain no more than one element.
-  final pulumi.Input<List<TargetCostAllocationResourceResponse>>? targetResources;
+  final pulumi.Input<List<TargetCostAllocationResourceResponse>>?
+  targetResources;
 
   /// Creates a new [CostAllocationRuleDetailsResponse].
   /// [sourceResources] Source resources for cost allocation. At this time, this list can contain no more than one element.
@@ -21,16 +24,59 @@ class CostAllocationRuleDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceResources': ?pulumi.Input.mapOptionalInputValue<List<SourceCostAllocationResourceResponse>, List<Map<String, dynamic>>>(sourceResources, (value) => pulumi.Input.encodeList<SourceCostAllocationResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'targetResources': ?pulumi.Input.mapOptionalInputValue<List<TargetCostAllocationResourceResponse>, List<Map<String, dynamic>>>(targetResources, (value) => pulumi.Input.encodeList<TargetCostAllocationResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceResources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SourceCostAllocationResourceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            sourceResources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SourceCostAllocationResourceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'targetResources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TargetCostAllocationResourceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            targetResources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TargetCostAllocationResourceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CostAllocationRuleDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CostAllocationRuleDetailsResponse(
-      sourceResources: map['sourceResources'] == null ? null : (pulumi.Input.decodeList<SourceCostAllocationResourceResponse>(map['sourceResources']!, (value) => SourceCostAllocationResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetResources: map['targetResources'] == null ? null : (pulumi.Input.decodeList<TargetCostAllocationResourceResponse>(map['targetResources']!, (value) => TargetCostAllocationResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceResources: (() {
+        final guardedValue = map['sourceResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SourceCostAllocationResourceResponse>(
+            guardedValue,
+            (value) => SourceCostAllocationResourceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      targetResources: (() {
+        final guardedValue = map['targetResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TargetCostAllocationResourceResponse>(
+            guardedValue,
+            (value) => TargetCostAllocationResourceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

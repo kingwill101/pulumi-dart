@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserManagedOpenAIProfileResponse {
   /// Embedding Model Deployment Name
   final pulumi.Input<String> embeddingModelDeploymentName;
+
   /// Embedding Model Type
   final pulumi.Input<String> embeddingModelType;
+
   /// GPT Model Deployment Name
   final pulumi.Input<String> gptModelDeploymentName;
+
   /// Resource Id of OpenAI Resource
   final pulumi.Input<String> id;
 
@@ -36,11 +39,16 @@ class UserManagedOpenAIProfileResponse {
 
   factory UserManagedOpenAIProfileResponse.fromMap(Map<String, dynamic> map) {
     return UserManagedOpenAIProfileResponse(
-      embeddingModelDeploymentName: (map['embeddingModelDeploymentName'] as String).input(),
-      embeddingModelType: (map['embeddingModelType'] as String).input(),
-      gptModelDeploymentName: (map['gptModelDeploymentName'] as String).input(),
-      id: (map['id'] as String).input(),
+      embeddingModelDeploymentName: pulumi.Input.fromValue(
+        map['embeddingModelDeploymentName'] as String,
+      ),
+      embeddingModelType: pulumi.Input.fromValue(
+        map['embeddingModelType'] as String,
+      ),
+      gptModelDeploymentName: pulumi.Input.fromValue(
+        map['gptModelDeploymentName'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

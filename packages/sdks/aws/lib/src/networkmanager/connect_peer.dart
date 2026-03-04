@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connect_peer_args.dart';
 import 'connect_peer_bgp_options.dart';
-import 'connect_peer_configuration.dart';
 import 'connect_peer_state.dart';
 
 /// Manages an AWS Network Manager Connect Peer.
@@ -712,34 +711,48 @@ import 'connect_peer_state.dart';
 class ConnectPeer extends pulumi.CustomResource {
   /// ARN of the Connect peer.
   late final pulumi.Output<String> arn;
+
   /// Connect peer BGP options. See bgp_options for more information.
   late final pulumi.Output<ConnectPeerBgpOptions> bgpOptions;
+
   /// Configuration of the Connect peer.
-  late final pulumi.Output<List<ConnectPeerConfiguration>> configurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> configurations;
+
   /// ID of the connection attachment.
   late final pulumi.Output<String> connectAttachmentId;
+
   /// ID of the Connect peer.
   late final pulumi.Output<String> connectPeerId;
+
   /// Connect peer core network address.
   late final pulumi.Output<String?> coreNetworkAddress;
+
   /// ID of a core network.
   late final pulumi.Output<String> coreNetworkId;
+
   /// Timestamp when the Connect peer was created.
   late final pulumi.Output<String> createdAt;
+
   /// Region where the peer is located.
   late final pulumi.Output<String> edgeLocation;
+
   /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
   late final pulumi.Output<List<String>?> insideCidrBlocks;
+
   /// Connect peer address.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> peerAddress;
+
   /// State of the Connect peer.
   late final pulumi.Output<String> state;
+
   /// Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   late final pulumi.Output<String?> subnetArn;
+
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -752,26 +765,28 @@ class ConnectPeer extends pulumi.CustomResource {
     ConnectPeerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/connectPeer:ConnectPeer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
-    this.configurations = registerOutput<List<ConnectPeerConfiguration>>('configurations');
-    this.connectAttachmentId = registerOutput<String>('connectAttachmentId');
-    this.connectPeerId = registerOutput<String>('connectPeerId');
-    this.coreNetworkAddress = registerOutput<String?>('coreNetworkAddress');
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.edgeLocation = registerOutput<String>('edgeLocation');
-    this.insideCidrBlocks = registerOutput<List<String>?>('insideCidrBlocks');
-    this.peerAddress = registerOutput<String>('peerAddress');
-    this.state = registerOutput<String>('state');
-    this.subnetArn = registerOutput<String?>('subnetArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:networkmanager/connectPeer:ConnectPeer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
+    configurations = registerOutput<List<Map<String, dynamic>>>(
+      'configurations',
+    );
+    connectAttachmentId = registerOutput<String>('connectAttachmentId');
+    connectPeerId = registerOutput<String>('connectPeerId');
+    coreNetworkAddress = registerOutput<String?>('coreNetworkAddress');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    createdAt = registerOutput<String>('createdAt');
+    edgeLocation = registerOutput<String>('edgeLocation');
+    insideCidrBlocks = registerOutput<List<String>?>('insideCidrBlocks');
+    peerAddress = registerOutput<String>('peerAddress');
+    state = registerOutput<String>('state');
+    subnetArn = registerOutput<String?>('subnetArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ConnectPeer] resource's state with the given [name] and [id].
@@ -792,25 +807,27 @@ class ConnectPeer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/connectPeer:ConnectPeer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
-    this.configurations = registerOutput<List<ConnectPeerConfiguration>>('configurations');
-    this.connectAttachmentId = registerOutput<String>('connectAttachmentId');
-    this.connectPeerId = registerOutput<String>('connectPeerId');
-    this.coreNetworkAddress = registerOutput<String?>('coreNetworkAddress');
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.edgeLocation = registerOutput<String>('edgeLocation');
-    this.insideCidrBlocks = registerOutput<List<String>?>('insideCidrBlocks');
-    this.peerAddress = registerOutput<String>('peerAddress');
+         'aws:networkmanager/connectPeer:ConnectPeer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    bgpOptions = registerOutput<ConnectPeerBgpOptions>('bgpOptions');
+    configurations = registerOutput<List<Map<String, dynamic>>>(
+      'configurations',
+    );
+    connectAttachmentId = registerOutput<String>('connectAttachmentId');
+    connectPeerId = registerOutput<String>('connectPeerId');
+    coreNetworkAddress = registerOutput<String?>('coreNetworkAddress');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    createdAt = registerOutput<String>('createdAt');
+    edgeLocation = registerOutput<String>('edgeLocation');
+    insideCidrBlocks = registerOutput<List<String>?>('insideCidrBlocks');
+    peerAddress = registerOutput<String>('peerAddress');
     this.state = registerOutput<String>('state');
-    this.subnetArn = registerOutput<String?>('subnetArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetArn = registerOutput<String?>('subnetArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

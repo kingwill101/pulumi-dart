@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkerResourceComposerV1beta1 {
   /// Optional. CPU request and limit for a single Airflow worker replica.
   final pulumi.Input<double>? cpu;
+
   /// Optional. Maximum number of workers for autoscaling.
   final pulumi.Input<int>? maxCount;
+
   /// Optional. Memory (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double>? memoryGb;
+
   /// Optional. Minimum number of workers for autoscaling.
   final pulumi.Input<int>? minCount;
+
   /// Optional. Storage (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double>? storageGb;
 
@@ -41,12 +45,31 @@ class WorkerResourceComposerV1beta1 {
 
   factory WorkerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkerResourceComposerV1beta1(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
-      minCount: map['minCount'] == null ? null : (map['minCount']! as int).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      maxCount: (() {
+        final guardedValue = map['maxCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      memoryGb: (() {
+        final guardedValue = map['memoryGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minCount: (() {
+        final guardedValue = map['minCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      storageGb: (() {
+        final guardedValue = map['storageGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

@@ -9,24 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersArgs {
   /// The cluster name.
   final pulumi.Input<String>? clusterName;
+
   /// The cluster states.
   final pulumi.Input<List<String>>? clusterStates;
+
   /// The cluster types.
   final pulumi.Input<List<String>>? clusterTypes;
+
   /// A list of Cluster IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The max results is used to list clusters for next page.
   final pulumi.Input<int>? maxResults;
+
   /// A regex string to filter results by Cluster name.
   final pulumi.Input<String>? nameRegex;
+
   /// The next token is used to list clusters for next page.
   final pulumi.Input<String>? nextToken;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The cluster payment types.
   final pulumi.Input<List<String>>? paymentTypes;
+
   /// The Resource Group ID.
   final pulumi.Input<String>? resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -74,18 +84,63 @@ class GetClustersArgs {
 
   factory GetClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetClustersArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      clusterStates: map['clusterStates'] == null ? null : ((map['clusterStates']! as List).cast<String>()).input(),
-      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes']! as List).cast<String>()).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      nextToken: map['nextToken'] == null ? null : (map['nextToken']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      paymentTypes: map['paymentTypes'] == null ? null : ((map['paymentTypes']! as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterStates: (() {
+        final guardedValue = map['clusterStates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      clusterTypes: (() {
+        final guardedValue = map['clusterTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maxResults: (() {
+        final guardedValue = map['maxResults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextToken: (() {
+        final guardedValue = map['nextToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentTypes: (() {
+        final guardedValue = map['paymentTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

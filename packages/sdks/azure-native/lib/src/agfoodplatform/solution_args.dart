@@ -10,10 +10,13 @@ import 'solution_properties.dart';
 class SolutionArgs {
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
+
   /// Solution resource properties.
   final pulumi.Input<SolutionProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// SolutionId for Data Manager For Agriculture Resource.
   final pulumi.Input<String>? solutionId;
 
@@ -31,8 +34,13 @@ class SolutionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataManagerForAgricultureResourceName': dataManagerForAgricultureResourceName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<SolutionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'dataManagerForAgricultureResourceName':
+          dataManagerForAgricultureResourceName,
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SolutionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'solutionId': ?solutionId,
     };
@@ -40,11 +48,26 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
-      properties: map['properties'] == null ? null : (SolutionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      solutionId: map['solutionId'] == null ? null : (map['solutionId']! as String).input(),
+      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(
+        map['dataManagerForAgricultureResourceName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SolutionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      solutionId: (() {
+        final guardedValue = map['solutionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

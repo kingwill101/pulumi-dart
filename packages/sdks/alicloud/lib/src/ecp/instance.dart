@@ -6,7 +6,7 @@ import 'instance_state.dart';
 ///
 /// For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://next.api.aliyun.com/document/cloudphone/2020-12-30/RunInstances).
 ///
-/// > **NOTE:** Available since v1.158.0.
+/// &gt; **NOTE:** Available since v1.158.0.
 ///
 /// ## Example Usage
 ///
@@ -407,38 +407,54 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Specifies whether to enable the auto-payment feature. Valid values:
   late final pulumi.Output<bool?> autoPay;
+
   /// Specifies whether to enable the auto-renewal feature. Valid values:
   late final pulumi.Output<bool?> autoRenew;
+
   /// The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
   late final pulumi.Output<int?> eipBandwidth;
+
   /// Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> force;
+
   /// The ID of the image.
   late final pulumi.Output<String> imageId;
+
   /// The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
   late final pulumi.Output<String> instanceName;
+
   /// The specifications of the ECP instance.
   late final pulumi.Output<String> instanceType;
+
   /// The name of the key pair that you want to use to connect to the instance.
   late final pulumi.Output<String?> keyPairName;
+
   /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
   late final pulumi.Output<String> paymentType;
+
   /// The subscription duration. Default value: `1`. Valid values:
   /// - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
   /// - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
   late final pulumi.Output<String?> period;
+
   /// The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
   late final pulumi.Output<String?> periodUnit;
+
   /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
   late final pulumi.Output<String> resolution;
+
   /// The ID of the security group.
   late final pulumi.Output<String> securityGroupId;
+
   /// The status of the Instance. Valid values: `Running`, `Stopped`.
   late final pulumi.Output<String> status;
+
   /// The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
   late final pulumi.Output<String?> vncPassword;
+
   /// The ID of the vSwitch.
   late final pulumi.Output<String> vswitchId;
 
@@ -451,28 +467,28 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecp/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.description = registerOutput<String?>('description');
-    this.eipBandwidth = registerOutput<int?>('eipBandwidth');
-    this.force = registerOutput<bool?>('force');
-    this.imageId = registerOutput<String>('imageId');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.resolution = registerOutput<String>('resolution');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.status = registerOutput<String>('status');
-    this.vncPassword = registerOutput<String?>('vncPassword');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:ecp/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    description = registerOutput<String?>('description');
+    eipBandwidth = registerOutput<int?>('eipBandwidth');
+    force = registerOutput<bool?>('force');
+    imageId = registerOutput<String>('imageId');
+    instanceName = registerOutput<String>('instanceName');
+    instanceType = registerOutput<String>('instanceType');
+    keyPairName = registerOutput<String?>('keyPairName');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<String?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    resolution = registerOutput<String>('resolution');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    status = registerOutput<String>('status');
+    vncPassword = registerOutput<String?>('vncPassword');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -493,27 +509,27 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecp/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.description = registerOutput<String?>('description');
-    this.eipBandwidth = registerOutput<int?>('eipBandwidth');
-    this.force = registerOutput<bool?>('force');
-    this.imageId = registerOutput<String>('imageId');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.keyPairName = registerOutput<String?>('keyPairName');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.resolution = registerOutput<String>('resolution');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.status = registerOutput<String>('status');
-    this.vncPassword = registerOutput<String?>('vncPassword');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:ecp/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    description = registerOutput<String?>('description');
+    eipBandwidth = registerOutput<int?>('eipBandwidth');
+    force = registerOutput<bool?>('force');
+    imageId = registerOutput<String>('imageId');
+    instanceName = registerOutput<String>('instanceName');
+    instanceType = registerOutput<String>('instanceType');
+    keyPairName = registerOutput<String?>('keyPairName');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<String?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    resolution = registerOutput<String>('resolution');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    status = registerOutput<String>('status');
+    vncPassword = registerOutput<String?>('vncPassword');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

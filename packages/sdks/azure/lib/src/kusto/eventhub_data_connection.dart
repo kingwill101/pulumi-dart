@@ -450,7 +450,7 @@ import 'eventhub_data_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Kusto` - 2024-04-13
@@ -465,32 +465,46 @@ import 'eventhub_data_connection_state.dart';
 class EventhubDataConnection extends pulumi.CustomResource {
   /// Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
+
   /// Specifies compression type for the connection. Allowed values: `GZip` and `None`. Defaults to `None`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> compression;
+
   /// Specifies the EventHub consumer group this data connection will use for ingestion. Changing this forces a new resource to be created.
   late final pulumi.Output<String> consumerGroup;
+
   /// Specifies the data format of the EventHub messages. Allowed values: `APACHEAVRO`, `AVRO`, `CSV`, `JSON`, `MULTIJSON`, `ORC`, `PARQUET`, `PSV`, `RAW`, `SCSV`, `SINGLEJSON`, `SOHSV`, `TSVE`, `TSV`, `TXT`, and `W3CLOGFILE`.
   late final pulumi.Output<String?> dataFormat;
+
   /// Specifies the name of the Kusto Database this data connection will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
+
   /// Indication for database routing information from the data connection, by default only database routing information is allowed. Allowed values: `Single`, `Multi`. Changing this forces a new resource to be created. Defaults to `Single`.
   late final pulumi.Output<String?> databaseRoutingType;
+
   /// Specifies a list of system properties for the Event Hub.
   late final pulumi.Output<List<String>> eventSystemProperties;
+
   /// Specifies the resource id of the EventHub this data connection will use for ingestion. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubId;
+
   /// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
   late final pulumi.Output<String?> identityId;
+
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the mapping rule used for the message ingestion. Mapping rule must exist before resource is created.
   late final pulumi.Output<String?> mappingRuleName;
+
   /// The name of the Kusto EventHub Data Connection to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the date after which data should be retrieved from Event Hub. When defined, the data connection retrieves existing events created since the specified retrieval start date. It can only retrieve events retained by the Event Hub, based on its retention period. The value should be in RFC3339 format (e.g., `2023-06-26T12:00:00Z`).
   late final pulumi.Output<String> retrievalStartDate;
+
   /// Specifies the target table name used for the message ingestion. Table must exist before resource is created.
   late final pulumi.Output<String?> tableName;
 
@@ -503,26 +517,28 @@ class EventhubDataConnection extends pulumi.CustomResource {
     EventhubDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/eventhubDataConnection:EventhubDataConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.compression = registerOutput<String?>('compression');
-    this.consumerGroup = registerOutput<String>('consumerGroup');
-    this.dataFormat = registerOutput<String?>('dataFormat');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    this.eventSystemProperties = registerOutput<List<String>>('eventSystemProperties');
-    this.eventhubId = registerOutput<String>('eventhubId');
-    this.identityId = registerOutput<String?>('identityId');
-    this.location = registerOutput<String>('location');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure:kusto/eventhubDataConnection:EventhubDataConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    compression = registerOutput<String?>('compression');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseName = registerOutput<String>('databaseName');
+    databaseRoutingType = registerOutput<String?>('databaseRoutingType');
+    eventSystemProperties = registerOutput<List<String>>(
+      'eventSystemProperties',
+    );
+    eventhubId = registerOutput<String>('eventhubId');
+    identityId = registerOutput<String?>('identityId');
+    location = registerOutput<String>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retrievalStartDate = registerOutput<String>('retrievalStartDate');
-    this.tableName = registerOutput<String?>('tableName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retrievalStartDate = registerOutput<String>('retrievalStartDate');
+    tableName = registerOutput<String?>('tableName');
   }
 
   /// Gets an existing [EventhubDataConnection] resource's state with the given [name] and [id].
@@ -543,25 +559,27 @@ class EventhubDataConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/eventhubDataConnection:EventhubDataConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.compression = registerOutput<String?>('compression');
-    this.consumerGroup = registerOutput<String>('consumerGroup');
-    this.dataFormat = registerOutput<String?>('dataFormat');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    this.eventSystemProperties = registerOutput<List<String>>('eventSystemProperties');
-    this.eventhubId = registerOutput<String>('eventhubId');
-    this.identityId = registerOutput<String?>('identityId');
-    this.location = registerOutput<String>('location');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure:kusto/eventhubDataConnection:EventhubDataConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    compression = registerOutput<String?>('compression');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseName = registerOutput<String>('databaseName');
+    databaseRoutingType = registerOutput<String?>('databaseRoutingType');
+    eventSystemProperties = registerOutput<List<String>>(
+      'eventSystemProperties',
+    );
+    eventhubId = registerOutput<String>('eventhubId');
+    identityId = registerOutput<String?>('identityId');
+    location = registerOutput<String>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retrievalStartDate = registerOutput<String>('retrievalStartDate');
-    this.tableName = registerOutput<String?>('tableName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retrievalStartDate = registerOutput<String>('retrievalStartDate');
+    tableName = registerOutput<String?>('tableName');
   }
 }

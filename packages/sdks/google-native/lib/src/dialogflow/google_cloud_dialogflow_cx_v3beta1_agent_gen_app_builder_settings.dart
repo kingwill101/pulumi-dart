@@ -14,15 +14,14 @@ class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'engine': engine,
-    };
+    return <String, dynamic>{'engine': engine};
   }
 
-  factory GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings(
-      engine: (map['engine'] as String).input(),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
     );
   }
 }
-

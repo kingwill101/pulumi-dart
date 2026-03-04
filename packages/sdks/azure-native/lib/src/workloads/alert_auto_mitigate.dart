@@ -3,16 +3,15 @@ enum AlertAutoMitigate {
   enable("Enable"),
   disable("Disable");
 
-  const AlertAutoMitigate(this.value);
-  final String value;
+  const AlertAutoMitigate(this.wireValue);
+  final String wireValue;
 
   static AlertAutoMitigate fromValue(String value) {
     for (final item in AlertAutoMitigate.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlertAutoMitigate value: $value');
   }
 }
-

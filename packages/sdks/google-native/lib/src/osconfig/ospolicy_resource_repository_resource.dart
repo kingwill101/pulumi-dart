@@ -10,12 +10,16 @@ import 'ospolicy_resource_repository_resource_zypper_repository.dart';
 class OSPolicyResourceRepositoryResource {
   /// An Apt Repository.
   final pulumi.Input<OSPolicyResourceRepositoryResourceAptRepository>? apt;
+
   /// A Goo Repository.
   final pulumi.Input<OSPolicyResourceRepositoryResourceGooRepository>? goo;
+
   /// A Yum Repository.
   final pulumi.Input<OSPolicyResourceRepositoryResourceYumRepository>? yum;
+
   /// A Zypper Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceZypperRepository>? zypper;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceZypperRepository>?
+  zypper;
 
   /// Creates a new [OSPolicyResourceRepositoryResource].
   /// [apt] An Apt Repository.
@@ -31,20 +35,67 @@ class OSPolicyResourceRepositoryResource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apt': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceRepositoryResourceAptRepository, Map<String, dynamic>>(apt, (value) => value.toMap()),
-      'goo': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceRepositoryResourceGooRepository, Map<String, dynamic>>(goo, (value) => value.toMap()),
-      'yum': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceRepositoryResourceYumRepository, Map<String, dynamic>>(yum, (value) => value.toMap()),
-      'zypper': ?pulumi.Input.mapOptionalInputValue<OSPolicyResourceRepositoryResourceZypperRepository, Map<String, dynamic>>(zypper, (value) => value.toMap()),
+      'apt':
+          ?pulumi.Input.mapOptionalInputValue<
+            OSPolicyResourceRepositoryResourceAptRepository,
+            Map<String, dynamic>
+          >(apt, (value) => value.toMap()),
+      'goo':
+          ?pulumi.Input.mapOptionalInputValue<
+            OSPolicyResourceRepositoryResourceGooRepository,
+            Map<String, dynamic>
+          >(goo, (value) => value.toMap()),
+      'yum':
+          ?pulumi.Input.mapOptionalInputValue<
+            OSPolicyResourceRepositoryResourceYumRepository,
+            Map<String, dynamic>
+          >(yum, (value) => value.toMap()),
+      'zypper':
+          ?pulumi.Input.mapOptionalInputValue<
+            OSPolicyResourceRepositoryResourceZypperRepository,
+            Map<String, dynamic>
+          >(zypper, (value) => value.toMap()),
     };
   }
 
   factory OSPolicyResourceRepositoryResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResource(
-      apt: map['apt'] == null ? null : (OSPolicyResourceRepositoryResourceAptRepository.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : (OSPolicyResourceRepositoryResourceGooRepository.fromMap((map['goo']! as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (OSPolicyResourceRepositoryResourceYumRepository.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (OSPolicyResourceRepositoryResourceZypperRepository.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
+      apt: (() {
+        final guardedValue = map['apt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OSPolicyResourceRepositoryResourceAptRepository.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      goo: (() {
+        final guardedValue = map['goo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OSPolicyResourceRepositoryResourceGooRepository.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      yum: (() {
+        final guardedValue = map['yum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OSPolicyResourceRepositoryResourceYumRepository.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      zypper: (() {
+        final guardedValue = map['zypper'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OSPolicyResourceRepositoryResourceZypperRepository.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

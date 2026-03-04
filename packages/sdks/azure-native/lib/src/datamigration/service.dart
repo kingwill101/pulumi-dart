@@ -161,27 +161,36 @@ import 'system_data_response.dart';
 class Service extends pulumi.CustomResource {
   /// The time delay before the service is auto-stopped when idle.
   late final pulumi.Output<String?> autoStopDelay;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Whether service resources should be deleted when stopped. (Turned on by default)
   late final pulumi.Output<bool?> deleteResourcesOnStop;
+
   /// HTTP strong entity tag value. Ignored if submitted
   late final pulumi.Output<String?> etag;
+
   /// The resource kind. Only 'vm' (the default) is supported.
   late final pulumi.Output<String?> kind;
   late final pulumi.Output<String?> location;
   late final pulumi.Output<String> name;
+
   /// The resource's provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// The public key of the service, used to encrypt secrets sent to the service
   late final pulumi.Output<String?> publicKey;
+
   /// Service SKU
   late final pulumi.Output<ServiceSkuResponse?> sku;
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String> type;
+
   /// The ID of the Microsoft.Network/networkInterfaces resource which the service have
   late final pulumi.Output<String?> virtualNicId;
+
   /// The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
   late final pulumi.Output<String?> virtualSubnetId;
 
@@ -194,25 +203,25 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datamigration:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoStopDelay = registerOutput<String?>('autoStopDelay');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deleteResourcesOnStop = registerOutput<bool?>('deleteResourcesOnStop');
-    this.etag = registerOutput<String?>('etag');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:datamigration:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoStopDelay = registerOutput<String?>('autoStopDelay');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deleteResourcesOnStop = registerOutput<bool?>('deleteResourcesOnStop');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicKey = registerOutput<String?>('publicKey');
-    this.sku = registerOutput<ServiceSkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualNicId = registerOutput<String?>('virtualNicId');
-    this.virtualSubnetId = registerOutput<String?>('virtualSubnetId');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicKey = registerOutput<String?>('publicKey');
+    sku = registerOutput<ServiceSkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualNicId = registerOutput<String?>('virtualNicId');
+    virtualSubnetId = registerOutput<String?>('virtualSubnetId');
   }
 }

@@ -4,16 +4,15 @@ enum LaunchType {
   eXTERNAL("EXTERNAL"),
   fARGATE("FARGATE");
 
-  const LaunchType(this.value);
-  final String value;
+  const LaunchType(this.wireValue);
+  final String wireValue;
 
   static LaunchType fromValue(String value) {
     for (final item in LaunchType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LaunchType value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum SecurityPolicyTypeComputeBeta {
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK"),
   firewall("FIREWALL");
 
-  const SecurityPolicyTypeComputeBeta(this.value);
-  final String value;
+  const SecurityPolicyTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SecurityPolicyTypeComputeBeta fromValue(String value) {
     for (final item in SecurityPolicyTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityPolicyTypeComputeBeta value: $value');
   }
 }
-

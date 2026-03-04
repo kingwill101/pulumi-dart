@@ -8,20 +8,21 @@ class InstanceTemplateSchedulingOnInstanceStopAction {
 
   /// Creates a new [InstanceTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
-  InstanceTemplateSchedulingOnInstanceStopAction({
-    this.discardLocalSsd,
-  });
+  InstanceTemplateSchedulingOnInstanceStopAction({this.discardLocalSsd});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'discardLocalSsd': ?discardLocalSsd,
-    };
+    return <String, dynamic>{'discardLocalSsd': ?discardLocalSsd};
   }
 
-  factory InstanceTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
+  factory InstanceTemplateSchedulingOnInstanceStopAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceTemplateSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd']! as bool).input(),
+      discardLocalSsd: (() {
+        final guardedValue = map['discardLocalSsd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

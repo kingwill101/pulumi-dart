@@ -4,18 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CidrRoutingConfig
 class CidrRoutingConfigResponse {
-  /// <p>The CIDR collection ID.</p>
+  /// &lt;p&gt;The CIDR collection ID.&lt;/p&gt;
   final pulumi.Input<String>? collectionId;
-  /// <p>The CIDR collection location name.</p>
+
+  /// &lt;p&gt;The CIDR collection location name.&lt;/p&gt;
   final pulumi.Input<String>? locationName;
 
   /// Creates a new [CidrRoutingConfigResponse].
-  /// [collectionId] <p>The CIDR collection ID.</p>
-  /// [locationName] <p>The CIDR collection location name.</p>
-  CidrRoutingConfigResponse({
-    this.collectionId,
-    this.locationName,
-  });
+  /// [collectionId] &lt;p&gt;The CIDR collection ID.&lt;/p&gt;
+  /// [locationName] &lt;p&gt;The CIDR collection location name.&lt;/p&gt;
+  CidrRoutingConfigResponse({this.collectionId, this.locationName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class CidrRoutingConfigResponse {
 
   factory CidrRoutingConfigResponse.fromMap(Map<String, dynamic> map) {
     return CidrRoutingConfigResponse(
-      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
-      locationName: map['locationName'] == null ? null : (map['locationName']! as String).input(),
+      collectionId: (() {
+        final guardedValue = map['collectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      locationName: (() {
+        final guardedValue = map['locationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

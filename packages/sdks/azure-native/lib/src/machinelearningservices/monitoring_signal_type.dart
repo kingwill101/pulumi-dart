@@ -6,16 +6,15 @@ enum MonitoringSignalType {
   valueFeatureAttributionDrift("FeatureAttributionDrift"),
   valueCustom("Custom");
 
-  const MonitoringSignalType(this.value);
-  final String value;
+  const MonitoringSignalType(this.wireValue);
+  final String wireValue;
 
   static MonitoringSignalType fromValue(String value) {
     for (final item in MonitoringSignalType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitoringSignalType value: $value');
   }
 }
-

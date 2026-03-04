@@ -4,16 +4,17 @@ enum CertificateIssuanceConfigKeyAlgorithm {
   rsa2048("RSA_2048"),
   ecdsaP256("ECDSA_P256");
 
-  const CertificateIssuanceConfigKeyAlgorithm(this.value);
-  final String value;
+  const CertificateIssuanceConfigKeyAlgorithm(this.wireValue);
+  final String wireValue;
 
   static CertificateIssuanceConfigKeyAlgorithm fromValue(String value) {
     for (final item in CertificateIssuanceConfigKeyAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CertificateIssuanceConfigKeyAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown CertificateIssuanceConfigKeyAlgorithm value: $value',
+    );
   }
 }
-

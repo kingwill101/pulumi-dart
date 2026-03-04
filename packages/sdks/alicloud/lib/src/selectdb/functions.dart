@@ -6,7 +6,7 @@ import 'get_db_instances_result.dart';
 
 /// This data source provides the SelectDB DBCluster of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.229.0.
+/// &gt; **NOTE:** Available since v1.229.0.
 ///
 /// ## Example Usage
 ///
@@ -356,7 +356,7 @@ Future<GetDbClustersResult> getDbClusters(
 
 /// This data source provides the SelectDB DBInstance of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.229.0.
+/// &gt; **NOTE:** Available since v1.229.0.
 ///
 /// ## Example Usage
 ///

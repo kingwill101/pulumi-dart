@@ -7,6 +7,7 @@ import 'get_znodes_znode.dart';
 class GetZnodesResult {
   final String? acceptLanguage;
   final String clusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -48,22 +49,40 @@ class GetZnodesResult {
       'names': names,
       'outputFile': ?outputFile,
       'path': path,
-      'znodes': pulumi.Input.encodeList<GetZnodesZnode, Map<String, dynamic>>(znodes, (value) => value.toMap()),
+      'znodes': pulumi.Input.encodeList<GetZnodesZnode, Map<String, dynamic>>(
+        znodes,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetZnodesResult.fromMap(Map<String, dynamic> map) {
     return GetZnodesResult(
-      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage']! as String,
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       path: map['path'] as String,
-      znodes: pulumi.Input.decodeList<GetZnodesZnode>(map['znodes'], (value) => GetZnodesZnode.fromMap((value as Map).cast<String, dynamic>())),
+      znodes: pulumi.Input.decodeList<GetZnodesZnode>(
+        map['znodes']!,
+        (value) =>
+            GetZnodesZnode.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

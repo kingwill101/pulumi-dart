@@ -7,20 +7,17 @@ class GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 
   /// Creates a new [GetClusterAddonsConfigGcpFilestoreCsiDriverConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigGcpFilestoreCsiDriverConfig({
-    required this.enabled,
-  });
+  GetClusterAddonsConfigGcpFilestoreCsiDriverConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetClusterAddonsConfigGcpFilestoreCsiDriverConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterAddonsConfigGcpFilestoreCsiDriverConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterAddonsConfigGcpFilestoreCsiDriverConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceErasureDetailsResponse {
   /// Holds the device erasure completion status
   final pulumi.Input<String> deviceErasureStatus;
+
   /// Shared access key to download cleanup or destruction certificate for device
   final pulumi.Input<String> erasureOrDestructionCertificateSasKey;
 
@@ -20,15 +21,19 @@ class DeviceErasureDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deviceErasureStatus': deviceErasureStatus,
-      'erasureOrDestructionCertificateSasKey': erasureOrDestructionCertificateSasKey,
+      'erasureOrDestructionCertificateSasKey':
+          erasureOrDestructionCertificateSasKey,
     };
   }
 
   factory DeviceErasureDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DeviceErasureDetailsResponse(
-      deviceErasureStatus: (map['deviceErasureStatus'] as String).input(),
-      erasureOrDestructionCertificateSasKey: (map['erasureOrDestructionCertificateSasKey'] as String).input(),
+      deviceErasureStatus: pulumi.Input.fromValue(
+        map['deviceErasureStatus'] as String,
+      ),
+      erasureOrDestructionCertificateSasKey: pulumi.Input.fromValue(
+        map['erasureOrDestructionCertificateSasKey'] as String,
+      ),
     );
   }
 }
-

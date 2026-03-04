@@ -7,20 +7,28 @@ import 'aws_ec2_instance_properties_response.dart';
 class Ec2InstancePropertiesResponse {
   /// Amazon Resource Name (ARN)
   final pulumi.Input<String>? arn;
+
   /// AWS Account ID
   final pulumi.Input<String>? awsAccountId;
+
   /// AWS Properties
   final pulumi.Input<AwsEc2InstancePropertiesResponse>? awsProperties;
+
   /// AWS Region
   final pulumi.Input<String>? awsRegion;
+
   /// AWS Source Schema
   final pulumi.Input<String>? awsSourceSchema;
+
   /// AWS Tags
   final pulumi.Input<Map<String, String>>? awsTags;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
+
   /// Public Cloud Connectors Resource ID
   final pulumi.Input<String>? publicCloudConnectorsResourceId;
+
   /// Public Cloud Resource Name
   final pulumi.Input<String>? publicCloudResourceName;
 
@@ -50,7 +58,11 @@ class Ec2InstancePropertiesResponse {
     return <String, dynamic>{
       'arn': ?arn,
       'awsAccountId': ?awsAccountId,
-      'awsProperties': ?pulumi.Input.mapOptionalInputValue<AwsEc2InstancePropertiesResponse, Map<String, dynamic>>(awsProperties, (value) => value.toMap()),
+      'awsProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AwsEc2InstancePropertiesResponse,
+            Map<String, dynamic>
+          >(awsProperties, (value) => value.toMap()),
       'awsRegion': ?awsRegion,
       'awsSourceSchema': ?awsSourceSchema,
       'awsTags': ?awsTags,
@@ -62,16 +74,55 @@ class Ec2InstancePropertiesResponse {
 
   factory Ec2InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return Ec2InstancePropertiesResponse(
-      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId']! as String).input(),
-      awsProperties: map['awsProperties'] == null ? null : (AwsEc2InstancePropertiesResponse.fromMap((map['awsProperties']! as Map).cast<String, dynamic>())).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
-      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema']! as String).input(),
-      awsTags: map['awsTags'] == null ? null : ((map['awsTags']! as Map).cast<String, String>()).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId']! as String).input(),
-      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName']! as String).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsProperties: (() {
+        final guardedValue = map['awsProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AwsEc2InstancePropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsSourceSchema: (() {
+        final guardedValue = map['awsSourceSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsTags: (() {
+        final guardedValue = map['awsTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      publicCloudConnectorsResourceId: (() {
+        final guardedValue = map['publicCloudConnectorsResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicCloudResourceName: (() {
+        final guardedValue = map['publicCloudResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

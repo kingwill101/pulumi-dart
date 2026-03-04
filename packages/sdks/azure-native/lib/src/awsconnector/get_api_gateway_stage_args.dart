@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiGatewayStageArgs {
   /// Name of ApiGatewayStage
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetApiGatewayStageArgs].
   /// [name] Name of ApiGatewayStage
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApiGatewayStageArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetApiGatewayStageArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetApiGatewayStageArgs {
 
   factory GetApiGatewayStageArgs.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayStageArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

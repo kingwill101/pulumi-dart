@@ -167,12 +167,17 @@ import 'system_data_response.dart';
 class ReachabilityAnalysisRun extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Represents the Reachability Analysis Run properties.
-  late final pulumi.Output<ReachabilityAnalysisRunPropertiesResponse> properties;
+  late final pulumi.Output<ReachabilityAnalysisRunPropertiesResponse>
+  properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -185,15 +190,17 @@ class ReachabilityAnalysisRun extends pulumi.CustomResource {
     ReachabilityAnalysisRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ReachabilityAnalysisRun',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:network:ReachabilityAnalysisRun',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ReachabilityAnalysisRunPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ReachabilityAnalysisRunPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

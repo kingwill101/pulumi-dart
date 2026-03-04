@@ -13,8 +13,10 @@ import 'access_policy_entry.dart';
 class AccessPolicy extends pulumi.CustomResource {
   /// The definition of the access policy.
   late final pulumi.Output<AccessPolicyEntry?> policy;
+
   /// Name of the resource group that contains the vault.
   late final pulumi.Output<String?> resourceGroupName;
+
   /// Name of the Key Vault.
   late final pulumi.Output<String?> vaultName;
 
@@ -27,13 +29,13 @@ class AccessPolicy extends pulumi.CustomResource {
     AccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:keyvault:AccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<AccessPolicyEntry?>('policy');
-    this.resourceGroupName = registerOutput<String?>('resourceGroupName');
-    this.vaultName = registerOutput<String?>('vaultName');
+         'azure-native:keyvault:AccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<AccessPolicyEntry?>('policy');
+    resourceGroupName = registerOutput<String?>('resourceGroupName');
+    vaultName = registerOutput<String?>('vaultName');
   }
 }

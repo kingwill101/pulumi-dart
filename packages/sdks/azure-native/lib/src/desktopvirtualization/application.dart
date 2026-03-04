@@ -183,38 +183,55 @@ import 'system_data_response.dart';
 class Application extends pulumi.CustomResource {
   /// Resource Type of Application.
   late final pulumi.Output<String?> applicationType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Command Line Arguments for Application.
   late final pulumi.Output<String?> commandLineArguments;
+
   /// Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
   late final pulumi.Output<String> commandLineSetting;
+
   /// Description of Application.
   late final pulumi.Output<String?> description;
+
   /// Specifies a path for the executable file for the application.
   late final pulumi.Output<String?> filePath;
+
   /// Friendly name of Application.
   late final pulumi.Output<String?> friendlyName;
+
   /// the icon a 64 bit string as a byte array.
   late final pulumi.Output<String> iconContent;
+
   /// Hash of the icon.
   late final pulumi.Output<String> iconHash;
+
   /// Index of the icon.
   late final pulumi.Output<int?> iconIndex;
+
   /// Path to icon.
   late final pulumi.Output<String?> iconPath;
+
   /// Specifies the package application Id for MSIX applications
   late final pulumi.Output<String?> msixPackageApplicationId;
+
   /// Specifies the package family name for MSIX applications
   late final pulumi.Output<String?> msixPackageFamilyName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ObjectId of Application. (internal use)
   late final pulumi.Output<String> objectId;
+
   /// Specifies whether to show the RemoteApp program in the RD Web Access server.
   late final pulumi.Output<bool?> showInPortal;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -227,28 +244,30 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:desktopvirtualization:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationType = registerOutput<String?>('applicationType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.commandLineArguments = registerOutput<String?>('commandLineArguments');
-    this.commandLineSetting = registerOutput<String>('commandLineSetting');
-    this.description = registerOutput<String?>('description');
-    this.filePath = registerOutput<String?>('filePath');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.iconContent = registerOutput<String>('iconContent');
-    this.iconHash = registerOutput<String>('iconHash');
-    this.iconIndex = registerOutput<int?>('iconIndex');
-    this.iconPath = registerOutput<String?>('iconPath');
-    this.msixPackageApplicationId = registerOutput<String?>('msixPackageApplicationId');
-    this.msixPackageFamilyName = registerOutput<String?>('msixPackageFamilyName');
+         'azure-native:desktopvirtualization:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationType = registerOutput<String?>('applicationType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    commandLineArguments = registerOutput<String?>('commandLineArguments');
+    commandLineSetting = registerOutput<String>('commandLineSetting');
+    description = registerOutput<String?>('description');
+    filePath = registerOutput<String?>('filePath');
+    friendlyName = registerOutput<String?>('friendlyName');
+    iconContent = registerOutput<String>('iconContent');
+    iconHash = registerOutput<String>('iconHash');
+    iconIndex = registerOutput<int?>('iconIndex');
+    iconPath = registerOutput<String?>('iconPath');
+    msixPackageApplicationId = registerOutput<String?>(
+      'msixPackageApplicationId',
+    );
+    msixPackageFamilyName = registerOutput<String?>('msixPackageFamilyName');
     this.name = registerOutput<String>('name');
-    this.objectId = registerOutput<String>('objectId');
-    this.showInPortal = registerOutput<bool?>('showInPortal');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    objectId = registerOutput<String>('objectId');
+    showInPortal = registerOutput<bool?>('showInPortal');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -14,15 +14,14 @@ class GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pemCertificate': pemCertificate,
-    };
+    return <String, dynamic>{'pemCertificate': pemCertificate};
   }
 
-  factory GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa(
-      pemCertificate: (map['pemCertificate'] as String).input(),
+      pemCertificate: pulumi.Input.fromValue(map['pemCertificate'] as String),
     );
   }
 }
-

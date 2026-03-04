@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TokenCertificate {
   /// Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.
   final pulumi.Input<String>? encodedPemCertificate;
+
   /// The expiry datetime of the certificate.
   final pulumi.Input<String>? expiry;
   final pulumi.Input<String>? name;
+
   /// The thumbprint of the certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -35,11 +37,26 @@ class TokenCertificate {
 
   factory TokenCertificate.fromMap(Map<String, dynamic> map) {
     return TokenCertificate(
-      encodedPemCertificate: map['encodedPemCertificate'] == null ? null : (map['encodedPemCertificate']! as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      encodedPemCertificate: (() {
+        final guardedValue = map['encodedPemCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiry: (() {
+        final guardedValue = map['expiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

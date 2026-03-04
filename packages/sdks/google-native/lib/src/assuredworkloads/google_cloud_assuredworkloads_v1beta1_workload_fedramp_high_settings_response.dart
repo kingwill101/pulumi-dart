@@ -6,7 +6,10 @@ import 'google_cloud_assuredworkloads_v1beta1_workload_kmssettings_response.dart
 /// Settings specific to resources needed for FedRAMP High.
 class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse {
   /// Input only. Immutable. Settings used to create a CMEK crypto key.
-  final pulumi.Input<GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse> kmsSettings;
+  final pulumi.Input<
+    GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse
+  >
+  kmsSettings;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.
@@ -16,14 +19,23 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kmsSettings': pulumi.Input.mapInputValue<GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse, Map<String, dynamic>>(kmsSettings, (value) => value.toMap()),
+      'kmsSettings':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse,
+            Map<String, dynamic>
+          >(kmsSettings, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse(
-      kmsSettings: (GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap((map['kmsSettings'] as Map).cast<String, dynamic>())).input(),
+      kmsSettings: pulumi.Input.fromValue(
+        GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap(
+          (map['kmsSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

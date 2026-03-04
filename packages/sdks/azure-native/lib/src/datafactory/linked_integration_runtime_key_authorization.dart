@@ -8,6 +8,7 @@ class LinkedIntegrationRuntimeKeyAuthorization {
   /// The authorization type for integration runtime sharing.
   /// Expected value is 'Key'.
   final pulumi.Input<String> authorizationType;
+
   /// The key used for authorization.
   final pulumi.Input<SecureString> key;
 
@@ -22,15 +23,23 @@ class LinkedIntegrationRuntimeKeyAuthorization {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorizationType': authorizationType,
-      'key': pulumi.Input.mapInputValue<SecureString, Map<String, dynamic>>(key, (value) => value.toMap()),
+      'key': pulumi.Input.mapInputValue<SecureString, Map<String, dynamic>>(
+        key,
+        (value) => value.toMap(),
+      ),
     };
   }
 
-  factory LinkedIntegrationRuntimeKeyAuthorization.fromMap(Map<String, dynamic> map) {
+  factory LinkedIntegrationRuntimeKeyAuthorization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinkedIntegrationRuntimeKeyAuthorization(
-      authorizationType: (map['authorizationType'] as String).input(),
-      key: (SecureString.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      authorizationType: pulumi.Input.fromValue(
+        map['authorizationType'] as String,
+      ),
+      key: pulumi.Input.fromValue(
+        SecureString.fromMap((map['key']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

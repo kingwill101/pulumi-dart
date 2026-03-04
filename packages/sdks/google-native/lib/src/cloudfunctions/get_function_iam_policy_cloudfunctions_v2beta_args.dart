@@ -33,13 +33,22 @@ class GetFunctionIamPolicyCloudfunctionsV2betaArgs {
     };
   }
 
-  factory GetFunctionIamPolicyCloudfunctionsV2betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetFunctionIamPolicyCloudfunctionsV2betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFunctionIamPolicyCloudfunctionsV2betaArgs(
-      functionId: (map['functionId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      functionId: pulumi.Input.fromValue(map['functionId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

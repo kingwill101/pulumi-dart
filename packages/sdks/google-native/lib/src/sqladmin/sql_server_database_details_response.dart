@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerDatabaseDetailsResponse {
   /// The version of SQL Server with which the database is to be made compatible
   final pulumi.Input<int> compatibilityLevel;
+
   /// The recovery model of a SQL Server database
   final pulumi.Input<String> recoveryModel;
 
@@ -26,9 +27,10 @@ class SqlServerDatabaseDetailsResponse {
 
   factory SqlServerDatabaseDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseDetailsResponse(
-      compatibilityLevel: (map['compatibilityLevel'] as int).input(),
-      recoveryModel: (map['recoveryModel'] as String).input(),
+      compatibilityLevel: pulumi.Input.fromValue(
+        map['compatibilityLevel'] as int,
+      ),
+      recoveryModel: pulumi.Input.fromValue(map['recoveryModel'] as String),
     );
   }
 }
-

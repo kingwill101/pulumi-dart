@@ -9,20 +9,15 @@ class PolicyBindingResponseGkehubV1alpha {
 
   /// Creates a new [PolicyBindingResponseGkehubV1alpha].
   /// [name] The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
-  PolicyBindingResponseGkehubV1alpha({
-    required this.name,
-  });
+  PolicyBindingResponseGkehubV1alpha({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory PolicyBindingResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return PolicyBindingResponseGkehubV1alpha(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

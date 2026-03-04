@@ -134,6 +134,7 @@ class GetEbsVolumesFilter {
   ///               - '20'
   /// ```
   final pulumi.Input<String> name;
+
   /// Set of values that are accepted for the given field.
   /// EBS Volume IDs will be selected if any one of the given values match.
   final pulumi.Input<List<String>> values;
@@ -141,23 +142,16 @@ class GetEbsVolumesFilter {
   /// Creates a new [GetEbsVolumesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetEbsVolumesFilter({
-    required this.name,
-    required this.values,
-  });
+  GetEbsVolumesFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetEbsVolumesFilter.fromMap(Map<String, dynamic> map) {
     return GetEbsVolumesFilter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

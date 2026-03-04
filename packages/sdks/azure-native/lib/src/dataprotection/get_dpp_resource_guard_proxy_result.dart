@@ -7,14 +7,19 @@ import 'system_data_response.dart';
 class GetDppResourceGuardProxyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Id represents the complete path to the resource.
   final String id;
+
   /// Resource name associated with the resource.
   final String name;
+
   /// ResourceGuardProxyBaseResource properties
   final ResourceGuardProxyBaseResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   final String type;
 
@@ -50,10 +55,13 @@ class GetDppResourceGuardProxyResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ResourceGuardProxyBaseResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      properties: ResourceGuardProxyBaseResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

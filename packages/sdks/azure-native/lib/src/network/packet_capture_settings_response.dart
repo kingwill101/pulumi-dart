@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketCaptureSettingsResponse {
   /// Number of file count. Default value of count is 10 and maximum number is 10000.
   final pulumi.Input<int>? fileCount;
+
   /// Number of bytes captured per packet. Default value in bytes 104857600 (100MB) and maximum in bytes 4294967295 (4GB).
   final pulumi.Input<double>? fileSizeInBytes;
+
   /// Maximum duration of the capture session in seconds is 604800s (7 days) for a file. Default value in second 86400s (1 day).
   final pulumi.Input<int>? sessionTimeLimitInSeconds;
 
@@ -31,10 +33,21 @@ class PacketCaptureSettingsResponse {
 
   factory PacketCaptureSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PacketCaptureSettingsResponse(
-      fileCount: map['fileCount'] == null ? null : (map['fileCount']! as int).input(),
-      fileSizeInBytes: map['fileSizeInBytes'] == null ? null : (map['fileSizeInBytes']! as double).input(),
-      sessionTimeLimitInSeconds: map['sessionTimeLimitInSeconds'] == null ? null : (map['sessionTimeLimitInSeconds']! as int).input(),
+      fileCount: (() {
+        final guardedValue = map['fileCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fileSizeInBytes: (() {
+        final guardedValue = map['fileSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      sessionTimeLimitInSeconds: (() {
+        final guardedValue = map['sessionTimeLimitInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LiftrBaseUserDetails {
   /// Email address of the user
   final pulumi.Input<String>? emailAddress;
+
   /// First name of the user
   final pulumi.Input<String>? firstName;
+
   /// Last name of the user
   final pulumi.Input<String>? lastName;
+
   /// User's phone number
   final pulumi.Input<String>? phoneNumber;
+
   /// User's principal name
   final pulumi.Input<String>? upn;
 
@@ -41,12 +45,31 @@ class LiftrBaseUserDetails {
 
   factory LiftrBaseUserDetails.fromMap(Map<String, dynamic> map) {
     return LiftrBaseUserDetails(
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
-      upn: map['upn'] == null ? null : (map['upn']! as String).input(),
+      emailAddress: (() {
+        final guardedValue = map['emailAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firstName: (() {
+        final guardedValue = map['firstName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastName: (() {
+        final guardedValue = map['lastName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNumber: (() {
+        final guardedValue = map['phoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      upn: (() {
+        final guardedValue = map['upn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

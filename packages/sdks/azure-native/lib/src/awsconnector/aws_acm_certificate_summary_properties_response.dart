@@ -8,62 +8,79 @@ import 'renewal_eligibility_enum_value_response.dart';
 
 /// Definition of awsAcmCertificateSummary
 class AwsAcmCertificateSummaryPropertiesResponse {
-  /// <p>Amazon Resource Name (ARN) of the certificate. This is of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href='https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html'>Amazon Resource Names (ARNs)</a>.</p>
+  /// &lt;p&gt;Amazon Resource Name (ARN) of the certificate. This is of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href='https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html'&gt;Amazon Resource Names (ARNs)&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<String>? certificateArn;
-  /// <p>The time at which the certificate was requested.</p>
+
+  /// &lt;p&gt;The time at which the certificate was requested.&lt;/p&gt;
   final pulumi.Input<String>? createdAt;
-  /// <p>Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.</p>
+
+  /// &lt;p&gt;Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.&lt;/p&gt;
   final pulumi.Input<String>? domainName;
-  /// <p>Indicates whether the certificate has been exported. This value exists only when the certificate type is <code>PRIVATE</code>.</p>
+
+  /// &lt;p&gt;Indicates whether the certificate has been exported. This value exists only when the certificate type is &lt;code&gt;PRIVATE&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<bool>? exported;
-  /// <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). </p>
+
+  /// &lt;p&gt;Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). &lt;/p&gt;
   final pulumi.Input<List<String>>? extendedKeyUsages;
-  /// <p>When called by <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'>ListCertificates</a>, indicates whether the full list of subject alternative names has been included in the response. If false, the response includes all of the subject alternative names included in the certificate. If true, the response only includes the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'>DescribeCertificate</a>.</p>
+
+  /// &lt;p&gt;When called by &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'&gt;ListCertificates&lt;/a&gt;, indicates whether the full list of subject alternative names has been included in the response. If false, the response includes all of the subject alternative names included in the certificate. If true, the response only includes the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'&gt;DescribeCertificate&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<bool>? hasAdditionalSubjectAlternativeNames;
-  /// <p>The date and time when the certificate was imported. This value exists only when the certificate type is <code>IMPORTED</code>. </p>
+
+  /// &lt;p&gt;The date and time when the certificate was imported. This value exists only when the certificate type is &lt;code&gt;IMPORTED&lt;/code&gt;. &lt;/p&gt;
   final pulumi.Input<String>? importedAt;
-  /// <p>Indicates whether the certificate is currently in use by any Amazon Web Services resources.</p>
+
+  /// &lt;p&gt;Indicates whether the certificate is currently in use by any Amazon Web Services resources.&lt;/p&gt;
   final pulumi.Input<bool>? inUse;
-  /// <p>The time at which the certificate was issued. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>. </p>
+
+  /// &lt;p&gt;The time at which the certificate was issued. This value exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;. &lt;/p&gt;
   final pulumi.Input<String>? issuedAt;
-  /// <p>The algorithm that was used to generate the public-private key pair.</p>
+
+  /// &lt;p&gt;The algorithm that was used to generate the public-private key pair.&lt;/p&gt;
   final pulumi.Input<KeyAlgorithmEnumValueResponse>? keyAlgorithm;
-  /// <p>A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.</p>
+
+  /// &lt;p&gt;A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.&lt;/p&gt;
   final pulumi.Input<List<String>>? keyUsages;
-  /// <p>The time after which the certificate is not valid.</p>
+
+  /// &lt;p&gt;The time after which the certificate is not valid.&lt;/p&gt;
   final pulumi.Input<String>? notAfter;
-  /// <p>The time before which the certificate is not valid.</p>
+
+  /// &lt;p&gt;The time before which the certificate is not valid.&lt;/p&gt;
   final pulumi.Input<String>? notBefore;
-  /// <p>Specifies whether the certificate is eligible for renewal. At this time, only exported private certificates can be renewed with the <a>RenewCertificate</a> command.</p>
+
+  /// &lt;p&gt;Specifies whether the certificate is eligible for renewal. At this time, only exported private certificates can be renewed with the &lt;a&gt;RenewCertificate&lt;/a&gt; command.&lt;/p&gt;
   final pulumi.Input<RenewalEligibilityEnumValueResponse>? renewalEligibility;
-  /// <p>The time at which the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>. </p>
+
+  /// &lt;p&gt;The time at which the certificate was revoked. This value exists only when the certificate status is &lt;code&gt;REVOKED&lt;/code&gt;. &lt;/p&gt;
   final pulumi.Input<String>? revokedAt;
-  /// <p>The status of the certificate.</p> <p>A certificate enters status PENDING_VALIDATION upon being requested, unless it fails for any of the reasons given in the troubleshooting topic <a href='https://docs.aws.amazon.com/acm/latest/userguide/troubleshooting-failed.html'>Certificate request fails</a>. ACM makes repeated attempts to validate a certificate for 72 hours and then times out. If a certificate shows status FAILED or VALIDATION_TIMED_OUT, delete the request, correct the issue with <a href='https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html'>DNS validation</a> or <a href='https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html'>Email validation</a>, and try again. If validation succeeds, the certificate enters status ISSUED. </p>
+
+  /// &lt;p&gt;The status of the certificate.&lt;/p&gt; &lt;p&gt;A certificate enters status PENDING_VALIDATION upon being requested, unless it fails for any of the reasons given in the troubleshooting topic &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/troubleshooting-failed.html'&gt;Certificate request fails&lt;/a&gt;. ACM makes repeated attempts to validate a certificate for 72 hours and then times out. If a certificate shows status FAILED or VALIDATION_TIMED_OUT, delete the request, correct the issue with &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html'&gt;DNS validation&lt;/a&gt; or &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html'&gt;Email validation&lt;/a&gt;, and try again. If validation succeeds, the certificate enters status ISSUED. &lt;/p&gt;
   final pulumi.Input<CertificateStatusEnumValueResponse>? status;
-  /// <p>One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. </p> <p>When called by <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'>ListCertificates</a>, this parameter will only return the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'>DescribeCertificate</a>.</p>
+
+  /// &lt;p&gt;One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. &lt;/p&gt; &lt;p&gt;When called by &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'&gt;ListCertificates&lt;/a&gt;, this parameter will only return the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'&gt;DescribeCertificate&lt;/a&gt;.&lt;/p&gt;
   final pulumi.Input<List<String>>? subjectAlternativeNameSummaries;
-  /// <p>The source of the certificate. For certificates provided by ACM, this value is <code>AMAZON_ISSUED</code>. For certificates that you imported with <a>ImportCertificate</a>, this value is <code>IMPORTED</code>. ACM does not provide <a href='https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html'>managed renewal</a> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <a href='https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html'>Importing Certificates</a> in the <i>Certificate Manager User Guide</i>. </p>
+
+  /// &lt;p&gt;The source of the certificate. For certificates provided by ACM, this value is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;. For certificates that you imported with &lt;a&gt;ImportCertificate&lt;/a&gt;, this value is &lt;code&gt;IMPORTED&lt;/code&gt;. ACM does not provide &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html'&gt;managed renewal&lt;/a&gt; for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html'&gt;Importing Certificates&lt;/a&gt; in the &lt;i&gt;Certificate Manager User Guide&lt;/i&gt;. &lt;/p&gt;
   final pulumi.Input<CertificateTypeEnumValueResponse>? type;
 
   /// Creates a new [AwsAcmCertificateSummaryPropertiesResponse].
-  /// [certificateArn] <p>Amazon Resource Name (ARN) of the certificate. This is of the form:</p> <p> <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p> <p>For more information about ARNs, see <a href='https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html'>Amazon Resource Names (ARNs)</a>.</p>
-  /// [createdAt] <p>The time at which the certificate was requested.</p>
-  /// [domainName] <p>Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.</p>
-  /// [exported] <p>Indicates whether the certificate has been exported. This value exists only when the certificate type is <code>PRIVATE</code>.</p>
-  /// [extendedKeyUsages] <p>Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). </p>
-  /// [hasAdditionalSubjectAlternativeNames] <p>When called by <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'>ListCertificates</a>, indicates whether the full list of subject alternative names has been included in the response. If false, the response includes all of the subject alternative names included in the certificate. If true, the response only includes the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'>DescribeCertificate</a>.</p>
-  /// [importedAt] <p>The date and time when the certificate was imported. This value exists only when the certificate type is <code>IMPORTED</code>. </p>
-  /// [inUse] <p>Indicates whether the certificate is currently in use by any Amazon Web Services resources.</p>
-  /// [issuedAt] <p>The time at which the certificate was issued. This value exists only when the certificate type is <code>AMAZON_ISSUED</code>. </p>
-  /// [keyAlgorithm] <p>The algorithm that was used to generate the public-private key pair.</p>
-  /// [keyUsages] <p>A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.</p>
-  /// [notAfter] <p>The time after which the certificate is not valid.</p>
-  /// [notBefore] <p>The time before which the certificate is not valid.</p>
-  /// [renewalEligibility] <p>Specifies whether the certificate is eligible for renewal. At this time, only exported private certificates can be renewed with the <a>RenewCertificate</a> command.</p>
-  /// [revokedAt] <p>The time at which the certificate was revoked. This value exists only when the certificate status is <code>REVOKED</code>. </p>
-  /// [status] <p>The status of the certificate.</p> <p>A certificate enters status PENDING_VALIDATION upon being requested, unless it fails for any of the reasons given in the troubleshooting topic <a href='https://docs.aws.amazon.com/acm/latest/userguide/troubleshooting-failed.html'>Certificate request fails</a>. ACM makes repeated attempts to validate a certificate for 72 hours and then times out. If a certificate shows status FAILED or VALIDATION_TIMED_OUT, delete the request, correct the issue with <a href='https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html'>DNS validation</a> or <a href='https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html'>Email validation</a>, and try again. If validation succeeds, the certificate enters status ISSUED. </p>
-  /// [subjectAlternativeNameSummaries] <p>One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. </p> <p>When called by <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'>ListCertificates</a>, this parameter will only return the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use <a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'>DescribeCertificate</a>.</p>
-  /// [type] <p>The source of the certificate. For certificates provided by ACM, this value is <code>AMAZON_ISSUED</code>. For certificates that you imported with <a>ImportCertificate</a>, this value is <code>IMPORTED</code>. ACM does not provide <a href='https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html'>managed renewal</a> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <a href='https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html'>Importing Certificates</a> in the <i>Certificate Manager User Guide</i>. </p>
+  /// [certificateArn] &lt;p&gt;Amazon Resource Name (ARN) of the certificate. This is of the form:&lt;/p&gt; &lt;p&gt; &lt;code&gt;arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012&lt;/code&gt; &lt;/p&gt; &lt;p&gt;For more information about ARNs, see &lt;a href='https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html'&gt;Amazon Resource Names (ARNs)&lt;/a&gt;.&lt;/p&gt;
+  /// [createdAt] &lt;p&gt;The time at which the certificate was requested.&lt;/p&gt;
+  /// [domainName] &lt;p&gt;Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.&lt;/p&gt;
+  /// [exported] &lt;p&gt;Indicates whether the certificate has been exported. This value exists only when the certificate type is &lt;code&gt;PRIVATE&lt;/code&gt;.&lt;/p&gt;
+  /// [extendedKeyUsages] &lt;p&gt;Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). &lt;/p&gt;
+  /// [hasAdditionalSubjectAlternativeNames] &lt;p&gt;When called by &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'&gt;ListCertificates&lt;/a&gt;, indicates whether the full list of subject alternative names has been included in the response. If false, the response includes all of the subject alternative names included in the certificate. If true, the response only includes the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'&gt;DescribeCertificate&lt;/a&gt;.&lt;/p&gt;
+  /// [importedAt] &lt;p&gt;The date and time when the certificate was imported. This value exists only when the certificate type is &lt;code&gt;IMPORTED&lt;/code&gt;. &lt;/p&gt;
+  /// [inUse] &lt;p&gt;Indicates whether the certificate is currently in use by any Amazon Web Services resources.&lt;/p&gt;
+  /// [issuedAt] &lt;p&gt;The time at which the certificate was issued. This value exists only when the certificate type is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;. &lt;/p&gt;
+  /// [keyAlgorithm] &lt;p&gt;The algorithm that was used to generate the public-private key pair.&lt;/p&gt;
+  /// [keyUsages] &lt;p&gt;A list of Key Usage X.509 v3 extension objects. Each object is a string value that identifies the purpose of the public key contained in the certificate. Possible extension values include DIGITAL_SIGNATURE, KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.&lt;/p&gt;
+  /// [notAfter] &lt;p&gt;The time after which the certificate is not valid.&lt;/p&gt;
+  /// [notBefore] &lt;p&gt;The time before which the certificate is not valid.&lt;/p&gt;
+  /// [renewalEligibility] &lt;p&gt;Specifies whether the certificate is eligible for renewal. At this time, only exported private certificates can be renewed with the &lt;a&gt;RenewCertificate&lt;/a&gt; command.&lt;/p&gt;
+  /// [revokedAt] &lt;p&gt;The time at which the certificate was revoked. This value exists only when the certificate status is &lt;code&gt;REVOKED&lt;/code&gt;. &lt;/p&gt;
+  /// [status] &lt;p&gt;The status of the certificate.&lt;/p&gt; &lt;p&gt;A certificate enters status PENDING_VALIDATION upon being requested, unless it fails for any of the reasons given in the troubleshooting topic &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/troubleshooting-failed.html'&gt;Certificate request fails&lt;/a&gt;. ACM makes repeated attempts to validate a certificate for 72 hours and then times out. If a certificate shows status FAILED or VALIDATION_TIMED_OUT, delete the request, correct the issue with &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html'&gt;DNS validation&lt;/a&gt; or &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html'&gt;Email validation&lt;/a&gt;, and try again. If validation succeeds, the certificate enters status ISSUED. &lt;/p&gt;
+  /// [subjectAlternativeNameSummaries] &lt;p&gt;One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. &lt;/p&gt; &lt;p&gt;When called by &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_ListCertificates.html'&gt;ListCertificates&lt;/a&gt;, this parameter will only return the first 100 subject alternative names included in the certificate. To display the full list of subject alternative names, use &lt;a href='https://docs.aws.amazon.com/acm/latestAPIReference/API_DescribeCertificate.html'&gt;DescribeCertificate&lt;/a&gt;.&lt;/p&gt;
+  /// [type] &lt;p&gt;The source of the certificate. For certificates provided by ACM, this value is &lt;code&gt;AMAZON_ISSUED&lt;/code&gt;. For certificates that you imported with &lt;a&gt;ImportCertificate&lt;/a&gt;, this value is &lt;code&gt;IMPORTED&lt;/code&gt;. ACM does not provide &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html'&gt;managed renewal&lt;/a&gt; for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see &lt;a href='https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html'&gt;Importing Certificates&lt;/a&gt; in the &lt;i&gt;Certificate Manager User Guide&lt;/i&gt;. &lt;/p&gt;
   AwsAcmCertificateSummaryPropertiesResponse({
     this.certificateArn,
     this.createdAt,
@@ -92,43 +109,149 @@ class AwsAcmCertificateSummaryPropertiesResponse {
       'domainName': ?domainName,
       'exported': ?exported,
       'extendedKeyUsages': ?extendedKeyUsages,
-      'hasAdditionalSubjectAlternativeNames': ?hasAdditionalSubjectAlternativeNames,
+      'hasAdditionalSubjectAlternativeNames':
+          ?hasAdditionalSubjectAlternativeNames,
       'importedAt': ?importedAt,
       'inUse': ?inUse,
       'issuedAt': ?issuedAt,
-      'keyAlgorithm': ?pulumi.Input.mapOptionalInputValue<KeyAlgorithmEnumValueResponse, Map<String, dynamic>>(keyAlgorithm, (value) => value.toMap()),
+      'keyAlgorithm':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyAlgorithmEnumValueResponse,
+            Map<String, dynamic>
+          >(keyAlgorithm, (value) => value.toMap()),
       'keyUsages': ?keyUsages,
       'notAfter': ?notAfter,
       'notBefore': ?notBefore,
-      'renewalEligibility': ?pulumi.Input.mapOptionalInputValue<RenewalEligibilityEnumValueResponse, Map<String, dynamic>>(renewalEligibility, (value) => value.toMap()),
+      'renewalEligibility':
+          ?pulumi.Input.mapOptionalInputValue<
+            RenewalEligibilityEnumValueResponse,
+            Map<String, dynamic>
+          >(renewalEligibility, (value) => value.toMap()),
       'revokedAt': ?revokedAt,
-      'status': ?pulumi.Input.mapOptionalInputValue<CertificateStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'subjectAlternativeNameSummaries': ?subjectAlternativeNameSummaries,
-      'type': ?pulumi.Input.mapOptionalInputValue<CertificateTypeEnumValueResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(type, (value) => value.toMap()),
     };
   }
 
-  factory AwsAcmCertificateSummaryPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsAcmCertificateSummaryPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsAcmCertificateSummaryPropertiesResponse(
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn']! as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      exported: map['exported'] == null ? null : (map['exported']! as bool).input(),
-      extendedKeyUsages: map['extendedKeyUsages'] == null ? null : ((map['extendedKeyUsages']! as List).cast<String>()).input(),
-      hasAdditionalSubjectAlternativeNames: map['hasAdditionalSubjectAlternativeNames'] == null ? null : (map['hasAdditionalSubjectAlternativeNames']! as bool).input(),
-      importedAt: map['importedAt'] == null ? null : (map['importedAt']! as String).input(),
-      inUse: map['inUse'] == null ? null : (map['inUse']! as bool).input(),
-      issuedAt: map['issuedAt'] == null ? null : (map['issuedAt']! as String).input(),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : (KeyAlgorithmEnumValueResponse.fromMap((map['keyAlgorithm']! as Map).cast<String, dynamic>())).input(),
-      keyUsages: map['keyUsages'] == null ? null : ((map['keyUsages']! as List).cast<String>()).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
-      renewalEligibility: map['renewalEligibility'] == null ? null : (RenewalEligibilityEnumValueResponse.fromMap((map['renewalEligibility']! as Map).cast<String, dynamic>())).input(),
-      revokedAt: map['revokedAt'] == null ? null : (map['revokedAt']! as String).input(),
-      status: map['status'] == null ? null : (CertificateStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
-      subjectAlternativeNameSummaries: map['subjectAlternativeNameSummaries'] == null ? null : ((map['subjectAlternativeNameSummaries']! as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (CertificateTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
+      certificateArn: (() {
+        final guardedValue = map['certificateArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exported: (() {
+        final guardedValue = map['exported'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      extendedKeyUsages: (() {
+        final guardedValue = map['extendedKeyUsages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      hasAdditionalSubjectAlternativeNames: (() {
+        final guardedValue = map['hasAdditionalSubjectAlternativeNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      importedAt: (() {
+        final guardedValue = map['importedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inUse: (() {
+        final guardedValue = map['inUse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      issuedAt: (() {
+        final guardedValue = map['issuedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyAlgorithm: (() {
+        final guardedValue = map['keyAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyAlgorithmEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyUsages: (() {
+        final guardedValue = map['keyUsages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      notAfter: (() {
+        final guardedValue = map['notAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notBefore: (() {
+        final guardedValue = map['notBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewalEligibility: (() {
+        final guardedValue = map['renewalEligibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RenewalEligibilityEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      revokedAt: (() {
+        final guardedValue = map['revokedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subjectAlternativeNameSummaries: (() {
+        final guardedValue = map['subjectAlternativeNameSummaries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

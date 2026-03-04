@@ -3,16 +3,15 @@ enum StorageSKU {
   valueStandard("standard"),
   valueBasic("basic");
 
-  const StorageSKU(this.value);
-  final String value;
+  const StorageSKU(this.wireValue);
+  final String wireValue;
 
   static StorageSKU fromValue(String value) {
     for (final item in StorageSKU.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageSKU value: $value');
   }
 }
-

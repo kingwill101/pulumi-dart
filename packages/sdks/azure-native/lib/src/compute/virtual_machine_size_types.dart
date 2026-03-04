@@ -167,16 +167,15 @@ enum VirtualMachineSizeTypes {
   standardNV12("Standard_NV12"),
   standardNV24("Standard_NV24");
 
-  const VirtualMachineSizeTypes(this.value);
-  final String value;
+  const VirtualMachineSizeTypes(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineSizeTypes fromValue(String value) {
     for (final item in VirtualMachineSizeTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualMachineSizeTypes value: $value');
   }
 }
-

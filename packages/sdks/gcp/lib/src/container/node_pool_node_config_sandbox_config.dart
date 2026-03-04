@@ -8,20 +8,15 @@ class NodePoolNodeConfigSandboxConfig {
 
   /// Creates a new [NodePoolNodeConfigSandboxConfig].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')
-  NodePoolNodeConfigSandboxConfig({
-    required this.sandboxType,
-  });
+  NodePoolNodeConfigSandboxConfig({required this.sandboxType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sandboxType': sandboxType,
-    };
+    return <String, dynamic>{'sandboxType': sandboxType};
   }
 
   factory NodePoolNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSandboxConfig(
-      sandboxType: (map['sandboxType'] as String).input(),
+      sandboxType: pulumi.Input.fromValue(map['sandboxType'] as String),
     );
   }
 }
-

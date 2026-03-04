@@ -7,16 +7,20 @@ enum CVSSConfidentialityImpactContaineranalysisV1beta1 {
   impactPartial("IMPACT_PARTIAL"),
   impactComplete("IMPACT_COMPLETE");
 
-  const CVSSConfidentialityImpactContaineranalysisV1beta1(this.value);
-  final String value;
+  const CVSSConfidentialityImpactContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
-  static CVSSConfidentialityImpactContaineranalysisV1beta1 fromValue(String value) {
-    for (final item in CVSSConfidentialityImpactContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+  static CVSSConfidentialityImpactContaineranalysisV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in CVSSConfidentialityImpactContaineranalysisV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSConfidentialityImpactContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSConfidentialityImpactContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

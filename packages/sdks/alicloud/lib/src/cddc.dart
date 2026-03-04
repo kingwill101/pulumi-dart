@@ -1,5 +1,3 @@
-library module_cddc;
-
 export 'cddc/dedicated_host.dart';
 export 'cddc/dedicated_host_account.dart';
 export 'cddc/dedicated_host_account_args.dart';

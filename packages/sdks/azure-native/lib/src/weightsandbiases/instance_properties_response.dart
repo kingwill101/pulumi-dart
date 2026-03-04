@@ -10,12 +10,17 @@ import 'partner_properties_response.dart';
 class InstancePropertiesResponse {
   /// Marketplace details of the resource.
   final pulumi.Input<LiftrBaseMarketplaceDetailsResponse> marketplace;
+
   /// partner properties
   final pulumi.Input<PartnerPropertiesResponse>? partnerProperties;
+
   /// Provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
+
   /// Single sign-on properties
-  final pulumi.Input<LiftrBaseSingleSignOnPropertiesV2Response>? singleSignOnProperties;
+  final pulumi.Input<LiftrBaseSingleSignOnPropertiesV2Response>?
+  singleSignOnProperties;
+
   /// Details of the user.
   final pulumi.Input<LiftrBaseUserDetailsResponse> user;
 
@@ -35,22 +40,63 @@ class InstancePropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'marketplace': pulumi.Input.mapInputValue<LiftrBaseMarketplaceDetailsResponse, Map<String, dynamic>>(marketplace, (value) => value.toMap()),
-      'partnerProperties': ?pulumi.Input.mapOptionalInputValue<PartnerPropertiesResponse, Map<String, dynamic>>(partnerProperties, (value) => value.toMap()),
+      'marketplace':
+          pulumi.Input.mapInputValue<
+            LiftrBaseMarketplaceDetailsResponse,
+            Map<String, dynamic>
+          >(marketplace, (value) => value.toMap()),
+      'partnerProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            PartnerPropertiesResponse,
+            Map<String, dynamic>
+          >(partnerProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'singleSignOnProperties': ?pulumi.Input.mapOptionalInputValue<LiftrBaseSingleSignOnPropertiesV2Response, Map<String, dynamic>>(singleSignOnProperties, (value) => value.toMap()),
-      'user': pulumi.Input.mapInputValue<LiftrBaseUserDetailsResponse, Map<String, dynamic>>(user, (value) => value.toMap()),
+      'singleSignOnProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            LiftrBaseSingleSignOnPropertiesV2Response,
+            Map<String, dynamic>
+          >(singleSignOnProperties, (value) => value.toMap()),
+      'user':
+          pulumi.Input.mapInputValue<
+            LiftrBaseUserDetailsResponse,
+            Map<String, dynamic>
+          >(user, (value) => value.toMap()),
     };
   }
 
   factory InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponse(
-      marketplace: (LiftrBaseMarketplaceDetailsResponse.fromMap((map['marketplace'] as Map).cast<String, dynamic>())).input(),
-      partnerProperties: map['partnerProperties'] == null ? null : (PartnerPropertiesResponse.fromMap((map['partnerProperties']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      singleSignOnProperties: map['singleSignOnProperties'] == null ? null : (LiftrBaseSingleSignOnPropertiesV2Response.fromMap((map['singleSignOnProperties']! as Map).cast<String, dynamic>())).input(),
-      user: (LiftrBaseUserDetailsResponse.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      marketplace: pulumi.Input.fromValue(
+        LiftrBaseMarketplaceDetailsResponse.fromMap(
+          (map['marketplace']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      partnerProperties: (() {
+        final guardedValue = map['partnerProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PartnerPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      singleSignOnProperties: (() {
+        final guardedValue = map['singleSignOnProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LiftrBaseSingleSignOnPropertiesV2Response.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      user: pulumi.Input.fromValue(
+        LiftrBaseUserDetailsResponse.fromMap(
+          (map['user']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

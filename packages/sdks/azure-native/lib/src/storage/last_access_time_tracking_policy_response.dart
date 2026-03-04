@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LastAccessTimeTrackingPolicyResponse {
   /// An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
   final pulumi.Input<List<String>>? blobType;
+
   /// When set to true last access time based tracking is enabled.
   final pulumi.Input<bool> enable;
+
   /// Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
   final pulumi.Input<String>? name;
+
   /// The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
   final pulumi.Input<int>? trackingGranularityInDays;
 
@@ -34,13 +37,26 @@ class LastAccessTimeTrackingPolicyResponse {
     };
   }
 
-  factory LastAccessTimeTrackingPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory LastAccessTimeTrackingPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LastAccessTimeTrackingPolicyResponse(
-      blobType: map['blobType'] == null ? null : ((map['blobType']! as List).cast<String>()).input(),
-      enable: (map['enable'] as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      trackingGranularityInDays: map['trackingGranularityInDays'] == null ? null : (map['trackingGranularityInDays']! as int).input(),
+      blobType: (() {
+        final guardedValue = map['blobType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trackingGranularityInDays: (() {
+        final guardedValue = map['trackingGranularityInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

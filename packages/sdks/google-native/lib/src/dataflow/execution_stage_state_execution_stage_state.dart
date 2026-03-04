@@ -14,16 +14,17 @@ enum ExecutionStageStateExecutionStageState {
   jobStateQueued("JOB_STATE_QUEUED"),
   jobStateResourceCleaningUp("JOB_STATE_RESOURCE_CLEANING_UP");
 
-  const ExecutionStageStateExecutionStageState(this.value);
-  final String value;
+  const ExecutionStageStateExecutionStageState(this.wireValue);
+  final String wireValue;
 
   static ExecutionStageStateExecutionStageState fromValue(String value) {
     for (final item in ExecutionStageStateExecutionStageState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExecutionStageStateExecutionStageState value: $value');
+    throw ArgumentError(
+      'Unknown ExecutionStageStateExecutionStageState value: $value',
+    );
   }
 }
-

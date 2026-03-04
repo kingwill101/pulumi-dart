@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceArgs {
   /// Name of the network interface
   final pulumi.Input<String> networkInterfaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetNetworkInterfaceArgs {
 
   factory GetNetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceArgs(
-      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkInterfaceName: pulumi.Input.fromValue(
+        map['networkInterfaceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

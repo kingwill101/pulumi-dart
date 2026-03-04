@@ -5,16 +5,23 @@ enum AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1 {
   internalVpcLb("INTERNAL_VPC_LB"),
   externalLb("EXTERNAL_LB");
 
-  const AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1(this.value);
-  final String value;
+  const AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1 fromValue(String value) {
-    for (final item in AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1.values) {
-      if (item.value == value) {
+  static AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1 value: $value',
+    );
   }
 }
-

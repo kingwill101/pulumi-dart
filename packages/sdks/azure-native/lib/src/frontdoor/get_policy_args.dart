@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyArgs {
   /// The name of the Web Application Firewall Policy.
   final pulumi.Input<String> policyName;
+
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetPolicyArgs].
   /// [policyName] The name of the Web Application Firewall Policy.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
-  GetPolicyArgs({
-    required this.policyName,
-    required this.resourceGroupName,
-  });
+  GetPolicyArgs({required this.policyName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      policyName: (map['policyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

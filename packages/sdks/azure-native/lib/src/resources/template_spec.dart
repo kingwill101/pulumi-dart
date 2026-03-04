@@ -142,24 +142,34 @@ import 'template_spec_version_info_response.dart';
 class TemplateSpec extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Template Spec description.
   late final pulumi.Output<String?> description;
+
   /// Template Spec display name.
   late final pulumi.Output<String?> displayName;
+
   /// The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations.
   late final pulumi.Output<String> location;
+
   /// The Template Spec metadata. Metadata is an open-ended object and is typically a collection of key-value pairs.
   late final pulumi.Output<dynamic> metadata;
+
   /// Name of this resource.
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Type of this resource.
   late final pulumi.Output<String> type;
+
   /// High-level information about the versions within this Template Spec. The keys are the version names. Only populated if the $expand query parameter is set to 'versions'.
-  late final pulumi.Output<Map<String, TemplateSpecVersionInfoResponse>> versions;
+  late final pulumi.Output<Map<String, TemplateSpecVersionInfoResponse>>
+  versions;
 
   /// Creates a new [TemplateSpec].
   /// [name] The Pulumi resource name.
@@ -170,20 +180,22 @@ class TemplateSpec extends pulumi.CustomResource {
     TemplateSpecArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:resources:TemplateSpec',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:resources:TemplateSpec',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.versions = registerOutput<Map<String, TemplateSpecVersionInfoResponse>>('versions');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    versions = registerOutput<Map<String, TemplateSpecVersionInfoResponse>>(
+      'versions',
+    );
   }
 }

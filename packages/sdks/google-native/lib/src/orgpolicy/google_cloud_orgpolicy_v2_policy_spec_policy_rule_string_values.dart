@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   /// List of values allowed at this resource.
   final pulumi.Input<List<String>>? allowedValues;
+
   /// List of values denied at this resource.
   final pulumi.Input<List<String>>? deniedValues;
 
@@ -24,11 +25,20 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
     };
   }
 
-  factory GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<String>()).input(),
-      deniedValues: map['deniedValues'] == null ? null : ((map['deniedValues']! as List).cast<String>()).input(),
+      allowedValues: (() {
+        final guardedValue = map['allowedValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      deniedValues: (() {
+        final guardedValue = map['deniedValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

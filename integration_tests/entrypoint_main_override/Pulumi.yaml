@@ -1,0 +1,4 @@
+name: entrypoint_main_override_dart
+description: A Pulumi program for Dart entrypoint main override resolution.
+runtime: dart
+main: bin/custom_entrypoint.dart

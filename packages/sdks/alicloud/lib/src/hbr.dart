@@ -1,5 +1,3 @@
-library module_hbr;
-
 export 'hbr/cross_account.dart';
 export 'hbr/cross_account_args.dart';
 export 'hbr/cross_account_state.dart';

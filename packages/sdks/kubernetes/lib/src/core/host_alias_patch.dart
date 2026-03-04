@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostAliasPatch {
   /// Hostnames for the above IP address.
   final pulumi.Input<List<String>>? hostnames;
+
   /// IP address of the host file entry.
   final pulumi.Input<String>? ip;
 
   /// Creates a new [HostAliasPatch].
   /// [hostnames] Hostnames for the above IP address.
   /// [ip] IP address of the host file entry.
-  HostAliasPatch({
-    this.hostnames,
-    this.ip,
-  });
+  HostAliasPatch({this.hostnames, this.ip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostnames': ?hostnames,
-      'ip': ?ip,
-    };
+    return <String, dynamic>{'hostnames': ?hostnames, 'ip': ?ip};
   }
 
   factory HostAliasPatch.fromMap(Map<String, dynamic> map) {
     return HostAliasPatch(
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
-      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      hostnames: (() {
+        final guardedValue = map['hostnames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

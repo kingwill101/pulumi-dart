@@ -182,27 +182,38 @@ import 'sql_pool_sensitivity_label_args.dart';
 class SqlPoolSensitivityLabel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The column name.
   late final pulumi.Output<String> columnName;
+
   /// The information type.
   late final pulumi.Output<String?> informationType;
+
   /// The information type ID.
   late final pulumi.Output<String?> informationTypeId;
+
   /// Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only. Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or not.
   late final pulumi.Output<bool> isDisabled;
+
   /// The label ID.
   late final pulumi.Output<String?> labelId;
+
   /// The label name.
   late final pulumi.Output<String?> labelName;
+
   /// managed by
   late final pulumi.Output<String> managedBy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> rank;
+
   /// The schema name.
   late final pulumi.Output<String> schemaName;
+
   /// The table name.
   late final pulumi.Output<String> tableName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -215,23 +226,23 @@ class SqlPoolSensitivityLabel extends pulumi.CustomResource {
     SqlPoolSensitivityLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:SqlPoolSensitivityLabel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.columnName = registerOutput<String>('columnName');
-    this.informationType = registerOutput<String?>('informationType');
-    this.informationTypeId = registerOutput<String?>('informationTypeId');
-    this.isDisabled = registerOutput<bool>('isDisabled');
-    this.labelId = registerOutput<String?>('labelId');
-    this.labelName = registerOutput<String?>('labelName');
-    this.managedBy = registerOutput<String>('managedBy');
+         'azure-native:synapse:SqlPoolSensitivityLabel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    columnName = registerOutput<String>('columnName');
+    informationType = registerOutput<String?>('informationType');
+    informationTypeId = registerOutput<String?>('informationTypeId');
+    isDisabled = registerOutput<bool>('isDisabled');
+    labelId = registerOutput<String?>('labelId');
+    labelName = registerOutput<String?>('labelName');
+    managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
-    this.rank = registerOutput<String?>('rank');
-    this.schemaName = registerOutput<String>('schemaName');
-    this.tableName = registerOutput<String>('tableName');
-    this.type = registerOutput<String>('type');
+    rank = registerOutput<String?>('rank');
+    schemaName = registerOutput<String>('schemaName');
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
   }
 }

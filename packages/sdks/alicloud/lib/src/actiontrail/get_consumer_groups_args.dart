@@ -9,16 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerGroupsArgs {
   /// A regex string to filter results by the consumer group id.
   final pulumi.Input<String>? consumerIdRegex;
-  /// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
+
+  /// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `&lt;instance_id&gt;:&lt;consumer_id&gt;`.
   final pulumi.Input<List<String>>? ids;
+
   /// ID of the ALIKAFKA Instance that owns the consumer groups.
   final pulumi.Input<String> instanceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetConsumerGroupsArgs].
   /// [consumerIdRegex] A regex string to filter results by the consumer group id.
-  /// [ids] A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
+  /// [ids] A list of ALIKAFKA Consumer Groups IDs, It is formatted to `&lt;instance_id&gt;:&lt;consumer_id&gt;`.
   /// [instanceId] ID of the ALIKAFKA Instance that owns the consumer groups.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   GetConsumerGroupsArgs({
@@ -39,11 +42,22 @@ class GetConsumerGroupsArgs {
 
   factory GetConsumerGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerGroupsArgs(
-      consumerIdRegex: map['consumerIdRegex'] == null ? null : (map['consumerIdRegex']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      consumerIdRegex: (() {
+        final guardedValue = map['consumerIdRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

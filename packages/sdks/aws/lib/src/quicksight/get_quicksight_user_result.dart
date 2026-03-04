@@ -1,26 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getQuicksightUser.
 class GetQuicksightUserResult {
   /// The active status of user. When you create an Amazon QuickSight user that’s not an IAM user or an Active Directory user, that user is inactive until they sign in and provide a password.
   final bool active;
+
   /// The Amazon Resource Name (ARN) for the user.
   final String arn;
   final String awsAccountId;
+
   /// The custom permissions profile associated with this user.
   final String customPermissionsName;
+
   /// The user's email address.
   final String email;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The type of identity authentication used by the user.
   final String identityType;
   final String? namespace;
+
   /// The principal ID of the user.
   final String principalId;
   final String region;
   final String userName;
+
   /// The Amazon QuickSight role for the user. The user role can be one of the following:.
   /// - `READER`: A user who has read-only access to dashboards.
   /// - `AUTHOR`: A user who can create data sources, datasets, analyzes, and dashboards.
@@ -81,7 +87,11 @@ class GetQuicksightUserResult {
       email: map['email'] as String,
       id: map['id'] as String,
       identityType: map['identityType'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       principalId: map['principalId'] as String,
       region: map['region'] as String,
       userName: map['userName'] as String,
@@ -89,4 +99,3 @@ class GetQuicksightUserResult {
     );
   }
 }
-

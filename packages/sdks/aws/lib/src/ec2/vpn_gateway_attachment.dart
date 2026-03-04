@@ -5,7 +5,7 @@ import 'vpn_gateway_attachment_state.dart';
 /// Provides a Virtual Private Gateway attachment resource, allowing for an existing
 /// hardware VPN gateway to be attached and/or detached from a VPC.
 ///
-/// > **Note:** The `aws.ec2.VpnGateway`
+/// &gt; **Note:** The `aws.ec2.VpnGateway`
 /// resource can also automatically attach the Virtual Private Gateway it creates
 /// to an existing VPC by setting the `vpc_id` attribute accordingly.
 ///
@@ -172,8 +172,10 @@ import 'vpn_gateway_attachment_state.dart';
 class VpnGatewayAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of the Virtual Private Gateway.
   late final pulumi.Output<String> vpnGatewayId;
 
@@ -186,14 +188,14 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
     VpnGatewayAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
+         'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }
 
   /// Gets an existing [VpnGatewayAttachment] resource's state with the given [name] and [id].
@@ -214,13 +216,13 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
+         'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }
 }

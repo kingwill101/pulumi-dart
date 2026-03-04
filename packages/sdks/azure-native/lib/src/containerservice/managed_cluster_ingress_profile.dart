@@ -10,20 +10,29 @@ class ManagedClusterIngressProfile {
 
   /// Creates a new [ManagedClusterIngressProfile].
   /// [webAppRouting] App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-  ManagedClusterIngressProfile({
-    this.webAppRouting,
-  });
+  ManagedClusterIngressProfile({this.webAppRouting});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'webAppRouting': ?pulumi.Input.mapOptionalInputValue<ManagedClusterIngressProfileWebAppRouting, Map<String, dynamic>>(webAppRouting, (value) => value.toMap()),
+      'webAppRouting':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedClusterIngressProfileWebAppRouting,
+            Map<String, dynamic>
+          >(webAppRouting, (value) => value.toMap()),
     };
   }
 
   factory ManagedClusterIngressProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIngressProfile(
-      webAppRouting: map['webAppRouting'] == null ? null : (ManagedClusterIngressProfileWebAppRouting.fromMap((map['webAppRouting']! as Map).cast<String, dynamic>())).input(),
+      webAppRouting: (() {
+        final guardedValue = map['webAppRouting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedClusterIngressProfileWebAppRouting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

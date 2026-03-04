@@ -1,5 +1,3 @@
-library module_networksecurity;
-
 export 'networksecurity/address_group.dart';
 export 'networksecurity/address_group_args.dart';
 export 'networksecurity/address_group_iam_binding.dart';

@@ -1,5 +1,3 @@
-library module_kms;
-
 export 'kms/alias.dart';
 export 'kms/alias_args.dart';
 export 'kms/alias_state.dart';

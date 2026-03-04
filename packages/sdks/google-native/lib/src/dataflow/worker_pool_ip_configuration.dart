@@ -4,16 +4,15 @@ enum WorkerPoolIpConfiguration {
   workerIpPublic("WORKER_IP_PUBLIC"),
   workerIpPrivate("WORKER_IP_PRIVATE");
 
-  const WorkerPoolIpConfiguration(this.value);
-  final String value;
+  const WorkerPoolIpConfiguration(this.wireValue);
+  final String wireValue;
 
   static WorkerPoolIpConfiguration fromValue(String value) {
     for (final item in WorkerPoolIpConfiguration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkerPoolIpConfiguration value: $value');
   }
 }
-

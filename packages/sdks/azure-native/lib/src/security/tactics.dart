@@ -15,16 +15,15 @@ enum Tactics {
   valueExfiltration("Exfiltration"),
   valueImpact("Impact");
 
-  const Tactics(this.value);
-  final String value;
+  const Tactics(this.wireValue);
+  final String wireValue;
 
   static Tactics fromValue(String value) {
     for (final item in Tactics.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Tactics value: $value');
   }
 }
-

@@ -1,12 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_authorization_response.dart';
 import 'application_definition_args.dart';
-import 'application_definition_artifact_response.dart';
 import 'application_deployment_policy_response.dart';
 import 'application_management_policy_response.dart';
 import 'application_notification_policy_response.dart';
 import 'application_package_locking_policy_definition_response.dart';
-import 'application_policy_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -190,49 +187,75 @@ import 'system_data_response.dart';
 /// ```
 class ApplicationDefinition extends pulumi.CustomResource {
   /// The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
-  late final pulumi.Output<List<ApplicationDefinitionArtifactResponse>?> artifacts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> artifacts;
+
   /// The managed application provider authorizations.
-  late final pulumi.Output<List<ApplicationAuthorizationResponse>?> authorizations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> authorizations;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
   late final pulumi.Output<dynamic> createUiDefinition;
+
   /// The managed application deployment policy.
-  late final pulumi.Output<ApplicationDeploymentPolicyResponse?> deploymentPolicy;
+  late final pulumi.Output<ApplicationDeploymentPolicyResponse?>
+  deploymentPolicy;
+
   /// The managed application definition description.
   late final pulumi.Output<String?> description;
+
   /// The managed application definition display name.
   late final pulumi.Output<String?> displayName;
+
   /// A value indicating whether the package is enabled or not.
   late final pulumi.Output<bool?> isEnabled;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// The managed application lock level.
   late final pulumi.Output<String> lockLevel;
+
   /// The managed application locking policy.
-  late final pulumi.Output<ApplicationPackageLockingPolicyDefinitionResponse?> lockingPolicy;
+  late final pulumi.Output<ApplicationPackageLockingPolicyDefinitionResponse?>
+  lockingPolicy;
+
   /// The inline main template json which has resources to be provisioned. It can be a JObject or well-formed JSON string.
   late final pulumi.Output<dynamic> mainTemplate;
+
   /// ID of the resource that manages this resource.
   late final pulumi.Output<String?> managedBy;
+
   /// The managed application management policy that determines publisher's access to the managed resource group.
-  late final pulumi.Output<ApplicationManagementPolicyResponse?> managementPolicy;
+  late final pulumi.Output<ApplicationManagementPolicyResponse?>
+  managementPolicy;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The managed application notification policy.
-  late final pulumi.Output<ApplicationNotificationPolicyResponse?> notificationPolicy;
+  late final pulumi.Output<ApplicationNotificationPolicyResponse?>
+  notificationPolicy;
+
   /// The managed application definition package file Uri. Use this element
   late final pulumi.Output<String?> packageFileUri;
+
   /// The managed application provider policies.
-  late final pulumi.Output<List<ApplicationPolicyResponse>?> policies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> policies;
+
   /// The SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// The storage account id for bring your own storage scenario.
   late final pulumi.Output<String?> storageAccountId;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -245,33 +268,44 @@ class ApplicationDefinition extends pulumi.CustomResource {
     ApplicationDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:solutions:ApplicationDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.artifacts = registerOutput<List<ApplicationDefinitionArtifactResponse>?>('artifacts');
-    this.authorizations = registerOutput<List<ApplicationAuthorizationResponse>?>('authorizations');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createUiDefinition = registerOutput<dynamic>('createUiDefinition');
-    this.deploymentPolicy = registerOutput<ApplicationDeploymentPolicyResponse?>('deploymentPolicy');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.isEnabled = registerOutput<bool?>('isEnabled');
-    this.location = registerOutput<String?>('location');
-    this.lockLevel = registerOutput<String>('lockLevel');
-    this.lockingPolicy = registerOutput<ApplicationPackageLockingPolicyDefinitionResponse?>('lockingPolicy');
-    this.mainTemplate = registerOutput<dynamic>('mainTemplate');
-    this.managedBy = registerOutput<String?>('managedBy');
-    this.managementPolicy = registerOutput<ApplicationManagementPolicyResponse?>('managementPolicy');
+         'azure-native:solutions:ApplicationDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    artifacts = registerOutput<List<Map<String, dynamic>>?>('artifacts');
+    authorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizations',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createUiDefinition = registerOutput<dynamic>('createUiDefinition');
+    deploymentPolicy = registerOutput<ApplicationDeploymentPolicyResponse?>(
+      'deploymentPolicy',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    location = registerOutput<String?>('location');
+    lockLevel = registerOutput<String>('lockLevel');
+    lockingPolicy =
+        registerOutput<ApplicationPackageLockingPolicyDefinitionResponse?>(
+          'lockingPolicy',
+        );
+    mainTemplate = registerOutput<dynamic>('mainTemplate');
+    managedBy = registerOutput<String?>('managedBy');
+    managementPolicy = registerOutput<ApplicationManagementPolicyResponse?>(
+      'managementPolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.notificationPolicy = registerOutput<ApplicationNotificationPolicyResponse?>('notificationPolicy');
-    this.packageFileUri = registerOutput<String?>('packageFileUri');
-    this.policies = registerOutput<List<ApplicationPolicyResponse>?>('policies');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    notificationPolicy = registerOutput<ApplicationNotificationPolicyResponse?>(
+      'notificationPolicy',
+    );
+    packageFileUri = registerOutput<String?>('packageFileUri');
+    policies = registerOutput<List<Map<String, dynamic>>?>('policies');
+    sku = registerOutput<SkuResponse?>('sku');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

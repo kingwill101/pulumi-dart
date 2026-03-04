@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetListenerDefaultActionRedirect {
   final pulumi.Input<String> host;
   final pulumi.Input<String> path;
+
   /// Port of the listener. Required if `arn` is not set.
   final pulumi.Input<String> port;
   final pulumi.Input<String> protocol;
@@ -40,13 +41,12 @@ class GetListenerDefaultActionRedirect {
 
   factory GetListenerDefaultActionRedirect.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionRedirect(
-      host: (map['host'] as String).input(),
-      path: (map['path'] as String).input(),
-      port: (map['port'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      query: (map['query'] as String).input(),
-      statusCode: (map['statusCode'] as String).input(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      statusCode: pulumi.Input.fromValue(map['statusCode'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_recaptcha;
-
 export 'recaptcha/enterprise_key.dart';
 export 'recaptcha/enterprise_key_android_settings.dart';
 export 'recaptcha/enterprise_key_args.dart';

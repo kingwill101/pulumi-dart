@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attachment_args.dart';
 import 'attachment_state.dart';
 
-/// > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloud.slb.BackendServer instead.
+/// &gt; **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloud.slb.BackendServer instead.
 ///
 /// Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
 ///
@@ -483,14 +483,19 @@ import 'attachment_state.dart';
 class Attachment extends pulumi.CustomResource {
   /// The backend servers of the load balancer.
   late final pulumi.Output<String> backendServers;
+
   /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   late final pulumi.Output<bool?> deleteProtectionValidation;
+
   /// A list of instance ids to added backend server in the SLB.
   late final pulumi.Output<List<String>> instanceIds;
+
   /// ID of the load balancer.
   late final pulumi.Output<String> loadBalancerId;
+
   /// Type of the instances. Valid value ecs, eni. Default to ecs.
   late final pulumi.Output<String?> serverType;
+
   /// Weight of the instances. Valid value range: [0-100]. Default to 100.
   late final pulumi.Output<int?> weight;
 
@@ -503,17 +508,19 @@ class Attachment extends pulumi.CustomResource {
     AttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/attachment:Attachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendServers = registerOutput<String>('backendServers');
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.serverType = registerOutput<String?>('serverType');
-    this.weight = registerOutput<int?>('weight');
+         'alicloud:slb/attachment:Attachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendServers = registerOutput<String>('backendServers');
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    serverType = registerOutput<String?>('serverType');
+    weight = registerOutput<int?>('weight');
   }
 
   /// Gets an existing [Attachment] resource's state with the given [name] and [id].
@@ -534,16 +541,18 @@ class Attachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/attachment:Attachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendServers = registerOutput<String>('backendServers');
-    this.deleteProtectionValidation = registerOutput<bool?>('deleteProtectionValidation');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.serverType = registerOutput<String?>('serverType');
-    this.weight = registerOutput<int?>('weight');
+         'alicloud:slb/attachment:Attachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendServers = registerOutput<String>('backendServers');
+    deleteProtectionValidation = registerOutput<bool?>(
+      'deleteProtectionValidation',
+    );
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    serverType = registerOutput<String?>('serverType');
+    weight = registerOutput<int?>('weight');
   }
 }

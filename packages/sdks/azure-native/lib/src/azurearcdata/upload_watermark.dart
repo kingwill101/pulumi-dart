@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadWatermark {
   /// Last uploaded date for logs from kubernetes cluster. Defaults to current date time
   final pulumi.Input<String>? logs;
+
   /// Last uploaded date for metrics from kubernetes cluster. Defaults to current date time
   final pulumi.Input<String>? metrics;
+
   /// Last uploaded date for usages from kubernetes cluster. Defaults to current date time
   final pulumi.Input<String>? usages;
 
@@ -15,11 +17,7 @@ class UploadWatermark {
   /// [logs] Last uploaded date for logs from kubernetes cluster. Defaults to current date time
   /// [metrics] Last uploaded date for metrics from kubernetes cluster. Defaults to current date time
   /// [usages] Last uploaded date for usages from kubernetes cluster. Defaults to current date time
-  UploadWatermark({
-    this.logs,
-    this.metrics,
-    this.usages,
-  });
+  UploadWatermark({this.logs, this.metrics, this.usages});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class UploadWatermark {
 
   factory UploadWatermark.fromMap(Map<String, dynamic> map) {
     return UploadWatermark(
-      logs: map['logs'] == null ? null : (map['logs']! as String).input(),
-      metrics: map['metrics'] == null ? null : (map['metrics']! as String).input(),
-      usages: map['usages'] == null ? null : (map['usages']! as String).input(),
+      logs: (() {
+        final guardedValue = map['logs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metrics: (() {
+        final guardedValue = map['metrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usages: (() {
+        final guardedValue = map['usages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

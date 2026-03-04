@@ -4,7 +4,7 @@ import 'k8s_cluster_state.dart';
 
 /// Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
 ///
-/// > **NOTE:** Available since v1.93.0.
+/// &gt; **NOTE:** Available since v1.93.0.
 ///
 /// ## Example Usage
 ///
@@ -533,16 +533,22 @@ class K8sCluster extends pulumi.CustomResource {
   /// `3`: importing.
   /// `4`: deleted.
   late final pulumi.Output<int> clusterImportStatus;
+
   /// The name of the cluster that you want to create.
   late final pulumi.Output<String> clusterName;
+
   /// The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
   late final pulumi.Output<int> clusterType;
+
   /// The ID of the alicloud container service kubernetes cluster that you want to import.
   late final pulumi.Output<String> csClusterId;
+
   /// The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
   late final pulumi.Output<String?> namespaceId;
+
   /// The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   late final pulumi.Output<int> networkMode;
+
   /// The ID of the Virtual Private Cloud (VPC) for the cluster.
   late final pulumi.Output<String> vpcId;
 
@@ -555,18 +561,18 @@ class K8sCluster extends pulumi.CustomResource {
     K8sClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/k8sCluster:K8sCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterImportStatus = registerOutput<int>('clusterImportStatus');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<int>('clusterType');
-    this.csClusterId = registerOutput<String>('csClusterId');
-    this.namespaceId = registerOutput<String?>('namespaceId');
-    this.networkMode = registerOutput<int>('networkMode');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:edas/k8sCluster:K8sCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterImportStatus = registerOutput<int>('clusterImportStatus');
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<int>('clusterType');
+    csClusterId = registerOutput<String>('csClusterId');
+    namespaceId = registerOutput<String?>('namespaceId');
+    networkMode = registerOutput<int>('networkMode');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [K8sCluster] resource's state with the given [name] and [id].
@@ -587,17 +593,17 @@ class K8sCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/k8sCluster:K8sCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterImportStatus = registerOutput<int>('clusterImportStatus');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<int>('clusterType');
-    this.csClusterId = registerOutput<String>('csClusterId');
-    this.namespaceId = registerOutput<String?>('namespaceId');
-    this.networkMode = registerOutput<int>('networkMode');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:edas/k8sCluster:K8sCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterImportStatus = registerOutput<int>('clusterImportStatus');
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<int>('clusterType');
+    csClusterId = registerOutput<String>('csClusterId');
+    namespaceId = registerOutput<String?>('namespaceId');
+    networkMode = registerOutput<int>('networkMode');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

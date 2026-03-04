@@ -13,16 +13,15 @@ enum IpamState {
   modifyInProgress("modify-in-progress"),
   restoreInProgress("restore-in-progress");
 
-  const IpamState(this.value);
-  final String value;
+  const IpamState(this.wireValue);
+  final String wireValue;
 
   static IpamState fromValue(String value) {
     for (final item in IpamState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpamState value: $value');
   }
 }
-

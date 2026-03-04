@@ -35,11 +35,14 @@ class GetControlRetailV2betaArgs {
 
   factory GetControlRetailV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetControlRetailV2betaArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      controlId: (map['controlId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      controlId: pulumi.Input.fromValue(map['controlId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum RdbFrequency {
   value6h("6h"),
   value12h("12h");
 
-  const RdbFrequency(this.value);
-  final String value;
+  const RdbFrequency(this.wireValue);
+  final String wireValue;
 
   static RdbFrequency fromValue(String value) {
     for (final item in RdbFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RdbFrequency value: $value');
   }
 }
-

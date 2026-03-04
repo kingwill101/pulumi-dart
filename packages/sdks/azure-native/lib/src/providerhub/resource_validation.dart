@@ -4,16 +4,15 @@ enum ResourceValidation {
   reservedWords("ReservedWords"),
   profaneWords("ProfaneWords");
 
-  const ResourceValidation(this.value);
-  final String value;
+  const ResourceValidation(this.wireValue);
+  final String wireValue;
 
   static ResourceValidation fromValue(String value) {
     for (final item in ResourceValidation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceValidation value: $value');
   }
 }
-

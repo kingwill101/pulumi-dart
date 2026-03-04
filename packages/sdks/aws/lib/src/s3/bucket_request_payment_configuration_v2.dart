@@ -4,9 +4,9 @@ import 'bucket_request_payment_configuration_v2_state.dart';
 
 /// Provides an S3 bucket request payment configuration resource. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html).
 ///
-/// > **NOTE:** Destroying an `aws.s3.BucketRequestPaymentConfiguration` resource resets the bucket's `payer` to the S3 default: the bucket owner.
+/// &gt; **NOTE:** Destroying an `aws.s3.BucketRequestPaymentConfiguration` resource resets the bucket's `payer` to the S3 default: the bucket owner.
 ///
-/// > This resource cannot be used with S3 directory buckets.
+/// &gt; This resource cannot be used with S3 directory buckets.
 ///
 /// ## Example Usage
 ///
@@ -125,10 +125,13 @@ import 'bucket_request_payment_configuration_v2_state.dart';
 class BucketRequestPaymentConfigurationV2 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   late final pulumi.Output<String> payer;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -141,15 +144,15 @@ class BucketRequestPaymentConfigurationV2 extends pulumi.CustomResource {
     BucketRequestPaymentConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.payer = registerOutput<String>('payer');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    payer = registerOutput<String>('payer');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BucketRequestPaymentConfigurationV2] resource's state with the given [name] and [id].
@@ -170,14 +173,14 @@ class BucketRequestPaymentConfigurationV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.payer = registerOutput<String>('payer');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketRequestPaymentConfigurationV2:BucketRequestPaymentConfigurationV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    payer = registerOutput<String>('payer');
+    region = registerOutput<String>('region');
   }
 }

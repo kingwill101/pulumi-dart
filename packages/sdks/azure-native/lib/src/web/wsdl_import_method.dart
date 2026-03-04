@@ -4,16 +4,15 @@ enum WsdlImportMethod {
   valueSoapToRest("SoapToRest"),
   valueSoapPassThrough("SoapPassThrough");
 
-  const WsdlImportMethod(this.value);
-  final String value;
+  const WsdlImportMethod(this.wireValue);
+  final String wireValue;
 
   static WsdlImportMethod fromValue(String value) {
     for (final item in WsdlImportMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WsdlImportMethod value: $value');
   }
 }
-

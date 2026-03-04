@@ -2,16 +2,15 @@
 enum RegionNetworkEndpointGroupType {
   loadBalancing("LOAD_BALANCING");
 
-  const RegionNetworkEndpointGroupType(this.value);
-  final String value;
+  const RegionNetworkEndpointGroupType(this.wireValue);
+  final String wireValue;
 
   static RegionNetworkEndpointGroupType fromValue(String value) {
     for (final item in RegionNetworkEndpointGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionNetworkEndpointGroupType value: $value');
   }
 }
-

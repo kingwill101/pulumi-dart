@@ -7,10 +7,13 @@ import 'monitoring_tag_rules_properties.dart';
 class MonitoredSubscription {
   /// The reason of not monitoring the subscription.
   final pulumi.Input<String>? error;
+
   /// The state of monitoring.
   final pulumi.Input<String>? status;
+
   /// The subscriptionId to be monitored.
   final pulumi.Input<String>? subscriptionId;
+
   /// Definition of the properties for a TagRules resource.
   final pulumi.Input<MonitoringTagRulesProperties>? tagRules;
 
@@ -31,17 +34,40 @@ class MonitoredSubscription {
       'error': ?error,
       'status': ?status,
       'subscriptionId': ?subscriptionId,
-      'tagRules': ?pulumi.Input.mapOptionalInputValue<MonitoringTagRulesProperties, Map<String, dynamic>>(tagRules, (value) => value.toMap()),
+      'tagRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringTagRulesProperties,
+            Map<String, dynamic>
+          >(tagRules, (value) => value.toMap()),
     };
   }
 
   factory MonitoredSubscription.fromMap(Map<String, dynamic> map) {
     return MonitoredSubscription(
-      error: map['error'] == null ? null : (map['error']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      tagRules: map['tagRules'] == null ? null : (MonitoringTagRulesProperties.fromMap((map['tagRules']! as Map).cast<String, dynamic>())).input(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagRules: (() {
+        final guardedValue = map['tagRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringTagRulesProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

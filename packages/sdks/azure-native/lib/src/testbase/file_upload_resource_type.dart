@@ -3,16 +3,15 @@ enum FileUploadResourceType {
   valuePackage("Package"),
   valueVHD("VHD");
 
-  const FileUploadResourceType(this.value);
-  final String value;
+  const FileUploadResourceType(this.wireValue);
+  final String wireValue;
 
   static FileUploadResourceType fromValue(String value) {
     for (final item in FileUploadResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FileUploadResourceType value: $value');
   }
 }
-

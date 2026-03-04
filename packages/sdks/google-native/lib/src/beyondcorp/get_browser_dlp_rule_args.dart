@@ -31,10 +31,11 @@ class GetBrowserDlpRuleArgs {
 
   factory GetBrowserDlpRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetBrowserDlpRuleArgs(
-      browserDlpRuleId: (map['browserDlpRuleId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      partnerTenantId: (map['partnerTenantId'] as String).input(),
+      browserDlpRuleId: pulumi.Input.fromValue(
+        map['browserDlpRuleId'] as String,
+      ),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
     );
   }
 }
-

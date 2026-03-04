@@ -7,10 +7,13 @@ import 'user_assigned_identity_properties.dart';
 class UserAssignedManagedIdentityDetails {
   /// The ARM id of the assigned identity.
   final pulumi.Input<String>? identityArmId;
+
   /// The name of the assigned identity.
   final pulumi.Input<String>? identityName;
+
   /// User assigned managed identity properties
-  final pulumi.Input<UserAssignedIdentityProperties>? userAssignedIdentityProperties;
+  final pulumi.Input<UserAssignedIdentityProperties>?
+  userAssignedIdentityProperties;
 
   /// Creates a new [UserAssignedManagedIdentityDetails].
   /// [identityArmId] The ARM id of the assigned identity.
@@ -26,16 +29,35 @@ class UserAssignedManagedIdentityDetails {
     return <String, dynamic>{
       'identityArmId': ?identityArmId,
       'identityName': ?identityName,
-      'userAssignedIdentityProperties': ?pulumi.Input.mapOptionalInputValue<UserAssignedIdentityProperties, Map<String, dynamic>>(userAssignedIdentityProperties, (value) => value.toMap()),
+      'userAssignedIdentityProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserAssignedIdentityProperties,
+            Map<String, dynamic>
+          >(userAssignedIdentityProperties, (value) => value.toMap()),
     };
   }
 
   factory UserAssignedManagedIdentityDetails.fromMap(Map<String, dynamic> map) {
     return UserAssignedManagedIdentityDetails(
-      identityArmId: map['identityArmId'] == null ? null : (map['identityArmId']! as String).input(),
-      identityName: map['identityName'] == null ? null : (map['identityName']! as String).input(),
-      userAssignedIdentityProperties: map['userAssignedIdentityProperties'] == null ? null : (UserAssignedIdentityProperties.fromMap((map['userAssignedIdentityProperties']! as Map).cast<String, dynamic>())).input(),
+      identityArmId: (() {
+        final guardedValue = map['identityArmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityName: (() {
+        final guardedValue = map['identityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentityProperties: (() {
+        final guardedValue = map['userAssignedIdentityProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserAssignedIdentityProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

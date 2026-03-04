@@ -4,16 +4,15 @@ enum EnablementMode {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const EnablementMode(this.value);
-  final String value;
+  const EnablementMode(this.wireValue);
+  final String wireValue;
 
   static EnablementMode fromValue(String value) {
     for (final item in EnablementMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnablementMode value: $value');
   }
 }
-

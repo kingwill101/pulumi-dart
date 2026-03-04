@@ -1,5 +1,3 @@
-library module_frontdoor;
-
 export 'frontdoor/action_type.dart';
 export 'frontdoor/backend.dart';
 export 'frontdoor/backend_enabled_state.dart';

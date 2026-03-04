@@ -1,5 +1,3 @@
-library module_machinelearningservices;
-
 export 'machinelearningservices/aadauth_type_workspace_connection_properties.dart';
 export 'machinelearningservices/aadauth_type_workspace_connection_properties_response.dart';
 export 'machinelearningservices/access_key_auth_type_workspace_connection_properties.dart';

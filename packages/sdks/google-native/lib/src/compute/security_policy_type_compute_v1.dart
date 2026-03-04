@@ -4,16 +4,15 @@ enum SecurityPolicyTypeComputeV1 {
   cloudArmorEdge("CLOUD_ARMOR_EDGE"),
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK");
 
-  const SecurityPolicyTypeComputeV1(this.value);
-  final String value;
+  const SecurityPolicyTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static SecurityPolicyTypeComputeV1 fromValue(String value) {
     for (final item in SecurityPolicyTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityPolicyTypeComputeV1 value: $value');
   }
 }
-

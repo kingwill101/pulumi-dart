@@ -124,11 +124,14 @@ import 'key_value_store_timeouts.dart';
 class KeyValueStore extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifying your CloudFront KeyValueStore.
   late final pulumi.Output<String> arn;
+
   /// Comment.
   late final pulumi.Output<String?> comment;
+
   /// ETag hash of the KeyValueStore.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> lastModifiedTime;
+
   /// Unique name for your CloudFront KeyValueStore.
   ///
   /// The following arguments are optional:
@@ -144,17 +147,17 @@ class KeyValueStore extends pulumi.CustomResource {
     KeyValueStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyValueStore:KeyValueStore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.comment = registerOutput<String?>('comment');
-    this.etag = registerOutput<String>('etag');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'aws:cloudfront/keyValueStore:KeyValueStore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts');
+    timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts');
   }
 
   /// Gets an existing [KeyValueStore] resource's state with the given [name] and [id].
@@ -175,16 +178,16 @@ class KeyValueStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyValueStore:KeyValueStore',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.comment = registerOutput<String?>('comment');
-    this.etag = registerOutput<String>('etag');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'aws:cloudfront/keyValueStore:KeyValueStore',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts');
+    timeouts = registerOutput<KeyValueStoreTimeouts?>('timeouts');
   }
 }

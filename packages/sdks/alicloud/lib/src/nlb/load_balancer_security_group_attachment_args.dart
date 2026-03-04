@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerSecurityGroupAttachmentArgs {
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the NLB instance to be associated with the security group.
   final pulumi.Input<String> loadBalancerId;
+
   /// The ID of the security group to be disassociated.
   final pulumi.Input<String> securityGroupId;
 
@@ -32,12 +34,17 @@ class LoadBalancerSecurityGroupAttachmentArgs {
     };
   }
 
-  factory LoadBalancerSecurityGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerSecurityGroupAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerSecurityGroupAttachmentArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
     );
   }
 }
-

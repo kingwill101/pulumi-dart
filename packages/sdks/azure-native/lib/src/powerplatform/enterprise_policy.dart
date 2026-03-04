@@ -178,28 +178,41 @@ import 'system_data_response.dart';
 class EnterprisePolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The encryption settings for a configuration store.
   late final pulumi.Output<PropertiesResponseEncryption?> encryption;
+
   /// The health status of the resource.
   late final pulumi.Output<String?> healthStatus;
+
   /// The identity of the EnterprisePolicy.
   late final pulumi.Output<EnterprisePolicyIdentityResponse?> identity;
+
   /// The kind (type) of Enterprise Policy.
   late final pulumi.Output<String> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Settings concerning lockbox.
   late final pulumi.Output<PropertiesResponseLockbox?> lockbox;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Settings concerning network injection.
-  late final pulumi.Output<PropertiesResponseNetworkInjection?> networkInjection;
+  late final pulumi.Output<PropertiesResponseNetworkInjection?>
+  networkInjection;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The internally assigned unique identifier of the resource.
   late final pulumi.Output<String> systemId;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -212,23 +225,25 @@ class EnterprisePolicy extends pulumi.CustomResource {
     EnterprisePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:powerplatform:EnterprisePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.encryption = registerOutput<PropertiesResponseEncryption?>('encryption');
-    this.healthStatus = registerOutput<String?>('healthStatus');
-    this.identity = registerOutput<EnterprisePolicyIdentityResponse?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.lockbox = registerOutput<PropertiesResponseLockbox?>('lockbox');
+         'azure-native:powerplatform:EnterprisePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryption = registerOutput<PropertiesResponseEncryption?>('encryption');
+    healthStatus = registerOutput<String?>('healthStatus');
+    identity = registerOutput<EnterprisePolicyIdentityResponse?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    lockbox = registerOutput<PropertiesResponseLockbox?>('lockbox');
     this.name = registerOutput<String>('name');
-    this.networkInjection = registerOutput<PropertiesResponseNetworkInjection?>('networkInjection');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.systemId = registerOutput<String>('systemId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkInjection = registerOutput<PropertiesResponseNetworkInjection?>(
+      'networkInjection',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemId = registerOutput<String>('systemId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

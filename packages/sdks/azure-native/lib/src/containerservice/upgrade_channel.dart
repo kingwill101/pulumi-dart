@@ -6,16 +6,15 @@ enum UpgradeChannel {
   valueNodeImage("node-image"),
   valueNone("none");
 
-  const UpgradeChannel(this.value);
-  final String value;
+  const UpgradeChannel(this.wireValue);
+  final String wireValue;
 
   static UpgradeChannel fromValue(String value) {
     for (final item in UpgradeChannel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpgradeChannel value: $value');
   }
 }
-

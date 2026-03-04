@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceWorkspaceArgs {
   /// Workspace description, no more than 80 characters.
   final pulumi.Input<String> description;
+
   /// It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
   final pulumi.Input<String>? displayName;
+
   /// Environments contained in the workspace:
   /// - Simple mode only production environment (prod).
   /// - Standard mode includes development environment (dev) and production environment (prod).
   final pulumi.Input<List<String>> envTypes;
+
   /// The workspace name. The format is as follows:
   /// - 3 to 23 characters in length and can contain letters, underscores, or numbers.
   /// - Must start with a large or small letter.
@@ -44,11 +47,16 @@ class WorkspaceWorkspaceArgs {
 
   factory WorkspaceWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceArgs(
-      description: (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      envTypes: ((map['envTypes'] as List).cast<String>()).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      envTypes: pulumi.Input.fromValue(
+        (map['envTypes'] as List).cast<String>(),
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

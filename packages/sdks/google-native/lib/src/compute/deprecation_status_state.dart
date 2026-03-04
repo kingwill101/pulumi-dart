@@ -5,16 +5,15 @@ enum DeprecationStatusState {
   deprecated("DEPRECATED"),
   obsolete("OBSOLETE");
 
-  const DeprecationStatusState(this.value);
-  final String value;
+  const DeprecationStatusState(this.wireValue);
+  final String wireValue;
 
   static DeprecationStatusState fromValue(String value) {
     for (final item in DeprecationStatusState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeprecationStatusState value: $value');
   }
 }
-

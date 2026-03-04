@@ -9,28 +9,40 @@ import 'update_configuration_response.dart';
 class GetSoftwareUpdateConfigurationByNameResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// CreatedBy property, which only appears in the response.
   final String createdBy;
+
   /// Creation time of the resource, which only appears in the response.
   final String creationTime;
+
   /// Details of provisioning error
   final ErrorResponseResponse? error;
+
   /// Resource Id.
   final String id;
+
   /// LastModifiedBy property, which only appears in the response.
   final String lastModifiedBy;
+
   /// Last time resource was modified, which only appears in the response.
   final String lastModifiedTime;
+
   /// Resource name.
   final String name;
+
   /// Provisioning state for the software update configuration, which only appears in the response.
   final String provisioningState;
+
   /// Schedule information for the Software update configuration
   final SUCSchedulePropertiesResponse scheduleInfo;
+
   /// Tasks information for the Software update configuration.
   final SoftwareUpdateConfigurationTasksResponse? tasks;
+
   /// Resource type
   final String type;
+
   /// update specific properties for the Software update configuration
   final UpdateConfigurationResponse updateConfiguration;
 
@@ -69,35 +81,52 @@ class GetSoftwareUpdateConfigurationByNameResult {
       'azureApiVersion': azureApiVersion,
       'createdBy': createdBy,
       'creationTime': creationTime,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?error?.toMap(),
       'id': id,
       'lastModifiedBy': lastModifiedBy,
       'lastModifiedTime': lastModifiedTime,
       'name': name,
       'provisioningState': provisioningState,
       'scheduleInfo': scheduleInfo.toMap(),
-      'tasks': ?tasks == null ? null : tasks!.toMap(),
+      'tasks': ?tasks?.toMap(),
       'type': type,
       'updateConfiguration': updateConfiguration.toMap(),
     };
   }
 
-  factory GetSoftwareUpdateConfigurationByNameResult.fromMap(Map<String, dynamic> map) {
+  factory GetSoftwareUpdateConfigurationByNameResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSoftwareUpdateConfigurationByNameResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdBy: map['createdBy'] as String,
       creationTime: map['creationTime'] as String,
-      error: map['error'] == null ? null : ErrorResponseResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return ErrorResponseResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       lastModifiedBy: map['lastModifiedBy'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      scheduleInfo: SUCSchedulePropertiesResponse.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>()),
-      tasks: map['tasks'] == null ? null : SoftwareUpdateConfigurationTasksResponse.fromMap((map['tasks']! as Map).cast<String, dynamic>()),
+      scheduleInfo: SUCSchedulePropertiesResponse.fromMap(
+        (map['scheduleInfo']! as Map).cast<String, dynamic>(),
+      ),
+      tasks: (() {
+        final guardedValue = map['tasks'];
+        if (guardedValue == null) return null;
+        return SoftwareUpdateConfigurationTasksResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
-      updateConfiguration: UpdateConfigurationResponse.fromMap((map['updateConfiguration'] as Map).cast<String, dynamic>()),
+      updateConfiguration: UpdateConfigurationResponse.fromMap(
+        (map['updateConfiguration']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

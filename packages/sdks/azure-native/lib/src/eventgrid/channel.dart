@@ -191,23 +191,32 @@ import 'system_data_response.dart';
 class Channel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The type of the event channel which represents the direction flow of events.
   late final pulumi.Output<String?> channelType;
+
   /// Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
   /// the channel and corresponding partner topic are deleted.
   late final pulumi.Output<String?> expirationTimeIfNotActivatedUtc;
+
   /// Context or helpful message that can be used during the approval process by the subscriber.
   late final pulumi.Output<String?> messageForActivation;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
   late final pulumi.Output<PartnerTopicInfoResponse?> partnerTopicInfo;
+
   /// Provisioning state of the channel.
   late final pulumi.Output<String?> provisioningState;
+
   /// The readiness state of the corresponding partner topic.
   late final pulumi.Output<String?> readinessState;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -220,20 +229,24 @@ class Channel extends pulumi.CustomResource {
     ChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:Channel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.channelType = registerOutput<String?>('channelType');
-    this.expirationTimeIfNotActivatedUtc = registerOutput<String?>('expirationTimeIfNotActivatedUtc');
-    this.messageForActivation = registerOutput<String?>('messageForActivation');
+         'azure-native:eventgrid:Channel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    channelType = registerOutput<String?>('channelType');
+    expirationTimeIfNotActivatedUtc = registerOutput<String?>(
+      'expirationTimeIfNotActivatedUtc',
+    );
+    messageForActivation = registerOutput<String?>('messageForActivation');
     this.name = registerOutput<String>('name');
-    this.partnerTopicInfo = registerOutput<PartnerTopicInfoResponse?>('partnerTopicInfo');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.readinessState = registerOutput<String?>('readinessState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    partnerTopicInfo = registerOutput<PartnerTopicInfoResponse?>(
+      'partnerTopicInfo',
+    );
+    provisioningState = registerOutput<String?>('provisioningState');
+    readinessState = registerOutput<String?>('readinessState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

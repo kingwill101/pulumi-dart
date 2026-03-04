@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpHeaderMatch {
   /// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
   final pulumi.Input<String> headerName;
+
   /// The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
   final pulumi.Input<String> regexMatch;
 
   /// Creates a new [HttpHeaderMatch].
   /// [headerName] The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
   /// [regexMatch] The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
-  HttpHeaderMatch({
-    required this.headerName,
-    required this.regexMatch,
-  });
+  HttpHeaderMatch({required this.headerName, required this.regexMatch});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class HttpHeaderMatch {
 
   factory HttpHeaderMatch.fromMap(Map<String, dynamic> map) {
     return HttpHeaderMatch(
-      headerName: (map['headerName'] as String).input(),
-      regexMatch: (map['regexMatch'] as String).input(),
+      headerName: pulumi.Input.fromValue(map['headerName'] as String),
+      regexMatch: pulumi.Input.fromValue(map['regexMatch'] as String),
     );
   }
 }
-

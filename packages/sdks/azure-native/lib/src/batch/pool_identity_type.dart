@@ -3,16 +3,15 @@ enum PoolIdentityType {
   userAssigned("UserAssigned"),
   none("None");
 
-  const PoolIdentityType(this.value);
-  final String value;
+  const PoolIdentityType(this.wireValue);
+  final String wireValue;
 
   static PoolIdentityType fromValue(String value) {
     for (final item in PoolIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PoolIdentityType value: $value');
   }
 }
-

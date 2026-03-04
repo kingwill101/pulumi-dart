@@ -2,16 +2,15 @@
 enum PathMatchType {
   valuePrefix("prefix");
 
-  const PathMatchType(this.value);
-  final String value;
+  const PathMatchType(this.wireValue);
+  final String wireValue;
 
   static PathMatchType fromValue(String value) {
     for (final item in PathMatchType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PathMatchType value: $value');
   }
 }
-

@@ -6,16 +6,17 @@ enum ManagedRuleExclusionSelectorMatchOperator {
   valueEndsWith("EndsWith"),
   valueEqualsAny("EqualsAny");
 
-  const ManagedRuleExclusionSelectorMatchOperator(this.value);
-  final String value;
+  const ManagedRuleExclusionSelectorMatchOperator(this.wireValue);
+  final String wireValue;
 
   static ManagedRuleExclusionSelectorMatchOperator fromValue(String value) {
     for (final item in ManagedRuleExclusionSelectorMatchOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedRuleExclusionSelectorMatchOperator value: $value');
+    throw ArgumentError(
+      'Unknown ManagedRuleExclusionSelectorMatchOperator value: $value',
+    );
   }
 }
-

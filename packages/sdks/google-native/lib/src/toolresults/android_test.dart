@@ -10,12 +10,16 @@ import 'duration.dart';
 class AndroidTest {
   /// Information about the application under test.
   final pulumi.Input<AndroidAppInfo>? androidAppInfo;
+
   /// An Android instrumentation test.
   final pulumi.Input<AndroidInstrumentationTest>? androidInstrumentationTest;
+
   /// An Android robo test.
   final pulumi.Input<AndroidRoboTest>? androidRoboTest;
+
   /// An Android test loop.
   final pulumi.Input<Map<String, dynamic>>? androidTestLoop;
+
   /// Max time a test is allowed to run before it is automatically cancelled.
   final pulumi.Input<Duration>? testTimeout;
 
@@ -35,22 +39,71 @@ class AndroidTest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidAppInfo': ?pulumi.Input.mapOptionalInputValue<AndroidAppInfo, Map<String, dynamic>>(androidAppInfo, (value) => value.toMap()),
-      'androidInstrumentationTest': ?pulumi.Input.mapOptionalInputValue<AndroidInstrumentationTest, Map<String, dynamic>>(androidInstrumentationTest, (value) => value.toMap()),
-      'androidRoboTest': ?pulumi.Input.mapOptionalInputValue<AndroidRoboTest, Map<String, dynamic>>(androidRoboTest, (value) => value.toMap()),
+      'androidAppInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            AndroidAppInfo,
+            Map<String, dynamic>
+          >(androidAppInfo, (value) => value.toMap()),
+      'androidInstrumentationTest':
+          ?pulumi.Input.mapOptionalInputValue<
+            AndroidInstrumentationTest,
+            Map<String, dynamic>
+          >(androidInstrumentationTest, (value) => value.toMap()),
+      'androidRoboTest':
+          ?pulumi.Input.mapOptionalInputValue<
+            AndroidRoboTest,
+            Map<String, dynamic>
+          >(androidRoboTest, (value) => value.toMap()),
       'androidTestLoop': ?androidTestLoop,
-      'testTimeout': ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(testTimeout, (value) => value.toMap()),
+      'testTimeout':
+          ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(
+            testTimeout,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory AndroidTest.fromMap(Map<String, dynamic> map) {
     return AndroidTest(
-      androidAppInfo: map['androidAppInfo'] == null ? null : (AndroidAppInfo.fromMap((map['androidAppInfo']! as Map).cast<String, dynamic>())).input(),
-      androidInstrumentationTest: map['androidInstrumentationTest'] == null ? null : (AndroidInstrumentationTest.fromMap((map['androidInstrumentationTest']! as Map).cast<String, dynamic>())).input(),
-      androidRoboTest: map['androidRoboTest'] == null ? null : (AndroidRoboTest.fromMap((map['androidRoboTest']! as Map).cast<String, dynamic>())).input(),
-      androidTestLoop: map['androidTestLoop'] == null ? null : ((map['androidTestLoop']! as Map).cast<String, dynamic>()).input(),
-      testTimeout: map['testTimeout'] == null ? null : (Duration.fromMap((map['testTimeout']! as Map).cast<String, dynamic>())).input(),
+      androidAppInfo: (() {
+        final guardedValue = map['androidAppInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AndroidAppInfo.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      androidInstrumentationTest: (() {
+        final guardedValue = map['androidInstrumentationTest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AndroidInstrumentationTest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      androidRoboTest: (() {
+        final guardedValue = map['androidRoboTest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AndroidRoboTest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      androidTestLoop: (() {
+        final guardedValue = map['androidTestLoop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      testTimeout: (() {
+        final guardedValue = map['testTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Duration.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

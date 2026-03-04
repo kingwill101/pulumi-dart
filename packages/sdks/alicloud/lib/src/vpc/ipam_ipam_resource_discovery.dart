@@ -8,7 +8,7 @@ import 'ipam_ipam_resource_discovery_state.dart';
 ///
 /// For information about Vpc Ipam Ipam Resource Discovery and how to use it, see [What is Ipam Resource Discovery](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamResourceDiscovery).
 ///
-/// > **NOTE:** Available since v1.243.0.
+/// &gt; **NOTE:** Available since v1.243.0.
 ///
 /// ## Example Usage
 ///
@@ -173,18 +173,25 @@ import 'ipam_ipam_resource_discovery_state.dart';
 class IpamIpamResourceDiscovery extends pulumi.CustomResource {
   /// The time when the resource discovery was created.
   late final pulumi.Output<String> createTime;
+
   /// The description of resource discovery.
   late final pulumi.Output<String?> ipamResourceDiscoveryDescription;
+
   /// The name of the resource
   late final pulumi.Output<String?> ipamResourceDiscoveryName;
+
   /// The list of operating regions for resource discovery.
   late final pulumi.Output<List<String>> operatingRegionLists;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource discovery instance. Value:
   late final pulumi.Output<String> status;
+
   /// Label list information.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -197,19 +204,23 @@ class IpamIpamResourceDiscovery extends pulumi.CustomResource {
     IpamIpamResourceDiscoveryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.ipamResourceDiscoveryDescription = registerOutput<String?>('ipamResourceDiscoveryDescription');
-    this.ipamResourceDiscoveryName = registerOutput<String?>('ipamResourceDiscoveryName');
-    this.operatingRegionLists = registerOutput<List<String>>('operatingRegionLists');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    ipamResourceDiscoveryDescription = registerOutput<String?>(
+      'ipamResourceDiscoveryDescription',
+    );
+    ipamResourceDiscoveryName = registerOutput<String?>(
+      'ipamResourceDiscoveryName',
+    );
+    operatingRegionLists = registerOutput<List<String>>('operatingRegionLists');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [IpamIpamResourceDiscovery] resource's state with the given [name] and [id].
@@ -230,18 +241,22 @@ class IpamIpamResourceDiscovery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.ipamResourceDiscoveryDescription = registerOutput<String?>('ipamResourceDiscoveryDescription');
-    this.ipamResourceDiscoveryName = registerOutput<String?>('ipamResourceDiscoveryName');
-    this.operatingRegionLists = registerOutput<List<String>>('operatingRegionLists');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    ipamResourceDiscoveryDescription = registerOutput<String?>(
+      'ipamResourceDiscoveryDescription',
+    );
+    ipamResourceDiscoveryName = registerOutput<String?>(
+      'ipamResourceDiscoveryName',
+    );
+    operatingRegionLists = registerOutput<List<String>>('operatingRegionLists');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

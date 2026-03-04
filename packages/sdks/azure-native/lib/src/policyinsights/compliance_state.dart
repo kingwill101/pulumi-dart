@@ -4,16 +4,15 @@ enum ComplianceState {
   valueNonCompliant("NonCompliant"),
   valueUnknown("Unknown");
 
-  const ComplianceState(this.value);
-  final String value;
+  const ComplianceState(this.wireValue);
+  final String wireValue;
 
   static ComplianceState fromValue(String value) {
     for (final item in ComplianceState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComplianceState value: $value');
   }
 }
-

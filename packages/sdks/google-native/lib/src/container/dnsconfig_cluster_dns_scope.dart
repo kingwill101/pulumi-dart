@@ -4,16 +4,15 @@ enum DNSConfigClusterDnsScope {
   clusterScope("CLUSTER_SCOPE"),
   vpcScope("VPC_SCOPE");
 
-  const DNSConfigClusterDnsScope(this.value);
-  final String value;
+  const DNSConfigClusterDnsScope(this.wireValue);
+  final String wireValue;
 
   static DNSConfigClusterDnsScope fromValue(String value) {
     for (final item in DNSConfigClusterDnsScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DNSConfigClusterDnsScope value: $value');
   }
 }
-

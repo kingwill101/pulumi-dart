@@ -32,16 +32,15 @@ enum ResourceRecordSetRegion {
   usWest1("us-west-1"),
   usWest2("us-west-2");
 
-  const ResourceRecordSetRegion(this.value);
-  final String value;
+  const ResourceRecordSetRegion(this.wireValue);
+  final String wireValue;
 
   static ResourceRecordSetRegion fromValue(String value) {
     for (final item in ResourceRecordSetRegion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceRecordSetRegion value: $value');
   }
 }
-

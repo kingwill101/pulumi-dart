@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileShareProvisioningRecommendationOutputResponse {
   /// Redundancy options for the share.
   final pulumi.Input<List<String>> availableRedundancyOptions;
+
   /// The recommended value of provisioned IO / sec of the share.
   final pulumi.Input<int> provisionedIOPerSec;
+
   /// The recommended value of provisioned throughput / sec of the share.
   final pulumi.Input<int> provisionedThroughputMiBPerSec;
 
@@ -29,12 +31,19 @@ class FileShareProvisioningRecommendationOutputResponse {
     };
   }
 
-  factory FileShareProvisioningRecommendationOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory FileShareProvisioningRecommendationOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FileShareProvisioningRecommendationOutputResponse(
-      availableRedundancyOptions: ((map['availableRedundancyOptions'] as List).cast<String>()).input(),
-      provisionedIOPerSec: (map['provisionedIOPerSec'] as int).input(),
-      provisionedThroughputMiBPerSec: (map['provisionedThroughputMiBPerSec'] as int).input(),
+      availableRedundancyOptions: pulumi.Input.fromValue(
+        (map['availableRedundancyOptions'] as List).cast<String>(),
+      ),
+      provisionedIOPerSec: pulumi.Input.fromValue(
+        map['provisionedIOPerSec'] as int,
+      ),
+      provisionedThroughputMiBPerSec: pulumi.Input.fromValue(
+        map['provisionedThroughputMiBPerSec'] as int,
+      ),
     );
   }
 }
-

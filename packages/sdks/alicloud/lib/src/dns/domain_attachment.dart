@@ -4,9 +4,9 @@ import 'domain_attachment_state.dart';
 
 /// Provides bind the domain name to the DNS instance resource.
 ///
-/// > **NOTE:** Available in v1.80.0+.
+/// &gt; **NOTE:** Available in v1.80.0+.
 ///
-/// > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
+/// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
 ///
 /// ## Example Usage
 ///
@@ -133,6 +133,7 @@ import 'domain_attachment_state.dart';
 class DomainAttachment extends pulumi.CustomResource {
   /// The domain names bound to the DNS instance.
   late final pulumi.Output<List<String>> domainNames;
+
   /// The id of the DNS instance.
   late final pulumi.Output<String> instanceId;
 
@@ -145,13 +146,13 @@ class DomainAttachment extends pulumi.CustomResource {
     DomainAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/domainAttachment:DomainAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainNames = registerOutput<List<String>>('domainNames');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:dns/domainAttachment:DomainAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainNames = registerOutput<List<String>>('domainNames');
+    instanceId = registerOutput<String>('instanceId');
   }
 
   /// Gets an existing [DomainAttachment] resource's state with the given [name] and [id].
@@ -172,12 +173,12 @@ class DomainAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/domainAttachment:DomainAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainNames = registerOutput<List<String>>('domainNames');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:dns/domainAttachment:DomainAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainNames = registerOutput<List<String>>('domainNames');
+    instanceId = registerOutput<String>('instanceId');
   }
 }

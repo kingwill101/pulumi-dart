@@ -119,9 +119,11 @@ import 'provision_state.dart';
 class Provision extends pulumi.CustomResource {
   /// Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   late final pulumi.Output<int?> cpuRatio;
+
   /// Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   late final pulumi.Output<int?> diskRatio;
   late final pulumi.Output<String> fullPath;
+
   /// Sets the provisioning level for the requested modules. Changing the level for one module may require modifying the level of another module. For example, changing one module to `dedicated` requires setting all others to `none`. Setting the level of a module to `none` means the module is not activated.
   /// default is `nominal`
   /// possible options:
@@ -130,8 +132,10 @@ class Provision extends pulumi.CustomResource {
   /// * none
   /// * dedicated
   late final pulumi.Output<String?> level;
+
   /// Use this option only when the level option is set to custom.F5 Networks recommends that you do not modify this option. The default value is none
   late final pulumi.Output<int?> memoryRatio;
+
   /// Name of module to provision in BIG-IP.
   /// possible options:
   /// * afm
@@ -161,16 +165,16 @@ class Provision extends pulumi.CustomResource {
     ProvisionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:sys/provision:Provision',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cpuRatio = registerOutput<int?>('cpuRatio');
-    this.diskRatio = registerOutput<int?>('diskRatio');
-    this.fullPath = registerOutput<String>('fullPath');
-    this.level = registerOutput<String?>('level');
-    this.memoryRatio = registerOutput<int?>('memoryRatio');
+         'f5bigip:sys/provision:Provision',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cpuRatio = registerOutput<int?>('cpuRatio');
+    diskRatio = registerOutput<int?>('diskRatio');
+    fullPath = registerOutput<String>('fullPath');
+    level = registerOutput<String?>('level');
+    memoryRatio = registerOutput<int?>('memoryRatio');
     this.name = registerOutput<String>('name');
   }
 
@@ -192,16 +196,16 @@ class Provision extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:sys/provision:Provision',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cpuRatio = registerOutput<int?>('cpuRatio');
-    this.diskRatio = registerOutput<int?>('diskRatio');
-    this.fullPath = registerOutput<String>('fullPath');
-    this.level = registerOutput<String?>('level');
-    this.memoryRatio = registerOutput<int?>('memoryRatio');
+         'f5bigip:sys/provision:Provision',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cpuRatio = registerOutput<int?>('cpuRatio');
+    diskRatio = registerOutput<int?>('diskRatio');
+    fullPath = registerOutput<String>('fullPath');
+    level = registerOutput<String?>('level');
+    memoryRatio = registerOutput<int?>('memoryRatio');
     this.name = registerOutput<String>('name');
   }
 }

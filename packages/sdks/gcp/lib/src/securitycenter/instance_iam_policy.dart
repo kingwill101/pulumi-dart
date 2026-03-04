@@ -1440,12 +1440,15 @@ import 'instance_iam_policy_state.dart';
 /// ```
 class InstanceIamPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
+
   /// The ID of the instance or a fully qualified identifier for the instance.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> policyData;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the Data Fusion instance.
   late final pulumi.Output<String> region;
 
@@ -1458,16 +1461,16 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     InstanceIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
+         'gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [InstanceIamPolicy] resource's state with the given [name] and [id].
@@ -1488,15 +1491,15 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
+         'gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 }

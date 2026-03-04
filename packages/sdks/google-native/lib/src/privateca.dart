@@ -1,5 +1,3 @@
-library module_privateca;
-
 export 'privateca/access_urls_response.dart';
 export 'privateca/allowed_key_type.dart';
 export 'privateca/allowed_key_type_response.dart';

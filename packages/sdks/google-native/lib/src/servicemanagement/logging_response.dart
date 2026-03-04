@@ -7,6 +7,7 @@ import 'logging_destination_response.dart';
 class LoggingResponse {
   /// Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
   final pulumi.Input<List<LoggingDestinationResponse>> consumerDestinations;
+
   /// Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
   final pulumi.Input<List<LoggingDestinationResponse>> producerDestinations;
 
@@ -20,16 +21,51 @@ class LoggingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumerDestinations': pulumi.Input.mapInputValue<List<LoggingDestinationResponse>, List<Map<String, dynamic>>>(consumerDestinations, (value) => pulumi.Input.encodeList<LoggingDestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'producerDestinations': pulumi.Input.mapInputValue<List<LoggingDestinationResponse>, List<Map<String, dynamic>>>(producerDestinations, (value) => pulumi.Input.encodeList<LoggingDestinationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'consumerDestinations':
+          pulumi.Input.mapInputValue<
+            List<LoggingDestinationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            consumerDestinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LoggingDestinationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'producerDestinations':
+          pulumi.Input.mapInputValue<
+            List<LoggingDestinationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            producerDestinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LoggingDestinationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LoggingResponse.fromMap(Map<String, dynamic> map) {
     return LoggingResponse(
-      consumerDestinations: (pulumi.Input.decodeList<LoggingDestinationResponse>(map['consumerDestinations'], (value) => LoggingDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      producerDestinations: (pulumi.Input.decodeList<LoggingDestinationResponse>(map['producerDestinations'], (value) => LoggingDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerDestinations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<LoggingDestinationResponse>(
+          map['consumerDestinations']!,
+          (value) => LoggingDestinationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      producerDestinations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<LoggingDestinationResponse>(
+          map['producerDestinations']!,
+          (value) => LoggingDestinationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

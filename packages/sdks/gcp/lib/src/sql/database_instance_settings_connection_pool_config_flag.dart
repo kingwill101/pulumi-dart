@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceSettingsConnectionPoolConfigFlag {
   /// Name of the flag.
   final pulumi.Input<String> name;
+
   /// Value of the flag.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class DatabaseInstanceSettingsConnectionPoolConfigFlag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory DatabaseInstanceSettingsConnectionPoolConfigFlag.fromMap(Map<String, dynamic> map) {
+  factory DatabaseInstanceSettingsConnectionPoolConfigFlag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseInstanceSettingsConnectionPoolConfigFlag(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

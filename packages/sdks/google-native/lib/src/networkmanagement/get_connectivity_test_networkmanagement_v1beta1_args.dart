@@ -25,11 +25,18 @@ class GetConnectivityTestNetworkmanagementV1beta1Args {
     };
   }
 
-  factory GetConnectivityTestNetworkmanagementV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestNetworkmanagementV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestNetworkmanagementV1beta1Args(
-      connectivityTestId: (map['connectivityTestId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      connectivityTestId: pulumi.Input.fromValue(
+        map['connectivityTestId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

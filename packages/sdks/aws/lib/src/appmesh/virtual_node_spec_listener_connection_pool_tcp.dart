@@ -8,20 +8,17 @@ class VirtualNodeSpecListenerConnectionPoolTcp {
 
   /// Creates a new [VirtualNodeSpecListenerConnectionPoolTcp].
   /// [maxConnections] Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster. Minimum value of `1`.
-  VirtualNodeSpecListenerConnectionPoolTcp({
-    required this.maxConnections,
-  });
+  VirtualNodeSpecListenerConnectionPoolTcp({required this.maxConnections});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxConnections': maxConnections,
-    };
+    return <String, dynamic>{'maxConnections': maxConnections};
   }
 
-  factory VirtualNodeSpecListenerConnectionPoolTcp.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecListenerConnectionPoolTcp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecListenerConnectionPoolTcp(
-      maxConnections: (map['maxConnections'] as int).input(),
+      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
     );
   }
 }
-

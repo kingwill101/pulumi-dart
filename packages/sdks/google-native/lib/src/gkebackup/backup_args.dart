@@ -10,15 +10,19 @@ class BackupArgs {
   /// Optional. The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
   final pulumi.Input<String>? backupId;
   final pulumi.Input<String> backupPlanId;
+
   /// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
   final pulumi.Input<int>? deleteLockDays;
+
   /// Optional. User specified descriptive string for this Backup.
   final pulumi.Input<String>? description;
+
   /// Optional. A set of custom labels supplied by user.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
-  /// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+
+  /// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
   final pulumi.Input<int>? retainDays;
 
   /// Creates a new [BackupArgs].
@@ -29,7 +33,7 @@ class BackupArgs {
   /// [labels] Optional. A set of custom labels supplied by user.
   /// [location] Optional.
   /// [project] Optional.
-  /// [retainDays] Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+  /// [retainDays] Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
   BackupArgs({
     this.backupId,
     required this.backupPlanId,
@@ -56,15 +60,44 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
-      backupPlanId: (map['backupPlanId'] as String).input(),
-      deleteLockDays: map['deleteLockDays'] == null ? null : (map['deleteLockDays']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      retainDays: map['retainDays'] == null ? null : (map['retainDays']! as int).input(),
+      backupId: (() {
+        final guardedValue = map['backupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupPlanId: pulumi.Input.fromValue(map['backupPlanId'] as String),
+      deleteLockDays: (() {
+        final guardedValue = map['deleteLockDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retainDays: (() {
+        final guardedValue = map['retainDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

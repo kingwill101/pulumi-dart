@@ -6,7 +6,7 @@ import 'dhcp_options_set_attachment_state.dart';
 ///
 /// For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 ///
-/// > **NOTE:** Available since v1.153.0.
+/// &gt; **NOTE:** Available since v1.153.0.
 ///
 /// ## Example Usage
 ///
@@ -217,10 +217,13 @@ import 'dhcp_options_set_attachment_state.dart';
 class DhcpOptionsSetAttachment extends pulumi.CustomResource {
   /// The ID of the DHCP options set.
   late final pulumi.Output<String> dhcpOptionsSetId;
+
   /// Specifies whether to precheck this request only. Default values: `false`. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC network that is to be associated with the DHCP options set..
   late final pulumi.Output<String> vpcId;
 
@@ -233,15 +236,15 @@ class DhcpOptionsSetAttachment extends pulumi.CustomResource {
     DhcpOptionsSetAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dhcpOptionsSetId = registerOutput<String>('dhcpOptionsSetId');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dhcpOptionsSetId = registerOutput<String>('dhcpOptionsSetId');
+    dryRun = registerOutput<bool?>('dryRun');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [DhcpOptionsSetAttachment] resource's state with the given [name] and [id].
@@ -262,14 +265,14 @@ class DhcpOptionsSetAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dhcpOptionsSetId = registerOutput<String>('dhcpOptionsSetId');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dhcpOptionsSetId = registerOutput<String>('dhcpOptionsSetId');
+    dryRun = registerOutput<bool?>('dryRun');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

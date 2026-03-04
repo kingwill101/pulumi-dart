@@ -10,20 +10,22 @@ class GoogleDomainsDns {
 
   /// Creates a new [GoogleDomainsDns].
   /// [dsState] The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-  GoogleDomainsDns({
-    required this.dsState,
-  });
+  GoogleDomainsDns({required this.dsState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dsState': pulumi.Input.mapInputValue<GoogleDomainsDnsDsState, String>(dsState, (value) => value.value),
+      'dsState': pulumi.Input.mapInputValue<GoogleDomainsDnsDsState, String>(
+        dsState,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory GoogleDomainsDns.fromMap(Map<String, dynamic> map) {
     return GoogleDomainsDns(
-      dsState: (GoogleDomainsDnsDsState.fromValue(map['dsState'] as String)).input(),
+      dsState: pulumi.Input.fromValue(
+        GoogleDomainsDnsDsState.fromValue(map['dsState']! as String),
+      ),
     );
   }
 }
-

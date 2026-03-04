@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAddressScope.
 class GetAddressScopeResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final int? ipVersion;
+
   /// See Argument Reference above.
   final String? name;
+
   /// See Argument Reference above.
   final String? projectId;
   final String? region;
+
   /// See Argument Reference above.
   final bool? shared;
 
@@ -45,12 +48,31 @@ class GetAddressScopeResult {
   factory GetAddressScopeResult.fromMap(Map<String, dynamic> map) {
     return GetAddressScopeResult(
       id: map['id'] as String,
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion']! as int,
-      name: map['name'] == null ? null : map['name']! as String,
-      projectId: map['projectId'] == null ? null : map['projectId']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
-      shared: map['shared'] == null ? null : map['shared']! as bool,
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      shared: (() {
+        final guardedValue = map['shared'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
     );
   }
 }
-

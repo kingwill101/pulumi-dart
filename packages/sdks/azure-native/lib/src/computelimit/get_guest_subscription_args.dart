@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGuestSubscriptionArgs {
   /// The name of the GuestSubscription
   final pulumi.Input<String> guestSubscriptionId;
+
   /// The name of the Azure region.
   final pulumi.Input<String> location;
 
@@ -29,9 +30,10 @@ class GetGuestSubscriptionArgs {
 
   factory GetGuestSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetGuestSubscriptionArgs(
-      guestSubscriptionId: (map['guestSubscriptionId'] as String).input(),
-      location: (map['location'] as String).input(),
+      guestSubscriptionId: pulumi.Input.fromValue(
+        map['guestSubscriptionId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

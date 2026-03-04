@@ -4,9 +4,9 @@ import 'resource_group_state.dart';
 
 /// Manages a Resource Group.
 ///
-/// > **Note:** Azure automatically deletes any Resources nested within the Resource Group when a Resource Group is deleted.
+/// &gt; **Note:** Azure automatically deletes any Resources nested within the Resource Group when a Resource Group is deleted.
 ///
-/// > **Note:** Version 2.72 and later of the Azure Provider include a Feature Toggle which can error if there are any Resources left within the Resource Group at deletion time. This Feature Toggle is disabled in 2.x but enabled by default from 3.0 onwards, and is intended to avoid the unintentional destruction of resources managed outside of Terraform (for example, provisioned by an ARM Template). See the Features block documentation for more information on Feature Toggles within Terraform.
+/// &gt; **Note:** Version 2.72 and later of the Azure Provider include a Feature Toggle which can error if there are any Resources left within the Resource Group at deletion time. This Feature Toggle is disabled in 2.x but enabled by default from 3.0 onwards, and is intended to avoid the unintentional destruction of resources managed outside of Terraform (for example, provisioned by an ARM Template). See the Features block documentation for more information on Feature Toggles within Terraform.
 ///
 /// ## Example Usage
 ///
@@ -114,10 +114,13 @@ import 'resource_group_state.dart';
 class ResourceGroup extends pulumi.CustomResource {
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the resource or application that manages this Resource Group.
   late final pulumi.Output<String?> managedBy;
+
   /// The Name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags which should be assigned to the Resource Group.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -130,15 +133,15 @@ class ResourceGroup extends pulumi.CustomResource {
     ResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceGroup:ResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
+         'azure:core/resourceGroup:ResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ResourceGroup] resource's state with the given [name] and [id].
@@ -159,14 +162,14 @@ class ResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/resourceGroup:ResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
+         'azure:core/resourceGroup:ResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

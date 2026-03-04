@@ -4,7 +4,7 @@ import 'application_redirect_uris_state.dart';
 
 /// Manages the redirect URIs for an application registration.
 ///
-/// > This resource is incompatible with the `azuread.Application` resource, instead use this with the `azuread.ApplicationRegistration` resource.
+/// &gt; This resource is incompatible with the `azuread.Application` resource, instead use this with the `azuread.ApplicationRegistration` resource.
 ///
 /// ## API Permissions
 ///
@@ -12,7 +12,7 @@ import 'application_redirect_uris_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -307,8 +307,10 @@ import 'application_redirect_uris_state.dart';
 class ApplicationRedirectUris extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// A set of redirect URIs to assign to the application.
   late final pulumi.Output<List<String>> redirectUris;
+
   /// The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
 
@@ -321,14 +323,14 @@ class ApplicationRedirectUris extends pulumi.CustomResource {
     ApplicationRedirectUrisArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.redirectUris = registerOutput<List<String>>('redirectUris');
-    this.type = registerOutput<String>('type');
+         'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    redirectUris = registerOutput<List<String>>('redirectUris');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [ApplicationRedirectUris] resource's state with the given [name] and [id].
@@ -349,13 +351,13 @@ class ApplicationRedirectUris extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.redirectUris = registerOutput<List<String>>('redirectUris');
-    this.type = registerOutput<String>('type');
+         'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    redirectUris = registerOutput<List<String>>('redirectUris');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,16 +7,22 @@ import 'blob_inventory_creation_time_response.dart';
 class BlobInventoryPolicyFilterResponse {
   /// An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
   final pulumi.Input<List<String>>? blobTypes;
+
   /// This property is used to filter objects based on the object creation time
   final pulumi.Input<BlobInventoryCreationTimeResponse>? creationTime;
+
   /// An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
   final pulumi.Input<List<String>>? excludePrefix;
+
   /// Includes blob versions in blob inventory when value is set to true. The definition.schemaFields values 'VersionId and IsCurrentVersion' are required if this property is set to true, else they must be excluded.
   final pulumi.Input<bool>? includeBlobVersions;
+
   /// For 'Container' definition.objectType the definition.schemaFields must include 'Deleted, Version, DeletedTime and RemainingRetentionDays'. For 'Blob' definition.objectType and HNS enabled storage accounts the definition.schemaFields must include 'DeletionId, Deleted, DeletedTime and RemainingRetentionDays' and for Hns disabled accounts the definition.schemaFields must include 'Deleted and RemainingRetentionDays', else it must be excluded.
   final pulumi.Input<bool>? includeDeleted;
+
   /// Includes blob snapshots in blob inventory when value is set to true. The definition.schemaFields value 'Snapshot' is required if this property is set to true, else it must be excluded.
   final pulumi.Input<bool>? includeSnapshots;
+
   /// An array of strings with maximum 10 blob prefixes to be included in the inventory.
   final pulumi.Input<List<String>>? prefixMatch;
 
@@ -41,7 +47,11 @@ class BlobInventoryPolicyFilterResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'blobTypes': ?blobTypes,
-      'creationTime': ?pulumi.Input.mapOptionalInputValue<BlobInventoryCreationTimeResponse, Map<String, dynamic>>(creationTime, (value) => value.toMap()),
+      'creationTime':
+          ?pulumi.Input.mapOptionalInputValue<
+            BlobInventoryCreationTimeResponse,
+            Map<String, dynamic>
+          >(creationTime, (value) => value.toMap()),
       'excludePrefix': ?excludePrefix,
       'includeBlobVersions': ?includeBlobVersions,
       'includeDeleted': ?includeDeleted,
@@ -52,14 +62,45 @@ class BlobInventoryPolicyFilterResponse {
 
   factory BlobInventoryPolicyFilterResponse.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyFilterResponse(
-      blobTypes: map['blobTypes'] == null ? null : ((map['blobTypes']! as List).cast<String>()).input(),
-      creationTime: map['creationTime'] == null ? null : (BlobInventoryCreationTimeResponse.fromMap((map['creationTime']! as Map).cast<String, dynamic>())).input(),
-      excludePrefix: map['excludePrefix'] == null ? null : ((map['excludePrefix']! as List).cast<String>()).input(),
-      includeBlobVersions: map['includeBlobVersions'] == null ? null : (map['includeBlobVersions']! as bool).input(),
-      includeDeleted: map['includeDeleted'] == null ? null : (map['includeDeleted']! as bool).input(),
-      includeSnapshots: map['includeSnapshots'] == null ? null : (map['includeSnapshots']! as bool).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch']! as List).cast<String>()).input(),
+      blobTypes: (() {
+        final guardedValue = map['blobTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BlobInventoryCreationTimeResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      excludePrefix: (() {
+        final guardedValue = map['excludePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includeBlobVersions: (() {
+        final guardedValue = map['includeBlobVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeDeleted: (() {
+        final guardedValue = map['includeDeleted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeSnapshots: (() {
+        final guardedValue = map['includeSnapshots'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      prefixMatch: (() {
+        final guardedValue = map['prefixMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_appsync;
-
 export 'appsync/api.dart';
 export 'appsync/api_args.dart';
 export 'appsync/api_cache.dart';

@@ -262,7 +262,7 @@ import 'authorization_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NotificationHubs` - 2023-09-01
@@ -277,26 +277,36 @@ import 'authorization_rule_state.dart';
 class AuthorizationRule extends pulumi.CustomResource {
   /// Does this Authorization Rule have Listen access to the Notification Hub? Defaults to `false`.
   late final pulumi.Output<bool?> listen;
+
   /// Does this Authorization Rule have Manage access to the Notification Hub? Defaults to `false`.
   ///
-  /// > **Note:** If `manage` is set to `true` then both `send` and `listen` must also be set to `true`.
+  /// &gt; **Note:** If `manage` is set to `true` then both `send` and `listen` must also be set to `true`.
   late final pulumi.Output<bool?> manage;
+
   /// The name to use for this Authorization Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Notification Hub Namespace in which the Notification Hub exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceName;
+
   /// The name of the Notification Hub for which the Authorization Rule should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> notificationHubName;
+
   /// The Primary Access Key associated with this Authorization Rule.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// The Primary Connetion String associated with this Authorization Rule.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Secondary Access Key associated with this Authorization Rule.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// The Secondary Connetion String associated with this Authorization Rule.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// Does this Authorization Rule have Send access to the Notification Hub? Defaults to `false`.
   late final pulumi.Output<bool?> send;
 
@@ -309,22 +319,24 @@ class AuthorizationRule extends pulumi.CustomResource {
     AuthorizationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:notificationhub/authorizationRule:AuthorizationRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.listen = registerOutput<bool?>('listen');
-    this.manage = registerOutput<bool?>('manage');
+         'azure:notificationhub/authorizationRule:AuthorizationRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.notificationHubName = registerOutput<String>('notificationHubName');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.send = registerOutput<bool?>('send');
+    namespaceName = registerOutput<String>('namespaceName');
+    notificationHubName = registerOutput<String>('notificationHubName');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    send = registerOutput<bool?>('send');
   }
 
   /// Gets an existing [AuthorizationRule] resource's state with the given [name] and [id].
@@ -345,21 +357,23 @@ class AuthorizationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:notificationhub/authorizationRule:AuthorizationRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.listen = registerOutput<bool?>('listen');
-    this.manage = registerOutput<bool?>('manage');
+         'azure:notificationhub/authorizationRule:AuthorizationRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.notificationHubName = registerOutput<String>('notificationHubName');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.send = registerOutput<bool?>('send');
+    namespaceName = registerOutput<String>('namespaceName');
+    notificationHubName = registerOutput<String>('notificationHubName');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    send = registerOutput<bool?>('send');
   }
 }

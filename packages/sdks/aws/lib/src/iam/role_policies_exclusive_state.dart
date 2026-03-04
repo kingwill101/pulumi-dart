@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolePoliciesExclusiveState {
   /// A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   final pulumi.Input<List<String>>? policyNames;
+
   /// IAM role name.
   final pulumi.Input<String>? roleName;
 
   /// Creates a new [RolePoliciesExclusiveState].
   /// [policyNames] A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   /// [roleName] IAM role name.
-  RolePoliciesExclusiveState({
-    this.policyNames,
-    this.roleName,
-  });
+  RolePoliciesExclusiveState({this.policyNames, this.roleName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class RolePoliciesExclusiveState {
 
   factory RolePoliciesExclusiveState.fromMap(Map<String, dynamic> map) {
     return RolePoliciesExclusiveState(
-      policyNames: map['policyNames'] == null ? null : (((map['policyNames'] as List).cast<String>()).input()).input(),
-      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
+      policyNames: (() {
+        final guardedValue = map['policyNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      roleName: (() {
+        final guardedValue = map['roleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

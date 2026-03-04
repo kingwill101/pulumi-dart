@@ -10,46 +10,92 @@ import 'get_region_instance_group_manager_instance_flexibility_policy_instance_s
 class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
   /// The architecture of the image. Allowed values are ARM64 or X86_64.
   final pulumi.Input<String> architecture;
+
   /// Whether or not the disk should be auto-deleted. This defaults to true.
   final pulumi.Input<bool> autoDelete;
+
   /// Indicates that this is a boot disk. This defaults to false.
   final pulumi.Input<bool> boot;
+
   /// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
   final pulumi.Input<String> deviceName;
+
   /// Encrypts or decrypts a disk using a customer-supplied encryption key.
-  final pulumi.Input<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey>> diskEncryptionKeys;
+  final pulumi.Input<
+    List<
+      GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey
+    >
+  >
+  diskEncryptionKeys;
+
   /// Name of the disk. When not provided, this defaults to the name of the instance.
   final pulumi.Input<String> diskName;
+
   /// The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
   final pulumi.Input<int> diskSizeGb;
+
   /// The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
   final pulumi.Input<String> diskType;
+
   /// A list of features to enable on the guest operating system. Applicable only for bootable images.
   final pulumi.Input<List<String>> guestOsFeatures;
+
   /// Specifies the disk interface to use for attaching this disk.
   final pulumi.Input<String> interface;
+
   /// A set of key/value label pairs to assign to disks.
-  final pulumi.Input<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel>> labels;
+  final pulumi.Input<
+    List<
+      GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel
+    >
+  >
+  labels;
+
   /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
   final pulumi.Input<String> mode;
+
   /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
   final pulumi.Input<int> provisionedIops;
+
   /// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
   final pulumi.Input<int> provisionedThroughput;
+
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-  final pulumi.Input<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag>> resourceManagerTags;
+  final pulumi.Input<
+    List<
+      GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag
+    >
+  >
+  resourceManagerTags;
+
   /// A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
   final pulumi.Input<List<String>> resourcePolicies;
-  /// The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+
+  /// The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. &gt; Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
   final pulumi.Input<String> source;
-  /// The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+
+  /// The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. &gt; Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
   final pulumi.Input<String> sourceImage;
+
   /// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
-  final pulumi.Input<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey>> sourceImageEncryptionKeys;
+  final pulumi.Input<
+    List<
+      GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey
+    >
+  >
+  sourceImageEncryptionKeys;
+
   /// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
   final pulumi.Input<String> sourceSnapshot;
+
   /// The customer-supplied encryption key of the source snapshot.
-  final pulumi.Input<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey>> sourceSnapshotEncryptionKeys;
+  final pulumi.Input<
+    List<
+      GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey
+    >
+  >
+  sourceSnapshotEncryptionKeys;
+
   /// The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
   final pulumi.Input<String> type;
 
@@ -70,8 +116,8 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
   /// [provisionedThroughput] Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
   /// [resourceManagerTags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
   /// [resourcePolicies] A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
-  /// [source] The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
-  /// [sourceImage] The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+  /// [source] The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. &gt; Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+  /// [sourceImage] The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. &gt; Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
   /// [sourceImageEncryptionKeys] The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
   /// [sourceSnapshot] The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
   /// [sourceSnapshotEncryptionKeys] The customer-supplied encryption key of the source snapshot.
@@ -107,52 +153,174 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
       'autoDelete': autoDelete,
       'boot': boot,
       'deviceName': deviceName,
-      'diskEncryptionKeys': pulumi.Input.mapInputValue<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey>, List<Map<String, dynamic>>>(diskEncryptionKeys, (value) => pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'diskEncryptionKeys':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey
+            >,
+            List<Map<String, dynamic>>
+          >(
+            diskEncryptionKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'diskName': diskName,
       'diskSizeGb': diskSizeGb,
       'diskType': diskType,
       'guestOsFeatures': guestOsFeatures,
       'interface': interface,
-      'labels': pulumi.Input.mapInputValue<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labels':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel
+            >,
+            List<Map<String, dynamic>>
+          >(
+            labels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'mode': mode,
       'provisionedIops': provisionedIops,
       'provisionedThroughput': provisionedThroughput,
-      'resourceManagerTags': pulumi.Input.mapInputValue<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag>, List<Map<String, dynamic>>>(resourceManagerTags, (value) => pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceManagerTags':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag
+            >,
+            List<Map<String, dynamic>>
+          >(
+            resourceManagerTags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourcePolicies': resourcePolicies,
       'source': source,
       'sourceImage': sourceImage,
-      'sourceImageEncryptionKeys': pulumi.Input.mapInputValue<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey>, List<Map<String, dynamic>>>(sourceImageEncryptionKeys, (value) => pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceImageEncryptionKeys':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey
+            >,
+            List<Map<String, dynamic>>
+          >(
+            sourceImageEncryptionKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'sourceSnapshot': sourceSnapshot,
-      'sourceSnapshotEncryptionKeys': pulumi.Input.mapInputValue<List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey>, List<Map<String, dynamic>>>(sourceSnapshotEncryptionKeys, (value) => pulumi.Input.encodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sourceSnapshotEncryptionKeys':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey
+            >,
+            List<Map<String, dynamic>>
+          >(
+            sourceSnapshotEncryptionKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
     };
   }
 
-  factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.fromMap(Map<String, dynamic> map) {
+  factory GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk(
-      architecture: (map['architecture'] as String).input(),
-      autoDelete: (map['autoDelete'] as bool).input(),
-      boot: (map['boot'] as bool).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      diskEncryptionKeys: (pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey>(map['diskEncryptionKeys'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskName: (map['diskName'] as String).input(),
-      diskSizeGb: (map['diskSizeGb'] as int).input(),
-      diskType: (map['diskType'] as String).input(),
-      guestOsFeatures: ((map['guestOsFeatures'] as List).cast<String>()).input(),
-      interface: (map['interface'] as String).input(),
-      labels: (pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel>(map['labels'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: (map['mode'] as String).input(),
-      provisionedIops: (map['provisionedIops'] as int).input(),
-      provisionedThroughput: (map['provisionedThroughput'] as int).input(),
-      resourceManagerTags: (pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag>(map['resourceManagerTags'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourcePolicies: ((map['resourcePolicies'] as List).cast<String>()).input(),
-      source: (map['source'] as String).input(),
-      sourceImage: (map['sourceImage'] as String).input(),
-      sourceImageEncryptionKeys: (pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey>(map['sourceImageEncryptionKeys'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceSnapshot: (map['sourceSnapshot'] as String).input(),
-      sourceSnapshotEncryptionKeys: (pulumi.Input.decodeList<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey>(map['sourceSnapshotEncryptionKeys'], (value) => GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
+      architecture: pulumi.Input.fromValue(map['architecture'] as String),
+      autoDelete: pulumi.Input.fromValue(map['autoDelete'] as bool),
+      boot: pulumi.Input.fromValue(map['boot'] as bool),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      diskEncryptionKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey
+        >(
+          map['diskEncryptionKeys']!,
+          (value) =>
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      diskName: pulumi.Input.fromValue(map['diskName'] as String),
+      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskType: pulumi.Input.fromValue(map['diskType'] as String),
+      guestOsFeatures: pulumi.Input.fromValue(
+        (map['guestOsFeatures'] as List).cast<String>(),
+      ),
+      interface: pulumi.Input.fromValue(map['interface'] as String),
+      labels: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel
+        >(
+          map['labels']!,
+          (value) =>
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
+      provisionedIops: pulumi.Input.fromValue(map['provisionedIops'] as int),
+      provisionedThroughput: pulumi.Input.fromValue(
+        map['provisionedThroughput'] as int,
+      ),
+      resourceManagerTags: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag
+        >(
+          map['resourceManagerTags']!,
+          (value) =>
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      resourcePolicies: pulumi.Input.fromValue(
+        (map['resourcePolicies'] as List).cast<String>(),
+      ),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      sourceImage: pulumi.Input.fromValue(map['sourceImage'] as String),
+      sourceImageEncryptionKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey
+        >(
+          map['sourceImageEncryptionKeys']!,
+          (value) =>
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      sourceSnapshot: pulumi.Input.fromValue(map['sourceSnapshot'] as String),
+      sourceSnapshotEncryptionKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey
+        >(
+          map['sourceSnapshotEncryptionKeys']!,
+          (value) =>
+              GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

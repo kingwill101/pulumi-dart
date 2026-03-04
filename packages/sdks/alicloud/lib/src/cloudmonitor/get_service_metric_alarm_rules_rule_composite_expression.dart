@@ -6,12 +6,19 @@ import 'get_service_metric_alarm_rules_rule_composite_expression_expression_list
 class GetServiceMetricAlarmRulesRuleCompositeExpression {
   /// The relationship between the trigger conditions for multiple metrics.
   final pulumi.Input<String> expressionListJoin;
+
   /// The trigger conditions that are created in standard mode.
-  final pulumi.Input<List<GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList>> expressionLists;
+  final pulumi.Input<
+    List<GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList>
+  >
+  expressionLists;
+
   /// The trigger conditions that are created by using expressions.
   final pulumi.Input<String> expressionRaw;
+
   /// The alert level.
   final pulumi.Input<String> level;
+
   /// The number of consecutive triggers.
   final pulumi.Input<int> times;
 
@@ -32,21 +39,47 @@ class GetServiceMetricAlarmRulesRuleCompositeExpression {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'expressionListJoin': expressionListJoin,
-      'expressionLists': pulumi.Input.mapInputValue<List<GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList>, List<Map<String, dynamic>>>(expressionLists, (value) => pulumi.Input.encodeList<GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'expressionLists':
+          pulumi.Input.mapInputValue<
+            List<
+              GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList
+            >,
+            List<Map<String, dynamic>>
+          >(
+            expressionLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'expressionRaw': expressionRaw,
       'level': level,
       'times': times,
     };
   }
 
-  factory GetServiceMetricAlarmRulesRuleCompositeExpression.fromMap(Map<String, dynamic> map) {
+  factory GetServiceMetricAlarmRulesRuleCompositeExpression.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceMetricAlarmRulesRuleCompositeExpression(
-      expressionListJoin: (map['expressionListJoin'] as String).input(),
-      expressionLists: (pulumi.Input.decodeList<GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList>(map['expressionLists'], (value) => GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expressionRaw: (map['expressionRaw'] as String).input(),
-      level: (map['level'] as String).input(),
-      times: (map['times'] as int).input(),
+      expressionListJoin: pulumi.Input.fromValue(
+        map['expressionListJoin'] as String,
+      ),
+      expressionLists: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList
+        >(
+          map['expressionLists']!,
+          (value) =>
+              GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      expressionRaw: pulumi.Input.fromValue(map['expressionRaw'] as String),
+      level: pulumi.Input.fromValue(map['level'] as String),
+      times: pulumi.Input.fromValue(map['times'] as int),
     );
   }
 }
-

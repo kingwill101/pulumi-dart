@@ -7,8 +7,10 @@ class ManagedIdentityAuthenticationSettingProperties {
   /// Supported kinds of authentication settings as discriminator
   /// Expected value is 'ManagedIdentity'.
   final pulumi.Input<String> authenticationKind;
+
   /// Display name
   final pulumi.Input<String>? displayName;
+
   /// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
   final pulumi.Input<String> managedIdentityName;
 
@@ -30,12 +32,21 @@ class ManagedIdentityAuthenticationSettingProperties {
     };
   }
 
-  factory ManagedIdentityAuthenticationSettingProperties.fromMap(Map<String, dynamic> map) {
+  factory ManagedIdentityAuthenticationSettingProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedIdentityAuthenticationSettingProperties(
-      authenticationKind: (map['authenticationKind'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      managedIdentityName: (map['managedIdentityName'] as String).input(),
+      authenticationKind: pulumi.Input.fromValue(
+        map['authenticationKind'] as String,
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedIdentityName: pulumi.Input.fromValue(
+        map['managedIdentityName'] as String,
+      ),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'suspend_process_state.dart';
 ///
 /// For information about scaling group suspend process, see [SuspendProcesses](https://www.alibabacloud.com/help/en/auto-scaling/latest/suspendprocesses).
 ///
-/// > **NOTE:** Available since v1.166.0.
+/// &gt; **NOTE:** Available since v1.166.0.
 ///
 /// ## Example Usage
 ///
@@ -539,6 +539,7 @@ import 'suspend_process_state.dart';
 class SuspendProcess extends pulumi.CustomResource {
   /// Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   late final pulumi.Output<String> process;
+
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
 
@@ -551,13 +552,13 @@ class SuspendProcess extends pulumi.CustomResource {
     SuspendProcessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/suspendProcess:SuspendProcess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.process = registerOutput<String>('process');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
+         'alicloud:ess/suspendProcess:SuspendProcess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    process = registerOutput<String>('process');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
   }
 
   /// Gets an existing [SuspendProcess] resource's state with the given [name] and [id].
@@ -578,12 +579,12 @@ class SuspendProcess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/suspendProcess:SuspendProcess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.process = registerOutput<String>('process');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
+         'alicloud:ess/suspendProcess:SuspendProcess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    process = registerOutput<String>('process');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
   }
 }

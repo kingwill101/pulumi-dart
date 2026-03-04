@@ -11,16 +11,15 @@ enum ComputeType {
   bUILDLAMBDA4GB("BUILD_LAMBDA_4GB"),
   bUILDLAMBDA8GB("BUILD_LAMBDA_8GB");
 
-  const ComputeType(this.value);
-  final String value;
+  const ComputeType(this.wireValue);
+  final String wireValue;
 
   static ComputeType fromValue(String value) {
     for (final item in ComputeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComputeType value: $value');
   }
 }
-

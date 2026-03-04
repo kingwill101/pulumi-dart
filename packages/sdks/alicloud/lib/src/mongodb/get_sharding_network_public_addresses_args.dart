@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShardingNetworkPublicAddressesArgs {
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
+
   /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   final pulumi.Input<String>? nodeId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The role of the node. Valid values: `Primary` or `Secondary`.
   final pulumi.Input<String>? role;
 
@@ -37,13 +40,26 @@ class GetShardingNetworkPublicAddressesArgs {
     };
   }
 
-  factory GetShardingNetworkPublicAddressesArgs.fromMap(Map<String, dynamic> map) {
+  factory GetShardingNetworkPublicAddressesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetShardingNetworkPublicAddressesArgs(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      nodeId: (() {
+        final guardedValue = map['nodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

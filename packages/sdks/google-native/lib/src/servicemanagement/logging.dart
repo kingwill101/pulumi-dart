@@ -7,29 +7,70 @@ import 'logging_destination.dart';
 class Logging {
   /// Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
   final pulumi.Input<List<LoggingDestination>>? consumerDestinations;
+
   /// Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
   final pulumi.Input<List<LoggingDestination>>? producerDestinations;
 
   /// Creates a new [Logging].
   /// [consumerDestinations] Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
   /// [producerDestinations] Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
-  Logging({
-    this.consumerDestinations,
-    this.producerDestinations,
-  });
+  Logging({this.consumerDestinations, this.producerDestinations});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumerDestinations': ?pulumi.Input.mapOptionalInputValue<List<LoggingDestination>, List<Map<String, dynamic>>>(consumerDestinations, (value) => pulumi.Input.encodeList<LoggingDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'producerDestinations': ?pulumi.Input.mapOptionalInputValue<List<LoggingDestination>, List<Map<String, dynamic>>>(producerDestinations, (value) => pulumi.Input.encodeList<LoggingDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'consumerDestinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LoggingDestination>,
+            List<Map<String, dynamic>>
+          >(
+            consumerDestinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LoggingDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'producerDestinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LoggingDestination>,
+            List<Map<String, dynamic>>
+          >(
+            producerDestinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LoggingDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory Logging.fromMap(Map<String, dynamic> map) {
     return Logging(
-      consumerDestinations: map['consumerDestinations'] == null ? null : (pulumi.Input.decodeList<LoggingDestination>(map['consumerDestinations']!, (value) => LoggingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      producerDestinations: map['producerDestinations'] == null ? null : (pulumi.Input.decodeList<LoggingDestination>(map['producerDestinations']!, (value) => LoggingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerDestinations: (() {
+        final guardedValue = map['consumerDestinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LoggingDestination>(
+            guardedValue,
+            (value) => LoggingDestination.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      producerDestinations: (() {
+        final guardedValue = map['producerDestinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LoggingDestination>(
+            guardedValue,
+            (value) => LoggingDestination.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

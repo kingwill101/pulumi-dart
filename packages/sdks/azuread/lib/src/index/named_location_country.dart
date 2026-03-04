@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamedLocationCountry {
   /// List of countries and/or regions in two-letter format specified by ISO 3166-2.
   final pulumi.Input<List<String>> countriesAndRegions;
+
   /// Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
   final pulumi.Input<String>? countryLookupMethod;
+
   /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
   final pulumi.Input<bool>? includeUnknownCountriesAndRegions;
 
@@ -30,10 +32,19 @@ class NamedLocationCountry {
 
   factory NamedLocationCountry.fromMap(Map<String, dynamic> map) {
     return NamedLocationCountry(
-      countriesAndRegions: ((map['countriesAndRegions'] as List).cast<String>()).input(),
-      countryLookupMethod: map['countryLookupMethod'] == null ? null : (map['countryLookupMethod']! as String).input(),
-      includeUnknownCountriesAndRegions: map['includeUnknownCountriesAndRegions'] == null ? null : (map['includeUnknownCountriesAndRegions']! as bool).input(),
+      countriesAndRegions: pulumi.Input.fromValue(
+        (map['countriesAndRegions'] as List).cast<String>(),
+      ),
+      countryLookupMethod: (() {
+        final guardedValue = map['countryLookupMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      includeUnknownCountriesAndRegions: (() {
+        final guardedValue = map['includeUnknownCountriesAndRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

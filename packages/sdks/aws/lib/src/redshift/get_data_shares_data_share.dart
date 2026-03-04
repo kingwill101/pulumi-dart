@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSharesDataShare {
   /// ARN (Amazon Resource Name) of the data share.
   final pulumi.Input<String> dataShareArn;
+
   /// Identifier of a datashare to show its managing entity.
   final pulumi.Input<String> managedBy;
+
   /// ARN (Amazon Resource Name) of the producer.
   final pulumi.Input<String> producerArn;
 
@@ -30,10 +32,9 @@ class GetDataSharesDataShare {
 
   factory GetDataSharesDataShare.fromMap(Map<String, dynamic> map) {
     return GetDataSharesDataShare(
-      dataShareArn: (map['dataShareArn'] as String).input(),
-      managedBy: (map['managedBy'] as String).input(),
-      producerArn: (map['producerArn'] as String).input(),
+      dataShareArn: pulumi.Input.fromValue(map['dataShareArn'] as String),
+      managedBy: pulumi.Input.fromValue(map['managedBy'] as String),
+      producerArn: pulumi.Input.fromValue(map['producerArn'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolClientArgs {
   /// Client Id of the user pool.
   final pulumi.Input<String> clientId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// User pool the client belongs to.
   final pulumi.Input<String> userPoolId;
 
@@ -34,10 +36,13 @@ class GetUserPoolClientArgs {
 
   factory GetUserPoolClientArgs.fromMap(Map<String, dynamic> map) {
     return GetUserPoolClientArgs(
-      clientId: (map['clientId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
-

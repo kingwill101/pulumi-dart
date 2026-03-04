@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spaces_bucket_args.dart';
-import 'spaces_bucket_cors_rule.dart';
-import 'spaces_bucket_lifecycle_rule.dart';
 import 'spaces_bucket_state.dart';
 import 'spaces_bucket_versioning.dart';
 
@@ -435,22 +433,31 @@ import 'spaces_bucket_versioning.dart';
 class SpacesBucket extends pulumi.CustomResource {
   /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
   late final pulumi.Output<String?> acl;
+
   /// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
   late final pulumi.Output<String> bucketDomainName;
+
   /// The uniform resource name for the bucket
   late final pulumi.Output<String> bucketUrn;
+
   /// A rule of Cross-Origin Resource Sharing (documented below).
-  late final pulumi.Output<List<SpacesBucketCorsRule>?> corsRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> corsRules;
+
   /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
   late final pulumi.Output<String> endpoint;
+
   /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
   late final pulumi.Output<bool?> forceDestroy;
+
   /// A configuration of object lifecycle management (documented below).
-  late final pulumi.Output<List<SpacesBucketLifecycleRule>?> lifecycleRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> lifecycleRules;
+
   /// The name of the bucket
   late final pulumi.Output<String> name;
+
   /// The region where the bucket resides (Defaults to `nyc3`)
   late final pulumi.Output<String?> region;
+
   /// A state of versioning (documented below)
   late final pulumi.Output<SpacesBucketVersioning?> versioning;
 
@@ -463,21 +470,23 @@ class SpacesBucket extends pulumi.CustomResource {
     SpacesBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesBucket:SpacesBucket',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String?>('acl');
-    this.bucketDomainName = registerOutput<String>('bucketDomainName');
-    this.bucketUrn = registerOutput<String>('bucketUrn');
-    this.corsRules = registerOutput<List<SpacesBucketCorsRule>?>('corsRules');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.lifecycleRules = registerOutput<List<SpacesBucketLifecycleRule>?>('lifecycleRules');
+         'digitalocean:index/spacesBucket:SpacesBucket',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String?>('acl');
+    bucketDomainName = registerOutput<String>('bucketDomainName');
+    bucketUrn = registerOutput<String>('bucketUrn');
+    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    endpoint = registerOutput<String>('endpoint');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
+      'lifecycleRules',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String?>('region');
-    this.versioning = registerOutput<SpacesBucketVersioning?>('versioning');
+    region = registerOutput<String?>('region');
+    versioning = registerOutput<SpacesBucketVersioning?>('versioning');
   }
 
   /// Gets an existing [SpacesBucket] resource's state with the given [name] and [id].
@@ -498,20 +507,22 @@ class SpacesBucket extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/spacesBucket:SpacesBucket',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<String?>('acl');
-    this.bucketDomainName = registerOutput<String>('bucketDomainName');
-    this.bucketUrn = registerOutput<String>('bucketUrn');
-    this.corsRules = registerOutput<List<SpacesBucketCorsRule>?>('corsRules');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.lifecycleRules = registerOutput<List<SpacesBucketLifecycleRule>?>('lifecycleRules');
+         'digitalocean:index/spacesBucket:SpacesBucket',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<String?>('acl');
+    bucketDomainName = registerOutput<String>('bucketDomainName');
+    bucketUrn = registerOutput<String>('bucketUrn');
+    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    endpoint = registerOutput<String>('endpoint');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>(
+      'lifecycleRules',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String?>('region');
-    this.versioning = registerOutput<SpacesBucketVersioning?>('versioning');
+    region = registerOutput<String?>('region');
+    versioning = registerOutput<SpacesBucketVersioning?>('versioning');
   }
 }

@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerGroupProfileReferenceDefinition {
   /// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
   final pulumi.Input<String>? id;
+
   /// The container group profile reference revision.
   final pulumi.Input<int>? revision;
 
   /// Creates a new [ContainerGroupProfileReferenceDefinition].
   /// [id] The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
   /// [revision] The container group profile reference revision.
-  ContainerGroupProfileReferenceDefinition({
-    this.id,
-    this.revision,
-  });
+  ContainerGroupProfileReferenceDefinition({this.id, this.revision});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'revision': ?revision,
-    };
+    return <String, dynamic>{'id': ?id, 'revision': ?revision};
   }
 
-  factory ContainerGroupProfileReferenceDefinition.fromMap(Map<String, dynamic> map) {
+  factory ContainerGroupProfileReferenceDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerGroupProfileReferenceDefinition(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,6 +9,7 @@ class GetAlertContactGroupsResult {
   final String? contactId;
   final String? contactName;
   final List<GetAlertContactGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -43,7 +44,11 @@ class GetAlertContactGroupsResult {
       'alertContactGroupName': ?alertContactGroupName,
       'contactId': ?contactId,
       'contactName': ?contactName,
-      'groups': pulumi.Input.encodeList<GetAlertContactGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<
+            GetAlertContactGroupsGroup,
+            Map<String, dynamic>
+          >(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -54,16 +59,40 @@ class GetAlertContactGroupsResult {
 
   factory GetAlertContactGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetAlertContactGroupsResult(
-      alertContactGroupName: map['alertContactGroupName'] == null ? null : map['alertContactGroupName']! as String,
-      contactId: map['contactId'] == null ? null : map['contactId']! as String,
-      contactName: map['contactName'] == null ? null : map['contactName']! as String,
-      groups: pulumi.Input.decodeList<GetAlertContactGroupsGroup>(map['groups'], (value) => GetAlertContactGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      alertContactGroupName: (() {
+        final guardedValue = map['alertContactGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      contactId: (() {
+        final guardedValue = map['contactId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      contactName: (() {
+        final guardedValue = map['contactName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groups: pulumi.Input.decodeList<GetAlertContactGroupsGroup>(
+        map['groups']!,
+        (value) => GetAlertContactGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -136,14 +136,19 @@ import 'queue_state.dart';
 class Queue extends pulumi.CustomResource {
   /// This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
   late final pulumi.Output<int?> delaySeconds;
+
   /// This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
   late final pulumi.Output<int?> maximumMessageSize;
+
   /// Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
   late final pulumi.Output<int?> messageRetentionPeriod;
+
   /// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters .
   late final pulumi.Output<String> name;
+
   /// Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
   late final pulumi.Output<int?> pollingWaitSeconds;
+
   /// The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
   late final pulumi.Output<int?> visibilityTimeout;
 
@@ -151,30 +156,23 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_mns_queue_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(
-    String name, {
-    QueueArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:mns/queue:Queue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.delaySeconds = registerOutput<int?>('delaySeconds');
-    this.maximumMessageSize = registerOutput<int?>('maximumMessageSize');
-    this.messageRetentionPeriod = registerOutput<int?>('messageRetentionPeriod');
+  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:mns/queue:Queue',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    delaySeconds = registerOutput<int?>('delaySeconds');
+    maximumMessageSize = registerOutput<int?>('maximumMessageSize');
+    messageRetentionPeriod = registerOutput<int?>('messageRetentionPeriod');
     this.name = registerOutput<String>('name');
-    this.pollingWaitSeconds = registerOutput<int?>('pollingWaitSeconds');
-    this.visibilityTimeout = registerOutput<int?>('visibilityTimeout');
+    pollingWaitSeconds = registerOutput<int?>('pollingWaitSeconds');
+    visibilityTimeout = registerOutput<int?>('visibilityTimeout');
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
-  static Queue get(
-    String name,
-    pulumi.Input<String> id, {
-    QueueState? state,
-  }) {
+  static Queue get(String name, pulumi.Input<String> id, {QueueState? state}) {
     return Queue._get(
       name,
       state: state?.toMap(),
@@ -187,16 +185,16 @@ class Queue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mns/queue:Queue',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.delaySeconds = registerOutput<int?>('delaySeconds');
-    this.maximumMessageSize = registerOutput<int?>('maximumMessageSize');
-    this.messageRetentionPeriod = registerOutput<int?>('messageRetentionPeriod');
+         'alicloud:mns/queue:Queue',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    delaySeconds = registerOutput<int?>('delaySeconds');
+    maximumMessageSize = registerOutput<int?>('maximumMessageSize');
+    messageRetentionPeriod = registerOutput<int?>('messageRetentionPeriod');
     this.name = registerOutput<String>('name');
-    this.pollingWaitSeconds = registerOutput<int?>('pollingWaitSeconds');
-    this.visibilityTimeout = registerOutput<int?>('visibilityTimeout');
+    pollingWaitSeconds = registerOutput<int?>('pollingWaitSeconds');
+    visibilityTimeout = registerOutput<int?>('visibilityTimeout');
   }
 }

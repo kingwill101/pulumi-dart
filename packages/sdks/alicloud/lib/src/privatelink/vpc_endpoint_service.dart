@@ -8,7 +8,7 @@ import 'vpc_endpoint_service_state.dart';
 ///
 /// For information about Private Link Vpc Endpoint Service and how to use it, see [What is Vpc Endpoint Service](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-createvpcendpointservice).
 ///
-/// > **NOTE:** Available since v1.109.0.
+/// &gt; **NOTE:** Available since v1.109.0.
 ///
 /// ## Example Usage
 ///
@@ -147,38 +147,54 @@ import 'vpc_endpoint_service_state.dart';
 class VpcEndpointService extends pulumi.CustomResource {
   /// The IP address version.
   late final pulumi.Output<String> addressIpVersion;
+
   /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
   late final pulumi.Output<bool?> autoAcceptConnection;
+
   /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
   late final pulumi.Output<int> connectBandwidth;
+
   /// The time when the endpoint service was created.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to perform only a dry run, without performing the actual request.
   late final pulumi.Output<bool?> dryRun;
+
   /// The payer of the endpoint service. Valid values:
   /// - `Endpoint`: the service consumer.
   /// - `EndpointService`: the service provider.
   late final pulumi.Output<String> payer;
+
   /// The ID of the region to which the endpoint service belongs.
   late final pulumi.Output<String> regionId;
+
   /// The resource group ID.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The service state of the endpoint service.
   late final pulumi.Output<String> serviceBusinessStatus;
+
   /// The description of the endpoint service.
   late final pulumi.Output<String?> serviceDescription;
+
   /// The domain name of the endpoint service.
   late final pulumi.Output<String> serviceDomain;
+
   /// The service resource type. Value:
   late final pulumi.Output<String> serviceResourceType;
+
   /// Specifies whether to enable IPv6 for the endpoint service. Valid values:
   late final pulumi.Output<bool> serviceSupportIpv6;
+
   /// The state of the endpoint service.
   late final pulumi.Output<String> status;
+
   /// The list of tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The name of the endpoint service.
   late final pulumi.Output<String> vpcEndpointServiceName;
+
   /// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
   late final pulumi.Output<bool> zoneAffinityEnabled;
 
@@ -191,28 +207,28 @@ class VpcEndpointService extends pulumi.CustomResource {
     VpcEndpointServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointService:VpcEndpointService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.autoAcceptConnection = registerOutput<bool?>('autoAcceptConnection');
-    this.connectBandwidth = registerOutput<int>('connectBandwidth');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.payer = registerOutput<String>('payer');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.serviceBusinessStatus = registerOutput<String>('serviceBusinessStatus');
-    this.serviceDescription = registerOutput<String?>('serviceDescription');
-    this.serviceDomain = registerOutput<String>('serviceDomain');
-    this.serviceResourceType = registerOutput<String>('serviceResourceType');
-    this.serviceSupportIpv6 = registerOutput<bool>('serviceSupportIpv6');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
-    this.zoneAffinityEnabled = registerOutput<bool>('zoneAffinityEnabled');
+         'alicloud:privatelink/vpcEndpointService:VpcEndpointService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    autoAcceptConnection = registerOutput<bool?>('autoAcceptConnection');
+    connectBandwidth = registerOutput<int>('connectBandwidth');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    payer = registerOutput<String>('payer');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    serviceBusinessStatus = registerOutput<String>('serviceBusinessStatus');
+    serviceDescription = registerOutput<String?>('serviceDescription');
+    serviceDomain = registerOutput<String>('serviceDomain');
+    serviceResourceType = registerOutput<String>('serviceResourceType');
+    serviceSupportIpv6 = registerOutput<bool>('serviceSupportIpv6');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
+    zoneAffinityEnabled = registerOutput<bool>('zoneAffinityEnabled');
   }
 
   /// Gets an existing [VpcEndpointService] resource's state with the given [name] and [id].
@@ -233,27 +249,27 @@ class VpcEndpointService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:privatelink/vpcEndpointService:VpcEndpointService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.autoAcceptConnection = registerOutput<bool?>('autoAcceptConnection');
-    this.connectBandwidth = registerOutput<int>('connectBandwidth');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.payer = registerOutput<String>('payer');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.serviceBusinessStatus = registerOutput<String>('serviceBusinessStatus');
-    this.serviceDescription = registerOutput<String?>('serviceDescription');
-    this.serviceDomain = registerOutput<String>('serviceDomain');
-    this.serviceResourceType = registerOutput<String>('serviceResourceType');
-    this.serviceSupportIpv6 = registerOutput<bool>('serviceSupportIpv6');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
-    this.zoneAffinityEnabled = registerOutput<bool>('zoneAffinityEnabled');
+         'alicloud:privatelink/vpcEndpointService:VpcEndpointService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    autoAcceptConnection = registerOutput<bool?>('autoAcceptConnection');
+    connectBandwidth = registerOutput<int>('connectBandwidth');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    payer = registerOutput<String>('payer');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    serviceBusinessStatus = registerOutput<String>('serviceBusinessStatus');
+    serviceDescription = registerOutput<String?>('serviceDescription');
+    serviceDomain = registerOutput<String>('serviceDomain');
+    serviceResourceType = registerOutput<String>('serviceResourceType');
+    serviceSupportIpv6 = registerOutput<bool>('serviceSupportIpv6');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcEndpointServiceName = registerOutput<String>('vpcEndpointServiceName');
+    zoneAffinityEnabled = registerOutput<bool>('zoneAffinityEnabled');
   }
 }

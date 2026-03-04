@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HorizontalPodAutoscalerStatusPatch {
   /// currentCPUUtilizationPercentage is the current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.
   final pulumi.Input<int>? currentCPUUtilizationPercentage;
+
   /// currentReplicas is the current number of replicas of pods managed by this autoscaler.
   final pulumi.Input<int>? currentReplicas;
+
   /// desiredReplicas is the  desired number of replicas of pods managed by this autoscaler.
   final pulumi.Input<int>? desiredReplicas;
+
   /// lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods; used by the autoscaler to control how often the number of pods is changed.
   final pulumi.Input<String>? lastScaleTime;
+
   /// observedGeneration is the most recent generation observed by this autoscaler.
   final pulumi.Input<int>? observedGeneration;
 
@@ -41,12 +45,31 @@ class HorizontalPodAutoscalerStatusPatch {
 
   factory HorizontalPodAutoscalerStatusPatch.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerStatusPatch(
-      currentCPUUtilizationPercentage: map['currentCPUUtilizationPercentage'] == null ? null : (map['currentCPUUtilizationPercentage']! as int).input(),
-      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas']! as int).input(),
-      desiredReplicas: map['desiredReplicas'] == null ? null : (map['desiredReplicas']! as int).input(),
-      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime']! as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      currentCPUUtilizationPercentage: (() {
+        final guardedValue = map['currentCPUUtilizationPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      currentReplicas: (() {
+        final guardedValue = map['currentReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      desiredReplicas: (() {
+        final guardedValue = map['desiredReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lastScaleTime: (() {
+        final guardedValue = map['lastScaleTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      observedGeneration: (() {
+        final guardedValue = map['observedGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

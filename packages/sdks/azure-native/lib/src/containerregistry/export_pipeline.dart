@@ -205,20 +205,28 @@ import 'system_data_response.dart';
 class ExportPipeline extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity of the export pipeline.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
+
   /// The location of the export pipeline.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The list of all options configured for the pipeline.
   late final pulumi.Output<List<String>?> options;
+
   /// The provisioning state of the pipeline at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The target properties of the export pipeline.
   late final pulumi.Output<ExportPipelineTargetPropertiesResponse> target;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -231,19 +239,19 @@ class ExportPipeline extends pulumi.CustomResource {
     ExportPipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:ExportPipeline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:containerregistry:ExportPipeline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     this.options = registerOutput<List<String>?>('options');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.target = registerOutput<ExportPipelineTargetPropertiesResponse>('target');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    target = registerOutput<ExportPipelineTargetPropertiesResponse>('target');
+    type = registerOutput<String>('type');
   }
 }

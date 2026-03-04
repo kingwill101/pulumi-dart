@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteTableAssociation {
   /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
   final pulumi.Input<String> gatewayId;
+
   /// Whether the association is due to the main route table.
   final pulumi.Input<bool> main;
+
   /// Association ID.
   final pulumi.Input<String> routeTableAssociationId;
+
   /// ID of the specific Route Table to retrieve.
   final pulumi.Input<String> routeTableId;
+
   /// ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
   final pulumi.Input<String> subnetId;
 
@@ -40,12 +44,13 @@ class GetRouteTableAssociation {
 
   factory GetRouteTableAssociation.fromMap(Map<String, dynamic> map) {
     return GetRouteTableAssociation(
-      gatewayId: (map['gatewayId'] as String).input(),
-      main: (map['main'] as bool).input(),
-      routeTableAssociationId: (map['routeTableAssociationId'] as String).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      main: pulumi.Input.fromValue(map['main'] as bool),
+      routeTableAssociationId: pulumi.Input.fromValue(
+        map['routeTableAssociationId'] as String,
+      ),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

@@ -8,16 +8,15 @@ enum EndpointMonitorStatus {
   stopped("Stopped"),
   unmonitored("Unmonitored");
 
-  const EndpointMonitorStatus(this.value);
-  final String value;
+  const EndpointMonitorStatus(this.wireValue);
+  final String wireValue;
 
   static EndpointMonitorStatus fromValue(String value) {
     for (final item in EndpointMonitorStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointMonitorStatus value: $value');
   }
 }
-

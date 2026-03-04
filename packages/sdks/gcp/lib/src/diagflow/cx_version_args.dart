@@ -9,21 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxVersionArgs {
   /// The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
   final pulumi.Input<String>? description;
+
   /// The human-readable name of the version. Limit of 64 characters.
   final pulumi.Input<String> displayName;
+
   /// The Flow to create an Version for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   final pulumi.Input<String>? parent;
 
   /// Creates a new [CxVersionArgs].
   /// [description] The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
   /// [displayName] The human-readable name of the version. Limit of 64 characters.
   /// [parent] The Flow to create an Version for.
-  CxVersionArgs({
-    this.description,
-    required this.displayName,
-    this.parent,
-  });
+  CxVersionArgs({this.description, required this.displayName, this.parent});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,10 +33,17 @@ class CxVersionArgs {
 
   factory CxVersionArgs.fromMap(Map<String, dynamic> map) {
     return CxVersionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

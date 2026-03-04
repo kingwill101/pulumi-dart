@@ -6,7 +6,7 @@ import 'bucket_referer_state.dart';
 ///
 /// For information about OSS Bucket Referer and how to use it, see [What is Bucket Referer](https://www.alibabacloud.com/help/en/oss/user-guide/hotlink-protection).
 ///
-/// > **NOTE:** Available since v1.220.0.
+/// &gt; **NOTE:** Available since v1.220.0.
 ///
 /// ## Example Usage
 ///
@@ -258,14 +258,19 @@ import 'bucket_referer_state.dart';
 class BucketReferer extends pulumi.CustomResource {
   /// Whether to allow empty Referer request headers.
   late final pulumi.Output<bool> allowEmptyReferer;
+
   /// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
   late final pulumi.Output<bool> allowTruncateQueryString;
+
   /// Name of the Bucket.
   late final pulumi.Output<String> bucket;
+
   /// The container that holds the Referer blacklist.
   late final pulumi.Output<List<String>?> refererBlacklists;
+
   /// The container that holds the Referer whitelist.
   late final pulumi.Output<List<String>?> refererLists;
+
   /// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
   late final pulumi.Output<bool?> truncatePath;
 
@@ -278,17 +283,17 @@ class BucketReferer extends pulumi.CustomResource {
     BucketRefererArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketReferer:BucketReferer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowEmptyReferer = registerOutput<bool>('allowEmptyReferer');
-    this.allowTruncateQueryString = registerOutput<bool>('allowTruncateQueryString');
-    this.bucket = registerOutput<String>('bucket');
-    this.refererBlacklists = registerOutput<List<String>?>('refererBlacklists');
-    this.refererLists = registerOutput<List<String>?>('refererLists');
-    this.truncatePath = registerOutput<bool?>('truncatePath');
+         'alicloud:oss/bucketReferer:BucketReferer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowEmptyReferer = registerOutput<bool>('allowEmptyReferer');
+    allowTruncateQueryString = registerOutput<bool>('allowTruncateQueryString');
+    bucket = registerOutput<String>('bucket');
+    refererBlacklists = registerOutput<List<String>?>('refererBlacklists');
+    refererLists = registerOutput<List<String>?>('refererLists');
+    truncatePath = registerOutput<bool?>('truncatePath');
   }
 
   /// Gets an existing [BucketReferer] resource's state with the given [name] and [id].
@@ -309,16 +314,16 @@ class BucketReferer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketReferer:BucketReferer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowEmptyReferer = registerOutput<bool>('allowEmptyReferer');
-    this.allowTruncateQueryString = registerOutput<bool>('allowTruncateQueryString');
-    this.bucket = registerOutput<String>('bucket');
-    this.refererBlacklists = registerOutput<List<String>?>('refererBlacklists');
-    this.refererLists = registerOutput<List<String>?>('refererLists');
-    this.truncatePath = registerOutput<bool?>('truncatePath');
+         'alicloud:oss/bucketReferer:BucketReferer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowEmptyReferer = registerOutput<bool>('allowEmptyReferer');
+    allowTruncateQueryString = registerOutput<bool>('allowTruncateQueryString');
+    bucket = registerOutput<String>('bucket');
+    refererBlacklists = registerOutput<List<String>?>('refererBlacklists');
+    refererLists = registerOutput<List<String>?>('refererLists');
+    truncatePath = registerOutput<bool?>('truncatePath');
   }
 }

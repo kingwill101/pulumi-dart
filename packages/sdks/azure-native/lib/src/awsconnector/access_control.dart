@@ -9,16 +9,15 @@ enum AccessControl {
   publicRead("PublicRead"),
   publicReadWrite("PublicReadWrite");
 
-  const AccessControl(this.value);
-  final String value;
+  const AccessControl(this.wireValue);
+  final String wireValue;
 
   static AccessControl fromValue(String value) {
     for (final item in AccessControl.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessControl value: $value');
   }
 }
-

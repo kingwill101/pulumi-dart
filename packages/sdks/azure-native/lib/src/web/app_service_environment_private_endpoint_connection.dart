@@ -158,20 +158,28 @@ import 'private_link_connection_state_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:web:AppServiceEnvironmentPrivateEndpointConnection fa38656c-034e-43d8-adce-fe06ce039c98 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}
 /// ```
-class AppServiceEnvironmentPrivateEndpointConnection extends pulumi.CustomResource {
+class AppServiceEnvironmentPrivateEndpointConnection
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Private IPAddresses mapped to the remote private endpoint
   late final pulumi.Output<List<String>?> ipAddresses;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// PrivateEndpoint of a remote private endpoint connection
   late final pulumi.Output<ArmIdWrapperResponse?> privateEndpoint;
+
   /// The state of a private link connection
-  late final pulumi.Output<PrivateLinkConnectionStateResponse?> privateLinkServiceConnectionState;
+  late final pulumi.Output<PrivateLinkConnectionStateResponse?>
+  privateLinkServiceConnectionState;
   late final pulumi.Output<String> provisioningState;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -184,18 +192,21 @@ class AppServiceEnvironmentPrivateEndpointConnection extends pulumi.CustomResour
     AppServiceEnvironmentPrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:AppServiceEnvironmentPrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.ipAddresses = registerOutput<List<String>?>('ipAddresses');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:AppServiceEnvironmentPrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<ArmIdWrapperResponse?>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkConnectionStateResponse?>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<ArmIdWrapperResponse?>('privateEndpoint');
+    privateLinkServiceConnectionState =
+        registerOutput<PrivateLinkConnectionStateResponse?>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

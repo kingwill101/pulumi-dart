@@ -1,17 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'runtime_access_config.dart';
 import 'runtime_args.dart';
-import 'runtime_metric.dart';
 import 'runtime_software_config.dart';
 import 'runtime_state.dart';
 import 'runtime_virtual_machine.dart';
 
-/// > **Warning:** `google_notebook_runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+/// &gt; **Warning:** `google_notebook_runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
 ///
 /// A Cloud AI Platform Notebook runtime.
 ///
 ///
-/// > **Note:** Due to limitations of the Notebooks Runtime API, many fields
+/// &gt; **Note:** Due to limitations of the Notebooks Runtime API, many fields
 /// in this resource do not properly detect drift. These fields will also not
 /// appear in state once imported.
 ///
@@ -1205,12 +1204,15 @@ class Runtime extends pulumi.CustomResource {
   /// The config settings for accessing runtime.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeAccessConfig?> accessConfig;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The health state of this runtime. For a list of possible output
   /// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
   /// reference/rest/v1/projects.locations.runtimes#healthstate`.
   late final pulumi.Output<String> healthState;
+
   /// The labels to associate with this runtime. Label **keys** must
   /// contain 1 to 63 characters, and must conform to [RFC 1035]
   /// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -1221,25 +1223,33 @@ class Runtime extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// A reference to the zone where the machine resides.
   late final pulumi.Output<String> location;
+
   /// Contains Runtime daemon metrics such as Service status and JupyterLab
   /// status
   /// Structure is documented below.
-  late final pulumi.Output<List<RuntimeMetric>> metrics;
+  late final pulumi.Output<List<Map<String, dynamic>>> metrics;
+
   /// The name specified for the Notebook runtime.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The config settings for software inside the runtime.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeSoftwareConfig> softwareConfig;
+
   /// The state of this runtime.
   late final pulumi.Output<String> state;
+
   /// Use a Compute Engine VM image to start the managed notebook instance.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeVirtualMachine?> virtualMachine;
@@ -1253,23 +1263,23 @@ class Runtime extends pulumi.CustomResource {
     RuntimeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:notebooks/runtime:Runtime',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.healthState = registerOutput<String>('healthState');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.metrics = registerOutput<List<RuntimeMetric>>('metrics');
+         'gcp:notebooks/runtime:Runtime',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    healthState = registerOutput<String>('healthState');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.softwareConfig = registerOutput<RuntimeSoftwareConfig>('softwareConfig');
-    this.state = registerOutput<String>('state');
-    this.virtualMachine = registerOutput<RuntimeVirtualMachine?>('virtualMachine');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    softwareConfig = registerOutput<RuntimeSoftwareConfig>('softwareConfig');
+    state = registerOutput<String>('state');
+    virtualMachine = registerOutput<RuntimeVirtualMachine?>('virtualMachine');
   }
 
   /// Gets an existing [Runtime] resource's state with the given [name] and [id].
@@ -1290,22 +1300,22 @@ class Runtime extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:notebooks/runtime:Runtime',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.healthState = registerOutput<String>('healthState');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.metrics = registerOutput<List<RuntimeMetric>>('metrics');
+         'gcp:notebooks/runtime:Runtime',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessConfig = registerOutput<RuntimeAccessConfig?>('accessConfig');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    healthState = registerOutput<String>('healthState');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.softwareConfig = registerOutput<RuntimeSoftwareConfig>('softwareConfig');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    softwareConfig = registerOutput<RuntimeSoftwareConfig>('softwareConfig');
     this.state = registerOutput<String>('state');
-    this.virtualMachine = registerOutput<RuntimeVirtualMachine?>('virtualMachine');
+    virtualMachine = registerOutput<RuntimeVirtualMachine?>('virtualMachine');
   }
 }

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostsHostInstance {
   /// The ID of the ECS instance.
   final pulumi.Input<String> instanceId;
+
   /// The ID of the ECS instance owner.
   final pulumi.Input<int> instanceOwnerId;
+
   /// The instance type of the ECS instance that was created on the dedicated host.
   final pulumi.Input<String> instanceType;
+
   /// The ID of the socket to which the ECS instance belongs.
   final pulumi.Input<String> socketId;
 
@@ -35,11 +38,10 @@ class GetDedicatedHostsHostInstance {
 
   factory GetDedicatedHostsHostInstance.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsHostInstance(
-      instanceId: (map['instanceId'] as String).input(),
-      instanceOwnerId: (map['instanceOwnerId'] as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      socketId: (map['socketId'] as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceOwnerId: pulumi.Input.fromValue(map['instanceOwnerId'] as int),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      socketId: pulumi.Input.fromValue(map['socketId'] as String),
     );
   }
 }
-

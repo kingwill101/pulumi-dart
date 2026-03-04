@@ -9,20 +9,17 @@ class DataConnectorDataTypeCommonResponse {
 
   /// Creates a new [DataConnectorDataTypeCommonResponse].
   /// [state] Describe whether this data type connection is enabled or not.
-  DataConnectorDataTypeCommonResponse({
-    required this.state,
-  });
+  DataConnectorDataTypeCommonResponse({required this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-    };
+    return <String, dynamic>{'state': state};
   }
 
-  factory DataConnectorDataTypeCommonResponse.fromMap(Map<String, dynamic> map) {
+  factory DataConnectorDataTypeCommonResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataConnectorDataTypeCommonResponse(
-      state: (map['state'] as String).input(),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

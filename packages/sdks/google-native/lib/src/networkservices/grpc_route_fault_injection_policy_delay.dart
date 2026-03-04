@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrpcRouteFaultInjectionPolicyDelay {
   /// Specify a fixed delay before forwarding the request.
   final pulumi.Input<String>? fixedDelay;
+
   /// The percentage of traffic on which delay will be injected. The value must be between [0, 100]
   final pulumi.Input<int>? percentage;
 
   /// Creates a new [GrpcRouteFaultInjectionPolicyDelay].
   /// [fixedDelay] Specify a fixed delay before forwarding the request.
   /// [percentage] The percentage of traffic on which delay will be injected. The value must be between [0, 100]
-  GrpcRouteFaultInjectionPolicyDelay({
-    this.fixedDelay,
-    this.percentage,
-  });
+  GrpcRouteFaultInjectionPolicyDelay({this.fixedDelay, this.percentage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class GrpcRouteFaultInjectionPolicyDelay {
 
   factory GrpcRouteFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
     return GrpcRouteFaultInjectionPolicyDelay(
-      fixedDelay: map['fixedDelay'] == null ? null : (map['fixedDelay']! as String).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
+      fixedDelay: (() {
+        final guardedValue = map['fixedDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      percentage: (() {
+        final guardedValue = map['percentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

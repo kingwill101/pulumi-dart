@@ -1,5 +1,3 @@
-library module_appplatform;
-
 export 'appplatform/functions.dart';
 export 'appplatform/get_spring_cloud_app_args.dart';
 export 'appplatform/get_spring_cloud_app_identity.dart';

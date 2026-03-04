@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
 import 'domain_auth_config.dart';
-import 'domain_cache_config.dart';
 import 'domain_certificate_config.dart';
-import 'domain_http_header_config.dart';
 import 'domain_page404_config.dart';
 import 'domain_parameter_filter_config.dart';
 import 'domain_refer_config.dart';
@@ -12,11 +10,11 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainAuthConfig?> authConfig;
   late final pulumi.Output<List<String>?> blockIps;
-  late final pulumi.Output<List<DomainCacheConfig>?> cacheConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> cacheConfigs;
   late final pulumi.Output<String> cdnType;
   late final pulumi.Output<DomainCertificateConfig?> certificateConfig;
   late final pulumi.Output<String> domainName;
-  late final pulumi.Output<List<DomainHttpHeaderConfig>?> httpHeaderConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> httpHeaderConfigs;
   late final pulumi.Output<String?> optimizeEnable;
   late final pulumi.Output<DomainPage404Config?> page404Config;
   late final pulumi.Output<String?> pageCompressEnable;
@@ -33,34 +31,37 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_cdn_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cdn/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authConfig = registerOutput<DomainAuthConfig?>('authConfig');
-    this.blockIps = registerOutput<List<String>?>('blockIps');
-    this.cacheConfigs = registerOutput<List<DomainCacheConfig>?>('cacheConfigs');
-    this.cdnType = registerOutput<String>('cdnType');
-    this.certificateConfig = registerOutput<DomainCertificateConfig?>('certificateConfig');
-    this.domainName = registerOutput<String>('domainName');
-    this.httpHeaderConfigs = registerOutput<List<DomainHttpHeaderConfig>?>('httpHeaderConfigs');
-    this.optimizeEnable = registerOutput<String?>('optimizeEnable');
-    this.page404Config = registerOutput<DomainPage404Config?>('page404Config');
-    this.pageCompressEnable = registerOutput<String?>('pageCompressEnable');
-    this.parameterFilterConfig = registerOutput<DomainParameterFilterConfig?>('parameterFilterConfig');
-    this.rangeEnable = registerOutput<String?>('rangeEnable');
-    this.referConfig = registerOutput<DomainReferConfig?>('referConfig');
-    this.scope = registerOutput<String>('scope');
-    this.sourcePort = registerOutput<int?>('sourcePort');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.sources = registerOutput<List<String>?>('sources');
-    this.videoSeekEnable = registerOutput<String?>('videoSeekEnable');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cdn/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authConfig = registerOutput<DomainAuthConfig?>('authConfig');
+    blockIps = registerOutput<List<String>?>('blockIps');
+    cacheConfigs = registerOutput<List<Map<String, dynamic>>?>('cacheConfigs');
+    cdnType = registerOutput<String>('cdnType');
+    certificateConfig = registerOutput<DomainCertificateConfig?>(
+      'certificateConfig',
+    );
+    domainName = registerOutput<String>('domainName');
+    httpHeaderConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'httpHeaderConfigs',
+    );
+    optimizeEnable = registerOutput<String?>('optimizeEnable');
+    page404Config = registerOutput<DomainPage404Config?>('page404Config');
+    pageCompressEnable = registerOutput<String?>('pageCompressEnable');
+    parameterFilterConfig = registerOutput<DomainParameterFilterConfig?>(
+      'parameterFilterConfig',
+    );
+    rangeEnable = registerOutput<String?>('rangeEnable');
+    referConfig = registerOutput<DomainReferConfig?>('referConfig');
+    scope = registerOutput<String>('scope');
+    sourcePort = registerOutput<int?>('sourcePort');
+    sourceType = registerOutput<String?>('sourceType');
+    sources = registerOutput<List<String>?>('sources');
+    videoSeekEnable = registerOutput<String?>('videoSeekEnable');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -81,28 +82,34 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cdn/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authConfig = registerOutput<DomainAuthConfig?>('authConfig');
-    this.blockIps = registerOutput<List<String>?>('blockIps');
-    this.cacheConfigs = registerOutput<List<DomainCacheConfig>?>('cacheConfigs');
-    this.cdnType = registerOutput<String>('cdnType');
-    this.certificateConfig = registerOutput<DomainCertificateConfig?>('certificateConfig');
-    this.domainName = registerOutput<String>('domainName');
-    this.httpHeaderConfigs = registerOutput<List<DomainHttpHeaderConfig>?>('httpHeaderConfigs');
-    this.optimizeEnable = registerOutput<String?>('optimizeEnable');
-    this.page404Config = registerOutput<DomainPage404Config?>('page404Config');
-    this.pageCompressEnable = registerOutput<String?>('pageCompressEnable');
-    this.parameterFilterConfig = registerOutput<DomainParameterFilterConfig?>('parameterFilterConfig');
-    this.rangeEnable = registerOutput<String?>('rangeEnable');
-    this.referConfig = registerOutput<DomainReferConfig?>('referConfig');
-    this.scope = registerOutput<String>('scope');
-    this.sourcePort = registerOutput<int?>('sourcePort');
-    this.sourceType = registerOutput<String?>('sourceType');
-    this.sources = registerOutput<List<String>?>('sources');
-    this.videoSeekEnable = registerOutput<String?>('videoSeekEnable');
+         'alicloud:cdn/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authConfig = registerOutput<DomainAuthConfig?>('authConfig');
+    blockIps = registerOutput<List<String>?>('blockIps');
+    cacheConfigs = registerOutput<List<Map<String, dynamic>>?>('cacheConfigs');
+    cdnType = registerOutput<String>('cdnType');
+    certificateConfig = registerOutput<DomainCertificateConfig?>(
+      'certificateConfig',
+    );
+    domainName = registerOutput<String>('domainName');
+    httpHeaderConfigs = registerOutput<List<Map<String, dynamic>>?>(
+      'httpHeaderConfigs',
+    );
+    optimizeEnable = registerOutput<String?>('optimizeEnable');
+    page404Config = registerOutput<DomainPage404Config?>('page404Config');
+    pageCompressEnable = registerOutput<String?>('pageCompressEnable');
+    parameterFilterConfig = registerOutput<DomainParameterFilterConfig?>(
+      'parameterFilterConfig',
+    );
+    rangeEnable = registerOutput<String?>('rangeEnable');
+    referConfig = registerOutput<DomainReferConfig?>('referConfig');
+    scope = registerOutput<String>('scope');
+    sourcePort = registerOutput<int?>('sourcePort');
+    sourceType = registerOutput<String?>('sourceType');
+    sources = registerOutput<List<String>?>('sources');
+    videoSeekEnable = registerOutput<String?>('videoSeekEnable');
   }
 }

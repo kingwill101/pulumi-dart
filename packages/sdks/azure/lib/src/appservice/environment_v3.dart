@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_v3_args.dart';
-import 'environment_v3_cluster_setting.dart';
-import 'environment_v3_inbound_network_dependency.dart';
 import 'environment_v3_state.dart';
 
 /// Manages a 3rd Generation (v3) App Service Environment.
@@ -472,7 +470,7 @@ import 'environment_v3_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -489,49 +487,68 @@ import 'environment_v3_state.dart';
 class EnvironmentV3 extends pulumi.CustomResource {
   /// Should new Private Endpoint Connections be allowed. Defaults to `true`.
   late final pulumi.Output<bool?> allowNewPrivateEndpointConnections;
+
   /// Zero or more `cluster_setting` blocks as defined below.
-  late final pulumi.Output<List<EnvironmentV3ClusterSetting>> clusterSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>> clusterSettings;
+
   /// This ASEv3 should use dedicated Hosts. Possible values are `2`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> dedicatedHostCount;
+
   /// the DNS suffix for this App Service Environment V3.
   late final pulumi.Output<String> dnsSuffix;
+
   /// The external inbound IP addresses of the App Service Environment V3.
   late final pulumi.Output<List<String>> externalInboundIpAddresses;
+
   /// An `inbound_network_dependencies` block as defined below.
-  late final pulumi.Output<List<EnvironmentV3InboundNetworkDependency>> inboundNetworkDependencies;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  inboundNetworkDependencies;
+
   /// The internal inbound IP addresses of the App Service Environment V3.
   late final pulumi.Output<List<String>> internalInboundIpAddresses;
+
   /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment. Possible values are `None` (for an External VIP Type), and `"Web, Publishing"` (for an Internal VIP Type). Defaults to `None`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> internalLoadBalancingMode;
+
   /// The number of IP SSL addresses reserved for the App Service Environment V3.
   late final pulumi.Output<int> ipSslAddressCount;
+
   /// Outbound addresses of Linux based Apps in this App Service Environment V3
   late final pulumi.Output<List<String>> linuxOutboundIpAddresses;
+
   /// The location where the App Service Environment exists.
   late final pulumi.Output<String> location;
+
   /// The name of the App Service Environment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Pricing tier for the front end instances.
   late final pulumi.Output<String> pricingTier;
+
   /// Whether to enable remote debug. Defaults to `false`.
   late final pulumi.Output<bool?> remoteDebuggingEnabled;
+
   /// The name of the Resource Group where the App Service Environment exists. Defaults to the Resource Group of the Subnet (specified by `subnet_id`). Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the Subnet which the App Service Environment should be connected to. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** a /24 or larger CIDR is required. Once associated with an ASE, this size cannot be changed.
+  /// &gt; **Note:** a /24 or larger CIDR is required. Once associated with an ASE, this size cannot be changed.
   ///
-  /// > **Note:** This Subnet requires a delegation to `Microsoft.Web/hostingEnvironments` as detailed in the example above.
+  /// &gt; **Note:** This Subnet requires a delegation to `Microsoft.Web/hostingEnvironments` as detailed in the example above.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags to assign to the resource.
   ///
-  /// > **Note:** The underlying API does not currently support changing Tags on this resource. Making changes in the portal for tags will cause Terraform to detect a change that will force a recreation of the ASEV3 unless `ignore_changes` lifecycle meta-argument is used.
+  /// &gt; **Note:** The underlying API does not currently support changing Tags on this resource. Making changes in the portal for tags will cause Terraform to detect a change that will force a recreation of the ASEV3 unless `ignore_changes` lifecycle meta-argument is used.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Outbound addresses of Windows based Apps in this App Service Environment V3.
   late final pulumi.Output<List<String>> windowsOutboundIpAddresses;
+
   /// Set to `true` to deploy the ASEv3 with availability zones supported. Zonal ASEs can be deployed in some regions, you can refer to [Availability Zone support for App Service Environments](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy). You can only set either `dedicated_host_count` or `zone_redundant` but not both. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Setting this value will provision 2 Physical Hosts for your App Service Environment V3, this is done at additional cost, please be aware of the pricing commitment in the [General Availability Notes](https://techcommunity.microsoft.com/t5/apps-on-azure/announcing-app-service-environment-v3-ga/ba-p/2517990)
+  /// &gt; **Note:** Setting this value will provision 2 Physical Hosts for your App Service Environment V3, this is done at additional cost, please be aware of the pricing commitment in the [General Availability Notes](https://techcommunity.microsoft.com/t5/apps-on-azure/announcing-app-service-environment-v3-ga/ba-p/2517990)
   late final pulumi.Output<bool?> zoneRedundant;
 
   /// Creates a new [EnvironmentV3].
@@ -543,30 +560,46 @@ class EnvironmentV3 extends pulumi.CustomResource {
     EnvironmentV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/environmentV3:EnvironmentV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowNewPrivateEndpointConnections = registerOutput<bool?>('allowNewPrivateEndpointConnections');
-    this.clusterSettings = registerOutput<List<EnvironmentV3ClusterSetting>>('clusterSettings');
-    this.dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
-    this.dnsSuffix = registerOutput<String>('dnsSuffix');
-    this.externalInboundIpAddresses = registerOutput<List<String>>('externalInboundIpAddresses');
-    this.inboundNetworkDependencies = registerOutput<List<EnvironmentV3InboundNetworkDependency>>('inboundNetworkDependencies');
-    this.internalInboundIpAddresses = registerOutput<List<String>>('internalInboundIpAddresses');
-    this.internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
-    this.ipSslAddressCount = registerOutput<int>('ipSslAddressCount');
-    this.linuxOutboundIpAddresses = registerOutput<List<String>>('linuxOutboundIpAddresses');
-    this.location = registerOutput<String>('location');
+         'azure:appservice/environmentV3:EnvironmentV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowNewPrivateEndpointConnections = registerOutput<bool?>(
+      'allowNewPrivateEndpointConnections',
+    );
+    clusterSettings = registerOutput<List<Map<String, dynamic>>>(
+      'clusterSettings',
+    );
+    dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
+    dnsSuffix = registerOutput<String>('dnsSuffix');
+    externalInboundIpAddresses = registerOutput<List<String>>(
+      'externalInboundIpAddresses',
+    );
+    inboundNetworkDependencies = registerOutput<List<Map<String, dynamic>>>(
+      'inboundNetworkDependencies',
+    );
+    internalInboundIpAddresses = registerOutput<List<String>>(
+      'internalInboundIpAddresses',
+    );
+    internalLoadBalancingMode = registerOutput<String?>(
+      'internalLoadBalancingMode',
+    );
+    ipSslAddressCount = registerOutput<int>('ipSslAddressCount');
+    linuxOutboundIpAddresses = registerOutput<List<String>>(
+      'linuxOutboundIpAddresses',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.pricingTier = registerOutput<String>('pricingTier');
-    this.remoteDebuggingEnabled = registerOutput<bool?>('remoteDebuggingEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.windowsOutboundIpAddresses = registerOutput<List<String>>('windowsOutboundIpAddresses');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    pricingTier = registerOutput<String>('pricingTier');
+    remoteDebuggingEnabled = registerOutput<bool?>('remoteDebuggingEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    windowsOutboundIpAddresses = registerOutput<List<String>>(
+      'windowsOutboundIpAddresses',
+    );
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 
   /// Gets an existing [EnvironmentV3] resource's state with the given [name] and [id].
@@ -587,29 +620,45 @@ class EnvironmentV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/environmentV3:EnvironmentV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowNewPrivateEndpointConnections = registerOutput<bool?>('allowNewPrivateEndpointConnections');
-    this.clusterSettings = registerOutput<List<EnvironmentV3ClusterSetting>>('clusterSettings');
-    this.dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
-    this.dnsSuffix = registerOutput<String>('dnsSuffix');
-    this.externalInboundIpAddresses = registerOutput<List<String>>('externalInboundIpAddresses');
-    this.inboundNetworkDependencies = registerOutput<List<EnvironmentV3InboundNetworkDependency>>('inboundNetworkDependencies');
-    this.internalInboundIpAddresses = registerOutput<List<String>>('internalInboundIpAddresses');
-    this.internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
-    this.ipSslAddressCount = registerOutput<int>('ipSslAddressCount');
-    this.linuxOutboundIpAddresses = registerOutput<List<String>>('linuxOutboundIpAddresses');
-    this.location = registerOutput<String>('location');
+         'azure:appservice/environmentV3:EnvironmentV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowNewPrivateEndpointConnections = registerOutput<bool?>(
+      'allowNewPrivateEndpointConnections',
+    );
+    clusterSettings = registerOutput<List<Map<String, dynamic>>>(
+      'clusterSettings',
+    );
+    dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
+    dnsSuffix = registerOutput<String>('dnsSuffix');
+    externalInboundIpAddresses = registerOutput<List<String>>(
+      'externalInboundIpAddresses',
+    );
+    inboundNetworkDependencies = registerOutput<List<Map<String, dynamic>>>(
+      'inboundNetworkDependencies',
+    );
+    internalInboundIpAddresses = registerOutput<List<String>>(
+      'internalInboundIpAddresses',
+    );
+    internalLoadBalancingMode = registerOutput<String?>(
+      'internalLoadBalancingMode',
+    );
+    ipSslAddressCount = registerOutput<int>('ipSslAddressCount');
+    linuxOutboundIpAddresses = registerOutput<List<String>>(
+      'linuxOutboundIpAddresses',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.pricingTier = registerOutput<String>('pricingTier');
-    this.remoteDebuggingEnabled = registerOutput<bool?>('remoteDebuggingEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.windowsOutboundIpAddresses = registerOutput<List<String>>('windowsOutboundIpAddresses');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    pricingTier = registerOutput<String>('pricingTier');
+    remoteDebuggingEnabled = registerOutput<bool?>('remoteDebuggingEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    windowsOutboundIpAddresses = registerOutput<List<String>>(
+      'windowsOutboundIpAddresses',
+    );
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

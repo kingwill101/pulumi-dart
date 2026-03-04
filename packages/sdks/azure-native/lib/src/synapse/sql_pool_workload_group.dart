@@ -313,20 +313,28 @@ import 'sql_pool_workload_group_args.dart';
 class SqlPoolWorkloadGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The workload group importance level.
   late final pulumi.Output<String?> importance;
+
   /// The workload group cap percentage resource.
   late final pulumi.Output<int> maxResourcePercent;
+
   /// The workload group request maximum grant percentage.
   late final pulumi.Output<double?> maxResourcePercentPerRequest;
+
   /// The workload group minimum percentage resource.
   late final pulumi.Output<int> minResourcePercent;
+
   /// The workload group request minimum grant percentage.
   late final pulumi.Output<double> minResourcePercentPerRequest;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The workload group query execution timeout.
   late final pulumi.Output<int?> queryExecutionTimeout;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -339,19 +347,23 @@ class SqlPoolWorkloadGroup extends pulumi.CustomResource {
     SqlPoolWorkloadGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:SqlPoolWorkloadGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.importance = registerOutput<String?>('importance');
-    this.maxResourcePercent = registerOutput<int>('maxResourcePercent');
-    this.maxResourcePercentPerRequest = registerOutput<double?>('maxResourcePercentPerRequest');
-    this.minResourcePercent = registerOutput<int>('minResourcePercent');
-    this.minResourcePercentPerRequest = registerOutput<double>('minResourcePercentPerRequest');
+         'azure-native:synapse:SqlPoolWorkloadGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    importance = registerOutput<String?>('importance');
+    maxResourcePercent = registerOutput<int>('maxResourcePercent');
+    maxResourcePercentPerRequest = registerOutput<double?>(
+      'maxResourcePercentPerRequest',
+    );
+    minResourcePercent = registerOutput<int>('minResourcePercent');
+    minResourcePercentPerRequest = registerOutput<double>(
+      'minResourcePercentPerRequest',
+    );
     this.name = registerOutput<String>('name');
-    this.queryExecutionTimeout = registerOutput<int?>('queryExecutionTimeout');
-    this.type = registerOutput<String>('type');
+    queryExecutionTimeout = registerOutput<int?>('queryExecutionTimeout');
+    type = registerOutput<String>('type');
   }
 }

@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyAssociationComputeBeta {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String>? attachmentTarget;
+
   /// The name for an association.
   final pulumi.Input<String>? name;
 
   /// Creates a new [FirewallPolicyAssociationComputeBeta].
   /// [attachmentTarget] The target that the firewall policy is attached to.
   /// [name] The name for an association.
-  FirewallPolicyAssociationComputeBeta({
-    this.attachmentTarget,
-    this.name,
-  });
+  FirewallPolicyAssociationComputeBeta({this.attachmentTarget, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,11 +21,20 @@ class FirewallPolicyAssociationComputeBeta {
     };
   }
 
-  factory FirewallPolicyAssociationComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyAssociationComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyAssociationComputeBeta(
-      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      attachmentTarget: (() {
+        final guardedValue = map['attachmentTarget'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

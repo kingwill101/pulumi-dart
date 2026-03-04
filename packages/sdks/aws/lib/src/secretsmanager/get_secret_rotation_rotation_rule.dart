@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretRotationRotationRule {
   /// Number of days between automatic scheduled rotations of the secret.
   final pulumi.Input<int> automaticallyAfterDays;
+
   /// Length of the rotation window in hours.
   final pulumi.Input<String> duration;
+
   /// A `cron()` or `rate()` expression that defines the schedule for rotating the secret.
   final pulumi.Input<String> scheduleExpression;
 
@@ -30,10 +32,13 @@ class GetSecretRotationRotationRule {
 
   factory GetSecretRotationRotationRule.fromMap(Map<String, dynamic> map) {
     return GetSecretRotationRotationRule(
-      automaticallyAfterDays: (map['automaticallyAfterDays'] as int).input(),
-      duration: (map['duration'] as String).input(),
-      scheduleExpression: (map['scheduleExpression'] as String).input(),
+      automaticallyAfterDays: pulumi.Input.fromValue(
+        map['automaticallyAfterDays'] as int,
+      ),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      scheduleExpression: pulumi.Input.fromValue(
+        map['scheduleExpression'] as String,
+      ),
     );
   }
 }
-

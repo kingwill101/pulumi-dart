@@ -13,15 +13,14 @@ class EndpointConfigurationProductionVariantRoutingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'routingStrategy': routingStrategy,
-    };
+    return <String, dynamic>{'routingStrategy': routingStrategy};
   }
 
-  factory EndpointConfigurationProductionVariantRoutingConfig.fromMap(Map<String, dynamic> map) {
+  factory EndpointConfigurationProductionVariantRoutingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointConfigurationProductionVariantRoutingConfig(
-      routingStrategy: (map['routingStrategy'] as String).input(),
+      routingStrategy: pulumi.Input.fromValue(map['routingStrategy'] as String),
     );
   }
 }
-

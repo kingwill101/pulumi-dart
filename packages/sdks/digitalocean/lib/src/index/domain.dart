@@ -116,11 +116,14 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The uniform resource name of the domain
   late final pulumi.Output<String> domainUrn;
+
   /// The IP address of the domain. If specified, this IP
   /// is used to created an initial A record for the domain.
   late final pulumi.Output<String?> ipAddress;
+
   /// The name of the domain
   late final pulumi.Output<String> name;
+
   /// The TTL value of the domain
   late final pulumi.Output<int> ttl;
 
@@ -128,20 +131,17 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_index_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'digitalocean:index/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainUrn = registerOutput<String>('domainUrn');
-    this.ipAddress = registerOutput<String?>('ipAddress');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'digitalocean:index/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    domainUrn = registerOutput<String>('domainUrn');
+    ipAddress = registerOutput<String?>('ipAddress');
     this.name = registerOutput<String>('name');
-    this.ttl = registerOutput<int>('ttl');
+    ttl = registerOutput<int>('ttl');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -162,14 +162,14 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainUrn = registerOutput<String>('domainUrn');
-    this.ipAddress = registerOutput<String?>('ipAddress');
+         'digitalocean:index/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainUrn = registerOutput<String>('domainUrn');
+    ipAddress = registerOutput<String?>('ipAddress');
     this.name = registerOutput<String>('name');
-    this.ttl = registerOutput<int>('ttl');
+    ttl = registerOutput<int>('ttl');
   }
 }

@@ -8,16 +8,15 @@ enum AzureDiskSkuName {
   premiumV2LRS("PremiumV2_LRS"),
   standardSSDZRS("StandardSSD_ZRS");
 
-  const AzureDiskSkuName(this.value);
-  final String value;
+  const AzureDiskSkuName(this.wireValue);
+  final String wireValue;
 
   static AzureDiskSkuName fromValue(String value) {
     for (final item in AzureDiskSkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureDiskSkuName value: $value');
   }
 }
-

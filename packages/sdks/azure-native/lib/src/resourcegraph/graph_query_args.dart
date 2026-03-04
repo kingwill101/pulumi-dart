@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GraphQueryArgs {
   /// The description of a graph query.
   final pulumi.Input<String>? description;
+
   /// The location of the resource
   final pulumi.Input<String>? location;
+
   /// KQL query that will be graph.
   final pulumi.Input<String> query;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Graph Query resource.
   final pulumi.Input<String>? resourceName;
+
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,13 +54,32 @@ class GraphQueryArgs {
 
   factory GraphQueryArgs.fromMap(Map<String, dynamic> map) {
     return GraphQueryArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      query: (map['query'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

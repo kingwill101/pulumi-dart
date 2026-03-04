@@ -538,7 +538,7 @@ import 'restore_point_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -553,10 +553,13 @@ import 'restore_point_state.dart';
 class RestorePoint extends pulumi.CustomResource {
   /// Whether the Consistency Mode of the Virtual Machine Restore Point is set to `CrashConsistent`. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> crashConsistencyModeEnabled;
+
   /// A list of disks that will be excluded from the Virtual Machine Restore Point. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> excludedDisks;
+
   /// Specifies the name of the Virtual Machine Restore Point. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the Virtual Machine Restore Point Collection the Virtual Machine Restore Point will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineRestorePointCollectionId;
 
@@ -569,15 +572,19 @@ class RestorePoint extends pulumi.CustomResource {
     RestorePointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/restorePoint:RestorePoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crashConsistencyModeEnabled = registerOutput<bool?>('crashConsistencyModeEnabled');
-    this.excludedDisks = registerOutput<List<String>?>('excludedDisks');
+         'azure:compute/restorePoint:RestorePoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crashConsistencyModeEnabled = registerOutput<bool?>(
+      'crashConsistencyModeEnabled',
+    );
+    excludedDisks = registerOutput<List<String>?>('excludedDisks');
     this.name = registerOutput<String>('name');
-    this.virtualMachineRestorePointCollectionId = registerOutput<String>('virtualMachineRestorePointCollectionId');
+    virtualMachineRestorePointCollectionId = registerOutput<String>(
+      'virtualMachineRestorePointCollectionId',
+    );
   }
 
   /// Gets an existing [RestorePoint] resource's state with the given [name] and [id].
@@ -598,14 +605,18 @@ class RestorePoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/restorePoint:RestorePoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crashConsistencyModeEnabled = registerOutput<bool?>('crashConsistencyModeEnabled');
-    this.excludedDisks = registerOutput<List<String>?>('excludedDisks');
+         'azure:compute/restorePoint:RestorePoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crashConsistencyModeEnabled = registerOutput<bool?>(
+      'crashConsistencyModeEnabled',
+    );
+    excludedDisks = registerOutput<List<String>?>('excludedDisks');
     this.name = registerOutput<String>('name');
-    this.virtualMachineRestorePointCollectionId = registerOutput<String>('virtualMachineRestorePointCollectionId');
+    virtualMachineRestorePointCollectionId = registerOutput<String>(
+      'virtualMachineRestorePointCollectionId',
+    );
   }
 }

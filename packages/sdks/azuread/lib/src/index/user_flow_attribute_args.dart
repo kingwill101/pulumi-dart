@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserFlowAttributeArgs {
   /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
   final pulumi.Input<String> dataType;
+
   /// The description of the user flow attribute that is shown to the user at the time of sign-up.
   final pulumi.Input<String> description;
+
   /// The display name of the user flow attribute. Changing this forces a new resource to be created.
   final pulumi.Input<String> displayName;
 
@@ -34,10 +36,9 @@ class UserFlowAttributeArgs {
 
   factory UserFlowAttributeArgs.fromMap(Map<String, dynamic> map) {
     return UserFlowAttributeArgs(
-      dataType: (map['dataType'] as String).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
-

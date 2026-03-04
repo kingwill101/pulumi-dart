@@ -127,6 +127,7 @@ import 'console_with_location_args.dart';
 class ConsoleWithLocation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Cloud shell console properties.
   late final pulumi.Output<ConsolePropertiesResponse> properties;
 
@@ -139,12 +140,12 @@ class ConsoleWithLocation extends pulumi.CustomResource {
     ConsoleWithLocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:portal:ConsoleWithLocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.properties = registerOutput<ConsolePropertiesResponse>('properties');
+         'azure-native:portal:ConsoleWithLocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    properties = registerOutput<ConsolePropertiesResponse>('properties');
   }
 }

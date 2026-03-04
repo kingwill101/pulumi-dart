@@ -10,20 +10,27 @@ class VirtualMachinesProfile {
 
   /// Creates a new [VirtualMachinesProfile].
   /// [scale] Specifications on how to scale a VirtualMachines agent pool.
-  VirtualMachinesProfile({
-    this.scale,
-  });
+  VirtualMachinesProfile({this.scale});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scale': ?pulumi.Input.mapOptionalInputValue<ScaleProfile, Map<String, dynamic>>(scale, (value) => value.toMap()),
+      'scale':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScaleProfile,
+            Map<String, dynamic>
+          >(scale, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachinesProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinesProfile(
-      scale: map['scale'] == null ? null : (ScaleProfile.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      scale: (() {
+        final guardedValue = map['scale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScaleProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

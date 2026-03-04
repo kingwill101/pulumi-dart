@@ -9,16 +9,15 @@ enum InstanceStateSqladminV1beta4 {
   failed("FAILED"),
   onlineMaintenance("ONLINE_MAINTENANCE");
 
-  const InstanceStateSqladminV1beta4(this.value);
-  final String value;
+  const InstanceStateSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static InstanceStateSqladminV1beta4 fromValue(String value) {
     for (final item in InstanceStateSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceStateSqladminV1beta4 value: $value');
   }
 }
-

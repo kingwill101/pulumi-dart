@@ -14,15 +14,16 @@ class GetDependencyViewForAllMachinesResultPropertiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'layoutFileSasUrl': layoutFileSasUrl,
-    };
+    return <String, dynamic>{'layoutFileSasUrl': layoutFileSasUrl};
   }
 
-  factory GetDependencyViewForAllMachinesResultPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory GetDependencyViewForAllMachinesResultPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDependencyViewForAllMachinesResultPropertiesResponse(
-      layoutFileSasUrl: (map['layoutFileSasUrl'] as String).input(),
+      layoutFileSasUrl: pulumi.Input.fromValue(
+        map['layoutFileSasUrl'] as String,
+      ),
     );
   }
 }
-

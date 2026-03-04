@@ -1,5 +1,3 @@
-library module_dms;
-
 export 'dms/airflow.dart';
 export 'dms/airflow_args.dart';
 export 'dms/airflow_state.dart';

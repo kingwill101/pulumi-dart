@@ -147,12 +147,16 @@ import 'system_data_response.dart';
 class RegistrationAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the registration assignment.
   late final pulumi.Output<String> name;
+
   /// The properties of a registration assignment.
   late final pulumi.Output<RegistrationAssignmentPropertiesResponse> properties;
+
   /// The metadata for the registration assignment resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
   late final pulumi.Output<String> type;
 
@@ -165,15 +169,17 @@ class RegistrationAssignment extends pulumi.CustomResource {
     RegistrationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managedservices:RegistrationAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:managedservices:RegistrationAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<RegistrationAssignmentPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<RegistrationAssignmentPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

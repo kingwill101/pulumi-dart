@@ -11,42 +11,52 @@ class VirtualMachineScaleSetOSDisk {
   /// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
   /// storage. ReadOnly for Premium storage.**
   final pulumi.Input<String>? caching;
+
   /// Specifies how the virtual machines in the scale set should be created. The only
   /// allowed value is: **FromImage.** This value is used when you are using an image
   /// to create the virtual machine. If you are using a platform image, you also use
   /// the imageReference element described above. If you are using a marketplace
   /// image, you  also use the plan element previously described.
   final pulumi.Input<String> createOption;
+
   /// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
   /// (This feature is available for VMSS with Flexible OrchestrationMode only).
-  /// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
-  /// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
-  /// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+  /// &lt;br&gt;&lt;br&gt; Possible values: &lt;br&gt;&lt;br&gt; **Delete** If this value is used, the OS
+  /// disk is deleted when VMSS Flex VM is deleted.&lt;br&gt;&lt;br&gt; **Detach** If this value
+  /// is used, the OS disk is retained after VMSS Flex VM is deleted. &lt;br&gt;&lt;br&gt; The
   /// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
   /// is set to **Delete**. User cannot change the delete option for Ephemeral OS
   /// Disk.
   final pulumi.Input<String>? deleteOption;
+
   /// Specifies the ephemeral disk Settings for the operating system disk used by the
   /// virtual machine scale set.
   final pulumi.Input<DiffDiskSettings>? diffDiskSettings;
+
   /// Specifies the size of an empty data disk in gigabytes. This element can be used
   /// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
   /// is the number of bytes x 1024^3 for the disk and the value cannot
   /// be larger than 1023.
   final pulumi.Input<int>? diskSizeGB;
+
   /// Specifies information about the unmanaged user image to base the scale set on.
   final pulumi.Input<VirtualHardDisk>? image;
+
   /// The managed disk parameters.
   final pulumi.Input<VirtualMachineScaleSetManagedDiskParameters>? managedDisk;
+
   /// The disk name.
   final pulumi.Input<String>? name;
+
   /// This property allows you to specify the type of the OS that is included in the
   /// disk if creating a VM from user-image or a specialized VHD. Possible values
   /// are: **Windows,** **Linux.**
   final pulumi.Input<String>? osType;
+
   /// Specifies the container urls that are used to store operating system disks for
   /// the scale set.
   final pulumi.Input<List<String>>? vhdContainers;
+
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
   final pulumi.Input<bool>? writeAcceleratorEnabled;
 
@@ -81,10 +91,22 @@ class VirtualMachineScaleSetOSDisk {
       'caching': ?caching,
       'createOption': createOption,
       'deleteOption': ?deleteOption,
-      'diffDiskSettings': ?pulumi.Input.mapOptionalInputValue<DiffDiskSettings, Map<String, dynamic>>(diffDiskSettings, (value) => value.toMap()),
+      'diffDiskSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiffDiskSettings,
+            Map<String, dynamic>
+          >(diffDiskSettings, (value) => value.toMap()),
       'diskSizeGB': ?diskSizeGB,
-      'image': ?pulumi.Input.mapOptionalInputValue<VirtualHardDisk, Map<String, dynamic>>(image, (value) => value.toMap()),
-      'managedDisk': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetManagedDiskParameters, Map<String, dynamic>>(managedDisk, (value) => value.toMap()),
+      'image':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualHardDisk,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
+      'managedDisk':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineScaleSetManagedDiskParameters,
+            Map<String, dynamic>
+          >(managedDisk, (value) => value.toMap()),
       'name': ?name,
       'osType': ?osType,
       'vhdContainers': ?vhdContainers,
@@ -94,18 +116,69 @@ class VirtualMachineScaleSetOSDisk {
 
   factory VirtualMachineScaleSetOSDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetOSDisk(
-      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
-      createOption: (map['createOption'] as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
-      diffDiskSettings: map['diffDiskSettings'] == null ? null : (DiffDiskSettings.fromMap((map['diffDiskSettings']! as Map).cast<String, dynamic>())).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
-      image: map['image'] == null ? null : (VirtualHardDisk.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
-      managedDisk: map['managedDisk'] == null ? null : (VirtualMachineScaleSetManagedDiskParameters.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
-      vhdContainers: map['vhdContainers'] == null ? null : ((map['vhdContainers']! as List).cast<String>()).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
+      caching: (() {
+        final guardedValue = map['caching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createOption: pulumi.Input.fromValue(map['createOption'] as String),
+      deleteOption: (() {
+        final guardedValue = map['deleteOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diffDiskSettings: (() {
+        final guardedValue = map['diffDiskSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiffDiskSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      diskSizeGB: (() {
+        final guardedValue = map['diskSizeGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualHardDisk.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      managedDisk: (() {
+        final guardedValue = map['managedDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineScaleSetManagedDiskParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vhdContainers: (() {
+        final guardedValue = map['vhdContainers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      writeAcceleratorEnabled: (() {
+        final guardedValue = map['writeAcceleratorEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

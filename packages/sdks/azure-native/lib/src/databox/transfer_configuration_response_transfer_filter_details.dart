@@ -10,20 +10,31 @@ class TransferConfigurationResponseTransferFilterDetails {
 
   /// Creates a new [TransferConfigurationResponseTransferFilterDetails].
   /// [include] Details of the filtering the transfer of data.
-  TransferConfigurationResponseTransferFilterDetails({
-    this.include,
-  });
+  TransferConfigurationResponseTransferFilterDetails({this.include});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'include': ?pulumi.Input.mapOptionalInputValue<TransferFilterDetailsResponse, Map<String, dynamic>>(include, (value) => value.toMap()),
+      'include':
+          ?pulumi.Input.mapOptionalInputValue<
+            TransferFilterDetailsResponse,
+            Map<String, dynamic>
+          >(include, (value) => value.toMap()),
     };
   }
 
-  factory TransferConfigurationResponseTransferFilterDetails.fromMap(Map<String, dynamic> map) {
+  factory TransferConfigurationResponseTransferFilterDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransferConfigurationResponseTransferFilterDetails(
-      include: map['include'] == null ? null : (TransferFilterDetailsResponse.fromMap((map['include']! as Map).cast<String, dynamic>())).input(),
+      include: (() {
+        final guardedValue = map['include'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TransferFilterDetailsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

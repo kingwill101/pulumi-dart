@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasePostgresqlV2Updates {
   /// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
   final pulumi.Input<int> dayOfWeek;
+
   /// The maximum maintenance window time in hours.
   final pulumi.Input<int> duration;
+
   /// How frequently maintenance occurs. Currently can only be weekly.
   final pulumi.Input<String> frequency;
+
   /// How frequently maintenance occurs. Currently can only be weekly.
   final pulumi.Input<int> hourOfDay;
 
@@ -35,11 +38,10 @@ class GetDatabasePostgresqlV2Updates {
 
   factory GetDatabasePostgresqlV2Updates.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlV2Updates(
-      dayOfWeek: (map['dayOfWeek'] as int).input(),
-      duration: (map['duration'] as int).input(),
-      frequency: (map['frequency'] as String).input(),
-      hourOfDay: (map['hourOfDay'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as int),
+      duration: pulumi.Input.fromValue(map['duration'] as int),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
     );
   }
 }
-

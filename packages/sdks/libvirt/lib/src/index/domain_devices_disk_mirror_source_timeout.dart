@@ -8,20 +8,17 @@ class DomainDevicesDiskMirrorSourceTimeout {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceTimeout].
   /// [seconds] Specifies the duration in seconds for the timeout configuration in disk mirroring.
-  DomainDevicesDiskMirrorSourceTimeout({
-    required this.seconds,
-  });
+  DomainDevicesDiskMirrorSourceTimeout({required this.seconds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'seconds': seconds,
-    };
+    return <String, dynamic>{'seconds': seconds};
   }
 
-  factory DomainDevicesDiskMirrorSourceTimeout.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorSourceTimeout.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorSourceTimeout(
-      seconds: (map['seconds'] as String).input(),
+      seconds: pulumi.Input.fromValue(map['seconds'] as String),
     );
   }
 }
-

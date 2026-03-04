@@ -1,21 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analytical_storage_configuration_response.dart';
 import 'api_properties_response.dart';
-import 'capability_response.dart';
 import 'capacity_response.dart';
 import 'consistency_policy_response.dart';
 import 'continuous_mode_backup_policy_response.dart';
-import 'cors_policy_response.dart';
 import 'database_account_args.dart';
 import 'database_account_keys_metadata_response.dart';
-import 'failover_policy_response.dart';
-import 'ip_address_or_range_response.dart';
-import 'location_response.dart';
 import 'managed_service_identity_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'restore_parameters_response.dart';
 import 'system_data_response.dart';
-import 'virtual_network_rule_response.dart';
 
 /// An Azure Cosmos DB database account.
 ///
@@ -615,107 +608,159 @@ import 'virtual_network_rule_response.dart';
 /// ```
 class DatabaseAccount extends pulumi.CustomResource {
   /// Analytical storage specific properties.
-  late final pulumi.Output<AnalyticalStorageConfigurationResponse?> analyticalStorageConfiguration;
+  late final pulumi.Output<AnalyticalStorageConfigurationResponse?>
+  analyticalStorageConfiguration;
+
   /// API specific properties.
   late final pulumi.Output<ApiPropertiesResponse?> apiProperties;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The object representing the policy for taking backups on an account.
   late final pulumi.Output<ContinuousModeBackupPolicyResponse?> backupPolicy;
+
   /// List of Cosmos DB capabilities for the account
-  late final pulumi.Output<List<CapabilityResponse>?> capabilities;
+  late final pulumi.Output<List<Map<String, dynamic>>?> capabilities;
+
   /// The object that represents all properties related to capacity enforcement on an account.
   late final pulumi.Output<CapacityResponse?> capacity;
+
   /// The cassandra connector offer type for the Cosmos DB database C* account.
   late final pulumi.Output<String?> connectorOffer;
+
   /// The consistency policy for the Cosmos DB database account.
   late final pulumi.Output<ConsistencyPolicyResponse?> consistencyPolicy;
+
   /// The CORS policy for the Cosmos DB database account.
-  late final pulumi.Output<List<CorsPolicyResponse>?> cors;
+  late final pulumi.Output<List<Map<String, dynamic>>?> cors;
+
   /// Enum to indicate the mode of account creation.
   late final pulumi.Output<String?> createMode;
+
   /// Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance.
   late final pulumi.Output<String?> customerManagedKeyStatus;
+
   /// The offer type for the Cosmos DB database account. Default value: Standard.
   late final pulumi.Output<String> databaseAccountOfferType;
+
   /// The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more.
   late final pulumi.Output<String?> defaultIdentity;
+
   /// Enum to indicate default Priority Level of request for Priority Based Execution.
   late final pulumi.Output<String?> defaultPriorityLevel;
+
   /// Disable write operations on metadata resources (databases, containers, throughput) via account keys
   late final pulumi.Output<bool?> disableKeyBasedMetadataWriteAccess;
+
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// The connection endpoint for the Cosmos DB database account.
   late final pulumi.Output<String> documentEndpoint;
+
   /// Flag to indicate whether to enable storage analytics.
   late final pulumi.Output<bool?> enableAnalyticalStorage;
+
   /// Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
   late final pulumi.Output<bool?> enableAutomaticFailover;
+
   /// Flag to indicate enabling/disabling of Burst Capacity feature on the account
   late final pulumi.Output<bool?> enableBurstCapacity;
+
   /// Enables the cassandra connector on the Cosmos DB C* account
   late final pulumi.Output<bool?> enableCassandraConnector;
+
   /// Flag to indicate whether Free Tier is enabled.
   late final pulumi.Output<bool?> enableFreeTier;
+
   /// Enables the account to write in multiple locations
   late final pulumi.Output<bool?> enableMultipleWriteLocations;
+
   /// Flag to indicate enabling/disabling of Partition Merge feature on the account
   late final pulumi.Output<bool?> enablePartitionMerge;
+
   /// Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale feature on the account
   late final pulumi.Output<bool?> enablePerRegionPerPartitionAutoscale;
+
   /// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
   late final pulumi.Output<bool?> enablePriorityBasedExecution;
+
   /// An array that contains the regions ordered by their failover priorities.
-  late final pulumi.Output<List<FailoverPolicyResponse>> failoverPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> failoverPolicies;
+
   /// Identity for the resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// A unique identifier assigned to the database account
   late final pulumi.Output<String> instanceId;
+
   /// List of IpRules.
-  late final pulumi.Output<List<IpAddressOrRangeResponse>?> ipRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
+
   /// Flag to indicate whether to enable/disable Virtual Network ACL rules.
   late final pulumi.Output<bool?> isVirtualNetworkFilterEnabled;
+
   /// The URI of the key vault
   late final pulumi.Output<String?> keyVaultKeyUri;
+
   /// The version of the Customer Managed Key currently being used by the account
   late final pulumi.Output<String> keyVaultKeyUriVersion;
+
   /// The object that represents the metadata for the Account Keys of the Cosmos DB account.
   late final pulumi.Output<DatabaseAccountKeysMetadataResponse> keysMetadata;
+
   /// Indicates the type of database account. This can only be set at database account creation.
   late final pulumi.Output<String?> kind;
+
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
+
   /// An array that contains all of the locations enabled for the Cosmos DB account.
-  late final pulumi.Output<List<LocationResponse>> locations;
+  late final pulumi.Output<List<Map<String, dynamic>>> locations;
+
   /// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
   late final pulumi.Output<String?> minimalTlsVersion;
+
   /// The name of the ARM resource.
   late final pulumi.Output<String> name;
+
   /// Indicates what services are allowed to bypass firewall checks.
   late final pulumi.Output<String?> networkAclBypass;
+
   /// An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account.
   late final pulumi.Output<List<String>?> networkAclBypassResourceIds;
+
   /// List of Private Endpoint Connections configured for the Cosmos DB account.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
   late final pulumi.Output<String> provisioningState;
+
   /// Whether requests from Public Network are allowed
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// An array that contains of the read locations enabled for the Cosmos DB account.
-  late final pulumi.Output<List<LocationResponse>> readLocations;
+  late final pulumi.Output<List<Map<String, dynamic>>> readLocations;
+
   /// Parameters to indicate the information about the restore.
   late final pulumi.Output<RestoreParametersResponse?> restoreParameters;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
+
   /// List of Virtual Network ACL rules configured for the Cosmos DB account.
-  late final pulumi.Output<List<VirtualNetworkRuleResponse>?> virtualNetworkRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
+
   /// An array that contains the write location for the Cosmos DB account.
-  late final pulumi.Output<List<LocationResponse>> writeLocations;
+  late final pulumi.Output<List<Map<String, dynamic>>> writeLocations;
 
   /// Creates a new [DatabaseAccount].
   /// [name] The Pulumi resource name.
@@ -726,61 +771,98 @@ class DatabaseAccount extends pulumi.CustomResource {
     DatabaseAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:DatabaseAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyticalStorageConfiguration = registerOutput<AnalyticalStorageConfigurationResponse?>('analyticalStorageConfiguration');
-    this.apiProperties = registerOutput<ApiPropertiesResponse?>('apiProperties');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupPolicy = registerOutput<ContinuousModeBackupPolicyResponse?>('backupPolicy');
-    this.capabilities = registerOutput<List<CapabilityResponse>?>('capabilities');
-    this.capacity = registerOutput<CapacityResponse?>('capacity');
-    this.connectorOffer = registerOutput<String?>('connectorOffer');
-    this.consistencyPolicy = registerOutput<ConsistencyPolicyResponse?>('consistencyPolicy');
-    this.cors = registerOutput<List<CorsPolicyResponse>?>('cors');
-    this.createMode = registerOutput<String?>('createMode');
-    this.customerManagedKeyStatus = registerOutput<String?>('customerManagedKeyStatus');
-    this.databaseAccountOfferType = registerOutput<String>('databaseAccountOfferType');
-    this.defaultIdentity = registerOutput<String?>('defaultIdentity');
-    this.defaultPriorityLevel = registerOutput<String?>('defaultPriorityLevel');
-    this.disableKeyBasedMetadataWriteAccess = registerOutput<bool?>('disableKeyBasedMetadataWriteAccess');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.documentEndpoint = registerOutput<String>('documentEndpoint');
-    this.enableAnalyticalStorage = registerOutput<bool?>('enableAnalyticalStorage');
-    this.enableAutomaticFailover = registerOutput<bool?>('enableAutomaticFailover');
-    this.enableBurstCapacity = registerOutput<bool?>('enableBurstCapacity');
-    this.enableCassandraConnector = registerOutput<bool?>('enableCassandraConnector');
-    this.enableFreeTier = registerOutput<bool?>('enableFreeTier');
-    this.enableMultipleWriteLocations = registerOutput<bool?>('enableMultipleWriteLocations');
-    this.enablePartitionMerge = registerOutput<bool?>('enablePartitionMerge');
-    this.enablePerRegionPerPartitionAutoscale = registerOutput<bool?>('enablePerRegionPerPartitionAutoscale');
-    this.enablePriorityBasedExecution = registerOutput<bool?>('enablePriorityBasedExecution');
-    this.failoverPolicies = registerOutput<List<FailoverPolicyResponse>>('failoverPolicies');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipRules = registerOutput<List<IpAddressOrRangeResponse>?>('ipRules');
-    this.isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
-    this.keyVaultKeyUri = registerOutput<String?>('keyVaultKeyUri');
-    this.keyVaultKeyUriVersion = registerOutput<String>('keyVaultKeyUriVersion');
-    this.keysMetadata = registerOutput<DatabaseAccountKeysMetadataResponse>('keysMetadata');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
-    this.locations = registerOutput<List<LocationResponse>>('locations');
-    this.minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+         'azure-native:cosmosdb:DatabaseAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyticalStorageConfiguration =
+        registerOutput<AnalyticalStorageConfigurationResponse?>(
+          'analyticalStorageConfiguration',
+        );
+    apiProperties = registerOutput<ApiPropertiesResponse?>('apiProperties');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupPolicy = registerOutput<ContinuousModeBackupPolicyResponse?>(
+      'backupPolicy',
+    );
+    capabilities = registerOutput<List<Map<String, dynamic>>?>('capabilities');
+    capacity = registerOutput<CapacityResponse?>('capacity');
+    connectorOffer = registerOutput<String?>('connectorOffer');
+    consistencyPolicy = registerOutput<ConsistencyPolicyResponse?>(
+      'consistencyPolicy',
+    );
+    cors = registerOutput<List<Map<String, dynamic>>?>('cors');
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKeyStatus = registerOutput<String?>(
+      'customerManagedKeyStatus',
+    );
+    databaseAccountOfferType = registerOutput<String>(
+      'databaseAccountOfferType',
+    );
+    defaultIdentity = registerOutput<String?>('defaultIdentity');
+    defaultPriorityLevel = registerOutput<String?>('defaultPriorityLevel');
+    disableKeyBasedMetadataWriteAccess = registerOutput<bool?>(
+      'disableKeyBasedMetadataWriteAccess',
+    );
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    documentEndpoint = registerOutput<String>('documentEndpoint');
+    enableAnalyticalStorage = registerOutput<bool?>('enableAnalyticalStorage');
+    enableAutomaticFailover = registerOutput<bool?>('enableAutomaticFailover');
+    enableBurstCapacity = registerOutput<bool?>('enableBurstCapacity');
+    enableCassandraConnector = registerOutput<bool?>(
+      'enableCassandraConnector',
+    );
+    enableFreeTier = registerOutput<bool?>('enableFreeTier');
+    enableMultipleWriteLocations = registerOutput<bool?>(
+      'enableMultipleWriteLocations',
+    );
+    enablePartitionMerge = registerOutput<bool?>('enablePartitionMerge');
+    enablePerRegionPerPartitionAutoscale = registerOutput<bool?>(
+      'enablePerRegionPerPartitionAutoscale',
+    );
+    enablePriorityBasedExecution = registerOutput<bool?>(
+      'enablePriorityBasedExecution',
+    );
+    failoverPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'failoverPolicies',
+    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    instanceId = registerOutput<String>('instanceId');
+    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
+    isVirtualNetworkFilterEnabled = registerOutput<bool?>(
+      'isVirtualNetworkFilterEnabled',
+    );
+    keyVaultKeyUri = registerOutput<String?>('keyVaultKeyUri');
+    keyVaultKeyUriVersion = registerOutput<String>('keyVaultKeyUriVersion');
+    keysMetadata = registerOutput<DatabaseAccountKeysMetadataResponse>(
+      'keysMetadata',
+    );
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    locations = registerOutput<List<Map<String, dynamic>>>('locations');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
-    this.networkAclBypass = registerOutput<String?>('networkAclBypass');
-    this.networkAclBypassResourceIds = registerOutput<List<String>?>('networkAclBypassResourceIds');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.readLocations = registerOutput<List<LocationResponse>>('readLocations');
-    this.restoreParameters = registerOutput<RestoreParametersResponse?>('restoreParameters');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworkRules = registerOutput<List<VirtualNetworkRuleResponse>?>('virtualNetworkRules');
-    this.writeLocations = registerOutput<List<LocationResponse>>('writeLocations');
+    networkAclBypass = registerOutput<String?>('networkAclBypass');
+    networkAclBypassResourceIds = registerOutput<List<String>?>(
+      'networkAclBypassResourceIds',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    readLocations = registerOutput<List<Map<String, dynamic>>>('readLocations');
+    restoreParameters = registerOutput<RestoreParametersResponse?>(
+      'restoreParameters',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>(
+      'virtualNetworkRules',
+    );
+    writeLocations = registerOutput<List<Map<String, dynamic>>>(
+      'writeLocations',
+    );
   }
 }

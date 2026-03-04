@@ -6,6 +6,7 @@ class GetPoolStorageImageReference {
   /// The Batch pool ID.
   final pulumi.Input<String> id;
   final pulumi.Input<String> offer;
+
   /// The name of the extension handler publisher.The name of the extension handler publisher.
   final pulumi.Input<String> publisher;
   final pulumi.Input<String> sku;
@@ -37,12 +38,11 @@ class GetPoolStorageImageReference {
 
   factory GetPoolStorageImageReference.fromMap(Map<String, dynamic> map) {
     return GetPoolStorageImageReference(
-      id: (map['id'] as String).input(),
-      offer: (map['offer'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      sku: (map['sku'] as String).input(),
-      version: (map['version'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      offer: pulumi.Input.fromValue(map['offer'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

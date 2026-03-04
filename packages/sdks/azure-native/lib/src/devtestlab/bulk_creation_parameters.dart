@@ -9,20 +9,19 @@ class BulkCreationParameters {
 
   /// Creates a new [BulkCreationParameters].
   /// [instanceCount] The number of virtual machine instances to create.
-  BulkCreationParameters({
-    this.instanceCount,
-  });
+  BulkCreationParameters({this.instanceCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceCount': ?instanceCount,
-    };
+    return <String, dynamic>{'instanceCount': ?instanceCount};
   }
 
   factory BulkCreationParameters.fromMap(Map<String, dynamic> map) {
     return BulkCreationParameters(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

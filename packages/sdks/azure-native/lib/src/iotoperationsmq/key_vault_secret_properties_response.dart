@@ -8,6 +8,7 @@ import 'key_vault_secret_object_response.dart';
 class KeyVaultSecretPropertiesResponse {
   /// KeyVault properties.
   final pulumi.Input<KeyVaultConnectionPropertiesResponse> vault;
+
   /// KeyVault secret details.
   final pulumi.Input<KeyVaultSecretObjectResponse> vaultSecret;
 
@@ -21,16 +22,31 @@ class KeyVaultSecretPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vault': pulumi.Input.mapInputValue<KeyVaultConnectionPropertiesResponse, Map<String, dynamic>>(vault, (value) => value.toMap()),
-      'vaultSecret': pulumi.Input.mapInputValue<KeyVaultSecretObjectResponse, Map<String, dynamic>>(vaultSecret, (value) => value.toMap()),
+      'vault':
+          pulumi.Input.mapInputValue<
+            KeyVaultConnectionPropertiesResponse,
+            Map<String, dynamic>
+          >(vault, (value) => value.toMap()),
+      'vaultSecret':
+          pulumi.Input.mapInputValue<
+            KeyVaultSecretObjectResponse,
+            Map<String, dynamic>
+          >(vaultSecret, (value) => value.toMap()),
     };
   }
 
   factory KeyVaultSecretPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretPropertiesResponse(
-      vault: (KeyVaultConnectionPropertiesResponse.fromMap((map['vault'] as Map).cast<String, dynamic>())).input(),
-      vaultSecret: (KeyVaultSecretObjectResponse.fromMap((map['vaultSecret'] as Map).cast<String, dynamic>())).input(),
+      vault: pulumi.Input.fromValue(
+        KeyVaultConnectionPropertiesResponse.fromMap(
+          (map['vault']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vaultSecret: pulumi.Input.fromValue(
+        KeyVaultSecretObjectResponse.fromMap(
+          (map['vaultSecret']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityModelResponse {
   /// Gets or sets the authority of the SPN with which MigrateAgent communicates to service.
   final pulumi.Input<String>? aadAuthority;
+
   /// Gets or sets the client/application Id of the SPN with which MigrateAgent communicates to
   /// service.
   final pulumi.Input<String>? applicationId;
+
   /// Gets or sets the audience of the SPN with which MigrateAgent communicates to service.
   final pulumi.Input<String>? audience;
+
   /// Gets or sets the object Id of the SPN with which MigrateAgent communicates to service.
   final pulumi.Input<String>? objectId;
+
   /// Gets or sets the tenant Id of the SPN with which MigrateAgent communicates to service.
   final pulumi.Input<String>? tenantId;
 
@@ -42,12 +46,31 @@ class IdentityModelResponse {
 
   factory IdentityModelResponse.fromMap(Map<String, dynamic> map) {
     return IdentityModelResponse(
-      aadAuthority: map['aadAuthority'] == null ? null : (map['aadAuthority']! as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      aadAuthority: (() {
+        final guardedValue = map['aadAuthority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

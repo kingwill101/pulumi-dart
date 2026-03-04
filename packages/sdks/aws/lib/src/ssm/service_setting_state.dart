@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceSettingState {
   /// ARN of the service setting.
   final pulumi.Input<String>? arn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
   final pulumi.Input<String>? settingId;
+
   /// Value of the service setting.
   final pulumi.Input<String>? settingValue;
+
   /// Status of the service setting. Value can be `Default`, `Customized` or `PendingUpdate`.
   final pulumi.Input<String>? status;
 
@@ -41,12 +45,31 @@ class ServiceSettingState {
 
   factory ServiceSettingState.fromMap(Map<String, dynamic> map) {
     return ServiceSettingState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      settingId: map['settingId'] == null ? null : ((map['settingId'] as String).input()).input(),
-      settingValue: map['settingValue'] == null ? null : ((map['settingValue'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settingId: (() {
+        final guardedValue = map['settingId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settingValue: (() {
+        final guardedValue = map['settingValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

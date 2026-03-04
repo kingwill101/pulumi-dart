@@ -3,16 +3,15 @@ enum ExpirationAction {
   valueLog("Log"),
   valueBlock("Block");
 
-  const ExpirationAction(this.value);
-  final String value;
+  const ExpirationAction(this.wireValue);
+  final String wireValue;
 
   static ExpirationAction fromValue(String value) {
     for (final item in ExpirationAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpirationAction value: $value');
   }
 }
-

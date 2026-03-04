@@ -13,15 +13,16 @@ class GetInsightsDatasetConfigExcludeCloudStorageLocation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'locations': locations,
-    };
+    return <String, dynamic>{'locations': locations};
   }
 
-  factory GetInsightsDatasetConfigExcludeCloudStorageLocation.fromMap(Map<String, dynamic> map) {
+  factory GetInsightsDatasetConfigExcludeCloudStorageLocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInsightsDatasetConfigExcludeCloudStorageLocation(
-      locations: ((map['locations'] as List).cast<String>()).input(),
+      locations: pulumi.Input.fromValue(
+        (map['locations'] as List).cast<String>(),
+      ),
     );
   }
 }
-

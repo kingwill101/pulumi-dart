@@ -6,30 +6,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultState {
   /// (Available since v1.243.0) The time when the backup vault was created.
   final pulumi.Input<String>? createTime;
+
   /// The description of Vault. Defaults to an empty string.
   final pulumi.Input<String>? description;
+
   /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
   /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
   /// - `KMS`: Use Alibaba Cloud Kms to encryption.
   final pulumi.Input<String>? encryptType;
+
   /// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
   final pulumi.Input<String>? kmsKeyId;
+
   /// (Available since v1.243.0) The ID of the region in which the backup vault resides.
   final pulumi.Input<String>? regionId;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the Vault.
   final pulumi.Input<String>? status;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of Vault.
   final pulumi.Input<String>? vaultName;
+
   /// The storage class of Vault. Valid values: `STANDARD`.
   final pulumi.Input<String>? vaultStorageClass;
+
   /// The type of Vault. Valid values:
   /// - `STANDARD`: Standard backup vault.
   /// - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vault_type` will be changed from `OTS_BACKUP` to `STANDARD`.
   final pulumi.Input<String>? vaultType;
+
   /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
   final pulumi.Input<bool>? wormEnabled;
 
@@ -80,19 +91,68 @@ class VaultState {
 
   factory VaultState.fromMap(Map<String, dynamic> map) {
     return VaultState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      encryptType: map['encryptType'] == null ? null : (map['encryptType']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vaultName: map['vaultName'] == null ? null : (map['vaultName']! as String).input(),
-      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass']! as String).input(),
-      vaultType: map['vaultType'] == null ? null : (map['vaultType']! as String).input(),
-      wormEnabled: map['wormEnabled'] == null ? null : (map['wormEnabled']! as bool).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptType: (() {
+        final guardedValue = map['encryptType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vaultName: (() {
+        final guardedValue = map['vaultName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultStorageClass: (() {
+        final guardedValue = map['vaultStorageClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultType: (() {
+        final guardedValue = map['vaultType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      wormEnabled: (() {
+        final guardedValue = map['wormEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

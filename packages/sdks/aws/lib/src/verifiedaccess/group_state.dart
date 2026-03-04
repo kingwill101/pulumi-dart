@@ -7,27 +7,38 @@ import 'group_sse_configuration.dart';
 class GroupState {
   /// Timestamp when the access group was created.
   final pulumi.Input<String>? creationTime;
+
   /// Timestamp when the access group was deleted.
   final pulumi.Input<String>? deletionTime;
+
   /// Description of the verified access group.
   final pulumi.Input<String>? description;
+
   /// Timestamp when the access group was last updated.
   final pulumi.Input<String>? lastUpdatedTime;
+
   /// AWS account number owning this resource.
   final pulumi.Input<String>? owner;
+
   /// The policy document that is associated with this resource.
   final pulumi.Input<String>? policyDocument;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block to use KMS keys for server-side encryption.
   final pulumi.Input<GroupSseConfiguration>? sseConfiguration;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// ARN of this verified acess group.
   final pulumi.Input<String>? verifiedaccessGroupArn;
+
   /// ID of this verified access group.
   final pulumi.Input<String>? verifiedaccessGroupId;
+
   /// The id of the verified access instance this group is associated with.
   ///
   /// The following arguments are optional:
@@ -72,7 +83,11 @@ class GroupState {
       'owner': ?owner,
       'policyDocument': ?policyDocument,
       'region': ?region,
-      'sseConfiguration': ?pulumi.Input.mapOptionalInputValue<GroupSseConfiguration, Map<String, dynamic>>(sseConfiguration, (value) => value.toMap()),
+      'sseConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupSseConfiguration,
+            Map<String, dynamic>
+          >(sseConfiguration, (value) => value.toMap()),
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'verifiedaccessGroupArn': ?verifiedaccessGroupArn,
@@ -83,20 +98,79 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
-      deletionTime: map['deletionTime'] == null ? null : ((map['deletionTime'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
-      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
-      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sseConfiguration: map['sseConfiguration'] == null ? null : ((GroupSseConfiguration.fromMap((map['sseConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      verifiedaccessGroupArn: map['verifiedaccessGroupArn'] == null ? null : ((map['verifiedaccessGroupArn'] as String).input()).input(),
-      verifiedaccessGroupId: map['verifiedaccessGroupId'] == null ? null : ((map['verifiedaccessGroupId'] as String).input()).input(),
-      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : ((map['verifiedaccessInstanceId'] as String).input()).input(),
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionTime: (() {
+        final guardedValue = map['deletionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastUpdatedTime: (() {
+        final guardedValue = map['lastUpdatedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyDocument: (() {
+        final guardedValue = map['policyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sseConfiguration: (() {
+        final guardedValue = map['sseConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupSseConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      verifiedaccessGroupArn: (() {
+        final guardedValue = map['verifiedaccessGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifiedaccessGroupId: (() {
+        final guardedValue = map['verifiedaccessGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifiedaccessInstanceId: (() {
+        final guardedValue = map['verifiedaccessInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

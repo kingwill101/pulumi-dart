@@ -6,7 +6,11 @@ import 'broker_authenticator_method_x509_attributes_response.dart';
 /// X509 for BrokerAuthentication.
 class BrokerAuthenticatorMethodX509Response {
   /// X509 authorization attributes properties.
-  final pulumi.Input<Map<String, BrokerAuthenticatorMethodX509AttributesResponse>>? authorizationAttributes;
+  final pulumi.Input<
+    Map<String, BrokerAuthenticatorMethodX509AttributesResponse>
+  >?
+  authorizationAttributes;
+
   /// Name of the trusted client ca cert resource.
   final pulumi.Input<String>? trustedClientCaCert;
 
@@ -20,16 +24,45 @@ class BrokerAuthenticatorMethodX509Response {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationAttributes': ?pulumi.Input.mapOptionalInputValue<Map<String, BrokerAuthenticatorMethodX509AttributesResponse>, Map<String, Map<String, dynamic>>>(authorizationAttributes, (value) => pulumi.Input.encodeMapValues<BrokerAuthenticatorMethodX509AttributesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'authorizationAttributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, BrokerAuthenticatorMethodX509AttributesResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            authorizationAttributes,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  BrokerAuthenticatorMethodX509AttributesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'trustedClientCaCert': ?trustedClientCaCert,
     };
   }
 
-  factory BrokerAuthenticatorMethodX509Response.fromMap(Map<String, dynamic> map) {
+  factory BrokerAuthenticatorMethodX509Response.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BrokerAuthenticatorMethodX509Response(
-      authorizationAttributes: map['authorizationAttributes'] == null ? null : (pulumi.Input.decodeMapValues<BrokerAuthenticatorMethodX509AttributesResponse>(map['authorizationAttributes']!, (value) => BrokerAuthenticatorMethodX509AttributesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trustedClientCaCert: map['trustedClientCaCert'] == null ? null : (map['trustedClientCaCert']! as String).input(),
+      authorizationAttributes: (() {
+        final guardedValue = map['authorizationAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<
+            BrokerAuthenticatorMethodX509AttributesResponse
+          >(
+            guardedValue,
+            (value) => BrokerAuthenticatorMethodX509AttributesResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      trustedClientCaCert: (() {
+        final guardedValue = map['trustedClientCaCert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

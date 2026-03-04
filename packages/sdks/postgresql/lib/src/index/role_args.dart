@@ -9,62 +9,78 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleArgs {
   /// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
   final pulumi.Input<String>? assumeRole;
+
   /// Defines whether a role bypasses every
   /// row-level security (RLS) policy.  Default value is `false`.
   final pulumi.Input<bool>? bypassRowLevelSecurity;
+
   /// If this role can log in, this specifies how
   /// many concurrent connections the role can establish. `-1` (the default) means no
   /// limit.
   final pulumi.Input<int>? connectionLimit;
+
   /// Defines a role's ability to execute `CREATE
   /// DATABASE`.  Default value is `false`.
   final pulumi.Input<bool>? createDatabase;
+
   /// Defines a role's ability to execute `CREATE ROLE`.
   /// A role with this privilege can also alter and drop other roles.  Default value
   /// is `false`.
   final pulumi.Input<bool>? createRole;
   final pulumi.Input<String>? encrypted;
+
   /// Defines whether the password is stored
   /// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
   /// is always set (to the conservative and safe value), but may interfere with the
   /// behavior of
   /// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
   final pulumi.Input<bool>? encryptedPassword;
+
   /// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
   final pulumi.Input<int>? idleInTransactionSessionTimeout;
+
   /// Defines whether a role "inherits" the privileges of
   /// roles it is a member of.  Default value is `true`.
   final pulumi.Input<bool>? inherit;
+
   /// Defines whether role is allowed to log in.  Roles without
   /// this attribute are useful for managing database privileges, but are not users
   /// in the usual sense of the word.  Default value is `false`.
   final pulumi.Input<bool>? login;
+
   /// The name of the role. Must be unique on the PostgreSQL
   /// server instance where it is configured.
   final pulumi.Input<String>? name;
+
   /// Sets the role's password. A password is only of use
   /// for roles having the `login` attribute set to true.
   final pulumi.Input<String>? password;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Sets the role's password without storing it in the state file.
   /// This is useful for managing passwords securely. Must be used together with `password_wo_version`.
   /// Conflicts with `password`.
   final pulumi.Input<String>? passwordWo;
+
   /// Prevents applies from updating the role password on every
   /// apply unless the value changes. This version string should be updated whenever you want to
   /// change the password specified in `password_wo`. Must be used together with `password_wo`.
   /// Conflicts with `password`.
   final pulumi.Input<String>? passwordWoVersion;
+
   /// Defines whether a role is allowed to initiate
   /// streaming replication or put the system in and out of backup mode.  Default
   /// value is `false`
   final pulumi.Input<bool>? replication;
+
   /// Defines list of roles which will be granted to this new role.
   final pulumi.Input<List<String>>? roles;
+
   /// Alters the search path of this new role. Note that
   /// due to limitations in the implementation, values cannot contain the substring
   /// `", "`.
   final pulumi.Input<List<String>>? searchPaths;
+
   /// When a PostgreSQL ROLE exists in multiple
   /// databases and the ROLE is dropped, the
   /// [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
@@ -73,6 +89,7 @@ class RoleArgs {
   /// in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
   /// This is the third and final step taken when removing a ROLE from a database.
   final pulumi.Input<bool>? skipDropRole;
+
   /// When a PostgreSQL ROLE exists in multiple
   /// databases and the ROLE is dropped, a
   /// [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
@@ -82,12 +99,15 @@ class RoleArgs {
   /// an implicit
   /// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
   final pulumi.Input<bool>? skipReassignOwned;
+
   /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
   final pulumi.Input<int>? statementTimeout;
+
   /// Defines whether the role is a "superuser", and
   /// therefore can override all access restrictions within the database.  Default
   /// value is `false`.
   final pulumi.Input<bool>? superuser;
+
   /// Defines the date and time after which the role's
   /// password is no longer valid.  Established connections past this `valid_time`
   /// will have to be manually terminated.  This value corresponds to a PostgreSQL
@@ -172,29 +192,116 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      assumeRole: map['assumeRole'] == null ? null : (map['assumeRole']! as String).input(),
-      bypassRowLevelSecurity: map['bypassRowLevelSecurity'] == null ? null : (map['bypassRowLevelSecurity']! as bool).input(),
-      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit']! as int).input(),
-      createDatabase: map['createDatabase'] == null ? null : (map['createDatabase']! as bool).input(),
-      createRole: map['createRole'] == null ? null : (map['createRole']! as bool).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as String).input(),
-      encryptedPassword: map['encryptedPassword'] == null ? null : (map['encryptedPassword']! as bool).input(),
-      idleInTransactionSessionTimeout: map['idleInTransactionSessionTimeout'] == null ? null : (map['idleInTransactionSessionTimeout']! as int).input(),
-      inherit: map['inherit'] == null ? null : (map['inherit']! as bool).input(),
-      login: map['login'] == null ? null : (map['login']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo']! as String).input(),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion']! as String).input(),
-      replication: map['replication'] == null ? null : (map['replication']! as bool).input(),
-      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
-      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths']! as List).cast<String>()).input(),
-      skipDropRole: map['skipDropRole'] == null ? null : (map['skipDropRole']! as bool).input(),
-      skipReassignOwned: map['skipReassignOwned'] == null ? null : (map['skipReassignOwned']! as bool).input(),
-      statementTimeout: map['statementTimeout'] == null ? null : (map['statementTimeout']! as int).input(),
-      superuser: map['superuser'] == null ? null : (map['superuser']! as bool).input(),
-      validUntil: map['validUntil'] == null ? null : (map['validUntil']! as String).input(),
+      assumeRole: (() {
+        final guardedValue = map['assumeRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bypassRowLevelSecurity: (() {
+        final guardedValue = map['bypassRowLevelSecurity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      connectionLimit: (() {
+        final guardedValue = map['connectionLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createDatabase: (() {
+        final guardedValue = map['createDatabase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      createRole: (() {
+        final guardedValue = map['createRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptedPassword: (() {
+        final guardedValue = map['encryptedPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      idleInTransactionSessionTimeout: (() {
+        final guardedValue = map['idleInTransactionSessionTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      inherit: (() {
+        final guardedValue = map['inherit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      login: (() {
+        final guardedValue = map['login'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordWo: (() {
+        final guardedValue = map['passwordWo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordWoVersion: (() {
+        final guardedValue = map['passwordWoVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replication: (() {
+        final guardedValue = map['replication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      searchPaths: (() {
+        final guardedValue = map['searchPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      skipDropRole: (() {
+        final guardedValue = map['skipDropRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      skipReassignOwned: (() {
+        final guardedValue = map['skipReassignOwned'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      statementTimeout: (() {
+        final guardedValue = map['statementTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      superuser: (() {
+        final guardedValue = map['superuser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      validUntil: (() {
+        final guardedValue = map['validUntil'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

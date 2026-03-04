@@ -7,25 +7,33 @@ import 'get_router_route.dart';
 /// Result data returned by getRouter.
 class GetRouterResult {
   final bool? adminStateUp;
+
   /// The set of string tags applied on the router.
   final List<String> allTags;
+
   /// The availability zone that is used to make router resources highly available.
   final List<String> availabilityZoneHints;
   final String? description;
   final bool? distributed;
+
   /// The value that points out if the Source NAT is enabled on the router.
   final bool enableSnat;
+
   /// The external fixed IPs of the router.
   final List<GetRouterExternalFixedIp> externalFixedIps;
+
   /// The network UUID of an external gateway for the router.
   final String externalNetworkId;
+
   /// The QoS policy UUID applied on the external gateway for the router.
   final String externalQosPolicyId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
   final String? region;
   final String? routerId;
+
   /// The list of static routes set on the router.
   final List<GetRouterRoute> routes;
   final String? status;
@@ -78,14 +86,21 @@ class GetRouterResult {
       'description': ?description,
       'distributed': ?distributed,
       'enableSnat': enableSnat,
-      'externalFixedIps': pulumi.Input.encodeList<GetRouterExternalFixedIp, Map<String, dynamic>>(externalFixedIps, (value) => value.toMap()),
+      'externalFixedIps':
+          pulumi.Input.encodeList<
+            GetRouterExternalFixedIp,
+            Map<String, dynamic>
+          >(externalFixedIps, (value) => value.toMap()),
       'externalNetworkId': externalNetworkId,
       'externalQosPolicyId': externalQosPolicyId,
       'id': id,
       'name': ?name,
       'region': ?region,
       'routerId': ?routerId,
-      'routes': pulumi.Input.encodeList<GetRouterRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
+      'routes': pulumi.Input.encodeList<GetRouterRoute, Map<String, dynamic>>(
+        routes,
+        (value) => value.toMap(),
+      ),
       'status': ?status,
       'tags': ?tags,
       'tenantId': ?tenantId,
@@ -94,24 +109,69 @@ class GetRouterResult {
 
   factory GetRouterResult.fromMap(Map<String, dynamic> map) {
     return GetRouterResult(
-      adminStateUp: map['adminStateUp'] == null ? null : map['adminStateUp']! as bool,
+      adminStateUp: (() {
+        final guardedValue = map['adminStateUp'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       allTags: (map['allTags'] as List).cast<String>(),
-      availabilityZoneHints: (map['availabilityZoneHints'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description']! as String,
-      distributed: map['distributed'] == null ? null : map['distributed']! as bool,
+      availabilityZoneHints: (map['availabilityZoneHints'] as List)
+          .cast<String>(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      distributed: (() {
+        final guardedValue = map['distributed'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       enableSnat: map['enableSnat'] as bool,
-      externalFixedIps: pulumi.Input.decodeList<GetRouterExternalFixedIp>(map['externalFixedIps'], (value) => GetRouterExternalFixedIp.fromMap((value as Map).cast<String, dynamic>())),
+      externalFixedIps: pulumi.Input.decodeList<GetRouterExternalFixedIp>(
+        map['externalFixedIps']!,
+        (value) => GetRouterExternalFixedIp.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       externalNetworkId: map['externalNetworkId'] as String,
       externalQosPolicyId: map['externalQosPolicyId'] as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
-      routerId: map['routerId'] == null ? null : map['routerId']! as String,
-      routes: pulumi.Input.decodeList<GetRouterRoute>(map['routes'], (value) => GetRouterRoute.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routerId: (() {
+        final guardedValue = map['routerId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routes: pulumi.Input.decodeList<GetRouterRoute>(
+        map['routes']!,
+        (value) =>
+            GetRouterRoute.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

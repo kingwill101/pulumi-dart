@@ -9,12 +9,16 @@ import 'push_filter_response.dart';
 class GitLabEventsConfigResponse {
   /// The GitLabConfig specified in the gitlab_config_resource field.
   final pulumi.Input<GitLabConfigResponse> gitlabConfig;
+
   /// The GitLab config resource that this trigger config maps to.
   final pulumi.Input<String> gitlabConfigResource;
+
   /// Namespace of the GitLab project.
   final pulumi.Input<String> projectNamespace;
+
   /// Filter to match changes in pull requests.
   final pulumi.Input<PullRequestFilterResponse> pullRequest;
+
   /// Filter to match changes in refs like branches, tags.
   final pulumi.Input<PushFilterResponse> push;
 
@@ -34,22 +38,49 @@ class GitLabEventsConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gitlabConfig': pulumi.Input.mapInputValue<GitLabConfigResponse, Map<String, dynamic>>(gitlabConfig, (value) => value.toMap()),
+      'gitlabConfig':
+          pulumi.Input.mapInputValue<
+            GitLabConfigResponse,
+            Map<String, dynamic>
+          >(gitlabConfig, (value) => value.toMap()),
       'gitlabConfigResource': gitlabConfigResource,
       'projectNamespace': projectNamespace,
-      'pullRequest': pulumi.Input.mapInputValue<PullRequestFilterResponse, Map<String, dynamic>>(pullRequest, (value) => value.toMap()),
-      'push': pulumi.Input.mapInputValue<PushFilterResponse, Map<String, dynamic>>(push, (value) => value.toMap()),
+      'pullRequest':
+          pulumi.Input.mapInputValue<
+            PullRequestFilterResponse,
+            Map<String, dynamic>
+          >(pullRequest, (value) => value.toMap()),
+      'push':
+          pulumi.Input.mapInputValue<PushFilterResponse, Map<String, dynamic>>(
+            push,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GitLabEventsConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitLabEventsConfigResponse(
-      gitlabConfig: (GitLabConfigResponse.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>())).input(),
-      gitlabConfigResource: (map['gitlabConfigResource'] as String).input(),
-      projectNamespace: (map['projectNamespace'] as String).input(),
-      pullRequest: (PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: (PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      gitlabConfig: pulumi.Input.fromValue(
+        GitLabConfigResponse.fromMap(
+          (map['gitlabConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      gitlabConfigResource: pulumi.Input.fromValue(
+        map['gitlabConfigResource'] as String,
+      ),
+      projectNamespace: pulumi.Input.fromValue(
+        map['projectNamespace'] as String,
+      ),
+      pullRequest: pulumi.Input.fromValue(
+        PullRequestFilterResponse.fromMap(
+          (map['pullRequest']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      push: pulumi.Input.fromValue(
+        PushFilterResponse.fromMap(
+          (map['push']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

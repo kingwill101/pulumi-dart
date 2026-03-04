@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAcceleratorSpareIpAttachmentsArgs {
   /// The ID of the global acceleration instance.
   final pulumi.Input<String> acceleratorId;
+
   /// A list of Accelerator Spare Ip Attachment IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
   final pulumi.Input<String>? status;
 
@@ -37,13 +40,26 @@ class GetAcceleratorSpareIpAttachmentsArgs {
     };
   }
 
-  factory GetAcceleratorSpareIpAttachmentsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAcceleratorSpareIpAttachmentsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAcceleratorSpareIpAttachmentsArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

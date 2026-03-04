@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallSubnetMapping {
   /// The subnet's IP address type. Valid values: `"DUALSTACK"`, `"IPV4"`.
   final pulumi.Input<String>? ipAddressType;
+
   /// The unique identifier for the subnet.
   final pulumi.Input<String> subnetId;
 
   /// Creates a new [FirewallSubnetMapping].
   /// [ipAddressType] The subnet's IP address type. Valid values: `"DUALSTACK"`, `"IPV4"`.
   /// [subnetId] The unique identifier for the subnet.
-  FirewallSubnetMapping({
-    this.ipAddressType,
-    required this.subnetId,
-  });
+  FirewallSubnetMapping({this.ipAddressType, required this.subnetId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,12 @@ class FirewallSubnetMapping {
 
   factory FirewallSubnetMapping.fromMap(Map<String, dynamic> map) {
     return FirewallSubnetMapping(
-      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      ipAddressType: (() {
+        final guardedValue = map['ipAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

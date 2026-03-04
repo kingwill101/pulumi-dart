@@ -3,16 +3,15 @@ enum FirewallDirectionComputeBeta {
   egress("EGRESS"),
   ingress("INGRESS");
 
-  const FirewallDirectionComputeBeta(this.value);
-  final String value;
+  const FirewallDirectionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static FirewallDirectionComputeBeta fromValue(String value) {
     for (final item in FirewallDirectionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FirewallDirectionComputeBeta value: $value');
   }
 }
-

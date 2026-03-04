@@ -7,16 +7,15 @@ enum SignalRSkuTier {
   valueStandard("Standard"),
   valuePremium("Premium");
 
-  const SignalRSkuTier(this.value);
-  final String value;
+  const SignalRSkuTier(this.wireValue);
+  final String wireValue;
 
   static SignalRSkuTier fromValue(String value) {
     for (final item in SignalRSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SignalRSkuTier value: $value');
   }
 }
-

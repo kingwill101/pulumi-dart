@@ -7,8 +7,10 @@ import 'get_ami_ids_filter.dart';
 class GetAmiIdsResult {
   final List<String>? executableUsers;
   final List<GetAmiIdsFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// is set to the list of AMI IDs, sorted by creation time according to `sort_ascending`.
   final List<String> ids;
   final bool? includeDeprecated;
@@ -42,7 +44,14 @@ class GetAmiIdsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'executableUsers': ?executableUsers,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
       'ids': ids,
       'includeDeprecated': ?includeDeprecated,
@@ -55,16 +64,39 @@ class GetAmiIdsResult {
 
   factory GetAmiIdsResult.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsResult(
-      executableUsers: map['executableUsers'] == null ? null : (map['executableUsers'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters']!, (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      executableUsers: (() {
+        final guardedValue = map['executableUsers'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetAmiIdsFilter>(
+          guardedValue,
+          (value) =>
+              GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated'] as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      includeDeprecated: (() {
+        final guardedValue = map['includeDeprecated'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       owners: (map['owners'] as List).cast<String>(),
       region: map['region'] as String,
-      sortAscending: map['sortAscending'] == null ? null : map['sortAscending'] as bool,
+      sortAscending: (() {
+        final guardedValue = map['sortAscending'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
     );
   }
 }
-

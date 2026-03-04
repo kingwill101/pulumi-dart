@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServiceAuthSettingsTwitter {
   /// The consumer key of the Twitter app used for login
   final pulumi.Input<String> consumerKey;
+
   /// The consumer secret of the Twitter app used for login.
   final pulumi.Input<String> consumerSecret;
 
@@ -25,9 +26,8 @@ class AppServiceAuthSettingsTwitter {
 
   factory AppServiceAuthSettingsTwitter.fromMap(Map<String, dynamic> map) {
     return AppServiceAuthSettingsTwitter(
-      consumerKey: (map['consumerKey'] as String).input(),
-      consumerSecret: (map['consumerSecret'] as String).input(),
+      consumerKey: pulumi.Input.fromValue(map['consumerKey'] as String),
+      consumerSecret: pulumi.Input.fromValue(map['consumerSecret'] as String),
     );
   }
 }
-

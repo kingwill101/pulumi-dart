@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionsDataCellsFilter {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the data cells filter.
   final pulumi.Input<String> name;
+
   /// The ID of the Data Catalog.
   final pulumi.Input<String> tableCatalogId;
+
   /// The name of the table.
   final pulumi.Input<String> tableName;
 
@@ -35,11 +38,10 @@ class PermissionsDataCellsFilter {
 
   factory PermissionsDataCellsFilter.fromMap(Map<String, dynamic> map) {
     return PermissionsDataCellsFilter(
-      databaseName: (map['databaseName'] as String).input(),
-      name: (map['name'] as String).input(),
-      tableCatalogId: (map['tableCatalogId'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tableCatalogId: pulumi.Input.fromValue(map['tableCatalogId'] as String),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

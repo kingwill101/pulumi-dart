@@ -7,27 +7,37 @@ import 'get_attachment_filter.dart';
 class GetAttachmentResult {
   /// ARN of the attachment.
   final String arn;
+
   /// The state of the association (see [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachmentAssociation.html) for valid values).
   final String associationState;
+
   /// The ID of the route table for the transit gateway.
   final String associationTransitGatewayRouteTableId;
   final List<GetAttachmentFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// ID of the resource.
   final String resourceId;
+
   /// ID of the AWS account that owns the resource.
   final String resourceOwnerId;
+
   /// Resource type.
   final String resourceType;
+
   /// Attachment state.
   final String state;
+
   /// Key-value tags for the attachment.
   final Map<String, String> tags;
   final String transitGatewayAttachmentId;
+
   /// ID of the transit gateway.
   final String transitGatewayId;
+
   /// The ID of the AWS account that owns the transit gateway.
   final String transitGatewayOwnerId;
 
@@ -67,8 +77,16 @@ class GetAttachmentResult {
     return <String, dynamic>{
       'arn': arn,
       'associationState': associationState,
-      'associationTransitGatewayRouteTableId': associationTransitGatewayRouteTableId,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetAttachmentFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'associationTransitGatewayRouteTableId':
+          associationTransitGatewayRouteTableId,
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetAttachmentFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'region': region,
       'resourceId': resourceId,
@@ -86,8 +104,18 @@ class GetAttachmentResult {
     return GetAttachmentResult(
       arn: map['arn'] as String,
       associationState: map['associationState'] as String,
-      associationTransitGatewayRouteTableId: map['associationTransitGatewayRouteTableId'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAttachmentFilter>(map['filters']!, (value) => GetAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
+      associationTransitGatewayRouteTableId:
+          map['associationTransitGatewayRouteTableId'] as String,
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetAttachmentFilter>(
+          guardedValue,
+          (value) => GetAttachmentFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       region: map['region'] as String,
       resourceId: map['resourceId'] as String,
@@ -101,4 +129,3 @@ class GetAttachmentResult {
     );
   }
 }
-

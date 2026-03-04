@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscaleResponse {
   /// The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
   final pulumi.Input<String> currentSlots;
+
   /// Number of slots to be scaled when needed.
   final pulumi.Input<String> maxSlots;
 
   /// Creates a new [AutoscaleResponse].
   /// [currentSlots] The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
   /// [maxSlots] Number of slots to be scaled when needed.
-  AutoscaleResponse({
-    required this.currentSlots,
-    required this.maxSlots,
-  });
+  AutoscaleResponse({required this.currentSlots, required this.maxSlots});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class AutoscaleResponse {
 
   factory AutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleResponse(
-      currentSlots: (map['currentSlots'] as String).input(),
-      maxSlots: (map['maxSlots'] as String).input(),
+      currentSlots: pulumi.Input.fromValue(map['currentSlots'] as String),
+      maxSlots: pulumi.Input.fromValue(map['maxSlots'] as String),
     );
   }
 }
-

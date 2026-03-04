@@ -8,8 +8,10 @@ import 'status_condition_code.dart';
 class StatusCondition {
   /// Canonical code of the condition.
   final pulumi.Input<StatusConditionCanonicalCode>? canonicalCode;
+
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final pulumi.Input<StatusConditionCode>? code;
+
   /// Human-friendly representation of the condition
   final pulumi.Input<String>? message;
 
@@ -17,26 +19,44 @@ class StatusCondition {
   /// [canonicalCode] Canonical code of the condition.
   /// [code] Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   /// [message] Human-friendly representation of the condition
-  StatusCondition({
-    this.canonicalCode,
-    this.code,
-    this.message,
-  });
+  StatusCondition({this.canonicalCode, this.code, this.message});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'canonicalCode': ?pulumi.Input.mapOptionalInputValue<StatusConditionCanonicalCode, String>(canonicalCode, (value) => value.value),
-      'code': ?pulumi.Input.mapOptionalInputValue<StatusConditionCode, String>(code, (value) => value.value),
+      'canonicalCode':
+          ?pulumi.Input.mapOptionalInputValue<
+            StatusConditionCanonicalCode,
+            String
+          >(canonicalCode, (value) => value.wireValue),
+      'code': ?pulumi.Input.mapOptionalInputValue<StatusConditionCode, String>(
+        code,
+        (value) => value.wireValue,
+      ),
       'message': ?message,
     };
   }
 
   factory StatusCondition.fromMap(Map<String, dynamic> map) {
     return StatusCondition(
-      canonicalCode: map['canonicalCode'] == null ? null : (StatusConditionCanonicalCode.fromValue(map['canonicalCode']! as String)).input(),
-      code: map['code'] == null ? null : (StatusConditionCode.fromValue(map['code']! as String)).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      canonicalCode: (() {
+        final guardedValue = map['canonicalCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StatusConditionCanonicalCode.fromValue(guardedValue as String),
+        );
+      })(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StatusConditionCode.fromValue(guardedValue as String),
+        );
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

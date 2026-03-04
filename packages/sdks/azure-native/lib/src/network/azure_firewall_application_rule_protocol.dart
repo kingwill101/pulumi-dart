@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFirewallApplicationRuleProtocol {
   /// Port number for the protocol, cannot be greater than 64000. This field is optional.
   final pulumi.Input<int>? port;
+
   /// Protocol type.
   final pulumi.Input<String>? protocolType;
 
   /// Creates a new [AzureFirewallApplicationRuleProtocol].
   /// [port] Port number for the protocol, cannot be greater than 64000. This field is optional.
   /// [protocolType] Protocol type.
-  AzureFirewallApplicationRuleProtocol({
-    this.port,
-    this.protocolType,
-  });
+  AzureFirewallApplicationRuleProtocol({this.port, this.protocolType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': ?port,
-      'protocolType': ?protocolType,
-    };
+    return <String, dynamic>{'port': ?port, 'protocolType': ?protocolType};
   }
 
-  factory AzureFirewallApplicationRuleProtocol.fromMap(Map<String, dynamic> map) {
+  factory AzureFirewallApplicationRuleProtocol.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureFirewallApplicationRuleProtocol(
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocolType: (() {
+        final guardedValue = map['protocolType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

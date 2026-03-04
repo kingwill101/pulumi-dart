@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1DiskConfig {
   /// Size in GB of the boot disk (default is 100GB).
   final pulumi.Input<int>? bootDiskSizeGb;
+
   /// Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
   final pulumi.Input<String>? bootDiskType;
 
   /// Creates a new [GoogleCloudMlV1DiskConfig].
   /// [bootDiskSizeGb] Size in GB of the boot disk (default is 100GB).
   /// [bootDiskType] Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-  GoogleCloudMlV1DiskConfig({
-    this.bootDiskSizeGb,
-    this.bootDiskType,
-  });
+  GoogleCloudMlV1DiskConfig({this.bootDiskSizeGb, this.bootDiskType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class GoogleCloudMlV1DiskConfig {
 
   factory GoogleCloudMlV1DiskConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1DiskConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
-      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType']! as String).input(),
+      bootDiskSizeGb: (() {
+        final guardedValue = map['bootDiskSizeGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      bootDiskType: (() {
+        final guardedValue = map['bootDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

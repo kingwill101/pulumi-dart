@@ -254,10 +254,13 @@ import 'secret_policy_state.dart';
 class SecretPolicy extends pulumi.CustomResource {
   /// Makes an optional API call to Zelkova to validate the Resource Policy to prevent broad access to your secret.
   late final pulumi.Output<bool?> blockPublicPolicy;
+
   /// Valid JSON document representing a [resource policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html). Unlike `aws.secretsmanager.Secret`, where `policy` can be set to `"{}"` to delete the policy, `"{}"` is not a valid policy since `policy` is required.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Secret ARN.
   ///
   /// The following arguments are optional:
@@ -272,15 +275,15 @@ class SecretPolicy extends pulumi.CustomResource {
     SecretPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:secretsmanager/secretPolicy:SecretPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.secretArn = registerOutput<String>('secretArn');
+         'aws:secretsmanager/secretPolicy:SecretPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    secretArn = registerOutput<String>('secretArn');
   }
 
   /// Gets an existing [SecretPolicy] resource's state with the given [name] and [id].
@@ -301,14 +304,14 @@ class SecretPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:secretsmanager/secretPolicy:SecretPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.secretArn = registerOutput<String>('secretArn');
+         'aws:secretsmanager/secretPolicy:SecretPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    secretArn = registerOutput<String>('secretArn');
   }
 }

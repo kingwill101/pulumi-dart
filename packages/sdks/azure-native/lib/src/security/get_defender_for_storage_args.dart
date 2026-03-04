@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDefenderForStorageArgs {
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
+
   /// Defender for Storage setting name.
   final pulumi.Input<String> settingName;
 
@@ -29,9 +30,8 @@ class GetDefenderForStorageArgs {
 
   factory GetDefenderForStorageArgs.fromMap(Map<String, dynamic> map) {
     return GetDefenderForStorageArgs(
-      resourceId: (map['resourceId'] as String).input(),
-      settingName: (map['settingName'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      settingName: pulumi.Input.fromValue(map['settingName'] as String),
     );
   }
 }
-

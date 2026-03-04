@@ -9,16 +9,15 @@ enum ScanRunErrorTraceCode {
   tooManyHttpErrors("TOO_MANY_HTTP_ERRORS"),
   startingUrlsCrawlHttpErrors("STARTING_URLS_CRAWL_HTTP_ERRORS");
 
-  const ScanRunErrorTraceCode(this.value);
-  final String value;
+  const ScanRunErrorTraceCode(this.wireValue);
+  final String wireValue;
 
   static ScanRunErrorTraceCode fromValue(String value) {
     for (final item in ScanRunErrorTraceCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScanRunErrorTraceCode value: $value');
   }
 }
-

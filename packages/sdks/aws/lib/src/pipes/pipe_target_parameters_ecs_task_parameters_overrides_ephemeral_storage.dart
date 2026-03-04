@@ -13,15 +13,14 @@ class PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sizeInGib': sizeInGib,
-    };
+    return <String, dynamic>{'sizeInGib': sizeInGib};
   }
 
-  factory PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage.fromMap(Map<String, dynamic> map) {
+  factory PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage(
-      sizeInGib: (map['sizeInGib'] as int).input(),
+      sizeInGib: pulumi.Input.fromValue(map['sizeInGib'] as int),
     );
   }
 }
-

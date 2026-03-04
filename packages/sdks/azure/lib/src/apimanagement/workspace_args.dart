@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceArgs {
   /// Specifies the ID of the API Management Service in which the API Management Workspace should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementId;
+
   /// The description of the API Management Workspace.
   final pulumi.Input<String>? description;
+
   /// The display name of the API Management Workspace.
   final pulumi.Input<String> displayName;
+
   /// Specifies the name which should be used for this API Management Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
 
@@ -39,11 +42,18 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      apiManagementId: (map['apiManagementId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,28 +7,35 @@ import 'database_hive_options.dart';
 class DatabaseState {
   /// The parent catalog.
   final pulumi.Input<String>? catalog;
+
   /// Output only. The creation time of the database. A timestamp in RFC3339
   /// UTC "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+
   /// Output only. The deletion time of the database. Only set after the
   /// database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? deleteTime;
+
   /// Output only. The time when this database is considered expired. Only set
   /// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? expireTime;
+
   /// Options of a Hive database.
   /// Structure is documented below.
   final pulumi.Input<DatabaseHiveOptions>? hiveOptions;
+
   /// The name of the database.
   final pulumi.Input<String>? name;
+
   /// The database type.
   final pulumi.Input<String>? type;
+
   /// Output only. The last modification time of the database. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -61,7 +68,11 @@ class DatabaseState {
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'expireTime': ?expireTime,
-      'hiveOptions': ?pulumi.Input.mapOptionalInputValue<DatabaseHiveOptions, Map<String, dynamic>>(hiveOptions, (value) => value.toMap()),
+      'hiveOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabaseHiveOptions,
+            Map<String, dynamic>
+          >(hiveOptions, (value) => value.toMap()),
       'name': ?name,
       'type': ?type,
       'updateTime': ?updateTime,
@@ -70,15 +81,50 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      catalog: map['catalog'] == null ? null : (map['catalog']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      hiveOptions: map['hiveOptions'] == null ? null : (DatabaseHiveOptions.fromMap((map['hiveOptions']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      catalog: (() {
+        final guardedValue = map['catalog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteTime: (() {
+        final guardedValue = map['deleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hiveOptions: (() {
+        final guardedValue = map['hiveOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabaseHiveOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

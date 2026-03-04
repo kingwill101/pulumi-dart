@@ -2,16 +2,15 @@
 enum ImageSourceTypeComputeV1 {
   raw("RAW");
 
-  const ImageSourceTypeComputeV1(this.value);
-  final String value;
+  const ImageSourceTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static ImageSourceTypeComputeV1 fromValue(String value) {
     for (final item in ImageSourceTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageSourceTypeComputeV1 value: $value');
   }
 }
-

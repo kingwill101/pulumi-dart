@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSystemGroupsGroupStat {
   /// The total number of devices in the group.
   final pulumi.Input<String> deviceNum;
+
   /// The total number of smart devices in the group.
   final pulumi.Input<String> iedNum;
+
   /// The total number of cameras in the group.
   final pulumi.Input<String> ipcNum;
+
   /// The total number of platforms in the group.
   final pulumi.Input<String> platformNum;
 
@@ -35,11 +38,10 @@ class GetSystemGroupsGroupStat {
 
   factory GetSystemGroupsGroupStat.fromMap(Map<String, dynamic> map) {
     return GetSystemGroupsGroupStat(
-      deviceNum: (map['deviceNum'] as String).input(),
-      iedNum: (map['iedNum'] as String).input(),
-      ipcNum: (map['ipcNum'] as String).input(),
-      platformNum: (map['platformNum'] as String).input(),
+      deviceNum: pulumi.Input.fromValue(map['deviceNum'] as String),
+      iedNum: pulumi.Input.fromValue(map['iedNum'] as String),
+      ipcNum: pulumi.Input.fromValue(map['ipcNum'] as String),
+      platformNum: pulumi.Input.fromValue(map['platformNum'] as String),
     );
   }
 }
-

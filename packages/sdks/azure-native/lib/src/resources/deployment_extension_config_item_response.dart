@@ -7,8 +7,10 @@ import 'key_vault_parameter_reference_response.dart';
 class DeploymentExtensionConfigItemResponse {
   /// The key vault reference of the config item.
   final pulumi.Input<KeyVaultParameterReferenceResponse>? keyVaultReference;
+
   /// The type of the value.
   final pulumi.Input<String> type;
+
   /// The value of the config item. The type is determined by the extension config schema.
   final pulumi.Input<dynamic>? value;
 
@@ -24,18 +26,35 @@ class DeploymentExtensionConfigItemResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVaultReference': ?pulumi.Input.mapOptionalInputValue<KeyVaultParameterReferenceResponse, Map<String, dynamic>>(keyVaultReference, (value) => value.toMap()),
+      'keyVaultReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultParameterReferenceResponse,
+            Map<String, dynamic>
+          >(keyVaultReference, (value) => value.toMap()),
       'type': type,
       'value': ?value,
     };
   }
 
-  factory DeploymentExtensionConfigItemResponse.fromMap(Map<String, dynamic> map) {
+  factory DeploymentExtensionConfigItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentExtensionConfigItemResponse(
-      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultParameterReferenceResponse.fromMap((map['keyVaultReference']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']!).input(),
+      keyVaultReference: (() {
+        final guardedValue = map['keyVaultReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultParameterReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

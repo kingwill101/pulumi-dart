@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceMultiRegionSetting {
   /// System-generated unique id for the multi-region Service.
   final pulumi.Input<String> multiRegionId;
+
   /// The list of regions to deploy the multi-region Service.
   final pulumi.Input<List<String>> regions;
 
@@ -25,9 +26,8 @@ class GetServiceMultiRegionSetting {
 
   factory GetServiceMultiRegionSetting.fromMap(Map<String, dynamic> map) {
     return GetServiceMultiRegionSetting(
-      multiRegionId: (map['multiRegionId'] as String).input(),
-      regions: ((map['regions'] as List).cast<String>()).input(),
+      multiRegionId: pulumi.Input.fromValue(map['multiRegionId'] as String),
+      regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
     );
   }
 }
-

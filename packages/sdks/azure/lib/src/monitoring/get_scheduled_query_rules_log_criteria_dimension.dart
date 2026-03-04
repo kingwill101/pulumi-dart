@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduledQueryRulesLogCriteriaDimension {
   /// Specifies the name of the scheduled query rule.
   final pulumi.Input<String> name;
+
   /// Operator for dimension values.
   final pulumi.Input<String> operator;
+
   /// List of dimension values.
   final pulumi.Input<List<String>> values;
 
@@ -28,12 +30,13 @@ class GetScheduledQueryRulesLogCriteriaDimension {
     };
   }
 
-  factory GetScheduledQueryRulesLogCriteriaDimension.fromMap(Map<String, dynamic> map) {
+  factory GetScheduledQueryRulesLogCriteriaDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetScheduledQueryRulesLogCriteriaDimension(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

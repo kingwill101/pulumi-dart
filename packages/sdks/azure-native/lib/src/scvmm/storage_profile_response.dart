@@ -10,20 +10,39 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [disks] Gets or sets the list of virtual disks associated with the virtual machine.
-  StorageProfileResponse({
-    this.disks,
-  });
+  StorageProfileResponse({this.disks});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': ?pulumi.Input.mapOptionalInputValue<List<VirtualDiskResponse>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<VirtualDiskResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'disks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualDiskResponse>,
+            List<Map<String, dynamic>>
+          >(
+            disks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualDiskResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDiskResponse>(map['disks']!, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disks: (() {
+        final guardedValue = map['disks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualDiskResponse>(
+            guardedValue,
+            (value) => VirtualDiskResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

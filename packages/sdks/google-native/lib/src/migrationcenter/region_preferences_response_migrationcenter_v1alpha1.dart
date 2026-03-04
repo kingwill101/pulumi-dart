@@ -14,15 +14,16 @@ class RegionPreferencesResponseMigrationcenterV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'preferredRegions': preferredRegions,
-    };
+    return <String, dynamic>{'preferredRegions': preferredRegions};
   }
 
-  factory RegionPreferencesResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory RegionPreferencesResponseMigrationcenterV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionPreferencesResponseMigrationcenterV1alpha1(
-      preferredRegions: ((map['preferredRegions'] as List).cast<String>()).input(),
+      preferredRegions: pulumi.Input.fromValue(
+        (map['preferredRegions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

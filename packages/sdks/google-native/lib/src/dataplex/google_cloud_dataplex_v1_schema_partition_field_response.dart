@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1SchemaPartitionFieldResponse {
   /// Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
   final pulumi.Input<String> name;
+
   /// Immutable. The type of field.
   final pulumi.Input<String> type;
 
@@ -18,17 +19,15 @@ class GoogleCloudDataplexV1SchemaPartitionFieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'type': type};
   }
 
-  factory GoogleCloudDataplexV1SchemaPartitionFieldResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1SchemaPartitionFieldResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1SchemaPartitionFieldResponse(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

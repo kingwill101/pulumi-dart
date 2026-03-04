@@ -8,14 +8,19 @@ import 'money_response_jobs_v4.dart';
 class CompensationEntryResponseJobsV4 {
   /// Compensation amount.
   final pulumi.Input<MoneyResponseJobsV4> amount;
+
   /// Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
   final pulumi.Input<String> description;
+
   /// Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
   final pulumi.Input<double> expectedUnitsPerYear;
+
   /// Compensation range.
   final pulumi.Input<CompensationRangeResponseJobsV4> range;
+
   /// Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
   final pulumi.Input<String> type;
+
   /// Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   final pulumi.Input<String> unit;
 
@@ -37,10 +42,18 @@ class CompensationEntryResponseJobsV4 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amount': pulumi.Input.mapInputValue<MoneyResponseJobsV4, Map<String, dynamic>>(amount, (value) => value.toMap()),
+      'amount':
+          pulumi.Input.mapInputValue<MoneyResponseJobsV4, Map<String, dynamic>>(
+            amount,
+            (value) => value.toMap(),
+          ),
       'description': description,
       'expectedUnitsPerYear': expectedUnitsPerYear,
-      'range': pulumi.Input.mapInputValue<CompensationRangeResponseJobsV4, Map<String, dynamic>>(range, (value) => value.toMap()),
+      'range':
+          pulumi.Input.mapInputValue<
+            CompensationRangeResponseJobsV4,
+            Map<String, dynamic>
+          >(range, (value) => value.toMap()),
       'type': type,
       'unit': unit,
     };
@@ -48,13 +61,22 @@ class CompensationEntryResponseJobsV4 {
 
   factory CompensationEntryResponseJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationEntryResponseJobsV4(
-      amount: (MoneyResponseJobsV4.fromMap((map['amount'] as Map).cast<String, dynamic>())).input(),
-      description: (map['description'] as String).input(),
-      expectedUnitsPerYear: (map['expectedUnitsPerYear'] as double).input(),
-      range: (CompensationRangeResponseJobsV4.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      unit: (map['unit'] as String).input(),
+      amount: pulumi.Input.fromValue(
+        MoneyResponseJobsV4.fromMap(
+          (map['amount']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      expectedUnitsPerYear: pulumi.Input.fromValue(
+        map['expectedUnitsPerYear'] as double,
+      ),
+      range: pulumi.Input.fromValue(
+        CompensationRangeResponseJobsV4.fromMap(
+          (map['range']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }
 }
-

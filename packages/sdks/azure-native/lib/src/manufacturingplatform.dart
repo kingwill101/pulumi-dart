@@ -1,5 +1,3 @@
-library module_manufacturingplatform;
-
 export 'manufacturingplatform/adx_profile_response.dart';
 export 'manufacturingplatform/aks_profile_response.dart';
 export 'manufacturingplatform/application_version_response.dart';

@@ -12,20 +12,19 @@ class GetCloudExadataInfrastructuresArgs {
 
   /// Creates a new [GetCloudExadataInfrastructuresArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCloudExadataInfrastructuresArgs({
-    this.region,
-  });
+  GetCloudExadataInfrastructuresArgs({this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetCloudExadataInfrastructuresArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

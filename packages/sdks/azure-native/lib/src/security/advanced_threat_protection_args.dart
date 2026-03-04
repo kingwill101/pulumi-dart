@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdvancedThreatProtectionArgs {
   /// Indicates whether Advanced Threat Protection is enabled.
   final pulumi.Input<bool>? isEnabled;
+
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
+
   /// Advanced Threat Protection setting name.
   final pulumi.Input<String>? settingName;
 
@@ -34,10 +36,17 @@ class AdvancedThreatProtectionArgs {
 
   factory AdvancedThreatProtectionArgs.fromMap(Map<String, dynamic> map) {
     return AdvancedThreatProtectionArgs(
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      settingName: map['settingName'] == null ? null : (map['settingName']! as String).input(),
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      settingName: (() {
+        final guardedValue = map['settingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,13 +6,18 @@ import 'mongo_migration_progress_details_response.dart';
 /// Mongo source and target database and collection details.
 class MongoMigrationCollectionResponse {
   /// Detailed migration status. Not included by default.
-  final pulumi.Input<MongoMigrationProgressDetailsResponse> migrationProgressDetails;
+  final pulumi.Input<MongoMigrationProgressDetailsResponse>
+  migrationProgressDetails;
+
   /// Source collection name.
   final pulumi.Input<String>? sourceCollection;
+
   /// Source database name.
   final pulumi.Input<String>? sourceDatabase;
+
   /// Target collection name.
   final pulumi.Input<String>? targetCollection;
+
   /// Target database name.
   final pulumi.Input<String>? targetDatabase;
 
@@ -32,7 +37,11 @@ class MongoMigrationCollectionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'migrationProgressDetails': pulumi.Input.mapInputValue<MongoMigrationProgressDetailsResponse, Map<String, dynamic>>(migrationProgressDetails, (value) => value.toMap()),
+      'migrationProgressDetails':
+          pulumi.Input.mapInputValue<
+            MongoMigrationProgressDetailsResponse,
+            Map<String, dynamic>
+          >(migrationProgressDetails, (value) => value.toMap()),
       'sourceCollection': ?sourceCollection,
       'sourceDatabase': ?sourceDatabase,
       'targetCollection': ?targetCollection,
@@ -42,12 +51,31 @@ class MongoMigrationCollectionResponse {
 
   factory MongoMigrationCollectionResponse.fromMap(Map<String, dynamic> map) {
     return MongoMigrationCollectionResponse(
-      migrationProgressDetails: (MongoMigrationProgressDetailsResponse.fromMap((map['migrationProgressDetails'] as Map).cast<String, dynamic>())).input(),
-      sourceCollection: map['sourceCollection'] == null ? null : (map['sourceCollection']! as String).input(),
-      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase']! as String).input(),
-      targetCollection: map['targetCollection'] == null ? null : (map['targetCollection']! as String).input(),
-      targetDatabase: map['targetDatabase'] == null ? null : (map['targetDatabase']! as String).input(),
+      migrationProgressDetails: pulumi.Input.fromValue(
+        MongoMigrationProgressDetailsResponse.fromMap(
+          (map['migrationProgressDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sourceCollection: (() {
+        final guardedValue = map['sourceCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceDatabase: (() {
+        final guardedValue = map['sourceDatabase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetCollection: (() {
+        final guardedValue = map['targetCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetDatabase: (() {
+        final guardedValue = map['targetDatabase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

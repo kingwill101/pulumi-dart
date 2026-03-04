@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyPairArgs {
   /// The Key Name.
   final pulumi.Input<String> keyPairName;
+
   /// The public key body.
   final pulumi.Input<String> publicKeyBody;
 
   /// Creates a new [KeyPairArgs].
   /// [keyPairName] The Key Name.
   /// [publicKeyBody] The public key body.
-  KeyPairArgs({
-    required this.keyPairName,
-    required this.publicKeyBody,
-  });
+  KeyPairArgs({required this.keyPairName, required this.publicKeyBody});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class KeyPairArgs {
 
   factory KeyPairArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairArgs(
-      keyPairName: (map['keyPairName'] as String).input(),
-      publicKeyBody: (map['publicKeyBody'] as String).input(),
+      keyPairName: pulumi.Input.fromValue(map['keyPairName'] as String),
+      publicKeyBody: pulumi.Input.fromValue(map['publicKeyBody'] as String),
     );
   }
 }
-

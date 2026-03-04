@@ -3,16 +3,15 @@ enum SybaseAuthenticationType {
   valueBasic("Basic"),
   valueWindows("Windows");
 
-  const SybaseAuthenticationType(this.value);
-  final String value;
+  const SybaseAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static SybaseAuthenticationType fromValue(String value) {
     for (final item in SybaseAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SybaseAuthenticationType value: $value');
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HoneypotNodeState {
   /// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
   final pulumi.Input<bool>? allowHoneypotAccessInternet;
+
   /// Number of probes available.
   final pulumi.Input<int>? availableProbeNum;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// Management node name.
   final pulumi.Input<String>? nodeName;
+
   /// Release the collection of network segments.
   final pulumi.Input<List<String>>? securityGroupProbeIpLists;
+
   /// The status of the resource
   final pulumi.Input<int>? status;
 
@@ -46,13 +51,36 @@ class HoneypotNodeState {
 
   factory HoneypotNodeState.fromMap(Map<String, dynamic> map) {
     return HoneypotNodeState(
-      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet']! as bool).input(),
-      availableProbeNum: map['availableProbeNum'] == null ? null : (map['availableProbeNum']! as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
-      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as int).input(),
+      allowHoneypotAccessInternet: (() {
+        final guardedValue = map['allowHoneypotAccessInternet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      availableProbeNum: (() {
+        final guardedValue = map['availableProbeNum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeName: (() {
+        final guardedValue = map['nodeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupProbeIpLists: (() {
+        final guardedValue = map['securityGroupProbeIpLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

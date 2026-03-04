@@ -5,7 +5,10 @@ import 'web_acl_rule_statement_rule_group_reference_statement_rule_action_overri
 
 class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow {
   /// Defines custom handling for the web request. See `custom_request_handling` below for details.
-  final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllowCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<
+    WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllowCustomRequestHandling
+  >?
+  customRequestHandling;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
@@ -15,14 +18,27 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?pulumi.Input.mapOptionalInputValue<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllowCustomRequestHandling, Map<String, dynamic>>(customRequestHandling, (value) => value.toMap()),
+      'customRequestHandling':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllowCustomRequestHandling,
+            Map<String, dynamic>
+          >(customRequestHandling, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow(
-      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllowCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
+      customRequestHandling: (() {
+        final guardedValue = map['customRequestHandling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllowCustomRequestHandling.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

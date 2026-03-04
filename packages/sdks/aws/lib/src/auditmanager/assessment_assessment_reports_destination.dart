@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssessmentAssessmentReportsDestination {
   /// Destination of the assessment report. This value be in the form `s3://{bucket_name}`.
   final pulumi.Input<String> destination;
+
   /// Destination type. Currently, `S3` is the only valid value.
   final pulumi.Input<String> destinationType;
 
@@ -23,11 +24,12 @@ class AssessmentAssessmentReportsDestination {
     };
   }
 
-  factory AssessmentAssessmentReportsDestination.fromMap(Map<String, dynamic> map) {
+  factory AssessmentAssessmentReportsDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AssessmentAssessmentReportsDestination(
-      destination: (map['destination'] as String).input(),
-      destinationType: (map['destinationType'] as String).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
     );
   }
 }
-

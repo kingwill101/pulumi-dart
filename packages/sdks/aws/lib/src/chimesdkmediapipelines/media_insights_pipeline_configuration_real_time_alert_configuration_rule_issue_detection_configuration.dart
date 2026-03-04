@@ -13,15 +13,14 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetec
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ruleName': ruleName,
-    };
+    return <String, dynamic>{'ruleName': ruleName};
   }
 
-  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration(
-      ruleName: (map['ruleName'] as String).input(),
+      ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
     );
   }
 }
-

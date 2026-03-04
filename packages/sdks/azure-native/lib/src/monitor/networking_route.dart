@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkingRoute {
   /// Route path.
   final pulumi.Input<String>? path;
+
   /// The port that will be configured externally. If not specified, it will use the port from the receiver definition.
   final pulumi.Input<int>? port;
+
   /// The name of the previously defined receiver.
   final pulumi.Input<String> receiver;
+
   /// Route subdomain.
   final pulumi.Input<String>? subdomain;
 
@@ -36,11 +39,22 @@ class NetworkingRoute {
 
   factory NetworkingRoute.fromMap(Map<String, dynamic> map) {
     return NetworkingRoute(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      receiver: (map['receiver'] as String).input(),
-      subdomain: map['subdomain'] == null ? null : (map['subdomain']! as String).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      receiver: pulumi.Input.fromValue(map['receiver'] as String),
+      subdomain: (() {
+        final guardedValue = map['subdomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

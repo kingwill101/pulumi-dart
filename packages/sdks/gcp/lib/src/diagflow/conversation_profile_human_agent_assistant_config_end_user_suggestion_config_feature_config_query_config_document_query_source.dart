@@ -3,25 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource {
-  /// Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+  /// Knowledge documents to query from. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/knowledgeBases/&lt;KnowledgeBase ID&gt;/documents/&lt;Document ID&gt;.
   final pulumi.Input<List<String>> documents;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource].
-  /// [documents] Knowledge documents to query from. Format: projects/<Project ID>/locations/<Location ID>/knowledgeBases/<KnowledgeBase ID>/documents/<Document ID>.
+  /// [documents] Knowledge documents to query from. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/knowledgeBases/&lt;KnowledgeBase ID&gt;/documents/&lt;Document ID&gt;.
   ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource({
     required this.documents,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'documents': documents,
-    };
+    return <String, dynamic>{'documents': documents};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource(
-      documents: ((map['documents'] as List).cast<String>()).input(),
+      documents: pulumi.Input.fromValue(
+        (map['documents'] as List).cast<String>(),
+      ),
     );
   }
 }
-

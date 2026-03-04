@@ -288,7 +288,7 @@ import 'source_control_slot_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -303,24 +303,34 @@ import 'source_control_slot_state.dart';
 class SourceControlSlot extends pulumi.CustomResource {
   /// The URL for the repository. Changing this forces a new resource to be created.
   late final pulumi.Output<String> branch;
+
   /// A `github_action_configuration` block as detailed below. Changing this forces a new resource to be created.
-  late final pulumi.Output<SourceControlSlotGithubActionConfiguration?> githubActionConfiguration;
+  late final pulumi.Output<SourceControlSlotGithubActionConfiguration?>
+  githubActionConfiguration;
+
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
   late final pulumi.Output<String> repoUrl;
+
   /// Should the Deployment Rollback be enabled? Defaults to `false` Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> rollbackEnabled;
+
   /// The SCM Type in use. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<String> scmType;
+
   /// The ID of the Linux or Windows Web App Slot. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Function App Slots are not supported at this time.
+  /// &gt; **Note:** Function App Slots are not supported at this time.
   late final pulumi.Output<String> slotId;
+
   /// Should the Slot use local Git configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useLocalGit;
+
   /// Should code be deployed manually. Set to `true` to disable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useManualIntegration;
+
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> useMercurial;
+
   /// Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
   late final pulumi.Output<bool> usesGithubAction;
 
@@ -333,21 +343,24 @@ class SourceControlSlot extends pulumi.CustomResource {
     SourceControlSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceControlSlot:SourceControlSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.branch = registerOutput<String>('branch');
-    this.githubActionConfiguration = registerOutput<SourceControlSlotGithubActionConfiguration?>('githubActionConfiguration');
-    this.repoUrl = registerOutput<String>('repoUrl');
-    this.rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
-    this.scmType = registerOutput<String>('scmType');
-    this.slotId = registerOutput<String>('slotId');
-    this.useLocalGit = registerOutput<bool?>('useLocalGit');
-    this.useManualIntegration = registerOutput<bool?>('useManualIntegration');
-    this.useMercurial = registerOutput<bool?>('useMercurial');
-    this.usesGithubAction = registerOutput<bool>('usesGithubAction');
+         'azure:appservice/sourceControlSlot:SourceControlSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    branch = registerOutput<String>('branch');
+    githubActionConfiguration =
+        registerOutput<SourceControlSlotGithubActionConfiguration?>(
+          'githubActionConfiguration',
+        );
+    repoUrl = registerOutput<String>('repoUrl');
+    rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
+    scmType = registerOutput<String>('scmType');
+    slotId = registerOutput<String>('slotId');
+    useLocalGit = registerOutput<bool?>('useLocalGit');
+    useManualIntegration = registerOutput<bool?>('useManualIntegration');
+    useMercurial = registerOutput<bool?>('useMercurial');
+    usesGithubAction = registerOutput<bool>('usesGithubAction');
   }
 
   /// Gets an existing [SourceControlSlot] resource's state with the given [name] and [id].
@@ -368,20 +381,23 @@ class SourceControlSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceControlSlot:SourceControlSlot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.branch = registerOutput<String>('branch');
-    this.githubActionConfiguration = registerOutput<SourceControlSlotGithubActionConfiguration?>('githubActionConfiguration');
-    this.repoUrl = registerOutput<String>('repoUrl');
-    this.rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
-    this.scmType = registerOutput<String>('scmType');
-    this.slotId = registerOutput<String>('slotId');
-    this.useLocalGit = registerOutput<bool?>('useLocalGit');
-    this.useManualIntegration = registerOutput<bool?>('useManualIntegration');
-    this.useMercurial = registerOutput<bool?>('useMercurial');
-    this.usesGithubAction = registerOutput<bool>('usesGithubAction');
+         'azure:appservice/sourceControlSlot:SourceControlSlot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    branch = registerOutput<String>('branch');
+    githubActionConfiguration =
+        registerOutput<SourceControlSlotGithubActionConfiguration?>(
+          'githubActionConfiguration',
+        );
+    repoUrl = registerOutput<String>('repoUrl');
+    rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
+    scmType = registerOutput<String>('scmType');
+    slotId = registerOutput<String>('slotId');
+    useLocalGit = registerOutput<bool?>('useLocalGit');
+    useManualIntegration = registerOutput<bool?>('useManualIntegration');
+    useMercurial = registerOutput<bool?>('useMercurial');
+    usesGithubAction = registerOutput<bool>('usesGithubAction');
   }
 }

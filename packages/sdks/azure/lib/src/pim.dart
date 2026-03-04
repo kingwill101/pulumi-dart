@@ -1,5 +1,3 @@
-library module_pim;
-
 export 'pim/active_role_assignment.dart';
 export 'pim/active_role_assignment_args.dart';
 export 'pim/active_role_assignment_schedule.dart';

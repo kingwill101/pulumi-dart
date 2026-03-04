@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArcAgentStatusResponse {
   /// Version of the Arc agents currently running on the Provisioned cluster resource.
   final pulumi.Input<String>? agentVersion;
+
   /// Number of CPU cores present in the Provisioned cluster resource
   final pulumi.Input<double>? coreCount;
+
   /// Observed deployment state of the Arc Agents on the target cluster. Possible values include: 'pending', 'provisioning', 'provisioned', 'deleting', 'failed', 'upgrading'
   final pulumi.Input<String>? deploymentState;
+
   /// Error messages while onboarding/upgrading/uninstalling the Arc agents
   final pulumi.Input<String>? errorMessage;
+
   /// Last connected timestamp of the Provisioned cluster resource.
   final pulumi.Input<String>? lastConnectivityTime;
+
   /// ManagedIdentity certificate expiration time (ValidUntil).
   final pulumi.Input<String>? managedIdentityCertificateExpirationTime;
+
   /// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster. Will be used to create the hybridIdentityMetadata proxy resource and will not be persisted.
   final pulumi.Input<String>? onboardingPublicKey;
 
@@ -44,21 +50,49 @@ class ArcAgentStatusResponse {
       'deploymentState': ?deploymentState,
       'errorMessage': ?errorMessage,
       'lastConnectivityTime': ?lastConnectivityTime,
-      'managedIdentityCertificateExpirationTime': ?managedIdentityCertificateExpirationTime,
+      'managedIdentityCertificateExpirationTime':
+          ?managedIdentityCertificateExpirationTime,
       'onboardingPublicKey': ?onboardingPublicKey,
     };
   }
 
   factory ArcAgentStatusResponse.fromMap(Map<String, dynamic> map) {
     return ArcAgentStatusResponse(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as double).input(),
-      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      lastConnectivityTime: map['lastConnectivityTime'] == null ? null : (map['lastConnectivityTime']! as String).input(),
-      managedIdentityCertificateExpirationTime: map['managedIdentityCertificateExpirationTime'] == null ? null : (map['managedIdentityCertificateExpirationTime']! as String).input(),
-      onboardingPublicKey: map['onboardingPublicKey'] == null ? null : (map['onboardingPublicKey']! as String).input(),
+      agentVersion: (() {
+        final guardedValue = map['agentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coreCount: (() {
+        final guardedValue = map['coreCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      deploymentState: (() {
+        final guardedValue = map['deploymentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastConnectivityTime: (() {
+        final guardedValue = map['lastConnectivityTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedIdentityCertificateExpirationTime: (() {
+        final guardedValue = map['managedIdentityCertificateExpirationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onboardingPublicKey: (() {
+        final guardedValue = map['onboardingPublicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -186,7 +186,7 @@ import 'get_vpn_server_configuration_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -315,7 +315,7 @@ Future<GetApplicationGatewayResult> getApplicationGateway(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -450,7 +450,7 @@ Future<GetApplicationSecurityGroupResult> getApplicationSecurityGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -579,7 +579,7 @@ Future<GetExpressRouteCircuitResult> getExpressRouteCircuit(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -708,7 +708,7 @@ Future<GetFirewallResult> getFirewall(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -837,7 +837,7 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -966,7 +966,7 @@ Future<GetGatewayConnectionResult> getGatewayConnection(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1095,7 +1095,7 @@ Future<GetIpGroupResult> getIpGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1224,7 +1224,7 @@ Future<GetIpGroupsResult> getIpGroups(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1247,7 +1247,7 @@ Future<GetLocalNetworkGatewayResult> getLocalNetworkGateway(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1376,7 +1376,7 @@ Future<GetNatGatewayResult> getNatGateway(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1505,7 +1505,7 @@ Future<GetNetworkDdosProtectionPlanResult> getNetworkDdosProtectionPlan(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1766,7 +1766,7 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1895,13 +1895,14 @@ Future<GetNetworkManagerResult> getNetworkManager(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_manager_connectivity_configuration_get_network_manager_connectivity_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnectivityConfiguration(
+Future<GetNetworkManagerConnectivityConfigurationResult>
+getNetworkManagerConnectivityConfiguration(
   GetNetworkManagerConnectivityConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2196,7 +2197,7 @@ Future<GetNetworkManagerConnectivityConfigurationResult> getNetworkManagerConnec
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -2490,7 +2491,7 @@ Future<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPool(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -2619,7 +2620,7 @@ Future<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -2748,7 +2749,7 @@ Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -2908,13 +2909,14 @@ Future<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeter(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_network_get_network_security_perimeter_profile_get_network_security_perimeter_profile_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProfile(
+Future<GetNetworkSecurityPerimeterProfileResult>
+getNetworkSecurityPerimeterProfile(
   GetNetworkSecurityPerimeterProfileArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3037,7 +3039,7 @@ Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProf
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -3623,7 +3625,7 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -3742,7 +3744,7 @@ Future<GetPublicIPResult> getPublicIP(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -3873,7 +3875,7 @@ Future<GetPublicIPsResult> getPublicIPs(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -4002,7 +4004,7 @@ Future<GetPublicIpPrefixResult> getPublicIpPrefix(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -4121,7 +4123,7 @@ Future<GetRouteFilterResult> getRouteFilter(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -4262,7 +4264,7 @@ Future<GetRouteTableResult> getRouteTable(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -4397,7 +4399,7 @@ Future<GetServiceTagsResult> getServiceTags(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -4522,7 +4524,7 @@ Future<GetSubnetResult> getSubnet(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2022-04-01
@@ -4651,7 +4653,7 @@ Future<GetTrafficManagerResult> getTrafficManager(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2022-04-01
@@ -4780,7 +4782,7 @@ Future<GetTrafficManagerProfileResult> getTrafficManagerProfile(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -4915,7 +4917,7 @@ Future<GetVirtualHubResult> getVirtualHub(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -5050,7 +5052,7 @@ Future<GetVirtualHubConnectionResult> getVirtualHubConnection(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -5179,7 +5181,7 @@ Future<GetVirtualHubRouteTableResult> getVirtualHubRouteTable(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -5308,7 +5310,7 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -5468,7 +5470,7 @@ Future<GetVirtualNetworkGatewayResult> getVirtualNetworkGateway(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -5645,7 +5647,7 @@ Future<GetVirtualNetworkPeeringResult> getVirtualNetworkPeering(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -5774,7 +5776,7 @@ Future<GetVirtualWanResult> getVirtualWan(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -5903,7 +5905,7 @@ Future<GetVpnGatewayResult> getVpnGateway(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01

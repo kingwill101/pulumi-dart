@@ -1,5 +1,3 @@
-library module_eventhub;
-
 export 'eventhub/authorization_rule.dart';
 export 'eventhub/authorization_rule_args.dart';
 export 'eventhub/authorization_rule_state.dart';

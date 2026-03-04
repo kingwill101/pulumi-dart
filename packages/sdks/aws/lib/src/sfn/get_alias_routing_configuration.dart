@@ -23,9 +23,10 @@ class GetAliasRoutingConfiguration {
 
   factory GetAliasRoutingConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAliasRoutingConfiguration(
-      stateMachineVersionArn: (map['stateMachineVersionArn'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      stateMachineVersionArn: pulumi.Input.fromValue(
+        map['stateMachineVersionArn'] as String,
+      ),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseSystemVersionsArgs {
   /// Whether to filter the results to the set of Oracle Database versions that are supported for the database software images.
   final pulumi.Input<bool>? databaseSoftwareImageSupported;
+
   /// If provided, filters the results to the set of database versions which are supported for the given shape. The only possible value is `VM.Standard.x86`.
   final pulumi.Input<String>? databaseSystemShape;
+
   /// The Azure Region to query for the Oracle Database Systems Versions.
   final pulumi.Input<String> location;
+
   /// If provided, filters the results to the set of database versions which are supported for the given shape family. Possible values are `EXADATA`, `EXADB_XS`, `SINGLENODE` and `VIRTUALMACHINE`.
   final pulumi.Input<String>? shapeFamily;
+
   /// The database system storage management option. Used to list database versions available for that storage manager. The only possible value is `LVM`.
   final pulumi.Input<String>? storageManagement;
+
   /// Whether to filter the results to the set of database versions which are supported for upgrade.
   final pulumi.Input<bool>? upgradeSupported;
 
@@ -49,13 +54,32 @@ class GetDatabaseSystemVersionsArgs {
 
   factory GetDatabaseSystemVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSystemVersionsArgs(
-      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : (map['databaseSoftwareImageSupported']! as bool).input(),
-      databaseSystemShape: map['databaseSystemShape'] == null ? null : (map['databaseSystemShape']! as String).input(),
-      location: (map['location'] as String).input(),
-      shapeFamily: map['shapeFamily'] == null ? null : (map['shapeFamily']! as String).input(),
-      storageManagement: map['storageManagement'] == null ? null : (map['storageManagement']! as String).input(),
-      upgradeSupported: map['upgradeSupported'] == null ? null : (map['upgradeSupported']! as bool).input(),
+      databaseSoftwareImageSupported: (() {
+        final guardedValue = map['databaseSoftwareImageSupported'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      databaseSystemShape: (() {
+        final guardedValue = map['databaseSystemShape'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      shapeFamily: (() {
+        final guardedValue = map['shapeFamily'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageManagement: (() {
+        final guardedValue = map['storageManagement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      upgradeSupported: (() {
+        final guardedValue = map['upgradeSupported'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

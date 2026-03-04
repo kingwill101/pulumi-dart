@@ -15,11 +15,7 @@ class GetHmacKeyArgs {
   /// [accessId] Required.
   /// [project] Optional.
   /// [userProject] Optional.
-  GetHmacKeyArgs({
-    required this.accessId,
-    this.project,
-    this.userProject,
-  });
+  GetHmacKeyArgs({required this.accessId, this.project, this.userProject});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,17 @@ class GetHmacKeyArgs {
 
   factory GetHmacKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetHmacKeyArgs(
-      accessId: (map['accessId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      accessId: pulumi.Input.fromValue(map['accessId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

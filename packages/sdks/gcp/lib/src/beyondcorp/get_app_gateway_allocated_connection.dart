@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppGatewayAllocatedConnection {
   /// The ingress port of an allocated connection.
   final pulumi.Input<int> ingressPort;
+
   /// The PSC uri of an allocated connection.
   final pulumi.Input<String> pscUri;
 
@@ -17,17 +18,13 @@ class GetAppGatewayAllocatedConnection {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ingressPort': ingressPort,
-      'pscUri': pscUri,
-    };
+    return <String, dynamic>{'ingressPort': ingressPort, 'pscUri': pscUri};
   }
 
   factory GetAppGatewayAllocatedConnection.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayAllocatedConnection(
-      ingressPort: (map['ingressPort'] as int).input(),
-      pscUri: (map['pscUri'] as String).input(),
+      ingressPort: pulumi.Input.fromValue(map['ingressPort'] as int),
+      pscUri: pulumi.Input.fromValue(map['pscUri'] as String),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-    };
+    return <String, dynamic>{'key': key};
   }
 
-  factory SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined.fromMap(Map<String, dynamic> map) {
+  factory SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined(
-      key: (map['key'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

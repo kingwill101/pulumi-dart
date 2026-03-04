@@ -11,6 +11,7 @@ class GetApplicationResult {
   final String createTime;
   final String description;
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -54,7 +55,11 @@ class GetApplicationResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': applicationId,
-      'attributes': pulumi.Input.encodeList<GetApplicationAttribute, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes':
+          pulumi.Input.encodeList<
+            GetApplicationAttribute,
+            Map<String, dynamic>
+          >(attributes, (value) => value.toMap()),
       'createTime': createTime,
       'description': description,
       'displayName': displayName,
@@ -62,7 +67,11 @@ class GetApplicationResult {
       'location': location,
       'name': name,
       'project': project,
-      'scopes': pulumi.Input.encodeList<GetApplicationScope, Map<String, dynamic>>(scopes, (value) => value.toMap()),
+      'scopes':
+          pulumi.Input.encodeList<GetApplicationScope, Map<String, dynamic>>(
+            scopes,
+            (value) => value.toMap(),
+          ),
       'state': state,
       'uid': uid,
       'updateTime': updateTime,
@@ -72,7 +81,12 @@ class GetApplicationResult {
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
       applicationId: map['applicationId'] as String,
-      attributes: pulumi.Input.decodeList<GetApplicationAttribute>(map['attributes'], (value) => GetApplicationAttribute.fromMap((value as Map).cast<String, dynamic>())),
+      attributes: pulumi.Input.decodeList<GetApplicationAttribute>(
+        map['attributes']!,
+        (value) => GetApplicationAttribute.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
@@ -80,11 +94,14 @@ class GetApplicationResult {
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] as String,
-      scopes: pulumi.Input.decodeList<GetApplicationScope>(map['scopes'], (value) => GetApplicationScope.fromMap((value as Map).cast<String, dynamic>())),
+      scopes: pulumi.Input.decodeList<GetApplicationScope>(
+        map['scopes']!,
+        (value) =>
+            GetApplicationScope.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       state: map['state'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

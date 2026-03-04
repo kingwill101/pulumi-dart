@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxToolConnectorSpecActionEntityOperation {
   /// ID of the entity.
   final pulumi.Input<String> entityId;
+
   /// The operation to perform on the entity.
   /// Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
   final pulumi.Input<String> operation;
@@ -18,17 +19,15 @@ class CxToolConnectorSpecActionEntityOperation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entityId': entityId,
-      'operation': operation,
-    };
+    return <String, dynamic>{'entityId': entityId, 'operation': operation};
   }
 
-  factory CxToolConnectorSpecActionEntityOperation.fromMap(Map<String, dynamic> map) {
+  factory CxToolConnectorSpecActionEntityOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxToolConnectorSpecActionEntityOperation(
-      entityId: (map['entityId'] as String).input(),
-      operation: (map['operation'] as String).input(),
+      entityId: pulumi.Input.fromValue(map['entityId'] as String),
+      operation: pulumi.Input.fromValue(map['operation'] as String),
     );
   }
 }
-

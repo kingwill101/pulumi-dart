@@ -3,16 +3,15 @@ enum StorageAutoGrow {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const StorageAutoGrow(this.value);
-  final String value;
+  const StorageAutoGrow(this.wireValue);
+  final String wireValue;
 
   static StorageAutoGrow fromValue(String value) {
     for (final item in StorageAutoGrow.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageAutoGrow value: $value');
   }
 }
-

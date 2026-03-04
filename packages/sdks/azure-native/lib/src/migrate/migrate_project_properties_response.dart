@@ -8,20 +8,29 @@ import 'private_endpoint_connection_response.dart';
 class MigrateProjectPropertiesResponse {
   /// Last summary refresh time.
   final pulumi.Input<String> lastSummaryRefreshedTime;
+
   /// Gets the private endpoint connections.
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>>
+  privateEndpointConnections;
+
   /// Provisioning state of the migrate project.
   final pulumi.Input<String>? provisioningState;
+
   /// Gets or sets the state of public network access.
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// Refresh summary state.
   final pulumi.Input<String> refreshSummaryState;
+
   /// Register tools inside project.
   final pulumi.Input<List<String>> registeredTools;
+
   /// Service endpoint.
   final pulumi.Input<String>? serviceEndpoint;
+
   /// Project summary.
   final pulumi.Input<Map<String, DatabaseProjectSummaryResponse>> summary;
+
   /// Utility storage account id.
   final pulumi.Input<String>? utilityStorageAccountId;
 
@@ -50,29 +59,86 @@ class MigrateProjectPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'lastSummaryRefreshedTime': lastSummaryRefreshedTime,
-      'privateEndpointConnections': pulumi.Input.mapInputValue<List<PrivateEndpointConnectionResponse>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateEndpointConnections':
+          pulumi.Input.mapInputValue<
+            List<PrivateEndpointConnectionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            privateEndpointConnections,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrivateEndpointConnectionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'refreshSummaryState': refreshSummaryState,
       'registeredTools': registeredTools,
       'serviceEndpoint': ?serviceEndpoint,
-      'summary': pulumi.Input.mapInputValue<Map<String, DatabaseProjectSummaryResponse>, Map<String, Map<String, dynamic>>>(summary, (value) => pulumi.Input.encodeMapValues<DatabaseProjectSummaryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'summary':
+          pulumi.Input.mapInputValue<
+            Map<String, DatabaseProjectSummaryResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            summary,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  DatabaseProjectSummaryResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'utilityStorageAccountId': ?utilityStorageAccountId,
     };
   }
 
   factory MigrateProjectPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateProjectPropertiesResponse(
-      lastSummaryRefreshedTime: (map['lastSummaryRefreshedTime'] as String).input(),
-      privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      refreshSummaryState: (map['refreshSummaryState'] as String).input(),
-      registeredTools: ((map['registeredTools'] as List).cast<String>()).input(),
-      serviceEndpoint: map['serviceEndpoint'] == null ? null : (map['serviceEndpoint']! as String).input(),
-      summary: (pulumi.Input.decodeMapValues<DatabaseProjectSummaryResponse>(map['summary'], (value) => DatabaseProjectSummaryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      utilityStorageAccountId: map['utilityStorageAccountId'] == null ? null : (map['utilityStorageAccountId']! as String).input(),
+      lastSummaryRefreshedTime: pulumi.Input.fromValue(
+        map['lastSummaryRefreshedTime'] as String,
+      ),
+      privateEndpointConnections: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(
+          map['privateEndpointConnections']!,
+          (value) => PrivateEndpointConnectionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshSummaryState: pulumi.Input.fromValue(
+        map['refreshSummaryState'] as String,
+      ),
+      registeredTools: pulumi.Input.fromValue(
+        (map['registeredTools'] as List).cast<String>(),
+      ),
+      serviceEndpoint: (() {
+        final guardedValue = map['serviceEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      summary: pulumi.Input.fromValue(
+        pulumi.Input.decodeMapValues<DatabaseProjectSummaryResponse>(
+          map['summary']!,
+          (value) => DatabaseProjectSummaryResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      utilityStorageAccountId: (() {
+        final guardedValue = map['utilityStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

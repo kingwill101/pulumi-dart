@@ -2,16 +2,15 @@
 enum Encoding {
   valueUTF8("UTF8");
 
-  const Encoding(this.value);
-  final String value;
+  const Encoding(this.wireValue);
+  final String wireValue;
 
   static Encoding fromValue(String value) {
     for (final item in Encoding.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Encoding value: $value');
   }
 }
-

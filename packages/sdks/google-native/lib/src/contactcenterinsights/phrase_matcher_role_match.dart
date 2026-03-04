@@ -6,16 +6,15 @@ enum PhraseMatcherRoleMatch {
   endUser("END_USER"),
   anyAgent("ANY_AGENT");
 
-  const PhraseMatcherRoleMatch(this.value);
-  final String value;
+  const PhraseMatcherRoleMatch(this.wireValue);
+  final String wireValue;
 
   static PhraseMatcherRoleMatch fromValue(String value) {
     for (final item in PhraseMatcherRoleMatch.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PhraseMatcherRoleMatch value: $value');
   }
 }
-

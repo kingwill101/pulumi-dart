@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanWorkflowStepEksResourceScalingConfigEksCluster {
   /// ARN of the EKS cluster.
   final pulumi.Input<String> clusterArn;
+
   /// ARN of the cross-account role to assume.
   final pulumi.Input<String>? crossAccountRole;
+
   /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
 
@@ -28,12 +30,21 @@ class PlanWorkflowStepEksResourceScalingConfigEksCluster {
     };
   }
 
-  factory PlanWorkflowStepEksResourceScalingConfigEksCluster.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepEksResourceScalingConfigEksCluster.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepEksResourceScalingConfigEksCluster(
-      clusterArn: (map['clusterArn'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
-      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      clusterArn: pulumi.Input.fromValue(map['clusterArn'] as String),
+      crossAccountRole: (() {
+        final guardedValue = map['crossAccountRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

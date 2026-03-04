@@ -8,7 +8,7 @@ import 'alert_state.dart';
 ///
 /// For information about SLS Alert and how to use it, see [What is Alert](https://www.alibabacloud.com/help/en/doc-detail/209202.html).
 ///
-/// > **NOTE:** Available since v1.223.0.
+/// &gt; **NOTE:** Available since v1.223.0.
 ///
 /// ## Example Usage
 ///
@@ -975,18 +975,25 @@ import 'alert_state.dart';
 class Alert extends pulumi.CustomResource {
   /// Alert rule ID, unique under Project.
   late final pulumi.Output<String> alertName;
+
   /// Detailed configuration of alarm monitoring rules. See `configuration` below.
   late final pulumi.Output<AlertConfiguration> configuration;
+
   /// Alarm rule creation time.
   late final pulumi.Output<int> createTime;
+
   /// Compatible fields, set to empty strings.
   late final pulumi.Output<String?> description;
+
   /// Display name of the alarm rule.
   late final pulumi.Output<String> displayName;
+
   /// Project Name.
   late final pulumi.Output<String> projectName;
+
   /// Check the frequency-dependent configuration. See `schedule` below.
   late final pulumi.Output<AlertSchedule> schedule;
+
   /// Resource attribute field representing alarm status.
   late final pulumi.Output<String> status;
 
@@ -994,32 +1001,25 @@ class Alert extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alert]. {@macro pulumi_sls_alert_alert_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alert(
-    String name, {
-    AlertArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:sls/alert:Alert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertName = registerOutput<String>('alertName');
-    this.configuration = registerOutput<AlertConfiguration>('configuration');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.projectName = registerOutput<String>('projectName');
-    this.schedule = registerOutput<AlertSchedule>('schedule');
-    this.status = registerOutput<String>('status');
+  Alert(String name, {AlertArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:sls/alert:Alert',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    alertName = registerOutput<String>('alertName');
+    configuration = registerOutput<AlertConfiguration>('configuration');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    projectName = registerOutput<String>('projectName');
+    schedule = registerOutput<AlertSchedule>('schedule');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Alert] resource's state with the given [name] and [id].
-  static Alert get(
-    String name,
-    pulumi.Input<String> id, {
-    AlertState? state,
-  }) {
+  static Alert get(String name, pulumi.Input<String> id, {AlertState? state}) {
     return Alert._get(
       name,
       state: state?.toMap(),
@@ -1032,18 +1032,18 @@ class Alert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/alert:Alert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertName = registerOutput<String>('alertName');
-    this.configuration = registerOutput<AlertConfiguration>('configuration');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.projectName = registerOutput<String>('projectName');
-    this.schedule = registerOutput<AlertSchedule>('schedule');
-    this.status = registerOutput<String>('status');
+         'alicloud:sls/alert:Alert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertName = registerOutput<String>('alertName');
+    configuration = registerOutput<AlertConfiguration>('configuration');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    projectName = registerOutput<String>('projectName');
+    schedule = registerOutput<AlertSchedule>('schedule');
+    status = registerOutput<String>('status');
   }
 }

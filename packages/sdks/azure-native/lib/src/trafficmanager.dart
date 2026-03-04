@@ -1,5 +1,3 @@
-library module_trafficmanager;
-
 export 'trafficmanager/allowed_endpoint_record_type.dart';
 export 'trafficmanager/always_serve.dart';
 export 'trafficmanager/dns_config.dart';

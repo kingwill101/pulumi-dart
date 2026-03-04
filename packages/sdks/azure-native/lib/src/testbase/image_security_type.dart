@@ -3,16 +3,15 @@ enum ImageSecurityType {
   valueStandard("Standard"),
   valueTrustedLaunch("TrustedLaunch");
 
-  const ImageSecurityType(this.value);
-  final String value;
+  const ImageSecurityType(this.wireValue);
+  final String wireValue;
 
   static ImageSecurityType fromValue(String value) {
     for (final item in ImageSecurityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageSecurityType value: $value');
   }
 }
-

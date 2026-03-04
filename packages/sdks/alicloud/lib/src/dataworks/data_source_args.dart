@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceArgs {
   /// Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
   final pulumi.Input<String> connectionProperties;
+
   /// The configuration mode of the data source. Different types of data sources have different configuration modes. For example, MySQL data sources support UrlMode and InstanceMode.
   final pulumi.Input<String> connectionPropertiesMode;
+
   /// The data source name. The name of a data source in a specific environment (development environment or production environment) is unique in a project.
   final pulumi.Input<String> dataSourceName;
+
   /// Description of the data source
   final pulumi.Input<String>? description;
+
   /// The ID of the project to which the data source belongs.
   final pulumi.Input<int> projectId;
+
   /// The type of data source. For a list of data source types, see the values listed in the API documentation.
   final pulumi.Input<String> type;
 
@@ -49,13 +54,20 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      connectionProperties: (map['connectionProperties'] as String).input(),
-      connectionPropertiesMode: (map['connectionPropertiesMode'] as String).input(),
-      dataSourceName: (map['dataSourceName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      projectId: (map['projectId'] as int).input(),
-      type: (map['type'] as String).input(),
+      connectionProperties: pulumi.Input.fromValue(
+        map['connectionProperties'] as String,
+      ),
+      connectionPropertiesMode: pulumi.Input.fromValue(
+        map['connectionPropertiesMode'] as String,
+      ),
+      dataSourceName: pulumi.Input.fromValue(map['dataSourceName'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: pulumi.Input.fromValue(map['projectId'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

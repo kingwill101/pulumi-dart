@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'theme_args.dart';
 import 'theme_configuration.dart';
-import 'theme_permission.dart';
 import 'theme_state.dart';
 
 /// Resource for managing a QuickSight Theme.
@@ -246,34 +245,48 @@ import 'theme_state.dart';
 class Theme extends pulumi.CustomResource {
   /// ARN of the theme.
   late final pulumi.Output<String> arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
+
   /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
   late final pulumi.Output<String> baseThemeId;
+
   /// The theme configuration, which contains the theme display properties. See configuration.
   late final pulumi.Output<ThemeConfiguration?> configuration;
+
   /// The time that the theme was created.
   late final pulumi.Output<String> createdTime;
+
   /// The time that the theme was last updated.
   late final pulumi.Output<String> lastUpdatedTime;
+
   /// Display name of the theme.
   late final pulumi.Output<String> name;
+
   /// A set of resource permissions on the theme. Maximum of 64 items. See permissions.
-  late final pulumi.Output<List<ThemePermission>?> permissions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The theme creation status.
   late final pulumi.Output<String> status;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Identifier of the theme.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> themeId;
+
   /// A description of the current theme version being created/updated.
   late final pulumi.Output<String?> versionDescription;
+
   /// The version number of the theme version.
   late final pulumi.Output<int> versionNumber;
 
@@ -281,39 +294,32 @@ class Theme extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Theme]. {@macro pulumi_quicksight_theme_theme_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Theme(
-    String name, {
-    ThemeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:quicksight/theme:Theme',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.baseThemeId = registerOutput<String>('baseThemeId');
-    this.configuration = registerOutput<ThemeConfiguration?>('configuration');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+  Theme(String name, {ThemeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:quicksight/theme:Theme',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    baseThemeId = registerOutput<String>('baseThemeId');
+    configuration = registerOutput<ThemeConfiguration?>('configuration');
+    createdTime = registerOutput<String>('createdTime');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<List<ThemePermission>?>('permissions');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.themeId = registerOutput<String>('themeId');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.versionNumber = registerOutput<int>('versionNumber');
+    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    themeId = registerOutput<String>('themeId');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionNumber = registerOutput<int>('versionNumber');
   }
 
   /// Gets an existing [Theme] resource's state with the given [name] and [id].
-  static Theme get(
-    String name,
-    pulumi.Input<String> id, {
-    ThemeState? state,
-  }) {
+  static Theme get(String name, pulumi.Input<String> id, {ThemeState? state}) {
     return Theme._get(
       name,
       state: state?.toMap(),
@@ -326,25 +332,25 @@ class Theme extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/theme:Theme',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.baseThemeId = registerOutput<String>('baseThemeId');
-    this.configuration = registerOutput<ThemeConfiguration?>('configuration');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+         'aws:quicksight/theme:Theme',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    baseThemeId = registerOutput<String>('baseThemeId');
+    configuration = registerOutput<ThemeConfiguration?>('configuration');
+    createdTime = registerOutput<String>('createdTime');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<List<ThemePermission>?>('permissions');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.themeId = registerOutput<String>('themeId');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.versionNumber = registerOutput<int>('versionNumber');
+    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    themeId = registerOutput<String>('themeId');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionNumber = registerOutput<int>('versionNumber');
   }
 }

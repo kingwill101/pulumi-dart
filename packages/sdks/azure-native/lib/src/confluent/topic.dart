@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'topic_args.dart';
 import 'topic_metadata_entity_response.dart';
-import 'topics_input_config_response.dart';
 import 'topics_related_link_response.dart';
 
 /// Details of topic record
@@ -220,28 +219,40 @@ import 'topics_related_link_response.dart';
 class Topic extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Config Specification of the topic
   late final pulumi.Output<TopicsRelatedLinkResponse?> configs;
+
   /// Input Config Specification of the topic
-  late final pulumi.Output<List<TopicsInputConfigResponse>?> inputConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inputConfigs;
+
   /// Type of topic
   late final pulumi.Output<String?> kind;
+
   /// Metadata of the record
   late final pulumi.Output<TopicMetadataEntityResponse?> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Partition Specification of the topic
   late final pulumi.Output<TopicsRelatedLinkResponse?> partitions;
+
   /// Partition count of the topic
   late final pulumi.Output<String?> partitionsCount;
+
   /// Partition Reassignment Specification of the topic
   late final pulumi.Output<TopicsRelatedLinkResponse?> partitionsReassignments;
+
   /// Replication factor of the topic
   late final pulumi.Output<String?> replicationFactor;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Topic Id returned by Confluent
   late final pulumi.Output<String?> topicId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -249,28 +260,27 @@ class Topic extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Topic]. {@macro pulumi_confluent_topic_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Topic(
-    String name, {
-    TopicArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:confluent:Topic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configs = registerOutput<TopicsRelatedLinkResponse?>('configs');
-    this.inputConfigs = registerOutput<List<TopicsInputConfigResponse>?>('inputConfigs');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<TopicMetadataEntityResponse?>('metadata');
+  Topic(String name, {TopicArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:confluent:Topic',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configs = registerOutput<TopicsRelatedLinkResponse?>('configs');
+    inputConfigs = registerOutput<List<Map<String, dynamic>>?>('inputConfigs');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<TopicMetadataEntityResponse?>('metadata');
     this.name = registerOutput<String>('name');
-    this.partitions = registerOutput<TopicsRelatedLinkResponse?>('partitions');
-    this.partitionsCount = registerOutput<String?>('partitionsCount');
-    this.partitionsReassignments = registerOutput<TopicsRelatedLinkResponse?>('partitionsReassignments');
-    this.replicationFactor = registerOutput<String?>('replicationFactor');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.topicId = registerOutput<String?>('topicId');
-    this.type = registerOutput<String>('type');
+    partitions = registerOutput<TopicsRelatedLinkResponse?>('partitions');
+    partitionsCount = registerOutput<String?>('partitionsCount');
+    partitionsReassignments = registerOutput<TopicsRelatedLinkResponse?>(
+      'partitionsReassignments',
+    );
+    replicationFactor = registerOutput<String?>('replicationFactor');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    topicId = registerOutput<String?>('topicId');
+    type = registerOutput<String>('type');
   }
 }

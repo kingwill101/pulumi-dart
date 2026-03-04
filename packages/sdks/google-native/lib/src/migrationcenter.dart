@@ -1,5 +1,3 @@
-library module_migrationcenter;
-
 export 'migrationcenter/compute_engine_preferences.dart';
 export 'migrationcenter/compute_engine_preferences_license_type.dart';
 export 'migrationcenter/compute_engine_preferences_license_type_migrationcenter_v1alpha1.dart';

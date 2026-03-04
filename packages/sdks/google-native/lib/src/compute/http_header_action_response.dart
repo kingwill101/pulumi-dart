@@ -7,10 +7,13 @@ import 'http_header_option_response.dart';
 class HttpHeaderActionResponse {
   /// Headers to add to a matching request before forwarding the request to the backendService.
   final pulumi.Input<List<HttpHeaderOptionResponse>> requestHeadersToAdd;
+
   /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
   final pulumi.Input<List<String>> requestHeadersToRemove;
+
   /// Headers to add the response before sending the response back to the client.
   final pulumi.Input<List<HttpHeaderOptionResponse>> responseHeadersToAdd;
+
   /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
   final pulumi.Input<List<String>> responseHeadersToRemove;
 
@@ -28,20 +31,59 @@ class HttpHeaderActionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeadersToAdd': pulumi.Input.mapInputValue<List<HttpHeaderOptionResponse>, List<Map<String, dynamic>>>(requestHeadersToAdd, (value) => pulumi.Input.encodeList<HttpHeaderOptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestHeadersToAdd':
+          pulumi.Input.mapInputValue<
+            List<HttpHeaderOptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            requestHeadersToAdd,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HttpHeaderOptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'requestHeadersToRemove': requestHeadersToRemove,
-      'responseHeadersToAdd': pulumi.Input.mapInputValue<List<HttpHeaderOptionResponse>, List<Map<String, dynamic>>>(responseHeadersToAdd, (value) => pulumi.Input.encodeList<HttpHeaderOptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'responseHeadersToAdd':
+          pulumi.Input.mapInputValue<
+            List<HttpHeaderOptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            responseHeadersToAdd,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HttpHeaderOptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'responseHeadersToRemove': responseHeadersToRemove,
     };
   }
 
   factory HttpHeaderActionResponse.fromMap(Map<String, dynamic> map) {
     return HttpHeaderActionResponse(
-      requestHeadersToAdd: (pulumi.Input.decodeList<HttpHeaderOptionResponse>(map['requestHeadersToAdd'], (value) => HttpHeaderOptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestHeadersToRemove: ((map['requestHeadersToRemove'] as List).cast<String>()).input(),
-      responseHeadersToAdd: (pulumi.Input.decodeList<HttpHeaderOptionResponse>(map['responseHeadersToAdd'], (value) => HttpHeaderOptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeadersToRemove: ((map['responseHeadersToRemove'] as List).cast<String>()).input(),
+      requestHeadersToAdd: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HttpHeaderOptionResponse>(
+          map['requestHeadersToAdd']!,
+          (value) => HttpHeaderOptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      requestHeadersToRemove: pulumi.Input.fromValue(
+        (map['requestHeadersToRemove'] as List).cast<String>(),
+      ),
+      responseHeadersToAdd: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HttpHeaderOptionResponse>(
+          map['responseHeadersToAdd']!,
+          (value) => HttpHeaderOptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      responseHeadersToRemove: pulumi.Input.fromValue(
+        (map['responseHeadersToRemove'] as List).cast<String>(),
+      ),
     );
   }
 }
-

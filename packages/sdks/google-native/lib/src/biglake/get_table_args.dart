@@ -39,12 +39,15 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      databaseId: (map['databaseId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tableId: (map['tableId'] as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
-

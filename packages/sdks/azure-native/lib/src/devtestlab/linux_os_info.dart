@@ -9,20 +9,19 @@ class LinuxOsInfo {
 
   /// Creates a new [LinuxOsInfo].
   /// [linuxOsState] The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-  LinuxOsInfo({
-    this.linuxOsState,
-  });
+  LinuxOsInfo({this.linuxOsState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'linuxOsState': ?linuxOsState,
-    };
+    return <String, dynamic>{'linuxOsState': ?linuxOsState};
   }
 
   factory LinuxOsInfo.fromMap(Map<String, dynamic> map) {
     return LinuxOsInfo(
-      linuxOsState: map['linuxOsState'] == null ? null : (map['linuxOsState']! as String).input(),
+      linuxOsState: (() {
+        final guardedValue = map['linuxOsState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

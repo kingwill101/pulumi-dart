@@ -1,5 +1,3 @@
-library module_containerstorage;
-
 export 'containerstorage/assignment.dart';
 export 'containerstorage/assignment_response.dart';
 export 'containerstorage/assignment_status_response.dart';

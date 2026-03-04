@@ -17,6 +17,7 @@ class IoMAMPolicyByName extends pulumi.CustomResource {
   late final pulumi.Output<String?> appSharingFromLevel;
   late final pulumi.Output<String?> appSharingToLevel;
   late final pulumi.Output<String?> authentication;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String?> clipboardSharingLevel;
@@ -28,18 +29,22 @@ class IoMAMPolicyByName extends pulumi.CustomResource {
   late final pulumi.Output<String> friendlyName;
   late final pulumi.Output<String> groupStatus;
   late final pulumi.Output<String> lastModifiedTime;
+
   /// Resource Location
   late final pulumi.Output<String?> location;
   late final pulumi.Output<String?> managedBrowser;
+
   /// Resource name
   late final pulumi.Output<String> name;
   late final pulumi.Output<int> numOfApps;
   late final pulumi.Output<String?> offlineWipeTimeout;
   late final pulumi.Output<String?> pin;
   late final pulumi.Output<int?> pinNumRetry;
+
   /// Resource Tags
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String?> touchId;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -52,35 +57,39 @@ class IoMAMPolicyByName extends pulumi.CustomResource {
     IoMAMPolicyByNameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:intune:IoMAMPolicyByName',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessRecheckOfflineTimeout = registerOutput<String?>('accessRecheckOfflineTimeout');
-    this.accessRecheckOnlineTimeout = registerOutput<String?>('accessRecheckOnlineTimeout');
-    this.appSharingFromLevel = registerOutput<String?>('appSharingFromLevel');
-    this.appSharingToLevel = registerOutput<String?>('appSharingToLevel');
-    this.authentication = registerOutput<String?>('authentication');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clipboardSharingLevel = registerOutput<String?>('clipboardSharingLevel');
-    this.dataBackup = registerOutput<String?>('dataBackup');
-    this.description = registerOutput<String?>('description');
-    this.deviceCompliance = registerOutput<String?>('deviceCompliance');
-    this.fileEncryptionLevel = registerOutput<String?>('fileEncryptionLevel');
-    this.fileSharingSaveAs = registerOutput<String?>('fileSharingSaveAs');
-    this.friendlyName = registerOutput<String>('friendlyName');
-    this.groupStatus = registerOutput<String>('groupStatus');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.location = registerOutput<String?>('location');
-    this.managedBrowser = registerOutput<String?>('managedBrowser');
+         'azure-native:intune:IoMAMPolicyByName',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessRecheckOfflineTimeout = registerOutput<String?>(
+      'accessRecheckOfflineTimeout',
+    );
+    accessRecheckOnlineTimeout = registerOutput<String?>(
+      'accessRecheckOnlineTimeout',
+    );
+    appSharingFromLevel = registerOutput<String?>('appSharingFromLevel');
+    appSharingToLevel = registerOutput<String?>('appSharingToLevel');
+    authentication = registerOutput<String?>('authentication');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clipboardSharingLevel = registerOutput<String?>('clipboardSharingLevel');
+    dataBackup = registerOutput<String?>('dataBackup');
+    description = registerOutput<String?>('description');
+    deviceCompliance = registerOutput<String?>('deviceCompliance');
+    fileEncryptionLevel = registerOutput<String?>('fileEncryptionLevel');
+    fileSharingSaveAs = registerOutput<String?>('fileSharingSaveAs');
+    friendlyName = registerOutput<String>('friendlyName');
+    groupStatus = registerOutput<String>('groupStatus');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String?>('location');
+    managedBrowser = registerOutput<String?>('managedBrowser');
     this.name = registerOutput<String>('name');
-    this.numOfApps = registerOutput<int>('numOfApps');
-    this.offlineWipeTimeout = registerOutput<String?>('offlineWipeTimeout');
-    this.pin = registerOutput<String?>('pin');
-    this.pinNumRetry = registerOutput<int?>('pinNumRetry');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.touchId = registerOutput<String?>('touchId');
-    this.type = registerOutput<String>('type');
+    numOfApps = registerOutput<int>('numOfApps');
+    offlineWipeTimeout = registerOutput<String?>('offlineWipeTimeout');
+    pin = registerOutput<String?>('pin');
+    pinNumRetry = registerOutput<int?>('pinNumRetry');
+    tags = registerOutput<Map<String, String>?>('tags');
+    touchId = registerOutput<String?>('touchId');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadbalancerCommonBandwidthPackageAttachmentArgs {
   /// Specifies whether only to precheck the request. Valid values:
   final pulumi.Input<String> bandwidthPackageId;
+
   /// The ID of the EIP bandwidth plan.
   final pulumi.Input<String> loadBalancerId;
 
@@ -27,11 +28,14 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs {
     };
   }
 
-  factory LoadbalancerCommonBandwidthPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory LoadbalancerCommonBandwidthPackageAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadbalancerCommonBandwidthPackageAttachmentArgs(
-      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      bandwidthPackageId: pulumi.Input.fromValue(
+        map['bandwidthPackageId'] as String,
+      ),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
     );
   }
 }
-

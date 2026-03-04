@@ -8,20 +8,17 @@ class ConnectionSslConfigClientPrivateKey {
 
   /// Creates a new [ConnectionSslConfigClientPrivateKey].
   /// [secretVersion] Secret version of Secret Value for Config variable.
-  ConnectionSslConfigClientPrivateKey({
-    required this.secretVersion,
-  });
+  ConnectionSslConfigClientPrivateKey({required this.secretVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
-  factory ConnectionSslConfigClientPrivateKey.fromMap(Map<String, dynamic> map) {
+  factory ConnectionSslConfigClientPrivateKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionSslConfigClientPrivateKey(
-      secretVersion: (map['secretVersion'] as String).input(),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

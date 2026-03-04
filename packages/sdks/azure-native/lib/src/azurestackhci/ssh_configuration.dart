@@ -10,20 +10,38 @@ class SshConfiguration {
 
   /// Creates a new [SshConfiguration].
   /// [publicKeys] The list of SSH public keys used to authenticate with linux based VMs.
-  SshConfiguration({
-    this.publicKeys,
-  });
+  SshConfiguration({this.publicKeys});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeys': ?pulumi.Input.mapOptionalInputValue<List<SshPublicKey>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<SshPublicKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicKeys':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SshPublicKey>,
+            List<Map<String, dynamic>>
+          >(
+            publicKeys,
+            (value) =>
+                pulumi.Input.encodeList<SshPublicKey, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory SshConfiguration.fromMap(Map<String, dynamic> map) {
     return SshConfiguration(
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['publicKeys']!, (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicKeys: (() {
+        final guardedValue = map['publicKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SshPublicKey>(
+            guardedValue,
+            (value) =>
+                SshPublicKey.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

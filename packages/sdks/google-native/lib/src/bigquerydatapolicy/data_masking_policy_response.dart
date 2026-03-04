@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataMaskingPolicyResponse {
   /// A predefined masking expression.
   final pulumi.Input<String> predefinedExpression;
+
   /// The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
   final pulumi.Input<String> routine;
 
@@ -26,9 +27,10 @@ class DataMaskingPolicyResponse {
 
   factory DataMaskingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return DataMaskingPolicyResponse(
-      predefinedExpression: (map['predefinedExpression'] as String).input(),
-      routine: (map['routine'] as String).input(),
+      predefinedExpression: pulumi.Input.fromValue(
+        map['predefinedExpression'] as String,
+      ),
+      routine: pulumi.Input.fromValue(map['routine'] as String),
     );
   }
 }
-

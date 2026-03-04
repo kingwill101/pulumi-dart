@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
   /// An email address to send alerts to.
   final pulumi.Input<String> email;
+
   /// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
   final pulumi.Input<double> minAcceptableMeanAveragePrecision;
 
@@ -24,11 +25,14 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse(
-      email: (map['email'] as String).input(),
-      minAcceptableMeanAveragePrecision: (map['minAcceptableMeanAveragePrecision'] as double).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      minAcceptableMeanAveragePrecision: pulumi.Input.fromValue(
+        map['minAcceptableMeanAveragePrecision'] as double,
+      ),
     );
   }
 }
-

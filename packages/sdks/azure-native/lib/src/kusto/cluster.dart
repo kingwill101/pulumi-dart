@@ -1,16 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'accepted_audiences_response.dart';
 import 'azure_sku_response.dart';
-import 'callout_policy_response.dart';
 import 'cluster_args.dart';
 import 'identity_response.dart';
 import 'key_vault_properties_response.dart';
 import 'language_extensions_list_response.dart';
 import 'migration_cluster_properties_response.dart';
 import 'optimized_autoscale_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
-import 'trusted_external_tenant_response.dart';
 import 'virtual_network_configuration_response.dart';
 
 /// Class representing a Kusto cluster.
@@ -313,75 +309,112 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   /// The cluster's accepted audiences.
-  late final pulumi.Output<List<AcceptedAudiencesResponse>?> acceptedAudiences;
+  late final pulumi.Output<List<Map<String, dynamic>>?> acceptedAudiences;
+
   /// List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.
   late final pulumi.Output<List<String>?> allowedFqdnList;
+
   /// The list of ips in the format of CIDR allowed to connect to the cluster.
   late final pulumi.Output<List<String>?> allowedIpRangeList;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of callout policies for egress from Cluster.
-  late final pulumi.Output<List<CalloutPolicyResponse>?> calloutPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> calloutPolicies;
+
   /// The cluster data ingestion URI.
   late final pulumi.Output<String> dataIngestionUri;
+
   /// A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).
   late final pulumi.Output<bool?> enableAutoStop;
+
   /// A boolean value that indicates if the cluster's disks are encrypted.
   late final pulumi.Output<bool?> enableDiskEncryption;
+
   /// A boolean value that indicates if double encryption is enabled.
   late final pulumi.Output<bool?> enableDoubleEncryption;
+
   /// A boolean value that indicates if the purge operations are enabled.
   late final pulumi.Output<bool?> enablePurge;
+
   /// A boolean value that indicates if the streaming ingest is enabled.
   late final pulumi.Output<bool?> enableStreamingIngest;
+
   /// The engine type
   late final pulumi.Output<String?> engineType;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The identity of the cluster, if configured.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// KeyVault properties for the cluster encryption.
   late final pulumi.Output<KeyVaultPropertiesResponse?> keyVaultProperties;
+
   /// List of the cluster's language extensions.
   late final pulumi.Output<LanguageExtensionsListResponse?> languageExtensions;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Properties of the peer cluster involved in a migration to/from this cluster.
   late final pulumi.Output<MigrationClusterPropertiesResponse> migrationCluster;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Optimized auto scale definition.
   late final pulumi.Output<OptimizedAutoscaleResponse?> optimizedAutoscale;
+
   /// A list of private endpoint connections.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
   late final pulumi.Output<String?> publicIPType;
+
   /// Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> restrictOutboundNetworkAccess;
+
   /// The SKU of the cluster.
   late final pulumi.Output<AzureSkuResponse> sku;
+
   /// The state of the resource.
   late final pulumi.Output<String> state;
+
   /// The reason for the cluster's current state.
   late final pulumi.Output<String> stateReason;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The cluster's external tenants.
-  late final pulumi.Output<List<TrustedExternalTenantResponse>?> trustedExternalTenants;
+  late final pulumi.Output<List<Map<String, dynamic>>?> trustedExternalTenants;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The cluster URI.
   late final pulumi.Output<String> uri;
+
   /// Virtual network definition.
-  late final pulumi.Output<VirtualNetworkConfigurationResponse?> virtualNetworkConfiguration;
+  late final pulumi.Output<VirtualNetworkConfigurationResponse?>
+  virtualNetworkConfiguration;
+
   /// Indicates whether the cluster is zonal or non-zonal.
   late final pulumi.Output<String> zoneStatus;
+
   /// The availability zones of the cluster.
   late final pulumi.Output<List<String>?> zones;
 
@@ -394,46 +427,67 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kusto:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptedAudiences = registerOutput<List<AcceptedAudiencesResponse>?>('acceptedAudiences');
-    this.allowedFqdnList = registerOutput<List<String>?>('allowedFqdnList');
-    this.allowedIpRangeList = registerOutput<List<String>?>('allowedIpRangeList');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.calloutPolicies = registerOutput<List<CalloutPolicyResponse>?>('calloutPolicies');
-    this.dataIngestionUri = registerOutput<String>('dataIngestionUri');
-    this.enableAutoStop = registerOutput<bool?>('enableAutoStop');
-    this.enableDiskEncryption = registerOutput<bool?>('enableDiskEncryption');
-    this.enableDoubleEncryption = registerOutput<bool?>('enableDoubleEncryption');
-    this.enablePurge = registerOutput<bool?>('enablePurge');
-    this.enableStreamingIngest = registerOutput<bool?>('enableStreamingIngest');
-    this.engineType = registerOutput<String?>('engineType');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>('keyVaultProperties');
-    this.languageExtensions = registerOutput<LanguageExtensionsListResponse?>('languageExtensions');
-    this.location = registerOutput<String>('location');
-    this.migrationCluster = registerOutput<MigrationClusterPropertiesResponse>('migrationCluster');
+         'azure-native:kusto:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptedAudiences = registerOutput<List<Map<String, dynamic>>?>(
+      'acceptedAudiences',
+    );
+    allowedFqdnList = registerOutput<List<String>?>('allowedFqdnList');
+    allowedIpRangeList = registerOutput<List<String>?>('allowedIpRangeList');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    calloutPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'calloutPolicies',
+    );
+    dataIngestionUri = registerOutput<String>('dataIngestionUri');
+    enableAutoStop = registerOutput<bool?>('enableAutoStop');
+    enableDiskEncryption = registerOutput<bool?>('enableDiskEncryption');
+    enableDoubleEncryption = registerOutput<bool?>('enableDoubleEncryption');
+    enablePurge = registerOutput<bool?>('enablePurge');
+    enableStreamingIngest = registerOutput<bool?>('enableStreamingIngest');
+    engineType = registerOutput<String?>('engineType');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<IdentityResponse?>('identity');
+    keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>(
+      'keyVaultProperties',
+    );
+    languageExtensions = registerOutput<LanguageExtensionsListResponse?>(
+      'languageExtensions',
+    );
+    location = registerOutput<String>('location');
+    migrationCluster = registerOutput<MigrationClusterPropertiesResponse>(
+      'migrationCluster',
+    );
     this.name = registerOutput<String>('name');
-    this.optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>('optimizedAutoscale');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicIPType = registerOutput<String?>('publicIPType');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.restrictOutboundNetworkAccess = registerOutput<String?>('restrictOutboundNetworkAccess');
-    this.sku = registerOutput<AzureSkuResponse>('sku');
-    this.state = registerOutput<String>('state');
-    this.stateReason = registerOutput<String>('stateReason');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trustedExternalTenants = registerOutput<List<TrustedExternalTenantResponse>?>('trustedExternalTenants');
-    this.type = registerOutput<String>('type');
-    this.uri = registerOutput<String>('uri');
-    this.virtualNetworkConfiguration = registerOutput<VirtualNetworkConfigurationResponse?>('virtualNetworkConfiguration');
-    this.zoneStatus = registerOutput<String>('zoneStatus');
-    this.zones = registerOutput<List<String>?>('zones');
+    optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>(
+      'optimizedAutoscale',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPType = registerOutput<String?>('publicIPType');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    restrictOutboundNetworkAccess = registerOutput<String?>(
+      'restrictOutboundNetworkAccess',
+    );
+    sku = registerOutput<AzureSkuResponse>('sku');
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trustedExternalTenants = registerOutput<List<Map<String, dynamic>>?>(
+      'trustedExternalTenants',
+    );
+    type = registerOutput<String>('type');
+    uri = registerOutput<String>('uri');
+    virtualNetworkConfiguration =
+        registerOutput<VirtualNetworkConfigurationResponse?>(
+          'virtualNetworkConfiguration',
+        );
+    zoneStatus = registerOutput<String>('zoneStatus');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

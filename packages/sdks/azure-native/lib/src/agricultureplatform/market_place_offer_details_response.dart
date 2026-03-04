@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MarketPlaceOfferDetailsResponse {
   /// Publisher Id.
   final pulumi.Input<String> publisherId;
+
   /// Saas offer Id.
   final pulumi.Input<String> saasOfferId;
 
@@ -26,9 +27,8 @@ class MarketPlaceOfferDetailsResponse {
 
   factory MarketPlaceOfferDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MarketPlaceOfferDetailsResponse(
-      publisherId: (map['publisherId'] as String).input(),
-      saasOfferId: (map['saasOfferId'] as String).input(),
+      publisherId: pulumi.Input.fromValue(map['publisherId'] as String),
+      saasOfferId: pulumi.Input.fromValue(map['saasOfferId'] as String),
     );
   }
 }
-

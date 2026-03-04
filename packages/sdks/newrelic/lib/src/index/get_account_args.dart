@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// The unique identifier of the account in New Relic. This must be an integer.
   final pulumi.Input<String>? accountId;
+
   /// The name of the account in New Relic. This must be a string.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? scope;
@@ -17,11 +18,7 @@ class GetAccountArgs {
   /// [accountId] The unique identifier of the account in New Relic. This must be an integer.
   /// [name] The name of the account in New Relic. This must be a string.
   /// [scope] Optional.
-  GetAccountArgs({
-    this.accountId,
-    this.name,
-    this.scope,
-  });
+  GetAccountArgs({this.accountId, this.name, this.scope});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +30,21 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

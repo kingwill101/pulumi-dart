@@ -1085,22 +1085,32 @@ import 'system_data_response.dart';
 class DeploymentSetting extends pulumi.CustomResource {
   /// Azure resource ids of Arc machines to be part of cluster.
   late final pulumi.Output<List<String>> arcNodeResourceIds;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Scale units will contains list of deployment data
-  late final pulumi.Output<DeploymentConfigurationResponse> deploymentConfiguration;
+  late final pulumi.Output<DeploymentConfigurationResponse>
+  deploymentConfiguration;
+
   /// The deployment mode for cluster deployment.
   late final pulumi.Output<String> deploymentMode;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The intended operation for a cluster.
   late final pulumi.Output<String?> operationType;
+
   /// DeploymentSetting provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// Deployment Status reported from cluster.
   late final pulumi.Output<EceReportedPropertiesResponse> reportedProperties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1113,20 +1123,24 @@ class DeploymentSetting extends pulumi.CustomResource {
     DeploymentSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:DeploymentSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arcNodeResourceIds = registerOutput<List<String>>('arcNodeResourceIds');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deploymentConfiguration = registerOutput<DeploymentConfigurationResponse>('deploymentConfiguration');
-    this.deploymentMode = registerOutput<String>('deploymentMode');
+         'azure-native:azurestackhci:DeploymentSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arcNodeResourceIds = registerOutput<List<String>>('arcNodeResourceIds');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentConfiguration = registerOutput<DeploymentConfigurationResponse>(
+      'deploymentConfiguration',
+    );
+    deploymentMode = registerOutput<String>('deploymentMode');
     this.name = registerOutput<String>('name');
-    this.operationType = registerOutput<String?>('operationType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.reportedProperties = registerOutput<EceReportedPropertiesResponse>('reportedProperties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    operationType = registerOutput<String?>('operationType');
+    provisioningState = registerOutput<String>('provisioningState');
+    reportedProperties = registerOutput<EceReportedPropertiesResponse>(
+      'reportedProperties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

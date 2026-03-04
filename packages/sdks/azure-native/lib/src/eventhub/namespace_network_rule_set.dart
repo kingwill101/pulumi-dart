@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_network_rule_set_args.dart';
-import 'nwrule_set_ip_rules_response.dart';
-import 'nwrule_set_virtual_network_rules_response.dart';
 import 'system_data_response.dart';
 
 /// Description of topic resource.
@@ -382,24 +380,33 @@ import 'system_data_response.dart';
 class NamespaceNetworkRuleSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Default Action for Network Rule Set
   late final pulumi.Output<String?> defaultAction;
+
   /// List of IpRules
-  late final pulumi.Output<List<NWRuleSetIpRulesResponse>?> ipRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Value that indicates whether Trusted Service Access is Enabled or not.
   late final pulumi.Output<bool?> trustedServiceAccessEnabled;
+
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
+
   /// List VirtualNetwork Rules
-  late final pulumi.Output<List<NWRuleSetVirtualNetworkRulesResponse>?> virtualNetworkRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
 
   /// Creates a new [NamespaceNetworkRuleSet].
   /// [name] The Pulumi resource name.
@@ -410,20 +417,24 @@ class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     NamespaceNetworkRuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventhub:NamespaceNetworkRuleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultAction = registerOutput<String?>('defaultAction');
-    this.ipRules = registerOutput<List<NWRuleSetIpRulesResponse>?>('ipRules');
-    this.location = registerOutput<String>('location');
+         'azure-native:eventhub:NamespaceNetworkRuleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultAction = registerOutput<String?>('defaultAction');
+    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.trustedServiceAccessEnabled = registerOutput<bool?>('trustedServiceAccessEnabled');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworkRules = registerOutput<List<NWRuleSetVirtualNetworkRulesResponse>?>('virtualNetworkRules');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    trustedServiceAccessEnabled = registerOutput<bool?>(
+      'trustedServiceAccessEnabled',
+    );
+    type = registerOutput<String>('type');
+    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>(
+      'virtualNetworkRules',
+    );
   }
 }

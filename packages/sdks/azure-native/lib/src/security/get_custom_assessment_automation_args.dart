@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomAssessmentAutomationArgs {
   /// Name of the Custom Assessment Automation.
   final pulumi.Input<String> customAssessmentAutomationName;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetCustomAssessmentAutomationArgs {
 
   factory GetCustomAssessmentAutomationArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomAssessmentAutomationArgs(
-      customAssessmentAutomationName: (map['customAssessmentAutomationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      customAssessmentAutomationName: pulumi.Input.fromValue(
+        map['customAssessmentAutomationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

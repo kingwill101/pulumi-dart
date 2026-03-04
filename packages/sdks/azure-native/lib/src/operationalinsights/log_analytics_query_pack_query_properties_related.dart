@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsQueryPackQueryPropertiesRelated {
   /// The related categories for the function.
   final pulumi.Input<List<String>>? categories;
+
   /// The related resource types for the function.
   final pulumi.Input<List<String>>? resourceTypes;
+
   /// The related Log Analytics solutions for the function.
   final pulumi.Input<List<String>>? solutions;
 
@@ -29,12 +31,25 @@ class LogAnalyticsQueryPackQueryPropertiesRelated {
     };
   }
 
-  factory LogAnalyticsQueryPackQueryPropertiesRelated.fromMap(Map<String, dynamic> map) {
+  factory LogAnalyticsQueryPackQueryPropertiesRelated.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogAnalyticsQueryPackQueryPropertiesRelated(
-      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
-      solutions: map['solutions'] == null ? null : ((map['solutions']! as List).cast<String>()).input(),
+      categories: (() {
+        final guardedValue = map['categories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceTypes: (() {
+        final guardedValue = map['resourceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      solutions: (() {
+        final guardedValue = map['solutions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

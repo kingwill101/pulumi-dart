@@ -1,5 +1,3 @@
-library module_datacatalog;
-
 export 'datacatalog/entry.dart';
 export 'datacatalog/entry_args.dart';
 export 'datacatalog/entry_bigquery_date_sharded_spec.dart';

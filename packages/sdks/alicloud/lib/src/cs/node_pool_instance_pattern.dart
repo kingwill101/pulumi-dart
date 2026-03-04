@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodePoolInstancePattern {
   /// The number of vCPU cores of the instance type. Example value: 8.
   final pulumi.Input<int>? cores;
+
   /// The CPU architecture of the instance. Value range:
   /// - X86
   /// - ARM
   final pulumi.Input<List<String>>? cpuArchitectures;
+
   /// Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
   /// - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
   /// - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
   final pulumi.Input<List<String>>? excludedInstanceTypes;
+
   /// Instance classification. Value range:
   /// - General-purpose: Universal.
   /// - Compute-optimized: Compute type.
@@ -25,20 +28,27 @@ class NodePoolInstancePattern {
   /// - ECS Bare Metal: elastic Bare Metal server.
   /// - High Performance Compute: High Performance Compute.
   final pulumi.Input<List<String>>? instanceCategories;
+
   /// Instance specification family level, value range:
   /// - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
   /// - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
   final pulumi.Input<String> instanceFamilyLevel;
+
   /// Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
   final pulumi.Input<List<String>>? instanceTypeFamilies;
+
   /// The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
   final pulumi.Input<int>? maxCpuCores;
+
   /// The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
   final pulumi.Input<double>? maxMemorySize;
+
   /// The memory size of the instance type, in GiB. Example value: 8.
   final pulumi.Input<double>? memory;
+
   /// The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
   final pulumi.Input<int>? minCpuCores;
+
   /// The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
   final pulumi.Input<double>? minMemorySize;
 
@@ -86,18 +96,59 @@ class NodePoolInstancePattern {
 
   factory NodePoolInstancePattern.fromMap(Map<String, dynamic> map) {
     return NodePoolInstancePattern(
-      cores: map['cores'] == null ? null : (map['cores']! as int).input(),
-      cpuArchitectures: map['cpuArchitectures'] == null ? null : ((map['cpuArchitectures']! as List).cast<String>()).input(),
-      excludedInstanceTypes: map['excludedInstanceTypes'] == null ? null : ((map['excludedInstanceTypes']! as List).cast<String>()).input(),
-      instanceCategories: map['instanceCategories'] == null ? null : ((map['instanceCategories']! as List).cast<String>()).input(),
-      instanceFamilyLevel: (map['instanceFamilyLevel'] as String).input(),
-      instanceTypeFamilies: map['instanceTypeFamilies'] == null ? null : ((map['instanceTypeFamilies']! as List).cast<String>()).input(),
-      maxCpuCores: map['maxCpuCores'] == null ? null : (map['maxCpuCores']! as int).input(),
-      maxMemorySize: map['maxMemorySize'] == null ? null : (map['maxMemorySize']! as double).input(),
-      memory: map['memory'] == null ? null : (map['memory']! as double).input(),
-      minCpuCores: map['minCpuCores'] == null ? null : (map['minCpuCores']! as int).input(),
-      minMemorySize: map['minMemorySize'] == null ? null : (map['minMemorySize']! as double).input(),
+      cores: (() {
+        final guardedValue = map['cores'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cpuArchitectures: (() {
+        final guardedValue = map['cpuArchitectures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      excludedInstanceTypes: (() {
+        final guardedValue = map['excludedInstanceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceCategories: (() {
+        final guardedValue = map['instanceCategories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceFamilyLevel: pulumi.Input.fromValue(
+        map['instanceFamilyLevel'] as String,
+      ),
+      instanceTypeFamilies: (() {
+        final guardedValue = map['instanceTypeFamilies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maxCpuCores: (() {
+        final guardedValue = map['maxCpuCores'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxMemorySize: (() {
+        final guardedValue = map['maxMemorySize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minCpuCores: (() {
+        final guardedValue = map['minCpuCores'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minMemorySize: (() {
+        final guardedValue = map['minMemorySize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

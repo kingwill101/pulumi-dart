@@ -12,20 +12,21 @@ class FloorsettingFilterConfigSdpSettingsBasicConfig {
 
   /// Creates a new [FloorsettingFilterConfigSdpSettingsBasicConfig].
   /// [filterEnforcement] Tells whether the Sensitive Data Protection basic config is enabled or
-  FloorsettingFilterConfigSdpSettingsBasicConfig({
-    this.filterEnforcement,
-  });
+  FloorsettingFilterConfigSdpSettingsBasicConfig({this.filterEnforcement});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filterEnforcement': ?filterEnforcement,
-    };
+    return <String, dynamic>{'filterEnforcement': ?filterEnforcement};
   }
 
-  factory FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap(Map<String, dynamic> map) {
+  factory FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FloorsettingFilterConfigSdpSettingsBasicConfig(
-      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement']! as String).input(),
+      filterEnforcement: (() {
+        final guardedValue = map['filterEnforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

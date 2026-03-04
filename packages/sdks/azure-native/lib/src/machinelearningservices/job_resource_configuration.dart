@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobResourceConfiguration {
   /// Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
   final pulumi.Input<String>? dockerArgs;
+
   /// Optional number of instances or nodes used by the compute target.
   final pulumi.Input<int>? instanceCount;
+
   /// Optional type of VM used as supported by the compute target.
   final pulumi.Input<String>? instanceType;
+
   /// Additional properties bag.
   final pulumi.Input<Map<String, dynamic>>? properties;
+
   /// Size of the docker container's shared memory block. This should be in the format of (number)(unit) where number as to be greater than 0 and the unit can be one of b(bytes), k(kilobytes), m(megabytes), or g(gigabytes).
   final pulumi.Input<String>? shmSize;
 
@@ -40,12 +44,33 @@ class JobResourceConfiguration {
 
   factory JobResourceConfiguration.fromMap(Map<String, dynamic> map) {
     return JobResourceConfiguration(
-      dockerArgs: map['dockerArgs'] == null ? null : (map['dockerArgs']! as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, dynamic>()).input(),
-      shmSize: map['shmSize'] == null ? null : (map['shmSize']! as String).input(),
+      dockerArgs: (() {
+        final guardedValue = map['dockerArgs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      shmSize: (() {
+        final guardedValue = map['shmSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

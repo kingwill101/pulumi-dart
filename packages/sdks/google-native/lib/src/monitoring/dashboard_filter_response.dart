@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardFilterResponse {
   /// The specified filter type
   final pulumi.Input<String> filterType;
+
   /// The key for the label
   final pulumi.Input<String> labelKey;
+
   /// A variable-length string value.
   final pulumi.Input<String> stringValue;
+
   /// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
   final pulumi.Input<String> templateVariable;
 
@@ -36,11 +39,12 @@ class DashboardFilterResponse {
 
   factory DashboardFilterResponse.fromMap(Map<String, dynamic> map) {
     return DashboardFilterResponse(
-      filterType: (map['filterType'] as String).input(),
-      labelKey: (map['labelKey'] as String).input(),
-      stringValue: (map['stringValue'] as String).input(),
-      templateVariable: (map['templateVariable'] as String).input(),
+      filterType: pulumi.Input.fromValue(map['filterType'] as String),
+      labelKey: pulumi.Input.fromValue(map['labelKey'] as String),
+      stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
+      templateVariable: pulumi.Input.fromValue(
+        map['templateVariable'] as String,
+      ),
     );
   }
 }
-

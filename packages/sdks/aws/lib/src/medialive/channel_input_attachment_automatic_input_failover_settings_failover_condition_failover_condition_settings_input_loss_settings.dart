@@ -13,15 +13,18 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'inputLossThresholdMsec': ?inputLossThresholdMsec,
-    };
+    return <String, dynamic>{'inputLossThresholdMsec': ?inputLossThresholdMsec};
   }
 
-  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings(
-      inputLossThresholdMsec: map['inputLossThresholdMsec'] == null ? null : ((map['inputLossThresholdMsec'] as int).input()).input(),
+      inputLossThresholdMsec: (() {
+        final guardedValue = map['inputLossThresholdMsec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

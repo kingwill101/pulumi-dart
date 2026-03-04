@@ -8,20 +8,15 @@ class GetAccountVirtualNetworkRule {
 
   /// Creates a new [GetAccountVirtualNetworkRule].
   /// [id] The ID of the virtual network subnet.
-  GetAccountVirtualNetworkRule({
-    required this.id,
-  });
+  GetAccountVirtualNetworkRule({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetAccountVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return GetAccountVirtualNetworkRule(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

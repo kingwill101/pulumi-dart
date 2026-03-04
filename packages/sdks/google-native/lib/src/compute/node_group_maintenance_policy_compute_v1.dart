@@ -5,16 +5,17 @@ enum NodeGroupMaintenancePolicyComputeV1 {
   migrateWithinNodeGroup("MIGRATE_WITHIN_NODE_GROUP"),
   restartInPlace("RESTART_IN_PLACE");
 
-  const NodeGroupMaintenancePolicyComputeV1(this.value);
-  final String value;
+  const NodeGroupMaintenancePolicyComputeV1(this.wireValue);
+  final String wireValue;
 
   static NodeGroupMaintenancePolicyComputeV1 fromValue(String value) {
     for (final item in NodeGroupMaintenancePolicyComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodeGroupMaintenancePolicyComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown NodeGroupMaintenancePolicyComputeV1 value: $value',
+    );
   }
 }
-

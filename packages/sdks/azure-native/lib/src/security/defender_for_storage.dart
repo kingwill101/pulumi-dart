@@ -217,10 +217,14 @@ import 'defender_for_storage_setting_properties_response.dart';
 class DefenderForStorage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Defender for Storage resource properties.
-  late final pulumi.Output<DefenderForStorageSettingPropertiesResponse> properties;
+  late final pulumi.Output<DefenderForStorageSettingPropertiesResponse>
+  properties;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -233,14 +237,16 @@ class DefenderForStorage extends pulumi.CustomResource {
     DefenderForStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:DefenderForStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:security:DefenderForStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<DefenderForStorageSettingPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<DefenderForStorageSettingPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

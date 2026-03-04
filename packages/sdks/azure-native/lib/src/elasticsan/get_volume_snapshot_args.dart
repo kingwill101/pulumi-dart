@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVolumeSnapshotArgs {
   /// The name of the ElasticSan.
   final pulumi.Input<String> elasticSanName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the volume snapshot within the given volume group.
   final pulumi.Input<String> snapshotName;
+
   /// The name of the VolumeGroup.
   final pulumi.Input<String> volumeGroupName;
 
@@ -39,11 +42,12 @@ class GetVolumeSnapshotArgs {
 
   factory GetVolumeSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeSnapshotArgs(
-      elasticSanName: (map['elasticSanName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snapshotName: (map['snapshotName'] as String).input(),
-      volumeGroupName: (map['volumeGroupName'] as String).input(),
+      elasticSanName: pulumi.Input.fromValue(map['elasticSanName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      snapshotName: pulumi.Input.fromValue(map['snapshotName'] as String),
+      volumeGroupName: pulumi.Input.fromValue(map['volumeGroupName'] as String),
     );
   }
 }
-

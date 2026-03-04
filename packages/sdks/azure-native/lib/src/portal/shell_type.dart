@@ -4,16 +4,15 @@ enum ShellType {
   valuePwsh("pwsh"),
   valuePowershell("powershell");
 
-  const ShellType(this.value);
-  final String value;
+  const ShellType(this.wireValue);
+  final String wireValue;
 
   static ShellType fromValue(String value) {
     for (final item in ShellType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShellType value: $value');
   }
 }
-

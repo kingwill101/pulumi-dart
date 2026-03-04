@@ -11,20 +11,15 @@ class AliasArgs {
 
   /// Creates a new [AliasArgs].
   /// [accountAlias] Required.
-  AliasArgs({
-    required this.accountAlias,
-  });
+  AliasArgs({required this.accountAlias});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountAlias': accountAlias,
-    };
+    return <String, dynamic>{'accountAlias': accountAlias};
   }
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      accountAlias: (map['accountAlias'] as String).input(),
+      accountAlias: pulumi.Input.fromValue(map['accountAlias'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOfferAccessTokenArgs {
   /// Id of the offer
   final pulumi.Input<String> offerId;
+
   /// The name of the publisher.
   final pulumi.Input<String> requestId;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -34,10 +36,9 @@ class GetOfferAccessTokenArgs {
 
   factory GetOfferAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetOfferAccessTokenArgs(
-      offerId: (map['offerId'] as String).input(),
-      requestId: (map['requestId'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      offerId: pulumi.Input.fromValue(map['offerId'] as String),
+      requestId: pulumi.Input.fromValue(map['requestId'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

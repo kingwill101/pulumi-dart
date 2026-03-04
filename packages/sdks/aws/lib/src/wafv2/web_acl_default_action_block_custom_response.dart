@@ -6,10 +6,15 @@ import 'web_acl_default_action_block_custom_response_response_header.dart';
 class WebAclDefaultActionBlockCustomResponse {
   /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
   final pulumi.Input<String>? customResponseBodyKey;
+
   /// The HTTP status code to return to the client.
   final pulumi.Input<int> responseCode;
+
   /// The `response_header` blocks used to define the HTTP response headers added to the response. See `response_header` below for details.
-  final pulumi.Input<List<WebAclDefaultActionBlockCustomResponseResponseHeader>>? responseHeaders;
+  final pulumi.Input<
+    List<WebAclDefaultActionBlockCustomResponseResponseHeader>
+  >?
+  responseHeaders;
 
   /// Creates a new [WebAclDefaultActionBlockCustomResponse].
   /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
@@ -25,16 +30,46 @@ class WebAclDefaultActionBlockCustomResponse {
     return <String, dynamic>{
       'customResponseBodyKey': ?customResponseBodyKey,
       'responseCode': responseCode,
-      'responseHeaders': ?pulumi.Input.mapOptionalInputValue<List<WebAclDefaultActionBlockCustomResponseResponseHeader>, List<Map<String, dynamic>>>(responseHeaders, (value) => pulumi.Input.encodeList<WebAclDefaultActionBlockCustomResponseResponseHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'responseHeaders':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WebAclDefaultActionBlockCustomResponseResponseHeader>,
+            List<Map<String, dynamic>>
+          >(
+            responseHeaders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclDefaultActionBlockCustomResponseResponseHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory WebAclDefaultActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
+  factory WebAclDefaultActionBlockCustomResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclDefaultActionBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : ((map['customResponseBodyKey'] as String).input()).input(),
-      responseCode: (map['responseCode'] as int).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : ((pulumi.Input.decodeList<WebAclDefaultActionBlockCustomResponseResponseHeader>(map['responseHeaders']!, (value) => WebAclDefaultActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      customResponseBodyKey: (() {
+        final guardedValue = map['customResponseBodyKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responseCode: pulumi.Input.fromValue(map['responseCode'] as int),
+      responseHeaders: (() {
+        final guardedValue = map['responseHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            WebAclDefaultActionBlockCustomResponseResponseHeader
+          >(
+            guardedValue,
+            (value) =>
+                WebAclDefaultActionBlockCustomResponseResponseHeader.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

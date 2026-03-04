@@ -3,16 +3,17 @@ enum HTTPHealthCheckProxyHeaderComputeV1 {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const HTTPHealthCheckProxyHeaderComputeV1(this.value);
-  final String value;
+  const HTTPHealthCheckProxyHeaderComputeV1(this.wireValue);
+  final String wireValue;
 
   static HTTPHealthCheckProxyHeaderComputeV1 fromValue(String value) {
     for (final item in HTTPHealthCheckProxyHeaderComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HTTPHealthCheckProxyHeaderComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown HTTPHealthCheckProxyHeaderComputeV1 value: $value',
+    );
   }
 }
-

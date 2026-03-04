@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTemplateVolumeGc {
   /// GCS Bucket name
   final pulumi.Input<String> bucket;
+
   /// A list of flags to pass to the gcsfuse command for configuring this volume.
   /// Flags should be passed without leading dashes.
   final pulumi.Input<List<String>> mountOptions;
+
   /// If true, mount the GCS bucket as read-only
   final pulumi.Input<bool> readOnly;
 
@@ -31,10 +33,11 @@ class GetServiceTemplateVolumeGc {
 
   factory GetServiceTemplateVolumeGc.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateVolumeGc(
-      bucket: (map['bucket'] as String).input(),
-      mountOptions: ((map['mountOptions'] as List).cast<String>()).input(),
-      readOnly: (map['readOnly'] as bool).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      mountOptions: pulumi.Input.fromValue(
+        (map['mountOptions'] as List).cast<String>(),
+      ),
+      readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
     );
   }
 }
-

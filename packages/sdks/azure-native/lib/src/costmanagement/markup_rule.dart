@@ -182,20 +182,28 @@ import 'markup_rule_args.dart';
 class MarkupRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Customer information for the markup rule.
   late final pulumi.Output<CustomerMetadataResponse> customerDetails;
+
   /// The description of the markup rule.
   late final pulumi.Output<String?> description;
+
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   late final pulumi.Output<String?> eTag;
+
   /// Ending date of the markup rule.
   late final pulumi.Output<String?> endDate;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The markup percentage of the rule.
   late final pulumi.Output<double> percentage;
+
   /// Starting date of the markup rule.
   late final pulumi.Output<String> startDate;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -208,19 +216,21 @@ class MarkupRule extends pulumi.CustomResource {
     MarkupRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:costmanagement:MarkupRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customerDetails = registerOutput<CustomerMetadataResponse>('customerDetails');
-    this.description = registerOutput<String?>('description');
-    this.eTag = registerOutput<String?>('eTag');
-    this.endDate = registerOutput<String?>('endDate');
+         'azure-native:costmanagement:MarkupRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customerDetails = registerOutput<CustomerMetadataResponse>(
+      'customerDetails',
+    );
+    description = registerOutput<String?>('description');
+    eTag = registerOutput<String?>('eTag');
+    endDate = registerOutput<String?>('endDate');
     this.name = registerOutput<String>('name');
-    this.percentage = registerOutput<double>('percentage');
-    this.startDate = registerOutput<String>('startDate');
-    this.type = registerOutput<String>('type');
+    percentage = registerOutput<double>('percentage');
+    startDate = registerOutput<String>('startDate');
+    type = registerOutput<String>('type');
   }
 }

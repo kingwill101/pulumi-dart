@@ -8,7 +8,7 @@ import 'delegate_account_state.dart';
 ///
 /// For information about Cloud SSO Delegate Account and how to use it, see [What is Delegate Account](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/EnableDelegateAccount).
 ///
-/// > **NOTE:** Available since v1.259.0.
+/// &gt; **NOTE:** Available since v1.259.0.
 ///
 /// ## Example Usage
 ///
@@ -204,12 +204,12 @@ class DelegateAccount extends pulumi.CustomResource {
     DelegateAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudsso/delegateAccount:DelegateAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'alicloud:cloudsso/delegateAccount:DelegateAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
   }
 
   /// Gets an existing [DelegateAccount] resource's state with the given [name] and [id].
@@ -230,11 +230,11 @@ class DelegateAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudsso/delegateAccount:DelegateAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'alicloud:cloudsso/delegateAccount:DelegateAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
   }
 }

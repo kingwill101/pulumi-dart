@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointServicesArgs {
   /// Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
   final pulumi.Input<bool>? autoAcceptConnection;
+
   /// A list of Vpc Endpoint Service IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Vpc Endpoint Service name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
   final pulumi.Input<String>? serviceBusinessStatus;
+
   /// The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
   final pulumi.Input<String>? status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the endpoint service.
   final pulumi.Input<String>? vpcEndpointServiceName;
 
@@ -59,15 +66,48 @@ class GetVpcEndpointServicesArgs {
 
   factory GetVpcEndpointServicesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServicesArgs(
-      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : (map['autoAcceptConnection']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      serviceBusinessStatus: map['serviceBusinessStatus'] == null ? null : (map['serviceBusinessStatus']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : (map['vpcEndpointServiceName']! as String).input(),
+      autoAcceptConnection: (() {
+        final guardedValue = map['autoAcceptConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceBusinessStatus: (() {
+        final guardedValue = map['serviceBusinessStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcEndpointServiceName: (() {
+        final guardedValue = map['vpcEndpointServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

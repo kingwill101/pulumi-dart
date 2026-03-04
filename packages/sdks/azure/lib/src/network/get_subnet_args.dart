@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubnetArgs {
   /// Specifies the name of the Subnet.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the resource group the Virtual Network is located in.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the name of the Virtual Network this Subnet is located within.
   final pulumi.Input<String> virtualNetworkName;
 
@@ -34,10 +36,13 @@ class GetSubnetArgs {
 
   factory GetSubnetArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualNetworkName: pulumi.Input.fromValue(
+        map['virtualNetworkName'] as String,
+      ),
     );
   }
 }
-

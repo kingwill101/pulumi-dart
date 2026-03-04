@@ -9,20 +9,15 @@ class GkeBackupAgentConfigResponse {
 
   /// Creates a new [GkeBackupAgentConfigResponse].
   /// [enabled] Whether the Backup for GKE agent is enabled for this cluster.
-  GkeBackupAgentConfigResponse({
-    required this.enabled,
-  });
+  GkeBackupAgentConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory GkeBackupAgentConfigResponse.fromMap(Map<String, dynamic> map) {
     return GkeBackupAgentConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

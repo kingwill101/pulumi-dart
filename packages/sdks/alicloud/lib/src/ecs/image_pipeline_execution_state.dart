@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImagePipelineExecutionState {
   /// The time when the image build task was created.
   final pulumi.Input<String>? createTime;
+
   /// The ID of the image template.
   final pulumi.Input<String>? imagePipelineId;
+
   /// The status of the image build task. Valid values:
   /// - CANCELLED: canceled. The build process has been canceled.
   final pulumi.Input<String>? status;
@@ -32,10 +34,21 @@ class ImagePipelineExecutionState {
 
   factory ImagePipelineExecutionState.fromMap(Map<String, dynamic> map) {
     return ImagePipelineExecutionState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      imagePipelineId: map['imagePipelineId'] == null ? null : (map['imagePipelineId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imagePipelineId: (() {
+        final guardedValue = map['imagePipelineId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

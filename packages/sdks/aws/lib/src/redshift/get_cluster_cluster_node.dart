@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterClusterNode {
   /// Whether the node is a leader node or a compute node
   final pulumi.Input<String> nodeRole;
+
   /// Private IP address of a node within a cluster
   final pulumi.Input<String> privateIpAddress;
+
   /// Public IP address of a node within a cluster
   final pulumi.Input<String> publicIpAddress;
 
@@ -30,10 +32,11 @@ class GetClusterClusterNode {
 
   factory GetClusterClusterNode.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterNode(
-      nodeRole: (map['nodeRole'] as String).input(),
-      privateIpAddress: (map['privateIpAddress'] as String).input(),
-      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      nodeRole: pulumi.Input.fromValue(map['nodeRole'] as String),
+      privateIpAddress: pulumi.Input.fromValue(
+        map['privateIpAddress'] as String,
+      ),
+      publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
     );
   }
 }
-

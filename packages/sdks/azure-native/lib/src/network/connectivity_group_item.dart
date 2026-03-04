@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectivityGroupItem {
   /// Group connectivity type.
   final pulumi.Input<String> groupConnectivity;
+
   /// Flag if global is supported.
   final pulumi.Input<String>? isGlobal;
+
   /// Network group Id.
   final pulumi.Input<String> networkGroupId;
+
   /// Flag if need to use hub gateway.
   final pulumi.Input<String>? useHubGateway;
 
@@ -36,11 +39,20 @@ class ConnectivityGroupItem {
 
   factory ConnectivityGroupItem.fromMap(Map<String, dynamic> map) {
     return ConnectivityGroupItem(
-      groupConnectivity: (map['groupConnectivity'] as String).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as String).input(),
-      networkGroupId: (map['networkGroupId'] as String).input(),
-      useHubGateway: map['useHubGateway'] == null ? null : (map['useHubGateway']! as String).input(),
+      groupConnectivity: pulumi.Input.fromValue(
+        map['groupConnectivity'] as String,
+      ),
+      isGlobal: (() {
+        final guardedValue = map['isGlobal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkGroupId: pulumi.Input.fromValue(map['networkGroupId'] as String),
+      useHubGateway: (() {
+        final guardedValue = map['useHubGateway'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

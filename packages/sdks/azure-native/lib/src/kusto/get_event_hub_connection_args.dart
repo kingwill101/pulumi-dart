@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventHubConnectionArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
+
   /// The name of the database in the Kusto cluster.
   final pulumi.Input<String> databaseName;
+
   /// The name of the event hub connection.
   final pulumi.Input<String> eventHubConnectionName;
+
   /// The name of the resource group containing the Kusto cluster.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetEventHubConnectionArgs {
 
   factory GetEventHubConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetEventHubConnectionArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      eventHubConnectionName: (map['eventHubConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      eventHubConnectionName: pulumi.Input.fromValue(
+        map['eventHubConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

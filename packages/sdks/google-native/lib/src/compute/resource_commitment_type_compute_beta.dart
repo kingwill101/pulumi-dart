@@ -6,16 +6,17 @@ enum ResourceCommitmentTypeComputeBeta {
   unspecified("UNSPECIFIED"),
   vcpu("VCPU");
 
-  const ResourceCommitmentTypeComputeBeta(this.value);
-  final String value;
+  const ResourceCommitmentTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ResourceCommitmentTypeComputeBeta fromValue(String value) {
     for (final item in ResourceCommitmentTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResourceCommitmentTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ResourceCommitmentTypeComputeBeta value: $value',
+    );
   }
 }
-

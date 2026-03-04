@@ -8,20 +8,15 @@ class DomainDevicesDiskBackendDomain {
 
   /// Creates a new [DomainDevicesDiskBackendDomain].
   /// [name] Sets the name of the backend domain associated with the interface, which links the interface to a specific backend configuration.
-  DomainDevicesDiskBackendDomain({
-    required this.name,
-  });
+  DomainDevicesDiskBackendDomain({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesDiskBackendDomain.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackendDomain(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayVcoRoutesRoute {
   /// List of autonomous system numbers through which BGP routing entries pass.
   final pulumi.Input<String> asPath;
+
   /// The creation time of the VPN destination route.
   final pulumi.Input<String> createTime;
+
   /// The ID of the Vpn Gateway Vco Routes.
   final pulumi.Input<String> id;
+
   /// The next hop of the destination route.
   final pulumi.Input<String> nextHop;
+
   /// The destination network segment of the destination route.
   final pulumi.Input<String> routeDest;
+
   /// The source CIDR block of the destination route.
   final pulumi.Input<String> source;
+
   /// The status of the vpn route entry. Valid values: `normal`, `published`.
   final pulumi.Input<String> status;
+
   /// The id of the vpn connection.
   final pulumi.Input<String> vpnConnectionId;
+
   /// The weight value of the destination route.
   final pulumi.Input<int> weight;
 
@@ -60,16 +68,15 @@ class GetGatewayVcoRoutesRoute {
 
   factory GetGatewayVcoRoutesRoute.fromMap(Map<String, dynamic> map) {
     return GetGatewayVcoRoutesRoute(
-      asPath: (map['asPath'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      nextHop: (map['nextHop'] as String).input(),
-      routeDest: (map['routeDest'] as String).input(),
-      source: (map['source'] as String).input(),
-      status: (map['status'] as String).input(),
-      vpnConnectionId: (map['vpnConnectionId'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      asPath: pulumi.Input.fromValue(map['asPath'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
+      routeDest: pulumi.Input.fromValue(map['routeDest'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vpnConnectionId: pulumi.Input.fromValue(map['vpnConnectionId'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

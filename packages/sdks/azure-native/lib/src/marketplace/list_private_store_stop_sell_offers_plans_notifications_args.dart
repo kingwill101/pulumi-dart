@@ -26,11 +26,16 @@ class ListPrivateStoreStopSellOffersPlansNotificationsArgs {
     };
   }
 
-  factory ListPrivateStoreStopSellOffersPlansNotificationsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListPrivateStoreStopSellOffersPlansNotificationsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListPrivateStoreStopSellOffersPlansNotificationsArgs(
-      privateStoreId: (map['privateStoreId'] as String).input(),
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
+      privateStoreId: pulumi.Input.fromValue(map['privateStoreId'] as String),
+      subscriptions: (() {
+        final guardedValue = map['subscriptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

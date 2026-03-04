@@ -8,18 +8,25 @@ import 'network_manager_scope.dart';
 class NetworkManagerState {
   /// One or more `cross_tenant_scopes` blocks as defined below.
   final pulumi.Input<List<NetworkManagerCrossTenantScope>>? crossTenantScopes;
+
   /// A description of the Network Manager.
   final pulumi.Input<String>? description;
+
   /// Specifies the Azure Region where the Network Manager should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name which should be used for this Network Manager. Changing this forces a new Network Manager to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the Resource Group where the Network Manager should exist. Changing this forces a new Network Manager to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `scope` block as defined below.
   final pulumi.Input<NetworkManagerScope>? scope;
+
   /// A list of configuration deployment types. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`, which specify whether Connectivity Configuration, Security Admin Configuration or Routing Configuration are allowed for the Network Manager.
   final pulumi.Input<List<String>>? scopeAccesses;
+
   /// A mapping of tags which should be assigned to the Network Manager.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,12 +52,27 @@ class NetworkManagerState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crossTenantScopes': ?pulumi.Input.mapOptionalInputValue<List<NetworkManagerCrossTenantScope>, List<Map<String, dynamic>>>(crossTenantScopes, (value) => pulumi.Input.encodeList<NetworkManagerCrossTenantScope, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'crossTenantScopes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NetworkManagerCrossTenantScope>,
+            List<Map<String, dynamic>>
+          >(
+            crossTenantScopes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkManagerCrossTenantScope,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'scope': ?pulumi.Input.mapOptionalInputValue<NetworkManagerScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'scope':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkManagerScope,
+            Map<String, dynamic>
+          >(scope, (value) => value.toMap()),
       'scopeAccesses': ?scopeAccesses,
       'tags': ?tags,
     };
@@ -58,15 +80,59 @@ class NetworkManagerState {
 
   factory NetworkManagerState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerState(
-      crossTenantScopes: map['crossTenantScopes'] == null ? null : (pulumi.Input.decodeList<NetworkManagerCrossTenantScope>(map['crossTenantScopes']!, (value) => NetworkManagerCrossTenantScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      scope: map['scope'] == null ? null : (NetworkManagerScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
-      scopeAccesses: map['scopeAccesses'] == null ? null : ((map['scopeAccesses']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      crossTenantScopes: (() {
+        final guardedValue = map['crossTenantScopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NetworkManagerCrossTenantScope>(
+            guardedValue,
+            (value) => NetworkManagerCrossTenantScope.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkManagerScope.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scopeAccesses: (() {
+        final guardedValue = map['scopeAccesses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase {
 
   /// Creates a new [GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase].
   /// [value] The word or phrase to be excluded.
-  GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase({
-    required this.value,
-  });
+  GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'managed_certificate_state.dart';
 
 /// This certificate can be used to secure custom domains on App Services (Windows and Linux) hosted on an App Service Plan of Basic and above (free and shared tiers are not supported).
 ///
-/// > **Note:** A certificate is valid for six months, and about a month before the certificate’s expiration date, App Services renews/rotates the certificate. This is managed by Azure and doesn't require this resource to be changed or reprovisioned. It will change the `thumbprint` computed attribute the next time the resource is refreshed after rotation occurs, so keep that in mind if you have any dependencies on this attribute directly.
+/// &gt; **Note:** A certificate is valid for six months, and about a month before the certificate’s expiration date, App Services renews/rotates the certificate. This is managed by Azure and doesn't require this resource to be changed or reprovisioned. It will change the `thumbprint` computed attribute the next time the resource is refreshed after rotation occurs, so keep that in mind if you have any dependencies on this attribute directly.
 ///
 /// ## Example Usage
 ///
@@ -541,22 +541,31 @@ import 'managed_certificate_state.dart';
 class ManagedCertificate extends pulumi.CustomResource {
   /// The Canonical Name of the Certificate.
   late final pulumi.Output<String> canonicalName;
+
   /// The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.
   late final pulumi.Output<String> customHostnameBindingId;
+
   /// The expiration date of the Certificate.
   late final pulumi.Output<String> expirationDate;
+
   /// The friendly name of the Certificate.
   late final pulumi.Output<String> friendlyName;
+
   /// The list of Host Names for the Certificate.
   late final pulumi.Output<List<String>> hostNames;
+
   /// The Start date for the Certificate.
   late final pulumi.Output<String> issueDate;
+
   /// The issuer of the Certificate.
   late final pulumi.Output<String> issuer;
+
   /// The Subject Name for the Certificate.
   late final pulumi.Output<String> subjectName;
+
   /// A mapping of tags which should be assigned to the App Service Managed Certificate.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Certificate Thumbprint.
   late final pulumi.Output<String> thumbprint;
 
@@ -569,21 +578,21 @@ class ManagedCertificate extends pulumi.CustomResource {
     ManagedCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/managedCertificate:ManagedCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.canonicalName = registerOutput<String>('canonicalName');
-    this.customHostnameBindingId = registerOutput<String>('customHostnameBindingId');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.friendlyName = registerOutput<String>('friendlyName');
-    this.hostNames = registerOutput<List<String>>('hostNames');
-    this.issueDate = registerOutput<String>('issueDate');
-    this.issuer = registerOutput<String>('issuer');
-    this.subjectName = registerOutput<String>('subjectName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thumbprint = registerOutput<String>('thumbprint');
+         'azure:appservice/managedCertificate:ManagedCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    canonicalName = registerOutput<String>('canonicalName');
+    customHostnameBindingId = registerOutput<String>('customHostnameBindingId');
+    expirationDate = registerOutput<String>('expirationDate');
+    friendlyName = registerOutput<String>('friendlyName');
+    hostNames = registerOutput<List<String>>('hostNames');
+    issueDate = registerOutput<String>('issueDate');
+    issuer = registerOutput<String>('issuer');
+    subjectName = registerOutput<String>('subjectName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 
   /// Gets an existing [ManagedCertificate] resource's state with the given [name] and [id].
@@ -604,20 +613,20 @@ class ManagedCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/managedCertificate:ManagedCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.canonicalName = registerOutput<String>('canonicalName');
-    this.customHostnameBindingId = registerOutput<String>('customHostnameBindingId');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.friendlyName = registerOutput<String>('friendlyName');
-    this.hostNames = registerOutput<List<String>>('hostNames');
-    this.issueDate = registerOutput<String>('issueDate');
-    this.issuer = registerOutput<String>('issuer');
-    this.subjectName = registerOutput<String>('subjectName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thumbprint = registerOutput<String>('thumbprint');
+         'azure:appservice/managedCertificate:ManagedCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    canonicalName = registerOutput<String>('canonicalName');
+    customHostnameBindingId = registerOutput<String>('customHostnameBindingId');
+    expirationDate = registerOutput<String>('expirationDate');
+    friendlyName = registerOutput<String>('friendlyName');
+    hostNames = registerOutput<List<String>>('hostNames');
+    issueDate = registerOutput<String>('issueDate');
+    issuer = registerOutput<String>('issuer');
+    subjectName = registerOutput<String>('subjectName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 }

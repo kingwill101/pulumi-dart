@@ -132,20 +132,28 @@ import 'system_data_response.dart';
 class Monitor extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Identity properties of the monitor resource.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
+
   /// The location of the monitor resource
   late final pulumi.Output<String> location;
+
   /// Name of the monitor resource.
   late final pulumi.Output<String> name;
+
   /// Properties of the monitor resource.
   late final pulumi.Output<MonitorPropertiesResponse> properties;
+
   /// SKU of the monitor resource.
   late final pulumi.Output<ResourceSkuResponse?> sku;
+
   /// The system metadata relating to this resource
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags of the monitor resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the monitor resource.
   late final pulumi.Output<String> type;
 
@@ -158,19 +166,19 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:elastic:Monitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:elastic:Monitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MonitorPropertiesResponse>('properties');
-    this.sku = registerOutput<ResourceSkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MonitorPropertiesResponse>('properties');
+    sku = registerOutput<ResourceSkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

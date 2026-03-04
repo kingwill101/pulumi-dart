@@ -8,20 +8,13 @@ class ExportLocal {
 
   /// Creates a new [ExportLocal].
   /// [dest] Output path.
-  ExportLocal({
-    required this.dest,
-  });
+  ExportLocal({required this.dest});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dest': dest,
-    };
+    return <String, dynamic>{'dest': dest};
   }
 
   factory ExportLocal.fromMap(Map<String, dynamic> map) {
-    return ExportLocal(
-      dest: (map['dest'] as String).input(),
-    );
+    return ExportLocal(dest: pulumi.Input.fromValue(map['dest'] as String));
   }
 }
-

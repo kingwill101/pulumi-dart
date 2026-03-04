@@ -5,16 +5,15 @@ enum SecurityContactRole {
   valueOwner("Owner"),
   valueContributor("Contributor");
 
-  const SecurityContactRole(this.value);
-  final String value;
+  const SecurityContactRole(this.wireValue);
+  final String wireValue;
 
   static SecurityContactRole fromValue(String value) {
     for (final item in SecurityContactRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityContactRole value: $value');
   }
 }
-

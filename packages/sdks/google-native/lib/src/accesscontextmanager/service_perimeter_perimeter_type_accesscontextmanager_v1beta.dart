@@ -3,16 +3,20 @@ enum ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta {
   perimeterTypeRegular("PERIMETER_TYPE_REGULAR"),
   perimeterTypeBridge("PERIMETER_TYPE_BRIDGE");
 
-  const ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta(this.value);
-  final String value;
+  const ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta(this.wireValue);
+  final String wireValue;
 
-  static ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta fromValue(String value) {
-    for (final item in ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.values) {
-      if (item.value == value) {
+  static ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta value: $value',
+    );
   }
 }
-

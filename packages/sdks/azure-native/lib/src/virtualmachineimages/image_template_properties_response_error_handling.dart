@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplatePropertiesResponseErrorHandling {
   /// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
   final pulumi.Input<String>? onCustomizerError;
+
   /// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
   final pulumi.Input<String>? onValidationError;
 
@@ -24,11 +25,20 @@ class ImageTemplatePropertiesResponseErrorHandling {
     };
   }
 
-  factory ImageTemplatePropertiesResponseErrorHandling.fromMap(Map<String, dynamic> map) {
+  factory ImageTemplatePropertiesResponseErrorHandling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImageTemplatePropertiesResponseErrorHandling(
-      onCustomizerError: map['onCustomizerError'] == null ? null : (map['onCustomizerError']! as String).input(),
-      onValidationError: map['onValidationError'] == null ? null : (map['onValidationError']! as String).input(),
+      onCustomizerError: (() {
+        final guardedValue = map['onCustomizerError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onValidationError: (() {
+        final guardedValue = map['onValidationError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum BuildOptionsLogStreamingOption {
   streamOn("STREAM_ON"),
   streamOff("STREAM_OFF");
 
-  const BuildOptionsLogStreamingOption(this.value);
-  final String value;
+  const BuildOptionsLogStreamingOption(this.wireValue);
+  final String wireValue;
 
   static BuildOptionsLogStreamingOption fromValue(String value) {
     for (final item in BuildOptionsLogStreamingOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BuildOptionsLogStreamingOption value: $value');
   }
 }
-

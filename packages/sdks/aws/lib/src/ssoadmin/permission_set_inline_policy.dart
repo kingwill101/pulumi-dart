@@ -4,10 +4,10 @@ import 'permission_set_inline_policy_state.dart';
 
 /// Provides an IAM inline policy for a Single Sign-On (SSO) Permission Set resource
 ///
-/// > **NOTE:** AWS Single Sign-On (SSO) only supports one IAM inline policy per `aws.ssoadmin.PermissionSet` resource.
+/// &gt; **NOTE:** AWS Single Sign-On (SSO) only supports one IAM inline policy per `aws.ssoadmin.PermissionSet` resource.
 /// Creating or updating this resource will automatically [Provision the Permission Set](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ProvisionPermissionSet.html) to apply the corresponding updates to all assigned accounts.
 ///
-/// > **NOTE:** We suggest using `jsonencode()` or `aws.iam.getPolicyDocument` when assigning a value to `inline_policy`. They seamlessly translate Terraform language into JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
+/// &gt; **NOTE:** We suggest using `jsonencode()` or `aws.iam.getPolicyDocument` when assigning a value to `inline_policy`. They seamlessly translate Terraform language into JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
 /// ## Example Usage
 ///
@@ -252,10 +252,13 @@ import 'permission_set_inline_policy_state.dart';
 class PermissionSetInlinePolicy extends pulumi.CustomResource {
   /// The IAM inline policy to attach to a Permission Set.
   late final pulumi.Output<String> inlinePolicy;
+
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   late final pulumi.Output<String> instanceArn;
+
   /// The Amazon Resource Name (ARN) of the Permission Set.
   late final pulumi.Output<String> permissionSetArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -268,15 +271,15 @@ class PermissionSetInlinePolicy extends pulumi.CustomResource {
     PermissionSetInlinePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.inlinePolicy = registerOutput<String>('inlinePolicy');
-    this.instanceArn = registerOutput<String>('instanceArn');
-    this.permissionSetArn = registerOutput<String>('permissionSetArn');
-    this.region = registerOutput<String>('region');
+         'aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    inlinePolicy = registerOutput<String>('inlinePolicy');
+    instanceArn = registerOutput<String>('instanceArn');
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [PermissionSetInlinePolicy] resource's state with the given [name] and [id].
@@ -297,14 +300,14 @@ class PermissionSetInlinePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.inlinePolicy = registerOutput<String>('inlinePolicy');
-    this.instanceArn = registerOutput<String>('instanceArn');
-    this.permissionSetArn = registerOutput<String>('permissionSetArn');
-    this.region = registerOutput<String>('region');
+         'aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    inlinePolicy = registerOutput<String>('inlinePolicy');
+    instanceArn = registerOutput<String>('instanceArn');
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    region = registerOutput<String>('region');
   }
 }

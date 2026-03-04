@@ -4,16 +4,15 @@ enum ProgramYear {
   valueYear2("Year 2"),
   valueYear3("Year 3");
 
-  const ProgramYear(this.value);
-  final String value;
+  const ProgramYear(this.wireValue);
+  final String wireValue;
 
   static ProgramYear fromValue(String value) {
     for (final item in ProgramYear.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProgramYear value: $value');
   }
 }
-

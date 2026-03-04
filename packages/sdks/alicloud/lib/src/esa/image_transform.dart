@@ -8,7 +8,7 @@ import 'image_transform_state.dart';
 ///
 /// For information about ESA Image Transform and how to use it, see [What is Image Transform](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateImageTransform).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -218,20 +218,27 @@ import 'image_transform_state.dart';
 class ImageTransform extends pulumi.CustomResource {
   /// Config Id
   late final pulumi.Output<int> configId;
+
   /// Indicates whether the image transformations feature is enabled. Valid values:
   late final pulumi.Output<String?> enable;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
+
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
+
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
+
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
 
@@ -244,19 +251,19 @@ class ImageTransform extends pulumi.CustomResource {
     ImageTransformArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/imageTransform:ImageTransform',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.enable = registerOutput<String?>('enable');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
+         'alicloud:esa/imageTransform:ImageTransform',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    enable = registerOutput<String?>('enable');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
   }
 
   /// Gets an existing [ImageTransform] resource's state with the given [name] and [id].
@@ -277,18 +284,18 @@ class ImageTransform extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/imageTransform:ImageTransform',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.enable = registerOutput<String?>('enable');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
+         'alicloud:esa/imageTransform:ImageTransform',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    enable = registerOutput<String?>('enable');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
   }
 }

@@ -164,7 +164,7 @@ import 'mover_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageMover` - 2025-07-01
@@ -179,12 +179,16 @@ import 'mover_state.dart';
 class Mover extends pulumi.CustomResource {
   /// A description for the Storage Mover.
   late final pulumi.Output<String?> description;
+
   /// Specifies the Azure Region where the Storage Mover should exist. Changing this forces a new Storage Mover to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Storage Mover. Changing this forces a new Storage Mover to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group where the Storage Mover should exist. Changing this forces a new Storage Mover to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Storage Mover.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -192,29 +196,22 @@ class Mover extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Mover]. {@macro pulumi_storage_mover_mover_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Mover(
-    String name, {
-    MoverArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:storage/mover:Mover',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+  Mover(String name, {MoverArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:storage/mover:Mover',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Mover] resource's state with the given [name] and [id].
-  static Mover get(
-    String name,
-    pulumi.Input<String> id, {
-    MoverState? state,
-  }) {
+  static Mover get(String name, pulumi.Input<String> id, {MoverState? state}) {
     return Mover._get(
       name,
       state: state?.toMap(),
@@ -227,15 +224,15 @@ class Mover extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/mover:Mover',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure:storage/mover:Mover',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

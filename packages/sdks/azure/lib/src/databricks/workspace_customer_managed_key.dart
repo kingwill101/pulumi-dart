@@ -162,7 +162,7 @@ import 'workspace_customer_managed_key_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** You can use the Databricks Terraform Provider to manage resources within the Databricks Workspace.
+/// &gt; **Note:** You can use the Databricks Terraform Provider to manage resources within the Databricks Workspace.
 ///
 /// ## Example HCL Configurations
 ///
@@ -177,7 +177,7 @@ import 'workspace_customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Databricks` - 2024-05-01, 2022-10-01-preview
@@ -193,6 +193,7 @@ import 'workspace_customer_managed_key_state.dart';
 /// ```
 class WorkspaceCustomerManagedKey extends pulumi.CustomResource {
   late final pulumi.Output<String> keyVaultKeyId;
+
   /// The unique identifier of the databricks workspace in Databricks control plane.
   late final pulumi.Output<String> workspaceId;
 
@@ -205,13 +206,13 @@ class WorkspaceCustomerManagedKey extends pulumi.CustomResource {
     WorkspaceCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/workspaceCustomerManagedKey:WorkspaceCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'azure:databricks/workspaceCustomerManagedKey:WorkspaceCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceCustomerManagedKey] resource's state with the given [name] and [id].
@@ -232,12 +233,12 @@ class WorkspaceCustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databricks/workspaceCustomerManagedKey:WorkspaceCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'azure:databricks/workspaceCustomerManagedKey:WorkspaceCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

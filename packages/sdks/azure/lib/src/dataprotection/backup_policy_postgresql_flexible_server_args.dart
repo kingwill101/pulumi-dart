@@ -11,14 +11,21 @@ import 'backup_policy_postgresql_flexible_server_retention_rule.dart';
 class BackupPolicyPostgresqlFlexibleServerArgs {
   /// Specifies a list of repeating time interval. It supports weekly back. It should follow `ISO 8601` repeating time interval format. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>> backupRepeatingTimeIntervals;
+
   /// A `default_retention_rule` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule> defaultRetentionRule;
+  final pulumi.Input<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule>
+  defaultRetentionRule;
+
   /// Specifies the name of the Backup Policy for the PostgreSQL Flexible Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<BackupPolicyPostgresqlFlexibleServerRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyPostgresqlFlexibleServerRetentionRule>>?
+  retentionRules;
+
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? timeZone;
+
   /// The ID of the Backup Vault where the Backup Policy PostgreSQL Flexible Server should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> vaultId;
 
@@ -41,23 +48,67 @@ class BackupPolicyPostgresqlFlexibleServerArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupRepeatingTimeIntervals': backupRepeatingTimeIntervals,
-      'defaultRetentionRule': pulumi.Input.mapInputValue<BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule, Map<String, dynamic>>(defaultRetentionRule, (value) => value.toMap()),
+      'defaultRetentionRule':
+          pulumi.Input.mapInputValue<
+            BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule,
+            Map<String, dynamic>
+          >(defaultRetentionRule, (value) => value.toMap()),
       'name': ?name,
-      'retentionRules': ?pulumi.Input.mapOptionalInputValue<List<BackupPolicyPostgresqlFlexibleServerRetentionRule>, List<Map<String, dynamic>>>(retentionRules, (value) => pulumi.Input.encodeList<BackupPolicyPostgresqlFlexibleServerRetentionRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'retentionRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BackupPolicyPostgresqlFlexibleServerRetentionRule>,
+            List<Map<String, dynamic>>
+          >(
+            retentionRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BackupPolicyPostgresqlFlexibleServerRetentionRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'timeZone': ?timeZone,
       'vaultId': vaultId,
     };
   }
 
-  factory BackupPolicyPostgresqlFlexibleServerArgs.fromMap(Map<String, dynamic> map) {
+  factory BackupPolicyPostgresqlFlexibleServerArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupPolicyPostgresqlFlexibleServerArgs(
-      backupRepeatingTimeIntervals: ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
-      defaultRetentionRule: (BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap((map['defaultRetentionRule'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyPostgresqlFlexibleServerRetentionRule>(map['retentionRules']!, (value) => BackupPolicyPostgresqlFlexibleServerRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
-      vaultId: (map['vaultId'] as String).input(),
+      backupRepeatingTimeIntervals: pulumi.Input.fromValue(
+        (map['backupRepeatingTimeIntervals'] as List).cast<String>(),
+      ),
+      defaultRetentionRule: pulumi.Input.fromValue(
+        BackupPolicyPostgresqlFlexibleServerDefaultRetentionRule.fromMap(
+          (map['defaultRetentionRule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionRules: (() {
+        final guardedValue = map['retentionRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            BackupPolicyPostgresqlFlexibleServerRetentionRule
+          >(
+            guardedValue,
+            (value) =>
+                BackupPolicyPostgresqlFlexibleServerRetentionRule.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
-

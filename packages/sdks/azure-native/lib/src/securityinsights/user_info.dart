@@ -9,20 +9,19 @@ class UserInfo {
 
   /// Creates a new [UserInfo].
   /// [objectId] The object id of the user.
-  UserInfo({
-    this.objectId,
-  });
+  UserInfo({this.objectId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectId': ?objectId,
-    };
+    return <String, dynamic>{'objectId': ?objectId};
   }
 
   factory UserInfo.fromMap(Map<String, dynamic> map) {
     return UserInfo(
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

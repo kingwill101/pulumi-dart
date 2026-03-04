@@ -6,7 +6,9 @@ import 'bare_metal_admin_cluster_storage_lvp_share_config_lvp_config.dart';
 class BareMetalAdminClusterStorageLvpShareConfig {
   /// Defines the machine path and storage class for the LVP Share.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterStorageLvpShareConfigLvpConfig> lvpConfig;
+  final pulumi.Input<BareMetalAdminClusterStorageLvpShareConfigLvpConfig>
+  lvpConfig;
+
   /// The number of subdirectories to create under path.
   final pulumi.Input<int>? sharedPathPvCount;
 
@@ -20,16 +22,29 @@ class BareMetalAdminClusterStorageLvpShareConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lvpConfig': pulumi.Input.mapInputValue<BareMetalAdminClusterStorageLvpShareConfigLvpConfig, Map<String, dynamic>>(lvpConfig, (value) => value.toMap()),
+      'lvpConfig':
+          pulumi.Input.mapInputValue<
+            BareMetalAdminClusterStorageLvpShareConfigLvpConfig,
+            Map<String, dynamic>
+          >(lvpConfig, (value) => value.toMap()),
       'sharedPathPvCount': ?sharedPathPvCount,
     };
   }
 
-  factory BareMetalAdminClusterStorageLvpShareConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterStorageLvpShareConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterStorageLvpShareConfig(
-      lvpConfig: (BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap((map['lvpConfig'] as Map).cast<String, dynamic>())).input(),
-      sharedPathPvCount: map['sharedPathPvCount'] == null ? null : (map['sharedPathPvCount']! as int).input(),
+      lvpConfig: pulumi.Input.fromValue(
+        BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap(
+          (map['lvpConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sharedPathPvCount: (() {
+        final guardedValue = map['sharedPathPvCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

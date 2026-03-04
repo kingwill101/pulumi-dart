@@ -2,6 +2,7 @@ import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/deployment/models.dart' as deployment_models;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
@@ -170,10 +171,47 @@ class _DependsOnTargetResource extends CustomResource {
     : super('pkg:index:DependsOnTarget', name, const {}, options);
 }
 
+class _RemoteComponentWithUnknownNestedInput extends ComponentResource {
+  _RemoteComponentWithUnknownNestedInput(String name)
+    : super(
+        'pkg:index:RemoteWithUnknownNested',
+        name,
+        {
+          'taskDefinitionArgs': Input.fromValue({
+            'container': {
+              'name': 'service-container',
+              'image': Output.createUnknown<String>(),
+            },
+          }),
+        },
+        ComponentResourceOptions(),
+        remote: true,
+      );
+}
+
 void main() {
   group('deployment resource registration', () {
     late _FakeMonitor monitor;
     late DeploymentImpl deployment;
+
+    Future<void> expectResourceFailure(
+      Resource resource,
+      Matcher matcher,
+    ) async {
+      for (final source in resource.completionSources.values) {
+        source.output.getData().then((_) {}, onError: (_) {});
+      }
+
+      await expectLater(deployment.registerOutputs(), throwsA(matcher));
+
+      final urn = resource.urn.getValue();
+      final id = resource is CustomResource ? resource.id.getValue() : null;
+
+      await expectLater(urn, throwsA(matcher));
+      if (id != null) {
+        await expectLater(id, throwsA(matcher));
+      }
+    }
 
     setUp(() {
       monitor = _FakeMonitor();
@@ -221,7 +259,7 @@ void main() {
     test('surfaces registerPackage failure before resource RPC', () async {
       monitor.registerPackageError = StateError('register package failed');
 
-      _PackageBackedResource(
+      final resource = _PackageBackedResource(
         'thing',
         registerPackageRequest: deployment_models.RegisterPackageRequest(
           name: 'pulumi-pkg',
@@ -229,7 +267,10 @@ void main() {
         ),
       );
 
-      await expectLater(deployment.registerOutputs(), throwsStateError);
+      final failureMatcher = predicate(
+        (error) => error.toString().contains('register package failed'),
+      );
+      await expectResourceFailure(resource, failureMatcher);
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
 
@@ -247,16 +288,16 @@ void main() {
         );
         final pending = resource.registerOutput<String>('status');
 
-        await expectLater(
-          deployment.registerOutputs(),
-          throwsA(isA<Exception>()),
+        final failureMatcher = predicate(
+          (error) => error.toString().contains('register resource failed'),
         );
+        await expectResourceFailure(resource, failureMatcher);
         await expectLater(pending.getData(), throwsA(isA<Exception>()));
       },
     );
 
     test('rejects invalid ignoreChanges paths before resource RPC', () async {
-      _PackageBackedResource(
+      final resource = _PackageBackedResource(
         'thing',
         registerPackageRequest: deployment_models.RegisterPackageRequest(
           name: 'pulumi-pkg',
@@ -265,10 +306,11 @@ void main() {
         options: CustomResourceOptions(ignoreChanges: ['valid', '  ']),
       );
 
-      await expectLater(
-        deployment.registerOutputs(),
-        throwsA(isA<ArgumentError>()),
+      final failureMatcher = predicate(
+        (error) =>
+            error.toString().contains('ignoreChanges[1] must be a non-empty'),
       );
+      await expectResourceFailure(resource, failureMatcher);
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
 
@@ -340,7 +382,10 @@ void main() {
         expect(request.parent, await parent.urn.getValue());
         expect(
           request.dependencies,
-          equals([await depB.urn.getValue(), await depA.urn.getValue()]),
+          unorderedEquals([
+            await depB.urn.getValue(),
+            await depA.urn.getValue(),
+          ]),
         );
         expect(request.protect, isTrue);
         expect(
@@ -429,8 +474,39 @@ void main() {
       },
     );
 
+    test(
+      'remote component registration preserves nested object shape with unknown leaf values',
+      () async {
+        _RemoteComponentWithUnknownNestedInput('remote-unknown');
+
+        await deployment.registerOutputs();
+
+        final request = monitor.capturedRegisterResourceRequest;
+        expect(request, isNotNull);
+        expect(request!.type, equals('pkg:index:RemoteWithUnknownNested'));
+        expect(request.remote, isTrue);
+        expect(request.custom, isFalse);
+
+        final taskDefinitionValue = request.object.fields['taskDefinitionArgs'];
+        expect(taskDefinitionValue, isNotNull);
+        expect(
+          taskDefinitionValue!.whichKind(),
+          equals(Value_Kind.structValue),
+        );
+
+        final containerValue =
+            taskDefinitionValue.structValue.fields['container'];
+        expect(containerValue, isNotNull);
+        expect(containerValue!.whichKind(), equals(Value_Kind.structValue));
+        expect(
+          containerValue.structValue.fields['image']?.stringValue,
+          equals(Constants.unknownValue),
+        );
+      },
+    );
+
     test('rejects ignoreChanges path starting with dot', () async {
-      _PackageBackedResource(
+      final resource = _PackageBackedResource(
         'thing',
         registerPackageRequest: deployment_models.RegisterPackageRequest(
           name: 'pulumi-pkg',
@@ -439,15 +515,17 @@ void main() {
         options: CustomResourceOptions(ignoreChanges: ['.bad']),
       );
 
-      await expectLater(
-        deployment.registerOutputs(),
-        throwsA(isA<ArgumentError>()),
+      final failureMatcher = predicate(
+        (error) => error.toString().contains(
+          'contains an invalid property path: ".bad".',
+        ),
       );
+      await expectResourceFailure(resource, failureMatcher);
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
 
     test('rejects ignoreChanges path ending with dot', () async {
-      _PackageBackedResource(
+      final resource = _PackageBackedResource(
         'thing',
         registerPackageRequest: deployment_models.RegisterPackageRequest(
           name: 'pulumi-pkg',
@@ -456,15 +534,17 @@ void main() {
         options: CustomResourceOptions(ignoreChanges: ['bad.']),
       );
 
-      await expectLater(
-        deployment.registerOutputs(),
-        throwsA(isA<ArgumentError>()),
+      final failureMatcher = predicate(
+        (error) => error.toString().contains(
+          'contains an invalid property path: "bad.".',
+        ),
       );
+      await expectResourceFailure(resource, failureMatcher);
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
 
     test('rejects ignoreChanges path containing empty segments', () async {
-      _PackageBackedResource(
+      final resource = _PackageBackedResource(
         'thing',
         registerPackageRequest: deployment_models.RegisterPackageRequest(
           name: 'pulumi-pkg',
@@ -473,10 +553,12 @@ void main() {
         options: CustomResourceOptions(ignoreChanges: ['bad..path']),
       );
 
-      await expectLater(
-        deployment.registerOutputs(),
-        throwsA(isA<ArgumentError>()),
+      final failureMatcher = predicate(
+        (error) => error.toString().contains(
+          'contains an invalid property path: "bad..path".',
+        ),
       );
+      await expectResourceFailure(resource, failureMatcher);
       expect(monitor.capturedRegisterResourceRequest, isNull);
     });
 
@@ -485,7 +567,7 @@ void main() {
       () async {
         monitor.supportsFeatureValue = false;
 
-        _TransformEnabledResource(
+        final resource = _TransformEnabledResource(
           'transforming',
           options: CustomResourceOptions(
             resourceTransforms: [
@@ -497,13 +579,13 @@ void main() {
           ),
         );
 
-        await expectLater(
-          deployment.registerOutputs(),
-          throwsA(
-            isA<Exception>().having(
-              (e) => e.toString(),
-              'message',
-              contains('does not support transforms'),
+        await expectResourceFailure(
+          resource,
+          isA<Exception>().having(
+            (e) => e.toString(),
+            'message',
+            contains(
+              'The Pulumi CLI does not support transforms. Please update the Pulumi CLI.',
             ),
           ),
         );
@@ -519,7 +601,7 @@ void main() {
           'supportsFeature RPC unavailable',
         );
 
-        _TransformEnabledResource(
+        final resource = _TransformEnabledResource(
           'transforming',
           options: CustomResourceOptions(
             resourceTransforms: [
@@ -530,17 +612,12 @@ void main() {
             ],
           ),
         );
-
-        await expectLater(
-          deployment.registerOutputs(),
-          throwsA(
-            isA<Exception>().having(
-              (e) => e.toString(),
-              'message',
-              contains('does not support transforms'),
-            ),
+        final failureMatcher = predicate(
+          (error) => error.toString().contains(
+            'The Pulumi CLI does not support transforms. Please update the Pulumi CLI.',
           ),
         );
+        await expectResourceFailure(resource, failureMatcher);
         expect(monitor.requestedFeatures, equals(['transforms']));
         expect(monitor.capturedRegisterResourceRequest, isNull);
       },

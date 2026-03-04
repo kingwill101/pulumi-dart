@@ -189,10 +189,14 @@ import 'replication_protection_cluster_properties_response.dart';
 class ReplicationProtectionCluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the protection cluster.
   late final pulumi.Output<String> name;
+
   /// The custom data.
-  late final pulumi.Output<ReplicationProtectionClusterPropertiesResponse> properties;
+  late final pulumi.Output<ReplicationProtectionClusterPropertiesResponse>
+  properties;
+
   /// The Type of the object.
   late final pulumi.Output<String> type;
 
@@ -205,14 +209,16 @@ class ReplicationProtectionCluster extends pulumi.CustomResource {
     ReplicationProtectionClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:recoveryservices:ReplicationProtectionCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:recoveryservices:ReplicationProtectionCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ReplicationProtectionClusterPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ReplicationProtectionClusterPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

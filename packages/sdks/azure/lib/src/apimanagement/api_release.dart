@@ -287,7 +287,7 @@ import 'api_release_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -302,8 +302,10 @@ import 'api_release_state.dart';
 class ApiRelease extends pulumi.CustomResource {
   /// The ID of the API Management API. Changing this forces a new API Management API Release to be created.
   late final pulumi.Output<String> apiId;
+
   /// The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
   late final pulumi.Output<String> name;
+
   /// The Release Notes.
   late final pulumi.Output<String?> notes;
 
@@ -316,14 +318,14 @@ class ApiRelease extends pulumi.CustomResource {
     ApiReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/apiRelease:ApiRelease',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
+         'azure:apimanagement/apiRelease:ApiRelease',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
+    notes = registerOutput<String?>('notes');
   }
 
   /// Gets an existing [ApiRelease] resource's state with the given [name] and [id].
@@ -344,13 +346,13 @@ class ApiRelease extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/apiRelease:ApiRelease',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String>('apiId');
+         'azure:apimanagement/apiRelease:ApiRelease',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
+    notes = registerOutput<String?>('notes');
   }
 }

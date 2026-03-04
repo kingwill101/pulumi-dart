@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretAclRead {
   /// The date the secret ACL was created.
   final pulumi.Input<String> createdAt;
+
   /// Whether the secret is accessible project wide.
   final pulumi.Input<bool>? projectAccess;
+
   /// The date the secret ACL was last updated.
   final pulumi.Input<String> updatedAt;
+
   /// The list of user IDs, which are allowed to access the secret, when
   /// `project_access` is set to `false`.
   final pulumi.Input<List<String>>? users;
@@ -36,11 +39,18 @@ class GetSecretAclRead {
 
   factory GetSecretAclRead.fromMap(Map<String, dynamic> map) {
     return GetSecretAclRead(
-      createdAt: (map['createdAt'] as String).input(),
-      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess']! as bool).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
-      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      projectAccess: (() {
+        final guardedValue = map['projectAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      users: (() {
+        final guardedValue = map['users'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

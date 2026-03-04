@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcSecurityGroupRulesExclusiveState {
   /// Egress rule IDs.
   final pulumi.Input<List<String>>? egressRuleIds;
+
   /// Ingress rule IDs.
   final pulumi.Input<List<String>>? ingressRuleIds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the security group.
   final pulumi.Input<String>? securityGroupId;
 
@@ -34,13 +37,30 @@ class VpcSecurityGroupRulesExclusiveState {
     };
   }
 
-  factory VpcSecurityGroupRulesExclusiveState.fromMap(Map<String, dynamic> map) {
+  factory VpcSecurityGroupRulesExclusiveState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcSecurityGroupRulesExclusiveState(
-      egressRuleIds: map['egressRuleIds'] == null ? null : (((map['egressRuleIds'] as List).cast<String>()).input()).input(),
-      ingressRuleIds: map['ingressRuleIds'] == null ? null : (((map['ingressRuleIds'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      egressRuleIds: (() {
+        final guardedValue = map['egressRuleIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ingressRuleIds: (() {
+        final guardedValue = map['ingressRuleIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

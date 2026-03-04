@@ -10,14 +10,19 @@ import 'consumer_group_consume_retry_policy.dart';
 class ConsumerGroupArgs {
   /// Consumption retry strategy. See `consume_retry_policy` below.
   final pulumi.Input<ConsumerGroupConsumeRetryPolicy> consumeRetryPolicy;
+
   /// The first ID of the resource.
   final pulumi.Input<String> consumerGroupId;
+
   /// Delivery order.
   final pulumi.Input<String>? deliveryOrderType;
+
   /// Instance ID.
   final pulumi.Input<String> instanceId;
+
   /// Maximum received message tps.
   final pulumi.Input<int>? maxReceiveTps;
+
   /// Custom remarks.
   final pulumi.Input<String>? remark;
 
@@ -39,7 +44,11 @@ class ConsumerGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumeRetryPolicy': pulumi.Input.mapInputValue<ConsumerGroupConsumeRetryPolicy, Map<String, dynamic>>(consumeRetryPolicy, (value) => value.toMap()),
+      'consumeRetryPolicy':
+          pulumi.Input.mapInputValue<
+            ConsumerGroupConsumeRetryPolicy,
+            Map<String, dynamic>
+          >(consumeRetryPolicy, (value) => value.toMap()),
       'consumerGroupId': consumerGroupId,
       'deliveryOrderType': ?deliveryOrderType,
       'instanceId': instanceId,
@@ -50,13 +59,28 @@ class ConsumerGroupArgs {
 
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
-      consumeRetryPolicy: (ConsumerGroupConsumeRetryPolicy.fromMap((map['consumeRetryPolicy'] as Map).cast<String, dynamic>())).input(),
-      consumerGroupId: (map['consumerGroupId'] as String).input(),
-      deliveryOrderType: map['deliveryOrderType'] == null ? null : (map['deliveryOrderType']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      maxReceiveTps: map['maxReceiveTps'] == null ? null : (map['maxReceiveTps']! as int).input(),
-      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      consumeRetryPolicy: pulumi.Input.fromValue(
+        ConsumerGroupConsumeRetryPolicy.fromMap(
+          (map['consumeRetryPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      consumerGroupId: pulumi.Input.fromValue(map['consumerGroupId'] as String),
+      deliveryOrderType: (() {
+        final guardedValue = map['deliveryOrderType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      maxReceiveTps: (() {
+        final guardedValue = map['maxReceiveTps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      remark: (() {
+        final guardedValue = map['remark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

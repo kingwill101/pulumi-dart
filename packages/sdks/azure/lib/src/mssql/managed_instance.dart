@@ -6,9 +6,9 @@ import 'managed_instance_state.dart';
 
 /// Manages a Microsoft SQL Azure Managed Instance.
 ///
-/// > **Note:** All arguments including the administrator login and password will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+/// &gt; **Note:** All arguments including the administrator login and password will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
-/// > **Note:** SQL Managed Instance needs permission to read Azure Active Directory when configuring the AAD administrator. [Read more about provisioning AAD administrators](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql#provision-azure-ad-admin-sql-managed-instance).
+/// &gt; **Note:** SQL Managed Instance needs permission to read Azure Active Directory when configuring the AAD administrator. [Read more about provisioning AAD administrators](https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql#provision-azure-ad-admin-sql-managed-instance).
 ///
 /// ## Example Usage
 ///
@@ -1299,7 +1299,7 @@ import 'managed_instance_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -1314,64 +1314,91 @@ import 'managed_instance_state.dart';
 class ManagedInstance extends pulumi.CustomResource {
   /// The administrator login name for the new SQL Managed Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> administratorLogin;
+
   /// The password associated with the `administrator_login` user. Needs to comply with Azure's [Password Policy](https://msdn.microsoft.com/library/ms161959.aspx)
   ///
-  /// > **Note:** Unless `azure_active_directory_administrator.azuread_authentication_only_enabled` is set to `true`, `administrator_login` and `administrator_login_password` are required.
+  /// &gt; **Note:** Unless `azure_active_directory_administrator.azuread_authentication_only_enabled` is set to `true`, `administrator_login` and `administrator_login_password` are required.
   late final pulumi.Output<String?> administratorLoginPassword;
+
   /// An `azure_active_directory_administrator` block as defined below.
-  late final pulumi.Output<ManagedInstanceAzureActiveDirectoryAdministrator?> azureActiveDirectoryAdministrator;
+  late final pulumi.Output<ManagedInstanceAzureActiveDirectoryAdministrator?>
+  azureActiveDirectoryAdministrator;
+
   /// Specifies how the SQL Managed Instance will be collated. Defaults to `SQL_Latin1_General_CP1_CI_AS`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> collation;
+
   /// Specifies the internal format of the SQL Managed Instance databases specific to the SQL engine version. Possible values are `AlwaysUpToDate` and `SQLServer2022`. Defaults to `SQLServer2022`.
   ///
-  /// > **Note:** Changing `database_format` from `AlwaysUpToDate` to `SQLServer2022` forces a new SQL Managed Instance to be created.
+  /// &gt; **Note:** Changing `database_format` from `AlwaysUpToDate` to `SQLServer2022` forces a new SQL Managed Instance to be created.
   late final pulumi.Output<String?> databaseFormat;
+
   /// The Dns Zone where the SQL Managed Instance is located.
   late final pulumi.Output<String> dnsZone;
+
   /// The ID of the SQL Managed Instance which will share the DNS zone. This is a prerequisite for creating an `azurerm_sql_managed_instance_failover_group`. Setting this after creation forces a new resource to be created.
   late final pulumi.Output<String?> dnsZonePartnerId;
+
   /// The fully qualified domain name of the Azure Managed SQL Instance
   late final pulumi.Output<String> fqdn;
+
   /// Specifies the hybrid secondary usage for disaster recovery of the SQL Managed Instance. Possible values are `Active` and `Passive`. Defaults to `Active`.
   late final pulumi.Output<String?> hybridSecondaryUsage;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ManagedInstanceIdentity?> identity;
+
   /// What type of license the Managed Instance will use. Possible values are `LicenseIncluded` and `BasePrice`.
   late final pulumi.Output<String> licenseType;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Public Maintenance Configuration window to apply to the SQL Managed Instance. Possible values are `SQL_Default` or an Azure Location in the format `SQL_{Location}_MI_{Size}`(for example `SQL_EastUS_MI_1`). Defaults to `SQL_Default`.
   late final pulumi.Output<String?> maintenanceConfigurationName;
+
   /// The Minimum TLS Version. Default value is `1.2` Valid values include `1.0`, `1.1`, `1.2`.
   ///
-  /// > **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
+  /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   late final pulumi.Output<String?> minimumTlsVersion;
+
   /// The name of the SQL Managed Instance. This needs to be globally unique within Azure. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies how the SQL Managed Instance will be accessed. Defaults to `Default`. Possible values are `Default`, `Proxy`, and `Redirect`.
   late final pulumi.Output<String> proxyOverride;
+
   /// Is the public data endpoint enabled? Defaults to `false`.
   late final pulumi.Output<bool?> publicDataEndpointEnabled;
+
   /// The name of the resource group in which to create the SQL Managed Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The service principal type. The only possible value is `SystemAssigned`.
   late final pulumi.Output<String?> servicePrincipalType;
+
   /// Specifies the SKU Name for the SQL Managed Instance. Possible values are `GP_Gen4`, `GP_Gen5`, `GP_Gen8IM`, `GP_Gen8IH`, `BC_Gen4`, `BC_Gen5`, `BC_Gen8IM` or `BC_Gen8IH`.
   late final pulumi.Output<String> skuName;
+
   /// Specifies the storage account type used to store backups for this database. Possible values are `GRS`, `GZRS`, `LRS`, and `ZRS`. Defaults to `GRS`.
   late final pulumi.Output<String?> storageAccountType;
+
   /// Maximum storage space for the SQL Managed instance. This should be a multiple of 32 (GB).
   ///
-  /// > **Note:** The maximum storage size varies depending on the service tier and hardware generation. For General Purpose Next-gen instances, the maximum is 32,768 GB (32 TB), while Business Critical instances support up to 16,384 GB (16 TB). Refer to [Azure SQL Managed Instance resource limits](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/resource-limits) for detailed information.
+  /// &gt; **Note:** The maximum storage size varies depending on the service tier and hardware generation. For General Purpose Next-gen instances, the maximum is 32,768 GB (32 TB), while Business Critical instances support up to 16,384 GB (16 TB). Refer to [Azure SQL Managed Instance resource limits](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/resource-limits) for detailed information.
   late final pulumi.Output<int> storageSizeInGb;
+
   /// The subnet resource id that the SQL Managed Instance will be associated with.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The TimeZone ID that the SQL Managed Instance will be operating in. Defaults to `UTC`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timezoneId;
+
   /// Number of cores that should be assigned to the SQL Managed Instance. Values can be `8`, `16`, or `24` for Gen4 SKUs, or `4`, `6`, `8`, `10`, `12`, `16`, `20`, `24`, `32`, `40`, `48`, `56`, `64`, `80`, `96` or `128` for Gen5 SKUs.
   late final pulumi.Output<int> vcores;
+
   /// Specifies whether the SQL Managed Instance is zone redundant. Defaults to `false`.
   late final pulumi.Output<bool?> zoneRedundantEnabled;
 
@@ -1384,38 +1411,47 @@ class ManagedInstance extends pulumi.CustomResource {
     ManagedInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstance:ManagedInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String>('administratorLogin');
-    this.administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
-    this.azureActiveDirectoryAdministrator = registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>('azureActiveDirectoryAdministrator');
-    this.collation = registerOutput<String?>('collation');
-    this.databaseFormat = registerOutput<String?>('databaseFormat');
-    this.dnsZone = registerOutput<String>('dnsZone');
-    this.dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
-    this.identity = registerOutput<ManagedInstanceIdentity?>('identity');
-    this.licenseType = registerOutput<String>('licenseType');
-    this.location = registerOutput<String>('location');
-    this.maintenanceConfigurationName = registerOutput<String?>('maintenanceConfigurationName');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure:mssql/managedInstance:ManagedInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorLoginPassword = registerOutput<String?>(
+      'administratorLoginPassword',
+    );
+    azureActiveDirectoryAdministrator =
+        registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>(
+          'azureActiveDirectoryAdministrator',
+        );
+    collation = registerOutput<String?>('collation');
+    databaseFormat = registerOutput<String?>('databaseFormat');
+    dnsZone = registerOutput<String>('dnsZone');
+    dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
+    fqdn = registerOutput<String>('fqdn');
+    hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
+    identity = registerOutput<ManagedInstanceIdentity?>('identity');
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationName = registerOutput<String?>(
+      'maintenanceConfigurationName',
+    );
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.proxyOverride = registerOutput<String>('proxyOverride');
-    this.publicDataEndpointEnabled = registerOutput<bool?>('publicDataEndpointEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.servicePrincipalType = registerOutput<String?>('servicePrincipalType');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageAccountType = registerOutput<String?>('storageAccountType');
-    this.storageSizeInGb = registerOutput<int>('storageSizeInGb');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timezoneId = registerOutput<String?>('timezoneId');
-    this.vcores = registerOutput<int>('vcores');
-    this.zoneRedundantEnabled = registerOutput<bool?>('zoneRedundantEnabled');
+    proxyOverride = registerOutput<String>('proxyOverride');
+    publicDataEndpointEnabled = registerOutput<bool?>(
+      'publicDataEndpointEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    servicePrincipalType = registerOutput<String?>('servicePrincipalType');
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    storageSizeInGb = registerOutput<int>('storageSizeInGb');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timezoneId = registerOutput<String?>('timezoneId');
+    vcores = registerOutput<int>('vcores');
+    zoneRedundantEnabled = registerOutput<bool?>('zoneRedundantEnabled');
   }
 
   /// Gets an existing [ManagedInstance] resource's state with the given [name] and [id].
@@ -1436,37 +1472,46 @@ class ManagedInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedInstance:ManagedInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String>('administratorLogin');
-    this.administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
-    this.azureActiveDirectoryAdministrator = registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>('azureActiveDirectoryAdministrator');
-    this.collation = registerOutput<String?>('collation');
-    this.databaseFormat = registerOutput<String?>('databaseFormat');
-    this.dnsZone = registerOutput<String>('dnsZone');
-    this.dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
-    this.identity = registerOutput<ManagedInstanceIdentity?>('identity');
-    this.licenseType = registerOutput<String>('licenseType');
-    this.location = registerOutput<String>('location');
-    this.maintenanceConfigurationName = registerOutput<String?>('maintenanceConfigurationName');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure:mssql/managedInstance:ManagedInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorLoginPassword = registerOutput<String?>(
+      'administratorLoginPassword',
+    );
+    azureActiveDirectoryAdministrator =
+        registerOutput<ManagedInstanceAzureActiveDirectoryAdministrator?>(
+          'azureActiveDirectoryAdministrator',
+        );
+    collation = registerOutput<String?>('collation');
+    databaseFormat = registerOutput<String?>('databaseFormat');
+    dnsZone = registerOutput<String>('dnsZone');
+    dnsZonePartnerId = registerOutput<String?>('dnsZonePartnerId');
+    fqdn = registerOutput<String>('fqdn');
+    hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
+    identity = registerOutput<ManagedInstanceIdentity?>('identity');
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationName = registerOutput<String?>(
+      'maintenanceConfigurationName',
+    );
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.proxyOverride = registerOutput<String>('proxyOverride');
-    this.publicDataEndpointEnabled = registerOutput<bool?>('publicDataEndpointEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.servicePrincipalType = registerOutput<String?>('servicePrincipalType');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageAccountType = registerOutput<String?>('storageAccountType');
-    this.storageSizeInGb = registerOutput<int>('storageSizeInGb');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timezoneId = registerOutput<String?>('timezoneId');
-    this.vcores = registerOutput<int>('vcores');
-    this.zoneRedundantEnabled = registerOutput<bool?>('zoneRedundantEnabled');
+    proxyOverride = registerOutput<String>('proxyOverride');
+    publicDataEndpointEnabled = registerOutput<bool?>(
+      'publicDataEndpointEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    servicePrincipalType = registerOutput<String?>('servicePrincipalType');
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    storageSizeInGb = registerOutput<int>('storageSizeInGb');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timezoneId = registerOutput<String?>('timezoneId');
+    vcores = registerOutput<int>('vcores');
+    zoneRedundantEnabled = registerOutput<bool?>('zoneRedundantEnabled');
   }
 }

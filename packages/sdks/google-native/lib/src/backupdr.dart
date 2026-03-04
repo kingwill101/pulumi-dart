@@ -1,5 +1,3 @@
-library module_backupdr;
-
 export 'backupdr/audit_config.dart';
 export 'backupdr/audit_config_response.dart';
 export 'backupdr/audit_log_config.dart';

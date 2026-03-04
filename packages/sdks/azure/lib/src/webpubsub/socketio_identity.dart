@@ -5,10 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SocketioIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs for this Web PubSub Service.
   ///
-  /// > **Note:** `identity_ids` is required when `type` is `UserAssigned`.
+  /// &gt; **Note:** `identity_ids` is required when `type` is `UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   final pulumi.Input<String>? principalId;
   final pulumi.Input<String>? tenantId;
+
   /// The type of Managed Identity for this Web PubSub Service. Possible Values are `SystemAssigned` and `UserAssigned`.
   final pulumi.Input<String> type;
 
@@ -35,11 +36,22 @@ class SocketioIdentity {
 
   factory SocketioIdentity.fromMap(Map<String, dynamic> map) {
     return SocketioIdentity(
-      identityIds: map['identityIds'] == null ? null : ((map['identityIds']! as List).cast<String>()).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: (map['type'] as String).input(),
+      identityIds: (() {
+        final guardedValue = map['identityIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

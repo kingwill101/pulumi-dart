@@ -12,20 +12,19 @@ class GetInstancesArgs {
 
   /// Creates a new [GetInstancesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetInstancesArgs({
-    this.outputFile,
-  });
+  GetInstancesArgs({this.outputFile});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputFile': ?outputFile,
-    };
+    return <String, dynamic>{'outputFile': ?outputFile};
   }
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

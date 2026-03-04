@@ -8,7 +8,7 @@ import 'kv_state.dart';
 ///
 /// For information about ESA Kv and how to use it, see [What is Kv](https://next.api.alibabacloud.com/document/ESA/2024-09-10/PutKv).
 ///
-/// > **NOTE:** Available since v1.251.0.
+/// &gt; **NOTE:** Available since v1.251.0.
 ///
 /// ## Example Usage
 ///
@@ -178,16 +178,22 @@ import 'kv_state.dart';
 class Kv extends pulumi.CustomResource {
   /// The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
   late final pulumi.Output<int?> expiration;
+
   /// The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
   late final pulumi.Output<int?> expirationTtl;
+
   /// The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
   late final pulumi.Output<bool?> isbase;
+
   /// kv
   late final pulumi.Output<String> key;
+
   /// The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
   late final pulumi.Output<String> namespace;
+
   /// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
   late final pulumi.Output<String?> url;
+
   /// The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
   late final pulumi.Output<String> value;
 
@@ -195,31 +201,24 @@ class Kv extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Kv]. {@macro pulumi_esa_kv_kv_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Kv(
-    String name, {
-    KvArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:esa/kv:Kv',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.expiration = registerOutput<int?>('expiration');
-    this.expirationTtl = registerOutput<int?>('expirationTtl');
-    this.isbase = registerOutput<bool?>('isbase');
-    this.key = registerOutput<String>('key');
-    this.namespace = registerOutput<String>('namespace');
-    this.url = registerOutput<String?>('url');
-    this.value = registerOutput<String>('value');
+  Kv(String name, {KvArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:esa/kv:Kv',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    expiration = registerOutput<int?>('expiration');
+    expirationTtl = registerOutput<int?>('expirationTtl');
+    isbase = registerOutput<bool?>('isbase');
+    key = registerOutput<String>('key');
+    namespace = registerOutput<String>('namespace');
+    url = registerOutput<String?>('url');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [Kv] resource's state with the given [name] and [id].
-  static Kv get(
-    String name,
-    pulumi.Input<String> id, {
-    KvState? state,
-  }) {
+  static Kv get(String name, pulumi.Input<String> id, {KvState? state}) {
     return Kv._get(
       name,
       state: state?.toMap(),
@@ -232,17 +231,17 @@ class Kv extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/kv:Kv',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.expiration = registerOutput<int?>('expiration');
-    this.expirationTtl = registerOutput<int?>('expirationTtl');
-    this.isbase = registerOutput<bool?>('isbase');
-    this.key = registerOutput<String>('key');
-    this.namespace = registerOutput<String>('namespace');
-    this.url = registerOutput<String?>('url');
-    this.value = registerOutput<String>('value');
+         'alicloud:esa/kv:Kv',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    expiration = registerOutput<int?>('expiration');
+    expirationTtl = registerOutput<int?>('expirationTtl');
+    isbase = registerOutput<bool?>('isbase');
+    key = registerOutput<String>('key');
+    namespace = registerOutput<String>('namespace');
+    url = registerOutput<String?>('url');
+    value = registerOutput<String>('value');
   }
 }

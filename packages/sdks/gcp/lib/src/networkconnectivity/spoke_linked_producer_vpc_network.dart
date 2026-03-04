@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpokeLinkedProducerVpcNetwork {
   /// IP ranges encompassing the subnets to be excluded from peering.
   final pulumi.Input<List<String>>? excludeExportRanges;
+
   /// IP ranges allowed to be included from peering.
   final pulumi.Input<List<String>>? includeExportRanges;
+
   /// The URI of the Service Consumer VPC that the Producer VPC is peered with.
   final pulumi.Input<String> network;
+
   /// The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
   final pulumi.Input<String> peering;
+
   /// (Output)
   /// The URI of the Producer VPC.
   final pulumi.Input<String>? producerNetwork;
@@ -41,12 +45,23 @@ class SpokeLinkedProducerVpcNetwork {
 
   factory SpokeLinkedProducerVpcNetwork.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedProducerVpcNetwork(
-      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges']! as List).cast<String>()).input(),
-      includeExportRanges: map['includeExportRanges'] == null ? null : ((map['includeExportRanges']! as List).cast<String>()).input(),
-      network: (map['network'] as String).input(),
-      peering: (map['peering'] as String).input(),
-      producerNetwork: map['producerNetwork'] == null ? null : (map['producerNetwork']! as String).input(),
+      excludeExportRanges: (() {
+        final guardedValue = map['excludeExportRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includeExportRanges: (() {
+        final guardedValue = map['includeExportRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      peering: pulumi.Input.fromValue(map['peering'] as String),
+      producerNetwork: (() {
+        final guardedValue = map['producerNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,8 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConversationProfileAutomatedAgentConfig {
   /// ID of the Dialogflow agent environment to use.
-  /// Expects the format "projects/<Project ID>/locations/<Location ID>/agent/environments/<EnvironmentID>"
+  /// Expects the format "projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/environments/&lt;EnvironmentID&gt;"
   final pulumi.Input<String> agent;
+
   /// Configure lifetime of the Dialogflow session.
   final pulumi.Input<String>? sessionTtl;
 
@@ -18,17 +19,19 @@ class ConversationProfileAutomatedAgentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agent': agent,
-      'sessionTtl': ?sessionTtl,
-    };
+    return <String, dynamic>{'agent': agent, 'sessionTtl': ?sessionTtl};
   }
 
-  factory ConversationProfileAutomatedAgentConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileAutomatedAgentConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileAutomatedAgentConfig(
-      agent: (map['agent'] as String).input(),
-      sessionTtl: map['sessionTtl'] == null ? null : (map['sessionTtl']! as String).input(),
+      agent: pulumi.Input.fromValue(map['agent'] as String),
+      sessionTtl: (() {
+        final guardedValue = map['sessionTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

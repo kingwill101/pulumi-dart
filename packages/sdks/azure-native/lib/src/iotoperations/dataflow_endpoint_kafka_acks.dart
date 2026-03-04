@@ -4,16 +4,15 @@ enum DataflowEndpointKafkaAcks {
   one("One"),
   all("All");
 
-  const DataflowEndpointKafkaAcks(this.value);
-  final String value;
+  const DataflowEndpointKafkaAcks(this.wireValue);
+  final String wireValue;
 
   static DataflowEndpointKafkaAcks fromValue(String value) {
     for (final item in DataflowEndpointKafkaAcks.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataflowEndpointKafkaAcks value: $value');
   }
 }
-

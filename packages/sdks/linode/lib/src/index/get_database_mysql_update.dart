@@ -35,12 +35,11 @@ class GetDatabaseMysqlUpdate {
 
   factory GetDatabaseMysqlUpdate.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlUpdate(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      duration: (map['duration'] as int).input(),
-      frequency: (map['frequency'] as String).input(),
-      hourOfDay: (map['hourOfDay'] as int).input(),
-      weekOfMonth: (map['weekOfMonth'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      duration: pulumi.Input.fromValue(map['duration'] as int),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      hourOfDay: pulumi.Input.fromValue(map['hourOfDay'] as int),
+      weekOfMonth: pulumi.Input.fromValue(map['weekOfMonth'] as int),
     );
   }
 }
-

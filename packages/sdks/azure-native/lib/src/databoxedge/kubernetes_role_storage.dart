@@ -10,20 +10,38 @@ class KubernetesRoleStorage {
 
   /// Creates a new [KubernetesRoleStorage].
   /// [endpoints] Mount points of shares in role(s).
-  KubernetesRoleStorage({
-    this.endpoints,
-  });
+  KubernetesRoleStorage({this.endpoints});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpoints': ?pulumi.Input.mapOptionalInputValue<List<MountPointMap>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<MountPointMap, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'endpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MountPointMap>,
+            List<Map<String, dynamic>>
+          >(
+            endpoints,
+            (value) =>
+                pulumi.Input.encodeList<MountPointMap, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory KubernetesRoleStorage.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleStorage(
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<MountPointMap>(map['endpoints']!, (value) => MountPointMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoints: (() {
+        final guardedValue = map['endpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MountPointMap>(
+            guardedValue,
+            (value) =>
+                MountPointMap.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

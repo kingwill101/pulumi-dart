@@ -41,15 +41,28 @@ class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs {
     };
   }
 
-  factory GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs(
-      caPoolId: (map['caPoolId'] as String).input(),
-      certificateAuthorityId: (map['certificateAuthorityId'] as String).input(),
-      certificateRevocationListId: (map['certificateRevocationListId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      caPoolId: pulumi.Input.fromValue(map['caPoolId'] as String),
+      certificateAuthorityId: pulumi.Input.fromValue(
+        map['certificateAuthorityId'] as String,
+      ),
+      certificateRevocationListId: pulumi.Input.fromValue(
+        map['certificateRevocationListId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

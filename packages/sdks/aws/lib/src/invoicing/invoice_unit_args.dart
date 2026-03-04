@@ -11,18 +11,24 @@ import 'invoice_unit_timeouts.dart';
 class InvoiceUnitArgs {
   /// Description of the invoice unit.
   final pulumi.Input<String>? description;
+
   /// AWS account ID that receives invoices for this unit. Cannot be changed after creation.
   final pulumi.Input<String> invoiceReceiver;
+
   /// Unique name of the invoice unit. Cannot be changed after creation.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block for invoice unit rules. See `rule` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<InvoiceUnitRule>>? rules;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Whether tax inheritance is disabled for this invoice unit.
   final pulumi.Input<bool>? taxInheritanceDisabled;
   final pulumi.Input<InvoiceUnitTimeouts>? timeouts;
@@ -53,24 +59,78 @@ class InvoiceUnitArgs {
       'invoiceReceiver': invoiceReceiver,
       'name': ?name,
       'region': ?region,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<InvoiceUnitRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<InvoiceUnitRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InvoiceUnitRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<InvoiceUnitRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
       'taxInheritanceDisabled': ?taxInheritanceDisabled,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<InvoiceUnitTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            InvoiceUnitTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory InvoiceUnitArgs.fromMap(Map<String, dynamic> map) {
     return InvoiceUnitArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      invoiceReceiver: (map['invoiceReceiver'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<InvoiceUnitRule>(map['rules']!, (value) => InvoiceUnitRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      taxInheritanceDisabled: map['taxInheritanceDisabled'] == null ? null : ((map['taxInheritanceDisabled'] as bool).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((InvoiceUnitTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invoiceReceiver: pulumi.Input.fromValue(map['invoiceReceiver'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InvoiceUnitRule>(
+            guardedValue,
+            (value) =>
+                InvoiceUnitRule.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      taxInheritanceDisabled: (() {
+        final guardedValue = map['taxInheritanceDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InvoiceUnitTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

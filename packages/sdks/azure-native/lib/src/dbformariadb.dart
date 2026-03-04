@@ -1,5 +1,3 @@
-library module_dbformariadb;
-
 export 'dbformariadb/configuration.dart';
 export 'dbformariadb/configuration_args.dart';
 export 'dbformariadb/create_mode.dart';

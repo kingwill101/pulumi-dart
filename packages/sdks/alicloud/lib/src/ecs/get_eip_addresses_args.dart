@@ -9,37 +9,53 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEipAddressesArgs {
   /// The eip name.
   final pulumi.Input<String>? addressName;
+
   /// The associated instance id.
   final pulumi.Input<String>? associatedInstanceId;
+
   /// The associated instance type.
   final pulumi.Input<String>? associatedInstanceType;
+
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
+
   /// Default to `true`. Set it to `false` can hide the `tags` to output.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Address IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
   final pulumi.Input<bool>? includeReservationData;
+
   /// The eip address.
   final pulumi.Input<String>? ipAddress;
   final pulumi.Input<List<String>>? ipAddresses;
+
   /// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
   final pulumi.Input<String>? isp;
+
   /// The lock reason.
   final pulumi.Input<String>? lockReason;
+
   /// A regex string to filter results by Address name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
   final pulumi.Input<String>? paymentType;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
   final pulumi.Input<String>? segmentInstanceId;
+
   /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
   final pulumi.Input<String>? status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -108,25 +124,98 @@ class GetEipAddressesArgs {
 
   factory GetEipAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetEipAddressesArgs(
-      addressName: map['addressName'] == null ? null : (map['addressName']! as String).input(),
-      associatedInstanceId: map['associatedInstanceId'] == null ? null : (map['associatedInstanceId']! as String).input(),
-      associatedInstanceType: map['associatedInstanceType'] == null ? null : (map['associatedInstanceType']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData']! as bool).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
-      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
-      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      segmentInstanceId: map['segmentInstanceId'] == null ? null : (map['segmentInstanceId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      addressName: (() {
+        final guardedValue = map['addressName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associatedInstanceId: (() {
+        final guardedValue = map['associatedInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      associatedInstanceType: (() {
+        final guardedValue = map['associatedInstanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includeReservationData: (() {
+        final guardedValue = map['includeReservationData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddresses: (() {
+        final guardedValue = map['ipAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      isp: (() {
+        final guardedValue = map['isp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lockReason: (() {
+        final guardedValue = map['lockReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentInstanceId: (() {
+        final guardedValue = map['segmentInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

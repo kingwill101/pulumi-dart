@@ -4,7 +4,7 @@ import 'get_replication_set_result.dart';
 import 'get_response_plan_args.dart';
 import 'get_response_plan_result.dart';
 
-/// > **NOTE:** The AWS Region specified by a provider must always be one of the Regions specified for the replication set.
+/// &gt; **NOTE:** The AWS Region specified by a provider must always be one of the Regions specified for the replication set.
 ///
 /// Use this data source to manage a replication set in AWS Systems Manager Incident Manager.
 ///

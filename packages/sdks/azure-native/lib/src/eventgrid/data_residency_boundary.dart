@@ -3,16 +3,15 @@ enum DataResidencyBoundary {
   valueWithinGeopair("WithinGeopair"),
   valueWithinRegion("WithinRegion");
 
-  const DataResidencyBoundary(this.value);
-  final String value;
+  const DataResidencyBoundary(this.wireValue);
+  final String wireValue;
 
   static DataResidencyBoundary fromValue(String value) {
     for (final item in DataResidencyBoundary.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataResidencyBoundary value: $value');
   }
 }
-

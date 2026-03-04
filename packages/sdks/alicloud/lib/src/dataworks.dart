@@ -1,5 +1,3 @@
-library module_dataworks;
-
 export 'dataworks/data_source.dart';
 export 'dataworks/data_source_args.dart';
 export 'dataworks/data_source_shared_rule.dart';

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficAnalyticsConfigurationPropertiesResponse {
   /// Flag to enable/disable traffic analytics.
   final pulumi.Input<bool>? enabled;
+
   /// The interval in minutes which would decide how frequently TA service should do flow analytics.
   final pulumi.Input<int>? trafficAnalyticsInterval;
+
   /// The resource guid of the attached workspace.
   final pulumi.Input<String>? workspaceId;
+
   /// The location of the attached workspace.
   final pulumi.Input<String>? workspaceRegion;
+
   /// Resource Id of the attached workspace.
   final pulumi.Input<String>? workspaceResourceId;
 
@@ -39,14 +43,35 @@ class TrafficAnalyticsConfigurationPropertiesResponse {
     };
   }
 
-  factory TrafficAnalyticsConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory TrafficAnalyticsConfigurationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TrafficAnalyticsConfigurationPropertiesResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      trafficAnalyticsInterval: map['trafficAnalyticsInterval'] == null ? null : (map['trafficAnalyticsInterval']! as int).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
-      workspaceRegion: map['workspaceRegion'] == null ? null : (map['workspaceRegion']! as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      trafficAnalyticsInterval: (() {
+        final guardedValue = map['trafficAnalyticsInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceRegion: (() {
+        final guardedValue = map['workspaceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceResourceId: (() {
+        final guardedValue = map['workspaceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -19,16 +19,22 @@ enum EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType {
   nonSerializableObject("NON_SERIALIZABLE_OBJECT"),
   jsonValue("JSON_VALUE");
 
-  const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType(this.value);
-  final String value;
+  const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType fromValue(String value) {
-    for (final item in EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType value: $value',
+    );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataManagerForAgricultureResourceArgs {
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -22,16 +23,22 @@ class GetDataManagerForAgricultureResourceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataManagerForAgricultureResourceName': dataManagerForAgricultureResourceName,
+      'dataManagerForAgricultureResourceName':
+          dataManagerForAgricultureResourceName,
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory GetDataManagerForAgricultureResourceArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDataManagerForAgricultureResourceArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataManagerForAgricultureResourceArgs(
-      dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dataManagerForAgricultureResourceName: pulumi.Input.fromValue(
+        map['dataManagerForAgricultureResourceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

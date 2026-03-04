@@ -3,16 +3,15 @@ enum RegionalDataBoundary {
   none("None"),
   eU("EU");
 
-  const RegionalDataBoundary(this.value);
-  final String value;
+  const RegionalDataBoundary(this.wireValue);
+  final String wireValue;
 
   static RegionalDataBoundary fromValue(String value) {
     for (final item in RegionalDataBoundary.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionalDataBoundary value: $value');
   }
 }
-

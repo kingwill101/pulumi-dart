@@ -963,32 +963,46 @@ import 'integration_account_schema_args.dart';
 class IntegrationAccountSchema extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The changed time.
   late final pulumi.Output<String> changedTime;
+
   /// The content.
   late final pulumi.Output<String?> content;
+
   /// The content link.
   late final pulumi.Output<ContentLinkResponse> contentLink;
+
   /// The content type.
   late final pulumi.Output<String?> contentType;
+
   /// The created time.
   late final pulumi.Output<String> createdTime;
+
   /// The document name.
   late final pulumi.Output<String?> documentName;
+
   /// The file name.
   late final pulumi.Output<String?> fileName;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The schema type.
   late final pulumi.Output<String> schemaType;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The target namespace of the schema.
   late final pulumi.Output<String?> targetNamespace;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -1001,25 +1015,25 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
     IntegrationAccountSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationAccountSchema',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.changedTime = registerOutput<String>('changedTime');
-    this.content = registerOutput<String?>('content');
-    this.contentLink = registerOutput<ContentLinkResponse>('contentLink');
-    this.contentType = registerOutput<String?>('contentType');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.documentName = registerOutput<String?>('documentName');
-    this.fileName = registerOutput<String?>('fileName');
-    this.location = registerOutput<String?>('location');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:logic:IntegrationAccountSchema',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<String?>('content');
+    contentLink = registerOutput<ContentLinkResponse>('contentLink');
+    contentType = registerOutput<String?>('contentType');
+    createdTime = registerOutput<String>('createdTime');
+    documentName = registerOutput<String?>('documentName');
+    fileName = registerOutput<String?>('fileName');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.schemaType = registerOutput<String>('schemaType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetNamespace = registerOutput<String?>('targetNamespace');
-    this.type = registerOutput<String>('type');
+    schemaType = registerOutput<String>('schemaType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetNamespace = registerOutput<String?>('targetNamespace');
+    type = registerOutput<String>('type');
   }
 }

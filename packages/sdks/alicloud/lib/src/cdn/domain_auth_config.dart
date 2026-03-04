@@ -31,11 +31,26 @@ class DomainAuthConfig {
 
   factory DomainAuthConfig.fromMap(Map<String, dynamic> map) {
     return DomainAuthConfig(
-      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
-      masterKey: map['masterKey'] == null ? null : (map['masterKey']! as String).input(),
-      slaveKey: map['slaveKey'] == null ? null : (map['slaveKey']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterKey: (() {
+        final guardedValue = map['masterKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slaveKey: (() {
+        final guardedValue = map['slaveKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -5,11 +5,9 @@ import 'virtual_machine_boot_diagnostics.dart';
 import 'virtual_machine_identity.dart';
 import 'virtual_machine_os_profile.dart';
 import 'virtual_machine_os_profile_linux_config.dart';
-import 'virtual_machine_os_profile_secret.dart';
 import 'virtual_machine_os_profile_windows_config.dart';
 import 'virtual_machine_plan.dart';
 import 'virtual_machine_state.dart';
-import 'virtual_machine_storage_data_disk.dart';
 import 'virtual_machine_storage_image_reference.dart';
 import 'virtual_machine_storage_os_disk.dart';
 
@@ -17,9 +15,9 @@ import 'virtual_machine_storage_os_disk.dart';
 ///
 /// ## Disclaimers
 ///
-/// > **Note:** The `azure.compute.VirtualMachine` resource has been superseded by the `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources. The existing `azure.compute.VirtualMachine` resource will continue to be available throughout the 2.x releases however is in a feature-frozen state to maintain compatibility - new functionality will instead be added to the `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources.
+/// &gt; **Note:** The `azure.compute.VirtualMachine` resource has been superseded by the `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources. The existing `azure.compute.VirtualMachine` resource will continue to be available throughout the 2.x releases however is in a feature-frozen state to maintain compatibility - new functionality will instead be added to the `azure.compute.LinuxVirtualMachine` and `azure.compute.WindowsVirtualMachine` resources.
 ///
-/// > **Note:** Data Disks can be attached either directly on the `azure.compute.VirtualMachine` resource, or using the `azure.compute.DataDiskAttachment` resource - but the two cannot be used together. If both are used against the same Virtual Machine, spurious changes will occur.
+/// &gt; **Note:** Data Disks can be attached either directly on the `azure.compute.VirtualMachine` resource, or using the `azure.compute.DataDiskAttachment` resource - but the two cannot be used together. If both are used against the same Virtual Machine, spurious changes will occur.
 ///
 /// ## Example Usage
 ///
@@ -517,7 +515,7 @@ import 'virtual_machine_storage_os_disk.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01, 2023-04-02
@@ -533,60 +531,87 @@ import 'virtual_machine_storage_os_disk.dart';
 /// ```
 class VirtualMachine extends pulumi.CustomResource {
   /// An `additional_capabilities` block as defined below.
-  late final pulumi.Output<VirtualMachineAdditionalCapabilities?> additionalCapabilities;
+  late final pulumi.Output<VirtualMachineAdditionalCapabilities?>
+  additionalCapabilities;
+
   /// The ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> availabilitySetId;
+
   /// A `boot_diagnostics` block as defined below.
   late final pulumi.Output<VirtualMachineBootDiagnostics?> bootDiagnostics;
+
   /// Should the Data Disks (either the Managed Disks / VHD Blobs) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
-  /// > **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
+  /// &gt; **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
   late final pulumi.Output<bool?> deleteDataDisksOnTermination;
+
   /// Should the OS Disk (either the Managed Disk / VHD Blob) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
-  /// > **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
+  /// &gt; **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
   late final pulumi.Output<bool?> deleteOsDiskOnTermination;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<VirtualMachineIdentity?> identity;
+
   /// Specifies the BYOL Type for this Virtual Machine. This is only applicable to Windows Virtual Machines. Possible values are `Windows_Client` and `Windows_Server`.
   late final pulumi.Output<String> licenseType;
+
   /// Specifies the Azure Region where the Virtual Machine exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of Network Interface IDs which should be associated with the Virtual Machine.
   late final pulumi.Output<List<String>> networkInterfaceIds;
+
   /// An `os_profile` block as defined below. Required when `create_option` in the `storage_os_disk` block is set to `FromImage`.
   late final pulumi.Output<VirtualMachineOsProfile?> osProfile;
+
   /// (Required, when a Linux machine) An `os_profile_linux_config` block as defined below.
-  late final pulumi.Output<VirtualMachineOsProfileLinuxConfig?> osProfileLinuxConfig;
+  late final pulumi.Output<VirtualMachineOsProfileLinuxConfig?>
+  osProfileLinuxConfig;
+
   /// One or more `os_profile_secrets` blocks as defined below.
-  late final pulumi.Output<List<VirtualMachineOsProfileSecret>?> osProfileSecrets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> osProfileSecrets;
+
   /// (Required, when a Windows machine) An `os_profile_windows_config` block as defined below.
-  late final pulumi.Output<VirtualMachineOsProfileWindowsConfig?> osProfileWindowsConfig;
+  late final pulumi.Output<VirtualMachineOsProfileWindowsConfig?>
+  osProfileWindowsConfig;
+
   /// A `plan` block as defined below.
   late final pulumi.Output<VirtualMachinePlan?> plan;
+
   /// The ID of the Network Interface (which must be attached to the Virtual Machine) which should be the Primary Network Interface for this Virtual Machine.
   late final pulumi.Output<String?> primaryNetworkInterfaceId;
+
   /// The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created
   late final pulumi.Output<String?> proximityPlacementGroupId;
+
   /// Specifies the name of the Resource Group in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// One or more `storage_data_disk` blocks as defined below.
   ///
-  /// > **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
-  late final pulumi.Output<List<VirtualMachineStorageDataDisk>> storageDataDisks;
+  /// &gt; **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
+  late final pulumi.Output<List<Map<String, dynamic>>> storageDataDisks;
+
   /// A `storage_image_reference` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<VirtualMachineStorageImageReference> storageImageReference;
+  late final pulumi.Output<VirtualMachineStorageImageReference>
+  storageImageReference;
+
   /// A `storage_os_disk` block as defined below.
   late final pulumi.Output<VirtualMachineStorageOsDisk> storageOsDisk;
+
   /// A mapping of tags to assign to the Virtual Machine.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
   late final pulumi.Output<String> vmSize;
+
   /// A list of a single item of the Availability Zone which the Virtual Machine should be allocated in. Changing this forces a new resource to be created.
   ///
-  /// > **Please Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
+  /// &gt; **Please Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
   ///
   /// For more information on the different example configurations, please check out the [Azure documentation](https://docs.microsoft.com/en-gb/rest/api/compute/virtualmachines/createorupdate#examples)
   late final pulumi.Output<String?> zones;
@@ -600,35 +625,61 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/virtualMachine:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalCapabilities = registerOutput<VirtualMachineAdditionalCapabilities?>('additionalCapabilities');
-    this.availabilitySetId = registerOutput<String>('availabilitySetId');
-    this.bootDiagnostics = registerOutput<VirtualMachineBootDiagnostics?>('bootDiagnostics');
-    this.deleteDataDisksOnTermination = registerOutput<bool?>('deleteDataDisksOnTermination');
-    this.deleteOsDiskOnTermination = registerOutput<bool?>('deleteOsDiskOnTermination');
-    this.identity = registerOutput<VirtualMachineIdentity?>('identity');
-    this.licenseType = registerOutput<String>('licenseType');
-    this.location = registerOutput<String>('location');
+         'azure:compute/virtualMachine:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalCapabilities =
+        registerOutput<VirtualMachineAdditionalCapabilities?>(
+          'additionalCapabilities',
+        );
+    availabilitySetId = registerOutput<String>('availabilitySetId');
+    bootDiagnostics = registerOutput<VirtualMachineBootDiagnostics?>(
+      'bootDiagnostics',
+    );
+    deleteDataDisksOnTermination = registerOutput<bool?>(
+      'deleteDataDisksOnTermination',
+    );
+    deleteOsDiskOnTermination = registerOutput<bool?>(
+      'deleteOsDiskOnTermination',
+    );
+    identity = registerOutput<VirtualMachineIdentity?>('identity');
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    this.osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile');
-    this.osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>('osProfileLinuxConfig');
-    this.osProfileSecrets = registerOutput<List<VirtualMachineOsProfileSecret>?>('osProfileSecrets');
-    this.osProfileWindowsConfig = registerOutput<VirtualMachineOsProfileWindowsConfig?>('osProfileWindowsConfig');
-    this.plan = registerOutput<VirtualMachinePlan?>('plan');
-    this.primaryNetworkInterfaceId = registerOutput<String?>('primaryNetworkInterfaceId');
-    this.proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageDataDisks = registerOutput<List<VirtualMachineStorageDataDisk>>('storageDataDisks');
-    this.storageImageReference = registerOutput<VirtualMachineStorageImageReference>('storageImageReference');
-    this.storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>('storageOsDisk');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vmSize = registerOutput<String>('vmSize');
-    this.zones = registerOutput<String?>('zones');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile');
+    osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>(
+      'osProfileLinuxConfig',
+    );
+    osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>(
+      'osProfileSecrets',
+    );
+    osProfileWindowsConfig =
+        registerOutput<VirtualMachineOsProfileWindowsConfig?>(
+          'osProfileWindowsConfig',
+        );
+    plan = registerOutput<VirtualMachinePlan?>('plan');
+    primaryNetworkInterfaceId = registerOutput<String?>(
+      'primaryNetworkInterfaceId',
+    );
+    proximityPlacementGroupId = registerOutput<String?>(
+      'proximityPlacementGroupId',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageDataDisks = registerOutput<List<Map<String, dynamic>>>(
+      'storageDataDisks',
+    );
+    storageImageReference = registerOutput<VirtualMachineStorageImageReference>(
+      'storageImageReference',
+    );
+    storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>(
+      'storageOsDisk',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    vmSize = registerOutput<String>('vmSize');
+    zones = registerOutput<String?>('zones');
   }
 
   /// Gets an existing [VirtualMachine] resource's state with the given [name] and [id].
@@ -649,34 +700,60 @@ class VirtualMachine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/virtualMachine:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalCapabilities = registerOutput<VirtualMachineAdditionalCapabilities?>('additionalCapabilities');
-    this.availabilitySetId = registerOutput<String>('availabilitySetId');
-    this.bootDiagnostics = registerOutput<VirtualMachineBootDiagnostics?>('bootDiagnostics');
-    this.deleteDataDisksOnTermination = registerOutput<bool?>('deleteDataDisksOnTermination');
-    this.deleteOsDiskOnTermination = registerOutput<bool?>('deleteOsDiskOnTermination');
-    this.identity = registerOutput<VirtualMachineIdentity?>('identity');
-    this.licenseType = registerOutput<String>('licenseType');
-    this.location = registerOutput<String>('location');
+         'azure:compute/virtualMachine:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalCapabilities =
+        registerOutput<VirtualMachineAdditionalCapabilities?>(
+          'additionalCapabilities',
+        );
+    availabilitySetId = registerOutput<String>('availabilitySetId');
+    bootDiagnostics = registerOutput<VirtualMachineBootDiagnostics?>(
+      'bootDiagnostics',
+    );
+    deleteDataDisksOnTermination = registerOutput<bool?>(
+      'deleteDataDisksOnTermination',
+    );
+    deleteOsDiskOnTermination = registerOutput<bool?>(
+      'deleteOsDiskOnTermination',
+    );
+    identity = registerOutput<VirtualMachineIdentity?>('identity');
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
-    this.osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile');
-    this.osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>('osProfileLinuxConfig');
-    this.osProfileSecrets = registerOutput<List<VirtualMachineOsProfileSecret>?>('osProfileSecrets');
-    this.osProfileWindowsConfig = registerOutput<VirtualMachineOsProfileWindowsConfig?>('osProfileWindowsConfig');
-    this.plan = registerOutput<VirtualMachinePlan?>('plan');
-    this.primaryNetworkInterfaceId = registerOutput<String?>('primaryNetworkInterfaceId');
-    this.proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageDataDisks = registerOutput<List<VirtualMachineStorageDataDisk>>('storageDataDisks');
-    this.storageImageReference = registerOutput<VirtualMachineStorageImageReference>('storageImageReference');
-    this.storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>('storageOsDisk');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vmSize = registerOutput<String>('vmSize');
-    this.zones = registerOutput<String?>('zones');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    osProfile = registerOutput<VirtualMachineOsProfile?>('osProfile');
+    osProfileLinuxConfig = registerOutput<VirtualMachineOsProfileLinuxConfig?>(
+      'osProfileLinuxConfig',
+    );
+    osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>(
+      'osProfileSecrets',
+    );
+    osProfileWindowsConfig =
+        registerOutput<VirtualMachineOsProfileWindowsConfig?>(
+          'osProfileWindowsConfig',
+        );
+    plan = registerOutput<VirtualMachinePlan?>('plan');
+    primaryNetworkInterfaceId = registerOutput<String?>(
+      'primaryNetworkInterfaceId',
+    );
+    proximityPlacementGroupId = registerOutput<String?>(
+      'proximityPlacementGroupId',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageDataDisks = registerOutput<List<Map<String, dynamic>>>(
+      'storageDataDisks',
+    );
+    storageImageReference = registerOutput<VirtualMachineStorageImageReference>(
+      'storageImageReference',
+    );
+    storageOsDisk = registerOutput<VirtualMachineStorageOsDisk>(
+      'storageOsDisk',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    vmSize = registerOutput<String>('vmSize');
+    zones = registerOutput<String?>('zones');
   }
 }

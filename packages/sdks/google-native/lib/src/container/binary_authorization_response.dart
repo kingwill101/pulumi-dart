@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BinaryAuthorizationResponse {
   /// This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
   final pulumi.Input<bool> enabled;
+
   /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
   final pulumi.Input<String> evaluationMode;
 
@@ -26,9 +27,8 @@ class BinaryAuthorizationResponse {
 
   factory BinaryAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorizationResponse(
-      enabled: (map['enabled'] as bool).input(),
-      evaluationMode: (map['evaluationMode'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      evaluationMode: pulumi.Input.fromValue(map['evaluationMode'] as String),
     );
   }
 }
-

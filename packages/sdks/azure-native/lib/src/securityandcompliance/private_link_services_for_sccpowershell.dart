@@ -570,22 +570,31 @@ import 'system_data_response.dart';
 class PrivateLinkServicesForSCCPowershell extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   late final pulumi.Output<String?> etag;
+
   /// Setting indicating whether the service has a managed identity associated with it.
   late final pulumi.Output<ServicesResourceResponseIdentity?> identity;
+
   /// The kind of the service.
   late final pulumi.Output<String> kind;
+
   /// The resource location.
   late final pulumi.Output<String> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The common properties of a service.
   late final pulumi.Output<ServicesPropertiesResponse> properties;
+
   /// Required property for system data
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -598,20 +607,20 @@ class PrivateLinkServicesForSCCPowershell extends pulumi.CustomResource {
     PrivateLinkServicesForSCCPowershellArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityandcompliance:PrivateLinkServicesForSCCPowershell',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.identity = registerOutput<ServicesResourceResponseIdentity?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:securityandcompliance:PrivateLinkServicesForSCCPowershell',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<ServicesResourceResponseIdentity?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ServicesPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ServicesPropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

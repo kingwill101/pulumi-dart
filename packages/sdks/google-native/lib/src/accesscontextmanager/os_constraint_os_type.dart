@@ -8,16 +8,15 @@ enum OsConstraintOsType {
   android("ANDROID"),
   ios("IOS");
 
-  const OsConstraintOsType(this.value);
-  final String value;
+  const OsConstraintOsType(this.wireValue);
+  final String wireValue;
 
   static OsConstraintOsType fromValue(String value) {
     for (final item in OsConstraintOsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OsConstraintOsType value: $value');
   }
 }
-

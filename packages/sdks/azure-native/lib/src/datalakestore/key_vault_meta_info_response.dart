@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultMetaInfoResponse {
   /// The name of the user managed encryption key.
   final pulumi.Input<String> encryptionKeyName;
+
   /// The version of the user managed encryption key.
   final pulumi.Input<String> encryptionKeyVersion;
+
   /// The resource identifier for the user managed Key Vault being used to encrypt.
   final pulumi.Input<String> keyVaultResourceId;
 
@@ -31,10 +33,15 @@ class KeyVaultMetaInfoResponse {
 
   factory KeyVaultMetaInfoResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultMetaInfoResponse(
-      encryptionKeyName: (map['encryptionKeyName'] as String).input(),
-      encryptionKeyVersion: (map['encryptionKeyVersion'] as String).input(),
-      keyVaultResourceId: (map['keyVaultResourceId'] as String).input(),
+      encryptionKeyName: pulumi.Input.fromValue(
+        map['encryptionKeyName'] as String,
+      ),
+      encryptionKeyVersion: pulumi.Input.fromValue(
+        map['encryptionKeyVersion'] as String,
+      ),
+      keyVaultResourceId: pulumi.Input.fromValue(
+        map['keyVaultResourceId'] as String,
+      ),
     );
   }
 }
-

@@ -22,10 +22,13 @@ class GetDeploymentStacksWhatIfResultsAtSubscriptionArgs {
     };
   }
 
-  factory GetDeploymentStacksWhatIfResultsAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentStacksWhatIfResultsAtSubscriptionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentStacksWhatIfResultsAtSubscriptionArgs(
-      deploymentStacksWhatIfResultName: (map['deploymentStacksWhatIfResultName'] as String).input(),
+      deploymentStacksWhatIfResultName: pulumi.Input.fromValue(
+        map['deploymentStacksWhatIfResultName'] as String,
+      ),
     );
   }
 }
-

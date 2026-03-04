@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeExtension {
   /// The endpoint uri.
   final pulumi.Input<String>? endpointUri;
+
   /// The extension categories.
   final pulumi.Input<List<String>>? extensionCategories;
+
   /// The timeout.
   final pulumi.Input<String>? timeout;
 
@@ -30,10 +32,21 @@ class ResourceTypeExtension {
 
   factory ResourceTypeExtension.fromMap(Map<String, dynamic> map) {
     return ResourceTypeExtension(
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
-      extensionCategories: map['extensionCategories'] == null ? null : ((map['extensionCategories']! as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      endpointUri: (() {
+        final guardedValue = map['endpointUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extensionCategories: (() {
+        final guardedValue = map['extensionCategories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

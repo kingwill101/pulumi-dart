@@ -19,16 +19,15 @@ enum VirtualNetworkGatewaySkuName {
   valueErGw3AZ("ErGw3AZ"),
   valueErGwScale("ErGwScale");
 
-  const VirtualNetworkGatewaySkuName(this.value);
-  final String value;
+  const VirtualNetworkGatewaySkuName(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkGatewaySkuName fromValue(String value) {
     for (final item in VirtualNetworkGatewaySkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualNetworkGatewaySkuName value: $value');
   }
 }
-

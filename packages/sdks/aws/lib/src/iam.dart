@@ -1,5 +1,3 @@
-library module_iam;
-
 export 'iam/access_key.dart';
 export 'iam/access_key_args.dart';
 export 'iam/access_key_state.dart';

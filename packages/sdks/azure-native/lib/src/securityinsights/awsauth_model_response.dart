@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AWSAuthModelResponse {
   /// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
   final pulumi.Input<String>? externalId;
+
   /// AWS STS assume role ARN
   final pulumi.Input<String> roleArn;
+
   /// Type of paging
   /// Expected value is 'AWS'.
   final pulumi.Input<String> type;
@@ -32,10 +34,13 @@ class AWSAuthModelResponse {
 
   factory AWSAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return AWSAuthModelResponse(
-      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
-      roleArn: (map['roleArn'] as String).input(),
-      type: (map['type'] as String).input(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

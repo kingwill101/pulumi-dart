@@ -9,16 +9,15 @@ enum JobComparator {
   nE("NE"),
   sTARTSWITH("STARTS_WITH");
 
-  const JobComparator(this.value);
-  final String value;
+  const JobComparator(this.wireValue);
+  final String wireValue;
 
   static JobComparator fromValue(String value) {
     for (final item in JobComparator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobComparator value: $value');
   }
 }
-

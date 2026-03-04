@@ -33,14 +33,15 @@ class GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine(
-      description: (map['description'] as String).input(),
-      enums: ((map['enums'] as List).cast<String>()).input(),
-      example: (map['example'] as String).input(),
-      requiresRestart: (map['requiresRestart'] as bool).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      enums: pulumi.Input.fromValue((map['enums'] as List).cast<String>()),
+      example: pulumi.Input.fromValue(map['example'] as String),
+      requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

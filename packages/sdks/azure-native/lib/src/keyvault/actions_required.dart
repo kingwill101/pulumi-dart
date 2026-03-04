@@ -2,16 +2,15 @@
 enum ActionsRequired {
   valueNone("None");
 
-  const ActionsRequired(this.value);
-  final String value;
+  const ActionsRequired(this.wireValue);
+  final String wireValue;
 
   static ActionsRequired fromValue(String value) {
     for (final item in ActionsRequired.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ActionsRequired value: $value');
   }
 }
-

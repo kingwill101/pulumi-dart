@@ -10,25 +10,37 @@ import 'target_vmdetails_response.dart';
 /// Result data returned by getCloneJob.
 class GetCloneJobVmmigrationV1alpha1Result {
   /// Details of the target Persistent Disks in Compute Engine.
-  final ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1 computeEngineDisksTargetDetails;
+  final ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1
+  computeEngineDisksTargetDetails;
+
   /// Details of the target VM in Compute Engine.
-  final ComputeEngineTargetDetailsResponseVmmigrationV1alpha1 computeEngineTargetDetails;
+  final ComputeEngineTargetDetailsResponseVmmigrationV1alpha1
+  computeEngineTargetDetails;
+
   /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
   final TargetVMDetailsResponse computeEngineVmDetails;
+
   /// The time the clone job was created (as an API call, not when it was actually created in the target).
   final String createTime;
+
   /// The time the clone job was ended.
   final String endTime;
+
   /// Provides details for the errors that led to the Clone Job's state.
   final StatusResponseVmmigrationV1alpha1 error;
+
   /// The name of the clone.
   final String name;
+
   /// State of the clone job.
   final String state;
+
   /// The time the state was last updated.
   final String stateTime;
+
   /// The clone steps list representing its progress.
   final List<CloneStepResponseVmmigrationV1alpha1> steps;
+
   /// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
   final TargetVMDetailsResponse targetDetails;
 
@@ -60,7 +72,8 @@ class GetCloneJobVmmigrationV1alpha1Result {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails.toMap(),
+      'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails
+          .toMap(),
       'computeEngineTargetDetails': computeEngineTargetDetails.toMap(),
       'computeEngineVmDetails': computeEngineVmDetails.toMap(),
       'createTime': createTime,
@@ -69,25 +82,48 @@ class GetCloneJobVmmigrationV1alpha1Result {
       'name': name,
       'state': state,
       'stateTime': stateTime,
-      'steps': pulumi.Input.encodeList<CloneStepResponseVmmigrationV1alpha1, Map<String, dynamic>>(steps, (value) => value.toMap()),
+      'steps':
+          pulumi.Input.encodeList<
+            CloneStepResponseVmmigrationV1alpha1,
+            Map<String, dynamic>
+          >(steps, (value) => value.toMap()),
       'targetDetails': targetDetails.toMap(),
     };
   }
 
-  factory GetCloneJobVmmigrationV1alpha1Result.fromMap(Map<String, dynamic> map) {
+  factory GetCloneJobVmmigrationV1alpha1Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCloneJobVmmigrationV1alpha1Result(
-      computeEngineDisksTargetDetails: ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDetails'] as Map).cast<String, dynamic>()),
-      computeEngineTargetDetails: ComputeEngineTargetDetailsResponseVmmigrationV1alpha1.fromMap((map['computeEngineTargetDetails'] as Map).cast<String, dynamic>()),
-      computeEngineVmDetails: TargetVMDetailsResponse.fromMap((map['computeEngineVmDetails'] as Map).cast<String, dynamic>()),
+      computeEngineDisksTargetDetails:
+          ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1.fromMap(
+            (map['computeEngineDisksTargetDetails']! as Map)
+                .cast<String, dynamic>(),
+          ),
+      computeEngineTargetDetails:
+          ComputeEngineTargetDetailsResponseVmmigrationV1alpha1.fromMap(
+            (map['computeEngineTargetDetails']! as Map).cast<String, dynamic>(),
+          ),
+      computeEngineVmDetails: TargetVMDetailsResponse.fromMap(
+        (map['computeEngineVmDetails']! as Map).cast<String, dynamic>(),
+      ),
       createTime: map['createTime'] as String,
       endTime: map['endTime'] as String,
-      error: StatusResponseVmmigrationV1alpha1.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponseVmmigrationV1alpha1.fromMap(
+        (map['error']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       state: map['state'] as String,
       stateTime: map['stateTime'] as String,
-      steps: pulumi.Input.decodeList<CloneStepResponseVmmigrationV1alpha1>(map['steps'], (value) => CloneStepResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      targetDetails: TargetVMDetailsResponse.fromMap((map['targetDetails'] as Map).cast<String, dynamic>()),
+      steps: pulumi.Input.decodeList<CloneStepResponseVmmigrationV1alpha1>(
+        map['steps']!,
+        (value) => CloneStepResponseVmmigrationV1alpha1.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetDetails: TargetVMDetailsResponse.fromMap(
+        (map['targetDetails']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -9,16 +9,15 @@ enum WorkloadItemType {
   valueSAPAseDatabase("SAPAseDatabase"),
   valueSAPHanaDBInstance("SAPHanaDBInstance");
 
-  const WorkloadItemType(this.value);
-  final String value;
+  const WorkloadItemType(this.wireValue);
+  final String wireValue;
 
   static WorkloadItemType fromValue(String value) {
     for (final item in WorkloadItemType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadItemType value: $value');
   }
 }
-

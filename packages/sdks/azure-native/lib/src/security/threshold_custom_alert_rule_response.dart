@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThresholdCustomAlertRuleResponse {
   /// The description of the custom alert.
   final pulumi.Input<String> description;
+
   /// The display name of the custom alert.
   final pulumi.Input<String> displayName;
+
   /// Status of the custom alert.
   final pulumi.Input<bool> isEnabled;
+
   /// The maximum threshold.
   final pulumi.Input<int> maxThreshold;
+
   /// The minimum threshold.
   final pulumi.Input<int> minThreshold;
+
   /// The type of the custom alert rule.
   /// Expected value is 'ThresholdCustomAlertRule'.
   final pulumi.Input<String> ruleType;
@@ -47,13 +52,12 @@ class ThresholdCustomAlertRuleResponse {
 
   factory ThresholdCustomAlertRuleResponse.fromMap(Map<String, dynamic> map) {
     return ThresholdCustomAlertRuleResponse(
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      maxThreshold: (map['maxThreshold'] as int).input(),
-      minThreshold: (map['minThreshold'] as int).input(),
-      ruleType: (map['ruleType'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      maxThreshold: pulumi.Input.fromValue(map['maxThreshold'] as int),
+      minThreshold: pulumi.Input.fromValue(map['minThreshold'] as int),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }
 }
-

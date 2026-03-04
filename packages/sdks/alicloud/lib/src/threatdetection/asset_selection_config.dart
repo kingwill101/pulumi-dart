@@ -12,8 +12,10 @@ import 'asset_selection_config_state.dart';
 class AssetSelectionConfig extends pulumi.CustomResource {
   /// The first ID of the resource
   late final pulumi.Output<String> businessType;
+
   /// The operating system type.
   late final pulumi.Output<String?> platform;
+
   /// Target object type.
   late final pulumi.Output<String> targetType;
 
@@ -26,14 +28,14 @@ class AssetSelectionConfig extends pulumi.CustomResource {
     AssetSelectionConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessType = registerOutput<String>('businessType');
-    this.platform = registerOutput<String?>('platform');
-    this.targetType = registerOutput<String>('targetType');
+         'alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessType = registerOutput<String>('businessType');
+    platform = registerOutput<String?>('platform');
+    targetType = registerOutput<String>('targetType');
   }
 
   /// Gets an existing [AssetSelectionConfig] resource's state with the given [name] and [id].
@@ -54,13 +56,13 @@ class AssetSelectionConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.businessType = registerOutput<String>('businessType');
-    this.platform = registerOutput<String?>('platform');
-    this.targetType = registerOutput<String>('targetType');
+         'alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    businessType = registerOutput<String>('businessType');
+    platform = registerOutput<String?>('platform');
+    targetType = registerOutput<String>('targetType');
   }
 }

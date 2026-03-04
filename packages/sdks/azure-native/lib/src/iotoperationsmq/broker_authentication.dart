@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'broker_authentication_args.dart';
-import 'broker_authenticator_methods_response.dart';
 import 'extended_location_property_response.dart';
 import 'system_data_response.dart';
 
@@ -648,23 +647,32 @@ import 'system_data_response.dart';
 /// ```
 class BrokerAuthentication extends pulumi.CustomResource {
   /// The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
-  late final pulumi.Output<List<BrokerAuthenticatorMethodsResponse>> authenticationMethods;
+  late final pulumi.Output<List<Map<String, dynamic>>> authenticationMethods;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Extended Location
   late final pulumi.Output<ExtendedLocationPropertyResponse> extendedLocation;
+
   /// The array of listener Resources it supports.
   late final pulumi.Output<List<String>> listenerRef;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -677,20 +685,24 @@ class BrokerAuthentication extends pulumi.CustomResource {
     BrokerAuthenticationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsmq:BrokerAuthentication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationMethods = registerOutput<List<BrokerAuthenticatorMethodsResponse>>('authenticationMethods');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation');
-    this.listenerRef = registerOutput<List<String>>('listenerRef');
-    this.location = registerOutput<String>('location');
+         'azure-native:iotoperationsmq:BrokerAuthentication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationMethods = registerOutput<List<Map<String, dynamic>>>(
+      'authenticationMethods',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>(
+      'extendedLocation',
+    );
+    listenerRef = registerOutput<List<String>>('listenerRef');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

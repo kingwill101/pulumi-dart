@@ -10,20 +10,31 @@ class PlacementV1ClusterResourcePlacementSpec {
 
   /// Creates a new [PlacementV1ClusterResourcePlacementSpec].
   /// [policy] Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected.
-  PlacementV1ClusterResourcePlacementSpec({
-    this.policy,
-  });
+  PlacementV1ClusterResourcePlacementSpec({this.policy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policy': ?pulumi.Input.mapOptionalInputValue<PlacementV1PlacementPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'policy':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlacementV1PlacementPolicy,
+            Map<String, dynamic>
+          >(policy, (value) => value.toMap()),
     };
   }
 
-  factory PlacementV1ClusterResourcePlacementSpec.fromMap(Map<String, dynamic> map) {
+  factory PlacementV1ClusterResourcePlacementSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlacementV1ClusterResourcePlacementSpec(
-      policy: map['policy'] == null ? null : (PlacementV1PlacementPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlacementV1PlacementPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

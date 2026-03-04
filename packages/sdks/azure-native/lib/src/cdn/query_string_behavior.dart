@@ -5,16 +5,15 @@ enum QueryStringBehavior {
   exclude("Exclude"),
   excludeAll("ExcludeAll");
 
-  const QueryStringBehavior(this.value);
-  final String value;
+  const QueryStringBehavior(this.wireValue);
+  final String wireValue;
 
   static QueryStringBehavior fromValue(String value) {
     for (final item in QueryStringBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QueryStringBehavior value: $value');
   }
 }
-

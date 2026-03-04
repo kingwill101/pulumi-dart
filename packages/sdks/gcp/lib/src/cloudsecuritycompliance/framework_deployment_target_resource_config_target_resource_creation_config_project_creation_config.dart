@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig {
   /// Billing account id to be used for the project.
   final pulumi.Input<String> billingAccountId;
+
   /// organizations/{org} or folders/{folder}
   final pulumi.Input<String> parent;
+
   /// Display name of the project to be created.
   final pulumi.Input<String> projectDisplayName;
 
@@ -28,12 +30,17 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProject
     };
   }
 
-  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap(Map<String, dynamic> map) {
+  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig(
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      parent: (map['parent'] as String).input(),
-      projectDisplayName: (map['projectDisplayName'] as String).input(),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      projectDisplayName: pulumi.Input.fromValue(
+        map['projectDisplayName'] as String,
+      ),
     );
   }
 }
-

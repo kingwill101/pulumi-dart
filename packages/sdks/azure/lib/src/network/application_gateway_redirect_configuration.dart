@@ -5,17 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewayRedirectConfiguration {
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String>? id;
+
   /// Whether to include the path in the redirected URL. Defaults to `false`
   final pulumi.Input<bool>? includePath;
+
   /// Whether to include the query string in the redirected URL. Default to `false`
   final pulumi.Input<bool>? includeQueryString;
+
   /// Unique name of the redirect configuration block
   final pulumi.Input<String> name;
+
   /// The type of redirect. Possible values are `Permanent`, `Temporary`, `Found` and `SeeOther`
   final pulumi.Input<String> redirectType;
   final pulumi.Input<String>? targetListenerId;
+
   /// The name of the listener to redirect to. Cannot be set if `target_url` is set.
   final pulumi.Input<String>? targetListenerName;
+
   /// The URL to redirect the request to. Cannot be set if `target_listener_name` is set.
   final pulumi.Input<String>? targetUrl;
 
@@ -52,17 +58,42 @@ class ApplicationGatewayRedirectConfiguration {
     };
   }
 
-  factory ApplicationGatewayRedirectConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayRedirectConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayRedirectConfiguration(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      includePath: map['includePath'] == null ? null : (map['includePath']! as bool).input(),
-      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString']! as bool).input(),
-      name: (map['name'] as String).input(),
-      redirectType: (map['redirectType'] as String).input(),
-      targetListenerId: map['targetListenerId'] == null ? null : (map['targetListenerId']! as String).input(),
-      targetListenerName: map['targetListenerName'] == null ? null : (map['targetListenerName']! as String).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      includePath: (() {
+        final guardedValue = map['includePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeQueryString: (() {
+        final guardedValue = map['includeQueryString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      redirectType: pulumi.Input.fromValue(map['redirectType'] as String),
+      targetListenerId: (() {
+        final guardedValue = map['targetListenerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetListenerName: (() {
+        final guardedValue = map['targetListenerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetUrl: (() {
+        final guardedValue = map['targetUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

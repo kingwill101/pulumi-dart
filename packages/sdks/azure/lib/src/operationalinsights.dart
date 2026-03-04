@@ -1,5 +1,3 @@
-library module_operationalinsights;
-
 export 'operationalinsights/analytics_solution.dart';
 export 'operationalinsights/analytics_solution_args.dart';
 export 'operationalinsights/analytics_solution_plan.dart';

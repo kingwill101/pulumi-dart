@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NrqlDropRuleState {
   /// Account where the drop rule will be put. Defaults to the account associated with the API key used.
   final pulumi.Input<String>? accountId;
+
   /// An action type specifying how to apply the NRQL string (either `drop_data`, `drop_attributes`, or ` drop_attributes_from_metric_aggregates`).
   final pulumi.Input<String>? action;
+
   /// The description of the drop rule.
   final pulumi.Input<String>? description;
+
   /// A NRQL string that specifies what data types to drop.
   final pulumi.Input<String>? nrql;
+
   /// The ID (GUID) of the corresponding Pipeline Cloud Rule, (migrated upstream by New Relic, in light of the upcoming EOL, as stated in the Deprecation Warning above). This can be used to import the corresponding Pipeline Cloud Rule as a [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource, as explained in our Drop Rules EOL Migration Guide.
   final pulumi.Input<String>? pipelineCloudRuleEntityId;
+
   /// The id, uniquely identifying the rule.
   final pulumi.Input<String>? ruleId;
 
@@ -46,13 +51,36 @@ class NrqlDropRuleState {
 
   factory NrqlDropRuleState.fromMap(Map<String, dynamic> map) {
     return NrqlDropRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      nrql: map['nrql'] == null ? null : (map['nrql']! as String).input(),
-      pipelineCloudRuleEntityId: map['pipelineCloudRuleEntityId'] == null ? null : (map['pipelineCloudRuleEntityId']! as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nrql: (() {
+        final guardedValue = map['nrql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pipelineCloudRuleEntityId: (() {
+        final guardedValue = map['pipelineCloudRuleEntityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleId: (() {
+        final guardedValue = map['ruleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

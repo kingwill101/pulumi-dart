@@ -6,14 +6,17 @@ import 'accelerator_git_repository_response.dart';
 /// Customized accelerator properties payload
 class CustomizedAcceleratorPropertiesResponse {
   final pulumi.Input<List<String>>? acceleratorTags;
+
   /// Type of the customized accelerator.
   final pulumi.Input<String>? acceleratorType;
   final pulumi.Input<String>? description;
   final pulumi.Input<String>? displayName;
   final pulumi.Input<AcceleratorGitRepositoryResponse> gitRepository;
   final pulumi.Input<String>? iconUrl;
+
   /// Imports references all imports that this accelerator/fragment depends upon.
   final pulumi.Input<List<String>> imports;
+
   /// State of the customized accelerator.
   final pulumi.Input<String> provisioningState;
 
@@ -43,24 +46,55 @@ class CustomizedAcceleratorPropertiesResponse {
       'acceleratorType': ?acceleratorType,
       'description': ?description,
       'displayName': ?displayName,
-      'gitRepository': pulumi.Input.mapInputValue<AcceleratorGitRepositoryResponse, Map<String, dynamic>>(gitRepository, (value) => value.toMap()),
+      'gitRepository':
+          pulumi.Input.mapInputValue<
+            AcceleratorGitRepositoryResponse,
+            Map<String, dynamic>
+          >(gitRepository, (value) => value.toMap()),
       'iconUrl': ?iconUrl,
       'imports': imports,
       'provisioningState': provisioningState,
     };
   }
 
-  factory CustomizedAcceleratorPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory CustomizedAcceleratorPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomizedAcceleratorPropertiesResponse(
-      acceleratorTags: map['acceleratorTags'] == null ? null : ((map['acceleratorTags']! as List).cast<String>()).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      gitRepository: (AcceleratorGitRepositoryResponse.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
-      imports: ((map['imports'] as List).cast<String>()).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      acceleratorTags: (() {
+        final guardedValue = map['acceleratorTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      acceleratorType: (() {
+        final guardedValue = map['acceleratorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gitRepository: pulumi.Input.fromValue(
+        AcceleratorGitRepositoryResponse.fromMap(
+          (map['gitRepository']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      iconUrl: (() {
+        final guardedValue = map['iconUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imports: pulumi.Input.fromValue((map['imports'] as List).cast<String>()),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

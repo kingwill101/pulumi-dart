@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_provisioning_args.dart';
 import 'user_provisioning_state.dart';
-import 'user_provisioning_user_provisioning_statistic.dart';
 
 /// Provides a Cloud SSO User Provisioning resource.
 ///
@@ -9,7 +8,7 @@ import 'user_provisioning_user_provisioning_statistic.dart';
 ///
 /// For information about Cloud SSO User Provisioning and how to use it, see [What is User Provisioning](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/CreateUserProvisioning).
 ///
-/// > **NOTE:** Available since v1.260.0.
+/// &gt; **NOTE:** Available since v1.260.0.
 ///
 /// ## Example Usage
 ///
@@ -385,28 +384,40 @@ import 'user_provisioning_user_provisioning_statistic.dart';
 class UserProvisioning extends pulumi.CustomResource {
   /// The creation time of the synchronization
   late final pulumi.Output<String> createTime;
+
   /// The processing policy for users who have been synchronized when deleting synchronization
   late final pulumi.Output<String> deletionStrategy;
+
   /// Description of User Synchronization
   late final pulumi.Output<String?> description;
+
   /// The ID of the directory to which the synchronization belongs
   late final pulumi.Output<String> directoryId;
+
   /// Processing Policy for Synchronization Conflicts
   late final pulumi.Output<String> duplicationStrategy;
+
   /// The ID of the CloudSSO user/group associated with the synchronization.
   late final pulumi.Output<String> principalId;
+
   /// The ID of the CloudSSO user/group associated with the synchronization.
   late final pulumi.Output<String> principalType;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The ID of the destination associated with the synchronization.
   late final pulumi.Output<String> targetId;
+
   /// The target type associated with the synchronization
   late final pulumi.Output<String> targetType;
+
   /// The first ID of the resource
   late final pulumi.Output<String> userProvisioningId;
+
   /// User Provisioning statistics
-  late final pulumi.Output<List<UserProvisioningUserProvisioningStatistic>> userProvisioningStatistics;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  userProvisioningStatistics;
 
   /// Creates a new [UserProvisioning].
   /// [name] The Pulumi resource name.
@@ -417,23 +428,25 @@ class UserProvisioning extends pulumi.CustomResource {
     UserProvisioningArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudsso/userProvisioning:UserProvisioning',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionStrategy = registerOutput<String>('deletionStrategy');
-    this.description = registerOutput<String?>('description');
-    this.directoryId = registerOutput<String>('directoryId');
-    this.duplicationStrategy = registerOutput<String>('duplicationStrategy');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.status = registerOutput<String>('status');
-    this.targetId = registerOutput<String>('targetId');
-    this.targetType = registerOutput<String>('targetType');
-    this.userProvisioningId = registerOutput<String>('userProvisioningId');
-    this.userProvisioningStatistics = registerOutput<List<UserProvisioningUserProvisioningStatistic>>('userProvisioningStatistics');
+         'alicloud:cloudsso/userProvisioning:UserProvisioning',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionStrategy = registerOutput<String>('deletionStrategy');
+    description = registerOutput<String?>('description');
+    directoryId = registerOutput<String>('directoryId');
+    duplicationStrategy = registerOutput<String>('duplicationStrategy');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    status = registerOutput<String>('status');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
+    userProvisioningId = registerOutput<String>('userProvisioningId');
+    userProvisioningStatistics = registerOutput<List<Map<String, dynamic>>>(
+      'userProvisioningStatistics',
+    );
   }
 
   /// Gets an existing [UserProvisioning] resource's state with the given [name] and [id].
@@ -454,22 +467,24 @@ class UserProvisioning extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudsso/userProvisioning:UserProvisioning',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionStrategy = registerOutput<String>('deletionStrategy');
-    this.description = registerOutput<String?>('description');
-    this.directoryId = registerOutput<String>('directoryId');
-    this.duplicationStrategy = registerOutput<String>('duplicationStrategy');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.status = registerOutput<String>('status');
-    this.targetId = registerOutput<String>('targetId');
-    this.targetType = registerOutput<String>('targetType');
-    this.userProvisioningId = registerOutput<String>('userProvisioningId');
-    this.userProvisioningStatistics = registerOutput<List<UserProvisioningUserProvisioningStatistic>>('userProvisioningStatistics');
+         'alicloud:cloudsso/userProvisioning:UserProvisioning',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionStrategy = registerOutput<String>('deletionStrategy');
+    description = registerOutput<String?>('description');
+    directoryId = registerOutput<String>('directoryId');
+    duplicationStrategy = registerOutput<String>('duplicationStrategy');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    status = registerOutput<String>('status');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
+    userProvisioningId = registerOutput<String>('userProvisioningId');
+    userProvisioningStatistics = registerOutput<List<Map<String, dynamic>>>(
+      'userProvisioningStatistics',
+    );
   }
 }

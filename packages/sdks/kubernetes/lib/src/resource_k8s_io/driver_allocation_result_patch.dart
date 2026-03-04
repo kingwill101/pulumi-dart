@@ -7,6 +7,7 @@ import 'named_resources_allocation_result_patch.dart';
 class DriverAllocationResultPatch {
   /// NamedResources describes the allocation result when using the named resources model.
   final pulumi.Input<NamedResourcesAllocationResultPatch>? namedResources;
+
   /// VendorRequestParameters are the per-request configuration parameters from the time that the claim was allocated.
   final pulumi.Input<dynamic>? vendorRequestParameters;
 
@@ -20,16 +21,31 @@ class DriverAllocationResultPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'namedResources': ?pulumi.Input.mapOptionalInputValue<NamedResourcesAllocationResultPatch, Map<String, dynamic>>(namedResources, (value) => value.toMap()),
+      'namedResources':
+          ?pulumi.Input.mapOptionalInputValue<
+            NamedResourcesAllocationResultPatch,
+            Map<String, dynamic>
+          >(namedResources, (value) => value.toMap()),
       'vendorRequestParameters': ?vendorRequestParameters,
     };
   }
 
   factory DriverAllocationResultPatch.fromMap(Map<String, dynamic> map) {
     return DriverAllocationResultPatch(
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesAllocationResultPatch.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
-      vendorRequestParameters: map['vendorRequestParameters'] == null ? null : (map['vendorRequestParameters']!).input(),
+      namedResources: (() {
+        final guardedValue = map['namedResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NamedResourcesAllocationResultPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vendorRequestParameters: (() {
+        final guardedValue = map['vendorRequestParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

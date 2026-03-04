@@ -1,5 +1,3 @@
-library module_monitoring;
-
 export 'monitoring/alert_policy.dart';
 export 'monitoring/alert_policy_alert_strategy.dart';
 export 'monitoring/alert_policy_alert_strategy_notification_channel_strategy.dart';

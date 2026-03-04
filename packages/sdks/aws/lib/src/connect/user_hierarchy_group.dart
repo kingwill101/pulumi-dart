@@ -1,12 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_hierarchy_group_args.dart';
-import 'user_hierarchy_group_hierarchy_path.dart';
 import 'user_hierarchy_group_state.dart';
 
 /// Provides an Amazon Connect User Hierarchy Group resource. For more information see
 /// [Amazon Connect: Getting Started](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-get-started.html)
 ///
-/// > **NOTE:** The User Hierarchy Structure must be created before creating a User Hierarchy Group.
+/// &gt; **NOTE:** The User Hierarchy Structure must be created before creating a User Hierarchy Group.
 ///
 /// ## Example Usage
 ///
@@ -296,23 +295,32 @@ import 'user_hierarchy_group_state.dart';
 class UserHierarchyGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the hierarchy group.
   late final pulumi.Output<String> arn;
+
   /// The identifier for the hierarchy group.
   late final pulumi.Output<String> hierarchyGroupId;
+
   /// A block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
-  late final pulumi.Output<List<UserHierarchyGroupHierarchyPath>> hierarchyPaths;
+  late final pulumi.Output<List<Map<String, dynamic>>> hierarchyPaths;
+
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   late final pulumi.Output<String> instanceId;
+
   /// The identifier of the level in the hierarchy group.
   late final pulumi.Output<String> levelId;
+
   /// The name of the user hierarchy group. Must not be more than 100 characters.
   late final pulumi.Output<String> name;
+
   /// The identifier for the parent hierarchy group. The user hierarchy is created at level one if the parent group ID is null.
   late final pulumi.Output<String?> parentGroupId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Tags to apply to the hierarchy group. If configured with a provider
   /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -325,21 +333,23 @@ class UserHierarchyGroup extends pulumi.CustomResource {
     UserHierarchyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/userHierarchyGroup:UserHierarchyGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
-    this.hierarchyPaths = registerOutput<List<UserHierarchyGroupHierarchyPath>>('hierarchyPaths');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.levelId = registerOutput<String>('levelId');
+         'aws:connect/userHierarchyGroup:UserHierarchyGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
+    hierarchyPaths = registerOutput<List<Map<String, dynamic>>>(
+      'hierarchyPaths',
+    );
+    instanceId = registerOutput<String>('instanceId');
+    levelId = registerOutput<String>('levelId');
     this.name = registerOutput<String>('name');
-    this.parentGroupId = registerOutput<String?>('parentGroupId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    parentGroupId = registerOutput<String?>('parentGroupId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [UserHierarchyGroup] resource's state with the given [name] and [id].
@@ -360,20 +370,22 @@ class UserHierarchyGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/userHierarchyGroup:UserHierarchyGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
-    this.hierarchyPaths = registerOutput<List<UserHierarchyGroupHierarchyPath>>('hierarchyPaths');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.levelId = registerOutput<String>('levelId');
+         'aws:connect/userHierarchyGroup:UserHierarchyGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    hierarchyGroupId = registerOutput<String>('hierarchyGroupId');
+    hierarchyPaths = registerOutput<List<Map<String, dynamic>>>(
+      'hierarchyPaths',
+    );
+    instanceId = registerOutput<String>('instanceId');
+    levelId = registerOutput<String>('levelId');
     this.name = registerOutput<String>('name');
-    this.parentGroupId = registerOutput<String?>('parentGroupId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    parentGroupId = registerOutput<String?>('parentGroupId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

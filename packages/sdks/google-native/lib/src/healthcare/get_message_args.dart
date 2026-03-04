@@ -43,13 +43,20 @@ class GetMessageArgs {
 
   factory GetMessageArgs.fromMap(Map<String, dynamic> map) {
     return GetMessageArgs(
-      datasetId: (map['datasetId'] as String).input(),
-      hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
-      location: (map['location'] as String).input(),
-      messageId: (map['messageId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      hl7V2StoreId: pulumi.Input.fromValue(map['hl7V2StoreId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      messageId: pulumi.Input.fromValue(map['messageId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

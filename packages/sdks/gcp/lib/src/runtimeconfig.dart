@@ -1,5 +1,3 @@
-library module_runtimeconfig;
-
 export 'runtimeconfig/config.dart';
 export 'runtimeconfig/config_args.dart';
 export 'runtimeconfig/config_iam_binding.dart';

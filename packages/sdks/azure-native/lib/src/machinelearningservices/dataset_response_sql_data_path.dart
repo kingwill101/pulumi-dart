@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetResponseSqlDataPath {
   /// SQL query timeout. Unit in seconds.
   final pulumi.Input<double> queryTimeout;
+
   /// SQL query
   final pulumi.Input<String> sqlQuery;
+
   /// SQL storedProcedure name
   final pulumi.Input<String> sqlStoredProcedureName;
+
   /// SQL table name
   final pulumi.Input<String> sqlTableName;
 
@@ -36,11 +39,12 @@ class DatasetResponseSqlDataPath {
 
   factory DatasetResponseSqlDataPath.fromMap(Map<String, dynamic> map) {
     return DatasetResponseSqlDataPath(
-      queryTimeout: (map['queryTimeout'] as double).input(),
-      sqlQuery: (map['sqlQuery'] as String).input(),
-      sqlStoredProcedureName: (map['sqlStoredProcedureName'] as String).input(),
-      sqlTableName: (map['sqlTableName'] as String).input(),
+      queryTimeout: pulumi.Input.fromValue(map['queryTimeout'] as double),
+      sqlQuery: pulumi.Input.fromValue(map['sqlQuery'] as String),
+      sqlStoredProcedureName: pulumi.Input.fromValue(
+        map['sqlStoredProcedureName'] as String,
+      ),
+      sqlTableName: pulumi.Input.fromValue(map['sqlTableName'] as String),
     );
   }
 }
-

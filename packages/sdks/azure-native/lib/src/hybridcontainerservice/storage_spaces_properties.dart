@@ -7,10 +7,13 @@ import 'storage_spaces_properties_vmware_storage_profile.dart';
 
 /// HybridAKSStorageSpec defines the desired state of HybridAKSStorage
 class StorageSpacesProperties {
-  final pulumi.Input<StorageSpacesPropertiesHciStorageProfile>? hciStorageProfile;
+  final pulumi.Input<StorageSpacesPropertiesHciStorageProfile>?
+  hciStorageProfile;
+
   /// HybridAKSStorageStatus defines the observed state of HybridAKSStorage
   final pulumi.Input<StorageSpacesPropertiesStatus>? status;
-  final pulumi.Input<StorageSpacesPropertiesVmwareStorageProfile>? vmwareStorageProfile;
+  final pulumi.Input<StorageSpacesPropertiesVmwareStorageProfile>?
+  vmwareStorageProfile;
 
   /// Creates a new [StorageSpacesProperties].
   /// [hciStorageProfile] Optional.
@@ -24,18 +27,53 @@ class StorageSpacesProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hciStorageProfile': ?pulumi.Input.mapOptionalInputValue<StorageSpacesPropertiesHciStorageProfile, Map<String, dynamic>>(hciStorageProfile, (value) => value.toMap()),
-      'status': ?pulumi.Input.mapOptionalInputValue<StorageSpacesPropertiesStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
-      'vmwareStorageProfile': ?pulumi.Input.mapOptionalInputValue<StorageSpacesPropertiesVmwareStorageProfile, Map<String, dynamic>>(vmwareStorageProfile, (value) => value.toMap()),
+      'hciStorageProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageSpacesPropertiesHciStorageProfile,
+            Map<String, dynamic>
+          >(hciStorageProfile, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageSpacesPropertiesStatus,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
+      'vmwareStorageProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageSpacesPropertiesVmwareStorageProfile,
+            Map<String, dynamic>
+          >(vmwareStorageProfile, (value) => value.toMap()),
     };
   }
 
   factory StorageSpacesProperties.fromMap(Map<String, dynamic> map) {
     return StorageSpacesProperties(
-      hciStorageProfile: map['hciStorageProfile'] == null ? null : (StorageSpacesPropertiesHciStorageProfile.fromMap((map['hciStorageProfile']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (StorageSpacesPropertiesStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
-      vmwareStorageProfile: map['vmwareStorageProfile'] == null ? null : (StorageSpacesPropertiesVmwareStorageProfile.fromMap((map['vmwareStorageProfile']! as Map).cast<String, dynamic>())).input(),
+      hciStorageProfile: (() {
+        final guardedValue = map['hciStorageProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageSpacesPropertiesHciStorageProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageSpacesPropertiesStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vmwareStorageProfile: (() {
+        final guardedValue = map['vmwareStorageProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageSpacesPropertiesVmwareStorageProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

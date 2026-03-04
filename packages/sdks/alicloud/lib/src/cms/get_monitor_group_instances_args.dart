@@ -31,10 +31,17 @@ class GetMonitorGroupInstancesArgs {
 
   factory GetMonitorGroupInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupInstancesArgs(
-      ids: (map['ids'] as String).input(),
-      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      ids: pulumi.Input.fromValue(map['ids'] as String),
+      keyword: (() {
+        final guardedValue = map['keyword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

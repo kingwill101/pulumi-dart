@@ -6,9 +6,9 @@ import 'remote_write_state.dart';
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://next.api.aliyun.com/api/ARMS/2019-08-08/AddPrometheusInstance).
 ///
-/// > **NOTE:** Available since v1.204.0.
+/// &gt; **NOTE:** Available since v1.204.0.
 ///
-/// > **DEPRECATED:** This resource has been deprecated since v1.228.0.
+/// &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -396,8 +396,10 @@ import 'remote_write_state.dart';
 class RemoteWrite extends pulumi.CustomResource {
   /// The ID of the Prometheus instance.
   late final pulumi.Output<String> clusterId;
+
   /// The name of the Remote Write configuration item.
   late final pulumi.Output<String> remoteWriteName;
+
   /// The details of the Remote Write configuration item. Specify the value in the YAML format.
   late final pulumi.Output<String> remoteWriteYaml;
 
@@ -410,14 +412,14 @@ class RemoteWrite extends pulumi.CustomResource {
     RemoteWriteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/remoteWrite:RemoteWrite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.remoteWriteName = registerOutput<String>('remoteWriteName');
-    this.remoteWriteYaml = registerOutput<String>('remoteWriteYaml');
+         'alicloud:arms/remoteWrite:RemoteWrite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    remoteWriteName = registerOutput<String>('remoteWriteName');
+    remoteWriteYaml = registerOutput<String>('remoteWriteYaml');
   }
 
   /// Gets an existing [RemoteWrite] resource's state with the given [name] and [id].
@@ -438,13 +440,13 @@ class RemoteWrite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/remoteWrite:RemoteWrite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.remoteWriteName = registerOutput<String>('remoteWriteName');
-    this.remoteWriteYaml = registerOutput<String>('remoteWriteYaml');
+         'alicloud:arms/remoteWrite:RemoteWrite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    remoteWriteName = registerOutput<String>('remoteWriteName');
+    remoteWriteYaml = registerOutput<String>('remoteWriteYaml');
   }
 }

@@ -3,16 +3,15 @@ enum AttachedDiskTypeComputeV1 {
   persistent("PERSISTENT"),
   scratch("SCRATCH");
 
-  const AttachedDiskTypeComputeV1(this.value);
-  final String value;
+  const AttachedDiskTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static AttachedDiskTypeComputeV1 fromValue(String value) {
     for (final item in AttachedDiskTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttachedDiskTypeComputeV1 value: $value');
   }
 }
-

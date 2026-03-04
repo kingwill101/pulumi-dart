@@ -11,20 +11,15 @@ class GetManagementServerArgs {
 
   /// Creates a new [GetManagementServerArgs].
   /// [location] Required.
-  GetManagementServerArgs({
-    required this.location,
-  });
+  GetManagementServerArgs({required this.location});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-    };
+    return <String, dynamic>{'location': location};
   }
 
   factory GetManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementServerArgs(
-      location: (map['location'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

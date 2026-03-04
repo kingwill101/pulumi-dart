@@ -9,20 +9,21 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction].
   /// [path] Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
-  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction({
-    this.path,
-  });
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction({this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': ?path,
-    };
+    return <String, dynamic>{'path': ?path};
   }
 
-  factory GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

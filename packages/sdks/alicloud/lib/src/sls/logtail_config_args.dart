@@ -10,20 +10,28 @@ import 'logtail_config_output_detail.dart';
 class LogtailConfigArgs {
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// The detailed configuration entered by logtail.
   final pulumi.Input<String>? inputDetail;
+
   /// Method of log entry
   final pulumi.Input<String>? inputType;
+
   /// Last modification time, unix timestamp
   final pulumi.Input<int>? lastModifyTime;
+
   /// Sample log
   final pulumi.Input<String>? logSample;
+
   /// The name of the resource
   final pulumi.Input<String>? logtailConfigName;
+
   /// Detailed configuration of logtail output See `output_detail` below.
   final pulumi.Input<LogtailConfigOutputDetail>? outputDetail;
+
   /// Log output mode. You can only upload data to log service.
   final pulumi.Input<String>? outputType;
+
   /// Project name
   final pulumi.Input<String> projectName;
 
@@ -57,7 +65,11 @@ class LogtailConfigArgs {
       'lastModifyTime': ?lastModifyTime,
       'logSample': ?logSample,
       'logtailConfigName': ?logtailConfigName,
-      'outputDetail': ?pulumi.Input.mapOptionalInputValue<LogtailConfigOutputDetail, Map<String, dynamic>>(outputDetail, (value) => value.toMap()),
+      'outputDetail':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogtailConfigOutputDetail,
+            Map<String, dynamic>
+          >(outputDetail, (value) => value.toMap()),
       'outputType': ?outputType,
       'projectName': projectName,
     };
@@ -65,16 +77,51 @@ class LogtailConfigArgs {
 
   factory LogtailConfigArgs.fromMap(Map<String, dynamic> map) {
     return LogtailConfigArgs(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      inputDetail: map['inputDetail'] == null ? null : (map['inputDetail']! as String).input(),
-      inputType: map['inputType'] == null ? null : (map['inputType']! as String).input(),
-      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime']! as int).input(),
-      logSample: map['logSample'] == null ? null : (map['logSample']! as String).input(),
-      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName']! as String).input(),
-      outputDetail: map['outputDetail'] == null ? null : (LogtailConfigOutputDetail.fromMap((map['outputDetail']! as Map).cast<String, dynamic>())).input(),
-      outputType: map['outputType'] == null ? null : (map['outputType']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputDetail: (() {
+        final guardedValue = map['inputDetail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputType: (() {
+        final guardedValue = map['inputType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifyTime: (() {
+        final guardedValue = map['lastModifyTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      logSample: (() {
+        final guardedValue = map['logSample'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logtailConfigName: (() {
+        final guardedValue = map['logtailConfigName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputDetail: (() {
+        final guardedValue = map['outputDetail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogtailConfigOutputDetail.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      outputType: (() {
+        final guardedValue = map['outputType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
     );
   }
 }
-

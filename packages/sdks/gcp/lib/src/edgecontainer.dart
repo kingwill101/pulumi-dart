@@ -1,5 +1,3 @@
-library module_edgecontainer;
-
 export 'edgecontainer/cluster.dart';
 export 'edgecontainer/cluster_args.dart';
 export 'edgecontainer/cluster_authorization.dart';

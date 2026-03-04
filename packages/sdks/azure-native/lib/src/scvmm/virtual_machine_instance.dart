@@ -7,7 +7,6 @@ import 'os_profile_for_vminstance_response.dart';
 import 'storage_profile_response.dart';
 import 'system_data_response.dart';
 import 'virtual_machine_instance_args.dart';
-import 'virtual_machine_instance_properties_response_availability_sets.dart';
 
 /// Define the virtualMachineInstance.
 ///
@@ -210,29 +209,42 @@ import 'virtual_machine_instance_properties_response_availability_sets.dart';
 /// ```
 class VirtualMachineInstance extends pulumi.CustomResource {
   /// Availability Sets in vm.
-  late final pulumi.Output<List<VirtualMachineInstancePropertiesResponseAvailabilitySets>?> availabilitySets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> availabilitySets;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Hardware properties.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
+
   /// Gets the infrastructure profile.
-  late final pulumi.Output<InfrastructureProfileResponse?> infrastructureProfile;
+  late final pulumi.Output<InfrastructureProfileResponse?>
+  infrastructureProfile;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network properties.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
+
   /// OS properties.
   late final pulumi.Output<OsProfileForVMInstanceResponse?> osProfile;
+
   /// Gets the power state of the virtual machine.
   late final pulumi.Output<String> powerState;
+
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Storage properties.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -245,23 +257,31 @@ class VirtualMachineInstance extends pulumi.CustomResource {
     VirtualMachineInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:scvmm:VirtualMachineInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilitySets = registerOutput<List<VirtualMachineInstancePropertiesResponseAvailabilitySets>?>('availabilitySets');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile');
-    this.infrastructureProfile = registerOutput<InfrastructureProfileResponse?>('infrastructureProfile');
+         'azure-native:scvmm:VirtualMachineInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilitySets = registerOutput<List<Map<String, dynamic>>?>(
+      'availabilitySets',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    hardwareProfile = registerOutput<HardwareProfileResponse?>(
+      'hardwareProfile',
+    );
+    infrastructureProfile = registerOutput<InfrastructureProfileResponse?>(
+      'infrastructureProfile',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    this.osProfile = registerOutput<OsProfileForVMInstanceResponse?>('osProfile');
-    this.powerState = registerOutput<String>('powerState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    osProfile = registerOutput<OsProfileForVMInstanceResponse?>('osProfile');
+    powerState = registerOutput<String>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

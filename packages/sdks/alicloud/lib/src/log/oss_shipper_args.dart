@@ -10,8 +10,10 @@ import 'oss_shipper_parquet_config.dart';
 class OssShipperArgs {
   /// How often is it delivered every interval.
   final pulumi.Input<int> bufferInterval;
+
   /// Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
   final pulumi.Input<int> bufferSize;
+
   /// OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
   final pulumi.Input<String>? compressType;
   final pulumi.Input<List<String>>? csvConfigColumns;
@@ -20,6 +22,7 @@ class OssShipperArgs {
   final pulumi.Input<String>? csvConfigLinefeed;
   final pulumi.Input<String>? csvConfigNullidentifier;
   final pulumi.Input<String>? csvConfigQuote;
+
   /// Storage format, only supports three types: `json`, `parquet`, `csv`.
   /// **According to the different format, please select the following parameters**
   /// - format = `json`
@@ -37,19 +40,26 @@ class OssShipperArgs {
   /// `type` - (Required) Type of configuration name.
   final pulumi.Input<String> format;
   final pulumi.Input<bool>? jsonEnableTag;
+
   /// The name of the log logstore.
   final pulumi.Input<String> logstoreName;
+
   /// The name of the oss bucket.
   final pulumi.Input<String> ossBucket;
+
   /// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
   final pulumi.Input<String>? ossPrefix;
   final pulumi.Input<List<OssShipperParquetConfig>>? parquetConfigs;
+
   /// The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
   final pulumi.Input<String> pathFormat;
+
   /// The name of the log project. It is the only in one Alicloud account.
   final pulumi.Input<String> projectName;
+
   /// Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
   final pulumi.Input<String>? roleArn;
+
   /// Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
   final pulumi.Input<String> shipperName;
 
@@ -111,7 +121,18 @@ class OssShipperArgs {
       'logstoreName': logstoreName,
       'ossBucket': ossBucket,
       'ossPrefix': ?ossPrefix,
-      'parquetConfigs': ?pulumi.Input.mapOptionalInputValue<List<OssShipperParquetConfig>, List<Map<String, dynamic>>>(parquetConfigs, (value) => pulumi.Input.encodeList<OssShipperParquetConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parquetConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<OssShipperParquetConfig>,
+            List<Map<String, dynamic>>
+          >(
+            parquetConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OssShipperParquetConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'pathFormat': pathFormat,
       'projectName': projectName,
       'roleArn': ?roleArn,
@@ -121,26 +142,76 @@ class OssShipperArgs {
 
   factory OssShipperArgs.fromMap(Map<String, dynamic> map) {
     return OssShipperArgs(
-      bufferInterval: (map['bufferInterval'] as int).input(),
-      bufferSize: (map['bufferSize'] as int).input(),
-      compressType: map['compressType'] == null ? null : (map['compressType']! as String).input(),
-      csvConfigColumns: map['csvConfigColumns'] == null ? null : ((map['csvConfigColumns']! as List).cast<String>()).input(),
-      csvConfigDelimiter: map['csvConfigDelimiter'] == null ? null : (map['csvConfigDelimiter']! as String).input(),
-      csvConfigHeader: map['csvConfigHeader'] == null ? null : (map['csvConfigHeader']! as bool).input(),
-      csvConfigLinefeed: map['csvConfigLinefeed'] == null ? null : (map['csvConfigLinefeed']! as String).input(),
-      csvConfigNullidentifier: map['csvConfigNullidentifier'] == null ? null : (map['csvConfigNullidentifier']! as String).input(),
-      csvConfigQuote: map['csvConfigQuote'] == null ? null : (map['csvConfigQuote']! as String).input(),
-      format: (map['format'] as String).input(),
-      jsonEnableTag: map['jsonEnableTag'] == null ? null : (map['jsonEnableTag']! as bool).input(),
-      logstoreName: (map['logstoreName'] as String).input(),
-      ossBucket: (map['ossBucket'] as String).input(),
-      ossPrefix: map['ossPrefix'] == null ? null : (map['ossPrefix']! as String).input(),
-      parquetConfigs: map['parquetConfigs'] == null ? null : (pulumi.Input.decodeList<OssShipperParquetConfig>(map['parquetConfigs']!, (value) => OssShipperParquetConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pathFormat: (map['pathFormat'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
-      shipperName: (map['shipperName'] as String).input(),
+      bufferInterval: pulumi.Input.fromValue(map['bufferInterval'] as int),
+      bufferSize: pulumi.Input.fromValue(map['bufferSize'] as int),
+      compressType: (() {
+        final guardedValue = map['compressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      csvConfigColumns: (() {
+        final guardedValue = map['csvConfigColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      csvConfigDelimiter: (() {
+        final guardedValue = map['csvConfigDelimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      csvConfigHeader: (() {
+        final guardedValue = map['csvConfigHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      csvConfigLinefeed: (() {
+        final guardedValue = map['csvConfigLinefeed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      csvConfigNullidentifier: (() {
+        final guardedValue = map['csvConfigNullidentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      csvConfigQuote: (() {
+        final guardedValue = map['csvConfigQuote'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      jsonEnableTag: (() {
+        final guardedValue = map['jsonEnableTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logstoreName: pulumi.Input.fromValue(map['logstoreName'] as String),
+      ossBucket: pulumi.Input.fromValue(map['ossBucket'] as String),
+      ossPrefix: (() {
+        final guardedValue = map['ossPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parquetConfigs: (() {
+        final guardedValue = map['parquetConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<OssShipperParquetConfig>(
+            guardedValue,
+            (value) => OssShipperParquetConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      pathFormat: pulumi.Input.fromValue(map['pathFormat'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shipperName: pulumi.Input.fromValue(map['shipperName'] as String),
     );
   }
 }
-

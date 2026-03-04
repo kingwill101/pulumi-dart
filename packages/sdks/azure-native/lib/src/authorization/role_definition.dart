@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'permission_response.dart';
 import 'role_definition_args.dart';
 
 /// Role definition.
@@ -129,26 +128,37 @@ import 'role_definition_args.dart';
 class RoleDefinition extends pulumi.CustomResource {
   /// Role definition assignable scopes.
   late final pulumi.Output<List<String>?> assignableScopes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Id of the user who created the assignment
   late final pulumi.Output<String> createdBy;
+
   /// Time it was created
   late final pulumi.Output<String> createdOn;
+
   /// The role definition description.
   late final pulumi.Output<String?> description;
+
   /// The role definition name.
   late final pulumi.Output<String> name;
+
   /// Role definition permissions.
-  late final pulumi.Output<List<PermissionResponse>?> permissions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+
   /// The role name.
   late final pulumi.Output<String?> roleName;
+
   /// The role type.
   late final pulumi.Output<String?> roleType;
+
   /// The role definition type.
   late final pulumi.Output<String> type;
+
   /// Id of the user who updated the assignment
   late final pulumi.Output<String> updatedBy;
+
   /// Time it was updated
   late final pulumi.Output<String> updatedOn;
 
@@ -161,22 +171,22 @@ class RoleDefinition extends pulumi.CustomResource {
     RoleDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:RoleDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignableScopes = registerOutput<List<String>?>('assignableScopes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.description = registerOutput<String?>('description');
+         'azure-native:authorization:RoleDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignableScopes = registerOutput<List<String>?>('assignableScopes');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<String>('createdBy');
+    createdOn = registerOutput<String>('createdOn');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<List<PermissionResponse>?>('permissions');
-    this.roleName = registerOutput<String?>('roleName');
-    this.roleType = registerOutput<String?>('roleType');
-    this.type = registerOutput<String>('type');
-    this.updatedBy = registerOutput<String>('updatedBy');
-    this.updatedOn = registerOutput<String>('updatedOn');
+    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    roleName = registerOutput<String?>('roleName');
+    roleType = registerOutput<String?>('roleType');
+    type = registerOutput<String>('type');
+    updatedBy = registerOutput<String>('updatedBy');
+    updatedOn = registerOutput<String>('updatedOn');
   }
 }

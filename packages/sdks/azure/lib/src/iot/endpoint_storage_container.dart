@@ -4,7 +4,7 @@ import 'endpoint_storage_container_state.dart';
 
 /// Manages an IotHub Storage Container Endpoint
 ///
-/// > **Note:** Endpoints can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azurerm_iothub_endpoint_*` resources - but the two ways of defining the endpoints cannot be used together. If both are used against the same IoTHub, spurious changes will occur. Also, defining a `azurerm_iothub_endpoint_*` resource and another endpoint of a different type directly on the `azure.iot.IoTHub` resource is not supported.
+/// &gt; **Note:** Endpoints can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azurerm_iothub_endpoint_*` resources - but the two ways of defining the endpoints cannot be used together. If both are used against the same IoTHub, spurious changes will occur. Also, defining a `azurerm_iothub_endpoint_*` resource and another endpoint of a different type directly on the `azure.iot.IoTHub` resource is not supported.
 ///
 /// ## Example Usage
 ///
@@ -343,33 +343,45 @@ import 'endpoint_storage_container_state.dart';
 class EndpointStorageContainer extends pulumi.CustomResource {
   /// Type used to authenticate against the storage endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
   late final pulumi.Output<String?> authenticationType;
+
   /// Time interval at which blobs are written to storage. Value should be between 60 and 720 seconds. Default value is 300 seconds.
   late final pulumi.Output<int?> batchFrequencyInSeconds;
+
   /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authentication_type` is `keyBased`.
   late final pulumi.Output<String?> connectionString;
+
   /// The name of storage container in the storage account.
   late final pulumi.Output<String> containerName;
+
   /// Encoding that is used to serialize messages to blobs. Supported values are `Avro`, `AvroDeflate` and `JSON`. Default value is `Avro`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> encoding;
+
   /// URI of the Storage Container endpoint. This corresponds to the `primary_blob_endpoint` of the parent storage account. This attribute can only be specified and is mandatory when `authentication_type` is `identityBased`.
   late final pulumi.Output<String?> endpointUri;
+
   /// File name format for the blob. All parameters are mandatory but can be reordered. Defaults to `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`.
   late final pulumi.Output<String?> fileNameFormat;
+
   /// ID of the User Managed Identity used to authenticate against the storage endpoint.
   ///
-  /// > **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
+  /// &gt; **Note:** `identity_id` can only be specified when `authentication_type` is `identityBased`. It must be one of the `identity_ids` of the Iot Hub. If not specified when `authentication_type` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
   late final pulumi.Output<String?> identityId;
+
   /// The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
+
   /// Maximum number of bytes for each blob written to storage. Value should be between 10485760(10MB) and 524288000(500MB). Default value is 314572800(300MB).
   late final pulumi.Output<int?> maxChunkSizeInBytes;
+
   /// The name of the endpoint. The name must be unique across endpoint types. The following names are reserved: `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group under which the Storage Container has been created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The subscription ID for the endpoint.
   ///
-  /// > **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
+  /// &gt; **Note:** When `subscription_id` isn't specified it will be set to the subscription ID of the IoT Hub resource.
   late final pulumi.Output<String> subscriptionId;
 
   /// Creates a new [EndpointStorageContainer].
@@ -381,24 +393,24 @@ class EndpointStorageContainer extends pulumi.CustomResource {
     EndpointStorageContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/endpointStorageContainer:EndpointStorageContainer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationType = registerOutput<String?>('authenticationType');
-    this.batchFrequencyInSeconds = registerOutput<int?>('batchFrequencyInSeconds');
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.containerName = registerOutput<String>('containerName');
-    this.encoding = registerOutput<String?>('encoding');
-    this.endpointUri = registerOutput<String?>('endpointUri');
-    this.fileNameFormat = registerOutput<String?>('fileNameFormat');
-    this.identityId = registerOutput<String?>('identityId');
-    this.iothubId = registerOutput<String>('iothubId');
-    this.maxChunkSizeInBytes = registerOutput<int?>('maxChunkSizeInBytes');
+         'azure:iot/endpointStorageContainer:EndpointStorageContainer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    batchFrequencyInSeconds = registerOutput<int?>('batchFrequencyInSeconds');
+    connectionString = registerOutput<String?>('connectionString');
+    containerName = registerOutput<String>('containerName');
+    encoding = registerOutput<String?>('encoding');
+    endpointUri = registerOutput<String?>('endpointUri');
+    fileNameFormat = registerOutput<String?>('fileNameFormat');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    maxChunkSizeInBytes = registerOutput<int?>('maxChunkSizeInBytes');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 
   /// Gets an existing [EndpointStorageContainer] resource's state with the given [name] and [id].
@@ -419,23 +431,23 @@ class EndpointStorageContainer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/endpointStorageContainer:EndpointStorageContainer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationType = registerOutput<String?>('authenticationType');
-    this.batchFrequencyInSeconds = registerOutput<int?>('batchFrequencyInSeconds');
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.containerName = registerOutput<String>('containerName');
-    this.encoding = registerOutput<String?>('encoding');
-    this.endpointUri = registerOutput<String?>('endpointUri');
-    this.fileNameFormat = registerOutput<String?>('fileNameFormat');
-    this.identityId = registerOutput<String?>('identityId');
-    this.iothubId = registerOutput<String>('iothubId');
-    this.maxChunkSizeInBytes = registerOutput<int?>('maxChunkSizeInBytes');
+         'azure:iot/endpointStorageContainer:EndpointStorageContainer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    batchFrequencyInSeconds = registerOutput<int?>('batchFrequencyInSeconds');
+    connectionString = registerOutput<String?>('connectionString');
+    containerName = registerOutput<String>('containerName');
+    encoding = registerOutput<String?>('encoding');
+    endpointUri = registerOutput<String?>('endpointUri');
+    fileNameFormat = registerOutput<String?>('fileNameFormat');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    maxChunkSizeInBytes = registerOutput<int?>('maxChunkSizeInBytes');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

@@ -8,20 +8,39 @@ class SigningJobSignedObject {
 
   /// Creates a new [SigningJobSignedObject].
   /// [s3s] Optional.
-  SigningJobSignedObject({
-    this.s3s,
-  });
+  SigningJobSignedObject({this.s3s});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3s': ?pulumi.Input.mapOptionalInputValue<List<SigningJobSignedObjectS3>, List<Map<String, dynamic>>>(s3s, (value) => pulumi.Input.encodeList<SigningJobSignedObjectS3, Map<String, dynamic>>(value, (value) => value.toMap())),
+      's3s':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SigningJobSignedObjectS3>,
+            List<Map<String, dynamic>>
+          >(
+            s3s,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SigningJobSignedObjectS3,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SigningJobSignedObject.fromMap(Map<String, dynamic> map) {
     return SigningJobSignedObject(
-      s3s: map['s3s'] == null ? null : ((pulumi.Input.decodeList<SigningJobSignedObjectS3>(map['s3s']!, (value) => SigningJobSignedObjectS3.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      s3s: (() {
+        final guardedValue = map['s3s'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SigningJobSignedObjectS3>(
+            guardedValue,
+            (value) => SigningJobSignedObjectS3.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

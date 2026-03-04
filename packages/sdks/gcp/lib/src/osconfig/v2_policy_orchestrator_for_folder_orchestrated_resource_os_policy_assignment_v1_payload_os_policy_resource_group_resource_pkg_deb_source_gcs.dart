@@ -5,35 +5,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs {
   /// Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
+
   /// Generation number of the Cloud Storage object.
   final pulumi.Input<String>? generation;
+
   /// Name of the Cloud Storage object.
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs].
   /// [bucket] Bucket of the Cloud Storage object.
   /// [generation] Generation number of the Cloud Storage object.
-  /// [object] Name of the Cloud Storage object.
+  /// [object_] Name of the Cloud Storage object.
   V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs({
     required this.bucket,
     this.generation,
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
       'generation': ?generation,
-      'object': object,
+      'object': object_,
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs(
-      bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
-      object: (map['object'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

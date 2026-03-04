@@ -10,20 +10,29 @@ class SetupScriptsResponse {
 
   /// Creates a new [SetupScriptsResponse].
   /// [scripts] Customized setup scripts
-  SetupScriptsResponse({
-    this.scripts,
-  });
+  SetupScriptsResponse({this.scripts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scripts': ?pulumi.Input.mapOptionalInputValue<ScriptsToExecuteResponse, Map<String, dynamic>>(scripts, (value) => value.toMap()),
+      'scripts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScriptsToExecuteResponse,
+            Map<String, dynamic>
+          >(scripts, (value) => value.toMap()),
     };
   }
 
   factory SetupScriptsResponse.fromMap(Map<String, dynamic> map) {
     return SetupScriptsResponse(
-      scripts: map['scripts'] == null ? null : (ScriptsToExecuteResponse.fromMap((map['scripts']! as Map).cast<String, dynamic>())).input(),
+      scripts: (() {
+        final guardedValue = map['scripts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScriptsToExecuteResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

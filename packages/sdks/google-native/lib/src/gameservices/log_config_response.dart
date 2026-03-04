@@ -9,8 +9,10 @@ import 'data_access_options_response.dart';
 class LogConfigResponse {
   /// Cloud audit options.
   final pulumi.Input<CloudAuditOptionsResponse> cloudAudit;
+
   /// Counter options.
   final pulumi.Input<CounterOptionsResponse> counter;
+
   /// Data access options.
   final pulumi.Input<DataAccessOptionsResponse> dataAccess;
 
@@ -26,18 +28,41 @@ class LogConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudAudit': pulumi.Input.mapInputValue<CloudAuditOptionsResponse, Map<String, dynamic>>(cloudAudit, (value) => value.toMap()),
-      'counter': pulumi.Input.mapInputValue<CounterOptionsResponse, Map<String, dynamic>>(counter, (value) => value.toMap()),
-      'dataAccess': pulumi.Input.mapInputValue<DataAccessOptionsResponse, Map<String, dynamic>>(dataAccess, (value) => value.toMap()),
+      'cloudAudit':
+          pulumi.Input.mapInputValue<
+            CloudAuditOptionsResponse,
+            Map<String, dynamic>
+          >(cloudAudit, (value) => value.toMap()),
+      'counter':
+          pulumi.Input.mapInputValue<
+            CounterOptionsResponse,
+            Map<String, dynamic>
+          >(counter, (value) => value.toMap()),
+      'dataAccess':
+          pulumi.Input.mapInputValue<
+            DataAccessOptionsResponse,
+            Map<String, dynamic>
+          >(dataAccess, (value) => value.toMap()),
     };
   }
 
   factory LogConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigResponse(
-      cloudAudit: (CloudAuditOptionsResponse.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>())).input(),
-      counter: (CounterOptionsResponse.fromMap((map['counter'] as Map).cast<String, dynamic>())).input(),
-      dataAccess: (DataAccessOptionsResponse.fromMap((map['dataAccess'] as Map).cast<String, dynamic>())).input(),
+      cloudAudit: pulumi.Input.fromValue(
+        CloudAuditOptionsResponse.fromMap(
+          (map['cloudAudit']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      counter: pulumi.Input.fromValue(
+        CounterOptionsResponse.fromMap(
+          (map['counter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dataAccess: pulumi.Input.fromValue(
+        DataAccessOptionsResponse.fromMap(
+          (map['dataAccess']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

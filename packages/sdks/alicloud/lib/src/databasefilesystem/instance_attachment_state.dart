@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAttachmentState {
   /// The ID of the ECS instance.
   final pulumi.Input<String>? ecsId;
+
   /// The ID of the Database File System.
   final pulumi.Input<String>? instanceId;
+
   /// The status of Instance Attachment.
   final pulumi.Input<String>? status;
 
@@ -15,11 +17,7 @@ class InstanceAttachmentState {
   /// [ecsId] The ID of the ECS instance.
   /// [instanceId] The ID of the Database File System.
   /// [status] The status of Instance Attachment.
-  InstanceAttachmentState({
-    this.ecsId,
-    this.instanceId,
-    this.status,
-  });
+  InstanceAttachmentState({this.ecsId, this.instanceId, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      ecsId: map['ecsId'] == null ? null : (map['ecsId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ecsId: (() {
+        final guardedValue = map['ecsId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

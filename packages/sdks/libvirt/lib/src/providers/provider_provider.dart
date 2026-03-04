@@ -20,12 +20,12 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'libvirt',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.uri = registerOutput<String?>('uri');
+         'libvirt',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    uri = registerOutput<String?>('uri');
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

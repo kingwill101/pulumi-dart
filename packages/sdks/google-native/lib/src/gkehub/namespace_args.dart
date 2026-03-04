@@ -10,14 +10,18 @@ class NamespaceArgs {
   /// Optional. Labels for this Namespace.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
   final pulumi.Input<String>? name;
+
   /// Optional. Namespace-level cluster namespace labels. These labels are applied to the related namespace of the member clusters bound to the parent Scope. Scope-level labels (`namespace_labels` in the Fleet Scope resource) take precedence over Namespace-level labels if they share a key. Keys and values must be Kubernetes-conformant.
   final pulumi.Input<Map<String, String>>? namespaceLabels;
   final pulumi.Input<String>? project;
+
   /// Scope associated with the namespace
   final pulumi.Input<String> scope;
   final pulumi.Input<String> scopeId;
+
   /// Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
   final pulumi.Input<String> scopeNamespaceId;
 
@@ -56,15 +60,40 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels']! as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      scope: (map['scope'] as String).input(),
-      scopeId: (map['scopeId'] as String).input(),
-      scopeNamespaceId: (map['scopeNamespaceId'] as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceLabels: (() {
+        final guardedValue = map['namespaceLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
+      scopeNamespaceId: pulumi.Input.fromValue(
+        map['scopeNamespaceId'] as String,
+      ),
     );
   }
 }
-

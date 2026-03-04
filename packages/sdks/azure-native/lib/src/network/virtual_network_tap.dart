@@ -7,15 +7,22 @@ import 'network_interface_ipconfiguration.dart';
 /// Virtual Network Tap resource.
 class VirtualNetworkTap {
   /// The reference to the private IP address on the internal Load Balancer that will receive the tap.
-  final pulumi.Input<FrontendIPConfiguration>? destinationLoadBalancerFrontEndIPConfiguration;
+  final pulumi.Input<FrontendIPConfiguration>?
+  destinationLoadBalancerFrontEndIPConfiguration;
+
   /// The reference to the private IP Address of the collector nic that will receive the tap.
-  final pulumi.Input<NetworkInterfaceIPConfiguration>? destinationNetworkInterfaceIPConfiguration;
+  final pulumi.Input<NetworkInterfaceIPConfiguration>?
+  destinationNetworkInterfaceIPConfiguration;
+
   /// The VXLAN destination port that will receive the tapped traffic.
   final pulumi.Input<int>? destinationPort;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,8 +44,22 @@ class VirtualNetworkTap {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinationLoadBalancerFrontEndIPConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontendIPConfiguration, Map<String, dynamic>>(destinationLoadBalancerFrontEndIPConfiguration, (value) => value.toMap()),
-      'destinationNetworkInterfaceIPConfiguration': ?pulumi.Input.mapOptionalInputValue<NetworkInterfaceIPConfiguration, Map<String, dynamic>>(destinationNetworkInterfaceIPConfiguration, (value) => value.toMap()),
+      'destinationLoadBalancerFrontEndIPConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            FrontendIPConfiguration,
+            Map<String, dynamic>
+          >(
+            destinationLoadBalancerFrontEndIPConfiguration,
+            (value) => value.toMap(),
+          ),
+      'destinationNetworkInterfaceIPConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkInterfaceIPConfiguration,
+            Map<String, dynamic>
+          >(
+            destinationNetworkInterfaceIPConfiguration,
+            (value) => value.toMap(),
+          ),
       'destinationPort': ?destinationPort,
       'id': ?id,
       'location': ?location,
@@ -48,13 +69,47 @@ class VirtualNetworkTap {
 
   factory VirtualNetworkTap.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkTap(
-      destinationLoadBalancerFrontEndIPConfiguration: map['destinationLoadBalancerFrontEndIPConfiguration'] == null ? null : (FrontendIPConfiguration.fromMap((map['destinationLoadBalancerFrontEndIPConfiguration']! as Map).cast<String, dynamic>())).input(),
-      destinationNetworkInterfaceIPConfiguration: map['destinationNetworkInterfaceIPConfiguration'] == null ? null : (NetworkInterfaceIPConfiguration.fromMap((map['destinationNetworkInterfaceIPConfiguration']! as Map).cast<String, dynamic>())).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      destinationLoadBalancerFrontEndIPConfiguration: (() {
+        final guardedValue =
+            map['destinationLoadBalancerFrontEndIPConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FrontendIPConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      destinationNetworkInterfaceIPConfiguration: (() {
+        final guardedValue = map['destinationNetworkInterfaceIPConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkInterfaceIPConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      destinationPort: (() {
+        final guardedValue = map['destinationPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -33,14 +33,17 @@ class GetDataSetRowLevelPermissionDataSet {
     };
   }
 
-  factory GetDataSetRowLevelPermissionDataSet.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetRowLevelPermissionDataSet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetRowLevelPermissionDataSet(
-      arn: (map['arn'] as String).input(),
-      formatVersion: (map['formatVersion'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      permissionPolicy: (map['permissionPolicy'] as String).input(),
-      status: (map['status'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      formatVersion: pulumi.Input.fromValue(map['formatVersion'] as String),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      permissionPolicy: pulumi.Input.fromValue(
+        map['permissionPolicy'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

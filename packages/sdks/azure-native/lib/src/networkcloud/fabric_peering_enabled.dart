@@ -3,16 +3,15 @@ enum FabricPeeringEnabled {
   valueTrue("True"),
   valueFalse("False");
 
-  const FabricPeeringEnabled(this.value);
-  final String value;
+  const FabricPeeringEnabled(this.wireValue);
+  final String wireValue;
 
   static FabricPeeringEnabled fromValue(String value) {
     for (final item in FabricPeeringEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FabricPeeringEnabled value: $value');
   }
 }
-

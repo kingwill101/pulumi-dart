@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRamDirectoriesDirectoryLog {
   /// The level of log.
   final pulumi.Input<String> level;
+
   /// The message of log.
   final pulumi.Input<String> message;
+
   /// The step of log.
   final pulumi.Input<String> step;
+
   /// The time stamp of log.
   final pulumi.Input<String> timeStamp;
 
@@ -35,11 +38,10 @@ class GetRamDirectoriesDirectoryLog {
 
   factory GetRamDirectoriesDirectoryLog.fromMap(Map<String, dynamic> map) {
     return GetRamDirectoriesDirectoryLog(
-      level: (map['level'] as String).input(),
-      message: (map['message'] as String).input(),
-      step: (map['step'] as String).input(),
-      timeStamp: (map['timeStamp'] as String).input(),
+      level: pulumi.Input.fromValue(map['level'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      step: pulumi.Input.fromValue(map['step'] as String),
+      timeStamp: pulumi.Input.fromValue(map['timeStamp'] as String),
     );
   }
 }
-

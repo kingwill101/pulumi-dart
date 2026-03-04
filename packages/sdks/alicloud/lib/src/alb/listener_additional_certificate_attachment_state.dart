@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerAdditionalCertificateAttachmentState {
   /// The Certificate ID.
   final pulumi.Input<String>? certificateId;
+
   /// The type of the certificate.
   final pulumi.Input<String>? certificateType;
+
   /// The ID of the ALB listener.
   final pulumi.Input<String>? listenerId;
+
   /// The status of the certificate.
   final pulumi.Input<String>? status;
 
@@ -34,13 +37,30 @@ class ListenerAdditionalCertificateAttachmentState {
     };
   }
 
-  factory ListenerAdditionalCertificateAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory ListenerAdditionalCertificateAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerAdditionalCertificateAttachmentState(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
-      certificateType: map['certificateType'] == null ? null : (map['certificateType']! as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      certificateId: (() {
+        final guardedValue = map['certificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateType: (() {
+        final guardedValue = map['certificateType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      listenerId: (() {
+        final guardedValue = map['listenerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

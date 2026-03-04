@@ -4,16 +4,15 @@ enum ProviderRegistrationKind {
   hybrid("Hybrid"),
   direct("Direct");
 
-  const ProviderRegistrationKind(this.value);
-  final String value;
+  const ProviderRegistrationKind(this.wireValue);
+  final String wireValue;
 
   static ProviderRegistrationKind fromValue(String value) {
     for (final item in ProviderRegistrationKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProviderRegistrationKind value: $value');
   }
 }
-

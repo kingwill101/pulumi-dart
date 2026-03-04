@@ -371,8 +371,10 @@ class ControlPlaneAccess extends pulumi.CustomResource {
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
   late final pulumi.Output<List<String>?> analyticsPublisherIdentities;
+
   /// Name of the Apigee organization.
   late final pulumi.Output<String> name;
+
   /// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
   /// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
   /// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -388,14 +390,18 @@ class ControlPlaneAccess extends pulumi.CustomResource {
     ControlPlaneAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities');
+         'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyticsPublisherIdentities = registerOutput<List<String>?>(
+      'analyticsPublisherIdentities',
+    );
     this.name = registerOutput<String>('name');
-    this.synchronizerIdentities = registerOutput<List<String>?>('synchronizerIdentities');
+    synchronizerIdentities = registerOutput<List<String>?>(
+      'synchronizerIdentities',
+    );
   }
 
   /// Gets an existing [ControlPlaneAccess] resource's state with the given [name] and [id].
@@ -416,13 +422,17 @@ class ControlPlaneAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities');
+         'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyticsPublisherIdentities = registerOutput<List<String>?>(
+      'analyticsPublisherIdentities',
+    );
     this.name = registerOutput<String>('name');
-    this.synchronizerIdentities = registerOutput<List<String>?>('synchronizerIdentities');
+    synchronizerIdentities = registerOutput<List<String>?>(
+      'synchronizerIdentities',
+    );
   }
 }

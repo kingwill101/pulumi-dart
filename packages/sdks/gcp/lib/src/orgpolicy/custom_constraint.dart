@@ -400,20 +400,28 @@ class CustomConstraint extends pulumi.CustomResource {
   /// The action to take if the condition is met.
   /// Possible values are: `ALLOW`, `DENY`.
   late final pulumi.Output<String> actionType;
+
   /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
   late final pulumi.Output<String> condition;
+
   /// A human-friendly description of the constraint to display as an error message when the policy is violated.
   late final pulumi.Output<String?> description;
+
   /// A human-friendly name for the constraint.
   late final pulumi.Output<String?> displayName;
+
   /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
   late final pulumi.Output<List<String>> methodTypes;
+
   /// Immutable. The name of the custom constraint. This is unique within the organization.
   late final pulumi.Output<String> name;
+
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   late final pulumi.Output<String> parent;
+
   /// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
   late final pulumi.Output<List<String>> resourceTypes;
+
   /// Output only. The timestamp representing when the constraint was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -426,20 +434,20 @@ class CustomConstraint extends pulumi.CustomResource {
     CustomConstraintArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:orgpolicy/customConstraint:CustomConstraint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionType = registerOutput<String>('actionType');
-    this.condition = registerOutput<String>('condition');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.methodTypes = registerOutput<List<String>>('methodTypes');
+         'gcp:orgpolicy/customConstraint:CustomConstraint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionType = registerOutput<String>('actionType');
+    condition = registerOutput<String>('condition');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    methodTypes = registerOutput<List<String>>('methodTypes');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.resourceTypes = registerOutput<List<String>>('resourceTypes');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [CustomConstraint] resource's state with the given [name] and [id].
@@ -460,19 +468,19 @@ class CustomConstraint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:orgpolicy/customConstraint:CustomConstraint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionType = registerOutput<String>('actionType');
-    this.condition = registerOutput<String>('condition');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.methodTypes = registerOutput<List<String>>('methodTypes');
+         'gcp:orgpolicy/customConstraint:CustomConstraint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionType = registerOutput<String>('actionType');
+    condition = registerOutput<String>('condition');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    methodTypes = registerOutput<List<String>>('methodTypes');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.resourceTypes = registerOutput<List<String>>('resourceTypes');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -8,20 +8,19 @@ class WorkteamNotificationConfiguration {
 
   /// Creates a new [WorkteamNotificationConfiguration].
   /// [notificationTopicArn] The ARN for the SNS topic to which notifications should be published.
-  WorkteamNotificationConfiguration({
-    this.notificationTopicArn,
-  });
+  WorkteamNotificationConfiguration({this.notificationTopicArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'notificationTopicArn': ?notificationTopicArn,
-    };
+    return <String, dynamic>{'notificationTopicArn': ?notificationTopicArn};
   }
 
   factory WorkteamNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkteamNotificationConfiguration(
-      notificationTopicArn: map['notificationTopicArn'] == null ? null : ((map['notificationTopicArn'] as String).input()).input(),
+      notificationTopicArn: (() {
+        final guardedValue = map['notificationTopicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

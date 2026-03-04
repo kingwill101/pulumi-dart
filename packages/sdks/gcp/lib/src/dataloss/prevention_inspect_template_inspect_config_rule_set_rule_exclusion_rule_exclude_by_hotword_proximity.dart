@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
   /// Number of characters after the finding to consider.
   final pulumi.Input<int>? windowAfter;
+
   /// Number of characters before the finding to consider.
   final pulumi.Input<int>? windowBefore;
 
@@ -23,11 +24,20 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity(
-      windowAfter: map['windowAfter'] == null ? null : (map['windowAfter']! as int).input(),
-      windowBefore: map['windowBefore'] == null ? null : (map['windowBefore']! as int).input(),
+      windowAfter: (() {
+        final guardedValue = map['windowAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      windowBefore: (() {
+        final guardedValue = map['windowBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

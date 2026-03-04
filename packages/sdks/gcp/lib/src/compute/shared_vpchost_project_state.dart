@@ -9,20 +9,19 @@ class SharedVPCHostProjectState {
 
   /// Creates a new [SharedVPCHostProjectState].
   /// [project] The ID of the project that will serve as a Shared VPC host project
-  SharedVPCHostProjectState({
-    this.project,
-  });
+  SharedVPCHostProjectState({this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory SharedVPCHostProjectState.fromMap(Map<String, dynamic> map) {
     return SharedVPCHostProjectState(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

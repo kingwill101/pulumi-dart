@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallInfoResponse {
   /// Possible values: ALLOW, DENY
   final pulumi.Input<String> action;
+
   /// Possible values: INGRESS, EGRESS
   final pulumi.Input<String> direction;
+
   /// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
   final pulumi.Input<String> displayName;
+
   /// The firewall rule's type.
   final pulumi.Input<String> firewallRuleType;
+
   /// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
   final pulumi.Input<String> networkUri;
+
   /// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules.
   final pulumi.Input<String> policy;
+
   /// The priority of the firewall rule.
   final pulumi.Input<int> priority;
+
   /// The target service accounts specified by the firewall rule.
   final pulumi.Input<List<String>> targetServiceAccounts;
+
   /// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
   final pulumi.Input<List<String>> targetTags;
+
   /// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
   final pulumi.Input<String> uri;
 
@@ -66,17 +75,22 @@ class FirewallInfoResponse {
 
   factory FirewallInfoResponse.fromMap(Map<String, dynamic> map) {
     return FirewallInfoResponse(
-      action: (map['action'] as String).input(),
-      direction: (map['direction'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      firewallRuleType: (map['firewallRuleType'] as String).input(),
-      networkUri: (map['networkUri'] as String).input(),
-      policy: (map['policy'] as String).input(),
-      priority: (map['priority'] as int).input(),
-      targetServiceAccounts: ((map['targetServiceAccounts'] as List).cast<String>()).input(),
-      targetTags: ((map['targetTags'] as List).cast<String>()).input(),
-      uri: (map['uri'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      firewallRuleType: pulumi.Input.fromValue(
+        map['firewallRuleType'] as String,
+      ),
+      networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      targetServiceAccounts: pulumi.Input.fromValue(
+        (map['targetServiceAccounts'] as List).cast<String>(),
+      ),
+      targetTags: pulumi.Input.fromValue(
+        (map['targetTags'] as List).cast<String>(),
+      ),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

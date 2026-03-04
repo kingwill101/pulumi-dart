@@ -19,17 +19,19 @@ class GetPeeringManagedidentitiesV1beta1Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'peeringId': peeringId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'peeringId': peeringId, 'project': ?project};
   }
 
-  factory GetPeeringManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetPeeringManagedidentitiesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPeeringManagedidentitiesV1beta1Args(
-      peeringId: (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      peeringId: pulumi.Input.fromValue(map['peeringId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

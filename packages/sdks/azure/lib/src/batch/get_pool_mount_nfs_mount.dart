@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolMountNfsMount {
   /// Additional command line options to pass to the mount command. These are 'net use' options in Windows and 'mount' options in Linux.
   final pulumi.Input<String> mountOptions;
+
   /// The relative path on compute node where the file system will be mounted All file systems are mounted relative to the Batch mounts directory, accessible via the `AZ_BATCH_NODE_MOUNTS_DIR` environment variable.
   final pulumi.Input<String> relativeMountPath;
+
   /// The URI of the file system to mount.
   final pulumi.Input<String> source;
 
@@ -30,10 +32,11 @@ class GetPoolMountNfsMount {
 
   factory GetPoolMountNfsMount.fromMap(Map<String, dynamic> map) {
     return GetPoolMountNfsMount(
-      mountOptions: (map['mountOptions'] as String).input(),
-      relativeMountPath: (map['relativeMountPath'] as String).input(),
-      source: (map['source'] as String).input(),
+      mountOptions: pulumi.Input.fromValue(map['mountOptions'] as String),
+      relativeMountPath: pulumi.Input.fromValue(
+        map['relativeMountPath'] as String,
+      ),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

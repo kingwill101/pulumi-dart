@@ -1,5 +1,3 @@
-library module_billing;
-
 export 'billing/account_iam_binding.dart';
 export 'billing/account_iam_binding_args.dart';
 export 'billing/account_iam_binding_condition.dart';

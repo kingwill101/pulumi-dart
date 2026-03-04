@@ -5,48 +5,70 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesRule {
   /// Sensitive Data Identification Rules for the Type of. Valid values:
   final pulumi.Input<int> category;
+
   /// Sensitive Data Identification Rules Belongs Type Name.
   final pulumi.Input<String> categoryName;
+
   /// Sensitive Data Identification Rules the Content.
   final pulumi.Input<String> content;
+
   /// The Content Classification.
   final pulumi.Input<String> contentCategory;
+
   /// Sensitive Data Identification Rules the Creation Time of the Number of Milliseconds.
   final pulumi.Input<String> createTime;
+
   /// Sensitive Data Identification Rules of Type. Valid values:
   final pulumi.Input<int> customType;
+
   /// Sensitive Data Identification a Description of the Rule Information.
   final pulumi.Input<String> description;
+
   /// Sensitive Data Identification Rules, Founder of Account Display Name.
   final pulumi.Input<String> displayName;
+
   /// Sensitive Data Identification Rules to the Modified Time of the Number of Milliseconds.
   final pulumi.Input<String> gmtModified;
+
   /// The ID of the Rule.
   final pulumi.Input<String> id;
+
   /// Sensitive Data Identification Rules, Founder Of Account Login.
   final pulumi.Input<String> loginName;
+
   /// The Primary Key.
   final pulumi.Input<String> majorKey;
+
   /// The name of rule.
   final pulumi.Input<String> name;
+
   /// Product Code.
   final pulumi.Input<String> productCode;
+
   /// Product ID. Valid values:
   final pulumi.Input<String> productId;
+
   /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
   final pulumi.Input<String> riskLevelId;
+
   /// Sensitive Data Identification Rules the Risk Level of. S1: Weak Risk Level S2: Moderate Risk Level S3: High Risk Level S4: the Highest Risk Level.
   final pulumi.Input<String> riskLevelName;
+
   /// The first ID of the resource.
   final pulumi.Input<String> ruleId;
+
   /// Triggered the Alarm Conditions.
   final pulumi.Input<String> statExpress;
+
   /// Sensitive Data Identification Rules Detection State of.
   final pulumi.Input<int> status;
+
   /// The Target.
   final pulumi.Input<String> target;
+
   /// The User ID.
   final pulumi.Input<String> userId;
+
   /// The Level of Risk. Valid values:
   final pulumi.Input<int> warnLevel;
 
@@ -130,30 +152,29 @@ class GetRulesRule {
 
   factory GetRulesRule.fromMap(Map<String, dynamic> map) {
     return GetRulesRule(
-      category: (map['category'] as int).input(),
-      categoryName: (map['categoryName'] as String).input(),
-      content: (map['content'] as String).input(),
-      contentCategory: (map['contentCategory'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      customType: (map['customType'] as int).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      gmtModified: (map['gmtModified'] as String).input(),
-      id: (map['id'] as String).input(),
-      loginName: (map['loginName'] as String).input(),
-      majorKey: (map['majorKey'] as String).input(),
-      name: (map['name'] as String).input(),
-      productCode: (map['productCode'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      riskLevelId: (map['riskLevelId'] as String).input(),
-      riskLevelName: (map['riskLevelName'] as String).input(),
-      ruleId: (map['ruleId'] as String).input(),
-      statExpress: (map['statExpress'] as String).input(),
-      status: (map['status'] as int).input(),
-      target: (map['target'] as String).input(),
-      userId: (map['userId'] as String).input(),
-      warnLevel: (map['warnLevel'] as int).input(),
+      category: pulumi.Input.fromValue(map['category'] as int),
+      categoryName: pulumi.Input.fromValue(map['categoryName'] as String),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      contentCategory: pulumi.Input.fromValue(map['contentCategory'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      customType: pulumi.Input.fromValue(map['customType'] as int),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      gmtModified: pulumi.Input.fromValue(map['gmtModified'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      loginName: pulumi.Input.fromValue(map['loginName'] as String),
+      majorKey: pulumi.Input.fromValue(map['majorKey'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      riskLevelId: pulumi.Input.fromValue(map['riskLevelId'] as String),
+      riskLevelName: pulumi.Input.fromValue(map['riskLevelName'] as String),
+      ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
+      statExpress: pulumi.Input.fromValue(map['statExpress'] as String),
+      status: pulumi.Input.fromValue(map['status'] as int),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      warnLevel: pulumi.Input.fromValue(map['warnLevel'] as int),
     );
   }
 }
-

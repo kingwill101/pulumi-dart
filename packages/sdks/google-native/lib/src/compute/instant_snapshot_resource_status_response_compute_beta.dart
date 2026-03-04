@@ -13,15 +13,16 @@ class InstantSnapshotResourceStatusResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageSizeBytes': storageSizeBytes,
-    };
+    return <String, dynamic>{'storageSizeBytes': storageSizeBytes};
   }
 
-  factory InstantSnapshotResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstantSnapshotResourceStatusResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstantSnapshotResourceStatusResponseComputeBeta(
-      storageSizeBytes: (map['storageSizeBytes'] as String).input(),
+      storageSizeBytes: pulumi.Input.fromValue(
+        map['storageSizeBytes'] as String,
+      ),
     );
   }
 }
-

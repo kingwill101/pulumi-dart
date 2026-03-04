@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MLAssistConfigurationEnabledResponse {
   /// [Required] AML compute binding used in inferencing.
   final pulumi.Input<String> inferencingComputeBinding;
+
   /// Expected value is 'Enabled'.
   final pulumi.Input<String> mlAssist;
+
   /// [Required] AML compute binding used in training.
   final pulumi.Input<String> trainingComputeBinding;
 
@@ -29,12 +31,17 @@ class MLAssistConfigurationEnabledResponse {
     };
   }
 
-  factory MLAssistConfigurationEnabledResponse.fromMap(Map<String, dynamic> map) {
+  factory MLAssistConfigurationEnabledResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MLAssistConfigurationEnabledResponse(
-      inferencingComputeBinding: (map['inferencingComputeBinding'] as String).input(),
-      mlAssist: (map['mlAssist'] as String).input(),
-      trainingComputeBinding: (map['trainingComputeBinding'] as String).input(),
+      inferencingComputeBinding: pulumi.Input.fromValue(
+        map['inferencingComputeBinding'] as String,
+      ),
+      mlAssist: pulumi.Input.fromValue(map['mlAssist'] as String),
+      trainingComputeBinding: pulumi.Input.fromValue(
+        map['trainingComputeBinding'] as String,
+      ),
     );
   }
 }
-

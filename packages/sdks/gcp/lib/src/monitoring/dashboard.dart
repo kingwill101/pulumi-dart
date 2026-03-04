@@ -628,6 +628,7 @@ import 'dashboard_state.dart';
 class Dashboard extends pulumi.CustomResource {
   /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
   late final pulumi.Output<String> dashboardJson;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -641,13 +642,13 @@ class Dashboard extends pulumi.CustomResource {
     DashboardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/dashboard:Dashboard',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dashboardJson = registerOutput<String>('dashboardJson');
-    this.project = registerOutput<String>('project');
+         'gcp:monitoring/dashboard:Dashboard',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dashboardJson = registerOutput<String>('dashboardJson');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [Dashboard] resource's state with the given [name] and [id].
@@ -668,12 +669,12 @@ class Dashboard extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/dashboard:Dashboard',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dashboardJson = registerOutput<String>('dashboardJson');
-    this.project = registerOutput<String>('project');
+         'gcp:monitoring/dashboard:Dashboard',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dashboardJson = registerOutput<String>('dashboardJson');
+    project = registerOutput<String>('project');
   }
 }

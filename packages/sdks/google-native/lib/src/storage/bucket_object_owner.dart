@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketObjectOwner {
   /// The entity, in the form user-userId.
   final pulumi.Input<String>? entity;
+
   /// The ID for the entity.
   final pulumi.Input<String>? entityId;
 
   /// Creates a new [BucketObjectOwner].
   /// [entity] The entity, in the form user-userId.
   /// [entityId] The ID for the entity.
-  BucketObjectOwner({
-    this.entity,
-    this.entityId,
-  });
+  BucketObjectOwner({this.entity, this.entityId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entity': ?entity,
-      'entityId': ?entityId,
-    };
+    return <String, dynamic>{'entity': ?entity, 'entityId': ?entityId};
   }
 
   factory BucketObjectOwner.fromMap(Map<String, dynamic> map) {
     return BucketObjectOwner(
-      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      entity: (() {
+        final guardedValue = map['entity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityId: (() {
+        final guardedValue = map['entityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

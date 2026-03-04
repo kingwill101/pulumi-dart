@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceTaskSpecContainerSpecConfig {
   /// ID of the specific config that we're referencing
   final pulumi.Input<String> configId;
+
   /// Name of the config that this references, but this is just provided for lookup/display purposes. The config in the reference will be identified by its ID
   final pulumi.Input<String>? configName;
+
   /// Represents the file GID. Defaults to `0`.
   final pulumi.Input<String>? fileGid;
+
   /// Represents represents the FileMode of the file. Defaults to `0o444`.
   final pulumi.Input<int>? fileMode;
+
   /// Represents the final filename in the filesystem
   final pulumi.Input<String> fileName;
+
   /// Represents the file UID. Defaults to `0`.
   final pulumi.Input<String>? fileUid;
 
@@ -45,13 +50,28 @@ class ServiceTaskSpecContainerSpecConfig {
 
   factory ServiceTaskSpecContainerSpecConfig.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecConfig(
-      configId: (map['configId'] as String).input(),
-      configName: map['configName'] == null ? null : (map['configName']! as String).input(),
-      fileGid: map['fileGid'] == null ? null : (map['fileGid']! as String).input(),
-      fileMode: map['fileMode'] == null ? null : (map['fileMode']! as int).input(),
-      fileName: (map['fileName'] as String).input(),
-      fileUid: map['fileUid'] == null ? null : (map['fileUid']! as String).input(),
+      configId: pulumi.Input.fromValue(map['configId'] as String),
+      configName: (() {
+        final guardedValue = map['configName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileGid: (() {
+        final guardedValue = map['fileGid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileMode: (() {
+        final guardedValue = map['fileMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fileName: pulumi.Input.fromValue(map['fileName'] as String),
+      fileUid: (() {
+        final guardedValue = map['fileUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

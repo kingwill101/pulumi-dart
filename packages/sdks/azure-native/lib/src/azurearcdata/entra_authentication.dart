@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntraAuthentication {
   /// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
   final pulumi.Input<String>? clientId;
+
   /// The method used for Entra authentication
   final pulumi.Input<String>? identityType;
 
   /// Creates a new [EntraAuthentication].
   /// [clientId] The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
   /// [identityType] The method used for Entra authentication
-  EntraAuthentication({
-    this.clientId,
-    this.identityType,
-  });
+  EntraAuthentication({this.clientId, this.identityType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class EntraAuthentication {
 
   factory EntraAuthentication.fromMap(Map<String, dynamic> map) {
     return EntraAuthentication(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityType: (() {
+        final guardedValue = map['identityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

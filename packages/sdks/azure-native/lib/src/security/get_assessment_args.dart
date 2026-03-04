@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssessmentArgs {
   /// The Assessment Key - Unique key for the assessment type
   final pulumi.Input<String> assessmentName;
+
   /// OData expand. Optional.
   final pulumi.Input<String>? expand;
+
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
 
@@ -34,10 +36,13 @@ class GetAssessmentArgs {
 
   factory GetAssessmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentArgs(
-      assessmentName: (map['assessmentName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      assessmentName: pulumi.Input.fromValue(map['assessmentName'] as String),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

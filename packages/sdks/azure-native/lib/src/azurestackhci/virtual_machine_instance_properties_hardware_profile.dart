@@ -7,13 +7,23 @@ import 'virtual_machine_instance_properties_hardware_profile_virtual_machine_gpu
 /// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
 class VirtualMachineInstancePropertiesHardwareProfile {
   /// Dynamic memory config
-  final pulumi.Input<VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig>? dynamicMemoryConfig;
+  final pulumi.Input<
+    VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig
+  >?
+  dynamicMemoryConfig;
+
   /// RAM in MB for the virtual machine instance
   final pulumi.Input<double>? memoryMB;
+
   /// number of processors for the virtual machine instance
   final pulumi.Input<int>? processors;
+
   /// virtualMachineGPUs - list of gpus to be attached to the virtual machine instance
-  final pulumi.Input<List<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU>>? virtualMachineGPUs;
+  final pulumi.Input<
+    List<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU>
+  >?
+  virtualMachineGPUs;
+
   /// Enum of VM Sizes
   final pulumi.Input<String>? vmSize;
 
@@ -33,22 +43,74 @@ class VirtualMachineInstancePropertiesHardwareProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dynamicMemoryConfig': ?pulumi.Input.mapOptionalInputValue<VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig, Map<String, dynamic>>(dynamicMemoryConfig, (value) => value.toMap()),
+      'dynamicMemoryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig,
+            Map<String, dynamic>
+          >(dynamicMemoryConfig, (value) => value.toMap()),
       'memoryMB': ?memoryMB,
       'processors': ?processors,
-      'virtualMachineGPUs': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU>, List<Map<String, dynamic>>>(virtualMachineGPUs, (value) => pulumi.Input.encodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'virtualMachineGPUs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU
+            >,
+            List<Map<String, dynamic>>
+          >(
+            virtualMachineGPUs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'vmSize': ?vmSize,
     };
   }
 
-  factory VirtualMachineInstancePropertiesHardwareProfile.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineInstancePropertiesHardwareProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineInstancePropertiesHardwareProfile(
-      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig.fromMap((map['dynamicMemoryConfig']! as Map).cast<String, dynamic>())).input(),
-      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB']! as double).input(),
-      processors: map['processors'] == null ? null : (map['processors']! as int).input(),
-      virtualMachineGPUs: map['virtualMachineGPUs'] == null ? null : (pulumi.Input.decodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU>(map['virtualMachineGPUs']!, (value) => VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
+      dynamicMemoryConfig: (() {
+        final guardedValue = map['dynamicMemoryConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      memoryMB: (() {
+        final guardedValue = map['memoryMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      processors: (() {
+        final guardedValue = map['processors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      virtualMachineGPUs: (() {
+        final guardedValue = map['virtualMachineGPUs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU
+          >(
+            guardedValue,
+            (value) =>
+                VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      vmSize: (() {
+        final guardedValue = map['vmSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

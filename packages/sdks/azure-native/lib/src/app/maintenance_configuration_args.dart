@@ -10,10 +10,13 @@ import 'scheduled_entry.dart';
 class MaintenanceConfigurationArgs {
   /// The name of the maintenance configuration.
   final pulumi.Input<String>? configName;
+
   /// The name of the Managed Environment.
   final pulumi.Input<String> environmentName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// List of maintenance schedules for a managed environment.
   final pulumi.Input<List<ScheduledEntry>> scheduledEntries;
 
@@ -34,17 +37,39 @@ class MaintenanceConfigurationArgs {
       'configName': ?configName,
       'environmentName': environmentName,
       'resourceGroupName': resourceGroupName,
-      'scheduledEntries': pulumi.Input.mapInputValue<List<ScheduledEntry>, List<Map<String, dynamic>>>(scheduledEntries, (value) => pulumi.Input.encodeList<ScheduledEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scheduledEntries':
+          pulumi.Input.mapInputValue<
+            List<ScheduledEntry>,
+            List<Map<String, dynamic>>
+          >(
+            scheduledEntries,
+            (value) =>
+                pulumi.Input.encodeList<ScheduledEntry, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory MaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceConfigurationArgs(
-      configName: map['configName'] == null ? null : (map['configName']! as String).input(),
-      environmentName: (map['environmentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduledEntries: (pulumi.Input.decodeList<ScheduledEntry>(map['scheduledEntries'], (value) => ScheduledEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configName: (() {
+        final guardedValue = map['configName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scheduledEntries: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ScheduledEntry>(
+          map['scheduledEntries']!,
+          (value) =>
+              ScheduledEntry.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

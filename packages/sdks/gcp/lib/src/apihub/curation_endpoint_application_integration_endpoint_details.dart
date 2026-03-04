@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CurationEndpointApplicationIntegrationEndpointDetails {
   /// The API trigger ID of the Application Integration workflow.
   final pulumi.Input<String> triggerId;
+
   /// The endpoint URI should be a valid REST URI for triggering an Application
   /// Integration.
   /// Format:
@@ -22,17 +23,15 @@ class CurationEndpointApplicationIntegrationEndpointDetails {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'triggerId': triggerId,
-      'uri': uri,
-    };
+    return <String, dynamic>{'triggerId': triggerId, 'uri': uri};
   }
 
-  factory CurationEndpointApplicationIntegrationEndpointDetails.fromMap(Map<String, dynamic> map) {
+  factory CurationEndpointApplicationIntegrationEndpointDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CurationEndpointApplicationIntegrationEndpointDetails(
-      triggerId: (map['triggerId'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

@@ -11,6 +11,7 @@ class GroupAdditionalGroupKey {
   /// to the Identity Source's requirements.
   /// Must be unique within a namespace.
   final pulumi.Input<String>? id;
+
   /// (Output)
   /// The namespace in which the entity exists.
   /// If not specified, the EntityKey represents a Google-managed entity
@@ -23,23 +24,24 @@ class GroupAdditionalGroupKey {
   /// Creates a new [GroupAdditionalGroupKey].
   /// [id] (Output)
   /// [namespace] (Output)
-  GroupAdditionalGroupKey({
-    this.id,
-    this.namespace,
-  });
+  GroupAdditionalGroupKey({this.id, this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'namespace': ?namespace,
-    };
+    return <String, dynamic>{'id': ?id, 'namespace': ?namespace};
   }
 
   factory GroupAdditionalGroupKey.fromMap(Map<String, dynamic> map) {
     return GroupAdditionalGroupKey(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

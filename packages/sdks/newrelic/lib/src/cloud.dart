@@ -1,5 +1,3 @@
-library module_cloud;
-
 export 'cloud/aws_eu_sovereign_integrations.dart';
 export 'cloud/aws_eu_sovereign_integrations_args.dart';
 export 'cloud/aws_eu_sovereign_integrations_billing.dart';

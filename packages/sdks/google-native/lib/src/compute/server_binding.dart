@@ -8,20 +8,26 @@ class ServerBinding {
 
   /// Creates a new [ServerBinding].
   /// [type] Optional.
-  ServerBinding({
-    this.type,
-  });
+  ServerBinding({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ServerBindingType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<ServerBindingType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory ServerBinding.fromMap(Map<String, dynamic> map) {
     return ServerBinding(
-      type: map['type'] == null ? null : (ServerBindingType.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServerBindingType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

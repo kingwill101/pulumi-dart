@@ -4,16 +4,15 @@ enum ClusterUpgradeCadence {
   valueWave1("Wave1"),
   valueWave2("Wave2");
 
-  const ClusterUpgradeCadence(this.value);
-  final String value;
+  const ClusterUpgradeCadence(this.wireValue);
+  final String wireValue;
 
   static ClusterUpgradeCadence fromValue(String value) {
     for (final item in ClusterUpgradeCadence.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterUpgradeCadence value: $value');
   }
 }
-

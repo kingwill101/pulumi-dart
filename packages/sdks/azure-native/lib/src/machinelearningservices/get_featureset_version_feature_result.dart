@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getFeaturesetVersionFeature.
 class GetFeaturesetVersionFeatureResult {
   /// Specifies type
   final String? dataType;
+
   /// Specifies description
   final String? description;
+
   /// Specifies name
   final String? featureName;
+
   /// Specifies tags
   final Map<String, String>? tags;
 
@@ -35,11 +37,26 @@ class GetFeaturesetVersionFeatureResult {
 
   factory GetFeaturesetVersionFeatureResult.fromMap(Map<String, dynamic> map) {
     return GetFeaturesetVersionFeatureResult(
-      dataType: map['dataType'] == null ? null : map['dataType']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      featureName: map['featureName'] == null ? null : map['featureName']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      featureName: (() {
+        final guardedValue = map['featureName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

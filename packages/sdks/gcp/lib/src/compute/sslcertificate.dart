@@ -46,14 +46,19 @@ class SSLCertificate extends pulumi.CustomResource {
   /// The chain must include at least one intermediate cert.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> certificate;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> certificateId;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Expire time of the certificate in RFC3339 text format.
   late final pulumi.Output<String> expireTime;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -63,21 +68,25 @@ class SSLCertificate extends pulumi.CustomResource {
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the
   /// specified prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
-  /// Resulting name for a `name_prefix` <= 37 characters:
+  /// Resulting name for a `name_prefix` &lt;= 37 characters:
   /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `name_prefix` 38 - 54 characters:
   /// `name_prefix` + YYmmdd + 3 digit incremental counter
   late final pulumi.Output<String> namePrefix;
+
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> privateKey;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -90,21 +99,21 @@ class SSLCertificate extends pulumi.CustomResource {
     SSLCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/sSLCertificate:SSLCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.certificateId = registerOutput<int>('certificateId');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.expireTime = registerOutput<String>('expireTime');
+         'gcp:compute/sSLCertificate:SSLCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    certificateId = registerOutput<int>('certificateId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
+    namePrefix = registerOutput<String>('namePrefix');
+    privateKey = registerOutput<String>('privateKey');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
   }
 
   /// Gets an existing [SSLCertificate] resource's state with the given [name] and [id].
@@ -125,20 +134,20 @@ class SSLCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/sSLCertificate:SSLCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.certificateId = registerOutput<int>('certificateId');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.expireTime = registerOutput<String>('expireTime');
+         'gcp:compute/sSLCertificate:SSLCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    certificateId = registerOutput<int>('certificateId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
+    namePrefix = registerOutput<String>('namePrefix');
+    privateKey = registerOutput<String>('privateKey');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
   }
 }

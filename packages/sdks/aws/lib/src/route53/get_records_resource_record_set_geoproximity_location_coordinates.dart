@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordsResourceRecordSetGeoproximityLocationCoordinates {
   /// Latitude.
   final pulumi.Input<String> latitude;
+
   /// Longitude.
   final pulumi.Input<String> longitude;
 
@@ -17,17 +18,15 @@ class GetRecordsResourceRecordSetGeoproximityLocationCoordinates {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'latitude': latitude,
-      'longitude': longitude,
-    };
+    return <String, dynamic>{'latitude': latitude, 'longitude': longitude};
   }
 
-  factory GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap(Map<String, dynamic> map) {
+  factory GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRecordsResourceRecordSetGeoproximityLocationCoordinates(
-      latitude: (map['latitude'] as String).input(),
-      longitude: (map['longitude'] as String).input(),
+      latitude: pulumi.Input.fromValue(map['latitude'] as String),
+      longitude: pulumi.Input.fromValue(map['longitude'] as String),
     );
   }
 }
-

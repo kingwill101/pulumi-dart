@@ -7,8 +7,11 @@ import 'cluster_upgrade_gkeupgrade_feature_state_response_gkehub_v1beta.dart';
 class ClusterUpgradeFleetStateResponseGkehubV1beta {
   /// This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project number or id.
   final pulumi.Input<List<String>> downstreamFleets;
+
   /// Feature state for GKE clusters.
-  final pulumi.Input<ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1beta> gkeState;
+  final pulumi.Input<ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1beta>
+  gkeState;
+
   /// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
   final pulumi.Input<Map<String, String>> ignored;
 
@@ -25,17 +28,30 @@ class ClusterUpgradeFleetStateResponseGkehubV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'downstreamFleets': downstreamFleets,
-      'gkeState': pulumi.Input.mapInputValue<ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1beta, Map<String, dynamic>>(gkeState, (value) => value.toMap()),
+      'gkeState':
+          pulumi.Input.mapInputValue<
+            ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(gkeState, (value) => value.toMap()),
       'ignored': ignored,
     };
   }
 
-  factory ClusterUpgradeFleetStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory ClusterUpgradeFleetStateResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterUpgradeFleetStateResponseGkehubV1beta(
-      downstreamFleets: ((map['downstreamFleets'] as List).cast<String>()).input(),
-      gkeState: (ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1beta.fromMap((map['gkeState'] as Map).cast<String, dynamic>())).input(),
-      ignored: ((map['ignored'] as Map).cast<String, String>()).input(),
+      downstreamFleets: pulumi.Input.fromValue(
+        (map['downstreamFleets'] as List).cast<String>(),
+      ),
+      gkeState: pulumi.Input.fromValue(
+        ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1beta.fromMap(
+          (map['gkeState']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      ignored: pulumi.Input.fromValue(
+        (map['ignored'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

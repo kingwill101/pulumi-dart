@@ -1,5 +1,3 @@
-library module_storage;
-
 export 'storage/access_policy.dart';
 export 'storage/access_policy_response.dart';
 export 'storage/access_tier.dart';

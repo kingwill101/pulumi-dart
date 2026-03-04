@@ -4,16 +4,15 @@ enum RootSquashType {
   valueRootSquash("RootSquash"),
   valueAllSquash("AllSquash");
 
-  const RootSquashType(this.value);
-  final String value;
+  const RootSquashType(this.wireValue);
+  final String wireValue;
 
   static RootSquashType fromValue(String value) {
     for (final item in RootSquashType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RootSquashType value: $value');
   }
 }
-

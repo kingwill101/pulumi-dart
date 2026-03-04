@@ -9,20 +9,19 @@ class AiMetadataStoreState {
 
   /// Creates a new [AiMetadataStoreState].
   /// [diskUtilizationBytes] (Output)
-  AiMetadataStoreState({
-    this.diskUtilizationBytes,
-  });
+  AiMetadataStoreState({this.diskUtilizationBytes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskUtilizationBytes': ?diskUtilizationBytes,
-    };
+    return <String, dynamic>{'diskUtilizationBytes': ?diskUtilizationBytes};
   }
 
   factory AiMetadataStoreState.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreState(
-      diskUtilizationBytes: map['diskUtilizationBytes'] == null ? null : (map['diskUtilizationBytes']! as String).input(),
+      diskUtilizationBytes: (() {
+        final guardedValue = map['diskUtilizationBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

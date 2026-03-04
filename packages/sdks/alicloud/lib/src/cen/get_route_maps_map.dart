@@ -5,62 +5,91 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteMapsMap {
   /// A match statement. It indicates the mode in which the as-path attribute is matched.
   final pulumi.Input<String> asPathMatchMode;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
+
   /// The ID of the region to which the CEN instance belongs.
   final pulumi.Input<String> cenRegionId;
+
   /// A match statement. It indicates the mode in which the prefix attribute is matched.
   final pulumi.Input<String> cidrMatchMode;
+
   /// A match statement. It indicates the mode in which the community attribute is matched.
   final pulumi.Input<String> communityMatchMode;
+
   /// An action statement. It indicates the mode in which the community attribute is operated.
   final pulumi.Input<String> communityOperateMode;
+
   /// The description of the route map.
   final pulumi.Input<String> description;
+
   /// A match statement that indicates the list of IDs of the destination instances.
   final pulumi.Input<List<String>> destinationChildInstanceTypes;
+
   /// A match statement that indicates the prefix list.
   final pulumi.Input<List<String>> destinationCidrBlocks;
+
   /// A match statement that indicates the list of IDs of the destination instances.
   final pulumi.Input<List<String>> destinationInstanceIds;
+
   /// Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
   final pulumi.Input<bool> destinationInstanceIdsReverseMatch;
+
   /// A match statement that indicates the list of IDs of the destination route tables.
   final pulumi.Input<List<String>> destinationRouteTableIds;
-  /// The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `route_map_id`.
+
+  /// The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `route_map_id`.
   final pulumi.Input<String> id;
+
   /// The action that is performed to a route if the route meets all the match conditions.
   final pulumi.Input<String> mapResult;
+
   /// A match statement that indicates the As path list.
   final pulumi.Input<List<String>> matchAsns;
+
   /// A match statement that indicates the community set.
   final pulumi.Input<List<String>> matchCommunitySets;
+
   /// The priority of the next route map that is associated with the current route map.
   final pulumi.Input<int> nextPriority;
+
   /// An action statement that operates the community attribute.
   final pulumi.Input<List<String>> operateCommunitySets;
+
   /// An action statement that modifies the preference of the route.
   final pulumi.Input<int> preference;
+
   /// Indicates AS Path prepending when a regional gateway receives or publishes a route.
   final pulumi.Input<List<String>> prependAsPaths;
+
   /// The priority of the route map.
   final pulumi.Input<int> priority;
+
   /// The ID of the route map.
   final pulumi.Input<String> routeMapId;
+
   /// A match statement that indicates the list of route types.
   final pulumi.Input<List<String>> routeTypes;
+
   /// A match statement that indicates the list of IDs of the source instances.
   final pulumi.Input<List<String>> sourceChildInstanceTypes;
+
   /// A match statement that indicates the list of IDs of the source instances.
   final pulumi.Input<List<String>> sourceInstanceIds;
+
   /// Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.
   final pulumi.Input<bool> sourceInstanceIdsReverseMatch;
+
   /// A match statement that indicates the list of IDs of the source regions.
   final pulumi.Input<List<String>> sourceRegionIds;
+
   /// A match statement that indicates the list of IDs of the source route tables.
   final pulumi.Input<List<String>> sourceRouteTableIds;
+
   /// The status of the route map, including `Creating`, `Active` and `Deleting`.
   final pulumi.Input<String> status;
+
   /// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
   final pulumi.Input<String> transmitDirection;
 
@@ -77,7 +106,7 @@ class GetRouteMapsMap {
   /// [destinationInstanceIds] A match statement that indicates the list of IDs of the destination instances.
   /// [destinationInstanceIdsReverseMatch] Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
   /// [destinationRouteTableIds] A match statement that indicates the list of IDs of the destination route tables.
-  /// [id] The ID of the route map. It formats as `<cen_id>:<route_map_id>`. Before 1.161.0, it is `route_map_id`.
+  /// [id] The ID of the route map. It formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, it is `route_map_id`.
   /// [mapResult] The action that is performed to a route if the route meets all the match conditions.
   /// [matchAsns] A match statement that indicates the As path list.
   /// [matchCommunitySets] A match statement that indicates the community set.
@@ -165,37 +194,72 @@ class GetRouteMapsMap {
 
   factory GetRouteMapsMap.fromMap(Map<String, dynamic> map) {
     return GetRouteMapsMap(
-      asPathMatchMode: (map['asPathMatchMode'] as String).input(),
-      cenId: (map['cenId'] as String).input(),
-      cenRegionId: (map['cenRegionId'] as String).input(),
-      cidrMatchMode: (map['cidrMatchMode'] as String).input(),
-      communityMatchMode: (map['communityMatchMode'] as String).input(),
-      communityOperateMode: (map['communityOperateMode'] as String).input(),
-      description: (map['description'] as String).input(),
-      destinationChildInstanceTypes: ((map['destinationChildInstanceTypes'] as List).cast<String>()).input(),
-      destinationCidrBlocks: ((map['destinationCidrBlocks'] as List).cast<String>()).input(),
-      destinationInstanceIds: ((map['destinationInstanceIds'] as List).cast<String>()).input(),
-      destinationInstanceIdsReverseMatch: (map['destinationInstanceIdsReverseMatch'] as bool).input(),
-      destinationRouteTableIds: ((map['destinationRouteTableIds'] as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      mapResult: (map['mapResult'] as String).input(),
-      matchAsns: ((map['matchAsns'] as List).cast<String>()).input(),
-      matchCommunitySets: ((map['matchCommunitySets'] as List).cast<String>()).input(),
-      nextPriority: (map['nextPriority'] as int).input(),
-      operateCommunitySets: ((map['operateCommunitySets'] as List).cast<String>()).input(),
-      preference: (map['preference'] as int).input(),
-      prependAsPaths: ((map['prependAsPaths'] as List).cast<String>()).input(),
-      priority: (map['priority'] as int).input(),
-      routeMapId: (map['routeMapId'] as String).input(),
-      routeTypes: ((map['routeTypes'] as List).cast<String>()).input(),
-      sourceChildInstanceTypes: ((map['sourceChildInstanceTypes'] as List).cast<String>()).input(),
-      sourceInstanceIds: ((map['sourceInstanceIds'] as List).cast<String>()).input(),
-      sourceInstanceIdsReverseMatch: (map['sourceInstanceIdsReverseMatch'] as bool).input(),
-      sourceRegionIds: ((map['sourceRegionIds'] as List).cast<String>()).input(),
-      sourceRouteTableIds: ((map['sourceRouteTableIds'] as List).cast<String>()).input(),
-      status: (map['status'] as String).input(),
-      transmitDirection: (map['transmitDirection'] as String).input(),
+      asPathMatchMode: pulumi.Input.fromValue(map['asPathMatchMode'] as String),
+      cenId: pulumi.Input.fromValue(map['cenId'] as String),
+      cenRegionId: pulumi.Input.fromValue(map['cenRegionId'] as String),
+      cidrMatchMode: pulumi.Input.fromValue(map['cidrMatchMode'] as String),
+      communityMatchMode: pulumi.Input.fromValue(
+        map['communityMatchMode'] as String,
+      ),
+      communityOperateMode: pulumi.Input.fromValue(
+        map['communityOperateMode'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      destinationChildInstanceTypes: pulumi.Input.fromValue(
+        (map['destinationChildInstanceTypes'] as List).cast<String>(),
+      ),
+      destinationCidrBlocks: pulumi.Input.fromValue(
+        (map['destinationCidrBlocks'] as List).cast<String>(),
+      ),
+      destinationInstanceIds: pulumi.Input.fromValue(
+        (map['destinationInstanceIds'] as List).cast<String>(),
+      ),
+      destinationInstanceIdsReverseMatch: pulumi.Input.fromValue(
+        map['destinationInstanceIdsReverseMatch'] as bool,
+      ),
+      destinationRouteTableIds: pulumi.Input.fromValue(
+        (map['destinationRouteTableIds'] as List).cast<String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      mapResult: pulumi.Input.fromValue(map['mapResult'] as String),
+      matchAsns: pulumi.Input.fromValue(
+        (map['matchAsns'] as List).cast<String>(),
+      ),
+      matchCommunitySets: pulumi.Input.fromValue(
+        (map['matchCommunitySets'] as List).cast<String>(),
+      ),
+      nextPriority: pulumi.Input.fromValue(map['nextPriority'] as int),
+      operateCommunitySets: pulumi.Input.fromValue(
+        (map['operateCommunitySets'] as List).cast<String>(),
+      ),
+      preference: pulumi.Input.fromValue(map['preference'] as int),
+      prependAsPaths: pulumi.Input.fromValue(
+        (map['prependAsPaths'] as List).cast<String>(),
+      ),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      routeMapId: pulumi.Input.fromValue(map['routeMapId'] as String),
+      routeTypes: pulumi.Input.fromValue(
+        (map['routeTypes'] as List).cast<String>(),
+      ),
+      sourceChildInstanceTypes: pulumi.Input.fromValue(
+        (map['sourceChildInstanceTypes'] as List).cast<String>(),
+      ),
+      sourceInstanceIds: pulumi.Input.fromValue(
+        (map['sourceInstanceIds'] as List).cast<String>(),
+      ),
+      sourceInstanceIdsReverseMatch: pulumi.Input.fromValue(
+        map['sourceInstanceIdsReverseMatch'] as bool,
+      ),
+      sourceRegionIds: pulumi.Input.fromValue(
+        (map['sourceRegionIds'] as List).cast<String>(),
+      ),
+      sourceRouteTableIds: pulumi.Input.fromValue(
+        (map['sourceRouteTableIds'] as List).cast<String>(),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      transmitDirection: pulumi.Input.fromValue(
+        map['transmitDirection'] as String,
+      ),
     );
   }
 }
-

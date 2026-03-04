@@ -6,31 +6,44 @@ import 'pool_start_task_user_identity_auto_user.dart';
 class PoolStartTaskUserIdentity {
   /// A `auto_user` block that describes the user identity under which the start task runs as defined below.
   ///
-  /// > **Note:** `user_name` and `auto_user` blocks cannot be used both at the same time, but you need to define one or the other.
+  /// &gt; **Note:** `user_name` and `auto_user` blocks cannot be used both at the same time, but you need to define one or the other.
   final pulumi.Input<PoolStartTaskUserIdentityAutoUser>? autoUser;
+
   /// The username to be used by the Batch pool start task.
   final pulumi.Input<String>? userName;
 
   /// Creates a new [PoolStartTaskUserIdentity].
   /// [autoUser] A `auto_user` block that describes the user identity under which the start task runs as defined below.
   /// [userName] The username to be used by the Batch pool start task.
-  PoolStartTaskUserIdentity({
-    this.autoUser,
-    this.userName,
-  });
+  PoolStartTaskUserIdentity({this.autoUser, this.userName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoUser': ?pulumi.Input.mapOptionalInputValue<PoolStartTaskUserIdentityAutoUser, Map<String, dynamic>>(autoUser, (value) => value.toMap()),
+      'autoUser':
+          ?pulumi.Input.mapOptionalInputValue<
+            PoolStartTaskUserIdentityAutoUser,
+            Map<String, dynamic>
+          >(autoUser, (value) => value.toMap()),
       'userName': ?userName,
     };
   }
 
   factory PoolStartTaskUserIdentity.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskUserIdentity(
-      autoUser: map['autoUser'] == null ? null : (PoolStartTaskUserIdentityAutoUser.fromMap((map['autoUser']! as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      autoUser: (() {
+        final guardedValue = map['autoUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PoolStartTaskUserIdentityAutoUser.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

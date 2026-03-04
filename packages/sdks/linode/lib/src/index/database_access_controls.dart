@@ -202,8 +202,10 @@ import 'database_access_controls_state.dart';
 class DatabaseAccessControls extends pulumi.CustomResource {
   /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
   late final pulumi.Output<List<String>> allowLists;
+
   /// The unique ID of the target database.
   late final pulumi.Output<int> databaseId;
+
   /// The unique type of the target database. (`mysql`, `postgresql`)
   late final pulumi.Output<String> databaseType;
 
@@ -216,14 +218,14 @@ class DatabaseAccessControls extends pulumi.CustomResource {
     DatabaseAccessControlsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/databaseAccessControls:DatabaseAccessControls',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowLists = registerOutput<List<String>>('allowLists');
-    this.databaseId = registerOutput<int>('databaseId');
-    this.databaseType = registerOutput<String>('databaseType');
+         'linode:index/databaseAccessControls:DatabaseAccessControls',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowLists = registerOutput<List<String>>('allowLists');
+    databaseId = registerOutput<int>('databaseId');
+    databaseType = registerOutput<String>('databaseType');
   }
 
   /// Gets an existing [DatabaseAccessControls] resource's state with the given [name] and [id].
@@ -244,13 +246,13 @@ class DatabaseAccessControls extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/databaseAccessControls:DatabaseAccessControls',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowLists = registerOutput<List<String>>('allowLists');
-    this.databaseId = registerOutput<int>('databaseId');
-    this.databaseType = registerOutput<String>('databaseType');
+         'linode:index/databaseAccessControls:DatabaseAccessControls',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowLists = registerOutput<List<String>>('allowLists');
+    databaseId = registerOutput<int>('databaseId');
+    databaseType = registerOutput<String>('databaseType');
   }
 }

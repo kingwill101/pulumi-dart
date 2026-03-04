@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_admin_contact.dart';
 import 'domain_args.dart';
-import 'domain_billing_contact.dart';
-import 'domain_name_server.dart';
 import 'domain_registrant_contact.dart';
 import 'domain_state.dart';
 import 'domain_tech_contact.dart';
@@ -387,55 +385,79 @@ import 'domain_timeouts.dart';
 class Domain extends pulumi.CustomResource {
   /// Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.
   late final pulumi.Output<String> abuseContactEmail;
+
   /// Phone number for reporting abuse.
   late final pulumi.Output<String> abuseContactPhone;
+
   /// Details about the domain administrative contact. See Contact Blocks for more details.
   late final pulumi.Output<DomainAdminContact> adminContact;
+
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
   late final pulumi.Output<bool> adminPrivacy;
+
   /// Whether the domain registration is set to renew automatically. Default: `true`.
   late final pulumi.Output<bool> autoRenew;
+
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  late final pulumi.Output<List<DomainBillingContact>> billingContacts;
+  late final pulumi.Output<List<Map<String, dynamic>>> billingContacts;
+
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
   late final pulumi.Output<bool> billingPrivacy;
+
   /// The date when the domain was created as found in the response to a WHOIS query.
   late final pulumi.Output<String> creationDate;
+
   /// The name of the domain.
   late final pulumi.Output<String> domainName;
+
   /// The number of years that you want to register the domain for. Domains are registered for a minimum of one year. Increasing the duration renews the domain.
   late final pulumi.Output<int> durationInYears;
+
   /// The date when the registration for the domain is set to expire.
   late final pulumi.Output<String> expirationDate;
+
   /// The ID of the public Route 53 hosted zone created for the domain. This hosted zone is deleted when the domain is deregistered.
   late final pulumi.Output<String> hostedZoneId;
+
   /// The list of nameservers for the domain. See `name_server` Blocks for more details.
-  late final pulumi.Output<List<DomainNameServer>> nameServers;
+  late final pulumi.Output<List<Map<String, dynamic>>> nameServers;
+
   /// Details about the domain registrant. See Contact Blocks for more details.
   late final pulumi.Output<DomainRegistrantContact> registrantContact;
+
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
   late final pulumi.Output<bool> registrantPrivacy;
+
   /// Name of the registrar of the domain as identified in the registry.
   late final pulumi.Output<String> registrarName;
+
   /// Web address of the registrar.
   late final pulumi.Output<String> registrarUrl;
+
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
   late final pulumi.Output<List<String>> statusLists;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Details about the domain technical contact. See Contact Blocks for more details.
   late final pulumi.Output<DomainTechContact> techContact;
+
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
   late final pulumi.Output<bool> techPrivacy;
   late final pulumi.Output<DomainTimeouts?> timeouts;
+
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
-  /// > **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
+  /// &gt; **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
   late final pulumi.Output<bool> transferLock;
+
   /// The last updated date of the domain as found in the response to a WHOIS query.
   late final pulumi.Output<String> updatedDate;
+
   /// The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.
   late final pulumi.Output<String> whoisServer;
 
@@ -443,42 +465,43 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_route53_domains_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:route53domains/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.abuseContactEmail = registerOutput<String>('abuseContactEmail');
-    this.abuseContactPhone = registerOutput<String>('abuseContactPhone');
-    this.adminContact = registerOutput<DomainAdminContact>('adminContact');
-    this.adminPrivacy = registerOutput<bool>('adminPrivacy');
-    this.autoRenew = registerOutput<bool>('autoRenew');
-    this.billingContacts = registerOutput<List<DomainBillingContact>>('billingContacts');
-    this.billingPrivacy = registerOutput<bool>('billingPrivacy');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.domainName = registerOutput<String>('domainName');
-    this.durationInYears = registerOutput<int>('durationInYears');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.hostedZoneId = registerOutput<String>('hostedZoneId');
-    this.nameServers = registerOutput<List<DomainNameServer>>('nameServers');
-    this.registrantContact = registerOutput<DomainRegistrantContact>('registrantContact');
-    this.registrantPrivacy = registerOutput<bool>('registrantPrivacy');
-    this.registrarName = registerOutput<String>('registrarName');
-    this.registrarUrl = registerOutput<String>('registrarUrl');
-    this.statusLists = registerOutput<List<String>>('statusLists');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.techContact = registerOutput<DomainTechContact>('techContact');
-    this.techPrivacy = registerOutput<bool>('techPrivacy');
-    this.timeouts = registerOutput<DomainTimeouts?>('timeouts');
-    this.transferLock = registerOutput<bool>('transferLock');
-    this.updatedDate = registerOutput<String>('updatedDate');
-    this.whoisServer = registerOutput<String>('whoisServer');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:route53domains/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    abuseContactEmail = registerOutput<String>('abuseContactEmail');
+    abuseContactPhone = registerOutput<String>('abuseContactPhone');
+    adminContact = registerOutput<DomainAdminContact>('adminContact');
+    adminPrivacy = registerOutput<bool>('adminPrivacy');
+    autoRenew = registerOutput<bool>('autoRenew');
+    billingContacts = registerOutput<List<Map<String, dynamic>>>(
+      'billingContacts',
+    );
+    billingPrivacy = registerOutput<bool>('billingPrivacy');
+    creationDate = registerOutput<String>('creationDate');
+    domainName = registerOutput<String>('domainName');
+    durationInYears = registerOutput<int>('durationInYears');
+    expirationDate = registerOutput<String>('expirationDate');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    nameServers = registerOutput<List<Map<String, dynamic>>>('nameServers');
+    registrantContact = registerOutput<DomainRegistrantContact>(
+      'registrantContact',
+    );
+    registrantPrivacy = registerOutput<bool>('registrantPrivacy');
+    registrarName = registerOutput<String>('registrarName');
+    registrarUrl = registerOutput<String>('registrarUrl');
+    statusLists = registerOutput<List<String>>('statusLists');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    techContact = registerOutput<DomainTechContact>('techContact');
+    techPrivacy = registerOutput<bool>('techPrivacy');
+    timeouts = registerOutput<DomainTimeouts?>('timeouts');
+    transferLock = registerOutput<bool>('transferLock');
+    updatedDate = registerOutput<String>('updatedDate');
+    whoisServer = registerOutput<String>('whoisServer');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -499,36 +522,40 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53domains/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.abuseContactEmail = registerOutput<String>('abuseContactEmail');
-    this.abuseContactPhone = registerOutput<String>('abuseContactPhone');
-    this.adminContact = registerOutput<DomainAdminContact>('adminContact');
-    this.adminPrivacy = registerOutput<bool>('adminPrivacy');
-    this.autoRenew = registerOutput<bool>('autoRenew');
-    this.billingContacts = registerOutput<List<DomainBillingContact>>('billingContacts');
-    this.billingPrivacy = registerOutput<bool>('billingPrivacy');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.domainName = registerOutput<String>('domainName');
-    this.durationInYears = registerOutput<int>('durationInYears');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.hostedZoneId = registerOutput<String>('hostedZoneId');
-    this.nameServers = registerOutput<List<DomainNameServer>>('nameServers');
-    this.registrantContact = registerOutput<DomainRegistrantContact>('registrantContact');
-    this.registrantPrivacy = registerOutput<bool>('registrantPrivacy');
-    this.registrarName = registerOutput<String>('registrarName');
-    this.registrarUrl = registerOutput<String>('registrarUrl');
-    this.statusLists = registerOutput<List<String>>('statusLists');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.techContact = registerOutput<DomainTechContact>('techContact');
-    this.techPrivacy = registerOutput<bool>('techPrivacy');
-    this.timeouts = registerOutput<DomainTimeouts?>('timeouts');
-    this.transferLock = registerOutput<bool>('transferLock');
-    this.updatedDate = registerOutput<String>('updatedDate');
-    this.whoisServer = registerOutput<String>('whoisServer');
+         'aws:route53domains/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    abuseContactEmail = registerOutput<String>('abuseContactEmail');
+    abuseContactPhone = registerOutput<String>('abuseContactPhone');
+    adminContact = registerOutput<DomainAdminContact>('adminContact');
+    adminPrivacy = registerOutput<bool>('adminPrivacy');
+    autoRenew = registerOutput<bool>('autoRenew');
+    billingContacts = registerOutput<List<Map<String, dynamic>>>(
+      'billingContacts',
+    );
+    billingPrivacy = registerOutput<bool>('billingPrivacy');
+    creationDate = registerOutput<String>('creationDate');
+    domainName = registerOutput<String>('domainName');
+    durationInYears = registerOutput<int>('durationInYears');
+    expirationDate = registerOutput<String>('expirationDate');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    nameServers = registerOutput<List<Map<String, dynamic>>>('nameServers');
+    registrantContact = registerOutput<DomainRegistrantContact>(
+      'registrantContact',
+    );
+    registrantPrivacy = registerOutput<bool>('registrantPrivacy');
+    registrarName = registerOutput<String>('registrarName');
+    registrarUrl = registerOutput<String>('registrarUrl');
+    statusLists = registerOutput<List<String>>('statusLists');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    techContact = registerOutput<DomainTechContact>('techContact');
+    techPrivacy = registerOutput<bool>('techPrivacy');
+    timeouts = registerOutput<DomainTimeouts?>('timeouts');
+    transferLock = registerOutput<bool>('transferLock');
+    updatedDate = registerOutput<String>('updatedDate');
+    whoisServer = registerOutput<String>('whoisServer');
   }
 }

@@ -31,10 +31,13 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

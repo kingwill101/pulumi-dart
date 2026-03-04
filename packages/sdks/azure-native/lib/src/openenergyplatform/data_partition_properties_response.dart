@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataPartitionPropertiesResponse {
   /// Name of the data partition
   final pulumi.Input<String>? name;
+
   /// Name of the data partition
   final pulumi.Input<String>? provisioningState;
 
   /// Creates a new [DataPartitionPropertiesResponse].
   /// [name] Name of the data partition
   /// [provisioningState] Name of the data partition
-  DataPartitionPropertiesResponse({
-    this.name,
-    this.provisioningState,
-  });
+  DataPartitionPropertiesResponse({this.name, this.provisioningState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class DataPartitionPropertiesResponse {
 
   factory DataPartitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataPartitionPropertiesResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

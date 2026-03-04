@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobDelayDetailsResponse {
   /// Description of the delay.
   final pulumi.Input<String> description;
+
   /// Delay Error code
   final pulumi.Input<String> errorCode;
+
   /// Timestamp when the delay notification was resolved.
   final pulumi.Input<String> resolutionTime;
+
   /// Timestamp when the delay notification was created.
   final pulumi.Input<String> startTime;
+
   /// Status of notification
   final pulumi.Input<String> status;
 
@@ -41,12 +45,11 @@ class JobDelayDetailsResponse {
 
   factory JobDelayDetailsResponse.fromMap(Map<String, dynamic> map) {
     return JobDelayDetailsResponse(
-      description: (map['description'] as String).input(),
-      errorCode: (map['errorCode'] as String).input(),
-      resolutionTime: (map['resolutionTime'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
+      resolutionTime: pulumi.Input.fromValue(map['resolutionTime'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

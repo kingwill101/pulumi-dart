@@ -7,12 +7,16 @@ import 'event_content_response.dart';
 class EventRequestMessageResponse {
   /// The content of the event request message.
   final pulumi.Input<EventContentResponse>? content;
+
   /// The headers of the event request message.
   final pulumi.Input<Map<String, String>>? headers;
+
   /// The HTTP method used to send the event request message.
   final pulumi.Input<String>? method;
+
   /// The URI used to send the event request message.
   final pulumi.Input<String>? requestUri;
+
   /// The HTTP message version.
   final pulumi.Input<String>? version;
 
@@ -32,7 +36,11 @@ class EventRequestMessageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': ?pulumi.Input.mapOptionalInputValue<EventContentResponse, Map<String, dynamic>>(content, (value) => value.toMap()),
+      'content':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventContentResponse,
+            Map<String, dynamic>
+          >(content, (value) => value.toMap()),
       'headers': ?headers,
       'method': ?method,
       'requestUri': ?requestUri,
@@ -42,12 +50,37 @@ class EventRequestMessageResponse {
 
   factory EventRequestMessageResponse.fromMap(Map<String, dynamic> map) {
     return EventRequestMessageResponse(
-      content: map['content'] == null ? null : (EventContentResponse.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
-      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
-      method: map['method'] == null ? null : (map['method']! as String).input(),
-      requestUri: map['requestUri'] == null ? null : (map['requestUri']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventContentResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      headers: (() {
+        final guardedValue = map['headers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestUri: (() {
+        final guardedValue = map['requestUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

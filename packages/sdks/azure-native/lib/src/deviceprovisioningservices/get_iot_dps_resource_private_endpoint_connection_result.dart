@@ -7,14 +7,19 @@ import 'system_data_response.dart';
 class GetIotDpsResourcePrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// The properties of a private endpoint connection
   final PrivateEndpointConnectionPropertiesResponse properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The resource type.
   final String type;
 
@@ -45,15 +50,20 @@ class GetIotDpsResourcePrivateEndpointConnectionResult {
     };
   }
 
-  factory GetIotDpsResourcePrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
+  factory GetIotDpsResourcePrivateEndpointConnectionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIotDpsResourcePrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      properties: PrivateEndpointConnectionPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

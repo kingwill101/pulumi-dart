@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNodeTaint {
   /// The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
   final pulumi.Input<String>? effect;
+
   /// The key of the taint.
   final pulumi.Input<String>? key;
+
   /// The value of the taint.
   final pulumi.Input<String>? value;
 
@@ -14,26 +16,29 @@ class VirtualNodeTaint {
   /// [effect] The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
   /// [key] The key of the taint.
   /// [value] The value of the taint.
-  VirtualNodeTaint({
-    this.effect,
-    this.key,
-    this.value,
-  });
+  VirtualNodeTaint({this.effect, this.key, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effect': ?effect,
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'effect': ?effect, 'key': ?key, 'value': ?value};
   }
 
   factory VirtualNodeTaint.fromMap(Map<String, dynamic> map) {
     return VirtualNodeTaint(
-      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,21 @@ class GoogleCloudChannelV1SkuGroupCondition {
 
   /// Creates a new [GoogleCloudChannelV1SkuGroupCondition].
   /// [skuGroup] Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
-  GoogleCloudChannelV1SkuGroupCondition({
-    this.skuGroup,
-  });
+  GoogleCloudChannelV1SkuGroupCondition({this.skuGroup});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'skuGroup': ?skuGroup,
-    };
+    return <String, dynamic>{'skuGroup': ?skuGroup};
   }
 
-  factory GoogleCloudChannelV1SkuGroupCondition.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1SkuGroupCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1SkuGroupCondition(
-      skuGroup: map['skuGroup'] == null ? null : (map['skuGroup']! as String).input(),
+      skuGroup: (() {
+        final guardedValue = map['skuGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

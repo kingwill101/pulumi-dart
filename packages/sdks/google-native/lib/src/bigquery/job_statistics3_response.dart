@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatistics3Response {
   /// The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data.
   final pulumi.Input<String> badRecords;
+
   /// Number of bytes of source data in a load job.
   final pulumi.Input<String> inputFileBytes;
+
   /// Number of source files in a load job.
   final pulumi.Input<String> inputFiles;
+
   /// Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
   final pulumi.Input<String> outputBytes;
+
   /// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
   final pulumi.Input<String> outputRows;
 
@@ -40,12 +44,11 @@ class JobStatistics3Response {
 
   factory JobStatistics3Response.fromMap(Map<String, dynamic> map) {
     return JobStatistics3Response(
-      badRecords: (map['badRecords'] as String).input(),
-      inputFileBytes: (map['inputFileBytes'] as String).input(),
-      inputFiles: (map['inputFiles'] as String).input(),
-      outputBytes: (map['outputBytes'] as String).input(),
-      outputRows: (map['outputRows'] as String).input(),
+      badRecords: pulumi.Input.fromValue(map['badRecords'] as String),
+      inputFileBytes: pulumi.Input.fromValue(map['inputFileBytes'] as String),
+      inputFiles: pulumi.Input.fromValue(map['inputFiles'] as String),
+      outputBytes: pulumi.Input.fromValue(map['outputBytes'] as String),
+      outputRows: pulumi.Input.fromValue(map['outputRows'] as String),
     );
   }
 }
-

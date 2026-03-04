@@ -4,16 +4,15 @@ enum SignedResourceTypes {
   valueC("c"),
   valueO("o");
 
-  const SignedResourceTypes(this.value);
-  final String value;
+  const SignedResourceTypes(this.wireValue);
+  final String wireValue;
 
   static SignedResourceTypes fromValue(String value) {
     for (final item in SignedResourceTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SignedResourceTypes value: $value');
   }
 }
-

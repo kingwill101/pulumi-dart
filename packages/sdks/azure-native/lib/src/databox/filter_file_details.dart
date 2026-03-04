@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterFileDetails {
   /// Path of the file that contains the details of all items to transfer.
   final pulumi.Input<String> filterFilePath;
+
   /// Type of the filter file.
   final pulumi.Input<String> filterFileType;
 
@@ -26,9 +27,8 @@ class FilterFileDetails {
 
   factory FilterFileDetails.fromMap(Map<String, dynamic> map) {
     return FilterFileDetails(
-      filterFilePath: (map['filterFilePath'] as String).input(),
-      filterFileType: (map['filterFileType'] as String).input(),
+      filterFilePath: pulumi.Input.fromValue(map['filterFilePath'] as String),
+      filterFileType: pulumi.Input.fromValue(map['filterFileType'] as String),
     );
   }
 }
-

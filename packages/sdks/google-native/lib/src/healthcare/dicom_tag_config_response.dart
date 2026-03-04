@@ -8,8 +8,10 @@ import 'options_response.dart';
 class DicomTagConfigResponse {
   /// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
   final pulumi.Input<List<ActionResponse>> actions;
+
   /// Specifies additional options to apply, overriding the base `profile`.
   final pulumi.Input<OptionsResponse> options;
+
   /// Base profile type for handling DICOM tags.
   final pulumi.Input<String> profileType;
 
@@ -25,18 +27,42 @@ class DicomTagConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.mapInputValue<List<ActionResponse>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<ActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'options': pulumi.Input.mapInputValue<OptionsResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'actions':
+          pulumi.Input.mapInputValue<
+            List<ActionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<ActionResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'options':
+          pulumi.Input.mapInputValue<OptionsResponse, Map<String, dynamic>>(
+            options,
+            (value) => value.toMap(),
+          ),
       'profileType': profileType,
     };
   }
 
   factory DicomTagConfigResponse.fromMap(Map<String, dynamic> map) {
     return DicomTagConfigResponse(
-      actions: (pulumi.Input.decodeList<ActionResponse>(map['actions'], (value) => ActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      options: (OptionsResponse.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      profileType: (map['profileType'] as String).input(),
+      actions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ActionResponse>(
+          map['actions']!,
+          (value) =>
+              ActionResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      options: pulumi.Input.fromValue(
+        OptionsResponse.fromMap(
+          (map['options']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      profileType: pulumi.Input.fromValue(map['profileType'] as String),
     );
   }
 }
-

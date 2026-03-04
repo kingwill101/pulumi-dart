@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIntegrationFabricArgs {
   /// The integration fabric name of Azure Managed Grafana.
   final pulumi.Input<String> integrationFabricName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The workspace name of Azure Managed Grafana.
   final pulumi.Input<String> workspaceName;
 
@@ -34,10 +36,13 @@ class GetIntegrationFabricArgs {
 
   factory GetIntegrationFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationFabricArgs(
-      integrationFabricName: (map['integrationFabricName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      integrationFabricName: pulumi.Input.fromValue(
+        map['integrationFabricName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

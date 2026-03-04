@@ -9,20 +9,19 @@ class SessionIngress {
 
   /// Creates a new [SessionIngress].
   /// [targetPort] Target port in containers for traffic from ingress
-  SessionIngress({
-    this.targetPort,
-  });
+  SessionIngress({this.targetPort});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetPort': ?targetPort,
-    };
+    return <String, dynamic>{'targetPort': ?targetPort};
   }
 
   factory SessionIngress.fromMap(Map<String, dynamic> map) {
     return SessionIngress(
-      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
+      targetPort: (() {
+        final guardedValue = map['targetPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

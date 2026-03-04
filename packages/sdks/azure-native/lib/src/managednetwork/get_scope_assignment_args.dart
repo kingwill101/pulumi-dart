@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScopeAssignmentArgs {
   /// The base resource of the scope assignment.
   final pulumi.Input<String> scope;
+
   /// The name of the scope assignment to get.
   final pulumi.Input<String> scopeAssignmentName;
 
@@ -29,9 +30,10 @@ class GetScopeAssignmentArgs {
 
   factory GetScopeAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeAssignmentArgs(
-      scope: (map['scope'] as String).input(),
-      scopeAssignmentName: (map['scopeAssignmentName'] as String).input(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      scopeAssignmentName: pulumi.Input.fromValue(
+        map['scopeAssignmentName'] as String,
+      ),
     );
   }
 }
-

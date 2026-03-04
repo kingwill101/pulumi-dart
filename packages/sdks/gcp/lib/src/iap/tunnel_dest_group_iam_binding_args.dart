@@ -11,8 +11,10 @@ class TunnelDestGroupIamBindingArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<TunnelDestGroupIamBindingCondition>? condition;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> destGroup;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -26,14 +28,17 @@ class TunnelDestGroupIamBindingArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<List<String>> members;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the tunnel group. Must be the same as the network resources in the group.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The role that should be applied. Only one
   /// `gcp.iap.TunnelDestGroupIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -57,7 +62,11 @@ class TunnelDestGroupIamBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<TunnelDestGroupIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            TunnelDestGroupIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'destGroup': destGroup,
       'members': members,
       'project': ?project,
@@ -68,13 +77,28 @@ class TunnelDestGroupIamBindingArgs {
 
   factory TunnelDestGroupIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupIamBindingArgs(
-      condition: map['condition'] == null ? null : (TunnelDestGroupIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      destGroup: (map['destGroup'] as String).input(),
-      members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      role: (map['role'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TunnelDestGroupIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      destGroup: pulumi.Input.fromValue(map['destGroup'] as String),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

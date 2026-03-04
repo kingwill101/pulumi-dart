@@ -6,29 +6,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudStorageReadSettingsResponse {
   /// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? deleteFilesAfterCompletion;
+
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
+
   /// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enablePartitionDiscovery;
+
   /// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileListPath;
+
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
+
   /// The end of file's modified datetime. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? modifiedDatetimeEnd;
+
   /// The start of file's modified datetime. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? modifiedDatetimeStart;
+
   /// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionRootPath;
+
   /// The prefix filter for the Google Cloud Storage object name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? prefix;
+
   /// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? recursive;
+
   /// The read setting type.
   /// Expected value is 'GoogleCloudStorageReadSettings'.
   final pulumi.Input<String> type;
+
   /// Google Cloud Storage wildcardFileName. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? wildcardFileName;
+
   /// Google Cloud Storage wildcardFolderPath. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? wildcardFolderPath;
 
@@ -80,22 +92,71 @@ class GoogleCloudStorageReadSettingsResponse {
     };
   }
 
-  factory GoogleCloudStorageReadSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudStorageReadSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudStorageReadSettingsResponse(
-      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']!).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
-      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']!).input(),
-      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']!).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']!).input(),
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']!).input(),
-      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']!).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']!).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
-      type: (map['type'] as String).input(),
-      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']!).input(),
-      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']!).input(),
+      deleteFilesAfterCompletion: (() {
+        final guardedValue = map['deleteFilesAfterCompletion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      disableMetricsCollection: (() {
+        final guardedValue = map['disableMetricsCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      enablePartitionDiscovery: (() {
+        final guardedValue = map['enablePartitionDiscovery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      fileListPath: (() {
+        final guardedValue = map['fileListPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      maxConcurrentConnections: (() {
+        final guardedValue = map['maxConcurrentConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      modifiedDatetimeEnd: (() {
+        final guardedValue = map['modifiedDatetimeEnd'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      modifiedDatetimeStart: (() {
+        final guardedValue = map['modifiedDatetimeStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      partitionRootPath: (() {
+        final guardedValue = map['partitionRootPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      recursive: (() {
+        final guardedValue = map['recursive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      wildcardFileName: (() {
+        final guardedValue = map['wildcardFileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      wildcardFolderPath: (() {
+        final guardedValue = map['wildcardFolderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

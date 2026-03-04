@@ -8,12 +8,12 @@ class NotificationConfigStreamingConfig {
   /// expression is a list of zero or more restrictions combined via
   /// logical operators AND and OR. Parentheses are supported, and OR
   /// has higher precedence than AND.
-  /// Restrictions have the form <field> <operator> <value> and may have
+  /// Restrictions have the form &lt;field&gt; &lt;operator&gt; &lt;value&gt; and may have
   /// a - character in front of them to indicate negation. The fields
   /// map to those defined in the corresponding resource.
   /// The supported operators are:
   /// * = for all value types.
-  /// * >, <, >=, <= for integer values.
+  /// * &gt;, &lt;, &gt;=, &lt;= for integer values.
   /// * :, meaning substring matching, for strings.
   /// The supported value types are:
   /// * string literals in quotes.
@@ -26,20 +26,15 @@ class NotificationConfigStreamingConfig {
 
   /// Creates a new [NotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  NotificationConfigStreamingConfig({
-    required this.filter,
-  });
+  NotificationConfigStreamingConfig({required this.filter});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': filter,
-    };
+    return <String, dynamic>{'filter': filter};
   }
 
   factory NotificationConfigStreamingConfig.fromMap(Map<String, dynamic> map) {
     return NotificationConfigStreamingConfig(
-      filter: (map['filter'] as String).input(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_group_args.dart';
-import 'resource_reference_response.dart';
 import 'system_data_response.dart';
 
 /// Contains a list of references of UrlSigningKey type secret objects.
@@ -200,14 +199,19 @@ class KeyGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
+
   /// Names of UrlSigningKey type secret objects
-  late final pulumi.Output<List<ResourceReferenceResponse>?> keyReferences;
+  late final pulumi.Output<List<Map<String, dynamic>>?> keyReferences;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -220,17 +224,19 @@ class KeyGroup extends pulumi.CustomResource {
     KeyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:KeyGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
-    this.keyReferences = registerOutput<List<ResourceReferenceResponse>?>('keyReferences');
+         'azure-native:cdn:KeyGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    keyReferences = registerOutput<List<Map<String, dynamic>>?>(
+      'keyReferences',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

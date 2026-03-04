@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryWorkflowConfigInvocationConfigIncludedTarget {
   /// The action's database (Google Cloud project ID).
   final pulumi.Input<String>? database;
+
   /// The action's name, within database and schema.
   final pulumi.Input<String>? name;
+
   /// The action's schema (BigQuery dataset ID), within database.
   final pulumi.Input<String>? schema;
 
@@ -28,12 +30,25 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTarget {
     };
   }
 
-  factory RepositoryWorkflowConfigInvocationConfigIncludedTarget.fromMap(Map<String, dynamic> map) {
+  factory RepositoryWorkflowConfigInvocationConfigIncludedTarget.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RepositoryWorkflowConfigInvocationConfigIncludedTarget(
-      database: map['database'] == null ? null : (map['database']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      database: (() {
+        final guardedValue = map['database'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

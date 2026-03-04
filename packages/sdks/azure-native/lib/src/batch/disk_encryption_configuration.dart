@@ -10,20 +10,36 @@ class DiskEncryptionConfiguration {
 
   /// Creates a new [DiskEncryptionConfiguration].
   /// [targets] On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
-  DiskEncryptionConfiguration({
-    this.targets,
-  });
+  DiskEncryptionConfiguration({this.targets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targets': ?pulumi.Input.mapOptionalInputValue<List<DiskEncryptionTarget>, List<String>>(targets, (value) => pulumi.Input.encodeList<DiskEncryptionTarget, String>(value, (value) => value.value)),
+      'targets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DiskEncryptionTarget>,
+            List<String>
+          >(
+            targets,
+            (value) => pulumi.Input.encodeList<DiskEncryptionTarget, String>(
+              value,
+              (value) => value.wireValue,
+            ),
+          ),
     };
   }
 
   factory DiskEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfiguration(
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<DiskEncryptionTarget>(map['targets']!, (value) => DiskEncryptionTarget.fromValue(value as String))).input(),
+      targets: (() {
+        final guardedValue = map['targets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DiskEncryptionTarget>(
+            guardedValue,
+            (value) => DiskEncryptionTarget.fromValue(value as String),
+          ),
+        );
+      })(),
     );
   }
 }
-

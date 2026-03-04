@@ -9,20 +9,17 @@ class PerformanceConfigResponse {
 
   /// Creates a new [PerformanceConfigResponse].
   /// [dumpParallelLevel] Initial dump parallelism level.
-  PerformanceConfigResponse({
-    required this.dumpParallelLevel,
-  });
+  PerformanceConfigResponse({required this.dumpParallelLevel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dumpParallelLevel': dumpParallelLevel,
-    };
+    return <String, dynamic>{'dumpParallelLevel': dumpParallelLevel};
   }
 
   factory PerformanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return PerformanceConfigResponse(
-      dumpParallelLevel: (map['dumpParallelLevel'] as String).input(),
+      dumpParallelLevel: pulumi.Input.fromValue(
+        map['dumpParallelLevel'] as String,
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum AccountSkuName {
   valueStandard("Standard"),
   valueFree("Free");
 
-  const AccountSkuName(this.value);
-  final String value;
+  const AccountSkuName(this.wireValue);
+  final String wireValue;
 
   static AccountSkuName fromValue(String value) {
     for (final item in AccountSkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccountSkuName value: $value');
   }
 }
-

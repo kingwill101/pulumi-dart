@@ -746,7 +746,7 @@ Future<GetConnectPeerResult> getConnectPeer(
 
 /// Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
 ///
-/// !> **Warning:** Using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `transit_gateway_attachment_id` attribute directly from the `aws.directconnect.GatewayAssociation` resource. For example, `transit_gateway_attachment_id  = aws_dx_gateway_association.example.transit_gateway_attachment_id`.
+/// !&gt; **Warning:** Using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `transit_gateway_attachment_id` attribute directly from the `aws.directconnect.GatewayAssociation` resource. For example, `transit_gateway_attachment_id  = aws_dx_gateway_association.example.transit_gateway_attachment_id`.
 ///
 /// ## Example Usage
 ///
@@ -846,7 +846,8 @@ Future<GetConnectPeerResult> getConnectPeer(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2transitgateway_get_direct_connect_gateway_attachment_get_direct_connect_gateway_attachment_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDirectConnectGatewayAttachmentResult> getDirectConnectGatewayAttachment(
+Future<GetDirectConnectGatewayAttachmentResult>
+getDirectConnectGatewayAttachment(
   GetDirectConnectGatewayAttachmentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2307,7 +2308,7 @@ Future<GetTransitGatewayResult> getTransitGateway(
 
 /// Get information on an EC2 Transit Gateway VPC Attachment.
 ///
-/// !> **Warning:** Using the `aws.ec2transitgateway.VpcAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `id` attribute directly from the `aws.ec2transitgateway.VpcAttachment` _resource_. For example, `transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.example.id`.
+/// !&gt; **Warning:** Using the `aws.ec2transitgateway.VpcAttachment` data source in combination with  `aws.ec2transitgateway.RouteTablePropagation` or `aws.ec2transitgateway.RouteTableAssociation` may result in lost connectivity due to unnecessary resource re-creation. To avoid this, use the `id` attribute directly from the `aws.ec2transitgateway.VpcAttachment` _resource_. For example, `transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.example.id`.
 ///
 /// ## Example Usage
 ///
@@ -2608,7 +2609,7 @@ Future<GetVpcAttachmentsResult> getVpcAttachments(
 
 /// Get information on an EC2 Transit Gateway VPN Attachment.
 ///
-/// > EC2 Transit Gateway VPN Attachments are implicitly created by VPN Connections referencing an EC2 Transit Gateway so there is no managed resource. For ease, the `aws.ec2.VpnConnection` resource includes a `transit_gateway_attachment_id` attribute which can replace some usage of this data source. For tagging the attachment, see the `aws.ec2.Tag` resource.
+/// &gt; EC2 Transit Gateway VPN Attachments are implicitly created by VPN Connections referencing an EC2 Transit Gateway so there is no managed resource. For ease, the `aws.ec2.VpnConnection` resource includes a `transit_gateway_attachment_id` attribute which can replace some usage of this data source. For tagging the attachment, see the `aws.ec2.Tag` resource.
 ///
 /// ## Example Usage
 ///

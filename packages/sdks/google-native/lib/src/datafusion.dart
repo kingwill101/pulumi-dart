@@ -1,5 +1,3 @@
-library module_datafusion;
-
 export 'datafusion/accelerator_response.dart';
 export 'datafusion/accelerator_response_datafusion_v1beta1.dart';
 export 'datafusion/audit_config.dart';

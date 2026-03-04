@@ -5,7 +5,9 @@ import 'agent_prompt_variant_template_configuration_chat_message_content.dart';
 
 class AgentPromptVariantTemplateConfigurationChatMessage {
   /// Contains the content for the message you pass to, or receive from a model. See [Message Content] for more information.
-  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatMessageContent>? content;
+  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatMessageContent>?
+  content;
+
   /// The role that the message belongs to.
   final pulumi.Input<String> role;
 
@@ -19,16 +21,29 @@ class AgentPromptVariantTemplateConfigurationChatMessage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': ?pulumi.Input.mapOptionalInputValue<AgentPromptVariantTemplateConfigurationChatMessageContent, Map<String, dynamic>>(content, (value) => value.toMap()),
+      'content':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentPromptVariantTemplateConfigurationChatMessageContent,
+            Map<String, dynamic>
+          >(content, (value) => value.toMap()),
       'role': role,
     };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatMessage.fromMap(Map<String, dynamic> map) {
+  factory AgentPromptVariantTemplateConfigurationChatMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentPromptVariantTemplateConfigurationChatMessage(
-      content: map['content'] == null ? null : ((AgentPromptVariantTemplateConfigurationChatMessageContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input()).input(),
-      role: (map['role'] as String).input(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentPromptVariantTemplateConfigurationChatMessageContent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

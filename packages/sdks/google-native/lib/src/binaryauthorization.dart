@@ -1,5 +1,3 @@
-library module_binaryauthorization;
-
 export 'binaryauthorization/attestation_authenticator.dart';
 export 'binaryauthorization/attestation_authenticator_response.dart';
 export 'binaryauthorization/attestation_source.dart';

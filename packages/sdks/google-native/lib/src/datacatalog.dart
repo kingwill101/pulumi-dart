@@ -1,5 +1,3 @@
-library module_datacatalog;
-
 export 'datacatalog/binding.dart';
 export 'datacatalog/binding_datacatalog_v1beta1.dart';
 export 'datacatalog/binding_response.dart';

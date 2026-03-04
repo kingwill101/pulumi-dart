@@ -10,21 +10,27 @@ import 'time_series_value_type_aiplatform_v1beta1.dart';
 class TimeSeriesAiplatformV1beta1Args {
   /// Description of this TensorboardTimeSeries.
   final pulumi.Input<String>? description;
+
   /// User provided name of this TensorboardTimeSeries. This value should be unique among all TensorboardTimeSeries resources belonging to the same TensorboardRun resource (parent resource).
   final pulumi.Input<String> displayName;
+
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String>? etag;
   final pulumi.Input<String> experimentId;
   final pulumi.Input<String>? location;
+
   /// Data of the current plugin, with the size limited to 65KB.
   final pulumi.Input<String>? pluginData;
+
   /// Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob
   final pulumi.Input<String>? pluginName;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> runId;
   final pulumi.Input<String> tensorboardId;
+
   /// Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}"
   final pulumi.Input<String>? tensorboardTimeSeriesId;
+
   /// Immutable. Type of TensorboardTimeSeries value.
   final pulumi.Input<TimeSeriesValueTypeAiplatformV1beta1> valueType;
 
@@ -69,25 +75,60 @@ class TimeSeriesAiplatformV1beta1Args {
       'runId': runId,
       'tensorboardId': tensorboardId,
       'tensorboardTimeSeriesId': ?tensorboardTimeSeriesId,
-      'valueType': pulumi.Input.mapInputValue<TimeSeriesValueTypeAiplatformV1beta1, String>(valueType, (value) => value.value),
+      'valueType':
+          pulumi.Input.mapInputValue<
+            TimeSeriesValueTypeAiplatformV1beta1,
+            String
+          >(valueType, (value) => value.wireValue),
     };
   }
 
   factory TimeSeriesAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TimeSeriesAiplatformV1beta1Args(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      experimentId: (map['experimentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      pluginData: map['pluginData'] == null ? null : (map['pluginData']! as String).input(),
-      pluginName: map['pluginName'] == null ? null : (map['pluginName']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      runId: (map['runId'] as String).input(),
-      tensorboardId: (map['tensorboardId'] as String).input(),
-      tensorboardTimeSeriesId: map['tensorboardTimeSeriesId'] == null ? null : (map['tensorboardTimeSeriesId']! as String).input(),
-      valueType: (TimeSeriesValueTypeAiplatformV1beta1.fromValue(map['valueType'] as String)).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      experimentId: pulumi.Input.fromValue(map['experimentId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pluginData: (() {
+        final guardedValue = map['pluginData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pluginName: (() {
+        final guardedValue = map['pluginName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runId: pulumi.Input.fromValue(map['runId'] as String),
+      tensorboardId: pulumi.Input.fromValue(map['tensorboardId'] as String),
+      tensorboardTimeSeriesId: (() {
+        final guardedValue = map['tensorboardTimeSeriesId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueType: pulumi.Input.fromValue(
+        TimeSeriesValueTypeAiplatformV1beta1.fromValue(
+          map['valueType']! as String,
+        ),
+      ),
     );
   }
 }
-

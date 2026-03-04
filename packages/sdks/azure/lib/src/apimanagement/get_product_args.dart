@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductArgs {
   /// The Name of the API Management Service in which this Product exists.
   final pulumi.Input<String> apiManagementName;
+
   /// The Identifier for the API Management Product.
   final pulumi.Input<String> productId;
+
   /// The Name of the Resource Group in which the API Management Service exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetProductArgs {
 
   factory GetProductArgs.fromMap(Map<String, dynamic> map) {
     return GetProductArgs(
-      apiManagementName: (map['apiManagementName'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      apiManagementName: pulumi.Input.fromValue(
+        map['apiManagementName'] as String,
+      ),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

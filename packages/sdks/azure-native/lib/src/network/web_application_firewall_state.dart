@@ -3,16 +3,15 @@ enum WebApplicationFirewallState {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const WebApplicationFirewallState(this.value);
-  final String value;
+  const WebApplicationFirewallState(this.wireValue);
+  final String wireValue;
 
   static WebApplicationFirewallState fromValue(String value) {
     for (final item in WebApplicationFirewallState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebApplicationFirewallState value: $value');
   }
 }
-

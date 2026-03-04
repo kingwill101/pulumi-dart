@@ -28,10 +28,13 @@ class StackV1StackOutput {
 
   factory StackV1StackOutput.fromMap(Map<String, dynamic> map) {
     return StackV1StackOutput(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      outputKey: (map['outputKey'] as String).input(),
-      outputValue: (map['outputValue'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputKey: pulumi.Input.fromValue(map['outputKey'] as String),
+      outputValue: pulumi.Input.fromValue(map['outputValue'] as String),
     );
   }
 }
-

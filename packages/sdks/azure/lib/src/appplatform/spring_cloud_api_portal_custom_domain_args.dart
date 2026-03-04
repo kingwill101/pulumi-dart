@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudApiPortalCustomDomainArgs {
   /// The name which should be used for this Spring Cloud API Portal Domain. Changing this forces a new Spring Cloud API Portal Domain to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Spring Cloud API Portal. Changing this forces a new Spring Cloud API Portal Domain to be created.
   final pulumi.Input<String> springCloudApiPortalId;
+
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud API Portal Domain.
   final pulumi.Input<String>? thumbprint;
 
@@ -32,12 +34,23 @@ class SpringCloudApiPortalCustomDomainArgs {
     };
   }
 
-  factory SpringCloudApiPortalCustomDomainArgs.fromMap(Map<String, dynamic> map) {
+  factory SpringCloudApiPortalCustomDomainArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpringCloudApiPortalCustomDomainArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      springCloudApiPortalId: (map['springCloudApiPortalId'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      springCloudApiPortalId: pulumi.Input.fromValue(
+        map['springCloudApiPortalId'] as String,
+      ),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

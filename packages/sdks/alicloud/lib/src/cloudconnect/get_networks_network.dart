@@ -6,10 +6,13 @@ class GetNetworksNetwork {
   /// CidrBlock of the CCN instance.
   final pulumi.Input<String> cidrBlock;
   final pulumi.Input<String> description;
+
   /// ID of the CCN instance.
   final pulumi.Input<String> id;
+
   /// IsDefault of the CCN instance.
   final pulumi.Input<bool> isDefault;
+
   /// Name of the CCN instance.
   final pulumi.Input<String> name;
 
@@ -39,12 +42,11 @@ class GetNetworksNetwork {
 
   factory GetNetworksNetwork.fromMap(Map<String, dynamic> map) {
     return GetNetworksNetwork(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      isDefault: (map['isDefault'] as bool).input(),
-      name: (map['name'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

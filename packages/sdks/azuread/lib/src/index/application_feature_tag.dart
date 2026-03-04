@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationFeatureTag {
   /// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
   final pulumi.Input<bool>? customSingleSignOn;
+
   /// Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
   final pulumi.Input<bool>? enterprise;
+
   /// Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
   final pulumi.Input<bool>? gallery;
+
   /// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
   final pulumi.Input<bool>? hide;
 
@@ -35,11 +38,26 @@ class ApplicationFeatureTag {
 
   factory ApplicationFeatureTag.fromMap(Map<String, dynamic> map) {
     return ApplicationFeatureTag(
-      customSingleSignOn: map['customSingleSignOn'] == null ? null : (map['customSingleSignOn']! as bool).input(),
-      enterprise: map['enterprise'] == null ? null : (map['enterprise']! as bool).input(),
-      gallery: map['gallery'] == null ? null : (map['gallery']! as bool).input(),
-      hide: map['hide'] == null ? null : (map['hide']! as bool).input(),
+      customSingleSignOn: (() {
+        final guardedValue = map['customSingleSignOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enterprise: (() {
+        final guardedValue = map['enterprise'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gallery: (() {
+        final guardedValue = map['gallery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hide: (() {
+        final guardedValue = map['hide'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

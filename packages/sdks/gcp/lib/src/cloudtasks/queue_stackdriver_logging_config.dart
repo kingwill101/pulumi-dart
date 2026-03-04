@@ -10,20 +10,15 @@ class QueueStackdriverLoggingConfig {
 
   /// Creates a new [QueueStackdriverLoggingConfig].
   /// [samplingRatio] Specifies the fraction of operations to write to Stackdriver Logging.
-  QueueStackdriverLoggingConfig({
-    required this.samplingRatio,
-  });
+  QueueStackdriverLoggingConfig({required this.samplingRatio});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'samplingRatio': samplingRatio,
-    };
+    return <String, dynamic>{'samplingRatio': samplingRatio};
   }
 
   factory QueueStackdriverLoggingConfig.fromMap(Map<String, dynamic> map) {
     return QueueStackdriverLoggingConfig(
-      samplingRatio: (map['samplingRatio'] as double).input(),
+      samplingRatio: pulumi.Input.fromValue(map['samplingRatio'] as double),
     );
   }
 }
-

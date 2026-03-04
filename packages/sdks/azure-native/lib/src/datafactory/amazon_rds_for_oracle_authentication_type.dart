@@ -2,16 +2,17 @@
 enum AmazonRdsForOracleAuthenticationType {
   valueBasic("Basic");
 
-  const AmazonRdsForOracleAuthenticationType(this.value);
-  final String value;
+  const AmazonRdsForOracleAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static AmazonRdsForOracleAuthenticationType fromValue(String value) {
     for (final item in AmazonRdsForOracleAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AmazonRdsForOracleAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown AmazonRdsForOracleAuthenticationType value: $value',
+    );
   }
 }
-

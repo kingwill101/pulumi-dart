@@ -7,16 +7,15 @@ enum InstanceStateName {
   stopping("stopping"),
   terminated("terminated");
 
-  const InstanceStateName(this.value);
-  final String value;
+  const InstanceStateName(this.wireValue);
+  final String wireValue;
 
   static InstanceStateName fromValue(String value) {
     for (final item in InstanceStateName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceStateName value: $value');
   }
 }
-

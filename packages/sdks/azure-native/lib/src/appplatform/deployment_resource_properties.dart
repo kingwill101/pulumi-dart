@@ -8,8 +8,10 @@ import 'deployment_settings.dart';
 class DeploymentResourceProperties {
   /// Indicates whether the Deployment is active
   final pulumi.Input<bool>? active;
+
   /// Deployment settings of the Deployment
   final pulumi.Input<DeploymentSettings>? deploymentSettings;
+
   /// Uploaded source information of the deployment.
   final pulumi.Input<BuildResultUserSourceInfo>? source;
 
@@ -26,17 +28,44 @@ class DeploymentResourceProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'active': ?active,
-      'deploymentSettings': ?pulumi.Input.mapOptionalInputValue<DeploymentSettings, Map<String, dynamic>>(deploymentSettings, (value) => value.toMap()),
-      'source': ?pulumi.Input.mapOptionalInputValue<BuildResultUserSourceInfo, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'deploymentSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentSettings,
+            Map<String, dynamic>
+          >(deploymentSettings, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuildResultUserSourceInfo,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory DeploymentResourceProperties.fromMap(Map<String, dynamic> map) {
     return DeploymentResourceProperties(
-      active: map['active'] == null ? null : (map['active']! as bool).input(),
-      deploymentSettings: map['deploymentSettings'] == null ? null : (DeploymentSettings.fromMap((map['deploymentSettings']! as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (BuildResultUserSourceInfo.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deploymentSettings: (() {
+        final guardedValue = map['deploymentSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuildResultUserSourceInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

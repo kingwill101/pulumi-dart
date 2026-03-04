@@ -39,13 +39,36 @@ class LaunchConfigurationRootBlockDevice {
 
   factory LaunchConfigurationRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return LaunchConfigurationRootBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
-      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
-      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
-      throughput: map['throughput'] == null ? null : ((map['throughput'] as int).input()).input(),
-      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
-      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
+      deleteOnTermination: (() {
+        final guardedValue = map['deleteOnTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      iops: (() {
+        final guardedValue = map['iops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      throughput: (() {
+        final guardedValue = map['throughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeSize: (() {
+        final guardedValue = map['volumeSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeType: (() {
+        final guardedValue = map['volumeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

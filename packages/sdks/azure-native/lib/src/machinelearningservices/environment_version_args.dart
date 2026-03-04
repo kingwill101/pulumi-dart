@@ -9,13 +9,18 @@ import 'environment_version_machinelearningservices.dart';
 /// {@macro pulumi_machinelearningservices_environment_version_args_doc}
 class EnvironmentVersionArgs {
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<EnvironmentVersionMachinelearningservices> environmentVersionProperties;
+  final pulumi.Input<EnvironmentVersionMachinelearningservices>
+  environmentVersionProperties;
+
   /// Name of EnvironmentVersion. This is case-sensitive.
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Version of EnvironmentVersion.
   final pulumi.Input<String>? version;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -45,12 +50,20 @@ class EnvironmentVersionArgs {
 
   factory EnvironmentVersionArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentVersionArgs(
-      environmentVersionProperties: (map['environmentVersionProperties'] as EnvironmentVersionMachinelearningservices).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      environmentVersionProperties: pulumi.Input.fromValue(
+        map['environmentVersionProperties']
+            as EnvironmentVersionMachinelearningservices,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

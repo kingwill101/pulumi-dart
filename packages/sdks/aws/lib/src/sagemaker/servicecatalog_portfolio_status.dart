@@ -103,6 +103,7 @@ import 'servicecatalog_portfolio_status_state.dart';
 class ServicecatalogPortfolioStatus extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
   late final pulumi.Output<String> status;
 
@@ -115,13 +116,13 @@ class ServicecatalogPortfolioStatus extends pulumi.CustomResource {
     ServicecatalogPortfolioStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+         'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ServicecatalogPortfolioStatus] resource's state with the given [name] and [id].
@@ -142,12 +143,12 @@ class ServicecatalogPortfolioStatus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
+         'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
   }
 }

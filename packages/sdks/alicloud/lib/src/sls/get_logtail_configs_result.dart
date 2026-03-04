@@ -7,14 +7,18 @@ import 'get_logtail_configs_config.dart';
 class GetLogtailConfigsResult {
   /// A list of Logtail Config Entries. Each element contains the following attributes:
   final List<GetLogtailConfigsConfig> configs;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Logtail Config IDs.
   final List<String> ids;
   final String logstoreName;
+
   /// The name of the resource
   final String? logtailConfigName;
   final String? nameRegex;
+
   /// A list of name of Logtail Configs.
   final List<String> names;
   final int offset;
@@ -50,7 +54,11 @@ class GetLogtailConfigsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs': pulumi.Input.encodeList<GetLogtailConfigsConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
+      'configs':
+          pulumi.Input.encodeList<
+            GetLogtailConfigsConfig,
+            Map<String, dynamic>
+          >(configs, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'logstoreName': logstoreName,
@@ -66,18 +74,34 @@ class GetLogtailConfigsResult {
 
   factory GetLogtailConfigsResult.fromMap(Map<String, dynamic> map) {
     return GetLogtailConfigsResult(
-      configs: pulumi.Input.decodeList<GetLogtailConfigsConfig>(map['configs'], (value) => GetLogtailConfigsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      configs: pulumi.Input.decodeList<GetLogtailConfigsConfig>(
+        map['configs']!,
+        (value) => GetLogtailConfigsConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       logstoreName: map['logstoreName'] as String,
-      logtailConfigName: map['logtailConfigName'] == null ? null : map['logtailConfigName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      logtailConfigName: (() {
+        final guardedValue = map['logtailConfigName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
       offset: map['offset'] as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       projectName: map['projectName'] as String,
       size: map['size'] as int,
     );
   }
 }
-

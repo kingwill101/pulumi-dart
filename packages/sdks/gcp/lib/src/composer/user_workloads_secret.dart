@@ -276,13 +276,17 @@ import 'user_workloads_secret_state.dart';
 class UserWorkloadsSecret extends pulumi.CustomResource {
   /// A map of the secret data.
   late final pulumi.Output<Map<String, String>?> data;
+
   /// Environment where the Kubernetes Secret will be stored and used.
   late final pulumi.Output<String> environment;
+
   /// Name of the Kubernetes Secret.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The location or Compute Engine region for the environment.
   late final pulumi.Output<String> region;
 
@@ -295,16 +299,16 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
     UserWorkloadsSecretArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.data = registerOutput<Map<String, String>?>('data');
-    this.environment = registerOutput<String>('environment');
+         'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    data = registerOutput<Map<String, String>?>('data');
+    environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [UserWorkloadsSecret] resource's state with the given [name] and [id].
@@ -325,15 +329,15 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.data = registerOutput<Map<String, String>?>('data');
-    this.environment = registerOutput<String>('environment');
+         'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    data = registerOutput<Map<String, String>?>('data');
+    environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 }

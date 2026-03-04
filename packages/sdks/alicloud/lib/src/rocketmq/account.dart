@@ -8,7 +8,7 @@ import 'account_state.dart';
 ///
 /// For information about RocketMQ Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceaccount).
 ///
-/// > **NOTE:** Available since v1.245.0.
+/// &gt; **NOTE:** Available since v1.245.0.
 ///
 /// ## Example Usage
 ///
@@ -494,10 +494,13 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The status of the account. Valid values: `DISABLE`, `ENABLE`.
   late final pulumi.Output<String> accountStatus;
+
   /// The instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// The password of the account.
   late final pulumi.Output<String> password;
+
   /// The username of the account.
   late final pulumi.Output<String> username;
 
@@ -510,15 +513,15 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountStatus = registerOutput<String>('accountStatus');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.password = registerOutput<String>('password');
-    this.username = registerOutput<String>('username');
+         'alicloud:rocketmq/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountStatus = registerOutput<String>('accountStatus');
+    instanceId = registerOutput<String>('instanceId');
+    password = registerOutput<String>('password');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -539,14 +542,14 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountStatus = registerOutput<String>('accountStatus');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.password = registerOutput<String>('password');
-    this.username = registerOutput<String>('username');
+         'alicloud:rocketmq/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountStatus = registerOutput<String>('accountStatus');
+    instanceId = registerOutput<String>('instanceId');
+    password = registerOutput<String>('password');
+    username = registerOutput<String>('username');
   }
 }

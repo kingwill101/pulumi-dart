@@ -12,15 +12,22 @@ class ProvenanceBuilder {
   /// [builderDependencies] Optional.
   /// [id] Optional.
   /// [version] Optional.
-  ProvenanceBuilder({
-    this.builderDependencies,
-    this.id,
-    this.version,
-  });
+  ProvenanceBuilder({this.builderDependencies, this.id, this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'builderDependencies': ?pulumi.Input.mapOptionalInputValue<List<ResourceDescriptor>, List<Map<String, dynamic>>>(builderDependencies, (value) => pulumi.Input.encodeList<ResourceDescriptor, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'builderDependencies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceDescriptor>,
+            List<Map<String, dynamic>>
+          >(
+            builderDependencies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceDescriptor,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
       'version': ?version,
     };
@@ -28,10 +35,30 @@ class ProvenanceBuilder {
 
   factory ProvenanceBuilder.fromMap(Map<String, dynamic> map) {
     return ProvenanceBuilder(
-      builderDependencies: map['builderDependencies'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptor>(map['builderDependencies']!, (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      version: map['version'] == null ? null : ((map['version']! as Map).cast<String, String>()).input(),
+      builderDependencies: (() {
+        final guardedValue = map['builderDependencies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceDescriptor>(
+            guardedValue,
+            (value) => ResourceDescriptor.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

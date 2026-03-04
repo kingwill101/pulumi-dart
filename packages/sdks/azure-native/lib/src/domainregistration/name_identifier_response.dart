@@ -9,20 +9,19 @@ class NameIdentifierResponse {
 
   /// Creates a new [NameIdentifierResponse].
   /// [name] Name of the object.
-  NameIdentifierResponse({
-    this.name,
-  });
+  NameIdentifierResponse({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory NameIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return NameIdentifierResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

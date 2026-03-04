@@ -9,20 +9,17 @@ class TargetAttributeResponse {
 
   /// Creates a new [TargetAttributeResponse].
   /// [labels] Target labels.
-  TargetAttributeResponse({
-    required this.labels,
-  });
+  TargetAttributeResponse({required this.labels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': labels,
-    };
+    return <String, dynamic>{'labels': labels};
   }
 
   factory TargetAttributeResponse.fromMap(Map<String, dynamic> map) {
     return TargetAttributeResponse(
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicatingStepResponseVmmigrationV1alpha1 {
   /// The source disks replication rate for the last 30 minutes in bytes per second.
   final pulumi.Input<String> lastThirtyMinutesAverageBytesPerSecond;
+
   /// The source disks replication rate for the last 2 minutes in bytes per second.
   final pulumi.Input<String> lastTwoMinutesAverageBytesPerSecond;
+
   /// Replicated bytes in the step.
   final pulumi.Input<String> replicatedBytes;
+
   /// Total bytes to be handled in the step.
   final pulumi.Input<String> totalBytes;
 
@@ -27,20 +30,27 @@ class ReplicatingStepResponseVmmigrationV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastThirtyMinutesAverageBytesPerSecond': lastThirtyMinutesAverageBytesPerSecond,
-      'lastTwoMinutesAverageBytesPerSecond': lastTwoMinutesAverageBytesPerSecond,
+      'lastThirtyMinutesAverageBytesPerSecond':
+          lastThirtyMinutesAverageBytesPerSecond,
+      'lastTwoMinutesAverageBytesPerSecond':
+          lastTwoMinutesAverageBytesPerSecond,
       'replicatedBytes': replicatedBytes,
       'totalBytes': totalBytes,
     };
   }
 
-  factory ReplicatingStepResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ReplicatingStepResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicatingStepResponseVmmigrationV1alpha1(
-      lastThirtyMinutesAverageBytesPerSecond: (map['lastThirtyMinutesAverageBytesPerSecond'] as String).input(),
-      lastTwoMinutesAverageBytesPerSecond: (map['lastTwoMinutesAverageBytesPerSecond'] as String).input(),
-      replicatedBytes: (map['replicatedBytes'] as String).input(),
-      totalBytes: (map['totalBytes'] as String).input(),
+      lastThirtyMinutesAverageBytesPerSecond: pulumi.Input.fromValue(
+        map['lastThirtyMinutesAverageBytesPerSecond'] as String,
+      ),
+      lastTwoMinutesAverageBytesPerSecond: pulumi.Input.fromValue(
+        map['lastTwoMinutesAverageBytesPerSecond'] as String,
+      ),
+      replicatedBytes: pulumi.Input.fromValue(map['replicatedBytes'] as String),
+      totalBytes: pulumi.Input.fromValue(map['totalBytes'] as String),
     );
   }
 }
-

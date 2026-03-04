@@ -13,15 +13,14 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deliveryStream': deliveryStream,
-    };
+    return <String, dynamic>{'deliveryStream': deliveryStream};
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehose.fromMap(Map<String, dynamic> map) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehose.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehose(
-      deliveryStream: (map['deliveryStream'] as String).input(),
+      deliveryStream: pulumi.Input.fromValue(map['deliveryStream'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_computeoptimizer;
-
 export 'computeoptimizer/enrollment_status.dart';
 export 'computeoptimizer/enrollment_status_args.dart';
 export 'computeoptimizer/enrollment_status_state.dart';

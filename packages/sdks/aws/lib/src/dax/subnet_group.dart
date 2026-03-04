@@ -127,12 +127,16 @@ import 'subnet_group_state.dart';
 class SubnetGroup extends pulumi.CustomResource {
   /// A description of the subnet group.
   late final pulumi.Output<String?> description;
+
   /// The name of the subnet group.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A list of VPC subnet IDs for the subnet group.
   late final pulumi.Output<List<String>> subnetIds;
+
   /// VPC ID of the subnet group.
   late final pulumi.Output<String> vpcId;
 
@@ -145,16 +149,16 @@ class SubnetGroup extends pulumi.CustomResource {
     SubnetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dax/subnetGroup:SubnetGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:dax/subnetGroup:SubnetGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.subnetIds = registerOutput<List<String>>('subnetIds');
-    this.vpcId = registerOutput<String>('vpcId');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>>('subnetIds');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [SubnetGroup] resource's state with the given [name] and [id].
@@ -175,15 +179,15 @@ class SubnetGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dax/subnetGroup:SubnetGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:dax/subnetGroup:SubnetGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.subnetIds = registerOutput<List<String>>('subnetIds');
-    this.vpcId = registerOutput<String>('vpcId');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>>('subnetIds');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

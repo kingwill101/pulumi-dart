@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetAnalyticArgs {
   /// Cosmos DB fleetAnalytics name.
   final pulumi.Input<String>? fleetAnalyticsName;
+
   /// Cosmos DB fleet name. Needs to be unique under a subscription.
   final pulumi.Input<String> fleetName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The type of the fleet analytics resource.
   final pulumi.Input<String>? storageLocationType;
+
   /// The unique identifier of the fleet analytics resource.
   final pulumi.Input<String>? storageLocationUri;
 
@@ -44,12 +48,25 @@ class FleetAnalyticArgs {
 
   factory FleetAnalyticArgs.fromMap(Map<String, dynamic> map) {
     return FleetAnalyticArgs(
-      fleetAnalyticsName: map['fleetAnalyticsName'] == null ? null : (map['fleetAnalyticsName']! as String).input(),
-      fleetName: (map['fleetName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageLocationType: map['storageLocationType'] == null ? null : (map['storageLocationType']! as String).input(),
-      storageLocationUri: map['storageLocationUri'] == null ? null : (map['storageLocationUri']! as String).input(),
+      fleetAnalyticsName: (() {
+        final guardedValue = map['fleetAnalyticsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageLocationType: (() {
+        final guardedValue = map['storageLocationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageLocationUri: (() {
+        final guardedValue = map['storageLocationUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

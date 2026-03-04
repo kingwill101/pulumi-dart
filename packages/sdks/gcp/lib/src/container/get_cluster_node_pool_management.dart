@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolManagement {
   /// Whether the nodes will be automatically repaired. Enabled by default.
   final pulumi.Input<bool> autoRepair;
+
   /// Whether the nodes will be automatically upgraded. Enabled by default.
   final pulumi.Input<bool> autoUpgrade;
 
@@ -25,9 +26,8 @@ class GetClusterNodePoolManagement {
 
   factory GetClusterNodePoolManagement.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolManagement(
-      autoRepair: (map['autoRepair'] as bool).input(),
-      autoUpgrade: (map['autoUpgrade'] as bool).input(),
+      autoRepair: pulumi.Input.fromValue(map['autoRepair'] as bool),
+      autoUpgrade: pulumi.Input.fromValue(map['autoUpgrade'] as bool),
     );
   }
 }
-

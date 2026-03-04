@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelSlackState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? botName;
+
   /// The Client ID that will be used to authenticate with Slack.
   final pulumi.Input<String>? clientId;
+
   /// The Client Secret that will be used to authenticate with Slack.
   final pulumi.Input<String>? clientSecret;
+
   /// The Slack Landing Page URL.
   final pulumi.Input<String>? landingPageUrl;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The Signing Secret that will be used to sign the requests.
   final pulumi.Input<String>? signingSecret;
+
   /// The Verification Token that will be used to authenticate with Slack.
   final pulumi.Input<String>? verificationToken;
 
@@ -56,15 +63,46 @@ class ChannelSlackState {
 
   factory ChannelSlackState.fromMap(Map<String, dynamic> map) {
     return ChannelSlackState(
-      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret']! as String).input(),
-      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken']! as String).input(),
+      botName: (() {
+        final guardedValue = map['botName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      landingPageUrl: (() {
+        final guardedValue = map['landingPageUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signingSecret: (() {
+        final guardedValue = map['signingSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verificationToken: (() {
+        final guardedValue = map['verificationToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

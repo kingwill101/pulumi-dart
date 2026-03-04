@@ -10,12 +10,16 @@ import 'sql_server_license_properties.dart';
 class SqlServerLicenseArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// SQL Server license properties
   final pulumi.Input<SqlServerLicenseProperties> properties;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server License
   final pulumi.Input<String>? sqlServerLicenseName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,7 +40,11 @@ class SqlServerLicenseArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<SqlServerLicenseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            SqlServerLicenseProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sqlServerLicenseName': ?sqlServerLicenseName,
       'tags': ?tags,
@@ -45,12 +53,31 @@ class SqlServerLicenseArgs {
 
   factory SqlServerLicenseArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerLicenseArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (SqlServerLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerLicenseName: map['sqlServerLicenseName'] == null ? null : (map['sqlServerLicenseName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        SqlServerLicenseProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerLicenseName: (() {
+        final guardedValue = map['sqlServerLicenseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

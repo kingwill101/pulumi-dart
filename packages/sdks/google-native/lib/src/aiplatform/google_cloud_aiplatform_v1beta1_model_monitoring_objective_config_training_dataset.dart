@@ -8,15 +8,22 @@ import 'google_cloud_aiplatform_v1beta1_sampling_strategy.dart';
 /// Training Dataset information.
 class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset {
   /// The BigQuery table of the unmanaged Dataset used to train this Model.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1BigQuerySource>? bigquerySource;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1BigQuerySource>?
+  bigquerySource;
+
   /// Data format of the dataset, only applicable if the input is from Google Cloud Storage. The possible formats are: "tf-record" The source file is a TFRecord file. "csv" The source file is a CSV file. "jsonl" The source file is a JSONL file.
   final pulumi.Input<String>? dataFormat;
+
   /// The resource name of the Dataset used to train this Model.
   final pulumi.Input<String>? dataset;
+
   /// The Google Cloud Storage uri of the unmanaged Dataset used to train this Model.
   final pulumi.Input<GoogleCloudAiplatformV1beta1GcsSource>? gcsSource;
+
   /// Strategy to sample data from Training Dataset. If not set, we process the whole dataset.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1SamplingStrategy>? loggingSamplingStrategy;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1SamplingStrategy>?
+  loggingSamplingStrategy;
+
   /// The target field name the model is to predict. This field will be excluded when doing Predict and (or) Explain for the training data.
   final pulumi.Input<String>? targetField;
 
@@ -38,24 +45,73 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigquerySource': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1BigQuerySource, Map<String, dynamic>>(bigquerySource, (value) => value.toMap()),
+      'bigquerySource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1BigQuerySource,
+            Map<String, dynamic>
+          >(bigquerySource, (value) => value.toMap()),
       'dataFormat': ?dataFormat,
       'dataset': ?dataset,
-      'gcsSource': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1GcsSource, Map<String, dynamic>>(gcsSource, (value) => value.toMap()),
-      'loggingSamplingStrategy': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1SamplingStrategy, Map<String, dynamic>>(loggingSamplingStrategy, (value) => value.toMap()),
+      'gcsSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1GcsSource,
+            Map<String, dynamic>
+          >(gcsSource, (value) => value.toMap()),
+      'loggingSamplingStrategy':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1SamplingStrategy,
+            Map<String, dynamic>
+          >(loggingSamplingStrategy, (value) => value.toMap()),
       'targetField': ?targetField,
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDataset(
-      bigquerySource: map['bigquerySource'] == null ? null : (GoogleCloudAiplatformV1beta1BigQuerySource.fromMap((map['bigquerySource']! as Map).cast<String, dynamic>())).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
-      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1beta1GcsSource.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())).input(),
-      loggingSamplingStrategy: map['loggingSamplingStrategy'] == null ? null : (GoogleCloudAiplatformV1beta1SamplingStrategy.fromMap((map['loggingSamplingStrategy']! as Map).cast<String, dynamic>())).input(),
-      targetField: map['targetField'] == null ? null : (map['targetField']! as String).input(),
+      bigquerySource: (() {
+        final guardedValue = map['bigquerySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1BigQuerySource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataFormat: (() {
+        final guardedValue = map['dataFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataset: (() {
+        final guardedValue = map['dataset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gcsSource: (() {
+        final guardedValue = map['gcsSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1GcsSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loggingSamplingStrategy: (() {
+        final guardedValue = map['loggingSamplingStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1SamplingStrategy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetField: (() {
+        final guardedValue = map['targetField'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

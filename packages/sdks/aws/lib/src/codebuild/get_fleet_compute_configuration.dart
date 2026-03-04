@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetComputeConfiguration {
   /// Amount of disk space of the instance type included in the fleet.
   final pulumi.Input<int> disk;
+
   /// EC2 instance type in the fleet.
   final pulumi.Input<String> instanceType;
+
   /// Machine type of the instance type included in the fleet.
   final pulumi.Input<String> machineType;
+
   /// Amount of memory of the instance type included in the fleet.
   final pulumi.Input<int> memory;
+
   /// Number of vCPUs of the instance type included in the fleet.
   final pulumi.Input<int> vcpu;
 
@@ -40,12 +44,11 @@ class GetFleetComputeConfiguration {
 
   factory GetFleetComputeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFleetComputeConfiguration(
-      disk: (map['disk'] as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      machineType: (map['machineType'] as String).input(),
-      memory: (map['memory'] as int).input(),
-      vcpu: (map['vcpu'] as int).input(),
+      disk: pulumi.Input.fromValue(map['disk'] as int),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      machineType: pulumi.Input.fromValue(map['machineType'] as String),
+      memory: pulumi.Input.fromValue(map['memory'] as int),
+      vcpu: pulumi.Input.fromValue(map['vcpu'] as int),
     );
   }
 }
-

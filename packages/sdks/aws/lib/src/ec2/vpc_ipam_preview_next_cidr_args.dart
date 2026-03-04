@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamPreviewNextCidrArgs {
   /// Exclude a particular CIDR range from being returned by the pool.
   final pulumi.Input<List<String>>? disallowedCidrs;
+
   /// The ID of the pool to which you want to assign a CIDR.
   final pulumi.Input<String> ipamPoolId;
+
   /// The netmask length of the CIDR you would like to preview from the IPAM pool.
   final pulumi.Input<int>? netmaskLength;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,22 @@ class VpcIpamPreviewNextCidrArgs {
 
   factory VpcIpamPreviewNextCidrArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPreviewNextCidrArgs(
-      disallowedCidrs: map['disallowedCidrs'] == null ? null : (((map['disallowedCidrs'] as List).cast<String>()).input()).input(),
-      ipamPoolId: (map['ipamPoolId'] as String).input(),
-      netmaskLength: map['netmaskLength'] == null ? null : ((map['netmaskLength'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      disallowedCidrs: (() {
+        final guardedValue = map['disallowedCidrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
+      netmaskLength: (() {
+        final guardedValue = map['netmaskLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

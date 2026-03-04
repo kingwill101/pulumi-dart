@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSshKeyArgs {
   /// The ID of the SSH Key
   final pulumi.Input<String>? id;
+
   /// The label of the SSH Key to select.
   final pulumi.Input<String> label;
 
   /// Creates a new [GetSshKeyArgs].
   /// [id] The ID of the SSH Key
   /// [label] The label of the SSH Key to select.
-  GetSshKeyArgs({
-    this.id,
-    required this.label,
-  });
+  GetSshKeyArgs({this.id, required this.label});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'label': label,
-    };
+    return <String, dynamic>{'id': ?id, 'label': label};
   }
 
   factory GetSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetSshKeyArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      label: (map['label'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
     );
   }
 }
-

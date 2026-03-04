@@ -6,10 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsWorkspaceOnboardingState {
   /// Specifies if the Workspace is using Customer managed key. Defaults to `false`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** To set up Microsoft Sentinel customer-managed key it needs to enable CMK on the workspace and add access policy to your Azure Key Vault. Details could be found on [this document](https://learn.microsoft.com/en-us/azure/sentinel/customer-managed-keys)
+  /// &gt; **Note:** To set up Microsoft Sentinel customer-managed key it needs to enable CMK on the workspace and add access policy to your Azure Key Vault. Details could be found on [this document](https://learn.microsoft.com/en-us/azure/sentinel/customer-managed-keys)
   ///
-  /// > **Note:** Once a workspace is onboarded to Microsoft Sentinel with `customer_managed_key_enabled` set to true, it will not be able to be onboarded again with `customer_managed_key_enabled` set to false.
+  /// &gt; **Note:** Once a workspace is onboarded to Microsoft Sentinel with `customer_managed_key_enabled` set to true, it will not be able to be onboarded again with `customer_managed_key_enabled` set to false.
   final pulumi.Input<bool>? customerManagedKeyEnabled;
+
   /// Specifies the Workspace Id. Changing this forces the Log Analytics Workspace off the board and onboard again. Changing this forces a new resource to be created.
   final pulumi.Input<String>? workspaceId;
 
@@ -28,11 +29,20 @@ class LogAnalyticsWorkspaceOnboardingState {
     };
   }
 
-  factory LogAnalyticsWorkspaceOnboardingState.fromMap(Map<String, dynamic> map) {
+  factory LogAnalyticsWorkspaceOnboardingState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogAnalyticsWorkspaceOnboardingState(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : (map['customerManagedKeyEnabled']! as bool).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      customerManagedKeyEnabled: (() {
+        final guardedValue = map['customerManagedKeyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

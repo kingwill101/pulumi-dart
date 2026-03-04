@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowRunResponse {
   /// The timestamp of the last workflow run.
   final pulumi.Input<String> lastRunAt;
+
   /// Describes if the workflow run succeeded.
   final pulumi.Input<bool> succeeded;
+
   /// Describes the status of the workflow run
   final pulumi.Input<String>? workflowRunStatus;
+
   /// URL to the run of the workflow.
   final pulumi.Input<String> workflowRunURL;
 
@@ -35,11 +38,14 @@ class WorkflowRunResponse {
 
   factory WorkflowRunResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowRunResponse(
-      lastRunAt: (map['lastRunAt'] as String).input(),
-      succeeded: (map['succeeded'] as bool).input(),
-      workflowRunStatus: map['workflowRunStatus'] == null ? null : (map['workflowRunStatus']! as String).input(),
-      workflowRunURL: (map['workflowRunURL'] as String).input(),
+      lastRunAt: pulumi.Input.fromValue(map['lastRunAt'] as String),
+      succeeded: pulumi.Input.fromValue(map['succeeded'] as bool),
+      workflowRunStatus: (() {
+        final guardedValue = map['workflowRunStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workflowRunURL: pulumi.Input.fromValue(map['workflowRunURL'] as String),
     );
   }
 }
-

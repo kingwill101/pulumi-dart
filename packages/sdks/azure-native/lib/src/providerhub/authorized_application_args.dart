@@ -11,6 +11,7 @@ class AuthorizedApplicationArgs {
   /// The application ID.
   final pulumi.Input<String>? applicationId;
   final pulumi.Input<AuthorizedApplicationProperties>? properties;
+
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
 
@@ -27,17 +28,34 @@ class AuthorizedApplicationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': ?applicationId,
-      'properties': ?pulumi.Input.mapOptionalInputValue<AuthorizedApplicationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthorizedApplicationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'providerNamespace': providerNamespace,
     };
   }
 
   factory AuthorizedApplicationArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedApplicationArgs(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      properties: map['properties'] == null ? null : (AuthorizedApplicationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      providerNamespace: (map['providerNamespace'] as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthorizedApplicationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
     );
   }
 }
-

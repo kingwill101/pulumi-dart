@@ -5,16 +5,17 @@ enum ExecStepConfigInterpreterOsconfigV1beta {
   shell("SHELL"),
   powershell("POWERSHELL");
 
-  const ExecStepConfigInterpreterOsconfigV1beta(this.value);
-  final String value;
+  const ExecStepConfigInterpreterOsconfigV1beta(this.wireValue);
+  final String wireValue;
 
   static ExecStepConfigInterpreterOsconfigV1beta fromValue(String value) {
     for (final item in ExecStepConfigInterpreterOsconfigV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExecStepConfigInterpreterOsconfigV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ExecStepConfigInterpreterOsconfigV1beta value: $value',
+    );
   }
 }
-

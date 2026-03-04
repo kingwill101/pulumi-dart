@@ -2,16 +2,17 @@
 enum ConnectionMonitorEndpointFilterItemType {
   valueAgentAddress("AgentAddress");
 
-  const ConnectionMonitorEndpointFilterItemType(this.value);
-  final String value;
+  const ConnectionMonitorEndpointFilterItemType(this.wireValue);
+  final String wireValue;
 
   static ConnectionMonitorEndpointFilterItemType fromValue(String value) {
     for (final item in ConnectionMonitorEndpointFilterItemType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConnectionMonitorEndpointFilterItemType value: $value');
+    throw ArgumentError(
+      'Unknown ConnectionMonitorEndpointFilterItemType value: $value',
+    );
   }
 }
-

@@ -5,10 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityScanConfigAuthenticationCustomAccount {
   /// The login form URL of the website.
   final pulumi.Input<String> loginUrl;
+
   /// The password of the custom account. The credential is stored encrypted
   /// in GCP.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> password;
+
   /// The user name of the custom account.
   final pulumi.Input<String> username;
 
@@ -30,12 +32,13 @@ class SecurityScanConfigAuthenticationCustomAccount {
     };
   }
 
-  factory SecurityScanConfigAuthenticationCustomAccount.fromMap(Map<String, dynamic> map) {
+  factory SecurityScanConfigAuthenticationCustomAccount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityScanConfigAuthenticationCustomAccount(
-      loginUrl: (map['loginUrl'] as String).input(),
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      loginUrl: pulumi.Input.fromValue(map['loginUrl'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

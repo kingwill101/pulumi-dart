@@ -9,20 +9,21 @@ class ApiPortalCustomDomainPropertiesResponse {
 
   /// Creates a new [ApiPortalCustomDomainPropertiesResponse].
   /// [thumbprint] The thumbprint of bound certificate.
-  ApiPortalCustomDomainPropertiesResponse({
-    this.thumbprint,
-  });
+  ApiPortalCustomDomainPropertiesResponse({this.thumbprint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'thumbprint': ?thumbprint,
-    };
+    return <String, dynamic>{'thumbprint': ?thumbprint};
   }
 
-  factory ApiPortalCustomDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ApiPortalCustomDomainPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiPortalCustomDomainPropertiesResponse(
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

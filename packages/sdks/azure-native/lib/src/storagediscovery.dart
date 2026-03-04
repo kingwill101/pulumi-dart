@@ -1,5 +1,3 @@
-library module_storagediscovery;
-
 export 'storagediscovery/functions.dart';
 export 'storagediscovery/get_storage_discovery_workspace_args.dart';
 export 'storagediscovery/get_storage_discovery_workspace_result.dart';

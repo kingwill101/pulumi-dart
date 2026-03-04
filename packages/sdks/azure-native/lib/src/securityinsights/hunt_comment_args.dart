@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HuntCommentArgs {
   /// The hunt comment id (GUID)
   final pulumi.Input<String>? huntCommentId;
+
   /// The hunt id (GUID)
   final pulumi.Input<String> huntId;
+
   /// The message for the comment
   final pulumi.Input<String> message;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -44,12 +48,17 @@ class HuntCommentArgs {
 
   factory HuntCommentArgs.fromMap(Map<String, dynamic> map) {
     return HuntCommentArgs(
-      huntCommentId: map['huntCommentId'] == null ? null : (map['huntCommentId']! as String).input(),
-      huntId: (map['huntId'] as String).input(),
-      message: (map['message'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      huntCommentId: (() {
+        final guardedValue = map['huntCommentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      huntId: pulumi.Input.fromValue(map['huntId'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

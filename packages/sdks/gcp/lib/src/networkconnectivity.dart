@@ -1,5 +1,3 @@
-library module_networkconnectivity;
-
 export 'networkconnectivity/destination.dart';
 export 'networkconnectivity/destination_args.dart';
 export 'networkconnectivity/destination_endpoint.dart';

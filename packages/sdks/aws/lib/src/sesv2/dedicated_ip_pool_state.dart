@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DedicatedIpPoolState {
   /// ARN of the Dedicated IP Pool.
   final pulumi.Input<String>? arn;
+
   /// Name of the dedicated IP pool.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? poolName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`. If omitted, the AWS API will default to a standard pool.
   final pulumi.Input<String>? scalingMode;
+
   /// A map of tags to assign to the pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
@@ -47,13 +51,40 @@ class DedicatedIpPoolState {
 
   factory DedicatedIpPoolState.fromMap(Map<String, dynamic> map) {
     return DedicatedIpPoolState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      poolName: map['poolName'] == null ? null : ((map['poolName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scalingMode: map['scalingMode'] == null ? null : ((map['scalingMode'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      poolName: (() {
+        final guardedValue = map['poolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scalingMode: (() {
+        final guardedValue = map['scalingMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

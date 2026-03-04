@@ -6,14 +6,19 @@ import 'protection_container_mapping_properties_response.dart';
 class GetReplicationProtectionContainerMappingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Id
   final String id;
+
   /// Resource Location
   final String? location;
+
   /// Resource Name
   final String name;
+
   /// The custom data.
   final ProtectionContainerMappingPropertiesResponse properties;
+
   /// Resource Type
   final String type;
 
@@ -44,15 +49,22 @@ class GetReplicationProtectionContainerMappingResult {
     };
   }
 
-  factory GetReplicationProtectionContainerMappingResult.fromMap(Map<String, dynamic> map) {
+  factory GetReplicationProtectionContainerMappingResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReplicationProtectionContainerMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: ProtectionContainerMappingPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: ProtectionContainerMappingPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

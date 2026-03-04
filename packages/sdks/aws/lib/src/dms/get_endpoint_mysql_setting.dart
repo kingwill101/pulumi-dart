@@ -55,17 +55,28 @@ class GetEndpointMysqlSetting {
 
   factory GetEndpointMysqlSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointMysqlSetting(
-      afterConnectScript: (map['afterConnectScript'] as String).input(),
-      authenticationMethod: (map['authenticationMethod'] as String).input(),
-      cleanSourceMetadataOnMismatch: (map['cleanSourceMetadataOnMismatch'] as bool).input(),
-      eventsPollInterval: (map['eventsPollInterval'] as int).input(),
-      executeTimeout: (map['executeTimeout'] as int).input(),
-      maxFileSize: (map['maxFileSize'] as int).input(),
-      parallelLoadThreads: (map['parallelLoadThreads'] as int).input(),
-      serverTimezone: (map['serverTimezone'] as String).input(),
-      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
-      targetDbType: (map['targetDbType'] as String).input(),
+      afterConnectScript: pulumi.Input.fromValue(
+        map['afterConnectScript'] as String,
+      ),
+      authenticationMethod: pulumi.Input.fromValue(
+        map['authenticationMethod'] as String,
+      ),
+      cleanSourceMetadataOnMismatch: pulumi.Input.fromValue(
+        map['cleanSourceMetadataOnMismatch'] as bool,
+      ),
+      eventsPollInterval: pulumi.Input.fromValue(
+        map['eventsPollInterval'] as int,
+      ),
+      executeTimeout: pulumi.Input.fromValue(map['executeTimeout'] as int),
+      maxFileSize: pulumi.Input.fromValue(map['maxFileSize'] as int),
+      parallelLoadThreads: pulumi.Input.fromValue(
+        map['parallelLoadThreads'] as int,
+      ),
+      serverTimezone: pulumi.Input.fromValue(map['serverTimezone'] as String),
+      serviceAccessRoleArn: pulumi.Input.fromValue(
+        map['serviceAccessRoleArn'] as String,
+      ),
+      targetDbType: pulumi.Input.fromValue(map['targetDbType'] as String),
     );
   }
 }
-

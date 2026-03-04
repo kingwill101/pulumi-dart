@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxFunctionAppArgs {
   /// The name which should be used for this Linux Function App.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Linux Function App should exist.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetLinuxFunctionAppArgs {
 
   factory GetLinuxFunctionAppArgs.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

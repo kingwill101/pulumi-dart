@@ -6,14 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineManagerVirtualNetworkState {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Network. Changing this forces a new resource to be created.
   final pulumi.Input<String>? customLocationId;
+
   /// The Azure Region where the System Center Virtual Machine Manager Virtual Network should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the System Center Virtual Machine Manager Virtual Network. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the System Center Virtual Machine Virtual Network should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The ID of the System Center Virtual Machine Manager Server Inventory Item. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? systemCenterVirtualMachineManagerServerInventoryItemId;
+  final pulumi.Input<String>?
+  systemCenterVirtualMachineManagerServerInventoryItemId;
+
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Virtual Network.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,20 +45,49 @@ class VirtualMachineManagerVirtualNetworkState {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'systemCenterVirtualMachineManagerServerInventoryItemId': ?systemCenterVirtualMachineManagerServerInventoryItemId,
+      'systemCenterVirtualMachineManagerServerInventoryItemId':
+          ?systemCenterVirtualMachineManagerServerInventoryItemId,
       'tags': ?tags,
     };
   }
 
-  factory VirtualMachineManagerVirtualNetworkState.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineManagerVirtualNetworkState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineManagerVirtualNetworkState(
-      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      systemCenterVirtualMachineManagerServerInventoryItemId: map['systemCenterVirtualMachineManagerServerInventoryItemId'] == null ? null : (map['systemCenterVirtualMachineManagerServerInventoryItemId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      customLocationId: (() {
+        final guardedValue = map['customLocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      systemCenterVirtualMachineManagerServerInventoryItemId: (() {
+        final guardedValue =
+            map['systemCenterVirtualMachineManagerServerInventoryItemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

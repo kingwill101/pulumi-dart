@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectPropertiesResponse {
   /// The description of the Cognitive Services Project.
   final pulumi.Input<String>? description;
+
   /// The display name of the Cognitive Services Project.
   final pulumi.Input<String>? displayName;
+
   /// The list of endpoint for this Cognitive Services Project.
   final pulumi.Input<Map<String, String>> endpoints;
+
   /// Indicates whether the project is the default project for the account.
   final pulumi.Input<bool> isDefault;
+
   /// Gets the status of the cognitive services project at the time the operation was called.
   final pulumi.Input<String> provisioningState;
 
@@ -41,12 +45,23 @@ class ProjectPropertiesResponse {
 
   factory ProjectPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProjectPropertiesResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      endpoints: ((map['endpoints'] as Map).cast<String, String>()).input(),
-      isDefault: (map['isDefault'] as bool).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoints: pulumi.Input.fromValue(
+        (map['endpoints'] as Map).cast<String, String>(),
+      ),
+      isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

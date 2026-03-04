@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1VertexDatasetSpecResponse {
   /// The number of DataItems in this Dataset. Only apply for non-structured Dataset.
   final pulumi.Input<String> dataItemCount;
+
   /// Type of the dataset.
   final pulumi.Input<String> dataType;
 
@@ -24,11 +25,12 @@ class GoogleCloudDatacatalogV1VertexDatasetSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1VertexDatasetSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1VertexDatasetSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1VertexDatasetSpecResponse(
-      dataItemCount: (map['dataItemCount'] as String).input(),
-      dataType: (map['dataType'] as String).input(),
+      dataItemCount: pulumi.Input.fromValue(map['dataItemCount'] as String),
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
     );
   }
 }
-

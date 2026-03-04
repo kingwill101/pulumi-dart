@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'master_sites_controller_args.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// A MasterSite
@@ -183,30 +182,43 @@ class MasterSitesController extends pulumi.CustomResource {
   /// Gets or sets a value indicating whether multiple sites per site type are
   /// allowed.
   late final pulumi.Output<bool?> allowMultipleSites;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets a value for customer storage account ARM id.
   late final pulumi.Output<String?> customerStorageAccountArmId;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets the nested sites under Master Site.
   late final pulumi.Output<List<String>> nestedSites;
+
   /// Gets the private endpoint connections.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// provisioning state enum
   late final pulumi.Output<String> provisioningState;
+
   /// Gets or sets the state of public network access.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Gets or sets the sites that are a part of Master Site.
   /// The key
   /// should contain the Site ARM name.
   late final pulumi.Output<List<String>?> sites;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -219,23 +231,27 @@ class MasterSitesController extends pulumi.CustomResource {
     MasterSitesControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:offazure:MasterSitesController',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowMultipleSites = registerOutput<bool?>('allowMultipleSites');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customerStorageAccountArmId = registerOutput<String?>('customerStorageAccountArmId');
-    this.location = registerOutput<String>('location');
+         'azure-native:offazure:MasterSitesController',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowMultipleSites = registerOutput<bool?>('allowMultipleSites');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customerStorageAccountArmId = registerOutput<String?>(
+      'customerStorageAccountArmId',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nestedSites = registerOutput<List<String>>('nestedSites');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.sites = registerOutput<List<String>?>('sites');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    nestedSites = registerOutput<List<String>>('nestedSites');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    sites = registerOutput<List<String>?>('sites');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,17 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaliciousFileWhitelistConfigArgs {
   /// The name of the security alert associated with the representative rule.
   final pulumi.Input<String>? eventName;
+
   /// Represents the alarm associated with the resource and the white field.
   final pulumi.Input<String>? field;
+
   /// Represents the whiteout target value in effect for the resource.
   final pulumi.Input<String>? fieldValue;
+
   /// The decision operator in effect on behalf of the resource.
   final pulumi.Input<String>? operator;
+
   /// Business Source:
   /// - agentless: agentless detection.
   final pulumi.Input<String>? source;
+
   /// The type of target in effect on behalf of the resource.
   final pulumi.Input<String>? targetType;
+
   /// Represents the specific value of the target type in effect for the resource.
   final pulumi.Input<String>? targetValue;
 
@@ -55,14 +61,41 @@ class MaliciousFileWhitelistConfigArgs {
 
   factory MaliciousFileWhitelistConfigArgs.fromMap(Map<String, dynamic> map) {
     return MaliciousFileWhitelistConfigArgs(
-      eventName: map['eventName'] == null ? null : (map['eventName']! as String).input(),
-      field: map['field'] == null ? null : (map['field']! as String).input(),
-      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
-      targetValue: map['targetValue'] == null ? null : (map['targetValue']! as String).input(),
+      eventName: (() {
+        final guardedValue = map['eventName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fieldValue: (() {
+        final guardedValue = map['fieldValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetType: (() {
+        final guardedValue = map['targetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetValue: (() {
+        final guardedValue = map['targetValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

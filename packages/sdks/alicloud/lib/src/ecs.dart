@@ -1,5 +1,3 @@
-library module_ecs;
-
 export 'ecs/activation.dart';
 export 'ecs/activation_args.dart';
 export 'ecs/activation_state.dart';

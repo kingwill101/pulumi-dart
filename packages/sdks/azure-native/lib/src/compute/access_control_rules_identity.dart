@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessControlRulesIdentity {
   /// The path to the executable.
   final pulumi.Input<String>? exePath;
+
   /// The groupName corresponding to this identity.
   final pulumi.Input<String>? groupName;
+
   /// The name of the identity.
   final pulumi.Input<String> name;
+
   /// The process name of the executable.
   final pulumi.Input<String>? processName;
+
   /// The username corresponding to this identity.
   final pulumi.Input<String>? userName;
 
@@ -41,12 +45,27 @@ class AccessControlRulesIdentity {
 
   factory AccessControlRulesIdentity.fromMap(Map<String, dynamic> map) {
     return AccessControlRulesIdentity(
-      exePath: map['exePath'] == null ? null : (map['exePath']! as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      name: (map['name'] as String).input(),
-      processName: map['processName'] == null ? null : (map['processName']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      exePath: (() {
+        final guardedValue = map['exePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      processName: (() {
+        final guardedValue = map['processName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,29 +7,29 @@ class WindowsFirewallLogsDataSourceResponse {
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
+
   /// Firewall logs streams
   final pulumi.Input<List<String>> streams;
 
   /// Creates a new [WindowsFirewallLogsDataSourceResponse].
   /// [name] A friendly name for the data source.
   /// [streams] Firewall logs streams
-  WindowsFirewallLogsDataSourceResponse({
-    this.name,
-    required this.streams,
-  });
+  WindowsFirewallLogsDataSourceResponse({this.name, required this.streams});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'streams': streams,
-    };
+    return <String, dynamic>{'name': ?name, 'streams': streams};
   }
 
-  factory WindowsFirewallLogsDataSourceResponse.fromMap(Map<String, dynamic> map) {
+  factory WindowsFirewallLogsDataSourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsFirewallLogsDataSourceResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
-

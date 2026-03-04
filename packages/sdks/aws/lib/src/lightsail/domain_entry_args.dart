@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainEntryArgs {
   /// Name of the Lightsail domain in which to create the entry.
   final pulumi.Input<String> domainName;
+
   /// Whether the entry should be an alias. Default: `false`.
   final pulumi.Input<bool>? isAlias;
+
   /// Name of the entry record.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Target of the domain entry.
   final pulumi.Input<String> target;
+
   /// Type of record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `SOA`, `SRV`, `TXT`.
   ///
   /// The following arguments are optional:
@@ -51,13 +56,24 @@ class DomainEntryArgs {
 
   factory DomainEntryArgs.fromMap(Map<String, dynamic> map) {
     return DomainEntryArgs(
-      domainName: (map['domainName'] as String).input(),
-      isAlias: map['isAlias'] == null ? null : ((map['isAlias'] as bool).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      target: (map['target'] as String).input(),
-      type: (map['type'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      isAlias: (() {
+        final guardedValue = map['isAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

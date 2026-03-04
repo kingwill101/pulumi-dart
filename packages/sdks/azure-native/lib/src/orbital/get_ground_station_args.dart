@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroundStationArgs {
   /// Ground Station name.
   final pulumi.Input<String> groundStationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetGroundStationArgs {
 
   factory GetGroundStationArgs.fromMap(Map<String, dynamic> map) {
     return GetGroundStationArgs(
-      groundStationName: (map['groundStationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      groundStationName: pulumi.Input.fromValue(
+        map['groundStationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

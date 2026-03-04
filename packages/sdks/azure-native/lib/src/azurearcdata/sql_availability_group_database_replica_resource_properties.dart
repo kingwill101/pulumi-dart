@@ -9,20 +9,21 @@ class SqlAvailabilityGroupDatabaseReplicaResourceProperties {
 
   /// Creates a new [SqlAvailabilityGroupDatabaseReplicaResourceProperties].
   /// [databaseName] the database name.
-  SqlAvailabilityGroupDatabaseReplicaResourceProperties({
-    this.databaseName,
-  });
+  SqlAvailabilityGroupDatabaseReplicaResourceProperties({this.databaseName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'databaseName': ?databaseName,
-    };
+    return <String, dynamic>{'databaseName': ?databaseName};
   }
 
-  factory SqlAvailabilityGroupDatabaseReplicaResourceProperties.fromMap(Map<String, dynamic> map) {
+  factory SqlAvailabilityGroupDatabaseReplicaResourceProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlAvailabilityGroupDatabaseReplicaResourceProperties(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

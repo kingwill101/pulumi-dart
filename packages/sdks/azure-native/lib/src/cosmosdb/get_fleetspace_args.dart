@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetspaceArgs {
   /// Cosmos DB fleet name. Needs to be unique under a subscription.
   final pulumi.Input<String> fleetName;
+
   /// Cosmos DB fleetspace name. Needs to be unique under a fleet.
   final pulumi.Input<String> fleetspaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetFleetspaceArgs {
 
   factory GetFleetspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetspaceArgs(
-      fleetName: (map['fleetName'] as String).input(),
-      fleetspaceName: (map['fleetspaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
+      fleetspaceName: pulumi.Input.fromValue(map['fleetspaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

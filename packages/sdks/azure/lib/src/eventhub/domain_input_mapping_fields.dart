@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainInputMappingFields {
   /// Specifies the data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataVersion;
+
   /// Specifies the event time of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? eventTime;
+
   /// Specifies the event type of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? eventType;
+
   /// Specifies the id of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? id;
+
   /// Specifies the subject of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subject;
+
   /// Specifies the topic of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? topic;
 
@@ -45,13 +50,36 @@ class DomainInputMappingFields {
 
   factory DomainInputMappingFields.fromMap(Map<String, dynamic> map) {
     return DomainInputMappingFields(
-      dataVersion: map['dataVersion'] == null ? null : (map['dataVersion']! as String).input(),
-      eventTime: map['eventTime'] == null ? null : (map['eventTime']! as String).input(),
-      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      dataVersion: (() {
+        final guardedValue = map['dataVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventTime: (() {
+        final guardedValue = map['eventTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventType: (() {
+        final guardedValue = map['eventType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subject: (() {
+        final guardedValue = map['subject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

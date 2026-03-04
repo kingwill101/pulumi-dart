@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggeredBuildResultResponse {
   /// The unique build id of this build result
   final pulumi.Input<String>? id;
+
   /// The container image of this build result
   final pulumi.Input<String>? image;
+
   /// The last transition reason of this build result
   final pulumi.Input<String>? lastTransitionReason;
+
   /// The last transition status of this build result
   final pulumi.Input<String>? lastTransitionStatus;
+
   /// The last transition time of this build result
   final pulumi.Input<String>? lastTransitionTime;
+
   /// The provisioning state of this build result
   final pulumi.Input<String> provisioningState;
 
@@ -46,13 +51,34 @@ class TriggeredBuildResultResponse {
 
   factory TriggeredBuildResultResponse.fromMap(Map<String, dynamic> map) {
     return TriggeredBuildResultResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      lastTransitionReason: map['lastTransitionReason'] == null ? null : (map['lastTransitionReason']! as String).input(),
-      lastTransitionStatus: map['lastTransitionStatus'] == null ? null : (map['lastTransitionStatus']! as String).input(),
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastTransitionReason: (() {
+        final guardedValue = map['lastTransitionReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastTransitionStatus: (() {
+        final guardedValue = map['lastTransitionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastTransitionTime: (() {
+        final guardedValue = map['lastTransitionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

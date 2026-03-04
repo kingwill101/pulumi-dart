@@ -7,6 +7,7 @@ import 'multi_cluster_ingress_feature_spec_billing.dart';
 class MultiClusterIngressFeatureSpecGkehubV1alpha {
   /// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
   final pulumi.Input<MultiClusterIngressFeatureSpecBilling>? billing;
+
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
   final pulumi.Input<String>? configMembership;
 
@@ -20,16 +21,33 @@ class MultiClusterIngressFeatureSpecGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'billing': ?pulumi.Input.mapOptionalInputValue<MultiClusterIngressFeatureSpecBilling, String>(billing, (value) => value.value),
+      'billing':
+          ?pulumi.Input.mapOptionalInputValue<
+            MultiClusterIngressFeatureSpecBilling,
+            String
+          >(billing, (value) => value.wireValue),
       'configMembership': ?configMembership,
     };
   }
 
-  factory MultiClusterIngressFeatureSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory MultiClusterIngressFeatureSpecGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MultiClusterIngressFeatureSpecGkehubV1alpha(
-      billing: map['billing'] == null ? null : (MultiClusterIngressFeatureSpecBilling.fromValue(map['billing']! as String)).input(),
-      configMembership: map['configMembership'] == null ? null : (map['configMembership']! as String).input(),
+      billing: (() {
+        final guardedValue = map['billing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MultiClusterIngressFeatureSpecBilling.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      configMembership: (() {
+        final guardedValue = map['configMembership'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocalDiskArgs {
   /// Device node of the local disk to retrieve. For example, `/dev/sdb`.
   final pulumi.Input<String>? diskNode;
+
   /// Device path of the local disk to retrieve. For example, `/dev/xvdb` or `/dev/nvme1n1`.
   final pulumi.Input<String>? diskPath;
+
   /// ARN of the gateway.
   final pulumi.Input<String> gatewayArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,22 @@ class GetLocalDiskArgs {
 
   factory GetLocalDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalDiskArgs(
-      diskNode: map['diskNode'] == null ? null : ((map['diskNode'] as String).input()).input(),
-      diskPath: map['diskPath'] == null ? null : ((map['diskPath'] as String).input()).input(),
-      gatewayArn: (map['gatewayArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      diskNode: (() {
+        final guardedValue = map['diskNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskPath: (() {
+        final guardedValue = map['diskPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayArn: pulumi.Input.fromValue(map['gatewayArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

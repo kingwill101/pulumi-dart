@@ -9,7 +9,7 @@ import 'logtail_config_state.dart';
 ///
 /// For information about Log Service (SLS) Logtail Config and how to use it, see [What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig).
 ///
-/// > **NOTE:** Available since v1.259.0.
+/// &gt; **NOTE:** Available since v1.259.0.
 ///
 /// ## Example Usage
 ///
@@ -502,20 +502,28 @@ import 'logtail_config_state.dart';
 class LogtailConfig extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The detailed configuration entered by logtail.
   late final pulumi.Output<String?> inputDetail;
+
   /// Method of log entry
   late final pulumi.Output<String?> inputType;
+
   /// Last modification time, unix timestamp
   late final pulumi.Output<int> lastModifyTime;
+
   /// Sample log
   late final pulumi.Output<String?> logSample;
+
   /// The name of the resource
   late final pulumi.Output<String> logtailConfigName;
+
   /// Detailed configuration of logtail output See `output_detail` below.
   late final pulumi.Output<LogtailConfigOutputDetail?> outputDetail;
+
   /// Log output mode. You can only upload data to log service.
   late final pulumi.Output<String?> outputType;
+
   /// Project name
   late final pulumi.Output<String> projectName;
 
@@ -528,20 +536,20 @@ class LogtailConfig extends pulumi.CustomResource {
     LogtailConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/logtailConfig:LogtailConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.inputDetail = registerOutput<String?>('inputDetail');
-    this.inputType = registerOutput<String?>('inputType');
-    this.lastModifyTime = registerOutput<int>('lastModifyTime');
-    this.logSample = registerOutput<String?>('logSample');
-    this.logtailConfigName = registerOutput<String>('logtailConfigName');
-    this.outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail');
-    this.outputType = registerOutput<String?>('outputType');
-    this.projectName = registerOutput<String>('projectName');
+         'alicloud:sls/logtailConfig:LogtailConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    inputDetail = registerOutput<String?>('inputDetail');
+    inputType = registerOutput<String?>('inputType');
+    lastModifyTime = registerOutput<int>('lastModifyTime');
+    logSample = registerOutput<String?>('logSample');
+    logtailConfigName = registerOutput<String>('logtailConfigName');
+    outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail');
+    outputType = registerOutput<String?>('outputType');
+    projectName = registerOutput<String>('projectName');
   }
 
   /// Gets an existing [LogtailConfig] resource's state with the given [name] and [id].
@@ -562,19 +570,19 @@ class LogtailConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/logtailConfig:LogtailConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.inputDetail = registerOutput<String?>('inputDetail');
-    this.inputType = registerOutput<String?>('inputType');
-    this.lastModifyTime = registerOutput<int>('lastModifyTime');
-    this.logSample = registerOutput<String?>('logSample');
-    this.logtailConfigName = registerOutput<String>('logtailConfigName');
-    this.outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail');
-    this.outputType = registerOutput<String?>('outputType');
-    this.projectName = registerOutput<String>('projectName');
+         'alicloud:sls/logtailConfig:LogtailConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    inputDetail = registerOutput<String?>('inputDetail');
+    inputType = registerOutput<String?>('inputType');
+    lastModifyTime = registerOutput<int>('lastModifyTime');
+    logSample = registerOutput<String?>('logSample');
+    logtailConfigName = registerOutput<String>('logtailConfigName');
+    outputDetail = registerOutput<LogtailConfigOutputDetail?>('outputDetail');
+    outputType = registerOutput<String?>('outputType');
+    projectName = registerOutput<String>('projectName');
   }
 }

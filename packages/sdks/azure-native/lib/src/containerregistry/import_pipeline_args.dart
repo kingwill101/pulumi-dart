@@ -12,18 +12,25 @@ import 'pipeline_trigger_properties.dart';
 class ImportPipelineArgs {
   /// The identity of the import pipeline.
   final pulumi.Input<IdentityProperties>? identity;
+
   /// The name of the import pipeline.
   final pulumi.Input<String>? importPipelineName;
+
   /// The location of the import pipeline.
   final pulumi.Input<String>? location;
+
   /// The list of all options configured for the pipeline.
   final pulumi.Input<List<String>>? options;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The source properties of the import pipeline.
   final pulumi.Input<ImportPipelineSourceProperties> source;
+
   /// The properties that describe the trigger of the import pipeline.
   final pulumi.Input<PipelineTriggerProperties>? trigger;
 
@@ -49,28 +56,73 @@ class ImportPipelineArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityProperties, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityProperties,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'importPipelineName': ?importPipelineName,
       'location': ?location,
       'options': ?options,
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
-      'source': pulumi.Input.mapInputValue<ImportPipelineSourceProperties, Map<String, dynamic>>(source, (value) => value.toMap()),
-      'trigger': ?pulumi.Input.mapOptionalInputValue<PipelineTriggerProperties, Map<String, dynamic>>(trigger, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            ImportPipelineSourceProperties,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
+      'trigger':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipelineTriggerProperties,
+            Map<String, dynamic>
+          >(trigger, (value) => value.toMap()),
     };
   }
 
   factory ImportPipelineArgs.fromMap(Map<String, dynamic> map) {
     return ImportPipelineArgs(
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      importPipelineName: map['importPipelineName'] == null ? null : (map['importPipelineName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      options: map['options'] == null ? null : ((map['options']! as List).cast<String>()).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: (ImportPipelineSourceProperties.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      trigger: map['trigger'] == null ? null : (PipelineTriggerProperties.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      importPipelineName: (() {
+        final guardedValue = map['importPipelineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      options: (() {
+        final guardedValue = map['options'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      source: pulumi.Input.fromValue(
+        ImportPipelineSourceProperties.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      trigger: (() {
+        final guardedValue = map['trigger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipelineTriggerProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

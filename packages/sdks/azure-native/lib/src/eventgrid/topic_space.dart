@@ -158,20 +158,26 @@ import 'topic_space_args.dart';
 class TopicSpace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description for the Topic Space resource.
   late final pulumi.Output<String?> description;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the TopicSpace resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The topic filters in the topic space.
   /// Example: "topicTemplates": [
   /// "devices/foo/bar",
   /// "devices/topic1/+",
   /// "devices/${principal.name}/${principal.attributes.keyName}" ].
   late final pulumi.Output<List<String>?> topicTemplates;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -184,17 +190,17 @@ class TopicSpace extends pulumi.CustomResource {
     TopicSpaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:TopicSpace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
+         'azure-native:eventgrid:TopicSpace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.topicTemplates = registerOutput<List<String>?>('topicTemplates');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    topicTemplates = registerOutput<List<String>?>('topicTemplates');
+    type = registerOutput<String>('type');
   }
 }

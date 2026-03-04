@@ -1,5 +1,3 @@
-library module_vpc;
-
 export 'vpc/bgp_group.dart';
 export 'vpc/bgp_group_args.dart';
 export 'vpc/bgp_group_state.dart';

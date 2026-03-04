@@ -120,7 +120,7 @@ import 'get_workspace_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthcareApis` - 2024-03-31
@@ -265,7 +265,7 @@ Future<GetFhirServiceResult> getFhirService(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthcareApis` - 2022-12-01
@@ -400,7 +400,7 @@ Future<GetMedtechServiceResult> getMedtechService(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthcareApis` - 2022-12-01
@@ -529,7 +529,7 @@ Future<GetServiceResult> getService(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.HealthcareApis` - 2024-03-31

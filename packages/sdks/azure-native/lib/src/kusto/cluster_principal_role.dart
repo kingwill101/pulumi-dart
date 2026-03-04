@@ -4,16 +4,15 @@ enum ClusterPrincipalRole {
   valueAllDatabasesViewer("AllDatabasesViewer"),
   valueAllDatabasesMonitor("AllDatabasesMonitor");
 
-  const ClusterPrincipalRole(this.value);
-  final String value;
+  const ClusterPrincipalRole(this.wireValue);
+  final String wireValue;
 
   static ClusterPrincipalRole fromValue(String value) {
     for (final item in ClusterPrincipalRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterPrincipalRole value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_management;
-
 export 'management/functions.dart';
 export 'management/get_group_args.dart';
 export 'management/get_group_result.dart';

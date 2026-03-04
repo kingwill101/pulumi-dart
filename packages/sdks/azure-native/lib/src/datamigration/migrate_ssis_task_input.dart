@@ -8,8 +8,10 @@ import 'ssis_migration_info.dart';
 class MigrateSsisTaskInput {
   /// Information for connecting to source
   final pulumi.Input<SqlConnectionInfo> sourceConnectionInfo;
+
   /// SSIS package migration information.
   final pulumi.Input<SsisMigrationInfo> ssisMigrationInfo;
+
   /// Information for connecting to target
   final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
 
@@ -25,18 +27,41 @@ class MigrateSsisTaskInput {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
-      'ssisMigrationInfo': pulumi.Input.mapInputValue<SsisMigrationInfo, Map<String, dynamic>>(ssisMigrationInfo, (value) => value.toMap()),
-      'targetConnectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo':
+          pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(
+            sourceConnectionInfo,
+            (value) => value.toMap(),
+          ),
+      'ssisMigrationInfo':
+          pulumi.Input.mapInputValue<SsisMigrationInfo, Map<String, dynamic>>(
+            ssisMigrationInfo,
+            (value) => value.toMap(),
+          ),
+      'targetConnectionInfo':
+          pulumi.Input.mapInputValue<SqlConnectionInfo, Map<String, dynamic>>(
+            targetConnectionInfo,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory MigrateSsisTaskInput.fromMap(Map<String, dynamic> map) {
     return MigrateSsisTaskInput(
-      sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      ssisMigrationInfo: (SsisMigrationInfo.fromMap((map['ssisMigrationInfo'] as Map).cast<String, dynamic>())).input(),
-      targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      sourceConnectionInfo: pulumi.Input.fromValue(
+        SqlConnectionInfo.fromMap(
+          (map['sourceConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      ssisMigrationInfo: pulumi.Input.fromValue(
+        SsisMigrationInfo.fromMap(
+          (map['ssisMigrationInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetConnectionInfo: pulumi.Input.fromValue(
+        SqlConnectionInfo.fromMap(
+          (map['targetConnectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

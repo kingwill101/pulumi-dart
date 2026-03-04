@@ -29,12 +29,17 @@ class GetKnowledgeBaseDialogflowV2beta1Args {
     };
   }
 
-  factory GetKnowledgeBaseDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetKnowledgeBaseDialogflowV2beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKnowledgeBaseDialogflowV2beta1Args(
-      knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      knowledgeBaseId: pulumi.Input.fromValue(map['knowledgeBaseId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

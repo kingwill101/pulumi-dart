@@ -4,16 +4,15 @@ enum FlowBillingTier {
   valueStandard("Standard"),
   valuePremium("Premium");
 
-  const FlowBillingTier(this.value);
-  final String value;
+  const FlowBillingTier(this.wireValue);
+  final String wireValue;
 
   static FlowBillingTier fromValue(String value) {
     for (final item in FlowBillingTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FlowBillingTier value: $value');
   }
 }
-

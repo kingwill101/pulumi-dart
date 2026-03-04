@@ -217,8 +217,10 @@ import 'account_static_website_state.dart';
 class AccountStaticWebsiteStorage extends pulumi.CustomResource {
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
   late final pulumi.Output<String?> error404Document;
+
   /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html.
   late final pulumi.Output<String?> indexDocument;
+
   /// The ID of the Storage Account to set Static Website on. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -231,14 +233,14 @@ class AccountStaticWebsiteStorage extends pulumi.CustomResource {
     AccountStaticWebsiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/accountStaticWebsite:AccountStaticWebsite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.error404Document = registerOutput<String?>('error404Document');
-    this.indexDocument = registerOutput<String?>('indexDocument');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/accountStaticWebsite:AccountStaticWebsite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    error404Document = registerOutput<String?>('error404Document');
+    indexDocument = registerOutput<String?>('indexDocument');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [AccountStaticWebsiteStorage] resource's state with the given [name] and [id].
@@ -259,13 +261,13 @@ class AccountStaticWebsiteStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/accountStaticWebsite:AccountStaticWebsite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.error404Document = registerOutput<String?>('error404Document');
-    this.indexDocument = registerOutput<String?>('indexDocument');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/accountStaticWebsite:AccountStaticWebsite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    error404Document = registerOutput<String?>('error404Document');
+    indexDocument = registerOutput<String?>('indexDocument');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

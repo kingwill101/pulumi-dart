@@ -5,16 +5,15 @@ enum ProductType {
   variant("VARIANT"),
   collection("COLLECTION");
 
-  const ProductType(this.value);
-  final String value;
+  const ProductType(this.wireValue);
+  final String wireValue;
 
   static ProductType fromValue(String value) {
     for (final item in ProductType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProductType value: $value');
   }
 }
-

@@ -12,47 +12,69 @@ class RegionInstanceTemplateScheduling {
   /// automatically restarted if it is terminated by Compute Engine (not
   /// terminated by a user). This defaults to true.
   final pulumi.Input<bool>? automaticRestart;
+
   /// Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
   final pulumi.Input<int>? availabilityDomain;
+
   /// Settings for the instance to perform a graceful shutdown.
-  final pulumi.Input<RegionInstanceTemplateSchedulingGracefulShutdown>? gracefulShutdown;
+  final pulumi.Input<RegionInstanceTemplateSchedulingGracefulShutdown>?
+  gracefulShutdown;
+
   /// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
   final pulumi.Input<int>? hostErrorTimeoutSeconds;
+
   /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
   final pulumi.Input<String>? instanceTerminationAction;
+
   /// Specifies the maximum amount of time a Local Ssd Vm should wait while
   /// recovery of the Local Ssd state is attempted. Its value should be in
   /// between 0 and 168 hours with hour granularity and the default value being 1
   /// hour.
-  final pulumi.Input<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>>? localSsdRecoveryTimeouts;
+  final pulumi.Input<
+    List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>
+  >?
+  localSsdRecoveryTimeouts;
+
   /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
   final pulumi.Input<String>? maintenanceInterval;
+
   /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-  final pulumi.Input<RegionInstanceTemplateSchedulingMaxRunDuration>? maxRunDuration;
+  final pulumi.Input<RegionInstanceTemplateSchedulingMaxRunDuration>?
+  maxRunDuration;
+
   /// Minimum number of cpus for the instance.
   final pulumi.Input<int>? minNodeCpus;
+
   /// Specifies node affinities or anti-affinities
   /// to determine which sole-tenant nodes your instances and managed instance
   /// groups will use as host systems. Read more on sole-tenant node creation
   /// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
   /// Structure documented below.
-  final pulumi.Input<List<RegionInstanceTemplateSchedulingNodeAffinity>>? nodeAffinities;
+  final pulumi.Input<List<RegionInstanceTemplateSchedulingNodeAffinity>>?
+  nodeAffinities;
+
   /// Defines the maintenance behavior for this
   /// instance.
   final pulumi.Input<String>? onHostMaintenance;
+
   /// Defines the behaviour for instances with the instance_termination_action.
-  final pulumi.Input<RegionInstanceTemplateSchedulingOnInstanceStopAction>? onInstanceStopAction;
+  final pulumi.Input<RegionInstanceTemplateSchedulingOnInstanceStopAction>?
+  onInstanceStopAction;
+
   /// Allows instance to be preempted. This defaults to
   /// false. Read more on this
   /// [here](https://cloud.google.com/compute/docs/instances/preemptible).
   final pulumi.Input<bool>? preemptible;
+
   /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
   /// `preemptible` should be `true` and `automatic_restart` should be
   /// `false`. For more info about
   /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
   final pulumi.Input<String>? provisioningModel;
+
   /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   final pulumi.Input<bool>? skipGuestOsShutdown;
+
   /// Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
   final pulumi.Input<String>? terminationTime;
 
@@ -96,16 +118,50 @@ class RegionInstanceTemplateScheduling {
     return <String, dynamic>{
       'automaticRestart': ?automaticRestart,
       'availabilityDomain': ?availabilityDomain,
-      'gracefulShutdown': ?pulumi.Input.mapOptionalInputValue<RegionInstanceTemplateSchedulingGracefulShutdown, Map<String, dynamic>>(gracefulShutdown, (value) => value.toMap()),
+      'gracefulShutdown':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionInstanceTemplateSchedulingGracefulShutdown,
+            Map<String, dynamic>
+          >(gracefulShutdown, (value) => value.toMap()),
       'hostErrorTimeoutSeconds': ?hostErrorTimeoutSeconds,
       'instanceTerminationAction': ?instanceTerminationAction,
-      'localSsdRecoveryTimeouts': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>, List<Map<String, dynamic>>>(localSsdRecoveryTimeouts, (value) => pulumi.Input.encodeList<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'localSsdRecoveryTimeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>,
+            List<Map<String, dynamic>>
+          >(
+            localSsdRecoveryTimeouts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'maintenanceInterval': ?maintenanceInterval,
-      'maxRunDuration': ?pulumi.Input.mapOptionalInputValue<RegionInstanceTemplateSchedulingMaxRunDuration, Map<String, dynamic>>(maxRunDuration, (value) => value.toMap()),
+      'maxRunDuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionInstanceTemplateSchedulingMaxRunDuration,
+            Map<String, dynamic>
+          >(maxRunDuration, (value) => value.toMap()),
       'minNodeCpus': ?minNodeCpus,
-      'nodeAffinities': ?pulumi.Input.mapOptionalInputValue<List<RegionInstanceTemplateSchedulingNodeAffinity>, List<Map<String, dynamic>>>(nodeAffinities, (value) => pulumi.Input.encodeList<RegionInstanceTemplateSchedulingNodeAffinity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeAffinities':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegionInstanceTemplateSchedulingNodeAffinity>,
+            List<Map<String, dynamic>>
+          >(
+            nodeAffinities,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegionInstanceTemplateSchedulingNodeAffinity,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'onHostMaintenance': ?onHostMaintenance,
-      'onInstanceStopAction': ?pulumi.Input.mapOptionalInputValue<RegionInstanceTemplateSchedulingOnInstanceStopAction, Map<String, dynamic>>(onInstanceStopAction, (value) => value.toMap()),
+      'onInstanceStopAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionInstanceTemplateSchedulingOnInstanceStopAction,
+            Map<String, dynamic>
+          >(onInstanceStopAction, (value) => value.toMap()),
       'preemptible': ?preemptible,
       'provisioningModel': ?provisioningModel,
       'skipGuestOsShutdown': ?skipGuestOsShutdown,
@@ -115,23 +171,115 @@ class RegionInstanceTemplateScheduling {
 
   factory RegionInstanceTemplateScheduling.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateScheduling(
-      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart']! as bool).input(),
-      availabilityDomain: map['availabilityDomain'] == null ? null : (map['availabilityDomain']! as int).input(),
-      gracefulShutdown: map['gracefulShutdown'] == null ? null : (RegionInstanceTemplateSchedulingGracefulShutdown.fromMap((map['gracefulShutdown']! as Map).cast<String, dynamic>())).input(),
-      hostErrorTimeoutSeconds: map['hostErrorTimeoutSeconds'] == null ? null : (map['hostErrorTimeoutSeconds']! as int).input(),
-      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (map['instanceTerminationAction']! as String).input(),
-      localSsdRecoveryTimeouts: map['localSsdRecoveryTimeouts'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>(map['localSsdRecoveryTimeouts']!, (value) => RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (map['maintenanceInterval']! as String).input(),
-      maxRunDuration: map['maxRunDuration'] == null ? null : (RegionInstanceTemplateSchedulingMaxRunDuration.fromMap((map['maxRunDuration']! as Map).cast<String, dynamic>())).input(),
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateSchedulingNodeAffinity>(map['nodeAffinities']!, (value) => RegionInstanceTemplateSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : (map['onHostMaintenance']! as String).input(),
-      onInstanceStopAction: map['onInstanceStopAction'] == null ? null : (RegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap((map['onInstanceStopAction']! as Map).cast<String, dynamic>())).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
-      provisioningModel: map['provisioningModel'] == null ? null : (map['provisioningModel']! as String).input(),
-      skipGuestOsShutdown: map['skipGuestOsShutdown'] == null ? null : (map['skipGuestOsShutdown']! as bool).input(),
-      terminationTime: map['terminationTime'] == null ? null : (map['terminationTime']! as String).input(),
+      automaticRestart: (() {
+        final guardedValue = map['automaticRestart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      availabilityDomain: (() {
+        final guardedValue = map['availabilityDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gracefulShutdown: (() {
+        final guardedValue = map['gracefulShutdown'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionInstanceTemplateSchedulingGracefulShutdown.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hostErrorTimeoutSeconds: (() {
+        final guardedValue = map['hostErrorTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceTerminationAction: (() {
+        final guardedValue = map['instanceTerminationAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localSsdRecoveryTimeouts: (() {
+        final guardedValue = map['localSsdRecoveryTimeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout
+          >(
+            guardedValue,
+            (value) =>
+                RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      maintenanceInterval: (() {
+        final guardedValue = map['maintenanceInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxRunDuration: (() {
+        final guardedValue = map['maxRunDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionInstanceTemplateSchedulingMaxRunDuration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      minNodeCpus: (() {
+        final guardedValue = map['minNodeCpus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeAffinities: (() {
+        final guardedValue = map['nodeAffinities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegionInstanceTemplateSchedulingNodeAffinity>(
+            guardedValue,
+            (value) => RegionInstanceTemplateSchedulingNodeAffinity.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      onHostMaintenance: (() {
+        final guardedValue = map['onHostMaintenance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onInstanceStopAction: (() {
+        final guardedValue = map['onInstanceStopAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      preemptible: (() {
+        final guardedValue = map['preemptible'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      provisioningModel: (() {
+        final guardedValue = map['provisioningModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipGuestOsShutdown: (() {
+        final guardedValue = map['skipGuestOsShutdown'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      terminationTime: (() {
+        final guardedValue = map['terminationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

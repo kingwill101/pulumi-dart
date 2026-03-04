@@ -1,5 +1,3 @@
-library module_ssm;
-
 export 'ssm/activation.dart';
 export 'ssm/activation_args.dart';
 export 'ssm/activation_state.dart';

@@ -11,6 +11,7 @@ class ServiceTemplateSpecContainerResources {
   /// The values of the map is string form of the 'quantity' k8s type:
   /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
   final pulumi.Input<Map<String, String>>? limits;
+
   /// Requests describes the minimum amount of compute resources required.
   /// If Requests is omitted for a container, it defaults to Limits if that is
   /// explicitly specified, otherwise to an implementation-defined value.
@@ -21,23 +22,30 @@ class ServiceTemplateSpecContainerResources {
   /// Creates a new [ServiceTemplateSpecContainerResources].
   /// [limits] Limits describes the maximum amount of compute resources allowed.
   /// [requests] Requests describes the minimum amount of compute resources required.
-  ServiceTemplateSpecContainerResources({
-    this.limits,
-    this.requests,
-  });
+  ServiceTemplateSpecContainerResources({this.limits, this.requests});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'limits': ?limits,
-      'requests': ?requests,
-    };
+    return <String, dynamic>{'limits': ?limits, 'requests': ?requests};
   }
 
-  factory ServiceTemplateSpecContainerResources.fromMap(Map<String, dynamic> map) {
+  factory ServiceTemplateSpecContainerResources.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTemplateSpecContainerResources(
-      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
-      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
+      limits: (() {
+        final guardedValue = map['limits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      requests: (() {
+        final guardedValue = map['requests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

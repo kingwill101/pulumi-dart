@@ -6,16 +6,17 @@ enum RolePredefinedRoleGkehubV1alpha {
   view("VIEW"),
   anthosSupport("ANTHOS_SUPPORT");
 
-  const RolePredefinedRoleGkehubV1alpha(this.value);
-  final String value;
+  const RolePredefinedRoleGkehubV1alpha(this.wireValue);
+  final String wireValue;
 
   static RolePredefinedRoleGkehubV1alpha fromValue(String value) {
     for (final item in RolePredefinedRoleGkehubV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RolePredefinedRoleGkehubV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown RolePredefinedRoleGkehubV1alpha value: $value',
+    );
   }
 }
-

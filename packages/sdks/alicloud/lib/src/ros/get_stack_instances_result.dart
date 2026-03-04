@@ -6,6 +6,7 @@ import 'get_stack_instances_instance.dart';
 /// Result data returned by getStackInstances.
 class GetStackInstancesResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -43,7 +44,11 @@ class GetStackInstancesResult {
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
-      'instances': pulumi.Input.encodeList<GetStackInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetStackInstancesInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'stackGroupName': stackGroupName,
       'stackInstanceAccountId': ?stackInstanceAccountId,
@@ -54,16 +59,40 @@ class GetStackInstancesResult {
 
   factory GetStackInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetStackInstancesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetStackInstancesInstance>(map['instances'], (value) => GetStackInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      instances: pulumi.Input.decodeList<GetStackInstancesInstance>(
+        map['instances']!,
+        (value) => GetStackInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       stackGroupName: map['stackGroupName'] as String,
-      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : map['stackInstanceAccountId']! as String,
-      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : map['stackInstanceRegionId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      stackInstanceAccountId: (() {
+        final guardedValue = map['stackInstanceAccountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      stackInstanceRegionId: (() {
+        final guardedValue = map['stackInstanceRegionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

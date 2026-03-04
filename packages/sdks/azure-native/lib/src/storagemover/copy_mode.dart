@@ -3,16 +3,15 @@ enum CopyMode {
   additive("Additive"),
   mirror("Mirror");
 
-  const CopyMode(this.value);
-  final String value;
+  const CopyMode(this.wireValue);
+  final String wireValue;
 
   static CopyMode fromValue(String value) {
     for (final item in CopyMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CopyMode value: $value');
   }
 }
-

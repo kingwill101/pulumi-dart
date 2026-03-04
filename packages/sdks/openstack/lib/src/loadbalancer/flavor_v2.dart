@@ -4,7 +4,7 @@ import 'flavor_v2_state.dart';
 
 /// Manages a V2 load balancer flavor resource within OpenStack.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
 /// ## Example Usage
 ///
@@ -183,15 +183,19 @@ class FlavorV2 extends pulumi.CustomResource {
   /// The description of the flavor. Changing this
   /// updates the existing flavor.
   late final pulumi.Output<String?> description;
+
   /// Whether the flavor is enabled or not. Defaults to `true`.
   /// Changing this updates the existing flavor.
   late final pulumi.Output<bool> enabled;
+
   /// The flavor_profile_id that the flavor
   /// will use. Changing this creates a new flavor.
   late final pulumi.Output<String> flavorProfileId;
+
   /// Name of the flavor. Changing this updates the existing
   /// flavor.
   late final pulumi.Output<String> name;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an LB member. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -207,16 +211,16 @@ class FlavorV2 extends pulumi.CustomResource {
     FlavorV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/flavorV2:FlavorV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.flavorProfileId = registerOutput<String>('flavorProfileId');
+         'openstack:loadbalancer/flavorV2:FlavorV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    flavorProfileId = registerOutput<String>('flavorProfileId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [FlavorV2] resource's state with the given [name] and [id].
@@ -237,15 +241,15 @@ class FlavorV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/flavorV2:FlavorV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.flavorProfileId = registerOutput<String>('flavorProfileId');
+         'openstack:loadbalancer/flavorV2:FlavorV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    flavorProfileId = registerOutput<String>('flavorProfileId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

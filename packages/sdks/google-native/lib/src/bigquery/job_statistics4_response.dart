@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatistics4Response {
   /// Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
   final pulumi.Input<List<String>> destinationUriFileCounts;
+
   /// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
   final pulumi.Input<String> inputBytes;
 
@@ -25,9 +26,10 @@ class JobStatistics4Response {
 
   factory JobStatistics4Response.fromMap(Map<String, dynamic> map) {
     return JobStatistics4Response(
-      destinationUriFileCounts: ((map['destinationUriFileCounts'] as List).cast<String>()).input(),
-      inputBytes: (map['inputBytes'] as String).input(),
+      destinationUriFileCounts: pulumi.Input.fromValue(
+        (map['destinationUriFileCounts'] as List).cast<String>(),
+      ),
+      inputBytes: pulumi.Input.fromValue(map['inputBytes'] as String),
     );
   }
 }
-

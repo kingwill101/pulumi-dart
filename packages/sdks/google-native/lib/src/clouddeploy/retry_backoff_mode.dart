@@ -4,16 +4,15 @@ enum RetryBackoffMode {
   backoffModeLinear("BACKOFF_MODE_LINEAR"),
   backoffModeExponential("BACKOFF_MODE_EXPONENTIAL");
 
-  const RetryBackoffMode(this.value);
-  final String value;
+  const RetryBackoffMode(this.wireValue);
+  final String wireValue;
 
   static RetryBackoffMode fromValue(String value) {
     for (final item in RetryBackoffMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RetryBackoffMode value: $value');
   }
 }
-

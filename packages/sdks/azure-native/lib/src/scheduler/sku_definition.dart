@@ -5,16 +5,15 @@ enum SkuDefinition {
   valueP10Premium("P10Premium"),
   valueP20Premium("P20Premium");
 
-  const SkuDefinition(this.value);
-  final String value;
+  const SkuDefinition(this.wireValue);
+  final String wireValue;
 
   static SkuDefinition fromValue(String value) {
     for (final item in SkuDefinition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuDefinition value: $value');
   }
 }
-

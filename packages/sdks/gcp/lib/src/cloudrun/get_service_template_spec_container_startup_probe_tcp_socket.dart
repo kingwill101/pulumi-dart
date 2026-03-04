@@ -9,20 +9,17 @@ class GetServiceTemplateSpecContainerStartupProbeTcpSocket {
 
   /// Creates a new [GetServiceTemplateSpecContainerStartupProbeTcpSocket].
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
-  GetServiceTemplateSpecContainerStartupProbeTcpSocket({
-    required this.port,
-  });
+  GetServiceTemplateSpecContainerStartupProbeTcpSocket({required this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': port,
-    };
+    return <String, dynamic>{'port': port};
   }
 
-  factory GetServiceTemplateSpecContainerStartupProbeTcpSocket.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerStartupProbeTcpSocket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateSpecContainerStartupProbeTcpSocket(
-      port: (map['port'] as int).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

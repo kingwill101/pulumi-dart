@@ -8,7 +8,7 @@ import 'origin_client_certificate_state.dart';
 ///
 /// For information about ESA Origin Client Certificate and how to use it, see [What is Origin Client Certificate](https://next.api.alibabacloud.com/document/ESA/2024-09-10/UploadOriginClientCertificate).
 ///
-/// > **NOTE:** Available since v1.255.0.
+/// &gt; **NOTE:** Available since v1.255.0.
 ///
 /// ## Example Usage
 ///
@@ -417,18 +417,25 @@ import 'origin_client_certificate_state.dart';
 class OriginClientCertificate extends pulumi.CustomResource {
   /// The certificate content.
   late final pulumi.Output<String> certificate;
+
   /// The time when the certificate was created.
   late final pulumi.Output<String> createTime;
+
   /// The domain names to associate.
   late final pulumi.Output<List<String>?> hostnames;
+
   /// The certificate ID.
   late final pulumi.Output<String> originClientCertificateId;
+
   /// The certificate name.
   late final pulumi.Output<String?> originClientCertificateName;
+
   /// The private key of the certificate.
   late final pulumi.Output<String> privateKey;
+
   /// Site ID.
   late final pulumi.Output<String> siteId;
+
   /// The status of the certificate.
   late final pulumi.Output<String> status;
 
@@ -441,19 +448,23 @@ class OriginClientCertificate extends pulumi.CustomResource {
     OriginClientCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originClientCertificate:OriginClientCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
-    this.hostnames = registerOutput<List<String>?>('hostnames');
-    this.originClientCertificateId = registerOutput<String>('originClientCertificateId');
-    this.originClientCertificateName = registerOutput<String?>('originClientCertificateName');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/originClientCertificate:OriginClientCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
+    hostnames = registerOutput<List<String>?>('hostnames');
+    originClientCertificateId = registerOutput<String>(
+      'originClientCertificateId',
+    );
+    originClientCertificateName = registerOutput<String?>(
+      'originClientCertificateName',
+    );
+    privateKey = registerOutput<String>('privateKey');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [OriginClientCertificate] resource's state with the given [name] and [id].
@@ -474,18 +485,22 @@ class OriginClientCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/originClientCertificate:OriginClientCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
-    this.hostnames = registerOutput<List<String>?>('hostnames');
-    this.originClientCertificateId = registerOutput<String>('originClientCertificateId');
-    this.originClientCertificateName = registerOutput<String?>('originClientCertificateName');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/originClientCertificate:OriginClientCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
+    hostnames = registerOutput<List<String>?>('hostnames');
+    originClientCertificateId = registerOutput<String>(
+      'originClientCertificateId',
+    );
+    originClientCertificateName = registerOutput<String?>(
+      'originClientCertificateName',
+    );
+    privateKey = registerOutput<String>('privateKey');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
   }
 }

@@ -1,5 +1,3 @@
-library module_managednetwork;
-
 export 'managednetwork/connectivity_collection_response.dart';
 export 'managednetwork/functions.dart';
 export 'managednetwork/get_managed_network_args.dart';

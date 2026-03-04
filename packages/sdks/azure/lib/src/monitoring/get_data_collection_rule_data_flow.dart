@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataFlow {
   /// The built-in transform to transform stream data.
   final pulumi.Input<String> builtInTransform;
+
   /// Specifies a list of destination names. A `azure_monitor_metrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
   final pulumi.Input<List<String>> destinations;
+
   /// The output stream of the transform. Only required if the data flow changes data to a different stream.
   final pulumi.Input<String> outputStream;
+
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>> streams;
+
   /// The KQL query to transform stream data.
   final pulumi.Input<String> transformKql;
 
@@ -40,12 +44,15 @@ class GetDataCollectionRuleDataFlow {
 
   factory GetDataCollectionRuleDataFlow.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleDataFlow(
-      builtInTransform: (map['builtInTransform'] as String).input(),
-      destinations: ((map['destinations'] as List).cast<String>()).input(),
-      outputStream: (map['outputStream'] as String).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
-      transformKql: (map['transformKql'] as String).input(),
+      builtInTransform: pulumi.Input.fromValue(
+        map['builtInTransform'] as String,
+      ),
+      destinations: pulumi.Input.fromValue(
+        (map['destinations'] as List).cast<String>(),
+      ),
+      outputStream: pulumi.Input.fromValue(map['outputStream'] as String),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
+      transformKql: pulumi.Input.fromValue(map['transformKql'] as String),
     );
   }
 }
-

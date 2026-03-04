@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualHubConnectionRoutingPropagatedRouteTable {
   /// The list of labels assigned to this route table.
   final pulumi.Input<List<String>> labels;
+
   /// A list of Route Table IDs associated with this Virtual Hub Connection.
   final pulumi.Input<List<String>> routeTableIds;
 
@@ -17,17 +18,17 @@ class GetVirtualHubConnectionRoutingPropagatedRouteTable {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': labels,
-      'routeTableIds': routeTableIds,
-    };
+    return <String, dynamic>{'labels': labels, 'routeTableIds': routeTableIds};
   }
 
-  factory GetVirtualHubConnectionRoutingPropagatedRouteTable.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualHubConnectionRoutingPropagatedRouteTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualHubConnectionRoutingPropagatedRouteTable(
-      labels: ((map['labels'] as List).cast<String>()).input(),
-      routeTableIds: ((map['routeTableIds'] as List).cast<String>()).input(),
+      labels: pulumi.Input.fromValue((map['labels'] as List).cast<String>()),
+      routeTableIds: pulumi.Input.fromValue(
+        (map['routeTableIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

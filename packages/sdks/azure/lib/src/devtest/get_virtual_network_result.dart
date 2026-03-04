@@ -8,13 +8,16 @@ import 'get_virtual_network_subnet_override.dart';
 class GetVirtualNetworkResult {
   /// The list of subnets enabled for the virtual network as defined below.
   final List<GetVirtualNetworkAllowedSubnet> allowedSubnets;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String labName;
   final String name;
   final String resourceGroupName;
+
   /// The list of permission overrides for the subnets as defined below.
   final List<GetVirtualNetworkSubnetOverride> subnetOverrides;
+
   /// The unique immutable identifier of the virtual network.
   final String uniqueIdentifier;
 
@@ -38,26 +41,43 @@ class GetVirtualNetworkResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedSubnets': pulumi.Input.encodeList<GetVirtualNetworkAllowedSubnet, Map<String, dynamic>>(allowedSubnets, (value) => value.toMap()),
+      'allowedSubnets':
+          pulumi.Input.encodeList<
+            GetVirtualNetworkAllowedSubnet,
+            Map<String, dynamic>
+          >(allowedSubnets, (value) => value.toMap()),
       'id': id,
       'labName': labName,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'subnetOverrides': pulumi.Input.encodeList<GetVirtualNetworkSubnetOverride, Map<String, dynamic>>(subnetOverrides, (value) => value.toMap()),
+      'subnetOverrides':
+          pulumi.Input.encodeList<
+            GetVirtualNetworkSubnetOverride,
+            Map<String, dynamic>
+          >(subnetOverrides, (value) => value.toMap()),
       'uniqueIdentifier': uniqueIdentifier,
     };
   }
 
   factory GetVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkResult(
-      allowedSubnets: pulumi.Input.decodeList<GetVirtualNetworkAllowedSubnet>(map['allowedSubnets'], (value) => GetVirtualNetworkAllowedSubnet.fromMap((value as Map).cast<String, dynamic>())),
+      allowedSubnets: pulumi.Input.decodeList<GetVirtualNetworkAllowedSubnet>(
+        map['allowedSubnets']!,
+        (value) => GetVirtualNetworkAllowedSubnet.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       labName: map['labName'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      subnetOverrides: pulumi.Input.decodeList<GetVirtualNetworkSubnetOverride>(map['subnetOverrides'], (value) => GetVirtualNetworkSubnetOverride.fromMap((value as Map).cast<String, dynamic>())),
+      subnetOverrides: pulumi.Input.decodeList<GetVirtualNetworkSubnetOverride>(
+        map['subnetOverrides']!,
+        (value) => GetVirtualNetworkSubnetOverride.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
-

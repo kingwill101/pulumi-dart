@@ -10,20 +10,31 @@ class GooglePrivacyDlpV2CategoricalStatsConfig {
 
   /// Creates a new [GooglePrivacyDlpV2CategoricalStatsConfig].
   /// [field] Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
-  GooglePrivacyDlpV2CategoricalStatsConfig({
-    this.field,
-  });
+  GooglePrivacyDlpV2CategoricalStatsConfig({this.field});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'field': ?pulumi.Input.mapOptionalInputValue<GooglePrivacyDlpV2FieldId, Map<String, dynamic>>(field, (value) => value.toMap()),
+      'field':
+          ?pulumi.Input.mapOptionalInputValue<
+            GooglePrivacyDlpV2FieldId,
+            Map<String, dynamic>
+          >(field, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2CategoricalStatsConfig.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CategoricalStatsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2CategoricalStatsConfig(
-      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GooglePrivacyDlpV2FieldId.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

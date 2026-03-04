@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserInfoPatchAuthenticationK8sIoV1beta1 {
   /// Any additional information provided by the authenticator.
   final pulumi.Input<Map<String, List<String>>>? extra;
+
   /// The names of groups this user is a part of.
   final pulumi.Input<List<String>>? groups;
+
   /// A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.
   final pulumi.Input<String>? uid;
+
   /// The name that uniquely identifies this user among all active users.
   final pulumi.Input<String>? username;
 
@@ -34,13 +37,32 @@ class UserInfoPatchAuthenticationK8sIoV1beta1 {
     };
   }
 
-  factory UserInfoPatchAuthenticationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory UserInfoPatchAuthenticationK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserInfoPatchAuthenticationK8sIoV1beta1(
-      extra: map['extra'] == null ? null : ((map['extra']! as Map).cast<String, List<String>>()).input(),
-      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      extra: (() {
+        final guardedValue = map['extra'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, List<String>>(),
+        );
+      })(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

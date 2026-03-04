@@ -4,16 +4,15 @@ enum DiskArchitecture {
   arm64("ARM64"),
   x8664("X86_64");
 
-  const DiskArchitecture(this.value);
-  final String value;
+  const DiskArchitecture(this.wireValue);
+  final String wireValue;
 
   static DiskArchitecture fromValue(String value) {
     for (final item in DiskArchitecture.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskArchitecture value: $value');
   }
 }
-

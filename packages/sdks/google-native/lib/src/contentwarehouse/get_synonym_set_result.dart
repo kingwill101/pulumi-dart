@@ -7,8 +7,10 @@ import 'google_cloud_contentwarehouse_v1_synonym_set_synonym_response.dart';
 class GetSynonymSetResult {
   /// This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
   final String context;
+
   /// The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
   final String name;
+
   /// List of Synonyms for the context.
   final List<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse> synonyms;
 
@@ -26,7 +28,11 @@ class GetSynonymSetResult {
     return <String, dynamic>{
       'context': context,
       'name': name,
-      'synonyms': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse, Map<String, dynamic>>(synonyms, (value) => value.toMap()),
+      'synonyms':
+          pulumi.Input.encodeList<
+            GoogleCloudContentwarehouseV1SynonymSetSynonymResponse,
+            Map<String, dynamic>
+          >(synonyms, (value) => value.toMap()),
     };
   }
 
@@ -34,8 +40,16 @@ class GetSynonymSetResult {
     return GetSynonymSetResult(
       context: map['context'] as String,
       name: map['name'] as String,
-      synonyms: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1SynonymSetSynonymResponse>(map['synonyms'], (value) => GoogleCloudContentwarehouseV1SynonymSetSynonymResponse.fromMap((value as Map).cast<String, dynamic>())),
+      synonyms:
+          pulumi.Input.decodeList<
+            GoogleCloudContentwarehouseV1SynonymSetSynonymResponse
+          >(
+            map['synonyms']!,
+            (value) =>
+                GoogleCloudContentwarehouseV1SynonymSetSynonymResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

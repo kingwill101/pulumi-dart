@@ -7,10 +7,19 @@ import 'v2models_slot_value_elicitation_setting_prompt_specification_prompt_atte
 
 class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification {
   final pulumi.Input<bool>? allowInterrupt;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes>? allowedInputTypes;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification>? audioAndDtmfInputSpecification;
+  final pulumi.Input<
+    V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes
+  >?
+  allowedInputTypes;
+  final pulumi.Input<
+    V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification
+  >?
+  audioAndDtmfInputSpecification;
   final pulumi.Input<String> mapBlockKey;
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification>? textInputSpecification;
+  final pulumi.Input<
+    V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification
+  >?
+  textInputSpecification;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification].
   /// [allowInterrupt] Optional.
@@ -29,21 +38,62 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
-      'allowedInputTypes': ?pulumi.Input.mapOptionalInputValue<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes, Map<String, dynamic>>(allowedInputTypes, (value) => value.toMap()),
-      'audioAndDtmfInputSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification, Map<String, dynamic>>(audioAndDtmfInputSpecification, (value) => value.toMap()),
+      'allowedInputTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes,
+            Map<String, dynamic>
+          >(allowedInputTypes, (value) => value.toMap()),
+      'audioAndDtmfInputSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification,
+            Map<String, dynamic>
+          >(audioAndDtmfInputSpecification, (value) => value.toMap()),
       'mapBlockKey': mapBlockKey,
-      'textInputSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification, Map<String, dynamic>>(textInputSpecification, (value) => value.toMap()),
+      'textInputSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification,
+            Map<String, dynamic>
+          >(textInputSpecification, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
-      allowedInputTypes: map['allowedInputTypes'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes']! as Map).cast<String, dynamic>())).input()).input(),
-      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
-      mapBlockKey: (map['mapBlockKey'] as String).input(),
-      textInputSpecification: map['textInputSpecification'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      allowInterrupt: (() {
+        final guardedValue = map['allowInterrupt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowedInputTypes: (() {
+        final guardedValue = map['allowedInputTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      audioAndDtmfInputSpecification: (() {
+        final guardedValue = map['audioAndDtmfInputSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
+      textInputSpecification: (() {
+        final guardedValue = map['textInputSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -236,7 +236,7 @@ import 'cache_access_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cache` - 2024-11-01
@@ -251,8 +251,10 @@ import 'cache_access_policy_state.dart';
 class CacheAccessPolicy extends pulumi.CustomResource {
   /// The name of the Redis Cache Access Policy. Changing this forces a new Redis Cache Access Policy to be created.
   late final pulumi.Output<String> name;
+
   /// Permissions that are going to be assigned to this Redis Cache Access Policy.
   late final pulumi.Output<String> permissions;
+
   /// The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy to be created.
   late final pulumi.Output<String> redisCacheId;
 
@@ -265,14 +267,14 @@ class CacheAccessPolicy extends pulumi.CustomResource {
     CacheAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/cacheAccessPolicy:CacheAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:redis/cacheAccessPolicy:CacheAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<String>('permissions');
-    this.redisCacheId = registerOutput<String>('redisCacheId');
+    permissions = registerOutput<String>('permissions');
+    redisCacheId = registerOutput<String>('redisCacheId');
   }
 
   /// Gets an existing [CacheAccessPolicy] resource's state with the given [name] and [id].
@@ -293,13 +295,13 @@ class CacheAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/cacheAccessPolicy:CacheAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:redis/cacheAccessPolicy:CacheAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<String>('permissions');
-    this.redisCacheId = registerOutput<String>('redisCacheId');
+    permissions = registerOutput<String>('permissions');
+    redisCacheId = registerOutput<String>('redisCacheId');
   }
 }

@@ -13,15 +13,18 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-    };
+    return <String, dynamic>{'code': ?code};
   }
 
-  factory PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries.fromMap(Map<String, dynamic> map) {
+  factory PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

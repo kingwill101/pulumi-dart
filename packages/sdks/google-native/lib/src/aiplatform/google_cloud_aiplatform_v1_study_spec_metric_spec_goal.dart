@@ -4,16 +4,19 @@ enum GoogleCloudAiplatformV1StudySpecMetricSpecGoal {
   maximize("MAXIMIZE"),
   minimize("MINIMIZE");
 
-  const GoogleCloudAiplatformV1StudySpecMetricSpecGoal(this.value);
-  final String value;
+  const GoogleCloudAiplatformV1StudySpecMetricSpecGoal(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudAiplatformV1StudySpecMetricSpecGoal fromValue(String value) {
+  static GoogleCloudAiplatformV1StudySpecMetricSpecGoal fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudAiplatformV1StudySpecMetricSpecGoal.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAiplatformV1StudySpecMetricSpecGoal value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAiplatformV1StudySpecMetricSpecGoal value: $value',
+    );
   }
 }
-

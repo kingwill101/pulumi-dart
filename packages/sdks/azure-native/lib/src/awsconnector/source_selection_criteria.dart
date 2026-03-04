@@ -8,6 +8,7 @@ import 'sse_kms_encrypted_objects.dart';
 class SourceSelectionCriteria {
   /// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
   final pulumi.Input<ReplicaModifications>? replicaModifications;
+
   /// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
   final pulumi.Input<SseKmsEncryptedObjects>? sseKmsEncryptedObjects;
 
@@ -21,16 +22,39 @@ class SourceSelectionCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'replicaModifications': ?pulumi.Input.mapOptionalInputValue<ReplicaModifications, Map<String, dynamic>>(replicaModifications, (value) => value.toMap()),
-      'sseKmsEncryptedObjects': ?pulumi.Input.mapOptionalInputValue<SseKmsEncryptedObjects, Map<String, dynamic>>(sseKmsEncryptedObjects, (value) => value.toMap()),
+      'replicaModifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReplicaModifications,
+            Map<String, dynamic>
+          >(replicaModifications, (value) => value.toMap()),
+      'sseKmsEncryptedObjects':
+          ?pulumi.Input.mapOptionalInputValue<
+            SseKmsEncryptedObjects,
+            Map<String, dynamic>
+          >(sseKmsEncryptedObjects, (value) => value.toMap()),
     };
   }
 
   factory SourceSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return SourceSelectionCriteria(
-      replicaModifications: map['replicaModifications'] == null ? null : (ReplicaModifications.fromMap((map['replicaModifications']! as Map).cast<String, dynamic>())).input(),
-      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (SseKmsEncryptedObjects.fromMap((map['sseKmsEncryptedObjects']! as Map).cast<String, dynamic>())).input(),
+      replicaModifications: (() {
+        final guardedValue = map['replicaModifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReplicaModifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sseKmsEncryptedObjects: (() {
+        final guardedValue = map['sseKmsEncryptedObjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SseKmsEncryptedObjects.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

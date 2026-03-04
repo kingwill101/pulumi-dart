@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getOfferAccessToken.
 class GetOfferAccessTokenResult {
   /// The access token.
   final String accessToken;
+
   /// The disk id.
   final String? diskId;
+
   /// The access token creation status.
   final String? status;
 
@@ -31,9 +32,16 @@ class GetOfferAccessTokenResult {
   factory GetOfferAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetOfferAccessTokenResult(
       accessToken: map['accessToken'] as String,
-      diskId: map['diskId'] == null ? null : map['diskId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

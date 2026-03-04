@@ -4,16 +4,15 @@ enum ElasticProtocolType {
   nFSv4("NFSv4"),
   sMB("SMB");
 
-  const ElasticProtocolType(this.value);
-  final String value;
+  const ElasticProtocolType(this.wireValue);
+  final String wireValue;
 
   static ElasticProtocolType fromValue(String value) {
     for (final item in ElasticProtocolType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticProtocolType value: $value');
   }
 }
-

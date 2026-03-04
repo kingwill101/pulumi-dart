@@ -10,20 +10,25 @@ class BrokerAuthenticatorCustomAuth {
 
   /// Creates a new [BrokerAuthenticatorCustomAuth].
   /// [x509] X509 Custom Auth type details.
-  BrokerAuthenticatorCustomAuth({
-    required this.x509,
-  });
+  BrokerAuthenticatorCustomAuth({required this.x509});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'x509': pulumi.Input.mapInputValue<X509ManualCertificate, Map<String, dynamic>>(x509, (value) => value.toMap()),
+      'x509':
+          pulumi.Input.mapInputValue<
+            X509ManualCertificate,
+            Map<String, dynamic>
+          >(x509, (value) => value.toMap()),
     };
   }
 
   factory BrokerAuthenticatorCustomAuth.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorCustomAuth(
-      x509: (X509ManualCertificate.fromMap((map['x509'] as Map).cast<String, dynamic>())).input(),
+      x509: pulumi.Input.fromValue(
+        X509ManualCertificate.fromMap(
+          (map['x509']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

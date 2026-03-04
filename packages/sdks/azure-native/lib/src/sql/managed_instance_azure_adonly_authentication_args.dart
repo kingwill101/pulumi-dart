@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedInstanceAzureADOnlyAuthenticationArgs {
   /// The name of server azure active directory only authentication.
   final pulumi.Input<String>? authenticationName;
+
   /// Azure Active Directory only Authentication enabled.
   final pulumi.Input<bool> azureADOnlyAuthentication;
+
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,24 @@ class ManagedInstanceAzureADOnlyAuthenticationArgs {
     };
   }
 
-  factory ManagedInstanceAzureADOnlyAuthenticationArgs.fromMap(Map<String, dynamic> map) {
+  factory ManagedInstanceAzureADOnlyAuthenticationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedInstanceAzureADOnlyAuthenticationArgs(
-      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName']! as String).input(),
-      azureADOnlyAuthentication: (map['azureADOnlyAuthentication'] as bool).input(),
-      managedInstanceName: (map['managedInstanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authenticationName: (() {
+        final guardedValue = map['authenticationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureADOnlyAuthentication: pulumi.Input.fromValue(
+        map['azureADOnlyAuthentication'] as bool,
+      ),
+      managedInstanceName: pulumi.Input.fromValue(
+        map['managedInstanceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

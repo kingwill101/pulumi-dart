@@ -276,11 +276,12 @@ class ConfigFileYaml extends pulumi.ComponentResource {
     ConfigFileYamlArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'kubernetes:yaml:ConfigFile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.resources = registerOutput<String?>('resources');
+         'kubernetes:yaml:ConfigFile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    resources = registerOutput<String?>('resources');
   }
 }

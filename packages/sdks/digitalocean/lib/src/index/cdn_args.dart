@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CdnArgs {
   /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
   final pulumi.Input<String>? certificateId;
+
   /// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
   final pulumi.Input<String>? certificateName;
+
   /// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
   final pulumi.Input<String>? customDomain;
+
   /// The fully qualified domain name, (FQDN) for a Space.
   final pulumi.Input<String> origin;
+
   /// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
   final pulumi.Input<int>? ttl;
 
@@ -44,12 +48,27 @@ class CdnArgs {
 
   factory CdnArgs.fromMap(Map<String, dynamic> map) {
     return CdnArgs(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
-      customDomain: map['customDomain'] == null ? null : (map['customDomain']! as String).input(),
-      origin: (map['origin'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      certificateId: (() {
+        final guardedValue = map['certificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateName: (() {
+        final guardedValue = map['certificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customDomain: (() {
+        final guardedValue = map['customDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      origin: pulumi.Input.fromValue(map['origin'] as String),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

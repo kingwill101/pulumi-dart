@@ -7,10 +7,13 @@ import 'collector_agent_spn_properties_base.dart';
 class CollectorAgentPropertiesBase {
   /// Gets the collector agent id.
   final pulumi.Input<String>? id;
+
   /// Gets the collector last heartbeat time.
   final pulumi.Input<String>? lastHeartbeatUtc;
+
   /// Gets or sets the SPN details.
   final pulumi.Input<CollectorAgentSpnPropertiesBase>? spnDetails;
+
   /// Gets the collector agent version.
   final pulumi.Input<String>? version;
 
@@ -30,18 +33,41 @@ class CollectorAgentPropertiesBase {
     return <String, dynamic>{
       'id': ?id,
       'lastHeartbeatUtc': ?lastHeartbeatUtc,
-      'spnDetails': ?pulumi.Input.mapOptionalInputValue<CollectorAgentSpnPropertiesBase, Map<String, dynamic>>(spnDetails, (value) => value.toMap()),
+      'spnDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            CollectorAgentSpnPropertiesBase,
+            Map<String, dynamic>
+          >(spnDetails, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory CollectorAgentPropertiesBase.fromMap(Map<String, dynamic> map) {
     return CollectorAgentPropertiesBase(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      lastHeartbeatUtc: map['lastHeartbeatUtc'] == null ? null : (map['lastHeartbeatUtc']! as String).input(),
-      spnDetails: map['spnDetails'] == null ? null : (CollectorAgentSpnPropertiesBase.fromMap((map['spnDetails']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastHeartbeatUtc: (() {
+        final guardedValue = map['lastHeartbeatUtc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spnDetails: (() {
+        final guardedValue = map['spnDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CollectorAgentSpnPropertiesBase.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

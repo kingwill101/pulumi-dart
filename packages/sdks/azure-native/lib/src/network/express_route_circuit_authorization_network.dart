@@ -134,18 +134,25 @@ import 'express_route_circuit_authorization_args.dart';
 class ExpressRouteCircuitAuthorizationNetwork extends pulumi.CustomResource {
   /// The authorization key.
   late final pulumi.Output<String?> authorizationKey;
+
   /// The authorization use status.
   late final pulumi.Output<String?> authorizationUseStatus;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The reference to the ExpressRoute connection resource using the authorization.
   late final pulumi.Output<String> connectionResourceUri;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the authorization resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -158,18 +165,18 @@ class ExpressRouteCircuitAuthorizationNetwork extends pulumi.CustomResource {
     ExpressRouteCircuitAuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ExpressRouteCircuitAuthorization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizationKey = registerOutput<String?>('authorizationKey');
-    this.authorizationUseStatus = registerOutput<String?>('authorizationUseStatus');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectionResourceUri = registerOutput<String>('connectionResourceUri');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:ExpressRouteCircuitAuthorization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationUseStatus = registerOutput<String?>('authorizationUseStatus');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionResourceUri = registerOutput<String>('connectionResourceUri');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

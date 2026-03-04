@@ -7,6 +7,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
   final pulumi.Input<int> autoDeployExpirationSec;
   final pulumi.Input<double> autoDeployImpactedBaselineThreshold;
   final pulumi.Input<double> autoDeployLoadThreshold;
+
   /// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
   final pulumi.Input<String> name;
 
@@ -28,20 +29,30 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
     return <String, dynamic>{
       'autoDeployConfidenceThreshold': autoDeployConfidenceThreshold,
       'autoDeployExpirationSec': autoDeployExpirationSec,
-      'autoDeployImpactedBaselineThreshold': autoDeployImpactedBaselineThreshold,
+      'autoDeployImpactedBaselineThreshold':
+          autoDeployImpactedBaselineThreshold,
       'autoDeployLoadThreshold': autoDeployLoadThreshold,
       'name': name,
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseComputeBeta(
-      autoDeployConfidenceThreshold: (map['autoDeployConfidenceThreshold'] as double).input(),
-      autoDeployExpirationSec: (map['autoDeployExpirationSec'] as int).input(),
-      autoDeployImpactedBaselineThreshold: (map['autoDeployImpactedBaselineThreshold'] as double).input(),
-      autoDeployLoadThreshold: (map['autoDeployLoadThreshold'] as double).input(),
-      name: (map['name'] as String).input(),
+      autoDeployConfidenceThreshold: pulumi.Input.fromValue(
+        map['autoDeployConfidenceThreshold'] as double,
+      ),
+      autoDeployExpirationSec: pulumi.Input.fromValue(
+        map['autoDeployExpirationSec'] as int,
+      ),
+      autoDeployImpactedBaselineThreshold: pulumi.Input.fromValue(
+        map['autoDeployImpactedBaselineThreshold'] as double,
+      ),
+      autoDeployLoadThreshold: pulumi.Input.fromValue(
+        map['autoDeployLoadThreshold'] as double,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

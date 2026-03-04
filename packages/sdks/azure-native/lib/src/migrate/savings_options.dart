@@ -7,16 +7,15 @@ enum SavingsOptions {
   savingsPlan3Year("SavingsPlan3Year"),
   customAzureOfferCode("CustomAzureOfferCode");
 
-  const SavingsOptions(this.value);
-  final String value;
+  const SavingsOptions(this.wireValue);
+  final String wireValue;
 
   static SavingsOptions fromValue(String value) {
     for (final item in SavingsOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SavingsOptions value: $value');
   }
 }
-

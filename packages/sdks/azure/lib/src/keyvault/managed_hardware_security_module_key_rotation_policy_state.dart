@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedHardwareSecurityModuleKeyRotationPolicyState {
   /// Specify the expiration duration on a newly rotated key as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). The minimum duration is `P28D`.
   final pulumi.Input<String>? expireAfter;
+
   /// The ID of the Managed HSM Key. Changing this forces a new Managed HSM Key rotation policy to be created.
   final pulumi.Input<String>? managedHsmKeyId;
+
   /// Rotate automatically at a duration after key creation as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
   final pulumi.Input<String>? timeAfterCreation;
+
   /// Rotate automatically at a duration before key expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
   final pulumi.Input<String>? timeBeforeExpiry;
 
@@ -34,13 +37,30 @@ class ManagedHardwareSecurityModuleKeyRotationPolicyState {
     };
   }
 
-  factory ManagedHardwareSecurityModuleKeyRotationPolicyState.fromMap(Map<String, dynamic> map) {
+  factory ManagedHardwareSecurityModuleKeyRotationPolicyState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedHardwareSecurityModuleKeyRotationPolicyState(
-      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter']! as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
-      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation']! as String).input(),
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry']! as String).input(),
+      expireAfter: (() {
+        final guardedValue = map['expireAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedHsmKeyId: (() {
+        final guardedValue = map['managedHsmKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeAfterCreation: (() {
+        final guardedValue = map['timeAfterCreation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeBeforeExpiry: (() {
+        final guardedValue = map['timeBeforeExpiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

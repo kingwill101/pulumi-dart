@@ -7,11 +7,14 @@ import 'get_certificates_certificate.dart';
 class GetCertificatesResult {
   /// One or more `certificates` blocks as defined below.
   final List<GetCertificatesCertificate> certificates;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includePending;
+
   /// The Key Vault ID.
   final String keyVaultId;
+
   /// List containing names of certificates that exist in this Key Vault.
   final List<String> names;
 
@@ -31,7 +34,11 @@ class GetCertificatesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificates': pulumi.Input.encodeList<GetCertificatesCertificate, Map<String, dynamic>>(certificates, (value) => value.toMap()),
+      'certificates':
+          pulumi.Input.encodeList<
+            GetCertificatesCertificate,
+            Map<String, dynamic>
+          >(certificates, (value) => value.toMap()),
       'id': id,
       'includePending': ?includePending,
       'keyVaultId': keyVaultId,
@@ -41,12 +48,20 @@ class GetCertificatesResult {
 
   factory GetCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetCertificatesResult(
-      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates'], (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(
+        map['certificates']!,
+        (value) => GetCertificatesCertificate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      includePending: map['includePending'] == null ? null : map['includePending']! as bool,
+      includePending: (() {
+        final guardedValue = map['includePending'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       keyVaultId: map['keyVaultId'] as String,
       names: (map['names'] as List).cast<String>(),
     );
   }
 }
-

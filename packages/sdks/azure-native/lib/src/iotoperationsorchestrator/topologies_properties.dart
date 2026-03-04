@@ -10,20 +10,39 @@ class TopologiesProperties {
 
   /// Creates a new [TopologiesProperties].
   /// [bindings] bindings description.
-  TopologiesProperties({
-    this.bindings,
-  });
+  TopologiesProperties({this.bindings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bindings': ?pulumi.Input.mapOptionalInputValue<List<BindingProperties>, List<Map<String, dynamic>>>(bindings, (value) => pulumi.Input.encodeList<BindingProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bindings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BindingProperties>,
+            List<Map<String, dynamic>>
+          >(
+            bindings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BindingProperties,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TopologiesProperties.fromMap(Map<String, dynamic> map) {
     return TopologiesProperties(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingProperties>(map['bindings']!, (value) => BindingProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: (() {
+        final guardedValue = map['bindings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BindingProperties>(
+            guardedValue,
+            (value) => BindingProperties.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

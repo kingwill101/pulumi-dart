@@ -2,13 +2,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_metric_rule_args.dart';
 import 'group_metric_rule_escalations.dart';
 import 'group_metric_rule_state.dart';
-import 'group_metric_rule_target.dart';
 
 /// Provides a Cloud Monitor Service Group Metric Rule resource.
 ///
 /// For information about Cloud Monitor Service Group Metric Rule and how to use it, see [What is Group Metric Rule](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putgroupmetricrule).
 ///
-/// > **NOTE:** Available since v1.104.0.
+/// &gt; **NOTE:** Available since v1.104.0.
 ///
 /// ## Example Usage
 ///
@@ -353,38 +352,55 @@ import 'group_metric_rule_target.dart';
 class GroupMetricRule extends pulumi.CustomResource {
   /// The abbreviation of the service name.
   late final pulumi.Output<String?> category;
+
   /// Alarm contact group.
   late final pulumi.Output<String> contactGroups;
+
   /// The dimensions that specify the resources to be associated with the alert rule.
   late final pulumi.Output<String> dimensions;
+
   /// The time period during which the alert rule is effective.
   late final pulumi.Output<String?> effectiveInterval;
+
   /// The subject of the alert notification email.
   late final pulumi.Output<String> emailSubject;
+
   /// Alarm level. See `escalations` below.
   late final pulumi.Output<GroupMetricRuleEscalations> escalations;
+
   /// The ID of the application group.
   late final pulumi.Output<String> groupId;
+
   /// The name of the alert rule.
   late final pulumi.Output<String> groupMetricRuleName;
+
   /// The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
   late final pulumi.Output<String?> interval;
+
   /// The name of the metric.
   late final pulumi.Output<String> metricName;
+
   /// The namespace of the service.
   late final pulumi.Output<String> namespace;
+
   /// The time period during which the alert rule is ineffective.
   late final pulumi.Output<String?> noEffectiveInterval;
+
   /// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
   late final pulumi.Output<int> period;
+
   /// The ID of the alert rule.
   late final pulumi.Output<String> ruleId;
+
   /// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
   late final pulumi.Output<int> silenceTime;
+
   /// The status of Group Metric Rule.
   late final pulumi.Output<String> status;
+
   /// The information about the resource for which alerts are triggered. See `targets` below.
-  late final pulumi.Output<List<GroupMetricRuleTarget>> targets;
+  late final pulumi.Output<List<Map<String, dynamic>>> targets;
+
   /// The callback URL.
   late final pulumi.Output<String?> webhook;
 
@@ -397,29 +413,29 @@ class GroupMetricRule extends pulumi.CustomResource {
     GroupMetricRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/groupMetricRule:GroupMetricRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String?>('category');
-    this.contactGroups = registerOutput<String>('contactGroups');
-    this.dimensions = registerOutput<String>('dimensions');
-    this.effectiveInterval = registerOutput<String?>('effectiveInterval');
-    this.emailSubject = registerOutput<String>('emailSubject');
-    this.escalations = registerOutput<GroupMetricRuleEscalations>('escalations');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupMetricRuleName = registerOutput<String>('groupMetricRuleName');
-    this.interval = registerOutput<String?>('interval');
-    this.metricName = registerOutput<String>('metricName');
-    this.namespace = registerOutput<String>('namespace');
-    this.noEffectiveInterval = registerOutput<String?>('noEffectiveInterval');
-    this.period = registerOutput<int>('period');
-    this.ruleId = registerOutput<String>('ruleId');
-    this.silenceTime = registerOutput<int>('silenceTime');
-    this.status = registerOutput<String>('status');
-    this.targets = registerOutput<List<GroupMetricRuleTarget>>('targets');
-    this.webhook = registerOutput<String?>('webhook');
+         'alicloud:cms/groupMetricRule:GroupMetricRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String?>('category');
+    contactGroups = registerOutput<String>('contactGroups');
+    dimensions = registerOutput<String>('dimensions');
+    effectiveInterval = registerOutput<String?>('effectiveInterval');
+    emailSubject = registerOutput<String>('emailSubject');
+    escalations = registerOutput<GroupMetricRuleEscalations>('escalations');
+    groupId = registerOutput<String>('groupId');
+    groupMetricRuleName = registerOutput<String>('groupMetricRuleName');
+    interval = registerOutput<String?>('interval');
+    metricName = registerOutput<String>('metricName');
+    namespace = registerOutput<String>('namespace');
+    noEffectiveInterval = registerOutput<String?>('noEffectiveInterval');
+    period = registerOutput<int>('period');
+    ruleId = registerOutput<String>('ruleId');
+    silenceTime = registerOutput<int>('silenceTime');
+    status = registerOutput<String>('status');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    webhook = registerOutput<String?>('webhook');
   }
 
   /// Gets an existing [GroupMetricRule] resource's state with the given [name] and [id].
@@ -440,28 +456,28 @@ class GroupMetricRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/groupMetricRule:GroupMetricRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<String?>('category');
-    this.contactGroups = registerOutput<String>('contactGroups');
-    this.dimensions = registerOutput<String>('dimensions');
-    this.effectiveInterval = registerOutput<String?>('effectiveInterval');
-    this.emailSubject = registerOutput<String>('emailSubject');
-    this.escalations = registerOutput<GroupMetricRuleEscalations>('escalations');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupMetricRuleName = registerOutput<String>('groupMetricRuleName');
-    this.interval = registerOutput<String?>('interval');
-    this.metricName = registerOutput<String>('metricName');
-    this.namespace = registerOutput<String>('namespace');
-    this.noEffectiveInterval = registerOutput<String?>('noEffectiveInterval');
-    this.period = registerOutput<int>('period');
-    this.ruleId = registerOutput<String>('ruleId');
-    this.silenceTime = registerOutput<int>('silenceTime');
-    this.status = registerOutput<String>('status');
-    this.targets = registerOutput<List<GroupMetricRuleTarget>>('targets');
-    this.webhook = registerOutput<String?>('webhook');
+         'alicloud:cms/groupMetricRule:GroupMetricRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<String?>('category');
+    contactGroups = registerOutput<String>('contactGroups');
+    dimensions = registerOutput<String>('dimensions');
+    effectiveInterval = registerOutput<String?>('effectiveInterval');
+    emailSubject = registerOutput<String>('emailSubject');
+    escalations = registerOutput<GroupMetricRuleEscalations>('escalations');
+    groupId = registerOutput<String>('groupId');
+    groupMetricRuleName = registerOutput<String>('groupMetricRuleName');
+    interval = registerOutput<String?>('interval');
+    metricName = registerOutput<String>('metricName');
+    namespace = registerOutput<String>('namespace');
+    noEffectiveInterval = registerOutput<String?>('noEffectiveInterval');
+    period = registerOutput<int>('period');
+    ruleId = registerOutput<String>('ruleId');
+    silenceTime = registerOutput<int>('silenceTime');
+    status = registerOutput<String>('status');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    webhook = registerOutput<String?>('webhook');
   }
 }

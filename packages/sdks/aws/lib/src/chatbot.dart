@@ -1,5 +1,3 @@
-library module_chatbot;
-
 export 'chatbot/functions.dart';
 export 'chatbot/get_slack_workspace_args.dart';
 export 'chatbot/get_slack_workspace_result.dart';

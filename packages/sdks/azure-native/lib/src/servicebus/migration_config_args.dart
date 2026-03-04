@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationConfigArgs {
   /// The configuration name. Should always be "$default".
   final pulumi.Input<String>? configName;
+
   /// The namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Name to access Standard Namespace after migration
   final pulumi.Input<String> postMigrationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Existing premium Namespace ARM Id name which has no entities, will be used for migration
   final pulumi.Input<String> targetNamespace;
 
@@ -44,12 +48,19 @@ class MigrationConfigArgs {
 
   factory MigrationConfigArgs.fromMap(Map<String, dynamic> map) {
     return MigrationConfigArgs(
-      configName: map['configName'] == null ? null : (map['configName']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      postMigrationName: (map['postMigrationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetNamespace: (map['targetNamespace'] as String).input(),
+      configName: (() {
+        final guardedValue = map['configName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      postMigrationName: pulumi.Input.fromValue(
+        map['postMigrationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      targetNamespace: pulumi.Input.fromValue(map['targetNamespace'] as String),
     );
   }
 }
-

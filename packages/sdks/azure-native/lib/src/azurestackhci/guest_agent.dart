@@ -155,18 +155,25 @@ import 'system_data_response.dart';
 class GuestAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Username / Password Credentials to provision guest agent.
   late final pulumi.Output<GuestCredentialResponse?> credentials;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The guest agent provisioning action.
   late final pulumi.Output<String?> provisioningAction;
+
   /// Provisioning state of the virtual machine instance.
   late final pulumi.Output<String> provisioningState;
+
   /// The guest agent status.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,18 +186,18 @@ class GuestAgent extends pulumi.CustomResource {
     GuestAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:GuestAgent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.credentials = registerOutput<GuestCredentialResponse?>('credentials');
+         'azure-native:azurestackhci:GuestAgent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    credentials = registerOutput<GuestCredentialResponse?>('credentials');
     this.name = registerOutput<String>('name');
-    this.provisioningAction = registerOutput<String?>('provisioningAction');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningAction = registerOutput<String?>('provisioningAction');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

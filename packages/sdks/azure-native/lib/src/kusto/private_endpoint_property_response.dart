@@ -9,20 +9,15 @@ class PrivateEndpointPropertyResponse {
 
   /// Creates a new [PrivateEndpointPropertyResponse].
   /// [id] Resource id of the private endpoint.
-  PrivateEndpointPropertyResponse({
-    required this.id,
-  });
+  PrivateEndpointPropertyResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory PrivateEndpointPropertyResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointPropertyResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

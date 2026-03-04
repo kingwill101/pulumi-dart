@@ -1,5 +1,3 @@
-library module_images;
-
 export 'images/functions.dart';
 export 'images/get_image_args.dart';
 export 'images/get_image_ids_args.dart';

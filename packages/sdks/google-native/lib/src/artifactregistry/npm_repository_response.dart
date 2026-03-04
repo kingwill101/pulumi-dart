@@ -9,20 +9,17 @@ class NpmRepositoryResponse {
 
   /// Creates a new [NpmRepositoryResponse].
   /// [publicRepository] One of the publicly available Npm repositories supported by Artifact Registry.
-  NpmRepositoryResponse({
-    required this.publicRepository,
-  });
+  NpmRepositoryResponse({required this.publicRepository});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'publicRepository': publicRepository,
-    };
+    return <String, dynamic>{'publicRepository': publicRepository};
   }
 
   factory NpmRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return NpmRepositoryResponse(
-      publicRepository: (map['publicRepository'] as String).input(),
+      publicRepository: pulumi.Input.fromValue(
+        map['publicRepository'] as String,
+      ),
     );
   }
 }
-

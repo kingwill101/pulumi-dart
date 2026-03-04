@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nsp_access_rule_args.dart';
-import 'perimeter_based_access_rule_response.dart';
-import 'subscription_id_response.dart';
 
 /// The NSP access rule resource
 ///
@@ -171,30 +169,44 @@ import 'subscription_id_response.dart';
 class NspAccessRule extends pulumi.CustomResource {
   /// Inbound address prefixes (IPv4/IPv6)
   late final pulumi.Output<List<String>?> addressPrefixes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Direction that specifies whether the access rules is inbound/outbound.
   late final pulumi.Output<String?> direction;
+
   /// Outbound rules email address format.
   late final pulumi.Output<List<String>?> emailAddresses;
+
   /// Outbound rules fully qualified domain name format.
   late final pulumi.Output<List<String>?> fullyQualifiedDomainNames;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Rule specified by the perimeter id.
-  late final pulumi.Output<List<PerimeterBasedAccessRuleResponse>> networkSecurityPerimeters;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  networkSecurityPerimeters;
+
   /// Outbound rules phone number format.
   late final pulumi.Output<List<String>?> phoneNumbers;
+
   /// The provisioning state of the scope assignment resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Inbound rules service tag names.
   late final pulumi.Output<List<String>?> serviceTags;
+
   /// List of subscription ids
-  late final pulumi.Output<List<SubscriptionIdResponse>?> subscriptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subscriptions;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -207,24 +219,30 @@ class NspAccessRule extends pulumi.CustomResource {
     NspAccessRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:NspAccessRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.direction = registerOutput<String?>('direction');
-    this.emailAddresses = registerOutput<List<String>?>('emailAddresses');
-    this.fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:NspAccessRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    direction = registerOutput<String?>('direction');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    fullyQualifiedDomainNames = registerOutput<List<String>?>(
+      'fullyQualifiedDomainNames',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.networkSecurityPerimeters = registerOutput<List<PerimeterBasedAccessRuleResponse>>('networkSecurityPerimeters');
-    this.phoneNumbers = registerOutput<List<String>?>('phoneNumbers');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serviceTags = registerOutput<List<String>?>('serviceTags');
-    this.subscriptions = registerOutput<List<SubscriptionIdResponse>?>('subscriptions');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkSecurityPerimeters = registerOutput<List<Map<String, dynamic>>>(
+      'networkSecurityPerimeters',
+    );
+    phoneNumbers = registerOutput<List<String>?>('phoneNumbers');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceTags = registerOutput<List<String>?>('serviceTags');
+    subscriptions = registerOutput<List<Map<String, dynamic>>?>(
+      'subscriptions',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

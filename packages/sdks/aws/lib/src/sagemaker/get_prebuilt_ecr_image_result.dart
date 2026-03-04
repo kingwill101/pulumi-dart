@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPrebuiltEcrImage.
 class GetPrebuiltEcrImageResult {
   final String? dnsSuffix;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? imageTag;
   final String region;
+
   /// Account ID containing the image. For example, `469771592824`.
   final String registryId;
+
   /// Docker image URL. For example, `341280168497.dkr.ecr.ca-central-1.amazonaws.com/sagemaker-sparkml-serving:2.4`.
   final String registryPath;
   final String repositoryName;
@@ -46,9 +48,17 @@ class GetPrebuiltEcrImageResult {
 
   factory GetPrebuiltEcrImageResult.fromMap(Map<String, dynamic> map) {
     return GetPrebuiltEcrImageResult(
-      dnsSuffix: map['dnsSuffix'] == null ? null : map['dnsSuffix'] as String,
+      dnsSuffix: (() {
+        final guardedValue = map['dnsSuffix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      imageTag: map['imageTag'] == null ? null : map['imageTag'] as String,
+      imageTag: (() {
+        final guardedValue = map['imageTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
       registryId: map['registryId'] as String,
       registryPath: map['registryPath'] as String,
@@ -56,4 +66,3 @@ class GetPrebuiltEcrImageResult {
     );
   }
 }
-

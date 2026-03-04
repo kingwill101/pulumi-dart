@@ -5,29 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigurationFeatureTimewindowFilter {
   /// The latest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
   final pulumi.Input<String>? end;
+
   /// The earliest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
   final pulumi.Input<String>? start;
 
   /// Creates a new [ConfigurationFeatureTimewindowFilter].
   /// [end] The latest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
   /// [start] The earliest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
-  ConfigurationFeatureTimewindowFilter({
-    this.end,
-    this.start,
-  });
+  ConfigurationFeatureTimewindowFilter({this.end, this.start});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': ?end,
-      'start': ?start,
-    };
+    return <String, dynamic>{'end': ?end, 'start': ?start};
   }
 
-  factory ConfigurationFeatureTimewindowFilter.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationFeatureTimewindowFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationFeatureTimewindowFilter(
-      end: map['end'] == null ? null : (map['end']! as String).input(),
-      start: map['start'] == null ? null : (map['start']! as String).input(),
+      end: (() {
+        final guardedValue = map['end'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      start: (() {
+        final guardedValue = map['start'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'get_instances_result.dart';
 
 /// This data source provides the Lindorm Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///

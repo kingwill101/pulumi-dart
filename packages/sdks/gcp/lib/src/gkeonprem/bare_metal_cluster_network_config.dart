@@ -11,12 +11,19 @@ class BareMetalClusterNetworkConfig {
   /// Setting configuration for advanced networking features will automatically
   /// set this flag.
   final pulumi.Input<bool>? advancedNetworking;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterNetworkConfigIslandModeCidr>? islandModeCidr;
+  final pulumi.Input<BareMetalClusterNetworkConfigIslandModeCidr>?
+  islandModeCidr;
+
   /// Configuration for multiple network interfaces.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig>? multipleNetworkInterfacesConfig;
+  final pulumi.Input<
+    BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig
+  >?
+  multipleNetworkInterfacesConfig;
+
   /// Configuration for SR-IOV.
   /// Structure is documented below.
   final pulumi.Input<BareMetalClusterNetworkConfigSrIovConfig>? srIovConfig;
@@ -36,19 +43,58 @@ class BareMetalClusterNetworkConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advancedNetworking': ?advancedNetworking,
-      'islandModeCidr': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterNetworkConfigIslandModeCidr, Map<String, dynamic>>(islandModeCidr, (value) => value.toMap()),
-      'multipleNetworkInterfacesConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig, Map<String, dynamic>>(multipleNetworkInterfacesConfig, (value) => value.toMap()),
-      'srIovConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterNetworkConfigSrIovConfig, Map<String, dynamic>>(srIovConfig, (value) => value.toMap()),
+      'islandModeCidr':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalClusterNetworkConfigIslandModeCidr,
+            Map<String, dynamic>
+          >(islandModeCidr, (value) => value.toMap()),
+      'multipleNetworkInterfacesConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig,
+            Map<String, dynamic>
+          >(multipleNetworkInterfacesConfig, (value) => value.toMap()),
+      'srIovConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalClusterNetworkConfigSrIovConfig,
+            Map<String, dynamic>
+          >(srIovConfig, (value) => value.toMap()),
     };
   }
 
   factory BareMetalClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterNetworkConfig(
-      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking']! as bool).input(),
-      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalClusterNetworkConfigIslandModeCidr.fromMap((map['islandModeCidr']! as Map).cast<String, dynamic>())).input(),
-      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : (BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig']! as Map).cast<String, dynamic>())).input(),
-      srIovConfig: map['srIovConfig'] == null ? null : (BareMetalClusterNetworkConfigSrIovConfig.fromMap((map['srIovConfig']! as Map).cast<String, dynamic>())).input(),
+      advancedNetworking: (() {
+        final guardedValue = map['advancedNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      islandModeCidr: (() {
+        final guardedValue = map['islandModeCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalClusterNetworkConfigIslandModeCidr.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      multipleNetworkInterfacesConfig: (() {
+        final guardedValue = map['multipleNetworkInterfacesConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      srIovConfig: (() {
+        final guardedValue = map['srIovConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalClusterNetworkConfigSrIovConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

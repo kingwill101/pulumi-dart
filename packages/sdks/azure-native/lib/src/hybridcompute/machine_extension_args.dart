@@ -10,14 +10,19 @@ import 'machine_extension_properties.dart';
 class MachineExtensionArgs {
   /// The name of the machine extension.
   final pulumi.Input<String>? extensionName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the machine where the extension should be created or updated.
   final pulumi.Input<String> machineName;
+
   /// Describes Machine Extension Properties.
   final pulumi.Input<MachineExtensionProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,7 +47,11 @@ class MachineExtensionArgs {
       'extensionName': ?extensionName,
       'location': ?location,
       'machineName': machineName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<MachineExtensionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            MachineExtensionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -50,13 +59,36 @@ class MachineExtensionArgs {
 
   factory MachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return MachineExtensionArgs(
-      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      machineName: (map['machineName'] as String).input(),
-      properties: map['properties'] == null ? null : (MachineExtensionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      extensionName: (() {
+        final guardedValue = map['extensionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineName: pulumi.Input.fromValue(map['machineName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MachineExtensionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

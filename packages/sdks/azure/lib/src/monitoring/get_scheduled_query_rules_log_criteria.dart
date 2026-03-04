@@ -5,7 +5,9 @@ import 'get_scheduled_query_rules_log_criteria_dimension.dart';
 
 class GetScheduledQueryRulesLogCriteria {
   /// A `dimension` block as defined below.
-  final pulumi.Input<List<GetScheduledQueryRulesLogCriteriaDimension>> dimensions;
+  final pulumi.Input<List<GetScheduledQueryRulesLogCriteriaDimension>>
+  dimensions;
+
   /// Name of the metric.
   final pulumi.Input<String> metricName;
 
@@ -19,16 +21,33 @@ class GetScheduledQueryRulesLogCriteria {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dimensions': pulumi.Input.mapInputValue<List<GetScheduledQueryRulesLogCriteriaDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetScheduledQueryRulesLogCriteriaDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions':
+          pulumi.Input.mapInputValue<
+            List<GetScheduledQueryRulesLogCriteriaDimension>,
+            List<Map<String, dynamic>>
+          >(
+            dimensions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetScheduledQueryRulesLogCriteriaDimension,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'metricName': metricName,
     };
   }
 
   factory GetScheduledQueryRulesLogCriteria.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesLogCriteria(
-      dimensions: (pulumi.Input.decodeList<GetScheduledQueryRulesLogCriteriaDimension>(map['dimensions'], (value) => GetScheduledQueryRulesLogCriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricName: (map['metricName'] as String).input(),
+      dimensions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetScheduledQueryRulesLogCriteriaDimension>(
+          map['dimensions']!,
+          (value) => GetScheduledQueryRulesLogCriteriaDimension.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
     );
   }
 }
-

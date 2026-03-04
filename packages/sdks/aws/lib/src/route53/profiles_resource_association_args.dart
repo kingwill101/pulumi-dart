@@ -10,12 +10,16 @@ import 'profiles_resource_association_timeouts.dart';
 class ProfilesResourceAssociationArgs {
   /// Name of the Profile Resource Association.
   final pulumi.Input<String>? name;
+
   /// ID of the profile associated with the VPC.
   final pulumi.Input<String> profileId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Resource ID of the resource to be associated with the profile.
   final pulumi.Input<String> resourceArn;
+
   /// Resource properties for the resource to be associated with the profile.
   final pulumi.Input<String>? resourceProperties;
   final pulumi.Input<ProfilesResourceAssociationTimeouts>? timeouts;
@@ -43,19 +47,42 @@ class ProfilesResourceAssociationArgs {
       'region': ?region,
       'resourceArn': resourceArn,
       'resourceProperties': ?resourceProperties,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ProfilesResourceAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProfilesResourceAssociationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ProfilesResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProfilesResourceAssociationArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      profileId: (map['profileId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceArn: (map['resourceArn'] as String).input(),
-      resourceProperties: map['resourceProperties'] == null ? null : ((map['resourceProperties'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ProfilesResourceAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profileId: pulumi.Input.fromValue(map['profileId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
+      resourceProperties: (() {
+        final guardedValue = map['resourceProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProfilesResourceAssociationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

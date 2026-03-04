@@ -5,14 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterServiceMeshProfileCertificateAuthority {
   /// The certificate chain object name in Azure Key Vault.
   final pulumi.Input<String> certChainObjectName;
+
   /// The intermediate certificate object name in Azure Key Vault.
   final pulumi.Input<String> certObjectName;
+
   /// The intermediate certificate private key object name in Azure Key Vault.
   ///
-  /// > **Note:** For more information on [Istio-based service mesh add-on with plug-in CA certificates and how to generate these certificates](https://learn.microsoft.com/en-us/azure/aks/istio-plugin-ca),
+  /// &gt; **Note:** For more information on [Istio-based service mesh add-on with plug-in CA certificates and how to generate these certificates](https://learn.microsoft.com/en-us/azure/aks/istio-plugin-ca),
   final pulumi.Input<String> keyObjectName;
+
   /// The resource ID of the Key Vault.
   final pulumi.Input<String> keyVaultId;
+
   /// The root certificate object name in Azure Key Vault.
   final pulumi.Input<String> rootCertObjectName;
 
@@ -40,14 +44,19 @@ class KubernetesClusterServiceMeshProfileCertificateAuthority {
     };
   }
 
-  factory KubernetesClusterServiceMeshProfileCertificateAuthority.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterServiceMeshProfileCertificateAuthority.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterServiceMeshProfileCertificateAuthority(
-      certChainObjectName: (map['certChainObjectName'] as String).input(),
-      certObjectName: (map['certObjectName'] as String).input(),
-      keyObjectName: (map['keyObjectName'] as String).input(),
-      keyVaultId: (map['keyVaultId'] as String).input(),
-      rootCertObjectName: (map['rootCertObjectName'] as String).input(),
+      certChainObjectName: pulumi.Input.fromValue(
+        map['certChainObjectName'] as String,
+      ),
+      certObjectName: pulumi.Input.fromValue(map['certObjectName'] as String),
+      keyObjectName: pulumi.Input.fromValue(map['keyObjectName'] as String),
+      keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
+      rootCertObjectName: pulumi.Input.fromValue(
+        map['rootCertObjectName'] as String,
+      ),
     );
   }
 }
-

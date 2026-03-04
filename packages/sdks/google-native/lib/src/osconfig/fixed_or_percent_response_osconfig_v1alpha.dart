@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FixedOrPercentResponseOsconfigV1alpha {
   /// Specifies a fixed value.
   final pulumi.Input<int> fixed;
+
   /// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
   final pulumi.Input<int> percent;
 
@@ -18,17 +19,15 @@ class FixedOrPercentResponseOsconfigV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fixed': fixed,
-      'percent': percent,
-    };
+    return <String, dynamic>{'fixed': fixed, 'percent': percent};
   }
 
-  factory FixedOrPercentResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory FixedOrPercentResponseOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FixedOrPercentResponseOsconfigV1alpha(
-      fixed: (map['fixed'] as int).input(),
-      percent: (map['percent'] as int).input(),
+      fixed: pulumi.Input.fromValue(map['fixed'] as int),
+      percent: pulumi.Input.fromValue(map['percent'] as int),
     );
   }
 }
-

@@ -10,14 +10,19 @@ import 'dev_center_identity.dart';
 class DevCenterArgs {
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Dev Center.
   final pulumi.Input<DevCenterIdentity>? identity;
+
   /// The Azure Region where the Dev Center should exist. Changing this forces a new Dev Center to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of this Dev Center. Changing this forces a new Dev Center to be created.
   final pulumi.Input<String>? name;
+
   /// Whether the project catalogs associated with projects in this Dev Center are allowed to sync catalog items. Defaults to `false`.
   final pulumi.Input<bool>? projectCatalogItemSyncEnabled;
+
   /// Specifies the name of the Resource Group within which this Dev Center should exist. Changing this forces a new Dev Center to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Dev Center.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,7 +44,11 @@ class DevCenterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<DevCenterIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            DevCenterIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'projectCatalogItemSyncEnabled': ?projectCatalogItemSyncEnabled,
@@ -50,13 +59,40 @@ class DevCenterArgs {
 
   factory DevCenterArgs.fromMap(Map<String, dynamic> map) {
     return DevCenterArgs(
-      identity: map['identity'] == null ? null : (DevCenterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      projectCatalogItemSyncEnabled: map['projectCatalogItemSyncEnabled'] == null ? null : (map['projectCatalogItemSyncEnabled']! as bool).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DevCenterIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectCatalogItemSyncEnabled: (() {
+        final guardedValue = map['projectCatalogItemSyncEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

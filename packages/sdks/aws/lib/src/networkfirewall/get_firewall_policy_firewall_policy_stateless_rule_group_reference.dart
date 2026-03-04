@@ -15,17 +15,15 @@ class GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'priority': priority,
-      'resourceArn': resourceArn,
-    };
+    return <String, dynamic>{'priority': priority, 'resourceArn': resourceArn};
   }
 
-  factory GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference(
-      priority: (map['priority'] as int).input(),
-      resourceArn: (map['resourceArn'] as String).input(),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
     );
   }
 }
-

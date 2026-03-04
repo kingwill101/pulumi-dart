@@ -10,10 +10,13 @@ import 'capability_host.dart';
 class AccountCapabilityHostArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// The name of the capability host associated with the Cognitive Services Resource
   final pulumi.Input<String>? capabilityHostName;
+
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<CapabilityHost> capabilityHostProperties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,31 @@ class AccountCapabilityHostArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'capabilityHostName': ?capabilityHostName,
-      'capabilityHostProperties': pulumi.Input.mapInputValue<CapabilityHost, Map<String, dynamic>>(capabilityHostProperties, (value) => value.toMap()),
+      'capabilityHostProperties':
+          pulumi.Input.mapInputValue<CapabilityHost, Map<String, dynamic>>(
+            capabilityHostProperties,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory AccountCapabilityHostArgs.fromMap(Map<String, dynamic> map) {
     return AccountCapabilityHostArgs(
-      accountName: (map['accountName'] as String).input(),
-      capabilityHostName: map['capabilityHostName'] == null ? null : (map['capabilityHostName']! as String).input(),
-      capabilityHostProperties: (CapabilityHost.fromMap((map['capabilityHostProperties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      capabilityHostName: (() {
+        final guardedValue = map['capabilityHostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      capabilityHostProperties: pulumi.Input.fromValue(
+        CapabilityHost.fromMap(
+          (map['capabilityHostProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum UpdatePolicyMode {
   default_("DEFAULT"),
   forceApply("FORCE_APPLY");
 
-  const UpdatePolicyMode(this.value);
-  final String value;
+  const UpdatePolicyMode(this.wireValue);
+  final String wireValue;
 
   static UpdatePolicyMode fromValue(String value) {
     for (final item in UpdatePolicyMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpdatePolicyMode value: $value');
   }
 }
-

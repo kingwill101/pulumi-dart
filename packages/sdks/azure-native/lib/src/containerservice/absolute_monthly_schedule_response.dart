@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AbsoluteMonthlyScheduleResponse {
   /// The date of the month.
   final pulumi.Input<int> dayOfMonth;
+
   /// Specifies the number of months between each set of occurrences.
   final pulumi.Input<int> intervalMonths;
 
@@ -26,9 +27,8 @@ class AbsoluteMonthlyScheduleResponse {
 
   factory AbsoluteMonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return AbsoluteMonthlyScheduleResponse(
-      dayOfMonth: (map['dayOfMonth'] as int).input(),
-      intervalMonths: (map['intervalMonths'] as int).input(),
+      dayOfMonth: pulumi.Input.fromValue(map['dayOfMonth'] as int),
+      intervalMonths: pulumi.Input.fromValue(map['intervalMonths'] as int),
     );
   }
 }
-

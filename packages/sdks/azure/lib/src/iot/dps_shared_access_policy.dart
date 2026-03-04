@@ -218,7 +218,7 @@ import 'dps_shared_access_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Devices` - 2022-02-05
@@ -233,35 +233,46 @@ import 'dps_shared_access_policy_state.dart';
 class DpsSharedAccessPolicy extends pulumi.CustomResource {
   /// Adds `EnrollmentRead` permission to this Shared Access Account. It allows read access to enrollment data.
   ///
-  /// > **Note:** When `enrollment_read` is set to `true`, `registration_read` must also be set to true. This is a limitation of the Azure REST API
+  /// &gt; **Note:** When `enrollment_read` is set to `true`, `registration_read` must also be set to true. This is a limitation of the Azure REST API
   late final pulumi.Output<bool?> enrollmentRead;
+
   /// Adds `EnrollmentWrite` permission to this Shared Access Account. It allows write access to enrollment data.
   ///
-  /// > **Note:** When `registration_write` is set to `true`, `enrollment_read`, `registration_read`, and `registration_write` must also be set to true. This is a requirement of the Azure API.
+  /// &gt; **Note:** When `registration_write` is set to `true`, `enrollment_read`, `registration_read`, and `registration_write` must also be set to true. This is a requirement of the Azure API.
   late final pulumi.Output<bool?> enrollmentWrite;
+
   /// The name of the IoT Hub Device Provisioning service to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubDpsName;
+
   /// Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The primary connection string of the Shared Access Policy.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// The primary key used to create the authentication token.
   late final pulumi.Output<String> primaryKey;
+
   /// Adds `RegistrationStatusRead` permission to this Shared Access Account. It allows read access to device registrations.
   late final pulumi.Output<bool?> registrationRead;
+
   /// Adds `RegistrationStatusWrite` permission to this Shared Access Account. It allows write access to device registrations.
   ///
-  /// > **Note:** When `registration_write` is set to `true`, `registration_read` must also be set to true. This is a requirement of the Azure API.
+  /// &gt; **Note:** When `registration_write` is set to `true`, `registration_read` must also be set to true. This is a requirement of the Azure API.
   late final pulumi.Output<bool?> registrationWrite;
+
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary connection string of the Shared Access Policy.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// The secondary key used to create the authentication token.
   late final pulumi.Output<String> secondaryKey;
+
   /// Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
   ///
-  /// > **Note:** At least one of `registration_read`, `registration_write`, `service_config`, `enrollment_read`, `enrollment_write` permissions must be set to `true`.
+  /// &gt; **Note:** At least one of `registration_read`, `registration_write`, `service_config`, `enrollment_read`, `enrollment_write` permissions must be set to `true`.
   late final pulumi.Output<bool?> serviceConfig;
 
   /// Creates a new [DpsSharedAccessPolicy].
@@ -273,23 +284,25 @@ class DpsSharedAccessPolicy extends pulumi.CustomResource {
     DpsSharedAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enrollmentRead = registerOutput<bool?>('enrollmentRead');
-    this.enrollmentWrite = registerOutput<bool?>('enrollmentWrite');
-    this.iothubDpsName = registerOutput<String>('iothubDpsName');
+         'azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enrollmentRead = registerOutput<bool?>('enrollmentRead');
+    enrollmentWrite = registerOutput<bool?>('enrollmentWrite');
+    iothubDpsName = registerOutput<String>('iothubDpsName');
     this.name = registerOutput<String>('name');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.registrationRead = registerOutput<bool?>('registrationRead');
-    this.registrationWrite = registerOutput<bool?>('registrationWrite');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.serviceConfig = registerOutput<bool?>('serviceConfig');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    registrationRead = registerOutput<bool?>('registrationRead');
+    registrationWrite = registerOutput<bool?>('registrationWrite');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    serviceConfig = registerOutput<bool?>('serviceConfig');
   }
 
   /// Gets an existing [DpsSharedAccessPolicy] resource's state with the given [name] and [id].
@@ -310,22 +323,24 @@ class DpsSharedAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enrollmentRead = registerOutput<bool?>('enrollmentRead');
-    this.enrollmentWrite = registerOutput<bool?>('enrollmentWrite');
-    this.iothubDpsName = registerOutput<String>('iothubDpsName');
+         'azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enrollmentRead = registerOutput<bool?>('enrollmentRead');
+    enrollmentWrite = registerOutput<bool?>('enrollmentWrite');
+    iothubDpsName = registerOutput<String>('iothubDpsName');
     this.name = registerOutput<String>('name');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.registrationRead = registerOutput<bool?>('registrationRead');
-    this.registrationWrite = registerOutput<bool?>('registrationWrite');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.serviceConfig = registerOutput<bool?>('serviceConfig');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    registrationRead = registerOutput<bool?>('registrationRead');
+    registrationWrite = registerOutput<bool?>('registrationWrite');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    serviceConfig = registerOutput<bool?>('serviceConfig');
   }
 }

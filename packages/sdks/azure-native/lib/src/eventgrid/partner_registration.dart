@@ -165,19 +165,26 @@ import 'system_data_response.dart';
 class PartnerRegistration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Location of the resource.
   late final pulumi.Output<String> location;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// The immutableId of the corresponding partner registration.
   /// Note: This property is marked for deprecation and is not supported in any future GA API version
   late final pulumi.Output<String?> partnerRegistrationImmutableId;
+
   /// Provisioning state of the partner registration.
   late final pulumi.Output<String> provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -190,18 +197,20 @@ class PartnerRegistration extends pulumi.CustomResource {
     PartnerRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:PartnerRegistration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:eventgrid:PartnerRegistration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.partnerRegistrationImmutableId = registerOutput<String?>('partnerRegistrationImmutableId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    partnerRegistrationImmutableId = registerOutput<String?>(
+      'partnerRegistrationImmutableId',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

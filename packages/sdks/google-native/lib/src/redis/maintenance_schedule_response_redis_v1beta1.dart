@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceScheduleResponseRedisV1beta1 {
   /// If the scheduled maintenance can be rescheduled, default is true.
   final pulumi.Input<bool> canReschedule;
+
   /// The end time of any upcoming scheduled maintenance for this instance.
   final pulumi.Input<String> endTime;
+
   /// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
   final pulumi.Input<String> scheduleDeadlineTime;
+
   /// The start time of any upcoming scheduled maintenance for this instance.
   final pulumi.Input<String> startTime;
 
@@ -34,13 +37,16 @@ class MaintenanceScheduleResponseRedisV1beta1 {
     };
   }
 
-  factory MaintenanceScheduleResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceScheduleResponseRedisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceScheduleResponseRedisV1beta1(
-      canReschedule: (map['canReschedule'] as bool).input(),
-      endTime: (map['endTime'] as String).input(),
-      scheduleDeadlineTime: (map['scheduleDeadlineTime'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      canReschedule: pulumi.Input.fromValue(map['canReschedule'] as bool),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      scheduleDeadlineTime: pulumi.Input.fromValue(
+        map['scheduleDeadlineTime'] as String,
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

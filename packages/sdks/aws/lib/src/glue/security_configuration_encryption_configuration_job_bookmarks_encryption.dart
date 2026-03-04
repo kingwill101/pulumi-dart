@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
   /// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
   final pulumi.Input<String>? jobBookmarksEncryptionMode;
+
   /// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
   final pulumi.Input<String>? kmsKeyArn;
 
@@ -23,11 +24,20 @@ class SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
     };
   }
 
-  factory SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap(Map<String, dynamic> map) {
+  factory SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption(
-      jobBookmarksEncryptionMode: map['jobBookmarksEncryptionMode'] == null ? null : ((map['jobBookmarksEncryptionMode'] as String).input()).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      jobBookmarksEncryptionMode: (() {
+        final guardedValue = map['jobBookmarksEncryptionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyArn: (() {
+        final guardedValue = map['kmsKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

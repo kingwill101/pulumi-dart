@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scale_set_packet_capture_args.dart';
-import 'scale_set_packet_capture_filter.dart';
 import 'scale_set_packet_capture_machine_scope.dart';
 import 'scale_set_packet_capture_state.dart';
 import 'scale_set_packet_capture_storage_location.dart';
@@ -629,11 +628,11 @@ import 'scale_set_packet_capture_storage_location.dart';
 /// ```
 ///
 ///
-/// > **Note:** This Resource requires that [the Network Watcher Extension](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal#before-you-begin) is installed on the Virtual Machine Scale Set before capturing can be enabled which can be installed via the `azure.compute.VirtualMachineScaleSetExtension` resource.
+/// &gt; **Note:** This Resource requires that [the Network Watcher Extension](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal#before-you-begin) is installed on the Virtual Machine Scale Set before capturing can be enabled which can be installed via the `azure.compute.VirtualMachineScaleSetExtension` resource.
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -647,21 +646,30 @@ import 'scale_set_packet_capture_storage_location.dart';
 /// ```
 class ScaleSetPacketCapture extends pulumi.CustomResource {
   /// One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<ScaleSetPacketCaptureFilter>?> filters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> filters;
+
   /// A `machine_scope` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<ScaleSetPacketCaptureMachineScope?> machineScope;
+
   /// The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerPacket;
+
   /// Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerSession;
+
   /// The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumCaptureDurationInSeconds;
+
   /// The name to use for this Network Packet Capture. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherId;
+
   /// A `storage_location` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<ScaleSetPacketCaptureStorageLocation> storageLocation;
+  late final pulumi.Output<ScaleSetPacketCaptureStorageLocation>
+  storageLocation;
+
   /// The resource ID of the Virtual Machine Scale Set to capture packets from. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineScaleSetId;
 
@@ -674,20 +682,28 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     ScaleSetPacketCaptureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<List<ScaleSetPacketCaptureFilter>?>('filters');
-    this.machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>('machineScope');
-    this.maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
-    this.maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
-    this.maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
+         'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>(
+      'machineScope',
+    );
+    maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
+    maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
+    maximumCaptureDurationInSeconds = registerOutput<int?>(
+      'maximumCaptureDurationInSeconds',
+    );
     this.name = registerOutput<String>('name');
-    this.networkWatcherId = registerOutput<String>('networkWatcherId');
-    this.storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>('storageLocation');
-    this.virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>(
+      'storageLocation',
+    );
+    virtualMachineScaleSetId = registerOutput<String>(
+      'virtualMachineScaleSetId',
+    );
   }
 
   /// Gets an existing [ScaleSetPacketCapture] resource's state with the given [name] and [id].
@@ -708,19 +724,27 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<List<ScaleSetPacketCaptureFilter>?>('filters');
-    this.machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>('machineScope');
-    this.maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
-    this.maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
-    this.maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
+         'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>(
+      'machineScope',
+    );
+    maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
+    maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
+    maximumCaptureDurationInSeconds = registerOutput<int?>(
+      'maximumCaptureDurationInSeconds',
+    );
     this.name = registerOutput<String>('name');
-    this.networkWatcherId = registerOutput<String>('networkWatcherId');
-    this.storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>('storageLocation');
-    this.virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    storageLocation = registerOutput<ScaleSetPacketCaptureStorageLocation>(
+      'storageLocation',
+    );
+    virtualMachineScaleSetId = registerOutput<String>(
+      'virtualMachineScaleSetId',
+    );
   }
 }

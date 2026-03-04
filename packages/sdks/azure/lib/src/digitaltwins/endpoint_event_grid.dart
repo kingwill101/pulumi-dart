@@ -233,7 +233,7 @@ import 'endpoint_event_grid_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DigitalTwins` - 2023-01-31
@@ -246,16 +246,21 @@ import 'endpoint_event_grid_state.dart';
 /// $ pulumi import azure:digitaltwins/endpointEventGrid:EndpointEventGrid example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.DigitalTwins/digitalTwinsInstances/dt1/endpoints/ep1
 /// ```
 class EndpointEventGrid extends pulumi.CustomResource {
-  /// The storage secret of the dead-lettering, whose format is `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
+  /// The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
   late final pulumi.Output<String?> deadLetterStorageSecret;
+
   /// The resource ID of the Digital Twins Instance. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
   late final pulumi.Output<String> digitalTwinsId;
+
   /// The endpoint of the Event Grid Topic.
   late final pulumi.Output<String> eventgridTopicEndpoint;
+
   /// The primary access key of the Event Grid Topic.
   late final pulumi.Output<String> eventgridTopicPrimaryAccessKey;
+
   /// The secondary access key of the Event Grid Topic.
   late final pulumi.Output<String> eventgridTopicSecondaryAccessKey;
+
   /// The name which should be used for this Digital Twins Eventgrid Endpoint. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
   late final pulumi.Output<String> name;
 
@@ -268,16 +273,22 @@ class EndpointEventGrid extends pulumi.CustomResource {
     EndpointEventGridArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
-    this.digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    this.eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');
-    this.eventgridTopicPrimaryAccessKey = registerOutput<String>('eventgridTopicPrimaryAccessKey');
-    this.eventgridTopicSecondaryAccessKey = registerOutput<String>('eventgridTopicSecondaryAccessKey');
+         'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deadLetterStorageSecret = registerOutput<String?>(
+      'deadLetterStorageSecret',
+    );
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');
+    eventgridTopicPrimaryAccessKey = registerOutput<String>(
+      'eventgridTopicPrimaryAccessKey',
+    );
+    eventgridTopicSecondaryAccessKey = registerOutput<String>(
+      'eventgridTopicSecondaryAccessKey',
+    );
     this.name = registerOutput<String>('name');
   }
 
@@ -299,16 +310,22 @@ class EndpointEventGrid extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
-    this.digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    this.eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');
-    this.eventgridTopicPrimaryAccessKey = registerOutput<String>('eventgridTopicPrimaryAccessKey');
-    this.eventgridTopicSecondaryAccessKey = registerOutput<String>('eventgridTopicSecondaryAccessKey');
+         'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deadLetterStorageSecret = registerOutput<String?>(
+      'deadLetterStorageSecret',
+    );
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    eventgridTopicEndpoint = registerOutput<String>('eventgridTopicEndpoint');
+    eventgridTopicPrimaryAccessKey = registerOutput<String>(
+      'eventgridTopicPrimaryAccessKey',
+    );
+    eventgridTopicSecondaryAccessKey = registerOutput<String>(
+      'eventgridTopicSecondaryAccessKey',
+    );
     this.name = registerOutput<String>('name');
   }
 }

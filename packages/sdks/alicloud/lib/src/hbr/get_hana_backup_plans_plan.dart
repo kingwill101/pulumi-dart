@@ -5,23 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHanaBackupPlansPlan {
   /// The backup prefix.
   final pulumi.Input<String> backupPrefix;
+
   /// The backup type.
   final pulumi.Input<String> backupType;
+
   /// The ID of the SAP HANA instance.
   final pulumi.Input<String> clusterId;
+
   /// The name of the database.
   final pulumi.Input<String> databaseName;
+
   /// The ID of the resource.
   final pulumi.Input<String> id;
   final pulumi.Input<String> pageTotal;
+
   /// The ID of the backup plan.
   final pulumi.Input<String> planId;
+
   /// The name of the backup plan.
   final pulumi.Input<String> planName;
+
   /// The backup policy.
   final pulumi.Input<String> schedule;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
+
   /// The ID of the backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -69,18 +78,17 @@ class GetHanaBackupPlansPlan {
 
   factory GetHanaBackupPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetHanaBackupPlansPlan(
-      backupPrefix: (map['backupPrefix'] as String).input(),
-      backupType: (map['backupType'] as String).input(),
-      clusterId: (map['clusterId'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      id: (map['id'] as String).input(),
-      pageTotal: (map['pageTotal'] as String).input(),
-      planId: (map['planId'] as String).input(),
-      planName: (map['planName'] as String).input(),
-      schedule: (map['schedule'] as String).input(),
-      status: (map['status'] as String).input(),
-      vaultId: (map['vaultId'] as String).input(),
+      backupPrefix: pulumi.Input.fromValue(map['backupPrefix'] as String),
+      backupType: pulumi.Input.fromValue(map['backupType'] as String),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      pageTotal: pulumi.Input.fromValue(map['pageTotal'] as String),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      planName: pulumi.Input.fromValue(map['planName'] as String),
+      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
-

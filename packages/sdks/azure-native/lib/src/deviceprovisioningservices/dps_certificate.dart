@@ -155,14 +155,19 @@ import 'system_data_response.dart';
 class DpsCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The entity tag.
   late final pulumi.Output<String> etag;
+
   /// The name of the certificate.
   late final pulumi.Output<String> name;
+
   /// properties of a certificate
   late final pulumi.Output<CertificatePropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -175,16 +180,16 @@ class DpsCertificate extends pulumi.CustomResource {
     DpsCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceprovisioningservices:DpsCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:deviceprovisioningservices:DpsCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<CertificatePropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<CertificatePropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

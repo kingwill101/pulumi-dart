@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class YarnApplicationResponse {
   /// The application name.
   final pulumi.Input<String> name;
+
   /// The numerical progress of the application, from 1 to 100.
   final pulumi.Input<double> progress;
+
   /// The application state.
   final pulumi.Input<String> state;
+
   /// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
   final pulumi.Input<String> trackingUrl;
 
@@ -36,11 +39,10 @@ class YarnApplicationResponse {
 
   factory YarnApplicationResponse.fromMap(Map<String, dynamic> map) {
     return YarnApplicationResponse(
-      name: (map['name'] as String).input(),
-      progress: (map['progress'] as double).input(),
-      state: (map['state'] as String).input(),
-      trackingUrl: (map['trackingUrl'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      progress: pulumi.Input.fromValue(map['progress'] as double),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      trackingUrl: pulumi.Input.fromValue(map['trackingUrl'] as String),
     );
   }
 }
-

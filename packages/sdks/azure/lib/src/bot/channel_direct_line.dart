@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_direct_line_args.dart';
-import 'channel_direct_line_site.dart';
 import 'channel_direct_line_state.dart';
 
 /// Manages a Directline integration for a Bot Channel
@@ -248,12 +247,15 @@ import 'channel_direct_line_state.dart';
 class ChannelDirectLine extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
-  late final pulumi.Output<List<ChannelDirectLineSite>> sites;
+  late final pulumi.Output<List<Map<String, dynamic>>> sites;
 
   /// Creates a new [ChannelDirectLine].
   /// [name] The Pulumi resource name.
@@ -264,15 +266,15 @@ class ChannelDirectLine extends pulumi.CustomResource {
     ChannelDirectLineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelDirectLine:ChannelDirectLine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sites = registerOutput<List<ChannelDirectLineSite>>('sites');
+         'azure:bot/channelDirectLine:ChannelDirectLine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sites = registerOutput<List<Map<String, dynamic>>>('sites');
   }
 
   /// Gets an existing [ChannelDirectLine] resource's state with the given [name] and [id].
@@ -293,14 +295,14 @@ class ChannelDirectLine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelDirectLine:ChannelDirectLine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sites = registerOutput<List<ChannelDirectLineSite>>('sites');
+         'azure:bot/channelDirectLine:ChannelDirectLine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sites = registerOutput<List<Map<String, dynamic>>>('sites');
   }
 }

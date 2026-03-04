@@ -12,10 +12,13 @@ class VpcSubnetArgs {
   ///
   /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
   final pulumi.Input<String>? ipv4;
+
   /// The IPv6 ranges of this subnet.
   final pulumi.Input<List<VpcSubnetIpv6>>? ipv6s;
+
   /// The label of the VPC. Only contains ASCII letters, digits and dashes.
   final pulumi.Input<String> label;
+
   /// The id of the parent VPC for this VPC subnet.
   final pulumi.Input<int> vpcId;
 
@@ -34,7 +37,18 @@ class VpcSubnetArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ipv4': ?ipv4,
-      'ipv6s': ?pulumi.Input.mapOptionalInputValue<List<VpcSubnetIpv6>, List<Map<String, dynamic>>>(ipv6s, (value) => pulumi.Input.encodeList<VpcSubnetIpv6, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipv6s':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VpcSubnetIpv6>,
+            List<Map<String, dynamic>>
+          >(
+            ipv6s,
+            (value) =>
+                pulumi.Input.encodeList<VpcSubnetIpv6, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'label': label,
       'vpcId': vpcId,
     };
@@ -42,11 +56,24 @@ class VpcSubnetArgs {
 
   factory VpcSubnetArgs.fromMap(Map<String, dynamic> map) {
     return VpcSubnetArgs(
-      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as String).input(),
-      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s']!, (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      label: (map['label'] as String).input(),
-      vpcId: (map['vpcId'] as int).input(),
+      ipv4: (() {
+        final guardedValue = map['ipv4'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6s: (() {
+        final guardedValue = map['ipv6s'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VpcSubnetIpv6>(
+            guardedValue,
+            (value) =>
+                VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as int),
     );
   }
 }
-

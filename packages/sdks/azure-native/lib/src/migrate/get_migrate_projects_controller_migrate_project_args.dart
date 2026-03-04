@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMigrateProjectsControllerMigrateProjectArgs {
   /// Migrate project name.
   final pulumi.Input<String> migrateProjectName;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,16 @@ class GetMigrateProjectsControllerMigrateProjectArgs {
     };
   }
 
-  factory GetMigrateProjectsControllerMigrateProjectArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMigrateProjectsControllerMigrateProjectArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMigrateProjectsControllerMigrateProjectArgs(
-      migrateProjectName: (map['migrateProjectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      migrateProjectName: pulumi.Input.fromValue(
+        map['migrateProjectName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

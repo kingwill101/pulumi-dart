@@ -1625,7 +1625,7 @@ import 'replica_set_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AAD` - 2021-05-01
@@ -1640,14 +1640,19 @@ import 'replica_set_state.dart';
 class ReplicaSet extends pulumi.CustomResource {
   /// A list of subnet IP addresses for the domain controllers in this Replica Set, typically two.
   late final pulumi.Output<List<String>> domainControllerIpAddresses;
+
   /// The ID of the Domain Service for which to create this Replica Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> domainServiceId;
+
   /// The publicly routable IP address for the domain controllers in this Replica Set.
   late final pulumi.Output<String> externalAccessIpAddress;
+
   /// The Azure location where this Replica Set should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The current service status for the replica set.
   late final pulumi.Output<String> serviceStatus;
+
   /// The ID of the subnet in which to place this Replica Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
 
@@ -1660,17 +1665,19 @@ class ReplicaSet extends pulumi.CustomResource {
     ReplicaSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:domainservices/replicaSet:ReplicaSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses');
-    this.domainServiceId = registerOutput<String>('domainServiceId');
-    this.externalAccessIpAddress = registerOutput<String>('externalAccessIpAddress');
-    this.location = registerOutput<String>('location');
-    this.serviceStatus = registerOutput<String>('serviceStatus');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:domainservices/replicaSet:ReplicaSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainControllerIpAddresses = registerOutput<List<String>>(
+      'domainControllerIpAddresses',
+    );
+    domainServiceId = registerOutput<String>('domainServiceId');
+    externalAccessIpAddress = registerOutput<String>('externalAccessIpAddress');
+    location = registerOutput<String>('location');
+    serviceStatus = registerOutput<String>('serviceStatus');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [ReplicaSet] resource's state with the given [name] and [id].
@@ -1691,16 +1698,18 @@ class ReplicaSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:domainservices/replicaSet:ReplicaSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses');
-    this.domainServiceId = registerOutput<String>('domainServiceId');
-    this.externalAccessIpAddress = registerOutput<String>('externalAccessIpAddress');
-    this.location = registerOutput<String>('location');
-    this.serviceStatus = registerOutput<String>('serviceStatus');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:domainservices/replicaSet:ReplicaSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainControllerIpAddresses = registerOutput<List<String>>(
+      'domainControllerIpAddresses',
+    );
+    domainServiceId = registerOutput<String>('domainServiceId');
+    externalAccessIpAddress = registerOutput<String>('externalAccessIpAddress');
+    location = registerOutput<String>('location');
+    serviceStatus = registerOutput<String>('serviceStatus');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

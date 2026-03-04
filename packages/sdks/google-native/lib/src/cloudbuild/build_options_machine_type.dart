@@ -7,16 +7,15 @@ enum BuildOptionsMachineType {
   e2Highcpu32("E2_HIGHCPU_32"),
   e2Medium("E2_MEDIUM");
 
-  const BuildOptionsMachineType(this.value);
-  final String value;
+  const BuildOptionsMachineType(this.wireValue);
+  final String wireValue;
 
   static BuildOptionsMachineType fromValue(String value) {
     for (final item in BuildOptionsMachineType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BuildOptionsMachineType value: $value');
   }
 }
-

@@ -6,16 +6,15 @@ enum CalculationWindowTypes {
   valueWeek("Week"),
   valueMonth("Month");
 
-  const CalculationWindowTypes(this.value);
-  final String value;
+  const CalculationWindowTypes(this.wireValue);
+  final String wireValue;
 
   static CalculationWindowTypes fromValue(String value) {
     for (final item in CalculationWindowTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CalculationWindowTypes value: $value');
   }
 }
-

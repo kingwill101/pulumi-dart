@@ -1,12 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'applicable_schedule_response.dart';
 import 'artifact_deployment_status_properties_response.dart';
-import 'artifact_install_properties_response.dart';
 import 'compute_vm_properties_response.dart';
-import 'data_disk_properties_response.dart';
 import 'gallery_image_reference_response.dart';
 import 'network_interface_properties_response.dart';
-import 'schedule_creation_parameter_response.dart';
 import 'virtual_machine_args.dart';
 
 /// A virtual machine.
@@ -253,82 +250,124 @@ import 'virtual_machine_args.dart';
 class VirtualMachine extends pulumi.CustomResource {
   /// Indicates whether another user can take ownership of the virtual machine
   late final pulumi.Output<bool?> allowClaim;
+
   /// The applicable schedule for the virtual machine.
   late final pulumi.Output<ApplicableScheduleResponse> applicableSchedule;
+
   /// The artifact deployment status for the virtual machine.
-  late final pulumi.Output<ArtifactDeploymentStatusPropertiesResponse> artifactDeploymentStatus;
+  late final pulumi.Output<ArtifactDeploymentStatusPropertiesResponse>
+  artifactDeploymentStatus;
+
   /// The artifacts to be installed on the virtual machine.
-  late final pulumi.Output<List<ArtifactInstallPropertiesResponse>?> artifacts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> artifacts;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource identifier (Microsoft.Compute) of the virtual machine.
   late final pulumi.Output<String> computeId;
+
   /// The compute virtual machine properties.
   late final pulumi.Output<ComputeVmPropertiesResponse> computeVm;
+
   /// The email address of creator of the virtual machine.
   late final pulumi.Output<String> createdByUser;
+
   /// The object identifier of the creator of the virtual machine.
   late final pulumi.Output<String> createdByUserId;
+
   /// The creation date of the virtual machine.
   late final pulumi.Output<String?> createdDate;
+
   /// The custom image identifier of the virtual machine.
   late final pulumi.Output<String?> customImageId;
+
   /// New or existing data disks to attach to the virtual machine after creation
-  late final pulumi.Output<List<DataDiskPropertiesResponse>?> dataDiskParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataDiskParameters;
+
   /// Indicates whether the virtual machine is to be created without a public IP address.
   late final pulumi.Output<bool?> disallowPublicIpAddress;
+
   /// The resource ID of the environment that contains this virtual machine, if any.
   late final pulumi.Output<String?> environmentId;
+
   /// The expiration date for VM.
   late final pulumi.Output<String?> expirationDate;
+
   /// The fully-qualified domain name of the virtual machine.
   late final pulumi.Output<String> fqdn;
+
   /// The Microsoft Azure Marketplace image reference of the virtual machine.
-  late final pulumi.Output<GalleryImageReferenceResponse?> galleryImageReference;
+  late final pulumi.Output<GalleryImageReferenceResponse?>
+  galleryImageReference;
+
   /// Indicates whether this virtual machine uses an SSH key for authentication.
   late final pulumi.Output<bool?> isAuthenticationWithSshKey;
+
   /// The lab subnet name of the virtual machine.
   late final pulumi.Output<String?> labSubnetName;
+
   /// The lab virtual network identifier of the virtual machine.
   late final pulumi.Output<String?> labVirtualNetworkId;
+
   /// Last known compute power state captured in DTL
   late final pulumi.Output<String> lastKnownPowerState;
+
   /// The location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The network interface properties.
-  late final pulumi.Output<NetworkInterfacePropertiesResponse?> networkInterface;
+  late final pulumi.Output<NetworkInterfacePropertiesResponse?>
+  networkInterface;
+
   /// The notes of the virtual machine.
   late final pulumi.Output<String?> notes;
+
   /// The OS type of the virtual machine.
   late final pulumi.Output<String> osType;
+
   /// The object identifier of the owner of the virtual machine.
   late final pulumi.Output<String?> ownerObjectId;
+
   /// The user principal name of the virtual machine owner.
   late final pulumi.Output<String?> ownerUserPrincipalName;
+
   /// The password of the virtual machine administrator.
   late final pulumi.Output<String?> password;
+
   /// The id of the plan associated with the virtual machine image
   late final pulumi.Output<String?> planId;
+
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Virtual Machine schedules to be created
-  late final pulumi.Output<List<ScheduleCreationParameterResponse>?> scheduleParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> scheduleParameters;
+
   /// The size of the virtual machine.
   late final pulumi.Output<String?> size;
+
   /// The SSH key of the virtual machine administrator.
   late final pulumi.Output<String?> sshKey;
+
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
   late final pulumi.Output<String?> storageType;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The unique immutable identifier of a resource (Guid).
   late final pulumi.Output<String> uniqueIdentifier;
+
   /// The user name of the virtual machine.
   late final pulumi.Output<String?> userName;
+
   /// Tells source of creation of lab virtual machine. Output property only.
   late final pulumi.Output<String> virtualMachineCreationSource;
 
@@ -341,50 +380,67 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devtestlab:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowClaim = registerOutput<bool?>('allowClaim');
-    this.applicableSchedule = registerOutput<ApplicableScheduleResponse>('applicableSchedule');
-    this.artifactDeploymentStatus = registerOutput<ArtifactDeploymentStatusPropertiesResponse>('artifactDeploymentStatus');
-    this.artifacts = registerOutput<List<ArtifactInstallPropertiesResponse>?>('artifacts');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.computeId = registerOutput<String>('computeId');
-    this.computeVm = registerOutput<ComputeVmPropertiesResponse>('computeVm');
-    this.createdByUser = registerOutput<String>('createdByUser');
-    this.createdByUserId = registerOutput<String>('createdByUserId');
-    this.createdDate = registerOutput<String?>('createdDate');
-    this.customImageId = registerOutput<String?>('customImageId');
-    this.dataDiskParameters = registerOutput<List<DataDiskPropertiesResponse>?>('dataDiskParameters');
-    this.disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
-    this.environmentId = registerOutput<String?>('environmentId');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.galleryImageReference = registerOutput<GalleryImageReferenceResponse?>('galleryImageReference');
-    this.isAuthenticationWithSshKey = registerOutput<bool?>('isAuthenticationWithSshKey');
-    this.labSubnetName = registerOutput<String?>('labSubnetName');
-    this.labVirtualNetworkId = registerOutput<String?>('labVirtualNetworkId');
-    this.lastKnownPowerState = registerOutput<String>('lastKnownPowerState');
-    this.location = registerOutput<String?>('location');
+         'azure-native:devtestlab:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowClaim = registerOutput<bool?>('allowClaim');
+    applicableSchedule = registerOutput<ApplicableScheduleResponse>(
+      'applicableSchedule',
+    );
+    artifactDeploymentStatus =
+        registerOutput<ArtifactDeploymentStatusPropertiesResponse>(
+          'artifactDeploymentStatus',
+        );
+    artifacts = registerOutput<List<Map<String, dynamic>>?>('artifacts');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computeId = registerOutput<String>('computeId');
+    computeVm = registerOutput<ComputeVmPropertiesResponse>('computeVm');
+    createdByUser = registerOutput<String>('createdByUser');
+    createdByUserId = registerOutput<String>('createdByUserId');
+    createdDate = registerOutput<String?>('createdDate');
+    customImageId = registerOutput<String?>('customImageId');
+    dataDiskParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'dataDiskParameters',
+    );
+    disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
+    environmentId = registerOutput<String?>('environmentId');
+    expirationDate = registerOutput<String?>('expirationDate');
+    fqdn = registerOutput<String>('fqdn');
+    galleryImageReference = registerOutput<GalleryImageReferenceResponse?>(
+      'galleryImageReference',
+    );
+    isAuthenticationWithSshKey = registerOutput<bool?>(
+      'isAuthenticationWithSshKey',
+    );
+    labSubnetName = registerOutput<String?>('labSubnetName');
+    labVirtualNetworkId = registerOutput<String?>('labVirtualNetworkId');
+    lastKnownPowerState = registerOutput<String>('lastKnownPowerState');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterface = registerOutput<NetworkInterfacePropertiesResponse?>('networkInterface');
-    this.notes = registerOutput<String?>('notes');
-    this.osType = registerOutput<String>('osType');
-    this.ownerObjectId = registerOutput<String?>('ownerObjectId');
-    this.ownerUserPrincipalName = registerOutput<String?>('ownerUserPrincipalName');
-    this.password = registerOutput<String?>('password');
-    this.planId = registerOutput<String?>('planId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scheduleParameters = registerOutput<List<ScheduleCreationParameterResponse>?>('scheduleParameters');
-    this.size = registerOutput<String?>('size');
-    this.sshKey = registerOutput<String?>('sshKey');
-    this.storageType = registerOutput<String?>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    this.userName = registerOutput<String?>('userName');
-    this.virtualMachineCreationSource = registerOutput<String>('virtualMachineCreationSource');
+    networkInterface = registerOutput<NetworkInterfacePropertiesResponse?>(
+      'networkInterface',
+    );
+    notes = registerOutput<String?>('notes');
+    osType = registerOutput<String>('osType');
+    ownerObjectId = registerOutput<String?>('ownerObjectId');
+    ownerUserPrincipalName = registerOutput<String?>('ownerUserPrincipalName');
+    password = registerOutput<String?>('password');
+    planId = registerOutput<String?>('planId');
+    provisioningState = registerOutput<String>('provisioningState');
+    scheduleParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'scheduleParameters',
+    );
+    size = registerOutput<String?>('size');
+    sshKey = registerOutput<String?>('sshKey');
+    storageType = registerOutput<String?>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    userName = registerOutput<String?>('userName');
+    virtualMachineCreationSource = registerOutput<String>(
+      'virtualMachineCreationSource',
+    );
   }
 }

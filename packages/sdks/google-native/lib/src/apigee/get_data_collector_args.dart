@@ -27,9 +27,8 @@ class GetDataCollectorArgs {
 
   factory GetDataCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetDataCollectorArgs(
-      datacollectorId: (map['datacollectorId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      datacollectorId: pulumi.Input.fromValue(map['datacollectorId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

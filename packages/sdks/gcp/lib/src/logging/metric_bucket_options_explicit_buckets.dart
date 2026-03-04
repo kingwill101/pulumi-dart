@@ -8,20 +8,15 @@ class MetricBucketOptionsExplicitBuckets {
 
   /// Creates a new [MetricBucketOptionsExplicitBuckets].
   /// [bounds] The values must be monotonically increasing.
-  MetricBucketOptionsExplicitBuckets({
-    required this.bounds,
-  });
+  MetricBucketOptionsExplicitBuckets({required this.bounds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bounds': bounds,
-    };
+    return <String, dynamic>{'bounds': bounds};
   }
 
   factory MetricBucketOptionsExplicitBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsExplicitBuckets(
-      bounds: ((map['bounds'] as List).cast<double>()).input(),
+      bounds: pulumi.Input.fromValue((map['bounds'] as List).cast<double>()),
     );
   }
 }
-

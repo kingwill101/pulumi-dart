@@ -1,5 +1,3 @@
-library module_kusto;
-
 export 'kusto/attached_database_configuration.dart';
 export 'kusto/attached_database_configuration_args.dart';
 export 'kusto/attached_database_configuration_sharing.dart';

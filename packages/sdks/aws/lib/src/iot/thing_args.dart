@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThingArgs {
   /// Map of attributes of the thing.
   final pulumi.Input<Map<String, String>>? attributes;
+
   /// The name of the thing.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The thing type name.
   final pulumi.Input<String>? thingTypeName;
 
@@ -21,12 +24,7 @@ class ThingArgs {
   /// [name] The name of the thing.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [thingTypeName] The thing type name.
-  ThingArgs({
-    this.attributes,
-    this.name,
-    this.region,
-    this.thingTypeName,
-  });
+  ThingArgs({this.attributes, this.name, this.region, this.thingTypeName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,11 +37,28 @@ class ThingArgs {
 
   factory ThingArgs.fromMap(Map<String, dynamic> map) {
     return ThingArgs(
-      attributes: map['attributes'] == null ? null : (((map['attributes'] as Map).cast<String, String>()).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      thingTypeName: map['thingTypeName'] == null ? null : ((map['thingTypeName'] as String).input()).input(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thingTypeName: (() {
+        final guardedValue = map['thingTypeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

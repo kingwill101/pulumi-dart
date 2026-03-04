@@ -13,15 +13,14 @@ class IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authorization': authorization,
-    };
+    return <String, dynamic>{'authorization': authorization};
   }
 
-  factory IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap(Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery(
-      authorization: (map['authorization'] as String).input(),
+      authorization: pulumi.Input.fromValue(map['authorization'] as String),
     );
   }
 }
-

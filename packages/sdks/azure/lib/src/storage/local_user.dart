@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'local_user_args.dart';
-import 'local_user_permission_scope.dart';
-import 'local_user_ssh_authorized_key.dart';
 import 'local_user_state.dart';
 
 /// Manages a Storage Account Local User.
@@ -365,7 +363,7 @@ import 'local_user_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -380,20 +378,28 @@ import 'local_user_state.dart';
 class LocalUser extends pulumi.CustomResource {
   /// The home directory of the Storage Account Local User.
   late final pulumi.Output<String?> homeDirectory;
+
   /// The name which should be used for this Storage Account Local User. Changing this forces a new Storage Account Local User to be created.
   late final pulumi.Output<String> name;
+
   /// The value of the password, which is only available when `ssh_password_enabled` is set to `true`.
   late final pulumi.Output<String> password;
+
   /// One or more `permission_scope` blocks as defined below.
-  late final pulumi.Output<List<LocalUserPermissionScope>?> permissionScopes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> permissionScopes;
+
   /// The unique Security Identifier of this Storage Account Local User.
   late final pulumi.Output<String> sid;
+
   /// One or more `ssh_authorized_key` blocks as defined below.
-  late final pulumi.Output<List<LocalUserSshAuthorizedKey>?> sshAuthorizedKeys;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sshAuthorizedKeys;
+
   /// Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> sshKeyEnabled;
+
   /// Specifies whether SSH Password Authentication is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> sshPasswordEnabled;
+
   /// The ID of the Storage Account that this Storage Account Local User resides in. Changing this forces a new Storage Account Local User to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -406,20 +412,24 @@ class LocalUser extends pulumi.CustomResource {
     LocalUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/localUser:LocalUser',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.homeDirectory = registerOutput<String?>('homeDirectory');
+         'azure:storage/localUser:LocalUser',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    homeDirectory = registerOutput<String?>('homeDirectory');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.permissionScopes = registerOutput<List<LocalUserPermissionScope>?>('permissionScopes');
-    this.sid = registerOutput<String>('sid');
-    this.sshAuthorizedKeys = registerOutput<List<LocalUserSshAuthorizedKey>?>('sshAuthorizedKeys');
-    this.sshKeyEnabled = registerOutput<bool?>('sshKeyEnabled');
-    this.sshPasswordEnabled = registerOutput<bool?>('sshPasswordEnabled');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+    password = registerOutput<String>('password');
+    permissionScopes = registerOutput<List<Map<String, dynamic>>?>(
+      'permissionScopes',
+    );
+    sid = registerOutput<String>('sid');
+    sshAuthorizedKeys = registerOutput<List<Map<String, dynamic>>?>(
+      'sshAuthorizedKeys',
+    );
+    sshKeyEnabled = registerOutput<bool?>('sshKeyEnabled');
+    sshPasswordEnabled = registerOutput<bool?>('sshPasswordEnabled');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [LocalUser] resource's state with the given [name] and [id].
@@ -440,19 +450,23 @@ class LocalUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/localUser:LocalUser',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.homeDirectory = registerOutput<String?>('homeDirectory');
+         'azure:storage/localUser:LocalUser',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    homeDirectory = registerOutput<String?>('homeDirectory');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.permissionScopes = registerOutput<List<LocalUserPermissionScope>?>('permissionScopes');
-    this.sid = registerOutput<String>('sid');
-    this.sshAuthorizedKeys = registerOutput<List<LocalUserSshAuthorizedKey>?>('sshAuthorizedKeys');
-    this.sshKeyEnabled = registerOutput<bool?>('sshKeyEnabled');
-    this.sshPasswordEnabled = registerOutput<bool?>('sshPasswordEnabled');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+    password = registerOutput<String>('password');
+    permissionScopes = registerOutput<List<Map<String, dynamic>>?>(
+      'permissionScopes',
+    );
+    sid = registerOutput<String>('sid');
+    sshAuthorizedKeys = registerOutput<List<Map<String, dynamic>>?>(
+      'sshAuthorizedKeys',
+    );
+    sshKeyEnabled = registerOutput<bool?>('sshKeyEnabled');
+    sshPasswordEnabled = registerOutput<bool?>('sshPasswordEnabled');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

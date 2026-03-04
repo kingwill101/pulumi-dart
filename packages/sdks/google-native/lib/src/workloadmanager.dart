@@ -1,5 +1,3 @@
-library module_workloadmanager;
-
 export 'workloadmanager/evaluation.dart';
 export 'workloadmanager/evaluation_args.dart';
 export 'workloadmanager/functions.dart';

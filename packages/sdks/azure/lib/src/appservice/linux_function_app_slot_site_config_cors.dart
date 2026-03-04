@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxFunctionAppSlotSiteConfigCors {
   /// Specifies a list of origins that should be allowed to make cross-origin calls.
   final pulumi.Input<List<String>>? allowedOrigins;
+
   /// Are credentials allowed in CORS requests? Defaults to `false`.
   final pulumi.Input<bool>? supportCredentials;
 
@@ -25,9 +26,16 @@ class LinuxFunctionAppSlotSiteConfigCors {
 
   factory LinuxFunctionAppSlotSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppSlotSiteConfigCors(
-      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins']! as List).cast<String>()).input(),
-      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials']! as bool).input(),
+      allowedOrigins: (() {
+        final guardedValue = map['allowedOrigins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      supportCredentials: (() {
+        final guardedValue = map['supportCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

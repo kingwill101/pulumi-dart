@@ -1,3 +1,6 @@
-name: docker-cs-multi-container-app
-description: Example python app using multiple docker containers
-runtime: dart
+name: docker-dart-multi-container-app
+description: Docker multi-container app example in Dart.
+runtime:
+  name: dart
+  options:
+    resolution: workspace

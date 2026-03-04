@@ -4,16 +4,15 @@ enum MetadataOptionsKmsKey {
   kmsKeyDestinationBucketDefault("KMS_KEY_DESTINATION_BUCKET_DEFAULT"),
   kmsKeyPreserve("KMS_KEY_PRESERVE");
 
-  const MetadataOptionsKmsKey(this.value);
-  final String value;
+  const MetadataOptionsKmsKey(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsKmsKey fromValue(String value) {
     for (final item in MetadataOptionsKmsKey.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsKmsKey value: $value');
   }
 }
-

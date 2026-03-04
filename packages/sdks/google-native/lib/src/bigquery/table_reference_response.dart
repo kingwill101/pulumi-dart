@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableReferenceResponse {
   /// [Required] The ID of the dataset containing this table.
   final pulumi.Input<String> datasetId;
+
   /// [Required] The ID of the project containing this table.
   final pulumi.Input<String> project;
+
   /// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
   final pulumi.Input<String> tableId;
 
@@ -30,10 +32,9 @@ class TableReferenceResponse {
 
   factory TableReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TableReferenceResponse(
-      datasetId: (map['datasetId'] as String).input(),
-      project: (map['project'] as String).input(),
-      tableId: (map['tableId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
-

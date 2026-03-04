@@ -990,13 +990,17 @@ import 'system_data_response.dart';
 class ProviderRegistration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   late final pulumi.Output<String?> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
   late final pulumi.Output<ProviderRegistrationPropertiesResponse> properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1009,16 +1013,18 @@ class ProviderRegistration extends pulumi.CustomResource {
     ProviderRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:providerhub:ProviderRegistration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:providerhub:ProviderRegistration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ProviderRegistrationPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ProviderRegistrationPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryTaskRegistryCredentialCustom {
   /// The managed identity assigned to this custom credential. For user assigned identity, the value is the client ID of the identity. For system assigned identity, the value is `[system]`.
   final pulumi.Input<String>? identity;
+
   /// The login server of the custom Container Registry.
   final pulumi.Input<String> loginServer;
+
   /// The password for logging into the custom Container Registry. It can be either a plain text of password, or a Keyvault Secret ID.
   final pulumi.Input<String>? password;
+
   /// The username for logging into the custom Container Registry. It can be either a plain text of username, or a Keyvault Secret ID.
   final pulumi.Input<String>? username;
 
@@ -33,13 +36,26 @@ class RegistryTaskRegistryCredentialCustom {
     };
   }
 
-  factory RegistryTaskRegistryCredentialCustom.fromMap(Map<String, dynamic> map) {
+  factory RegistryTaskRegistryCredentialCustom.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryTaskRegistryCredentialCustom(
-      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
-      loginServer: (map['loginServer'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginServer: pulumi.Input.fromValue(map['loginServer'] as String),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

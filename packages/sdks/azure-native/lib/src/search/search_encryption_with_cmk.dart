@@ -4,16 +4,15 @@ enum SearchEncryptionWithCmk {
   enabled("Enabled"),
   unspecified("Unspecified");
 
-  const SearchEncryptionWithCmk(this.value);
-  final String value;
+  const SearchEncryptionWithCmk(this.wireValue);
+  final String wireValue;
 
   static SearchEncryptionWithCmk fromValue(String value) {
     for (final item in SearchEncryptionWithCmk.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SearchEncryptionWithCmk value: $value');
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicThresholdArgs {
   /// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
   final pulumi.Input<int> bps;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
   final pulumi.Input<String> instanceType;
+
   /// The IP address of the public IP address asset.
   final pulumi.Input<String> internetIp;
+
   /// The current message number cleaning threshold. Unit: pps.
   final pulumi.Input<int> pps;
 
@@ -44,12 +48,11 @@ class BasicThresholdArgs {
 
   factory BasicThresholdArgs.fromMap(Map<String, dynamic> map) {
     return BasicThresholdArgs(
-      bps: (map['bps'] as int).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      internetIp: (map['internetIp'] as String).input(),
-      pps: (map['pps'] as int).input(),
+      bps: pulumi.Input.fromValue(map['bps'] as int),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      internetIp: pulumi.Input.fromValue(map['internetIp'] as String),
+      pps: pulumi.Input.fromValue(map['pps'] as int),
     );
   }
 }
-

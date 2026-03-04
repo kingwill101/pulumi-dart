@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceKeyDetails {
   /// Workspace Key sub-resource key vault url
   final pulumi.Input<String>? keyVaultUrl;
+
   /// Workspace Key sub-resource name
   final pulumi.Input<String>? name;
 
   /// Creates a new [WorkspaceKeyDetails].
   /// [keyVaultUrl] Workspace Key sub-resource key vault url
   /// [name] Workspace Key sub-resource name
-  WorkspaceKeyDetails({
-    this.keyVaultUrl,
-    this.name,
-  });
+  WorkspaceKeyDetails({this.keyVaultUrl, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyVaultUrl': ?keyVaultUrl,
-      'name': ?name,
-    };
+    return <String, dynamic>{'keyVaultUrl': ?keyVaultUrl, 'name': ?name};
   }
 
   factory WorkspaceKeyDetails.fromMap(Map<String, dynamic> map) {
     return WorkspaceKeyDetails(
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      keyVaultUrl: (() {
+        final guardedValue = map['keyVaultUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

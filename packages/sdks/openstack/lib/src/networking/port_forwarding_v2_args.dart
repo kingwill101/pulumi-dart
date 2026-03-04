@@ -10,23 +10,30 @@ class PortForwardingV2Args {
   /// A text describing the port forwarding. Changing this
   /// updates the `description` of an existing port forwarding.
   final pulumi.Input<String>? description;
+
   /// The TCP/UDP/other protocol port number of the port forwarding. Changing this
   /// updates the `external_port` of an existing port forwarding.
   final pulumi.Input<int> externalPort;
+
   /// The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
   final pulumi.Input<String> floatingipId;
+
   /// The fixed IPv4 address of the Neutron port associated with the port forwarding.
   /// Changing this updates the `internal_ip_address` of an existing port forwarding.
   final pulumi.Input<String> internalIpAddress;
+
   /// The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
   /// port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
   final pulumi.Input<int> internalPort;
+
   /// The ID of the Neutron port associated with the port forwarding. Changing
   /// this updates the `internal_port_id` of an existing port forwarding.
   final pulumi.Input<String> internalPortId;
+
   /// The IP protocol used in the port forwarding. Changing this updates the `protocol`
   /// of an existing port forwarding.
   final pulumi.Input<String> protocol;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a port forwarding. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -68,15 +75,24 @@ class PortForwardingV2Args {
 
   factory PortForwardingV2Args.fromMap(Map<String, dynamic> map) {
     return PortForwardingV2Args(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      externalPort: (map['externalPort'] as int).input(),
-      floatingipId: (map['floatingipId'] as String).input(),
-      internalIpAddress: (map['internalIpAddress'] as String).input(),
-      internalPort: (map['internalPort'] as int).input(),
-      internalPortId: (map['internalPortId'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalPort: pulumi.Input.fromValue(map['externalPort'] as int),
+      floatingipId: pulumi.Input.fromValue(map['floatingipId'] as String),
+      internalIpAddress: pulumi.Input.fromValue(
+        map['internalIpAddress'] as String,
+      ),
+      internalPort: pulumi.Input.fromValue(map['internalPort'] as int),
+      internalPortId: pulumi.Input.fromValue(map['internalPortId'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

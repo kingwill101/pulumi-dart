@@ -31,10 +31,13 @@ class GetDefaultObjectAccessControlArgs {
 
   factory GetDefaultObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultObjectAccessControlArgs(
-      bucket: (map['bucket'] as String).input(),
-      entity: (map['entity'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      entity: pulumi.Input.fromValue(map['entity'] as String),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

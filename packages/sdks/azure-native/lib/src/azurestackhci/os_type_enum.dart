@@ -3,16 +3,15 @@ enum OsTypeEnum {
   valueLinux("Linux"),
   valueWindows("Windows");
 
-  const OsTypeEnum(this.value);
-  final String value;
+  const OsTypeEnum(this.wireValue);
+  final String wireValue;
 
   static OsTypeEnum fromValue(String value) {
     for (final item in OsTypeEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OsTypeEnum value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CassandraKeyspaceGetPropertiesResponseResource {
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final pulumi.Input<String> etag;
+
   /// Name of the Cosmos DB Cassandra keyspace
   final pulumi.Input<String> id;
+
   /// A system generated property. A unique identifier.
   final pulumi.Input<String> rid;
+
   /// A system generated property that denotes the last updated timestamp of the resource.
   final pulumi.Input<double> ts;
 
@@ -25,21 +28,17 @@ class CassandraKeyspaceGetPropertiesResponseResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'etag': etag,
-      'id': id,
-      'rid': rid,
-      'ts': ts,
-    };
+    return <String, dynamic>{'etag': etag, 'id': id, 'rid': rid, 'ts': ts};
   }
 
-  factory CassandraKeyspaceGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
+  factory CassandraKeyspaceGetPropertiesResponseResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CassandraKeyspaceGetPropertiesResponseResource(
-      etag: (map['etag'] as String).input(),
-      id: (map['id'] as String).input(),
-      rid: (map['rid'] as String).input(),
-      ts: (map['ts'] as double).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      rid: pulumi.Input.fromValue(map['rid'] as String),
+      ts: pulumi.Input.fromValue(map['ts'] as double),
     );
   }
 }
-

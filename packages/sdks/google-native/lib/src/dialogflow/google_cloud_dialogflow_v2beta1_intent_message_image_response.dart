@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentMessageImageResponse {
   /// A text description of the image to be used for accessibility, e.g., screen readers. Required if image_uri is set for CarouselSelect.
   final pulumi.Input<String> accessibilityText;
+
   /// Optional. The public URI to an image file.
   final pulumi.Input<String> imageUri;
 
@@ -24,11 +25,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageImageResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageImageResponse(
-      accessibilityText: (map['accessibilityText'] as String).input(),
-      imageUri: (map['imageUri'] as String).input(),
+      accessibilityText: pulumi.Input.fromValue(
+        map['accessibilityText'] as String,
+      ),
+      imageUri: pulumi.Input.fromValue(map['imageUri'] as String),
     );
   }
 }
-

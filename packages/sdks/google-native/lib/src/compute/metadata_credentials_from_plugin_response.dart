@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataCredentialsFromPluginResponse {
   /// Plugin name.
   final pulumi.Input<String> name;
+
   /// A text proto that conforms to a Struct type definition interpreted by the plugin.
   final pulumi.Input<String> structConfig;
 
@@ -18,17 +19,15 @@ class MetadataCredentialsFromPluginResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'structConfig': structConfig,
-    };
+    return <String, dynamic>{'name': name, 'structConfig': structConfig};
   }
 
-  factory MetadataCredentialsFromPluginResponse.fromMap(Map<String, dynamic> map) {
+  factory MetadataCredentialsFromPluginResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetadataCredentialsFromPluginResponse(
-      name: (map['name'] as String).input(),
-      structConfig: (map['structConfig'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      structConfig: pulumi.Input.fromValue(map['structConfig'] as String),
     );
   }
 }
-

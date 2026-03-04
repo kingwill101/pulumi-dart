@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackendServersBackendServer {
   /// backend server ID.
   final pulumi.Input<String> id;
+
   /// Type of the backend server.
   final pulumi.Input<String> serverType;
+
   /// Weight associated to the ECS instance.
   final pulumi.Input<int> weight;
 
@@ -30,10 +32,9 @@ class GetBackendServersBackendServer {
 
   factory GetBackendServersBackendServer.fromMap(Map<String, dynamic> map) {
     return GetBackendServersBackendServer(
-      id: (map['id'] as String).input(),
-      serverType: (map['serverType'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      serverType: pulumi.Input.fromValue(map['serverType'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

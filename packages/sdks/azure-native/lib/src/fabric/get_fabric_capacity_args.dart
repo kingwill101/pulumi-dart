@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFabricCapacityArgs {
   /// The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String> capacityName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetFabricCapacityArgs {
 
   factory GetFabricCapacityArgs.fromMap(Map<String, dynamic> map) {
     return GetFabricCapacityArgs(
-      capacityName: (map['capacityName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      capacityName: pulumi.Input.fromValue(map['capacityName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

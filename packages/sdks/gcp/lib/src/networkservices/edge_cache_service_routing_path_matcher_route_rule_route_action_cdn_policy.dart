@@ -9,25 +9,35 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
   /// Enable signature generation or propagation on this route.
   /// This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures>? addSignatures;
+  final pulumi.Input<
+    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures
+  >?
+  addSignatures;
+
   /// Defines the request parameters that contribute to the cache key.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy>? cacheKeyPolicy;
+  final pulumi.Input<
+    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy
+  >?
+  cacheKeyPolicy;
+
   /// Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
   /// For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
   /// Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
   final pulumi.Input<String>? cacheMode;
+
   /// Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
-  /// - The TTL must be > 0 and <= 86400s (1 day)
+  /// - The TTL must be &gt; 0 and &lt;= 86400s (1 day)
   /// - The clientTtl cannot be larger than the defaultTtl (if set)
   /// - Fractions of a second are not allowed.
   /// Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
   /// When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
   /// A duration in seconds terminated by 's'. Example: "3s".
   final pulumi.Input<String>? clientTtl;
+
   /// Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
   /// Defaults to 3600s (1 hour).
-  /// - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+  /// - The TTL must be &gt;= 0 and &lt;= 31,536,000 seconds (1 year)
   /// - Setting a TTL of "0" means "always revalidate" (equivalent to must-revalidate)
   /// - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
   /// - Fractions of a second are not allowed.
@@ -36,16 +46,18 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
   /// When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
   /// A duration in seconds terminated by 's'. Example: "3s".
   final pulumi.Input<String>? defaultTtl;
+
   /// Specifies the maximum allowed TTL for cached content served by this origin.
   /// Defaults to 86400s (1 day).
   /// Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
-  /// - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
+  /// - The TTL must be &gt;= 0 and &lt;= 31,536,000 seconds (1 year)
   /// - Setting a TTL of "0" means "always revalidate"
   /// - The value of maxTtl must be equal to or greater than defaultTtl.
   /// - Fractions of a second are not allowed.
   /// When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
   /// A duration in seconds terminated by 's'. Example: "3s".
   final pulumi.Input<String>? maxTtl;
+
   /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
   /// By default, the CDNPolicy will apply the following default TTLs to these status codes:
   /// - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
@@ -53,28 +65,36 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
   /// - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
   /// These defaults can be overridden in negativeCachingPolicy
   final pulumi.Input<bool>? negativeCaching;
+
   /// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
   /// - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
-  /// - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
+  /// - TTLs must be &gt;= 0 (where 0 is "always revalidate") and &lt;= 86400s (1 day)
   /// Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
   final pulumi.Input<Map<String, String>>? negativeCachingPolicy;
+
   /// The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
   final pulumi.Input<String>? signedRequestKeyset;
+
   /// Limit how far into the future the expiration time of a signed request may be.
   /// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
-  /// - The TTL must be > 0.
+  /// - The TTL must be &gt; 0.
   /// - Fractions of a second are not allowed.
   /// By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
   final pulumi.Input<String>? signedRequestMaximumExpirationTtl;
+
   /// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
   /// You must also set a signedRequestKeyset to enable signed requests.
   /// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
   /// Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
   final pulumi.Input<String>? signedRequestMode;
+
   /// Additional options for signed tokens.
   /// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
   /// Structure is documented below.
-  final pulumi.Input<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions>? signedTokenOptions;
+  final pulumi.Input<
+    EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions
+  >?
+  signedTokenOptions;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy].
   /// [addSignatures] Enable signature generation or propagation on this route.
@@ -106,8 +126,16 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addSignatures': ?pulumi.Input.mapOptionalInputValue<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures, Map<String, dynamic>>(addSignatures, (value) => value.toMap()),
-      'cacheKeyPolicy': ?pulumi.Input.mapOptionalInputValue<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy, Map<String, dynamic>>(cacheKeyPolicy, (value) => value.toMap()),
+      'addSignatures':
+          ?pulumi.Input.mapOptionalInputValue<
+            EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures,
+            Map<String, dynamic>
+          >(addSignatures, (value) => value.toMap()),
+      'cacheKeyPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy,
+            Map<String, dynamic>
+          >(cacheKeyPolicy, (value) => value.toMap()),
       'cacheMode': ?cacheMode,
       'clientTtl': ?clientTtl,
       'defaultTtl': ?defaultTtl,
@@ -117,25 +145,92 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
       'signedRequestKeyset': ?signedRequestKeyset,
       'signedRequestMaximumExpirationTtl': ?signedRequestMaximumExpirationTtl,
       'signedRequestMode': ?signedRequestMode,
-      'signedTokenOptions': ?pulumi.Input.mapOptionalInputValue<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions, Map<String, dynamic>>(signedTokenOptions, (value) => value.toMap()),
+      'signedTokenOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions,
+            Map<String, dynamic>
+          >(signedTokenOptions, (value) => value.toMap()),
     };
   }
 
-  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy.fromMap(Map<String, dynamic> map) {
+  factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(
-      addSignatures: map['addSignatures'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures.fromMap((map['addSignatures']! as Map).cast<String, dynamic>())).input(),
-      cacheKeyPolicy: map['cacheKeyPolicy'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy.fromMap((map['cacheKeyPolicy']! as Map).cast<String, dynamic>())).input(),
-      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode']! as String).input(),
-      clientTtl: map['clientTtl'] == null ? null : (map['clientTtl']! as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as String).input(),
-      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl']! as String).input(),
-      negativeCaching: map['negativeCaching'] == null ? null : (map['negativeCaching']! as bool).input(),
-      negativeCachingPolicy: map['negativeCachingPolicy'] == null ? null : ((map['negativeCachingPolicy']! as Map).cast<String, String>()).input(),
-      signedRequestKeyset: map['signedRequestKeyset'] == null ? null : (map['signedRequestKeyset']! as String).input(),
-      signedRequestMaximumExpirationTtl: map['signedRequestMaximumExpirationTtl'] == null ? null : (map['signedRequestMaximumExpirationTtl']! as String).input(),
-      signedRequestMode: map['signedRequestMode'] == null ? null : (map['signedRequestMode']! as String).input(),
-      signedTokenOptions: map['signedTokenOptions'] == null ? null : (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions.fromMap((map['signedTokenOptions']! as Map).cast<String, dynamic>())).input(),
+      addSignatures: (() {
+        final guardedValue = map['addSignatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cacheKeyPolicy: (() {
+        final guardedValue = map['cacheKeyPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      cacheMode: (() {
+        final guardedValue = map['cacheMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientTtl: (() {
+        final guardedValue = map['clientTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultTtl: (() {
+        final guardedValue = map['defaultTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxTtl: (() {
+        final guardedValue = map['maxTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      negativeCaching: (() {
+        final guardedValue = map['negativeCaching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      negativeCachingPolicy: (() {
+        final guardedValue = map['negativeCachingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      signedRequestKeyset: (() {
+        final guardedValue = map['signedRequestKeyset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signedRequestMaximumExpirationTtl: (() {
+        final guardedValue = map['signedRequestMaximumExpirationTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signedRequestMode: (() {
+        final guardedValue = map['signedRequestMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signedTokenOptions: (() {
+        final guardedValue = map['signedTokenOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

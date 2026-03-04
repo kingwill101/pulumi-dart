@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreBrowserNetworkConfigurationVpcConfig {
   /// Set of security group IDs for the VPC configuration.
   final pulumi.Input<List<String>> securityGroups;
+
   /// Set of subnet IDs for the VPC configuration.
   final pulumi.Input<List<String>> subnets;
 
@@ -23,11 +24,14 @@ class AgentcoreBrowserNetworkConfigurationVpcConfig {
     };
   }
 
-  factory AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreBrowserNetworkConfigurationVpcConfig(
-      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      securityGroups: pulumi.Input.fromValue(
+        (map['securityGroups'] as List).cast<String>(),
+      ),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

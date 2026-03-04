@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContextRuleResponse {
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
   final pulumi.Input<List<String>> allowedRequestExtensions;
+
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client.
   final pulumi.Input<List<String>> allowedResponseExtensions;
+
   /// A list of full type names of provided contexts.
   final pulumi.Input<List<String>> provided;
+
   /// A list of full type names of requested contexts.
   final pulumi.Input<List<String>> requested;
+
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
   final pulumi.Input<String> selector;
 
@@ -41,12 +45,19 @@ class ContextRuleResponse {
 
   factory ContextRuleResponse.fromMap(Map<String, dynamic> map) {
     return ContextRuleResponse(
-      allowedRequestExtensions: ((map['allowedRequestExtensions'] as List).cast<String>()).input(),
-      allowedResponseExtensions: ((map['allowedResponseExtensions'] as List).cast<String>()).input(),
-      provided: ((map['provided'] as List).cast<String>()).input(),
-      requested: ((map['requested'] as List).cast<String>()).input(),
-      selector: (map['selector'] as String).input(),
+      allowedRequestExtensions: pulumi.Input.fromValue(
+        (map['allowedRequestExtensions'] as List).cast<String>(),
+      ),
+      allowedResponseExtensions: pulumi.Input.fromValue(
+        (map['allowedResponseExtensions'] as List).cast<String>(),
+      ),
+      provided: pulumi.Input.fromValue(
+        (map['provided'] as List).cast<String>(),
+      ),
+      requested: pulumi.Input.fromValue(
+        (map['requested'] as List).cast<String>(),
+      ),
+      selector: pulumi.Input.fromValue(map['selector'] as String),
     );
   }
 }
-

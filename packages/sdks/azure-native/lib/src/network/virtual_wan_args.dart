@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualWanArgs {
   /// True if branch to branch traffic is allowed.
   final pulumi.Input<bool>? allowBranchToBranchTraffic;
+
   /// True if Vnet to Vnet traffic is allowed.
   final pulumi.Input<bool>? allowVnetToVnetTraffic;
+
   /// Vpn encryption to be disabled or not.
   final pulumi.Input<bool>? disableVpnEncryption;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The resource group name of the VirtualWan.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of the VirtualWAN.
   final pulumi.Input<String>? type;
+
   /// The name of the VirtualWAN being created or updated.
   final pulumi.Input<String>? virtualWANName;
 
@@ -64,16 +72,51 @@ class VirtualWanArgs {
 
   factory VirtualWanArgs.fromMap(Map<String, dynamic> map) {
     return VirtualWanArgs(
-      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : (map['allowBranchToBranchTraffic']! as bool).input(),
-      allowVnetToVnetTraffic: map['allowVnetToVnetTraffic'] == null ? null : (map['allowVnetToVnetTraffic']! as bool).input(),
-      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : (map['disableVpnEncryption']! as bool).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      virtualWANName: map['virtualWANName'] == null ? null : (map['virtualWANName']! as String).input(),
+      allowBranchToBranchTraffic: (() {
+        final guardedValue = map['allowBranchToBranchTraffic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowVnetToVnetTraffic: (() {
+        final guardedValue = map['allowVnetToVnetTraffic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      disableVpnEncryption: (() {
+        final guardedValue = map['disableVpnEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualWANName: (() {
+        final guardedValue = map['virtualWANName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

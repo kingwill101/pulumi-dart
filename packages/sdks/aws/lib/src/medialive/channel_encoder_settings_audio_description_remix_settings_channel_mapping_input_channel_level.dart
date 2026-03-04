@@ -15,17 +15,15 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChan
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gain': gain,
-      'inputChannel': inputChannel,
-    };
+    return <String, dynamic>{'gain': gain, 'inputChannel': inputChannel};
   }
 
-  factory ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel(
-      gain: (map['gain'] as int).input(),
-      inputChannel: (map['inputChannel'] as int).input(),
+      gain: pulumi.Input.fromValue(map['gain'] as int),
+      inputChannel: pulumi.Input.fromValue(map['inputChannel'] as int),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum SavingsOption {
   rI3Year("RI3Year"),
   savingsPlan3Year("SavingsPlan3Year");
 
-  const SavingsOption(this.value);
-  final String value;
+  const SavingsOption(this.wireValue);
+  final String wireValue;
 
   static SavingsOption fromValue(String value) {
     for (final item in SavingsOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SavingsOption value: $value');
   }
 }
-

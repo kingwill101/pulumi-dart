@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagerCrossTenantScope {
   /// A list of management groups used as cross tenant scope for the Network Manager.
   final pulumi.Input<List<String>> managementGroups;
+
   /// A list of subscriptions used as cross tenant scope for the Network Manager.
   final pulumi.Input<List<String>> subscriptions;
+
   /// The tenant ID of the cross tenant scope.
   final pulumi.Input<String> tenantId;
 
@@ -30,10 +32,13 @@ class GetNetworkManagerCrossTenantScope {
 
   factory GetNetworkManagerCrossTenantScope.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerCrossTenantScope(
-      managementGroups: ((map['managementGroups'] as List).cast<String>()).input(),
-      subscriptions: ((map['subscriptions'] as List).cast<String>()).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      managementGroups: pulumi.Input.fromValue(
+        (map['managementGroups'] as List).cast<String>(),
+      ),
+      subscriptions: pulumi.Input.fromValue(
+        (map['subscriptions'] as List).cast<String>(),
+      ),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

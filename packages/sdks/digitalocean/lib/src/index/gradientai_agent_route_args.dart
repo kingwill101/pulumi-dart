@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GradientaiAgentRouteArgs {
   /// The UUID of the child agent.
   final pulumi.Input<String> childAgentUuid;
+
   /// if-case condition for the route.
   final pulumi.Input<String>? ifCase;
+
   /// The UUID of the parent agent.
   final pulumi.Input<String> parentAgentUuid;
   final pulumi.Input<bool>? rollback;
+
   /// A name for the route.
   final pulumi.Input<String>? routeName;
 
@@ -43,12 +46,23 @@ class GradientaiAgentRouteArgs {
 
   factory GradientaiAgentRouteArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentRouteArgs(
-      childAgentUuid: (map['childAgentUuid'] as String).input(),
-      ifCase: map['ifCase'] == null ? null : (map['ifCase']! as String).input(),
-      parentAgentUuid: (map['parentAgentUuid'] as String).input(),
-      rollback: map['rollback'] == null ? null : (map['rollback']! as bool).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
+      childAgentUuid: pulumi.Input.fromValue(map['childAgentUuid'] as String),
+      ifCase: (() {
+        final guardedValue = map['ifCase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentAgentUuid: pulumi.Input.fromValue(map['parentAgentUuid'] as String),
+      rollback: (() {
+        final guardedValue = map['rollback'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      routeName: (() {
+        final guardedValue = map['routeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -2,19 +2,18 @@
 enum TransferOptionsOverwriteWhen {
   overwriteWhenUnspecified("OVERWRITE_WHEN_UNSPECIFIED"),
   different("DIFFERENT"),
-  never("NEVER"),
+  never_("NEVER"),
   always("ALWAYS");
 
-  const TransferOptionsOverwriteWhen(this.value);
-  final String value;
+  const TransferOptionsOverwriteWhen(this.wireValue);
+  final String wireValue;
 
   static TransferOptionsOverwriteWhen fromValue(String value) {
     for (final item in TransferOptionsOverwriteWhen.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransferOptionsOverwriteWhen value: $value');
   }
 }
-

@@ -9,16 +9,15 @@ enum Permissions {
   valueU("u"),
   valueP("p");
 
-  const Permissions(this.value);
-  final String value;
+  const Permissions(this.wireValue);
+  final String wireValue;
 
   static Permissions fromValue(String value) {
     for (final item in Permissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Permissions value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserGroupsGroup {
   /// Description of the user group.
   final pulumi.Input<String> description;
+
   /// Name of the user group.
   final pulumi.Input<String> groupName;
+
   /// Precedence of the user group.
   final pulumi.Input<int> precedence;
+
   /// ARN of the IAM role to be associated with the user group.
   final pulumi.Input<String> roleArn;
 
@@ -35,11 +38,10 @@ class GetUserGroupsGroup {
 
   factory GetUserGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsGroup(
-      description: (map['description'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      precedence: (map['precedence'] as int).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      precedence: pulumi.Input.fromValue(map['precedence'] as int),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

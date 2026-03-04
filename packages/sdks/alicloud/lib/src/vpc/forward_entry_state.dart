@@ -6,26 +6,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForwardEntryState {
   /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
   final pulumi.Input<String>? externalIp;
+
   /// The external port, valid value is 1~65535|any.
   final pulumi.Input<String>? externalPort;
+
   /// The id of the forward entry on the server.
   final pulumi.Input<String>? forwardEntryId;
+
   /// The name of forward entry.
   final pulumi.Input<String>? forwardEntryName;
+
   /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
   final pulumi.Input<String>? forwardTableId;
+
   /// The internal ip, must a private ip.
   final pulumi.Input<String>? internalIp;
+
   /// The internal port, valid value is 1~65535|any.
   final pulumi.Input<String>? internalPort;
+
   /// The ip protocol, valid value is tcp|udp|any.
   final pulumi.Input<String>? ipProtocol;
+
   /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
   final pulumi.Input<String>? name;
+
   /// Specifies whether to remove limits on the port range. Default value is `false`.
   ///
-  /// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+  /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
   final pulumi.Input<bool>? portBreak;
+
   /// (Available since v1.119.1) The status of forward entry.
   final pulumi.Input<String>? status;
 
@@ -73,18 +83,61 @@ class ForwardEntryState {
 
   factory ForwardEntryState.fromMap(Map<String, dynamic> map) {
     return ForwardEntryState(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
-      externalPort: map['externalPort'] == null ? null : (map['externalPort']! as String).input(),
-      forwardEntryId: map['forwardEntryId'] == null ? null : (map['forwardEntryId']! as String).input(),
-      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName']! as String).input(),
-      forwardTableId: map['forwardTableId'] == null ? null : (map['forwardTableId']! as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
-      internalPort: map['internalPort'] == null ? null : (map['internalPort']! as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      portBreak: map['portBreak'] == null ? null : (map['portBreak']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      externalIp: (() {
+        final guardedValue = map['externalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalPort: (() {
+        final guardedValue = map['externalPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forwardEntryId: (() {
+        final guardedValue = map['forwardEntryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forwardEntryName: (() {
+        final guardedValue = map['forwardEntryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forwardTableId: (() {
+        final guardedValue = map['forwardTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internalIp: (() {
+        final guardedValue = map['internalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internalPort: (() {
+        final guardedValue = map['internalPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipProtocol: (() {
+        final guardedValue = map['ipProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portBreak: (() {
+        final guardedValue = map['portBreak'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

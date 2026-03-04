@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersAuroraPostgresql {
   /// The database to which to connect.
   final pulumi.Input<String> database;
+
   /// The host to which to connect.
   final pulumi.Input<String> host;
+
   /// The port to which to connect.
   final pulumi.Input<int> port;
 
@@ -21,19 +23,16 @@ class DataSourceParametersAuroraPostgresql {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'database': database,
-      'host': host,
-      'port': port,
-    };
+    return <String, dynamic>{'database': database, 'host': host, 'port': port};
   }
 
-  factory DataSourceParametersAuroraPostgresql.fromMap(Map<String, dynamic> map) {
+  factory DataSourceParametersAuroraPostgresql.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceParametersAuroraPostgresql(
-      database: (map['database'] as String).input(),
-      host: (map['host'] as String).input(),
-      port: (map['port'] as int).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

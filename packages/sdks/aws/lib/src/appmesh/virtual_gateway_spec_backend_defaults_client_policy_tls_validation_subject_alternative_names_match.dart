@@ -13,15 +13,14 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exacts': exacts,
-    };
+    return <String, dynamic>{'exacts': exacts};
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap(Map<String, dynamic> map) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch(
-      exacts: ((map['exacts'] as List).cast<String>()).input(),
+      exacts: pulumi.Input.fromValue((map['exacts'] as List).cast<String>()),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRuntimeEnvironmentArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Runtime Environment.
   final pulumi.Input<String> runtimeEnvironmentName;
 
@@ -34,10 +36,15 @@ class GetRuntimeEnvironmentArgs {
 
   factory GetRuntimeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeEnvironmentArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runtimeEnvironmentName: (map['runtimeEnvironmentName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      runtimeEnvironmentName: pulumi.Input.fromValue(
+        map['runtimeEnvironmentName'] as String,
+      ),
     );
   }
 }
-

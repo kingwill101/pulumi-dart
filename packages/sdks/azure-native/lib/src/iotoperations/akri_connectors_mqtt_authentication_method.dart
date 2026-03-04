@@ -2,16 +2,17 @@
 enum AkriConnectorsMqttAuthenticationMethod {
   serviceAccountToken("ServiceAccountToken");
 
-  const AkriConnectorsMqttAuthenticationMethod(this.value);
-  final String value;
+  const AkriConnectorsMqttAuthenticationMethod(this.wireValue);
+  final String wireValue;
 
   static AkriConnectorsMqttAuthenticationMethod fromValue(String value) {
     for (final item in AkriConnectorsMqttAuthenticationMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AkriConnectorsMqttAuthenticationMethod value: $value');
+    throw ArgumentError(
+      'Unknown AkriConnectorsMqttAuthenticationMethod value: $value',
+    );
   }
 }
-

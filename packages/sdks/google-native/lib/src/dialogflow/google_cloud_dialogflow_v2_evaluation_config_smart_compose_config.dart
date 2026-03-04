@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
   /// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
   final pulumi.Input<String>? allowlistDocument;
+
   /// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
   final pulumi.Input<int> maxResultCount;
 
@@ -24,11 +25,16 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
     };
   }
 
-  factory GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig(
-      allowlistDocument: map['allowlistDocument'] == null ? null : (map['allowlistDocument']! as String).input(),
-      maxResultCount: (map['maxResultCount'] as int).input(),
+      allowlistDocument: (() {
+        final guardedValue = map['allowlistDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxResultCount: pulumi.Input.fromValue(map['maxResultCount'] as int),
     );
   }
 }
-

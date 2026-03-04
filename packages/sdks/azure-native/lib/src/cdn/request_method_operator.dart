@@ -2,16 +2,15 @@
 enum RequestMethodOperator {
   equal("Equal");
 
-  const RequestMethodOperator(this.value);
-  final String value;
+  const RequestMethodOperator(this.wireValue);
+  final String wireValue;
 
   static RequestMethodOperator fromValue(String value) {
     for (final item in RequestMethodOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequestMethodOperator value: $value');
   }
 }
-

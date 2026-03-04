@@ -7,16 +7,15 @@ enum NICType {
   valueVMXNET2("VMXNET2"),
   valueVMXNET3("VMXNET3");
 
-  const NICType(this.value);
-  final String value;
+  const NICType(this.wireValue);
+  final String wireValue;
 
   static NICType fromValue(String value) {
     for (final item in NICType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NICType value: $value');
   }
 }
-

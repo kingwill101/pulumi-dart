@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobTemplateTemplateVolumeNf {
   /// Path that is exported by the NFS server.
   final pulumi.Input<String> path;
+
   /// If true, mount this volume as read-only in all mounts.
   final pulumi.Input<bool> readOnly;
+
   /// Hostname or IP address of the NFS server.
   final pulumi.Input<String> server;
 
@@ -30,10 +32,9 @@ class GetJobTemplateTemplateVolumeNf {
 
   factory GetJobTemplateTemplateVolumeNf.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateVolumeNf(
-      path: (map['path'] as String).input(),
-      readOnly: (map['readOnly'] as bool).input(),
-      server: (map['server'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
+      server: pulumi.Input.fromValue(map['server'] as String),
     );
   }
 }
-

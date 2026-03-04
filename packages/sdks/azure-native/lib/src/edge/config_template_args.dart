@@ -10,12 +10,16 @@ import 'config_template_properties.dart';
 class ConfigTemplateArgs {
   /// The name of the ConfigTemplate
   final pulumi.Input<String>? configTemplateName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<ConfigTemplateProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,7 +41,11 @@ class ConfigTemplateArgs {
     return <String, dynamic>{
       'configTemplateName': ?configTemplateName,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ConfigTemplateProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigTemplateProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -45,12 +53,35 @@ class ConfigTemplateArgs {
 
   factory ConfigTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ConfigTemplateArgs(
-      configTemplateName: map['configTemplateName'] == null ? null : (map['configTemplateName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (ConfigTemplateProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      configTemplateName: (() {
+        final guardedValue = map['configTemplateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigTemplateProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

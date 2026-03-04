@@ -6,8 +6,10 @@ import 'lldp_neighbor_response.dart';
 class NicResponse {
   /// The information about the device connected to this NIC.
   final pulumi.Input<LldpNeighborResponse> lldpNeighbor;
+
   /// The MAC address associated with this NIC.
   final pulumi.Input<String> macAddress;
+
   /// The name of the NIC/interface.
   final pulumi.Input<String> name;
 
@@ -23,7 +25,11 @@ class NicResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lldpNeighbor': pulumi.Input.mapInputValue<LldpNeighborResponse, Map<String, dynamic>>(lldpNeighbor, (value) => value.toMap()),
+      'lldpNeighbor':
+          pulumi.Input.mapInputValue<
+            LldpNeighborResponse,
+            Map<String, dynamic>
+          >(lldpNeighbor, (value) => value.toMap()),
       'macAddress': macAddress,
       'name': name,
     };
@@ -31,10 +37,13 @@ class NicResponse {
 
   factory NicResponse.fromMap(Map<String, dynamic> map) {
     return NicResponse(
-      lldpNeighbor: (LldpNeighborResponse.fromMap((map['lldpNeighbor'] as Map).cast<String, dynamic>())).input(),
-      macAddress: (map['macAddress'] as String).input(),
-      name: (map['name'] as String).input(),
+      lldpNeighbor: pulumi.Input.fromValue(
+        LldpNeighborResponse.fromMap(
+          (map['lldpNeighbor']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

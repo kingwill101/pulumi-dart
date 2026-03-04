@@ -18,10 +18,13 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(
-      dataprocMetastoreService: (map['dataprocMetastoreService'] as String).input(),
+      dataprocMetastoreService: pulumi.Input.fromValue(
+        map['dataprocMetastoreService'] as String,
+      ),
     );
   }
 }
-

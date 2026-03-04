@@ -1,27 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPolicyDefintionBuiltIn.
 class GetPolicyDefintionBuiltInResult {
   /// The Description of the Policy.
   final String description;
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? managementGroupName;
+
   /// Any Metadata defined in the Policy.
   final String metadata;
+
   /// The Mode of the Policy.
   final String mode;
   final String name;
+
   /// Any Parameters defined in the Policy.
   final String parameters;
+
   /// The Rule as defined (in JSON) in the Policy.
   final String policyRule;
+
   /// The Type of the Policy. Possible values are `BuiltIn`, `Custom` and `NotSpecified`.
   final String policyType;
+
   /// A list of role definition id extracted from `policy_rule` required for remediation.
   final List<String> roleDefinitionIds;
+
   /// The Type of Policy.
   final String type;
 
@@ -75,7 +82,11 @@ class GetPolicyDefintionBuiltInResult {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      managementGroupName: map['managementGroupName'] == null ? null : map['managementGroupName']! as String,
+      managementGroupName: (() {
+        final guardedValue = map['managementGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       metadata: map['metadata'] as String,
       mode: map['mode'] as String,
       name: map['name'] as String,
@@ -87,4 +98,3 @@ class GetPolicyDefintionBuiltInResult {
     );
   }
 }
-

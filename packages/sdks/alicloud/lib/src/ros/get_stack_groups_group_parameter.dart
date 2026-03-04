@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStackGroupsGroupParameter {
   /// The parameter key.
   final pulumi.Input<String> parameterKey;
+
   /// The parameter value.
   final pulumi.Input<String> parameterValue;
 
@@ -25,9 +26,8 @@ class GetStackGroupsGroupParameter {
 
   factory GetStackGroupsGroupParameter.fromMap(Map<String, dynamic> map) {
     return GetStackGroupsGroupParameter(
-      parameterKey: (map['parameterKey'] as String).input(),
-      parameterValue: (map['parameterValue'] as String).input(),
+      parameterKey: pulumi.Input.fromValue(map['parameterKey'] as String),
+      parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
-

@@ -14,15 +14,18 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'iouThreshold': ?iouThreshold,
-    };
+    return <String, dynamic>{'iouThreshold': ?iouThreshold};
   }
 
-  factory GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(
-      iouThreshold: map['iouThreshold'] == null ? null : (map['iouThreshold']! as double).input(),
+      iouThreshold: (() {
+        final guardedValue = map['iouThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

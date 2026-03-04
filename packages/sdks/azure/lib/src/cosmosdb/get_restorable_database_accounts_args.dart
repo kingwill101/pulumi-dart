@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRestorableDatabaseAccountsArgs {
   /// The location where the Cosmos DB Database Account.
   final pulumi.Input<String> location;
+
   /// The name of this Cosmos DB Database Account.
   final pulumi.Input<String> name;
 
@@ -21,17 +22,13 @@ class GetRestorableDatabaseAccountsArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-      'name': name,
-    };
+    return <String, dynamic>{'location': location, 'name': name};
   }
 
   factory GetRestorableDatabaseAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorableDatabaseAccountsArgs(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum AllowCrashDumpCollection {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const AllowCrashDumpCollection(this.value);
-  final String value;
+  const AllowCrashDumpCollection(this.wireValue);
+  final String wireValue;
 
   static AllowCrashDumpCollection fromValue(String value) {
     for (final item in AllowCrashDumpCollection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllowCrashDumpCollection value: $value');
   }
 }
-

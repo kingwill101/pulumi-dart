@@ -15,11 +15,7 @@ class GetScopeArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [scopeId] Required.
-  GetScopeArgs({
-    required this.location,
-    this.project,
-    required this.scopeId,
-  });
+  GetScopeArgs({required this.location, this.project, required this.scopeId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetScopeArgs {
 
   factory GetScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      scopeId: (map['scopeId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTaskArgs {
   /// Expand the response
   final pulumi.Input<String>? expand;
+
   /// Name of the resource group
   final pulumi.Input<String> groupName;
+
   /// Name of the project
   final pulumi.Input<String> projectName;
+
   /// Name of the service
   final pulumi.Input<String> serviceName;
+
   /// Name of the Task
   final pulumi.Input<String> taskName;
 
@@ -44,12 +48,15 @@ class GetTaskArgs {
 
   factory GetTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      taskName: (map['taskName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      taskName: pulumi.Input.fromValue(map['taskName'] as String),
     );
   }
 }
-

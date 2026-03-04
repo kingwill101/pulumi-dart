@@ -9,7 +9,8 @@ import 'repository_association_repository_s3_bucket.dart';
 class RepositoryAssociationRepository {
   final pulumi.Input<RepositoryAssociationRepositoryBitbucket>? bitbucket;
   final pulumi.Input<RepositoryAssociationRepositoryCodecommit>? codecommit;
-  final pulumi.Input<RepositoryAssociationRepositoryGithubEnterpriseServer>? githubEnterpriseServer;
+  final pulumi.Input<RepositoryAssociationRepositoryGithubEnterpriseServer>?
+  githubEnterpriseServer;
   final pulumi.Input<RepositoryAssociationRepositoryS3Bucket>? s3Bucket;
 
   /// Creates a new [RepositoryAssociationRepository].
@@ -26,20 +27,67 @@ class RepositoryAssociationRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bitbucket': ?pulumi.Input.mapOptionalInputValue<RepositoryAssociationRepositoryBitbucket, Map<String, dynamic>>(bitbucket, (value) => value.toMap()),
-      'codecommit': ?pulumi.Input.mapOptionalInputValue<RepositoryAssociationRepositoryCodecommit, Map<String, dynamic>>(codecommit, (value) => value.toMap()),
-      'githubEnterpriseServer': ?pulumi.Input.mapOptionalInputValue<RepositoryAssociationRepositoryGithubEnterpriseServer, Map<String, dynamic>>(githubEnterpriseServer, (value) => value.toMap()),
-      's3Bucket': ?pulumi.Input.mapOptionalInputValue<RepositoryAssociationRepositoryS3Bucket, Map<String, dynamic>>(s3Bucket, (value) => value.toMap()),
+      'bitbucket':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryAssociationRepositoryBitbucket,
+            Map<String, dynamic>
+          >(bitbucket, (value) => value.toMap()),
+      'codecommit':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryAssociationRepositoryCodecommit,
+            Map<String, dynamic>
+          >(codecommit, (value) => value.toMap()),
+      'githubEnterpriseServer':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryAssociationRepositoryGithubEnterpriseServer,
+            Map<String, dynamic>
+          >(githubEnterpriseServer, (value) => value.toMap()),
+      's3Bucket':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryAssociationRepositoryS3Bucket,
+            Map<String, dynamic>
+          >(s3Bucket, (value) => value.toMap()),
     };
   }
 
   factory RepositoryAssociationRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationRepository(
-      bitbucket: map['bitbucket'] == null ? null : ((RepositoryAssociationRepositoryBitbucket.fromMap((map['bitbucket']! as Map).cast<String, dynamic>())).input()).input(),
-      codecommit: map['codecommit'] == null ? null : ((RepositoryAssociationRepositoryCodecommit.fromMap((map['codecommit']! as Map).cast<String, dynamic>())).input()).input(),
-      githubEnterpriseServer: map['githubEnterpriseServer'] == null ? null : ((RepositoryAssociationRepositoryGithubEnterpriseServer.fromMap((map['githubEnterpriseServer']! as Map).cast<String, dynamic>())).input()).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : ((RepositoryAssociationRepositoryS3Bucket.fromMap((map['s3Bucket']! as Map).cast<String, dynamic>())).input()).input(),
+      bitbucket: (() {
+        final guardedValue = map['bitbucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryAssociationRepositoryBitbucket.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      codecommit: (() {
+        final guardedValue = map['codecommit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryAssociationRepositoryCodecommit.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      githubEnterpriseServer: (() {
+        final guardedValue = map['githubEnterpriseServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryAssociationRepositoryGithubEnterpriseServer.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3Bucket: (() {
+        final guardedValue = map['s3Bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryAssociationRepositoryS3Bucket.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

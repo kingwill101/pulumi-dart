@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProbeSettings {
   /// The number of failures to allow before returning an unhealthy status.
   final pulumi.Input<int>? failureThreshold;
+
   /// The delay before the first probe in ISO 8601 format.
   final pulumi.Input<String>? initialDelay;
+
   /// The length of time between probes in ISO 8601 format.
   final pulumi.Input<String>? period;
+
   /// The number of successful probes before returning a healthy status.
   final pulumi.Input<int>? successThreshold;
+
   /// The probe timeout in ISO 8601 format.
   final pulumi.Input<String>? timeout;
 
@@ -41,12 +45,31 @@ class ProbeSettings {
 
   factory ProbeSettings.fromMap(Map<String, dynamic> map) {
     return ProbeSettings(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
-      initialDelay: map['initialDelay'] == null ? null : (map['initialDelay']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as String).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      failureThreshold: (() {
+        final guardedValue = map['failureThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      initialDelay: (() {
+        final guardedValue = map['initialDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      successThreshold: (() {
+        final guardedValue = map['successThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

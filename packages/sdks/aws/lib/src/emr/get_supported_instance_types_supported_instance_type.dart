@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSupportedInstanceTypesSupportedInstanceType {
   /// CPU architecture.
   final pulumi.Input<String> architecture;
+
   /// Indicates whether the instance type supports Amazon EBS optimization.
   final pulumi.Input<bool> ebsOptimizedAvailable;
+
   /// Indicates whether the instance type uses Amazon EBS optimization by default.
   final pulumi.Input<bool> ebsOptimizedByDefault;
+
   /// Indicates whether the instance type only supports Amazon EBS.
   final pulumi.Input<bool> ebsStorageOnly;
+
   /// The Amazon EC2 family and generation for the instance type.
   final pulumi.Input<String> instanceFamilyId;
+
   /// Indicates whether the instance type only supports 64-bit architecture.
   final pulumi.Input<bool> is64BitsOnly;
+
   /// Memory that is available to Amazon EMR from the instance type.
   final pulumi.Input<double> memoryGb;
+
   /// Number of disks for the instance type.
   final pulumi.Input<int> numberOfDisks;
+
   /// Storage capacity of the instance type.
   final pulumi.Input<int> storageGb;
+
   /// Amazon EC2 instance type. For example, `m5.xlarge`.
   final pulumi.Input<String> type;
+
   /// The number of vCPUs available for the instance type.
   final pulumi.Input<int> vcpu;
 
@@ -68,20 +78,27 @@ class GetSupportedInstanceTypesSupportedInstanceType {
     };
   }
 
-  factory GetSupportedInstanceTypesSupportedInstanceType.fromMap(Map<String, dynamic> map) {
+  factory GetSupportedInstanceTypesSupportedInstanceType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSupportedInstanceTypesSupportedInstanceType(
-      architecture: (map['architecture'] as String).input(),
-      ebsOptimizedAvailable: (map['ebsOptimizedAvailable'] as bool).input(),
-      ebsOptimizedByDefault: (map['ebsOptimizedByDefault'] as bool).input(),
-      ebsStorageOnly: (map['ebsStorageOnly'] as bool).input(),
-      instanceFamilyId: (map['instanceFamilyId'] as String).input(),
-      is64BitsOnly: (map['is64BitsOnly'] as bool).input(),
-      memoryGb: (map['memoryGb'] as double).input(),
-      numberOfDisks: (map['numberOfDisks'] as int).input(),
-      storageGb: (map['storageGb'] as int).input(),
-      type: (map['type'] as String).input(),
-      vcpu: (map['vcpu'] as int).input(),
+      architecture: pulumi.Input.fromValue(map['architecture'] as String),
+      ebsOptimizedAvailable: pulumi.Input.fromValue(
+        map['ebsOptimizedAvailable'] as bool,
+      ),
+      ebsOptimizedByDefault: pulumi.Input.fromValue(
+        map['ebsOptimizedByDefault'] as bool,
+      ),
+      ebsStorageOnly: pulumi.Input.fromValue(map['ebsStorageOnly'] as bool),
+      instanceFamilyId: pulumi.Input.fromValue(
+        map['instanceFamilyId'] as String,
+      ),
+      is64BitsOnly: pulumi.Input.fromValue(map['is64BitsOnly'] as bool),
+      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
+      numberOfDisks: pulumi.Input.fromValue(map['numberOfDisks'] as int),
+      storageGb: pulumi.Input.fromValue(map['storageGb'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      vcpu: pulumi.Input.fromValue(map['vcpu'] as int),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ConversationConversationStage {
   virtualAgentStage("VIRTUAL_AGENT_STAGE"),
   humanAssistStage("HUMAN_ASSIST_STAGE");
 
-  const ConversationConversationStage(this.value);
-  final String value;
+  const ConversationConversationStage(this.wireValue);
+  final String wireValue;
 
   static ConversationConversationStage fromValue(String value) {
     for (final item in ConversationConversationStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConversationConversationStage value: $value');
   }
 }
-

@@ -3,16 +3,17 @@ enum SubnetworkIpv6AccessTypeComputeV1 {
   external("EXTERNAL"),
   internal("INTERNAL");
 
-  const SubnetworkIpv6AccessTypeComputeV1(this.value);
-  final String value;
+  const SubnetworkIpv6AccessTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static SubnetworkIpv6AccessTypeComputeV1 fromValue(String value) {
     for (final item in SubnetworkIpv6AccessTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkIpv6AccessTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkIpv6AccessTypeComputeV1 value: $value',
+    );
   }
 }
-

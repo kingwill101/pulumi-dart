@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplatesArgs {
   /// AWS Region to which the quota increases apply.
   final pulumi.Input<String>? awsRegion;
+
   /// AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetTemplatesArgs].
   /// [awsRegion] AWS Region to which the quota increases apply.
   /// [region] AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
-  GetTemplatesArgs({
-    this.awsRegion,
-    this.region,
-  });
+  GetTemplatesArgs({this.awsRegion, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'awsRegion': ?awsRegion,
-      'region': ?region,
-    };
+    return <String, dynamic>{'awsRegion': ?awsRegion, 'region': ?region};
   }
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplatesArgs(
-      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -12,15 +12,14 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'chatbotId': chatbotId,
-    };
+    return <String, dynamic>{'chatbotId': chatbotId};
   }
 
-  factory GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier(
-      chatbotId: (map['chatbotId'] as String).input(),
+      chatbotId: pulumi.Input.fromValue(map['chatbotId'] as String),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum FunctionEnvironmentCloudfunctionsV2beta {
   gen1("GEN_1"),
   gen2("GEN_2");
 
-  const FunctionEnvironmentCloudfunctionsV2beta(this.value);
-  final String value;
+  const FunctionEnvironmentCloudfunctionsV2beta(this.wireValue);
+  final String wireValue;
 
   static FunctionEnvironmentCloudfunctionsV2beta fromValue(String value) {
     for (final item in FunctionEnvironmentCloudfunctionsV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FunctionEnvironmentCloudfunctionsV2beta value: $value');
+    throw ArgumentError(
+      'Unknown FunctionEnvironmentCloudfunctionsV2beta value: $value',
+    );
   }
 }
-

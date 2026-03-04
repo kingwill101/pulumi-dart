@@ -8,19 +8,25 @@ import 'get_ecs_key_pairs_pair.dart';
 class GetEcsKeyPairsResult {
   /// The fingerprint of the Key Pair.
   final String? fingerPrint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// (Deprecated since v1.121.0) A list of Ecs Key Pairs. Each element contains the following attributes:
   final List<GetEcsKeyPairsKeyPair> keyPairs;
   final String? nameRegex;
+
   /// A list of Key Pair names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of Ecs Key Pairs. Each element contains the following attributes:
   final List<GetEcsKeyPairsPair> pairs;
+
   /// The ID of the resource group.
   final String? resourceGroupId;
+
   /// The tags of the Key Pair.
   final Map<String, String>? tags;
 
@@ -53,11 +59,19 @@ class GetEcsKeyPairsResult {
       'fingerPrint': ?fingerPrint,
       'id': id,
       'ids': ids,
-      'keyPairs': pulumi.Input.encodeList<GetEcsKeyPairsKeyPair, Map<String, dynamic>>(keyPairs, (value) => value.toMap()),
+      'keyPairs':
+          pulumi.Input.encodeList<GetEcsKeyPairsKeyPair, Map<String, dynamic>>(
+            keyPairs,
+            (value) => value.toMap(),
+          ),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'pairs': pulumi.Input.encodeList<GetEcsKeyPairsPair, Map<String, dynamic>>(pairs, (value) => value.toMap()),
+      'pairs':
+          pulumi.Input.encodeList<GetEcsKeyPairsPair, Map<String, dynamic>>(
+            pairs,
+            (value) => value.toMap(),
+          ),
       'resourceGroupId': ?resourceGroupId,
       'tags': ?tags,
     };
@@ -65,17 +79,45 @@ class GetEcsKeyPairsResult {
 
   factory GetEcsKeyPairsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsKeyPairsResult(
-      fingerPrint: map['fingerPrint'] == null ? null : map['fingerPrint']! as String,
+      fingerPrint: (() {
+        final guardedValue = map['fingerPrint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyPairs: pulumi.Input.decodeList<GetEcsKeyPairsKeyPair>(map['keyPairs'], (value) => GetEcsKeyPairsKeyPair.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      keyPairs: pulumi.Input.decodeList<GetEcsKeyPairsKeyPair>(
+        map['keyPairs']!,
+        (value) => GetEcsKeyPairsKeyPair.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pairs: pulumi.Input.decodeList<GetEcsKeyPairsPair>(map['pairs'], (value) => GetEcsKeyPairsPair.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pairs: pulumi.Input.decodeList<GetEcsKeyPairsPair>(
+        map['pairs']!,
+        (value) =>
+            GetEcsKeyPairsPair.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

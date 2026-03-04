@@ -373,7 +373,7 @@ import 'monitor_user.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Datadog` - 2021-03-01
@@ -388,22 +388,31 @@ import 'monitor_user.dart';
 class Monitor extends pulumi.CustomResource {
   /// A `datadog_organization` block as defined below.
   late final pulumi.Output<MonitorDatadogOrganization> datadogOrganization;
+
   /// A `identity` block as defined below.
   late final pulumi.Output<MonitorIdentity?> identity;
+
   /// The Azure Region where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
   late final pulumi.Output<String> location;
+
   /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
   late final pulumi.Output<String> marketplaceSubscriptionStatus;
+
   /// Is monitoring enabled? Defaults to `true`.
   late final pulumi.Output<bool?> monitoringEnabled;
+
   /// The name of the user that will be associated with the Datadog Monitor. Changing this forces a new Datadog Monitor to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name which should be used for this sku.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags which should be assigned to the Datadog Monitor.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `user` block as defined below.
   late final pulumi.Output<MonitorUser> user;
 
@@ -416,21 +425,25 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datadog/monitor:Monitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.datadogOrganization = registerOutput<MonitorDatadogOrganization>('datadogOrganization');
-    this.identity = registerOutput<MonitorIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.marketplaceSubscriptionStatus = registerOutput<String>('marketplaceSubscriptionStatus');
-    this.monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
+         'azure:datadog/monitor:Monitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    datadogOrganization = registerOutput<MonitorDatadogOrganization>(
+      'datadogOrganization',
+    );
+    identity = registerOutput<MonitorIdentity?>('identity');
+    location = registerOutput<String>('location');
+    marketplaceSubscriptionStatus = registerOutput<String>(
+      'marketplaceSubscriptionStatus',
+    );
+    monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.user = registerOutput<MonitorUser>('user');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    user = registerOutput<MonitorUser>('user');
   }
 
   /// Gets an existing [Monitor] resource's state with the given [name] and [id].
@@ -451,20 +464,24 @@ class Monitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datadog/monitor:Monitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.datadogOrganization = registerOutput<MonitorDatadogOrganization>('datadogOrganization');
-    this.identity = registerOutput<MonitorIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.marketplaceSubscriptionStatus = registerOutput<String>('marketplaceSubscriptionStatus');
-    this.monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
+         'azure:datadog/monitor:Monitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    datadogOrganization = registerOutput<MonitorDatadogOrganization>(
+      'datadogOrganization',
+    );
+    identity = registerOutput<MonitorIdentity?>('identity');
+    location = registerOutput<String>('location');
+    marketplaceSubscriptionStatus = registerOutput<String>(
+      'marketplaceSubscriptionStatus',
+    );
+    monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.user = registerOutput<MonitorUser>('user');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    user = registerOutput<MonitorUser>('user');
   }
 }

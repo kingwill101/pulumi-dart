@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoProvisioningGroupLaunchTemplateConfig {
   /// The instance type of the Nth extended configurations of the launch template.
   final pulumi.Input<String>? instanceType;
+
   /// The maximum price of the instance type specified in the Nth extended configurations of the launch template.
   final pulumi.Input<String> maxPrice;
+
   /// The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
   final pulumi.Input<String>? priority;
+
   /// The ID of the VSwitch in the Nth extended configurations of the launch template.
   final pulumi.Input<String> vswitchId;
+
   /// The weight of the instance type specified in the Nth extended configurations of the launch template.
   final pulumi.Input<String> weightedCapacity;
 
@@ -38,14 +42,25 @@ class AutoProvisioningGroupLaunchTemplateConfig {
     };
   }
 
-  factory AutoProvisioningGroupLaunchTemplateConfig.fromMap(Map<String, dynamic> map) {
+  factory AutoProvisioningGroupLaunchTemplateConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutoProvisioningGroupLaunchTemplateConfig(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      maxPrice: (map['maxPrice'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      weightedCapacity: (map['weightedCapacity'] as String).input(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxPrice: pulumi.Input.fromValue(map['maxPrice'] as String),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      weightedCapacity: pulumi.Input.fromValue(
+        map['weightedCapacity'] as String,
+      ),
     );
   }
 }
-

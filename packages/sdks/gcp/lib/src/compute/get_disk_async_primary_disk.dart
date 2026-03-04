@@ -8,20 +8,15 @@ class GetDiskAsyncPrimaryDisk {
 
   /// Creates a new [GetDiskAsyncPrimaryDisk].
   /// [disk] Primary disk for asynchronous disk replication.
-  GetDiskAsyncPrimaryDisk({
-    required this.disk,
-  });
+  GetDiskAsyncPrimaryDisk({required this.disk});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disk': disk,
-    };
+    return <String, dynamic>{'disk': disk};
   }
 
   factory GetDiskAsyncPrimaryDisk.fromMap(Map<String, dynamic> map) {
     return GetDiskAsyncPrimaryDisk(
-      disk: (map['disk'] as String).input(),
+      disk: pulumi.Input.fromValue(map['disk'] as String),
     );
   }
 }
-

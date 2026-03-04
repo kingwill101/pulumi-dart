@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_manager_args.dart';
-import 'network_manager_cross_tenant_scope.dart';
 import 'network_manager_scope.dart';
 import 'network_manager_state.dart';
 
@@ -232,7 +231,7 @@ import 'network_manager_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -246,19 +245,26 @@ import 'network_manager_state.dart';
 /// ```
 class NetworkManager extends pulumi.CustomResource {
   /// One or more `cross_tenant_scopes` blocks as defined below.
-  late final pulumi.Output<List<NetworkManagerCrossTenantScope>> crossTenantScopes;
+  late final pulumi.Output<List<Map<String, dynamic>>> crossTenantScopes;
+
   /// A description of the Network Manager.
   late final pulumi.Output<String?> description;
+
   /// Specifies the Azure Region where the Network Manager should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Network Manager. Changing this forces a new Network Manager to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group where the Network Manager should exist. Changing this forces a new Network Manager to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `scope` block as defined below.
   late final pulumi.Output<NetworkManagerScope> scope;
+
   /// A list of configuration deployment types. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`, which specify whether Connectivity Configuration, Security Admin Configuration or Routing Configuration are allowed for the Network Manager.
   late final pulumi.Output<List<String>?> scopeAccesses;
+
   /// A mapping of tags which should be assigned to the Network Manager.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -271,19 +277,21 @@ class NetworkManager extends pulumi.CustomResource {
     NetworkManagerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManager:NetworkManager',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crossTenantScopes = registerOutput<List<NetworkManagerCrossTenantScope>>('crossTenantScopes');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure:network/networkManager:NetworkManager',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crossTenantScopes = registerOutput<List<Map<String, dynamic>>>(
+      'crossTenantScopes',
+    );
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scope = registerOutput<NetworkManagerScope>('scope');
-    this.scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scope = registerOutput<NetworkManagerScope>('scope');
+    scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [NetworkManager] resource's state with the given [name] and [id].
@@ -304,18 +312,20 @@ class NetworkManager extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManager:NetworkManager',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crossTenantScopes = registerOutput<List<NetworkManagerCrossTenantScope>>('crossTenantScopes');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure:network/networkManager:NetworkManager',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crossTenantScopes = registerOutput<List<Map<String, dynamic>>>(
+      'crossTenantScopes',
+    );
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scope = registerOutput<NetworkManagerScope>('scope');
-    this.scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scope = registerOutput<NetworkManagerScope>('scope');
+    scopeAccesses = registerOutput<List<String>?>('scopeAccesses');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

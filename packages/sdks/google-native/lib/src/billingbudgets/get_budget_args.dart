@@ -13,10 +13,7 @@ class GetBudgetArgs {
   /// Creates a new [GetBudgetArgs].
   /// [billingAccountId] Required.
   /// [budgetId] Required.
-  GetBudgetArgs({
-    required this.billingAccountId,
-    required this.budgetId,
-  });
+  GetBudgetArgs({required this.billingAccountId, required this.budgetId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,10 @@ class GetBudgetArgs {
 
   factory GetBudgetArgs.fromMap(Map<String, dynamic> map) {
     return GetBudgetArgs(
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      budgetId: (map['budgetId'] as String).input(),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      budgetId: pulumi.Input.fromValue(map['budgetId'] as String),
     );
   }
 }
-

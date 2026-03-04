@@ -3,16 +3,15 @@ enum KubernetesSecretType {
   opaque("Opaque"),
   tls("kubernetes.io/tls");
 
-  const KubernetesSecretType(this.value);
-  final String value;
+  const KubernetesSecretType(this.wireValue);
+  final String wireValue;
 
   static KubernetesSecretType fromValue(String value) {
     for (final item in KubernetesSecretType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KubernetesSecretType value: $value');
   }
 }
-

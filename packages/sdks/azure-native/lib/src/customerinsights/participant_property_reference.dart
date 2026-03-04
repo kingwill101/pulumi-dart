@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParticipantPropertyReference {
   /// The source property that maps to the target property.
   final pulumi.Input<String> sourcePropertyName;
+
   /// The target property that maps to the source property.
   final pulumi.Input<String> targetPropertyName;
 
@@ -26,9 +27,12 @@ class ParticipantPropertyReference {
 
   factory ParticipantPropertyReference.fromMap(Map<String, dynamic> map) {
     return ParticipantPropertyReference(
-      sourcePropertyName: (map['sourcePropertyName'] as String).input(),
-      targetPropertyName: (map['targetPropertyName'] as String).input(),
+      sourcePropertyName: pulumi.Input.fromValue(
+        map['sourcePropertyName'] as String,
+      ),
+      targetPropertyName: pulumi.Input.fromValue(
+        map['targetPropertyName'] as String,
+      ),
     );
   }
 }
-

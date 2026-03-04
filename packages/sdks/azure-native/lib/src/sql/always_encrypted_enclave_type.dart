@@ -3,16 +3,15 @@ enum AlwaysEncryptedEnclaveType {
   valueDefault("Default"),
   valueVBS("VBS");
 
-  const AlwaysEncryptedEnclaveType(this.value);
-  final String value;
+  const AlwaysEncryptedEnclaveType(this.wireValue);
+  final String wireValue;
 
   static AlwaysEncryptedEnclaveType fromValue(String value) {
     for (final item in AlwaysEncryptedEnclaveType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlwaysEncryptedEnclaveType value: $value');
   }
 }
-

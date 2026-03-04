@@ -3,16 +3,15 @@ enum SessionAffinity {
   valueCookie("Cookie"),
   valueNone("None");
 
-  const SessionAffinity(this.value);
-  final String value;
+  const SessionAffinity(this.wireValue);
+  final String wireValue;
 
   static SessionAffinity fromValue(String value) {
     for (final item in SessionAffinity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SessionAffinity value: $value');
   }
 }
-

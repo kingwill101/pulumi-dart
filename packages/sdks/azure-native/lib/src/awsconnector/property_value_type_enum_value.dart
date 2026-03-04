@@ -9,20 +9,19 @@ class PropertyValueTypeEnumValue {
 
   /// Creates a new [PropertyValueTypeEnumValue].
   /// [value] Property value
-  PropertyValueTypeEnumValue({
-    this.value,
-  });
+  PropertyValueTypeEnumValue({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory PropertyValueTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return PropertyValueTypeEnumValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

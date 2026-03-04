@@ -14,26 +14,33 @@ class InstanceArgs {
   ///
   /// -----
   final pulumi.Input<List<InstanceCluster>>? clusters;
+
   /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
   /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
   final pulumi.Input<bool>? deletionProtection;
+
   /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
   final pulumi.Input<String>? displayName;
+
   /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
   final pulumi.Input<bool>? forceDestroy;
+
   /// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
   /// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
   /// and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
   /// `"PRODUCTION"` instances. It is recommended for users to use `"PRODUCTION"` instances in any case, since a 1-node `"PRODUCTION"` instance
   /// is functionally identical to a `"DEVELOPMENT"` instance, but without the accompanying restrictions.
   final pulumi.Input<String>? instanceType;
+
   /// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -60,7 +67,18 @@ class InstanceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusters': ?pulumi.Input.mapOptionalInputValue<List<InstanceCluster>, List<Map<String, dynamic>>>(clusters, (value) => pulumi.Input.encodeList<InstanceCluster, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'clusters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceCluster>,
+            List<Map<String, dynamic>>
+          >(
+            clusters,
+            (value) =>
+                pulumi.Input.encodeList<InstanceCluster, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
       'forceDestroy': ?forceDestroy,
@@ -73,15 +91,54 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      clusters: map['clusters'] == null ? null : (pulumi.Input.decodeList<InstanceCluster>(map['clusters']!, (value) => InstanceCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      clusters: (() {
+        final guardedValue = map['clusters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceCluster>(
+            guardedValue,
+            (value) =>
+                InstanceCluster.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

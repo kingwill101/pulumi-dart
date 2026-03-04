@@ -139,10 +139,13 @@ import 'target_directory_result_properties_response.dart';
 class SubscriptionTarDirectory extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Subscription Name.
   late final pulumi.Output<String> name;
+
   /// Subscription Changed Target Directory response properties.
   late final pulumi.Output<TargetDirectoryResultPropertiesResponse> properties;
+
   /// Resource type, Microsoft.Subscription/changeTenantRequest.
   late final pulumi.Output<String> type;
 
@@ -155,14 +158,16 @@ class SubscriptionTarDirectory extends pulumi.CustomResource {
     SubscriptionTarDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:subscription:SubscriptionTarDirectory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:subscription:SubscriptionTarDirectory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<TargetDirectoryResultPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<TargetDirectoryResultPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

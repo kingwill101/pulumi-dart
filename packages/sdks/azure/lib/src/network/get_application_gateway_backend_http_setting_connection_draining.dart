@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayBackendHttpSettingConnectionDraining {
   /// The number of seconds connection draining is active.
   final pulumi.Input<int> drainTimeoutSec;
+
   /// Is the Web Application Firewall enabled?
   final pulumi.Input<bool> enabled;
 
@@ -23,11 +24,12 @@ class GetApplicationGatewayBackendHttpSettingConnectionDraining {
     };
   }
 
-  factory GetApplicationGatewayBackendHttpSettingConnectionDraining.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayBackendHttpSettingConnectionDraining.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayBackendHttpSettingConnectionDraining(
-      drainTimeoutSec: (map['drainTimeoutSec'] as int).input(),
-      enabled: (map['enabled'] as bool).input(),
+      drainTimeoutSec: pulumi.Input.fromValue(map['drainTimeoutSec'] as int),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

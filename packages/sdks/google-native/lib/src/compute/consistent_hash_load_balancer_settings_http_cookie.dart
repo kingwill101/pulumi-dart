@@ -7,8 +7,10 @@ import 'duration.dart';
 class ConsistentHashLoadBalancerSettingsHttpCookie {
   /// Name of the cookie.
   final pulumi.Input<String>? name;
+
   /// Path to set for the cookie.
   final pulumi.Input<String>? path;
+
   /// Lifetime of the cookie.
   final pulumi.Input<Duration>? ttl;
 
@@ -26,16 +28,35 @@ class ConsistentHashLoadBalancerSettingsHttpCookie {
     return <String, dynamic>{
       'name': ?name,
       'path': ?path,
-      'ttl': ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(ttl, (value) => value.toMap()),
+      'ttl':
+          ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(
+            ttl,
+            (value) => value.toMap(),
+          ),
     };
   }
 
-  factory ConsistentHashLoadBalancerSettingsHttpCookie.fromMap(Map<String, dynamic> map) {
+  factory ConsistentHashLoadBalancerSettingsHttpCookie.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConsistentHashLoadBalancerSettingsHttpCookie(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      ttl: map['ttl'] == null ? null : (Duration.fromMap((map['ttl']! as Map).cast<String, dynamic>())).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Duration.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

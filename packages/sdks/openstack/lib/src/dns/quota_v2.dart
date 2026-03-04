@@ -4,9 +4,9 @@ import 'quota_v2_state.dart';
 
 /// Manages DNS quota in OpenStack DNS Service.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
-/// > **Note:** This resource has a no-op deletion so no actual actions will be
+/// &gt; **Note:** This resource has a no-op deletion so no actual actions will be
 /// done against the OpenStack API in case of delete call.
 ///
 /// ## Import
@@ -20,20 +20,26 @@ class QuotaV2 extends pulumi.CustomResource {
   /// The maximum number of zones that can be
   /// exported via the API.
   late final pulumi.Output<int> apiExportSize;
+
   /// ID of the project to manage quota. Changing this
   /// creates new quota.
   late final pulumi.Output<String> projectId;
+
   /// The maximum number of records in a
   /// recordset.
   late final pulumi.Output<int> recordsetRecords;
+
   /// The region in which to obtain the V2 DNS client. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new DNS quota.
   late final pulumi.Output<String> region;
+
   /// The maximum number of records in a zone.
   late final pulumi.Output<int> zoneRecords;
+
   /// The maximum number of recordsets in a zone.
   late final pulumi.Output<int> zoneRecordsets;
+
   /// The maximum number of zones that can be created.
   late final pulumi.Output<int> zones;
 
@@ -46,18 +52,18 @@ class QuotaV2 extends pulumi.CustomResource {
     QuotaV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/quotaV2:QuotaV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiExportSize = registerOutput<int>('apiExportSize');
-    this.projectId = registerOutput<String>('projectId');
-    this.recordsetRecords = registerOutput<int>('recordsetRecords');
-    this.region = registerOutput<String>('region');
-    this.zoneRecords = registerOutput<int>('zoneRecords');
-    this.zoneRecordsets = registerOutput<int>('zoneRecordsets');
-    this.zones = registerOutput<int>('zones');
+         'openstack:dns/quotaV2:QuotaV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiExportSize = registerOutput<int>('apiExportSize');
+    projectId = registerOutput<String>('projectId');
+    recordsetRecords = registerOutput<int>('recordsetRecords');
+    region = registerOutput<String>('region');
+    zoneRecords = registerOutput<int>('zoneRecords');
+    zoneRecordsets = registerOutput<int>('zoneRecordsets');
+    zones = registerOutput<int>('zones');
   }
 
   /// Gets an existing [QuotaV2] resource's state with the given [name] and [id].
@@ -78,17 +84,17 @@ class QuotaV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/quotaV2:QuotaV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiExportSize = registerOutput<int>('apiExportSize');
-    this.projectId = registerOutput<String>('projectId');
-    this.recordsetRecords = registerOutput<int>('recordsetRecords');
-    this.region = registerOutput<String>('region');
-    this.zoneRecords = registerOutput<int>('zoneRecords');
-    this.zoneRecordsets = registerOutput<int>('zoneRecordsets');
-    this.zones = registerOutput<int>('zones');
+         'openstack:dns/quotaV2:QuotaV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiExportSize = registerOutput<int>('apiExportSize');
+    projectId = registerOutput<String>('projectId');
+    recordsetRecords = registerOutput<int>('recordsetRecords');
+    region = registerOutput<String>('region');
+    zoneRecords = registerOutput<int>('zoneRecords');
+    zoneRecordsets = registerOutput<int>('zoneRecordsets');
+    zones = registerOutput<int>('zones');
   }
 }

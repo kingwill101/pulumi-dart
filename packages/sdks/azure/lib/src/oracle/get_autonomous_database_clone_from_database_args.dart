@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutonomousDatabaseCloneFromDatabaseArgs {
   /// The name of this autonomous database clone from database.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the autonomous database cloned from database exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetAutonomousDatabaseCloneFromDatabaseArgs {
     };
   }
 
-  factory GetAutonomousDatabaseCloneFromDatabaseArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAutonomousDatabaseCloneFromDatabaseArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAutonomousDatabaseCloneFromDatabaseArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

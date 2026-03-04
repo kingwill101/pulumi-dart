@@ -8,7 +8,7 @@ import 'user_policy_attachment_state.dart';
 ///
 /// For information about RAM User Policy Attachment and how to use it, see [What is User Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToUser).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -356,10 +356,12 @@ import 'user_policy_attachment_state.dart';
 class UserPolicyAttachment extends pulumi.CustomResource {
   /// The name of the policy.
   late final pulumi.Output<String> policyName;
+
   /// Permission policy type.
   /// - Custom: Custom policy.
   /// - System: System policy.
   late final pulumi.Output<String> policyType;
+
   /// The name of the RAM user.
   late final pulumi.Output<String> userName;
 
@@ -372,14 +374,14 @@ class UserPolicyAttachment extends pulumi.CustomResource {
     UserPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/userPolicyAttachment:UserPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyName = registerOutput<String>('policyName');
-    this.policyType = registerOutput<String>('policyType');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:ram/userPolicyAttachment:UserPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyName = registerOutput<String>('policyName');
+    policyType = registerOutput<String>('policyType');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [UserPolicyAttachment] resource's state with the given [name] and [id].
@@ -400,13 +402,13 @@ class UserPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/userPolicyAttachment:UserPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyName = registerOutput<String>('policyName');
-    this.policyType = registerOutput<String>('policyType');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:ram/userPolicyAttachment:UserPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyName = registerOutput<String>('policyName');
+    policyType = registerOutput<String>('policyType');
+    userName = registerOutput<String>('userName');
   }
 }

@@ -15,11 +15,7 @@ class GetFleetArgs {
   /// [fleetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFleetArgs({
-    required this.fleetId,
-    required this.location,
-    this.project,
-  });
+  GetFleetArgs({required this.fleetId, required this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetFleetArgs {
 
   factory GetFleetArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetArgs(
-      fleetId: (map['fleetId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      fleetId: pulumi.Input.fromValue(map['fleetId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

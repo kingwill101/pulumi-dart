@@ -4,16 +4,15 @@ enum EnvironmentDeploymentType {
   proxy("PROXY"),
   archive("ARCHIVE");
 
-  const EnvironmentDeploymentType(this.value);
-  final String value;
+  const EnvironmentDeploymentType(this.wireValue);
+  final String wireValue;
 
   static EnvironmentDeploymentType fromValue(String value) {
     for (final item in EnvironmentDeploymentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentDeploymentType value: $value');
   }
 }
-

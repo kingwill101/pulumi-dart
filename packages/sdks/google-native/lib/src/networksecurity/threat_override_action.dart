@@ -6,16 +6,15 @@ enum ThreatOverrideAction {
   alert("ALERT"),
   deny("DENY");
 
-  const ThreatOverrideAction(this.value);
-  final String value;
+  const ThreatOverrideAction(this.wireValue);
+  final String wireValue;
 
   static ThreatOverrideAction fromValue(String value) {
     for (final item in ThreatOverrideAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ThreatOverrideAction value: $value');
   }
 }
-

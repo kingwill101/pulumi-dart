@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader {
   /// Values in the response header with the specified name that indicate a failed login attempt.
   final pulumi.Input<List<String>> failureValues;
+
   /// The name of the header to use.
   final pulumi.Input<String> name;
+
   /// Values in the response header with the specified name that indicate a successful login attempt.
   final pulumi.Input<List<String>> successValues;
 
@@ -28,12 +30,17 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader(
-      failureValues: ((map['failureValues'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      successValues: ((map['successValues'] as List).cast<String>()).input(),
+      failureValues: pulumi.Input.fromValue(
+        (map['failureValues'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      successValues: pulumi.Input.fromValue(
+        (map['successValues'] as List).cast<String>(),
+      ),
     );
   }
 }
-

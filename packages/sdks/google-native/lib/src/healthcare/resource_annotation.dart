@@ -9,20 +9,19 @@ class ResourceAnnotation {
 
   /// Creates a new [ResourceAnnotation].
   /// [label] A description of the annotation record.
-  ResourceAnnotation({
-    this.label,
-  });
+  ResourceAnnotation({this.label});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'label': ?label,
-    };
+    return <String, dynamic>{'label': ?label};
   }
 
   factory ResourceAnnotation.fromMap(Map<String, dynamic> map) {
     return ResourceAnnotation(
-      label: map['label'] == null ? null : (map['label']! as String).input(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,21 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatGatewayState {
   /// The idle timeout which should be used in minutes. Defaults to `4`.
   final pulumi.Input<int>? idleTimeoutInMinutes;
+
   /// Specifies the supported Azure location where the NAT Gateway should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the NAT Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the Resource Group in which the NAT Gateway should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The resource GUID property of the NAT Gateway.
   final pulumi.Input<String>? resourceGuid;
+
   /// The SKU which should be used. At this time the only supported value is `Standard`. Defaults to `Standard`.
   final pulumi.Input<String>? skuName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A list of Availability Zones in which this NAT Gateway should be located. Changing this forces a new NAT Gateway to be created.
   ///
-  /// > **Note:** Only one Availability Zone can be defined. For more information, please check out the [Azure documentation](https://learn.microsoft.com/en-us/azure/nat-gateway/nat-overview#availability-zones)
+  /// &gt; **Note:** Only one Availability Zone can be defined. For more information, please check out the [Azure documentation](https://learn.microsoft.com/en-us/azure/nat-gateway/nat-overview#availability-zones)
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [NatGatewayState].
@@ -58,15 +65,48 @@ class NatGatewayState {
 
   factory NatGatewayState.fromMap(Map<String, dynamic> map) {
     return NatGatewayState(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      resourceGuid: map['resourceGuid'] == null ? null : (map['resourceGuid']! as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      idleTimeoutInMinutes: (() {
+        final guardedValue = map['idleTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGuid: (() {
+        final guardedValue = map['resourceGuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skuName: (() {
+        final guardedValue = map['skuName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

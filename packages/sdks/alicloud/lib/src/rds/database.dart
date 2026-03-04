@@ -8,7 +8,7 @@ import 'database_state.dart';
 ///
 /// For information about RDS Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/Rds/2014-08-15/CreateDatabase).
 ///
-/// > **NOTE:** Available since v1.5.0.
+/// &gt; **NOTE:** Available since v1.5.0.
 ///
 /// ## Example Usage
 ///
@@ -401,29 +401,34 @@ class Database extends pulumi.CustomResource {
   /// Character set. The value range is limited to the following:
   /// - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
   /// - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
-  /// - PostgreSQL: Valid values for PostgreSQL databases: a value in the `character set,<Collate>,<Ctype>` format. Example: `UTF8,C,en_US.utf8`.
-  /// > - Valid values for the character set : [ KOI8U, UTF8, WIN866, WIN874, WIN1250, WIN1251, WIN1252, WIN1253, WIN1254, WIN1255, WIN1256, WIN1257, WIN1258, EUC_CN, EUC_KR, EUC_TW, EUC_JP, EUC_JIS_2004, KOI8R, MULE_INTERNAL, LATIN1, LATIN2, LATIN3, LATIN4, LATIN5, LATIN6, LATIN7, LATIN8, LATIN9, LATIN10, ISO_8859_5, ISO_8859_6, ISO_8859_7, ISO_8859_8, SQL_ASCII ]
-  /// > - Valid values for the Collate field: You can execute the `SELECT DISTINCT collname FROM pg_collation;` statement to obtain the field value. The default value is `C`.
-  /// > - Valid values for the Ctype field: You can execute the `SELECT DISTINCT collctype FROM pg_collation;` statement to obtain the field value. The default value is `en_US.utf8`.
+  /// - PostgreSQL: Valid values for PostgreSQL databases: a value in the `character set,&lt;Collate&gt;,&lt;Ctype&gt;` format. Example: `UTF8,C,en_US.utf8`.
+  /// &gt; - Valid values for the character set : [ KOI8U, UTF8, WIN866, WIN874, WIN1250, WIN1251, WIN1252, WIN1253, WIN1254, WIN1255, WIN1256, WIN1257, WIN1258, EUC_CN, EUC_KR, EUC_TW, EUC_JP, EUC_JIS_2004, KOI8R, MULE_INTERNAL, LATIN1, LATIN2, LATIN3, LATIN4, LATIN5, LATIN6, LATIN7, LATIN8, LATIN9, LATIN10, ISO_8859_5, ISO_8859_6, ISO_8859_7, ISO_8859_8, SQL_ASCII ]
+  /// &gt; - Valid values for the Collate field: You can execute the `SELECT DISTINCT collname FROM pg_collation;` statement to obtain the field value. The default value is `C`.
+  /// &gt; - Valid values for the Ctype field: You can execute the `SELECT DISTINCT collctype FROM pg_collation;` statement to obtain the field value. The default value is `en_US.utf8`.
   /// - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
   ///
   /// More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
   late final pulumi.Output<String?> characterSet;
+
   /// The name of the database.
-  /// > **NOTE:**
+  /// &gt; **NOTE:**
   /// The name must be 2 to 64 characters in length.
   /// The name must start with a lowercase letter and end with a lowercase letter or digit.
   /// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
   /// The name must be unique within the instance.
   /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
   late final pulumi.Output<String> dataBaseName;
+
   /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   late final pulumi.Output<String?> description;
+
   /// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
-  /// > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
+  /// &gt; **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
   late final pulumi.Output<String> name;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -436,17 +441,17 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/database:Database',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.characterSet = registerOutput<String?>('characterSet');
-    this.dataBaseName = registerOutput<String>('dataBaseName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:rds/database:Database',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    characterSet = registerOutput<String?>('characterSet');
+    dataBaseName = registerOutput<String>('dataBaseName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Database] resource's state with the given [name] and [id].
@@ -467,16 +472,16 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/database:Database',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.characterSet = registerOutput<String?>('characterSet');
-    this.dataBaseName = registerOutput<String>('dataBaseName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:rds/database:Database',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    characterSet = registerOutput<String?>('characterSet');
+    dataBaseName = registerOutput<String>('dataBaseName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
+    status = registerOutput<String>('status');
   }
 }

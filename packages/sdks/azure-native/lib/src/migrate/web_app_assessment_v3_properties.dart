@@ -8,8 +8,10 @@ import 'web_app_assessment_settings.dart';
 class WebAppAssessmentV3Properties {
   /// Gets or sets the machine assessment ARM ID for VM fallback.
   final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+
   /// Gets or sets the scope of assessment.
   final pulumi.Input<Scope>? scope;
+
   /// Gets or sets the settings for the assessment.
   final pulumi.Input<WebAppAssessmentSettings>? settings;
 
@@ -26,17 +28,41 @@ class WebAppAssessmentV3Properties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fallbackMachineAssessmentArmId': ?fallbackMachineAssessmentArmId,
-      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(scope, (value) => value.toMap()),
-      'settings': ?pulumi.Input.mapOptionalInputValue<WebAppAssessmentSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'scope': ?pulumi.Input.mapOptionalInputValue<Scope, Map<String, dynamic>>(
+        scope,
+        (value) => value.toMap(),
+      ),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAppAssessmentSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
     };
   }
 
   factory WebAppAssessmentV3Properties.fromMap(Map<String, dynamic> map) {
     return WebAppAssessmentV3Properties(
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId']! as String).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (WebAppAssessmentSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      fallbackMachineAssessmentArmId: (() {
+        final guardedValue = map['fallbackMachineAssessmentArmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Scope.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAppAssessmentSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

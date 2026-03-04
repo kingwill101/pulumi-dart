@@ -5,16 +5,17 @@ enum PrivateLinkServiceConnectionStatus {
   valuePending("Pending"),
   valueRemoved("Removed");
 
-  const PrivateLinkServiceConnectionStatus(this.value);
-  final String value;
+  const PrivateLinkServiceConnectionStatus(this.wireValue);
+  final String wireValue;
 
   static PrivateLinkServiceConnectionStatus fromValue(String value) {
     for (final item in PrivateLinkServiceConnectionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PrivateLinkServiceConnectionStatus value: $value');
+    throw ArgumentError(
+      'Unknown PrivateLinkServiceConnectionStatus value: $value',
+    );
   }
 }
-

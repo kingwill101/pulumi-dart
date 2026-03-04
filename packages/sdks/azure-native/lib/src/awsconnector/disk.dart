@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Disk {
   /// Instance attached to the disk.
   final pulumi.Input<String>? attachedTo;
+
   /// Attachment state of the disk.
   final pulumi.Input<String>? attachmentState;
+
   /// The names to use for your new Lightsail disk.
   final pulumi.Input<String>? diskName;
+
   /// IOPS of disk.
   final pulumi.Input<int>? iops;
+
   /// Is the Attached disk is the system disk of the Instance.
   final pulumi.Input<bool>? isSystemDisk;
+
   /// Path of the disk attached to the instance.
   final pulumi.Input<String>? path;
+
   /// Size of the disk attached to the Instance.
   final pulumi.Input<String>? sizeInGb;
 
@@ -51,14 +57,41 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      attachedTo: map['attachedTo'] == null ? null : (map['attachedTo']! as String).input(),
-      attachmentState: map['attachmentState'] == null ? null : (map['attachmentState']! as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
-      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
-      isSystemDisk: map['isSystemDisk'] == null ? null : (map['isSystemDisk']! as bool).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb']! as String).input(),
+      attachedTo: (() {
+        final guardedValue = map['attachedTo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attachmentState: (() {
+        final guardedValue = map['attachmentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskName: (() {
+        final guardedValue = map['diskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iops: (() {
+        final guardedValue = map['iops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      isSystemDisk: (() {
+        final guardedValue = map['isSystemDisk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sizeInGb: (() {
+        final guardedValue = map['sizeInGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

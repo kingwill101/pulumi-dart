@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 import 'resource_pool_args.dart';
-import 'resource_status_response.dart';
 import 'system_data_response.dart';
 
 /// Define the resourcePool.
@@ -174,64 +173,91 @@ import 'system_data_response.dart';
 class ResourcePool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the max CPU usage across all cores on the pool in MHz.
   late final pulumi.Output<double> cpuCapacityMHz;
+
   /// Gets or sets CPULimitMHz which specifies a CPU usage limit in MHz.
   /// Utilization will not exceed this limit even if there are available resources.
   late final pulumi.Output<double> cpuLimitMHz;
+
   /// Gets the used CPU usage across all cores on the pool in MHz.
   late final pulumi.Output<double> cpuOverallUsageMHz;
+
   /// Gets or sets CPUReservationMHz which specifies the CPU size in MHz that is guaranteed
   /// to be available.
   late final pulumi.Output<double> cpuReservationMHz;
+
   /// Gets or sets CPUSharesLevel which specifies the CPU allocation level for this pool.
   /// This property is used in relative allocation between resource consumers.
   late final pulumi.Output<String> cpuSharesLevel;
+
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
+
   /// Gets the datastore ARM ids.
   late final pulumi.Output<List<String>> datastoreIds;
+
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Gets or sets the inventory Item ID for the resource pool.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Gets the total amount of physical memory on the pool in GB.
   late final pulumi.Output<double> memCapacityGB;
+
   /// Gets or sets MemLimitMB specifies a memory usage limit in megabytes.
   /// Utilization will not exceed the specified limit even if there are available resources.
   late final pulumi.Output<double> memLimitMB;
+
   /// Gets the used physical memory on the pool in GB.
   late final pulumi.Output<double> memOverallUsageGB;
+
   /// Gets or sets MemReservationMB which specifies the guaranteed available memory in
   /// megabytes.
   late final pulumi.Output<double> memReservationMB;
+
   /// Gets or sets CPUSharesLevel which specifies the memory allocation level for this pool.
   /// This property is used in relative allocation between resource consumers.
   late final pulumi.Output<String> memSharesLevel;
+
   /// Gets or sets the vCenter Managed Object name for the resource pool.
   late final pulumi.Output<String> moName;
+
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the resource pool.
   late final pulumi.Output<String?> moRefId;
+
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
+
   /// Gets the network ARM ids.
   late final pulumi.Output<List<String>> networkIds;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource status information.
-  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
+
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
+
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
   late final pulumi.Output<String?> vCenterId;
 
@@ -244,38 +270,40 @@ class ResourcePool extends pulumi.CustomResource {
     ResourcePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:connectedvmwarevsphere:ResourcePool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cpuCapacityMHz = registerOutput<double>('cpuCapacityMHz');
-    this.cpuLimitMHz = registerOutput<double>('cpuLimitMHz');
-    this.cpuOverallUsageMHz = registerOutput<double>('cpuOverallUsageMHz');
-    this.cpuReservationMHz = registerOutput<double>('cpuReservationMHz');
-    this.cpuSharesLevel = registerOutput<String>('cpuSharesLevel');
-    this.customResourceName = registerOutput<String>('customResourceName');
-    this.datastoreIds = registerOutput<List<String>>('datastoreIds');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.memCapacityGB = registerOutput<double>('memCapacityGB');
-    this.memLimitMB = registerOutput<double>('memLimitMB');
-    this.memOverallUsageGB = registerOutput<double>('memOverallUsageGB');
-    this.memReservationMB = registerOutput<double>('memReservationMB');
-    this.memSharesLevel = registerOutput<String>('memSharesLevel');
-    this.moName = registerOutput<String>('moName');
-    this.moRefId = registerOutput<String?>('moRefId');
+         'azure-native:connectedvmwarevsphere:ResourcePool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cpuCapacityMHz = registerOutput<double>('cpuCapacityMHz');
+    cpuLimitMHz = registerOutput<double>('cpuLimitMHz');
+    cpuOverallUsageMHz = registerOutput<double>('cpuOverallUsageMHz');
+    cpuReservationMHz = registerOutput<double>('cpuReservationMHz');
+    cpuSharesLevel = registerOutput<String>('cpuSharesLevel');
+    customResourceName = registerOutput<String>('customResourceName');
+    datastoreIds = registerOutput<List<String>>('datastoreIds');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    memCapacityGB = registerOutput<double>('memCapacityGB');
+    memLimitMB = registerOutput<double>('memLimitMB');
+    memOverallUsageGB = registerOutput<double>('memOverallUsageGB');
+    memReservationMB = registerOutput<double>('memReservationMB');
+    memSharesLevel = registerOutput<String>('memSharesLevel');
+    moName = registerOutput<String>('moName');
+    moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    this.networkIds = registerOutput<List<String>>('networkIds');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.statuses = registerOutput<List<ResourceStatusResponse>>('statuses');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
-    this.vCenterId = registerOutput<String?>('vCenterId');
+    networkIds = registerOutput<List<String>>('networkIds');
+    provisioningState = registerOutput<String>('provisioningState');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    vCenterId = registerOutput<String?>('vCenterId');
   }
 }

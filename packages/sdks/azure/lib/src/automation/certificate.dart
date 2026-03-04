@@ -229,7 +229,7 @@ import 'certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -244,16 +244,22 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// The name of the automation account in which the Certificate is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// Base64 encoded value of the certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> base64;
+
   /// The description of this Automation Certificate.
   late final pulumi.Output<String?> description;
+
   /// The is exportable flag of the certificate.
   late final pulumi.Output<bool?> exportable;
+
   /// Specifies the name of the Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The thumbprint for the certificate.
   late final pulumi.Output<String> thumbprint;
 
@@ -266,18 +272,18 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.base64 = registerOutput<String>('base64');
-    this.description = registerOutput<String?>('description');
-    this.exportable = registerOutput<bool?>('exportable');
+         'azure:automation/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    base64 = registerOutput<String>('base64');
+    description = registerOutput<String?>('description');
+    exportable = registerOutput<bool?>('exportable');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.thumbprint = registerOutput<String>('thumbprint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -298,17 +304,17 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.base64 = registerOutput<String>('base64');
-    this.description = registerOutput<String?>('description');
-    this.exportable = registerOutput<bool?>('exportable');
+         'azure:automation/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    base64 = registerOutput<String>('base64');
+    description = registerOutput<String?>('description');
+    exportable = registerOutput<bool?>('exportable');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.thumbprint = registerOutput<String>('thumbprint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MedianStoppingPolicyResponse {
   /// Number of intervals by which to delay the first evaluation.
   final pulumi.Input<int>? delayEvaluation;
+
   /// Interval (number of runs) between policy evaluations.
   final pulumi.Input<int>? evaluationInterval;
+
   /// Expected value is 'MedianStopping'.
   final pulumi.Input<String> policyType;
 
@@ -31,10 +33,17 @@ class MedianStoppingPolicyResponse {
 
   factory MedianStoppingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return MedianStoppingPolicyResponse(
-      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation']! as int).input(),
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as int).input(),
-      policyType: (map['policyType'] as String).input(),
+      delayEvaluation: (() {
+        final guardedValue = map['delayEvaluation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      evaluationInterval: (() {
+        final guardedValue = map['evaluationInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
     );
   }
 }
-

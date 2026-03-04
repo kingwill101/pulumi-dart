@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterCustomFabricSetting {
   /// Parameter name.
   final pulumi.Input<String> parameter;
+
   /// Section name.
   final pulumi.Input<String> section;
+
   /// Parameter value.
   final pulumi.Input<String> value;
 
@@ -30,10 +32,9 @@ class ManagedClusterCustomFabricSetting {
 
   factory ManagedClusterCustomFabricSetting.fromMap(Map<String, dynamic> map) {
     return ManagedClusterCustomFabricSetting(
-      parameter: (map['parameter'] as String).input(),
-      section: (map['section'] as String).input(),
-      value: (map['value'] as String).input(),
+      parameter: pulumi.Input.fromValue(map['parameter'] as String),
+      section: pulumi.Input.fromValue(map['section'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class BareMetalAdminManualLbConfig {
 
   /// Creates a new [BareMetalAdminManualLbConfig].
   /// [enabled] Whether manual load balancing is enabled.
-  BareMetalAdminManualLbConfig({
-    this.enabled,
-  });
+  BareMetalAdminManualLbConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory BareMetalAdminManualLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminManualLbConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

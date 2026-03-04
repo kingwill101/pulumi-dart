@@ -7,6 +7,7 @@ import 'machine_preferences_response.dart';
 class ComputeEnginePreferencesResponse {
   /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
   final pulumi.Input<String> licenseType;
+
   /// Preferences concerning the machine types to consider on Compute Engine.
   final pulumi.Input<MachinePreferencesResponse> machinePreferences;
 
@@ -21,15 +22,22 @@ class ComputeEnginePreferencesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'licenseType': licenseType,
-      'machinePreferences': pulumi.Input.mapInputValue<MachinePreferencesResponse, Map<String, dynamic>>(machinePreferences, (value) => value.toMap()),
+      'machinePreferences':
+          pulumi.Input.mapInputValue<
+            MachinePreferencesResponse,
+            Map<String, dynamic>
+          >(machinePreferences, (value) => value.toMap()),
     };
   }
 
   factory ComputeEnginePreferencesResponse.fromMap(Map<String, dynamic> map) {
     return ComputeEnginePreferencesResponse(
-      licenseType: (map['licenseType'] as String).input(),
-      machinePreferences: (MachinePreferencesResponse.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>())).input(),
+      licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
+      machinePreferences: pulumi.Input.fromValue(
+        MachinePreferencesResponse.fromMap(
+          (map['machinePreferences']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

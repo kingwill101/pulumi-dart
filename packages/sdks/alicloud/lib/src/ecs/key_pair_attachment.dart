@@ -2,16 +2,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_pair_attachment_args.dart';
 import 'key_pair_attachment_state.dart';
 
-/// > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPairAttachment from version 1.121.0.
+/// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPairAttachment from version 1.121.0.
 ///
 /// Provides a key pair attachment resource to bind key pair for several ECS instances.
 ///
-/// > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+/// &gt; **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
 class KeyPairAttachment extends pulumi.CustomResource {
   /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
   late final pulumi.Output<bool?> force;
+
   /// The list of ECS instance's IDs.
   late final pulumi.Output<List<String>> instanceIds;
+
   /// The name of key pair used to bind.
   late final pulumi.Output<String> keyName;
   late final pulumi.Output<String> keyPairName;
@@ -25,15 +27,15 @@ class KeyPairAttachment extends pulumi.CustomResource {
     KeyPairAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/keyPairAttachment:KeyPairAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.force = registerOutput<bool?>('force');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyPairName = registerOutput<String>('keyPairName');
+         'alicloud:ecs/keyPairAttachment:KeyPairAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    force = registerOutput<bool?>('force');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    keyName = registerOutput<String>('keyName');
+    keyPairName = registerOutput<String>('keyPairName');
   }
 
   /// Gets an existing [KeyPairAttachment] resource's state with the given [name] and [id].
@@ -54,14 +56,14 @@ class KeyPairAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/keyPairAttachment:KeyPairAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.force = registerOutput<bool?>('force');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.keyName = registerOutput<String>('keyName');
-    this.keyPairName = registerOutput<String>('keyPairName');
+         'alicloud:ecs/keyPairAttachment:KeyPairAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    force = registerOutput<bool?>('force');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    keyName = registerOutput<String>('keyName');
+    keyPairName = registerOutput<String>('keyPairName');
   }
 }

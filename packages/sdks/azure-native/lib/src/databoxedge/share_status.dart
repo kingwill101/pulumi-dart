@@ -6,16 +6,15 @@ enum ShareStatus {
   valueUpdating("Updating"),
   valueNeedsAttention("NeedsAttention");
 
-  const ShareStatus(this.value);
-  final String value;
+  const ShareStatus(this.wireValue);
+  final String wireValue;
 
   static ShareStatus fromValue(String value) {
     for (final item in ShareStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShareStatus value: $value');
   }
 }
-

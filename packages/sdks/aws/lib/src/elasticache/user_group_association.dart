@@ -4,7 +4,7 @@ import 'user_group_association_state.dart';
 
 /// Associate an existing ElastiCache user and an existing user group.
 ///
-/// > Pulumi will detect changes in the `aws.elasticache.UserGroup` since `aws.elasticache.UserGroupAssociation` changes the user IDs associated with the user group. You can ignore these changes with the `lifecycle` `ignore_changes` meta argument as shown in the example.
+/// &gt; Pulumi will detect changes in the `aws.elasticache.UserGroup` since `aws.elasticache.UserGroupAssociation` changes the user IDs associated with the user group. You can ignore these changes with the `lifecycle` `ignore_changes` meta argument as shown in the example.
 ///
 /// ## Example Usage
 ///
@@ -268,8 +268,10 @@ import 'user_group_association_state.dart';
 class UserGroupAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ID of the user group.
   late final pulumi.Output<String> userGroupId;
+
   /// ID of the user to associated with the user group.
   late final pulumi.Output<String> userId;
 
@@ -282,14 +284,14 @@ class UserGroupAssociation extends pulumi.CustomResource {
     UserGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elasticache/userGroupAssociation:UserGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.userGroupId = registerOutput<String>('userGroupId');
-    this.userId = registerOutput<String>('userId');
+         'aws:elasticache/userGroupAssociation:UserGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    userGroupId = registerOutput<String>('userGroupId');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [UserGroupAssociation] resource's state with the given [name] and [id].
@@ -310,13 +312,13 @@ class UserGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elasticache/userGroupAssociation:UserGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.userGroupId = registerOutput<String>('userGroupId');
-    this.userId = registerOutput<String>('userId');
+         'aws:elasticache/userGroupAssociation:UserGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    userGroupId = registerOutput<String>('userGroupId');
+    userId = registerOutput<String>('userId');
   }
 }

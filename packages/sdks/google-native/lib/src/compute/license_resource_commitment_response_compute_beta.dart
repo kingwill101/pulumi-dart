@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LicenseResourceCommitmentResponseComputeBeta {
   /// The number of licenses purchased.
   final pulumi.Input<String> amount;
+
   /// Specifies the core range of the instance for which this license applies.
   final pulumi.Input<String> coresPerLicense;
+
   /// Any applicable license URI.
   final pulumi.Input<String> license;
 
@@ -29,12 +31,13 @@ class LicenseResourceCommitmentResponseComputeBeta {
     };
   }
 
-  factory LicenseResourceCommitmentResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory LicenseResourceCommitmentResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LicenseResourceCommitmentResponseComputeBeta(
-      amount: (map['amount'] as String).input(),
-      coresPerLicense: (map['coresPerLicense'] as String).input(),
-      license: (map['license'] as String).input(),
+      amount: pulumi.Input.fromValue(map['amount'] as String),
+      coresPerLicense: pulumi.Input.fromValue(map['coresPerLicense'] as String),
+      license: pulumi.Input.fromValue(map['license'] as String),
     );
   }
 }
-

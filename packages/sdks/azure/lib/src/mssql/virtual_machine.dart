@@ -207,7 +207,7 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -224,36 +224,54 @@ import 'virtual_machine_wsfc_domain_credential.dart';
 class VirtualMachine extends pulumi.CustomResource {
   /// An `assessment` block as defined below.
   late final pulumi.Output<VirtualMachineAssessment?> assessment;
+
   /// An `auto_backup` block as defined below. This block can be added to an existing resource, but removing this block forces a new resource to be created.
   late final pulumi.Output<VirtualMachineAutoBackup?> autoBackup;
+
   /// An `auto_patching` block as defined below.
   late final pulumi.Output<VirtualMachineAutoPatching?> autoPatching;
+
   /// An `key_vault_credential` block as defined below.
-  late final pulumi.Output<VirtualMachineKeyVaultCredential?> keyVaultCredential;
+  late final pulumi.Output<VirtualMachineKeyVaultCredential?>
+  keyVaultCredential;
+
   /// Should R Services be enabled?
   late final pulumi.Output<bool?> rServicesEnabled;
+
   /// The SQL Server port. Defaults to `1433`.
   late final pulumi.Output<int?> sqlConnectivityPort;
+
   /// The connectivity type used for this SQL Server. Possible values are `LOCAL`, `PRIVATE` and `PUBLIC`. Defaults to `PRIVATE`.
   late final pulumi.Output<String?> sqlConnectivityType;
+
   /// The SQL Server sysadmin login password.
   late final pulumi.Output<String?> sqlConnectivityUpdatePassword;
+
   /// The SQL Server sysadmin login to create.
   late final pulumi.Output<String?> sqlConnectivityUpdateUsername;
+
   /// A `sql_instance` block as defined below.
   late final pulumi.Output<VirtualMachineSqlInstance?> sqlInstance;
+
   /// The SQL Server license type. Possible values are `AHUB` (Azure Hybrid Benefit), `DR` (Disaster Recovery), and `PAYG` (Pay-As-You-Go). Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sqlLicenseType;
+
   /// The ID of the SQL Virtual Machine Group that the SQL Virtual Machine belongs to.
   late final pulumi.Output<String?> sqlVirtualMachineGroupId;
+
   /// An `storage_configuration` block as defined below.
-  late final pulumi.Output<VirtualMachineStorageConfiguration?> storageConfiguration;
+  late final pulumi.Output<VirtualMachineStorageConfiguration?>
+  storageConfiguration;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
+
   /// A `wsfc_domain_credential` block as defined below
-  late final pulumi.Output<VirtualMachineWsfcDomainCredential?> wsfcDomainCredential;
+  late final pulumi.Output<VirtualMachineWsfcDomainCredential?>
+  wsfcDomainCredential;
 
   /// Creates a new [VirtualMachine].
   /// [name] The Pulumi resource name.
@@ -264,27 +282,39 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/virtualMachine:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessment = registerOutput<VirtualMachineAssessment?>('assessment');
-    this.autoBackup = registerOutput<VirtualMachineAutoBackup?>('autoBackup');
-    this.autoPatching = registerOutput<VirtualMachineAutoPatching?>('autoPatching');
-    this.keyVaultCredential = registerOutput<VirtualMachineKeyVaultCredential?>('keyVaultCredential');
-    this.rServicesEnabled = registerOutput<bool?>('rServicesEnabled');
-    this.sqlConnectivityPort = registerOutput<int?>('sqlConnectivityPort');
-    this.sqlConnectivityType = registerOutput<String?>('sqlConnectivityType');
-    this.sqlConnectivityUpdatePassword = registerOutput<String?>('sqlConnectivityUpdatePassword');
-    this.sqlConnectivityUpdateUsername = registerOutput<String?>('sqlConnectivityUpdateUsername');
-    this.sqlInstance = registerOutput<VirtualMachineSqlInstance?>('sqlInstance');
-    this.sqlLicenseType = registerOutput<String?>('sqlLicenseType');
-    this.sqlVirtualMachineGroupId = registerOutput<String?>('sqlVirtualMachineGroupId');
-    this.storageConfiguration = registerOutput<VirtualMachineStorageConfiguration?>('storageConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
-    this.wsfcDomainCredential = registerOutput<VirtualMachineWsfcDomainCredential?>('wsfcDomainCredential');
+         'azure:mssql/virtualMachine:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessment = registerOutput<VirtualMachineAssessment?>('assessment');
+    autoBackup = registerOutput<VirtualMachineAutoBackup?>('autoBackup');
+    autoPatching = registerOutput<VirtualMachineAutoPatching?>('autoPatching');
+    keyVaultCredential = registerOutput<VirtualMachineKeyVaultCredential?>(
+      'keyVaultCredential',
+    );
+    rServicesEnabled = registerOutput<bool?>('rServicesEnabled');
+    sqlConnectivityPort = registerOutput<int?>('sqlConnectivityPort');
+    sqlConnectivityType = registerOutput<String?>('sqlConnectivityType');
+    sqlConnectivityUpdatePassword = registerOutput<String?>(
+      'sqlConnectivityUpdatePassword',
+    );
+    sqlConnectivityUpdateUsername = registerOutput<String?>(
+      'sqlConnectivityUpdateUsername',
+    );
+    sqlInstance = registerOutput<VirtualMachineSqlInstance?>('sqlInstance');
+    sqlLicenseType = registerOutput<String?>('sqlLicenseType');
+    sqlVirtualMachineGroupId = registerOutput<String?>(
+      'sqlVirtualMachineGroupId',
+    );
+    storageConfiguration = registerOutput<VirtualMachineStorageConfiguration?>(
+      'storageConfiguration',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    wsfcDomainCredential = registerOutput<VirtualMachineWsfcDomainCredential?>(
+      'wsfcDomainCredential',
+    );
   }
 
   /// Gets an existing [VirtualMachine] resource's state with the given [name] and [id].
@@ -305,26 +335,38 @@ class VirtualMachine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/virtualMachine:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessment = registerOutput<VirtualMachineAssessment?>('assessment');
-    this.autoBackup = registerOutput<VirtualMachineAutoBackup?>('autoBackup');
-    this.autoPatching = registerOutput<VirtualMachineAutoPatching?>('autoPatching');
-    this.keyVaultCredential = registerOutput<VirtualMachineKeyVaultCredential?>('keyVaultCredential');
-    this.rServicesEnabled = registerOutput<bool?>('rServicesEnabled');
-    this.sqlConnectivityPort = registerOutput<int?>('sqlConnectivityPort');
-    this.sqlConnectivityType = registerOutput<String?>('sqlConnectivityType');
-    this.sqlConnectivityUpdatePassword = registerOutput<String?>('sqlConnectivityUpdatePassword');
-    this.sqlConnectivityUpdateUsername = registerOutput<String?>('sqlConnectivityUpdateUsername');
-    this.sqlInstance = registerOutput<VirtualMachineSqlInstance?>('sqlInstance');
-    this.sqlLicenseType = registerOutput<String?>('sqlLicenseType');
-    this.sqlVirtualMachineGroupId = registerOutput<String?>('sqlVirtualMachineGroupId');
-    this.storageConfiguration = registerOutput<VirtualMachineStorageConfiguration?>('storageConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
-    this.wsfcDomainCredential = registerOutput<VirtualMachineWsfcDomainCredential?>('wsfcDomainCredential');
+         'azure:mssql/virtualMachine:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessment = registerOutput<VirtualMachineAssessment?>('assessment');
+    autoBackup = registerOutput<VirtualMachineAutoBackup?>('autoBackup');
+    autoPatching = registerOutput<VirtualMachineAutoPatching?>('autoPatching');
+    keyVaultCredential = registerOutput<VirtualMachineKeyVaultCredential?>(
+      'keyVaultCredential',
+    );
+    rServicesEnabled = registerOutput<bool?>('rServicesEnabled');
+    sqlConnectivityPort = registerOutput<int?>('sqlConnectivityPort');
+    sqlConnectivityType = registerOutput<String?>('sqlConnectivityType');
+    sqlConnectivityUpdatePassword = registerOutput<String?>(
+      'sqlConnectivityUpdatePassword',
+    );
+    sqlConnectivityUpdateUsername = registerOutput<String?>(
+      'sqlConnectivityUpdateUsername',
+    );
+    sqlInstance = registerOutput<VirtualMachineSqlInstance?>('sqlInstance');
+    sqlLicenseType = registerOutput<String?>('sqlLicenseType');
+    sqlVirtualMachineGroupId = registerOutput<String?>(
+      'sqlVirtualMachineGroupId',
+    );
+    storageConfiguration = registerOutput<VirtualMachineStorageConfiguration?>(
+      'storageConfiguration',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    wsfcDomainCredential = registerOutput<VirtualMachineWsfcDomainCredential?>(
+      'wsfcDomainCredential',
+    );
   }
 }

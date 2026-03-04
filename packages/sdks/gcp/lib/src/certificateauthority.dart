@@ -1,5 +1,3 @@
-library module_certificateauthority;
-
 export 'certificateauthority/authority.dart';
 export 'certificateauthority/authority_access_url.dart';
 export 'certificateauthority/authority_args.dart';

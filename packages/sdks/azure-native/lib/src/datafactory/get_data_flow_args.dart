@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataFlowArgs {
   /// The data flow name.
   final pulumi.Input<String> dataFlowName;
+
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetDataFlowArgs {
 
   factory GetDataFlowArgs.fromMap(Map<String, dynamic> map) {
     return GetDataFlowArgs(
-      dataFlowName: (map['dataFlowName'] as String).input(),
-      factoryName: (map['factoryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dataFlowName: pulumi.Input.fromValue(map['dataFlowName'] as String),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

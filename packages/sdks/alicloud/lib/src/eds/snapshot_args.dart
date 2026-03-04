@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// The description of the Snapshot.
   final pulumi.Input<String>? description;
+
   /// The ID of the Desktop.
   final pulumi.Input<String> desktopId;
+
   /// The name of the Snapshot.
   final pulumi.Input<String> snapshotName;
+
   /// The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
   final pulumi.Input<String> sourceDiskType;
 
@@ -39,11 +42,14 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      desktopId: (map['desktopId'] as String).input(),
-      snapshotName: (map['snapshotName'] as String).input(),
-      sourceDiskType: (map['sourceDiskType'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      desktopId: pulumi.Input.fromValue(map['desktopId'] as String),
+      snapshotName: pulumi.Input.fromValue(map['snapshotName'] as String),
+      sourceDiskType: pulumi.Input.fromValue(map['sourceDiskType'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum RouterNatTypeComputeBeta {
   private("PRIVATE"),
   public("PUBLIC");
 
-  const RouterNatTypeComputeBeta(this.value);
-  final String value;
+  const RouterNatTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RouterNatTypeComputeBeta fromValue(String value) {
     for (final item in RouterNatTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterNatTypeComputeBeta value: $value');
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowAccessKeyArgs {
   /// The workflow access key name.
   final pulumi.Input<String>? accessKeyName;
+
   /// Gets or sets the resource id.
   final pulumi.Input<String>? id;
+
   /// Gets or sets the not-after time.
   final pulumi.Input<String>? notAfter;
+
   /// Gets or sets the not-before time.
   final pulumi.Input<String>? notBefore;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -49,13 +54,30 @@ class WorkflowAccessKeyArgs {
 
   factory WorkflowAccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessKeyArgs(
-      accessKeyName: map['accessKeyName'] == null ? null : (map['accessKeyName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workflowName: (map['workflowName'] as String).input(),
+      accessKeyName: (() {
+        final guardedValue = map['accessKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notAfter: (() {
+        final guardedValue = map['notAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notBefore: (() {
+        final guardedValue = map['notBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
-

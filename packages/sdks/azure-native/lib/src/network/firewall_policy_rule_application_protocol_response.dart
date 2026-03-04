@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyRuleApplicationProtocolResponse {
   /// Port number for the protocol, cannot be greater than 64000.
   final pulumi.Input<int>? port;
+
   /// Protocol type.
   final pulumi.Input<String>? protocolType;
 
   /// Creates a new [FirewallPolicyRuleApplicationProtocolResponse].
   /// [port] Port number for the protocol, cannot be greater than 64000.
   /// [protocolType] Protocol type.
-  FirewallPolicyRuleApplicationProtocolResponse({
-    this.port,
-    this.protocolType,
-  });
+  FirewallPolicyRuleApplicationProtocolResponse({this.port, this.protocolType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': ?port,
-      'protocolType': ?protocolType,
-    };
+    return <String, dynamic>{'port': ?port, 'protocolType': ?protocolType};
   }
 
-  factory FirewallPolicyRuleApplicationProtocolResponse.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyRuleApplicationProtocolResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyRuleApplicationProtocolResponse(
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocolType: (() {
+        final guardedValue = map['protocolType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

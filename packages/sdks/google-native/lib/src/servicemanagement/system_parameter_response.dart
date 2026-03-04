@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemParameterResponse {
   /// Define the HTTP header name to use for the parameter. It is case insensitive.
   final pulumi.Input<String> httpHeader;
+
   /// Define the name of the parameter, such as "api_key" . It is case sensitive.
   final pulumi.Input<String> name;
+
   /// Define the URL query parameter name to use for the parameter. It is case sensitive.
   final pulumi.Input<String> urlQueryParameter;
 
@@ -31,10 +33,11 @@ class SystemParameterResponse {
 
   factory SystemParameterResponse.fromMap(Map<String, dynamic> map) {
     return SystemParameterResponse(
-      httpHeader: (map['httpHeader'] as String).input(),
-      name: (map['name'] as String).input(),
-      urlQueryParameter: (map['urlQueryParameter'] as String).input(),
+      httpHeader: pulumi.Input.fromValue(map['httpHeader'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      urlQueryParameter: pulumi.Input.fromValue(
+        map['urlQueryParameter'] as String,
+      ),
     );
   }
 }
-

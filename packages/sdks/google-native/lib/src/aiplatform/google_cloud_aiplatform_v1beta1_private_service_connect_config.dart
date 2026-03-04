@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig {
   /// If true, expose the IndexEndpoint via private service connect.
   final pulumi.Input<bool> enablePrivateServiceConnect;
+
   /// A list of Projects from which the forwarding rule will target the service attachment.
   final pulumi.Input<List<String>>? projectAllowlist;
 
@@ -24,11 +25,18 @@ class GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig(
-      enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
-      projectAllowlist: map['projectAllowlist'] == null ? null : ((map['projectAllowlist']! as List).cast<String>()).input(),
+      enablePrivateServiceConnect: pulumi.Input.fromValue(
+        map['enablePrivateServiceConnect'] as bool,
+      ),
+      projectAllowlist: (() {
+        final guardedValue = map['projectAllowlist'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

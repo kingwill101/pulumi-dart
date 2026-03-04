@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomFieldResponseGameservicesV1beta {
   /// Name is the field name.
   final pulumi.Input<String> name;
+
   /// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class CustomFieldResponseGameservicesV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory CustomFieldResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
+  factory CustomFieldResponseGameservicesV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomFieldResponseGameservicesV1beta(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

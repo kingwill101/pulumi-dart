@@ -11,33 +11,46 @@ class ForecastingSettingsResponse {
   /// Country or region for holidays for forecasting tasks.
   /// These should be ISO 3166 two-letter country/region codes, for example 'US' or 'GB'.
   final pulumi.Input<String>? countryOrRegionForHolidays;
+
   /// Number of periods between the origin time of one CV fold and the next fold. For
   /// example, if `CVStepSize` = 3 for daily data, the origin time for each fold will be
   /// three days apart.
   final pulumi.Input<int>? cvStepSize;
+
   /// Flag for generating lags for the numeric features with 'auto' or null.
   final pulumi.Input<String>? featureLags;
+
   /// The desired maximum forecast horizon in units of time-series frequency.
   final pulumi.Input<AutoForecastHorizonResponse>? forecastHorizon;
+
   /// When forecasting, this parameter represents the period with which the forecast is desired, for example daily, weekly, yearly, etc. The forecast frequency is dataset frequency by default.
   final pulumi.Input<String>? frequency;
+
   /// Set time series seasonality as an integer multiple of the series frequency.
   /// If seasonality is set to 'auto', it will be inferred.
   final pulumi.Input<AutoSeasonalityResponse>? seasonality;
+
   /// The parameter defining how if AutoML should handle short time series.
   final pulumi.Input<String>? shortSeriesHandlingConfig;
+
   /// The function to be used to aggregate the time series target column to conform to a user specified frequency.
   /// If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
   final pulumi.Input<String>? targetAggregateFunction;
+
   /// The number of past periods to lag from the target column.
   final pulumi.Input<AutoTargetLagsResponse>? targetLags;
+
   /// The number of past periods used to create a rolling window average of the target column.
-  final pulumi.Input<AutoTargetRollingWindowSizeResponse>? targetRollingWindowSize;
+  final pulumi.Input<AutoTargetRollingWindowSizeResponse>?
+  targetRollingWindowSize;
+
   /// The name of the time column. This parameter is required when forecasting to specify the datetime column in the input data used for building the time series and inferring its frequency.
   final pulumi.Input<String>? timeColumnName;
+
   /// The names of columns used to group a timeseries. It can be used to create multiple series.
   /// If grain is not defined, the data set is assumed to be one time-series. This parameter is used with task type forecasting.
   final pulumi.Input<List<String>>? timeSeriesIdColumnNames;
+
   /// Configure STL Decomposition of the time-series target column.
   final pulumi.Input<String>? useStl;
 
@@ -76,13 +89,29 @@ class ForecastingSettingsResponse {
       'countryOrRegionForHolidays': ?countryOrRegionForHolidays,
       'cvStepSize': ?cvStepSize,
       'featureLags': ?featureLags,
-      'forecastHorizon': ?pulumi.Input.mapOptionalInputValue<AutoForecastHorizonResponse, Map<String, dynamic>>(forecastHorizon, (value) => value.toMap()),
+      'forecastHorizon':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoForecastHorizonResponse,
+            Map<String, dynamic>
+          >(forecastHorizon, (value) => value.toMap()),
       'frequency': ?frequency,
-      'seasonality': ?pulumi.Input.mapOptionalInputValue<AutoSeasonalityResponse, Map<String, dynamic>>(seasonality, (value) => value.toMap()),
+      'seasonality':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoSeasonalityResponse,
+            Map<String, dynamic>
+          >(seasonality, (value) => value.toMap()),
       'shortSeriesHandlingConfig': ?shortSeriesHandlingConfig,
       'targetAggregateFunction': ?targetAggregateFunction,
-      'targetLags': ?pulumi.Input.mapOptionalInputValue<AutoTargetLagsResponse, Map<String, dynamic>>(targetLags, (value) => value.toMap()),
-      'targetRollingWindowSize': ?pulumi.Input.mapOptionalInputValue<AutoTargetRollingWindowSizeResponse, Map<String, dynamic>>(targetRollingWindowSize, (value) => value.toMap()),
+      'targetLags':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoTargetLagsResponse,
+            Map<String, dynamic>
+          >(targetLags, (value) => value.toMap()),
+      'targetRollingWindowSize':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoTargetRollingWindowSizeResponse,
+            Map<String, dynamic>
+          >(targetRollingWindowSize, (value) => value.toMap()),
       'timeColumnName': ?timeColumnName,
       'timeSeriesIdColumnNames': ?timeSeriesIdColumnNames,
       'useStl': ?useStl,
@@ -91,20 +120,87 @@ class ForecastingSettingsResponse {
 
   factory ForecastingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ForecastingSettingsResponse(
-      countryOrRegionForHolidays: map['countryOrRegionForHolidays'] == null ? null : (map['countryOrRegionForHolidays']! as String).input(),
-      cvStepSize: map['cvStepSize'] == null ? null : (map['cvStepSize']! as int).input(),
-      featureLags: map['featureLags'] == null ? null : (map['featureLags']! as String).input(),
-      forecastHorizon: map['forecastHorizon'] == null ? null : (AutoForecastHorizonResponse.fromMap((map['forecastHorizon']! as Map).cast<String, dynamic>())).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
-      seasonality: map['seasonality'] == null ? null : (AutoSeasonalityResponse.fromMap((map['seasonality']! as Map).cast<String, dynamic>())).input(),
-      shortSeriesHandlingConfig: map['shortSeriesHandlingConfig'] == null ? null : (map['shortSeriesHandlingConfig']! as String).input(),
-      targetAggregateFunction: map['targetAggregateFunction'] == null ? null : (map['targetAggregateFunction']! as String).input(),
-      targetLags: map['targetLags'] == null ? null : (AutoTargetLagsResponse.fromMap((map['targetLags']! as Map).cast<String, dynamic>())).input(),
-      targetRollingWindowSize: map['targetRollingWindowSize'] == null ? null : (AutoTargetRollingWindowSizeResponse.fromMap((map['targetRollingWindowSize']! as Map).cast<String, dynamic>())).input(),
-      timeColumnName: map['timeColumnName'] == null ? null : (map['timeColumnName']! as String).input(),
-      timeSeriesIdColumnNames: map['timeSeriesIdColumnNames'] == null ? null : ((map['timeSeriesIdColumnNames']! as List).cast<String>()).input(),
-      useStl: map['useStl'] == null ? null : (map['useStl']! as String).input(),
+      countryOrRegionForHolidays: (() {
+        final guardedValue = map['countryOrRegionForHolidays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cvStepSize: (() {
+        final guardedValue = map['cvStepSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      featureLags: (() {
+        final guardedValue = map['featureLags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forecastHorizon: (() {
+        final guardedValue = map['forecastHorizon'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoForecastHorizonResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      frequency: (() {
+        final guardedValue = map['frequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      seasonality: (() {
+        final guardedValue = map['seasonality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoSeasonalityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      shortSeriesHandlingConfig: (() {
+        final guardedValue = map['shortSeriesHandlingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetAggregateFunction: (() {
+        final guardedValue = map['targetAggregateFunction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetLags: (() {
+        final guardedValue = map['targetLags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoTargetLagsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetRollingWindowSize: (() {
+        final guardedValue = map['targetRollingWindowSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoTargetRollingWindowSizeResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeColumnName: (() {
+        final guardedValue = map['timeColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeSeriesIdColumnNames: (() {
+        final guardedValue = map['timeSeriesIdColumnNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      useStl: (() {
+        final guardedValue = map['useStl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

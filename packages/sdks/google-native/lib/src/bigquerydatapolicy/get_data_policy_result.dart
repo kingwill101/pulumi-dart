@@ -6,12 +6,16 @@ import 'data_masking_policy_response.dart';
 class GetDataPolicyResult {
   /// The data masking policy that specifies the data masking rule to use.
   final DataMaskingPolicyResponse dataMaskingPolicy;
+
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {data_policy_id} in part of the resource name.
   final String dataPolicyId;
+
   /// Type of data policy.
   final String dataPolicyType;
+
   /// Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
   final String name;
+
   /// Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
   final String policyTag;
 
@@ -41,7 +45,9 @@ class GetDataPolicyResult {
 
   factory GetDataPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetDataPolicyResult(
-      dataMaskingPolicy: DataMaskingPolicyResponse.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>()),
+      dataMaskingPolicy: DataMaskingPolicyResponse.fromMap(
+        (map['dataMaskingPolicy']! as Map).cast<String, dynamic>(),
+      ),
       dataPolicyId: map['dataPolicyId'] as String,
       dataPolicyType: map['dataPolicyType'] as String,
       name: map['name'] as String,
@@ -49,4 +55,3 @@ class GetDataPolicyResult {
     );
   }
 }
-

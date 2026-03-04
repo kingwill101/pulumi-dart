@@ -229,20 +229,28 @@ class AnywhereCache extends pulumi.CustomResource {
   /// Default value is `admit-on-first-miss`.
   /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
   late final pulumi.Output<String?> admissionPolicy;
+
   /// The ID of the Anywhere cache instance.
   late final pulumi.Output<String> anywhereCacheId;
+
   /// A reference to Bucket resource
   late final pulumi.Output<String> bucket;
+
   /// The creation time of the cache instance in RFC 3339 format.
   late final pulumi.Output<String> createTime;
+
   /// True if the cache instance has an active Update long-running operation.
   late final pulumi.Output<bool> pendingUpdate;
+
   /// The current state of the cache instance.
   late final pulumi.Output<String> state;
+
   /// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
   late final pulumi.Output<String?> ttl;
+
   /// The modification time of the cache instance metadata in RFC 3339 format.
   late final pulumi.Output<String> updateTime;
+
   /// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
   late final pulumi.Output<String> zone;
 
@@ -255,20 +263,20 @@ class AnywhereCache extends pulumi.CustomResource {
     AnywhereCacheArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/anywhereCache:AnywhereCache',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.admissionPolicy = registerOutput<String?>('admissionPolicy');
-    this.anywhereCacheId = registerOutput<String>('anywhereCacheId');
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.pendingUpdate = registerOutput<bool>('pendingUpdate');
-    this.state = registerOutput<String>('state');
-    this.ttl = registerOutput<String?>('ttl');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.zone = registerOutput<String>('zone');
+         'gcp:storage/anywhereCache:AnywhereCache',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    admissionPolicy = registerOutput<String?>('admissionPolicy');
+    anywhereCacheId = registerOutput<String>('anywhereCacheId');
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    pendingUpdate = registerOutput<bool>('pendingUpdate');
+    state = registerOutput<String>('state');
+    ttl = registerOutput<String?>('ttl');
+    updateTime = registerOutput<String>('updateTime');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [AnywhereCache] resource's state with the given [name] and [id].
@@ -289,19 +297,19 @@ class AnywhereCache extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/anywhereCache:AnywhereCache',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.admissionPolicy = registerOutput<String?>('admissionPolicy');
-    this.anywhereCacheId = registerOutput<String>('anywhereCacheId');
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.pendingUpdate = registerOutput<bool>('pendingUpdate');
+         'gcp:storage/anywhereCache:AnywhereCache',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    admissionPolicy = registerOutput<String?>('admissionPolicy');
+    anywhereCacheId = registerOutput<String>('anywhereCacheId');
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    pendingUpdate = registerOutput<bool>('pendingUpdate');
     this.state = registerOutput<String>('state');
-    this.ttl = registerOutput<String?>('ttl');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.zone = registerOutput<String>('zone');
+    ttl = registerOutput<String?>('ttl');
+    updateTime = registerOutput<String>('updateTime');
+    zone = registerOutput<String>('zone');
   }
 }

@@ -10,20 +10,39 @@ class FieldIndexConfig {
 
   /// Creates a new [FieldIndexConfig].
   /// [indexes] The indexes to configure on the field. Order or array contains must be specified.
-  FieldIndexConfig({
-    this.indexes,
-  });
+  FieldIndexConfig({this.indexes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'indexes': ?pulumi.Input.mapOptionalInputValue<List<FieldIndexConfigIndex>, List<Map<String, dynamic>>>(indexes, (value) => pulumi.Input.encodeList<FieldIndexConfigIndex, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'indexes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FieldIndexConfigIndex>,
+            List<Map<String, dynamic>>
+          >(
+            indexes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FieldIndexConfigIndex,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory FieldIndexConfig.fromMap(Map<String, dynamic> map) {
     return FieldIndexConfig(
-      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<FieldIndexConfigIndex>(map['indexes']!, (value) => FieldIndexConfigIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexes: (() {
+        final guardedValue = map['indexes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FieldIndexConfigIndex>(
+            guardedValue,
+            (value) => FieldIndexConfigIndex.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

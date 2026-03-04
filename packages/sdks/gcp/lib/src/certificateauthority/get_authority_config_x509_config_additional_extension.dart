@@ -7,8 +7,13 @@ class GetAuthorityConfigX509ConfigAdditionalExtension {
   /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
   /// handle this extension, the client should consider this to be an error).
   final pulumi.Input<bool> critical;
+
   /// Describes values that are relevant in a CA certificate.
-  final pulumi.Input<List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId>> objectIds;
+  final pulumi.Input<
+    List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId>
+  >
+  objectIds;
+
   /// The value of this X.509 extension. A base64-encoded string.
   final pulumi.Input<String> value;
 
@@ -25,17 +30,39 @@ class GetAuthorityConfigX509ConfigAdditionalExtension {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'critical': critical,
-      'objectIds': pulumi.Input.mapInputValue<List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId>, List<Map<String, dynamic>>>(objectIds, (value) => pulumi.Input.encodeList<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'objectIds':
+          pulumi.Input.mapInputValue<
+            List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId>,
+            List<Map<String, dynamic>>
+          >(
+            objectIds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetAuthorityConfigX509ConfigAdditionalExtensionObjectId,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'value': value,
     };
   }
 
-  factory GetAuthorityConfigX509ConfigAdditionalExtension.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorityConfigX509ConfigAdditionalExtension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorityConfigX509ConfigAdditionalExtension(
-      critical: (map['critical'] as bool).input(),
-      objectIds: (pulumi.Input.decodeList<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId>(map['objectIds'], (value) => GetAuthorityConfigX509ConfigAdditionalExtensionObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      value: (map['value'] as String).input(),
+      critical: pulumi.Input.fromValue(map['critical'] as bool),
+      objectIds: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetAuthorityConfigX509ConfigAdditionalExtensionObjectId
+        >(
+          map['objectIds']!,
+          (value) =>
+              GetAuthorityConfigX509ConfigAdditionalExtensionObjectId.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

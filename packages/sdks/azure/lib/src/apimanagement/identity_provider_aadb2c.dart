@@ -313,7 +313,7 @@ import 'identity_provider_aadb2c_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -328,26 +328,37 @@ import 'identity_provider_aadb2c_state.dart';
 class IdentityProviderAadb2c extends pulumi.CustomResource {
   /// The allowed AAD tenant, usually your B2C tenant domain.
   late final pulumi.Output<String> allowedTenant;
+
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// OpenID Connect discovery endpoint hostname, usually your b2clogin.com domain.
   late final pulumi.Output<String> authority;
+
   /// Client ID of the Application in your B2C tenant.
   late final pulumi.Output<String> clientId;
+
   /// The client library to be used in the Azure AD B2C Identity Provider.
   late final pulumi.Output<String?> clientLibrary;
+
   /// Client secret of the Application in your B2C tenant.
   late final pulumi.Output<String> clientSecret;
+
   /// Password reset Policy Name.
   late final pulumi.Output<String?> passwordResetPolicy;
+
   /// Profile editing Policy Name.
   late final pulumi.Output<String?> profileEditingPolicy;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Signin Policy Name.
   late final pulumi.Output<String> signinPolicy;
+
   /// The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
   late final pulumi.Output<String> signinTenant;
+
   /// Signup Policy Name.
   late final pulumi.Output<String> signupPolicy;
 
@@ -360,23 +371,23 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
     IdentityProviderAadb2cArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedTenant = registerOutput<String>('allowedTenant');
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.authority = registerOutput<String>('authority');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientLibrary = registerOutput<String?>('clientLibrary');
-    this.clientSecret = registerOutput<String>('clientSecret');
-    this.passwordResetPolicy = registerOutput<String?>('passwordResetPolicy');
-    this.profileEditingPolicy = registerOutput<String?>('profileEditingPolicy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.signinPolicy = registerOutput<String>('signinPolicy');
-    this.signinTenant = registerOutput<String>('signinTenant');
-    this.signupPolicy = registerOutput<String>('signupPolicy');
+         'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedTenant = registerOutput<String>('allowedTenant');
+    apiManagementName = registerOutput<String>('apiManagementName');
+    authority = registerOutput<String>('authority');
+    clientId = registerOutput<String>('clientId');
+    clientLibrary = registerOutput<String?>('clientLibrary');
+    clientSecret = registerOutput<String>('clientSecret');
+    passwordResetPolicy = registerOutput<String?>('passwordResetPolicy');
+    profileEditingPolicy = registerOutput<String?>('profileEditingPolicy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    signinPolicy = registerOutput<String>('signinPolicy');
+    signinTenant = registerOutput<String>('signinTenant');
+    signupPolicy = registerOutput<String>('signupPolicy');
   }
 
   /// Gets an existing [IdentityProviderAadb2c] resource's state with the given [name] and [id].
@@ -397,22 +408,22 @@ class IdentityProviderAadb2c extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedTenant = registerOutput<String>('allowedTenant');
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.authority = registerOutput<String>('authority');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientLibrary = registerOutput<String?>('clientLibrary');
-    this.clientSecret = registerOutput<String>('clientSecret');
-    this.passwordResetPolicy = registerOutput<String?>('passwordResetPolicy');
-    this.profileEditingPolicy = registerOutput<String?>('profileEditingPolicy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.signinPolicy = registerOutput<String>('signinPolicy');
-    this.signinTenant = registerOutput<String>('signinTenant');
-    this.signupPolicy = registerOutput<String>('signupPolicy');
+         'azure:apimanagement/identityProviderAadb2c:IdentityProviderAadb2c',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedTenant = registerOutput<String>('allowedTenant');
+    apiManagementName = registerOutput<String>('apiManagementName');
+    authority = registerOutput<String>('authority');
+    clientId = registerOutput<String>('clientId');
+    clientLibrary = registerOutput<String?>('clientLibrary');
+    clientSecret = registerOutput<String>('clientSecret');
+    passwordResetPolicy = registerOutput<String?>('passwordResetPolicy');
+    profileEditingPolicy = registerOutput<String?>('profileEditingPolicy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    signinPolicy = registerOutput<String>('signinPolicy');
+    signinTenant = registerOutput<String>('signinTenant');
+    signupPolicy = registerOutput<String>('signupPolicy');
   }
 }

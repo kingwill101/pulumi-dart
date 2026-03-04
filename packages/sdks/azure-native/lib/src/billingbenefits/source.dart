@@ -212,34 +212,49 @@ import 'system_data_response.dart';
 class Source extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Commitment towards the benefit.
   late final pulumi.Output<CommitmentResponse?> credit;
+
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The billing period of the impact for the resource. Format YYYYMM
   late final pulumi.Output<String?> impactedBillingPeriod;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Plan for the resource.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// The resource model definition representing SKU
   late final pulumi.Output<SkuResponse?> sku;
+
   /// The uri of the resource impacted which lead to the grant of the credit.
   late final pulumi.Output<String?> sourceResourceId;
+
   /// Status of the credit
   late final pulumi.Output<String?> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -247,31 +262,28 @@ class Source extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Source]. {@macro pulumi_billingbenefits_source_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Source(
-    String name, {
-    SourceArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:billingbenefits:Source',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.credit = registerOutput<CommitmentResponse?>('credit');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.impactedBillingPeriod = registerOutput<String?>('impactedBillingPeriod');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
+  Source(String name, {SourceArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:billingbenefits:Source',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    credit = registerOutput<CommitmentResponse?>('credit');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    impactedBillingPeriod = registerOutput<String?>('impactedBillingPeriod');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.sourceResourceId = registerOutput<String?>('sourceResourceId');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    plan = registerOutput<PlanResponse?>('plan');
+    sku = registerOutput<SkuResponse?>('sku');
+    sourceResourceId = registerOutput<String?>('sourceResourceId');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

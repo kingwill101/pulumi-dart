@@ -4,16 +4,15 @@ enum ArtifactStoreType {
   valueAzureContainerRegistry("AzureContainerRegistry"),
   valueAzureStorageAccount("AzureStorageAccount");
 
-  const ArtifactStoreType(this.value);
-  final String value;
+  const ArtifactStoreType(this.wireValue);
+  final String wireValue;
 
   static ArtifactStoreType fromValue(String value) {
     for (final item in ArtifactStoreType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArtifactStoreType value: $value');
   }
 }
-

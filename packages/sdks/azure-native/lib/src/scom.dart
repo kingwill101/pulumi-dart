@@ -1,5 +1,3 @@
-library module_scom;
-
 export 'scom/azure_hybrid_benefit_properties.dart';
 export 'scom/azure_hybrid_benefit_properties_response.dart';
 export 'scom/database_instance_properties.dart';

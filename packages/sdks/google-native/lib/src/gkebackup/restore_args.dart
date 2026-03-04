@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreArgs {
   /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
   final pulumi.Input<String> backup;
+
   /// User specified descriptive string for this Restore.
   final pulumi.Input<String>? description;
+
   /// A set of custom labels supplied by user.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
   final pulumi.Input<String> restoreId;
   final pulumi.Input<String> restorePlanId;
@@ -51,14 +54,31 @@ class RestoreArgs {
 
   factory RestoreArgs.fromMap(Map<String, dynamic> map) {
     return RestoreArgs(
-      backup: (map['backup'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      restoreId: (map['restoreId'] as String).input(),
-      restorePlanId: (map['restorePlanId'] as String).input(),
+      backup: pulumi.Input.fromValue(map['backup'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restoreId: pulumi.Input.fromValue(map['restoreId'] as String),
+      restorePlanId: pulumi.Input.fromValue(map['restorePlanId'] as String),
     );
   }
 }
-

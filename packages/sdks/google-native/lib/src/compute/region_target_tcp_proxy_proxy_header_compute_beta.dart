@@ -3,16 +3,17 @@ enum RegionTargetTcpProxyProxyHeaderComputeBeta {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const RegionTargetTcpProxyProxyHeaderComputeBeta(this.value);
-  final String value;
+  const RegionTargetTcpProxyProxyHeaderComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RegionTargetTcpProxyProxyHeaderComputeBeta fromValue(String value) {
     for (final item in RegionTargetTcpProxyProxyHeaderComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionTargetTcpProxyProxyHeaderComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionTargetTcpProxyProxyHeaderComputeBeta value: $value',
+    );
   }
 }
-

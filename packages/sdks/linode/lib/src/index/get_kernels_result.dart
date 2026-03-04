@@ -7,6 +7,7 @@ import 'get_kernels_kernel.dart';
 /// Result data returned by getKernels.
 class GetKernelsResult {
   final List<GetKernelsFilter>? filters;
+
   /// The unique ID of this Kernel.
   final String id;
   final List<GetKernelsKernel> kernels;
@@ -29,9 +30,20 @@ class GetKernelsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetKernelsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetKernelsFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
-      'kernels': pulumi.Input.encodeList<GetKernelsKernel, Map<String, dynamic>>(kernels, (value) => value.toMap()),
+      'kernels':
+          pulumi.Input.encodeList<GetKernelsKernel, Map<String, dynamic>>(
+            kernels,
+            (value) => value.toMap(),
+          ),
       'order': ?order,
       'orderBy': ?orderBy,
     };
@@ -39,12 +51,31 @@ class GetKernelsResult {
 
   factory GetKernelsResult.fromMap(Map<String, dynamic> map) {
     return GetKernelsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetKernelsFilter>(map['filters']!, (value) => GetKernelsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetKernelsFilter>(
+          guardedValue,
+          (value) =>
+              GetKernelsFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      kernels: pulumi.Input.decodeList<GetKernelsKernel>(map['kernels'], (value) => GetKernelsKernel.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] == null ? null : map['order']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
+      kernels: pulumi.Input.decodeList<GetKernelsKernel>(
+        map['kernels']!,
+        (value) =>
+            GetKernelsKernel.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

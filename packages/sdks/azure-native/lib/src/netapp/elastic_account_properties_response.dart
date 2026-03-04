@@ -7,6 +7,7 @@ import 'elastic_encryption_response.dart';
 class ElasticAccountPropertiesResponse {
   /// Encryption settings
   final pulumi.Input<ElasticEncryptionResponse>? encryption;
+
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
 
@@ -20,16 +21,29 @@ class ElasticAccountPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryption': ?pulumi.Input.mapOptionalInputValue<ElasticEncryptionResponse, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticEncryptionResponse,
+            Map<String, dynamic>
+          >(encryption, (value) => value.toMap()),
       'provisioningState': provisioningState,
     };
   }
 
   factory ElasticAccountPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticAccountPropertiesResponse(
-      encryption: map['encryption'] == null ? null : (ElasticEncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticEncryptionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

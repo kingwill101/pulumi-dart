@@ -7,25 +7,33 @@ import 'v2_organization_notification_config_streaming_config.dart';
 class V2OrganizationNotificationConfigState {
   /// This must be unique within the organization.
   final pulumi.Input<String>? configId;
+
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
+
   /// location Id is provided by organization. If not provided, Use global as default.
   final pulumi.Input<String>? location;
+
   /// The resource name of this notification config, in the format
   /// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
   final pulumi.Input<String>? name;
+
   /// The organization whose Cloud Security Command Center the Notification
   /// Config lives in.
   final pulumi.Input<String>? organization;
+
   /// The Pub/Sub topic to send notifications to. Its format is
   /// "projects/[project_id]/topics/[topic]".
   final pulumi.Input<String>? pubsubTopic;
+
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   final pulumi.Input<String>? serviceAccount;
+
   /// The config for triggering streaming-based notifications.
   /// Structure is documented below.
-  final pulumi.Input<V2OrganizationNotificationConfigStreamingConfig>? streamingConfig;
+  final pulumi.Input<V2OrganizationNotificationConfigStreamingConfig>?
+  streamingConfig;
 
   /// Creates a new [V2OrganizationNotificationConfigState].
   /// [configId] This must be unique within the organization.
@@ -56,21 +64,62 @@ class V2OrganizationNotificationConfigState {
       'organization': ?organization,
       'pubsubTopic': ?pubsubTopic,
       'serviceAccount': ?serviceAccount,
-      'streamingConfig': ?pulumi.Input.mapOptionalInputValue<V2OrganizationNotificationConfigStreamingConfig, Map<String, dynamic>>(streamingConfig, (value) => value.toMap()),
+      'streamingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2OrganizationNotificationConfigStreamingConfig,
+            Map<String, dynamic>
+          >(streamingConfig, (value) => value.toMap()),
     };
   }
 
-  factory V2OrganizationNotificationConfigState.fromMap(Map<String, dynamic> map) {
+  factory V2OrganizationNotificationConfigState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2OrganizationNotificationConfigState(
-      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
-      streamingConfig: map['streamingConfig'] == null ? null : (V2OrganizationNotificationConfigStreamingConfig.fromMap((map['streamingConfig']! as Map).cast<String, dynamic>())).input(),
+      configId: (() {
+        final guardedValue = map['configId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organization: (() {
+        final guardedValue = map['organization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pubsubTopic: (() {
+        final guardedValue = map['pubsubTopic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamingConfig: (() {
+        final guardedValue = map['streamingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2OrganizationNotificationConfigStreamingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,20 +8,15 @@ class SshPublicKeyResponse {
 
   /// Creates a new [SshPublicKeyResponse].
   /// [keyData] The SSH public key data.
-  SshPublicKeyResponse({
-    required this.keyData,
-  });
+  SshPublicKeyResponse({required this.keyData});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyData': keyData,
-    };
+    return <String, dynamic>{'keyData': keyData};
   }
 
   factory SshPublicKeyResponse.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyResponse(
-      keyData: (map['keyData'] as String).input(),
+      keyData: pulumi.Input.fromValue(map['keyData'] as String),
     );
   }
 }
-

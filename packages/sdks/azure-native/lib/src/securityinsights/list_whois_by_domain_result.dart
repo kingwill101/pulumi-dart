@@ -6,14 +6,19 @@ import 'enrichment_domain_whois_details_response.dart';
 class ListWhoisByDomainResult {
   /// The timestamp at which this record was created
   final String? created;
+
   /// The domain for this whois record
   final String? domain;
+
   /// The timestamp at which this record will expire
   final String? expires;
+
   /// The whois record for a given domain
   final EnrichmentDomainWhoisDetailsResponse? parsedWhois;
+
   /// The hostname of this registrar's whois server
   final String? server;
+
   /// The timestamp at which this record was last updated
   final String? updated;
 
@@ -38,7 +43,7 @@ class ListWhoisByDomainResult {
       'created': ?created,
       'domain': ?domain,
       'expires': ?expires,
-      'parsedWhois': ?parsedWhois == null ? null : parsedWhois!.toMap(),
+      'parsedWhois': ?parsedWhois?.toMap(),
       'server': ?server,
       'updated': ?updated,
     };
@@ -46,13 +51,38 @@ class ListWhoisByDomainResult {
 
   factory ListWhoisByDomainResult.fromMap(Map<String, dynamic> map) {
     return ListWhoisByDomainResult(
-      created: map['created'] == null ? null : map['created']! as String,
-      domain: map['domain'] == null ? null : map['domain']! as String,
-      expires: map['expires'] == null ? null : map['expires']! as String,
-      parsedWhois: map['parsedWhois'] == null ? null : EnrichmentDomainWhoisDetailsResponse.fromMap((map['parsedWhois']! as Map).cast<String, dynamic>()),
-      server: map['server'] == null ? null : map['server']! as String,
-      updated: map['updated'] == null ? null : map['updated']! as String,
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      expires: (() {
+        final guardedValue = map['expires'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      parsedWhois: (() {
+        final guardedValue = map['parsedWhois'];
+        if (guardedValue == null) return null;
+        return EnrichmentDomainWhoisDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      updated: (() {
+        final guardedValue = map['updated'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

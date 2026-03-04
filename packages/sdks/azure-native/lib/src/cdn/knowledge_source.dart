@@ -157,22 +157,31 @@ import 'system_data_response.dart';
 class KnowledgeSource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of the knowledge source.
   late final pulumi.Output<String?> description;
+
   /// The last time the knowledge source was updated.
   late final pulumi.Output<String> lastRefreshedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning status of the knowledge source.
   late final pulumi.Output<String> provisioningState;
+
   /// Format or origin of the knowledge source.
   late final pulumi.Output<String> sourceType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Specifies the units of time for scheduling update intervals for the knowledge source.
   late final pulumi.Output<String?> updateFrequency;
+
   /// Endpoint or location of the knowledge source.
   late final pulumi.Output<String> url;
 
@@ -185,20 +194,20 @@ class KnowledgeSource extends pulumi.CustomResource {
     KnowledgeSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:KnowledgeSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.lastRefreshedTime = registerOutput<String>('lastRefreshedTime');
+         'azure-native:cdn:KnowledgeSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    lastRefreshedTime = registerOutput<String>('lastRefreshedTime');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceType = registerOutput<String>('sourceType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updateFrequency = registerOutput<String?>('updateFrequency');
-    this.url = registerOutput<String>('url');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceType = registerOutput<String>('sourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updateFrequency = registerOutput<String?>('updateFrequency');
+    url = registerOutput<String>('url');
   }
 }

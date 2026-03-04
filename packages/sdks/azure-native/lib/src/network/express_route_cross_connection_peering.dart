@@ -185,38 +185,57 @@ import 'ipv6_express_route_circuit_peering_config_response.dart';
 class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
   /// The Azure ASN.
   late final pulumi.Output<int> azureASN;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The GatewayManager Etag.
   late final pulumi.Output<String?> gatewayManagerEtag;
+
   /// The IPv6 peering configuration.
-  late final pulumi.Output<Ipv6ExpressRouteCircuitPeeringConfigResponse?> ipv6PeeringConfig;
+  late final pulumi.Output<Ipv6ExpressRouteCircuitPeeringConfigResponse?>
+  ipv6PeeringConfig;
+
   /// Who was the last to modify the peering.
   late final pulumi.Output<String> lastModifiedBy;
+
   /// The Microsoft peering configuration.
-  late final pulumi.Output<ExpressRouteCircuitPeeringConfigResponse?> microsoftPeeringConfig;
+  late final pulumi.Output<ExpressRouteCircuitPeeringConfigResponse?>
+  microsoftPeeringConfig;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The peer ASN.
   late final pulumi.Output<double?> peerASN;
+
   /// The peering type.
   late final pulumi.Output<String?> peeringType;
+
   /// The primary port.
   late final pulumi.Output<String> primaryAzurePort;
+
   /// The primary address prefix.
   late final pulumi.Output<String?> primaryPeerAddressPrefix;
+
   /// The provisioning state of the express route cross connection peering resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The secondary port.
   late final pulumi.Output<String> secondaryAzurePort;
+
   /// The secondary address prefix.
   late final pulumi.Output<String?> secondaryPeerAddressPrefix;
+
   /// The shared key.
   late final pulumi.Output<String?> sharedKey;
+
   /// The peering state.
   late final pulumi.Output<String?> state;
+
   /// The VLAN ID.
   late final pulumi.Output<int?> vlanId;
 
@@ -229,28 +248,38 @@ class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
     ExpressRouteCrossConnectionPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ExpressRouteCrossConnectionPeering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureASN = registerOutput<int>('azureASN');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
-    this.ipv6PeeringConfig = registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>('ipv6PeeringConfig');
-    this.lastModifiedBy = registerOutput<String>('lastModifiedBy');
-    this.microsoftPeeringConfig = registerOutput<ExpressRouteCircuitPeeringConfigResponse?>('microsoftPeeringConfig');
+         'azure-native:network:ExpressRouteCrossConnectionPeering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureASN = registerOutput<int>('azureASN');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
+    ipv6PeeringConfig =
+        registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>(
+          'ipv6PeeringConfig',
+        );
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    microsoftPeeringConfig =
+        registerOutput<ExpressRouteCircuitPeeringConfigResponse?>(
+          'microsoftPeeringConfig',
+        );
     this.name = registerOutput<String?>('name');
-    this.peerASN = registerOutput<double?>('peerASN');
-    this.peeringType = registerOutput<String?>('peeringType');
-    this.primaryAzurePort = registerOutput<String>('primaryAzurePort');
-    this.primaryPeerAddressPrefix = registerOutput<String?>('primaryPeerAddressPrefix');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.secondaryAzurePort = registerOutput<String>('secondaryAzurePort');
-    this.secondaryPeerAddressPrefix = registerOutput<String?>('secondaryPeerAddressPrefix');
-    this.sharedKey = registerOutput<String?>('sharedKey');
-    this.state = registerOutput<String?>('state');
-    this.vlanId = registerOutput<int?>('vlanId');
+    peerASN = registerOutput<double?>('peerASN');
+    peeringType = registerOutput<String?>('peeringType');
+    primaryAzurePort = registerOutput<String>('primaryAzurePort');
+    primaryPeerAddressPrefix = registerOutput<String?>(
+      'primaryPeerAddressPrefix',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    secondaryAzurePort = registerOutput<String>('secondaryAzurePort');
+    secondaryPeerAddressPrefix = registerOutput<String?>(
+      'secondaryPeerAddressPrefix',
+    );
+    sharedKey = registerOutput<String?>('sharedKey');
+    state = registerOutput<String?>('state');
+    vlanId = registerOutput<int?>('vlanId');
   }
 }

@@ -4,16 +4,15 @@ enum CVSSv3IntegrityImpact {
   impactLow("IMPACT_LOW"),
   impactNone("IMPACT_NONE");
 
-  const CVSSv3IntegrityImpact(this.value);
-  final String value;
+  const CVSSv3IntegrityImpact(this.wireValue);
+  final String wireValue;
 
   static CVSSv3IntegrityImpact fromValue(String value) {
     for (final item in CVSSv3IntegrityImpact.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSv3IntegrityImpact value: $value');
   }
 }
-

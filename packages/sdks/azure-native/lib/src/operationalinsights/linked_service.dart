@@ -140,16 +140,22 @@ import 'linked_service_args.dart';
 class LinkedService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the linked service.
   late final pulumi.Output<String?> provisioningState;
+
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
   late final pulumi.Output<String?> resourceId;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
   late final pulumi.Output<String?> writeAccessResourceId;
 
@@ -162,17 +168,17 @@ class LinkedService extends pulumi.CustomResource {
     LinkedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationalinsights:LinkedService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:operationalinsights:LinkedService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.writeAccessResourceId = registerOutput<String?>('writeAccessResourceId');
+    provisioningState = registerOutput<String?>('provisioningState');
+    resourceId = registerOutput<String?>('resourceId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    writeAccessResourceId = registerOutput<String?>('writeAccessResourceId');
   }
 }

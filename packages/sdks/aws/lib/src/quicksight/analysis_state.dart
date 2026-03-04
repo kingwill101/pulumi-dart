@@ -9,35 +9,49 @@ import 'analysis_source_entity.dart';
 class AnalysisState {
   /// Identifier for the analysis.
   final pulumi.Input<String>? analysisId;
+
   /// ARN of the analysis.
   final pulumi.Input<String>? arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// The time that the analysis was created.
   final pulumi.Input<String>? createdTime;
   final pulumi.Input<String>? lastPublishedTime;
+
   /// The time that the analysis was last updated.
   final pulumi.Input<String>? lastUpdatedTime;
+
   /// Display name for the analysis.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// The parameters for the creation of the analysis, which you want to use to override the default settings. An analysis can have any type of parameters, and some parameters might accept multiple values. See parameters.
   final pulumi.Input<AnalysisParameters>? parameters;
+
   /// A set of resource permissions on the analysis. Maximum of 64 items. See permissions.
   final pulumi.Input<List<AnalysisPermission>>? permissions;
+
   /// A value that specifies the number of days that Amazon QuickSight waits before it deletes the analysis. Use `0` to force deletion without recovery. Minimum value of `7`. Maximum value of `30`. Default to `30`.
   final pulumi.Input<int>? recoveryWindowInDays;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The entity that you are using as a source when you create the analysis (template). Only one of `definition` or `source_entity` should be configured. See source_entity.
   final pulumi.Input<AnalysisSourceEntity>? sourceEntity;
+
   /// The analysis creation status.
   final pulumi.Input<String>? status;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The Amazon Resource Name (ARN) of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
   final pulumi.Input<String>? themeArn;
 
@@ -86,11 +100,30 @@ class AnalysisState {
       'lastPublishedTime': ?lastPublishedTime,
       'lastUpdatedTime': ?lastUpdatedTime,
       'name': ?name,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<AnalysisParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
-      'permissions': ?pulumi.Input.mapOptionalInputValue<List<AnalysisPermission>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<AnalysisPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnalysisParameters,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
+      'permissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AnalysisPermission>,
+            List<Map<String, dynamic>>
+          >(
+            permissions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AnalysisPermission,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'recoveryWindowInDays': ?recoveryWindowInDays,
       'region': ?region,
-      'sourceEntity': ?pulumi.Input.mapOptionalInputValue<AnalysisSourceEntity, Map<String, dynamic>>(sourceEntity, (value) => value.toMap()),
+      'sourceEntity':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnalysisSourceEntity,
+            Map<String, dynamic>
+          >(sourceEntity, (value) => value.toMap()),
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -100,23 +133,105 @@ class AnalysisState {
 
   factory AnalysisState.fromMap(Map<String, dynamic> map) {
     return AnalysisState(
-      analysisId: map['analysisId'] == null ? null : ((map['analysisId'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
-      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
-      lastPublishedTime: map['lastPublishedTime'] == null ? null : ((map['lastPublishedTime'] as String).input()).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      parameters: map['parameters'] == null ? null : ((AnalysisParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
-      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<AnalysisPermission>(map['permissions']!, (value) => AnalysisPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : ((map['recoveryWindowInDays'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sourceEntity: map['sourceEntity'] == null ? null : ((AnalysisSourceEntity.fromMap((map['sourceEntity']! as Map).cast<String, dynamic>())).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      themeArn: map['themeArn'] == null ? null : ((map['themeArn'] as String).input()).input(),
+      analysisId: (() {
+        final guardedValue = map['analysisId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdTime: (() {
+        final guardedValue = map['createdTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastPublishedTime: (() {
+        final guardedValue = map['lastPublishedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastUpdatedTime: (() {
+        final guardedValue = map['lastUpdatedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnalysisParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AnalysisPermission>(
+            guardedValue,
+            (value) => AnalysisPermission.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      recoveryWindowInDays: (() {
+        final guardedValue = map['recoveryWindowInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEntity: (() {
+        final guardedValue = map['sourceEntity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnalysisSourceEntity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      themeArn: (() {
+        final guardedValue = map['themeArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,7 +5,11 @@ import 'get_user_pool_user_pool_add_on_advanced_security_additional_flow.dart';
 
 class GetUserPoolUserPoolAddOn {
   /// A block of the threat protection configuration options for additional authentication types in your user pool, including custom authentication. Detailed below.
-  final pulumi.Input<List<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>> advancedSecurityAdditionalFlows;
+  final pulumi.Input<
+    List<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>
+  >
+  advancedSecurityAdditionalFlows;
+
   /// Mode for advanced security.
   final pulumi.Input<String> advancedSecurityMode;
 
@@ -19,16 +23,38 @@ class GetUserPoolUserPoolAddOn {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSecurityAdditionalFlows': pulumi.Input.mapInputValue<List<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>, List<Map<String, dynamic>>>(advancedSecurityAdditionalFlows, (value) => pulumi.Input.encodeList<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'advancedSecurityAdditionalFlows':
+          pulumi.Input.mapInputValue<
+            List<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>,
+            List<Map<String, dynamic>>
+          >(
+            advancedSecurityAdditionalFlows,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'advancedSecurityMode': advancedSecurityMode,
     };
   }
 
   factory GetUserPoolUserPoolAddOn.fromMap(Map<String, dynamic> map) {
     return GetUserPoolUserPoolAddOn(
-      advancedSecurityAdditionalFlows: (pulumi.Input.decodeList<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>(map['advancedSecurityAdditionalFlows']!, (value) => GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      advancedSecurityMode: (map['advancedSecurityMode'] as String).input(),
+      advancedSecurityAdditionalFlows: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow
+        >(
+          map['advancedSecurityAdditionalFlows']!,
+          (value) =>
+              GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      advancedSecurityMode: pulumi.Input.fromValue(
+        map['advancedSecurityMode'] as String,
+      ),
     );
   }
 }
-

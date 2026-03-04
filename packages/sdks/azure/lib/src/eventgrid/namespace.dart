@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_args.dart';
 import 'namespace_identity.dart';
-import 'namespace_inbound_ip_rule.dart';
 import 'namespace_state.dart';
-import 'namespace_topic_spaces_configuration.dart';
 
 /// Manages an EventGrid Namespace
 ///
@@ -161,7 +159,7 @@ import 'namespace_topic_spaces_configuration.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2023-12-15-preview
@@ -176,24 +174,34 @@ import 'namespace_topic_spaces_configuration.dart';
 class Namespace extends pulumi.CustomResource {
   /// Specifies the Capacity / Throughput Units for an Eventgrid Namespace. Valid values can be between `1` and `40`.
   late final pulumi.Output<int?> capacity;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<NamespaceIdentity?> identity;
+
   /// One or more `inbound_ip_rule` blocks as defined below.
-  late final pulumi.Output<List<NamespaceInboundIpRule>?> inboundIpRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+
   /// Specifies the supported Azure location where the resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Event Grid Namespace resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Whether or not public network access is allowed for this server. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The name of the resource group in which the Event Grid Namespace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Defines which tier to use. The only possible value is `Standard`. Defaults to `Standard`.
   late final pulumi.Output<String?> sku;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `topic_spaces_configuration` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<NamespaceTopicSpacesConfiguration>?> topicSpacesConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  topicSpacesConfigurations;
 
   /// Creates a new [Namespace].
   /// [name] The Pulumi resource name.
@@ -204,21 +212,25 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacity = registerOutput<int?>('capacity');
-    this.identity = registerOutput<NamespaceIdentity?>('identity');
-    this.inboundIpRules = registerOutput<List<NamespaceInboundIpRule>?>('inboundIpRules');
-    this.location = registerOutput<String>('location');
+         'azure:eventgrid/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacity = registerOutput<int?>('capacity');
+    identity = registerOutput<NamespaceIdentity?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topicSpacesConfigurations = registerOutput<List<NamespaceTopicSpacesConfiguration>?>('topicSpacesConfigurations');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topicSpacesConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'topicSpacesConfigurations',
+    );
   }
 
   /// Gets an existing [Namespace] resource's state with the given [name] and [id].
@@ -239,20 +251,24 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacity = registerOutput<int?>('capacity');
-    this.identity = registerOutput<NamespaceIdentity?>('identity');
-    this.inboundIpRules = registerOutput<List<NamespaceInboundIpRule>?>('inboundIpRules');
-    this.location = registerOutput<String>('location');
+         'azure:eventgrid/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacity = registerOutput<int?>('capacity');
+    identity = registerOutput<NamespaceIdentity?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topicSpacesConfigurations = registerOutput<List<NamespaceTopicSpacesConfiguration>?>('topicSpacesConfigurations');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topicSpacesConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'topicSpacesConfigurations',
+    );
   }
 }

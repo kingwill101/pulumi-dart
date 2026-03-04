@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccountArgs {
   /// Data policy of the storage Account.
   final pulumi.Input<String> dataPolicy;
+
   /// Description for the storage Account.
   final pulumi.Input<String>? description;
+
   /// The device name.
   final pulumi.Input<String> deviceName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Storage Account Credential Id
   final pulumi.Input<String>? storageAccountCredentialId;
+
   /// The StorageAccount name.
   final pulumi.Input<String>? storageAccountName;
+
   /// Current status of the storage account
   final pulumi.Input<String>? storageAccountStatus;
 
@@ -54,14 +60,31 @@ class StorageAccountArgs {
 
   factory StorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountArgs(
-      dataPolicy: (map['dataPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountCredentialId: map['storageAccountCredentialId'] == null ? null : (map['storageAccountCredentialId']! as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
-      storageAccountStatus: map['storageAccountStatus'] == null ? null : (map['storageAccountStatus']! as String).input(),
+      dataPolicy: pulumi.Input.fromValue(map['dataPolicy'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageAccountCredentialId: (() {
+        final guardedValue = map['storageAccountCredentialId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountStatus: (() {
+        final guardedValue = map['storageAccountStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

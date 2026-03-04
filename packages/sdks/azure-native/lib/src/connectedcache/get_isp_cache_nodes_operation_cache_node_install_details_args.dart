@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIspCacheNodesOperationCacheNodeInstallDetailsArgs {
   /// Name of the ConnectedCache resource
   final pulumi.Input<String> cacheNodeResourceName;
+
   /// Name of the Customer resource
   final pulumi.Input<String> customerResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,19 @@ class GetIspCacheNodesOperationCacheNodeInstallDetailsArgs {
     };
   }
 
-  factory GetIspCacheNodesOperationCacheNodeInstallDetailsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetIspCacheNodesOperationCacheNodeInstallDetailsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIspCacheNodesOperationCacheNodeInstallDetailsArgs(
-      cacheNodeResourceName: (map['cacheNodeResourceName'] as String).input(),
-      customerResourceName: (map['customerResourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      cacheNodeResourceName: pulumi.Input.fromValue(
+        map['cacheNodeResourceName'] as String,
+      ),
+      customerResourceName: pulumi.Input.fromValue(
+        map['customerResourceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

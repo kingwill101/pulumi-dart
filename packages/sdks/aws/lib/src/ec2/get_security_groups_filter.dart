@@ -9,23 +9,16 @@ class GetSecurityGroupsFilter {
   /// Creates a new [GetSecurityGroupsFilter].
   /// [name] Required.
   /// [values] Required.
-  GetSecurityGroupsFilter({
-    required this.name,
-    required this.values,
-  });
+  GetSecurityGroupsFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetSecurityGroupsFilter.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupsFilter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

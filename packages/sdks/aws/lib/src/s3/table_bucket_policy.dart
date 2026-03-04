@@ -172,8 +172,10 @@ import 'table_bucket_policy_state.dart';
 class TableBucketPolicy extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Web Services resource-based policy document in JSON format.
   late final pulumi.Output<String> resourcePolicy;
+
   /// ARN referencing the Table Bucket that owns this policy.
   late final pulumi.Output<String> tableBucketArn;
 
@@ -186,14 +188,14 @@ class TableBucketPolicy extends pulumi.CustomResource {
     TableBucketPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3tables/tableBucketPolicy:TableBucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.resourcePolicy = registerOutput<String>('resourcePolicy');
-    this.tableBucketArn = registerOutput<String>('tableBucketArn');
+         'aws:s3tables/tableBucketPolicy:TableBucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    resourcePolicy = registerOutput<String>('resourcePolicy');
+    tableBucketArn = registerOutput<String>('tableBucketArn');
   }
 
   /// Gets an existing [TableBucketPolicy] resource's state with the given [name] and [id].
@@ -214,13 +216,13 @@ class TableBucketPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3tables/tableBucketPolicy:TableBucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.resourcePolicy = registerOutput<String>('resourcePolicy');
-    this.tableBucketArn = registerOutput<String>('tableBucketArn');
+         'aws:s3tables/tableBucketPolicy:TableBucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    resourcePolicy = registerOutput<String>('resourcePolicy');
+    tableBucketArn = registerOutput<String>('tableBucketArn');
   }
 }

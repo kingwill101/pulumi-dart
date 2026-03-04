@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionIdentityResponse {
   /// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
   final pulumi.Input<String> principalId;
+
   /// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
   final pulumi.Input<String>? userAssignedIdentity;
 
@@ -26,9 +27,12 @@ class EncryptionIdentityResponse {
 
   factory EncryptionIdentityResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentityResponse(
-      principalId: (map['principalId'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

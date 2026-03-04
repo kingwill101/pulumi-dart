@@ -5,10 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheIdentity {
   /// A list of User Assigned Managed Identity IDs to be assigned to this Redis Cluster.
   ///
-  /// > **NOTE:** This is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
+  /// &gt; **NOTE:** This is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
   final pulumi.Input<String>? principalId;
   final pulumi.Input<String>? tenantId;
+
   /// Specifies the type of Managed Service Identity that should be configured on this Redis Cluster. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
   final pulumi.Input<String> type;
 
@@ -35,11 +36,22 @@ class CacheIdentity {
 
   factory CacheIdentity.fromMap(Map<String, dynamic> map) {
     return CacheIdentity(
-      identityIds: map['identityIds'] == null ? null : ((map['identityIds']! as List).cast<String>()).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: (map['type'] as String).input(),
+      identityIds: (() {
+        final guardedValue = map['identityIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

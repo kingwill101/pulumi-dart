@@ -7,18 +7,25 @@ import 'solution_properties_response.dart';
 class GetSolutionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Resource location
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// Plan for solution object supported by the OperationsManagement resource provider.
   final SolutionPlanResponse? plan;
+
   /// Properties for solution object supported by the OperationsManagement resource provider.
   final SolutionPropertiesResponse properties;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -48,7 +55,7 @@ class GetSolutionResult {
       'id': id,
       'location': ?location,
       'name': name,
-      'plan': ?plan == null ? null : plan!.toMap(),
+      'plan': ?plan?.toMap(),
       'properties': properties.toMap(),
       'tags': ?tags,
       'type': type,
@@ -59,13 +66,28 @@ class GetSolutionResult {
     return GetSolutionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      plan: map['plan'] == null ? null : SolutionPlanResponse.fromMap((map['plan']! as Map).cast<String, dynamic>()),
-      properties: SolutionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return SolutionPlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      properties: SolutionPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

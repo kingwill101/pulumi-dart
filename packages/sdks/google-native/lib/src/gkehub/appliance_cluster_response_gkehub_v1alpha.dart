@@ -9,20 +9,17 @@ class ApplianceClusterResponseGkehubV1alpha {
 
   /// Creates a new [ApplianceClusterResponseGkehubV1alpha].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
-  ApplianceClusterResponseGkehubV1alpha({
-    required this.resourceLink,
-  });
+  ApplianceClusterResponseGkehubV1alpha({required this.resourceLink});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceLink': resourceLink,
-    };
+    return <String, dynamic>{'resourceLink': resourceLink};
   }
 
-  factory ApplianceClusterResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ApplianceClusterResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplianceClusterResponseGkehubV1alpha(
-      resourceLink: (map['resourceLink'] as String).input(),
+      resourceLink: pulumi.Input.fromValue(map['resourceLink'] as String),
     );
   }
 }
-

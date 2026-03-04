@@ -10,28 +10,40 @@ import 'system_data_response.dart';
 class GetManagedClusterApplicationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Azure resource identifier.
   final String id;
+
   /// Describes the managed identities for an Azure resource.
   final ManagedIdentityResponse? identity;
+
   /// Resource location depends on the parent resource.
   final String? location;
+
   /// List of user assigned identities for the application, each mapped to a friendly name.
   final List<ApplicationUserAssignedIdentityResponse>? managedIdentities;
+
   /// Azure resource name.
   final String name;
+
   /// List of application parameters with overridden values from their default values specified in the application manifest.
   final Map<String, String>? parameters;
+
   /// The current deployment or provisioning state, which only appears in the response
   final String provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Azure resource tags.
   final Map<String, String>? tags;
+
   /// Azure resource type.
   final String type;
+
   /// Describes the policy for a monitored application upgrade.
   final ApplicationUpgradePolicyResponse? upgradePolicy;
+
   /// The version of the application type as defined in the application manifest.
   /// This name must be the full Arm Resource ID for the referenced application type version.
   final String? version;
@@ -70,16 +82,23 @@ class GetManagedClusterApplicationResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
-      'managedIdentities': ?managedIdentities == null ? null : pulumi.Input.encodeList<ApplicationUserAssignedIdentityResponse, Map<String, dynamic>>(managedIdentities!, (value) => value.toMap()),
+      'managedIdentities': ?(() {
+        final guardedValue = managedIdentities;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ApplicationUserAssignedIdentityResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': name,
       'parameters': ?parameters,
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'upgradePolicy': ?upgradePolicy == null ? null : upgradePolicy!.toMap(),
+      'upgradePolicy': ?upgradePolicy?.toMap(),
       'version': ?version,
     };
   }
@@ -88,18 +107,56 @@ class GetManagedClusterApplicationResult {
     return GetManagedClusterApplicationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
-      managedIdentities: map['managedIdentities'] == null ? null : pulumi.Input.decodeList<ApplicationUserAssignedIdentityResponse>(map['managedIdentities']!, (value) => ApplicationUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      managedIdentities: (() {
+        final guardedValue = map['managedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ApplicationUserAssignedIdentityResponse>(
+          guardedValue,
+          (value) => ApplicationUserAssignedIdentityResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters']! as Map).cast<String, String>(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      upgradePolicy: map['upgradePolicy'] == null ? null : ApplicationUpgradePolicyResponse.fromMap((map['upgradePolicy']! as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version']! as String,
+      upgradePolicy: (() {
+        final guardedValue = map['upgradePolicy'];
+        if (guardedValue == null) return null;
+        return ApplicationUpgradePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

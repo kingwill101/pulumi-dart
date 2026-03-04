@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureTrafficCollectorArgs {
   /// Azure Traffic Collector name
   final pulumi.Input<String>? azureTrafficCollectorName;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +42,26 @@ class AzureTrafficCollectorArgs {
 
   factory AzureTrafficCollectorArgs.fromMap(Map<String, dynamic> map) {
     return AzureTrafficCollectorArgs(
-      azureTrafficCollectorName: map['azureTrafficCollectorName'] == null ? null : (map['azureTrafficCollectorName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      azureTrafficCollectorName: (() {
+        final guardedValue = map['azureTrafficCollectorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicSchemaArgs {
   /// The name of the DynamicSchema
   final pulumi.Input<String>? dynamicSchemaName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Schema
   final pulumi.Input<String> schemaName;
 
@@ -34,10 +36,15 @@ class DynamicSchemaArgs {
 
   factory DynamicSchemaArgs.fromMap(Map<String, dynamic> map) {
     return DynamicSchemaArgs(
-      dynamicSchemaName: map['dynamicSchemaName'] == null ? null : (map['dynamicSchemaName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: (map['schemaName'] as String).input(),
+      dynamicSchemaName: (() {
+        final guardedValue = map['dynamicSchemaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
     );
   }
 }
-

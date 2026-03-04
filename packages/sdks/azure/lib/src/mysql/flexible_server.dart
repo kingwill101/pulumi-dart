@@ -449,7 +449,7 @@ import 'flexible_server_storage.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforMySQL` - 2023-12-30
@@ -464,80 +464,106 @@ import 'flexible_server_storage.dart';
 class FlexibleServer extends pulumi.CustomResource {
   /// The Administrator login for the MySQL Flexible Server. Required when `create_mode` is `Default`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> administratorLogin;
+
   /// The Password associated with the `administrator_login` for the MySQL Flexible Server.
   late final pulumi.Output<String?> administratorPassword;
+
   /// An integer value used to trigger an update for `administrator_password_wo`. This property should be incremented when updating `administrator_password_wo`.
   ///
-  /// > **Note:** Either `administrator_password` or `administrator_password_wo` is required when `create_mode` is `Default`.
+  /// &gt; **Note:** Either `administrator_password` or `administrator_password_wo` is required when `create_mode` is `Default`.
   late final pulumi.Output<int?> administratorPasswordWoVersion;
+
   /// The backup retention days for the MySQL Flexible Server. Possible values are between `1` and `35` days. Defaults to `7`.
   late final pulumi.Output<int?> backupRetentionDays;
+
   /// The creation mode which can be used to restore or replicate existing servers. Possible values are `Default`, `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
-  /// > **Note:** Creating a `GeoRestore` server requires the source server with `geo_redundant_backup_enabled` enabled.
+  /// &gt; **Note:** Creating a `GeoRestore` server requires the source server with `geo_redundant_backup_enabled` enabled.
   ///
-  /// > **Note:** When a server is first created it may not be immediately available for `geo restore` or `replica`. It may take a few minutes to several hours for the necessary metadata to be populated. Please see the [Geo Restore](https://learn.microsoft.com/azure/mysql/single-server/how-to-restore-server-portal#geo-restore) and the [Replica](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-read-replicas#create-a-replica) for more information.
+  /// &gt; **Note:** When a server is first created it may not be immediately available for `geo restore` or `replica`. It may take a few minutes to several hours for the necessary metadata to be populated. Please see the [Geo Restore](https://learn.microsoft.com/azure/mysql/single-server/how-to-restore-server-portal#geo-restore) and the [Replica](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-read-replicas#create-a-replica) for more information.
   ///
-  /// > **Note:** When importing a MySQL Flexible Server, `create_mode` is not returned by the api so you will see a diff if `create_mode` is specified in your config. To prevent recreation, use the `ignore_changes` lifecycle meta-argument.
+  /// &gt; **Note:** When importing a MySQL Flexible Server, `create_mode` is not returned by the api so you will see a diff if `create_mode` is specified in your config. To prevent recreation, use the `ignore_changes` lifecycle meta-argument.
   late final pulumi.Output<String?> createMode;
+
   /// A `customer_managed_key` block as defined below.
   ///
-  /// > **Note:** `identity` is required when `customer_managed_key` is specified.
-  late final pulumi.Output<FlexibleServerCustomerManagedKey?> customerManagedKey;
+  /// &gt; **Note:** `identity` is required when `customer_managed_key` is specified.
+  late final pulumi.Output<FlexibleServerCustomerManagedKey?>
+  customerManagedKey;
+
   /// The ID of the virtual network subnet to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String?> delegatedSubnetId;
+
   /// The fully qualified domain name of the MySQL Flexible Server.
   late final pulumi.Output<String> fqdn;
+
   /// Should geo redundant backup enabled? Defaults to `false`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<bool?> geoRedundantBackupEnabled;
+
   /// A `high_availability` block as defined below.
   late final pulumi.Output<FlexibleServerHighAvailability?> highAvailability;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<FlexibleServerIdentity?> identity;
+
   /// The Azure Region where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> location;
+
   /// A `maintenance_window` block as defined below.
   late final pulumi.Output<FlexibleServerMaintenanceWindow?> maintenanceWindow;
+
   /// The name which should be used for this MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> name;
+
   /// The point in time to restore from `creation_source_server_id` when `create_mode` is `PointInTimeRestore`. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String?> pointInTimeRestoreTimeInUtc;
+
   /// The ID of the private DNS zone to create the MySQL Flexible Server. Changing this forces a new MySQL Flexible Server to be created.
   ///
-  /// > **Note:** The `private_dns_zone_id` is required when setting a `delegated_subnet_id`. The `azure.privatedns.Zone` should end with suffix `.mysql.database.azure.com`.
+  /// &gt; **Note:** The `private_dns_zone_id` is required when setting a `delegated_subnet_id`. The `azure.privatedns.Zone` should end with suffix `.mysql.database.azure.com`.
   late final pulumi.Output<String?> privateDnsZoneId;
+
   /// Whether approved public traffic is allowed through the firewall to this server. Possible values are `Enabled` and `Disabled`.
   ///
-  /// > **Note:** `public_network_access` is automatically set to `Disabled` if the server is created with VNet Integration (i.e. values are provided for `delegated_subnet_id` and `private_dns_zone_id`").
+  /// &gt; **Note:** `public_network_access` is automatically set to `Disabled` if the server is created with VNet Integration (i.e. values are provided for `delegated_subnet_id` and `private_dns_zone_id`").
   late final pulumi.Output<String> publicNetworkAccess;
   late final pulumi.Output<bool> publicNetworkAccessEnabled;
+
   /// The maximum number of replicas that a primary MySQL Flexible Server can have.
   late final pulumi.Output<int> replicaCapacity;
+
   /// The replication role. Possible value is `None`.
   ///
-  /// > **Note:** The `replication_role` cannot be set while creating and only can be updated from `Replica` to `None`.
+  /// &gt; **Note:** The `replication_role` cannot be set while creating and only can be updated from `Replica` to `None`.
   late final pulumi.Output<String> replicationRole;
+
   /// The name of the Resource Group where the MySQL Flexible Server should exist. Changing this forces a new MySQL Flexible Server to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The SKU Name for the MySQL Flexible Server.
   ///
-  /// > **Note:** `sku_name` should start with SKU tier `B (Burstable)`, `GP (General Purpose)`, `MO (Memory Optimized)` like `B_Standard_B1ms`.
+  /// &gt; **Note:** `sku_name` should start with SKU tier `B (Burstable)`, `GP (General Purpose)`, `MO (Memory Optimized)` like `B_Standard_B1ms`.
   late final pulumi.Output<String> skuName;
+
   /// The resource ID of the source MySQL Flexible Server to be restored. Required when `create_mode` is `PointInTimeRestore`, `GeoRestore`, and `Replica`. Changing this forces a new MySQL Flexible Server to be created.
   ///
-  /// > **Note:** The replica server is always created in the same resource group and subscription as the source server.
+  /// &gt; **Note:** The replica server is always created in the same resource group and subscription as the source server.
   late final pulumi.Output<String?> sourceServerId;
+
   /// A `storage` block as defined below.
   late final pulumi.Output<FlexibleServerStorage> storage;
+
   /// A mapping of tags which should be assigned to the MySQL Flexible Server.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The version of the MySQL Flexible Server to use. Possible values are `5.7`, `8.0.21` and `8.4`.
   late final pulumi.Output<String> version;
+
   /// Specifies the Availability Zone in which this MySQL Flexible Server should be located. Possible values are `1`, `2` and `3`.
   ///
-  /// > **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the MySQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignore_changes` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the MySQL Flexible Server back to it's primary Availability Zone after a fail-over.
+  /// &gt; **Note:** Azure will automatically assign an Availability Zone if one is not specified. If the MySQL Flexible Server fails-over to the Standby Availability Zone, the `zone` will be updated to reflect the current Primary Availability Zone. You can use Terraform's `ignore_changes` functionality to ignore changes to the `zone` and `high_availability[0].standby_availability_zone` fields should you wish for Terraform to not migrate the MySQL Flexible Server back to it's primary Availability Zone after a fail-over.
   ///
-  /// > **Note:** The Availability Zones available depend on the Azure Region that the MySQL Flexible Server is being deployed into - see [the Azure Availability Zones documentation](https://azure.microsoft.com/global-infrastructure/geographies/#geographies) for more information on which Availability Zones are available in each Azure Region.
+  /// &gt; **Note:** The Availability Zones available depend on the Azure Region that the MySQL Flexible Server is being deployed into - see [the Azure Availability Zones documentation](https://azure.microsoft.com/global-infrastructure/geographies/#geographies) for more information on which Availability Zones are available in each Azure Region.
   late final pulumi.Output<String> zone;
 
   /// Creates a new [FlexibleServer].
@@ -549,38 +575,52 @@ class FlexibleServer extends pulumi.CustomResource {
     FlexibleServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleServer:FlexibleServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String>('administratorLogin');
-    this.administratorPassword = registerOutput<String?>('administratorPassword');
-    this.administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
-    this.backupRetentionDays = registerOutput<int?>('backupRetentionDays');
-    this.createMode = registerOutput<String?>('createMode');
-    this.customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>('customerManagedKey');
-    this.delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
-    this.highAvailability = registerOutput<FlexibleServerHighAvailability?>('highAvailability');
-    this.identity = registerOutput<FlexibleServerIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>('maintenanceWindow');
+         'azure:mysql/flexibleServer:FlexibleServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorPasswordWoVersion = registerOutput<int?>(
+      'administratorPasswordWoVersion',
+    );
+    backupRetentionDays = registerOutput<int?>('backupRetentionDays');
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
+    fqdn = registerOutput<String>('fqdn');
+    geoRedundantBackupEnabled = registerOutput<bool?>(
+      'geoRedundantBackupEnabled',
+    );
+    highAvailability = registerOutput<FlexibleServerHighAvailability?>(
+      'highAvailability',
+    );
+    identity = registerOutput<FlexibleServerIdentity?>('identity');
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.pointInTimeRestoreTimeInUtc = registerOutput<String?>('pointInTimeRestoreTimeInUtc');
-    this.privateDnsZoneId = registerOutput<String?>('privateDnsZoneId');
-    this.publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
-    this.publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
-    this.replicaCapacity = registerOutput<int>('replicaCapacity');
-    this.replicationRole = registerOutput<String>('replicationRole');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.sourceServerId = registerOutput<String?>('sourceServerId');
-    this.storage = registerOutput<FlexibleServerStorage>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String>('version');
-    this.zone = registerOutput<String>('zone');
+    pointInTimeRestoreTimeInUtc = registerOutput<String?>(
+      'pointInTimeRestoreTimeInUtc',
+    );
+    privateDnsZoneId = registerOutput<String?>('privateDnsZoneId');
+    publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
+    publicNetworkAccessEnabled = registerOutput<bool>(
+      'publicNetworkAccessEnabled',
+    );
+    replicaCapacity = registerOutput<int>('replicaCapacity');
+    replicationRole = registerOutput<String>('replicationRole');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    sourceServerId = registerOutput<String?>('sourceServerId');
+    storage = registerOutput<FlexibleServerStorage>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String>('version');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [FlexibleServer] resource's state with the given [name] and [id].
@@ -601,37 +641,51 @@ class FlexibleServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleServer:FlexibleServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String>('administratorLogin');
-    this.administratorPassword = registerOutput<String?>('administratorPassword');
-    this.administratorPasswordWoVersion = registerOutput<int?>('administratorPasswordWoVersion');
-    this.backupRetentionDays = registerOutput<int?>('backupRetentionDays');
-    this.createMode = registerOutput<String?>('createMode');
-    this.customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>('customerManagedKey');
-    this.delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.geoRedundantBackupEnabled = registerOutput<bool?>('geoRedundantBackupEnabled');
-    this.highAvailability = registerOutput<FlexibleServerHighAvailability?>('highAvailability');
-    this.identity = registerOutput<FlexibleServerIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>('maintenanceWindow');
+         'azure:mysql/flexibleServer:FlexibleServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorPasswordWoVersion = registerOutput<int?>(
+      'administratorPasswordWoVersion',
+    );
+    backupRetentionDays = registerOutput<int?>('backupRetentionDays');
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKey = registerOutput<FlexibleServerCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    delegatedSubnetId = registerOutput<String?>('delegatedSubnetId');
+    fqdn = registerOutput<String>('fqdn');
+    geoRedundantBackupEnabled = registerOutput<bool?>(
+      'geoRedundantBackupEnabled',
+    );
+    highAvailability = registerOutput<FlexibleServerHighAvailability?>(
+      'highAvailability',
+    );
+    identity = registerOutput<FlexibleServerIdentity?>('identity');
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<FlexibleServerMaintenanceWindow?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.pointInTimeRestoreTimeInUtc = registerOutput<String?>('pointInTimeRestoreTimeInUtc');
-    this.privateDnsZoneId = registerOutput<String?>('privateDnsZoneId');
-    this.publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
-    this.publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
-    this.replicaCapacity = registerOutput<int>('replicaCapacity');
-    this.replicationRole = registerOutput<String>('replicationRole');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.sourceServerId = registerOutput<String?>('sourceServerId');
-    this.storage = registerOutput<FlexibleServerStorage>('storage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String>('version');
-    this.zone = registerOutput<String>('zone');
+    pointInTimeRestoreTimeInUtc = registerOutput<String?>(
+      'pointInTimeRestoreTimeInUtc',
+    );
+    privateDnsZoneId = registerOutput<String?>('privateDnsZoneId');
+    publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
+    publicNetworkAccessEnabled = registerOutput<bool>(
+      'publicNetworkAccessEnabled',
+    );
+    replicaCapacity = registerOutput<int>('replicaCapacity');
+    replicationRole = registerOutput<String>('replicationRole');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    sourceServerId = registerOutput<String?>('sourceServerId');
+    storage = registerOutput<FlexibleServerStorage>('storage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String>('version');
+    zone = registerOutput<String>('zone');
   }
 }

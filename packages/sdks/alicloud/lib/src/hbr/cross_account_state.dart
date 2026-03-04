@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrossAccountState {
   /// Backup account alias
   final pulumi.Input<String>? alias;
+
   /// Timestamp of the creation time
   final pulumi.Input<int>? createTime;
+
   /// The name of RAM role that the backup account authorizes the management account to manage its resources
   final pulumi.Input<String>? crossAccountRoleName;
+
   /// The uid of the backup account.
   final pulumi.Input<int>? crossAccountUserId;
 
@@ -36,11 +39,26 @@ class CrossAccountState {
 
   factory CrossAccountState.fromMap(Map<String, dynamic> map) {
     return CrossAccountState(
-      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName']! as String).input(),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId']! as int).input(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      crossAccountRoleName: (() {
+        final guardedValue = map['crossAccountRoleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossAccountUserId: (() {
+        final guardedValue = map['crossAccountUserId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -10,10 +10,13 @@ import 'fleet_tier_properties.dart';
 class FleetTierArgs {
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
+
   /// A Fleet tier properties.
   final pulumi.Input<FleetTierProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the tier.
   final pulumi.Input<String>? tierName;
 
@@ -32,7 +35,11 @@ class FleetTierArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fleetName': fleetName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<FleetTierProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            FleetTierProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tierName': ?tierName,
     };
@@ -40,11 +47,24 @@ class FleetTierArgs {
 
   factory FleetTierArgs.fromMap(Map<String, dynamic> map) {
     return FleetTierArgs(
-      fleetName: (map['fleetName'] as String).input(),
-      properties: map['properties'] == null ? null : (FleetTierProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tierName: map['tierName'] == null ? null : (map['tierName']! as String).input(),
+      fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FleetTierProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tierName: (() {
+        final guardedValue = map['tierName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

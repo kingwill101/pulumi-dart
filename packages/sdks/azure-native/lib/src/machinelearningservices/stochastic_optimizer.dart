@@ -5,16 +5,15 @@ enum StochasticOptimizer {
   valueAdam("Adam"),
   valueAdamw("Adamw");
 
-  const StochasticOptimizer(this.value);
-  final String value;
+  const StochasticOptimizer(this.wireValue);
+  final String wireValue;
 
   static StochasticOptimizer fromValue(String value) {
     for (final item in StochasticOptimizer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StochasticOptimizer value: $value');
   }
 }
-

@@ -7,6 +7,7 @@ import '../core/persistent_volume_spec.dart';
 class VolumeAttachmentSourceStorageK8sIoV1beta1 {
   /// inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature.
   final pulumi.Input<PersistentVolumeSpec>? inlineVolumeSpec;
+
   /// Name of the persistent volume to attach.
   final pulumi.Input<String>? persistentVolumeName;
 
@@ -20,16 +21,33 @@ class VolumeAttachmentSourceStorageK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inlineVolumeSpec': ?pulumi.Input.mapOptionalInputValue<PersistentVolumeSpec, Map<String, dynamic>>(inlineVolumeSpec, (value) => value.toMap()),
+      'inlineVolumeSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            PersistentVolumeSpec,
+            Map<String, dynamic>
+          >(inlineVolumeSpec, (value) => value.toMap()),
       'persistentVolumeName': ?persistentVolumeName,
     };
   }
 
-  factory VolumeAttachmentSourceStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory VolumeAttachmentSourceStorageK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumeAttachmentSourceStorageK8sIoV1beta1(
-      inlineVolumeSpec: map['inlineVolumeSpec'] == null ? null : (PersistentVolumeSpec.fromMap((map['inlineVolumeSpec']! as Map).cast<String, dynamic>())).input(),
-      persistentVolumeName: map['persistentVolumeName'] == null ? null : (map['persistentVolumeName']! as String).input(),
+      inlineVolumeSpec: (() {
+        final guardedValue = map['inlineVolumeSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PersistentVolumeSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      persistentVolumeName: (() {
+        final guardedValue = map['persistentVolumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

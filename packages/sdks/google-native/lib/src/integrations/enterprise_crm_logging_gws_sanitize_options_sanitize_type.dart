@@ -7,16 +7,20 @@ enum EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType {
   encrypt("ENCRYPT"),
   doNotSanitize("DO_NOT_SANITIZE");
 
-  const EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType(this.value);
-  final String value;
+  const EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType fromValue(String value) {
-    for (final item in EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType value: $value',
+    );
   }
 }
-

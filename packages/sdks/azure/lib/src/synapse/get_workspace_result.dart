@@ -7,14 +7,18 @@ import 'get_workspace_identity.dart';
 class GetWorkspaceResult {
   /// A map of Connectivity endpoints for this Synapse Workspace.
   final Map<String, String> connectivityEndpoints;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// An `identity` block as defined below, which contains the Managed Service Identity information for this Synapse Workspace.
   final List<GetWorkspaceIdentity> identities;
+
   /// The Azure location where the Synapse Workspace exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -40,7 +44,11 @@ class GetWorkspaceResult {
     return <String, dynamic>{
       'connectivityEndpoints': connectivityEndpoints,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetWorkspaceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<GetWorkspaceIdentity, Map<String, dynamic>>(
+            identities,
+            (value) => value.toMap(),
+          ),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -50,9 +58,15 @@ class GetWorkspaceResult {
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
-      connectivityEndpoints: (map['connectivityEndpoints'] as Map).cast<String, String>(),
+      connectivityEndpoints: (map['connectivityEndpoints'] as Map)
+          .cast<String, String>(),
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetWorkspaceIdentity>(map['identities'], (value) => GetWorkspaceIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetWorkspaceIdentity>(
+        map['identities']!,
+        (value) => GetWorkspaceIdentity.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -60,4 +74,3 @@ class GetWorkspaceResult {
     );
   }
 }
-

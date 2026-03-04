@@ -17,7 +17,6 @@ import 'storage_profile_response.dart';
 import 'sub_resource_response.dart';
 import 'system_data_response.dart';
 import 'virtual_machine_args.dart';
-import 'virtual_machine_extension_response.dart';
 import 'virtual_machine_identity_response.dart';
 import 'virtual_machine_instance_view_response.dart';
 
@@ -17554,85 +17553,129 @@ import 'virtual_machine_instance_view_response.dart';
 /// ```
 class VirtualMachine extends pulumi.CustomResource {
   /// Specifies additional capabilities enabled or disabled on the virtual machine.
-  late final pulumi.Output<AdditionalCapabilitiesResponse?> additionalCapabilities;
+  late final pulumi.Output<AdditionalCapabilitiesResponse?>
+  additionalCapabilities;
+
   /// Specifies the gallery applications that should be made available to the VM/VMSS.
   late final pulumi.Output<ApplicationProfileResponse?> applicationProfile;
+
   /// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
   late final pulumi.Output<SubResourceResponse?> availabilitySet;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
   late final pulumi.Output<BillingProfileResponse?> billingProfile;
+
   /// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
-  late final pulumi.Output<CapacityReservationProfileResponse?> capacityReservation;
+  late final pulumi.Output<CapacityReservationProfileResponse?>
+  capacityReservation;
+
   /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
   late final pulumi.Output<DiagnosticsProfileResponse?> diagnosticsProfile;
+
   /// Etag is property returned in Create/Update/Get response of the VM, so that customer can supply it in the header to ensure optimistic updates.
   late final pulumi.Output<String> etag;
+
   /// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
   late final pulumi.Output<String?> evictionPolicy;
+
   /// The extended location of the Virtual Machine.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
   late final pulumi.Output<String?> extensionsTimeBudget;
+
   /// Specifies the hardware settings for the virtual machine.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
+
   /// Specifies information about the dedicated host that the virtual machine resides in. Minimum api-version: 2018-10-01.
   late final pulumi.Output<SubResourceResponse?> host;
+
   /// Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
   late final pulumi.Output<SubResourceResponse?> hostGroup;
+
   /// The identity of the virtual machine, if configured.
   late final pulumi.Output<VirtualMachineIdentityResponse?> identity;
+
   /// The virtual machine instance view.
   late final pulumi.Output<VirtualMachineInstanceViewResponse> instanceView;
-  /// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
+
+  /// Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
   late final pulumi.Output<String?> licenseType;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// ManagedBy is set to Virtual Machine Scale Set(VMSS) flex ARM resourceID, if the VM is part of the VMSS. This property is used by platform for internal resource group delete optimization.
   late final pulumi.Output<String> managedBy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the network interfaces of the virtual machine.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
+
   /// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
   late final pulumi.Output<OSProfileResponse?> osProfile;
+
   /// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
   late final pulumi.Output<PlacementResponse?> placement;
-  /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
+
+  /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
   late final pulumi.Output<int?> platformFaultDomain;
+
   /// Specifies the priority for the virtual machine. Minimum api-version: 2019-03-01
   late final pulumi.Output<String?> priority;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
   late final pulumi.Output<SubResourceResponse?> proximityPlacementGroup;
+
   /// The virtual machine child extension resources.
-  late final pulumi.Output<List<VirtualMachineExtensionResponse>> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+
   /// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-  late final pulumi.Output<ScheduledEventsPolicyResponse?> scheduledEventsPolicy;
+  late final pulumi.Output<ScheduledEventsPolicyResponse?>
+  scheduledEventsPolicy;
+
   /// Specifies Scheduled Event related configurations.
-  late final pulumi.Output<ScheduledEventsProfileResponse?> scheduledEventsProfile;
+  late final pulumi.Output<ScheduledEventsProfileResponse?>
+  scheduledEventsProfile;
+
   /// Specifies the Security related profile settings for the virtual machine.
   late final pulumi.Output<SecurityProfileResponse?> securityProfile;
+
   /// Specifies the storage settings for the virtual machine disks.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the time at which the Virtual Machine resource was created. Minimum api-version: 2021-11-01.
   late final pulumi.Output<String> timeCreated;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
   late final pulumi.Output<String?> userData;
+
   /// Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
   late final pulumi.Output<SubResourceResponse?> virtualMachineScaleSet;
+
   /// Specifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.
   late final pulumi.Output<String> vmId;
+
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -17645,51 +17688,75 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>('additionalCapabilities');
-    this.applicationProfile = registerOutput<ApplicationProfileResponse?>('applicationProfile');
-    this.availabilitySet = registerOutput<SubResourceResponse?>('availabilitySet');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.billingProfile = registerOutput<BillingProfileResponse?>('billingProfile');
-    this.capacityReservation = registerOutput<CapacityReservationProfileResponse?>('capacityReservation');
-    this.diagnosticsProfile = registerOutput<DiagnosticsProfileResponse?>('diagnosticsProfile');
-    this.etag = registerOutput<String>('etag');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    this.hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile');
-    this.host = registerOutput<SubResourceResponse?>('host');
-    this.hostGroup = registerOutput<SubResourceResponse?>('hostGroup');
-    this.identity = registerOutput<VirtualMachineIdentityResponse?>('identity');
-    this.instanceView = registerOutput<VirtualMachineInstanceViewResponse>('instanceView');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.location = registerOutput<String>('location');
-    this.managedBy = registerOutput<String>('managedBy');
+         'azure-native:compute:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>(
+      'additionalCapabilities',
+    );
+    applicationProfile = registerOutput<ApplicationProfileResponse?>(
+      'applicationProfile',
+    );
+    availabilitySet = registerOutput<SubResourceResponse?>('availabilitySet');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingProfile = registerOutput<BillingProfileResponse?>('billingProfile');
+    capacityReservation = registerOutput<CapacityReservationProfileResponse?>(
+      'capacityReservation',
+    );
+    diagnosticsProfile = registerOutput<DiagnosticsProfileResponse?>(
+      'diagnosticsProfile',
+    );
+    etag = registerOutput<String>('etag');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
+    hardwareProfile = registerOutput<HardwareProfileResponse?>(
+      'hardwareProfile',
+    );
+    host = registerOutput<SubResourceResponse?>('host');
+    hostGroup = registerOutput<SubResourceResponse?>('hostGroup');
+    identity = registerOutput<VirtualMachineIdentityResponse?>('identity');
+    instanceView = registerOutput<VirtualMachineInstanceViewResponse>(
+      'instanceView',
+    );
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    this.osProfile = registerOutput<OSProfileResponse?>('osProfile');
-    this.placement = registerOutput<PlacementResponse?>('placement');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.platformFaultDomain = registerOutput<int?>('platformFaultDomain');
-    this.priority = registerOutput<String?>('priority');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.proximityPlacementGroup = registerOutput<SubResourceResponse?>('proximityPlacementGroup');
-    this.resources = registerOutput<List<VirtualMachineExtensionResponse>>('resources');
-    this.scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>('scheduledEventsPolicy');
-    this.scheduledEventsProfile = registerOutput<ScheduledEventsProfileResponse?>('scheduledEventsProfile');
-    this.securityProfile = registerOutput<SecurityProfileResponse?>('securityProfile');
-    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.type = registerOutput<String>('type');
-    this.userData = registerOutput<String?>('userData');
-    this.virtualMachineScaleSet = registerOutput<SubResourceResponse?>('virtualMachineScaleSet');
-    this.vmId = registerOutput<String>('vmId');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    osProfile = registerOutput<OSProfileResponse?>('osProfile');
+    placement = registerOutput<PlacementResponse?>('placement');
+    plan = registerOutput<PlanResponse?>('plan');
+    platformFaultDomain = registerOutput<int?>('platformFaultDomain');
+    priority = registerOutput<String?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    proximityPlacementGroup = registerOutput<SubResourceResponse?>(
+      'proximityPlacementGroup',
+    );
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>(
+      'scheduledEventsPolicy',
+    );
+    scheduledEventsProfile = registerOutput<ScheduledEventsProfileResponse?>(
+      'scheduledEventsProfile',
+    );
+    securityProfile = registerOutput<SecurityProfileResponse?>(
+      'securityProfile',
+    );
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    userData = registerOutput<String?>('userData');
+    virtualMachineScaleSet = registerOutput<SubResourceResponse?>(
+      'virtualMachineScaleSet',
+    );
+    vmId = registerOutput<String>('vmId');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

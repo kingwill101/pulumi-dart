@@ -11,18 +11,24 @@ class ImageReference {
   /// Specified the community gallery image unique id for vm deployment. This can be
   /// fetched from community gallery image GET call.
   final pulumi.Input<String>? communityGalleryImageId;
+
   /// Resource Id
   final pulumi.Input<String>? id;
+
   /// Specifies the offer of the platform image or marketplace image used to create
   /// the virtual machine.
   final pulumi.Input<String>? offer;
+
   /// The image publisher.
   final pulumi.Input<String>? publisher;
+
   /// Specified the shared gallery image unique id for vm deployment. This can be
   /// fetched from shared gallery image GET call.
   final pulumi.Input<String>? sharedGalleryImageId;
+
   /// The image SKU.
   final pulumi.Input<String>? sku;
+
   /// Specifies the version of the platform image or marketplace image used to create
   /// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
   /// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
@@ -67,14 +73,41 @@ class ImageReference {
 
   factory ImageReference.fromMap(Map<String, dynamic> map) {
     return ImageReference(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : (map['sharedGalleryImageId']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      communityGalleryImageId: (() {
+        final guardedValue = map['communityGalleryImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offer: (() {
+        final guardedValue = map['offer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedGalleryImageId: (() {
+        final guardedValue = map['sharedGalleryImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

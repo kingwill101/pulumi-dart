@@ -10,12 +10,16 @@ import 'sku_type.dart';
 class EdgeActionArgs {
   /// The name of the Edge Action
   final pulumi.Input<String>? edgeActionName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The sku type of the edge action
   final pulumi.Input<SkuType> sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -38,19 +42,39 @@ class EdgeActionArgs {
       'edgeActionName': ?edgeActionName,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'sku': pulumi.Input.mapInputValue<SkuType, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<SkuType, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory EdgeActionArgs.fromMap(Map<String, dynamic> map) {
     return EdgeActionArgs(
-      edgeActionName: map['edgeActionName'] == null ? null : (map['edgeActionName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: (SkuType.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      edgeActionName: (() {
+        final guardedValue = map['edgeActionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: pulumi.Input.fromValue(
+        SkuType.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

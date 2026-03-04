@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationWindow {
   /// The duration of the maintenance window.
   final pulumi.Input<String> duration;
+
   /// Effective expiration date of the maintenance window.
   final pulumi.Input<String> expirationDateTime;
+
   /// The rate at which a maintenance window is expected to recur.
   final pulumi.Input<String> recurEvery;
+
   /// Effective start date of the maintenance window.
   final pulumi.Input<String> startDateTime;
+
   /// The time zone for the maintenance window.
   final pulumi.Input<String> timeZone;
 
@@ -40,12 +44,13 @@ class GetConfigurationWindow {
 
   factory GetConfigurationWindow.fromMap(Map<String, dynamic> map) {
     return GetConfigurationWindow(
-      duration: (map['duration'] as String).input(),
-      expirationDateTime: (map['expirationDateTime'] as String).input(),
-      recurEvery: (map['recurEvery'] as String).input(),
-      startDateTime: (map['startDateTime'] as String).input(),
-      timeZone: (map['timeZone'] as String).input(),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      expirationDateTime: pulumi.Input.fromValue(
+        map['expirationDateTime'] as String,
+      ),
+      recurEvery: pulumi.Input.fromValue(map['recurEvery'] as String),
+      startDateTime: pulumi.Input.fromValue(map['startDateTime'] as String),
+      timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
-

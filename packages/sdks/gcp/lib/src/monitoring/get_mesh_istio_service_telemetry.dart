@@ -10,20 +10,15 @@ class GetMeshIstioServiceTelemetry {
 
   /// Creates a new [GetMeshIstioServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GetMeshIstioServiceTelemetry({
-    required this.resourceName,
-  });
+  GetMeshIstioServiceTelemetry({required this.resourceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceName': resourceName,
-    };
+    return <String, dynamic>{'resourceName': resourceName};
   }
 
   factory GetMeshIstioServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return GetMeshIstioServiceTelemetry(
-      resourceName: (map['resourceName'] as String).input(),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDnsSecurityRuleArgs {
   /// The name of the DNS resolver policy.
   final pulumi.Input<String> dnsResolverPolicyName;
+
   /// The name of the DNS security rule.
   final pulumi.Input<String> dnsSecurityRuleName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetDnsSecurityRuleArgs {
 
   factory GetDnsSecurityRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsSecurityRuleArgs(
-      dnsResolverPolicyName: (map['dnsResolverPolicyName'] as String).input(),
-      dnsSecurityRuleName: (map['dnsSecurityRuleName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dnsResolverPolicyName: pulumi.Input.fromValue(
+        map['dnsResolverPolicyName'] as String,
+      ),
+      dnsSecurityRuleName: pulumi.Input.fromValue(
+        map['dnsSecurityRuleName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

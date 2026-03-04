@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
   /// Metric type.
   final pulumi.Input<String> predefinedMetricType;
+
   /// Identifies the resource associated with the metric type.
   final pulumi.Input<String>? resourceLabel;
 
@@ -23,11 +24,18 @@ class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
     };
   }
 
-  factory PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap(Map<String, dynamic> map) {
+  factory PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyTargetTrackingConfigurationPredefinedMetricSpecification(
-      predefinedMetricType: (map['predefinedMetricType'] as String).input(),
-      resourceLabel: map['resourceLabel'] == null ? null : ((map['resourceLabel'] as String).input()).input(),
+      predefinedMetricType: pulumi.Input.fromValue(
+        map['predefinedMetricType'] as String,
+      ),
+      resourceLabel: (() {
+        final guardedValue = map['resourceLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

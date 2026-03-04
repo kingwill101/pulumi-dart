@@ -4,9 +4,9 @@ import 'setting_state.dart';
 
 /// Manages the Data Access Settings for Azure Security Center.
 ///
-/// > **Note:** This resource requires the `Owner` permission on the Subscription.
+/// &gt; **Note:** This resource requires the `Owner` permission on the Subscription.
 ///
-/// > **Note:** Deletion of this resource disables the setting.
+/// &gt; **Note:** Deletion of this resource disables the setting.
 ///
 /// ## Example Usage
 ///
@@ -106,7 +106,7 @@ import 'setting_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Security` - 2022-05-01
@@ -121,6 +121,7 @@ import 'setting_state.dart';
 class Setting extends pulumi.CustomResource {
   /// Boolean flag to enable/disable data access.
   late final pulumi.Output<bool> enabled;
+
   /// The setting to manage. Possible values are `MCAS` , `WDATP`, `WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW`, `WDATP_UNIFIED_SOLUTION` and `Sentinel`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> settingName;
 
@@ -133,13 +134,13 @@ class Setting extends pulumi.CustomResource {
     SettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/setting:Setting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.settingName = registerOutput<String>('settingName');
+         'azure:securitycenter/setting:Setting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    settingName = registerOutput<String>('settingName');
   }
 
   /// Gets an existing [Setting] resource's state with the given [name] and [id].
@@ -160,12 +161,12 @@ class Setting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/setting:Setting',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.settingName = registerOutput<String>('settingName');
+         'azure:securitycenter/setting:Setting',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    settingName = registerOutput<String>('settingName');
   }
 }

@@ -4,16 +4,15 @@ enum SupportedOperations {
   get("Get"),
   delete("Delete");
 
-  const SupportedOperations(this.value);
-  final String value;
+  const SupportedOperations(this.wireValue);
+  final String wireValue;
 
   static SupportedOperations fromValue(String value) {
     for (final item in SupportedOperations.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SupportedOperations value: $value');
   }
 }
-

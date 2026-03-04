@@ -6,8 +6,12 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration {
   /// Time after which query generation will time out.
   final pulumi.Input<int>? executionTimeoutSeconds;
+
   /// Configurations for context to use during query generation. See `generation_context` block for details.
-  final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext>? generationContext;
+  final pulumi.Input<
+    AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext
+  >?
+  generationContext;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration].
   /// [executionTimeoutSeconds] Time after which query generation will time out.
@@ -20,15 +24,32 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'executionTimeoutSeconds': ?executionTimeoutSeconds,
-      'generationContext': ?pulumi.Input.mapOptionalInputValue<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext, Map<String, dynamic>>(generationContext, (value) => value.toMap()),
+      'generationContext':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext,
+            Map<String, dynamic>
+          >(generationContext, (value) => value.toMap()),
     };
   }
 
-  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration(
-      executionTimeoutSeconds: map['executionTimeoutSeconds'] == null ? null : ((map['executionTimeoutSeconds'] as int).input()).input(),
-      generationContext: map['generationContext'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext.fromMap((map['generationContext']! as Map).cast<String, dynamic>())).input()).input(),
+      executionTimeoutSeconds: (() {
+        final guardedValue = map['executionTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      generationContext: (() {
+        final guardedValue = map['generationContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

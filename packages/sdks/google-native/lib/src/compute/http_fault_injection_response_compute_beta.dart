@@ -8,6 +8,7 @@ import 'http_fault_delay_response_compute_beta.dart';
 class HttpFaultInjectionResponseComputeBeta {
   /// The specification for how client requests are aborted as part of fault injection.
   final pulumi.Input<HttpFaultAbortResponseComputeBeta> abort;
+
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   final pulumi.Input<HttpFaultDelayResponseComputeBeta> delay;
 
@@ -21,16 +22,33 @@ class HttpFaultInjectionResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort': pulumi.Input.mapInputValue<HttpFaultAbortResponseComputeBeta, Map<String, dynamic>>(abort, (value) => value.toMap()),
-      'delay': pulumi.Input.mapInputValue<HttpFaultDelayResponseComputeBeta, Map<String, dynamic>>(delay, (value) => value.toMap()),
+      'abort':
+          pulumi.Input.mapInputValue<
+            HttpFaultAbortResponseComputeBeta,
+            Map<String, dynamic>
+          >(abort, (value) => value.toMap()),
+      'delay':
+          pulumi.Input.mapInputValue<
+            HttpFaultDelayResponseComputeBeta,
+            Map<String, dynamic>
+          >(delay, (value) => value.toMap()),
     };
   }
 
-  factory HttpFaultInjectionResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory HttpFaultInjectionResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpFaultInjectionResponseComputeBeta(
-      abort: (HttpFaultAbortResponseComputeBeta.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: (HttpFaultDelayResponseComputeBeta.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: pulumi.Input.fromValue(
+        HttpFaultAbortResponseComputeBeta.fromMap(
+          (map['abort']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      delay: pulumi.Input.fromValue(
+        HttpFaultDelayResponseComputeBeta.fromMap(
+          (map['delay']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

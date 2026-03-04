@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2DiscoveryStartingLocationResponse {
   /// The ID of the Folder within an organization to scan.
   final pulumi.Input<String> folderId;
+
   /// The ID of an organization to scan.
   final pulumi.Input<String> organizationId;
 
@@ -24,11 +25,12 @@ class GooglePrivacyDlpV2DiscoveryStartingLocationResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryStartingLocationResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryStartingLocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DiscoveryStartingLocationResponse(
-      folderId: (map['folderId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      folderId: pulumi.Input.fromValue(map['folderId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class ClusterNodeConfigWindowsNodeConfig {
 
   /// Creates a new [ClusterNodeConfigWindowsNodeConfig].
   /// [osversion] The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
-  ClusterNodeConfigWindowsNodeConfig({
-    this.osversion,
-  });
+  ClusterNodeConfigWindowsNodeConfig({this.osversion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'osversion': ?osversion,
-    };
+    return <String, dynamic>{'osversion': ?osversion};
   }
 
   factory ClusterNodeConfigWindowsNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigWindowsNodeConfig(
-      osversion: map['osversion'] == null ? null : (map['osversion']! as String).input(),
+      osversion: (() {
+        final guardedValue = map['osversion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

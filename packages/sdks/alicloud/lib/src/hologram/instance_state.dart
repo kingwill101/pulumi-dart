@@ -8,11 +8,13 @@ class InstanceState {
   /// Whether to pay automatically. The default value is true. Value:
   /// - true: automatic payment
   /// - false: only generate orders, not pay
-  /// > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
+  /// &gt; **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
   final pulumi.Input<bool>? autoPay;
+
   /// Instance low-frequency storage space. Unit: GB.
-  /// > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
+  /// &gt; **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
   final pulumi.Input<int>? coldStorageSize;
+
   /// Instance specifications. Value:
   /// - 8 cores 32 GB (number of compute nodes: 1)
   /// - 16 cores 64 GB (number of compute nodes: 1)
@@ -20,22 +22,30 @@ class InstanceState {
   /// - 64 core 256 GB (number of compute nodes: 4)
   /// - 96 core 384 GB (number of computing nodes: 6)
   /// - 128 core 512 GB (number of compute nodes: 8)
-  /// > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
+  /// &gt; **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
   final pulumi.Input<int>? cpu;
+
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
+
   /// The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
   final pulumi.Input<int>? duration;
+
   /// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? enableSsl;
+
   /// List of domain names. See `endpoints` below.
   final pulumi.Input<List<InstanceEndpoint>>? endpoints;
+
   /// Number of gateway nodes.
   final pulumi.Input<int>? gatewayCount;
+
   /// Initialize the database and split multiple database names ",".
   final pulumi.Input<String>? initialDatabases;
+
   /// The name of the resource.
   final pulumi.Input<String>? instanceName;
+
   /// The instance type. Value:
   /// - Standard: Universal.
   /// - Follower: Read-only slave instance.
@@ -43,31 +53,41 @@ class InstanceState {
   /// - Shared: Shared.
   /// - Serverless: (Available since v1.259.0) Serverless.
   final pulumi.Input<String>? instanceType;
+
   /// The ID of the primary instance.
   final pulumi.Input<String>? leaderInstanceId;
+
   /// The payment type of the resource.
   final pulumi.Input<String>? paymentType;
+
   /// Billing cycle. Value:
   /// - Month: monthly billing
   /// - Hour: hourly billing
-  /// > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
+  /// &gt; **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
   final pulumi.Input<String>? pricingCycle;
+
   /// (Available since v1.259.0) The region ID.
   final pulumi.Input<String>? regionId;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// Change matching type. Value:
   /// - UPGRADE: UPGRADE
   /// - DOWNGRADE: Downgrading
-  /// > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
+  /// &gt; **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
   final pulumi.Input<String>? scaleType;
+
   /// The status of the resource.
   final pulumi.Input<String>? status;
+
   /// The standard storage space of the instance. Unit: GB.
-  /// > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
+  /// &gt; **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
   final pulumi.Input<int>? storageSize;
+
   /// Instance tag.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The zone Id. Refer to "Instructions for Use".
   final pulumi.Input<String>? zoneId;
 
@@ -125,7 +145,18 @@ class InstanceState {
       'createTime': ?createTime,
       'duration': ?duration,
       'enableSsl': ?enableSsl,
-      'endpoints': ?pulumi.Input.mapOptionalInputValue<List<InstanceEndpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<InstanceEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'endpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            endpoints,
+            (value) =>
+                pulumi.Input.encodeList<InstanceEndpoint, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'gatewayCount': ?gatewayCount,
       'initialDatabases': ?initialDatabases,
       'instanceName': ?instanceName,
@@ -145,28 +176,120 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
-      coldStorageSize: map['coldStorageSize'] == null ? null : (map['coldStorageSize']! as int).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
-      enableSsl: map['enableSsl'] == null ? null : (map['enableSsl']! as bool).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<InstanceEndpoint>(map['endpoints']!, (value) => InstanceEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gatewayCount: map['gatewayCount'] == null ? null : (map['gatewayCount']! as int).input(),
-      initialDatabases: map['initialDatabases'] == null ? null : (map['initialDatabases']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      leaderInstanceId: map['leaderInstanceId'] == null ? null : (map['leaderInstanceId']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      scaleType: map['scaleType'] == null ? null : (map['scaleType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      storageSize: map['storageSize'] == null ? null : (map['storageSize']! as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      autoPay: (() {
+        final guardedValue = map['autoPay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      coldStorageSize: (() {
+        final guardedValue = map['coldStorageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enableSsl: (() {
+        final guardedValue = map['enableSsl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpoints: (() {
+        final guardedValue = map['endpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceEndpoint>(
+            guardedValue,
+            (value) => InstanceEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      gatewayCount: (() {
+        final guardedValue = map['gatewayCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      initialDatabases: (() {
+        final guardedValue = map['initialDatabases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      leaderInstanceId: (() {
+        final guardedValue = map['leaderInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pricingCycle: (() {
+        final guardedValue = map['pricingCycle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scaleType: (() {
+        final guardedValue = map['scaleType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSize: (() {
+        final guardedValue = map['storageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

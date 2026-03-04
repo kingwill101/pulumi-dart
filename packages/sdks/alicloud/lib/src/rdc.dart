@@ -1,5 +1,3 @@
-library module_rdc;
-
 export 'rdc/functions.dart';
 export 'rdc/get_organizations_args.dart';
 export 'rdc/get_organizations_organization.dart';

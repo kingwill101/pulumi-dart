@@ -15,7 +15,7 @@ import 'v3_custom_domain_waf_config.dart';
 ///
 /// For information about Function Compute Service V3 (FCV3) Custom Domain and how to use it, see [What is Custom Domain](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getcustomdomain).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -1097,28 +1097,40 @@ import 'v3_custom_domain_waf_config.dart';
 class V3CustomDomain extends pulumi.CustomResource {
   /// The ID of your Alibaba Cloud account (primary account).
   late final pulumi.Output<String> accountId;
+
   /// API version of Function Compute.
   late final pulumi.Output<String> apiVersion;
+
   /// Permission authentication configuration See `auth_config` below.
   late final pulumi.Output<V3CustomDomainAuthConfig?> authConfig;
+
   /// HTTPS certificate information See `cert_config` below.
   late final pulumi.Output<V3CustomDomainCertConfig> certConfig;
+
   /// Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
   late final pulumi.Output<V3CustomDomainCorsConfig?> corsConfig;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// The name of the resource
   late final pulumi.Output<String> customDomainName;
+
   /// The last time the custom domain name was Updated.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
   late final pulumi.Output<String?> protocol;
+
   /// Route matching rule configuration See `route_config` below.
   late final pulumi.Output<V3CustomDomainRouteConfig?> routeConfig;
+
   /// Number of subdomains.
   late final pulumi.Output<String> subdomainCount;
+
   /// TLS configuration information See `tls_config` below.
   late final pulumi.Output<V3CustomDomainTlsConfig> tlsConfig;
+
   /// Web application firewall configuration information See `waf_config` below.
   late final pulumi.Output<V3CustomDomainWafConfig?> wafConfig;
 
@@ -1131,24 +1143,24 @@ class V3CustomDomain extends pulumi.CustomResource {
     V3CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3CustomDomain:V3CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.authConfig = registerOutput<V3CustomDomainAuthConfig?>('authConfig');
-    this.certConfig = registerOutput<V3CustomDomainCertConfig>('certConfig');
-    this.corsConfig = registerOutput<V3CustomDomainCorsConfig?>('corsConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.customDomainName = registerOutput<String>('customDomainName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.protocol = registerOutput<String?>('protocol');
-    this.routeConfig = registerOutput<V3CustomDomainRouteConfig?>('routeConfig');
-    this.subdomainCount = registerOutput<String>('subdomainCount');
-    this.tlsConfig = registerOutput<V3CustomDomainTlsConfig>('tlsConfig');
-    this.wafConfig = registerOutput<V3CustomDomainWafConfig?>('wafConfig');
+         'alicloud:fc/v3CustomDomain:V3CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    apiVersion = registerOutput<String>('apiVersion');
+    authConfig = registerOutput<V3CustomDomainAuthConfig?>('authConfig');
+    certConfig = registerOutput<V3CustomDomainCertConfig>('certConfig');
+    corsConfig = registerOutput<V3CustomDomainCorsConfig?>('corsConfig');
+    createTime = registerOutput<String>('createTime');
+    customDomainName = registerOutput<String>('customDomainName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    protocol = registerOutput<String?>('protocol');
+    routeConfig = registerOutput<V3CustomDomainRouteConfig?>('routeConfig');
+    subdomainCount = registerOutput<String>('subdomainCount');
+    tlsConfig = registerOutput<V3CustomDomainTlsConfig>('tlsConfig');
+    wafConfig = registerOutput<V3CustomDomainWafConfig?>('wafConfig');
   }
 
   /// Gets an existing [V3CustomDomain] resource's state with the given [name] and [id].
@@ -1169,23 +1181,23 @@ class V3CustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3CustomDomain:V3CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.authConfig = registerOutput<V3CustomDomainAuthConfig?>('authConfig');
-    this.certConfig = registerOutput<V3CustomDomainCertConfig>('certConfig');
-    this.corsConfig = registerOutput<V3CustomDomainCorsConfig?>('corsConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.customDomainName = registerOutput<String>('customDomainName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.protocol = registerOutput<String?>('protocol');
-    this.routeConfig = registerOutput<V3CustomDomainRouteConfig?>('routeConfig');
-    this.subdomainCount = registerOutput<String>('subdomainCount');
-    this.tlsConfig = registerOutput<V3CustomDomainTlsConfig>('tlsConfig');
-    this.wafConfig = registerOutput<V3CustomDomainWafConfig?>('wafConfig');
+         'alicloud:fc/v3CustomDomain:V3CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    apiVersion = registerOutput<String>('apiVersion');
+    authConfig = registerOutput<V3CustomDomainAuthConfig?>('authConfig');
+    certConfig = registerOutput<V3CustomDomainCertConfig>('certConfig');
+    corsConfig = registerOutput<V3CustomDomainCorsConfig?>('corsConfig');
+    createTime = registerOutput<String>('createTime');
+    customDomainName = registerOutput<String>('customDomainName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    protocol = registerOutput<String?>('protocol');
+    routeConfig = registerOutput<V3CustomDomainRouteConfig?>('routeConfig');
+    subdomainCount = registerOutput<String>('subdomainCount');
+    tlsConfig = registerOutput<V3CustomDomainTlsConfig>('tlsConfig');
+    wafConfig = registerOutput<V3CustomDomainWafConfig?>('wafConfig');
   }
 }

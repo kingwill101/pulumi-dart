@@ -10,27 +10,34 @@ class QosPolicyArgs {
   /// The human-readable description for the QoS policy.
   /// Changing this updates the description of the existing QoS policy.
   final pulumi.Input<String>? description;
+
   /// Indicates whether the QoS policy is default
   /// QoS policy or not. Changing this updates the default status of the existing
   /// QoS policy.
   final pulumi.Input<bool>? isDefault;
+
   /// The name of the QoS policy. Changing this updates the name of
   /// the existing QoS policy.
   final pulumi.Input<String>? name;
+
   /// The owner of the QoS policy. Required if admin wants to
   /// create a QoS policy for another project. Changing this creates a new QoS policy.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron Qos policy. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// QoS policy.
   final pulumi.Input<String>? region;
+
   /// Indicates whether this QoS policy is shared across
   /// all projects. Changing this updates the shared status of the existing
   /// QoS policy.
   final pulumi.Input<bool>? shared;
+
   /// A set of string tags for the QoS policy.
   final pulumi.Input<List<String>>? tags;
+
   /// Map of additional options.
   final pulumi.Input<Map<String, String>>? valueSpecs;
 
@@ -69,15 +76,48 @@ class QosPolicyArgs {
 
   factory QosPolicyArgs.fromMap(Map<String, dynamic> map) {
     return QosPolicyArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefault: (() {
+        final guardedValue = map['isDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shared: (() {
+        final guardedValue = map['shared'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      valueSpecs: (() {
+        final guardedValue = map['valueSpecs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

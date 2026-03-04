@@ -9,16 +9,17 @@ enum WeeklyMaintenanceWindowDayRedisV1beta1 {
   saturday("SATURDAY"),
   sunday("SUNDAY");
 
-  const WeeklyMaintenanceWindowDayRedisV1beta1(this.value);
-  final String value;
+  const WeeklyMaintenanceWindowDayRedisV1beta1(this.wireValue);
+  final String wireValue;
 
   static WeeklyMaintenanceWindowDayRedisV1beta1 fromValue(String value) {
     for (final item in WeeklyMaintenanceWindowDayRedisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WeeklyMaintenanceWindowDayRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown WeeklyMaintenanceWindowDayRedisV1beta1 value: $value',
+    );
   }
 }
-

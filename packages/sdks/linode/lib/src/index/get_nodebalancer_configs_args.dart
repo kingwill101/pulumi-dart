@@ -9,12 +9,15 @@ import 'get_nodebalancer_configs_filter.dart';
 /// {@macro pulumi_index_get_nodebalancer_configs_get_nodebalancer_configs_args_doc}
 class GetNodebalancerConfigsArgs {
   final pulumi.Input<List<GetNodebalancerConfigsFilter>>? filters;
+
   /// The ID of the NodeBalancer to access.
   ///
   /// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
   final pulumi.Input<int> nodebalancerId;
+
   /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
   final pulumi.Input<String>? order;
+
   /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
   final pulumi.Input<String>? orderBy;
 
@@ -32,7 +35,18 @@ class GetNodebalancerConfigsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetNodebalancerConfigsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetNodebalancerConfigsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetNodebalancerConfigsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNodebalancerConfigsFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'nodebalancerId': nodebalancerId,
       'order': ?order,
       'orderBy': ?orderBy,
@@ -41,11 +55,29 @@ class GetNodebalancerConfigsArgs {
 
   factory GetNodebalancerConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetNodebalancerConfigsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNodebalancerConfigsFilter>(map['filters']!, (value) => GetNodebalancerConfigsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodebalancerId: (map['nodebalancerId'] as int).input(),
-      order: map['order'] == null ? null : (map['order']! as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetNodebalancerConfigsFilter>(
+            guardedValue,
+            (value) => GetNodebalancerConfigsFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nodebalancerId: pulumi.Input.fromValue(map['nodebalancerId'] as int),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

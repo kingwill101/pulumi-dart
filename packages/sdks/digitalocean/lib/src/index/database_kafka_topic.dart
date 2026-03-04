@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_kafka_topic_args.dart';
-import 'database_kafka_topic_config.dart';
 import 'database_kafka_topic_state.dart';
 
 /// Provides a DigitalOcean Kafka topic for Kafka clusters.
@@ -348,15 +347,20 @@ import 'database_kafka_topic_state.dart';
 class DatabaseKafkaTopic extends pulumi.CustomResource {
   /// The ID of the source database cluster. Note: This must be a Kafka cluster.
   late final pulumi.Output<String> clusterId;
+
   /// A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
   /// The `config` block is documented below.
-  late final pulumi.Output<List<DatabaseKafkaTopicConfig>> configs;
+  late final pulumi.Output<List<Map<String, dynamic>>> configs;
+
   /// The name for the topic.
   late final pulumi.Output<String> name;
+
   /// The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
   late final pulumi.Output<int?> partitionCount;
+
   /// The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
   late final pulumi.Output<int?> replicationFactor;
+
   /// The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.
   late final pulumi.Output<String> state;
 
@@ -369,17 +373,17 @@ class DatabaseKafkaTopic extends pulumi.CustomResource {
     DatabaseKafkaTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.configs = registerOutput<List<DatabaseKafkaTopicConfig>>('configs');
+         'digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    configs = registerOutput<List<Map<String, dynamic>>>('configs');
     this.name = registerOutput<String>('name');
-    this.partitionCount = registerOutput<int?>('partitionCount');
-    this.replicationFactor = registerOutput<int?>('replicationFactor');
-    this.state = registerOutput<String>('state');
+    partitionCount = registerOutput<int?>('partitionCount');
+    replicationFactor = registerOutput<int?>('replicationFactor');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [DatabaseKafkaTopic] resource's state with the given [name] and [id].
@@ -400,16 +404,16 @@ class DatabaseKafkaTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.configs = registerOutput<List<DatabaseKafkaTopicConfig>>('configs');
+         'digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    configs = registerOutput<List<Map<String, dynamic>>>('configs');
     this.name = registerOutput<String>('name');
-    this.partitionCount = registerOutput<int?>('partitionCount');
-    this.replicationFactor = registerOutput<int?>('replicationFactor');
+    partitionCount = registerOutput<int?>('partitionCount');
+    replicationFactor = registerOutput<int?>('replicationFactor');
     this.state = registerOutput<String>('state');
   }
 }

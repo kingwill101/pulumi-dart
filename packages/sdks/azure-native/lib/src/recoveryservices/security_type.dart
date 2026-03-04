@@ -4,16 +4,15 @@ enum SecurityType {
   valueTrustedLaunch("TrustedLaunch"),
   valueConfidentialVM("ConfidentialVM");
 
-  const SecurityType(this.value);
-  final String value;
+  const SecurityType(this.wireValue);
+  final String wireValue;
 
   static SecurityType fromValue(String value) {
     for (final item in SecurityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityType value: $value');
   }
 }
-

@@ -8,6 +8,7 @@ class GetContainerGroupsResult {
   final String? containerGroupName;
   final bool? enableDetails;
   final List<GetContainerGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -60,7 +61,11 @@ class GetContainerGroupsResult {
     return <String, dynamic>{
       'containerGroupName': ?containerGroupName,
       'enableDetails': ?enableDetails,
-      'groups': pulumi.Input.encodeList<GetContainerGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<
+            GetContainerGroupsGroup,
+            Map<String, dynamic>
+          >(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'limit': ?limit,
@@ -78,22 +83,70 @@ class GetContainerGroupsResult {
 
   factory GetContainerGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupsResult(
-      containerGroupName: map['containerGroupName'] == null ? null : map['containerGroupName']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
-      groups: pulumi.Input.decodeList<GetContainerGroupsGroup>(map['groups'], (value) => GetContainerGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      containerGroupName: (() {
+        final guardedValue = map['containerGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      groups: pulumi.Input.decodeList<GetContainerGroupsGroup>(
+        map['groups']!,
+        (value) => GetContainerGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      limit: map['limit'] == null ? null : map['limit']! as int,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      limit: (() {
+        final guardedValue = map['limit'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId']! as String,
-      withEvent: map['withEvent'] == null ? null : map['withEvent']! as bool,
-      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      withEvent: (() {
+        final guardedValue = map['withEvent'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

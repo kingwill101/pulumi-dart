@@ -1,5 +1,3 @@
-library module_sourcerepo;
-
 export 'sourcerepo/audit_config.dart';
 export 'sourcerepo/audit_config_response.dart';
 export 'sourcerepo/audit_log_config.dart';

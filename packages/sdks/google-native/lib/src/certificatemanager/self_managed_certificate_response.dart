@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelfManagedCertificateResponse {
   /// Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
   final pulumi.Input<String> pemCertificate;
+
   /// Input only. The PEM-encoded private key of the leaf certificate.
   final pulumi.Input<String> pemPrivateKey;
 
@@ -26,9 +27,8 @@ class SelfManagedCertificateResponse {
 
   factory SelfManagedCertificateResponse.fromMap(Map<String, dynamic> map) {
     return SelfManagedCertificateResponse(
-      pemCertificate: (map['pemCertificate'] as String).input(),
-      pemPrivateKey: (map['pemPrivateKey'] as String).input(),
+      pemCertificate: pulumi.Input.fromValue(map['pemCertificate'] as String),
+      pemPrivateKey: pulumi.Input.fromValue(map['pemPrivateKey'] as String),
     );
   }
 }
-

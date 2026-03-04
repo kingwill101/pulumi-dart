@@ -17,16 +17,15 @@ enum WorkloadType {
   valueSAPAseDatabase("SAPAseDatabase"),
   valueSAPHanaDBInstance("SAPHanaDBInstance");
 
-  const WorkloadType(this.value);
-  final String value;
+  const WorkloadType(this.wireValue);
+  final String wireValue;
 
   static WorkloadType fromValue(String value) {
     for (final item in WorkloadType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadType value: $value');
   }
 }
-

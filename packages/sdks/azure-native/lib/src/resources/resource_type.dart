@@ -20,26 +20,37 @@ import 'sku_response.dart';
 class ResourceType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// The kind of the resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// ID of the resource that manages this resource.
   late final pulumi.Output<String?> managedBy;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The plan of the resource.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// The resource properties.
   late final pulumi.Output<dynamic> properties;
+
   /// The SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -52,22 +63,24 @@ class ResourceType extends pulumi.CustomResource {
     ResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:resources:Resource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
+         'azure-native:resources:Resource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    identity = registerOutput<IdentityResponse?>('identity');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.properties = registerOutput<dynamic>('properties');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    plan = registerOutput<PlanResponse?>('plan');
+    properties = registerOutput<dynamic>('properties');
+    sku = registerOutput<SkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

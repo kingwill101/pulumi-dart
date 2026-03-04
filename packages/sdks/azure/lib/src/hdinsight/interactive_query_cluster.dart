@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interactive_query_cluster_args.dart';
 import 'interactive_query_cluster_component_version.dart';
 import 'interactive_query_cluster_compute_isolation.dart';
-import 'interactive_query_cluster_disk_encryption.dart';
 import 'interactive_query_cluster_extension.dart';
 import 'interactive_query_cluster_gateway.dart';
 import 'interactive_query_cluster_metastores.dart';
@@ -12,7 +11,6 @@ import 'interactive_query_cluster_private_link_configuration.dart';
 import 'interactive_query_cluster_roles.dart';
 import 'interactive_query_cluster_security_profile.dart';
 import 'interactive_query_cluster_state.dart';
-import 'interactive_query_cluster_storage_account.dart';
 import 'interactive_query_cluster_storage_account_gen2.dart';
 
 /// Manages a HDInsight Interactive Query Cluster.
@@ -450,7 +448,7 @@ import 'interactive_query_cluster_storage_account_gen2.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HDInsight` - 2021-06-01
@@ -465,51 +463,78 @@ import 'interactive_query_cluster_storage_account_gen2.dart';
 class InteractiveQueryCluster extends pulumi.CustomResource {
   /// Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterVersion;
+
   /// A `component_version` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterComponentVersion> componentVersion;
+  late final pulumi.Output<InteractiveQueryClusterComponentVersion>
+  componentVersion;
+
   /// A `compute_isolation` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterComputeIsolation?> computeIsolation;
+  late final pulumi.Output<InteractiveQueryClusterComputeIsolation?>
+  computeIsolation;
+
   /// A `disk_encryption` block as defined below.
-  late final pulumi.Output<List<InteractiveQueryClusterDiskEncryption>?> diskEncryptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+
   /// Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> encryptionInTransitEnabled;
+
   /// An `extension` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterExtension?> extension;
+
   /// A `gateway` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterGateway> gateway;
+
   /// The HTTPS Connectivity Endpoint for this HDInsight Interactive Query Cluster.
   late final pulumi.Output<String> httpsEndpoint;
+
   /// Specifies the Azure Region which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `metastores` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterMetastores?> metastores;
+
   /// A `monitor` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterMonitor?> monitor;
+
   /// Specifies the name for this HDInsight Interactive Query Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterNetwork?> network;
+
   /// A `private_link_configuration` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterPrivateLinkConfiguration?> privateLinkConfiguration;
+  late final pulumi.Output<InteractiveQueryClusterPrivateLinkConfiguration?>
+  privateLinkConfiguration;
+
   /// Specifies the name of the Resource Group in which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `roles` block as defined below.
   late final pulumi.Output<InteractiveQueryClusterRoles> roles;
+
   /// A `security_profile` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<InteractiveQueryClusterSecurityProfile?> securityProfile;
+  late final pulumi.Output<InteractiveQueryClusterSecurityProfile?>
+  securityProfile;
+
   /// The SSH Connectivity Endpoint for this HDInsight Interactive Query Cluster.
   late final pulumi.Output<String> sshEndpoint;
+
   /// A `storage_account_gen2` block as defined below.
-  late final pulumi.Output<InteractiveQueryClusterStorageAccountGen2?> storageAccountGen2;
+  late final pulumi.Output<InteractiveQueryClusterStorageAccountGen2?>
+  storageAccountGen2;
+
   /// One or more `storage_account` block as defined below.
-  late final pulumi.Output<List<InteractiveQueryClusterStorageAccount>?> storageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+
   /// A map of Tags which should be assigned to this HDInsight Interactive Query Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Tier which should be used for this HDInsight Interactive Query Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tier;
+
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
+  /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
   late final pulumi.Output<String?> tlsMinVersion;
 
   /// Creates a new [InteractiveQueryCluster].
@@ -521,34 +546,54 @@ class InteractiveQueryCluster extends pulumi.CustomResource {
     InteractiveQueryClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<InteractiveQueryClusterDiskEncryption>?>('diskEncryptions');
-    this.encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
-    this.extension = registerOutput<InteractiveQueryClusterExtension?>('extension');
-    this.gateway = registerOutput<InteractiveQueryClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<InteractiveQueryClusterMetastores?>('metastores');
-    this.monitor = registerOutput<InteractiveQueryClusterMonitor?>('monitor');
+         'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    encryptionInTransitEnabled = registerOutput<bool?>(
+      'encryptionInTransitEnabled',
+    );
+    extension = registerOutput<InteractiveQueryClusterExtension?>('extension');
+    gateway = registerOutput<InteractiveQueryClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<InteractiveQueryClusterMetastores?>(
+      'metastores',
+    );
+    monitor = registerOutput<InteractiveQueryClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<InteractiveQueryClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roles = registerOutput<InteractiveQueryClusterRoles>('roles');
-    this.securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<InteractiveQueryClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<InteractiveQueryClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<InteractiveQueryClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roles = registerOutput<InteractiveQueryClusterRoles>('roles');
+    securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 =
+        registerOutput<InteractiveQueryClusterStorageAccountGen2?>(
+          'storageAccountGen2',
+        );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 
   /// Gets an existing [InteractiveQueryCluster] resource's state with the given [name] and [id].
@@ -569,33 +614,53 @@ class InteractiveQueryCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterVersion = registerOutput<String>('clusterVersion');
-    this.componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>('componentVersion');
-    this.computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>('computeIsolation');
-    this.diskEncryptions = registerOutput<List<InteractiveQueryClusterDiskEncryption>?>('diskEncryptions');
-    this.encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
-    this.extension = registerOutput<InteractiveQueryClusterExtension?>('extension');
-    this.gateway = registerOutput<InteractiveQueryClusterGateway>('gateway');
-    this.httpsEndpoint = registerOutput<String>('httpsEndpoint');
-    this.location = registerOutput<String>('location');
-    this.metastores = registerOutput<InteractiveQueryClusterMetastores?>('metastores');
-    this.monitor = registerOutput<InteractiveQueryClusterMonitor?>('monitor');
+         'azure:hdinsight/interactiveQueryCluster:InteractiveQueryCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<InteractiveQueryClusterComponentVersion>(
+      'componentVersion',
+    );
+    computeIsolation = registerOutput<InteractiveQueryClusterComputeIsolation?>(
+      'computeIsolation',
+    );
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    encryptionInTransitEnabled = registerOutput<bool?>(
+      'encryptionInTransitEnabled',
+    );
+    extension = registerOutput<InteractiveQueryClusterExtension?>('extension');
+    gateway = registerOutput<InteractiveQueryClusterGateway>('gateway');
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<InteractiveQueryClusterMetastores?>(
+      'metastores',
+    );
+    monitor = registerOutput<InteractiveQueryClusterMonitor?>('monitor');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<InteractiveQueryClusterNetwork?>('network');
-    this.privateLinkConfiguration = registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>('privateLinkConfiguration');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.roles = registerOutput<InteractiveQueryClusterRoles>('roles');
-    this.securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>('securityProfile');
-    this.sshEndpoint = registerOutput<String>('sshEndpoint');
-    this.storageAccountGen2 = registerOutput<InteractiveQueryClusterStorageAccountGen2?>('storageAccountGen2');
-    this.storageAccounts = registerOutput<List<InteractiveQueryClusterStorageAccount>?>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+    network = registerOutput<InteractiveQueryClusterNetwork?>('network');
+    privateLinkConfiguration =
+        registerOutput<InteractiveQueryClusterPrivateLinkConfiguration?>(
+          'privateLinkConfiguration',
+        );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roles = registerOutput<InteractiveQueryClusterRoles>('roles');
+    securityProfile = registerOutput<InteractiveQueryClusterSecurityProfile?>(
+      'securityProfile',
+    );
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 =
+        registerOutput<InteractiveQueryClusterStorageAccountGen2?>(
+          'storageAccountGen2',
+        );
+    storageAccounts = registerOutput<List<Map<String, dynamic>>?>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
 }

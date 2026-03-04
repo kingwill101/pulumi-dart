@@ -7,16 +7,27 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodState {
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Represents the matching usage for the future reservation before an amendment was requested.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo>? existingMatchingUsageInfo;
+  final pulumi.Input<
+    FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo
+  >?
+  existingMatchingUsageInfo;
+
   /// The previous instance-related properties of the Future Reservation.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecs>? futureReservationSpecs;
+  final pulumi.Input<
+    FutureReservationStatusLastKnownGoodStateFutureReservationSpecs
+  >?
+  futureReservationSpecs;
+
   /// The lock time of the FutureReservation before an amendment was requested.
   final pulumi.Input<String>? lockTime;
+
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
   final pulumi.Input<String>? namePrefix;
+
   /// The status of the last known good state for the Future Reservation
   /// Possible values are: .
   final pulumi.Input<String>? procurementStatus;
@@ -40,23 +51,64 @@ class FutureReservationStatusLastKnownGoodState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'existingMatchingUsageInfo': ?pulumi.Input.mapOptionalInputValue<FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo, Map<String, dynamic>>(existingMatchingUsageInfo, (value) => value.toMap()),
-      'futureReservationSpecs': ?pulumi.Input.mapOptionalInputValue<FutureReservationStatusLastKnownGoodStateFutureReservationSpecs, Map<String, dynamic>>(futureReservationSpecs, (value) => value.toMap()),
+      'existingMatchingUsageInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo,
+            Map<String, dynamic>
+          >(existingMatchingUsageInfo, (value) => value.toMap()),
+      'futureReservationSpecs':
+          ?pulumi.Input.mapOptionalInputValue<
+            FutureReservationStatusLastKnownGoodStateFutureReservationSpecs,
+            Map<String, dynamic>
+          >(futureReservationSpecs, (value) => value.toMap()),
       'lockTime': ?lockTime,
       'namePrefix': ?namePrefix,
       'procurementStatus': ?procurementStatus,
     };
   }
 
-  factory FutureReservationStatusLastKnownGoodState.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationStatusLastKnownGoodState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationStatusLastKnownGoodState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      existingMatchingUsageInfo: map['existingMatchingUsageInfo'] == null ? null : (FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo.fromMap((map['existingMatchingUsageInfo']! as Map).cast<String, dynamic>())).input(),
-      futureReservationSpecs: map['futureReservationSpecs'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecs.fromMap((map['futureReservationSpecs']! as Map).cast<String, dynamic>())).input(),
-      lockTime: map['lockTime'] == null ? null : (map['lockTime']! as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
-      procurementStatus: map['procurementStatus'] == null ? null : (map['procurementStatus']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      existingMatchingUsageInfo: (() {
+        final guardedValue = map['existingMatchingUsageInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      futureReservationSpecs: (() {
+        final guardedValue = map['futureReservationSpecs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FutureReservationStatusLastKnownGoodStateFutureReservationSpecs.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lockTime: (() {
+        final guardedValue = map['lockTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      procurementStatus: (() {
+        final guardedValue = map['procurementStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

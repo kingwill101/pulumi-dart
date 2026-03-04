@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerRecipeArgs {
   /// ARN of the container recipe.
   final pulumi.Input<String> arn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags for the container recipe.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,26 +20,27 @@ class GetContainerRecipeArgs {
   /// [arn] ARN of the container recipe.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the container recipe.
-  GetContainerRecipeArgs({
-    required this.arn,
-    this.region,
-    this.tags,
-  });
+  GetContainerRecipeArgs({required this.arn, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': arn,
-      'region': ?region,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'arn': arn, 'region': ?region, 'tags': ?tags};
   }
 
   factory GetContainerRecipeArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeArgs(
-      arn: (map['arn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificatesArgs {
   /// Filter expression to restrict the certificates returned.
   final pulumi.Input<String>? filter;
+
   /// The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetCertificatesArgs].
   /// [filter] Filter expression to restrict the certificates returned.
   /// [region] The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
-  GetCertificatesArgs({
-    this.filter,
-    this.region,
-  });
+  GetCertificatesArgs({this.filter, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': ?filter,
-      'region': ?region,
-    };
+    return <String, dynamic>{'filter': ?filter, 'region': ?region};
   }
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

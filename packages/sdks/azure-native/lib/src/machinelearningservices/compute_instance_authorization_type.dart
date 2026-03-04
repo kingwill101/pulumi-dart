@@ -2,16 +2,17 @@
 enum ComputeInstanceAuthorizationType {
   valuePersonal("personal");
 
-  const ComputeInstanceAuthorizationType(this.value);
-  final String value;
+  const ComputeInstanceAuthorizationType(this.wireValue);
+  final String wireValue;
 
   static ComputeInstanceAuthorizationType fromValue(String value) {
     for (final item in ComputeInstanceAuthorizationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeInstanceAuthorizationType value: $value');
+    throw ArgumentError(
+      'Unknown ComputeInstanceAuthorizationType value: $value',
+    );
   }
 }
-

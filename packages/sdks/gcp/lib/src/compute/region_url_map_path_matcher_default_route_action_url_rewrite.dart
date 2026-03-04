@@ -6,9 +6,11 @@ class RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite {
   /// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
   /// The value must be from 1 to 255 characters.
   final pulumi.Input<String>? hostRewrite;
+
   /// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
   /// The value must be from 1 to 1024 characters.
   final pulumi.Input<String>? pathPrefixRewrite;
+
   /// If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
   /// A corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.
   /// * At least one variable must be specified in the pathTemplateMatch field
@@ -39,12 +41,25 @@ class RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite {
     };
   }
 
-  factory RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite.fromMap(Map<String, dynamic> map) {
+  factory RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
-      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite']! as String).input(),
-      pathTemplateRewrite: map['pathTemplateRewrite'] == null ? null : (map['pathTemplateRewrite']! as String).input(),
+      hostRewrite: (() {
+        final guardedValue = map['hostRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathPrefixRewrite: (() {
+        final guardedValue = map['pathPrefixRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathTemplateRewrite: (() {
+        final guardedValue = map['pathTemplateRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -2,9 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_args.dart';
 import 'service_metadata.dart';
 import 'service_state.dart';
-import 'service_status.dart';
 import 'service_template.dart';
-import 'service_traffic.dart';
 
 /// A Cloud Run service has a unique endpoint and autoscales containers.
 ///
@@ -15,7 +13,7 @@ import 'service_traffic.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/run/docs/)
 ///
-/// > **Warning:** We recommend using the `gcp.cloudrunv2.Service` resource which offers a better
+/// &gt; **Warning:** We recommend using the `gcp.cloudrunv2.Service` resource which offers a better
 /// developer experience and broader support of Cloud Run features.
 ///
 /// ## Example Usage
@@ -2539,23 +2537,29 @@ class Service extends pulumi.CustomResource {
   /// (For legacy support, if `template.metadata.name` is unset in state while
   /// this field is set to false, the revision name will still autogenerate.)
   late final pulumi.Output<bool?> autogenerateRevisionName;
+
   /// The location of the cloud run instance. eg us-central1
   late final pulumi.Output<String> location;
+
   /// Metadata associated with this Service, including name, namespace, labels,
   /// and annotations.
   /// Structure is documented below.
   late final pulumi.Output<ServiceMetadata> metadata;
+
   /// Name must be unique within a Google Cloud project and region.
   /// Is required when creating resources. Name is primarily intended
   /// for creation idempotence and configuration definition. Cannot be updated.
   /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
-  late final pulumi.Output<List<ServiceStatus>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// template holds the latest specification for the Revision to
   /// be stamped out. The template references the container image, and may also
   /// include labels and annotations that should be attached to the Revision.
@@ -2567,10 +2571,11 @@ class Service extends pulumi.CustomResource {
   /// responsible for materializing the container image from source.
   /// Structure is documented below.
   late final pulumi.Output<ServiceTemplate?> template;
+
   /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// and Configurations
   /// Structure is documented below.
-  late final pulumi.Output<List<ServiceTraffic>> traffics;
+  late final pulumi.Output<List<Map<String, dynamic>>> traffics;
 
   /// Creates a new [Service].
   /// [name] The Pulumi resource name.
@@ -2581,19 +2586,21 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudrun/service:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<ServiceMetadata>('metadata');
+         'gcp:cloudrun/service:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autogenerateRevisionName = registerOutput<bool?>(
+      'autogenerateRevisionName',
+    );
+    location = registerOutput<String>('location');
+    metadata = registerOutput<ServiceMetadata>('metadata');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.statuses = registerOutput<List<ServiceStatus>>('statuses');
-    this.template = registerOutput<ServiceTemplate?>('template');
-    this.traffics = registerOutput<List<ServiceTraffic>>('traffics');
+    project = registerOutput<String>('project');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    template = registerOutput<ServiceTemplate?>('template');
+    traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -2614,18 +2621,20 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudrun/service:Service',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<ServiceMetadata>('metadata');
+         'gcp:cloudrun/service:Service',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autogenerateRevisionName = registerOutput<bool?>(
+      'autogenerateRevisionName',
+    );
+    location = registerOutput<String>('location');
+    metadata = registerOutput<ServiceMetadata>('metadata');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.statuses = registerOutput<List<ServiceStatus>>('statuses');
-    this.template = registerOutput<ServiceTemplate?>('template');
-    this.traffics = registerOutput<List<ServiceTraffic>>('traffics');
+    project = registerOutput<String>('project');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    template = registerOutput<ServiceTemplate?>('template');
+    traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
   }
 }

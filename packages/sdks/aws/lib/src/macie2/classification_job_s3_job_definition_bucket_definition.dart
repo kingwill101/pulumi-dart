@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClassificationJobS3JobDefinitionBucketDefinition {
   /// The unique identifier for the AWS account that owns the buckets.
   final pulumi.Input<String> accountId;
+
   /// An array that lists the names of the buckets.
   final pulumi.Input<List<String>> buckets;
 
@@ -17,17 +18,15 @@ class ClassificationJobS3JobDefinitionBucketDefinition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-      'buckets': buckets,
-    };
+    return <String, dynamic>{'accountId': accountId, 'buckets': buckets};
   }
 
-  factory ClassificationJobS3JobDefinitionBucketDefinition.fromMap(Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionBucketDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationJobS3JobDefinitionBucketDefinition(
-      accountId: (map['accountId'] as String).input(),
-      buckets: ((map['buckets'] as List).cast<String>()).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      buckets: pulumi.Input.fromValue((map['buckets'] as List).cast<String>()),
     );
   }
 }
-

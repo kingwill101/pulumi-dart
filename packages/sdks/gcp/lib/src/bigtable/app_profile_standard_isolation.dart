@@ -9,20 +9,15 @@ class AppProfileStandardIsolation {
 
   /// Creates a new [AppProfileStandardIsolation].
   /// [priority] The priority of requests sent using this app profile.
-  AppProfileStandardIsolation({
-    required this.priority,
-  });
+  AppProfileStandardIsolation({required this.priority});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'priority': priority,
-    };
+    return <String, dynamic>{'priority': priority};
   }
 
   factory AppProfileStandardIsolation.fromMap(Map<String, dynamic> map) {
     return AppProfileStandardIsolation(
-      priority: (map['priority'] as String).input(),
+      priority: pulumi.Input.fromValue(map['priority'] as String),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoolMountCifsMount {
   /// Additional command line options to pass to the mount command. These are 'net use' options in Windows and 'mount' options in Linux.
   final pulumi.Input<String> mountOptions;
+
   /// The password for the user account.
   final pulumi.Input<String> password;
+
   /// The relative path on compute node where the file system will be mounted All file systems are mounted relative to the Batch mounts directory, accessible via the `AZ_BATCH_NODE_MOUNTS_DIR` environment variable.
   final pulumi.Input<String> relativeMountPath;
+
   /// The URI of the file system to mount.
   final pulumi.Input<String> source;
+
   /// The user to use for authentication against the CIFS file system.
   final pulumi.Input<String> userName;
 
@@ -40,12 +44,13 @@ class GetPoolMountCifsMount {
 
   factory GetPoolMountCifsMount.fromMap(Map<String, dynamic> map) {
     return GetPoolMountCifsMount(
-      mountOptions: (map['mountOptions'] as String).input(),
-      password: (map['password'] as String).input(),
-      relativeMountPath: (map['relativeMountPath'] as String).input(),
-      source: (map['source'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      mountOptions: pulumi.Input.fromValue(map['mountOptions'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      relativeMountPath: pulumi.Input.fromValue(
+        map['relativeMountPath'] as String,
+      ),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

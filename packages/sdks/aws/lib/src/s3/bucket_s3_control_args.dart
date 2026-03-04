@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketS3ControlArgs {
   /// Name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// Identifier of the Outpost to contain this bucket.
   final pulumi.Input<String> outpostId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +42,20 @@ class BucketS3ControlArgs {
 
   factory BucketS3ControlArgs.fromMap(Map<String, dynamic> map) {
     return BucketS3ControlArgs(
-      bucket: (map['bucket'] as String).input(),
-      outpostId: (map['outpostId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      outpostId: pulumi.Input.fromValue(map['outpostId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

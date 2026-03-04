@@ -3,16 +3,15 @@ enum VirtualMachineState {
   running("Running"),
   deallocated("Deallocated");
 
-  const VirtualMachineState(this.value);
-  final String value;
+  const VirtualMachineState(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineState fromValue(String value) {
     for (final item in VirtualMachineState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualMachineState value: $value');
   }
 }
-

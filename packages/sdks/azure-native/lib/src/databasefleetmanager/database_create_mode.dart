@@ -4,16 +4,15 @@ enum DatabaseCreateMode {
   copy("Copy"),
   pointInTimeRestore("PointInTimeRestore");
 
-  const DatabaseCreateMode(this.value);
-  final String value;
+  const DatabaseCreateMode(this.wireValue);
+  final String wireValue;
 
   static DatabaseCreateMode fromValue(String value) {
     for (final item in DatabaseCreateMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseCreateMode value: $value');
   }
 }
-

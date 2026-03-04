@@ -4,16 +4,17 @@ enum InstanceConnectModeRedisV1beta1 {
   directPeering("DIRECT_PEERING"),
   privateServiceAccess("PRIVATE_SERVICE_ACCESS");
 
-  const InstanceConnectModeRedisV1beta1(this.value);
-  final String value;
+  const InstanceConnectModeRedisV1beta1(this.wireValue);
+  final String wireValue;
 
   static InstanceConnectModeRedisV1beta1 fromValue(String value) {
     for (final item in InstanceConnectModeRedisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceConnectModeRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceConnectModeRedisV1beta1 value: $value',
+    );
   }
 }
-

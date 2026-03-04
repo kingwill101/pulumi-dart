@@ -11,10 +11,7 @@ class RoutingIdentityInfoResponse {
   /// Creates a new [RoutingIdentityInfoResponse].
   /// [type] Routing identity type for topic spaces configuration.
   /// [userAssignedIdentity] Optional.
-  RoutingIdentityInfoResponse({
-    this.type,
-    this.userAssignedIdentity,
-  });
+  RoutingIdentityInfoResponse({this.type, this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +22,16 @@ class RoutingIdentityInfoResponse {
 
   factory RoutingIdentityInfoResponse.fromMap(Map<String, dynamic> map) {
     return RoutingIdentityInfoResponse(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

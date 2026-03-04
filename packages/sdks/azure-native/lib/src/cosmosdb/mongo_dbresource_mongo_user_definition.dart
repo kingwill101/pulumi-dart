@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_dbresource_mongo_user_definition_args.dart';
-import 'role_response.dart';
 
 /// An Azure Cosmos DB User Definition
 ///
@@ -195,20 +194,28 @@ import 'role_response.dart';
 class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A custom definition for the USer Definition.
   late final pulumi.Output<String?> customData;
+
   /// The database name for which access is being granted for this User Definition.
   late final pulumi.Output<String?> databaseName;
+
   /// The Mongo Auth mechanism. For now, we only support auth mechanism SCRAM-SHA-256.
   late final pulumi.Output<String?> mechanisms;
+
   /// The name of the database account.
   late final pulumi.Output<String> name;
+
   /// The password for User Definition. Response does not contain user password.
   late final pulumi.Output<String?> password;
+
   /// The set of roles inherited by the User Definition.
-  late final pulumi.Output<List<RoleResponse>?> roles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> roles;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
+
   /// The user name for User Definition.
   late final pulumi.Output<String?> userName;
 
@@ -221,19 +228,19 @@ class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
     MongoDBResourceMongoUserDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:MongoDBResourceMongoUserDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customData = registerOutput<String?>('customData');
-    this.databaseName = registerOutput<String?>('databaseName');
-    this.mechanisms = registerOutput<String?>('mechanisms');
+         'azure-native:cosmosdb:MongoDBResourceMongoUserDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customData = registerOutput<String?>('customData');
+    databaseName = registerOutput<String?>('databaseName');
+    mechanisms = registerOutput<String?>('mechanisms');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.roles = registerOutput<List<RoleResponse>?>('roles');
-    this.type = registerOutput<String>('type');
-    this.userName = registerOutput<String?>('userName');
+    password = registerOutput<String?>('password');
+    roles = registerOutput<List<Map<String, dynamic>>?>('roles');
+    type = registerOutput<String>('type');
+    userName = registerOutput<String?>('userName');
   }
 }

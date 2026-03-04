@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetBinarySftpServerLocation {
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicFilenameEnabled;
+
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   final pulumi.Input<bool>? dynamicPathEnabled;
+
   /// The filename of the file on the SFTP server.
   final pulumi.Input<String> filename;
+
   /// The folder path to the file on the SFTP server.
   final pulumi.Input<String> path;
 
@@ -35,11 +38,18 @@ class DatasetBinarySftpServerLocation {
 
   factory DatasetBinarySftpServerLocation.fromMap(Map<String, dynamic> map) {
     return DatasetBinarySftpServerLocation(
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled']! as bool).input(),
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled']! as bool).input(),
-      filename: (map['filename'] as String).input(),
-      path: (map['path'] as String).input(),
+      dynamicFilenameEnabled: (() {
+        final guardedValue = map['dynamicFilenameEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dynamicPathEnabled: (() {
+        final guardedValue = map['dynamicPathEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filename: pulumi.Input.fromValue(map['filename'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

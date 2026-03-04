@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardState {
   /// The Amazon Resource Name (ARN) of the dashboard.
   final pulumi.Input<String>? dashboardArn;
+
   /// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
   final pulumi.Input<String>? dashboardBody;
+
   /// The name of the dashboard.
   final pulumi.Input<String>? dashboardName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -36,11 +39,26 @@ class DashboardState {
 
   factory DashboardState.fromMap(Map<String, dynamic> map) {
     return DashboardState(
-      dashboardArn: map['dashboardArn'] == null ? null : ((map['dashboardArn'] as String).input()).input(),
-      dashboardBody: map['dashboardBody'] == null ? null : ((map['dashboardBody'] as String).input()).input(),
-      dashboardName: map['dashboardName'] == null ? null : ((map['dashboardName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      dashboardArn: (() {
+        final guardedValue = map['dashboardArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dashboardBody: (() {
+        final guardedValue = map['dashboardBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dashboardName: (() {
+        final guardedValue = map['dashboardName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -151,8 +151,10 @@ class IamMemberRemove extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The project id of the target project.
   late final pulumi.Output<String> project;
+
   /// The target role that should be removed.
   late final pulumi.Output<String> role;
 
@@ -165,14 +167,14 @@ class IamMemberRemove extends pulumi.CustomResource {
     IamMemberRemoveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iamMemberRemove:IamMemberRemove',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:projects/iamMemberRemove:IamMemberRemove',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [IamMemberRemove] resource's state with the given [name] and [id].
@@ -193,13 +195,13 @@ class IamMemberRemove extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iamMemberRemove:IamMemberRemove',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:projects/iamMemberRemove:IamMemberRemove',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

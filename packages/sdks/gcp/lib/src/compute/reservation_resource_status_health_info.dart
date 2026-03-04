@@ -6,9 +6,11 @@ class ReservationResourceStatusHealthInfo {
   /// (Output)
   /// The number of reservation blocks that are degraded.
   final pulumi.Input<int>? degradedBlockCount;
+
   /// (Output)
   /// The health status of the reservation.
   final pulumi.Input<String>? healthStatus;
+
   /// (Output)
   /// The number of reservation blocks that are healthy.
   final pulumi.Input<int>? healthyBlockCount;
@@ -31,12 +33,25 @@ class ReservationResourceStatusHealthInfo {
     };
   }
 
-  factory ReservationResourceStatusHealthInfo.fromMap(Map<String, dynamic> map) {
+  factory ReservationResourceStatusHealthInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReservationResourceStatusHealthInfo(
-      degradedBlockCount: map['degradedBlockCount'] == null ? null : (map['degradedBlockCount']! as int).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
-      healthyBlockCount: map['healthyBlockCount'] == null ? null : (map['healthyBlockCount']! as int).input(),
+      degradedBlockCount: (() {
+        final guardedValue = map['degradedBlockCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthStatus: (() {
+        final guardedValue = map['healthStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthyBlockCount: (() {
+        final guardedValue = map['healthyBlockCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

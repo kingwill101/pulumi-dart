@@ -6,16 +6,17 @@ enum PolicyControllerHubConfigInstallSpec {
   installSpecSuspended("INSTALL_SPEC_SUSPENDED"),
   installSpecDetached("INSTALL_SPEC_DETACHED");
 
-  const PolicyControllerHubConfigInstallSpec(this.value);
-  final String value;
+  const PolicyControllerHubConfigInstallSpec(this.wireValue);
+  final String wireValue;
 
   static PolicyControllerHubConfigInstallSpec fromValue(String value) {
     for (final item in PolicyControllerHubConfigInstallSpec.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyControllerHubConfigInstallSpec value: $value');
+    throw ArgumentError(
+      'Unknown PolicyControllerHubConfigInstallSpec value: $value',
+    );
   }
 }
-

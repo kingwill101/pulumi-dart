@@ -3,16 +3,15 @@ enum IpAllocationType {
   valueUndefined("Undefined"),
   valueHypernet("Hypernet");
 
-  const IpAllocationType(this.value);
-  final String value;
+  const IpAllocationType(this.wireValue);
+  final String wireValue;
 
   static IpAllocationType fromValue(String value) {
     for (final item in IpAllocationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpAllocationType value: $value');
   }
 }
-

@@ -10,18 +10,26 @@ import 'spring_cloud_customized_accelerator_git_repository.dart';
 class SpringCloudCustomizedAcceleratorArgs {
   /// Specifies a list of accelerator tags.
   final pulumi.Input<List<String>>? acceleratorTags;
+
   /// Specifies the type of the Spring Cloud Customized Accelerator. Possible values are `Accelerator` and `Fragment`. Defaults to `Accelerator`.
   final pulumi.Input<String>? acceleratorType;
+
   /// Specifies the description of the Spring Cloud Customized Accelerator.
   final pulumi.Input<String>? description;
+
   /// Specifies the display name of the Spring Cloud Customized Accelerator..
   final pulumi.Input<String>? displayName;
+
   /// A `git_repository` block as defined below.
-  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepository> gitRepository;
+  final pulumi.Input<SpringCloudCustomizedAcceleratorGitRepository>
+  gitRepository;
+
   /// Specifies the icon URL of the Spring Cloud Customized Accelerator..
   final pulumi.Input<String>? iconUrl;
+
   /// The name which should be used for this Spring Cloud Customized Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Spring Cloud Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   final pulumi.Input<String> springCloudAcceleratorId;
 
@@ -51,24 +59,59 @@ class SpringCloudCustomizedAcceleratorArgs {
       'acceleratorType': ?acceleratorType,
       'description': ?description,
       'displayName': ?displayName,
-      'gitRepository': pulumi.Input.mapInputValue<SpringCloudCustomizedAcceleratorGitRepository, Map<String, dynamic>>(gitRepository, (value) => value.toMap()),
+      'gitRepository':
+          pulumi.Input.mapInputValue<
+            SpringCloudCustomizedAcceleratorGitRepository,
+            Map<String, dynamic>
+          >(gitRepository, (value) => value.toMap()),
       'iconUrl': ?iconUrl,
       'name': ?name,
       'springCloudAcceleratorId': springCloudAcceleratorId,
     };
   }
 
-  factory SpringCloudCustomizedAcceleratorArgs.fromMap(Map<String, dynamic> map) {
+  factory SpringCloudCustomizedAcceleratorArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpringCloudCustomizedAcceleratorArgs(
-      acceleratorTags: map['acceleratorTags'] == null ? null : ((map['acceleratorTags']! as List).cast<String>()).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      gitRepository: (SpringCloudCustomizedAcceleratorGitRepository.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      springCloudAcceleratorId: (map['springCloudAcceleratorId'] as String).input(),
+      acceleratorTags: (() {
+        final guardedValue = map['acceleratorTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      acceleratorType: (() {
+        final guardedValue = map['acceleratorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gitRepository: pulumi.Input.fromValue(
+        SpringCloudCustomizedAcceleratorGitRepository.fromMap(
+          (map['gitRepository']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      iconUrl: (() {
+        final guardedValue = map['iconUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      springCloudAcceleratorId: pulumi.Input.fromValue(
+        map['springCloudAcceleratorId'] as String,
+      ),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum AppServingStatusAppengineV1beta {
   userDisabled("USER_DISABLED"),
   systemDisabled("SYSTEM_DISABLED");
 
-  const AppServingStatusAppengineV1beta(this.value);
-  final String value;
+  const AppServingStatusAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static AppServingStatusAppengineV1beta fromValue(String value) {
     for (final item in AppServingStatusAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AppServingStatusAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown AppServingStatusAppengineV1beta value: $value',
+    );
   }
 }
-

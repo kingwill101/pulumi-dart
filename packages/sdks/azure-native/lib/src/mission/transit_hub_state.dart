@@ -6,16 +6,15 @@ enum TransitHubState {
   active("Active"),
   failed("Failed");
 
-  const TransitHubState(this.value);
-  final String value;
+  const TransitHubState(this.wireValue);
+  final String wireValue;
 
   static TransitHubState fromValue(String value) {
     for (final item in TransitHubState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransitHubState value: $value');
   }
 }
-

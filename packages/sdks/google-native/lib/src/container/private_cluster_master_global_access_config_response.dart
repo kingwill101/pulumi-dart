@@ -9,20 +9,17 @@ class PrivateClusterMasterGlobalAccessConfigResponse {
 
   /// Creates a new [PrivateClusterMasterGlobalAccessConfigResponse].
   /// [enabled] Whenever master is accessible globally or not.
-  PrivateClusterMasterGlobalAccessConfigResponse({
-    required this.enabled,
-  });
+  PrivateClusterMasterGlobalAccessConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory PrivateClusterMasterGlobalAccessConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory PrivateClusterMasterGlobalAccessConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateClusterMasterGlobalAccessConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

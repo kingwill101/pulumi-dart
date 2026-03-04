@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerAppSecretResponse {
   /// Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   final pulumi.Input<String> identity;
+
   /// Azure Key Vault URL pointing to the secret referenced by the container app.
   final pulumi.Input<String> keyVaultUrl;
+
   /// Secret Name.
   final pulumi.Input<String> name;
+
   /// Secret Value.
   final pulumi.Input<String> value;
 
@@ -36,11 +39,10 @@ class ContainerAppSecretResponse {
 
   factory ContainerAppSecretResponse.fromMap(Map<String, dynamic> map) {
     return ContainerAppSecretResponse(
-      identity: (map['identity'] as String).input(),
-      keyVaultUrl: (map['keyVaultUrl'] as String).input(),
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      identity: pulumi.Input.fromValue(map['identity'] as String),
+      keyVaultUrl: pulumi.Input.fromValue(map['keyVaultUrl'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'model_discovery_settings_response.dart';
 class HealthModelPropertiesResponse {
   /// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
   final pulumi.Input<ModelDiscoverySettingsResponse>? discovery;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
+
   /// The data plane endpoint for querying health data
   final pulumi.Input<String> queryEndpoint;
 
@@ -24,7 +26,11 @@ class HealthModelPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'discovery': ?pulumi.Input.mapOptionalInputValue<ModelDiscoverySettingsResponse, Map<String, dynamic>>(discovery, (value) => value.toMap()),
+      'discovery':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModelDiscoverySettingsResponse,
+            Map<String, dynamic>
+          >(discovery, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'queryEndpoint': queryEndpoint,
     };
@@ -32,10 +38,19 @@ class HealthModelPropertiesResponse {
 
   factory HealthModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HealthModelPropertiesResponse(
-      discovery: map['discovery'] == null ? null : (ModelDiscoverySettingsResponse.fromMap((map['discovery']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      queryEndpoint: (map['queryEndpoint'] as String).input(),
+      discovery: (() {
+        final guardedValue = map['discovery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ModelDiscoverySettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      queryEndpoint: pulumi.Input.fromValue(map['queryEndpoint'] as String),
     );
   }
 }
-

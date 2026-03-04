@@ -18,20 +18,29 @@ import 'deployment_settings_source_context.dart';
 class DeploymentSettings extends pulumi.CustomResource {
   /// The agent pool identifier to use for the deployment.
   late final pulumi.Output<String?> agentPoolId;
+
   /// Dependency cache settings for the deployment
   late final pulumi.Output<DeploymentSettingsCacheOptions?> cacheOptions;
+
   /// Settings related to the deployment executor.
   late final pulumi.Output<DeploymentSettingsExecutorContext?> executorContext;
+
   /// GitHub settings for the deployment.
   late final pulumi.Output<DeploymentSettingsGithub?> github;
+
   /// Settings related to the Pulumi operation environment during the deployment.
-  late final pulumi.Output<DeploymentSettingsOperationContext?> operationContext;
+  late final pulumi.Output<DeploymentSettingsOperationContext?>
+  operationContext;
+
   /// Organization name.
   late final pulumi.Output<String> organization;
+
   /// Project name.
   late final pulumi.Output<String> project;
+
   /// Settings related to the source of the deployment.
   late final pulumi.Output<DeploymentSettingsSourceContext?> sourceContext;
+
   /// Stack name.
   late final pulumi.Output<String> stack;
 
@@ -44,19 +53,27 @@ class DeploymentSettings extends pulumi.CustomResource {
     DeploymentSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:DeploymentSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentPoolId = registerOutput<String?>('agentPoolId');
-    this.cacheOptions = registerOutput<DeploymentSettingsCacheOptions?>('cacheOptions');
-    this.executorContext = registerOutput<DeploymentSettingsExecutorContext?>('executorContext');
-    this.github = registerOutput<DeploymentSettingsGithub?>('github');
-    this.operationContext = registerOutput<DeploymentSettingsOperationContext?>('operationContext');
-    this.organization = registerOutput<String>('organization');
-    this.project = registerOutput<String>('project');
-    this.sourceContext = registerOutput<DeploymentSettingsSourceContext?>('sourceContext');
-    this.stack = registerOutput<String>('stack');
+         'pulumiservice:index:DeploymentSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentPoolId = registerOutput<String?>('agentPoolId');
+    cacheOptions = registerOutput<DeploymentSettingsCacheOptions?>(
+      'cacheOptions',
+    );
+    executorContext = registerOutput<DeploymentSettingsExecutorContext?>(
+      'executorContext',
+    );
+    github = registerOutput<DeploymentSettingsGithub?>('github');
+    operationContext = registerOutput<DeploymentSettingsOperationContext?>(
+      'operationContext',
+    );
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    sourceContext = registerOutput<DeploymentSettingsSourceContext?>(
+      'sourceContext',
+    );
+    stack = registerOutput<String>('stack');
   }
 }

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listServiceTestKeys.
 class ListServiceTestKeysResult {
   /// Indicates whether the test endpoint feature enabled or not
   final bool? enabled;
+
   /// Primary key
   final String? primaryKey;
+
   /// Primary test endpoint
   final String? primaryTestEndpoint;
+
   /// Secondary key
   final String? secondaryKey;
+
   /// Secondary test endpoint
   final String? secondaryTestEndpoint;
 
@@ -40,12 +43,31 @@ class ListServiceTestKeysResult {
 
   factory ListServiceTestKeysResult.fromMap(Map<String, dynamic> map) {
     return ListServiceTestKeysResult(
-      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
-      primaryTestEndpoint: map['primaryTestEndpoint'] == null ? null : map['primaryTestEndpoint']! as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
-      secondaryTestEndpoint: map['secondaryTestEndpoint'] == null ? null : map['secondaryTestEndpoint']! as String,
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      primaryTestEndpoint: (() {
+        final guardedValue = map['primaryTestEndpoint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      secondaryTestEndpoint: (() {
+        final guardedValue = map['secondaryTestEndpoint'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

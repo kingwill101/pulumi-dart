@@ -9,16 +9,15 @@ enum WeekDayOfMonthDayOfWeek {
   saturday("SATURDAY"),
   sunday("SUNDAY");
 
-  const WeekDayOfMonthDayOfWeek(this.value);
-  final String value;
+  const WeekDayOfMonthDayOfWeek(this.wireValue);
+  final String wireValue;
 
   static WeekDayOfMonthDayOfWeek fromValue(String value) {
     for (final item in WeekDayOfMonthDayOfWeek.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WeekDayOfMonthDayOfWeek value: $value');
   }
 }
-

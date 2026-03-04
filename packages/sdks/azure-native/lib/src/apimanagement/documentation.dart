@@ -146,12 +146,16 @@ import 'documentation_args.dart';
 class Documentation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Markdown documentation content.
   late final pulumi.Output<String?> content;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// documentation title.
   late final pulumi.Output<String?> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -164,15 +168,15 @@ class Documentation extends pulumi.CustomResource {
     DocumentationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:Documentation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.content = registerOutput<String?>('content');
+         'azure-native:apimanagement:Documentation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    content = registerOutput<String?>('content');
     this.name = registerOutput<String>('name');
-    this.title = registerOutput<String?>('title');
-    this.type = registerOutput<String>('type');
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
   }
 }

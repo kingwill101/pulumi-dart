@@ -4,16 +4,15 @@ enum ElasticUnixAccessRule {
   readWrite("ReadWrite"),
   noAccess("NoAccess");
 
-  const ElasticUnixAccessRule(this.value);
-  final String value;
+  const ElasticUnixAccessRule(this.wireValue);
+  final String wireValue;
 
   static ElasticUnixAccessRule fromValue(String value) {
     for (final item in ElasticUnixAccessRule.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticUnixAccessRule value: $value');
   }
 }
-

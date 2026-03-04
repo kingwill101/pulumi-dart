@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetReference {
   /// String of the resource ID of a Target resource.
   final pulumi.Input<String> id;
+
   /// Enum of the Target reference type.
   final pulumi.Input<String> type;
 
   /// Creates a new [TargetReference].
   /// [id] String of the resource ID of a Target resource.
   /// [type] Enum of the Target reference type.
-  TargetReference({
-    required this.id,
-    required this.type,
-  });
+  TargetReference({required this.id, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'type': type,
-    };
+    return <String, dynamic>{'id': id, 'type': type};
   }
 
   factory TargetReference.fromMap(Map<String, dynamic> map) {
     return TargetReference(
-      id: (map['id'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

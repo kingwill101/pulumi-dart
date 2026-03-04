@@ -47,15 +47,24 @@ class GetVolumesVolume {
 
   factory GetVolumesVolume.fromMap(Map<String, dynamic> map) {
     return GetVolumesVolume(
-      deleteProtection: (map['deleteProtection'] as bool).input(),
-      id: (map['id'] as int).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      linuxDevice: (map['linuxDevice'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
-      size: (map['size'] as int).input(),
+      deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      linuxDevice: pulumi.Input.fromValue(map['linuxDevice'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      serverId: (() {
+        final guardedValue = map['serverId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      size: pulumi.Input.fromValue(map['size'] as int),
     );
   }
 }
-

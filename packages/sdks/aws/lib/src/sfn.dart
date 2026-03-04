@@ -1,5 +1,3 @@
-library module_sfn;
-
 export 'sfn/activity.dart';
 export 'sfn/activity_args.dart';
 export 'sfn/activity_encryption_configuration.dart';

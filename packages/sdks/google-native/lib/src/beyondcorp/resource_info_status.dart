@@ -6,16 +6,15 @@ enum ResourceInfoStatus {
   unresponsive("UNRESPONSIVE"),
   degraded("DEGRADED");
 
-  const ResourceInfoStatus(this.value);
-  final String value;
+  const ResourceInfoStatus(this.wireValue);
+  final String wireValue;
 
   static ResourceInfoStatus fromValue(String value) {
     for (final item in ResourceInfoStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceInfoStatus value: $value');
   }
 }
-

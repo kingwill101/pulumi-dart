@@ -166,16 +166,23 @@ import 'sku_response.dart';
 class EnterpriseKnowledgeGraph extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
+
   /// Specifies the name of the resource.
   late final pulumi.Output<String> name;
+
   /// The set of properties specific to EnterpriseKnowledgeGraph resource
-  late final pulumi.Output<EnterpriseKnowledgeGraphPropertiesResponse> properties;
+  late final pulumi.Output<EnterpriseKnowledgeGraphPropertiesResponse>
+  properties;
+
   /// Gets or sets the SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -188,17 +195,19 @@ class EnterpriseKnowledgeGraph extends pulumi.CustomResource {
     EnterpriseKnowledgeGraphArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:enterpriseknowledgegraph:EnterpriseKnowledgeGraph',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:enterpriseknowledgegraph:EnterpriseKnowledgeGraph',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<EnterpriseKnowledgeGraphPropertiesResponse>('properties');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<EnterpriseKnowledgeGraphPropertiesResponse>(
+      'properties',
+    );
+    sku = registerOutput<SkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

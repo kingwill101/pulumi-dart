@@ -15,25 +15,39 @@ import 'resource_type_registration.dart';
 /// The default rollout specification.
 class DefaultRolloutPropertiesSpecification {
   /// The auto provisioning config.
-  final pulumi.Input<DefaultRolloutSpecificationAutoProvisionConfig>? autoProvisionConfig;
+  final pulumi.Input<DefaultRolloutSpecificationAutoProvisionConfig>?
+  autoProvisionConfig;
+
   /// The canary traffic region configuration.
   final pulumi.Input<DefaultRolloutSpecificationCanary>? canary;
+
   /// The expedited rollout definition.
-  final pulumi.Input<DefaultRolloutSpecificationExpeditedRollout>? expeditedRollout;
+  final pulumi.Input<DefaultRolloutSpecificationExpeditedRollout>?
+  expeditedRollout;
+
   /// The high traffic region configuration.
   final pulumi.Input<DefaultRolloutSpecificationHighTraffic>? highTraffic;
+
   /// The low traffic region configuration.
   final pulumi.Input<DefaultRolloutSpecificationLowTraffic>? lowTraffic;
+
   /// The medium traffic region configuration.
   final pulumi.Input<DefaultRolloutSpecificationMediumTraffic>? mediumTraffic;
+
   /// The provider registration.
-  final pulumi.Input<DefaultRolloutSpecificationProviderRegistration>? providerRegistration;
+  final pulumi.Input<DefaultRolloutSpecificationProviderRegistration>?
+  providerRegistration;
+
   /// The resource type registrations.
   final pulumi.Input<List<ResourceTypeRegistration>>? resourceTypeRegistrations;
+
   /// The rest of the world group one region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupOne>? restOfTheWorldGroupOne;
+  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupOne>?
+  restOfTheWorldGroupOne;
+
   /// The rest of the world group two region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupTwo>? restOfTheWorldGroupTwo;
+  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupTwo>?
+  restOfTheWorldGroupTwo;
 
   /// Creates a new [DefaultRolloutPropertiesSpecification].
   /// [autoProvisionConfig] The auto provisioning config.
@@ -61,32 +75,163 @@ class DefaultRolloutPropertiesSpecification {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoProvisionConfig': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationAutoProvisionConfig, Map<String, dynamic>>(autoProvisionConfig, (value) => value.toMap()),
-      'canary': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationCanary, Map<String, dynamic>>(canary, (value) => value.toMap()),
-      'expeditedRollout': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationExpeditedRollout, Map<String, dynamic>>(expeditedRollout, (value) => value.toMap()),
-      'highTraffic': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationHighTraffic, Map<String, dynamic>>(highTraffic, (value) => value.toMap()),
-      'lowTraffic': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationLowTraffic, Map<String, dynamic>>(lowTraffic, (value) => value.toMap()),
-      'mediumTraffic': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationMediumTraffic, Map<String, dynamic>>(mediumTraffic, (value) => value.toMap()),
-      'providerRegistration': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationProviderRegistration, Map<String, dynamic>>(providerRegistration, (value) => value.toMap()),
-      'resourceTypeRegistrations': ?pulumi.Input.mapOptionalInputValue<List<ResourceTypeRegistration>, List<Map<String, dynamic>>>(resourceTypeRegistrations, (value) => pulumi.Input.encodeList<ResourceTypeRegistration, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'restOfTheWorldGroupOne': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationRestOfTheWorldGroupOne, Map<String, dynamic>>(restOfTheWorldGroupOne, (value) => value.toMap()),
-      'restOfTheWorldGroupTwo': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutSpecificationRestOfTheWorldGroupTwo, Map<String, dynamic>>(restOfTheWorldGroupTwo, (value) => value.toMap()),
+      'autoProvisionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationAutoProvisionConfig,
+            Map<String, dynamic>
+          >(autoProvisionConfig, (value) => value.toMap()),
+      'canary':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationCanary,
+            Map<String, dynamic>
+          >(canary, (value) => value.toMap()),
+      'expeditedRollout':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationExpeditedRollout,
+            Map<String, dynamic>
+          >(expeditedRollout, (value) => value.toMap()),
+      'highTraffic':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationHighTraffic,
+            Map<String, dynamic>
+          >(highTraffic, (value) => value.toMap()),
+      'lowTraffic':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationLowTraffic,
+            Map<String, dynamic>
+          >(lowTraffic, (value) => value.toMap()),
+      'mediumTraffic':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationMediumTraffic,
+            Map<String, dynamic>
+          >(mediumTraffic, (value) => value.toMap()),
+      'providerRegistration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationProviderRegistration,
+            Map<String, dynamic>
+          >(providerRegistration, (value) => value.toMap()),
+      'resourceTypeRegistrations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceTypeRegistration>,
+            List<Map<String, dynamic>>
+          >(
+            resourceTypeRegistrations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceTypeRegistration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'restOfTheWorldGroupOne':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationRestOfTheWorldGroupOne,
+            Map<String, dynamic>
+          >(restOfTheWorldGroupOne, (value) => value.toMap()),
+      'restOfTheWorldGroupTwo':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutSpecificationRestOfTheWorldGroupTwo,
+            Map<String, dynamic>
+          >(restOfTheWorldGroupTwo, (value) => value.toMap()),
     };
   }
 
-  factory DefaultRolloutPropertiesSpecification.fromMap(Map<String, dynamic> map) {
+  factory DefaultRolloutPropertiesSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefaultRolloutPropertiesSpecification(
-      autoProvisionConfig: map['autoProvisionConfig'] == null ? null : (DefaultRolloutSpecificationAutoProvisionConfig.fromMap((map['autoProvisionConfig']! as Map).cast<String, dynamic>())).input(),
-      canary: map['canary'] == null ? null : (DefaultRolloutSpecificationCanary.fromMap((map['canary']! as Map).cast<String, dynamic>())).input(),
-      expeditedRollout: map['expeditedRollout'] == null ? null : (DefaultRolloutSpecificationExpeditedRollout.fromMap((map['expeditedRollout']! as Map).cast<String, dynamic>())).input(),
-      highTraffic: map['highTraffic'] == null ? null : (DefaultRolloutSpecificationHighTraffic.fromMap((map['highTraffic']! as Map).cast<String, dynamic>())).input(),
-      lowTraffic: map['lowTraffic'] == null ? null : (DefaultRolloutSpecificationLowTraffic.fromMap((map['lowTraffic']! as Map).cast<String, dynamic>())).input(),
-      mediumTraffic: map['mediumTraffic'] == null ? null : (DefaultRolloutSpecificationMediumTraffic.fromMap((map['mediumTraffic']! as Map).cast<String, dynamic>())).input(),
-      providerRegistration: map['providerRegistration'] == null ? null : (DefaultRolloutSpecificationProviderRegistration.fromMap((map['providerRegistration']! as Map).cast<String, dynamic>())).input(),
-      resourceTypeRegistrations: map['resourceTypeRegistrations'] == null ? null : (pulumi.Input.decodeList<ResourceTypeRegistration>(map['resourceTypeRegistrations']!, (value) => ResourceTypeRegistration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restOfTheWorldGroupOne: map['restOfTheWorldGroupOne'] == null ? null : (DefaultRolloutSpecificationRestOfTheWorldGroupOne.fromMap((map['restOfTheWorldGroupOne']! as Map).cast<String, dynamic>())).input(),
-      restOfTheWorldGroupTwo: map['restOfTheWorldGroupTwo'] == null ? null : (DefaultRolloutSpecificationRestOfTheWorldGroupTwo.fromMap((map['restOfTheWorldGroupTwo']! as Map).cast<String, dynamic>())).input(),
+      autoProvisionConfig: (() {
+        final guardedValue = map['autoProvisionConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationAutoProvisionConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      canary: (() {
+        final guardedValue = map['canary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationCanary.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      expeditedRollout: (() {
+        final guardedValue = map['expeditedRollout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationExpeditedRollout.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      highTraffic: (() {
+        final guardedValue = map['highTraffic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationHighTraffic.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lowTraffic: (() {
+        final guardedValue = map['lowTraffic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationLowTraffic.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mediumTraffic: (() {
+        final guardedValue = map['mediumTraffic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationMediumTraffic.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      providerRegistration: (() {
+        final guardedValue = map['providerRegistration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationProviderRegistration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceTypeRegistrations: (() {
+        final guardedValue = map['resourceTypeRegistrations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceTypeRegistration>(
+            guardedValue,
+            (value) => ResourceTypeRegistration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      restOfTheWorldGroupOne: (() {
+        final guardedValue = map['restOfTheWorldGroupOne'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationRestOfTheWorldGroupOne.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      restOfTheWorldGroupTwo: (() {
+        final guardedValue = map['restOfTheWorldGroupTwo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutSpecificationRestOfTheWorldGroupTwo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

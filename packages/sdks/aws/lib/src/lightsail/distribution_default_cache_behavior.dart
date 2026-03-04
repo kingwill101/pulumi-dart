@@ -8,20 +8,15 @@ class DistributionDefaultCacheBehavior {
 
   /// Creates a new [DistributionDefaultCacheBehavior].
   /// [behavior] Cache behavior of the distribution. Valid values: `cache`, `dont-cache`.
-  DistributionDefaultCacheBehavior({
-    required this.behavior,
-  });
+  DistributionDefaultCacheBehavior({required this.behavior});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'behavior': behavior,
-    };
+    return <String, dynamic>{'behavior': behavior};
   }
 
   factory DistributionDefaultCacheBehavior.fromMap(Map<String, dynamic> map) {
     return DistributionDefaultCacheBehavior(
-      behavior: (map['behavior'] as String).input(),
+      behavior: pulumi.Input.fromValue(map['behavior'] as String),
     );
   }
 }
-

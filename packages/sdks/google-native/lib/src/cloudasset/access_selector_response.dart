@@ -6,29 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessSelectorResponse {
   /// Optional. The permissions to appear in result.
   final pulumi.Input<List<String>> permissions;
+
   /// Optional. The roles to appear in result.
   final pulumi.Input<List<String>> roles;
 
   /// Creates a new [AccessSelectorResponse].
   /// [permissions] Optional. The permissions to appear in result.
   /// [roles] Optional. The roles to appear in result.
-  AccessSelectorResponse({
-    required this.permissions,
-    required this.roles,
-  });
+  AccessSelectorResponse({required this.permissions, required this.roles});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'permissions': permissions,
-      'roles': roles,
-    };
+    return <String, dynamic>{'permissions': permissions, 'roles': roles};
   }
 
   factory AccessSelectorResponse.fromMap(Map<String, dynamic> map) {
     return AccessSelectorResponse(
-      permissions: ((map['permissions'] as List).cast<String>()).input(),
-      roles: ((map['roles'] as List).cast<String>()).input(),
+      permissions: pulumi.Input.fromValue(
+        (map['permissions'] as List).cast<String>(),
+      ),
+      roles: pulumi.Input.fromValue((map['roles'] as List).cast<String>()),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class HubRoutingVpc {
 
   /// Creates a new [HubRoutingVpc].
   /// [uri] The URI of the VPC network.
-  HubRoutingVpc({
-    this.uri,
-  });
+  HubRoutingVpc({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory HubRoutingVpc.fromMap(Map<String, dynamic> map) {
     return HubRoutingVpc(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

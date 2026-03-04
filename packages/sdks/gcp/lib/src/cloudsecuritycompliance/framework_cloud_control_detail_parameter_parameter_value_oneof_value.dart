@@ -6,9 +6,13 @@ import 'framework_cloud_control_detail_parameter_parameter_value_oneof_value_par
 class FrameworkCloudControlDetailParameterParameterValueOneofValue {
   /// The name of the parameter.
   final pulumi.Input<String>? name;
+
   /// The value of the parameter.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue>? parameterValue;
+  final pulumi.Input<
+    FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
+  >?
+  parameterValue;
 
   /// Creates a new [FrameworkCloudControlDetailParameterParameterValueOneofValue].
   /// [name] The name of the parameter.
@@ -21,15 +25,32 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'parameterValue': ?pulumi.Input.mapOptionalInputValue<FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue, Map<String, dynamic>>(parameterValue, (value) => value.toMap()),
+      'parameterValue':
+          ?pulumi.Input.mapOptionalInputValue<
+            FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue,
+            Map<String, dynamic>
+          >(parameterValue, (value) => value.toMap()),
     };
   }
 
-  factory FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap(Map<String, dynamic> map) {
+  factory FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkCloudControlDetailParameterParameterValueOneofValue(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue.fromMap((map['parameterValue']! as Map).cast<String, dynamic>())).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterValue: (() {
+        final guardedValue = map['parameterValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

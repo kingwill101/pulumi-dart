@@ -10,32 +10,46 @@ import 'subscription_id.dart';
 class NspAccessRuleArgs {
   /// The name of the NSP access rule.
   final pulumi.Input<String>? accessRuleName;
+
   /// Inbound address prefixes (IPv4/IPv6)
   final pulumi.Input<List<String>>? addressPrefixes;
+
   /// Direction that specifies whether the access rules is inbound/outbound.
   final pulumi.Input<String>? direction;
+
   /// Outbound rules email address format.
   final pulumi.Input<List<String>>? emailAddresses;
+
   /// Outbound rules fully qualified domain name format.
   final pulumi.Input<List<String>>? fullyQualifiedDomainNames;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the access rule that is unique within a profile. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
+
   /// Outbound rules phone number format.
   final pulumi.Input<List<String>>? phoneNumbers;
+
   /// The name of the NSP profile.
   final pulumi.Input<String> profileName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Inbound rules service tag names.
   final pulumi.Input<List<String>>? serviceTags;
+
   /// List of subscription ids
   final pulumi.Input<List<SubscriptionId>>? subscriptions;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -88,29 +102,99 @@ class NspAccessRuleArgs {
       'profileName': profileName,
       'resourceGroupName': resourceGroupName,
       'serviceTags': ?serviceTags,
-      'subscriptions': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionId>, List<Map<String, dynamic>>>(subscriptions, (value) => pulumi.Input.encodeList<SubscriptionId, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subscriptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubscriptionId>,
+            List<Map<String, dynamic>>
+          >(
+            subscriptions,
+            (value) =>
+                pulumi.Input.encodeList<SubscriptionId, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
     };
   }
 
   factory NspAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return NspAccessRuleArgs(
-      accessRuleName: map['accessRuleName'] == null ? null : (map['accessRuleName']! as String).input(),
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
-      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
-      fullyQualifiedDomainNames: map['fullyQualifiedDomainNames'] == null ? null : ((map['fullyQualifiedDomainNames']! as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      phoneNumbers: map['phoneNumbers'] == null ? null : ((map['phoneNumbers']! as List).cast<String>()).input(),
-      profileName: (map['profileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceTags: map['serviceTags'] == null ? null : ((map['serviceTags']! as List).cast<String>()).input(),
-      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<SubscriptionId>(map['subscriptions']!, (value) => SubscriptionId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      accessRuleName: (() {
+        final guardedValue = map['accessRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addressPrefixes: (() {
+        final guardedValue = map['addressPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      emailAddresses: (() {
+        final guardedValue = map['emailAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fullyQualifiedDomainNames: (() {
+        final guardedValue = map['fullyQualifiedDomainNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(
+        map['networkSecurityPerimeterName'] as String,
+      ),
+      phoneNumbers: (() {
+        final guardedValue = map['phoneNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      profileName: pulumi.Input.fromValue(map['profileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceTags: (() {
+        final guardedValue = map['serviceTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subscriptions: (() {
+        final guardedValue = map['subscriptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubscriptionId>(
+            guardedValue,
+            (value) =>
+                SubscriptionId.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

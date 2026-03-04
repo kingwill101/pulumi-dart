@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineNotifications {
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job in this pipeline.
   final pulumi.Input<String>? completed;
+
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition while processing a job in this pipeline.
   final pulumi.Input<String>? error;
+
   /// The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process a job in this pipeline.
   final pulumi.Input<String>? progressing;
+
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition while processing a job in this pipeline.
   ///
   /// The `thumbnail_config` object specifies information about the Amazon S3 bucket in
@@ -45,11 +48,26 @@ class PipelineNotifications {
 
   factory PipelineNotifications.fromMap(Map<String, dynamic> map) {
     return PipelineNotifications(
-      completed: map['completed'] == null ? null : ((map['completed'] as String).input()).input(),
-      error: map['error'] == null ? null : ((map['error'] as String).input()).input(),
-      progressing: map['progressing'] == null ? null : ((map['progressing'] as String).input()).input(),
-      warning: map['warning'] == null ? null : ((map['warning'] as String).input()).input(),
+      completed: (() {
+        final guardedValue = map['completed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      progressing: (() {
+        final guardedValue = map['progressing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      warning: (() {
+        final guardedValue = map['warning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

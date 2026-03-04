@@ -13,15 +13,16 @@ class GetDomainClusterConfigZoneAwarenessConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'availabilityZoneCount': availabilityZoneCount,
-    };
+    return <String, dynamic>{'availabilityZoneCount': availabilityZoneCount};
   }
 
-  factory GetDomainClusterConfigZoneAwarenessConfig.fromMap(Map<String, dynamic> map) {
+  factory GetDomainClusterConfigZoneAwarenessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDomainClusterConfigZoneAwarenessConfig(
-      availabilityZoneCount: (map['availabilityZoneCount'] as int).input(),
+      availabilityZoneCount: pulumi.Input.fromValue(
+        map['availabilityZoneCount'] as int,
+      ),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHostPoolRegistrationTokenArgs {
   /// The name of the host pool within the specified resource group
   final pulumi.Input<String> hostPoolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetHostPoolRegistrationTokenArgs {
 
   factory GetHostPoolRegistrationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetHostPoolRegistrationTokenArgs(
-      hostPoolName: (map['hostPoolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      hostPoolName: pulumi.Input.fromValue(map['hostPoolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -152,10 +152,13 @@ import 'workspace_tag_operation_link_args.dart';
 class WorkspaceTagOperationLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Full resource Id of an API operation.
   late final pulumi.Output<String> operationId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -168,14 +171,14 @@ class WorkspaceTagOperationLink extends pulumi.CustomResource {
     WorkspaceTagOperationLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:WorkspaceTagOperationLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:apimanagement:WorkspaceTagOperationLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.operationId = registerOutput<String>('operationId');
-    this.type = registerOutput<String>('type');
+    operationId = registerOutput<String>('operationId');
+    type = registerOutput<String>('type');
   }
 }

@@ -4,16 +4,17 @@ enum BareMetalClusterUpgradePolicyPolicy {
   serial("SERIAL"),
   concurrent("CONCURRENT");
 
-  const BareMetalClusterUpgradePolicyPolicy(this.value);
-  final String value;
+  const BareMetalClusterUpgradePolicyPolicy(this.wireValue);
+  final String wireValue;
 
   static BareMetalClusterUpgradePolicyPolicy fromValue(String value) {
     for (final item in BareMetalClusterUpgradePolicyPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BareMetalClusterUpgradePolicyPolicy value: $value');
+    throw ArgumentError(
+      'Unknown BareMetalClusterUpgradePolicyPolicy value: $value',
+    );
   }
 }
-

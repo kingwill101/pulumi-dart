@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseIamPolicyArgs {
   /// The name of the Spanner database.
   final pulumi.Input<String> database;
+
   /// The name of the Spanner instance the database belongs to.
   final pulumi.Input<String> instance;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -35,10 +37,13 @@ class GetDatabaseIamPolicyArgs {
 
   factory GetDatabaseIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseIamPolicyArgs(
-      database: (map['database'] as String).input(),
-      instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

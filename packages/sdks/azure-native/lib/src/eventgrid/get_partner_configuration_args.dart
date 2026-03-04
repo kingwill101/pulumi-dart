@@ -12,20 +12,17 @@ class GetPartnerConfigurationArgs {
 
   /// Creates a new [GetPartnerConfigurationArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerConfigurationArgs({
-    required this.resourceGroupName,
-  });
+  GetPartnerConfigurationArgs({required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceGroupName': resourceGroupName,
-    };
+    return <String, dynamic>{'resourceGroupName': resourceGroupName};
   }
 
   factory GetPartnerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerConfigurationArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

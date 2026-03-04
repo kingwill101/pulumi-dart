@@ -9,20 +9,19 @@ class SkuName {
 
   /// Creates a new [SkuName].
   /// [name] SKU name for this resource.
-  SkuName({
-    this.name,
-  });
+  SkuName({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory SkuName.fromMap(Map<String, dynamic> map) {
     return SkuName(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

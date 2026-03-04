@@ -6,8 +6,10 @@ import 'operation_warnings_item_data_item_response.dart';
 class OperationWarningsItemResponse {
   /// A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
   final pulumi.Input<String> code;
+
   /// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
   final pulumi.Input<List<OperationWarningsItemDataItemResponse>> data;
+
   /// A human-readable description of the warning code.
   final pulumi.Input<String> message;
 
@@ -24,17 +26,34 @@ class OperationWarningsItemResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'data': pulumi.Input.mapInputValue<List<OperationWarningsItemDataItemResponse>, List<Map<String, dynamic>>>(data, (value) => pulumi.Input.encodeList<OperationWarningsItemDataItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'data':
+          pulumi.Input.mapInputValue<
+            List<OperationWarningsItemDataItemResponse>,
+            List<Map<String, dynamic>>
+          >(
+            data,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OperationWarningsItemDataItemResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'message': message,
     };
   }
 
   factory OperationWarningsItemResponse.fromMap(Map<String, dynamic> map) {
     return OperationWarningsItemResponse(
-      code: (map['code'] as String).input(),
-      data: (pulumi.Input.decodeList<OperationWarningsItemDataItemResponse>(map['data'], (value) => OperationWarningsItemDataItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      data: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<OperationWarningsItemDataItemResponse>(
+          map['data']!,
+          (value) => OperationWarningsItemDataItemResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

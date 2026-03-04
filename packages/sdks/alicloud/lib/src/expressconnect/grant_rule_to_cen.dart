@@ -6,7 +6,7 @@ import 'grant_rule_to_cen_state.dart';
 ///
 /// For information about Express Connect Grant Rule To Cen and how to use it, see [What is Grant Rule To Cen](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/grantinstancetocen).
 ///
-/// > **NOTE:** Available since v1.196.0.
+/// &gt; **NOTE:** Available since v1.196.0.
 ///
 /// ## Example Usage
 ///
@@ -326,10 +326,13 @@ import 'grant_rule_to_cen_state.dart';
 class GrantRuleToCen extends pulumi.CustomResource {
   /// The ID of the CEN instance to which you want to grant permissions.
   late final pulumi.Output<String> cenId;
+
   /// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
   late final pulumi.Output<String> cenOwnerId;
+
   /// (Available since v1.263.0) The time when the instance was created.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the VBR.
   late final pulumi.Output<String> instanceId;
 
@@ -342,15 +345,15 @@ class GrantRuleToCen extends pulumi.CustomResource {
     GrantRuleToCenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/grantRuleToCen:GrantRuleToCen',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String>('cenOwnerId');
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:expressconnect/grantRuleToCen:GrantRuleToCen',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String>('cenOwnerId');
+    createTime = registerOutput<String>('createTime');
+    instanceId = registerOutput<String>('instanceId');
   }
 
   /// Gets an existing [GrantRuleToCen] resource's state with the given [name] and [id].
@@ -371,14 +374,14 @@ class GrantRuleToCen extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/grantRuleToCen:GrantRuleToCen',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String>('cenOwnerId');
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:expressconnect/grantRuleToCen:GrantRuleToCen',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String>('cenOwnerId');
+    createTime = registerOutput<String>('createTime');
+    instanceId = registerOutput<String>('instanceId');
   }
 }

@@ -185,36 +185,49 @@ import 'backup_policy_state.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// The total number of volumes assigned by this backup policy.
   late final pulumi.Output<int> assignedVolumeCount;
+
   /// Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
+
   /// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
   late final pulumi.Output<int> dailyBackupLimit;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// If enabled, make backups automatically according to the schedules.
   /// This will be applied to all volumes that have this policy attached and enforced on volume level.
   late final pulumi.Output<bool?> enabled;
+
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Name of the region for the policy to apply to.
   late final pulumi.Output<String> location;
+
   /// Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
   late final pulumi.Output<int> monthlyBackupLimit;
+
   /// The name of the backup policy. Needs to be unique per location.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The state of the backup policy.
   late final pulumi.Output<String> state;
+
   /// Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
   late final pulumi.Output<int> weeklyBackupLimit;
 
@@ -227,25 +240,25 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:netapp/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
-    this.createTime = registerOutput<String>('createTime');
-    this.dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
+         'gcp:netapp/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
+    createTime = registerOutput<String>('createTime');
+    dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    enabled = registerOutput<bool?>('enabled');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.state = registerOutput<String>('state');
-    this.weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    state = registerOutput<String>('state');
+    weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
   }
 
   /// Gets an existing [BackupPolicy] resource's state with the given [name] and [id].
@@ -266,24 +279,24 @@ class BackupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:netapp/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
-    this.createTime = registerOutput<String>('createTime');
-    this.dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
+         'gcp:netapp/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
+    createTime = registerOutput<String>('createTime');
+    dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    enabled = registerOutput<bool?>('enabled');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    monthlyBackupLimit = registerOutput<int>('monthlyBackupLimit');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
-    this.weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
+    weeklyBackupLimit = registerOutput<int>('weeklyBackupLimit');
   }
 }

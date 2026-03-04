@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeConfigMemcacheV1beta2 {
   /// Number of cpus per Memcached node.
   final pulumi.Input<int> cpuCount;
+
   /// Memory size in MiB for each Memcached node.
   final pulumi.Input<int> memorySizeMb;
 
@@ -26,9 +27,8 @@ class NodeConfigMemcacheV1beta2 {
 
   factory NodeConfigMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return NodeConfigMemcacheV1beta2(
-      cpuCount: (map['cpuCount'] as int).input(),
-      memorySizeMb: (map['memorySizeMb'] as int).input(),
+      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
+      memorySizeMb: pulumi.Input.fromValue(map['memorySizeMb'] as int),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyVariableValueColumnValueResponse {
   /// Column name for the variable value
   final pulumi.Input<String> columnName;
+
   /// Column value for the variable value; this can be an integer, double, boolean, null or a string.
   final pulumi.Input<dynamic> columnValue;
 
@@ -24,11 +25,12 @@ class PolicyVariableValueColumnValueResponse {
     };
   }
 
-  factory PolicyVariableValueColumnValueResponse.fromMap(Map<String, dynamic> map) {
+  factory PolicyVariableValueColumnValueResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyVariableValueColumnValueResponse(
-      columnName: (map['columnName'] as String).input(),
-      columnValue: (map['columnValue']).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      columnValue: pulumi.Input.fromValue(map['columnValue']),
     );
   }
 }
-

@@ -7,16 +7,17 @@ enum AzureLargeInstancePowerStateEnum {
   restarting("restarting"),
   unknown("unknown");
 
-  const AzureLargeInstancePowerStateEnum(this.value);
-  final String value;
+  const AzureLargeInstancePowerStateEnum(this.wireValue);
+  final String wireValue;
 
   static AzureLargeInstancePowerStateEnum fromValue(String value) {
     for (final item in AzureLargeInstancePowerStateEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureLargeInstancePowerStateEnum value: $value');
+    throw ArgumentError(
+      'Unknown AzureLargeInstancePowerStateEnum value: $value',
+    );
   }
 }
-

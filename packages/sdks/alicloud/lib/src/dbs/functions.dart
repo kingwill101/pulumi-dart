@@ -4,7 +4,7 @@ import 'get_backup_plans_result.dart';
 
 /// This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.185.0+.
+/// &gt; **NOTE:** Available in v1.185.0+.
 ///
 /// ## Example Usage
 ///

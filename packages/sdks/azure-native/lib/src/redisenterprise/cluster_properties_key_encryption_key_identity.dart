@@ -6,12 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterPropertiesKeyEncryptionKeyIdentity {
   /// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
   final pulumi.Input<String>? identityType;
-  /// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+
+  /// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/&lt;sub uuid&gt;/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
   final pulumi.Input<String>? userAssignedIdentityResourceId;
 
   /// Creates a new [ClusterPropertiesKeyEncryptionKeyIdentity].
   /// [identityType] Only userAssignedIdentity is supported in this API version; other types may be supported in the future
-  /// [userAssignedIdentityResourceId] User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
+  /// [userAssignedIdentityResourceId] User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/&lt;sub uuid&gt;/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
   ClusterPropertiesKeyEncryptionKeyIdentity({
     this.identityType,
     this.userAssignedIdentityResourceId,
@@ -24,11 +25,20 @@ class ClusterPropertiesKeyEncryptionKeyIdentity {
     };
   }
 
-  factory ClusterPropertiesKeyEncryptionKeyIdentity.fromMap(Map<String, dynamic> map) {
+  factory ClusterPropertiesKeyEncryptionKeyIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterPropertiesKeyEncryptionKeyIdentity(
-      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
+      identityType: (() {
+        final guardedValue = map['identityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentityResourceId: (() {
+        final guardedValue = map['userAssignedIdentityResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

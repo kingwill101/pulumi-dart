@@ -7,29 +7,31 @@ import 'accelerator_config_type.dart';
 class AcceleratorConfig {
   /// Topology of TPU in chips.
   final pulumi.Input<String> topology;
+
   /// Type of TPU.
   final pulumi.Input<AcceleratorConfigType> type;
 
   /// Creates a new [AcceleratorConfig].
   /// [topology] Topology of TPU in chips.
   /// [type] Type of TPU.
-  AcceleratorConfig({
-    required this.topology,
-    required this.type,
-  });
+  AcceleratorConfig({required this.topology, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'topology': topology,
-      'type': pulumi.Input.mapInputValue<AcceleratorConfigType, String>(type, (value) => value.value),
+      'type': pulumi.Input.mapInputValue<AcceleratorConfigType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfig(
-      topology: (map['topology'] as String).input(),
-      type: (AcceleratorConfigType.fromValue(map['type'] as String)).input(),
+      topology: pulumi.Input.fromValue(map['topology'] as String),
+      type: pulumi.Input.fromValue(
+        AcceleratorConfigType.fromValue(map['type']! as String),
+      ),
     );
   }
 }
-

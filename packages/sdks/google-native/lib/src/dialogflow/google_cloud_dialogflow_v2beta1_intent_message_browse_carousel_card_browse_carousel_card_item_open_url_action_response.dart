@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse {
   /// URL
   final pulumi.Input<String> url;
+
   /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
   final pulumi.Input<String> urlTypeHint;
 
@@ -18,17 +19,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': url,
-      'urlTypeHint': urlTypeHint,
-    };
+    return <String, dynamic>{'url': url, 'urlTypeHint': urlTypeHint};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse(
-      url: (map['url'] as String).input(),
-      urlTypeHint: (map['urlTypeHint'] as String).input(),
+      url: pulumi.Input.fromValue(map['url'] as String),
+      urlTypeHint: pulumi.Input.fromValue(map['urlTypeHint'] as String),
     );
   }
 }
-

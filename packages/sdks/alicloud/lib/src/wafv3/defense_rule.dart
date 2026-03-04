@@ -9,7 +9,7 @@ import 'defense_rule_state.dart';
 ///
 /// For information about WAFV3 Defense Rule and how to use it, see [What is Defense Rule](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule).
 ///
-/// > **NOTE:** Available since v1.257.0.
+/// &gt; **NOTE:** Available since v1.257.0.
 ///
 /// ## Example Usage
 ///
@@ -383,29 +383,38 @@ import 'defense_rule_state.dart';
 class DefenseRule extends pulumi.CustomResource {
   /// Rule configuration content, in JSON format, constructed with a series of parameters.
   ///
-  /// > **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
+  /// &gt; **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
   /// See `config` below.
   late final pulumi.Output<DefenseRuleConfig> config;
+
   /// Sources of protection. Value:
   late final pulumi.Output<String?> defenseOrigin;
+
   /// The WAF protection scenario to be created.
   ///
   /// When the protection rule type `DefenseType` is set to `template`, the value is as follows:
   late final pulumi.Output<String> defenseScene;
+
   /// The protection rule type. Value:
   late final pulumi.Output<String> defenseType;
+
   /// The ID of the Web Application Firewall (WAF) instance.
   late final pulumi.Output<String> instanceId;
+
   /// The protection object corresponding to the rule to be queried.
   ///
-  /// > **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
+  /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
   late final pulumi.Output<String> resource;
+
   /// The protection rule ID.
   late final pulumi.Output<int> ruleId;
+
   /// The rule name.
   late final pulumi.Output<String> ruleName;
+
   /// Protection rule status.
   late final pulumi.Output<int?> ruleStatus;
+
   /// The protection template ID of the protection rule to be created.
   late final pulumi.Output<int?> templateId;
 
@@ -418,21 +427,21 @@ class DefenseRule extends pulumi.CustomResource {
     DefenseRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:wafv3/defenseRule:DefenseRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<DefenseRuleConfig>('config');
-    this.defenseOrigin = registerOutput<String?>('defenseOrigin');
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.defenseType = registerOutput<String>('defenseType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.resource = registerOutput<String>('resource');
-    this.ruleId = registerOutput<int>('ruleId');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleStatus = registerOutput<int?>('ruleStatus');
-    this.templateId = registerOutput<int?>('templateId');
+         'alicloud:wafv3/defenseRule:DefenseRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<DefenseRuleConfig>('config');
+    defenseOrigin = registerOutput<String?>('defenseOrigin');
+    defenseScene = registerOutput<String>('defenseScene');
+    defenseType = registerOutput<String>('defenseType');
+    instanceId = registerOutput<String>('instanceId');
+    resource = registerOutput<String>('resource');
+    ruleId = registerOutput<int>('ruleId');
+    ruleName = registerOutput<String>('ruleName');
+    ruleStatus = registerOutput<int?>('ruleStatus');
+    templateId = registerOutput<int?>('templateId');
   }
 
   /// Gets an existing [DefenseRule] resource's state with the given [name] and [id].
@@ -453,20 +462,20 @@ class DefenseRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:wafv3/defenseRule:DefenseRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<DefenseRuleConfig>('config');
-    this.defenseOrigin = registerOutput<String?>('defenseOrigin');
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.defenseType = registerOutput<String>('defenseType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.resource = registerOutput<String>('resource');
-    this.ruleId = registerOutput<int>('ruleId');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleStatus = registerOutput<int?>('ruleStatus');
-    this.templateId = registerOutput<int?>('templateId');
+         'alicloud:wafv3/defenseRule:DefenseRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<DefenseRuleConfig>('config');
+    defenseOrigin = registerOutput<String?>('defenseOrigin');
+    defenseScene = registerOutput<String>('defenseScene');
+    defenseType = registerOutput<String>('defenseType');
+    instanceId = registerOutput<String>('instanceId');
+    resource = registerOutput<String>('resource');
+    ruleId = registerOutput<int>('ruleId');
+    ruleName = registerOutput<String>('ruleName');
+    ruleStatus = registerOutput<int?>('ruleStatus');
+    templateId = registerOutput<int?>('templateId');
   }
 }

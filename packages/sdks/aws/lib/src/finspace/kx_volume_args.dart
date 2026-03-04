@@ -12,21 +12,29 @@ class KxVolumeArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<String>> availabilityZones;
+
   /// The number of availability zones you want to assign per volume. Currently, Finspace only support SINGLE for volumes.
   /// * `SINGLE` - Assigns one availability zone per volume.
   final pulumi.Input<String> azMode;
+
   /// Description of the volume.
   final pulumi.Input<String>? description;
+
   /// A unique identifier for the kdb environment, whose clusters can attach to the volume.
   final pulumi.Input<String> environmentId;
+
   /// Unique name for the volumr that you want to create.
   final pulumi.Input<String>? name;
+
   /// Specifies the configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volume_type` is `NAS_1`. See `nas1_configuration` Argument Reference below.
   final pulumi.Input<List<KxVolumeNas1Configuration>>? nas1Configurations;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A list of key-value pairs to label the volume. You can add up to 50 tags to a volume
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of file system volume. Currently, FinSpace only supports the `NAS_1` volume type. When you select the `NAS_1` volume type, you must also provide `nas1_configuration`.
   final pulumi.Input<String> type;
 
@@ -59,7 +67,18 @@ class KxVolumeArgs {
       'description': ?description,
       'environmentId': environmentId,
       'name': ?name,
-      'nas1Configurations': ?pulumi.Input.mapOptionalInputValue<List<KxVolumeNas1Configuration>, List<Map<String, dynamic>>>(nas1Configurations, (value) => pulumi.Input.encodeList<KxVolumeNas1Configuration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nas1Configurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<KxVolumeNas1Configuration>,
+            List<Map<String, dynamic>>
+          >(
+            nas1Configurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  KxVolumeNas1Configuration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'tags': ?tags,
       'type': type,
@@ -68,16 +87,46 @@ class KxVolumeArgs {
 
   factory KxVolumeArgs.fromMap(Map<String, dynamic> map) {
     return KxVolumeArgs(
-      availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
-      azMode: (map['azMode'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      nas1Configurations: map['nas1Configurations'] == null ? null : ((pulumi.Input.decodeList<KxVolumeNas1Configuration>(map['nas1Configurations']!, (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      type: (map['type'] as String).input(),
+      availabilityZones: pulumi.Input.fromValue(
+        (map['availabilityZones'] as List).cast<String>(),
+      ),
+      azMode: pulumi.Input.fromValue(map['azMode'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nas1Configurations: (() {
+        final guardedValue = map['nas1Configurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<KxVolumeNas1Configuration>(
+            guardedValue,
+            (value) => KxVolumeNas1Configuration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

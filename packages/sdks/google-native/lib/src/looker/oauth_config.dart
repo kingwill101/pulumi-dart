@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OAuthConfig {
   /// Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   final pulumi.Input<String>? clientId;
+
   /// Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   final pulumi.Input<String>? clientSecret;
 
   /// Creates a new [OAuthConfig].
   /// [clientId] Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
   /// [clientSecret] Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.
-  OAuthConfig({
-    this.clientId,
-    this.clientSecret,
-  });
+  OAuthConfig({this.clientId, this.clientSecret});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class OAuthConfig {
 
   factory OAuthConfig.fromMap(Map<String, dynamic> map) {
     return OAuthConfig(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

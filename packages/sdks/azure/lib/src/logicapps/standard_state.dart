@@ -10,74 +10,103 @@ import 'standard_site_credential.dart';
 class StandardState {
   /// The ID of the App Service Plan within which to create this Logic App.
   final pulumi.Input<String>? appServicePlanId;
+
   /// A map of key-value pairs for [App Settings](https://docs.microsoft.com/azure/azure-functions/functions-app-settings) and custom values.
   ///
-  /// > **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the app_settings you specify.  `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
+  /// &gt; **Note:** There are a number of application settings that will be managed for you by this resource type and *shouldn't* be configured separately as part of the app_settings you specify.  `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `WEBSITE_CONTENTSHARE` is detailed below. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`. `APP_KIND` is set to workflowApp and `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` are set as detailed below.
   final pulumi.Input<Map<String, String>>? appSettings;
+
   /// If `use_extension_bundle` is set to `true` this controls the allowed range for bundle versions. Defaults to `[1.*, 2.0.0)`.
   final pulumi.Input<String>? bundleVersion;
+
   /// Should the Logic App send session affinity cookies, which route client requests in the same session to the same instance?
   final pulumi.Input<bool>? clientAffinityEnabled;
+
   /// The mode of the Logic App's client certificates requirement for incoming requests. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`.
   final pulumi.Input<String>? clientCertificateMode;
+
   /// A `connection_string` block as defined below.
   final pulumi.Input<List<StandardConnectionString>>? connectionStrings;
+
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final pulumi.Input<String>? customDomainVerificationId;
+
   /// The default hostname associated with the Logic App - such as `mysite.azurewebsites.net`.
   final pulumi.Input<String>? defaultHostname;
+
   /// Is the Logic App enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Whether the FTP basic authentication publishing profile is enabled. Defaults to `true`.
   final pulumi.Input<bool>? ftpPublishBasicAuthenticationEnabled;
+
   /// Can the Logic App only be accessed via HTTPS? Defaults to `false`.
   final pulumi.Input<bool>? httpsOnly;
+
   /// An `identity` block as defined below.
   final pulumi.Input<StandardIdentity>? identity;
+
   /// The Logic App kind.
   final pulumi.Input<String>? kind;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Logic App. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
   final pulumi.Input<String>? outboundIpAddresses;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
   final pulumi.Input<String>? possibleOutboundIpAddresses;
+
   /// Whether Public Network Access should be enabled or not. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
   ///
-  /// > **Note:** Setting this property will also set it in the Site Config.
+  /// &gt; **Note:** Setting this property will also set it in the Site Config.
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// The name of the resource group in which to create the Logic App. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// Whether the default SCM basic authentication publishing profile is enabled. Defaults to `true`.
   final pulumi.Input<bool>? scmPublishBasicAuthenticationEnabled;
+
   /// A `site_config` object as defined below.
   final pulumi.Input<StandardSiteConfig>? siteConfig;
+
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   final pulumi.Input<List<StandardSiteCredential>>? siteCredentials;
+
   /// The access key which will be used to access the backend storage account for the Logic App.
   final pulumi.Input<String>? storageAccountAccessKey;
+
   /// The backend storage account name which will be used by this Logic App (e.g. for Stateful workflows data). Changing this forces a new resource to be created.
   final pulumi.Input<String>? storageAccountName;
+
   /// The name of the share used by the logic app, if you want to use a custom name. This corresponds to the WEBSITE_CONTENTSHARE appsetting, which this resource will create for you. If you don't specify a name, then this resource will generate a dynamic name. This setting is useful if you want to provision a storage account and create a share using `azure.storage.Share`.
   ///
-  /// > **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of terraform code for Logic App to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or Python, etc.), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
+  /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of terraform code for Logic App to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or Python, etc.), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// > **Note:** When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:** When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
   final pulumi.Input<String>? storageAccountShareName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Should the logic app use the bundled extension package? If true, then application settings for `AzureFunctionsJobHost__extensionBundle__id` and `AzureFunctionsJobHost__extensionBundle__version` will be created. Defaults to `true`.
   final pulumi.Input<bool>? useExtensionBundle;
+
   /// The runtime version associated with the Logic App. Defaults to `~4`.
   final pulumi.Input<String>? version;
+
   /// The subnet ID which will be used by this resource for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
-  /// > **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously.
+  /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource app_service_virtual_network_swift_connection and in-line within this resource using the `virtual_network_subnet_id` property. You cannot use both methods simultaneously.
   ///
-  /// > **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
+  /// &gt; **Note:** Assigning the `virtual_network_subnet_id` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
   final pulumi.Input<String>? virtualNetworkSubnetId;
+
   /// Specifies whether allow routing traffic between the Logic App and Storage Account content share through a virtual network. Defaults to `false`.
   final pulumi.Input<bool>? vnetContentShareEnabled;
 
@@ -152,13 +181,29 @@ class StandardState {
       'bundleVersion': ?bundleVersion,
       'clientAffinityEnabled': ?clientAffinityEnabled,
       'clientCertificateMode': ?clientCertificateMode,
-      'connectionStrings': ?pulumi.Input.mapOptionalInputValue<List<StandardConnectionString>, List<Map<String, dynamic>>>(connectionStrings, (value) => pulumi.Input.encodeList<StandardConnectionString, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectionStrings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StandardConnectionString>,
+            List<Map<String, dynamic>>
+          >(
+            connectionStrings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StandardConnectionString,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'customDomainVerificationId': ?customDomainVerificationId,
       'defaultHostname': ?defaultHostname,
       'enabled': ?enabled,
-      'ftpPublishBasicAuthenticationEnabled': ?ftpPublishBasicAuthenticationEnabled,
+      'ftpPublishBasicAuthenticationEnabled':
+          ?ftpPublishBasicAuthenticationEnabled,
       'httpsOnly': ?httpsOnly,
-      'identity': ?pulumi.Input.mapOptionalInputValue<StandardIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            StandardIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'kind': ?kind,
       'location': ?location,
       'name': ?name,
@@ -166,9 +211,25 @@ class StandardState {
       'possibleOutboundIpAddresses': ?possibleOutboundIpAddresses,
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': ?resourceGroupName,
-      'scmPublishBasicAuthenticationEnabled': ?scmPublishBasicAuthenticationEnabled,
-      'siteConfig': ?pulumi.Input.mapOptionalInputValue<StandardSiteConfig, Map<String, dynamic>>(siteConfig, (value) => value.toMap()),
-      'siteCredentials': ?pulumi.Input.mapOptionalInputValue<List<StandardSiteCredential>, List<Map<String, dynamic>>>(siteCredentials, (value) => pulumi.Input.encodeList<StandardSiteCredential, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scmPublishBasicAuthenticationEnabled':
+          ?scmPublishBasicAuthenticationEnabled,
+      'siteConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            StandardSiteConfig,
+            Map<String, dynamic>
+          >(siteConfig, (value) => value.toMap()),
+      'siteCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StandardSiteCredential>,
+            List<Map<String, dynamic>>
+          >(
+            siteCredentials,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StandardSiteCredential,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'storageAccountAccessKey': ?storageAccountAccessKey,
       'storageAccountName': ?storageAccountName,
       'storageAccountShareName': ?storageAccountShareName,
@@ -182,37 +243,182 @@ class StandardState {
 
   factory StandardState.fromMap(Map<String, dynamic> map) {
     return StandardState(
-      appServicePlanId: map['appServicePlanId'] == null ? null : (map['appServicePlanId']! as String).input(),
-      appSettings: map['appSettings'] == null ? null : ((map['appSettings']! as Map).cast<String, String>()).input(),
-      bundleVersion: map['bundleVersion'] == null ? null : (map['bundleVersion']! as String).input(),
-      clientAffinityEnabled: map['clientAffinityEnabled'] == null ? null : (map['clientAffinityEnabled']! as bool).input(),
-      clientCertificateMode: map['clientCertificateMode'] == null ? null : (map['clientCertificateMode']! as String).input(),
-      connectionStrings: map['connectionStrings'] == null ? null : (pulumi.Input.decodeList<StandardConnectionString>(map['connectionStrings']!, (value) => StandardConnectionString.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customDomainVerificationId: map['customDomainVerificationId'] == null ? null : (map['customDomainVerificationId']! as String).input(),
-      defaultHostname: map['defaultHostname'] == null ? null : (map['defaultHostname']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      ftpPublishBasicAuthenticationEnabled: map['ftpPublishBasicAuthenticationEnabled'] == null ? null : (map['ftpPublishBasicAuthenticationEnabled']! as bool).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
-      identity: map['identity'] == null ? null : (StandardIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      outboundIpAddresses: map['outboundIpAddresses'] == null ? null : (map['outboundIpAddresses']! as String).input(),
-      possibleOutboundIpAddresses: map['possibleOutboundIpAddresses'] == null ? null : (map['possibleOutboundIpAddresses']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      scmPublishBasicAuthenticationEnabled: map['scmPublishBasicAuthenticationEnabled'] == null ? null : (map['scmPublishBasicAuthenticationEnabled']! as bool).input(),
-      siteConfig: map['siteConfig'] == null ? null : (StandardSiteConfig.fromMap((map['siteConfig']! as Map).cast<String, dynamic>())).input(),
-      siteCredentials: map['siteCredentials'] == null ? null : (pulumi.Input.decodeList<StandardSiteCredential>(map['siteCredentials']!, (value) => StandardSiteCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
-      storageAccountShareName: map['storageAccountShareName'] == null ? null : (map['storageAccountShareName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      useExtensionBundle: map['useExtensionBundle'] == null ? null : (map['useExtensionBundle']! as bool).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId']! as String).input(),
-      vnetContentShareEnabled: map['vnetContentShareEnabled'] == null ? null : (map['vnetContentShareEnabled']! as bool).input(),
+      appServicePlanId: (() {
+        final guardedValue = map['appServicePlanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appSettings: (() {
+        final guardedValue = map['appSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      bundleVersion: (() {
+        final guardedValue = map['bundleVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientAffinityEnabled: (() {
+        final guardedValue = map['clientAffinityEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clientCertificateMode: (() {
+        final guardedValue = map['clientCertificateMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionStrings: (() {
+        final guardedValue = map['connectionStrings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StandardConnectionString>(
+            guardedValue,
+            (value) => StandardConnectionString.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      customDomainVerificationId: (() {
+        final guardedValue = map['customDomainVerificationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultHostname: (() {
+        final guardedValue = map['defaultHostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ftpPublishBasicAuthenticationEnabled: (() {
+        final guardedValue = map['ftpPublishBasicAuthenticationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      httpsOnly: (() {
+        final guardedValue = map['httpsOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StandardIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outboundIpAddresses: (() {
+        final guardedValue = map['outboundIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      possibleOutboundIpAddresses: (() {
+        final guardedValue = map['possibleOutboundIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scmPublishBasicAuthenticationEnabled: (() {
+        final guardedValue = map['scmPublishBasicAuthenticationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      siteConfig: (() {
+        final guardedValue = map['siteConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StandardSiteConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      siteCredentials: (() {
+        final guardedValue = map['siteCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StandardSiteCredential>(
+            guardedValue,
+            (value) => StandardSiteCredential.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      storageAccountAccessKey: (() {
+        final guardedValue = map['storageAccountAccessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountShareName: (() {
+        final guardedValue = map['storageAccountShareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      useExtensionBundle: (() {
+        final guardedValue = map['useExtensionBundle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkSubnetId: (() {
+        final guardedValue = map['virtualNetworkSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vnetContentShareEnabled: (() {
+        final guardedValue = map['vnetContentShareEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

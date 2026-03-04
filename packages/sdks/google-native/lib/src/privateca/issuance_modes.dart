@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IssuanceModes {
   /// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
   final pulumi.Input<bool>? allowConfigBasedIssuance;
+
   /// Optional. When true, allows callers to create Certificates by specifying a CSR.
   final pulumi.Input<bool>? allowCsrBasedIssuance;
 
   /// Creates a new [IssuanceModes].
   /// [allowConfigBasedIssuance] Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
   /// [allowCsrBasedIssuance] Optional. When true, allows callers to create Certificates by specifying a CSR.
-  IssuanceModes({
-    this.allowConfigBasedIssuance,
-    this.allowCsrBasedIssuance,
-  });
+  IssuanceModes({this.allowConfigBasedIssuance, this.allowCsrBasedIssuance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class IssuanceModes {
 
   factory IssuanceModes.fromMap(Map<String, dynamic> map) {
     return IssuanceModes(
-      allowConfigBasedIssuance: map['allowConfigBasedIssuance'] == null ? null : (map['allowConfigBasedIssuance']! as bool).input(),
-      allowCsrBasedIssuance: map['allowCsrBasedIssuance'] == null ? null : (map['allowCsrBasedIssuance']! as bool).input(),
+      allowConfigBasedIssuance: (() {
+        final guardedValue = map['allowConfigBasedIssuance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowCsrBasedIssuance: (() {
+        final guardedValue = map['allowCsrBasedIssuance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

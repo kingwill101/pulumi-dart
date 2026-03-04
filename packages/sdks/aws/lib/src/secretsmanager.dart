@@ -1,5 +1,3 @@
-library module_secretsmanager;
-
 export 'secretsmanager/functions.dart';
 export 'secretsmanager/get_random_password_args.dart';
 export 'secretsmanager/get_random_password_result.dart';

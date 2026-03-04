@@ -7,16 +7,15 @@ enum SecurityRuleProtocol {
   value("*"),
   valueAh("Ah");
 
-  const SecurityRuleProtocol(this.value);
-  final String value;
+  const SecurityRuleProtocol(this.wireValue);
+  final String wireValue;
 
   static SecurityRuleProtocol fromValue(String value) {
     for (final item in SecurityRuleProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityRuleProtocol value: $value');
   }
 }
-

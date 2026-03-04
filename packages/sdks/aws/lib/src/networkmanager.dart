@@ -1,5 +1,3 @@
-library module_networkmanager;
-
 export 'networkmanager/attachment_accepter.dart';
 export 'networkmanager/attachment_accepter_args.dart';
 export 'networkmanager/attachment_accepter_state.dart';

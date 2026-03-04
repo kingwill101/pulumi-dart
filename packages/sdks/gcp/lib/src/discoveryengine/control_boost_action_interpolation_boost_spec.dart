@@ -7,11 +7,15 @@ class ControlBoostActionInterpolationBoostSpec {
   /// The attribute type to be used to determine the boost amount.
   /// Possible values are: `NUMERICAL`, `FRESHNESS`.
   final pulumi.Input<String>? attributeType;
+
   /// The control points used to define the curve.
   /// Structure is documented below.
-  final pulumi.Input<ControlBoostActionInterpolationBoostSpecControlPoint>? controlPoint;
+  final pulumi.Input<ControlBoostActionInterpolationBoostSpecControlPoint>?
+  controlPoint;
+
   /// The name of the field whose value will be used to determine the boost amount.
   final pulumi.Input<String>? fieldName;
+
   /// The interpolation type to be applied to connect the control points.
   /// Possible values are: `LINEAR`.
   final pulumi.Input<String>? interpolationType;
@@ -31,19 +35,44 @@ class ControlBoostActionInterpolationBoostSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributeType': ?attributeType,
-      'controlPoint': ?pulumi.Input.mapOptionalInputValue<ControlBoostActionInterpolationBoostSpecControlPoint, Map<String, dynamic>>(controlPoint, (value) => value.toMap()),
+      'controlPoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            ControlBoostActionInterpolationBoostSpecControlPoint,
+            Map<String, dynamic>
+          >(controlPoint, (value) => value.toMap()),
       'fieldName': ?fieldName,
       'interpolationType': ?interpolationType,
     };
   }
 
-  factory ControlBoostActionInterpolationBoostSpec.fromMap(Map<String, dynamic> map) {
+  factory ControlBoostActionInterpolationBoostSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ControlBoostActionInterpolationBoostSpec(
-      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
-      controlPoint: map['controlPoint'] == null ? null : (ControlBoostActionInterpolationBoostSpecControlPoint.fromMap((map['controlPoint']! as Map).cast<String, dynamic>())).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
-      interpolationType: map['interpolationType'] == null ? null : (map['interpolationType']! as String).input(),
+      attributeType: (() {
+        final guardedValue = map['attributeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlPoint: (() {
+        final guardedValue = map['controlPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ControlBoostActionInterpolationBoostSpecControlPoint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fieldName: (() {
+        final guardedValue = map['fieldName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interpolationType: (() {
+        final guardedValue = map['interpolationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

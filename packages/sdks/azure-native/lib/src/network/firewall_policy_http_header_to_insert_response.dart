@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyHttpHeaderToInsertResponse {
   /// Contains the name of the header
   final pulumi.Input<String>? headerName;
+
   /// Contains the value of the header
   final pulumi.Input<String>? headerValue;
 
   /// Creates a new [FirewallPolicyHttpHeaderToInsertResponse].
   /// [headerName] Contains the name of the header
   /// [headerValue] Contains the value of the header
-  FirewallPolicyHttpHeaderToInsertResponse({
-    this.headerName,
-    this.headerValue,
-  });
+  FirewallPolicyHttpHeaderToInsertResponse({this.headerName, this.headerValue});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class FirewallPolicyHttpHeaderToInsertResponse {
     };
   }
 
-  factory FirewallPolicyHttpHeaderToInsertResponse.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyHttpHeaderToInsertResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyHttpHeaderToInsertResponse(
-      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
-      headerValue: map['headerValue'] == null ? null : (map['headerValue']! as String).input(),
+      headerName: (() {
+        final guardedValue = map['headerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headerValue: (() {
+        final guardedValue = map['headerValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

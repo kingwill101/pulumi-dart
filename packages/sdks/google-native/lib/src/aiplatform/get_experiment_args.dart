@@ -35,11 +35,14 @@ class GetExperimentArgs {
 
   factory GetExperimentArgs.fromMap(Map<String, dynamic> map) {
     return GetExperimentArgs(
-      experimentId: (map['experimentId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tensorboardId: (map['tensorboardId'] as String).input(),
+      experimentId: pulumi.Input.fromValue(map['experimentId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tensorboardId: pulumi.Input.fromValue(map['tensorboardId'] as String),
     );
   }
 }
-

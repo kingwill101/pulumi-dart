@@ -3,16 +3,15 @@ enum NotifyGlobalAdmins {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const NotifyGlobalAdmins(this.value);
-  final String value;
+  const NotifyGlobalAdmins(this.wireValue);
+  final String wireValue;
 
   static NotifyGlobalAdmins fromValue(String value) {
     for (final item in NotifyGlobalAdmins.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotifyGlobalAdmins value: $value');
   }
 }
-

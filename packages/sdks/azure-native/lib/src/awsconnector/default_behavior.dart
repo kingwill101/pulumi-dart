@@ -3,16 +3,15 @@ enum DefaultBehavior {
   dROP("DROP"),
   kEEP("KEEP");
 
-  const DefaultBehavior(this.value);
-  final String value;
+  const DefaultBehavior(this.wireValue);
+  final String wireValue;
 
   static DefaultBehavior fromValue(String value) {
     for (final item in DefaultBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefaultBehavior value: $value');
   }
 }
-

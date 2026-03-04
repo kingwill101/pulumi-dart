@@ -8,7 +8,7 @@ import 'nest_service_instance_state.dart';
 ///
 /// For information about Compute Nest Service Instance and how to use it, see [What is Service Instance](https://www.alibabacloud.com/help/zh/compute-nest/developer-reference/api-computenest-2021-06-01-createserviceinstance).
 ///
-/// > **NOTE:** Available since v1.205.0.
+/// &gt; **NOTE:** Available since v1.205.0.
 ///
 /// ## Example Usage
 ///
@@ -488,30 +488,44 @@ import 'nest_service_instance_state.dart';
 class NestServiceInstance extends pulumi.CustomResource {
   /// The order information of cloud market. See `commodity` below.
   late final pulumi.Output<NestServiceInstanceCommodity?> commodity;
+
   /// Whether the service instance has the O&M function. Default value: `false`. Valid values:
   late final pulumi.Output<bool> enableInstanceOps;
+
   /// Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
   late final pulumi.Output<bool> enableUserPrometheus;
+
   /// The configuration of O&M. See `operation_metadata` below.
-  late final pulumi.Output<NestServiceInstanceOperationMetadata> operationMetadata;
+  late final pulumi.Output<NestServiceInstanceOperationMetadata>
+  operationMetadata;
+
   /// The parameters entered by the deployment service instance.
   late final pulumi.Output<String?> parameters;
+
   /// The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
   late final pulumi.Output<String> paymentType;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The ID of the service.
   late final pulumi.Output<String> serviceId;
+
   /// The name of the Service Instance.
   late final pulumi.Output<String> serviceInstanceName;
+
   /// The version of the service.
   late final pulumi.Output<String> serviceVersion;
+
   /// The name of the specification.
   late final pulumi.Output<String?> specificationName;
+
   /// The status of the Service Instance.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The name of the template.
   late final pulumi.Output<String> templateName;
 
@@ -524,25 +538,27 @@ class NestServiceInstance extends pulumi.CustomResource {
     NestServiceInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:compute/nestServiceInstance:NestServiceInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commodity = registerOutput<NestServiceInstanceCommodity?>('commodity');
-    this.enableInstanceOps = registerOutput<bool>('enableInstanceOps');
-    this.enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
-    this.operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>('operationMetadata');
-    this.parameters = registerOutput<String?>('parameters');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceInstanceName = registerOutput<String>('serviceInstanceName');
-    this.serviceVersion = registerOutput<String>('serviceVersion');
-    this.specificationName = registerOutput<String?>('specificationName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateName = registerOutput<String>('templateName');
+         'alicloud:compute/nestServiceInstance:NestServiceInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commodity = registerOutput<NestServiceInstanceCommodity?>('commodity');
+    enableInstanceOps = registerOutput<bool>('enableInstanceOps');
+    enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
+    operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>(
+      'operationMetadata',
+    );
+    parameters = registerOutput<String?>('parameters');
+    paymentType = registerOutput<String>('paymentType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    serviceId = registerOutput<String>('serviceId');
+    serviceInstanceName = registerOutput<String>('serviceInstanceName');
+    serviceVersion = registerOutput<String>('serviceVersion');
+    specificationName = registerOutput<String?>('specificationName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateName = registerOutput<String>('templateName');
   }
 
   /// Gets an existing [NestServiceInstance] resource's state with the given [name] and [id].
@@ -563,24 +579,26 @@ class NestServiceInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:compute/nestServiceInstance:NestServiceInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commodity = registerOutput<NestServiceInstanceCommodity?>('commodity');
-    this.enableInstanceOps = registerOutput<bool>('enableInstanceOps');
-    this.enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
-    this.operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>('operationMetadata');
-    this.parameters = registerOutput<String?>('parameters');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceInstanceName = registerOutput<String>('serviceInstanceName');
-    this.serviceVersion = registerOutput<String>('serviceVersion');
-    this.specificationName = registerOutput<String?>('specificationName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateName = registerOutput<String>('templateName');
+         'alicloud:compute/nestServiceInstance:NestServiceInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commodity = registerOutput<NestServiceInstanceCommodity?>('commodity');
+    enableInstanceOps = registerOutput<bool>('enableInstanceOps');
+    enableUserPrometheus = registerOutput<bool>('enableUserPrometheus');
+    operationMetadata = registerOutput<NestServiceInstanceOperationMetadata>(
+      'operationMetadata',
+    );
+    parameters = registerOutput<String?>('parameters');
+    paymentType = registerOutput<String>('paymentType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    serviceId = registerOutput<String>('serviceId');
+    serviceInstanceName = registerOutput<String>('serviceInstanceName');
+    serviceVersion = registerOutput<String>('serviceVersion');
+    specificationName = registerOutput<String?>('specificationName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateName = registerOutput<String>('templateName');
   }
 }

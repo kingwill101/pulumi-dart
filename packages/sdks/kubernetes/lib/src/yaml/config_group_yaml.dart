@@ -534,11 +534,12 @@ class ConfigGroupYaml extends pulumi.ComponentResource {
     ConfigGroupYamlArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'kubernetes:yaml:ConfigGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.resources = registerOutput<String?>('resources');
+         'kubernetes:yaml:ConfigGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    resources = registerOutput<String?>('resources');
   }
 }

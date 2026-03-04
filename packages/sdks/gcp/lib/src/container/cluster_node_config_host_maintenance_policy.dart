@@ -8,20 +8,19 @@ class ClusterNodeConfigHostMaintenancePolicy {
 
   /// Creates a new [ClusterNodeConfigHostMaintenancePolicy].
   /// [maintenanceInterval] .
-  ClusterNodeConfigHostMaintenancePolicy({
-    required this.maintenanceInterval,
-  });
+  ClusterNodeConfigHostMaintenancePolicy({required this.maintenanceInterval});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maintenanceInterval': maintenanceInterval,
-    };
+    return <String, dynamic>{'maintenanceInterval': maintenanceInterval};
   }
 
-  factory ClusterNodeConfigHostMaintenancePolicy.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigHostMaintenancePolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigHostMaintenancePolicy(
-      maintenanceInterval: (map['maintenanceInterval'] as String).input(),
+      maintenanceInterval: pulumi.Input.fromValue(
+        map['maintenanceInterval'] as String,
+      ),
     );
   }
 }
-

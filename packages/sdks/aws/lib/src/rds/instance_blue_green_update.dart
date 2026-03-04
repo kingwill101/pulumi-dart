@@ -16,20 +16,19 @@ class InstanceBlueGreenUpdate {
 
   /// Creates a new [InstanceBlueGreenUpdate].
   /// [enabled] Enables low-downtime updates when `true`.
-  InstanceBlueGreenUpdate({
-    this.enabled,
-  });
+  InstanceBlueGreenUpdate({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory InstanceBlueGreenUpdate.fromMap(Map<String, dynamic> map) {
     return InstanceBlueGreenUpdate(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

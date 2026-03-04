@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIruleArgs {
   /// Irule configured on bigip
   final pulumi.Input<String>? irule;
+
   /// Name of the irule
   final pulumi.Input<String> name;
+
   /// partition of the ltm irule
   final pulumi.Input<String> partition;
 
@@ -18,11 +20,7 @@ class GetIruleArgs {
   /// [irule] Irule configured on bigip
   /// [name] Name of the irule
   /// [partition] partition of the ltm irule
-  GetIruleArgs({
-    this.irule,
-    required this.name,
-    required this.partition,
-  });
+  GetIruleArgs({this.irule, required this.name, required this.partition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,13 @@ class GetIruleArgs {
 
   factory GetIruleArgs.fromMap(Map<String, dynamic> map) {
     return GetIruleArgs(
-      irule: map['irule'] == null ? null : (map['irule']! as String).input(),
-      name: (map['name'] as String).input(),
-      partition: (map['partition'] as String).input(),
+      irule: (() {
+        final guardedValue = map['irule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      partition: pulumi.Input.fromValue(map['partition'] as String),
     );
   }
 }
-

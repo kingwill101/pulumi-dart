@@ -6,7 +6,7 @@ import 'enterprise_logic_database_state.dart';
 ///
 /// For information about DMS Enterprise Logic Database and how to use it, see [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -136,22 +136,31 @@ import 'enterprise_logic_database_state.dart';
 class EnterpriseLogicDatabase extends pulumi.CustomResource {
   /// Logical Library alias.
   late final pulumi.Output<String> alias;
+
   /// Sub-Database ID
   late final pulumi.Output<List<String>> databaseIds;
+
   /// Database type.
   late final pulumi.Output<String> dbType;
+
   /// Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
   late final pulumi.Output<String> envType;
+
   /// Whether it is a logical Library, the return value is true.
   late final pulumi.Output<bool> logic;
+
   /// The ID of the logical Library.
   late final pulumi.Output<String> logicDatabaseId;
+
   /// The user ID list of the logical library Owner.
   late final pulumi.Output<List<String>> ownerIdLists;
+
   /// The nickname list of the logical library Owner.
   late final pulumi.Output<List<String>> ownerNameLists;
+
   /// Logical Library name.
   late final pulumi.Output<String> schemaName;
+
   /// Logical library search name.
   late final pulumi.Output<String> searchName;
 
@@ -164,21 +173,21 @@ class EnterpriseLogicDatabase extends pulumi.CustomResource {
     EnterpriseLogicDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alias = registerOutput<String>('alias');
-    this.databaseIds = registerOutput<List<String>>('databaseIds');
-    this.dbType = registerOutput<String>('dbType');
-    this.envType = registerOutput<String>('envType');
-    this.logic = registerOutput<bool>('logic');
-    this.logicDatabaseId = registerOutput<String>('logicDatabaseId');
-    this.ownerIdLists = registerOutput<List<String>>('ownerIdLists');
-    this.ownerNameLists = registerOutput<List<String>>('ownerNameLists');
-    this.schemaName = registerOutput<String>('schemaName');
-    this.searchName = registerOutput<String>('searchName');
+         'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alias = registerOutput<String>('alias');
+    databaseIds = registerOutput<List<String>>('databaseIds');
+    dbType = registerOutput<String>('dbType');
+    envType = registerOutput<String>('envType');
+    logic = registerOutput<bool>('logic');
+    logicDatabaseId = registerOutput<String>('logicDatabaseId');
+    ownerIdLists = registerOutput<List<String>>('ownerIdLists');
+    ownerNameLists = registerOutput<List<String>>('ownerNameLists');
+    schemaName = registerOutput<String>('schemaName');
+    searchName = registerOutput<String>('searchName');
   }
 
   /// Gets an existing [EnterpriseLogicDatabase] resource's state with the given [name] and [id].
@@ -199,20 +208,20 @@ class EnterpriseLogicDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alias = registerOutput<String>('alias');
-    this.databaseIds = registerOutput<List<String>>('databaseIds');
-    this.dbType = registerOutput<String>('dbType');
-    this.envType = registerOutput<String>('envType');
-    this.logic = registerOutput<bool>('logic');
-    this.logicDatabaseId = registerOutput<String>('logicDatabaseId');
-    this.ownerIdLists = registerOutput<List<String>>('ownerIdLists');
-    this.ownerNameLists = registerOutput<List<String>>('ownerNameLists');
-    this.schemaName = registerOutput<String>('schemaName');
-    this.searchName = registerOutput<String>('searchName');
+         'alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alias = registerOutput<String>('alias');
+    databaseIds = registerOutput<List<String>>('databaseIds');
+    dbType = registerOutput<String>('dbType');
+    envType = registerOutput<String>('envType');
+    logic = registerOutput<bool>('logic');
+    logicDatabaseId = registerOutput<String>('logicDatabaseId');
+    ownerIdLists = registerOutput<List<String>>('ownerIdLists');
+    ownerNameLists = registerOutput<List<String>>('ownerNameLists');
+    schemaName = registerOutput<String>('schemaName');
+    searchName = registerOutput<String>('searchName');
   }
 }

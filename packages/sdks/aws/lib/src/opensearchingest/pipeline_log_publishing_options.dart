@@ -5,7 +5,9 @@ import 'pipeline_log_publishing_options_cloudwatch_log_destination.dart';
 
 class PipelineLogPublishingOptions {
   /// The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs. This parameter is required if IsLoggingEnabled is set to true. See `cloudwatch_log_destination` below.
-  final pulumi.Input<PipelineLogPublishingOptionsCloudwatchLogDestination>? cloudwatchLogDestination;
+  final pulumi.Input<PipelineLogPublishingOptionsCloudwatchLogDestination>?
+  cloudwatchLogDestination;
+
   /// Whether logs should be published.
   final pulumi.Input<bool>? isLoggingEnabled;
 
@@ -19,16 +21,31 @@ class PipelineLogPublishingOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchLogDestination': ?pulumi.Input.mapOptionalInputValue<PipelineLogPublishingOptionsCloudwatchLogDestination, Map<String, dynamic>>(cloudwatchLogDestination, (value) => value.toMap()),
+      'cloudwatchLogDestination':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipelineLogPublishingOptionsCloudwatchLogDestination,
+            Map<String, dynamic>
+          >(cloudwatchLogDestination, (value) => value.toMap()),
       'isLoggingEnabled': ?isLoggingEnabled,
     };
   }
 
   factory PipelineLogPublishingOptions.fromMap(Map<String, dynamic> map) {
     return PipelineLogPublishingOptions(
-      cloudwatchLogDestination: map['cloudwatchLogDestination'] == null ? null : ((PipelineLogPublishingOptionsCloudwatchLogDestination.fromMap((map['cloudwatchLogDestination']! as Map).cast<String, dynamic>())).input()).input(),
-      isLoggingEnabled: map['isLoggingEnabled'] == null ? null : ((map['isLoggingEnabled'] as bool).input()).input(),
+      cloudwatchLogDestination: (() {
+        final guardedValue = map['cloudwatchLogDestination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipelineLogPublishingOptionsCloudwatchLogDestination.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isLoggingEnabled: (() {
+        final guardedValue = map['isLoggingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

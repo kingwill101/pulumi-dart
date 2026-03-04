@@ -146,10 +146,13 @@ import 'tag_operation_link_args.dart';
 class TagOperationLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Full resource Id of an API operation.
   late final pulumi.Output<String> operationId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -162,14 +165,14 @@ class TagOperationLink extends pulumi.CustomResource {
     TagOperationLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:TagOperationLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:apimanagement:TagOperationLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.operationId = registerOutput<String>('operationId');
-    this.type = registerOutput<String>('type');
+    operationId = registerOutput<String>('operationId');
+    type = registerOutput<String>('type');
   }
 }

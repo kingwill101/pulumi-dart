@@ -1,10 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'one_dashboard_args.dart';
-import 'one_dashboard_page.dart';
 import 'one_dashboard_state.dart';
-import 'one_dashboard_variable.dart';
 
-/// > **IMPORTANT!**
+/// &gt; **IMPORTANT!**
 /// When configuring the `newrelic.OneDashboard` resource, it is important to understand that widgets should ideally be sorted by row and column order to maintain the stability and accuracy of your dashboard setup. If this specified order is not adhered to, it can lead to resource drift, which might result in discrepancies between the intended setup and the actual deployed dashboard.
 ///
 /// ## Example Usage
@@ -1878,20 +1876,27 @@ import 'one_dashboard_variable.dart';
 class OneDashboard extends pulumi.CustomResource {
   /// Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// Brief text describing the dashboard.
   late final pulumi.Output<String?> description;
+
   /// The unique entity identifier of the dashboard page in New Relic.
   late final pulumi.Output<String> guid;
+
   /// The title of the dashboard.
   late final pulumi.Output<String> name;
+
   /// A nested block that describes a page. See Nested page blocks below for details.
-  late final pulumi.Output<List<OneDashboardPage>> pages;
+  late final pulumi.Output<List<Map<String, dynamic>>> pages;
+
   /// The URL for viewing the dashboard.
   late final pulumi.Output<String> permalink;
+
   /// Determines who can see the dashboard in an account. Valid values are `private`, `public_read_only`, or `public_read_write`.  Defaults to `public_read_only`.
   late final pulumi.Output<String?> permissions;
+
   /// A nested block that describes a dashboard-local variable. See Nested variable blocks below for details.
-  late final pulumi.Output<List<OneDashboardVariable>?> variables;
+  late final pulumi.Output<List<Map<String, dynamic>>?> variables;
 
   /// Creates a new [OneDashboard].
   /// [name] The Pulumi resource name.
@@ -1902,19 +1907,19 @@ class OneDashboard extends pulumi.CustomResource {
     OneDashboardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/oneDashboard:OneDashboard',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:index/oneDashboard:OneDashboard',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.pages = registerOutput<List<OneDashboardPage>>('pages');
-    this.permalink = registerOutput<String>('permalink');
-    this.permissions = registerOutput<String?>('permissions');
-    this.variables = registerOutput<List<OneDashboardVariable>?>('variables');
+    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    permalink = registerOutput<String>('permalink');
+    permissions = registerOutput<String?>('permissions');
+    variables = registerOutput<List<Map<String, dynamic>>?>('variables');
   }
 
   /// Gets an existing [OneDashboard] resource's state with the given [name] and [id].
@@ -1935,18 +1940,18 @@ class OneDashboard extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/oneDashboard:OneDashboard',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:index/oneDashboard:OneDashboard',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.pages = registerOutput<List<OneDashboardPage>>('pages');
-    this.permalink = registerOutput<String>('permalink');
-    this.permissions = registerOutput<String?>('permissions');
-    this.variables = registerOutput<List<OneDashboardVariable>?>('variables');
+    pages = registerOutput<List<Map<String, dynamic>>>('pages');
+    permalink = registerOutput<String>('permalink');
+    permissions = registerOutput<String?>('permissions');
+    variables = registerOutput<List<Map<String, dynamic>>?>('variables');
   }
 }

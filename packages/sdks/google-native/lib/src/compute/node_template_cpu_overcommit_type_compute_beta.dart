@@ -4,16 +4,17 @@ enum NodeTemplateCpuOvercommitTypeComputeBeta {
   enabled("ENABLED"),
   none("NONE");
 
-  const NodeTemplateCpuOvercommitTypeComputeBeta(this.value);
-  final String value;
+  const NodeTemplateCpuOvercommitTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static NodeTemplateCpuOvercommitTypeComputeBeta fromValue(String value) {
     for (final item in NodeTemplateCpuOvercommitTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodeTemplateCpuOvercommitTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NodeTemplateCpuOvercommitTypeComputeBeta value: $value',
+    );
   }
 }
-

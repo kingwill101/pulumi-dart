@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleAssignmentArtifactArgs {
   /// Name of the blueprint artifact.
   final pulumi.Input<String> artifactName;
+
   /// Name of the blueprint definition.
   final pulumi.Input<String> blueprintName;
+
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
 
@@ -34,10 +36,9 @@ class GetRoleAssignmentArtifactArgs {
 
   factory GetRoleAssignmentArtifactArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentArtifactArgs(
-      artifactName: (map['artifactName'] as String).input(),
-      blueprintName: (map['blueprintName'] as String).input(),
-      resourceScope: (map['resourceScope'] as String).input(),
+      artifactName: pulumi.Input.fromValue(map['artifactName'] as String),
+      blueprintName: pulumi.Input.fromValue(map['blueprintName'] as String),
+      resourceScope: pulumi.Input.fromValue(map['resourceScope'] as String),
     );
   }
 }
-

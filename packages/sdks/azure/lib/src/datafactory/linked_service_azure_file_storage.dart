@@ -226,28 +226,41 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to Azure File Storage Linked Service:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The connection string.
   late final pulumi.Output<String> connectionString;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
+
   /// The name of the file share.
   late final pulumi.Output<String?> fileShare;
+
   /// The Host name of the server.
   late final pulumi.Output<String?> host;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
+
   /// A `key_vault_password` block as defined below. Use this argument to store Azure File Storage password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
-  late final pulumi.Output<LinkedServiceAzureFileStorageKeyVaultPassword?> keyVaultPassword;
+  late final pulumi.Output<LinkedServiceAzureFileStorageKeyVaultPassword?>
+  keyVaultPassword;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The password to log in the server.
   late final pulumi.Output<String?> password;
+
   /// The user ID to log in the server.
   late final pulumi.Output<String?> userId;
 
@@ -260,24 +273,29 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
     LinkedServiceAzureFileStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.fileShare = registerOutput<String?>('fileShare');
-    this.host = registerOutput<String?>('host');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultPassword = registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>('keyVaultPassword');
+         'azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    connectionString = registerOutput<String>('connectionString');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    fileShare = registerOutput<String?>('fileShare');
+    host = registerOutput<String?>('host');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPassword =
+        registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>(
+          'keyVaultPassword',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.password = registerOutput<String?>('password');
-    this.userId = registerOutput<String?>('userId');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    password = registerOutput<String?>('password');
+    userId = registerOutput<String?>('userId');
   }
 
   /// Gets an existing [LinkedServiceAzureFileStorage] resource's state with the given [name] and [id].
@@ -298,23 +316,28 @@ class LinkedServiceAzureFileStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.fileShare = registerOutput<String?>('fileShare');
-    this.host = registerOutput<String?>('host');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultPassword = registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>('keyVaultPassword');
+         'azure:datafactory/linkedServiceAzureFileStorage:LinkedServiceAzureFileStorage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    connectionString = registerOutput<String>('connectionString');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    fileShare = registerOutput<String?>('fileShare');
+    host = registerOutput<String?>('host');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPassword =
+        registerOutput<LinkedServiceAzureFileStorageKeyVaultPassword?>(
+          'keyVaultPassword',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.password = registerOutput<String?>('password');
-    this.userId = registerOutput<String?>('userId');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    password = registerOutput<String?>('password');
+    userId = registerOutput<String?>('userId');
   }
 }

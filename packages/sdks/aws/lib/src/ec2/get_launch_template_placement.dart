@@ -51,16 +51,19 @@ class GetLaunchTemplatePlacement {
 
   factory GetLaunchTemplatePlacement.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplatePlacement(
-      affinity: (map['affinity'] as String).input(),
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      hostId: (map['hostId'] as String).input(),
-      hostResourceGroupArn: (map['hostResourceGroupArn'] as String).input(),
-      partitionNumber: (map['partitionNumber'] as int).input(),
-      spreadDomain: (map['spreadDomain'] as String).input(),
-      tenancy: (map['tenancy'] as String).input(),
+      affinity: pulumi.Input.fromValue(map['affinity'] as String),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      hostId: pulumi.Input.fromValue(map['hostId'] as String),
+      hostResourceGroupArn: pulumi.Input.fromValue(
+        map['hostResourceGroupArn'] as String,
+      ),
+      partitionNumber: pulumi.Input.fromValue(map['partitionNumber'] as int),
+      spreadDomain: pulumi.Input.fromValue(map['spreadDomain'] as String),
+      tenancy: pulumi.Input.fromValue(map['tenancy'] as String),
     );
   }
 }
-

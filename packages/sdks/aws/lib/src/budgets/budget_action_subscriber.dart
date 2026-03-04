@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BudgetActionSubscriber {
   /// The address that AWS sends budget notifications to, either an SNS topic or an email.
   final pulumi.Input<String> address;
+
   /// The type of notification that AWS sends to a subscriber. Valid values are `SNS` or `EMAIL`.
   final pulumi.Input<String> subscriptionType;
 
@@ -25,9 +26,10 @@ class BudgetActionSubscriber {
 
   factory BudgetActionSubscriber.fromMap(Map<String, dynamic> map) {
     return BudgetActionSubscriber(
-      address: (map['address'] as String).input(),
-      subscriptionType: (map['subscriptionType'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      subscriptionType: pulumi.Input.fromValue(
+        map['subscriptionType'] as String,
+      ),
     );
   }
 }
-

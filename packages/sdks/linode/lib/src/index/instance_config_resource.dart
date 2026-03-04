@@ -1,15 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_config_args.dart';
-import 'instance_config_device.dart';
 import 'instance_config_devices.dart';
-import 'instance_config_helper.dart';
-import 'instance_config_interface.dart';
 import 'instance_config_state.dart';
 
 /// Provides a Linode Instance Config resource. This can be used to create, modify, and delete Linode Instance Configs.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-add-linode-config).
 ///
-/// > **NOTICE:** If a VPC interface is defined in your `linode.InstanceConfig` resource and the config is currently booted with the Linode, then the Linode is required to be powered off during the update operation. The Terraform provider will try to implicitly shutdown you Linode instance during the update and restart it when it's finished. Unless you explicitly config the `booted` attribute in the resource or explicitly set `skip_implicit_reboots` to `false` in the Terraform provider config.
+/// &gt; **NOTICE:** If a VPC interface is defined in your `linode.InstanceConfig` resource and the config is currently booted with the Linode, then the Linode is required to be powered off during the update operation. The Terraform provider will try to implicitly shutdown you Linode instance during the update and restart it when it's finished. Unless you explicitly config the `booted` attribute in the resource or explicitly set `skip_implicit_reboots` to `false` in the Terraform provider config.
 ///
 /// **NOTE:** Changes to a config that is currently booted will trigger a reboot, in order to skip this explicitly set `skip_implicit_reboots` to `true` in the Terraform provider config.
 ///
@@ -697,6 +694,7 @@ import 'instance_config_state.dart';
 class InstanceConfigResource extends pulumi.CustomResource {
   /// If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
   late final pulumi.Output<bool> booted;
+
   /// Optional field for arbitrary User comments on this Config.
   ///
   /// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
@@ -705,28 +703,39 @@ class InstanceConfigResource extends pulumi.CustomResource {
   ///
   /// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
   late final pulumi.Output<String?> comments;
+
   /// Blocks for device disks in a Linode's configuration profile.
-  late final pulumi.Output<List<InstanceConfigDevice>> device;
+  late final pulumi.Output<List<Map<String, dynamic>>> device;
+
   /// A dictionary of device disks to use as a device map in a Linode's configuration profile.
   late final pulumi.Output<InstanceConfigDevices> devices;
+
   /// Helpers enabled when booting to this Linode Config.
-  late final pulumi.Output<List<InstanceConfigHelper>> helpers;
+  late final pulumi.Output<List<Map<String, dynamic>>> helpers;
+
   /// An array of Network Interfaces to add to this Linode's Configuration Profile.
-  late final pulumi.Output<List<InstanceConfigInterface>?> interfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>?> interfaces;
+
   /// A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
   late final pulumi.Output<String?> kernel;
+
   /// The Config’s label for display purposes only.
   ///
   /// - - -
   late final pulumi.Output<String> label;
+
   /// The ID of the Linode to create this configuration profile under.
   late final pulumi.Output<int> linodeId;
+
   /// The memory limit of the Config. Defaults to the total ram of the Linode.
   late final pulumi.Output<int> memoryLimit;
+
   /// The root device to boot. (default `/dev/sda`)
   late final pulumi.Output<String?> rootDevice;
+
   /// Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
   late final pulumi.Output<String?> runLevel;
+
   /// Controls the virtualization mode. (`paravirt`, `fullvirt`)
   late final pulumi.Output<String?> virtMode;
 
@@ -739,24 +748,24 @@ class InstanceConfigResource extends pulumi.CustomResource {
     InstanceConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/instanceConfig:InstanceConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.booted = registerOutput<bool>('booted');
-    this.comments = registerOutput<String?>('comments');
-    this.device = registerOutput<List<InstanceConfigDevice>>('device');
-    this.devices = registerOutput<InstanceConfigDevices>('devices');
-    this.helpers = registerOutput<List<InstanceConfigHelper>>('helpers');
-    this.interfaces = registerOutput<List<InstanceConfigInterface>?>('interfaces');
-    this.kernel = registerOutput<String?>('kernel');
-    this.label = registerOutput<String>('label');
-    this.linodeId = registerOutput<int>('linodeId');
-    this.memoryLimit = registerOutput<int>('memoryLimit');
-    this.rootDevice = registerOutput<String?>('rootDevice');
-    this.runLevel = registerOutput<String?>('runLevel');
-    this.virtMode = registerOutput<String?>('virtMode');
+         'linode:index/instanceConfig:InstanceConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    booted = registerOutput<bool>('booted');
+    comments = registerOutput<String?>('comments');
+    device = registerOutput<List<Map<String, dynamic>>>('device');
+    devices = registerOutput<InstanceConfigDevices>('devices');
+    helpers = registerOutput<List<Map<String, dynamic>>>('helpers');
+    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    kernel = registerOutput<String?>('kernel');
+    label = registerOutput<String>('label');
+    linodeId = registerOutput<int>('linodeId');
+    memoryLimit = registerOutput<int>('memoryLimit');
+    rootDevice = registerOutput<String?>('rootDevice');
+    runLevel = registerOutput<String?>('runLevel');
+    virtMode = registerOutput<String?>('virtMode');
   }
 
   /// Gets an existing [InstanceConfigResource] resource's state with the given [name] and [id].
@@ -777,23 +786,23 @@ class InstanceConfigResource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/instanceConfig:InstanceConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.booted = registerOutput<bool>('booted');
-    this.comments = registerOutput<String?>('comments');
-    this.device = registerOutput<List<InstanceConfigDevice>>('device');
-    this.devices = registerOutput<InstanceConfigDevices>('devices');
-    this.helpers = registerOutput<List<InstanceConfigHelper>>('helpers');
-    this.interfaces = registerOutput<List<InstanceConfigInterface>?>('interfaces');
-    this.kernel = registerOutput<String?>('kernel');
-    this.label = registerOutput<String>('label');
-    this.linodeId = registerOutput<int>('linodeId');
-    this.memoryLimit = registerOutput<int>('memoryLimit');
-    this.rootDevice = registerOutput<String?>('rootDevice');
-    this.runLevel = registerOutput<String?>('runLevel');
-    this.virtMode = registerOutput<String?>('virtMode');
+         'linode:index/instanceConfig:InstanceConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    booted = registerOutput<bool>('booted');
+    comments = registerOutput<String?>('comments');
+    device = registerOutput<List<Map<String, dynamic>>>('device');
+    devices = registerOutput<InstanceConfigDevices>('devices');
+    helpers = registerOutput<List<Map<String, dynamic>>>('helpers');
+    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    kernel = registerOutput<String?>('kernel');
+    label = registerOutput<String>('label');
+    linodeId = registerOutput<int>('linodeId');
+    memoryLimit = registerOutput<int>('memoryLimit');
+    rootDevice = registerOutput<String?>('rootDevice');
+    runLevel = registerOutput<String?>('runLevel');
+    virtMode = registerOutput<String?>('virtMode');
   }
 }

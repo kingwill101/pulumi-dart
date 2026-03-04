@@ -6,16 +6,17 @@ enum AssessmentStateContaineranalysisV1beta1 {
   fixed("FIXED"),
   underInvestigation("UNDER_INVESTIGATION");
 
-  const AssessmentStateContaineranalysisV1beta1(this.value);
-  final String value;
+  const AssessmentStateContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static AssessmentStateContaineranalysisV1beta1 fromValue(String value) {
     for (final item in AssessmentStateContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AssessmentStateContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown AssessmentStateContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

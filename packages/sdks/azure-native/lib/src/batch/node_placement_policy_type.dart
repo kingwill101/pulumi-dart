@@ -3,16 +3,15 @@ enum NodePlacementPolicyType {
   regional("Regional"),
   zonal("Zonal");
 
-  const NodePlacementPolicyType(this.value);
-  final String value;
+  const NodePlacementPolicyType(this.wireValue);
+  final String wireValue;
 
   static NodePlacementPolicyType fromValue(String value) {
     for (final item in NodePlacementPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodePlacementPolicyType value: $value');
   }
 }
-

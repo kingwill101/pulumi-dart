@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HealthCheckResponse {
   /// Interval between health checks.
   final pulumi.Input<String> checkInterval;
+
   /// Whether to explicitly disable health checks for this instance.
   final pulumi.Input<bool> disableHealthCheck;
+
   /// Number of consecutive successful health checks required before receiving traffic.
   final pulumi.Input<int> healthyThreshold;
+
   /// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
   final pulumi.Input<String> host;
+
   /// Number of consecutive failed health checks required before an instance is restarted.
   final pulumi.Input<int> restartThreshold;
+
   /// Time before the health check is considered failed.
   final pulumi.Input<String> timeout;
+
   /// Number of consecutive failed health checks required before removing traffic.
   final pulumi.Input<int> unhealthyThreshold;
 
@@ -51,14 +57,17 @@ class HealthCheckResponse {
 
   factory HealthCheckResponse.fromMap(Map<String, dynamic> map) {
     return HealthCheckResponse(
-      checkInterval: (map['checkInterval'] as String).input(),
-      disableHealthCheck: (map['disableHealthCheck'] as bool).input(),
-      healthyThreshold: (map['healthyThreshold'] as int).input(),
-      host: (map['host'] as String).input(),
-      restartThreshold: (map['restartThreshold'] as int).input(),
-      timeout: (map['timeout'] as String).input(),
-      unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),
+      checkInterval: pulumi.Input.fromValue(map['checkInterval'] as String),
+      disableHealthCheck: pulumi.Input.fromValue(
+        map['disableHealthCheck'] as bool,
+      ),
+      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      restartThreshold: pulumi.Input.fromValue(map['restartThreshold'] as int),
+      timeout: pulumi.Input.fromValue(map['timeout'] as String),
+      unhealthyThreshold: pulumi.Input.fromValue(
+        map['unhealthyThreshold'] as int,
+      ),
     );
   }
 }
-

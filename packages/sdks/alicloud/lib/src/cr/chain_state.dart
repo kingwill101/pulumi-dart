@@ -7,16 +7,22 @@ import 'chain_chain_config.dart';
 class ChainState {
   /// The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
   final pulumi.Input<List<ChainChainConfig>>? chainConfigs;
+
   /// Delivery chain ID.
   final pulumi.Input<String>? chainId;
+
   /// The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
   final pulumi.Input<String>? chainName;
+
   /// The description delivery chain.
   final pulumi.Input<String>? description;
+
   /// The ID of CR Enterprise Edition instance.
   final pulumi.Input<String>? instanceId;
+
   /// The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
   final pulumi.Input<String>? repoName;
+
   /// The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
   final pulumi.Input<String>? repoNamespaceName;
 
@@ -40,7 +46,18 @@ class ChainState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chainConfigs': ?pulumi.Input.mapOptionalInputValue<List<ChainChainConfig>, List<Map<String, dynamic>>>(chainConfigs, (value) => pulumi.Input.encodeList<ChainChainConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'chainConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ChainChainConfig>,
+            List<Map<String, dynamic>>
+          >(
+            chainConfigs,
+            (value) =>
+                pulumi.Input.encodeList<ChainChainConfig, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'chainId': ?chainId,
       'chainName': ?chainName,
       'description': ?description,
@@ -52,14 +69,48 @@ class ChainState {
 
   factory ChainState.fromMap(Map<String, dynamic> map) {
     return ChainState(
-      chainConfigs: map['chainConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfig>(map['chainConfigs']!, (value) => ChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      chainId: map['chainId'] == null ? null : (map['chainId']! as String).input(),
-      chainName: map['chainName'] == null ? null : (map['chainName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName']! as String).input(),
+      chainConfigs: (() {
+        final guardedValue = map['chainConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ChainChainConfig>(
+            guardedValue,
+            (value) => ChainChainConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      chainId: (() {
+        final guardedValue = map['chainId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      chainName: (() {
+        final guardedValue = map['chainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoName: (() {
+        final guardedValue = map['repoName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoNamespaceName: (() {
+        final guardedValue = map['repoNamespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

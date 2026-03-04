@@ -15,16 +15,15 @@ enum AggregationCrossSeriesReducer {
   reducePercentile50("REDUCE_PERCENTILE_50"),
   reducePercentile05("REDUCE_PERCENTILE_05");
 
-  const AggregationCrossSeriesReducer(this.value);
-  final String value;
+  const AggregationCrossSeriesReducer(this.wireValue);
+  final String wireValue;
 
   static AggregationCrossSeriesReducer fromValue(String value) {
     for (final item in AggregationCrossSeriesReducer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AggregationCrossSeriesReducer value: $value');
   }
 }
-

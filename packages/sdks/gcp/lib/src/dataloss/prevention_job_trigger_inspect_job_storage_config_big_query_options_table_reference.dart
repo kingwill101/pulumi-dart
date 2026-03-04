@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
   /// The dataset ID of the table.
   final pulumi.Input<String> datasetId;
+
   /// The Google Cloud Platform project ID of the project containing the table.
   final pulumi.Input<String> projectId;
+
   /// The name of the table.
   final pulumi.Input<String> tableId;
 
@@ -28,12 +30,13 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
     };
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(
-      datasetId: (map['datasetId'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
-      tableId: (map['tableId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
-

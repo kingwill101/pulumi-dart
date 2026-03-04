@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallDevice {
   /// The ID of the underlying entity this device references (i.e. the Linode's ID).
   final pulumi.Input<int> entityId;
+
   /// The Firewall's ID.
   final pulumi.Input<int> id;
+
   /// The label of the underlying entity this device references.
   final pulumi.Input<String> label;
+
   /// The type of Firewall Device.
   final pulumi.Input<String> type;
+
   /// The URL of the underlying entity this device references.
   final pulumi.Input<String> url;
 
@@ -40,12 +44,11 @@ class GetFirewallDevice {
 
   factory GetFirewallDevice.fromMap(Map<String, dynamic> map) {
     return GetFirewallDevice(
-      entityId: (map['entityId'] as int).input(),
-      id: (map['id'] as int).input(),
-      label: (map['label'] as String).input(),
-      type: (map['type'] as String).input(),
-      url: (map['url'] as String).input(),
+      entityId: pulumi.Input.fromValue(map['entityId'] as int),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

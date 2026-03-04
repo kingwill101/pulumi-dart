@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEdgeKubernetesClustersClusterWorkerNode {
   /// ID of the node.
   final pulumi.Input<String> id;
+
   /// Node name.
   final pulumi.Input<String> name;
+
   /// The private IP address of node.
   final pulumi.Input<String> privateIp;
 
@@ -21,19 +23,16 @@ class GetEdgeKubernetesClustersClusterWorkerNode {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'privateIp': privateIp,
-    };
+    return <String, dynamic>{'id': id, 'name': name, 'privateIp': privateIp};
   }
 
-  factory GetEdgeKubernetesClustersClusterWorkerNode.fromMap(Map<String, dynamic> map) {
+  factory GetEdgeKubernetesClustersClusterWorkerNode.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEdgeKubernetesClustersClusterWorkerNode(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      privateIp: (map['privateIp'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateIp: pulumi.Input.fromValue(map['privateIp'] as String),
     );
   }
 }
-

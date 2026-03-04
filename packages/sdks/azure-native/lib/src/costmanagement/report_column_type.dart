@@ -3,16 +3,15 @@ enum ReportColumnType {
   valueTag("Tag"),
   valueDimension("Dimension");
 
-  const ReportColumnType(this.value);
-  final String value;
+  const ReportColumnType(this.wireValue);
+  final String wireValue;
 
   static ReportColumnType fromValue(String value) {
     for (final item in ReportColumnType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReportColumnType value: $value');
   }
 }
-

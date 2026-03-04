@@ -4,16 +4,15 @@ enum RecorderStatus {
   pending("Pending"),
   success("Success");
 
-  const RecorderStatus(this.value);
-  final String value;
+  const RecorderStatus(this.wireValue);
+  final String wireValue;
 
   static RecorderStatus fromValue(String value) {
     for (final item in RecorderStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecorderStatus value: $value');
   }
 }
-

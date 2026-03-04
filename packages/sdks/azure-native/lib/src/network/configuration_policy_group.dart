@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_policy_group_args.dart';
-import 'sub_resource_response.dart';
-import 'vpn_server_configuration_policy_group_member_response.dart';
 
 /// VpnServerConfigurationPolicyGroup Resource.
 ///
@@ -218,20 +216,29 @@ import 'vpn_server_configuration_policy_group_member_response.dart';
 class ConfigurationPolicyGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Shows if this is a Default VpnServerConfigurationPolicyGroup or not.
   late final pulumi.Output<bool?> isDefault;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// List of references to P2SConnectionConfigurations.
-  late final pulumi.Output<List<SubResourceResponse>> p2SConnectionConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  p2SConnectionConfigurations;
+
   /// Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
-  late final pulumi.Output<List<VpnServerConfigurationPolicyGroupMemberResponse>?> policyMembers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> policyMembers;
+
   /// Priority for VpnServerConfigurationPolicyGroup.
   late final pulumi.Output<int?> priority;
+
   /// The provisioning state of the VpnServerConfigurationPolicyGroup resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -244,19 +251,23 @@ class ConfigurationPolicyGroup extends pulumi.CustomResource {
     ConfigurationPolicyGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ConfigurationPolicyGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'azure-native:network:ConfigurationPolicyGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String?>('name');
-    this.p2SConnectionConfigurations = registerOutput<List<SubResourceResponse>>('p2SConnectionConfigurations');
-    this.policyMembers = registerOutput<List<VpnServerConfigurationPolicyGroupMemberResponse>?>('policyMembers');
-    this.priority = registerOutput<int?>('priority');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    p2SConnectionConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'p2SConnectionConfigurations',
+    );
+    policyMembers = registerOutput<List<Map<String, dynamic>>?>(
+      'policyMembers',
+    );
+    priority = registerOutput<int?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

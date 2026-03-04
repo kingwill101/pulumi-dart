@@ -4,16 +4,15 @@ enum FolderContactValidationState {
   valid("VALID"),
   invalid("INVALID");
 
-  const FolderContactValidationState(this.value);
-  final String value;
+  const FolderContactValidationState(this.wireValue);
+  final String wireValue;
 
   static FolderContactValidationState fromValue(String value) {
     for (final item in FolderContactValidationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FolderContactValidationState value: $value');
   }
 }
-

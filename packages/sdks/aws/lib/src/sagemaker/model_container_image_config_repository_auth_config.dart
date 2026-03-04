@@ -18,10 +18,13 @@ class ModelContainerImageConfigRepositoryAuthConfig {
     };
   }
 
-  factory ModelContainerImageConfigRepositoryAuthConfig.fromMap(Map<String, dynamic> map) {
+  factory ModelContainerImageConfigRepositoryAuthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ModelContainerImageConfigRepositoryAuthConfig(
-      repositoryCredentialsProviderArn: (map['repositoryCredentialsProviderArn'] as String).input(),
+      repositoryCredentialsProviderArn: pulumi.Input.fromValue(
+        map['repositoryCredentialsProviderArn'] as String,
+      ),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum ForwardingRuleNetworkTierComputeBeta {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const ForwardingRuleNetworkTierComputeBeta(this.value);
-  final String value;
+  const ForwardingRuleNetworkTierComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ForwardingRuleNetworkTierComputeBeta fromValue(String value) {
     for (final item in ForwardingRuleNetworkTierComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ForwardingRuleNetworkTierComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ForwardingRuleNetworkTierComputeBeta value: $value',
+    );
   }
 }
-

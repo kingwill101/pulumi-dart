@@ -8,16 +8,15 @@ enum ServerVersion {
   value60("6.0"),
   value70("7.0");
 
-  const ServerVersion(this.value);
-  final String value;
+  const ServerVersion(this.wireValue);
+  final String wireValue;
 
   static ServerVersion fromValue(String value) {
     for (final item in ServerVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerVersion value: $value');
   }
 }
-

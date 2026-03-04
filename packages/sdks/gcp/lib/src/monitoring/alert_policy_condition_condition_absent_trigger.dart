@@ -7,6 +7,7 @@ class AlertPolicyConditionConditionAbsentTrigger {
   /// that must fail the predicate for the
   /// condition to be triggered.
   final pulumi.Input<int>? count;
+
   /// The percentage of time series that
   /// must fail the predicate for the
   /// condition to be triggered.
@@ -15,23 +16,26 @@ class AlertPolicyConditionConditionAbsentTrigger {
   /// Creates a new [AlertPolicyConditionConditionAbsentTrigger].
   /// [count] The absolute number of time series
   /// [percent] The percentage of time series that
-  AlertPolicyConditionConditionAbsentTrigger({
-    this.count,
-    this.percent,
-  });
+  AlertPolicyConditionConditionAbsentTrigger({this.count, this.percent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': ?count,
-      'percent': ?percent,
-    };
+    return <String, dynamic>{'count': ?count, 'percent': ?percent};
   }
 
-  factory AlertPolicyConditionConditionAbsentTrigger.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionAbsentTrigger.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionAbsentTrigger(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      percent: map['percent'] == null ? null : (map['percent']! as double).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      percent: (() {
+        final guardedValue = map['percent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

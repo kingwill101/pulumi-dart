@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'windows_virtual_machine_args.dart';
 import 'windows_virtual_machine_gallery_image_reference.dart';
-import 'windows_virtual_machine_inbound_nat_rule.dart';
 import 'windows_virtual_machine_state.dart';
 
 /// Manages a Windows Virtual Machine within a Dev Test Lab.
@@ -350,7 +349,7 @@ import 'windows_virtual_machine_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevTestLab` - 2018-09-15
@@ -365,42 +364,60 @@ import 'windows_virtual_machine_state.dart';
 class WindowsVirtualMachine extends pulumi.CustomResource {
   /// Can this Virtual Machine be claimed by users? Defaults to `true`.
   late final pulumi.Output<bool?> allowClaim;
+
   /// Should the Virtual Machine be created without a Public IP Address? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> disallowPublicIpAddress;
+
   /// The FQDN of the Virtual Machine.
   late final pulumi.Output<String> fqdn;
+
   /// A `gallery_image_reference` block as defined below.
-  late final pulumi.Output<WindowsVirtualMachineGalleryImageReference> galleryImageReference;
+  late final pulumi.Output<WindowsVirtualMachineGalleryImageReference>
+  galleryImageReference;
+
   /// One or more `inbound_nat_rule` blocks as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** If any `inbound_nat_rule` blocks are specified then `disallow_public_ip_address` must be set to `true`.
-  late final pulumi.Output<List<WindowsVirtualMachineInboundNatRule>?> inboundNatRules;
+  /// &gt; **Note:** If any `inbound_nat_rule` blocks are specified then `disallow_public_ip_address` must be set to `true`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> inboundNatRules;
+
   /// Specifies the name of the Dev Test Lab in which the Virtual Machine should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labName;
+
   /// The name of a Subnet within the Dev Test Virtual Network where this machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labSubnetName;
+
   /// The ID of the Dev Test Virtual Network where this Virtual Machine should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> labVirtualNetworkId;
+
   /// Specifies the supported Azure location where the Dev Test Lab exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Dev Test Machine. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The validation requirements for the Name change based on the `os_type` used in this Virtual Machine. For a Linux VM the name must be between 1-62 characters, and for a Windows VM the name must be between 1-15 characters. It must begin and end with a letter or number, and cannot be all numbers.
+  /// &gt; **Note:** The validation requirements for the Name change based on the `os_type` used in this Virtual Machine. For a Linux VM the name must be between 1-62 characters, and for a Windows VM the name must be between 1-15 characters. It must begin and end with a letter or number, and cannot be all numbers.
   late final pulumi.Output<String> name;
+
   /// Any notes about the Virtual Machine.
   late final pulumi.Output<String?> notes;
+
   /// The Password associated with the `username` used to login to this Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> password;
+
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Machine Size to use for this Virtual Machine, such as `Standard_F2`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> size;
+
   /// The type of Storage to use on this Virtual Machine. Possible values are `Standard` and `Premium`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageType;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The unique immutable identifier of the Virtual Machine.
   late final pulumi.Output<String> uniqueIdentifier;
+
   /// The Username associated with the local administrator on this Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> username;
 
@@ -413,29 +430,34 @@ class WindowsVirtualMachine extends pulumi.CustomResource {
     WindowsVirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devtest/windowsVirtualMachine:WindowsVirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowClaim = registerOutput<bool?>('allowClaim');
-    this.disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.galleryImageReference = registerOutput<WindowsVirtualMachineGalleryImageReference>('galleryImageReference');
-    this.inboundNatRules = registerOutput<List<WindowsVirtualMachineInboundNatRule>?>('inboundNatRules');
-    this.labName = registerOutput<String>('labName');
-    this.labSubnetName = registerOutput<String>('labSubnetName');
-    this.labVirtualNetworkId = registerOutput<String>('labVirtualNetworkId');
-    this.location = registerOutput<String>('location');
+         'azure:devtest/windowsVirtualMachine:WindowsVirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowClaim = registerOutput<bool?>('allowClaim');
+    disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
+    fqdn = registerOutput<String>('fqdn');
+    galleryImageReference =
+        registerOutput<WindowsVirtualMachineGalleryImageReference>(
+          'galleryImageReference',
+        );
+    inboundNatRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundNatRules',
+    );
+    labName = registerOutput<String>('labName');
+    labSubnetName = registerOutput<String>('labSubnetName');
+    labVirtualNetworkId = registerOutput<String>('labVirtualNetworkId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.password = registerOutput<String>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.size = registerOutput<String>('size');
-    this.storageType = registerOutput<String>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    this.username = registerOutput<String>('username');
+    notes = registerOutput<String?>('notes');
+    password = registerOutput<String>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    size = registerOutput<String>('size');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [WindowsVirtualMachine] resource's state with the given [name] and [id].
@@ -456,28 +478,33 @@ class WindowsVirtualMachine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devtest/windowsVirtualMachine:WindowsVirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowClaim = registerOutput<bool?>('allowClaim');
-    this.disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.galleryImageReference = registerOutput<WindowsVirtualMachineGalleryImageReference>('galleryImageReference');
-    this.inboundNatRules = registerOutput<List<WindowsVirtualMachineInboundNatRule>?>('inboundNatRules');
-    this.labName = registerOutput<String>('labName');
-    this.labSubnetName = registerOutput<String>('labSubnetName');
-    this.labVirtualNetworkId = registerOutput<String>('labVirtualNetworkId');
-    this.location = registerOutput<String>('location');
+         'azure:devtest/windowsVirtualMachine:WindowsVirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowClaim = registerOutput<bool?>('allowClaim');
+    disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
+    fqdn = registerOutput<String>('fqdn');
+    galleryImageReference =
+        registerOutput<WindowsVirtualMachineGalleryImageReference>(
+          'galleryImageReference',
+        );
+    inboundNatRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundNatRules',
+    );
+    labName = registerOutput<String>('labName');
+    labSubnetName = registerOutput<String>('labSubnetName');
+    labVirtualNetworkId = registerOutput<String>('labVirtualNetworkId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.password = registerOutput<String>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.size = registerOutput<String>('size');
-    this.storageType = registerOutput<String>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
-    this.username = registerOutput<String>('username');
+    notes = registerOutput<String?>('notes');
+    password = registerOutput<String>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    size = registerOutput<String>('size');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    username = registerOutput<String>('username');
   }
 }

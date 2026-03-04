@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityRecognizerVpcConfig {
   /// List of security group IDs.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// List of VPC subnets.
   final pulumi.Input<List<String>> subnets;
 
@@ -25,9 +26,10 @@ class EntityRecognizerVpcConfig {
 
   factory EntityRecognizerVpcConfig.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerVpcConfig(
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

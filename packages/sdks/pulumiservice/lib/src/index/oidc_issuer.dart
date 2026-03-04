@@ -1,19 +1,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'auth_policy_definition.dart';
 import 'oidc_issuer_args.dart';
 
 /// Register an OIDC Provider to establish a trust relationship between third-party systems like GitHub Actions and Pulumi Cloud, obviating the need to store a hard-coded Pulumi Cloud token in systems that need to run Pulumi commands or consume Pulumi Cloud APIs. Instead of a hard-coded, static token that must be manually rotated, trusted systems are granted temporary Pulumi Cloud tokens on an as-needed basis, which is more secure than static tokens.
 class OidcIssuer extends pulumi.CustomResource {
   /// The maximum duration of the Pulumi access token working after an exchange, specified in seconds.
   late final pulumi.Output<int?> maxExpirationSeconds;
+
   /// Issuer name.
   late final pulumi.Output<String> name;
+
   /// Organization name.
   late final pulumi.Output<String> organization;
+
   /// The authorization policies for this Oidc Issuer.
-  late final pulumi.Output<List<AuthPolicyDefinition>> policies;
+  late final pulumi.Output<List<Map<String, dynamic>>> policies;
+
   /// The thumbprints of issuer's TLS certificates. By default, Pulumi will store the thumbprint of the certificate used to serve the OpenID configuration. If the provider uses multiple certificates to serve content, it is required to manually configure these.
   late final pulumi.Output<List<String>> thumbprints;
+
   /// The OIDC issuer URL.
   late final pulumi.Output<String> url;
 
@@ -26,16 +30,16 @@ class OidcIssuer extends pulumi.CustomResource {
     OidcIssuerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:OidcIssuer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.maxExpirationSeconds = registerOutput<int?>('maxExpirationSeconds');
+         'pulumiservice:index:OidcIssuer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    maxExpirationSeconds = registerOutput<int?>('maxExpirationSeconds');
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.policies = registerOutput<List<AuthPolicyDefinition>>('policies');
-    this.thumbprints = registerOutput<List<String>>('thumbprints');
-    this.url = registerOutput<String>('url');
+    organization = registerOutput<String>('organization');
+    policies = registerOutput<List<Map<String, dynamic>>>('policies');
+    thumbprints = registerOutput<List<String>>('thumbprints');
+    url = registerOutput<String>('url');
   }
 }

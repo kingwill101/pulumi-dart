@@ -3,16 +3,19 @@ enum InstanceGroupManagerListManagedInstancesResults {
   pageless("PAGELESS"),
   paginated("PAGINATED");
 
-  const InstanceGroupManagerListManagedInstancesResults(this.value);
-  final String value;
+  const InstanceGroupManagerListManagedInstancesResults(this.wireValue);
+  final String wireValue;
 
-  static InstanceGroupManagerListManagedInstancesResults fromValue(String value) {
+  static InstanceGroupManagerListManagedInstancesResults fromValue(
+    String value,
+  ) {
     for (final item in InstanceGroupManagerListManagedInstancesResults.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerListManagedInstancesResults value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerListManagedInstancesResults value: $value',
+    );
   }
 }
-

@@ -9,7 +9,6 @@ import 'os_profile_response.dart';
 import 'storage_profile_response.dart';
 import 'system_data_response.dart';
 import 'virtual_machine_args.dart';
-import 'virtual_machine_properties_response_availability_sets.dart';
 
 /// The VirtualMachines resource definition.
 ///
@@ -211,55 +210,80 @@ import 'virtual_machine_properties_response_availability_sets.dart';
 /// ```
 class VirtualMachine extends pulumi.CustomResource {
   /// Availability Sets in vm.
-  late final pulumi.Output<List<VirtualMachinePropertiesResponseAvailabilitySets>?> availabilitySets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> availabilitySets;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Type of checkpoint supported for the vm.
   late final pulumi.Output<String?> checkpointType;
+
   /// Checkpoints in the vm.
-  late final pulumi.Output<List<CheckpointResponse>?> checkpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> checkpoints;
+
   /// ARM Id of the cloud resource to use for deploying the vm.
   late final pulumi.Output<String?> cloudId;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Gets or sets the generation for the vm.
   late final pulumi.Output<int?> generation;
+
   /// Guest agent status properties.
   late final pulumi.Output<GuestAgentProfileResponse?> guestAgentProfile;
+
   /// Hardware properties.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Gets or sets the inventory Item ID for the resource.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Last restored checkpoint in the vm.
   late final pulumi.Output<CheckpointResponse> lastRestoredVMCheckpoint;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// Network properties.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
+
   /// OS properties.
   late final pulumi.Output<OsProfileResponse?> osProfile;
+
   /// Gets the power state of the virtual machine.
   late final pulumi.Output<String> powerState;
+
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Storage properties.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// ARM Id of the template resource to use for deploying the vm.
   late final pulumi.Output<String?> templateId;
+
   /// Resource Type
   late final pulumi.Output<String> type;
+
   /// Unique ID of the virtual machine.
   late final pulumi.Output<String?> uuid;
+
   /// VMName is the name of VM on the SCVMM server.
   late final pulumi.Output<String?> vmName;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   late final pulumi.Output<String?> vmmServerId;
 
@@ -272,36 +296,46 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:scvmm:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilitySets = registerOutput<List<VirtualMachinePropertiesResponseAvailabilitySets>?>('availabilitySets');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.checkpointType = registerOutput<String?>('checkpointType');
-    this.checkpoints = registerOutput<List<CheckpointResponse>?>('checkpoints');
-    this.cloudId = registerOutput<String?>('cloudId');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.generation = registerOutput<int?>('generation');
-    this.guestAgentProfile = registerOutput<GuestAgentProfileResponse?>('guestAgentProfile');
-    this.hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.lastRestoredVMCheckpoint = registerOutput<CheckpointResponse>('lastRestoredVMCheckpoint');
-    this.location = registerOutput<String>('location');
+         'azure-native:scvmm:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilitySets = registerOutput<List<Map<String, dynamic>>?>(
+      'availabilitySets',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    checkpointType = registerOutput<String?>('checkpointType');
+    checkpoints = registerOutput<List<Map<String, dynamic>>?>('checkpoints');
+    cloudId = registerOutput<String?>('cloudId');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    generation = registerOutput<int?>('generation');
+    guestAgentProfile = registerOutput<GuestAgentProfileResponse?>(
+      'guestAgentProfile',
+    );
+    hardwareProfile = registerOutput<HardwareProfileResponse?>(
+      'hardwareProfile',
+    );
+    identity = registerOutput<IdentityResponse?>('identity');
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    lastRestoredVMCheckpoint = registerOutput<CheckpointResponse>(
+      'lastRestoredVMCheckpoint',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    this.osProfile = registerOutput<OsProfileResponse?>('osProfile');
-    this.powerState = registerOutput<String>('powerState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateId = registerOutput<String?>('templateId');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String?>('uuid');
-    this.vmName = registerOutput<String?>('vmName');
-    this.vmmServerId = registerOutput<String?>('vmmServerId');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    osProfile = registerOutput<OsProfileResponse?>('osProfile');
+    powerState = registerOutput<String>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateId = registerOutput<String?>('templateId');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String?>('uuid');
+    vmName = registerOutput<String?>('vmName');
+    vmmServerId = registerOutput<String?>('vmmServerId');
   }
 }

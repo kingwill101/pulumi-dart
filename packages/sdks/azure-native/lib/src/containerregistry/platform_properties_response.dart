@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlatformPropertiesResponse {
   /// The OS architecture.
   final pulumi.Input<String>? architecture;
+
   /// The operating system type required for the run.
   final pulumi.Input<String> os;
+
   /// Variant of the CPU.
   final pulumi.Input<String>? variant;
 
@@ -31,10 +33,17 @@ class PlatformPropertiesResponse {
 
   factory PlatformPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PlatformPropertiesResponse(
-      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
-      os: (map['os'] as String).input(),
-      variant: map['variant'] == null ? null : (map['variant']! as String).input(),
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      os: pulumi.Input.fromValue(map['os'] as String),
+      variant: (() {
+        final guardedValue = map['variant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

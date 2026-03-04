@@ -9,20 +9,15 @@ class SecurityUserGroupItemResponse {
 
   /// Creates a new [SecurityUserGroupItemResponse].
   /// [networkGroupId] Network manager group Id.
-  SecurityUserGroupItemResponse({
-    required this.networkGroupId,
-  });
+  SecurityUserGroupItemResponse({required this.networkGroupId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'networkGroupId': networkGroupId,
-    };
+    return <String, dynamic>{'networkGroupId': networkGroupId};
   }
 
   factory SecurityUserGroupItemResponse.fromMap(Map<String, dynamic> map) {
     return SecurityUserGroupItemResponse(
-      networkGroupId: (map['networkGroupId'] as String).input(),
+      networkGroupId: pulumi.Input.fromValue(map['networkGroupId'] as String),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_delegated_prefix_args.dart';
-import 'public_delegated_prefix_public_delegated_sub_prefix.dart';
 import 'public_delegated_prefix_state.dart';
 
 /// Represents a PublicDelegatedPrefix for use with bring your own IP addresses (BYOIP).
@@ -883,14 +882,18 @@ import 'public_delegated_prefix_state.dart';
 class PublicDelegatedPrefix extends pulumi.CustomResource {
   /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
   late final pulumi.Output<int> allocatablePrefixLength;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// (Output)
   /// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
   /// Applicable for IPv4 sub-PDPs only.
   late final pulumi.Output<bool> enableEnhancedIpv4Allocation;
+
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
   late final pulumi.Output<String> ipCidrRange;
+
   /// (Output)
   /// The internet access type for IPv6 Public Delegated Prefixes. Inherited
   /// from parent prefix and can be one of following:
@@ -900,8 +903,10 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
   /// be used privately within Google Cloud. All children PDPs will have
   /// access type as INTERNAL.
   late final pulumi.Output<String> ipv6AccessType;
+
   /// If true, the prefix will be live migrated.
   late final pulumi.Output<bool?> isLiveMigration;
+
   /// Specifies the mode of this IPv6 PDP. MODE must be one of:
   /// * DELEGATION
   /// * EXTERNAL_IPV6_FORWARDING_RULE_CREATION
@@ -909,6 +914,7 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
   /// * INTERNAL_IPV6_SUBNETWORK_CREATION
   /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
   late final pulumi.Output<String?> mode;
+
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?`
@@ -916,18 +922,24 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
   late final pulumi.Output<String> parentPrefix;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// List of sub public delegated fixes for BYO IP functionality.
   /// Each item in this array represents a sub prefix that can be
   /// used to create addresses or further allocations.
   /// Structure is documented below.
-  late final pulumi.Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>> publicDelegatedSubPrefixs;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  publicDelegatedSubPrefixs;
+
   /// A region where the prefix will reside.
   late final pulumi.Output<String> region;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -940,24 +952,28 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
     PublicDelegatedPrefixArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
-    this.description = registerOutput<String?>('description');
-    this.enableEnhancedIpv4Allocation = registerOutput<bool>('enableEnhancedIpv4Allocation');
-    this.ipCidrRange = registerOutput<String>('ipCidrRange');
-    this.ipv6AccessType = registerOutput<String>('ipv6AccessType');
-    this.isLiveMigration = registerOutput<bool?>('isLiveMigration');
-    this.mode = registerOutput<String?>('mode');
+         'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
+    description = registerOutput<String?>('description');
+    enableEnhancedIpv4Allocation = registerOutput<bool>(
+      'enableEnhancedIpv4Allocation',
+    );
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    isLiveMigration = registerOutput<bool?>('isLiveMigration');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.parentPrefix = registerOutput<String>('parentPrefix');
-    this.project = registerOutput<String>('project');
-    this.publicDelegatedSubPrefixs = registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>('publicDelegatedSubPrefixs');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
+    parentPrefix = registerOutput<String>('parentPrefix');
+    project = registerOutput<String>('project');
+    publicDelegatedSubPrefixs = registerOutput<List<Map<String, dynamic>>>(
+      'publicDelegatedSubPrefixs',
+    );
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
   }
 
   /// Gets an existing [PublicDelegatedPrefix] resource's state with the given [name] and [id].
@@ -978,23 +994,27 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
-    this.description = registerOutput<String?>('description');
-    this.enableEnhancedIpv4Allocation = registerOutput<bool>('enableEnhancedIpv4Allocation');
-    this.ipCidrRange = registerOutput<String>('ipCidrRange');
-    this.ipv6AccessType = registerOutput<String>('ipv6AccessType');
-    this.isLiveMigration = registerOutput<bool?>('isLiveMigration');
-    this.mode = registerOutput<String?>('mode');
+         'gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
+    description = registerOutput<String?>('description');
+    enableEnhancedIpv4Allocation = registerOutput<bool>(
+      'enableEnhancedIpv4Allocation',
+    );
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    isLiveMigration = registerOutput<bool?>('isLiveMigration');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.parentPrefix = registerOutput<String>('parentPrefix');
-    this.project = registerOutput<String>('project');
-    this.publicDelegatedSubPrefixs = registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefix>>('publicDelegatedSubPrefixs');
-    this.region = registerOutput<String>('region');
-    this.selfLink = registerOutput<String>('selfLink');
+    parentPrefix = registerOutput<String>('parentPrefix');
+    project = registerOutput<String>('project');
+    publicDelegatedSubPrefixs = registerOutput<List<Map<String, dynamic>>>(
+      'publicDelegatedSubPrefixs',
+    );
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
   }
 }

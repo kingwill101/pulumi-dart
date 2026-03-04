@@ -5,16 +5,15 @@ enum RecurringScheduleFrequency {
   monthly("MONTHLY"),
   daily("DAILY");
 
-  const RecurringScheduleFrequency(this.value);
-  final String value;
+  const RecurringScheduleFrequency(this.wireValue);
+  final String wireValue;
 
   static RecurringScheduleFrequency fromValue(String value) {
     for (final item in RecurringScheduleFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecurringScheduleFrequency value: $value');
   }
 }
-

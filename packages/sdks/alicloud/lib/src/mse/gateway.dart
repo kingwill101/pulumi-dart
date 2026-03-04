@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_args.dart';
-import 'gateway_slb_list.dart';
 import 'gateway_state.dart';
 
 /// Provides a Microservice Engine (MSE) Gateway resource.
 ///
 /// For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
 ///
-/// > **NOTE:** Available since v1.157.0.
+/// &gt; **NOTE:** Available since v1.157.0.
 ///
 /// ## Example Usage
 ///
@@ -290,26 +289,37 @@ import 'gateway_state.dart';
 class Gateway extends pulumi.CustomResource {
   /// The backup vswitch id.
   late final pulumi.Output<String?> backupVswitchId;
+
   /// Whether to delete the SLB purchased on behalf of the gateway at the same time.
   late final pulumi.Output<bool?> deleteSlb;
+
   /// Whether the enterprise security group type.
   late final pulumi.Output<bool?> enterpriseSecurityGroup;
+
   /// The name of the Gateway .
   late final pulumi.Output<String?> gatewayName;
+
   /// Public network SLB specifications.
   late final pulumi.Output<String?> internetSlbSpec;
+
   /// Number of Gateway Nodes.
   late final pulumi.Output<int> replica;
+
   /// A list of gateway Slb.
-  late final pulumi.Output<List<GatewaySlbList>> slbLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> slbLists;
+
   /// Private network SLB specifications.
   late final pulumi.Output<String?> slbSpec;
+
   /// Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
   late final pulumi.Output<String> spec;
+
   /// The status of the gateway.
   late final pulumi.Output<String> status;
+
   /// The ID of the vpc.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of the vswitch.
   late final pulumi.Output<String> vswitchId;
 
@@ -322,23 +332,23 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mse/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupVswitchId = registerOutput<String?>('backupVswitchId');
-    this.deleteSlb = registerOutput<bool?>('deleteSlb');
-    this.enterpriseSecurityGroup = registerOutput<bool?>('enterpriseSecurityGroup');
-    this.gatewayName = registerOutput<String?>('gatewayName');
-    this.internetSlbSpec = registerOutput<String?>('internetSlbSpec');
-    this.replica = registerOutput<int>('replica');
-    this.slbLists = registerOutput<List<GatewaySlbList>>('slbLists');
-    this.slbSpec = registerOutput<String?>('slbSpec');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:mse/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupVswitchId = registerOutput<String?>('backupVswitchId');
+    deleteSlb = registerOutput<bool?>('deleteSlb');
+    enterpriseSecurityGroup = registerOutput<bool?>('enterpriseSecurityGroup');
+    gatewayName = registerOutput<String?>('gatewayName');
+    internetSlbSpec = registerOutput<String?>('internetSlbSpec');
+    replica = registerOutput<int>('replica');
+    slbLists = registerOutput<List<Map<String, dynamic>>>('slbLists');
+    slbSpec = registerOutput<String?>('slbSpec');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [Gateway] resource's state with the given [name] and [id].
@@ -359,22 +369,22 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mse/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupVswitchId = registerOutput<String?>('backupVswitchId');
-    this.deleteSlb = registerOutput<bool?>('deleteSlb');
-    this.enterpriseSecurityGroup = registerOutput<bool?>('enterpriseSecurityGroup');
-    this.gatewayName = registerOutput<String?>('gatewayName');
-    this.internetSlbSpec = registerOutput<String?>('internetSlbSpec');
-    this.replica = registerOutput<int>('replica');
-    this.slbLists = registerOutput<List<GatewaySlbList>>('slbLists');
-    this.slbSpec = registerOutput<String?>('slbSpec');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:mse/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupVswitchId = registerOutput<String?>('backupVswitchId');
+    deleteSlb = registerOutput<bool?>('deleteSlb');
+    enterpriseSecurityGroup = registerOutput<bool?>('enterpriseSecurityGroup');
+    gatewayName = registerOutput<String?>('gatewayName');
+    internetSlbSpec = registerOutput<String?>('internetSlbSpec');
+    replica = registerOutput<int>('replica');
+    slbLists = registerOutput<List<Map<String, dynamic>>>('slbLists');
+    slbSpec = registerOutput<String?>('slbSpec');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

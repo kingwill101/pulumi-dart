@@ -166,12 +166,16 @@ import 'replication_policy_args.dart';
 class ReplicationPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource Location
   late final pulumi.Output<String?> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// The custom data.
   late final pulumi.Output<PolicyPropertiesResponse> properties;
+
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -184,15 +188,15 @@ class ReplicationPolicy extends pulumi.CustomResource {
     ReplicationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:recoveryservices:ReplicationPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:recoveryservices:ReplicationPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PolicyPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PolicyPropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

@@ -4,16 +4,15 @@ enum TaskResponseView {
   basic("BASIC"),
   full("FULL");
 
-  const TaskResponseView(this.value);
-  final String value;
+  const TaskResponseView(this.wireValue);
+  final String wireValue;
 
   static TaskResponseView fromValue(String value) {
     for (final item in TaskResponseView.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TaskResponseView value: $value');
   }
 }
-

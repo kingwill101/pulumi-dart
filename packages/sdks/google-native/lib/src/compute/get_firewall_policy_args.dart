@@ -11,20 +11,15 @@ class GetFirewallPolicyArgs {
 
   /// Creates a new [GetFirewallPolicyArgs].
   /// [firewallPolicy] Required.
-  GetFirewallPolicyArgs({
-    required this.firewallPolicy,
-  });
+  GetFirewallPolicyArgs({required this.firewallPolicy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'firewallPolicy': firewallPolicy,
-    };
+    return <String, dynamic>{'firewallPolicy': firewallPolicy};
   }
 
   factory GetFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyArgs(
-      firewallPolicy: (map['firewallPolicy'] as String).input(),
+      firewallPolicy: pulumi.Input.fromValue(map['firewallPolicy'] as String),
     );
   }
 }
-

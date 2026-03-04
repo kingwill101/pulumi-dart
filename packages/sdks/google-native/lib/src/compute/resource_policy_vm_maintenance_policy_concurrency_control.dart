@@ -8,20 +8,21 @@ class ResourcePolicyVmMaintenancePolicyConcurrencyControl {
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicyConcurrencyControl].
   /// [concurrencyLimit] Optional.
-  ResourcePolicyVmMaintenancePolicyConcurrencyControl({
-    this.concurrencyLimit,
-  });
+  ResourcePolicyVmMaintenancePolicyConcurrencyControl({this.concurrencyLimit});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'concurrencyLimit': ?concurrencyLimit,
-    };
+    return <String, dynamic>{'concurrencyLimit': ?concurrencyLimit};
   }
 
-  factory ResourcePolicyVmMaintenancePolicyConcurrencyControl.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyVmMaintenancePolicyConcurrencyControl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyVmMaintenancePolicyConcurrencyControl(
-      concurrencyLimit: map['concurrencyLimit'] == null ? null : (map['concurrencyLimit']! as int).input(),
+      concurrencyLimit: (() {
+        final guardedValue = map['concurrencyLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomActionTypeOutputArtifactDetails {
   /// The maximum number of artifacts allowed for the action type. Min: 0, Max: 5
   final pulumi.Input<int> maximumCount;
+
   /// The minimum number of artifacts allowed for the action type. Min: 0, Max: 5
   final pulumi.Input<int> minimumCount;
 
@@ -23,11 +24,12 @@ class CustomActionTypeOutputArtifactDetails {
     };
   }
 
-  factory CustomActionTypeOutputArtifactDetails.fromMap(Map<String, dynamic> map) {
+  factory CustomActionTypeOutputArtifactDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomActionTypeOutputArtifactDetails(
-      maximumCount: (map['maximumCount'] as int).input(),
-      minimumCount: (map['minimumCount'] as int).input(),
+      maximumCount: pulumi.Input.fromValue(map['maximumCount'] as int),
+      minimumCount: pulumi.Input.fromValue(map['minimumCount'] as int),
     );
   }
 }
-

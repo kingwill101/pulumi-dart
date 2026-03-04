@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserSshKeyArgs {
   /// Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
   final pulumi.Input<String> encoding;
+
   /// Unique identifier for the SSH public key.
   final pulumi.Input<String> sshPublicKeyId;
+
   /// Name of the IAM user associated with the SSH public key.
   final pulumi.Input<String> username;
 
@@ -34,10 +36,9 @@ class GetUserSshKeyArgs {
 
   factory GetUserSshKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetUserSshKeyArgs(
-      encoding: (map['encoding'] as String).input(),
-      sshPublicKeyId: (map['sshPublicKeyId'] as String).input(),
-      username: (map['username'] as String).input(),
+      encoding: pulumi.Input.fromValue(map['encoding'] as String),
+      sshPublicKeyId: pulumi.Input.fromValue(map['sshPublicKeyId'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

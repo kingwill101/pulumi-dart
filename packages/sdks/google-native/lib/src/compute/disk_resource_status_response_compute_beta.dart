@@ -4,7 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_resource_status_async_replication_status_response_compute_beta.dart';
 
 class DiskResourceStatusResponseComputeBeta {
-  final pulumi.Input<DiskResourceStatusAsyncReplicationStatusResponseComputeBeta> asyncPrimaryDisk;
+  final pulumi.Input<
+    DiskResourceStatusAsyncReplicationStatusResponseComputeBeta
+  >
+  asyncPrimaryDisk;
+
   /// Key: disk, value: AsyncReplicationStatus message
   final pulumi.Input<Map<String, String>> asyncSecondaryDisks;
 
@@ -18,16 +22,27 @@ class DiskResourceStatusResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'asyncPrimaryDisk': pulumi.Input.mapInputValue<DiskResourceStatusAsyncReplicationStatusResponseComputeBeta, Map<String, dynamic>>(asyncPrimaryDisk, (value) => value.toMap()),
+      'asyncPrimaryDisk':
+          pulumi.Input.mapInputValue<
+            DiskResourceStatusAsyncReplicationStatusResponseComputeBeta,
+            Map<String, dynamic>
+          >(asyncPrimaryDisk, (value) => value.toMap()),
       'asyncSecondaryDisks': asyncSecondaryDisks,
     };
   }
 
-  factory DiskResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory DiskResourceStatusResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiskResourceStatusResponseComputeBeta(
-      asyncPrimaryDisk: (DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap((map['asyncPrimaryDisk'] as Map).cast<String, dynamic>())).input(),
-      asyncSecondaryDisks: ((map['asyncSecondaryDisks'] as Map).cast<String, String>()).input(),
+      asyncPrimaryDisk: pulumi.Input.fromValue(
+        DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap(
+          (map['asyncPrimaryDisk']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      asyncSecondaryDisks: pulumi.Input.fromValue(
+        (map['asyncSecondaryDisks'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

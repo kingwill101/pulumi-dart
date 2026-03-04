@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppRegistry {
   /// Resource ID for the User Assigned Managed identity to use when pulling from the Container Registry.
   final pulumi.Input<String> identity;
+
   /// The name of the Secret Reference containing the password value for the user on the Container Registry.
   final pulumi.Input<String> passwordSecretName;
+
   /// The hostname for the Container Registry.
   final pulumi.Input<String> server;
+
   /// The username used for this Container Registry.
   final pulumi.Input<String> username;
 
@@ -35,11 +38,12 @@ class GetAppRegistry {
 
   factory GetAppRegistry.fromMap(Map<String, dynamic> map) {
     return GetAppRegistry(
-      identity: (map['identity'] as String).input(),
-      passwordSecretName: (map['passwordSecretName'] as String).input(),
-      server: (map['server'] as String).input(),
-      username: (map['username'] as String).input(),
+      identity: pulumi.Input.fromValue(map['identity'] as String),
+      passwordSecretName: pulumi.Input.fromValue(
+        map['passwordSecretName'] as String,
+      ),
+      server: pulumi.Input.fromValue(map['server'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

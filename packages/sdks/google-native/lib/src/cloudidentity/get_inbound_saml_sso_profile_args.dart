@@ -11,9 +11,7 @@ class GetInboundSamlSsoProfileArgs {
 
   /// Creates a new [GetInboundSamlSsoProfileArgs].
   /// [inboundSamlSsoProfileId] Required.
-  GetInboundSamlSsoProfileArgs({
-    required this.inboundSamlSsoProfileId,
-  });
+  GetInboundSamlSsoProfileArgs({required this.inboundSamlSsoProfileId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,8 +21,9 @@ class GetInboundSamlSsoProfileArgs {
 
   factory GetInboundSamlSsoProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlSsoProfileArgs(
-      inboundSamlSsoProfileId: (map['inboundSamlSsoProfileId'] as String).input(),
+      inboundSamlSsoProfileId: pulumi.Input.fromValue(
+        map['inboundSamlSsoProfileId'] as String,
+      ),
     );
   }
 }
-

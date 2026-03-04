@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdminUserResponse {
   /// Optional. Last/family name of the first admin user.
   final pulumi.Input<String> familyName;
+
   /// Optional. First/given name of the first admin user.
   final pulumi.Input<String> givenName;
 
   /// Creates a new [AdminUserResponse].
   /// [familyName] Optional. Last/family name of the first admin user.
   /// [givenName] Optional. First/given name of the first admin user.
-  AdminUserResponse({
-    required this.familyName,
-    required this.givenName,
-  });
+  AdminUserResponse({required this.familyName, required this.givenName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'familyName': familyName,
-      'givenName': givenName,
-    };
+    return <String, dynamic>{'familyName': familyName, 'givenName': givenName};
   }
 
   factory AdminUserResponse.fromMap(Map<String, dynamic> map) {
     return AdminUserResponse(
-      familyName: (map['familyName'] as String).input(),
-      givenName: (map['givenName'] as String).input(),
+      familyName: pulumi.Input.fromValue(map['familyName'] as String),
+      givenName: pulumi.Input.fromValue(map['givenName'] as String),
     );
   }
 }
-

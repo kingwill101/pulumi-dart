@@ -13,7 +13,7 @@ import 'project_state.dart';
 /// * How-to Guides
 /// * Official Documentation
 ///
-/// > **Note:** This resource should usually be used with a provider configuration
+/// &gt; **Note:** This resource should usually be used with a provider configuration
 /// with `user_project_override = true` unless you wish for your quota
 /// project to be different from the Firebase project.
 ///
@@ -185,9 +185,11 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// The GCP project display name
   late final pulumi.Output<String> displayName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The number of the Google Project that Firebase is enabled on.
   late final pulumi.Output<String> projectNumber;
 
@@ -200,14 +202,14 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.project = registerOutput<String>('project');
-    this.projectNumber = registerOutput<String>('projectNumber');
+         'gcp:firebase/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    project = registerOutput<String>('project');
+    projectNumber = registerOutput<String>('projectNumber');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -228,13 +230,13 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.project = registerOutput<String>('project');
-    this.projectNumber = registerOutput<String>('projectNumber');
+         'gcp:firebase/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    project = registerOutput<String>('project');
+    projectNumber = registerOutput<String>('projectNumber');
   }
 }

@@ -386,8 +386,10 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// JSON-formatted IAM policy to attach to the specified private CA resource.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the private CA to associate with the policy.
   late final pulumi.Output<String> resourceArn;
 
@@ -395,19 +397,16 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_acmpca_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:acmpca/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:acmpca/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -428,13 +427,13 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:acmpca/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+         'aws:acmpca/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 }

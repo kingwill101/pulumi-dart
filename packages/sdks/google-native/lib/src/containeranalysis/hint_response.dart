@@ -9,20 +9,17 @@ class HintResponse {
 
   /// Creates a new [HintResponse].
   /// [humanReadableName] The human readable name of this attestation authority, for example "qa".
-  HintResponse({
-    required this.humanReadableName,
-  });
+  HintResponse({required this.humanReadableName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'humanReadableName': humanReadableName,
-    };
+    return <String, dynamic>{'humanReadableName': humanReadableName};
   }
 
   factory HintResponse.fromMap(Map<String, dynamic> map) {
     return HintResponse(
-      humanReadableName: (map['humanReadableName'] as String).input(),
+      humanReadableName: pulumi.Input.fromValue(
+        map['humanReadableName'] as String,
+      ),
     );
   }
 }
-

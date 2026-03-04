@@ -4,16 +4,15 @@ enum SparkThriftTransportProtocol {
   valueSASL("SASL"),
   valueHTTP("HTTP ");
 
-  const SparkThriftTransportProtocol(this.value);
-  final String value;
+  const SparkThriftTransportProtocol(this.wireValue);
+  final String wireValue;
 
   static SparkThriftTransportProtocol fromValue(String value) {
     for (final item in SparkThriftTransportProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SparkThriftTransportProtocol value: $value');
   }
 }
-

@@ -12,16 +12,20 @@ import 'zone_record_state.dart';
 ///
 /// See the [Zone RRSets API documentation](https://docs.hetzner.cloud/reference/cloud#zone-rrsets) for more details.
 ///
-/// !> This resource must only be used, when records cannot be managed with a `hcloud.ZoneRrset` resource.
+/// !&gt; This resource must only be used, when records cannot be managed with a `hcloud.ZoneRrset` resource.
 class ZoneRecord extends pulumi.CustomResource {
   /// Comment of the Zone Record.
   late final pulumi.Output<String> comment;
+
   /// Name of the Zone Record.
   late final pulumi.Output<String> name;
+
   /// Type of the Zone Record.
   late final pulumi.Output<String> type;
+
   /// Value of the Zone Record.
   late final pulumi.Output<String> value;
+
   /// ID or Name of the parent Zone.
   late final pulumi.Output<String> zone;
 
@@ -34,16 +38,16 @@ class ZoneRecord extends pulumi.CustomResource {
     ZoneRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/zoneRecord:ZoneRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String>('comment');
+         'hcloud:index/zoneRecord:ZoneRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comment = registerOutput<String>('comment');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String>('value');
-    this.zone = registerOutput<String>('zone');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [ZoneRecord] resource's state with the given [name] and [id].
@@ -64,15 +68,15 @@ class ZoneRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/zoneRecord:ZoneRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.comment = registerOutput<String>('comment');
+         'hcloud:index/zoneRecord:ZoneRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    comment = registerOutput<String>('comment');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String>('value');
-    this.zone = registerOutput<String>('zone');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
+    zone = registerOutput<String>('zone');
   }
 }

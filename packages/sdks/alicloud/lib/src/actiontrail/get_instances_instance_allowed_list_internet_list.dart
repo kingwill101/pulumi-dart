@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceAllowedListInternetList {
   /// The allowed ip list of the internet_list.
   final pulumi.Input<List<String>> allowedIpLists;
+
   /// The port range of the internet_list.
   final pulumi.Input<String> portRange;
 
@@ -23,11 +24,14 @@ class GetInstancesInstanceAllowedListInternetList {
     };
   }
 
-  factory GetInstancesInstanceAllowedListInternetList.fromMap(Map<String, dynamic> map) {
+  factory GetInstancesInstanceAllowedListInternetList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstancesInstanceAllowedListInternetList(
-      allowedIpLists: ((map['allowedIpLists'] as List).cast<String>()).input(),
-      portRange: (map['portRange'] as String).input(),
+      allowedIpLists: pulumi.Input.fromValue(
+        (map['allowedIpLists'] as List).cast<String>(),
+      ),
+      portRange: pulumi.Input.fromValue(map['portRange'] as String),
     );
   }
 }
-

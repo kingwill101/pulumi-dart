@@ -1,5 +1,3 @@
-library module_emrv2;
-
 export 'emrv2/cluster.dart';
 export 'emrv2/cluster_application_config.dart';
 export 'emrv2/cluster_args.dart';

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSubscriptionDeliveryProperty {
   /// The name of the header to send on to the destination
   final pulumi.Input<String> headerName;
+
   /// True if the `value` is a secret and should be protected, otherwise false. If True, then this value won't be returned from Azure API calls
   final pulumi.Input<bool>? secret;
+
   /// If the `type` is `Dynamic`, then provide the payload field to be used as the value. Valid source fields differ by subscription type.
   final pulumi.Input<String>? sourceField;
+
   /// Either `Static` or `Dynamic`
   final pulumi.Input<String> type;
+
   /// If the `type` is `Static`, then provide the value to use
   final pulumi.Input<String>? value;
 
@@ -40,12 +44,23 @@ class EventSubscriptionDeliveryProperty {
 
   factory EventSubscriptionDeliveryProperty.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionDeliveryProperty(
-      headerName: (map['headerName'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret']! as bool).input(),
-      sourceField: map['sourceField'] == null ? null : (map['sourceField']! as String).input(),
-      type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      headerName: pulumi.Input.fromValue(map['headerName'] as String),
+      secret: (() {
+        final guardedValue = map['secret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourceField: (() {
+        final guardedValue = map['sourceField'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

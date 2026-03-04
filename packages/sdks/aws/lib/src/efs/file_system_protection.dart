@@ -8,20 +8,19 @@ class FileSystemProtection {
 
   /// Creates a new [FileSystemProtection].
   /// [replicationOverwrite] Indicates whether replication overwrite protection is enabled. Valid values: `ENABLED` or `DISABLED`.
-  FileSystemProtection({
-    this.replicationOverwrite,
-  });
+  FileSystemProtection({this.replicationOverwrite});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'replicationOverwrite': ?replicationOverwrite,
-    };
+    return <String, dynamic>{'replicationOverwrite': ?replicationOverwrite};
   }
 
   factory FileSystemProtection.fromMap(Map<String, dynamic> map) {
     return FileSystemProtection(
-      replicationOverwrite: map['replicationOverwrite'] == null ? null : ((map['replicationOverwrite'] as String).input()).input(),
+      replicationOverwrite: (() {
+        final guardedValue = map['replicationOverwrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

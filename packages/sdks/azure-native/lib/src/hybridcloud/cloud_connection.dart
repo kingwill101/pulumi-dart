@@ -183,26 +183,37 @@ import 'system_data_response.dart';
 class CloudConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The cloud connector which discovered the remote resource.
   late final pulumi.Output<ResourceReferenceResponse?> cloudConnector;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the cloud collection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Identifier for the remote cloud resource
   late final pulumi.Output<String?> remoteResourceId;
+
   /// Shared key of the cloud connection.
   late final pulumi.Output<String?> sharedKey;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The virtualHub to which the cloud connection belongs.
   late final pulumi.Output<ResourceReferenceResponse?> virtualHub;
 
@@ -215,22 +226,24 @@ class CloudConnection extends pulumi.CustomResource {
     CloudConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcloud:CloudConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cloudConnector = registerOutput<ResourceReferenceResponse?>('cloudConnector');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:hybridcloud:CloudConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudConnector = registerOutput<ResourceReferenceResponse?>(
+      'cloudConnector',
+    );
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.remoteResourceId = registerOutput<String?>('remoteResourceId');
-    this.sharedKey = registerOutput<String?>('sharedKey');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualHub = registerOutput<ResourceReferenceResponse?>('virtualHub');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteResourceId = registerOutput<String?>('remoteResourceId');
+    sharedKey = registerOutput<String?>('sharedKey');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<ResourceReferenceResponse?>('virtualHub');
   }
 }

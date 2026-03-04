@@ -9,25 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndustrialSericeArgs {
   /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
   ///
-  /// > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
+  /// &gt; **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
   final pulumi.Input<String>? enable;
 
   /// Creates a new [GetIndustrialSericeArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
-  GetIndustrialSericeArgs({
-    this.enable,
-  });
+  GetIndustrialSericeArgs({this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': ?enable,
-    };
+    return <String, dynamic>{'enable': ?enable};
   }
 
   factory GetIndustrialSericeArgs.fromMap(Map<String, dynamic> map) {
     return GetIndustrialSericeArgs(
-      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

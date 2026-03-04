@@ -8,6 +8,7 @@ class DeliveryRuleIsDeviceConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'IsDevice'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the condition.
   final pulumi.Input<IsDeviceMatchConditionParametersResponse> parameters;
 
@@ -22,15 +23,24 @@ class DeliveryRuleIsDeviceConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<IsDeviceMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            IsDeviceMatchConditionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleIsDeviceConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory DeliveryRuleIsDeviceConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryRuleIsDeviceConditionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (IsDeviceMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        IsDeviceMatchConditionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

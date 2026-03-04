@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceAttachmentsArgs {
   /// The region to which the network to be queried belongs.
   final pulumi.Input<String>? childInstanceRegionId;
+
   /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
   final pulumi.Input<String>? childInstanceType;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String> instanceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
   final pulumi.Input<String>? status;
 
@@ -44,12 +48,27 @@ class GetInstanceAttachmentsArgs {
 
   factory GetInstanceAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsArgs(
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId']! as String).input(),
-      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      childInstanceRegionId: (() {
+        final guardedValue = map['childInstanceRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      childInstanceType: (() {
+        final guardedValue = map['childInstanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

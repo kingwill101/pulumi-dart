@@ -6,26 +6,37 @@ import 'system_data_response.dart';
 class GetContactResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Full name of contact
   final String contactName;
+
   /// Email address of contact
   final String email;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Telephone number of contact
   final String phoneNumber;
+
   /// Resource provisioning state.
   final String provisioningState;
+
   /// Job title of contact
   final String role;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -85,10 +96,15 @@ class GetContactResult {
       phoneNumber: map['phoneNumber'] as String,
       provisioningState: map['provisioningState'] as String,
       role: map['role'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

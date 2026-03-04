@@ -1,5 +1,3 @@
-library module_billing;
-
 export 'billing/functions.dart';
 export 'billing/get_views_args.dart';
 export 'billing/get_views_billing_view.dart';

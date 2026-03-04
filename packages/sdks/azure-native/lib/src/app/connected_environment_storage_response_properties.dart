@@ -8,10 +8,13 @@ import 'smb_storage_response.dart';
 class ConnectedEnvironmentStorageResponseProperties {
   /// Azure file properties
   final pulumi.Input<AzureFilePropertiesResponse>? azureFile;
+
   /// Any errors that occurred during deployment or deployment validation
   final pulumi.Input<String> deploymentErrors;
+
   /// Provisioning state of the storage.
   final pulumi.Input<String> provisioningState;
+
   /// SMB storage properties
   final pulumi.Input<SmbStorageResponse>? smb;
 
@@ -29,20 +32,49 @@ class ConnectedEnvironmentStorageResponseProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureFile': ?pulumi.Input.mapOptionalInputValue<AzureFilePropertiesResponse, Map<String, dynamic>>(azureFile, (value) => value.toMap()),
+      'azureFile':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureFilePropertiesResponse,
+            Map<String, dynamic>
+          >(azureFile, (value) => value.toMap()),
       'deploymentErrors': deploymentErrors,
       'provisioningState': provisioningState,
-      'smb': ?pulumi.Input.mapOptionalInputValue<SmbStorageResponse, Map<String, dynamic>>(smb, (value) => value.toMap()),
+      'smb':
+          ?pulumi.Input.mapOptionalInputValue<
+            SmbStorageResponse,
+            Map<String, dynamic>
+          >(smb, (value) => value.toMap()),
     };
   }
 
-  factory ConnectedEnvironmentStorageResponseProperties.fromMap(Map<String, dynamic> map) {
+  factory ConnectedEnvironmentStorageResponseProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectedEnvironmentStorageResponseProperties(
-      azureFile: map['azureFile'] == null ? null : (AzureFilePropertiesResponse.fromMap((map['azureFile']! as Map).cast<String, dynamic>())).input(),
-      deploymentErrors: (map['deploymentErrors'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      smb: map['smb'] == null ? null : (SmbStorageResponse.fromMap((map['smb']! as Map).cast<String, dynamic>())).input(),
+      azureFile: (() {
+        final guardedValue = map['azureFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureFilePropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deploymentErrors: pulumi.Input.fromValue(
+        map['deploymentErrors'] as String,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      smb: (() {
+        final guardedValue = map['smb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SmbStorageResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

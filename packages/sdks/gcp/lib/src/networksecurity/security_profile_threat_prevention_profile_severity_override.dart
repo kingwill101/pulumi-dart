@@ -6,6 +6,7 @@ class SecurityProfileThreatPreventionProfileSeverityOverride {
   /// Threat action override.
   /// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
   final pulumi.Input<String> action;
+
   /// Severity level to match.
   /// Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
   final pulumi.Input<String> severity;
@@ -19,17 +20,15 @@ class SecurityProfileThreatPreventionProfileSeverityOverride {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': action,
-      'severity': severity,
-    };
+    return <String, dynamic>{'action': action, 'severity': severity};
   }
 
-  factory SecurityProfileThreatPreventionProfileSeverityOverride.fromMap(Map<String, dynamic> map) {
+  factory SecurityProfileThreatPreventionProfileSeverityOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityProfileThreatPreventionProfileSeverityOverride(
-      action: (map['action'] as String).input(),
-      severity: (map['severity'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

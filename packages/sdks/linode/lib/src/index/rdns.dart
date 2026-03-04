@@ -162,9 +162,11 @@ import 'rdns_timeouts.dart';
 class Rdns extends pulumi.CustomResource {
   /// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
   late final pulumi.Output<String> address;
+
   /// The name of the RDNS address.
   late final pulumi.Output<String> rdns;
   late final pulumi.Output<RdnsTimeouts?> timeouts;
+
   /// If true, the RDNS assignment will be retried within the operation timeout period.
   late final pulumi.Output<bool> waitForAvailable;
 
@@ -172,28 +174,21 @@ class Rdns extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rdns]. {@macro pulumi_index_rdns_rdns_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rdns(
-    String name, {
-    RdnsArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'linode:index/rdns:Rdns',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.address = registerOutput<String>('address');
-    this.rdns = registerOutput<String>('rdns');
-    this.timeouts = registerOutput<RdnsTimeouts?>('timeouts');
-    this.waitForAvailable = registerOutput<bool>('waitForAvailable');
+  Rdns(String name, {RdnsArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'linode:index/rdns:Rdns',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    address = registerOutput<String>('address');
+    rdns = registerOutput<String>('rdns');
+    timeouts = registerOutput<RdnsTimeouts?>('timeouts');
+    waitForAvailable = registerOutput<bool>('waitForAvailable');
   }
 
   /// Gets an existing [Rdns] resource's state with the given [name] and [id].
-  static Rdns get(
-    String name,
-    pulumi.Input<String> id, {
-    RdnsState? state,
-  }) {
+  static Rdns get(String name, pulumi.Input<String> id, {RdnsState? state}) {
     return Rdns._get(
       name,
       state: state?.toMap(),
@@ -206,14 +201,14 @@ class Rdns extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/rdns:Rdns',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.address = registerOutput<String>('address');
-    this.rdns = registerOutput<String>('rdns');
-    this.timeouts = registerOutput<RdnsTimeouts?>('timeouts');
-    this.waitForAvailable = registerOutput<bool>('waitForAvailable');
+         'linode:index/rdns:Rdns',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    address = registerOutput<String>('address');
+    rdns = registerOutput<String>('rdns');
+    timeouts = registerOutput<RdnsTimeouts?>('timeouts');
+    waitForAvailable = registerOutput<bool>('waitForAvailable');
   }
 }

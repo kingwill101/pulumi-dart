@@ -4,7 +4,7 @@ import 'network_manager_deployment_state.dart';
 
 /// Manages a Network Manager Deployment.
 ///
-/// > **Note:** Using Network Manager Deployment to deploy Connectivity Configuration may modify or delete existing Virtual Network Peering. At this time you should not use Network Peering resource in conjunction with Network Manager Deployment. Doing so may cause a conflict of Peering configurations.
+/// &gt; **Note:** Using Network Manager Deployment to deploy Connectivity Configuration may modify or delete existing Virtual Network Peering. At this time you should not use Network Peering resource in conjunction with Network Manager Deployment. Doing so may cause a conflict of Peering configurations.
 ///
 /// ## Example Usage
 ///
@@ -1092,7 +1092,7 @@ import 'network_manager_deployment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1107,12 +1107,16 @@ import 'network_manager_deployment_state.dart';
 class NetworkManagerDeployment extends pulumi.CustomResource {
   /// A list of Network Manager Configuration IDs which should be aligned with `scope_access`.
   late final pulumi.Output<List<String>> configurationIds;
+
   /// Specifies the location which the configurations will be deployed to. Changing this forces a new Network Manager Deployment to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Deployment to be created.
   late final pulumi.Output<String> networkManagerId;
+
   /// Specifies the configuration deployment type. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`. Changing this forces a new Network Manager Deployment to be created.
   late final pulumi.Output<String> scopeAccess;
+
   /// A mapping of key values pairs that can be used to keep the deployment up with the Network Manager configurations and rules.
   late final pulumi.Output<Map<String, String>?> triggers;
 
@@ -1125,16 +1129,16 @@ class NetworkManagerDeployment extends pulumi.CustomResource {
     NetworkManagerDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerDeployment:NetworkManagerDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationIds = registerOutput<List<String>>('configurationIds');
-    this.location = registerOutput<String>('location');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
-    this.scopeAccess = registerOutput<String>('scopeAccess');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+         'azure:network/networkManagerDeployment:NetworkManagerDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationIds = registerOutput<List<String>>('configurationIds');
+    location = registerOutput<String>('location');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    scopeAccess = registerOutput<String>('scopeAccess');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 
   /// Gets an existing [NetworkManagerDeployment] resource's state with the given [name] and [id].
@@ -1155,15 +1159,15 @@ class NetworkManagerDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerDeployment:NetworkManagerDeployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationIds = registerOutput<List<String>>('configurationIds');
-    this.location = registerOutput<String>('location');
-    this.networkManagerId = registerOutput<String>('networkManagerId');
-    this.scopeAccess = registerOutput<String>('scopeAccess');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+         'azure:network/networkManagerDeployment:NetworkManagerDeployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationIds = registerOutput<List<String>>('configurationIds');
+    location = registerOutput<String>('location');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    scopeAccess = registerOutput<String>('scopeAccess');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

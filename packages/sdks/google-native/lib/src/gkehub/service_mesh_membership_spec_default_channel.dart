@@ -5,16 +5,17 @@ enum ServiceMeshMembershipSpecDefaultChannel {
   regular("REGULAR"),
   stable("STABLE");
 
-  const ServiceMeshMembershipSpecDefaultChannel(this.value);
-  final String value;
+  const ServiceMeshMembershipSpecDefaultChannel(this.wireValue);
+  final String wireValue;
 
   static ServiceMeshMembershipSpecDefaultChannel fromValue(String value) {
     for (final item in ServiceMeshMembershipSpecDefaultChannel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceMeshMembershipSpecDefaultChannel value: $value');
+    throw ArgumentError(
+      'Unknown ServiceMeshMembershipSpecDefaultChannel value: $value',
+    );
   }
 }
-

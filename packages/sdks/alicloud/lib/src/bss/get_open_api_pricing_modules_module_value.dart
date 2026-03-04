@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOpenApiPricingModulesModuleValue {
   /// The module Code corresponds to the attribute value.
   final pulumi.Input<String> name;
+
   /// Module value description information.
   final pulumi.Input<String> remark;
+
   /// The attribute value type corresponding to the module Code. Value:
   /// * single_float: single value type.
   /// * range_float: range value type.
   final pulumi.Input<String> type;
+
   /// The module Code corresponds to the attribute value.
-  /// > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
+  /// &gt; format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
   final pulumi.Input<String> value;
 
   /// Creates a new [GetOpenApiPricingModulesModuleValue].
@@ -36,13 +39,14 @@ class GetOpenApiPricingModulesModuleValue {
     };
   }
 
-  factory GetOpenApiPricingModulesModuleValue.fromMap(Map<String, dynamic> map) {
+  factory GetOpenApiPricingModulesModuleValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOpenApiPricingModulesModuleValue(
-      name: (map['name'] as String).input(),
-      remark: (map['remark'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      remark: pulumi.Input.fromValue(map['remark'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

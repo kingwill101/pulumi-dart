@@ -164,20 +164,25 @@ import 'transfer_request_state.dart';
 class TransferRequest extends pulumi.CustomResource {
   /// A description of the zone tranfer request.
   late final pulumi.Output<String?> description;
+
   /// Disable wait for zone to reach ACTIVE
   /// status. The check is enabled by default. If this argument is true, zone
   /// will be considered as created/updated if OpenStack request returned success.
   late final pulumi.Output<bool?> disableStatusCheck;
   late final pulumi.Output<String> key;
+
   /// The region in which to obtain the V2 DNS client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new DNS zone zone transfer accept.
   late final pulumi.Output<String> region;
+
   /// The target Project ID to transfer to.
   late final pulumi.Output<String> targetProjectId;
+
   /// Map of additional options. Changing this creates a
   /// new transfer request.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
+
   /// The ID of the zone for which to create the transfer
   /// request.
   late final pulumi.Output<String> zoneId;
@@ -191,18 +196,18 @@ class TransferRequest extends pulumi.CustomResource {
     TransferRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/transferRequest:TransferRequest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
-    this.key = registerOutput<String>('key');
-    this.region = registerOutput<String>('region');
-    this.targetProjectId = registerOutput<String>('targetProjectId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    this.zoneId = registerOutput<String>('zoneId');
+         'openstack:dns/transferRequest:TransferRequest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    targetProjectId = registerOutput<String>('targetProjectId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [TransferRequest] resource's state with the given [name] and [id].
@@ -223,17 +228,17 @@ class TransferRequest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/transferRequest:TransferRequest',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
-    this.key = registerOutput<String>('key');
-    this.region = registerOutput<String>('region');
-    this.targetProjectId = registerOutput<String>('targetProjectId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    this.zoneId = registerOutput<String>('zoneId');
+         'openstack:dns/transferRequest:TransferRequest',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    targetProjectId = registerOutput<String>('targetProjectId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

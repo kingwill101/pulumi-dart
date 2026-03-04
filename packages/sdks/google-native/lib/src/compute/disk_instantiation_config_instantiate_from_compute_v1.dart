@@ -8,16 +8,19 @@ enum DiskInstantiationConfigInstantiateFromComputeV1 {
   sourceImage("SOURCE_IMAGE"),
   sourceImageFamily("SOURCE_IMAGE_FAMILY");
 
-  const DiskInstantiationConfigInstantiateFromComputeV1(this.value);
-  final String value;
+  const DiskInstantiationConfigInstantiateFromComputeV1(this.wireValue);
+  final String wireValue;
 
-  static DiskInstantiationConfigInstantiateFromComputeV1 fromValue(String value) {
+  static DiskInstantiationConfigInstantiateFromComputeV1 fromValue(
+    String value,
+  ) {
     for (final item in DiskInstantiationConfigInstantiateFromComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiskInstantiationConfigInstantiateFromComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown DiskInstantiationConfigInstantiateFromComputeV1 value: $value',
+    );
   }
 }
-

@@ -345,7 +345,7 @@ import 'iot_hub_device_update_instance_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DeviceUpdate` - 2022-10-01
@@ -360,14 +360,20 @@ import 'iot_hub_device_update_instance_state.dart';
 class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
   /// Specifies the ID of the IoT Hub Device Update Account where the IoT Hub Device Update Instance exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> deviceUpdateAccountId;
+
   /// Whether the diagnostic log collection is enabled. Possible values are `true` and `false`. Defaults to `false`.
   late final pulumi.Output<bool?> diagnosticEnabled;
+
   /// A `diagnostic_storage_account` block as defined below.
-  late final pulumi.Output<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?> diagnosticStorageAccount;
+  late final pulumi.Output<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>
+  diagnosticStorageAccount;
+
   /// Specifies the ID of the IoT Hub associated with the IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
+
   /// Specifies the name which should be used for this IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags which should be assigned to the IoT Hub Device Update Instance.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -380,17 +386,20 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
     IotHubDeviceUpdateInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/iotHubDeviceUpdateInstance:IotHubDeviceUpdateInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deviceUpdateAccountId = registerOutput<String>('deviceUpdateAccountId');
-    this.diagnosticEnabled = registerOutput<bool?>('diagnosticEnabled');
-    this.diagnosticStorageAccount = registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>('diagnosticStorageAccount');
-    this.iothubId = registerOutput<String>('iothubId');
+         'azure:iot/iotHubDeviceUpdateInstance:IotHubDeviceUpdateInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deviceUpdateAccountId = registerOutput<String>('deviceUpdateAccountId');
+    diagnosticEnabled = registerOutput<bool?>('diagnosticEnabled');
+    diagnosticStorageAccount =
+        registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>(
+          'diagnosticStorageAccount',
+        );
+    iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [IotHubDeviceUpdateInstance] resource's state with the given [name] and [id].
@@ -411,16 +420,19 @@ class IotHubDeviceUpdateInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/iotHubDeviceUpdateInstance:IotHubDeviceUpdateInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deviceUpdateAccountId = registerOutput<String>('deviceUpdateAccountId');
-    this.diagnosticEnabled = registerOutput<bool?>('diagnosticEnabled');
-    this.diagnosticStorageAccount = registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>('diagnosticStorageAccount');
-    this.iothubId = registerOutput<String>('iothubId');
+         'azure:iot/iotHubDeviceUpdateInstance:IotHubDeviceUpdateInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deviceUpdateAccountId = registerOutput<String>('deviceUpdateAccountId');
+    diagnosticEnabled = registerOutput<bool?>('diagnosticEnabled');
+    diagnosticStorageAccount =
+        registerOutput<IotHubDeviceUpdateInstanceDiagnosticStorageAccount?>(
+          'diagnosticStorageAccount',
+        );
+    iothubId = registerOutput<String>('iothubId');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

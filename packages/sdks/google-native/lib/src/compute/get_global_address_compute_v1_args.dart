@@ -13,23 +13,20 @@ class GetGlobalAddressComputeV1Args {
   /// Creates a new [GetGlobalAddressComputeV1Args].
   /// [address] Required.
   /// [project] Optional.
-  GetGlobalAddressComputeV1Args({
-    required this.address,
-    this.project,
-  });
+  GetGlobalAddressComputeV1Args({required this.address, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': address,
-      'project': ?project,
-    };
+    return <String, dynamic>{'address': address, 'project': ?project};
   }
 
   factory GetGlobalAddressComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetGlobalAddressComputeV1Args(
-      address: (map['address'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

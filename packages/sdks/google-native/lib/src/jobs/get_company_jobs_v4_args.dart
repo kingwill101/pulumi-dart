@@ -31,10 +31,13 @@ class GetCompanyJobsV4Args {
 
   factory GetCompanyJobsV4Args.fromMap(Map<String, dynamic> map) {
     return GetCompanyJobsV4Args(
-      companyId: (map['companyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      companyId: pulumi.Input.fromValue(map['companyId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

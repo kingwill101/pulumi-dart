@@ -1,6 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'activated_resource_reference_response.dart';
-import 'resource_reference_response.dart';
 import 'system_data_response.dart';
 import 'tunnel_policy_args.dart';
 
@@ -234,18 +232,25 @@ class TunnelPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
+
   /// Domains referenced by this tunnel policy.
-  late final pulumi.Output<List<ActivatedResourceReferenceResponse>> domains;
+  late final pulumi.Output<List<Map<String, dynamic>>> domains;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Target Groups referenced by this tunnel policy.
-  late final pulumi.Output<List<ResourceReferenceResponse>?> targetGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> targetGroups;
+
   /// Protocol this tunnel will use for allowing traffic to backends.
   late final pulumi.Output<String?> tunnelType;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -258,19 +263,19 @@ class TunnelPolicy extends pulumi.CustomResource {
     TunnelPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:TunnelPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
-    this.domains = registerOutput<List<ActivatedResourceReferenceResponse>>('domains');
+         'azure-native:cdn:TunnelPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    domains = registerOutput<List<Map<String, dynamic>>>('domains');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetGroups = registerOutput<List<ResourceReferenceResponse>?>('targetGroups');
-    this.tunnelType = registerOutput<String?>('tunnelType');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetGroups = registerOutput<List<Map<String, dynamic>>?>('targetGroups');
+    tunnelType = registerOutput<String?>('tunnelType');
+    type = registerOutput<String>('type');
   }
 }

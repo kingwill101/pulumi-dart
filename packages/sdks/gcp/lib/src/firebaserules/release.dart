@@ -365,18 +365,23 @@ import 'release_state.dart';
 class Release extends pulumi.CustomResource {
   /// Output only. Time the release was created.
   late final pulumi.Output<String> createTime;
+
   /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
   late final pulumi.Output<bool> disabled;
+
   /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
   late final pulumi.Output<String> name;
+
   /// The project for the resource
   late final pulumi.Output<String> project;
+
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   ///
   ///
   ///
   /// - - -
   late final pulumi.Output<String> rulesetName;
+
   /// Output only. Time the release was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -389,17 +394,17 @@ class Release extends pulumi.CustomResource {
     ReleaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebaserules/release:Release',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.disabled = registerOutput<bool>('disabled');
+         'gcp:firebaserules/release:Release',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    disabled = registerOutput<bool>('disabled');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.rulesetName = registerOutput<String>('rulesetName');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    rulesetName = registerOutput<String>('rulesetName');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Release] resource's state with the given [name] and [id].
@@ -420,16 +425,16 @@ class Release extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebaserules/release:Release',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.disabled = registerOutput<bool>('disabled');
+         'gcp:firebaserules/release:Release',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    disabled = registerOutput<bool>('disabled');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.rulesetName = registerOutput<String>('rulesetName');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    rulesetName = registerOutput<String>('rulesetName');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

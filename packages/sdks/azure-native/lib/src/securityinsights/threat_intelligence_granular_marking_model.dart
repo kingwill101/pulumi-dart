@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreatIntelligenceGranularMarkingModel {
   /// Language granular marking model
   final pulumi.Input<String>? language;
+
   /// marking reference granular marking model
   final pulumi.Input<int>? markingRef;
+
   /// granular marking model selectors
   final pulumi.Input<List<String>>? selectors;
 
@@ -29,12 +31,25 @@ class ThreatIntelligenceGranularMarkingModel {
     };
   }
 
-  factory ThreatIntelligenceGranularMarkingModel.fromMap(Map<String, dynamic> map) {
+  factory ThreatIntelligenceGranularMarkingModel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ThreatIntelligenceGranularMarkingModel(
-      language: map['language'] == null ? null : (map['language']! as String).input(),
-      markingRef: map['markingRef'] == null ? null : (map['markingRef']! as int).input(),
-      selectors: map['selectors'] == null ? null : ((map['selectors']! as List).cast<String>()).input(),
+      language: (() {
+        final guardedValue = map['language'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      markingRef: (() {
+        final guardedValue = map['markingRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      selectors: (() {
+        final guardedValue = map['selectors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class ConfigurationStore {
 
   /// Creates a new [ConfigurationStore].
   /// [appConfigurationId] The app configuration id to store configuration
-  ConfigurationStore({
-    this.appConfigurationId,
-  });
+  ConfigurationStore({this.appConfigurationId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appConfigurationId': ?appConfigurationId,
-    };
+    return <String, dynamic>{'appConfigurationId': ?appConfigurationId};
   }
 
   factory ConfigurationStore.fromMap(Map<String, dynamic> map) {
     return ConfigurationStore(
-      appConfigurationId: map['appConfigurationId'] == null ? null : (map['appConfigurationId']! as String).input(),
+      appConfigurationId: (() {
+        final guardedValue = map['appConfigurationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGlobalParameterArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// The global parameter name.
   final pulumi.Input<String> globalParameterName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetGlobalParameterArgs {
 
   factory GetGlobalParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalParameterArgs(
-      factoryName: (map['factoryName'] as String).input(),
-      globalParameterName: (map['globalParameterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      globalParameterName: pulumi.Input.fromValue(
+        map['globalParameterName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

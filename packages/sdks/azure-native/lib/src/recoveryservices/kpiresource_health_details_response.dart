@@ -6,7 +6,9 @@ import 'resource_health_details_response.dart';
 /// KPI Resource Health Details
 class KPIResourceHealthDetailsResponse {
   /// Resource Health Status
-  final pulumi.Input<List<ResourceHealthDetailsResponse>>? resourceHealthDetails;
+  final pulumi.Input<List<ResourceHealthDetailsResponse>>?
+  resourceHealthDetails;
+
   /// Resource Health Status
   final pulumi.Input<String>? resourceHealthStatus;
 
@@ -20,16 +22,41 @@ class KPIResourceHealthDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resourceHealthDetails': ?pulumi.Input.mapOptionalInputValue<List<ResourceHealthDetailsResponse>, List<Map<String, dynamic>>>(resourceHealthDetails, (value) => pulumi.Input.encodeList<ResourceHealthDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceHealthDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceHealthDetailsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            resourceHealthDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceHealthDetailsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceHealthStatus': ?resourceHealthStatus,
     };
   }
 
   factory KPIResourceHealthDetailsResponse.fromMap(Map<String, dynamic> map) {
     return KPIResourceHealthDetailsResponse(
-      resourceHealthDetails: map['resourceHealthDetails'] == null ? null : (pulumi.Input.decodeList<ResourceHealthDetailsResponse>(map['resourceHealthDetails']!, (value) => ResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : (map['resourceHealthStatus']! as String).input(),
+      resourceHealthDetails: (() {
+        final guardedValue = map['resourceHealthDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceHealthDetailsResponse>(
+            guardedValue,
+            (value) => ResourceHealthDetailsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceHealthStatus: (() {
+        final guardedValue = map['resourceHealthStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiDefinitionArgs {
   /// The name of the API.
   final pulumi.Input<String> apiName;
+
   /// The name of the API definition.
   final pulumi.Input<String> definitionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
+
   /// The name of the API version.
   final pulumi.Input<String> versionName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -49,13 +54,14 @@ class GetApiDefinitionArgs {
 
   factory GetApiDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetApiDefinitionArgs(
-      apiName: (map['apiName'] as String).input(),
-      definitionName: (map['definitionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      versionName: (map['versionName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      apiName: pulumi.Input.fromValue(map['apiName'] as String),
+      definitionName: pulumi.Input.fromValue(map['definitionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      versionName: pulumi.Input.fromValue(map['versionName'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

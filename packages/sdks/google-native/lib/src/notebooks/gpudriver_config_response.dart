@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GPUDriverConfigResponse {
   /// Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
   final pulumi.Input<String> customGpuDriverPath;
+
   /// Optional. Whether the end user authorizes Google Cloud to install GPU driver on this VM instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
   final pulumi.Input<bool> enableGpuDriver;
 
@@ -26,9 +27,10 @@ class GPUDriverConfigResponse {
 
   factory GPUDriverConfigResponse.fromMap(Map<String, dynamic> map) {
     return GPUDriverConfigResponse(
-      customGpuDriverPath: (map['customGpuDriverPath'] as String).input(),
-      enableGpuDriver: (map['enableGpuDriver'] as bool).input(),
+      customGpuDriverPath: pulumi.Input.fromValue(
+        map['customGpuDriverPath'] as String,
+      ),
+      enableGpuDriver: pulumi.Input.fromValue(map['enableGpuDriver'] as bool),
     );
   }
 }
-

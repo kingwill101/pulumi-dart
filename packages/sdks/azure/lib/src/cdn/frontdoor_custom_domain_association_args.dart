@@ -9,9 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrontdoorCustomDomainAssociationArgs {
   /// The ID of the Front Door Custom Domain that should be managed by the association resource. Changing this forces a new association resource to be created.
   final pulumi.Input<String> cdnFrontdoorCustomDomainId;
+
   /// One or more IDs of the Front Door Route to which the Front Door Custom Domain is associated with.
   ///
-  /// > **Note:** This should include all of the Front Door Route resources that the Front Door Custom Domain is associated with. If the list of Front Door Routes is not complete you will receive the service side error `This resource is still associated with a route. Please delete the association with the route first before deleting this resource` when you attempt to `destroy`/`delete` your Front Door Custom Domain.
+  /// &gt; **Note:** This should include all of the Front Door Route resources that the Front Door Custom Domain is associated with. If the list of Front Door Routes is not complete you will receive the service side error `This resource is still associated with a route. Please delete the association with the route first before deleting this resource` when you attempt to `destroy`/`delete` your Front Door Custom Domain.
   final pulumi.Input<List<String>> cdnFrontdoorRouteIds;
 
   /// Creates a new [FrontdoorCustomDomainAssociationArgs].
@@ -29,11 +30,16 @@ class FrontdoorCustomDomainAssociationArgs {
     };
   }
 
-  factory FrontdoorCustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory FrontdoorCustomDomainAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrontdoorCustomDomainAssociationArgs(
-      cdnFrontdoorCustomDomainId: (map['cdnFrontdoorCustomDomainId'] as String).input(),
-      cdnFrontdoorRouteIds: ((map['cdnFrontdoorRouteIds'] as List).cast<String>()).input(),
+      cdnFrontdoorCustomDomainId: pulumi.Input.fromValue(
+        map['cdnFrontdoorCustomDomainId'] as String,
+      ),
+      cdnFrontdoorRouteIds: pulumi.Input.fromValue(
+        (map['cdnFrontdoorRouteIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

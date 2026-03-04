@@ -8,36 +8,53 @@ import 'type_properties_mapping_response.dart';
 class GetLinkResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Localized descriptions for the Link.
   final Map<String, String>? description;
+
   /// Localized display name for the Link.
   final Map<String, String>? displayName;
+
   /// Resource ID.
   final String id;
+
   /// The link name.
   final String linkName;
+
   /// The set of properties mappings between the source and target Types.
   final List<TypePropertiesMappingResponse>? mappings;
+
   /// Resource name.
   final String name;
+
   /// Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
   final String? operationType;
+
   /// The properties that represent the participating profile.
-  final List<ParticipantPropertyReferenceResponse> participantPropertyReferences;
+  final List<ParticipantPropertyReferenceResponse>
+  participantPropertyReferences;
+
   /// Provisioning state.
   final String provisioningState;
+
   /// Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
   final bool? referenceOnly;
+
   /// Type of source entity.
   final String sourceEntityType;
+
   /// Name of the source Entity Type.
   final String sourceEntityTypeName;
+
   /// Type of target entity.
   final String targetEntityType;
+
   /// Name of the target Entity Type.
   final String targetEntityTypeName;
+
   /// The hub name.
   final String tenantId;
+
   /// Resource type.
   final String type;
 
@@ -86,10 +103,21 @@ class GetLinkResult {
       'displayName': ?displayName,
       'id': id,
       'linkName': linkName,
-      'mappings': ?mappings == null ? null : pulumi.Input.encodeList<TypePropertiesMappingResponse, Map<String, dynamic>>(mappings!, (value) => value.toMap()),
+      'mappings': ?(() {
+        final guardedValue = mappings;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          TypePropertiesMappingResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': name,
       'operationType': ?operationType,
-      'participantPropertyReferences': pulumi.Input.encodeList<ParticipantPropertyReferenceResponse, Map<String, dynamic>>(participantPropertyReferences, (value) => value.toMap()),
+      'participantPropertyReferences':
+          pulumi.Input.encodeList<
+            ParticipantPropertyReferenceResponse,
+            Map<String, dynamic>
+          >(participantPropertyReferences, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'referenceOnly': ?referenceOnly,
       'sourceEntityType': sourceEntityType,
@@ -104,16 +132,47 @@ class GetLinkResult {
   factory GetLinkResult.fromMap(Map<String, dynamic> map) {
     return GetLinkResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : (map['description']! as Map).cast<String, String>(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as Map).cast<String, String>(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       id: map['id'] as String,
       linkName: map['linkName'] as String,
-      mappings: map['mappings'] == null ? null : pulumi.Input.decodeList<TypePropertiesMappingResponse>(map['mappings']!, (value) => TypePropertiesMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      mappings: (() {
+        final guardedValue = map['mappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<TypePropertiesMappingResponse>(
+          guardedValue,
+          (value) => TypePropertiesMappingResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       name: map['name'] as String,
-      operationType: map['operationType'] == null ? null : map['operationType']! as String,
-      participantPropertyReferences: pulumi.Input.decodeList<ParticipantPropertyReferenceResponse>(map['participantPropertyReferences'], (value) => ParticipantPropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      operationType: (() {
+        final guardedValue = map['operationType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      participantPropertyReferences:
+          pulumi.Input.decodeList<ParticipantPropertyReferenceResponse>(
+            map['participantPropertyReferences']!,
+            (value) => ParticipantPropertyReferenceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       provisioningState: map['provisioningState'] as String,
-      referenceOnly: map['referenceOnly'] == null ? null : map['referenceOnly']! as bool,
+      referenceOnly: (() {
+        final guardedValue = map['referenceOnly'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       sourceEntityType: map['sourceEntityType'] as String,
       sourceEntityTypeName: map['sourceEntityTypeName'] as String,
       targetEntityType: map['targetEntityType'] as String,
@@ -123,4 +182,3 @@ class GetLinkResult {
     );
   }
 }
-

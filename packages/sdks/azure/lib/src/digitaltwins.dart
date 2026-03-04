@@ -1,5 +1,3 @@
-library module_digitaltwins;
-
 export 'digitaltwins/endpoint_event_grid.dart';
 export 'digitaltwins/endpoint_event_grid_args.dart';
 export 'digitaltwins/endpoint_event_grid_state.dart';

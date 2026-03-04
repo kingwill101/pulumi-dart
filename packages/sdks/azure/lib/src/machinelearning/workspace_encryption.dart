@@ -5,11 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceEncryption {
   /// The Key Vault URI to access the encryption key.
   final pulumi.Input<String> keyId;
+
   /// The ID of the keyVault where the customer owned encryption key is present.
   final pulumi.Input<String> keyVaultId;
+
   /// The Key Vault URI to access the encryption key.
   ///
-  /// > **Note:** `user_assigned_identity_id` must set when`identity.type` is `UserAssigned` or service won't be able to find the assigned permissions.
+  /// &gt; **Note:** `user_assigned_identity_id` must set when`identity.type` is `UserAssigned` or service won't be able to find the assigned permissions.
   final pulumi.Input<String>? userAssignedIdentityId;
 
   /// Creates a new [WorkspaceEncryption].
@@ -32,10 +34,13 @@ class WorkspaceEncryption {
 
   factory WorkspaceEncryption.fromMap(Map<String, dynamic> map) {
     return WorkspaceEncryption(
-      keyId: (map['keyId'] as String).input(),
-      keyVaultId: (map['keyVaultId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
+      userAssignedIdentityId: (() {
+        final guardedValue = map['userAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

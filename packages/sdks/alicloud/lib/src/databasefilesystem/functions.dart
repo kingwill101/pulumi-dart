@@ -8,7 +8,7 @@ import 'get_snapshots_result.dart';
 
 /// This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
 ///
-/// > **NOTE:** Available in 1.202.0+
+/// &gt; **NOTE:** Available in 1.202.0+
 ///
 /// ## Example Usage
 ///
@@ -130,7 +130,7 @@ Future<GetAutoSnapShotPoliciesResult> getAutoSnapShotPolicies(
 
 /// This data source provides the DBFS Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -285,7 +285,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.156.0+.
+/// &gt; **NOTE:** Available in v1.156.0+.
 ///
 /// ## Example Usage
 ///

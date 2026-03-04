@@ -4,7 +4,7 @@ import 'user_policy_state.dart';
 
 /// Provides an IAM policy attached to a user.
 ///
-/// > **NOTE:** We suggest using explicit JSON encoding or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate configuration to JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
+/// &gt; **NOTE:** We suggest using explicit JSON encoding or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate configuration to JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
 /// ## Example Usage
 ///
@@ -240,10 +240,13 @@ import 'user_policy_state.dart';
 class UserPolicy extends pulumi.CustomResource {
   /// The name of the policy. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policy;
+
   /// IAM user to which to attach this policy.
   late final pulumi.Output<String> user;
 
@@ -256,15 +259,15 @@ class UserPolicy extends pulumi.CustomResource {
     UserPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/userPolicy:UserPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:iam/userPolicy:UserPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.policy = registerOutput<String>('policy');
-    this.user = registerOutput<String>('user');
+    namePrefix = registerOutput<String>('namePrefix');
+    policy = registerOutput<String>('policy');
+    user = registerOutput<String>('user');
   }
 
   /// Gets an existing [UserPolicy] resource's state with the given [name] and [id].
@@ -285,14 +288,14 @@ class UserPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/userPolicy:UserPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:iam/userPolicy:UserPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.policy = registerOutput<String>('policy');
-    this.user = registerOutput<String>('user');
+    namePrefix = registerOutput<String>('namePrefix');
+    policy = registerOutput<String>('policy');
+    user = registerOutput<String>('user');
   }
 }

@@ -9,20 +9,19 @@ class SecurityProfileCustomInterceptProfile {
 
   /// Creates a new [SecurityProfileCustomInterceptProfile].
   /// [interceptEndpointGroup] The Intercept Endpoint Group to which matching traffic should be intercepted.
-  SecurityProfileCustomInterceptProfile({
-    required this.interceptEndpointGroup,
-  });
+  SecurityProfileCustomInterceptProfile({required this.interceptEndpointGroup});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interceptEndpointGroup': interceptEndpointGroup,
-    };
+    return <String, dynamic>{'interceptEndpointGroup': interceptEndpointGroup};
   }
 
-  factory SecurityProfileCustomInterceptProfile.fromMap(Map<String, dynamic> map) {
+  factory SecurityProfileCustomInterceptProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityProfileCustomInterceptProfile(
-      interceptEndpointGroup: (map['interceptEndpointGroup'] as String).input(),
+      interceptEndpointGroup: pulumi.Input.fromValue(
+        map['interceptEndpointGroup'] as String,
+      ),
     );
   }
 }
-

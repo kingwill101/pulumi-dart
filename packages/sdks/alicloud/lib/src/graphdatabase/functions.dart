@@ -4,7 +4,7 @@ import 'get_db_instances_result.dart';
 
 /// This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///

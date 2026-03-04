@@ -501,7 +501,7 @@ import 'iot_hub_data_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Kusto` - 2024-04-13
@@ -516,30 +516,43 @@ import 'iot_hub_data_connection_state.dart';
 class IotHubDataConnection extends pulumi.CustomResource {
   /// Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
+
   /// Specifies the IotHub consumer group this data connection will use for ingestion. Changing this forces a new resource to be created.
   late final pulumi.Output<String> consumerGroup;
+
   /// Specifies the data format of the IoTHub messages. Allowed values: `APACHEAVRO`, `AVRO`, `CSV`, `JSON`, `MULTIJSON`, `ORC`, `PARQUET`, `PSV`, `RAW`, `SCSV`, `SINGLEJSON`, `SOHSV`, `TSV`, `TSVE`, `TXT` and `W3CLOGFILE`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> dataFormat;
+
   /// Specifies the name of the Kusto Database this data connection will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
+
   /// Indication for database routing information from the data connection, by default only database routing information is allowed. Allowed values: `Single`, `Multi`. Changing this forces a new resource to be created. Defaults to `Single`.
   late final pulumi.Output<String?> databaseRoutingType;
+
   /// Specifies the System Properties that each IoT Hub message should contain. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> eventSystemProperties;
+
   /// Specifies the resource id of the IotHub this data connection will use for ingestion. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubId;
+
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the mapping rule used for the message ingestion. Mapping rule must exist before resource is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> mappingRuleName;
+
   /// The name of the Kusto IotHub Data Connection to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the date after which data should be retrieved from IoT Hub. When defined, the data connection retrieves existing events created since the specified retrieval start date. It can only retrieve events retained by the IoT Hub, based on its retention period. The value should be in RFC3339 format (e.g., `2023-06-26T12:00:00Z`).
   late final pulumi.Output<String> retrievalStartDate;
+
   /// Specifies the IotHub Shared Access Policy this data connection will use for ingestion, which must have read permission. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sharedAccessPolicyName;
+
   /// Specifies the target table name used for the message ingestion. Table must exist before resource is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> tableName;
 
@@ -552,25 +565,27 @@ class IotHubDataConnection extends pulumi.CustomResource {
     IotHubDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/iotHubDataConnection:IotHubDataConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.consumerGroup = registerOutput<String>('consumerGroup');
-    this.dataFormat = registerOutput<String?>('dataFormat');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    this.eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
-    this.iothubId = registerOutput<String>('iothubId');
-    this.location = registerOutput<String>('location');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure:kusto/iotHubDataConnection:IotHubDataConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseName = registerOutput<String>('databaseName');
+    databaseRoutingType = registerOutput<String?>('databaseRoutingType');
+    eventSystemProperties = registerOutput<List<String>?>(
+      'eventSystemProperties',
+    );
+    iothubId = registerOutput<String>('iothubId');
+    location = registerOutput<String>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retrievalStartDate = registerOutput<String>('retrievalStartDate');
-    this.sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
-    this.tableName = registerOutput<String?>('tableName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retrievalStartDate = registerOutput<String>('retrievalStartDate');
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    tableName = registerOutput<String?>('tableName');
   }
 
   /// Gets an existing [IotHubDataConnection] resource's state with the given [name] and [id].
@@ -591,24 +606,26 @@ class IotHubDataConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/iotHubDataConnection:IotHubDataConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.consumerGroup = registerOutput<String>('consumerGroup');
-    this.dataFormat = registerOutput<String?>('dataFormat');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.databaseRoutingType = registerOutput<String?>('databaseRoutingType');
-    this.eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
-    this.iothubId = registerOutput<String>('iothubId');
-    this.location = registerOutput<String>('location');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure:kusto/iotHubDataConnection:IotHubDataConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseName = registerOutput<String>('databaseName');
+    databaseRoutingType = registerOutput<String?>('databaseRoutingType');
+    eventSystemProperties = registerOutput<List<String>?>(
+      'eventSystemProperties',
+    );
+    iothubId = registerOutput<String>('iothubId');
+    location = registerOutput<String>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retrievalStartDate = registerOutput<String>('retrievalStartDate');
-    this.sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
-    this.tableName = registerOutput<String?>('tableName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retrievalStartDate = registerOutput<String>('retrievalStartDate');
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    tableName = registerOutput<String?>('tableName');
   }
 }

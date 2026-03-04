@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this cluster.
   final pulumi.Input<String>? controlPlaneVip;
+
   /// The VIP which you previously set aside for ingress traffic into this cluster.
   final pulumi.Input<String>? ingressVip;
 
   /// Creates a new [VmwareVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this cluster.
   /// [ingressVip] The VIP which you previously set aside for ingress traffic into this cluster.
-  VmwareVipConfig({
-    this.controlPlaneVip,
-    this.ingressVip,
-  });
+  VmwareVipConfig({this.controlPlaneVip, this.ingressVip});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class VmwareVipConfig {
 
   factory VmwareVipConfig.fromMap(Map<String, dynamic> map) {
     return VmwareVipConfig(
-      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip']! as String).input(),
-      ingressVip: map['ingressVip'] == null ? null : (map['ingressVip']! as String).input(),
+      controlPlaneVip: (() {
+        final guardedValue = map['controlPlaneVip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingressVip: (() {
+        final guardedValue = map['ingressVip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

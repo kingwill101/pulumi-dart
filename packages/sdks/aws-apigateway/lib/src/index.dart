@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/apikey_source.dart';
 export 'index/authorizer.dart';
 export 'index/integration_connection_type.dart';

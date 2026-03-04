@@ -9,20 +9,15 @@ class DatabaseProfileResponse {
 
   /// Creates a new [DatabaseProfileResponse].
   /// [cosmosId] Resource Id of Cosmos Resource
-  DatabaseProfileResponse({
-    required this.cosmosId,
-  });
+  DatabaseProfileResponse({required this.cosmosId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cosmosId': cosmosId,
-    };
+    return <String, dynamic>{'cosmosId': cosmosId};
   }
 
   factory DatabaseProfileResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseProfileResponse(
-      cosmosId: (map['cosmosId'] as String).input(),
+      cosmosId: pulumi.Input.fromValue(map['cosmosId'] as String),
     );
   }
 }
-

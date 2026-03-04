@@ -1,5 +1,3 @@
-library module_datastore;
-
 export 'datastore/functions.dart';
 export 'datastore/get_index_args.dart';
 export 'datastore/get_index_result.dart';

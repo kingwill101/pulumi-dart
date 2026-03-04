@@ -4,16 +4,15 @@ enum SeverityEnum {
   valueMedium("Medium"),
   valueLow("Low");
 
-  const SeverityEnum(this.value);
-  final String value;
+  const SeverityEnum(this.wireValue);
+  final String wireValue;
 
   static SeverityEnum fromValue(String value) {
     for (final item in SeverityEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SeverityEnum value: $value');
   }
 }
-

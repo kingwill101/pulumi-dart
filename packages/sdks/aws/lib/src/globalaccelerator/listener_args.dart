@@ -10,10 +10,13 @@ import 'listener_port_range.dart';
 class ListenerArgs {
   /// The Amazon Resource Name (ARN) of your accelerator.
   final pulumi.Input<String> acceleratorArn;
+
   /// Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
   final pulumi.Input<String>? clientAffinity;
+
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   final pulumi.Input<List<ListenerPortRange>> portRanges;
+
   /// The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
   final pulumi.Input<String> protocol;
 
@@ -33,18 +36,38 @@ class ListenerArgs {
     return <String, dynamic>{
       'acceleratorArn': acceleratorArn,
       'clientAffinity': ?clientAffinity,
-      'portRanges': pulumi.Input.mapInputValue<List<ListenerPortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<ListenerPortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portRanges':
+          pulumi.Input.mapInputValue<
+            List<ListenerPortRange>,
+            List<Map<String, dynamic>>
+          >(
+            portRanges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ListenerPortRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'protocol': protocol,
     };
   }
 
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
-      acceleratorArn: (map['acceleratorArn'] as String).input(),
-      clientAffinity: map['clientAffinity'] == null ? null : ((map['clientAffinity'] as String).input()).input(),
-      portRanges: (pulumi.Input.decodeList<ListenerPortRange>(map['portRanges']!, (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protocol: (map['protocol'] as String).input(),
+      acceleratorArn: pulumi.Input.fromValue(map['acceleratorArn'] as String),
+      clientAffinity: (() {
+        final guardedValue = map['clientAffinity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portRanges: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ListenerPortRange>(
+          map['portRanges']!,
+          (value) =>
+              ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

@@ -8,58 +8,82 @@ import 'instance_zone_vswitch_security_group.dart';
 class InstanceState {
   /// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
   final pulumi.Input<String>? connectCidrBlocks;
+
   /// Creation time.
   final pulumi.Input<String>? createTime;
+
   /// Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
   final pulumi.Input<String>? deleteVpcIpBlock;
+
   /// The time of the instance package. Valid values:
   /// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
   /// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
   ///
-  /// When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
+  /// When the value of&gt; ChargeType is **PrePaid**, this parameter is available and must be passed in.
   final pulumi.Input<int>? duration;
+
   /// Specifies whether IPv6 egress capability is enabled.
   final pulumi.Input<bool>? egressIpv6Enable;
+
   /// Https policy.
   final pulumi.Input<String>? httpsPolicy;
+
   /// The VpcID which the client at.
   final pulumi.Input<String>? ingressVpcId;
+
   /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
   final pulumi.Input<String>? ingressVpcOwnerId;
+
   /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
   final pulumi.Input<String>? ingressVswitchId;
+
   /// The CIDR block for the instance deployment. Valid values are:
   /// - `192.168.0.0/16`.
   /// - `172.16.0.0/12`.
   final pulumi.Input<String>? instanceCidr;
+
   /// Instance name.
   final pulumi.Input<String>? instanceName;
+
   /// Instance spec.
   final pulumi.Input<String>? instanceSpec;
+
   /// The type of the instance. Valid values are:
   final pulumi.Input<String>? instanceType;
+
   /// Specifies whether IPv6 ingress capability is enabled.
   final pulumi.Input<bool>? ipv6Enabled;
+
   /// The payment type of the resource.
   final pulumi.Input<String>? paymentType;
+
   /// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
   final pulumi.Input<String>? pricingCycle;
+
   /// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
   final pulumi.Input<bool>? skipWaitSwitch;
+
   /// The status of the resource.
   final pulumi.Input<String>? status;
+
   /// Does ipv6 support.
   final pulumi.Input<bool>? supportIpv6;
+
   /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
   final pulumi.Input<InstanceToConnectVpcIpBlock>? toConnectVpcIpBlock;
+
   /// User's VpcID.
   final pulumi.Input<String>? userVpcId;
+
   /// Whether the slb of the Vpc supports.
   final pulumi.Input<bool>? vpcSlbIntranetEnable;
+
   /// The zone where the instance is deployed.
   final pulumi.Input<String>? zoneId;
+
   /// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
-  final pulumi.Input<List<InstanceZoneVswitchSecurityGroup>>? zoneVswitchSecurityGroups;
+  final pulumi.Input<List<InstanceZoneVswitchSecurityGroup>>?
+  zoneVswitchSecurityGroups;
 
   /// Creates a new [InstanceState].
   /// [connectCidrBlocks] (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
@@ -134,41 +158,162 @@ class InstanceState {
       'skipWaitSwitch': ?skipWaitSwitch,
       'status': ?status,
       'supportIpv6': ?supportIpv6,
-      'toConnectVpcIpBlock': ?pulumi.Input.mapOptionalInputValue<InstanceToConnectVpcIpBlock, Map<String, dynamic>>(toConnectVpcIpBlock, (value) => value.toMap()),
+      'toConnectVpcIpBlock':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceToConnectVpcIpBlock,
+            Map<String, dynamic>
+          >(toConnectVpcIpBlock, (value) => value.toMap()),
       'userVpcId': ?userVpcId,
       'vpcSlbIntranetEnable': ?vpcSlbIntranetEnable,
       'zoneId': ?zoneId,
-      'zoneVswitchSecurityGroups': ?pulumi.Input.mapOptionalInputValue<List<InstanceZoneVswitchSecurityGroup>, List<Map<String, dynamic>>>(zoneVswitchSecurityGroups, (value) => pulumi.Input.encodeList<InstanceZoneVswitchSecurityGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'zoneVswitchSecurityGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceZoneVswitchSecurityGroup>,
+            List<Map<String, dynamic>>
+          >(
+            zoneVswitchSecurityGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceZoneVswitchSecurityGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      connectCidrBlocks: map['connectCidrBlocks'] == null ? null : (map['connectCidrBlocks']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deleteVpcIpBlock: map['deleteVpcIpBlock'] == null ? null : (map['deleteVpcIpBlock']! as String).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
-      egressIpv6Enable: map['egressIpv6Enable'] == null ? null : (map['egressIpv6Enable']! as bool).input(),
-      httpsPolicy: map['httpsPolicy'] == null ? null : (map['httpsPolicy']! as String).input(),
-      ingressVpcId: map['ingressVpcId'] == null ? null : (map['ingressVpcId']! as String).input(),
-      ingressVpcOwnerId: map['ingressVpcOwnerId'] == null ? null : (map['ingressVpcOwnerId']! as String).input(),
-      ingressVswitchId: map['ingressVswitchId'] == null ? null : (map['ingressVswitchId']! as String).input(),
-      instanceCidr: map['instanceCidr'] == null ? null : (map['instanceCidr']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      instanceSpec: map['instanceSpec'] == null ? null : (map['instanceSpec']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      ipv6Enabled: map['ipv6Enabled'] == null ? null : (map['ipv6Enabled']! as bool).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
-      skipWaitSwitch: map['skipWaitSwitch'] == null ? null : (map['skipWaitSwitch']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      supportIpv6: map['supportIpv6'] == null ? null : (map['supportIpv6']! as bool).input(),
-      toConnectVpcIpBlock: map['toConnectVpcIpBlock'] == null ? null : (InstanceToConnectVpcIpBlock.fromMap((map['toConnectVpcIpBlock']! as Map).cast<String, dynamic>())).input(),
-      userVpcId: map['userVpcId'] == null ? null : (map['userVpcId']! as String).input(),
-      vpcSlbIntranetEnable: map['vpcSlbIntranetEnable'] == null ? null : (map['vpcSlbIntranetEnable']! as bool).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
-      zoneVswitchSecurityGroups: map['zoneVswitchSecurityGroups'] == null ? null : (pulumi.Input.decodeList<InstanceZoneVswitchSecurityGroup>(map['zoneVswitchSecurityGroups']!, (value) => InstanceZoneVswitchSecurityGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectCidrBlocks: (() {
+        final guardedValue = map['connectCidrBlocks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteVpcIpBlock: (() {
+        final guardedValue = map['deleteVpcIpBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      egressIpv6Enable: (() {
+        final guardedValue = map['egressIpv6Enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      httpsPolicy: (() {
+        final guardedValue = map['httpsPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingressVpcId: (() {
+        final guardedValue = map['ingressVpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingressVpcOwnerId: (() {
+        final guardedValue = map['ingressVpcOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingressVswitchId: (() {
+        final guardedValue = map['ingressVswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCidr: (() {
+        final guardedValue = map['instanceCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceSpec: (() {
+        final guardedValue = map['instanceSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6Enabled: (() {
+        final guardedValue = map['ipv6Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pricingCycle: (() {
+        final guardedValue = map['pricingCycle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipWaitSwitch: (() {
+        final guardedValue = map['skipWaitSwitch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportIpv6: (() {
+        final guardedValue = map['supportIpv6'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      toConnectVpcIpBlock: (() {
+        final guardedValue = map['toConnectVpcIpBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceToConnectVpcIpBlock.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userVpcId: (() {
+        final guardedValue = map['userVpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcSlbIntranetEnable: (() {
+        final guardedValue = map['vpcSlbIntranetEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneVswitchSecurityGroups: (() {
+        final guardedValue = map['zoneVswitchSecurityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceZoneVswitchSecurityGroup>(
+            guardedValue,
+            (value) => InstanceZoneVswitchSecurityGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

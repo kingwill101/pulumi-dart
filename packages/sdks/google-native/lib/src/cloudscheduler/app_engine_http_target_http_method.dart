@@ -9,16 +9,15 @@ enum AppEngineHttpTargetHttpMethod {
   patch("PATCH"),
   options("OPTIONS");
 
-  const AppEngineHttpTargetHttpMethod(this.value);
-  final String value;
+  const AppEngineHttpTargetHttpMethod(this.wireValue);
+  final String wireValue;
 
   static AppEngineHttpTargetHttpMethod fromValue(String value) {
     for (final item in AppEngineHttpTargetHttpMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AppEngineHttpTargetHttpMethod value: $value');
   }
 }
-

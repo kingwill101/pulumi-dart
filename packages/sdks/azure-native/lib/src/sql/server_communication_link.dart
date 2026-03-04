@@ -138,16 +138,22 @@ import 'server_communication_link_args.dart';
 class ServerCommunicationLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Communication link kind.  This property is used for Azure Portal metadata.
   late final pulumi.Output<String> kind;
+
   /// Communication link location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The name of the partner server.
   late final pulumi.Output<String> partnerServer;
+
   /// The state.
   late final pulumi.Output<String> state;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -160,17 +166,17 @@ class ServerCommunicationLink extends pulumi.CustomResource {
     ServerCommunicationLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ServerCommunicationLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:sql:ServerCommunicationLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.partnerServer = registerOutput<String>('partnerServer');
-    this.state = registerOutput<String>('state');
-    this.type = registerOutput<String>('type');
+    partnerServer = registerOutput<String>('partnerServer');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
   }
 }

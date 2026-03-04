@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApprovalArgs {
   /// The name of the approvals resource.
   final pulumi.Input<String> approvalName;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [GetApprovalArgs].
   /// [approvalName] The name of the approvals resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetApprovalArgs({
-    required this.approvalName,
-    required this.resourceUri,
-  });
+  GetApprovalArgs({required this.approvalName, required this.resourceUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class GetApprovalArgs {
 
   factory GetApprovalArgs.fromMap(Map<String, dynamic> map) {
     return GetApprovalArgs(
-      approvalName: (map['approvalName'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      approvalName: pulumi.Input.fromValue(map['approvalName'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

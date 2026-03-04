@@ -31,10 +31,13 @@ class GetFeatureArgs {
 
   factory GetFeatureArgs.fromMap(Map<String, dynamic> map) {
     return GetFeatureArgs(
-      featureId: (map['featureId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      featureId: pulumi.Input.fromValue(map['featureId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

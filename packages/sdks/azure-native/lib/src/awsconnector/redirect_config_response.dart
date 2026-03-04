@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedirectConfigResponse {
   /// The hostname. This component is not percent-encoded. The hostname can contain #{host}.
   final pulumi.Input<String>? host;
+
   /// The absolute path, starting with the leading '/'. This component is not percent-encoded. The path can contain #{host}, #{path}, and #{port}.
   final pulumi.Input<String>? path;
+
   /// The port. You can specify a value from 1 to 65535 or #{port}.
   final pulumi.Input<String>? port;
+
   /// The protocol. You can specify HTTP, HTTPS, or #{protocol}. You can redirect HTTP to HTTP, HTTP to HTTPS, and HTTPS to HTTPS. You cannot redirect HTTPS to HTTP.
   final pulumi.Input<String>? protocol;
+
   /// The query parameters, URL-encoded when necessary, but not percent-encoded. Do not include the leading '?', as it is automatically added. You can specify any of the reserved keywords.
   final pulumi.Input<String>? query;
+
   /// The HTTP redirect code. The redirect is either permanent (HTTP 301) or temporary (HTTP 302).
   final pulumi.Input<String>? statusCode;
 
@@ -46,13 +51,36 @@ class RedirectConfigResponse {
 
   factory RedirectConfigResponse.fromMap(Map<String, dynamic> map) {
     return RedirectConfigResponse(
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      query: map['query'] == null ? null : (map['query']! as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      query: (() {
+        final guardedValue = map['query'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

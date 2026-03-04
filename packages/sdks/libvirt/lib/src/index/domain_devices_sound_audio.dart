@@ -8,20 +8,19 @@ class DomainDevicesSoundAudio {
 
   /// Creates a new [DomainDevicesSoundAudio].
   /// [id] This field sets the identifier for the audio configuration in the sound device of the domain.
-  DomainDevicesSoundAudio({
-    this.id,
-  });
+  DomainDevicesSoundAudio({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory DomainDevicesSoundAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSoundAudio(
-      id: map['id'] == null ? null : (map['id']! as double).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

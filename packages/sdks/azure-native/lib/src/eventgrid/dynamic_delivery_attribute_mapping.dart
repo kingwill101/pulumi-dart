@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DynamicDeliveryAttributeMapping {
   /// Name of the delivery attribute or header.
   final pulumi.Input<String>? name;
+
   /// JSON path in the event which contains attribute value.
   final pulumi.Input<String>? sourceField;
+
   /// Type of the delivery attribute or header name.
   /// Expected value is 'Dynamic'.
   final pulumi.Input<String> type;
@@ -32,10 +34,17 @@ class DynamicDeliveryAttributeMapping {
 
   factory DynamicDeliveryAttributeMapping.fromMap(Map<String, dynamic> map) {
     return DynamicDeliveryAttributeMapping(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sourceField: map['sourceField'] == null ? null : (map['sourceField']! as String).input(),
-      type: (map['type'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceField: (() {
+        final guardedValue = map['sourceField'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

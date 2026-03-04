@@ -9,20 +9,19 @@ class GkeClusterGkehubV1beta1 {
 
   /// Creates a new [GkeClusterGkehubV1beta1].
   /// [resourceLink] Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
-  GkeClusterGkehubV1beta1({
-    this.resourceLink,
-  });
+  GkeClusterGkehubV1beta1({this.resourceLink});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceLink': ?resourceLink,
-    };
+    return <String, dynamic>{'resourceLink': ?resourceLink};
   }
 
   factory GkeClusterGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return GkeClusterGkehubV1beta1(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
+      resourceLink: (() {
+        final guardedValue = map['resourceLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

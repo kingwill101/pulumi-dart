@@ -1,11 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_rule_anomaly_duplicate_args.dart';
-import 'alert_rule_anomaly_duplicate_multi_select_observation.dart';
-import 'alert_rule_anomaly_duplicate_prioritized_exclude_observation.dart';
-import 'alert_rule_anomaly_duplicate_required_data_connector.dart';
-import 'alert_rule_anomaly_duplicate_single_select_observation.dart';
 import 'alert_rule_anomaly_duplicate_state.dart';
-import 'alert_rule_anomaly_duplicate_threshold_observation.dart';
 
 /// Manages a Duplicated Anomaly Alert Rule.
 ///
@@ -309,43 +304,61 @@ import 'alert_rule_anomaly_duplicate_threshold_observation.dart';
 class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
   /// The version of the Anomaly Security ML Analytics Settings.
   late final pulumi.Output<int> anomalySettingsVersion;
+
   /// The anomaly version of the Anomaly Alert Rule.
   late final pulumi.Output<String> anomalyVersion;
+
   /// The ID of the built-in Anomaly Alert Rule. Changing this forces a new Duplicated Anomaly Alert Rule to be created.
   late final pulumi.Output<String> builtInRuleId;
+
   /// The description of the Anomaly Alert Rule.
   late final pulumi.Output<String> description;
+
   /// The Display Name of the built-in Anomaly Alert Rule.
   late final pulumi.Output<String> displayName;
+
   /// Should the Duplicated Anomaly Alert Rule be enabled?
   late final pulumi.Output<bool> enabled;
+
   /// The frequency the Anomaly Alert Rule will be run, such as "P1D".
   late final pulumi.Output<String> frequency;
+
   /// Whether the current settings of the Anomaly Alert Rule equals default settings.
   late final pulumi.Output<bool> isDefaultSettings;
+
   /// The ID of the Log Analytics Workspace. Changing this forces a new Duplicated Anomaly Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   late final pulumi.Output<String> mode;
+
   /// A list of `multi_select_observation` blocks as defined below.
-  late final pulumi.Output<List<AlertRuleAnomalyDuplicateMultiSelectObservation>> multiSelectObservations;
+  late final pulumi.Output<List<Map<String, dynamic>>> multiSelectObservations;
   late final pulumi.Output<String> name;
+
   /// A list of `prioritized_exclude_observation` blocks as defined below.
-  late final pulumi.Output<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>> prioritizedExcludeObservations;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  prioritizedExcludeObservations;
+
   /// A `required_data_connector` block as defined below.
-  late final pulumi.Output<List<AlertRuleAnomalyDuplicateRequiredDataConnector>> requiredDataConnectors;
+  late final pulumi.Output<List<Map<String, dynamic>>> requiredDataConnectors;
+
   /// The ID of the anomaly settings definition Id.
   late final pulumi.Output<String> settingsDefinitionId;
+
   /// A list of `single_select_observation` blocks as defined below.
-  late final pulumi.Output<List<AlertRuleAnomalyDuplicateSingleSelectObservation>> singleSelectObservations;
+  late final pulumi.Output<List<Map<String, dynamic>>> singleSelectObservations;
+
   /// A list of categories of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> tactics;
+
   /// A list of techniques of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> techniques;
+
   /// A list of `threshold_observation` blocks as defined below.
   ///
-  /// > **Note:** un-specified `multi_select_observation`, `single_select_observation`, `prioritized_exclude_observation` and `threshold_observation` will be inherited from the built-in Anomaly Alert Rule.
-  late final pulumi.Output<List<AlertRuleAnomalyDuplicateThresholdObservation>> thresholdObservations;
+  /// &gt; **Note:** un-specified `multi_select_observation`, `single_select_observation`, `prioritized_exclude_observation` and `threshold_observation` will be inherited from the built-in Anomaly Alert Rule.
+  late final pulumi.Output<List<Map<String, dynamic>>> thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyDuplicate].
   /// [name] The Pulumi resource name.
@@ -356,30 +369,40 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
     AlertRuleAnomalyDuplicateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/alertRuleAnomalyDuplicate:AlertRuleAnomalyDuplicate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
-    this.anomalyVersion = registerOutput<String>('anomalyVersion');
-    this.builtInRuleId = registerOutput<String>('builtInRuleId');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.frequency = registerOutput<String>('frequency');
-    this.isDefaultSettings = registerOutput<bool>('isDefaultSettings');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
-    this.mode = registerOutput<String>('mode');
-    this.multiSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>('multiSelectObservations');
+         'azure:sentinel/alertRuleAnomalyDuplicate:AlertRuleAnomalyDuplicate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
+    anomalyVersion = registerOutput<String>('anomalyVersion');
+    builtInRuleId = registerOutput<String>('builtInRuleId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    frequency = registerOutput<String>('frequency');
+    isDefaultSettings = registerOutput<bool>('isDefaultSettings');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    mode = registerOutput<String>('mode');
+    multiSelectObservations = registerOutput<List<Map<String, dynamic>>>(
+      'multiSelectObservations',
+    );
     this.name = registerOutput<String>('name');
-    this.prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>('prioritizedExcludeObservations');
-    this.requiredDataConnectors = registerOutput<List<AlertRuleAnomalyDuplicateRequiredDataConnector>>('requiredDataConnectors');
-    this.settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
-    this.singleSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>('singleSelectObservations');
-    this.tactics = registerOutput<List<String>>('tactics');
-    this.techniques = registerOutput<List<String>>('techniques');
-    this.thresholdObservations = registerOutput<List<AlertRuleAnomalyDuplicateThresholdObservation>>('thresholdObservations');
+    prioritizedExcludeObservations = registerOutput<List<Map<String, dynamic>>>(
+      'prioritizedExcludeObservations',
+    );
+    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>>(
+      'requiredDataConnectors',
+    );
+    settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
+    singleSelectObservations = registerOutput<List<Map<String, dynamic>>>(
+      'singleSelectObservations',
+    );
+    tactics = registerOutput<List<String>>('tactics');
+    techniques = registerOutput<List<String>>('techniques');
+    thresholdObservations = registerOutput<List<Map<String, dynamic>>>(
+      'thresholdObservations',
+    );
   }
 
   /// Gets an existing [AlertRuleAnomalyDuplicate] resource's state with the given [name] and [id].
@@ -400,29 +423,39 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/alertRuleAnomalyDuplicate:AlertRuleAnomalyDuplicate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
-    this.anomalyVersion = registerOutput<String>('anomalyVersion');
-    this.builtInRuleId = registerOutput<String>('builtInRuleId');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.frequency = registerOutput<String>('frequency');
-    this.isDefaultSettings = registerOutput<bool>('isDefaultSettings');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
-    this.mode = registerOutput<String>('mode');
-    this.multiSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>('multiSelectObservations');
+         'azure:sentinel/alertRuleAnomalyDuplicate:AlertRuleAnomalyDuplicate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
+    anomalyVersion = registerOutput<String>('anomalyVersion');
+    builtInRuleId = registerOutput<String>('builtInRuleId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    frequency = registerOutput<String>('frequency');
+    isDefaultSettings = registerOutput<bool>('isDefaultSettings');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    mode = registerOutput<String>('mode');
+    multiSelectObservations = registerOutput<List<Map<String, dynamic>>>(
+      'multiSelectObservations',
+    );
     this.name = registerOutput<String>('name');
-    this.prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>('prioritizedExcludeObservations');
-    this.requiredDataConnectors = registerOutput<List<AlertRuleAnomalyDuplicateRequiredDataConnector>>('requiredDataConnectors');
-    this.settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
-    this.singleSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>('singleSelectObservations');
-    this.tactics = registerOutput<List<String>>('tactics');
-    this.techniques = registerOutput<List<String>>('techniques');
-    this.thresholdObservations = registerOutput<List<AlertRuleAnomalyDuplicateThresholdObservation>>('thresholdObservations');
+    prioritizedExcludeObservations = registerOutput<List<Map<String, dynamic>>>(
+      'prioritizedExcludeObservations',
+    );
+    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>>(
+      'requiredDataConnectors',
+    );
+    settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
+    singleSelectObservations = registerOutput<List<Map<String, dynamic>>>(
+      'singleSelectObservations',
+    );
+    tactics = registerOutput<List<String>>('tactics');
+    techniques = registerOutput<List<String>>('techniques');
+    thresholdObservations = registerOutput<List<Map<String, dynamic>>>(
+      'thresholdObservations',
+    );
   }
 }

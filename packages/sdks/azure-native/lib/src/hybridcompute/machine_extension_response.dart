@@ -8,16 +8,22 @@ import 'system_data_response.dart';
 class MachineExtensionResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// Describes Machine Extension Properties.
   final pulumi.Input<MachineExtensionPropertiesResponse>? properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -44,8 +50,16 @@ class MachineExtensionResponse {
       'id': id,
       'location': location,
       'name': name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<MachineExtensionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            MachineExtensionPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'type': type,
     };
@@ -53,14 +67,31 @@ class MachineExtensionResponse {
 
   factory MachineExtensionResponse.fromMap(Map<String, dynamic> map) {
     return MachineExtensionResponse(
-      id: (map['id'] as String).input(),
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (MachineExtensionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MachineExtensionPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

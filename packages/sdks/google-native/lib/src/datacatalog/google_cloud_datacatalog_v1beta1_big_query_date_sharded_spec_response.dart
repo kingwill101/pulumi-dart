@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse {
   /// The Data Catalog resource name of the dataset entry the current table belongs to, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
   final pulumi.Input<String> dataset;
+
   /// Total number of shards.
   final pulumi.Input<String> shardCount;
+
   /// The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the `table_prefix` is `MyTable`.
   final pulumi.Input<String> tablePrefix;
 
@@ -29,12 +31,13 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse(
-      dataset: (map['dataset'] as String).input(),
-      shardCount: (map['shardCount'] as String).input(),
-      tablePrefix: (map['tablePrefix'] as String).input(),
+      dataset: pulumi.Input.fromValue(map['dataset'] as String),
+      shardCount: pulumi.Input.fromValue(map['shardCount'] as String),
+      tablePrefix: pulumi.Input.fromValue(map['tablePrefix'] as String),
     );
   }
 }
-

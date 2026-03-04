@@ -10,8 +10,10 @@ import 'instance_desired_state_timeouts.dart';
 class InstanceDesiredStateArgs {
   /// DB Instance Identifier
   final pulumi.Input<String> identifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configured state of the DB Instance. Valid values are `available` and `stopped`.
   final pulumi.Input<String> state;
   final pulumi.Input<InstanceDesiredStateTimeouts>? timeouts;
@@ -33,17 +35,32 @@ class InstanceDesiredStateArgs {
       'identifier': identifier,
       'region': ?region,
       'state': state,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<InstanceDesiredStateTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceDesiredStateTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory InstanceDesiredStateArgs.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredStateArgs(
-      identifier: (map['identifier'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: (map['state'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : ((InstanceDesiredStateTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      identifier: pulumi.Input.fromValue(map['identifier'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceDesiredStateTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

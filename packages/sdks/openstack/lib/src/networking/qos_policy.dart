@@ -114,36 +114,47 @@ class QosPolicy extends pulumi.CustomResource {
   /// The collection of tags assigned on the QoS policy, which have been
   /// explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
+
   /// The time at which QoS policy was created.
   late final pulumi.Output<String> createdAt;
+
   /// The human-readable description for the QoS policy.
   /// Changing this updates the description of the existing QoS policy.
   late final pulumi.Output<String?> description;
+
   /// Indicates whether the QoS policy is default
   /// QoS policy or not. Changing this updates the default status of the existing
   /// QoS policy.
   late final pulumi.Output<bool?> isDefault;
+
   /// The name of the QoS policy. Changing this updates the name of
   /// the existing QoS policy.
   late final pulumi.Output<String> name;
+
   /// The owner of the QoS policy. Required if admin wants to
   /// create a QoS policy for another project. Changing this creates a new QoS policy.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron Qos policy. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// QoS policy.
   late final pulumi.Output<String> region;
+
   /// The revision number of the QoS policy.
   late final pulumi.Output<int> revisionNumber;
+
   /// Indicates whether this QoS policy is shared across
   /// all projects. Changing this updates the shared status of the existing
   /// QoS policy.
   late final pulumi.Output<bool?> shared;
+
   /// A set of string tags for the QoS policy.
   late final pulumi.Output<List<String>?> tags;
+
   /// The time at which QoS policy was created.
   late final pulumi.Output<String> updatedAt;
+
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -156,23 +167,23 @@ class QosPolicy extends pulumi.CustomResource {
     QosPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/qosPolicy:QosPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.description = registerOutput<String?>('description');
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'openstack:networking/qosPolicy:QosPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allTags = registerOutput<List<String>>('allTags');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.revisionNumber = registerOutput<int>('revisionNumber');
-    this.shared = registerOutput<bool?>('shared');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    revisionNumber = registerOutput<int>('revisionNumber');
+    shared = registerOutput<bool?>('shared');
+    tags = registerOutput<List<String>?>('tags');
+    updatedAt = registerOutput<String>('updatedAt');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 
   /// Gets an existing [QosPolicy] resource's state with the given [name] and [id].
@@ -193,22 +204,22 @@ class QosPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/qosPolicy:QosPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.description = registerOutput<String?>('description');
-    this.isDefault = registerOutput<bool?>('isDefault');
+         'openstack:networking/qosPolicy:QosPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allTags = registerOutput<List<String>>('allTags');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.revisionNumber = registerOutput<int>('revisionNumber');
-    this.shared = registerOutput<bool?>('shared');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    revisionNumber = registerOutput<int>('revisionNumber');
+    shared = registerOutput<bool?>('shared');
+    tags = registerOutput<List<String>?>('tags');
+    updatedAt = registerOutput<String>('updatedAt');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 }

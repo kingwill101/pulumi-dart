@@ -31,10 +31,9 @@ class GetOverrideArgs {
 
   factory GetOverrideArgs.fromMap(Map<String, dynamic> map) {
     return GetOverrideArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      overrideId: (map['overrideId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      overrideId: pulumi.Input.fromValue(map['overrideId'] as String),
     );
   }
 }
-

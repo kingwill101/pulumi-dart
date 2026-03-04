@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcFailoverTestJobArgs {
   /// Job description.
   final pulumi.Input<String>? description;
+
   /// Job name.
   final pulumi.Input<String>? ecFailoverTestJobName;
+
   /// Job duration.
   final pulumi.Input<int> jobDuration;
+
   /// Job type.
   final pulumi.Input<String> jobType;
+
   /// Resource id list.
   final pulumi.Input<List<String>> resourceIds;
+
   /// Resource type.
   final pulumi.Input<String> resourceType;
+
   /// The status of the resource.
   final pulumi.Input<String>? status;
 
@@ -54,14 +60,27 @@ class EcFailoverTestJobArgs {
 
   factory EcFailoverTestJobArgs.fromMap(Map<String, dynamic> map) {
     return EcFailoverTestJobArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ecFailoverTestJobName: map['ecFailoverTestJobName'] == null ? null : (map['ecFailoverTestJobName']! as String).input(),
-      jobDuration: (map['jobDuration'] as int).input(),
-      jobType: (map['jobType'] as String).input(),
-      resourceIds: ((map['resourceIds'] as List).cast<String>()).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecFailoverTestJobName: (() {
+        final guardedValue = map['ecFailoverTestJobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobDuration: pulumi.Input.fromValue(map['jobDuration'] as int),
+      jobType: pulumi.Input.fromValue(map['jobType'] as String),
+      resourceIds: pulumi.Input.fromValue(
+        (map['resourceIds'] as List).cast<String>(),
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

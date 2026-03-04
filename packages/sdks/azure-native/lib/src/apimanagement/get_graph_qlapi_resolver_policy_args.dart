@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGraphQLApiResolverPolicyArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
+
   /// Policy Export Format.
   final pulumi.Input<String>? format;
+
   /// The identifier of the Policy.
   final pulumi.Input<String> policyId;
+
   /// Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance.
   final pulumi.Input<String> resolverId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -49,13 +54,18 @@ class GetGraphQLApiResolverPolicyArgs {
 
   factory GetGraphQLApiResolverPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetGraphQLApiResolverPolicyArgs(
-      apiId: (map['apiId'] as String).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      policyId: (map['policyId'] as String).input(),
-      resolverId: (map['resolverId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: pulumi.Input.fromValue(map['policyId'] as String),
+      resolverId: pulumi.Input.fromValue(map['resolverId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum ClusterTelemetryType {
   enabled("ENABLED"),
   systemOnly("SYSTEM_ONLY");
 
-  const ClusterTelemetryType(this.value);
-  final String value;
+  const ClusterTelemetryType(this.wireValue);
+  final String wireValue;
 
   static ClusterTelemetryType fromValue(String value) {
     for (final item in ClusterTelemetryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterTelemetryType value: $value');
   }
 }
-

@@ -12,26 +12,37 @@ import 'cloud_tiering_volume_free_space_policy_status_response.dart';
 class ServerEndpointCloudTieringStatusResponse {
   /// Information regarding how well the local cache on the server is performing.
   final pulumi.Input<CloudTieringCachePerformanceResponse> cachePerformance;
+
   /// Status of the date policy
   final pulumi.Input<CloudTieringDatePolicyStatusResponse> datePolicyStatus;
+
   /// Information regarding files that failed to be tiered
   final pulumi.Input<CloudTieringFilesNotTieringResponse> filesNotTiering;
+
   /// Cloud tiering health state.
   final pulumi.Input<String> health;
+
   /// The last updated timestamp of health state
   final pulumi.Input<String> healthLastUpdatedTimestamp;
+
   /// Last cloud tiering result (HResult)
   final pulumi.Input<int> lastCloudTieringResult;
+
   /// Last cloud tiering success timestamp
   final pulumi.Input<String> lastSuccessTimestamp;
+
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
+
   /// Information regarding the low disk mode state
   final pulumi.Input<CloudTieringLowDiskModeResponse> lowDiskMode;
+
   /// Information regarding how much local space cloud tiering is saving.
   final pulumi.Input<CloudTieringSpaceSavingsResponse> spaceSavings;
+
   /// Status of the volume free space policy
-  final pulumi.Input<CloudTieringVolumeFreeSpacePolicyStatusResponse> volumeFreeSpacePolicyStatus;
+  final pulumi.Input<CloudTieringVolumeFreeSpacePolicyStatusResponse>
+  volumeFreeSpacePolicyStatus;
 
   /// Creates a new [ServerEndpointCloudTieringStatusResponse].
   /// [cachePerformance] Information regarding how well the local cache on the server is performing.
@@ -61,34 +72,91 @@ class ServerEndpointCloudTieringStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cachePerformance': pulumi.Input.mapInputValue<CloudTieringCachePerformanceResponse, Map<String, dynamic>>(cachePerformance, (value) => value.toMap()),
-      'datePolicyStatus': pulumi.Input.mapInputValue<CloudTieringDatePolicyStatusResponse, Map<String, dynamic>>(datePolicyStatus, (value) => value.toMap()),
-      'filesNotTiering': pulumi.Input.mapInputValue<CloudTieringFilesNotTieringResponse, Map<String, dynamic>>(filesNotTiering, (value) => value.toMap()),
+      'cachePerformance':
+          pulumi.Input.mapInputValue<
+            CloudTieringCachePerformanceResponse,
+            Map<String, dynamic>
+          >(cachePerformance, (value) => value.toMap()),
+      'datePolicyStatus':
+          pulumi.Input.mapInputValue<
+            CloudTieringDatePolicyStatusResponse,
+            Map<String, dynamic>
+          >(datePolicyStatus, (value) => value.toMap()),
+      'filesNotTiering':
+          pulumi.Input.mapInputValue<
+            CloudTieringFilesNotTieringResponse,
+            Map<String, dynamic>
+          >(filesNotTiering, (value) => value.toMap()),
       'health': health,
       'healthLastUpdatedTimestamp': healthLastUpdatedTimestamp,
       'lastCloudTieringResult': lastCloudTieringResult,
       'lastSuccessTimestamp': lastSuccessTimestamp,
       'lastUpdatedTimestamp': lastUpdatedTimestamp,
-      'lowDiskMode': pulumi.Input.mapInputValue<CloudTieringLowDiskModeResponse, Map<String, dynamic>>(lowDiskMode, (value) => value.toMap()),
-      'spaceSavings': pulumi.Input.mapInputValue<CloudTieringSpaceSavingsResponse, Map<String, dynamic>>(spaceSavings, (value) => value.toMap()),
-      'volumeFreeSpacePolicyStatus': pulumi.Input.mapInputValue<CloudTieringVolumeFreeSpacePolicyStatusResponse, Map<String, dynamic>>(volumeFreeSpacePolicyStatus, (value) => value.toMap()),
+      'lowDiskMode':
+          pulumi.Input.mapInputValue<
+            CloudTieringLowDiskModeResponse,
+            Map<String, dynamic>
+          >(lowDiskMode, (value) => value.toMap()),
+      'spaceSavings':
+          pulumi.Input.mapInputValue<
+            CloudTieringSpaceSavingsResponse,
+            Map<String, dynamic>
+          >(spaceSavings, (value) => value.toMap()),
+      'volumeFreeSpacePolicyStatus':
+          pulumi.Input.mapInputValue<
+            CloudTieringVolumeFreeSpacePolicyStatusResponse,
+            Map<String, dynamic>
+          >(volumeFreeSpacePolicyStatus, (value) => value.toMap()),
     };
   }
 
-  factory ServerEndpointCloudTieringStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory ServerEndpointCloudTieringStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerEndpointCloudTieringStatusResponse(
-      cachePerformance: (CloudTieringCachePerformanceResponse.fromMap((map['cachePerformance'] as Map).cast<String, dynamic>())).input(),
-      datePolicyStatus: (CloudTieringDatePolicyStatusResponse.fromMap((map['datePolicyStatus'] as Map).cast<String, dynamic>())).input(),
-      filesNotTiering: (CloudTieringFilesNotTieringResponse.fromMap((map['filesNotTiering'] as Map).cast<String, dynamic>())).input(),
-      health: (map['health'] as String).input(),
-      healthLastUpdatedTimestamp: (map['healthLastUpdatedTimestamp'] as String).input(),
-      lastCloudTieringResult: (map['lastCloudTieringResult'] as int).input(),
-      lastSuccessTimestamp: (map['lastSuccessTimestamp'] as String).input(),
-      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
-      lowDiskMode: (CloudTieringLowDiskModeResponse.fromMap((map['lowDiskMode'] as Map).cast<String, dynamic>())).input(),
-      spaceSavings: (CloudTieringSpaceSavingsResponse.fromMap((map['spaceSavings'] as Map).cast<String, dynamic>())).input(),
-      volumeFreeSpacePolicyStatus: (CloudTieringVolumeFreeSpacePolicyStatusResponse.fromMap((map['volumeFreeSpacePolicyStatus'] as Map).cast<String, dynamic>())).input(),
+      cachePerformance: pulumi.Input.fromValue(
+        CloudTieringCachePerformanceResponse.fromMap(
+          (map['cachePerformance']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      datePolicyStatus: pulumi.Input.fromValue(
+        CloudTieringDatePolicyStatusResponse.fromMap(
+          (map['datePolicyStatus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      filesNotTiering: pulumi.Input.fromValue(
+        CloudTieringFilesNotTieringResponse.fromMap(
+          (map['filesNotTiering']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      health: pulumi.Input.fromValue(map['health'] as String),
+      healthLastUpdatedTimestamp: pulumi.Input.fromValue(
+        map['healthLastUpdatedTimestamp'] as String,
+      ),
+      lastCloudTieringResult: pulumi.Input.fromValue(
+        map['lastCloudTieringResult'] as int,
+      ),
+      lastSuccessTimestamp: pulumi.Input.fromValue(
+        map['lastSuccessTimestamp'] as String,
+      ),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(
+        map['lastUpdatedTimestamp'] as String,
+      ),
+      lowDiskMode: pulumi.Input.fromValue(
+        CloudTieringLowDiskModeResponse.fromMap(
+          (map['lowDiskMode']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      spaceSavings: pulumi.Input.fromValue(
+        CloudTieringSpaceSavingsResponse.fromMap(
+          (map['spaceSavings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      volumeFreeSpacePolicyStatus: pulumi.Input.fromValue(
+        CloudTieringVolumeFreeSpacePolicyStatusResponse.fromMap(
+          (map['volumeFreeSpacePolicyStatus']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

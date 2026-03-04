@@ -19,10 +19,15 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition {
     };
   }
 
-  factory StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.fromMap(Map<String, dynamic> map) {
+  factory StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition(
-      partitioningTimeGranularity: map['partitioningTimeGranularity'] == null ? null : (map['partitioningTimeGranularity']! as String).input(),
+      partitioningTimeGranularity: (() {
+        final guardedValue = map['partitioningTimeGranularity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkRuleResponse {
   /// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
   final pulumi.Input<String>? id;
+
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
   final pulumi.Input<bool>? ignoreMissingVNetServiceEndpoint;
 
   /// Creates a new [VirtualNetworkRuleResponse].
   /// [id] Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
   /// [ignoreMissingVNetServiceEndpoint] Create firewall rule before the virtual network has vnet service endpoint enabled.
-  VirtualNetworkRuleResponse({
-    this.id,
-    this.ignoreMissingVNetServiceEndpoint,
-  });
+  VirtualNetworkRuleResponse({this.id, this.ignoreMissingVNetServiceEndpoint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class VirtualNetworkRuleResponse {
 
   factory VirtualNetworkRuleResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      ignoreMissingVNetServiceEndpoint: map['ignoreMissingVNetServiceEndpoint'] == null ? null : (map['ignoreMissingVNetServiceEndpoint']! as bool).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ignoreMissingVNetServiceEndpoint: (() {
+        final guardedValue = map['ignoreMissingVNetServiceEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

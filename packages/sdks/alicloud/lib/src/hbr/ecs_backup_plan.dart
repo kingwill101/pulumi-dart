@@ -6,11 +6,11 @@ import 'ecs_backup_plan_state.dart';
 ///
 /// For information about HBR Ecs Backup Plan and how to use it, see [What is Ecs Backup Plan](https://www.alibabacloud.com/help/doc-detail/186574.htm).
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
-/// > **NOTE:** Deprecated since v1.249.0.
+/// &gt; **NOTE:** Deprecated since v1.249.0.
 ///
-/// > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
+/// &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
 ///
 /// ## Example Usage
 ///
@@ -555,37 +555,53 @@ import 'ecs_backup_plan_state.dart';
 class EcsBackupPlan extends pulumi.CustomResource {
   /// Backup type. Valid values: `COMPLETE`.
   late final pulumi.Output<String> backupType;
+
   /// The role name created in the original account RAM backup by the cross account managed by the current account.
   late final pulumi.Output<String?> crossAccountRoleName;
+
   /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
   late final pulumi.Output<String> crossAccountType;
+
   /// The original account ID of the cross account backup managed by the current account.
   late final pulumi.Output<int?> crossAccountUserId;
+
   /// The detail of the backup plan.
   late final pulumi.Output<String?> detail;
+
   /// Whether to disable the backup task. Valid values: `true`, `false`.
   late final pulumi.Output<bool> disabled;
+
   /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
   late final pulumi.Output<String> ecsBackupPlanName;
+
   /// Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
   late final pulumi.Output<String?> exclude;
+
   /// Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
   late final pulumi.Output<String?> include;
+
   /// The ID of ECS instance. The ecs backup client must have been installed on the host.
   late final pulumi.Output<String> instanceId;
+
   /// Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
   late final pulumi.Output<String?> options;
+
   /// List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
   late final pulumi.Output<List<String>?> paths;
+
   /// Backup retention days, the minimum is 1.
   late final pulumi.Output<String> retention;
+
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// * `startTime` Backup start time, UNIX time seconds.
   late final pulumi.Output<String> schedule;
+
   /// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
   late final pulumi.Output<String?> speedLimit;
+
   /// Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
   late final pulumi.Output<bool?> updatePaths;
+
   /// The ID of Backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -598,28 +614,28 @@ class EcsBackupPlan extends pulumi.CustomResource {
     EcsBackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupType = registerOutput<String>('backupType');
-    this.crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
-    this.crossAccountType = registerOutput<String>('crossAccountType');
-    this.crossAccountUserId = registerOutput<int?>('crossAccountUserId');
-    this.detail = registerOutput<String?>('detail');
-    this.disabled = registerOutput<bool>('disabled');
-    this.ecsBackupPlanName = registerOutput<String>('ecsBackupPlanName');
-    this.exclude = registerOutput<String?>('exclude');
-    this.include = registerOutput<String?>('include');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupType = registerOutput<String>('backupType');
+    crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
+    crossAccountType = registerOutput<String>('crossAccountType');
+    crossAccountUserId = registerOutput<int?>('crossAccountUserId');
+    detail = registerOutput<String?>('detail');
+    disabled = registerOutput<bool>('disabled');
+    ecsBackupPlanName = registerOutput<String>('ecsBackupPlanName');
+    exclude = registerOutput<String?>('exclude');
+    include = registerOutput<String?>('include');
+    instanceId = registerOutput<String>('instanceId');
     this.options = registerOutput<String?>('options');
-    this.paths = registerOutput<List<String>?>('paths');
-    this.retention = registerOutput<String>('retention');
-    this.schedule = registerOutput<String>('schedule');
-    this.speedLimit = registerOutput<String?>('speedLimit');
-    this.updatePaths = registerOutput<bool?>('updatePaths');
-    this.vaultId = registerOutput<String>('vaultId');
+    paths = registerOutput<List<String>?>('paths');
+    retention = registerOutput<String>('retention');
+    schedule = registerOutput<String>('schedule');
+    speedLimit = registerOutput<String?>('speedLimit');
+    updatePaths = registerOutput<bool?>('updatePaths');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [EcsBackupPlan] resource's state with the given [name] and [id].
@@ -640,27 +656,27 @@ class EcsBackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupType = registerOutput<String>('backupType');
-    this.crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
-    this.crossAccountType = registerOutput<String>('crossAccountType');
-    this.crossAccountUserId = registerOutput<int?>('crossAccountUserId');
-    this.detail = registerOutput<String?>('detail');
-    this.disabled = registerOutput<bool>('disabled');
-    this.ecsBackupPlanName = registerOutput<String>('ecsBackupPlanName');
-    this.exclude = registerOutput<String?>('exclude');
-    this.include = registerOutput<String?>('include');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:hbr/ecsBackupPlan:EcsBackupPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupType = registerOutput<String>('backupType');
+    crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
+    crossAccountType = registerOutput<String>('crossAccountType');
+    crossAccountUserId = registerOutput<int?>('crossAccountUserId');
+    detail = registerOutput<String?>('detail');
+    disabled = registerOutput<bool>('disabled');
+    ecsBackupPlanName = registerOutput<String>('ecsBackupPlanName');
+    exclude = registerOutput<String?>('exclude');
+    include = registerOutput<String?>('include');
+    instanceId = registerOutput<String>('instanceId');
     this.options = registerOutput<String?>('options');
-    this.paths = registerOutput<List<String>?>('paths');
-    this.retention = registerOutput<String>('retention');
-    this.schedule = registerOutput<String>('schedule');
-    this.speedLimit = registerOutput<String?>('speedLimit');
-    this.updatePaths = registerOutput<bool?>('updatePaths');
-    this.vaultId = registerOutput<String>('vaultId');
+    paths = registerOutput<List<String>?>('paths');
+    retention = registerOutput<String>('retention');
+    schedule = registerOutput<String>('schedule');
+    speedLimit = registerOutput<String?>('speedLimit');
+    updatePaths = registerOutput<bool?>('updatePaths');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

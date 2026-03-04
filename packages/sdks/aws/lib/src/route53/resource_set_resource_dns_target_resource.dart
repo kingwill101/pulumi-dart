@@ -6,14 +6,19 @@ import 'resource_set_resource_dns_target_resource_target_resource.dart';
 class ResourceSetResourceDnsTargetResource {
   /// DNS Name that acts as the ingress point to a portion of application.
   final pulumi.Input<String> domainName;
+
   /// Hosted Zone ARN that contains the DNS record with the provided name of target resource.
   final pulumi.Input<String>? hostedZoneArn;
+
   /// Route53 record set id to uniquely identify a record given a `domain_name` and a `record_type`.
   final pulumi.Input<String>? recordSetId;
+
   /// Type of DNS Record of target resource.
   final pulumi.Input<String>? recordType;
+
   /// Target resource the R53 record specified with the above params points to.
-  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResource>? targetResource;
+  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResource>?
+  targetResource;
 
   /// Creates a new [ResourceSetResourceDnsTargetResource].
   /// [domainName] DNS Name that acts as the ingress point to a portion of application.
@@ -35,18 +40,43 @@ class ResourceSetResourceDnsTargetResource {
       'hostedZoneArn': ?hostedZoneArn,
       'recordSetId': ?recordSetId,
       'recordType': ?recordType,
-      'targetResource': ?pulumi.Input.mapOptionalInputValue<ResourceSetResourceDnsTargetResourceTargetResource, Map<String, dynamic>>(targetResource, (value) => value.toMap()),
+      'targetResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceSetResourceDnsTargetResourceTargetResource,
+            Map<String, dynamic>
+          >(targetResource, (value) => value.toMap()),
     };
   }
 
-  factory ResourceSetResourceDnsTargetResource.fromMap(Map<String, dynamic> map) {
+  factory ResourceSetResourceDnsTargetResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceSetResourceDnsTargetResource(
-      domainName: (map['domainName'] as String).input(),
-      hostedZoneArn: map['hostedZoneArn'] == null ? null : ((map['hostedZoneArn'] as String).input()).input(),
-      recordSetId: map['recordSetId'] == null ? null : ((map['recordSetId'] as String).input()).input(),
-      recordType: map['recordType'] == null ? null : ((map['recordType'] as String).input()).input(),
-      targetResource: map['targetResource'] == null ? null : ((ResourceSetResourceDnsTargetResourceTargetResource.fromMap((map['targetResource']! as Map).cast<String, dynamic>())).input()).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      hostedZoneArn: (() {
+        final guardedValue = map['hostedZoneArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordSetId: (() {
+        final guardedValue = map['recordSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordType: (() {
+        final guardedValue = map['recordType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResource: (() {
+        final guardedValue = map['targetResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceSetResourceDnsTargetResourceTargetResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

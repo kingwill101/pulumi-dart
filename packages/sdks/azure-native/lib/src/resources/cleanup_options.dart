@@ -4,16 +4,15 @@ enum CleanupOptions {
   valueOnSuccess("OnSuccess"),
   valueOnExpiration("OnExpiration");
 
-  const CleanupOptions(this.value);
-  final String value;
+  const CleanupOptions(this.wireValue);
+  final String wireValue;
 
   static CleanupOptions fromValue(String value) {
     for (final item in CleanupOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CleanupOptions value: $value');
   }
 }
-

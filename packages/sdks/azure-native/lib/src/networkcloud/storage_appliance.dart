@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'administrative_credentials_response.dart';
 import 'extended_location_response.dart';
-import 'secret_rotation_status_response.dart';
 import 'storage_appliance_args.dart';
 import 'system_data_response.dart';
 
@@ -233,55 +232,81 @@ import 'system_data_response.dart';
 /// ```
 class StorageAppliance extends pulumi.CustomResource {
   /// The credentials of the administrative interface on this storage appliance.
-  late final pulumi.Output<AdministrativeCredentialsResponse> administratorCredentials;
+  late final pulumi.Output<AdministrativeCredentialsResponse>
+  administratorCredentials;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The total capacity of the storage appliance. Measured in GiB.
   late final pulumi.Output<double> capacity;
+
   /// The amount of storage consumed.
   late final pulumi.Output<double> capacityUsed;
+
   /// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
   late final pulumi.Output<String> clusterId;
+
   /// The detailed status of the storage appliance.
   late final pulumi.Output<String> detailedStatus;
+
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
+
   /// Resource ETag.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The endpoint for the management interface of the storage appliance.
   late final pulumi.Output<String> managementIpv4Address;
+
   /// The manufacturer of the storage appliance.
   late final pulumi.Output<String> manufacturer;
+
   /// The model of the storage appliance.
   late final pulumi.Output<String> model;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the storage appliance.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource ID of the rack where this storage appliance resides.
   late final pulumi.Output<String> rackId;
+
   /// The slot the storage appliance is in the rack based on the BOM configuration.
   late final pulumi.Output<double> rackSlot;
+
   /// The indicator of whether the storage appliance supports remote vendor management.
   late final pulumi.Output<String> remoteVendorManagementFeature;
+
   /// The indicator of whether the remote vendor management feature is enabled or disabled, or unsupported if it is an unsupported feature.
   late final pulumi.Output<String> remoteVendorManagementStatus;
+
   /// The list of statuses that represent secret rotation activity.
-  late final pulumi.Output<List<SecretRotationStatusResponse>> secretRotationStatus;
+  late final pulumi.Output<List<Map<String, dynamic>>> secretRotationStatus;
+
   /// The serial number for the storage appliance.
   late final pulumi.Output<String> serialNumber;
+
   /// The SKU for the storage appliance.
   late final pulumi.Output<String> storageApplianceSkuId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The version of the storage appliance.
   late final pulumi.Output<String> version;
 
@@ -294,36 +319,47 @@ class StorageAppliance extends pulumi.CustomResource {
     StorageApplianceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkcloud:StorageAppliance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorCredentials = registerOutput<AdministrativeCredentialsResponse>('administratorCredentials');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.capacity = registerOutput<double>('capacity');
-    this.capacityUsed = registerOutput<double>('capacityUsed');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.detailedStatus = registerOutput<String>('detailedStatus');
-    this.detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.location = registerOutput<String>('location');
-    this.managementIpv4Address = registerOutput<String>('managementIpv4Address');
-    this.manufacturer = registerOutput<String>('manufacturer');
-    this.model = registerOutput<String>('model');
+         'azure-native:networkcloud:StorageAppliance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorCredentials =
+        registerOutput<AdministrativeCredentialsResponse>(
+          'administratorCredentials',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capacity = registerOutput<double>('capacity');
+    capacityUsed = registerOutput<double>('capacityUsed');
+    clusterId = registerOutput<String>('clusterId');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
+    managementIpv4Address = registerOutput<String>('managementIpv4Address');
+    manufacturer = registerOutput<String>('manufacturer');
+    model = registerOutput<String>('model');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.rackId = registerOutput<String>('rackId');
-    this.rackSlot = registerOutput<double>('rackSlot');
-    this.remoteVendorManagementFeature = registerOutput<String>('remoteVendorManagementFeature');
-    this.remoteVendorManagementStatus = registerOutput<String>('remoteVendorManagementStatus');
-    this.secretRotationStatus = registerOutput<List<SecretRotationStatusResponse>>('secretRotationStatus');
-    this.serialNumber = registerOutput<String>('serialNumber');
-    this.storageApplianceSkuId = registerOutput<String>('storageApplianceSkuId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    provisioningState = registerOutput<String>('provisioningState');
+    rackId = registerOutput<String>('rackId');
+    rackSlot = registerOutput<double>('rackSlot');
+    remoteVendorManagementFeature = registerOutput<String>(
+      'remoteVendorManagementFeature',
+    );
+    remoteVendorManagementStatus = registerOutput<String>(
+      'remoteVendorManagementStatus',
+    );
+    secretRotationStatus = registerOutput<List<Map<String, dynamic>>>(
+      'secretRotationStatus',
+    );
+    serialNumber = registerOutput<String>('serialNumber');
+    storageApplianceSkuId = registerOutput<String>('storageApplianceSkuId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

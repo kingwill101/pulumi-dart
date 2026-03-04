@@ -2,16 +2,15 @@
 enum WebhookType {
   valueAzureDevOps("AzureDevOps");
 
-  const WebhookType(this.value);
-  final String value;
+  const WebhookType(this.wireValue);
+  final String wireValue;
 
   static WebhookType fromValue(String value) {
     for (final item in WebhookType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebhookType value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagFilter {
   /// This is the filter tag name, it can have 1 - 128 characters
   final pulumi.Input<String> name;
+
   /// This is the comparison operator which is used for object comparison and filtering. Only == (equality operator) is currently supported
   final pulumi.Input<String> op;
+
   /// This is the filter tag value field used for tag based filtering, it can have 0 - 256 characters
   final pulumi.Input<String> value;
 
@@ -15,26 +17,17 @@ class TagFilter {
   /// [name] This is the filter tag name, it can have 1 - 128 characters
   /// [op] This is the comparison operator which is used for object comparison and filtering. Only == (equality operator) is currently supported
   /// [value] This is the filter tag value field used for tag based filtering, it can have 0 - 256 characters
-  TagFilter({
-    required this.name,
-    required this.op,
-    required this.value,
-  });
+  TagFilter({required this.name, required this.op, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'op': op,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'op': op, 'value': value};
   }
 
   factory TagFilter.fromMap(Map<String, dynamic> map) {
     return TagFilter(
-      name: (map['name'] as String).input(),
-      op: (map['op'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      op: pulumi.Input.fromValue(map['op'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

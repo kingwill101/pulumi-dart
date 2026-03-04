@@ -575,12 +575,12 @@ Future<GetBucketResult> getBucket(
   return GetBucketResult.fromMap(result);
 }
 
-/// > **NOTE:** The `aws.s3.BucketObject` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.BucketObjectv2` instead, where new features and fixes will be added.
+/// &gt; **NOTE:** The `aws.s3.BucketObject` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.BucketObjectv2` instead, where new features and fixes will be added.
 ///
 /// The S3 object data source allows access to the metadata and
 /// _optionally_ (see below) content of an object stored inside S3 bucket.
 ///
-/// > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable `Content-Type`:
+/// &gt; **Note:** The content of an object (`body` field) is available only for objects which have a human-readable `Content-Type`:
 ///
 /// * `text/*`
 /// * `application/json`
@@ -1013,9 +1013,9 @@ Future<GetBucketObjectLockConfigurationResult> getBucketObjectLockConfiguration(
   return GetBucketObjectLockConfigurationResult.fromMap(result);
 }
 
-/// > **NOTE:** The `aws.s3.getBucketObjects` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.getObjects` instead, where new features and fixes will be added.
+/// &gt; **NOTE:** The `aws.s3.getBucketObjects` data source is DEPRECATED and will be removed in a future version! Use `aws.s3.getObjects` instead, where new features and fixes will be added.
 ///
-/// > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
+/// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
 ///
 /// The objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_bucket_objects_get_bucket_objects_args_doc}
@@ -1244,7 +1244,8 @@ Future<GetBucketPolicyResult> getBucketPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_bucket_replication_configuration_get_bucket_replication_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguration(
+Future<GetBucketReplicationConfigurationResult>
+getBucketReplicationConfiguration(
   GetBucketReplicationConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1260,7 +1261,7 @@ Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguratio
 /// The Canonical User ID data source allows access to the [canonical user ID](http://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html)
 /// for the effective account in which this provider is working.
 ///
-/// > **NOTE:** To use this data source, you must have the `s3:ListAllMyBuckets` permission.
+/// &gt; **NOTE:** To use this data source, you must have the `s3:ListAllMyBuckets` permission.
 ///
 /// ## Example Usage
 ///
@@ -1350,8 +1351,7 @@ Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguratio
 ///   canonicalUserId: ${current.id}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetCanonicalUserIdResult> getCanonicalUserId(
-  {
+Future<GetCanonicalUserIdResult> getCanonicalUserId({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1462,7 +1462,7 @@ Future<GetDirectoryBucketsResult> getDirectoryBuckets(
 /// The S3 object data source allows access to the metadata and
 /// _optionally_ (see below) content of an object stored inside S3 bucket.
 ///
-/// > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable `Content-Type`:
+/// &gt; **Note:** The content of an object (`body` field) is available only for objects which have a human-readable `Content-Type`:
 ///
 /// * `text/*`
 /// * `application/json`
@@ -1789,7 +1789,7 @@ Future<GetObjectResult> getObject(
   return GetObjectResult.fromMap(result);
 }
 
-/// > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+/// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
 ///
 /// The objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_objects_get_objects_args_doc}

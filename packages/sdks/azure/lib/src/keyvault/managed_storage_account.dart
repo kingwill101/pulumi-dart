@@ -400,18 +400,24 @@ import 'managed_storage_account_state.dart';
 class ManagedStorageAccount extends pulumi.CustomResource {
   /// The ID of the Key Vault where the Managed Storage Account should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
+
   /// The name which should be used for this Key Vault Managed Storage Account. Changing this forces a new Key Vault Managed Storage Account to be created.
   late final pulumi.Output<String> name;
+
   /// Should Storage Account access key be regenerated periodically?
   ///
-  /// > **Note:** Azure Key Vault application needs to have access to Storage Account for auto regeneration to work. Example can be found above.
+  /// &gt; **Note:** Azure Key Vault application needs to have access to Storage Account for auto regeneration to work. Example can be found above.
   late final pulumi.Output<bool?> regenerateKeyAutomatically;
+
   /// How often Storage Account access key should be regenerated. Value needs to be in [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).
   late final pulumi.Output<String?> regenerationPeriod;
+
   /// The ID of the Storage Account.
   late final pulumi.Output<String> storageAccountId;
+
   /// Which Storage Account access key that is managed by Key Vault. Possible values are `key1` and `key2`.
   late final pulumi.Output<String> storageAccountKey;
+
   /// A mapping of tags which should be assigned to the Key Vault Managed Storage Account. Changing this forces a new resource to be created.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -424,18 +430,20 @@ class ManagedStorageAccount extends pulumi.CustomResource {
     ManagedStorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/managedStorageAccount:ManagedStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+         'azure:keyvault/managedStorageAccount:ManagedStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
-    this.regenerateKeyAutomatically = registerOutput<bool?>('regenerateKeyAutomatically');
-    this.regenerationPeriod = registerOutput<String?>('regenerationPeriod');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.storageAccountKey = registerOutput<String>('storageAccountKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    regenerateKeyAutomatically = registerOutput<bool?>(
+      'regenerateKeyAutomatically',
+    );
+    regenerationPeriod = registerOutput<String?>('regenerationPeriod');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageAccountKey = registerOutput<String>('storageAccountKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ManagedStorageAccount] resource's state with the given [name] and [id].
@@ -456,17 +464,19 @@ class ManagedStorageAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/managedStorageAccount:ManagedStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+         'azure:keyvault/managedStorageAccount:ManagedStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
-    this.regenerateKeyAutomatically = registerOutput<bool?>('regenerateKeyAutomatically');
-    this.regenerationPeriod = registerOutput<String?>('regenerationPeriod');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
-    this.storageAccountKey = registerOutput<String>('storageAccountKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    regenerateKeyAutomatically = registerOutput<bool?>(
+      'regenerateKeyAutomatically',
+    );
+    regenerationPeriod = registerOutput<String?>('regenerationPeriod');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    storageAccountKey = registerOutput<String>('storageAccountKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

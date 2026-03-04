@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainTopicArgs {
   /// Name of the domain.
   final pulumi.Input<String> domainName;
+
   /// Name of the domain topic.
   final pulumi.Input<String>? domainTopicName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class DomainTopicArgs {
 
   factory DomainTopicArgs.fromMap(Map<String, dynamic> map) {
     return DomainTopicArgs(
-      domainName: (map['domainName'] as String).input(),
-      domainTopicName: map['domainTopicName'] == null ? null : (map['domainTopicName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      domainTopicName: (() {
+        final guardedValue = map['domainTopicName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

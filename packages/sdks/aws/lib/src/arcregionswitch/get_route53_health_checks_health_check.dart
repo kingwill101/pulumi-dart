@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoute53HealthChecksHealthCheck {
   /// ID of the Route53 health check.
   final pulumi.Input<String> healthCheckId;
+
   /// Hosted zone ID for the health check.
   final pulumi.Input<String> hostedZoneId;
+
   /// Record name for the health check.
   final pulumi.Input<String> recordName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
+
   /// Status of the health check. Valid values: `healthy`, `unhealthy`, `unknown`.
   final pulumi.Input<String> status;
 
@@ -40,12 +44,11 @@ class GetRoute53HealthChecksHealthCheck {
 
   factory GetRoute53HealthChecksHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetRoute53HealthChecksHealthCheck(
-      healthCheckId: (map['healthCheckId'] as String).input(),
-      hostedZoneId: (map['hostedZoneId'] as String).input(),
-      recordName: (map['recordName'] as String).input(),
-      region: (map['region'] as String).input(),
-      status: (map['status'] as String).input(),
+      healthCheckId: pulumi.Input.fromValue(map['healthCheckId'] as String),
+      hostedZoneId: pulumi.Input.fromValue(map['hostedZoneId'] as String),
+      recordName: pulumi.Input.fromValue(map['recordName'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

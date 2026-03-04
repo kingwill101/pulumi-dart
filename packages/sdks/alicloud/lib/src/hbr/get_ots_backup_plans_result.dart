@@ -47,7 +47,11 @@ class GetOtsBackupPlansResult {
       'outputFile': ?outputFile,
       'planId': ?planId,
       'planName': ?planName,
-      'plans': pulumi.Input.encodeList<GetOtsBackupPlansPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
+      'plans':
+          pulumi.Input.encodeList<GetOtsBackupPlansPlan, Map<String, dynamic>>(
+            plans,
+            (value) => value.toMap(),
+          ),
       'vaultId': ?vaultId,
     };
   }
@@ -56,14 +60,38 @@ class GetOtsBackupPlansResult {
     return GetOtsBackupPlansResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      planId: map['planId'] == null ? null : map['planId']! as String,
-      planName: map['planName'] == null ? null : map['planName']! as String,
-      plans: pulumi.Input.decodeList<GetOtsBackupPlansPlan>(map['plans'], (value) => GetOtsBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      vaultId: map['vaultId'] == null ? null : map['vaultId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      planId: (() {
+        final guardedValue = map['planId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      planName: (() {
+        final guardedValue = map['planName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      plans: pulumi.Input.decodeList<GetOtsBackupPlansPlan>(
+        map['plans']!,
+        (value) => GetOtsBackupPlansPlan.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vaultId: (() {
+        final guardedValue = map['vaultId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrincipalPortfolioAssociationArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   final pulumi.Input<String>? acceptLanguage;
+
   /// Portfolio identifier.
   final pulumi.Input<String> portfolioId;
+
   /// Principal ARN.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> principalArn;
+
   /// Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   final pulumi.Input<String>? principalType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -46,12 +50,23 @@ class PrincipalPortfolioAssociationArgs {
 
   factory PrincipalPortfolioAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalPortfolioAssociationArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
-      portfolioId: (map['portfolioId'] as String).input(),
-      principalArn: (map['principalArn'] as String).input(),
-      principalType: map['principalType'] == null ? null : ((map['principalType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portfolioId: pulumi.Input.fromValue(map['portfolioId'] as String),
+      principalArn: pulumi.Input.fromValue(map['principalArn'] as String),
+      principalType: (() {
+        final guardedValue = map['principalType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

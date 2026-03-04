@@ -5,29 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubnetsSubnet {
   /// Network segment
   final pulumi.Input<String> cidr;
+
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
+
   /// Modification time
   final pulumi.Input<String> gmtModified;
+
   /// The ID of the resource.
   final pulumi.Input<String> id;
+
   /// Error message
   final pulumi.Input<String> message;
+
   /// Resource Group ID.
   final pulumi.Input<String> resourceGroupId;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
+
   /// Primary key ID.
   final pulumi.Input<String> subnetId;
+
   /// The Subnet name.
   final pulumi.Input<String> subnetName;
+
   /// Eflo subnet usage type, optional value:
   /// - General type is not filled in
   /// - OOB:OOB type
   /// - LB: LB type
   final pulumi.Input<String> type;
+
   /// The Eflo VPD ID.
   final pulumi.Input<String> vpdId;
+
   /// The zone ID of the resource.
   final pulumi.Input<String> zoneId;
 
@@ -78,19 +89,18 @@ class GetSubnetsSubnet {
 
   factory GetSubnetsSubnet.fromMap(Map<String, dynamic> map) {
     return GetSubnetsSubnet(
-      cidr: (map['cidr'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      gmtModified: (map['gmtModified'] as String).input(),
-      id: (map['id'] as String).input(),
-      message: (map['message'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      status: (map['status'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      subnetName: (map['subnetName'] as String).input(),
-      type: (map['type'] as String).input(),
-      vpdId: (map['vpdId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      gmtModified: pulumi.Input.fromValue(map['gmtModified'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      subnetName: pulumi.Input.fromValue(map['subnetName'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      vpdId: pulumi.Input.fromValue(map['vpdId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

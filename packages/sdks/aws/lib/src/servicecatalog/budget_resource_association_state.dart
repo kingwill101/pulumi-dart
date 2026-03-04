@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BudgetResourceAssociationState {
   /// Budget name.
   final pulumi.Input<String>? budgetName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Resource identifier.
   final pulumi.Input<String>? resourceId;
 
@@ -31,10 +33,21 @@ class BudgetResourceAssociationState {
 
   factory BudgetResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return BudgetResourceAssociationState(
-      budgetName: map['budgetName'] == null ? null : ((map['budgetName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      budgetName: (() {
+        final guardedValue = map['budgetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

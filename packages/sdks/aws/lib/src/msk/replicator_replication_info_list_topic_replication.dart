@@ -7,16 +7,28 @@ import 'replicator_replication_info_list_topic_replication_topic_name_configurat
 class ReplicatorReplicationInfoListTopicReplication {
   /// Whether to periodically configure remote topic ACLs to match their corresponding upstream topics.
   final pulumi.Input<bool>? copyAccessControlListsForTopics;
+
   /// Whether to periodically configure remote topics to match their corresponding upstream topics.
   final pulumi.Input<bool>? copyTopicConfigurations;
+
   /// Whether to periodically check for new topics and partitions.
   final pulumi.Input<bool>? detectAndCopyNewTopics;
+
   /// Configuration for specifying the position in the topics to start replicating from.
-  final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationStartingPosition>? startingPosition;
+  final pulumi.Input<
+    ReplicatorReplicationInfoListTopicReplicationStartingPosition
+  >?
+  startingPosition;
+
   /// Configuration for specifying replicated topic names should be the same as their corresponding upstream topics or prefixed with source cluster alias.
-  final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration>? topicNameConfiguration;
+  final pulumi.Input<
+    ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration
+  >?
+  topicNameConfiguration;
+
   /// List of regular expression patterns indicating the topics that should not be replica.
   final pulumi.Input<List<String>>? topicsToExcludes;
+
   /// List of regular expression patterns indicating the topics to copy.
   final pulumi.Input<List<String>> topicsToReplicates;
 
@@ -43,23 +55,66 @@ class ReplicatorReplicationInfoListTopicReplication {
       'copyAccessControlListsForTopics': ?copyAccessControlListsForTopics,
       'copyTopicConfigurations': ?copyTopicConfigurations,
       'detectAndCopyNewTopics': ?detectAndCopyNewTopics,
-      'startingPosition': ?pulumi.Input.mapOptionalInputValue<ReplicatorReplicationInfoListTopicReplicationStartingPosition, Map<String, dynamic>>(startingPosition, (value) => value.toMap()),
-      'topicNameConfiguration': ?pulumi.Input.mapOptionalInputValue<ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration, Map<String, dynamic>>(topicNameConfiguration, (value) => value.toMap()),
+      'startingPosition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReplicatorReplicationInfoListTopicReplicationStartingPosition,
+            Map<String, dynamic>
+          >(startingPosition, (value) => value.toMap()),
+      'topicNameConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration,
+            Map<String, dynamic>
+          >(topicNameConfiguration, (value) => value.toMap()),
       'topicsToExcludes': ?topicsToExcludes,
       'topicsToReplicates': topicsToReplicates,
     };
   }
 
-  factory ReplicatorReplicationInfoListTopicReplication.fromMap(Map<String, dynamic> map) {
+  factory ReplicatorReplicationInfoListTopicReplication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicatorReplicationInfoListTopicReplication(
-      copyAccessControlListsForTopics: map['copyAccessControlListsForTopics'] == null ? null : ((map['copyAccessControlListsForTopics'] as bool).input()).input(),
-      copyTopicConfigurations: map['copyTopicConfigurations'] == null ? null : ((map['copyTopicConfigurations'] as bool).input()).input(),
-      detectAndCopyNewTopics: map['detectAndCopyNewTopics'] == null ? null : ((map['detectAndCopyNewTopics'] as bool).input()).input(),
-      startingPosition: map['startingPosition'] == null ? null : ((ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap((map['startingPosition']! as Map).cast<String, dynamic>())).input()).input(),
-      topicNameConfiguration: map['topicNameConfiguration'] == null ? null : ((ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap((map['topicNameConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      topicsToExcludes: map['topicsToExcludes'] == null ? null : (((map['topicsToExcludes'] as List).cast<String>()).input()).input(),
-      topicsToReplicates: ((map['topicsToReplicates'] as List).cast<String>()).input(),
+      copyAccessControlListsForTopics: (() {
+        final guardedValue = map['copyAccessControlListsForTopics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      copyTopicConfigurations: (() {
+        final guardedValue = map['copyTopicConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      detectAndCopyNewTopics: (() {
+        final guardedValue = map['detectAndCopyNewTopics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      startingPosition: (() {
+        final guardedValue = map['startingPosition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      topicNameConfiguration: (() {
+        final guardedValue = map['topicNameConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      topicsToExcludes: (() {
+        final guardedValue = map['topicsToExcludes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      topicsToReplicates: pulumi.Input.fromValue(
+        (map['topicsToReplicates'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -20,16 +20,15 @@ enum ForecastingModels {
   valueLightGBM("LightGBM"),
   valueXGBoostRegressor("XGBoostRegressor");
 
-  const ForecastingModels(this.value);
-  final String value;
+  const ForecastingModels(this.wireValue);
+  final String wireValue;
 
   static ForecastingModels fromValue(String value) {
     for (final item in ForecastingModels.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ForecastingModels value: $value');
   }
 }
-

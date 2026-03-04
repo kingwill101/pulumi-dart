@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
   /// Name of a constituent sub slot inside a composite slot.
   final pulumi.Input<String> name;
+
   /// Unique identifier assigned to a slot type.
   /// This refers to either a built-in slot type or the unique `slot_type_id` of a custom slot type.
   final pulumi.Input<String> slotTypeId;
@@ -18,17 +19,15 @@ class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'slotTypeId': slotTypeId,
-    };
+    return <String, dynamic>{'name': name, 'slotTypeId': slotTypeId};
   }
 
-  factory V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotTypeCompositeSlotTypeSettingSubSlot(
-      name: (map['name'] as String).input(),
-      slotTypeId: (map['slotTypeId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      slotTypeId: pulumi.Input.fromValue(map['slotTypeId'] as String),
     );
   }
 }
-

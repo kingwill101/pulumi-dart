@@ -1,5 +1,3 @@
-library module_keyvault;
-
 export 'keyvault/access_policy.dart';
 export 'keyvault/access_policy_args.dart';
 export 'keyvault/access_policy_state.dart';

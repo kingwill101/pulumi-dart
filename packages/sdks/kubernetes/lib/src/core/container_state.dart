@@ -9,8 +9,10 @@ import 'container_state_waiting.dart';
 class ContainerState {
   /// Details about a running container
   final pulumi.Input<ContainerStateRunning>? running;
+
   /// Details about a terminated container
   final pulumi.Input<ContainerStateTerminated>? terminated;
+
   /// Details about a waiting container
   final pulumi.Input<ContainerStateWaiting>? waiting;
 
@@ -18,26 +20,57 @@ class ContainerState {
   /// [running] Details about a running container
   /// [terminated] Details about a terminated container
   /// [waiting] Details about a waiting container
-  ContainerState({
-    this.running,
-    this.terminated,
-    this.waiting,
-  });
+  ContainerState({this.running, this.terminated, this.waiting});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'running': ?pulumi.Input.mapOptionalInputValue<ContainerStateRunning, Map<String, dynamic>>(running, (value) => value.toMap()),
-      'terminated': ?pulumi.Input.mapOptionalInputValue<ContainerStateTerminated, Map<String, dynamic>>(terminated, (value) => value.toMap()),
-      'waiting': ?pulumi.Input.mapOptionalInputValue<ContainerStateWaiting, Map<String, dynamic>>(waiting, (value) => value.toMap()),
+      'running':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerStateRunning,
+            Map<String, dynamic>
+          >(running, (value) => value.toMap()),
+      'terminated':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerStateTerminated,
+            Map<String, dynamic>
+          >(terminated, (value) => value.toMap()),
+      'waiting':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerStateWaiting,
+            Map<String, dynamic>
+          >(waiting, (value) => value.toMap()),
     };
   }
 
   factory ContainerState.fromMap(Map<String, dynamic> map) {
     return ContainerState(
-      running: map['running'] == null ? null : (ContainerStateRunning.fromMap((map['running']! as Map).cast<String, dynamic>())).input(),
-      terminated: map['terminated'] == null ? null : (ContainerStateTerminated.fromMap((map['terminated']! as Map).cast<String, dynamic>())).input(),
-      waiting: map['waiting'] == null ? null : (ContainerStateWaiting.fromMap((map['waiting']! as Map).cast<String, dynamic>())).input(),
+      running: (() {
+        final guardedValue = map['running'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerStateRunning.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      terminated: (() {
+        final guardedValue = map['terminated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerStateTerminated.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      waiting: (() {
+        final guardedValue = map['waiting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerStateWaiting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

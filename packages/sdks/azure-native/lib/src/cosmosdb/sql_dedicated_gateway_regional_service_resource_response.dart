@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDedicatedGatewayRegionalServiceResourceResponse {
   /// The location name.
   final pulumi.Input<String> location;
+
   /// The regional service name.
   final pulumi.Input<String> name;
+
   /// The regional endpoint for SqlDedicatedGateway.
   final pulumi.Input<String> sqlDedicatedGatewayEndpoint;
+
   /// Describes the status of a service.
   final pulumi.Input<String> status;
 
@@ -34,13 +37,16 @@ class SqlDedicatedGatewayRegionalServiceResourceResponse {
     };
   }
 
-  factory SqlDedicatedGatewayRegionalServiceResourceResponse.fromMap(Map<String, dynamic> map) {
+  factory SqlDedicatedGatewayRegionalServiceResourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlDedicatedGatewayRegionalServiceResourceResponse(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      sqlDedicatedGatewayEndpoint: (map['sqlDedicatedGatewayEndpoint'] as String).input(),
-      status: (map['status'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      sqlDedicatedGatewayEndpoint: pulumi.Input.fromValue(
+        map['sqlDedicatedGatewayEndpoint'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

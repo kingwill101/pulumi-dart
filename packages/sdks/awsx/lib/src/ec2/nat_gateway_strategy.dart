@@ -4,16 +4,15 @@ enum NatGatewayStrategy {
   valueSingle("Single"),
   valueOnePerAz("OnePerAz");
 
-  const NatGatewayStrategy(this.value);
-  final String value;
+  const NatGatewayStrategy(this.wireValue);
+  final String wireValue;
 
   static NatGatewayStrategy fromValue(String value) {
     for (final item in NatGatewayStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NatGatewayStrategy value: $value');
   }
 }
-

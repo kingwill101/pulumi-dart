@@ -6,7 +6,7 @@ import 'db_instance_endpoint_address_state.dart';
 ///
 /// Information about RDS MySQL cluster endpoint address and how to use it, see [What is RDS DB Instance Endpoint Address](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbinstanceendpointaddress).
 ///
-/// > **NOTE:** Available since v1.204.0.
+/// &gt; **NOTE:** Available since v1.204.0.
 ///
 /// ## Example Usage
 ///
@@ -594,16 +594,22 @@ import 'db_instance_endpoint_address_state.dart';
 class DbInstanceEndpointAddress extends pulumi.CustomResource {
   /// The endpoint of the instance.
   late final pulumi.Output<String> connectionString;
+
   /// The prefix of the public endpoint.
   late final pulumi.Output<String> connectionStringPrefix;
+
   /// The Endpoint ID of the instance.
   late final pulumi.Output<String> dbInstanceEndpointId;
+
   /// The ID of the instance.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The IP address of the endpoint.
   late final pulumi.Output<String> ipAddress;
+
   /// The type of the IP address.
   late final pulumi.Output<String> ipType;
+
   /// The port number of the public endpoint.
   late final pulumi.Output<String> port;
 
@@ -616,18 +622,18 @@ class DbInstanceEndpointAddress extends pulumi.CustomResource {
     DbInstanceEndpointAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.ipType = registerOutput<String>('ipType');
-    this.port = registerOutput<String>('port');
+         'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipType = registerOutput<String>('ipType');
+    port = registerOutput<String>('port');
   }
 
   /// Gets an existing [DbInstanceEndpointAddress] resource's state with the given [name] and [id].
@@ -648,17 +654,17 @@ class DbInstanceEndpointAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.ipType = registerOutput<String>('ipType');
-    this.port = registerOutput<String>('port');
+         'alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceEndpointId = registerOutput<String>('dbInstanceEndpointId');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipType = registerOutput<String>('ipType');
+    port = registerOutput<String>('port');
   }
 }

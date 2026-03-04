@@ -5,17 +5,19 @@ import 'availability_zone_response.dart';
 
 /// Definition of Subnet
 class SubnetResponse {
-  /// <p>The Availability Zone of the subnet.</p>
+  /// &lt;p&gt;The Availability Zone of the subnet.&lt;/p&gt;
   final pulumi.Input<AvailabilityZoneResponse>? subnetAvailabilityZone;
-  /// <p>The subnet identifier.</p>
+
+  /// &lt;p&gt;The subnet identifier.&lt;/p&gt;
   final pulumi.Input<String>? subnetIdentifier;
-  /// <p>The status of the subnet.</p>
+
+  /// &lt;p&gt;The status of the subnet.&lt;/p&gt;
   final pulumi.Input<String>? subnetStatus;
 
   /// Creates a new [SubnetResponse].
-  /// [subnetAvailabilityZone] <p>The Availability Zone of the subnet.</p>
-  /// [subnetIdentifier] <p>The subnet identifier.</p>
-  /// [subnetStatus] <p>The status of the subnet.</p>
+  /// [subnetAvailabilityZone] &lt;p&gt;The Availability Zone of the subnet.&lt;/p&gt;
+  /// [subnetIdentifier] &lt;p&gt;The subnet identifier.&lt;/p&gt;
+  /// [subnetStatus] &lt;p&gt;The status of the subnet.&lt;/p&gt;
   SubnetResponse({
     this.subnetAvailabilityZone,
     this.subnetIdentifier,
@@ -24,7 +26,11 @@ class SubnetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'subnetAvailabilityZone': ?pulumi.Input.mapOptionalInputValue<AvailabilityZoneResponse, Map<String, dynamic>>(subnetAvailabilityZone, (value) => value.toMap()),
+      'subnetAvailabilityZone':
+          ?pulumi.Input.mapOptionalInputValue<
+            AvailabilityZoneResponse,
+            Map<String, dynamic>
+          >(subnetAvailabilityZone, (value) => value.toMap()),
       'subnetIdentifier': ?subnetIdentifier,
       'subnetStatus': ?subnetStatus,
     };
@@ -32,10 +38,25 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      subnetAvailabilityZone: map['subnetAvailabilityZone'] == null ? null : (AvailabilityZoneResponse.fromMap((map['subnetAvailabilityZone']! as Map).cast<String, dynamic>())).input(),
-      subnetIdentifier: map['subnetIdentifier'] == null ? null : (map['subnetIdentifier']! as String).input(),
-      subnetStatus: map['subnetStatus'] == null ? null : (map['subnetStatus']! as String).input(),
+      subnetAvailabilityZone: (() {
+        final guardedValue = map['subnetAvailabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AvailabilityZoneResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subnetIdentifier: (() {
+        final guardedValue = map['subnetIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetStatus: (() {
+        final guardedValue = map['subnetStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BusinessProcessIdentifier {
   /// The property name of the business process identifier.
   final pulumi.Input<String>? propertyName;
+
   /// The property type of the business process identifier.
   final pulumi.Input<String>? propertyType;
 
   /// Creates a new [BusinessProcessIdentifier].
   /// [propertyName] The property name of the business process identifier.
   /// [propertyType] The property type of the business process identifier.
-  BusinessProcessIdentifier({
-    this.propertyName,
-    this.propertyType,
-  });
+  BusinessProcessIdentifier({this.propertyName, this.propertyType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class BusinessProcessIdentifier {
 
   factory BusinessProcessIdentifier.fromMap(Map<String, dynamic> map) {
     return BusinessProcessIdentifier(
-      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
-      propertyType: map['propertyType'] == null ? null : (map['propertyType']! as String).input(),
+      propertyName: (() {
+        final guardedValue = map['propertyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      propertyType: (() {
+        final guardedValue = map['propertyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum ConnectorOffer {
   valueSmall("Small");
 
-  const ConnectorOffer(this.value);
-  final String value;
+  const ConnectorOffer(this.wireValue);
+  final String wireValue;
 
   static ConnectorOffer fromValue(String value) {
     for (final item in ConnectorOffer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectorOffer value: $value');
   }
 }
-

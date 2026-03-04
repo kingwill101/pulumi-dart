@@ -5,16 +5,15 @@ enum InstanceInstanceType {
   readPool("READ_POOL"),
   secondary("SECONDARY");
 
-  const InstanceInstanceType(this.value);
-  final String value;
+  const InstanceInstanceType(this.wireValue);
+  final String wireValue;
 
   static InstanceInstanceType fromValue(String value) {
     for (final item in InstanceInstanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceInstanceType value: $value');
   }
 }
-

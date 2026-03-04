@@ -7,12 +7,16 @@ import 'account_identity.dart';
 class AccountState {
   /// An `identity` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<AccountIdentity>? identity;
+
   /// The Azure Region where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Data Share Account. Changing this forces a new Data Share Account to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Data Share Account should exist. Changing this forces a new Data Share Account to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Data Share Account.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -32,7 +36,11 @@ class AccountState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<AccountIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            AccountIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
@@ -42,12 +50,37 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AccountIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

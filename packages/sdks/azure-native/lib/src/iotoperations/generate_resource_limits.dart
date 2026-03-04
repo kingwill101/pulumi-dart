@@ -9,20 +9,19 @@ class GenerateResourceLimits {
 
   /// Creates a new [GenerateResourceLimits].
   /// [cpu] The toggle to enable/disable cpu resource limits.
-  GenerateResourceLimits({
-    this.cpu,
-  });
+  GenerateResourceLimits({this.cpu});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpu': ?cpu,
-    };
+    return <String, dynamic>{'cpu': ?cpu};
   }
 
   factory GenerateResourceLimits.fromMap(Map<String, dynamic> map) {
     return GenerateResourceLimits(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

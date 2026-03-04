@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FingerprintResponse {
   /// The layer ID of the final layer in the Docker image's v1 representation.
   final pulumi.Input<String> v1Name;
+
   /// The ordered list of v2 blobs that represent a given image.
   final pulumi.Input<List<String>> v2Blob;
+
   /// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
   final pulumi.Input<String> v2Name;
 
@@ -31,10 +33,9 @@ class FingerprintResponse {
 
   factory FingerprintResponse.fromMap(Map<String, dynamic> map) {
     return FingerprintResponse(
-      v1Name: (map['v1Name'] as String).input(),
-      v2Blob: ((map['v2Blob'] as List).cast<String>()).input(),
-      v2Name: (map['v2Name'] as String).input(),
+      v1Name: pulumi.Input.fromValue(map['v1Name'] as String),
+      v2Blob: pulumi.Input.fromValue((map['v2Blob'] as List).cast<String>()),
+      v2Name: pulumi.Input.fromValue(map['v2Name'] as String),
     );
   }
 }
-

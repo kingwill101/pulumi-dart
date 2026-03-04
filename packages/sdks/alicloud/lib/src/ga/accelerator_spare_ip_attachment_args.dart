@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AcceleratorSpareIpAttachmentArgs {
   /// The ID of the global acceleration instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The dry run.
   final pulumi.Input<bool>? dryRun;
+
   /// The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
   final pulumi.Input<String> spareIp;
 
@@ -34,10 +36,13 @@ class AcceleratorSpareIpAttachmentArgs {
 
   factory AcceleratorSpareIpAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AcceleratorSpareIpAttachmentArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      spareIp: (map['spareIp'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      spareIp: pulumi.Input.fromValue(map['spareIp'] as String),
     );
   }
 }
-

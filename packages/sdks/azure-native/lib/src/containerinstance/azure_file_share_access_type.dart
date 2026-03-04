@@ -3,16 +3,15 @@ enum AzureFileShareAccessType {
   valueShared("Shared"),
   valueExclusive("Exclusive");
 
-  const AzureFileShareAccessType(this.value);
-  final String value;
+  const AzureFileShareAccessType(this.wireValue);
+  final String wireValue;
 
   static AzureFileShareAccessType fromValue(String value) {
     for (final item in AzureFileShareAccessType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureFileShareAccessType value: $value');
   }
 }
-

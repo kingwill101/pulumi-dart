@@ -8,29 +8,50 @@ import 'metric_value_status_patch.dart';
 class ExternalMetricStatusPatch {
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatusPatch>? current;
+
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifierPatch>? metric;
 
   /// Creates a new [ExternalMetricStatusPatch].
   /// [current] current contains the current value for the given metric
   /// [metric] metric identifies the target metric by name and selector
-  ExternalMetricStatusPatch({
-    this.current,
-    this.metric,
-  });
+  ExternalMetricStatusPatch({this.current, this.metric});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'current': ?pulumi.Input.mapOptionalInputValue<MetricValueStatusPatch, Map<String, dynamic>>(current, (value) => value.toMap()),
-      'metric': ?pulumi.Input.mapOptionalInputValue<MetricIdentifierPatch, Map<String, dynamic>>(metric, (value) => value.toMap()),
+      'current':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetricValueStatusPatch,
+            Map<String, dynamic>
+          >(current, (value) => value.toMap()),
+      'metric':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetricIdentifierPatch,
+            Map<String, dynamic>
+          >(metric, (value) => value.toMap()),
     };
   }
 
   factory ExternalMetricStatusPatch.fromMap(Map<String, dynamic> map) {
     return ExternalMetricStatusPatch(
-      current: map['current'] == null ? null : (MetricValueStatusPatch.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
-      metric: map['metric'] == null ? null : (MetricIdentifierPatch.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      current: (() {
+        final guardedValue = map['current'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetricValueStatusPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metric: (() {
+        final guardedValue = map['metric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetricIdentifierPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

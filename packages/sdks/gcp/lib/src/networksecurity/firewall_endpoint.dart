@@ -15,7 +15,7 @@ import 'firewall_endpoint_state.dart';
 /// * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
 /// * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 ///
-/// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+/// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
 /// you must specify a `billing_project_id` and set `user_project_override` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
@@ -165,36 +165,49 @@ class FirewallEndpoint extends pulumi.CustomResource {
   /// endpoint. A network will only appear in this list after traffic routing is
   /// fully configured. Format: projects/{project}/global/networks/{name}.
   late final pulumi.Output<List<String>> associatedNetworks;
+
   /// Project to bill on endpoint uptime usage.
   late final pulumi.Output<String> billingProjectId;
+
   /// Time the firewall endpoint was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Settings for the endpoint.
   /// Structure is documented below.
   late final pulumi.Output<FirewallEndpointEndpointSettings?> endpointSettings;
+
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location (zone) of the firewall endpoint.
   late final pulumi.Output<String> location;
+
   /// The name of the firewall endpoint resource.
   late final pulumi.Output<String> name;
+
   /// The name of the parent this firewall endpoint belongs to.
   /// Format: organizations/{organization_id}.
   late final pulumi.Output<String> parent;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
   late final pulumi.Output<bool> reconciling;
+
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
+
   /// The current state of the endpoint.
   late final pulumi.Output<String> state;
+
   /// Time the firewall endpoint was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -207,25 +220,27 @@ class FirewallEndpoint extends pulumi.CustomResource {
     FirewallEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networksecurity/firewallEndpoint:FirewallEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedNetworks = registerOutput<List<String>>('associatedNetworks');
-    this.billingProjectId = registerOutput<String>('billingProjectId');
-    this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.endpointSettings = registerOutput<FirewallEndpointEndpointSettings?>('endpointSettings');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:networksecurity/firewallEndpoint:FirewallEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedNetworks = registerOutput<List<String>>('associatedNetworks');
+    billingProjectId = registerOutput<String>('billingProjectId');
+    createTime = registerOutput<String>('createTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    endpointSettings = registerOutput<FirewallEndpointEndpointSettings?>(
+      'endpointSettings',
+    );
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.reconciling = registerOutput<bool>('reconciling');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    reconciling = registerOutput<bool>('reconciling');
+    selfLink = registerOutput<String>('selfLink');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [FirewallEndpoint] resource's state with the given [name] and [id].
@@ -246,24 +261,26 @@ class FirewallEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networksecurity/firewallEndpoint:FirewallEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedNetworks = registerOutput<List<String>>('associatedNetworks');
-    this.billingProjectId = registerOutput<String>('billingProjectId');
-    this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.endpointSettings = registerOutput<FirewallEndpointEndpointSettings?>('endpointSettings');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:networksecurity/firewallEndpoint:FirewallEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedNetworks = registerOutput<List<String>>('associatedNetworks');
+    billingProjectId = registerOutput<String>('billingProjectId');
+    createTime = registerOutput<String>('createTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    endpointSettings = registerOutput<FirewallEndpointEndpointSettings?>(
+      'endpointSettings',
+    );
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.reconciling = registerOutput<bool>('reconciling');
-    this.selfLink = registerOutput<String>('selfLink');
+    parent = registerOutput<String>('parent');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    reconciling = registerOutput<bool>('reconciling');
+    selfLink = registerOutput<String>('selfLink');
     this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

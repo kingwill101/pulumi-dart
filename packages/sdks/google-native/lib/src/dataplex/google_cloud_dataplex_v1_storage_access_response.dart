@@ -9,20 +9,17 @@ class GoogleCloudDataplexV1StorageAccessResponse {
 
   /// Creates a new [GoogleCloudDataplexV1StorageAccessResponse].
   /// [read] Describes the read access mechanism of the data. Not user settable.
-  GoogleCloudDataplexV1StorageAccessResponse({
-    required this.read,
-  });
+  GoogleCloudDataplexV1StorageAccessResponse({required this.read});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'read': read,
-    };
+    return <String, dynamic>{'read': read};
   }
 
-  factory GoogleCloudDataplexV1StorageAccessResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1StorageAccessResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1StorageAccessResponse(
-      read: (map['read'] as String).input(),
+      read: pulumi.Input.fromValue(map['read'] as String),
     );
   }
 }
-

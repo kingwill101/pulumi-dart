@@ -4,11 +4,11 @@ import 'attachment_state.dart';
 
 /// Attaches several ECS instances to a specified scaling group or remove them from it.
 ///
-/// > **NOTE:** ECS instances can be attached or remove only when the scaling group is active, and it has no scaling activity in progress.
+/// &gt; **NOTE:** ECS instances can be attached or remove only when the scaling group is active, and it has no scaling activity in progress.
 ///
-/// > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+/// &gt; **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
 ///
-/// > **NOTE:** Available since v1.6.0.
+/// &gt; **NOTE:** Available since v1.6.0.
 ///
 /// ## Example Usage
 ///
@@ -733,17 +733,21 @@ import 'attachment_state.dart';
 class Attachment extends pulumi.CustomResource {
   /// Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
   late final pulumi.Output<bool?> entrusted;
+
   /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
   late final pulumi.Output<bool?> force;
+
   /// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
   late final pulumi.Output<List<String>> instanceIds;
+
   /// Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
   late final pulumi.Output<bool?> lifecycleHook;
+
   /// The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
   ///
-  /// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+  /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
   ///
-  /// > **NOTE:** Restrictions on attaching ECS instances:
+  /// &gt; **NOTE:** Restrictions on attaching ECS instances:
   ///
   /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
   /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
@@ -751,6 +755,7 @@ class Attachment extends pulumi.CustomResource {
   /// - The attached ECS instances has not been attached to other scaling groups.
   /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
   late final pulumi.Output<List<int>> loadBalancerWeights;
+
   /// ID of the scaling group of a scaling configuration.
   late final pulumi.Output<String> scalingGroupId;
 
@@ -763,17 +768,17 @@ class Attachment extends pulumi.CustomResource {
     AttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/attachment:Attachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.entrusted = registerOutput<bool?>('entrusted');
-    this.force = registerOutput<bool?>('force');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.lifecycleHook = registerOutput<bool?>('lifecycleHook');
-    this.loadBalancerWeights = registerOutput<List<int>>('loadBalancerWeights');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
+         'alicloud:ess/attachment:Attachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    entrusted = registerOutput<bool?>('entrusted');
+    force = registerOutput<bool?>('force');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    lifecycleHook = registerOutput<bool?>('lifecycleHook');
+    loadBalancerWeights = registerOutput<List<int>>('loadBalancerWeights');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
   }
 
   /// Gets an existing [Attachment] resource's state with the given [name] and [id].
@@ -794,16 +799,16 @@ class Attachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/attachment:Attachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.entrusted = registerOutput<bool?>('entrusted');
-    this.force = registerOutput<bool?>('force');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.lifecycleHook = registerOutput<bool?>('lifecycleHook');
-    this.loadBalancerWeights = registerOutput<List<int>>('loadBalancerWeights');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
+         'alicloud:ess/attachment:Attachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    entrusted = registerOutput<bool?>('entrusted');
+    force = registerOutput<bool?>('force');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    lifecycleHook = registerOutput<bool?>('lifecycleHook');
+    loadBalancerWeights = registerOutput<List<int>>('loadBalancerWeights');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
   }
 }

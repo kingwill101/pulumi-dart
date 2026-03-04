@@ -1,5 +1,3 @@
-library module_computelimit;
-
 export 'computelimit/functions.dart';
 export 'computelimit/get_guest_subscription_args.dart';
 export 'computelimit/get_guest_subscription_result.dart';

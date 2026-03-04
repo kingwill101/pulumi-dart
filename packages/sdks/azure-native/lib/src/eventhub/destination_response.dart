@@ -7,18 +7,25 @@ import 'capture_identity_response.dart';
 class DestinationResponse {
   /// Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
   final pulumi.Input<String>? archiveNameFormat;
+
   /// Blob container Name
   final pulumi.Input<String>? blobContainer;
+
   /// The Azure Data Lake Store name for the captured events
   final pulumi.Input<String>? dataLakeAccountName;
+
   /// The destination folder path for the captured events
   final pulumi.Input<String>? dataLakeFolderPath;
+
   /// Subscription Id of Azure Data Lake Store
   final pulumi.Input<String>? dataLakeSubscriptionId;
+
   /// A value that indicates whether capture description is enabled.
   final pulumi.Input<CaptureIdentityResponse>? identity;
+
   /// Name for capture destination
   final pulumi.Input<String>? name;
+
   /// Resource id of the storage account to be used to create the blobs
   final pulumi.Input<String>? storageAccountResourceId;
 
@@ -49,7 +56,11 @@ class DestinationResponse {
       'dataLakeAccountName': ?dataLakeAccountName,
       'dataLakeFolderPath': ?dataLakeFolderPath,
       'dataLakeSubscriptionId': ?dataLakeSubscriptionId,
-      'identity': ?pulumi.Input.mapOptionalInputValue<CaptureIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            CaptureIdentityResponse,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'name': ?name,
       'storageAccountResourceId': ?storageAccountResourceId,
     };
@@ -57,15 +68,50 @@ class DestinationResponse {
 
   factory DestinationResponse.fromMap(Map<String, dynamic> map) {
     return DestinationResponse(
-      archiveNameFormat: map['archiveNameFormat'] == null ? null : (map['archiveNameFormat']! as String).input(),
-      blobContainer: map['blobContainer'] == null ? null : (map['blobContainer']! as String).input(),
-      dataLakeAccountName: map['dataLakeAccountName'] == null ? null : (map['dataLakeAccountName']! as String).input(),
-      dataLakeFolderPath: map['dataLakeFolderPath'] == null ? null : (map['dataLakeFolderPath']! as String).input(),
-      dataLakeSubscriptionId: map['dataLakeSubscriptionId'] == null ? null : (map['dataLakeSubscriptionId']! as String).input(),
-      identity: map['identity'] == null ? null : (CaptureIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
+      archiveNameFormat: (() {
+        final guardedValue = map['archiveNameFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      blobContainer: (() {
+        final guardedValue = map['blobContainer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataLakeAccountName: (() {
+        final guardedValue = map['dataLakeAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataLakeFolderPath: (() {
+        final guardedValue = map['dataLakeFolderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataLakeSubscriptionId: (() {
+        final guardedValue = map['dataLakeSubscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CaptureIdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountResourceId: (() {
+        final guardedValue = map['storageAccountResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

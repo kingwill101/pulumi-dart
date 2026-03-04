@@ -10,6 +10,7 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone {
   /// The size of this map is limited by an "Interconnects per group" quota.
   /// Structure is documented below.
   final pulumi.Input<List<String>>? interconnects;
+
   /// (Output)
   /// The name of the zone, either "zone1" or "zone2".
   /// This is the second component of the location of Interconnects in
@@ -25,17 +26,23 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interconnects': ?interconnects,
-      'zone': ?zone,
-    };
+    return <String, dynamic>{'interconnects': ?interconnects, 'zone': ?zone};
   }
 
-  factory InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap(Map<String, dynamic> map) {
+  factory InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectGroupPhysicalStructureMetroFacilityZone(
-      interconnects: map['interconnects'] == null ? null : ((map['interconnects']! as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      interconnects: (() {
+        final guardedValue = map['interconnects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

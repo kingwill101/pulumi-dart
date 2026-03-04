@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HoneypotProbeHoneypotBindListBindPortList {
   /// Whether to bind the port.
   final pulumi.Input<bool>? bindPort;
+
   /// End port.
   final pulumi.Input<int>? endPort;
+
   /// Whether the port is fixed.
   final pulumi.Input<bool>? fixed;
+
   /// Start port.
   final pulumi.Input<int>? startPort;
+
   /// Destination port.
   final pulumi.Input<int>? targetPort;
 
@@ -38,14 +42,35 @@ class HoneypotProbeHoneypotBindListBindPortList {
     };
   }
 
-  factory HoneypotProbeHoneypotBindListBindPortList.fromMap(Map<String, dynamic> map) {
+  factory HoneypotProbeHoneypotBindListBindPortList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HoneypotProbeHoneypotBindListBindPortList(
-      bindPort: map['bindPort'] == null ? null : (map['bindPort']! as bool).input(),
-      endPort: map['endPort'] == null ? null : (map['endPort']! as int).input(),
-      fixed: map['fixed'] == null ? null : (map['fixed']! as bool).input(),
-      startPort: map['startPort'] == null ? null : (map['startPort']! as int).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
+      bindPort: (() {
+        final guardedValue = map['bindPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endPort: (() {
+        final guardedValue = map['endPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fixed: (() {
+        final guardedValue = map['fixed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      startPort: (() {
+        final guardedValue = map['startPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetPort: (() {
+        final guardedValue = map['targetPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

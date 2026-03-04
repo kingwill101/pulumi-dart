@@ -10,20 +10,21 @@ class BackendBucketParams {
 
   /// Creates a new [BackendBucketParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the backend bucket. Tag keys and values have the
-  BackendBucketParams({
-    this.resourceManagerTags,
-  });
+  BackendBucketParams({this.resourceManagerTags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceManagerTags': ?resourceManagerTags,
-    };
+    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
   }
 
   factory BackendBucketParams.fromMap(Map<String, dynamic> map) {
     return BackendBucketParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
+      resourceManagerTags: (() {
+        final guardedValue = map['resourceManagerTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

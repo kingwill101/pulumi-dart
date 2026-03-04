@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventStreamArgs {
   /// The application ID.
   final pulumi.Input<String> applicationId;
+
   /// The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
   final pulumi.Input<String> destinationStreamArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
   final pulumi.Input<String> roleArn;
 
@@ -39,11 +42,16 @@ class EventStreamArgs {
 
   factory EventStreamArgs.fromMap(Map<String, dynamic> map) {
     return EventStreamArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      destinationStreamArn: (map['destinationStreamArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      destinationStreamArn: pulumi.Input.fromValue(
+        map['destinationStreamArn'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

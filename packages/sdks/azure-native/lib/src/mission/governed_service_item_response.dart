@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GovernedServiceItemResponse {
   /// Initiative enforcement (Enabled or Disabled).
   final pulumi.Input<String>? enforcement;
+
   /// Initiatives associated with this service.
   final pulumi.Input<List<String>> initiatives;
+
   /// Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable).
   final pulumi.Input<String>? option;
+
   /// Enforcement mode for policy. AuditOnly, Enforce, or None.
   final pulumi.Input<String>? policyAction;
+
   /// Service ID
   final pulumi.Input<String> serviceId;
+
   /// Service name.
   final pulumi.Input<String> serviceName;
 
@@ -46,13 +51,26 @@ class GovernedServiceItemResponse {
 
   factory GovernedServiceItemResponse.fromMap(Map<String, dynamic> map) {
     return GovernedServiceItemResponse(
-      enforcement: map['enforcement'] == null ? null : (map['enforcement']! as String).input(),
-      initiatives: ((map['initiatives'] as List).cast<String>()).input(),
-      option: map['option'] == null ? null : (map['option']! as String).input(),
-      policyAction: map['policyAction'] == null ? null : (map['policyAction']! as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      enforcement: (() {
+        final guardedValue = map['enforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initiatives: pulumi.Input.fromValue(
+        (map['initiatives'] as List).cast<String>(),
+      ),
+      option: (() {
+        final guardedValue = map['option'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyAction: (() {
+        final guardedValue = map['policyAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

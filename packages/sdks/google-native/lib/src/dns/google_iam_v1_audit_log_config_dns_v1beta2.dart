@@ -7,29 +7,44 @@ import 'google_iam_v1_audit_log_config_log_type_dns_v1beta2.dart';
 class GoogleIamV1AuditLogConfigDnsV1beta2 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>>? exemptedMembers;
+
   /// The log type that this config enables.
   final pulumi.Input<GoogleIamV1AuditLogConfigLogTypeDnsV1beta2>? logType;
 
   /// Creates a new [GoogleIamV1AuditLogConfigDnsV1beta2].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  GoogleIamV1AuditLogConfigDnsV1beta2({
-    this.exemptedMembers,
-    this.logType,
-  });
+  GoogleIamV1AuditLogConfigDnsV1beta2({this.exemptedMembers, this.logType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'exemptedMembers': ?exemptedMembers,
-      'logType': ?pulumi.Input.mapOptionalInputValue<GoogleIamV1AuditLogConfigLogTypeDnsV1beta2, String>(logType, (value) => value.value),
+      'logType':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleIamV1AuditLogConfigLogTypeDnsV1beta2,
+            String
+          >(logType, (value) => value.wireValue),
     };
   }
 
-  factory GoogleIamV1AuditLogConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory GoogleIamV1AuditLogConfigDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleIamV1AuditLogConfigDnsV1beta2(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (GoogleIamV1AuditLogConfigLogTypeDnsV1beta2.fromValue(map['logType']! as String)).input(),
+      exemptedMembers: (() {
+        final guardedValue = map['exemptedMembers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logType: (() {
+        final guardedValue = map['logType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleIamV1AuditLogConfigLogTypeDnsV1beta2.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

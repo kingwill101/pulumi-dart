@@ -249,24 +249,35 @@ import 'table_level_sharing_properties_response.dart';
 class KustoPoolAttachedDatabaseConfiguration extends pulumi.CustomResource {
   /// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
   late final pulumi.Output<List<String>> attachedDatabaseNames;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
   late final pulumi.Output<String> databaseName;
+
   /// The default principals modification kind
   late final pulumi.Output<String> defaultPrincipalsModificationKind;
+
   /// The resource id of the kusto pool where the databases you would like to attach reside.
   late final pulumi.Output<String> kustoPoolResourceId;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Table level sharing specifications
-  late final pulumi.Output<TableLevelSharingPropertiesResponse?> tableLevelSharingProperties;
+  late final pulumi.Output<TableLevelSharingPropertiesResponse?>
+  tableLevelSharingProperties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -279,21 +290,28 @@ class KustoPoolAttachedDatabaseConfiguration extends pulumi.CustomResource {
     KustoPoolAttachedDatabaseConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:KustoPoolAttachedDatabaseConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.defaultPrincipalsModificationKind = registerOutput<String>('defaultPrincipalsModificationKind');
-    this.kustoPoolResourceId = registerOutput<String>('kustoPoolResourceId');
-    this.location = registerOutput<String?>('location');
+         'azure-native:synapse:KustoPoolAttachedDatabaseConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachedDatabaseNames = registerOutput<List<String>>(
+      'attachedDatabaseNames',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databaseName = registerOutput<String>('databaseName');
+    defaultPrincipalsModificationKind = registerOutput<String>(
+      'defaultPrincipalsModificationKind',
+    );
+    kustoPoolResourceId = registerOutput<String>('kustoPoolResourceId');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tableLevelSharingProperties = registerOutput<TableLevelSharingPropertiesResponse?>('tableLevelSharingProperties');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tableLevelSharingProperties =
+        registerOutput<TableLevelSharingPropertiesResponse?>(
+          'tableLevelSharingProperties',
+        );
+    type = registerOutput<String>('type');
   }
 }

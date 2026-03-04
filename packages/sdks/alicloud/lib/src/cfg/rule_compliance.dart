@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleCompliance {
   /// The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
   final pulumi.Input<String>? complianceType;
+
   /// The count of compliance.
   final pulumi.Input<int>? count;
 
   /// Creates a new [RuleCompliance].
   /// [complianceType] The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
   /// [count] The count of compliance.
-  RuleCompliance({
-    this.complianceType,
-    this.count,
-  });
+  RuleCompliance({this.complianceType, this.count});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class RuleCompliance {
 
   factory RuleCompliance.fromMap(Map<String, dynamic> map) {
     return RuleCompliance(
-      complianceType: map['complianceType'] == null ? null : (map['complianceType']! as String).input(),
-      count: map['count'] == null ? null : (map['count']! as int).input(),
+      complianceType: (() {
+        final guardedValue = map['complianceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

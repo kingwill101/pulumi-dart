@@ -1,11 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'express_route_circuit_connection_response.dart';
 import 'express_route_circuit_peering_args.dart';
 import 'express_route_circuit_peering_config_response.dart';
 import 'express_route_circuit_stats_response.dart';
 import 'express_route_connection_id_response.dart';
 import 'ipv6_express_route_circuit_peering_config_response.dart';
-import 'peer_express_route_circuit_connection_response.dart';
 import 'sub_resource_response.dart';
 
 /// Peering in an ExpressRouteCircuit resource.
@@ -165,50 +163,76 @@ import 'sub_resource_response.dart';
 class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
   /// The Azure ASN.
   late final pulumi.Output<int?> azureASN;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The list of circuit connections associated with Azure Private Peering for this circuit.
-  late final pulumi.Output<List<ExpressRouteCircuitConnectionResponse>?> connections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> connections;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The ExpressRoute connection.
-  late final pulumi.Output<ExpressRouteConnectionIdResponse?> expressRouteConnection;
+  late final pulumi.Output<ExpressRouteConnectionIdResponse?>
+  expressRouteConnection;
+
   /// The GatewayManager Etag.
   late final pulumi.Output<String?> gatewayManagerEtag;
+
   /// The IPv6 peering configuration.
-  late final pulumi.Output<Ipv6ExpressRouteCircuitPeeringConfigResponse?> ipv6PeeringConfig;
+  late final pulumi.Output<Ipv6ExpressRouteCircuitPeeringConfigResponse?>
+  ipv6PeeringConfig;
+
   /// Who was the last to modify the peering.
   late final pulumi.Output<String> lastModifiedBy;
+
   /// The Microsoft peering configuration.
-  late final pulumi.Output<ExpressRouteCircuitPeeringConfigResponse?> microsoftPeeringConfig;
+  late final pulumi.Output<ExpressRouteCircuitPeeringConfigResponse?>
+  microsoftPeeringConfig;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The peer ASN.
   late final pulumi.Output<double?> peerASN;
+
   /// The list of peered circuit connections associated with Azure Private Peering for this circuit.
-  late final pulumi.Output<List<PeerExpressRouteCircuitConnectionResponse>> peeredConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>> peeredConnections;
+
   /// The peering type.
   late final pulumi.Output<String?> peeringType;
+
   /// The primary port.
   late final pulumi.Output<String?> primaryAzurePort;
+
   /// The primary address prefix.
   late final pulumi.Output<String?> primaryPeerAddressPrefix;
+
   /// The provisioning state of the express route circuit peering resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The reference to the RouteFilter resource.
   late final pulumi.Output<SubResourceResponse?> routeFilter;
+
   /// The secondary port.
   late final pulumi.Output<String?> secondaryAzurePort;
+
   /// The secondary address prefix.
   late final pulumi.Output<String?> secondaryPeerAddressPrefix;
+
   /// The shared key.
   late final pulumi.Output<String?> sharedKey;
+
   /// The peering state.
   late final pulumi.Output<String?> state;
+
   /// The peering stats of express route circuit.
   late final pulumi.Output<ExpressRouteCircuitStatsResponse?> stats;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
+
   /// The VLAN ID.
   late final pulumi.Output<int?> vlanId;
 
@@ -221,34 +245,48 @@ class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
     ExpressRouteCircuitPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ExpressRouteCircuitPeering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureASN = registerOutput<int?>('azureASN');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connections = registerOutput<List<ExpressRouteCircuitConnectionResponse>?>('connections');
-    this.etag = registerOutput<String>('etag');
-    this.expressRouteConnection = registerOutput<ExpressRouteConnectionIdResponse?>('expressRouteConnection');
-    this.gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
-    this.ipv6PeeringConfig = registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>('ipv6PeeringConfig');
-    this.lastModifiedBy = registerOutput<String>('lastModifiedBy');
-    this.microsoftPeeringConfig = registerOutput<ExpressRouteCircuitPeeringConfigResponse?>('microsoftPeeringConfig');
+         'azure-native:network:ExpressRouteCircuitPeering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureASN = registerOutput<int?>('azureASN');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connections = registerOutput<List<Map<String, dynamic>>?>('connections');
+    etag = registerOutput<String>('etag');
+    expressRouteConnection = registerOutput<ExpressRouteConnectionIdResponse?>(
+      'expressRouteConnection',
+    );
+    gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
+    ipv6PeeringConfig =
+        registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>(
+          'ipv6PeeringConfig',
+        );
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    microsoftPeeringConfig =
+        registerOutput<ExpressRouteCircuitPeeringConfigResponse?>(
+          'microsoftPeeringConfig',
+        );
     this.name = registerOutput<String?>('name');
-    this.peerASN = registerOutput<double?>('peerASN');
-    this.peeredConnections = registerOutput<List<PeerExpressRouteCircuitConnectionResponse>>('peeredConnections');
-    this.peeringType = registerOutput<String?>('peeringType');
-    this.primaryAzurePort = registerOutput<String?>('primaryAzurePort');
-    this.primaryPeerAddressPrefix = registerOutput<String?>('primaryPeerAddressPrefix');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.routeFilter = registerOutput<SubResourceResponse?>('routeFilter');
-    this.secondaryAzurePort = registerOutput<String?>('secondaryAzurePort');
-    this.secondaryPeerAddressPrefix = registerOutput<String?>('secondaryPeerAddressPrefix');
-    this.sharedKey = registerOutput<String?>('sharedKey');
-    this.state = registerOutput<String?>('state');
-    this.stats = registerOutput<ExpressRouteCircuitStatsResponse?>('stats');
-    this.type = registerOutput<String>('type');
-    this.vlanId = registerOutput<int?>('vlanId');
+    peerASN = registerOutput<double?>('peerASN');
+    peeredConnections = registerOutput<List<Map<String, dynamic>>>(
+      'peeredConnections',
+    );
+    peeringType = registerOutput<String?>('peeringType');
+    primaryAzurePort = registerOutput<String?>('primaryAzurePort');
+    primaryPeerAddressPrefix = registerOutput<String?>(
+      'primaryPeerAddressPrefix',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    routeFilter = registerOutput<SubResourceResponse?>('routeFilter');
+    secondaryAzurePort = registerOutput<String?>('secondaryAzurePort');
+    secondaryPeerAddressPrefix = registerOutput<String?>(
+      'secondaryPeerAddressPrefix',
+    );
+    sharedKey = registerOutput<String?>('sharedKey');
+    state = registerOutput<String?>('state');
+    stats = registerOutput<ExpressRouteCircuitStatsResponse?>('stats');
+    type = registerOutput<String>('type');
+    vlanId = registerOutput<int?>('vlanId');
   }
 }

@@ -8,20 +8,13 @@ class GetVpcIpv6 {
 
   /// Creates a new [GetVpcIpv6].
   /// [range] The IPv6 range assigned to this VPC.
-  GetVpcIpv6({
-    required this.range,
-  });
+  GetVpcIpv6({required this.range});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'range': range,
-    };
+    return <String, dynamic>{'range': range};
   }
 
   factory GetVpcIpv6.fromMap(Map<String, dynamic> map) {
-    return GetVpcIpv6(
-      range: (map['range'] as String).input(),
-    );
+    return GetVpcIpv6(range: pulumi.Input.fromValue(map['range'] as String));
   }
 }
-

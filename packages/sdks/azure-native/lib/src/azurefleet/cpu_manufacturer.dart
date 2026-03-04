@@ -5,16 +5,15 @@ enum CpuManufacturer {
   microsoft("Microsoft"),
   ampere("Ampere");
 
-  const CpuManufacturer(this.value);
-  final String value;
+  const CpuManufacturer(this.wireValue);
+  final String wireValue;
 
   static CpuManufacturer fromValue(String value) {
     for (final item in CpuManufacturer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CpuManufacturer value: $value');
   }
 }
-

@@ -152,34 +152,50 @@ import 'system_data_response.dart';
 class StorageClass extends pulumi.CustomResource {
   /// The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce]
   late final pulumi.Output<List<String>?> accessModes;
+
   /// Volume can be expanded or not
   late final pulumi.Output<String?> allowVolumeExpansion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Allow single data node failure
   late final pulumi.Output<String?> dataResilience;
+
   /// Failover speed: NA, Slow, Fast
   late final pulumi.Output<String?> failoverSpeed;
+
   /// Limitations of the storage class
   late final pulumi.Output<List<String>?> limitations;
+
   /// Additional mount options
   late final pulumi.Output<List<String>?> mountOptions;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Performance tier
   late final pulumi.Output<String?> performance;
+
   /// Selection priority when multiple storage classes meet the criteria. 0: Highest, -1: Never use
   late final pulumi.Output<double?> priority;
+
   /// Provisioner name
   late final pulumi.Output<String?> provisioner;
+
   /// Resource provision state
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Properties of the StorageClass
-  late final pulumi.Output<BlobStorageClassTypePropertiesResponse> typeProperties;
+  late final pulumi.Output<BlobStorageClassTypePropertiesResponse>
+  typeProperties;
+
   /// Binding mode of volumes: Immediate, WaitForFirstConsumer
   late final pulumi.Output<String?> volumeBindingMode;
 
@@ -192,26 +208,28 @@ class StorageClass extends pulumi.CustomResource {
     StorageClassArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kubernetesruntime:StorageClass',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessModes = registerOutput<List<String>?>('accessModes');
-    this.allowVolumeExpansion = registerOutput<String?>('allowVolumeExpansion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataResilience = registerOutput<String?>('dataResilience');
-    this.failoverSpeed = registerOutput<String?>('failoverSpeed');
-    this.limitations = registerOutput<List<String>?>('limitations');
-    this.mountOptions = registerOutput<List<String>?>('mountOptions');
+         'azure-native:kubernetesruntime:StorageClass',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessModes = registerOutput<List<String>?>('accessModes');
+    allowVolumeExpansion = registerOutput<String?>('allowVolumeExpansion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataResilience = registerOutput<String?>('dataResilience');
+    failoverSpeed = registerOutput<String?>('failoverSpeed');
+    limitations = registerOutput<List<String>?>('limitations');
+    mountOptions = registerOutput<List<String>?>('mountOptions');
     this.name = registerOutput<String>('name');
-    this.performance = registerOutput<String?>('performance');
-    this.priority = registerOutput<double?>('priority');
-    this.provisioner = registerOutput<String?>('provisioner');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.typeProperties = registerOutput<BlobStorageClassTypePropertiesResponse>('typeProperties');
-    this.volumeBindingMode = registerOutput<String?>('volumeBindingMode');
+    performance = registerOutput<String?>('performance');
+    priority = registerOutput<double?>('priority');
+    provisioner = registerOutput<String?>('provisioner');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    typeProperties = registerOutput<BlobStorageClassTypePropertiesResponse>(
+      'typeProperties',
+    );
+    volumeBindingMode = registerOutput<String?>('volumeBindingMode');
   }
 }

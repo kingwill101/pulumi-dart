@@ -10,15 +10,20 @@ import 'route_filter_rule_network.dart';
 class RouteFilterArgs {
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the route filter.
   final pulumi.Input<String>? routeFilterName;
+
   /// Collection of RouteFilterRules contained within a route filter.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
   final pulumi.Input<List<RouteFilterRuleNetwork>>? rules;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -51,13 +56,38 @@ class RouteFilterArgs {
 
   factory RouteFilterArgs.fromMap(Map<String, dynamic> map) {
     return RouteFilterArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeFilterName: map['routeFilterName'] == null ? null : (map['routeFilterName']! as String).input(),
-      rules: map['rules'] == null ? null : ((map['rules']! as List).cast<RouteFilterRuleNetwork>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      routeFilterName: (() {
+        final guardedValue = map['routeFilterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<RouteFilterRuleNetwork>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

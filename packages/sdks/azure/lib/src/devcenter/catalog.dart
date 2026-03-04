@@ -239,7 +239,7 @@ import 'catalog_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevCenter` - 2025-02-01
@@ -259,12 +259,16 @@ import 'catalog_state.dart';
 class Catalog extends pulumi.CustomResource {
   /// A `catalog_adogit` block as defined below.
   late final pulumi.Output<CatalogCatalogAdogit?> catalogAdogit;
+
   /// A `catalog_github` block as defined below.
   late final pulumi.Output<CatalogCatalogGithub?> catalogGithub;
+
   /// Specifies the Dev Center Id within which this Dev Center Catalog should exist. Changing this forces a new Dev Center Catalog to be created.
   late final pulumi.Output<String> devCenterId;
+
   /// Specifies the name of this Dev Center Catalog. Changing this forces a new Dev Center to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group within which this Dev Center Catalog should exist. Changing this forces a new Dev Center to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -277,16 +281,16 @@ class Catalog extends pulumi.CustomResource {
     CatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/catalog:Catalog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit');
-    this.catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub');
-    this.devCenterId = registerOutput<String>('devCenterId');
+         'azure:devcenter/catalog:Catalog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit');
+    catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub');
+    devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [Catalog] resource's state with the given [name] and [id].
@@ -307,15 +311,15 @@ class Catalog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/catalog:Catalog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit');
-    this.catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub');
-    this.devCenterId = registerOutput<String>('devCenterId');
+         'azure:devcenter/catalog:Catalog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit');
+    catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub');
+    devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

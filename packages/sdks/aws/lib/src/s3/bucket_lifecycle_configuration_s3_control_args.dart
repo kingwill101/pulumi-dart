@@ -10,8 +10,10 @@ import 'bucket_lifecycle_configuration_rule_s3_control.dart';
 class BucketLifecycleConfigurationS3ControlArgs {
   /// Amazon Resource Name (ARN) of the bucket.
   final pulumi.Input<String> bucket;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block(s) containing lifecycle rules for the bucket.
   final pulumi.Input<List<BucketLifecycleConfigurationRuleS3Control>> rules;
 
@@ -29,16 +31,39 @@ class BucketLifecycleConfigurationS3ControlArgs {
     return <String, dynamic>{
       'bucket': bucket,
       'region': ?region,
-      'rules': pulumi.Input.mapInputValue<List<BucketLifecycleConfigurationRuleS3Control>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BucketLifecycleConfigurationRuleS3Control, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<BucketLifecycleConfigurationRuleS3Control>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BucketLifecycleConfigurationRuleS3Control,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory BucketLifecycleConfigurationS3ControlArgs.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleConfigurationS3ControlArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleConfigurationS3ControlArgs(
-      bucket: (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      rules: (pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(map['rules']!, (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(
+          map['rules']!,
+          (value) => BucketLifecycleConfigurationRuleS3Control.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

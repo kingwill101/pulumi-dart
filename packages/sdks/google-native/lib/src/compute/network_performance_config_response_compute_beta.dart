@@ -17,10 +17,13 @@ class NetworkPerformanceConfigResponseComputeBeta {
     };
   }
 
-  factory NetworkPerformanceConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory NetworkPerformanceConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkPerformanceConfigResponseComputeBeta(
-      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(
+        map['totalEgressBandwidthTier'] as String,
+      ),
     );
   }
 }
-

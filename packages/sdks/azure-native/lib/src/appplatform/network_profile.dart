@@ -7,16 +7,22 @@ import 'ingress_config.dart';
 class NetworkProfile {
   /// Name of the resource group containing network resources for customer apps in Azure Spring Apps
   final pulumi.Input<String>? appNetworkResourceGroup;
+
   /// Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
   final pulumi.Input<String>? appSubnetId;
+
   /// Ingress configuration payload for Azure Spring Apps resource.
   final pulumi.Input<IngressConfig>? ingressConfig;
+
   /// The egress traffic type of Azure Spring Apps VNet instances.
   final pulumi.Input<String>? outboundType;
+
   /// Azure Spring Apps service reserved CIDR
   final pulumi.Input<String>? serviceCidr;
+
   /// Name of the resource group containing network resources of Azure Spring Apps Service Runtime
   final pulumi.Input<String>? serviceRuntimeNetworkResourceGroup;
+
   /// Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
   final pulumi.Input<String>? serviceRuntimeSubnetId;
 
@@ -42,7 +48,11 @@ class NetworkProfile {
     return <String, dynamic>{
       'appNetworkResourceGroup': ?appNetworkResourceGroup,
       'appSubnetId': ?appSubnetId,
-      'ingressConfig': ?pulumi.Input.mapOptionalInputValue<IngressConfig, Map<String, dynamic>>(ingressConfig, (value) => value.toMap()),
+      'ingressConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            IngressConfig,
+            Map<String, dynamic>
+          >(ingressConfig, (value) => value.toMap()),
       'outboundType': ?outboundType,
       'serviceCidr': ?serviceCidr,
       'serviceRuntimeNetworkResourceGroup': ?serviceRuntimeNetworkResourceGroup,
@@ -52,14 +62,43 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup']! as String).input(),
-      appSubnetId: map['appSubnetId'] == null ? null : (map['appSubnetId']! as String).input(),
-      ingressConfig: map['ingressConfig'] == null ? null : (IngressConfig.fromMap((map['ingressConfig']! as Map).cast<String, dynamic>())).input(),
-      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
-      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup']! as String).input(),
-      serviceRuntimeSubnetId: map['serviceRuntimeSubnetId'] == null ? null : (map['serviceRuntimeSubnetId']! as String).input(),
+      appNetworkResourceGroup: (() {
+        final guardedValue = map['appNetworkResourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appSubnetId: (() {
+        final guardedValue = map['appSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingressConfig: (() {
+        final guardedValue = map['ingressConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IngressConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      outboundType: (() {
+        final guardedValue = map['outboundType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceCidr: (() {
+        final guardedValue = map['serviceCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceRuntimeNetworkResourceGroup: (() {
+        final guardedValue = map['serviceRuntimeNetworkResourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceRuntimeSubnetId: (() {
+        final guardedValue = map['serviceRuntimeSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

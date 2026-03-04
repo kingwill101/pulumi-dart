@@ -7,18 +7,28 @@ import 'aws_s3_control_multi_region_access_point_policy_document_properties.dart
 class S3ControlMultiRegionAccessPointPolicyDocumentProperties {
   /// Amazon Resource Name (ARN)
   final pulumi.Input<String>? arn;
+
   /// AWS Account ID
   final pulumi.Input<String>? awsAccountId;
+
   /// AWS Properties
-  final pulumi.Input<AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties>? awsProperties;
+  final pulumi.Input<
+    AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties
+  >?
+  awsProperties;
+
   /// AWS Region
   final pulumi.Input<String>? awsRegion;
+
   /// AWS Source Schema
   final pulumi.Input<String>? awsSourceSchema;
+
   /// AWS Tags
   final pulumi.Input<Map<String, String>>? awsTags;
+
   /// Public Cloud Connectors Resource ID
   final pulumi.Input<String>? publicCloudConnectorsResourceId;
+
   /// Public Cloud Resource Name
   final pulumi.Input<String>? publicCloudResourceName;
 
@@ -46,7 +56,11 @@ class S3ControlMultiRegionAccessPointPolicyDocumentProperties {
     return <String, dynamic>{
       'arn': ?arn,
       'awsAccountId': ?awsAccountId,
-      'awsProperties': ?pulumi.Input.mapOptionalInputValue<AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties, Map<String, dynamic>>(awsProperties, (value) => value.toMap()),
+      'awsProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties,
+            Map<String, dynamic>
+          >(awsProperties, (value) => value.toMap()),
       'awsRegion': ?awsRegion,
       'awsSourceSchema': ?awsSourceSchema,
       'awsTags': ?awsTags,
@@ -55,17 +69,56 @@ class S3ControlMultiRegionAccessPointPolicyDocumentProperties {
     };
   }
 
-  factory S3ControlMultiRegionAccessPointPolicyDocumentProperties.fromMap(Map<String, dynamic> map) {
+  factory S3ControlMultiRegionAccessPointPolicyDocumentProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return S3ControlMultiRegionAccessPointPolicyDocumentProperties(
-      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId']! as String).input(),
-      awsProperties: map['awsProperties'] == null ? null : (AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties.fromMap((map['awsProperties']! as Map).cast<String, dynamic>())).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
-      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema']! as String).input(),
-      awsTags: map['awsTags'] == null ? null : ((map['awsTags']! as Map).cast<String, String>()).input(),
-      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId']! as String).input(),
-      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName']! as String).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsProperties: (() {
+        final guardedValue = map['awsProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsSourceSchema: (() {
+        final guardedValue = map['awsSourceSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsTags: (() {
+        final guardedValue = map['awsTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      publicCloudConnectorsResourceId: (() {
+        final guardedValue = map['publicCloudConnectorsResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicCloudResourceName: (() {
+        final guardedValue = map['publicCloudResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

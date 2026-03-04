@@ -9,30 +9,40 @@ class AppConnectionState {
   /// Address of the remote application endpoint for the BeyondCorp AppConnection.
   /// Structure is documented below.
   final pulumi.Input<AppConnectionApplicationEndpoint>? applicationEndpoint;
+
   /// List of AppConnectors that are authorised to be associated with this AppConnection
   final pulumi.Input<List<String>>? connectors;
+
   /// An arbitrary user-provided name for the AppConnection.
   final pulumi.Input<String>? displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Gateway used by the AppConnection.
   /// Structure is documented below.
   final pulumi.Input<AppConnectionGateway>? gateway;
+
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// ID of the AppConnection.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The region of the AppConnection.
   final pulumi.Input<String>? region;
+
   /// The type of network connectivity used by the AppConnection. Refer
   /// to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
   /// for a list of possible values.
@@ -66,11 +76,19 @@ class AppConnectionState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationEndpoint': ?pulumi.Input.mapOptionalInputValue<AppConnectionApplicationEndpoint, Map<String, dynamic>>(applicationEndpoint, (value) => value.toMap()),
+      'applicationEndpoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppConnectionApplicationEndpoint,
+            Map<String, dynamic>
+          >(applicationEndpoint, (value) => value.toMap()),
       'connectors': ?connectors,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
-      'gateway': ?pulumi.Input.mapOptionalInputValue<AppConnectionGateway, Map<String, dynamic>>(gateway, (value) => value.toMap()),
+      'gateway':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppConnectionGateway,
+            Map<String, dynamic>
+          >(gateway, (value) => value.toMap()),
       'labels': ?labels,
       'name': ?name,
       'project': ?project,
@@ -82,18 +100,75 @@ class AppConnectionState {
 
   factory AppConnectionState.fromMap(Map<String, dynamic> map) {
     return AppConnectionState(
-      applicationEndpoint: map['applicationEndpoint'] == null ? null : (AppConnectionApplicationEndpoint.fromMap((map['applicationEndpoint']! as Map).cast<String, dynamic>())).input(),
-      connectors: map['connectors'] == null ? null : ((map['connectors']! as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      gateway: map['gateway'] == null ? null : (AppConnectionGateway.fromMap((map['gateway']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      applicationEndpoint: (() {
+        final guardedValue = map['applicationEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppConnectionApplicationEndpoint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectors: (() {
+        final guardedValue = map['connectors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      gateway: (() {
+        final guardedValue = map['gateway'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppConnectionGateway.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

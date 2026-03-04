@@ -14,15 +14,14 @@ class GoogleCloudContentwarehouseV1AddToFolderActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'folders': folders,
-    };
+    return <String, dynamic>{'folders': folders};
   }
 
-  factory GoogleCloudContentwarehouseV1AddToFolderActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1AddToFolderActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1AddToFolderActionResponse(
-      folders: ((map['folders'] as List).cast<String>()).input(),
+      folders: pulumi.Input.fromValue((map['folders'] as List).cast<String>()),
     );
   }
 }
-

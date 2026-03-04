@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListLocalRulestackPredefinedUrlCategoriesArgs {
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String>? skip;
@@ -35,13 +36,26 @@ class ListLocalRulestackPredefinedUrlCategoriesArgs {
     };
   }
 
-  factory ListLocalRulestackPredefinedUrlCategoriesArgs.fromMap(Map<String, dynamic> map) {
+  factory ListLocalRulestackPredefinedUrlCategoriesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListLocalRulestackPredefinedUrlCategoriesArgs(
-      localRulestackName: (map['localRulestackName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
-      top: map['top'] == null ? null : (map['top']! as int).input(),
+      localRulestackName: pulumi.Input.fromValue(
+        map['localRulestackName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skip: (() {
+        final guardedValue = map['skip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      top: (() {
+        final guardedValue = map['top'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceArgs {
   /// The name of the instance.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetDatabaseInstanceArgs].
   /// [name] The name of the instance.
   /// [project] The ID of the project in which the resource belongs.
-  GetDatabaseInstanceArgs({
-    required this.name,
-    this.project,
-  });
+  GetDatabaseInstanceArgs({required this.name, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'project': ?project,
-    };
+    return <String, dynamic>{'name': name, 'project': ?project};
   }
 
   factory GetDatabaseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,7 +6,13 @@ import 'stream_source_config_postgresql_source_config_include_objects_postgresql
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable>>? postgresqlTables;
+  final pulumi.Input<
+    List<
+      StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable
+    >
+  >?
+  postgresqlTables;
+
   /// Database name.
   final pulumi.Input<String> schema;
 
@@ -20,16 +26,44 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlTables': ?pulumi.Input.mapOptionalInputValue<List<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable>, List<Map<String, dynamic>>>(postgresqlTables, (value) => pulumi.Input.encodeList<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'postgresqlTables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable
+            >,
+            List<Map<String, dynamic>>
+          >(
+            postgresqlTables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'schema': schema,
     };
   }
 
-  factory StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema(
-      postgresqlTables: map['postgresqlTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable>(map['postgresqlTables']!, (value) => StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schema: (map['schema'] as String).input(),
+      postgresqlTables: (() {
+        final guardedValue = map['postgresqlTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable
+          >(
+            guardedValue,
+            (value) =>
+                StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
     );
   }
 }
-

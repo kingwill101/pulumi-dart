@@ -6,7 +6,7 @@ import 'model_state.dart';
 ///
 /// For information about Api Gateway Model and how to use it, see [What is Model](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createmodel).
 ///
-/// > **NOTE:** Available since v1.187.0.
+/// &gt; **NOTE:** Available since v1.187.0.
 ///
 /// ## Example Usage
 ///
@@ -164,10 +164,13 @@ import 'model_state.dart';
 class Model extends pulumi.CustomResource {
   /// The description of the model.
   late final pulumi.Output<String?> description;
+
   /// The group of the model belongs to.
   late final pulumi.Output<String> groupId;
+
   /// The name of the model.
   late final pulumi.Output<String> modelName;
+
   /// The schema of the model.
   late final pulumi.Output<String> schema;
 
@@ -175,28 +178,21 @@ class Model extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Model]. {@macro pulumi_apigateway_model_model_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Model(
-    String name, {
-    ModelArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:apigateway/model:Model',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.groupId = registerOutput<String>('groupId');
-    this.modelName = registerOutput<String>('modelName');
-    this.schema = registerOutput<String>('schema');
+  Model(String name, {ModelArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:apigateway/model:Model',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String?>('description');
+    groupId = registerOutput<String>('groupId');
+    modelName = registerOutput<String>('modelName');
+    schema = registerOutput<String>('schema');
   }
 
   /// Gets an existing [Model] resource's state with the given [name] and [id].
-  static Model get(
-    String name,
-    pulumi.Input<String> id, {
-    ModelState? state,
-  }) {
+  static Model get(String name, pulumi.Input<String> id, {ModelState? state}) {
     return Model._get(
       name,
       state: state?.toMap(),
@@ -209,14 +205,14 @@ class Model extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/model:Model',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.groupId = registerOutput<String>('groupId');
-    this.modelName = registerOutput<String>('modelName');
-    this.schema = registerOutput<String>('schema');
+         'alicloud:apigateway/model:Model',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    groupId = registerOutput<String>('groupId');
+    modelName = registerOutput<String>('modelName');
+    schema = registerOutput<String>('schema');
   }
 }

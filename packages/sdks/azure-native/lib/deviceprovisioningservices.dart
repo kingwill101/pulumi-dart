@@ -1,3 +1,1 @@
-library pulumi_azure_native_deviceprovisioningservices;
-
 export 'package:pulumi_azure_native/src/deviceprovisioningservices.dart';

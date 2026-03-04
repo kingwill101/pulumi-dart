@@ -4,16 +4,19 @@ enum GoogleCloudDialogflowV2IntentTrainingPhraseType {
   example("EXAMPLE"),
   template("TEMPLATE");
 
-  const GoogleCloudDialogflowV2IntentTrainingPhraseType(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2IntentTrainingPhraseType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDialogflowV2IntentTrainingPhraseType fromValue(String value) {
+  static GoogleCloudDialogflowV2IntentTrainingPhraseType fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudDialogflowV2IntentTrainingPhraseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2IntentTrainingPhraseType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2IntentTrainingPhraseType value: $value',
+    );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationRuntimeDataFlowProperties {
   /// Compute type of the cluster which will execute data flow job.
   final pulumi.Input<String>? computeType;
+
   /// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
   final pulumi.Input<int>? coreCount;
+
   /// Time to live (in minutes) setting of the cluster which will execute data flow job.
   final pulumi.Input<int>? timeToLive;
 
@@ -29,12 +31,25 @@ class IntegrationRuntimeDataFlowProperties {
     };
   }
 
-  factory IntegrationRuntimeDataFlowProperties.fromMap(Map<String, dynamic> map) {
+  factory IntegrationRuntimeDataFlowProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationRuntimeDataFlowProperties(
-      computeType: map['computeType'] == null ? null : (map['computeType']! as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
+      computeType: (() {
+        final guardedValue = map['computeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coreCount: (() {
+        final guardedValue = map['coreCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeToLive: (() {
+        final guardedValue = map['timeToLive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

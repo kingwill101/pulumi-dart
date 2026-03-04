@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SlotVirtualNetworkSwiftConnectionArgs {
   /// The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.
   final pulumi.Input<String> appServiceId;
+
   /// The name of the App Service Slot or Function App Slot. Changing this forces a new resource to be created.
   final pulumi.Input<String> slotName;
+
   /// The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
   final pulumi.Input<String> subnetId;
 
@@ -32,12 +34,13 @@ class SlotVirtualNetworkSwiftConnectionArgs {
     };
   }
 
-  factory SlotVirtualNetworkSwiftConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory SlotVirtualNetworkSwiftConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SlotVirtualNetworkSwiftConnectionArgs(
-      appServiceId: (map['appServiceId'] as String).input(),
-      slotName: (map['slotName'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      appServiceId: pulumi.Input.fromValue(map['appServiceId'] as String),
+      slotName: pulumi.Input.fromValue(map['slotName'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

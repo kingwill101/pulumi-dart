@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoggingProperties {
   /// Property bucketName
   final pulumi.Input<String>? bucketName;
+
   /// Property s3KeyPrefix
   final pulumi.Input<String>? s3KeyPrefix;
 
   /// Creates a new [LoggingProperties].
   /// [bucketName] Property bucketName
   /// [s3KeyPrefix] Property s3KeyPrefix
-  LoggingProperties({
-    this.bucketName,
-    this.s3KeyPrefix,
-  });
+  LoggingProperties({this.bucketName, this.s3KeyPrefix});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class LoggingProperties {
 
   factory LoggingProperties.fromMap(Map<String, dynamic> map) {
     return LoggingProperties(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3KeyPrefix: (() {
+        final guardedValue = map['s3KeyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

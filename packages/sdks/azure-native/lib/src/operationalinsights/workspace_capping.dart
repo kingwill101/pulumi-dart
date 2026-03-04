@@ -9,20 +9,19 @@ class WorkspaceCapping {
 
   /// Creates a new [WorkspaceCapping].
   /// [dailyQuotaGb] The workspace daily quota for ingestion.
-  WorkspaceCapping({
-    this.dailyQuotaGb,
-  });
+  WorkspaceCapping({this.dailyQuotaGb});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dailyQuotaGb': ?dailyQuotaGb,
-    };
+    return <String, dynamic>{'dailyQuotaGb': ?dailyQuotaGb};
   }
 
   factory WorkspaceCapping.fromMap(Map<String, dynamic> map) {
     return WorkspaceCapping(
-      dailyQuotaGb: map['dailyQuotaGb'] == null ? null : (map['dailyQuotaGb']! as double).input(),
+      dailyQuotaGb: (() {
+        final guardedValue = map['dailyQuotaGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

@@ -9,72 +9,106 @@ import 'db_instance_security_ip_list.dart';
 class DbInstanceState {
   /// The password for DBInstance using admin account.
   final pulumi.Input<String>? adminPass;
+
   /// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
   final pulumi.Input<int>? cacheSize;
+
   /// The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int>? cacheSizePostpaid;
+
   /// The sum of cache size for every `Subscription` clusters in DBInstance.
   final pulumi.Input<int>? cacheSizePrepaid;
+
   /// The sum of cluster counts for `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int>? clusterCountPostpaid;
+
   /// The sum of cluster counts for `Subscription` clusters in DBInstance.
   final pulumi.Input<int>? clusterCountPrepaid;
+
   /// The sum of cpu resource amount for every `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int>? cpuPostpaid;
+
   /// The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
   final pulumi.Input<int>? cpuPrepaid;
+
   /// The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
   final pulumi.Input<String>? dbInstanceClass;
+
   /// The DBInstance description.
   final pulumi.Input<String>? dbInstanceDescription;
+
   /// The modified IP address whitelists. See `desired_security_ip_lists` below.
-  final pulumi.Input<List<DbInstanceDesiredSecurityIpList>>? desiredSecurityIpLists;
+  final pulumi.Input<List<DbInstanceDesiredSecurityIpList>>?
+  desiredSecurityIpLists;
+
   /// If DBInstance need to open public network, set it to `true`.
   final pulumi.Input<bool>? enablePublicNetwork;
+
   /// The engine of DBInstance. Always `selectdb`.
   final pulumi.Input<String>? engine;
+
   /// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
   final pulumi.Input<String>? engineMinorVersion;
+
   /// The time when DBInstance is created.
   final pulumi.Input<String>? gmtCreated;
+
   /// The time when DBInstance will be expired. Available on `Subscription` DBInstance.
   final pulumi.Input<String>? gmtExpired;
+
   /// The time when DBInstance is modified.
   final pulumi.Input<String>? gmtModified;
+
   /// The net infos for instances.
   final pulumi.Input<List<DbInstanceInstanceNetInfo>>? instanceNetInfos;
+
   /// The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
   final pulumi.Input<String>? lockMode;
+
   /// The reason why the instance is locked.
   final pulumi.Input<String>? lockReason;
+
   /// The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
   final pulumi.Input<int>? memoryPostpaid;
+
   /// The sum of memory resource amount offor every `Subscription` clusters in DBInstance.
   final pulumi.Input<int>? memoryPrepaid;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   final pulumi.Input<String>? paymentType;
+
   /// It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
   final pulumi.Input<String>? period;
+
   /// The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
   final pulumi.Input<int>? periodTime;
+
   /// The region ID of the instance.
   final pulumi.Input<String>? regionId;
+
   /// The details about each IP address whitelist returned.
   final pulumi.Input<List<DbInstanceSecurityIpList>>? securityIpLists;
+
   /// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
   final pulumi.Input<String>? status;
+
   /// The sub domain of DBInstance.
   final pulumi.Input<String>? subDomain;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
   final pulumi.Input<String>? upgradedEngineMinorVersion;
+
   /// The ID of the VPC for DBInstance.
   final pulumi.Input<String>? vpcId;
+
   /// The ID of vswitch for DBInstance.
   final pulumi.Input<String>? vswitchId;
+
   /// The ID of zone for DBInstance.
   final pulumi.Input<String>? zoneId;
 
@@ -162,14 +196,36 @@ class DbInstanceState {
       'cpuPrepaid': ?cpuPrepaid,
       'dbInstanceClass': ?dbInstanceClass,
       'dbInstanceDescription': ?dbInstanceDescription,
-      'desiredSecurityIpLists': ?pulumi.Input.mapOptionalInputValue<List<DbInstanceDesiredSecurityIpList>, List<Map<String, dynamic>>>(desiredSecurityIpLists, (value) => pulumi.Input.encodeList<DbInstanceDesiredSecurityIpList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'desiredSecurityIpLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DbInstanceDesiredSecurityIpList>,
+            List<Map<String, dynamic>>
+          >(
+            desiredSecurityIpLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DbInstanceDesiredSecurityIpList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enablePublicNetwork': ?enablePublicNetwork,
       'engine': ?engine,
       'engineMinorVersion': ?engineMinorVersion,
       'gmtCreated': ?gmtCreated,
       'gmtExpired': ?gmtExpired,
       'gmtModified': ?gmtModified,
-      'instanceNetInfos': ?pulumi.Input.mapOptionalInputValue<List<DbInstanceInstanceNetInfo>, List<Map<String, dynamic>>>(instanceNetInfos, (value) => pulumi.Input.encodeList<DbInstanceInstanceNetInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instanceNetInfos':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DbInstanceInstanceNetInfo>,
+            List<Map<String, dynamic>>
+          >(
+            instanceNetInfos,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DbInstanceInstanceNetInfo,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'lockMode': ?lockMode,
       'lockReason': ?lockReason,
       'memoryPostpaid': ?memoryPostpaid,
@@ -178,7 +234,18 @@ class DbInstanceState {
       'period': ?period,
       'periodTime': ?periodTime,
       'regionId': ?regionId,
-      'securityIpLists': ?pulumi.Input.mapOptionalInputValue<List<DbInstanceSecurityIpList>, List<Map<String, dynamic>>>(securityIpLists, (value) => pulumi.Input.encodeList<DbInstanceSecurityIpList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'securityIpLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DbInstanceSecurityIpList>,
+            List<Map<String, dynamic>>
+          >(
+            securityIpLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DbInstanceSecurityIpList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': ?status,
       'subDomain': ?subDomain,
       'tags': ?tags,
@@ -191,41 +258,199 @@ class DbInstanceState {
 
   factory DbInstanceState.fromMap(Map<String, dynamic> map) {
     return DbInstanceState(
-      adminPass: map['adminPass'] == null ? null : (map['adminPass']! as String).input(),
-      cacheSize: map['cacheSize'] == null ? null : (map['cacheSize']! as int).input(),
-      cacheSizePostpaid: map['cacheSizePostpaid'] == null ? null : (map['cacheSizePostpaid']! as int).input(),
-      cacheSizePrepaid: map['cacheSizePrepaid'] == null ? null : (map['cacheSizePrepaid']! as int).input(),
-      clusterCountPostpaid: map['clusterCountPostpaid'] == null ? null : (map['clusterCountPostpaid']! as int).input(),
-      clusterCountPrepaid: map['clusterCountPrepaid'] == null ? null : (map['clusterCountPrepaid']! as int).input(),
-      cpuPostpaid: map['cpuPostpaid'] == null ? null : (map['cpuPostpaid']! as int).input(),
-      cpuPrepaid: map['cpuPrepaid'] == null ? null : (map['cpuPrepaid']! as int).input(),
-      dbInstanceClass: map['dbInstanceClass'] == null ? null : (map['dbInstanceClass']! as String).input(),
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription']! as String).input(),
-      desiredSecurityIpLists: map['desiredSecurityIpLists'] == null ? null : (pulumi.Input.decodeList<DbInstanceDesiredSecurityIpList>(map['desiredSecurityIpLists']!, (value) => DbInstanceDesiredSecurityIpList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork']! as bool).input(),
-      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
-      engineMinorVersion: map['engineMinorVersion'] == null ? null : (map['engineMinorVersion']! as String).input(),
-      gmtCreated: map['gmtCreated'] == null ? null : (map['gmtCreated']! as String).input(),
-      gmtExpired: map['gmtExpired'] == null ? null : (map['gmtExpired']! as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
-      instanceNetInfos: map['instanceNetInfos'] == null ? null : (pulumi.Input.decodeList<DbInstanceInstanceNetInfo>(map['instanceNetInfos']!, (value) => DbInstanceInstanceNetInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lockMode: map['lockMode'] == null ? null : (map['lockMode']! as String).input(),
-      lockReason: map['lockReason'] == null ? null : (map['lockReason']! as String).input(),
-      memoryPostpaid: map['memoryPostpaid'] == null ? null : (map['memoryPostpaid']! as int).input(),
-      memoryPrepaid: map['memoryPrepaid'] == null ? null : (map['memoryPrepaid']! as int).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as String).input(),
-      periodTime: map['periodTime'] == null ? null : (map['periodTime']! as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      securityIpLists: map['securityIpLists'] == null ? null : (pulumi.Input.decodeList<DbInstanceSecurityIpList>(map['securityIpLists']!, (value) => DbInstanceSecurityIpList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      subDomain: map['subDomain'] == null ? null : (map['subDomain']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      upgradedEngineMinorVersion: map['upgradedEngineMinorVersion'] == null ? null : (map['upgradedEngineMinorVersion']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      adminPass: (() {
+        final guardedValue = map['adminPass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cacheSize: (() {
+        final guardedValue = map['cacheSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cacheSizePostpaid: (() {
+        final guardedValue = map['cacheSizePostpaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cacheSizePrepaid: (() {
+        final guardedValue = map['cacheSizePrepaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clusterCountPostpaid: (() {
+        final guardedValue = map['clusterCountPostpaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clusterCountPrepaid: (() {
+        final guardedValue = map['clusterCountPrepaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cpuPostpaid: (() {
+        final guardedValue = map['cpuPostpaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cpuPrepaid: (() {
+        final guardedValue = map['cpuPrepaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dbInstanceClass: (() {
+        final guardedValue = map['dbInstanceClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceDescription: (() {
+        final guardedValue = map['dbInstanceDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      desiredSecurityIpLists: (() {
+        final guardedValue = map['desiredSecurityIpLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DbInstanceDesiredSecurityIpList>(
+            guardedValue,
+            (value) => DbInstanceDesiredSecurityIpList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enablePublicNetwork: (() {
+        final guardedValue = map['enablePublicNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineMinorVersion: (() {
+        final guardedValue = map['engineMinorVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gmtCreated: (() {
+        final guardedValue = map['gmtCreated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gmtExpired: (() {
+        final guardedValue = map['gmtExpired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gmtModified: (() {
+        final guardedValue = map['gmtModified'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceNetInfos: (() {
+        final guardedValue = map['instanceNetInfos'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DbInstanceInstanceNetInfo>(
+            guardedValue,
+            (value) => DbInstanceInstanceNetInfo.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      lockMode: (() {
+        final guardedValue = map['lockMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lockReason: (() {
+        final guardedValue = map['lockReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryPostpaid: (() {
+        final guardedValue = map['memoryPostpaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      memoryPrepaid: (() {
+        final guardedValue = map['memoryPrepaid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      periodTime: (() {
+        final guardedValue = map['periodTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityIpLists: (() {
+        final guardedValue = map['securityIpLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DbInstanceSecurityIpList>(
+            guardedValue,
+            (value) => DbInstanceSecurityIpList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subDomain: (() {
+        final guardedValue = map['subDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      upgradedEngineMinorVersion: (() {
+        final guardedValue = map['upgradedEngineMinorVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

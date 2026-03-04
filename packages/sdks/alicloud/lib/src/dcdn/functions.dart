@@ -16,7 +16,7 @@ import 'get_waf_rules_result.dart';
 
 /// Provides a collection of DCDN Domains to the specified filters.
 ///
-/// > **NOTE:** Available since 1.94.0.
+/// &gt; **NOTE:** Available since 1.94.0.
 ///
 /// ## Example Usage
 ///
@@ -139,7 +139,7 @@ Future<GetDomainsResult> getDomains(
 
 /// This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.158.0.
+/// &gt; **NOTE:** Available since v1.158.0.
 ///
 /// ## Example Usage
 ///
@@ -311,7 +311,7 @@ Future<GetIpaDomainsResult> getIpaDomains(
 
 /// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
 ///
-/// > **NOTE:** Available since v1.198.0.
+/// &gt; **NOTE:** Available since v1.198.0.
 ///
 /// ## Example Usage
 ///
@@ -420,7 +420,7 @@ Future<GetKvAccountResult> getKvAccount(
 ///
 /// For information about DCDN and how to use it, see [What is DCDN](https://help.aliyun.com/document_detail/197288.html).
 ///
-/// > **NOTE:** Available in v1.111.0+
+/// &gt; **NOTE:** Available in v1.111.0+
 ///
 /// ## Example Usage
 ///
@@ -527,7 +527,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Dcdn Waf Domains of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.185.0.
+/// &gt; **NOTE:** Available since v1.185.0.
 ///
 /// ## Example Usage
 ///
@@ -637,7 +637,7 @@ Future<GetWafDomainsResult> getWafDomains(
 
 /// This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.184.0.
+/// &gt; **NOTE:** Available since v1.184.0.
 ///
 /// ## Example Usage
 ///
@@ -747,7 +747,7 @@ Future<GetWafPoliciesResult> getWafPolicies(
 
 /// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
 ///
-/// > **NOTE:** Available since v1.201.0.
+/// &gt; **NOTE:** Available since v1.201.0.
 ///
 /// ## Example Usage
 ///

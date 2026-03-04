@@ -1,0 +1,3 @@
+name: entrypoint_default_dart
+description: A Pulumi program for Dart entrypoint resolution.
+runtime: dart

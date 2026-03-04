@@ -8,11 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networking_floating_ip_associate_floating_ip_associate_args_doc}
 class FloatingIpAssociateArgs {
   final pulumi.Input<String>? fixedIp;
+
   /// IP Address of an existing floating IP.
   final pulumi.Input<String> floatingIp;
+
   /// ID of an existing port with at least one IP address to
   /// associate with this floating IP.
   final pulumi.Input<String> portId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a floating IP that can be used with
   /// another networking resource, such as a load balancer. If omitted, the
@@ -43,11 +46,18 @@ class FloatingIpAssociateArgs {
 
   factory FloatingIpAssociateArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssociateArgs(
-      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp']! as String).input(),
-      floatingIp: (map['floatingIp'] as String).input(),
-      portId: (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      fixedIp: (() {
+        final guardedValue = map['fixedIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      floatingIp: pulumi.Input.fromValue(map['floatingIp'] as String),
+      portId: pulumi.Input.fromValue(map['portId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

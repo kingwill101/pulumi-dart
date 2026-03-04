@@ -7,8 +7,10 @@ import 'firewall_rules_response.dart';
 class PublicNetworkSolutionResponse {
   /// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
   final pulumi.Input<String>? action;
+
   /// Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
   final pulumi.Input<String>? deleteOrUpdateBehavior;
+
   /// Describe firewall rules of target service to make sure source application could connect to the target.
   final pulumi.Input<FirewallRulesResponse>? firewallRules;
 
@@ -26,16 +28,35 @@ class PublicNetworkSolutionResponse {
     return <String, dynamic>{
       'action': ?action,
       'deleteOrUpdateBehavior': ?deleteOrUpdateBehavior,
-      'firewallRules': ?pulumi.Input.mapOptionalInputValue<FirewallRulesResponse, Map<String, dynamic>>(firewallRules, (value) => value.toMap()),
+      'firewallRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirewallRulesResponse,
+            Map<String, dynamic>
+          >(firewallRules, (value) => value.toMap()),
     };
   }
 
   factory PublicNetworkSolutionResponse.fromMap(Map<String, dynamic> map) {
     return PublicNetworkSolutionResponse(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior']! as String).input(),
-      firewallRules: map['firewallRules'] == null ? null : (FirewallRulesResponse.fromMap((map['firewallRules']! as Map).cast<String, dynamic>())).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteOrUpdateBehavior: (() {
+        final guardedValue = map['deleteOrUpdateBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallRules: (() {
+        final guardedValue = map['firewallRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirewallRulesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

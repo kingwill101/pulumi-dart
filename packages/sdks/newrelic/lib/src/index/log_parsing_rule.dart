@@ -302,20 +302,28 @@ import 'log_parsing_rule_state.dart';
 class LogParsingRule extends pulumi.CustomResource {
   /// The account id associated with the obfuscation rule.
   late final pulumi.Output<String> accountId;
+
   /// The parsing rule will apply to value of this attribute. If field is not provided, value will default to message.
   late final pulumi.Output<String?> attribute;
+
   /// Whether or not this rule is deleted.
   late final pulumi.Output<bool> deleted;
+
   /// Whether the rule should be applied or not to incoming data.
   late final pulumi.Output<bool> enabled;
+
   /// The Grok of what to parse.
   late final pulumi.Output<String> grok;
+
   /// The Lucene to match events to the parsing rule.
   late final pulumi.Output<String> lucene;
+
   /// Whether the Grok pattern matched.
   late final pulumi.Output<bool> matched;
+
   /// Name of rule.
   late final pulumi.Output<String> name;
+
   /// The NRQL to match events to the parsing rule.
   late final pulumi.Output<String> nrql;
 
@@ -328,20 +336,20 @@ class LogParsingRule extends pulumi.CustomResource {
     LogParsingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/logParsingRule:LogParsingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.attribute = registerOutput<String?>('attribute');
-    this.deleted = registerOutput<bool>('deleted');
-    this.enabled = registerOutput<bool>('enabled');
-    this.grok = registerOutput<String>('grok');
-    this.lucene = registerOutput<String>('lucene');
-    this.matched = registerOutput<bool>('matched');
+         'newrelic:index/logParsingRule:LogParsingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    attribute = registerOutput<String?>('attribute');
+    deleted = registerOutput<bool>('deleted');
+    enabled = registerOutput<bool>('enabled');
+    grok = registerOutput<String>('grok');
+    lucene = registerOutput<String>('lucene');
+    matched = registerOutput<bool>('matched');
     this.name = registerOutput<String>('name');
-    this.nrql = registerOutput<String>('nrql');
+    nrql = registerOutput<String>('nrql');
   }
 
   /// Gets an existing [LogParsingRule] resource's state with the given [name] and [id].
@@ -362,19 +370,19 @@ class LogParsingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/logParsingRule:LogParsingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.attribute = registerOutput<String?>('attribute');
-    this.deleted = registerOutput<bool>('deleted');
-    this.enabled = registerOutput<bool>('enabled');
-    this.grok = registerOutput<String>('grok');
-    this.lucene = registerOutput<String>('lucene');
-    this.matched = registerOutput<bool>('matched');
+         'newrelic:index/logParsingRule:LogParsingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    attribute = registerOutput<String?>('attribute');
+    deleted = registerOutput<bool>('deleted');
+    enabled = registerOutput<bool>('enabled');
+    grok = registerOutput<String>('grok');
+    lucene = registerOutput<String>('lucene');
+    matched = registerOutput<bool>('matched');
     this.name = registerOutput<String>('name');
-    this.nrql = registerOutput<String>('nrql');
+    nrql = registerOutput<String>('nrql');
   }
 }

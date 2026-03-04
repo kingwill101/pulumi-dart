@@ -8,20 +8,23 @@ class WorkflowTemplateJobSparkJobLoggingConfig {
 
   /// Creates a new [WorkflowTemplateJobSparkJobLoggingConfig].
   /// [driverLogLevels] The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  WorkflowTemplateJobSparkJobLoggingConfig({
-    this.driverLogLevels,
-  });
+  WorkflowTemplateJobSparkJobLoggingConfig({this.driverLogLevels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'driverLogLevels': ?driverLogLevels,
-    };
+    return <String, dynamic>{'driverLogLevels': ?driverLogLevels};
   }
 
-  factory WorkflowTemplateJobSparkJobLoggingConfig.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplateJobSparkJobLoggingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplateJobSparkJobLoggingConfig(
-      driverLogLevels: map['driverLogLevels'] == null ? null : ((map['driverLogLevels']! as Map).cast<String, String>()).input(),
+      driverLogLevels: (() {
+        final guardedValue = map['driverLogLevels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

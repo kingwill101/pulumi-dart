@@ -401,32 +401,46 @@ import 'system_data_response.dart';
 class AssetEndpointProfile extends pulumi.CustomResource {
   /// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
   late final pulumi.Output<String?> additionalConfiguration;
+
   /// Defines the client authentication mechanism to the server.
   late final pulumi.Output<AuthenticationResponse?> authentication;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided.
   late final pulumi.Output<String?> discoveredAssetEndpointProfileRef;
+
   /// Defines the configuration for the connector type that is being used with the endpoint profile.
   late final pulumi.Output<String> endpointProfileType;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
   late final pulumi.Output<AssetEndpointProfileStatusResponse> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   late final pulumi.Output<String> targetAddress;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Globally unique, immutable, non-reusable id.
   late final pulumi.Output<String> uuid;
 
@@ -439,25 +453,31 @@ class AssetEndpointProfile extends pulumi.CustomResource {
     AssetEndpointProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceregistry:AssetEndpointProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalConfiguration = registerOutput<String?>('additionalConfiguration');
-    this.authentication = registerOutput<AuthenticationResponse?>('authentication');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.discoveredAssetEndpointProfileRef = registerOutput<String?>('discoveredAssetEndpointProfileRef');
-    this.endpointProfileType = registerOutput<String>('endpointProfileType');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.location = registerOutput<String>('location');
+         'azure-native:deviceregistry:AssetEndpointProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalConfiguration = registerOutput<String?>(
+      'additionalConfiguration',
+    );
+    authentication = registerOutput<AuthenticationResponse?>('authentication');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoveredAssetEndpointProfileRef = registerOutput<String?>(
+      'discoveredAssetEndpointProfileRef',
+    );
+    endpointProfileType = registerOutput<String>('endpointProfileType');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<AssetEndpointProfileStatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetAddress = registerOutput<String>('targetAddress');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<AssetEndpointProfileStatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetAddress = registerOutput<String>('targetAddress');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
   }
 }

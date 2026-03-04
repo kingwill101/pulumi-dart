@@ -274,7 +274,7 @@ import 'workspace_named_value_value_from_key_vault.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -289,24 +289,31 @@ import 'workspace_named_value_value_from_key_vault.dart';
 class WorkspaceNamedValue extends pulumi.CustomResource {
   /// The ID of the API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementWorkspaceId;
+
   /// The display name of this API Management Workspace Named Value.
   late final pulumi.Output<String> displayName;
+
   /// The name of the API Management Workspace Named Value. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies whether the API Management Workspace Named Value is secret. Defaults to `false`.
   ///
-  /// > **Note:** Setting the field `secret` to `true` does not make this field sensitive in Terraform, instead it marks the value as secret and encrypts the value in Azure.
+  /// &gt; **Note:** Setting the field `secret` to `true` does not make this field sensitive in Terraform, instead it marks the value as secret and encrypts the value in Azure.
   late final pulumi.Output<bool?> secret;
+
   /// A list of tags to be applied to the API Management Workspace Named Value.
   late final pulumi.Output<List<String>?> tags;
+
   /// The value of this API Management Workspace Named Value.
   ///
-  /// > **Note:** Exactly one of `value` or `value_from_key_vault` must be specified.
+  /// &gt; **Note:** Exactly one of `value` or `value_from_key_vault` must be specified.
   late final pulumi.Output<String?> value;
+
   /// A `value_from_key_vault` block as defined below.
   ///
-  /// > **Note:** Exactly one of `value` or `value_from_key_vault` must be specified. If `value_from_key_vault` is specified, `secret` must also be set to `true`.
-  late final pulumi.Output<WorkspaceNamedValueValueFromKeyVault?> valueFromKeyVault;
+  /// &gt; **Note:** Exactly one of `value` or `value_from_key_vault` must be specified. If `value_from_key_vault` is specified, `secret` must also be set to `true`.
+  late final pulumi.Output<WorkspaceNamedValueValueFromKeyVault?>
+  valueFromKeyVault;
 
   /// Creates a new [WorkspaceNamedValue].
   /// [name] The Pulumi resource name.
@@ -317,18 +324,22 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
     WorkspaceNamedValueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspaceNamedValue:WorkspaceNamedValue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/workspaceNamedValue:WorkspaceNamedValue',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.secret = registerOutput<bool?>('secret');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.value = registerOutput<String?>('value');
-    this.valueFromKeyVault = registerOutput<WorkspaceNamedValueValueFromKeyVault?>('valueFromKeyVault');
+    secret = registerOutput<bool?>('secret');
+    tags = registerOutput<List<String>?>('tags');
+    value = registerOutput<String?>('value');
+    valueFromKeyVault = registerOutput<WorkspaceNamedValueValueFromKeyVault?>(
+      'valueFromKeyVault',
+    );
   }
 
   /// Gets an existing [WorkspaceNamedValue] resource's state with the given [name] and [id].
@@ -349,17 +360,21 @@ class WorkspaceNamedValue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspaceNamedValue:WorkspaceNamedValue',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/workspaceNamedValue:WorkspaceNamedValue',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.secret = registerOutput<bool?>('secret');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.value = registerOutput<String?>('value');
-    this.valueFromKeyVault = registerOutput<WorkspaceNamedValueValueFromKeyVault?>('valueFromKeyVault');
+    secret = registerOutput<bool?>('secret');
+    tags = registerOutput<List<String>?>('tags');
+    value = registerOutput<String?>('value');
+    valueFromKeyVault = registerOutput<WorkspaceNamedValueValueFromKeyVault?>(
+      'valueFromKeyVault',
+    );
   }
 }

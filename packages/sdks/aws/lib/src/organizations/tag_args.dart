@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagArgs {
   /// Tag name.
   final pulumi.Input<String> key;
+
   /// Id of the Organizations resource to tag.
   final pulumi.Input<String> resourceId;
+
   /// Tag value.
   final pulumi.Input<String> value;
 
@@ -18,11 +20,7 @@ class TagArgs {
   /// [key] Tag name.
   /// [resourceId] Id of the Organizations resource to tag.
   /// [value] Tag value.
-  TagArgs({
-    required this.key,
-    required this.resourceId,
-    required this.value,
-  });
+  TagArgs({required this.key, required this.resourceId, required this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,9 @@ class TagArgs {
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      key: (map['key'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

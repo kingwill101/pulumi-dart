@@ -7,8 +7,10 @@ import 'line_registration_response.dart';
 class LineChannelPropertiesResponse {
   /// Callback Url to enter in line registration.
   final pulumi.Input<String> callbackUrl;
+
   /// Whether this channel is validated for the bot
   final pulumi.Input<bool> isValidated;
+
   /// The list of line channel registrations
   final pulumi.Input<List<LineRegistrationResponse>> lineRegistrations;
 
@@ -26,16 +28,33 @@ class LineChannelPropertiesResponse {
     return <String, dynamic>{
       'callbackUrl': callbackUrl,
       'isValidated': isValidated,
-      'lineRegistrations': pulumi.Input.mapInputValue<List<LineRegistrationResponse>, List<Map<String, dynamic>>>(lineRegistrations, (value) => pulumi.Input.encodeList<LineRegistrationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'lineRegistrations':
+          pulumi.Input.mapInputValue<
+            List<LineRegistrationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            lineRegistrations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LineRegistrationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LineChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LineChannelPropertiesResponse(
-      callbackUrl: (map['callbackUrl'] as String).input(),
-      isValidated: (map['isValidated'] as bool).input(),
-      lineRegistrations: (pulumi.Input.decodeList<LineRegistrationResponse>(map['lineRegistrations'], (value) => LineRegistrationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      callbackUrl: pulumi.Input.fromValue(map['callbackUrl'] as String),
+      isValidated: pulumi.Input.fromValue(map['isValidated'] as bool),
+      lineRegistrations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<LineRegistrationResponse>(
+          map['lineRegistrations']!,
+          (value) => LineRegistrationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

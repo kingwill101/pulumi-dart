@@ -7,14 +7,19 @@ import 'instance_identity.dart';
 class InstanceState {
   /// The API endpoint to work with this Digital Twins instance.
   final pulumi.Input<String>? hostName;
+
   /// An `identity` block as defined below.
   final pulumi.Input<InstanceIdentity>? identity;
+
   /// The Azure Region where the Digital Twins instance should exist. Changing this forces a new Digital Twins instance to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Digital Twins instance. Changing this forces a new Digital Twins instance to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Digital Twins instance should exist. Changing this forces a new Digital Twins instance to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Digital Twins instance.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,7 +42,11 @@ class InstanceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'hostName': ?hostName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<InstanceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
@@ -47,13 +56,42 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
-      identity: map['identity'] == null ? null : (InstanceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      hostName: (() {
+        final guardedValue = map['hostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

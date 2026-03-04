@@ -13,16 +13,15 @@ enum RulesEngineMatchVariable {
   valueRequestBody("RequestBody"),
   valueRequestScheme("RequestScheme");
 
-  const RulesEngineMatchVariable(this.value);
-  final String value;
+  const RulesEngineMatchVariable(this.wireValue);
+  final String wireValue;
 
   static RulesEngineMatchVariable fromValue(String value) {
     for (final item in RulesEngineMatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RulesEngineMatchVariable value: $value');
   }
 }
-

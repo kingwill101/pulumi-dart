@@ -7,9 +7,11 @@ import 'dataflow_graph_source_settings_response.dart';
 class DataflowGraphSourceNodeResponse {
   /// Name of the node.
   final pulumi.Input<String> name;
+
   /// DataflowGraph node types.
   /// Expected value is 'Source'.
   final pulumi.Input<String> nodeType;
+
   /// Source configuration.
   final pulumi.Input<DataflowGraphSourceSettingsResponse> sourceSettings;
 
@@ -27,16 +29,23 @@ class DataflowGraphSourceNodeResponse {
     return <String, dynamic>{
       'name': name,
       'nodeType': nodeType,
-      'sourceSettings': pulumi.Input.mapInputValue<DataflowGraphSourceSettingsResponse, Map<String, dynamic>>(sourceSettings, (value) => value.toMap()),
+      'sourceSettings':
+          pulumi.Input.mapInputValue<
+            DataflowGraphSourceSettingsResponse,
+            Map<String, dynamic>
+          >(sourceSettings, (value) => value.toMap()),
     };
   }
 
   factory DataflowGraphSourceNodeResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphSourceNodeResponse(
-      name: (map['name'] as String).input(),
-      nodeType: (map['nodeType'] as String).input(),
-      sourceSettings: (DataflowGraphSourceSettingsResponse.fromMap((map['sourceSettings'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
+      sourceSettings: pulumi.Input.fromValue(
+        DataflowGraphSourceSettingsResponse.fromMap(
+          (map['sourceSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

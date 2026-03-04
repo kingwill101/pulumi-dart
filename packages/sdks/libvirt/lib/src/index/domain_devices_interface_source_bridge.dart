@@ -8,20 +8,15 @@ class DomainDevicesInterfaceSourceBridge {
 
   /// Creates a new [DomainDevicesInterfaceSourceBridge].
   /// [bridge] Defines the name of the bridge device used by the network interface.
-  DomainDevicesInterfaceSourceBridge({
-    required this.bridge,
-  });
+  DomainDevicesInterfaceSourceBridge({required this.bridge});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bridge': bridge,
-    };
+    return <String, dynamic>{'bridge': bridge};
   }
 
   factory DomainDevicesInterfaceSourceBridge.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceBridge(
-      bridge: (map['bridge'] as String).input(),
+      bridge: pulumi.Input.fromValue(map['bridge'] as String),
     );
   }
 }
-

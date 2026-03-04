@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrackerAssociationsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of the tracker resource associated with a geofence collection.
   final pulumi.Input<String> trackerName;
 
   /// Creates a new [GetTrackerAssociationsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trackerName] Name of the tracker resource associated with a geofence collection.
-  GetTrackerAssociationsArgs({
-    this.region,
-    required this.trackerName,
-  });
+  GetTrackerAssociationsArgs({this.region, required this.trackerName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'trackerName': trackerName,
-    };
+    return <String, dynamic>{'region': ?region, 'trackerName': trackerName};
   }
 
   factory GetTrackerAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTrackerAssociationsArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      trackerName: (map['trackerName'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trackerName: pulumi.Input.fromValue(map['trackerName'] as String),
     );
   }
 }
-

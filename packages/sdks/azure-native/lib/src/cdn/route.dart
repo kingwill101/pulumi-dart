@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'activated_resource_reference_response.dart';
 import 'afd_route_cache_configuration_response.dart';
 import 'resource_reference_response.dart';
 import 'route_args.dart';
@@ -336,37 +335,54 @@ import 'system_data_response.dart';
 class Route extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
-  late final pulumi.Output<AfdRouteCacheConfigurationResponse?> cacheConfiguration;
+  late final pulumi.Output<AfdRouteCacheConfigurationResponse?>
+  cacheConfiguration;
+
   /// Domains referenced by this endpoint.
-  late final pulumi.Output<List<ActivatedResourceReferenceResponse>?> customDomains;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customDomains;
   late final pulumi.Output<String> deploymentStatus;
+
   /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> enabledState;
+
   /// The name of the endpoint which holds the route.
   late final pulumi.Output<String> endpointName;
+
   /// Protocol this rule will use when forwarding traffic to backends.
   late final pulumi.Output<String?> forwardingProtocol;
+
   /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
   late final pulumi.Output<String?> httpsRedirect;
+
   /// whether this route will be linked to the default endpoint domain.
   late final pulumi.Output<String?> linkToDefaultDomain;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A reference to the origin group.
   late final pulumi.Output<ResourceReferenceResponse?> originGroup;
+
   /// A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
   late final pulumi.Output<String?> originPath;
+
   /// The route patterns of the rule.
   late final pulumi.Output<List<String>?> patternsToMatch;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// rule sets referenced by this endpoint.
-  late final pulumi.Output<List<ResourceReferenceResponse>?> ruleSets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ruleSets;
+
   /// List of supported protocols for this route.
   late final pulumi.Output<List<String>?> supportedProtocols;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -374,33 +390,34 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_cdn_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(
-    String name, {
-    RouteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:cdn:Route',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cacheConfiguration = registerOutput<AfdRouteCacheConfigurationResponse?>('cacheConfiguration');
-    this.customDomains = registerOutput<List<ActivatedResourceReferenceResponse>?>('customDomains');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
-    this.enabledState = registerOutput<String?>('enabledState');
-    this.endpointName = registerOutput<String>('endpointName');
-    this.forwardingProtocol = registerOutput<String?>('forwardingProtocol');
-    this.httpsRedirect = registerOutput<String?>('httpsRedirect');
-    this.linkToDefaultDomain = registerOutput<String?>('linkToDefaultDomain');
+  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:cdn:Route',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cacheConfiguration = registerOutput<AfdRouteCacheConfigurationResponse?>(
+      'cacheConfiguration',
+    );
+    customDomains = registerOutput<List<Map<String, dynamic>>?>(
+      'customDomains',
+    );
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    enabledState = registerOutput<String?>('enabledState');
+    endpointName = registerOutput<String>('endpointName');
+    forwardingProtocol = registerOutput<String?>('forwardingProtocol');
+    httpsRedirect = registerOutput<String?>('httpsRedirect');
+    linkToDefaultDomain = registerOutput<String?>('linkToDefaultDomain');
     this.name = registerOutput<String>('name');
-    this.originGroup = registerOutput<ResourceReferenceResponse?>('originGroup');
-    this.originPath = registerOutput<String?>('originPath');
-    this.patternsToMatch = registerOutput<List<String>?>('patternsToMatch');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.ruleSets = registerOutput<List<ResourceReferenceResponse>?>('ruleSets');
-    this.supportedProtocols = registerOutput<List<String>?>('supportedProtocols');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    originGroup = registerOutput<ResourceReferenceResponse?>('originGroup');
+    originPath = registerOutput<String?>('originPath');
+    patternsToMatch = registerOutput<List<String>?>('patternsToMatch');
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
+    supportedProtocols = registerOutput<List<String>?>('supportedProtocols');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

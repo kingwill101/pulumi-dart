@@ -9,20 +9,15 @@ class ConfigConnectorConfigResponse {
 
   /// Creates a new [ConfigConnectorConfigResponse].
   /// [enabled] Whether Cloud Connector is enabled for this cluster.
-  ConfigConnectorConfigResponse({
-    required this.enabled,
-  });
+  ConfigConnectorConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory ConfigConnectorConfigResponse.fromMap(Map<String, dynamic> map) {
     return ConfigConnectorConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

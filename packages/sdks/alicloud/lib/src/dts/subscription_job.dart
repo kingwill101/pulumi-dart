@@ -6,7 +6,7 @@ import 'subscription_job_state.dart';
 ///
 /// For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://www.alibabacloud.com/help/en/data-transmission-service/latest/configuresubscription).
 ///
-/// > **NOTE:** Available since v1.138.0.
+/// &gt; **NOTE:** Available since v1.138.0.
 ///
 /// ## Example Usage
 ///
@@ -729,80 +729,118 @@ import 'subscription_job_state.dart';
 class SubscriptionJob extends pulumi.CustomResource {
   /// Subscription start time in Unix timestamp format.
   late final pulumi.Output<String> checkpoint;
+
   /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
   late final pulumi.Output<int?> computeUnit;
+
   /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
   late final pulumi.Output<int?> databaseCount;
+
   /// Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
   late final pulumi.Output<String?> dbList;
+
   /// This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> delayNotice;
+
   /// The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
   late final pulumi.Output<String?> delayPhone;
+
   /// When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
   late final pulumi.Output<String?> delayRuleTime;
+
   /// The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
   late final pulumi.Output<String?> destinationEndpointEngineName;
+
   /// The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
   late final pulumi.Output<String?> destinationRegion;
+
   /// The ID of subscription instance.
   late final pulumi.Output<String> dtsInstanceId;
+
   /// The name of subscription task.
   late final pulumi.Output<String?> dtsJobName;
+
   /// This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> errorNotice;
+
   /// The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
   late final pulumi.Output<String?> errorPhone;
+
   /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
   late final pulumi.Output<String?> instanceClass;
+
   /// The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
   late final pulumi.Output<int?> paymentDuration;
+
   /// The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
   late final pulumi.Output<String?> paymentDurationUnit;
+
   /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
+
   /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
   late final pulumi.Output<String?> reserve;
+
   /// To subscribe to the name of the database.
   late final pulumi.Output<String?> sourceEndpointDatabaseName;
+
   /// The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
   late final pulumi.Output<String> sourceEndpointEngineName;
+
   /// The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
   late final pulumi.Output<String?> sourceEndpointInstanceId;
+
   /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
   late final pulumi.Output<String> sourceEndpointInstanceType;
+
   /// The IP of source endpoint.
   late final pulumi.Output<String?> sourceEndpointIp;
+
   /// The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
   late final pulumi.Output<String?> sourceEndpointOracleSid;
+
   /// The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
   late final pulumi.Output<String?> sourceEndpointOwnerId;
+
   /// The password of source database instance account.
   late final pulumi.Output<String?> sourceEndpointPassword;
+
   /// The port of source database.
   late final pulumi.Output<String?> sourceEndpointPort;
+
   /// The region of source database.
   late final pulumi.Output<String> sourceEndpointRegion;
+
   /// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
   late final pulumi.Output<String?> sourceEndpointRole;
+
   /// The username of source database instance account.
   late final pulumi.Output<String?> sourceEndpointUserName;
+
   /// The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
   late final pulumi.Output<String> status;
+
   /// Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
   late final pulumi.Output<bool> subscriptionDataTypeDdl;
+
   /// Whether to subscribe the DML type of data. Valid values: `true`, `false`.
   late final pulumi.Output<bool> subscriptionDataTypeDml;
+
   /// Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
   late final pulumi.Output<String?> subscriptionInstanceNetworkType;
+
   /// The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
   late final pulumi.Output<String?> subscriptionInstanceVpcId;
+
   /// The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
   late final pulumi.Output<String?> subscriptionInstanceVswitchId;
+
   /// The sync architecture. Valid values: `bidirectional`, `oneway`.
   late final pulumi.Output<String?> syncArchitecture;
+
   /// The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
   late final pulumi.Output<String?> synchronizationDirection;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -815,50 +853,70 @@ class SubscriptionJob extends pulumi.CustomResource {
     SubscriptionJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/subscriptionJob:SubscriptionJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.checkpoint = registerOutput<String>('checkpoint');
-    this.computeUnit = registerOutput<int?>('computeUnit');
-    this.databaseCount = registerOutput<int?>('databaseCount');
-    this.dbList = registerOutput<String?>('dbList');
-    this.delayNotice = registerOutput<bool?>('delayNotice');
-    this.delayPhone = registerOutput<String?>('delayPhone');
-    this.delayRuleTime = registerOutput<String?>('delayRuleTime');
-    this.destinationEndpointEngineName = registerOutput<String?>('destinationEndpointEngineName');
-    this.destinationRegion = registerOutput<String?>('destinationRegion');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.dtsJobName = registerOutput<String?>('dtsJobName');
-    this.errorNotice = registerOutput<bool?>('errorNotice');
-    this.errorPhone = registerOutput<String?>('errorPhone');
-    this.instanceClass = registerOutput<String?>('instanceClass');
-    this.paymentDuration = registerOutput<int?>('paymentDuration');
-    this.paymentDurationUnit = registerOutput<String?>('paymentDurationUnit');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.reserve = registerOutput<String?>('reserve');
-    this.sourceEndpointDatabaseName = registerOutput<String?>('sourceEndpointDatabaseName');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceEndpointInstanceId = registerOutput<String?>('sourceEndpointInstanceId');
-    this.sourceEndpointInstanceType = registerOutput<String>('sourceEndpointInstanceType');
-    this.sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
-    this.sourceEndpointOracleSid = registerOutput<String?>('sourceEndpointOracleSid');
-    this.sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
-    this.sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
-    this.sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
-    this.sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
-    this.sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
-    this.sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
-    this.status = registerOutput<String>('status');
-    this.subscriptionDataTypeDdl = registerOutput<bool>('subscriptionDataTypeDdl');
-    this.subscriptionDataTypeDml = registerOutput<bool>('subscriptionDataTypeDml');
-    this.subscriptionInstanceNetworkType = registerOutput<String?>('subscriptionInstanceNetworkType');
-    this.subscriptionInstanceVpcId = registerOutput<String?>('subscriptionInstanceVpcId');
-    this.subscriptionInstanceVswitchId = registerOutput<String?>('subscriptionInstanceVswitchId');
-    this.syncArchitecture = registerOutput<String?>('syncArchitecture');
-    this.synchronizationDirection = registerOutput<String?>('synchronizationDirection');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dts/subscriptionJob:SubscriptionJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    checkpoint = registerOutput<String>('checkpoint');
+    computeUnit = registerOutput<int?>('computeUnit');
+    databaseCount = registerOutput<int?>('databaseCount');
+    dbList = registerOutput<String?>('dbList');
+    delayNotice = registerOutput<bool?>('delayNotice');
+    delayPhone = registerOutput<String?>('delayPhone');
+    delayRuleTime = registerOutput<String?>('delayRuleTime');
+    destinationEndpointEngineName = registerOutput<String?>(
+      'destinationEndpointEngineName',
+    );
+    destinationRegion = registerOutput<String?>('destinationRegion');
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    dtsJobName = registerOutput<String?>('dtsJobName');
+    errorNotice = registerOutput<bool?>('errorNotice');
+    errorPhone = registerOutput<String?>('errorPhone');
+    instanceClass = registerOutput<String?>('instanceClass');
+    paymentDuration = registerOutput<int?>('paymentDuration');
+    paymentDurationUnit = registerOutput<String?>('paymentDurationUnit');
+    paymentType = registerOutput<String>('paymentType');
+    reserve = registerOutput<String?>('reserve');
+    sourceEndpointDatabaseName = registerOutput<String?>(
+      'sourceEndpointDatabaseName',
+    );
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceEndpointInstanceId = registerOutput<String?>(
+      'sourceEndpointInstanceId',
+    );
+    sourceEndpointInstanceType = registerOutput<String>(
+      'sourceEndpointInstanceType',
+    );
+    sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
+    sourceEndpointOracleSid = registerOutput<String?>(
+      'sourceEndpointOracleSid',
+    );
+    sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
+    sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
+    sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
+    sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
+    sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
+    sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
+    status = registerOutput<String>('status');
+    subscriptionDataTypeDdl = registerOutput<bool>('subscriptionDataTypeDdl');
+    subscriptionDataTypeDml = registerOutput<bool>('subscriptionDataTypeDml');
+    subscriptionInstanceNetworkType = registerOutput<String?>(
+      'subscriptionInstanceNetworkType',
+    );
+    subscriptionInstanceVpcId = registerOutput<String?>(
+      'subscriptionInstanceVpcId',
+    );
+    subscriptionInstanceVswitchId = registerOutput<String?>(
+      'subscriptionInstanceVswitchId',
+    );
+    syncArchitecture = registerOutput<String?>('syncArchitecture');
+    synchronizationDirection = registerOutput<String?>(
+      'synchronizationDirection',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [SubscriptionJob] resource's state with the given [name] and [id].
@@ -879,49 +937,69 @@ class SubscriptionJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/subscriptionJob:SubscriptionJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.checkpoint = registerOutput<String>('checkpoint');
-    this.computeUnit = registerOutput<int?>('computeUnit');
-    this.databaseCount = registerOutput<int?>('databaseCount');
-    this.dbList = registerOutput<String?>('dbList');
-    this.delayNotice = registerOutput<bool?>('delayNotice');
-    this.delayPhone = registerOutput<String?>('delayPhone');
-    this.delayRuleTime = registerOutput<String?>('delayRuleTime');
-    this.destinationEndpointEngineName = registerOutput<String?>('destinationEndpointEngineName');
-    this.destinationRegion = registerOutput<String?>('destinationRegion');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.dtsJobName = registerOutput<String?>('dtsJobName');
-    this.errorNotice = registerOutput<bool?>('errorNotice');
-    this.errorPhone = registerOutput<String?>('errorPhone');
-    this.instanceClass = registerOutput<String?>('instanceClass');
-    this.paymentDuration = registerOutput<int?>('paymentDuration');
-    this.paymentDurationUnit = registerOutput<String?>('paymentDurationUnit');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.reserve = registerOutput<String?>('reserve');
-    this.sourceEndpointDatabaseName = registerOutput<String?>('sourceEndpointDatabaseName');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceEndpointInstanceId = registerOutput<String?>('sourceEndpointInstanceId');
-    this.sourceEndpointInstanceType = registerOutput<String>('sourceEndpointInstanceType');
-    this.sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
-    this.sourceEndpointOracleSid = registerOutput<String?>('sourceEndpointOracleSid');
-    this.sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
-    this.sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
-    this.sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
-    this.sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
-    this.sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
-    this.sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
-    this.status = registerOutput<String>('status');
-    this.subscriptionDataTypeDdl = registerOutput<bool>('subscriptionDataTypeDdl');
-    this.subscriptionDataTypeDml = registerOutput<bool>('subscriptionDataTypeDml');
-    this.subscriptionInstanceNetworkType = registerOutput<String?>('subscriptionInstanceNetworkType');
-    this.subscriptionInstanceVpcId = registerOutput<String?>('subscriptionInstanceVpcId');
-    this.subscriptionInstanceVswitchId = registerOutput<String?>('subscriptionInstanceVswitchId');
-    this.syncArchitecture = registerOutput<String?>('syncArchitecture');
-    this.synchronizationDirection = registerOutput<String?>('synchronizationDirection');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dts/subscriptionJob:SubscriptionJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    checkpoint = registerOutput<String>('checkpoint');
+    computeUnit = registerOutput<int?>('computeUnit');
+    databaseCount = registerOutput<int?>('databaseCount');
+    dbList = registerOutput<String?>('dbList');
+    delayNotice = registerOutput<bool?>('delayNotice');
+    delayPhone = registerOutput<String?>('delayPhone');
+    delayRuleTime = registerOutput<String?>('delayRuleTime');
+    destinationEndpointEngineName = registerOutput<String?>(
+      'destinationEndpointEngineName',
+    );
+    destinationRegion = registerOutput<String?>('destinationRegion');
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    dtsJobName = registerOutput<String?>('dtsJobName');
+    errorNotice = registerOutput<bool?>('errorNotice');
+    errorPhone = registerOutput<String?>('errorPhone');
+    instanceClass = registerOutput<String?>('instanceClass');
+    paymentDuration = registerOutput<int?>('paymentDuration');
+    paymentDurationUnit = registerOutput<String?>('paymentDurationUnit');
+    paymentType = registerOutput<String>('paymentType');
+    reserve = registerOutput<String?>('reserve');
+    sourceEndpointDatabaseName = registerOutput<String?>(
+      'sourceEndpointDatabaseName',
+    );
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceEndpointInstanceId = registerOutput<String?>(
+      'sourceEndpointInstanceId',
+    );
+    sourceEndpointInstanceType = registerOutput<String>(
+      'sourceEndpointInstanceType',
+    );
+    sourceEndpointIp = registerOutput<String?>('sourceEndpointIp');
+    sourceEndpointOracleSid = registerOutput<String?>(
+      'sourceEndpointOracleSid',
+    );
+    sourceEndpointOwnerId = registerOutput<String?>('sourceEndpointOwnerId');
+    sourceEndpointPassword = registerOutput<String?>('sourceEndpointPassword');
+    sourceEndpointPort = registerOutput<String?>('sourceEndpointPort');
+    sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
+    sourceEndpointRole = registerOutput<String?>('sourceEndpointRole');
+    sourceEndpointUserName = registerOutput<String?>('sourceEndpointUserName');
+    status = registerOutput<String>('status');
+    subscriptionDataTypeDdl = registerOutput<bool>('subscriptionDataTypeDdl');
+    subscriptionDataTypeDml = registerOutput<bool>('subscriptionDataTypeDml');
+    subscriptionInstanceNetworkType = registerOutput<String?>(
+      'subscriptionInstanceNetworkType',
+    );
+    subscriptionInstanceVpcId = registerOutput<String?>(
+      'subscriptionInstanceVpcId',
+    );
+    subscriptionInstanceVswitchId = registerOutput<String?>(
+      'subscriptionInstanceVswitchId',
+    );
+    syncArchitecture = registerOutput<String?>('syncArchitecture');
+    synchronizationDirection = registerOutput<String?>(
+      'synchronizationDirection',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

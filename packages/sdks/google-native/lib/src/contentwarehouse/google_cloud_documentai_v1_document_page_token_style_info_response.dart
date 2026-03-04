@@ -7,32 +7,46 @@ import 'google_type_color_response.dart';
 class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse {
   /// Color of the background.
   final pulumi.Input<GoogleTypeColorResponse> backgroundColor;
+
   /// Whether the text is bold (equivalent to font_weight is at least `700`).
   final pulumi.Input<bool> bold;
+
   /// Font size in points (`1` point is `¹⁄₇₂` inches).
   final pulumi.Input<int> fontSize;
+
   /// Name or style of the font.
   final pulumi.Input<String> fontType;
+
   /// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
   final pulumi.Input<int> fontWeight;
+
   /// Whether the text is handwritten.
   final pulumi.Input<bool> handwritten;
+
   /// Whether the text is italic.
   final pulumi.Input<bool> italic;
+
   /// Letter spacing in points.
   final pulumi.Input<double> letterSpacing;
+
   /// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
   final pulumi.Input<double> pixelFontSize;
+
   /// Whether the text is in small caps.
   final pulumi.Input<bool> smallcaps;
+
   /// Whether the text is strikethrough.
   final pulumi.Input<bool> strikeout;
+
   /// Whether the text is a subscript.
   final pulumi.Input<bool> subscript;
+
   /// Whether the text is a superscript.
   final pulumi.Input<bool> superscript;
+
   /// Color of the text.
   final pulumi.Input<GoogleTypeColorResponse> textColor;
+
   /// Whether the text is underlined.
   final pulumi.Input<bool> underlined;
 
@@ -72,7 +86,11 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backgroundColor': pulumi.Input.mapInputValue<GoogleTypeColorResponse, Map<String, dynamic>>(backgroundColor, (value) => value.toMap()),
+      'backgroundColor':
+          pulumi.Input.mapInputValue<
+            GoogleTypeColorResponse,
+            Map<String, dynamic>
+          >(backgroundColor, (value) => value.toMap()),
       'bold': bold,
       'fontSize': fontSize,
       'fontType': fontType,
@@ -85,29 +103,42 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse {
       'strikeout': strikeout,
       'subscript': subscript,
       'superscript': superscript,
-      'textColor': pulumi.Input.mapInputValue<GoogleTypeColorResponse, Map<String, dynamic>>(textColor, (value) => value.toMap()),
+      'textColor':
+          pulumi.Input.mapInputValue<
+            GoogleTypeColorResponse,
+            Map<String, dynamic>
+          >(textColor, (value) => value.toMap()),
       'underlined': underlined,
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse(
-      backgroundColor: (GoogleTypeColorResponse.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>())).input(),
-      bold: (map['bold'] as bool).input(),
-      fontSize: (map['fontSize'] as int).input(),
-      fontType: (map['fontType'] as String).input(),
-      fontWeight: (map['fontWeight'] as int).input(),
-      handwritten: (map['handwritten'] as bool).input(),
-      italic: (map['italic'] as bool).input(),
-      letterSpacing: (map['letterSpacing'] as double).input(),
-      pixelFontSize: (map['pixelFontSize'] as double).input(),
-      smallcaps: (map['smallcaps'] as bool).input(),
-      strikeout: (map['strikeout'] as bool).input(),
-      subscript: (map['subscript'] as bool).input(),
-      superscript: (map['superscript'] as bool).input(),
-      textColor: (GoogleTypeColorResponse.fromMap((map['textColor'] as Map).cast<String, dynamic>())).input(),
-      underlined: (map['underlined'] as bool).input(),
+      backgroundColor: pulumi.Input.fromValue(
+        GoogleTypeColorResponse.fromMap(
+          (map['backgroundColor']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      bold: pulumi.Input.fromValue(map['bold'] as bool),
+      fontSize: pulumi.Input.fromValue(map['fontSize'] as int),
+      fontType: pulumi.Input.fromValue(map['fontType'] as String),
+      fontWeight: pulumi.Input.fromValue(map['fontWeight'] as int),
+      handwritten: pulumi.Input.fromValue(map['handwritten'] as bool),
+      italic: pulumi.Input.fromValue(map['italic'] as bool),
+      letterSpacing: pulumi.Input.fromValue(map['letterSpacing'] as double),
+      pixelFontSize: pulumi.Input.fromValue(map['pixelFontSize'] as double),
+      smallcaps: pulumi.Input.fromValue(map['smallcaps'] as bool),
+      strikeout: pulumi.Input.fromValue(map['strikeout'] as bool),
+      subscript: pulumi.Input.fromValue(map['subscript'] as bool),
+      superscript: pulumi.Input.fromValue(map['superscript'] as bool),
+      textColor: pulumi.Input.fromValue(
+        GoogleTypeColorResponse.fromMap(
+          (map['textColor']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      underlined: pulumi.Input.fromValue(map['underlined'] as bool),
     );
   }
 }
-

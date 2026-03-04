@@ -131,10 +131,12 @@ class Config extends pulumi.CustomResource {
   /// The description to associate with the runtime
   /// config.
   late final pulumi.Output<String?> description;
+
   /// The name of the runtime config.
   ///
   /// - - -
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -143,19 +145,16 @@ class Config extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Config]. {@macro pulumi_runtimeconfig_config_config_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Config(
-    String name, {
-    ConfigArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:runtimeconfig/config:Config',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+  Config(String name, {ConfigArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:runtimeconfig/config:Config',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [Config] resource's state with the given [name] and [id].
@@ -176,13 +175,13 @@ class Config extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:runtimeconfig/config:Config',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'gcp:runtimeconfig/config:Config',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 }

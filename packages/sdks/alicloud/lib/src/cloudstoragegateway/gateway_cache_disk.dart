@@ -6,7 +6,7 @@ import 'gateway_cache_disk_state.dart';
 ///
 /// For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
 ///
-/// > **NOTE:** Available since v1.144.0.
+/// &gt; **NOTE:** Available since v1.144.0.
 ///
 /// ## Example Usage
 ///
@@ -443,16 +443,22 @@ import 'gateway_cache_disk_state.dart';
 class GatewayCacheDisk extends pulumi.CustomResource {
   /// The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
   late final pulumi.Output<String> cacheDiskCategory;
+
   /// The capacity of the cache disk.
   late final pulumi.Output<int> cacheDiskSizeInGb;
+
   /// The ID of the cache disk.
   late final pulumi.Output<String> cacheId;
+
   /// The ID of the gateway.
   late final pulumi.Output<String> gatewayId;
+
   /// The path of the cache disk.
   late final pulumi.Output<String> localFilePath;
+
   /// The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
   late final pulumi.Output<String?> performanceLevel;
+
   /// The status of the Gateway Cache Disk.
   late final pulumi.Output<int> status;
 
@@ -465,18 +471,18 @@ class GatewayCacheDisk extends pulumi.CustomResource {
     GatewayCacheDiskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cacheDiskCategory = registerOutput<String>('cacheDiskCategory');
-    this.cacheDiskSizeInGb = registerOutput<int>('cacheDiskSizeInGb');
-    this.cacheId = registerOutput<String>('cacheId');
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.localFilePath = registerOutput<String>('localFilePath');
-    this.performanceLevel = registerOutput<String?>('performanceLevel');
-    this.status = registerOutput<int>('status');
+         'alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cacheDiskCategory = registerOutput<String>('cacheDiskCategory');
+    cacheDiskSizeInGb = registerOutput<int>('cacheDiskSizeInGb');
+    cacheId = registerOutput<String>('cacheId');
+    gatewayId = registerOutput<String>('gatewayId');
+    localFilePath = registerOutput<String>('localFilePath');
+    performanceLevel = registerOutput<String?>('performanceLevel');
+    status = registerOutput<int>('status');
   }
 
   /// Gets an existing [GatewayCacheDisk] resource's state with the given [name] and [id].
@@ -497,17 +503,17 @@ class GatewayCacheDisk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cacheDiskCategory = registerOutput<String>('cacheDiskCategory');
-    this.cacheDiskSizeInGb = registerOutput<int>('cacheDiskSizeInGb');
-    this.cacheId = registerOutput<String>('cacheId');
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.localFilePath = registerOutput<String>('localFilePath');
-    this.performanceLevel = registerOutput<String?>('performanceLevel');
-    this.status = registerOutput<int>('status');
+         'alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cacheDiskCategory = registerOutput<String>('cacheDiskCategory');
+    cacheDiskSizeInGb = registerOutput<int>('cacheDiskSizeInGb');
+    cacheId = registerOutput<String>('cacheId');
+    gatewayId = registerOutput<String>('gatewayId');
+    localFilePath = registerOutput<String>('localFilePath');
+    performanceLevel = registerOutput<String?>('performanceLevel');
+    status = registerOutput<int>('status');
   }
 }

@@ -7,32 +7,46 @@ import 'google_type_color.dart';
 class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   /// Color of the background.
   final pulumi.Input<GoogleTypeColor>? backgroundColor;
+
   /// Whether the text is bold (equivalent to font_weight is at least `700`).
   final pulumi.Input<bool>? bold;
+
   /// Font size in points (`1` point is `¹⁄₇₂` inches).
   final pulumi.Input<int>? fontSize;
+
   /// Name or style of the font.
   final pulumi.Input<String>? fontType;
+
   /// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
   final pulumi.Input<int>? fontWeight;
+
   /// Whether the text is handwritten.
   final pulumi.Input<bool>? handwritten;
+
   /// Whether the text is italic.
   final pulumi.Input<bool>? italic;
+
   /// Letter spacing in points.
   final pulumi.Input<double>? letterSpacing;
+
   /// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
   final pulumi.Input<double>? pixelFontSize;
+
   /// Whether the text is in small caps.
   final pulumi.Input<bool>? smallcaps;
+
   /// Whether the text is strikethrough.
   final pulumi.Input<bool>? strikeout;
+
   /// Whether the text is a subscript.
   final pulumi.Input<bool>? subscript;
+
   /// Whether the text is a superscript.
   final pulumi.Input<bool>? superscript;
+
   /// Color of the text.
   final pulumi.Input<GoogleTypeColor>? textColor;
+
   /// Whether the text is underlined.
   final pulumi.Input<bool>? underlined;
 
@@ -72,7 +86,11 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backgroundColor': ?pulumi.Input.mapOptionalInputValue<GoogleTypeColor, Map<String, dynamic>>(backgroundColor, (value) => value.toMap()),
+      'backgroundColor':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleTypeColor,
+            Map<String, dynamic>
+          >(backgroundColor, (value) => value.toMap()),
       'bold': ?bold,
       'fontSize': ?fontSize,
       'fontType': ?fontType,
@@ -85,29 +103,102 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
       'strikeout': ?strikeout,
       'subscript': ?subscript,
       'superscript': ?superscript,
-      'textColor': ?pulumi.Input.mapOptionalInputValue<GoogleTypeColor, Map<String, dynamic>>(textColor, (value) => value.toMap()),
+      'textColor':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleTypeColor,
+            Map<String, dynamic>
+          >(textColor, (value) => value.toMap()),
       'underlined': ?underlined,
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(
-      backgroundColor: map['backgroundColor'] == null ? null : (GoogleTypeColor.fromMap((map['backgroundColor']! as Map).cast<String, dynamic>())).input(),
-      bold: map['bold'] == null ? null : (map['bold']! as bool).input(),
-      fontSize: map['fontSize'] == null ? null : (map['fontSize']! as int).input(),
-      fontType: map['fontType'] == null ? null : (map['fontType']! as String).input(),
-      fontWeight: map['fontWeight'] == null ? null : (map['fontWeight']! as int).input(),
-      handwritten: map['handwritten'] == null ? null : (map['handwritten']! as bool).input(),
-      italic: map['italic'] == null ? null : (map['italic']! as bool).input(),
-      letterSpacing: map['letterSpacing'] == null ? null : (map['letterSpacing']! as double).input(),
-      pixelFontSize: map['pixelFontSize'] == null ? null : (map['pixelFontSize']! as double).input(),
-      smallcaps: map['smallcaps'] == null ? null : (map['smallcaps']! as bool).input(),
-      strikeout: map['strikeout'] == null ? null : (map['strikeout']! as bool).input(),
-      subscript: map['subscript'] == null ? null : (map['subscript']! as bool).input(),
-      superscript: map['superscript'] == null ? null : (map['superscript']! as bool).input(),
-      textColor: map['textColor'] == null ? null : (GoogleTypeColor.fromMap((map['textColor']! as Map).cast<String, dynamic>())).input(),
-      underlined: map['underlined'] == null ? null : (map['underlined']! as bool).input(),
+      backgroundColor: (() {
+        final guardedValue = map['backgroundColor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleTypeColor.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bold: (() {
+        final guardedValue = map['bold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fontSize: (() {
+        final guardedValue = map['fontSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fontType: (() {
+        final guardedValue = map['fontType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fontWeight: (() {
+        final guardedValue = map['fontWeight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      handwritten: (() {
+        final guardedValue = map['handwritten'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      italic: (() {
+        final guardedValue = map['italic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      letterSpacing: (() {
+        final guardedValue = map['letterSpacing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      pixelFontSize: (() {
+        final guardedValue = map['pixelFontSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      smallcaps: (() {
+        final guardedValue = map['smallcaps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      strikeout: (() {
+        final guardedValue = map['strikeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subscript: (() {
+        final guardedValue = map['subscript'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      superscript: (() {
+        final guardedValue = map['superscript'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      textColor: (() {
+        final guardedValue = map['textColor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleTypeColor.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      underlined: (() {
+        final guardedValue = map['underlined'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

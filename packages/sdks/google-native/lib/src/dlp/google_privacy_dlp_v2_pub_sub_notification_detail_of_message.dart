@@ -4,16 +4,20 @@ enum GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
   tableProfile("TABLE_PROFILE"),
   resourceName("RESOURCE_NAME");
 
-  const GooglePrivacyDlpV2PubSubNotificationDetailOfMessage(this.value);
-  final String value;
+  const GooglePrivacyDlpV2PubSubNotificationDetailOfMessage(this.wireValue);
+  final String wireValue;
 
-  static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.values) {
-      if (item.value == value) {
+  static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubNotificationDetailOfMessage value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2PubSubNotificationDetailOfMessage value: $value',
+    );
   }
 }
-

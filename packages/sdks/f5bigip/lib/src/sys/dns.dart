@@ -119,10 +119,13 @@ import 'dns_state.dart';
 class Dns extends pulumi.CustomResource {
   /// Provide description for your DNS server
   late final pulumi.Output<String> description;
+
   /// Specifies the name servers that the system uses to validate DNS lookups, and resolve host names.
   late final pulumi.Output<List<String>> nameServers;
+
   /// Configures the number of dots needed in a name before an initial absolute query will be made.
   late final pulumi.Output<int> numberOfDots;
+
   /// Specifies the domains that the system searches for local domain lookups, to resolve local host names.
   late final pulumi.Output<List<String>?> searches;
 
@@ -130,28 +133,21 @@ class Dns extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Dns]. {@macro pulumi_sys_dns_dns_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Dns(
-    String name, {
-    DnsArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:sys/dns:Dns',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.nameServers = registerOutput<List<String>>('nameServers');
-    this.numberOfDots = registerOutput<int>('numberOfDots');
-    this.searches = registerOutput<List<String>?>('searches');
+  Dns(String name, {DnsArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:sys/dns:Dns',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String>('description');
+    nameServers = registerOutput<List<String>>('nameServers');
+    numberOfDots = registerOutput<int>('numberOfDots');
+    searches = registerOutput<List<String>?>('searches');
   }
 
   /// Gets an existing [Dns] resource's state with the given [name] and [id].
-  static Dns get(
-    String name,
-    pulumi.Input<String> id, {
-    DnsState? state,
-  }) {
+  static Dns get(String name, pulumi.Input<String> id, {DnsState? state}) {
     return Dns._get(
       name,
       state: state?.toMap(),
@@ -164,14 +160,14 @@ class Dns extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:sys/dns:Dns',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.nameServers = registerOutput<List<String>>('nameServers');
-    this.numberOfDots = registerOutput<int>('numberOfDots');
-    this.searches = registerOutput<List<String>?>('searches');
+         'f5bigip:sys/dns:Dns',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    nameServers = registerOutput<List<String>>('nameServers');
+    numberOfDots = registerOutput<int>('numberOfDots');
+    searches = registerOutput<List<String>?>('searches');
   }
 }

@@ -9,18 +9,26 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionResponse {
   /// Group id of the private endpoint.
   final pulumi.Input<String> groupId;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// Private endpoint which the connection belongs to.
   final pulumi.Input<PrivateEndpointPropertyResponse> privateEndpoint;
+
   /// Connection State of the Private Endpoint Connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStatePropertyResponse> privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStatePropertyResponse>
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the private endpoint.
   final pulumi.Input<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -49,25 +57,51 @@ class PrivateEndpointConnectionResponse {
       'groupId': groupId,
       'id': id,
       'name': name,
-      'privateEndpoint': pulumi.Input.mapInputValue<PrivateEndpointPropertyResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
-      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionStatePropertyResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateEndpoint':
+          pulumi.Input.mapInputValue<
+            PrivateEndpointPropertyResponse,
+            Map<String, dynamic>
+          >(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState':
+          pulumi.Input.mapInputValue<
+            PrivateLinkServiceConnectionStatePropertyResponse,
+            Map<String, dynamic>
+          >(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      groupId: (map['groupId'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      privateEndpoint: (PrivateEndpointPropertyResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionStatePropertyResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateEndpoint: pulumi.Input.fromValue(
+        PrivateEndpointPropertyResponse.fromMap(
+          (map['privateEndpoint']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      privateLinkServiceConnectionState: pulumi.Input.fromValue(
+        PrivateLinkServiceConnectionStatePropertyResponse.fromMap(
+          (map['privateLinkServiceConnectionState']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeGroupSpotBidPrice {
   /// The spot bid price of a PayAsYouGo instance.
   final pulumi.Input<int> bidPrice;
+
   /// Host Ecs instance type.
   final pulumi.Input<String> instanceType;
 
@@ -25,9 +26,8 @@ class ClusterNodeGroupSpotBidPrice {
 
   factory ClusterNodeGroupSpotBidPrice.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupSpotBidPrice(
-      bidPrice: (map['bidPrice'] as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
+      bidPrice: pulumi.Input.fromValue(map['bidPrice'] as int),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
-

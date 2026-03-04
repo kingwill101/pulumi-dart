@@ -16,17 +16,15 @@ class ManagedZonePrivateVisibilityConfigGKEClusterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gkeClusterName': gkeClusterName,
-      'kind': kind,
-    };
+    return <String, dynamic>{'gkeClusterName': gkeClusterName, 'kind': kind};
   }
 
-  factory ManagedZonePrivateVisibilityConfigGKEClusterResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedZonePrivateVisibilityConfigGKEClusterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZonePrivateVisibilityConfigGKEClusterResponse(
-      gkeClusterName: (map['gkeClusterName'] as String).input(),
-      kind: (map['kind'] as String).input(),
+      gkeClusterName: pulumi.Input.fromValue(map['gkeClusterName'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
-

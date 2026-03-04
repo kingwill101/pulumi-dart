@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateDomainValidationOption {
   /// Fully qualified domain name (FQDN) in the certificate.
   final pulumi.Input<String>? domainName;
+
   /// The name of the DNS record to create to validate the certificate
   final pulumi.Input<String>? resourceRecordName;
+
   /// The type of DNS record to create
   final pulumi.Input<String>? resourceRecordType;
+
   /// The value the DNS record needs to have
   final pulumi.Input<String>? resourceRecordValue;
 
@@ -35,11 +38,26 @@ class CertificateDomainValidationOption {
 
   factory CertificateDomainValidationOption.fromMap(Map<String, dynamic> map) {
     return CertificateDomainValidationOption(
-      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
-      resourceRecordName: map['resourceRecordName'] == null ? null : ((map['resourceRecordName'] as String).input()).input(),
-      resourceRecordType: map['resourceRecordType'] == null ? null : ((map['resourceRecordType'] as String).input()).input(),
-      resourceRecordValue: map['resourceRecordValue'] == null ? null : ((map['resourceRecordValue'] as String).input()).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceRecordName: (() {
+        final guardedValue = map['resourceRecordName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceRecordType: (() {
+        final guardedValue = map['resourceRecordType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceRecordValue: (() {
+        final guardedValue = map['resourceRecordValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobStepArgs {
   /// The name of the job agent.
   final pulumi.Input<String> jobAgentName;
+
   /// The name of the job.
   final pulumi.Input<String> jobName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The name of the job step.
   final pulumi.Input<String> stepName;
 
@@ -44,12 +48,13 @@ class GetJobStepArgs {
 
   factory GetJobStepArgs.fromMap(Map<String, dynamic> map) {
     return GetJobStepArgs(
-      jobAgentName: (map['jobAgentName'] as String).input(),
-      jobName: (map['jobName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      stepName: (map['stepName'] as String).input(),
+      jobAgentName: pulumi.Input.fromValue(map['jobAgentName'] as String),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      stepName: pulumi.Input.fromValue(map['stepName'] as String),
     );
   }
 }
-

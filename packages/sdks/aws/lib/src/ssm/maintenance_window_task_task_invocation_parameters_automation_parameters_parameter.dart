@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter {
   /// The parameter name.
   final pulumi.Input<String> name;
+
   /// The array of strings.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
-  factory MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

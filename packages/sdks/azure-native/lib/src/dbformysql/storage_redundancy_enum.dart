@@ -3,16 +3,15 @@ enum StorageRedundancyEnum {
   valueLocalRedundancy("LocalRedundancy"),
   valueZoneRedundancy("ZoneRedundancy");
 
-  const StorageRedundancyEnum(this.value);
-  final String value;
+  const StorageRedundancyEnum(this.wireValue);
+  final String wireValue;
 
   static StorageRedundancyEnum fromValue(String value) {
     for (final item in StorageRedundancyEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageRedundancyEnum value: $value');
   }
 }
-

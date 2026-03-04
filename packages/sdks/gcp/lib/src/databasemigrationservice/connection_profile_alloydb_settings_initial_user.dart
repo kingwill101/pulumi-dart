@@ -6,9 +6,11 @@ class ConnectionProfileAlloydbSettingsInitialUser {
   /// The initial password for the user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> password;
+
   /// (Output)
   /// Output only. Indicates if the initialUser.password field has been set.
   final pulumi.Input<bool>? passwordSet;
+
   /// The database username.
   final pulumi.Input<String> user;
 
@@ -30,12 +32,17 @@ class ConnectionProfileAlloydbSettingsInitialUser {
     };
   }
 
-  factory ConnectionProfileAlloydbSettingsInitialUser.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileAlloydbSettingsInitialUser.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileAlloydbSettingsInitialUser(
-      password: (map['password'] as String).input(),
-      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet']! as bool).input(),
-      user: (map['user'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      passwordSet: (() {
+        final guardedValue = map['passwordSet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

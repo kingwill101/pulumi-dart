@@ -5,24 +5,30 @@ import 'get_ai_index_metadata_config_algorithm_config.dart';
 
 class GetAiIndexMetadataConfig {
   /// The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
-  final pulumi.Input<List<GetAiIndexMetadataConfigAlgorithmConfig>> algorithmConfigs;
+  final pulumi.Input<List<GetAiIndexMetadataConfigAlgorithmConfig>>
+  algorithmConfigs;
+
   /// The default number of neighbors to find via approximate search before exact reordering is
   /// performed. Exact reordering is a procedure where results returned by an
   /// approximate search algorithm are reordered via a more expensive distance computation.
   /// Required if tree-AH algorithm is used.
   final pulumi.Input<int> approximateNeighborsCount;
+
   /// The number of dimensions of the input vectors.
   final pulumi.Input<int> dimensions;
+
   /// The distance measure used in nearest neighbor search. The value must be one of the followings:
   /// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
   /// * L1_DISTANCE: Manhattan (L_1) Distance
   /// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
   /// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
   final pulumi.Input<String> distanceMeasureType;
+
   /// Type of normalization to be carried out on each vector. The value must be one of the followings:
   /// * UNIT_L2_NORM: Unit L2 normalization type
   /// * NONE: No normalization type is specified.
   final pulumi.Input<String> featureNormType;
+
   /// Index data is split into equal parts to be processed. These are called "shards".
   /// The shard size must be specified when creating an index. The value must be one of the followings:
   /// * SHARD_SIZE_SMALL: Small (2GB)
@@ -48,7 +54,18 @@ class GetAiIndexMetadataConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'algorithmConfigs': pulumi.Input.mapInputValue<List<GetAiIndexMetadataConfigAlgorithmConfig>, List<Map<String, dynamic>>>(algorithmConfigs, (value) => pulumi.Input.encodeList<GetAiIndexMetadataConfigAlgorithmConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'algorithmConfigs':
+          pulumi.Input.mapInputValue<
+            List<GetAiIndexMetadataConfigAlgorithmConfig>,
+            List<Map<String, dynamic>>
+          >(
+            algorithmConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetAiIndexMetadataConfigAlgorithmConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'approximateNeighborsCount': approximateNeighborsCount,
       'dimensions': dimensions,
       'distanceMeasureType': distanceMeasureType,
@@ -59,13 +76,23 @@ class GetAiIndexMetadataConfig {
 
   factory GetAiIndexMetadataConfig.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadataConfig(
-      algorithmConfigs: (pulumi.Input.decodeList<GetAiIndexMetadataConfigAlgorithmConfig>(map['algorithmConfigs'], (value) => GetAiIndexMetadataConfigAlgorithmConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      approximateNeighborsCount: (map['approximateNeighborsCount'] as int).input(),
-      dimensions: (map['dimensions'] as int).input(),
-      distanceMeasureType: (map['distanceMeasureType'] as String).input(),
-      featureNormType: (map['featureNormType'] as String).input(),
-      shardSize: (map['shardSize'] as String).input(),
+      algorithmConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetAiIndexMetadataConfigAlgorithmConfig>(
+          map['algorithmConfigs']!,
+          (value) => GetAiIndexMetadataConfigAlgorithmConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      approximateNeighborsCount: pulumi.Input.fromValue(
+        map['approximateNeighborsCount'] as int,
+      ),
+      dimensions: pulumi.Input.fromValue(map['dimensions'] as int),
+      distanceMeasureType: pulumi.Input.fromValue(
+        map['distanceMeasureType'] as String,
+      ),
+      featureNormType: pulumi.Input.fromValue(map['featureNormType'] as String),
+      shardSize: pulumi.Input.fromValue(map['shardSize'] as String),
     );
   }
 }
-

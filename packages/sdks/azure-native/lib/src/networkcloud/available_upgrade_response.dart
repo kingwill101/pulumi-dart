@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AvailableUpgradeResponse {
   /// The version lifecycle indicator.
   final pulumi.Input<String> availabilityLifecycle;
+
   /// The version available for upgrading.
   final pulumi.Input<String> version;
 
@@ -25,9 +26,10 @@ class AvailableUpgradeResponse {
 
   factory AvailableUpgradeResponse.fromMap(Map<String, dynamic> map) {
     return AvailableUpgradeResponse(
-      availabilityLifecycle: (map['availabilityLifecycle'] as String).input(),
-      version: (map['version'] as String).input(),
+      availabilityLifecycle: pulumi.Input.fromValue(
+        map['availabilityLifecycle'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

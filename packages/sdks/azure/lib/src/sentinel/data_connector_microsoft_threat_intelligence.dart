@@ -220,13 +220,16 @@ import 'data_connector_microsoft_threat_intelligence_state.dart';
 class DataConnectorMicrosoftThreatIntelligence extends pulumi.CustomResource {
   /// The ID of the Log Analytics Workspace. Changing this forces a new Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The lookback date for the Microsoft Emerging Threat Feed in RFC3339. Changing this forces a new Data Connector to be created.
   late final pulumi.Output<String> microsoftEmergingThreatFeedLookbackDate;
+
   /// The name which should be used for this Microsoft Threat Intelligence Data Connector. Changing this forces a new Microsoft Threat Intelligence Data Connector to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the tenant that this Microsoft Threat Intelligence Data Connector connects to. Changing this forces a new Microsoft Threat Intelligence Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   late final pulumi.Output<String> tenantId;
 
   /// Creates a new [DataConnectorMicrosoftThreatIntelligence].
@@ -238,15 +241,17 @@ class DataConnectorMicrosoftThreatIntelligence extends pulumi.CustomResource {
     DataConnectorMicrosoftThreatIntelligenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorMicrosoftThreatIntelligence:DataConnectorMicrosoftThreatIntelligence',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
-    this.microsoftEmergingThreatFeedLookbackDate = registerOutput<String>('microsoftEmergingThreatFeedLookbackDate');
+         'azure:sentinel/dataConnectorMicrosoftThreatIntelligence:DataConnectorMicrosoftThreatIntelligence',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    microsoftEmergingThreatFeedLookbackDate = registerOutput<String>(
+      'microsoftEmergingThreatFeedLookbackDate',
+    );
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [DataConnectorMicrosoftThreatIntelligence] resource's state with the given [name] and [id].
@@ -267,14 +272,16 @@ class DataConnectorMicrosoftThreatIntelligence extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorMicrosoftThreatIntelligence:DataConnectorMicrosoftThreatIntelligence',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
-    this.microsoftEmergingThreatFeedLookbackDate = registerOutput<String>('microsoftEmergingThreatFeedLookbackDate');
+         'azure:sentinel/dataConnectorMicrosoftThreatIntelligence:DataConnectorMicrosoftThreatIntelligence',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    microsoftEmergingThreatFeedLookbackDate = registerOutput<String>(
+      'microsoftEmergingThreatFeedLookbackDate',
+    );
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

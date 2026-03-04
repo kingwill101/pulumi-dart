@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmployeePropertiesResponse {
   /// Age of employee
   final pulumi.Input<int>? age;
+
   /// City of employee
   final pulumi.Input<String>? city;
+
   /// Profile of employee
   final pulumi.Input<String>? profile;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -36,11 +39,24 @@ class EmployeePropertiesResponse {
 
   factory EmployeePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EmployeePropertiesResponse(
-      age: map['age'] == null ? null : (map['age']! as int).input(),
-      city: map['city'] == null ? null : (map['city']! as String).input(),
-      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      age: (() {
+        final guardedValue = map['age'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      city: (() {
+        final guardedValue = map['city'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profile: (() {
+        final guardedValue = map['profile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

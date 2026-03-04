@@ -1,5 +1,3 @@
-library module_oam;
-
 export 'oam/functions.dart';
 export 'oam/get_link_args.dart';
 export 'oam/get_link_link_configuration.dart';

@@ -13,15 +13,14 @@ class V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueLi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultValue': defaultValue,
-    };
+    return <String, dynamic>{'defaultValue': defaultValue};
   }
 
-  factory V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList(
-      defaultValue: (map['defaultValue'] as String).input(),
+      defaultValue: pulumi.Input.fromValue(map['defaultValue'] as String),
     );
   }
 }
-

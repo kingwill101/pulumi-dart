@@ -5,16 +5,15 @@ enum AssignmentType {
   valueSystemHidden("SystemHidden"),
   valueCustom("Custom");
 
-  const AssignmentType(this.value);
-  final String value;
+  const AssignmentType(this.wireValue);
+  final String wireValue;
 
   static AssignmentType fromValue(String value) {
     for (final item in AssignmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssignmentType value: $value');
   }
 }
-

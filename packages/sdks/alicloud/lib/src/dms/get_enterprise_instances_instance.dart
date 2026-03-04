@@ -5,48 +5,69 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnterpriseInstancesInstance {
   /// The name of the data link for the database instance.
   final pulumi.Input<String> dataLinkName;
+
   /// The logon password of the database instance.
   final pulumi.Input<String> databasePassword;
+
   /// The logon username of the database instance.
   final pulumi.Input<String> databaseUser;
+
   /// The ID of the database administrator (DBA) of the database instance.
   final pulumi.Input<String> dbaId;
+
   /// The nickname of the DBA.
   final pulumi.Input<String> dbaNickName;
+
   /// Indicates whether the online data description language (DDL) service was enabled for the database instance.
   final pulumi.Input<int> ddlOnline;
+
   /// The ID of the Elastic Compute Service (ECS) instance to which the database instance belongs.
   final pulumi.Input<String> ecsInstanceId;
+
   /// The region where the database instance resides.
   final pulumi.Input<String> ecsRegion;
+
   /// The type of the environment to which the database instance belongs.
   final pulumi.Input<String> envType;
+
   /// The timeout period for exporting the database instance.
   final pulumi.Input<int> exportTimeout;
+
   /// The endpoint of the database instance.
   final pulumi.Input<String> host;
   final pulumi.Input<String> id;
+
   /// The alias of the database instance.
   final pulumi.Input<String> instanceAlias;
+
   /// The ID of the database instance.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> instanceName;
+
   /// The source of the database instance.
   final pulumi.Input<String> instanceSource;
+
   /// The ID of the database instance.
   final pulumi.Input<String> instanceType;
+
   /// The connection port of the database instance.
   final pulumi.Input<int> port;
+
   /// The timeout period for querying the database instance.
   final pulumi.Input<int> queryTimeout;
+
   /// The ID of the security rule for the database instance.
   final pulumi.Input<String> safeRuleId;
+
   /// The system ID (SID) of the database instance.
   final pulumi.Input<String> sid;
+
   /// Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
   final pulumi.Input<String> status;
+
   /// Indicates whether cross-database query was enabled for the database instance.
   final pulumi.Input<int> useDsql;
+
   /// The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
   final pulumi.Input<String> vpcId;
 
@@ -133,31 +154,32 @@ class GetEnterpriseInstancesInstance {
 
   factory GetEnterpriseInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesInstance(
-      dataLinkName: (map['dataLinkName'] as String).input(),
-      databasePassword: (map['databasePassword'] as String).input(),
-      databaseUser: (map['databaseUser'] as String).input(),
-      dbaId: (map['dbaId'] as String).input(),
-      dbaNickName: (map['dbaNickName'] as String).input(),
-      ddlOnline: (map['ddlOnline'] as int).input(),
-      ecsInstanceId: (map['ecsInstanceId'] as String).input(),
-      ecsRegion: (map['ecsRegion'] as String).input(),
-      envType: (map['envType'] as String).input(),
-      exportTimeout: (map['exportTimeout'] as int).input(),
-      host: (map['host'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceAlias: (map['instanceAlias'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      instanceSource: (map['instanceSource'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      port: (map['port'] as int).input(),
-      queryTimeout: (map['queryTimeout'] as int).input(),
-      safeRuleId: (map['safeRuleId'] as String).input(),
-      sid: (map['sid'] as String).input(),
-      status: (map['status'] as String).input(),
-      useDsql: (map['useDsql'] as int).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      dataLinkName: pulumi.Input.fromValue(map['dataLinkName'] as String),
+      databasePassword: pulumi.Input.fromValue(
+        map['databasePassword'] as String,
+      ),
+      databaseUser: pulumi.Input.fromValue(map['databaseUser'] as String),
+      dbaId: pulumi.Input.fromValue(map['dbaId'] as String),
+      dbaNickName: pulumi.Input.fromValue(map['dbaNickName'] as String),
+      ddlOnline: pulumi.Input.fromValue(map['ddlOnline'] as int),
+      ecsInstanceId: pulumi.Input.fromValue(map['ecsInstanceId'] as String),
+      ecsRegion: pulumi.Input.fromValue(map['ecsRegion'] as String),
+      envType: pulumi.Input.fromValue(map['envType'] as String),
+      exportTimeout: pulumi.Input.fromValue(map['exportTimeout'] as int),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceAlias: pulumi.Input.fromValue(map['instanceAlias'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      instanceSource: pulumi.Input.fromValue(map['instanceSource'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      queryTimeout: pulumi.Input.fromValue(map['queryTimeout'] as int),
+      safeRuleId: pulumi.Input.fromValue(map['safeRuleId'] as String),
+      sid: pulumi.Input.fromValue(map['sid'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      useDsql: pulumi.Input.fromValue(map['useDsql'] as int),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

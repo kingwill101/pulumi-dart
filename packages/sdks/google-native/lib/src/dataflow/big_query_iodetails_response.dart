@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigQueryIODetailsResponse {
   /// Dataset accessed in the connection.
   final pulumi.Input<String> dataset;
+
   /// Project accessed in the connection.
   final pulumi.Input<String> project;
+
   /// Query used to access data in the connection.
   final pulumi.Input<String> query;
+
   /// Table accessed in the connection.
   final pulumi.Input<String> table;
 
@@ -36,11 +39,10 @@ class BigQueryIODetailsResponse {
 
   factory BigQueryIODetailsResponse.fromMap(Map<String, dynamic> map) {
     return BigQueryIODetailsResponse(
-      dataset: (map['dataset'] as String).input(),
-      project: (map['project'] as String).input(),
-      query: (map['query'] as String).input(),
-      table: (map['table'] as String).input(),
+      dataset: pulumi.Input.fromValue(map['dataset'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      table: pulumi.Input.fromValue(map['table'] as String),
     );
   }
 }
-

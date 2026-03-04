@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExtensionAzureMonitorAgentStatusArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetExtensionAzureMonitorAgentStatusArgs {
     };
   }
 
-  factory GetExtensionAzureMonitorAgentStatusArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExtensionAzureMonitorAgentStatusArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExtensionAzureMonitorAgentStatusArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

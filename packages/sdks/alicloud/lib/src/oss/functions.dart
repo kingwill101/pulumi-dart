@@ -135,7 +135,7 @@ Future<GetBucketObjectsResult> getBucketObjects(
 
 /// This data source provides the OSS buckets of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.17.0.
+/// &gt; **NOTE:** Available since v1.17.0.
 ///
 /// ## Example Usage
 ///
@@ -440,7 +440,7 @@ Future<GetInstanceAttachmentsResult> getInstanceAttachments(
 
 /// This data source provides the ots instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.40.0.
+/// &gt; **NOTE:** Available since v1.40.0.
 ///
 /// ## Example Usage
 ///
@@ -559,7 +559,7 @@ Future<GetInstancesResult> getInstances(
 ///
 /// For information about OSS and how to use it, see [What is OSS](https://www.alibabacloud.com/help/product/31815.htm).
 ///
-/// > **NOTE:** Available in v1.97.0+
+/// &gt; **NOTE:** Available in v1.97.0+
 ///
 /// ## Example Usage
 ///
@@ -666,7 +666,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the ots tables of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.40.0+.
+/// &gt; **NOTE:** Available in v1.40.0+.
 ///
 /// ## Example Usage
 ///

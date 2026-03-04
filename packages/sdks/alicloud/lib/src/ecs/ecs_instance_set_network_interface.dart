@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsInstanceSetNetworkInterface {
   /// The description of ENI.
   final pulumi.Input<String>? description;
+
   /// The name of ENI.
   final pulumi.Input<String>? networkInterfaceName;
+
   /// The primary private IP address of ENI.
   final pulumi.Input<String>? primaryIpAddress;
+
   /// The ID of the security group to which to assign secondary ENI.
   final pulumi.Input<String> securityGroupId;
+
   /// The ID of the vSwitch to which to connect ENI.
   final pulumi.Input<String>? vswitchId;
 
@@ -40,12 +44,27 @@ class EcsInstanceSetNetworkInterface {
 
   factory EcsInstanceSetNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EcsInstanceSetNetworkInterface(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
-      primaryIpAddress: map['primaryIpAddress'] == null ? null : (map['primaryIpAddress']! as String).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceName: (() {
+        final guardedValue = map['networkInterfaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryIpAddress: (() {
+        final guardedValue = map['primaryIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

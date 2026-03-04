@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SSLConfiguration {
   /// Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
   final pulumi.Input<String>? sslCryptoProvider;
+
   /// Specify the hostname as mentioned in the SSL certificate. If this argument is not provided, it is automatically determined by searching in the SSL certificate.
   final pulumi.Input<String>? sslHostNameInCertificate;
+
   /// Specify the name of the keystore file that contains the client's identity (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
   final pulumi.Input<String>? sslKeyStore;
+
   /// Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
   final pulumi.Input<String>? sslTrustStore;
 
@@ -36,11 +39,26 @@ class SSLConfiguration {
 
   factory SSLConfiguration.fromMap(Map<String, dynamic> map) {
     return SSLConfiguration(
-      sslCryptoProvider: map['sslCryptoProvider'] == null ? null : (map['sslCryptoProvider']! as String).input(),
-      sslHostNameInCertificate: map['sslHostNameInCertificate'] == null ? null : (map['sslHostNameInCertificate']! as String).input(),
-      sslKeyStore: map['sslKeyStore'] == null ? null : (map['sslKeyStore']! as String).input(),
-      sslTrustStore: map['sslTrustStore'] == null ? null : (map['sslTrustStore']! as String).input(),
+      sslCryptoProvider: (() {
+        final guardedValue = map['sslCryptoProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslHostNameInCertificate: (() {
+        final guardedValue = map['sslHostNameInCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslKeyStore: (() {
+        final guardedValue = map['sslKeyStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslTrustStore: (() {
+        final guardedValue = map['sslTrustStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

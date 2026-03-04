@@ -9,13 +9,17 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
   /// Must have ValueType = DISTRIBUTION and
   /// MetricKind = DELTA or MetricKind = CUMULATIVE.
   final pulumi.Input<String> distributionFilter;
+
   /// Range of numerical values. The computed good_service
   /// will be the count of values x in the Distribution such
-  /// that range.min <= x <= range.max. inclusive of min and
+  /// that range.min &lt;= x &lt;= range.max. inclusive of min and
   /// max. Open ranges can be defined by setting
   /// just one of min or max.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange> range;
+  final pulumi.Input<
+    SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
+  >
+  range;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut].
   /// [distributionFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -28,15 +32,26 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'distributionFilter': distributionFilter,
-      'range': pulumi.Input.mapInputValue<SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange, Map<String, dynamic>>(range, (value) => value.toMap()),
+      'range':
+          pulumi.Input.mapInputValue<
+            SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange,
+            Map<String, dynamic>
+          >(range, (value) => value.toMap()),
     };
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap(Map<String, dynamic> map) {
+  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(
-      distributionFilter: (map['distributionFilter'] as String).input(),
-      range: (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
+      distributionFilter: pulumi.Input.fromValue(
+        map['distributionFilter'] as String,
+      ),
+      range: pulumi.Input.fromValue(
+        SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange.fromMap(
+          (map['range']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

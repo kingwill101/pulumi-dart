@@ -4,9 +4,9 @@ import 'alidns_domain_state.dart';
 
 /// Provides a Alidns domain resource.
 ///
-/// > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+/// &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 ///
-/// > **NOTE:** Available since v1.95.0.
+/// &gt; **NOTE:** Available since v1.95.0.
 ///
 /// ## Example Usage
 ///
@@ -165,22 +165,31 @@ import 'alidns_domain_state.dart';
 class AlidnsDomain extends pulumi.CustomResource {
   /// A list of the dns server name.
   late final pulumi.Output<List<String>> dnsServers;
+
   /// The domain ID.
   late final pulumi.Output<String> domainId;
+
   /// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> domainName;
+
   /// Id of the group in which the domain will add. If not supplied, then use default group.
   late final pulumi.Output<String?> groupId;
+
   /// Domain name group name.
   late final pulumi.Output<String> groupName;
+
   /// User language.
   late final pulumi.Output<String?> lang;
+
   /// Only return punycode codes for Chinese domain names.
   late final pulumi.Output<String> punyCode;
+
   /// Remarks information for your domain name.
   late final pulumi.Output<String?> remark;
+
   /// The Id of resource group which the dns domain belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be [1, 20] characters in length. It can contain A-Z, a-z, numbers, underscores (_), and hyphens (-). It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -195,21 +204,21 @@ class AlidnsDomain extends pulumi.CustomResource {
     AlidnsDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/alidnsDomain:AlidnsDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsServers = registerOutput<List<String>>('dnsServers');
-    this.domainId = registerOutput<String>('domainId');
-    this.domainName = registerOutput<String>('domainName');
-    this.groupId = registerOutput<String?>('groupId');
-    this.groupName = registerOutput<String>('groupName');
-    this.lang = registerOutput<String?>('lang');
-    this.punyCode = registerOutput<String>('punyCode');
-    this.remark = registerOutput<String?>('remark');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dns/alidnsDomain:AlidnsDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsServers = registerOutput<List<String>>('dnsServers');
+    domainId = registerOutput<String>('domainId');
+    domainName = registerOutput<String>('domainName');
+    groupId = registerOutput<String?>('groupId');
+    groupName = registerOutput<String>('groupName');
+    lang = registerOutput<String?>('lang');
+    punyCode = registerOutput<String>('punyCode');
+    remark = registerOutput<String?>('remark');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [AlidnsDomain] resource's state with the given [name] and [id].
@@ -230,20 +239,20 @@ class AlidnsDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/alidnsDomain:AlidnsDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsServers = registerOutput<List<String>>('dnsServers');
-    this.domainId = registerOutput<String>('domainId');
-    this.domainName = registerOutput<String>('domainName');
-    this.groupId = registerOutput<String?>('groupId');
-    this.groupName = registerOutput<String>('groupName');
-    this.lang = registerOutput<String?>('lang');
-    this.punyCode = registerOutput<String>('punyCode');
-    this.remark = registerOutput<String?>('remark');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dns/alidnsDomain:AlidnsDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsServers = registerOutput<List<String>>('dnsServers');
+    domainId = registerOutput<String>('domainId');
+    domainName = registerOutput<String>('domainName');
+    groupId = registerOutput<String?>('groupId');
+    groupName = registerOutput<String>('groupName');
+    lang = registerOutput<String?>('lang');
+    punyCode = registerOutput<String>('punyCode');
+    remark = registerOutput<String?>('remark');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -6,11 +6,11 @@ import 'dedicated_host_account_state.dart';
 ///
 /// For information about ApsaraDB for MyBase Dedicated Host Account and how to use it, see [What is Dedicated Host Account](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/creatededicatedhostaccount).
 ///
-/// > **NOTE:** Available since v1.148.0.
+/// &gt; **NOTE:** Available since v1.148.0.
 ///
-/// > **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
+/// &gt; **NOTE:** Each Dedicated host can have only one account. Before you create an account for a host, make sure that the existing account is deleted.
 ///
-/// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+/// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
 ///
 /// ## Example Usage
 ///
@@ -445,10 +445,13 @@ import 'dedicated_host_account_state.dart';
 class DedicatedHostAccount extends pulumi.CustomResource {
   /// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
   late final pulumi.Output<String> accountName;
+
   /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
   late final pulumi.Output<String> accountPassword;
+
   /// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
   late final pulumi.Output<String?> accountType;
+
   /// The ID of Dedicated the host.
   late final pulumi.Output<String> dedicatedHostId;
 
@@ -461,15 +464,15 @@ class DedicatedHostAccount extends pulumi.CustomResource {
     DedicatedHostAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String?>('accountType');
-    this.dedicatedHostId = registerOutput<String>('dedicatedHostId');
+         'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String?>('accountType');
+    dedicatedHostId = registerOutput<String>('dedicatedHostId');
   }
 
   /// Gets an existing [DedicatedHostAccount] resource's state with the given [name] and [id].
@@ -490,14 +493,14 @@ class DedicatedHostAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String?>('accountType');
-    this.dedicatedHostId = registerOutput<String>('dedicatedHostId');
+         'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String?>('accountType');
+    dedicatedHostId = registerOutput<String>('dedicatedHostId');
   }
 }

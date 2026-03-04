@@ -1,5 +1,3 @@
-library module_offazurespringboot;
-
 export 'offazurespringboot/error.dart';
 export 'offazurespringboot/error_response.dart';
 export 'offazurespringboot/functions.dart';

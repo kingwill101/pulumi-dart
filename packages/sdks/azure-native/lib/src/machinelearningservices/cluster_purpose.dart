@@ -4,16 +4,15 @@ enum ClusterPurpose {
   valueDenseProd("DenseProd"),
   valueDevTest("DevTest");
 
-  const ClusterPurpose(this.value);
-  final String value;
+  const ClusterPurpose(this.wireValue);
+  final String wireValue;
 
   static ClusterPurpose fromValue(String value) {
     for (final item in ClusterPurpose.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterPurpose value: $value');
   }
 }
-

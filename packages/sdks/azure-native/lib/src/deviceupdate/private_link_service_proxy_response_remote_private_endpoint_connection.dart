@@ -14,15 +14,14 @@ class PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
-  factory PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
+  factory PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

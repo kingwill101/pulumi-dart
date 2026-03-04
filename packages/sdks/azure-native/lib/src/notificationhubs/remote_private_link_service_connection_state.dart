@@ -9,20 +9,21 @@ class RemotePrivateLinkServiceConnectionState {
 
   /// Creates a new [RemotePrivateLinkServiceConnectionState].
   /// [status] State of Private Link Connection.
-  RemotePrivateLinkServiceConnectionState({
-    this.status,
-  });
+  RemotePrivateLinkServiceConnectionState({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
-  factory RemotePrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
+  factory RemotePrivateLinkServiceConnectionState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RemotePrivateLinkServiceConnectionState(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

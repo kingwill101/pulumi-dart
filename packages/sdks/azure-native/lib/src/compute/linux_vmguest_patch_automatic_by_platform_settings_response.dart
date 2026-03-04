@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
   /// Enables customer to schedule patching without accidental upgrades
   final pulumi.Input<bool>? bypassPlatformSafetyChecksOnUserSchedule;
+
   /// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
   final pulumi.Input<String>? rebootSetting;
 
@@ -19,16 +20,26 @@ class LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bypassPlatformSafetyChecksOnUserSchedule': ?bypassPlatformSafetyChecksOnUserSchedule,
+      'bypassPlatformSafetyChecksOnUserSchedule':
+          ?bypassPlatformSafetyChecksOnUserSchedule,
       'rebootSetting': ?rebootSetting,
     };
   }
 
-  factory LinuxVMGuestPatchAutomaticByPlatformSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory LinuxVMGuestPatchAutomaticByPlatformSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxVMGuestPatchAutomaticByPlatformSettingsResponse(
-      bypassPlatformSafetyChecksOnUserSchedule: map['bypassPlatformSafetyChecksOnUserSchedule'] == null ? null : (map['bypassPlatformSafetyChecksOnUserSchedule']! as bool).input(),
-      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting']! as String).input(),
+      bypassPlatformSafetyChecksOnUserSchedule: (() {
+        final guardedValue = map['bypassPlatformSafetyChecksOnUserSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      rebootSetting: (() {
+        final guardedValue = map['rebootSetting'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

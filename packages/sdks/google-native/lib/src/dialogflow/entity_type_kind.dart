@@ -5,16 +5,15 @@ enum EntityTypeKind {
   kindList("KIND_LIST"),
   kindRegexp("KIND_REGEXP");
 
-  const EntityTypeKind(this.value);
-  final String value;
+  const EntityTypeKind(this.wireValue);
+  final String wireValue;
 
   static EntityTypeKind fromValue(String value) {
     for (final item in EntityTypeKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityTypeKind value: $value');
   }
 }
-

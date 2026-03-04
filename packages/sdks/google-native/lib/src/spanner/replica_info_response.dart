@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicaInfoResponse {
   /// If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.
   final pulumi.Input<bool> defaultLeaderLocation;
+
   /// The location of the serving resources, e.g. "us-central1".
   final pulumi.Input<String> location;
+
   /// The type of replica.
   final pulumi.Input<String> type;
 
@@ -30,10 +32,11 @@ class ReplicaInfoResponse {
 
   factory ReplicaInfoResponse.fromMap(Map<String, dynamic> map) {
     return ReplicaInfoResponse(
-      defaultLeaderLocation: (map['defaultLeaderLocation'] as bool).input(),
-      location: (map['location'] as String).input(),
-      type: (map['type'] as String).input(),
+      defaultLeaderLocation: pulumi.Input.fromValue(
+        map['defaultLeaderLocation'] as bool,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

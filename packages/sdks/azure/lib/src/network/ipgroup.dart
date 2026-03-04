@@ -187,7 +187,7 @@ import 'ipgroup_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -202,18 +202,24 @@ import 'ipgroup_state.dart';
 class IPGroup extends pulumi.CustomResource {
   /// A list of CIDRs or IP addresses.
   ///
-  /// > **Note:** The AzureRM Terraform provider provides cidr support via the standalone resource azure.network.IPGroupCIDR and in-line within this resource using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via the resource `azure.network.IPGroupCIDR` then `ignore_changes` should be used in the ip group configuration.
+  /// &gt; **Note:** The AzureRM Terraform provider provides cidr support via the standalone resource azure.network.IPGroupCIDR and in-line within this resource using the `cidrs` property. You cannot use both methods simultaneously. If cidrs are set via the resource `azure.network.IPGroupCIDR` then `ignore_changes` should be used in the ip group configuration.
   late final pulumi.Output<List<String>?> cidrs;
+
   /// A list of ID of Firewall.
   late final pulumi.Output<List<String>> firewallIds;
+
   /// A list of ID of Firewall Policy`.
   late final pulumi.Output<List<String>> firewallPolicyIds;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the IP group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the IP group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -226,18 +232,18 @@ class IPGroup extends pulumi.CustomResource {
     IPGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/iPGroup:IPGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrs = registerOutput<List<String>?>('cidrs');
-    this.firewallIds = registerOutput<List<String>>('firewallIds');
-    this.firewallPolicyIds = registerOutput<List<String>>('firewallPolicyIds');
-    this.location = registerOutput<String>('location');
+         'azure:network/iPGroup:IPGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrs = registerOutput<List<String>?>('cidrs');
+    firewallIds = registerOutput<List<String>>('firewallIds');
+    firewallPolicyIds = registerOutput<List<String>>('firewallPolicyIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [IPGroup] resource's state with the given [name] and [id].
@@ -258,17 +264,17 @@ class IPGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/iPGroup:IPGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrs = registerOutput<List<String>?>('cidrs');
-    this.firewallIds = registerOutput<List<String>>('firewallIds');
-    this.firewallPolicyIds = registerOutput<List<String>>('firewallPolicyIds');
-    this.location = registerOutput<String>('location');
+         'azure:network/iPGroup:IPGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrs = registerOutput<List<String>?>('cidrs');
+    firewallIds = registerOutput<List<String>>('firewallIds');
+    firewallPolicyIds = registerOutput<List<String>>('firewallPolicyIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

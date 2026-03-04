@@ -4,7 +4,7 @@ import 'organizations_features_state.dart';
 
 /// Manages centralized root access features across AWS member accounts managed using AWS Organizations. More information about managing root access in IAM can be found in the [Centralize root access for member accounts](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-enable-root-access.html).
 ///
-/// > **NOTE:** The AWS account utilizing this resource must be an Organizations management account. Also, you must enable trusted access for AWS Identity and Access Management in AWS Organizations.
+/// &gt; **NOTE:** The AWS account utilizing this resource must be an Organizations management account. Also, you must enable trusted access for AWS Identity and Access Management in AWS Organizations.
 ///
 /// ## Example Usage
 ///
@@ -170,12 +170,12 @@ class OrganizationsFeatures extends pulumi.CustomResource {
     OrganizationsFeaturesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/organizationsFeatures:OrganizationsFeatures',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+         'aws:iam/organizationsFeatures:OrganizationsFeatures',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
   }
 
   /// Gets an existing [OrganizationsFeatures] resource's state with the given [name] and [id].
@@ -196,11 +196,11 @@ class OrganizationsFeatures extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/organizationsFeatures:OrganizationsFeatures',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+         'aws:iam/organizationsFeatures:OrganizationsFeatures',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
   }
 }

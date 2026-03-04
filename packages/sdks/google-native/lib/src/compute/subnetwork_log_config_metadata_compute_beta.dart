@@ -4,16 +4,17 @@ enum SubnetworkLogConfigMetadataComputeBeta {
   excludeAllMetadata("EXCLUDE_ALL_METADATA"),
   includeAllMetadata("INCLUDE_ALL_METADATA");
 
-  const SubnetworkLogConfigMetadataComputeBeta(this.value);
-  final String value;
+  const SubnetworkLogConfigMetadataComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SubnetworkLogConfigMetadataComputeBeta fromValue(String value) {
     for (final item in SubnetworkLogConfigMetadataComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkLogConfigMetadataComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkLogConfigMetadataComputeBeta value: $value',
+    );
   }
 }
-

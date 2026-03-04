@@ -12,11 +12,11 @@ import 'log_view_iam_policy_state.dart';
 ///
 /// * `gcp.logging.LogViewIamPolicy`: Retrieves the IAM policy for the logview
 ///
-/// > **Note:** `gcp.logging.LogViewIamPolicy` **cannot** be used in conjunction with `gcp.logging.LogViewIamBinding` and `gcp.logging.LogViewIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.logging.LogViewIamPolicy` **cannot** be used in conjunction with `gcp.logging.LogViewIamBinding` and `gcp.logging.LogViewIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.logging.LogViewIamPolicy
@@ -943,7 +943,7 @@ import 'log_view_iam_policy_state.dart';
 /// ```
 ///
 ///
-/// ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// ## &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 /// -
@@ -960,11 +960,11 @@ import 'log_view_iam_policy_state.dart';
 ///
 /// * `gcp.logging.LogViewIamPolicy`: Retrieves the IAM policy for the logview
 ///
-/// > **Note:** `gcp.logging.LogViewIamPolicy` **cannot** be used in conjunction with `gcp.logging.LogViewIamBinding` and `gcp.logging.LogViewIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.logging.LogViewIamPolicy` **cannot** be used in conjunction with `gcp.logging.LogViewIamBinding` and `gcp.logging.LogViewIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.logging.LogViewIamBinding` resources **can be** used in conjunction with `gcp.logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
 ///
-/// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
 ///
 /// ## gcp.logging.LogViewIamPolicy
@@ -1921,22 +1921,27 @@ import 'log_view_iam_policy_state.dart';
 /// $ pulumi import gcp:logging/logViewIamPolicy:LogViewIamPolicy editor {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{log_view}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class LogViewIamPolicy extends pulumi.CustomResource {
   /// The bucket of the resource Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> bucket;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   late final pulumi.Output<String> location;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> name;
+
   /// The parent of the resource. Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> parent;
+
   /// The policy data generated by
   /// a `gcp.organizations.getIAMPolicy` data source.
   late final pulumi.Output<String> policyData;
@@ -1950,17 +1955,17 @@ class LogViewIamPolicy extends pulumi.CustomResource {
     LogViewIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/logViewIamPolicy:LogViewIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:logging/logViewIamPolicy:LogViewIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.policyData = registerOutput<String>('policyData');
+    parent = registerOutput<String>('parent');
+    policyData = registerOutput<String>('policyData');
   }
 
   /// Gets an existing [LogViewIamPolicy] resource's state with the given [name] and [id].
@@ -1981,16 +1986,16 @@ class LogViewIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/logViewIamPolicy:LogViewIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'gcp:logging/logViewIamPolicy:LogViewIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.policyData = registerOutput<String>('policyData');
+    parent = registerOutput<String>('parent');
+    policyData = registerOutput<String>('policyData');
   }
 }

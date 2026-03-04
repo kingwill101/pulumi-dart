@@ -1,2097 +1,3361 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_digitalocean;
-
-import 'package:pulumi_digitalocean/index.dart' as _index;
-import 'package:pulumi_digitalocean/providers.dart' as _providers;
+import 'package:pulumi_digitalocean/index.dart' as module_index;
+import 'package:pulumi_digitalocean/providers.dart' as module_providers;
 
 final index = _IndexModuleNamespace();
 final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final Algorithm = _index.Algorithm.values;
-  final App = _index.App.new;
-  final AppArgs = _index.AppArgs.new;
-  final AppDedicatedIp = _index.AppDedicatedIp.new;
-  final AppDedicatedIpArgs = _index.AppDedicatedIp.new;
-  final AppSpec = _index.AppSpec.new;
-  final AppSpecAlert = _index.AppSpecAlert.new;
-  final AppSpecAlertArgs = _index.AppSpecAlert.new;
-  final AppSpecAlertDestinations = _index.AppSpecAlertDestinations.new;
-  final AppSpecAlertDestinationsArgs = _index.AppSpecAlertDestinations.new;
-  final AppSpecAlertDestinationsSlackWebhook = _index.AppSpecAlertDestinationsSlackWebhook.new;
-  final AppSpecAlertDestinationsSlackWebhookArgs = _index.AppSpecAlertDestinationsSlackWebhook.new;
-  final AppSpecArgs = _index.AppSpec.new;
-  final AppSpecDatabase = _index.AppSpecDatabase.new;
-  final AppSpecDatabaseArgs = _index.AppSpecDatabase.new;
-  final AppSpecDomainName = _index.AppSpecDomainName.new;
-  final AppSpecDomainNameArgs = _index.AppSpecDomainName.new;
-  final AppSpecEgress = _index.AppSpecEgress.new;
-  final AppSpecEgressArgs = _index.AppSpecEgress.new;
-  final AppSpecEnv = _index.AppSpecEnv.new;
-  final AppSpecEnvArgs = _index.AppSpecEnv.new;
-  final AppSpecFunction = _index.AppSpecFunction.new;
-  final AppSpecFunctionAlert = _index.AppSpecFunctionAlert.new;
-  final AppSpecFunctionAlertArgs = _index.AppSpecFunctionAlert.new;
-  final AppSpecFunctionAlertDestinations = _index.AppSpecFunctionAlertDestinations.new;
-  final AppSpecFunctionAlertDestinationsArgs = _index.AppSpecFunctionAlertDestinations.new;
-  final AppSpecFunctionAlertDestinationsSlackWebhook = _index.AppSpecFunctionAlertDestinationsSlackWebhook.new;
-  final AppSpecFunctionAlertDestinationsSlackWebhookArgs = _index.AppSpecFunctionAlertDestinationsSlackWebhook.new;
-  final AppSpecFunctionArgs = _index.AppSpecFunction.new;
-  final AppSpecFunctionBitbucket = _index.AppSpecFunctionBitbucket.new;
-  final AppSpecFunctionBitbucketArgs = _index.AppSpecFunctionBitbucket.new;
-  final AppSpecFunctionCors = _index.AppSpecFunctionCors.new;
-  final AppSpecFunctionCorsAllowOrigins = _index.AppSpecFunctionCorsAllowOrigins.new;
-  final AppSpecFunctionCorsAllowOriginsArgs = _index.AppSpecFunctionCorsAllowOrigins.new;
-  final AppSpecFunctionCorsArgs = _index.AppSpecFunctionCors.new;
-  final AppSpecFunctionEnv = _index.AppSpecFunctionEnv.new;
-  final AppSpecFunctionEnvArgs = _index.AppSpecFunctionEnv.new;
-  final AppSpecFunctionGit = _index.AppSpecFunctionGit.new;
-  final AppSpecFunctionGitArgs = _index.AppSpecFunctionGit.new;
-  final AppSpecFunctionGithub = _index.AppSpecFunctionGithub.new;
-  final AppSpecFunctionGithubArgs = _index.AppSpecFunctionGithub.new;
-  final AppSpecFunctionGitlab = _index.AppSpecFunctionGitlab.new;
-  final AppSpecFunctionGitlabArgs = _index.AppSpecFunctionGitlab.new;
-  final AppSpecFunctionLogDestination = _index.AppSpecFunctionLogDestination.new;
-  final AppSpecFunctionLogDestinationArgs = _index.AppSpecFunctionLogDestination.new;
-  final AppSpecFunctionLogDestinationDatadog = _index.AppSpecFunctionLogDestinationDatadog.new;
-  final AppSpecFunctionLogDestinationDatadogArgs = _index.AppSpecFunctionLogDestinationDatadog.new;
-  final AppSpecFunctionLogDestinationLogtail = _index.AppSpecFunctionLogDestinationLogtail.new;
-  final AppSpecFunctionLogDestinationLogtailArgs = _index.AppSpecFunctionLogDestinationLogtail.new;
-  final AppSpecFunctionLogDestinationOpenSearch = _index.AppSpecFunctionLogDestinationOpenSearch.new;
-  final AppSpecFunctionLogDestinationOpenSearchArgs = _index.AppSpecFunctionLogDestinationOpenSearch.new;
-  final AppSpecFunctionLogDestinationOpenSearchBasicAuth = _index.AppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs = _index.AppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecFunctionLogDestinationPapertrail = _index.AppSpecFunctionLogDestinationPapertrail.new;
-  final AppSpecFunctionLogDestinationPapertrailArgs = _index.AppSpecFunctionLogDestinationPapertrail.new;
-  final AppSpecFunctionRoute = _index.AppSpecFunctionRoute.new;
-  final AppSpecFunctionRouteArgs = _index.AppSpecFunctionRoute.new;
-  final AppSpecIngress = _index.AppSpecIngress.new;
-  final AppSpecIngressArgs = _index.AppSpecIngress.new;
-  final AppSpecIngressRule = _index.AppSpecIngressRule.new;
-  final AppSpecIngressRuleArgs = _index.AppSpecIngressRule.new;
-  final AppSpecIngressRuleComponent = _index.AppSpecIngressRuleComponent.new;
-  final AppSpecIngressRuleComponentArgs = _index.AppSpecIngressRuleComponent.new;
-  final AppSpecIngressRuleCors = _index.AppSpecIngressRuleCors.new;
-  final AppSpecIngressRuleCorsAllowOrigins = _index.AppSpecIngressRuleCorsAllowOrigins.new;
-  final AppSpecIngressRuleCorsAllowOriginsArgs = _index.AppSpecIngressRuleCorsAllowOrigins.new;
-  final AppSpecIngressRuleCorsArgs = _index.AppSpecIngressRuleCors.new;
-  final AppSpecIngressRuleMatch = _index.AppSpecIngressRuleMatch.new;
-  final AppSpecIngressRuleMatchArgs = _index.AppSpecIngressRuleMatch.new;
-  final AppSpecIngressRuleMatchAuthority = _index.AppSpecIngressRuleMatchAuthority.new;
-  final AppSpecIngressRuleMatchAuthorityArgs = _index.AppSpecIngressRuleMatchAuthority.new;
-  final AppSpecIngressRuleMatchPath = _index.AppSpecIngressRuleMatchPath.new;
-  final AppSpecIngressRuleMatchPathArgs = _index.AppSpecIngressRuleMatchPath.new;
-  final AppSpecIngressRuleRedirect = _index.AppSpecIngressRuleRedirect.new;
-  final AppSpecIngressRuleRedirectArgs = _index.AppSpecIngressRuleRedirect.new;
-  final AppSpecIngressSecureHeader = _index.AppSpecIngressSecureHeader.new;
-  final AppSpecIngressSecureHeaderArgs = _index.AppSpecIngressSecureHeader.new;
-  final AppSpecJob = _index.AppSpecJob.new;
-  final AppSpecJobAlert = _index.AppSpecJobAlert.new;
-  final AppSpecJobAlertArgs = _index.AppSpecJobAlert.new;
-  final AppSpecJobAlertDestinations = _index.AppSpecJobAlertDestinations.new;
-  final AppSpecJobAlertDestinationsArgs = _index.AppSpecJobAlertDestinations.new;
-  final AppSpecJobAlertDestinationsSlackWebhook = _index.AppSpecJobAlertDestinationsSlackWebhook.new;
-  final AppSpecJobAlertDestinationsSlackWebhookArgs = _index.AppSpecJobAlertDestinationsSlackWebhook.new;
-  final AppSpecJobArgs = _index.AppSpecJob.new;
-  final AppSpecJobBitbucket = _index.AppSpecJobBitbucket.new;
-  final AppSpecJobBitbucketArgs = _index.AppSpecJobBitbucket.new;
-  final AppSpecJobEnv = _index.AppSpecJobEnv.new;
-  final AppSpecJobEnvArgs = _index.AppSpecJobEnv.new;
-  final AppSpecJobGit = _index.AppSpecJobGit.new;
-  final AppSpecJobGitArgs = _index.AppSpecJobGit.new;
-  final AppSpecJobGithub = _index.AppSpecJobGithub.new;
-  final AppSpecJobGithubArgs = _index.AppSpecJobGithub.new;
-  final AppSpecJobGitlab = _index.AppSpecJobGitlab.new;
-  final AppSpecJobGitlabArgs = _index.AppSpecJobGitlab.new;
-  final AppSpecJobImage = _index.AppSpecJobImage.new;
-  final AppSpecJobImageArgs = _index.AppSpecJobImage.new;
-  final AppSpecJobImageDeployOnPush = _index.AppSpecJobImageDeployOnPush.new;
-  final AppSpecJobImageDeployOnPushArgs = _index.AppSpecJobImageDeployOnPush.new;
-  final AppSpecJobLogDestination = _index.AppSpecJobLogDestination.new;
-  final AppSpecJobLogDestinationArgs = _index.AppSpecJobLogDestination.new;
-  final AppSpecJobLogDestinationDatadog = _index.AppSpecJobLogDestinationDatadog.new;
-  final AppSpecJobLogDestinationDatadogArgs = _index.AppSpecJobLogDestinationDatadog.new;
-  final AppSpecJobLogDestinationLogtail = _index.AppSpecJobLogDestinationLogtail.new;
-  final AppSpecJobLogDestinationLogtailArgs = _index.AppSpecJobLogDestinationLogtail.new;
-  final AppSpecJobLogDestinationOpenSearch = _index.AppSpecJobLogDestinationOpenSearch.new;
-  final AppSpecJobLogDestinationOpenSearchArgs = _index.AppSpecJobLogDestinationOpenSearch.new;
-  final AppSpecJobLogDestinationOpenSearchBasicAuth = _index.AppSpecJobLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecJobLogDestinationOpenSearchBasicAuthArgs = _index.AppSpecJobLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecJobLogDestinationPapertrail = _index.AppSpecJobLogDestinationPapertrail.new;
-  final AppSpecJobLogDestinationPapertrailArgs = _index.AppSpecJobLogDestinationPapertrail.new;
-  final AppSpecJobTermination = _index.AppSpecJobTermination.new;
-  final AppSpecJobTerminationArgs = _index.AppSpecJobTermination.new;
-  final AppSpecMaintenance = _index.AppSpecMaintenance.new;
-  final AppSpecMaintenanceArgs = _index.AppSpecMaintenance.new;
-  final AppSpecService = _index.AppSpecService.new;
-  final AppSpecServiceAlert = _index.AppSpecServiceAlert.new;
-  final AppSpecServiceAlertArgs = _index.AppSpecServiceAlert.new;
-  final AppSpecServiceAlertDestinations = _index.AppSpecServiceAlertDestinations.new;
-  final AppSpecServiceAlertDestinationsArgs = _index.AppSpecServiceAlertDestinations.new;
-  final AppSpecServiceAlertDestinationsSlackWebhook = _index.AppSpecServiceAlertDestinationsSlackWebhook.new;
-  final AppSpecServiceAlertDestinationsSlackWebhookArgs = _index.AppSpecServiceAlertDestinationsSlackWebhook.new;
-  final AppSpecServiceArgs = _index.AppSpecService.new;
-  final AppSpecServiceAutoscaling = _index.AppSpecServiceAutoscaling.new;
-  final AppSpecServiceAutoscalingArgs = _index.AppSpecServiceAutoscaling.new;
-  final AppSpecServiceAutoscalingMetrics = _index.AppSpecServiceAutoscalingMetrics.new;
-  final AppSpecServiceAutoscalingMetricsArgs = _index.AppSpecServiceAutoscalingMetrics.new;
-  final AppSpecServiceAutoscalingMetricsCpu = _index.AppSpecServiceAutoscalingMetricsCpu.new;
-  final AppSpecServiceAutoscalingMetricsCpuArgs = _index.AppSpecServiceAutoscalingMetricsCpu.new;
-  final AppSpecServiceBitbucket = _index.AppSpecServiceBitbucket.new;
-  final AppSpecServiceBitbucketArgs = _index.AppSpecServiceBitbucket.new;
-  final AppSpecServiceCors = _index.AppSpecServiceCors.new;
-  final AppSpecServiceCorsAllowOrigins = _index.AppSpecServiceCorsAllowOrigins.new;
-  final AppSpecServiceCorsAllowOriginsArgs = _index.AppSpecServiceCorsAllowOrigins.new;
-  final AppSpecServiceCorsArgs = _index.AppSpecServiceCors.new;
-  final AppSpecServiceEnv = _index.AppSpecServiceEnv.new;
-  final AppSpecServiceEnvArgs = _index.AppSpecServiceEnv.new;
-  final AppSpecServiceGit = _index.AppSpecServiceGit.new;
-  final AppSpecServiceGitArgs = _index.AppSpecServiceGit.new;
-  final AppSpecServiceGithub = _index.AppSpecServiceGithub.new;
-  final AppSpecServiceGithubArgs = _index.AppSpecServiceGithub.new;
-  final AppSpecServiceGitlab = _index.AppSpecServiceGitlab.new;
-  final AppSpecServiceGitlabArgs = _index.AppSpecServiceGitlab.new;
-  final AppSpecServiceHealthCheck = _index.AppSpecServiceHealthCheck.new;
-  final AppSpecServiceHealthCheckArgs = _index.AppSpecServiceHealthCheck.new;
-  final AppSpecServiceImage = _index.AppSpecServiceImage.new;
-  final AppSpecServiceImageArgs = _index.AppSpecServiceImage.new;
-  final AppSpecServiceImageDeployOnPush = _index.AppSpecServiceImageDeployOnPush.new;
-  final AppSpecServiceImageDeployOnPushArgs = _index.AppSpecServiceImageDeployOnPush.new;
-  final AppSpecServiceLogDestination = _index.AppSpecServiceLogDestination.new;
-  final AppSpecServiceLogDestinationArgs = _index.AppSpecServiceLogDestination.new;
-  final AppSpecServiceLogDestinationDatadog = _index.AppSpecServiceLogDestinationDatadog.new;
-  final AppSpecServiceLogDestinationDatadogArgs = _index.AppSpecServiceLogDestinationDatadog.new;
-  final AppSpecServiceLogDestinationLogtail = _index.AppSpecServiceLogDestinationLogtail.new;
-  final AppSpecServiceLogDestinationLogtailArgs = _index.AppSpecServiceLogDestinationLogtail.new;
-  final AppSpecServiceLogDestinationOpenSearch = _index.AppSpecServiceLogDestinationOpenSearch.new;
-  final AppSpecServiceLogDestinationOpenSearchArgs = _index.AppSpecServiceLogDestinationOpenSearch.new;
-  final AppSpecServiceLogDestinationOpenSearchBasicAuth = _index.AppSpecServiceLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecServiceLogDestinationOpenSearchBasicAuthArgs = _index.AppSpecServiceLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecServiceLogDestinationPapertrail = _index.AppSpecServiceLogDestinationPapertrail.new;
-  final AppSpecServiceLogDestinationPapertrailArgs = _index.AppSpecServiceLogDestinationPapertrail.new;
-  final AppSpecServiceRoute = _index.AppSpecServiceRoute.new;
-  final AppSpecServiceRouteArgs = _index.AppSpecServiceRoute.new;
-  final AppSpecServiceTermination = _index.AppSpecServiceTermination.new;
-  final AppSpecServiceTerminationArgs = _index.AppSpecServiceTermination.new;
-  final AppSpecStaticSite = _index.AppSpecStaticSite.new;
-  final AppSpecStaticSiteArgs = _index.AppSpecStaticSite.new;
-  final AppSpecStaticSiteBitbucket = _index.AppSpecStaticSiteBitbucket.new;
-  final AppSpecStaticSiteBitbucketArgs = _index.AppSpecStaticSiteBitbucket.new;
-  final AppSpecStaticSiteCors = _index.AppSpecStaticSiteCors.new;
-  final AppSpecStaticSiteCorsAllowOrigins = _index.AppSpecStaticSiteCorsAllowOrigins.new;
-  final AppSpecStaticSiteCorsAllowOriginsArgs = _index.AppSpecStaticSiteCorsAllowOrigins.new;
-  final AppSpecStaticSiteCorsArgs = _index.AppSpecStaticSiteCors.new;
-  final AppSpecStaticSiteEnv = _index.AppSpecStaticSiteEnv.new;
-  final AppSpecStaticSiteEnvArgs = _index.AppSpecStaticSiteEnv.new;
-  final AppSpecStaticSiteGit = _index.AppSpecStaticSiteGit.new;
-  final AppSpecStaticSiteGitArgs = _index.AppSpecStaticSiteGit.new;
-  final AppSpecStaticSiteGithub = _index.AppSpecStaticSiteGithub.new;
-  final AppSpecStaticSiteGithubArgs = _index.AppSpecStaticSiteGithub.new;
-  final AppSpecStaticSiteGitlab = _index.AppSpecStaticSiteGitlab.new;
-  final AppSpecStaticSiteGitlabArgs = _index.AppSpecStaticSiteGitlab.new;
-  final AppSpecStaticSiteRoute = _index.AppSpecStaticSiteRoute.new;
-  final AppSpecStaticSiteRouteArgs = _index.AppSpecStaticSiteRoute.new;
-  final AppSpecVpc = _index.AppSpecVpc.new;
-  final AppSpecVpcArgs = _index.AppSpecVpc.new;
-  final AppSpecWorker = _index.AppSpecWorker.new;
-  final AppSpecWorkerAlert = _index.AppSpecWorkerAlert.new;
-  final AppSpecWorkerAlertArgs = _index.AppSpecWorkerAlert.new;
-  final AppSpecWorkerAlertDestinations = _index.AppSpecWorkerAlertDestinations.new;
-  final AppSpecWorkerAlertDestinationsArgs = _index.AppSpecWorkerAlertDestinations.new;
-  final AppSpecWorkerAlertDestinationsSlackWebhook = _index.AppSpecWorkerAlertDestinationsSlackWebhook.new;
-  final AppSpecWorkerAlertDestinationsSlackWebhookArgs = _index.AppSpecWorkerAlertDestinationsSlackWebhook.new;
-  final AppSpecWorkerArgs = _index.AppSpecWorker.new;
-  final AppSpecWorkerAutoscaling = _index.AppSpecWorkerAutoscaling.new;
-  final AppSpecWorkerAutoscalingArgs = _index.AppSpecWorkerAutoscaling.new;
-  final AppSpecWorkerAutoscalingMetrics = _index.AppSpecWorkerAutoscalingMetrics.new;
-  final AppSpecWorkerAutoscalingMetricsArgs = _index.AppSpecWorkerAutoscalingMetrics.new;
-  final AppSpecWorkerAutoscalingMetricsCpu = _index.AppSpecWorkerAutoscalingMetricsCpu.new;
-  final AppSpecWorkerAutoscalingMetricsCpuArgs = _index.AppSpecWorkerAutoscalingMetricsCpu.new;
-  final AppSpecWorkerBitbucket = _index.AppSpecWorkerBitbucket.new;
-  final AppSpecWorkerBitbucketArgs = _index.AppSpecWorkerBitbucket.new;
-  final AppSpecWorkerEnv = _index.AppSpecWorkerEnv.new;
-  final AppSpecWorkerEnvArgs = _index.AppSpecWorkerEnv.new;
-  final AppSpecWorkerGit = _index.AppSpecWorkerGit.new;
-  final AppSpecWorkerGitArgs = _index.AppSpecWorkerGit.new;
-  final AppSpecWorkerGithub = _index.AppSpecWorkerGithub.new;
-  final AppSpecWorkerGithubArgs = _index.AppSpecWorkerGithub.new;
-  final AppSpecWorkerGitlab = _index.AppSpecWorkerGitlab.new;
-  final AppSpecWorkerGitlabArgs = _index.AppSpecWorkerGitlab.new;
-  final AppSpecWorkerImage = _index.AppSpecWorkerImage.new;
-  final AppSpecWorkerImageArgs = _index.AppSpecWorkerImage.new;
-  final AppSpecWorkerImageDeployOnPush = _index.AppSpecWorkerImageDeployOnPush.new;
-  final AppSpecWorkerImageDeployOnPushArgs = _index.AppSpecWorkerImageDeployOnPush.new;
-  final AppSpecWorkerLogDestination = _index.AppSpecWorkerLogDestination.new;
-  final AppSpecWorkerLogDestinationArgs = _index.AppSpecWorkerLogDestination.new;
-  final AppSpecWorkerLogDestinationDatadog = _index.AppSpecWorkerLogDestinationDatadog.new;
-  final AppSpecWorkerLogDestinationDatadogArgs = _index.AppSpecWorkerLogDestinationDatadog.new;
-  final AppSpecWorkerLogDestinationLogtail = _index.AppSpecWorkerLogDestinationLogtail.new;
-  final AppSpecWorkerLogDestinationLogtailArgs = _index.AppSpecWorkerLogDestinationLogtail.new;
-  final AppSpecWorkerLogDestinationOpenSearch = _index.AppSpecWorkerLogDestinationOpenSearch.new;
-  final AppSpecWorkerLogDestinationOpenSearchArgs = _index.AppSpecWorkerLogDestinationOpenSearch.new;
-  final AppSpecWorkerLogDestinationOpenSearchBasicAuth = _index.AppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs = _index.AppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
-  final AppSpecWorkerLogDestinationPapertrail = _index.AppSpecWorkerLogDestinationPapertrail.new;
-  final AppSpecWorkerLogDestinationPapertrailArgs = _index.AppSpecWorkerLogDestinationPapertrail.new;
-  final AppSpecWorkerTermination = _index.AppSpecWorkerTermination.new;
-  final AppSpecWorkerTerminationArgs = _index.AppSpecWorkerTermination.new;
-  final AppState = _index.AppState.new;
-  final AppStateArgs = _index.AppState.new;
-  final ByoipPrefix = _index.ByoipPrefix.new;
-  final ByoipPrefixArgs = _index.ByoipPrefixArgs.new;
-  final ByoipPrefixState = _index.ByoipPrefixState.new;
-  final ByoipPrefixStateArgs = _index.ByoipPrefixState.new;
-  final Cdn = _index.Cdn.new;
-  final CdnArgs = _index.CdnArgs.new;
-  final CdnState = _index.CdnState.new;
-  final CdnStateArgs = _index.CdnState.new;
-  final Certificate = _index.Certificate.new;
-  final CertificateArgs = _index.CertificateArgs.new;
-  final CertificateState = _index.CertificateState.new;
-  final CertificateStateArgs = _index.CertificateState.new;
-  final CertificateType = _index.CertificateType.values;
-  final ContainerRegistries = _index.ContainerRegistries.new;
-  final ContainerRegistriesArgs = _index.ContainerRegistriesArgs.new;
-  final ContainerRegistriesState = _index.ContainerRegistriesState.new;
-  final ContainerRegistriesStateArgs = _index.ContainerRegistriesState.new;
-  final ContainerRegistry = _index.ContainerRegistry.new;
-  final ContainerRegistryArgs = _index.ContainerRegistryArgs.new;
-  final ContainerRegistryDockerCredentials = _index.ContainerRegistryDockerCredentials.new;
-  final ContainerRegistryDockerCredentialsArgs = _index.ContainerRegistryDockerCredentialsArgs.new;
-  final ContainerRegistryDockerCredentialsState = _index.ContainerRegistryDockerCredentialsState.new;
-  final ContainerRegistryDockerCredentialsStateArgs = _index.ContainerRegistryDockerCredentialsState.new;
-  final ContainerRegistryState = _index.ContainerRegistryState.new;
-  final ContainerRegistryStateArgs = _index.ContainerRegistryState.new;
-  final CustomImage = _index.CustomImage.new;
-  final CustomImageArgs = _index.CustomImageArgs.new;
-  final CustomImageState = _index.CustomImageState.new;
-  final CustomImageStateArgs = _index.CustomImageState.new;
-  final DatabaseCluster = _index.DatabaseCluster.new;
-  final DatabaseClusterArgs = _index.DatabaseClusterArgs.new;
-  final DatabaseClusterBackupRestore = _index.DatabaseClusterBackupRestore.new;
-  final DatabaseClusterBackupRestoreArgs = _index.DatabaseClusterBackupRestore.new;
-  final DatabaseClusterMaintenanceWindow = _index.DatabaseClusterMaintenanceWindow.new;
-  final DatabaseClusterMaintenanceWindowArgs = _index.DatabaseClusterMaintenanceWindow.new;
-  final DatabaseClusterState = _index.DatabaseClusterState.new;
-  final DatabaseClusterStateArgs = _index.DatabaseClusterState.new;
-  final DatabaseConnectionPool = _index.DatabaseConnectionPool.new;
-  final DatabaseConnectionPoolArgs = _index.DatabaseConnectionPoolArgs.new;
-  final DatabaseConnectionPoolState = _index.DatabaseConnectionPoolState.new;
-  final DatabaseConnectionPoolStateArgs = _index.DatabaseConnectionPoolState.new;
-  final DatabaseDb = _index.DatabaseDb.new;
-  final DatabaseDbArgs = _index.DatabaseDbArgs.new;
-  final DatabaseDbState = _index.DatabaseDbState.new;
-  final DatabaseDbStateArgs = _index.DatabaseDbState.new;
-  final DatabaseFirewall = _index.DatabaseFirewall.new;
-  final DatabaseFirewallArgs = _index.DatabaseFirewallArgs.new;
-  final DatabaseFirewallRule = _index.DatabaseFirewallRule.new;
-  final DatabaseFirewallRuleArgs = _index.DatabaseFirewallRule.new;
-  final DatabaseFirewallState = _index.DatabaseFirewallState.new;
-  final DatabaseFirewallStateArgs = _index.DatabaseFirewallState.new;
-  final DatabaseKafkaConfig = _index.DatabaseKafkaConfig.new;
-  final DatabaseKafkaConfigArgs = _index.DatabaseKafkaConfigArgs.new;
-  final DatabaseKafkaConfigState = _index.DatabaseKafkaConfigState.new;
-  final DatabaseKafkaConfigStateArgs = _index.DatabaseKafkaConfigState.new;
-  final DatabaseKafkaSchemaRegistry = _index.DatabaseKafkaSchemaRegistry.new;
-  final DatabaseKafkaSchemaRegistryArgs = _index.DatabaseKafkaSchemaRegistryArgs.new;
-  final DatabaseKafkaSchemaRegistryState = _index.DatabaseKafkaSchemaRegistryState.new;
-  final DatabaseKafkaSchemaRegistryStateArgs = _index.DatabaseKafkaSchemaRegistryState.new;
-  final DatabaseKafkaTopic = _index.DatabaseKafkaTopic.new;
-  final DatabaseKafkaTopicArgs = _index.DatabaseKafkaTopicArgs.new;
-  final DatabaseKafkaTopicConfig = _index.DatabaseKafkaTopicConfig.new;
-  final DatabaseKafkaTopicConfigArgs = _index.DatabaseKafkaTopicConfig.new;
-  final DatabaseKafkaTopicState = _index.DatabaseKafkaTopicState.new;
-  final DatabaseKafkaTopicStateArgs = _index.DatabaseKafkaTopicState.new;
-  final DatabaseLogsinkOpensearch = _index.DatabaseLogsinkOpensearch.new;
-  final DatabaseLogsinkOpensearchArgs = _index.DatabaseLogsinkOpensearchArgs.new;
-  final DatabaseLogsinkOpensearchState = _index.DatabaseLogsinkOpensearchState.new;
-  final DatabaseLogsinkOpensearchStateArgs = _index.DatabaseLogsinkOpensearchState.new;
-  final DatabaseLogsinkRsyslog = _index.DatabaseLogsinkRsyslog.new;
-  final DatabaseLogsinkRsyslogArgs = _index.DatabaseLogsinkRsyslogArgs.new;
-  final DatabaseLogsinkRsyslogState = _index.DatabaseLogsinkRsyslogState.new;
-  final DatabaseLogsinkRsyslogStateArgs = _index.DatabaseLogsinkRsyslogState.new;
-  final DatabaseMongodbConfig = _index.DatabaseMongodbConfig.new;
-  final DatabaseMongodbConfigArgs = _index.DatabaseMongodbConfigArgs.new;
-  final DatabaseMongodbConfigState = _index.DatabaseMongodbConfigState.new;
-  final DatabaseMongodbConfigStateArgs = _index.DatabaseMongodbConfigState.new;
-  final DatabaseMysqlConfig = _index.DatabaseMysqlConfig.new;
-  final DatabaseMysqlConfigArgs = _index.DatabaseMysqlConfigArgs.new;
-  final DatabaseMysqlConfigState = _index.DatabaseMysqlConfigState.new;
-  final DatabaseMysqlConfigStateArgs = _index.DatabaseMysqlConfigState.new;
-  final DatabaseOnlineMigration = _index.DatabaseOnlineMigration.new;
-  final DatabaseOnlineMigrationArgs = _index.DatabaseOnlineMigrationArgs.new;
-  final DatabaseOnlineMigrationSource = _index.DatabaseOnlineMigrationSource.new;
-  final DatabaseOnlineMigrationSourceArgs = _index.DatabaseOnlineMigrationSource.new;
-  final DatabaseOnlineMigrationState = _index.DatabaseOnlineMigrationState.new;
-  final DatabaseOnlineMigrationStateArgs = _index.DatabaseOnlineMigrationState.new;
-  final DatabaseOpensearchConfig = _index.DatabaseOpensearchConfig.new;
-  final DatabaseOpensearchConfigArgs = _index.DatabaseOpensearchConfigArgs.new;
-  final DatabaseOpensearchConfigState = _index.DatabaseOpensearchConfigState.new;
-  final DatabaseOpensearchConfigStateArgs = _index.DatabaseOpensearchConfigState.new;
-  final DatabasePostgresqlConfig = _index.DatabasePostgresqlConfig.new;
-  final DatabasePostgresqlConfigArgs = _index.DatabasePostgresqlConfigArgs.new;
-  final DatabasePostgresqlConfigPgbouncer = _index.DatabasePostgresqlConfigPgbouncer.new;
-  final DatabasePostgresqlConfigPgbouncerArgs = _index.DatabasePostgresqlConfigPgbouncer.new;
-  final DatabasePostgresqlConfigState = _index.DatabasePostgresqlConfigState.new;
-  final DatabasePostgresqlConfigStateArgs = _index.DatabasePostgresqlConfigState.new;
-  final DatabasePostgresqlConfigTimescaledb = _index.DatabasePostgresqlConfigTimescaledb.new;
-  final DatabasePostgresqlConfigTimescaledbArgs = _index.DatabasePostgresqlConfigTimescaledb.new;
-  final DatabaseRedisConfig = _index.DatabaseRedisConfig.new;
-  final DatabaseRedisConfigArgs = _index.DatabaseRedisConfigArgs.new;
-  final DatabaseRedisConfigState = _index.DatabaseRedisConfigState.new;
-  final DatabaseRedisConfigStateArgs = _index.DatabaseRedisConfigState.new;
-  final DatabaseReplica = _index.DatabaseReplica.new;
-  final DatabaseReplicaArgs = _index.DatabaseReplicaArgs.new;
-  final DatabaseReplicaState = _index.DatabaseReplicaState.new;
-  final DatabaseReplicaStateArgs = _index.DatabaseReplicaState.new;
-  final DatabaseSlug = _index.DatabaseSlug.values;
-  final DatabaseUser = _index.DatabaseUser.new;
-  final DatabaseUserArgs = _index.DatabaseUserArgs.new;
-  final DatabaseUserSetting = _index.DatabaseUserSetting.new;
-  final DatabaseUserSettingAcl = _index.DatabaseUserSettingAcl.new;
-  final DatabaseUserSettingAclArgs = _index.DatabaseUserSettingAcl.new;
-  final DatabaseUserSettingArgs = _index.DatabaseUserSetting.new;
-  final DatabaseUserSettingOpensearchAcl = _index.DatabaseUserSettingOpensearchAcl.new;
-  final DatabaseUserSettingOpensearchAclArgs = _index.DatabaseUserSettingOpensearchAcl.new;
-  final DatabaseUserState = _index.DatabaseUserState.new;
-  final DatabaseUserStateArgs = _index.DatabaseUserState.new;
-  final DatabaseValkeyConfig = _index.DatabaseValkeyConfig.new;
-  final DatabaseValkeyConfigArgs = _index.DatabaseValkeyConfigArgs.new;
-  final DatabaseValkeyConfigState = _index.DatabaseValkeyConfigState.new;
-  final DatabaseValkeyConfigStateArgs = _index.DatabaseValkeyConfigState.new;
-  final DnsRecord = _index.DnsRecord.new;
-  final DnsRecordArgs = _index.DnsRecordArgs.new;
-  final DnsRecordState = _index.DnsRecordState.new;
-  final DnsRecordStateArgs = _index.DnsRecordState.new;
-  final Domain = _index.Domain.new;
-  final DomainArgs = _index.DomainArgs.new;
-  final DomainState = _index.DomainState.new;
-  final DomainStateArgs = _index.DomainState.new;
-  final Droplet = _index.Droplet.new;
-  final DropletArgs = _index.DropletArgs.new;
-  final DropletAutoscale = _index.DropletAutoscale.new;
-  final DropletAutoscaleArgs = _index.DropletAutoscaleArgs.new;
-  final DropletAutoscaleConfig = _index.DropletAutoscaleConfig.new;
-  final DropletAutoscaleConfigArgs = _index.DropletAutoscaleConfig.new;
-  final DropletAutoscaleCurrentUtilization = _index.DropletAutoscaleCurrentUtilization.new;
-  final DropletAutoscaleCurrentUtilizationArgs = _index.DropletAutoscaleCurrentUtilization.new;
-  final DropletAutoscaleDropletTemplate = _index.DropletAutoscaleDropletTemplate.new;
-  final DropletAutoscaleDropletTemplateArgs = _index.DropletAutoscaleDropletTemplate.new;
-  final DropletAutoscaleState = _index.DropletAutoscaleState.new;
-  final DropletAutoscaleStateArgs = _index.DropletAutoscaleState.new;
-  final DropletBackupPolicy = _index.DropletBackupPolicy.new;
-  final DropletBackupPolicyArgs = _index.DropletBackupPolicy.new;
-  final DropletSlug = _index.DropletSlug.values;
-  final DropletSnapshot = _index.DropletSnapshot.new;
-  final DropletSnapshotArgs = _index.DropletSnapshotArgs.new;
-  final DropletSnapshotState = _index.DropletSnapshotState.new;
-  final DropletSnapshotStateArgs = _index.DropletSnapshotState.new;
-  final DropletState = _index.DropletState.new;
-  final DropletStateArgs = _index.DropletState.new;
-  final FileSystemType = _index.FileSystemType.values;
-  final Firewall = _index.Firewall.new;
-  final FirewallArgs = _index.FirewallArgs.new;
-  final FirewallInboundRule = _index.FirewallInboundRule.new;
-  final FirewallInboundRuleArgs = _index.FirewallInboundRule.new;
-  final FirewallOutboundRule = _index.FirewallOutboundRule.new;
-  final FirewallOutboundRuleArgs = _index.FirewallOutboundRule.new;
-  final FirewallPendingChange = _index.FirewallPendingChange.new;
-  final FirewallPendingChangeArgs = _index.FirewallPendingChange.new;
-  final FirewallState = _index.FirewallState.new;
-  final FirewallStateArgs = _index.FirewallState.new;
-  final FloatingIp = _index.FloatingIp.new;
-  final FloatingIpArgs = _index.FloatingIpArgs.new;
-  final FloatingIpAssignment = _index.FloatingIpAssignment.new;
-  final FloatingIpAssignmentArgs = _index.FloatingIpAssignmentArgs.new;
-  final FloatingIpAssignmentState = _index.FloatingIpAssignmentState.new;
-  final FloatingIpAssignmentStateArgs = _index.FloatingIpAssignmentState.new;
-  final FloatingIpState = _index.FloatingIpState.new;
-  final FloatingIpStateArgs = _index.FloatingIpState.new;
-  final GenaiAgent = _index.GenaiAgent.new;
-  final GenaiAgentAgentGuardrail = _index.GenaiAgentAgentGuardrail.new;
-  final GenaiAgentAgentGuardrailArgs = _index.GenaiAgentAgentGuardrail.new;
-  final GenaiAgentAnthropicApiKey = _index.GenaiAgentAnthropicApiKey.new;
-  final GenaiAgentAnthropicApiKeyArgs = _index.GenaiAgentAnthropicApiKey.new;
-  final GenaiAgentApiKey = _index.GenaiAgentApiKey.new;
-  final GenaiAgentApiKeyArgs = _index.GenaiAgentApiKey.new;
-  final GenaiAgentApiKeyInfo = _index.GenaiAgentApiKeyInfo.new;
-  final GenaiAgentApiKeyInfoArgs = _index.GenaiAgentApiKeyInfo.new;
-  final GenaiAgentArgs = _index.GenaiAgentArgs.new;
-  final GenaiAgentChatbot = _index.GenaiAgentChatbot.new;
-  final GenaiAgentChatbotArgs = _index.GenaiAgentChatbot.new;
-  final GenaiAgentChatbotIdentifier = _index.GenaiAgentChatbotIdentifier.new;
-  final GenaiAgentChatbotIdentifierArgs = _index.GenaiAgentChatbotIdentifier.new;
-  final GenaiAgentChildAgent = _index.GenaiAgentChildAgent.new;
-  final GenaiAgentChildAgentAnthropicApiKey = _index.GenaiAgentChildAgentAnthropicApiKey.new;
-  final GenaiAgentChildAgentAnthropicApiKeyArgs = _index.GenaiAgentChildAgentAnthropicApiKey.new;
-  final GenaiAgentChildAgentApiKey = _index.GenaiAgentChildAgentApiKey.new;
-  final GenaiAgentChildAgentApiKeyArgs = _index.GenaiAgentChildAgentApiKey.new;
-  final GenaiAgentChildAgentApiKeyInfo = _index.GenaiAgentChildAgentApiKeyInfo.new;
-  final GenaiAgentChildAgentApiKeyInfoArgs = _index.GenaiAgentChildAgentApiKeyInfo.new;
-  final GenaiAgentChildAgentArgs = _index.GenaiAgentChildAgent.new;
-  final GenaiAgentChildAgentChatbot = _index.GenaiAgentChildAgentChatbot.new;
-  final GenaiAgentChildAgentChatbotArgs = _index.GenaiAgentChildAgentChatbot.new;
-  final GenaiAgentChildAgentChatbotIdentifier = _index.GenaiAgentChildAgentChatbotIdentifier.new;
-  final GenaiAgentChildAgentChatbotIdentifierArgs = _index.GenaiAgentChildAgentChatbotIdentifier.new;
-  final GenaiAgentChildAgentDeployment = _index.GenaiAgentChildAgentDeployment.new;
-  final GenaiAgentChildAgentDeploymentArgs = _index.GenaiAgentChildAgentDeployment.new;
-  final GenaiAgentDeployment = _index.GenaiAgentDeployment.new;
-  final GenaiAgentDeploymentArgs = _index.GenaiAgentDeployment.new;
-  final GenaiAgentFunction = _index.GenaiAgentFunction.new;
-  final GenaiAgentFunctionArgs = _index.GenaiAgentFunction.new;
-  final GenaiAgentKnowledgeBase = _index.GenaiAgentKnowledgeBase.new;
-  final GenaiAgentKnowledgeBaseArgs = _index.GenaiAgentKnowledgeBase.new;
-  final GenaiAgentKnowledgeBaseAttachment = _index.GenaiAgentKnowledgeBaseAttachment.new;
-  final GenaiAgentKnowledgeBaseAttachmentArgs = _index.GenaiAgentKnowledgeBaseAttachmentArgs.new;
-  final GenaiAgentKnowledgeBaseAttachmentState = _index.GenaiAgentKnowledgeBaseAttachmentState.new;
-  final GenaiAgentKnowledgeBaseAttachmentStateArgs = _index.GenaiAgentKnowledgeBaseAttachmentState.new;
-  final GenaiAgentKnowledgeBaseLastIndexingJob = _index.GenaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GenaiAgentKnowledgeBaseLastIndexingJobArgs = _index.GenaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GenaiAgentModel = _index.GenaiAgentModel.new;
-  final GenaiAgentModelAgreement = _index.GenaiAgentModelAgreement.new;
-  final GenaiAgentModelAgreementArgs = _index.GenaiAgentModelAgreement.new;
-  final GenaiAgentModelArgs = _index.GenaiAgentModel.new;
-  final GenaiAgentModelVersion = _index.GenaiAgentModelVersion.new;
-  final GenaiAgentModelVersionArgs = _index.GenaiAgentModelVersion.new;
-  final GenaiAgentOpenAiApiKey = _index.GenaiAgentOpenAiApiKey.new;
-  final GenaiAgentOpenAiApiKeyArgs = _index.GenaiAgentOpenAiApiKey.new;
-  final GenaiAgentParentAgent = _index.GenaiAgentParentAgent.new;
-  final GenaiAgentParentAgentAnthropicApiKey = _index.GenaiAgentParentAgentAnthropicApiKey.new;
-  final GenaiAgentParentAgentAnthropicApiKeyArgs = _index.GenaiAgentParentAgentAnthropicApiKey.new;
-  final GenaiAgentParentAgentApiKey = _index.GenaiAgentParentAgentApiKey.new;
-  final GenaiAgentParentAgentApiKeyArgs = _index.GenaiAgentParentAgentApiKey.new;
-  final GenaiAgentParentAgentApiKeyInfo = _index.GenaiAgentParentAgentApiKeyInfo.new;
-  final GenaiAgentParentAgentApiKeyInfoArgs = _index.GenaiAgentParentAgentApiKeyInfo.new;
-  final GenaiAgentParentAgentArgs = _index.GenaiAgentParentAgent.new;
-  final GenaiAgentParentAgentChatbot = _index.GenaiAgentParentAgentChatbot.new;
-  final GenaiAgentParentAgentChatbotArgs = _index.GenaiAgentParentAgentChatbot.new;
-  final GenaiAgentParentAgentChatbotIdentifier = _index.GenaiAgentParentAgentChatbotIdentifier.new;
-  final GenaiAgentParentAgentChatbotIdentifierArgs = _index.GenaiAgentParentAgentChatbotIdentifier.new;
-  final GenaiAgentParentAgentDeployment = _index.GenaiAgentParentAgentDeployment.new;
-  final GenaiAgentParentAgentDeploymentArgs = _index.GenaiAgentParentAgentDeployment.new;
-  final GenaiAgentRoute = _index.GenaiAgentRoute.new;
-  final GenaiAgentRouteArgs = _index.GenaiAgentRouteArgs.new;
-  final GenaiAgentRouteState = _index.GenaiAgentRouteState.new;
-  final GenaiAgentRouteStateArgs = _index.GenaiAgentRouteState.new;
-  final GenaiAgentState = _index.GenaiAgentState.new;
-  final GenaiAgentStateArgs = _index.GenaiAgentState.new;
-  final GenaiAgentTemplate = _index.GenaiAgentTemplate.new;
-  final GenaiAgentTemplateArgs = _index.GenaiAgentTemplate.new;
-  final GenaiAgentTemplateKnowledgeBase = _index.GenaiAgentTemplateKnowledgeBase.new;
-  final GenaiAgentTemplateKnowledgeBaseArgs = _index.GenaiAgentTemplateKnowledgeBase.new;
-  final GenaiAgentTemplateKnowledgeBaseLastIndexingJob = _index.GenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GenaiAgentTemplateModel = _index.GenaiAgentTemplateModel.new;
-  final GenaiAgentTemplateModelAgreement = _index.GenaiAgentTemplateModelAgreement.new;
-  final GenaiAgentTemplateModelAgreementArgs = _index.GenaiAgentTemplateModelAgreement.new;
-  final GenaiAgentTemplateModelArgs = _index.GenaiAgentTemplateModel.new;
-  final GenaiAgentTemplateModelVersion = _index.GenaiAgentTemplateModelVersion.new;
-  final GenaiAgentTemplateModelVersionArgs = _index.GenaiAgentTemplateModelVersion.new;
-  final GenaiFunction = _index.GenaiFunction.new;
-  final GenaiFunctionArgs = _index.GenaiFunctionArgs.new;
-  final GenaiFunctionState = _index.GenaiFunctionState.new;
-  final GenaiFunctionStateArgs = _index.GenaiFunctionState.new;
-  final GenaiIndexingJobCancel = _index.GenaiIndexingJobCancel.new;
-  final GenaiIndexingJobCancelArgs = _index.GenaiIndexingJobCancelArgs.new;
-  final GenaiIndexingJobCancelState = _index.GenaiIndexingJobCancelState.new;
-  final GenaiIndexingJobCancelStateArgs = _index.GenaiIndexingJobCancelState.new;
-  final GenaiKnowledgeBase = _index.GenaiKnowledgeBase.new;
-  final GenaiKnowledgeBaseArgs = _index.GenaiKnowledgeBaseArgs.new;
-  final GenaiKnowledgeBaseDataSource = _index.GenaiKnowledgeBaseDataSource.new;
-  final GenaiKnowledgeBaseDataSourceArgs = _index.GenaiKnowledgeBaseDataSourceArgs.new;
-  final GenaiKnowledgeBaseDataSourceSpacesDataSource = _index.GenaiKnowledgeBaseDataSourceSpacesDataSource.new;
-  final GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs = _index.GenaiKnowledgeBaseDataSourceSpacesDataSource.new;
-  final GenaiKnowledgeBaseDataSourceState = _index.GenaiKnowledgeBaseDataSourceState.new;
-  final GenaiKnowledgeBaseDataSourceStateArgs = _index.GenaiKnowledgeBaseDataSourceState.new;
-  final GenaiKnowledgeBaseDataSourceWebCrawlerDataSource = _index.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
-  final GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs = _index.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
-  final GenaiKnowledgeBaseLastIndexingJob = _index.GenaiKnowledgeBaseLastIndexingJob.new;
-  final GenaiKnowledgeBaseLastIndexingJobArgs = _index.GenaiKnowledgeBaseLastIndexingJob.new;
-  final GenaiKnowledgeBaseState = _index.GenaiKnowledgeBaseState.new;
-  final GenaiKnowledgeBaseStateArgs = _index.GenaiKnowledgeBaseState.new;
-  final GenaiOpenaiApiKey = _index.GenaiOpenaiApiKey.new;
-  final GenaiOpenaiApiKeyArgs = _index.GenaiOpenaiApiKeyArgs.new;
-  final GenaiOpenaiApiKeyModel = _index.GenaiOpenaiApiKeyModel.new;
-  final GenaiOpenaiApiKeyModelAgreement = _index.GenaiOpenaiApiKeyModelAgreement.new;
-  final GenaiOpenaiApiKeyModelAgreementArgs = _index.GenaiOpenaiApiKeyModelAgreement.new;
-  final GenaiOpenaiApiKeyModelArgs = _index.GenaiOpenaiApiKeyModel.new;
-  final GenaiOpenaiApiKeyModelVersion = _index.GenaiOpenaiApiKeyModelVersion.new;
-  final GenaiOpenaiApiKeyModelVersionArgs = _index.GenaiOpenaiApiKeyModelVersion.new;
-  final GenaiOpenaiApiKeyState = _index.GenaiOpenaiApiKeyState.new;
-  final GenaiOpenaiApiKeyStateArgs = _index.GenaiOpenaiApiKeyState.new;
-  final GetAccountResult = _index.GetAccountResult.new;
-  final GetAccountResultArgs = _index.GetAccountResult.new;
-  final GetAppArgs = _index.GetAppArgs.new;
-  final GetAppDedicatedIp = _index.GetAppDedicatedIp.new;
-  final GetAppDedicatedIpArgs = _index.GetAppDedicatedIp.new;
-  final GetAppResult = _index.GetAppResult.new;
-  final GetAppResultArgs = _index.GetAppResult.new;
-  final GetAppSpec = _index.GetAppSpec.new;
-  final GetAppSpecAlert = _index.GetAppSpecAlert.new;
-  final GetAppSpecAlertArgs = _index.GetAppSpecAlert.new;
-  final GetAppSpecAlertDestinations = _index.GetAppSpecAlertDestinations.new;
-  final GetAppSpecAlertDestinationsArgs = _index.GetAppSpecAlertDestinations.new;
-  final GetAppSpecAlertDestinationsSlackWebhook = _index.GetAppSpecAlertDestinationsSlackWebhook.new;
-  final GetAppSpecAlertDestinationsSlackWebhookArgs = _index.GetAppSpecAlertDestinationsSlackWebhook.new;
-  final GetAppSpecArgs = _index.GetAppSpec.new;
-  final GetAppSpecDatabase = _index.GetAppSpecDatabase.new;
-  final GetAppSpecDatabaseArgs = _index.GetAppSpecDatabase.new;
-  final GetAppSpecDomain = _index.GetAppSpecDomain.new;
-  final GetAppSpecDomainArgs = _index.GetAppSpecDomain.new;
-  final GetAppSpecEgress = _index.GetAppSpecEgress.new;
-  final GetAppSpecEgressArgs = _index.GetAppSpecEgress.new;
-  final GetAppSpecEnv = _index.GetAppSpecEnv.new;
-  final GetAppSpecEnvArgs = _index.GetAppSpecEnv.new;
-  final GetAppSpecFunction = _index.GetAppSpecFunction.new;
-  final GetAppSpecFunctionAlert = _index.GetAppSpecFunctionAlert.new;
-  final GetAppSpecFunctionAlertArgs = _index.GetAppSpecFunctionAlert.new;
-  final GetAppSpecFunctionAlertDestinations = _index.GetAppSpecFunctionAlertDestinations.new;
-  final GetAppSpecFunctionAlertDestinationsArgs = _index.GetAppSpecFunctionAlertDestinations.new;
-  final GetAppSpecFunctionAlertDestinationsSlackWebhook = _index.GetAppSpecFunctionAlertDestinationsSlackWebhook.new;
-  final GetAppSpecFunctionAlertDestinationsSlackWebhookArgs = _index.GetAppSpecFunctionAlertDestinationsSlackWebhook.new;
-  final GetAppSpecFunctionArgs = _index.GetAppSpecFunction.new;
-  final GetAppSpecFunctionBitbucket = _index.GetAppSpecFunctionBitbucket.new;
-  final GetAppSpecFunctionBitbucketArgs = _index.GetAppSpecFunctionBitbucket.new;
-  final GetAppSpecFunctionCors = _index.GetAppSpecFunctionCors.new;
-  final GetAppSpecFunctionCorsAllowOrigins = _index.GetAppSpecFunctionCorsAllowOrigins.new;
-  final GetAppSpecFunctionCorsAllowOriginsArgs = _index.GetAppSpecFunctionCorsAllowOrigins.new;
-  final GetAppSpecFunctionCorsArgs = _index.GetAppSpecFunctionCors.new;
-  final GetAppSpecFunctionEnv = _index.GetAppSpecFunctionEnv.new;
-  final GetAppSpecFunctionEnvArgs = _index.GetAppSpecFunctionEnv.new;
-  final GetAppSpecFunctionGit = _index.GetAppSpecFunctionGit.new;
-  final GetAppSpecFunctionGitArgs = _index.GetAppSpecFunctionGit.new;
-  final GetAppSpecFunctionGithub = _index.GetAppSpecFunctionGithub.new;
-  final GetAppSpecFunctionGithubArgs = _index.GetAppSpecFunctionGithub.new;
-  final GetAppSpecFunctionGitlab = _index.GetAppSpecFunctionGitlab.new;
-  final GetAppSpecFunctionGitlabArgs = _index.GetAppSpecFunctionGitlab.new;
-  final GetAppSpecFunctionLogDestination = _index.GetAppSpecFunctionLogDestination.new;
-  final GetAppSpecFunctionLogDestinationArgs = _index.GetAppSpecFunctionLogDestination.new;
-  final GetAppSpecFunctionLogDestinationDatadog = _index.GetAppSpecFunctionLogDestinationDatadog.new;
-  final GetAppSpecFunctionLogDestinationDatadogArgs = _index.GetAppSpecFunctionLogDestinationDatadog.new;
-  final GetAppSpecFunctionLogDestinationLogtail = _index.GetAppSpecFunctionLogDestinationLogtail.new;
-  final GetAppSpecFunctionLogDestinationLogtailArgs = _index.GetAppSpecFunctionLogDestinationLogtail.new;
-  final GetAppSpecFunctionLogDestinationOpenSearch = _index.GetAppSpecFunctionLogDestinationOpenSearch.new;
-  final GetAppSpecFunctionLogDestinationOpenSearchArgs = _index.GetAppSpecFunctionLogDestinationOpenSearch.new;
-  final GetAppSpecFunctionLogDestinationOpenSearchBasicAuth = _index.GetAppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs = _index.GetAppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecFunctionLogDestinationPapertrail = _index.GetAppSpecFunctionLogDestinationPapertrail.new;
-  final GetAppSpecFunctionLogDestinationPapertrailArgs = _index.GetAppSpecFunctionLogDestinationPapertrail.new;
-  final GetAppSpecFunctionRoute = _index.GetAppSpecFunctionRoute.new;
-  final GetAppSpecFunctionRouteArgs = _index.GetAppSpecFunctionRoute.new;
-  final GetAppSpecIngress = _index.GetAppSpecIngress.new;
-  final GetAppSpecIngressArgs = _index.GetAppSpecIngress.new;
-  final GetAppSpecIngressRule = _index.GetAppSpecIngressRule.new;
-  final GetAppSpecIngressRuleArgs = _index.GetAppSpecIngressRule.new;
-  final GetAppSpecIngressRuleComponent = _index.GetAppSpecIngressRuleComponent.new;
-  final GetAppSpecIngressRuleComponentArgs = _index.GetAppSpecIngressRuleComponent.new;
-  final GetAppSpecIngressRuleCors = _index.GetAppSpecIngressRuleCors.new;
-  final GetAppSpecIngressRuleCorsAllowOrigins = _index.GetAppSpecIngressRuleCorsAllowOrigins.new;
-  final GetAppSpecIngressRuleCorsAllowOriginsArgs = _index.GetAppSpecIngressRuleCorsAllowOrigins.new;
-  final GetAppSpecIngressRuleCorsArgs = _index.GetAppSpecIngressRuleCors.new;
-  final GetAppSpecIngressRuleMatch = _index.GetAppSpecIngressRuleMatch.new;
-  final GetAppSpecIngressRuleMatchArgs = _index.GetAppSpecIngressRuleMatch.new;
-  final GetAppSpecIngressRuleMatchAuthority = _index.GetAppSpecIngressRuleMatchAuthority.new;
-  final GetAppSpecIngressRuleMatchAuthorityArgs = _index.GetAppSpecIngressRuleMatchAuthority.new;
-  final GetAppSpecIngressRuleMatchPath = _index.GetAppSpecIngressRuleMatchPath.new;
-  final GetAppSpecIngressRuleMatchPathArgs = _index.GetAppSpecIngressRuleMatchPath.new;
-  final GetAppSpecIngressRuleRedirect = _index.GetAppSpecIngressRuleRedirect.new;
-  final GetAppSpecIngressRuleRedirectArgs = _index.GetAppSpecIngressRuleRedirect.new;
-  final GetAppSpecIngressSecureHeader = _index.GetAppSpecIngressSecureHeader.new;
-  final GetAppSpecIngressSecureHeaderArgs = _index.GetAppSpecIngressSecureHeader.new;
-  final GetAppSpecJob = _index.GetAppSpecJob.new;
-  final GetAppSpecJobAlert = _index.GetAppSpecJobAlert.new;
-  final GetAppSpecJobAlertArgs = _index.GetAppSpecJobAlert.new;
-  final GetAppSpecJobAlertDestinations = _index.GetAppSpecJobAlertDestinations.new;
-  final GetAppSpecJobAlertDestinationsArgs = _index.GetAppSpecJobAlertDestinations.new;
-  final GetAppSpecJobAlertDestinationsSlackWebhook = _index.GetAppSpecJobAlertDestinationsSlackWebhook.new;
-  final GetAppSpecJobAlertDestinationsSlackWebhookArgs = _index.GetAppSpecJobAlertDestinationsSlackWebhook.new;
-  final GetAppSpecJobArgs = _index.GetAppSpecJob.new;
-  final GetAppSpecJobBitbucket = _index.GetAppSpecJobBitbucket.new;
-  final GetAppSpecJobBitbucketArgs = _index.GetAppSpecJobBitbucket.new;
-  final GetAppSpecJobEnv = _index.GetAppSpecJobEnv.new;
-  final GetAppSpecJobEnvArgs = _index.GetAppSpecJobEnv.new;
-  final GetAppSpecJobGit = _index.GetAppSpecJobGit.new;
-  final GetAppSpecJobGitArgs = _index.GetAppSpecJobGit.new;
-  final GetAppSpecJobGithub = _index.GetAppSpecJobGithub.new;
-  final GetAppSpecJobGithubArgs = _index.GetAppSpecJobGithub.new;
-  final GetAppSpecJobGitlab = _index.GetAppSpecJobGitlab.new;
-  final GetAppSpecJobGitlabArgs = _index.GetAppSpecJobGitlab.new;
-  final GetAppSpecJobImage = _index.GetAppSpecJobImage.new;
-  final GetAppSpecJobImageArgs = _index.GetAppSpecJobImage.new;
-  final GetAppSpecJobImageDeployOnPush = _index.GetAppSpecJobImageDeployOnPush.new;
-  final GetAppSpecJobImageDeployOnPushArgs = _index.GetAppSpecJobImageDeployOnPush.new;
-  final GetAppSpecJobLogDestination = _index.GetAppSpecJobLogDestination.new;
-  final GetAppSpecJobLogDestinationArgs = _index.GetAppSpecJobLogDestination.new;
-  final GetAppSpecJobLogDestinationDatadog = _index.GetAppSpecJobLogDestinationDatadog.new;
-  final GetAppSpecJobLogDestinationDatadogArgs = _index.GetAppSpecJobLogDestinationDatadog.new;
-  final GetAppSpecJobLogDestinationLogtail = _index.GetAppSpecJobLogDestinationLogtail.new;
-  final GetAppSpecJobLogDestinationLogtailArgs = _index.GetAppSpecJobLogDestinationLogtail.new;
-  final GetAppSpecJobLogDestinationOpenSearch = _index.GetAppSpecJobLogDestinationOpenSearch.new;
-  final GetAppSpecJobLogDestinationOpenSearchArgs = _index.GetAppSpecJobLogDestinationOpenSearch.new;
-  final GetAppSpecJobLogDestinationOpenSearchBasicAuth = _index.GetAppSpecJobLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs = _index.GetAppSpecJobLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecJobLogDestinationPapertrail = _index.GetAppSpecJobLogDestinationPapertrail.new;
-  final GetAppSpecJobLogDestinationPapertrailArgs = _index.GetAppSpecJobLogDestinationPapertrail.new;
-  final GetAppSpecJobTermination = _index.GetAppSpecJobTermination.new;
-  final GetAppSpecJobTerminationArgs = _index.GetAppSpecJobTermination.new;
-  final GetAppSpecMaintenance = _index.GetAppSpecMaintenance.new;
-  final GetAppSpecMaintenanceArgs = _index.GetAppSpecMaintenance.new;
-  final GetAppSpecService = _index.GetAppSpecService.new;
-  final GetAppSpecServiceAlert = _index.GetAppSpecServiceAlert.new;
-  final GetAppSpecServiceAlertArgs = _index.GetAppSpecServiceAlert.new;
-  final GetAppSpecServiceAlertDestinations = _index.GetAppSpecServiceAlertDestinations.new;
-  final GetAppSpecServiceAlertDestinationsArgs = _index.GetAppSpecServiceAlertDestinations.new;
-  final GetAppSpecServiceAlertDestinationsSlackWebhook = _index.GetAppSpecServiceAlertDestinationsSlackWebhook.new;
-  final GetAppSpecServiceAlertDestinationsSlackWebhookArgs = _index.GetAppSpecServiceAlertDestinationsSlackWebhook.new;
-  final GetAppSpecServiceArgs = _index.GetAppSpecService.new;
-  final GetAppSpecServiceAutoscaling = _index.GetAppSpecServiceAutoscaling.new;
-  final GetAppSpecServiceAutoscalingArgs = _index.GetAppSpecServiceAutoscaling.new;
-  final GetAppSpecServiceAutoscalingMetrics = _index.GetAppSpecServiceAutoscalingMetrics.new;
-  final GetAppSpecServiceAutoscalingMetricsArgs = _index.GetAppSpecServiceAutoscalingMetrics.new;
-  final GetAppSpecServiceAutoscalingMetricsCpu = _index.GetAppSpecServiceAutoscalingMetricsCpu.new;
-  final GetAppSpecServiceAutoscalingMetricsCpuArgs = _index.GetAppSpecServiceAutoscalingMetricsCpu.new;
-  final GetAppSpecServiceBitbucket = _index.GetAppSpecServiceBitbucket.new;
-  final GetAppSpecServiceBitbucketArgs = _index.GetAppSpecServiceBitbucket.new;
-  final GetAppSpecServiceCors = _index.GetAppSpecServiceCors.new;
-  final GetAppSpecServiceCorsAllowOrigins = _index.GetAppSpecServiceCorsAllowOrigins.new;
-  final GetAppSpecServiceCorsAllowOriginsArgs = _index.GetAppSpecServiceCorsAllowOrigins.new;
-  final GetAppSpecServiceCorsArgs = _index.GetAppSpecServiceCors.new;
-  final GetAppSpecServiceEnv = _index.GetAppSpecServiceEnv.new;
-  final GetAppSpecServiceEnvArgs = _index.GetAppSpecServiceEnv.new;
-  final GetAppSpecServiceGit = _index.GetAppSpecServiceGit.new;
-  final GetAppSpecServiceGitArgs = _index.GetAppSpecServiceGit.new;
-  final GetAppSpecServiceGithub = _index.GetAppSpecServiceGithub.new;
-  final GetAppSpecServiceGithubArgs = _index.GetAppSpecServiceGithub.new;
-  final GetAppSpecServiceGitlab = _index.GetAppSpecServiceGitlab.new;
-  final GetAppSpecServiceGitlabArgs = _index.GetAppSpecServiceGitlab.new;
-  final GetAppSpecServiceHealthCheck = _index.GetAppSpecServiceHealthCheck.new;
-  final GetAppSpecServiceHealthCheckArgs = _index.GetAppSpecServiceHealthCheck.new;
-  final GetAppSpecServiceImage = _index.GetAppSpecServiceImage.new;
-  final GetAppSpecServiceImageArgs = _index.GetAppSpecServiceImage.new;
-  final GetAppSpecServiceImageDeployOnPush = _index.GetAppSpecServiceImageDeployOnPush.new;
-  final GetAppSpecServiceImageDeployOnPushArgs = _index.GetAppSpecServiceImageDeployOnPush.new;
-  final GetAppSpecServiceLogDestination = _index.GetAppSpecServiceLogDestination.new;
-  final GetAppSpecServiceLogDestinationArgs = _index.GetAppSpecServiceLogDestination.new;
-  final GetAppSpecServiceLogDestinationDatadog = _index.GetAppSpecServiceLogDestinationDatadog.new;
-  final GetAppSpecServiceLogDestinationDatadogArgs = _index.GetAppSpecServiceLogDestinationDatadog.new;
-  final GetAppSpecServiceLogDestinationLogtail = _index.GetAppSpecServiceLogDestinationLogtail.new;
-  final GetAppSpecServiceLogDestinationLogtailArgs = _index.GetAppSpecServiceLogDestinationLogtail.new;
-  final GetAppSpecServiceLogDestinationOpenSearch = _index.GetAppSpecServiceLogDestinationOpenSearch.new;
-  final GetAppSpecServiceLogDestinationOpenSearchArgs = _index.GetAppSpecServiceLogDestinationOpenSearch.new;
-  final GetAppSpecServiceLogDestinationOpenSearchBasicAuth = _index.GetAppSpecServiceLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs = _index.GetAppSpecServiceLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecServiceLogDestinationPapertrail = _index.GetAppSpecServiceLogDestinationPapertrail.new;
-  final GetAppSpecServiceLogDestinationPapertrailArgs = _index.GetAppSpecServiceLogDestinationPapertrail.new;
-  final GetAppSpecServiceRoute = _index.GetAppSpecServiceRoute.new;
-  final GetAppSpecServiceRouteArgs = _index.GetAppSpecServiceRoute.new;
-  final GetAppSpecServiceTermination = _index.GetAppSpecServiceTermination.new;
-  final GetAppSpecServiceTerminationArgs = _index.GetAppSpecServiceTermination.new;
-  final GetAppSpecStaticSite = _index.GetAppSpecStaticSite.new;
-  final GetAppSpecStaticSiteArgs = _index.GetAppSpecStaticSite.new;
-  final GetAppSpecStaticSiteBitbucket = _index.GetAppSpecStaticSiteBitbucket.new;
-  final GetAppSpecStaticSiteBitbucketArgs = _index.GetAppSpecStaticSiteBitbucket.new;
-  final GetAppSpecStaticSiteCors = _index.GetAppSpecStaticSiteCors.new;
-  final GetAppSpecStaticSiteCorsAllowOrigins = _index.GetAppSpecStaticSiteCorsAllowOrigins.new;
-  final GetAppSpecStaticSiteCorsAllowOriginsArgs = _index.GetAppSpecStaticSiteCorsAllowOrigins.new;
-  final GetAppSpecStaticSiteCorsArgs = _index.GetAppSpecStaticSiteCors.new;
-  final GetAppSpecStaticSiteEnv = _index.GetAppSpecStaticSiteEnv.new;
-  final GetAppSpecStaticSiteEnvArgs = _index.GetAppSpecStaticSiteEnv.new;
-  final GetAppSpecStaticSiteGit = _index.GetAppSpecStaticSiteGit.new;
-  final GetAppSpecStaticSiteGitArgs = _index.GetAppSpecStaticSiteGit.new;
-  final GetAppSpecStaticSiteGithub = _index.GetAppSpecStaticSiteGithub.new;
-  final GetAppSpecStaticSiteGithubArgs = _index.GetAppSpecStaticSiteGithub.new;
-  final GetAppSpecStaticSiteGitlab = _index.GetAppSpecStaticSiteGitlab.new;
-  final GetAppSpecStaticSiteGitlabArgs = _index.GetAppSpecStaticSiteGitlab.new;
-  final GetAppSpecStaticSiteRoute = _index.GetAppSpecStaticSiteRoute.new;
-  final GetAppSpecStaticSiteRouteArgs = _index.GetAppSpecStaticSiteRoute.new;
-  final GetAppSpecVpc = _index.GetAppSpecVpc.new;
-  final GetAppSpecVpcArgs = _index.GetAppSpecVpc.new;
-  final GetAppSpecWorker = _index.GetAppSpecWorker.new;
-  final GetAppSpecWorkerAlert = _index.GetAppSpecWorkerAlert.new;
-  final GetAppSpecWorkerAlertArgs = _index.GetAppSpecWorkerAlert.new;
-  final GetAppSpecWorkerAlertDestinations = _index.GetAppSpecWorkerAlertDestinations.new;
-  final GetAppSpecWorkerAlertDestinationsArgs = _index.GetAppSpecWorkerAlertDestinations.new;
-  final GetAppSpecWorkerAlertDestinationsSlackWebhook = _index.GetAppSpecWorkerAlertDestinationsSlackWebhook.new;
-  final GetAppSpecWorkerAlertDestinationsSlackWebhookArgs = _index.GetAppSpecWorkerAlertDestinationsSlackWebhook.new;
-  final GetAppSpecWorkerArgs = _index.GetAppSpecWorker.new;
-  final GetAppSpecWorkerAutoscaling = _index.GetAppSpecWorkerAutoscaling.new;
-  final GetAppSpecWorkerAutoscalingArgs = _index.GetAppSpecWorkerAutoscaling.new;
-  final GetAppSpecWorkerAutoscalingMetrics = _index.GetAppSpecWorkerAutoscalingMetrics.new;
-  final GetAppSpecWorkerAutoscalingMetricsArgs = _index.GetAppSpecWorkerAutoscalingMetrics.new;
-  final GetAppSpecWorkerAutoscalingMetricsCpu = _index.GetAppSpecWorkerAutoscalingMetricsCpu.new;
-  final GetAppSpecWorkerAutoscalingMetricsCpuArgs = _index.GetAppSpecWorkerAutoscalingMetricsCpu.new;
-  final GetAppSpecWorkerBitbucket = _index.GetAppSpecWorkerBitbucket.new;
-  final GetAppSpecWorkerBitbucketArgs = _index.GetAppSpecWorkerBitbucket.new;
-  final GetAppSpecWorkerEnv = _index.GetAppSpecWorkerEnv.new;
-  final GetAppSpecWorkerEnvArgs = _index.GetAppSpecWorkerEnv.new;
-  final GetAppSpecWorkerGit = _index.GetAppSpecWorkerGit.new;
-  final GetAppSpecWorkerGitArgs = _index.GetAppSpecWorkerGit.new;
-  final GetAppSpecWorkerGithub = _index.GetAppSpecWorkerGithub.new;
-  final GetAppSpecWorkerGithubArgs = _index.GetAppSpecWorkerGithub.new;
-  final GetAppSpecWorkerGitlab = _index.GetAppSpecWorkerGitlab.new;
-  final GetAppSpecWorkerGitlabArgs = _index.GetAppSpecWorkerGitlab.new;
-  final GetAppSpecWorkerImage = _index.GetAppSpecWorkerImage.new;
-  final GetAppSpecWorkerImageArgs = _index.GetAppSpecWorkerImage.new;
-  final GetAppSpecWorkerImageDeployOnPush = _index.GetAppSpecWorkerImageDeployOnPush.new;
-  final GetAppSpecWorkerImageDeployOnPushArgs = _index.GetAppSpecWorkerImageDeployOnPush.new;
-  final GetAppSpecWorkerLogDestination = _index.GetAppSpecWorkerLogDestination.new;
-  final GetAppSpecWorkerLogDestinationArgs = _index.GetAppSpecWorkerLogDestination.new;
-  final GetAppSpecWorkerLogDestinationDatadog = _index.GetAppSpecWorkerLogDestinationDatadog.new;
-  final GetAppSpecWorkerLogDestinationDatadogArgs = _index.GetAppSpecWorkerLogDestinationDatadog.new;
-  final GetAppSpecWorkerLogDestinationLogtail = _index.GetAppSpecWorkerLogDestinationLogtail.new;
-  final GetAppSpecWorkerLogDestinationLogtailArgs = _index.GetAppSpecWorkerLogDestinationLogtail.new;
-  final GetAppSpecWorkerLogDestinationOpenSearch = _index.GetAppSpecWorkerLogDestinationOpenSearch.new;
-  final GetAppSpecWorkerLogDestinationOpenSearchArgs = _index.GetAppSpecWorkerLogDestinationOpenSearch.new;
-  final GetAppSpecWorkerLogDestinationOpenSearchBasicAuth = _index.GetAppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs = _index.GetAppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
-  final GetAppSpecWorkerLogDestinationPapertrail = _index.GetAppSpecWorkerLogDestinationPapertrail.new;
-  final GetAppSpecWorkerLogDestinationPapertrailArgs = _index.GetAppSpecWorkerLogDestinationPapertrail.new;
-  final GetAppSpecWorkerTermination = _index.GetAppSpecWorkerTermination.new;
-  final GetAppSpecWorkerTerminationArgs = _index.GetAppSpecWorkerTermination.new;
-  final GetByoipPrefixArgs = _index.GetByoipPrefixArgs.new;
-  final GetByoipPrefixResourcesAddress = _index.GetByoipPrefixResourcesAddress.new;
-  final GetByoipPrefixResourcesAddressArgs = _index.GetByoipPrefixResourcesAddress.new;
-  final GetByoipPrefixResourcesArgs = _index.GetByoipPrefixResourcesArgs.new;
-  final GetByoipPrefixResourcesResult = _index.GetByoipPrefixResourcesResult.new;
-  final GetByoipPrefixResourcesResultArgs = _index.GetByoipPrefixResourcesResult.new;
-  final GetByoipPrefixResult = _index.GetByoipPrefixResult.new;
-  final GetByoipPrefixResultArgs = _index.GetByoipPrefixResult.new;
-  final GetCertificateArgs = _index.GetCertificateArgs.new;
-  final GetCertificateResult = _index.GetCertificateResult.new;
-  final GetCertificateResultArgs = _index.GetCertificateResult.new;
-  final GetContainerRegistriesArgs = _index.GetContainerRegistriesArgs.new;
-  final GetContainerRegistriesResult = _index.GetContainerRegistriesResult.new;
-  final GetContainerRegistriesResultArgs = _index.GetContainerRegistriesResult.new;
-  final GetContainerRegistryArgs = _index.GetContainerRegistryArgs.new;
-  final GetContainerRegistryResult = _index.GetContainerRegistryResult.new;
-  final GetContainerRegistryResultArgs = _index.GetContainerRegistryResult.new;
-  final GetDatabaseCaArgs = _index.GetDatabaseCaArgs.new;
-  final GetDatabaseCaResult = _index.GetDatabaseCaResult.new;
-  final GetDatabaseCaResultArgs = _index.GetDatabaseCaResult.new;
-  final GetDatabaseClusterArgs = _index.GetDatabaseClusterArgs.new;
-  final GetDatabaseClusterMaintenanceWindow = _index.GetDatabaseClusterMaintenanceWindow.new;
-  final GetDatabaseClusterMaintenanceWindowArgs = _index.GetDatabaseClusterMaintenanceWindow.new;
-  final GetDatabaseClusterResult = _index.GetDatabaseClusterResult.new;
-  final GetDatabaseClusterResultArgs = _index.GetDatabaseClusterResult.new;
-  final GetDatabaseConnectionPoolArgs = _index.GetDatabaseConnectionPoolArgs.new;
-  final GetDatabaseConnectionPoolResult = _index.GetDatabaseConnectionPoolResult.new;
-  final GetDatabaseConnectionPoolResultArgs = _index.GetDatabaseConnectionPoolResult.new;
-  final GetDatabaseMetricsCredentialsResult = _index.GetDatabaseMetricsCredentialsResult.new;
-  final GetDatabaseMetricsCredentialsResultArgs = _index.GetDatabaseMetricsCredentialsResult.new;
-  final GetDatabaseReplicaArgs = _index.GetDatabaseReplicaArgs.new;
-  final GetDatabaseReplicaResult = _index.GetDatabaseReplicaResult.new;
-  final GetDatabaseReplicaResultArgs = _index.GetDatabaseReplicaResult.new;
-  final GetDatabaseUserArgs = _index.GetDatabaseUserArgs.new;
-  final GetDatabaseUserResult = _index.GetDatabaseUserResult.new;
-  final GetDatabaseUserResultArgs = _index.GetDatabaseUserResult.new;
-  final GetDatabaseUserSetting = _index.GetDatabaseUserSetting.new;
-  final GetDatabaseUserSettingAcl = _index.GetDatabaseUserSettingAcl.new;
-  final GetDatabaseUserSettingAclArgs = _index.GetDatabaseUserSettingAcl.new;
-  final GetDatabaseUserSettingArgs = _index.GetDatabaseUserSetting.new;
-  final GetDatabaseUserSettingOpensearchAcl = _index.GetDatabaseUserSettingOpensearchAcl.new;
-  final GetDatabaseUserSettingOpensearchAclArgs = _index.GetDatabaseUserSettingOpensearchAcl.new;
-  final GetDomainArgs = _index.GetDomainArgs.new;
-  final GetDomainResult = _index.GetDomainResult.new;
-  final GetDomainResultArgs = _index.GetDomainResult.new;
-  final GetDomainsArgs = _index.GetDomainsArgs.new;
-  final GetDomainsDomain = _index.GetDomainsDomain.new;
-  final GetDomainsDomainArgs = _index.GetDomainsDomain.new;
-  final GetDomainsFilter = _index.GetDomainsFilter.new;
-  final GetDomainsFilterArgs = _index.GetDomainsFilter.new;
-  final GetDomainsResult = _index.GetDomainsResult.new;
-  final GetDomainsResultArgs = _index.GetDomainsResult.new;
-  final GetDomainsSort = _index.GetDomainsSort.new;
-  final GetDomainsSortArgs = _index.GetDomainsSort.new;
-  final GetDropletArgs = _index.GetDropletArgs.new;
-  final GetDropletAutoscaleArgs = _index.GetDropletAutoscaleArgs.new;
-  final GetDropletAutoscaleConfig = _index.GetDropletAutoscaleConfig.new;
-  final GetDropletAutoscaleConfigArgs = _index.GetDropletAutoscaleConfig.new;
-  final GetDropletAutoscaleCurrentUtilization = _index.GetDropletAutoscaleCurrentUtilization.new;
-  final GetDropletAutoscaleCurrentUtilizationArgs = _index.GetDropletAutoscaleCurrentUtilization.new;
-  final GetDropletAutoscaleDropletTemplate = _index.GetDropletAutoscaleDropletTemplate.new;
-  final GetDropletAutoscaleDropletTemplateArgs = _index.GetDropletAutoscaleDropletTemplate.new;
-  final GetDropletAutoscaleResult = _index.GetDropletAutoscaleResult.new;
-  final GetDropletAutoscaleResultArgs = _index.GetDropletAutoscaleResult.new;
-  final GetDropletResult = _index.GetDropletResult.new;
-  final GetDropletResultArgs = _index.GetDropletResult.new;
-  final GetDropletSnapshotArgs = _index.GetDropletSnapshotArgs.new;
-  final GetDropletSnapshotResult = _index.GetDropletSnapshotResult.new;
-  final GetDropletSnapshotResultArgs = _index.GetDropletSnapshotResult.new;
-  final GetDropletsArgs = _index.GetDropletsArgs.new;
-  final GetDropletsDroplet = _index.GetDropletsDroplet.new;
-  final GetDropletsDropletArgs = _index.GetDropletsDroplet.new;
-  final GetDropletsFilter = _index.GetDropletsFilter.new;
-  final GetDropletsFilterArgs = _index.GetDropletsFilter.new;
-  final GetDropletsResult = _index.GetDropletsResult.new;
-  final GetDropletsResultArgs = _index.GetDropletsResult.new;
-  final GetDropletsSort = _index.GetDropletsSort.new;
-  final GetDropletsSortArgs = _index.GetDropletsSort.new;
-  final GetFirewallArgs = _index.GetFirewallArgs.new;
-  final GetFirewallInboundRule = _index.GetFirewallInboundRule.new;
-  final GetFirewallInboundRuleArgs = _index.GetFirewallInboundRule.new;
-  final GetFirewallOutboundRule = _index.GetFirewallOutboundRule.new;
-  final GetFirewallOutboundRuleArgs = _index.GetFirewallOutboundRule.new;
-  final GetFirewallPendingChange = _index.GetFirewallPendingChange.new;
-  final GetFirewallPendingChangeArgs = _index.GetFirewallPendingChange.new;
-  final GetFirewallResult = _index.GetFirewallResult.new;
-  final GetFirewallResultArgs = _index.GetFirewallResult.new;
-  final GetFloatingIpArgs = _index.GetFloatingIpArgs.new;
-  final GetFloatingIpResult = _index.GetFloatingIpResult.new;
-  final GetFloatingIpResultArgs = _index.GetFloatingIpResult.new;
-  final GetGenaiAgentAgentGuardrail = _index.GetGenaiAgentAgentGuardrail.new;
-  final GetGenaiAgentAgentGuardrailArgs = _index.GetGenaiAgentAgentGuardrail.new;
-  final GetGenaiAgentAnthropicApiKey = _index.GetGenaiAgentAnthropicApiKey.new;
-  final GetGenaiAgentAnthropicApiKeyArgs = _index.GetGenaiAgentAnthropicApiKey.new;
-  final GetGenaiAgentApiKey = _index.GetGenaiAgentApiKey.new;
-  final GetGenaiAgentApiKeyArgs = _index.GetGenaiAgentApiKey.new;
-  final GetGenaiAgentApiKeyInfo = _index.GetGenaiAgentApiKeyInfo.new;
-  final GetGenaiAgentApiKeyInfoArgs = _index.GetGenaiAgentApiKeyInfo.new;
-  final GetGenaiAgentArgs = _index.GetGenaiAgentArgs.new;
-  final GetGenaiAgentChatbot = _index.GetGenaiAgentChatbot.new;
-  final GetGenaiAgentChatbotArgs = _index.GetGenaiAgentChatbot.new;
-  final GetGenaiAgentChatbotIdentifier = _index.GetGenaiAgentChatbotIdentifier.new;
-  final GetGenaiAgentChatbotIdentifierArgs = _index.GetGenaiAgentChatbotIdentifier.new;
-  final GetGenaiAgentChildAgent = _index.GetGenaiAgentChildAgent.new;
-  final GetGenaiAgentChildAgentAnthropicApiKey = _index.GetGenaiAgentChildAgentAnthropicApiKey.new;
-  final GetGenaiAgentChildAgentAnthropicApiKeyArgs = _index.GetGenaiAgentChildAgentAnthropicApiKey.new;
-  final GetGenaiAgentChildAgentApiKey = _index.GetGenaiAgentChildAgentApiKey.new;
-  final GetGenaiAgentChildAgentApiKeyArgs = _index.GetGenaiAgentChildAgentApiKey.new;
-  final GetGenaiAgentChildAgentApiKeyInfo = _index.GetGenaiAgentChildAgentApiKeyInfo.new;
-  final GetGenaiAgentChildAgentApiKeyInfoArgs = _index.GetGenaiAgentChildAgentApiKeyInfo.new;
-  final GetGenaiAgentChildAgentArgs = _index.GetGenaiAgentChildAgent.new;
-  final GetGenaiAgentChildAgentChatbot = _index.GetGenaiAgentChildAgentChatbot.new;
-  final GetGenaiAgentChildAgentChatbotArgs = _index.GetGenaiAgentChildAgentChatbot.new;
-  final GetGenaiAgentChildAgentChatbotIdentifier = _index.GetGenaiAgentChildAgentChatbotIdentifier.new;
-  final GetGenaiAgentChildAgentChatbotIdentifierArgs = _index.GetGenaiAgentChildAgentChatbotIdentifier.new;
-  final GetGenaiAgentChildAgentDeployment = _index.GetGenaiAgentChildAgentDeployment.new;
-  final GetGenaiAgentChildAgentDeploymentArgs = _index.GetGenaiAgentChildAgentDeployment.new;
-  final GetGenaiAgentDeployment = _index.GetGenaiAgentDeployment.new;
-  final GetGenaiAgentDeploymentArgs = _index.GetGenaiAgentDeployment.new;
-  final GetGenaiAgentFunction = _index.GetGenaiAgentFunction.new;
-  final GetGenaiAgentFunctionArgs = _index.GetGenaiAgentFunction.new;
-  final GetGenaiAgentKnowledgeBase = _index.GetGenaiAgentKnowledgeBase.new;
-  final GetGenaiAgentKnowledgeBaseArgs = _index.GetGenaiAgentKnowledgeBase.new;
-  final GetGenaiAgentKnowledgeBaseLastIndexingJob = _index.GetGenaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentModel = _index.GetGenaiAgentModel.new;
-  final GetGenaiAgentModelAgreement = _index.GetGenaiAgentModelAgreement.new;
-  final GetGenaiAgentModelAgreementArgs = _index.GetGenaiAgentModelAgreement.new;
-  final GetGenaiAgentModelArgs = _index.GetGenaiAgentModel.new;
-  final GetGenaiAgentModelVersion = _index.GetGenaiAgentModelVersion.new;
-  final GetGenaiAgentModelVersionArgs = _index.GetGenaiAgentModelVersion.new;
-  final GetGenaiAgentOpenAiApiKey = _index.GetGenaiAgentOpenAiApiKey.new;
-  final GetGenaiAgentOpenAiApiKeyArgs = _index.GetGenaiAgentOpenAiApiKey.new;
-  final GetGenaiAgentParentAgent = _index.GetGenaiAgentParentAgent.new;
-  final GetGenaiAgentParentAgentAnthropicApiKey = _index.GetGenaiAgentParentAgentAnthropicApiKey.new;
-  final GetGenaiAgentParentAgentAnthropicApiKeyArgs = _index.GetGenaiAgentParentAgentAnthropicApiKey.new;
-  final GetGenaiAgentParentAgentApiKey = _index.GetGenaiAgentParentAgentApiKey.new;
-  final GetGenaiAgentParentAgentApiKeyArgs = _index.GetGenaiAgentParentAgentApiKey.new;
-  final GetGenaiAgentParentAgentApiKeyInfo = _index.GetGenaiAgentParentAgentApiKeyInfo.new;
-  final GetGenaiAgentParentAgentApiKeyInfoArgs = _index.GetGenaiAgentParentAgentApiKeyInfo.new;
-  final GetGenaiAgentParentAgentArgs = _index.GetGenaiAgentParentAgent.new;
-  final GetGenaiAgentParentAgentChatbot = _index.GetGenaiAgentParentAgentChatbot.new;
-  final GetGenaiAgentParentAgentChatbotArgs = _index.GetGenaiAgentParentAgentChatbot.new;
-  final GetGenaiAgentParentAgentChatbotIdentifier = _index.GetGenaiAgentParentAgentChatbotIdentifier.new;
-  final GetGenaiAgentParentAgentChatbotIdentifierArgs = _index.GetGenaiAgentParentAgentChatbotIdentifier.new;
-  final GetGenaiAgentParentAgentDeployment = _index.GetGenaiAgentParentAgentDeployment.new;
-  final GetGenaiAgentParentAgentDeploymentArgs = _index.GetGenaiAgentParentAgentDeployment.new;
-  final GetGenaiAgentResult = _index.GetGenaiAgentResult.new;
-  final GetGenaiAgentResultArgs = _index.GetGenaiAgentResult.new;
-  final GetGenaiAgentTemplate = _index.GetGenaiAgentTemplate.new;
-  final GetGenaiAgentTemplateArgs = _index.GetGenaiAgentTemplate.new;
-  final GetGenaiAgentTemplateKnowledgeBase = _index.GetGenaiAgentTemplateKnowledgeBase.new;
-  final GetGenaiAgentTemplateKnowledgeBaseArgs = _index.GetGenaiAgentTemplateKnowledgeBase.new;
-  final GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob = _index.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentTemplateModel = _index.GetGenaiAgentTemplateModel.new;
-  final GetGenaiAgentTemplateModelAgreement = _index.GetGenaiAgentTemplateModelAgreement.new;
-  final GetGenaiAgentTemplateModelAgreementArgs = _index.GetGenaiAgentTemplateModelAgreement.new;
-  final GetGenaiAgentTemplateModelArgs = _index.GetGenaiAgentTemplateModel.new;
-  final GetGenaiAgentTemplateModelVersion = _index.GetGenaiAgentTemplateModelVersion.new;
-  final GetGenaiAgentTemplateModelVersionArgs = _index.GetGenaiAgentTemplateModelVersion.new;
-  final GetGenaiAgentVersionsAgentVersion = _index.GetGenaiAgentVersionsAgentVersion.new;
-  final GetGenaiAgentVersionsAgentVersionArgs = _index.GetGenaiAgentVersionsAgentVersion.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedChildAgent = _index.GetGenaiAgentVersionsAgentVersionAttachedChildAgent.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs = _index.GetGenaiAgentVersionsAgentVersionAttachedChildAgent.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedFunction = _index.GetGenaiAgentVersionsAgentVersionAttachedFunction.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs = _index.GetGenaiAgentVersionsAgentVersionAttachedFunction.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedGuardrail = _index.GetGenaiAgentVersionsAgentVersionAttachedGuardrail.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs = _index.GetGenaiAgentVersionsAgentVersionAttachedGuardrail.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase = _index.GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.new;
-  final GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs = _index.GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.new;
-  final GetGenaiAgentVersionsArgs = _index.GetGenaiAgentVersionsArgs.new;
-  final GetGenaiAgentVersionsFilter = _index.GetGenaiAgentVersionsFilter.new;
-  final GetGenaiAgentVersionsFilterArgs = _index.GetGenaiAgentVersionsFilter.new;
-  final GetGenaiAgentVersionsResult = _index.GetGenaiAgentVersionsResult.new;
-  final GetGenaiAgentVersionsResultArgs = _index.GetGenaiAgentVersionsResult.new;
-  final GetGenaiAgentVersionsSort = _index.GetGenaiAgentVersionsSort.new;
-  final GetGenaiAgentVersionsSortArgs = _index.GetGenaiAgentVersionsSort.new;
-  final GetGenaiAgentsAgent = _index.GetGenaiAgentsAgent.new;
-  final GetGenaiAgentsAgentAgentGuardrail = _index.GetGenaiAgentsAgentAgentGuardrail.new;
-  final GetGenaiAgentsAgentAgentGuardrailArgs = _index.GetGenaiAgentsAgentAgentGuardrail.new;
-  final GetGenaiAgentsAgentAnthropicApiKey = _index.GetGenaiAgentsAgentAnthropicApiKey.new;
-  final GetGenaiAgentsAgentAnthropicApiKeyArgs = _index.GetGenaiAgentsAgentAnthropicApiKey.new;
-  final GetGenaiAgentsAgentApiKey = _index.GetGenaiAgentsAgentApiKey.new;
-  final GetGenaiAgentsAgentApiKeyArgs = _index.GetGenaiAgentsAgentApiKey.new;
-  final GetGenaiAgentsAgentApiKeyInfo = _index.GetGenaiAgentsAgentApiKeyInfo.new;
-  final GetGenaiAgentsAgentApiKeyInfoArgs = _index.GetGenaiAgentsAgentApiKeyInfo.new;
-  final GetGenaiAgentsAgentArgs = _index.GetGenaiAgentsAgent.new;
-  final GetGenaiAgentsAgentChatbot = _index.GetGenaiAgentsAgentChatbot.new;
-  final GetGenaiAgentsAgentChatbotArgs = _index.GetGenaiAgentsAgentChatbot.new;
-  final GetGenaiAgentsAgentChatbotIdentifier = _index.GetGenaiAgentsAgentChatbotIdentifier.new;
-  final GetGenaiAgentsAgentChatbotIdentifierArgs = _index.GetGenaiAgentsAgentChatbotIdentifier.new;
-  final GetGenaiAgentsAgentChildAgent = _index.GetGenaiAgentsAgentChildAgent.new;
-  final GetGenaiAgentsAgentChildAgentAnthropicApiKey = _index.GetGenaiAgentsAgentChildAgentAnthropicApiKey.new;
-  final GetGenaiAgentsAgentChildAgentAnthropicApiKeyArgs = _index.GetGenaiAgentsAgentChildAgentAnthropicApiKey.new;
-  final GetGenaiAgentsAgentChildAgentApiKey = _index.GetGenaiAgentsAgentChildAgentApiKey.new;
-  final GetGenaiAgentsAgentChildAgentApiKeyArgs = _index.GetGenaiAgentsAgentChildAgentApiKey.new;
-  final GetGenaiAgentsAgentChildAgentApiKeyInfo = _index.GetGenaiAgentsAgentChildAgentApiKeyInfo.new;
-  final GetGenaiAgentsAgentChildAgentApiKeyInfoArgs = _index.GetGenaiAgentsAgentChildAgentApiKeyInfo.new;
-  final GetGenaiAgentsAgentChildAgentArgs = _index.GetGenaiAgentsAgentChildAgent.new;
-  final GetGenaiAgentsAgentChildAgentChatbot = _index.GetGenaiAgentsAgentChildAgentChatbot.new;
-  final GetGenaiAgentsAgentChildAgentChatbotArgs = _index.GetGenaiAgentsAgentChildAgentChatbot.new;
-  final GetGenaiAgentsAgentChildAgentChatbotIdentifier = _index.GetGenaiAgentsAgentChildAgentChatbotIdentifier.new;
-  final GetGenaiAgentsAgentChildAgentChatbotIdentifierArgs = _index.GetGenaiAgentsAgentChildAgentChatbotIdentifier.new;
-  final GetGenaiAgentsAgentChildAgentDeployment = _index.GetGenaiAgentsAgentChildAgentDeployment.new;
-  final GetGenaiAgentsAgentChildAgentDeploymentArgs = _index.GetGenaiAgentsAgentChildAgentDeployment.new;
-  final GetGenaiAgentsAgentDeployment = _index.GetGenaiAgentsAgentDeployment.new;
-  final GetGenaiAgentsAgentDeploymentArgs = _index.GetGenaiAgentsAgentDeployment.new;
-  final GetGenaiAgentsAgentFunction = _index.GetGenaiAgentsAgentFunction.new;
-  final GetGenaiAgentsAgentFunctionArgs = _index.GetGenaiAgentsAgentFunction.new;
-  final GetGenaiAgentsAgentKnowledgeBase = _index.GetGenaiAgentsAgentKnowledgeBase.new;
-  final GetGenaiAgentsAgentKnowledgeBaseArgs = _index.GetGenaiAgentsAgentKnowledgeBase.new;
-  final GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob = _index.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsAgentModel = _index.GetGenaiAgentsAgentModel.new;
-  final GetGenaiAgentsAgentModelAgreement = _index.GetGenaiAgentsAgentModelAgreement.new;
-  final GetGenaiAgentsAgentModelAgreementArgs = _index.GetGenaiAgentsAgentModelAgreement.new;
-  final GetGenaiAgentsAgentModelArgs = _index.GetGenaiAgentsAgentModel.new;
-  final GetGenaiAgentsAgentModelVersion = _index.GetGenaiAgentsAgentModelVersion.new;
-  final GetGenaiAgentsAgentModelVersionArgs = _index.GetGenaiAgentsAgentModelVersion.new;
-  final GetGenaiAgentsAgentOpenAiApiKey = _index.GetGenaiAgentsAgentOpenAiApiKey.new;
-  final GetGenaiAgentsAgentOpenAiApiKeyArgs = _index.GetGenaiAgentsAgentOpenAiApiKey.new;
-  final GetGenaiAgentsAgentParentAgent = _index.GetGenaiAgentsAgentParentAgent.new;
-  final GetGenaiAgentsAgentParentAgentAnthropicApiKey = _index.GetGenaiAgentsAgentParentAgentAnthropicApiKey.new;
-  final GetGenaiAgentsAgentParentAgentAnthropicApiKeyArgs = _index.GetGenaiAgentsAgentParentAgentAnthropicApiKey.new;
-  final GetGenaiAgentsAgentParentAgentApiKey = _index.GetGenaiAgentsAgentParentAgentApiKey.new;
-  final GetGenaiAgentsAgentParentAgentApiKeyArgs = _index.GetGenaiAgentsAgentParentAgentApiKey.new;
-  final GetGenaiAgentsAgentParentAgentApiKeyInfo = _index.GetGenaiAgentsAgentParentAgentApiKeyInfo.new;
-  final GetGenaiAgentsAgentParentAgentApiKeyInfoArgs = _index.GetGenaiAgentsAgentParentAgentApiKeyInfo.new;
-  final GetGenaiAgentsAgentParentAgentArgs = _index.GetGenaiAgentsAgentParentAgent.new;
-  final GetGenaiAgentsAgentParentAgentChatbot = _index.GetGenaiAgentsAgentParentAgentChatbot.new;
-  final GetGenaiAgentsAgentParentAgentChatbotArgs = _index.GetGenaiAgentsAgentParentAgentChatbot.new;
-  final GetGenaiAgentsAgentParentAgentChatbotIdentifier = _index.GetGenaiAgentsAgentParentAgentChatbotIdentifier.new;
-  final GetGenaiAgentsAgentParentAgentChatbotIdentifierArgs = _index.GetGenaiAgentsAgentParentAgentChatbotIdentifier.new;
-  final GetGenaiAgentsAgentParentAgentDeployment = _index.GetGenaiAgentsAgentParentAgentDeployment.new;
-  final GetGenaiAgentsAgentParentAgentDeploymentArgs = _index.GetGenaiAgentsAgentParentAgentDeployment.new;
-  final GetGenaiAgentsAgentTemplate = _index.GetGenaiAgentsAgentTemplate.new;
-  final GetGenaiAgentsAgentTemplateArgs = _index.GetGenaiAgentsAgentTemplate.new;
-  final GetGenaiAgentsAgentTemplateKnowledgeBase = _index.GetGenaiAgentsAgentTemplateKnowledgeBase.new;
-  final GetGenaiAgentsAgentTemplateKnowledgeBaseArgs = _index.GetGenaiAgentsAgentTemplateKnowledgeBase.new;
-  final GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob = _index.GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsAgentTemplateModel = _index.GetGenaiAgentsAgentTemplateModel.new;
-  final GetGenaiAgentsAgentTemplateModelAgreement = _index.GetGenaiAgentsAgentTemplateModelAgreement.new;
-  final GetGenaiAgentsAgentTemplateModelAgreementArgs = _index.GetGenaiAgentsAgentTemplateModelAgreement.new;
-  final GetGenaiAgentsAgentTemplateModelArgs = _index.GetGenaiAgentsAgentTemplateModel.new;
-  final GetGenaiAgentsAgentTemplateModelVersion = _index.GetGenaiAgentsAgentTemplateModelVersion.new;
-  final GetGenaiAgentsAgentTemplateModelVersionArgs = _index.GetGenaiAgentsAgentTemplateModelVersion.new;
-  final GetGenaiAgentsArgs = _index.GetGenaiAgentsArgs.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgent = _index.GetGenaiAgentsByOpenaiApiKeyAgent.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail = _index.GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey = _index.GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentApiKey = _index.GetGenaiAgentsByOpenaiApiKeyAgentApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo = _index.GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgent.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChatbot = _index.GetGenaiAgentsByOpenaiApiKeyAgentChatbot.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChatbot.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier = _index.GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgent = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgent.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgent.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentDeployment = _index.GetGenaiAgentsByOpenaiApiKeyAgentDeployment.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentDeployment.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentFunction = _index.GetGenaiAgentsByOpenaiApiKeyAgentFunction.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentFunction.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase = _index.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob = _index.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentModel = _index.GetGenaiAgentsByOpenaiApiKeyAgentModel.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement = _index.GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentModelArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentModel.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentModelVersion = _index.GetGenaiAgentsByOpenaiApiKeyAgentModelVersion.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentModelVersion.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey = _index.GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgent = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgent.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgent.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplate = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplate.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplate.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.new;
-  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs = _index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.new;
-  final GetGenaiAgentsByOpenaiApiKeyArgs = _index.GetGenaiAgentsByOpenaiApiKeyArgs.new;
-  final GetGenaiAgentsByOpenaiApiKeyResult = _index.GetGenaiAgentsByOpenaiApiKeyResult.new;
-  final GetGenaiAgentsByOpenaiApiKeyResultArgs = _index.GetGenaiAgentsByOpenaiApiKeyResult.new;
-  final GetGenaiAgentsFilter = _index.GetGenaiAgentsFilter.new;
-  final GetGenaiAgentsFilterArgs = _index.GetGenaiAgentsFilter.new;
-  final GetGenaiAgentsResult = _index.GetGenaiAgentsResult.new;
-  final GetGenaiAgentsResultArgs = _index.GetGenaiAgentsResult.new;
-  final GetGenaiAgentsSort = _index.GetGenaiAgentsSort.new;
-  final GetGenaiAgentsSortArgs = _index.GetGenaiAgentsSort.new;
-  final GetGenaiIndexingJobArgs = _index.GetGenaiIndexingJobArgs.new;
-  final GetGenaiIndexingJobDataSourcesArgs = _index.GetGenaiIndexingJobDataSourcesArgs.new;
-  final GetGenaiIndexingJobDataSourcesIndexedDataSource = _index.GetGenaiIndexingJobDataSourcesIndexedDataSource.new;
-  final GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs = _index.GetGenaiIndexingJobDataSourcesIndexedDataSource.new;
-  final GetGenaiIndexingJobDataSourcesResult = _index.GetGenaiIndexingJobDataSourcesResult.new;
-  final GetGenaiIndexingJobDataSourcesResultArgs = _index.GetGenaiIndexingJobDataSourcesResult.new;
-  final GetGenaiIndexingJobResult = _index.GetGenaiIndexingJobResult.new;
-  final GetGenaiIndexingJobResultArgs = _index.GetGenaiIndexingJobResult.new;
-  final GetGenaiKnowledgeBaseArgs = _index.GetGenaiKnowledgeBaseArgs.new;
-  final GetGenaiKnowledgeBaseDataSourcesArgs = _index.GetGenaiKnowledgeBaseDataSourcesArgs.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasource = _index.GetGenaiKnowledgeBaseDataSourcesDatasource.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceArgs = _index.GetGenaiKnowledgeBaseDataSourcesDatasource.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.new;
-  final GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs = _index.GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.new;
-  final GetGenaiKnowledgeBaseDataSourcesResult = _index.GetGenaiKnowledgeBaseDataSourcesResult.new;
-  final GetGenaiKnowledgeBaseDataSourcesResultArgs = _index.GetGenaiKnowledgeBaseDataSourcesResult.new;
-  final GetGenaiKnowledgeBaseIndexingJobsArgs = _index.GetGenaiKnowledgeBaseIndexingJobsArgs.new;
-  final GetGenaiKnowledgeBaseIndexingJobsJob = _index.GetGenaiKnowledgeBaseIndexingJobsJob.new;
-  final GetGenaiKnowledgeBaseIndexingJobsJobArgs = _index.GetGenaiKnowledgeBaseIndexingJobsJob.new;
-  final GetGenaiKnowledgeBaseIndexingJobsMeta = _index.GetGenaiKnowledgeBaseIndexingJobsMeta.new;
-  final GetGenaiKnowledgeBaseIndexingJobsMetaArgs = _index.GetGenaiKnowledgeBaseIndexingJobsMeta.new;
-  final GetGenaiKnowledgeBaseIndexingJobsResult = _index.GetGenaiKnowledgeBaseIndexingJobsResult.new;
-  final GetGenaiKnowledgeBaseIndexingJobsResultArgs = _index.GetGenaiKnowledgeBaseIndexingJobsResult.new;
-  final GetGenaiKnowledgeBaseLastIndexingJob = _index.GetGenaiKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiKnowledgeBaseResult = _index.GetGenaiKnowledgeBaseResult.new;
-  final GetGenaiKnowledgeBaseResultArgs = _index.GetGenaiKnowledgeBaseResult.new;
-  final GetGenaiKnowledgeBasesArgs = _index.GetGenaiKnowledgeBasesArgs.new;
-  final GetGenaiKnowledgeBasesFilter = _index.GetGenaiKnowledgeBasesFilter.new;
-  final GetGenaiKnowledgeBasesFilterArgs = _index.GetGenaiKnowledgeBasesFilter.new;
-  final GetGenaiKnowledgeBasesKnowledgeBase = _index.GetGenaiKnowledgeBasesKnowledgeBase.new;
-  final GetGenaiKnowledgeBasesKnowledgeBaseArgs = _index.GetGenaiKnowledgeBasesKnowledgeBase.new;
-  final GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob = _index.GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs = _index.GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
-  final GetGenaiKnowledgeBasesResult = _index.GetGenaiKnowledgeBasesResult.new;
-  final GetGenaiKnowledgeBasesResultArgs = _index.GetGenaiKnowledgeBasesResult.new;
-  final GetGenaiKnowledgeBasesSort = _index.GetGenaiKnowledgeBasesSort.new;
-  final GetGenaiKnowledgeBasesSortArgs = _index.GetGenaiKnowledgeBasesSort.new;
-  final GetGenaiModelsArgs = _index.GetGenaiModelsArgs.new;
-  final GetGenaiModelsFilter = _index.GetGenaiModelsFilter.new;
-  final GetGenaiModelsFilterArgs = _index.GetGenaiModelsFilter.new;
-  final GetGenaiModelsModel = _index.GetGenaiModelsModel.new;
-  final GetGenaiModelsModelAgreement = _index.GetGenaiModelsModelAgreement.new;
-  final GetGenaiModelsModelAgreementArgs = _index.GetGenaiModelsModelAgreement.new;
-  final GetGenaiModelsModelArgs = _index.GetGenaiModelsModel.new;
-  final GetGenaiModelsModelVersion = _index.GetGenaiModelsModelVersion.new;
-  final GetGenaiModelsModelVersionArgs = _index.GetGenaiModelsModelVersion.new;
-  final GetGenaiModelsResult = _index.GetGenaiModelsResult.new;
-  final GetGenaiModelsResultArgs = _index.GetGenaiModelsResult.new;
-  final GetGenaiModelsSort = _index.GetGenaiModelsSort.new;
-  final GetGenaiModelsSortArgs = _index.GetGenaiModelsSort.new;
-  final GetGenaiOpenaiApiKeyArgs = _index.GetGenaiOpenaiApiKeyArgs.new;
-  final GetGenaiOpenaiApiKeyModel = _index.GetGenaiOpenaiApiKeyModel.new;
-  final GetGenaiOpenaiApiKeyModelAgreement = _index.GetGenaiOpenaiApiKeyModelAgreement.new;
-  final GetGenaiOpenaiApiKeyModelAgreementArgs = _index.GetGenaiOpenaiApiKeyModelAgreement.new;
-  final GetGenaiOpenaiApiKeyModelArgs = _index.GetGenaiOpenaiApiKeyModel.new;
-  final GetGenaiOpenaiApiKeyModelVersion = _index.GetGenaiOpenaiApiKeyModelVersion.new;
-  final GetGenaiOpenaiApiKeyModelVersionArgs = _index.GetGenaiOpenaiApiKeyModelVersion.new;
-  final GetGenaiOpenaiApiKeyResult = _index.GetGenaiOpenaiApiKeyResult.new;
-  final GetGenaiOpenaiApiKeyResultArgs = _index.GetGenaiOpenaiApiKeyResult.new;
-  final GetGenaiOpenaiApiKeysArgs = _index.GetGenaiOpenaiApiKeysArgs.new;
-  final GetGenaiOpenaiApiKeysFilter = _index.GetGenaiOpenaiApiKeysFilter.new;
-  final GetGenaiOpenaiApiKeysFilterArgs = _index.GetGenaiOpenaiApiKeysFilter.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKey = _index.GetGenaiOpenaiApiKeysOpenaiApiKey.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKeyArgs = _index.GetGenaiOpenaiApiKeysOpenaiApiKey.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKeyModel = _index.GetGenaiOpenaiApiKeysOpenaiApiKeyModel.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement = _index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs = _index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs = _index.GetGenaiOpenaiApiKeysOpenaiApiKeyModel.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion = _index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
-  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs = _index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
-  final GetGenaiOpenaiApiKeysResult = _index.GetGenaiOpenaiApiKeysResult.new;
-  final GetGenaiOpenaiApiKeysResultArgs = _index.GetGenaiOpenaiApiKeysResult.new;
-  final GetGenaiOpenaiApiKeysSort = _index.GetGenaiOpenaiApiKeysSort.new;
-  final GetGenaiOpenaiApiKeysSortArgs = _index.GetGenaiOpenaiApiKeysSort.new;
-  final GetGenaiRegionsArgs = _index.GetGenaiRegionsArgs.new;
-  final GetGenaiRegionsFilter = _index.GetGenaiRegionsFilter.new;
-  final GetGenaiRegionsFilterArgs = _index.GetGenaiRegionsFilter.new;
-  final GetGenaiRegionsRegion = _index.GetGenaiRegionsRegion.new;
-  final GetGenaiRegionsRegionArgs = _index.GetGenaiRegionsRegion.new;
-  final GetGenaiRegionsResult = _index.GetGenaiRegionsResult.new;
-  final GetGenaiRegionsResultArgs = _index.GetGenaiRegionsResult.new;
-  final GetGenaiRegionsSort = _index.GetGenaiRegionsSort.new;
-  final GetGenaiRegionsSortArgs = _index.GetGenaiRegionsSort.new;
-  final GetGradientaiAgentAgentGuardrail = _index.GetGradientaiAgentAgentGuardrail.new;
-  final GetGradientaiAgentAgentGuardrailArgs = _index.GetGradientaiAgentAgentGuardrail.new;
-  final GetGradientaiAgentAnthropicApiKey = _index.GetGradientaiAgentAnthropicApiKey.new;
-  final GetGradientaiAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentAnthropicApiKey.new;
-  final GetGradientaiAgentApiKey = _index.GetGradientaiAgentApiKey.new;
-  final GetGradientaiAgentApiKeyArgs = _index.GetGradientaiAgentApiKey.new;
-  final GetGradientaiAgentApiKeyInfo = _index.GetGradientaiAgentApiKeyInfo.new;
-  final GetGradientaiAgentApiKeyInfoArgs = _index.GetGradientaiAgentApiKeyInfo.new;
-  final GetGradientaiAgentArgs = _index.GetGradientaiAgentArgs.new;
-  final GetGradientaiAgentChatbot = _index.GetGradientaiAgentChatbot.new;
-  final GetGradientaiAgentChatbotArgs = _index.GetGradientaiAgentChatbot.new;
-  final GetGradientaiAgentChatbotIdentifier = _index.GetGradientaiAgentChatbotIdentifier.new;
-  final GetGradientaiAgentChatbotIdentifierArgs = _index.GetGradientaiAgentChatbotIdentifier.new;
-  final GetGradientaiAgentChildAgent = _index.GetGradientaiAgentChildAgent.new;
-  final GetGradientaiAgentChildAgentAnthropicApiKey = _index.GetGradientaiAgentChildAgentAnthropicApiKey.new;
-  final GetGradientaiAgentChildAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentChildAgentAnthropicApiKey.new;
-  final GetGradientaiAgentChildAgentApiKey = _index.GetGradientaiAgentChildAgentApiKey.new;
-  final GetGradientaiAgentChildAgentApiKeyArgs = _index.GetGradientaiAgentChildAgentApiKey.new;
-  final GetGradientaiAgentChildAgentApiKeyInfo = _index.GetGradientaiAgentChildAgentApiKeyInfo.new;
-  final GetGradientaiAgentChildAgentApiKeyInfoArgs = _index.GetGradientaiAgentChildAgentApiKeyInfo.new;
-  final GetGradientaiAgentChildAgentArgs = _index.GetGradientaiAgentChildAgent.new;
-  final GetGradientaiAgentChildAgentChatbot = _index.GetGradientaiAgentChildAgentChatbot.new;
-  final GetGradientaiAgentChildAgentChatbotArgs = _index.GetGradientaiAgentChildAgentChatbot.new;
-  final GetGradientaiAgentChildAgentChatbotIdentifier = _index.GetGradientaiAgentChildAgentChatbotIdentifier.new;
-  final GetGradientaiAgentChildAgentChatbotIdentifierArgs = _index.GetGradientaiAgentChildAgentChatbotIdentifier.new;
-  final GetGradientaiAgentChildAgentDeployment = _index.GetGradientaiAgentChildAgentDeployment.new;
-  final GetGradientaiAgentChildAgentDeploymentArgs = _index.GetGradientaiAgentChildAgentDeployment.new;
-  final GetGradientaiAgentDeployment = _index.GetGradientaiAgentDeployment.new;
-  final GetGradientaiAgentDeploymentArgs = _index.GetGradientaiAgentDeployment.new;
-  final GetGradientaiAgentFunction = _index.GetGradientaiAgentFunction.new;
-  final GetGradientaiAgentFunctionArgs = _index.GetGradientaiAgentFunction.new;
-  final GetGradientaiAgentKnowledgeBase = _index.GetGradientaiAgentKnowledgeBase.new;
-  final GetGradientaiAgentKnowledgeBaseArgs = _index.GetGradientaiAgentKnowledgeBase.new;
-  final GetGradientaiAgentKnowledgeBaseLastIndexingJob = _index.GetGradientaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentModel = _index.GetGradientaiAgentModel.new;
-  final GetGradientaiAgentModelAgreement = _index.GetGradientaiAgentModelAgreement.new;
-  final GetGradientaiAgentModelAgreementArgs = _index.GetGradientaiAgentModelAgreement.new;
-  final GetGradientaiAgentModelArgs = _index.GetGradientaiAgentModel.new;
-  final GetGradientaiAgentModelVersion = _index.GetGradientaiAgentModelVersion.new;
-  final GetGradientaiAgentModelVersionArgs = _index.GetGradientaiAgentModelVersion.new;
-  final GetGradientaiAgentOpenAiApiKey = _index.GetGradientaiAgentOpenAiApiKey.new;
-  final GetGradientaiAgentOpenAiApiKeyArgs = _index.GetGradientaiAgentOpenAiApiKey.new;
-  final GetGradientaiAgentParentAgent = _index.GetGradientaiAgentParentAgent.new;
-  final GetGradientaiAgentParentAgentAnthropicApiKey = _index.GetGradientaiAgentParentAgentAnthropicApiKey.new;
-  final GetGradientaiAgentParentAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentParentAgentAnthropicApiKey.new;
-  final GetGradientaiAgentParentAgentApiKey = _index.GetGradientaiAgentParentAgentApiKey.new;
-  final GetGradientaiAgentParentAgentApiKeyArgs = _index.GetGradientaiAgentParentAgentApiKey.new;
-  final GetGradientaiAgentParentAgentApiKeyInfo = _index.GetGradientaiAgentParentAgentApiKeyInfo.new;
-  final GetGradientaiAgentParentAgentApiKeyInfoArgs = _index.GetGradientaiAgentParentAgentApiKeyInfo.new;
-  final GetGradientaiAgentParentAgentArgs = _index.GetGradientaiAgentParentAgent.new;
-  final GetGradientaiAgentParentAgentChatbot = _index.GetGradientaiAgentParentAgentChatbot.new;
-  final GetGradientaiAgentParentAgentChatbotArgs = _index.GetGradientaiAgentParentAgentChatbot.new;
-  final GetGradientaiAgentParentAgentChatbotIdentifier = _index.GetGradientaiAgentParentAgentChatbotIdentifier.new;
-  final GetGradientaiAgentParentAgentChatbotIdentifierArgs = _index.GetGradientaiAgentParentAgentChatbotIdentifier.new;
-  final GetGradientaiAgentParentAgentDeployment = _index.GetGradientaiAgentParentAgentDeployment.new;
-  final GetGradientaiAgentParentAgentDeploymentArgs = _index.GetGradientaiAgentParentAgentDeployment.new;
-  final GetGradientaiAgentResult = _index.GetGradientaiAgentResult.new;
-  final GetGradientaiAgentResultArgs = _index.GetGradientaiAgentResult.new;
-  final GetGradientaiAgentTemplate = _index.GetGradientaiAgentTemplate.new;
-  final GetGradientaiAgentTemplateArgs = _index.GetGradientaiAgentTemplate.new;
-  final GetGradientaiAgentTemplateKnowledgeBase = _index.GetGradientaiAgentTemplateKnowledgeBase.new;
-  final GetGradientaiAgentTemplateKnowledgeBaseArgs = _index.GetGradientaiAgentTemplateKnowledgeBase.new;
-  final GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob = _index.GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentTemplateModel = _index.GetGradientaiAgentTemplateModel.new;
-  final GetGradientaiAgentTemplateModelAgreement = _index.GetGradientaiAgentTemplateModelAgreement.new;
-  final GetGradientaiAgentTemplateModelAgreementArgs = _index.GetGradientaiAgentTemplateModelAgreement.new;
-  final GetGradientaiAgentTemplateModelArgs = _index.GetGradientaiAgentTemplateModel.new;
-  final GetGradientaiAgentTemplateModelVersion = _index.GetGradientaiAgentTemplateModelVersion.new;
-  final GetGradientaiAgentTemplateModelVersionArgs = _index.GetGradientaiAgentTemplateModelVersion.new;
-  final GetGradientaiAgentVersionsAgentVersion = _index.GetGradientaiAgentVersionsAgentVersion.new;
-  final GetGradientaiAgentVersionsAgentVersionArgs = _index.GetGradientaiAgentVersionsAgentVersion.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedChildAgent = _index.GetGradientaiAgentVersionsAgentVersionAttachedChildAgent.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedChildAgentArgs = _index.GetGradientaiAgentVersionsAgentVersionAttachedChildAgent.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedFunction = _index.GetGradientaiAgentVersionsAgentVersionAttachedFunction.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedFunctionArgs = _index.GetGradientaiAgentVersionsAgentVersionAttachedFunction.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedGuardrail = _index.GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedGuardrailArgs = _index.GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase = _index.GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase.new;
-  final GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs = _index.GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase.new;
-  final GetGradientaiAgentVersionsArgs = _index.GetGradientaiAgentVersionsArgs.new;
-  final GetGradientaiAgentVersionsFilter = _index.GetGradientaiAgentVersionsFilter.new;
-  final GetGradientaiAgentVersionsFilterArgs = _index.GetGradientaiAgentVersionsFilter.new;
-  final GetGradientaiAgentVersionsResult = _index.GetGradientaiAgentVersionsResult.new;
-  final GetGradientaiAgentVersionsResultArgs = _index.GetGradientaiAgentVersionsResult.new;
-  final GetGradientaiAgentVersionsSort = _index.GetGradientaiAgentVersionsSort.new;
-  final GetGradientaiAgentVersionsSortArgs = _index.GetGradientaiAgentVersionsSort.new;
-  final GetGradientaiAgentsAgent = _index.GetGradientaiAgentsAgent.new;
-  final GetGradientaiAgentsAgentAgentGuardrail = _index.GetGradientaiAgentsAgentAgentGuardrail.new;
-  final GetGradientaiAgentsAgentAgentGuardrailArgs = _index.GetGradientaiAgentsAgentAgentGuardrail.new;
-  final GetGradientaiAgentsAgentAnthropicApiKey = _index.GetGradientaiAgentsAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentsAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsAgentApiKey = _index.GetGradientaiAgentsAgentApiKey.new;
-  final GetGradientaiAgentsAgentApiKeyArgs = _index.GetGradientaiAgentsAgentApiKey.new;
-  final GetGradientaiAgentsAgentApiKeyInfo = _index.GetGradientaiAgentsAgentApiKeyInfo.new;
-  final GetGradientaiAgentsAgentApiKeyInfoArgs = _index.GetGradientaiAgentsAgentApiKeyInfo.new;
-  final GetGradientaiAgentsAgentArgs = _index.GetGradientaiAgentsAgent.new;
-  final GetGradientaiAgentsAgentChatbot = _index.GetGradientaiAgentsAgentChatbot.new;
-  final GetGradientaiAgentsAgentChatbotArgs = _index.GetGradientaiAgentsAgentChatbot.new;
-  final GetGradientaiAgentsAgentChatbotIdentifier = _index.GetGradientaiAgentsAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsAgentChatbotIdentifierArgs = _index.GetGradientaiAgentsAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsAgentChildAgent = _index.GetGradientaiAgentsAgentChildAgent.new;
-  final GetGradientaiAgentsAgentChildAgentAnthropicApiKey = _index.GetGradientaiAgentsAgentChildAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsAgentChildAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentsAgentChildAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsAgentChildAgentApiKey = _index.GetGradientaiAgentsAgentChildAgentApiKey.new;
-  final GetGradientaiAgentsAgentChildAgentApiKeyArgs = _index.GetGradientaiAgentsAgentChildAgentApiKey.new;
-  final GetGradientaiAgentsAgentChildAgentApiKeyInfo = _index.GetGradientaiAgentsAgentChildAgentApiKeyInfo.new;
-  final GetGradientaiAgentsAgentChildAgentApiKeyInfoArgs = _index.GetGradientaiAgentsAgentChildAgentApiKeyInfo.new;
-  final GetGradientaiAgentsAgentChildAgentArgs = _index.GetGradientaiAgentsAgentChildAgent.new;
-  final GetGradientaiAgentsAgentChildAgentChatbot = _index.GetGradientaiAgentsAgentChildAgentChatbot.new;
-  final GetGradientaiAgentsAgentChildAgentChatbotArgs = _index.GetGradientaiAgentsAgentChildAgentChatbot.new;
-  final GetGradientaiAgentsAgentChildAgentChatbotIdentifier = _index.GetGradientaiAgentsAgentChildAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsAgentChildAgentChatbotIdentifierArgs = _index.GetGradientaiAgentsAgentChildAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsAgentChildAgentDeployment = _index.GetGradientaiAgentsAgentChildAgentDeployment.new;
-  final GetGradientaiAgentsAgentChildAgentDeploymentArgs = _index.GetGradientaiAgentsAgentChildAgentDeployment.new;
-  final GetGradientaiAgentsAgentDeployment = _index.GetGradientaiAgentsAgentDeployment.new;
-  final GetGradientaiAgentsAgentDeploymentArgs = _index.GetGradientaiAgentsAgentDeployment.new;
-  final GetGradientaiAgentsAgentFunction = _index.GetGradientaiAgentsAgentFunction.new;
-  final GetGradientaiAgentsAgentFunctionArgs = _index.GetGradientaiAgentsAgentFunction.new;
-  final GetGradientaiAgentsAgentKnowledgeBase = _index.GetGradientaiAgentsAgentKnowledgeBase.new;
-  final GetGradientaiAgentsAgentKnowledgeBaseArgs = _index.GetGradientaiAgentsAgentKnowledgeBase.new;
-  final GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob = _index.GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsAgentModel = _index.GetGradientaiAgentsAgentModel.new;
-  final GetGradientaiAgentsAgentModelAgreement = _index.GetGradientaiAgentsAgentModelAgreement.new;
-  final GetGradientaiAgentsAgentModelAgreementArgs = _index.GetGradientaiAgentsAgentModelAgreement.new;
-  final GetGradientaiAgentsAgentModelArgs = _index.GetGradientaiAgentsAgentModel.new;
-  final GetGradientaiAgentsAgentModelVersion = _index.GetGradientaiAgentsAgentModelVersion.new;
-  final GetGradientaiAgentsAgentModelVersionArgs = _index.GetGradientaiAgentsAgentModelVersion.new;
-  final GetGradientaiAgentsAgentOpenAiApiKey = _index.GetGradientaiAgentsAgentOpenAiApiKey.new;
-  final GetGradientaiAgentsAgentOpenAiApiKeyArgs = _index.GetGradientaiAgentsAgentOpenAiApiKey.new;
-  final GetGradientaiAgentsAgentParentAgent = _index.GetGradientaiAgentsAgentParentAgent.new;
-  final GetGradientaiAgentsAgentParentAgentAnthropicApiKey = _index.GetGradientaiAgentsAgentParentAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsAgentParentAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentsAgentParentAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsAgentParentAgentApiKey = _index.GetGradientaiAgentsAgentParentAgentApiKey.new;
-  final GetGradientaiAgentsAgentParentAgentApiKeyArgs = _index.GetGradientaiAgentsAgentParentAgentApiKey.new;
-  final GetGradientaiAgentsAgentParentAgentApiKeyInfo = _index.GetGradientaiAgentsAgentParentAgentApiKeyInfo.new;
-  final GetGradientaiAgentsAgentParentAgentApiKeyInfoArgs = _index.GetGradientaiAgentsAgentParentAgentApiKeyInfo.new;
-  final GetGradientaiAgentsAgentParentAgentArgs = _index.GetGradientaiAgentsAgentParentAgent.new;
-  final GetGradientaiAgentsAgentParentAgentChatbot = _index.GetGradientaiAgentsAgentParentAgentChatbot.new;
-  final GetGradientaiAgentsAgentParentAgentChatbotArgs = _index.GetGradientaiAgentsAgentParentAgentChatbot.new;
-  final GetGradientaiAgentsAgentParentAgentChatbotIdentifier = _index.GetGradientaiAgentsAgentParentAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsAgentParentAgentChatbotIdentifierArgs = _index.GetGradientaiAgentsAgentParentAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsAgentParentAgentDeployment = _index.GetGradientaiAgentsAgentParentAgentDeployment.new;
-  final GetGradientaiAgentsAgentParentAgentDeploymentArgs = _index.GetGradientaiAgentsAgentParentAgentDeployment.new;
-  final GetGradientaiAgentsAgentTemplate = _index.GetGradientaiAgentsAgentTemplate.new;
-  final GetGradientaiAgentsAgentTemplateArgs = _index.GetGradientaiAgentsAgentTemplate.new;
-  final GetGradientaiAgentsAgentTemplateKnowledgeBase = _index.GetGradientaiAgentsAgentTemplateKnowledgeBase.new;
-  final GetGradientaiAgentsAgentTemplateKnowledgeBaseArgs = _index.GetGradientaiAgentsAgentTemplateKnowledgeBase.new;
-  final GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob = _index.GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsAgentTemplateModel = _index.GetGradientaiAgentsAgentTemplateModel.new;
-  final GetGradientaiAgentsAgentTemplateModelAgreement = _index.GetGradientaiAgentsAgentTemplateModelAgreement.new;
-  final GetGradientaiAgentsAgentTemplateModelAgreementArgs = _index.GetGradientaiAgentsAgentTemplateModelAgreement.new;
-  final GetGradientaiAgentsAgentTemplateModelArgs = _index.GetGradientaiAgentsAgentTemplateModel.new;
-  final GetGradientaiAgentsAgentTemplateModelVersion = _index.GetGradientaiAgentsAgentTemplateModelVersion.new;
-  final GetGradientaiAgentsAgentTemplateModelVersionArgs = _index.GetGradientaiAgentsAgentTemplateModelVersion.new;
-  final GetGradientaiAgentsArgs = _index.GetGradientaiAgentsArgs.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgent = _index.GetGradientaiAgentsByOpenaiApiKeyAgent.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail = _index.GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey = _index.GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKey = _index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo = _index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgent.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbot = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbot.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbotArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbot.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentDeployment = _index.GetGradientaiAgentsByOpenaiApiKeyAgentDeployment.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentDeploymentArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentDeployment.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentFunction = _index.GetGradientaiAgentsByOpenaiApiKeyAgentFunction.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentFunctionArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentFunction.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase = _index.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob = _index.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentModel = _index.GetGradientaiAgentsByOpenaiApiKeyAgentModel.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement = _index.GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreementArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentModelArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentModel.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion = _index.GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentModelVersionArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey = _index.GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplate = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplate.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplate.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.new;
-  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs = _index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.new;
-  final GetGradientaiAgentsByOpenaiApiKeyArgs = _index.GetGradientaiAgentsByOpenaiApiKeyArgs.new;
-  final GetGradientaiAgentsByOpenaiApiKeyResult = _index.GetGradientaiAgentsByOpenaiApiKeyResult.new;
-  final GetGradientaiAgentsByOpenaiApiKeyResultArgs = _index.GetGradientaiAgentsByOpenaiApiKeyResult.new;
-  final GetGradientaiAgentsFilter = _index.GetGradientaiAgentsFilter.new;
-  final GetGradientaiAgentsFilterArgs = _index.GetGradientaiAgentsFilter.new;
-  final GetGradientaiAgentsResult = _index.GetGradientaiAgentsResult.new;
-  final GetGradientaiAgentsResultArgs = _index.GetGradientaiAgentsResult.new;
-  final GetGradientaiAgentsSort = _index.GetGradientaiAgentsSort.new;
-  final GetGradientaiAgentsSortArgs = _index.GetGradientaiAgentsSort.new;
-  final GetGradientaiIndexingJobArgs = _index.GetGradientaiIndexingJobArgs.new;
-  final GetGradientaiIndexingJobDataSourcesArgs = _index.GetGradientaiIndexingJobDataSourcesArgs.new;
-  final GetGradientaiIndexingJobDataSourcesIndexedDataSource = _index.GetGradientaiIndexingJobDataSourcesIndexedDataSource.new;
-  final GetGradientaiIndexingJobDataSourcesIndexedDataSourceArgs = _index.GetGradientaiIndexingJobDataSourcesIndexedDataSource.new;
-  final GetGradientaiIndexingJobDataSourcesResult = _index.GetGradientaiIndexingJobDataSourcesResult.new;
-  final GetGradientaiIndexingJobDataSourcesResultArgs = _index.GetGradientaiIndexingJobDataSourcesResult.new;
-  final GetGradientaiIndexingJobResult = _index.GetGradientaiIndexingJobResult.new;
-  final GetGradientaiIndexingJobResultArgs = _index.GetGradientaiIndexingJobResult.new;
-  final GetGradientaiKnowledgeBaseArgs = _index.GetGradientaiKnowledgeBaseArgs.new;
-  final GetGradientaiKnowledgeBaseDataSourcesArgs = _index.GetGradientaiKnowledgeBaseDataSourcesArgs.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasource = _index.GetGradientaiKnowledgeBaseDataSourcesDatasource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceArgs = _index.GetGradientaiKnowledgeBaseDataSourcesDatasource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs = _index.GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource.new;
-  final GetGradientaiKnowledgeBaseDataSourcesResult = _index.GetGradientaiKnowledgeBaseDataSourcesResult.new;
-  final GetGradientaiKnowledgeBaseDataSourcesResultArgs = _index.GetGradientaiKnowledgeBaseDataSourcesResult.new;
-  final GetGradientaiKnowledgeBaseIndexingJobsArgs = _index.GetGradientaiKnowledgeBaseIndexingJobsArgs.new;
-  final GetGradientaiKnowledgeBaseIndexingJobsJob = _index.GetGradientaiKnowledgeBaseIndexingJobsJob.new;
-  final GetGradientaiKnowledgeBaseIndexingJobsJobArgs = _index.GetGradientaiKnowledgeBaseIndexingJobsJob.new;
-  final GetGradientaiKnowledgeBaseIndexingJobsMeta = _index.GetGradientaiKnowledgeBaseIndexingJobsMeta.new;
-  final GetGradientaiKnowledgeBaseIndexingJobsMetaArgs = _index.GetGradientaiKnowledgeBaseIndexingJobsMeta.new;
-  final GetGradientaiKnowledgeBaseIndexingJobsResult = _index.GetGradientaiKnowledgeBaseIndexingJobsResult.new;
-  final GetGradientaiKnowledgeBaseIndexingJobsResultArgs = _index.GetGradientaiKnowledgeBaseIndexingJobsResult.new;
-  final GetGradientaiKnowledgeBaseLastIndexingJob = _index.GetGradientaiKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiKnowledgeBaseResult = _index.GetGradientaiKnowledgeBaseResult.new;
-  final GetGradientaiKnowledgeBaseResultArgs = _index.GetGradientaiKnowledgeBaseResult.new;
-  final GetGradientaiKnowledgeBasesArgs = _index.GetGradientaiKnowledgeBasesArgs.new;
-  final GetGradientaiKnowledgeBasesFilter = _index.GetGradientaiKnowledgeBasesFilter.new;
-  final GetGradientaiKnowledgeBasesFilterArgs = _index.GetGradientaiKnowledgeBasesFilter.new;
-  final GetGradientaiKnowledgeBasesKnowledgeBase = _index.GetGradientaiKnowledgeBasesKnowledgeBase.new;
-  final GetGradientaiKnowledgeBasesKnowledgeBaseArgs = _index.GetGradientaiKnowledgeBasesKnowledgeBase.new;
-  final GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob = _index.GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs = _index.GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
-  final GetGradientaiKnowledgeBasesResult = _index.GetGradientaiKnowledgeBasesResult.new;
-  final GetGradientaiKnowledgeBasesResultArgs = _index.GetGradientaiKnowledgeBasesResult.new;
-  final GetGradientaiKnowledgeBasesSort = _index.GetGradientaiKnowledgeBasesSort.new;
-  final GetGradientaiKnowledgeBasesSortArgs = _index.GetGradientaiKnowledgeBasesSort.new;
-  final GetGradientaiModelsArgs = _index.GetGradientaiModelsArgs.new;
-  final GetGradientaiModelsFilter = _index.GetGradientaiModelsFilter.new;
-  final GetGradientaiModelsFilterArgs = _index.GetGradientaiModelsFilter.new;
-  final GetGradientaiModelsModel = _index.GetGradientaiModelsModel.new;
-  final GetGradientaiModelsModelAgreement = _index.GetGradientaiModelsModelAgreement.new;
-  final GetGradientaiModelsModelAgreementArgs = _index.GetGradientaiModelsModelAgreement.new;
-  final GetGradientaiModelsModelArgs = _index.GetGradientaiModelsModel.new;
-  final GetGradientaiModelsModelVersion = _index.GetGradientaiModelsModelVersion.new;
-  final GetGradientaiModelsModelVersionArgs = _index.GetGradientaiModelsModelVersion.new;
-  final GetGradientaiModelsResult = _index.GetGradientaiModelsResult.new;
-  final GetGradientaiModelsResultArgs = _index.GetGradientaiModelsResult.new;
-  final GetGradientaiModelsSort = _index.GetGradientaiModelsSort.new;
-  final GetGradientaiModelsSortArgs = _index.GetGradientaiModelsSort.new;
-  final GetGradientaiOpenaiApiKeyArgs = _index.GetGradientaiOpenaiApiKeyArgs.new;
-  final GetGradientaiOpenaiApiKeyModel = _index.GetGradientaiOpenaiApiKeyModel.new;
-  final GetGradientaiOpenaiApiKeyModelAgreement = _index.GetGradientaiOpenaiApiKeyModelAgreement.new;
-  final GetGradientaiOpenaiApiKeyModelAgreementArgs = _index.GetGradientaiOpenaiApiKeyModelAgreement.new;
-  final GetGradientaiOpenaiApiKeyModelArgs = _index.GetGradientaiOpenaiApiKeyModel.new;
-  final GetGradientaiOpenaiApiKeyModelVersion = _index.GetGradientaiOpenaiApiKeyModelVersion.new;
-  final GetGradientaiOpenaiApiKeyModelVersionArgs = _index.GetGradientaiOpenaiApiKeyModelVersion.new;
-  final GetGradientaiOpenaiApiKeyResult = _index.GetGradientaiOpenaiApiKeyResult.new;
-  final GetGradientaiOpenaiApiKeyResultArgs = _index.GetGradientaiOpenaiApiKeyResult.new;
-  final GetGradientaiOpenaiApiKeysArgs = _index.GetGradientaiOpenaiApiKeysArgs.new;
-  final GetGradientaiOpenaiApiKeysFilter = _index.GetGradientaiOpenaiApiKeysFilter.new;
-  final GetGradientaiOpenaiApiKeysFilterArgs = _index.GetGradientaiOpenaiApiKeysFilter.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKey = _index.GetGradientaiOpenaiApiKeysOpenaiApiKey.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKeyArgs = _index.GetGradientaiOpenaiApiKeysOpenaiApiKey.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModel = _index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModel.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement = _index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs = _index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelArgs = _index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModel.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion = _index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
-  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs = _index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
-  final GetGradientaiOpenaiApiKeysResult = _index.GetGradientaiOpenaiApiKeysResult.new;
-  final GetGradientaiOpenaiApiKeysResultArgs = _index.GetGradientaiOpenaiApiKeysResult.new;
-  final GetGradientaiOpenaiApiKeysSort = _index.GetGradientaiOpenaiApiKeysSort.new;
-  final GetGradientaiOpenaiApiKeysSortArgs = _index.GetGradientaiOpenaiApiKeysSort.new;
-  final GetGradientaiRegionsArgs = _index.GetGradientaiRegionsArgs.new;
-  final GetGradientaiRegionsFilter = _index.GetGradientaiRegionsFilter.new;
-  final GetGradientaiRegionsFilterArgs = _index.GetGradientaiRegionsFilter.new;
-  final GetGradientaiRegionsRegion = _index.GetGradientaiRegionsRegion.new;
-  final GetGradientaiRegionsRegionArgs = _index.GetGradientaiRegionsRegion.new;
-  final GetGradientaiRegionsResult = _index.GetGradientaiRegionsResult.new;
-  final GetGradientaiRegionsResultArgs = _index.GetGradientaiRegionsResult.new;
-  final GetGradientaiRegionsSort = _index.GetGradientaiRegionsSort.new;
-  final GetGradientaiRegionsSortArgs = _index.GetGradientaiRegionsSort.new;
-  final GetImageArgs = _index.GetImageArgs.new;
-  final GetImageResult = _index.GetImageResult.new;
-  final GetImageResultArgs = _index.GetImageResult.new;
-  final GetImagesArgs = _index.GetImagesArgs.new;
-  final GetImagesFilter = _index.GetImagesFilter.new;
-  final GetImagesFilterArgs = _index.GetImagesFilter.new;
-  final GetImagesImage = _index.GetImagesImage.new;
-  final GetImagesImageArgs = _index.GetImagesImage.new;
-  final GetImagesResult = _index.GetImagesResult.new;
-  final GetImagesResultArgs = _index.GetImagesResult.new;
-  final GetImagesSort = _index.GetImagesSort.new;
-  final GetImagesSortArgs = _index.GetImagesSort.new;
-  final GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin = _index.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
-  final GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs = _index.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
-  final GetKubernetesClusterAmdGpuDevicePlugin = _index.GetKubernetesClusterAmdGpuDevicePlugin.new;
-  final GetKubernetesClusterAmdGpuDevicePluginArgs = _index.GetKubernetesClusterAmdGpuDevicePlugin.new;
-  final GetKubernetesClusterArgs = _index.GetKubernetesClusterArgs.new;
-  final GetKubernetesClusterClusterAutoscalerConfiguration = _index.GetKubernetesClusterClusterAutoscalerConfiguration.new;
-  final GetKubernetesClusterClusterAutoscalerConfigurationArgs = _index.GetKubernetesClusterClusterAutoscalerConfiguration.new;
-  final GetKubernetesClusterControlPlaneFirewall = _index.GetKubernetesClusterControlPlaneFirewall.new;
-  final GetKubernetesClusterControlPlaneFirewallArgs = _index.GetKubernetesClusterControlPlaneFirewall.new;
-  final GetKubernetesClusterKubeConfig = _index.GetKubernetesClusterKubeConfig.new;
-  final GetKubernetesClusterKubeConfigArgs = _index.GetKubernetesClusterKubeConfig.new;
-  final GetKubernetesClusterMaintenancePolicy = _index.GetKubernetesClusterMaintenancePolicy.new;
-  final GetKubernetesClusterMaintenancePolicyArgs = _index.GetKubernetesClusterMaintenancePolicy.new;
-  final GetKubernetesClusterNodePool = _index.GetKubernetesClusterNodePool.new;
-  final GetKubernetesClusterNodePoolArgs = _index.GetKubernetesClusterNodePool.new;
-  final GetKubernetesClusterNodePoolNode = _index.GetKubernetesClusterNodePoolNode.new;
-  final GetKubernetesClusterNodePoolNodeArgs = _index.GetKubernetesClusterNodePoolNode.new;
-  final GetKubernetesClusterNodePoolTaint = _index.GetKubernetesClusterNodePoolTaint.new;
-  final GetKubernetesClusterNodePoolTaintArgs = _index.GetKubernetesClusterNodePoolTaint.new;
-  final GetKubernetesClusterNvidiaGpuDevicePlugin = _index.GetKubernetesClusterNvidiaGpuDevicePlugin.new;
-  final GetKubernetesClusterNvidiaGpuDevicePluginArgs = _index.GetKubernetesClusterNvidiaGpuDevicePlugin.new;
-  final GetKubernetesClusterRdmaSharedDevicePlugin = _index.GetKubernetesClusterRdmaSharedDevicePlugin.new;
-  final GetKubernetesClusterRdmaSharedDevicePluginArgs = _index.GetKubernetesClusterRdmaSharedDevicePlugin.new;
-  final GetKubernetesClusterResult = _index.GetKubernetesClusterResult.new;
-  final GetKubernetesClusterResultArgs = _index.GetKubernetesClusterResult.new;
-  final GetKubernetesClusterRoutingAgent = _index.GetKubernetesClusterRoutingAgent.new;
-  final GetKubernetesClusterRoutingAgentArgs = _index.GetKubernetesClusterRoutingAgent.new;
-  final GetKubernetesVersionsArgs = _index.GetKubernetesVersionsArgs.new;
-  final GetKubernetesVersionsResult = _index.GetKubernetesVersionsResult.new;
-  final GetKubernetesVersionsResultArgs = _index.GetKubernetesVersionsResult.new;
-  final GetLoadBalancerArgs = _index.GetLoadBalancerArgs.new;
-  final GetLoadBalancerDomain = _index.GetLoadBalancerDomain.new;
-  final GetLoadBalancerDomainArgs = _index.GetLoadBalancerDomain.new;
-  final GetLoadBalancerFirewall = _index.GetLoadBalancerFirewall.new;
-  final GetLoadBalancerFirewallArgs = _index.GetLoadBalancerFirewall.new;
-  final GetLoadBalancerForwardingRule = _index.GetLoadBalancerForwardingRule.new;
-  final GetLoadBalancerForwardingRuleArgs = _index.GetLoadBalancerForwardingRule.new;
-  final GetLoadBalancerGlbSetting = _index.GetLoadBalancerGlbSetting.new;
-  final GetLoadBalancerGlbSettingArgs = _index.GetLoadBalancerGlbSetting.new;
-  final GetLoadBalancerGlbSettingCdn = _index.GetLoadBalancerGlbSettingCdn.new;
-  final GetLoadBalancerGlbSettingCdnArgs = _index.GetLoadBalancerGlbSettingCdn.new;
-  final GetLoadBalancerHealthcheck = _index.GetLoadBalancerHealthcheck.new;
-  final GetLoadBalancerHealthcheckArgs = _index.GetLoadBalancerHealthcheck.new;
-  final GetLoadBalancerResult = _index.GetLoadBalancerResult.new;
-  final GetLoadBalancerResultArgs = _index.GetLoadBalancerResult.new;
-  final GetLoadBalancerStickySession = _index.GetLoadBalancerStickySession.new;
-  final GetLoadBalancerStickySessionArgs = _index.GetLoadBalancerStickySession.new;
-  final GetNfsArgs = _index.GetNfsArgs.new;
-  final GetNfsResult = _index.GetNfsResult.new;
-  final GetNfsResultArgs = _index.GetNfsResult.new;
-  final GetNfsSnapshotArgs = _index.GetNfsSnapshotArgs.new;
-  final GetNfsSnapshotResult = _index.GetNfsSnapshotResult.new;
-  final GetNfsSnapshotResultArgs = _index.GetNfsSnapshotResult.new;
-  final GetPartnerAttachmentArgs = _index.GetPartnerAttachmentArgs.new;
-  final GetPartnerAttachmentBgp = _index.GetPartnerAttachmentBgp.new;
-  final GetPartnerAttachmentBgpArgs = _index.GetPartnerAttachmentBgp.new;
-  final GetPartnerAttachmentResult = _index.GetPartnerAttachmentResult.new;
-  final GetPartnerAttachmentResultArgs = _index.GetPartnerAttachmentResult.new;
-  final GetPartnerAttachmentServiceKeyArgs = _index.GetPartnerAttachmentServiceKeyArgs.new;
-  final GetPartnerAttachmentServiceKeyResult = _index.GetPartnerAttachmentServiceKeyResult.new;
-  final GetPartnerAttachmentServiceKeyResultArgs = _index.GetPartnerAttachmentServiceKeyResult.new;
-  final GetProjectArgs = _index.GetProjectArgs.new;
-  final GetProjectResult = _index.GetProjectResult.new;
-  final GetProjectResultArgs = _index.GetProjectResult.new;
-  final GetProjectsArgs = _index.GetProjectsArgs.new;
-  final GetProjectsFilter = _index.GetProjectsFilter.new;
-  final GetProjectsFilterArgs = _index.GetProjectsFilter.new;
-  final GetProjectsProject = _index.GetProjectsProject.new;
-  final GetProjectsProjectArgs = _index.GetProjectsProject.new;
-  final GetProjectsResult = _index.GetProjectsResult.new;
-  final GetProjectsResultArgs = _index.GetProjectsResult.new;
-  final GetProjectsSort = _index.GetProjectsSort.new;
-  final GetProjectsSortArgs = _index.GetProjectsSort.new;
-  final GetRecordArgs = _index.GetRecordArgs.new;
-  final GetRecordResult = _index.GetRecordResult.new;
-  final GetRecordResultArgs = _index.GetRecordResult.new;
-  final GetRecordsArgs = _index.GetRecordsArgs.new;
-  final GetRecordsFilter = _index.GetRecordsFilter.new;
-  final GetRecordsFilterArgs = _index.GetRecordsFilter.new;
-  final GetRecordsRecord = _index.GetRecordsRecord.new;
-  final GetRecordsRecordArgs = _index.GetRecordsRecord.new;
-  final GetRecordsResult = _index.GetRecordsResult.new;
-  final GetRecordsResultArgs = _index.GetRecordsResult.new;
-  final GetRecordsSort = _index.GetRecordsSort.new;
-  final GetRecordsSortArgs = _index.GetRecordsSort.new;
-  final GetRegionArgs = _index.GetRegionArgs.new;
-  final GetRegionResult = _index.GetRegionResult.new;
-  final GetRegionResultArgs = _index.GetRegionResult.new;
-  final GetRegionsArgs = _index.GetRegionsArgs.new;
-  final GetRegionsFilter = _index.GetRegionsFilter.new;
-  final GetRegionsFilterArgs = _index.GetRegionsFilter.new;
-  final GetRegionsRegion = _index.GetRegionsRegion.new;
-  final GetRegionsRegionArgs = _index.GetRegionsRegion.new;
-  final GetRegionsResult = _index.GetRegionsResult.new;
-  final GetRegionsResultArgs = _index.GetRegionsResult.new;
-  final GetRegionsSort = _index.GetRegionsSort.new;
-  final GetRegionsSortArgs = _index.GetRegionsSort.new;
-  final GetReservedIpArgs = _index.GetReservedIpArgs.new;
-  final GetReservedIpResult = _index.GetReservedIpResult.new;
-  final GetReservedIpResultArgs = _index.GetReservedIpResult.new;
-  final GetReservedIpv6Args = _index.GetReservedIpv6Args.new;
-  final GetReservedIpv6Result = _index.GetReservedIpv6Result.new;
-  final GetReservedIpv6ResultArgs = _index.GetReservedIpv6Result.new;
-  final GetSizesArgs = _index.GetSizesArgs.new;
-  final GetSizesFilter = _index.GetSizesFilter.new;
-  final GetSizesFilterArgs = _index.GetSizesFilter.new;
-  final GetSizesResult = _index.GetSizesResult.new;
-  final GetSizesResultArgs = _index.GetSizesResult.new;
-  final GetSizesSize = _index.GetSizesSize.new;
-  final GetSizesSizeArgs = _index.GetSizesSize.new;
-  final GetSizesSort = _index.GetSizesSort.new;
-  final GetSizesSortArgs = _index.GetSizesSort.new;
-  final GetSpacesBucketArgs = _index.GetSpacesBucketArgs.new;
-  final GetSpacesBucketObjectArgs = _index.GetSpacesBucketObjectArgs.new;
-  final GetSpacesBucketObjectResult = _index.GetSpacesBucketObjectResult.new;
-  final GetSpacesBucketObjectResultArgs = _index.GetSpacesBucketObjectResult.new;
-  final GetSpacesBucketObjectsArgs = _index.GetSpacesBucketObjectsArgs.new;
-  final GetSpacesBucketObjectsResult = _index.GetSpacesBucketObjectsResult.new;
-  final GetSpacesBucketObjectsResultArgs = _index.GetSpacesBucketObjectsResult.new;
-  final GetSpacesBucketResult = _index.GetSpacesBucketResult.new;
-  final GetSpacesBucketResultArgs = _index.GetSpacesBucketResult.new;
-  final GetSpacesBucketsArgs = _index.GetSpacesBucketsArgs.new;
-  final GetSpacesBucketsBucket = _index.GetSpacesBucketsBucket.new;
-  final GetSpacesBucketsBucketArgs = _index.GetSpacesBucketsBucket.new;
-  final GetSpacesBucketsFilter = _index.GetSpacesBucketsFilter.new;
-  final GetSpacesBucketsFilterArgs = _index.GetSpacesBucketsFilter.new;
-  final GetSpacesBucketsResult = _index.GetSpacesBucketsResult.new;
-  final GetSpacesBucketsResultArgs = _index.GetSpacesBucketsResult.new;
-  final GetSpacesBucketsSort = _index.GetSpacesBucketsSort.new;
-  final GetSpacesBucketsSortArgs = _index.GetSpacesBucketsSort.new;
-  final GetSpacesKeyArgs = _index.GetSpacesKeyArgs.new;
-  final GetSpacesKeyGrant = _index.GetSpacesKeyGrant.new;
-  final GetSpacesKeyGrantArgs = _index.GetSpacesKeyGrant.new;
-  final GetSpacesKeyResult = _index.GetSpacesKeyResult.new;
-  final GetSpacesKeyResultArgs = _index.GetSpacesKeyResult.new;
-  final GetSshKeyArgs = _index.GetSshKeyArgs.new;
-  final GetSshKeyResult = _index.GetSshKeyResult.new;
-  final GetSshKeyResultArgs = _index.GetSshKeyResult.new;
-  final GetSshKeysArgs = _index.GetSshKeysArgs.new;
-  final GetSshKeysFilter = _index.GetSshKeysFilter.new;
-  final GetSshKeysFilterArgs = _index.GetSshKeysFilter.new;
-  final GetSshKeysResult = _index.GetSshKeysResult.new;
-  final GetSshKeysResultArgs = _index.GetSshKeysResult.new;
-  final GetSshKeysSort = _index.GetSshKeysSort.new;
-  final GetSshKeysSortArgs = _index.GetSshKeysSort.new;
-  final GetSshKeysSshKey = _index.GetSshKeysSshKey.new;
-  final GetSshKeysSshKeyArgs = _index.GetSshKeysSshKey.new;
-  final GetTagArgs = _index.GetTagArgs.new;
-  final GetTagResult = _index.GetTagResult.new;
-  final GetTagResultArgs = _index.GetTagResult.new;
-  final GetTagsArgs = _index.GetTagsArgs.new;
-  final GetTagsFilter = _index.GetTagsFilter.new;
-  final GetTagsFilterArgs = _index.GetTagsFilter.new;
-  final GetTagsResult = _index.GetTagsResult.new;
-  final GetTagsResultArgs = _index.GetTagsResult.new;
-  final GetTagsSort = _index.GetTagsSort.new;
-  final GetTagsSortArgs = _index.GetTagsSort.new;
-  final GetTagsTag = _index.GetTagsTag.new;
-  final GetTagsTagArgs = _index.GetTagsTag.new;
-  final GetVolumeArgs = _index.GetVolumeArgs.new;
-  final GetVolumeResult = _index.GetVolumeResult.new;
-  final GetVolumeResultArgs = _index.GetVolumeResult.new;
-  final GetVolumeSnapshotArgs = _index.GetVolumeSnapshotArgs.new;
-  final GetVolumeSnapshotResult = _index.GetVolumeSnapshotResult.new;
-  final GetVolumeSnapshotResultArgs = _index.GetVolumeSnapshotResult.new;
-  final GetVpcArgs = _index.GetVpcArgs.new;
-  final GetVpcNatGatewayArgs = _index.GetVpcNatGatewayArgs.new;
-  final GetVpcNatGatewayEgress = _index.GetVpcNatGatewayEgress.new;
-  final GetVpcNatGatewayEgressArgs = _index.GetVpcNatGatewayEgress.new;
-  final GetVpcNatGatewayEgressPublicGateway = _index.GetVpcNatGatewayEgressPublicGateway.new;
-  final GetVpcNatGatewayEgressPublicGatewayArgs = _index.GetVpcNatGatewayEgressPublicGateway.new;
-  final GetVpcNatGatewayResult = _index.GetVpcNatGatewayResult.new;
-  final GetVpcNatGatewayResultArgs = _index.GetVpcNatGatewayResult.new;
-  final GetVpcNatGatewayVpc = _index.GetVpcNatGatewayVpc.new;
-  final GetVpcNatGatewayVpcArgs = _index.GetVpcNatGatewayVpc.new;
-  final GetVpcPeeringArgs = _index.GetVpcPeeringArgs.new;
-  final GetVpcPeeringResult = _index.GetVpcPeeringResult.new;
-  final GetVpcPeeringResultArgs = _index.GetVpcPeeringResult.new;
-  final GetVpcResult = _index.GetVpcResult.new;
-  final GetVpcResultArgs = _index.GetVpcResult.new;
-  final GradientaiAgent = _index.GradientaiAgent.new;
-  final GradientaiAgentAgentGuardrail = _index.GradientaiAgentAgentGuardrail.new;
-  final GradientaiAgentAgentGuardrailArgs = _index.GradientaiAgentAgentGuardrail.new;
-  final GradientaiAgentAnthropicApiKey = _index.GradientaiAgentAnthropicApiKey.new;
-  final GradientaiAgentAnthropicApiKeyArgs = _index.GradientaiAgentAnthropicApiKey.new;
-  final GradientaiAgentApiKey = _index.GradientaiAgentApiKey.new;
-  final GradientaiAgentApiKeyArgs = _index.GradientaiAgentApiKey.new;
-  final GradientaiAgentApiKeyInfo = _index.GradientaiAgentApiKeyInfo.new;
-  final GradientaiAgentApiKeyInfoArgs = _index.GradientaiAgentApiKeyInfo.new;
-  final GradientaiAgentArgs = _index.GradientaiAgentArgs.new;
-  final GradientaiAgentChatbot = _index.GradientaiAgentChatbot.new;
-  final GradientaiAgentChatbotArgs = _index.GradientaiAgentChatbot.new;
-  final GradientaiAgentChatbotIdentifier = _index.GradientaiAgentChatbotIdentifier.new;
-  final GradientaiAgentChatbotIdentifierArgs = _index.GradientaiAgentChatbotIdentifier.new;
-  final GradientaiAgentChildAgent = _index.GradientaiAgentChildAgent.new;
-  final GradientaiAgentChildAgentAnthropicApiKey = _index.GradientaiAgentChildAgentAnthropicApiKey.new;
-  final GradientaiAgentChildAgentAnthropicApiKeyArgs = _index.GradientaiAgentChildAgentAnthropicApiKey.new;
-  final GradientaiAgentChildAgentApiKey = _index.GradientaiAgentChildAgentApiKey.new;
-  final GradientaiAgentChildAgentApiKeyArgs = _index.GradientaiAgentChildAgentApiKey.new;
-  final GradientaiAgentChildAgentApiKeyInfo = _index.GradientaiAgentChildAgentApiKeyInfo.new;
-  final GradientaiAgentChildAgentApiKeyInfoArgs = _index.GradientaiAgentChildAgentApiKeyInfo.new;
-  final GradientaiAgentChildAgentArgs = _index.GradientaiAgentChildAgent.new;
-  final GradientaiAgentChildAgentChatbot = _index.GradientaiAgentChildAgentChatbot.new;
-  final GradientaiAgentChildAgentChatbotArgs = _index.GradientaiAgentChildAgentChatbot.new;
-  final GradientaiAgentChildAgentChatbotIdentifier = _index.GradientaiAgentChildAgentChatbotIdentifier.new;
-  final GradientaiAgentChildAgentChatbotIdentifierArgs = _index.GradientaiAgentChildAgentChatbotIdentifier.new;
-  final GradientaiAgentChildAgentDeployment = _index.GradientaiAgentChildAgentDeployment.new;
-  final GradientaiAgentChildAgentDeploymentArgs = _index.GradientaiAgentChildAgentDeployment.new;
-  final GradientaiAgentDeployment = _index.GradientaiAgentDeployment.new;
-  final GradientaiAgentDeploymentArgs = _index.GradientaiAgentDeployment.new;
-  final GradientaiAgentFunction = _index.GradientaiAgentFunction.new;
-  final GradientaiAgentFunctionArgs = _index.GradientaiAgentFunction.new;
-  final GradientaiAgentKnowledgeBase = _index.GradientaiAgentKnowledgeBase.new;
-  final GradientaiAgentKnowledgeBaseArgs = _index.GradientaiAgentKnowledgeBase.new;
-  final GradientaiAgentKnowledgeBaseAttachment = _index.GradientaiAgentKnowledgeBaseAttachment.new;
-  final GradientaiAgentKnowledgeBaseAttachmentArgs = _index.GradientaiAgentKnowledgeBaseAttachmentArgs.new;
-  final GradientaiAgentKnowledgeBaseAttachmentState = _index.GradientaiAgentKnowledgeBaseAttachmentState.new;
-  final GradientaiAgentKnowledgeBaseAttachmentStateArgs = _index.GradientaiAgentKnowledgeBaseAttachmentState.new;
-  final GradientaiAgentKnowledgeBaseLastIndexingJob = _index.GradientaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GradientaiAgentKnowledgeBaseLastIndexingJobArgs = _index.GradientaiAgentKnowledgeBaseLastIndexingJob.new;
-  final GradientaiAgentModel = _index.GradientaiAgentModel.new;
-  final GradientaiAgentModelAgreement = _index.GradientaiAgentModelAgreement.new;
-  final GradientaiAgentModelAgreementArgs = _index.GradientaiAgentModelAgreement.new;
-  final GradientaiAgentModelArgs = _index.GradientaiAgentModel.new;
-  final GradientaiAgentModelVersion = _index.GradientaiAgentModelVersion.new;
-  final GradientaiAgentModelVersionArgs = _index.GradientaiAgentModelVersion.new;
-  final GradientaiAgentOpenAiApiKey = _index.GradientaiAgentOpenAiApiKey.new;
-  final GradientaiAgentOpenAiApiKeyArgs = _index.GradientaiAgentOpenAiApiKey.new;
-  final GradientaiAgentParentAgent = _index.GradientaiAgentParentAgent.new;
-  final GradientaiAgentParentAgentAnthropicApiKey = _index.GradientaiAgentParentAgentAnthropicApiKey.new;
-  final GradientaiAgentParentAgentAnthropicApiKeyArgs = _index.GradientaiAgentParentAgentAnthropicApiKey.new;
-  final GradientaiAgentParentAgentApiKey = _index.GradientaiAgentParentAgentApiKey.new;
-  final GradientaiAgentParentAgentApiKeyArgs = _index.GradientaiAgentParentAgentApiKey.new;
-  final GradientaiAgentParentAgentApiKeyInfo = _index.GradientaiAgentParentAgentApiKeyInfo.new;
-  final GradientaiAgentParentAgentApiKeyInfoArgs = _index.GradientaiAgentParentAgentApiKeyInfo.new;
-  final GradientaiAgentParentAgentArgs = _index.GradientaiAgentParentAgent.new;
-  final GradientaiAgentParentAgentChatbot = _index.GradientaiAgentParentAgentChatbot.new;
-  final GradientaiAgentParentAgentChatbotArgs = _index.GradientaiAgentParentAgentChatbot.new;
-  final GradientaiAgentParentAgentChatbotIdentifier = _index.GradientaiAgentParentAgentChatbotIdentifier.new;
-  final GradientaiAgentParentAgentChatbotIdentifierArgs = _index.GradientaiAgentParentAgentChatbotIdentifier.new;
-  final GradientaiAgentParentAgentDeployment = _index.GradientaiAgentParentAgentDeployment.new;
-  final GradientaiAgentParentAgentDeploymentArgs = _index.GradientaiAgentParentAgentDeployment.new;
-  final GradientaiAgentRoute = _index.GradientaiAgentRoute.new;
-  final GradientaiAgentRouteArgs = _index.GradientaiAgentRouteArgs.new;
-  final GradientaiAgentRouteState = _index.GradientaiAgentRouteState.new;
-  final GradientaiAgentRouteStateArgs = _index.GradientaiAgentRouteState.new;
-  final GradientaiAgentState = _index.GradientaiAgentState.new;
-  final GradientaiAgentStateArgs = _index.GradientaiAgentState.new;
-  final GradientaiAgentTemplate = _index.GradientaiAgentTemplate.new;
-  final GradientaiAgentTemplateArgs = _index.GradientaiAgentTemplate.new;
-  final GradientaiAgentTemplateKnowledgeBase = _index.GradientaiAgentTemplateKnowledgeBase.new;
-  final GradientaiAgentTemplateKnowledgeBaseArgs = _index.GradientaiAgentTemplateKnowledgeBase.new;
-  final GradientaiAgentTemplateKnowledgeBaseLastIndexingJob = _index.GradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs = _index.GradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
-  final GradientaiAgentTemplateModel = _index.GradientaiAgentTemplateModel.new;
-  final GradientaiAgentTemplateModelAgreement = _index.GradientaiAgentTemplateModelAgreement.new;
-  final GradientaiAgentTemplateModelAgreementArgs = _index.GradientaiAgentTemplateModelAgreement.new;
-  final GradientaiAgentTemplateModelArgs = _index.GradientaiAgentTemplateModel.new;
-  final GradientaiAgentTemplateModelVersion = _index.GradientaiAgentTemplateModelVersion.new;
-  final GradientaiAgentTemplateModelVersionArgs = _index.GradientaiAgentTemplateModelVersion.new;
-  final GradientaiFunction = _index.GradientaiFunction.new;
-  final GradientaiFunctionArgs = _index.GradientaiFunctionArgs.new;
-  final GradientaiFunctionState = _index.GradientaiFunctionState.new;
-  final GradientaiFunctionStateArgs = _index.GradientaiFunctionState.new;
-  final GradientaiIndexingJobCancel = _index.GradientaiIndexingJobCancel.new;
-  final GradientaiIndexingJobCancelArgs = _index.GradientaiIndexingJobCancelArgs.new;
-  final GradientaiIndexingJobCancelState = _index.GradientaiIndexingJobCancelState.new;
-  final GradientaiIndexingJobCancelStateArgs = _index.GradientaiIndexingJobCancelState.new;
-  final GradientaiKnowledgeBase = _index.GradientaiKnowledgeBase.new;
-  final GradientaiKnowledgeBaseArgs = _index.GradientaiKnowledgeBaseArgs.new;
-  final GradientaiKnowledgeBaseDataSource = _index.GradientaiKnowledgeBaseDataSource.new;
-  final GradientaiKnowledgeBaseDataSourceArgs = _index.GradientaiKnowledgeBaseDataSource.new;
-  final GradientaiKnowledgeBaseDataSourceFileUploadDataSource = _index.GradientaiKnowledgeBaseDataSourceFileUploadDataSource.new;
-  final GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs = _index.GradientaiKnowledgeBaseDataSourceFileUploadDataSource.new;
-  final GradientaiKnowledgeBaseDataSourceLastIndexingJob = _index.GradientaiKnowledgeBaseDataSourceLastIndexingJob.new;
-  final GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs = _index.GradientaiKnowledgeBaseDataSourceLastIndexingJob.new;
-  final GradientaiKnowledgeBaseDataSourceSpacesDataSource = _index.GradientaiKnowledgeBaseDataSourceSpacesDataSource.new;
-  final GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs = _index.GradientaiKnowledgeBaseDataSourceSpacesDataSource.new;
-  final GradientaiKnowledgeBaseDataSourceState = _index.GradientaiKnowledgeBaseDataSourceState.new;
-  final GradientaiKnowledgeBaseDataSourceStateArgs = _index.GradientaiKnowledgeBaseDataSourceState.new;
-  final GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource = _index.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
-  final GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs = _index.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
-  final GradientaiKnowledgeBaseLastIndexingJob = _index.GradientaiKnowledgeBaseLastIndexingJob.new;
-  final GradientaiKnowledgeBaseLastIndexingJobArgs = _index.GradientaiKnowledgeBaseLastIndexingJob.new;
-  final GradientaiKnowledgeBaseState = _index.GradientaiKnowledgeBaseState.new;
-  final GradientaiKnowledgeBaseStateArgs = _index.GradientaiKnowledgeBaseState.new;
-  final GradientaiOpenaiApiKey = _index.GradientaiOpenaiApiKey.new;
-  final GradientaiOpenaiApiKeyArgs = _index.GradientaiOpenaiApiKeyArgs.new;
-  final GradientaiOpenaiApiKeyModel = _index.GradientaiOpenaiApiKeyModel.new;
-  final GradientaiOpenaiApiKeyModelAgreement = _index.GradientaiOpenaiApiKeyModelAgreement.new;
-  final GradientaiOpenaiApiKeyModelAgreementArgs = _index.GradientaiOpenaiApiKeyModelAgreement.new;
-  final GradientaiOpenaiApiKeyModelArgs = _index.GradientaiOpenaiApiKeyModel.new;
-  final GradientaiOpenaiApiKeyModelVersion = _index.GradientaiOpenaiApiKeyModelVersion.new;
-  final GradientaiOpenaiApiKeyModelVersionArgs = _index.GradientaiOpenaiApiKeyModelVersion.new;
-  final GradientaiOpenaiApiKeyState = _index.GradientaiOpenaiApiKeyState.new;
-  final GradientaiOpenaiApiKeyStateArgs = _index.GradientaiOpenaiApiKeyState.new;
-  final KubernetesCluster = _index.KubernetesCluster.new;
-  final KubernetesClusterAmdGpuDeviceMetricsExporterPlugin = _index.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
-  final KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs = _index.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
-  final KubernetesClusterAmdGpuDevicePlugin = _index.KubernetesClusterAmdGpuDevicePlugin.new;
-  final KubernetesClusterAmdGpuDevicePluginArgs = _index.KubernetesClusterAmdGpuDevicePlugin.new;
-  final KubernetesClusterArgs = _index.KubernetesClusterArgs.new;
-  final KubernetesClusterClusterAutoscalerConfiguration = _index.KubernetesClusterClusterAutoscalerConfiguration.new;
-  final KubernetesClusterClusterAutoscalerConfigurationArgs = _index.KubernetesClusterClusterAutoscalerConfiguration.new;
-  final KubernetesClusterControlPlaneFirewall = _index.KubernetesClusterControlPlaneFirewall.new;
-  final KubernetesClusterControlPlaneFirewallArgs = _index.KubernetesClusterControlPlaneFirewall.new;
-  final KubernetesClusterKubeConfig = _index.KubernetesClusterKubeConfig.new;
-  final KubernetesClusterKubeConfigArgs = _index.KubernetesClusterKubeConfig.new;
-  final KubernetesClusterMaintenancePolicy = _index.KubernetesClusterMaintenancePolicy.new;
-  final KubernetesClusterMaintenancePolicyArgs = _index.KubernetesClusterMaintenancePolicy.new;
-  final KubernetesClusterNodePool = _index.KubernetesClusterNodePool.new;
-  final KubernetesClusterNodePoolArgs = _index.KubernetesClusterNodePool.new;
-  final KubernetesClusterNodePoolNode = _index.KubernetesClusterNodePoolNode.new;
-  final KubernetesClusterNodePoolNodeArgs = _index.KubernetesClusterNodePoolNode.new;
-  final KubernetesClusterNodePoolTaint = _index.KubernetesClusterNodePoolTaint.new;
-  final KubernetesClusterNodePoolTaintArgs = _index.KubernetesClusterNodePoolTaint.new;
-  final KubernetesClusterNvidiaGpuDevicePlugin = _index.KubernetesClusterNvidiaGpuDevicePlugin.new;
-  final KubernetesClusterNvidiaGpuDevicePluginArgs = _index.KubernetesClusterNvidiaGpuDevicePlugin.new;
-  final KubernetesClusterRdmaSharedDevicePlugin = _index.KubernetesClusterRdmaSharedDevicePlugin.new;
-  final KubernetesClusterRdmaSharedDevicePluginArgs = _index.KubernetesClusterRdmaSharedDevicePlugin.new;
-  final KubernetesClusterRoutingAgent = _index.KubernetesClusterRoutingAgent.new;
-  final KubernetesClusterRoutingAgentArgs = _index.KubernetesClusterRoutingAgent.new;
-  final KubernetesClusterState = _index.KubernetesClusterState.new;
-  final KubernetesClusterStateArgs = _index.KubernetesClusterState.new;
-  final KubernetesNodePool = _index.KubernetesNodePool.new;
-  final KubernetesNodePoolArgs = _index.KubernetesNodePoolArgs.new;
-  final KubernetesNodePoolNode = _index.KubernetesNodePoolNode.new;
-  final KubernetesNodePoolNodeArgs = _index.KubernetesNodePoolNode.new;
-  final KubernetesNodePoolState = _index.KubernetesNodePoolState.new;
-  final KubernetesNodePoolStateArgs = _index.KubernetesNodePoolState.new;
-  final KubernetesNodePoolTaint = _index.KubernetesNodePoolTaint.new;
-  final KubernetesNodePoolTaintArgs = _index.KubernetesNodePoolTaint.new;
-  final LoadBalancer = _index.LoadBalancer.new;
-  final LoadBalancerArgs = _index.LoadBalancerArgs.new;
-  final LoadBalancerDomain = _index.LoadBalancerDomain.new;
-  final LoadBalancerDomainArgs = _index.LoadBalancerDomain.new;
-  final LoadBalancerFirewall = _index.LoadBalancerFirewall.new;
-  final LoadBalancerFirewallArgs = _index.LoadBalancerFirewall.new;
-  final LoadBalancerForwardingRule = _index.LoadBalancerForwardingRule.new;
-  final LoadBalancerForwardingRuleArgs = _index.LoadBalancerForwardingRule.new;
-  final LoadBalancerGlbSettings = _index.LoadBalancerGlbSettings.new;
-  final LoadBalancerGlbSettingsArgs = _index.LoadBalancerGlbSettings.new;
-  final LoadBalancerGlbSettingsCdn = _index.LoadBalancerGlbSettingsCdn.new;
-  final LoadBalancerGlbSettingsCdnArgs = _index.LoadBalancerGlbSettingsCdn.new;
-  final LoadBalancerHealthcheck = _index.LoadBalancerHealthcheck.new;
-  final LoadBalancerHealthcheckArgs = _index.LoadBalancerHealthcheck.new;
-  final LoadBalancerState = _index.LoadBalancerState.new;
-  final LoadBalancerStateArgs = _index.LoadBalancerState.new;
-  final LoadBalancerStickySessions = _index.LoadBalancerStickySessions.new;
-  final LoadBalancerStickySessionsArgs = _index.LoadBalancerStickySessions.new;
-  final MonitorAlert = _index.MonitorAlert.new;
-  final MonitorAlertAlerts = _index.MonitorAlertAlerts.new;
-  final MonitorAlertAlertsArgs = _index.MonitorAlertAlerts.new;
-  final MonitorAlertAlertsSlack = _index.MonitorAlertAlertsSlack.new;
-  final MonitorAlertAlertsSlackArgs = _index.MonitorAlertAlertsSlack.new;
-  final MonitorAlertArgs = _index.MonitorAlertArgs.new;
-  final MonitorAlertState = _index.MonitorAlertState.new;
-  final MonitorAlertStateArgs = _index.MonitorAlertState.new;
-  final Nfs = _index.Nfs.new;
-  final NfsArgs = _index.NfsArgs.new;
-  final NfsAttachment = _index.NfsAttachment.new;
-  final NfsAttachmentArgs = _index.NfsAttachmentArgs.new;
-  final NfsAttachmentState = _index.NfsAttachmentState.new;
-  final NfsAttachmentStateArgs = _index.NfsAttachmentState.new;
-  final NfsSnapshot = _index.NfsSnapshot.new;
-  final NfsSnapshotArgs = _index.NfsSnapshotArgs.new;
-  final NfsSnapshotState = _index.NfsSnapshotState.new;
-  final NfsSnapshotStateArgs = _index.NfsSnapshotState.new;
-  final NfsState = _index.NfsState.new;
-  final NfsStateArgs = _index.NfsState.new;
-  final PartnerAttachment = _index.PartnerAttachment.new;
-  final PartnerAttachmentArgs = _index.PartnerAttachmentArgs.new;
-  final PartnerAttachmentBgp = _index.PartnerAttachmentBgp.new;
-  final PartnerAttachmentBgpArgs = _index.PartnerAttachmentBgp.new;
-  final PartnerAttachmentState = _index.PartnerAttachmentState.new;
-  final PartnerAttachmentStateArgs = _index.PartnerAttachmentState.new;
-  final Project = _index.Project.new;
-  final ProjectArgs = _index.ProjectArgs.new;
-  final ProjectResources = _index.ProjectResources.new;
-  final ProjectResourcesArgs = _index.ProjectResourcesArgs.new;
-  final ProjectResourcesState = _index.ProjectResourcesState.new;
-  final ProjectResourcesStateArgs = _index.ProjectResourcesState.new;
-  final ProjectState = _index.ProjectState.new;
-  final ProjectStateArgs = _index.ProjectState.new;
-  final Protocol = _index.Protocol.values;
-  final RecordType = _index.RecordType.values;
-  final Region = _index.Region.values;
-  final ReservedIp = _index.ReservedIp.new;
-  final ReservedIpArgs = _index.ReservedIpArgs.new;
-  final ReservedIpAssignment = _index.ReservedIpAssignment.new;
-  final ReservedIpAssignmentArgs = _index.ReservedIpAssignmentArgs.new;
-  final ReservedIpAssignmentState = _index.ReservedIpAssignmentState.new;
-  final ReservedIpAssignmentStateArgs = _index.ReservedIpAssignmentState.new;
-  final ReservedIpState = _index.ReservedIpState.new;
-  final ReservedIpStateArgs = _index.ReservedIpState.new;
-  final ReservedIpv6 = _index.ReservedIpv6.new;
-  final ReservedIpv6Args = _index.ReservedIpv6Args.new;
-  final ReservedIpv6Assignment = _index.ReservedIpv6Assignment.new;
-  final ReservedIpv6AssignmentArgs = _index.ReservedIpv6AssignmentArgs.new;
-  final ReservedIpv6AssignmentState = _index.ReservedIpv6AssignmentState.new;
-  final ReservedIpv6AssignmentStateArgs = _index.ReservedIpv6AssignmentState.new;
-  final ReservedIpv6State = _index.ReservedIpv6State.new;
-  final ReservedIpv6StateArgs = _index.ReservedIpv6State.new;
-  final SpacesBucket = _index.SpacesBucket.new;
-  final SpacesBucketArgs = _index.SpacesBucketArgs.new;
-  final SpacesBucketCorsConfiguration = _index.SpacesBucketCorsConfiguration.new;
-  final SpacesBucketCorsConfigurationArgs = _index.SpacesBucketCorsConfigurationArgs.new;
-  final SpacesBucketCorsConfigurationCorsRule = _index.SpacesBucketCorsConfigurationCorsRule.new;
-  final SpacesBucketCorsConfigurationCorsRuleArgs = _index.SpacesBucketCorsConfigurationCorsRule.new;
-  final SpacesBucketCorsConfigurationState = _index.SpacesBucketCorsConfigurationState.new;
-  final SpacesBucketCorsConfigurationStateArgs = _index.SpacesBucketCorsConfigurationState.new;
-  final SpacesBucketCorsRule = _index.SpacesBucketCorsRule.new;
-  final SpacesBucketCorsRuleArgs = _index.SpacesBucketCorsRule.new;
-  final SpacesBucketLifecycleRule = _index.SpacesBucketLifecycleRule.new;
-  final SpacesBucketLifecycleRuleArgs = _index.SpacesBucketLifecycleRule.new;
-  final SpacesBucketLifecycleRuleExpiration = _index.SpacesBucketLifecycleRuleExpiration.new;
-  final SpacesBucketLifecycleRuleExpirationArgs = _index.SpacesBucketLifecycleRuleExpiration.new;
-  final SpacesBucketLifecycleRuleNoncurrentVersionExpiration = _index.SpacesBucketLifecycleRuleNoncurrentVersionExpiration.new;
-  final SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs = _index.SpacesBucketLifecycleRuleNoncurrentVersionExpiration.new;
-  final SpacesBucketLogging = _index.SpacesBucketLogging.new;
-  final SpacesBucketLoggingArgs = _index.SpacesBucketLoggingArgs.new;
-  final SpacesBucketLoggingState = _index.SpacesBucketLoggingState.new;
-  final SpacesBucketLoggingStateArgs = _index.SpacesBucketLoggingState.new;
-  final SpacesBucketObject = _index.SpacesBucketObject.new;
-  final SpacesBucketObjectArgs = _index.SpacesBucketObjectArgs.new;
-  final SpacesBucketObjectState = _index.SpacesBucketObjectState.new;
-  final SpacesBucketObjectStateArgs = _index.SpacesBucketObjectState.new;
-  final SpacesBucketPolicy = _index.SpacesBucketPolicy.new;
-  final SpacesBucketPolicyArgs = _index.SpacesBucketPolicyArgs.new;
-  final SpacesBucketPolicyState = _index.SpacesBucketPolicyState.new;
-  final SpacesBucketPolicyStateArgs = _index.SpacesBucketPolicyState.new;
-  final SpacesBucketState = _index.SpacesBucketState.new;
-  final SpacesBucketStateArgs = _index.SpacesBucketState.new;
-  final SpacesBucketVersioning = _index.SpacesBucketVersioning.new;
-  final SpacesBucketVersioningArgs = _index.SpacesBucketVersioning.new;
-  final SpacesKey = _index.SpacesKey.new;
-  final SpacesKeyArgs = _index.SpacesKeyArgs.new;
-  final SpacesKeyGrant = _index.SpacesKeyGrant.new;
-  final SpacesKeyGrantArgs = _index.SpacesKeyGrant.new;
-  final SpacesKeyState = _index.SpacesKeyState.new;
-  final SpacesKeyStateArgs = _index.SpacesKeyState.new;
-  final SshKey = _index.SshKey.new;
-  final SshKeyArgs = _index.SshKeyArgs.new;
-  final SshKeyState = _index.SshKeyState.new;
-  final SshKeyStateArgs = _index.SshKeyState.new;
-  final Tag = _index.Tag.new;
-  final TagArgs = _index.TagArgs.new;
-  final TagState = _index.TagState.new;
-  final TagStateArgs = _index.TagState.new;
-  final UptimeAlert = _index.UptimeAlert.new;
-  final UptimeAlertArgs = _index.UptimeAlertArgs.new;
-  final UptimeAlertNotification = _index.UptimeAlertNotification.new;
-  final UptimeAlertNotificationArgs = _index.UptimeAlertNotification.new;
-  final UptimeAlertNotificationSlack = _index.UptimeAlertNotificationSlack.new;
-  final UptimeAlertNotificationSlackArgs = _index.UptimeAlertNotificationSlack.new;
-  final UptimeAlertState = _index.UptimeAlertState.new;
-  final UptimeAlertStateArgs = _index.UptimeAlertState.new;
-  final UptimeCheck = _index.UptimeCheck.new;
-  final UptimeCheckArgs = _index.UptimeCheckArgs.new;
-  final UptimeCheckState = _index.UptimeCheckState.new;
-  final UptimeCheckStateArgs = _index.UptimeCheckState.new;
-  final Volume = _index.Volume.new;
-  final VolumeArgs = _index.VolumeArgs.new;
-  final VolumeAttachment = _index.VolumeAttachment.new;
-  final VolumeAttachmentArgs = _index.VolumeAttachmentArgs.new;
-  final VolumeAttachmentState = _index.VolumeAttachmentState.new;
-  final VolumeAttachmentStateArgs = _index.VolumeAttachmentState.new;
-  final VolumeSnapshot = _index.VolumeSnapshot.new;
-  final VolumeSnapshotArgs = _index.VolumeSnapshotArgs.new;
-  final VolumeSnapshotState = _index.VolumeSnapshotState.new;
-  final VolumeSnapshotStateArgs = _index.VolumeSnapshotState.new;
-  final VolumeState = _index.VolumeState.new;
-  final VolumeStateArgs = _index.VolumeState.new;
-  final Vpc = _index.Vpc.new;
-  final VpcArgs = _index.VpcArgs.new;
-  final VpcNatGateway = _index.VpcNatGateway.new;
-  final VpcNatGatewayArgs = _index.VpcNatGatewayArgs.new;
-  final VpcNatGatewayEgress = _index.VpcNatGatewayEgress.new;
-  final VpcNatGatewayEgressArgs = _index.VpcNatGatewayEgress.new;
-  final VpcNatGatewayEgressPublicGateway = _index.VpcNatGatewayEgressPublicGateway.new;
-  final VpcNatGatewayEgressPublicGatewayArgs = _index.VpcNatGatewayEgressPublicGateway.new;
-  final VpcNatGatewayState = _index.VpcNatGatewayState.new;
-  final VpcNatGatewayStateArgs = _index.VpcNatGatewayState.new;
-  final VpcNatGatewayVpc = _index.VpcNatGatewayVpc.new;
-  final VpcNatGatewayVpcArgs = _index.VpcNatGatewayVpc.new;
-  final VpcPeering = _index.VpcPeering.new;
-  final VpcPeeringArgs = _index.VpcPeeringArgs.new;
-  final VpcPeeringState = _index.VpcPeeringState.new;
-  final VpcPeeringStateArgs = _index.VpcPeeringState.new;
-  final VpcState = _index.VpcState.new;
-  final VpcStateArgs = _index.VpcState.new;
-  final getAccount = _index.getAccount;
-  final getApp = _index.getApp;
-  final getByoipPrefix = _index.getByoipPrefix;
-  final getByoipPrefixResources = _index.getByoipPrefixResources;
-  final getCertificate = _index.getCertificate;
-  final getContainerRegistries = _index.getContainerRegistries;
-  final getContainerRegistry = _index.getContainerRegistry;
-  final getDatabaseCa = _index.getDatabaseCa;
-  final getDatabaseCluster = _index.getDatabaseCluster;
-  final getDatabaseConnectionPool = _index.getDatabaseConnectionPool;
-  final getDatabaseMetricsCredentials = _index.getDatabaseMetricsCredentials;
-  final getDatabaseReplica = _index.getDatabaseReplica;
-  final getDatabaseUser = _index.getDatabaseUser;
-  final getDomain = _index.getDomain;
-  final getDomains = _index.getDomains;
-  final getDroplet = _index.getDroplet;
-  final getDropletAutoscale = _index.getDropletAutoscale;
-  final getDropletSnapshot = _index.getDropletSnapshot;
-  final getDroplets = _index.getDroplets;
-  final getFirewall = _index.getFirewall;
-  final getFloatingIp = _index.getFloatingIp;
-  final getGenaiAgent = _index.getGenaiAgent;
-  final getGenaiAgentVersions = _index.getGenaiAgentVersions;
-  final getGenaiAgents = _index.getGenaiAgents;
-  final getGenaiAgentsByOpenaiApiKey = _index.getGenaiAgentsByOpenaiApiKey;
-  final getGenaiIndexingJob = _index.getGenaiIndexingJob;
-  final getGenaiIndexingJobDataSources = _index.getGenaiIndexingJobDataSources;
-  final getGenaiKnowledgeBase = _index.getGenaiKnowledgeBase;
-  final getGenaiKnowledgeBaseDataSources = _index.getGenaiKnowledgeBaseDataSources;
-  final getGenaiKnowledgeBaseIndexingJobs = _index.getGenaiKnowledgeBaseIndexingJobs;
-  final getGenaiKnowledgeBases = _index.getGenaiKnowledgeBases;
-  final getGenaiModels = _index.getGenaiModels;
-  final getGenaiOpenaiApiKey = _index.getGenaiOpenaiApiKey;
-  final getGenaiOpenaiApiKeys = _index.getGenaiOpenaiApiKeys;
-  final getGenaiRegions = _index.getGenaiRegions;
-  final getGradientaiAgent = _index.getGradientaiAgent;
-  final getGradientaiAgentVersions = _index.getGradientaiAgentVersions;
-  final getGradientaiAgents = _index.getGradientaiAgents;
-  final getGradientaiAgentsByOpenaiApiKey = _index.getGradientaiAgentsByOpenaiApiKey;
-  final getGradientaiIndexingJob = _index.getGradientaiIndexingJob;
-  final getGradientaiIndexingJobDataSources = _index.getGradientaiIndexingJobDataSources;
-  final getGradientaiKnowledgeBase = _index.getGradientaiKnowledgeBase;
-  final getGradientaiKnowledgeBaseDataSources = _index.getGradientaiKnowledgeBaseDataSources;
-  final getGradientaiKnowledgeBaseIndexingJobs = _index.getGradientaiKnowledgeBaseIndexingJobs;
-  final getGradientaiKnowledgeBases = _index.getGradientaiKnowledgeBases;
-  final getGradientaiModels = _index.getGradientaiModels;
-  final getGradientaiOpenaiApiKey = _index.getGradientaiOpenaiApiKey;
-  final getGradientaiOpenaiApiKeys = _index.getGradientaiOpenaiApiKeys;
-  final getGradientaiRegions = _index.getGradientaiRegions;
-  final getImage = _index.getImage;
-  final getImages = _index.getImages;
-  final getKubernetesCluster = _index.getKubernetesCluster;
-  final getKubernetesVersions = _index.getKubernetesVersions;
-  final getLoadBalancer = _index.getLoadBalancer;
-  final getNfs = _index.getNfs;
-  final getNfsSnapshot = _index.getNfsSnapshot;
-  final getPartnerAttachment = _index.getPartnerAttachment;
-  final getPartnerAttachmentServiceKey = _index.getPartnerAttachmentServiceKey;
-  final getProject = _index.getProject;
-  final getProjects = _index.getProjects;
-  final getRecord = _index.getRecord;
-  final getRecords = _index.getRecords;
-  final getRegion = _index.getRegion;
-  final getRegions = _index.getRegions;
-  final getReservedIp = _index.getReservedIp;
-  final getReservedIpv6 = _index.getReservedIpv6;
-  final getSizes = _index.getSizes;
-  final getSpacesBucket = _index.getSpacesBucket;
-  final getSpacesBucketObject = _index.getSpacesBucketObject;
-  final getSpacesBucketObjects = _index.getSpacesBucketObjects;
-  final getSpacesBuckets = _index.getSpacesBuckets;
-  final getSpacesKey = _index.getSpacesKey;
-  final getSshKey = _index.getSshKey;
-  final getSshKeys = _index.getSshKeys;
-  final getTag = _index.getTag;
-  final getTags = _index.getTags;
-  final getVolume = _index.getVolume;
-  final getVolumeSnapshot = _index.getVolumeSnapshot;
-  final getVpc = _index.getVpc;
-  final getVpcNatGateway = _index.getVpcNatGateway;
-  final getVpcPeering = _index.getVpcPeering;
+  final Algorithm = module_index.Algorithm.values;
+  final App = module_index.App.new;
+  final AppArgs = module_index.AppArgs.new;
+  final AppDedicatedIp = module_index.AppDedicatedIp.new;
+  final AppDedicatedIpArgs = module_index.AppDedicatedIp.new;
+  final AppSpec = module_index.AppSpec.new;
+  final AppSpecAlert = module_index.AppSpecAlert.new;
+  final AppSpecAlertArgs = module_index.AppSpecAlert.new;
+  final AppSpecAlertDestinations = module_index.AppSpecAlertDestinations.new;
+  final AppSpecAlertDestinationsArgs =
+      module_index.AppSpecAlertDestinations.new;
+  final AppSpecAlertDestinationsSlackWebhook =
+      module_index.AppSpecAlertDestinationsSlackWebhook.new;
+  final AppSpecAlertDestinationsSlackWebhookArgs =
+      module_index.AppSpecAlertDestinationsSlackWebhook.new;
+  final AppSpecArgs = module_index.AppSpec.new;
+  final AppSpecDatabase = module_index.AppSpecDatabase.new;
+  final AppSpecDatabaseArgs = module_index.AppSpecDatabase.new;
+  final AppSpecDomainName = module_index.AppSpecDomainName.new;
+  final AppSpecDomainNameArgs = module_index.AppSpecDomainName.new;
+  final AppSpecEgress = module_index.AppSpecEgress.new;
+  final AppSpecEgressArgs = module_index.AppSpecEgress.new;
+  final AppSpecEnv = module_index.AppSpecEnv.new;
+  final AppSpecEnvArgs = module_index.AppSpecEnv.new;
+  final AppSpecFunction = module_index.AppSpecFunction.new;
+  final AppSpecFunctionAlert = module_index.AppSpecFunctionAlert.new;
+  final AppSpecFunctionAlertArgs = module_index.AppSpecFunctionAlert.new;
+  final AppSpecFunctionAlertDestinations =
+      module_index.AppSpecFunctionAlertDestinations.new;
+  final AppSpecFunctionAlertDestinationsArgs =
+      module_index.AppSpecFunctionAlertDestinations.new;
+  final AppSpecFunctionAlertDestinationsSlackWebhook =
+      module_index.AppSpecFunctionAlertDestinationsSlackWebhook.new;
+  final AppSpecFunctionAlertDestinationsSlackWebhookArgs =
+      module_index.AppSpecFunctionAlertDestinationsSlackWebhook.new;
+  final AppSpecFunctionArgs = module_index.AppSpecFunction.new;
+  final AppSpecFunctionBitbucket = module_index.AppSpecFunctionBitbucket.new;
+  final AppSpecFunctionBitbucketArgs =
+      module_index.AppSpecFunctionBitbucket.new;
+  final AppSpecFunctionCors = module_index.AppSpecFunctionCors.new;
+  final AppSpecFunctionCorsAllowOrigins =
+      module_index.AppSpecFunctionCorsAllowOrigins.new;
+  final AppSpecFunctionCorsAllowOriginsArgs =
+      module_index.AppSpecFunctionCorsAllowOrigins.new;
+  final AppSpecFunctionCorsArgs = module_index.AppSpecFunctionCors.new;
+  final AppSpecFunctionEnv = module_index.AppSpecFunctionEnv.new;
+  final AppSpecFunctionEnvArgs = module_index.AppSpecFunctionEnv.new;
+  final AppSpecFunctionGit = module_index.AppSpecFunctionGit.new;
+  final AppSpecFunctionGitArgs = module_index.AppSpecFunctionGit.new;
+  final AppSpecFunctionGithub = module_index.AppSpecFunctionGithub.new;
+  final AppSpecFunctionGithubArgs = module_index.AppSpecFunctionGithub.new;
+  final AppSpecFunctionGitlab = module_index.AppSpecFunctionGitlab.new;
+  final AppSpecFunctionGitlabArgs = module_index.AppSpecFunctionGitlab.new;
+  final AppSpecFunctionLogDestination =
+      module_index.AppSpecFunctionLogDestination.new;
+  final AppSpecFunctionLogDestinationArgs =
+      module_index.AppSpecFunctionLogDestination.new;
+  final AppSpecFunctionLogDestinationDatadog =
+      module_index.AppSpecFunctionLogDestinationDatadog.new;
+  final AppSpecFunctionLogDestinationDatadogArgs =
+      module_index.AppSpecFunctionLogDestinationDatadog.new;
+  final AppSpecFunctionLogDestinationLogtail =
+      module_index.AppSpecFunctionLogDestinationLogtail.new;
+  final AppSpecFunctionLogDestinationLogtailArgs =
+      module_index.AppSpecFunctionLogDestinationLogtail.new;
+  final AppSpecFunctionLogDestinationOpenSearch =
+      module_index.AppSpecFunctionLogDestinationOpenSearch.new;
+  final AppSpecFunctionLogDestinationOpenSearchArgs =
+      module_index.AppSpecFunctionLogDestinationOpenSearch.new;
+  final AppSpecFunctionLogDestinationOpenSearchBasicAuth =
+      module_index.AppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs =
+      module_index.AppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecFunctionLogDestinationPapertrail =
+      module_index.AppSpecFunctionLogDestinationPapertrail.new;
+  final AppSpecFunctionLogDestinationPapertrailArgs =
+      module_index.AppSpecFunctionLogDestinationPapertrail.new;
+  final AppSpecFunctionRoute = module_index.AppSpecFunctionRoute.new;
+  final AppSpecFunctionRouteArgs = module_index.AppSpecFunctionRoute.new;
+  final AppSpecIngress = module_index.AppSpecIngress.new;
+  final AppSpecIngressArgs = module_index.AppSpecIngress.new;
+  final AppSpecIngressRule = module_index.AppSpecIngressRule.new;
+  final AppSpecIngressRuleArgs = module_index.AppSpecIngressRule.new;
+  final AppSpecIngressRuleComponent =
+      module_index.AppSpecIngressRuleComponent.new;
+  final AppSpecIngressRuleComponentArgs =
+      module_index.AppSpecIngressRuleComponent.new;
+  final AppSpecIngressRuleCors = module_index.AppSpecIngressRuleCors.new;
+  final AppSpecIngressRuleCorsAllowOrigins =
+      module_index.AppSpecIngressRuleCorsAllowOrigins.new;
+  final AppSpecIngressRuleCorsAllowOriginsArgs =
+      module_index.AppSpecIngressRuleCorsAllowOrigins.new;
+  final AppSpecIngressRuleCorsArgs = module_index.AppSpecIngressRuleCors.new;
+  final AppSpecIngressRuleMatch = module_index.AppSpecIngressRuleMatch.new;
+  final AppSpecIngressRuleMatchArgs = module_index.AppSpecIngressRuleMatch.new;
+  final AppSpecIngressRuleMatchAuthority =
+      module_index.AppSpecIngressRuleMatchAuthority.new;
+  final AppSpecIngressRuleMatchAuthorityArgs =
+      module_index.AppSpecIngressRuleMatchAuthority.new;
+  final AppSpecIngressRuleMatchPath =
+      module_index.AppSpecIngressRuleMatchPath.new;
+  final AppSpecIngressRuleMatchPathArgs =
+      module_index.AppSpecIngressRuleMatchPath.new;
+  final AppSpecIngressRuleRedirect =
+      module_index.AppSpecIngressRuleRedirect.new;
+  final AppSpecIngressRuleRedirectArgs =
+      module_index.AppSpecIngressRuleRedirect.new;
+  final AppSpecIngressSecureHeader =
+      module_index.AppSpecIngressSecureHeader.new;
+  final AppSpecIngressSecureHeaderArgs =
+      module_index.AppSpecIngressSecureHeader.new;
+  final AppSpecJob = module_index.AppSpecJob.new;
+  final AppSpecJobAlert = module_index.AppSpecJobAlert.new;
+  final AppSpecJobAlertArgs = module_index.AppSpecJobAlert.new;
+  final AppSpecJobAlertDestinations =
+      module_index.AppSpecJobAlertDestinations.new;
+  final AppSpecJobAlertDestinationsArgs =
+      module_index.AppSpecJobAlertDestinations.new;
+  final AppSpecJobAlertDestinationsSlackWebhook =
+      module_index.AppSpecJobAlertDestinationsSlackWebhook.new;
+  final AppSpecJobAlertDestinationsSlackWebhookArgs =
+      module_index.AppSpecJobAlertDestinationsSlackWebhook.new;
+  final AppSpecJobArgs = module_index.AppSpecJob.new;
+  final AppSpecJobBitbucket = module_index.AppSpecJobBitbucket.new;
+  final AppSpecJobBitbucketArgs = module_index.AppSpecJobBitbucket.new;
+  final AppSpecJobEnv = module_index.AppSpecJobEnv.new;
+  final AppSpecJobEnvArgs = module_index.AppSpecJobEnv.new;
+  final AppSpecJobGit = module_index.AppSpecJobGit.new;
+  final AppSpecJobGitArgs = module_index.AppSpecJobGit.new;
+  final AppSpecJobGithub = module_index.AppSpecJobGithub.new;
+  final AppSpecJobGithubArgs = module_index.AppSpecJobGithub.new;
+  final AppSpecJobGitlab = module_index.AppSpecJobGitlab.new;
+  final AppSpecJobGitlabArgs = module_index.AppSpecJobGitlab.new;
+  final AppSpecJobImage = module_index.AppSpecJobImage.new;
+  final AppSpecJobImageArgs = module_index.AppSpecJobImage.new;
+  final AppSpecJobImageDeployOnPush =
+      module_index.AppSpecJobImageDeployOnPush.new;
+  final AppSpecJobImageDeployOnPushArgs =
+      module_index.AppSpecJobImageDeployOnPush.new;
+  final AppSpecJobLogDestination = module_index.AppSpecJobLogDestination.new;
+  final AppSpecJobLogDestinationArgs =
+      module_index.AppSpecJobLogDestination.new;
+  final AppSpecJobLogDestinationDatadog =
+      module_index.AppSpecJobLogDestinationDatadog.new;
+  final AppSpecJobLogDestinationDatadogArgs =
+      module_index.AppSpecJobLogDestinationDatadog.new;
+  final AppSpecJobLogDestinationLogtail =
+      module_index.AppSpecJobLogDestinationLogtail.new;
+  final AppSpecJobLogDestinationLogtailArgs =
+      module_index.AppSpecJobLogDestinationLogtail.new;
+  final AppSpecJobLogDestinationOpenSearch =
+      module_index.AppSpecJobLogDestinationOpenSearch.new;
+  final AppSpecJobLogDestinationOpenSearchArgs =
+      module_index.AppSpecJobLogDestinationOpenSearch.new;
+  final AppSpecJobLogDestinationOpenSearchBasicAuth =
+      module_index.AppSpecJobLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecJobLogDestinationOpenSearchBasicAuthArgs =
+      module_index.AppSpecJobLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecJobLogDestinationPapertrail =
+      module_index.AppSpecJobLogDestinationPapertrail.new;
+  final AppSpecJobLogDestinationPapertrailArgs =
+      module_index.AppSpecJobLogDestinationPapertrail.new;
+  final AppSpecJobTermination = module_index.AppSpecJobTermination.new;
+  final AppSpecJobTerminationArgs = module_index.AppSpecJobTermination.new;
+  final AppSpecMaintenance = module_index.AppSpecMaintenance.new;
+  final AppSpecMaintenanceArgs = module_index.AppSpecMaintenance.new;
+  final AppSpecService = module_index.AppSpecService.new;
+  final AppSpecServiceAlert = module_index.AppSpecServiceAlert.new;
+  final AppSpecServiceAlertArgs = module_index.AppSpecServiceAlert.new;
+  final AppSpecServiceAlertDestinations =
+      module_index.AppSpecServiceAlertDestinations.new;
+  final AppSpecServiceAlertDestinationsArgs =
+      module_index.AppSpecServiceAlertDestinations.new;
+  final AppSpecServiceAlertDestinationsSlackWebhook =
+      module_index.AppSpecServiceAlertDestinationsSlackWebhook.new;
+  final AppSpecServiceAlertDestinationsSlackWebhookArgs =
+      module_index.AppSpecServiceAlertDestinationsSlackWebhook.new;
+  final AppSpecServiceArgs = module_index.AppSpecService.new;
+  final AppSpecServiceAutoscaling = module_index.AppSpecServiceAutoscaling.new;
+  final AppSpecServiceAutoscalingArgs =
+      module_index.AppSpecServiceAutoscaling.new;
+  final AppSpecServiceAutoscalingMetrics =
+      module_index.AppSpecServiceAutoscalingMetrics.new;
+  final AppSpecServiceAutoscalingMetricsArgs =
+      module_index.AppSpecServiceAutoscalingMetrics.new;
+  final AppSpecServiceAutoscalingMetricsCpu =
+      module_index.AppSpecServiceAutoscalingMetricsCpu.new;
+  final AppSpecServiceAutoscalingMetricsCpuArgs =
+      module_index.AppSpecServiceAutoscalingMetricsCpu.new;
+  final AppSpecServiceBitbucket = module_index.AppSpecServiceBitbucket.new;
+  final AppSpecServiceBitbucketArgs = module_index.AppSpecServiceBitbucket.new;
+  final AppSpecServiceCors = module_index.AppSpecServiceCors.new;
+  final AppSpecServiceCorsAllowOrigins =
+      module_index.AppSpecServiceCorsAllowOrigins.new;
+  final AppSpecServiceCorsAllowOriginsArgs =
+      module_index.AppSpecServiceCorsAllowOrigins.new;
+  final AppSpecServiceCorsArgs = module_index.AppSpecServiceCors.new;
+  final AppSpecServiceEnv = module_index.AppSpecServiceEnv.new;
+  final AppSpecServiceEnvArgs = module_index.AppSpecServiceEnv.new;
+  final AppSpecServiceGit = module_index.AppSpecServiceGit.new;
+  final AppSpecServiceGitArgs = module_index.AppSpecServiceGit.new;
+  final AppSpecServiceGithub = module_index.AppSpecServiceGithub.new;
+  final AppSpecServiceGithubArgs = module_index.AppSpecServiceGithub.new;
+  final AppSpecServiceGitlab = module_index.AppSpecServiceGitlab.new;
+  final AppSpecServiceGitlabArgs = module_index.AppSpecServiceGitlab.new;
+  final AppSpecServiceHealthCheck = module_index.AppSpecServiceHealthCheck.new;
+  final AppSpecServiceHealthCheckArgs =
+      module_index.AppSpecServiceHealthCheck.new;
+  final AppSpecServiceImage = module_index.AppSpecServiceImage.new;
+  final AppSpecServiceImageArgs = module_index.AppSpecServiceImage.new;
+  final AppSpecServiceImageDeployOnPush =
+      module_index.AppSpecServiceImageDeployOnPush.new;
+  final AppSpecServiceImageDeployOnPushArgs =
+      module_index.AppSpecServiceImageDeployOnPush.new;
+  final AppSpecServiceLogDestination =
+      module_index.AppSpecServiceLogDestination.new;
+  final AppSpecServiceLogDestinationArgs =
+      module_index.AppSpecServiceLogDestination.new;
+  final AppSpecServiceLogDestinationDatadog =
+      module_index.AppSpecServiceLogDestinationDatadog.new;
+  final AppSpecServiceLogDestinationDatadogArgs =
+      module_index.AppSpecServiceLogDestinationDatadog.new;
+  final AppSpecServiceLogDestinationLogtail =
+      module_index.AppSpecServiceLogDestinationLogtail.new;
+  final AppSpecServiceLogDestinationLogtailArgs =
+      module_index.AppSpecServiceLogDestinationLogtail.new;
+  final AppSpecServiceLogDestinationOpenSearch =
+      module_index.AppSpecServiceLogDestinationOpenSearch.new;
+  final AppSpecServiceLogDestinationOpenSearchArgs =
+      module_index.AppSpecServiceLogDestinationOpenSearch.new;
+  final AppSpecServiceLogDestinationOpenSearchBasicAuth =
+      module_index.AppSpecServiceLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecServiceLogDestinationOpenSearchBasicAuthArgs =
+      module_index.AppSpecServiceLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecServiceLogDestinationPapertrail =
+      module_index.AppSpecServiceLogDestinationPapertrail.new;
+  final AppSpecServiceLogDestinationPapertrailArgs =
+      module_index.AppSpecServiceLogDestinationPapertrail.new;
+  final AppSpecServiceRoute = module_index.AppSpecServiceRoute.new;
+  final AppSpecServiceRouteArgs = module_index.AppSpecServiceRoute.new;
+  final AppSpecServiceTermination = module_index.AppSpecServiceTermination.new;
+  final AppSpecServiceTerminationArgs =
+      module_index.AppSpecServiceTermination.new;
+  final AppSpecStaticSite = module_index.AppSpecStaticSite.new;
+  final AppSpecStaticSiteArgs = module_index.AppSpecStaticSite.new;
+  final AppSpecStaticSiteBitbucket =
+      module_index.AppSpecStaticSiteBitbucket.new;
+  final AppSpecStaticSiteBitbucketArgs =
+      module_index.AppSpecStaticSiteBitbucket.new;
+  final AppSpecStaticSiteCors = module_index.AppSpecStaticSiteCors.new;
+  final AppSpecStaticSiteCorsAllowOrigins =
+      module_index.AppSpecStaticSiteCorsAllowOrigins.new;
+  final AppSpecStaticSiteCorsAllowOriginsArgs =
+      module_index.AppSpecStaticSiteCorsAllowOrigins.new;
+  final AppSpecStaticSiteCorsArgs = module_index.AppSpecStaticSiteCors.new;
+  final AppSpecStaticSiteEnv = module_index.AppSpecStaticSiteEnv.new;
+  final AppSpecStaticSiteEnvArgs = module_index.AppSpecStaticSiteEnv.new;
+  final AppSpecStaticSiteGit = module_index.AppSpecStaticSiteGit.new;
+  final AppSpecStaticSiteGitArgs = module_index.AppSpecStaticSiteGit.new;
+  final AppSpecStaticSiteGithub = module_index.AppSpecStaticSiteGithub.new;
+  final AppSpecStaticSiteGithubArgs = module_index.AppSpecStaticSiteGithub.new;
+  final AppSpecStaticSiteGitlab = module_index.AppSpecStaticSiteGitlab.new;
+  final AppSpecStaticSiteGitlabArgs = module_index.AppSpecStaticSiteGitlab.new;
+  final AppSpecStaticSiteRoute = module_index.AppSpecStaticSiteRoute.new;
+  final AppSpecStaticSiteRouteArgs = module_index.AppSpecStaticSiteRoute.new;
+  final AppSpecVpc = module_index.AppSpecVpc.new;
+  final AppSpecVpcArgs = module_index.AppSpecVpc.new;
+  final AppSpecWorker = module_index.AppSpecWorker.new;
+  final AppSpecWorkerAlert = module_index.AppSpecWorkerAlert.new;
+  final AppSpecWorkerAlertArgs = module_index.AppSpecWorkerAlert.new;
+  final AppSpecWorkerAlertDestinations =
+      module_index.AppSpecWorkerAlertDestinations.new;
+  final AppSpecWorkerAlertDestinationsArgs =
+      module_index.AppSpecWorkerAlertDestinations.new;
+  final AppSpecWorkerAlertDestinationsSlackWebhook =
+      module_index.AppSpecWorkerAlertDestinationsSlackWebhook.new;
+  final AppSpecWorkerAlertDestinationsSlackWebhookArgs =
+      module_index.AppSpecWorkerAlertDestinationsSlackWebhook.new;
+  final AppSpecWorkerArgs = module_index.AppSpecWorker.new;
+  final AppSpecWorkerAutoscaling = module_index.AppSpecWorkerAutoscaling.new;
+  final AppSpecWorkerAutoscalingArgs =
+      module_index.AppSpecWorkerAutoscaling.new;
+  final AppSpecWorkerAutoscalingMetrics =
+      module_index.AppSpecWorkerAutoscalingMetrics.new;
+  final AppSpecWorkerAutoscalingMetricsArgs =
+      module_index.AppSpecWorkerAutoscalingMetrics.new;
+  final AppSpecWorkerAutoscalingMetricsCpu =
+      module_index.AppSpecWorkerAutoscalingMetricsCpu.new;
+  final AppSpecWorkerAutoscalingMetricsCpuArgs =
+      module_index.AppSpecWorkerAutoscalingMetricsCpu.new;
+  final AppSpecWorkerBitbucket = module_index.AppSpecWorkerBitbucket.new;
+  final AppSpecWorkerBitbucketArgs = module_index.AppSpecWorkerBitbucket.new;
+  final AppSpecWorkerEnv = module_index.AppSpecWorkerEnv.new;
+  final AppSpecWorkerEnvArgs = module_index.AppSpecWorkerEnv.new;
+  final AppSpecWorkerGit = module_index.AppSpecWorkerGit.new;
+  final AppSpecWorkerGitArgs = module_index.AppSpecWorkerGit.new;
+  final AppSpecWorkerGithub = module_index.AppSpecWorkerGithub.new;
+  final AppSpecWorkerGithubArgs = module_index.AppSpecWorkerGithub.new;
+  final AppSpecWorkerGitlab = module_index.AppSpecWorkerGitlab.new;
+  final AppSpecWorkerGitlabArgs = module_index.AppSpecWorkerGitlab.new;
+  final AppSpecWorkerImage = module_index.AppSpecWorkerImage.new;
+  final AppSpecWorkerImageArgs = module_index.AppSpecWorkerImage.new;
+  final AppSpecWorkerImageDeployOnPush =
+      module_index.AppSpecWorkerImageDeployOnPush.new;
+  final AppSpecWorkerImageDeployOnPushArgs =
+      module_index.AppSpecWorkerImageDeployOnPush.new;
+  final AppSpecWorkerLogDestination =
+      module_index.AppSpecWorkerLogDestination.new;
+  final AppSpecWorkerLogDestinationArgs =
+      module_index.AppSpecWorkerLogDestination.new;
+  final AppSpecWorkerLogDestinationDatadog =
+      module_index.AppSpecWorkerLogDestinationDatadog.new;
+  final AppSpecWorkerLogDestinationDatadogArgs =
+      module_index.AppSpecWorkerLogDestinationDatadog.new;
+  final AppSpecWorkerLogDestinationLogtail =
+      module_index.AppSpecWorkerLogDestinationLogtail.new;
+  final AppSpecWorkerLogDestinationLogtailArgs =
+      module_index.AppSpecWorkerLogDestinationLogtail.new;
+  final AppSpecWorkerLogDestinationOpenSearch =
+      module_index.AppSpecWorkerLogDestinationOpenSearch.new;
+  final AppSpecWorkerLogDestinationOpenSearchArgs =
+      module_index.AppSpecWorkerLogDestinationOpenSearch.new;
+  final AppSpecWorkerLogDestinationOpenSearchBasicAuth =
+      module_index.AppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs =
+      module_index.AppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
+  final AppSpecWorkerLogDestinationPapertrail =
+      module_index.AppSpecWorkerLogDestinationPapertrail.new;
+  final AppSpecWorkerLogDestinationPapertrailArgs =
+      module_index.AppSpecWorkerLogDestinationPapertrail.new;
+  final AppSpecWorkerTermination = module_index.AppSpecWorkerTermination.new;
+  final AppSpecWorkerTerminationArgs =
+      module_index.AppSpecWorkerTermination.new;
+  final AppState = module_index.AppState.new;
+  final AppStateArgs = module_index.AppState.new;
+  final ByoipPrefix = module_index.ByoipPrefix.new;
+  final ByoipPrefixArgs = module_index.ByoipPrefixArgs.new;
+  final ByoipPrefixState = module_index.ByoipPrefixState.new;
+  final ByoipPrefixStateArgs = module_index.ByoipPrefixState.new;
+  final Cdn = module_index.Cdn.new;
+  final CdnArgs = module_index.CdnArgs.new;
+  final CdnState = module_index.CdnState.new;
+  final CdnStateArgs = module_index.CdnState.new;
+  final Certificate = module_index.Certificate.new;
+  final CertificateArgs = module_index.CertificateArgs.new;
+  final CertificateState = module_index.CertificateState.new;
+  final CertificateStateArgs = module_index.CertificateState.new;
+  final CertificateType = module_index.CertificateType.values;
+  final ContainerRegistries = module_index.ContainerRegistries.new;
+  final ContainerRegistriesArgs = module_index.ContainerRegistriesArgs.new;
+  final ContainerRegistriesState = module_index.ContainerRegistriesState.new;
+  final ContainerRegistriesStateArgs =
+      module_index.ContainerRegistriesState.new;
+  final ContainerRegistry = module_index.ContainerRegistry.new;
+  final ContainerRegistryArgs = module_index.ContainerRegistryArgs.new;
+  final ContainerRegistryDockerCredentials =
+      module_index.ContainerRegistryDockerCredentials.new;
+  final ContainerRegistryDockerCredentialsArgs =
+      module_index.ContainerRegistryDockerCredentialsArgs.new;
+  final ContainerRegistryDockerCredentialsState =
+      module_index.ContainerRegistryDockerCredentialsState.new;
+  final ContainerRegistryDockerCredentialsStateArgs =
+      module_index.ContainerRegistryDockerCredentialsState.new;
+  final ContainerRegistryState = module_index.ContainerRegistryState.new;
+  final ContainerRegistryStateArgs = module_index.ContainerRegistryState.new;
+  final CustomImage = module_index.CustomImage.new;
+  final CustomImageArgs = module_index.CustomImageArgs.new;
+  final CustomImageState = module_index.CustomImageState.new;
+  final CustomImageStateArgs = module_index.CustomImageState.new;
+  final DatabaseCluster = module_index.DatabaseCluster.new;
+  final DatabaseClusterArgs = module_index.DatabaseClusterArgs.new;
+  final DatabaseClusterBackupRestore =
+      module_index.DatabaseClusterBackupRestore.new;
+  final DatabaseClusterBackupRestoreArgs =
+      module_index.DatabaseClusterBackupRestore.new;
+  final DatabaseClusterMaintenanceWindow =
+      module_index.DatabaseClusterMaintenanceWindow.new;
+  final DatabaseClusterMaintenanceWindowArgs =
+      module_index.DatabaseClusterMaintenanceWindow.new;
+  final DatabaseClusterState = module_index.DatabaseClusterState.new;
+  final DatabaseClusterStateArgs = module_index.DatabaseClusterState.new;
+  final DatabaseConnectionPool = module_index.DatabaseConnectionPool.new;
+  final DatabaseConnectionPoolArgs =
+      module_index.DatabaseConnectionPoolArgs.new;
+  final DatabaseConnectionPoolState =
+      module_index.DatabaseConnectionPoolState.new;
+  final DatabaseConnectionPoolStateArgs =
+      module_index.DatabaseConnectionPoolState.new;
+  final DatabaseDb = module_index.DatabaseDb.new;
+  final DatabaseDbArgs = module_index.DatabaseDbArgs.new;
+  final DatabaseDbState = module_index.DatabaseDbState.new;
+  final DatabaseDbStateArgs = module_index.DatabaseDbState.new;
+  final DatabaseFirewall = module_index.DatabaseFirewall.new;
+  final DatabaseFirewallArgs = module_index.DatabaseFirewallArgs.new;
+  final DatabaseFirewallRule = module_index.DatabaseFirewallRule.new;
+  final DatabaseFirewallRuleArgs = module_index.DatabaseFirewallRule.new;
+  final DatabaseFirewallState = module_index.DatabaseFirewallState.new;
+  final DatabaseFirewallStateArgs = module_index.DatabaseFirewallState.new;
+  final DatabaseKafkaConfig = module_index.DatabaseKafkaConfig.new;
+  final DatabaseKafkaConfigArgs = module_index.DatabaseKafkaConfigArgs.new;
+  final DatabaseKafkaConfigState = module_index.DatabaseKafkaConfigState.new;
+  final DatabaseKafkaConfigStateArgs =
+      module_index.DatabaseKafkaConfigState.new;
+  final DatabaseKafkaSchemaRegistry =
+      module_index.DatabaseKafkaSchemaRegistry.new;
+  final DatabaseKafkaSchemaRegistryArgs =
+      module_index.DatabaseKafkaSchemaRegistryArgs.new;
+  final DatabaseKafkaSchemaRegistryState =
+      module_index.DatabaseKafkaSchemaRegistryState.new;
+  final DatabaseKafkaSchemaRegistryStateArgs =
+      module_index.DatabaseKafkaSchemaRegistryState.new;
+  final DatabaseKafkaTopic = module_index.DatabaseKafkaTopic.new;
+  final DatabaseKafkaTopicArgs = module_index.DatabaseKafkaTopicArgs.new;
+  final DatabaseKafkaTopicConfig = module_index.DatabaseKafkaTopicConfig.new;
+  final DatabaseKafkaTopicConfigArgs =
+      module_index.DatabaseKafkaTopicConfig.new;
+  final DatabaseKafkaTopicState = module_index.DatabaseKafkaTopicState.new;
+  final DatabaseKafkaTopicStateArgs = module_index.DatabaseKafkaTopicState.new;
+  final DatabaseLogsinkOpensearch = module_index.DatabaseLogsinkOpensearch.new;
+  final DatabaseLogsinkOpensearchArgs =
+      module_index.DatabaseLogsinkOpensearchArgs.new;
+  final DatabaseLogsinkOpensearchState =
+      module_index.DatabaseLogsinkOpensearchState.new;
+  final DatabaseLogsinkOpensearchStateArgs =
+      module_index.DatabaseLogsinkOpensearchState.new;
+  final DatabaseLogsinkRsyslog = module_index.DatabaseLogsinkRsyslog.new;
+  final DatabaseLogsinkRsyslogArgs =
+      module_index.DatabaseLogsinkRsyslogArgs.new;
+  final DatabaseLogsinkRsyslogState =
+      module_index.DatabaseLogsinkRsyslogState.new;
+  final DatabaseLogsinkRsyslogStateArgs =
+      module_index.DatabaseLogsinkRsyslogState.new;
+  final DatabaseMongodbConfig = module_index.DatabaseMongodbConfig.new;
+  final DatabaseMongodbConfigArgs = module_index.DatabaseMongodbConfigArgs.new;
+  final DatabaseMongodbConfigState =
+      module_index.DatabaseMongodbConfigState.new;
+  final DatabaseMongodbConfigStateArgs =
+      module_index.DatabaseMongodbConfigState.new;
+  final DatabaseMysqlConfig = module_index.DatabaseMysqlConfig.new;
+  final DatabaseMysqlConfigArgs = module_index.DatabaseMysqlConfigArgs.new;
+  final DatabaseMysqlConfigState = module_index.DatabaseMysqlConfigState.new;
+  final DatabaseMysqlConfigStateArgs =
+      module_index.DatabaseMysqlConfigState.new;
+  final DatabaseOnlineMigration = module_index.DatabaseOnlineMigration.new;
+  final DatabaseOnlineMigrationArgs =
+      module_index.DatabaseOnlineMigrationArgs.new;
+  final DatabaseOnlineMigrationSource =
+      module_index.DatabaseOnlineMigrationSource.new;
+  final DatabaseOnlineMigrationSourceArgs =
+      module_index.DatabaseOnlineMigrationSource.new;
+  final DatabaseOnlineMigrationState =
+      module_index.DatabaseOnlineMigrationState.new;
+  final DatabaseOnlineMigrationStateArgs =
+      module_index.DatabaseOnlineMigrationState.new;
+  final DatabaseOpensearchConfig = module_index.DatabaseOpensearchConfig.new;
+  final DatabaseOpensearchConfigArgs =
+      module_index.DatabaseOpensearchConfigArgs.new;
+  final DatabaseOpensearchConfigState =
+      module_index.DatabaseOpensearchConfigState.new;
+  final DatabaseOpensearchConfigStateArgs =
+      module_index.DatabaseOpensearchConfigState.new;
+  final DatabasePostgresqlConfig = module_index.DatabasePostgresqlConfig.new;
+  final DatabasePostgresqlConfigArgs =
+      module_index.DatabasePostgresqlConfigArgs.new;
+  final DatabasePostgresqlConfigPgbouncer =
+      module_index.DatabasePostgresqlConfigPgbouncer.new;
+  final DatabasePostgresqlConfigPgbouncerArgs =
+      module_index.DatabasePostgresqlConfigPgbouncer.new;
+  final DatabasePostgresqlConfigState =
+      module_index.DatabasePostgresqlConfigState.new;
+  final DatabasePostgresqlConfigStateArgs =
+      module_index.DatabasePostgresqlConfigState.new;
+  final DatabasePostgresqlConfigTimescaledb =
+      module_index.DatabasePostgresqlConfigTimescaledb.new;
+  final DatabasePostgresqlConfigTimescaledbArgs =
+      module_index.DatabasePostgresqlConfigTimescaledb.new;
+  final DatabaseRedisConfig = module_index.DatabaseRedisConfig.new;
+  final DatabaseRedisConfigArgs = module_index.DatabaseRedisConfigArgs.new;
+  final DatabaseRedisConfigState = module_index.DatabaseRedisConfigState.new;
+  final DatabaseRedisConfigStateArgs =
+      module_index.DatabaseRedisConfigState.new;
+  final DatabaseReplica = module_index.DatabaseReplica.new;
+  final DatabaseReplicaArgs = module_index.DatabaseReplicaArgs.new;
+  final DatabaseReplicaState = module_index.DatabaseReplicaState.new;
+  final DatabaseReplicaStateArgs = module_index.DatabaseReplicaState.new;
+  final DatabaseSlug = module_index.DatabaseSlug.values;
+  final DatabaseUser = module_index.DatabaseUser.new;
+  final DatabaseUserArgs = module_index.DatabaseUserArgs.new;
+  final DatabaseUserSetting = module_index.DatabaseUserSetting.new;
+  final DatabaseUserSettingAcl = module_index.DatabaseUserSettingAcl.new;
+  final DatabaseUserSettingAclArgs = module_index.DatabaseUserSettingAcl.new;
+  final DatabaseUserSettingArgs = module_index.DatabaseUserSetting.new;
+  final DatabaseUserSettingOpensearchAcl =
+      module_index.DatabaseUserSettingOpensearchAcl.new;
+  final DatabaseUserSettingOpensearchAclArgs =
+      module_index.DatabaseUserSettingOpensearchAcl.new;
+  final DatabaseUserState = module_index.DatabaseUserState.new;
+  final DatabaseUserStateArgs = module_index.DatabaseUserState.new;
+  final DatabaseValkeyConfig = module_index.DatabaseValkeyConfig.new;
+  final DatabaseValkeyConfigArgs = module_index.DatabaseValkeyConfigArgs.new;
+  final DatabaseValkeyConfigState = module_index.DatabaseValkeyConfigState.new;
+  final DatabaseValkeyConfigStateArgs =
+      module_index.DatabaseValkeyConfigState.new;
+  final DnsRecord = module_index.DnsRecord.new;
+  final DnsRecordArgs = module_index.DnsRecordArgs.new;
+  final DnsRecordState = module_index.DnsRecordState.new;
+  final DnsRecordStateArgs = module_index.DnsRecordState.new;
+  final Domain = module_index.Domain.new;
+  final DomainArgs = module_index.DomainArgs.new;
+  final DomainState = module_index.DomainState.new;
+  final DomainStateArgs = module_index.DomainState.new;
+  final Droplet = module_index.Droplet.new;
+  final DropletArgs = module_index.DropletArgs.new;
+  final DropletAutoscale = module_index.DropletAutoscale.new;
+  final DropletAutoscaleArgs = module_index.DropletAutoscaleArgs.new;
+  final DropletAutoscaleConfig = module_index.DropletAutoscaleConfig.new;
+  final DropletAutoscaleConfigArgs = module_index.DropletAutoscaleConfig.new;
+  final DropletAutoscaleCurrentUtilization =
+      module_index.DropletAutoscaleCurrentUtilization.new;
+  final DropletAutoscaleCurrentUtilizationArgs =
+      module_index.DropletAutoscaleCurrentUtilization.new;
+  final DropletAutoscaleDropletTemplate =
+      module_index.DropletAutoscaleDropletTemplate.new;
+  final DropletAutoscaleDropletTemplateArgs =
+      module_index.DropletAutoscaleDropletTemplate.new;
+  final DropletAutoscaleState = module_index.DropletAutoscaleState.new;
+  final DropletAutoscaleStateArgs = module_index.DropletAutoscaleState.new;
+  final DropletBackupPolicy = module_index.DropletBackupPolicy.new;
+  final DropletBackupPolicyArgs = module_index.DropletBackupPolicy.new;
+  final DropletSlug = module_index.DropletSlug.values;
+  final DropletSnapshot = module_index.DropletSnapshot.new;
+  final DropletSnapshotArgs = module_index.DropletSnapshotArgs.new;
+  final DropletSnapshotState = module_index.DropletSnapshotState.new;
+  final DropletSnapshotStateArgs = module_index.DropletSnapshotState.new;
+  final DropletState = module_index.DropletState.new;
+  final DropletStateArgs = module_index.DropletState.new;
+  final FileSystemType = module_index.FileSystemType.values;
+  final Firewall = module_index.Firewall.new;
+  final FirewallArgs = module_index.FirewallArgs.new;
+  final FirewallInboundRule = module_index.FirewallInboundRule.new;
+  final FirewallInboundRuleArgs = module_index.FirewallInboundRule.new;
+  final FirewallOutboundRule = module_index.FirewallOutboundRule.new;
+  final FirewallOutboundRuleArgs = module_index.FirewallOutboundRule.new;
+  final FirewallPendingChange = module_index.FirewallPendingChange.new;
+  final FirewallPendingChangeArgs = module_index.FirewallPendingChange.new;
+  final FirewallState = module_index.FirewallState.new;
+  final FirewallStateArgs = module_index.FirewallState.new;
+  final FloatingIp = module_index.FloatingIp.new;
+  final FloatingIpArgs = module_index.FloatingIpArgs.new;
+  final FloatingIpAssignment = module_index.FloatingIpAssignment.new;
+  final FloatingIpAssignmentArgs = module_index.FloatingIpAssignmentArgs.new;
+  final FloatingIpAssignmentState = module_index.FloatingIpAssignmentState.new;
+  final FloatingIpAssignmentStateArgs =
+      module_index.FloatingIpAssignmentState.new;
+  final FloatingIpState = module_index.FloatingIpState.new;
+  final FloatingIpStateArgs = module_index.FloatingIpState.new;
+  final GenaiAgent = module_index.GenaiAgent.new;
+  final GenaiAgentAgentGuardrail = module_index.GenaiAgentAgentGuardrail.new;
+  final GenaiAgentAgentGuardrailArgs =
+      module_index.GenaiAgentAgentGuardrail.new;
+  final GenaiAgentAnthropicApiKey = module_index.GenaiAgentAnthropicApiKey.new;
+  final GenaiAgentAnthropicApiKeyArgs =
+      module_index.GenaiAgentAnthropicApiKey.new;
+  final GenaiAgentApiKey = module_index.GenaiAgentApiKey.new;
+  final GenaiAgentApiKeyArgs = module_index.GenaiAgentApiKey.new;
+  final GenaiAgentApiKeyInfo = module_index.GenaiAgentApiKeyInfo.new;
+  final GenaiAgentApiKeyInfoArgs = module_index.GenaiAgentApiKeyInfo.new;
+  final GenaiAgentArgs = module_index.GenaiAgentArgs.new;
+  final GenaiAgentChatbot = module_index.GenaiAgentChatbot.new;
+  final GenaiAgentChatbotArgs = module_index.GenaiAgentChatbot.new;
+  final GenaiAgentChatbotIdentifier =
+      module_index.GenaiAgentChatbotIdentifier.new;
+  final GenaiAgentChatbotIdentifierArgs =
+      module_index.GenaiAgentChatbotIdentifier.new;
+  final GenaiAgentChildAgent = module_index.GenaiAgentChildAgent.new;
+  final GenaiAgentChildAgentAnthropicApiKey =
+      module_index.GenaiAgentChildAgentAnthropicApiKey.new;
+  final GenaiAgentChildAgentAnthropicApiKeyArgs =
+      module_index.GenaiAgentChildAgentAnthropicApiKey.new;
+  final GenaiAgentChildAgentApiKey =
+      module_index.GenaiAgentChildAgentApiKey.new;
+  final GenaiAgentChildAgentApiKeyArgs =
+      module_index.GenaiAgentChildAgentApiKey.new;
+  final GenaiAgentChildAgentApiKeyInfo =
+      module_index.GenaiAgentChildAgentApiKeyInfo.new;
+  final GenaiAgentChildAgentApiKeyInfoArgs =
+      module_index.GenaiAgentChildAgentApiKeyInfo.new;
+  final GenaiAgentChildAgentArgs = module_index.GenaiAgentChildAgent.new;
+  final GenaiAgentChildAgentChatbot =
+      module_index.GenaiAgentChildAgentChatbot.new;
+  final GenaiAgentChildAgentChatbotArgs =
+      module_index.GenaiAgentChildAgentChatbot.new;
+  final GenaiAgentChildAgentChatbotIdentifier =
+      module_index.GenaiAgentChildAgentChatbotIdentifier.new;
+  final GenaiAgentChildAgentChatbotIdentifierArgs =
+      module_index.GenaiAgentChildAgentChatbotIdentifier.new;
+  final GenaiAgentChildAgentDeployment =
+      module_index.GenaiAgentChildAgentDeployment.new;
+  final GenaiAgentChildAgentDeploymentArgs =
+      module_index.GenaiAgentChildAgentDeployment.new;
+  final GenaiAgentDeployment = module_index.GenaiAgentDeployment.new;
+  final GenaiAgentDeploymentArgs = module_index.GenaiAgentDeployment.new;
+  final GenaiAgentFunction = module_index.GenaiAgentFunction.new;
+  final GenaiAgentFunctionArgs = module_index.GenaiAgentFunction.new;
+  final GenaiAgentKnowledgeBase = module_index.GenaiAgentKnowledgeBase.new;
+  final GenaiAgentKnowledgeBaseArgs = module_index.GenaiAgentKnowledgeBase.new;
+  final GenaiAgentKnowledgeBaseAttachment =
+      module_index.GenaiAgentKnowledgeBaseAttachment.new;
+  final GenaiAgentKnowledgeBaseAttachmentArgs =
+      module_index.GenaiAgentKnowledgeBaseAttachmentArgs.new;
+  final GenaiAgentKnowledgeBaseAttachmentState =
+      module_index.GenaiAgentKnowledgeBaseAttachmentState.new;
+  final GenaiAgentKnowledgeBaseAttachmentStateArgs =
+      module_index.GenaiAgentKnowledgeBaseAttachmentState.new;
+  final GenaiAgentKnowledgeBaseLastIndexingJob =
+      module_index.GenaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GenaiAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index.GenaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GenaiAgentModel = module_index.GenaiAgentModel.new;
+  final GenaiAgentModelAgreement = module_index.GenaiAgentModelAgreement.new;
+  final GenaiAgentModelAgreementArgs =
+      module_index.GenaiAgentModelAgreement.new;
+  final GenaiAgentModelArgs = module_index.GenaiAgentModel.new;
+  final GenaiAgentModelVersion = module_index.GenaiAgentModelVersion.new;
+  final GenaiAgentModelVersionArgs = module_index.GenaiAgentModelVersion.new;
+  final GenaiAgentOpenAiApiKey = module_index.GenaiAgentOpenAiApiKey.new;
+  final GenaiAgentOpenAiApiKeyArgs = module_index.GenaiAgentOpenAiApiKey.new;
+  final GenaiAgentParentAgent = module_index.GenaiAgentParentAgent.new;
+  final GenaiAgentParentAgentAnthropicApiKey =
+      module_index.GenaiAgentParentAgentAnthropicApiKey.new;
+  final GenaiAgentParentAgentAnthropicApiKeyArgs =
+      module_index.GenaiAgentParentAgentAnthropicApiKey.new;
+  final GenaiAgentParentAgentApiKey =
+      module_index.GenaiAgentParentAgentApiKey.new;
+  final GenaiAgentParentAgentApiKeyArgs =
+      module_index.GenaiAgentParentAgentApiKey.new;
+  final GenaiAgentParentAgentApiKeyInfo =
+      module_index.GenaiAgentParentAgentApiKeyInfo.new;
+  final GenaiAgentParentAgentApiKeyInfoArgs =
+      module_index.GenaiAgentParentAgentApiKeyInfo.new;
+  final GenaiAgentParentAgentArgs = module_index.GenaiAgentParentAgent.new;
+  final GenaiAgentParentAgentChatbot =
+      module_index.GenaiAgentParentAgentChatbot.new;
+  final GenaiAgentParentAgentChatbotArgs =
+      module_index.GenaiAgentParentAgentChatbot.new;
+  final GenaiAgentParentAgentChatbotIdentifier =
+      module_index.GenaiAgentParentAgentChatbotIdentifier.new;
+  final GenaiAgentParentAgentChatbotIdentifierArgs =
+      module_index.GenaiAgentParentAgentChatbotIdentifier.new;
+  final GenaiAgentParentAgentDeployment =
+      module_index.GenaiAgentParentAgentDeployment.new;
+  final GenaiAgentParentAgentDeploymentArgs =
+      module_index.GenaiAgentParentAgentDeployment.new;
+  final GenaiAgentRoute = module_index.GenaiAgentRoute.new;
+  final GenaiAgentRouteArgs = module_index.GenaiAgentRouteArgs.new;
+  final GenaiAgentRouteState = module_index.GenaiAgentRouteState.new;
+  final GenaiAgentRouteStateArgs = module_index.GenaiAgentRouteState.new;
+  final GenaiAgentState = module_index.GenaiAgentState.new;
+  final GenaiAgentStateArgs = module_index.GenaiAgentState.new;
+  final GenaiAgentTemplate = module_index.GenaiAgentTemplate.new;
+  final GenaiAgentTemplateArgs = module_index.GenaiAgentTemplate.new;
+  final GenaiAgentTemplateKnowledgeBase =
+      module_index.GenaiAgentTemplateKnowledgeBase.new;
+  final GenaiAgentTemplateKnowledgeBaseArgs =
+      module_index.GenaiAgentTemplateKnowledgeBase.new;
+  final GenaiAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index.GenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index.GenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GenaiAgentTemplateModel = module_index.GenaiAgentTemplateModel.new;
+  final GenaiAgentTemplateModelAgreement =
+      module_index.GenaiAgentTemplateModelAgreement.new;
+  final GenaiAgentTemplateModelAgreementArgs =
+      module_index.GenaiAgentTemplateModelAgreement.new;
+  final GenaiAgentTemplateModelArgs = module_index.GenaiAgentTemplateModel.new;
+  final GenaiAgentTemplateModelVersion =
+      module_index.GenaiAgentTemplateModelVersion.new;
+  final GenaiAgentTemplateModelVersionArgs =
+      module_index.GenaiAgentTemplateModelVersion.new;
+  final GenaiFunction = module_index.GenaiFunction.new;
+  final GenaiFunctionArgs = module_index.GenaiFunctionArgs.new;
+  final GenaiFunctionState = module_index.GenaiFunctionState.new;
+  final GenaiFunctionStateArgs = module_index.GenaiFunctionState.new;
+  final GenaiIndexingJobCancel = module_index.GenaiIndexingJobCancel.new;
+  final GenaiIndexingJobCancelArgs =
+      module_index.GenaiIndexingJobCancelArgs.new;
+  final GenaiIndexingJobCancelState =
+      module_index.GenaiIndexingJobCancelState.new;
+  final GenaiIndexingJobCancelStateArgs =
+      module_index.GenaiIndexingJobCancelState.new;
+  final GenaiKnowledgeBase = module_index.GenaiKnowledgeBase.new;
+  final GenaiKnowledgeBaseArgs = module_index.GenaiKnowledgeBaseArgs.new;
+  final GenaiKnowledgeBaseDataSource =
+      module_index.GenaiKnowledgeBaseDataSource.new;
+  final GenaiKnowledgeBaseDataSourceArgs =
+      module_index.GenaiKnowledgeBaseDataSourceArgs.new;
+  final GenaiKnowledgeBaseDataSourceSpacesDataSource =
+      module_index.GenaiKnowledgeBaseDataSourceSpacesDataSource.new;
+  final GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs =
+      module_index.GenaiKnowledgeBaseDataSourceSpacesDataSource.new;
+  final GenaiKnowledgeBaseDataSourceState =
+      module_index.GenaiKnowledgeBaseDataSourceState.new;
+  final GenaiKnowledgeBaseDataSourceStateArgs =
+      module_index.GenaiKnowledgeBaseDataSourceState.new;
+  final GenaiKnowledgeBaseDataSourceWebCrawlerDataSource =
+      module_index.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
+  final GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs =
+      module_index.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
+  final GenaiKnowledgeBaseLastIndexingJob =
+      module_index.GenaiKnowledgeBaseLastIndexingJob.new;
+  final GenaiKnowledgeBaseLastIndexingJobArgs =
+      module_index.GenaiKnowledgeBaseLastIndexingJob.new;
+  final GenaiKnowledgeBaseState = module_index.GenaiKnowledgeBaseState.new;
+  final GenaiKnowledgeBaseStateArgs = module_index.GenaiKnowledgeBaseState.new;
+  final GenaiOpenaiApiKey = module_index.GenaiOpenaiApiKey.new;
+  final GenaiOpenaiApiKeyArgs = module_index.GenaiOpenaiApiKeyArgs.new;
+  final GenaiOpenaiApiKeyModel = module_index.GenaiOpenaiApiKeyModel.new;
+  final GenaiOpenaiApiKeyModelAgreement =
+      module_index.GenaiOpenaiApiKeyModelAgreement.new;
+  final GenaiOpenaiApiKeyModelAgreementArgs =
+      module_index.GenaiOpenaiApiKeyModelAgreement.new;
+  final GenaiOpenaiApiKeyModelArgs = module_index.GenaiOpenaiApiKeyModel.new;
+  final GenaiOpenaiApiKeyModelVersion =
+      module_index.GenaiOpenaiApiKeyModelVersion.new;
+  final GenaiOpenaiApiKeyModelVersionArgs =
+      module_index.GenaiOpenaiApiKeyModelVersion.new;
+  final GenaiOpenaiApiKeyState = module_index.GenaiOpenaiApiKeyState.new;
+  final GenaiOpenaiApiKeyStateArgs = module_index.GenaiOpenaiApiKeyState.new;
+  final GetAccountResult = module_index.GetAccountResult.new;
+  final GetAccountResultArgs = module_index.GetAccountResult.new;
+  final GetAppArgs = module_index.GetAppArgs.new;
+  final GetAppDedicatedIp = module_index.GetAppDedicatedIp.new;
+  final GetAppDedicatedIpArgs = module_index.GetAppDedicatedIp.new;
+  final GetAppResult = module_index.GetAppResult.new;
+  final GetAppResultArgs = module_index.GetAppResult.new;
+  final GetAppSpec = module_index.GetAppSpec.new;
+  final GetAppSpecAlert = module_index.GetAppSpecAlert.new;
+  final GetAppSpecAlertArgs = module_index.GetAppSpecAlert.new;
+  final GetAppSpecAlertDestinations =
+      module_index.GetAppSpecAlertDestinations.new;
+  final GetAppSpecAlertDestinationsArgs =
+      module_index.GetAppSpecAlertDestinations.new;
+  final GetAppSpecAlertDestinationsSlackWebhook =
+      module_index.GetAppSpecAlertDestinationsSlackWebhook.new;
+  final GetAppSpecAlertDestinationsSlackWebhookArgs =
+      module_index.GetAppSpecAlertDestinationsSlackWebhook.new;
+  final GetAppSpecArgs = module_index.GetAppSpec.new;
+  final GetAppSpecDatabase = module_index.GetAppSpecDatabase.new;
+  final GetAppSpecDatabaseArgs = module_index.GetAppSpecDatabase.new;
+  final GetAppSpecDomain = module_index.GetAppSpecDomain.new;
+  final GetAppSpecDomainArgs = module_index.GetAppSpecDomain.new;
+  final GetAppSpecEgress = module_index.GetAppSpecEgress.new;
+  final GetAppSpecEgressArgs = module_index.GetAppSpecEgress.new;
+  final GetAppSpecEnv = module_index.GetAppSpecEnv.new;
+  final GetAppSpecEnvArgs = module_index.GetAppSpecEnv.new;
+  final GetAppSpecFunction = module_index.GetAppSpecFunction.new;
+  final GetAppSpecFunctionAlert = module_index.GetAppSpecFunctionAlert.new;
+  final GetAppSpecFunctionAlertArgs = module_index.GetAppSpecFunctionAlert.new;
+  final GetAppSpecFunctionAlertDestinations =
+      module_index.GetAppSpecFunctionAlertDestinations.new;
+  final GetAppSpecFunctionAlertDestinationsArgs =
+      module_index.GetAppSpecFunctionAlertDestinations.new;
+  final GetAppSpecFunctionAlertDestinationsSlackWebhook =
+      module_index.GetAppSpecFunctionAlertDestinationsSlackWebhook.new;
+  final GetAppSpecFunctionAlertDestinationsSlackWebhookArgs =
+      module_index.GetAppSpecFunctionAlertDestinationsSlackWebhook.new;
+  final GetAppSpecFunctionArgs = module_index.GetAppSpecFunction.new;
+  final GetAppSpecFunctionBitbucket =
+      module_index.GetAppSpecFunctionBitbucket.new;
+  final GetAppSpecFunctionBitbucketArgs =
+      module_index.GetAppSpecFunctionBitbucket.new;
+  final GetAppSpecFunctionCors = module_index.GetAppSpecFunctionCors.new;
+  final GetAppSpecFunctionCorsAllowOrigins =
+      module_index.GetAppSpecFunctionCorsAllowOrigins.new;
+  final GetAppSpecFunctionCorsAllowOriginsArgs =
+      module_index.GetAppSpecFunctionCorsAllowOrigins.new;
+  final GetAppSpecFunctionCorsArgs = module_index.GetAppSpecFunctionCors.new;
+  final GetAppSpecFunctionEnv = module_index.GetAppSpecFunctionEnv.new;
+  final GetAppSpecFunctionEnvArgs = module_index.GetAppSpecFunctionEnv.new;
+  final GetAppSpecFunctionGit = module_index.GetAppSpecFunctionGit.new;
+  final GetAppSpecFunctionGitArgs = module_index.GetAppSpecFunctionGit.new;
+  final GetAppSpecFunctionGithub = module_index.GetAppSpecFunctionGithub.new;
+  final GetAppSpecFunctionGithubArgs =
+      module_index.GetAppSpecFunctionGithub.new;
+  final GetAppSpecFunctionGitlab = module_index.GetAppSpecFunctionGitlab.new;
+  final GetAppSpecFunctionGitlabArgs =
+      module_index.GetAppSpecFunctionGitlab.new;
+  final GetAppSpecFunctionLogDestination =
+      module_index.GetAppSpecFunctionLogDestination.new;
+  final GetAppSpecFunctionLogDestinationArgs =
+      module_index.GetAppSpecFunctionLogDestination.new;
+  final GetAppSpecFunctionLogDestinationDatadog =
+      module_index.GetAppSpecFunctionLogDestinationDatadog.new;
+  final GetAppSpecFunctionLogDestinationDatadogArgs =
+      module_index.GetAppSpecFunctionLogDestinationDatadog.new;
+  final GetAppSpecFunctionLogDestinationLogtail =
+      module_index.GetAppSpecFunctionLogDestinationLogtail.new;
+  final GetAppSpecFunctionLogDestinationLogtailArgs =
+      module_index.GetAppSpecFunctionLogDestinationLogtail.new;
+  final GetAppSpecFunctionLogDestinationOpenSearch =
+      module_index.GetAppSpecFunctionLogDestinationOpenSearch.new;
+  final GetAppSpecFunctionLogDestinationOpenSearchArgs =
+      module_index.GetAppSpecFunctionLogDestinationOpenSearch.new;
+  final GetAppSpecFunctionLogDestinationOpenSearchBasicAuth =
+      module_index.GetAppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecFunctionLogDestinationOpenSearchBasicAuthArgs =
+      module_index.GetAppSpecFunctionLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecFunctionLogDestinationPapertrail =
+      module_index.GetAppSpecFunctionLogDestinationPapertrail.new;
+  final GetAppSpecFunctionLogDestinationPapertrailArgs =
+      module_index.GetAppSpecFunctionLogDestinationPapertrail.new;
+  final GetAppSpecFunctionRoute = module_index.GetAppSpecFunctionRoute.new;
+  final GetAppSpecFunctionRouteArgs = module_index.GetAppSpecFunctionRoute.new;
+  final GetAppSpecIngress = module_index.GetAppSpecIngress.new;
+  final GetAppSpecIngressArgs = module_index.GetAppSpecIngress.new;
+  final GetAppSpecIngressRule = module_index.GetAppSpecIngressRule.new;
+  final GetAppSpecIngressRuleArgs = module_index.GetAppSpecIngressRule.new;
+  final GetAppSpecIngressRuleComponent =
+      module_index.GetAppSpecIngressRuleComponent.new;
+  final GetAppSpecIngressRuleComponentArgs =
+      module_index.GetAppSpecIngressRuleComponent.new;
+  final GetAppSpecIngressRuleCors = module_index.GetAppSpecIngressRuleCors.new;
+  final GetAppSpecIngressRuleCorsAllowOrigins =
+      module_index.GetAppSpecIngressRuleCorsAllowOrigins.new;
+  final GetAppSpecIngressRuleCorsAllowOriginsArgs =
+      module_index.GetAppSpecIngressRuleCorsAllowOrigins.new;
+  final GetAppSpecIngressRuleCorsArgs =
+      module_index.GetAppSpecIngressRuleCors.new;
+  final GetAppSpecIngressRuleMatch =
+      module_index.GetAppSpecIngressRuleMatch.new;
+  final GetAppSpecIngressRuleMatchArgs =
+      module_index.GetAppSpecIngressRuleMatch.new;
+  final GetAppSpecIngressRuleMatchAuthority =
+      module_index.GetAppSpecIngressRuleMatchAuthority.new;
+  final GetAppSpecIngressRuleMatchAuthorityArgs =
+      module_index.GetAppSpecIngressRuleMatchAuthority.new;
+  final GetAppSpecIngressRuleMatchPath =
+      module_index.GetAppSpecIngressRuleMatchPath.new;
+  final GetAppSpecIngressRuleMatchPathArgs =
+      module_index.GetAppSpecIngressRuleMatchPath.new;
+  final GetAppSpecIngressRuleRedirect =
+      module_index.GetAppSpecIngressRuleRedirect.new;
+  final GetAppSpecIngressRuleRedirectArgs =
+      module_index.GetAppSpecIngressRuleRedirect.new;
+  final GetAppSpecIngressSecureHeader =
+      module_index.GetAppSpecIngressSecureHeader.new;
+  final GetAppSpecIngressSecureHeaderArgs =
+      module_index.GetAppSpecIngressSecureHeader.new;
+  final GetAppSpecJob = module_index.GetAppSpecJob.new;
+  final GetAppSpecJobAlert = module_index.GetAppSpecJobAlert.new;
+  final GetAppSpecJobAlertArgs = module_index.GetAppSpecJobAlert.new;
+  final GetAppSpecJobAlertDestinations =
+      module_index.GetAppSpecJobAlertDestinations.new;
+  final GetAppSpecJobAlertDestinationsArgs =
+      module_index.GetAppSpecJobAlertDestinations.new;
+  final GetAppSpecJobAlertDestinationsSlackWebhook =
+      module_index.GetAppSpecJobAlertDestinationsSlackWebhook.new;
+  final GetAppSpecJobAlertDestinationsSlackWebhookArgs =
+      module_index.GetAppSpecJobAlertDestinationsSlackWebhook.new;
+  final GetAppSpecJobArgs = module_index.GetAppSpecJob.new;
+  final GetAppSpecJobBitbucket = module_index.GetAppSpecJobBitbucket.new;
+  final GetAppSpecJobBitbucketArgs = module_index.GetAppSpecJobBitbucket.new;
+  final GetAppSpecJobEnv = module_index.GetAppSpecJobEnv.new;
+  final GetAppSpecJobEnvArgs = module_index.GetAppSpecJobEnv.new;
+  final GetAppSpecJobGit = module_index.GetAppSpecJobGit.new;
+  final GetAppSpecJobGitArgs = module_index.GetAppSpecJobGit.new;
+  final GetAppSpecJobGithub = module_index.GetAppSpecJobGithub.new;
+  final GetAppSpecJobGithubArgs = module_index.GetAppSpecJobGithub.new;
+  final GetAppSpecJobGitlab = module_index.GetAppSpecJobGitlab.new;
+  final GetAppSpecJobGitlabArgs = module_index.GetAppSpecJobGitlab.new;
+  final GetAppSpecJobImage = module_index.GetAppSpecJobImage.new;
+  final GetAppSpecJobImageArgs = module_index.GetAppSpecJobImage.new;
+  final GetAppSpecJobImageDeployOnPush =
+      module_index.GetAppSpecJobImageDeployOnPush.new;
+  final GetAppSpecJobImageDeployOnPushArgs =
+      module_index.GetAppSpecJobImageDeployOnPush.new;
+  final GetAppSpecJobLogDestination =
+      module_index.GetAppSpecJobLogDestination.new;
+  final GetAppSpecJobLogDestinationArgs =
+      module_index.GetAppSpecJobLogDestination.new;
+  final GetAppSpecJobLogDestinationDatadog =
+      module_index.GetAppSpecJobLogDestinationDatadog.new;
+  final GetAppSpecJobLogDestinationDatadogArgs =
+      module_index.GetAppSpecJobLogDestinationDatadog.new;
+  final GetAppSpecJobLogDestinationLogtail =
+      module_index.GetAppSpecJobLogDestinationLogtail.new;
+  final GetAppSpecJobLogDestinationLogtailArgs =
+      module_index.GetAppSpecJobLogDestinationLogtail.new;
+  final GetAppSpecJobLogDestinationOpenSearch =
+      module_index.GetAppSpecJobLogDestinationOpenSearch.new;
+  final GetAppSpecJobLogDestinationOpenSearchArgs =
+      module_index.GetAppSpecJobLogDestinationOpenSearch.new;
+  final GetAppSpecJobLogDestinationOpenSearchBasicAuth =
+      module_index.GetAppSpecJobLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs =
+      module_index.GetAppSpecJobLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecJobLogDestinationPapertrail =
+      module_index.GetAppSpecJobLogDestinationPapertrail.new;
+  final GetAppSpecJobLogDestinationPapertrailArgs =
+      module_index.GetAppSpecJobLogDestinationPapertrail.new;
+  final GetAppSpecJobTermination = module_index.GetAppSpecJobTermination.new;
+  final GetAppSpecJobTerminationArgs =
+      module_index.GetAppSpecJobTermination.new;
+  final GetAppSpecMaintenance = module_index.GetAppSpecMaintenance.new;
+  final GetAppSpecMaintenanceArgs = module_index.GetAppSpecMaintenance.new;
+  final GetAppSpecService = module_index.GetAppSpecService.new;
+  final GetAppSpecServiceAlert = module_index.GetAppSpecServiceAlert.new;
+  final GetAppSpecServiceAlertArgs = module_index.GetAppSpecServiceAlert.new;
+  final GetAppSpecServiceAlertDestinations =
+      module_index.GetAppSpecServiceAlertDestinations.new;
+  final GetAppSpecServiceAlertDestinationsArgs =
+      module_index.GetAppSpecServiceAlertDestinations.new;
+  final GetAppSpecServiceAlertDestinationsSlackWebhook =
+      module_index.GetAppSpecServiceAlertDestinationsSlackWebhook.new;
+  final GetAppSpecServiceAlertDestinationsSlackWebhookArgs =
+      module_index.GetAppSpecServiceAlertDestinationsSlackWebhook.new;
+  final GetAppSpecServiceArgs = module_index.GetAppSpecService.new;
+  final GetAppSpecServiceAutoscaling =
+      module_index.GetAppSpecServiceAutoscaling.new;
+  final GetAppSpecServiceAutoscalingArgs =
+      module_index.GetAppSpecServiceAutoscaling.new;
+  final GetAppSpecServiceAutoscalingMetrics =
+      module_index.GetAppSpecServiceAutoscalingMetrics.new;
+  final GetAppSpecServiceAutoscalingMetricsArgs =
+      module_index.GetAppSpecServiceAutoscalingMetrics.new;
+  final GetAppSpecServiceAutoscalingMetricsCpu =
+      module_index.GetAppSpecServiceAutoscalingMetricsCpu.new;
+  final GetAppSpecServiceAutoscalingMetricsCpuArgs =
+      module_index.GetAppSpecServiceAutoscalingMetricsCpu.new;
+  final GetAppSpecServiceBitbucket =
+      module_index.GetAppSpecServiceBitbucket.new;
+  final GetAppSpecServiceBitbucketArgs =
+      module_index.GetAppSpecServiceBitbucket.new;
+  final GetAppSpecServiceCors = module_index.GetAppSpecServiceCors.new;
+  final GetAppSpecServiceCorsAllowOrigins =
+      module_index.GetAppSpecServiceCorsAllowOrigins.new;
+  final GetAppSpecServiceCorsAllowOriginsArgs =
+      module_index.GetAppSpecServiceCorsAllowOrigins.new;
+  final GetAppSpecServiceCorsArgs = module_index.GetAppSpecServiceCors.new;
+  final GetAppSpecServiceEnv = module_index.GetAppSpecServiceEnv.new;
+  final GetAppSpecServiceEnvArgs = module_index.GetAppSpecServiceEnv.new;
+  final GetAppSpecServiceGit = module_index.GetAppSpecServiceGit.new;
+  final GetAppSpecServiceGitArgs = module_index.GetAppSpecServiceGit.new;
+  final GetAppSpecServiceGithub = module_index.GetAppSpecServiceGithub.new;
+  final GetAppSpecServiceGithubArgs = module_index.GetAppSpecServiceGithub.new;
+  final GetAppSpecServiceGitlab = module_index.GetAppSpecServiceGitlab.new;
+  final GetAppSpecServiceGitlabArgs = module_index.GetAppSpecServiceGitlab.new;
+  final GetAppSpecServiceHealthCheck =
+      module_index.GetAppSpecServiceHealthCheck.new;
+  final GetAppSpecServiceHealthCheckArgs =
+      module_index.GetAppSpecServiceHealthCheck.new;
+  final GetAppSpecServiceImage = module_index.GetAppSpecServiceImage.new;
+  final GetAppSpecServiceImageArgs = module_index.GetAppSpecServiceImage.new;
+  final GetAppSpecServiceImageDeployOnPush =
+      module_index.GetAppSpecServiceImageDeployOnPush.new;
+  final GetAppSpecServiceImageDeployOnPushArgs =
+      module_index.GetAppSpecServiceImageDeployOnPush.new;
+  final GetAppSpecServiceLogDestination =
+      module_index.GetAppSpecServiceLogDestination.new;
+  final GetAppSpecServiceLogDestinationArgs =
+      module_index.GetAppSpecServiceLogDestination.new;
+  final GetAppSpecServiceLogDestinationDatadog =
+      module_index.GetAppSpecServiceLogDestinationDatadog.new;
+  final GetAppSpecServiceLogDestinationDatadogArgs =
+      module_index.GetAppSpecServiceLogDestinationDatadog.new;
+  final GetAppSpecServiceLogDestinationLogtail =
+      module_index.GetAppSpecServiceLogDestinationLogtail.new;
+  final GetAppSpecServiceLogDestinationLogtailArgs =
+      module_index.GetAppSpecServiceLogDestinationLogtail.new;
+  final GetAppSpecServiceLogDestinationOpenSearch =
+      module_index.GetAppSpecServiceLogDestinationOpenSearch.new;
+  final GetAppSpecServiceLogDestinationOpenSearchArgs =
+      module_index.GetAppSpecServiceLogDestinationOpenSearch.new;
+  final GetAppSpecServiceLogDestinationOpenSearchBasicAuth =
+      module_index.GetAppSpecServiceLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs =
+      module_index.GetAppSpecServiceLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecServiceLogDestinationPapertrail =
+      module_index.GetAppSpecServiceLogDestinationPapertrail.new;
+  final GetAppSpecServiceLogDestinationPapertrailArgs =
+      module_index.GetAppSpecServiceLogDestinationPapertrail.new;
+  final GetAppSpecServiceRoute = module_index.GetAppSpecServiceRoute.new;
+  final GetAppSpecServiceRouteArgs = module_index.GetAppSpecServiceRoute.new;
+  final GetAppSpecServiceTermination =
+      module_index.GetAppSpecServiceTermination.new;
+  final GetAppSpecServiceTerminationArgs =
+      module_index.GetAppSpecServiceTermination.new;
+  final GetAppSpecStaticSite = module_index.GetAppSpecStaticSite.new;
+  final GetAppSpecStaticSiteArgs = module_index.GetAppSpecStaticSite.new;
+  final GetAppSpecStaticSiteBitbucket =
+      module_index.GetAppSpecStaticSiteBitbucket.new;
+  final GetAppSpecStaticSiteBitbucketArgs =
+      module_index.GetAppSpecStaticSiteBitbucket.new;
+  final GetAppSpecStaticSiteCors = module_index.GetAppSpecStaticSiteCors.new;
+  final GetAppSpecStaticSiteCorsAllowOrigins =
+      module_index.GetAppSpecStaticSiteCorsAllowOrigins.new;
+  final GetAppSpecStaticSiteCorsAllowOriginsArgs =
+      module_index.GetAppSpecStaticSiteCorsAllowOrigins.new;
+  final GetAppSpecStaticSiteCorsArgs =
+      module_index.GetAppSpecStaticSiteCors.new;
+  final GetAppSpecStaticSiteEnv = module_index.GetAppSpecStaticSiteEnv.new;
+  final GetAppSpecStaticSiteEnvArgs = module_index.GetAppSpecStaticSiteEnv.new;
+  final GetAppSpecStaticSiteGit = module_index.GetAppSpecStaticSiteGit.new;
+  final GetAppSpecStaticSiteGitArgs = module_index.GetAppSpecStaticSiteGit.new;
+  final GetAppSpecStaticSiteGithub =
+      module_index.GetAppSpecStaticSiteGithub.new;
+  final GetAppSpecStaticSiteGithubArgs =
+      module_index.GetAppSpecStaticSiteGithub.new;
+  final GetAppSpecStaticSiteGitlab =
+      module_index.GetAppSpecStaticSiteGitlab.new;
+  final GetAppSpecStaticSiteGitlabArgs =
+      module_index.GetAppSpecStaticSiteGitlab.new;
+  final GetAppSpecStaticSiteRoute = module_index.GetAppSpecStaticSiteRoute.new;
+  final GetAppSpecStaticSiteRouteArgs =
+      module_index.GetAppSpecStaticSiteRoute.new;
+  final GetAppSpecVpc = module_index.GetAppSpecVpc.new;
+  final GetAppSpecVpcArgs = module_index.GetAppSpecVpc.new;
+  final GetAppSpecWorker = module_index.GetAppSpecWorker.new;
+  final GetAppSpecWorkerAlert = module_index.GetAppSpecWorkerAlert.new;
+  final GetAppSpecWorkerAlertArgs = module_index.GetAppSpecWorkerAlert.new;
+  final GetAppSpecWorkerAlertDestinations =
+      module_index.GetAppSpecWorkerAlertDestinations.new;
+  final GetAppSpecWorkerAlertDestinationsArgs =
+      module_index.GetAppSpecWorkerAlertDestinations.new;
+  final GetAppSpecWorkerAlertDestinationsSlackWebhook =
+      module_index.GetAppSpecWorkerAlertDestinationsSlackWebhook.new;
+  final GetAppSpecWorkerAlertDestinationsSlackWebhookArgs =
+      module_index.GetAppSpecWorkerAlertDestinationsSlackWebhook.new;
+  final GetAppSpecWorkerArgs = module_index.GetAppSpecWorker.new;
+  final GetAppSpecWorkerAutoscaling =
+      module_index.GetAppSpecWorkerAutoscaling.new;
+  final GetAppSpecWorkerAutoscalingArgs =
+      module_index.GetAppSpecWorkerAutoscaling.new;
+  final GetAppSpecWorkerAutoscalingMetrics =
+      module_index.GetAppSpecWorkerAutoscalingMetrics.new;
+  final GetAppSpecWorkerAutoscalingMetricsArgs =
+      module_index.GetAppSpecWorkerAutoscalingMetrics.new;
+  final GetAppSpecWorkerAutoscalingMetricsCpu =
+      module_index.GetAppSpecWorkerAutoscalingMetricsCpu.new;
+  final GetAppSpecWorkerAutoscalingMetricsCpuArgs =
+      module_index.GetAppSpecWorkerAutoscalingMetricsCpu.new;
+  final GetAppSpecWorkerBitbucket = module_index.GetAppSpecWorkerBitbucket.new;
+  final GetAppSpecWorkerBitbucketArgs =
+      module_index.GetAppSpecWorkerBitbucket.new;
+  final GetAppSpecWorkerEnv = module_index.GetAppSpecWorkerEnv.new;
+  final GetAppSpecWorkerEnvArgs = module_index.GetAppSpecWorkerEnv.new;
+  final GetAppSpecWorkerGit = module_index.GetAppSpecWorkerGit.new;
+  final GetAppSpecWorkerGitArgs = module_index.GetAppSpecWorkerGit.new;
+  final GetAppSpecWorkerGithub = module_index.GetAppSpecWorkerGithub.new;
+  final GetAppSpecWorkerGithubArgs = module_index.GetAppSpecWorkerGithub.new;
+  final GetAppSpecWorkerGitlab = module_index.GetAppSpecWorkerGitlab.new;
+  final GetAppSpecWorkerGitlabArgs = module_index.GetAppSpecWorkerGitlab.new;
+  final GetAppSpecWorkerImage = module_index.GetAppSpecWorkerImage.new;
+  final GetAppSpecWorkerImageArgs = module_index.GetAppSpecWorkerImage.new;
+  final GetAppSpecWorkerImageDeployOnPush =
+      module_index.GetAppSpecWorkerImageDeployOnPush.new;
+  final GetAppSpecWorkerImageDeployOnPushArgs =
+      module_index.GetAppSpecWorkerImageDeployOnPush.new;
+  final GetAppSpecWorkerLogDestination =
+      module_index.GetAppSpecWorkerLogDestination.new;
+  final GetAppSpecWorkerLogDestinationArgs =
+      module_index.GetAppSpecWorkerLogDestination.new;
+  final GetAppSpecWorkerLogDestinationDatadog =
+      module_index.GetAppSpecWorkerLogDestinationDatadog.new;
+  final GetAppSpecWorkerLogDestinationDatadogArgs =
+      module_index.GetAppSpecWorkerLogDestinationDatadog.new;
+  final GetAppSpecWorkerLogDestinationLogtail =
+      module_index.GetAppSpecWorkerLogDestinationLogtail.new;
+  final GetAppSpecWorkerLogDestinationLogtailArgs =
+      module_index.GetAppSpecWorkerLogDestinationLogtail.new;
+  final GetAppSpecWorkerLogDestinationOpenSearch =
+      module_index.GetAppSpecWorkerLogDestinationOpenSearch.new;
+  final GetAppSpecWorkerLogDestinationOpenSearchArgs =
+      module_index.GetAppSpecWorkerLogDestinationOpenSearch.new;
+  final GetAppSpecWorkerLogDestinationOpenSearchBasicAuth =
+      module_index.GetAppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecWorkerLogDestinationOpenSearchBasicAuthArgs =
+      module_index.GetAppSpecWorkerLogDestinationOpenSearchBasicAuth.new;
+  final GetAppSpecWorkerLogDestinationPapertrail =
+      module_index.GetAppSpecWorkerLogDestinationPapertrail.new;
+  final GetAppSpecWorkerLogDestinationPapertrailArgs =
+      module_index.GetAppSpecWorkerLogDestinationPapertrail.new;
+  final GetAppSpecWorkerTermination =
+      module_index.GetAppSpecWorkerTermination.new;
+  final GetAppSpecWorkerTerminationArgs =
+      module_index.GetAppSpecWorkerTermination.new;
+  final GetByoipPrefixArgs = module_index.GetByoipPrefixArgs.new;
+  final GetByoipPrefixResourcesAddress =
+      module_index.GetByoipPrefixResourcesAddress.new;
+  final GetByoipPrefixResourcesAddressArgs =
+      module_index.GetByoipPrefixResourcesAddress.new;
+  final GetByoipPrefixResourcesArgs =
+      module_index.GetByoipPrefixResourcesArgs.new;
+  final GetByoipPrefixResourcesResult =
+      module_index.GetByoipPrefixResourcesResult.new;
+  final GetByoipPrefixResourcesResultArgs =
+      module_index.GetByoipPrefixResourcesResult.new;
+  final GetByoipPrefixResult = module_index.GetByoipPrefixResult.new;
+  final GetByoipPrefixResultArgs = module_index.GetByoipPrefixResult.new;
+  final GetCertificateArgs = module_index.GetCertificateArgs.new;
+  final GetCertificateResult = module_index.GetCertificateResult.new;
+  final GetCertificateResultArgs = module_index.GetCertificateResult.new;
+  final GetContainerRegistriesArgs =
+      module_index.GetContainerRegistriesArgs.new;
+  final GetContainerRegistriesResult =
+      module_index.GetContainerRegistriesResult.new;
+  final GetContainerRegistriesResultArgs =
+      module_index.GetContainerRegistriesResult.new;
+  final GetContainerRegistryArgs = module_index.GetContainerRegistryArgs.new;
+  final GetContainerRegistryResult =
+      module_index.GetContainerRegistryResult.new;
+  final GetContainerRegistryResultArgs =
+      module_index.GetContainerRegistryResult.new;
+  final GetDatabaseCaArgs = module_index.GetDatabaseCaArgs.new;
+  final GetDatabaseCaResult = module_index.GetDatabaseCaResult.new;
+  final GetDatabaseCaResultArgs = module_index.GetDatabaseCaResult.new;
+  final GetDatabaseClusterArgs = module_index.GetDatabaseClusterArgs.new;
+  final GetDatabaseClusterMaintenanceWindow =
+      module_index.GetDatabaseClusterMaintenanceWindow.new;
+  final GetDatabaseClusterMaintenanceWindowArgs =
+      module_index.GetDatabaseClusterMaintenanceWindow.new;
+  final GetDatabaseClusterResult = module_index.GetDatabaseClusterResult.new;
+  final GetDatabaseClusterResultArgs =
+      module_index.GetDatabaseClusterResult.new;
+  final GetDatabaseConnectionPoolArgs =
+      module_index.GetDatabaseConnectionPoolArgs.new;
+  final GetDatabaseConnectionPoolResult =
+      module_index.GetDatabaseConnectionPoolResult.new;
+  final GetDatabaseConnectionPoolResultArgs =
+      module_index.GetDatabaseConnectionPoolResult.new;
+  final GetDatabaseMetricsCredentialsResult =
+      module_index.GetDatabaseMetricsCredentialsResult.new;
+  final GetDatabaseMetricsCredentialsResultArgs =
+      module_index.GetDatabaseMetricsCredentialsResult.new;
+  final GetDatabaseReplicaArgs = module_index.GetDatabaseReplicaArgs.new;
+  final GetDatabaseReplicaResult = module_index.GetDatabaseReplicaResult.new;
+  final GetDatabaseReplicaResultArgs =
+      module_index.GetDatabaseReplicaResult.new;
+  final GetDatabaseUserArgs = module_index.GetDatabaseUserArgs.new;
+  final GetDatabaseUserResult = module_index.GetDatabaseUserResult.new;
+  final GetDatabaseUserResultArgs = module_index.GetDatabaseUserResult.new;
+  final GetDatabaseUserSetting = module_index.GetDatabaseUserSetting.new;
+  final GetDatabaseUserSettingAcl = module_index.GetDatabaseUserSettingAcl.new;
+  final GetDatabaseUserSettingAclArgs =
+      module_index.GetDatabaseUserSettingAcl.new;
+  final GetDatabaseUserSettingArgs = module_index.GetDatabaseUserSetting.new;
+  final GetDatabaseUserSettingOpensearchAcl =
+      module_index.GetDatabaseUserSettingOpensearchAcl.new;
+  final GetDatabaseUserSettingOpensearchAclArgs =
+      module_index.GetDatabaseUserSettingOpensearchAcl.new;
+  final GetDomainArgs = module_index.GetDomainArgs.new;
+  final GetDomainResult = module_index.GetDomainResult.new;
+  final GetDomainResultArgs = module_index.GetDomainResult.new;
+  final GetDomainsArgs = module_index.GetDomainsArgs.new;
+  final GetDomainsDomain = module_index.GetDomainsDomain.new;
+  final GetDomainsDomainArgs = module_index.GetDomainsDomain.new;
+  final GetDomainsFilter = module_index.GetDomainsFilter.new;
+  final GetDomainsFilterArgs = module_index.GetDomainsFilter.new;
+  final GetDomainsResult = module_index.GetDomainsResult.new;
+  final GetDomainsResultArgs = module_index.GetDomainsResult.new;
+  final GetDomainsSort = module_index.GetDomainsSort.new;
+  final GetDomainsSortArgs = module_index.GetDomainsSort.new;
+  final GetDropletArgs = module_index.GetDropletArgs.new;
+  final GetDropletAutoscaleArgs = module_index.GetDropletAutoscaleArgs.new;
+  final GetDropletAutoscaleConfig = module_index.GetDropletAutoscaleConfig.new;
+  final GetDropletAutoscaleConfigArgs =
+      module_index.GetDropletAutoscaleConfig.new;
+  final GetDropletAutoscaleCurrentUtilization =
+      module_index.GetDropletAutoscaleCurrentUtilization.new;
+  final GetDropletAutoscaleCurrentUtilizationArgs =
+      module_index.GetDropletAutoscaleCurrentUtilization.new;
+  final GetDropletAutoscaleDropletTemplate =
+      module_index.GetDropletAutoscaleDropletTemplate.new;
+  final GetDropletAutoscaleDropletTemplateArgs =
+      module_index.GetDropletAutoscaleDropletTemplate.new;
+  final GetDropletAutoscaleResult = module_index.GetDropletAutoscaleResult.new;
+  final GetDropletAutoscaleResultArgs =
+      module_index.GetDropletAutoscaleResult.new;
+  final GetDropletResult = module_index.GetDropletResult.new;
+  final GetDropletResultArgs = module_index.GetDropletResult.new;
+  final GetDropletSnapshotArgs = module_index.GetDropletSnapshotArgs.new;
+  final GetDropletSnapshotResult = module_index.GetDropletSnapshotResult.new;
+  final GetDropletSnapshotResultArgs =
+      module_index.GetDropletSnapshotResult.new;
+  final GetDropletsArgs = module_index.GetDropletsArgs.new;
+  final GetDropletsDroplet = module_index.GetDropletsDroplet.new;
+  final GetDropletsDropletArgs = module_index.GetDropletsDroplet.new;
+  final GetDropletsFilter = module_index.GetDropletsFilter.new;
+  final GetDropletsFilterArgs = module_index.GetDropletsFilter.new;
+  final GetDropletsResult = module_index.GetDropletsResult.new;
+  final GetDropletsResultArgs = module_index.GetDropletsResult.new;
+  final GetDropletsSort = module_index.GetDropletsSort.new;
+  final GetDropletsSortArgs = module_index.GetDropletsSort.new;
+  final GetFirewallArgs = module_index.GetFirewallArgs.new;
+  final GetFirewallInboundRule = module_index.GetFirewallInboundRule.new;
+  final GetFirewallInboundRuleArgs = module_index.GetFirewallInboundRule.new;
+  final GetFirewallOutboundRule = module_index.GetFirewallOutboundRule.new;
+  final GetFirewallOutboundRuleArgs = module_index.GetFirewallOutboundRule.new;
+  final GetFirewallPendingChange = module_index.GetFirewallPendingChange.new;
+  final GetFirewallPendingChangeArgs =
+      module_index.GetFirewallPendingChange.new;
+  final GetFirewallResult = module_index.GetFirewallResult.new;
+  final GetFirewallResultArgs = module_index.GetFirewallResult.new;
+  final GetFloatingIpArgs = module_index.GetFloatingIpArgs.new;
+  final GetFloatingIpResult = module_index.GetFloatingIpResult.new;
+  final GetFloatingIpResultArgs = module_index.GetFloatingIpResult.new;
+  final GetGenaiAgentAgentGuardrail =
+      module_index.GetGenaiAgentAgentGuardrail.new;
+  final GetGenaiAgentAgentGuardrailArgs =
+      module_index.GetGenaiAgentAgentGuardrail.new;
+  final GetGenaiAgentAnthropicApiKey =
+      module_index.GetGenaiAgentAnthropicApiKey.new;
+  final GetGenaiAgentAnthropicApiKeyArgs =
+      module_index.GetGenaiAgentAnthropicApiKey.new;
+  final GetGenaiAgentApiKey = module_index.GetGenaiAgentApiKey.new;
+  final GetGenaiAgentApiKeyArgs = module_index.GetGenaiAgentApiKey.new;
+  final GetGenaiAgentApiKeyInfo = module_index.GetGenaiAgentApiKeyInfo.new;
+  final GetGenaiAgentApiKeyInfoArgs = module_index.GetGenaiAgentApiKeyInfo.new;
+  final GetGenaiAgentArgs = module_index.GetGenaiAgentArgs.new;
+  final GetGenaiAgentChatbot = module_index.GetGenaiAgentChatbot.new;
+  final GetGenaiAgentChatbotArgs = module_index.GetGenaiAgentChatbot.new;
+  final GetGenaiAgentChatbotIdentifier =
+      module_index.GetGenaiAgentChatbotIdentifier.new;
+  final GetGenaiAgentChatbotIdentifierArgs =
+      module_index.GetGenaiAgentChatbotIdentifier.new;
+  final GetGenaiAgentChildAgent = module_index.GetGenaiAgentChildAgent.new;
+  final GetGenaiAgentChildAgentAnthropicApiKey =
+      module_index.GetGenaiAgentChildAgentAnthropicApiKey.new;
+  final GetGenaiAgentChildAgentAnthropicApiKeyArgs =
+      module_index.GetGenaiAgentChildAgentAnthropicApiKey.new;
+  final GetGenaiAgentChildAgentApiKey =
+      module_index.GetGenaiAgentChildAgentApiKey.new;
+  final GetGenaiAgentChildAgentApiKeyArgs =
+      module_index.GetGenaiAgentChildAgentApiKey.new;
+  final GetGenaiAgentChildAgentApiKeyInfo =
+      module_index.GetGenaiAgentChildAgentApiKeyInfo.new;
+  final GetGenaiAgentChildAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentChildAgentApiKeyInfo.new;
+  final GetGenaiAgentChildAgentArgs = module_index.GetGenaiAgentChildAgent.new;
+  final GetGenaiAgentChildAgentChatbot =
+      module_index.GetGenaiAgentChildAgentChatbot.new;
+  final GetGenaiAgentChildAgentChatbotArgs =
+      module_index.GetGenaiAgentChildAgentChatbot.new;
+  final GetGenaiAgentChildAgentChatbotIdentifier =
+      module_index.GetGenaiAgentChildAgentChatbotIdentifier.new;
+  final GetGenaiAgentChildAgentChatbotIdentifierArgs =
+      module_index.GetGenaiAgentChildAgentChatbotIdentifier.new;
+  final GetGenaiAgentChildAgentDeployment =
+      module_index.GetGenaiAgentChildAgentDeployment.new;
+  final GetGenaiAgentChildAgentDeploymentArgs =
+      module_index.GetGenaiAgentChildAgentDeployment.new;
+  final GetGenaiAgentDeployment = module_index.GetGenaiAgentDeployment.new;
+  final GetGenaiAgentDeploymentArgs = module_index.GetGenaiAgentDeployment.new;
+  final GetGenaiAgentFunction = module_index.GetGenaiAgentFunction.new;
+  final GetGenaiAgentFunctionArgs = module_index.GetGenaiAgentFunction.new;
+  final GetGenaiAgentKnowledgeBase =
+      module_index.GetGenaiAgentKnowledgeBase.new;
+  final GetGenaiAgentKnowledgeBaseArgs =
+      module_index.GetGenaiAgentKnowledgeBase.new;
+  final GetGenaiAgentKnowledgeBaseLastIndexingJob =
+      module_index.GetGenaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGenaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentModel = module_index.GetGenaiAgentModel.new;
+  final GetGenaiAgentModelAgreement =
+      module_index.GetGenaiAgentModelAgreement.new;
+  final GetGenaiAgentModelAgreementArgs =
+      module_index.GetGenaiAgentModelAgreement.new;
+  final GetGenaiAgentModelArgs = module_index.GetGenaiAgentModel.new;
+  final GetGenaiAgentModelVersion = module_index.GetGenaiAgentModelVersion.new;
+  final GetGenaiAgentModelVersionArgs =
+      module_index.GetGenaiAgentModelVersion.new;
+  final GetGenaiAgentOpenAiApiKey = module_index.GetGenaiAgentOpenAiApiKey.new;
+  final GetGenaiAgentOpenAiApiKeyArgs =
+      module_index.GetGenaiAgentOpenAiApiKey.new;
+  final GetGenaiAgentParentAgent = module_index.GetGenaiAgentParentAgent.new;
+  final GetGenaiAgentParentAgentAnthropicApiKey =
+      module_index.GetGenaiAgentParentAgentAnthropicApiKey.new;
+  final GetGenaiAgentParentAgentAnthropicApiKeyArgs =
+      module_index.GetGenaiAgentParentAgentAnthropicApiKey.new;
+  final GetGenaiAgentParentAgentApiKey =
+      module_index.GetGenaiAgentParentAgentApiKey.new;
+  final GetGenaiAgentParentAgentApiKeyArgs =
+      module_index.GetGenaiAgentParentAgentApiKey.new;
+  final GetGenaiAgentParentAgentApiKeyInfo =
+      module_index.GetGenaiAgentParentAgentApiKeyInfo.new;
+  final GetGenaiAgentParentAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentParentAgentApiKeyInfo.new;
+  final GetGenaiAgentParentAgentArgs =
+      module_index.GetGenaiAgentParentAgent.new;
+  final GetGenaiAgentParentAgentChatbot =
+      module_index.GetGenaiAgentParentAgentChatbot.new;
+  final GetGenaiAgentParentAgentChatbotArgs =
+      module_index.GetGenaiAgentParentAgentChatbot.new;
+  final GetGenaiAgentParentAgentChatbotIdentifier =
+      module_index.GetGenaiAgentParentAgentChatbotIdentifier.new;
+  final GetGenaiAgentParentAgentChatbotIdentifierArgs =
+      module_index.GetGenaiAgentParentAgentChatbotIdentifier.new;
+  final GetGenaiAgentParentAgentDeployment =
+      module_index.GetGenaiAgentParentAgentDeployment.new;
+  final GetGenaiAgentParentAgentDeploymentArgs =
+      module_index.GetGenaiAgentParentAgentDeployment.new;
+  final GetGenaiAgentResult = module_index.GetGenaiAgentResult.new;
+  final GetGenaiAgentResultArgs = module_index.GetGenaiAgentResult.new;
+  final GetGenaiAgentTemplate = module_index.GetGenaiAgentTemplate.new;
+  final GetGenaiAgentTemplateArgs = module_index.GetGenaiAgentTemplate.new;
+  final GetGenaiAgentTemplateKnowledgeBase =
+      module_index.GetGenaiAgentTemplateKnowledgeBase.new;
+  final GetGenaiAgentTemplateKnowledgeBaseArgs =
+      module_index.GetGenaiAgentTemplateKnowledgeBase.new;
+  final GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentTemplateModel =
+      module_index.GetGenaiAgentTemplateModel.new;
+  final GetGenaiAgentTemplateModelAgreement =
+      module_index.GetGenaiAgentTemplateModelAgreement.new;
+  final GetGenaiAgentTemplateModelAgreementArgs =
+      module_index.GetGenaiAgentTemplateModelAgreement.new;
+  final GetGenaiAgentTemplateModelArgs =
+      module_index.GetGenaiAgentTemplateModel.new;
+  final GetGenaiAgentTemplateModelVersion =
+      module_index.GetGenaiAgentTemplateModelVersion.new;
+  final GetGenaiAgentTemplateModelVersionArgs =
+      module_index.GetGenaiAgentTemplateModelVersion.new;
+  final GetGenaiAgentVersionsAgentVersion =
+      module_index.GetGenaiAgentVersionsAgentVersion.new;
+  final GetGenaiAgentVersionsAgentVersionArgs =
+      module_index.GetGenaiAgentVersionsAgentVersion.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedChildAgent =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedChildAgent.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedChildAgent.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedFunction =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedFunction.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedFunction.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedGuardrail =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedGuardrail.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedGuardrail.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.new;
+  final GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs =
+      module_index.GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase.new;
+  final GetGenaiAgentVersionsArgs = module_index.GetGenaiAgentVersionsArgs.new;
+  final GetGenaiAgentVersionsFilter =
+      module_index.GetGenaiAgentVersionsFilter.new;
+  final GetGenaiAgentVersionsFilterArgs =
+      module_index.GetGenaiAgentVersionsFilter.new;
+  final GetGenaiAgentVersionsResult =
+      module_index.GetGenaiAgentVersionsResult.new;
+  final GetGenaiAgentVersionsResultArgs =
+      module_index.GetGenaiAgentVersionsResult.new;
+  final GetGenaiAgentVersionsSort = module_index.GetGenaiAgentVersionsSort.new;
+  final GetGenaiAgentVersionsSortArgs =
+      module_index.GetGenaiAgentVersionsSort.new;
+  final GetGenaiAgentsAgent = module_index.GetGenaiAgentsAgent.new;
+  final GetGenaiAgentsAgentAgentGuardrail =
+      module_index.GetGenaiAgentsAgentAgentGuardrail.new;
+  final GetGenaiAgentsAgentAgentGuardrailArgs =
+      module_index.GetGenaiAgentsAgentAgentGuardrail.new;
+  final GetGenaiAgentsAgentAnthropicApiKey =
+      module_index.GetGenaiAgentsAgentAnthropicApiKey.new;
+  final GetGenaiAgentsAgentAnthropicApiKeyArgs =
+      module_index.GetGenaiAgentsAgentAnthropicApiKey.new;
+  final GetGenaiAgentsAgentApiKey = module_index.GetGenaiAgentsAgentApiKey.new;
+  final GetGenaiAgentsAgentApiKeyArgs =
+      module_index.GetGenaiAgentsAgentApiKey.new;
+  final GetGenaiAgentsAgentApiKeyInfo =
+      module_index.GetGenaiAgentsAgentApiKeyInfo.new;
+  final GetGenaiAgentsAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentsAgentApiKeyInfo.new;
+  final GetGenaiAgentsAgentArgs = module_index.GetGenaiAgentsAgent.new;
+  final GetGenaiAgentsAgentChatbot =
+      module_index.GetGenaiAgentsAgentChatbot.new;
+  final GetGenaiAgentsAgentChatbotArgs =
+      module_index.GetGenaiAgentsAgentChatbot.new;
+  final GetGenaiAgentsAgentChatbotIdentifier =
+      module_index.GetGenaiAgentsAgentChatbotIdentifier.new;
+  final GetGenaiAgentsAgentChatbotIdentifierArgs =
+      module_index.GetGenaiAgentsAgentChatbotIdentifier.new;
+  final GetGenaiAgentsAgentChildAgent =
+      module_index.GetGenaiAgentsAgentChildAgent.new;
+  final GetGenaiAgentsAgentChildAgentAnthropicApiKey =
+      module_index.GetGenaiAgentsAgentChildAgentAnthropicApiKey.new;
+  final GetGenaiAgentsAgentChildAgentAnthropicApiKeyArgs =
+      module_index.GetGenaiAgentsAgentChildAgentAnthropicApiKey.new;
+  final GetGenaiAgentsAgentChildAgentApiKey =
+      module_index.GetGenaiAgentsAgentChildAgentApiKey.new;
+  final GetGenaiAgentsAgentChildAgentApiKeyArgs =
+      module_index.GetGenaiAgentsAgentChildAgentApiKey.new;
+  final GetGenaiAgentsAgentChildAgentApiKeyInfo =
+      module_index.GetGenaiAgentsAgentChildAgentApiKeyInfo.new;
+  final GetGenaiAgentsAgentChildAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentsAgentChildAgentApiKeyInfo.new;
+  final GetGenaiAgentsAgentChildAgentArgs =
+      module_index.GetGenaiAgentsAgentChildAgent.new;
+  final GetGenaiAgentsAgentChildAgentChatbot =
+      module_index.GetGenaiAgentsAgentChildAgentChatbot.new;
+  final GetGenaiAgentsAgentChildAgentChatbotArgs =
+      module_index.GetGenaiAgentsAgentChildAgentChatbot.new;
+  final GetGenaiAgentsAgentChildAgentChatbotIdentifier =
+      module_index.GetGenaiAgentsAgentChildAgentChatbotIdentifier.new;
+  final GetGenaiAgentsAgentChildAgentChatbotIdentifierArgs =
+      module_index.GetGenaiAgentsAgentChildAgentChatbotIdentifier.new;
+  final GetGenaiAgentsAgentChildAgentDeployment =
+      module_index.GetGenaiAgentsAgentChildAgentDeployment.new;
+  final GetGenaiAgentsAgentChildAgentDeploymentArgs =
+      module_index.GetGenaiAgentsAgentChildAgentDeployment.new;
+  final GetGenaiAgentsAgentDeployment =
+      module_index.GetGenaiAgentsAgentDeployment.new;
+  final GetGenaiAgentsAgentDeploymentArgs =
+      module_index.GetGenaiAgentsAgentDeployment.new;
+  final GetGenaiAgentsAgentFunction =
+      module_index.GetGenaiAgentsAgentFunction.new;
+  final GetGenaiAgentsAgentFunctionArgs =
+      module_index.GetGenaiAgentsAgentFunction.new;
+  final GetGenaiAgentsAgentKnowledgeBase =
+      module_index.GetGenaiAgentsAgentKnowledgeBase.new;
+  final GetGenaiAgentsAgentKnowledgeBaseArgs =
+      module_index.GetGenaiAgentsAgentKnowledgeBase.new;
+  final GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob =
+      module_index.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentsAgentModel = module_index.GetGenaiAgentsAgentModel.new;
+  final GetGenaiAgentsAgentModelAgreement =
+      module_index.GetGenaiAgentsAgentModelAgreement.new;
+  final GetGenaiAgentsAgentModelAgreementArgs =
+      module_index.GetGenaiAgentsAgentModelAgreement.new;
+  final GetGenaiAgentsAgentModelArgs =
+      module_index.GetGenaiAgentsAgentModel.new;
+  final GetGenaiAgentsAgentModelVersion =
+      module_index.GetGenaiAgentsAgentModelVersion.new;
+  final GetGenaiAgentsAgentModelVersionArgs =
+      module_index.GetGenaiAgentsAgentModelVersion.new;
+  final GetGenaiAgentsAgentOpenAiApiKey =
+      module_index.GetGenaiAgentsAgentOpenAiApiKey.new;
+  final GetGenaiAgentsAgentOpenAiApiKeyArgs =
+      module_index.GetGenaiAgentsAgentOpenAiApiKey.new;
+  final GetGenaiAgentsAgentParentAgent =
+      module_index.GetGenaiAgentsAgentParentAgent.new;
+  final GetGenaiAgentsAgentParentAgentAnthropicApiKey =
+      module_index.GetGenaiAgentsAgentParentAgentAnthropicApiKey.new;
+  final GetGenaiAgentsAgentParentAgentAnthropicApiKeyArgs =
+      module_index.GetGenaiAgentsAgentParentAgentAnthropicApiKey.new;
+  final GetGenaiAgentsAgentParentAgentApiKey =
+      module_index.GetGenaiAgentsAgentParentAgentApiKey.new;
+  final GetGenaiAgentsAgentParentAgentApiKeyArgs =
+      module_index.GetGenaiAgentsAgentParentAgentApiKey.new;
+  final GetGenaiAgentsAgentParentAgentApiKeyInfo =
+      module_index.GetGenaiAgentsAgentParentAgentApiKeyInfo.new;
+  final GetGenaiAgentsAgentParentAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentsAgentParentAgentApiKeyInfo.new;
+  final GetGenaiAgentsAgentParentAgentArgs =
+      module_index.GetGenaiAgentsAgentParentAgent.new;
+  final GetGenaiAgentsAgentParentAgentChatbot =
+      module_index.GetGenaiAgentsAgentParentAgentChatbot.new;
+  final GetGenaiAgentsAgentParentAgentChatbotArgs =
+      module_index.GetGenaiAgentsAgentParentAgentChatbot.new;
+  final GetGenaiAgentsAgentParentAgentChatbotIdentifier =
+      module_index.GetGenaiAgentsAgentParentAgentChatbotIdentifier.new;
+  final GetGenaiAgentsAgentParentAgentChatbotIdentifierArgs =
+      module_index.GetGenaiAgentsAgentParentAgentChatbotIdentifier.new;
+  final GetGenaiAgentsAgentParentAgentDeployment =
+      module_index.GetGenaiAgentsAgentParentAgentDeployment.new;
+  final GetGenaiAgentsAgentParentAgentDeploymentArgs =
+      module_index.GetGenaiAgentsAgentParentAgentDeployment.new;
+  final GetGenaiAgentsAgentTemplate =
+      module_index.GetGenaiAgentsAgentTemplate.new;
+  final GetGenaiAgentsAgentTemplateArgs =
+      module_index.GetGenaiAgentsAgentTemplate.new;
+  final GetGenaiAgentsAgentTemplateKnowledgeBase =
+      module_index.GetGenaiAgentsAgentTemplateKnowledgeBase.new;
+  final GetGenaiAgentsAgentTemplateKnowledgeBaseArgs =
+      module_index.GetGenaiAgentsAgentTemplateKnowledgeBase.new;
+  final GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index.GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiAgentsAgentTemplateModel =
+      module_index.GetGenaiAgentsAgentTemplateModel.new;
+  final GetGenaiAgentsAgentTemplateModelAgreement =
+      module_index.GetGenaiAgentsAgentTemplateModelAgreement.new;
+  final GetGenaiAgentsAgentTemplateModelAgreementArgs =
+      module_index.GetGenaiAgentsAgentTemplateModelAgreement.new;
+  final GetGenaiAgentsAgentTemplateModelArgs =
+      module_index.GetGenaiAgentsAgentTemplateModel.new;
+  final GetGenaiAgentsAgentTemplateModelVersion =
+      module_index.GetGenaiAgentsAgentTemplateModelVersion.new;
+  final GetGenaiAgentsAgentTemplateModelVersionArgs =
+      module_index.GetGenaiAgentsAgentTemplateModelVersion.new;
+  final GetGenaiAgentsArgs = module_index.GetGenaiAgentsArgs.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgent =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgent.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentApiKey =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgent.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChatbot =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChatbot.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChatbot.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgent =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgent.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgent.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentDeployment =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentDeployment.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentDeployment.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentFunction =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentFunction.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentFunction.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentModel =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentModel.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentModelArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentModel.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentModelVersion =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentModelVersion.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentModelVersion.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgent =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgent.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgent.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplate =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplate.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplate.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index
+          .GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.new;
+  final GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion.new;
+  final GetGenaiAgentsByOpenaiApiKeyArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyArgs.new;
+  final GetGenaiAgentsByOpenaiApiKeyResult =
+      module_index.GetGenaiAgentsByOpenaiApiKeyResult.new;
+  final GetGenaiAgentsByOpenaiApiKeyResultArgs =
+      module_index.GetGenaiAgentsByOpenaiApiKeyResult.new;
+  final GetGenaiAgentsFilter = module_index.GetGenaiAgentsFilter.new;
+  final GetGenaiAgentsFilterArgs = module_index.GetGenaiAgentsFilter.new;
+  final GetGenaiAgentsResult = module_index.GetGenaiAgentsResult.new;
+  final GetGenaiAgentsResultArgs = module_index.GetGenaiAgentsResult.new;
+  final GetGenaiAgentsSort = module_index.GetGenaiAgentsSort.new;
+  final GetGenaiAgentsSortArgs = module_index.GetGenaiAgentsSort.new;
+  final GetGenaiIndexingJobArgs = module_index.GetGenaiIndexingJobArgs.new;
+  final GetGenaiIndexingJobDataSourcesArgs =
+      module_index.GetGenaiIndexingJobDataSourcesArgs.new;
+  final GetGenaiIndexingJobDataSourcesIndexedDataSource =
+      module_index.GetGenaiIndexingJobDataSourcesIndexedDataSource.new;
+  final GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs =
+      module_index.GetGenaiIndexingJobDataSourcesIndexedDataSource.new;
+  final GetGenaiIndexingJobDataSourcesResult =
+      module_index.GetGenaiIndexingJobDataSourcesResult.new;
+  final GetGenaiIndexingJobDataSourcesResultArgs =
+      module_index.GetGenaiIndexingJobDataSourcesResult.new;
+  final GetGenaiIndexingJobResult = module_index.GetGenaiIndexingJobResult.new;
+  final GetGenaiIndexingJobResultArgs =
+      module_index.GetGenaiIndexingJobResult.new;
+  final GetGenaiKnowledgeBaseArgs = module_index.GetGenaiKnowledgeBaseArgs.new;
+  final GetGenaiKnowledgeBaseDataSourcesArgs =
+      module_index.GetGenaiKnowledgeBaseDataSourcesArgs.new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasource =
+      module_index.GetGenaiKnowledgeBaseDataSourcesDatasource.new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceArgs =
+      module_index.GetGenaiKnowledgeBaseDataSourcesDatasource.new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource =
+      module_index
+          .GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource
+          .new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs =
+      module_index
+          .GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource
+          .new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob = module_index
+      .GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob
+      .new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs =
+      module_index
+          .GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob
+          .new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource =
+      module_index
+          .GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource
+          .new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs =
+      module_index
+          .GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource
+          .new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource =
+      module_index
+          .GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource
+          .new;
+  final GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs =
+      module_index
+          .GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource
+          .new;
+  final GetGenaiKnowledgeBaseDataSourcesResult =
+      module_index.GetGenaiKnowledgeBaseDataSourcesResult.new;
+  final GetGenaiKnowledgeBaseDataSourcesResultArgs =
+      module_index.GetGenaiKnowledgeBaseDataSourcesResult.new;
+  final GetGenaiKnowledgeBaseIndexingJobsArgs =
+      module_index.GetGenaiKnowledgeBaseIndexingJobsArgs.new;
+  final GetGenaiKnowledgeBaseIndexingJobsJob =
+      module_index.GetGenaiKnowledgeBaseIndexingJobsJob.new;
+  final GetGenaiKnowledgeBaseIndexingJobsJobArgs =
+      module_index.GetGenaiKnowledgeBaseIndexingJobsJob.new;
+  final GetGenaiKnowledgeBaseIndexingJobsMeta =
+      module_index.GetGenaiKnowledgeBaseIndexingJobsMeta.new;
+  final GetGenaiKnowledgeBaseIndexingJobsMetaArgs =
+      module_index.GetGenaiKnowledgeBaseIndexingJobsMeta.new;
+  final GetGenaiKnowledgeBaseIndexingJobsResult =
+      module_index.GetGenaiKnowledgeBaseIndexingJobsResult.new;
+  final GetGenaiKnowledgeBaseIndexingJobsResultArgs =
+      module_index.GetGenaiKnowledgeBaseIndexingJobsResult.new;
+  final GetGenaiKnowledgeBaseLastIndexingJob =
+      module_index.GetGenaiKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGenaiKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiKnowledgeBaseResult =
+      module_index.GetGenaiKnowledgeBaseResult.new;
+  final GetGenaiKnowledgeBaseResultArgs =
+      module_index.GetGenaiKnowledgeBaseResult.new;
+  final GetGenaiKnowledgeBasesArgs =
+      module_index.GetGenaiKnowledgeBasesArgs.new;
+  final GetGenaiKnowledgeBasesFilter =
+      module_index.GetGenaiKnowledgeBasesFilter.new;
+  final GetGenaiKnowledgeBasesFilterArgs =
+      module_index.GetGenaiKnowledgeBasesFilter.new;
+  final GetGenaiKnowledgeBasesKnowledgeBase =
+      module_index.GetGenaiKnowledgeBasesKnowledgeBase.new;
+  final GetGenaiKnowledgeBasesKnowledgeBaseArgs =
+      module_index.GetGenaiKnowledgeBasesKnowledgeBase.new;
+  final GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob =
+      module_index.GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
+  final GetGenaiKnowledgeBasesResult =
+      module_index.GetGenaiKnowledgeBasesResult.new;
+  final GetGenaiKnowledgeBasesResultArgs =
+      module_index.GetGenaiKnowledgeBasesResult.new;
+  final GetGenaiKnowledgeBasesSort =
+      module_index.GetGenaiKnowledgeBasesSort.new;
+  final GetGenaiKnowledgeBasesSortArgs =
+      module_index.GetGenaiKnowledgeBasesSort.new;
+  final GetGenaiModelsArgs = module_index.GetGenaiModelsArgs.new;
+  final GetGenaiModelsFilter = module_index.GetGenaiModelsFilter.new;
+  final GetGenaiModelsFilterArgs = module_index.GetGenaiModelsFilter.new;
+  final GetGenaiModelsModel = module_index.GetGenaiModelsModel.new;
+  final GetGenaiModelsModelAgreement =
+      module_index.GetGenaiModelsModelAgreement.new;
+  final GetGenaiModelsModelAgreementArgs =
+      module_index.GetGenaiModelsModelAgreement.new;
+  final GetGenaiModelsModelArgs = module_index.GetGenaiModelsModel.new;
+  final GetGenaiModelsModelVersion =
+      module_index.GetGenaiModelsModelVersion.new;
+  final GetGenaiModelsModelVersionArgs =
+      module_index.GetGenaiModelsModelVersion.new;
+  final GetGenaiModelsResult = module_index.GetGenaiModelsResult.new;
+  final GetGenaiModelsResultArgs = module_index.GetGenaiModelsResult.new;
+  final GetGenaiModelsSort = module_index.GetGenaiModelsSort.new;
+  final GetGenaiModelsSortArgs = module_index.GetGenaiModelsSort.new;
+  final GetGenaiOpenaiApiKeyArgs = module_index.GetGenaiOpenaiApiKeyArgs.new;
+  final GetGenaiOpenaiApiKeyModel = module_index.GetGenaiOpenaiApiKeyModel.new;
+  final GetGenaiOpenaiApiKeyModelAgreement =
+      module_index.GetGenaiOpenaiApiKeyModelAgreement.new;
+  final GetGenaiOpenaiApiKeyModelAgreementArgs =
+      module_index.GetGenaiOpenaiApiKeyModelAgreement.new;
+  final GetGenaiOpenaiApiKeyModelArgs =
+      module_index.GetGenaiOpenaiApiKeyModel.new;
+  final GetGenaiOpenaiApiKeyModelVersion =
+      module_index.GetGenaiOpenaiApiKeyModelVersion.new;
+  final GetGenaiOpenaiApiKeyModelVersionArgs =
+      module_index.GetGenaiOpenaiApiKeyModelVersion.new;
+  final GetGenaiOpenaiApiKeyResult =
+      module_index.GetGenaiOpenaiApiKeyResult.new;
+  final GetGenaiOpenaiApiKeyResultArgs =
+      module_index.GetGenaiOpenaiApiKeyResult.new;
+  final GetGenaiOpenaiApiKeysArgs = module_index.GetGenaiOpenaiApiKeysArgs.new;
+  final GetGenaiOpenaiApiKeysFilter =
+      module_index.GetGenaiOpenaiApiKeysFilter.new;
+  final GetGenaiOpenaiApiKeysFilterArgs =
+      module_index.GetGenaiOpenaiApiKeysFilter.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKey =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKey.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKeyArgs =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKey.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKeyModel =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKeyModel.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKeyModel.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
+  final GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs =
+      module_index.GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
+  final GetGenaiOpenaiApiKeysResult =
+      module_index.GetGenaiOpenaiApiKeysResult.new;
+  final GetGenaiOpenaiApiKeysResultArgs =
+      module_index.GetGenaiOpenaiApiKeysResult.new;
+  final GetGenaiOpenaiApiKeysSort = module_index.GetGenaiOpenaiApiKeysSort.new;
+  final GetGenaiOpenaiApiKeysSortArgs =
+      module_index.GetGenaiOpenaiApiKeysSort.new;
+  final GetGenaiRegionsArgs = module_index.GetGenaiRegionsArgs.new;
+  final GetGenaiRegionsFilter = module_index.GetGenaiRegionsFilter.new;
+  final GetGenaiRegionsFilterArgs = module_index.GetGenaiRegionsFilter.new;
+  final GetGenaiRegionsRegion = module_index.GetGenaiRegionsRegion.new;
+  final GetGenaiRegionsRegionArgs = module_index.GetGenaiRegionsRegion.new;
+  final GetGenaiRegionsResult = module_index.GetGenaiRegionsResult.new;
+  final GetGenaiRegionsResultArgs = module_index.GetGenaiRegionsResult.new;
+  final GetGenaiRegionsSort = module_index.GetGenaiRegionsSort.new;
+  final GetGenaiRegionsSortArgs = module_index.GetGenaiRegionsSort.new;
+  final GetGradientaiAgentAgentGuardrail =
+      module_index.GetGradientaiAgentAgentGuardrail.new;
+  final GetGradientaiAgentAgentGuardrailArgs =
+      module_index.GetGradientaiAgentAgentGuardrail.new;
+  final GetGradientaiAgentAnthropicApiKey =
+      module_index.GetGradientaiAgentAnthropicApiKey.new;
+  final GetGradientaiAgentAnthropicApiKeyArgs =
+      module_index.GetGradientaiAgentAnthropicApiKey.new;
+  final GetGradientaiAgentApiKey = module_index.GetGradientaiAgentApiKey.new;
+  final GetGradientaiAgentApiKeyArgs =
+      module_index.GetGradientaiAgentApiKey.new;
+  final GetGradientaiAgentApiKeyInfo =
+      module_index.GetGradientaiAgentApiKeyInfo.new;
+  final GetGradientaiAgentApiKeyInfoArgs =
+      module_index.GetGradientaiAgentApiKeyInfo.new;
+  final GetGradientaiAgentArgs = module_index.GetGradientaiAgentArgs.new;
+  final GetGradientaiAgentChatbot = module_index.GetGradientaiAgentChatbot.new;
+  final GetGradientaiAgentChatbotArgs =
+      module_index.GetGradientaiAgentChatbot.new;
+  final GetGradientaiAgentChatbotIdentifier =
+      module_index.GetGradientaiAgentChatbotIdentifier.new;
+  final GetGradientaiAgentChatbotIdentifierArgs =
+      module_index.GetGradientaiAgentChatbotIdentifier.new;
+  final GetGradientaiAgentChildAgent =
+      module_index.GetGradientaiAgentChildAgent.new;
+  final GetGradientaiAgentChildAgentAnthropicApiKey =
+      module_index.GetGradientaiAgentChildAgentAnthropicApiKey.new;
+  final GetGradientaiAgentChildAgentAnthropicApiKeyArgs =
+      module_index.GetGradientaiAgentChildAgentAnthropicApiKey.new;
+  final GetGradientaiAgentChildAgentApiKey =
+      module_index.GetGradientaiAgentChildAgentApiKey.new;
+  final GetGradientaiAgentChildAgentApiKeyArgs =
+      module_index.GetGradientaiAgentChildAgentApiKey.new;
+  final GetGradientaiAgentChildAgentApiKeyInfo =
+      module_index.GetGradientaiAgentChildAgentApiKeyInfo.new;
+  final GetGradientaiAgentChildAgentApiKeyInfoArgs =
+      module_index.GetGradientaiAgentChildAgentApiKeyInfo.new;
+  final GetGradientaiAgentChildAgentArgs =
+      module_index.GetGradientaiAgentChildAgent.new;
+  final GetGradientaiAgentChildAgentChatbot =
+      module_index.GetGradientaiAgentChildAgentChatbot.new;
+  final GetGradientaiAgentChildAgentChatbotArgs =
+      module_index.GetGradientaiAgentChildAgentChatbot.new;
+  final GetGradientaiAgentChildAgentChatbotIdentifier =
+      module_index.GetGradientaiAgentChildAgentChatbotIdentifier.new;
+  final GetGradientaiAgentChildAgentChatbotIdentifierArgs =
+      module_index.GetGradientaiAgentChildAgentChatbotIdentifier.new;
+  final GetGradientaiAgentChildAgentDeployment =
+      module_index.GetGradientaiAgentChildAgentDeployment.new;
+  final GetGradientaiAgentChildAgentDeploymentArgs =
+      module_index.GetGradientaiAgentChildAgentDeployment.new;
+  final GetGradientaiAgentDeployment =
+      module_index.GetGradientaiAgentDeployment.new;
+  final GetGradientaiAgentDeploymentArgs =
+      module_index.GetGradientaiAgentDeployment.new;
+  final GetGradientaiAgentFunction =
+      module_index.GetGradientaiAgentFunction.new;
+  final GetGradientaiAgentFunctionArgs =
+      module_index.GetGradientaiAgentFunction.new;
+  final GetGradientaiAgentKnowledgeBase =
+      module_index.GetGradientaiAgentKnowledgeBase.new;
+  final GetGradientaiAgentKnowledgeBaseArgs =
+      module_index.GetGradientaiAgentKnowledgeBase.new;
+  final GetGradientaiAgentKnowledgeBaseLastIndexingJob =
+      module_index.GetGradientaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGradientaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiAgentModel = module_index.GetGradientaiAgentModel.new;
+  final GetGradientaiAgentModelAgreement =
+      module_index.GetGradientaiAgentModelAgreement.new;
+  final GetGradientaiAgentModelAgreementArgs =
+      module_index.GetGradientaiAgentModelAgreement.new;
+  final GetGradientaiAgentModelArgs = module_index.GetGradientaiAgentModel.new;
+  final GetGradientaiAgentModelVersion =
+      module_index.GetGradientaiAgentModelVersion.new;
+  final GetGradientaiAgentModelVersionArgs =
+      module_index.GetGradientaiAgentModelVersion.new;
+  final GetGradientaiAgentOpenAiApiKey =
+      module_index.GetGradientaiAgentOpenAiApiKey.new;
+  final GetGradientaiAgentOpenAiApiKeyArgs =
+      module_index.GetGradientaiAgentOpenAiApiKey.new;
+  final GetGradientaiAgentParentAgent =
+      module_index.GetGradientaiAgentParentAgent.new;
+  final GetGradientaiAgentParentAgentAnthropicApiKey =
+      module_index.GetGradientaiAgentParentAgentAnthropicApiKey.new;
+  final GetGradientaiAgentParentAgentAnthropicApiKeyArgs =
+      module_index.GetGradientaiAgentParentAgentAnthropicApiKey.new;
+  final GetGradientaiAgentParentAgentApiKey =
+      module_index.GetGradientaiAgentParentAgentApiKey.new;
+  final GetGradientaiAgentParentAgentApiKeyArgs =
+      module_index.GetGradientaiAgentParentAgentApiKey.new;
+  final GetGradientaiAgentParentAgentApiKeyInfo =
+      module_index.GetGradientaiAgentParentAgentApiKeyInfo.new;
+  final GetGradientaiAgentParentAgentApiKeyInfoArgs =
+      module_index.GetGradientaiAgentParentAgentApiKeyInfo.new;
+  final GetGradientaiAgentParentAgentArgs =
+      module_index.GetGradientaiAgentParentAgent.new;
+  final GetGradientaiAgentParentAgentChatbot =
+      module_index.GetGradientaiAgentParentAgentChatbot.new;
+  final GetGradientaiAgentParentAgentChatbotArgs =
+      module_index.GetGradientaiAgentParentAgentChatbot.new;
+  final GetGradientaiAgentParentAgentChatbotIdentifier =
+      module_index.GetGradientaiAgentParentAgentChatbotIdentifier.new;
+  final GetGradientaiAgentParentAgentChatbotIdentifierArgs =
+      module_index.GetGradientaiAgentParentAgentChatbotIdentifier.new;
+  final GetGradientaiAgentParentAgentDeployment =
+      module_index.GetGradientaiAgentParentAgentDeployment.new;
+  final GetGradientaiAgentParentAgentDeploymentArgs =
+      module_index.GetGradientaiAgentParentAgentDeployment.new;
+  final GetGradientaiAgentResult = module_index.GetGradientaiAgentResult.new;
+  final GetGradientaiAgentResultArgs =
+      module_index.GetGradientaiAgentResult.new;
+  final GetGradientaiAgentTemplate =
+      module_index.GetGradientaiAgentTemplate.new;
+  final GetGradientaiAgentTemplateArgs =
+      module_index.GetGradientaiAgentTemplate.new;
+  final GetGradientaiAgentTemplateKnowledgeBase =
+      module_index.GetGradientaiAgentTemplateKnowledgeBase.new;
+  final GetGradientaiAgentTemplateKnowledgeBaseArgs =
+      module_index.GetGradientaiAgentTemplateKnowledgeBase.new;
+  final GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index.GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiAgentTemplateModel =
+      module_index.GetGradientaiAgentTemplateModel.new;
+  final GetGradientaiAgentTemplateModelAgreement =
+      module_index.GetGradientaiAgentTemplateModelAgreement.new;
+  final GetGradientaiAgentTemplateModelAgreementArgs =
+      module_index.GetGradientaiAgentTemplateModelAgreement.new;
+  final GetGradientaiAgentTemplateModelArgs =
+      module_index.GetGradientaiAgentTemplateModel.new;
+  final GetGradientaiAgentTemplateModelVersion =
+      module_index.GetGradientaiAgentTemplateModelVersion.new;
+  final GetGradientaiAgentTemplateModelVersionArgs =
+      module_index.GetGradientaiAgentTemplateModelVersion.new;
+  final GetGradientaiAgentVersionsAgentVersion =
+      module_index.GetGradientaiAgentVersionsAgentVersion.new;
+  final GetGradientaiAgentVersionsAgentVersionArgs =
+      module_index.GetGradientaiAgentVersionsAgentVersion.new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedChildAgent =
+      module_index.GetGradientaiAgentVersionsAgentVersionAttachedChildAgent.new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedChildAgentArgs =
+      module_index.GetGradientaiAgentVersionsAgentVersionAttachedChildAgent.new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedFunction =
+      module_index.GetGradientaiAgentVersionsAgentVersionAttachedFunction.new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedFunctionArgs =
+      module_index.GetGradientaiAgentVersionsAgentVersionAttachedFunction.new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedGuardrail =
+      module_index.GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedGuardrailArgs =
+      module_index.GetGradientaiAgentVersionsAgentVersionAttachedGuardrail.new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase =
+      module_index
+          .GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase
+          .new;
+  final GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs =
+      module_index
+          .GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase
+          .new;
+  final GetGradientaiAgentVersionsArgs =
+      module_index.GetGradientaiAgentVersionsArgs.new;
+  final GetGradientaiAgentVersionsFilter =
+      module_index.GetGradientaiAgentVersionsFilter.new;
+  final GetGradientaiAgentVersionsFilterArgs =
+      module_index.GetGradientaiAgentVersionsFilter.new;
+  final GetGradientaiAgentVersionsResult =
+      module_index.GetGradientaiAgentVersionsResult.new;
+  final GetGradientaiAgentVersionsResultArgs =
+      module_index.GetGradientaiAgentVersionsResult.new;
+  final GetGradientaiAgentVersionsSort =
+      module_index.GetGradientaiAgentVersionsSort.new;
+  final GetGradientaiAgentVersionsSortArgs =
+      module_index.GetGradientaiAgentVersionsSort.new;
+  final GetGradientaiAgentsAgent = module_index.GetGradientaiAgentsAgent.new;
+  final GetGradientaiAgentsAgentAgentGuardrail =
+      module_index.GetGradientaiAgentsAgentAgentGuardrail.new;
+  final GetGradientaiAgentsAgentAgentGuardrailArgs =
+      module_index.GetGradientaiAgentsAgentAgentGuardrail.new;
+  final GetGradientaiAgentsAgentAnthropicApiKey =
+      module_index.GetGradientaiAgentsAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsAgentAnthropicApiKeyArgs =
+      module_index.GetGradientaiAgentsAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsAgentApiKey =
+      module_index.GetGradientaiAgentsAgentApiKey.new;
+  final GetGradientaiAgentsAgentApiKeyArgs =
+      module_index.GetGradientaiAgentsAgentApiKey.new;
+  final GetGradientaiAgentsAgentApiKeyInfo =
+      module_index.GetGradientaiAgentsAgentApiKeyInfo.new;
+  final GetGradientaiAgentsAgentApiKeyInfoArgs =
+      module_index.GetGradientaiAgentsAgentApiKeyInfo.new;
+  final GetGradientaiAgentsAgentArgs =
+      module_index.GetGradientaiAgentsAgent.new;
+  final GetGradientaiAgentsAgentChatbot =
+      module_index.GetGradientaiAgentsAgentChatbot.new;
+  final GetGradientaiAgentsAgentChatbotArgs =
+      module_index.GetGradientaiAgentsAgentChatbot.new;
+  final GetGradientaiAgentsAgentChatbotIdentifier =
+      module_index.GetGradientaiAgentsAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsAgentChatbotIdentifierArgs =
+      module_index.GetGradientaiAgentsAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsAgentChildAgent =
+      module_index.GetGradientaiAgentsAgentChildAgent.new;
+  final GetGradientaiAgentsAgentChildAgentAnthropicApiKey =
+      module_index.GetGradientaiAgentsAgentChildAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsAgentChildAgentAnthropicApiKeyArgs =
+      module_index.GetGradientaiAgentsAgentChildAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsAgentChildAgentApiKey =
+      module_index.GetGradientaiAgentsAgentChildAgentApiKey.new;
+  final GetGradientaiAgentsAgentChildAgentApiKeyArgs =
+      module_index.GetGradientaiAgentsAgentChildAgentApiKey.new;
+  final GetGradientaiAgentsAgentChildAgentApiKeyInfo =
+      module_index.GetGradientaiAgentsAgentChildAgentApiKeyInfo.new;
+  final GetGradientaiAgentsAgentChildAgentApiKeyInfoArgs =
+      module_index.GetGradientaiAgentsAgentChildAgentApiKeyInfo.new;
+  final GetGradientaiAgentsAgentChildAgentArgs =
+      module_index.GetGradientaiAgentsAgentChildAgent.new;
+  final GetGradientaiAgentsAgentChildAgentChatbot =
+      module_index.GetGradientaiAgentsAgentChildAgentChatbot.new;
+  final GetGradientaiAgentsAgentChildAgentChatbotArgs =
+      module_index.GetGradientaiAgentsAgentChildAgentChatbot.new;
+  final GetGradientaiAgentsAgentChildAgentChatbotIdentifier =
+      module_index.GetGradientaiAgentsAgentChildAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsAgentChildAgentChatbotIdentifierArgs =
+      module_index.GetGradientaiAgentsAgentChildAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsAgentChildAgentDeployment =
+      module_index.GetGradientaiAgentsAgentChildAgentDeployment.new;
+  final GetGradientaiAgentsAgentChildAgentDeploymentArgs =
+      module_index.GetGradientaiAgentsAgentChildAgentDeployment.new;
+  final GetGradientaiAgentsAgentDeployment =
+      module_index.GetGradientaiAgentsAgentDeployment.new;
+  final GetGradientaiAgentsAgentDeploymentArgs =
+      module_index.GetGradientaiAgentsAgentDeployment.new;
+  final GetGradientaiAgentsAgentFunction =
+      module_index.GetGradientaiAgentsAgentFunction.new;
+  final GetGradientaiAgentsAgentFunctionArgs =
+      module_index.GetGradientaiAgentsAgentFunction.new;
+  final GetGradientaiAgentsAgentKnowledgeBase =
+      module_index.GetGradientaiAgentsAgentKnowledgeBase.new;
+  final GetGradientaiAgentsAgentKnowledgeBaseArgs =
+      module_index.GetGradientaiAgentsAgentKnowledgeBase.new;
+  final GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob =
+      module_index.GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiAgentsAgentModel =
+      module_index.GetGradientaiAgentsAgentModel.new;
+  final GetGradientaiAgentsAgentModelAgreement =
+      module_index.GetGradientaiAgentsAgentModelAgreement.new;
+  final GetGradientaiAgentsAgentModelAgreementArgs =
+      module_index.GetGradientaiAgentsAgentModelAgreement.new;
+  final GetGradientaiAgentsAgentModelArgs =
+      module_index.GetGradientaiAgentsAgentModel.new;
+  final GetGradientaiAgentsAgentModelVersion =
+      module_index.GetGradientaiAgentsAgentModelVersion.new;
+  final GetGradientaiAgentsAgentModelVersionArgs =
+      module_index.GetGradientaiAgentsAgentModelVersion.new;
+  final GetGradientaiAgentsAgentOpenAiApiKey =
+      module_index.GetGradientaiAgentsAgentOpenAiApiKey.new;
+  final GetGradientaiAgentsAgentOpenAiApiKeyArgs =
+      module_index.GetGradientaiAgentsAgentOpenAiApiKey.new;
+  final GetGradientaiAgentsAgentParentAgent =
+      module_index.GetGradientaiAgentsAgentParentAgent.new;
+  final GetGradientaiAgentsAgentParentAgentAnthropicApiKey =
+      module_index.GetGradientaiAgentsAgentParentAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsAgentParentAgentAnthropicApiKeyArgs =
+      module_index.GetGradientaiAgentsAgentParentAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsAgentParentAgentApiKey =
+      module_index.GetGradientaiAgentsAgentParentAgentApiKey.new;
+  final GetGradientaiAgentsAgentParentAgentApiKeyArgs =
+      module_index.GetGradientaiAgentsAgentParentAgentApiKey.new;
+  final GetGradientaiAgentsAgentParentAgentApiKeyInfo =
+      module_index.GetGradientaiAgentsAgentParentAgentApiKeyInfo.new;
+  final GetGradientaiAgentsAgentParentAgentApiKeyInfoArgs =
+      module_index.GetGradientaiAgentsAgentParentAgentApiKeyInfo.new;
+  final GetGradientaiAgentsAgentParentAgentArgs =
+      module_index.GetGradientaiAgentsAgentParentAgent.new;
+  final GetGradientaiAgentsAgentParentAgentChatbot =
+      module_index.GetGradientaiAgentsAgentParentAgentChatbot.new;
+  final GetGradientaiAgentsAgentParentAgentChatbotArgs =
+      module_index.GetGradientaiAgentsAgentParentAgentChatbot.new;
+  final GetGradientaiAgentsAgentParentAgentChatbotIdentifier =
+      module_index.GetGradientaiAgentsAgentParentAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsAgentParentAgentChatbotIdentifierArgs =
+      module_index.GetGradientaiAgentsAgentParentAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsAgentParentAgentDeployment =
+      module_index.GetGradientaiAgentsAgentParentAgentDeployment.new;
+  final GetGradientaiAgentsAgentParentAgentDeploymentArgs =
+      module_index.GetGradientaiAgentsAgentParentAgentDeployment.new;
+  final GetGradientaiAgentsAgentTemplate =
+      module_index.GetGradientaiAgentsAgentTemplate.new;
+  final GetGradientaiAgentsAgentTemplateArgs =
+      module_index.GetGradientaiAgentsAgentTemplate.new;
+  final GetGradientaiAgentsAgentTemplateKnowledgeBase =
+      module_index.GetGradientaiAgentsAgentTemplateKnowledgeBase.new;
+  final GetGradientaiAgentsAgentTemplateKnowledgeBaseArgs =
+      module_index.GetGradientaiAgentsAgentTemplateKnowledgeBase.new;
+  final GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index
+          .GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index
+          .GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGradientaiAgentsAgentTemplateModel =
+      module_index.GetGradientaiAgentsAgentTemplateModel.new;
+  final GetGradientaiAgentsAgentTemplateModelAgreement =
+      module_index.GetGradientaiAgentsAgentTemplateModelAgreement.new;
+  final GetGradientaiAgentsAgentTemplateModelAgreementArgs =
+      module_index.GetGradientaiAgentsAgentTemplateModelAgreement.new;
+  final GetGradientaiAgentsAgentTemplateModelArgs =
+      module_index.GetGradientaiAgentsAgentTemplateModel.new;
+  final GetGradientaiAgentsAgentTemplateModelVersion =
+      module_index.GetGradientaiAgentsAgentTemplateModelVersion.new;
+  final GetGradientaiAgentsAgentTemplateModelVersionArgs =
+      module_index.GetGradientaiAgentsAgentTemplateModelVersion.new;
+  final GetGradientaiAgentsArgs = module_index.GetGradientaiAgentsArgs.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgent =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgent.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKey =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgent.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbot =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbot.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbotArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbot.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentDeployment =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentDeployment.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentDeploymentArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentDeployment.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentFunction =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentFunction.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentFunctionArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentFunction.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentModel =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentModel.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreementArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentModelArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentModel.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentModelVersionArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplate =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplate.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplate.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel.new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs =
+      module_index
+          .GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion
+          .new;
+  final GetGradientaiAgentsByOpenaiApiKeyArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyArgs.new;
+  final GetGradientaiAgentsByOpenaiApiKeyResult =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyResult.new;
+  final GetGradientaiAgentsByOpenaiApiKeyResultArgs =
+      module_index.GetGradientaiAgentsByOpenaiApiKeyResult.new;
+  final GetGradientaiAgentsFilter = module_index.GetGradientaiAgentsFilter.new;
+  final GetGradientaiAgentsFilterArgs =
+      module_index.GetGradientaiAgentsFilter.new;
+  final GetGradientaiAgentsResult = module_index.GetGradientaiAgentsResult.new;
+  final GetGradientaiAgentsResultArgs =
+      module_index.GetGradientaiAgentsResult.new;
+  final GetGradientaiAgentsSort = module_index.GetGradientaiAgentsSort.new;
+  final GetGradientaiAgentsSortArgs = module_index.GetGradientaiAgentsSort.new;
+  final GetGradientaiIndexingJobArgs =
+      module_index.GetGradientaiIndexingJobArgs.new;
+  final GetGradientaiIndexingJobDataSourcesArgs =
+      module_index.GetGradientaiIndexingJobDataSourcesArgs.new;
+  final GetGradientaiIndexingJobDataSourcesIndexedDataSource =
+      module_index.GetGradientaiIndexingJobDataSourcesIndexedDataSource.new;
+  final GetGradientaiIndexingJobDataSourcesIndexedDataSourceArgs =
+      module_index.GetGradientaiIndexingJobDataSourcesIndexedDataSource.new;
+  final GetGradientaiIndexingJobDataSourcesResult =
+      module_index.GetGradientaiIndexingJobDataSourcesResult.new;
+  final GetGradientaiIndexingJobDataSourcesResultArgs =
+      module_index.GetGradientaiIndexingJobDataSourcesResult.new;
+  final GetGradientaiIndexingJobResult =
+      module_index.GetGradientaiIndexingJobResult.new;
+  final GetGradientaiIndexingJobResultArgs =
+      module_index.GetGradientaiIndexingJobResult.new;
+  final GetGradientaiKnowledgeBaseArgs =
+      module_index.GetGradientaiKnowledgeBaseArgs.new;
+  final GetGradientaiKnowledgeBaseDataSourcesArgs =
+      module_index.GetGradientaiKnowledgeBaseDataSourcesArgs.new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasource =
+      module_index.GetGradientaiKnowledgeBaseDataSourcesDatasource.new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceArgs =
+      module_index.GetGradientaiKnowledgeBaseDataSourcesDatasource.new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs =
+      module_index
+          .GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource
+          .new;
+  final GetGradientaiKnowledgeBaseDataSourcesResult =
+      module_index.GetGradientaiKnowledgeBaseDataSourcesResult.new;
+  final GetGradientaiKnowledgeBaseDataSourcesResultArgs =
+      module_index.GetGradientaiKnowledgeBaseDataSourcesResult.new;
+  final GetGradientaiKnowledgeBaseIndexingJobsArgs =
+      module_index.GetGradientaiKnowledgeBaseIndexingJobsArgs.new;
+  final GetGradientaiKnowledgeBaseIndexingJobsJob =
+      module_index.GetGradientaiKnowledgeBaseIndexingJobsJob.new;
+  final GetGradientaiKnowledgeBaseIndexingJobsJobArgs =
+      module_index.GetGradientaiKnowledgeBaseIndexingJobsJob.new;
+  final GetGradientaiKnowledgeBaseIndexingJobsMeta =
+      module_index.GetGradientaiKnowledgeBaseIndexingJobsMeta.new;
+  final GetGradientaiKnowledgeBaseIndexingJobsMetaArgs =
+      module_index.GetGradientaiKnowledgeBaseIndexingJobsMeta.new;
+  final GetGradientaiKnowledgeBaseIndexingJobsResult =
+      module_index.GetGradientaiKnowledgeBaseIndexingJobsResult.new;
+  final GetGradientaiKnowledgeBaseIndexingJobsResultArgs =
+      module_index.GetGradientaiKnowledgeBaseIndexingJobsResult.new;
+  final GetGradientaiKnowledgeBaseLastIndexingJob =
+      module_index.GetGradientaiKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGradientaiKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiKnowledgeBaseResult =
+      module_index.GetGradientaiKnowledgeBaseResult.new;
+  final GetGradientaiKnowledgeBaseResultArgs =
+      module_index.GetGradientaiKnowledgeBaseResult.new;
+  final GetGradientaiKnowledgeBasesArgs =
+      module_index.GetGradientaiKnowledgeBasesArgs.new;
+  final GetGradientaiKnowledgeBasesFilter =
+      module_index.GetGradientaiKnowledgeBasesFilter.new;
+  final GetGradientaiKnowledgeBasesFilterArgs =
+      module_index.GetGradientaiKnowledgeBasesFilter.new;
+  final GetGradientaiKnowledgeBasesKnowledgeBase =
+      module_index.GetGradientaiKnowledgeBasesKnowledgeBase.new;
+  final GetGradientaiKnowledgeBasesKnowledgeBaseArgs =
+      module_index.GetGradientaiKnowledgeBasesKnowledgeBase.new;
+  final GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob =
+      module_index.GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs =
+      module_index.GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob.new;
+  final GetGradientaiKnowledgeBasesResult =
+      module_index.GetGradientaiKnowledgeBasesResult.new;
+  final GetGradientaiKnowledgeBasesResultArgs =
+      module_index.GetGradientaiKnowledgeBasesResult.new;
+  final GetGradientaiKnowledgeBasesSort =
+      module_index.GetGradientaiKnowledgeBasesSort.new;
+  final GetGradientaiKnowledgeBasesSortArgs =
+      module_index.GetGradientaiKnowledgeBasesSort.new;
+  final GetGradientaiModelsArgs = module_index.GetGradientaiModelsArgs.new;
+  final GetGradientaiModelsFilter = module_index.GetGradientaiModelsFilter.new;
+  final GetGradientaiModelsFilterArgs =
+      module_index.GetGradientaiModelsFilter.new;
+  final GetGradientaiModelsModel = module_index.GetGradientaiModelsModel.new;
+  final GetGradientaiModelsModelAgreement =
+      module_index.GetGradientaiModelsModelAgreement.new;
+  final GetGradientaiModelsModelAgreementArgs =
+      module_index.GetGradientaiModelsModelAgreement.new;
+  final GetGradientaiModelsModelArgs =
+      module_index.GetGradientaiModelsModel.new;
+  final GetGradientaiModelsModelVersion =
+      module_index.GetGradientaiModelsModelVersion.new;
+  final GetGradientaiModelsModelVersionArgs =
+      module_index.GetGradientaiModelsModelVersion.new;
+  final GetGradientaiModelsResult = module_index.GetGradientaiModelsResult.new;
+  final GetGradientaiModelsResultArgs =
+      module_index.GetGradientaiModelsResult.new;
+  final GetGradientaiModelsSort = module_index.GetGradientaiModelsSort.new;
+  final GetGradientaiModelsSortArgs = module_index.GetGradientaiModelsSort.new;
+  final GetGradientaiOpenaiApiKeyArgs =
+      module_index.GetGradientaiOpenaiApiKeyArgs.new;
+  final GetGradientaiOpenaiApiKeyModel =
+      module_index.GetGradientaiOpenaiApiKeyModel.new;
+  final GetGradientaiOpenaiApiKeyModelAgreement =
+      module_index.GetGradientaiOpenaiApiKeyModelAgreement.new;
+  final GetGradientaiOpenaiApiKeyModelAgreementArgs =
+      module_index.GetGradientaiOpenaiApiKeyModelAgreement.new;
+  final GetGradientaiOpenaiApiKeyModelArgs =
+      module_index.GetGradientaiOpenaiApiKeyModel.new;
+  final GetGradientaiOpenaiApiKeyModelVersion =
+      module_index.GetGradientaiOpenaiApiKeyModelVersion.new;
+  final GetGradientaiOpenaiApiKeyModelVersionArgs =
+      module_index.GetGradientaiOpenaiApiKeyModelVersion.new;
+  final GetGradientaiOpenaiApiKeyResult =
+      module_index.GetGradientaiOpenaiApiKeyResult.new;
+  final GetGradientaiOpenaiApiKeyResultArgs =
+      module_index.GetGradientaiOpenaiApiKeyResult.new;
+  final GetGradientaiOpenaiApiKeysArgs =
+      module_index.GetGradientaiOpenaiApiKeysArgs.new;
+  final GetGradientaiOpenaiApiKeysFilter =
+      module_index.GetGradientaiOpenaiApiKeysFilter.new;
+  final GetGradientaiOpenaiApiKeysFilterArgs =
+      module_index.GetGradientaiOpenaiApiKeysFilter.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKey =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKey.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKeyArgs =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKey.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModel =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModel.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelArgs =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModel.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
+  final GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs =
+      module_index.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion.new;
+  final GetGradientaiOpenaiApiKeysResult =
+      module_index.GetGradientaiOpenaiApiKeysResult.new;
+  final GetGradientaiOpenaiApiKeysResultArgs =
+      module_index.GetGradientaiOpenaiApiKeysResult.new;
+  final GetGradientaiOpenaiApiKeysSort =
+      module_index.GetGradientaiOpenaiApiKeysSort.new;
+  final GetGradientaiOpenaiApiKeysSortArgs =
+      module_index.GetGradientaiOpenaiApiKeysSort.new;
+  final GetGradientaiRegionsArgs = module_index.GetGradientaiRegionsArgs.new;
+  final GetGradientaiRegionsFilter =
+      module_index.GetGradientaiRegionsFilter.new;
+  final GetGradientaiRegionsFilterArgs =
+      module_index.GetGradientaiRegionsFilter.new;
+  final GetGradientaiRegionsRegion =
+      module_index.GetGradientaiRegionsRegion.new;
+  final GetGradientaiRegionsRegionArgs =
+      module_index.GetGradientaiRegionsRegion.new;
+  final GetGradientaiRegionsResult =
+      module_index.GetGradientaiRegionsResult.new;
+  final GetGradientaiRegionsResultArgs =
+      module_index.GetGradientaiRegionsResult.new;
+  final GetGradientaiRegionsSort = module_index.GetGradientaiRegionsSort.new;
+  final GetGradientaiRegionsSortArgs =
+      module_index.GetGradientaiRegionsSort.new;
+  final GetImageArgs = module_index.GetImageArgs.new;
+  final GetImageResult = module_index.GetImageResult.new;
+  final GetImageResultArgs = module_index.GetImageResult.new;
+  final GetImagesArgs = module_index.GetImagesArgs.new;
+  final GetImagesFilter = module_index.GetImagesFilter.new;
+  final GetImagesFilterArgs = module_index.GetImagesFilter.new;
+  final GetImagesImage = module_index.GetImagesImage.new;
+  final GetImagesImageArgs = module_index.GetImagesImage.new;
+  final GetImagesResult = module_index.GetImagesResult.new;
+  final GetImagesResultArgs = module_index.GetImagesResult.new;
+  final GetImagesSort = module_index.GetImagesSort.new;
+  final GetImagesSortArgs = module_index.GetImagesSort.new;
+  final GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin =
+      module_index.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
+  final GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs =
+      module_index.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
+  final GetKubernetesClusterAmdGpuDevicePlugin =
+      module_index.GetKubernetesClusterAmdGpuDevicePlugin.new;
+  final GetKubernetesClusterAmdGpuDevicePluginArgs =
+      module_index.GetKubernetesClusterAmdGpuDevicePlugin.new;
+  final GetKubernetesClusterArgs = module_index.GetKubernetesClusterArgs.new;
+  final GetKubernetesClusterClusterAutoscalerConfiguration =
+      module_index.GetKubernetesClusterClusterAutoscalerConfiguration.new;
+  final GetKubernetesClusterClusterAutoscalerConfigurationArgs =
+      module_index.GetKubernetesClusterClusterAutoscalerConfiguration.new;
+  final GetKubernetesClusterControlPlaneFirewall =
+      module_index.GetKubernetesClusterControlPlaneFirewall.new;
+  final GetKubernetesClusterControlPlaneFirewallArgs =
+      module_index.GetKubernetesClusterControlPlaneFirewall.new;
+  final GetKubernetesClusterKubeConfig =
+      module_index.GetKubernetesClusterKubeConfig.new;
+  final GetKubernetesClusterKubeConfigArgs =
+      module_index.GetKubernetesClusterKubeConfig.new;
+  final GetKubernetesClusterMaintenancePolicy =
+      module_index.GetKubernetesClusterMaintenancePolicy.new;
+  final GetKubernetesClusterMaintenancePolicyArgs =
+      module_index.GetKubernetesClusterMaintenancePolicy.new;
+  final GetKubernetesClusterNodePool =
+      module_index.GetKubernetesClusterNodePool.new;
+  final GetKubernetesClusterNodePoolArgs =
+      module_index.GetKubernetesClusterNodePool.new;
+  final GetKubernetesClusterNodePoolNode =
+      module_index.GetKubernetesClusterNodePoolNode.new;
+  final GetKubernetesClusterNodePoolNodeArgs =
+      module_index.GetKubernetesClusterNodePoolNode.new;
+  final GetKubernetesClusterNodePoolTaint =
+      module_index.GetKubernetesClusterNodePoolTaint.new;
+  final GetKubernetesClusterNodePoolTaintArgs =
+      module_index.GetKubernetesClusterNodePoolTaint.new;
+  final GetKubernetesClusterNvidiaGpuDevicePlugin =
+      module_index.GetKubernetesClusterNvidiaGpuDevicePlugin.new;
+  final GetKubernetesClusterNvidiaGpuDevicePluginArgs =
+      module_index.GetKubernetesClusterNvidiaGpuDevicePlugin.new;
+  final GetKubernetesClusterRdmaSharedDevicePlugin =
+      module_index.GetKubernetesClusterRdmaSharedDevicePlugin.new;
+  final GetKubernetesClusterRdmaSharedDevicePluginArgs =
+      module_index.GetKubernetesClusterRdmaSharedDevicePlugin.new;
+  final GetKubernetesClusterResult =
+      module_index.GetKubernetesClusterResult.new;
+  final GetKubernetesClusterResultArgs =
+      module_index.GetKubernetesClusterResult.new;
+  final GetKubernetesClusterRoutingAgent =
+      module_index.GetKubernetesClusterRoutingAgent.new;
+  final GetKubernetesClusterRoutingAgentArgs =
+      module_index.GetKubernetesClusterRoutingAgent.new;
+  final GetKubernetesVersionsArgs = module_index.GetKubernetesVersionsArgs.new;
+  final GetKubernetesVersionsResult =
+      module_index.GetKubernetesVersionsResult.new;
+  final GetKubernetesVersionsResultArgs =
+      module_index.GetKubernetesVersionsResult.new;
+  final GetLoadBalancerArgs = module_index.GetLoadBalancerArgs.new;
+  final GetLoadBalancerDomain = module_index.GetLoadBalancerDomain.new;
+  final GetLoadBalancerDomainArgs = module_index.GetLoadBalancerDomain.new;
+  final GetLoadBalancerFirewall = module_index.GetLoadBalancerFirewall.new;
+  final GetLoadBalancerFirewallArgs = module_index.GetLoadBalancerFirewall.new;
+  final GetLoadBalancerForwardingRule =
+      module_index.GetLoadBalancerForwardingRule.new;
+  final GetLoadBalancerForwardingRuleArgs =
+      module_index.GetLoadBalancerForwardingRule.new;
+  final GetLoadBalancerGlbSetting = module_index.GetLoadBalancerGlbSetting.new;
+  final GetLoadBalancerGlbSettingArgs =
+      module_index.GetLoadBalancerGlbSetting.new;
+  final GetLoadBalancerGlbSettingCdn =
+      module_index.GetLoadBalancerGlbSettingCdn.new;
+  final GetLoadBalancerGlbSettingCdnArgs =
+      module_index.GetLoadBalancerGlbSettingCdn.new;
+  final GetLoadBalancerHealthcheck =
+      module_index.GetLoadBalancerHealthcheck.new;
+  final GetLoadBalancerHealthcheckArgs =
+      module_index.GetLoadBalancerHealthcheck.new;
+  final GetLoadBalancerResult = module_index.GetLoadBalancerResult.new;
+  final GetLoadBalancerResultArgs = module_index.GetLoadBalancerResult.new;
+  final GetLoadBalancerStickySession =
+      module_index.GetLoadBalancerStickySession.new;
+  final GetLoadBalancerStickySessionArgs =
+      module_index.GetLoadBalancerStickySession.new;
+  final GetNfsArgs = module_index.GetNfsArgs.new;
+  final GetNfsResult = module_index.GetNfsResult.new;
+  final GetNfsResultArgs = module_index.GetNfsResult.new;
+  final GetNfsSnapshotArgs = module_index.GetNfsSnapshotArgs.new;
+  final GetNfsSnapshotResult = module_index.GetNfsSnapshotResult.new;
+  final GetNfsSnapshotResultArgs = module_index.GetNfsSnapshotResult.new;
+  final GetPartnerAttachmentArgs = module_index.GetPartnerAttachmentArgs.new;
+  final GetPartnerAttachmentBgp = module_index.GetPartnerAttachmentBgp.new;
+  final GetPartnerAttachmentBgpArgs = module_index.GetPartnerAttachmentBgp.new;
+  final GetPartnerAttachmentResult =
+      module_index.GetPartnerAttachmentResult.new;
+  final GetPartnerAttachmentResultArgs =
+      module_index.GetPartnerAttachmentResult.new;
+  final GetPartnerAttachmentServiceKeyArgs =
+      module_index.GetPartnerAttachmentServiceKeyArgs.new;
+  final GetPartnerAttachmentServiceKeyResult =
+      module_index.GetPartnerAttachmentServiceKeyResult.new;
+  final GetPartnerAttachmentServiceKeyResultArgs =
+      module_index.GetPartnerAttachmentServiceKeyResult.new;
+  final GetProjectArgs = module_index.GetProjectArgs.new;
+  final GetProjectResult = module_index.GetProjectResult.new;
+  final GetProjectResultArgs = module_index.GetProjectResult.new;
+  final GetProjectsArgs = module_index.GetProjectsArgs.new;
+  final GetProjectsFilter = module_index.GetProjectsFilter.new;
+  final GetProjectsFilterArgs = module_index.GetProjectsFilter.new;
+  final GetProjectsProject = module_index.GetProjectsProject.new;
+  final GetProjectsProjectArgs = module_index.GetProjectsProject.new;
+  final GetProjectsResult = module_index.GetProjectsResult.new;
+  final GetProjectsResultArgs = module_index.GetProjectsResult.new;
+  final GetProjectsSort = module_index.GetProjectsSort.new;
+  final GetProjectsSortArgs = module_index.GetProjectsSort.new;
+  final GetRecordArgs = module_index.GetRecordArgs.new;
+  final GetRecordResult = module_index.GetRecordResult.new;
+  final GetRecordResultArgs = module_index.GetRecordResult.new;
+  final GetRecordsArgs = module_index.GetRecordsArgs.new;
+  final GetRecordsFilter = module_index.GetRecordsFilter.new;
+  final GetRecordsFilterArgs = module_index.GetRecordsFilter.new;
+  final GetRecordsRecord = module_index.GetRecordsRecord.new;
+  final GetRecordsRecordArgs = module_index.GetRecordsRecord.new;
+  final GetRecordsResult = module_index.GetRecordsResult.new;
+  final GetRecordsResultArgs = module_index.GetRecordsResult.new;
+  final GetRecordsSort = module_index.GetRecordsSort.new;
+  final GetRecordsSortArgs = module_index.GetRecordsSort.new;
+  final GetRegionArgs = module_index.GetRegionArgs.new;
+  final GetRegionResult = module_index.GetRegionResult.new;
+  final GetRegionResultArgs = module_index.GetRegionResult.new;
+  final GetRegionsArgs = module_index.GetRegionsArgs.new;
+  final GetRegionsFilter = module_index.GetRegionsFilter.new;
+  final GetRegionsFilterArgs = module_index.GetRegionsFilter.new;
+  final GetRegionsRegion = module_index.GetRegionsRegion.new;
+  final GetRegionsRegionArgs = module_index.GetRegionsRegion.new;
+  final GetRegionsResult = module_index.GetRegionsResult.new;
+  final GetRegionsResultArgs = module_index.GetRegionsResult.new;
+  final GetRegionsSort = module_index.GetRegionsSort.new;
+  final GetRegionsSortArgs = module_index.GetRegionsSort.new;
+  final GetReservedIpArgs = module_index.GetReservedIpArgs.new;
+  final GetReservedIpResult = module_index.GetReservedIpResult.new;
+  final GetReservedIpResultArgs = module_index.GetReservedIpResult.new;
+  final GetReservedIpv6Args = module_index.GetReservedIpv6Args.new;
+  final GetReservedIpv6Result = module_index.GetReservedIpv6Result.new;
+  final GetReservedIpv6ResultArgs = module_index.GetReservedIpv6Result.new;
+  final GetSizesArgs = module_index.GetSizesArgs.new;
+  final GetSizesFilter = module_index.GetSizesFilter.new;
+  final GetSizesFilterArgs = module_index.GetSizesFilter.new;
+  final GetSizesResult = module_index.GetSizesResult.new;
+  final GetSizesResultArgs = module_index.GetSizesResult.new;
+  final GetSizesSize = module_index.GetSizesSize.new;
+  final GetSizesSizeArgs = module_index.GetSizesSize.new;
+  final GetSizesSort = module_index.GetSizesSort.new;
+  final GetSizesSortArgs = module_index.GetSizesSort.new;
+  final GetSpacesBucketArgs = module_index.GetSpacesBucketArgs.new;
+  final GetSpacesBucketObjectArgs = module_index.GetSpacesBucketObjectArgs.new;
+  final GetSpacesBucketObjectResult =
+      module_index.GetSpacesBucketObjectResult.new;
+  final GetSpacesBucketObjectResultArgs =
+      module_index.GetSpacesBucketObjectResult.new;
+  final GetSpacesBucketObjectsArgs =
+      module_index.GetSpacesBucketObjectsArgs.new;
+  final GetSpacesBucketObjectsResult =
+      module_index.GetSpacesBucketObjectsResult.new;
+  final GetSpacesBucketObjectsResultArgs =
+      module_index.GetSpacesBucketObjectsResult.new;
+  final GetSpacesBucketResult = module_index.GetSpacesBucketResult.new;
+  final GetSpacesBucketResultArgs = module_index.GetSpacesBucketResult.new;
+  final GetSpacesBucketsArgs = module_index.GetSpacesBucketsArgs.new;
+  final GetSpacesBucketsBucket = module_index.GetSpacesBucketsBucket.new;
+  final GetSpacesBucketsBucketArgs = module_index.GetSpacesBucketsBucket.new;
+  final GetSpacesBucketsFilter = module_index.GetSpacesBucketsFilter.new;
+  final GetSpacesBucketsFilterArgs = module_index.GetSpacesBucketsFilter.new;
+  final GetSpacesBucketsResult = module_index.GetSpacesBucketsResult.new;
+  final GetSpacesBucketsResultArgs = module_index.GetSpacesBucketsResult.new;
+  final GetSpacesBucketsSort = module_index.GetSpacesBucketsSort.new;
+  final GetSpacesBucketsSortArgs = module_index.GetSpacesBucketsSort.new;
+  final GetSpacesKeyArgs = module_index.GetSpacesKeyArgs.new;
+  final GetSpacesKeyGrant = module_index.GetSpacesKeyGrant.new;
+  final GetSpacesKeyGrantArgs = module_index.GetSpacesKeyGrant.new;
+  final GetSpacesKeyResult = module_index.GetSpacesKeyResult.new;
+  final GetSpacesKeyResultArgs = module_index.GetSpacesKeyResult.new;
+  final GetSshKeyArgs = module_index.GetSshKeyArgs.new;
+  final GetSshKeyResult = module_index.GetSshKeyResult.new;
+  final GetSshKeyResultArgs = module_index.GetSshKeyResult.new;
+  final GetSshKeysArgs = module_index.GetSshKeysArgs.new;
+  final GetSshKeysFilter = module_index.GetSshKeysFilter.new;
+  final GetSshKeysFilterArgs = module_index.GetSshKeysFilter.new;
+  final GetSshKeysResult = module_index.GetSshKeysResult.new;
+  final GetSshKeysResultArgs = module_index.GetSshKeysResult.new;
+  final GetSshKeysSort = module_index.GetSshKeysSort.new;
+  final GetSshKeysSortArgs = module_index.GetSshKeysSort.new;
+  final GetSshKeysSshKey = module_index.GetSshKeysSshKey.new;
+  final GetSshKeysSshKeyArgs = module_index.GetSshKeysSshKey.new;
+  final GetTagArgs = module_index.GetTagArgs.new;
+  final GetTagResult = module_index.GetTagResult.new;
+  final GetTagResultArgs = module_index.GetTagResult.new;
+  final GetTagsArgs = module_index.GetTagsArgs.new;
+  final GetTagsFilter = module_index.GetTagsFilter.new;
+  final GetTagsFilterArgs = module_index.GetTagsFilter.new;
+  final GetTagsResult = module_index.GetTagsResult.new;
+  final GetTagsResultArgs = module_index.GetTagsResult.new;
+  final GetTagsSort = module_index.GetTagsSort.new;
+  final GetTagsSortArgs = module_index.GetTagsSort.new;
+  final GetTagsTag = module_index.GetTagsTag.new;
+  final GetTagsTagArgs = module_index.GetTagsTag.new;
+  final GetVolumeArgs = module_index.GetVolumeArgs.new;
+  final GetVolumeResult = module_index.GetVolumeResult.new;
+  final GetVolumeResultArgs = module_index.GetVolumeResult.new;
+  final GetVolumeSnapshotArgs = module_index.GetVolumeSnapshotArgs.new;
+  final GetVolumeSnapshotResult = module_index.GetVolumeSnapshotResult.new;
+  final GetVolumeSnapshotResultArgs = module_index.GetVolumeSnapshotResult.new;
+  final GetVpcArgs = module_index.GetVpcArgs.new;
+  final GetVpcNatGatewayArgs = module_index.GetVpcNatGatewayArgs.new;
+  final GetVpcNatGatewayEgress = module_index.GetVpcNatGatewayEgress.new;
+  final GetVpcNatGatewayEgressArgs = module_index.GetVpcNatGatewayEgress.new;
+  final GetVpcNatGatewayEgressPublicGateway =
+      module_index.GetVpcNatGatewayEgressPublicGateway.new;
+  final GetVpcNatGatewayEgressPublicGatewayArgs =
+      module_index.GetVpcNatGatewayEgressPublicGateway.new;
+  final GetVpcNatGatewayResult = module_index.GetVpcNatGatewayResult.new;
+  final GetVpcNatGatewayResultArgs = module_index.GetVpcNatGatewayResult.new;
+  final GetVpcNatGatewayVpc = module_index.GetVpcNatGatewayVpc.new;
+  final GetVpcNatGatewayVpcArgs = module_index.GetVpcNatGatewayVpc.new;
+  final GetVpcPeeringArgs = module_index.GetVpcPeeringArgs.new;
+  final GetVpcPeeringResult = module_index.GetVpcPeeringResult.new;
+  final GetVpcPeeringResultArgs = module_index.GetVpcPeeringResult.new;
+  final GetVpcResult = module_index.GetVpcResult.new;
+  final GetVpcResultArgs = module_index.GetVpcResult.new;
+  final GradientaiAgent = module_index.GradientaiAgent.new;
+  final GradientaiAgentAgentGuardrail =
+      module_index.GradientaiAgentAgentGuardrail.new;
+  final GradientaiAgentAgentGuardrailArgs =
+      module_index.GradientaiAgentAgentGuardrail.new;
+  final GradientaiAgentAnthropicApiKey =
+      module_index.GradientaiAgentAnthropicApiKey.new;
+  final GradientaiAgentAnthropicApiKeyArgs =
+      module_index.GradientaiAgentAnthropicApiKey.new;
+  final GradientaiAgentApiKey = module_index.GradientaiAgentApiKey.new;
+  final GradientaiAgentApiKeyArgs = module_index.GradientaiAgentApiKey.new;
+  final GradientaiAgentApiKeyInfo = module_index.GradientaiAgentApiKeyInfo.new;
+  final GradientaiAgentApiKeyInfoArgs =
+      module_index.GradientaiAgentApiKeyInfo.new;
+  final GradientaiAgentArgs = module_index.GradientaiAgentArgs.new;
+  final GradientaiAgentChatbot = module_index.GradientaiAgentChatbot.new;
+  final GradientaiAgentChatbotArgs = module_index.GradientaiAgentChatbot.new;
+  final GradientaiAgentChatbotIdentifier =
+      module_index.GradientaiAgentChatbotIdentifier.new;
+  final GradientaiAgentChatbotIdentifierArgs =
+      module_index.GradientaiAgentChatbotIdentifier.new;
+  final GradientaiAgentChildAgent = module_index.GradientaiAgentChildAgent.new;
+  final GradientaiAgentChildAgentAnthropicApiKey =
+      module_index.GradientaiAgentChildAgentAnthropicApiKey.new;
+  final GradientaiAgentChildAgentAnthropicApiKeyArgs =
+      module_index.GradientaiAgentChildAgentAnthropicApiKey.new;
+  final GradientaiAgentChildAgentApiKey =
+      module_index.GradientaiAgentChildAgentApiKey.new;
+  final GradientaiAgentChildAgentApiKeyArgs =
+      module_index.GradientaiAgentChildAgentApiKey.new;
+  final GradientaiAgentChildAgentApiKeyInfo =
+      module_index.GradientaiAgentChildAgentApiKeyInfo.new;
+  final GradientaiAgentChildAgentApiKeyInfoArgs =
+      module_index.GradientaiAgentChildAgentApiKeyInfo.new;
+  final GradientaiAgentChildAgentArgs =
+      module_index.GradientaiAgentChildAgent.new;
+  final GradientaiAgentChildAgentChatbot =
+      module_index.GradientaiAgentChildAgentChatbot.new;
+  final GradientaiAgentChildAgentChatbotArgs =
+      module_index.GradientaiAgentChildAgentChatbot.new;
+  final GradientaiAgentChildAgentChatbotIdentifier =
+      module_index.GradientaiAgentChildAgentChatbotIdentifier.new;
+  final GradientaiAgentChildAgentChatbotIdentifierArgs =
+      module_index.GradientaiAgentChildAgentChatbotIdentifier.new;
+  final GradientaiAgentChildAgentDeployment =
+      module_index.GradientaiAgentChildAgentDeployment.new;
+  final GradientaiAgentChildAgentDeploymentArgs =
+      module_index.GradientaiAgentChildAgentDeployment.new;
+  final GradientaiAgentDeployment = module_index.GradientaiAgentDeployment.new;
+  final GradientaiAgentDeploymentArgs =
+      module_index.GradientaiAgentDeployment.new;
+  final GradientaiAgentFunction = module_index.GradientaiAgentFunction.new;
+  final GradientaiAgentFunctionArgs = module_index.GradientaiAgentFunction.new;
+  final GradientaiAgentKnowledgeBase =
+      module_index.GradientaiAgentKnowledgeBase.new;
+  final GradientaiAgentKnowledgeBaseArgs =
+      module_index.GradientaiAgentKnowledgeBase.new;
+  final GradientaiAgentKnowledgeBaseAttachment =
+      module_index.GradientaiAgentKnowledgeBaseAttachment.new;
+  final GradientaiAgentKnowledgeBaseAttachmentArgs =
+      module_index.GradientaiAgentKnowledgeBaseAttachmentArgs.new;
+  final GradientaiAgentKnowledgeBaseAttachmentState =
+      module_index.GradientaiAgentKnowledgeBaseAttachmentState.new;
+  final GradientaiAgentKnowledgeBaseAttachmentStateArgs =
+      module_index.GradientaiAgentKnowledgeBaseAttachmentState.new;
+  final GradientaiAgentKnowledgeBaseLastIndexingJob =
+      module_index.GradientaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GradientaiAgentKnowledgeBaseLastIndexingJobArgs =
+      module_index.GradientaiAgentKnowledgeBaseLastIndexingJob.new;
+  final GradientaiAgentModel = module_index.GradientaiAgentModel.new;
+  final GradientaiAgentModelAgreement =
+      module_index.GradientaiAgentModelAgreement.new;
+  final GradientaiAgentModelAgreementArgs =
+      module_index.GradientaiAgentModelAgreement.new;
+  final GradientaiAgentModelArgs = module_index.GradientaiAgentModel.new;
+  final GradientaiAgentModelVersion =
+      module_index.GradientaiAgentModelVersion.new;
+  final GradientaiAgentModelVersionArgs =
+      module_index.GradientaiAgentModelVersion.new;
+  final GradientaiAgentOpenAiApiKey =
+      module_index.GradientaiAgentOpenAiApiKey.new;
+  final GradientaiAgentOpenAiApiKeyArgs =
+      module_index.GradientaiAgentOpenAiApiKey.new;
+  final GradientaiAgentParentAgent =
+      module_index.GradientaiAgentParentAgent.new;
+  final GradientaiAgentParentAgentAnthropicApiKey =
+      module_index.GradientaiAgentParentAgentAnthropicApiKey.new;
+  final GradientaiAgentParentAgentAnthropicApiKeyArgs =
+      module_index.GradientaiAgentParentAgentAnthropicApiKey.new;
+  final GradientaiAgentParentAgentApiKey =
+      module_index.GradientaiAgentParentAgentApiKey.new;
+  final GradientaiAgentParentAgentApiKeyArgs =
+      module_index.GradientaiAgentParentAgentApiKey.new;
+  final GradientaiAgentParentAgentApiKeyInfo =
+      module_index.GradientaiAgentParentAgentApiKeyInfo.new;
+  final GradientaiAgentParentAgentApiKeyInfoArgs =
+      module_index.GradientaiAgentParentAgentApiKeyInfo.new;
+  final GradientaiAgentParentAgentArgs =
+      module_index.GradientaiAgentParentAgent.new;
+  final GradientaiAgentParentAgentChatbot =
+      module_index.GradientaiAgentParentAgentChatbot.new;
+  final GradientaiAgentParentAgentChatbotArgs =
+      module_index.GradientaiAgentParentAgentChatbot.new;
+  final GradientaiAgentParentAgentChatbotIdentifier =
+      module_index.GradientaiAgentParentAgentChatbotIdentifier.new;
+  final GradientaiAgentParentAgentChatbotIdentifierArgs =
+      module_index.GradientaiAgentParentAgentChatbotIdentifier.new;
+  final GradientaiAgentParentAgentDeployment =
+      module_index.GradientaiAgentParentAgentDeployment.new;
+  final GradientaiAgentParentAgentDeploymentArgs =
+      module_index.GradientaiAgentParentAgentDeployment.new;
+  final GradientaiAgentRoute = module_index.GradientaiAgentRoute.new;
+  final GradientaiAgentRouteArgs = module_index.GradientaiAgentRouteArgs.new;
+  final GradientaiAgentRouteState = module_index.GradientaiAgentRouteState.new;
+  final GradientaiAgentRouteStateArgs =
+      module_index.GradientaiAgentRouteState.new;
+  final GradientaiAgentState = module_index.GradientaiAgentState.new;
+  final GradientaiAgentStateArgs = module_index.GradientaiAgentState.new;
+  final GradientaiAgentTemplate = module_index.GradientaiAgentTemplate.new;
+  final GradientaiAgentTemplateArgs = module_index.GradientaiAgentTemplate.new;
+  final GradientaiAgentTemplateKnowledgeBase =
+      module_index.GradientaiAgentTemplateKnowledgeBase.new;
+  final GradientaiAgentTemplateKnowledgeBaseArgs =
+      module_index.GradientaiAgentTemplateKnowledgeBase.new;
+  final GradientaiAgentTemplateKnowledgeBaseLastIndexingJob =
+      module_index.GradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs =
+      module_index.GradientaiAgentTemplateKnowledgeBaseLastIndexingJob.new;
+  final GradientaiAgentTemplateModel =
+      module_index.GradientaiAgentTemplateModel.new;
+  final GradientaiAgentTemplateModelAgreement =
+      module_index.GradientaiAgentTemplateModelAgreement.new;
+  final GradientaiAgentTemplateModelAgreementArgs =
+      module_index.GradientaiAgentTemplateModelAgreement.new;
+  final GradientaiAgentTemplateModelArgs =
+      module_index.GradientaiAgentTemplateModel.new;
+  final GradientaiAgentTemplateModelVersion =
+      module_index.GradientaiAgentTemplateModelVersion.new;
+  final GradientaiAgentTemplateModelVersionArgs =
+      module_index.GradientaiAgentTemplateModelVersion.new;
+  final GradientaiFunction = module_index.GradientaiFunction.new;
+  final GradientaiFunctionArgs = module_index.GradientaiFunctionArgs.new;
+  final GradientaiFunctionState = module_index.GradientaiFunctionState.new;
+  final GradientaiFunctionStateArgs = module_index.GradientaiFunctionState.new;
+  final GradientaiIndexingJobCancel =
+      module_index.GradientaiIndexingJobCancel.new;
+  final GradientaiIndexingJobCancelArgs =
+      module_index.GradientaiIndexingJobCancelArgs.new;
+  final GradientaiIndexingJobCancelState =
+      module_index.GradientaiIndexingJobCancelState.new;
+  final GradientaiIndexingJobCancelStateArgs =
+      module_index.GradientaiIndexingJobCancelState.new;
+  final GradientaiKnowledgeBase = module_index.GradientaiKnowledgeBase.new;
+  final GradientaiKnowledgeBaseArgs =
+      module_index.GradientaiKnowledgeBaseArgs.new;
+  final GradientaiKnowledgeBaseDataSource =
+      module_index.GradientaiKnowledgeBaseDataSource.new;
+  final GradientaiKnowledgeBaseDataSourceArgs =
+      module_index.GradientaiKnowledgeBaseDataSource.new;
+  final GradientaiKnowledgeBaseDataSourceFileUploadDataSource =
+      module_index.GradientaiKnowledgeBaseDataSourceFileUploadDataSource.new;
+  final GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs =
+      module_index.GradientaiKnowledgeBaseDataSourceFileUploadDataSource.new;
+  final GradientaiKnowledgeBaseDataSourceLastIndexingJob =
+      module_index.GradientaiKnowledgeBaseDataSourceLastIndexingJob.new;
+  final GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs =
+      module_index.GradientaiKnowledgeBaseDataSourceLastIndexingJob.new;
+  final GradientaiKnowledgeBaseDataSourceSpacesDataSource =
+      module_index.GradientaiKnowledgeBaseDataSourceSpacesDataSource.new;
+  final GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs =
+      module_index.GradientaiKnowledgeBaseDataSourceSpacesDataSource.new;
+  final GradientaiKnowledgeBaseDataSourceState =
+      module_index.GradientaiKnowledgeBaseDataSourceState.new;
+  final GradientaiKnowledgeBaseDataSourceStateArgs =
+      module_index.GradientaiKnowledgeBaseDataSourceState.new;
+  final GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource =
+      module_index.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
+  final GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs =
+      module_index.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.new;
+  final GradientaiKnowledgeBaseLastIndexingJob =
+      module_index.GradientaiKnowledgeBaseLastIndexingJob.new;
+  final GradientaiKnowledgeBaseLastIndexingJobArgs =
+      module_index.GradientaiKnowledgeBaseLastIndexingJob.new;
+  final GradientaiKnowledgeBaseState =
+      module_index.GradientaiKnowledgeBaseState.new;
+  final GradientaiKnowledgeBaseStateArgs =
+      module_index.GradientaiKnowledgeBaseState.new;
+  final GradientaiOpenaiApiKey = module_index.GradientaiOpenaiApiKey.new;
+  final GradientaiOpenaiApiKeyArgs =
+      module_index.GradientaiOpenaiApiKeyArgs.new;
+  final GradientaiOpenaiApiKeyModel =
+      module_index.GradientaiOpenaiApiKeyModel.new;
+  final GradientaiOpenaiApiKeyModelAgreement =
+      module_index.GradientaiOpenaiApiKeyModelAgreement.new;
+  final GradientaiOpenaiApiKeyModelAgreementArgs =
+      module_index.GradientaiOpenaiApiKeyModelAgreement.new;
+  final GradientaiOpenaiApiKeyModelArgs =
+      module_index.GradientaiOpenaiApiKeyModel.new;
+  final GradientaiOpenaiApiKeyModelVersion =
+      module_index.GradientaiOpenaiApiKeyModelVersion.new;
+  final GradientaiOpenaiApiKeyModelVersionArgs =
+      module_index.GradientaiOpenaiApiKeyModelVersion.new;
+  final GradientaiOpenaiApiKeyState =
+      module_index.GradientaiOpenaiApiKeyState.new;
+  final GradientaiOpenaiApiKeyStateArgs =
+      module_index.GradientaiOpenaiApiKeyState.new;
+  final KubernetesCluster = module_index.KubernetesCluster.new;
+  final KubernetesClusterAmdGpuDeviceMetricsExporterPlugin =
+      module_index.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
+  final KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs =
+      module_index.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.new;
+  final KubernetesClusterAmdGpuDevicePlugin =
+      module_index.KubernetesClusterAmdGpuDevicePlugin.new;
+  final KubernetesClusterAmdGpuDevicePluginArgs =
+      module_index.KubernetesClusterAmdGpuDevicePlugin.new;
+  final KubernetesClusterArgs = module_index.KubernetesClusterArgs.new;
+  final KubernetesClusterClusterAutoscalerConfiguration =
+      module_index.KubernetesClusterClusterAutoscalerConfiguration.new;
+  final KubernetesClusterClusterAutoscalerConfigurationArgs =
+      module_index.KubernetesClusterClusterAutoscalerConfiguration.new;
+  final KubernetesClusterControlPlaneFirewall =
+      module_index.KubernetesClusterControlPlaneFirewall.new;
+  final KubernetesClusterControlPlaneFirewallArgs =
+      module_index.KubernetesClusterControlPlaneFirewall.new;
+  final KubernetesClusterKubeConfig =
+      module_index.KubernetesClusterKubeConfig.new;
+  final KubernetesClusterKubeConfigArgs =
+      module_index.KubernetesClusterKubeConfig.new;
+  final KubernetesClusterMaintenancePolicy =
+      module_index.KubernetesClusterMaintenancePolicy.new;
+  final KubernetesClusterMaintenancePolicyArgs =
+      module_index.KubernetesClusterMaintenancePolicy.new;
+  final KubernetesClusterNodePool = module_index.KubernetesClusterNodePool.new;
+  final KubernetesClusterNodePoolArgs =
+      module_index.KubernetesClusterNodePool.new;
+  final KubernetesClusterNodePoolNode =
+      module_index.KubernetesClusterNodePoolNode.new;
+  final KubernetesClusterNodePoolNodeArgs =
+      module_index.KubernetesClusterNodePoolNode.new;
+  final KubernetesClusterNodePoolTaint =
+      module_index.KubernetesClusterNodePoolTaint.new;
+  final KubernetesClusterNodePoolTaintArgs =
+      module_index.KubernetesClusterNodePoolTaint.new;
+  final KubernetesClusterNvidiaGpuDevicePlugin =
+      module_index.KubernetesClusterNvidiaGpuDevicePlugin.new;
+  final KubernetesClusterNvidiaGpuDevicePluginArgs =
+      module_index.KubernetesClusterNvidiaGpuDevicePlugin.new;
+  final KubernetesClusterRdmaSharedDevicePlugin =
+      module_index.KubernetesClusterRdmaSharedDevicePlugin.new;
+  final KubernetesClusterRdmaSharedDevicePluginArgs =
+      module_index.KubernetesClusterRdmaSharedDevicePlugin.new;
+  final KubernetesClusterRoutingAgent =
+      module_index.KubernetesClusterRoutingAgent.new;
+  final KubernetesClusterRoutingAgentArgs =
+      module_index.KubernetesClusterRoutingAgent.new;
+  final KubernetesClusterState = module_index.KubernetesClusterState.new;
+  final KubernetesClusterStateArgs = module_index.KubernetesClusterState.new;
+  final KubernetesNodePool = module_index.KubernetesNodePool.new;
+  final KubernetesNodePoolArgs = module_index.KubernetesNodePoolArgs.new;
+  final KubernetesNodePoolNode = module_index.KubernetesNodePoolNode.new;
+  final KubernetesNodePoolNodeArgs = module_index.KubernetesNodePoolNode.new;
+  final KubernetesNodePoolState = module_index.KubernetesNodePoolState.new;
+  final KubernetesNodePoolStateArgs = module_index.KubernetesNodePoolState.new;
+  final KubernetesNodePoolTaint = module_index.KubernetesNodePoolTaint.new;
+  final KubernetesNodePoolTaintArgs = module_index.KubernetesNodePoolTaint.new;
+  final LoadBalancer = module_index.LoadBalancer.new;
+  final LoadBalancerArgs = module_index.LoadBalancerArgs.new;
+  final LoadBalancerDomain = module_index.LoadBalancerDomain.new;
+  final LoadBalancerDomainArgs = module_index.LoadBalancerDomain.new;
+  final LoadBalancerFirewall = module_index.LoadBalancerFirewall.new;
+  final LoadBalancerFirewallArgs = module_index.LoadBalancerFirewall.new;
+  final LoadBalancerForwardingRule =
+      module_index.LoadBalancerForwardingRule.new;
+  final LoadBalancerForwardingRuleArgs =
+      module_index.LoadBalancerForwardingRule.new;
+  final LoadBalancerGlbSettings = module_index.LoadBalancerGlbSettings.new;
+  final LoadBalancerGlbSettingsArgs = module_index.LoadBalancerGlbSettings.new;
+  final LoadBalancerGlbSettingsCdn =
+      module_index.LoadBalancerGlbSettingsCdn.new;
+  final LoadBalancerGlbSettingsCdnArgs =
+      module_index.LoadBalancerGlbSettingsCdn.new;
+  final LoadBalancerHealthcheck = module_index.LoadBalancerHealthcheck.new;
+  final LoadBalancerHealthcheckArgs = module_index.LoadBalancerHealthcheck.new;
+  final LoadBalancerState = module_index.LoadBalancerState.new;
+  final LoadBalancerStateArgs = module_index.LoadBalancerState.new;
+  final LoadBalancerStickySessions =
+      module_index.LoadBalancerStickySessions.new;
+  final LoadBalancerStickySessionsArgs =
+      module_index.LoadBalancerStickySessions.new;
+  final MonitorAlert = module_index.MonitorAlert.new;
+  final MonitorAlertAlerts = module_index.MonitorAlertAlerts.new;
+  final MonitorAlertAlertsArgs = module_index.MonitorAlertAlerts.new;
+  final MonitorAlertAlertsSlack = module_index.MonitorAlertAlertsSlack.new;
+  final MonitorAlertAlertsSlackArgs = module_index.MonitorAlertAlertsSlack.new;
+  final MonitorAlertArgs = module_index.MonitorAlertArgs.new;
+  final MonitorAlertState = module_index.MonitorAlertState.new;
+  final MonitorAlertStateArgs = module_index.MonitorAlertState.new;
+  final Nfs = module_index.Nfs.new;
+  final NfsArgs = module_index.NfsArgs.new;
+  final NfsAttachment = module_index.NfsAttachment.new;
+  final NfsAttachmentArgs = module_index.NfsAttachmentArgs.new;
+  final NfsAttachmentState = module_index.NfsAttachmentState.new;
+  final NfsAttachmentStateArgs = module_index.NfsAttachmentState.new;
+  final NfsSnapshot = module_index.NfsSnapshot.new;
+  final NfsSnapshotArgs = module_index.NfsSnapshotArgs.new;
+  final NfsSnapshotState = module_index.NfsSnapshotState.new;
+  final NfsSnapshotStateArgs = module_index.NfsSnapshotState.new;
+  final NfsState = module_index.NfsState.new;
+  final NfsStateArgs = module_index.NfsState.new;
+  final PartnerAttachment = module_index.PartnerAttachment.new;
+  final PartnerAttachmentArgs = module_index.PartnerAttachmentArgs.new;
+  final PartnerAttachmentBgp = module_index.PartnerAttachmentBgp.new;
+  final PartnerAttachmentBgpArgs = module_index.PartnerAttachmentBgp.new;
+  final PartnerAttachmentState = module_index.PartnerAttachmentState.new;
+  final PartnerAttachmentStateArgs = module_index.PartnerAttachmentState.new;
+  final Project = module_index.Project.new;
+  final ProjectArgs = module_index.ProjectArgs.new;
+  final ProjectResources = module_index.ProjectResources.new;
+  final ProjectResourcesArgs = module_index.ProjectResourcesArgs.new;
+  final ProjectResourcesState = module_index.ProjectResourcesState.new;
+  final ProjectResourcesStateArgs = module_index.ProjectResourcesState.new;
+  final ProjectState = module_index.ProjectState.new;
+  final ProjectStateArgs = module_index.ProjectState.new;
+  final Protocol = module_index.Protocol.values;
+  final RecordType = module_index.RecordType.values;
+  final Region = module_index.Region.values;
+  final ReservedIp = module_index.ReservedIp.new;
+  final ReservedIpArgs = module_index.ReservedIpArgs.new;
+  final ReservedIpAssignment = module_index.ReservedIpAssignment.new;
+  final ReservedIpAssignmentArgs = module_index.ReservedIpAssignmentArgs.new;
+  final ReservedIpAssignmentState = module_index.ReservedIpAssignmentState.new;
+  final ReservedIpAssignmentStateArgs =
+      module_index.ReservedIpAssignmentState.new;
+  final ReservedIpState = module_index.ReservedIpState.new;
+  final ReservedIpStateArgs = module_index.ReservedIpState.new;
+  final ReservedIpv6 = module_index.ReservedIpv6.new;
+  final ReservedIpv6Args = module_index.ReservedIpv6Args.new;
+  final ReservedIpv6Assignment = module_index.ReservedIpv6Assignment.new;
+  final ReservedIpv6AssignmentArgs =
+      module_index.ReservedIpv6AssignmentArgs.new;
+  final ReservedIpv6AssignmentState =
+      module_index.ReservedIpv6AssignmentState.new;
+  final ReservedIpv6AssignmentStateArgs =
+      module_index.ReservedIpv6AssignmentState.new;
+  final ReservedIpv6State = module_index.ReservedIpv6State.new;
+  final ReservedIpv6StateArgs = module_index.ReservedIpv6State.new;
+  final SpacesBucket = module_index.SpacesBucket.new;
+  final SpacesBucketArgs = module_index.SpacesBucketArgs.new;
+  final SpacesBucketCorsConfiguration =
+      module_index.SpacesBucketCorsConfiguration.new;
+  final SpacesBucketCorsConfigurationArgs =
+      module_index.SpacesBucketCorsConfigurationArgs.new;
+  final SpacesBucketCorsConfigurationCorsRule =
+      module_index.SpacesBucketCorsConfigurationCorsRule.new;
+  final SpacesBucketCorsConfigurationCorsRuleArgs =
+      module_index.SpacesBucketCorsConfigurationCorsRule.new;
+  final SpacesBucketCorsConfigurationState =
+      module_index.SpacesBucketCorsConfigurationState.new;
+  final SpacesBucketCorsConfigurationStateArgs =
+      module_index.SpacesBucketCorsConfigurationState.new;
+  final SpacesBucketCorsRule = module_index.SpacesBucketCorsRule.new;
+  final SpacesBucketCorsRuleArgs = module_index.SpacesBucketCorsRule.new;
+  final SpacesBucketLifecycleRule = module_index.SpacesBucketLifecycleRule.new;
+  final SpacesBucketLifecycleRuleArgs =
+      module_index.SpacesBucketLifecycleRule.new;
+  final SpacesBucketLifecycleRuleExpiration =
+      module_index.SpacesBucketLifecycleRuleExpiration.new;
+  final SpacesBucketLifecycleRuleExpirationArgs =
+      module_index.SpacesBucketLifecycleRuleExpiration.new;
+  final SpacesBucketLifecycleRuleNoncurrentVersionExpiration =
+      module_index.SpacesBucketLifecycleRuleNoncurrentVersionExpiration.new;
+  final SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs =
+      module_index.SpacesBucketLifecycleRuleNoncurrentVersionExpiration.new;
+  final SpacesBucketLogging = module_index.SpacesBucketLogging.new;
+  final SpacesBucketLoggingArgs = module_index.SpacesBucketLoggingArgs.new;
+  final SpacesBucketLoggingState = module_index.SpacesBucketLoggingState.new;
+  final SpacesBucketLoggingStateArgs =
+      module_index.SpacesBucketLoggingState.new;
+  final SpacesBucketObject = module_index.SpacesBucketObject.new;
+  final SpacesBucketObjectArgs = module_index.SpacesBucketObjectArgs.new;
+  final SpacesBucketObjectState = module_index.SpacesBucketObjectState.new;
+  final SpacesBucketObjectStateArgs = module_index.SpacesBucketObjectState.new;
+  final SpacesBucketPolicy = module_index.SpacesBucketPolicy.new;
+  final SpacesBucketPolicyArgs = module_index.SpacesBucketPolicyArgs.new;
+  final SpacesBucketPolicyState = module_index.SpacesBucketPolicyState.new;
+  final SpacesBucketPolicyStateArgs = module_index.SpacesBucketPolicyState.new;
+  final SpacesBucketState = module_index.SpacesBucketState.new;
+  final SpacesBucketStateArgs = module_index.SpacesBucketState.new;
+  final SpacesBucketVersioning = module_index.SpacesBucketVersioning.new;
+  final SpacesBucketVersioningArgs = module_index.SpacesBucketVersioning.new;
+  final SpacesKey = module_index.SpacesKey.new;
+  final SpacesKeyArgs = module_index.SpacesKeyArgs.new;
+  final SpacesKeyGrant = module_index.SpacesKeyGrant.new;
+  final SpacesKeyGrantArgs = module_index.SpacesKeyGrant.new;
+  final SpacesKeyState = module_index.SpacesKeyState.new;
+  final SpacesKeyStateArgs = module_index.SpacesKeyState.new;
+  final SshKey = module_index.SshKey.new;
+  final SshKeyArgs = module_index.SshKeyArgs.new;
+  final SshKeyState = module_index.SshKeyState.new;
+  final SshKeyStateArgs = module_index.SshKeyState.new;
+  final Tag = module_index.Tag.new;
+  final TagArgs = module_index.TagArgs.new;
+  final TagState = module_index.TagState.new;
+  final TagStateArgs = module_index.TagState.new;
+  final UptimeAlert = module_index.UptimeAlert.new;
+  final UptimeAlertArgs = module_index.UptimeAlertArgs.new;
+  final UptimeAlertNotification = module_index.UptimeAlertNotification.new;
+  final UptimeAlertNotificationArgs = module_index.UptimeAlertNotification.new;
+  final UptimeAlertNotificationSlack =
+      module_index.UptimeAlertNotificationSlack.new;
+  final UptimeAlertNotificationSlackArgs =
+      module_index.UptimeAlertNotificationSlack.new;
+  final UptimeAlertState = module_index.UptimeAlertState.new;
+  final UptimeAlertStateArgs = module_index.UptimeAlertState.new;
+  final UptimeCheck = module_index.UptimeCheck.new;
+  final UptimeCheckArgs = module_index.UptimeCheckArgs.new;
+  final UptimeCheckState = module_index.UptimeCheckState.new;
+  final UptimeCheckStateArgs = module_index.UptimeCheckState.new;
+  final Volume = module_index.Volume.new;
+  final VolumeArgs = module_index.VolumeArgs.new;
+  final VolumeAttachment = module_index.VolumeAttachment.new;
+  final VolumeAttachmentArgs = module_index.VolumeAttachmentArgs.new;
+  final VolumeAttachmentState = module_index.VolumeAttachmentState.new;
+  final VolumeAttachmentStateArgs = module_index.VolumeAttachmentState.new;
+  final VolumeSnapshot = module_index.VolumeSnapshot.new;
+  final VolumeSnapshotArgs = module_index.VolumeSnapshotArgs.new;
+  final VolumeSnapshotState = module_index.VolumeSnapshotState.new;
+  final VolumeSnapshotStateArgs = module_index.VolumeSnapshotState.new;
+  final VolumeState = module_index.VolumeState.new;
+  final VolumeStateArgs = module_index.VolumeState.new;
+  final Vpc = module_index.Vpc.new;
+  final VpcArgs = module_index.VpcArgs.new;
+  final VpcNatGateway = module_index.VpcNatGateway.new;
+  final VpcNatGatewayArgs = module_index.VpcNatGatewayArgs.new;
+  final VpcNatGatewayEgress = module_index.VpcNatGatewayEgress.new;
+  final VpcNatGatewayEgressArgs = module_index.VpcNatGatewayEgress.new;
+  final VpcNatGatewayEgressPublicGateway =
+      module_index.VpcNatGatewayEgressPublicGateway.new;
+  final VpcNatGatewayEgressPublicGatewayArgs =
+      module_index.VpcNatGatewayEgressPublicGateway.new;
+  final VpcNatGatewayState = module_index.VpcNatGatewayState.new;
+  final VpcNatGatewayStateArgs = module_index.VpcNatGatewayState.new;
+  final VpcNatGatewayVpc = module_index.VpcNatGatewayVpc.new;
+  final VpcNatGatewayVpcArgs = module_index.VpcNatGatewayVpc.new;
+  final VpcPeering = module_index.VpcPeering.new;
+  final VpcPeeringArgs = module_index.VpcPeeringArgs.new;
+  final VpcPeeringState = module_index.VpcPeeringState.new;
+  final VpcPeeringStateArgs = module_index.VpcPeeringState.new;
+  final VpcState = module_index.VpcState.new;
+  final VpcStateArgs = module_index.VpcState.new;
+  final getAccount = module_index.getAccount;
+  final getApp = module_index.getApp;
+  final getByoipPrefix = module_index.getByoipPrefix;
+  final getByoipPrefixResources = module_index.getByoipPrefixResources;
+  final getCertificate = module_index.getCertificate;
+  final getContainerRegistries = module_index.getContainerRegistries;
+  final getContainerRegistry = module_index.getContainerRegistry;
+  final getDatabaseCa = module_index.getDatabaseCa;
+  final getDatabaseCluster = module_index.getDatabaseCluster;
+  final getDatabaseConnectionPool = module_index.getDatabaseConnectionPool;
+  final getDatabaseMetricsCredentials =
+      module_index.getDatabaseMetricsCredentials;
+  final getDatabaseReplica = module_index.getDatabaseReplica;
+  final getDatabaseUser = module_index.getDatabaseUser;
+  final getDomain = module_index.getDomain;
+  final getDomains = module_index.getDomains;
+  final getDroplet = module_index.getDroplet;
+  final getDropletAutoscale = module_index.getDropletAutoscale;
+  final getDropletSnapshot = module_index.getDropletSnapshot;
+  final getDroplets = module_index.getDroplets;
+  final getFirewall = module_index.getFirewall;
+  final getFloatingIp = module_index.getFloatingIp;
+  final getGenaiAgent = module_index.getGenaiAgent;
+  final getGenaiAgentVersions = module_index.getGenaiAgentVersions;
+  final getGenaiAgents = module_index.getGenaiAgents;
+  final getGenaiAgentsByOpenaiApiKey =
+      module_index.getGenaiAgentsByOpenaiApiKey;
+  final getGenaiIndexingJob = module_index.getGenaiIndexingJob;
+  final getGenaiIndexingJobDataSources =
+      module_index.getGenaiIndexingJobDataSources;
+  final getGenaiKnowledgeBase = module_index.getGenaiKnowledgeBase;
+  final getGenaiKnowledgeBaseDataSources =
+      module_index.getGenaiKnowledgeBaseDataSources;
+  final getGenaiKnowledgeBaseIndexingJobs =
+      module_index.getGenaiKnowledgeBaseIndexingJobs;
+  final getGenaiKnowledgeBases = module_index.getGenaiKnowledgeBases;
+  final getGenaiModels = module_index.getGenaiModels;
+  final getGenaiOpenaiApiKey = module_index.getGenaiOpenaiApiKey;
+  final getGenaiOpenaiApiKeys = module_index.getGenaiOpenaiApiKeys;
+  final getGenaiRegions = module_index.getGenaiRegions;
+  final getGradientaiAgent = module_index.getGradientaiAgent;
+  final getGradientaiAgentVersions = module_index.getGradientaiAgentVersions;
+  final getGradientaiAgents = module_index.getGradientaiAgents;
+  final getGradientaiAgentsByOpenaiApiKey =
+      module_index.getGradientaiAgentsByOpenaiApiKey;
+  final getGradientaiIndexingJob = module_index.getGradientaiIndexingJob;
+  final getGradientaiIndexingJobDataSources =
+      module_index.getGradientaiIndexingJobDataSources;
+  final getGradientaiKnowledgeBase = module_index.getGradientaiKnowledgeBase;
+  final getGradientaiKnowledgeBaseDataSources =
+      module_index.getGradientaiKnowledgeBaseDataSources;
+  final getGradientaiKnowledgeBaseIndexingJobs =
+      module_index.getGradientaiKnowledgeBaseIndexingJobs;
+  final getGradientaiKnowledgeBases = module_index.getGradientaiKnowledgeBases;
+  final getGradientaiModels = module_index.getGradientaiModels;
+  final getGradientaiOpenaiApiKey = module_index.getGradientaiOpenaiApiKey;
+  final getGradientaiOpenaiApiKeys = module_index.getGradientaiOpenaiApiKeys;
+  final getGradientaiRegions = module_index.getGradientaiRegions;
+  final getImage = module_index.getImage;
+  final getImages = module_index.getImages;
+  final getKubernetesCluster = module_index.getKubernetesCluster;
+  final getKubernetesVersions = module_index.getKubernetesVersions;
+  final getLoadBalancer = module_index.getLoadBalancer;
+  final getNfs = module_index.getNfs;
+  final getNfsSnapshot = module_index.getNfsSnapshot;
+  final getPartnerAttachment = module_index.getPartnerAttachment;
+  final getPartnerAttachmentServiceKey =
+      module_index.getPartnerAttachmentServiceKey;
+  final getProject = module_index.getProject;
+  final getProjects = module_index.getProjects;
+  final getRecord = module_index.getRecord;
+  final getRecords = module_index.getRecords;
+  final getRegion = module_index.getRegion;
+  final getRegions = module_index.getRegions;
+  final getReservedIp = module_index.getReservedIp;
+  final getReservedIpv6 = module_index.getReservedIpv6;
+  final getSizes = module_index.getSizes;
+  final getSpacesBucket = module_index.getSpacesBucket;
+  final getSpacesBucketObject = module_index.getSpacesBucketObject;
+  final getSpacesBucketObjects = module_index.getSpacesBucketObjects;
+  final getSpacesBuckets = module_index.getSpacesBuckets;
+  final getSpacesKey = module_index.getSpacesKey;
+  final getSshKey = module_index.getSshKey;
+  final getSshKeys = module_index.getSshKeys;
+  final getTag = module_index.getTag;
+  final getTags = module_index.getTags;
+  final getVolume = module_index.getVolume;
+  final getVolumeSnapshot = module_index.getVolumeSnapshot;
+  final getVpc = module_index.getVpc;
+  final getVpcNatGateway = module_index.getVpcNatGateway;
+  final getVpcPeering = module_index.getVpcPeering;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final Digitalocean = _providers.ProviderProvider.new;
-  final DigitaloceanArgs = _providers.ProviderArgs.new;
-  final ProviderArgs = _providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult = _providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs = _providers.ProviderTerraformConfigResult.new;
-  final TerraformConfigArgs = _providers.TerraformConfigArgs.new;
-  final TerraformConfigResult = _providers.TerraformConfigResult.new;
-  final TerraformConfigResultArgs = _providers.TerraformConfigResult.new;
-  final terraformConfig = _providers.terraformConfig;
+  final Digitalocean = module_providers.ProviderProvider.new;
+  final DigitaloceanArgs = module_providers.ProviderArgs.new;
+  final ProviderArgs = module_providers.ProviderArgs.new;
+  final ProviderTerraformConfigResult =
+      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs =
+      module_providers.ProviderTerraformConfigResult.new;
+  final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
+  final TerraformConfigResult = module_providers.TerraformConfigResult.new;
+  final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
+  final terraformConfig = module_providers.terraformConfig;
 }
-

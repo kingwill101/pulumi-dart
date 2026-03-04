@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_args.dart';
-import 'policy_rule.dart';
 import 'policy_state.dart';
 
 /// Provides a Hybrid Backup Recovery (HBR) Policy resource.
@@ -9,7 +8,7 @@ import 'policy_state.dart';
 ///
 /// For information about Hybrid Backup Recovery (HBR) Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
 ///
-/// > **NOTE:** Available since v1.221.0.
+/// &gt; **NOTE:** Available since v1.221.0.
 ///
 /// ## Example Usage
 ///
@@ -266,34 +265,35 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// Policy creation time
   late final pulumi.Output<String> createTime;
+
   /// The policy description.
   late final pulumi.Output<String?> policyDescription;
+
   /// Policy Name
   late final pulumi.Output<String?> policyName;
+
   /// The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
   late final pulumi.Output<String> policyType;
+
   /// A list of policy rules See `rules` below.
-  late final pulumi.Output<List<PolicyRule>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
 
   /// Creates a new [Policy].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_hbr_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:hbr/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.policyDescription = registerOutput<String?>('policyDescription');
-    this.policyName = registerOutput<String?>('policyName');
-    this.policyType = registerOutput<String>('policyType');
-    this.rules = registerOutput<List<PolicyRule>?>('rules');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:hbr/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    policyDescription = registerOutput<String?>('policyDescription');
+    policyName = registerOutput<String?>('policyName');
+    policyType = registerOutput<String>('policyType');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -314,15 +314,15 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.policyDescription = registerOutput<String?>('policyDescription');
-    this.policyName = registerOutput<String?>('policyName');
-    this.policyType = registerOutput<String>('policyType');
-    this.rules = registerOutput<List<PolicyRule>?>('rules');
+         'alicloud:hbr/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    policyDescription = registerOutput<String?>('policyDescription');
+    policyName = registerOutput<String?>('policyName');
+    policyType = registerOutput<String>('policyType');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
   }
 }

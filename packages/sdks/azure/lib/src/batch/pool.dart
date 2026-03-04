@@ -1,23 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pool_args.dart';
 import 'pool_auto_scale.dart';
-import 'pool_certificate.dart';
 import 'pool_container_configuration.dart';
-import 'pool_data_disk.dart';
-import 'pool_disk_encryption.dart';
-import 'pool_extension.dart';
 import 'pool_fixed_scale.dart';
 import 'pool_identity.dart';
-import 'pool_mount.dart';
 import 'pool_network_configuration.dart';
-import 'pool_node_placement.dart';
 import 'pool_security_profile.dart';
 import 'pool_start_task.dart';
 import 'pool_state.dart';
 import 'pool_storage_image_reference.dart';
-import 'pool_task_scheduling_policy.dart';
-import 'pool_user_account.dart';
-import 'pool_window.dart';
 
 /// Manages an Azure Batch pool.
 ///
@@ -530,7 +521,7 @@ import 'pool_window.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Batch` - 2024-07-01
@@ -545,118 +536,155 @@ import 'pool_window.dart';
 class Pool extends pulumi.CustomResource {
   /// Specifies the name of the Batch account in which the pool will be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// A `auto_scale` block that describes the scale settings when using auto scale as defined below.
   ///
-  /// > **Note:** `fixed_scale` and `auto_scale` blocks cannot be used both at the same time.
+  /// &gt; **Note:** `fixed_scale` and `auto_scale` blocks cannot be used both at the same time.
   late final pulumi.Output<PoolAutoScale?> autoScale;
-  late final pulumi.Output<List<PoolCertificate>?> certificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+
   /// The container configuration used in the pool's VMs. One `container_configuration` block as defined below.
   late final pulumi.Output<PoolContainerConfiguration?> containerConfiguration;
+
   /// A `data_disks` block describes the data disk settings as defined below.
-  late final pulumi.Output<List<PoolDataDisk>?> dataDisks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+
   /// A `disk_encryption` block, as defined below, describes the disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
-  late final pulumi.Output<List<PoolDiskEncryption>?> diskEncryptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+
   /// Specifies the display name of the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> displayName;
+
   /// An `extensions` block as defined below.
-  late final pulumi.Output<List<PoolExtension>?> extensions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+
   /// A `fixed_scale` block that describes the scale settings when using fixed scale as defined below.
   late final pulumi.Output<PoolFixedScale?> fixedScale;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<PoolIdentity?> identity;
+
   /// Whether the pool permits direct communication between nodes. This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. Values allowed are `Disabled` and `Enabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> interNodeCommunication;
+
   /// The type of on-premises license to be used when deploying the operating system. This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are: "Windows_Server" - The on-premises license is for Windows Server. "Windows_Client" - The on-premises license is for Windows Client.
   late final pulumi.Output<String?> licenseType;
+
   /// Specifies the maximum number of tasks that can run concurrently on a single compute node in the pool. Defaults to `1`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maxTasksPerNode;
+
   /// A map of custom batch pool metadata.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// A `mount` block defined as below.
-  late final pulumi.Output<List<PoolMount>?> mounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> mounts;
+
   /// Specifies the name of the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_configuration` block that describes the network configurations for the Batch pool as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PoolNetworkConfiguration?> networkConfiguration;
+
   /// Specifies the SKU of the node agents that will be created in the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> nodeAgentSkuId;
+
   /// A `node_placement` block that describes the placement policy for allocating nodes in the pool as defined below.
-  late final pulumi.Output<List<PoolNodePlacement>?> nodePlacements;
-  /// Specifies the ephemeral disk placement for operating system disk for all VMs in the pool. This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at <https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements> and Linux VMs at <https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements>. The only possible value is `CacheDisk`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> nodePlacements;
+
+  /// Specifies the ephemeral disk placement for operating system disk for all VMs in the pool. This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements&gt; and Linux VMs at &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements&gt;. The only possible value is `CacheDisk`.
   late final pulumi.Output<String?> osDiskPlacement;
+
   /// The name of the resource group in which to create the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `security_profile` block that describes the security settings for the Batch pool as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PoolSecurityProfile?> securityProfile;
+
   /// A `start_task` block that describes the start task settings for the Batch pool as defined below.
   late final pulumi.Output<PoolStartTask?> startTask;
+
   /// Whether to stop if there is a pending resize operation on this pool.
   late final pulumi.Output<bool?> stopPendingResizeOperation;
+
   /// A `storage_image_reference` block for the virtual machines that will compose the Batch pool as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PoolStorageImageReference> storageImageReference;
+
   /// The desired node communication mode for the pool. Possible values are `Classic`, `Default` and `Simplified`.
   late final pulumi.Output<String?> targetNodeCommunicationMode;
+
   /// A `task_scheduling_policy` block that describes how tasks are distributed across compute nodes in a pool as defined below. If not specified, the default is spread as defined below.
-  late final pulumi.Output<List<PoolTaskSchedulingPolicy>> taskSchedulingPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> taskSchedulingPolicies;
+
   /// A `user_accounts` block that describes the list of user accounts to be created on each node in the pool as defined below.
-  late final pulumi.Output<List<PoolUserAccount>?> userAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> userAccounts;
+
   /// Specifies the size of the VM created in the Batch pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> vmSize;
+
   /// A `windows` block that describes the Windows configuration in the pool as defined below.
-  late final pulumi.Output<List<PoolWindow>?> windows;
+  late final pulumi.Output<List<Map<String, dynamic>>?> windows;
 
   /// Creates a new [Pool].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Pool]. {@macro pulumi_batch_pool_pool_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Pool(
-    String name, {
-    PoolArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:batch/pool:Pool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.autoScale = registerOutput<PoolAutoScale?>('autoScale');
-    this.certificates = registerOutput<List<PoolCertificate>?>('certificates');
-    this.containerConfiguration = registerOutput<PoolContainerConfiguration?>('containerConfiguration');
-    this.dataDisks = registerOutput<List<PoolDataDisk>?>('dataDisks');
-    this.diskEncryptions = registerOutput<List<PoolDiskEncryption>?>('diskEncryptions');
-    this.displayName = registerOutput<String?>('displayName');
-    this.extensions = registerOutput<List<PoolExtension>?>('extensions');
-    this.fixedScale = registerOutput<PoolFixedScale?>('fixedScale');
-    this.identity = registerOutput<PoolIdentity?>('identity');
-    this.interNodeCommunication = registerOutput<String?>('interNodeCommunication');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.maxTasksPerNode = registerOutput<int?>('maxTasksPerNode');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.mounts = registerOutput<List<PoolMount>?>('mounts');
+  Pool(String name, {PoolArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:batch/pool:Pool',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accountName = registerOutput<String>('accountName');
+    autoScale = registerOutput<PoolAutoScale?>('autoScale');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    containerConfiguration = registerOutput<PoolContainerConfiguration?>(
+      'containerConfiguration',
+    );
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    displayName = registerOutput<String?>('displayName');
+    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    fixedScale = registerOutput<PoolFixedScale?>('fixedScale');
+    identity = registerOutput<PoolIdentity?>('identity');
+    interNodeCommunication = registerOutput<String?>('interNodeCommunication');
+    licenseType = registerOutput<String?>('licenseType');
+    maxTasksPerNode = registerOutput<int?>('maxTasksPerNode');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    mounts = registerOutput<List<Map<String, dynamic>>?>('mounts');
     this.name = registerOutput<String>('name');
-    this.networkConfiguration = registerOutput<PoolNetworkConfiguration?>('networkConfiguration');
-    this.nodeAgentSkuId = registerOutput<String>('nodeAgentSkuId');
-    this.nodePlacements = registerOutput<List<PoolNodePlacement>?>('nodePlacements');
-    this.osDiskPlacement = registerOutput<String?>('osDiskPlacement');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.securityProfile = registerOutput<PoolSecurityProfile?>('securityProfile');
-    this.startTask = registerOutput<PoolStartTask?>('startTask');
-    this.stopPendingResizeOperation = registerOutput<bool?>('stopPendingResizeOperation');
-    this.storageImageReference = registerOutput<PoolStorageImageReference>('storageImageReference');
-    this.targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
-    this.taskSchedulingPolicies = registerOutput<List<PoolTaskSchedulingPolicy>>('taskSchedulingPolicies');
-    this.userAccounts = registerOutput<List<PoolUserAccount>?>('userAccounts');
-    this.vmSize = registerOutput<String>('vmSize');
-    this.windows = registerOutput<List<PoolWindow>?>('windows');
+    networkConfiguration = registerOutput<PoolNetworkConfiguration?>(
+      'networkConfiguration',
+    );
+    nodeAgentSkuId = registerOutput<String>('nodeAgentSkuId');
+    nodePlacements = registerOutput<List<Map<String, dynamic>>?>(
+      'nodePlacements',
+    );
+    osDiskPlacement = registerOutput<String?>('osDiskPlacement');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityProfile = registerOutput<PoolSecurityProfile?>('securityProfile');
+    startTask = registerOutput<PoolStartTask?>('startTask');
+    stopPendingResizeOperation = registerOutput<bool?>(
+      'stopPendingResizeOperation',
+    );
+    storageImageReference = registerOutput<PoolStorageImageReference>(
+      'storageImageReference',
+    );
+    targetNodeCommunicationMode = registerOutput<String?>(
+      'targetNodeCommunicationMode',
+    );
+    taskSchedulingPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'taskSchedulingPolicies',
+    );
+    userAccounts = registerOutput<List<Map<String, dynamic>>?>('userAccounts');
+    vmSize = registerOutput<String>('vmSize');
+    windows = registerOutput<List<Map<String, dynamic>>?>('windows');
   }
 
   /// Gets an existing [Pool] resource's state with the given [name] and [id].
-  static Pool get(
-    String name,
-    pulumi.Input<String> id, {
-    PoolState? state,
-  }) {
+  static Pool get(String name, pulumi.Input<String> id, {PoolState? state}) {
     return Pool._get(
       name,
       state: state?.toMap(),
@@ -669,40 +697,56 @@ class Pool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:batch/pool:Pool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.autoScale = registerOutput<PoolAutoScale?>('autoScale');
-    this.certificates = registerOutput<List<PoolCertificate>?>('certificates');
-    this.containerConfiguration = registerOutput<PoolContainerConfiguration?>('containerConfiguration');
-    this.dataDisks = registerOutput<List<PoolDataDisk>?>('dataDisks');
-    this.diskEncryptions = registerOutput<List<PoolDiskEncryption>?>('diskEncryptions');
-    this.displayName = registerOutput<String?>('displayName');
-    this.extensions = registerOutput<List<PoolExtension>?>('extensions');
-    this.fixedScale = registerOutput<PoolFixedScale?>('fixedScale');
-    this.identity = registerOutput<PoolIdentity?>('identity');
-    this.interNodeCommunication = registerOutput<String?>('interNodeCommunication');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.maxTasksPerNode = registerOutput<int?>('maxTasksPerNode');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.mounts = registerOutput<List<PoolMount>?>('mounts');
+         'azure:batch/pool:Pool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    autoScale = registerOutput<PoolAutoScale?>('autoScale');
+    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    containerConfiguration = registerOutput<PoolContainerConfiguration?>(
+      'containerConfiguration',
+    );
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>(
+      'diskEncryptions',
+    );
+    displayName = registerOutput<String?>('displayName');
+    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    fixedScale = registerOutput<PoolFixedScale?>('fixedScale');
+    identity = registerOutput<PoolIdentity?>('identity');
+    interNodeCommunication = registerOutput<String?>('interNodeCommunication');
+    licenseType = registerOutput<String?>('licenseType');
+    maxTasksPerNode = registerOutput<int?>('maxTasksPerNode');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    mounts = registerOutput<List<Map<String, dynamic>>?>('mounts');
     this.name = registerOutput<String>('name');
-    this.networkConfiguration = registerOutput<PoolNetworkConfiguration?>('networkConfiguration');
-    this.nodeAgentSkuId = registerOutput<String>('nodeAgentSkuId');
-    this.nodePlacements = registerOutput<List<PoolNodePlacement>?>('nodePlacements');
-    this.osDiskPlacement = registerOutput<String?>('osDiskPlacement');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.securityProfile = registerOutput<PoolSecurityProfile?>('securityProfile');
-    this.startTask = registerOutput<PoolStartTask?>('startTask');
-    this.stopPendingResizeOperation = registerOutput<bool?>('stopPendingResizeOperation');
-    this.storageImageReference = registerOutput<PoolStorageImageReference>('storageImageReference');
-    this.targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
-    this.taskSchedulingPolicies = registerOutput<List<PoolTaskSchedulingPolicy>>('taskSchedulingPolicies');
-    this.userAccounts = registerOutput<List<PoolUserAccount>?>('userAccounts');
-    this.vmSize = registerOutput<String>('vmSize');
-    this.windows = registerOutput<List<PoolWindow>?>('windows');
+    networkConfiguration = registerOutput<PoolNetworkConfiguration?>(
+      'networkConfiguration',
+    );
+    nodeAgentSkuId = registerOutput<String>('nodeAgentSkuId');
+    nodePlacements = registerOutput<List<Map<String, dynamic>>?>(
+      'nodePlacements',
+    );
+    osDiskPlacement = registerOutput<String?>('osDiskPlacement');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityProfile = registerOutput<PoolSecurityProfile?>('securityProfile');
+    startTask = registerOutput<PoolStartTask?>('startTask');
+    stopPendingResizeOperation = registerOutput<bool?>(
+      'stopPendingResizeOperation',
+    );
+    storageImageReference = registerOutput<PoolStorageImageReference>(
+      'storageImageReference',
+    );
+    targetNodeCommunicationMode = registerOutput<String?>(
+      'targetNodeCommunicationMode',
+    );
+    taskSchedulingPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'taskSchedulingPolicies',
+    );
+    userAccounts = registerOutput<List<Map<String, dynamic>>?>('userAccounts');
+    vmSize = registerOutput<String>('vmSize');
+    windows = registerOutput<List<Map<String, dynamic>>?>('windows');
   }
 }

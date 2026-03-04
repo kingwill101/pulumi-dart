@@ -7,6 +7,7 @@ import 'effective_virtual_network_response.dart';
 class ListEffectiveVirtualNetworkByNetworkManagerResult {
   /// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   final String? skipToken;
+
   /// Gets a page of EffectiveVirtualNetwork
   final List<EffectiveVirtualNetworkResponse>? value;
 
@@ -21,15 +22,36 @@ class ListEffectiveVirtualNetworkByNetworkManagerResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'skipToken': ?skipToken,
-      'value': ?value == null ? null : pulumi.Input.encodeList<EffectiveVirtualNetworkResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          EffectiveVirtualNetworkResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListEffectiveVirtualNetworkByNetworkManagerResult.fromMap(Map<String, dynamic> map) {
+  factory ListEffectiveVirtualNetworkByNetworkManagerResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListEffectiveVirtualNetworkByNetworkManagerResult(
-      skipToken: map['skipToken'] == null ? null : map['skipToken']! as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<EffectiveVirtualNetworkResponse>(map['value']!, (value) => EffectiveVirtualNetworkResponse.fromMap((value as Map).cast<String, dynamic>())),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<EffectiveVirtualNetworkResponse>(
+          guardedValue,
+          (value) => EffectiveVirtualNetworkResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

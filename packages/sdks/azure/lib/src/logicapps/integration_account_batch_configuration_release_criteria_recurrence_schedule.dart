@@ -6,12 +6,21 @@ import 'integration_account_batch_configuration_release_criteria_recurrence_sche
 class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule {
   /// A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered.
   final pulumi.Input<List<int>>? hours;
+
   /// A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
   final pulumi.Input<List<int>>? minutes;
+
   /// A list of days of the month that the job should execute on.
   final pulumi.Input<List<int>>? monthDays;
+
   /// A `monthly` block as documented below.
-  final pulumi.Input<List<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly>>? monthlies;
+  final pulumi.Input<
+    List<
+      IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly
+    >
+  >?
+  monthlies;
+
   /// A list of days of the week that the job should execute on. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
   final pulumi.Input<List<String>>? weekDays;
 
@@ -34,19 +43,63 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule {
       'hours': ?hours,
       'minutes': ?minutes,
       'monthDays': ?monthDays,
-      'monthlies': ?pulumi.Input.mapOptionalInputValue<List<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly>, List<Map<String, dynamic>>>(monthlies, (value) => pulumi.Input.encodeList<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'monthlies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly
+            >,
+            List<Map<String, dynamic>>
+          >(
+            monthlies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'weekDays': ?weekDays,
     };
   }
 
-  factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap(Map<String, dynamic> map) {
+  factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule(
-      hours: map['hours'] == null ? null : ((map['hours']! as List).cast<int>()).input(),
-      minutes: map['minutes'] == null ? null : ((map['minutes']! as List).cast<int>()).input(),
-      monthDays: map['monthDays'] == null ? null : ((map['monthDays']! as List).cast<int>()).input(),
-      monthlies: map['monthlies'] == null ? null : (pulumi.Input.decodeList<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly>(map['monthlies']!, (value) => IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      weekDays: map['weekDays'] == null ? null : ((map['weekDays']! as List).cast<String>()).input(),
+      hours: (() {
+        final guardedValue = map['hours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      minutes: (() {
+        final guardedValue = map['minutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      monthDays: (() {
+        final guardedValue = map['monthDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      monthlies: (() {
+        final guardedValue = map['monthlies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly
+          >(
+            guardedValue,
+            (value) =>
+                IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      weekDays: (() {
+        final guardedValue = map['weekDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

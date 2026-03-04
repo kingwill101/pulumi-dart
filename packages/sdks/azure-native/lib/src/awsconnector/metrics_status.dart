@@ -3,16 +3,15 @@ enum MetricsStatus {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const MetricsStatus(this.value);
-  final String value;
+  const MetricsStatus(this.wireValue);
+  final String wireValue;
 
   static MetricsStatus fromValue(String value) {
     for (final item in MetricsStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricsStatus value: $value');
   }
 }
-

@@ -12,16 +12,17 @@ enum AcceleratorConfigTypeNotebooksV2 {
   nvidiaTeslaP100Vws("NVIDIA_TESLA_P100_VWS"),
   nvidiaTeslaP4Vws("NVIDIA_TESLA_P4_VWS");
 
-  const AcceleratorConfigTypeNotebooksV2(this.value);
-  final String value;
+  const AcceleratorConfigTypeNotebooksV2(this.wireValue);
+  final String wireValue;
 
   static AcceleratorConfigTypeNotebooksV2 fromValue(String value) {
     for (final item in AcceleratorConfigTypeNotebooksV2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AcceleratorConfigTypeNotebooksV2 value: $value');
+    throw ArgumentError(
+      'Unknown AcceleratorConfigTypeNotebooksV2 value: $value',
+    );
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'database_vm_details_response.dart';
 import 'load_balancer_details_response.dart';
 import 'sap_database_instance_args.dart';
 import 'sapvirtual_instance_error_response.dart';
@@ -275,34 +274,48 @@ import 'system_data_response.dart';
 class SapDatabaseInstance extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Database SID name.
   late final pulumi.Output<String> databaseSid;
+
   /// Database type, that is if the DB is HANA, DB2, Oracle, SAP ASE, Max DB or MS SQL Server.
   late final pulumi.Output<String> databaseType;
+
   /// Defines the errors related to Database resource.
   late final pulumi.Output<SAPVirtualInstanceErrorResponse> errors;
+
   /// Database IP Address.
   late final pulumi.Output<String> ipAddress;
+
   /// The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
   late final pulumi.Output<LoadBalancerDetailsResponse> loadBalancerDetails;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
+
   /// Defines the SAP Instance status.
   late final pulumi.Output<String> status;
+
   /// Database subnet.
   late final pulumi.Output<String> subnet;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The list of virtual machines corresponding to the Database resource.
-  late final pulumi.Output<List<DatabaseVmDetailsResponse>> vmDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>> vmDetails;
 
   /// Creates a new [SapDatabaseInstance].
   /// [name] The Pulumi resource name.
@@ -313,25 +326,27 @@ class SapDatabaseInstance extends pulumi.CustomResource {
     SapDatabaseInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:SapDatabaseInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.databaseSid = registerOutput<String>('databaseSid');
-    this.databaseType = registerOutput<String>('databaseType');
-    this.errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>('loadBalancerDetails');
-    this.location = registerOutput<String>('location');
+         'azure-native:workloads:SapDatabaseInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databaseSid = registerOutput<String>('databaseSid');
+    databaseType = registerOutput<String>('databaseType');
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors');
+    ipAddress = registerOutput<String>('ipAddress');
+    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>(
+      'loadBalancerDetails',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String>('status');
-    this.subnet = registerOutput<String>('subnet');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vmDetails = registerOutput<List<DatabaseVmDetailsResponse>>('vmDetails');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    subnet = registerOutput<String>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');
   }
 }

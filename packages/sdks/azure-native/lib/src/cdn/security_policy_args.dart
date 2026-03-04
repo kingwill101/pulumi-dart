@@ -9,11 +9,15 @@ import 'security_policy_web_application_firewall_parameters.dart';
 /// {@macro pulumi_cdn_security_policy_args_doc}
 class SecurityPolicyArgs {
   /// object which contains security policy parameters
-  final pulumi.Input<SecurityPolicyWebApplicationFirewallParameters>? parameters;
+  final pulumi.Input<SecurityPolicyWebApplicationFirewallParameters>?
+  parameters;
+
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the security policy under the profile.
   final pulumi.Input<String>? securityPolicyName;
 
@@ -31,7 +35,11 @@ class SecurityPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyWebApplicationFirewallParameters, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityPolicyWebApplicationFirewallParameters,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
       'profileName': profileName,
       'resourceGroupName': resourceGroupName,
       'securityPolicyName': ?securityPolicyName,
@@ -40,11 +48,24 @@ class SecurityPolicyArgs {
 
   factory SecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyArgs(
-      parameters: map['parameters'] == null ? null : (SecurityPolicyWebApplicationFirewallParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
-      profileName: (map['profileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName']! as String).input(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityPolicyWebApplicationFirewallParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      profileName: pulumi.Input.fromValue(map['profileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityPolicyName: (() {
+        final guardedValue = map['securityPolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

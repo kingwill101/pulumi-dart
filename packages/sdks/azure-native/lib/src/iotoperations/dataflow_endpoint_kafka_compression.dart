@@ -5,16 +5,17 @@ enum DataflowEndpointKafkaCompression {
   snappy("Snappy"),
   lz4("Lz4");
 
-  const DataflowEndpointKafkaCompression(this.value);
-  final String value;
+  const DataflowEndpointKafkaCompression(this.wireValue);
+  final String wireValue;
 
   static DataflowEndpointKafkaCompression fromValue(String value) {
     for (final item in DataflowEndpointKafkaCompression.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DataflowEndpointKafkaCompression value: $value');
+    throw ArgumentError(
+      'Unknown DataflowEndpointKafkaCompression value: $value',
+    );
   }
 }
-

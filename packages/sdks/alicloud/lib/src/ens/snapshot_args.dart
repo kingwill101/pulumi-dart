@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// Snapshot Description Information.
   final pulumi.Input<String>? description;
+
   /// Cloud Disk ID.
   final pulumi.Input<String> diskId;
+
   /// The node ID of ENS.
   final pulumi.Input<String> ensRegionId;
+
   /// Name of the snapshot instance.
   final pulumi.Input<String>? snapshotName;
 
@@ -39,11 +42,18 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      diskId: (map['diskId'] as String).input(),
-      ensRegionId: (map['ensRegionId'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      ensRegionId: pulumi.Input.fromValue(map['ensRegionId'] as String),
+      snapshotName: (() {
+        final guardedValue = map['snapshotName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

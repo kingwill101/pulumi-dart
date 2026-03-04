@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ArtifactDeploymentStatusPropertiesResponse {
   /// The total count of the artifacts that were successfully applied.
   final pulumi.Input<int>? artifactsApplied;
+
   /// The deployment status of the artifact.
   final pulumi.Input<String>? deploymentStatus;
+
   /// The total count of the artifacts that were tentatively applied.
   final pulumi.Input<int>? totalArtifacts;
 
@@ -29,12 +31,25 @@ class ArtifactDeploymentStatusPropertiesResponse {
     };
   }
 
-  factory ArtifactDeploymentStatusPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ArtifactDeploymentStatusPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ArtifactDeploymentStatusPropertiesResponse(
-      artifactsApplied: map['artifactsApplied'] == null ? null : (map['artifactsApplied']! as int).input(),
-      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus']! as String).input(),
-      totalArtifacts: map['totalArtifacts'] == null ? null : (map['totalArtifacts']! as int).input(),
+      artifactsApplied: (() {
+        final guardedValue = map['artifactsApplied'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      deploymentStatus: (() {
+        final guardedValue = map['deploymentStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalArtifacts: (() {
+        final guardedValue = map['totalArtifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

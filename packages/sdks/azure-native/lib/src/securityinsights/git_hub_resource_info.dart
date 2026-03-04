@@ -9,20 +9,19 @@ class GitHubResourceInfo {
 
   /// Creates a new [GitHubResourceInfo].
   /// [appInstallationId] GitHub application installation id.
-  GitHubResourceInfo({
-    this.appInstallationId,
-  });
+  GitHubResourceInfo({this.appInstallationId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appInstallationId': ?appInstallationId,
-    };
+    return <String, dynamic>{'appInstallationId': ?appInstallationId};
   }
 
   factory GitHubResourceInfo.fromMap(Map<String, dynamic> map) {
     return GitHubResourceInfo(
-      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId']! as String).input(),
+      appInstallationId: (() {
+        final guardedValue = map['appInstallationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

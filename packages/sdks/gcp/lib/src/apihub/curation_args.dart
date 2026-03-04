@@ -17,10 +17,13 @@ class CurationArgs {
   /// This value should be 4-500 characters, and valid characters
   /// are /a-z[0-9]-_/.
   final pulumi.Input<String> curationId;
+
   /// The description of the curation.
   final pulumi.Input<String>? description;
+
   /// The display name of the curation.
   final pulumi.Input<String> displayName;
+
   /// The endpoint to be triggered for curation.
   /// The endpoint will be invoked with a request payload containing
   /// ApiMetadata.
@@ -28,8 +31,10 @@ class CurationArgs {
   /// ApiMetadata.
   /// Structure is documented below.
   final pulumi.Input<CurationEndpoint> endpoint;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -55,7 +60,11 @@ class CurationArgs {
       'curationId': curationId,
       'description': ?description,
       'displayName': displayName,
-      'endpoint': pulumi.Input.mapInputValue<CurationEndpoint, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
+      'endpoint':
+          pulumi.Input.mapInputValue<CurationEndpoint, Map<String, dynamic>>(
+            endpoint,
+            (value) => value.toMap(),
+          ),
       'location': location,
       'project': ?project,
     };
@@ -63,13 +72,24 @@ class CurationArgs {
 
   factory CurationArgs.fromMap(Map<String, dynamic> map) {
     return CurationArgs(
-      curationId: (map['curationId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      endpoint: (CurationEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      curationId: pulumi.Input.fromValue(map['curationId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      endpoint: pulumi.Input.fromValue(
+        CurationEndpoint.fromMap(
+          (map['endpoint']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentModel {
   /// Deployment model format.
   final pulumi.Input<String>? format;
+
   /// Deployment model name.
   final pulumi.Input<String>? name;
+
   /// Deployment model publisher.
   final pulumi.Input<String>? publisher;
+
   /// Optional. Deployment model source ARM resource ID.
   final pulumi.Input<String>? source;
+
   /// Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
   final pulumi.Input<String>? sourceAccount;
+
   /// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
   final pulumi.Input<String>? version;
 
@@ -46,13 +51,36 @@ class DeploymentModel {
 
   factory DeploymentModel.fromMap(Map<String, dynamic> map) {
     return DeploymentModel(
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
-      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceAccount: (() {
+        final guardedValue = map['sourceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

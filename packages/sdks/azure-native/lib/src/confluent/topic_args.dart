@@ -12,30 +12,43 @@ import 'topics_related_link.dart';
 class TopicArgs {
   /// Confluent kafka or schema registry cluster id
   final pulumi.Input<String> clusterId;
+
   /// Config Specification of the topic
   final pulumi.Input<TopicsRelatedLink>? configs;
+
   /// Confluent environment id
   final pulumi.Input<String> environmentId;
+
   /// Input Config Specification of the topic
   final pulumi.Input<List<TopicsInputConfig>>? inputConfigs;
+
   /// Type of topic
   final pulumi.Input<String>? kind;
+
   /// Metadata of the record
   final pulumi.Input<TopicMetadataEntity>? metadata;
+
   /// Organization resource name
   final pulumi.Input<String> organizationName;
+
   /// Partition Specification of the topic
   final pulumi.Input<TopicsRelatedLink>? partitions;
+
   /// Partition count of the topic
   final pulumi.Input<String>? partitionsCount;
+
   /// Partition Reassignment Specification of the topic
   final pulumi.Input<TopicsRelatedLink>? partitionsReassignments;
+
   /// Replication factor of the topic
   final pulumi.Input<String>? replicationFactor;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Topic Id returned by Confluent
   final pulumi.Input<String>? topicId;
+
   /// Confluent kafka or schema registry topic name
   final pulumi.Input<String>? topicName;
 
@@ -74,15 +87,42 @@ class TopicArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': clusterId,
-      'configs': ?pulumi.Input.mapOptionalInputValue<TopicsRelatedLink, Map<String, dynamic>>(configs, (value) => value.toMap()),
+      'configs':
+          ?pulumi.Input.mapOptionalInputValue<
+            TopicsRelatedLink,
+            Map<String, dynamic>
+          >(configs, (value) => value.toMap()),
       'environmentId': environmentId,
-      'inputConfigs': ?pulumi.Input.mapOptionalInputValue<List<TopicsInputConfig>, List<Map<String, dynamic>>>(inputConfigs, (value) => pulumi.Input.encodeList<TopicsInputConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inputConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TopicsInputConfig>,
+            List<Map<String, dynamic>>
+          >(
+            inputConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TopicsInputConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<TopicMetadataEntity, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            TopicMetadataEntity,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
       'organizationName': organizationName,
-      'partitions': ?pulumi.Input.mapOptionalInputValue<TopicsRelatedLink, Map<String, dynamic>>(partitions, (value) => value.toMap()),
+      'partitions':
+          ?pulumi.Input.mapOptionalInputValue<
+            TopicsRelatedLink,
+            Map<String, dynamic>
+          >(partitions, (value) => value.toMap()),
       'partitionsCount': ?partitionsCount,
-      'partitionsReassignments': ?pulumi.Input.mapOptionalInputValue<TopicsRelatedLink, Map<String, dynamic>>(partitionsReassignments, (value) => value.toMap()),
+      'partitionsReassignments':
+          ?pulumi.Input.mapOptionalInputValue<
+            TopicsRelatedLink,
+            Map<String, dynamic>
+          >(partitionsReassignments, (value) => value.toMap()),
       'replicationFactor': ?replicationFactor,
       'resourceGroupName': resourceGroupName,
       'topicId': ?topicId,
@@ -92,21 +132,87 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      configs: map['configs'] == null ? null : (TopicsRelatedLink.fromMap((map['configs']! as Map).cast<String, dynamic>())).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      inputConfigs: map['inputConfigs'] == null ? null : (pulumi.Input.decodeList<TopicsInputConfig>(map['inputConfigs']!, (value) => TopicsInputConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (TopicMetadataEntity.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      organizationName: (map['organizationName'] as String).input(),
-      partitions: map['partitions'] == null ? null : (TopicsRelatedLink.fromMap((map['partitions']! as Map).cast<String, dynamic>())).input(),
-      partitionsCount: map['partitionsCount'] == null ? null : (map['partitionsCount']! as String).input(),
-      partitionsReassignments: map['partitionsReassignments'] == null ? null : (TopicsRelatedLink.fromMap((map['partitionsReassignments']! as Map).cast<String, dynamic>())).input(),
-      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicId: map['topicId'] == null ? null : (map['topicId']! as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      configs: (() {
+        final guardedValue = map['configs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TopicsRelatedLink.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      inputConfigs: (() {
+        final guardedValue = map['inputConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TopicsInputConfig>(
+            guardedValue,
+            (value) => TopicsInputConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TopicMetadataEntity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      partitions: (() {
+        final guardedValue = map['partitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TopicsRelatedLink.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      partitionsCount: (() {
+        final guardedValue = map['partitionsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partitionsReassignments: (() {
+        final guardedValue = map['partitionsReassignments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TopicsRelatedLink.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      replicationFactor: (() {
+        final guardedValue = map['replicationFactor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      topicId: (() {
+        final guardedValue = map['topicId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicName: (() {
+        final guardedValue = map['topicName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

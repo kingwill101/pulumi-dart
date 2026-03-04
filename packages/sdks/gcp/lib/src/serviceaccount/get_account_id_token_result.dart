@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccountIdToken.
 class GetAccountIdTokenResult {
   final List<String>? delegates;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The `id_token` representing the new generated identity.
   final String idToken;
   final bool? includeEmail;
@@ -41,13 +42,24 @@ class GetAccountIdTokenResult {
 
   factory GetAccountIdTokenResult.fromMap(Map<String, dynamic> map) {
     return GetAccountIdTokenResult(
-      delegates: map['delegates'] == null ? null : (map['delegates']! as List).cast<String>(),
+      delegates: (() {
+        final guardedValue = map['delegates'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       idToken: map['idToken'] as String,
-      includeEmail: map['includeEmail'] == null ? null : map['includeEmail']! as bool,
+      includeEmail: (() {
+        final guardedValue = map['includeEmail'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       targetAudience: map['targetAudience'] as String,
-      targetServiceAccount: map['targetServiceAccount'] == null ? null : map['targetServiceAccount']! as String,
+      targetServiceAccount: (() {
+        final guardedValue = map['targetServiceAccount'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

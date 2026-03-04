@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VoiceConnectorTerminationState {
   /// The countries to which calls are allowed, in ISO 3166-1 alpha-2 format.
   final pulumi.Input<List<String>>? callingRegions;
+
   /// The IP addresses allowed to make calls, in CIDR format.
   final pulumi.Input<List<String>>? cidrAllowLists;
+
   /// The limit on calls per second. Max value based on account service quota. Default value of `1`.
   final pulumi.Input<int>? cpsLimit;
+
   /// The default caller ID phone number.
   final pulumi.Input<String>? defaultPhoneNumber;
+
   /// When termination settings are disabled, outbound calls can not be made.
   final pulumi.Input<bool>? disabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Chime Voice Connector ID.
   final pulumi.Input<String>? voiceConnectorId;
 
@@ -51,14 +57,41 @@ class VoiceConnectorTerminationState {
 
   factory VoiceConnectorTerminationState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorTerminationState(
-      callingRegions: map['callingRegions'] == null ? null : (((map['callingRegions'] as List).cast<String>()).input()).input(),
-      cidrAllowLists: map['cidrAllowLists'] == null ? null : (((map['cidrAllowLists'] as List).cast<String>()).input()).input(),
-      cpsLimit: map['cpsLimit'] == null ? null : ((map['cpsLimit'] as int).input()).input(),
-      defaultPhoneNumber: map['defaultPhoneNumber'] == null ? null : ((map['defaultPhoneNumber'] as String).input()).input(),
-      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      voiceConnectorId: map['voiceConnectorId'] == null ? null : ((map['voiceConnectorId'] as String).input()).input(),
+      callingRegions: (() {
+        final guardedValue = map['callingRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cidrAllowLists: (() {
+        final guardedValue = map['cidrAllowLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cpsLimit: (() {
+        final guardedValue = map['cpsLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      defaultPhoneNumber: (() {
+        final guardedValue = map['defaultPhoneNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      voiceConnectorId: (() {
+        final guardedValue = map['voiceConnectorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

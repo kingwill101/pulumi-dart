@@ -4,16 +4,15 @@ enum AgentDeploymentType {
   valueHosted("Hosted"),
   valueCustom("Custom");
 
-  const AgentDeploymentType(this.value);
-  final String value;
+  const AgentDeploymentType(this.wireValue);
+  final String wireValue;
 
   static AgentDeploymentType fromValue(String value) {
     for (final item in AgentDeploymentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AgentDeploymentType value: $value');
   }
 }
-

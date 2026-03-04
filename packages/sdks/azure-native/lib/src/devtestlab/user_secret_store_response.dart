@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserSecretStoreResponse {
   /// The ID of the user's Key vault.
   final pulumi.Input<String>? keyVaultId;
+
   /// The URI of the user's Key vault.
   final pulumi.Input<String>? keyVaultUri;
 
   /// Creates a new [UserSecretStoreResponse].
   /// [keyVaultId] The ID of the user's Key vault.
   /// [keyVaultUri] The URI of the user's Key vault.
-  UserSecretStoreResponse({
-    this.keyVaultId,
-    this.keyVaultUri,
-  });
+  UserSecretStoreResponse({this.keyVaultId, this.keyVaultUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class UserSecretStoreResponse {
 
   factory UserSecretStoreResponse.fromMap(Map<String, dynamic> map) {
     return UserSecretStoreResponse(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

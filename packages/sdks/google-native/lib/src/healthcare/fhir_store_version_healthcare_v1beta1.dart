@@ -5,16 +5,17 @@ enum FhirStoreVersionHealthcareV1beta1 {
   stu3("STU3"),
   r4("R4");
 
-  const FhirStoreVersionHealthcareV1beta1(this.value);
-  final String value;
+  const FhirStoreVersionHealthcareV1beta1(this.wireValue);
+  final String wireValue;
 
   static FhirStoreVersionHealthcareV1beta1 fromValue(String value) {
     for (final item in FhirStoreVersionHealthcareV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FhirStoreVersionHealthcareV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown FhirStoreVersionHealthcareV1beta1 value: $value',
+    );
   }
 }
-

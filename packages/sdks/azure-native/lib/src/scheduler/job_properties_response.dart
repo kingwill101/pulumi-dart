@@ -8,12 +8,16 @@ import 'job_status_response.dart';
 class JobPropertiesResponse {
   /// Gets or sets the job action.
   final pulumi.Input<JobActionResponse>? action;
+
   /// Gets or sets the job recurrence.
   final pulumi.Input<JobRecurrenceResponse>? recurrence;
+
   /// Gets or sets the job start time.
   final pulumi.Input<String>? startTime;
+
   /// Gets or set the job state.
   final pulumi.Input<String>? state;
+
   /// Gets the job status.
   final pulumi.Input<JobStatusResponse> status;
 
@@ -33,22 +37,61 @@ class JobPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?pulumi.Input.mapOptionalInputValue<JobActionResponse, Map<String, dynamic>>(action, (value) => value.toMap()),
-      'recurrence': ?pulumi.Input.mapOptionalInputValue<JobRecurrenceResponse, Map<String, dynamic>>(recurrence, (value) => value.toMap()),
+      'action':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobActionResponse,
+            Map<String, dynamic>
+          >(action, (value) => value.toMap()),
+      'recurrence':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobRecurrenceResponse,
+            Map<String, dynamic>
+          >(recurrence, (value) => value.toMap()),
       'startTime': ?startTime,
       'state': ?state,
-      'status': pulumi.Input.mapInputValue<JobStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<JobStatusResponse, Map<String, dynamic>>(
+            status,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory JobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return JobPropertiesResponse(
-      action: map['action'] == null ? null : (JobActionResponse.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
-      recurrence: map['recurrence'] == null ? null : (JobRecurrenceResponse.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      status: (JobStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobActionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recurrence: (() {
+        final guardedValue = map['recurrence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobRecurrenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(
+        JobStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

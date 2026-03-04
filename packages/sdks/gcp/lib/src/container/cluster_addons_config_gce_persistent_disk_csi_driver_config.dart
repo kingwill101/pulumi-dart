@@ -7,20 +7,17 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 
   /// Creates a new [ClusterAddonsConfigGcePersistentDiskCsiDriverConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigGcePersistentDiskCsiDriverConfig({
-    required this.enabled,
-  });
+  ClusterAddonsConfigGcePersistentDiskCsiDriverConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory ClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterAddonsConfigGcePersistentDiskCsiDriverConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

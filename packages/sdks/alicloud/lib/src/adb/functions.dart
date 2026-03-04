@@ -13,9 +13,9 @@ import 'get_zones_result.dart';
 /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
 /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 ///
-/// > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+/// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
 ///
-/// > **NOTE:** Available in v1.71.0+.
+/// &gt; **NOTE:** Available in v1.71.0+.
 ///
 /// ## Example Usage
 ///
@@ -138,7 +138,7 @@ Future<GetClustersResult> getClusters(
 
 /// This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.190.0.
+/// &gt; **NOTE:** Available since v1.190.0.
 ///
 /// ## Example Usage
 ///
@@ -406,7 +406,7 @@ Future<GetDBClusterLakeVersionsResult> getDBClusterLakeVersions(
 
 /// This data source provides the Adb DBClusters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.121.0.
+/// &gt; **NOTE:** Available since v1.121.0.
 ///
 /// ## Example Usage
 ///
@@ -525,7 +525,7 @@ Future<GetDBClustersResult> getDBClusters(
 
 /// This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -648,7 +648,7 @@ Future<GetResourceGroupsResult> getResourceGroups(
 
 /// This data source provides availability zones for ADB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.73.0+.
+/// &gt; **NOTE:** Available in v1.73.0+.
 ///
 /// ## Example Usage
 ///

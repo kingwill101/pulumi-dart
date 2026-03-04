@@ -13,15 +13,16 @@ class GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'snapshotPolicyId': snapshotPolicyId,
-    };
+    return <String, dynamic>{'snapshotPolicyId': snapshotPolicyId};
   }
 
-  factory GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVolumeGroupOracleVolumeDataProtectionSnapshotPolicy(
-      snapshotPolicyId: (map['snapshotPolicyId'] as String).input(),
+      snapshotPolicyId: pulumi.Input.fromValue(
+        map['snapshotPolicyId'] as String,
+      ),
     );
   }
 }
-

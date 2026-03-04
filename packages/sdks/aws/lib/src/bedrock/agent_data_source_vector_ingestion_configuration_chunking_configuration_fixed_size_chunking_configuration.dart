@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration {
   /// Maximum number of tokens to include in a chunk.
   final pulumi.Input<int> maxTokens;
+
   /// Percentage of overlap between adjacent chunks of a data source.
   final pulumi.Input<int> overlapPercentage;
 
@@ -23,11 +24,14 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeC
     };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration(
-      maxTokens: (map['maxTokens'] as int).input(),
-      overlapPercentage: (map['overlapPercentage'] as int).input(),
+      maxTokens: pulumi.Input.fromValue(map['maxTokens'] as int),
+      overlapPercentage: pulumi.Input.fromValue(
+        map['overlapPercentage'] as int,
+      ),
     );
   }
 }
-

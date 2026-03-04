@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceFeatures {
   /// Dedicated LA cluster resourceId that is linked to the workspaces.
   final pulumi.Input<String>? clusterResourceId;
+
   /// Disable Non-AAD based Auth.
   final pulumi.Input<bool>? disableLocalAuth;
+
   /// Flag that indicate if data should be exported.
   final pulumi.Input<bool>? enableDataExport;
+
   /// Flag that indicate which permission to use - resource or workspace or both.
   final pulumi.Input<bool>? enableLogAccessUsingOnlyResourcePermissions;
+
   /// Flag that describes if we want to remove the data after 30 days.
   final pulumi.Input<bool>? immediatePurgeDataOn30Days;
 
@@ -34,19 +38,39 @@ class WorkspaceFeatures {
       'clusterResourceId': ?clusterResourceId,
       'disableLocalAuth': ?disableLocalAuth,
       'enableDataExport': ?enableDataExport,
-      'enableLogAccessUsingOnlyResourcePermissions': ?enableLogAccessUsingOnlyResourcePermissions,
+      'enableLogAccessUsingOnlyResourcePermissions':
+          ?enableLogAccessUsingOnlyResourcePermissions,
       'immediatePurgeDataOn30Days': ?immediatePurgeDataOn30Days,
     };
   }
 
   factory WorkspaceFeatures.fromMap(Map<String, dynamic> map) {
     return WorkspaceFeatures(
-      clusterResourceId: map['clusterResourceId'] == null ? null : (map['clusterResourceId']! as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
-      enableDataExport: map['enableDataExport'] == null ? null : (map['enableDataExport']! as bool).input(),
-      enableLogAccessUsingOnlyResourcePermissions: map['enableLogAccessUsingOnlyResourcePermissions'] == null ? null : (map['enableLogAccessUsingOnlyResourcePermissions']! as bool).input(),
-      immediatePurgeDataOn30Days: map['immediatePurgeDataOn30Days'] == null ? null : (map['immediatePurgeDataOn30Days']! as bool).input(),
+      clusterResourceId: (() {
+        final guardedValue = map['clusterResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableLocalAuth: (() {
+        final guardedValue = map['disableLocalAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDataExport: (() {
+        final guardedValue = map['enableDataExport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableLogAccessUsingOnlyResourcePermissions: (() {
+        final guardedValue = map['enableLogAccessUsingOnlyResourcePermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      immediatePurgeDataOn30Days: (() {
+        final guardedValue = map['immediatePurgeDataOn30Days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

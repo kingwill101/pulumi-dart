@@ -5,16 +5,15 @@ enum AcceleratorConfigType {
   v3("V3"),
   v4("V4");
 
-  const AcceleratorConfigType(this.value);
-  final String value;
+  const AcceleratorConfigType(this.wireValue);
+  final String wireValue;
 
   static AcceleratorConfigType fromValue(String value) {
     for (final item in AcceleratorConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AcceleratorConfigType value: $value');
   }
 }
-

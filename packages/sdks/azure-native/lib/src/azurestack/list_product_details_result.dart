@@ -8,24 +8,34 @@ import 'os_disk_image_response.dart';
 class ListProductDetailsResult {
   /// Specifies kind of compute role included in the package.
   final String computeRole;
+
   /// List of attached data disks.
   final List<DataDiskImageResponse> dataDiskImages;
+
   /// The URI to the .azpkg file that provides information required for showing product in the gallery.
   final String galleryPackageBlobSasUri;
+
   /// Specifies if product is a Virtual Machine Extension.
   final bool isSystemExtension;
+
   /// OS disk image used by product.
   final OsDiskImageResponse osDiskImage;
+
   /// Specifies the kind of the product (virtualMachine or virtualMachineExtension).
   final String productKind;
+
   /// Indicates if specified product supports multiple extensions.
   final bool supportMultipleExtensions;
+
   /// The URI.
   final String uri;
+
   /// Specifies product version.
   final String version;
+
   /// Specifies operating system used by the product.
   final String vmOsType;
+
   /// Indicates if virtual machine Scale Set is enabled in the specified product.
   final bool vmScaleSetEnabled;
 
@@ -58,7 +68,11 @@ class ListProductDetailsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'computeRole': computeRole,
-      'dataDiskImages': pulumi.Input.encodeList<DataDiskImageResponse, Map<String, dynamic>>(dataDiskImages, (value) => value.toMap()),
+      'dataDiskImages':
+          pulumi.Input.encodeList<DataDiskImageResponse, Map<String, dynamic>>(
+            dataDiskImages,
+            (value) => value.toMap(),
+          ),
       'galleryPackageBlobSasUri': galleryPackageBlobSasUri,
       'isSystemExtension': isSystemExtension,
       'osDiskImage': osDiskImage.toMap(),
@@ -74,10 +88,17 @@ class ListProductDetailsResult {
   factory ListProductDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListProductDetailsResult(
       computeRole: map['computeRole'] as String,
-      dataDiskImages: pulumi.Input.decodeList<DataDiskImageResponse>(map['dataDiskImages'], (value) => DataDiskImageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dataDiskImages: pulumi.Input.decodeList<DataDiskImageResponse>(
+        map['dataDiskImages']!,
+        (value) => DataDiskImageResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       galleryPackageBlobSasUri: map['galleryPackageBlobSasUri'] as String,
       isSystemExtension: map['isSystemExtension'] as bool,
-      osDiskImage: OsDiskImageResponse.fromMap((map['osDiskImage'] as Map).cast<String, dynamic>()),
+      osDiskImage: OsDiskImageResponse.fromMap(
+        (map['osDiskImage']! as Map).cast<String, dynamic>(),
+      ),
       productKind: map['productKind'] as String,
       supportMultipleExtensions: map['supportMultipleExtensions'] as bool,
       uri: map['uri'] as String,
@@ -87,4 +108,3 @@ class ListProductDetailsResult {
     );
   }
 }
-

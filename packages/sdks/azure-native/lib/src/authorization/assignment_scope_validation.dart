@@ -3,16 +3,15 @@ enum AssignmentScopeValidation {
   valueDefault("Default"),
   valueDoNotValidate("DoNotValidate");
 
-  const AssignmentScopeValidation(this.value);
-  final String value;
+  const AssignmentScopeValidation(this.wireValue);
+  final String wireValue;
 
   static AssignmentScopeValidation fromValue(String value) {
     for (final item in AssignmentScopeValidation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssignmentScopeValidation value: $value');
   }
 }
-

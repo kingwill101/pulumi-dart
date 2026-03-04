@@ -9,20 +9,21 @@ class AkriConnectorsDiagnosticsLogsResponse {
 
   /// Creates a new [AkriConnectorsDiagnosticsLogsResponse].
   /// [level] The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  AkriConnectorsDiagnosticsLogsResponse({
-    this.level,
-  });
+  AkriConnectorsDiagnosticsLogsResponse({this.level});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'level': ?level,
-    };
+    return <String, dynamic>{'level': ?level};
   }
 
-  factory AkriConnectorsDiagnosticsLogsResponse.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorsDiagnosticsLogsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorsDiagnosticsLogsResponse(
-      level: map['level'] == null ? null : (map['level']! as String).input(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

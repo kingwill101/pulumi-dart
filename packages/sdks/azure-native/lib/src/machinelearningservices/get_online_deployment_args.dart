@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOnlineDeploymentArgs {
   /// Inference Endpoint Deployment name.
   final pulumi.Input<String> deploymentName;
+
   /// Inference endpoint name.
   final pulumi.Input<String> endpointName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,12 @@ class GetOnlineDeploymentArgs {
 
   factory GetOnlineDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetOnlineDeploymentArgs(
-      deploymentName: (map['deploymentName'] as String).input(),
-      endpointName: (map['endpointName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

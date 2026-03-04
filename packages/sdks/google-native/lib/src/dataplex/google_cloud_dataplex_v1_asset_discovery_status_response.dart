@@ -7,14 +7,20 @@ import 'google_cloud_dataplex_v1_asset_discovery_status_stats_response.dart';
 class GoogleCloudDataplexV1AssetDiscoveryStatusResponse {
   /// The duration of the last discovery run.
   final pulumi.Input<String> lastRunDuration;
+
   /// The start time of the last discovery run.
   final pulumi.Input<String> lastRunTime;
+
   /// Additional information about the current state.
   final pulumi.Input<String> message;
+
   /// The current status of the discovery feature.
   final pulumi.Input<String> state;
+
   /// Data Stats of the asset reported by discovery.
-  final pulumi.Input<GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse> stats;
+  final pulumi.Input<GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse>
+  stats;
+
   /// Last update time of the status.
   final pulumi.Input<String> updateTime;
 
@@ -40,20 +46,29 @@ class GoogleCloudDataplexV1AssetDiscoveryStatusResponse {
       'lastRunTime': lastRunTime,
       'message': message,
       'state': state,
-      'stats': pulumi.Input.mapInputValue<GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse, Map<String, dynamic>>(stats, (value) => value.toMap()),
+      'stats':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse,
+            Map<String, dynamic>
+          >(stats, (value) => value.toMap()),
       'updateTime': updateTime,
     };
   }
 
-  factory GoogleCloudDataplexV1AssetDiscoveryStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1AssetDiscoveryStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1AssetDiscoveryStatusResponse(
-      lastRunDuration: (map['lastRunDuration'] as String).input(),
-      lastRunTime: (map['lastRunTime'] as String).input(),
-      message: (map['message'] as String).input(),
-      state: (map['state'] as String).input(),
-      stats: (GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse.fromMap((map['stats'] as Map).cast<String, dynamic>())).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      lastRunDuration: pulumi.Input.fromValue(map['lastRunDuration'] as String),
+      lastRunTime: pulumi.Input.fromValue(map['lastRunTime'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      stats: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse.fromMap(
+          (map['stats']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

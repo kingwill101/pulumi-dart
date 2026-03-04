@@ -5,29 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteResponse {
   /// [Required] The path for the route.
   final pulumi.Input<String> path;
+
   /// [Required] The port for the route.
   final pulumi.Input<int> port;
 
   /// Creates a new [RouteResponse].
   /// [path] [Required] The path for the route.
   /// [port] [Required] The port for the route.
-  RouteResponse({
-    required this.path,
-    required this.port,
-  });
+  RouteResponse({required this.path, required this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'port': port,
-    };
+    return <String, dynamic>{'path': path, 'port': port};
   }
 
   factory RouteResponse.fromMap(Map<String, dynamic> map) {
     return RouteResponse(
-      path: (map['path'] as String).input(),
-      port: (map['port'] as int).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

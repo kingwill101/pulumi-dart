@@ -1,5 +1,3 @@
-library module_community;
-
 export 'community/community_training.dart';
 export 'community/community_training_args.dart';
 export 'community/functions.dart';

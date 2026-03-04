@@ -10,14 +10,19 @@ import 'job_schedule.dart';
 class JobArgs {
   /// User-defined description of the job.
   final pulumi.Input<String>? description;
+
   /// The name of the job agent.
   final pulumi.Input<String> jobAgentName;
+
   /// The name of the job to get.
   final pulumi.Input<String>? jobName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// Schedule properties of the job.
   final pulumi.Input<JobSchedule>? schedule;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -43,20 +48,39 @@ class JobArgs {
       'jobAgentName': jobAgentName,
       'jobName': ?jobName,
       'resourceGroupName': resourceGroupName,
-      'schedule': ?pulumi.Input.mapOptionalInputValue<JobSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'serverName': serverName,
     };
   }
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      jobAgentName: (map['jobAgentName'] as String).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schedule: map['schedule'] == null ? null : (JobSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
-      serverName: (map['serverName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobAgentName: pulumi.Input.fromValue(map['jobAgentName'] as String),
+      jobName: (() {
+        final guardedValue = map['jobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

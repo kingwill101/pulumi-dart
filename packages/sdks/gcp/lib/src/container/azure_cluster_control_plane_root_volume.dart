@@ -8,20 +8,19 @@ class AzureClusterControlPlaneRootVolume {
 
   /// Creates a new [AzureClusterControlPlaneRootVolume].
   /// [sizeGib] Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
-  AzureClusterControlPlaneRootVolume({
-    this.sizeGib,
-  });
+  AzureClusterControlPlaneRootVolume({this.sizeGib});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sizeGib': ?sizeGib,
-    };
+    return <String, dynamic>{'sizeGib': ?sizeGib};
   }
 
   factory AzureClusterControlPlaneRootVolume.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlaneRootVolume(
-      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib']! as int).input(),
+      sizeGib: (() {
+        final guardedValue = map['sizeGib'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

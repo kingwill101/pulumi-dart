@@ -12,16 +12,14 @@ class CategoryConfigurationResponse {
   /// Secrets scanning results.
   /// Container scanning results.
   final pulumi.Input<String>? category;
+
   /// Gets or sets minimum severity level for a given category.
   final pulumi.Input<String>? minimumSeverityLevel;
 
   /// Creates a new [CategoryConfigurationResponse].
   /// [category] Rule categories.
   /// [minimumSeverityLevel] Gets or sets minimum severity level for a given category.
-  CategoryConfigurationResponse({
-    this.category,
-    this.minimumSeverityLevel,
-  });
+  CategoryConfigurationResponse({this.category, this.minimumSeverityLevel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,9 +30,16 @@ class CategoryConfigurationResponse {
 
   factory CategoryConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CategoryConfigurationResponse(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      minimumSeverityLevel: map['minimumSeverityLevel'] == null ? null : (map['minimumSeverityLevel']! as String).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minimumSeverityLevel: (() {
+        final guardedValue = map['minimumSeverityLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

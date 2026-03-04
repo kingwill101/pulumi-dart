@@ -7,16 +7,15 @@ enum FttAndRaidLevel {
   ftt2Raid6("Ftt2Raid6"),
   ftt3Raid1("Ftt3Raid1");
 
-  const FttAndRaidLevel(this.value);
-  final String value;
+  const FttAndRaidLevel(this.wireValue);
+  final String wireValue;
 
   static FttAndRaidLevel fromValue(String value) {
     for (final item in FttAndRaidLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FttAndRaidLevel value: $value');
   }
 }
-

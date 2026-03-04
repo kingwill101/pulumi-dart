@@ -2,16 +2,15 @@
 enum BudgetOperatorType {
   in_("In");
 
-  const BudgetOperatorType(this.value);
-  final String value;
+  const BudgetOperatorType(this.wireValue);
+  final String wireValue;
 
   static BudgetOperatorType fromValue(String value) {
     for (final item in BudgetOperatorType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BudgetOperatorType value: $value');
   }
 }
-

@@ -7,20 +7,15 @@ class GetListenerV2Loadbalancer {
 
   /// Creates a new [GetListenerV2Loadbalancer].
   /// [id] Required.
-  GetListenerV2Loadbalancer({
-    required this.id,
-  });
+  GetListenerV2Loadbalancer({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetListenerV2Loadbalancer.fromMap(Map<String, dynamic> map) {
     return GetListenerV2Loadbalancer(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

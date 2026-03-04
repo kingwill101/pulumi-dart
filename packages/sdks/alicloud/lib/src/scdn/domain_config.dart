@@ -1,17 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_config_args.dart';
-import 'domain_config_function_arg.dart';
 import 'domain_config_state.dart';
 
 /// Provides a SCDN Accelerated Domain resource.
 ///
 /// For information about domain config and how to use it, see [Batch set config](https://help.aliyun.com/document_detail/92912.html)
 ///
-/// > **NOTE:** Available in v1.131.0+.
+/// &gt; **NOTE:** Available in v1.131.0+.
 ///
-/// > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
+/// &gt; **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 ///
-/// > **DEPRECATED:**  This resource has been [deprecated](https://www.aliyun.com/product/scdn) from version `1.219.0`.
+/// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.aliyun.com/product/scdn) from version `1.219.0`.
 ///
 /// ## Example Usage
 ///
@@ -239,12 +238,16 @@ import 'domain_config_state.dart';
 class DomainConfig extends pulumi.CustomResource {
   /// The SCDN domain config id.
   late final pulumi.Output<String> configId;
+
   /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
   late final pulumi.Output<String> domainName;
+
   /// The args of the domain config.
-  late final pulumi.Output<List<DomainConfigFunctionArg>> functionArgs;
+  late final pulumi.Output<List<Map<String, dynamic>>> functionArgs;
+
   /// The name of the domain config.
   late final pulumi.Output<String> functionName;
+
   /// The status of this resource.
   late final pulumi.Output<String> status;
 
@@ -257,16 +260,16 @@ class DomainConfig extends pulumi.CustomResource {
     DomainConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:scdn/domainConfig:DomainConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<String>('configId');
-    this.domainName = registerOutput<String>('domainName');
-    this.functionArgs = registerOutput<List<DomainConfigFunctionArg>>('functionArgs');
-    this.functionName = registerOutput<String>('functionName');
-    this.status = registerOutput<String>('status');
+         'alicloud:scdn/domainConfig:DomainConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<String>('configId');
+    domainName = registerOutput<String>('domainName');
+    functionArgs = registerOutput<List<Map<String, dynamic>>>('functionArgs');
+    functionName = registerOutput<String>('functionName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [DomainConfig] resource's state with the given [name] and [id].
@@ -287,15 +290,15 @@ class DomainConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:scdn/domainConfig:DomainConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<String>('configId');
-    this.domainName = registerOutput<String>('domainName');
-    this.functionArgs = registerOutput<List<DomainConfigFunctionArg>>('functionArgs');
-    this.functionName = registerOutput<String>('functionName');
-    this.status = registerOutput<String>('status');
+         'alicloud:scdn/domainConfig:DomainConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<String>('configId');
+    domainName = registerOutput<String>('domainName');
+    functionArgs = registerOutput<List<Map<String, dynamic>>>('functionArgs');
+    functionName = registerOutput<String>('functionName');
+    status = registerOutput<String>('status');
   }
 }

@@ -43,13 +43,20 @@ class GetApiVersionSpecIamPolicyArgs {
 
   factory GetApiVersionSpecIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetApiVersionSpecIamPolicyArgs(
-      apiId: (map['apiId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      specId: (map['specId'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      specId: pulumi.Input.fromValue(map['specId'] as String),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

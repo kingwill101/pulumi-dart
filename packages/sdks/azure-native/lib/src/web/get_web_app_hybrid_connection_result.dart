@@ -1,33 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWebAppHybridConnection.
 class GetWebAppHybridConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The hostname of the endpoint.
   final String? hostname;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// The port of the endpoint.
   final int? port;
+
   /// The ARM URI to the Service Bus relay.
   final String? relayArmUri;
+
   /// The name of the Service Bus relay.
   final String? relayName;
+
   /// The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
   final String? sendKeyName;
+
   /// The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
   /// normally, use the POST /listKeys API instead.
   final String? sendKeyValue;
+
   /// The name of the Service Bus namespace.
   final String? serviceBusNamespace;
+
   /// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
   final String? serviceBusSuffix;
+
   /// Resource type.
   final String type;
 
@@ -82,19 +93,54 @@ class GetWebAppHybridConnectionResult {
   factory GetWebAppHybridConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppHybridConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      hostname: map['hostname'] == null ? null : map['hostname']! as String,
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      port: map['port'] == null ? null : map['port']! as int,
-      relayArmUri: map['relayArmUri'] == null ? null : map['relayArmUri']! as String,
-      relayName: map['relayName'] == null ? null : map['relayName']! as String,
-      sendKeyName: map['sendKeyName'] == null ? null : map['sendKeyName']! as String,
-      sendKeyValue: map['sendKeyValue'] == null ? null : map['sendKeyValue']! as String,
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : map['serviceBusNamespace']! as String,
-      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : map['serviceBusSuffix']! as String,
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      relayArmUri: (() {
+        final guardedValue = map['relayArmUri'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      relayName: (() {
+        final guardedValue = map['relayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sendKeyName: (() {
+        final guardedValue = map['sendKeyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sendKeyValue: (() {
+        final guardedValue = map['sendKeyValue'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      serviceBusNamespace: (() {
+        final guardedValue = map['serviceBusNamespace'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      serviceBusSuffix: (() {
+        final guardedValue = map['serviceBusSuffix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

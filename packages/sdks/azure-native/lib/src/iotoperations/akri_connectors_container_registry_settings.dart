@@ -7,6 +7,7 @@ import 'akri_connectors_image_pull_secret.dart';
 class AkriConnectorsContainerRegistrySettings {
   /// Optional list of references to secrets in the same namespace to use for pulling the connector image.
   final pulumi.Input<List<AkriConnectorsImagePullSecret>>? imagePullSecrets;
+
   /// The container registry to use for the artifact.
   final pulumi.Input<String> registry;
 
@@ -20,16 +21,39 @@ class AkriConnectorsContainerRegistrySettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imagePullSecrets': ?pulumi.Input.mapOptionalInputValue<List<AkriConnectorsImagePullSecret>, List<Map<String, dynamic>>>(imagePullSecrets, (value) => pulumi.Input.encodeList<AkriConnectorsImagePullSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'imagePullSecrets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AkriConnectorsImagePullSecret>,
+            List<Map<String, dynamic>>
+          >(
+            imagePullSecrets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AkriConnectorsImagePullSecret,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'registry': registry,
     };
   }
 
-  factory AkriConnectorsContainerRegistrySettings.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorsContainerRegistrySettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorsContainerRegistrySettings(
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<AkriConnectorsImagePullSecret>(map['imagePullSecrets']!, (value) => AkriConnectorsImagePullSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      registry: (map['registry'] as String).input(),
+      imagePullSecrets: (() {
+        final guardedValue = map['imagePullSecrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AkriConnectorsImagePullSecret>(
+            guardedValue,
+            (value) => AkriConnectorsImagePullSecret.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      registry: pulumi.Input.fromValue(map['registry'] as String),
     );
   }
 }
-

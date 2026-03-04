@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountStaticWebsiteArgs {
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
   final pulumi.Input<String>? error404Document;
+
   /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder. For example, index.html.
   final pulumi.Input<String>? indexDocument;
+
   /// The ID of the Storage Account to set Static Website on. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
 
@@ -34,10 +36,19 @@ class AccountStaticWebsiteArgs {
 
   factory AccountStaticWebsiteArgs.fromMap(Map<String, dynamic> map) {
     return AccountStaticWebsiteArgs(
-      error404Document: map['error404Document'] == null ? null : (map['error404Document']! as String).input(),
-      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument']! as String).input(),
-      storageAccountId: (map['storageAccountId'] as String).input(),
+      error404Document: (() {
+        final guardedValue = map['error404Document'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexDocument: (() {
+        final guardedValue = map['indexDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: pulumi.Input.fromValue(
+        map['storageAccountId'] as String,
+      ),
     );
   }
 }
-

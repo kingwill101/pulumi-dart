@@ -7,16 +7,15 @@ enum HttpRouteRedirectResponseCode {
   temporaryRedirect("TEMPORARY_REDIRECT"),
   permanentRedirect("PERMANENT_REDIRECT");
 
-  const HttpRouteRedirectResponseCode(this.value);
-  final String value;
+  const HttpRouteRedirectResponseCode(this.wireValue);
+  final String wireValue;
 
   static HttpRouteRedirectResponseCode fromValue(String value) {
     for (final item in HttpRouteRedirectResponseCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpRouteRedirectResponseCode value: $value');
   }
 }
-

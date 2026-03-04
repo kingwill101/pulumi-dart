@@ -6,16 +6,15 @@ enum ShareSettingsShareType {
   shareTypeUnspecified("SHARE_TYPE_UNSPECIFIED"),
   specificProjects("SPECIFIC_PROJECTS");
 
-  const ShareSettingsShareType(this.value);
-  final String value;
+  const ShareSettingsShareType(this.wireValue);
+  final String wireValue;
 
   static ShareSettingsShareType fromValue(String value) {
     for (final item in ShareSettingsShareType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShareSettingsShareType value: $value');
   }
 }
-

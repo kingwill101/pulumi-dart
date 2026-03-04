@@ -6,11 +6,11 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 
 /// Manages a Custom Domain for a CDN (classic) Endpoint.
 ///
-/// !> **Note:** Support for the CDN (classic) `sku` `Standard_Akamai` was deprecated from Azure on `October 31, 2023` and is no longer available.
+/// !&gt; **Note:** Support for the CDN (classic) `sku` `Standard_Akamai` was deprecated from Azure on `October 31, 2023` and is no longer available.
 ///
-/// !> **Note:** Support for the CDN (classic) `sku` values `Standard_Verizon` and `Premium_Verizon` were deprecated from Azure on `January 15, 2025` and are no longer available.
+/// !&gt; **Note:** Support for the CDN (classic) `sku` values `Standard_Verizon` and `Premium_Verizon` were deprecated from Azure on `January 15, 2025` and are no longer available.
 ///
-/// !> **Note:** Support for the CDN (classic) `sku` values `Standard_Microsoft` and `Standard_ChinaCdn` will be deprecated from Azure on `October 1, 2025` and will no longer be available, however, modifications to existing CDN (classic) resources will continue to be supported until the API reaches full retirement on `September 30, 2027`.
+/// !&gt; **Note:** Support for the CDN (classic) `sku` values `Standard_Microsoft` and `Standard_ChinaCdn` will be deprecated from Azure on `October 1, 2025` and will no longer be available, however, modifications to existing CDN (classic) resources will continue to be supported until the API reaches full retirement on `September 30, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -425,16 +425,22 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 class EndpointCustomDomain extends pulumi.CustomResource {
   /// The ID of the CDN Endpoint. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> cdnEndpointId;
+
   /// A `cdn_managed_https` block as defined below.
-  late final pulumi.Output<EndpointCustomDomainCdnManagedHttps?> cdnManagedHttps;
+  late final pulumi.Output<EndpointCustomDomainCdnManagedHttps?>
+  cdnManagedHttps;
+
   /// The host name of the custom domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> hostName;
+
   /// The name which should be used for this CDN Endpoint Custom Domain. Changing this forces a new CDN Endpoint Custom Domain to be created.
   late final pulumi.Output<String> name;
+
   /// A `user_managed_https` block as defined below.
   ///
-  /// > **Note:** Only one of `cdn_managed_https` and `user_managed_https` can be specified.
-  late final pulumi.Output<EndpointCustomDomainUserManagedHttps?> userManagedHttps;
+  /// &gt; **Note:** Only one of `cdn_managed_https` and `user_managed_https` can be specified.
+  late final pulumi.Output<EndpointCustomDomainUserManagedHttps?>
+  userManagedHttps;
 
   /// Creates a new [EndpointCustomDomain].
   /// [name] The Pulumi resource name.
@@ -445,16 +451,20 @@ class EndpointCustomDomain extends pulumi.CustomResource {
     EndpointCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnEndpointId = registerOutput<String>('cdnEndpointId');
-    this.cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps');
-    this.hostName = registerOutput<String>('hostName');
+         'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnEndpointId = registerOutput<String>('cdnEndpointId');
+    cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>(
+      'cdnManagedHttps',
+    );
+    hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    this.userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>('userManagedHttps');
+    userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>(
+      'userManagedHttps',
+    );
   }
 
   /// Gets an existing [EndpointCustomDomain] resource's state with the given [name] and [id].
@@ -475,15 +485,19 @@ class EndpointCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnEndpointId = registerOutput<String>('cdnEndpointId');
-    this.cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps');
-    this.hostName = registerOutput<String>('hostName');
+         'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnEndpointId = registerOutput<String>('cdnEndpointId');
+    cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>(
+      'cdnManagedHttps',
+    );
+    hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    this.userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>('userManagedHttps');
+    userManagedHttps = registerOutput<EndpointCustomDomainUserManagedHttps?>(
+      'userManagedHttps',
+    );
   }
 }

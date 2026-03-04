@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
   /// Key ID for the private key.
   final pulumi.Input<String>? keyId;
+
   /// Private key used for signing the client secret JWT.
   final pulumi.Input<String>? privateKey;
+
   /// Apple Developer Team ID.
   final pulumi.Input<String>? teamId;
 
@@ -29,12 +31,25 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig(
-      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      teamId: map['teamId'] == null ? null : (map['teamId']! as String).input(),
+      keyId: (() {
+        final guardedValue = map['keyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      teamId: (() {
+        final guardedValue = map['teamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpaDomainsDomainSource {
   /// The address of the origin server.
   final pulumi.Input<String> content;
+
   /// The custom port.
   final pulumi.Input<int> port;
+
   /// The priority of the origin server if multiple origin servers are specified.
   final pulumi.Input<String> priority;
+
   /// The type of the origin server.
   final pulumi.Input<String> type;
+
   /// The weight of the origin server if multiple origin servers are specified.
   final pulumi.Input<int> weight;
 
@@ -40,12 +44,11 @@ class GetIpaDomainsDomainSource {
 
   factory GetIpaDomainsDomainSource.fromMap(Map<String, dynamic> map) {
     return GetIpaDomainsDomainSource(
-      content: (map['content'] as String).input(),
-      port: (map['port'] as int).input(),
-      priority: (map['priority'] as String).input(),
-      type: (map['type'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      priority: pulumi.Input.fromValue(map['priority'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

@@ -8,10 +8,13 @@ import 'google_cloud_discoveryengine_v1alpha_text_input_response.dart';
 class GoogleCloudDiscoveryengineV1alphaConversationMessageResponse {
   /// Message creation timestamp.
   final pulumi.Input<String> createTime;
+
   /// Search reply.
   final pulumi.Input<GoogleCloudDiscoveryengineV1alphaReplyResponse> reply;
+
   /// User text input.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaTextInputResponse> userInput;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaTextInputResponse>
+  userInput;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaConversationMessageResponse].
   /// [createTime] Message creation timestamp.
@@ -26,17 +29,34 @@ class GoogleCloudDiscoveryengineV1alphaConversationMessageResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
-      'reply': pulumi.Input.mapInputValue<GoogleCloudDiscoveryengineV1alphaReplyResponse, Map<String, dynamic>>(reply, (value) => value.toMap()),
-      'userInput': pulumi.Input.mapInputValue<GoogleCloudDiscoveryengineV1alphaTextInputResponse, Map<String, dynamic>>(userInput, (value) => value.toMap()),
+      'reply':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDiscoveryengineV1alphaReplyResponse,
+            Map<String, dynamic>
+          >(reply, (value) => value.toMap()),
+      'userInput':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDiscoveryengineV1alphaTextInputResponse,
+            Map<String, dynamic>
+          >(userInput, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaConversationMessageResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaConversationMessageResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaConversationMessageResponse(
-      createTime: (map['createTime'] as String).input(),
-      reply: (GoogleCloudDiscoveryengineV1alphaReplyResponse.fromMap((map['reply'] as Map).cast<String, dynamic>())).input(),
-      userInput: (GoogleCloudDiscoveryengineV1alphaTextInputResponse.fromMap((map['userInput'] as Map).cast<String, dynamic>())).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      reply: pulumi.Input.fromValue(
+        GoogleCloudDiscoveryengineV1alphaReplyResponse.fromMap(
+          (map['reply']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      userInput: pulumi.Input.fromValue(
+        GoogleCloudDiscoveryengineV1alphaTextInputResponse.fromMap(
+          (map['userInput']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFileVolumeSource {
   /// readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   final pulumi.Input<bool>? readOnly;
+
   /// secretName is the  name of secret that contains Azure Storage Account Name and Key
   final pulumi.Input<String> secretName;
+
   /// shareName is the azure share Name
   final pulumi.Input<String> shareName;
 
@@ -31,10 +33,13 @@ class AzureFileVolumeSource {
 
   factory AzureFileVolumeSource.fromMap(Map<String, dynamic> map) {
     return AzureFileVolumeSource(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      secretName: (map['secretName'] as String).input(),
-      shareName: (map['shareName'] as String).input(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      shareName: pulumi.Input.fromValue(map['shareName'] as String),
     );
   }
 }
-

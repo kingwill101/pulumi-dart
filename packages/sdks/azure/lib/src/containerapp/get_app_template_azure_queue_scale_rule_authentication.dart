@@ -22,11 +22,14 @@ class GetAppTemplateAzureQueueScaleRuleAuthentication {
     };
   }
 
-  factory GetAppTemplateAzureQueueScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
+  factory GetAppTemplateAzureQueueScaleRuleAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppTemplateAzureQueueScaleRuleAuthentication(
-      secretName: (map['secretName'] as String).input(),
-      triggerParameter: (map['triggerParameter'] as String).input(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      triggerParameter: pulumi.Input.fromValue(
+        map['triggerParameter'] as String,
+      ),
     );
   }
 }
-

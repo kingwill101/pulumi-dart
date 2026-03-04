@@ -14,15 +14,18 @@ class LocalRulestackOutboundUntrustCertificateAssociationState {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateId': ?certificateId,
-    };
+    return <String, dynamic>{'certificateId': ?certificateId};
   }
 
-  factory LocalRulestackOutboundUntrustCertificateAssociationState.fromMap(Map<String, dynamic> map) {
+  factory LocalRulestackOutboundUntrustCertificateAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LocalRulestackOutboundUntrustCertificateAssociationState(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      certificateId: (() {
+        final guardedValue = map['certificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

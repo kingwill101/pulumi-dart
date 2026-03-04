@@ -29,13 +29,30 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings(
-      outputSdt: map['outputSdt'] == null ? null : ((map['outputSdt'] as String).input()).input(),
-      repInterval: map['repInterval'] == null ? null : ((map['repInterval'] as int).input()).input(),
-      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
-      serviceProviderName: map['serviceProviderName'] == null ? null : ((map['serviceProviderName'] as String).input()).input(),
+      outputSdt: (() {
+        final guardedValue = map['outputSdt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repInterval: (() {
+        final guardedValue = map['repInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceProviderName: (() {
+        final guardedValue = map['serviceProviderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

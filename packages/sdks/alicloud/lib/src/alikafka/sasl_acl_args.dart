@@ -15,6 +15,7 @@ class SaslAclArgs {
   /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
   /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
   final pulumi.Input<String> aclOperationType;
+
   /// Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
   /// - `Write`: write
   /// - `Read`: read
@@ -22,32 +23,39 @@ class SaslAclArgs {
   /// - `IdempotentWrite`: idempotent write to Cluster
   /// - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
   /// - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
-  /// > **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
+  /// &gt; **NOTE:**  `acl_operation_types` is only supported for Serverless instances.
   final pulumi.Input<String>? aclOperationTypes;
+
   /// Authorization method. Value:
   /// - `DENY`: deny.
   /// - `ALLOW`: allow.
-  /// > **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
+  /// &gt; **NOTE:**  `acl_permission_type` is only supported for Serverless instances.
   final pulumi.Input<String>? aclPermissionType;
+
   /// The resource name.
   /// - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
   /// - You can use an asterisk (*) to represent all resources of this type.
   final pulumi.Input<String> aclResourceName;
+
   /// Match the pattern. Valid values:
   /// - `LITERAL`: exact match
   /// - `PREFIXED`: prefix matching
   final pulumi.Input<String> aclResourcePatternType;
+
   /// The resource type. Valid values:
   /// - `Topic`: the message Topic.
   /// - `Group`: consumer Group.
   /// - `Cluster`: the instance.
   /// - `TransactionalId`: transaction ID.
   final pulumi.Input<String> aclResourceType;
+
   /// The host of the acl.
-  /// > **NOTE:** From version 1.270.0, `host` can be set.
+  /// &gt; **NOTE:** From version 1.270.0, `host` can be set.
   final pulumi.Input<String>? host;
+
   /// The instance ID.
   final pulumi.Input<String> instanceId;
+
   /// The user name.
   final pulumi.Input<String> username;
 
@@ -89,16 +97,31 @@ class SaslAclArgs {
 
   factory SaslAclArgs.fromMap(Map<String, dynamic> map) {
     return SaslAclArgs(
-      aclOperationType: (map['aclOperationType'] as String).input(),
-      aclOperationTypes: map['aclOperationTypes'] == null ? null : (map['aclOperationTypes']! as String).input(),
-      aclPermissionType: map['aclPermissionType'] == null ? null : (map['aclPermissionType']! as String).input(),
-      aclResourceName: (map['aclResourceName'] as String).input(),
-      aclResourcePatternType: (map['aclResourcePatternType'] as String).input(),
-      aclResourceType: (map['aclResourceType'] as String).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      username: (map['username'] as String).input(),
+      aclOperationType: pulumi.Input.fromValue(
+        map['aclOperationType'] as String,
+      ),
+      aclOperationTypes: (() {
+        final guardedValue = map['aclOperationTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aclPermissionType: (() {
+        final guardedValue = map['aclPermissionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aclResourceName: pulumi.Input.fromValue(map['aclResourceName'] as String),
+      aclResourcePatternType: pulumi.Input.fromValue(
+        map['aclResourcePatternType'] as String,
+      ),
+      aclResourceType: pulumi.Input.fromValue(map['aclResourceType'] as String),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

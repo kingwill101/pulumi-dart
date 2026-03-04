@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionStateEventResponse {
   /// The time that the session_state first encountered that state.
   final pulumi.Input<String> eventTime;
+
   /// The session_state tracked by this event
   final pulumi.Input<String> sessionState;
+
   /// A human-readable message to explain the state.
   final pulumi.Input<String> stateMessage;
 
@@ -31,10 +33,9 @@ class SessionStateEventResponse {
 
   factory SessionStateEventResponse.fromMap(Map<String, dynamic> map) {
     return SessionStateEventResponse(
-      eventTime: (map['eventTime'] as String).input(),
-      sessionState: (map['sessionState'] as String).input(),
-      stateMessage: (map['stateMessage'] as String).input(),
+      eventTime: pulumi.Input.fromValue(map['eventTime'] as String),
+      sessionState: pulumi.Input.fromValue(map['sessionState'] as String),
+      stateMessage: pulumi.Input.fromValue(map['stateMessage'] as String),
     );
   }
 }
-

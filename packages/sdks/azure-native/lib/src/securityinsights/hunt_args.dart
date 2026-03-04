@@ -10,24 +10,34 @@ import 'hunt_owner.dart';
 class HuntArgs {
   /// A list of mitre attack tactics the hunt is associated with
   final pulumi.Input<List<String>>? attackTactics;
+
   /// A list of a mitre attack techniques the hunt is associated with
   final pulumi.Input<List<String>>? attackTechniques;
+
   /// The description of the hunt
   final pulumi.Input<String> description;
+
   /// The display name of the hunt
   final pulumi.Input<String> displayName;
+
   /// The hunt id (GUID)
   final pulumi.Input<String>? huntId;
+
   /// The hypothesis status of the hunt.
   final pulumi.Input<String>? hypothesisStatus;
+
   /// List of labels relevant to this hunt
   final pulumi.Input<List<String>>? labels;
+
   /// Describes a user that the hunt is assigned to
   final pulumi.Input<HuntOwner>? owner;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The status of the hunt.
   final pulumi.Input<String>? status;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -66,7 +76,11 @@ class HuntArgs {
       'huntId': ?huntId,
       'hypothesisStatus': ?hypothesisStatus,
       'labels': ?labels,
-      'owner': ?pulumi.Input.mapOptionalInputValue<HuntOwner, Map<String, dynamic>>(owner, (value) => value.toMap()),
+      'owner':
+          ?pulumi.Input.mapOptionalInputValue<HuntOwner, Map<String, dynamic>>(
+            owner,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
       'status': ?status,
       'workspaceName': workspaceName,
@@ -75,18 +89,49 @@ class HuntArgs {
 
   factory HuntArgs.fromMap(Map<String, dynamic> map) {
     return HuntArgs(
-      attackTactics: map['attackTactics'] == null ? null : ((map['attackTactics']! as List).cast<String>()).input(),
-      attackTechniques: map['attackTechniques'] == null ? null : ((map['attackTechniques']! as List).cast<String>()).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      huntId: map['huntId'] == null ? null : (map['huntId']! as String).input(),
-      hypothesisStatus: map['hypothesisStatus'] == null ? null : (map['hypothesisStatus']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
-      owner: map['owner'] == null ? null : (HuntOwner.fromMap((map['owner']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      attackTactics: (() {
+        final guardedValue = map['attackTactics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      attackTechniques: (() {
+        final guardedValue = map['attackTechniques'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      huntId: (() {
+        final guardedValue = map['huntId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hypothesisStatus: (() {
+        final guardedValue = map['hypothesisStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HuntOwner.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_network_acl_args.dart';
-import 'service_network_acl_private_endpoint.dart';
 import 'service_network_acl_public_network.dart';
 import 'service_network_acl_state.dart';
 
@@ -461,7 +460,7 @@ import 'service_network_acl_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -476,10 +475,13 @@ import 'service_network_acl_state.dart';
 class ServiceNetworkAcl extends pulumi.CustomResource {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`.
   late final pulumi.Output<String> defaultAction;
+
   /// A `private_endpoint` block as defined below.
-  late final pulumi.Output<List<ServiceNetworkAclPrivateEndpoint>?> privateEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpoints;
+
   /// A `public_network` block as defined below.
   late final pulumi.Output<ServiceNetworkAclPublicNetwork> publicNetwork;
+
   /// The ID of the SignalR service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> signalrServiceId;
 
@@ -492,15 +494,19 @@ class ServiceNetworkAcl extends pulumi.CustomResource {
     ServiceNetworkAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/serviceNetworkAcl:ServiceNetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultAction = registerOutput<String>('defaultAction');
-    this.privateEndpoints = registerOutput<List<ServiceNetworkAclPrivateEndpoint>?>('privateEndpoints');
-    this.publicNetwork = registerOutput<ServiceNetworkAclPublicNetwork>('publicNetwork');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
+         'azure:signalr/serviceNetworkAcl:ServiceNetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultAction = registerOutput<String>('defaultAction');
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpoints',
+    );
+    publicNetwork = registerOutput<ServiceNetworkAclPublicNetwork>(
+      'publicNetwork',
+    );
+    signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 
   /// Gets an existing [ServiceNetworkAcl] resource's state with the given [name] and [id].
@@ -521,14 +527,18 @@ class ServiceNetworkAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/serviceNetworkAcl:ServiceNetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultAction = registerOutput<String>('defaultAction');
-    this.privateEndpoints = registerOutput<List<ServiceNetworkAclPrivateEndpoint>?>('privateEndpoints');
-    this.publicNetwork = registerOutput<ServiceNetworkAclPublicNetwork>('publicNetwork');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
+         'azure:signalr/serviceNetworkAcl:ServiceNetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultAction = registerOutput<String>('defaultAction');
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpoints',
+    );
+    publicNetwork = registerOutput<ServiceNetworkAclPublicNetwork>(
+      'publicNetwork',
+    );
+    signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 }

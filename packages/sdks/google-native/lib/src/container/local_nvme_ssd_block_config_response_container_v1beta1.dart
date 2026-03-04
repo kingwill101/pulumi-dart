@@ -14,15 +14,14 @@ class LocalNvmeSsdBlockConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'localSsdCount': localSsdCount,
-    };
+    return <String, dynamic>{'localSsdCount': localSsdCount};
   }
 
-  factory LocalNvmeSsdBlockConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory LocalNvmeSsdBlockConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LocalNvmeSsdBlockConfigResponseContainerV1beta1(
-      localSsdCount: (map['localSsdCount'] as int).input(),
+      localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
     );
   }
 }
-

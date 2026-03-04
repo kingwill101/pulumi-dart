@@ -8,36 +8,52 @@ import 'volume_mount_response.dart';
 class GetWebAppSiteContainerSlotResult {
   /// Auth Type
   final String? authType;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Created Time
   final String createdTime;
+
   /// List of environment variables
   final List<EnvironmentVariableResponse>? environmentVariables;
+
   /// Resource Id.
   final String id;
+
   /// Image Name
   final String image;
-  /// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
+
+  /// &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool isMain;
+
   /// Kind of resource.
   final String? kind;
+
   /// Last Modified Time
   final String lastModifiedTime;
+
   /// Resource Name.
   final String name;
+
   /// Password Secret
   final String? passwordSecret;
+
   /// StartUp Command
   final String? startUpCommand;
+
   /// Target Port
   final String? targetPort;
+
   /// Resource type.
   final String type;
+
   /// UserManagedIdentity ClientId
   final String? userManagedIdentityClientId;
+
   /// User Name
   final String? userName;
+
   /// List of volume mounts
   final List<VolumeMountResponse>? volumeMounts;
 
@@ -48,7 +64,7 @@ class GetWebAppSiteContainerSlotResult {
   /// [environmentVariables] List of environment variables
   /// [id] Resource Id.
   /// [image] Image Name
-  /// [isMain] <code>true</code> if the container is the main site container; <code>false</code> otherwise.
+  /// [isMain] &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   /// [kind] Kind of resource.
   /// [lastModifiedTime] Last Modified Time
   /// [name] Resource Name.
@@ -84,7 +100,14 @@ class GetWebAppSiteContainerSlotResult {
       'authType': ?authType,
       'azureApiVersion': azureApiVersion,
       'createdTime': createdTime,
-      'environmentVariables': ?environmentVariables == null ? null : pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(environmentVariables!, (value) => value.toMap()),
+      'environmentVariables': ?(() {
+        final guardedValue = environmentVariables;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          EnvironmentVariableResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'image': image,
       'isMain': isMain,
@@ -97,30 +120,82 @@ class GetWebAppSiteContainerSlotResult {
       'type': type,
       'userManagedIdentityClientId': ?userManagedIdentityClientId,
       'userName': ?userName,
-      'volumeMounts': ?volumeMounts == null ? null : pulumi.Input.encodeList<VolumeMountResponse, Map<String, dynamic>>(volumeMounts!, (value) => value.toMap()),
+      'volumeMounts': ?(() {
+        final guardedValue = volumeMounts;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          VolumeMountResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetWebAppSiteContainerSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteContainerSlotResult(
-      authType: map['authType'] == null ? null : map['authType']! as String,
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       createdTime: map['createdTime'] as String,
-      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
+      environmentVariables: (() {
+        final guardedValue = map['environmentVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<EnvironmentVariableResponse>(
+          guardedValue,
+          (value) => EnvironmentVariableResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       image: map['image'] as String,
       isMain: map['isMain'] as bool,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
-      passwordSecret: map['passwordSecret'] == null ? null : map['passwordSecret']! as String,
-      startUpCommand: map['startUpCommand'] == null ? null : map['startUpCommand']! as String,
-      targetPort: map['targetPort'] == null ? null : map['targetPort']! as String,
+      passwordSecret: (() {
+        final guardedValue = map['passwordSecret'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      startUpCommand: (() {
+        final guardedValue = map['startUpCommand'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      targetPort: (() {
+        final guardedValue = map['targetPort'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
-      userManagedIdentityClientId: map['userManagedIdentityClientId'] == null ? null : map['userManagedIdentityClientId']! as String,
-      userName: map['userName'] == null ? null : map['userName']! as String,
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<VolumeMountResponse>(map['volumeMounts']!, (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>())),
+      userManagedIdentityClientId: (() {
+        final guardedValue = map['userManagedIdentityClientId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      volumeMounts: (() {
+        final guardedValue = map['volumeMounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<VolumeMountResponse>(
+          guardedValue,
+          (value) => VolumeMountResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

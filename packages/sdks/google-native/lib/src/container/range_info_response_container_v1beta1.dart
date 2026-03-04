@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RangeInfoResponseContainerV1beta1 {
   /// [Output only] Name of a range.
   final pulumi.Input<String> rangeName;
+
   /// [Output only] The utilization of the range.
   final pulumi.Input<double> utilization;
 
@@ -26,9 +27,8 @@ class RangeInfoResponseContainerV1beta1 {
 
   factory RangeInfoResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return RangeInfoResponseContainerV1beta1(
-      rangeName: (map['rangeName'] as String).input(),
-      utilization: (map['utilization'] as double).input(),
+      rangeName: pulumi.Input.fromValue(map['rangeName'] as String),
+      utilization: pulumi.Input.fromValue(map['utilization'] as double),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ScheduleStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ScheduleStatus(this.value);
-  final String value;
+  const ScheduleStatus(this.wireValue);
+  final String wireValue;
 
   static ScheduleStatus fromValue(String value) {
     for (final item in ScheduleStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduleStatus value: $value');
   }
 }
-

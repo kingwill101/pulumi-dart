@@ -4,16 +4,17 @@ enum DataSamplingConfigBehaviorsItem {
   alwaysOn("ALWAYS_ON"),
   exceptions("EXCEPTIONS");
 
-  const DataSamplingConfigBehaviorsItem(this.value);
-  final String value;
+  const DataSamplingConfigBehaviorsItem(this.wireValue);
+  final String wireValue;
 
   static DataSamplingConfigBehaviorsItem fromValue(String value) {
     for (final item in DataSamplingConfigBehaviorsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DataSamplingConfigBehaviorsItem value: $value');
+    throw ArgumentError(
+      'Unknown DataSamplingConfigBehaviorsItem value: $value',
+    );
   }
 }
-

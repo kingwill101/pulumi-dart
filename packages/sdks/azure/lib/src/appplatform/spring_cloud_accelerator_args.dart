@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudAcceleratorArgs {
   /// The name which should be used for this Spring Cloud Accelerator. Changing this forces a new Spring Cloud Accelerator to be created. The only possible value is `default`.
   final pulumi.Input<String>? name;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Accelerator to be created.
   final pulumi.Input<String> springCloudServiceId;
 
   /// Creates a new [SpringCloudAcceleratorArgs].
   /// [name] The name which should be used for this Spring Cloud Accelerator. Changing this forces a new Spring Cloud Accelerator to be created. The only possible value is `default`.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Accelerator to be created.
-  SpringCloudAcceleratorArgs({
-    this.name,
-    required this.springCloudServiceId,
-  });
+  SpringCloudAcceleratorArgs({this.name, required this.springCloudServiceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,14 @@ class SpringCloudAcceleratorArgs {
 
   factory SpringCloudAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudAcceleratorArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      springCloudServiceId: (map['springCloudServiceId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      springCloudServiceId: pulumi.Input.fromValue(
+        map['springCloudServiceId'] as String,
+      ),
     );
   }
 }
-

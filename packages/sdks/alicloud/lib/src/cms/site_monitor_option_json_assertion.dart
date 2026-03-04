@@ -13,6 +13,7 @@ class SiteMonitorOptionJsonAssertion {
   /// - Lesthan: less.
   /// - moreThan: Greater.
   final pulumi.Input<String>? operator;
+
   /// Assertion matches the target numeric value or character of the comparison.
   final pulumi.Input<String>? target;
   final pulumi.Input<String>? type;
@@ -21,11 +22,7 @@ class SiteMonitorOptionJsonAssertion {
   /// [operator] Assertion comparison operator. Value:
   /// [target] Assertion matches the target numeric value or character of the comparison.
   /// [type] Optional.
-  SiteMonitorOptionJsonAssertion({
-    this.operator,
-    this.target,
-    this.type,
-  });
+  SiteMonitorOptionJsonAssertion({this.operator, this.target, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +34,21 @@ class SiteMonitorOptionJsonAssertion {
 
   factory SiteMonitorOptionJsonAssertion.fromMap(Map<String, dynamic> map) {
     return SiteMonitorOptionJsonAssertion(
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

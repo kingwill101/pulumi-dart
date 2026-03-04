@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadReference {
   /// Name defines the name of the Workload object this Pod belongs to. Workload must be in the same namespace as the Pod. If it doesn't match any existing Workload, the Pod will remain unschedulable until a Workload object is created and observed by the kube-scheduler. It must be a DNS subdomain.
   final pulumi.Input<String> name;
+
   /// PodGroup is the name of the PodGroup within the Workload that this Pod belongs to. If it doesn't match any existing PodGroup within the Workload, the Pod will remain unschedulable until the Workload object is recreated and observed by the kube-scheduler. It must be a DNS label.
   final pulumi.Input<String> podGroup;
+
   /// PodGroupReplicaKey specifies the replica key of the PodGroup to which this Pod belongs. It is used to distinguish pods belonging to different replicas of the same pod group. The pod group policy is applied separately to each replica. When set, it must be a DNS label.
   final pulumi.Input<String>? podGroupReplicaKey;
 
@@ -31,10 +33,13 @@ class WorkloadReference {
 
   factory WorkloadReference.fromMap(Map<String, dynamic> map) {
     return WorkloadReference(
-      name: (map['name'] as String).input(),
-      podGroup: (map['podGroup'] as String).input(),
-      podGroupReplicaKey: map['podGroupReplicaKey'] == null ? null : (map['podGroupReplicaKey']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      podGroup: pulumi.Input.fromValue(map['podGroup'] as String),
+      podGroupReplicaKey: (() {
+        final guardedValue = map['podGroupReplicaKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

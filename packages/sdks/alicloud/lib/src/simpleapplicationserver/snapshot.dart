@@ -6,7 +6,7 @@ import 'snapshot_state.dart';
 ///
 /// For information about Simple Application Server Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/doc-detail/190452.htm).
 ///
-/// > **NOTE:** Available since v1.143.0.
+/// &gt; **NOTE:** Available since v1.143.0.
 ///
 /// ## Example Usage
 ///
@@ -312,8 +312,10 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The ID of the disk.
   late final pulumi.Output<String> diskId;
+
   /// The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
   late final pulumi.Output<String> snapshotName;
+
   /// The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
   late final pulumi.Output<String> status;
 
@@ -326,14 +328,14 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:simpleapplicationserver/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.diskId = registerOutput<String>('diskId');
-    this.snapshotName = registerOutput<String>('snapshotName');
-    this.status = registerOutput<String>('status');
+         'alicloud:simpleapplicationserver/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    diskId = registerOutput<String>('diskId');
+    snapshotName = registerOutput<String>('snapshotName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -354,13 +356,13 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:simpleapplicationserver/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.diskId = registerOutput<String>('diskId');
-    this.snapshotName = registerOutput<String>('snapshotName');
-    this.status = registerOutput<String>('status');
+         'alicloud:simpleapplicationserver/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    diskId = registerOutput<String>('diskId');
+    snapshotName = registerOutput<String>('snapshotName');
+    status = registerOutput<String>('status');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppTemplateHttpScaleRuleAuthentication {
   /// The name of the Container App Secret to use for this Scale Rule Authentication.
   final pulumi.Input<String> secretName;
+
   /// The Trigger Parameter name to use the supply the value retrieved from the `secret_name`.
   final pulumi.Input<String>? triggerParameter;
 
@@ -23,11 +24,16 @@ class AppTemplateHttpScaleRuleAuthentication {
     };
   }
 
-  factory AppTemplateHttpScaleRuleAuthentication.fromMap(Map<String, dynamic> map) {
+  factory AppTemplateHttpScaleRuleAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppTemplateHttpScaleRuleAuthentication(
-      secretName: (map['secretName'] as String).input(),
-      triggerParameter: map['triggerParameter'] == null ? null : (map['triggerParameter']! as String).input(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      triggerParameter: (() {
+        final guardedValue = map['triggerParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

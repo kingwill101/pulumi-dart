@@ -6,34 +6,45 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GeminiGcpEnablementSettingState {
   /// Create time stamp.
   final pulumi.Input<String>? createTime;
+
   /// (Optional, Deprecated)
   /// Whether web grounding should be disabled.
   ///
-  /// > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+  /// &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
   final pulumi.Input<bool>? disableWebGrounding;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Whether customer data sharing should be enabled.
   final pulumi.Input<bool>? enableCustomerDataSharing;
+
   /// Id of the Gemini Gcp Enablement setting.
   final pulumi.Input<String>? geminiGcpEnablementSettingId;
+
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
+
   /// Identifier. Name of the resource.
   /// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// Update time stamp.
   final pulumi.Input<String>? updateTime;
+
   /// Web grounding type.
   /// Possible values:
   /// GROUNDING_WITH_GOOGLE_SEARCH
@@ -87,19 +98,72 @@ class GeminiGcpEnablementSettingState {
 
   factory GeminiGcpEnablementSettingState.fromMap(Map<String, dynamic> map) {
     return GeminiGcpEnablementSettingState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      disableWebGrounding: map['disableWebGrounding'] == null ? null : (map['disableWebGrounding']! as bool).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      enableCustomerDataSharing: map['enableCustomerDataSharing'] == null ? null : (map['enableCustomerDataSharing']! as bool).input(),
-      geminiGcpEnablementSettingId: map['geminiGcpEnablementSettingId'] == null ? null : (map['geminiGcpEnablementSettingId']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
-      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableWebGrounding: (() {
+        final guardedValue = map['disableWebGrounding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      enableCustomerDataSharing: (() {
+        final guardedValue = map['enableCustomerDataSharing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      geminiGcpEnablementSettingId: (() {
+        final guardedValue = map['geminiGcpEnablementSettingId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webGroundingType: (() {
+        final guardedValue = map['webGroundingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

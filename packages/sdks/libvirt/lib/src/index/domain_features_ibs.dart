@@ -8,20 +8,15 @@ class DomainFeaturesIbs {
 
   /// Creates a new [DomainFeaturesIbs].
   /// [value] Sets the value for the Instruction Based Sampling feature's configuration.
-  DomainFeaturesIbs({
-    required this.value,
-  });
+  DomainFeaturesIbs({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
   factory DomainFeaturesIbs.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesIbs(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

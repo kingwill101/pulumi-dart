@@ -195,27 +195,38 @@ class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String?> clientClassificationSource;
+
   /// The column name.
   late final pulumi.Output<String> columnName;
+
   /// The information type.
   late final pulumi.Output<String?> informationType;
+
   /// The information type ID.
   late final pulumi.Output<String?> informationTypeId;
+
   /// Is sensitivity recommendation disabled. Applicable for recommended sensitivity label only. Specifies whether the sensitivity recommendation on this column is disabled (dismissed) or not.
   late final pulumi.Output<bool> isDisabled;
+
   /// The label ID.
   late final pulumi.Output<String?> labelId;
+
   /// The label name.
   late final pulumi.Output<String?> labelName;
+
   /// Resource that manages the sensitivity label.
   late final pulumi.Output<String> managedBy;
+
   /// Resource name.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> rank;
+
   /// The schema name.
   late final pulumi.Output<String> schemaName;
+
   /// The table name.
   late final pulumi.Output<String> tableName;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -228,24 +239,26 @@ class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
     ManagedDatabaseSensitivityLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ManagedDatabaseSensitivityLabel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientClassificationSource = registerOutput<String?>('clientClassificationSource');
-    this.columnName = registerOutput<String>('columnName');
-    this.informationType = registerOutput<String?>('informationType');
-    this.informationTypeId = registerOutput<String?>('informationTypeId');
-    this.isDisabled = registerOutput<bool>('isDisabled');
-    this.labelId = registerOutput<String?>('labelId');
-    this.labelName = registerOutput<String?>('labelName');
-    this.managedBy = registerOutput<String>('managedBy');
+         'azure-native:sql:ManagedDatabaseSensitivityLabel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientClassificationSource = registerOutput<String?>(
+      'clientClassificationSource',
+    );
+    columnName = registerOutput<String>('columnName');
+    informationType = registerOutput<String?>('informationType');
+    informationTypeId = registerOutput<String?>('informationTypeId');
+    isDisabled = registerOutput<bool>('isDisabled');
+    labelId = registerOutput<String?>('labelId');
+    labelName = registerOutput<String?>('labelName');
+    managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
-    this.rank = registerOutput<String?>('rank');
-    this.schemaName = registerOutput<String>('schemaName');
-    this.tableName = registerOutput<String>('tableName');
-    this.type = registerOutput<String>('type');
+    rank = registerOutput<String?>('rank');
+    schemaName = registerOutput<String>('schemaName');
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
   }
 }

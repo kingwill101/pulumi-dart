@@ -162,20 +162,29 @@ import 'system_data_response.dart';
 class CloudHsmClusterPrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Modified whenever there is a change in the state of private endpoint connection.
   late final pulumi.Output<String?> etag;
+
   /// The group ids for the private endpoint resource.
   late final pulumi.Output<List<String>> groupIds;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The private endpoint resource.
   late final pulumi.Output<PrivateEndpointResponse?> privateEndpoint;
+
   /// A collection of information about the state of the connection between service consumer and provider.
-  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse>
+  privateLinkServiceConnectionState;
+
   /// The provisioning state of the private endpoint connection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -188,19 +197,24 @@ class CloudHsmClusterPrivateEndpointConnection extends pulumi.CustomResource {
     CloudHsmClusterPrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hardwaresecuritymodules:CloudHsmClusterPrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.groupIds = registerOutput<List<String>>('groupIds');
+         'azure-native:hardwaresecuritymodules:CloudHsmClusterPrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    groupIds = registerOutput<List<String>>('groupIds');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<PrivateEndpointResponse?>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<PrivateEndpointResponse?>(
+      'privateEndpoint',
+    );
+    privateLinkServiceConnectionState =
+        registerOutput<PrivateLinkServiceConnectionStateResponse>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

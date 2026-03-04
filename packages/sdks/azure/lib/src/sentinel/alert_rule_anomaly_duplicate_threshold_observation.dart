@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyDuplicateThresholdObservation {
   /// The description of the threshold observation.
   final pulumi.Input<String>? description;
+
   /// The max value of the threshold observation.
   final pulumi.Input<String>? max;
+
   /// The min value of the threshold observation.
   final pulumi.Input<String>? min;
+
   /// The name of the threshold observation.
   final pulumi.Input<String> name;
+
   /// The value of the threshold observation.
   final pulumi.Input<String> value;
 
@@ -38,14 +42,27 @@ class AlertRuleAnomalyDuplicateThresholdObservation {
     };
   }
 
-  factory AlertRuleAnomalyDuplicateThresholdObservation.fromMap(Map<String, dynamic> map) {
+  factory AlertRuleAnomalyDuplicateThresholdObservation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertRuleAnomalyDuplicateThresholdObservation(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      max: map['max'] == null ? null : (map['max']! as String).input(),
-      min: map['min'] == null ? null : (map['min']! as String).input(),
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

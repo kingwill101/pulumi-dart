@@ -15,15 +15,14 @@ class PluginConfigTemplateAuthConfigTemplateServiceAccount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccount': serviceAccount,
-    };
+    return <String, dynamic>{'serviceAccount': serviceAccount};
   }
 
-  factory PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap(Map<String, dynamic> map) {
+  factory PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PluginConfigTemplateAuthConfigTemplateServiceAccount(
-      serviceAccount: (map['serviceAccount'] as String).input(),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
-

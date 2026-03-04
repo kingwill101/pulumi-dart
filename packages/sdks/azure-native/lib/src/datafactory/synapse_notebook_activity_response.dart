@@ -14,41 +14,60 @@ import 'user_property_response.dart';
 class SynapseNotebookActivityResponse {
   /// Spark configuration properties, which will override the 'conf' of the notebook you provide.
   final pulumi.Input<dynamic>? conf;
+
   /// The type of the spark config.
   final pulumi.Input<String>? configurationType;
+
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+
   /// Activity description.
   final pulumi.Input<String>? description;
+
   /// Number of core and memory to be used for driver allocated in the specified Spark pool for the session, which will be used for overriding 'driverCores' and 'driverMemory' of the notebook you provide. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? driverSize;
+
   /// Number of core and memory to be used for executors allocated in the specified Spark pool for the session, which will be used for overriding 'executorCores' and 'executorMemory' of the notebook you provide. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? executorSize;
+
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+
   /// Activity name.
   final pulumi.Input<String> name;
+
   /// Synapse notebook reference.
   final pulumi.Input<SynapseNotebookReferenceResponse> notebook;
+
   /// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? numExecutors;
+
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
+
   /// Notebook parameters.
   final pulumi.Input<Map<String, NotebookParameterResponse>>? parameters;
+
   /// Activity policy.
   final pulumi.Input<ActivityPolicyResponse>? policy;
+
   /// Spark configuration property.
   final pulumi.Input<Map<String, dynamic>>? sparkConfig;
+
   /// The name of the big data pool which will be used to execute the notebook.
   final pulumi.Input<BigDataPoolParametrizationReferenceResponse>? sparkPool;
+
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
+
   /// The spark configuration of the spark job.
-  final pulumi.Input<SparkConfigurationParametrizationReferenceResponse>? targetSparkConfiguration;
+  final pulumi.Input<SparkConfigurationParametrizationReferenceResponse>?
+  targetSparkConfiguration;
+
   /// Type of activity.
   /// Expected value is 'SynapseNotebook'.
   final pulumi.Input<String> type;
+
   /// Activity user properties.
   final pulumi.Input<List<UserPropertyResponse>>? userProperties;
 
@@ -98,48 +117,207 @@ class SynapseNotebookActivityResponse {
     return <String, dynamic>{
       'conf': ?conf,
       'configurationType': ?configurationType,
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ActivityDependencyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ActivityDependencyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'driverSize': ?driverSize,
       'executorSize': ?executorSize,
-      'linkedServiceName': ?pulumi.Input.mapOptionalInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'linkedServiceName':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedServiceReferenceResponse,
+            Map<String, dynamic>
+          >(linkedServiceName, (value) => value.toMap()),
       'name': name,
-      'notebook': pulumi.Input.mapInputValue<SynapseNotebookReferenceResponse, Map<String, dynamic>>(notebook, (value) => value.toMap()),
+      'notebook':
+          pulumi.Input.mapInputValue<
+            SynapseNotebookReferenceResponse,
+            Map<String, dynamic>
+          >(notebook, (value) => value.toMap()),
       'numExecutors': ?numExecutors,
       'onInactiveMarkAs': ?onInactiveMarkAs,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, NotebookParameterResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<NotebookParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, NotebookParameterResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  NotebookParameterResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'policy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ActivityPolicyResponse,
+            Map<String, dynamic>
+          >(policy, (value) => value.toMap()),
       'sparkConfig': ?sparkConfig,
-      'sparkPool': ?pulumi.Input.mapOptionalInputValue<BigDataPoolParametrizationReferenceResponse, Map<String, dynamic>>(sparkPool, (value) => value.toMap()),
+      'sparkPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            BigDataPoolParametrizationReferenceResponse,
+            Map<String, dynamic>
+          >(sparkPool, (value) => value.toMap()),
       'state': ?state,
-      'targetSparkConfiguration': ?pulumi.Input.mapOptionalInputValue<SparkConfigurationParametrizationReferenceResponse, Map<String, dynamic>>(targetSparkConfiguration, (value) => value.toMap()),
+      'targetSparkConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            SparkConfigurationParametrizationReferenceResponse,
+            Map<String, dynamic>
+          >(targetSparkConfiguration, (value) => value.toMap()),
       'type': type,
-      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserPropertyResponse>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserPropertyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserPropertyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            userProperties,
+            (value) =>
+                pulumi.Input.encodeList<
+                  UserPropertyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SynapseNotebookActivityResponse.fromMap(Map<String, dynamic> map) {
     return SynapseNotebookActivityResponse(
-      conf: map['conf'] == null ? null : (map['conf']!).input(),
-      configurationType: map['configurationType'] == null ? null : (map['configurationType']! as String).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn']!, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      driverSize: map['driverSize'] == null ? null : (map['driverSize']!).input(),
-      executorSize: map['executorSize'] == null ? null : (map['executorSize']!).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      notebook: (SynapseNotebookReferenceResponse.fromMap((map['notebook'] as Map).cast<String, dynamic>())).input(),
-      numExecutors: map['numExecutors'] == null ? null : (map['numExecutors']!).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<NotebookParameterResponse>(map['parameters']!, (value) => NotebookParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
-      sparkConfig: map['sparkConfig'] == null ? null : ((map['sparkConfig']! as Map).cast<String, dynamic>()).input(),
-      sparkPool: map['sparkPool'] == null ? null : (BigDataPoolParametrizationReferenceResponse.fromMap((map['sparkPool']! as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      targetSparkConfiguration: map['targetSparkConfiguration'] == null ? null : (SparkConfigurationParametrizationReferenceResponse.fromMap((map['targetSparkConfiguration']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties']!, (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conf: (() {
+        final guardedValue = map['conf'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      configurationType: (() {
+        final guardedValue = map['configurationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ActivityDependencyResponse>(
+            guardedValue,
+            (value) => ActivityDependencyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      driverSize: (() {
+        final guardedValue = map['driverSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      executorSize: (() {
+        final guardedValue = map['executorSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      linkedServiceName: (() {
+        final guardedValue = map['linkedServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedServiceReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      notebook: pulumi.Input.fromValue(
+        SynapseNotebookReferenceResponse.fromMap(
+          (map['notebook']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      numExecutors: (() {
+        final guardedValue = map['numExecutors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      onInactiveMarkAs: (() {
+        final guardedValue = map['onInactiveMarkAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<NotebookParameterResponse>(
+            guardedValue,
+            (value) => NotebookParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ActivityPolicyResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sparkConfig: (() {
+        final guardedValue = map['sparkConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      sparkPool: (() {
+        final guardedValue = map['sparkPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BigDataPoolParametrizationReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetSparkConfiguration: (() {
+        final guardedValue = map['targetSparkConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SparkConfigurationParametrizationReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userProperties: (() {
+        final guardedValue = map['userProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserPropertyResponse>(
+            guardedValue,
+            (value) => UserPropertyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

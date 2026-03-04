@@ -11,8 +11,10 @@ class EncryptionSpecArgs {
   /// A nested object resource.
   /// Structure is documented below.
   final pulumi.Input<EncryptionSpecEncryptionSpec> encryptionSpec;
+
   /// The location in which the encryptionSpec is to be initialized.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -29,7 +31,11 @@ class EncryptionSpecArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionSpec': pulumi.Input.mapInputValue<EncryptionSpecEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          pulumi.Input.mapInputValue<
+            EncryptionSpecEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'location': location,
       'project': ?project,
     };
@@ -37,10 +43,17 @@ class EncryptionSpecArgs {
 
   factory EncryptionSpecArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionSpecArgs(
-      encryptionSpec: (EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      encryptionSpec: pulumi.Input.fromValue(
+        EncryptionSpecEncryptionSpec.fromMap(
+          (map['encryptionSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

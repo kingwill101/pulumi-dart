@@ -14,15 +14,14 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': email,
-    };
+    return <String, dynamic>{'email': email};
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse(
-      email: (map['email'] as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
     );
   }
 }
-

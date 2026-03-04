@@ -31,10 +31,9 @@ class GetInstanceAttachmentArgs {
 
   factory GetInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentArgs(
-      attachmentId: (map['attachmentId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

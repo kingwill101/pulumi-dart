@@ -10,7 +10,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Eci Container Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.111.0+.
+/// &gt; **NOTE:** Available in v1.111.0+.
 ///
 /// ## Example Usage
 ///
@@ -135,7 +135,7 @@ Future<GetContainerGroupsResult> getContainerGroups(
 
 /// Provides a collection of ECI Image Cache to the specified filters.
 ///
-/// > **NOTE:** Available in 1.90.0+.
+/// &gt; **NOTE:** Available in 1.90.0+.
 ///
 /// ## Example Usage
 ///
@@ -258,7 +258,7 @@ Future<GetImageCachesResult> getImageCaches(
 
 /// This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.145.0+.
+/// &gt; **NOTE:** Available in v1.145.0+.
 ///
 /// ## Example Usage
 ///
@@ -424,7 +424,7 @@ Future<GetVirtualNodesResult> getVirtualNodes(
 
 /// This data source provides the available zones with the Elastic Container Instance (ECI) of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.145.0.
+/// &gt; **NOTE:** Available since v1.145.0.
 ///
 /// ## Example Usage
 ///

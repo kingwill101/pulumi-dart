@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscription_cost_management_view_args.dart';
 import 'subscription_cost_management_view_dataset.dart';
-import 'subscription_cost_management_view_kpi.dart';
-import 'subscription_cost_management_view_pivot.dart';
 import 'subscription_cost_management_view_state.dart';
 
 /// Manages an Azure Cost Management View for a Subscription.
@@ -264,7 +262,7 @@ import 'subscription_cost_management_view_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CostManagement` - 2023-08-01
@@ -279,22 +277,31 @@ import 'subscription_cost_management_view_state.dart';
 class SubscriptionCostManagementView extends pulumi.CustomResource {
   /// Whether the costs data in the Cost Management View are accumulated over time. Changing this forces a new Cost Management View for a Subscription to be created.
   late final pulumi.Output<bool> accumulated;
+
   /// Chart type of the main view in Cost Analysis. Possible values are `Area`, `GroupedColumn`, `Line`, `StackedColumn` and `Table`.
   late final pulumi.Output<String> chartType;
+
   /// A `dataset` block as defined below.
   late final pulumi.Output<SubscriptionCostManagementViewDataset> dataset;
+
   /// User visible input name of the Cost Management View.
   late final pulumi.Output<String> displayName;
+
   /// One or more `kpi` blocks as defined below, to show in Cost Analysis UI.
-  late final pulumi.Output<List<SubscriptionCostManagementViewKpi>?> kpis;
+  late final pulumi.Output<List<Map<String, dynamic>>?> kpis;
+
   /// The name which should be used for this Cost Management View for a Subscription. Changing this forces a new Cost Management View for a Subscription to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `pivot` blocks as defined below, containing the configuration of 3 sub-views in the Cost Analysis UI. Non table views should have three pivots.
-  late final pulumi.Output<List<SubscriptionCostManagementViewPivot>?> pivots;
+  late final pulumi.Output<List<Map<String, dynamic>>?> pivots;
+
   /// The type of the report. The only possible value is `Usage`.
   late final pulumi.Output<String> reportType;
+
   /// The ID of the Subscription this View is scoped to. Changing this forces a new Cost Management View for a Subscription to be created.
   late final pulumi.Output<String> subscriptionId;
+
   /// The time frame for pulling data for the report. Possible values are `Custom`, `MonthToDate`, `WeekToDate` and `YearToDate`.
   late final pulumi.Output<String> timeframe;
 
@@ -307,21 +314,21 @@ class SubscriptionCostManagementView extends pulumi.CustomResource {
     SubscriptionCostManagementViewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/subscriptionCostManagementView:SubscriptionCostManagementView',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accumulated = registerOutput<bool>('accumulated');
-    this.chartType = registerOutput<String>('chartType');
-    this.dataset = registerOutput<SubscriptionCostManagementViewDataset>('dataset');
-    this.displayName = registerOutput<String>('displayName');
-    this.kpis = registerOutput<List<SubscriptionCostManagementViewKpi>?>('kpis');
+         'azure:core/subscriptionCostManagementView:SubscriptionCostManagementView',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accumulated = registerOutput<bool>('accumulated');
+    chartType = registerOutput<String>('chartType');
+    dataset = registerOutput<SubscriptionCostManagementViewDataset>('dataset');
+    displayName = registerOutput<String>('displayName');
+    kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
     this.name = registerOutput<String>('name');
-    this.pivots = registerOutput<List<SubscriptionCostManagementViewPivot>?>('pivots');
-    this.reportType = registerOutput<String>('reportType');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.timeframe = registerOutput<String>('timeframe');
+    pivots = registerOutput<List<Map<String, dynamic>>?>('pivots');
+    reportType = registerOutput<String>('reportType');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    timeframe = registerOutput<String>('timeframe');
   }
 
   /// Gets an existing [SubscriptionCostManagementView] resource's state with the given [name] and [id].
@@ -342,20 +349,20 @@ class SubscriptionCostManagementView extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/subscriptionCostManagementView:SubscriptionCostManagementView',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accumulated = registerOutput<bool>('accumulated');
-    this.chartType = registerOutput<String>('chartType');
-    this.dataset = registerOutput<SubscriptionCostManagementViewDataset>('dataset');
-    this.displayName = registerOutput<String>('displayName');
-    this.kpis = registerOutput<List<SubscriptionCostManagementViewKpi>?>('kpis');
+         'azure:core/subscriptionCostManagementView:SubscriptionCostManagementView',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accumulated = registerOutput<bool>('accumulated');
+    chartType = registerOutput<String>('chartType');
+    dataset = registerOutput<SubscriptionCostManagementViewDataset>('dataset');
+    displayName = registerOutput<String>('displayName');
+    kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
     this.name = registerOutput<String>('name');
-    this.pivots = registerOutput<List<SubscriptionCostManagementViewPivot>?>('pivots');
-    this.reportType = registerOutput<String>('reportType');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.timeframe = registerOutput<String>('timeframe');
+    pivots = registerOutput<List<Map<String, dynamic>>?>('pivots');
+    reportType = registerOutput<String>('reportType');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    timeframe = registerOutput<String>('timeframe');
   }
 }

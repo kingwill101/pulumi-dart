@@ -5,16 +5,20 @@ enum MonitoringQueryLanguageConditionEvaluationMissingData {
   evaluationMissingDataActive("EVALUATION_MISSING_DATA_ACTIVE"),
   evaluationMissingDataNoOp("EVALUATION_MISSING_DATA_NO_OP");
 
-  const MonitoringQueryLanguageConditionEvaluationMissingData(this.value);
-  final String value;
+  const MonitoringQueryLanguageConditionEvaluationMissingData(this.wireValue);
+  final String wireValue;
 
-  static MonitoringQueryLanguageConditionEvaluationMissingData fromValue(String value) {
-    for (final item in MonitoringQueryLanguageConditionEvaluationMissingData.values) {
-      if (item.value == value) {
+  static MonitoringQueryLanguageConditionEvaluationMissingData fromValue(
+    String value,
+  ) {
+    for (final item
+        in MonitoringQueryLanguageConditionEvaluationMissingData.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MonitoringQueryLanguageConditionEvaluationMissingData value: $value');
+    throw ArgumentError(
+      'Unknown MonitoringQueryLanguageConditionEvaluationMissingData value: $value',
+    );
   }
 }
-

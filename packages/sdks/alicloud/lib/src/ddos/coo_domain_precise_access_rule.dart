@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'coo_domain_precise_access_rule_args.dart';
-import 'coo_domain_precise_access_rule_condition.dart';
 import 'coo_domain_precise_access_rule_state.dart';
 
 /// Provides a DdosCoo Domain Precise Access Rule resource.
@@ -9,7 +8,7 @@ import 'coo_domain_precise_access_rule_state.dart';
 ///
 /// For information about DdosCoo Domain Precise Access Rule and how to use it, see [What is Domain Precise Access Rule](https://next.api.alibabacloud.com/document/ddoscoo/2020-01-01/ModifyWebPreciseAccessRule).
 ///
-/// > **NOTE:** Available since v1.271.0.
+/// &gt; **NOTE:** Available since v1.271.0.
 ///
 /// ## Example Usage
 ///
@@ -322,13 +321,17 @@ import 'coo_domain_precise_access_rule_state.dart';
 class CooDomainPreciseAccessRule extends pulumi.CustomResource {
   /// Action to take on match. Valid values:
   late final pulumi.Output<String> action;
+
   /// List of matching conditions. See `condition` below.
-  late final pulumi.Output<List<CooDomainPreciseAccessRuleCondition>> conditions;
+  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+
   /// Domain name of the website service.
-  /// > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
+  /// &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
   late final pulumi.Output<String> domain;
+
   /// Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
   late final pulumi.Output<int?> expires;
+
   /// Rule name.
   late final pulumi.Output<String> name;
 
@@ -341,15 +344,15 @@ class CooDomainPreciseAccessRule extends pulumi.CustomResource {
     CooDomainPreciseAccessRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.conditions = registerOutput<List<CooDomainPreciseAccessRuleCondition>>('conditions');
-    this.domain = registerOutput<String>('domain');
-    this.expires = registerOutput<int?>('expires');
+         'alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    domain = registerOutput<String>('domain');
+    expires = registerOutput<int?>('expires');
     this.name = registerOutput<String>('name');
   }
 
@@ -371,15 +374,15 @@ class CooDomainPreciseAccessRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.conditions = registerOutput<List<CooDomainPreciseAccessRuleCondition>>('conditions');
-    this.domain = registerOutput<String>('domain');
-    this.expires = registerOutput<int?>('expires');
+         'alicloud:ddos/cooDomainPreciseAccessRule:CooDomainPreciseAccessRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    domain = registerOutput<String>('domain');
+    expires = registerOutput<int?>('expires');
     this.name = registerOutput<String>('name');
   }
 }

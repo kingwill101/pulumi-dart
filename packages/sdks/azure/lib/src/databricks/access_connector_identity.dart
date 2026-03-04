@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessConnectorIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to the Databricks Access Connector. Only one User Assigned Managed Identity ID is supported per Databricks Access Connector resource.
   ///
-  /// > **Note:** `identity_ids` are required when `type` is set to `UserAssigned`.
+  /// &gt; **Note:** `identity_ids` are required when `type` is set to `UserAssigned`.
   final pulumi.Input<List<String>>? identityIds;
+
   /// The Principal ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   final pulumi.Input<String>? principalId;
+
   /// The Tenant ID of the System Assigned Managed Service Identity that is configured on this Access Connector.
   final pulumi.Input<String>? tenantId;
+
   /// Specifies the type of Managed Service Identity that should be configured on the Databricks Access Connector. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`.
   final pulumi.Input<String> type;
 
@@ -37,11 +40,22 @@ class AccessConnectorIdentity {
 
   factory AccessConnectorIdentity.fromMap(Map<String, dynamic> map) {
     return AccessConnectorIdentity(
-      identityIds: map['identityIds'] == null ? null : ((map['identityIds']! as List).cast<String>()).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: (map['type'] as String).input(),
+      identityIds: (() {
+        final guardedValue = map['identityIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

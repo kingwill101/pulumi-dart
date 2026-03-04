@@ -9,20 +9,17 @@ class AuthorizationLoggingOptionsResponseComputeV1 {
 
   /// Creates a new [AuthorizationLoggingOptionsResponseComputeV1].
   /// [permissionType] This is deprecated and has no effect. Do not use.
-  AuthorizationLoggingOptionsResponseComputeV1({
-    required this.permissionType,
-  });
+  AuthorizationLoggingOptionsResponseComputeV1({required this.permissionType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'permissionType': permissionType,
-    };
+    return <String, dynamic>{'permissionType': permissionType};
   }
 
-  factory AuthorizationLoggingOptionsResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory AuthorizationLoggingOptionsResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthorizationLoggingOptionsResponseComputeV1(
-      permissionType: (map['permissionType'] as String).input(),
+      permissionType: pulumi.Input.fromValue(map['permissionType'] as String),
     );
   }
 }
-

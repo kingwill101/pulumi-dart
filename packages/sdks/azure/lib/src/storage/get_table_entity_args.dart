@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableEntityArgs {
   /// The key for the partition where the entity will be retrieved.
   final pulumi.Input<String> partitionKey;
+
   /// The key for the row where the entity will be retrieved.
   final pulumi.Input<String> rowKey;
+
   /// The Storage Table ID where the entity exists.
   final pulumi.Input<String> storageTableId;
 
@@ -34,10 +36,9 @@ class GetTableEntityArgs {
 
   factory GetTableEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetTableEntityArgs(
-      partitionKey: (map['partitionKey'] as String).input(),
-      rowKey: (map['rowKey'] as String).input(),
-      storageTableId: (map['storageTableId'] as String).input(),
+      partitionKey: pulumi.Input.fromValue(map['partitionKey'] as String),
+      rowKey: pulumi.Input.fromValue(map['rowKey'] as String),
+      storageTableId: pulumi.Input.fromValue(map['storageTableId'] as String),
     );
   }
 }
-

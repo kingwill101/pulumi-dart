@@ -5,30 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBaseInstancesInstance {
   /// The product code of the OceanBase cluster.
   final pulumi.Input<String> commodityCode;
+
   /// The number of CPU cores of the cluster.
   final pulumi.Input<int> cpu;
+
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
+
   /// The size of the storage space, in GB.
   final pulumi.Input<String> diskSize;
+
   /// The ID of the Instance.
   final pulumi.Input<String> id;
+
   /// Cluster specification information.
   final pulumi.Input<String> instanceClass;
+
   /// OceanBase cluster ID.
   final pulumi.Input<String> instanceId;
+
   /// OceanBase cluster name.
   final pulumi.Input<String> instanceName;
+
   /// The number of nodes in the cluster.
   final pulumi.Input<String> nodeNum;
+
   /// The payment method of the instance.
   final pulumi.Input<String> paymentType;
+
   /// The ID of the enterprise resource group to which the instance resides.
   final pulumi.Input<String> resourceGroupId;
+
   /// Series of OceanBase clusters.
   final pulumi.Input<String> series;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
+
   /// Information about the zone where the cluster is deployed.
   final pulumi.Input<List<String>> zones;
 
@@ -85,21 +98,20 @@ class GetBaseInstancesInstance {
 
   factory GetBaseInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetBaseInstancesInstance(
-      commodityCode: (map['commodityCode'] as String).input(),
-      cpu: (map['cpu'] as int).input(),
-      createTime: (map['createTime'] as String).input(),
-      diskSize: (map['diskSize'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceClass: (map['instanceClass'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      nodeNum: (map['nodeNum'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      series: (map['series'] as String).input(),
-      status: (map['status'] as String).input(),
-      zones: ((map['zones'] as List).cast<String>()).input(),
+      commodityCode: pulumi.Input.fromValue(map['commodityCode'] as String),
+      cpu: pulumi.Input.fromValue(map['cpu'] as int),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      diskSize: pulumi.Input.fromValue(map['diskSize'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      nodeNum: pulumi.Input.fromValue(map['nodeNum'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      series: pulumi.Input.fromValue(map['series'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      zones: pulumi.Input.fromValue((map['zones'] as List).cast<String>()),
     );
   }
 }
-

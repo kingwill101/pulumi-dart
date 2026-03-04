@@ -1,5 +1,3 @@
-library module_rocketmq;
-
 export 'rocketmq/account.dart';
 export 'rocketmq/account_args.dart';
 export 'rocketmq/account_state.dart';

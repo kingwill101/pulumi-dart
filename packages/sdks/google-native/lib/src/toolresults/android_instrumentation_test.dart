@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AndroidInstrumentationTest {
   /// The java package for the test to be executed. Required
   final pulumi.Input<String>? testPackageId;
+
   /// The InstrumentationTestRunner class. Required
   final pulumi.Input<String>? testRunnerClass;
+
   /// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
   final pulumi.Input<List<String>>? testTargets;
+
   /// The flag indicates whether Android Test Orchestrator will be used to run test or not.
   final pulumi.Input<bool>? useOrchestrator;
 
@@ -36,11 +39,26 @@ class AndroidInstrumentationTest {
 
   factory AndroidInstrumentationTest.fromMap(Map<String, dynamic> map) {
     return AndroidInstrumentationTest(
-      testPackageId: map['testPackageId'] == null ? null : (map['testPackageId']! as String).input(),
-      testRunnerClass: map['testRunnerClass'] == null ? null : (map['testRunnerClass']! as String).input(),
-      testTargets: map['testTargets'] == null ? null : ((map['testTargets']! as List).cast<String>()).input(),
-      useOrchestrator: map['useOrchestrator'] == null ? null : (map['useOrchestrator']! as bool).input(),
+      testPackageId: (() {
+        final guardedValue = map['testPackageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testRunnerClass: (() {
+        final guardedValue = map['testRunnerClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testTargets: (() {
+        final guardedValue = map['testTargets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      useOrchestrator: (() {
+        final guardedValue = map['useOrchestrator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

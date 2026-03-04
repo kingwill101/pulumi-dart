@@ -10,20 +10,39 @@ class MetadataComputeBeta {
 
   /// Creates a new [MetadataComputeBeta].
   /// [items] Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-  MetadataComputeBeta({
-    this.items,
-  });
+  MetadataComputeBeta({this.items});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?pulumi.Input.mapOptionalInputValue<List<MetadataItemsItemComputeBeta>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<MetadataItemsItemComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'items':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MetadataItemsItemComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            items,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MetadataItemsItemComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory MetadataComputeBeta.fromMap(Map<String, dynamic> map) {
     return MetadataComputeBeta(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<MetadataItemsItemComputeBeta>(map['items']!, (value) => MetadataItemsItemComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: (() {
+        final guardedValue = map['items'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MetadataItemsItemComputeBeta>(
+            guardedValue,
+            (value) => MetadataItemsItemComputeBeta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

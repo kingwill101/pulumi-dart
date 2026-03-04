@@ -6,7 +6,9 @@ import 'akri_connectors_container_registry_settings.dart';
 /// AkriConnectorsContainerRegistry properties.
 class AkriConnectorsContainerRegistry {
   /// The registry settings for the container registry.
-  final pulumi.Input<AkriConnectorsContainerRegistrySettings> containerRegistrySettings;
+  final pulumi.Input<AkriConnectorsContainerRegistrySettings>
+  containerRegistrySettings;
+
   /// AkriConnectorsRegistrySettings properties.
   /// Expected value is 'ContainerRegistry'.
   final pulumi.Input<String> registrySettingsType;
@@ -21,16 +23,25 @@ class AkriConnectorsContainerRegistry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerRegistrySettings': pulumi.Input.mapInputValue<AkriConnectorsContainerRegistrySettings, Map<String, dynamic>>(containerRegistrySettings, (value) => value.toMap()),
+      'containerRegistrySettings':
+          pulumi.Input.mapInputValue<
+            AkriConnectorsContainerRegistrySettings,
+            Map<String, dynamic>
+          >(containerRegistrySettings, (value) => value.toMap()),
       'registrySettingsType': registrySettingsType,
     };
   }
 
   factory AkriConnectorsContainerRegistry.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsContainerRegistry(
-      containerRegistrySettings: (AkriConnectorsContainerRegistrySettings.fromMap((map['containerRegistrySettings'] as Map).cast<String, dynamic>())).input(),
-      registrySettingsType: (map['registrySettingsType'] as String).input(),
+      containerRegistrySettings: pulumi.Input.fromValue(
+        AkriConnectorsContainerRegistrySettings.fromMap(
+          (map['containerRegistrySettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      registrySettingsType: pulumi.Input.fromValue(
+        map['registrySettingsType'] as String,
+      ),
     );
   }
 }
-

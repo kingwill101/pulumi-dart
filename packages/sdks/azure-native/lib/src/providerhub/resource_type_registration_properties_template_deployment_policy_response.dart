@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse {
   /// The capabilities.
   final pulumi.Input<String> capabilities;
+
   /// The preflight notifications.
   final pulumi.Input<String>? preflightNotifications;
+
   /// The preflight options.
   final pulumi.Input<String> preflightOptions;
 
@@ -29,12 +31,19 @@ class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse {
     };
   }
 
-  factory ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse(
-      capabilities: (map['capabilities'] as String).input(),
-      preflightNotifications: map['preflightNotifications'] == null ? null : (map['preflightNotifications']! as String).input(),
-      preflightOptions: (map['preflightOptions'] as String).input(),
+      capabilities: pulumi.Input.fromValue(map['capabilities'] as String),
+      preflightNotifications: (() {
+        final guardedValue = map['preflightNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preflightOptions: pulumi.Input.fromValue(
+        map['preflightOptions'] as String,
+      ),
     );
   }
 }
-

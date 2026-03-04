@@ -10,9 +10,7 @@ class InstancePscInstanceConfigPscInterfaceConfig {
 
   /// Creates a new [InstancePscInstanceConfigPscInterfaceConfig].
   /// [networkAttachmentResource] The network attachment resource created in the consumer project to which the PSC interface will be linked.
-  InstancePscInstanceConfigPscInterfaceConfig({
-    this.networkAttachmentResource,
-  });
+  InstancePscInstanceConfigPscInterfaceConfig({this.networkAttachmentResource});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,10 +18,15 @@ class InstancePscInstanceConfigPscInterfaceConfig {
     };
   }
 
-  factory InstancePscInstanceConfigPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
+  factory InstancePscInstanceConfigPscInterfaceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstancePscInstanceConfigPscInterfaceConfig(
-      networkAttachmentResource: map['networkAttachmentResource'] == null ? null : (map['networkAttachmentResource']! as String).input(),
+      networkAttachmentResource: (() {
+        final guardedValue = map['networkAttachmentResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

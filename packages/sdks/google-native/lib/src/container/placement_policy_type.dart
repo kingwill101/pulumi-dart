@@ -3,16 +3,15 @@ enum PlacementPolicyType {
   typeUnspecified("TYPE_UNSPECIFIED"),
   compact("COMPACT");
 
-  const PlacementPolicyType(this.value);
-  final String value;
+  const PlacementPolicyType(this.wireValue);
+  final String wireValue;
 
   static PlacementPolicyType fromValue(String value) {
     for (final item in PlacementPolicyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlacementPolicyType value: $value');
   }
 }
-

@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BudgetNotification {
   /// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
   final pulumi.Input<String> comparisonOperator;
+
   /// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
   final pulumi.Input<String> notificationType;
+
   /// (Optional) E-Mail addresses to notify. Either this or `subscriber_sns_topic_arns` is required.
   final pulumi.Input<List<String>>? subscriberEmailAddresses;
+
   /// (Optional) SNS topics to notify. Either this or `subscriber_email_addresses` is required.
   final pulumi.Input<List<String>>? subscriberSnsTopicArns;
+
   /// (Required) Threshold when the notification should be sent.
   final pulumi.Input<double> threshold;
+
   /// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
   final pulumi.Input<String> thresholdType;
 
@@ -45,13 +50,24 @@ class BudgetNotification {
 
   factory BudgetNotification.fromMap(Map<String, dynamic> map) {
     return BudgetNotification(
-      comparisonOperator: (map['comparisonOperator'] as String).input(),
-      notificationType: (map['notificationType'] as String).input(),
-      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : (((map['subscriberEmailAddresses'] as List).cast<String>()).input()).input(),
-      subscriberSnsTopicArns: map['subscriberSnsTopicArns'] == null ? null : (((map['subscriberSnsTopicArns'] as List).cast<String>()).input()).input(),
-      threshold: (map['threshold'] as double).input(),
-      thresholdType: (map['thresholdType'] as String).input(),
+      comparisonOperator: pulumi.Input.fromValue(
+        map['comparisonOperator'] as String,
+      ),
+      notificationType: pulumi.Input.fromValue(
+        map['notificationType'] as String,
+      ),
+      subscriberEmailAddresses: (() {
+        final guardedValue = map['subscriberEmailAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subscriberSnsTopicArns: (() {
+        final guardedValue = map['subscriberSnsTopicArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
     );
   }
 }
-

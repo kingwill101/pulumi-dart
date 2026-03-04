@@ -10,14 +10,19 @@ import 'hosted_agent_deployment.dart';
 class AgentDeploymentArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// The name of the application associated with the Cognitive Services Account
   final pulumi.Input<String> appName;
+
   /// The name of the deployment associated with the Cognitive Services Account
   final pulumi.Input<String>? deploymentName;
+
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
+
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<HostedAgentDeployment> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,20 +48,33 @@ class AgentDeploymentArgs {
       'appName': appName,
       'deploymentName': ?deploymentName,
       'projectName': projectName,
-      'properties': pulumi.Input.mapInputValue<HostedAgentDeployment, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            HostedAgentDeployment,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory AgentDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return AgentDeploymentArgs(
-      accountName: (map['accountName'] as String).input(),
-      appName: (map['appName'] as String).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      properties: (HostedAgentDeployment.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      appName: pulumi.Input.fromValue(map['appName'] as String),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      properties: pulumi.Input.fromValue(
+        HostedAgentDeployment.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

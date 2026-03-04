@@ -8,20 +8,17 @@ class FolderFeedFeedOutputConfigPubsubDestination {
 
   /// Creates a new [FolderFeedFeedOutputConfigPubsubDestination].
   /// [topic] Destination on Cloud Pubsub topic.
-  FolderFeedFeedOutputConfigPubsubDestination({
-    required this.topic,
-  });
+  FolderFeedFeedOutputConfigPubsubDestination({required this.topic});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topic': topic,
-    };
+    return <String, dynamic>{'topic': topic};
   }
 
-  factory FolderFeedFeedOutputConfigPubsubDestination.fromMap(Map<String, dynamic> map) {
+  factory FolderFeedFeedOutputConfigPubsubDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FolderFeedFeedOutputConfigPubsubDestination(
-      topic: (map['topic'] as String).input(),
+      topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
-

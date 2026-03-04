@@ -9,20 +9,19 @@ class DataprocParameters {
 
   /// Creates a new [DataprocParameters].
   /// [cluster] URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
-  DataprocParameters({
-    this.cluster,
-  });
+  DataprocParameters({this.cluster});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cluster': ?cluster,
-    };
+    return <String, dynamic>{'cluster': ?cluster};
   }
 
   factory DataprocParameters.fromMap(Map<String, dynamic> map) {
     return DataprocParameters(
-      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      cluster: (() {
+        final guardedValue = map['cluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

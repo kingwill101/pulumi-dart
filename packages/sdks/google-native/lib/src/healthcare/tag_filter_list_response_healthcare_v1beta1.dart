@@ -9,20 +9,17 @@ class TagFilterListResponseHealthcareV1beta1 {
 
   /// Creates a new [TagFilterListResponseHealthcareV1beta1].
   /// [tags] Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example, "PatientID", "00100010".
-  TagFilterListResponseHealthcareV1beta1({
-    required this.tags,
-  });
+  TagFilterListResponseHealthcareV1beta1({required this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': tags,
-    };
+    return <String, dynamic>{'tags': tags};
   }
 
-  factory TagFilterListResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
+  factory TagFilterListResponseHealthcareV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TagFilterListResponseHealthcareV1beta1(
-      tags: ((map['tags'] as List).cast<String>()).input(),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
     );
   }
 }
-

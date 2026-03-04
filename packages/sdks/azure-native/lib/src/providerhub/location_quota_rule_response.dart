@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationQuotaRuleResponse {
   /// The location.
   final pulumi.Input<String>? location;
+
   /// The policy.
   final pulumi.Input<String>? policy;
+
   /// The quota id.
   final pulumi.Input<String>? quotaId;
 
@@ -14,11 +16,7 @@ class LocationQuotaRuleResponse {
   /// [location] The location.
   /// [policy] The policy.
   /// [quotaId] The quota id.
-  LocationQuotaRuleResponse({
-    this.location,
-    this.policy,
-    this.quotaId,
-  });
+  LocationQuotaRuleResponse({this.location, this.policy, this.quotaId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class LocationQuotaRuleResponse {
 
   factory LocationQuotaRuleResponse.fromMap(Map<String, dynamic> map) {
     return LocationQuotaRuleResponse(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
-      quotaId: map['quotaId'] == null ? null : (map['quotaId']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      quotaId: (() {
+        final guardedValue = map['quotaId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,32 +9,46 @@ import 'subscriber_timeouts.dart';
 class SubscriberState {
   /// The Amazon S3 or Lake Formation access type.
   final pulumi.Input<String>? accessType;
+
   /// ARN of the Data Lake.
   final pulumi.Input<String>? arn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Name (ARN) which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
   final pulumi.Input<String>? resourceShareArn;
+
   /// The name of the resource share.
   final pulumi.Input<String>? resourceShareName;
+
   /// The ARN of the IAM role to be used by the entity putting logs into your custom source partition.
   final pulumi.Input<String>? roleArn;
+
   /// The ARN for the Amazon Security Lake Amazon S3 bucket.
   final pulumi.Input<String>? s3BucketArn;
+
   /// The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
   final pulumi.Input<List<SubscriberSource>>? sources;
+
   /// The description for your subscriber account in Security Lake.
   final pulumi.Input<String>? subscriberDescription;
+
   /// The subscriber endpoint to which exception messages are posted.
   final pulumi.Input<String>? subscriberEndpoint;
+
   /// The AWS identity used to access your data. See `subscriber_identity` Block below.
   final pulumi.Input<SubscriberSubscriberIdentity>? subscriberIdentity;
+
   /// The name of your Security Lake subscriber account.
   final pulumi.Input<String>? subscriberName;
+
   /// The subscriber status of the Amazon Security Lake subscriber account.
   final pulumi.Input<String>? subscriberStatus;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<SubscriberTimeouts>? timeouts;
@@ -84,37 +98,138 @@ class SubscriberState {
       'resourceShareName': ?resourceShareName,
       'roleArn': ?roleArn,
       's3BucketArn': ?s3BucketArn,
-      'sources': ?pulumi.Input.mapOptionalInputValue<List<SubscriberSource>, List<Map<String, dynamic>>>(sources, (value) => pulumi.Input.encodeList<SubscriberSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sources':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubscriberSource>,
+            List<Map<String, dynamic>>
+          >(
+            sources,
+            (value) =>
+                pulumi.Input.encodeList<SubscriberSource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'subscriberDescription': ?subscriberDescription,
       'subscriberEndpoint': ?subscriberEndpoint,
-      'subscriberIdentity': ?pulumi.Input.mapOptionalInputValue<SubscriberSubscriberIdentity, Map<String, dynamic>>(subscriberIdentity, (value) => value.toMap()),
+      'subscriberIdentity':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubscriberSubscriberIdentity,
+            Map<String, dynamic>
+          >(subscriberIdentity, (value) => value.toMap()),
       'subscriberName': ?subscriberName,
       'subscriberStatus': ?subscriberStatus,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<SubscriberTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubscriberTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory SubscriberState.fromMap(Map<String, dynamic> map) {
     return SubscriberState(
-      accessType: map['accessType'] == null ? null : ((map['accessType'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceShareArn: map['resourceShareArn'] == null ? null : ((map['resourceShareArn'] as String).input()).input(),
-      resourceShareName: map['resourceShareName'] == null ? null : ((map['resourceShareName'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      s3BucketArn: map['s3BucketArn'] == null ? null : ((map['s3BucketArn'] as String).input()).input(),
-      sources: map['sources'] == null ? null : ((pulumi.Input.decodeList<SubscriberSource>(map['sources']!, (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      subscriberDescription: map['subscriberDescription'] == null ? null : ((map['subscriberDescription'] as String).input()).input(),
-      subscriberEndpoint: map['subscriberEndpoint'] == null ? null : ((map['subscriberEndpoint'] as String).input()).input(),
-      subscriberIdentity: map['subscriberIdentity'] == null ? null : ((SubscriberSubscriberIdentity.fromMap((map['subscriberIdentity']! as Map).cast<String, dynamic>())).input()).input(),
-      subscriberName: map['subscriberName'] == null ? null : ((map['subscriberName'] as String).input()).input(),
-      subscriberStatus: map['subscriberStatus'] == null ? null : ((map['subscriberStatus'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((SubscriberTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      accessType: (() {
+        final guardedValue = map['accessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceShareArn: (() {
+        final guardedValue = map['resourceShareArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceShareName: (() {
+        final guardedValue = map['resourceShareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3BucketArn: (() {
+        final guardedValue = map['s3BucketArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sources: (() {
+        final guardedValue = map['sources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubscriberSource>(
+            guardedValue,
+            (value) => SubscriberSource.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      subscriberDescription: (() {
+        final guardedValue = map['subscriberDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriberEndpoint: (() {
+        final guardedValue = map['subscriberEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriberIdentity: (() {
+        final guardedValue = map['subscriberIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubscriberSubscriberIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subscriberName: (() {
+        final guardedValue = map['subscriberName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriberStatus: (() {
+        final guardedValue = map['subscriberStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubscriberTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

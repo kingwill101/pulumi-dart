@@ -1,5 +1,3 @@
-library module_ackone;
-
 export 'ackone/cluster.dart';
 export 'ackone/cluster_args.dart';
 export 'ackone/cluster_network.dart';

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CompatibilityResponse {
   /// Full error message if any compatibility issues are found
   final pulumi.Input<String>? description;
+
   /// Tells if product is compatible with current device
   final pulumi.Input<bool>? isCompatible;
+
   /// List of all issues found
   final pulumi.Input<List<String>>? issues;
+
   /// Short error message if any compatibility issues are found
   final pulumi.Input<String>? message;
 
@@ -36,11 +39,26 @@ class CompatibilityResponse {
 
   factory CompatibilityResponse.fromMap(Map<String, dynamic> map) {
     return CompatibilityResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isCompatible: map['isCompatible'] == null ? null : (map['isCompatible']! as bool).input(),
-      issues: map['issues'] == null ? null : ((map['issues']! as List).cast<String>()).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isCompatible: (() {
+        final guardedValue = map['isCompatible'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      issues: (() {
+        final guardedValue = map['issues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerZoneMappingLoadBalancerAddress {
   /// The ID of the elastic network interface (ENI) used by the GWLB instance.
   final pulumi.Input<String>? eniId;
+
   /// The private IPv4 address.
   final pulumi.Input<String>? privateIpv4Address;
 
@@ -23,11 +24,20 @@ class LoadBalancerZoneMappingLoadBalancerAddress {
     };
   }
 
-  factory LoadBalancerZoneMappingLoadBalancerAddress.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerZoneMappingLoadBalancerAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerZoneMappingLoadBalancerAddress(
-      eniId: map['eniId'] == null ? null : (map['eniId']! as String).input(),
-      privateIpv4Address: map['privateIpv4Address'] == null ? null : (map['privateIpv4Address']! as String).input(),
+      eniId: (() {
+        final guardedValue = map['eniId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpv4Address: (() {
+        final guardedValue = map['privateIpv4Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

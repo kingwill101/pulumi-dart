@@ -589,16 +589,25 @@ import 'continuous_deployment_policy_traffic_config.dart';
 class ContinuousDeploymentPolicy extends pulumi.CustomResource {
   /// The continuous deployment policy ARN.
   late final pulumi.Output<String> arn;
+
   /// Whether this continuous deployment policy is enabled.
   late final pulumi.Output<bool> enabled;
+
   /// Current version of the continuous distribution policy.
   late final pulumi.Output<String> etag;
+
   /// Date and time the continuous deployment policy was last modified.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
-  late final pulumi.Output<ContinuousDeploymentPolicyStagingDistributionDnsNames> stagingDistributionDnsNames;
+  late final pulumi.Output<
+    ContinuousDeploymentPolicyStagingDistributionDnsNames
+  >
+  stagingDistributionDnsNames;
+
   /// Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
-  late final pulumi.Output<ContinuousDeploymentPolicyTrafficConfig?> trafficConfig;
+  late final pulumi.Output<ContinuousDeploymentPolicyTrafficConfig?>
+  trafficConfig;
 
   /// Creates a new [ContinuousDeploymentPolicy].
   /// [name] The Pulumi resource name.
@@ -609,17 +618,22 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
     ContinuousDeploymentPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/continuousDeploymentPolicy:ContinuousDeploymentPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String>('etag');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.stagingDistributionDnsNames = registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>('stagingDistributionDnsNames');
-    this.trafficConfig = registerOutput<ContinuousDeploymentPolicyTrafficConfig?>('trafficConfig');
+         'aws:cloudfront/continuousDeploymentPolicy:ContinuousDeploymentPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    stagingDistributionDnsNames =
+        registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>(
+          'stagingDistributionDnsNames',
+        );
+    trafficConfig = registerOutput<ContinuousDeploymentPolicyTrafficConfig?>(
+      'trafficConfig',
+    );
   }
 
   /// Gets an existing [ContinuousDeploymentPolicy] resource's state with the given [name] and [id].
@@ -640,16 +654,21 @@ class ContinuousDeploymentPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/continuousDeploymentPolicy:ContinuousDeploymentPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.enabled = registerOutput<bool>('enabled');
-    this.etag = registerOutput<String>('etag');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.stagingDistributionDnsNames = registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>('stagingDistributionDnsNames');
-    this.trafficConfig = registerOutput<ContinuousDeploymentPolicyTrafficConfig?>('trafficConfig');
+         'aws:cloudfront/continuousDeploymentPolicy:ContinuousDeploymentPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    stagingDistributionDnsNames =
+        registerOutput<ContinuousDeploymentPolicyStagingDistributionDnsNames>(
+          'stagingDistributionDnsNames',
+        );
+    trafficConfig = registerOutput<ContinuousDeploymentPolicyTrafficConfig?>(
+      'trafficConfig',
+    );
   }
 }

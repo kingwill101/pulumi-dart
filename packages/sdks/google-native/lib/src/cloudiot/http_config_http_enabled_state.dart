@@ -4,16 +4,15 @@ enum HttpConfigHttpEnabledState {
   httpEnabled("HTTP_ENABLED"),
   httpDisabled("HTTP_DISABLED");
 
-  const HttpConfigHttpEnabledState(this.value);
-  final String value;
+  const HttpConfigHttpEnabledState(this.wireValue);
+  final String wireValue;
 
   static HttpConfigHttpEnabledState fromValue(String value) {
     for (final item in HttpConfigHttpEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpConfigHttpEnabledState value: $value');
   }
 }
-

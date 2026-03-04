@@ -7,19 +7,26 @@ import 'express_route_connection_routing.dart';
 class ExpressRouteConnectionState {
   /// The authorization key to establish the Express Route Connection.
   final pulumi.Input<String>? authorizationKey;
+
   /// Is Internet security enabled for this Express Route Connection?
   final pulumi.Input<bool>? enableInternetSecurity;
+
   /// The ID of the Express Route Circuit Peering that this Express Route Connection connects with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? expressRouteCircuitPeeringId;
+
   /// Specified whether Fast Path is enabled for Virtual Wan Firewall Hub. Defaults to `false`.
   final pulumi.Input<bool>? expressRouteGatewayBypassEnabled;
+
   /// The ID of the Express Route Gateway that this Express Route Connection connects with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? expressRouteGatewayId;
+
   /// The name which should be used for this Express Route Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
   final pulumi.Input<bool>? privateLinkFastPathEnabled;
+
   /// A `routing` block as defined below.
   final pulumi.Input<ExpressRouteConnectionRouting>? routing;
+
   /// The routing weight associated to the Express Route Connection. Possible value is between `0` and `32000`. Defaults to `0`.
   final pulumi.Input<int>? routingWeight;
 
@@ -54,23 +61,66 @@ class ExpressRouteConnectionState {
       'expressRouteGatewayId': ?expressRouteGatewayId,
       'name': ?name,
       'privateLinkFastPathEnabled': ?privateLinkFastPathEnabled,
-      'routing': ?pulumi.Input.mapOptionalInputValue<ExpressRouteConnectionRouting, Map<String, dynamic>>(routing, (value) => value.toMap()),
+      'routing':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExpressRouteConnectionRouting,
+            Map<String, dynamic>
+          >(routing, (value) => value.toMap()),
       'routingWeight': ?routingWeight,
     };
   }
 
   factory ExpressRouteConnectionState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionState(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
-      expressRouteCircuitPeeringId: map['expressRouteCircuitPeeringId'] == null ? null : (map['expressRouteCircuitPeeringId']! as String).input(),
-      expressRouteGatewayBypassEnabled: map['expressRouteGatewayBypassEnabled'] == null ? null : (map['expressRouteGatewayBypassEnabled']! as bool).input(),
-      expressRouteGatewayId: map['expressRouteGatewayId'] == null ? null : (map['expressRouteGatewayId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateLinkFastPathEnabled: map['privateLinkFastPathEnabled'] == null ? null : (map['privateLinkFastPathEnabled']! as bool).input(),
-      routing: map['routing'] == null ? null : (ExpressRouteConnectionRouting.fromMap((map['routing']! as Map).cast<String, dynamic>())).input(),
-      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight']! as int).input(),
+      authorizationKey: (() {
+        final guardedValue = map['authorizationKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableInternetSecurity: (() {
+        final guardedValue = map['enableInternetSecurity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expressRouteCircuitPeeringId: (() {
+        final guardedValue = map['expressRouteCircuitPeeringId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expressRouteGatewayBypassEnabled: (() {
+        final guardedValue = map['expressRouteGatewayBypassEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expressRouteGatewayId: (() {
+        final guardedValue = map['expressRouteGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkFastPathEnabled: (() {
+        final guardedValue = map['privateLinkFastPathEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      routing: (() {
+        final guardedValue = map['routing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExpressRouteConnectionRouting.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      routingWeight: (() {
+        final guardedValue = map['routingWeight'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppAttachmentArgs {
   /// The api_id that app apply to access.
   final pulumi.Input<String> apiId;
+
   /// The app that apply to the authorization.
   final pulumi.Input<String> appId;
+
   /// The group that the api belongs to.
   final pulumi.Input<String> groupId;
+
   /// Stage that the app apply to access.
   final pulumi.Input<String> stageName;
 
@@ -39,11 +42,10 @@ class AppAttachmentArgs {
 
   factory AppAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AppAttachmentArgs(
-      apiId: (map['apiId'] as String).input(),
-      appId: (map['appId'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
-      stageName: (map['stageName'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      stageName: pulumi.Input.fromValue(map['stageName'] as String),
     );
   }
 }
-

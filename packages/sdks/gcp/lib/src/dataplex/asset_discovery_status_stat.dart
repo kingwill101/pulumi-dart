@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssetDiscoveryStatusStat {
   /// The count of data items within the referenced resource.
   final pulumi.Input<int>? dataItems;
+
   /// The number of stored data bytes within the referenced resource.
   final pulumi.Input<int>? dataSize;
+
   /// The count of fileset entities within the referenced resource.
   final pulumi.Input<int>? filesets;
+
   /// The count of table entities within the referenced resource.
   final pulumi.Input<int>? tables;
 
@@ -35,11 +38,26 @@ class AssetDiscoveryStatusStat {
 
   factory AssetDiscoveryStatusStat.fromMap(Map<String, dynamic> map) {
     return AssetDiscoveryStatusStat(
-      dataItems: map['dataItems'] == null ? null : (map['dataItems']! as int).input(),
-      dataSize: map['dataSize'] == null ? null : (map['dataSize']! as int).input(),
-      filesets: map['filesets'] == null ? null : (map['filesets']! as int).input(),
-      tables: map['tables'] == null ? null : (map['tables']! as int).input(),
+      dataItems: (() {
+        final guardedValue = map['dataItems'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dataSize: (() {
+        final guardedValue = map['dataSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      filesets: (() {
+        final guardedValue = map['filesets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tables: (() {
+        final guardedValue = map['tables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

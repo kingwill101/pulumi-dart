@@ -728,28 +728,40 @@ import 'system_data_response.dart';
 class DedicatedHsm extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Specifies the management network interfaces of the dedicated hsm.
   late final pulumi.Output<NetworkProfileResponse?> managementNetworkProfile;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the network interfaces of the dedicated hsm.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
+
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// SKU details
   late final pulumi.Output<SkuResponse> sku;
+
   /// This field will be used when RP does not support Availability zones.
   late final pulumi.Output<String?> stampId;
+
   /// Resource Status Message.
   late final pulumi.Output<String> statusMessage;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The Dedicated Hsm zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -762,23 +774,25 @@ class DedicatedHsm extends pulumi.CustomResource {
     DedicatedHsmArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hardwaresecuritymodules:DedicatedHsm',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
-    this.managementNetworkProfile = registerOutput<NetworkProfileResponse?>('managementNetworkProfile');
+         'azure-native:hardwaresecuritymodules:DedicatedHsm',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    managementNetworkProfile = registerOutput<NetworkProfileResponse?>(
+      'managementNetworkProfile',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.stampId = registerOutput<String?>('stampId');
-    this.statusMessage = registerOutput<String>('statusMessage');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zones = registerOutput<List<String>?>('zones');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku');
+    stampId = registerOutput<String?>('stampId');
+    statusMessage = registerOutput<String>('statusMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

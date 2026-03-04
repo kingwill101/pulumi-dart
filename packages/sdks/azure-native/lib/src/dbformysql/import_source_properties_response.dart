@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportSourcePropertiesResponse {
   /// Relative path of data directory in storage.
   final pulumi.Input<String>? dataDirPath;
+
   /// Storage type of import source.
   final pulumi.Input<String>? storageType;
+
   /// Uri of the import source storage.
   final pulumi.Input<String>? storageUrl;
 
@@ -31,10 +33,21 @@ class ImportSourcePropertiesResponse {
 
   factory ImportSourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportSourcePropertiesResponse(
-      dataDirPath: map['dataDirPath'] == null ? null : (map['dataDirPath']! as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
-      storageUrl: map['storageUrl'] == null ? null : (map['storageUrl']! as String).input(),
+      dataDirPath: (() {
+        final guardedValue = map['dataDirPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageUrl: (() {
+        final guardedValue = map['storageUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

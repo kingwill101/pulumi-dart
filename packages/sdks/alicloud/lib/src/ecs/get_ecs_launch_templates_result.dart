@@ -6,19 +6,24 @@ import 'get_ecs_launch_templates_template.dart';
 /// Result data returned by getEcsLaunchTemplates.
 class GetEcsLaunchTemplatesResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// The name of the Launch Template.
   final String? launchTemplateName;
   final String? nameRegex;
+
   /// A list of Launch Template names.
   final List<String> names;
   final String? outputFile;
   final String? templateResourceGroupId;
+
   /// The tags of the launch template.
-  /// > **NOTE:** Except for the fields `id`, `launch_template_id`, `launch_template_name`, `default_version_number`, `latest_version_number`, `created_by`, `modified_time`, `resource_group_id`, `template_tags`, all other fields take effect only if `enable_details` is set to `true`.
+  /// &gt; **NOTE:** Except for the fields `id`, `launch_template_id`, `launch_template_name`, `default_version_number`, `latest_version_number`, `created_by`, `modified_time`, `resource_group_id`, `template_tags`, all other fields take effect only if `enable_details` is set to `true`.
   final Map<String, String>? templateTags;
+
   /// A list of Ecs Launch Templates. Each element contains the following attributes:
   final List<GetEcsLaunchTemplatesTemplate> templates;
 
@@ -57,23 +62,55 @@ class GetEcsLaunchTemplatesResult {
       'outputFile': ?outputFile,
       'templateResourceGroupId': ?templateResourceGroupId,
       'templateTags': ?templateTags,
-      'templates': pulumi.Input.encodeList<GetEcsLaunchTemplatesTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
+      'templates':
+          pulumi.Input.encodeList<
+            GetEcsLaunchTemplatesTemplate,
+            Map<String, dynamic>
+          >(templates, (value) => value.toMap()),
     };
   }
 
   factory GetEcsLaunchTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetEcsLaunchTemplatesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      launchTemplateName: map['launchTemplateName'] == null ? null : map['launchTemplateName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      launchTemplateName: (() {
+        final guardedValue = map['launchTemplateName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      templateResourceGroupId: map['templateResourceGroupId'] == null ? null : map['templateResourceGroupId']! as String,
-      templateTags: map['templateTags'] == null ? null : (map['templateTags']! as Map).cast<String, String>(),
-      templates: pulumi.Input.decodeList<GetEcsLaunchTemplatesTemplate>(map['templates'], (value) => GetEcsLaunchTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      templateResourceGroupId: (() {
+        final guardedValue = map['templateResourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      templateTags: (() {
+        final guardedValue = map['templateTags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      templates: pulumi.Input.decodeList<GetEcsLaunchTemplatesTemplate>(
+        map['templates']!,
+        (value) => GetEcsLaunchTemplatesTemplate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

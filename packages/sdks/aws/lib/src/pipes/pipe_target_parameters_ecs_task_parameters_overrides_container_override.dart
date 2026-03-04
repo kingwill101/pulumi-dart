@@ -8,20 +8,42 @@ import 'pipe_target_parameters_ecs_task_parameters_overrides_container_override_
 class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
   /// List of commands to send to the container that overrides the default command from the Docker image or the task definition. You must also specify a container name.
   final pulumi.Input<List<String>>? commands;
+
   /// The number of cpu units reserved for the container, instead of the default value from the task definition. You must also specify a container name.
   final pulumi.Input<int>? cpu;
+
   /// A list of files containing the environment variables to pass to a container, instead of the value from the container definition. Detailed below.
-  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile>>? environmentFiles;
+  final pulumi.Input<
+    List<
+      PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile
+    >
+  >?
+  environmentFiles;
+
   /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. You must also specify a container name. Detailed below.
-  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment>>? environments;
+  final pulumi.Input<
+    List<
+      PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment
+    >
+  >?
+  environments;
+
   /// The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
   final pulumi.Input<int>? memory;
+
   /// The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition. You must also specify a container name.
   final pulumi.Input<int>? memoryReservation;
+
   /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
+
   /// The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. Detailed below.
-  final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement>>? resourceRequirements;
+  final pulumi.Input<
+    List<
+      PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement
+    >
+  >?
+  resourceRequirements;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverridesContainerOverride].
   /// [commands] List of commands to send to the container that overrides the default command from the Docker image or the task definition. You must also specify a container name.
@@ -47,26 +69,128 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
     return <String, dynamic>{
       'commands': ?commands,
       'cpu': ?cpu,
-      'environmentFiles': ?pulumi.Input.mapOptionalInputValue<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile>, List<Map<String, dynamic>>>(environmentFiles, (value) => pulumi.Input.encodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'environments': ?pulumi.Input.mapOptionalInputValue<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment>, List<Map<String, dynamic>>>(environments, (value) => pulumi.Input.encodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'environmentFiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile
+            >,
+            List<Map<String, dynamic>>
+          >(
+            environmentFiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'environments':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment
+            >,
+            List<Map<String, dynamic>>
+          >(
+            environments,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'memory': ?memory,
       'memoryReservation': ?memoryReservation,
       'name': ?name,
-      'resourceRequirements': ?pulumi.Input.mapOptionalInputValue<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement>, List<Map<String, dynamic>>>(resourceRequirements, (value) => pulumi.Input.encodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceRequirements':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement
+            >,
+            List<Map<String, dynamic>>
+          >(
+            resourceRequirements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory PipeTargetParametersEcsTaskParametersOverridesContainerOverride.fromMap(Map<String, dynamic> map) {
+  factory PipeTargetParametersEcsTaskParametersOverridesContainerOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeTargetParametersEcsTaskParametersOverridesContainerOverride(
-      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
-      cpu: map['cpu'] == null ? null : ((map['cpu'] as int).input()).input(),
-      environmentFiles: map['environmentFiles'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile>(map['environmentFiles']!, (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      environments: map['environments'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment>(map['environments']!, (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      memory: map['memory'] == null ? null : ((map['memory'] as int).input()).input(),
-      memoryReservation: map['memoryReservation'] == null ? null : ((map['memoryReservation'] as int).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement>(map['resourceRequirements']!, (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      commands: (() {
+        final guardedValue = map['commands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      environmentFiles: (() {
+        final guardedValue = map['environmentFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile
+          >(
+            guardedValue,
+            (value) =>
+                PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      environments: (() {
+        final guardedValue = map['environments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment
+          >(
+            guardedValue,
+            (value) =>
+                PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      memoryReservation: (() {
+        final guardedValue = map['memoryReservation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceRequirements: (() {
+        final guardedValue = map['resourceRequirements'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement
+          >(
+            guardedValue,
+            (value) =>
+                PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
   /// Available size in gigabytes.
   final pulumi.Input<int>? availableSizeInGb;
+
   /// Total capacity in gigabytes. Changing this forces a new Exadata Database Storage Vault to be created.
   final pulumi.Input<int> totalSizeInGb;
 
@@ -23,11 +24,16 @@ class ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
     };
   }
 
-  factory ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(Map<String, dynamic> map) {
+  factory ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage(
-      availableSizeInGb: map['availableSizeInGb'] == null ? null : (map['availableSizeInGb']! as int).input(),
-      totalSizeInGb: (map['totalSizeInGb'] as int).input(),
+      availableSizeInGb: (() {
+        final guardedValue = map['availableSizeInGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalSizeInGb: pulumi.Input.fromValue(map['totalSizeInGb'] as int),
     );
   }
 }
-

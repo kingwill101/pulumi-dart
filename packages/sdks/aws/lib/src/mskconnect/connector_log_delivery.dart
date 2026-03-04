@@ -9,20 +9,25 @@ class ConnectorLogDelivery {
 
   /// Creates a new [ConnectorLogDelivery].
   /// [workerLogDelivery] The workers can send worker logs to different destination types. This configuration specifies the details of these destinations. See `worker_log_delivery` Block for details.
-  ConnectorLogDelivery({
-    required this.workerLogDelivery,
-  });
+  ConnectorLogDelivery({required this.workerLogDelivery});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'workerLogDelivery': pulumi.Input.mapInputValue<ConnectorLogDeliveryWorkerLogDelivery, Map<String, dynamic>>(workerLogDelivery, (value) => value.toMap()),
+      'workerLogDelivery':
+          pulumi.Input.mapInputValue<
+            ConnectorLogDeliveryWorkerLogDelivery,
+            Map<String, dynamic>
+          >(workerLogDelivery, (value) => value.toMap()),
     };
   }
 
   factory ConnectorLogDelivery.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDelivery(
-      workerLogDelivery: (ConnectorLogDeliveryWorkerLogDelivery.fromMap((map['workerLogDelivery']! as Map).cast<String, dynamic>())).input(),
+      workerLogDelivery: pulumi.Input.fromValue(
+        ConnectorLogDeliveryWorkerLogDelivery.fromMap(
+          (map['workerLogDelivery']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

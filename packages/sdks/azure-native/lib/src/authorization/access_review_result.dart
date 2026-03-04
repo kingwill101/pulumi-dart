@@ -6,16 +6,15 @@ enum AccessReviewResult {
   valueDontKnow("DontKnow"),
   valueNotNotified("NotNotified");
 
-  const AccessReviewResult(this.value);
-  final String value;
+  const AccessReviewResult(this.wireValue);
+  final String wireValue;
 
   static AccessReviewResult fromValue(String value) {
     for (final item in AccessReviewResult.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessReviewResult value: $value');
   }
 }
-

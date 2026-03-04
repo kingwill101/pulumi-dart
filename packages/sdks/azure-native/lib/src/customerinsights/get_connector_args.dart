@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorArgs {
   /// The name of the connector.
   final pulumi.Input<String> connectorName;
+
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetConnectorArgs {
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      connectorName: (map['connectorName'] as String).input(),
-      hubName: (map['hubName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IncidentCommentArgs {
   /// Incident comment ID
   final pulumi.Input<String>? incidentCommentId;
+
   /// Incident ID
   final pulumi.Input<String> incidentId;
+
   /// The comment message
   final pulumi.Input<String> message;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -44,12 +48,17 @@ class IncidentCommentArgs {
 
   factory IncidentCommentArgs.fromMap(Map<String, dynamic> map) {
     return IncidentCommentArgs(
-      incidentCommentId: map['incidentCommentId'] == null ? null : (map['incidentCommentId']! as String).input(),
-      incidentId: (map['incidentId'] as String).input(),
-      message: (map['message'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      incidentCommentId: (() {
+        final guardedValue = map['incidentCommentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      incidentId: pulumi.Input.fromValue(map['incidentId'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

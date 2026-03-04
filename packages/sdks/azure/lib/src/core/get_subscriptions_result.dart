@@ -7,8 +7,10 @@ import 'get_subscriptions_subscription.dart';
 class GetSubscriptionsResult {
   final String? displayNameContains;
   final String? displayNamePrefix;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// One or more `subscription` blocks as defined below.
   final List<GetSubscriptionsSubscription> subscriptions;
 
@@ -29,17 +31,33 @@ class GetSubscriptionsResult {
       'displayNameContains': ?displayNameContains,
       'displayNamePrefix': ?displayNamePrefix,
       'id': id,
-      'subscriptions': pulumi.Input.encodeList<GetSubscriptionsSubscription, Map<String, dynamic>>(subscriptions, (value) => value.toMap()),
+      'subscriptions':
+          pulumi.Input.encodeList<
+            GetSubscriptionsSubscription,
+            Map<String, dynamic>
+          >(subscriptions, (value) => value.toMap()),
     };
   }
 
   factory GetSubscriptionsResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionsResult(
-      displayNameContains: map['displayNameContains'] == null ? null : map['displayNameContains']! as String,
-      displayNamePrefix: map['displayNamePrefix'] == null ? null : map['displayNamePrefix']! as String,
+      displayNameContains: (() {
+        final guardedValue = map['displayNameContains'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayNamePrefix: (() {
+        final guardedValue = map['displayNamePrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      subscriptions: pulumi.Input.decodeList<GetSubscriptionsSubscription>(map['subscriptions'], (value) => GetSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
+      subscriptions: pulumi.Input.decodeList<GetSubscriptionsSubscription>(
+        map['subscriptions']!,
+        (value) => GetSubscriptionsSubscription.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,20 +6,27 @@ import 'get_open_api_pricing_modules_module_value.dart';
 class GetOpenApiPricingModulesModule {
   /// Property Code.
   final pulumi.Input<String> code;
+
   /// A list of Price Module IDs.
   final pulumi.Input<String> id;
+
   /// Attribute name.
   final pulumi.Input<String> pricingModuleName;
+
   /// The product code.
   final pulumi.Input<String> productCode;
+
   /// The product type.
   final pulumi.Input<String> productType;
+
   /// Subscription type. Value:
   /// * Subscription: Prepaid.
   /// * PayAsYouGo: postpaid.
   final pulumi.Input<String> subscriptionType;
+
   /// Attribute unit.
   final pulumi.Input<String> unit;
+
   /// Property.
   final pulumi.Input<List<GetOpenApiPricingModulesModuleValue>> values;
 
@@ -52,21 +59,42 @@ class GetOpenApiPricingModulesModule {
       'productType': productType,
       'subscriptionType': subscriptionType,
       'unit': unit,
-      'values': pulumi.Input.mapInputValue<List<GetOpenApiPricingModulesModuleValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<GetOpenApiPricingModulesModuleValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'values':
+          pulumi.Input.mapInputValue<
+            List<GetOpenApiPricingModulesModuleValue>,
+            List<Map<String, dynamic>>
+          >(
+            values,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetOpenApiPricingModulesModuleValue,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetOpenApiPricingModulesModule.fromMap(Map<String, dynamic> map) {
     return GetOpenApiPricingModulesModule(
-      code: (map['code'] as String).input(),
-      id: (map['id'] as String).input(),
-      pricingModuleName: (map['pricingModuleName'] as String).input(),
-      productCode: (map['productCode'] as String).input(),
-      productType: (map['productType'] as String).input(),
-      subscriptionType: (map['subscriptionType'] as String).input(),
-      unit: (map['unit'] as String).input(),
-      values: (pulumi.Input.decodeList<GetOpenApiPricingModulesModuleValue>(map['values'], (value) => GetOpenApiPricingModulesModuleValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      pricingModuleName: pulumi.Input.fromValue(
+        map['pricingModuleName'] as String,
+      ),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
+      productType: pulumi.Input.fromValue(map['productType'] as String),
+      subscriptionType: pulumi.Input.fromValue(
+        map['subscriptionType'] as String,
+      ),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
+      values: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetOpenApiPricingModulesModuleValue>(
+          map['values']!,
+          (value) => GetOpenApiPricingModulesModuleValue.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

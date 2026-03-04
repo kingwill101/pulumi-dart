@@ -1,5 +1,3 @@
-library module_core;
-
 export 'core/custom_provider.dart';
 export 'core/custom_provider_action.dart';
 export 'core/custom_provider_args.dart';

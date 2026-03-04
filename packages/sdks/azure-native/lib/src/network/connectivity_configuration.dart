@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connectivity_configuration_args.dart';
-import 'connectivity_group_item_response.dart';
-import 'hub_response.dart';
 import 'system_data_response.dart';
 
 /// The network manager connectivity configuration resource
@@ -232,29 +230,41 @@ import 'system_data_response.dart';
 /// ```
 class ConnectivityConfiguration extends pulumi.CustomResource {
   /// Groups for configuration
-  late final pulumi.Output<List<ConnectivityGroupItemResponse>> appliesToGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> appliesToGroups;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Connectivity topology type.
   late final pulumi.Output<String> connectivityTopology;
+
   /// Flag if need to remove current existing peerings.
   late final pulumi.Output<String?> deleteExistingPeering;
+
   /// A description of the connectivity configuration.
   late final pulumi.Output<String?> description;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// List of hubItems
-  late final pulumi.Output<List<HubResponse>?> hubs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hubs;
+
   /// Flag if global mesh is supported.
   late final pulumi.Output<String?> isGlobal;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the connectivity configuration resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Unique identifier for this resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -267,23 +277,25 @@ class ConnectivityConfiguration extends pulumi.CustomResource {
     ConnectivityConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ConnectivityConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appliesToGroups = registerOutput<List<ConnectivityGroupItemResponse>>('appliesToGroups');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectivityTopology = registerOutput<String>('connectivityTopology');
-    this.deleteExistingPeering = registerOutput<String?>('deleteExistingPeering');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.hubs = registerOutput<List<HubResponse>?>('hubs');
-    this.isGlobal = registerOutput<String?>('isGlobal');
+         'azure-native:network:ConnectivityConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appliesToGroups = registerOutput<List<Map<String, dynamic>>>(
+      'appliesToGroups',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectivityTopology = registerOutput<String>('connectivityTopology');
+    deleteExistingPeering = registerOutput<String?>('deleteExistingPeering');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    hubs = registerOutput<List<Map<String, dynamic>>?>('hubs');
+    isGlobal = registerOutput<String?>('isGlobal');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkerResourceResponseComposerV1beta1 {
   /// Optional. CPU request and limit for a single Airflow worker replica.
   final pulumi.Input<double> cpu;
+
   /// Optional. Maximum number of workers for autoscaling.
   final pulumi.Input<int> maxCount;
+
   /// Optional. Memory (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double> memoryGb;
+
   /// Optional. Minimum number of workers for autoscaling.
   final pulumi.Input<int> minCount;
+
   /// Optional. Storage (GB) request and limit for a single Airflow worker replica.
   final pulumi.Input<double> storageGb;
 
@@ -39,14 +43,15 @@ class WorkerResourceResponseComposerV1beta1 {
     };
   }
 
-  factory WorkerResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WorkerResourceResponseComposerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkerResourceResponseComposerV1beta1(
-      cpu: (map['cpu'] as double).input(),
-      maxCount: (map['maxCount'] as int).input(),
-      memoryGb: (map['memoryGb'] as double).input(),
-      minCount: (map['minCount'] as int).input(),
-      storageGb: (map['storageGb'] as double).input(),
+      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      maxCount: pulumi.Input.fromValue(map['maxCount'] as int),
+      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
+      minCount: pulumi.Input.fromValue(map['minCount'] as int),
+      storageGb: pulumi.Input.fromValue(map['storageGb'] as double),
     );
   }
 }
-

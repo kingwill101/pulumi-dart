@@ -8,9 +8,9 @@ import 'service_state.dart';
 
 /// Manages an Active Directory Domain Service.
 ///
-/// > **Note:** Before using this resource, there must exist in your tenant a service principal for the Domain Services published application. This service principal cannot be easily managed by Terraform and it's recommended to create this manually, as it does not exist by default. See [official documentation](https://docs.microsoft.com/azure/active-directory-domain-services/powershell-create-instance#create-required-azure-ad-resources) for details.
+/// &gt; **Note:** Before using this resource, there must exist in your tenant a service principal for the Domain Services published application. This service principal cannot be easily managed by Terraform and it's recommended to create this manually, as it does not exist by default. See [official documentation](https://docs.microsoft.com/azure/active-directory-domain-services/powershell-create-instance#create-required-azure-ad-resources) for details.
 ///
-/// > **Note:** At present this resource only supports **User Forest** mode and _not_ **Resource Forest** mode. [Read more](https://docs.microsoft.com/azure/active-directory-domain-services/concepts-resource-forest) about the different operation modes for this service.
+/// &gt; **Note:** At present this resource only supports **User Forest** mode and _not_ **Resource Forest** mode. [Read more](https://docs.microsoft.com/azure/active-directory-domain-services/concepts-resource-forest) about the different operation modes for this service.
 ///
 /// ## Example Usage
 ///
@@ -918,7 +918,7 @@ import 'service_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.AAD` - 2021-05-01
@@ -933,31 +933,44 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// A unique ID for the managed domain deployment.
   late final pulumi.Output<String> deploymentId;
+
   /// The configuration type of this Active Directory Domain. Possible values are `FullySynced` and `ResourceTrusting`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> domainConfigurationType;
+
   /// The Active Directory domain to use. See [official documentation](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#create-a-managed-domain) for constraints and recommendations. Changing this forces a new resource to be created.
   late final pulumi.Output<String> domainName;
+
   /// Whether to enable group-based filtered sync (also called scoped synchronisation). Defaults to `false`.
   late final pulumi.Output<bool?> filteredSyncEnabled;
+
   /// An `initial_replica_set` block as defined below. The initial replica set inherits the same location as the Domain Service resource.
   late final pulumi.Output<ServiceInitialReplicaSet> initialReplicaSet;
+
   /// The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The display name for your managed Active Directory Domain Service resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `notifications` block as defined below.
   late final pulumi.Output<ServiceNotifications> notifications;
+
   /// The name of the Resource Group in which the Domain Service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Azure resource ID for the domain service.
   late final pulumi.Output<String> resourceId;
+
   /// A `secure_ldap` block as defined below.
   late final pulumi.Output<ServiceSecureLdap> secureLdap;
+
   /// A `security` block as defined below.
   late final pulumi.Output<ServiceSecurity> security;
+
   /// The SKU to use when provisioning the Domain Service resource. One of `Standard`, `Enterprise` or `Premium`.
   late final pulumi.Output<String> sku;
   late final pulumi.Output<String> syncOwner;
+
   /// A mapping of tags assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String> tenantId;
@@ -972,28 +985,32 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:domainservices/service:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.domainConfigurationType = registerOutput<String?>('domainConfigurationType');
-    this.domainName = registerOutput<String>('domainName');
-    this.filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
-    this.initialReplicaSet = registerOutput<ServiceInitialReplicaSet>('initialReplicaSet');
-    this.location = registerOutput<String>('location');
+         'azure:domainservices/service:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deploymentId = registerOutput<String>('deploymentId');
+    domainConfigurationType = registerOutput<String?>(
+      'domainConfigurationType',
+    );
+    domainName = registerOutput<String>('domainName');
+    filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
+    initialReplicaSet = registerOutput<ServiceInitialReplicaSet>(
+      'initialReplicaSet',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<ServiceNotifications>('notifications');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.secureLdap = registerOutput<ServiceSecureLdap>('secureLdap');
-    this.security = registerOutput<ServiceSecurity>('security');
-    this.sku = registerOutput<String>('sku');
-    this.syncOwner = registerOutput<String>('syncOwner');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.version = registerOutput<int>('version');
+    notifications = registerOutput<ServiceNotifications>('notifications');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceId = registerOutput<String>('resourceId');
+    secureLdap = registerOutput<ServiceSecureLdap>('secureLdap');
+    security = registerOutput<ServiceSecurity>('security');
+    sku = registerOutput<String>('sku');
+    syncOwner = registerOutput<String>('syncOwner');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    version = registerOutput<int>('version');
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -1014,27 +1031,31 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:domainservices/service:Service',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.domainConfigurationType = registerOutput<String?>('domainConfigurationType');
-    this.domainName = registerOutput<String>('domainName');
-    this.filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
-    this.initialReplicaSet = registerOutput<ServiceInitialReplicaSet>('initialReplicaSet');
-    this.location = registerOutput<String>('location');
+         'azure:domainservices/service:Service',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deploymentId = registerOutput<String>('deploymentId');
+    domainConfigurationType = registerOutput<String?>(
+      'domainConfigurationType',
+    );
+    domainName = registerOutput<String>('domainName');
+    filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
+    initialReplicaSet = registerOutput<ServiceInitialReplicaSet>(
+      'initialReplicaSet',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<ServiceNotifications>('notifications');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.secureLdap = registerOutput<ServiceSecureLdap>('secureLdap');
-    this.security = registerOutput<ServiceSecurity>('security');
-    this.sku = registerOutput<String>('sku');
-    this.syncOwner = registerOutput<String>('syncOwner');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.version = registerOutput<int>('version');
+    notifications = registerOutput<ServiceNotifications>('notifications');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceId = registerOutput<String>('resourceId');
+    secureLdap = registerOutput<ServiceSecureLdap>('secureLdap');
+    security = registerOutput<ServiceSecurity>('security');
+    sku = registerOutput<String>('sku');
+    syncOwner = registerOutput<String>('syncOwner');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    version = registerOutput<int>('version');
   }
 }

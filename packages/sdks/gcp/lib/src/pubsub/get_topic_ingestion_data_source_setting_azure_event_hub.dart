@@ -5,18 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicIngestionDataSourceSettingAzureEventHub {
   /// The Azure event hub client ID to use for ingestion.
   final pulumi.Input<String> clientId;
+
   /// The Azure event hub to ingest data from.
   final pulumi.Input<String> eventHub;
+
   /// The GCP service account to be used for Federated Identity authentication
   /// with Azure (via a 'AssumeRoleWithWebIdentity' call for the provided
   /// role).
   final pulumi.Input<String> gcpServiceAccount;
+
   /// The Azure event hub namespace to ingest data from.
   final pulumi.Input<String> namespace;
+
   /// The name of the resource group within an Azure subscription.
   final pulumi.Input<String> resourceGroup;
+
   /// The Azure event hub subscription ID to use for ingestion.
   final pulumi.Input<String> subscriptionId;
+
   /// The Azure event hub tenant ID to use for ingestion.
   final pulumi.Input<String> tenantId;
 
@@ -50,16 +56,19 @@ class GetTopicIngestionDataSourceSettingAzureEventHub {
     };
   }
 
-  factory GetTopicIngestionDataSourceSettingAzureEventHub.fromMap(Map<String, dynamic> map) {
+  factory GetTopicIngestionDataSourceSettingAzureEventHub.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTopicIngestionDataSourceSettingAzureEventHub(
-      clientId: (map['clientId'] as String).input(),
-      eventHub: (map['eventHub'] as String).input(),
-      gcpServiceAccount: (map['gcpServiceAccount'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      eventHub: pulumi.Input.fromValue(map['eventHub'] as String),
+      gcpServiceAccount: pulumi.Input.fromValue(
+        map['gcpServiceAccount'] as String,
+      ),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

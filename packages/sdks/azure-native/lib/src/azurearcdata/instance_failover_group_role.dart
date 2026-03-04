@@ -5,16 +5,15 @@ enum InstanceFailoverGroupRole {
   valueForcePrimaryAllowDataLoss("force-primary-allow-data-loss"),
   valueForceSecondary("force-secondary");
 
-  const InstanceFailoverGroupRole(this.value);
-  final String value;
+  const InstanceFailoverGroupRole(this.wireValue);
+  final String wireValue;
 
   static InstanceFailoverGroupRole fromValue(String value) {
     for (final item in InstanceFailoverGroupRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceFailoverGroupRole value: $value');
   }
 }
-

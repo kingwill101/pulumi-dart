@@ -8,20 +8,15 @@ class EnterpriseSnapshotPolicySchedule {
 
   /// Creates a new [EnterpriseSnapshotPolicySchedule].
   /// [cronExpression] CronTab expression.
-  EnterpriseSnapshotPolicySchedule({
-    required this.cronExpression,
-  });
+  EnterpriseSnapshotPolicySchedule({required this.cronExpression});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cronExpression': cronExpression,
-    };
+    return <String, dynamic>{'cronExpression': cronExpression};
   }
 
   factory EnterpriseSnapshotPolicySchedule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicySchedule(
-      cronExpression: (map['cronExpression'] as String).input(),
+      cronExpression: pulumi.Input.fromValue(map['cronExpression'] as String),
     );
   }
 }
-

@@ -14,15 +14,18 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioni
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'supportedOperations': ?supportedOperations,
-    };
+    return <String, dynamic>{'supportedOperations': ?supportedOperations};
   }
 
-  factory ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport.fromMap(Map<String, dynamic> map) {
+  factory ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport(
-      supportedOperations: map['supportedOperations'] == null ? null : (map['supportedOperations']! as String).input(),
+      supportedOperations: (() {
+        final guardedValue = map['supportedOperations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

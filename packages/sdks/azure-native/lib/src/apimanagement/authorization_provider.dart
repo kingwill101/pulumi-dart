@@ -583,14 +583,19 @@ import 'authorization_provider_oauth2_settings_response.dart';
 class AuthorizationProvider extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Authorization Provider name. Must be 1 to 300 characters long.
   late final pulumi.Output<String?> displayName;
+
   /// Identity provider name. Must be 1 to 300 characters long.
   late final pulumi.Output<String?> identityProvider;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// OAuth2 settings
   late final pulumi.Output<AuthorizationProviderOAuth2SettingsResponse?> oauth2;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -603,16 +608,18 @@ class AuthorizationProvider extends pulumi.CustomResource {
     AuthorizationProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:AuthorizationProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.displayName = registerOutput<String?>('displayName');
-    this.identityProvider = registerOutput<String?>('identityProvider');
+         'azure-native:apimanagement:AuthorizationProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
+    identityProvider = registerOutput<String?>('identityProvider');
     this.name = registerOutput<String>('name');
-    this.oauth2 = registerOutput<AuthorizationProviderOAuth2SettingsResponse?>('oauth2');
-    this.type = registerOutput<String>('type');
+    oauth2 = registerOutput<AuthorizationProviderOAuth2SettingsResponse?>(
+      'oauth2',
+    );
+    type = registerOutput<String>('type');
   }
 }

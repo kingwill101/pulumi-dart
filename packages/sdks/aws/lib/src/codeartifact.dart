@@ -1,5 +1,3 @@
-library module_codeartifact;
-
 export 'codeartifact/domain.dart';
 export 'codeartifact/domain_args.dart';
 export 'codeartifact/domain_permissions.dart';

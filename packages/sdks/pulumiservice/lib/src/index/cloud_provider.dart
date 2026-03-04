@@ -5,16 +5,15 @@ enum CloudProvider {
   valueKubernetes("kubernetes"),
   valueOci("oci");
 
-  const CloudProvider(this.value);
-  final String value;
+  const CloudProvider(this.wireValue);
+  final String wireValue;
 
   static CloudProvider fromValue(String value) {
     for (final item in CloudProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CloudProvider value: $value');
   }
 }
-

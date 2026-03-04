@@ -6,12 +6,16 @@ import 'project_capability_host_response.dart';
 class GetProjectCapabilityHostResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// [Required] Additional attributes of the entity.
   final ProjectCapabilityHostResponse projectCapabilityHostProperties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -34,7 +38,8 @@ class GetProjectCapabilityHostResult {
       'azureApiVersion': azureApiVersion,
       'id': id,
       'name': name,
-      'projectCapabilityHostProperties': projectCapabilityHostProperties.toMap(),
+      'projectCapabilityHostProperties': projectCapabilityHostProperties
+          .toMap(),
       'type': type,
     };
   }
@@ -44,9 +49,11 @@ class GetProjectCapabilityHostResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      projectCapabilityHostProperties: ProjectCapabilityHostResponse.fromMap((map['projectCapabilityHostProperties'] as Map).cast<String, dynamic>()),
+      projectCapabilityHostProperties: ProjectCapabilityHostResponse.fromMap(
+        (map['projectCapabilityHostProperties']! as Map)
+            .cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

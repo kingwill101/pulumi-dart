@@ -5,16 +5,15 @@ enum OperatorValues {
   exists("Exists"),
   doesNotExist("DoesNotExist");
 
-  const OperatorValues(this.value);
-  final String value;
+  const OperatorValues(this.wireValue);
+  final String wireValue;
 
   static OperatorValues fromValue(String value) {
     for (final item in OperatorValues.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperatorValues value: $value');
   }
 }
-

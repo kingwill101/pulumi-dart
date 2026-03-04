@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentifierResponse {
   /// Resource Id.
   final pulumi.Input<String> id;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Resource Name.
   final pulumi.Input<String> name;
+
   /// Resource type.
   final pulumi.Input<String> type;
+
   /// String representation of the identity.
   final pulumi.Input<String>? value;
 
@@ -41,12 +45,19 @@ class IdentifierResponse {
 
   factory IdentifierResponse.fromMap(Map<String, dynamic> map) {
     return IdentifierResponse(
-      id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

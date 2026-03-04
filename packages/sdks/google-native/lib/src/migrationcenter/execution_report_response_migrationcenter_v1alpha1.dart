@@ -7,11 +7,16 @@ import 'validation_report_response_migrationcenter_v1alpha1.dart';
 /// A resource that reports result of the import job execution.
 class ExecutionReportResponseMigrationcenterV1alpha1 {
   /// Validation errors encountered during the execution of the import job.
-  final pulumi.Input<ValidationReportResponseMigrationcenterV1alpha1> executionErrors;
+  final pulumi.Input<ValidationReportResponseMigrationcenterV1alpha1>
+  executionErrors;
+
   /// Total number of asset frames reported for the import job.
   final pulumi.Input<int> framesReported;
+
   /// List of job-level errors. Deprecated, use the job errors under execution_errors instead.
-  final pulumi.Input<List<ImportErrorResponseMigrationcenterV1alpha1>> jobErrors;
+  final pulumi.Input<List<ImportErrorResponseMigrationcenterV1alpha1>>
+  jobErrors;
+
   /// Total number of rows in the import job.
   final pulumi.Input<int> totalRowsCount;
 
@@ -29,20 +34,47 @@ class ExecutionReportResponseMigrationcenterV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executionErrors': pulumi.Input.mapInputValue<ValidationReportResponseMigrationcenterV1alpha1, Map<String, dynamic>>(executionErrors, (value) => value.toMap()),
+      'executionErrors':
+          pulumi.Input.mapInputValue<
+            ValidationReportResponseMigrationcenterV1alpha1,
+            Map<String, dynamic>
+          >(executionErrors, (value) => value.toMap()),
       'framesReported': framesReported,
-      'jobErrors': pulumi.Input.mapInputValue<List<ImportErrorResponseMigrationcenterV1alpha1>, List<Map<String, dynamic>>>(jobErrors, (value) => pulumi.Input.encodeList<ImportErrorResponseMigrationcenterV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'jobErrors':
+          pulumi.Input.mapInputValue<
+            List<ImportErrorResponseMigrationcenterV1alpha1>,
+            List<Map<String, dynamic>>
+          >(
+            jobErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ImportErrorResponseMigrationcenterV1alpha1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'totalRowsCount': totalRowsCount,
     };
   }
 
-  factory ExecutionReportResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ExecutionReportResponseMigrationcenterV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExecutionReportResponseMigrationcenterV1alpha1(
-      executionErrors: (ValidationReportResponseMigrationcenterV1alpha1.fromMap((map['executionErrors'] as Map).cast<String, dynamic>())).input(),
-      framesReported: (map['framesReported'] as int).input(),
-      jobErrors: (pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(map['jobErrors'], (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      totalRowsCount: (map['totalRowsCount'] as int).input(),
+      executionErrors: pulumi.Input.fromValue(
+        ValidationReportResponseMigrationcenterV1alpha1.fromMap(
+          (map['executionErrors']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      framesReported: pulumi.Input.fromValue(map['framesReported'] as int),
+      jobErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(
+          map['jobErrors']!,
+          (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      totalRowsCount: pulumi.Input.fromValue(map['totalRowsCount'] as int),
     );
   }
 }
-

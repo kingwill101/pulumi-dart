@@ -497,24 +497,33 @@ import 'preference_set_virtual_machine_preferences.dart';
 class PreferenceSet extends pulumi.CustomResource {
   /// Output only. The timestamp when the preference set was created.
   late final pulumi.Output<String> createTime;
+
   /// A description of the preference set.
   late final pulumi.Output<String?> description;
+
   /// User-friendly display name. Maximum length is 63 characters.
   late final pulumi.Output<String?> displayName;
+
   /// Part of `parent`. See documentation of `projectsId`.
   late final pulumi.Output<String> location;
+
   /// Output only. Name of the preference set.
   late final pulumi.Output<String> name;
+
   /// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
   late final pulumi.Output<String> preferenceSetId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Output only. The timestamp when the preference set was last updated.
   late final pulumi.Output<String> updateTime;
+
   /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
   /// Structure is documented below.
-  late final pulumi.Output<PreferenceSetVirtualMachinePreferences?> virtualMachinePreferences;
+  late final pulumi.Output<PreferenceSetVirtualMachinePreferences?>
+  virtualMachinePreferences;
 
   /// Creates a new [PreferenceSet].
   /// [name] The Pulumi resource name.
@@ -525,20 +534,23 @@ class PreferenceSet extends pulumi.CustomResource {
     PreferenceSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:migrationcenter/preferenceSet:PreferenceSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.location = registerOutput<String>('location');
+         'gcp:migrationcenter/preferenceSet:PreferenceSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.preferenceSetId = registerOutput<String>('preferenceSetId');
-    this.project = registerOutput<String>('project');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.virtualMachinePreferences = registerOutput<PreferenceSetVirtualMachinePreferences?>('virtualMachinePreferences');
+    preferenceSetId = registerOutput<String>('preferenceSetId');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    virtualMachinePreferences =
+        registerOutput<PreferenceSetVirtualMachinePreferences?>(
+          'virtualMachinePreferences',
+        );
   }
 
   /// Gets an existing [PreferenceSet] resource's state with the given [name] and [id].
@@ -559,19 +571,22 @@ class PreferenceSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:migrationcenter/preferenceSet:PreferenceSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.location = registerOutput<String>('location');
+         'gcp:migrationcenter/preferenceSet:PreferenceSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.preferenceSetId = registerOutput<String>('preferenceSetId');
-    this.project = registerOutput<String>('project');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.virtualMachinePreferences = registerOutput<PreferenceSetVirtualMachinePreferences?>('virtualMachinePreferences');
+    preferenceSetId = registerOutput<String>('preferenceSetId');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    virtualMachinePreferences =
+        registerOutput<PreferenceSetVirtualMachinePreferences?>(
+          'virtualMachinePreferences',
+        );
   }
 }

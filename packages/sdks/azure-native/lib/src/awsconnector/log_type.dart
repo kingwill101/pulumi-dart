@@ -6,16 +6,15 @@ enum LogType {
   controllerManager("controllerManager"),
   scheduler("scheduler");
 
-  const LogType(this.value);
-  final String value;
+  const LogType(this.wireValue);
+  final String wireValue;
 
   static LogType fromValue(String value) {
     for (final item in LogType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogType value: $value');
   }
 }
-

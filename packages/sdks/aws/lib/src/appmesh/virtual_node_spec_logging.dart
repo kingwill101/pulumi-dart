@@ -9,20 +9,29 @@ class VirtualNodeSpecLogging {
 
   /// Creates a new [VirtualNodeSpecLogging].
   /// [accessLog] Access log configuration for a virtual node.
-  VirtualNodeSpecLogging({
-    this.accessLog,
-  });
+  VirtualNodeSpecLogging({this.accessLog});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLog': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecLoggingAccessLog, Map<String, dynamic>>(accessLog, (value) => value.toMap()),
+      'accessLog':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNodeSpecLoggingAccessLog,
+            Map<String, dynamic>
+          >(accessLog, (value) => value.toMap()),
     };
   }
 
   factory VirtualNodeSpecLogging.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLogging(
-      accessLog: map['accessLog'] == null ? null : ((VirtualNodeSpecLoggingAccessLog.fromMap((map['accessLog']! as Map).cast<String, dynamic>())).input()).input(),
+      accessLog: (() {
+        final guardedValue = map['accessLog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNodeSpecLoggingAccessLog.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

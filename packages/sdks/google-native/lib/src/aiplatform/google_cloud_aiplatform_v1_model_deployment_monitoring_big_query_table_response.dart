@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse {
   /// The created BigQuery table to store logs. Customer could do their own query & analysis. Format: `bq://.model_deployment_monitoring_._`
   final pulumi.Input<String> bigqueryTablePath;
+
   /// The source of log.
   final pulumi.Input<String> logSource;
+
   /// The type of log.
   final pulumi.Input<String> logType;
 
@@ -29,12 +31,15 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse(
-      bigqueryTablePath: (map['bigqueryTablePath'] as String).input(),
-      logSource: (map['logSource'] as String).input(),
-      logType: (map['logType'] as String).input(),
+      bigqueryTablePath: pulumi.Input.fromValue(
+        map['bigqueryTablePath'] as String,
+      ),
+      logSource: pulumi.Input.fromValue(map['logSource'] as String),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

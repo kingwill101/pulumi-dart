@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSchemaArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Schema name parameter.
   final pulumi.Input<String> schemaName;
+
   /// Schema registry name parameter.
   final pulumi.Input<String> schemaRegistryName;
 
@@ -34,10 +36,13 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: (map['schemaName'] as String).input(),
-      schemaRegistryName: (map['schemaRegistryName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
+      schemaRegistryName: pulumi.Input.fromValue(
+        map['schemaRegistryName'] as String,
+      ),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum MappingRuleState {
   disabled("DISABLED"),
   deleted("DELETED");
 
-  const MappingRuleState(this.value);
-  final String value;
+  const MappingRuleState(this.wireValue);
+  final String wireValue;
 
   static MappingRuleState fromValue(String value) {
     for (final item in MappingRuleState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MappingRuleState value: $value');
   }
 }
-

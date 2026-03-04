@@ -148,20 +148,28 @@ import 'floating_ip_state.dart';
 class FloatingIp extends pulumi.CustomResource {
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   late final pulumi.Output<bool?> deleteProtection;
+
   /// Description of the Floating IP.
   late final pulumi.Output<String?> description;
+
   /// Name of home location (routing is optimized for that location). Optional if `server_id` argument is passed.
   late final pulumi.Output<String> homeLocation;
+
   /// (string) IP Address of the Floating IP.
   late final pulumi.Output<String> ipAddress;
+
   /// (string) IPv6 subnet. (Only set if `type` is `ipv6`)
   late final pulumi.Output<String> ipNetwork;
+
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Name of the Floating IP.
   late final pulumi.Output<String> name;
+
   /// Server to assign the Floating IP to. Optional if `home_location` argument is passed.
   late final pulumi.Output<int> serverId;
+
   /// Type of the Floating IP. `ipv4` `ipv6`
   late final pulumi.Output<String> type;
 
@@ -174,20 +182,20 @@ class FloatingIp extends pulumi.CustomResource {
     FloatingIpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/floatingIp:FloatingIp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.description = registerOutput<String?>('description');
-    this.homeLocation = registerOutput<String>('homeLocation');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.ipNetwork = registerOutput<String>('ipNetwork');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/floatingIp:FloatingIp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    description = registerOutput<String?>('description');
+    homeLocation = registerOutput<String>('homeLocation');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipNetwork = registerOutput<String>('ipNetwork');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<int>('serverId');
-    this.type = registerOutput<String>('type');
+    serverId = registerOutput<int>('serverId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [FloatingIp] resource's state with the given [name] and [id].
@@ -208,19 +216,19 @@ class FloatingIp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/floatingIp:FloatingIp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.description = registerOutput<String?>('description');
-    this.homeLocation = registerOutput<String>('homeLocation');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.ipNetwork = registerOutput<String>('ipNetwork');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/floatingIp:FloatingIp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    description = registerOutput<String?>('description');
+    homeLocation = registerOutput<String>('homeLocation');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipNetwork = registerOutput<String>('ipNetwork');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<int>('serverId');
-    this.type = registerOutput<String>('type');
+    serverId = registerOutput<int>('serverId');
+    type = registerOutput<String>('type');
   }
 }

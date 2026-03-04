@@ -9,18 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeystoresAliasesPkcs12Args {
   /// Alias Name
   final pulumi.Input<String> alias;
+
   /// Environment associated with the alias
   final pulumi.Input<String> environment;
+
   /// PKCS12 file content
   ///
   /// - - -
   final pulumi.Input<String> file;
+
   /// Hash of the pkcs file
   final pulumi.Input<String> filehash;
+
   /// Keystore Name
   final pulumi.Input<String> keystore;
+
   /// Organization ID associated with the alias, without organization/ prefix
   final pulumi.Input<String> orgId;
+
   /// Password for the PKCS12 file if it's encrypted
   final pulumi.Input<String>? password;
 
@@ -56,14 +62,17 @@ class KeystoresAliasesPkcs12Args {
 
   factory KeystoresAliasesPkcs12Args.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12Args(
-      alias: (map['alias'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      file: (map['file'] as String).input(),
-      filehash: (map['filehash'] as String).input(),
-      keystore: (map['keystore'] as String).input(),
-      orgId: (map['orgId'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      file: pulumi.Input.fromValue(map['file'] as String),
+      filehash: pulumi.Input.fromValue(map['filehash'] as String),
+      keystore: pulumi.Input.fromValue(map['keystore'] as String),
+      orgId: pulumi.Input.fromValue(map['orgId'] as String),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

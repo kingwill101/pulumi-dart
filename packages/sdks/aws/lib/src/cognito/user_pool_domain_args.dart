@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPoolDomainArgs {
   /// The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
   final pulumi.Input<String>? certificateArn;
+
   /// For custom domains, this is the fully-qualified domain name, such as auth.example.com. For Amazon Cognito prefix domains, this is the prefix alone, such as auth.
   final pulumi.Input<String> domain;
+
   /// A version number that indicates the state of managed login for your domain. Valid values: `1` for hosted UI (classic), `2` for the newer managed login with the branding designer.
   final pulumi.Input<int>? managedLoginVersion;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The user pool ID.
   final pulumi.Input<String> userPoolId;
 
@@ -44,12 +48,23 @@ class UserPoolDomainArgs {
 
   factory UserPoolDomainArgs.fromMap(Map<String, dynamic> map) {
     return UserPoolDomainArgs(
-      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
-      domain: (map['domain'] as String).input(),
-      managedLoginVersion: map['managedLoginVersion'] == null ? null : ((map['managedLoginVersion'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
+      certificateArn: (() {
+        final guardedValue = map['certificateArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      managedLoginVersion: (() {
+        final guardedValue = map['managedLoginVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
-

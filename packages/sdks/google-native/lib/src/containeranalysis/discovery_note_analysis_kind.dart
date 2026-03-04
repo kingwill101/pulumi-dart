@@ -14,16 +14,15 @@ enum DiscoveryNoteAnalysisKind {
   vulnerabilityAssessment("VULNERABILITY_ASSESSMENT"),
   sbomReference("SBOM_REFERENCE");
 
-  const DiscoveryNoteAnalysisKind(this.value);
-  final String value;
+  const DiscoveryNoteAnalysisKind(this.wireValue);
+  final String wireValue;
 
   static DiscoveryNoteAnalysisKind fromValue(String value) {
     for (final item in DiscoveryNoteAnalysisKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscoveryNoteAnalysisKind value: $value');
   }
 }
-

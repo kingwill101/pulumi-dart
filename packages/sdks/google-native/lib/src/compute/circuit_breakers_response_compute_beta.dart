@@ -7,14 +7,19 @@ import 'duration_response_compute_beta.dart';
 class CircuitBreakersResponseComputeBeta {
   /// The timeout for new network connections to hosts.
   final pulumi.Input<DurationResponseComputeBeta> connectTimeout;
+
   /// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int> maxConnections;
+
   /// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int> maxPendingRequests;
+
   /// The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
   final pulumi.Input<int> maxRequests;
+
   /// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int> maxRequestsPerConnection;
+
   /// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int> maxRetries;
 
@@ -36,7 +41,11 @@ class CircuitBreakersResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectTimeout': pulumi.Input.mapInputValue<DurationResponseComputeBeta, Map<String, dynamic>>(connectTimeout, (value) => value.toMap()),
+      'connectTimeout':
+          pulumi.Input.mapInputValue<
+            DurationResponseComputeBeta,
+            Map<String, dynamic>
+          >(connectTimeout, (value) => value.toMap()),
       'maxConnections': maxConnections,
       'maxPendingRequests': maxPendingRequests,
       'maxRequests': maxRequests,
@@ -47,13 +56,20 @@ class CircuitBreakersResponseComputeBeta {
 
   factory CircuitBreakersResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return CircuitBreakersResponseComputeBeta(
-      connectTimeout: (DurationResponseComputeBeta.fromMap((map['connectTimeout'] as Map).cast<String, dynamic>())).input(),
-      maxConnections: (map['maxConnections'] as int).input(),
-      maxPendingRequests: (map['maxPendingRequests'] as int).input(),
-      maxRequests: (map['maxRequests'] as int).input(),
-      maxRequestsPerConnection: (map['maxRequestsPerConnection'] as int).input(),
-      maxRetries: (map['maxRetries'] as int).input(),
+      connectTimeout: pulumi.Input.fromValue(
+        DurationResponseComputeBeta.fromMap(
+          (map['connectTimeout']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
+      maxPendingRequests: pulumi.Input.fromValue(
+        map['maxPendingRequests'] as int,
+      ),
+      maxRequests: pulumi.Input.fromValue(map['maxRequests'] as int),
+      maxRequestsPerConnection: pulumi.Input.fromValue(
+        map['maxRequestsPerConnection'] as int,
+      ),
+      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
     );
   }
 }
-

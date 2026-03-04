@@ -63,7 +63,18 @@ class GetApplicationInfosApplication {
       'approveValue': approveValue,
       'auditReason': auditReason,
       'desireValue': desireValue,
-      'dimensions': pulumi.Input.mapInputValue<List<GetApplicationInfosApplicationDimension>, List<Map<String, dynamic>>>(dimensions, (value) => pulumi.Input.encodeList<GetApplicationInfosApplicationDimension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dimensions':
+          pulumi.Input.mapInputValue<
+            List<GetApplicationInfosApplicationDimension>,
+            List<Map<String, dynamic>>
+          >(
+            dimensions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetApplicationInfosApplicationDimension,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'effectiveTime': effectiveTime,
       'expireTime': expireTime,
       'id': id,
@@ -80,23 +91,31 @@ class GetApplicationInfosApplication {
 
   factory GetApplicationInfosApplication.fromMap(Map<String, dynamic> map) {
     return GetApplicationInfosApplication(
-      applicationId: (map['applicationId'] as String).input(),
-      approveValue: (map['approveValue'] as String).input(),
-      auditReason: (map['auditReason'] as String).input(),
-      desireValue: (map['desireValue'] as double).input(),
-      dimensions: (pulumi.Input.decodeList<GetApplicationInfosApplicationDimension>(map['dimensions'], (value) => GetApplicationInfosApplicationDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      effectiveTime: (map['effectiveTime'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      noticeType: (map['noticeType'] as int).input(),
-      productCode: (map['productCode'] as String).input(),
-      quotaActionCode: (map['quotaActionCode'] as String).input(),
-      quotaDescription: (map['quotaDescription'] as String).input(),
-      quotaName: (map['quotaName'] as String).input(),
-      quotaUnit: (map['quotaUnit'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      status: (map['status'] as String).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      approveValue: pulumi.Input.fromValue(map['approveValue'] as String),
+      auditReason: pulumi.Input.fromValue(map['auditReason'] as String),
+      desireValue: pulumi.Input.fromValue(map['desireValue'] as double),
+      dimensions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetApplicationInfosApplicationDimension>(
+          map['dimensions']!,
+          (value) => GetApplicationInfosApplicationDimension.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      effectiveTime: pulumi.Input.fromValue(map['effectiveTime'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      noticeType: pulumi.Input.fromValue(map['noticeType'] as int),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
+      quotaActionCode: pulumi.Input.fromValue(map['quotaActionCode'] as String),
+      quotaDescription: pulumi.Input.fromValue(
+        map['quotaDescription'] as String,
+      ),
+      quotaName: pulumi.Input.fromValue(map['quotaName'] as String),
+      quotaUnit: pulumi.Input.fromValue(map['quotaUnit'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

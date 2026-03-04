@@ -7,10 +7,13 @@ import 'resource_reference.dart';
 class UrlSigningKeyParameters {
   /// Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
   final pulumi.Input<String> keyId;
+
   /// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
   final pulumi.Input<ResourceReference> secretSource;
+
   /// Version of the secret to be used
   final pulumi.Input<String> secretVersion;
+
   /// The type of the secret resource.
   /// Expected value is 'UrlSigningKey'.
   final pulumi.Input<String> type;
@@ -30,7 +33,11 @@ class UrlSigningKeyParameters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keyId': keyId,
-      'secretSource': pulumi.Input.mapInputValue<ResourceReference, Map<String, dynamic>>(secretSource, (value) => value.toMap()),
+      'secretSource':
+          pulumi.Input.mapInputValue<ResourceReference, Map<String, dynamic>>(
+            secretSource,
+            (value) => value.toMap(),
+          ),
       'secretVersion': secretVersion,
       'type': type,
     };
@@ -38,11 +45,14 @@ class UrlSigningKeyParameters {
 
   factory UrlSigningKeyParameters.fromMap(Map<String, dynamic> map) {
     return UrlSigningKeyParameters(
-      keyId: (map['keyId'] as String).input(),
-      secretSource: (ResourceReference.fromMap((map['secretSource'] as Map).cast<String, dynamic>())).input(),
-      secretVersion: (map['secretVersion'] as String).input(),
-      type: (map['type'] as String).input(),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      secretSource: pulumi.Input.fromValue(
+        ResourceReference.fromMap(
+          (map['secretSource']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

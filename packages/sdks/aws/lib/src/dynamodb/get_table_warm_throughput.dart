@@ -23,9 +23,12 @@ class GetTableWarmThroughput {
 
   factory GetTableWarmThroughput.fromMap(Map<String, dynamic> map) {
     return GetTableWarmThroughput(
-      readUnitsPerSecond: (map['readUnitsPerSecond'] as int).input(),
-      writeUnitsPerSecond: (map['writeUnitsPerSecond'] as int).input(),
+      readUnitsPerSecond: pulumi.Input.fromValue(
+        map['readUnitsPerSecond'] as int,
+      ),
+      writeUnitsPerSecond: pulumi.Input.fromValue(
+        map['writeUnitsPerSecond'] as int,
+      ),
     );
   }
 }
-

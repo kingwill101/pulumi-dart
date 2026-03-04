@@ -158,7 +158,7 @@ import 'lab_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevTestLab` - 2018-09-15
@@ -173,22 +173,31 @@ import 'lab_state.dart';
 class Lab extends pulumi.CustomResource {
   /// The ID of the Storage Account used for Artifact Storage.
   late final pulumi.Output<String> artifactsStorageAccountId;
+
   /// The ID of the Default Premium Storage Account for this Dev Test Lab.
   late final pulumi.Output<String> defaultPremiumStorageAccountId;
+
   /// The ID of the Default Storage Account for this Dev Test Lab.
   late final pulumi.Output<String> defaultStorageAccountId;
+
   /// The ID of the Key used for this Dev Test Lab.
   late final pulumi.Output<String> keyVaultId;
+
   /// Specifies the supported Azure location where the Dev Test Lab should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Dev Test Lab. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Storage Account used for Storage of Premium Data Disk.
   late final pulumi.Output<String> premiumDataDiskStorageAccountId;
+
   /// The name of the resource group under which the Dev Test Lab resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The unique immutable identifier of the Dev Test Lab.
   late final pulumi.Output<String> uniqueIdentifier;
 
@@ -196,34 +205,33 @@ class Lab extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lab]. {@macro pulumi_devtest_lab_lab_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lab(
-    String name, {
-    LabArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:devtest/lab:Lab',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.artifactsStorageAccountId = registerOutput<String>('artifactsStorageAccountId');
-    this.defaultPremiumStorageAccountId = registerOutput<String>('defaultPremiumStorageAccountId');
-    this.defaultStorageAccountId = registerOutput<String>('defaultStorageAccountId');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
-    this.location = registerOutput<String>('location');
+  Lab(String name, {LabArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:devtest/lab:Lab',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    artifactsStorageAccountId = registerOutput<String>(
+      'artifactsStorageAccountId',
+    );
+    defaultPremiumStorageAccountId = registerOutput<String>(
+      'defaultPremiumStorageAccountId',
+    );
+    defaultStorageAccountId = registerOutput<String>('defaultStorageAccountId');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.premiumDataDiskStorageAccountId = registerOutput<String>('premiumDataDiskStorageAccountId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    premiumDataDiskStorageAccountId = registerOutput<String>(
+      'premiumDataDiskStorageAccountId',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 
   /// Gets an existing [Lab] resource's state with the given [name] and [id].
-  static Lab get(
-    String name,
-    pulumi.Input<String> id, {
-    LabState? state,
-  }) {
+  static Lab get(String name, pulumi.Input<String> id, {LabState? state}) {
     return Lab._get(
       name,
       state: state?.toMap(),
@@ -236,20 +244,26 @@ class Lab extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devtest/lab:Lab',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.artifactsStorageAccountId = registerOutput<String>('artifactsStorageAccountId');
-    this.defaultPremiumStorageAccountId = registerOutput<String>('defaultPremiumStorageAccountId');
-    this.defaultStorageAccountId = registerOutput<String>('defaultStorageAccountId');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
-    this.location = registerOutput<String>('location');
+         'azure:devtest/lab:Lab',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    artifactsStorageAccountId = registerOutput<String>(
+      'artifactsStorageAccountId',
+    );
+    defaultPremiumStorageAccountId = registerOutput<String>(
+      'defaultPremiumStorageAccountId',
+    );
+    defaultStorageAccountId = registerOutput<String>('defaultStorageAccountId');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.premiumDataDiskStorageAccountId = registerOutput<String>('premiumDataDiskStorageAccountId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    premiumDataDiskStorageAccountId = registerOutput<String>(
+      'premiumDataDiskStorageAccountId',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }
 }

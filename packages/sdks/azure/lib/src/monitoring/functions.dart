@@ -124,7 +124,7 @@ import 'get_workspace_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2023-01-01
@@ -253,7 +253,7 @@ Future<GetActionGroupResult> getActionGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2023-03-11
@@ -382,7 +382,7 @@ Future<GetDataCollectionEndpointResult> getDataCollectionEndpoint(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2023-03-11
@@ -528,7 +528,7 @@ Future<GetDataCollectionRuleResult> getDataCollectionRule(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2021-05-01-preview
@@ -657,7 +657,7 @@ Future<GetDiagnosticCategoriesResult> getDiagnosticCategories(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2018-04-16
@@ -786,7 +786,7 @@ Future<GetScheduledQueryRulesAlertResult> getScheduledQueryRulesAlert(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2018-04-16
@@ -915,7 +915,7 @@ Future<GetScheduledQueryRulesLogResult> getScheduledQueryRulesLog(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Monitor` - 2023-04-03

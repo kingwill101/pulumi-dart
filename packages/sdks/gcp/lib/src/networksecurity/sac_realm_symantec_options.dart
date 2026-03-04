@@ -6,9 +6,11 @@ class SacRealmSymantecOptions {
   /// (Output)
   /// Symantec site IDs which the user can choose to connect to.
   final pulumi.Input<List<String>>? availableSymantecSites;
+
   /// API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
   /// A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
   final pulumi.Input<String>? secretPath;
+
   /// (Output)
   /// Connection status to Symantec API
   final pulumi.Input<String>? symantecConnectionState;
@@ -33,10 +35,21 @@ class SacRealmSymantecOptions {
 
   factory SacRealmSymantecOptions.fromMap(Map<String, dynamic> map) {
     return SacRealmSymantecOptions(
-      availableSymantecSites: map['availableSymantecSites'] == null ? null : ((map['availableSymantecSites']! as List).cast<String>()).input(),
-      secretPath: map['secretPath'] == null ? null : (map['secretPath']! as String).input(),
-      symantecConnectionState: map['symantecConnectionState'] == null ? null : (map['symantecConnectionState']! as String).input(),
+      availableSymantecSites: (() {
+        final guardedValue = map['availableSymantecSites'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      secretPath: (() {
+        final guardedValue = map['secretPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      symantecConnectionState: (() {
+        final guardedValue = map['symantecConnectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

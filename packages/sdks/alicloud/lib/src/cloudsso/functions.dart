@@ -18,9 +18,9 @@ import 'get_users_result.dart';
 
 /// This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.193.0+.
+/// &gt; **NOTE:** Available in v1.193.0+.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 ///
 /// ## Example Usage
 ///
@@ -162,9 +162,9 @@ Future<GetAccessAssignmentsResult> getAccessAssignments(
 
 /// This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 ///
 /// ## Example Usage
 ///
@@ -342,9 +342,9 @@ Future<GetAccessConfigurationsResult> getAccessConfigurations(
 
 /// This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 ///
 /// ## Example Usage
 ///
@@ -499,9 +499,9 @@ Future<GetDirectoriesResult> getDirectories(
 
 /// This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 ///
 /// ## Example Usage
 ///
@@ -679,9 +679,9 @@ Future<GetGroupsResult> getGroups(
 
 /// This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 ///
 ///
 /// ## Example Usage
@@ -826,9 +826,9 @@ Future<GetScimServerCredentialsResult> getScimServerCredentials(
 ///
 /// For information about Cloud SSO and how to use it, see [What is Cloud SSO](https://www.alibabacloud.com/help/en/doc-detail/262819.html).
 ///
-/// > **NOTE:** Available in v1.148.0+.
+/// &gt; **NOTE:** Available in v1.148.0+.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region.
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region.
 ///
 /// ## Example Usage
 ///
@@ -937,7 +937,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides Cloud Sso User Provisioning Event available to the user.[What is User Provisioning Event](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/GetUserProvisioningEvent)
 ///
-/// > **NOTE:** Available since v1.261.0.
+/// &gt; **NOTE:** Available since v1.261.0.
 ///
 /// ## Example Usage
 ///
@@ -1173,9 +1173,9 @@ Future<GetUserProvisioningEventsResult> getUserProvisioningEvents(
 
 /// This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 ///
 /// ## Example Usage
 ///

@@ -8,20 +8,17 @@ class VirtualGatewaySpecListenerTlsCertificateSds {
 
   /// Creates a new [VirtualGatewaySpecListenerTlsCertificateSds].
   /// [secretName] Name of the secret for a virtual gateway's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
-  VirtualGatewaySpecListenerTlsCertificateSds({
-    required this.secretName,
-  });
+  VirtualGatewaySpecListenerTlsCertificateSds({required this.secretName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretName': secretName,
-    };
+    return <String, dynamic>{'secretName': secretName};
   }
 
-  factory VirtualGatewaySpecListenerTlsCertificateSds.fromMap(Map<String, dynamic> map) {
+  factory VirtualGatewaySpecListenerTlsCertificateSds.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualGatewaySpecListenerTlsCertificateSds(
-      secretName: (map['secretName'] as String).input(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

@@ -153,20 +153,28 @@ import 'test_line_args.dart';
 class TestLine extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The phone number
   late final pulumi.Output<String> phoneNumber;
+
   /// Resource provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Purpose of this test line, e.g. automated or manual testing
   late final pulumi.Output<String> purpose;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,19 +187,19 @@ class TestLine extends pulumi.CustomResource {
     TestLineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:voiceservices:TestLine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:voiceservices:TestLine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.phoneNumber = registerOutput<String>('phoneNumber');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.purpose = registerOutput<String>('purpose');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    provisioningState = registerOutput<String>('provisioningState');
+    purpose = registerOutput<String>('purpose');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

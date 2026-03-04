@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'generic_service_args.dart';
 import 'generic_service_basic_service.dart';
 import 'generic_service_state.dart';
-import 'generic_service_telemetry.dart';
 
 /// A Service is a discrete, autonomous, and network-accessible unit,
 /// designed to solve an individual concern. In Cloud Monitoring,
@@ -206,20 +205,26 @@ class GenericService extends pulumi.CustomResource {
   /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
   /// Structure is documented below.
   late final pulumi.Output<GenericServiceBasicService?> basicService;
+
   /// Name used for UI elements listing this Service.
   late final pulumi.Output<String?> displayName;
+
   /// The full resource name for this service. The syntax is:
   /// projects/[PROJECT_ID]/services/[SERVICE_ID].
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// An optional service ID to use. If not given, the server will generate a
   /// service ID.
   late final pulumi.Output<String> serviceId;
+
   /// Configuration for how to query telemetry on a Service.
   /// Structure is documented below.
-  late final pulumi.Output<List<GenericServiceTelemetry>> telemetries;
+  late final pulumi.Output<List<Map<String, dynamic>>> telemetries;
+
   /// Labels which have been used to annotate the service. Label keys must start
   /// with a letter. Label keys and values may contain lowercase letters,
   /// numbers, underscores, and dashes. Label keys and values have a maximum
@@ -237,18 +242,18 @@ class GenericService extends pulumi.CustomResource {
     GenericServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/genericService:GenericService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basicService = registerOutput<GenericServiceBasicService?>('basicService');
-    this.displayName = registerOutput<String?>('displayName');
+         'gcp:monitoring/genericService:GenericService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basicService = registerOutput<GenericServiceBasicService?>('basicService');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.telemetries = registerOutput<List<GenericServiceTelemetry>>('telemetries');
-    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    telemetries = registerOutput<List<Map<String, dynamic>>>('telemetries');
+    userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 
   /// Gets an existing [GenericService] resource's state with the given [name] and [id].
@@ -269,17 +274,17 @@ class GenericService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/genericService:GenericService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basicService = registerOutput<GenericServiceBasicService?>('basicService');
-    this.displayName = registerOutput<String?>('displayName');
+         'gcp:monitoring/genericService:GenericService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basicService = registerOutput<GenericServiceBasicService?>('basicService');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.telemetries = registerOutput<List<GenericServiceTelemetry>>('telemetries');
-    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    telemetries = registerOutput<List<Map<String, dynamic>>>('telemetries');
+    userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 }

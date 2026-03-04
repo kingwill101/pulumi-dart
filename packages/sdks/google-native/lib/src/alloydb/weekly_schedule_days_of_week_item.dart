@@ -8,16 +8,15 @@ enum WeeklyScheduleDaysOfWeekItem {
   saturday("SATURDAY"),
   sunday("SUNDAY");
 
-  const WeeklyScheduleDaysOfWeekItem(this.value);
-  final String value;
+  const WeeklyScheduleDaysOfWeekItem(this.wireValue);
+  final String wireValue;
 
   static WeeklyScheduleDaysOfWeekItem fromValue(String value) {
     for (final item in WeeklyScheduleDaysOfWeekItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WeeklyScheduleDaysOfWeekItem value: $value');
   }
 }
-

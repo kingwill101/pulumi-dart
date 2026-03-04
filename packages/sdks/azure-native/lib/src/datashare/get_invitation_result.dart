@@ -6,34 +6,48 @@ import 'system_data_response.dart';
 class GetInvitationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The expiration date for the invitation and share subscription.
   final String? expirationDate;
+
   /// The resource id of the azure resource
   final String id;
+
   /// unique invitation id
   final String invitationId;
+
   /// The status of the invitation.
   final String invitationStatus;
+
   /// Name of the azure resource
   final String name;
+
   /// The time the recipient responded to the invitation.
   final String respondedAt;
+
   /// Gets the time at which the invitation was sent.
   final String sentAt;
+
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
+
   /// The target Azure AD Id. Can't be combined with email.
   final String? targetActiveDirectoryId;
+
   /// The email the invitation is directed to.
   final String? targetEmail;
+
   /// The target user or application Id that invitation is being sent to.
   /// Must be specified along TargetActiveDirectoryId. This enables sending
   /// invitations to specific users or applications in an AD tenant.
   final String? targetObjectId;
+
   /// Type of the azure resource
   final String type;
+
   /// Email of the user who created the resource
   final String userEmail;
+
   /// Name of the user who created the resource
   final String userName;
 
@@ -94,21 +108,38 @@ class GetInvitationResult {
   factory GetInvitationResult.fromMap(Map<String, dynamic> map) {
     return GetInvitationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate']! as String,
+      expirationDate: (() {
+        final guardedValue = map['expirationDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       invitationId: map['invitationId'] as String,
       invitationStatus: map['invitationStatus'] as String,
       name: map['name'] as String,
       respondedAt: map['respondedAt'] as String,
       sentAt: map['sentAt'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      targetActiveDirectoryId: map['targetActiveDirectoryId'] == null ? null : map['targetActiveDirectoryId']! as String,
-      targetEmail: map['targetEmail'] == null ? null : map['targetEmail']! as String,
-      targetObjectId: map['targetObjectId'] == null ? null : map['targetObjectId']! as String,
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      targetActiveDirectoryId: (() {
+        final guardedValue = map['targetActiveDirectoryId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      targetEmail: (() {
+        final guardedValue = map['targetEmail'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      targetObjectId: (() {
+        final guardedValue = map['targetObjectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
       userEmail: map['userEmail'] as String,
       userName: map['userName'] as String,
     );
   }
 }
-

@@ -13,16 +13,15 @@ enum ExtendedKeyUsageName {
   tLSWEBCLIENTAUTHENTICATION("TLS_WEB_CLIENT_AUTHENTICATION"),
   tLSWEBSERVERAUTHENTICATION("TLS_WEB_SERVER_AUTHENTICATION");
 
-  const ExtendedKeyUsageName(this.value);
-  final String value;
+  const ExtendedKeyUsageName(this.wireValue);
+  final String wireValue;
 
   static ExtendedKeyUsageName fromValue(String value) {
     for (final item in ExtendedKeyUsageName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExtendedKeyUsageName value: $value');
   }
 }
-

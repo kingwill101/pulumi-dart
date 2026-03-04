@@ -8,29 +8,50 @@ import 'peripherals_config.dart';
 class EnvironmentConfig {
   /// Optional. Execution configuration for a workload.
   final pulumi.Input<ExecutionConfig>? executionConfig;
+
   /// Optional. Peripherals configuration that workload has access to.
   final pulumi.Input<PeripheralsConfig>? peripheralsConfig;
 
   /// Creates a new [EnvironmentConfig].
   /// [executionConfig] Optional. Execution configuration for a workload.
   /// [peripheralsConfig] Optional. Peripherals configuration that workload has access to.
-  EnvironmentConfig({
-    this.executionConfig,
-    this.peripheralsConfig,
-  });
+  EnvironmentConfig({this.executionConfig, this.peripheralsConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executionConfig': ?pulumi.Input.mapOptionalInputValue<ExecutionConfig, Map<String, dynamic>>(executionConfig, (value) => value.toMap()),
-      'peripheralsConfig': ?pulumi.Input.mapOptionalInputValue<PeripheralsConfig, Map<String, dynamic>>(peripheralsConfig, (value) => value.toMap()),
+      'executionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecutionConfig,
+            Map<String, dynamic>
+          >(executionConfig, (value) => value.toMap()),
+      'peripheralsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PeripheralsConfig,
+            Map<String, dynamic>
+          >(peripheralsConfig, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfig(
-      executionConfig: map['executionConfig'] == null ? null : (ExecutionConfig.fromMap((map['executionConfig']! as Map).cast<String, dynamic>())).input(),
-      peripheralsConfig: map['peripheralsConfig'] == null ? null : (PeripheralsConfig.fromMap((map['peripheralsConfig']! as Map).cast<String, dynamic>())).input(),
+      executionConfig: (() {
+        final guardedValue = map['executionConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecutionConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      peripheralsConfig: (() {
+        final guardedValue = map['peripheralsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PeripheralsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

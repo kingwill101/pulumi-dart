@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceEndpointPolicyDefinitionArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the service endpoint policy definition name.
   final pulumi.Input<String> serviceEndpointPolicyDefinitionName;
+
   /// The name of the service endpoint policy name.
   final pulumi.Input<String> serviceEndpointPolicyName;
 
@@ -27,17 +29,25 @@ class GetServiceEndpointPolicyDefinitionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'resourceGroupName': resourceGroupName,
-      'serviceEndpointPolicyDefinitionName': serviceEndpointPolicyDefinitionName,
+      'serviceEndpointPolicyDefinitionName':
+          serviceEndpointPolicyDefinitionName,
       'serviceEndpointPolicyName': serviceEndpointPolicyName,
     };
   }
 
-  factory GetServiceEndpointPolicyDefinitionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetServiceEndpointPolicyDefinitionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceEndpointPolicyDefinitionArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceEndpointPolicyDefinitionName: (map['serviceEndpointPolicyDefinitionName'] as String).input(),
-      serviceEndpointPolicyName: (map['serviceEndpointPolicyName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceEndpointPolicyDefinitionName: pulumi.Input.fromValue(
+        map['serviceEndpointPolicyDefinitionName'] as String,
+      ),
+      serviceEndpointPolicyName: pulumi.Input.fromValue(
+        map['serviceEndpointPolicyName'] as String,
+      ),
     );
   }
 }
-

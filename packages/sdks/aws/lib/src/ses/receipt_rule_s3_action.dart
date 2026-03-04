@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReceiptRuleS3Action {
   /// The name of the S3 bucket
   final pulumi.Input<String> bucketName;
+
   /// The ARN of the IAM role to be used by Amazon Simple Email Service while writing to the Amazon S3 bucket, optionally encrypting your mail via the provided customer managed key, and publishing to the Amazon SNS topic
   final pulumi.Input<String>? iamRoleArn;
+
   /// The ARN of the KMS key
   final pulumi.Input<String>? kmsKeyArn;
+
   /// The key prefix of the S3 bucket
   final pulumi.Input<String>? objectKeyPrefix;
+
   /// The position of the action in the receipt rule
   final pulumi.Input<int> position;
+
   /// The ARN of an SNS topic to notify
   final pulumi.Input<String>? topicArn;
 
@@ -45,13 +50,28 @@ class ReceiptRuleS3Action {
 
   factory ReceiptRuleS3Action.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleS3Action(
-      bucketName: (map['bucketName'] as String).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
-      objectKeyPrefix: map['objectKeyPrefix'] == null ? null : ((map['objectKeyPrefix'] as String).input()).input(),
-      position: (map['position'] as int).input(),
-      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      iamRoleArn: (() {
+        final guardedValue = map['iamRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyArn: (() {
+        final guardedValue = map['kmsKeyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectKeyPrefix: (() {
+        final guardedValue = map['objectKeyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      position: pulumi.Input.fromValue(map['position'] as int),
+      topicArn: (() {
+        final guardedValue = map['topicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

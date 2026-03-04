@@ -12,15 +12,14 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ungraceful': ungraceful,
-    };
+    return <String, dynamic>{'ungraceful': ungraceful};
   }
 
-  factory PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful(
-      ungraceful: (map['ungraceful'] as String).input(),
+      ungraceful: pulumi.Input.fromValue(map['ungraceful'] as String),
     );
   }
 }
-

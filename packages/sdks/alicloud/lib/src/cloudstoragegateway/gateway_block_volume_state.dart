@@ -6,36 +6,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayBlockVolumeState {
   /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
   final pulumi.Input<String>? cacheMode;
+
   /// Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
   final pulumi.Input<bool>? chapEnabled;
+
   /// The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
   final pulumi.Input<String>? chapInPassword;
+
   /// The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
   final pulumi.Input<String>? chapInUser;
+
   /// The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
   final pulumi.Input<int>? chunkSize;
+
   /// The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
   final pulumi.Input<String>? gatewayBlockVolumeName;
+
   /// The Gateway ID.
   final pulumi.Input<String>? gatewayId;
+
   /// The ID of the index.
   final pulumi.Input<String>? indexId;
+
   /// Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
   final pulumi.Input<bool>? isSourceDeletion;
+
   /// The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
   final pulumi.Input<String>? localPath;
+
   /// The name of the OSS Bucket.
   final pulumi.Input<String>? ossBucketName;
+
   /// Whether to enable SSL access your OSS Buckets. Default value: `true`.
   final pulumi.Input<bool>? ossBucketSsl;
+
   /// The endpoint of the OSS Bucket.
   final pulumi.Input<String>? ossEndpoint;
+
   /// The Protocol. Valid values: `iSCSI`.
   final pulumi.Input<String>? protocol;
+
   /// The recovery.
   final pulumi.Input<bool>? recovery;
+
   /// The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
   final pulumi.Input<int>? size;
+
   /// The status of volume. Valid values:
   final pulumi.Input<String>? status;
 
@@ -101,24 +117,91 @@ class GatewayBlockVolumeState {
 
   factory GatewayBlockVolumeState.fromMap(Map<String, dynamic> map) {
     return GatewayBlockVolumeState(
-      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode']! as String).input(),
-      chapEnabled: map['chapEnabled'] == null ? null : (map['chapEnabled']! as bool).input(),
-      chapInPassword: map['chapInPassword'] == null ? null : (map['chapInPassword']! as String).input(),
-      chapInUser: map['chapInUser'] == null ? null : (map['chapInUser']! as String).input(),
-      chunkSize: map['chunkSize'] == null ? null : (map['chunkSize']! as int).input(),
-      gatewayBlockVolumeName: map['gatewayBlockVolumeName'] == null ? null : (map['gatewayBlockVolumeName']! as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
-      indexId: map['indexId'] == null ? null : (map['indexId']! as String).input(),
-      isSourceDeletion: map['isSourceDeletion'] == null ? null : (map['isSourceDeletion']! as bool).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
-      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName']! as String).input(),
-      ossBucketSsl: map['ossBucketSsl'] == null ? null : (map['ossBucketSsl']! as bool).input(),
-      ossEndpoint: map['ossEndpoint'] == null ? null : (map['ossEndpoint']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      recovery: map['recovery'] == null ? null : (map['recovery']! as bool).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      cacheMode: (() {
+        final guardedValue = map['cacheMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      chapEnabled: (() {
+        final guardedValue = map['chapEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      chapInPassword: (() {
+        final guardedValue = map['chapInPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      chapInUser: (() {
+        final guardedValue = map['chapInUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      chunkSize: (() {
+        final guardedValue = map['chunkSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gatewayBlockVolumeName: (() {
+        final guardedValue = map['gatewayBlockVolumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayId: (() {
+        final guardedValue = map['gatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexId: (() {
+        final guardedValue = map['indexId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isSourceDeletion: (() {
+        final guardedValue = map['isSourceDeletion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      localPath: (() {
+        final guardedValue = map['localPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ossBucketName: (() {
+        final guardedValue = map['ossBucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ossBucketSsl: (() {
+        final guardedValue = map['ossBucketSsl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ossEndpoint: (() {
+        final guardedValue = map['ossEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recovery: (() {
+        final guardedValue = map['recovery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

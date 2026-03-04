@@ -6,10 +6,15 @@ import 'agent_data_source_vector_ingestion_configuration_parsing_configuration_b
 class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration {
   /// The ARN of the model used to parse documents
   final pulumi.Input<String> modelArn;
+
   /// Specifies whether to enable parsing of multimodal data, including both text and images. Valid values: `MULTIMODAL`.
   final pulumi.Input<String>? parsingModality;
+
   /// Instructions for interpreting the contents of the document. See `parsing_prompt` block for details.
-  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt>? parsingPrompt;
+  final pulumi.Input<
+    AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt
+  >?
+  parsingPrompt;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration].
   /// [modelArn] The ARN of the model used to parse documents
@@ -25,16 +30,33 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
     return <String, dynamic>{
       'modelArn': modelArn,
       'parsingModality': ?parsingModality,
-      'parsingPrompt': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt, Map<String, dynamic>>(parsingPrompt, (value) => value.toMap()),
+      'parsingPrompt':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt,
+            Map<String, dynamic>
+          >(parsingPrompt, (value) => value.toMap()),
     };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration(
-      modelArn: (map['modelArn'] as String).input(),
-      parsingModality: map['parsingModality'] == null ? null : ((map['parsingModality'] as String).input()).input(),
-      parsingPrompt: map['parsingPrompt'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap((map['parsingPrompt']! as Map).cast<String, dynamic>())).input()).input(),
+      modelArn: pulumi.Input.fromValue(map['modelArn'] as String),
+      parsingModality: (() {
+        final guardedValue = map['parsingModality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parsingPrompt: (() {
+        final guardedValue = map['parsingPrompt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

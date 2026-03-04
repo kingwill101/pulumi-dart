@@ -10,15 +10,19 @@ class TraceScopeArgs {
   /// Describes this trace scope.
   /// The maximum length of the description is 8000 characters.
   final pulumi.Input<String>? description;
+
   /// GCP region the TraceScope is stored in. Only `global` is supported.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Names of the projects that are included in this trace scope.
   /// *  `projects/[PROJECT_ID]`
   /// A trace scope can include a maximum of 20 projects.
   final pulumi.Input<List<String>> resourceNames;
+
   /// A client-assigned identifier for the trace scope.
   final pulumi.Input<String> traceScopeId;
 
@@ -48,12 +52,21 @@ class TraceScopeArgs {
 
   factory TraceScopeArgs.fromMap(Map<String, dynamic> map) {
     return TraceScopeArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      resourceNames: ((map['resourceNames'] as List).cast<String>()).input(),
-      traceScopeId: (map['traceScopeId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceNames: pulumi.Input.fromValue(
+        (map['resourceNames'] as List).cast<String>(),
+      ),
+      traceScopeId: pulumi.Input.fromValue(map['traceScopeId'] as String),
     );
   }
 }
-

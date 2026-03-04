@@ -4,7 +4,7 @@ import 'group_policy_attachment_state.dart';
 
 /// Attaches a Managed IAM Policy to an IAM group
 ///
-/// > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
+/// &gt; **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
 ///
 /// ## Example Usage
 ///
@@ -173,6 +173,7 @@ import 'group_policy_attachment_state.dart';
 class GroupPolicyAttachment extends pulumi.CustomResource {
   /// The group the policy should be applied to
   late final pulumi.Output<String> group;
+
   /// The ARN of the policy you want to apply
   late final pulumi.Output<String> policyArn;
 
@@ -185,13 +186,13 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     GroupPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String>('group');
-    this.policyArn = registerOutput<String>('policyArn');
+         'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String>('group');
+    policyArn = registerOutput<String>('policyArn');
   }
 
   /// Gets an existing [GroupPolicyAttachment] resource's state with the given [name] and [id].
@@ -212,12 +213,12 @@ class GroupPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String>('group');
-    this.policyArn = registerOutput<String>('policyArn');
+         'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String>('group');
+    policyArn = registerOutput<String>('policyArn');
   }
 }

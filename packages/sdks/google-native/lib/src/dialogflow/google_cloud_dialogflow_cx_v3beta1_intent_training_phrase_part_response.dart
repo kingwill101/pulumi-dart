@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse {
   /// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
   final pulumi.Input<String> parameterId;
+
   /// The text for this part.
   final pulumi.Input<String> text;
 
@@ -18,17 +19,15 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parameterId': parameterId,
-      'text': text,
-    };
+    return <String, dynamic>{'parameterId': parameterId, 'text': text};
   }
 
-  factory GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse(
-      parameterId: (map['parameterId'] as String).input(),
-      text: (map['text'] as String).input(),
+      parameterId: pulumi.Input.fromValue(map['parameterId'] as String),
+      text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
-

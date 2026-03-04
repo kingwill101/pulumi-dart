@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountAvailabilitiesAvailability {
   /// A set of services which are available for the given region.
   final pulumi.Input<List<String>> availables;
+
   /// The region this availability entry refers to.
   final pulumi.Input<String> region;
+
   /// A set of services that are unavailable for the given region.
   final pulumi.Input<List<String>> unavailables;
 
@@ -28,12 +30,17 @@ class GetAccountAvailabilitiesAvailability {
     };
   }
 
-  factory GetAccountAvailabilitiesAvailability.fromMap(Map<String, dynamic> map) {
+  factory GetAccountAvailabilitiesAvailability.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccountAvailabilitiesAvailability(
-      availables: ((map['availables'] as List).cast<String>()).input(),
-      region: (map['region'] as String).input(),
-      unavailables: ((map['unavailables'] as List).cast<String>()).input(),
+      availables: pulumi.Input.fromValue(
+        (map['availables'] as List).cast<String>(),
+      ),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      unavailables: pulumi.Input.fromValue(
+        (map['unavailables'] as List).cast<String>(),
+      ),
     );
   }
 }
-

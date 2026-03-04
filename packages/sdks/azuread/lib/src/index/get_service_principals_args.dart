@@ -9,15 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServicePrincipalsArgs {
   /// A list of client IDs of the applications associated with the service principals.
   final pulumi.Input<List<String>>? clientIds;
+
   /// A list of display names of the applications associated with the service principals.
   final pulumi.Input<List<String>>? displayNames;
+
   /// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
   final pulumi.Input<bool>? ignoreMissing;
+
   /// The object IDs of the service principals.
   final pulumi.Input<List<String>>? objectIds;
+
   /// When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
   ///
-  /// > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+  /// &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
   final pulumi.Input<bool>? returnAll;
 
   /// Creates a new [GetServicePrincipalsArgs].
@@ -46,12 +50,31 @@ class GetServicePrincipalsArgs {
 
   factory GetServicePrincipalsArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalsArgs(
-      clientIds: map['clientIds'] == null ? null : ((map['clientIds']! as List).cast<String>()).input(),
-      displayNames: map['displayNames'] == null ? null : ((map['displayNames']! as List).cast<String>()).input(),
-      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing']! as bool).input(),
-      objectIds: map['objectIds'] == null ? null : ((map['objectIds']! as List).cast<String>()).input(),
-      returnAll: map['returnAll'] == null ? null : (map['returnAll']! as bool).input(),
+      clientIds: (() {
+        final guardedValue = map['clientIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      displayNames: (() {
+        final guardedValue = map['displayNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ignoreMissing: (() {
+        final guardedValue = map['ignoreMissing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      objectIds: (() {
+        final guardedValue = map['objectIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      returnAll: (() {
+        final guardedValue = map['returnAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

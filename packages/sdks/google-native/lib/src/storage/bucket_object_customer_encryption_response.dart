@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketObjectCustomerEncryptionResponse {
   /// The encryption algorithm.
   final pulumi.Input<String> encryptionAlgorithm;
+
   /// SHA256 hash value of the encryption key.
   final pulumi.Input<String> keySha256;
 
@@ -24,11 +25,14 @@ class BucketObjectCustomerEncryptionResponse {
     };
   }
 
-  factory BucketObjectCustomerEncryptionResponse.fromMap(Map<String, dynamic> map) {
+  factory BucketObjectCustomerEncryptionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketObjectCustomerEncryptionResponse(
-      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
-      keySha256: (map['keySha256'] as String).input(),
+      encryptionAlgorithm: pulumi.Input.fromValue(
+        map['encryptionAlgorithm'] as String,
+      ),
+      keySha256: pulumi.Input.fromValue(map['keySha256'] as String),
     );
   }
 }
-

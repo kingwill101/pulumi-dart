@@ -4,16 +4,17 @@ enum BillingAccountSinkOutputVersionFormat {
   v2("V2"),
   v1("V1");
 
-  const BillingAccountSinkOutputVersionFormat(this.value);
-  final String value;
+  const BillingAccountSinkOutputVersionFormat(this.wireValue);
+  final String wireValue;
 
   static BillingAccountSinkOutputVersionFormat fromValue(String value) {
     for (final item in BillingAccountSinkOutputVersionFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BillingAccountSinkOutputVersionFormat value: $value');
+    throw ArgumentError(
+      'Unknown BillingAccountSinkOutputVersionFormat value: $value',
+    );
   }
 }
-

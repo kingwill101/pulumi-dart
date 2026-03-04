@@ -4,16 +4,15 @@ enum CustomerTransitState {
   combinedTransit("CombinedTransit"),
   transitOnly("TransitOnly");
 
-  const CustomerTransitState(this.value);
-  final String value;
+  const CustomerTransitState(this.wireValue);
+  final String wireValue;
 
   static CustomerTransitState fromValue(String value) {
     for (final item in CustomerTransitState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CustomerTransitState value: $value');
   }
 }
-

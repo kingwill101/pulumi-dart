@@ -8,20 +8,28 @@ import 'report_schedule_response.dart';
 class GetReportByDepartmentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Has definition for the report.
   final ReportDefinitionResponse definition;
+
   /// Has delivery information for the report.
   final ReportDeliveryInfoResponse deliveryInfo;
+
   /// The format of the report being delivered.
   final String? format;
+
   /// Resource Id.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Has schedule information for the report.
   final ReportScheduleResponse? schedule;
+
   /// Resource tags.
   final Map<String, String> tags;
+
   /// Resource type.
   final String type;
 
@@ -55,7 +63,7 @@ class GetReportByDepartmentResult {
       'format': ?format,
       'id': id,
       'name': name,
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'schedule': ?schedule?.toMap(),
       'tags': tags,
       'type': type,
     };
@@ -64,15 +72,28 @@ class GetReportByDepartmentResult {
   factory GetReportByDepartmentResult.fromMap(Map<String, dynamic> map) {
     return GetReportByDepartmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      definition: ReportDefinitionResponse.fromMap((map['definition'] as Map).cast<String, dynamic>()),
-      deliveryInfo: ReportDeliveryInfoResponse.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>()),
-      format: map['format'] == null ? null : map['format']! as String,
+      definition: ReportDefinitionResponse.fromMap(
+        (map['definition']! as Map).cast<String, dynamic>(),
+      ),
+      deliveryInfo: ReportDeliveryInfoResponse.fromMap(
+        (map['deliveryInfo']! as Map).cast<String, dynamic>(),
+      ),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      schedule: map['schedule'] == null ? null : ReportScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return ReportScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }
 }
-

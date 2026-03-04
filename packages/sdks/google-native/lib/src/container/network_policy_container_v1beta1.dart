@@ -7,29 +7,42 @@ import 'network_policy_provider_container_v1beta1.dart';
 class NetworkPolicyContainerV1beta1 {
   /// Whether network policy is enabled on the cluster.
   final pulumi.Input<bool>? enabled;
+
   /// The selected network policy provider.
   final pulumi.Input<NetworkPolicyProviderContainerV1beta1>? provider;
 
   /// Creates a new [NetworkPolicyContainerV1beta1].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider.
-  NetworkPolicyContainerV1beta1({
-    this.enabled,
-    this.provider,
-  });
+  NetworkPolicyContainerV1beta1({this.enabled, this.provider});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'provider': ?pulumi.Input.mapOptionalInputValue<NetworkPolicyProviderContainerV1beta1, String>(provider, (value) => value.value),
+      'provider':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkPolicyProviderContainerV1beta1,
+            String
+          >(provider, (value) => value.wireValue),
     };
   }
 
   factory NetworkPolicyContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      provider: map['provider'] == null ? null : (NetworkPolicyProviderContainerV1beta1.fromValue(map['provider']! as String)).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      provider: (() {
+        final guardedValue = map['provider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkPolicyProviderContainerV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

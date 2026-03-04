@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CostComponentResponse {
   /// The textual description of the component.
   final pulumi.Input<String>? description;
+
   /// Gets the name of the component.
   final pulumi.Input<String> name;
+
   /// The value of the component.
   final pulumi.Input<double>? value;
 
@@ -15,11 +17,7 @@ class CostComponentResponse {
   /// [description] The textual description of the component.
   /// [name] Gets the name of the component.
   /// [value] The value of the component.
-  CostComponentResponse({
-    this.description,
-    required this.name,
-    this.value,
-  });
+  CostComponentResponse({this.description, required this.name, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class CostComponentResponse {
 
   factory CostComponentResponse.fromMap(Map<String, dynamic> map) {
     return CostComponentResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as double).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

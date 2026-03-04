@@ -3,16 +3,15 @@
 enum ComponentName {
   valueMicrosoftWindowsShellSetup("Microsoft-Windows-Shell-Setup");
 
-  const ComponentName(this.value);
-  final String value;
+  const ComponentName(this.wireValue);
+  final String wireValue;
 
   static ComponentName fromValue(String value) {
     for (final item in ComponentName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComponentName value: $value');
   }
 }
-

@@ -236,10 +236,10 @@ import 'aws_eu_sovereign_integrations_xray.dart';
 ///
 /// ## Supported AWS EU Sovereign Integrations
 ///
-/// > **NOTE:** CloudWatch Metric Streams is the only supported method for AWS EU Sovereign Cloud. The following three integrations are for services **not supported by CloudWatch Metric Streams** and must be configured via API Polling using this resource.
+/// &gt; **NOTE:** CloudWatch Metric Streams is the only supported method for AWS EU Sovereign Cloud. The following three integrations are for services **not supported by CloudWatch Metric Streams** and must be configured via API Polling using this resource.
 ///
-/// <details>
-/// <summary>Expand this section to view all supported AWS EU Sovereign services that may be integrated via this resource.</summary>
+/// &lt;details&gt;
+/// &lt;summary&gt;Expand this section to view all supported AWS EU Sovereign services that may be integrated via this resource.&lt;/summary&gt;
 ///
 /// | Block                  | Description                   |
 /// |------------------------|-------------------------------|
@@ -247,7 +247,7 @@ import 'aws_eu_sovereign_integrations_xray.dart';
 /// | `cloudtrail`           | CloudTrail Integration        |
 /// | `x_ray`                | X-Ray Integration             |
 ///
-/// </details>
+/// &lt;/details&gt;
 ///
 /// ## Additional Examples
 ///
@@ -430,12 +430,16 @@ import 'aws_eu_sovereign_integrations_xray.dart';
 class AwsEuSovereignIntegrations extends pulumi.CustomResource {
   /// The New Relic account ID to operate on. This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
+
   /// Billing integration
   late final pulumi.Output<AwsEuSovereignIntegrationsBilling?> billing;
+
   /// CloudTrail integration
   late final pulumi.Output<AwsEuSovereignIntegrationsCloudtrail?> cloudtrail;
+
   /// The ID of the linked AWS EU Sovereign account in New Relic.
   late final pulumi.Output<String> linkedAccountId;
+
   /// X-Ray integration
   late final pulumi.Output<AwsEuSovereignIntegrationsXRay?> xRay;
 
@@ -448,16 +452,18 @@ class AwsEuSovereignIntegrations extends pulumi.CustomResource {
     AwsEuSovereignIntegrationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsEuSovereignIntegrations:AwsEuSovereignIntegrations',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.billing = registerOutput<AwsEuSovereignIntegrationsBilling?>('billing');
-    this.cloudtrail = registerOutput<AwsEuSovereignIntegrationsCloudtrail?>('cloudtrail');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>('xRay');
+         'newrelic:cloud/awsEuSovereignIntegrations:AwsEuSovereignIntegrations',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    billing = registerOutput<AwsEuSovereignIntegrationsBilling?>('billing');
+    cloudtrail = registerOutput<AwsEuSovereignIntegrationsCloudtrail?>(
+      'cloudtrail',
+    );
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>('xRay');
   }
 
   /// Gets an existing [AwsEuSovereignIntegrations] resource's state with the given [name] and [id].
@@ -478,15 +484,17 @@ class AwsEuSovereignIntegrations extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/awsEuSovereignIntegrations:AwsEuSovereignIntegrations',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.billing = registerOutput<AwsEuSovereignIntegrationsBilling?>('billing');
-    this.cloudtrail = registerOutput<AwsEuSovereignIntegrationsCloudtrail?>('cloudtrail');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>('xRay');
+         'newrelic:cloud/awsEuSovereignIntegrations:AwsEuSovereignIntegrations',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    billing = registerOutput<AwsEuSovereignIntegrationsBilling?>('billing');
+    cloudtrail = registerOutput<AwsEuSovereignIntegrationsCloudtrail?>(
+      'cloudtrail',
+    );
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    xRay = registerOutput<AwsEuSovereignIntegrationsXRay?>('xRay');
   }
 }

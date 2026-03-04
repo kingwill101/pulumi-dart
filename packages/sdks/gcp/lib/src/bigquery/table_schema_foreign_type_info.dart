@@ -9,20 +9,15 @@ class TableSchemaForeignTypeInfo {
 
   /// Creates a new [TableSchemaForeignTypeInfo].
   /// [typeSystem] Specifies the system which defines the foreign data
-  TableSchemaForeignTypeInfo({
-    required this.typeSystem,
-  });
+  TableSchemaForeignTypeInfo({required this.typeSystem});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'typeSystem': typeSystem,
-    };
+    return <String, dynamic>{'typeSystem': typeSystem};
   }
 
   factory TableSchemaForeignTypeInfo.fromMap(Map<String, dynamic> map) {
     return TableSchemaForeignTypeInfo(
-      typeSystem: (map['typeSystem'] as String).input(),
+      typeSystem: pulumi.Input.fromValue(map['typeSystem'] as String),
     );
   }
 }
-

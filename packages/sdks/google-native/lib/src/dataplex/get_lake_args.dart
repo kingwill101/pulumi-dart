@@ -15,11 +15,7 @@ class GetLakeArgs {
   /// [lakeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetLakeArgs({
-    required this.lakeId,
-    required this.location,
-    this.project,
-  });
+  GetLakeArgs({required this.lakeId, required this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetLakeArgs {
 
   factory GetLakeArgs.fromMap(Map<String, dynamic> map) {
     return GetLakeArgs(
-      lakeId: (map['lakeId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      lakeId: pulumi.Input.fromValue(map['lakeId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

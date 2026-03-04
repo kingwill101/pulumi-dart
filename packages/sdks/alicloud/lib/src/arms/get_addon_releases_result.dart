@@ -7,13 +7,16 @@ import 'get_addon_releases_release.dart';
 class GetAddonReleasesResult {
   /// The environment ID.
   final String environmentId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of ARMS Addon Release names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of ARMS Addon Releases. Each element contains the following attributes:
   final List<GetAddonReleasesRelease> releases;
 
@@ -43,7 +46,11 @@ class GetAddonReleasesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'releases': pulumi.Input.encodeList<GetAddonReleasesRelease, Map<String, dynamic>>(releases, (value) => value.toMap()),
+      'releases':
+          pulumi.Input.encodeList<
+            GetAddonReleasesRelease,
+            Map<String, dynamic>
+          >(releases, (value) => value.toMap()),
     };
   }
 
@@ -52,11 +59,23 @@ class GetAddonReleasesResult {
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      releases: pulumi.Input.decodeList<GetAddonReleasesRelease>(map['releases'], (value) => GetAddonReleasesRelease.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      releases: pulumi.Input.decodeList<GetAddonReleasesRelease>(
+        map['releases']!,
+        (value) => GetAddonReleasesRelease.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

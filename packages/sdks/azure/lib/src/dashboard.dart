@@ -1,5 +1,3 @@
-library module_dashboard;
-
 export 'dashboard/azurerm_portal_dashboard_args.dart';
 export 'dashboard/azurerm_portal_dashboard_result.dart';
 export 'dashboard/functions.dart';

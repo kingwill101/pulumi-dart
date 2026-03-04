@@ -6,7 +6,7 @@ import 'instance_member_state.dart';
 ///
 /// For information about Cloud Firewall Instance Member and how to use it, see [What is Instance Member](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/developer-reference/api-cloudfw-2017-12-07-addinstancemembers).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -201,16 +201,21 @@ import 'instance_member_state.dart';
 /// $ pulumi import alicloud:cloudfirewall/instanceMember:InstanceMember example <id>
 /// ```
 class InstanceMember extends pulumi.CustomResource {
-  /// When the cloud firewall member account was added.> use second-level timestamp format.
+  /// When the cloud firewall member account was added.&gt; use second-level timestamp format.
   late final pulumi.Output<int> createTime;
+
   /// Remarks of cloud firewall member accounts.
   late final pulumi.Output<String?> memberDesc;
+
   /// The name of the cloud firewall member account.
   late final pulumi.Output<String> memberDisplayName;
+
   /// The UID of the cloud firewall member account.
   late final pulumi.Output<String> memberUid;
-  /// The last modification time of the cloud firewall member account.> use second-level timestamp format.
+
+  /// The last modification time of the cloud firewall member account.&gt; use second-level timestamp format.
   late final pulumi.Output<int> modifyTime;
+
   /// The resource attribute field that represents the resource status.
   late final pulumi.Output<String> status;
 
@@ -223,17 +228,17 @@ class InstanceMember extends pulumi.CustomResource {
     InstanceMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/instanceMember:InstanceMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.memberDesc = registerOutput<String?>('memberDesc');
-    this.memberDisplayName = registerOutput<String>('memberDisplayName');
-    this.memberUid = registerOutput<String>('memberUid');
-    this.modifyTime = registerOutput<int>('modifyTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:cloudfirewall/instanceMember:InstanceMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    memberDesc = registerOutput<String?>('memberDesc');
+    memberDisplayName = registerOutput<String>('memberDisplayName');
+    memberUid = registerOutput<String>('memberUid');
+    modifyTime = registerOutput<int>('modifyTime');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [InstanceMember] resource's state with the given [name] and [id].
@@ -254,16 +259,16 @@ class InstanceMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/instanceMember:InstanceMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.memberDesc = registerOutput<String?>('memberDesc');
-    this.memberDisplayName = registerOutput<String>('memberDisplayName');
-    this.memberUid = registerOutput<String>('memberUid');
-    this.modifyTime = registerOutput<int>('modifyTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:cloudfirewall/instanceMember:InstanceMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    memberDesc = registerOutput<String?>('memberDesc');
+    memberDisplayName = registerOutput<String>('memberDisplayName');
+    memberUid = registerOutput<String>('memberUid');
+    modifyTime = registerOutput<int>('modifyTime');
+    status = registerOutput<String>('status');
   }
 }

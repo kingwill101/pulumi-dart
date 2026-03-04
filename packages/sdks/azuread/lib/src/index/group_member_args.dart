@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupMemberArgs {
   /// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
   final pulumi.Input<String> groupObjectId;
+
   /// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   final pulumi.Input<String> memberObjectId;
 
   /// Creates a new [GroupMemberArgs].
   /// [groupObjectId] The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
   /// [memberObjectId] The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-  GroupMemberArgs({
-    required this.groupObjectId,
-    required this.memberObjectId,
-  });
+  GroupMemberArgs({required this.groupObjectId, required this.memberObjectId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class GroupMemberArgs {
 
   factory GroupMemberArgs.fromMap(Map<String, dynamic> map) {
     return GroupMemberArgs(
-      groupObjectId: (map['groupObjectId'] as String).input(),
-      memberObjectId: (map['memberObjectId'] as String).input(),
+      groupObjectId: pulumi.Input.fromValue(map['groupObjectId'] as String),
+      memberObjectId: pulumi.Input.fromValue(map['memberObjectId'] as String),
     );
   }
 }
-

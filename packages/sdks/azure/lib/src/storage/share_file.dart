@@ -4,7 +4,7 @@ import 'share_file_state.dart';
 
 /// Manages a File within an Azure Storage File Share.
 ///
-/// > **Note:** When using Azure Active Directory Authentication (i.e. setting the provider property `storage_use_azuread = true`), the principal running Terraform must have the *Storage File Data Privileged Contributor* IAM role assigned. The *Storage File Data SMB Share Contributor* does not have sufficient permissions to create files. Refer to [official documentation](https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-file-service-operations) for more details.
+/// &gt; **Note:** When using Azure Active Directory Authentication (i.e. setting the provider property `storage_use_azuread = true`), the principal running Terraform must have the *Storage File Data Privileged Contributor* IAM role assigned. The *Storage File Data SMB Share Contributor* does not have sufficient permissions to create files. Refer to [official documentation](https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-file-service-operations) for more details.
 ///
 /// ## Example Usage
 ///
@@ -242,27 +242,36 @@ import 'share_file_state.dart';
 class ShareFile extends pulumi.CustomResource {
   /// Sets the file’s Content-Disposition header.
   late final pulumi.Output<String?> contentDisposition;
+
   /// Specifies which content encodings have been applied to the file.
   late final pulumi.Output<String?> contentEncoding;
+
   /// The length in bytes of the file content
   late final pulumi.Output<int> contentLength;
+
   /// The MD5 sum of the file contents. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This property is intended to be used with the Terraform internal filemd5 and md5 functions when `source` is defined.
+  /// &gt; **Note:** This property is intended to be used with the Terraform internal filemd5 and md5 functions when `source` is defined.
   late final pulumi.Output<String?> contentMd5;
+
   /// The content type of the share file. Defaults to `application/octet-stream`.
   late final pulumi.Output<String?> contentType;
+
   /// A mapping of metadata to assign to this file.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name (or path) of the File that should be created within this File Share. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The storage share directory that you would like the file placed into. Changing this forces a new resource to be created. Defaults to `""`.
   late final pulumi.Output<String?> path;
+
   /// An absolute path to a file on the local system. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The file specified with `source` can not be empty.
+  /// &gt; **Note:** The file specified with `source` can not be empty.
   late final pulumi.Output<String?> source;
   late final pulumi.Output<String> storageShareId;
+
   /// The Storage Share URL in which this file will be placed into. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageShareUrl;
 
@@ -275,22 +284,22 @@ class ShareFile extends pulumi.CustomResource {
     ShareFileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/shareFile:ShareFile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contentDisposition = registerOutput<String?>('contentDisposition');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.contentLength = registerOutput<int>('contentLength');
-    this.contentMd5 = registerOutput<String?>('contentMd5');
-    this.contentType = registerOutput<String?>('contentType');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:storage/shareFile:ShareFile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLength = registerOutput<int>('contentLength');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String?>('contentType');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String?>('path');
-    this.source = registerOutput<String?>('source');
-    this.storageShareId = registerOutput<String>('storageShareId');
-    this.storageShareUrl = registerOutput<String>('storageShareUrl');
+    path = registerOutput<String?>('path');
+    source = registerOutput<String?>('source');
+    storageShareId = registerOutput<String>('storageShareId');
+    storageShareUrl = registerOutput<String>('storageShareUrl');
   }
 
   /// Gets an existing [ShareFile] resource's state with the given [name] and [id].
@@ -311,21 +320,21 @@ class ShareFile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/shareFile:ShareFile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contentDisposition = registerOutput<String?>('contentDisposition');
-    this.contentEncoding = registerOutput<String?>('contentEncoding');
-    this.contentLength = registerOutput<int>('contentLength');
-    this.contentMd5 = registerOutput<String?>('contentMd5');
-    this.contentType = registerOutput<String?>('contentType');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure:storage/shareFile:ShareFile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLength = registerOutput<int>('contentLength');
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String?>('contentType');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String?>('path');
-    this.source = registerOutput<String?>('source');
-    this.storageShareId = registerOutput<String>('storageShareId');
-    this.storageShareUrl = registerOutput<String>('storageShareUrl');
+    path = registerOutput<String?>('path');
+    source = registerOutput<String?>('source');
+    storageShareId = registerOutput<String>('storageShareId');
+    storageShareUrl = registerOutput<String>('storageShareUrl');
   }
 }

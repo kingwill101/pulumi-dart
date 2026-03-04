@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PluginActionsConfig {
   /// The description of the operation performed by the action.
   final pulumi.Input<String> description;
+
   /// The display name of the action.
   final pulumi.Input<String> displayName;
+
   /// The id of the action.
   final pulumi.Input<String> id;
+
   /// The trigger mode supported by the action.
   /// Possible values:
   /// TRIGGER_MODE_UNSPECIFIED
@@ -40,11 +43,10 @@ class PluginActionsConfig {
 
   factory PluginActionsConfig.fromMap(Map<String, dynamic> map) {
     return PluginActionsConfig(
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      id: (map['id'] as String).input(),
-      triggerMode: (map['triggerMode'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      triggerMode: pulumi.Input.fromValue(map['triggerMode'] as String),
     );
   }
 }
-

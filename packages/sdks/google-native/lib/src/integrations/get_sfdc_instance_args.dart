@@ -35,11 +35,14 @@ class GetSfdcInstanceArgs {
 
   factory GetSfdcInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetSfdcInstanceArgs(
-      location: (map['location'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sfdcInstanceId: (map['sfdcInstanceId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sfdcInstanceId: pulumi.Input.fromValue(map['sfdcInstanceId'] as String),
     );
   }
 }
-

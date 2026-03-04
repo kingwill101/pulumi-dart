@@ -590,26 +590,38 @@ import 'vendor_skus_args.dart';
 class VendorSkus extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The sku deployment mode.
   late final pulumi.Output<String?> deploymentMode;
+
   /// The parameters for the managed application to be supplied by the vendor.
   late final pulumi.Output<dynamic> managedApplicationParameters;
+
   /// The template for the managed application deployment.
   late final pulumi.Output<dynamic> managedApplicationTemplate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The template definition of the network function.
-  late final pulumi.Output<NetworkFunctionTemplateResponse?> networkFunctionTemplate;
+  late final pulumi.Output<NetworkFunctionTemplateResponse?>
+  networkFunctionTemplate;
+
   /// The network function type.
   late final pulumi.Output<String?> networkFunctionType;
+
   /// Indicates if the vendor sku is in preview mode.
   late final pulumi.Output<bool?> preview;
+
   /// The provisioning state of the vendor sku sub resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The sku type.
   late final pulumi.Output<String?> skuType;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -622,22 +634,28 @@ class VendorSkus extends pulumi.CustomResource {
     VendorSkusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridnetwork:VendorSkus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deploymentMode = registerOutput<String?>('deploymentMode');
-    this.managedApplicationParameters = registerOutput<dynamic>('managedApplicationParameters');
-    this.managedApplicationTemplate = registerOutput<dynamic>('managedApplicationTemplate');
+         'azure-native:hybridnetwork:VendorSkus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentMode = registerOutput<String?>('deploymentMode');
+    managedApplicationParameters = registerOutput<dynamic>(
+      'managedApplicationParameters',
+    );
+    managedApplicationTemplate = registerOutput<dynamic>(
+      'managedApplicationTemplate',
+    );
     this.name = registerOutput<String>('name');
-    this.networkFunctionTemplate = registerOutput<NetworkFunctionTemplateResponse?>('networkFunctionTemplate');
-    this.networkFunctionType = registerOutput<String?>('networkFunctionType');
-    this.preview = registerOutput<bool?>('preview');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.skuType = registerOutput<String?>('skuType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    networkFunctionTemplate = registerOutput<NetworkFunctionTemplateResponse?>(
+      'networkFunctionTemplate',
+    );
+    networkFunctionType = registerOutput<String?>('networkFunctionType');
+    preview = registerOutput<bool?>('preview');
+    provisioningState = registerOutput<String>('provisioningState');
+    skuType = registerOutput<String?>('skuType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

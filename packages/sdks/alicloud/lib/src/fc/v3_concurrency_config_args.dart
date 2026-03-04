@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V3ConcurrencyConfigArgs {
   /// Function Name
   final pulumi.Input<String> functionName;
+
   /// Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
   final pulumi.Input<int>? reservedConcurrency;
 
@@ -29,9 +30,12 @@ class V3ConcurrencyConfigArgs {
 
   factory V3ConcurrencyConfigArgs.fromMap(Map<String, dynamic> map) {
     return V3ConcurrencyConfigArgs(
-      functionName: (map['functionName'] as String).input(),
-      reservedConcurrency: map['reservedConcurrency'] == null ? null : (map['reservedConcurrency']! as int).input(),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
+      reservedConcurrency: (() {
+        final guardedValue = map['reservedConcurrency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagValueArgs {
   /// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
   final pulumi.Input<String>? description;
+
   /// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
   final pulumi.Input<String>? etag;
+
   /// Immutable. Resource name for TagValue in the format `tagValues/456`.
   final pulumi.Input<String>? name;
+
   /// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
   final pulumi.Input<String>? parent;
+
   /// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
   final pulumi.Input<String> shortName;
 
@@ -44,12 +48,27 @@ class TagValueArgs {
 
   factory TagValueArgs.fromMap(Map<String, dynamic> map) {
     return TagValueArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      shortName: (map['shortName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shortName: pulumi.Input.fromValue(map['shortName'] as String),
     );
   }
 }
-

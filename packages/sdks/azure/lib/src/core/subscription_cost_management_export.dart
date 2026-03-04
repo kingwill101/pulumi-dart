@@ -315,7 +315,7 @@ import 'subscription_cost_management_export_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CostManagement` - 2023-08-01
@@ -330,20 +330,32 @@ import 'subscription_cost_management_export_state.dart';
 class SubscriptionCostManagementExport extends pulumi.CustomResource {
   /// Is the cost management export active? Default is `true`.
   late final pulumi.Output<bool?> active;
+
   /// A `export_data_options` block as defined below.
-  late final pulumi.Output<SubscriptionCostManagementExportExportDataOptions> exportDataOptions;
+  late final pulumi.Output<SubscriptionCostManagementExportExportDataOptions>
+  exportDataOptions;
+
   /// A `export_data_storage_location` block as defined below.
-  late final pulumi.Output<SubscriptionCostManagementExportExportDataStorageLocation> exportDataStorageLocation;
+  late final pulumi.Output<
+    SubscriptionCostManagementExportExportDataStorageLocation
+  >
+  exportDataStorageLocation;
+
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
   late final pulumi.Output<String?> fileFormat;
+
   /// Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The date the export will stop capturing information.
   late final pulumi.Output<String> recurrencePeriodEndDate;
+
   /// The date the export will start capturing information.
   late final pulumi.Output<String> recurrencePeriodStartDate;
+
   /// How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
   late final pulumi.Output<String> recurrenceType;
+
   /// The id of the subscription on which to create an export. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -356,20 +368,28 @@ class SubscriptionCostManagementExport extends pulumi.CustomResource {
     SubscriptionCostManagementExportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/subscriptionCostManagementExport:SubscriptionCostManagementExport',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool?>('active');
-    this.exportDataOptions = registerOutput<SubscriptionCostManagementExportExportDataOptions>('exportDataOptions');
-    this.exportDataStorageLocation = registerOutput<SubscriptionCostManagementExportExportDataStorageLocation>('exportDataStorageLocation');
-    this.fileFormat = registerOutput<String?>('fileFormat');
+         'azure:core/subscriptionCostManagementExport:SubscriptionCostManagementExport',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool?>('active');
+    exportDataOptions =
+        registerOutput<SubscriptionCostManagementExportExportDataOptions>(
+          'exportDataOptions',
+        );
+    exportDataStorageLocation =
+        registerOutput<
+          SubscriptionCostManagementExportExportDataStorageLocation
+        >('exportDataStorageLocation');
+    fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');
-    this.recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
-    this.recurrencePeriodStartDate = registerOutput<String>('recurrencePeriodStartDate');
-    this.recurrenceType = registerOutput<String>('recurrenceType');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
+    recurrencePeriodStartDate = registerOutput<String>(
+      'recurrencePeriodStartDate',
+    );
+    recurrenceType = registerOutput<String>('recurrenceType');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 
   /// Gets an existing [SubscriptionCostManagementExport] resource's state with the given [name] and [id].
@@ -390,19 +410,27 @@ class SubscriptionCostManagementExport extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/subscriptionCostManagementExport:SubscriptionCostManagementExport',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool?>('active');
-    this.exportDataOptions = registerOutput<SubscriptionCostManagementExportExportDataOptions>('exportDataOptions');
-    this.exportDataStorageLocation = registerOutput<SubscriptionCostManagementExportExportDataStorageLocation>('exportDataStorageLocation');
-    this.fileFormat = registerOutput<String?>('fileFormat');
+         'azure:core/subscriptionCostManagementExport:SubscriptionCostManagementExport',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool?>('active');
+    exportDataOptions =
+        registerOutput<SubscriptionCostManagementExportExportDataOptions>(
+          'exportDataOptions',
+        );
+    exportDataStorageLocation =
+        registerOutput<
+          SubscriptionCostManagementExportExportDataStorageLocation
+        >('exportDataStorageLocation');
+    fileFormat = registerOutput<String?>('fileFormat');
     this.name = registerOutput<String>('name');
-    this.recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
-    this.recurrencePeriodStartDate = registerOutput<String>('recurrencePeriodStartDate');
-    this.recurrenceType = registerOutput<String>('recurrenceType');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
+    recurrencePeriodStartDate = registerOutput<String>(
+      'recurrencePeriodStartDate',
+    );
+    recurrenceType = registerOutput<String>('recurrenceType');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

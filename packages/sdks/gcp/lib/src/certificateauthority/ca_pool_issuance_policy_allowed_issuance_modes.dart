@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaPoolIssuancePolicyAllowedIssuanceModes {
   /// When true, allows callers to create Certificates by specifying a CertificateConfig.
   final pulumi.Input<bool> allowConfigBasedIssuance;
+
   /// When true, allows callers to create Certificates by specifying a CSR.
   final pulumi.Input<bool> allowCsrBasedIssuance;
 
@@ -23,11 +24,16 @@ class CaPoolIssuancePolicyAllowedIssuanceModes {
     };
   }
 
-  factory CaPoolIssuancePolicyAllowedIssuanceModes.fromMap(Map<String, dynamic> map) {
+  factory CaPoolIssuancePolicyAllowedIssuanceModes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CaPoolIssuancePolicyAllowedIssuanceModes(
-      allowConfigBasedIssuance: (map['allowConfigBasedIssuance'] as bool).input(),
-      allowCsrBasedIssuance: (map['allowCsrBasedIssuance'] as bool).input(),
+      allowConfigBasedIssuance: pulumi.Input.fromValue(
+        map['allowConfigBasedIssuance'] as bool,
+      ),
+      allowCsrBasedIssuance: pulumi.Input.fromValue(
+        map['allowCsrBasedIssuance'] as bool,
+      ),
     );
   }
 }
-

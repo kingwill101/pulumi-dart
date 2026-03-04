@@ -5,16 +5,15 @@ enum PurgeableOrchestrationState {
   terminated("Terminated"),
   canceled("Canceled");
 
-  const PurgeableOrchestrationState(this.value);
-  final String value;
+  const PurgeableOrchestrationState(this.wireValue);
+  final String wireValue;
 
   static PurgeableOrchestrationState fromValue(String value) {
     for (final item in PurgeableOrchestrationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PurgeableOrchestrationState value: $value');
   }
 }
-

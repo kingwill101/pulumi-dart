@@ -8,20 +8,17 @@ class GoogleCloudAiplatformV1FeatureViewSyncConfigResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1FeatureViewSyncConfigResponse].
   /// [cron] Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
-  GoogleCloudAiplatformV1FeatureViewSyncConfigResponse({
-    required this.cron,
-  });
+  GoogleCloudAiplatformV1FeatureViewSyncConfigResponse({required this.cron});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cron': cron,
-    };
+    return <String, dynamic>{'cron': cron};
   }
 
-  factory GoogleCloudAiplatformV1FeatureViewSyncConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1FeatureViewSyncConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1FeatureViewSyncConfigResponse(
-      cron: (map['cron'] as String).input(),
+      cron: pulumi.Input.fromValue(map['cron'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum WorkloadDeploymentType {
   valueIISAKSWorkloadDeployment("IISAKSWorkloadDeployment"),
   valueApacheTomcatAKSWorkloadDeployment("ApacheTomcatAKSWorkloadDeployment");
 
-  const WorkloadDeploymentType(this.value);
-  final String value;
+  const WorkloadDeploymentType(this.wireValue);
+  final String wireValue;
 
   static WorkloadDeploymentType fromValue(String value) {
     for (final item in WorkloadDeploymentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkloadDeploymentType value: $value');
   }
 }
-

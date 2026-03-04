@@ -1,5 +1,3 @@
-library module_cloudfirewall;
-
 export 'cloudfirewall/address_book.dart';
 export 'cloudfirewall/address_book_args.dart';
 export 'cloudfirewall/address_book_ecs_tag.dart';

@@ -11,10 +11,13 @@ import 'custom_domain_route_config.dart';
 class CustomDomainArgs {
   /// The configuration of HTTPS certificate.See `cert_config` below.
   final pulumi.Input<CustomDomainCertConfig>? certConfig;
+
   /// The custom domain name. For example, "example.com".
   final pulumi.Input<String> domainName;
+
   /// The protocol, `HTTP` or `HTTP,HTTPS`.
   final pulumi.Input<String> protocol;
+
   /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
   final pulumi.Input<List<CustomDomainRouteConfig>>? routeConfigs;
 
@@ -32,20 +35,53 @@ class CustomDomainArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certConfig': ?pulumi.Input.mapOptionalInputValue<CustomDomainCertConfig, Map<String, dynamic>>(certConfig, (value) => value.toMap()),
+      'certConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomDomainCertConfig,
+            Map<String, dynamic>
+          >(certConfig, (value) => value.toMap()),
       'domainName': domainName,
       'protocol': protocol,
-      'routeConfigs': ?pulumi.Input.mapOptionalInputValue<List<CustomDomainRouteConfig>, List<Map<String, dynamic>>>(routeConfigs, (value) => pulumi.Input.encodeList<CustomDomainRouteConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CustomDomainRouteConfig>,
+            List<Map<String, dynamic>>
+          >(
+            routeConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CustomDomainRouteConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig']! as Map).cast<String, dynamic>())).input(),
-      domainName: (map['domainName'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs']!, (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certConfig: (() {
+        final guardedValue = map['certConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomDomainCertConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      routeConfigs: (() {
+        final guardedValue = map['routeConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CustomDomainRouteConfig>(
+            guardedValue,
+            (value) => CustomDomainRouteConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

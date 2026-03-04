@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExperimentPlanArgs {
   /// Additional operating parameters. You can include information about the specified node.
   final pulumi.Input<Map<String, String>>? externalParams;
+
   /// Indicates the name of the experiment plan, which is used to distinguish different experiment plans.
   final pulumi.Input<String>? planName;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The ID of the resource.
   final pulumi.Input<int> resourceId;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the template.
   final pulumi.Input<int> templateId;
 
@@ -49,13 +54,32 @@ class ExperimentPlanArgs {
 
   factory ExperimentPlanArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanArgs(
-      externalParams: map['externalParams'] == null ? null : ((map['externalParams']! as Map).cast<String, String>()).input(),
-      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      resourceId: (map['resourceId'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      templateId: (map['templateId'] as int).input(),
+      externalParams: (() {
+        final guardedValue = map['externalParams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      planName: (() {
+        final guardedValue = map['planName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as int),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      templateId: pulumi.Input.fromValue(map['templateId'] as int),
     );
   }
 }
-

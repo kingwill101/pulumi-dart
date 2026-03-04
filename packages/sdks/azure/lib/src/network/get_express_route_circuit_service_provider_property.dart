@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRouteCircuitServiceProviderProperty {
   /// The bandwidth in Mbps of the ExpressRoute circuit.
   final pulumi.Input<int> bandwidthInMbps;
+
   /// The name of the peering location and **not** the Azure resource location.
   final pulumi.Input<String> peeringLocation;
+
   /// The name of the ExpressRoute Service Provider.
   final pulumi.Input<String> serviceProviderName;
 
@@ -28,12 +30,15 @@ class GetExpressRouteCircuitServiceProviderProperty {
     };
   }
 
-  factory GetExpressRouteCircuitServiceProviderProperty.fromMap(Map<String, dynamic> map) {
+  factory GetExpressRouteCircuitServiceProviderProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExpressRouteCircuitServiceProviderProperty(
-      bandwidthInMbps: (map['bandwidthInMbps'] as int).input(),
-      peeringLocation: (map['peeringLocation'] as String).input(),
-      serviceProviderName: (map['serviceProviderName'] as String).input(),
+      bandwidthInMbps: pulumi.Input.fromValue(map['bandwidthInMbps'] as int),
+      peeringLocation: pulumi.Input.fromValue(map['peeringLocation'] as String),
+      serviceProviderName: pulumi.Input.fromValue(
+        map['serviceProviderName'] as String,
+      ),
     );
   }
 }
-

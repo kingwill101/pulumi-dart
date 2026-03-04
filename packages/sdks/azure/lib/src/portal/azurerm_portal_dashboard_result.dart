@@ -1,17 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by azurermPortalDashboard.
 class AzurermPortalDashboardResult {
   /// JSON data representing dashboard body.
   final String dashboardProperties;
   final String? displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Azure Region where the shared Azure Portal dashboard exists.
   final String location;
   final String? name;
   final String resourceGroupName;
+
   /// A mapping of tags assigned to the shared Azure Portal dashboard.
   final Map<String, String> tags;
 
@@ -48,13 +50,20 @@ class AzurermPortalDashboardResult {
   factory AzurermPortalDashboardResult.fromMap(Map<String, dynamic> map) {
     return AzurermPortalDashboardResult(
       dashboardProperties: map['dashboardProperties'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       resourceGroupName: map['resourceGroupName'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

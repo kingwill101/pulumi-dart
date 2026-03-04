@@ -6,7 +6,7 @@ import 'state_configuration_state.dart';
 ///
 /// For information about OOS State Configuration and how to use it, see [What is State Configuration](https://www.alibabacloud.com/help/en/doc-detail/208728.html).
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 ///
 /// ## Example Usage
 ///
@@ -199,22 +199,31 @@ import 'state_configuration_state.dart';
 class StateConfiguration extends pulumi.CustomResource {
   /// Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
   late final pulumi.Output<String> configureMode;
+
   /// The description of the resource.
   late final pulumi.Output<String?> description;
+
   /// The parameter of the Template. This field is in the format of JSON strings. For detailed definition instructions, please refer to [Metadata types that are supported by a configuration list](https://www.alibabacloud.com/help/en/doc-detail/208276.html).
   late final pulumi.Output<String?> parameters;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Timing expression.
   late final pulumi.Output<String> scheduleExpression;
+
   /// Timing type. Valid values: `rate`.
   late final pulumi.Output<String> scheduleType;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
   late final pulumi.Output<String> targets;
+
   /// The name of the template.
   late final pulumi.Output<String> templateName;
+
   /// The version number. If you do not specify this parameter, the system uses the latest version.
   late final pulumi.Output<String> templateVersion;
 
@@ -227,21 +236,21 @@ class StateConfiguration extends pulumi.CustomResource {
     StateConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/stateConfiguration:StateConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configureMode = registerOutput<String>('configureMode');
-    this.description = registerOutput<String?>('description');
-    this.parameters = registerOutput<String?>('parameters');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scheduleExpression = registerOutput<String>('scheduleExpression');
-    this.scheduleType = registerOutput<String>('scheduleType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targets = registerOutput<String>('targets');
-    this.templateName = registerOutput<String>('templateName');
-    this.templateVersion = registerOutput<String>('templateVersion');
+         'alicloud:oos/stateConfiguration:StateConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configureMode = registerOutput<String>('configureMode');
+    description = registerOutput<String?>('description');
+    parameters = registerOutput<String?>('parameters');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scheduleExpression = registerOutput<String>('scheduleExpression');
+    scheduleType = registerOutput<String>('scheduleType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targets = registerOutput<String>('targets');
+    templateName = registerOutput<String>('templateName');
+    templateVersion = registerOutput<String>('templateVersion');
   }
 
   /// Gets an existing [StateConfiguration] resource's state with the given [name] and [id].
@@ -262,20 +271,20 @@ class StateConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/stateConfiguration:StateConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configureMode = registerOutput<String>('configureMode');
-    this.description = registerOutput<String?>('description');
-    this.parameters = registerOutput<String?>('parameters');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scheduleExpression = registerOutput<String>('scheduleExpression');
-    this.scheduleType = registerOutput<String>('scheduleType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targets = registerOutput<String>('targets');
-    this.templateName = registerOutput<String>('templateName');
-    this.templateVersion = registerOutput<String>('templateVersion');
+         'alicloud:oos/stateConfiguration:StateConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configureMode = registerOutput<String>('configureMode');
+    description = registerOutput<String?>('description');
+    parameters = registerOutput<String?>('parameters');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scheduleExpression = registerOutput<String>('scheduleExpression');
+    scheduleType = registerOutput<String>('scheduleType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targets = registerOutput<String>('targets');
+    templateName = registerOutput<String>('templateName');
+    templateVersion = registerOutput<String>('templateVersion');
   }
 }

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HeaderCloudtasksV2beta2 {
   /// The key of the header.
   final pulumi.Input<String>? key;
+
   /// The value of the header.
   final pulumi.Input<String>? value;
 
   /// Creates a new [HeaderCloudtasksV2beta2].
   /// [key] The key of the header.
   /// [value] The value of the header.
-  HeaderCloudtasksV2beta2({
-    this.key,
-    this.value,
-  });
+  HeaderCloudtasksV2beta2({this.key, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'value': ?value};
   }
 
   factory HeaderCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return HeaderCloudtasksV2beta2(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

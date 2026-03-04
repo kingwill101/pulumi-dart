@@ -9,20 +9,21 @@ class VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork {
 
   /// Creates a new [VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork].
   /// [id] The Id of the remote virtual network.
-  VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork({
-    this.id,
-  });
+  VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

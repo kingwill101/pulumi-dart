@@ -10,20 +10,31 @@ class GoogleCloudContentwarehouseV1RequestMetadata {
 
   /// Creates a new [GoogleCloudContentwarehouseV1RequestMetadata].
   /// [userInfo] Provides user unique identification and groups information.
-  GoogleCloudContentwarehouseV1RequestMetadata({
-    this.userInfo,
-  });
+  GoogleCloudContentwarehouseV1RequestMetadata({this.userInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userInfo': ?pulumi.Input.mapOptionalInputValue<GoogleCloudContentwarehouseV1UserInfo, Map<String, dynamic>>(userInfo, (value) => value.toMap()),
+      'userInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudContentwarehouseV1UserInfo,
+            Map<String, dynamic>
+          >(userInfo, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudContentwarehouseV1RequestMetadata.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1RequestMetadata.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1RequestMetadata(
-      userInfo: map['userInfo'] == null ? null : (GoogleCloudContentwarehouseV1UserInfo.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
+      userInfo: (() {
+        final guardedValue = map['userInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudContentwarehouseV1UserInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,16 +6,22 @@ import 'job_schedule_response.dart';
 class GetJobResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// User-defined description of the job.
   final String? description;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Schedule properties of the job.
   final JobScheduleResponse? schedule;
+
   /// Resource type.
   final String type;
+
   /// The job version number.
   final int version;
 
@@ -43,7 +49,7 @@ class GetJobResult {
       'description': ?description,
       'id': id,
       'name': name,
-      'schedule': ?schedule == null ? null : schedule!.toMap(),
+      'schedule': ?schedule?.toMap(),
       'type': type,
       'version': version,
     };
@@ -52,13 +58,22 @@ class GetJobResult {
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      schedule: map['schedule'] == null ? null : JobScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return JobScheduleResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
       version: map['version'] as int,
     );
   }
 }
-

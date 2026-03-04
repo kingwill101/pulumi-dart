@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerDnsAliasArgs {
   /// The name of the server dns alias.
   final pulumi.Input<String> dnsAliasName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server that the alias is pointing to.
   final pulumi.Input<String> serverName;
 
@@ -34,10 +36,11 @@ class GetServerDnsAliasArgs {
 
   factory GetServerDnsAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetServerDnsAliasArgs(
-      dnsAliasName: (map['dnsAliasName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      dnsAliasName: pulumi.Input.fromValue(map['dnsAliasName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

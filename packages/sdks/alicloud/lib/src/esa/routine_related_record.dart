@@ -8,7 +8,7 @@ import 'routine_related_record_state.dart';
 ///
 /// For information about ESA Routine Related Record and how to use it, see [What is Routine Related Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRelatedRecord).
 ///
-/// > **NOTE:** Available since v1.265.0.
+/// &gt; **NOTE:** Available since v1.265.0.
 ///
 /// ## Example Usage
 ///
@@ -208,10 +208,13 @@ import 'routine_related_record_state.dart';
 class RoutineRelatedRecord extends pulumi.CustomResource {
   /// The routine name.
   late final pulumi.Output<String> name;
+
   /// The record ID.
   late final pulumi.Output<int> recordId;
+
   /// The record name.
   late final pulumi.Output<String> recordName;
+
   /// The website ID.
   late final pulumi.Output<String> siteId;
 
@@ -224,15 +227,15 @@ class RoutineRelatedRecord extends pulumi.CustomResource {
     RoutineRelatedRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recordId = registerOutput<int>('recordId');
-    this.recordName = registerOutput<String>('recordName');
-    this.siteId = registerOutput<String>('siteId');
+    recordId = registerOutput<int>('recordId');
+    recordName = registerOutput<String>('recordName');
+    siteId = registerOutput<String>('siteId');
   }
 
   /// Gets an existing [RoutineRelatedRecord] resource's state with the given [name] and [id].
@@ -253,14 +256,14 @@ class RoutineRelatedRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recordId = registerOutput<int>('recordId');
-    this.recordName = registerOutput<String>('recordName');
-    this.siteId = registerOutput<String>('siteId');
+    recordId = registerOutput<int>('recordId');
+    recordName = registerOutput<String>('recordName');
+    siteId = registerOutput<String>('siteId');
   }
 }

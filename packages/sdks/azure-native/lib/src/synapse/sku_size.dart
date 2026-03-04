@@ -5,16 +5,15 @@ enum SkuSize {
   valueMedium("Medium"),
   valueLarge("Large");
 
-  const SkuSize(this.value);
-  final String value;
+  const SkuSize(this.wireValue);
+  final String wireValue;
 
   static SkuSize fromValue(String value) {
     for (final item in SkuSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuSize value: $value');
   }
 }
-

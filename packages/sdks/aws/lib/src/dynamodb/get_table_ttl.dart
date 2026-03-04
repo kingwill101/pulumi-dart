@@ -9,10 +9,7 @@ class GetTableTtl {
   /// Creates a new [GetTableTtl].
   /// [attributeName] Required.
   /// [enabled] Required.
-  GetTableTtl({
-    required this.attributeName,
-    required this.enabled,
-  });
+  GetTableTtl({required this.attributeName, required this.enabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,8 @@ class GetTableTtl {
 
   factory GetTableTtl.fromMap(Map<String, dynamic> map) {
     return GetTableTtl(
-      attributeName: (map['attributeName'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
+      attributeName: pulumi.Input.fromValue(map['attributeName'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

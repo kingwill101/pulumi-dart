@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsSessionManagerStatusState {
   /// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
   final pulumi.Input<String>? sessionManagerStatusName;
+
   /// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
   final pulumi.Input<String>? status;
 
   /// Creates a new [EcsSessionManagerStatusState].
   /// [sessionManagerStatusName] The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
   /// [status] The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
-  EcsSessionManagerStatusState({
-    this.sessionManagerStatusName,
-    this.status,
-  });
+  EcsSessionManagerStatusState({this.sessionManagerStatusName, this.status});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class EcsSessionManagerStatusState {
 
   factory EcsSessionManagerStatusState.fromMap(Map<String, dynamic> map) {
     return EcsSessionManagerStatusState(
-      sessionManagerStatusName: map['sessionManagerStatusName'] == null ? null : (map['sessionManagerStatusName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      sessionManagerStatusName: (() {
+        final guardedValue = map['sessionManagerStatusName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

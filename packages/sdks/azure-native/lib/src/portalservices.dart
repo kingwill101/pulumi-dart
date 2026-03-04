@@ -1,5 +1,3 @@
-library module_portalservices;
-
 export 'portalservices/copilot_setting.dart';
 export 'portalservices/copilot_setting_args.dart';
 export 'portalservices/functions.dart';

@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
-import 'instance_bind_vpc.dart';
 import 'instance_state.dart';
 
 /// Provides a KMS Instance resource.
 ///
 /// For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
 ///
-/// > **NOTE:** Available since v1.210.0.
+/// &gt; **NOTE:** Available since v1.210.0.
 ///
 /// ## Example Usage
 ///
@@ -1493,37 +1492,49 @@ import 'instance_state.dart';
 /// ```
 class Instance extends pulumi.CustomResource {
   /// Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
-  late final pulumi.Output<List<InstanceBindVpc>?> bindVpcs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> bindVpcs;
+
   /// KMS instance certificate chain in PEM format.
   late final pulumi.Output<String> caCertificateChainPem;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// (Available since v1.233.1) Instance expiration time.
   late final pulumi.Output<String> endDate;
+
   /// Whether to force deletion even without backup.
   ///
-  /// > **NOTE:** This parameter only takes effect when deletion is triggered.
+  /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
   late final pulumi.Output<String?> forceDeleteWithoutBackup;
+
   /// The name of the resource
   late final pulumi.Output<String> instanceName;
+
   /// Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> keyNum;
+
   /// Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
   late final pulumi.Output<String> log;
+
   /// Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
   late final pulumi.Output<int> logStorage;
+
   /// The billing method. Valid values:
   ///
   /// - Subscription: the subscription billing method.
   /// - PayAsYouGo: the pay-as-you-go billing method.
   late final pulumi.Output<String> paymentType;
   late final pulumi.Output<int?> period;
+
   /// KMS Instance commodity type (software/hardware)
   late final pulumi.Output<String> productVersion;
+
   /// The auto-renewal period. Unit: month.
   ///
-  /// > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
+  /// &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
   late final pulumi.Output<int?> renewPeriod;
+
   /// The renewal status of the specified instance. Valid values:
   ///
   /// - AutoRenewal: The instance is automatically renewed.
@@ -1531,20 +1542,28 @@ class Instance extends pulumi.CustomResource {
   /// - NotRenewal: The instance is not renewed.
   late final pulumi.Output<String> renewStatus;
   late final pulumi.Output<String?> renewalPeriodUnit;
+
   /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> secretNum;
+
   /// The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> spec;
+
   /// Instance status.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
   late final pulumi.Output<String> vpcId;
+
   /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
   late final pulumi.Output<int?> vpcNum;
+
   /// Instance bind vswitches
   late final pulumi.Output<List<String>> vswitchIds;
+
   /// zone id
   late final pulumi.Output<List<String>> zoneIds;
 
@@ -1557,34 +1576,36 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bindVpcs = registerOutput<List<InstanceBindVpc>?>('bindVpcs');
-    this.caCertificateChainPem = registerOutput<String>('caCertificateChainPem');
-    this.createTime = registerOutput<String>('createTime');
-    this.endDate = registerOutput<String>('endDate');
-    this.forceDeleteWithoutBackup = registerOutput<String?>('forceDeleteWithoutBackup');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.keyNum = registerOutput<int?>('keyNum');
-    this.log = registerOutput<String>('log');
-    this.logStorage = registerOutput<int>('logStorage');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.productVersion = registerOutput<String>('productVersion');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewStatus = registerOutput<String>('renewStatus');
-    this.renewalPeriodUnit = registerOutput<String?>('renewalPeriodUnit');
-    this.secretNum = registerOutput<int?>('secretNum');
-    this.spec = registerOutput<int?>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpcNum = registerOutput<int?>('vpcNum');
-    this.vswitchIds = registerOutput<List<String>>('vswitchIds');
-    this.zoneIds = registerOutput<List<String>>('zoneIds');
+         'alicloud:kms/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bindVpcs = registerOutput<List<Map<String, dynamic>>?>('bindVpcs');
+    caCertificateChainPem = registerOutput<String>('caCertificateChainPem');
+    createTime = registerOutput<String>('createTime');
+    endDate = registerOutput<String>('endDate');
+    forceDeleteWithoutBackup = registerOutput<String?>(
+      'forceDeleteWithoutBackup',
+    );
+    instanceName = registerOutput<String>('instanceName');
+    keyNum = registerOutput<int?>('keyNum');
+    log = registerOutput<String>('log');
+    logStorage = registerOutput<int>('logStorage');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    productVersion = registerOutput<String>('productVersion');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewStatus = registerOutput<String>('renewStatus');
+    renewalPeriodUnit = registerOutput<String?>('renewalPeriodUnit');
+    secretNum = registerOutput<int?>('secretNum');
+    spec = registerOutput<int?>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vpcNum = registerOutput<int?>('vpcNum');
+    vswitchIds = registerOutput<List<String>>('vswitchIds');
+    zoneIds = registerOutput<List<String>>('zoneIds');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -1605,33 +1626,35 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bindVpcs = registerOutput<List<InstanceBindVpc>?>('bindVpcs');
-    this.caCertificateChainPem = registerOutput<String>('caCertificateChainPem');
-    this.createTime = registerOutput<String>('createTime');
-    this.endDate = registerOutput<String>('endDate');
-    this.forceDeleteWithoutBackup = registerOutput<String?>('forceDeleteWithoutBackup');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.keyNum = registerOutput<int?>('keyNum');
-    this.log = registerOutput<String>('log');
-    this.logStorage = registerOutput<int>('logStorage');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.productVersion = registerOutput<String>('productVersion');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewStatus = registerOutput<String>('renewStatus');
-    this.renewalPeriodUnit = registerOutput<String?>('renewalPeriodUnit');
-    this.secretNum = registerOutput<int?>('secretNum');
-    this.spec = registerOutput<int?>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vpcNum = registerOutput<int?>('vpcNum');
-    this.vswitchIds = registerOutput<List<String>>('vswitchIds');
-    this.zoneIds = registerOutput<List<String>>('zoneIds');
+         'alicloud:kms/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bindVpcs = registerOutput<List<Map<String, dynamic>>?>('bindVpcs');
+    caCertificateChainPem = registerOutput<String>('caCertificateChainPem');
+    createTime = registerOutput<String>('createTime');
+    endDate = registerOutput<String>('endDate');
+    forceDeleteWithoutBackup = registerOutput<String?>(
+      'forceDeleteWithoutBackup',
+    );
+    instanceName = registerOutput<String>('instanceName');
+    keyNum = registerOutput<int?>('keyNum');
+    log = registerOutput<String>('log');
+    logStorage = registerOutput<int>('logStorage');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    productVersion = registerOutput<String>('productVersion');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewStatus = registerOutput<String>('renewStatus');
+    renewalPeriodUnit = registerOutput<String?>('renewalPeriodUnit');
+    secretNum = registerOutput<int?>('secretNum');
+    spec = registerOutput<int?>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    vpcNum = registerOutput<int?>('vpcNum');
+    vswitchIds = registerOutput<List<String>>('vswitchIds');
+    zoneIds = registerOutput<List<String>>('zoneIds');
   }
 }

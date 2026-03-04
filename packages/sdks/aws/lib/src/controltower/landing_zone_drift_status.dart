@@ -8,20 +8,19 @@ class LandingZoneDriftStatus {
 
   /// Creates a new [LandingZoneDriftStatus].
   /// [status] The drift status of the landing zone.
-  LandingZoneDriftStatus({
-    this.status,
-  });
+  LandingZoneDriftStatus({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
   factory LandingZoneDriftStatus.fromMap(Map<String, dynamic> map) {
     return LandingZoneDriftStatus(
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

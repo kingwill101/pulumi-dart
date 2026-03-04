@@ -7,16 +7,22 @@ import 'schedule_response.dart';
 class ApplicableScheduleResponse {
   /// The identifier of the resource.
   final pulumi.Input<String> id;
+
   /// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
   final pulumi.Input<ScheduleResponse>? labVmsShutdown;
+
   /// The auto-startup schedule, if one has been set at the lab or lab resource level.
   final pulumi.Input<ScheduleResponse>? labVmsStartup;
+
   /// The location of the resource.
   final pulumi.Input<String>? location;
+
   /// The name of the resource.
   final pulumi.Input<String> name;
+
   /// The tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of the resource.
   final pulumi.Input<String> type;
 
@@ -41,8 +47,16 @@ class ApplicableScheduleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'labVmsShutdown': ?pulumi.Input.mapOptionalInputValue<ScheduleResponse, Map<String, dynamic>>(labVmsShutdown, (value) => value.toMap()),
-      'labVmsStartup': ?pulumi.Input.mapOptionalInputValue<ScheduleResponse, Map<String, dynamic>>(labVmsStartup, (value) => value.toMap()),
+      'labVmsShutdown':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScheduleResponse,
+            Map<String, dynamic>
+          >(labVmsShutdown, (value) => value.toMap()),
+      'labVmsStartup':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScheduleResponse,
+            Map<String, dynamic>
+          >(labVmsStartup, (value) => value.toMap()),
       'location': ?location,
       'name': name,
       'tags': ?tags,
@@ -52,14 +66,39 @@ class ApplicableScheduleResponse {
 
   factory ApplicableScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ApplicableScheduleResponse(
-      id: (map['id'] as String).input(),
-      labVmsShutdown: map['labVmsShutdown'] == null ? null : (ScheduleResponse.fromMap((map['labVmsShutdown']! as Map).cast<String, dynamic>())).input(),
-      labVmsStartup: map['labVmsStartup'] == null ? null : (ScheduleResponse.fromMap((map['labVmsStartup']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      labVmsShutdown: (() {
+        final guardedValue = map['labVmsShutdown'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScheduleResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labVmsStartup: (() {
+        final guardedValue = map['labVmsStartup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScheduleResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

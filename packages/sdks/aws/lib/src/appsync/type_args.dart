@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TypeArgs {
   /// GraphQL API ID.
   final pulumi.Input<String> apiId;
+
   /// The type definition.
   final pulumi.Input<String> definition;
+
   /// The type format: `SDL` or `JSON`.
   final pulumi.Input<String> format;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,14 @@ class TypeArgs {
 
   factory TypeArgs.fromMap(Map<String, dynamic> map) {
     return TypeArgs(
-      apiId: (map['apiId'] as String).input(),
-      definition: (map['definition'] as String).input(),
-      format: (map['format'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      definition: pulumi.Input.fromValue(map['definition'] as String),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

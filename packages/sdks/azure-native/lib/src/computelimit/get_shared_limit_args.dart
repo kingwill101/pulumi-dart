@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedLimitArgs {
   /// The name of the Azure region.
   final pulumi.Input<String> location;
+
   /// The name of the SharedLimit
   final pulumi.Input<String> name;
 
   /// Creates a new [GetSharedLimitArgs].
   /// [location] The name of the Azure region.
   /// [name] The name of the SharedLimit
-  GetSharedLimitArgs({
-    required this.location,
-    required this.name,
-  });
+  GetSharedLimitArgs({required this.location, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-      'name': name,
-    };
+    return <String, dynamic>{'location': location, 'name': name};
   }
 
   factory GetSharedLimitArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedLimitArgs(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

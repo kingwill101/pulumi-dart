@@ -7,12 +7,16 @@ import 'json_file_format_response.dart';
 class GcsDestinationConfigResponse {
   /// AVRO file format configuration.
   final pulumi.Input<Map<String, dynamic>> avroFileFormat;
+
   /// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
   final pulumi.Input<String> fileRotationInterval;
+
   /// The maximum file size to be saved in the bucket.
   final pulumi.Input<int> fileRotationMb;
+
   /// JSON file format configuration.
   final pulumi.Input<JsonFileFormatResponse> jsonFileFormat;
+
   /// Path inside the Cloud Storage bucket to write data to.
   final pulumi.Input<String> path;
 
@@ -35,19 +39,30 @@ class GcsDestinationConfigResponse {
       'avroFileFormat': avroFileFormat,
       'fileRotationInterval': fileRotationInterval,
       'fileRotationMb': fileRotationMb,
-      'jsonFileFormat': pulumi.Input.mapInputValue<JsonFileFormatResponse, Map<String, dynamic>>(jsonFileFormat, (value) => value.toMap()),
+      'jsonFileFormat':
+          pulumi.Input.mapInputValue<
+            JsonFileFormatResponse,
+            Map<String, dynamic>
+          >(jsonFileFormat, (value) => value.toMap()),
       'path': path,
     };
   }
 
   factory GcsDestinationConfigResponse.fromMap(Map<String, dynamic> map) {
     return GcsDestinationConfigResponse(
-      avroFileFormat: ((map['avroFileFormat'] as Map).cast<String, dynamic>()).input(),
-      fileRotationInterval: (map['fileRotationInterval'] as String).input(),
-      fileRotationMb: (map['fileRotationMb'] as int).input(),
-      jsonFileFormat: (JsonFileFormatResponse.fromMap((map['jsonFileFormat'] as Map).cast<String, dynamic>())).input(),
-      path: (map['path'] as String).input(),
+      avroFileFormat: pulumi.Input.fromValue(
+        (map['avroFileFormat']! as Map).cast<String, dynamic>(),
+      ),
+      fileRotationInterval: pulumi.Input.fromValue(
+        map['fileRotationInterval'] as String,
+      ),
+      fileRotationMb: pulumi.Input.fromValue(map['fileRotationMb'] as int),
+      jsonFileFormat: pulumi.Input.fromValue(
+        JsonFileFormatResponse.fromMap(
+          (map['jsonFileFormat']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

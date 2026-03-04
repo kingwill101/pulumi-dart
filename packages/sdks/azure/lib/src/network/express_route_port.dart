@@ -163,7 +163,7 @@ import 'express_route_port_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -178,30 +178,43 @@ import 'express_route_port_state.dart';
 class ExpressRoutePort extends pulumi.CustomResource {
   /// Bandwidth of the Express Route Port in Gbps. Changing this forces a new Express Route Port to be created.
   late final pulumi.Output<int> bandwidthInGbps;
+
   /// The billing type of the Express Route Port. Possible values are `MeteredData` and `UnlimitedData`. Defaults to `MeteredData`.
   late final pulumi.Output<String?> billingType;
+
   /// The encapsulation method used for the Express Route Port. Changing this forces a new Express Route Port to be created. Possible values are: `Dot1Q`, `QinQ`.
   late final pulumi.Output<String> encapsulation;
+
   /// The EtherType of the Express Route Port.
   late final pulumi.Output<String> ethertype;
+
   /// The resource GUID of the Express Route Port.
   late final pulumi.Output<String> guid;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ExpressRoutePortIdentity?> identity;
+
   /// A list of `link` blocks as defined below.
   late final pulumi.Output<ExpressRoutePortLink1> link1;
+
   /// A list of `link` blocks as defined below.
   late final pulumi.Output<ExpressRoutePortLink2> link2;
+
   /// The Azure Region where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
   late final pulumi.Output<String> location;
+
   /// The maximum transmission unit of the Express Route Port.
   late final pulumi.Output<String> mtu;
+
   /// The name which should be used for this Express Route Port. Changing this forces a new Express Route Port to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the peering location that this Express Route Port is physically mapped to. Changing this forces a new Express Route Port to be created.
   late final pulumi.Output<String> peeringLocation;
+
   /// The name of the Resource Group where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Express Route Port.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -214,25 +227,25 @@ class ExpressRoutePort extends pulumi.CustomResource {
     ExpressRoutePortArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/expressRoutePort:ExpressRoutePort',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthInGbps = registerOutput<int>('bandwidthInGbps');
-    this.billingType = registerOutput<String?>('billingType');
-    this.encapsulation = registerOutput<String>('encapsulation');
-    this.ethertype = registerOutput<String>('ethertype');
-    this.guid = registerOutput<String>('guid');
-    this.identity = registerOutput<ExpressRoutePortIdentity?>('identity');
-    this.link1 = registerOutput<ExpressRoutePortLink1>('link1');
-    this.link2 = registerOutput<ExpressRoutePortLink2>('link2');
-    this.location = registerOutput<String>('location');
-    this.mtu = registerOutput<String>('mtu');
+         'azure:network/expressRoutePort:ExpressRoutePort',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthInGbps = registerOutput<int>('bandwidthInGbps');
+    billingType = registerOutput<String?>('billingType');
+    encapsulation = registerOutput<String>('encapsulation');
+    ethertype = registerOutput<String>('ethertype');
+    guid = registerOutput<String>('guid');
+    identity = registerOutput<ExpressRoutePortIdentity?>('identity');
+    link1 = registerOutput<ExpressRoutePortLink1>('link1');
+    link2 = registerOutput<ExpressRoutePortLink2>('link2');
+    location = registerOutput<String>('location');
+    mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
-    this.peeringLocation = registerOutput<String>('peeringLocation');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    peeringLocation = registerOutput<String>('peeringLocation');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ExpressRoutePort] resource's state with the given [name] and [id].
@@ -253,24 +266,24 @@ class ExpressRoutePort extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/expressRoutePort:ExpressRoutePort',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthInGbps = registerOutput<int>('bandwidthInGbps');
-    this.billingType = registerOutput<String?>('billingType');
-    this.encapsulation = registerOutput<String>('encapsulation');
-    this.ethertype = registerOutput<String>('ethertype');
-    this.guid = registerOutput<String>('guid');
-    this.identity = registerOutput<ExpressRoutePortIdentity?>('identity');
-    this.link1 = registerOutput<ExpressRoutePortLink1>('link1');
-    this.link2 = registerOutput<ExpressRoutePortLink2>('link2');
-    this.location = registerOutput<String>('location');
-    this.mtu = registerOutput<String>('mtu');
+         'azure:network/expressRoutePort:ExpressRoutePort',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthInGbps = registerOutput<int>('bandwidthInGbps');
+    billingType = registerOutput<String?>('billingType');
+    encapsulation = registerOutput<String>('encapsulation');
+    ethertype = registerOutput<String>('ethertype');
+    guid = registerOutput<String>('guid');
+    identity = registerOutput<ExpressRoutePortIdentity?>('identity');
+    link1 = registerOutput<ExpressRoutePortLink1>('link1');
+    link2 = registerOutput<ExpressRoutePortLink2>('link2');
+    location = registerOutput<String>('location');
+    mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
-    this.peeringLocation = registerOutput<String>('peeringLocation');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    peeringLocation = registerOutput<String>('peeringLocation');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

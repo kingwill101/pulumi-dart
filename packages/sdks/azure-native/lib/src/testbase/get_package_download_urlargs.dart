@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPackageDownloadURLArgs {
   /// The resource name of the Test Base Package.
   final pulumi.Input<String> packageName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -34,10 +36,13 @@ class GetPackageDownloadURLArgs {
 
   factory GetPackageDownloadURLArgs.fromMap(Map<String, dynamic> map) {
     return GetPackageDownloadURLArgs(
-      packageName: (map['packageName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
+      packageName: pulumi.Input.fromValue(map['packageName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      testBaseAccountName: pulumi.Input.fromValue(
+        map['testBaseAccountName'] as String,
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum CatalogSyncType {
   valueManual("Manual"),
   valueScheduled("Scheduled");
 
-  const CatalogSyncType(this.value);
-  final String value;
+  const CatalogSyncType(this.wireValue);
+  final String wireValue;
 
   static CatalogSyncType fromValue(String value) {
     for (final item in CatalogSyncType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CatalogSyncType value: $value');
   }
 }
-

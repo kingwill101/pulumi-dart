@@ -10,20 +10,41 @@ class CachePropertiesExportPolicyResponse {
 
   /// Creates a new [CachePropertiesExportPolicyResponse].
   /// [rules] Export policy rule
-  CachePropertiesExportPolicyResponse({
-    this.rules,
-  });
+  CachePropertiesExportPolicyResponse({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<ExportPolicyRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ExportPolicyRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExportPolicyRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExportPolicyRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory CachePropertiesExportPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory CachePropertiesExportPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CachePropertiesExportPolicyResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExportPolicyRuleResponse>(map['rules']!, (value) => ExportPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExportPolicyRuleResponse>(
+            guardedValue,
+            (value) => ExportPolicyRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

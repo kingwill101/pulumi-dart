@@ -8,34 +8,51 @@ import 'msix_package_dependencies_response.dart';
 class AppAttachPackageInfoPropertiesResponse {
   /// Date certificate expires, found in the appxmanifest.xml.
   final pulumi.Input<String>? certificateExpiry;
+
   /// Certificate name found in the appxmanifest.xml.
   final pulumi.Input<String>? certificateName;
+
   /// User friendly Name to be displayed in the portal.
   final pulumi.Input<String>? displayName;
+
   /// VHD/CIM image path on Network Share.
   final pulumi.Input<String>? imagePath;
+
   /// Make this version of the package the active one across the hostpool.
   final pulumi.Input<bool>? isActive;
+
   /// Is package timestamped so it can ignore the certificate expiry date
   final pulumi.Input<String>? isPackageTimestamped;
+
   /// Specifies how to register Package in feed.
   final pulumi.Input<bool>? isRegularRegistration;
+
   /// Date Package was last updated, found in the appxmanifest.xml.
   final pulumi.Input<String>? lastUpdated;
+
   /// Alias of App Attach Package. Assigned at import time
   final pulumi.Input<String>? packageAlias;
+
   /// List of package applications.
-  final pulumi.Input<List<MsixPackageApplicationsResponse>>? packageApplications;
+  final pulumi.Input<List<MsixPackageApplicationsResponse>>?
+  packageApplications;
+
   /// List of package dependencies.
-  final pulumi.Input<List<MsixPackageDependenciesResponse>>? packageDependencies;
+  final pulumi.Input<List<MsixPackageDependenciesResponse>>?
+  packageDependencies;
+
   /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
   final pulumi.Input<String>? packageFamilyName;
+
   /// Package Full Name from appxmanifest.xml.
   final pulumi.Input<String>? packageFullName;
+
   /// Package Name from appxmanifest.xml.
   final pulumi.Input<String>? packageName;
+
   /// Relative Path to the package inside the image.
   final pulumi.Input<String>? packageRelativePath;
+
   /// Package version found in the appxmanifest.xml.
   final pulumi.Input<String>? version;
 
@@ -86,8 +103,30 @@ class AppAttachPackageInfoPropertiesResponse {
       'isRegularRegistration': ?isRegularRegistration,
       'lastUpdated': ?lastUpdated,
       'packageAlias': ?packageAlias,
-      'packageApplications': ?pulumi.Input.mapOptionalInputValue<List<MsixPackageApplicationsResponse>, List<Map<String, dynamic>>>(packageApplications, (value) => pulumi.Input.encodeList<MsixPackageApplicationsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'packageDependencies': ?pulumi.Input.mapOptionalInputValue<List<MsixPackageDependenciesResponse>, List<Map<String, dynamic>>>(packageDependencies, (value) => pulumi.Input.encodeList<MsixPackageDependenciesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'packageApplications':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MsixPackageApplicationsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            packageApplications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MsixPackageApplicationsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'packageDependencies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MsixPackageDependenciesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            packageDependencies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MsixPackageDependenciesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'packageFamilyName': ?packageFamilyName,
       'packageFullName': ?packageFullName,
       'packageName': ?packageName,
@@ -96,25 +135,104 @@ class AppAttachPackageInfoPropertiesResponse {
     };
   }
 
-  factory AppAttachPackageInfoPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AppAttachPackageInfoPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppAttachPackageInfoPropertiesResponse(
-      certificateExpiry: map['certificateExpiry'] == null ? null : (map['certificateExpiry']! as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      imagePath: map['imagePath'] == null ? null : (map['imagePath']! as String).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
-      isPackageTimestamped: map['isPackageTimestamped'] == null ? null : (map['isPackageTimestamped']! as String).input(),
-      isRegularRegistration: map['isRegularRegistration'] == null ? null : (map['isRegularRegistration']! as bool).input(),
-      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated']! as String).input(),
-      packageAlias: map['packageAlias'] == null ? null : (map['packageAlias']! as String).input(),
-      packageApplications: map['packageApplications'] == null ? null : (pulumi.Input.decodeList<MsixPackageApplicationsResponse>(map['packageApplications']!, (value) => MsixPackageApplicationsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packageDependencies: map['packageDependencies'] == null ? null : (pulumi.Input.decodeList<MsixPackageDependenciesResponse>(map['packageDependencies']!, (value) => MsixPackageDependenciesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packageFamilyName: map['packageFamilyName'] == null ? null : (map['packageFamilyName']! as String).input(),
-      packageFullName: map['packageFullName'] == null ? null : (map['packageFullName']! as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
-      packageRelativePath: map['packageRelativePath'] == null ? null : (map['packageRelativePath']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      certificateExpiry: (() {
+        final guardedValue = map['certificateExpiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateName: (() {
+        final guardedValue = map['certificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imagePath: (() {
+        final guardedValue = map['imagePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isActive: (() {
+        final guardedValue = map['isActive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isPackageTimestamped: (() {
+        final guardedValue = map['isPackageTimestamped'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isRegularRegistration: (() {
+        final guardedValue = map['isRegularRegistration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastUpdated: (() {
+        final guardedValue = map['lastUpdated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageAlias: (() {
+        final guardedValue = map['packageAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageApplications: (() {
+        final guardedValue = map['packageApplications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MsixPackageApplicationsResponse>(
+            guardedValue,
+            (value) => MsixPackageApplicationsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      packageDependencies: (() {
+        final guardedValue = map['packageDependencies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MsixPackageDependenciesResponse>(
+            guardedValue,
+            (value) => MsixPackageDependenciesResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      packageFamilyName: (() {
+        final guardedValue = map['packageFamilyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageFullName: (() {
+        final guardedValue = map['packageFullName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageName: (() {
+        final guardedValue = map['packageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageRelativePath: (() {
+        final guardedValue = map['packageRelativePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

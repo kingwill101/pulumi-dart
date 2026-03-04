@@ -39,12 +39,15 @@ class GetAssetArgs {
 
   factory GetAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetArgs(
-      assetId: (map['assetId'] as String).input(),
-      lakeId: (map['lakeId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: (map['zone'] as String).input(),
+      assetId: pulumi.Input.fromValue(map['assetId'] as String),
+      lakeId: pulumi.Input.fromValue(map['lakeId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

@@ -11,14 +11,19 @@ import 'system_assigned_service_identity.dart';
 class NamespaceArgs {
   /// The managed service identities assigned to this resource.
   final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Assigned and unassigned messaging endpoints.
   final pulumi.Input<Messaging>? messaging;
+
   /// The name of the namespace.
   final pulumi.Input<String>? namespaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -40,9 +45,17 @@ class NamespaceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<SystemAssignedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            SystemAssignedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
-      'messaging': ?pulumi.Input.mapOptionalInputValue<Messaging, Map<String, dynamic>>(messaging, (value) => value.toMap()),
+      'messaging':
+          ?pulumi.Input.mapOptionalInputValue<Messaging, Map<String, dynamic>>(
+            messaging,
+            (value) => value.toMap(),
+          ),
       'namespaceName': ?namespaceName,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -51,13 +64,42 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      messaging: map['messaging'] == null ? null : (Messaging.fromMap((map['messaging']! as Map).cast<String, dynamic>())).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SystemAssignedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messaging: (() {
+        final guardedValue = map['messaging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Messaging.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

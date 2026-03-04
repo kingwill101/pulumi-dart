@@ -8,20 +8,17 @@ class GetRepositoryImageScanningConfiguration {
 
   /// Creates a new [GetRepositoryImageScanningConfiguration].
   /// [scanOnPush] Whether images are scanned after being pushed to the repository.
-  GetRepositoryImageScanningConfiguration({
-    required this.scanOnPush,
-  });
+  GetRepositoryImageScanningConfiguration({required this.scanOnPush});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scanOnPush': scanOnPush,
-    };
+    return <String, dynamic>{'scanOnPush': scanOnPush};
   }
 
-  factory GetRepositoryImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryImageScanningConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryImageScanningConfiguration(
-      scanOnPush: (map['scanOnPush'] as bool).input(),
+      scanOnPush: pulumi.Input.fromValue(map['scanOnPush'] as bool),
     );
   }
 }
-

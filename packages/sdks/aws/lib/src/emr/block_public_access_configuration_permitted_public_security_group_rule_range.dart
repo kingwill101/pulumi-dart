@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange {
   /// The final port in the range of TCP ports.
   final pulumi.Input<int> maxRange;
+
   /// The first port in the range of TCP ports.
   final pulumi.Input<int> minRange;
 
@@ -17,17 +18,15 @@ class BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxRange': maxRange,
-      'minRange': minRange,
-    };
+    return <String, dynamic>{'maxRange': maxRange, 'minRange': minRange};
   }
 
-  factory BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap(Map<String, dynamic> map) {
+  factory BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange(
-      maxRange: (map['maxRange'] as int).input(),
-      minRange: (map['minRange'] as int).input(),
+      maxRange: pulumi.Input.fromValue(map['maxRange'] as int),
+      minRange: pulumi.Input.fromValue(map['minRange'] as int),
     );
   }
 }
-

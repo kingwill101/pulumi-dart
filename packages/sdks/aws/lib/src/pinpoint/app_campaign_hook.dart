@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppCampaignHook {
   /// Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
   final pulumi.Input<String>? lambdaFunctionName;
+
   /// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
   final pulumi.Input<String>? mode;
+
   /// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
   final pulumi.Input<String>? webUrl;
 
@@ -14,11 +16,7 @@ class AppCampaignHook {
   /// [lambdaFunctionName] Lambda function name or ARN to be called for delivery. Conflicts with `web_url`
   /// [mode] What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
   /// [webUrl] Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambda_function_name`
-  AppCampaignHook({
-    this.lambdaFunctionName,
-    this.mode,
-    this.webUrl,
-  });
+  AppCampaignHook({this.lambdaFunctionName, this.mode, this.webUrl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class AppCampaignHook {
 
   factory AppCampaignHook.fromMap(Map<String, dynamic> map) {
     return AppCampaignHook(
-      lambdaFunctionName: map['lambdaFunctionName'] == null ? null : ((map['lambdaFunctionName'] as String).input()).input(),
-      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
-      webUrl: map['webUrl'] == null ? null : ((map['webUrl'] as String).input()).input(),
+      lambdaFunctionName: (() {
+        final guardedValue = map['lambdaFunctionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webUrl: (() {
+        final guardedValue = map['webUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

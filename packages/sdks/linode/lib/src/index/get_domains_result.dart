@@ -8,6 +8,7 @@ import 'get_domains_filter.dart';
 class GetDomainsResult {
   final List<GetDomainsDomain> domains;
   final List<GetDomainsFilter>? filters;
+
   /// The unique ID of this Domain.
   final String id;
   final String? order;
@@ -29,8 +30,19 @@ class GetDomainsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domains': pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(domains, (value) => value.toMap()),
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetDomainsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'domains':
+          pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(
+            domains,
+            (value) => value.toMap(),
+          ),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetDomainsFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
       'order': ?order,
       'orderBy': ?orderBy,
@@ -39,12 +51,31 @@ class GetDomainsResult {
 
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
-      domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains'], (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDomainsFilter>(map['filters']!, (value) => GetDomainsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      domains: pulumi.Input.decodeList<GetDomainsDomain>(
+        map['domains']!,
+        (value) =>
+            GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetDomainsFilter>(
+          guardedValue,
+          (value) =>
+              GetDomainsFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

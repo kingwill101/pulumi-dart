@@ -10,20 +10,13 @@ class TCPSocketAction {
 
   /// Creates a new [TCPSocketAction].
   /// [type] The type of the action to take to perform the health check.
-  TCPSocketAction({
-    required this.type,
-  });
+  TCPSocketAction({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory TCPSocketAction.fromMap(Map<String, dynamic> map) {
-    return TCPSocketAction(
-      type: (map['type'] as String).input(),
-    );
+    return TCPSocketAction(type: pulumi.Input.fromValue(map['type'] as String));
   }
 }
-

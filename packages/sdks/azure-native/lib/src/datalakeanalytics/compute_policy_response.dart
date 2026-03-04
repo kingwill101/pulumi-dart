@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputePolicyResponse {
   /// The resource identifier.
   final pulumi.Input<String> id;
+
   /// The maximum degree of parallelism per job this user can use to submit jobs.
   final pulumi.Input<int> maxDegreeOfParallelismPerJob;
+
   /// The minimum priority per job this user can use to submit jobs.
   final pulumi.Input<int> minPriorityPerJob;
+
   /// The resource name.
   final pulumi.Input<String> name;
+
   /// The AAD object identifier for the entity to create a policy for.
   final pulumi.Input<String> objectId;
+
   /// The type of AAD object the object identifier refers to.
   final pulumi.Input<String> objectType;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -51,14 +57,17 @@ class ComputePolicyResponse {
 
   factory ComputePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ComputePolicyResponse(
-      id: (map['id'] as String).input(),
-      maxDegreeOfParallelismPerJob: (map['maxDegreeOfParallelismPerJob'] as int).input(),
-      minPriorityPerJob: (map['minPriorityPerJob'] as int).input(),
-      name: (map['name'] as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      objectType: (map['objectType'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      maxDegreeOfParallelismPerJob: pulumi.Input.fromValue(
+        map['maxDegreeOfParallelismPerJob'] as int,
+      ),
+      minPriorityPerJob: pulumi.Input.fromValue(
+        map['minPriorityPerJob'] as int,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

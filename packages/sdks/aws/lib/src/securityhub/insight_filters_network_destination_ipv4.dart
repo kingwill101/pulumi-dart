@@ -8,20 +8,17 @@ class InsightFiltersNetworkDestinationIpv4 {
 
   /// Creates a new [InsightFiltersNetworkDestinationIpv4].
   /// [cidr] A finding's CIDR value.
-  InsightFiltersNetworkDestinationIpv4({
-    required this.cidr,
-  });
+  InsightFiltersNetworkDestinationIpv4({required this.cidr});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidr': cidr,
-    };
+    return <String, dynamic>{'cidr': cidr};
   }
 
-  factory InsightFiltersNetworkDestinationIpv4.fromMap(Map<String, dynamic> map) {
+  factory InsightFiltersNetworkDestinationIpv4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightFiltersNetworkDestinationIpv4(
-      cidr: (map['cidr'] as String).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
     );
   }
 }
-

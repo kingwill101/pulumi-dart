@@ -7,8 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HandlerMappingResponse {
   /// Command-line arguments to be passed to the script processor.
   final pulumi.Input<String>? arguments;
+
   /// Requests with this extension will be handled using the specified FastCGI application.
   final pulumi.Input<String>? extension;
+
   /// The absolute path to the FastCGI application.
   final pulumi.Input<String>? scriptProcessor;
 
@@ -32,10 +34,21 @@ class HandlerMappingResponse {
 
   factory HandlerMappingResponse.fromMap(Map<String, dynamic> map) {
     return HandlerMappingResponse(
-      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
-      extension: map['extension'] == null ? null : (map['extension']! as String).input(),
-      scriptProcessor: map['scriptProcessor'] == null ? null : (map['scriptProcessor']! as String).input(),
+      arguments: (() {
+        final guardedValue = map['arguments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extension: (() {
+        final guardedValue = map['extension'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scriptProcessor: (() {
+        final guardedValue = map['scriptProcessor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

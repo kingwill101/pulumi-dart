@@ -3,16 +3,15 @@ enum AccessKeysAuthentication {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const AccessKeysAuthentication(this.value);
-  final String value;
+  const AccessKeysAuthentication(this.wireValue);
+  final String wireValue;
 
   static AccessKeysAuthentication fromValue(String value) {
     for (final item in AccessKeysAuthentication.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessKeysAuthentication value: $value');
   }
 }
-

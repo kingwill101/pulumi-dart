@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIdentityReference {
   /// The type of managed identity used.
   final pulumi.Input<String>? type;
+
   /// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
   final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [ManagedIdentityReference].
   /// [type] The type of managed identity used.
   /// [userAssignedIdentity] The user identity ARM resource id if the managed identity type is 'UserAssigned'.
-  ManagedIdentityReference({
-    this.type,
-    this.userAssignedIdentity,
-  });
+  ManagedIdentityReference({this.type, this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ManagedIdentityReference {
 
   factory ManagedIdentityReference.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityReference(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

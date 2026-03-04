@@ -7,11 +7,14 @@ import 'auth_info_response.dart';
 class SourcePropertiesResponse {
   /// The branch name of the source code.
   final pulumi.Input<String>? branch;
+
   /// The full URL to the source code repository
   final pulumi.Input<String> repositoryUrl;
+
   /// The authorization properties for accessing the source code repository and to set up
   /// webhooks for notifications.
   final pulumi.Input<AuthInfoResponse>? sourceControlAuthProperties;
+
   /// The type of source control service.
   final pulumi.Input<String> sourceControlType;
 
@@ -31,18 +34,35 @@ class SourcePropertiesResponse {
     return <String, dynamic>{
       'branch': ?branch,
       'repositoryUrl': repositoryUrl,
-      'sourceControlAuthProperties': ?pulumi.Input.mapOptionalInputValue<AuthInfoResponse, Map<String, dynamic>>(sourceControlAuthProperties, (value) => value.toMap()),
+      'sourceControlAuthProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthInfoResponse,
+            Map<String, dynamic>
+          >(sourceControlAuthProperties, (value) => value.toMap()),
       'sourceControlType': sourceControlType,
     };
   }
 
   factory SourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SourcePropertiesResponse(
-      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
-      repositoryUrl: (map['repositoryUrl'] as String).input(),
-      sourceControlAuthProperties: map['sourceControlAuthProperties'] == null ? null : (AuthInfoResponse.fromMap((map['sourceControlAuthProperties']! as Map).cast<String, dynamic>())).input(),
-      sourceControlType: (map['sourceControlType'] as String).input(),
+      branch: (() {
+        final guardedValue = map['branch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryUrl: pulumi.Input.fromValue(map['repositoryUrl'] as String),
+      sourceControlAuthProperties: (() {
+        final guardedValue = map['sourceControlAuthProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceControlType: pulumi.Input.fromValue(
+        map['sourceControlType'] as String,
+      ),
     );
   }
 }
-

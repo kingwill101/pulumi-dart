@@ -8,16 +8,15 @@ enum ArcKindEnum {
   valueGCP("GCP"),
   valueAWS("AWS");
 
-  const ArcKindEnum(this.value);
-  final String value;
+  const ArcKindEnum(this.wireValue);
+  final String wireValue;
 
   static ArcKindEnum fromValue(String value) {
     for (final item in ArcKindEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArcKindEnum value: $value');
   }
 }
-

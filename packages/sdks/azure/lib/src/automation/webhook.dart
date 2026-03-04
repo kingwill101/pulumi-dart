@@ -309,7 +309,7 @@ import 'webhook_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2015-10-31
@@ -324,20 +324,28 @@ import 'webhook_state.dart';
 class Webhook extends pulumi.CustomResource {
   /// The name of the automation account in which the Webhook is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// Controls if Webhook is enabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Timestamp when the webhook expires. Changing this forces a new resource to be created.
   late final pulumi.Output<String> expiryTime;
+
   /// Specifies the name of the Webhook. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Map of input parameters passed to runbook.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The name of the resource group in which the Webhook is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Name of the hybrid worker group the Webhook job will run on.
   late final pulumi.Output<String?> runOnWorkerGroup;
+
   /// Name of the Automation Runbook to execute by Webhook.
   late final pulumi.Output<String> runbookName;
+
   /// URI to initiate the webhook. Can be generated using [Generate URI API](https://docs.microsoft.com/rest/api/automation/webhook/generate-uri). By default, new URI is generated on each new resource creation. Changing this forces a new resource to be created.
   late final pulumi.Output<String> uri;
 
@@ -350,20 +358,20 @@ class Webhook extends pulumi.CustomResource {
     WebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/webhook:Webhook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.expiryTime = registerOutput<String>('expiryTime');
+         'azure:automation/webhook:Webhook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    enabled = registerOutput<bool?>('enabled');
+    expiryTime = registerOutput<String>('expiryTime');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.runOnWorkerGroup = registerOutput<String?>('runOnWorkerGroup');
-    this.runbookName = registerOutput<String>('runbookName');
-    this.uri = registerOutput<String>('uri');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    runOnWorkerGroup = registerOutput<String?>('runOnWorkerGroup');
+    runbookName = registerOutput<String>('runbookName');
+    uri = registerOutput<String>('uri');
   }
 
   /// Gets an existing [Webhook] resource's state with the given [name] and [id].
@@ -384,19 +392,19 @@ class Webhook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/webhook:Webhook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.expiryTime = registerOutput<String>('expiryTime');
+         'azure:automation/webhook:Webhook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    enabled = registerOutput<bool?>('enabled');
+    expiryTime = registerOutput<String>('expiryTime');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.runOnWorkerGroup = registerOutput<String?>('runOnWorkerGroup');
-    this.runbookName = registerOutput<String>('runbookName');
-    this.uri = registerOutput<String>('uri');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    runOnWorkerGroup = registerOutput<String?>('runOnWorkerGroup');
+    runbookName = registerOutput<String>('runbookName');
+    uri = registerOutput<String>('uri');
   }
 }

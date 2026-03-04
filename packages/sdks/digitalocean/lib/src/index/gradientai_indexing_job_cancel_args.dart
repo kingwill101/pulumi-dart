@@ -12,20 +12,15 @@ class GradientaiIndexingJobCancelArgs {
 
   /// Creates a new [GradientaiIndexingJobCancelArgs].
   /// [uuid] The UUID of the indexing job to cancel.
-  GradientaiIndexingJobCancelArgs({
-    required this.uuid,
-  });
+  GradientaiIndexingJobCancelArgs({required this.uuid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uuid': uuid,
-    };
+    return <String, dynamic>{'uuid': uuid};
   }
 
   factory GradientaiIndexingJobCancelArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiIndexingJobCancelArgs(
-      uuid: (map['uuid'] as String).input(),
+      uuid: pulumi.Input.fromValue(map['uuid'] as String),
     );
   }
 }
-

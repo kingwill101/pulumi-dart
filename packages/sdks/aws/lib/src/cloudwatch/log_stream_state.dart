@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogStreamState {
   /// The Amazon Resource Name (ARN) specifying the log stream.
   final pulumi.Input<String>? arn;
+
   /// The name of the log group under which the log stream is to be created.
   final pulumi.Input<String>? logGroupName;
+
   /// The name of the log stream. Must not be longer than 512 characters and must not contain `:`
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -18,12 +21,7 @@ class LogStreamState {
   /// [logGroupName] The name of the log group under which the log stream is to be created.
   /// [name] The name of the log stream. Must not be longer than 512 characters and must not contain `:`
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogStreamState({
-    this.arn,
-    this.logGroupName,
-    this.name,
-    this.region,
-  });
+  LogStreamState({this.arn, this.logGroupName, this.name, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class LogStreamState {
 
   factory LogStreamState.fromMap(Map<String, dynamic> map) {
     return LogStreamState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      logGroupName: map['logGroupName'] == null ? null : ((map['logGroupName'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logGroupName: (() {
+        final guardedValue = map['logGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

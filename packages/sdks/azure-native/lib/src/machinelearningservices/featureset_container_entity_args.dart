@@ -10,10 +10,13 @@ import 'featureset_container.dart';
 class FeaturesetContainerEntityArgs {
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<FeaturesetContainer> featuresetContainerProperties;
+
   /// Container name. This is case-sensitive.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -31,7 +34,11 @@ class FeaturesetContainerEntityArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'featuresetContainerProperties': pulumi.Input.mapInputValue<FeaturesetContainer, Map<String, dynamic>>(featuresetContainerProperties, (value) => value.toMap()),
+      'featuresetContainerProperties':
+          pulumi.Input.mapInputValue<FeaturesetContainer, Map<String, dynamic>>(
+            featuresetContainerProperties,
+            (value) => value.toMap(),
+          ),
       'name': ?name,
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
@@ -40,11 +47,21 @@ class FeaturesetContainerEntityArgs {
 
   factory FeaturesetContainerEntityArgs.fromMap(Map<String, dynamic> map) {
     return FeaturesetContainerEntityArgs(
-      featuresetContainerProperties: (FeaturesetContainer.fromMap((map['featuresetContainerProperties'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      featuresetContainerProperties: pulumi.Input.fromValue(
+        FeaturesetContainer.fromMap(
+          (map['featuresetContainerProperties']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

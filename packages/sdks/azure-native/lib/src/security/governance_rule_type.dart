@@ -3,16 +3,15 @@ enum GovernanceRuleType {
   valueIntegrated("Integrated"),
   valueServiceNow("ServiceNow");
 
-  const GovernanceRuleType(this.value);
-  final String value;
+  const GovernanceRuleType(this.wireValue);
+  final String wireValue;
 
   static GovernanceRuleType fromValue(String value) {
     for (final item in GovernanceRuleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GovernanceRuleType value: $value');
   }
 }
-

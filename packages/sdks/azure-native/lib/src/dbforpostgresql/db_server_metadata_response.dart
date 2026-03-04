@@ -7,10 +7,13 @@ import 'server_sku_response.dart';
 class DbServerMetadataResponse {
   /// Location of database server.
   final pulumi.Input<String> location;
+
   /// Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
   final pulumi.Input<ServerSkuResponse>? sku;
+
   /// Storage size (in MB) for database server.
   final pulumi.Input<int>? storageMb;
+
   /// Major version of PostgreSQL database engine.
   final pulumi.Input<String>? version;
 
@@ -29,7 +32,11 @@ class DbServerMetadataResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
-      'sku': ?pulumi.Input.mapOptionalInputValue<ServerSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServerSkuResponse,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
       'storageMb': ?storageMb,
       'version': ?version,
     };
@@ -37,11 +44,26 @@ class DbServerMetadataResponse {
 
   factory DbServerMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DbServerMetadataResponse(
-      location: (map['location'] as String).input(),
-      sku: map['sku'] == null ? null : (ServerSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      storageMb: map['storageMb'] == null ? null : (map['storageMb']! as int).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServerSkuResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageMb: (() {
+        final guardedValue = map['storageMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

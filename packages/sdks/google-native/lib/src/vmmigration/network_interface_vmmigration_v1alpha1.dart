@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceVmmigrationV1alpha1 {
   /// The external IP to define in the NIC.
   final pulumi.Input<String>? externalIp;
+
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final pulumi.Input<String>? internalIp;
+
   /// The network to connect the NIC to.
   final pulumi.Input<String>? network;
+
   /// The subnetwork to connect the NIC to.
   final pulumi.Input<String>? subnetwork;
 
@@ -34,13 +37,30 @@ class NetworkInterfaceVmmigrationV1alpha1 {
     };
   }
 
-  factory NetworkInterfaceVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceVmmigrationV1alpha1(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      externalIp: (() {
+        final guardedValue = map['externalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internalIp: (() {
+        final guardedValue = map['internalIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum NetworkInterfaceStackTypeComputeBeta {
   ipv4Ipv6("IPV4_IPV6"),
   ipv4Only("IPV4_ONLY");
 
-  const NetworkInterfaceStackTypeComputeBeta(this.value);
-  final String value;
+  const NetworkInterfaceStackTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceStackTypeComputeBeta fromValue(String value) {
     for (final item in NetworkInterfaceStackTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkInterfaceStackTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NetworkInterfaceStackTypeComputeBeta value: $value',
+    );
   }
 }
-

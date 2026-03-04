@@ -1,5 +1,3 @@
-library module_lindorm;
-
 export 'lindorm/functions.dart';
 export 'lindorm/get_instances_args.dart';
 export 'lindorm/get_instances_instance.dart';

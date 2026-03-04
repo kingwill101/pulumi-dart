@@ -2,16 +2,15 @@
 enum SnapshotType {
   valueNodePool("NodePool");
 
-  const SnapshotType(this.value);
-  final String value;
+  const SnapshotType(this.wireValue);
+  final String wireValue;
 
   static SnapshotType fromValue(String value) {
     for (final item in SnapshotType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SnapshotType value: $value');
   }
 }
-

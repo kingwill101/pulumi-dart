@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspacePropertiesAccessConnector {
   /// The resource ID of Azure Databricks Access Connector Resource.
   final pulumi.Input<String> id;
+
   /// The identity type of the Access Connector Resource.
   final pulumi.Input<String> identityType;
+
   /// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -31,10 +33,13 @@ class WorkspacePropertiesAccessConnector {
 
   factory WorkspacePropertiesAccessConnector.fromMap(Map<String, dynamic> map) {
     return WorkspacePropertiesAccessConnector(
-      id: (map['id'] as String).input(),
-      identityType: (map['identityType'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      identityType: pulumi.Input.fromValue(map['identityType'] as String),
+      userAssignedIdentityId: (() {
+        final guardedValue = map['userAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

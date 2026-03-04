@@ -5,16 +5,17 @@ enum SubscriptionReregistrationResult {
   forcedUpdate("ForcedUpdate"),
   failed("Failed");
 
-  const SubscriptionReregistrationResult(this.value);
-  final String value;
+  const SubscriptionReregistrationResult(this.wireValue);
+  final String wireValue;
 
   static SubscriptionReregistrationResult fromValue(String value) {
     for (final item in SubscriptionReregistrationResult.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubscriptionReregistrationResult value: $value');
+    throw ArgumentError(
+      'Unknown SubscriptionReregistrationResult value: $value',
+    );
   }
 }
-

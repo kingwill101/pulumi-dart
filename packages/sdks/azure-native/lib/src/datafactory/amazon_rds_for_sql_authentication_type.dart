@@ -3,16 +3,17 @@ enum AmazonRdsForSqlAuthenticationType {
   valueSQL("SQL"),
   valueWindows("Windows");
 
-  const AmazonRdsForSqlAuthenticationType(this.value);
-  final String value;
+  const AmazonRdsForSqlAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static AmazonRdsForSqlAuthenticationType fromValue(String value) {
     for (final item in AmazonRdsForSqlAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AmazonRdsForSqlAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown AmazonRdsForSqlAuthenticationType value: $value',
+    );
   }
 }
-

@@ -10,20 +10,31 @@ class GalleryImageVersionStorageProfileResponse {
 
   /// Creates a new [GalleryImageVersionStorageProfileResponse].
   /// [osDiskImage] This is the OS disk image.
-  GalleryImageVersionStorageProfileResponse({
-    this.osDiskImage,
-  });
+  GalleryImageVersionStorageProfileResponse({this.osDiskImage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'osDiskImage': ?pulumi.Input.mapOptionalInputValue<GalleryOSDiskImageResponse, Map<String, dynamic>>(osDiskImage, (value) => value.toMap()),
+      'osDiskImage':
+          ?pulumi.Input.mapOptionalInputValue<
+            GalleryOSDiskImageResponse,
+            Map<String, dynamic>
+          >(osDiskImage, (value) => value.toMap()),
     };
   }
 
-  factory GalleryImageVersionStorageProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory GalleryImageVersionStorageProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GalleryImageVersionStorageProfileResponse(
-      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImageResponse.fromMap((map['osDiskImage']! as Map).cast<String, dynamic>())).input(),
+      osDiskImage: (() {
+        final guardedValue = map['osDiskImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GalleryOSDiskImageResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

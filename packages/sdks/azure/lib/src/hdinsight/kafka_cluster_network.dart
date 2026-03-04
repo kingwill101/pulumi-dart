@@ -5,18 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KafkaClusterNetwork {
   /// The direction of the resource provider connection. Possible values include `Inbound` or `Outbound`. Defaults to `Inbound`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** To enabled the private link the `connection_direction` must be set to `Outbound`.
+  /// &gt; **Note:** To enabled the private link the `connection_direction` must be set to `Outbound`.
   final pulumi.Input<String>? connectionDirection;
+
   /// Is the private link enabled? Possible values include `true` or `false`. Defaults to `false`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? privateLinkEnabled;
 
   /// Creates a new [KafkaClusterNetwork].
   /// [connectionDirection] The direction of the resource provider connection. Possible values include `Inbound` or `Outbound`. Defaults to `Inbound`. Changing this forces a new resource to be created.
   /// [privateLinkEnabled] Is the private link enabled? Possible values include `true` or `false`. Defaults to `false`. Changing this forces a new resource to be created.
-  KafkaClusterNetwork({
-    this.connectionDirection,
-    this.privateLinkEnabled,
-  });
+  KafkaClusterNetwork({this.connectionDirection, this.privateLinkEnabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class KafkaClusterNetwork {
 
   factory KafkaClusterNetwork.fromMap(Map<String, dynamic> map) {
     return KafkaClusterNetwork(
-      connectionDirection: map['connectionDirection'] == null ? null : (map['connectionDirection']! as String).input(),
-      privateLinkEnabled: map['privateLinkEnabled'] == null ? null : (map['privateLinkEnabled']! as bool).input(),
+      connectionDirection: (() {
+        final guardedValue = map['connectionDirection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkEnabled: (() {
+        final guardedValue = map['privateLinkEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

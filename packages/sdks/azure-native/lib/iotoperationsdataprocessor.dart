@@ -1,3 +1,1 @@
-library pulumi_azure_native_iotoperationsdataprocessor;
-
 export 'package:pulumi_azure_native/src/iotoperationsdataprocessor.dart';

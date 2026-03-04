@@ -7,16 +7,15 @@ enum ConsentStateHealthcareV1beta1 {
   draft("DRAFT"),
   rejected("REJECTED");
 
-  const ConsentStateHealthcareV1beta1(this.value);
-  final String value;
+  const ConsentStateHealthcareV1beta1(this.wireValue);
+  final String wireValue;
 
   static ConsentStateHealthcareV1beta1 fromValue(String value) {
     for (final item in ConsentStateHealthcareV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConsentStateHealthcareV1beta1 value: $value');
   }
 }
-

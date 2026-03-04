@@ -10,20 +10,29 @@ class PipelinePolicy {
 
   /// Creates a new [PipelinePolicy].
   /// [elapsedTimeMetric] Pipeline ElapsedTime Metric Policy.
-  PipelinePolicy({
-    this.elapsedTimeMetric,
-  });
+  PipelinePolicy({this.elapsedTimeMetric});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elapsedTimeMetric': ?pulumi.Input.mapOptionalInputValue<PipelineElapsedTimeMetricPolicy, Map<String, dynamic>>(elapsedTimeMetric, (value) => value.toMap()),
+      'elapsedTimeMetric':
+          ?pulumi.Input.mapOptionalInputValue<
+            PipelineElapsedTimeMetricPolicy,
+            Map<String, dynamic>
+          >(elapsedTimeMetric, (value) => value.toMap()),
     };
   }
 
   factory PipelinePolicy.fromMap(Map<String, dynamic> map) {
     return PipelinePolicy(
-      elapsedTimeMetric: map['elapsedTimeMetric'] == null ? null : (PipelineElapsedTimeMetricPolicy.fromMap((map['elapsedTimeMetric']! as Map).cast<String, dynamic>())).input(),
+      elapsedTimeMetric: (() {
+        final guardedValue = map['elapsedTimeMetric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PipelineElapsedTimeMetricPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketPublicAccessBlockArgs {
   /// Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
   final pulumi.Input<bool> blockPublicAccess;
+
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
 
@@ -29,9 +30,10 @@ class BucketPublicAccessBlockArgs {
 
   factory BucketPublicAccessBlockArgs.fromMap(Map<String, dynamic> map) {
     return BucketPublicAccessBlockArgs(
-      blockPublicAccess: (map['blockPublicAccess'] as bool).input(),
-      bucket: (map['bucket'] as String).input(),
+      blockPublicAccess: pulumi.Input.fromValue(
+        map['blockPublicAccess'] as bool,
+      ),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
     );
   }
 }
-

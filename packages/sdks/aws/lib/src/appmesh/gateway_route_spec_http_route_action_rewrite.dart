@@ -8,8 +8,10 @@ import 'gateway_route_spec_http_route_action_rewrite_prefix.dart';
 class GatewayRouteSpecHttpRouteActionRewrite {
   /// Host name to rewrite.
   final pulumi.Input<GatewayRouteSpecHttpRouteActionRewriteHostname>? hostname;
+
   /// Exact path to rewrite.
   final pulumi.Input<GatewayRouteSpecHttpRouteActionRewritePath>? path;
+
   /// Specified beginning characters to rewrite.
   final pulumi.Input<GatewayRouteSpecHttpRouteActionRewritePrefix>? prefix;
 
@@ -25,18 +27,55 @@ class GatewayRouteSpecHttpRouteActionRewrite {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hostname': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecHttpRouteActionRewriteHostname, Map<String, dynamic>>(hostname, (value) => value.toMap()),
-      'path': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecHttpRouteActionRewritePath, Map<String, dynamic>>(path, (value) => value.toMap()),
-      'prefix': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecHttpRouteActionRewritePrefix, Map<String, dynamic>>(prefix, (value) => value.toMap()),
+      'hostname':
+          ?pulumi.Input.mapOptionalInputValue<
+            GatewayRouteSpecHttpRouteActionRewriteHostname,
+            Map<String, dynamic>
+          >(hostname, (value) => value.toMap()),
+      'path':
+          ?pulumi.Input.mapOptionalInputValue<
+            GatewayRouteSpecHttpRouteActionRewritePath,
+            Map<String, dynamic>
+          >(path, (value) => value.toMap()),
+      'prefix':
+          ?pulumi.Input.mapOptionalInputValue<
+            GatewayRouteSpecHttpRouteActionRewritePrefix,
+            Map<String, dynamic>
+          >(prefix, (value) => value.toMap()),
     };
   }
 
-  factory GatewayRouteSpecHttpRouteActionRewrite.fromMap(Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttpRouteActionRewrite.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayRouteSpecHttpRouteActionRewrite(
-      hostname: map['hostname'] == null ? null : ((GatewayRouteSpecHttpRouteActionRewriteHostname.fromMap((map['hostname']! as Map).cast<String, dynamic>())).input()).input(),
-      path: map['path'] == null ? null : ((GatewayRouteSpecHttpRouteActionRewritePath.fromMap((map['path']! as Map).cast<String, dynamic>())).input()).input(),
-      prefix: map['prefix'] == null ? null : ((GatewayRouteSpecHttpRouteActionRewritePrefix.fromMap((map['prefix']! as Map).cast<String, dynamic>())).input()).input(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GatewayRouteSpecHttpRouteActionRewriteHostname.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GatewayRouteSpecHttpRouteActionRewritePath.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GatewayRouteSpecHttpRouteActionRewritePrefix.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'ipv4_cidr_block_state.dart';
 ///
 /// For information about VPC Ipv4 Cidr Block and how to use it, see [What is Ipv4 Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatevpccidrblock).
 ///
-/// > **NOTE:** Available since v1.185.0.
+/// &gt; **NOTE:** Available since v1.185.0.
 ///
 /// ## Example Usage
 ///
@@ -164,14 +164,18 @@ import 'ipv4_cidr_block_state.dart';
 class Ipv4CidrBlock extends pulumi.CustomResource {
   /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
   late final pulumi.Output<String?> ipv4IpamPoolId;
+
   /// The ID of the region where the VPC resides.
   late final pulumi.Output<String> regionId;
+
   /// Additional network segment information.
   late final pulumi.Output<String> secondaryCidrBlock;
+
   /// Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
   ///
-  /// > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
+  /// &gt; **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
   late final pulumi.Output<int?> secondaryCidrMask;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -184,16 +188,16 @@ class Ipv4CidrBlock extends pulumi.CustomResource {
     Ipv4CidrBlockArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
-    this.regionId = registerOutput<String>('regionId');
-    this.secondaryCidrBlock = registerOutput<String>('secondaryCidrBlock');
-    this.secondaryCidrMask = registerOutput<int?>('secondaryCidrMask');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    regionId = registerOutput<String>('regionId');
+    secondaryCidrBlock = registerOutput<String>('secondaryCidrBlock');
+    secondaryCidrMask = registerOutput<int?>('secondaryCidrMask');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [Ipv4CidrBlock] resource's state with the given [name] and [id].
@@ -214,15 +218,15 @@ class Ipv4CidrBlock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
-    this.regionId = registerOutput<String>('regionId');
-    this.secondaryCidrBlock = registerOutput<String>('secondaryCidrBlock');
-    this.secondaryCidrMask = registerOutput<int?>('secondaryCidrMask');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    regionId = registerOutput<String>('regionId');
+    secondaryCidrBlock = registerOutput<String>('secondaryCidrBlock');
+    secondaryCidrMask = registerOutput<int?>('secondaryCidrMask');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

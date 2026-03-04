@@ -7,18 +7,25 @@ import 'event_integration_event_filter.dart';
 class EventIntegrationState {
   /// ARN of the Event Integration.
   final pulumi.Input<String>? arn;
+
   /// Description of the Event Integration.
   final pulumi.Input<String>? description;
+
   /// Block that defines the configuration information for the event filter. The Event Filter block is documented below.
   final pulumi.Input<EventIntegrationEventFilter>? eventFilter;
+
   /// EventBridge bus.
   final pulumi.Input<String>? eventbridgeBus;
+
   /// Name of the Event Integration.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tags to apply to the Event Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -46,7 +53,11 @@ class EventIntegrationState {
     return <String, dynamic>{
       'arn': ?arn,
       'description': ?description,
-      'eventFilter': ?pulumi.Input.mapOptionalInputValue<EventIntegrationEventFilter, Map<String, dynamic>>(eventFilter, (value) => value.toMap()),
+      'eventFilter':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventIntegrationEventFilter,
+            Map<String, dynamic>
+          >(eventFilter, (value) => value.toMap()),
       'eventbridgeBus': ?eventbridgeBus,
       'name': ?name,
       'region': ?region,
@@ -57,15 +68,54 @@ class EventIntegrationState {
 
   factory EventIntegrationState.fromMap(Map<String, dynamic> map) {
     return EventIntegrationState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      eventFilter: map['eventFilter'] == null ? null : ((EventIntegrationEventFilter.fromMap((map['eventFilter']! as Map).cast<String, dynamic>())).input()).input(),
-      eventbridgeBus: map['eventbridgeBus'] == null ? null : ((map['eventbridgeBus'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventFilter: (() {
+        final guardedValue = map['eventFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventIntegrationEventFilter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      eventbridgeBus: (() {
+        final guardedValue = map['eventbridgeBus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

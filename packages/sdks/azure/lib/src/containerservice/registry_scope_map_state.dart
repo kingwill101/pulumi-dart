@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryScopeMapState {
   /// A list of actions to attach to the scope map (e.g. `repo/content/read`, `repo2/content/delete`).
   final pulumi.Input<List<String>>? actions;
+
   /// The name of the Container Registry. Changing this forces a new resource to be created.
   final pulumi.Input<String>? containerRegistryName;
+
   /// The description of the Container Registry.
   final pulumi.Input<String>? description;
+
   /// Specifies the name of the scope map. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -41,12 +45,31 @@ class RegistryScopeMapState {
 
   factory RegistryScopeMapState.fromMap(Map<String, dynamic> map) {
     return RegistryScopeMapState(
-      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
-      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      containerRegistryName: (() {
+        final guardedValue = map['containerRegistryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

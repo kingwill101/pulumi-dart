@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailTopicPolicyConfigTopicsConfig {
   /// Definition of topic in topic policy.
   final pulumi.Input<String> definition;
+
   /// List of text examples.
   final pulumi.Input<List<String>>? examples;
+
   /// Name of topic in topic policy.
   final pulumi.Input<String> name;
+
   /// Type of topic in a policy.
   final pulumi.Input<String> type;
 
@@ -33,13 +36,18 @@ class GuardrailTopicPolicyConfigTopicsConfig {
     };
   }
 
-  factory GuardrailTopicPolicyConfigTopicsConfig.fromMap(Map<String, dynamic> map) {
+  factory GuardrailTopicPolicyConfigTopicsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuardrailTopicPolicyConfigTopicsConfig(
-      definition: (map['definition'] as String).input(),
-      examples: map['examples'] == null ? null : (((map['examples'] as List).cast<String>()).input()).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      definition: pulumi.Input.fromValue(map['definition'] as String),
+      examples: (() {
+        final guardedValue = map['examples'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

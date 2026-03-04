@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerSubscriptionConnectionArgs {
   /// A description of the Network Manager Subscription Connection.
   final pulumi.Input<String>? description;
+
   /// Specifies the name which should be used for this Network Subscription Network Manager Connection. Changing this forces a new Network Subscription Network Manager Connection to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the Network Manager which the Subscription is connected to.
   final pulumi.Input<String> networkManagerId;
+
   /// Specifies the ID of the target Subscription. Changing this forces a new resource to be created.
   final pulumi.Input<String> subscriptionId;
 
@@ -37,13 +40,24 @@ class NetworkManagerSubscriptionConnectionArgs {
     };
   }
 
-  factory NetworkManagerSubscriptionConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkManagerSubscriptionConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkManagerSubscriptionConnectionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkManagerId: (map['networkManagerId'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkManagerId: pulumi.Input.fromValue(
+        map['networkManagerId'] as String,
+      ),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3IntentParameterResponse {
   /// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
   final pulumi.Input<String> entityType;
+
   /// Indicates whether the parameter represents a list of values.
   final pulumi.Input<bool> isList;
+
   /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
   final pulumi.Input<bool> redact;
 
@@ -29,12 +31,13 @@ class GoogleCloudDialogflowCxV3IntentParameterResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3IntentParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3IntentParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3IntentParameterResponse(
-      entityType: (map['entityType'] as String).input(),
-      isList: (map['isList'] as bool).input(),
-      redact: (map['redact'] as bool).input(),
+      entityType: pulumi.Input.fromValue(map['entityType'] as String),
+      isList: pulumi.Input.fromValue(map['isList'] as bool),
+      redact: pulumi.Input.fromValue(map['redact'] as bool),
     );
   }
 }
-

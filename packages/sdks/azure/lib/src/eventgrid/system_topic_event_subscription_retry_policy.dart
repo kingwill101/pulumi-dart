@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemTopicEventSubscriptionRetryPolicy {
   /// Specifies the time to live (in minutes) for events. Supported range is `1` to `1440`. See [official documentation](https://docs.microsoft.com/azure/event-grid/manage-event-delivery#set-retry-policy) for more details.
   final pulumi.Input<int> eventTimeToLive;
+
   /// Specifies the maximum number of delivery retry attempts for events.
   final pulumi.Input<int> maxDeliveryAttempts;
 
@@ -23,11 +24,14 @@ class SystemTopicEventSubscriptionRetryPolicy {
     };
   }
 
-  factory SystemTopicEventSubscriptionRetryPolicy.fromMap(Map<String, dynamic> map) {
+  factory SystemTopicEventSubscriptionRetryPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SystemTopicEventSubscriptionRetryPolicy(
-      eventTimeToLive: (map['eventTimeToLive'] as int).input(),
-      maxDeliveryAttempts: (map['maxDeliveryAttempts'] as int).input(),
+      eventTimeToLive: pulumi.Input.fromValue(map['eventTimeToLive'] as int),
+      maxDeliveryAttempts: pulumi.Input.fromValue(
+        map['maxDeliveryAttempts'] as int,
+      ),
     );
   }
 }
-

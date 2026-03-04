@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationInstallPatchLinux {
   /// List of Classification category of patches to be patched.
   final pulumi.Input<List<String>> classificationsToIncludes;
+
   /// List of package names to be excluded from patching.
   final pulumi.Input<List<String>> packageNamesMaskToExcludes;
+
   /// List of package names to be included for patching.
   final pulumi.Input<List<String>> packageNamesMaskToIncludes;
 
@@ -30,10 +32,15 @@ class GetConfigurationInstallPatchLinux {
 
   factory GetConfigurationInstallPatchLinux.fromMap(Map<String, dynamic> map) {
     return GetConfigurationInstallPatchLinux(
-      classificationsToIncludes: ((map['classificationsToIncludes'] as List).cast<String>()).input(),
-      packageNamesMaskToExcludes: ((map['packageNamesMaskToExcludes'] as List).cast<String>()).input(),
-      packageNamesMaskToIncludes: ((map['packageNamesMaskToIncludes'] as List).cast<String>()).input(),
+      classificationsToIncludes: pulumi.Input.fromValue(
+        (map['classificationsToIncludes'] as List).cast<String>(),
+      ),
+      packageNamesMaskToExcludes: pulumi.Input.fromValue(
+        (map['packageNamesMaskToExcludes'] as List).cast<String>(),
+      ),
+      packageNamesMaskToIncludes: pulumi.Input.fromValue(
+        (map['packageNamesMaskToIncludes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

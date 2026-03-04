@@ -13,15 +13,16 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'addressDefinition': addressDefinition,
-    };
+    return <String, dynamic>{'addressDefinition': addressDefinition};
   }
 
-  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination.fromMap(Map<String, dynamic> map) {
+  factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination(
-      addressDefinition: (map['addressDefinition'] as String).input(),
+      addressDefinition: pulumi.Input.fromValue(
+        map['addressDefinition'] as String,
+      ),
     );
   }
 }
-

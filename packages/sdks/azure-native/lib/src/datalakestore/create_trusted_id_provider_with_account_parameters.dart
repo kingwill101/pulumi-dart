@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CreateTrustedIdProviderWithAccountParameters {
   /// The URL of this trusted identity provider.
   final pulumi.Input<String> idProvider;
+
   /// The unique name of the trusted identity provider to create.
   final pulumi.Input<String> name;
 
@@ -18,17 +19,15 @@ class CreateTrustedIdProviderWithAccountParameters {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'idProvider': idProvider,
-      'name': name,
-    };
+    return <String, dynamic>{'idProvider': idProvider, 'name': name};
   }
 
-  factory CreateTrustedIdProviderWithAccountParameters.fromMap(Map<String, dynamic> map) {
+  factory CreateTrustedIdProviderWithAccountParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CreateTrustedIdProviderWithAccountParameters(
-      idProvider: (map['idProvider'] as String).input(),
-      name: (map['name'] as String).input(),
+      idProvider: pulumi.Input.fromValue(map['idProvider'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

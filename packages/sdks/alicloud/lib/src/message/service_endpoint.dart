@@ -12,6 +12,7 @@ import 'service_endpoint_state.dart';
 class ServiceEndpoint extends pulumi.CustomResource {
   /// Specifies whether the endpoint is enabled. Valid values:
   late final pulumi.Output<bool> endpointEnabled;
+
   /// Access point type. Value:
   /// - public: indicates a public access point. (Currently only public is supported)
   late final pulumi.Output<String> endpointType;
@@ -25,13 +26,13 @@ class ServiceEndpoint extends pulumi.CustomResource {
     ServiceEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceEndpoint:ServiceEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpointEnabled = registerOutput<bool>('endpointEnabled');
-    this.endpointType = registerOutput<String>('endpointType');
+         'alicloud:message/serviceEndpoint:ServiceEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpointEnabled = registerOutput<bool>('endpointEnabled');
+    endpointType = registerOutput<String>('endpointType');
   }
 
   /// Gets an existing [ServiceEndpoint] resource's state with the given [name] and [id].
@@ -52,12 +53,12 @@ class ServiceEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceEndpoint:ServiceEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpointEnabled = registerOutput<bool>('endpointEnabled');
-    this.endpointType = registerOutput<String>('endpointType');
+         'alicloud:message/serviceEndpoint:ServiceEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpointEnabled = registerOutput<bool>('endpointEnabled');
+    endpointType = registerOutput<String>('endpointType');
   }
 }

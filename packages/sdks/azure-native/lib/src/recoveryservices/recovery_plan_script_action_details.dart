@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecoveryPlanScriptActionDetails {
   /// The fabric location.
   final pulumi.Input<String> fabricLocation;
+
   /// Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
   /// Expected value is 'ScriptActionDetails'.
   final pulumi.Input<String> instanceType;
+
   /// The script path.
   final pulumi.Input<String> path;
+
   /// The script timeout.
   final pulumi.Input<String>? timeout;
 
@@ -37,11 +40,14 @@ class RecoveryPlanScriptActionDetails {
 
   factory RecoveryPlanScriptActionDetails.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanScriptActionDetails(
-      fabricLocation: (map['fabricLocation'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      path: (map['path'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      fabricLocation: pulumi.Input.fromValue(map['fabricLocation'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

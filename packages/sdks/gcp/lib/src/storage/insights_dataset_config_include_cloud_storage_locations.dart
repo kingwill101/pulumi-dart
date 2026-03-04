@@ -8,20 +8,19 @@ class InsightsDatasetConfigIncludeCloudStorageLocations {
 
   /// Creates a new [InsightsDatasetConfigIncludeCloudStorageLocations].
   /// [locations] The list of cloud storage locations to include in the DatasetConfig.
-  InsightsDatasetConfigIncludeCloudStorageLocations({
-    required this.locations,
-  });
+  InsightsDatasetConfigIncludeCloudStorageLocations({required this.locations});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'locations': locations,
-    };
+    return <String, dynamic>{'locations': locations};
   }
 
-  factory InsightsDatasetConfigIncludeCloudStorageLocations.fromMap(Map<String, dynamic> map) {
+  factory InsightsDatasetConfigIncludeCloudStorageLocations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightsDatasetConfigIncludeCloudStorageLocations(
-      locations: ((map['locations'] as List).cast<String>()).input(),
+      locations: pulumi.Input.fromValue(
+        (map['locations'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceGroupArgs {
   /// The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
   final pulumi.Input<String>? location;
+
   /// The ID of the resource that manages this resource group.
   final pulumi.Input<String>? managedBy;
+
   /// The name of the resource group to create or update. Can include alphanumeric, underscore, parentheses, hyphen, period (except at end), and Unicode characters that match the allowed characters.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The tags attached to the resource group.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,11 +42,28 @@ class ResourceGroupArgs {
 
   factory ResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedBy: (() {
+        final guardedValue = map['managedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

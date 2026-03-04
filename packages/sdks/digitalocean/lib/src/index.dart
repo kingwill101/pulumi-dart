@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/algorithm.dart';
 export 'index/app.dart';
 export 'index/app_args.dart';

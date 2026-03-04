@@ -10,20 +10,17 @@ class AutoscalerAutoscalingPolicyLoadBalancingUtilization {
 
   /// Creates a new [AutoscalerAutoscalingPolicyLoadBalancingUtilization].
   /// [target] Fraction of backend capacity utilization (set in HTTP(s) load
-  AutoscalerAutoscalingPolicyLoadBalancingUtilization({
-    required this.target,
-  });
+  AutoscalerAutoscalingPolicyLoadBalancingUtilization({required this.target});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'target': target,
-    };
+    return <String, dynamic>{'target': target};
   }
 
-  factory AutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap(Map<String, dynamic> map) {
+  factory AutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutoscalerAutoscalingPolicyLoadBalancingUtilization(
-      target: (map['target'] as double).input(),
+      target: pulumi.Input.fromValue(map['target'] as double),
     );
   }
 }
-

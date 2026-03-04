@@ -26,18 +26,24 @@ import 'custom_permissions_state.dart';
 class CustomPermissions extends pulumi.CustomResource {
   /// ARN of the custom permissions profile.
   late final pulumi.Output<String> arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
+
   /// Actions to include in the custom permissions profile. See capabilities.
   late final pulumi.Output<CustomPermissionsCapabilities> capabilities;
+
   /// Custom permissions profile name.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> customPermissionsName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -50,18 +56,20 @@ class CustomPermissions extends pulumi.CustomResource {
     CustomPermissionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/customPermissions:CustomPermissions',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.capabilities = registerOutput<CustomPermissionsCapabilities>('capabilities');
-    this.customPermissionsName = registerOutput<String>('customPermissionsName');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:quicksight/customPermissions:CustomPermissions',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    capabilities = registerOutput<CustomPermissionsCapabilities>(
+      'capabilities',
+    );
+    customPermissionsName = registerOutput<String>('customPermissionsName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [CustomPermissions] resource's state with the given [name] and [id].
@@ -82,17 +90,19 @@ class CustomPermissions extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/customPermissions:CustomPermissions',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.capabilities = registerOutput<CustomPermissionsCapabilities>('capabilities');
-    this.customPermissionsName = registerOutput<String>('customPermissionsName');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:quicksight/customPermissions:CustomPermissions',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    capabilities = registerOutput<CustomPermissionsCapabilities>(
+      'capabilities',
+    );
+    customPermissionsName = registerOutput<String>('customPermissionsName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_args.dart';
 import 'repository_initial_config.dart';
 import 'repository_state.dart';
-import 'repository_uri.dart';
 
 /// Repositories store source code. It supports all Git SCM client commands and has built-in pull requests and issue tracking. Both HTTPS and SSH authentication are supported.
 ///
@@ -389,6 +388,7 @@ import 'repository_uri.dart';
 class Repository extends pulumi.CustomResource {
   /// Time the repository was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// The deletion policy for the repository. Setting `ABANDON` allows the resource
   /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
   /// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
@@ -398,29 +398,39 @@ class Repository extends pulumi.CustomResource {
   /// * PREVENT
   /// * ABANDON
   late final pulumi.Output<String?> deletionPolicy;
+
   /// Description of the repository, which cannot exceed 500 characters.
   late final pulumi.Output<String?> description;
+
   /// Initial configurations for the repository.
   /// Structure is documented below.
   late final pulumi.Output<RepositoryInitialConfig?> initialConfig;
+
   /// The name of the instance in which the repository is hosted.
   late final pulumi.Output<String> instance;
+
   /// The location for the Repository.
   late final pulumi.Output<String> location;
+
   /// The resource name for the Repository.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The ID for the Repository.
   late final pulumi.Output<String> repositoryId;
+
   /// Unique identifier of the repository.
   late final pulumi.Output<String> uid;
+
   /// Time the repository was updated in UTC.
   late final pulumi.Output<String> updateTime;
+
   /// URIs for the repository.
   /// Structure is documented below.
-  late final pulumi.Output<List<RepositoryUri>> uris;
+  late final pulumi.Output<List<Map<String, dynamic>>> uris;
 
   /// Creates a new [Repository].
   /// [name] The Pulumi resource name.
@@ -431,23 +441,23 @@ class Repository extends pulumi.CustomResource {
     RepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securesourcemanager/repository:Repository',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.description = registerOutput<String?>('description');
-    this.initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig');
-    this.instance = registerOutput<String>('instance');
-    this.location = registerOutput<String>('location');
+         'gcp:securesourcemanager/repository:Repository',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.repositoryId = registerOutput<String>('repositoryId');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.uris = registerOutput<List<RepositoryUri>>('uris');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    uris = registerOutput<List<Map<String, dynamic>>>('uris');
   }
 
   /// Gets an existing [Repository] resource's state with the given [name] and [id].
@@ -468,22 +478,22 @@ class Repository extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securesourcemanager/repository:Repository',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.description = registerOutput<String?>('description');
-    this.initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig');
-    this.instance = registerOutput<String>('instance');
-    this.location = registerOutput<String>('location');
+         'gcp:securesourcemanager/repository:Repository',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    initialConfig = registerOutput<RepositoryInitialConfig?>('initialConfig');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.repositoryId = registerOutput<String>('repositoryId');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.uris = registerOutput<List<RepositoryUri>>('uris');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    uris = registerOutput<List<Map<String, dynamic>>>('uris');
   }
 }

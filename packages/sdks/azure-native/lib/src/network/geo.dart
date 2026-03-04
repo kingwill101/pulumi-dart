@@ -10,16 +10,15 @@ enum Geo {
   valueOCEANIA("OCEANIA"),
   valueAQ("AQ");
 
-  const Geo(this.value);
-  final String value;
+  const Geo(this.wireValue);
+  final String wireValue;
 
   static Geo fromValue(String value) {
     for (final item in Geo.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Geo value: $value');
   }
 }
-

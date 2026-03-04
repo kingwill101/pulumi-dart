@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getQueueAuthorizationRule.
 class GetQueueAuthorizationRuleResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -9,19 +8,25 @@ class GetQueueAuthorizationRuleResult {
   final bool manage;
   final String name;
   final String? namespaceName;
+
   /// The Primary Connection String for the ServiceBus Queue authorization Rule.
   final String primaryConnectionString;
+
   /// The alias Primary Connection String for the ServiceBus Namespace, if the namespace is Geo DR paired.
   final String primaryConnectionStringAlias;
+
   /// The Primary Key for the ServiceBus Queue authorization Rule.
   final String primaryKey;
   final String? queueId;
   final String? queueName;
   final String? resourceGroupName;
+
   /// The Secondary Connection String for the ServiceBus Queue authorization Rule.
   final String secondaryConnectionString;
+
   /// The alias Secondary Connection String for the ServiceBus Namespace
   final String secondaryConnectionStringAlias;
+
   /// The Secondary Key for the ServiceBus Queue authorization Rule.
   final String secondaryKey;
   final bool send;
@@ -86,18 +91,35 @@ class GetQueueAuthorizationRuleResult {
       listen: map['listen'] as bool,
       manage: map['manage'] as bool,
       name: map['name'] as String,
-      namespaceName: map['namespaceName'] == null ? null : map['namespaceName']! as String,
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] as String,
+      primaryConnectionStringAlias:
+          map['primaryConnectionStringAlias'] as String,
       primaryKey: map['primaryKey'] as String,
-      queueId: map['queueId'] == null ? null : map['queueId']! as String,
-      queueName: map['queueName'] == null ? null : map['queueName']! as String,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName']! as String,
+      queueId: (() {
+        final guardedValue = map['queueId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] as String,
+      secondaryConnectionStringAlias:
+          map['secondaryConnectionStringAlias'] as String,
       secondaryKey: map['secondaryKey'] as String,
       send: map['send'] as bool,
     );
   }
 }
-

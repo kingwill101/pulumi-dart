@@ -717,21 +717,27 @@ import 'share_access_state.dart';
 class ShareAccess extends pulumi.CustomResource {
   /// The access credential of the entity granted access.
   late final pulumi.Output<String> accessKey;
+
   /// The access level to the share. Can either be `rw` or `ro`.
   late final pulumi.Output<String> accessLevel;
+
   /// The value that defines the access. Can either be an IP
   /// address or a username verified by configured Security Service of the Share Network.
   late final pulumi.Output<String> accessTo;
+
   /// The access rule type. Can either be an ip, user,
   /// cert, or cephx. cephx support requires an OpenStack environment that supports
   /// Shared Filesystem microversion 2.13 (Mitaka) or later.
   late final pulumi.Output<String> accessType;
+
   /// The region in which to obtain the V2 Shared File System
   /// client. A Shared File System client is needed to create a share access.
   /// Changing this creates a new share access.
   late final pulumi.Output<String> region;
+
   /// The UUID of the share to which you are granted access.
   late final pulumi.Output<String> shareId;
+
   /// The share access state.
   late final pulumi.Output<String> state;
 
@@ -744,18 +750,18 @@ class ShareAccess extends pulumi.CustomResource {
     ShareAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:sharedfilesystem/shareAccess:ShareAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String>('accessKey');
-    this.accessLevel = registerOutput<String>('accessLevel');
-    this.accessTo = registerOutput<String>('accessTo');
-    this.accessType = registerOutput<String>('accessType');
-    this.region = registerOutput<String>('region');
-    this.shareId = registerOutput<String>('shareId');
-    this.state = registerOutput<String>('state');
+         'openstack:sharedfilesystem/shareAccess:ShareAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String>('accessKey');
+    accessLevel = registerOutput<String>('accessLevel');
+    accessTo = registerOutput<String>('accessTo');
+    accessType = registerOutput<String>('accessType');
+    region = registerOutput<String>('region');
+    shareId = registerOutput<String>('shareId');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [ShareAccess] resource's state with the given [name] and [id].
@@ -776,17 +782,17 @@ class ShareAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:sharedfilesystem/shareAccess:ShareAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String>('accessKey');
-    this.accessLevel = registerOutput<String>('accessLevel');
-    this.accessTo = registerOutput<String>('accessTo');
-    this.accessType = registerOutput<String>('accessType');
-    this.region = registerOutput<String>('region');
-    this.shareId = registerOutput<String>('shareId');
+         'openstack:sharedfilesystem/shareAccess:ShareAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String>('accessKey');
+    accessLevel = registerOutput<String>('accessLevel');
+    accessTo = registerOutput<String>('accessTo');
+    accessType = registerOutput<String>('accessType');
+    region = registerOutput<String>('region');
+    shareId = registerOutput<String>('shareId');
     this.state = registerOutput<String>('state');
   }
 }

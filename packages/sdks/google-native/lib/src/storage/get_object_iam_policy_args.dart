@@ -9,18 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetObjectIamPolicyArgs {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String>? generation;
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
   final pulumi.Input<String>? userProject;
 
   /// Creates a new [GetObjectIamPolicyArgs].
   /// [bucket] Required.
   /// [generation] Optional.
-  /// [object] Required.
+  /// [object_] Required.
   /// [userProject] Optional.
   GetObjectIamPolicyArgs({
     required this.bucket,
     this.generation,
-    required this.object,
+    required this.object_,
     this.userProject,
   });
 
@@ -28,18 +28,25 @@ class GetObjectIamPolicyArgs {
     return <String, dynamic>{
       'bucket': bucket,
       'generation': ?generation,
-      'object': object,
+      'object': object_,
       'userProject': ?userProject,
     };
   }
 
   factory GetObjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectIamPolicyArgs(
-      bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
-      object: (map['object'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

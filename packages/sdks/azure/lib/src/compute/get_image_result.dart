@@ -8,19 +8,25 @@ import 'get_image_os_disk.dart';
 class GetImageResult {
   /// a collection of `data_disk` blocks as defined below.
   final List<GetImageDataDisk> dataDisks;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// the Azure Location where this Image exists.
   final String location;
+
   /// the name of the Image.
   final String? name;
   final String? nameRegex;
+
   /// a `os_disk` block as defined below.
   final List<GetImageOsDisk> osDisks;
   final String resourceGroupName;
   final bool? sortDescending;
+
   /// a mapping of tags to assigned to the resource.
   final Map<String, String> tags;
+
   /// is zone resiliency enabled?
   final bool zoneResilient;
 
@@ -50,12 +56,19 @@ class GetImageResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks': pulumi.Input.encodeList<GetImageDataDisk, Map<String, dynamic>>(dataDisks, (value) => value.toMap()),
+      'dataDisks':
+          pulumi.Input.encodeList<GetImageDataDisk, Map<String, dynamic>>(
+            dataDisks,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'location': location,
       'name': ?name,
       'nameRegex': ?nameRegex,
-      'osDisks': pulumi.Input.encodeList<GetImageOsDisk, Map<String, dynamic>>(osDisks, (value) => value.toMap()),
+      'osDisks': pulumi.Input.encodeList<GetImageOsDisk, Map<String, dynamic>>(
+        osDisks,
+        (value) => value.toMap(),
+      ),
       'resourceGroupName': resourceGroupName,
       'sortDescending': ?sortDescending,
       'tags': tags,
@@ -65,17 +78,36 @@ class GetImageResult {
 
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
     return GetImageResult(
-      dataDisks: pulumi.Input.decodeList<GetImageDataDisk>(map['dataDisks'], (value) => GetImageDataDisk.fromMap((value as Map).cast<String, dynamic>())),
+      dataDisks: pulumi.Input.decodeList<GetImageDataDisk>(
+        map['dataDisks']!,
+        (value) =>
+            GetImageDataDisk.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       location: map['location'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
-      osDisks: pulumi.Input.decodeList<GetImageOsDisk>(map['osDisks'], (value) => GetImageOsDisk.fromMap((value as Map).cast<String, dynamic>())),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      osDisks: pulumi.Input.decodeList<GetImageOsDisk>(
+        map['osDisks']!,
+        (value) =>
+            GetImageOsDisk.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       resourceGroupName: map['resourceGroupName'] as String,
-      sortDescending: map['sortDescending'] == null ? null : map['sortDescending']! as bool,
+      sortDescending: (() {
+        final guardedValue = map['sortDescending'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       tags: (map['tags'] as Map).cast<String, String>(),
       zoneResilient: map['zoneResilient'] as bool,
     );
   }
 }
-

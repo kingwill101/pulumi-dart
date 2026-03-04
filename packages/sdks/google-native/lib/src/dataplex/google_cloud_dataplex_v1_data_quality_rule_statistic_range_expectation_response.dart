@@ -6,21 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse {
   /// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
   final pulumi.Input<String> maxValue;
+
   /// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
   final pulumi.Input<String> minValue;
+
   /// Optional. The aggregate metric to evaluate.
   final pulumi.Input<String> statistic;
-  /// Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+
+  /// Optional. Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
   final pulumi.Input<bool> strictMaxEnabled;
-  /// Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+
+  /// Optional. Whether column statistic needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
   final pulumi.Input<bool> strictMinEnabled;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse].
   /// [maxValue] Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
   /// [minValue] Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
   /// [statistic] Optional. The aggregate metric to evaluate.
-  /// [strictMaxEnabled] Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
-  /// [strictMinEnabled] Optional. Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+  /// [strictMaxEnabled] Optional. Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+  /// [strictMinEnabled] Optional. Whether column statistic needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
   GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse({
     required this.maxValue,
     required this.minValue,
@@ -39,14 +43,15 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(
-      maxValue: (map['maxValue'] as String).input(),
-      minValue: (map['minValue'] as String).input(),
-      statistic: (map['statistic'] as String).input(),
-      strictMaxEnabled: (map['strictMaxEnabled'] as bool).input(),
-      strictMinEnabled: (map['strictMinEnabled'] as bool).input(),
+      maxValue: pulumi.Input.fromValue(map['maxValue'] as String),
+      minValue: pulumi.Input.fromValue(map['minValue'] as String),
+      statistic: pulumi.Input.fromValue(map['statistic'] as String),
+      strictMaxEnabled: pulumi.Input.fromValue(map['strictMaxEnabled'] as bool),
+      strictMinEnabled: pulumi.Input.fromValue(map['strictMinEnabled'] as bool),
     );
   }
 }
-

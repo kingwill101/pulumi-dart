@@ -9,29 +9,31 @@ class InstanceSystemDisk {
   /// - local_hdd: local hdd disk
   /// - local_ssd: local disk ssd.
   final pulumi.Input<String>? category;
+
   /// System disk size, unit: GB.
   final pulumi.Input<int>? size;
 
   /// Creates a new [InstanceSystemDisk].
   /// [category] System disk type. Value
   /// [size] System disk size, unit: GB.
-  InstanceSystemDisk({
-    this.category,
-    this.size,
-  });
+  InstanceSystemDisk({this.category, this.size});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'category': ?category,
-      'size': ?size,
-    };
+    return <String, dynamic>{'category': ?category, 'size': ?size};
   }
 
   factory InstanceSystemDisk.fromMap(Map<String, dynamic> map) {
     return InstanceSystemDisk(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

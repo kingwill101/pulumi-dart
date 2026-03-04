@@ -8,20 +8,21 @@ class BareMetalAdminClusterClusterOperations {
 
   /// Creates a new [BareMetalAdminClusterClusterOperations].
   /// [enableApplicationLogs] Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
-  BareMetalAdminClusterClusterOperations({
-    this.enableApplicationLogs,
-  });
+  BareMetalAdminClusterClusterOperations({this.enableApplicationLogs});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableApplicationLogs': ?enableApplicationLogs,
-    };
+    return <String, dynamic>{'enableApplicationLogs': ?enableApplicationLogs};
   }
 
-  factory BareMetalAdminClusterClusterOperations.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterClusterOperations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterClusterOperations(
-      enableApplicationLogs: map['enableApplicationLogs'] == null ? null : (map['enableApplicationLogs']! as bool).input(),
+      enableApplicationLogs: (() {
+        final guardedValue = map['enableApplicationLogs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

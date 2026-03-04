@@ -6,16 +6,15 @@ enum PerformanceTier {
   premium("Premium"),
   ultra("Ultra");
 
-  const PerformanceTier(this.value);
-  final String value;
+  const PerformanceTier(this.wireValue);
+  final String wireValue;
 
   static PerformanceTier fromValue(String value) {
     for (final item in PerformanceTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PerformanceTier value: $value');
   }
 }
-

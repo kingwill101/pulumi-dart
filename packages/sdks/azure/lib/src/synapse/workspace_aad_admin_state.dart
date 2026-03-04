@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceAadAdminState {
   /// The login name of the Azure AD Administrator of this Synapse Workspace.
   final pulumi.Input<String>? login;
+
   /// The object id of the Azure AD Administrator of this Synapse Workspace.
   final pulumi.Input<String>? objectId;
+
   /// The ID of the Synapse Workspace where the Azure AD Administrator should be configured.
   final pulumi.Input<String>? synapseWorkspaceId;
+
   /// The tenant id of the Azure AD Administrator of this Synapse Workspace.
   final pulumi.Input<String>? tenantId;
 
@@ -36,11 +39,26 @@ class WorkspaceAadAdminState {
 
   factory WorkspaceAadAdminState.fromMap(Map<String, dynamic> map) {
     return WorkspaceAadAdminState(
-      login: map['login'] == null ? null : (map['login']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      login: (() {
+        final guardedValue = map['login'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      synapseWorkspaceId: (() {
+        final guardedValue = map['synapseWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

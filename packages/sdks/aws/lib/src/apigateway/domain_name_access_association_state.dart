@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainNameAccessAssociationState {
   /// The identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
   final pulumi.Input<String>? accessAssociationSource;
+
   /// The type of the domain name access association source. Valid values are `VPCE`.
   final pulumi.Input<String>? accessAssociationSourceType;
+
   /// ARN of the domain name access association.
   final pulumi.Input<String>? arn;
+
   /// The ARN of the domain name.
   final pulumi.Input<String>? domainNameArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -51,14 +57,45 @@ class DomainNameAccessAssociationState {
 
   factory DomainNameAccessAssociationState.fromMap(Map<String, dynamic> map) {
     return DomainNameAccessAssociationState(
-      accessAssociationSource: map['accessAssociationSource'] == null ? null : ((map['accessAssociationSource'] as String).input()).input(),
-      accessAssociationSourceType: map['accessAssociationSourceType'] == null ? null : ((map['accessAssociationSourceType'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      domainNameArn: map['domainNameArn'] == null ? null : ((map['domainNameArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      accessAssociationSource: (() {
+        final guardedValue = map['accessAssociationSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accessAssociationSourceType: (() {
+        final guardedValue = map['accessAssociationSourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainNameArn: (() {
+        final guardedValue = map['domainNameArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'node_group_state.dart';
 ///
 /// For information about Star Rocks Node Group and how to use it, see [What is Node Group](https://next.api.alibabacloud.com/document/starrocks/2022-10-19/CreateNodeGroup).
 ///
-/// > **NOTE:** Available since v1.262.0.
+/// &gt; **NOTE:** Available since v1.262.0.
 ///
 /// ## Example Usage
 ///
@@ -532,51 +532,66 @@ import 'node_group_state.dart';
 class NodeGroup extends pulumi.CustomResource {
   /// Whether auto-renewal is enabled.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<bool?> autoRenew;
+
   /// The creation time of the node group.
   late final pulumi.Output<String> createTime;
+
   /// Number of CUs. CU (Compute Unit) is the basic unit of service measurement, where 1 CU = 1 vCPU + 4 GiB memory. When SpecType is memory-optimized, 1 CU = 1 vCPU + 8 GiB memory.
   late final pulumi.Output<int?> cu;
+
   /// Description of node group.
   late final pulumi.Output<String?> description;
+
   /// Number of disks.
   late final pulumi.Output<int?> diskNumber;
+
   /// Duration of node group.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<int?> duration;
+
   /// Whether to restart in fast restart mode. The default is false.
   /// - true: Reboots the compute node in fast restart mode. Restart computing nodes in multiple batches, restart in parallel within a batch, and execute serially between batches;
   /// - false: Restarts the compute node in rolling restart mode.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<bool?> fastMode;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// Node group local SSD instance specification. This value is only relevant when based on ECS instances and SpecType is set to local SSD/large-scale storage.
   late final pulumi.Output<String?> localStorageInstanceType;
+
   /// The ID of the node group.
   late final pulumi.Output<String> nodeGroupId;
+
   /// The name of the node group.
   late final pulumi.Output<String?> nodeGroupName;
+
   /// Payment type:
   /// - PrePaid: Subscription (prepaid).
   /// - PostPaid: Pay-as-you-go (postpaid).
   late final pulumi.Output<String?> payType;
+
   /// Unit of purchase duration:
   /// - Month
   /// - Year
   ///
   /// This is only applicable when payType is set to PrePaid.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> pricingCycle;
   late final pulumi.Output<String?> promotionOptionNo;
+
   /// The region ID of the node group.
   late final pulumi.Output<String> regionId;
+
   /// Number of nodes.
   late final pulumi.Output<int?> residentNodeNumber;
+
   /// Node group spec types include the following:
   /// - standard: Standard edition.
   /// - localSSD: Local SSD.
@@ -584,14 +599,17 @@ class NodeGroup extends pulumi.CustomResource {
   /// - ramEnhanced: Memory-enhanced type.
   /// - networkEnhanced: Network-enhanced type.
   late final pulumi.Output<String?> specType;
+
   /// Node group status, including the following values:_FAILED: Creation failed._CONFIG: Modifying configuration._TIMEZONE: Modifying timezone._SCALING_OUT: Elastic scaling out._SCALING_IN: Elastic scaling in._OUT: Scaling out._IN: Scaling in._UP: Scaling up (upgrading configuration)._DOWN: Scaling down (downgrading configuration)._PUBLIC_NETWORK: Enabling public network._PUBLIC_NETWORK: Disabling public network._AZ: Switching availability zones.
   late final pulumi.Output<String> status;
+
   /// Performance levels of the cloud disk. Includes the following values:
   /// - pl0: Maximum random read/write IOPS of a single disk is 10,000.
   /// - pl1: Maximum random read/write IOPS of a single disk is 50,000.
   /// - pl2: Maximum random read/write IOPS of a single disk is 100,000.
   /// - pl3: Maximum random read/write IOPS of a single disk is 1,000,000.
   late final pulumi.Output<String?> storagePerformanceLevel;
+
   /// Storage size, measured in GiB.
   late final pulumi.Output<int?> storageSize;
 
@@ -604,31 +622,35 @@ class NodeGroup extends pulumi.CustomResource {
     NodeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:starrocks/nodeGroup:NodeGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.createTime = registerOutput<String>('createTime');
-    this.cu = registerOutput<int?>('cu');
-    this.description = registerOutput<String?>('description');
-    this.diskNumber = registerOutput<int?>('diskNumber');
-    this.duration = registerOutput<int?>('duration');
-    this.fastMode = registerOutput<bool?>('fastMode');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.localStorageInstanceType = registerOutput<String?>('localStorageInstanceType');
-    this.nodeGroupId = registerOutput<String>('nodeGroupId');
-    this.nodeGroupName = registerOutput<String?>('nodeGroupName');
-    this.payType = registerOutput<String?>('payType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.promotionOptionNo = registerOutput<String?>('promotionOptionNo');
-    this.regionId = registerOutput<String>('regionId');
-    this.residentNodeNumber = registerOutput<int?>('residentNodeNumber');
-    this.specType = registerOutput<String?>('specType');
-    this.status = registerOutput<String>('status');
-    this.storagePerformanceLevel = registerOutput<String?>('storagePerformanceLevel');
-    this.storageSize = registerOutput<int?>('storageSize');
+         'alicloud:starrocks/nodeGroup:NodeGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoRenew = registerOutput<bool?>('autoRenew');
+    createTime = registerOutput<String>('createTime');
+    cu = registerOutput<int?>('cu');
+    description = registerOutput<String?>('description');
+    diskNumber = registerOutput<int?>('diskNumber');
+    duration = registerOutput<int?>('duration');
+    fastMode = registerOutput<bool?>('fastMode');
+    instanceId = registerOutput<String>('instanceId');
+    localStorageInstanceType = registerOutput<String?>(
+      'localStorageInstanceType',
+    );
+    nodeGroupId = registerOutput<String>('nodeGroupId');
+    nodeGroupName = registerOutput<String?>('nodeGroupName');
+    payType = registerOutput<String?>('payType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    promotionOptionNo = registerOutput<String?>('promotionOptionNo');
+    regionId = registerOutput<String>('regionId');
+    residentNodeNumber = registerOutput<int?>('residentNodeNumber');
+    specType = registerOutput<String?>('specType');
+    status = registerOutput<String>('status');
+    storagePerformanceLevel = registerOutput<String?>(
+      'storagePerformanceLevel',
+    );
+    storageSize = registerOutput<int?>('storageSize');
   }
 
   /// Gets an existing [NodeGroup] resource's state with the given [name] and [id].
@@ -649,30 +671,34 @@ class NodeGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:starrocks/nodeGroup:NodeGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.createTime = registerOutput<String>('createTime');
-    this.cu = registerOutput<int?>('cu');
-    this.description = registerOutput<String?>('description');
-    this.diskNumber = registerOutput<int?>('diskNumber');
-    this.duration = registerOutput<int?>('duration');
-    this.fastMode = registerOutput<bool?>('fastMode');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.localStorageInstanceType = registerOutput<String?>('localStorageInstanceType');
-    this.nodeGroupId = registerOutput<String>('nodeGroupId');
-    this.nodeGroupName = registerOutput<String?>('nodeGroupName');
-    this.payType = registerOutput<String?>('payType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.promotionOptionNo = registerOutput<String?>('promotionOptionNo');
-    this.regionId = registerOutput<String>('regionId');
-    this.residentNodeNumber = registerOutput<int?>('residentNodeNumber');
-    this.specType = registerOutput<String?>('specType');
-    this.status = registerOutput<String>('status');
-    this.storagePerformanceLevel = registerOutput<String?>('storagePerformanceLevel');
-    this.storageSize = registerOutput<int?>('storageSize');
+         'alicloud:starrocks/nodeGroup:NodeGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoRenew = registerOutput<bool?>('autoRenew');
+    createTime = registerOutput<String>('createTime');
+    cu = registerOutput<int?>('cu');
+    description = registerOutput<String?>('description');
+    diskNumber = registerOutput<int?>('diskNumber');
+    duration = registerOutput<int?>('duration');
+    fastMode = registerOutput<bool?>('fastMode');
+    instanceId = registerOutput<String>('instanceId');
+    localStorageInstanceType = registerOutput<String?>(
+      'localStorageInstanceType',
+    );
+    nodeGroupId = registerOutput<String>('nodeGroupId');
+    nodeGroupName = registerOutput<String?>('nodeGroupName');
+    payType = registerOutput<String?>('payType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    promotionOptionNo = registerOutput<String?>('promotionOptionNo');
+    regionId = registerOutput<String>('regionId');
+    residentNodeNumber = registerOutput<int?>('residentNodeNumber');
+    specType = registerOutput<String?>('specType');
+    status = registerOutput<String>('status');
+    storagePerformanceLevel = registerOutput<String?>(
+      'storagePerformanceLevel',
+    );
+    storageSize = registerOutput<int?>('storageSize');
   }
 }

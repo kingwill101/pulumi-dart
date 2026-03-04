@@ -5,16 +5,17 @@ enum EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy {
   spii("SPII"),
   unsure("UNSURE");
 
-  const EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy(this.value);
-  final String value;
+  const EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy(this.wireValue);
+  final String wireValue;
 
   static EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy fromValue(String value) {
     for (final item in EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmLoggingGwsSanitizeOptionsPrivacy value: $value',
+    );
   }
 }
-

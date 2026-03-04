@@ -8,70 +8,92 @@ import 'vmware_replicated_vm_network_interface.dart';
 class VmwareReplicatedVmState {
   /// The name of VMWare appliance which handles the replication. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applianceName;
+
   /// The ID of the stroage account that should be used for logging during replication.
   ///
-  /// > **Note:** Only standard types of storage accounts are allowed.
+  /// &gt; **Note:** Only standard types of storage accounts are allowed.
   ///
-  /// > **Note:** Only one of `default_log_storage_account_id` or `managed_disk` must be specified.
+  /// &gt; **Note:** Only one of `default_log_storage_account_id` or `managed_disk` must be specified.
   ///
-  /// > **Note:** Changing `default_log_storage_account_id` forces a new resource to be created. But removing it does not.
+  /// &gt; **Note:** Changing `default_log_storage_account_id` forces a new resource to be created. But removing it does not.
   ///
-  /// > **Note:** When `default_log_storage_account_id` co-exist with `managed_disk`, the value of `default_log_storage_account_id` must be as same as `log_storage_account_id` of every `managed_disk` or it forces a new resource to be created.
+  /// &gt; **Note:** When `default_log_storage_account_id` co-exist with `managed_disk`, the value of `default_log_storage_account_id` must be as same as `log_storage_account_id` of every `managed_disk` or it forces a new resource to be created.
   final pulumi.Input<String>? defaultLogStorageAccountId;
+
   /// The type of storage account that should be used for recovery disks when a failover is done. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`.
   ///
-  /// > **Note:** Only one of `default_recovery_disk_type` or `managed_disk` must be specified.
+  /// &gt; **Note:** Only one of `default_recovery_disk_type` or `managed_disk` must be specified.
   ///
-  /// > **Note:** Changing `default_recovery_disk_type` forces a new resource to be created. But removing it does not.
+  /// &gt; **Note:** Changing `default_recovery_disk_type` forces a new resource to be created. But removing it does not.
   ///
-  /// > **Note:** When `default_recovery_disk_type` co-exist with `managed_disk`, the value of `default_recovery_disk_type` must be as same as `target_disk_type` of every `managed_disk` or it forces a new resource to be created.
+  /// &gt; **Note:** When `default_recovery_disk_type` co-exist with `managed_disk`, the value of `default_recovery_disk_type` must be as same as `target_disk_type` of every `managed_disk` or it forces a new resource to be created.
   final pulumi.Input<String>? defaultRecoveryDiskType;
+
   /// The ID of the default Disk Encryption Set that should be used for the disks when a failover is done.
   ///
-  /// > **Note:** Changing `default_target_disk_encryption_set_id` forces a new resource to be created. But removing it does not.
+  /// &gt; **Note:** Changing `default_target_disk_encryption_set_id` forces a new resource to be created. But removing it does not.
   ///
-  /// > **Note:** When `default_target_disk_encryption_set_id` co-exist with `managed_disk`, the value of `default_target_disk_encryption_set_id` must be as same as `target_disk_encryption_set_id` of every `managed_disk` or it forces a new resource to be created.
+  /// &gt; **Note:** When `default_target_disk_encryption_set_id` co-exist with `managed_disk`, the value of `default_target_disk_encryption_set_id` must be as same as `target_disk_encryption_set_id` of every `managed_disk` or it forces a new resource to be created.
   final pulumi.Input<String>? defaultTargetDiskEncryptionSetId;
+
   /// The license type of the VM. Possible values are `NoLicenseType`, `NotSpecified` and `WindowsServer`. Defaults to `NotSpecified`.
   final pulumi.Input<String>? licenseType;
+
   /// One or more `managed_disk` block as defined below. It's available only if mobility service is already installed on the source VM.
   ///
-  /// > **Note:** A replicated VM could be created without `managed_disk` block, once the block has been specified, changing it expect removing it forces a new resource to be created.
+  /// &gt; **Note:** A replicated VM could be created without `managed_disk` block, once the block has been specified, changing it expect removing it forces a new resource to be created.
   final pulumi.Input<List<VmwareReplicatedVmManagedDisk>>? managedDisks;
+
   /// Name of group in which all machines will replicate together and have shared crash consistent and app-consistent recovery points when failed over.
   final pulumi.Input<String>? multiVmGroupName;
+
   /// The name of the replicated VM. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// One or more `network_interface` block as defined below.
-  final pulumi.Input<List<VmwareReplicatedVmNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<VmwareReplicatedVmNetworkInterface>>?
+  networkInterfaces;
+
   /// The name of the credential to access the source VM. Changing this forces a new resource to be created. More information about the credentials could be found [here](https://learn.microsoft.com/en-us/azure/site-recovery/deploy-vmware-azure-replication-appliance-modernized).
   final pulumi.Input<String>? physicalServerCredentialName;
+
   /// The ID of the policy to use for this replicated VM.
   final pulumi.Input<String>? recoveryReplicationPolicyId;
+
   /// The ID of the Recovery Services Vault where the replicated VM is created.
   final pulumi.Input<String>? recoveryVaultId;
+
   /// The name of the source VM in VMWare. Changing this forces a new resource to be created.
   final pulumi.Input<String>? sourceVmName;
+
   /// The ID of availability set that the new VM should belong to when a failover is done.
   final pulumi.Input<String>? targetAvailabilitySetId;
+
   /// The ID of the storage account that should be used for boot diagnostics when a failover is done.
   final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
+
   /// The ID of network to use when a failover is done.
   ///
-  /// > **Note:** `target_network_id` is required when `network_interface` is specified.
+  /// &gt; **Note:** `target_network_id` is required when `network_interface` is specified.
   final pulumi.Input<String>? targetNetworkId;
+
   /// The ID of Proximity Placement Group the new VM should belong to when a failover is done.
   ///
-  /// > **Note:** Only one of `target_availability_set_id` or `target_zone` can be specified.
+  /// &gt; **Note:** Only one of `target_availability_set_id` or `target_zone` can be specified.
   final pulumi.Input<String>? targetProximityPlacementGroupId;
+
   /// The ID of resource group where the VM should be created when a failover is done.
   final pulumi.Input<String>? targetResourceGroupId;
+
   /// Name of the VM that should be created when a failover is done. Changing this forces a new resource to be created.
   final pulumi.Input<String>? targetVmName;
+
   /// Size of the VM that should be created when a failover is done, such as `Standard_F2`. If it's not specified, it will automatically be set by detecting the source VM size.
   final pulumi.Input<String>? targetVmSize;
+
   /// Specifies the Availability Zone where the Failover VM should exist.
   final pulumi.Input<String>? targetZone;
+
   /// The ID of network to use when a test failover is done.
   final pulumi.Input<String>? testNetworkId;
 
@@ -130,16 +152,39 @@ class VmwareReplicatedVmState {
       'defaultRecoveryDiskType': ?defaultRecoveryDiskType,
       'defaultTargetDiskEncryptionSetId': ?defaultTargetDiskEncryptionSetId,
       'licenseType': ?licenseType,
-      'managedDisks': ?pulumi.Input.mapOptionalInputValue<List<VmwareReplicatedVmManagedDisk>, List<Map<String, dynamic>>>(managedDisks, (value) => pulumi.Input.encodeList<VmwareReplicatedVmManagedDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managedDisks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VmwareReplicatedVmManagedDisk>,
+            List<Map<String, dynamic>>
+          >(
+            managedDisks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VmwareReplicatedVmManagedDisk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'multiVmGroupName': ?multiVmGroupName,
       'name': ?name,
-      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<VmwareReplicatedVmNetworkInterface>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<VmwareReplicatedVmNetworkInterface, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkInterfaces':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VmwareReplicatedVmNetworkInterface>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VmwareReplicatedVmNetworkInterface,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'physicalServerCredentialName': ?physicalServerCredentialName,
       'recoveryReplicationPolicyId': ?recoveryReplicationPolicyId,
       'recoveryVaultId': ?recoveryVaultId,
       'sourceVmName': ?sourceVmName,
       'targetAvailabilitySetId': ?targetAvailabilitySetId,
-      'targetBootDiagnosticsStorageAccountId': ?targetBootDiagnosticsStorageAccountId,
+      'targetBootDiagnosticsStorageAccountId':
+          ?targetBootDiagnosticsStorageAccountId,
       'targetNetworkId': ?targetNetworkId,
       'targetProximityPlacementGroupId': ?targetProximityPlacementGroupId,
       'targetResourceGroupId': ?targetResourceGroupId,
@@ -152,29 +197,130 @@ class VmwareReplicatedVmState {
 
   factory VmwareReplicatedVmState.fromMap(Map<String, dynamic> map) {
     return VmwareReplicatedVmState(
-      applianceName: map['applianceName'] == null ? null : (map['applianceName']! as String).input(),
-      defaultLogStorageAccountId: map['defaultLogStorageAccountId'] == null ? null : (map['defaultLogStorageAccountId']! as String).input(),
-      defaultRecoveryDiskType: map['defaultRecoveryDiskType'] == null ? null : (map['defaultRecoveryDiskType']! as String).input(),
-      defaultTargetDiskEncryptionSetId: map['defaultTargetDiskEncryptionSetId'] == null ? null : (map['defaultTargetDiskEncryptionSetId']! as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
-      managedDisks: map['managedDisks'] == null ? null : (pulumi.Input.decodeList<VmwareReplicatedVmManagedDisk>(map['managedDisks']!, (value) => VmwareReplicatedVmManagedDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      multiVmGroupName: map['multiVmGroupName'] == null ? null : (map['multiVmGroupName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<VmwareReplicatedVmNetworkInterface>(map['networkInterfaces']!, (value) => VmwareReplicatedVmNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      physicalServerCredentialName: map['physicalServerCredentialName'] == null ? null : (map['physicalServerCredentialName']! as String).input(),
-      recoveryReplicationPolicyId: map['recoveryReplicationPolicyId'] == null ? null : (map['recoveryReplicationPolicyId']! as String).input(),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId']! as String).input(),
-      sourceVmName: map['sourceVmName'] == null ? null : (map['sourceVmName']! as String).input(),
-      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : (map['targetAvailabilitySetId']! as String).input(),
-      targetBootDiagnosticsStorageAccountId: map['targetBootDiagnosticsStorageAccountId'] == null ? null : (map['targetBootDiagnosticsStorageAccountId']! as String).input(),
-      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId']! as String).input(),
-      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : (map['targetProximityPlacementGroupId']! as String).input(),
-      targetResourceGroupId: map['targetResourceGroupId'] == null ? null : (map['targetResourceGroupId']! as String).input(),
-      targetVmName: map['targetVmName'] == null ? null : (map['targetVmName']! as String).input(),
-      targetVmSize: map['targetVmSize'] == null ? null : (map['targetVmSize']! as String).input(),
-      targetZone: map['targetZone'] == null ? null : (map['targetZone']! as String).input(),
-      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId']! as String).input(),
+      applianceName: (() {
+        final guardedValue = map['applianceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultLogStorageAccountId: (() {
+        final guardedValue = map['defaultLogStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultRecoveryDiskType: (() {
+        final guardedValue = map['defaultRecoveryDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultTargetDiskEncryptionSetId: (() {
+        final guardedValue = map['defaultTargetDiskEncryptionSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenseType: (() {
+        final guardedValue = map['licenseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedDisks: (() {
+        final guardedValue = map['managedDisks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VmwareReplicatedVmManagedDisk>(
+            guardedValue,
+            (value) => VmwareReplicatedVmManagedDisk.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      multiVmGroupName: (() {
+        final guardedValue = map['multiVmGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaces: (() {
+        final guardedValue = map['networkInterfaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VmwareReplicatedVmNetworkInterface>(
+            guardedValue,
+            (value) => VmwareReplicatedVmNetworkInterface.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      physicalServerCredentialName: (() {
+        final guardedValue = map['physicalServerCredentialName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryReplicationPolicyId: (() {
+        final guardedValue = map['recoveryReplicationPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryVaultId: (() {
+        final guardedValue = map['recoveryVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceVmName: (() {
+        final guardedValue = map['sourceVmName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetAvailabilitySetId: (() {
+        final guardedValue = map['targetAvailabilitySetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetBootDiagnosticsStorageAccountId: (() {
+        final guardedValue = map['targetBootDiagnosticsStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetNetworkId: (() {
+        final guardedValue = map['targetNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetProximityPlacementGroupId: (() {
+        final guardedValue = map['targetProximityPlacementGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceGroupId: (() {
+        final guardedValue = map['targetResourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVmName: (() {
+        final guardedValue = map['targetVmName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVmSize: (() {
+        final guardedValue = map['targetVmSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetZone: (() {
+        final guardedValue = map['targetZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testNetworkId: (() {
+        final guardedValue = map['testNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

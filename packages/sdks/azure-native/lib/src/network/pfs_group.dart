@@ -10,16 +10,15 @@ enum PfsGroup {
   valuePFS14("PFS14"),
   valuePFSMM("PFSMM");
 
-  const PfsGroup(this.value);
-  final String value;
+  const PfsGroup(this.wireValue);
+  final String wireValue;
 
   static PfsGroup fromValue(String value) {
     for (final item in PfsGroup.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PfsGroup value: $value');
   }
 }
-

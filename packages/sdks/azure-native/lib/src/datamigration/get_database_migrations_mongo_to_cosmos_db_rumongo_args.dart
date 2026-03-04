@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs {
   /// Name of the migration.
   final pulumi.Input<String> migrationName;
+
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the target resource/account.
   final pulumi.Input<String> targetResourceName;
 
@@ -32,12 +34,17 @@ class GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs {
     };
   }
 
-  factory GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs(
-      migrationName: (map['migrationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetResourceName: (map['targetResourceName'] as String).input(),
+      migrationName: pulumi.Input.fromValue(map['migrationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      targetResourceName: pulumi.Input.fromValue(
+        map['targetResourceName'] as String,
+      ),
     );
   }
 }
-

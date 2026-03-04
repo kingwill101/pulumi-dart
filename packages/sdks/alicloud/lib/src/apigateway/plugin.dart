@@ -6,7 +6,7 @@ import 'plugin_state.dart';
 ///
 /// For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createplugin).
 ///
-/// > **NOTE:** Available since v1.187.0.
+/// &gt; **NOTE:** Available since v1.187.0.
 ///
 /// ## Example Usage
 ///
@@ -363,12 +363,16 @@ import 'plugin_state.dart';
 class Plugin extends pulumi.CustomResource {
   /// Create time.
   late final pulumi.Output<String> createTime;
+
   /// The description of the plug-in, which cannot exceed 200 characters.
   late final pulumi.Output<String?> description;
+
   /// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
   late final pulumi.Output<String> pluginData;
+
   /// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
   late final pulumi.Output<String> pluginName;
+
   /// The type of the plug-in. Valid values:
   /// - "trafficControl"
   /// - "ipControl"
@@ -385,6 +389,7 @@ class Plugin extends pulumi.CustomResource {
   /// - "logMask"
   /// - "transformer".
   late final pulumi.Output<String> pluginType;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -392,22 +397,19 @@ class Plugin extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Plugin]. {@macro pulumi_apigateway_plugin_plugin_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Plugin(
-    String name, {
-    PluginArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:apigateway/plugin:Plugin',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.pluginData = registerOutput<String>('pluginData');
-    this.pluginName = registerOutput<String>('pluginName');
-    this.pluginType = registerOutput<String>('pluginType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+  Plugin(String name, {PluginArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:apigateway/plugin:Plugin',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    pluginData = registerOutput<String>('pluginData');
+    pluginName = registerOutput<String>('pluginName');
+    pluginType = registerOutput<String>('pluginType');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Plugin] resource's state with the given [name] and [id].
@@ -428,16 +430,16 @@ class Plugin extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/plugin:Plugin',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.pluginData = registerOutput<String>('pluginData');
-    this.pluginName = registerOutput<String>('pluginName');
-    this.pluginType = registerOutput<String>('pluginType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:apigateway/plugin:Plugin',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    pluginData = registerOutput<String>('pluginData');
+    pluginName = registerOutput<String>('pluginName');
+    pluginType = registerOutput<String>('pluginType');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

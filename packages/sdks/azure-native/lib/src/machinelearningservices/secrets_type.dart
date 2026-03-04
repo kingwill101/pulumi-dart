@@ -5,16 +5,15 @@ enum SecretsType {
   valueSas("Sas"),
   valueServicePrincipal("ServicePrincipal");
 
-  const SecretsType(this.value);
-  final String value;
+  const SecretsType(this.wireValue);
+  final String wireValue;
 
   static SecretsType fromValue(String value) {
     for (final item in SecretsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecretsType value: $value');
   }
 }
-

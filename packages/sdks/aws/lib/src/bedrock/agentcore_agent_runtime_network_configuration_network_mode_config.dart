@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig {
   /// Security groups associated with the VPC configuration.
   final pulumi.Input<List<String>> securityGroups;
+
   /// Subnets associated with the VPC configuration.
   final pulumi.Input<List<String>> subnets;
 
@@ -23,11 +24,14 @@ class AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig {
     };
   }
 
-  factory AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig(
-      securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      securityGroups: pulumi.Input.fromValue(
+        (map['securityGroups'] as List).cast<String>(),
+      ),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

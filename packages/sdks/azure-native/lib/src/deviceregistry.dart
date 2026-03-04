@@ -1,5 +1,3 @@
-library module_deviceregistry;
-
 export 'deviceregistry/asset.dart';
 export 'deviceregistry/asset_args.dart';
 export 'deviceregistry/asset_endpoint_profile.dart';

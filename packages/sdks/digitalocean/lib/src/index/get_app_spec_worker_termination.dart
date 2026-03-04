@@ -8,20 +8,19 @@ class GetAppSpecWorkerTermination {
 
   /// Creates a new [GetAppSpecWorkerTermination].
   /// [gracePeriodSeconds] The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-  GetAppSpecWorkerTermination({
-    this.gracePeriodSeconds,
-  });
+  GetAppSpecWorkerTermination({this.gracePeriodSeconds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gracePeriodSeconds': ?gracePeriodSeconds,
-    };
+    return <String, dynamic>{'gracePeriodSeconds': ?gracePeriodSeconds};
   }
 
   factory GetAppSpecWorkerTermination.fromMap(Map<String, dynamic> map) {
     return GetAppSpecWorkerTermination(
-      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds']! as int).input(),
+      gracePeriodSeconds: (() {
+        final guardedValue = map['gracePeriodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppSlotConfigurationNamesArgs {
   /// List of application settings names.
   final pulumi.Input<List<String>>? appSettingNames;
+
   /// List of external Azure storage account identifiers.
   final pulumi.Input<List<String>>? azureStorageConfigNames;
+
   /// List of connection string names.
   final pulumi.Input<List<String>>? connectionStringNames;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,13 +54,30 @@ class WebAppSlotConfigurationNamesArgs {
 
   factory WebAppSlotConfigurationNamesArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSlotConfigurationNamesArgs(
-      appSettingNames: map['appSettingNames'] == null ? null : ((map['appSettingNames']! as List).cast<String>()).input(),
-      azureStorageConfigNames: map['azureStorageConfigNames'] == null ? null : ((map['azureStorageConfigNames']! as List).cast<String>()).input(),
-      connectionStringNames: map['connectionStringNames'] == null ? null : ((map['connectionStringNames']! as List).cast<String>()).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      appSettingNames: (() {
+        final guardedValue = map['appSettingNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      azureStorageConfigNames: (() {
+        final guardedValue = map['azureStorageConfigNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      connectionStringNames: (() {
+        final guardedValue = map['connectionStringNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

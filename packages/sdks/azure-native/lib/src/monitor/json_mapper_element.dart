@@ -3,16 +3,15 @@ enum JsonMapperElement {
   body("body"),
   attributes("attributes");
 
-  const JsonMapperElement(this.value);
-  final String value;
+  const JsonMapperElement(this.wireValue);
+  final String wireValue;
 
   static JsonMapperElement fromValue(String value) {
     for (final item in JsonMapperElement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JsonMapperElement value: $value');
   }
 }
-

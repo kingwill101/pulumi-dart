@@ -4,7 +4,7 @@ import 'implicit_data_disk_from_source_state.dart';
 
 /// Manages an implicit Data Disk of a Virtual Machine.
 ///
-/// > **Note:** The Implicit Data Disk will be deleted instantly after this resource is destroyed. If you want to detach this disk only, you may set `detach_implicit_data_disk_on_deletion` field to `true` within the `virtual_machine` block in the provider `features` block.
+/// &gt; **Note:** The Implicit Data Disk will be deleted instantly after this resource is destroyed. If you want to detach this disk only, you may set `detach_implicit_data_disk_on_deletion` field to `true` within the `virtual_machine` block in the provider `features` block.
 ///
 /// ## Example Usage
 ///
@@ -664,7 +664,7 @@ import 'implicit_data_disk_from_source_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01, 2023-04-02
@@ -677,30 +677,37 @@ import 'implicit_data_disk_from_source_state.dart';
 /// $ pulumi import azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Compute/virtualMachines/machine1/dataDisks/disk1
 /// ```
 ///
-/// > **Note:** This is a Terraform Unique ID matching the format: `{virtualMachineID}/dataDisks/{diskName}`
+/// &gt; **Note:** This is a Terraform Unique ID matching the format: `{virtualMachineID}/dataDisks/{diskName}`
 class ImplicitDataDiskFromSource extends pulumi.CustomResource {
   /// Specifies the caching requirements for this Data Disk. Possible values are `ReadOnly` and `ReadWrite`.
   late final pulumi.Output<String?> caching;
+
   /// Specifies the Create Option of the Data Disk. The only possible value is `Copy`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> createOption;
+
   /// Specifies the size of the Data Disk in gigabytes.
   ///
-  /// > **Note:** Updating `disk_size_gb` to shrink the disk size is not supported on Azure and forces a new Data Disk to be created.
+  /// &gt; **Note:** Updating `disk_size_gb` to shrink the disk size is not supported on Azure and forces a new Data Disk to be created.
   ///
-  /// > **Note:** In certain conditions the Data Disk size can be updated without shutting down the Virtual Machine, however only a subset of Virtual Machine SKUs/Disk combinations support this. More information can be found [for Linux Virtual Machines](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/expand-disks?tabs=azure-cli%2Cubuntu#expand-without-downtime) and [Windows Virtual Machines](https://learn.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-without-downtime) respectively.
+  /// &gt; **Note:** In certain conditions the Data Disk size can be updated without shutting down the Virtual Machine, however only a subset of Virtual Machine SKUs/Disk combinations support this. More information can be found [for Linux Virtual Machines](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/expand-disks?tabs=azure-cli%2Cubuntu#expand-without-downtime) and [Windows Virtual Machines](https://learn.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-without-downtime) respectively.
   ///
-  /// > **Note:** If the VM does not meet the requirements to expand the disk without downtime, changing this value is disruptive. The VM will be shut down and deallocated as required by Azure to action the change. Terraform will attempt to start the VM again after the update if it was in a `running` state prior to the change.
+  /// &gt; **Note:** If the VM does not meet the requirements to expand the disk without downtime, changing this value is disruptive. The VM will be shut down and deallocated as required by Azure to action the change. Terraform will attempt to start the VM again after the update if it was in a `running` state prior to the change.
   ///
-  /// > **Note:** Expanding Ultra Disks and Premium SSD v2 disks without downtime has additional limitations. Allow up to 10 minutes for the correct size to be reflected, and a `rescan` function may be required. For more details, refer to [Expand with Ultra Disks and Premium SSD v2](https://learn.microsoft.com/azure/virtual-machines/linux/expand-disks?tabs=ubuntu#expand-with-ultra-disks-and-premium-ssd-v2).
+  /// &gt; **Note:** Expanding Ultra Disks and Premium SSD v2 disks without downtime has additional limitations. Allow up to 10 minutes for the correct size to be reflected, and a `rescan` function may be required. For more details, refer to [Expand with Ultra Disks and Premium SSD v2](https://learn.microsoft.com/azure/virtual-machines/linux/expand-disks?tabs=ubuntu#expand-with-ultra-disks-and-premium-ssd-v2).
   late final pulumi.Output<int> diskSizeGb;
+
   /// The Logical Unit Number of the Data Disk, which needs to be unique within the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<int> lun;
+
   /// Specifies the name of this Data Disk. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the source resource which this Data Disk was created from. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourceResourceId;
+
   /// The ID of the Virtual Machine to which the Data Disk should be attached. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
+
   /// Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
   late final pulumi.Output<bool?> writeAcceleratorEnabled;
 
@@ -713,19 +720,19 @@ class ImplicitDataDiskFromSource extends pulumi.CustomResource {
     ImplicitDataDiskFromSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caching = registerOutput<String?>('caching');
-    this.createOption = registerOutput<String>('createOption');
-    this.diskSizeGb = registerOutput<int>('diskSizeGb');
-    this.lun = registerOutput<int>('lun');
+         'azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caching = registerOutput<String?>('caching');
+    createOption = registerOutput<String>('createOption');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    lun = registerOutput<int>('lun');
     this.name = registerOutput<String>('name');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
-    this.writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
   }
 
   /// Gets an existing [ImplicitDataDiskFromSource] resource's state with the given [name] and [id].
@@ -746,18 +753,18 @@ class ImplicitDataDiskFromSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caching = registerOutput<String?>('caching');
-    this.createOption = registerOutput<String>('createOption');
-    this.diskSizeGb = registerOutput<int>('diskSizeGb');
-    this.lun = registerOutput<int>('lun');
+         'azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caching = registerOutput<String?>('caching');
+    createOption = registerOutput<String>('createOption');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    lun = registerOutput<int>('lun');
     this.name = registerOutput<String>('name');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
-    this.writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    writeAcceleratorEnabled = registerOutput<bool?>('writeAcceleratorEnabled');
   }
 }

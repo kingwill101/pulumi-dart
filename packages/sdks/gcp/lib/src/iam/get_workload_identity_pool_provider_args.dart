@@ -10,9 +10,11 @@ class GetWorkloadIdentityPoolProviderArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The id of the pool which is the
   /// final component of the pool resource name.
   final pulumi.Input<String> workloadIdentityPoolId;
+
   /// The id of the provider which is the
   /// final component of the resource name.
   ///
@@ -37,12 +39,21 @@ class GetWorkloadIdentityPoolProviderArgs {
     };
   }
 
-  factory GetWorkloadIdentityPoolProviderArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolProviderArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadIdentityPoolProviderArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
-      workloadIdentityPoolProviderId: (map['workloadIdentityPoolProviderId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadIdentityPoolId: pulumi.Input.fromValue(
+        map['workloadIdentityPoolId'] as String,
+      ),
+      workloadIdentityPoolProviderId: pulumi.Input.fromValue(
+        map['workloadIdentityPoolProviderId'] as String,
+      ),
     );
   }
 }
-

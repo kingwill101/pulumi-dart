@@ -775,7 +775,7 @@ import 'custom_domain_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -790,19 +790,23 @@ import 'custom_domain_state.dart';
 class CustomDomain extends pulumi.CustomResource {
   /// The Certificate Binding type. Possible values are `Auto`, `Disabled` and `SniEnabled`. Required with `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
   ///
-  /// !> **Note:** If using an Azure Managed Certificate `container_app_environment_certificate_id` and `certificate_binding_type` should be added to `ignore_changes` to prevent resource recreation due to these values being modified asynchronously outside of Terraform.
+  /// !&gt; **Note:** If using an Azure Managed Certificate `container_app_environment_certificate_id` and `certificate_binding_type` should be added to `ignore_changes` to prevent resource recreation due to these values being modified asynchronously outside of Terraform.
   late final pulumi.Output<String?> certificateBindingType;
+
   /// The ID of the Container App Environment Certificate to use. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Omit this value if you wish to use an Azure Managed certificate. You must create the relevant DNS verification steps before this process will be successful.
+  /// &gt; **Note:** Omit this value if you wish to use an Azure Managed certificate. You must create the relevant DNS verification steps before this process will be successful.
   late final pulumi.Output<String?> containerAppEnvironmentCertificateId;
+
   /// The ID of the Container App Environment Managed Certificate to use.
   late final pulumi.Output<String> containerAppEnvironmentManagedCertificateId;
+
   /// The ID of the Container App to which this Custom Domain should be bound. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppId;
+
   /// The fully qualified name of the Custom Domain. Must be the CN or a named SAN in the certificate specified by the `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The Custom Domain verification TXT record requires a prefix of `asuid.`, however, this must be trimmed from the `name` property here. See the [official docs](https://learn.microsoft.com/en-us/azure/container-apps/custom-domains-certificates) for more information.
+  /// &gt; **Note:** The Custom Domain verification TXT record requires a prefix of `asuid.`, however, this must be trimmed from the `name` property here. See the [official docs](https://learn.microsoft.com/en-us/azure/container-apps/custom-domains-certificates) for more information.
   late final pulumi.Output<String> name;
 
   /// Creates a new [CustomDomain].
@@ -814,15 +818,19 @@ class CustomDomain extends pulumi.CustomResource {
     CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/customDomain:CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBindingType = registerOutput<String?>('certificateBindingType');
-    this.containerAppEnvironmentCertificateId = registerOutput<String?>('containerAppEnvironmentCertificateId');
-    this.containerAppEnvironmentManagedCertificateId = registerOutput<String>('containerAppEnvironmentManagedCertificateId');
-    this.containerAppId = registerOutput<String>('containerAppId');
+         'azure:containerapp/customDomain:CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBindingType = registerOutput<String?>('certificateBindingType');
+    containerAppEnvironmentCertificateId = registerOutput<String?>(
+      'containerAppEnvironmentCertificateId',
+    );
+    containerAppEnvironmentManagedCertificateId = registerOutput<String>(
+      'containerAppEnvironmentManagedCertificateId',
+    );
+    containerAppId = registerOutput<String>('containerAppId');
     this.name = registerOutput<String>('name');
   }
 
@@ -844,15 +852,19 @@ class CustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/customDomain:CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBindingType = registerOutput<String?>('certificateBindingType');
-    this.containerAppEnvironmentCertificateId = registerOutput<String?>('containerAppEnvironmentCertificateId');
-    this.containerAppEnvironmentManagedCertificateId = registerOutput<String>('containerAppEnvironmentManagedCertificateId');
-    this.containerAppId = registerOutput<String>('containerAppId');
+         'azure:containerapp/customDomain:CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBindingType = registerOutput<String?>('certificateBindingType');
+    containerAppEnvironmentCertificateId = registerOutput<String?>(
+      'containerAppEnvironmentCertificateId',
+    );
+    containerAppEnvironmentManagedCertificateId = registerOutput<String>(
+      'containerAppEnvironmentManagedCertificateId',
+    );
+    containerAppId = registerOutput<String>('containerAppId');
     this.name = registerOutput<String>('name');
   }
 }

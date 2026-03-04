@@ -6,16 +6,15 @@ enum DeviceLogLevel {
   info("INFO"),
   debug("DEBUG");
 
-  const DeviceLogLevel(this.value);
-  final String value;
+  const DeviceLogLevel(this.wireValue);
+  final String wireValue;
 
   static DeviceLogLevel fromValue(String value) {
     for (final item in DeviceLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeviceLogLevel value: $value');
   }
 }
-

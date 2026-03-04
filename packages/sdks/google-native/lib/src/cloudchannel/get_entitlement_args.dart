@@ -31,10 +31,9 @@ class GetEntitlementArgs {
 
   factory GetEntitlementArgs.fromMap(Map<String, dynamic> map) {
     return GetEntitlementArgs(
-      accountId: (map['accountId'] as String).input(),
-      customerId: (map['customerId'] as String).input(),
-      entitlementId: (map['entitlementId'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      customerId: pulumi.Input.fromValue(map['customerId'] as String),
+      entitlementId: pulumi.Input.fromValue(map['entitlementId'] as String),
     );
   }
 }
-

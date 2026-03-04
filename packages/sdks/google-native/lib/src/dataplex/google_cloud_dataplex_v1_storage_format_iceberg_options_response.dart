@@ -14,15 +14,16 @@ class GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metadataLocation': metadataLocation,
-    };
+    return <String, dynamic>{'metadataLocation': metadataLocation};
   }
 
-  factory GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse(
-      metadataLocation: (map['metadataLocation'] as String).input(),
+      metadataLocation: pulumi.Input.fromValue(
+        map['metadataLocation'] as String,
+      ),
     );
   }
 }
-

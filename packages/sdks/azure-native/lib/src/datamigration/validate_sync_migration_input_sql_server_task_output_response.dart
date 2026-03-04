@@ -7,8 +7,10 @@ import 'reportable_exception_response.dart';
 class ValidateSyncMigrationInputSqlServerTaskOutputResponse {
   /// Database identifier
   final pulumi.Input<String> id;
+
   /// Name of database
   final pulumi.Input<String> name;
+
   /// Errors associated with a selected database object
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -26,16 +28,35 @@ class ValidateSyncMigrationInputSqlServerTaskOutputResponse {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationErrors':
+          pulumi.Input.mapInputValue<
+            List<ReportableExceptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            validationErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReportableExceptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ValidateSyncMigrationInputSqlServerTaskOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory ValidateSyncMigrationInputSqlServerTaskOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ValidateSyncMigrationInputSqlServerTaskOutputResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      validationErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ReportableExceptionResponse>(
+          map['validationErrors']!,
+          (value) => ReportableExceptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

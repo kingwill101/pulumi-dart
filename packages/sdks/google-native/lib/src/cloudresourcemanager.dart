@@ -1,5 +1,3 @@
-library module_cloudresourcemanager;
-
 export 'cloudresourcemanager/audit_config.dart';
 export 'cloudresourcemanager/audit_config_cloudresourcemanager_v1beta1.dart';
 export 'cloudresourcemanager/audit_config_cloudresourcemanager_v2.dart';

@@ -9,20 +9,19 @@ class HorizontalPodAutoscaling {
 
   /// Creates a new [HorizontalPodAutoscaling].
   /// [disabled] Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
-  HorizontalPodAutoscaling({
-    this.disabled,
-  });
+  HorizontalPodAutoscaling({this.disabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disabled': ?disabled,
-    };
+    return <String, dynamic>{'disabled': ?disabled};
   }
 
   factory HorizontalPodAutoscaling.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscaling(
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

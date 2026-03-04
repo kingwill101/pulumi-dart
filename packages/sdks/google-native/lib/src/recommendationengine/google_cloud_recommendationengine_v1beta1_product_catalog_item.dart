@@ -10,20 +10,36 @@ import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_stock_sta
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /// Optional. The available quantity of the item.
   final pulumi.Input<String>? availableQuantity;
+
   /// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
   final pulumi.Input<String>? canonicalProductUri;
+
   /// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
   final pulumi.Input<Map<String, String>>? costs;
+
   /// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
   final pulumi.Input<String>? currencyCode;
+
   /// Optional. The exact product price.
-  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice>? exactPrice;
+  final pulumi.Input<
+    GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice
+  >?
+  exactPrice;
+
   /// Optional. Product images for the catalog item.
   final pulumi.Input<List<GoogleCloudRecommendationengineV1beta1Image>>? images;
+
   /// Optional. The product price range.
-  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange>? priceRange;
+  final pulumi.Input<
+    GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange
+  >?
+  priceRange;
+
   /// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState>? stockState;
+  final pulumi.Input<
+    GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState
+  >?
+  stockState;
 
   /// Creates a new [GoogleCloudRecommendationengineV1beta1ProductCatalogItem].
   /// [availableQuantity] Optional. The available quantity of the item.
@@ -51,24 +67,101 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
       'canonicalProductUri': ?canonicalProductUri,
       'costs': ?costs,
       'currencyCode': ?currencyCode,
-      'exactPrice': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice, Map<String, dynamic>>(exactPrice, (value) => value.toMap()),
-      'images': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudRecommendationengineV1beta1Image>, List<Map<String, dynamic>>>(images, (value) => pulumi.Input.encodeList<GoogleCloudRecommendationengineV1beta1Image, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'priceRange': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange, Map<String, dynamic>>(priceRange, (value) => value.toMap()),
-      'stockState': ?pulumi.Input.mapOptionalInputValue<GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState, String>(stockState, (value) => value.value),
+      'exactPrice':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice,
+            Map<String, dynamic>
+          >(exactPrice, (value) => value.toMap()),
+      'images':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudRecommendationengineV1beta1Image>,
+            List<Map<String, dynamic>>
+          >(
+            images,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudRecommendationengineV1beta1Image,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'priceRange':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange,
+            Map<String, dynamic>
+          >(priceRange, (value) => value.toMap()),
+      'stockState':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState,
+            String
+          >(stockState, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItem(
-      availableQuantity: map['availableQuantity'] == null ? null : (map['availableQuantity']! as String).input(),
-      canonicalProductUri: map['canonicalProductUri'] == null ? null : (map['canonicalProductUri']! as String).input(),
-      costs: map['costs'] == null ? null : ((map['costs']! as Map).cast<String, String>()).input(),
-      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode']! as String).input(),
-      exactPrice: map['exactPrice'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromMap((map['exactPrice']! as Map).cast<String, dynamic>())).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1Image>(map['images']!, (value) => GoogleCloudRecommendationengineV1beta1Image.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priceRange: map['priceRange'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromMap((map['priceRange']! as Map).cast<String, dynamic>())).input(),
-      stockState: map['stockState'] == null ? null : (GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState.fromValue(map['stockState']! as String)).input(),
+      availableQuantity: (() {
+        final guardedValue = map['availableQuantity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      canonicalProductUri: (() {
+        final guardedValue = map['canonicalProductUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      costs: (() {
+        final guardedValue = map['costs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      currencyCode: (() {
+        final guardedValue = map['currencyCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exactPrice: (() {
+        final guardedValue = map['exactPrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      images: (() {
+        final guardedValue = map['images'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1Image>(
+            guardedValue,
+            (value) => GoogleCloudRecommendationengineV1beta1Image.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      priceRange: (() {
+        final guardedValue = map['priceRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stockState: (() {
+        final guardedValue = map['stockState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

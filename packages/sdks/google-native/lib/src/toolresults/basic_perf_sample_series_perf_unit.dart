@@ -6,16 +6,15 @@ enum BasicPerfSampleSeriesPerfUnit {
   framesPerSecond("framesPerSecond"),
   byte("byte");
 
-  const BasicPerfSampleSeriesPerfUnit(this.value);
-  final String value;
+  const BasicPerfSampleSeriesPerfUnit(this.wireValue);
+  final String wireValue;
 
   static BasicPerfSampleSeriesPerfUnit fromValue(String value) {
     for (final item in BasicPerfSampleSeriesPerfUnit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BasicPerfSampleSeriesPerfUnit value: $value');
   }
 }
-

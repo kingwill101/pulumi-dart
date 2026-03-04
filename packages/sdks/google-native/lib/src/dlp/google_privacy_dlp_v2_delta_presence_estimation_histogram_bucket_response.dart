@@ -7,12 +7,19 @@ import 'google_privacy_dlp_v2_delta_presence_estimation_quasi_id_values_response
 class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
   /// Number of records within these probability bounds.
   final pulumi.Input<String> bucketSize;
+
   /// Total number of distinct quasi-identifier tuple values in this bucket.
   final pulumi.Input<String> bucketValueCount;
+
   /// Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20.
-  final pulumi.Input<List<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse>> bucketValues;
+  final pulumi.Input<
+    List<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse>
+  >
+  bucketValues;
+
   /// Always greater than or equal to min_probability.
   final pulumi.Input<double> maxProbability;
+
   /// Between 0 and 1.
   final pulumi.Input<double> minProbability;
 
@@ -34,20 +41,46 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
     return <String, dynamic>{
       'bucketSize': bucketSize,
       'bucketValueCount': bucketValueCount,
-      'bucketValues': pulumi.Input.mapInputValue<List<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse>, List<Map<String, dynamic>>>(bucketValues, (value) => pulumi.Input.encodeList<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bucketValues':
+          pulumi.Input.mapInputValue<
+            List<
+              GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse
+            >,
+            List<Map<String, dynamic>>
+          >(
+            bucketValues,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'maxProbability': maxProbability,
       'minProbability': minProbability,
     };
   }
 
-  factory GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse(
-      bucketSize: (map['bucketSize'] as String).input(),
-      bucketValueCount: (map['bucketValueCount'] as String).input(),
-      bucketValues: (pulumi.Input.decodeList<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse>(map['bucketValues'], (value) => GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxProbability: (map['maxProbability'] as double).input(),
-      minProbability: (map['minProbability'] as double).input(),
+      bucketSize: pulumi.Input.fromValue(map['bucketSize'] as String),
+      bucketValueCount: pulumi.Input.fromValue(
+        map['bucketValueCount'] as String,
+      ),
+      bucketValues: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse
+        >(
+          map['bucketValues']!,
+          (value) =>
+              GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      maxProbability: pulumi.Input.fromValue(map['maxProbability'] as double),
+      minProbability: pulumi.Input.fromValue(map['minProbability'] as double),
     );
   }
 }
-

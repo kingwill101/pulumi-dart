@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentTypeArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
+
   /// The name of the environment type.
   final pulumi.Input<String> environmentTypeName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetEnvironmentTypeArgs {
 
   factory GetEnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentTypeArgs(
-      devCenterName: (map['devCenterName'] as String).input(),
-      environmentTypeName: (map['environmentTypeName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
+      environmentTypeName: pulumi.Input.fromValue(
+        map['environmentTypeName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

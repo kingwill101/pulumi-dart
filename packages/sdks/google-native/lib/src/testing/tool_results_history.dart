@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolResultsHistory {
   /// A tool results history ID.
   final pulumi.Input<String> historyId;
+
   /// The cloud project that owns the tool results history.
   final pulumi.Input<String> project;
 
   /// Creates a new [ToolResultsHistory].
   /// [historyId] A tool results history ID.
   /// [project] The cloud project that owns the tool results history.
-  ToolResultsHistory({
-    required this.historyId,
-    required this.project,
-  });
+  ToolResultsHistory({required this.historyId, required this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'historyId': historyId,
-      'project': project,
-    };
+    return <String, dynamic>{'historyId': historyId, 'project': project};
   }
 
   factory ToolResultsHistory.fromMap(Map<String, dynamic> map) {
     return ToolResultsHistory(
-      historyId: (map['historyId'] as String).input(),
-      project: (map['project'] as String).input(),
+      historyId: pulumi.Input.fromValue(map['historyId'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

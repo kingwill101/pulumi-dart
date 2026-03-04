@@ -9,20 +9,15 @@ class GetInstanceGcsSource {
 
   /// Creates a new [GetInstanceGcsSource].
   /// [uris] URIs of the GCS objects to import.
-  GetInstanceGcsSource({
-    required this.uris,
-  });
+  GetInstanceGcsSource({required this.uris});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uris': uris,
-    };
+    return <String, dynamic>{'uris': uris};
   }
 
   factory GetInstanceGcsSource.fromMap(Map<String, dynamic> map) {
     return GetInstanceGcsSource(
-      uris: ((map['uris'] as List).cast<String>()).input(),
+      uris: pulumi.Input.fromValue((map['uris'] as List).cast<String>()),
     );
   }
 }
-

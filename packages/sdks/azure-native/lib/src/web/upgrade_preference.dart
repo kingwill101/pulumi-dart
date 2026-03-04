@@ -5,16 +5,15 @@ enum UpgradePreference {
   valueLate("Late"),
   valueManual("Manual");
 
-  const UpgradePreference(this.value);
-  final String value;
+  const UpgradePreference(this.wireValue);
+  final String wireValue;
 
   static UpgradePreference fromValue(String value) {
     for (final item in UpgradePreference.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpgradePreference value: $value');
   }
 }
-

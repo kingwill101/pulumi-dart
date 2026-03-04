@@ -9,20 +9,23 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff].
   /// [metadata] Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-  GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff({
-    this.metadata,
-  });
+  GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff({this.metadata});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metadata': ?metadata,
-    };
+    return <String, dynamic>{'metadata': ?metadata};
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

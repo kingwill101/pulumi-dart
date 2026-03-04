@@ -7,6 +7,7 @@ class StorageAccountDetailsResponse {
   /// Account Type of the data to be transferred.
   /// Expected value is 'StorageAccount'.
   final pulumi.Input<String> dataAccountType;
+
   /// Storage Account Resource Id.
   final pulumi.Input<String> storageAccountId;
 
@@ -27,9 +28,10 @@ class StorageAccountDetailsResponse {
 
   factory StorageAccountDetailsResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetailsResponse(
-      dataAccountType: (map['dataAccountType'] as String).input(),
-      storageAccountId: (map['storageAccountId'] as String).input(),
+      dataAccountType: pulumi.Input.fromValue(map['dataAccountType'] as String),
+      storageAccountId: pulumi.Input.fromValue(
+        map['storageAccountId'] as String,
+      ),
     );
   }
 }
-

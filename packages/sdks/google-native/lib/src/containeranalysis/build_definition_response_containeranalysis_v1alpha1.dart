@@ -7,7 +7,8 @@ class BuildDefinitionResponseContaineranalysisV1alpha1 {
   final pulumi.Input<String> buildType;
   final pulumi.Input<Map<String, String>> externalParameters;
   final pulumi.Input<Map<String, String>> internalParameters;
-  final pulumi.Input<List<ResourceDescriptorResponseContaineranalysisV1alpha1>> resolvedDependencies;
+  final pulumi.Input<List<ResourceDescriptorResponseContaineranalysisV1alpha1>>
+  resolvedDependencies;
 
   /// Creates a new [BuildDefinitionResponseContaineranalysisV1alpha1].
   /// [buildType] Required.
@@ -26,17 +27,43 @@ class BuildDefinitionResponseContaineranalysisV1alpha1 {
       'buildType': buildType,
       'externalParameters': externalParameters,
       'internalParameters': internalParameters,
-      'resolvedDependencies': pulumi.Input.mapInputValue<List<ResourceDescriptorResponseContaineranalysisV1alpha1>, List<Map<String, dynamic>>>(resolvedDependencies, (value) => pulumi.Input.encodeList<ResourceDescriptorResponseContaineranalysisV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resolvedDependencies':
+          pulumi.Input.mapInputValue<
+            List<ResourceDescriptorResponseContaineranalysisV1alpha1>,
+            List<Map<String, dynamic>>
+          >(
+            resolvedDependencies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceDescriptorResponseContaineranalysisV1alpha1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory BuildDefinitionResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory BuildDefinitionResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BuildDefinitionResponseContaineranalysisV1alpha1(
-      buildType: (map['buildType'] as String).input(),
-      externalParameters: ((map['externalParameters'] as Map).cast<String, String>()).input(),
-      internalParameters: ((map['internalParameters'] as Map).cast<String, String>()).input(),
-      resolvedDependencies: (pulumi.Input.decodeList<ResourceDescriptorResponseContaineranalysisV1alpha1>(map['resolvedDependencies'], (value) => ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      buildType: pulumi.Input.fromValue(map['buildType'] as String),
+      externalParameters: pulumi.Input.fromValue(
+        (map['externalParameters'] as Map).cast<String, String>(),
+      ),
+      internalParameters: pulumi.Input.fromValue(
+        (map['internalParameters'] as Map).cast<String, String>(),
+      ),
+      resolvedDependencies: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          ResourceDescriptorResponseContaineranalysisV1alpha1
+        >(
+          map['resolvedDependencies']!,
+          (value) =>
+              ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

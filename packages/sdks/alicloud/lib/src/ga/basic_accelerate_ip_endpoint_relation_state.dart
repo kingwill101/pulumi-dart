@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAccelerateIpEndpointRelationState {
   /// The ID of the Basic Accelerate IP.
   final pulumi.Input<String>? accelerateIpId;
+
   /// The ID of the Basic GA instance.
   final pulumi.Input<String>? acceleratorId;
+
   /// The ID of the Basic Endpoint.
   final pulumi.Input<String>? endpointId;
+
   /// The status of the Basic Accelerate Ip Endpoint Relation.
   final pulumi.Input<String>? status;
 
@@ -34,13 +37,30 @@ class BasicAccelerateIpEndpointRelationState {
     };
   }
 
-  factory BasicAccelerateIpEndpointRelationState.fromMap(Map<String, dynamic> map) {
+  factory BasicAccelerateIpEndpointRelationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BasicAccelerateIpEndpointRelationState(
-      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId']! as String).input(),
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accelerateIpId: (() {
+        final guardedValue = map['accelerateIpId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acceleratorId: (() {
+        final guardedValue = map['acceleratorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointId: (() {
+        final guardedValue = map['endpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

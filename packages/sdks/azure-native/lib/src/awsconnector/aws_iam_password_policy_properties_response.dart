@@ -4,38 +4,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of awsIamPasswordPolicy
 class AwsIamPasswordPolicyPropertiesResponse {
-  /// <p>Specifies whether IAM users are allowed to change their own password. Gives IAM users permissions to <code>iam:ChangePassword</code> for only their user and to the <code>iam:GetAccountPasswordPolicy</code> action. This option does not attach a permissions policy to each user, rather the permissions are applied at the account-level for all users by IAM.</p>
+  /// &lt;p&gt;Specifies whether IAM users are allowed to change their own password. Gives IAM users permissions to &lt;code&gt;iam:ChangePassword&lt;/code&gt; for only their user and to the &lt;code&gt;iam:GetAccountPasswordPolicy&lt;/code&gt; action. This option does not attach a permissions policy to each user, rather the permissions are applied at the account-level for all users by IAM.&lt;/p&gt;
   final pulumi.Input<bool>? allowUsersToChangePassword;
-  /// <p>Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</p>
+
+  /// &lt;p&gt;Indicates whether passwords in the account expire. Returns true if &lt;code&gt;MaxPasswordAge&lt;/code&gt; contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.&lt;/p&gt;
   final pulumi.Input<bool>? expirePasswords;
-  /// <p>Specifies whether IAM users are prevented from setting a new password via the Amazon Web Services Management Console after their password has expired. The IAM user cannot access the console until an administrator resets the password. IAM users with <code>iam:ChangePassword</code> permission and active access keys can reset their own expired console password using the CLI or API.</p>
+
+  /// &lt;p&gt;Specifies whether IAM users are prevented from setting a new password via the Amazon Web Services Management Console after their password has expired. The IAM user cannot access the console until an administrator resets the password. IAM users with &lt;code&gt;iam:ChangePassword&lt;/code&gt; permission and active access keys can reset their own expired console password using the CLI or API.&lt;/p&gt;
   final pulumi.Input<bool>? hardExpiry;
-  /// <p>The number of days that an IAM user password is valid.</p>
+
+  /// &lt;p&gt;The number of days that an IAM user password is valid.&lt;/p&gt;
   final pulumi.Input<int>? maxPasswordAge;
-  /// <p>Minimum length to require for IAM user passwords.</p>
+
+  /// &lt;p&gt;Minimum length to require for IAM user passwords.&lt;/p&gt;
   final pulumi.Input<int>? minimumPasswordLength;
-  /// <p>Specifies the number of previous passwords that IAM users are prevented from reusing.</p>
+
+  /// &lt;p&gt;Specifies the number of previous passwords that IAM users are prevented from reusing.&lt;/p&gt;
   final pulumi.Input<int>? passwordReusePrevention;
-  /// <p>Specifies whether IAM user passwords must contain at least one lowercase character (a to z).</p>
+
+  /// &lt;p&gt;Specifies whether IAM user passwords must contain at least one lowercase character (a to z).&lt;/p&gt;
   final pulumi.Input<bool>? requireLowercaseCharacters;
-  /// <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</p>
+
+  /// &lt;p&gt;Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).&lt;/p&gt;
   final pulumi.Input<bool>? requireNumbers;
-  /// <p>Specifies whether IAM user passwords must contain at least one of the following symbols:</p> <p>! @ # $ % ^ &amp; * ( ) _ + - = [ ] { } | '</p>
+
+  /// &lt;p&gt;Specifies whether IAM user passwords must contain at least one of the following symbols:&lt;/p&gt; &lt;p&gt;! @ # $ % ^ &amp; * ( ) _ + - = [ ] { } | '&lt;/p&gt;
   final pulumi.Input<bool>? requireSymbols;
-  /// <p>Specifies whether IAM user passwords must contain at least one uppercase character (A to Z).</p>
+
+  /// &lt;p&gt;Specifies whether IAM user passwords must contain at least one uppercase character (A to Z).&lt;/p&gt;
   final pulumi.Input<bool>? requireUppercaseCharacters;
 
   /// Creates a new [AwsIamPasswordPolicyPropertiesResponse].
-  /// [allowUsersToChangePassword] <p>Specifies whether IAM users are allowed to change their own password. Gives IAM users permissions to <code>iam:ChangePassword</code> for only their user and to the <code>iam:GetAccountPasswordPolicy</code> action. This option does not attach a permissions policy to each user, rather the permissions are applied at the account-level for all users by IAM.</p>
-  /// [expirePasswords] <p>Indicates whether passwords in the account expire. Returns true if <code>MaxPasswordAge</code> contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</p>
-  /// [hardExpiry] <p>Specifies whether IAM users are prevented from setting a new password via the Amazon Web Services Management Console after their password has expired. The IAM user cannot access the console until an administrator resets the password. IAM users with <code>iam:ChangePassword</code> permission and active access keys can reset their own expired console password using the CLI or API.</p>
-  /// [maxPasswordAge] <p>The number of days that an IAM user password is valid.</p>
-  /// [minimumPasswordLength] <p>Minimum length to require for IAM user passwords.</p>
-  /// [passwordReusePrevention] <p>Specifies the number of previous passwords that IAM users are prevented from reusing.</p>
-  /// [requireLowercaseCharacters] <p>Specifies whether IAM user passwords must contain at least one lowercase character (a to z).</p>
-  /// [requireNumbers] <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</p>
-  /// [requireSymbols] <p>Specifies whether IAM user passwords must contain at least one of the following symbols:</p> <p>! @ # $ % ^ &amp; * ( ) _ + - = [ ] { } | '</p>
-  /// [requireUppercaseCharacters] <p>Specifies whether IAM user passwords must contain at least one uppercase character (A to Z).</p>
+  /// [allowUsersToChangePassword] &lt;p&gt;Specifies whether IAM users are allowed to change their own password. Gives IAM users permissions to &lt;code&gt;iam:ChangePassword&lt;/code&gt; for only their user and to the &lt;code&gt;iam:GetAccountPasswordPolicy&lt;/code&gt; action. This option does not attach a permissions policy to each user, rather the permissions are applied at the account-level for all users by IAM.&lt;/p&gt;
+  /// [expirePasswords] &lt;p&gt;Indicates whether passwords in the account expire. Returns true if &lt;code&gt;MaxPasswordAge&lt;/code&gt; contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.&lt;/p&gt;
+  /// [hardExpiry] &lt;p&gt;Specifies whether IAM users are prevented from setting a new password via the Amazon Web Services Management Console after their password has expired. The IAM user cannot access the console until an administrator resets the password. IAM users with &lt;code&gt;iam:ChangePassword&lt;/code&gt; permission and active access keys can reset their own expired console password using the CLI or API.&lt;/p&gt;
+  /// [maxPasswordAge] &lt;p&gt;The number of days that an IAM user password is valid.&lt;/p&gt;
+  /// [minimumPasswordLength] &lt;p&gt;Minimum length to require for IAM user passwords.&lt;/p&gt;
+  /// [passwordReusePrevention] &lt;p&gt;Specifies the number of previous passwords that IAM users are prevented from reusing.&lt;/p&gt;
+  /// [requireLowercaseCharacters] &lt;p&gt;Specifies whether IAM user passwords must contain at least one lowercase character (a to z).&lt;/p&gt;
+  /// [requireNumbers] &lt;p&gt;Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).&lt;/p&gt;
+  /// [requireSymbols] &lt;p&gt;Specifies whether IAM user passwords must contain at least one of the following symbols:&lt;/p&gt; &lt;p&gt;! @ # $ % ^ &amp; * ( ) _ + - = [ ] { } | '&lt;/p&gt;
+  /// [requireUppercaseCharacters] &lt;p&gt;Specifies whether IAM user passwords must contain at least one uppercase character (A to Z).&lt;/p&gt;
   AwsIamPasswordPolicyPropertiesResponse({
     this.allowUsersToChangePassword,
     this.expirePasswords,
@@ -64,19 +73,60 @@ class AwsIamPasswordPolicyPropertiesResponse {
     };
   }
 
-  factory AwsIamPasswordPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsIamPasswordPolicyPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsIamPasswordPolicyPropertiesResponse(
-      allowUsersToChangePassword: map['allowUsersToChangePassword'] == null ? null : (map['allowUsersToChangePassword']! as bool).input(),
-      expirePasswords: map['expirePasswords'] == null ? null : (map['expirePasswords']! as bool).input(),
-      hardExpiry: map['hardExpiry'] == null ? null : (map['hardExpiry']! as bool).input(),
-      maxPasswordAge: map['maxPasswordAge'] == null ? null : (map['maxPasswordAge']! as int).input(),
-      minimumPasswordLength: map['minimumPasswordLength'] == null ? null : (map['minimumPasswordLength']! as int).input(),
-      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : (map['passwordReusePrevention']! as int).input(),
-      requireLowercaseCharacters: map['requireLowercaseCharacters'] == null ? null : (map['requireLowercaseCharacters']! as bool).input(),
-      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers']! as bool).input(),
-      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols']! as bool).input(),
-      requireUppercaseCharacters: map['requireUppercaseCharacters'] == null ? null : (map['requireUppercaseCharacters']! as bool).input(),
+      allowUsersToChangePassword: (() {
+        final guardedValue = map['allowUsersToChangePassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expirePasswords: (() {
+        final guardedValue = map['expirePasswords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hardExpiry: (() {
+        final guardedValue = map['hardExpiry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxPasswordAge: (() {
+        final guardedValue = map['maxPasswordAge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minimumPasswordLength: (() {
+        final guardedValue = map['minimumPasswordLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      passwordReusePrevention: (() {
+        final guardedValue = map['passwordReusePrevention'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      requireLowercaseCharacters: (() {
+        final guardedValue = map['requireLowercaseCharacters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireNumbers: (() {
+        final guardedValue = map['requireNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireSymbols: (() {
+        final guardedValue = map['requireSymbols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireUppercaseCharacters: (() {
+        final guardedValue = map['requireUppercaseCharacters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -12,7 +12,7 @@ import 'collection_policy_state.dart';
 ///
 /// For information about Log Service (SLS) Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
 ///
-/// > **NOTE:** Available since v1.232.0.
+/// &gt; **NOTE:** Available since v1.232.0.
 ///
 /// ## Example Usage
 ///
@@ -1229,23 +1229,31 @@ import 'collection_policy_state.dart';
 class CollectionPolicy extends pulumi.CustomResource {
   /// Centralized forwarding configuration. See `centralize_config` below.
   late final pulumi.Output<CollectionPolicyCentralizeConfig> centralizeConfig;
+
   /// Specifies whether to enable centralized forwarding. Default value: false.
   late final pulumi.Output<bool?> centralizeEnabled;
+
   /// Log type code.
   late final pulumi.Output<String> dataCode;
+
   /// This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
   late final pulumi.Output<CollectionPolicyDataConfig> dataConfig;
+
   /// Whether enabled.
   late final pulumi.Output<bool> enabled;
+
   /// Collection rule configuration. See `policy_config` below.
   late final pulumi.Output<CollectionPolicyPolicyConfig> policyConfig;
+
   /// The naming rules are as follows:
   /// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
   /// - It must start with a letter.
   /// - Its length must be between 3 and 63 characters.
   late final pulumi.Output<String> policyName;
+
   /// Product code.
   late final pulumi.Output<String> productCode;
+
   /// Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
   late final pulumi.Output<CollectionPolicyResourceDirectory> resourceDirectory;
 
@@ -1258,20 +1266,24 @@ class CollectionPolicy extends pulumi.CustomResource {
     CollectionPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/collectionPolicy:CollectionPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>('centralizeConfig');
-    this.centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
-    this.dataCode = registerOutput<String>('dataCode');
-    this.dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig');
-    this.enabled = registerOutput<bool>('enabled');
-    this.policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig');
-    this.policyName = registerOutput<String>('policyName');
-    this.productCode = registerOutput<String>('productCode');
-    this.resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>('resourceDirectory');
+         'alicloud:sls/collectionPolicy:CollectionPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>(
+      'centralizeConfig',
+    );
+    centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
+    dataCode = registerOutput<String>('dataCode');
+    dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig');
+    enabled = registerOutput<bool>('enabled');
+    policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig');
+    policyName = registerOutput<String>('policyName');
+    productCode = registerOutput<String>('productCode');
+    resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>(
+      'resourceDirectory',
+    );
   }
 
   /// Gets an existing [CollectionPolicy] resource's state with the given [name] and [id].
@@ -1292,19 +1304,23 @@ class CollectionPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sls/collectionPolicy:CollectionPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>('centralizeConfig');
-    this.centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
-    this.dataCode = registerOutput<String>('dataCode');
-    this.dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig');
-    this.enabled = registerOutput<bool>('enabled');
-    this.policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig');
-    this.policyName = registerOutput<String>('policyName');
-    this.productCode = registerOutput<String>('productCode');
-    this.resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>('resourceDirectory');
+         'alicloud:sls/collectionPolicy:CollectionPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    centralizeConfig = registerOutput<CollectionPolicyCentralizeConfig>(
+      'centralizeConfig',
+    );
+    centralizeEnabled = registerOutput<bool?>('centralizeEnabled');
+    dataCode = registerOutput<String>('dataCode');
+    dataConfig = registerOutput<CollectionPolicyDataConfig>('dataConfig');
+    enabled = registerOutput<bool>('enabled');
+    policyConfig = registerOutput<CollectionPolicyPolicyConfig>('policyConfig');
+    policyName = registerOutput<String>('policyName');
+    productCode = registerOutput<String>('productCode');
+    resourceDirectory = registerOutput<CollectionPolicyResourceDirectory>(
+      'resourceDirectory',
+    );
   }
 }

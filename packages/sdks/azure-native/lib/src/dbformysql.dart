@@ -1,5 +1,3 @@
-library module_dbformysql;
-
 export 'dbformysql/administrator_type.dart';
 export 'dbformysql/azure_adadministrator.dart';
 export 'dbformysql/azure_adadministrator_args.dart';

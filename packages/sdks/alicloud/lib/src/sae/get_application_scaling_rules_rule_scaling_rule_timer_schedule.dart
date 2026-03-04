@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
   /// Time point. Format: `hours:minutes`.
   final pulumi.Input<String> atTime;
+
   /// The maximum number of instances.
   final pulumi.Input<int> maxReplicas;
+
   /// The minimum number of instances.
   final pulumi.Input<int> minReplicas;
+
   /// The number of target instances.
   final pulumi.Input<int> targetReplicas;
 
@@ -33,13 +36,14 @@ class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
     };
   }
 
-  factory GetApplicationScalingRulesRuleScalingRuleTimerSchedule.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationScalingRulesRuleScalingRuleTimerSchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationScalingRulesRuleScalingRuleTimerSchedule(
-      atTime: (map['atTime'] as String).input(),
-      maxReplicas: (map['maxReplicas'] as int).input(),
-      minReplicas: (map['minReplicas'] as int).input(),
-      targetReplicas: (map['targetReplicas'] as int).input(),
+      atTime: pulumi.Input.fromValue(map['atTime'] as String),
+      maxReplicas: pulumi.Input.fromValue(map['maxReplicas'] as int),
+      minReplicas: pulumi.Input.fromValue(map['minReplicas'] as int),
+      targetReplicas: pulumi.Input.fromValue(map['targetReplicas'] as int),
     );
   }
 }
-

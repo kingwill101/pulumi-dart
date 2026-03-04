@@ -31,10 +31,9 @@ class GetExportArgs {
 
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      exportId: (map['exportId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      exportId: pulumi.Input.fromValue(map['exportId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

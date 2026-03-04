@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataAccessScopeAllowedDataAccessLabelIngestionLabel {
   /// Required. The key of the ingestion label. Always required.
   final pulumi.Input<String> ingestionLabelKey;
+
   /// Optional. The value of the ingestion label. Optional. An object
   /// with no provided value and some key provided would match
   /// against the given key and ANY value.
@@ -25,11 +26,18 @@ class DataAccessScopeAllowedDataAccessLabelIngestionLabel {
     };
   }
 
-  factory DataAccessScopeAllowedDataAccessLabelIngestionLabel.fromMap(Map<String, dynamic> map) {
+  factory DataAccessScopeAllowedDataAccessLabelIngestionLabel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataAccessScopeAllowedDataAccessLabelIngestionLabel(
-      ingestionLabelKey: (map['ingestionLabelKey'] as String).input(),
-      ingestionLabelValue: map['ingestionLabelValue'] == null ? null : (map['ingestionLabelValue']! as String).input(),
+      ingestionLabelKey: pulumi.Input.fromValue(
+        map['ingestionLabelKey'] as String,
+      ),
+      ingestionLabelValue: (() {
+        final guardedValue = map['ingestionLabelValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

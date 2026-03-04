@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkRackArgs {
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// ARM resource ID of the Network Fabric.
   final pulumi.Input<String> networkFabricId;
+
   /// Name of the Network Rack.
   final pulumi.Input<String>? networkRackName;
+
   /// Network Rack SKU name.
   final pulumi.Input<String>? networkRackType;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,14 +60,37 @@ class NetworkRackArgs {
 
   factory NetworkRackArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRackArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkFabricId: (map['networkFabricId'] as String).input(),
-      networkRackName: map['networkRackName'] == null ? null : (map['networkRackName']! as String).input(),
-      networkRackType: map['networkRackType'] == null ? null : (map['networkRackType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkFabricId: pulumi.Input.fromValue(map['networkFabricId'] as String),
+      networkRackName: (() {
+        final guardedValue = map['networkRackName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkRackType: (() {
+        final guardedValue = map['networkRackType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

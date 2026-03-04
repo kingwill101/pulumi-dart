@@ -5,7 +5,10 @@ import 'get_bucket_replication_configuration_rule_destination_replication_time_t
 
 class GetBucketReplicationConfigurationRuleDestinationReplicationTime {
   final pulumi.Input<String> status;
-  final pulumi.Input<List<GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime>> times;
+  final pulumi.Input<
+    List<GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime>
+  >
+  times;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationReplicationTime].
   /// [status] Required.
@@ -18,15 +21,39 @@ class GetBucketReplicationConfigurationRuleDestinationReplicationTime {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'status': status,
-      'times': pulumi.Input.mapInputValue<List<GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime>, List<Map<String, dynamic>>>(times, (value) => pulumi.Input.encodeList<GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'times':
+          pulumi.Input.mapInputValue<
+            List<
+              GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime
+            >,
+            List<Map<String, dynamic>>
+          >(
+            times,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetBucketReplicationConfigurationRuleDestinationReplicationTime.fromMap(Map<String, dynamic> map) {
+  factory GetBucketReplicationConfigurationRuleDestinationReplicationTime.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBucketReplicationConfigurationRuleDestinationReplicationTime(
-      status: (map['status'] as String).input(),
-      times: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime>(map['times']!, (value) => GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      times: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime
+        >(
+          map['times']!,
+          (value) =>
+              GetBucketReplicationConfigurationRuleDestinationReplicationTimeTime.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

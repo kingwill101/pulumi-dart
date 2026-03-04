@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageContainerPropertiesResponse {
   /// Gets or sets the ClusterSharedVolumePath.
   final pulumi.Input<String> clusterSharedVolumePath;
+
   /// Gets or sets the Name.
   final pulumi.Input<String> name;
 
@@ -26,9 +27,10 @@ class StorageContainerPropertiesResponse {
 
   factory StorageContainerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageContainerPropertiesResponse(
-      clusterSharedVolumePath: (map['clusterSharedVolumePath'] as String).input(),
-      name: (map['name'] as String).input(),
+      clusterSharedVolumePath: pulumi.Input.fromValue(
+        map['clusterSharedVolumePath'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

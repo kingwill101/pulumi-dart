@@ -12,15 +12,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceUrl': instanceUrl,
-    };
+    return <String, dynamic>{'instanceUrl': instanceUrl};
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack(
-      instanceUrl: (map['instanceUrl'] as String).input(),
+      instanceUrl: pulumi.Input.fromValue(map['instanceUrl'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterablePropertyResponse {
   /// Values to be filtered.
   final pulumi.Input<List<String>> supportedValues;
+
   /// Type of product filter.
   final pulumi.Input<String> type;
 
@@ -18,17 +19,15 @@ class FilterablePropertyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'supportedValues': supportedValues,
-      'type': type,
-    };
+    return <String, dynamic>{'supportedValues': supportedValues, 'type': type};
   }
 
   factory FilterablePropertyResponse.fromMap(Map<String, dynamic> map) {
     return FilterablePropertyResponse(
-      supportedValues: ((map['supportedValues'] as List).cast<String>()).input(),
-      type: (map['type'] as String).input(),
+      supportedValues: pulumi.Input.fromValue(
+        (map['supportedValues'] as List).cast<String>(),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

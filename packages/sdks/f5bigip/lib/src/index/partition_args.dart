@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartitionArgs {
   /// Description of the partition.
   final pulumi.Input<String>? description;
+
   /// Name of the partition.
   final pulumi.Input<String> name;
+
   /// Route domain id of the partition.
   final pulumi.Input<int>? routeDomainId;
 
@@ -18,11 +20,7 @@ class PartitionArgs {
   /// [description] Description of the partition.
   /// [name] Name of the partition.
   /// [routeDomainId] Route domain id of the partition.
-  PartitionArgs({
-    this.description,
-    required this.name,
-    this.routeDomainId,
-  });
+  PartitionArgs({this.description, required this.name, this.routeDomainId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class PartitionArgs {
 
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      routeDomainId: map['routeDomainId'] == null ? null : (map['routeDomainId']! as int).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      routeDomainId: (() {
+        final guardedValue = map['routeDomainId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_dataprotection;
-
 export 'dataprotection/absolute_delete_option.dart';
 export 'dataprotection/absolute_delete_option_response.dart';
 export 'dataprotection/absolute_marker.dart';

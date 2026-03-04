@@ -10,19 +10,28 @@ import 'addons_config_addons_config_monetization_config.dart';
 class AddonsConfigAddonsConfig {
   /// Configuration for the Advanced API Ops add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigAdvancedApiOpsConfig>? advancedApiOpsConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigAdvancedApiOpsConfig>?
+  advancedApiOpsConfig;
+
   /// Configuration for the API Security add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigApiSecurityConfig>? apiSecurityConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigApiSecurityConfig>?
+  apiSecurityConfig;
+
   /// Configuration for the Monetization add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigConnectorsPlatformConfig>? connectorsPlatformConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigConnectorsPlatformConfig>?
+  connectorsPlatformConfig;
+
   /// Configuration for the Integration add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigIntegrationConfig>? integrationConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigIntegrationConfig>?
+  integrationConfig;
+
   /// Configuration for the Monetization add-on.
   /// Structure is documented below.
-  final pulumi.Input<AddonsConfigAddonsConfigMonetizationConfig>? monetizationConfig;
+  final pulumi.Input<AddonsConfigAddonsConfigMonetizationConfig>?
+  monetizationConfig;
 
   /// Creates a new [AddonsConfigAddonsConfig].
   /// [advancedApiOpsConfig] Configuration for the Advanced API Ops add-on.
@@ -40,22 +49,81 @@ class AddonsConfigAddonsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedApiOpsConfig': ?pulumi.Input.mapOptionalInputValue<AddonsConfigAddonsConfigAdvancedApiOpsConfig, Map<String, dynamic>>(advancedApiOpsConfig, (value) => value.toMap()),
-      'apiSecurityConfig': ?pulumi.Input.mapOptionalInputValue<AddonsConfigAddonsConfigApiSecurityConfig, Map<String, dynamic>>(apiSecurityConfig, (value) => value.toMap()),
-      'connectorsPlatformConfig': ?pulumi.Input.mapOptionalInputValue<AddonsConfigAddonsConfigConnectorsPlatformConfig, Map<String, dynamic>>(connectorsPlatformConfig, (value) => value.toMap()),
-      'integrationConfig': ?pulumi.Input.mapOptionalInputValue<AddonsConfigAddonsConfigIntegrationConfig, Map<String, dynamic>>(integrationConfig, (value) => value.toMap()),
-      'monetizationConfig': ?pulumi.Input.mapOptionalInputValue<AddonsConfigAddonsConfigMonetizationConfig, Map<String, dynamic>>(monetizationConfig, (value) => value.toMap()),
+      'advancedApiOpsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AddonsConfigAddonsConfigAdvancedApiOpsConfig,
+            Map<String, dynamic>
+          >(advancedApiOpsConfig, (value) => value.toMap()),
+      'apiSecurityConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AddonsConfigAddonsConfigApiSecurityConfig,
+            Map<String, dynamic>
+          >(apiSecurityConfig, (value) => value.toMap()),
+      'connectorsPlatformConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AddonsConfigAddonsConfigConnectorsPlatformConfig,
+            Map<String, dynamic>
+          >(connectorsPlatformConfig, (value) => value.toMap()),
+      'integrationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AddonsConfigAddonsConfigIntegrationConfig,
+            Map<String, dynamic>
+          >(integrationConfig, (value) => value.toMap()),
+      'monetizationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AddonsConfigAddonsConfigMonetizationConfig,
+            Map<String, dynamic>
+          >(monetizationConfig, (value) => value.toMap()),
     };
   }
 
   factory AddonsConfigAddonsConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfig(
-      advancedApiOpsConfig: map['advancedApiOpsConfig'] == null ? null : (AddonsConfigAddonsConfigAdvancedApiOpsConfig.fromMap((map['advancedApiOpsConfig']! as Map).cast<String, dynamic>())).input(),
-      apiSecurityConfig: map['apiSecurityConfig'] == null ? null : (AddonsConfigAddonsConfigApiSecurityConfig.fromMap((map['apiSecurityConfig']! as Map).cast<String, dynamic>())).input(),
-      connectorsPlatformConfig: map['connectorsPlatformConfig'] == null ? null : (AddonsConfigAddonsConfigConnectorsPlatformConfig.fromMap((map['connectorsPlatformConfig']! as Map).cast<String, dynamic>())).input(),
-      integrationConfig: map['integrationConfig'] == null ? null : (AddonsConfigAddonsConfigIntegrationConfig.fromMap((map['integrationConfig']! as Map).cast<String, dynamic>())).input(),
-      monetizationConfig: map['monetizationConfig'] == null ? null : (AddonsConfigAddonsConfigMonetizationConfig.fromMap((map['monetizationConfig']! as Map).cast<String, dynamic>())).input(),
+      advancedApiOpsConfig: (() {
+        final guardedValue = map['advancedApiOpsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AddonsConfigAddonsConfigAdvancedApiOpsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      apiSecurityConfig: (() {
+        final guardedValue = map['apiSecurityConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AddonsConfigAddonsConfigApiSecurityConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectorsPlatformConfig: (() {
+        final guardedValue = map['connectorsPlatformConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AddonsConfigAddonsConfigConnectorsPlatformConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      integrationConfig: (() {
+        final guardedValue = map['integrationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AddonsConfigAddonsConfigIntegrationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      monetizationConfig: (() {
+        final guardedValue = map['monetizationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AddonsConfigAddonsConfigMonetizationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

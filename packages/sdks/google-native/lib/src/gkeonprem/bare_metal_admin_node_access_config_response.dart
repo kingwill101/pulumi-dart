@@ -9,20 +9,17 @@ class BareMetalAdminNodeAccessConfigResponse {
 
   /// Creates a new [BareMetalAdminNodeAccessConfigResponse].
   /// [loginUser] LoginUser is the user name used to access node machines. It defaults to "root" if not set.
-  BareMetalAdminNodeAccessConfigResponse({
-    required this.loginUser,
-  });
+  BareMetalAdminNodeAccessConfigResponse({required this.loginUser});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'loginUser': loginUser,
-    };
+    return <String, dynamic>{'loginUser': loginUser};
   }
 
-  factory BareMetalAdminNodeAccessConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminNodeAccessConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminNodeAccessConfigResponse(
-      loginUser: (map['loginUser'] as String).input(),
+      loginUser: pulumi.Input.fromValue(map['loginUser'] as String),
     );
   }
 }
-

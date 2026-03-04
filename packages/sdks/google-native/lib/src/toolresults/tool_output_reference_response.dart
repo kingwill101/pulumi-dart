@@ -9,8 +9,10 @@ import 'timestamp_response.dart';
 class ToolOutputReferenceResponse {
   /// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
   final pulumi.Input<TimestampResponse> creationTime;
+
   /// A FileReference to an output file. - In response: always set - In create/update request: always set
   final pulumi.Input<FileReferenceResponse> output;
+
   /// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
   final pulumi.Input<TestCaseReferenceResponse> testCase;
 
@@ -26,18 +28,41 @@ class ToolOutputReferenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationTime': pulumi.Input.mapInputValue<TimestampResponse, Map<String, dynamic>>(creationTime, (value) => value.toMap()),
-      'output': pulumi.Input.mapInputValue<FileReferenceResponse, Map<String, dynamic>>(output, (value) => value.toMap()),
-      'testCase': pulumi.Input.mapInputValue<TestCaseReferenceResponse, Map<String, dynamic>>(testCase, (value) => value.toMap()),
+      'creationTime':
+          pulumi.Input.mapInputValue<TimestampResponse, Map<String, dynamic>>(
+            creationTime,
+            (value) => value.toMap(),
+          ),
+      'output':
+          pulumi.Input.mapInputValue<
+            FileReferenceResponse,
+            Map<String, dynamic>
+          >(output, (value) => value.toMap()),
+      'testCase':
+          pulumi.Input.mapInputValue<
+            TestCaseReferenceResponse,
+            Map<String, dynamic>
+          >(testCase, (value) => value.toMap()),
     };
   }
 
   factory ToolOutputReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ToolOutputReferenceResponse(
-      creationTime: (TimestampResponse.fromMap((map['creationTime'] as Map).cast<String, dynamic>())).input(),
-      output: (FileReferenceResponse.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      testCase: (TestCaseReferenceResponse.fromMap((map['testCase'] as Map).cast<String, dynamic>())).input(),
+      creationTime: pulumi.Input.fromValue(
+        TimestampResponse.fromMap(
+          (map['creationTime']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      output: pulumi.Input.fromValue(
+        FileReferenceResponse.fromMap(
+          (map['output']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      testCase: pulumi.Input.fromValue(
+        TestCaseReferenceResponse.fromMap(
+          (map['testCase']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

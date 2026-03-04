@@ -6,13 +6,13 @@ import 'server_group_attachment_state.dart';
 ///
 /// For information about  server group attachment, see [AttachServerGroups](https://www.alibabacloud.com/help/en/auto-scaling/developer-reference/api-attachservergroups).
 ///
-/// > **NOTE:** If scaling group's network type is `VPC`, the server groups must be in the same `VPC`.
+/// &gt; **NOTE:** If scaling group's network type is `VPC`, the server groups must be in the same `VPC`.
 ///
-/// > **NOTE:** server group attachment is defined uniquely by `scaling_group_id`, `server_group_id`,`type`, `port`.
+/// &gt; **NOTE:** server group attachment is defined uniquely by `scaling_group_id`, `server_group_id`,`type`, `port`.
 ///
-/// > **NOTE:** Resource `alicloud.ess.ServerGroupAttachment` don't support modification.
+/// &gt; **NOTE:** Resource `alicloud.ess.ServerGroupAttachment` don't support modification.
 ///
-/// > **NOTE:** Available since v1.231.0.
+/// &gt; **NOTE:** Available since v1.231.0.
 ///
 /// ## Example Usage
 ///
@@ -652,14 +652,19 @@ class ServerGroupAttachment extends pulumi.CustomResource {
   /// If instances of scaling group are attached/removed from backend server when
   /// server group from scaling group. Default to false.
   late final pulumi.Output<bool?> forceAttach;
+
   /// The port will be used for Server Group backend server.
   late final pulumi.Output<int> port;
+
   /// ID of the scaling group.
   late final pulumi.Output<String> scalingGroupId;
+
   /// ID of Server Group.
   late final pulumi.Output<String> serverGroupId;
+
   /// The type of server group N. Valid values: ALB, NLB.
   late final pulumi.Output<String> type;
+
   /// The weight of an ECS instance attached to the Server Group.
   late final pulumi.Output<int> weight;
 
@@ -672,17 +677,17 @@ class ServerGroupAttachment extends pulumi.CustomResource {
     ServerGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.forceAttach = registerOutput<bool?>('forceAttach');
-    this.port = registerOutput<int>('port');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.type = registerOutput<String>('type');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    forceAttach = registerOutput<bool?>('forceAttach');
+    port = registerOutput<int>('port');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    type = registerOutput<String>('type');
+    weight = registerOutput<int>('weight');
   }
 
   /// Gets an existing [ServerGroupAttachment] resource's state with the given [name] and [id].
@@ -703,16 +708,16 @@ class ServerGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.forceAttach = registerOutput<bool?>('forceAttach');
-    this.port = registerOutput<int>('port');
-    this.scalingGroupId = registerOutput<String>('scalingGroupId');
-    this.serverGroupId = registerOutput<String>('serverGroupId');
-    this.type = registerOutput<String>('type');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    forceAttach = registerOutput<bool?>('forceAttach');
+    port = registerOutput<int>('port');
+    scalingGroupId = registerOutput<String>('scalingGroupId');
+    serverGroupId = registerOutput<String>('serverGroupId');
+    type = registerOutput<String>('type');
+    weight = registerOutput<int>('weight');
   }
 }

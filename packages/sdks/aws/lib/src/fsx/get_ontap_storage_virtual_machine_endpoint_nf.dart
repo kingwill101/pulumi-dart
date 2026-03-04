@@ -15,17 +15,17 @@ class GetOntapStorageVirtualMachineEndpointNf {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dnsName': dnsName,
-      'ipAddresses': ipAddresses,
-    };
+    return <String, dynamic>{'dnsName': dnsName, 'ipAddresses': ipAddresses};
   }
 
-  factory GetOntapStorageVirtualMachineEndpointNf.fromMap(Map<String, dynamic> map) {
+  factory GetOntapStorageVirtualMachineEndpointNf.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOntapStorageVirtualMachineEndpointNf(
-      dnsName: (map['dnsName'] as String).input(),
-      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
+      dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
+      ipAddresses: pulumi.Input.fromValue(
+        (map['ipAddresses'] as List).cast<String>(),
+      ),
     );
   }
 }
-

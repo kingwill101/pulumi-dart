@@ -4,16 +4,15 @@ enum HostCachingOptions {
   readOnly("ReadOnly"),
   readWrite("ReadWrite");
 
-  const HostCachingOptions(this.value);
-  final String value;
+  const HostCachingOptions(this.wireValue);
+  final String wireValue;
 
   static HostCachingOptions fromValue(String value) {
     for (final item in HostCachingOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HostCachingOptions value: $value');
   }
 }
-

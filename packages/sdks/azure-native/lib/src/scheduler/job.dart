@@ -13,10 +13,13 @@ import 'job_properties_response.dart';
 class Job extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the job resource name.
   late final pulumi.Output<String> name;
+
   /// Gets or sets the job properties.
   late final pulumi.Output<JobPropertiesResponse> properties;
+
   /// Gets the job resource type.
   late final pulumi.Output<String> type;
 
@@ -24,19 +27,16 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_scheduler_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:scheduler:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:scheduler:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<JobPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<JobPropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,16 +6,15 @@ enum EnterprisePolicyKind {
   valueNetworkInjection("NetworkInjection"),
   valueIdentity("Identity");
 
-  const EnterprisePolicyKind(this.value);
-  final String value;
+  const EnterprisePolicyKind(this.wireValue);
+  final String wireValue;
 
   static EnterprisePolicyKind fromValue(String value) {
     for (final item in EnterprisePolicyKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnterprisePolicyKind value: $value');
   }
 }
-

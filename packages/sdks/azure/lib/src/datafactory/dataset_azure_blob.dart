@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_azure_blob_args.dart';
-import 'dataset_azure_blob_schema_column.dart';
 import 'dataset_azure_blob_state.dart';
 
 /// Manages an Azure Blob Dataset inside an Azure Data Factory.
@@ -277,30 +276,42 @@ class DatasetAzureBlob extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to Azure Blob Dataset:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Dataset.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Dataset.
   late final pulumi.Output<String?> description;
+
   /// Is the `filename` using dynamic expression, function or system variables? Defaults to `false`.
   late final pulumi.Output<bool?> dynamicFilenameEnabled;
+
   /// Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   late final pulumi.Output<bool?> dynamicPathEnabled;
+
   /// The filename of the Azure Blob.
   late final pulumi.Output<String?> filename;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   late final pulumi.Output<String> linkedServiceName;
+
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The path of the Azure Blob.
   late final pulumi.Output<String?> path;
+
   /// A `schema_column` block as defined below.
-  late final pulumi.Output<List<DatasetAzureBlobSchemaColumn>?> schemaColumns;
+  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetAzureBlob].
   /// [name] The Pulumi resource name.
@@ -311,24 +322,28 @@ class DatasetAzureBlob extends pulumi.CustomResource {
     DatasetAzureBlobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetAzureBlob:DatasetAzureBlob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.dynamicFilenameEnabled = registerOutput<bool?>('dynamicFilenameEnabled');
-    this.dynamicPathEnabled = registerOutput<bool?>('dynamicPathEnabled');
-    this.filename = registerOutput<String?>('filename');
-    this.folder = registerOutput<String?>('folder');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetAzureBlob:DatasetAzureBlob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    dynamicFilenameEnabled = registerOutput<bool?>('dynamicFilenameEnabled');
+    dynamicPathEnabled = registerOutput<bool?>('dynamicPathEnabled');
+    filename = registerOutput<String?>('filename');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.path = registerOutput<String?>('path');
-    this.schemaColumns = registerOutput<List<DatasetAzureBlobSchemaColumn>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    path = registerOutput<String?>('path');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 
   /// Gets an existing [DatasetAzureBlob] resource's state with the given [name] and [id].
@@ -349,23 +364,27 @@ class DatasetAzureBlob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetAzureBlob:DatasetAzureBlob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.dynamicFilenameEnabled = registerOutput<bool?>('dynamicFilenameEnabled');
-    this.dynamicPathEnabled = registerOutput<bool?>('dynamicPathEnabled');
-    this.filename = registerOutput<String?>('filename');
-    this.folder = registerOutput<String?>('folder');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetAzureBlob:DatasetAzureBlob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    dynamicFilenameEnabled = registerOutput<bool?>('dynamicFilenameEnabled');
+    dynamicPathEnabled = registerOutput<bool?>('dynamicPathEnabled');
+    filename = registerOutput<String?>('filename');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.path = registerOutput<String?>('path');
-    this.schemaColumns = registerOutput<List<DatasetAzureBlobSchemaColumn>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    path = registerOutput<String?>('path');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 }

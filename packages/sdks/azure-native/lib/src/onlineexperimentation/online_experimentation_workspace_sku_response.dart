@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnlineExperimentationWorkspaceSkuResponse {
   /// The name of the SKU. Ex - F0, P0. It is typically a letter+number code
   final pulumi.Input<String> name;
+
   /// The name of the SKU tier
   final pulumi.Input<String> tier;
 
@@ -18,17 +19,15 @@ class OnlineExperimentationWorkspaceSkuResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'tier': tier,
-    };
+    return <String, dynamic>{'name': name, 'tier': tier};
   }
 
-  factory OnlineExperimentationWorkspaceSkuResponse.fromMap(Map<String, dynamic> map) {
+  factory OnlineExperimentationWorkspaceSkuResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OnlineExperimentationWorkspaceSkuResponse(
-      name: (map['name'] as String).input(),
-      tier: (map['tier'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
-

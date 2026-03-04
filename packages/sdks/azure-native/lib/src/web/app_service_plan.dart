@@ -187,67 +187,99 @@ import 'sku_description_response.dart';
 class AppServicePlan extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
   late final pulumi.Output<bool?> elasticScaleEnabled;
+
   /// Extended Location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The time when the server farm free offer expires.
   late final pulumi.Output<String?> freeOfferExpirationTime;
+
   /// Geographical location for the App Service plan.
   late final pulumi.Output<String> geoRegion;
+
   /// Specification for the App Service Environment to use for the App Service plan.
-  late final pulumi.Output<HostingEnvironmentProfileResponse?> hostingEnvironmentProfile;
-  /// If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  late final pulumi.Output<HostingEnvironmentProfileResponse?>
+  hostingEnvironmentProfile;
+
+  /// If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> hyperV;
-  /// If <code>true</code>, this App Service Plan owns spot instances.
+
+  /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
   late final pulumi.Output<bool?> isSpot;
-  /// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+
+  /// Obsolete: If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> isXenon;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
+
   /// Specification for the Kubernetes Environment to use for the App Service plan.
-  late final pulumi.Output<KubeEnvironmentProfileResponse?> kubeEnvironmentProfile;
+  late final pulumi.Output<KubeEnvironmentProfileResponse?>
+  kubeEnvironmentProfile;
+
   /// Resource Location.
   late final pulumi.Output<String> location;
+
   /// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   late final pulumi.Output<int?> maximumElasticWorkerCount;
+
   /// Maximum number of instances that can be assigned to this App Service plan.
   late final pulumi.Output<int> maximumNumberOfWorkers;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Number of apps assigned to this App Service plan.
   late final pulumi.Output<int> numberOfSites;
+
   /// The number of instances that are assigned to this App Service plan.
   late final pulumi.Output<int> numberOfWorkers;
-  /// If <code>true</code>, apps assigned to this App Service plan can be scaled independently.
-  /// If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
+
+  /// If &lt;code&gt;true&lt;/code&gt;, apps assigned to this App Service plan can be scaled independently.
+  /// If &lt;code&gt;false&lt;/code&gt;, apps assigned to this App Service plan will scale to all instances of the plan.
   late final pulumi.Output<bool?> perSiteScaling;
+
   /// Provisioning state of the App Service Plan.
   late final pulumi.Output<String> provisioningState;
-  /// If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+
+  /// If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> reserved;
+
   /// Resource group of the App Service plan.
   late final pulumi.Output<String> resourceGroup;
+
   /// Description of a SKU for a scalable resource.
   late final pulumi.Output<SkuDescriptionResponse?> sku;
+
   /// The time when the server farm expires. Valid only if it is a spot server farm.
   late final pulumi.Output<String?> spotExpirationTime;
+
   /// App Service plan status.
   late final pulumi.Output<String> status;
+
   /// App Service plan subscription.
   late final pulumi.Output<String> subscription;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Scaling worker count.
   late final pulumi.Output<int?> targetWorkerCount;
+
   /// Scaling worker size ID.
   late final pulumi.Output<int?> targetWorkerSizeId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Target worker tier assigned to the App Service plan.
   late final pulumi.Output<String?> workerTierName;
-  /// If <code>true</code>, this App Service Plan will perform availability zone balancing.
-  /// If <code>false</code>, this App Service Plan will not perform availability zone balancing.
+
+  /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
+  /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability zone balancing.
   late final pulumi.Output<bool?> zoneRedundant;
 
   /// Creates a new [AppServicePlan].
@@ -259,41 +291,52 @@ class AppServicePlan extends pulumi.CustomResource {
     AppServicePlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:AppServicePlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.elasticScaleEnabled = registerOutput<bool?>('elasticScaleEnabled');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.freeOfferExpirationTime = registerOutput<String?>('freeOfferExpirationTime');
-    this.geoRegion = registerOutput<String>('geoRegion');
-    this.hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse?>('hostingEnvironmentProfile');
-    this.hyperV = registerOutput<bool?>('hyperV');
-    this.isSpot = registerOutput<bool?>('isSpot');
-    this.isXenon = registerOutput<bool?>('isXenon');
-    this.kind = registerOutput<String?>('kind');
-    this.kubeEnvironmentProfile = registerOutput<KubeEnvironmentProfileResponse?>('kubeEnvironmentProfile');
-    this.location = registerOutput<String>('location');
-    this.maximumElasticWorkerCount = registerOutput<int?>('maximumElasticWorkerCount');
-    this.maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
+         'azure-native:web:AppServicePlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    elasticScaleEnabled = registerOutput<bool?>('elasticScaleEnabled');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    freeOfferExpirationTime = registerOutput<String?>(
+      'freeOfferExpirationTime',
+    );
+    geoRegion = registerOutput<String>('geoRegion');
+    hostingEnvironmentProfile =
+        registerOutput<HostingEnvironmentProfileResponse?>(
+          'hostingEnvironmentProfile',
+        );
+    hyperV = registerOutput<bool?>('hyperV');
+    isSpot = registerOutput<bool?>('isSpot');
+    isXenon = registerOutput<bool?>('isXenon');
+    kind = registerOutput<String?>('kind');
+    kubeEnvironmentProfile = registerOutput<KubeEnvironmentProfileResponse?>(
+      'kubeEnvironmentProfile',
+    );
+    location = registerOutput<String>('location');
+    maximumElasticWorkerCount = registerOutput<int?>(
+      'maximumElasticWorkerCount',
+    );
+    maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
     this.name = registerOutput<String>('name');
-    this.numberOfSites = registerOutput<int>('numberOfSites');
-    this.numberOfWorkers = registerOutput<int>('numberOfWorkers');
-    this.perSiteScaling = registerOutput<bool?>('perSiteScaling');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.reserved = registerOutput<bool?>('reserved');
-    this.resourceGroup = registerOutput<String>('resourceGroup');
-    this.sku = registerOutput<SkuDescriptionResponse?>('sku');
-    this.spotExpirationTime = registerOutput<String?>('spotExpirationTime');
-    this.status = registerOutput<String>('status');
-    this.subscription = registerOutput<String>('subscription');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetWorkerCount = registerOutput<int?>('targetWorkerCount');
-    this.targetWorkerSizeId = registerOutput<int?>('targetWorkerSizeId');
-    this.type = registerOutput<String>('type');
-    this.workerTierName = registerOutput<String?>('workerTierName');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    numberOfSites = registerOutput<int>('numberOfSites');
+    numberOfWorkers = registerOutput<int>('numberOfWorkers');
+    perSiteScaling = registerOutput<bool?>('perSiteScaling');
+    provisioningState = registerOutput<String>('provisioningState');
+    reserved = registerOutput<bool?>('reserved');
+    resourceGroup = registerOutput<String>('resourceGroup');
+    sku = registerOutput<SkuDescriptionResponse?>('sku');
+    spotExpirationTime = registerOutput<String?>('spotExpirationTime');
+    status = registerOutput<String>('status');
+    subscription = registerOutput<String>('subscription');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetWorkerCount = registerOutput<int?>('targetWorkerCount');
+    targetWorkerSizeId = registerOutput<int?>('targetWorkerSizeId');
+    type = registerOutput<String>('type');
+    workerTierName = registerOutput<String?>('workerTierName');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

@@ -6,16 +6,15 @@ enum NodeHealthTpuV2 {
   unhealthyTensorflow("UNHEALTHY_TENSORFLOW"),
   unhealthyMaintenance("UNHEALTHY_MAINTENANCE");
 
-  const NodeHealthTpuV2(this.value);
-  final String value;
+  const NodeHealthTpuV2(this.wireValue);
+  final String wireValue;
 
   static NodeHealthTpuV2 fromValue(String value) {
     for (final item in NodeHealthTpuV2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeHealthTpuV2 value: $value');
   }
 }
-

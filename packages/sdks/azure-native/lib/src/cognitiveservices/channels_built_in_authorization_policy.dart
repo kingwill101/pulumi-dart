@@ -10,20 +10,15 @@ class ChannelsBuiltInAuthorizationPolicy {
 
   /// Creates a new [ChannelsBuiltInAuthorizationPolicy].
   /// [type] Authorization scheme type.
-  ChannelsBuiltInAuthorizationPolicy({
-    required this.type,
-  });
+  ChannelsBuiltInAuthorizationPolicy({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory ChannelsBuiltInAuthorizationPolicy.fromMap(Map<String, dynamic> map) {
     return ChannelsBuiltInAuthorizationPolicy(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

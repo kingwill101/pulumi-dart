@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypesCoreInstanceType {
   /// Name of the category, single or cluster.
   final pulumi.Input<String> category;
+
   /// Cpu size of the instance type.
   final pulumi.Input<int> cpuSize;
+
   /// The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
   final pulumi.Input<String> engine;
+
   /// The hbase instance type of create hbase cluster instance.
   final pulumi.Input<String> instanceType;
+
   /// Max count of the core instance nodes.
   final pulumi.Input<int> maxCoreCount;
+
   /// Mem size of the instance type.
   final pulumi.Input<int> memSize;
+
   /// Name of the storage type.
   final pulumi.Input<String> storageType;
+
   /// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
   final pulumi.Input<String> version;
+
   /// Name of zone id.
   final pulumi.Input<String> zone;
 
@@ -60,16 +68,15 @@ class GetInstanceTypesCoreInstanceType {
 
   factory GetInstanceTypesCoreInstanceType.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesCoreInstanceType(
-      category: (map['category'] as String).input(),
-      cpuSize: (map['cpuSize'] as int).input(),
-      engine: (map['engine'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      maxCoreCount: (map['maxCoreCount'] as int).input(),
-      memSize: (map['memSize'] as int).input(),
-      storageType: (map['storageType'] as String).input(),
-      version: (map['version'] as String).input(),
-      zone: (map['zone'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      cpuSize: pulumi.Input.fromValue(map['cpuSize'] as int),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      maxCoreCount: pulumi.Input.fromValue(map['maxCoreCount'] as int),
+      memSize: pulumi.Input.fromValue(map['memSize'] as int),
+      storageType: pulumi.Input.fromValue(map['storageType'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

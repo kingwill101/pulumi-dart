@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlPoliciesPolicy {
   /// The count of policy attachment.
   final pulumi.Input<int> attachmentCount;
+
   /// The name of policy.
   final pulumi.Input<String> controlPolicyName;
+
   /// The description of policy.
   final pulumi.Input<String> description;
+
   /// The effect scope.
   final pulumi.Input<String> effectScope;
+
   /// The ID of the Control Policy.
   final pulumi.Input<String> id;
+
   /// The policy document.
   final pulumi.Input<String> policyDocument;
+
   /// The ID of policy.
   final pulumi.Input<String> policyId;
+
   /// The type of policy.
   final pulumi.Input<String> policyType;
 
@@ -55,15 +62,16 @@ class GetControlPoliciesPolicy {
 
   factory GetControlPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesPolicy(
-      attachmentCount: (map['attachmentCount'] as int).input(),
-      controlPolicyName: (map['controlPolicyName'] as String).input(),
-      description: (map['description'] as String).input(),
-      effectScope: (map['effectScope'] as String).input(),
-      id: (map['id'] as String).input(),
-      policyDocument: (map['policyDocument'] as String).input(),
-      policyId: (map['policyId'] as String).input(),
-      policyType: (map['policyType'] as String).input(),
+      attachmentCount: pulumi.Input.fromValue(map['attachmentCount'] as int),
+      controlPolicyName: pulumi.Input.fromValue(
+        map['controlPolicyName'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      effectScope: pulumi.Input.fromValue(map['effectScope'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      policyDocument: pulumi.Input.fromValue(map['policyDocument'] as String),
+      policyId: pulumi.Input.fromValue(map['policyId'] as String),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
     );
   }
 }
-

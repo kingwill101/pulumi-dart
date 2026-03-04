@@ -6,7 +6,7 @@ import 'replica_set_role_state.dart';
 ///
 /// For information about how to modify connection string of MongoDB, see [Modify Connection String](https://alibabacloud.com/help/en/mongodb/user-guide/change-the-endpoint-and-port-of-an-instance).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -358,7 +358,7 @@ import 'replica_set_role_state.dart';
 ///
 /// ## Import
 ///
-/// MongoDB replica set role can be imported using the id, e.g. Composed of instance ID, network type and role ID with format `<db_instance_id>:<network_type>:<role_id>`.
+/// MongoDB replica set role can be imported using the id, e.g. Composed of instance ID, network type and role ID with format `&lt;db_instance_id&gt;:&lt;network_type&gt;:&lt;role_id&gt;`.
 ///
 /// ```sh
 /// $ pulumi import alicloud:mongodb/replicaSetRole:ReplicaSetRole example <id>
@@ -366,18 +366,24 @@ import 'replica_set_role_state.dart';
 class ReplicaSetRole extends pulumi.CustomResource {
   /// The connection address of the role.
   late final pulumi.Output<String> connectionDomain;
+
   /// The port of the connection string, will be computed if not specified.`
   late final pulumi.Output<int> connectionPort;
+
   /// The prefix of the connection string, will be computed if not specified.
   late final pulumi.Output<String> connectionPrefix;
+
   /// The instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The network type of the connection string. Valid values:
   /// - `VPC`: private network address.
   /// - `Public`: public network address.
   late final pulumi.Output<String> networkType;
+
   /// The role of the related connection string.
   late final pulumi.Output<String> replicaSetRole;
+
   /// The role ID in the replica set.
   late final pulumi.Output<String> roleId;
 
@@ -390,18 +396,18 @@ class ReplicaSetRole extends pulumi.CustomResource {
     ReplicaSetRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionDomain = registerOutput<String>('connectionDomain');
-    this.connectionPort = registerOutput<int>('connectionPort');
-    this.connectionPrefix = registerOutput<String>('connectionPrefix');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.networkType = registerOutput<String>('networkType');
-    this.replicaSetRole = registerOutput<String>('replicaSetRole');
-    this.roleId = registerOutput<String>('roleId');
+         'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionDomain = registerOutput<String>('connectionDomain');
+    connectionPort = registerOutput<int>('connectionPort');
+    connectionPrefix = registerOutput<String>('connectionPrefix');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    networkType = registerOutput<String>('networkType');
+    replicaSetRole = registerOutput<String>('replicaSetRole');
+    roleId = registerOutput<String>('roleId');
   }
 
   /// Gets an existing [ReplicaSetRole] resource's state with the given [name] and [id].
@@ -422,17 +428,17 @@ class ReplicaSetRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionDomain = registerOutput<String>('connectionDomain');
-    this.connectionPort = registerOutput<int>('connectionPort');
-    this.connectionPrefix = registerOutput<String>('connectionPrefix');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.networkType = registerOutput<String>('networkType');
-    this.replicaSetRole = registerOutput<String>('replicaSetRole');
-    this.roleId = registerOutput<String>('roleId');
+         'alicloud:mongodb/replicaSetRole:ReplicaSetRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionDomain = registerOutput<String>('connectionDomain');
+    connectionPort = registerOutput<int>('connectionPort');
+    connectionPrefix = registerOutput<String>('connectionPrefix');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    networkType = registerOutput<String>('networkType');
+    replicaSetRole = registerOutput<String>('replicaSetRole');
+    roleId = registerOutput<String>('roleId');
   }
 }

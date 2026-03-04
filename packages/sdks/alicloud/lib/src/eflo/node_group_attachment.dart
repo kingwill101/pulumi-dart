@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_group_attachment_args.dart';
-import 'node_group_attachment_data_disk.dart';
 import 'node_group_attachment_state.dart';
 
 /// Provides a Eflo Node Group Attachment resource.
@@ -9,7 +8,7 @@ import 'node_group_attachment_state.dart';
 ///
 /// For information about Eflo Node Group Attachment and how to use it, see [What is Node Group Attachment](https://next.api.alibabacloud.com/document/eflo-controller/2022-12-15/ExtendCluster).
 ///
-/// > **NOTE:** Available since v1.255.0.
+/// &gt; **NOTE:** Available since v1.255.0.
 ///
 /// ## Example Usage
 ///
@@ -172,20 +171,28 @@ import 'node_group_attachment_state.dart';
 class NodeGroupAttachment extends pulumi.CustomResource {
   /// Cluster ID
   late final pulumi.Output<String> clusterId;
+
   /// The data disk of the cloud disk to be attached to the node. See `data_disk` below.
-  late final pulumi.Output<List<NodeGroupAttachmentDataDisk>?> dataDisks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+
   /// Node hostname
   late final pulumi.Output<String> hostname;
+
   /// Node login password
   late final pulumi.Output<String?> loginPassword;
+
   /// Node group ID
   late final pulumi.Output<String> nodeGroupId;
+
   /// Node ID
   late final pulumi.Output<String> nodeId;
+
   /// User-defined data
   late final pulumi.Output<String?> userData;
+
   /// Vpc id
   late final pulumi.Output<String> vpcId;
+
   /// vswitch id
   late final pulumi.Output<String> vswitchId;
 
@@ -198,20 +205,20 @@ class NodeGroupAttachment extends pulumi.CustomResource {
     NodeGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.dataDisks = registerOutput<List<NodeGroupAttachmentDataDisk>?>('dataDisks');
-    this.hostname = registerOutput<String>('hostname');
-    this.loginPassword = registerOutput<String?>('loginPassword');
-    this.nodeGroupId = registerOutput<String>('nodeGroupId');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.userData = registerOutput<String?>('userData');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    hostname = registerOutput<String>('hostname');
+    loginPassword = registerOutput<String?>('loginPassword');
+    nodeGroupId = registerOutput<String>('nodeGroupId');
+    nodeId = registerOutput<String>('nodeId');
+    userData = registerOutput<String?>('userData');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [NodeGroupAttachment] resource's state with the given [name] and [id].
@@ -232,19 +239,19 @@ class NodeGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.dataDisks = registerOutput<List<NodeGroupAttachmentDataDisk>?>('dataDisks');
-    this.hostname = registerOutput<String>('hostname');
-    this.loginPassword = registerOutput<String?>('loginPassword');
-    this.nodeGroupId = registerOutput<String>('nodeGroupId');
-    this.nodeId = registerOutput<String>('nodeId');
-    this.userData = registerOutput<String?>('userData');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    hostname = registerOutput<String>('hostname');
+    loginPassword = registerOutput<String?>('loginPassword');
+    nodeGroupId = registerOutput<String>('nodeGroupId');
+    nodeId = registerOutput<String>('nodeId');
+    userData = registerOutput<String?>('userData');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

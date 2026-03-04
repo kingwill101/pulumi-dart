@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'automation_rule_add_incident_task_action_response.dart';
 import 'automation_rule_args.dart';
 import 'automation_rule_triggering_logic_response.dart';
 import 'client_info_response.dart';
@@ -135,29 +134,42 @@ import 'system_data_response.dart';
 /// ```
 class AutomationRule extends pulumi.CustomResource {
   /// The actions to execute when the automation rule is triggered.
-  late final pulumi.Output<List<AutomationRuleAddIncidentTaskActionResponse>> actions;
+  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse> createdBy;
+
   /// The time the automation rule was created.
   late final pulumi.Output<String> createdTimeUtc;
+
   /// The display name of the automation rule.
   late final pulumi.Output<String> displayName;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse> lastModifiedBy;
+
   /// The last time the automation rule was updated.
   late final pulumi.Output<String> lastModifiedTimeUtc;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The order of execution of the automation rule.
   late final pulumi.Output<int> order;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Describes automation rule triggering logic.
-  late final pulumi.Output<AutomationRuleTriggeringLogicResponse> triggeringLogic;
+  late final pulumi.Output<AutomationRuleTriggeringLogicResponse>
+  triggeringLogic;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -170,23 +182,25 @@ class AutomationRule extends pulumi.CustomResource {
     AutomationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:AutomationRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<AutomationRuleAddIncidentTaskActionResponse>>('actions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdBy = registerOutput<ClientInfoResponse>('createdBy');
-    this.createdTimeUtc = registerOutput<String>('createdTimeUtc');
-    this.displayName = registerOutput<String>('displayName');
-    this.etag = registerOutput<String?>('etag');
-    this.lastModifiedBy = registerOutput<ClientInfoResponse>('lastModifiedBy');
-    this.lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+         'azure-native:securityinsights:AutomationRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<ClientInfoResponse>('createdBy');
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    lastModifiedBy = registerOutput<ClientInfoResponse>('lastModifiedBy');
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
-    this.order = registerOutput<int>('order');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.triggeringLogic = registerOutput<AutomationRuleTriggeringLogicResponse>('triggeringLogic');
-    this.type = registerOutput<String>('type');
+    order = registerOutput<int>('order');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    triggeringLogic = registerOutput<AutomationRuleTriggeringLogicResponse>(
+      'triggeringLogic',
+    );
+    type = registerOutput<String>('type');
   }
 }

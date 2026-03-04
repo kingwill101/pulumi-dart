@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeBalancerNodeArgs {
   /// The ID of the config that contains the Node.
   final pulumi.Input<int> configId;
+
   /// The node's ID.
   final pulumi.Input<int> id;
+
   /// The ID of the NodeBalancer that contains the node.
   final pulumi.Input<int> nodebalancerId;
 
@@ -34,10 +36,9 @@ class GetNodeBalancerNodeArgs {
 
   factory GetNodeBalancerNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeBalancerNodeArgs(
-      configId: (map['configId'] as int).input(),
-      id: (map['id'] as int).input(),
-      nodebalancerId: (map['nodebalancerId'] as int).input(),
+      configId: pulumi.Input.fromValue(map['configId'] as int),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      nodebalancerId: pulumi.Input.fromValue(map['nodebalancerId'] as int),
     );
   }
 }
-

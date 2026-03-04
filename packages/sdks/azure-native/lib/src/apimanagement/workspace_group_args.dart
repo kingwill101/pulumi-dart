@@ -10,25 +10,32 @@ import 'group_type.dart';
 class WorkspaceGroupArgs {
   /// Group description.
   final pulumi.Input<String>? description;
+
   /// Group name.
   final pulumi.Input<String> displayName;
-  /// Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
+
+  /// Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://&lt;tenant&gt;.onmicrosoft.com/groups/&lt;group object id&gt;`; otherwise the value is null.
   final pulumi.Input<String>? externalId;
+
   /// Group identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? groupId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Group type.
   final pulumi.Input<GroupType>? type;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [WorkspaceGroupArgs].
   /// [description] Group description.
   /// [displayName] Group name.
-  /// [externalId] Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
+  /// [externalId] Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://&lt;tenant&gt;.onmicrosoft.com/groups/&lt;group object id&gt;`; otherwise the value is null.
   /// [groupId] Group identifier. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
@@ -53,22 +60,44 @@ class WorkspaceGroupArgs {
       'groupId': ?groupId,
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
-      'type': ?pulumi.Input.mapOptionalInputValue<GroupType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<GroupType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
       'workspaceId': workspaceId,
     };
   }
 
   factory WorkspaceGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceGroupArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      type: map['type'] == null ? null : (GroupType.fromValue(map['type']! as String)).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupType.fromValue(guardedValue as String),
+        );
+      })(),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

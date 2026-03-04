@@ -5,60 +5,88 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterNodePoolLinuxOsConfigSysctlConfig {
   /// The sysctl setting fs.aio-max-nr. Must be between `65536` and `6553500`.
   final pulumi.Input<int>? fsAioMaxNr;
+
   /// The sysctl setting fs.file-max. Must be between `8192` and `12000500`.
   final pulumi.Input<int>? fsFileMax;
+
   /// The sysctl setting fs.inotify.max_user_watches. Must be between `781250` and `2097152`.
   final pulumi.Input<int>? fsInotifyMaxUserWatches;
+
   /// The sysctl setting fs.nr_open. Must be between `8192` and `20000500`.
   final pulumi.Input<int>? fsNrOpen;
+
   /// The sysctl setting kernel.threads-max. Must be between `20` and `513785`.
   final pulumi.Input<int>? kernelThreadsMax;
+
   /// The sysctl setting net.core.netdev_max_backlog. Must be between `1000` and `3240000`.
   final pulumi.Input<int>? netCoreNetdevMaxBacklog;
+
   /// The sysctl setting net.core.optmem_max. Must be between `20480` and `4194304`.
   final pulumi.Input<int>? netCoreOptmemMax;
+
   /// The sysctl setting net.core.rmem_default. Must be between `212992` and `134217728`.
   final pulumi.Input<int>? netCoreRmemDefault;
+
   /// The sysctl setting net.core.rmem_max. Must be between `212992` and `134217728`.
   final pulumi.Input<int>? netCoreRmemMax;
+
   /// The sysctl setting net.core.somaxconn. Must be between `4096` and `3240000`.
   final pulumi.Input<int>? netCoreSomaxconn;
+
   /// The sysctl setting net.core.wmem_default. Must be between `212992` and `134217728`.
   final pulumi.Input<int>? netCoreWmemDefault;
+
   /// The sysctl setting net.core.wmem_max. Must be between `212992` and `134217728`.
   final pulumi.Input<int>? netCoreWmemMax;
+
   /// The sysctl setting net.ipv4.ip_local_port_range max value. Must be between `32768` and `65535`.
   final pulumi.Input<int>? netIpv4IpLocalPortRangeMax;
+
   /// The sysctl setting net.ipv4.ip_local_port_range min value. Must be between `1024` and `60999`.
   final pulumi.Input<int>? netIpv4IpLocalPortRangeMin;
+
   /// The sysctl setting net.ipv4.neigh.default.gc_thresh1. Must be between `128` and `80000`.
   final pulumi.Input<int>? netIpv4NeighDefaultGcThresh1;
+
   /// The sysctl setting net.ipv4.neigh.default.gc_thresh2. Must be between `512` and `90000`.
   final pulumi.Input<int>? netIpv4NeighDefaultGcThresh2;
+
   /// The sysctl setting net.ipv4.neigh.default.gc_thresh3. Must be between `1024` and `100000`.
   final pulumi.Input<int>? netIpv4NeighDefaultGcThresh3;
+
   /// The sysctl setting net.ipv4.tcp_fin_timeout. Must be between `5` and `120`.
   final pulumi.Input<int>? netIpv4TcpFinTimeout;
+
   /// The sysctl setting net.ipv4.tcp_keepalive_intvl. Must be between `10` and `90`.
   final pulumi.Input<int>? netIpv4TcpKeepaliveIntvl;
+
   /// The sysctl setting net.ipv4.tcp_keepalive_probes. Must be between `1` and `15`.
   final pulumi.Input<int>? netIpv4TcpKeepaliveProbes;
+
   /// The sysctl setting net.ipv4.tcp_keepalive_time. Must be between `30` and `432000`.
   final pulumi.Input<int>? netIpv4TcpKeepaliveTime;
+
   /// The sysctl setting net.ipv4.tcp_max_syn_backlog. Must be between `128` and `3240000`.
   final pulumi.Input<int>? netIpv4TcpMaxSynBacklog;
+
   /// The sysctl setting net.ipv4.tcp_max_tw_buckets. Must be between `8000` and `1440000`.
   final pulumi.Input<int>? netIpv4TcpMaxTwBuckets;
+
   /// Is sysctl setting net.ipv4.tcp_tw_reuse enabled?
   final pulumi.Input<bool>? netIpv4TcpTwReuse;
+
   /// The sysctl setting net.netfilter.nf_conntrack_buckets. Must be between `65536` and `524288`.
   final pulumi.Input<int>? netNetfilterNfConntrackBuckets;
+
   /// The sysctl setting net.netfilter.nf_conntrack_max. Must be between `131072` and `2097152`.
   final pulumi.Input<int>? netNetfilterNfConntrackMax;
+
   /// The sysctl setting vm.max_map_count. Must be between `65530` and `262144`.
   final pulumi.Input<int>? vmMaxMapCount;
+
   /// The sysctl setting vm.swappiness. Must be between `0` and `100`.
   final pulumi.Input<int>? vmSwappiness;
+
   /// The sysctl setting vm.vfs_cache_pressure. Must be between `0` and `100`.
   final pulumi.Input<int>? vmVfsCachePressure;
 
@@ -158,38 +186,155 @@ class KubernetesClusterNodePoolLinuxOsConfigSysctlConfig {
     };
   }
 
-  factory KubernetesClusterNodePoolLinuxOsConfigSysctlConfig.fromMap(Map<String, dynamic> map) {
+  factory KubernetesClusterNodePoolLinuxOsConfigSysctlConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KubernetesClusterNodePoolLinuxOsConfigSysctlConfig(
-      fsAioMaxNr: map['fsAioMaxNr'] == null ? null : (map['fsAioMaxNr']! as int).input(),
-      fsFileMax: map['fsFileMax'] == null ? null : (map['fsFileMax']! as int).input(),
-      fsInotifyMaxUserWatches: map['fsInotifyMaxUserWatches'] == null ? null : (map['fsInotifyMaxUserWatches']! as int).input(),
-      fsNrOpen: map['fsNrOpen'] == null ? null : (map['fsNrOpen']! as int).input(),
-      kernelThreadsMax: map['kernelThreadsMax'] == null ? null : (map['kernelThreadsMax']! as int).input(),
-      netCoreNetdevMaxBacklog: map['netCoreNetdevMaxBacklog'] == null ? null : (map['netCoreNetdevMaxBacklog']! as int).input(),
-      netCoreOptmemMax: map['netCoreOptmemMax'] == null ? null : (map['netCoreOptmemMax']! as int).input(),
-      netCoreRmemDefault: map['netCoreRmemDefault'] == null ? null : (map['netCoreRmemDefault']! as int).input(),
-      netCoreRmemMax: map['netCoreRmemMax'] == null ? null : (map['netCoreRmemMax']! as int).input(),
-      netCoreSomaxconn: map['netCoreSomaxconn'] == null ? null : (map['netCoreSomaxconn']! as int).input(),
-      netCoreWmemDefault: map['netCoreWmemDefault'] == null ? null : (map['netCoreWmemDefault']! as int).input(),
-      netCoreWmemMax: map['netCoreWmemMax'] == null ? null : (map['netCoreWmemMax']! as int).input(),
-      netIpv4IpLocalPortRangeMax: map['netIpv4IpLocalPortRangeMax'] == null ? null : (map['netIpv4IpLocalPortRangeMax']! as int).input(),
-      netIpv4IpLocalPortRangeMin: map['netIpv4IpLocalPortRangeMin'] == null ? null : (map['netIpv4IpLocalPortRangeMin']! as int).input(),
-      netIpv4NeighDefaultGcThresh1: map['netIpv4NeighDefaultGcThresh1'] == null ? null : (map['netIpv4NeighDefaultGcThresh1']! as int).input(),
-      netIpv4NeighDefaultGcThresh2: map['netIpv4NeighDefaultGcThresh2'] == null ? null : (map['netIpv4NeighDefaultGcThresh2']! as int).input(),
-      netIpv4NeighDefaultGcThresh3: map['netIpv4NeighDefaultGcThresh3'] == null ? null : (map['netIpv4NeighDefaultGcThresh3']! as int).input(),
-      netIpv4TcpFinTimeout: map['netIpv4TcpFinTimeout'] == null ? null : (map['netIpv4TcpFinTimeout']! as int).input(),
-      netIpv4TcpKeepaliveIntvl: map['netIpv4TcpKeepaliveIntvl'] == null ? null : (map['netIpv4TcpKeepaliveIntvl']! as int).input(),
-      netIpv4TcpKeepaliveProbes: map['netIpv4TcpKeepaliveProbes'] == null ? null : (map['netIpv4TcpKeepaliveProbes']! as int).input(),
-      netIpv4TcpKeepaliveTime: map['netIpv4TcpKeepaliveTime'] == null ? null : (map['netIpv4TcpKeepaliveTime']! as int).input(),
-      netIpv4TcpMaxSynBacklog: map['netIpv4TcpMaxSynBacklog'] == null ? null : (map['netIpv4TcpMaxSynBacklog']! as int).input(),
-      netIpv4TcpMaxTwBuckets: map['netIpv4TcpMaxTwBuckets'] == null ? null : (map['netIpv4TcpMaxTwBuckets']! as int).input(),
-      netIpv4TcpTwReuse: map['netIpv4TcpTwReuse'] == null ? null : (map['netIpv4TcpTwReuse']! as bool).input(),
-      netNetfilterNfConntrackBuckets: map['netNetfilterNfConntrackBuckets'] == null ? null : (map['netNetfilterNfConntrackBuckets']! as int).input(),
-      netNetfilterNfConntrackMax: map['netNetfilterNfConntrackMax'] == null ? null : (map['netNetfilterNfConntrackMax']! as int).input(),
-      vmMaxMapCount: map['vmMaxMapCount'] == null ? null : (map['vmMaxMapCount']! as int).input(),
-      vmSwappiness: map['vmSwappiness'] == null ? null : (map['vmSwappiness']! as int).input(),
-      vmVfsCachePressure: map['vmVfsCachePressure'] == null ? null : (map['vmVfsCachePressure']! as int).input(),
+      fsAioMaxNr: (() {
+        final guardedValue = map['fsAioMaxNr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fsFileMax: (() {
+        final guardedValue = map['fsFileMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fsInotifyMaxUserWatches: (() {
+        final guardedValue = map['fsInotifyMaxUserWatches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fsNrOpen: (() {
+        final guardedValue = map['fsNrOpen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      kernelThreadsMax: (() {
+        final guardedValue = map['kernelThreadsMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netCoreNetdevMaxBacklog: (() {
+        final guardedValue = map['netCoreNetdevMaxBacklog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netCoreOptmemMax: (() {
+        final guardedValue = map['netCoreOptmemMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netCoreRmemDefault: (() {
+        final guardedValue = map['netCoreRmemDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netCoreRmemMax: (() {
+        final guardedValue = map['netCoreRmemMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netCoreSomaxconn: (() {
+        final guardedValue = map['netCoreSomaxconn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netCoreWmemDefault: (() {
+        final guardedValue = map['netCoreWmemDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netCoreWmemMax: (() {
+        final guardedValue = map['netCoreWmemMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4IpLocalPortRangeMax: (() {
+        final guardedValue = map['netIpv4IpLocalPortRangeMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4IpLocalPortRangeMin: (() {
+        final guardedValue = map['netIpv4IpLocalPortRangeMin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4NeighDefaultGcThresh1: (() {
+        final guardedValue = map['netIpv4NeighDefaultGcThresh1'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4NeighDefaultGcThresh2: (() {
+        final guardedValue = map['netIpv4NeighDefaultGcThresh2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4NeighDefaultGcThresh3: (() {
+        final guardedValue = map['netIpv4NeighDefaultGcThresh3'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4TcpFinTimeout: (() {
+        final guardedValue = map['netIpv4TcpFinTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4TcpKeepaliveIntvl: (() {
+        final guardedValue = map['netIpv4TcpKeepaliveIntvl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4TcpKeepaliveProbes: (() {
+        final guardedValue = map['netIpv4TcpKeepaliveProbes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4TcpKeepaliveTime: (() {
+        final guardedValue = map['netIpv4TcpKeepaliveTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4TcpMaxSynBacklog: (() {
+        final guardedValue = map['netIpv4TcpMaxSynBacklog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4TcpMaxTwBuckets: (() {
+        final guardedValue = map['netIpv4TcpMaxTwBuckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netIpv4TcpTwReuse: (() {
+        final guardedValue = map['netIpv4TcpTwReuse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      netNetfilterNfConntrackBuckets: (() {
+        final guardedValue = map['netNetfilterNfConntrackBuckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      netNetfilterNfConntrackMax: (() {
+        final guardedValue = map['netNetfilterNfConntrackMax'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vmMaxMapCount: (() {
+        final guardedValue = map['vmMaxMapCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vmSwappiness: (() {
+        final guardedValue = map['vmSwappiness'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vmVfsCachePressure: (() {
+        final guardedValue = map['vmVfsCachePressure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

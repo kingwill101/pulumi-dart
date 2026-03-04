@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelfTracingResponse {
   /// The self tracing interval.
   final pulumi.Input<int>? intervalSeconds;
+
   /// The toggle to enable/disable self tracing.
   final pulumi.Input<String>? mode;
 
   /// Creates a new [SelfTracingResponse].
   /// [intervalSeconds] The self tracing interval.
   /// [mode] The toggle to enable/disable self tracing.
-  SelfTracingResponse({
-    this.intervalSeconds,
-    this.mode,
-  });
+  SelfTracingResponse({this.intervalSeconds, this.mode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SelfTracingResponse {
 
   factory SelfTracingResponse.fromMap(Map<String, dynamic> map) {
     return SelfTracingResponse(
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds']! as int).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      intervalSeconds: (() {
+        final guardedValue = map['intervalSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

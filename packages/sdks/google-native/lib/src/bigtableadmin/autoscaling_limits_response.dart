@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscalingLimitsResponse {
   /// Maximum number of nodes to scale up to.
   final pulumi.Input<int> maxServeNodes;
+
   /// Minimum number of nodes to scale down to.
   final pulumi.Input<int> minServeNodes;
 
@@ -26,9 +27,8 @@ class AutoscalingLimitsResponse {
 
   factory AutoscalingLimitsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingLimitsResponse(
-      maxServeNodes: (map['maxServeNodes'] as int).input(),
-      minServeNodes: (map['minServeNodes'] as int).input(),
+      maxServeNodes: pulumi.Input.fromValue(map['maxServeNodes'] as int),
+      minServeNodes: pulumi.Input.fromValue(map['minServeNodes'] as int),
     );
   }
 }
-

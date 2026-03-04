@@ -6,7 +6,7 @@ import 'rule_state.dart';
 ///
 /// For information about Data Security Center Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/data-security-center/latest/api-sddp-2019-01-03-createrule).
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
 /// ## Example Usage
 ///
@@ -230,32 +230,46 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// The content type of the sensitive data detection rule. Valid values:
   late final pulumi.Output<int> category;
+
   /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
   late final pulumi.Output<String> content;
+
   /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
   late final pulumi.Output<String> contentCategory;
+
   /// The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
   late final pulumi.Output<int> customType;
+
   /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
   late final pulumi.Output<String?> description;
+
   /// The language of the content within the request and response. Default value: `zh`. Valid values:
   late final pulumi.Output<String?> lang;
+
   /// The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
   late final pulumi.Output<String?> productCode;
+
   /// The ID of the service to which the data asset belongs. Valid values:
   late final pulumi.Output<String?> productId;
+
   /// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
   late final pulumi.Output<String?> riskLevelId;
+
   /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
   late final pulumi.Output<String> ruleName;
+
   /// The type of the sensitive data detection rule. Valid values:
   late final pulumi.Output<int?> ruleType;
+
   /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
   late final pulumi.Output<String?> statExpress;
+
   /// Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
   late final pulumi.Output<int> status;
+
   /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
   late final pulumi.Output<String?> target;
+
   /// The risk level of the alert that is triggered. Valid values:
   late final pulumi.Output<int?> warnLevel;
 
@@ -263,39 +277,32 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_sddp_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(
-    String name, {
-    RuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:sddp/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<int>('category');
-    this.content = registerOutput<String>('content');
-    this.contentCategory = registerOutput<String>('contentCategory');
-    this.customType = registerOutput<int>('customType');
-    this.description = registerOutput<String?>('description');
-    this.lang = registerOutput<String?>('lang');
-    this.productCode = registerOutput<String?>('productCode');
-    this.productId = registerOutput<String?>('productId');
-    this.riskLevelId = registerOutput<String?>('riskLevelId');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<int?>('ruleType');
-    this.statExpress = registerOutput<String?>('statExpress');
-    this.status = registerOutput<int>('status');
-    this.target = registerOutput<String?>('target');
-    this.warnLevel = registerOutput<int?>('warnLevel');
+  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:sddp/rule:Rule',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    category = registerOutput<int>('category');
+    content = registerOutput<String>('content');
+    contentCategory = registerOutput<String>('contentCategory');
+    customType = registerOutput<int>('customType');
+    description = registerOutput<String?>('description');
+    lang = registerOutput<String?>('lang');
+    productCode = registerOutput<String?>('productCode');
+    productId = registerOutput<String?>('productId');
+    riskLevelId = registerOutput<String?>('riskLevelId');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<int?>('ruleType');
+    statExpress = registerOutput<String?>('statExpress');
+    status = registerOutput<int>('status');
+    target = registerOutput<String?>('target');
+    warnLevel = registerOutput<int?>('warnLevel');
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(
-    String name,
-    pulumi.Input<String> id, {
-    RuleState? state,
-  }) {
+  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -308,25 +315,25 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sddp/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.category = registerOutput<int>('category');
-    this.content = registerOutput<String>('content');
-    this.contentCategory = registerOutput<String>('contentCategory');
-    this.customType = registerOutput<int>('customType');
-    this.description = registerOutput<String?>('description');
-    this.lang = registerOutput<String?>('lang');
-    this.productCode = registerOutput<String?>('productCode');
-    this.productId = registerOutput<String?>('productId');
-    this.riskLevelId = registerOutput<String?>('riskLevelId');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<int?>('ruleType');
-    this.statExpress = registerOutput<String?>('statExpress');
-    this.status = registerOutput<int>('status');
-    this.target = registerOutput<String?>('target');
-    this.warnLevel = registerOutput<int?>('warnLevel');
+         'alicloud:sddp/rule:Rule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    category = registerOutput<int>('category');
+    content = registerOutput<String>('content');
+    contentCategory = registerOutput<String>('contentCategory');
+    customType = registerOutput<int>('customType');
+    description = registerOutput<String?>('description');
+    lang = registerOutput<String?>('lang');
+    productCode = registerOutput<String?>('productCode');
+    productId = registerOutput<String?>('productId');
+    riskLevelId = registerOutput<String?>('riskLevelId');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<int?>('ruleType');
+    statExpress = registerOutput<String?>('statExpress');
+    status = registerOutput<int>('status');
+    target = registerOutput<String?>('target');
+    warnLevel = registerOutput<int?>('warnLevel');
   }
 }

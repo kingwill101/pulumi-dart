@@ -1,5 +1,3 @@
-library module_managedlustre;
-
 export 'managedlustre/file_system.dart';
 export 'managedlustre/file_system_args.dart';
 export 'managedlustre/file_system_encryption_key.dart';

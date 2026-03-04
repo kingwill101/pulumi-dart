@@ -6,16 +6,15 @@ enum DsRecordDigestType {
   gost3411("GOST3411"),
   sha384("SHA384");
 
-  const DsRecordDigestType(this.value);
-  final String value;
+  const DsRecordDigestType(this.wireValue);
+  final String wireValue;
 
   static DsRecordDigestType fromValue(String value) {
     for (final item in DsRecordDigestType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DsRecordDigestType value: $value');
   }
 }
-

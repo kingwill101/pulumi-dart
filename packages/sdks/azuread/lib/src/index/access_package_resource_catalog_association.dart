@@ -189,12 +189,14 @@ import 'access_package_resource_catalog_association_state.dart';
 /// $ pulumi import azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`.
+/// &gt; This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`.
 class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
   /// The unique ID of the access package catalog. Changing this forces a new resource to be created.
   late final pulumi.Output<String> catalogId;
+
   /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceOriginId;
+
   /// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceOriginSystem;
 
@@ -207,14 +209,14 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
     AccessPackageResourceCatalogAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.catalogId = registerOutput<String>('catalogId');
-    this.resourceOriginId = registerOutput<String>('resourceOriginId');
-    this.resourceOriginSystem = registerOutput<String>('resourceOriginSystem');
+         'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    catalogId = registerOutput<String>('catalogId');
+    resourceOriginId = registerOutput<String>('resourceOriginId');
+    resourceOriginSystem = registerOutput<String>('resourceOriginSystem');
   }
 
   /// Gets an existing [AccessPackageResourceCatalogAssociation] resource's state with the given [name] and [id].
@@ -235,13 +237,13 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.catalogId = registerOutput<String>('catalogId');
-    this.resourceOriginId = registerOutput<String>('resourceOriginId');
-    this.resourceOriginSystem = registerOutput<String>('resourceOriginSystem');
+         'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    catalogId = registerOutput<String>('catalogId');
+    resourceOriginId = registerOutput<String>('resourceOriginId');
+    resourceOriginSystem = registerOutput<String>('resourceOriginSystem');
   }
 }

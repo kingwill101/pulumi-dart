@@ -8,20 +8,17 @@ class DomainOsNvRamSourceNetworkKnownHosts {
 
   /// Creates a new [DomainOsNvRamSourceNetworkKnownHosts].
   /// [path] Specifies the path to the file containing known hosts for the network storage.
-  DomainOsNvRamSourceNetworkKnownHosts({
-    required this.path,
-  });
+  DomainOsNvRamSourceNetworkKnownHosts({required this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory DomainOsNvRamSourceNetworkKnownHosts.fromMap(Map<String, dynamic> map) {
+  factory DomainOsNvRamSourceNetworkKnownHosts.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainOsNvRamSourceNetworkKnownHosts(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

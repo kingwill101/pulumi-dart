@@ -25,12 +25,13 @@ class GetListenerDefaultActionFixedResponse {
     };
   }
 
-  factory GetListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
+  factory GetListenerDefaultActionFixedResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerDefaultActionFixedResponse(
-      contentType: (map['contentType'] as String).input(),
-      messageBody: (map['messageBody'] as String).input(),
-      statusCode: (map['statusCode'] as String).input(),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      messageBody: pulumi.Input.fromValue(map['messageBody'] as String),
+      statusCode: pulumi.Input.fromValue(map['statusCode'] as String),
     );
   }
 }
-

@@ -185,27 +185,39 @@ import 'system_data_response.dart';
 class CIAMTenant extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).
   late final pulumi.Output<String> billingType;
+
   /// These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
-  late final pulumi.Output<CreateCIAMTenantPropertiesResponse> createTenantProperties;
+  late final pulumi.Output<CreateCIAMTenantPropertiesResponse>
+  createTenantProperties;
+
   /// The domain name of the tenant
   late final pulumi.Output<String> domainName;
+
   /// The data from which the billing type took effect
   late final pulumi.Output<String> effectiveStartDateUtc;
+
   /// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/ciam-data-location) for more information.
   late final pulumi.Output<String> location;
+
   /// The name of the Azure AD for customers tenant resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> provisioningState;
+
   /// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
   late final pulumi.Output<CIAMResourceSKUResponse> sku;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource Tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// An identifier of the Azure AD for customers tenant.
   late final pulumi.Output<String?> tenantId;
+
   /// The type of the Azure AD for customers tenant resource.
   late final pulumi.Output<String> type;
 
@@ -218,23 +230,25 @@ class CIAMTenant extends pulumi.CustomResource {
     CIAMTenantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azureactivedirectory:CIAMTenant',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.billingType = registerOutput<String>('billingType');
-    this.createTenantProperties = registerOutput<CreateCIAMTenantPropertiesResponse>('createTenantProperties');
-    this.domainName = registerOutput<String>('domainName');
-    this.effectiveStartDateUtc = registerOutput<String>('effectiveStartDateUtc');
-    this.location = registerOutput<String>('location');
+         'azure-native:azureactivedirectory:CIAMTenant',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingType = registerOutput<String>('billingType');
+    createTenantProperties = registerOutput<CreateCIAMTenantPropertiesResponse>(
+      'createTenantProperties',
+    );
+    domainName = registerOutput<String>('domainName');
+    effectiveStartDateUtc = registerOutput<String>('effectiveStartDateUtc');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<CIAMResourceSKUResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<CIAMResourceSKUResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

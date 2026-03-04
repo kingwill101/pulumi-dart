@@ -6,12 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UniformInt64RangePartitionScheme {
   /// The number of partitions.
   final pulumi.Input<int> count;
+
   /// The upper bound of the partition key range that
   /// should be split between the partition ‘Count’
   final pulumi.Input<double> highKey;
+
   /// The lower bound of the partition key range that
   /// should be split between the partition ‘Count’
   final pulumi.Input<double> lowKey;
+
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'UniformInt64Range'.
   final pulumi.Input<String> partitionScheme;
@@ -39,11 +42,10 @@ class UniformInt64RangePartitionScheme {
 
   factory UniformInt64RangePartitionScheme.fromMap(Map<String, dynamic> map) {
     return UniformInt64RangePartitionScheme(
-      count: (map['count'] as int).input(),
-      highKey: (map['highKey'] as double).input(),
-      lowKey: (map['lowKey'] as double).input(),
-      partitionScheme: (map['partitionScheme'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      highKey: pulumi.Input.fromValue(map['highKey'] as double),
+      lowKey: pulumi.Input.fromValue(map['lowKey'] as double),
+      partitionScheme: pulumi.Input.fromValue(map['partitionScheme'] as String),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'dataset_state_response_deprecated_by.dart';
 class DatasetStateResponse {
   /// Reference to better Dataset or a Definition
   final pulumi.Input<DatasetStateResponseDeprecatedBy>? deprecatedBy;
+
   /// eTag description
   final pulumi.Input<String> etag;
+
   /// Dataset state
   final pulumi.Input<String>? state;
 
@@ -16,15 +18,15 @@ class DatasetStateResponse {
   /// [deprecatedBy] Reference to better Dataset or a Definition
   /// [etag] eTag description
   /// [state] Dataset state
-  DatasetStateResponse({
-    this.deprecatedBy,
-    required this.etag,
-    this.state,
-  });
+  DatasetStateResponse({this.deprecatedBy, required this.etag, this.state});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deprecatedBy': ?pulumi.Input.mapOptionalInputValue<DatasetStateResponseDeprecatedBy, Map<String, dynamic>>(deprecatedBy, (value) => value.toMap()),
+      'deprecatedBy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatasetStateResponseDeprecatedBy,
+            Map<String, dynamic>
+          >(deprecatedBy, (value) => value.toMap()),
       'etag': etag,
       'state': ?state,
     };
@@ -32,10 +34,21 @@ class DatasetStateResponse {
 
   factory DatasetStateResponse.fromMap(Map<String, dynamic> map) {
     return DatasetStateResponse(
-      deprecatedBy: map['deprecatedBy'] == null ? null : (DatasetStateResponseDeprecatedBy.fromMap((map['deprecatedBy']! as Map).cast<String, dynamic>())).input(),
-      etag: (map['etag'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      deprecatedBy: (() {
+        final guardedValue = map['deprecatedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatasetStateResponseDeprecatedBy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class RecommendationEngineCommonConfig {
 
   /// Creates a new [RecommendationEngineCommonConfig].
   /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
-  RecommendationEngineCommonConfig({
-    this.companyName,
-  });
+  RecommendationEngineCommonConfig({this.companyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'companyName': ?companyName,
-    };
+    return <String, dynamic>{'companyName': ?companyName};
   }
 
   factory RecommendationEngineCommonConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineCommonConfig(
-      companyName: map['companyName'] == null ? null : (map['companyName']! as String).input(),
+      companyName: (() {
+        final guardedValue = map['companyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'google_cloud_aiplatform_v1_pipeline_job_response.dart';
 class GoogleCloudAiplatformV1CreatePipelineJobRequestResponse {
   /// The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
   final pulumi.Input<String> parent;
+
   /// The PipelineJob to create.
   final pulumi.Input<GoogleCloudAiplatformV1PipelineJobResponse> pipelineJob;
+
   /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
   final pulumi.Input<String> pipelineJobId;
 
@@ -25,17 +27,26 @@ class GoogleCloudAiplatformV1CreatePipelineJobRequestResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'parent': parent,
-      'pipelineJob': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1PipelineJobResponse, Map<String, dynamic>>(pipelineJob, (value) => value.toMap()),
+      'pipelineJob':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1PipelineJobResponse,
+            Map<String, dynamic>
+          >(pipelineJob, (value) => value.toMap()),
       'pipelineJobId': pipelineJobId,
     };
   }
 
-  factory GoogleCloudAiplatformV1CreatePipelineJobRequestResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1CreatePipelineJobRequestResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1CreatePipelineJobRequestResponse(
-      parent: (map['parent'] as String).input(),
-      pipelineJob: (GoogleCloudAiplatformV1PipelineJobResponse.fromMap((map['pipelineJob'] as Map).cast<String, dynamic>())).input(),
-      pipelineJobId: (map['pipelineJobId'] as String).input(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      pipelineJob: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1PipelineJobResponse.fromMap(
+          (map['pipelineJob']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      pipelineJobId: pulumi.Input.fromValue(map['pipelineJobId'] as String),
     );
   }
 }
-

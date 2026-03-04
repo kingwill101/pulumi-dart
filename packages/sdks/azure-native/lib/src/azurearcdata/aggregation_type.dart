@@ -6,16 +6,15 @@ enum AggregationType {
   valueSum("Sum"),
   valueCount("Count");
 
-  const AggregationType(this.value);
-  final String value;
+  const AggregationType(this.wireValue);
+  final String wireValue;
 
   static AggregationType fromValue(String value) {
     for (final item in AggregationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AggregationType value: $value');
   }
 }
-

@@ -7,24 +7,34 @@ import 'health_error_response.dart';
 class VCenterPropertiesResponse {
   /// The VCenter discovery status.
   final pulumi.Input<String>? discoveryStatus;
+
   /// The ARM resource name of the fabric containing this VCenter.
   final pulumi.Input<String>? fabricArmResourceName;
+
   /// Friendly name of the vCenter.
   final pulumi.Input<String>? friendlyName;
+
   /// The health errors for this VCenter.
   final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
+
   /// The infrastructure Id of vCenter.
   final pulumi.Input<String>? infrastructureId;
+
   /// VCenter internal ID.
   final pulumi.Input<String>? internalId;
+
   /// The IP address of the vCenter.
   final pulumi.Input<String>? ipAddress;
+
   /// The time when the last heartbeat was received by vCenter.
   final pulumi.Input<String>? lastHeartbeat;
+
   /// The port number for discovery.
   final pulumi.Input<String>? port;
+
   /// The process server Id.
   final pulumi.Input<String>? processServerId;
+
   /// The account Id which has privileges to discover the vCenter.
   final pulumi.Input<String>? runAsAccountId;
 
@@ -59,7 +69,18 @@ class VCenterPropertiesResponse {
       'discoveryStatus': ?discoveryStatus,
       'fabricArmResourceName': ?fabricArmResourceName,
       'friendlyName': ?friendlyName,
-      'healthErrors': ?pulumi.Input.mapOptionalInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'healthErrors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HealthErrorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            healthErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HealthErrorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'infrastructureId': ?infrastructureId,
       'internalId': ?internalId,
       'ipAddress': ?ipAddress,
@@ -72,18 +93,68 @@ class VCenterPropertiesResponse {
 
   factory VCenterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VCenterPropertiesResponse(
-      discoveryStatus: map['discoveryStatus'] == null ? null : (map['discoveryStatus']! as String).input(),
-      fabricArmResourceName: map['fabricArmResourceName'] == null ? null : (map['fabricArmResourceName']! as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
-      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      infrastructureId: map['infrastructureId'] == null ? null : (map['infrastructureId']! as String).input(),
-      internalId: map['internalId'] == null ? null : (map['internalId']! as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
-      processServerId: map['processServerId'] == null ? null : (map['processServerId']! as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
+      discoveryStatus: (() {
+        final guardedValue = map['discoveryStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fabricArmResourceName: (() {
+        final guardedValue = map['fabricArmResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      friendlyName: (() {
+        final guardedValue = map['friendlyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthErrors: (() {
+        final guardedValue = map['healthErrors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HealthErrorResponse>(
+            guardedValue,
+            (value) => HealthErrorResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      infrastructureId: (() {
+        final guardedValue = map['infrastructureId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internalId: (() {
+        final guardedValue = map['internalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastHeartbeat: (() {
+        final guardedValue = map['lastHeartbeat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      processServerId: (() {
+        final guardedValue = map['processServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runAsAccountId: (() {
+        final guardedValue = map['runAsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

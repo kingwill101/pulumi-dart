@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatusDetailPropertiesResponse {
   /// The code of the status.
   final pulumi.Input<String> code;
+
   /// The correlation ID of the status.
   final pulumi.Input<String> correlationId;
+
   /// The description of the status.
   final pulumi.Input<String> description;
+
   /// The timestamp of the status.
   final pulumi.Input<String> timestamp;
+
   /// The component of the connected registry corresponding to the status.
   final pulumi.Input<String> type;
 
@@ -41,12 +45,11 @@ class StatusDetailPropertiesResponse {
 
   factory StatusDetailPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StatusDetailPropertiesResponse(
-      code: (map['code'] as String).input(),
-      correlationId: (map['correlationId'] as String).input(),
-      description: (map['description'] as String).input(),
-      timestamp: (map['timestamp'] as String).input(),
-      type: (map['type'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

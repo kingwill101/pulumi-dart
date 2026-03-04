@@ -131,11 +131,17 @@ import 'resource_management_private_link_endpoint_connections_response.dart';
 class ResourceManagementPrivateLink extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// the region of the rmpl
   late final pulumi.Output<String?> location;
+
   /// The rmpl Name.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<ResourceManagementPrivateLinkEndpointConnectionsResponse> properties;
+  late final pulumi.Output<
+    ResourceManagementPrivateLinkEndpointConnectionsResponse
+  >
+  properties;
+
   /// The operation type.
   late final pulumi.Output<String> type;
 
@@ -148,15 +154,18 @@ class ResourceManagementPrivateLink extends pulumi.CustomResource {
     ResourceManagementPrivateLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:ResourceManagementPrivateLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:authorization:ResourceManagementPrivateLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ResourceManagementPrivateLinkEndpointConnectionsResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties =
+        registerOutput<
+          ResourceManagementPrivateLinkEndpointConnectionsResponse
+        >('properties');
+    type = registerOutput<String>('type');
   }
 }

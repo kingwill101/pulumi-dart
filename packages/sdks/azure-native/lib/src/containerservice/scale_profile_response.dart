@@ -10,20 +10,39 @@ class ScaleProfileResponse {
 
   /// Creates a new [ScaleProfileResponse].
   /// [manual] Specifications on how to scale the VirtualMachines agent pool to a fixed size.
-  ScaleProfileResponse({
-    this.manual,
-  });
+  ScaleProfileResponse({this.manual});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manual': ?pulumi.Input.mapOptionalInputValue<List<ManualScaleProfileResponse>, List<Map<String, dynamic>>>(manual, (value) => pulumi.Input.encodeList<ManualScaleProfileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'manual':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ManualScaleProfileResponse>,
+            List<Map<String, dynamic>>
+          >(
+            manual,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ManualScaleProfileResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ScaleProfileResponse.fromMap(Map<String, dynamic> map) {
     return ScaleProfileResponse(
-      manual: map['manual'] == null ? null : (pulumi.Input.decodeList<ManualScaleProfileResponse>(map['manual']!, (value) => ManualScaleProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manual: (() {
+        final guardedValue = map['manual'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ManualScaleProfileResponse>(
+            guardedValue,
+            (value) => ManualScaleProfileResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

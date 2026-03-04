@@ -8,16 +8,15 @@ enum VersionStatus {
   expired("EXPIRED"),
   cloning("CLONING");
 
-  const VersionStatus(this.value);
-  final String value;
+  const VersionStatus(this.wireValue);
+  final String wireValue;
 
   static VersionStatus fromValue(String value) {
     for (final item in VersionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersionStatus value: $value');
   }
 }
-

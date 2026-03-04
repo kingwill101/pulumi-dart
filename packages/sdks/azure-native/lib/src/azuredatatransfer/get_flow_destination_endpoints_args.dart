@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlowDestinationEndpointsArgs {
   /// The name for the connection that is to be requested.
   final pulumi.Input<String> connectionName;
+
   /// The name for the flow that is to be onboarded.
   final pulumi.Input<String> flowName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetFlowDestinationEndpointsArgs {
 
   factory GetFlowDestinationEndpointsArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowDestinationEndpointsArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      flowName: (map['flowName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      flowName: pulumi.Input.fromValue(map['flowName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

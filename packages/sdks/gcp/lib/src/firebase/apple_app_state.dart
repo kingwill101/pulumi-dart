@@ -8,22 +8,29 @@ class AppleAppState {
   /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
   final pulumi.Input<String>? apiKeyId;
+
   /// The globally unique, Firebase-assigned identifier of the App.
   /// This identifier should be treated as an opaque token, as the data format is not specified.
   final pulumi.Input<String>? appId;
+
   /// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
   final pulumi.Input<String>? appStoreId;
+
   /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
   final pulumi.Input<String>? bundleId;
   final pulumi.Input<String>? deletionPolicy;
+
   /// The user-assigned display name of the App.
   final pulumi.Input<String>? displayName;
+
   /// The fully qualified resource name of the App, for example:
   /// projects/projectId/iosApps/appId
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The Apple Developer Team ID associated with the App in the App Store.
   final pulumi.Input<String>? teamId;
 
@@ -65,16 +72,51 @@ class AppleAppState {
 
   factory AppleAppState.fromMap(Map<String, dynamic> map) {
     return AppleAppState(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
-      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
-      appStoreId: map['appStoreId'] == null ? null : (map['appStoreId']! as String).input(),
-      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      teamId: map['teamId'] == null ? null : (map['teamId']! as String).input(),
+      apiKeyId: (() {
+        final guardedValue = map['apiKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appId: (() {
+        final guardedValue = map['appId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appStoreId: (() {
+        final guardedValue = map['appStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bundleId: (() {
+        final guardedValue = map['bundleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionPolicy: (() {
+        final guardedValue = map['deletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      teamId: (() {
+        final guardedValue = map['teamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum RuleActionComputeBeta {
   log("LOG"),
   noAction("NO_ACTION");
 
-  const RuleActionComputeBeta(this.value);
-  final String value;
+  const RuleActionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RuleActionComputeBeta fromValue(String value) {
     for (final item in RuleActionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleActionComputeBeta value: $value');
   }
 }
-

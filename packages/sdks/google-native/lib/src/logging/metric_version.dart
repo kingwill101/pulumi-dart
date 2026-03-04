@@ -3,16 +3,15 @@ enum MetricVersion {
   v2("V2"),
   v1("V1");
 
-  const MetricVersion(this.value);
-  final String value;
+  const MetricVersion(this.wireValue);
+  final String wireValue;
 
   static MetricVersion fromValue(String value) {
     for (final item in MetricVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricVersion value: $value');
   }
 }
-

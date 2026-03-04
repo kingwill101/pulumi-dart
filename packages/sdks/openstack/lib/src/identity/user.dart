@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_args.dart';
-import 'user_multi_factor_auth_rule.dart';
 import 'user_state.dart';
 
 /// Manages a V3 User resource within OpenStack Keystone.
 ///
-/// > **Note:** All arguments including the user password will be stored in the
+/// &gt; **Note:** All arguments including the user password will be stored in the
 /// raw state as plain-text. Read more about sensitive data in
 /// state.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -252,36 +251,48 @@ import 'user_state.dart';
 class User extends pulumi.CustomResource {
   /// The default project this user belongs to.
   late final pulumi.Output<String> defaultProjectId;
+
   /// A description of the user.
   late final pulumi.Output<String?> description;
+
   /// The domain this user belongs to.
   late final pulumi.Output<String> domainId;
+
   /// Whether the user is enabled or disabled. Valid
   /// values are `true` and `false`.
   late final pulumi.Output<bool?> enabled;
+
   /// Free-form key/value pairs of extra information.
   late final pulumi.Output<Map<String, String>?> extra;
+
   /// User will not have to
   /// change their password upon first use. Valid values are `true` and `false`.
   late final pulumi.Output<bool?> ignoreChangePasswordUponFirstUse;
+
   /// User will not have a failure
   /// lockout placed on their account. Valid values are `true` and `false`.
   late final pulumi.Output<bool?> ignoreLockoutFailureAttempts;
+
   /// User's password will not expire.
   /// Valid values are `true` and `false`.
   late final pulumi.Output<bool?> ignorePasswordExpiry;
+
   /// Whether to enable multi-factor
   /// authentication. Valid values are `true` and `false`.
   late final pulumi.Output<bool?> multiFactorAuthEnabled;
+
   /// A multi-factor authentication rule.
   /// The structure is documented below. Please see the
   /// [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
   /// for more information on how to use mulit-factor rules.
-  late final pulumi.Output<List<UserMultiFactorAuthRule>?> multiFactorAuthRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> multiFactorAuthRules;
+
   /// The name of the user.
   late final pulumi.Output<String> name;
+
   /// The password for the user.
   late final pulumi.Output<String?> password;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new User.
@@ -291,37 +302,36 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_identity_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:identity/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultProjectId = registerOutput<String>('defaultProjectId');
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.extra = registerOutput<Map<String, String>?>('extra');
-    this.ignoreChangePasswordUponFirstUse = registerOutput<bool?>('ignoreChangePasswordUponFirstUse');
-    this.ignoreLockoutFailureAttempts = registerOutput<bool?>('ignoreLockoutFailureAttempts');
-    this.ignorePasswordExpiry = registerOutput<bool?>('ignorePasswordExpiry');
-    this.multiFactorAuthEnabled = registerOutput<bool?>('multiFactorAuthEnabled');
-    this.multiFactorAuthRules = registerOutput<List<UserMultiFactorAuthRule>?>('multiFactorAuthRules');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:identity/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    defaultProjectId = registerOutput<String>('defaultProjectId');
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
+    enabled = registerOutput<bool?>('enabled');
+    extra = registerOutput<Map<String, String>?>('extra');
+    ignoreChangePasswordUponFirstUse = registerOutput<bool?>(
+      'ignoreChangePasswordUponFirstUse',
+    );
+    ignoreLockoutFailureAttempts = registerOutput<bool?>(
+      'ignoreLockoutFailureAttempts',
+    );
+    ignorePasswordExpiry = registerOutput<bool?>('ignorePasswordExpiry');
+    multiFactorAuthEnabled = registerOutput<bool?>('multiFactorAuthEnabled');
+    multiFactorAuthRules = registerOutput<List<Map<String, dynamic>>?>(
+      'multiFactorAuthRules',
+    );
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.region = registerOutput<String>('region');
+    password = registerOutput<String?>('password');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -334,23 +344,29 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultProjectId = registerOutput<String>('defaultProjectId');
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.extra = registerOutput<Map<String, String>?>('extra');
-    this.ignoreChangePasswordUponFirstUse = registerOutput<bool?>('ignoreChangePasswordUponFirstUse');
-    this.ignoreLockoutFailureAttempts = registerOutput<bool?>('ignoreLockoutFailureAttempts');
-    this.ignorePasswordExpiry = registerOutput<bool?>('ignorePasswordExpiry');
-    this.multiFactorAuthEnabled = registerOutput<bool?>('multiFactorAuthEnabled');
-    this.multiFactorAuthRules = registerOutput<List<UserMultiFactorAuthRule>?>('multiFactorAuthRules');
+         'openstack:identity/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultProjectId = registerOutput<String>('defaultProjectId');
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
+    enabled = registerOutput<bool?>('enabled');
+    extra = registerOutput<Map<String, String>?>('extra');
+    ignoreChangePasswordUponFirstUse = registerOutput<bool?>(
+      'ignoreChangePasswordUponFirstUse',
+    );
+    ignoreLockoutFailureAttempts = registerOutput<bool?>(
+      'ignoreLockoutFailureAttempts',
+    );
+    ignorePasswordExpiry = registerOutput<bool?>('ignorePasswordExpiry');
+    multiFactorAuthEnabled = registerOutput<bool?>('multiFactorAuthEnabled');
+    multiFactorAuthRules = registerOutput<List<Map<String, dynamic>>?>(
+      'multiFactorAuthRules',
+    );
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.region = registerOutput<String>('region');
+    password = registerOutput<String?>('password');
+    region = registerOutput<String>('region');
   }
 }

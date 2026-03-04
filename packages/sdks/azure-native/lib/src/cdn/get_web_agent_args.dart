@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAgentArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the web agent.
   final pulumi.Input<String> webAgentName;
 
@@ -29,9 +30,10 @@ class GetWebAgentArgs {
 
   factory GetWebAgentArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAgentArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      webAgentName: (map['webAgentName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      webAgentName: pulumi.Input.fromValue(map['webAgentName'] as String),
     );
   }
 }
-

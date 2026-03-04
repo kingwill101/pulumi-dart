@@ -5,16 +5,15 @@ enum JobCollectionState {
   valueSuspended("Suspended"),
   valueDeleted("Deleted");
 
-  const JobCollectionState(this.value);
-  final String value;
+  const JobCollectionState(this.wireValue);
+  final String wireValue;
 
   static JobCollectionState fromValue(String value) {
     for (final item in JobCollectionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobCollectionState value: $value');
   }
 }
-

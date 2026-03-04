@@ -9,20 +9,15 @@ class VirtualMachineResponse {
 
   /// Creates a new [VirtualMachineResponse].
   /// [tags] Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
-  VirtualMachineResponse({
-    required this.tags,
-  });
+  VirtualMachineResponse({required this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': tags,
-    };
+    return <String, dynamic>{'tags': tags};
   }
 
   factory VirtualMachineResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineResponse(
-      tags: ((map['tags'] as List).cast<String>()).input(),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceParameter {
   /// (Available since v1.231.0) The default value of the parameter.
   final pulumi.Input<String>? defaultValue;
+
   /// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
   final pulumi.Input<String>? forceRestartInstance;
+
   /// (Available since v1.231.0) Whether the parameter is changeable.
   final pulumi.Input<String>? isChangeableConfig;
+
   /// The name of the parameter.
   final pulumi.Input<String> name;
+
   /// (Available since v1.231.0) The optional range of the parameter.
   final pulumi.Input<String>? optionalRange;
+
   /// (Available since v1.231.0) The description of the parameter.
   final pulumi.Input<String>? parameterDescription;
+
   /// The value of the parameter.
   final pulumi.Input<String> value;
 
@@ -50,14 +56,33 @@ class InstanceParameter {
 
   factory InstanceParameter.fromMap(Map<String, dynamic> map) {
     return InstanceParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
-      forceRestartInstance: map['forceRestartInstance'] == null ? null : (map['forceRestartInstance']! as String).input(),
-      isChangeableConfig: map['isChangeableConfig'] == null ? null : (map['isChangeableConfig']! as String).input(),
-      name: (map['name'] as String).input(),
-      optionalRange: map['optionalRange'] == null ? null : (map['optionalRange']! as String).input(),
-      parameterDescription: map['parameterDescription'] == null ? null : (map['parameterDescription']! as String).input(),
-      value: (map['value'] as String).input(),
+      defaultValue: (() {
+        final guardedValue = map['defaultValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceRestartInstance: (() {
+        final guardedValue = map['forceRestartInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isChangeableConfig: (() {
+        final guardedValue = map['isChangeableConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      optionalRange: (() {
+        final guardedValue = map['optionalRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterDescription: (() {
+        final guardedValue = map['parameterDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

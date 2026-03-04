@@ -123,19 +123,26 @@ import 'profiles_profile_timeouts.dart';
 class ProfilesProfile extends pulumi.CustomResource {
   /// ARN of the Profile.
   late final pulumi.Output<String> arn;
+
   /// Name of the Profile.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Share status of the Profile.
   late final pulumi.Output<String> shareStatus;
+
   /// Status of the Profile.
   late final pulumi.Output<String> status;
+
   /// Status message of the Profile.
   late final pulumi.Output<String> statusMessage;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ProfilesProfileTimeouts?> timeouts;
@@ -149,21 +156,21 @@ class ProfilesProfile extends pulumi.CustomResource {
     ProfilesProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/profilesProfile:ProfilesProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:route53/profilesProfile:ProfilesProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.shareStatus = registerOutput<String>('shareStatus');
-    this.status = registerOutput<String>('status');
-    this.statusMessage = registerOutput<String>('statusMessage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<ProfilesProfileTimeouts?>('timeouts');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    shareStatus = registerOutput<String>('shareStatus');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<ProfilesProfileTimeouts?>('timeouts');
   }
 
   /// Gets an existing [ProfilesProfile] resource's state with the given [name] and [id].
@@ -184,20 +191,20 @@ class ProfilesProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/profilesProfile:ProfilesProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:route53/profilesProfile:ProfilesProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.shareStatus = registerOutput<String>('shareStatus');
-    this.status = registerOutput<String>('status');
-    this.statusMessage = registerOutput<String>('statusMessage');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<ProfilesProfileTimeouts?>('timeouts');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    shareStatus = registerOutput<String>('shareStatus');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<ProfilesProfileTimeouts?>('timeouts');
   }
 }

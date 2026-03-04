@@ -8,20 +8,19 @@ class ClusterWorkloadIdentityConfig {
 
   /// Creates a new [ClusterWorkloadIdentityConfig].
   /// [workloadPool] The workload pool to attach all Kubernetes service accounts to.
-  ClusterWorkloadIdentityConfig({
-    this.workloadPool,
-  });
+  ClusterWorkloadIdentityConfig({this.workloadPool});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'workloadPool': ?workloadPool,
-    };
+    return <String, dynamic>{'workloadPool': ?workloadPool};
   }
 
   factory ClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
     return ClusterWorkloadIdentityConfig(
-      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool']! as String).input(),
+      workloadPool: (() {
+        final guardedValue = map['workloadPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

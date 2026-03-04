@@ -7,7 +7,7 @@ import 'project_metadata_state.dart';
 /// and
 /// [API](https://cloud.google.com/compute/docs/reference/latest/projects/setCommonInstanceMetadata).
 ///
-/// > **Note:**  This resource manages all project-level metadata including project-level ssh keys.
+/// &gt; **Note:**  This resource manages all project-level metadata including project-level ssh keys.
 /// Keys unset in config but set on the server will be removed. If you want to manage only single
 /// key/value pairs within the project metadata rather than the entire set, then use
 /// google_compute_project_metadata_item.
@@ -268,6 +268,7 @@ class ProjectMetadata extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<Map<String, String>> metadata;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -281,13 +282,13 @@ class ProjectMetadata extends pulumi.CustomResource {
     ProjectMetadataArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/projectMetadata:ProjectMetadata',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.metadata = registerOutput<Map<String, String>>('metadata');
-    this.project = registerOutput<String>('project');
+         'gcp:compute/projectMetadata:ProjectMetadata',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    metadata = registerOutput<Map<String, String>>('metadata');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [ProjectMetadata] resource's state with the given [name] and [id].
@@ -308,12 +309,12 @@ class ProjectMetadata extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/projectMetadata:ProjectMetadata',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.metadata = registerOutput<Map<String, String>>('metadata');
-    this.project = registerOutput<String>('project');
+         'gcp:compute/projectMetadata:ProjectMetadata',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    metadata = registerOutput<Map<String, String>>('metadata');
+    project = registerOutput<String>('project');
   }
 }

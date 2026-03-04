@@ -1,5 +1,3 @@
-library module_emr;
-
 export 'emr/cluster.dart';
 export 'emr/cluster_args.dart';
 export 'emr/cluster_bootstrap_action.dart';

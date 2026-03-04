@@ -5,16 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserName {
   /// The family name of the user.
   final pulumi.Input<String> familyName;
+
   /// The name that is typically displayed when the name is shown for display.
   final pulumi.Input<String>? formatted;
+
   /// The given name of the user.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> givenName;
+
   /// The honorific prefix of the user.
   final pulumi.Input<String>? honorificPrefix;
+
   /// The honorific suffix of the user.
   final pulumi.Input<String>? honorificSuffix;
+
   /// The middle name of the user.
   final pulumi.Input<String>? middleName;
 
@@ -47,13 +52,28 @@ class UserName {
 
   factory UserName.fromMap(Map<String, dynamic> map) {
     return UserName(
-      familyName: (map['familyName'] as String).input(),
-      formatted: map['formatted'] == null ? null : ((map['formatted'] as String).input()).input(),
-      givenName: (map['givenName'] as String).input(),
-      honorificPrefix: map['honorificPrefix'] == null ? null : ((map['honorificPrefix'] as String).input()).input(),
-      honorificSuffix: map['honorificSuffix'] == null ? null : ((map['honorificSuffix'] as String).input()).input(),
-      middleName: map['middleName'] == null ? null : ((map['middleName'] as String).input()).input(),
+      familyName: pulumi.Input.fromValue(map['familyName'] as String),
+      formatted: (() {
+        final guardedValue = map['formatted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      givenName: pulumi.Input.fromValue(map['givenName'] as String),
+      honorificPrefix: (() {
+        final guardedValue = map['honorificPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      honorificSuffix: (() {
+        final guardedValue = map['honorificSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      middleName: (() {
+        final guardedValue = map['middleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

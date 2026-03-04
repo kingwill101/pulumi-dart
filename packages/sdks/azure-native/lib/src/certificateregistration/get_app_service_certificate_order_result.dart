@@ -9,62 +9,88 @@ import 'certificate_order_contact_response.dart';
 class GetAppServiceCertificateOrderResult {
   /// Reasons why App Service Certificate is not renewable at the current moment.
   final List<String> appServiceCertificateNotRenewableReasons;
-  /// <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
+
+  /// &lt;code&gt;true&lt;/code&gt; if the certificate should be automatically renewed when it expires; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool? autoRenew;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// State of the Key Vault secret.
   final Map<String, AppServiceCertificateResponse>? certificates;
+
   /// Contact info
   final CertificateOrderContactResponse contact;
+
   /// Last CSR that was created for this order.
   final String? csr;
+
   /// Certificate distinguished name.
   final String? distinguishedName;
+
   /// Domain verification token.
   final String domainVerificationToken;
+
   /// Certificate expiration time.
   final String expirationTime;
+
   /// Resource Id.
   final String id;
+
   /// Intermediate certificate.
   final CertificateDetailsResponse intermediate;
-  /// <code>true</code> if private key is external; otherwise, <code>false</code>.
+
+  /// &lt;code&gt;true&lt;/code&gt; if private key is external; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool isPrivateKeyExternal;
+
   /// Certificate key size.
   final int? keySize;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
+
   /// Certificate last issuance time.
   final String lastCertificateIssuanceTime;
+
   /// Resource Location.
   final String location;
+
   /// Resource Name.
   final String name;
+
   /// Time stamp when the certificate would be auto renewed next
   final String nextAutoRenewalTimeStamp;
+
   /// Certificate product type.
   final String productType;
+
   /// Status of certificate order.
   final String provisioningState;
+
   /// Root certificate.
   final CertificateDetailsResponse root;
+
   /// Current serial number of the certificate.
   final String serialNumber;
+
   /// Signed certificate.
   final CertificateDetailsResponse signedCertificate;
+
   /// Current order status.
   final String status;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
+
   /// Duration in years (must be 1).
   final int? validityInYears;
 
   /// Creates a new [GetAppServiceCertificateOrderResult].
   /// [appServiceCertificateNotRenewableReasons] Reasons why App Service Certificate is not renewable at the current moment.
-  /// [autoRenew] <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
+  /// [autoRenew] &lt;code&gt;true&lt;/code&gt; if the certificate should be automatically renewed when it expires; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [azureApiVersion] The Azure API version of the resource.
   /// [certificates] State of the Key Vault secret.
   /// [contact] Contact info
@@ -74,7 +100,7 @@ class GetAppServiceCertificateOrderResult {
   /// [expirationTime] Certificate expiration time.
   /// [id] Resource Id.
   /// [intermediate] Intermediate certificate.
-  /// [isPrivateKeyExternal] <code>true</code> if private key is external; otherwise, <code>false</code>.
+  /// [isPrivateKeyExternal] &lt;code&gt;true&lt;/code&gt; if private key is external; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [keySize] Certificate key size.
   /// [kind] Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   /// [lastCertificateIssuanceTime] Certificate last issuance time.
@@ -122,10 +148,18 @@ class GetAppServiceCertificateOrderResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appServiceCertificateNotRenewableReasons': appServiceCertificateNotRenewableReasons,
+      'appServiceCertificateNotRenewableReasons':
+          appServiceCertificateNotRenewableReasons,
       'autoRenew': ?autoRenew,
       'azureApiVersion': azureApiVersion,
-      'certificates': ?certificates == null ? null : pulumi.Input.encodeMapValues<AppServiceCertificateResponse, Map<String, dynamic>>(certificates!, (value) => value.toMap()),
+      'certificates': ?(() {
+        final guardedValue = certificates;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeMapValues<
+          AppServiceCertificateResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'contact': contact.toMap(),
       'csr': ?csr,
       'distinguishedName': ?distinguishedName,
@@ -152,36 +186,84 @@ class GetAppServiceCertificateOrderResult {
     };
   }
 
-  factory GetAppServiceCertificateOrderResult.fromMap(Map<String, dynamic> map) {
+  factory GetAppServiceCertificateOrderResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppServiceCertificateOrderResult(
-      appServiceCertificateNotRenewableReasons: (map['appServiceCertificateNotRenewableReasons'] as List).cast<String>(),
-      autoRenew: map['autoRenew'] == null ? null : map['autoRenew']! as bool,
+      appServiceCertificateNotRenewableReasons:
+          (map['appServiceCertificateNotRenewableReasons'] as List)
+              .cast<String>(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      certificates: map['certificates'] == null ? null : pulumi.Input.decodeMapValues<AppServiceCertificateResponse>(map['certificates']!, (value) => AppServiceCertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
-      contact: CertificateOrderContactResponse.fromMap((map['contact'] as Map).cast<String, dynamic>()),
-      csr: map['csr'] == null ? null : map['csr']! as String,
-      distinguishedName: map['distinguishedName'] == null ? null : map['distinguishedName']! as String,
+      certificates: (() {
+        final guardedValue = map['certificates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<AppServiceCertificateResponse>(
+          guardedValue,
+          (value) => AppServiceCertificateResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      contact: CertificateOrderContactResponse.fromMap(
+        (map['contact']! as Map).cast<String, dynamic>(),
+      ),
+      csr: (() {
+        final guardedValue = map['csr'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      distinguishedName: (() {
+        final guardedValue = map['distinguishedName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       domainVerificationToken: map['domainVerificationToken'] as String,
       expirationTime: map['expirationTime'] as String,
       id: map['id'] as String,
-      intermediate: CertificateDetailsResponse.fromMap((map['intermediate'] as Map).cast<String, dynamic>()),
+      intermediate: CertificateDetailsResponse.fromMap(
+        (map['intermediate']! as Map).cast<String, dynamic>(),
+      ),
       isPrivateKeyExternal: map['isPrivateKeyExternal'] as bool,
-      keySize: map['keySize'] == null ? null : map['keySize']! as int,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      keySize: (() {
+        final guardedValue = map['keySize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       lastCertificateIssuanceTime: map['lastCertificateIssuanceTime'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       nextAutoRenewalTimeStamp: map['nextAutoRenewalTimeStamp'] as String,
       productType: map['productType'] as String,
       provisioningState: map['provisioningState'] as String,
-      root: CertificateDetailsResponse.fromMap((map['root'] as Map).cast<String, dynamic>()),
+      root: CertificateDetailsResponse.fromMap(
+        (map['root']! as Map).cast<String, dynamic>(),
+      ),
       serialNumber: map['serialNumber'] as String,
-      signedCertificate: CertificateDetailsResponse.fromMap((map['signedCertificate'] as Map).cast<String, dynamic>()),
+      signedCertificate: CertificateDetailsResponse.fromMap(
+        (map['signedCertificate']! as Map).cast<String, dynamic>(),
+      ),
       status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      validityInYears: map['validityInYears'] == null ? null : map['validityInYears']! as int,
+      validityInYears: (() {
+        final guardedValue = map['validityInYears'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

@@ -152,18 +152,25 @@ import 'static_site_linked_backend_for_build_args.dart';
 class StaticSiteLinkedBackendForBuild extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource id of the backend linked to the static site
   late final pulumi.Output<String?> backendResourceId;
+
   /// The date and time on which the backend was linked to the static site.
   late final pulumi.Output<String> createdOn;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the linking process.
   late final pulumi.Output<String> provisioningState;
+
   /// The region of the backend linked to the static site
   late final pulumi.Output<String?> region;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -176,18 +183,18 @@ class StaticSiteLinkedBackendForBuild extends pulumi.CustomResource {
     StaticSiteLinkedBackendForBuildArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:StaticSiteLinkedBackendForBuild',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backendResourceId = registerOutput<String?>('backendResourceId');
-    this.createdOn = registerOutput<String>('createdOn');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:StaticSiteLinkedBackendForBuild',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backendResourceId = registerOutput<String?>('backendResourceId');
+    createdOn = registerOutput<String>('createdOn');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.region = registerOutput<String?>('region');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    region = registerOutput<String?>('region');
+    type = registerOutput<String>('type');
   }
 }

@@ -4,16 +4,15 @@ enum SkuDeploymentMode {
   valueAzure("Azure"),
   valuePrivateEdgeZone("PrivateEdgeZone");
 
-  const SkuDeploymentMode(this.value);
-  final String value;
+  const SkuDeploymentMode(this.wireValue);
+  final String wireValue;
 
   static SkuDeploymentMode fromValue(String value) {
     for (final item in SkuDeploymentMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuDeploymentMode value: $value');
   }
 }
-

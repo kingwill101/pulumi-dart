@@ -7,29 +7,40 @@ import 'maintenance_window_day_of_week.dart';
 class MaintenanceWindow {
   /// The day of week, when the window starts.
   final pulumi.Input<MaintenanceWindowDayOfWeek>? dayOfWeek;
+
   /// The hour of day (0-23) when the window starts.
   final pulumi.Input<int>? hourOfDay;
 
   /// Creates a new [MaintenanceWindow].
   /// [dayOfWeek] The day of week, when the window starts.
   /// [hourOfDay] The hour of day (0-23) when the window starts.
-  MaintenanceWindow({
-    this.dayOfWeek,
-    this.hourOfDay,
-  });
+  MaintenanceWindow({this.dayOfWeek, this.hourOfDay});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeek': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindowDayOfWeek, String>(dayOfWeek, (value) => value.value),
+      'dayOfWeek':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaintenanceWindowDayOfWeek,
+            String
+          >(dayOfWeek, (value) => value.wireValue),
       'hourOfDay': ?hourOfDay,
     };
   }
 
   factory MaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (MaintenanceWindowDayOfWeek.fromValue(map['dayOfWeek']! as String)).input(),
-      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay']! as int).input(),
+      dayOfWeek: (() {
+        final guardedValue = map['dayOfWeek'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaintenanceWindowDayOfWeek.fromValue(guardedValue as String),
+        );
+      })(),
+      hourOfDay: (() {
+        final guardedValue = map['hourOfDay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

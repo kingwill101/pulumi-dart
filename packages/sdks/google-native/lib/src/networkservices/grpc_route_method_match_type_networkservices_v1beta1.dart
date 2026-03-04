@@ -4,16 +4,19 @@ enum GrpcRouteMethodMatchTypeNetworkservicesV1beta1 {
   exact("EXACT"),
   regularExpression("REGULAR_EXPRESSION");
 
-  const GrpcRouteMethodMatchTypeNetworkservicesV1beta1(this.value);
-  final String value;
+  const GrpcRouteMethodMatchTypeNetworkservicesV1beta1(this.wireValue);
+  final String wireValue;
 
-  static GrpcRouteMethodMatchTypeNetworkservicesV1beta1 fromValue(String value) {
+  static GrpcRouteMethodMatchTypeNetworkservicesV1beta1 fromValue(
+    String value,
+  ) {
     for (final item in GrpcRouteMethodMatchTypeNetworkservicesV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GrpcRouteMethodMatchTypeNetworkservicesV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown GrpcRouteMethodMatchTypeNetworkservicesV1beta1 value: $value',
+    );
   }
 }
-

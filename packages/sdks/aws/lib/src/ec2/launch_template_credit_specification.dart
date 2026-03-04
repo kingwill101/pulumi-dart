@@ -11,20 +11,19 @@ class LaunchTemplateCreditSpecification {
 
   /// Creates a new [LaunchTemplateCreditSpecification].
   /// [cpuCredits] The credit option for CPU usage.
-  LaunchTemplateCreditSpecification({
-    this.cpuCredits,
-  });
+  LaunchTemplateCreditSpecification({this.cpuCredits});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpuCredits': ?cpuCredits,
-    };
+    return <String, dynamic>{'cpuCredits': ?cpuCredits};
   }
 
   factory LaunchTemplateCreditSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateCreditSpecification(
-      cpuCredits: map['cpuCredits'] == null ? null : ((map['cpuCredits'] as String).input()).input(),
+      cpuCredits: (() {
+        final guardedValue = map['cpuCredits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

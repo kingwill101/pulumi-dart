@@ -9,20 +9,15 @@ class ServiceConfigResponse {
 
   /// Creates a new [ServiceConfigResponse].
   /// [domain] Optional. Domain name of the service. Example: console.cloud.google
-  ServiceConfigResponse({
-    required this.domain,
-  });
+  ServiceConfigResponse({required this.domain});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': domain,
-    };
+    return <String, dynamic>{'domain': domain};
   }
 
   factory ServiceConfigResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConfigResponse(
-      domain: (map['domain'] as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
     );
   }
 }
-

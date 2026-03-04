@@ -1,5 +1,3 @@
-library module_schemas;
-
 export 'schemas/discoverer.dart';
 export 'schemas/discoverer_args.dart';
 export 'schemas/discoverer_state.dart';

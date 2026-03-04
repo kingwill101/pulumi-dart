@@ -4,16 +4,15 @@ enum ActionRuleType {
   valueActionGroup("ActionGroup"),
   valueDiagnostics("Diagnostics");
 
-  const ActionRuleType(this.value);
-  final String value;
+  const ActionRuleType(this.wireValue);
+  final String wireValue;
 
   static ActionRuleType fromValue(String value) {
     for (final item in ActionRuleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ActionRuleType value: $value');
   }
 }
-

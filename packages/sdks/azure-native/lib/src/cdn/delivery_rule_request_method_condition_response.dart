@@ -8,6 +8,7 @@ class DeliveryRuleRequestMethodConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'RequestMethod'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the condition.
   final pulumi.Input<RequestMethodMatchConditionParametersResponse> parameters;
 
@@ -22,15 +23,24 @@ class DeliveryRuleRequestMethodConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<RequestMethodMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            RequestMethodMatchConditionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleRequestMethodConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory DeliveryRuleRequestMethodConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryRuleRequestMethodConditionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (RequestMethodMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        RequestMethodMatchConditionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

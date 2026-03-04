@@ -8,20 +8,15 @@ class GetBundleRootStorage {
 
   /// Creates a new [GetBundleRootStorage].
   /// [capacity] Size of the user storage.
-  GetBundleRootStorage({
-    required this.capacity,
-  });
+  GetBundleRootStorage({required this.capacity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'capacity': capacity,
-    };
+    return <String, dynamic>{'capacity': capacity};
   }
 
   factory GetBundleRootStorage.fromMap(Map<String, dynamic> map) {
     return GetBundleRootStorage(
-      capacity: (map['capacity'] as String).input(),
+      capacity: pulumi.Input.fromValue(map['capacity'] as String),
     );
   }
 }
-

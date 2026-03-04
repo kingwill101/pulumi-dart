@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngestionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// ID of the dataset used in the ingestion.
   final pulumi.Input<String> dataSetId;
+
   /// ID for the ingestion.
   final pulumi.Input<String> ingestionId;
+
   /// Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> ingestionType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -46,12 +50,19 @@ class IngestionArgs {
 
   factory IngestionArgs.fromMap(Map<String, dynamic> map) {
     return IngestionArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
-      dataSetId: (map['dataSetId'] as String).input(),
-      ingestionId: (map['ingestionId'] as String).input(),
-      ingestionType: (map['ingestionType'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSetId: pulumi.Input.fromValue(map['dataSetId'] as String),
+      ingestionId: pulumi.Input.fromValue(map['ingestionId'] as String),
+      ingestionType: pulumi.Input.fromValue(map['ingestionType'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

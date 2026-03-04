@@ -19,16 +19,17 @@ enum DsRecordAlgorithmDomainsV1alpha2 {
   privatedns("PRIVATEDNS"),
   privateoid("PRIVATEOID");
 
-  const DsRecordAlgorithmDomainsV1alpha2(this.value);
-  final String value;
+  const DsRecordAlgorithmDomainsV1alpha2(this.wireValue);
+  final String wireValue;
 
   static DsRecordAlgorithmDomainsV1alpha2 fromValue(String value) {
     for (final item in DsRecordAlgorithmDomainsV1alpha2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DsRecordAlgorithmDomainsV1alpha2 value: $value');
+    throw ArgumentError(
+      'Unknown DsRecordAlgorithmDomainsV1alpha2 value: $value',
+    );
   }
 }
-

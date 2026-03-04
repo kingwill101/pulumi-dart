@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControllerDetailsArgs {
   /// Location of the resource.
   final pulumi.Input<String>? location;
+
   /// The purpose of the dnc controller resource.
   final pulumi.Input<String>? purpose;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String>? resourceName;
+
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,31 @@ class ControllerDetailsArgs {
 
   factory ControllerDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ControllerDetailsArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      purpose: (() {
+        final guardedValue = map['purpose'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

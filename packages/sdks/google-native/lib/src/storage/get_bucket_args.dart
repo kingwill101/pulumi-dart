@@ -39,12 +39,27 @@ class GetBucketArgs {
 
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
-      bucket: (map['bucket'] as String).input(),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch']! as String).input(),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch']! as String).input(),
-      projection: map['projection'] == null ? null : (map['projection']! as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      ifMetagenerationMatch: (() {
+        final guardedValue = map['ifMetagenerationMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ifMetagenerationNotMatch: (() {
+        final guardedValue = map['ifMetagenerationNotMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projection: (() {
+        final guardedValue = map['projection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

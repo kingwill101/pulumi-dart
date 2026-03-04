@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionServiceResponse {
   /// A boolean indicating whether or not the service encrypts the data as it is stored. Encryption at rest is enabled by default today and cannot be disabled.
   final pulumi.Input<bool>? enabled;
+
   /// Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used.
   final pulumi.Input<String>? keyType;
+
   /// Gets a rough estimate of the date/time when the encryption was last enabled by the user. Data is encrypted at rest by default today and cannot be disabled.
   final pulumi.Input<String> lastEnabledTime;
 
@@ -31,10 +33,17 @@ class EncryptionServiceResponse {
 
   factory EncryptionServiceResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionServiceResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
-      lastEnabledTime: (map['lastEnabledTime'] as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyType: (() {
+        final guardedValue = map['keyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastEnabledTime: pulumi.Input.fromValue(map['lastEnabledTime'] as String),
     );
   }
 }
-

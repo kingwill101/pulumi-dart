@@ -394,48 +394,72 @@ import 'legal_hold_properties_response.dart';
 class BlobContainer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Default the container to use specified encryption scope for all writes.
   late final pulumi.Output<String?> defaultEncryptionScope;
+
   /// Indicates whether the blob container was deleted.
   late final pulumi.Output<bool> deleted;
+
   /// Blob container deletion time.
   late final pulumi.Output<String> deletedTime;
+
   /// Block override of encryption scope from the container default.
   late final pulumi.Output<bool?> denyEncryptionScopeOverride;
+
   /// Enable NFSv3 all squash on blob container.
   late final pulumi.Output<bool?> enableNfsV3AllSquash;
+
   /// Enable NFSv3 root squash on blob container.
   late final pulumi.Output<bool?> enableNfsV3RootSquash;
+
   /// Resource Etag.
   late final pulumi.Output<String> etag;
+
   /// The hasImmutabilityPolicy public property is set to true by SRP if ImmutabilityPolicy has been created for this container. The hasImmutabilityPolicy public property is set to false by SRP if ImmutabilityPolicy has not been created for this container.
   late final pulumi.Output<bool> hasImmutabilityPolicy;
+
   /// The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
   late final pulumi.Output<bool> hasLegalHold;
+
   /// The ImmutabilityPolicy property of the container.
-  late final pulumi.Output<ImmutabilityPolicyPropertiesResponse> immutabilityPolicy;
+  late final pulumi.Output<ImmutabilityPolicyPropertiesResponse>
+  immutabilityPolicy;
+
   /// The object level immutability property of the container. The property is immutable and can only be set to true at the container creation time. Existing containers must undergo a migration process.
-  late final pulumi.Output<ImmutableStorageWithVersioningResponse?> immutableStorageWithVersioning;
+  late final pulumi.Output<ImmutableStorageWithVersioningResponse?>
+  immutableStorageWithVersioning;
+
   /// Returns the date and time the container was last modified.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// Specifies whether the lease on a container is of infinite or fixed duration, only when the container is leased.
   late final pulumi.Output<String> leaseDuration;
+
   /// Lease state of the container.
   late final pulumi.Output<String> leaseState;
+
   /// The lease status of the container.
   late final pulumi.Output<String> leaseStatus;
+
   /// The LegalHold property of the container.
   late final pulumi.Output<LegalHoldPropertiesResponse> legalHold;
+
   /// A name-value pair to associate with the container as metadata.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies whether data in the container may be accessed publicly and the level of access.
   late final pulumi.Output<String?> publicAccess;
+
   /// Remaining retention days for soft deleted blob container.
   late final pulumi.Output<int> remainingRetentionDays;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The version of the deleted blob container.
   late final pulumi.Output<String> version;
 
@@ -448,33 +472,40 @@ class BlobContainer extends pulumi.CustomResource {
     BlobContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storage:BlobContainer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultEncryptionScope = registerOutput<String?>('defaultEncryptionScope');
-    this.deleted = registerOutput<bool>('deleted');
-    this.deletedTime = registerOutput<String>('deletedTime');
-    this.denyEncryptionScopeOverride = registerOutput<bool?>('denyEncryptionScopeOverride');
-    this.enableNfsV3AllSquash = registerOutput<bool?>('enableNfsV3AllSquash');
-    this.enableNfsV3RootSquash = registerOutput<bool?>('enableNfsV3RootSquash');
-    this.etag = registerOutput<String>('etag');
-    this.hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
-    this.hasLegalHold = registerOutput<bool>('hasLegalHold');
-    this.immutabilityPolicy = registerOutput<ImmutabilityPolicyPropertiesResponse>('immutabilityPolicy');
-    this.immutableStorageWithVersioning = registerOutput<ImmutableStorageWithVersioningResponse?>('immutableStorageWithVersioning');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.leaseDuration = registerOutput<String>('leaseDuration');
-    this.leaseState = registerOutput<String>('leaseState');
-    this.leaseStatus = registerOutput<String>('leaseStatus');
-    this.legalHold = registerOutput<LegalHoldPropertiesResponse>('legalHold');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure-native:storage:BlobContainer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultEncryptionScope = registerOutput<String?>('defaultEncryptionScope');
+    deleted = registerOutput<bool>('deleted');
+    deletedTime = registerOutput<String>('deletedTime');
+    denyEncryptionScopeOverride = registerOutput<bool?>(
+      'denyEncryptionScopeOverride',
+    );
+    enableNfsV3AllSquash = registerOutput<bool?>('enableNfsV3AllSquash');
+    enableNfsV3RootSquash = registerOutput<bool?>('enableNfsV3RootSquash');
+    etag = registerOutput<String>('etag');
+    hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
+    hasLegalHold = registerOutput<bool>('hasLegalHold');
+    immutabilityPolicy = registerOutput<ImmutabilityPolicyPropertiesResponse>(
+      'immutabilityPolicy',
+    );
+    immutableStorageWithVersioning =
+        registerOutput<ImmutableStorageWithVersioningResponse?>(
+          'immutableStorageWithVersioning',
+        );
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    leaseDuration = registerOutput<String>('leaseDuration');
+    leaseState = registerOutput<String>('leaseState');
+    leaseStatus = registerOutput<String>('leaseStatus');
+    legalHold = registerOutput<LegalHoldPropertiesResponse>('legalHold');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.publicAccess = registerOutput<String?>('publicAccess');
-    this.remainingRetentionDays = registerOutput<int>('remainingRetentionDays');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    publicAccess = registerOutput<String?>('publicAccess');
+    remainingRetentionDays = registerOutput<int>('remainingRetentionDays');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

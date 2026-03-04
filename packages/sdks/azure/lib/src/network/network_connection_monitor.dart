@@ -1,13 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_connection_monitor_args.dart';
-import 'network_connection_monitor_endpoint.dart';
 import 'network_connection_monitor_state.dart';
-import 'network_connection_monitor_test_configuration.dart';
-import 'network_connection_monitor_test_group.dart';
 
 /// Manages a Network Connection Monitor.
 ///
-/// > **NOTE:** Any Network Connection Monitor resource created with API versions 2019-06-01 or earlier (v1) are now incompatible with this provider, which now only supports v2.
+/// &gt; **NOTE:** Any Network Connection Monitor resource created with API versions 2019-06-01 or earlier (v1) are now incompatible with this provider, which now only supports v2.
 ///
 /// ## Example Usage
 ///
@@ -904,7 +901,7 @@ import 'network_connection_monitor_test_group.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -918,23 +915,31 @@ import 'network_connection_monitor_test_group.dart';
 /// ```
 class NetworkConnectionMonitor extends pulumi.CustomResource {
   /// A `endpoint` block as defined below.
-  late final pulumi.Output<List<NetworkConnectionMonitorEndpoint>> endpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+
   /// The Azure Region where the Network Connection Monitor should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Network Connection Monitor. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherId;
+
   /// The description of the Network Connection Monitor.
   late final pulumi.Output<String?> notes;
+
   /// A list of IDs of the Log Analytics Workspace which will accept the output from the Network Connection Monitor.
   late final pulumi.Output<List<String>?> outputWorkspaceResourceIds;
+
   /// A mapping of tags which should be assigned to the Network Connection Monitor.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `test_configuration` block as defined below.
-  late final pulumi.Output<List<NetworkConnectionMonitorTestConfiguration>> testConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> testConfigurations;
+
   /// A `test_group` block as defined below.
-  late final pulumi.Output<List<NetworkConnectionMonitorTestGroup>> testGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> testGroups;
 
   /// Creates a new [NetworkConnectionMonitor].
   /// [name] The Pulumi resource name.
@@ -945,20 +950,24 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
     NetworkConnectionMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoints = registerOutput<List<NetworkConnectionMonitorEndpoint>>('endpoints');
-    this.location = registerOutput<String>('location');
+         'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkWatcherId = registerOutput<String>('networkWatcherId');
-    this.notes = registerOutput<String?>('notes');
-    this.outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.testConfigurations = registerOutput<List<NetworkConnectionMonitorTestConfiguration>>('testConfigurations');
-    this.testGroups = registerOutput<List<NetworkConnectionMonitorTestGroup>>('testGroups');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    notes = registerOutput<String?>('notes');
+    outputWorkspaceResourceIds = registerOutput<List<String>?>(
+      'outputWorkspaceResourceIds',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    testConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'testConfigurations',
+    );
+    testGroups = registerOutput<List<Map<String, dynamic>>>('testGroups');
   }
 
   /// Gets an existing [NetworkConnectionMonitor] resource's state with the given [name] and [id].
@@ -979,19 +988,23 @@ class NetworkConnectionMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoints = registerOutput<List<NetworkConnectionMonitorEndpoint>>('endpoints');
-    this.location = registerOutput<String>('location');
+         'azure:network/networkConnectionMonitor:NetworkConnectionMonitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkWatcherId = registerOutput<String>('networkWatcherId');
-    this.notes = registerOutput<String?>('notes');
-    this.outputWorkspaceResourceIds = registerOutput<List<String>?>('outputWorkspaceResourceIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.testConfigurations = registerOutput<List<NetworkConnectionMonitorTestConfiguration>>('testConfigurations');
-    this.testGroups = registerOutput<List<NetworkConnectionMonitorTestGroup>>('testGroups');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    notes = registerOutput<String?>('notes');
+    outputWorkspaceResourceIds = registerOutput<List<String>?>(
+      'outputWorkspaceResourceIds',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    testConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'testConfigurations',
+    );
+    testGroups = registerOutput<List<Map<String, dynamic>>>('testGroups');
   }
 }

@@ -11,18 +11,24 @@ import 'network_config.dart';
 class ManagementServerArgs {
   /// Optional. The description of the ManagementServer instance (2048 characters or less).
   final pulumi.Input<String>? description;
+
   /// Optional. Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
   final pulumi.Input<String>? etag;
+
   /// Optional. Resource labels to represent user provided metadata. Labels currently defined: 1. migrate_from_go= If set to true, the MS is created in migration ready mode.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Required. The name of the management server to create. The name must be unique for the specified project and location.
   final pulumi.Input<String> managementServerId;
+
   /// VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
   final pulumi.Input<List<NetworkConfig>> networks;
   final pulumi.Input<String>? project;
+
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// The type of the ManagementServer resource.
   final pulumi.Input<ManagementServerType> type;
 
@@ -55,25 +61,74 @@ class ManagementServerArgs {
       'labels': ?labels,
       'location': ?location,
       'managementServerId': managementServerId,
-      'networks': pulumi.Input.mapInputValue<List<NetworkConfig>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<NetworkConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networks':
+          pulumi.Input.mapInputValue<
+            List<NetworkConfig>,
+            List<Map<String, dynamic>>
+          >(
+            networks,
+            (value) =>
+                pulumi.Input.encodeList<NetworkConfig, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'project': ?project,
       'requestId': ?requestId,
-      'type': pulumi.Input.mapInputValue<ManagementServerType, String>(type, (value) => value.value),
+      'type': pulumi.Input.mapInputValue<ManagementServerType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory ManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return ManagementServerArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managementServerId: (map['managementServerId'] as String).input(),
-      networks: (pulumi.Input.decodeList<NetworkConfig>(map['networks'], (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      type: (ManagementServerType.fromValue(map['type'] as String)).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementServerId: pulumi.Input.fromValue(
+        map['managementServerId'] as String,
+      ),
+      networks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NetworkConfig>(
+          map['networks']!,
+          (value) =>
+              NetworkConfig.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(
+        ManagementServerType.fromValue(map['type']! as String),
+      ),
     );
   }
 }
-

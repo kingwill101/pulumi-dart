@@ -10,11 +10,14 @@ class GetFlavorprofileV2Args {
   /// The ID of the flavorprofile. Conflicts with `name` and
   /// `provider_name`.
   final pulumi.Input<String>? flavorprofileId;
+
   /// The name of the flavorprofile. Conflicts with `flavorprofile_id`.
   final pulumi.Input<String>? name;
+
   /// The name of the provider that the flavorprofile uses. Conflicts
   /// with `flavorprofile_id`.
   final pulumi.Input<String>? providerName;
+
   /// The region in which to obtain the V2 Load Balancer client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
@@ -42,11 +45,26 @@ class GetFlavorprofileV2Args {
 
   factory GetFlavorprofileV2Args.fromMap(Map<String, dynamic> map) {
     return GetFlavorprofileV2Args(
-      flavorprofileId: map['flavorprofileId'] == null ? null : (map['flavorprofileId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      flavorprofileId: (() {
+        final guardedValue = map['flavorprofileId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

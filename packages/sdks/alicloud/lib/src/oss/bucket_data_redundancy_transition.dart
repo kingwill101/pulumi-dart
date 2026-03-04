@@ -6,7 +6,7 @@ import 'bucket_data_redundancy_transition_state.dart';
 ///
 /// For information about OSS Bucket Data Redundancy Transition and how to use it, see [What is Bucket Data Redundancy Transition](https://www.alibabacloud.com/help/en/oss/developer-reference/createbucketdataredundancytransition).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -202,10 +202,13 @@ import 'bucket_data_redundancy_transition_state.dart';
 class BucketDataRedundancyTransition extends pulumi.CustomResource {
   /// Storage space name.
   late final pulumi.Output<String> bucket;
+
   /// Stores the creation time of the redundant transformation task.
   late final pulumi.Output<String> createTime;
+
   /// Stores the state of the redundant translation task. The values are as follows:  Queueing: in the queue.  Processing: In progress.  Finished: Finished.
   late final pulumi.Output<String> status;
+
   /// Unique identification of the storage redundancy conversion task.
   late final pulumi.Output<String> taskId;
 
@@ -218,15 +221,15 @@ class BucketDataRedundancyTransition extends pulumi.CustomResource {
     BucketDataRedundancyTransitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.status = registerOutput<String>('status');
-    this.taskId = registerOutput<String>('taskId');
+         'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    status = registerOutput<String>('status');
+    taskId = registerOutput<String>('taskId');
   }
 
   /// Gets an existing [BucketDataRedundancyTransition] resource's state with the given [name] and [id].
@@ -247,14 +250,14 @@ class BucketDataRedundancyTransition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.status = registerOutput<String>('status');
-    this.taskId = registerOutput<String>('taskId');
+         'alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    status = registerOutput<String>('status');
+    taskId = registerOutput<String>('taskId');
   }
 }

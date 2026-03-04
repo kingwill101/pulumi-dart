@@ -243,7 +243,7 @@ import 'account_assignment_state.dart';
 ///
 /// ### With Managed Policy Attachment
 ///
-/// > Because destruction of a managed policy attachment resource also re-provisions the associated permission set to all accounts, explicitly indicating the dependency with the account assignment resource via the `depends_on` meta argument is necessary to ensure proper deletion order when these resources are used together.
+/// &gt; Because destruction of a managed policy attachment resource also re-provisions the associated permission set to all accounts, explicitly indicating the dependency with the account assignment resource via the `depends_on` meta argument is necessary to ensure proper deletion order when these resources are used together.
 ///
 ///
 /// ```typescript
@@ -521,16 +521,22 @@ import 'account_assignment_state.dart';
 class AccountAssignment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the SSO Instance.
   late final pulumi.Output<String> instanceArn;
+
   /// The Amazon Resource Name (ARN) of the Permission Set that the admin wants to grant the principal access to.
   late final pulumi.Output<String> permissionSetArn;
+
   /// An identifier for an object in SSO, such as a user or group. PrincipalIds are GUIDs (For example, `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`).
   late final pulumi.Output<String> principalId;
+
   /// The entity type for which the assignment will be created. Valid values: `USER`, `GROUP`.
   late final pulumi.Output<String> principalType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// An AWS account identifier, typically a 10-12 digit string.
   late final pulumi.Output<String> targetId;
+
   /// The entity type for which the assignment will be created. Valid values: `AWS_ACCOUNT`.
   late final pulumi.Output<String> targetType;
 
@@ -543,18 +549,18 @@ class AccountAssignment extends pulumi.CustomResource {
     AccountAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/accountAssignment:AccountAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceArn = registerOutput<String>('instanceArn');
-    this.permissionSetArn = registerOutput<String>('permissionSetArn');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.region = registerOutput<String>('region');
-    this.targetId = registerOutput<String>('targetId');
-    this.targetType = registerOutput<String>('targetType');
+         'aws:ssoadmin/accountAssignment:AccountAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceArn = registerOutput<String>('instanceArn');
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    region = registerOutput<String>('region');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
   }
 
   /// Gets an existing [AccountAssignment] resource's state with the given [name] and [id].
@@ -575,17 +581,17 @@ class AccountAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssoadmin/accountAssignment:AccountAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceArn = registerOutput<String>('instanceArn');
-    this.permissionSetArn = registerOutput<String>('permissionSetArn');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
-    this.region = registerOutput<String>('region');
-    this.targetId = registerOutput<String>('targetId');
-    this.targetType = registerOutput<String>('targetType');
+         'aws:ssoadmin/accountAssignment:AccountAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceArn = registerOutput<String>('instanceArn');
+    permissionSetArn = registerOutput<String>('permissionSetArn');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    region = registerOutput<String>('region');
+    targetId = registerOutput<String>('targetId');
+    targetType = registerOutput<String>('targetType');
   }
 }

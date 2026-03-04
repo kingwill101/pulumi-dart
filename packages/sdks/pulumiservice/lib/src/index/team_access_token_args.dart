@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TeamAccessTokenArgs {
   /// Optional. Team description.
   final pulumi.Input<String>? description;
+
   /// The name for the token. This must be unique amongst all machine tokens within your organization.
   final pulumi.Input<String> name;
+
   /// The organization's name.
   final pulumi.Input<String> organizationName;
+
   /// The team name.
   final pulumi.Input<String> teamName;
 
@@ -39,11 +42,16 @@ class TeamAccessTokenArgs {
 
   factory TeamAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return TeamAccessTokenArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      organizationName: (map['organizationName'] as String).input(),
-      teamName: (map['teamName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      teamName: pulumi.Input.fromValue(map['teamName'] as String),
     );
   }
 }
-

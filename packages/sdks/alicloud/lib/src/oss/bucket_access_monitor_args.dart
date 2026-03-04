@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAccessMonitorArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
   final pulumi.Input<String> status;
 
   /// Creates a new [BucketAccessMonitorArgs].
   /// [bucket] The name of the bucket.
   /// [status] Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
-  BucketAccessMonitorArgs({
-    required this.bucket,
-    required this.status,
-  });
+  BucketAccessMonitorArgs({required this.bucket, required this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'status': status,
-    };
+    return <String, dynamic>{'bucket': bucket, 'status': status};
   }
 
   factory BucketAccessMonitorArgs.fromMap(Map<String, dynamic> map) {
     return BucketAccessMonitorArgs(
-      bucket: (map['bucket'] as String).input(),
-      status: (map['status'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'license.dart';
 class LicenseProfileMachineInstanceViewEsuProperties {
   /// The assigned license resource.
   final pulumi.Input<License>? assignedLicense;
+
   /// Describes the license assignment state (Assigned or NotAssigned).
   final pulumi.Input<String>? licenseAssignmentState;
 
@@ -20,16 +21,31 @@ class LicenseProfileMachineInstanceViewEsuProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignedLicense': ?pulumi.Input.mapOptionalInputValue<License, Map<String, dynamic>>(assignedLicense, (value) => value.toMap()),
+      'assignedLicense':
+          ?pulumi.Input.mapOptionalInputValue<License, Map<String, dynamic>>(
+            assignedLicense,
+            (value) => value.toMap(),
+          ),
       'licenseAssignmentState': ?licenseAssignmentState,
     };
   }
 
-  factory LicenseProfileMachineInstanceViewEsuProperties.fromMap(Map<String, dynamic> map) {
+  factory LicenseProfileMachineInstanceViewEsuProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LicenseProfileMachineInstanceViewEsuProperties(
-      assignedLicense: map['assignedLicense'] == null ? null : (License.fromMap((map['assignedLicense']! as Map).cast<String, dynamic>())).input(),
-      licenseAssignmentState: map['licenseAssignmentState'] == null ? null : (map['licenseAssignmentState']! as String).input(),
+      assignedLicense: (() {
+        final guardedValue = map['assignedLicense'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          License.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      licenseAssignmentState: (() {
+        final guardedValue = map['licenseAssignmentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

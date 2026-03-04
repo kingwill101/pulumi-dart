@@ -5,16 +5,15 @@ enum AppDatabaseTypeAppengineV1beta {
   cloudFirestore("CLOUD_FIRESTORE"),
   cloudDatastoreCompatibility("CLOUD_DATASTORE_COMPATIBILITY");
 
-  const AppDatabaseTypeAppengineV1beta(this.value);
-  final String value;
+  const AppDatabaseTypeAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static AppDatabaseTypeAppengineV1beta fromValue(String value) {
     for (final item in AppDatabaseTypeAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AppDatabaseTypeAppengineV1beta value: $value');
   }
 }
-

@@ -8,7 +8,7 @@ import 'access_group_state.dart';
 ///
 /// For information about File Storage (NAS) Access Group and how to use it, see [What is Access Group](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessgroup).
 ///
-/// > **NOTE:** Available since v1.33.0.
+/// &gt; **NOTE:** Available since v1.33.0.
 ///
 /// ## Example Usage
 ///
@@ -172,12 +172,16 @@ import 'access_group_state.dart';
 class AccessGroup extends pulumi.CustomResource {
   /// The name of the permission group.
   late final pulumi.Output<String> accessGroupName;
+
   /// Permission group types, including Vpc.
   late final pulumi.Output<String> accessGroupType;
+
   /// (Available since v1.218.0) Creation time.
   late final pulumi.Output<String> createTime;
+
   /// Permission group description information.
   late final pulumi.Output<String?> description;
+
   /// File system type.
   ///
   /// Value:
@@ -187,10 +191,13 @@ class AccessGroup extends pulumi.CustomResource {
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
   late final pulumi.Output<String?> fileSystemType;
+
   /// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
   late final pulumi.Output<String> name;
+
   /// (Available since v1.256.0) The region ID.
   late final pulumi.Output<String> regionId;
+
   /// Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
   late final pulumi.Output<String> type;
 
@@ -203,19 +210,19 @@ class AccessGroup extends pulumi.CustomResource {
     AccessGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/accessGroup:AccessGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String>('accessGroupName');
-    this.accessGroupType = registerOutput<String>('accessGroupType');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.fileSystemType = registerOutput<String?>('fileSystemType');
+         'alicloud:nas/accessGroup:AccessGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String>('accessGroupName');
+    accessGroupType = registerOutput<String>('accessGroupType');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    fileSystemType = registerOutput<String?>('fileSystemType');
     this.name = registerOutput<String>('name');
-    this.regionId = registerOutput<String>('regionId');
-    this.type = registerOutput<String>('type');
+    regionId = registerOutput<String>('regionId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [AccessGroup] resource's state with the given [name] and [id].
@@ -236,18 +243,18 @@ class AccessGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/accessGroup:AccessGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String>('accessGroupName');
-    this.accessGroupType = registerOutput<String>('accessGroupType');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.fileSystemType = registerOutput<String?>('fileSystemType');
+         'alicloud:nas/accessGroup:AccessGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String>('accessGroupName');
+    accessGroupType = registerOutput<String>('accessGroupType');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    fileSystemType = registerOutput<String?>('fileSystemType');
     this.name = registerOutput<String>('name');
-    this.regionId = registerOutput<String>('regionId');
-    this.type = registerOutput<String>('type');
+    regionId = registerOutput<String>('regionId');
+    type = registerOutput<String>('type');
   }
 }

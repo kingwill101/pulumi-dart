@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageAssignmentPolicyQuestionTextLocalizedText {
   /// The localized content of this question
   final pulumi.Input<String> content;
+
   /// The language code of this question content
   final pulumi.Input<String> languageCode;
 
@@ -17,17 +18,15 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': content,
-      'languageCode': languageCode,
-    };
+    return <String, dynamic>{'content': content, 'languageCode': languageCode};
   }
 
-  factory AccessPackageAssignmentPolicyQuestionTextLocalizedText.fromMap(Map<String, dynamic> map) {
+  factory AccessPackageAssignmentPolicyQuestionTextLocalizedText.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessPackageAssignmentPolicyQuestionTextLocalizedText(
-      content: (map['content'] as String).input(),
-      languageCode: (map['languageCode'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
     );
   }
 }
-

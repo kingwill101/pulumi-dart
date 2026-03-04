@@ -35,11 +35,16 @@ class GetManagementDnsZoneBindingArgs {
 
   factory GetManagementDnsZoneBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementDnsZoneBindingArgs(
-      location: (map['location'] as String).input(),
-      managementDnsZoneBindingId: (map['managementDnsZoneBindingId'] as String).input(),
-      privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      managementDnsZoneBindingId: pulumi.Input.fromValue(
+        map['managementDnsZoneBindingId'] as String,
+      ),
+      privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

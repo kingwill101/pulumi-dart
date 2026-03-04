@@ -1,5 +1,3 @@
-library module_servicequotas;
-
 export 'servicequotas/functions.dart';
 export 'servicequotas/get_service_args.dart';
 export 'servicequotas/get_service_quota_args.dart';

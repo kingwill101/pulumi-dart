@@ -11,8 +11,10 @@ import 'genai_knowledge_base_data_source_web_crawler_data_source.dart';
 class GenaiKnowledgeBaseDataSourceArgs {
   /// UUID of the Knowledge Base
   final pulumi.Input<String> knowledgeBaseUuid;
-  final pulumi.Input<GenaiKnowledgeBaseDataSourceSpacesDataSource>? spacesDataSource;
-  final pulumi.Input<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>? webCrawlerDataSource;
+  final pulumi.Input<GenaiKnowledgeBaseDataSourceSpacesDataSource>?
+  spacesDataSource;
+  final pulumi.Input<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>?
+  webCrawlerDataSource;
 
   /// Creates a new [GenaiKnowledgeBaseDataSourceArgs].
   /// [knowledgeBaseUuid] UUID of the Knowledge Base
@@ -27,17 +29,42 @@ class GenaiKnowledgeBaseDataSourceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'knowledgeBaseUuid': knowledgeBaseUuid,
-      'spacesDataSource': ?pulumi.Input.mapOptionalInputValue<GenaiKnowledgeBaseDataSourceSpacesDataSource, Map<String, dynamic>>(spacesDataSource, (value) => value.toMap()),
-      'webCrawlerDataSource': ?pulumi.Input.mapOptionalInputValue<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource, Map<String, dynamic>>(webCrawlerDataSource, (value) => value.toMap()),
+      'spacesDataSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GenaiKnowledgeBaseDataSourceSpacesDataSource,
+            Map<String, dynamic>
+          >(spacesDataSource, (value) => value.toMap()),
+      'webCrawlerDataSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GenaiKnowledgeBaseDataSourceWebCrawlerDataSource,
+            Map<String, dynamic>
+          >(webCrawlerDataSource, (value) => value.toMap()),
     };
   }
 
   factory GenaiKnowledgeBaseDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseDataSourceArgs(
-      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
-      spacesDataSource: map['spacesDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource']! as Map).cast<String, dynamic>())).input(),
-      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource']! as Map).cast<String, dynamic>())).input(),
+      knowledgeBaseUuid: pulumi.Input.fromValue(
+        map['knowledgeBaseUuid'] as String,
+      ),
+      spacesDataSource: (() {
+        final guardedValue = map['spacesDataSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      webCrawlerDataSource: (() {
+        final guardedValue = map['webCrawlerDataSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

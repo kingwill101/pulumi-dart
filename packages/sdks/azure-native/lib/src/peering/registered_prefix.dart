@@ -140,18 +140,25 @@ import 'registered_prefix_args.dart';
 class RegisteredPrefix extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The error message associated with the validation state, if any.
   late final pulumi.Output<String> errorMessage;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The peering service prefix key that is to be shared with the customer.
   late final pulumi.Output<String> peeringServicePrefixKey;
+
   /// The customer's prefix from which traffic originates.
   late final pulumi.Output<String?> prefix;
+
   /// The prefix validation state.
   late final pulumi.Output<String> prefixValidationState;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -164,18 +171,18 @@ class RegisteredPrefix extends pulumi.CustomResource {
     RegisteredPrefixArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:peering:RegisteredPrefix',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.errorMessage = registerOutput<String>('errorMessage');
+         'azure-native:peering:RegisteredPrefix',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errorMessage = registerOutput<String>('errorMessage');
     this.name = registerOutput<String>('name');
-    this.peeringServicePrefixKey = registerOutput<String>('peeringServicePrefixKey');
-    this.prefix = registerOutput<String?>('prefix');
-    this.prefixValidationState = registerOutput<String>('prefixValidationState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    peeringServicePrefixKey = registerOutput<String>('peeringServicePrefixKey');
+    prefix = registerOutput<String?>('prefix');
+    prefixValidationState = registerOutput<String>('prefixValidationState');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

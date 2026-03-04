@@ -16,7 +16,7 @@ import 'notification_state.dart';
 /// datasource's `email_address` value, and see below for an example of enabling notifications by granting the correct IAM permission.
 /// See [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
 ///
-/// >**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
+/// &gt;**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
 /// making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
 ///
 /// ## Example Usage
@@ -323,18 +323,25 @@ import 'notification_state.dart';
 class Notification extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
   late final pulumi.Output<Map<String, String>?> customAttributes;
+
   /// List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
   late final pulumi.Output<List<String>?> eventTypes;
+
   /// The ID of the created notification.
   late final pulumi.Output<String> notificationId;
+
   /// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
   late final pulumi.Output<String?> objectNamePrefix;
+
   /// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
   late final pulumi.Output<String> payloadFormat;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The Cloud PubSub topic to which this subscription publishes. Expects either the
   /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
   /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
@@ -352,19 +359,19 @@ class Notification extends pulumi.CustomResource {
     NotificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/notification:Notification',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.customAttributes = registerOutput<Map<String, String>?>('customAttributes');
-    this.eventTypes = registerOutput<List<String>?>('eventTypes');
-    this.notificationId = registerOutput<String>('notificationId');
-    this.objectNamePrefix = registerOutput<String?>('objectNamePrefix');
-    this.payloadFormat = registerOutput<String>('payloadFormat');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.topic = registerOutput<String>('topic');
+         'gcp:storage/notification:Notification',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    customAttributes = registerOutput<Map<String, String>?>('customAttributes');
+    eventTypes = registerOutput<List<String>?>('eventTypes');
+    notificationId = registerOutput<String>('notificationId');
+    objectNamePrefix = registerOutput<String?>('objectNamePrefix');
+    payloadFormat = registerOutput<String>('payloadFormat');
+    selfLink = registerOutput<String>('selfLink');
+    topic = registerOutput<String>('topic');
   }
 
   /// Gets an existing [Notification] resource's state with the given [name] and [id].
@@ -385,18 +392,18 @@ class Notification extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/notification:Notification',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.customAttributes = registerOutput<Map<String, String>?>('customAttributes');
-    this.eventTypes = registerOutput<List<String>?>('eventTypes');
-    this.notificationId = registerOutput<String>('notificationId');
-    this.objectNamePrefix = registerOutput<String?>('objectNamePrefix');
-    this.payloadFormat = registerOutput<String>('payloadFormat');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.topic = registerOutput<String>('topic');
+         'gcp:storage/notification:Notification',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    customAttributes = registerOutput<Map<String, String>?>('customAttributes');
+    eventTypes = registerOutput<List<String>?>('eventTypes');
+    notificationId = registerOutput<String>('notificationId');
+    objectNamePrefix = registerOutput<String?>('objectNamePrefix');
+    payloadFormat = registerOutput<String>('payloadFormat');
+    selfLink = registerOutput<String>('selfLink');
+    topic = registerOutput<String>('topic');
   }
 }

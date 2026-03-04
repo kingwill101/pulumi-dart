@@ -10,18 +10,25 @@ import 'device_client_types_item.dart';
 class DeviceCloudidentityV1beta1Args {
   /// Asset tag of the device.
   final pulumi.Input<String>? assetTag;
+
   /// List of the clients the device is reporting to.
   final pulumi.Input<List<DeviceClientTypesItem>>? clientTypes;
+
   /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
   final pulumi.Input<String>? customer;
+
   /// Unique identifier for the device.
   final pulumi.Input<String>? deviceId;
+
   /// Host name of the device.
   final pulumi.Input<String>? hostname;
+
   /// Most recent time when device synced with this service.
   final pulumi.Input<String>? lastSyncTime;
+
   /// Serial Number of device. Example: HT82V1A01076.
   final pulumi.Input<String>? serialNumber;
+
   /// WiFi MAC addresses of device.
   final pulumi.Input<List<String>>? wifiMacAddresses;
 
@@ -48,7 +55,17 @@ class DeviceCloudidentityV1beta1Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assetTag': ?assetTag,
-      'clientTypes': ?pulumi.Input.mapOptionalInputValue<List<DeviceClientTypesItem>, List<String>>(clientTypes, (value) => pulumi.Input.encodeList<DeviceClientTypesItem, String>(value, (value) => value.value)),
+      'clientTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeviceClientTypesItem>,
+            List<String>
+          >(
+            clientTypes,
+            (value) => pulumi.Input.encodeList<DeviceClientTypesItem, String>(
+              value,
+              (value) => value.wireValue,
+            ),
+          ),
       'customer': ?customer,
       'deviceId': ?deviceId,
       'hostname': ?hostname,
@@ -60,15 +77,51 @@ class DeviceCloudidentityV1beta1Args {
 
   factory DeviceCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DeviceCloudidentityV1beta1Args(
-      assetTag: map['assetTag'] == null ? null : (map['assetTag']! as String).input(),
-      clientTypes: map['clientTypes'] == null ? null : (pulumi.Input.decodeList<DeviceClientTypesItem>(map['clientTypes']!, (value) => DeviceClientTypesItem.fromValue(value as String))).input(),
-      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId']! as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      lastSyncTime: map['lastSyncTime'] == null ? null : (map['lastSyncTime']! as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
-      wifiMacAddresses: map['wifiMacAddresses'] == null ? null : ((map['wifiMacAddresses']! as List).cast<String>()).input(),
+      assetTag: (() {
+        final guardedValue = map['assetTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientTypes: (() {
+        final guardedValue = map['clientTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeviceClientTypesItem>(
+            guardedValue,
+            (value) => DeviceClientTypesItem.fromValue(value as String),
+          ),
+        );
+      })(),
+      customer: (() {
+        final guardedValue = map['customer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceId: (() {
+        final guardedValue = map['deviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastSyncTime: (() {
+        final guardedValue = map['lastSyncTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serialNumber: (() {
+        final guardedValue = map['serialNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      wifiMacAddresses: (() {
+        final guardedValue = map['wifiMacAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

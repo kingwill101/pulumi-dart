@@ -3,16 +3,17 @@ enum DevboxDisksEncryptionEnableStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const DevboxDisksEncryptionEnableStatus(this.value);
-  final String value;
+  const DevboxDisksEncryptionEnableStatus(this.wireValue);
+  final String wireValue;
 
   static DevboxDisksEncryptionEnableStatus fromValue(String value) {
     for (final item in DevboxDisksEncryptionEnableStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DevboxDisksEncryptionEnableStatus value: $value');
+    throw ArgumentError(
+      'Unknown DevboxDisksEncryptionEnableStatus value: $value',
+    );
   }
 }
-

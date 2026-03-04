@@ -6,8 +6,10 @@ import 'location_quota_rule_response.dart';
 class QuotaRuleResponse {
   /// The location rules.
   final pulumi.Input<List<LocationQuotaRuleResponse>>? locationRules;
+
   /// The quota policy.
   final pulumi.Input<String>? quotaPolicy;
+
   /// The required features.
   final pulumi.Input<List<String>>? requiredFeatures;
 
@@ -23,7 +25,18 @@ class QuotaRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'locationRules': ?pulumi.Input.mapOptionalInputValue<List<LocationQuotaRuleResponse>, List<Map<String, dynamic>>>(locationRules, (value) => pulumi.Input.encodeList<LocationQuotaRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'locationRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LocationQuotaRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            locationRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LocationQuotaRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'quotaPolicy': ?quotaPolicy,
       'requiredFeatures': ?requiredFeatures,
     };
@@ -31,10 +44,28 @@ class QuotaRuleResponse {
 
   factory QuotaRuleResponse.fromMap(Map<String, dynamic> map) {
     return QuotaRuleResponse(
-      locationRules: map['locationRules'] == null ? null : (pulumi.Input.decodeList<LocationQuotaRuleResponse>(map['locationRules']!, (value) => LocationQuotaRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quotaPolicy: map['quotaPolicy'] == null ? null : (map['quotaPolicy']! as String).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
+      locationRules: (() {
+        final guardedValue = map['locationRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LocationQuotaRuleResponse>(
+            guardedValue,
+            (value) => LocationQuotaRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      quotaPolicy: (() {
+        final guardedValue = map['quotaPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requiredFeatures: (() {
+        final guardedValue = map['requiredFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

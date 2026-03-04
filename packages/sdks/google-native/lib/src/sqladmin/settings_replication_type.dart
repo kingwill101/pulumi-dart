@@ -4,16 +4,15 @@ enum SettingsReplicationType {
   synchronous("SYNCHRONOUS"),
   asynchronous("ASYNCHRONOUS");
 
-  const SettingsReplicationType(this.value);
-  final String value;
+  const SettingsReplicationType(this.wireValue);
+  final String wireValue;
 
   static SettingsReplicationType fromValue(String value) {
     for (final item in SettingsReplicationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingsReplicationType value: $value');
   }
 }
-

@@ -10,6 +10,7 @@ import 'group_quotas_entity_properties.dart';
 class GroupQuotaArgs {
   /// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
   final pulumi.Input<String>? groupQuotaName;
+
   /// Management Group Id.
   final pulumi.Input<String> managementGroupId;
   final pulumi.Input<GroupQuotasEntityProperties>? properties;
@@ -28,16 +29,33 @@ class GroupQuotaArgs {
     return <String, dynamic>{
       'groupQuotaName': ?groupQuotaName,
       'managementGroupId': managementGroupId,
-      'properties': ?pulumi.Input.mapOptionalInputValue<GroupQuotasEntityProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupQuotasEntityProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory GroupQuotaArgs.fromMap(Map<String, dynamic> map) {
     return GroupQuotaArgs(
-      groupQuotaName: map['groupQuotaName'] == null ? null : (map['groupQuotaName']! as String).input(),
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      properties: map['properties'] == null ? null : (GroupQuotasEntityProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      groupQuotaName: (() {
+        final guardedValue = map['groupQuotaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupQuotasEntityProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class GoogleCloudIntegrationsV1alphaSuccessPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'finalState': finalState,
-    };
+    return <String, dynamic>{'finalState': finalState};
   }
 
-  factory GoogleCloudIntegrationsV1alphaSuccessPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaSuccessPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaSuccessPolicyResponse(
-      finalState: (map['finalState'] as String).input(),
+      finalState: pulumi.Input.fromValue(map['finalState'] as String),
     );
   }
 }
-

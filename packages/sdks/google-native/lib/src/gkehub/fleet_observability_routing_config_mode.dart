@@ -4,16 +4,17 @@ enum FleetObservabilityRoutingConfigMode {
   copy("COPY"),
   move("MOVE");
 
-  const FleetObservabilityRoutingConfigMode(this.value);
-  final String value;
+  const FleetObservabilityRoutingConfigMode(this.wireValue);
+  final String wireValue;
 
   static FleetObservabilityRoutingConfigMode fromValue(String value) {
     for (final item in FleetObservabilityRoutingConfigMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FleetObservabilityRoutingConfigMode value: $value');
+    throw ArgumentError(
+      'Unknown FleetObservabilityRoutingConfigMode value: $value',
+    );
   }
 }
-

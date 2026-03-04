@@ -4,16 +4,15 @@ enum DatasetDestinationTarget {
   brokerStateStore("BrokerStateStore"),
   storage("Storage");
 
-  const DatasetDestinationTarget(this.value);
-  final String value;
+  const DatasetDestinationTarget(this.wireValue);
+  final String wireValue;
 
   static DatasetDestinationTarget fromValue(String value) {
     for (final item in DatasetDestinationTarget.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatasetDestinationTarget value: $value');
   }
 }
-

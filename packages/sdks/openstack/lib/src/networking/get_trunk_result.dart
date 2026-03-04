@@ -6,17 +6,21 @@ import 'get_trunk_sub_port.dart';
 /// Result data returned by getTrunk.
 class GetTrunkResult {
   final bool? adminStateUp;
+
   /// The set of string tags applied on the trunk.
   final List<String> allTags;
   final String? description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? name;
+
   /// The ID of the trunk subport.
   final String? portId;
   final String projectId;
   final String region;
   final String? status;
+
   /// The set of the trunk subports. The structure of each subport is
   /// described below.
   final List<GetTrunkSubPort> subPorts;
@@ -62,7 +66,11 @@ class GetTrunkResult {
       'projectId': projectId,
       'region': region,
       'status': ?status,
-      'subPorts': pulumi.Input.encodeList<GetTrunkSubPort, Map<String, dynamic>>(subPorts, (value) => value.toMap()),
+      'subPorts':
+          pulumi.Input.encodeList<GetTrunkSubPort, Map<String, dynamic>>(
+            subPorts,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'trunkId': ?trunkId,
     };
@@ -70,19 +78,50 @@ class GetTrunkResult {
 
   factory GetTrunkResult.fromMap(Map<String, dynamic> map) {
     return GetTrunkResult(
-      adminStateUp: map['adminStateUp'] == null ? null : map['adminStateUp']! as bool,
+      adminStateUp: (() {
+        final guardedValue = map['adminStateUp'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       allTags: (map['allTags'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      portId: map['portId'] == null ? null : map['portId']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      portId: (() {
+        final guardedValue = map['portId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       projectId: map['projectId'] as String,
       region: map['region'] as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      subPorts: pulumi.Input.decodeList<GetTrunkSubPort>(map['subPorts'], (value) => GetTrunkSubPort.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
-      trunkId: map['trunkId'] == null ? null : map['trunkId']! as String,
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      subPorts: pulumi.Input.decodeList<GetTrunkSubPort>(
+        map['subPorts']!,
+        (value) =>
+            GetTrunkSubPort.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      trunkId: (() {
+        final guardedValue = map['trunkId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

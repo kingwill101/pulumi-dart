@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSingleServerServerSecurityAlertPolicyArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the security alert policy.
   final pulumi.Input<String> securityAlertPolicyName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -32,12 +34,17 @@ class GetSingleServerServerSecurityAlertPolicyArgs {
     };
   }
 
-  factory GetSingleServerServerSecurityAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSingleServerServerSecurityAlertPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSingleServerServerSecurityAlertPolicyArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityAlertPolicyName: (map['securityAlertPolicyName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityAlertPolicyName: pulumi.Input.fromValue(
+        map['securityAlertPolicyName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

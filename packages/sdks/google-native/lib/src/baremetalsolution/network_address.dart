@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkAddress {
   /// IPv4 address to be assigned to the server.
   final pulumi.Input<String>? address;
+
   /// Name of the existing network to use.
   final pulumi.Input<String>? existingNetworkId;
+
   /// Id of the network to use, within the same ProvisioningConfig request.
   final pulumi.Input<String>? networkId;
 
@@ -15,11 +17,7 @@ class NetworkAddress {
   /// [address] IPv4 address to be assigned to the server.
   /// [existingNetworkId] Name of the existing network to use.
   /// [networkId] Id of the network to use, within the same ProvisioningConfig request.
-  NetworkAddress({
-    this.address,
-    this.existingNetworkId,
-    this.networkId,
-  });
+  NetworkAddress({this.address, this.existingNetworkId, this.networkId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class NetworkAddress {
 
   factory NetworkAddress.fromMap(Map<String, dynamic> map) {
     return NetworkAddress(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      existingNetworkId: map['existingNetworkId'] == null ? null : (map['existingNetworkId']! as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      existingNetworkId: (() {
+        final guardedValue = map['existingNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

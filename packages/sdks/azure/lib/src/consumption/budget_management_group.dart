@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'budget_management_group_args.dart';
 import 'budget_management_group_filter.dart';
-import 'budget_management_group_notification.dart';
 import 'budget_management_group_state.dart';
 import 'budget_management_group_time_period.dart';
 
@@ -417,7 +416,7 @@ import 'budget_management_group_time_period.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Consumption` - 2019-10-01
@@ -432,18 +431,25 @@ import 'budget_management_group_time_period.dart';
 class BudgetManagementGroup extends pulumi.CustomResource {
   /// The total amount of cost to track with the budget.
   late final pulumi.Output<double> amount;
+
   /// (Optional) The ETag of the Management Group Consumption Budget.
   late final pulumi.Output<String> etag;
+
   /// A `filter` block as defined below.
   late final pulumi.Output<BudgetManagementGroupFilter?> filter;
+
   /// The ID of the Management Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managementGroupId;
+
   /// The name which should be used for this Management Group Consumption Budget. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// One or more `notification` blocks as defined below.
-  late final pulumi.Output<List<BudgetManagementGroupNotification>> notifications;
+  late final pulumi.Output<List<Map<String, dynamic>>> notifications;
+
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> timeGrain;
+
   /// A `time_period` block as defined below.
   late final pulumi.Output<BudgetManagementGroupTimePeriod> timePeriod;
 
@@ -456,19 +462,19 @@ class BudgetManagementGroup extends pulumi.CustomResource {
     BudgetManagementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amount = registerOutput<double>('amount');
-    this.etag = registerOutput<String>('etag');
-    this.filter = registerOutput<BudgetManagementGroupFilter?>('filter');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amount = registerOutput<double>('amount');
+    etag = registerOutput<String>('etag');
+    filter = registerOutput<BudgetManagementGroupFilter?>('filter');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<List<BudgetManagementGroupNotification>>('notifications');
-    this.timeGrain = registerOutput<String?>('timeGrain');
-    this.timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod');
+    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    timeGrain = registerOutput<String?>('timeGrain');
+    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod');
   }
 
   /// Gets an existing [BudgetManagementGroup] resource's state with the given [name] and [id].
@@ -489,18 +495,18 @@ class BudgetManagementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amount = registerOutput<double>('amount');
-    this.etag = registerOutput<String>('etag');
-    this.filter = registerOutput<BudgetManagementGroupFilter?>('filter');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amount = registerOutput<double>('amount');
+    etag = registerOutput<String>('etag');
+    filter = registerOutput<BudgetManagementGroupFilter?>('filter');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<List<BudgetManagementGroupNotification>>('notifications');
-    this.timeGrain = registerOutput<String?>('timeGrain');
-    this.timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod');
+    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    timeGrain = registerOutput<String?>('timeGrain');
+    timePeriod = registerOutput<BudgetManagementGroupTimePeriod>('timePeriod');
   }
 }

@@ -1,5 +1,3 @@
-library module_apimanagement;
-
 export 'apimanagement/additional_location.dart';
 export 'apimanagement/additional_location_response.dart';
 export 'apimanagement/always_log.dart';

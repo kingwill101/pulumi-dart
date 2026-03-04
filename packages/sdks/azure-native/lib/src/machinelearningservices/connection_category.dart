@@ -106,16 +106,15 @@ enum ConnectionCategory {
   valueServerless("Serverless"),
   valueManagedOnlineEndpoint("ManagedOnlineEndpoint");
 
-  const ConnectionCategory(this.value);
-  final String value;
+  const ConnectionCategory(this.wireValue);
+  final String wireValue;
 
   static ConnectionCategory fromValue(String value) {
     for (final item in ConnectionCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionCategory value: $value');
   }
 }
-

@@ -7,10 +7,13 @@ class GetInstanceEffectiveReplicationReplica {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   final pulumi.Input<String> lastActiveSyncTime;
+
   /// The peer instance.
   final pulumi.Input<String> peerInstance;
+
   /// Output only. The replica state
   final pulumi.Input<String> state;
+
   /// Output only. Additional information about the replication state, if available.
   final pulumi.Input<List<String>> stateReasons;
 
@@ -35,13 +38,18 @@ class GetInstanceEffectiveReplicationReplica {
     };
   }
 
-  factory GetInstanceEffectiveReplicationReplica.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceEffectiveReplicationReplica.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceEffectiveReplicationReplica(
-      lastActiveSyncTime: (map['lastActiveSyncTime'] as String).input(),
-      peerInstance: (map['peerInstance'] as String).input(),
-      state: (map['state'] as String).input(),
-      stateReasons: ((map['stateReasons'] as List).cast<String>()).input(),
+      lastActiveSyncTime: pulumi.Input.fromValue(
+        map['lastActiveSyncTime'] as String,
+      ),
+      peerInstance: pulumi.Input.fromValue(map['peerInstance'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      stateReasons: pulumi.Input.fromValue(
+        (map['stateReasons'] as List).cast<String>(),
+      ),
     );
   }
 }
-

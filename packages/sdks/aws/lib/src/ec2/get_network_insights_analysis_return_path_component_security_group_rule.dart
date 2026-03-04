@@ -6,7 +6,12 @@ import 'get_network_insights_analysis_return_path_component_security_group_rule_
 class GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
   final pulumi.Input<String> cidr;
   final pulumi.Input<String> direction;
-  final pulumi.Input<List<GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>> portRanges;
+  final pulumi.Input<
+    List<
+      GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange
+    >
+  >
+  portRanges;
   final pulumi.Input<String> prefixListId;
   final pulumi.Input<String> protocol;
   final pulumi.Input<String> securityGroupId;
@@ -31,22 +36,46 @@ class GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
     return <String, dynamic>{
       'cidr': cidr,
       'direction': direction,
-      'portRanges': pulumi.Input.mapInputValue<List<GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portRanges':
+          pulumi.Input.mapInputValue<
+            List<
+              GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange
+            >,
+            List<Map<String, dynamic>>
+          >(
+            portRanges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'prefixListId': prefixListId,
       'protocol': protocol,
       'securityGroupId': securityGroupId,
     };
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule(
-      cidr: (map['cidr'] as String).input(),
-      direction: (map['direction'] as String).input(),
-      portRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>(map['portRanges']!, (value) => GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefixListId: (map['prefixListId'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      portRanges: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange
+        >(
+          map['portRanges']!,
+          (value) =>
+              GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      prefixListId: pulumi.Input.fromValue(map['prefixListId'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
     );
   }
 }
-

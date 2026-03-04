@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedKubernetesClustersClusterLogConfig {
   /// Log Service project name.
   final pulumi.Input<String> project;
+
   /// Type of collecting logs.
   final pulumi.Input<String> type;
 
@@ -17,17 +18,15 @@ class GetManagedKubernetesClustersClusterLogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': project,
-      'type': type,
-    };
+    return <String, dynamic>{'project': project, 'type': type};
   }
 
-  factory GetManagedKubernetesClustersClusterLogConfig.fromMap(Map<String, dynamic> map) {
+  factory GetManagedKubernetesClustersClusterLogConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedKubernetesClustersClusterLogConfig(
-      project: (map['project'] as String).input(),
-      type: (map['type'] as String).input(),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

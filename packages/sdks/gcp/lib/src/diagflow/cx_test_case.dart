@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_test_case_args.dart';
-import 'cx_test_case_last_test_result.dart';
 import 'cx_test_case_state.dart';
-import 'cx_test_case_test_case_conversation_turn.dart';
 import 'cx_test_case_test_config.dart';
 
 /// You can use the built-in test feature to uncover bugs and prevent regressions. A test execution verifies that agent responses have not changed for end-user inputs defined in the test case.
@@ -1001,25 +999,34 @@ import 'cx_test_case_test_config.dart';
 class CxTestCase extends pulumi.CustomResource {
   /// When the test was created. A timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTime;
+
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   late final pulumi.Output<String> displayName;
+
   /// The latest test result.
   /// Structure is documented below.
-  late final pulumi.Output<List<CxTestCaseLastTestResult>> lastTestResults;
+  late final pulumi.Output<List<Map<String, dynamic>>> lastTestResults;
+
   /// The unique identifier of the page.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
   late final pulumi.Output<String> name;
+
   /// Additional freeform notes about the test case. Limit of 400 characters.
   late final pulumi.Output<String?> notes;
+
   /// The agent to create the test case for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
+
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
   /// Each tag should start with "#" and has a limit of 30 characters
   late final pulumi.Output<List<String>?> tags;
+
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// Structure is documented below.
-  late final pulumi.Output<List<CxTestCaseTestCaseConversationTurn>?> testCaseConversationTurns;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  testCaseConversationTurns;
+
   /// Config for the test case.
   /// Structure is documented below.
   late final pulumi.Output<CxTestCaseTestConfig?> testConfig;
@@ -1033,20 +1040,24 @@ class CxTestCase extends pulumi.CustomResource {
     CxTestCaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxTestCase:CxTestCase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTime = registerOutput<String>('creationTime');
-    this.displayName = registerOutput<String>('displayName');
-    this.lastTestResults = registerOutput<List<CxTestCaseLastTestResult>>('lastTestResults');
+         'gcp:diagflow/cxTestCase:CxTestCase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTime = registerOutput<String>('creationTime');
+    displayName = registerOutput<String>('displayName');
+    lastTestResults = registerOutput<List<Map<String, dynamic>>>(
+      'lastTestResults',
+    );
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.parent = registerOutput<String?>('parent');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.testCaseConversationTurns = registerOutput<List<CxTestCaseTestCaseConversationTurn>?>('testCaseConversationTurns');
-    this.testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig');
+    notes = registerOutput<String?>('notes');
+    parent = registerOutput<String?>('parent');
+    tags = registerOutput<List<String>?>('tags');
+    testCaseConversationTurns = registerOutput<List<Map<String, dynamic>>?>(
+      'testCaseConversationTurns',
+    );
+    testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig');
   }
 
   /// Gets an existing [CxTestCase] resource's state with the given [name] and [id].
@@ -1067,19 +1078,23 @@ class CxTestCase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxTestCase:CxTestCase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTime = registerOutput<String>('creationTime');
-    this.displayName = registerOutput<String>('displayName');
-    this.lastTestResults = registerOutput<List<CxTestCaseLastTestResult>>('lastTestResults');
+         'gcp:diagflow/cxTestCase:CxTestCase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTime = registerOutput<String>('creationTime');
+    displayName = registerOutput<String>('displayName');
+    lastTestResults = registerOutput<List<Map<String, dynamic>>>(
+      'lastTestResults',
+    );
     this.name = registerOutput<String>('name');
-    this.notes = registerOutput<String?>('notes');
-    this.parent = registerOutput<String?>('parent');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.testCaseConversationTurns = registerOutput<List<CxTestCaseTestCaseConversationTurn>?>('testCaseConversationTurns');
-    this.testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig');
+    notes = registerOutput<String?>('notes');
+    parent = registerOutput<String?>('parent');
+    tags = registerOutput<List<String>?>('tags');
+    testCaseConversationTurns = registerOutput<List<Map<String, dynamic>>?>(
+      'testCaseConversationTurns',
+    );
+    testConfig = registerOutput<CxTestCaseTestConfig?>('testConfig');
   }
 }

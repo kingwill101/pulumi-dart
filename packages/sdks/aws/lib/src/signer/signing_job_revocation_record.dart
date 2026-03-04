@@ -11,11 +11,7 @@ class SigningJobRevocationRecord {
   /// [reason] Optional.
   /// [revokedAt] Optional.
   /// [revokedBy] Optional.
-  SigningJobRevocationRecord({
-    this.reason,
-    this.revokedAt,
-    this.revokedBy,
-  });
+  SigningJobRevocationRecord({this.reason, this.revokedAt, this.revokedBy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +23,21 @@ class SigningJobRevocationRecord {
 
   factory SigningJobRevocationRecord.fromMap(Map<String, dynamic> map) {
     return SigningJobRevocationRecord(
-      reason: map['reason'] == null ? null : ((map['reason'] as String).input()).input(),
-      revokedAt: map['revokedAt'] == null ? null : ((map['revokedAt'] as String).input()).input(),
-      revokedBy: map['revokedBy'] == null ? null : ((map['revokedBy'] as String).input()).input(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revokedAt: (() {
+        final guardedValue = map['revokedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revokedBy: (() {
+        final guardedValue = map['revokedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

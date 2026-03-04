@@ -187,7 +187,7 @@ import 'output_powerbi_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2021-10-01-preview
@@ -202,18 +202,25 @@ import 'output_powerbi_state.dart';
 class OutputPowerbi extends pulumi.CustomResource {
   /// The name of the Power BI dataset.
   late final pulumi.Output<String> dataset;
+
   /// The ID of the Power BI group, this must be a valid UUID.
   late final pulumi.Output<String> groupId;
+
   /// The name of the Power BI group. Use this property to help remember which specific Power BI group id was used.
   late final pulumi.Output<String> groupName;
+
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;
+
   /// The name of the Power BI table under the specified dataset.
   late final pulumi.Output<String> table;
+
   /// The user display name of the user that was used to obtain the refresh token.
   late final pulumi.Output<String?> tokenUserDisplayName;
+
   /// The user principal name (UPN) of the user that was used to obtain the refresh token.
   late final pulumi.Output<String?> tokenUserPrincipalName;
 
@@ -226,19 +233,19 @@ class OutputPowerbi extends pulumi.CustomResource {
     OutputPowerbiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/outputPowerbi:OutputPowerbi',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataset = registerOutput<String>('dataset');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupName = registerOutput<String>('groupName');
+         'azure:streamanalytics/outputPowerbi:OutputPowerbi',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataset = registerOutput<String>('dataset');
+    groupId = registerOutput<String>('groupId');
+    groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
-    this.table = registerOutput<String>('table');
-    this.tokenUserDisplayName = registerOutput<String?>('tokenUserDisplayName');
-    this.tokenUserPrincipalName = registerOutput<String?>('tokenUserPrincipalName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+    table = registerOutput<String>('table');
+    tokenUserDisplayName = registerOutput<String?>('tokenUserDisplayName');
+    tokenUserPrincipalName = registerOutput<String?>('tokenUserPrincipalName');
   }
 
   /// Gets an existing [OutputPowerbi] resource's state with the given [name] and [id].
@@ -259,18 +266,18 @@ class OutputPowerbi extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/outputPowerbi:OutputPowerbi',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataset = registerOutput<String>('dataset');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupName = registerOutput<String>('groupName');
+         'azure:streamanalytics/outputPowerbi:OutputPowerbi',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataset = registerOutput<String>('dataset');
+    groupId = registerOutput<String>('groupId');
+    groupName = registerOutput<String>('groupName');
     this.name = registerOutput<String>('name');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
-    this.table = registerOutput<String>('table');
-    this.tokenUserDisplayName = registerOutput<String?>('tokenUserDisplayName');
-    this.tokenUserPrincipalName = registerOutput<String?>('tokenUserPrincipalName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+    table = registerOutput<String>('table');
+    tokenUserDisplayName = registerOutput<String?>('tokenUserDisplayName');
+    tokenUserPrincipalName = registerOutput<String?>('tokenUserPrincipalName');
   }
 }

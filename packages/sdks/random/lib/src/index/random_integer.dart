@@ -213,12 +213,16 @@ import 'random_integer_state.dart';
 class RandomInteger extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
+
   /// The maximum inclusive value of the range.
   late final pulumi.Output<int> max;
+
   /// The minimum inclusive value of the range.
   late final pulumi.Output<int> min;
+
   /// The random integer result.
   late final pulumi.Output<int> result;
+
   /// A custom seed to always produce the same value.
   late final pulumi.Output<String?> seed;
 
@@ -231,16 +235,16 @@ class RandomInteger extends pulumi.CustomResource {
     RandomIntegerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'random:index/randomInteger:RandomInteger',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keepers = registerOutput<Map<String, String>?>('keepers');
-    this.max = registerOutput<int>('max');
-    this.min = registerOutput<int>('min');
-    this.result = registerOutput<int>('result');
-    this.seed = registerOutput<String?>('seed');
+         'random:index/randomInteger:RandomInteger',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keepers = registerOutput<Map<String, String>?>('keepers');
+    max = registerOutput<int>('max');
+    min = registerOutput<int>('min');
+    result = registerOutput<int>('result');
+    seed = registerOutput<String?>('seed');
   }
 
   /// Gets an existing [RandomInteger] resource's state with the given [name] and [id].
@@ -261,15 +265,15 @@ class RandomInteger extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'random:index/randomInteger:RandomInteger',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keepers = registerOutput<Map<String, String>?>('keepers');
-    this.max = registerOutput<int>('max');
-    this.min = registerOutput<int>('min');
-    this.result = registerOutput<int>('result');
-    this.seed = registerOutput<String?>('seed');
+         'random:index/randomInteger:RandomInteger',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keepers = registerOutput<Map<String, String>?>('keepers');
+    max = registerOutput<int>('max');
+    min = registerOutput<int>('min');
+    result = registerOutput<int>('result');
+    seed = registerOutput<String?>('seed');
   }
 }

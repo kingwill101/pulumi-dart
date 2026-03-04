@@ -1,5 +1,3 @@
-library module_operationalinsights;
-
 export 'operationalinsights/associated_workspace_response.dart';
 export 'operationalinsights/billing_type.dart';
 export 'operationalinsights/capacity_reservation_properties_response.dart';

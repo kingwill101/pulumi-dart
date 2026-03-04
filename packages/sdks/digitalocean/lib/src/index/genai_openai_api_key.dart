@@ -1,23 +1,29 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'genai_openai_api_key_args.dart';
-import 'genai_openai_api_key_model.dart';
 import 'genai_openai_api_key_state.dart';
 
 class GenaiOpenaiApiKey extends pulumi.CustomResource {
   /// The OpenAI API key.
   late final pulumi.Output<String> apiKey;
+
   /// When the API key was created.
   late final pulumi.Output<String> createdAt;
+
   /// Who created the API key.
   late final pulumi.Output<String> createdBy;
+
   /// When the API key was deleted.
   late final pulumi.Output<String> deletedAt;
+
   /// Models associated with the OpenAI API key
-  late final pulumi.Output<List<GenaiOpenaiApiKeyModel>> models;
+  late final pulumi.Output<List<Map<String, dynamic>>> models;
+
   /// A name for the API key.
   late final pulumi.Output<String> name;
+
   /// When the API key was last updated.
   late final pulumi.Output<String> updatedAt;
+
   /// The UUID of the API key.
   late final pulumi.Output<String> uuid;
 
@@ -30,19 +36,19 @@ class GenaiOpenaiApiKey extends pulumi.CustomResource {
     GenaiOpenaiApiKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiKey = registerOutput<String>('apiKey');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.deletedAt = registerOutput<String>('deletedAt');
-    this.models = registerOutput<List<GenaiOpenaiApiKeyModel>>('models');
+         'digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiKey = registerOutput<String>('apiKey');
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    deletedAt = registerOutput<String>('deletedAt');
+    models = registerOutput<List<Map<String, dynamic>>>('models');
     this.name = registerOutput<String>('name');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.uuid = registerOutput<String>('uuid');
+    updatedAt = registerOutput<String>('updatedAt');
+    uuid = registerOutput<String>('uuid');
   }
 
   /// Gets an existing [GenaiOpenaiApiKey] resource's state with the given [name] and [id].
@@ -63,18 +69,18 @@ class GenaiOpenaiApiKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiKey = registerOutput<String>('apiKey');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.deletedAt = registerOutput<String>('deletedAt');
-    this.models = registerOutput<List<GenaiOpenaiApiKeyModel>>('models');
+         'digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiKey = registerOutput<String>('apiKey');
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    deletedAt = registerOutput<String>('deletedAt');
+    models = registerOutput<List<Map<String, dynamic>>>('models');
     this.name = registerOutput<String>('name');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.uuid = registerOutput<String>('uuid');
+    updatedAt = registerOutput<String>('updatedAt');
+    uuid = registerOutput<String>('uuid');
   }
 }

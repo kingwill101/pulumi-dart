@@ -107,24 +107,33 @@ import 'bgp_peer_state.dart';
 class BgpPeer extends pulumi.CustomResource {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   late final pulumi.Output<String> addressFamily;
+
   /// The IPv4 CIDR address to use to send traffic to Amazon.
   /// Required for IPv4 BGP peers on public virtual interfaces.
   late final pulumi.Output<String> amazonAddress;
+
   /// The Direct Connect endpoint on which the BGP peer terminates.
   late final pulumi.Output<String> awsDevice;
+
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
   late final pulumi.Output<int> bgpAsn;
+
   /// The authentication key for BGP configuration.
   late final pulumi.Output<String> bgpAuthKey;
+
   /// The ID of the BGP peer.
   late final pulumi.Output<String> bgpPeerId;
+
   /// The Up/Down state of the BGP peer.
   late final pulumi.Output<String> bgpStatus;
+
   /// The IPv4 CIDR destination address to which Amazon should send traffic.
   /// Required for IPv4 BGP peers on public virtual interfaces.
   late final pulumi.Output<String> customerAddress;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the Direct Connect virtual interface on which to create the BGP peer.
   late final pulumi.Output<String> virtualInterfaceId;
 
@@ -137,21 +146,21 @@ class BgpPeer extends pulumi.CustomResource {
     BgpPeerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directconnect/bgpPeer:BgpPeer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressFamily = registerOutput<String>('addressFamily');
-    this.amazonAddress = registerOutput<String>('amazonAddress');
-    this.awsDevice = registerOutput<String>('awsDevice');
-    this.bgpAsn = registerOutput<int>('bgpAsn');
-    this.bgpAuthKey = registerOutput<String>('bgpAuthKey');
-    this.bgpPeerId = registerOutput<String>('bgpPeerId');
-    this.bgpStatus = registerOutput<String>('bgpStatus');
-    this.customerAddress = registerOutput<String>('customerAddress');
-    this.region = registerOutput<String>('region');
-    this.virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
+         'aws:directconnect/bgpPeer:BgpPeer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    bgpPeerId = registerOutput<String>('bgpPeerId');
+    bgpStatus = registerOutput<String>('bgpStatus');
+    customerAddress = registerOutput<String>('customerAddress');
+    region = registerOutput<String>('region');
+    virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
   }
 
   /// Gets an existing [BgpPeer] resource's state with the given [name] and [id].
@@ -172,20 +181,20 @@ class BgpPeer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directconnect/bgpPeer:BgpPeer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressFamily = registerOutput<String>('addressFamily');
-    this.amazonAddress = registerOutput<String>('amazonAddress');
-    this.awsDevice = registerOutput<String>('awsDevice');
-    this.bgpAsn = registerOutput<int>('bgpAsn');
-    this.bgpAuthKey = registerOutput<String>('bgpAuthKey');
-    this.bgpPeerId = registerOutput<String>('bgpPeerId');
-    this.bgpStatus = registerOutput<String>('bgpStatus');
-    this.customerAddress = registerOutput<String>('customerAddress');
-    this.region = registerOutput<String>('region');
-    this.virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
+         'aws:directconnect/bgpPeer:BgpPeer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    bgpPeerId = registerOutput<String>('bgpPeerId');
+    bgpStatus = registerOutput<String>('bgpStatus');
+    customerAddress = registerOutput<String>('customerAddress');
+    region = registerOutput<String>('region');
+    virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
   }
 }

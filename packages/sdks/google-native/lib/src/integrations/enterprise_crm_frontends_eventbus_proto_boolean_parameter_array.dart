@@ -12,15 +12,18 @@ class EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'booleanValues': ?booleanValues,
-    };
+    return <String, dynamic>{'booleanValues': ?booleanValues};
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray(
-      booleanValues: map['booleanValues'] == null ? null : ((map['booleanValues']! as List).cast<bool>()).input(),
+      booleanValues: (() {
+        final guardedValue = map['booleanValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<bool>());
+      })(),
     );
   }
 }
-

@@ -181,7 +181,7 @@ import 'integration_runtime_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataFactory` - 2018-06-01
@@ -196,20 +196,28 @@ import 'integration_runtime_rule_state.dart';
 class IntegrationRuntimeRule extends pulumi.CustomResource {
   /// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as `false`. Defaults to `true`.
   late final pulumi.Output<bool?> cleanupEnabled;
+
   /// Compute type of the cluster which will execute data flow job. Valid values are `General`, `ComputeOptimized` and `MemoryOptimized`. Defaults to `General`.
   late final pulumi.Output<String?> computeType;
+
   /// Core count of the cluster which will execute data flow job. Valid values are `8`, `16`, `32`, `48`, `80`, `144` and `272`. Defaults to `8`.
   late final pulumi.Output<int?> coreCount;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataFactoryId;
+
   /// Integration runtime description.
   late final pulumi.Output<String?> description;
+
   /// Specifies the supported Azure location where the resource exists. Use `AutoResolve` to create an auto-resolve integration runtime. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Managed Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// Time to live (in minutes) setting of the cluster which will execute data flow job. Defaults to `0`.
   late final pulumi.Output<int?> timeToLiveMin;
+
   /// Is Integration Runtime compute provisioned within Managed Virtual Network? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> virtualNetworkEnabled;
 
@@ -222,20 +230,20 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
     IntegrationRuntimeRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/integrationRuntimeRule:IntegrationRuntimeRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cleanupEnabled = registerOutput<bool?>('cleanupEnabled');
-    this.computeType = registerOutput<String?>('computeType');
-    this.coreCount = registerOutput<int?>('coreCount');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure:datafactory/integrationRuntimeRule:IntegrationRuntimeRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cleanupEnabled = registerOutput<bool?>('cleanupEnabled');
+    computeType = registerOutput<String?>('computeType');
+    coreCount = registerOutput<int?>('coreCount');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.timeToLiveMin = registerOutput<int?>('timeToLiveMin');
-    this.virtualNetworkEnabled = registerOutput<bool?>('virtualNetworkEnabled');
+    timeToLiveMin = registerOutput<int?>('timeToLiveMin');
+    virtualNetworkEnabled = registerOutput<bool?>('virtualNetworkEnabled');
   }
 
   /// Gets an existing [IntegrationRuntimeRule] resource's state with the given [name] and [id].
@@ -256,19 +264,19 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/integrationRuntimeRule:IntegrationRuntimeRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cleanupEnabled = registerOutput<bool?>('cleanupEnabled');
-    this.computeType = registerOutput<String?>('computeType');
-    this.coreCount = registerOutput<int?>('coreCount');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure:datafactory/integrationRuntimeRule:IntegrationRuntimeRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cleanupEnabled = registerOutput<bool?>('cleanupEnabled');
+    computeType = registerOutput<String?>('computeType');
+    coreCount = registerOutput<int?>('coreCount');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.timeToLiveMin = registerOutput<int?>('timeToLiveMin');
-    this.virtualNetworkEnabled = registerOutput<bool?>('virtualNetworkEnabled');
+    timeToLiveMin = registerOutput<int?>('timeToLiveMin');
+    virtualNetworkEnabled = registerOutput<bool?>('virtualNetworkEnabled');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAccelerateIpEndpointRelationArgs {
   /// The ID of the Basic Accelerate IP.
   final pulumi.Input<String> accelerateIpId;
+
   /// The ID of the Basic GA instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The ID of the Basic Endpoint.
   final pulumi.Input<String> endpointId;
 
@@ -32,12 +34,13 @@ class BasicAccelerateIpEndpointRelationArgs {
     };
   }
 
-  factory BasicAccelerateIpEndpointRelationArgs.fromMap(Map<String, dynamic> map) {
+  factory BasicAccelerateIpEndpointRelationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BasicAccelerateIpEndpointRelationArgs(
-      accelerateIpId: (map['accelerateIpId'] as String).input(),
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      endpointId: (map['endpointId'] as String).input(),
+      accelerateIpId: pulumi.Input.fromValue(map['accelerateIpId'] as String),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
     );
   }
 }
-

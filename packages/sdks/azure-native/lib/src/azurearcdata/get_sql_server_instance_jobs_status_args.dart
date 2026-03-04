@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlServerInstanceJobsStatusArgs {
   /// The name of the feature to retrieve the job status for.
   final pulumi.Input<String>? featureName;
+
   /// The type of the job to retrieve the status for.
   final pulumi.Input<String>? jobType;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server Instance
   final pulumi.Input<String> sqlServerInstanceName;
 
@@ -39,11 +42,22 @@ class GetSqlServerInstanceJobsStatusArgs {
 
   factory GetSqlServerInstanceJobsStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerInstanceJobsStatusArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
-      jobType: map['jobType'] == null ? null : (map['jobType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
+      featureName: (() {
+        final guardedValue = map['featureName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobType: (() {
+        final guardedValue = map['jobType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerInstanceName: pulumi.Input.fromValue(
+        map['sqlServerInstanceName'] as String,
+      ),
     );
   }
 }
-

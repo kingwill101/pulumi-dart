@@ -9,10 +9,13 @@ import 'tool_results_history_response.dart';
 class ResultStorageResponse {
   /// Required.
   final pulumi.Input<GoogleCloudStorageResponse> googleCloudStorage;
+
   /// URL to the results in the Firebase Web Console.
   final pulumi.Input<String> resultsUrl;
+
   /// The tool results execution that results are written to.
   final pulumi.Input<ToolResultsExecutionResponse> toolResultsExecution;
+
   /// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
   final pulumi.Input<ToolResultsHistoryResponse> toolResultsHistory;
 
@@ -30,20 +33,43 @@ class ResultStorageResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'googleCloudStorage': pulumi.Input.mapInputValue<GoogleCloudStorageResponse, Map<String, dynamic>>(googleCloudStorage, (value) => value.toMap()),
+      'googleCloudStorage':
+          pulumi.Input.mapInputValue<
+            GoogleCloudStorageResponse,
+            Map<String, dynamic>
+          >(googleCloudStorage, (value) => value.toMap()),
       'resultsUrl': resultsUrl,
-      'toolResultsExecution': pulumi.Input.mapInputValue<ToolResultsExecutionResponse, Map<String, dynamic>>(toolResultsExecution, (value) => value.toMap()),
-      'toolResultsHistory': pulumi.Input.mapInputValue<ToolResultsHistoryResponse, Map<String, dynamic>>(toolResultsHistory, (value) => value.toMap()),
+      'toolResultsExecution':
+          pulumi.Input.mapInputValue<
+            ToolResultsExecutionResponse,
+            Map<String, dynamic>
+          >(toolResultsExecution, (value) => value.toMap()),
+      'toolResultsHistory':
+          pulumi.Input.mapInputValue<
+            ToolResultsHistoryResponse,
+            Map<String, dynamic>
+          >(toolResultsHistory, (value) => value.toMap()),
     };
   }
 
   factory ResultStorageResponse.fromMap(Map<String, dynamic> map) {
     return ResultStorageResponse(
-      googleCloudStorage: (GoogleCloudStorageResponse.fromMap((map['googleCloudStorage'] as Map).cast<String, dynamic>())).input(),
-      resultsUrl: (map['resultsUrl'] as String).input(),
-      toolResultsExecution: (ToolResultsExecutionResponse.fromMap((map['toolResultsExecution'] as Map).cast<String, dynamic>())).input(),
-      toolResultsHistory: (ToolResultsHistoryResponse.fromMap((map['toolResultsHistory'] as Map).cast<String, dynamic>())).input(),
+      googleCloudStorage: pulumi.Input.fromValue(
+        GoogleCloudStorageResponse.fromMap(
+          (map['googleCloudStorage']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resultsUrl: pulumi.Input.fromValue(map['resultsUrl'] as String),
+      toolResultsExecution: pulumi.Input.fromValue(
+        ToolResultsExecutionResponse.fromMap(
+          (map['toolResultsExecution']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      toolResultsHistory: pulumi.Input.fromValue(
+        ToolResultsHistoryResponse.fromMap(
+          (map['toolResultsHistory']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

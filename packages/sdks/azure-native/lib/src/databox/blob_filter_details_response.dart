@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobFilterDetailsResponse {
   /// List of full path of the blobs to be transferred.
   final pulumi.Input<List<String>>? blobPathList;
+
   /// Prefix list of the Azure blobs to be transferred.
   final pulumi.Input<List<String>>? blobPrefixList;
+
   /// List of blob containers to be transferred.
   final pulumi.Input<List<String>>? containerList;
 
@@ -31,10 +33,21 @@ class BlobFilterDetailsResponse {
 
   factory BlobFilterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return BlobFilterDetailsResponse(
-      blobPathList: map['blobPathList'] == null ? null : ((map['blobPathList']! as List).cast<String>()).input(),
-      blobPrefixList: map['blobPrefixList'] == null ? null : ((map['blobPrefixList']! as List).cast<String>()).input(),
-      containerList: map['containerList'] == null ? null : ((map['containerList']! as List).cast<String>()).input(),
+      blobPathList: (() {
+        final guardedValue = map['blobPathList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      blobPrefixList: (() {
+        final guardedValue = map['blobPrefixList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      containerList: (() {
+        final guardedValue = map['containerList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

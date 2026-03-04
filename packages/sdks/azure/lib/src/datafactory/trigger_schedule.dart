@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_schedule_args.dart';
-import 'trigger_schedule_pipeline.dart';
 import 'trigger_schedule_schedule.dart';
 import 'trigger_schedule_state.dart';
 
@@ -236,30 +235,43 @@ import 'trigger_schedule_state.dart';
 class TriggerSchedule extends pulumi.CustomResource {
   /// Specifies if the Data Factory Schedule Trigger is activated. Defaults to `true`.
   late final pulumi.Output<bool?> activated;
+
   /// List of tags that can be used for describing the Data Factory Schedule Trigger.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The Schedule Trigger's description.
   late final pulumi.Output<String?> description;
+
   /// The time the Schedule Trigger should end. The time will be represented in UTC.
   late final pulumi.Output<String?> endTime;
+
   /// The trigger frequency. Valid values include `Minute`, `Hour`, `Day`, `Week`, `Month`. Defaults to `Minute`.
   late final pulumi.Output<String?> frequency;
+
   /// The interval for how often the trigger occurs. This defaults to `1`.
   late final pulumi.Output<int?> interval;
+
   /// Specifies the name of the Data Factory Schedule Trigger. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// The Data Factory Pipeline name that the trigger will act on.
   late final pulumi.Output<String> pipelineName;
+
   /// The pipeline parameters that the trigger will act upon.
   late final pulumi.Output<Map<String, String>> pipelineParameters;
+
   /// A `pipeline` block as defined below.
-  late final pulumi.Output<List<TriggerSchedulePipeline>> pipelines;
+  late final pulumi.Output<List<Map<String, dynamic>>> pipelines;
+
   /// A `schedule` block as defined below, which further specifies the recurrence schedule for the trigger. A schedule is capable of limiting or increasing the number of trigger executions specified by the `frequency` and `interval` properties.
   late final pulumi.Output<TriggerScheduleSchedule?> schedule;
+
   /// The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
   late final pulumi.Output<String> startTime;
+
   /// The timezone of the start/end time.
   late final pulumi.Output<String?> timeZone;
 
@@ -272,25 +284,27 @@ class TriggerSchedule extends pulumi.CustomResource {
     TriggerScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/triggerSchedule:TriggerSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activated = registerOutput<bool?>('activated');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.endTime = registerOutput<String?>('endTime');
-    this.frequency = registerOutput<String?>('frequency');
-    this.interval = registerOutput<int?>('interval');
+         'azure:datafactory/triggerSchedule:TriggerSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activated = registerOutput<bool?>('activated');
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    endTime = registerOutput<String?>('endTime');
+    frequency = registerOutput<String?>('frequency');
+    interval = registerOutput<int?>('interval');
     this.name = registerOutput<String>('name');
-    this.pipelineName = registerOutput<String>('pipelineName');
-    this.pipelineParameters = registerOutput<Map<String, String>>('pipelineParameters');
-    this.pipelines = registerOutput<List<TriggerSchedulePipeline>>('pipelines');
-    this.schedule = registerOutput<TriggerScheduleSchedule?>('schedule');
-    this.startTime = registerOutput<String>('startTime');
-    this.timeZone = registerOutput<String?>('timeZone');
+    pipelineName = registerOutput<String>('pipelineName');
+    pipelineParameters = registerOutput<Map<String, String>>(
+      'pipelineParameters',
+    );
+    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    schedule = registerOutput<TriggerScheduleSchedule?>('schedule');
+    startTime = registerOutput<String>('startTime');
+    timeZone = registerOutput<String?>('timeZone');
   }
 
   /// Gets an existing [TriggerSchedule] resource's state with the given [name] and [id].
@@ -311,24 +325,26 @@ class TriggerSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/triggerSchedule:TriggerSchedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activated = registerOutput<bool?>('activated');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.endTime = registerOutput<String?>('endTime');
-    this.frequency = registerOutput<String?>('frequency');
-    this.interval = registerOutput<int?>('interval');
+         'azure:datafactory/triggerSchedule:TriggerSchedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activated = registerOutput<bool?>('activated');
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    endTime = registerOutput<String?>('endTime');
+    frequency = registerOutput<String?>('frequency');
+    interval = registerOutput<int?>('interval');
     this.name = registerOutput<String>('name');
-    this.pipelineName = registerOutput<String>('pipelineName');
-    this.pipelineParameters = registerOutput<Map<String, String>>('pipelineParameters');
-    this.pipelines = registerOutput<List<TriggerSchedulePipeline>>('pipelines');
-    this.schedule = registerOutput<TriggerScheduleSchedule?>('schedule');
-    this.startTime = registerOutput<String>('startTime');
-    this.timeZone = registerOutput<String?>('timeZone');
+    pipelineName = registerOutput<String>('pipelineName');
+    pipelineParameters = registerOutput<Map<String, String>>(
+      'pipelineParameters',
+    );
+    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    schedule = registerOutput<TriggerScheduleSchedule?>('schedule');
+    startTime = registerOutput<String>('startTime');
+    timeZone = registerOutput<String?>('timeZone');
   }
 }

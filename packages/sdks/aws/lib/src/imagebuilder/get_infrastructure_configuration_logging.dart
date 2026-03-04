@@ -9,20 +9,37 @@ class GetInfrastructureConfigurationLogging {
 
   /// Creates a new [GetInfrastructureConfigurationLogging].
   /// [s3Logs] Nested list of S3 logs settings.
-  GetInfrastructureConfigurationLogging({
-    required this.s3Logs,
-  });
+  GetInfrastructureConfigurationLogging({required this.s3Logs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Logs': pulumi.Input.mapInputValue<List<GetInfrastructureConfigurationLoggingS3Log>, List<Map<String, dynamic>>>(s3Logs, (value) => pulumi.Input.encodeList<GetInfrastructureConfigurationLoggingS3Log, Map<String, dynamic>>(value, (value) => value.toMap())),
+      's3Logs':
+          pulumi.Input.mapInputValue<
+            List<GetInfrastructureConfigurationLoggingS3Log>,
+            List<Map<String, dynamic>>
+          >(
+            s3Logs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInfrastructureConfigurationLoggingS3Log,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetInfrastructureConfigurationLogging.fromMap(Map<String, dynamic> map) {
+  factory GetInfrastructureConfigurationLogging.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInfrastructureConfigurationLogging(
-      s3Logs: (pulumi.Input.decodeList<GetInfrastructureConfigurationLoggingS3Log>(map['s3Logs']!, (value) => GetInfrastructureConfigurationLoggingS3Log.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Logs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInfrastructureConfigurationLoggingS3Log>(
+          map['s3Logs']!,
+          (value) => GetInfrastructureConfigurationLoggingS3Log.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -144,14 +144,19 @@ import 'single_server_virtual_network_rule_args.dart';
 class SingleServerVirtualNetworkRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
   late final pulumi.Output<bool?> ignoreMissingVnetServiceEndpoint;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Virtual Network Rule State
   late final pulumi.Output<String> state;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The ARM resource id of the virtual network subnet.
   late final pulumi.Output<String> virtualNetworkSubnetId;
 
@@ -164,16 +169,18 @@ class SingleServerVirtualNetworkRule extends pulumi.CustomResource {
     SingleServerVirtualNetworkRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:SingleServerVirtualNetworkRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
+         'azure-native:dbforpostgresql:SingleServerVirtualNetworkRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>(
+      'ignoreMissingVnetServiceEndpoint',
+    );
     this.name = registerOutput<String>('name');
-    this.state = registerOutput<String>('state');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworkSubnetId = registerOutput<String>('virtualNetworkSubnetId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    virtualNetworkSubnetId = registerOutput<String>('virtualNetworkSubnetId');
   }
 }

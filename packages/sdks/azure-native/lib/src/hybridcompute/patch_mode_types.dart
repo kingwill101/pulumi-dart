@@ -5,16 +5,15 @@ enum PatchModeTypes {
   valueAutomaticByOS("AutomaticByOS"),
   valueManual("Manual");
 
-  const PatchModeTypes(this.value);
-  final String value;
+  const PatchModeTypes(this.wireValue);
+  final String wireValue;
 
   static PatchModeTypes fromValue(String value) {
     for (final item in PatchModeTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PatchModeTypes value: $value');
   }
 }
-

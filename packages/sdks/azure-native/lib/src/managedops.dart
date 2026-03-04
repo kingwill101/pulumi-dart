@@ -1,5 +1,3 @@
-library module_managedops;
-
 export 'managedops/azure_monitor_configuration.dart';
 export 'managedops/azure_monitor_configuration_response.dart';
 export 'managedops/azure_monitor_information_response.dart';

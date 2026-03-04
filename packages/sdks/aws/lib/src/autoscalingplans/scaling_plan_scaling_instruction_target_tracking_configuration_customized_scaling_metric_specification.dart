@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification {
   /// Dimensions of the metric.
   final pulumi.Input<Map<String, String>>? dimensions;
+
   /// Name of the metric.
   final pulumi.Input<String> metricName;
+
   /// Namespace of the metric.
   final pulumi.Input<String> namespace;
+
   /// Statistic of the metric. Valid values: `Average`, `Maximum`, `Minimum`, `SampleCount`, `Sum`.
   final pulumi.Input<String> statistic;
+
   /// Unit of the metric.
   final pulumi.Input<String>? unit;
 
@@ -38,14 +42,25 @@ class ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingM
     };
   }
 
-  factory ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification.fromMap(Map<String, dynamic> map) {
+  factory ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification(
-      dimensions: map['dimensions'] == null ? null : (((map['dimensions'] as Map).cast<String, String>()).input()).input(),
-      metricName: (map['metricName'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      statistic: (map['statistic'] as String).input(),
-      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
+      dimensions: (() {
+        final guardedValue = map['dimensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      statistic: pulumi.Input.fromValue(map['statistic'] as String),
+      unit: (() {
+        final guardedValue = map['unit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

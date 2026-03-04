@@ -13,15 +13,16 @@ class GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectIdPaths': objectIdPaths,
-    };
+    return <String, dynamic>{'objectIdPaths': objectIdPaths};
   }
 
-  factory GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(
-      objectIdPaths: ((map['objectIdPaths'] as List).cast<int>()).input(),
+      objectIdPaths: pulumi.Input.fromValue(
+        (map['objectIdPaths'] as List).cast<int>(),
+      ),
     );
   }
 }
-

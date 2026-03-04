@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNotificationRegistrationArgs {
   /// The notification registration.
   final pulumi.Input<String> notificationRegistrationName;
+
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
 
@@ -29,9 +30,12 @@ class GetNotificationRegistrationArgs {
 
   factory GetNotificationRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationRegistrationArgs(
-      notificationRegistrationName: (map['notificationRegistrationName'] as String).input(),
-      providerNamespace: (map['providerNamespace'] as String).input(),
+      notificationRegistrationName: pulumi.Input.fromValue(
+        map['notificationRegistrationName'] as String,
+      ),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
     );
   }
 }
-

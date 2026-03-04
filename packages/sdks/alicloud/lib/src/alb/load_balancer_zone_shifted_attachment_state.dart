@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerZoneShiftedAttachmentState {
   /// The ID of the load balancing instance.
   final pulumi.Input<String>? loadBalancerId;
+
   /// Availability zone status. Value:
   final pulumi.Input<String>? status;
+
   /// The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
   final pulumi.Input<String>? vswitchId;
+
   /// The ID of the zone.
   final pulumi.Input<String>? zoneId;
 
@@ -34,13 +37,30 @@ class LoadBalancerZoneShiftedAttachmentState {
     };
   }
 
-  factory LoadBalancerZoneShiftedAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerZoneShiftedAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerZoneShiftedAttachmentState(
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      loadBalancerId: (() {
+        final guardedValue = map['loadBalancerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

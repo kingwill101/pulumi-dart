@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrimaryIpArgs {
   /// (int) ID of the assigned resource.
   final pulumi.Input<int>? assigneeId;
+
   /// ID of the Primary IP.
   final pulumi.Input<int>? id;
+
   /// IP address of the Primary IP.
   final pulumi.Input<String>? ipAddress;
+
   /// Name of the Primary IP.
   final pulumi.Input<String>? name;
+
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final pulumi.Input<String>? withSelector;
 
@@ -44,12 +48,31 @@ class GetPrimaryIpArgs {
 
   factory GetPrimaryIpArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpArgs(
-      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId']! as int).input(),
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      assigneeId: (() {
+        final guardedValue = map['assigneeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

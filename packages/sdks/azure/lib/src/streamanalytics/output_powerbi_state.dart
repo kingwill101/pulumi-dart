@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutputPowerbiState {
   /// The name of the Power BI dataset.
   final pulumi.Input<String>? dataset;
+
   /// The ID of the Power BI group, this must be a valid UUID.
   final pulumi.Input<String>? groupId;
+
   /// The name of the Power BI group. Use this property to help remember which specific Power BI group id was used.
   final pulumi.Input<String>? groupName;
+
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String>? streamAnalyticsJobId;
+
   /// The name of the Power BI table under the specified dataset.
   final pulumi.Input<String>? table;
+
   /// The user display name of the user that was used to obtain the refresh token.
   final pulumi.Input<String>? tokenUserDisplayName;
+
   /// The user principal name (UPN) of the user that was used to obtain the refresh token.
   final pulumi.Input<String>? tokenUserPrincipalName;
 
@@ -56,15 +63,46 @@ class OutputPowerbiState {
 
   factory OutputPowerbiState.fromMap(Map<String, dynamic> map) {
     return OutputPowerbiState(
-      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId']! as String).input(),
-      table: map['table'] == null ? null : (map['table']! as String).input(),
-      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName']! as String).input(),
-      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName']! as String).input(),
+      dataset: (() {
+        final guardedValue = map['dataset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamAnalyticsJobId: (() {
+        final guardedValue = map['streamAnalyticsJobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      table: (() {
+        final guardedValue = map['table'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenUserDisplayName: (() {
+        final guardedValue = map['tokenUserDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenUserPrincipalName: (() {
+        final guardedValue = map['tokenUserPrincipalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

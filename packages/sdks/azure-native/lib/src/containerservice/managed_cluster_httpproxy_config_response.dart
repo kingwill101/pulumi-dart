@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedClusterHTTPProxyConfigResponse {
   /// The HTTP proxy server endpoint to use.
   final pulumi.Input<String>? httpProxy;
+
   /// The HTTPS proxy server endpoint to use.
   final pulumi.Input<String>? httpsProxy;
+
   /// The endpoints that should not go through proxy.
   final pulumi.Input<List<String>>? noProxy;
+
   /// Alternative CA cert to use for connecting to proxy servers.
   final pulumi.Input<String>? trustedCa;
 
@@ -34,13 +37,30 @@ class ManagedClusterHTTPProxyConfigResponse {
     };
   }
 
-  factory ManagedClusterHTTPProxyConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterHTTPProxyConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterHTTPProxyConfigResponse(
-      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy']! as String).input(),
-      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy']! as String).input(),
-      noProxy: map['noProxy'] == null ? null : ((map['noProxy']! as List).cast<String>()).input(),
-      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa']! as String).input(),
+      httpProxy: (() {
+        final guardedValue = map['httpProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpsProxy: (() {
+        final guardedValue = map['httpsProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      noProxy: (() {
+        final guardedValue = map['noProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      trustedCa: (() {
+        final guardedValue = map['trustedCa'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

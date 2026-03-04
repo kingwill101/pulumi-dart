@@ -751,7 +751,7 @@ import 'certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -766,28 +766,37 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// The Name of the API Management Service where this Service should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The base-64 encoded certificate data, which must be a PFX file.
   late final pulumi.Output<String?> data;
+
   /// The Expiration Date of this Certificate, formatted as an RFC3339 string.
   late final pulumi.Output<String> expiration;
+
   /// The Client ID of the User Assigned Managed Identity to use for retrieving certificate.
   ///
-  /// > **Note:** If not specified, will use System Assigned identity of the API Management Service.
+  /// &gt; **Note:** If not specified, will use System Assigned identity of the API Management Service.
   late final pulumi.Output<String?> keyVaultIdentityClientId;
+
   /// The ID of the Key Vault Secret containing the SSL Certificate, which must be of the type `application/x-pkcs12`.
   ///
-  /// > **Note:** Setting this field requires the `identity` block to be specified in API Management Service, since this identity is used to retrieve the Key Vault Certificate. Possible values are versioned or versionless secret ID. Auto-updating the Certificate from the Key Vault requires that Secret version isn't specified.
+  /// &gt; **Note:** Setting this field requires the `identity` block to be specified in API Management Service, since this identity is used to retrieve the Key Vault Certificate. Possible values are versioned or versionless secret ID. Auto-updating the Certificate from the Key Vault requires that Secret version isn't specified.
   late final pulumi.Output<String?> keyVaultSecretId;
+
   /// The name of the API Management Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The password used for this certificate.
   late final pulumi.Output<String?> password;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Either `data` or `key_vault_secret_id` must be specified - but not both.
+  /// &gt; **Note:** Either `data` or `key_vault_secret_id` must be specified - but not both.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Subject of this Certificate.
   late final pulumi.Output<String> subject;
+
   /// The Thumbprint of this Certificate.
   late final pulumi.Output<String> thumbprint;
 
@@ -800,21 +809,23 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.data = registerOutput<String?>('data');
-    this.expiration = registerOutput<String>('expiration');
-    this.keyVaultIdentityClientId = registerOutput<String?>('keyVaultIdentityClientId');
-    this.keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
+         'azure:apimanagement/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    data = registerOutput<String?>('data');
+    expiration = registerOutput<String>('expiration');
+    keyVaultIdentityClientId = registerOutput<String?>(
+      'keyVaultIdentityClientId',
+    );
+    keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subject = registerOutput<String>('subject');
-    this.thumbprint = registerOutput<String>('thumbprint');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subject = registerOutput<String>('subject');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -835,20 +846,22 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.data = registerOutput<String?>('data');
-    this.expiration = registerOutput<String>('expiration');
-    this.keyVaultIdentityClientId = registerOutput<String?>('keyVaultIdentityClientId');
-    this.keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
+         'azure:apimanagement/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    data = registerOutput<String?>('data');
+    expiration = registerOutput<String>('expiration');
+    keyVaultIdentityClientId = registerOutput<String?>(
+      'keyVaultIdentityClientId',
+    );
+    keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subject = registerOutput<String>('subject');
-    this.thumbprint = registerOutput<String>('thumbprint');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subject = registerOutput<String>('subject');
+    thumbprint = registerOutput<String>('thumbprint');
   }
 }

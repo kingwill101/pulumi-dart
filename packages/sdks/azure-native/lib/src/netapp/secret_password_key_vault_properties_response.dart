@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretPasswordKeyVaultPropertiesResponse {
   /// The Uri of KeyVault.
   final pulumi.Input<String> keyVaultUri;
+
   /// The name of KeyVault password secret.
   final pulumi.Input<String> secretName;
 
@@ -24,11 +25,12 @@ class SecretPasswordKeyVaultPropertiesResponse {
     };
   }
 
-  factory SecretPasswordKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory SecretPasswordKeyVaultPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecretPasswordKeyVaultPropertiesResponse(
-      keyVaultUri: (map['keyVaultUri'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
+      keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

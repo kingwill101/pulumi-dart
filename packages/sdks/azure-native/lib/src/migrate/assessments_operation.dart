@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessments_operation_args.dart';
-import 'cost_component_response.dart';
 import 'system_data_response.dart';
 import 'vm_uptime_response.dart';
 
@@ -348,103 +347,148 @@ class AssessmentsOperation extends pulumi.CustomResource {
   /// This is the number of
   /// machines affected by each type of error in this assessment.
   late final pulumi.Output<Map<String, int>> assessmentErrorSummary;
+
   /// Assessment type of the assessment.
   late final pulumi.Output<String> assessmentType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the azure storage type. Premium, Standard etc.
   late final pulumi.Output<List<String>?> azureDiskTypes;
+
   /// Gets or sets the user configurable setting to display the azure hybrid use
   /// benefit.
   late final pulumi.Output<String?> azureHybridUseBenefit;
+
   /// Azure Location or Azure region where to which the machines will be migrated.
   late final pulumi.Output<String?> azureLocation;
+
   /// Azure Offer Code.
   late final pulumi.Output<String?> azureOfferCode;
+
   /// Gets or sets Azure Pricing Tier - Free, Basic, etc.
   late final pulumi.Output<String?> azurePricingTier;
+
   /// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
   late final pulumi.Output<String?> azureStorageRedundancy;
+
   /// Gets or sets the Azure VM families.
   late final pulumi.Output<List<String>?> azureVmFamilies;
+
   /// Confidence Rating in Percentage.
   late final pulumi.Output<double> confidenceRatingInPercentage;
+
   /// Gets the collection of cost components.
-  late final pulumi.Output<List<CostComponentResponse>> costComponents;
+  late final pulumi.Output<List<Map<String, dynamic>>> costComponents;
+
   /// Date and Time when assessment was created.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Currency in which prices should be reported.
   late final pulumi.Output<String?> currency;
+
   /// Custom discount percentage.
   late final pulumi.Output<double?> discountPercentage;
+
   /// Gets the distribution by os name.
   late final pulumi.Output<Map<String, int>> distributionByOsName;
+
   /// Gets the distribution distribution of sqlInstances by service pack insight.
   late final pulumi.Output<Map<String, int>> distributionByServicePackInsight;
+
   /// Gets the distribution of sqlInstances by support status.
   late final pulumi.Output<Map<String, int>> distributionBySupportStatus;
+
   /// Gets or sets enterprise agreement subscription id.
   late final pulumi.Output<String?> eaSubscriptionId;
+
   /// Gets the group type for the assessment.
   late final pulumi.Output<String> groupType;
+
   /// Gets or sets the user configurable setting to display the linux azure hybrid use
   /// benefit.
   late final pulumi.Output<String?> linuxAzureHybridUseBenefit;
+
   /// Gets or sets the aggregate Bandwidth Cost for all machines in the assessment.
   late final pulumi.Output<double> monthlyBandwidthCost;
+
   /// Gets or sets the aggregate Compute Cost for all machines in the assessment.
   late final pulumi.Output<double> monthlyComputeCost;
+
   /// Gets or sets the aggregate premium storage cost for all machines in the
   /// assessment.
   late final pulumi.Output<double> monthlyPremiumStorageCost;
+
   /// Gets or sets the aggregate standard SSD storage cost for all the machines in
   /// the assessment.
   late final pulumi.Output<double> monthlyStandardSsdStorageCost;
+
   /// Gets or sets the aggregate Storage Cost for all machines in the assessment.
   late final pulumi.Output<double> monthlyStorageCost;
+
   /// Gets or sets the aggregate ultra storage cost for all machines in the
   /// assessment.
   late final pulumi.Output<double> monthlyUltraStorageCost;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets or sets the Number of machines part of the assessment.
   late final pulumi.Output<int> numberOfMachines;
+
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
   late final pulumi.Output<String?> percentile;
+
   /// Gets or sets the end time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataEndTime;
+
   /// Gets or sets the start time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataStartTime;
+
   /// Last time when rates were queried.
   late final pulumi.Output<String> pricesTimestamp;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Gets or sets the Azure Reserved Instance - 1-Year, 3-Year.
   late final pulumi.Output<String?> reservedInstance;
+
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
   late final pulumi.Output<double?> scalingFactor;
+
   /// Schema version.
   late final pulumi.Output<String> schemaVersion;
+
   /// Assessment sizing criterion.
   late final pulumi.Output<String?> sizingCriterion;
+
   /// User configurable setting to display the Stage of Assessment.
   late final pulumi.Output<String> stage;
+
   /// Whether assessment is in valid state and all machines have been assessed.
   late final pulumi.Output<String> status;
+
   /// Gets or sets the Cloud suitability summary for all the machines in the
   /// assessment.
   late final pulumi.Output<Map<String, int>> suitabilitySummary;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
   late final pulumi.Output<String?> timeRange;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Date and Time when assessment was last updated.
   late final pulumi.Output<String> updatedTimestamp;
+
   /// Gets or sets the duration for which the VMs are up in the on-premises
   /// environment.
   late final pulumi.Output<VmUptimeResponse?> vmUptime;
@@ -458,56 +502,74 @@ class AssessmentsOperation extends pulumi.CustomResource {
     AssessmentsOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:AssessmentsOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary');
-    this.assessmentType = registerOutput<String>('assessmentType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureDiskTypes = registerOutput<List<String>?>('azureDiskTypes');
-    this.azureHybridUseBenefit = registerOutput<String?>('azureHybridUseBenefit');
-    this.azureLocation = registerOutput<String?>('azureLocation');
-    this.azureOfferCode = registerOutput<String?>('azureOfferCode');
-    this.azurePricingTier = registerOutput<String?>('azurePricingTier');
-    this.azureStorageRedundancy = registerOutput<String?>('azureStorageRedundancy');
-    this.azureVmFamilies = registerOutput<List<String>?>('azureVmFamilies');
-    this.confidenceRatingInPercentage = registerOutput<double>('confidenceRatingInPercentage');
-    this.costComponents = registerOutput<List<CostComponentResponse>>('costComponents');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.currency = registerOutput<String?>('currency');
-    this.discountPercentage = registerOutput<double?>('discountPercentage');
-    this.distributionByOsName = registerOutput<Map<String, int>>('distributionByOsName');
-    this.distributionByServicePackInsight = registerOutput<Map<String, int>>('distributionByServicePackInsight');
-    this.distributionBySupportStatus = registerOutput<Map<String, int>>('distributionBySupportStatus');
-    this.eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
-    this.groupType = registerOutput<String>('groupType');
-    this.linuxAzureHybridUseBenefit = registerOutput<String?>('linuxAzureHybridUseBenefit');
-    this.monthlyBandwidthCost = registerOutput<double>('monthlyBandwidthCost');
-    this.monthlyComputeCost = registerOutput<double>('monthlyComputeCost');
-    this.monthlyPremiumStorageCost = registerOutput<double>('monthlyPremiumStorageCost');
-    this.monthlyStandardSsdStorageCost = registerOutput<double>('monthlyStandardSsdStorageCost');
-    this.monthlyStorageCost = registerOutput<double>('monthlyStorageCost');
-    this.monthlyUltraStorageCost = registerOutput<double>('monthlyUltraStorageCost');
+         'azure-native:migrate:AssessmentsOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessmentErrorSummary = registerOutput<Map<String, int>>(
+      'assessmentErrorSummary',
+    );
+    assessmentType = registerOutput<String>('assessmentType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureDiskTypes = registerOutput<List<String>?>('azureDiskTypes');
+    azureHybridUseBenefit = registerOutput<String?>('azureHybridUseBenefit');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    azurePricingTier = registerOutput<String?>('azurePricingTier');
+    azureStorageRedundancy = registerOutput<String?>('azureStorageRedundancy');
+    azureVmFamilies = registerOutput<List<String>?>('azureVmFamilies');
+    confidenceRatingInPercentage = registerOutput<double>(
+      'confidenceRatingInPercentage',
+    );
+    costComponents = registerOutput<List<Map<String, dynamic>>>(
+      'costComponents',
+    );
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    distributionByOsName = registerOutput<Map<String, int>>(
+      'distributionByOsName',
+    );
+    distributionByServicePackInsight = registerOutput<Map<String, int>>(
+      'distributionByServicePackInsight',
+    );
+    distributionBySupportStatus = registerOutput<Map<String, int>>(
+      'distributionBySupportStatus',
+    );
+    eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
+    groupType = registerOutput<String>('groupType');
+    linuxAzureHybridUseBenefit = registerOutput<String?>(
+      'linuxAzureHybridUseBenefit',
+    );
+    monthlyBandwidthCost = registerOutput<double>('monthlyBandwidthCost');
+    monthlyComputeCost = registerOutput<double>('monthlyComputeCost');
+    monthlyPremiumStorageCost = registerOutput<double>(
+      'monthlyPremiumStorageCost',
+    );
+    monthlyStandardSsdStorageCost = registerOutput<double>(
+      'monthlyStandardSsdStorageCost',
+    );
+    monthlyStorageCost = registerOutput<double>('monthlyStorageCost');
+    monthlyUltraStorageCost = registerOutput<double>('monthlyUltraStorageCost');
     this.name = registerOutput<String>('name');
-    this.numberOfMachines = registerOutput<int>('numberOfMachines');
-    this.percentile = registerOutput<String?>('percentile');
-    this.perfDataEndTime = registerOutput<String?>('perfDataEndTime');
-    this.perfDataStartTime = registerOutput<String?>('perfDataStartTime');
-    this.pricesTimestamp = registerOutput<String>('pricesTimestamp');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.reservedInstance = registerOutput<String?>('reservedInstance');
-    this.scalingFactor = registerOutput<double?>('scalingFactor');
-    this.schemaVersion = registerOutput<String>('schemaVersion');
-    this.sizingCriterion = registerOutput<String?>('sizingCriterion');
-    this.stage = registerOutput<String>('stage');
-    this.status = registerOutput<String>('status');
-    this.suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeRange = registerOutput<String?>('timeRange');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
-    this.vmUptime = registerOutput<VmUptimeResponse?>('vmUptime');
+    numberOfMachines = registerOutput<int>('numberOfMachines');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeRange = registerOutput<String?>('timeRange');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    vmUptime = registerOutput<VmUptimeResponse?>('vmUptime');
   }
 }

@@ -10,20 +10,25 @@ class RepositoryConfigResponse {
 
   /// Creates a new [RepositoryConfigResponse].
   /// [pypiRepositoryConfig] Optional. Configuration for PyPi repository.
-  RepositoryConfigResponse({
-    required this.pypiRepositoryConfig,
-  });
+  RepositoryConfigResponse({required this.pypiRepositoryConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pypiRepositoryConfig': pulumi.Input.mapInputValue<PyPiRepositoryConfigResponse, Map<String, dynamic>>(pypiRepositoryConfig, (value) => value.toMap()),
+      'pypiRepositoryConfig':
+          pulumi.Input.mapInputValue<
+            PyPiRepositoryConfigResponse,
+            Map<String, dynamic>
+          >(pypiRepositoryConfig, (value) => value.toMap()),
     };
   }
 
   factory RepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryConfigResponse(
-      pypiRepositoryConfig: (PyPiRepositoryConfigResponse.fromMap((map['pypiRepositoryConfig'] as Map).cast<String, dynamic>())).input(),
+      pypiRepositoryConfig: pulumi.Input.fromValue(
+        PyPiRepositoryConfigResponse.fromMap(
+          (map['pypiRepositoryConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

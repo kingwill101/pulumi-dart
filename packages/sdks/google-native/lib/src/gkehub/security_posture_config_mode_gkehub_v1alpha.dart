@@ -4,16 +4,17 @@ enum SecurityPostureConfigModeGkehubV1alpha {
   disabled("DISABLED"),
   basic("BASIC");
 
-  const SecurityPostureConfigModeGkehubV1alpha(this.value);
-  final String value;
+  const SecurityPostureConfigModeGkehubV1alpha(this.wireValue);
+  final String wireValue;
 
   static SecurityPostureConfigModeGkehubV1alpha fromValue(String value) {
     for (final item in SecurityPostureConfigModeGkehubV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPostureConfigModeGkehubV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPostureConfigModeGkehubV1alpha value: $value',
+    );
   }
 }
-

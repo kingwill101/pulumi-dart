@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedEnvironmentPrivateEndpointConnectionArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
+
   /// The name of the private endpoint connection associated with the Azure resource.
   final pulumi.Input<String> privateEndpointConnectionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetManagedEnvironmentPrivateEndpointConnectionArgs {
     };
   }
 
-  factory GetManagedEnvironmentPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetManagedEnvironmentPrivateEndpointConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedEnvironmentPrivateEndpointConnectionArgs(
-      environmentName: (map['environmentName'] as String).input(),
-      privateEndpointConnectionName: (map['privateEndpointConnectionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      privateEndpointConnectionName: pulumi.Input.fromValue(
+        map['privateEndpointConnectionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

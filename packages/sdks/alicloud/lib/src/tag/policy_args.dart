@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyArgs {
   /// The document of the tag policy.
   final pulumi.Input<String> policyContent;
+
   /// The description of the policy. The description must be 1 to 512 characters in length.
   final pulumi.Input<String>? policyDesc;
+
   /// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
   final pulumi.Input<String> policyName;
+
   /// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
   final pulumi.Input<String>? userType;
 
@@ -39,11 +42,18 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      policyContent: (map['policyContent'] as String).input(),
-      policyDesc: map['policyDesc'] == null ? null : (map['policyDesc']! as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
+      policyContent: pulumi.Input.fromValue(map['policyContent'] as String),
+      policyDesc: (() {
+        final guardedValue = map['policyDesc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      userType: (() {
+        final guardedValue = map['userType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

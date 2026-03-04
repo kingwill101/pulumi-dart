@@ -6,7 +6,7 @@ import 'repository_policy_state.dart';
 ///
 /// Note that currently only one policy may be applied to a repository.
 ///
-/// > **NOTE:** This resource can only be used in the `us-east-1` region.
+/// &gt; **NOTE:** This resource can only be used in the `us-east-1` region.
 ///
 /// ## Example Usage
 ///
@@ -320,10 +320,13 @@ import 'repository_policy_state.dart';
 class RepositoryPolicy extends pulumi.CustomResource {
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The registry ID where the repository was created.
   late final pulumi.Output<String> registryId;
+
   /// Name of the repository to apply the policy.
   late final pulumi.Output<String> repositoryName;
 
@@ -336,15 +339,15 @@ class RepositoryPolicy extends pulumi.CustomResource {
     RepositoryPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecrpublic/repositoryPolicy:RepositoryPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.registryId = registerOutput<String>('registryId');
-    this.repositoryName = registerOutput<String>('repositoryName');
+         'aws:ecrpublic/repositoryPolicy:RepositoryPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repositoryName = registerOutput<String>('repositoryName');
   }
 
   /// Gets an existing [RepositoryPolicy] resource's state with the given [name] and [id].
@@ -365,14 +368,14 @@ class RepositoryPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecrpublic/repositoryPolicy:RepositoryPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.registryId = registerOutput<String>('registryId');
-    this.repositoryName = registerOutput<String>('repositoryName');
+         'aws:ecrpublic/repositoryPolicy:RepositoryPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    repositoryName = registerOutput<String>('repositoryName');
   }
 }

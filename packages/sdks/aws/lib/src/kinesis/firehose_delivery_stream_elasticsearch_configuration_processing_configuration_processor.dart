@@ -5,7 +5,13 @@ import 'firehose_delivery_stream_elasticsearch_configuration_processing_configur
 
 class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor {
   /// Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
-  final pulumi.Input<List<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter>>? parameters;
+  final pulumi.Input<
+    List<
+      FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter
+    >
+  >?
+  parameters;
+
   /// The type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
   final pulumi.Input<String> type;
 
@@ -19,16 +25,44 @@ class FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPro
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter
+            >,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
     };
   }
 
-  factory FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor.fromMap(Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessor(
-      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter>(map['parameters']!, (value) => FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      type: (map['type'] as String).input(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter
+          >(
+            guardedValue,
+            (value) =>
+                FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameter.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

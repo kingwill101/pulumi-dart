@@ -9,20 +9,19 @@ class SelfSubjectRulesReviewSpecPatch {
 
   /// Creates a new [SelfSubjectRulesReviewSpecPatch].
   /// [namespace] Namespace to evaluate rules for. Required.
-  SelfSubjectRulesReviewSpecPatch({
-    this.namespace,
-  });
+  SelfSubjectRulesReviewSpecPatch({this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': ?namespace,
-    };
+    return <String, dynamic>{'namespace': ?namespace};
   }
 
   factory SelfSubjectRulesReviewSpecPatch.fromMap(Map<String, dynamic> map) {
     return SelfSubjectRulesReviewSpecPatch(
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

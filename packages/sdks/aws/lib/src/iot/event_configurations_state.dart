@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventConfigurationsState {
   /// Map. The new event configuration values. You can use only these strings as keys: `THING_GROUP_HIERARCHY`, `THING_GROUP_MEMBERSHIP`, `THING_TYPE`, `THING_TYPE_ASSOCIATION`, `THING_GROUP`, `THING`, `POLICY`, `CA_CERTIFICATE`, `JOB_EXECUTION`, `CERTIFICATE`, `JOB`. Use boolean for values of mapping.
   final pulumi.Input<Map<String, bool>>? eventConfigurations;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [EventConfigurationsState].
   /// [eventConfigurations] Map. The new event configuration values. You can use only these strings as keys: `THING_GROUP_HIERARCHY`, `THING_GROUP_MEMBERSHIP`, `THING_TYPE`, `THING_TYPE_ASSOCIATION`, `THING_GROUP`, `THING`, `POLICY`, `CA_CERTIFICATE`, `JOB_EXECUTION`, `CERTIFICATE`, `JOB`. Use boolean for values of mapping.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EventConfigurationsState({
-    this.eventConfigurations,
-    this.region,
-  });
+  EventConfigurationsState({this.eventConfigurations, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,18 @@ class EventConfigurationsState {
 
   factory EventConfigurationsState.fromMap(Map<String, dynamic> map) {
     return EventConfigurationsState(
-      eventConfigurations: map['eventConfigurations'] == null ? null : (((map['eventConfigurations'] as Map).cast<String, bool>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      eventConfigurations: (() {
+        final guardedValue = map['eventConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, bool>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

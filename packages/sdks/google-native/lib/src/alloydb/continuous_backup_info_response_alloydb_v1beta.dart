@@ -7,10 +7,13 @@ import 'encryption_info_response_alloydb_v1beta.dart';
 class ContinuousBackupInfoResponseAlloydbV1beta {
   /// The earliest restorable time that can be restored to. Output only field.
   final pulumi.Input<String> earliestRestorableTime;
+
   /// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
   final pulumi.Input<String> enabledTime;
+
   /// The encryption information for the WALs and backups required for ContinuousBackup.
   final pulumi.Input<EncryptionInfoResponseAlloydbV1beta> encryptionInfo;
+
   /// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
   final pulumi.Input<List<String>> schedule;
 
@@ -30,18 +33,31 @@ class ContinuousBackupInfoResponseAlloydbV1beta {
     return <String, dynamic>{
       'earliestRestorableTime': earliestRestorableTime,
       'enabledTime': enabledTime,
-      'encryptionInfo': pulumi.Input.mapInputValue<EncryptionInfoResponseAlloydbV1beta, Map<String, dynamic>>(encryptionInfo, (value) => value.toMap()),
+      'encryptionInfo':
+          pulumi.Input.mapInputValue<
+            EncryptionInfoResponseAlloydbV1beta,
+            Map<String, dynamic>
+          >(encryptionInfo, (value) => value.toMap()),
       'schedule': schedule,
     };
   }
 
-  factory ContinuousBackupInfoResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
+  factory ContinuousBackupInfoResponseAlloydbV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContinuousBackupInfoResponseAlloydbV1beta(
-      earliestRestorableTime: (map['earliestRestorableTime'] as String).input(),
-      enabledTime: (map['enabledTime'] as String).input(),
-      encryptionInfo: (EncryptionInfoResponseAlloydbV1beta.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>())).input(),
-      schedule: ((map['schedule'] as List).cast<String>()).input(),
+      earliestRestorableTime: pulumi.Input.fromValue(
+        map['earliestRestorableTime'] as String,
+      ),
+      enabledTime: pulumi.Input.fromValue(map['enabledTime'] as String),
+      encryptionInfo: pulumi.Input.fromValue(
+        EncryptionInfoResponseAlloydbV1beta.fromMap(
+          (map['encryptionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      schedule: pulumi.Input.fromValue(
+        (map['schedule'] as List).cast<String>(),
+      ),
     );
   }
 }
-

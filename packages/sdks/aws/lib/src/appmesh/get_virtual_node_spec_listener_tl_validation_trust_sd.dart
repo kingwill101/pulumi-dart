@@ -7,20 +7,17 @@ class GetVirtualNodeSpecListenerTlValidationTrustSd {
 
   /// Creates a new [GetVirtualNodeSpecListenerTlValidationTrustSd].
   /// [secretName] Required.
-  GetVirtualNodeSpecListenerTlValidationTrustSd({
-    required this.secretName,
-  });
+  GetVirtualNodeSpecListenerTlValidationTrustSd({required this.secretName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretName': secretName,
-    };
+    return <String, dynamic>{'secretName': secretName};
   }
 
-  factory GetVirtualNodeSpecListenerTlValidationTrustSd.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerTlValidationTrustSd.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerTlValidationTrustSd(
-      secretName: (map['secretName'] as String).input(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

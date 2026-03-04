@@ -744,7 +744,7 @@ import 'certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Nginx.NginxPlus` - 2024-11-01-preview
@@ -759,12 +759,16 @@ import 'certificate_state.dart';
 class Certificate extends pulumi.CustomResource {
   /// Specify the path to the certificate file of this certificate.
   late final pulumi.Output<String> certificateVirtualPath;
+
   /// Specify the ID of the Key Vault Secret for this certificate.
   late final pulumi.Output<String> keyVaultSecretId;
+
   /// Specify the path to the key file of this certificate.
   late final pulumi.Output<String> keyVirtualPath;
+
   /// The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
   late final pulumi.Output<String> nginxDeploymentId;
 
@@ -777,16 +781,16 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:nginx/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateVirtualPath = registerOutput<String>('certificateVirtualPath');
-    this.keyVaultSecretId = registerOutput<String>('keyVaultSecretId');
-    this.keyVirtualPath = registerOutput<String>('keyVirtualPath');
+         'azure:nginx/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateVirtualPath = registerOutput<String>('certificateVirtualPath');
+    keyVaultSecretId = registerOutput<String>('keyVaultSecretId');
+    keyVirtualPath = registerOutput<String>('keyVirtualPath');
     this.name = registerOutput<String>('name');
-    this.nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
+    nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -807,15 +811,15 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:nginx/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateVirtualPath = registerOutput<String>('certificateVirtualPath');
-    this.keyVaultSecretId = registerOutput<String>('keyVaultSecretId');
-    this.keyVirtualPath = registerOutput<String>('keyVirtualPath');
+         'azure:nginx/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateVirtualPath = registerOutput<String>('certificateVirtualPath');
+    keyVaultSecretId = registerOutput<String>('keyVaultSecretId');
+    keyVirtualPath = registerOutput<String>('keyVirtualPath');
     this.name = registerOutput<String>('name');
-    this.nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
+    nginxDeploymentId = registerOutput<String>('nginxDeploymentId');
   }
 }

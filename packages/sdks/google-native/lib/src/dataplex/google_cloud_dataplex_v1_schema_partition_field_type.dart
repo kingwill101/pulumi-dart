@@ -7,9 +7,9 @@ enum GoogleCloudDataplexV1SchemaPartitionFieldType {
   int32("INT32"),
   int64("INT64"),
   float("FLOAT"),
-  double("DOUBLE"),
+  double_("DOUBLE"),
   decimal("DECIMAL"),
-  string("STRING"),
+  string_("STRING"),
   binary("BINARY"),
   timestamp("TIMESTAMP"),
   date("DATE"),
@@ -17,16 +17,17 @@ enum GoogleCloudDataplexV1SchemaPartitionFieldType {
   record("RECORD"),
   null_("NULL");
 
-  const GoogleCloudDataplexV1SchemaPartitionFieldType(this.value);
-  final String value;
+  const GoogleCloudDataplexV1SchemaPartitionFieldType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDataplexV1SchemaPartitionFieldType fromValue(String value) {
     for (final item in GoogleCloudDataplexV1SchemaPartitionFieldType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaPartitionFieldType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1SchemaPartitionFieldType value: $value',
+    );
   }
 }
-

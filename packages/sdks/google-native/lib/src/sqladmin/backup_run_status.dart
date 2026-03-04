@@ -11,16 +11,15 @@ enum BackupRunStatus {
   deletionFailed("DELETION_FAILED"),
   deleted("DELETED");
 
-  const BackupRunStatus(this.value);
-  final String value;
+  const BackupRunStatus(this.wireValue);
+  final String wireValue;
 
   static BackupRunStatus fromValue(String value) {
     for (final item in BackupRunStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupRunStatus value: $value');
   }
 }
-

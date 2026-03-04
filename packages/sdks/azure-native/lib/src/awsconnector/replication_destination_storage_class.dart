@@ -9,16 +9,17 @@ enum ReplicationDestinationStorageClass {
   sTANDARD("STANDARD"),
   sTANDARDIA("STANDARD_IA");
 
-  const ReplicationDestinationStorageClass(this.value);
-  final String value;
+  const ReplicationDestinationStorageClass(this.wireValue);
+  final String wireValue;
 
   static ReplicationDestinationStorageClass fromValue(String value) {
     for (final item in ReplicationDestinationStorageClass.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ReplicationDestinationStorageClass value: $value');
+    throw ArgumentError(
+      'Unknown ReplicationDestinationStorageClass value: $value',
+    );
   }
 }
-

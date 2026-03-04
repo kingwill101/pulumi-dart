@@ -1,5 +1,3 @@
-library module_lambda;
-
 export 'lambda/alias.dart';
 export 'lambda/alias_args.dart';
 export 'lambda/alias_routing_config.dart';

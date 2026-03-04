@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseKafkaSchemaRegistryArgs {
   /// The ID of the target Kafka cluster.
   final pulumi.Input<String> clusterId;
+
   /// The schema definition as a string.
   final pulumi.Input<String> schema;
+
   /// The schema type. Available values are: avro, json, or protobuf.
   final pulumi.Input<String> schemaType;
+
   /// The name of the schema subject.
   final pulumi.Input<String> subjectName;
 
@@ -39,11 +42,10 @@ class DatabaseKafkaSchemaRegistryArgs {
 
   factory DatabaseKafkaSchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaSchemaRegistryArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      schema: (map['schema'] as String).input(),
-      schemaType: (map['schemaType'] as String).input(),
-      subjectName: (map['subjectName'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
+      schemaType: pulumi.Input.fromValue(map['schemaType'] as String),
+      subjectName: pulumi.Input.fromValue(map['subjectName'] as String),
     );
   }
 }
-

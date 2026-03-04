@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoliciesPolicy {
   /// The number of times the policy is referenced.
   final pulumi.Input<int> attachmentCount;
+
   /// The default version of the policy.
   final pulumi.Input<String> defaultVersion;
+
   /// The description of the policy.
   final pulumi.Input<String> description;
+
   /// The ID of the policy.
   final pulumi.Input<String> id;
+
   /// The name of the policy.
   final pulumi.Input<String> policyName;
+
   /// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
   final pulumi.Input<String> policyType;
+
   /// The time when the policy was updated.
   final pulumi.Input<String> updateDate;
 
@@ -50,14 +56,13 @@ class GetPoliciesPolicy {
 
   factory GetPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetPoliciesPolicy(
-      attachmentCount: (map['attachmentCount'] as int).input(),
-      defaultVersion: (map['defaultVersion'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      policyType: (map['policyType'] as String).input(),
-      updateDate: (map['updateDate'] as String).input(),
+      attachmentCount: pulumi.Input.fromValue(map['attachmentCount'] as int),
+      defaultVersion: pulumi.Input.fromValue(map['defaultVersion'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
+      updateDate: pulumi.Input.fromValue(map['updateDate'] as String),
     );
   }
 }
-

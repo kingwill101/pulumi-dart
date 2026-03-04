@@ -16,15 +16,22 @@ class GetPlacementGroupsArgs {
   /// [filters] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetPlacementGroupsArgs({
-    this.filters,
-    this.order,
-    this.orderBy,
-  });
+  GetPlacementGroupsArgs({this.filters, this.order, this.orderBy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetPlacementGroupsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetPlacementGroupsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetPlacementGroupsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetPlacementGroupsFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'order': ?order,
       'orderBy': ?orderBy,
     };
@@ -32,10 +39,28 @@ class GetPlacementGroupsArgs {
 
   factory GetPlacementGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetPlacementGroupsFilter>(map['filters']!, (value) => GetPlacementGroupsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      order: map['order'] == null ? null : (map['order']! as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetPlacementGroupsFilter>(
+            guardedValue,
+            (value) => GetPlacementGroupsFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

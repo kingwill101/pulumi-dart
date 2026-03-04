@@ -7,10 +7,13 @@ import 'local_object_reference.dart';
 class ConfigMapKeySelector {
   /// Not supported by Cloud Run.
   final pulumi.Input<String> key;
+
   /// Not supported by Cloud Run.
   final pulumi.Input<LocalObjectReference>? localObjectReference;
+
   /// Not supported by Cloud Run.
   final pulumi.Input<String> name;
+
   /// Not supported by Cloud Run.
   final pulumi.Input<bool>? optional;
 
@@ -29,7 +32,11 @@ class ConfigMapKeySelector {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'key': key,
-      'localObjectReference': ?pulumi.Input.mapOptionalInputValue<LocalObjectReference, Map<String, dynamic>>(localObjectReference, (value) => value.toMap()),
+      'localObjectReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            LocalObjectReference,
+            Map<String, dynamic>
+          >(localObjectReference, (value) => value.toMap()),
       'name': name,
       'optional': ?optional,
     };
@@ -37,11 +44,22 @@ class ConfigMapKeySelector {
 
   factory ConfigMapKeySelector.fromMap(Map<String, dynamic> map) {
     return ConfigMapKeySelector(
-      key: (map['key'] as String).input(),
-      localObjectReference: map['localObjectReference'] == null ? null : (LocalObjectReference.fromMap((map['localObjectReference']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      localObjectReference: (() {
+        final guardedValue = map['localObjectReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LocalObjectReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      optional: (() {
+        final guardedValue = map['optional'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

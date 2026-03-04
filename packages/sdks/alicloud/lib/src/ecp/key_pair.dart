@@ -6,7 +6,7 @@ import 'key_pair_state.dart';
 ///
 /// For information about Elastic Cloud Phone (ECP) Key Pair and how to use it, see [What is Key Pair](https://next.api.aliyun.com/document/cloudphone/2020-12-30/ImportImage).
 ///
-/// > **NOTE:** Available since v1.130.0.
+/// &gt; **NOTE:** Available since v1.130.0.
 ///
 /// ## Example Usage
 ///
@@ -119,6 +119,7 @@ import 'key_pair_state.dart';
 class KeyPair extends pulumi.CustomResource {
   /// The Key Name.
   late final pulumi.Output<String> keyPairName;
+
   /// The public key body.
   late final pulumi.Output<String> publicKeyBody;
 
@@ -131,13 +132,13 @@ class KeyPair extends pulumi.CustomResource {
     KeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecp/keyPair:KeyPair',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.publicKeyBody = registerOutput<String>('publicKeyBody');
+         'alicloud:ecp/keyPair:KeyPair',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyPairName = registerOutput<String>('keyPairName');
+    publicKeyBody = registerOutput<String>('publicKeyBody');
   }
 
   /// Gets an existing [KeyPair] resource's state with the given [name] and [id].
@@ -158,12 +159,12 @@ class KeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecp/keyPair:KeyPair',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyPairName = registerOutput<String>('keyPairName');
-    this.publicKeyBody = registerOutput<String>('publicKeyBody');
+         'alicloud:ecp/keyPair:KeyPair',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyPairName = registerOutput<String>('keyPairName');
+    publicKeyBody = registerOutput<String>('publicKeyBody');
   }
 }

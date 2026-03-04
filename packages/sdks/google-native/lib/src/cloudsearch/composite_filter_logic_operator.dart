@@ -4,16 +4,15 @@ enum CompositeFilterLogicOperator {
   or("OR"),
   not("NOT");
 
-  const CompositeFilterLogicOperator(this.value);
-  final String value;
+  const CompositeFilterLogicOperator(this.wireValue);
+  final String wireValue;
 
   static CompositeFilterLogicOperator fromValue(String value) {
     for (final item in CompositeFilterLogicOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CompositeFilterLogicOperator value: $value');
   }
 }
-

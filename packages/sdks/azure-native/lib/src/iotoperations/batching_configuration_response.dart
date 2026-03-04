@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchingConfigurationResponse {
   /// Batching latency in seconds.
   final pulumi.Input<int>? latencySeconds;
+
   /// Maximum number of messages in a batch.
   final pulumi.Input<int>? maxMessages;
 
   /// Creates a new [BatchingConfigurationResponse].
   /// [latencySeconds] Batching latency in seconds.
   /// [maxMessages] Maximum number of messages in a batch.
-  BatchingConfigurationResponse({
-    this.latencySeconds,
-    this.maxMessages,
-  });
+  BatchingConfigurationResponse({this.latencySeconds, this.maxMessages});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class BatchingConfigurationResponse {
 
   factory BatchingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BatchingConfigurationResponse(
-      latencySeconds: map['latencySeconds'] == null ? null : (map['latencySeconds']! as int).input(),
-      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages']! as int).input(),
+      latencySeconds: (() {
+        final guardedValue = map['latencySeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxMessages: (() {
+        final guardedValue = map['maxMessages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

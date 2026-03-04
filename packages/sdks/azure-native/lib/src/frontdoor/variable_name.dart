@@ -4,16 +4,15 @@ enum VariableName {
   valueGeoLocation("GeoLocation"),
   valueNone("None");
 
-  const VariableName(this.value);
-  final String value;
+  const VariableName(this.wireValue);
+  final String wireValue;
 
   static VariableName fromValue(String value) {
     for (final item in VariableName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VariableName value: $value');
   }
 }
-

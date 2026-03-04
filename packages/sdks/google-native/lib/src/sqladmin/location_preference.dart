@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocationPreference {
   /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
   final pulumi.Input<String>? followGaeApplication;
+
   /// This is always `sql#locationPreference`.
   final pulumi.Input<String>? kind;
+
   /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
   final pulumi.Input<String>? secondaryZone;
+
   /// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
   final pulumi.Input<String>? zone;
 
@@ -36,11 +39,26 @@ class LocationPreference {
 
   factory LocationPreference.fromMap(Map<String, dynamic> map) {
     return LocationPreference(
-      followGaeApplication: map['followGaeApplication'] == null ? null : (map['followGaeApplication']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      followGaeApplication: (() {
+        final guardedValue = map['followGaeApplication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryZone: (() {
+        final guardedValue = map['secondaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

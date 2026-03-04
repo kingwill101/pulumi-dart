@@ -1,5 +1,3 @@
-library module_datafusion;
-
 export 'datafusion/functions.dart';
 export 'datafusion/get_instance_iam_policy_args.dart';
 export 'datafusion/get_instance_iam_policy_result.dart';

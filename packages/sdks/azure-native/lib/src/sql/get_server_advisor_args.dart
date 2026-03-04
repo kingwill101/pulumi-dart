@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerAdvisorArgs {
   /// The name of the Server Advisor.
   final pulumi.Input<String> advisorName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -34,10 +36,11 @@ class GetServerAdvisorArgs {
 
   factory GetServerAdvisorArgs.fromMap(Map<String, dynamic> map) {
     return GetServerAdvisorArgs(
-      advisorName: (map['advisorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      advisorName: pulumi.Input.fromValue(map['advisorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

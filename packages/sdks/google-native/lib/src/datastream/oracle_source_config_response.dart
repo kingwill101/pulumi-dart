@@ -7,14 +7,19 @@ import 'oracle_rdbms_response.dart';
 class OracleSourceConfigResponse {
   /// Drop large object values.
   final pulumi.Input<Map<String, dynamic>> dropLargeObjects;
+
   /// Oracle objects to exclude from the stream.
   final pulumi.Input<OracleRdbmsResponse> excludeObjects;
+
   /// Oracle objects to include in the stream.
   final pulumi.Input<OracleRdbmsResponse> includeObjects;
+
   /// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
   final pulumi.Input<int> maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
   final pulumi.Input<int> maxConcurrentCdcTasks;
+
   /// Stream large object values. NOTE: This feature is currently experimental.
   final pulumi.Input<Map<String, dynamic>> streamLargeObjects;
 
@@ -37,8 +42,16 @@ class OracleSourceConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dropLargeObjects': dropLargeObjects,
-      'excludeObjects': pulumi.Input.mapInputValue<OracleRdbmsResponse, Map<String, dynamic>>(excludeObjects, (value) => value.toMap()),
-      'includeObjects': pulumi.Input.mapInputValue<OracleRdbmsResponse, Map<String, dynamic>>(includeObjects, (value) => value.toMap()),
+      'excludeObjects':
+          pulumi.Input.mapInputValue<OracleRdbmsResponse, Map<String, dynamic>>(
+            excludeObjects,
+            (value) => value.toMap(),
+          ),
+      'includeObjects':
+          pulumi.Input.mapInputValue<OracleRdbmsResponse, Map<String, dynamic>>(
+            includeObjects,
+            (value) => value.toMap(),
+          ),
       'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks,
       'maxConcurrentCdcTasks': maxConcurrentCdcTasks,
       'streamLargeObjects': streamLargeObjects,
@@ -47,13 +60,28 @@ class OracleSourceConfigResponse {
 
   factory OracleSourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return OracleSourceConfigResponse(
-      dropLargeObjects: ((map['dropLargeObjects'] as Map).cast<String, dynamic>()).input(),
-      excludeObjects: (OracleRdbmsResponse.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: (OracleRdbmsResponse.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: (map['maxConcurrentBackfillTasks'] as int).input(),
-      maxConcurrentCdcTasks: (map['maxConcurrentCdcTasks'] as int).input(),
-      streamLargeObjects: ((map['streamLargeObjects'] as Map).cast<String, dynamic>()).input(),
+      dropLargeObjects: pulumi.Input.fromValue(
+        (map['dropLargeObjects']! as Map).cast<String, dynamic>(),
+      ),
+      excludeObjects: pulumi.Input.fromValue(
+        OracleRdbmsResponse.fromMap(
+          (map['excludeObjects']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      includeObjects: pulumi.Input.fromValue(
+        OracleRdbmsResponse.fromMap(
+          (map['includeObjects']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      maxConcurrentBackfillTasks: pulumi.Input.fromValue(
+        map['maxConcurrentBackfillTasks'] as int,
+      ),
+      maxConcurrentCdcTasks: pulumi.Input.fromValue(
+        map['maxConcurrentCdcTasks'] as int,
+      ),
+      streamLargeObjects: pulumi.Input.fromValue(
+        (map['streamLargeObjects']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

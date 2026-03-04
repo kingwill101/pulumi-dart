@@ -10,18 +10,25 @@ import 'key_vault_key_reference.dart';
 class IntegrationAccountCertificateArgs {
   /// The integration account certificate name.
   final pulumi.Input<String>? certificateName;
+
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
+
   /// The key details in the key vault.
   final pulumi.Input<KeyVaultKeyReference>? key;
+
   /// The resource location.
   final pulumi.Input<String>? location;
+
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
+
   /// The public certificate.
   final pulumi.Input<String>? publicCertificate;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,7 +56,11 @@ class IntegrationAccountCertificateArgs {
     return <String, dynamic>{
       'certificateName': ?certificateName,
       'integrationAccountName': integrationAccountName,
-      'key': ?pulumi.Input.mapOptionalInputValue<KeyVaultKeyReference, Map<String, dynamic>>(key, (value) => value.toMap()),
+      'key':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultKeyReference,
+            Map<String, dynamic>
+          >(key, (value) => value.toMap()),
       'location': ?location,
       'metadata': ?metadata,
       'publicCertificate': ?publicCertificate,
@@ -60,15 +71,48 @@ class IntegrationAccountCertificateArgs {
 
   factory IntegrationAccountCertificateArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      key: map['key'] == null ? null : (KeyVaultKeyReference.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
-      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      certificateName: (() {
+        final guardedValue = map['certificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultKeyReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      publicCertificate: (() {
+        final guardedValue = map['publicCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

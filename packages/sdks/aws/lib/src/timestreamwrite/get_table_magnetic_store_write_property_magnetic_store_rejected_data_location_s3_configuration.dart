@@ -6,8 +6,10 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Confi
   /// Name of S3 bucket.
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String> encryptionOption;
+
   /// AWS KMS key ID for S3 location with AWS maanged key.
   final pulumi.Input<String> kmsKeyId;
+
   /// Object key preview for S3 location.
   final pulumi.Input<String> objectKeyPrefix;
 
@@ -32,13 +34,16 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Confi
     };
   }
 
-  factory GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration.fromMap(Map<String, dynamic> map) {
+  factory GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration(
-      bucketName: (map['bucketName'] as String).input(),
-      encryptionOption: (map['encryptionOption'] as String).input(),
-      kmsKeyId: (map['kmsKeyId'] as String).input(),
-      objectKeyPrefix: (map['objectKeyPrefix'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      encryptionOption: pulumi.Input.fromValue(
+        map['encryptionOption'] as String,
+      ),
+      kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
+      objectKeyPrefix: pulumi.Input.fromValue(map['objectKeyPrefix'] as String),
     );
   }
 }
-

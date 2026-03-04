@@ -2,16 +2,15 @@
 enum ReconciliationPolicies {
   periodic("periodic");
 
-  const ReconciliationPolicies(this.value);
-  final String value;
+  const ReconciliationPolicies(this.wireValue);
+  final String wireValue;
 
   static ReconciliationPolicies fromValue(String value) {
     for (final item in ReconciliationPolicies.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReconciliationPolicies value: $value');
   }
 }
-

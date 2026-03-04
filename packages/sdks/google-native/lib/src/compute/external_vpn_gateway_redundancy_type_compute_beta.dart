@@ -4,16 +4,17 @@ enum ExternalVpnGatewayRedundancyTypeComputeBeta {
   singleIpInternallyRedundant("SINGLE_IP_INTERNALLY_REDUNDANT"),
   twoIpsRedundancy("TWO_IPS_REDUNDANCY");
 
-  const ExternalVpnGatewayRedundancyTypeComputeBeta(this.value);
-  final String value;
+  const ExternalVpnGatewayRedundancyTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ExternalVpnGatewayRedundancyTypeComputeBeta fromValue(String value) {
     for (final item in ExternalVpnGatewayRedundancyTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExternalVpnGatewayRedundancyTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ExternalVpnGatewayRedundancyTypeComputeBeta value: $value',
+    );
   }
 }
-

@@ -431,7 +431,7 @@ import 'datastore_fileshare_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.MachineLearningServices` - 2025-06-01
@@ -446,20 +446,28 @@ import 'datastore_fileshare_state.dart';
 class DatastoreFileshare extends pulumi.CustomResource {
   /// The access key of the Storage Account. Conflicts with `shared_access_signature`.
   late final pulumi.Output<String?> accountKey;
+
   /// Text used to describe the asset. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String?> description;
+
   /// Indicate whether this Machines Learning DataStore is the default for the Workspace.
   late final pulumi.Output<bool> isDefault;
+
   /// The name of the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies which identity to use when retrieving data from the specified source. Defaults to `None`. Possible values are `None`, `WorkspaceSystemAssignedIdentity` and `WorkspaceUserAssignedIdentity`.
   late final pulumi.Output<String?> serviceDataIdentity;
+
   /// The Shared Access Signature of the Storage Account. Conflicts with `account_key`.
   late final pulumi.Output<String?> sharedAccessSignature;
+
   /// The ID of the Storage Account File Share. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> storageFileshareId;
+
   /// A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
   late final pulumi.Output<String> workspaceId;
 
@@ -472,20 +480,20 @@ class DatastoreFileshare extends pulumi.CustomResource {
     DatastoreFileshareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/datastoreFileshare:DatastoreFileshare',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountKey = registerOutput<String?>('accountKey');
-    this.description = registerOutput<String?>('description');
-    this.isDefault = registerOutput<bool>('isDefault');
+         'azure:machinelearning/datastoreFileshare:DatastoreFileshare',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountKey = registerOutput<String?>('accountKey');
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool>('isDefault');
     this.name = registerOutput<String>('name');
-    this.serviceDataIdentity = registerOutput<String?>('serviceDataIdentity');
-    this.sharedAccessSignature = registerOutput<String?>('sharedAccessSignature');
-    this.storageFileshareId = registerOutput<String>('storageFileshareId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    serviceDataIdentity = registerOutput<String?>('serviceDataIdentity');
+    sharedAccessSignature = registerOutput<String?>('sharedAccessSignature');
+    storageFileshareId = registerOutput<String>('storageFileshareId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [DatastoreFileshare] resource's state with the given [name] and [id].
@@ -506,19 +514,19 @@ class DatastoreFileshare extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/datastoreFileshare:DatastoreFileshare',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountKey = registerOutput<String?>('accountKey');
-    this.description = registerOutput<String?>('description');
-    this.isDefault = registerOutput<bool>('isDefault');
+         'azure:machinelearning/datastoreFileshare:DatastoreFileshare',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountKey = registerOutput<String?>('accountKey');
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool>('isDefault');
     this.name = registerOutput<String>('name');
-    this.serviceDataIdentity = registerOutput<String?>('serviceDataIdentity');
-    this.sharedAccessSignature = registerOutput<String?>('sharedAccessSignature');
-    this.storageFileshareId = registerOutput<String>('storageFileshareId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    serviceDataIdentity = registerOutput<String?>('serviceDataIdentity');
+    sharedAccessSignature = registerOutput<String?>('sharedAccessSignature');
+    storageFileshareId = registerOutput<String>('storageFileshareId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

@@ -12,41 +12,62 @@ import 'index_user_token_configurations.dart';
 class IndexState {
   /// The Amazon Resource Name (ARN) of the Index.
   final pulumi.Input<String>? arn;
+
   /// A block that sets the number of additional document storage and query capacity units that should be used by the index. Detailed below.
   final pulumi.Input<IndexCapacityUnits>? capacityUnits;
+
   /// The Unix datetime that the index was created.
   final pulumi.Input<String>? createdAt;
+
   /// The description of the Index.
   final pulumi.Input<String>? description;
+
   /// One or more blocks that specify the configuration settings for any metadata applied to the documents in the index. Minimum number of 0 items. Maximum number of 500 items. If specified, you must define all elements, including those that are provided by default. These index fields are documented at [Amazon Kendra Index documentation](https://docs.aws.amazon.com/kendra/latest/dg/hiw-index.html). For an example resource that defines these default index fields, refer to the default example above. For an example resource that appends additional index fields, refer to the append example above. All arguments for each block must be specified. Note that blocks cannot be removed since index fields cannot be deleted. This argument is detailed below.
-  final pulumi.Input<List<IndexDocumentMetadataConfigurationUpdate>>? documentMetadataConfigurationUpdates;
+  final pulumi.Input<List<IndexDocumentMetadataConfigurationUpdate>>?
+  documentMetadataConfigurationUpdates;
+
   /// The Amazon Kendra edition to use for the index. Choose `DEVELOPER_EDITION` for indexes intended for development, testing, or proof of concept. Use `ENTERPRISE_EDITION` for your production databases. Use `GEN_AI_ENTERPRISE_EDITION` for creating generative AI applications. Once you set the edition for an index, it can't be changed. Defaults to `ENTERPRISE_EDITION`.
   final pulumi.Input<String>? edition;
+
   /// When the Status field value is `FAILED`, this contains a message that explains why.
   final pulumi.Input<String>? errorMessage;
+
   /// A block that provides information about the number of FAQ questions and answers and the number of text documents indexed. Detailed below.
   final pulumi.Input<List<IndexIndexStatistic>>? indexStatistics;
+
   /// Specifies the name of the Index.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// An AWS Identity and Access Management (IAM) role that gives Amazon Kendra permissions to access your Amazon CloudWatch logs and metrics. This is also the role you use when you call the `BatchPutDocument` API to index documents from an Amazon S3 bucket.
   final pulumi.Input<String>? roleArn;
+
   /// A block that specifies the identifier of the AWS KMS customer managed key (CMK) that's used to encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support asymmetric CMKs. Detailed below.
-  final pulumi.Input<IndexServerSideEncryptionConfiguration>? serverSideEncryptionConfiguration;
+  final pulumi.Input<IndexServerSideEncryptionConfiguration>?
+  serverSideEncryptionConfiguration;
+
   /// The current status of the index. When the value is `ACTIVE`, the index is ready for use. If the Status field value is `FAILED`, the `error_message` field contains a message that explains why.
   final pulumi.Input<String>? status;
+
   /// Tags to apply to the Index. If configured with a provider
   /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The Unix datetime that the index was last updated.
   final pulumi.Input<String>? updatedAt;
+
   /// The user context policy. Valid values are `ATTRIBUTE_FILTER` or `USER_TOKEN`. For more information, refer to [UserContextPolicy](https://docs.aws.amazon.com/kendra/latest/APIReference/API_CreateIndex.html#kendra-CreateIndex-request-UserContextPolicy). Defaults to `ATTRIBUTE_FILTER`.
   final pulumi.Input<String>? userContextPolicy;
+
   /// A block that enables fetching access levels of groups and users from an AWS Single Sign-On identity source. To configure this, see [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html). Detailed below.
-  final pulumi.Input<IndexUserGroupResolutionConfiguration>? userGroupResolutionConfiguration;
+  final pulumi.Input<IndexUserGroupResolutionConfiguration>?
+  userGroupResolutionConfiguration;
+
   /// A block that specifies the user token configuration. Detailed below.
   final pulumi.Input<IndexUserTokenConfigurations>? userTokenConfigurations;
 
@@ -95,49 +116,196 @@ class IndexState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'capacityUnits': ?pulumi.Input.mapOptionalInputValue<IndexCapacityUnits, Map<String, dynamic>>(capacityUnits, (value) => value.toMap()),
+      'capacityUnits':
+          ?pulumi.Input.mapOptionalInputValue<
+            IndexCapacityUnits,
+            Map<String, dynamic>
+          >(capacityUnits, (value) => value.toMap()),
       'createdAt': ?createdAt,
       'description': ?description,
-      'documentMetadataConfigurationUpdates': ?pulumi.Input.mapOptionalInputValue<List<IndexDocumentMetadataConfigurationUpdate>, List<Map<String, dynamic>>>(documentMetadataConfigurationUpdates, (value) => pulumi.Input.encodeList<IndexDocumentMetadataConfigurationUpdate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'documentMetadataConfigurationUpdates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IndexDocumentMetadataConfigurationUpdate>,
+            List<Map<String, dynamic>>
+          >(
+            documentMetadataConfigurationUpdates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IndexDocumentMetadataConfigurationUpdate,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'edition': ?edition,
       'errorMessage': ?errorMessage,
-      'indexStatistics': ?pulumi.Input.mapOptionalInputValue<List<IndexIndexStatistic>, List<Map<String, dynamic>>>(indexStatistics, (value) => pulumi.Input.encodeList<IndexIndexStatistic, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'indexStatistics':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IndexIndexStatistic>,
+            List<Map<String, dynamic>>
+          >(
+            indexStatistics,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IndexIndexStatistic,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'region': ?region,
       'roleArn': ?roleArn,
-      'serverSideEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<IndexServerSideEncryptionConfiguration, Map<String, dynamic>>(serverSideEncryptionConfiguration, (value) => value.toMap()),
+      'serverSideEncryptionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            IndexServerSideEncryptionConfiguration,
+            Map<String, dynamic>
+          >(serverSideEncryptionConfiguration, (value) => value.toMap()),
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'updatedAt': ?updatedAt,
       'userContextPolicy': ?userContextPolicy,
-      'userGroupResolutionConfiguration': ?pulumi.Input.mapOptionalInputValue<IndexUserGroupResolutionConfiguration, Map<String, dynamic>>(userGroupResolutionConfiguration, (value) => value.toMap()),
-      'userTokenConfigurations': ?pulumi.Input.mapOptionalInputValue<IndexUserTokenConfigurations, Map<String, dynamic>>(userTokenConfigurations, (value) => value.toMap()),
+      'userGroupResolutionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            IndexUserGroupResolutionConfiguration,
+            Map<String, dynamic>
+          >(userGroupResolutionConfiguration, (value) => value.toMap()),
+      'userTokenConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            IndexUserTokenConfigurations,
+            Map<String, dynamic>
+          >(userTokenConfigurations, (value) => value.toMap()),
     };
   }
 
   factory IndexState.fromMap(Map<String, dynamic> map) {
     return IndexState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      capacityUnits: map['capacityUnits'] == null ? null : ((IndexCapacityUnits.fromMap((map['capacityUnits']! as Map).cast<String, dynamic>())).input()).input(),
-      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      documentMetadataConfigurationUpdates: map['documentMetadataConfigurationUpdates'] == null ? null : ((pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(map['documentMetadataConfigurationUpdates']!, (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      edition: map['edition'] == null ? null : ((map['edition'] as String).input()).input(),
-      errorMessage: map['errorMessage'] == null ? null : ((map['errorMessage'] as String).input()).input(),
-      indexStatistics: map['indexStatistics'] == null ? null : ((pulumi.Input.decodeList<IndexIndexStatistic>(map['indexStatistics']!, (value) => IndexIndexStatistic.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : ((IndexServerSideEncryptionConfiguration.fromMap((map['serverSideEncryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
-      userContextPolicy: map['userContextPolicy'] == null ? null : ((map['userContextPolicy'] as String).input()).input(),
-      userGroupResolutionConfiguration: map['userGroupResolutionConfiguration'] == null ? null : ((IndexUserGroupResolutionConfiguration.fromMap((map['userGroupResolutionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      userTokenConfigurations: map['userTokenConfigurations'] == null ? null : ((IndexUserTokenConfigurations.fromMap((map['userTokenConfigurations']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      capacityUnits: (() {
+        final guardedValue = map['capacityUnits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IndexCapacityUnits.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentMetadataConfigurationUpdates: (() {
+        final guardedValue = map['documentMetadataConfigurationUpdates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(
+            guardedValue,
+            (value) => IndexDocumentMetadataConfigurationUpdate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      edition: (() {
+        final guardedValue = map['edition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexStatistics: (() {
+        final guardedValue = map['indexStatistics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IndexIndexStatistic>(
+            guardedValue,
+            (value) => IndexIndexStatistic.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverSideEncryptionConfiguration: (() {
+        final guardedValue = map['serverSideEncryptionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IndexServerSideEncryptionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userContextPolicy: (() {
+        final guardedValue = map['userContextPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userGroupResolutionConfiguration: (() {
+        final guardedValue = map['userGroupResolutionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IndexUserGroupResolutionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userTokenConfigurations: (() {
+        final guardedValue = map['userTokenConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IndexUserTokenConfigurations.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

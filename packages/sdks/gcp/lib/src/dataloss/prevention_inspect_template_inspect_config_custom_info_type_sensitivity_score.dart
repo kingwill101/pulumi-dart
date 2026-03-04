@@ -14,15 +14,14 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'score': score,
-    };
+    return <String, dynamic>{'score': score};
   }
 
-  factory PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore(
-      score: (map['score'] as String).input(),
+      score: pulumi.Input.fromValue(map['score'] as String),
     );
   }
 }
-

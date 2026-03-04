@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationConfigResponse {
   /// Event types for which a notification is desired. If empty, send notifications for all event types.
   final pulumi.Input<List<String>> eventTypes;
+
   /// The desired format of the notification message payloads.
   final pulumi.Input<String> payloadFormat;
+
   /// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
   final pulumi.Input<String> pubsubTopic;
 
@@ -31,10 +33,11 @@ class NotificationConfigResponse {
 
   factory NotificationConfigResponse.fromMap(Map<String, dynamic> map) {
     return NotificationConfigResponse(
-      eventTypes: ((map['eventTypes'] as List).cast<String>()).input(),
-      payloadFormat: (map['payloadFormat'] as String).input(),
-      pubsubTopic: (map['pubsubTopic'] as String).input(),
+      eventTypes: pulumi.Input.fromValue(
+        (map['eventTypes'] as List).cast<String>(),
+      ),
+      payloadFormat: pulumi.Input.fromValue(map['payloadFormat'] as String),
+      pubsubTopic: pulumi.Input.fromValue(map['pubsubTopic'] as String),
     );
   }
 }
-

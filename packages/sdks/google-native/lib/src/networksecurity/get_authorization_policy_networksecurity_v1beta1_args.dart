@@ -29,12 +29,19 @@ class GetAuthorizationPolicyNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetAuthorizationPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorizationPolicyNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorizationPolicyNetworksecurityV1beta1Args(
-      authorizationPolicyId: (map['authorizationPolicyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      authorizationPolicyId: pulumi.Input.fromValue(
+        map['authorizationPolicyId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

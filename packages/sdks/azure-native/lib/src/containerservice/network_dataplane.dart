@@ -3,16 +3,15 @@ enum NetworkDataplane {
   valueAzure("azure"),
   valueCilium("cilium");
 
-  const NetworkDataplane(this.value);
-  final String value;
+  const NetworkDataplane(this.wireValue);
+  final String wireValue;
 
   static NetworkDataplane fromValue(String value) {
     for (final item in NetworkDataplane.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkDataplane value: $value');
   }
 }
-

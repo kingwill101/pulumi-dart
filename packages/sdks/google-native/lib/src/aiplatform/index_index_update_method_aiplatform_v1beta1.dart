@@ -4,16 +4,17 @@ enum IndexIndexUpdateMethodAiplatformV1beta1 {
   batchUpdate("BATCH_UPDATE"),
   streamUpdate("STREAM_UPDATE");
 
-  const IndexIndexUpdateMethodAiplatformV1beta1(this.value);
-  final String value;
+  const IndexIndexUpdateMethodAiplatformV1beta1(this.wireValue);
+  final String wireValue;
 
   static IndexIndexUpdateMethodAiplatformV1beta1 fromValue(String value) {
     for (final item in IndexIndexUpdateMethodAiplatformV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IndexIndexUpdateMethodAiplatformV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown IndexIndexUpdateMethodAiplatformV1beta1 value: $value',
+    );
   }
 }
-

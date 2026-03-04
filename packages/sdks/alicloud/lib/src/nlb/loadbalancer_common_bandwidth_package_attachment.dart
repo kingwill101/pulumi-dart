@@ -8,7 +8,7 @@ import 'loadbalancer_common_bandwidth_package_attachment_state.dart';
 ///
 /// For information about NLB Loadbalancer Common Bandwidth Package Attachment and how to use it, see [What is Loadbalancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/nlb-instances-change).
 ///
-/// > **NOTE:** Available since v1.209.0.
+/// &gt; **NOTE:** Available since v1.209.0.
 ///
 /// ## Example Usage
 ///
@@ -514,11 +514,14 @@ import 'loadbalancer_common_bandwidth_package_attachment_state.dart';
 /// ```sh
 /// $ pulumi import alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment example <load_balancer_id>:<bandwidth_package_id>
 /// ```
-class LoadbalancerCommonBandwidthPackageAttachment extends pulumi.CustomResource {
+class LoadbalancerCommonBandwidthPackageAttachment
+    extends pulumi.CustomResource {
   /// Specifies whether only to precheck the request. Valid values:
   late final pulumi.Output<String> bandwidthPackageId;
+
   /// The ID of the EIP bandwidth plan.
   late final pulumi.Output<String> loadBalancerId;
+
   /// Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
   late final pulumi.Output<String> status;
 
@@ -531,14 +534,14 @@ class LoadbalancerCommonBandwidthPackageAttachment extends pulumi.CustomResource
     LoadbalancerCommonBandwidthPackageAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [LoadbalancerCommonBandwidthPackageAttachment] resource's state with the given [name] and [id].
@@ -559,13 +562,13 @@ class LoadbalancerCommonBandwidthPackageAttachment extends pulumi.CustomResource
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthPackageId = registerOutput<String>('bandwidthPackageId');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    status = registerOutput<String>('status');
   }
 }

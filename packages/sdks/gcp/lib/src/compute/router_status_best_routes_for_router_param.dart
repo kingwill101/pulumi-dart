@@ -13,20 +13,19 @@ class RouterStatusBestRoutesForRouterParam {
 
   /// Creates a new [RouterStatusBestRoutesForRouterParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the route. Tag keys and values have the
-  RouterStatusBestRoutesForRouterParam({
-    required this.resourceManagerTags,
-  });
+  RouterStatusBestRoutesForRouterParam({required this.resourceManagerTags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceManagerTags': resourceManagerTags,
-    };
+    return <String, dynamic>{'resourceManagerTags': resourceManagerTags};
   }
 
-  factory RouterStatusBestRoutesForRouterParam.fromMap(Map<String, dynamic> map) {
+  factory RouterStatusBestRoutesForRouterParam.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RouterStatusBestRoutesForRouterParam(
-      resourceManagerTags: ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: pulumi.Input.fromValue(
+        (map['resourceManagerTags'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class MembershipBindingLifecycleStateResponse {
 
   /// Creates a new [MembershipBindingLifecycleStateResponse].
   /// [code] The current state of the MembershipBinding resource.
-  MembershipBindingLifecycleStateResponse({
-    required this.code,
-  });
+  MembershipBindingLifecycleStateResponse({required this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-    };
+    return <String, dynamic>{'code': code};
   }
 
-  factory MembershipBindingLifecycleStateResponse.fromMap(Map<String, dynamic> map) {
+  factory MembershipBindingLifecycleStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MembershipBindingLifecycleStateResponse(
-      code: (map['code'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
     );
   }
 }
-

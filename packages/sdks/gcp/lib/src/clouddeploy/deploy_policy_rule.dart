@@ -10,20 +10,29 @@ class DeployPolicyRule {
 
   /// Creates a new [DeployPolicyRule].
   /// [rolloutRestriction] Rollout restrictions.
-  DeployPolicyRule({
-    this.rolloutRestriction,
-  });
+  DeployPolicyRule({this.rolloutRestriction});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rolloutRestriction': ?pulumi.Input.mapOptionalInputValue<DeployPolicyRuleRolloutRestriction, Map<String, dynamic>>(rolloutRestriction, (value) => value.toMap()),
+      'rolloutRestriction':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeployPolicyRuleRolloutRestriction,
+            Map<String, dynamic>
+          >(rolloutRestriction, (value) => value.toMap()),
     };
   }
 
   factory DeployPolicyRule.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRule(
-      rolloutRestriction: map['rolloutRestriction'] == null ? null : (DeployPolicyRuleRolloutRestriction.fromMap((map['rolloutRestriction']! as Map).cast<String, dynamic>())).input(),
+      rolloutRestriction: (() {
+        final guardedValue = map['rolloutRestriction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeployPolicyRuleRolloutRestriction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

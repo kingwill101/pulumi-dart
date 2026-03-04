@@ -16,7 +16,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.102.0+.
+/// &gt; **NOTE:** Available in v1.102.0+.
 ///
 /// ## Example Usage
 ///
@@ -135,7 +135,7 @@ Future<GetAccountsResult> getAccounts(
 
 /// This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
 ///
-/// > **NOTE:** Available in v1.101.0+.
+/// &gt; **NOTE:** Available in v1.101.0+.
 ///
 /// ## Example Usage
 ///
@@ -258,7 +258,7 @@ Future<GetConnectionsResult> getConnections(
 
 /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.49.0.
+/// &gt; **NOTE:** Available since v1.49.0.
 ///
 /// ## Example Usage
 ///
@@ -426,7 +426,7 @@ Future<GetInstanceClassesResult> getInstanceClasses(
 
 /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
 ///
-/// > **NOTE:** Available since v1.51.0
+/// &gt; **NOTE:** Available since v1.51.0
 ///
 /// ## Example Usage
 ///
@@ -594,7 +594,7 @@ Future<GetInstanceEnginesResult> getInstanceEngines(
 
 /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.15.0.
+/// &gt; **NOTE:** Available since v1.15.0.
 ///
 /// ## Example Usage
 ///
@@ -715,7 +715,7 @@ Future<GetInstancesResult> getInstances(
 /// To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
 /// For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
 ///
-/// > **NOTE:** Available since v1.128.0
+/// &gt; **NOTE:** Available since v1.128.0
 ///
 /// ## Example Usage
 ///
@@ -822,7 +822,7 @@ Future<GetPermissionResult> getPermission(
 
 /// This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available since v1.73.0.
+/// &gt; **NOTE:** Available since v1.73.0.
 ///
 /// ## Example Usage
 ///

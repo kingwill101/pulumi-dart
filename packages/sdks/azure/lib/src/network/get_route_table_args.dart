@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteTableArgs {
   /// The name of the Route Table.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group in which the Route Table exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetRouteTableArgs].
   /// [name] The name of the Route Table.
   /// [resourceGroupName] The name of the Resource Group in which the Route Table exists.
-  GetRouteTableArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetRouteTableArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetRouteTableArgs {
 
   factory GetRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTableArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

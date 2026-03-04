@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SetTablePrimaryKey {
   /// Optional. Name for the primary key
   final pulumi.Input<String>? primaryKey;
+
   /// List of column names for the primary key
   final pulumi.Input<List<String>> primaryKeyColumns;
 
   /// Creates a new [SetTablePrimaryKey].
   /// [primaryKey] Optional. Name for the primary key
   /// [primaryKeyColumns] List of column names for the primary key
-  SetTablePrimaryKey({
-    this.primaryKey,
-    required this.primaryKeyColumns,
-  });
+  SetTablePrimaryKey({this.primaryKey, required this.primaryKeyColumns});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class SetTablePrimaryKey {
 
   factory SetTablePrimaryKey.fromMap(Map<String, dynamic> map) {
     return SetTablePrimaryKey(
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      primaryKeyColumns: ((map['primaryKeyColumns'] as List).cast<String>()).input(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryKeyColumns: pulumi.Input.fromValue(
+        (map['primaryKeyColumns'] as List).cast<String>(),
+      ),
     );
   }
 }
-

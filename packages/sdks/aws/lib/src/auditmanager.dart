@@ -1,5 +1,3 @@
-library module_auditmanager;
-
 export 'auditmanager/account_registration.dart';
 export 'auditmanager/account_registration_args.dart';
 export 'auditmanager/account_registration_state.dart';

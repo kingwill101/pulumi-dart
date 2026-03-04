@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listWebAppHostKeys.
 class ListWebAppHostKeysResult {
   /// Host level function keys.
   final Map<String, String>? functionKeys;
+
   /// Secret key.
   final String? masterKey;
+
   /// System keys.
   final Map<String, String>? systemKeys;
 
@@ -30,10 +31,21 @@ class ListWebAppHostKeysResult {
 
   factory ListWebAppHostKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppHostKeysResult(
-      functionKeys: map['functionKeys'] == null ? null : (map['functionKeys']! as Map).cast<String, String>(),
-      masterKey: map['masterKey'] == null ? null : map['masterKey']! as String,
-      systemKeys: map['systemKeys'] == null ? null : (map['systemKeys']! as Map).cast<String, String>(),
+      functionKeys: (() {
+        final guardedValue = map['functionKeys'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      masterKey: (() {
+        final guardedValue = map['masterKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemKeys: (() {
+        final guardedValue = map['systemKeys'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
     );
   }
 }
-

@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetManagedClusterApplicationTypeVersionResult {
   /// The URL to the application package
   final String appPackageUrl;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Azure resource identifier.
   final String id;
+
   /// Resource location depends on the parent resource.
   final String? location;
+
   /// Azure resource name.
   final String name;
+
   /// The current deployment or provisioning state, which only appears in the response
   final String provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// Azure resource tags.
   final Map<String, String>? tags;
+
   /// Azure resource type.
   final String type;
 
@@ -59,18 +67,29 @@ class GetManagedClusterApplicationTypeVersionResult {
     };
   }
 
-  factory GetManagedClusterApplicationTypeVersionResult.fromMap(Map<String, dynamic> map) {
+  factory GetManagedClusterApplicationTypeVersionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedClusterApplicationTypeVersionResult(
       appPackageUrl: map['appPackageUrl'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

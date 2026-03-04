@@ -3,16 +3,15 @@ enum FeaturesPolicy {
   any("Any"),
   all("All");
 
-  const FeaturesPolicy(this.value);
-  final String value;
+  const FeaturesPolicy(this.wireValue);
+  final String wireValue;
 
   static FeaturesPolicy fromValue(String value) {
     for (final item in FeaturesPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeaturesPolicy value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1ApiCategoryResponse {
   /// Name of the category.
   final pulumi.Input<String> name;
+
   /// Name of the portal.
   final pulumi.Input<String> siteId;
+
   /// Time the category was last modified in milliseconds since epoch.
   final pulumi.Input<String> updateTime;
 
@@ -29,12 +31,13 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1ApiCategoryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ApiCategoryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1ApiCategoryResponse(
-      name: (map['name'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

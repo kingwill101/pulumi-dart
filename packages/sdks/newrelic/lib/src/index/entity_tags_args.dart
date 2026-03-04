@@ -10,29 +10,43 @@ import 'entity_tags_tag.dart';
 class EntityTagsArgs {
   /// The guid of the entity to tag.
   final pulumi.Input<String> guid;
+
   /// A nested block that describes an entity tag. See Nested tag blocks below for details.
   final pulumi.Input<List<EntityTagsTag>> tags;
 
   /// Creates a new [EntityTagsArgs].
   /// [guid] The guid of the entity to tag.
   /// [tags] A nested block that describes an entity tag. See Nested tag blocks below for details.
-  EntityTagsArgs({
-    required this.guid,
-    required this.tags,
-  });
+  EntityTagsArgs({required this.guid, required this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'guid': guid,
-      'tags': pulumi.Input.mapInputValue<List<EntityTagsTag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<EntityTagsTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags':
+          pulumi.Input.mapInputValue<
+            List<EntityTagsTag>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) =>
+                pulumi.Input.encodeList<EntityTagsTag, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory EntityTagsArgs.fromMap(Map<String, dynamic> map) {
     return EntityTagsArgs(
-      guid: (map['guid'] as String).input(),
-      tags: (pulumi.Input.decodeList<EntityTagsTag>(map['tags'], (value) => EntityTagsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guid: pulumi.Input.fromValue(map['guid'] as String),
+      tags: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<EntityTagsTag>(
+          map['tags']!,
+          (value) =>
+              EntityTagsTag.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum JobStepActionSource {
   valueInline("Inline");
 
-  const JobStepActionSource(this.value);
-  final String value;
+  const JobStepActionSource(this.wireValue);
+  final String wireValue;
 
   static JobStepActionSource fromValue(String value) {
     for (final item in JobStepActionSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobStepActionSource value: $value');
   }
 }
-

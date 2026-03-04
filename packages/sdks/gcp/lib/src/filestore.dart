@@ -1,5 +1,3 @@
-library module_filestore;
-
 export 'filestore/backup.dart';
 export 'filestore/backup_args.dart';
 export 'filestore/backup_state.dart';

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheActiveDirectorySettingsResponseCredentials {
   /// Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
   final pulumi.Input<String>? password;
+
   /// Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
   final pulumi.Input<String> username;
 
@@ -18,17 +19,19 @@ class CacheActiveDirectorySettingsResponseCredentials {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': ?password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': ?password, 'username': username};
   }
 
-  factory CacheActiveDirectorySettingsResponseCredentials.fromMap(Map<String, dynamic> map) {
+  factory CacheActiveDirectorySettingsResponseCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CacheActiveDirectorySettingsResponseCredentials(
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      username: (map['username'] as String).input(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

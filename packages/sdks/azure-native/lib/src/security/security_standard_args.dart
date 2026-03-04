@@ -10,16 +10,22 @@ import 'partial_assessment_properties.dart';
 class SecurityStandardArgs {
   /// List of assessment keys to apply to standard scope.
   final pulumi.Input<List<PartialAssessmentProperties>>? assessments;
+
   /// List of all standard supported clouds.
   final pulumi.Input<List<String>>? cloudProviders;
+
   /// Description of the standard
   final pulumi.Input<String>? description;
+
   /// Display name of the standard, equivalent to the standardId
   final pulumi.Input<String>? displayName;
+
   /// The policy set definition id associated with the standard.
   final pulumi.Input<String>? policySetDefinitionId;
+
   /// The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   final pulumi.Input<String> scope;
+
   /// The Security Standard key - unique key for the standard type
   final pulumi.Input<String>? standardId;
 
@@ -43,7 +49,18 @@ class SecurityStandardArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assessments': ?pulumi.Input.mapOptionalInputValue<List<PartialAssessmentProperties>, List<Map<String, dynamic>>>(assessments, (value) => pulumi.Input.encodeList<PartialAssessmentProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'assessments':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PartialAssessmentProperties>,
+            List<Map<String, dynamic>>
+          >(
+            assessments,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PartialAssessmentProperties,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'cloudProviders': ?cloudProviders,
       'description': ?description,
       'displayName': ?displayName,
@@ -55,14 +72,44 @@ class SecurityStandardArgs {
 
   factory SecurityStandardArgs.fromMap(Map<String, dynamic> map) {
     return SecurityStandardArgs(
-      assessments: map['assessments'] == null ? null : (pulumi.Input.decodeList<PartialAssessmentProperties>(map['assessments']!, (value) => PartialAssessmentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudProviders: map['cloudProviders'] == null ? null : ((map['cloudProviders']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : (map['policySetDefinitionId']! as String).input(),
-      scope: (map['scope'] as String).input(),
-      standardId: map['standardId'] == null ? null : (map['standardId']! as String).input(),
+      assessments: (() {
+        final guardedValue = map['assessments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PartialAssessmentProperties>(
+            guardedValue,
+            (value) => PartialAssessmentProperties.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      cloudProviders: (() {
+        final guardedValue = map['cloudProviders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policySetDefinitionId: (() {
+        final guardedValue = map['policySetDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      standardId: (() {
+        final guardedValue = map['standardId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

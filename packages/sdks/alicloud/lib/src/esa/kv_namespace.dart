@@ -8,7 +8,7 @@ import 'kv_namespace_state.dart';
 ///
 /// For information about ESA Kv Namespace and how to use it, see [What is Kv Namespace](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateKvNamespace).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -121,8 +121,10 @@ import 'kv_namespace_state.dart';
 class KvNamespace extends pulumi.CustomResource {
   /// The description of the namespace.
   late final pulumi.Output<String?> description;
+
   /// The name of the namespace.
   late final pulumi.Output<String> kvNamespace;
+
   /// The status of the namespace.
   late final pulumi.Output<String> status;
 
@@ -135,14 +137,14 @@ class KvNamespace extends pulumi.CustomResource {
     KvNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/kvNamespace:KvNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.kvNamespace = registerOutput<String>('kvNamespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/kvNamespace:KvNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    kvNamespace = registerOutput<String>('kvNamespace');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [KvNamespace] resource's state with the given [name] and [id].
@@ -163,13 +165,13 @@ class KvNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/kvNamespace:KvNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.kvNamespace = registerOutput<String>('kvNamespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/kvNamespace:KvNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    kvNamespace = registerOutput<String>('kvNamespace');
+    status = registerOutput<String>('status');
   }
 }

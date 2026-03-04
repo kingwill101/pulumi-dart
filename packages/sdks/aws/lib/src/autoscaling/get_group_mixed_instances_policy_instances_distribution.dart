@@ -5,13 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupMixedInstancesPolicyInstancesDistribution {
   /// Strategy used when launching on-demand instances.
   final pulumi.Input<String> onDemandAllocationStrategy;
+
   /// Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances.
   final pulumi.Input<int> onDemandBaseCapacity;
   final pulumi.Input<int> onDemandPercentageAboveBaseCapacity;
+
   /// Strategy used when launching Spot instances.
   final pulumi.Input<String> spotAllocationStrategy;
+
   /// Number of Spot pools per availability zone to allocate capacity.
   final pulumi.Input<int> spotInstancePools;
+
   /// Maximum price per unit hour that the user is willing to pay for the Spot instances.
   final pulumi.Input<String> spotMaxPrice;
 
@@ -35,22 +39,34 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
     return <String, dynamic>{
       'onDemandAllocationStrategy': onDemandAllocationStrategy,
       'onDemandBaseCapacity': onDemandBaseCapacity,
-      'onDemandPercentageAboveBaseCapacity': onDemandPercentageAboveBaseCapacity,
+      'onDemandPercentageAboveBaseCapacity':
+          onDemandPercentageAboveBaseCapacity,
       'spotAllocationStrategy': spotAllocationStrategy,
       'spotInstancePools': spotInstancePools,
       'spotMaxPrice': spotMaxPrice,
     };
   }
 
-  factory GetGroupMixedInstancesPolicyInstancesDistribution.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMixedInstancesPolicyInstancesDistribution.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMixedInstancesPolicyInstancesDistribution(
-      onDemandAllocationStrategy: (map['onDemandAllocationStrategy'] as String).input(),
-      onDemandBaseCapacity: (map['onDemandBaseCapacity'] as int).input(),
-      onDemandPercentageAboveBaseCapacity: (map['onDemandPercentageAboveBaseCapacity'] as int).input(),
-      spotAllocationStrategy: (map['spotAllocationStrategy'] as String).input(),
-      spotInstancePools: (map['spotInstancePools'] as int).input(),
-      spotMaxPrice: (map['spotMaxPrice'] as String).input(),
+      onDemandAllocationStrategy: pulumi.Input.fromValue(
+        map['onDemandAllocationStrategy'] as String,
+      ),
+      onDemandBaseCapacity: pulumi.Input.fromValue(
+        map['onDemandBaseCapacity'] as int,
+      ),
+      onDemandPercentageAboveBaseCapacity: pulumi.Input.fromValue(
+        map['onDemandPercentageAboveBaseCapacity'] as int,
+      ),
+      spotAllocationStrategy: pulumi.Input.fromValue(
+        map['spotAllocationStrategy'] as String,
+      ),
+      spotInstancePools: pulumi.Input.fromValue(
+        map['spotInstancePools'] as int,
+      ),
+      spotMaxPrice: pulumi.Input.fromValue(map['spotMaxPrice'] as String),
     );
   }
 }
-

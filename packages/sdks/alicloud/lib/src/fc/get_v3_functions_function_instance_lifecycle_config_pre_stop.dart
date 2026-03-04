@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3FunctionsFunctionInstanceLifecycleConfigPreStop {
   /// The execution entry of the callback method, which is similar to the request handler.
   final pulumi.Input<String> handler;
+
   /// The maximum running time of the function, in seconds.
   final pulumi.Input<int> timeout;
 
@@ -17,17 +18,15 @@ class GetV3FunctionsFunctionInstanceLifecycleConfigPreStop {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'handler': handler,
-      'timeout': timeout,
-    };
+    return <String, dynamic>{'handler': handler, 'timeout': timeout};
   }
 
-  factory GetV3FunctionsFunctionInstanceLifecycleConfigPreStop.fromMap(Map<String, dynamic> map) {
+  factory GetV3FunctionsFunctionInstanceLifecycleConfigPreStop.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetV3FunctionsFunctionInstanceLifecycleConfigPreStop(
-      handler: (map['handler'] as String).input(),
-      timeout: (map['timeout'] as int).input(),
+      handler: pulumi.Input.fromValue(map['handler'] as String),
+      timeout: pulumi.Input.fromValue(map['timeout'] as int),
     );
   }
 }
-

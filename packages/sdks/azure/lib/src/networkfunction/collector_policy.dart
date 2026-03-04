@@ -482,7 +482,7 @@ import 'collector_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetworkFunction` - 2022-11-01
@@ -497,14 +497,19 @@ import 'collector_policy_state.dart';
 class CollectorPolicy extends pulumi.CustomResource {
   /// An `ipfx_emission` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<CollectorPolicyIpfxEmission> ipfxEmission;
+
   /// An `ipfx_ingestion` block as defined below. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<CollectorPolicyIpfxIngestion> ipfxIngestion;
+
   /// Specifies the Azure Region where the Network Function Collector Policy should exist. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags which should be assigned to the Network Function Collector Policy.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Azure Traffic Collector ID of the Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   late final pulumi.Output<String> trafficCollectorId;
 
@@ -517,17 +522,19 @@ class CollectorPolicy extends pulumi.CustomResource {
     CollectorPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:networkfunction/collectorPolicy:CollectorPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission');
-    this.ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion');
-    this.location = registerOutput<String>('location');
+         'azure:networkfunction/collectorPolicy:CollectorPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission');
+    ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>(
+      'ipfxIngestion',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trafficCollectorId = registerOutput<String>('trafficCollectorId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trafficCollectorId = registerOutput<String>('trafficCollectorId');
   }
 
   /// Gets an existing [CollectorPolicy] resource's state with the given [name] and [id].
@@ -548,16 +555,18 @@ class CollectorPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:networkfunction/collectorPolicy:CollectorPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission');
-    this.ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion');
-    this.location = registerOutput<String>('location');
+         'azure:networkfunction/collectorPolicy:CollectorPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission');
+    ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>(
+      'ipfxIngestion',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trafficCollectorId = registerOutput<String>('trafficCollectorId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trafficCollectorId = registerOutput<String>('trafficCollectorId');
   }
 }

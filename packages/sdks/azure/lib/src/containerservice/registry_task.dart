@@ -8,9 +8,7 @@ import 'registry_task_file_step.dart';
 import 'registry_task_identity.dart';
 import 'registry_task_platform.dart';
 import 'registry_task_registry_credential.dart';
-import 'registry_task_source_trigger.dart';
 import 'registry_task_state.dart';
-import 'registry_task_timer_trigger.dart';
 
 /// Manages a Container Registry Task.
 ///
@@ -253,7 +251,7 @@ import 'registry_task_timer_trigger.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ContainerRegistry` - 2025-11-01, 2019-06-01-preview
@@ -268,42 +266,55 @@ import 'registry_task_timer_trigger.dart';
 class RegistryTask extends pulumi.CustomResource {
   /// The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
   late final pulumi.Output<String?> agentPoolName;
+
   /// A `agent_setting` block as defined below.
   ///
-  /// > **Note:** Only one of `agent_pool_name` and `agent_setting` can be specified.
+  /// &gt; **Note:** Only one of `agent_pool_name` and `agent_setting` can be specified.
   late final pulumi.Output<RegistryTaskAgentSetting?> agentSetting;
+
   /// A `base_image_trigger` block as defined below.
   late final pulumi.Output<RegistryTaskBaseImageTrigger?> baseImageTrigger;
+
   /// The ID of the Container Registry that this Container Registry Task resides in. Changing this forces a new Container Registry Task to be created.
   late final pulumi.Output<String> containerRegistryId;
+
   /// A `docker_step` block as defined below.
   late final pulumi.Output<RegistryTaskDockerStep?> dockerStep;
+
   /// Should this Container Registry Task be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// A `encoded_step` block as defined below.
   late final pulumi.Output<RegistryTaskEncodedStep?> encodedStep;
+
   /// A `file_step` block as defined below.
   ///
-  /// > **Note:** For non-system task (when `is_system_task` is set to `false`), one and only one of the `docker_step`, `encoded_step` and `file_step` should be specified.
+  /// &gt; **Note:** For non-system task (when `is_system_task` is set to `false`), one and only one of the `docker_step`, `encoded_step` and `file_step` should be specified.
   late final pulumi.Output<RegistryTaskFileStep?> fileStep;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<RegistryTaskIdentity?> identity;
+
   /// Whether this Container Registry Task is a system task. Changing this forces a new Container Registry Task to be created. Defaults to `false`.
   late final pulumi.Output<bool?> isSystemTask;
   late final pulumi.Output<String?> logTemplate;
+
   /// The name which should be used for this Container Registry Task. Changing this forces a new Container Registry Task to be created.
   late final pulumi.Output<String> name;
+
   /// A `platform` block as defined below.
   ///
-  /// > **Note:** The `platform` is required for non-system task (when `is_system_task` is set to `false`).
+  /// &gt; **Note:** The `platform` is required for non-system task (when `is_system_task` is set to `false`).
   late final pulumi.Output<RegistryTaskPlatform?> platform;
   late final pulumi.Output<RegistryTaskRegistryCredential?> registryCredential;
+
   /// One or more `source_trigger` blocks as defined below.
-  late final pulumi.Output<List<RegistryTaskSourceTrigger>?> sourceTriggers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sourceTriggers;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<int?> timeoutInSeconds;
+
   /// One or more `timer_trigger` blocks as defined below.
-  late final pulumi.Output<List<RegistryTaskTimerTrigger>?> timerTriggers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> timerTriggers;
 
   /// Creates a new [RegistryTask].
   /// [name] The Pulumi resource name.
@@ -314,29 +325,37 @@ class RegistryTask extends pulumi.CustomResource {
     RegistryTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryTask:RegistryTask',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentPoolName = registerOutput<String?>('agentPoolName');
-    this.agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
-    this.baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>('baseImageTrigger');
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
-    this.fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
-    this.identity = registerOutput<RegistryTaskIdentity?>('identity');
-    this.isSystemTask = registerOutput<bool?>('isSystemTask');
-    this.logTemplate = registerOutput<String?>('logTemplate');
+         'azure:containerservice/registryTask:RegistryTask',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentPoolName = registerOutput<String?>('agentPoolName');
+    agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
+    baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>(
+      'baseImageTrigger',
+    );
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
+    enabled = registerOutput<bool?>('enabled');
+    encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
+    fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
+    identity = registerOutput<RegistryTaskIdentity?>('identity');
+    isSystemTask = registerOutput<bool?>('isSystemTask');
+    logTemplate = registerOutput<String?>('logTemplate');
     this.name = registerOutput<String>('name');
-    this.platform = registerOutput<RegistryTaskPlatform?>('platform');
-    this.registryCredential = registerOutput<RegistryTaskRegistryCredential?>('registryCredential');
-    this.sourceTriggers = registerOutput<List<RegistryTaskSourceTrigger>?>('sourceTriggers');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
-    this.timerTriggers = registerOutput<List<RegistryTaskTimerTrigger>?>('timerTriggers');
+    platform = registerOutput<RegistryTaskPlatform?>('platform');
+    registryCredential = registerOutput<RegistryTaskRegistryCredential?>(
+      'registryCredential',
+    );
+    sourceTriggers = registerOutput<List<Map<String, dynamic>>?>(
+      'sourceTriggers',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+    timerTriggers = registerOutput<List<Map<String, dynamic>>?>(
+      'timerTriggers',
+    );
   }
 
   /// Gets an existing [RegistryTask] resource's state with the given [name] and [id].
@@ -357,28 +376,36 @@ class RegistryTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/registryTask:RegistryTask',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentPoolName = registerOutput<String?>('agentPoolName');
-    this.agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
-    this.baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>('baseImageTrigger');
-    this.containerRegistryId = registerOutput<String>('containerRegistryId');
-    this.dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
-    this.fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
-    this.identity = registerOutput<RegistryTaskIdentity?>('identity');
-    this.isSystemTask = registerOutput<bool?>('isSystemTask');
-    this.logTemplate = registerOutput<String?>('logTemplate');
+         'azure:containerservice/registryTask:RegistryTask',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentPoolName = registerOutput<String?>('agentPoolName');
+    agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
+    baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>(
+      'baseImageTrigger',
+    );
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
+    enabled = registerOutput<bool?>('enabled');
+    encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
+    fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
+    identity = registerOutput<RegistryTaskIdentity?>('identity');
+    isSystemTask = registerOutput<bool?>('isSystemTask');
+    logTemplate = registerOutput<String?>('logTemplate');
     this.name = registerOutput<String>('name');
-    this.platform = registerOutput<RegistryTaskPlatform?>('platform');
-    this.registryCredential = registerOutput<RegistryTaskRegistryCredential?>('registryCredential');
-    this.sourceTriggers = registerOutput<List<RegistryTaskSourceTrigger>?>('sourceTriggers');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
-    this.timerTriggers = registerOutput<List<RegistryTaskTimerTrigger>?>('timerTriggers');
+    platform = registerOutput<RegistryTaskPlatform?>('platform');
+    registryCredential = registerOutput<RegistryTaskRegistryCredential?>(
+      'registryCredential',
+    );
+    sourceTriggers = registerOutput<List<Map<String, dynamic>>?>(
+      'sourceTriggers',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+    timerTriggers = registerOutput<List<Map<String, dynamic>>?>(
+      'timerTriggers',
+    );
   }
 }

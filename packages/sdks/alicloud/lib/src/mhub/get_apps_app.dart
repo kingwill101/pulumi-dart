@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppsApp {
   /// Application AppKey, which uniquely identifies an application when requested by the interface
   final pulumi.Input<String> appKey;
+
   /// The Name of the App.
   final pulumi.Input<String> appName;
+
   /// iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundle_id` or `package_name` must be set.
   final pulumi.Input<String> bundleId;
+
   /// The CreateTime of the App.
   final pulumi.Input<String> createTime;
+
   /// Base64 string of picture.
   final pulumi.Input<String> encodedIcon;
+
   /// The ID of the App.
   final pulumi.Input<String> id;
+
   /// The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
   final pulumi.Input<String> industryId;
+
   /// Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
   final pulumi.Input<String> packageName;
+
   /// The ID of the Product.
   final pulumi.Input<String> productId;
+
   /// The type of the App. Valid values: `Android` and `iOS`.
   final pulumi.Input<String> type;
 
@@ -65,17 +74,16 @@ class GetAppsApp {
 
   factory GetAppsApp.fromMap(Map<String, dynamic> map) {
     return GetAppsApp(
-      appKey: (map['appKey'] as String).input(),
-      appName: (map['appName'] as String).input(),
-      bundleId: (map['bundleId'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      encodedIcon: (map['encodedIcon'] as String).input(),
-      id: (map['id'] as String).input(),
-      industryId: (map['industryId'] as String).input(),
-      packageName: (map['packageName'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      type: (map['type'] as String).input(),
+      appKey: pulumi.Input.fromValue(map['appKey'] as String),
+      appName: pulumi.Input.fromValue(map['appName'] as String),
+      bundleId: pulumi.Input.fromValue(map['bundleId'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      encodedIcon: pulumi.Input.fromValue(map['encodedIcon'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      industryId: pulumi.Input.fromValue(map['industryId'] as String),
+      packageName: pulumi.Input.fromValue(map['packageName'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,17 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountMergeInfoResponse {
   /// The account location of the *other* account in the merge operation.
   final pulumi.Input<String> accountLocation;
+
   /// The account name of the *other* account in the merge operation.
   final pulumi.Input<String> accountName;
+
   /// The resource group name of the *other* account in the merge operation.
   final pulumi.Input<String> accountResourceGroupName;
+
   /// The subscription id of the *other* account in the merge operation.
   final pulumi.Input<String> accountSubscriptionId;
+
   /// The deprovisioned status of the account.
   /// Only applicable for the secondary account.
   final pulumi.Input<bool> deprovisioned;
+
   /// The status of the merge operation.
   final pulumi.Input<String> mergeStatus;
+
   /// The account's type for the merge operation.
   final pulumi.Input<String> typeOfAccount;
 
@@ -52,14 +58,17 @@ class AccountMergeInfoResponse {
 
   factory AccountMergeInfoResponse.fromMap(Map<String, dynamic> map) {
     return AccountMergeInfoResponse(
-      accountLocation: (map['accountLocation'] as String).input(),
-      accountName: (map['accountName'] as String).input(),
-      accountResourceGroupName: (map['accountResourceGroupName'] as String).input(),
-      accountSubscriptionId: (map['accountSubscriptionId'] as String).input(),
-      deprovisioned: (map['deprovisioned'] as bool).input(),
-      mergeStatus: (map['mergeStatus'] as String).input(),
-      typeOfAccount: (map['typeOfAccount'] as String).input(),
+      accountLocation: pulumi.Input.fromValue(map['accountLocation'] as String),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      accountResourceGroupName: pulumi.Input.fromValue(
+        map['accountResourceGroupName'] as String,
+      ),
+      accountSubscriptionId: pulumi.Input.fromValue(
+        map['accountSubscriptionId'] as String,
+      ),
+      deprovisioned: pulumi.Input.fromValue(map['deprovisioned'] as bool),
+      mergeStatus: pulumi.Input.fromValue(map['mergeStatus'] as String),
+      typeOfAccount: pulumi.Input.fromValue(map['typeOfAccount'] as String),
     );
   }
 }
-

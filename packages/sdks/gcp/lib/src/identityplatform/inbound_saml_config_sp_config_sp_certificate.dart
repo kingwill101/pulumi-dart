@@ -8,20 +8,21 @@ class InboundSamlConfigSpConfigSpCertificate {
 
   /// Creates a new [InboundSamlConfigSpConfigSpCertificate].
   /// [x509Certificate] The x509 certificate
-  InboundSamlConfigSpConfigSpCertificate({
-    this.x509Certificate,
-  });
+  InboundSamlConfigSpConfigSpCertificate({this.x509Certificate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'x509Certificate': ?x509Certificate,
-    };
+    return <String, dynamic>{'x509Certificate': ?x509Certificate};
   }
 
-  factory InboundSamlConfigSpConfigSpCertificate.fromMap(Map<String, dynamic> map) {
+  factory InboundSamlConfigSpConfigSpCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InboundSamlConfigSpConfigSpCertificate(
-      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate']! as String).input(),
+      x509Certificate: (() {
+        final guardedValue = map['x509Certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

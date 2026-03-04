@@ -18,10 +18,13 @@ class InstanceTemplateNetworkPerformanceConfig {
     };
   }
 
-  factory InstanceTemplateNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
+  factory InstanceTemplateNetworkPerformanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceTemplateNetworkPerformanceConfig(
-      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(
+        map['totalEgressBandwidthTier'] as String,
+      ),
     );
   }
 }
-

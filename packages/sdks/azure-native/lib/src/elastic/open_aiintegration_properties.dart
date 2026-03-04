@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OpenAIIntegrationProperties {
   /// Value of API key for Open AI resource
   final pulumi.Input<String>? key;
+
   /// The API endpoint for Open AI resource
   final pulumi.Input<String>? openAIResourceEndpoint;
+
   /// The resource name of Open AI resource
   final pulumi.Input<String>? openAIResourceId;
 
@@ -31,10 +33,21 @@ class OpenAIIntegrationProperties {
 
   factory OpenAIIntegrationProperties.fromMap(Map<String, dynamic> map) {
     return OpenAIIntegrationProperties(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      openAIResourceEndpoint: map['openAIResourceEndpoint'] == null ? null : (map['openAIResourceEndpoint']! as String).input(),
-      openAIResourceId: map['openAIResourceId'] == null ? null : (map['openAIResourceId']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      openAIResourceEndpoint: (() {
+        final guardedValue = map['openAIResourceEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      openAIResourceId: (() {
+        final guardedValue = map['openAIResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

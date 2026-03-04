@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridConnectionArgs {
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> appServiceName;
+
   /// The hostname of the endpoint.
   final pulumi.Input<String> hostname;
+
   /// The port of the endpoint.
   final pulumi.Input<int> port;
+
   /// The ID of the Service Bus Relay. Changing this forces a new resource to be created.
   final pulumi.Input<String> relayId;
+
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service Bus key which has Send permissions. Defaults to `RootManageSharedAccessKey`.
   final pulumi.Input<String>? sendKeyName;
 
@@ -49,13 +54,18 @@ class HybridConnectionArgs {
 
   factory HybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HybridConnectionArgs(
-      appServiceName: (map['appServiceName'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      port: (map['port'] as int).input(),
-      relayId: (map['relayId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName']! as String).input(),
+      appServiceName: pulumi.Input.fromValue(map['appServiceName'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      relayId: pulumi.Input.fromValue(map['relayId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sendKeyName: (() {
+        final guardedValue = map['sendKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

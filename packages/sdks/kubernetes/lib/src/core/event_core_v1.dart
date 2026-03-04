@@ -9,36 +9,52 @@ import 'object_reference.dart';
 class EventCoreV1 extends pulumi.CustomResource {
   /// What action was taken/failed regarding to the Regarding object.
   late final pulumi.Output<String> action;
+
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;
+
   /// The number of times this event has occurred.
   late final pulumi.Output<int> count;
+
   /// Time when this Event was first observed.
   late final pulumi.Output<String> eventTime;
+
   /// The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
   late final pulumi.Output<String> firstTimestamp;
+
   /// The object that this event is about.
   late final pulumi.Output<ObjectReference> involvedObject;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
+
   /// The time at which the most recent occurrence of this event was recorded.
   late final pulumi.Output<String> lastTimestamp;
+
   /// A human-readable description of the status of this operation.
   late final pulumi.Output<String> message;
+
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   late final pulumi.Output<ObjectMeta> metadata;
+
   /// This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
   late final pulumi.Output<String> reason;
+
   /// Optional secondary object for more complex actions.
   late final pulumi.Output<ObjectReference> related;
+
   /// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
   late final pulumi.Output<String> reportingComponent;
+
   /// ID of the controller instance, e.g. `kubelet-xyzf`.
   late final pulumi.Output<String> reportingInstance;
+
   /// Data about the Event series this event represents or nil if it's a singleton Event.
   late final pulumi.Output<EventSeries> series;
+
   /// The component reporting this event. Should be a short machine understandable string.
   late final pulumi.Output<EventSource> source;
+
   /// Type of this event (Normal, Warning), new types could be added in the future
   late final pulumi.Output<String> type;
 
@@ -51,27 +67,27 @@ class EventCoreV1 extends pulumi.CustomResource {
     EventArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:core/v1:Event',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.count = registerOutput<int>('count');
-    this.eventTime = registerOutput<String>('eventTime');
-    this.firstTimestamp = registerOutput<String>('firstTimestamp');
-    this.involvedObject = registerOutput<ObjectReference>('involvedObject');
-    this.kind = registerOutput<String>('kind');
-    this.lastTimestamp = registerOutput<String>('lastTimestamp');
-    this.message = registerOutput<String>('message');
-    this.metadata = registerOutput<ObjectMeta>('metadata');
-    this.reason = registerOutput<String>('reason');
-    this.related = registerOutput<ObjectReference>('related');
-    this.reportingComponent = registerOutput<String>('reportingComponent');
-    this.reportingInstance = registerOutput<String>('reportingInstance');
-    this.series = registerOutput<EventSeries>('series');
-    this.source = registerOutput<EventSource>('source');
-    this.type = registerOutput<String>('type');
+         'kubernetes:core/v1:Event',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    apiVersion = registerOutput<String>('apiVersion');
+    count = registerOutput<int>('count');
+    eventTime = registerOutput<String>('eventTime');
+    firstTimestamp = registerOutput<String>('firstTimestamp');
+    involvedObject = registerOutput<ObjectReference>('involvedObject');
+    kind = registerOutput<String>('kind');
+    lastTimestamp = registerOutput<String>('lastTimestamp');
+    message = registerOutput<String>('message');
+    metadata = registerOutput<ObjectMeta>('metadata');
+    reason = registerOutput<String>('reason');
+    related = registerOutput<ObjectReference>('related');
+    reportingComponent = registerOutput<String>('reportingComponent');
+    reportingInstance = registerOutput<String>('reportingInstance');
+    series = registerOutput<EventSeries>('series');
+    source = registerOutput<EventSource>('source');
+    type = registerOutput<String>('type');
   }
 }

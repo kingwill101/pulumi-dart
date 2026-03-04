@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudSqlCredentialResponse {
   /// The password for the credential.
   final pulumi.Input<String> password;
+
   /// The username for the credential.
   final pulumi.Input<String> username;
 
   /// Creates a new [CloudSqlCredentialResponse].
   /// [password] The password for the credential.
   /// [username] The username for the credential.
-  CloudSqlCredentialResponse({
-    required this.password,
-    required this.username,
-  });
+  CloudSqlCredentialResponse({required this.password, required this.username});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
   factory CloudSqlCredentialResponse.fromMap(Map<String, dynamic> map) {
     return CloudSqlCredentialResponse(
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

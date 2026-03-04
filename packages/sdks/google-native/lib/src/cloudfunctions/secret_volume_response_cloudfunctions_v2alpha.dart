@@ -7,10 +7,13 @@ import 'secret_version_response_cloudfunctions_v2alpha.dart';
 class SecretVolumeResponseCloudfunctionsV2alpha {
   /// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
   final pulumi.Input<String> mountPath;
+
   /// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
   final pulumi.Input<String> project;
+
   /// Name of the secret in secret manager (not the full resource name).
   final pulumi.Input<String> secret;
+
   /// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
   final pulumi.Input<List<SecretVersionResponseCloudfunctionsV2alpha>> versions;
 
@@ -31,17 +34,36 @@ class SecretVolumeResponseCloudfunctionsV2alpha {
       'mountPath': mountPath,
       'project': project,
       'secret': secret,
-      'versions': pulumi.Input.mapInputValue<List<SecretVersionResponseCloudfunctionsV2alpha>, List<Map<String, dynamic>>>(versions, (value) => pulumi.Input.encodeList<SecretVersionResponseCloudfunctionsV2alpha, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'versions':
+          pulumi.Input.mapInputValue<
+            List<SecretVersionResponseCloudfunctionsV2alpha>,
+            List<Map<String, dynamic>>
+          >(
+            versions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SecretVersionResponseCloudfunctionsV2alpha,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory SecretVolumeResponseCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
+  factory SecretVolumeResponseCloudfunctionsV2alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecretVolumeResponseCloudfunctionsV2alpha(
-      mountPath: (map['mountPath'] as String).input(),
-      project: (map['project'] as String).input(),
-      secret: (map['secret'] as String).input(),
-      versions: (pulumi.Input.decodeList<SecretVersionResponseCloudfunctionsV2alpha>(map['versions'], (value) => SecretVersionResponseCloudfunctionsV2alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      secret: pulumi.Input.fromValue(map['secret'] as String),
+      versions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SecretVersionResponseCloudfunctionsV2alpha>(
+          map['versions']!,
+          (value) => SecretVersionResponseCloudfunctionsV2alpha.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

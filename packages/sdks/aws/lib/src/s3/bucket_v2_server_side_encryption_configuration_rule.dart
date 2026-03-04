@@ -5,7 +5,13 @@ import 'bucket_v2_server_side_encryption_configuration_rule_apply_server_side_en
 
 class BucketV2ServerSideEncryptionConfigurationRule {
   /// Single object for setting server-side encryption by default. (documented below)
-  final pulumi.Input<List<BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault>> applyServerSideEncryptionByDefaults;
+  final pulumi.Input<
+    List<
+      BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault
+    >
+  >
+  applyServerSideEncryptionByDefaults;
+
   /// Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
   final pulumi.Input<bool>? bucketKeyEnabled;
 
@@ -19,16 +25,44 @@ class BucketV2ServerSideEncryptionConfigurationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applyServerSideEncryptionByDefaults': pulumi.Input.mapInputValue<List<BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault>, List<Map<String, dynamic>>>(applyServerSideEncryptionByDefaults, (value) => pulumi.Input.encodeList<BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'applyServerSideEncryptionByDefaults':
+          pulumi.Input.mapInputValue<
+            List<
+              BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault
+            >,
+            List<Map<String, dynamic>>
+          >(
+            applyServerSideEncryptionByDefaults,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'bucketKeyEnabled': ?bucketKeyEnabled,
     };
   }
 
-  factory BucketV2ServerSideEncryptionConfigurationRule.fromMap(Map<String, dynamic> map) {
+  factory BucketV2ServerSideEncryptionConfigurationRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketV2ServerSideEncryptionConfigurationRule(
-      applyServerSideEncryptionByDefaults: (pulumi.Input.decodeList<BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault>(map['applyServerSideEncryptionByDefaults']!, (value) => BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bucketKeyEnabled: map['bucketKeyEnabled'] == null ? null : ((map['bucketKeyEnabled'] as bool).input()).input(),
+      applyServerSideEncryptionByDefaults: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault
+        >(
+          map['applyServerSideEncryptionByDefaults']!,
+          (value) =>
+              BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      bucketKeyEnabled: (() {
+        final guardedValue = map['bucketKeyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -331,7 +331,7 @@ import 'route_table_association_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE:** Avoid using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source to retrieve the attachment ID, as this can cause unnecessary resource recreation when unrelated attributes of the Direct Connect Gateway association change (such as `allowed_prefixes`). Always reference the `transit_gateway_attachment_id` attribute directly from the `aws.directconnect.GatewayAssociation` resource when available.
+/// &gt; **NOTE:** Avoid using the `aws.ec2transitgateway.getDirectConnectGatewayAttachment` data source to retrieve the attachment ID, as this can cause unnecessary resource recreation when unrelated attributes of the Direct Connect Gateway association change (such as `allowed_prefixes`). Always reference the `transit_gateway_attachment_id` attribute directly from the `aws.directconnect.GatewayAssociation` resource when available.
 ///
 /// ### VPC Attachment Association
 ///
@@ -588,7 +588,7 @@ import 'route_table_association_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE:** When the `transit_gateway_attachment_id` changes (for example, when a VPC attachment is replaced), this resource will be recreated. This is the correct behavior to maintain consistency between the attachment and its route table association.
+/// &gt; **NOTE:** When the `transit_gateway_attachment_id` changes (for example, when a VPC attachment is replaced), this resource will be recreated. This is the correct behavior to maintain consistency between the attachment and its route table association.
 ///
 /// ## Import
 ///
@@ -600,14 +600,19 @@ import 'route_table_association_state.dart';
 class RouteTableAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Boolean whether the Gateway Attachment should remove any current Route Table association before associating with the specified Route Table. Default value: `false`. This argument is intended for use with EC2 Transit Gateways shared into the current account, otherwise the `transit_gateway_default_route_table_association` argument of the `aws.ec2transitgateway.VpcAttachment` resource should be used.
   late final pulumi.Output<bool?> replaceExistingAssociation;
+
   /// Identifier of the resource
   late final pulumi.Output<String> resourceId;
+
   /// Type of the resource
   late final pulumi.Output<String> resourceType;
+
   /// Identifier of EC2 Transit Gateway Attachment.
   late final pulumi.Output<String> transitGatewayAttachmentId;
+
   /// Identifier of EC2 Transit Gateway Route Table.
   late final pulumi.Output<String> transitGatewayRouteTableId;
 
@@ -620,17 +625,23 @@ class RouteTableAssociation extends pulumi.CustomResource {
     RouteTableAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2transitgateway/routeTableAssociation:RouteTableAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.replaceExistingAssociation = registerOutput<bool?>('replaceExistingAssociation');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
-    this.transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+         'aws:ec2transitgateway/routeTableAssociation:RouteTableAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    replaceExistingAssociation = registerOutput<bool?>(
+      'replaceExistingAssociation',
+    );
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    transitGatewayAttachmentId = registerOutput<String>(
+      'transitGatewayAttachmentId',
+    );
+    transitGatewayRouteTableId = registerOutput<String>(
+      'transitGatewayRouteTableId',
+    );
   }
 
   /// Gets an existing [RouteTableAssociation] resource's state with the given [name] and [id].
@@ -651,16 +662,22 @@ class RouteTableAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2transitgateway/routeTableAssociation:RouteTableAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.replaceExistingAssociation = registerOutput<bool?>('replaceExistingAssociation');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
-    this.transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+         'aws:ec2transitgateway/routeTableAssociation:RouteTableAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    replaceExistingAssociation = registerOutput<bool?>(
+      'replaceExistingAssociation',
+    );
+    resourceId = registerOutput<String>('resourceId');
+    resourceType = registerOutput<String>('resourceType');
+    transitGatewayAttachmentId = registerOutput<String>(
+      'transitGatewayAttachmentId',
+    );
+    transitGatewayRouteTableId = registerOutput<String>(
+      'transitGatewayRouteTableId',
+    );
   }
 }

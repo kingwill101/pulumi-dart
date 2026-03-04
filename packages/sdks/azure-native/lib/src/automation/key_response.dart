@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyResponse {
   /// Automation key name.
   final pulumi.Input<String> keyName;
+
   /// Automation key permissions.
   final pulumi.Input<String> permissions;
+
   /// Value of the Automation Key used for registration.
   final pulumi.Input<String> value;
 
@@ -31,10 +33,9 @@ class KeyResponse {
 
   factory KeyResponse.fromMap(Map<String, dynamic> map) {
     return KeyResponse(
-      keyName: (map['keyName'] as String).input(),
-      permissions: (map['permissions'] as String).input(),
-      value: (map['value'] as String).input(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

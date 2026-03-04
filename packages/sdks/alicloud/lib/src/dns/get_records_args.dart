@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordsArgs {
   /// The domain name associated to the records.
   final pulumi.Input<String> domainName;
+
   /// Host record regex.
   final pulumi.Input<String>? hostRecordRegex;
+
   /// A list of record IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// Whether the record is locked or not.
   final pulumi.Input<bool>? isLocked;
+
   /// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
   final pulumi.Input<String>? line;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Record status. Valid items are `ENABLE` and `DISABLE`.
   final pulumi.Input<String>? status;
+
   /// Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
   final pulumi.Input<String>? type;
+
   /// Host record value regex.
   final pulumi.Input<String>? valueRegex;
 
@@ -64,16 +72,47 @@ class GetRecordsArgs {
 
   factory GetRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordsArgs(
-      domainName: (map['domainName'] as String).input(),
-      hostRecordRegex: map['hostRecordRegex'] == null ? null : (map['hostRecordRegex']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      isLocked: map['isLocked'] == null ? null : (map['isLocked']! as bool).input(),
-      line: map['line'] == null ? null : (map['line']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      valueRegex: map['valueRegex'] == null ? null : (map['valueRegex']! as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      hostRecordRegex: (() {
+        final guardedValue = map['hostRecordRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      isLocked: (() {
+        final guardedValue = map['isLocked'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      line: (() {
+        final guardedValue = map['line'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueRegex: (() {
+        final guardedValue = map['valueRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

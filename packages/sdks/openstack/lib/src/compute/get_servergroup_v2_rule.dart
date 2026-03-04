@@ -7,20 +7,15 @@ class GetServergroupV2Rule {
 
   /// Creates a new [GetServergroupV2Rule].
   /// [maxServerPerHost] Required.
-  GetServergroupV2Rule({
-    required this.maxServerPerHost,
-  });
+  GetServergroupV2Rule({required this.maxServerPerHost});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxServerPerHost': maxServerPerHost,
-    };
+    return <String, dynamic>{'maxServerPerHost': maxServerPerHost};
   }
 
   factory GetServergroupV2Rule.fromMap(Map<String, dynamic> map) {
     return GetServergroupV2Rule(
-      maxServerPerHost: (map['maxServerPerHost'] as int).input(),
+      maxServerPerHost: pulumi.Input.fromValue(map['maxServerPerHost'] as int),
     );
   }
 }
-

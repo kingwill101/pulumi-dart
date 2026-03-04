@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancerTypeArgs {
   /// ID of the Load Balancer Type.
   final pulumi.Input<int>? id;
+
   /// Name of the Load Balancer Type.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetLoadBalancerTypeArgs].
   /// [id] ID of the Load Balancer Type.
   /// [name] Name of the Load Balancer Type.
-  GetLoadBalancerTypeArgs({
-    this.id,
-    this.name,
-  });
+  GetLoadBalancerTypeArgs({this.id, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name};
   }
 
   factory GetLoadBalancerTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerTypeArgs(
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

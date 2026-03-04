@@ -9,20 +9,17 @@ class OfficeDataConnectorDataTypesExchange {
 
   /// Creates a new [OfficeDataConnectorDataTypesExchange].
   /// [state] Describe whether this data type connection is enabled or not.
-  OfficeDataConnectorDataTypesExchange({
-    required this.state,
-  });
+  OfficeDataConnectorDataTypesExchange({required this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-    };
+    return <String, dynamic>{'state': state};
   }
 
-  factory OfficeDataConnectorDataTypesExchange.fromMap(Map<String, dynamic> map) {
+  factory OfficeDataConnectorDataTypesExchange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OfficeDataConnectorDataTypesExchange(
-      state: (map['state'] as String).input(),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

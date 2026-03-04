@@ -1,5 +1,3 @@
-library module_intune;
-
 export 'intune/android_mampolicy_by_name.dart';
 export 'intune/android_mampolicy_by_name_args.dart';
 export 'intune/functions.dart';

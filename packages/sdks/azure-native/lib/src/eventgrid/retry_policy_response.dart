@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetryPolicyResponse {
   /// Time To Live (in minutes) for events.
   final pulumi.Input<int>? eventTimeToLiveInMinutes;
+
   /// Maximum number of delivery retry attempts for events.
   final pulumi.Input<int>? maxDeliveryAttempts;
 
@@ -26,9 +27,16 @@ class RetryPolicyResponse {
 
   factory RetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetryPolicyResponse(
-      eventTimeToLiveInMinutes: map['eventTimeToLiveInMinutes'] == null ? null : (map['eventTimeToLiveInMinutes']! as int).input(),
-      maxDeliveryAttempts: map['maxDeliveryAttempts'] == null ? null : (map['maxDeliveryAttempts']! as int).input(),
+      eventTimeToLiveInMinutes: (() {
+        final guardedValue = map['eventTimeToLiveInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxDeliveryAttempts: (() {
+        final guardedValue = map['maxDeliveryAttempts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

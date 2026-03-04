@@ -7,16 +7,15 @@ enum Region {
   japaneast("japaneast"),
   koreacentral("koreacentral");
 
-  const Region(this.value);
-  final String value;
+  const Region(this.wireValue);
+  final String wireValue;
 
   static Region fromValue(String value) {
     for (final item in Region.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Region value: $value');
   }
 }
-

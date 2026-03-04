@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeActionAttachmentResponse {
   /// The attached resource Id
   final pulumi.Input<String> attachedResourceId;
+
   /// The edge action attachment id
   final pulumi.Input<String> id;
 
@@ -26,9 +27,10 @@ class EdgeActionAttachmentResponse {
 
   factory EdgeActionAttachmentResponse.fromMap(Map<String, dynamic> map) {
     return EdgeActionAttachmentResponse(
-      attachedResourceId: (map['attachedResourceId'] as String).input(),
-      id: (map['id'] as String).input(),
+      attachedResourceId: pulumi.Input.fromValue(
+        map['attachedResourceId'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

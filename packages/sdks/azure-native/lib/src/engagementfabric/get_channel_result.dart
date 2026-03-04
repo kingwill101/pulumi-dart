@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getChannel.
 class GetChannelResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The functions to be enabled for the channel
   final List<String>? channelFunctions;
+
   /// The channel type
   final String channelType;
+
   /// The channel credentials
   final Map<String, String>? credentials;
+
   /// The ID of the resource
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The fully qualified type of the resource
   final String type;
 
@@ -51,13 +56,20 @@ class GetChannelResult {
   factory GetChannelResult.fromMap(Map<String, dynamic> map) {
     return GetChannelResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      channelFunctions: map['channelFunctions'] == null ? null : (map['channelFunctions']! as List).cast<String>(),
+      channelFunctions: (() {
+        final guardedValue = map['channelFunctions'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       channelType: map['channelType'] as String,
-      credentials: map['credentials'] == null ? null : (map['credentials']! as Map).cast<String, String>(),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum ScanConfigRiskLevelWebsecurityscannerV1beta {
   normal("NORMAL"),
   low("LOW");
 
-  const ScanConfigRiskLevelWebsecurityscannerV1beta(this.value);
-  final String value;
+  const ScanConfigRiskLevelWebsecurityscannerV1beta(this.wireValue);
+  final String wireValue;
 
   static ScanConfigRiskLevelWebsecurityscannerV1beta fromValue(String value) {
     for (final item in ScanConfigRiskLevelWebsecurityscannerV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScanConfigRiskLevelWebsecurityscannerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ScanConfigRiskLevelWebsecurityscannerV1beta value: $value',
+    );
   }
 }
-

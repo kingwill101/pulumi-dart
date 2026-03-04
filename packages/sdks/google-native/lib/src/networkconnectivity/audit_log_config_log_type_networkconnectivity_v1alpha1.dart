@@ -5,16 +5,20 @@ enum AuditLogConfigLogTypeNetworkconnectivityV1alpha1 {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const AuditLogConfigLogTypeNetworkconnectivityV1alpha1(this.value);
-  final String value;
+  const AuditLogConfigLogTypeNetworkconnectivityV1alpha1(this.wireValue);
+  final String wireValue;
 
-  static AuditLogConfigLogTypeNetworkconnectivityV1alpha1 fromValue(String value) {
-    for (final item in AuditLogConfigLogTypeNetworkconnectivityV1alpha1.values) {
-      if (item.value == value) {
+  static AuditLogConfigLogTypeNetworkconnectivityV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in AuditLogConfigLogTypeNetworkconnectivityV1alpha1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeNetworkconnectivityV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeNetworkconnectivityV1alpha1 value: $value',
+    );
   }
 }
-

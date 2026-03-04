@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'members_args.dart';
-import 'members_member.dart';
 import 'members_state.dart';
 
 /// Manages a V2 members resource within OpenStack (batch members update).
 ///
-/// > **Note:** This resource has attributes that depend on octavia minor versions.
+/// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
 /// Please ensure your Openstack cloud supports the required minor version.
 ///
 ///
@@ -168,10 +167,12 @@ import 'members_state.dart';
 class Members extends pulumi.CustomResource {
   /// A set of dictionaries containing member parameters. The
   /// structure is described below.
-  late final pulumi.Output<List<MembersMember>?> members;
+  late final pulumi.Output<List<Map<String, dynamic>>?> members;
+
   /// The id of the pool that members will be assigned to.
   /// Changing this creates a new members resource.
   late final pulumi.Output<String> poolId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create pool members. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -187,14 +188,14 @@ class Members extends pulumi.CustomResource {
     MembersArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/members:Members',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.members = registerOutput<List<MembersMember>?>('members');
-    this.poolId = registerOutput<String>('poolId');
-    this.region = registerOutput<String>('region');
+         'openstack:loadbalancer/members:Members',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    members = registerOutput<List<Map<String, dynamic>>?>('members');
+    poolId = registerOutput<String>('poolId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [Members] resource's state with the given [name] and [id].
@@ -215,13 +216,13 @@ class Members extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/members:Members',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.members = registerOutput<List<MembersMember>?>('members');
-    this.poolId = registerOutput<String>('poolId');
-    this.region = registerOutput<String>('region');
+         'openstack:loadbalancer/members:Members',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    members = registerOutput<List<Map<String, dynamic>>?>('members');
+    poolId = registerOutput<String>('poolId');
+    region = registerOutput<String>('region');
   }
 }

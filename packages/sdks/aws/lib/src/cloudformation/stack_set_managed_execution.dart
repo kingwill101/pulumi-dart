@@ -8,20 +8,19 @@ class StackSetManagedExecution {
 
   /// Creates a new [StackSetManagedExecution].
   /// [active] When set to true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order. Default is false.
-  StackSetManagedExecution({
-    this.active,
-  });
+  StackSetManagedExecution({this.active});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'active': ?active,
-    };
+    return <String, dynamic>{'active': ?active};
   }
 
   factory StackSetManagedExecution.fromMap(Map<String, dynamic> map) {
     return StackSetManagedExecution(
-      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

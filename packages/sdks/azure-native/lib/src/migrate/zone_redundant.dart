@@ -3,16 +3,15 @@ enum ZoneRedundant {
   valueEnable("Enable"),
   valueDisable("Disable");
 
-  const ZoneRedundant(this.value);
-  final String value;
+  const ZoneRedundant(this.wireValue);
+  final String wireValue;
 
   static ZoneRedundant fromValue(String value) {
     for (final item in ZoneRedundant.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ZoneRedundant value: $value');
   }
 }
-

@@ -5,7 +5,8 @@ import 'rrset_routing_policy_wrr_policy_wrr_policy_item_response.dart';
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 class RRSetRoutingPolicyWrrPolicyResponse {
-  final pulumi.Input<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>> items;
+  final pulumi.Input<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>>
+  items;
   final pulumi.Input<String> kind;
 
   /// Creates a new [RRSetRoutingPolicyWrrPolicyResponse].
@@ -18,16 +19,36 @@ class RRSetRoutingPolicyWrrPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': pulumi.Input.mapInputValue<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>, List<Map<String, dynamic>>>(items, (value) => pulumi.Input.encodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'items':
+          pulumi.Input.mapInputValue<
+            List<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>,
+            List<Map<String, dynamic>>
+          >(
+            items,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'kind': kind,
     };
   }
 
-  factory RRSetRoutingPolicyWrrPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyWrrPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RRSetRoutingPolicyWrrPolicyResponse(
-      items: (pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>(map['items'], (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: (map['kind'] as String).input(),
+      items: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse>(
+          map['items']!,
+          (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
     );
   }
 }
-

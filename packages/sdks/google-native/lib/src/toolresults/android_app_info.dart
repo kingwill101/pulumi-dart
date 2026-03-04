@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AndroidAppInfo {
   /// The name of the app. Optional
   final pulumi.Input<String>? name;
+
   /// The package name of the app. Required.
   final pulumi.Input<String>? packageName;
+
   /// The internal version code of the app. Optional.
   final pulumi.Input<String>? versionCode;
+
   /// The version name of the app. Optional.
   final pulumi.Input<String>? versionName;
 
@@ -36,11 +39,26 @@ class AndroidAppInfo {
 
   factory AndroidAppInfo.fromMap(Map<String, dynamic> map) {
     return AndroidAppInfo(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
-      versionCode: map['versionCode'] == null ? null : (map['versionCode']! as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageName: (() {
+        final guardedValue = map['packageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionCode: (() {
+        final guardedValue = map['versionCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionName: (() {
+        final guardedValue = map['versionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

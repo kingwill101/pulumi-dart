@@ -33,13 +33,18 @@ class GetEnvironmentDialogflowV3beta1Args {
     };
   }
 
-  factory GetEnvironmentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetEnvironmentDialogflowV3beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEnvironmentDialogflowV3beta1Args(
-      agentId: (map['agentId'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

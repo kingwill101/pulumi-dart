@@ -135,14 +135,18 @@ class AddressGroupV2 extends pulumi.CustomResource {
   /// A list of CIDR blocks that define the addresses in
   /// the address group. Each address must be a valid IPv4 or IPv6 CIDR block.
   late final pulumi.Output<List<String>> addresses;
+
   /// A description of the address group.
   late final pulumi.Output<String?> description;
+
   /// A name of the address group.
   late final pulumi.Output<String> name;
+
   /// The owner of the address group. Required if admin
   /// wants to create a group for a specific project. Changing this creates a new
   /// address group.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 networking client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new address group.
@@ -157,16 +161,16 @@ class AddressGroupV2 extends pulumi.CustomResource {
     AddressGroupV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/addressGroupV2:AddressGroupV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addresses = registerOutput<List<String>>('addresses');
-    this.description = registerOutput<String?>('description');
+         'openstack:networking/addressGroupV2:AddressGroupV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addresses = registerOutput<List<String>>('addresses');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [AddressGroupV2] resource's state with the given [name] and [id].
@@ -187,15 +191,15 @@ class AddressGroupV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/addressGroupV2:AddressGroupV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addresses = registerOutput<List<String>>('addresses');
-    this.description = registerOutput<String?>('description');
+         'openstack:networking/addressGroupV2:AddressGroupV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addresses = registerOutput<List<String>>('addresses');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
   }
 }

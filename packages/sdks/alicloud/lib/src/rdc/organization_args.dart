@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationArgs {
   /// The desired member count.
   final pulumi.Input<int>? desiredMemberCount;
+
   /// Company name.
   final pulumi.Input<String> organizationName;
+
   /// User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
   final pulumi.Input<String>? realPk;
+
   /// This is organization source information
   final pulumi.Input<String> source;
 
@@ -39,11 +42,20 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      desiredMemberCount: map['desiredMemberCount'] == null ? null : (map['desiredMemberCount']! as int).input(),
-      organizationName: (map['organizationName'] as String).input(),
-      realPk: map['realPk'] == null ? null : (map['realPk']! as String).input(),
-      source: (map['source'] as String).input(),
+      desiredMemberCount: (() {
+        final guardedValue = map['desiredMemberCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      realPk: (() {
+        final guardedValue = map['realPk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

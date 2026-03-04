@@ -21,7 +21,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides availability zones for Elasticsearch that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.73.0+.
+/// &gt; **NOTE:** Available in v1.73.0+.
 ///
 /// ## Example Usage
 ///

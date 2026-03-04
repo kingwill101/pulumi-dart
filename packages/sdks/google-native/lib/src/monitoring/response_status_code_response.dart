@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResponseStatusCodeResponse {
   /// A class of status codes to accept.
   final pulumi.Input<String> statusClass;
+
   /// A status code to accept.
   final pulumi.Input<int> statusValue;
 
@@ -26,9 +27,8 @@ class ResponseStatusCodeResponse {
 
   factory ResponseStatusCodeResponse.fromMap(Map<String, dynamic> map) {
     return ResponseStatusCodeResponse(
-      statusClass: (map['statusClass'] as String).input(),
-      statusValue: (map['statusValue'] as int).input(),
+      statusClass: pulumi.Input.fromValue(map['statusClass'] as String),
+      statusValue: pulumi.Input.fromValue(map['statusValue'] as int),
     );
   }
 }
-

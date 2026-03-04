@@ -3,16 +3,15 @@ enum WorkspacePublicNetworkAccess {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const WorkspacePublicNetworkAccess(this.value);
-  final String value;
+  const WorkspacePublicNetworkAccess(this.wireValue);
+  final String wireValue;
 
   static WorkspacePublicNetworkAccess fromValue(String value) {
     for (final item in WorkspacePublicNetworkAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkspacePublicNetworkAccess value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountDmlAuthSetting {
   /// The list of databases that require authorization. If there are more than one, separate them with commas (,).
   final pulumi.Input<List<String>>? allowDatabases;
+
   /// List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
   final pulumi.Input<List<String>>? allowDictionaries;
+
   /// Whether to grant the DDL permission to the database account. Value description:
   final pulumi.Input<bool> ddlAuthority;
+
   /// Whether to grant the DML permission to the database account. The values are as follows:
   final pulumi.Input<int> dmlAuthority;
 
@@ -35,11 +38,18 @@ class AccountDmlAuthSetting {
 
   factory AccountDmlAuthSetting.fromMap(Map<String, dynamic> map) {
     return AccountDmlAuthSetting(
-      allowDatabases: map['allowDatabases'] == null ? null : ((map['allowDatabases']! as List).cast<String>()).input(),
-      allowDictionaries: map['allowDictionaries'] == null ? null : ((map['allowDictionaries']! as List).cast<String>()).input(),
-      ddlAuthority: (map['ddlAuthority'] as bool).input(),
-      dmlAuthority: (map['dmlAuthority'] as int).input(),
+      allowDatabases: (() {
+        final guardedValue = map['allowDatabases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowDictionaries: (() {
+        final guardedValue = map['allowDictionaries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ddlAuthority: pulumi.Input.fromValue(map['ddlAuthority'] as bool),
+      dmlAuthority: pulumi.Input.fromValue(map['dmlAuthority'] as int),
     );
   }
 }
-

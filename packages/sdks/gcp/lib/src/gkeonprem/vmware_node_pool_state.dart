@@ -19,46 +19,62 @@ class VMwareNodePoolState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// The node configuration of the node pool.
   /// Structure is documented below.
   final pulumi.Input<VMwareNodePoolConfig>? config;
+
   /// The time the cluster was created, in RFC3339 text format.
   final pulumi.Input<String>? createTime;
+
   /// The time the cluster was deleted, in RFC3339 text format.
   final pulumi.Input<String>? deleteTime;
+
   /// The display name for the node pool.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
   final pulumi.Input<String>? etag;
+
   /// The location of the resource.
   final pulumi.Input<String>? location;
+
   /// The vmware node pool name.
   final pulumi.Input<String>? name;
+
   /// Node Pool autoscaling config for the node pool.
   /// Structure is documented below.
   final pulumi.Input<VMwareNodePoolNodePoolAutoscaling>? nodePoolAutoscaling;
+
   /// Anthos version for the node pool. Defaults to the user cluster version.
   final pulumi.Input<String>? onPremVersion;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// If set, there are currently changes in flight to the node pool.
   final pulumi.Input<bool>? reconciling;
+
   /// (Output)
   /// The lifecycle state of the condition.
   final pulumi.Input<String>? state;
+
   /// ResourceStatus representing detailed cluster state.
   /// Structure is documented below.
   final pulumi.Input<List<VMwareNodePoolStatus>>? statuses;
+
   /// The unique identifier of the node pool.
   final pulumi.Input<String>? uid;
+
   /// The time the cluster was last updated, in RFC3339 text format.
   final pulumi.Input<String>? updateTime;
+
   /// The cluster this node pool belongs to.
   final pulumi.Input<String>? vmwareCluster;
 
@@ -105,7 +121,11 @@ class VMwareNodePoolState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'config': ?pulumi.Input.mapOptionalInputValue<VMwareNodePoolConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'config':
+          ?pulumi.Input.mapOptionalInputValue<
+            VMwareNodePoolConfig,
+            Map<String, dynamic>
+          >(config, (value) => value.toMap()),
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'displayName': ?displayName,
@@ -113,12 +133,27 @@ class VMwareNodePoolState {
       'etag': ?etag,
       'location': ?location,
       'name': ?name,
-      'nodePoolAutoscaling': ?pulumi.Input.mapOptionalInputValue<VMwareNodePoolNodePoolAutoscaling, Map<String, dynamic>>(nodePoolAutoscaling, (value) => value.toMap()),
+      'nodePoolAutoscaling':
+          ?pulumi.Input.mapOptionalInputValue<
+            VMwareNodePoolNodePoolAutoscaling,
+            Map<String, dynamic>
+          >(nodePoolAutoscaling, (value) => value.toMap()),
       'onPremVersion': ?onPremVersion,
       'project': ?project,
       'reconciling': ?reconciling,
       'state': ?state,
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<VMwareNodePoolStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<VMwareNodePoolStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VMwareNodePoolStatus>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VMwareNodePoolStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'uid': ?uid,
       'updateTime': ?updateTime,
       'vmwareCluster': ?vmwareCluster,
@@ -127,25 +162,115 @@ class VMwareNodePoolState {
 
   factory VMwareNodePoolState.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      config: map['config'] == null ? null : (VMwareNodePoolConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nodePoolAutoscaling: map['nodePoolAutoscaling'] == null ? null : (VMwareNodePoolNodePoolAutoscaling.fromMap((map['nodePoolAutoscaling']! as Map).cast<String, dynamic>())).input(),
-      onPremVersion: map['onPremVersion'] == null ? null : (map['onPremVersion']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<VMwareNodePoolStatus>(map['statuses']!, (value) => VMwareNodePoolStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
-      vmwareCluster: map['vmwareCluster'] == null ? null : (map['vmwareCluster']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VMwareNodePoolConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteTime: (() {
+        final guardedValue = map['deleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveAnnotations: (() {
+        final guardedValue = map['effectiveAnnotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodePoolAutoscaling: (() {
+        final guardedValue = map['nodePoolAutoscaling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VMwareNodePoolNodePoolAutoscaling.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      onPremVersion: (() {
+        final guardedValue = map['onPremVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reconciling: (() {
+        final guardedValue = map['reconciling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VMwareNodePoolStatus>(
+            guardedValue,
+            (value) => VMwareNodePoolStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmwareCluster: (() {
+        final guardedValue = map['vmwareCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

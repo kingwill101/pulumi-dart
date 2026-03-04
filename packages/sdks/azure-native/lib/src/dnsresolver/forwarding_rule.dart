@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'forwarding_rule_args.dart';
 import 'system_data_response.dart';
-import 'target_dns_server_response.dart';
 
 /// Describes a forwarding rule within a DNS forwarding ruleset.
 ///
@@ -222,22 +221,31 @@ import 'target_dns_server_response.dart';
 class ForwardingRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The domain name for the forwarding rule.
   late final pulumi.Output<String> domainName;
+
   /// ETag of the forwarding rule.
   late final pulumi.Output<String> etag;
+
   /// The state of forwarding rule.
   late final pulumi.Output<String?> forwardingRuleState;
+
   /// Metadata attached to the forwarding rule.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current provisioning state of the forwarding rule. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// DNS servers to forward the DNS query to.
-  late final pulumi.Output<List<TargetDnsServerResponse>> targetDnsServers;
+  late final pulumi.Output<List<Map<String, dynamic>>> targetDnsServers;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -250,20 +258,22 @@ class ForwardingRule extends pulumi.CustomResource {
     ForwardingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dnsresolver:ForwardingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.domainName = registerOutput<String>('domainName');
-    this.etag = registerOutput<String>('etag');
-    this.forwardingRuleState = registerOutput<String?>('forwardingRuleState');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
+         'azure-native:dnsresolver:ForwardingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    domainName = registerOutput<String>('domainName');
+    etag = registerOutput<String>('etag');
+    forwardingRuleState = registerOutput<String?>('forwardingRuleState');
+    metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetDnsServers = registerOutput<List<TargetDnsServerResponse>>('targetDnsServers');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetDnsServers = registerOutput<List<Map<String, dynamic>>>(
+      'targetDnsServers',
+    );
+    type = registerOutput<String>('type');
   }
 }

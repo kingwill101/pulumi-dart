@@ -19,17 +19,19 @@ class GetDeploymentDeploymentmanagerV2Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deployment': deployment,
-      'project': ?project,
-    };
+    return <String, dynamic>{'deployment': deployment, 'project': ?project};
   }
 
-  factory GetDeploymentDeploymentmanagerV2Args.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentDeploymentmanagerV2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentDeploymentmanagerV2Args(
-      deployment: (map['deployment'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      deployment: pulumi.Input.fromValue(map['deployment'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

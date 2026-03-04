@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of UserPausedDetails
 class UserPausedDetails {
-  /// <p>The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.</p>
+  /// &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.&lt;/p&gt;
   final pulumi.Input<String>? jobExpiresAt;
-  /// <p>The Amazon Resource Name (ARN) of the Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.</p>
+
+  /// &lt;p&gt;The Amazon Resource Name (ARN) of the Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.&lt;/p&gt;
   final pulumi.Input<String>? jobImminentExpirationHealthEventArn;
-  /// <p>The date and time, in UTC and extended ISO 8601 format, when you paused the job.</p>
+
+  /// &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when you paused the job.&lt;/p&gt;
   final pulumi.Input<String>? jobPausedAt;
 
   /// Creates a new [UserPausedDetails].
-  /// [jobExpiresAt] <p>The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.</p>
-  /// [jobImminentExpirationHealthEventArn] <p>The Amazon Resource Name (ARN) of the Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.</p>
-  /// [jobPausedAt] <p>The date and time, in UTC and extended ISO 8601 format, when you paused the job.</p>
+  /// [jobExpiresAt] &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.&lt;/p&gt;
+  /// [jobImminentExpirationHealthEventArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.&lt;/p&gt;
+  /// [jobPausedAt] &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when you paused the job.&lt;/p&gt;
   UserPausedDetails({
     this.jobExpiresAt,
     this.jobImminentExpirationHealthEventArn,
@@ -24,17 +26,29 @@ class UserPausedDetails {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'jobExpiresAt': ?jobExpiresAt,
-      'jobImminentExpirationHealthEventArn': ?jobImminentExpirationHealthEventArn,
+      'jobImminentExpirationHealthEventArn':
+          ?jobImminentExpirationHealthEventArn,
       'jobPausedAt': ?jobPausedAt,
     };
   }
 
   factory UserPausedDetails.fromMap(Map<String, dynamic> map) {
     return UserPausedDetails(
-      jobExpiresAt: map['jobExpiresAt'] == null ? null : (map['jobExpiresAt']! as String).input(),
-      jobImminentExpirationHealthEventArn: map['jobImminentExpirationHealthEventArn'] == null ? null : (map['jobImminentExpirationHealthEventArn']! as String).input(),
-      jobPausedAt: map['jobPausedAt'] == null ? null : (map['jobPausedAt']! as String).input(),
+      jobExpiresAt: (() {
+        final guardedValue = map['jobExpiresAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobImminentExpirationHealthEventArn: (() {
+        final guardedValue = map['jobImminentExpirationHealthEventArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobPausedAt: (() {
+        final guardedValue = map['jobPausedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

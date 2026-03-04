@@ -7,22 +7,31 @@ import 'stateful_set_condition.dart';
 class StatefulSetStatus {
   /// Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.
   final pulumi.Input<int>? availableReplicas;
+
   /// collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
   final pulumi.Input<int>? collisionCount;
+
   /// Represents the latest available observations of a statefulset's current state.
   final pulumi.Input<List<StatefulSetCondition>>? conditions;
+
   /// currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.
   final pulumi.Input<int>? currentReplicas;
+
   /// currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).
   final pulumi.Input<String>? currentRevision;
+
   /// observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.
   final pulumi.Input<int>? observedGeneration;
+
   /// readyReplicas is the number of pods created for this StatefulSet with a Ready Condition.
   final pulumi.Input<int>? readyReplicas;
+
   /// replicas is the number of Pods created by the StatefulSet controller.
   final pulumi.Input<int> replicas;
+
   /// updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)
   final pulumi.Input<String>? updateRevision;
+
   /// updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.
   final pulumi.Input<int>? updatedReplicas;
 
@@ -54,7 +63,18 @@ class StatefulSetStatus {
     return <String, dynamic>{
       'availableReplicas': ?availableReplicas,
       'collisionCount': ?collisionCount,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<StatefulSetCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<StatefulSetCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StatefulSetCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StatefulSetCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'currentReplicas': ?currentReplicas,
       'currentRevision': ?currentRevision,
       'observedGeneration': ?observedGeneration,
@@ -67,17 +87,59 @@ class StatefulSetStatus {
 
   factory StatefulSetStatus.fromMap(Map<String, dynamic> map) {
     return StatefulSetStatus(
-      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas']! as int).input(),
-      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount']! as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatefulSetCondition>(map['conditions']!, (value) => StatefulSetCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas']! as int).input(),
-      currentRevision: map['currentRevision'] == null ? null : (map['currentRevision']! as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
-      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas']! as int).input(),
-      replicas: (map['replicas'] as int).input(),
-      updateRevision: map['updateRevision'] == null ? null : (map['updateRevision']! as String).input(),
-      updatedReplicas: map['updatedReplicas'] == null ? null : (map['updatedReplicas']! as int).input(),
+      availableReplicas: (() {
+        final guardedValue = map['availableReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      collisionCount: (() {
+        final guardedValue = map['collisionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StatefulSetCondition>(
+            guardedValue,
+            (value) => StatefulSetCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      currentReplicas: (() {
+        final guardedValue = map['currentReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      currentRevision: (() {
+        final guardedValue = map['currentRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      observedGeneration: (() {
+        final guardedValue = map['observedGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      readyReplicas: (() {
+        final guardedValue = map['readyReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicas: pulumi.Input.fromValue(map['replicas'] as int),
+      updateRevision: (() {
+        final guardedValue = map['updateRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedReplicas: (() {
+        final guardedValue = map['updatedReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

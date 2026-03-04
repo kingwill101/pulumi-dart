@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlResourceSqlRoleAssignmentArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
+
   /// The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription.
   final pulumi.Input<String>? principalId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The GUID for the Role Assignment.
   final pulumi.Input<String>? roleAssignmentId;
+
   /// The unique identifier for the associated Role Definition.
   final pulumi.Input<String>? roleDefinitionId;
+
   /// The data plane resource path for which access is being granted through this Role Assignment.
   final pulumi.Input<String>? scope;
 
@@ -49,13 +54,30 @@ class SqlResourceSqlRoleAssignmentArgs {
 
   factory SqlResourceSqlRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return SqlResourceSqlRoleAssignmentArgs(
-      accountName: (map['accountName'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId']! as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      roleAssignmentId: (() {
+        final guardedValue = map['roleAssignmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleDefinitionId: (() {
+        final guardedValue = map['roleDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

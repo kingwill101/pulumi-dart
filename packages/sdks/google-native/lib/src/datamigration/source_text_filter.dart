@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceTextFilter {
   /// Optional. The filter will match columns with length smaller than or equal to this number.
   final pulumi.Input<String>? sourceMaxLengthFilter;
+
   /// Optional. The filter will match columns with length greater than or equal to this number.
   final pulumi.Input<String>? sourceMinLengthFilter;
 
   /// Creates a new [SourceTextFilter].
   /// [sourceMaxLengthFilter] Optional. The filter will match columns with length smaller than or equal to this number.
   /// [sourceMinLengthFilter] Optional. The filter will match columns with length greater than or equal to this number.
-  SourceTextFilter({
-    this.sourceMaxLengthFilter,
-    this.sourceMinLengthFilter,
-  });
+  SourceTextFilter({this.sourceMaxLengthFilter, this.sourceMinLengthFilter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SourceTextFilter {
 
   factory SourceTextFilter.fromMap(Map<String, dynamic> map) {
     return SourceTextFilter(
-      sourceMaxLengthFilter: map['sourceMaxLengthFilter'] == null ? null : (map['sourceMaxLengthFilter']! as String).input(),
-      sourceMinLengthFilter: map['sourceMinLengthFilter'] == null ? null : (map['sourceMinLengthFilter']! as String).input(),
+      sourceMaxLengthFilter: (() {
+        final guardedValue = map['sourceMaxLengthFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceMinLengthFilter: (() {
+        final guardedValue = map['sourceMinLengthFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

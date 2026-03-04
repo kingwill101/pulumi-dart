@@ -17,16 +17,15 @@ enum BackupItemType {
   valueSAPAseDatabase("SAPAseDatabase"),
   valueSAPHanaDBInstance("SAPHanaDBInstance");
 
-  const BackupItemType(this.value);
-  final String value;
+  const BackupItemType(this.wireValue);
+  final String wireValue;
 
   static BackupItemType fromValue(String value) {
     for (final item in BackupItemType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupItemType value: $value');
   }
 }
-

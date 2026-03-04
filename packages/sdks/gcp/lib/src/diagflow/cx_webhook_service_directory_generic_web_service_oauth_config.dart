@@ -5,17 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
   /// The client ID provided by the 3rd party platform.
   final pulumi.Input<String> clientId;
+
   /// The client secret provided by the 3rd party platform.  If the
   /// `secret_version_for_client_secret` field is set, this field will be
   /// ignored.
   final pulumi.Input<String>? clientSecret;
+
   /// The OAuth scopes to grant.
   final pulumi.Input<List<String>>? scopes;
+
   /// The name of the SecretManager secret version resource storing the
   /// client secret. If this field is set, the `client_secret` field will be
   /// ignored.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
   final pulumi.Input<String>? secretVersionForClientSecret;
+
   /// The token endpoint provided by the 3rd party platform to exchange an
   /// access token.
   final pulumi.Input<String> tokenEndpoint;
@@ -44,14 +48,27 @@ class CxWebhookServiceDirectoryGenericWebServiceOauthConfig {
     };
   }
 
-  factory CxWebhookServiceDirectoryGenericWebServiceOauthConfig.fromMap(Map<String, dynamic> map) {
+  factory CxWebhookServiceDirectoryGenericWebServiceOauthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxWebhookServiceDirectoryGenericWebServiceOauthConfig(
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
-      secretVersionForClientSecret: map['secretVersionForClientSecret'] == null ? null : (map['secretVersionForClientSecret']! as String).input(),
-      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      secretVersionForClientSecret: (() {
+        final guardedValue = map['secretVersionForClientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
     );
   }
 }
-

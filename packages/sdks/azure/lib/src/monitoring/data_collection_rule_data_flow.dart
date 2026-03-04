@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataCollectionRuleDataFlow {
   /// The built-in transform to transform stream data.
   final pulumi.Input<String>? builtInTransform;
+
   /// Specifies a list of destination names. A `azure_monitor_metrics` data source only allows for stream of kind `Microsoft-InsightsMetrics`.
   final pulumi.Input<List<String>> destinations;
+
   /// The output stream of the transform. Only required if the data flow changes data to a different stream.
   final pulumi.Input<String>? outputStream;
+
   /// Specifies a list of streams. Possible values include but not limited to `Microsoft-Event`, `Microsoft-InsightsMetrics`, `Microsoft-Perf`, `Microsoft-Syslog`, `Microsoft-WindowsEvent`, and `Microsoft-PrometheusMetrics`.
   final pulumi.Input<List<String>> streams;
+
   /// The KQL query to transform stream data.
   final pulumi.Input<String>? transformKql;
 
@@ -40,12 +44,25 @@ class DataCollectionRuleDataFlow {
 
   factory DataCollectionRuleDataFlow.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataFlow(
-      builtInTransform: map['builtInTransform'] == null ? null : (map['builtInTransform']! as String).input(),
-      destinations: ((map['destinations'] as List).cast<String>()).input(),
-      outputStream: map['outputStream'] == null ? null : (map['outputStream']! as String).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
-      transformKql: map['transformKql'] == null ? null : (map['transformKql']! as String).input(),
+      builtInTransform: (() {
+        final guardedValue = map['builtInTransform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinations: pulumi.Input.fromValue(
+        (map['destinations'] as List).cast<String>(),
+      ),
+      outputStream: (() {
+        final guardedValue = map['outputStream'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
+      transformKql: (() {
+        final guardedValue = map['transformKql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

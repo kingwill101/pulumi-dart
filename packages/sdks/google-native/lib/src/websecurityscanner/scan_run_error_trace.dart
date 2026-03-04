@@ -8,8 +8,10 @@ import 'scan_run_error_trace_code.dart';
 class ScanRunErrorTrace {
   /// Indicates the error reason code.
   final pulumi.Input<ScanRunErrorTraceCode>? code;
+
   /// If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.
   final pulumi.Input<int>? mostCommonHttpErrorCode;
+
   /// If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run.
   final pulumi.Input<ScanConfigError>? scanConfigError;
 
@@ -25,18 +27,43 @@ class ScanRunErrorTrace {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'code': ?pulumi.Input.mapOptionalInputValue<ScanRunErrorTraceCode, String>(code, (value) => value.value),
+      'code':
+          ?pulumi.Input.mapOptionalInputValue<ScanRunErrorTraceCode, String>(
+            code,
+            (value) => value.wireValue,
+          ),
       'mostCommonHttpErrorCode': ?mostCommonHttpErrorCode,
-      'scanConfigError': ?pulumi.Input.mapOptionalInputValue<ScanConfigError, Map<String, dynamic>>(scanConfigError, (value) => value.toMap()),
+      'scanConfigError':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScanConfigError,
+            Map<String, dynamic>
+          >(scanConfigError, (value) => value.toMap()),
     };
   }
 
   factory ScanRunErrorTrace.fromMap(Map<String, dynamic> map) {
     return ScanRunErrorTrace(
-      code: map['code'] == null ? null : (ScanRunErrorTraceCode.fromValue(map['code']! as String)).input(),
-      mostCommonHttpErrorCode: map['mostCommonHttpErrorCode'] == null ? null : (map['mostCommonHttpErrorCode']! as int).input(),
-      scanConfigError: map['scanConfigError'] == null ? null : (ScanConfigError.fromMap((map['scanConfigError']! as Map).cast<String, dynamic>())).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScanRunErrorTraceCode.fromValue(guardedValue as String),
+        );
+      })(),
+      mostCommonHttpErrorCode: (() {
+        final guardedValue = map['mostCommonHttpErrorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scanConfigError: (() {
+        final guardedValue = map['scanConfigError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScanConfigError.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

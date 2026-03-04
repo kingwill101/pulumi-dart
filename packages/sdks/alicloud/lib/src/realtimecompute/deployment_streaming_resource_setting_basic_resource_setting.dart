@@ -5,9 +5,15 @@ import 'deployment_streaming_resource_setting_basic_resource_setting_jobmanager_
 import 'deployment_streaming_resource_setting_basic_resource_setting_taskmanager_resource_setting_spec.dart';
 
 class DeploymentStreamingResourceSettingBasicResourceSetting {
-  final pulumi.Input<DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec>? jobmanagerResourceSettingSpec;
+  final pulumi.Input<
+    DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec
+  >?
+  jobmanagerResourceSettingSpec;
   final pulumi.Input<int>? parallelism;
-  final pulumi.Input<DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec>? taskmanagerResourceSettingSpec;
+  final pulumi.Input<
+    DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec
+  >?
+  taskmanagerResourceSettingSpec;
 
   /// Creates a new [DeploymentStreamingResourceSettingBasicResourceSetting].
   /// [jobmanagerResourceSettingSpec] Optional.
@@ -21,18 +27,47 @@ class DeploymentStreamingResourceSettingBasicResourceSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jobmanagerResourceSettingSpec': ?pulumi.Input.mapOptionalInputValue<DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec, Map<String, dynamic>>(jobmanagerResourceSettingSpec, (value) => value.toMap()),
+      'jobmanagerResourceSettingSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec,
+            Map<String, dynamic>
+          >(jobmanagerResourceSettingSpec, (value) => value.toMap()),
       'parallelism': ?parallelism,
-      'taskmanagerResourceSettingSpec': ?pulumi.Input.mapOptionalInputValue<DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec, Map<String, dynamic>>(taskmanagerResourceSettingSpec, (value) => value.toMap()),
+      'taskmanagerResourceSettingSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec,
+            Map<String, dynamic>
+          >(taskmanagerResourceSettingSpec, (value) => value.toMap()),
     };
   }
 
-  factory DeploymentStreamingResourceSettingBasicResourceSetting.fromMap(Map<String, dynamic> map) {
+  factory DeploymentStreamingResourceSettingBasicResourceSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentStreamingResourceSettingBasicResourceSetting(
-      jobmanagerResourceSettingSpec: map['jobmanagerResourceSettingSpec'] == null ? null : (DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec.fromMap((map['jobmanagerResourceSettingSpec']! as Map).cast<String, dynamic>())).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
-      taskmanagerResourceSettingSpec: map['taskmanagerResourceSettingSpec'] == null ? null : (DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec.fromMap((map['taskmanagerResourceSettingSpec']! as Map).cast<String, dynamic>())).input(),
+      jobmanagerResourceSettingSpec: (() {
+        final guardedValue = map['jobmanagerResourceSettingSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      parallelism: (() {
+        final guardedValue = map['parallelism'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      taskmanagerResourceSettingSpec: (() {
+        final guardedValue = map['taskmanagerResourceSettingSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

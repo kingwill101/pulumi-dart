@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficPolicyDocumentEndpoint {
   /// ID of an endpoint you want to assign.
   final pulumi.Input<String> id;
+
   /// To route traffic to an Amazon S3 bucket that is configured as a website endpoint, specify the region in which you created the bucket for `region`.
   final pulumi.Input<String>? region;
+
   /// Type of the endpoint. Valid values are `value`, `cloudfront`, `elastic-load-balancer`, `s3-website`, `application-load-balancer`, `network-load-balancer` and `elastic-beanstalk`
   final pulumi.Input<String>? type;
+
   /// Value of the `type`.
   final pulumi.Input<String>? value;
 
@@ -35,11 +38,22 @@ class GetTrafficPolicyDocumentEndpoint {
 
   factory GetTrafficPolicyDocumentEndpoint.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentEndpoint(
-      id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

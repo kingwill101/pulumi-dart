@@ -152,12 +152,16 @@ import 'backup_short_term_retention_policy_args.dart';
 class BackupShortTermRetentionPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
   late final pulumi.Output<int?> diffBackupIntervalInHours;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   late final pulumi.Output<int?> retentionDays;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -170,15 +174,17 @@ class BackupShortTermRetentionPolicy extends pulumi.CustomResource {
     BackupShortTermRetentionPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:BackupShortTermRetentionPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.diffBackupIntervalInHours = registerOutput<int?>('diffBackupIntervalInHours');
+         'azure-native:sql:BackupShortTermRetentionPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    diffBackupIntervalInHours = registerOutput<int?>(
+      'diffBackupIntervalInHours',
+    );
     this.name = registerOutput<String>('name');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.type = registerOutput<String>('type');
+    retentionDays = registerOutput<int?>('retentionDays');
+    type = registerOutput<String>('type');
   }
 }

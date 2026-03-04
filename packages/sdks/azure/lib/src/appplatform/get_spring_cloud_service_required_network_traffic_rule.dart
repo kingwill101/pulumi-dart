@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSpringCloudServiceRequiredNetworkTrafficRule {
   /// The direction of required traffic. Possible values are `Inbound`, `Outbound`.
   final pulumi.Input<String> direction;
+
   /// The FQDN list of required traffic.
   final pulumi.Input<List<String>> fqdns;
+
   /// The IP list of required traffic.
   final pulumi.Input<List<String>> ipAddresses;
+
   /// The port of required traffic.
   final pulumi.Input<int> port;
+
   /// The protocol of required traffic.
   final pulumi.Input<String> protocol;
 
@@ -38,14 +42,17 @@ class GetSpringCloudServiceRequiredNetworkTrafficRule {
     };
   }
 
-  factory GetSpringCloudServiceRequiredNetworkTrafficRule.fromMap(Map<String, dynamic> map) {
+  factory GetSpringCloudServiceRequiredNetworkTrafficRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSpringCloudServiceRequiredNetworkTrafficRule(
-      direction: (map['direction'] as String).input(),
-      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
-      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
-      port: (map['port'] as int).input(),
-      protocol: (map['protocol'] as String).input(),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      fqdns: pulumi.Input.fromValue((map['fqdns'] as List).cast<String>()),
+      ipAddresses: pulumi.Input.fromValue(
+        (map['ipAddresses'] as List).cast<String>(),
+      ),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

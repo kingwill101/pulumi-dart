@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant {
   /// A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
   final pulumi.Input<List<String>>? members;
+
   /// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
   final pulumi.Input<String> membershipKind;
 
@@ -23,11 +24,16 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternal
     };
   }
 
-  factory ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant.fromMap(Map<String, dynamic> map) {
+  factory ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant(
-      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
-      membershipKind: (map['membershipKind'] as String).input(),
+      members: (() {
+        final guardedValue = map['members'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      membershipKind: pulumi.Input.fromValue(map['membershipKind'] as String),
     );
   }
 }
-

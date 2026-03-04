@@ -9,20 +9,21 @@ class DataflowEndpointAuthenticationSystemAssignedManagedIdentity {
 
   /// Creates a new [DataflowEndpointAuthenticationSystemAssignedManagedIdentity].
   /// [audience] Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-  DataflowEndpointAuthenticationSystemAssignedManagedIdentity({
-    this.audience,
-  });
+  DataflowEndpointAuthenticationSystemAssignedManagedIdentity({this.audience});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audience': ?audience,
-    };
+    return <String, dynamic>{'audience': ?audience};
   }
 
-  factory DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap(Map<String, dynamic> map) {
+  factory DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowEndpointAuthenticationSystemAssignedManagedIdentity(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

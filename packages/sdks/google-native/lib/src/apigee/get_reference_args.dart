@@ -31,10 +31,9 @@ class GetReferenceArgs {
 
   factory GetReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetReferenceArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      referenceId: (map['referenceId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      referenceId: pulumi.Input.fromValue(map['referenceId'] as String),
     );
   }
 }
-

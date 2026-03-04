@@ -10,20 +10,35 @@ class ListRedisEnterpriseSkusForScalingResult {
 
   /// Creates a new [ListRedisEnterpriseSkusForScalingResult].
   /// [skus] List of SKUS available to scale up or scale down.
-  ListRedisEnterpriseSkusForScalingResult({
-    this.skus,
-  });
+  ListRedisEnterpriseSkusForScalingResult({this.skus});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'skus': ?skus == null ? null : pulumi.Input.encodeList<SkuDetailsResponse, Map<String, dynamic>>(skus!, (value) => value.toMap()),
+      'skus': ?(() {
+        final guardedValue = skus;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          SkuDetailsResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListRedisEnterpriseSkusForScalingResult.fromMap(Map<String, dynamic> map) {
+  factory ListRedisEnterpriseSkusForScalingResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListRedisEnterpriseSkusForScalingResult(
-      skus: map['skus'] == null ? null : pulumi.Input.decodeList<SkuDetailsResponse>(map['skus']!, (value) => SkuDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      skus: (() {
+        final guardedValue = map['skus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SkuDetailsResponse>(
+          guardedValue,
+          (value) => SkuDetailsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

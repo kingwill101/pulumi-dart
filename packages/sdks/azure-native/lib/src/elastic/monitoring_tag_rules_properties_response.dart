@@ -7,29 +7,44 @@ import 'log_rules_response.dart';
 class MonitoringTagRulesPropertiesResponse {
   /// Rules for sending logs.
   final pulumi.Input<LogRulesResponse>? logRules;
+
   /// Provisioning state of the monitoring tag rules.
   final pulumi.Input<String>? provisioningState;
 
   /// Creates a new [MonitoringTagRulesPropertiesResponse].
   /// [logRules] Rules for sending logs.
   /// [provisioningState] Provisioning state of the monitoring tag rules.
-  MonitoringTagRulesPropertiesResponse({
-    this.logRules,
-    this.provisioningState,
-  });
+  MonitoringTagRulesPropertiesResponse({this.logRules, this.provisioningState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logRules': ?pulumi.Input.mapOptionalInputValue<LogRulesResponse, Map<String, dynamic>>(logRules, (value) => value.toMap()),
+      'logRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogRulesResponse,
+            Map<String, dynamic>
+          >(logRules, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
     };
   }
 
-  factory MonitoringTagRulesPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory MonitoringTagRulesPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringTagRulesPropertiesResponse(
-      logRules: map['logRules'] == null ? null : (LogRulesResponse.fromMap((map['logRules']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      logRules: (() {
+        final guardedValue = map['logRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogRulesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

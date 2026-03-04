@@ -4,16 +4,17 @@ enum FailHealthCheckOnStagingFailure {
   valueNeedsAssistance("NeedsAssistance"),
   valueDoNotFail("DoNotFail");
 
-  const FailHealthCheckOnStagingFailure(this.value);
-  final String value;
+  const FailHealthCheckOnStagingFailure(this.wireValue);
+  final String wireValue;
 
   static FailHealthCheckOnStagingFailure fromValue(String value) {
     for (final item in FailHealthCheckOnStagingFailure.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FailHealthCheckOnStagingFailure value: $value');
+    throw ArgumentError(
+      'Unknown FailHealthCheckOnStagingFailure value: $value',
+    );
   }
 }
-

@@ -8,20 +8,19 @@ class FileSystemNfsAcl {
 
   /// Creates a new [FileSystemNfsAcl].
   /// [enabled] Whether the NFS ACL function is enabled.
-  FileSystemNfsAcl({
-    this.enabled,
-  });
+  FileSystemNfsAcl({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory FileSystemNfsAcl.fromMap(Map<String, dynamic> map) {
     return FileSystemNfsAcl(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum ManagedZoneDnsSecConfigNonExistence {
   nsec("nsec"),
   nsec3("nsec3");
 
-  const ManagedZoneDnsSecConfigNonExistence(this.value);
-  final String value;
+  const ManagedZoneDnsSecConfigNonExistence(this.wireValue);
+  final String wireValue;
 
   static ManagedZoneDnsSecConfigNonExistence fromValue(String value) {
     for (final item in ManagedZoneDnsSecConfigNonExistence.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedZoneDnsSecConfigNonExistence value: $value');
+    throw ArgumentError(
+      'Unknown ManagedZoneDnsSecConfigNonExistence value: $value',
+    );
   }
 }
-

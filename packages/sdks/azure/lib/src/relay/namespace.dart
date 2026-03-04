@@ -164,7 +164,7 @@ import 'namespace_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Relay` - 2021-11-01
@@ -179,22 +179,31 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the Azure Relay Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The Identifier for Azure Insights metrics.
   late final pulumi.Output<String> metricId;
+
   /// Specifies the name of the Azure Relay Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The primary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// The primary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> primaryKey;
+
   /// The name of the resource group in which to create the Azure Relay Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> secondaryKey;
+
   /// The name of the SKU to use. At this time the only supported value is `Standard`.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -207,21 +216,23 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:relay/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.metricId = registerOutput<String>('metricId');
+         'azure:relay/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Namespace] resource's state with the given [name] and [id].
@@ -242,20 +253,22 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:relay/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.metricId = registerOutput<String>('metricId');
+         'azure:relay/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    metricId = registerOutput<String>('metricId');
     this.name = registerOutput<String>('name');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryKey = registerOutput<String>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

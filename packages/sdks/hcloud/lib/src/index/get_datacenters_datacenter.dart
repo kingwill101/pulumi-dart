@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatacentersDatacenter {
   /// List of currently available Server Types in the Datacenter.
   final pulumi.Input<List<int>> availableServerTypeIds;
+
   /// Description of the Datacenter.
   final pulumi.Input<String> description;
+
   /// ID of the Datacenter.
   final pulumi.Input<int> id;
+
   /// Location of the Datacenter. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final pulumi.Input<Map<String, String>> location;
+
   /// Name of the Datacenter.
   final pulumi.Input<String> name;
+
   /// List of supported Server Types in the Datacenter.
   final pulumi.Input<List<int>> supportedServerTypeIds;
 
@@ -45,13 +50,18 @@ class GetDatacentersDatacenter {
 
   factory GetDatacentersDatacenter.fromMap(Map<String, dynamic> map) {
     return GetDatacentersDatacenter(
-      availableServerTypeIds: ((map['availableServerTypeIds'] as List).cast<int>()).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as int).input(),
-      location: ((map['location'] as Map).cast<String, String>()).input(),
-      name: (map['name'] as String).input(),
-      supportedServerTypeIds: ((map['supportedServerTypeIds'] as List).cast<int>()).input(),
+      availableServerTypeIds: pulumi.Input.fromValue(
+        (map['availableServerTypeIds'] as List).cast<int>(),
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      location: pulumi.Input.fromValue(
+        (map['location'] as Map).cast<String, String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      supportedServerTypeIds: pulumi.Input.fromValue(
+        (map['supportedServerTypeIds'] as List).cast<int>(),
+      ),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'role_assignment_state.dart';
 
 /// Manages a V3 Role assignment within OpenStack Keystone.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -208,16 +208,21 @@ import 'role_assignment_state.dart';
 class RoleAssignment extends pulumi.CustomResource {
   /// The domain to assign the role in.
   late final pulumi.Output<String?> domainId;
+
   /// The group to assign the role to.
   late final pulumi.Output<String?> groupId;
+
   /// The project to assign the role in.
   late final pulumi.Output<String?> projectId;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new role assignment.
   late final pulumi.Output<String> region;
+
   /// The role to assign.
   late final pulumi.Output<String> roleId;
+
   /// The user to assign the role to.
   late final pulumi.Output<String?> userId;
 
@@ -230,17 +235,17 @@ class RoleAssignment extends pulumi.CustomResource {
     RoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/roleAssignment:RoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainId = registerOutput<String?>('domainId');
-    this.groupId = registerOutput<String?>('groupId');
-    this.projectId = registerOutput<String?>('projectId');
-    this.region = registerOutput<String>('region');
-    this.roleId = registerOutput<String>('roleId');
-    this.userId = registerOutput<String?>('userId');
+         'openstack:identity/roleAssignment:RoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainId = registerOutput<String?>('domainId');
+    groupId = registerOutput<String?>('groupId');
+    projectId = registerOutput<String?>('projectId');
+    region = registerOutput<String>('region');
+    roleId = registerOutput<String>('roleId');
+    userId = registerOutput<String?>('userId');
   }
 
   /// Gets an existing [RoleAssignment] resource's state with the given [name] and [id].
@@ -261,16 +266,16 @@ class RoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/roleAssignment:RoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainId = registerOutput<String?>('domainId');
-    this.groupId = registerOutput<String?>('groupId');
-    this.projectId = registerOutput<String?>('projectId');
-    this.region = registerOutput<String>('region');
-    this.roleId = registerOutput<String>('roleId');
-    this.userId = registerOutput<String?>('userId');
+         'openstack:identity/roleAssignment:RoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainId = registerOutput<String?>('domainId');
+    groupId = registerOutput<String?>('groupId');
+    projectId = registerOutput<String?>('projectId');
+    region = registerOutput<String>('region');
+    roleId = registerOutput<String>('roleId');
+    userId = registerOutput<String?>('userId');
   }
 }

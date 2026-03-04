@@ -22,82 +22,121 @@ import 'volume_from_response.dart';
 class ContainerDefinitionResponse {
   /// The command that's passed to the container. This parameter maps to ``Cmd`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``COMMAND`` parameter to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). For more information, see [https://docs.docker.com/engine/reference/builder/#cmd](https://docs.docker.com/engine/reference/builder/#cmd). If there are multiple arguments, each argument is a separated string in the array.
   final pulumi.Input<List<String>>? command;
+
   /// The number of ``cpu`` units reserved for the container. This parameter maps to ``CpuShares`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--cpu-shares`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). This field is optional for tasks using the Fargate launch type, and the only requirement is that the total amount of CPU reserved for all containers within a task be lower than the task-level ``cpu`` value.  You can determine the number of CPU units that are available per EC2 instance type by multiplying the vCPUs listed for that instance type on the [Amazon EC2 Instances](https://aws.amazon.com/ec2/instance-types/) detail page by 1,024.  Linux containers share unallocated CPU units with other containers on the container instance with the same ratio as their allocated amount. For example, if you run a single-container task on a single-core instance type with 512 CPU units specified for that container, and that's the only task running on the container instance, that container could use the full 1,024 CPU unit share at any given time. However, if you launched another copy of the same task on that container instance, each task is guaranteed a minimum of 512 CPU units when needed. Moreover, each container could float to higher CPU usage if the other container was not using it. If both tasks were 100% active all of the time, they would be limited to 512 CPU units. On Linux container instances, the Docker daemon on the container instance uses the CPU value to calculate the relative CPU share ratios for running containers. For more information, see [CPU share constraint](https://docs.docker.com/engine/reference/run/#cpu-share-constraint) in the Docker documentation. The minimum valid CPU share value that the Linux kernel allows is 2. However, the CPU parameter isn't required, and you can use CPU values below 2 in your container definitions. For CPU values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:  +   *Agent versions less than or equal to 1.1.0:* Null and zero CPU values are passed to Docker as 0, which Docker then converts to 1,024 CPU shares. CPU values of 1 are passed to Docker as 1, which the Linux kernel converts to two CPU shares.  +   *Agent versions greater than or equal to 1.2.0:* Null, zero, and CPU values of 1 are passed to Docker as 2.   On Windows container instances, the CPU limit is enforced as an absolute limit, or a quota. Windows containers only have access to the specified amount of CPU that's described in the task definition. A null or zero CPU value is passed to Docker as ``0``, which Windows interprets as 1% of one CPU.
   final pulumi.Input<int>? cpu;
+
   /// A list of ARNs in SSM or Amazon S3 to a credential spec (``CredSpec``) file that configures the container for Active Directory authentication. We recommend that you use this parameter instead of the ``dockerSecurityOptions``. The maximum number of ARNs is 1. There are two formats for each ARN.  + credentialspecdomainless:MyARN You use credentialspecdomainless:MyARN to provide a CredSpec with an additional section for a secret in . You provide the login credentials to the domain in the secret. Each task that runs on any container instance can join different domains. You can use this format without joining the container instance to a domain. + credentialspec:MyARN You use credentialspec:MyARN to provide a CredSpec for a single domain. You must join the container instance to the domain before you start any tasks that use this task definition.  In both formats, replace ``MyARN`` with the ARN in SSM or Amazon S3. If you provide a ``credentialspecdomainless:MyARN``, the ``credspec`` must provide a ARN in ASMlong for a secret containing the username, password, and the domain to connect to. For better security, the instance isn't joined to the domain for domainless authentication. Other applications on the instance can't use the domainless credentials. You can use this parameter to run tasks on the same instance, even it the tasks need to join different domains. For more information, see [Using gMSAs for Windows Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows-gmsa.html) and [Using gMSAs for Linux Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/linux-gmsa.html).
   final pulumi.Input<List<String>>? credentialSpecs;
+
   /// The dependencies defined for container startup and shutdown. A container can contain multiple dependencies. When a dependency is defined for container startup, for container shutdown it is reversed. For tasks using the EC2 launch type, the container instances require at least version 1.26.0 of the container agent to turn on container dependencies. However, we recommend using the latest container agent version. For information about checking your agent version and updating to the latest version, see [Updating the Amazon ECS Container Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html) in the *Amazon Elastic Container Service Developer Guide*. If you're using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the ``ecs-init`` package. If your container instances are launched from version ``20190301`` or later, then they contain the required versions of the container agent and ``ecs-init``. For more information, see [Amazon ECS-optimized Linux AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) in the *Amazon Elastic Container Service Developer Guide*. For tasks using the Fargate launch type, the task or service requires the following platforms:  +  Linux platform version ``1.3.0`` or later.  +  Windows platform version ``1.0.0`` or later.   If the task definition is used in a blue/green deployment that uses [AWS::CodeDeploy::DeploymentGroup BlueGreenDeploymentConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codedeploy-deploymentgroup-bluegreendeploymentconfiguration.html), the ``dependsOn`` parameter is not supported. For more information see [Issue #680](https://github.com/aws-cloudformation/cloudformation-coverage-roadmap/issues/680) on the on the GitHub website.
   final pulumi.Input<List<ContainerDependencyResponse>>? dependsOn;
+
   /// When this parameter is true, networking is off within the container. This parameter maps to ``NetworkDisabled`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/).  This parameter is not supported for Windows containers.
   final pulumi.Input<bool>? disableNetworking;
+
   /// A list of DNS search domains that are presented to the container. This parameter maps to ``DnsSearch`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--dns-search`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  This parameter is not supported for Windows containers.
   final pulumi.Input<List<String>>? dnsSearchDomains;
+
   /// A list of DNS servers that are presented to the container. This parameter maps to ``Dns`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--dns`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  This parameter is not supported for Windows containers.
   final pulumi.Input<List<String>>? dnsServers;
+
   /// A key/value map of labels to add to the container. This parameter maps to ``Labels`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--label`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``
   final pulumi.Input<dynamic>? dockerLabels;
+
   /// A list of strings to provide custom configuration for multiple security systems. For more information about valid values, see [Docker Run Security Configuration](https://docs.docker.com/engine/reference/run/#security-configuration). This field isn't valid for containers in tasks using the Fargate launch type. For Linux tasks on EC2, this parameter can be used to reference custom labels for SELinux and AppArmor multi-level security systems. For any tasks on EC2, this parameter can be used to reference a credential spec file that configures a container for Active Directory authentication. For more information, see [Using gMSAs for Windows Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows-gmsa.html) and [Using gMSAs for Linux Containers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/linux-gmsa.html) in the *Amazon Elastic Container Service Developer Guide*. This parameter maps to ``SecurityOpt`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--security-opt`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  The Amazon ECS container agent running on a container instance must register with the ``ECS_SELINUX_CAPABLE=true`` or ``ECS_APPARMOR_CAPABLE=true`` environment variables before containers placed on that instance can use these security options. For more information, see [Amazon ECS Container Agent Configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  For more information about valid values, see [Docker Run Security Configuration](https://docs.docker.com/engine/reference/run/#security-configuration).  Valid values: 'no-new-privileges' | 'apparmor:PROFILE' | 'label:value' | 'credentialspec:CredentialSpecFilePath'
   final pulumi.Input<List<String>>? dockerSecurityOptions;
+
   /// Early versions of the Amazon ECS container agent don't properly handle ``entryPoint`` parameters. If you have problems using ``entryPoint``, update your container agent or enter your commands and arguments as ``command`` array items instead.  The entry point that's passed to the container. This parameter maps to ``Entrypoint`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--entrypoint`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). For more information, see [https://docs.docker.com/engine/reference/builder/#entrypoint](https://docs.docker.com/engine/reference/builder/#entrypoint).
   final pulumi.Input<List<String>>? entryPoint;
+
   /// The environment variables to pass to a container. This parameter maps to ``Env`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--env`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  We don't recommend that you use plaintext environment variables for sensitive information, such as credential data.
   final pulumi.Input<List<KeyValuePairResponse>>? environment;
+
   /// A list of files containing the environment variables to pass to a container. This parameter maps to the ``--env-file`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). You can specify up to ten environment files. The file must have a ``.env`` file extension. Each line in an environment file contains an environment variable in ``VARIABLE=VALUE`` format. Lines beginning with ``#`` are treated as comments and are ignored. For more information about the environment variable file syntax, see [Declare default environment variables in file](https://docs.docker.com/compose/env-file/). If there are environment variables specified using the ``environment`` parameter in a container definition, they take precedence over the variables contained within an environment file. If multiple environment files are specified that contain the same variable, they're processed from the top down. We recommend that you use unique variable names. For more information, see [Specifying Environment Variables](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html) in the *Amazon Elastic Container Service Developer Guide*.
   final pulumi.Input<List<EnvironmentFileResponse>>? environmentFiles;
+
   /// If the ``essential`` parameter of a container is marked as ``true``, and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the ``essential`` parameter of a container is marked as ``false``, its failure doesn't affect the rest of the containers in a task. If this parameter is omitted, a container is assumed to be essential. All tasks must have at least one essential container. If you have an application that's composed of multiple containers, group containers that are used for a common purpose into components, and separate the different components into multiple task definitions. For more information, see [Application Architecture](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html) in the *Amazon Elastic Container Service Developer Guide*.
   final pulumi.Input<bool>? essential;
+
   /// A list of hostnames and IP address mappings to append to the ``/etc/hosts`` file on the container. This parameter maps to ``ExtraHosts`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--add-host`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  This parameter isn't supported for Windows containers or tasks that use the ``awsvpc`` network mode.
   final pulumi.Input<List<HostEntryResponse>>? extraHosts;
+
   /// The FireLens configuration for the container. This is used to specify and configure a log router for container logs. For more information, see [Custom Log Routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*. The FireLens configuration for the container. This is used to specify and configure a log router for container logs. For more information, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.
   final pulumi.Input<FirelensConfigurationResponse>? firelensConfiguration;
+
   /// The container health check command and associated configuration parameters for the container. This parameter maps to ``HealthCheck`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``HEALTHCHECK`` parameter of [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). The ``HealthCheck`` property specifies an object representing a container health check. Health check parameters that are specified in a container definition override any Docker health checks that exist in the container image (such as those specified in a parent image or from the image's Dockerfile). This configuration maps to the ``HEALTHCHECK`` parameter of [docker run](https://docs.docker.com/engine/reference/run/).  The Amazon ECS container agent only monitors and reports on the health checks specified in the task definition. Amazon ECS does not monitor Docker health checks that are embedded in a container image and not specified in the container definition. Health check parameters that are specified in a container definition override any Docker health checks that exist in the container image.  If a task is run manually, and not as part of a service, the task will continue its lifecycle regardless of its health status. For tasks that are part of a service, if the task reports as unhealthy then the task will be stopped and the service scheduler will replace it. The following are notes about container health check support:  +  Container health checks require version 1.17.0 or greater of the Amazon ECS container agent. For more information, see [Updating the Amazon ECS Container Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html).  +  Container health checks are supported for Fargate tasks if you are using platform version 1.1.0 or greater. For more information, see [Platform Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).  +  Container health checks are not supported for tasks that are part of a service that is configured to use a Classic Load Balancer.
   final pulumi.Input<HealthCheckResponse>? healthCheck;
+
   /// The hostname to use for your container. This parameter maps to ``Hostname`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--hostname`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  The ``hostname`` parameter is not supported if you're using the ``awsvpc`` network mode.
   final pulumi.Input<String>? hostname;
-  /// The image used to start a container. This string is passed directly to the Docker daemon. By default, images in the Docker Hub registry are available. Other repositories are specified with either ``repository-url/image:tag`` or ``repository-url/image@digest``. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to ``Image`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``IMAGE`` parameter of [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  +  When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag for the container to use. However, subsequent updates to a repository image aren't propagated to already running tasks.  +  Images in Amazon ECR repositories can be specified by either using the full ``registry/repository:tag`` or ``registry/repository@digest``. For example, ``012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>:latest`` or ``012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>@sha256:94afd1f2e64d908bc90dbca0035a5b567EXAMPLE``.   +  Images in official repositories on Docker Hub use a single name (for example, ``ubuntu`` or ``mongo``).  +  Images in other repositories on Docker Hub are qualified with an organization name (for example, ``amazon/amazon-ecs-agent``).  +  Images in other online repositories are qualified further by a domain name (for example, ``quay.io/assemblyline/ubuntu``).
+
+  /// The image used to start a container. This string is passed directly to the Docker daemon. By default, images in the Docker Hub registry are available. Other repositories are specified with either ``repository-url/image:tag`` or ``repository-url/image@digest``. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to ``Image`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``IMAGE`` parameter of [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  +  When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag for the container to use. However, subsequent updates to a repository image aren't propagated to already running tasks.  +  Images in Amazon ECR repositories can be specified by either using the full ``registry/repository:tag`` or ``registry/repository@digest``. For example, ``012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;:latest`` or ``012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;@sha256:94afd1f2e64d908bc90dbca0035a5b567EXAMPLE``.   +  Images in official repositories on Docker Hub use a single name (for example, ``ubuntu`` or ``mongo``).  +  Images in other repositories on Docker Hub are qualified with an organization name (for example, ``amazon/amazon-ecs-agent``).  +  Images in other online repositories are qualified further by a domain name (for example, ``quay.io/assemblyline/ubuntu``).
   final pulumi.Input<String>? image;
+
   /// When this parameter is ``true``, you can deploy containerized applications that require ``stdin`` or a ``tty`` to be allocated. This parameter maps to ``OpenStdin`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--interactive`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
   final pulumi.Input<bool>? interactive;
+
   /// The ``links`` parameter allows containers to communicate with each other without the need for port mappings. This parameter is only supported if the network mode of a task definition is ``bridge``. The ``name:internalName`` construct is analogous to ``name:alias`` in Docker links. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed. For more information about linking Docker containers, go to [Legacy container links](https://docs.docker.com/network/links/) in the Docker documentation. This parameter maps to ``Links`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--link`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  This parameter is not supported for Windows containers.   Containers that are collocated on a single container instance may be able to communicate with each other without requiring links or host port mappings. Network isolation is achieved on the container instance using security groups and VPC settings.
   final pulumi.Input<List<String>>? links;
+
   /// Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. For more information see [KernelCapabilities](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_KernelCapabilities.html).  This parameter is not supported for Windows containers. The Linux-specific options that are applied to the container, such as Linux [KernelCapabilities](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_KernelCapabilities.html).
   final pulumi.Input<LinuxParametersResponse>? linuxParameters;
+
   /// The log configuration specification for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container may use a different logging driver than the Docker daemon by specifying a log driver with this parameter in the container definition. To use a different logging driver for a container, the log system must be configured properly on the container instance (or on a different log server for remote logging options). For more information on the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation.  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html) data type). Additional log drivers may be available in future releases of the Amazon ECS container agent.  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``   The Amazon ECS container agent running on a container instance must register the logging drivers available on that instance with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS Container Agent Configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*. The ``LogConfiguration`` property specifies log configuration options to send to a custom log driver for the container.
   final pulumi.Input<LogConfigurationResponse>? logConfiguration;
+
   /// The amount (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. The total amount of memory reserved for all containers within a task must be lower than the task ``memory`` value, if one is specified. This parameter maps to ``Memory`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--memory`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). If using the Fargate launch type, this parameter is optional. If using the EC2 launch type, you must specify either a task-level memory value or a container-level memory value. If you specify both a container-level ``memory`` and ``memoryReservation`` value, ``memory`` must be greater than ``memoryReservation``. If you specify ``memoryReservation``, then that value is subtracted from the available memory resources for the container instance where the container is placed. Otherwise, the value of ``memory`` is used. The Docker 20.10.0 or later daemon reserves a minimum of 6 MiB of memory for a container, so you should not specify fewer than 6 MiB of memory for your containers. The Docker 19.03.13-ce or earlier daemon reserves a minimum of 4 MiB of memory for a container, so you should not specify fewer than 4 MiB of memory for your containers.
   final pulumi.Input<int>? memory;
+
   /// The soft limit (in MiB) of memory to reserve for the container. When system memory is under heavy contention, Docker attempts to keep the container memory to this soft limit. However, your container can consume more memory when it needs to, up to either the hard limit specified with the ``memory`` parameter (if applicable), or all of the available memory on the container instance, whichever comes first. This parameter maps to ``MemoryReservation`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--memory-reservation`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). If a task-level memory value is not specified, you must specify a non-zero integer for one or both of ``memory`` or ``memoryReservation`` in a container definition. If you specify both, ``memory`` must be greater than ``memoryReservation``. If you specify ``memoryReservation``, then that value is subtracted from the available memory resources for the container instance where the container is placed. Otherwise, the value of ``memory`` is used. For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for short periods of time, you can set a ``memoryReservation`` of 128 MiB, and a ``memory`` hard limit of 300 MiB. This configuration would allow the container to only reserve 128 MiB of memory from the remaining resources on the container instance, but also allow the container to consume more memory resources when needed. The Docker 20.10.0 or later daemon reserves a minimum of 6 MiB of memory for a container. So, don't specify less than 6 MiB of memory for your containers.  The Docker 19.03.13-ce or earlier daemon reserves a minimum of 4 MiB of memory for a container. So, don't specify less than 4 MiB of memory for your containers.
   final pulumi.Input<int>? memoryReservation;
+
   /// The mount points for data volumes in your container. This parameter maps to ``Volumes`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--volume`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). Windows containers can mount whole directories on the same drive as ``$env:ProgramData``. Windows containers can't mount directories on a different drive, and mount point can't be across drives.
   final pulumi.Input<List<MountPointResponse>>? mountPoints;
+
   /// The name of a container. If you're linking multiple containers together in a task definition, the ``name`` of one container can be entered in the ``links`` of another container to connect the containers. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed. This parameter maps to ``name`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--name`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
   final pulumi.Input<String>? name;
+
   /// The list of port mappings for the container. Port mappings allow containers to access ports on the host container instance to send or receive traffic. For task definitions that use the ``awsvpc`` network mode, you should only specify the ``containerPort``. The ``hostPort`` can be left blank or it must be the same value as the ``containerPort``. Port mappings on Windows use the ``NetNAT`` gateway address rather than ``localhost``. There is no loopback for port mappings on Windows, so you cannot access a container's mapped port from the host itself.  This parameter maps to ``PortBindings`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--publish`` option to [docker run](https://docs.docker.com/engine/reference/run/). If the network mode of a task definition is set to ``none``, then you can't specify port mappings. If the network mode of a task definition is set to ``host``, then host ports must either be undefined or they must match the container port in the port mapping.  After a task reaches the ``RUNNING`` status, manual and automatic host and container port assignments are visible in the *Network Bindings* section of a container description for a selected task in the Amazon ECS console. The assignments are also visible in the ``networkBindings`` section [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) responses.
   final pulumi.Input<List<PortMappingResponse>>? portMappings;
+
   /// When this parameter is true, the container is given elevated privileges on the host container instance (similar to the ``root`` user). This parameter maps to ``Privileged`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--privileged`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  This parameter is not supported for Windows containers or tasks run on FARGATElong.
   final pulumi.Input<bool>? privileged;
+
   /// When this parameter is ``true``, a TTY is allocated. This parameter maps to ``Tty`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--tty`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
   final pulumi.Input<bool>? pseudoTerminal;
+
   /// When this parameter is true, the container is given read-only access to its root file system. This parameter maps to ``ReadonlyRootfs`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--read-only`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  This parameter is not supported for Windows containers.
   final pulumi.Input<bool>? readonlyRootFilesystem;
+
   /// The private repository authentication credentials to use. The repository credentials for private registry authentication.
   final pulumi.Input<RepositoryCredentialsResponse>? repositoryCredentials;
+
   /// The type and amount of a resource to assign to a container. The only supported resource is a GPU.
   final pulumi.Input<List<ResourceRequirementResponse>>? resourceRequirements;
+
   /// The secrets to pass to the container. For more information, see [Specifying Sensitive Data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
   final pulumi.Input<List<SecretResponse>>? secrets;
+
   /// Time duration (in seconds) to wait before giving up on resolving dependencies for a container. For example, you specify two containers in a task definition with containerA having a dependency on containerB reaching a ``COMPLETE``, ``SUCCESS``, or ``HEALTHY`` status. If a ``startTimeout`` value is specified for containerB and it doesn't reach the desired status within that time then containerA gives up and not start. This results in the task transitioning to a ``STOPPED`` state.  When the ``ECS_CONTAINER_START_TIMEOUT`` container agent configuration variable is used, it's enforced independently from this start timeout value.  For tasks using the Fargate launch type, the task or service requires the following platforms:  +  Linux platform version ``1.3.0`` or later.  +  Windows platform version ``1.0.0`` or later.   For tasks using the EC2 launch type, your container instances require at least version ``1.26.0`` of the container agent to use a container start timeout value. However, we recommend using the latest container agent version. For information about checking your agent version and updating to the latest version, see [Updating the Amazon ECS Container Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html) in the *Amazon Elastic Container Service Developer Guide*. If you're using an Amazon ECS-optimized Linux AMI, your instance needs at least version ``1.26.0-1`` of the ``ecs-init`` package. If your container instances are launched from version ``20190301`` or later, then they contain the required versions of the container agent and ``ecs-init``. For more information, see [Amazon ECS-optimized Linux AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) in the *Amazon Elastic Container Service Developer Guide*. The valid values are 2-120 seconds.
   final pulumi.Input<int>? startTimeout;
+
   /// Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own. For tasks using the Fargate launch type, the task or service requires the following platforms:  +  Linux platform version ``1.3.0`` or later.  +  Windows platform version ``1.0.0`` or later.   The max stop timeout value is 120 seconds and if the parameter is not specified, the default value of 30 seconds is used. For tasks that use the EC2 launch type, if the ``stopTimeout`` parameter isn't specified, the value set for the Amazon ECS container agent configuration variable ``ECS_CONTAINER_STOP_TIMEOUT`` is used. If neither the ``stopTimeout`` parameter or the ``ECS_CONTAINER_STOP_TIMEOUT`` agent configuration variable are set, then the default values of 30 seconds for Linux containers and 30 seconds on Windows containers are used. Your container instances require at least version 1.26.0 of the container agent to use a container stop timeout value. However, we recommend using the latest container agent version. For information about checking your agent version and updating to the latest version, see [Updating the Amazon ECS Container Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html) in the *Amazon Elastic Container Service Developer Guide*. If you're using an Amazon ECS-optimized Linux AMI, your instance needs at least version 1.26.0-1 of the ``ecs-init`` package. If your container instances are launched from version ``20190301`` or later, then they contain the required versions of the container agent and ``ecs-init``. For more information, see [Amazon ECS-optimized Linux AMI](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html) in the *Amazon Elastic Container Service Developer Guide*. The valid values are 2-120 seconds.
   final pulumi.Input<int>? stopTimeout;
+
   /// A list of namespaced kernel parameters to set in the container. This parameter maps to ``Sysctls`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--sysctl`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). For example, you can configure ``net.ipv4.tcp_keepalive_time`` setting to maintain longer lived connections.
   final pulumi.Input<List<SystemControlResponse>>? systemControls;
+
   /// A list of ``ulimits`` to set in the container. This parameter maps to ``Ulimits`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--ulimit`` option to [docker run](https://docs.docker.com/engine/reference/run/). Valid naming values are displayed in the [Ulimit](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Ulimit.html) data type. This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``   This parameter is not supported for Windows containers.
   final pulumi.Input<List<UlimitResponse>>? ulimits;
+
   /// The user to use inside the container. This parameter maps to ``User`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--user`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  When running tasks using the ``host`` network mode, don't run containers using the root user (UID 0). We recommend using a non-root user for better security.  You can specify the ``user`` using the following formats. If specifying a UID or GID, you must specify it as a positive integer.  +   ``user``   +   ``user:group``   +   ``uid``   +   ``uid:gid``   +   ``user:gid``   +   ``uid:group``     This parameter is not supported for Windows containers.
   final pulumi.Input<String>? user;
+
   /// Data volumes to mount from another container. This parameter maps to ``VolumesFrom`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--volumes-from`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
   final pulumi.Input<List<VolumeFromResponse>>? volumesFrom;
+
   /// The working directory to run commands inside the container in. This parameter maps to ``WorkingDir`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--workdir`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
   final pulumi.Input<String>? workingDirectory;
 
@@ -119,7 +158,7 @@ class ContainerDefinitionResponse {
   /// [firelensConfiguration] The FireLens configuration for the container. This is used to specify and configure a log router for container logs. For more information, see [Custom Log Routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*. The FireLens configuration for the container. This is used to specify and configure a log router for container logs. For more information, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.
   /// [healthCheck] The container health check command and associated configuration parameters for the container. This parameter maps to ``HealthCheck`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``HEALTHCHECK`` parameter of [docker run](https://docs.docker.com/engine/reference/run/#security-configuration). The ``HealthCheck`` property specifies an object representing a container health check. Health check parameters that are specified in a container definition override any Docker health checks that exist in the container image (such as those specified in a parent image or from the image's Dockerfile). This configuration maps to the ``HEALTHCHECK`` parameter of [docker run](https://docs.docker.com/engine/reference/run/).  The Amazon ECS container agent only monitors and reports on the health checks specified in the task definition. Amazon ECS does not monitor Docker health checks that are embedded in a container image and not specified in the container definition. Health check parameters that are specified in a container definition override any Docker health checks that exist in the container image.  If a task is run manually, and not as part of a service, the task will continue its lifecycle regardless of its health status. For tasks that are part of a service, if the task reports as unhealthy then the task will be stopped and the service scheduler will replace it. The following are notes about container health check support:  +  Container health checks require version 1.17.0 or greater of the Amazon ECS container agent. For more information, see [Updating the Amazon ECS Container Agent](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html).  +  Container health checks are supported for Fargate tasks if you are using platform version 1.1.0 or greater. For more information, see [Platform Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).  +  Container health checks are not supported for tasks that are part of a service that is configured to use a Classic Load Balancer.
   /// [hostname] The hostname to use for your container. This parameter maps to ``Hostname`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--hostname`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  The ``hostname`` parameter is not supported if you're using the ``awsvpc`` network mode.
-  /// [image] The image used to start a container. This string is passed directly to the Docker daemon. By default, images in the Docker Hub registry are available. Other repositories are specified with either ``repository-url/image:tag`` or ``repository-url/image@digest``. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to ``Image`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``IMAGE`` parameter of [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  +  When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag for the container to use. However, subsequent updates to a repository image aren't propagated to already running tasks.  +  Images in Amazon ECR repositories can be specified by either using the full ``registry/repository:tag`` or ``registry/repository@digest``. For example, ``012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>:latest`` or ``012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>@sha256:94afd1f2e64d908bc90dbca0035a5b567EXAMPLE``.   +  Images in official repositories on Docker Hub use a single name (for example, ``ubuntu`` or ``mongo``).  +  Images in other repositories on Docker Hub are qualified with an organization name (for example, ``amazon/amazon-ecs-agent``).  +  Images in other online repositories are qualified further by a domain name (for example, ``quay.io/assemblyline/ubuntu``).
+  /// [image] The image used to start a container. This string is passed directly to the Docker daemon. By default, images in the Docker Hub registry are available. Other repositories are specified with either ``repository-url/image:tag`` or ``repository-url/image@digest``. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to ``Image`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``IMAGE`` parameter of [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  +  When a new task starts, the Amazon ECS container agent pulls the latest version of the specified image and tag for the container to use. However, subsequent updates to a repository image aren't propagated to already running tasks.  +  Images in Amazon ECR repositories can be specified by either using the full ``registry/repository:tag`` or ``registry/repository@digest``. For example, ``012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;:latest`` or ``012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;@sha256:94afd1f2e64d908bc90dbca0035a5b567EXAMPLE``.   +  Images in official repositories on Docker Hub use a single name (for example, ``ubuntu`` or ``mongo``).  +  Images in other repositories on Docker Hub are qualified with an organization name (for example, ``amazon/amazon-ecs-agent``).  +  Images in other online repositories are qualified further by a domain name (for example, ``quay.io/assemblyline/ubuntu``).
   /// [interactive] When this parameter is ``true``, you can deploy containerized applications that require ``stdin`` or a ``tty`` to be allocated. This parameter maps to ``OpenStdin`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--interactive`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
   /// [links] The ``links`` parameter allows containers to communicate with each other without the need for port mappings. This parameter is only supported if the network mode of a task definition is ``bridge``. The ``name:internalName`` construct is analogous to ``name:alias`` in Docker links. Up to 255 letters (uppercase and lowercase), numbers, underscores, and hyphens are allowed. For more information about linking Docker containers, go to [Legacy container links](https://docs.docker.com/network/links/) in the Docker documentation. This parameter maps to ``Links`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--link`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  This parameter is not supported for Windows containers.   Containers that are collocated on a single container instance may be able to communicate with each other without requiring links or host port mappings. Network isolation is achieved on the container instance using security groups and VPC settings.
   /// [linuxParameters] Linux-specific modifications that are applied to the container, such as Linux kernel capabilities. For more information see [KernelCapabilities](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_KernelCapabilities.html).  This parameter is not supported for Windows containers. The Linux-specific options that are applied to the container, such as Linux [KernelCapabilities](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_KernelCapabilities.html).
@@ -190,89 +229,484 @@ class ContainerDefinitionResponse {
       'command': ?command,
       'cpu': ?cpu,
       'credentialSpecs': ?credentialSpecs,
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ContainerDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ContainerDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContainerDependencyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContainerDependencyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'disableNetworking': ?disableNetworking,
       'dnsSearchDomains': ?dnsSearchDomains,
       'dnsServers': ?dnsServers,
       'dockerLabels': ?dockerLabels,
       'dockerSecurityOptions': ?dockerSecurityOptions,
       'entryPoint': ?entryPoint,
-      'environment': ?pulumi.Input.mapOptionalInputValue<List<KeyValuePairResponse>, List<Map<String, dynamic>>>(environment, (value) => pulumi.Input.encodeList<KeyValuePairResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'environmentFiles': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentFileResponse>, List<Map<String, dynamic>>>(environmentFiles, (value) => pulumi.Input.encodeList<EnvironmentFileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'environment':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<KeyValuePairResponse>,
+            List<Map<String, dynamic>>
+          >(
+            environment,
+            (value) =>
+                pulumi.Input.encodeList<
+                  KeyValuePairResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'environmentFiles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EnvironmentFileResponse>,
+            List<Map<String, dynamic>>
+          >(
+            environmentFiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EnvironmentFileResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'essential': ?essential,
-      'extraHosts': ?pulumi.Input.mapOptionalInputValue<List<HostEntryResponse>, List<Map<String, dynamic>>>(extraHosts, (value) => pulumi.Input.encodeList<HostEntryResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'firelensConfiguration': ?pulumi.Input.mapOptionalInputValue<FirelensConfigurationResponse, Map<String, dynamic>>(firelensConfiguration, (value) => value.toMap()),
-      'healthCheck': ?pulumi.Input.mapOptionalInputValue<HealthCheckResponse, Map<String, dynamic>>(healthCheck, (value) => value.toMap()),
+      'extraHosts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HostEntryResponse>,
+            List<Map<String, dynamic>>
+          >(
+            extraHosts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HostEntryResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'firelensConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            FirelensConfigurationResponse,
+            Map<String, dynamic>
+          >(firelensConfiguration, (value) => value.toMap()),
+      'healthCheck':
+          ?pulumi.Input.mapOptionalInputValue<
+            HealthCheckResponse,
+            Map<String, dynamic>
+          >(healthCheck, (value) => value.toMap()),
       'hostname': ?hostname,
       'image': ?image,
       'interactive': ?interactive,
       'links': ?links,
-      'linuxParameters': ?pulumi.Input.mapOptionalInputValue<LinuxParametersResponse, Map<String, dynamic>>(linuxParameters, (value) => value.toMap()),
-      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<LogConfigurationResponse, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
+      'linuxParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinuxParametersResponse,
+            Map<String, dynamic>
+          >(linuxParameters, (value) => value.toMap()),
+      'logConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogConfigurationResponse,
+            Map<String, dynamic>
+          >(logConfiguration, (value) => value.toMap()),
       'memory': ?memory,
       'memoryReservation': ?memoryReservation,
-      'mountPoints': ?pulumi.Input.mapOptionalInputValue<List<MountPointResponse>, List<Map<String, dynamic>>>(mountPoints, (value) => pulumi.Input.encodeList<MountPointResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mountPoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MountPointResponse>,
+            List<Map<String, dynamic>>
+          >(
+            mountPoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MountPointResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
-      'portMappings': ?pulumi.Input.mapOptionalInputValue<List<PortMappingResponse>, List<Map<String, dynamic>>>(portMappings, (value) => pulumi.Input.encodeList<PortMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PortMappingResponse>,
+            List<Map<String, dynamic>>
+          >(
+            portMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PortMappingResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'privileged': ?privileged,
       'pseudoTerminal': ?pseudoTerminal,
       'readonlyRootFilesystem': ?readonlyRootFilesystem,
-      'repositoryCredentials': ?pulumi.Input.mapOptionalInputValue<RepositoryCredentialsResponse, Map<String, dynamic>>(repositoryCredentials, (value) => value.toMap()),
-      'resourceRequirements': ?pulumi.Input.mapOptionalInputValue<List<ResourceRequirementResponse>, List<Map<String, dynamic>>>(resourceRequirements, (value) => pulumi.Input.encodeList<ResourceRequirementResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'secrets': ?pulumi.Input.mapOptionalInputValue<List<SecretResponse>, List<Map<String, dynamic>>>(secrets, (value) => pulumi.Input.encodeList<SecretResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'repositoryCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryCredentialsResponse,
+            Map<String, dynamic>
+          >(repositoryCredentials, (value) => value.toMap()),
+      'resourceRequirements':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceRequirementResponse>,
+            List<Map<String, dynamic>>
+          >(
+            resourceRequirements,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceRequirementResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'secrets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SecretResponse>,
+            List<Map<String, dynamic>>
+          >(
+            secrets,
+            (value) =>
+                pulumi.Input.encodeList<SecretResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'startTimeout': ?startTimeout,
       'stopTimeout': ?stopTimeout,
-      'systemControls': ?pulumi.Input.mapOptionalInputValue<List<SystemControlResponse>, List<Map<String, dynamic>>>(systemControls, (value) => pulumi.Input.encodeList<SystemControlResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ulimits': ?pulumi.Input.mapOptionalInputValue<List<UlimitResponse>, List<Map<String, dynamic>>>(ulimits, (value) => pulumi.Input.encodeList<UlimitResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'systemControls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SystemControlResponse>,
+            List<Map<String, dynamic>>
+          >(
+            systemControls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SystemControlResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ulimits':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UlimitResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ulimits,
+            (value) =>
+                pulumi.Input.encodeList<UlimitResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'user': ?user,
-      'volumesFrom': ?pulumi.Input.mapOptionalInputValue<List<VolumeFromResponse>, List<Map<String, dynamic>>>(volumesFrom, (value) => pulumi.Input.encodeList<VolumeFromResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumesFrom':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VolumeFromResponse>,
+            List<Map<String, dynamic>>
+          >(
+            volumesFrom,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VolumeFromResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'workingDirectory': ?workingDirectory,
     };
   }
 
   factory ContainerDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ContainerDefinitionResponse(
-      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
-      credentialSpecs: map['credentialSpecs'] == null ? null : ((map['credentialSpecs']! as List).cast<String>()).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ContainerDependencyResponse>(map['dependsOn']!, (value) => ContainerDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disableNetworking: map['disableNetworking'] == null ? null : (map['disableNetworking']! as bool).input(),
-      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : ((map['dnsSearchDomains']! as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      dockerLabels: map['dockerLabels'] == null ? null : (map['dockerLabels']!).input(),
-      dockerSecurityOptions: map['dockerSecurityOptions'] == null ? null : ((map['dockerSecurityOptions']! as List).cast<String>()).input(),
-      entryPoint: map['entryPoint'] == null ? null : ((map['entryPoint']! as List).cast<String>()).input(),
-      environment: map['environment'] == null ? null : (pulumi.Input.decodeList<KeyValuePairResponse>(map['environment']!, (value) => KeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environmentFiles: map['environmentFiles'] == null ? null : (pulumi.Input.decodeList<EnvironmentFileResponse>(map['environmentFiles']!, (value) => EnvironmentFileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      essential: map['essential'] == null ? null : (map['essential']! as bool).input(),
-      extraHosts: map['extraHosts'] == null ? null : (pulumi.Input.decodeList<HostEntryResponse>(map['extraHosts']!, (value) => HostEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      firelensConfiguration: map['firelensConfiguration'] == null ? null : (FirelensConfigurationResponse.fromMap((map['firelensConfiguration']! as Map).cast<String, dynamic>())).input(),
-      healthCheck: map['healthCheck'] == null ? null : (HealthCheckResponse.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      interactive: map['interactive'] == null ? null : (map['interactive']! as bool).input(),
-      links: map['links'] == null ? null : ((map['links']! as List).cast<String>()).input(),
-      linuxParameters: map['linuxParameters'] == null ? null : (LinuxParametersResponse.fromMap((map['linuxParameters']! as Map).cast<String, dynamic>())).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : (LogConfigurationResponse.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input(),
-      memory: map['memory'] == null ? null : (map['memory']! as int).input(),
-      memoryReservation: map['memoryReservation'] == null ? null : (map['memoryReservation']! as int).input(),
-      mountPoints: map['mountPoints'] == null ? null : (pulumi.Input.decodeList<MountPointResponse>(map['mountPoints']!, (value) => MountPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      portMappings: map['portMappings'] == null ? null : (pulumi.Input.decodeList<PortMappingResponse>(map['portMappings']!, (value) => PortMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
-      pseudoTerminal: map['pseudoTerminal'] == null ? null : (map['pseudoTerminal']! as bool).input(),
-      readonlyRootFilesystem: map['readonlyRootFilesystem'] == null ? null : (map['readonlyRootFilesystem']! as bool).input(),
-      repositoryCredentials: map['repositoryCredentials'] == null ? null : (RepositoryCredentialsResponse.fromMap((map['repositoryCredentials']! as Map).cast<String, dynamic>())).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : (pulumi.Input.decodeList<ResourceRequirementResponse>(map['resourceRequirements']!, (value) => ResourceRequirementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretResponse>(map['secrets']!, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startTimeout: map['startTimeout'] == null ? null : (map['startTimeout']! as int).input(),
-      stopTimeout: map['stopTimeout'] == null ? null : (map['stopTimeout']! as int).input(),
-      systemControls: map['systemControls'] == null ? null : (pulumi.Input.decodeList<SystemControlResponse>(map['systemControls']!, (value) => SystemControlResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ulimits: map['ulimits'] == null ? null : (pulumi.Input.decodeList<UlimitResponse>(map['ulimits']!, (value) => UlimitResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      user: map['user'] == null ? null : (map['user']! as String).input(),
-      volumesFrom: map['volumesFrom'] == null ? null : (pulumi.Input.decodeList<VolumeFromResponse>(map['volumesFrom']!, (value) => VolumeFromResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory']! as String).input(),
+      command: (() {
+        final guardedValue = map['command'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      credentialSpecs: (() {
+        final guardedValue = map['credentialSpecs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ContainerDependencyResponse>(
+            guardedValue,
+            (value) => ContainerDependencyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      disableNetworking: (() {
+        final guardedValue = map['disableNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dnsSearchDomains: (() {
+        final guardedValue = map['dnsSearchDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dockerLabels: (() {
+        final guardedValue = map['dockerLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      dockerSecurityOptions: (() {
+        final guardedValue = map['dockerSecurityOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      entryPoint: (() {
+        final guardedValue = map['entryPoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<KeyValuePairResponse>(
+            guardedValue,
+            (value) => KeyValuePairResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      environmentFiles: (() {
+        final guardedValue = map['environmentFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EnvironmentFileResponse>(
+            guardedValue,
+            (value) => EnvironmentFileResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      essential: (() {
+        final guardedValue = map['essential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      extraHosts: (() {
+        final guardedValue = map['extraHosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HostEntryResponse>(
+            guardedValue,
+            (value) => HostEntryResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      firelensConfiguration: (() {
+        final guardedValue = map['firelensConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FirelensConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      healthCheck: (() {
+        final guardedValue = map['healthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HealthCheckResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interactive: (() {
+        final guardedValue = map['interactive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      links: (() {
+        final guardedValue = map['links'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      linuxParameters: (() {
+        final guardedValue = map['linuxParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinuxParametersResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logConfiguration: (() {
+        final guardedValue = map['logConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      memoryReservation: (() {
+        final guardedValue = map['memoryReservation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mountPoints: (() {
+        final guardedValue = map['mountPoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MountPointResponse>(
+            guardedValue,
+            (value) => MountPointResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portMappings: (() {
+        final guardedValue = map['portMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PortMappingResponse>(
+            guardedValue,
+            (value) => PortMappingResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      privileged: (() {
+        final guardedValue = map['privileged'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      pseudoTerminal: (() {
+        final guardedValue = map['pseudoTerminal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      readonlyRootFilesystem: (() {
+        final guardedValue = map['readonlyRootFilesystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      repositoryCredentials: (() {
+        final guardedValue = map['repositoryCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryCredentialsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceRequirements: (() {
+        final guardedValue = map['resourceRequirements'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceRequirementResponse>(
+            guardedValue,
+            (value) => ResourceRequirementResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      secrets: (() {
+        final guardedValue = map['secrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SecretResponse>(
+            guardedValue,
+            (value) =>
+                SecretResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      startTimeout: (() {
+        final guardedValue = map['startTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      stopTimeout: (() {
+        final guardedValue = map['stopTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      systemControls: (() {
+        final guardedValue = map['systemControls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SystemControlResponse>(
+            guardedValue,
+            (value) => SystemControlResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ulimits: (() {
+        final guardedValue = map['ulimits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UlimitResponse>(
+            guardedValue,
+            (value) =>
+                UlimitResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumesFrom: (() {
+        final guardedValue = map['volumesFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VolumeFromResponse>(
+            guardedValue,
+            (value) => VolumeFromResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      workingDirectory: (() {
+        final guardedValue = map['workingDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,17 @@ enum PersistenceConfigRdbSnapshotPeriod {
   twelveHours("TWELVE_HOURS"),
   twentyFourHours("TWENTY_FOUR_HOURS");
 
-  const PersistenceConfigRdbSnapshotPeriod(this.value);
-  final String value;
+  const PersistenceConfigRdbSnapshotPeriod(this.wireValue);
+  final String wireValue;
 
   static PersistenceConfigRdbSnapshotPeriod fromValue(String value) {
     for (final item in PersistenceConfigRdbSnapshotPeriod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PersistenceConfigRdbSnapshotPeriod value: $value');
+    throw ArgumentError(
+      'Unknown PersistenceConfigRdbSnapshotPeriod value: $value',
+    );
   }
 }
-

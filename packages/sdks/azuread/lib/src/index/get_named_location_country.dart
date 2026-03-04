@@ -27,10 +27,15 @@ class GetNamedLocationCountry {
 
   factory GetNamedLocationCountry.fromMap(Map<String, dynamic> map) {
     return GetNamedLocationCountry(
-      countriesAndRegions: ((map['countriesAndRegions'] as List).cast<String>()).input(),
-      countryLookupMethod: (map['countryLookupMethod'] as String).input(),
-      includeUnknownCountriesAndRegions: (map['includeUnknownCountriesAndRegions'] as bool).input(),
+      countriesAndRegions: pulumi.Input.fromValue(
+        (map['countriesAndRegions'] as List).cast<String>(),
+      ),
+      countryLookupMethod: pulumi.Input.fromValue(
+        map['countryLookupMethod'] as String,
+      ),
+      includeUnknownCountriesAndRegions: pulumi.Input.fromValue(
+        map['includeUnknownCountriesAndRegions'] as bool,
+      ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionAuthParametersApiKeyAuthParameters {
   /// The name of the API key.
   final pulumi.Input<String>? apiKeyName;
+
   /// The value of the API key.
   final pulumi.Input<String>? apiKeyValue;
 
@@ -23,11 +24,20 @@ class ConnectionAuthParametersApiKeyAuthParameters {
     };
   }
 
-  factory ConnectionAuthParametersApiKeyAuthParameters.fromMap(Map<String, dynamic> map) {
+  factory ConnectionAuthParametersApiKeyAuthParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionAuthParametersApiKeyAuthParameters(
-      apiKeyName: map['apiKeyName'] == null ? null : (map['apiKeyName']! as String).input(),
-      apiKeyValue: map['apiKeyValue'] == null ? null : (map['apiKeyValue']! as String).input(),
+      apiKeyName: (() {
+        final guardedValue = map['apiKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiKeyValue: (() {
+        final guardedValue = map['apiKeyValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

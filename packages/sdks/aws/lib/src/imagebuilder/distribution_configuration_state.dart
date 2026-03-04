@@ -7,22 +7,31 @@ import 'distribution_configuration_distribution.dart';
 class DistributionConfigurationState {
   /// (Required) Amazon Resource Name (ARN) of the distribution configuration.
   final pulumi.Input<String>? arn;
+
   /// Date the distribution configuration was created.
   final pulumi.Input<String>? dateCreated;
+
   /// Date the distribution configuration was updated.
   final pulumi.Input<String>? dateUpdated;
+
   /// Description of the distribution configuration.
   final pulumi.Input<String>? description;
+
   /// One or more configuration blocks with distribution settings. Detailed below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<DistributionConfigurationDistribution>>? distributions;
+  final pulumi.Input<List<DistributionConfigurationDistribution>>?
+  distributions;
+
   /// Name of the distribution configuration.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags for the distribution configuration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -54,7 +63,18 @@ class DistributionConfigurationState {
       'dateCreated': ?dateCreated,
       'dateUpdated': ?dateUpdated,
       'description': ?description,
-      'distributions': ?pulumi.Input.mapOptionalInputValue<List<DistributionConfigurationDistribution>, List<Map<String, dynamic>>>(distributions, (value) => pulumi.Input.encodeList<DistributionConfigurationDistribution, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'distributions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DistributionConfigurationDistribution>,
+            List<Map<String, dynamic>>
+          >(
+            distributions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DistributionConfigurationDistribution,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'region': ?region,
       'tags': ?tags,
@@ -64,16 +84,62 @@ class DistributionConfigurationState {
 
   factory DistributionConfigurationState.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      dateCreated: map['dateCreated'] == null ? null : ((map['dateCreated'] as String).input()).input(),
-      dateUpdated: map['dateUpdated'] == null ? null : ((map['dateUpdated'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      distributions: map['distributions'] == null ? null : ((pulumi.Input.decodeList<DistributionConfigurationDistribution>(map['distributions']!, (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dateCreated: (() {
+        final guardedValue = map['dateCreated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dateUpdated: (() {
+        final guardedValue = map['dateUpdated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      distributions: (() {
+        final guardedValue = map['distributions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DistributionConfigurationDistribution>(
+            guardedValue,
+            (value) => DistributionConfigurationDistribution.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

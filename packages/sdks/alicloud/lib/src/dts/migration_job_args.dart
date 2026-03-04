@@ -9,64 +9,94 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationJobArgs {
   /// Start time in Unix timestamp format.
   final pulumi.Input<String>? checkpoint;
+
   /// Whether to execute DTS supports schema migration.
   final pulumi.Input<bool> dataInitialization;
+
   /// Whether to perform incremental data migration.
   final pulumi.Input<bool> dataSynchronization;
+
   /// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
   final pulumi.Input<String> dbList;
+
   /// The name of migrate the database.
   final pulumi.Input<String>? destinationEndpointDatabaseName;
+
   /// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
   final pulumi.Input<String> destinationEndpointEngineName;
+
   /// The ID of destination instance.
   final pulumi.Input<String>? destinationEndpointInstanceId;
+
   /// The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
   final pulumi.Input<String> destinationEndpointInstanceType;
+
   /// The ip of source endpoint.
   final pulumi.Input<String>? destinationEndpointIp;
+
   /// The SID of Oracle database.
   final pulumi.Input<String>? destinationEndpointOracleSid;
+
   /// The password of database account.
   final pulumi.Input<String>? destinationEndpointPassword;
+
   /// The port of source endpoint.
   final pulumi.Input<String>? destinationEndpointPort;
+
   /// The region of destination instance.
   final pulumi.Input<String>? destinationEndpointRegion;
+
   /// The username of database account.
   final pulumi.Input<String>? destinationEndpointUserName;
+
   /// The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
   final pulumi.Input<String> dtsInstanceId;
+
   /// The name of migration job.
   final pulumi.Input<String>? dtsJobName;
+
   /// The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
   final pulumi.Input<String>? instanceClass;
+
   /// The name of migrate the database.
   final pulumi.Input<String>? sourceEndpointDatabaseName;
+
   /// The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
   final pulumi.Input<String> sourceEndpointEngineName;
+
   /// The ID of source instance.
   final pulumi.Input<String>? sourceEndpointInstanceId;
+
   /// The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
   final pulumi.Input<String> sourceEndpointInstanceType;
+
   /// The ip of source endpoint.
   final pulumi.Input<String>? sourceEndpointIp;
+
   /// The SID of Oracle database.
   final pulumi.Input<String>? sourceEndpointOracleSid;
+
   /// The Alibaba Cloud account ID to which the source instance belongs.
   final pulumi.Input<String>? sourceEndpointOwnerId;
+
   /// The password of database account.
   final pulumi.Input<String>? sourceEndpointPassword;
+
   /// The port of source endpoint.
   final pulumi.Input<String>? sourceEndpointPort;
+
   /// The region of source instance.
   final pulumi.Input<String>? sourceEndpointRegion;
+
   /// The name of the role configured for the cloud account to which the source instance belongs.
   final pulumi.Input<String>? sourceEndpointRole;
+
   /// The username of database account.
   final pulumi.Input<String>? sourceEndpointUserName;
+
   /// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
   final pulumi.Input<String>? status;
+
   /// Whether to perform a database table structure to migrate.
   final pulumi.Input<bool> structureInitialization;
 
@@ -174,38 +204,139 @@ class MigrationJobArgs {
 
   factory MigrationJobArgs.fromMap(Map<String, dynamic> map) {
     return MigrationJobArgs(
-      checkpoint: map['checkpoint'] == null ? null : (map['checkpoint']! as String).input(),
-      dataInitialization: (map['dataInitialization'] as bool).input(),
-      dataSynchronization: (map['dataSynchronization'] as bool).input(),
-      dbList: (map['dbList'] as String).input(),
-      destinationEndpointDatabaseName: map['destinationEndpointDatabaseName'] == null ? null : (map['destinationEndpointDatabaseName']! as String).input(),
-      destinationEndpointEngineName: (map['destinationEndpointEngineName'] as String).input(),
-      destinationEndpointInstanceId: map['destinationEndpointInstanceId'] == null ? null : (map['destinationEndpointInstanceId']! as String).input(),
-      destinationEndpointInstanceType: (map['destinationEndpointInstanceType'] as String).input(),
-      destinationEndpointIp: map['destinationEndpointIp'] == null ? null : (map['destinationEndpointIp']! as String).input(),
-      destinationEndpointOracleSid: map['destinationEndpointOracleSid'] == null ? null : (map['destinationEndpointOracleSid']! as String).input(),
-      destinationEndpointPassword: map['destinationEndpointPassword'] == null ? null : (map['destinationEndpointPassword']! as String).input(),
-      destinationEndpointPort: map['destinationEndpointPort'] == null ? null : (map['destinationEndpointPort']! as String).input(),
-      destinationEndpointRegion: map['destinationEndpointRegion'] == null ? null : (map['destinationEndpointRegion']! as String).input(),
-      destinationEndpointUserName: map['destinationEndpointUserName'] == null ? null : (map['destinationEndpointUserName']! as String).input(),
-      dtsInstanceId: (map['dtsInstanceId'] as String).input(),
-      dtsJobName: map['dtsJobName'] == null ? null : (map['dtsJobName']! as String).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass']! as String).input(),
-      sourceEndpointDatabaseName: map['sourceEndpointDatabaseName'] == null ? null : (map['sourceEndpointDatabaseName']! as String).input(),
-      sourceEndpointEngineName: (map['sourceEndpointEngineName'] as String).input(),
-      sourceEndpointInstanceId: map['sourceEndpointInstanceId'] == null ? null : (map['sourceEndpointInstanceId']! as String).input(),
-      sourceEndpointInstanceType: (map['sourceEndpointInstanceType'] as String).input(),
-      sourceEndpointIp: map['sourceEndpointIp'] == null ? null : (map['sourceEndpointIp']! as String).input(),
-      sourceEndpointOracleSid: map['sourceEndpointOracleSid'] == null ? null : (map['sourceEndpointOracleSid']! as String).input(),
-      sourceEndpointOwnerId: map['sourceEndpointOwnerId'] == null ? null : (map['sourceEndpointOwnerId']! as String).input(),
-      sourceEndpointPassword: map['sourceEndpointPassword'] == null ? null : (map['sourceEndpointPassword']! as String).input(),
-      sourceEndpointPort: map['sourceEndpointPort'] == null ? null : (map['sourceEndpointPort']! as String).input(),
-      sourceEndpointRegion: map['sourceEndpointRegion'] == null ? null : (map['sourceEndpointRegion']! as String).input(),
-      sourceEndpointRole: map['sourceEndpointRole'] == null ? null : (map['sourceEndpointRole']! as String).input(),
-      sourceEndpointUserName: map['sourceEndpointUserName'] == null ? null : (map['sourceEndpointUserName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      structureInitialization: (map['structureInitialization'] as bool).input(),
+      checkpoint: (() {
+        final guardedValue = map['checkpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataInitialization: pulumi.Input.fromValue(
+        map['dataInitialization'] as bool,
+      ),
+      dataSynchronization: pulumi.Input.fromValue(
+        map['dataSynchronization'] as bool,
+      ),
+      dbList: pulumi.Input.fromValue(map['dbList'] as String),
+      destinationEndpointDatabaseName: (() {
+        final guardedValue = map['destinationEndpointDatabaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationEndpointEngineName: pulumi.Input.fromValue(
+        map['destinationEndpointEngineName'] as String,
+      ),
+      destinationEndpointInstanceId: (() {
+        final guardedValue = map['destinationEndpointInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationEndpointInstanceType: pulumi.Input.fromValue(
+        map['destinationEndpointInstanceType'] as String,
+      ),
+      destinationEndpointIp: (() {
+        final guardedValue = map['destinationEndpointIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationEndpointOracleSid: (() {
+        final guardedValue = map['destinationEndpointOracleSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationEndpointPassword: (() {
+        final guardedValue = map['destinationEndpointPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationEndpointPort: (() {
+        final guardedValue = map['destinationEndpointPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationEndpointRegion: (() {
+        final guardedValue = map['destinationEndpointRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationEndpointUserName: (() {
+        final guardedValue = map['destinationEndpointUserName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dtsInstanceId: pulumi.Input.fromValue(map['dtsInstanceId'] as String),
+      dtsJobName: (() {
+        final guardedValue = map['dtsJobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceClass: (() {
+        final guardedValue = map['instanceClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointDatabaseName: (() {
+        final guardedValue = map['sourceEndpointDatabaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointEngineName: pulumi.Input.fromValue(
+        map['sourceEndpointEngineName'] as String,
+      ),
+      sourceEndpointInstanceId: (() {
+        final guardedValue = map['sourceEndpointInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointInstanceType: pulumi.Input.fromValue(
+        map['sourceEndpointInstanceType'] as String,
+      ),
+      sourceEndpointIp: (() {
+        final guardedValue = map['sourceEndpointIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointOracleSid: (() {
+        final guardedValue = map['sourceEndpointOracleSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointOwnerId: (() {
+        final guardedValue = map['sourceEndpointOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointPassword: (() {
+        final guardedValue = map['sourceEndpointPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointPort: (() {
+        final guardedValue = map['sourceEndpointPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointRegion: (() {
+        final guardedValue = map['sourceEndpointRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointRole: (() {
+        final guardedValue = map['sourceEndpointRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointUserName: (() {
+        final guardedValue = map['sourceEndpointUserName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      structureInitialization: pulumi.Input.fromValue(
+        map['structureInitialization'] as bool,
+      ),
     );
   }
 }
-

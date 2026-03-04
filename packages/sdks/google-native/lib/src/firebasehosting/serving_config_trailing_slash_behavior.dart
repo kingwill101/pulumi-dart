@@ -4,16 +4,17 @@ enum ServingConfigTrailingSlashBehavior {
   add("ADD"),
   remove("REMOVE");
 
-  const ServingConfigTrailingSlashBehavior(this.value);
-  final String value;
+  const ServingConfigTrailingSlashBehavior(this.wireValue);
+  final String wireValue;
 
   static ServingConfigTrailingSlashBehavior fromValue(String value) {
     for (final item in ServingConfigTrailingSlashBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServingConfigTrailingSlashBehavior value: $value');
+    throw ArgumentError(
+      'Unknown ServingConfigTrailingSlashBehavior value: $value',
+    );
   }
 }
-

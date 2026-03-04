@@ -17,26 +17,37 @@ class DatastoreResponse {
   final pulumi.Input<AzurePostgreSqlSectionResponse>? azurePostgreSqlSection;
   final pulumi.Input<AzureSqlDatabaseSectionResponse>? azureSqlDatabaseSection;
   final pulumi.Input<AzureStorageSectionResponse>? azureStorageSection;
+
   /// The User who created the datastore.
   final pulumi.Input<UserInfoResponse> createdBy;
+
   /// The date and time when the datastore was created.
   final pulumi.Input<String> createdTime;
+
   /// The datastore type.
   final pulumi.Input<String>? dataStoreType;
+
   /// Description of the datastore.
   final pulumi.Input<String>? description;
+
   /// Data specific to GlusterFS.
   final pulumi.Input<GlusterFsSectionResponse>? glusterFsSection;
+
   /// A read only property that denotes whether the service datastore has been validated with credentials.
   final pulumi.Input<bool>? hasBeenValidated;
+
   /// Info about origin if it is linked.
   final pulumi.Input<LinkedInfoResponse>? linkedInfo;
+
   /// The User who modified the datastore.
   final pulumi.Input<UserInfoResponse> modifiedBy;
+
   /// The date and time when the datastore was last modified.
   final pulumi.Input<String> modifiedTime;
+
   /// Name of the datastore.
   final pulumi.Input<String>? name;
+
   /// Tags for this datastore.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -78,19 +89,55 @@ class DatastoreResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureDataLakeSection': ?pulumi.Input.mapOptionalInputValue<AzureDataLakeSectionResponse, Map<String, dynamic>>(azureDataLakeSection, (value) => value.toMap()),
-      'azureMySqlSection': ?pulumi.Input.mapOptionalInputValue<AzureMySqlSectionResponse, Map<String, dynamic>>(azureMySqlSection, (value) => value.toMap()),
-      'azurePostgreSqlSection': ?pulumi.Input.mapOptionalInputValue<AzurePostgreSqlSectionResponse, Map<String, dynamic>>(azurePostgreSqlSection, (value) => value.toMap()),
-      'azureSqlDatabaseSection': ?pulumi.Input.mapOptionalInputValue<AzureSqlDatabaseSectionResponse, Map<String, dynamic>>(azureSqlDatabaseSection, (value) => value.toMap()),
-      'azureStorageSection': ?pulumi.Input.mapOptionalInputValue<AzureStorageSectionResponse, Map<String, dynamic>>(azureStorageSection, (value) => value.toMap()),
-      'createdBy': pulumi.Input.mapInputValue<UserInfoResponse, Map<String, dynamic>>(createdBy, (value) => value.toMap()),
+      'azureDataLakeSection':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureDataLakeSectionResponse,
+            Map<String, dynamic>
+          >(azureDataLakeSection, (value) => value.toMap()),
+      'azureMySqlSection':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureMySqlSectionResponse,
+            Map<String, dynamic>
+          >(azureMySqlSection, (value) => value.toMap()),
+      'azurePostgreSqlSection':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzurePostgreSqlSectionResponse,
+            Map<String, dynamic>
+          >(azurePostgreSqlSection, (value) => value.toMap()),
+      'azureSqlDatabaseSection':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureSqlDatabaseSectionResponse,
+            Map<String, dynamic>
+          >(azureSqlDatabaseSection, (value) => value.toMap()),
+      'azureStorageSection':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureStorageSectionResponse,
+            Map<String, dynamic>
+          >(azureStorageSection, (value) => value.toMap()),
+      'createdBy':
+          pulumi.Input.mapInputValue<UserInfoResponse, Map<String, dynamic>>(
+            createdBy,
+            (value) => value.toMap(),
+          ),
       'createdTime': createdTime,
       'dataStoreType': ?dataStoreType,
       'description': ?description,
-      'glusterFsSection': ?pulumi.Input.mapOptionalInputValue<GlusterFsSectionResponse, Map<String, dynamic>>(glusterFsSection, (value) => value.toMap()),
+      'glusterFsSection':
+          ?pulumi.Input.mapOptionalInputValue<
+            GlusterFsSectionResponse,
+            Map<String, dynamic>
+          >(glusterFsSection, (value) => value.toMap()),
       'hasBeenValidated': ?hasBeenValidated,
-      'linkedInfo': ?pulumi.Input.mapOptionalInputValue<LinkedInfoResponse, Map<String, dynamic>>(linkedInfo, (value) => value.toMap()),
-      'modifiedBy': pulumi.Input.mapInputValue<UserInfoResponse, Map<String, dynamic>>(modifiedBy, (value) => value.toMap()),
+      'linkedInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedInfoResponse,
+            Map<String, dynamic>
+          >(linkedInfo, (value) => value.toMap()),
+      'modifiedBy':
+          pulumi.Input.mapInputValue<UserInfoResponse, Map<String, dynamic>>(
+            modifiedBy,
+            (value) => value.toMap(),
+          ),
       'modifiedTime': modifiedTime,
       'name': ?name,
       'tags': tags,
@@ -99,23 +146,102 @@ class DatastoreResponse {
 
   factory DatastoreResponse.fromMap(Map<String, dynamic> map) {
     return DatastoreResponse(
-      azureDataLakeSection: map['azureDataLakeSection'] == null ? null : (AzureDataLakeSectionResponse.fromMap((map['azureDataLakeSection']! as Map).cast<String, dynamic>())).input(),
-      azureMySqlSection: map['azureMySqlSection'] == null ? null : (AzureMySqlSectionResponse.fromMap((map['azureMySqlSection']! as Map).cast<String, dynamic>())).input(),
-      azurePostgreSqlSection: map['azurePostgreSqlSection'] == null ? null : (AzurePostgreSqlSectionResponse.fromMap((map['azurePostgreSqlSection']! as Map).cast<String, dynamic>())).input(),
-      azureSqlDatabaseSection: map['azureSqlDatabaseSection'] == null ? null : (AzureSqlDatabaseSectionResponse.fromMap((map['azureSqlDatabaseSection']! as Map).cast<String, dynamic>())).input(),
-      azureStorageSection: map['azureStorageSection'] == null ? null : (AzureStorageSectionResponse.fromMap((map['azureStorageSection']! as Map).cast<String, dynamic>())).input(),
-      createdBy: (UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
-      createdTime: (map['createdTime'] as String).input(),
-      dataStoreType: map['dataStoreType'] == null ? null : (map['dataStoreType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      glusterFsSection: map['glusterFsSection'] == null ? null : (GlusterFsSectionResponse.fromMap((map['glusterFsSection']! as Map).cast<String, dynamic>())).input(),
-      hasBeenValidated: map['hasBeenValidated'] == null ? null : (map['hasBeenValidated']! as bool).input(),
-      linkedInfo: map['linkedInfo'] == null ? null : (LinkedInfoResponse.fromMap((map['linkedInfo']! as Map).cast<String, dynamic>())).input(),
-      modifiedBy: (UserInfoResponse.fromMap((map['modifiedBy'] as Map).cast<String, dynamic>())).input(),
-      modifiedTime: (map['modifiedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      azureDataLakeSection: (() {
+        final guardedValue = map['azureDataLakeSection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureDataLakeSectionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      azureMySqlSection: (() {
+        final guardedValue = map['azureMySqlSection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureMySqlSectionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      azurePostgreSqlSection: (() {
+        final guardedValue = map['azurePostgreSqlSection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzurePostgreSqlSectionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      azureSqlDatabaseSection: (() {
+        final guardedValue = map['azureSqlDatabaseSection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureSqlDatabaseSectionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      azureStorageSection: (() {
+        final guardedValue = map['azureStorageSection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureStorageSectionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createdBy: pulumi.Input.fromValue(
+        UserInfoResponse.fromMap(
+          (map['createdBy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      createdTime: pulumi.Input.fromValue(map['createdTime'] as String),
+      dataStoreType: (() {
+        final guardedValue = map['dataStoreType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      glusterFsSection: (() {
+        final guardedValue = map['glusterFsSection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GlusterFsSectionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hasBeenValidated: (() {
+        final guardedValue = map['hasBeenValidated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      linkedInfo: (() {
+        final guardedValue = map['linkedInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      modifiedBy: pulumi.Input.fromValue(
+        UserInfoResponse.fromMap(
+          (map['modifiedBy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      modifiedTime: pulumi.Input.fromValue(map['modifiedTime'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
-

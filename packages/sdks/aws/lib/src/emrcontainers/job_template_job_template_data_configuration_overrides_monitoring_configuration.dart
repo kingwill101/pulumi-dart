@@ -6,11 +6,19 @@ import 'job_template_job_template_data_configuration_overrides_monitoring_config
 
 class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration {
   /// Monitoring configurations for CloudWatch.
-  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration>? cloudWatchMonitoringConfiguration;
+  final pulumi.Input<
+    JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration
+  >?
+  cloudWatchMonitoringConfiguration;
+
   /// Monitoring configurations for the persistent application UI.
   final pulumi.Input<String>? persistentAppUi;
+
   /// Amazon S3 configuration for monitoring log publishing.
-  final pulumi.Input<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration>? s3MonitoringConfiguration;
+  final pulumi.Input<
+    JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration
+  >?
+  s3MonitoringConfiguration;
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration].
   /// [cloudWatchMonitoringConfiguration] Monitoring configurations for CloudWatch.
@@ -24,18 +32,47 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudWatchMonitoringConfiguration': ?pulumi.Input.mapOptionalInputValue<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration, Map<String, dynamic>>(cloudWatchMonitoringConfiguration, (value) => value.toMap()),
+      'cloudWatchMonitoringConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration,
+            Map<String, dynamic>
+          >(cloudWatchMonitoringConfiguration, (value) => value.toMap()),
       'persistentAppUi': ?persistentAppUi,
-      's3MonitoringConfiguration': ?pulumi.Input.mapOptionalInputValue<JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration, Map<String, dynamic>>(s3MonitoringConfiguration, (value) => value.toMap()),
+      's3MonitoringConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration,
+            Map<String, dynamic>
+          >(s3MonitoringConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
+  factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration(
-      cloudWatchMonitoringConfiguration: map['cloudWatchMonitoringConfiguration'] == null ? null : ((JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap((map['cloudWatchMonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      persistentAppUi: map['persistentAppUi'] == null ? null : ((map['persistentAppUi'] as String).input()).input(),
-      s3MonitoringConfiguration: map['s3MonitoringConfiguration'] == null ? null : ((JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration.fromMap((map['s3MonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      cloudWatchMonitoringConfiguration: (() {
+        final guardedValue = map['cloudWatchMonitoringConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      persistentAppUi: (() {
+        final guardedValue = map['persistentAppUi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3MonitoringConfiguration: (() {
+        final guardedValue = map['s3MonitoringConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

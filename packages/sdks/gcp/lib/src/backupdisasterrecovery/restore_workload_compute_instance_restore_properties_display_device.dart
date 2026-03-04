@@ -13,15 +13,18 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableDisplay': ?enableDisplay,
-    };
+    return <String, dynamic>{'enableDisplay': ?enableDisplay};
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice(
-      enableDisplay: map['enableDisplay'] == null ? null : (map['enableDisplay']! as bool).input(),
+      enableDisplay: (() {
+        final guardedValue = map['enableDisplay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

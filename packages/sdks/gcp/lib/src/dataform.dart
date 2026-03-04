@@ -1,5 +1,3 @@
-library module_dataform;
-
 export 'dataform/functions.dart';
 export 'dataform/get_repository_iam_policy_args.dart';
 export 'dataform/get_repository_iam_policy_result.dart';

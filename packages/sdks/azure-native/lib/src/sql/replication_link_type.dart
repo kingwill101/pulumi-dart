@@ -4,16 +4,15 @@ enum ReplicationLinkType {
   valueNAMED("NAMED"),
   valueSTANDBY("STANDBY");
 
-  const ReplicationLinkType(this.value);
-  final String value;
+  const ReplicationLinkType(this.wireValue);
+  final String wireValue;
 
   static ReplicationLinkType fromValue(String value) {
     for (final item in ReplicationLinkType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReplicationLinkType value: $value');
   }
 }
-

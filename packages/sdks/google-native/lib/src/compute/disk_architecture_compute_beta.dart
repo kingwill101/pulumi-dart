@@ -4,16 +4,15 @@ enum DiskArchitectureComputeBeta {
   arm64("ARM64"),
   x8664("X86_64");
 
-  const DiskArchitectureComputeBeta(this.value);
-  final String value;
+  const DiskArchitectureComputeBeta(this.wireValue);
+  final String wireValue;
 
   static DiskArchitectureComputeBeta fromValue(String value) {
     for (final item in DiskArchitectureComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskArchitectureComputeBeta value: $value');
   }
 }
-

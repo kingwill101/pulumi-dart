@@ -8,20 +8,15 @@ class GetBucketVersioning {
 
   /// Creates a new [GetBucketVersioning].
   /// [enabled] While set to true, versioning is fully enabled for this bucket.
-  GetBucketVersioning({
-    required this.enabled,
-  });
+  GetBucketVersioning({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory GetBucketVersioning.fromMap(Map<String, dynamic> map) {
     return GetBucketVersioning(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

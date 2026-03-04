@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingHostPoolReference {
   /// Arm path of referenced hostpool.
   final pulumi.Input<String>? hostPoolArmPath;
+
   /// Is the scaling plan enabled for this hostpool.
   final pulumi.Input<bool>? scalingPlanEnabled;
 
   /// Creates a new [ScalingHostPoolReference].
   /// [hostPoolArmPath] Arm path of referenced hostpool.
   /// [scalingPlanEnabled] Is the scaling plan enabled for this hostpool.
-  ScalingHostPoolReference({
-    this.hostPoolArmPath,
-    this.scalingPlanEnabled,
-  });
+  ScalingHostPoolReference({this.hostPoolArmPath, this.scalingPlanEnabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ScalingHostPoolReference {
 
   factory ScalingHostPoolReference.fromMap(Map<String, dynamic> map) {
     return ScalingHostPoolReference(
-      hostPoolArmPath: map['hostPoolArmPath'] == null ? null : (map['hostPoolArmPath']! as String).input(),
-      scalingPlanEnabled: map['scalingPlanEnabled'] == null ? null : (map['scalingPlanEnabled']! as bool).input(),
+      hostPoolArmPath: (() {
+        final guardedValue = map['hostPoolArmPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scalingPlanEnabled: (() {
+        final guardedValue = map['scalingPlanEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

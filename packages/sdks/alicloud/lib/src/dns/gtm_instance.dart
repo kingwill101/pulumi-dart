@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'gtm_instance_alert_config.dart';
 import 'gtm_instance_args.dart';
 import 'gtm_instance_state.dart';
 
@@ -7,7 +6,7 @@ import 'gtm_instance_state.dart';
 ///
 /// For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
 ///
-/// > **NOTE:** Available since v1.151.0.
+/// &gt; **NOTE:** Available since v1.151.0.
 ///
 /// ## Example Usage
 ///
@@ -298,43 +297,62 @@ import 'gtm_instance_state.dart';
 /// ```
 class GtmInstance extends pulumi.CustomResource {
   /// The alert notification methods. See `alert_config` below for details.
-  late final pulumi.Output<List<GtmInstanceAlertConfig>?> alertConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> alertConfigs;
+
   /// The alert group.
   late final pulumi.Output<List<String>?> alertGroups;
+
   /// The access type of the CNAME domain name. Valid value: `PUBLIC`.
   late final pulumi.Output<String> cnameType;
+
   /// The force update.
   late final pulumi.Output<bool?> forceUpdate;
+
   /// The quota of detection tasks.
   late final pulumi.Output<int> healthCheckTaskCount;
+
   /// The name of the instance.
   late final pulumi.Output<String> instanceName;
+
   /// The lang.
   late final pulumi.Output<String?> lang;
+
   /// Paid package version. Valid values: `ultimate`, `standard`.
   late final pulumi.Output<String> packageEdition;
+
   /// The Payment Type of the resource. Valid value: `Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
   late final pulumi.Output<int> period;
+
   /// The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
   late final pulumi.Output<String> publicCnameMode;
+
   /// The CNAME access domain name.
   late final pulumi.Output<String> publicRr;
+
   /// The website domain name that the user uses on the Internet.
   late final pulumi.Output<String> publicUserDomainName;
+
   /// The domain name that is used to access GTM over the Internet.
   late final pulumi.Output<String> publicZoneName;
+
   /// Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
   late final pulumi.Output<int?> renewPeriod;
+
   /// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
   late final pulumi.Output<String> renewalStatus;
+
   /// The ID of the resource group.
   late final pulumi.Output<String?> resourceGroupId;
+
   /// The quota of SMS notifications.
   late final pulumi.Output<int> smsNotificationCount;
+
   /// The type of the access policy. Valid values: `GEO`, `LATENCY`.
   late final pulumi.Output<String> strategyMode;
+
   /// The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
   late final pulumi.Output<int?> ttl;
 
@@ -347,31 +365,31 @@ class GtmInstance extends pulumi.CustomResource {
     GtmInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/gtmInstance:GtmInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertConfigs = registerOutput<List<GtmInstanceAlertConfig>?>('alertConfigs');
-    this.alertGroups = registerOutput<List<String>?>('alertGroups');
-    this.cnameType = registerOutput<String>('cnameType');
-    this.forceUpdate = registerOutput<bool?>('forceUpdate');
-    this.healthCheckTaskCount = registerOutput<int>('healthCheckTaskCount');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.lang = registerOutput<String?>('lang');
-    this.packageEdition = registerOutput<String>('packageEdition');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int>('period');
-    this.publicCnameMode = registerOutput<String>('publicCnameMode');
-    this.publicRr = registerOutput<String>('publicRr');
-    this.publicUserDomainName = registerOutput<String>('publicUserDomainName');
-    this.publicZoneName = registerOutput<String>('publicZoneName');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.smsNotificationCount = registerOutput<int>('smsNotificationCount');
-    this.strategyMode = registerOutput<String>('strategyMode');
-    this.ttl = registerOutput<int?>('ttl');
+         'alicloud:dns/gtmInstance:GtmInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertConfigs = registerOutput<List<Map<String, dynamic>>?>('alertConfigs');
+    alertGroups = registerOutput<List<String>?>('alertGroups');
+    cnameType = registerOutput<String>('cnameType');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    healthCheckTaskCount = registerOutput<int>('healthCheckTaskCount');
+    instanceName = registerOutput<String>('instanceName');
+    lang = registerOutput<String?>('lang');
+    packageEdition = registerOutput<String>('packageEdition');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int>('period');
+    publicCnameMode = registerOutput<String>('publicCnameMode');
+    publicRr = registerOutput<String>('publicRr');
+    publicUserDomainName = registerOutput<String>('publicUserDomainName');
+    publicZoneName = registerOutput<String>('publicZoneName');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    smsNotificationCount = registerOutput<int>('smsNotificationCount');
+    strategyMode = registerOutput<String>('strategyMode');
+    ttl = registerOutput<int?>('ttl');
   }
 
   /// Gets an existing [GtmInstance] resource's state with the given [name] and [id].
@@ -392,30 +410,30 @@ class GtmInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/gtmInstance:GtmInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertConfigs = registerOutput<List<GtmInstanceAlertConfig>?>('alertConfigs');
-    this.alertGroups = registerOutput<List<String>?>('alertGroups');
-    this.cnameType = registerOutput<String>('cnameType');
-    this.forceUpdate = registerOutput<bool?>('forceUpdate');
-    this.healthCheckTaskCount = registerOutput<int>('healthCheckTaskCount');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.lang = registerOutput<String?>('lang');
-    this.packageEdition = registerOutput<String>('packageEdition');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int>('period');
-    this.publicCnameMode = registerOutput<String>('publicCnameMode');
-    this.publicRr = registerOutput<String>('publicRr');
-    this.publicUserDomainName = registerOutput<String>('publicUserDomainName');
-    this.publicZoneName = registerOutput<String>('publicZoneName');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.smsNotificationCount = registerOutput<int>('smsNotificationCount');
-    this.strategyMode = registerOutput<String>('strategyMode');
-    this.ttl = registerOutput<int?>('ttl');
+         'alicloud:dns/gtmInstance:GtmInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertConfigs = registerOutput<List<Map<String, dynamic>>?>('alertConfigs');
+    alertGroups = registerOutput<List<String>?>('alertGroups');
+    cnameType = registerOutput<String>('cnameType');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    healthCheckTaskCount = registerOutput<int>('healthCheckTaskCount');
+    instanceName = registerOutput<String>('instanceName');
+    lang = registerOutput<String?>('lang');
+    packageEdition = registerOutput<String>('packageEdition');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int>('period');
+    publicCnameMode = registerOutput<String>('publicCnameMode');
+    publicRr = registerOutput<String>('publicRr');
+    publicUserDomainName = registerOutput<String>('publicUserDomainName');
+    publicZoneName = registerOutput<String>('publicZoneName');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    smsNotificationCount = registerOutput<int>('smsNotificationCount');
+    strategyMode = registerOutput<String>('strategyMode');
+    ttl = registerOutput<int?>('ttl');
   }
 }

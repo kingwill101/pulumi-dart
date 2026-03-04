@@ -9,20 +9,15 @@ class EnterpriseConfigResponse {
 
   /// Creates a new [EnterpriseConfigResponse].
   /// [clusterTier] [Output only] cluster_tier specifies the premium tier of the cluster.
-  EnterpriseConfigResponse({
-    required this.clusterTier,
-  });
+  EnterpriseConfigResponse({required this.clusterTier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clusterTier': clusterTier,
-    };
+    return <String, dynamic>{'clusterTier': clusterTier};
   }
 
   factory EnterpriseConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseConfigResponse(
-      clusterTier: (map['clusterTier'] as String).input(),
+      clusterTier: pulumi.Input.fromValue(map['clusterTier'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_oslogin;
-
 export 'oslogin/functions.dart';
 export 'oslogin/get_ssh_public_key_args.dart';
 export 'oslogin/get_ssh_public_key_oslogin_v1alpha_args.dart';

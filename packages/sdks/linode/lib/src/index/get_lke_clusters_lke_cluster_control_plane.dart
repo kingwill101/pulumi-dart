@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLkeClustersLkeClusterControlPlane {
   /// Enables audit logs on the cluster's control plane.
   final pulumi.Input<bool> auditLogsEnabled;
+
   /// Whether High Availability is enabled for the cluster Control Plane.
   final pulumi.Input<bool> highAvailability;
 
@@ -23,11 +24,12 @@ class GetLkeClustersLkeClusterControlPlane {
     };
   }
 
-  factory GetLkeClustersLkeClusterControlPlane.fromMap(Map<String, dynamic> map) {
+  factory GetLkeClustersLkeClusterControlPlane.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLkeClustersLkeClusterControlPlane(
-      auditLogsEnabled: (map['auditLogsEnabled'] as bool).input(),
-      highAvailability: (map['highAvailability'] as bool).input(),
+      auditLogsEnabled: pulumi.Input.fromValue(map['auditLogsEnabled'] as bool),
+      highAvailability: pulumi.Input.fromValue(map['highAvailability'] as bool),
     );
   }
 }
-

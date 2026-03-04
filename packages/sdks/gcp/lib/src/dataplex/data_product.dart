@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'data_product_access_group.dart';
 import 'data_product_args.dart';
 import 'data_product_state.dart';
 
@@ -477,37 +476,51 @@ import 'data_product_state.dart';
 class DataProduct extends pulumi.CustomResource {
   /// Custom user defined access groups at the data product level.
   /// Structure is documented below.
-  late final pulumi.Output<List<DataProductAccessGroup>?> accessGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> accessGroups;
+
   /// Number of associated data assets.
   late final pulumi.Output<int> assetCount;
+
   /// Creation timestamp.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the data product.
   late final pulumi.Output<String> dataProductId;
+
   /// Description of the data product.
   late final pulumi.Output<String?> description;
+
   /// User-friendly display name.
   late final pulumi.Output<String> displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Checksum for concurrency control.
   late final pulumi.Output<String> etag;
+
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location for the data product.
   late final pulumi.Output<String> location;
+
   /// Emails of the owners.
   late final pulumi.Output<List<String>> ownerEmails;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// System generated unique ID.
   late final pulumi.Output<String> uid;
+
   /// Last update timestamp.
   late final pulumi.Output<String> updateTime;
 
@@ -520,26 +533,26 @@ class DataProduct extends pulumi.CustomResource {
     DataProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataplex/dataProduct:DataProduct',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroups = registerOutput<List<DataProductAccessGroup>?>('accessGroups');
-    this.assetCount = registerOutput<int>('assetCount');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataProductId = registerOutput<String>('dataProductId');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.etag = registerOutput<String>('etag');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.ownerEmails = registerOutput<List<String>>('ownerEmails');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+         'gcp:dataplex/dataProduct:DataProduct',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroups = registerOutput<List<Map<String, dynamic>>?>('accessGroups');
+    assetCount = registerOutput<int>('assetCount');
+    createTime = registerOutput<String>('createTime');
+    dataProductId = registerOutput<String>('dataProductId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    ownerEmails = registerOutput<List<String>>('ownerEmails');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [DataProduct] resource's state with the given [name] and [id].
@@ -560,25 +573,25 @@ class DataProduct extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataplex/dataProduct:DataProduct',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroups = registerOutput<List<DataProductAccessGroup>?>('accessGroups');
-    this.assetCount = registerOutput<int>('assetCount');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataProductId = registerOutput<String>('dataProductId');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.etag = registerOutput<String>('etag');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.ownerEmails = registerOutput<List<String>>('ownerEmails');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+         'gcp:dataplex/dataProduct:DataProduct',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroups = registerOutput<List<Map<String, dynamic>>?>('accessGroups');
+    assetCount = registerOutput<int>('assetCount');
+    createTime = registerOutput<String>('createTime');
+    dataProductId = registerOutput<String>('dataProductId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    ownerEmails = registerOutput<List<String>>('ownerEmails');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

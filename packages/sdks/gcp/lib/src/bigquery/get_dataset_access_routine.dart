@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatasetAccessRoutine {
   /// The dataset ID.
   final pulumi.Input<String> datasetId;
+
   /// The ID of the project containing this table.
   final pulumi.Input<String> projectId;
+
   /// The ID of the routine. The ID must contain only letters (a-z,
   /// A-Z), numbers (0-9), or underscores (_). The maximum length
   /// is 256 characters.
@@ -32,10 +34,9 @@ class GetDatasetAccessRoutine {
 
   factory GetDatasetAccessRoutine.fromMap(Map<String, dynamic> map) {
     return GetDatasetAccessRoutine(
-      datasetId: (map['datasetId'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
-      routineId: (map['routineId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      routineId: pulumi.Input.fromValue(map['routineId'] as String),
     );
   }
 }
-

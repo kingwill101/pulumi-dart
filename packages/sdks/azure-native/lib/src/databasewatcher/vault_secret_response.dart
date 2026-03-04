@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultSecretResponse {
   /// The Azure resource ID of the Key Vault instance storing database authentication secrets.
   final pulumi.Input<String>? akvResourceId;
+
   /// The path to the Key Vault secret storing the password for authentication to a target.
   final pulumi.Input<String>? akvTargetPassword;
+
   /// The path to the Key Vault secret storing the login name (aka user name, aka account name) for authentication to a target.
   final pulumi.Input<String>? akvTargetUser;
 
@@ -31,10 +33,21 @@ class VaultSecretResponse {
 
   factory VaultSecretResponse.fromMap(Map<String, dynamic> map) {
     return VaultSecretResponse(
-      akvResourceId: map['akvResourceId'] == null ? null : (map['akvResourceId']! as String).input(),
-      akvTargetPassword: map['akvTargetPassword'] == null ? null : (map['akvTargetPassword']! as String).input(),
-      akvTargetUser: map['akvTargetUser'] == null ? null : (map['akvTargetUser']! as String).input(),
+      akvResourceId: (() {
+        final guardedValue = map['akvResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      akvTargetPassword: (() {
+        final guardedValue = map['akvTargetPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      akvTargetUser: (() {
+        final guardedValue = map['akvTargetUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

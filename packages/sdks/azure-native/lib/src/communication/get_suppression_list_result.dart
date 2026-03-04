@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetSuppressionListResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The date the resource was created.
   final String createdTimeStamp;
+
   /// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
   final String dataLocation;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The date the resource was last updated.
   final String lastUpdatedTimeStamp;
+
   /// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
   final String? listName;
+
   /// The name of the resource
   final String name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -66,11 +74,16 @@ class GetSuppressionListResult {
       dataLocation: map['dataLocation'] as String,
       id: map['id'] as String,
       lastUpdatedTimeStamp: map['lastUpdatedTimeStamp'] as String,
-      listName: map['listName'] == null ? null : map['listName']! as String,
+      listName: (() {
+        final guardedValue = map['listName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

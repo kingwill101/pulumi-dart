@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureCoreNFVIDetails {
   /// Location of the Azure core.
   final pulumi.Input<String>? location;
+
   /// Name of the nfvi.
   final pulumi.Input<String>? name;
+
   /// The NFVI type.
   /// Expected value is 'AzureCore'.
   final pulumi.Input<String> nfviType;
@@ -16,11 +18,7 @@ class AzureCoreNFVIDetails {
   /// [location] Location of the Azure core.
   /// [name] Name of the nfvi.
   /// [nfviType] The NFVI type.
-  AzureCoreNFVIDetails({
-    this.location,
-    this.name,
-    required this.nfviType,
-  });
+  AzureCoreNFVIDetails({this.location, this.name, required this.nfviType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class AzureCoreNFVIDetails {
 
   factory AzureCoreNFVIDetails.fromMap(Map<String, dynamic> map) {
     return AzureCoreNFVIDetails(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nfviType: (map['nfviType'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfviType: pulumi.Input.fromValue(map['nfviType'] as String),
     );
   }
 }
-

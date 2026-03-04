@@ -224,7 +224,7 @@ Future<GetBrokerNodesResult> getBrokerNodes(
 
 /// Get information on an Amazon MSK Cluster.
 ///
-/// > **Note:** This data sources returns information on _provisioned_ clusters.
+/// &gt; **Note:** This data sources returns information on _provisioned_ clusters.
 ///
 /// ## Example Usage
 ///

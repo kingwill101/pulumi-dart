@@ -10,20 +10,15 @@ class NoneDatastoreCredentialsResponse {
 
   /// Creates a new [NoneDatastoreCredentialsResponse].
   /// [credentialsType] Enum to determine the datastore credentials type.
-  NoneDatastoreCredentialsResponse({
-    required this.credentialsType,
-  });
+  NoneDatastoreCredentialsResponse({required this.credentialsType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'credentialsType': credentialsType,
-    };
+    return <String, dynamic>{'credentialsType': credentialsType};
   }
 
   factory NoneDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return NoneDatastoreCredentialsResponse(
-      credentialsType: (map['credentialsType'] as String).input(),
+      credentialsType: pulumi.Input.fromValue(map['credentialsType'] as String),
     );
   }
 }
-

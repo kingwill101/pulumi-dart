@@ -5,7 +5,11 @@ import 'application_application_configuration_sql_application_configuration_inpu
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat {
   /// Provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters> mappingParameters;
+  final pulumi.Input<
+    ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters
+  >
+  mappingParameters;
+
   /// The type of record format. Valid values: `CSV`, `JSON`.
   final pulumi.Input<String> recordFormatType;
 
@@ -19,16 +23,27 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mappingParameters': pulumi.Input.mapInputValue<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters, Map<String, dynamic>>(mappingParameters, (value) => value.toMap()),
+      'mappingParameters':
+          pulumi.Input.mapInputValue<
+            ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters,
+            Map<String, dynamic>
+          >(mappingParameters, (value) => value.toMap()),
       'recordFormatType': recordFormatType,
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat(
-      mappingParameters: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters']! as Map).cast<String, dynamic>())).input(),
-      recordFormatType: (map['recordFormatType'] as String).input(),
+      mappingParameters: pulumi.Input.fromValue(
+        ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters.fromMap(
+          (map['mappingParameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      recordFormatType: pulumi.Input.fromValue(
+        map['recordFormatType'] as String,
+      ),
     );
   }
 }
-

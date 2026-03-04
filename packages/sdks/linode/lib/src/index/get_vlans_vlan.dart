@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVlansVlan {
   /// When the VLAN was created.
   final pulumi.Input<String> created;
+
   /// The unique label of the VLAN.
   final pulumi.Input<String> label;
+
   /// The running Linodes currently attached to the VLAN.
   final pulumi.Input<List<int>> linodes;
+
   /// The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
   final pulumi.Input<String> region;
 
@@ -35,11 +38,10 @@ class GetVlansVlan {
 
   factory GetVlansVlan.fromMap(Map<String, dynamic> map) {
     return GetVlansVlan(
-      created: (map['created'] as String).input(),
-      label: (map['label'] as String).input(),
-      linodes: ((map['linodes'] as List).cast<int>()).input(),
-      region: (map['region'] as String).input(),
+      created: pulumi.Input.fromValue(map['created'] as String),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      linodes: pulumi.Input.fromValue((map['linodes'] as List).cast<int>()),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

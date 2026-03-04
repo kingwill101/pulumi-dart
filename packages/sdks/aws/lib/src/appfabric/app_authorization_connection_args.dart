@@ -11,10 +11,13 @@ import 'app_authorization_connection_timeouts.dart';
 class AppAuthorizationConnectionArgs {
   /// The Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
   final pulumi.Input<String> appAuthorizationArn;
+
   /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
   final pulumi.Input<String> appBundleArn;
+
   /// Contains OAuth2 authorization information.This is required if the app authorization for the request is configured with an OAuth2 (oauth2) authorization type.
   final pulumi.Input<AppAuthorizationConnectionAuthRequest>? authRequest;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<AppAuthorizationConnectionTimeouts>? timeouts;
@@ -37,20 +40,49 @@ class AppAuthorizationConnectionArgs {
     return <String, dynamic>{
       'appAuthorizationArn': appAuthorizationArn,
       'appBundleArn': appBundleArn,
-      'authRequest': ?pulumi.Input.mapOptionalInputValue<AppAuthorizationConnectionAuthRequest, Map<String, dynamic>>(authRequest, (value) => value.toMap()),
+      'authRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAuthorizationConnectionAuthRequest,
+            Map<String, dynamic>
+          >(authRequest, (value) => value.toMap()),
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AppAuthorizationConnectionTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppAuthorizationConnectionTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AppAuthorizationConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationConnectionArgs(
-      appAuthorizationArn: (map['appAuthorizationArn'] as String).input(),
-      appBundleArn: (map['appBundleArn'] as String).input(),
-      authRequest: map['authRequest'] == null ? null : ((AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((AppAuthorizationConnectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      appAuthorizationArn: pulumi.Input.fromValue(
+        map['appAuthorizationArn'] as String,
+      ),
+      appBundleArn: pulumi.Input.fromValue(map['appBundleArn'] as String),
+      authRequest: (() {
+        final guardedValue = map['authRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAuthorizationConnectionAuthRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppAuthorizationConnectionTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

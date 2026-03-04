@@ -7,10 +7,13 @@ import 'object_access_control_project_team.dart';
 class ObjectAccessControl {
   /// The name of the bucket.
   final pulumi.Input<String>? bucket;
+
   /// The domain associated with the entity, if any.
   final pulumi.Input<String>? domain;
+
   /// The email address associated with the entity, if any.
   final pulumi.Input<String>? email;
+
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
   /// - user-email
@@ -24,22 +27,31 @@ class ObjectAccessControl {
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
   final pulumi.Input<String>? entity;
+
   /// The ID for the entity, if any.
   final pulumi.Input<String>? entityId;
+
   /// HTTP 1.1 Entity tag for the access-control entry.
   final pulumi.Input<String>? etag;
+
   /// The content generation of the object, if applied to an object.
   final pulumi.Input<String>? generation;
+
   /// The ID of the access-control entry.
   final pulumi.Input<String>? id;
+
   /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
   final pulumi.Input<String>? kind;
+
   /// The name of the object, if applied to an object.
-  final pulumi.Input<String>? object;
+  final pulumi.Input<String>? object_;
+
   /// The project team associated with the entity, if any.
   final pulumi.Input<ObjectAccessControlProjectTeam>? projectTeam;
+
   /// The access permission for the entity.
   final pulumi.Input<String>? role;
+
   /// The link to this access-control entry.
   final pulumi.Input<String>? selfLink;
 
@@ -53,7 +65,7 @@ class ObjectAccessControl {
   /// [generation] The content generation of the object, if applied to an object.
   /// [id] The ID of the access-control entry.
   /// [kind] The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
-  /// [object] The name of the object, if applied to an object.
+  /// [object_] The name of the object, if applied to an object.
   /// [projectTeam] The project team associated with the entity, if any.
   /// [role] The access permission for the entity.
   /// [selfLink] The link to this access-control entry.
@@ -67,7 +79,7 @@ class ObjectAccessControl {
     this.generation,
     this.id,
     this.kind,
-    this.object,
+    this.object_,
     this.projectTeam,
     this.role,
     this.selfLink,
@@ -84,8 +96,12 @@ class ObjectAccessControl {
       'generation': ?generation,
       'id': ?id,
       'kind': ?kind,
-      'object': ?object,
-      'projectTeam': ?pulumi.Input.mapOptionalInputValue<ObjectAccessControlProjectTeam, Map<String, dynamic>>(projectTeam, (value) => value.toMap()),
+      'object': ?object_,
+      'projectTeam':
+          ?pulumi.Input.mapOptionalInputValue<
+            ObjectAccessControlProjectTeam,
+            Map<String, dynamic>
+          >(projectTeam, (value) => value.toMap()),
       'role': ?role,
       'selfLink': ?selfLink,
     };
@@ -93,20 +109,75 @@ class ObjectAccessControl {
 
   factory ObjectAccessControl.fromMap(Map<String, dynamic> map) {
     return ObjectAccessControl(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      object: map['object'] == null ? null : (map['object']! as String).input(),
-      projectTeam: map['projectTeam'] == null ? null : (ObjectAccessControlProjectTeam.fromMap((map['projectTeam']! as Map).cast<String, dynamic>())).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entity: (() {
+        final guardedValue = map['entity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityId: (() {
+        final guardedValue = map['entityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      object_: (() {
+        final guardedValue = map['object'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectTeam: (() {
+        final guardedValue = map['projectTeam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectAccessControlProjectTeam.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

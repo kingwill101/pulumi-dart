@@ -4,7 +4,7 @@ import 'database_state.dart';
 
 /// Manages a Kusto (also known as Azure Data Explorer) Database
 ///
-/// !> **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -224,7 +224,7 @@ import 'database_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Kusto` - 2024-04-13
@@ -239,16 +239,22 @@ import 'database_state.dart';
 class Database extends pulumi.CustomResource {
   /// Specifies the name of the Kusto Cluster this database will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
+
   /// The time the data that should be kept in cache for fast queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
   late final pulumi.Output<String?> hotCachePeriod;
+
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Kusto Database to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The size of the database in bytes.
   late final pulumi.Output<double> size;
+
   /// The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
   late final pulumi.Output<String?> softDeletePeriod;
 
@@ -261,18 +267,18 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/database:Database',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.hotCachePeriod = registerOutput<String?>('hotCachePeriod');
-    this.location = registerOutput<String>('location');
+         'azure:kusto/database:Database',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.size = registerOutput<double>('size');
-    this.softDeletePeriod = registerOutput<String?>('softDeletePeriod');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    size = registerOutput<double>('size');
+    softDeletePeriod = registerOutput<String?>('softDeletePeriod');
   }
 
   /// Gets an existing [Database] resource's state with the given [name] and [id].
@@ -293,17 +299,17 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/database:Database',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.hotCachePeriod = registerOutput<String?>('hotCachePeriod');
-    this.location = registerOutput<String>('location');
+         'azure:kusto/database:Database',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.size = registerOutput<double>('size');
-    this.softDeletePeriod = registerOutput<String?>('softDeletePeriod');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    size = registerOutput<double>('size');
+    softDeletePeriod = registerOutput<String?>('softDeletePeriod');
   }
 }

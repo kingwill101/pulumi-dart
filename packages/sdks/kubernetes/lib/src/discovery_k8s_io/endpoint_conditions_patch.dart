@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointConditionsPatch {
   /// ready indicates that this endpoint is ready to receive traffic, according to whatever system is managing the endpoint. A nil value should be interpreted as "true". In general, an endpoint should be marked ready if it is serving and not terminating, though this can be overridden in some cases, such as when the associated Service has set the publishNotReadyAddresses flag.
   final pulumi.Input<bool>? ready;
+
   /// serving indicates that this endpoint is able to receive traffic, according to whatever system is managing the endpoint. For endpoints backed by pods, the EndpointSlice controller will mark the endpoint as serving if the pod's Ready condition is True. A nil value should be interpreted as "true".
   final pulumi.Input<bool>? serving;
+
   /// terminating indicates that this endpoint is terminating. A nil value should be interpreted as "false".
   final pulumi.Input<bool>? terminating;
 
@@ -15,11 +17,7 @@ class EndpointConditionsPatch {
   /// [ready] ready indicates that this endpoint is ready to receive traffic, according to whatever system is managing the endpoint. A nil value should be interpreted as "true". In general, an endpoint should be marked ready if it is serving and not terminating, though this can be overridden in some cases, such as when the associated Service has set the publishNotReadyAddresses flag.
   /// [serving] serving indicates that this endpoint is able to receive traffic, according to whatever system is managing the endpoint. For endpoints backed by pods, the EndpointSlice controller will mark the endpoint as serving if the pod's Ready condition is True. A nil value should be interpreted as "true".
   /// [terminating] terminating indicates that this endpoint is terminating. A nil value should be interpreted as "false".
-  EndpointConditionsPatch({
-    this.ready,
-    this.serving,
-    this.terminating,
-  });
+  EndpointConditionsPatch({this.ready, this.serving, this.terminating});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class EndpointConditionsPatch {
 
   factory EndpointConditionsPatch.fromMap(Map<String, dynamic> map) {
     return EndpointConditionsPatch(
-      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
-      serving: map['serving'] == null ? null : (map['serving']! as bool).input(),
-      terminating: map['terminating'] == null ? null : (map['terminating']! as bool).input(),
+      ready: (() {
+        final guardedValue = map['ready'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serving: (() {
+        final guardedValue = map['serving'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      terminating: (() {
+        final guardedValue = map['terminating'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -11,6 +11,8 @@ import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart' as providerpb;
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pb.dart' as pulumirpc;
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart';
 import 'package:test/test.dart';
+import '../../mocks/mock_engine.dart';
+import '../../test_utils/monitor_test_utils.dart';
 
 class _RegistryMonitorService extends ResourceMonitorServiceBase {
   pulumirpc.RegisterResourceRequest? registerResourceRequest;
@@ -122,24 +124,53 @@ Input<String> _acceptInputString(Input<String> value) => value;
 
 class _InputIdSourceResource extends CustomResource {
   _InputIdSourceResource(String name)
-      : super('test:index:InputIdSource', name, const {}, CustomResourceOptions());
+    : super(
+        'test:index:InputIdSource',
+        name,
+        const {},
+        CustomResourceOptions(),
+      );
 }
 
 class _InputIdConsumerResource extends CustomResource {
   final Input<String> targetId;
 
   _InputIdConsumerResource(String name, this.targetId)
-      : super(
-          'test:index:InputIdConsumer',
-          name,
-          {'targetId': targetId},
-          CustomResourceOptions(),
-        );
+    : super('test:index:InputIdConsumer', name, {
+        'targetId': targetId,
+      }, CustomResourceOptions());
+}
+
+class _InputAssetRegistryMonitor extends BaseMonitor {
+  @override
+  Future<RegisterResourceResponse> registerResource(
+    Resource resource,
+    RegisterResourceRequest request,
+  ) async {
+    return RegisterResourceResponse()
+      ..urn = 'urn:pulumi:stack::project::${request.type}::${request.name}'
+      ..id = '${request.name}-id'
+      ..object = (Struct()..fields['ok'] = (Value()..boolValue = true));
+  }
 }
 
 void main() {
   group('input asset registry', () {
+    setUp(() {
+      DeploymentImpl.setTestInstance(
+        DeploymentImpl.createForTesting(
+          organizationName: 'organization',
+          projectName: 'project',
+          stackName: 'stack',
+          isDryRun: false,
+          monitor: _InputAssetRegistryMonitor(),
+          engine: MockEngine(),
+        ),
+      );
+    });
+
     tearDown(() {
+      DeploymentImpl.clearInstance();
       Runtime().disconnectSync();
       Runtime().resetOptions(
         project: 'project',
@@ -244,31 +275,35 @@ void main() {
       },
     );
 
-    test('CustomResource.id can be used wherever Input<String> is expected', () async {
-      final source = _InputIdSourceResource('source');
-      source.resolveId('source-id', isKnown: true);
+    test(
+      'CustomResource.id can be used wherever Input<String> is expected',
+      () async {
+        final source = _InputIdSourceResource('source');
+        source.resolveId('source-id', isKnown: true);
 
-      final Input<String> idAsInput = source.id;
-      final Input<String> idViaStaticInput = Input.input<String>(source.id);
-      final Input<String> idViaFromOutput = Input.fromOutput(source.id);
-      final Input<String>? idViaOptionalInput =
-          Input.asOptionalInput<String>(source.id);
+        final Input<String> idAsInput = source.id;
+        final Input<String> idViaStaticInput = Input.input<String>(source.id);
+        final Input<String> idViaFromOutput = Input.fromOutput(source.id);
+        final Input<String>? idViaOptionalInput = Input.asOptionalInput<String>(
+          source.id,
+        );
 
-      final mapped = Input.mapInputValue<String, String>(idAsInput, (value) {
-        return 'mapped-$value';
-      });
-      final consumer = _InputIdConsumerResource('consumer', idAsInput);
+        final mapped = Input.mapInputValue<String, String>(idAsInput, (value) {
+          return 'mapped-$value';
+        });
+        final consumer = _InputIdConsumerResource('consumer', idAsInput);
 
-      expect(await idAsInput.toOutput().getValue(), 'source-id');
-      expect(await idViaStaticInput.toOutput().getValue(), 'source-id');
-      expect(await idViaFromOutput.toOutput().getValue(), 'source-id');
-      expect(await idViaOptionalInput!.toOutput().getValue(), 'source-id');
-      expect(await mapped.toOutput().getValue(), 'mapped-source-id');
-      expect(identical(consumer.targetId, idAsInput), isTrue);
-      expect(source.id is Input<String>, isTrue);
-      expect(Output.create('inline') is Input<String>, isTrue);
-      expect(_acceptInputString(source.id), same(source.id));
-    });
+        expect(await idAsInput.toOutput().getValue(), 'source-id');
+        expect(await idViaStaticInput.toOutput().getValue(), 'source-id');
+        expect(await idViaFromOutput.toOutput().getValue(), 'source-id');
+        expect(await idViaOptionalInput!.toOutput().getValue(), 'source-id');
+        expect(await mapped.toOutput().getValue(), 'mapped-source-id');
+        expect(identical(consumer.targetId, idAsInput), isTrue);
+        expect(source.id is Input<String>, isTrue);
+        expect(Output.create('inline') is Input<String>, isTrue);
+        expect(_acceptInputString(source.id), same(source.id));
+      },
+    );
 
     test(
       'ResourceRegistry.constructResource uses registered factory and fallback',

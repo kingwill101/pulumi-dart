@@ -669,60 +669,87 @@ import 'gcp_integrations_vpc_access.dart';
 class GcpIntegrations extends pulumi.CustomResource {
   /// The New Relic account ID to operate on.  This allows the user to override the `account_id` attribute set on the provider. Defaults to the environment variable `NEW_RELIC_ACCOUNT_ID`.
   late final pulumi.Output<String> accountId;
+
   /// Alloy DB integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsAlloyDb?> alloyDb;
+
   /// App Engine integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsAppEngine?> appEngine;
+
   /// Biq Query integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsBigQuery?> bigQuery;
+
   /// Big Table. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsBigTable?> bigTable;
+
   /// Composer integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsComposer?> composer;
+
   /// Data Flow integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsDataFlow?> dataFlow;
+
   /// Data Proc integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsDataProc?> dataProc;
+
   /// Data Store integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsDataStore?> dataStore;
+
   /// Fire Base Database integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireBaseDatabase?> fireBaseDatabase;
+
   /// Fire Base Hosting integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireBaseHosting?> fireBaseHosting;
+
   /// Fire Base Storage integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireBaseStorage?> fireBaseStorage;
+
   /// Fire Store integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFireStore?> fireStore;
+
   /// Functions integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsFunctions?> functions;
+
   /// Interconnect integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsInterconnect?> interconnect;
+
   /// Kubernetes integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsKubernetes?> kubernetes;
+
   /// The ID of the linked GCP account in New Relic.
   ///
   /// The following arguments/integration blocks are intended to be used with a minimum `metrics_polling_interval` of 300 seconds.
   late final pulumi.Output<String> linkedAccountId;
+
   /// Load Balancing integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsLoadBalancing?> loadBalancing;
+
   /// Mem cache integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsMemCache?> memCache;
+
   /// Pub/Sub integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsPubSub?> pubSub;
+
   /// Redis integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsRedis?> redis;
+
   /// Router integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsRouter?> router;
+
   /// Run integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsRun?> run;
+
   /// Spanner integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsSpanner?> spanner;
+
   /// SQL integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsSql?> sql;
+
   /// Storage integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsStorage?> storage;
+
   /// Virtual machines integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsVirtualMachines?> virtualMachines;
+
   /// VPC Access integration. See Integration blocks below for details.
   late final pulumi.Output<GcpIntegrationsVpcAccess?> vpcAccess;
 
@@ -735,39 +762,49 @@ class GcpIntegrations extends pulumi.CustomResource {
     GcpIntegrationsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/gcpIntegrations:GcpIntegrations',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.alloyDb = registerOutput<GcpIntegrationsAlloyDb?>('alloyDb');
-    this.appEngine = registerOutput<GcpIntegrationsAppEngine?>('appEngine');
-    this.bigQuery = registerOutput<GcpIntegrationsBigQuery?>('bigQuery');
-    this.bigTable = registerOutput<GcpIntegrationsBigTable?>('bigTable');
-    this.composer = registerOutput<GcpIntegrationsComposer?>('composer');
-    this.dataFlow = registerOutput<GcpIntegrationsDataFlow?>('dataFlow');
-    this.dataProc = registerOutput<GcpIntegrationsDataProc?>('dataProc');
-    this.dataStore = registerOutput<GcpIntegrationsDataStore?>('dataStore');
-    this.fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>('fireBaseDatabase');
-    this.fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>('fireBaseHosting');
-    this.fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>('fireBaseStorage');
-    this.fireStore = registerOutput<GcpIntegrationsFireStore?>('fireStore');
-    this.functions = registerOutput<GcpIntegrationsFunctions?>('functions');
-    this.interconnect = registerOutput<GcpIntegrationsInterconnect?>('interconnect');
-    this.kubernetes = registerOutput<GcpIntegrationsKubernetes?>('kubernetes');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>('loadBalancing');
-    this.memCache = registerOutput<GcpIntegrationsMemCache?>('memCache');
-    this.pubSub = registerOutput<GcpIntegrationsPubSub?>('pubSub');
-    this.redis = registerOutput<GcpIntegrationsRedis?>('redis');
-    this.router = registerOutput<GcpIntegrationsRouter?>('router');
-    this.run = registerOutput<GcpIntegrationsRun?>('run');
-    this.spanner = registerOutput<GcpIntegrationsSpanner?>('spanner');
-    this.sql = registerOutput<GcpIntegrationsSql?>('sql');
-    this.storage = registerOutput<GcpIntegrationsStorage?>('storage');
-    this.virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>('virtualMachines');
-    this.vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>('vpcAccess');
+         'newrelic:cloud/gcpIntegrations:GcpIntegrations',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    alloyDb = registerOutput<GcpIntegrationsAlloyDb?>('alloyDb');
+    appEngine = registerOutput<GcpIntegrationsAppEngine?>('appEngine');
+    bigQuery = registerOutput<GcpIntegrationsBigQuery?>('bigQuery');
+    bigTable = registerOutput<GcpIntegrationsBigTable?>('bigTable');
+    composer = registerOutput<GcpIntegrationsComposer?>('composer');
+    dataFlow = registerOutput<GcpIntegrationsDataFlow?>('dataFlow');
+    dataProc = registerOutput<GcpIntegrationsDataProc?>('dataProc');
+    dataStore = registerOutput<GcpIntegrationsDataStore?>('dataStore');
+    fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>(
+      'fireBaseDatabase',
+    );
+    fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>(
+      'fireBaseHosting',
+    );
+    fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>(
+      'fireBaseStorage',
+    );
+    fireStore = registerOutput<GcpIntegrationsFireStore?>('fireStore');
+    functions = registerOutput<GcpIntegrationsFunctions?>('functions');
+    interconnect = registerOutput<GcpIntegrationsInterconnect?>('interconnect');
+    kubernetes = registerOutput<GcpIntegrationsKubernetes?>('kubernetes');
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>(
+      'loadBalancing',
+    );
+    memCache = registerOutput<GcpIntegrationsMemCache?>('memCache');
+    pubSub = registerOutput<GcpIntegrationsPubSub?>('pubSub');
+    redis = registerOutput<GcpIntegrationsRedis?>('redis');
+    router = registerOutput<GcpIntegrationsRouter?>('router');
+    run = registerOutput<GcpIntegrationsRun?>('run');
+    spanner = registerOutput<GcpIntegrationsSpanner?>('spanner');
+    sql = registerOutput<GcpIntegrationsSql?>('sql');
+    storage = registerOutput<GcpIntegrationsStorage?>('storage');
+    virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>(
+      'virtualMachines',
+    );
+    vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>('vpcAccess');
   }
 
   /// Gets an existing [GcpIntegrations] resource's state with the given [name] and [id].
@@ -788,38 +825,48 @@ class GcpIntegrations extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/gcpIntegrations:GcpIntegrations',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.alloyDb = registerOutput<GcpIntegrationsAlloyDb?>('alloyDb');
-    this.appEngine = registerOutput<GcpIntegrationsAppEngine?>('appEngine');
-    this.bigQuery = registerOutput<GcpIntegrationsBigQuery?>('bigQuery');
-    this.bigTable = registerOutput<GcpIntegrationsBigTable?>('bigTable');
-    this.composer = registerOutput<GcpIntegrationsComposer?>('composer');
-    this.dataFlow = registerOutput<GcpIntegrationsDataFlow?>('dataFlow');
-    this.dataProc = registerOutput<GcpIntegrationsDataProc?>('dataProc');
-    this.dataStore = registerOutput<GcpIntegrationsDataStore?>('dataStore');
-    this.fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>('fireBaseDatabase');
-    this.fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>('fireBaseHosting');
-    this.fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>('fireBaseStorage');
-    this.fireStore = registerOutput<GcpIntegrationsFireStore?>('fireStore');
-    this.functions = registerOutput<GcpIntegrationsFunctions?>('functions');
-    this.interconnect = registerOutput<GcpIntegrationsInterconnect?>('interconnect');
-    this.kubernetes = registerOutput<GcpIntegrationsKubernetes?>('kubernetes');
-    this.linkedAccountId = registerOutput<String>('linkedAccountId');
-    this.loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>('loadBalancing');
-    this.memCache = registerOutput<GcpIntegrationsMemCache?>('memCache');
-    this.pubSub = registerOutput<GcpIntegrationsPubSub?>('pubSub');
-    this.redis = registerOutput<GcpIntegrationsRedis?>('redis');
-    this.router = registerOutput<GcpIntegrationsRouter?>('router');
-    this.run = registerOutput<GcpIntegrationsRun?>('run');
-    this.spanner = registerOutput<GcpIntegrationsSpanner?>('spanner');
-    this.sql = registerOutput<GcpIntegrationsSql?>('sql');
-    this.storage = registerOutput<GcpIntegrationsStorage?>('storage');
-    this.virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>('virtualMachines');
-    this.vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>('vpcAccess');
+         'newrelic:cloud/gcpIntegrations:GcpIntegrations',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    alloyDb = registerOutput<GcpIntegrationsAlloyDb?>('alloyDb');
+    appEngine = registerOutput<GcpIntegrationsAppEngine?>('appEngine');
+    bigQuery = registerOutput<GcpIntegrationsBigQuery?>('bigQuery');
+    bigTable = registerOutput<GcpIntegrationsBigTable?>('bigTable');
+    composer = registerOutput<GcpIntegrationsComposer?>('composer');
+    dataFlow = registerOutput<GcpIntegrationsDataFlow?>('dataFlow');
+    dataProc = registerOutput<GcpIntegrationsDataProc?>('dataProc');
+    dataStore = registerOutput<GcpIntegrationsDataStore?>('dataStore');
+    fireBaseDatabase = registerOutput<GcpIntegrationsFireBaseDatabase?>(
+      'fireBaseDatabase',
+    );
+    fireBaseHosting = registerOutput<GcpIntegrationsFireBaseHosting?>(
+      'fireBaseHosting',
+    );
+    fireBaseStorage = registerOutput<GcpIntegrationsFireBaseStorage?>(
+      'fireBaseStorage',
+    );
+    fireStore = registerOutput<GcpIntegrationsFireStore?>('fireStore');
+    functions = registerOutput<GcpIntegrationsFunctions?>('functions');
+    interconnect = registerOutput<GcpIntegrationsInterconnect?>('interconnect');
+    kubernetes = registerOutput<GcpIntegrationsKubernetes?>('kubernetes');
+    linkedAccountId = registerOutput<String>('linkedAccountId');
+    loadBalancing = registerOutput<GcpIntegrationsLoadBalancing?>(
+      'loadBalancing',
+    );
+    memCache = registerOutput<GcpIntegrationsMemCache?>('memCache');
+    pubSub = registerOutput<GcpIntegrationsPubSub?>('pubSub');
+    redis = registerOutput<GcpIntegrationsRedis?>('redis');
+    router = registerOutput<GcpIntegrationsRouter?>('router');
+    run = registerOutput<GcpIntegrationsRun?>('run');
+    spanner = registerOutput<GcpIntegrationsSpanner?>('spanner');
+    sql = registerOutput<GcpIntegrationsSql?>('sql');
+    storage = registerOutput<GcpIntegrationsStorage?>('storage');
+    virtualMachines = registerOutput<GcpIntegrationsVirtualMachines?>(
+      'virtualMachines',
+    );
+    vpcAccess = registerOutput<GcpIntegrationsVpcAccess?>('vpcAccess');
   }
 }

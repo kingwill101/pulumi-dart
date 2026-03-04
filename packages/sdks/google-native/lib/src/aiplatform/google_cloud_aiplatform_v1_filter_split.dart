@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1FilterSplit {
   /// A filter on DataItems of the Dataset. DataItems that match this filter are used to test the Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to it in the training, validation, test order.
   final pulumi.Input<String> testFilter;
+
   /// A filter on DataItems of the Dataset. DataItems that match this filter are used to train the Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to it in the training, validation, test order.
   final pulumi.Input<String> trainingFilter;
+
   /// A filter on DataItems of the Dataset. DataItems that match this filter are used to validate the Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to it in the training, validation, test order.
   final pulumi.Input<String> validationFilter;
 
@@ -31,10 +33,11 @@ class GoogleCloudAiplatformV1FilterSplit {
 
   factory GoogleCloudAiplatformV1FilterSplit.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FilterSplit(
-      testFilter: (map['testFilter'] as String).input(),
-      trainingFilter: (map['trainingFilter'] as String).input(),
-      validationFilter: (map['validationFilter'] as String).input(),
+      testFilter: pulumi.Input.fromValue(map['testFilter'] as String),
+      trainingFilter: pulumi.Input.fromValue(map['trainingFilter'] as String),
+      validationFilter: pulumi.Input.fromValue(
+        map['validationFilter'] as String,
+      ),
     );
   }
 }
-

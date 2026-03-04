@@ -4,16 +4,15 @@ enum AzureHybridBenefit {
   valueFalse("False"),
   valueNotApplicable("NotApplicable");
 
-  const AzureHybridBenefit(this.value);
-  final String value;
+  const AzureHybridBenefit(this.wireValue);
+  final String wireValue;
 
   static AzureHybridBenefit fromValue(String value) {
     for (final item in AzureHybridBenefit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureHybridBenefit value: $value');
   }
 }
-

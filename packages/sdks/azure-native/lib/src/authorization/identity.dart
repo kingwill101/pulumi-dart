@@ -7,29 +7,39 @@ import 'resource_identity_type.dart';
 class Identity {
   /// The identity type. This is the only required field when adding a system or user assigned identity to a resource.
   final pulumi.Input<ResourceIdentityType>? type;
+
   /// The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [Identity].
   /// [type] The identity type. This is the only required field when adding a system or user assigned identity to a resource.
   /// [userAssignedIdentities] The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  Identity({
-    this.type,
-    this.userAssignedIdentities,
-  });
+  Identity({this.type, this.userAssignedIdentities});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
       'userAssignedIdentities': ?userAssignedIdentities,
     };
   }
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceIdentityType.fromValue(guardedValue as String),
+        );
+      })(),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

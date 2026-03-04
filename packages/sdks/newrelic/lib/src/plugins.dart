@@ -1,5 +1,3 @@
-library module_plugins;
-
 export 'plugins/application_settings.dart';
 export 'plugins/application_settings_args.dart';
 export 'plugins/application_settings_error_collector.dart';

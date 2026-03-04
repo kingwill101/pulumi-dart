@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAddresses {
   /// The country that this address is in.
   final pulumi.Input<String>? country;
+
   /// The name that is typically displayed when the address is shown for display.
   final pulumi.Input<String>? formatted;
+
   /// The address locality.
   final pulumi.Input<String>? locality;
+
   /// The postal code of the address.
   final pulumi.Input<String>? postalCode;
+
   /// When `true`, this is the primary address associated with the user.
   final pulumi.Input<bool>? primary;
+
   /// The region of the address.
   final pulumi.Input<String>? region;
+
   /// The street of the address.
   final pulumi.Input<String>? streetAddress;
+
   /// The type of address.
   final pulumi.Input<String>? type;
 
@@ -55,15 +62,46 @@ class UserAddresses {
 
   factory UserAddresses.fromMap(Map<String, dynamic> map) {
     return UserAddresses(
-      country: map['country'] == null ? null : ((map['country'] as String).input()).input(),
-      formatted: map['formatted'] == null ? null : ((map['formatted'] as String).input()).input(),
-      locality: map['locality'] == null ? null : ((map['locality'] as String).input()).input(),
-      postalCode: map['postalCode'] == null ? null : ((map['postalCode'] as String).input()).input(),
-      primary: map['primary'] == null ? null : ((map['primary'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      streetAddress: map['streetAddress'] == null ? null : ((map['streetAddress'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      country: (() {
+        final guardedValue = map['country'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      formatted: (() {
+        final guardedValue = map['formatted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      locality: (() {
+        final guardedValue = map['locality'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      postalCode: (() {
+        final guardedValue = map['postalCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primary: (() {
+        final guardedValue = map['primary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streetAddress: (() {
+        final guardedValue = map['streetAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum JsonOutputSerializationFormat {
   valueLineSeparated("LineSeparated"),
   valueArray("Array");
 
-  const JsonOutputSerializationFormat(this.value);
-  final String value;
+  const JsonOutputSerializationFormat(this.wireValue);
+  final String wireValue;
 
   static JsonOutputSerializationFormat fromValue(String value) {
     for (final item in JsonOutputSerializationFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JsonOutputSerializationFormat value: $value');
   }
 }
-

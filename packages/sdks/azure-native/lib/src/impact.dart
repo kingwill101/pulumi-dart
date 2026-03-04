@@ -1,5 +1,3 @@
-library module_impact;
-
 export 'impact/client_incident_details.dart';
 export 'impact/client_incident_details_response.dart';
 export 'impact/confidence_level.dart';

@@ -35,12 +35,31 @@ class CognitiveServicesSkuResponse {
 
   factory CognitiveServicesSkuResponse.fromMap(Map<String, dynamic> map) {
     return CognitiveServicesSkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
-      family: map['family'] == null ? null : (map['family']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      family: (() {
+        final guardedValue = map['family'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -136,12 +136,16 @@ import 'token_state.dart';
 class Token extends pulumi.CustomResource {
   /// The date this Token was created.
   late final pulumi.Output<String> created;
+
   /// When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
   late final pulumi.Output<String> expiry;
+
   /// A label for the Token.
   late final pulumi.Output<String?> label;
+
   /// The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
   late final pulumi.Output<String> scopes;
+
   /// The token used to access the API.
   late final pulumi.Output<String> token;
 
@@ -149,29 +153,22 @@ class Token extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Token]. {@macro pulumi_index_token_token_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Token(
-    String name, {
-    TokenArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'linode:index/token:Token',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.expiry = registerOutput<String>('expiry');
-    this.label = registerOutput<String?>('label');
-    this.scopes = registerOutput<String>('scopes');
-    this.token = registerOutput<String>('token');
+  Token(String name, {TokenArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'linode:index/token:Token',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    created = registerOutput<String>('created');
+    expiry = registerOutput<String>('expiry');
+    label = registerOutput<String?>('label');
+    scopes = registerOutput<String>('scopes');
+    token = registerOutput<String>('token');
   }
 
   /// Gets an existing [Token] resource's state with the given [name] and [id].
-  static Token get(
-    String name,
-    pulumi.Input<String> id, {
-    TokenState? state,
-  }) {
+  static Token get(String name, pulumi.Input<String> id, {TokenState? state}) {
     return Token._get(
       name,
       state: state?.toMap(),
@@ -184,15 +181,15 @@ class Token extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/token:Token',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.expiry = registerOutput<String>('expiry');
-    this.label = registerOutput<String?>('label');
-    this.scopes = registerOutput<String>('scopes');
-    this.token = registerOutput<String>('token');
+         'linode:index/token:Token',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    expiry = registerOutput<String>('expiry');
+    label = registerOutput<String?>('label');
+    scopes = registerOutput<String>('scopes');
+    token = registerOutput<String>('token');
   }
 }

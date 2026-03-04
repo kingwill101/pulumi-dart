@@ -12,7 +12,7 @@ import 'bucket_replication_state.dart';
 ///
 /// For information about OSS replication and how to use it, see [What is cross-region replication](https://www.alibabacloud.com/help/doc-detail/31864.html) and [What is same-region replication](https://www.alibabacloud.com/help/doc-detail/254865.html).
 ///
-/// > **NOTE:** Available since v1.161.0.
+/// &gt; **NOTE:** Available since v1.161.0.
 ///
 /// ## Example Usage
 ///
@@ -669,26 +669,39 @@ import 'bucket_replication_state.dart';
 class BucketReplication extends pulumi.CustomResource {
   /// The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
   late final pulumi.Output<String?> action;
+
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Specifies the destination for the rule. See `destination` below.
   late final pulumi.Output<BucketReplicationDestination> destination;
+
   /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
-  late final pulumi.Output<BucketReplicationEncryptionConfiguration?> encryptionConfiguration;
+  late final pulumi.Output<BucketReplicationEncryptionConfiguration?>
+  encryptionConfiguration;
+
   /// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
   late final pulumi.Output<String?> historicalObjectReplication;
+
   /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
   late final pulumi.Output<BucketReplicationPrefixSet?> prefixSet;
+
   /// Specifies the progress for querying the progress of a data replication task of a bucket.
   late final pulumi.Output<BucketReplicationProgress> progress;
+
   /// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
   late final pulumi.Output<BucketReplicationRtc> rtc;
+
   /// The ID of the data replication rule.
   late final pulumi.Output<String> ruleId;
+
   /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
-  late final pulumi.Output<BucketReplicationSourceSelectionCriteria?> sourceSelectionCriteria;
+  late final pulumi.Output<BucketReplicationSourceSelectionCriteria?>
+  sourceSelectionCriteria;
+
   /// The status of the data replication task. Can be starting, doing and closing.
   late final pulumi.Output<String> status;
+
   /// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
   late final pulumi.Output<String?> syncRole;
 
@@ -701,23 +714,31 @@ class BucketReplication extends pulumi.CustomResource {
     BucketReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketReplication:BucketReplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.bucket = registerOutput<String>('bucket');
-    this.destination = registerOutput<BucketReplicationDestination>('destination');
-    this.encryptionConfiguration = registerOutput<BucketReplicationEncryptionConfiguration?>('encryptionConfiguration');
-    this.historicalObjectReplication = registerOutput<String?>('historicalObjectReplication');
-    this.prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet');
-    this.progress = registerOutput<BucketReplicationProgress>('progress');
-    this.rtc = registerOutput<BucketReplicationRtc>('rtc');
-    this.ruleId = registerOutput<String>('ruleId');
-    this.sourceSelectionCriteria = registerOutput<BucketReplicationSourceSelectionCriteria?>('sourceSelectionCriteria');
-    this.status = registerOutput<String>('status');
-    this.syncRole = registerOutput<String?>('syncRole');
+         'alicloud:oss/bucketReplication:BucketReplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    bucket = registerOutput<String>('bucket');
+    destination = registerOutput<BucketReplicationDestination>('destination');
+    encryptionConfiguration =
+        registerOutput<BucketReplicationEncryptionConfiguration?>(
+          'encryptionConfiguration',
+        );
+    historicalObjectReplication = registerOutput<String?>(
+      'historicalObjectReplication',
+    );
+    prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet');
+    progress = registerOutput<BucketReplicationProgress>('progress');
+    rtc = registerOutput<BucketReplicationRtc>('rtc');
+    ruleId = registerOutput<String>('ruleId');
+    sourceSelectionCriteria =
+        registerOutput<BucketReplicationSourceSelectionCriteria?>(
+          'sourceSelectionCriteria',
+        );
+    status = registerOutput<String>('status');
+    syncRole = registerOutput<String?>('syncRole');
   }
 
   /// Gets an existing [BucketReplication] resource's state with the given [name] and [id].
@@ -738,22 +759,30 @@ class BucketReplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketReplication:BucketReplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.bucket = registerOutput<String>('bucket');
-    this.destination = registerOutput<BucketReplicationDestination>('destination');
-    this.encryptionConfiguration = registerOutput<BucketReplicationEncryptionConfiguration?>('encryptionConfiguration');
-    this.historicalObjectReplication = registerOutput<String?>('historicalObjectReplication');
-    this.prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet');
-    this.progress = registerOutput<BucketReplicationProgress>('progress');
-    this.rtc = registerOutput<BucketReplicationRtc>('rtc');
-    this.ruleId = registerOutput<String>('ruleId');
-    this.sourceSelectionCriteria = registerOutput<BucketReplicationSourceSelectionCriteria?>('sourceSelectionCriteria');
-    this.status = registerOutput<String>('status');
-    this.syncRole = registerOutput<String?>('syncRole');
+         'alicloud:oss/bucketReplication:BucketReplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    bucket = registerOutput<String>('bucket');
+    destination = registerOutput<BucketReplicationDestination>('destination');
+    encryptionConfiguration =
+        registerOutput<BucketReplicationEncryptionConfiguration?>(
+          'encryptionConfiguration',
+        );
+    historicalObjectReplication = registerOutput<String?>(
+      'historicalObjectReplication',
+    );
+    prefixSet = registerOutput<BucketReplicationPrefixSet?>('prefixSet');
+    progress = registerOutput<BucketReplicationProgress>('progress');
+    rtc = registerOutput<BucketReplicationRtc>('rtc');
+    ruleId = registerOutput<String>('ruleId');
+    sourceSelectionCriteria =
+        registerOutput<BucketReplicationSourceSelectionCriteria?>(
+          'sourceSelectionCriteria',
+        );
+    status = registerOutput<String>('status');
+    syncRole = registerOutput<String?>('syncRole');
   }
 }

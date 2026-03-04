@@ -27,10 +27,11 @@ class GetFirewallPolicyDn {
 
   factory GetFirewallPolicyDn.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyDn(
-      networkRuleFqdnEnabled: (map['networkRuleFqdnEnabled'] as bool).input(),
-      proxyEnabled: (map['proxyEnabled'] as bool).input(),
-      servers: ((map['servers'] as List).cast<String>()).input(),
+      networkRuleFqdnEnabled: pulumi.Input.fromValue(
+        map['networkRuleFqdnEnabled'] as bool,
+      ),
+      proxyEnabled: pulumi.Input.fromValue(map['proxyEnabled'] as bool),
+      servers: pulumi.Input.fromValue((map['servers'] as List).cast<String>()),
     );
   }
 }
-

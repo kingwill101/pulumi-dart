@@ -7,8 +7,10 @@ import 'connection_error.dart';
 class ConnectionStatusDefinition {
   /// Connection error
   final pulumi.Input<ConnectionError>? error;
+
   /// The gateway status
   final pulumi.Input<String>? status;
+
   /// Target of the error
   final pulumi.Input<String>? target;
 
@@ -16,15 +18,15 @@ class ConnectionStatusDefinition {
   /// [error] Connection error
   /// [status] The gateway status
   /// [target] Target of the error
-  ConnectionStatusDefinition({
-    this.error,
-    this.status,
-    this.target,
-  });
+  ConnectionStatusDefinition({this.error, this.status, this.target});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?pulumi.Input.mapOptionalInputValue<ConnectionError, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectionError,
+            Map<String, dynamic>
+          >(error, (value) => value.toMap()),
       'status': ?status,
       'target': ?target,
     };
@@ -32,10 +34,25 @@ class ConnectionStatusDefinition {
 
   factory ConnectionStatusDefinition.fromMap(Map<String, dynamic> map) {
     return ConnectionStatusDefinition(
-      error: map['error'] == null ? null : (ConnectionError.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectionError.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

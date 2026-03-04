@@ -9,28 +9,40 @@ import 'system_data_response.dart';
 class GetDnsSecurityRuleResult {
   /// The action to take on DNS requests that match the DNS security rule.
   final DnsSecurityRuleActionResponse action;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// DNS resolver policy domains lists that the DNS security rule applies to.
   final List<SubResourceResponse> dnsResolverDomainLists;
+
   /// The state of DNS security rule.
   final String? dnsSecurityRuleState;
+
   /// ETag of the DNS security rule.
   final String etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The priority of the DNS security rule.
   final int priority;
+
   /// The current provisioning state of the DNS security rule. This is a read-only property and any attempt to set this value will be ignored.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -68,7 +80,11 @@ class GetDnsSecurityRuleResult {
     return <String, dynamic>{
       'action': action.toMap(),
       'azureApiVersion': azureApiVersion,
-      'dnsResolverDomainLists': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(dnsResolverDomainLists, (value) => value.toMap()),
+      'dnsResolverDomainLists':
+          pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(
+            dnsResolverDomainLists,
+            (value) => value.toMap(),
+          ),
       'dnsSecurityRuleState': ?dnsSecurityRuleState,
       'etag': etag,
       'id': id,
@@ -84,20 +100,35 @@ class GetDnsSecurityRuleResult {
 
   factory GetDnsSecurityRuleResult.fromMap(Map<String, dynamic> map) {
     return GetDnsSecurityRuleResult(
-      action: DnsSecurityRuleActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      action: DnsSecurityRuleActionResponse.fromMap(
+        (map['action']! as Map).cast<String, dynamic>(),
+      ),
       azureApiVersion: map['azureApiVersion'] as String,
-      dnsResolverDomainLists: pulumi.Input.decodeList<SubResourceResponse>(map['dnsResolverDomainLists'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dnsSecurityRuleState: map['dnsSecurityRuleState'] == null ? null : map['dnsSecurityRuleState']! as String,
+      dnsResolverDomainLists: pulumi.Input.decodeList<SubResourceResponse>(
+        map['dnsResolverDomainLists']!,
+        (value) =>
+            SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      dnsSecurityRuleState: (() {
+        final guardedValue = map['dnsSecurityRuleState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       priority: map['priority'] as int,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

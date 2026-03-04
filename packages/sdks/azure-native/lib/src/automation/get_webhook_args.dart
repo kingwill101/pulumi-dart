@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebhookArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The webhook name.
   final pulumi.Input<String> webhookName;
 
@@ -34,10 +36,13 @@ class GetWebhookArgs {
 
   factory GetWebhookArgs.fromMap(Map<String, dynamic> map) {
     return GetWebhookArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      webhookName: (map['webhookName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      webhookName: pulumi.Input.fromValue(map['webhookName'] as String),
     );
   }
 }
-

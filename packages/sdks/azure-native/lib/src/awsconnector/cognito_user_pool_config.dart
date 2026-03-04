@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of CognitoUserPoolConfig
 class CognitoUserPoolConfig {
-  /// <p>A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.</p>
+  /// &lt;p&gt;A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.&lt;/p&gt;
   final pulumi.Input<String>? appIdClientRegex;
-  /// <p>The Amazon Web Services Region in which the user pool was created.</p>
+
+  /// &lt;p&gt;The Amazon Web Services Region in which the user pool was created.&lt;/p&gt;
   final pulumi.Input<String>? awsRegion;
-  /// <p>The user pool ID.</p>
+
+  /// &lt;p&gt;The user pool ID.&lt;/p&gt;
   final pulumi.Input<String>? userPoolId;
 
   /// Creates a new [CognitoUserPoolConfig].
-  /// [appIdClientRegex] <p>A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.</p>
-  /// [awsRegion] <p>The Amazon Web Services Region in which the user pool was created.</p>
-  /// [userPoolId] <p>The user pool ID.</p>
+  /// [appIdClientRegex] &lt;p&gt;A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.&lt;/p&gt;
+  /// [awsRegion] &lt;p&gt;The Amazon Web Services Region in which the user pool was created.&lt;/p&gt;
+  /// [userPoolId] &lt;p&gt;The user pool ID.&lt;/p&gt;
   CognitoUserPoolConfig({
     this.appIdClientRegex,
     this.awsRegion,
@@ -31,10 +33,21 @@ class CognitoUserPoolConfig {
 
   factory CognitoUserPoolConfig.fromMap(Map<String, dynamic> map) {
     return CognitoUserPoolConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex']! as String).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId']! as String).input(),
+      appIdClientRegex: (() {
+        final guardedValue = map['appIdClientRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsRegion: (() {
+        final guardedValue = map['awsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPoolId: (() {
+        final guardedValue = map['userPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

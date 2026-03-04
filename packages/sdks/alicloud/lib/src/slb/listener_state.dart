@@ -47,6 +47,7 @@ class ListenerState {
   final pulumi.Input<String>? stickySessionType;
   final pulumi.Input<String>? tlsCipherPolicy;
   final pulumi.Input<int>? unhealthyThreshold;
+
   /// Whether to set additional HTTP Header field "X-Forwarded-For".
   final pulumi.Input<ListenerXForwardedFor>? xForwardedFor;
 
@@ -184,56 +185,235 @@ class ListenerState {
       'stickySessionType': ?stickySessionType,
       'tlsCipherPolicy': ?tlsCipherPolicy,
       'unhealthyThreshold': ?unhealthyThreshold,
-      'xForwardedFor': ?pulumi.Input.mapOptionalInputValue<ListenerXForwardedFor, Map<String, dynamic>>(xForwardedFor, (value) => value.toMap()),
+      'xForwardedFor':
+          ?pulumi.Input.mapOptionalInputValue<
+            ListenerXForwardedFor,
+            Map<String, dynamic>
+          >(xForwardedFor, (value) => value.toMap()),
     };
   }
 
   factory ListenerState.fromMap(Map<String, dynamic> map) {
     return ListenerState(
-      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
-      aclIds: map['aclIds'] == null ? null : ((map['aclIds']! as List).cast<String>()).input(),
-      aclStatus: map['aclStatus'] == null ? null : (map['aclStatus']! as String).input(),
-      aclType: map['aclType'] == null ? null : (map['aclType']! as String).input(),
-      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
-      caCertificateId: map['caCertificateId'] == null ? null : (map['caCertificateId']! as String).input(),
-      cookie: map['cookie'] == null ? null : (map['cookie']! as String).input(),
-      cookieTimeout: map['cookieTimeout'] == null ? null : (map['cookieTimeout']! as int).input(),
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableHttp2: map['enableHttp2'] == null ? null : (map['enableHttp2']! as String).input(),
-      establishedTimeout: map['establishedTimeout'] == null ? null : (map['establishedTimeout']! as int).input(),
-      forwardPort: map['forwardPort'] == null ? null : (map['forwardPort']! as int).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
-      gzip: map['gzip'] == null ? null : (map['gzip']! as bool).input(),
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck']! as String).input(),
-      healthCheckConnectPort: map['healthCheckConnectPort'] == null ? null : (map['healthCheckConnectPort']! as int).input(),
-      healthCheckDomain: map['healthCheckDomain'] == null ? null : (map['healthCheckDomain']! as String).input(),
-      healthCheckHttpCode: map['healthCheckHttpCode'] == null ? null : (map['healthCheckHttpCode']! as String).input(),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval']! as int).input(),
-      healthCheckMethod: map['healthCheckMethod'] == null ? null : (map['healthCheckMethod']! as String).input(),
-      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout']! as int).input(),
-      healthCheckType: map['healthCheckType'] == null ? null : (map['healthCheckType']! as String).input(),
-      healthCheckUri: map['healthCheckUri'] == null ? null : (map['healthCheckUri']! as String).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as int).input(),
-      listenerForward: map['listenerForward'] == null ? null : (map['listenerForward']! as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
-      masterSlaveServerGroupId: map['masterSlaveServerGroupId'] == null ? null : (map['masterSlaveServerGroupId']! as String).input(),
-      persistenceTimeout: map['persistenceTimeout'] == null ? null : (map['persistenceTimeout']! as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      proxyProtocolV2Enabled: map['proxyProtocolV2Enabled'] == null ? null : (map['proxyProtocolV2Enabled']! as bool).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']! as int).input(),
-      scheduler: map['scheduler'] == null ? null : (map['scheduler']! as String).input(),
-      serverCertificateId: map['serverCertificateId'] == null ? null : (map['serverCertificateId']! as String).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
-      sslCertificateId: map['sslCertificateId'] == null ? null : (map['sslCertificateId']! as String).input(),
-      stickySession: map['stickySession'] == null ? null : (map['stickySession']! as String).input(),
-      stickySessionType: map['stickySessionType'] == null ? null : (map['stickySessionType']! as String).input(),
-      tlsCipherPolicy: map['tlsCipherPolicy'] == null ? null : (map['tlsCipherPolicy']! as String).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
-      xForwardedFor: map['xForwardedFor'] == null ? null : (ListenerXForwardedFor.fromMap((map['xForwardedFor']! as Map).cast<String, dynamic>())).input(),
+      aclId: (() {
+        final guardedValue = map['aclId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aclIds: (() {
+        final guardedValue = map['aclIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      aclStatus: (() {
+        final guardedValue = map['aclStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      aclType: (() {
+        final guardedValue = map['aclType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backendPort: (() {
+        final guardedValue = map['backendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      caCertificateId: (() {
+        final guardedValue = map['caCertificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cookie: (() {
+        final guardedValue = map['cookie'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cookieTimeout: (() {
+        final guardedValue = map['cookieTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      deleteProtectionValidation: (() {
+        final guardedValue = map['deleteProtectionValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableHttp2: (() {
+        final guardedValue = map['enableHttp2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      establishedTimeout: (() {
+        final guardedValue = map['establishedTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      forwardPort: (() {
+        final guardedValue = map['forwardPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      frontendPort: (() {
+        final guardedValue = map['frontendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gzip: (() {
+        final guardedValue = map['gzip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      healthCheck: (() {
+        final guardedValue = map['healthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckConnectPort: (() {
+        final guardedValue = map['healthCheckConnectPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthCheckDomain: (() {
+        final guardedValue = map['healthCheckDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckHttpCode: (() {
+        final guardedValue = map['healthCheckHttpCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckInterval: (() {
+        final guardedValue = map['healthCheckInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthCheckMethod: (() {
+        final guardedValue = map['healthCheckMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckTimeout: (() {
+        final guardedValue = map['healthCheckTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      healthCheckType: (() {
+        final guardedValue = map['healthCheckType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthCheckUri: (() {
+        final guardedValue = map['healthCheckUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      healthyThreshold: (() {
+        final guardedValue = map['healthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      idleTimeout: (() {
+        final guardedValue = map['idleTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      listenerForward: (() {
+        final guardedValue = map['listenerForward'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerId: (() {
+        final guardedValue = map['loadBalancerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterSlaveServerGroupId: (() {
+        final guardedValue = map['masterSlaveServerGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      persistenceTimeout: (() {
+        final guardedValue = map['persistenceTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxyProtocolV2Enabled: (() {
+        final guardedValue = map['proxyProtocolV2Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requestTimeout: (() {
+        final guardedValue = map['requestTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scheduler: (() {
+        final guardedValue = map['scheduler'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverCertificateId: (() {
+        final guardedValue = map['serverCertificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverGroupId: (() {
+        final guardedValue = map['serverGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslCertificateId: (() {
+        final guardedValue = map['sslCertificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stickySession: (() {
+        final guardedValue = map['stickySession'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stickySessionType: (() {
+        final guardedValue = map['stickySessionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tlsCipherPolicy: (() {
+        final guardedValue = map['tlsCipherPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      unhealthyThreshold: (() {
+        final guardedValue = map['unhealthyThreshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      xForwardedFor: (() {
+        final guardedValue = map['xForwardedFor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ListenerXForwardedFor.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'version': version,
-    };
+    return <String, dynamic>{'version': version};
   }
 
-  factory GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1PipelineTemplateMetadataResponse(
-      version: (map['version'] as String).input(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseMysqlArgs {
   /// The ID of the MySQL database. Deprecated: Use id instead.
   final pulumi.Input<int>? databaseId;
+
   /// The ID of the MySQL database. Mutually exclusive with `database_id`.
   final pulumi.Input<int>? id;
 
   /// Creates a new [GetDatabaseMysqlArgs].
   /// [databaseId] The ID of the MySQL database. Deprecated: Use id instead.
   /// [id] The ID of the MySQL database. Mutually exclusive with `database_id`.
-  GetDatabaseMysqlArgs({
-    this.databaseId,
-    this.id,
-  });
+  GetDatabaseMysqlArgs({this.databaseId, this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'databaseId': ?databaseId,
-      'id': ?id,
-    };
+    return <String, dynamic>{'databaseId': ?databaseId, 'id': ?id};
   }
 
   factory GetDatabaseMysqlArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlArgs(
-      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as int).input(),
-      id: map['id'] == null ? null : (map['id']! as int).input(),
+      databaseId: (() {
+        final guardedValue = map['databaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

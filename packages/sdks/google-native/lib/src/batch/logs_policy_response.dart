@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogsPolicyResponse {
   /// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
   final pulumi.Input<Map<String, dynamic>> cloudLoggingOption;
+
   /// Where logs should be saved.
   final pulumi.Input<String> destination;
+
   /// The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
   final pulumi.Input<String> logsPath;
 
@@ -31,10 +33,11 @@ class LogsPolicyResponse {
 
   factory LogsPolicyResponse.fromMap(Map<String, dynamic> map) {
     return LogsPolicyResponse(
-      cloudLoggingOption: ((map['cloudLoggingOption'] as Map).cast<String, dynamic>()).input(),
-      destination: (map['destination'] as String).input(),
-      logsPath: (map['logsPath'] as String).input(),
+      cloudLoggingOption: pulumi.Input.fromValue(
+        (map['cloudLoggingOption']! as Map).cast<String, dynamic>(),
+      ),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      logsPath: pulumi.Input.fromValue(map['logsPath'] as String),
     );
   }
 }
-

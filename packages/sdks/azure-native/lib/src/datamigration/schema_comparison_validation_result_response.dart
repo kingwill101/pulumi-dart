@@ -7,11 +7,15 @@ import 'validation_error_response.dart';
 /// Results for schema comparison between the source and target
 class SchemaComparisonValidationResultResponse {
   /// List of schema differences between the source and target databases
-  final pulumi.Input<SchemaComparisonValidationResultTypeResponse>? schemaDifferences;
+  final pulumi.Input<SchemaComparisonValidationResultTypeResponse>?
+  schemaDifferences;
+
   /// Count of source database objects
   final pulumi.Input<Map<String, double>>? sourceDatabaseObjectCount;
+
   /// Count of target database objects
   final pulumi.Input<Map<String, double>>? targetDatabaseObjectCount;
+
   /// List of errors that happened while performing schema compare validation
   final pulumi.Input<ValidationErrorResponse>? validationErrors;
 
@@ -29,20 +33,57 @@ class SchemaComparisonValidationResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemaDifferences': ?pulumi.Input.mapOptionalInputValue<SchemaComparisonValidationResultTypeResponse, Map<String, dynamic>>(schemaDifferences, (value) => value.toMap()),
+      'schemaDifferences':
+          ?pulumi.Input.mapOptionalInputValue<
+            SchemaComparisonValidationResultTypeResponse,
+            Map<String, dynamic>
+          >(schemaDifferences, (value) => value.toMap()),
       'sourceDatabaseObjectCount': ?sourceDatabaseObjectCount,
       'targetDatabaseObjectCount': ?targetDatabaseObjectCount,
-      'validationErrors': ?pulumi.Input.mapOptionalInputValue<ValidationErrorResponse, Map<String, dynamic>>(validationErrors, (value) => value.toMap()),
+      'validationErrors':
+          ?pulumi.Input.mapOptionalInputValue<
+            ValidationErrorResponse,
+            Map<String, dynamic>
+          >(validationErrors, (value) => value.toMap()),
     };
   }
 
-  factory SchemaComparisonValidationResultResponse.fromMap(Map<String, dynamic> map) {
+  factory SchemaComparisonValidationResultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SchemaComparisonValidationResultResponse(
-      schemaDifferences: map['schemaDifferences'] == null ? null : (SchemaComparisonValidationResultTypeResponse.fromMap((map['schemaDifferences']! as Map).cast<String, dynamic>())).input(),
-      sourceDatabaseObjectCount: map['sourceDatabaseObjectCount'] == null ? null : ((map['sourceDatabaseObjectCount']! as Map).cast<String, double>()).input(),
-      targetDatabaseObjectCount: map['targetDatabaseObjectCount'] == null ? null : ((map['targetDatabaseObjectCount']! as Map).cast<String, double>()).input(),
-      validationErrors: map['validationErrors'] == null ? null : (ValidationErrorResponse.fromMap((map['validationErrors']! as Map).cast<String, dynamic>())).input(),
+      schemaDifferences: (() {
+        final guardedValue = map['schemaDifferences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SchemaComparisonValidationResultTypeResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceDatabaseObjectCount: (() {
+        final guardedValue = map['sourceDatabaseObjectCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, double>(),
+        );
+      })(),
+      targetDatabaseObjectCount: (() {
+        final guardedValue = map['targetDatabaseObjectCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, double>(),
+        );
+      })(),
+      validationErrors: (() {
+        final guardedValue = map['validationErrors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ValidationErrorResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

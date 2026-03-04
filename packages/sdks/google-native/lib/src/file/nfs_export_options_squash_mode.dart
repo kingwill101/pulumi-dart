@@ -4,16 +4,15 @@ enum NfsExportOptionsSquashMode {
   noRootSquash("NO_ROOT_SQUASH"),
   rootSquash("ROOT_SQUASH");
 
-  const NfsExportOptionsSquashMode(this.value);
-  final String value;
+  const NfsExportOptionsSquashMode(this.wireValue);
+  final String wireValue;
 
   static NfsExportOptionsSquashMode fromValue(String value) {
     for (final item in NfsExportOptionsSquashMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NfsExportOptionsSquashMode value: $value');
   }
 }
-

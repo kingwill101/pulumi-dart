@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesNodePoolsNodepoolSpotPriceLimit {
   /// The type of the preemptible instance.
   final pulumi.Input<String> instanceType;
+
   /// The maximum price of a single instance.
   final pulumi.Input<String> priceLimit;
 
@@ -23,11 +24,12 @@ class GetKubernetesNodePoolsNodepoolSpotPriceLimit {
     };
   }
 
-  factory GetKubernetesNodePoolsNodepoolSpotPriceLimit.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesNodePoolsNodepoolSpotPriceLimit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesNodePoolsNodepoolSpotPriceLimit(
-      instanceType: (map['instanceType'] as String).input(),
-      priceLimit: (map['priceLimit'] as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      priceLimit: pulumi.Input.fromValue(map['priceLimit'] as String),
     );
   }
 }
-

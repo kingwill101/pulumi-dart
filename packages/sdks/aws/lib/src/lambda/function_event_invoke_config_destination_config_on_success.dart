@@ -13,15 +13,14 @@ class FunctionEventInvokeConfigDestinationConfigOnSuccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destination': destination,
-    };
+    return <String, dynamic>{'destination': destination};
   }
 
-  factory FunctionEventInvokeConfigDestinationConfigOnSuccess.fromMap(Map<String, dynamic> map) {
+  factory FunctionEventInvokeConfigDestinationConfigOnSuccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FunctionEventInvokeConfigDestinationConfigOnSuccess(
-      destination: (map['destination'] as String).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
     );
   }
 }
-

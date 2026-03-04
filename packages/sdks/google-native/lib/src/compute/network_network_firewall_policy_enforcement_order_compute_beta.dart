@@ -3,16 +3,20 @@ enum NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta {
   afterClassicFirewall("AFTER_CLASSIC_FIREWALL"),
   beforeClassicFirewall("BEFORE_CLASSIC_FIREWALL");
 
-  const NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta(this.value);
-  final String value;
+  const NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta fromValue(String value) {
-    for (final item in NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta.values) {
-      if (item.value == value) {
+  static NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta value: $value',
+    );
   }
 }
-

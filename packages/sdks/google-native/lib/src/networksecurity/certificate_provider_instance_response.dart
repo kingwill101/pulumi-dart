@@ -9,20 +9,17 @@ class CertificateProviderInstanceResponse {
 
   /// Creates a new [CertificateProviderInstanceResponse].
   /// [pluginInstance] Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-  CertificateProviderInstanceResponse({
-    required this.pluginInstance,
-  });
+  CertificateProviderInstanceResponse({required this.pluginInstance});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pluginInstance': pluginInstance,
-    };
+    return <String, dynamic>{'pluginInstance': pluginInstance};
   }
 
-  factory CertificateProviderInstanceResponse.fromMap(Map<String, dynamic> map) {
+  factory CertificateProviderInstanceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateProviderInstanceResponse(
-      pluginInstance: (map['pluginInstance'] as String).input(),
+      pluginInstance: pulumi.Input.fromValue(map['pluginInstance'] as String),
     );
   }
 }
-

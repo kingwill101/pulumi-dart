@@ -27,6 +27,7 @@ import 'environment_addons_config_state.dart';
 class EnvironmentAddonsConfig extends pulumi.CustomResource {
   /// Flag to enable/disable Analytics.
   late final pulumi.Output<bool?> analyticsEnabled;
+
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   late final pulumi.Output<String> envId;
@@ -40,13 +41,13 @@ class EnvironmentAddonsConfig extends pulumi.CustomResource {
     EnvironmentAddonsConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
-    this.envId = registerOutput<String>('envId');
+         'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
+    envId = registerOutput<String>('envId');
   }
 
   /// Gets an existing [EnvironmentAddonsConfig] resource's state with the given [name] and [id].
@@ -67,12 +68,12 @@ class EnvironmentAddonsConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
-    this.envId = registerOutput<String>('envId');
+         'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
+    envId = registerOutput<String>('envId');
   }
 }

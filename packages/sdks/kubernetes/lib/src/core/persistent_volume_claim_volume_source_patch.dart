@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PersistentVolumeClaimVolumeSourcePatch {
   /// claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
   final pulumi.Input<String>? claimName;
+
   /// readOnly Will force the ReadOnly setting in VolumeMounts. Default false.
   final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [PersistentVolumeClaimVolumeSourcePatch].
   /// [claimName] claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
   /// [readOnly] readOnly Will force the ReadOnly setting in VolumeMounts. Default false.
-  PersistentVolumeClaimVolumeSourcePatch({
-    this.claimName,
-    this.readOnly,
-  });
+  PersistentVolumeClaimVolumeSourcePatch({this.claimName, this.readOnly});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'claimName': ?claimName,
-      'readOnly': ?readOnly,
-    };
+    return <String, dynamic>{'claimName': ?claimName, 'readOnly': ?readOnly};
   }
 
-  factory PersistentVolumeClaimVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
+  factory PersistentVolumeClaimVolumeSourcePatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PersistentVolumeClaimVolumeSourcePatch(
-      claimName: map['claimName'] == null ? null : (map['claimName']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      claimName: (() {
+        final guardedValue = map['claimName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

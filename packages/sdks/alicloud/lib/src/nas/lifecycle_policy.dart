@@ -6,7 +6,7 @@ import 'lifecycle_policy_state.dart';
 ///
 /// For information about File Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
 ///
-/// > **NOTE:** Available in v1.153.0+.
+/// &gt; **NOTE:** Available in v1.153.0+.
 ///
 /// ## Example Usage
 ///
@@ -176,12 +176,16 @@ import 'lifecycle_policy_state.dart';
 class LifecyclePolicy extends pulumi.CustomResource {
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The name of the lifecycle management policy.
   late final pulumi.Output<String> lifecyclePolicyName;
+
   /// The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
   late final pulumi.Output<String> lifecycleRuleName;
+
   /// The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
   late final pulumi.Output<List<String>> paths;
+
   /// The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
   late final pulumi.Output<String> storageType;
 
@@ -194,16 +198,16 @@ class LifecyclePolicy extends pulumi.CustomResource {
     LifecyclePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/lifecyclePolicy:LifecyclePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.lifecyclePolicyName = registerOutput<String>('lifecyclePolicyName');
-    this.lifecycleRuleName = registerOutput<String>('lifecycleRuleName');
-    this.paths = registerOutput<List<String>>('paths');
-    this.storageType = registerOutput<String>('storageType');
+         'alicloud:nas/lifecyclePolicy:LifecyclePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fileSystemId = registerOutput<String>('fileSystemId');
+    lifecyclePolicyName = registerOutput<String>('lifecyclePolicyName');
+    lifecycleRuleName = registerOutput<String>('lifecycleRuleName');
+    paths = registerOutput<List<String>>('paths');
+    storageType = registerOutput<String>('storageType');
   }
 
   /// Gets an existing [LifecyclePolicy] resource's state with the given [name] and [id].
@@ -224,15 +228,15 @@ class LifecyclePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/lifecyclePolicy:LifecyclePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.lifecyclePolicyName = registerOutput<String>('lifecyclePolicyName');
-    this.lifecycleRuleName = registerOutput<String>('lifecycleRuleName');
-    this.paths = registerOutput<List<String>>('paths');
-    this.storageType = registerOutput<String>('storageType');
+         'alicloud:nas/lifecyclePolicy:LifecyclePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fileSystemId = registerOutput<String>('fileSystemId');
+    lifecyclePolicyName = registerOutput<String>('lifecyclePolicyName');
+    lifecycleRuleName = registerOutput<String>('lifecycleRuleName');
+    paths = registerOutput<List<String>>('paths');
+    storageType = registerOutput<String>('storageType');
   }
 }

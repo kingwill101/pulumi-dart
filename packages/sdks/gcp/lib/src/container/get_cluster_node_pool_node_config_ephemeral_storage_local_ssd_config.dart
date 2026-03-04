@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
   /// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
   final pulumi.Input<int> dataCacheCount;
+
   /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
   final pulumi.Input<int> localSsdCount;
 
@@ -23,11 +24,12 @@ class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(
-      dataCacheCount: (map['dataCacheCount'] as int).input(),
-      localSsdCount: (map['localSsdCount'] as int).input(),
+      dataCacheCount: pulumi.Input.fromValue(map['dataCacheCount'] as int),
+      localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeGroupScalingConfig {
   /// Desired number of worker nodes.
   final pulumi.Input<int> desiredSize;
+
   /// Maximum number of worker nodes.
   final pulumi.Input<int> maxSize;
+
   /// Minimum number of worker nodes.
   final pulumi.Input<int> minSize;
 
@@ -30,10 +32,9 @@ class NodeGroupScalingConfig {
 
   factory NodeGroupScalingConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupScalingConfig(
-      desiredSize: (map['desiredSize'] as int).input(),
-      maxSize: (map['maxSize'] as int).input(),
-      minSize: (map['minSize'] as int).input(),
+      desiredSize: pulumi.Input.fromValue(map['desiredSize'] as int),
+      maxSize: pulumi.Input.fromValue(map['maxSize'] as int),
+      minSize: pulumi.Input.fromValue(map['minSize'] as int),
     );
   }
 }
-

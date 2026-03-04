@@ -27,9 +27,8 @@ class GetOrganizationExclusionArgs {
 
   factory GetOrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationExclusionArgs(
-      exclusionId: (map['exclusionId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      exclusionId: pulumi.Input.fromValue(map['exclusionId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

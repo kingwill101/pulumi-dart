@@ -1,17 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_service_args.dart';
 import 'spring_cloud_service_config_server_git_setting.dart';
-import 'spring_cloud_service_container_registry.dart';
 import 'spring_cloud_service_default_build_service.dart';
 import 'spring_cloud_service_marketplace.dart';
 import 'spring_cloud_service_network.dart';
-import 'spring_cloud_service_required_network_traffic_rule.dart';
 import 'spring_cloud_service_state.dart';
 import 'spring_cloud_service_trace.dart';
 
 /// Manages an Azure Spring Cloud Service.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudService` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudService` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -300,42 +298,64 @@ import 'spring_cloud_service_trace.dart';
 class SpringCloudService extends pulumi.CustomResource {
   /// Specifies the size for this Spring Cloud Service's default build agent pool. Possible values are `S1`, `S2`, `S3`, `S4` and `S5`. This field is applicable only for Spring Cloud Service with enterprise tier.
   late final pulumi.Output<String?> buildAgentPoolSize;
+
   /// A `config_server_git_setting` block as defined below. This field is applicable only for Spring Cloud Service with basic and standard tier.
-  late final pulumi.Output<SpringCloudServiceConfigServerGitSetting?> configServerGitSetting;
+  late final pulumi.Output<SpringCloudServiceConfigServerGitSetting?>
+  configServerGitSetting;
+
   /// One or more `container_registry` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
-  late final pulumi.Output<List<SpringCloudServiceContainerRegistry>?> containerRegistries;
+  late final pulumi.Output<List<Map<String, dynamic>>?> containerRegistries;
+
   /// A `default_build_service` block as defined below. This field is applicable only for Spring Cloud Service with enterprise tier.
-  late final pulumi.Output<SpringCloudServiceDefaultBuildService?> defaultBuildService;
+  late final pulumi.Output<SpringCloudServiceDefaultBuildService?>
+  defaultBuildService;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Should the log stream in vnet injection instance could be accessed from Internet?
   late final pulumi.Output<bool?> logStreamPublicEndpointEnabled;
+
   /// The resource Id of the Managed Environment that the Spring Apps instance builds on. Can only be specified when `sku_tier` is set to `StandardGen2`.
   late final pulumi.Output<String?> managedEnvironmentId;
+
   /// A `marketplace` block as defined below. Can only be specified when `sku` is set to `E0`.
   late final pulumi.Output<SpringCloudServiceMarketplace> marketplace;
+
   /// Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<SpringCloudServiceNetwork?> network;
+
   /// A list of the outbound Public IP Addresses used by this Spring Cloud Service.
   late final pulumi.Output<List<String>> outboundPublicIpAddresses;
+
   /// A list of `required_network_traffic_rules` blocks as defined below.
-  late final pulumi.Output<List<SpringCloudServiceRequiredNetworkTrafficRule>> requiredNetworkTrafficRules;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  requiredNetworkTrafficRules;
+
   /// Specifies The name of the resource group in which to create the Spring Cloud Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Whether enable the default Service Registry. This field is applicable only for Spring Cloud Service with enterprise tier.
   late final pulumi.Output<bool?> serviceRegistryEnabled;
+
   /// The ID of the Spring Cloud Service Registry.
   late final pulumi.Output<String> serviceRegistryId;
+
   /// Specifies the SKU Name for this Spring Cloud Service. Possible values are `B0`, `S0` and `E0`. Defaults to `S0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> skuName;
+
   /// Specifies the SKU Tier for this Spring Cloud Service. Possible values are `Basic`, `Enterprise`, `Standard` and `StandardGen2`. The attribute is automatically computed from API response except when `managed_environment_id` is defined. Changing this forces a new resource to be created.
   late final pulumi.Output<String> skuTier;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `trace` block as defined below.
   late final pulumi.Output<SpringCloudServiceTrace?> trace;
+
   /// Whether zone redundancy is enabled for this Spring Cloud Service. Defaults to `false`.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -348,31 +368,45 @@ class SpringCloudService extends pulumi.CustomResource {
     SpringCloudServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudService:SpringCloudService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
-    this.configServerGitSetting = registerOutput<SpringCloudServiceConfigServerGitSetting?>('configServerGitSetting');
-    this.containerRegistries = registerOutput<List<SpringCloudServiceContainerRegistry>?>('containerRegistries');
-    this.defaultBuildService = registerOutput<SpringCloudServiceDefaultBuildService?>('defaultBuildService');
-    this.location = registerOutput<String>('location');
-    this.logStreamPublicEndpointEnabled = registerOutput<bool?>('logStreamPublicEndpointEnabled');
-    this.managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
-    this.marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace');
+         'azure:appplatform/springCloudService:SpringCloudService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
+    configServerGitSetting =
+        registerOutput<SpringCloudServiceConfigServerGitSetting?>(
+          'configServerGitSetting',
+        );
+    containerRegistries = registerOutput<List<Map<String, dynamic>>?>(
+      'containerRegistries',
+    );
+    defaultBuildService =
+        registerOutput<SpringCloudServiceDefaultBuildService?>(
+          'defaultBuildService',
+        );
+    location = registerOutput<String>('location');
+    logStreamPublicEndpointEnabled = registerOutput<bool?>(
+      'logStreamPublicEndpointEnabled',
+    );
+    managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
+    marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<SpringCloudServiceNetwork?>('network');
-    this.outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
-    this.requiredNetworkTrafficRules = registerOutput<List<SpringCloudServiceRequiredNetworkTrafficRule>>('requiredNetworkTrafficRules');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceRegistryEnabled = registerOutput<bool?>('serviceRegistryEnabled');
-    this.serviceRegistryId = registerOutput<String>('serviceRegistryId');
-    this.skuName = registerOutput<String?>('skuName');
-    this.skuTier = registerOutput<String>('skuTier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trace = registerOutput<SpringCloudServiceTrace?>('trace');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    network = registerOutput<SpringCloudServiceNetwork?>('network');
+    outboundPublicIpAddresses = registerOutput<List<String>>(
+      'outboundPublicIpAddresses',
+    );
+    requiredNetworkTrafficRules = registerOutput<List<Map<String, dynamic>>>(
+      'requiredNetworkTrafficRules',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceRegistryEnabled = registerOutput<bool?>('serviceRegistryEnabled');
+    serviceRegistryId = registerOutput<String>('serviceRegistryId');
+    skuName = registerOutput<String?>('skuName');
+    skuTier = registerOutput<String>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trace = registerOutput<SpringCloudServiceTrace?>('trace');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 
   /// Gets an existing [SpringCloudService] resource's state with the given [name] and [id].
@@ -393,30 +427,44 @@ class SpringCloudService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudService:SpringCloudService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
-    this.configServerGitSetting = registerOutput<SpringCloudServiceConfigServerGitSetting?>('configServerGitSetting');
-    this.containerRegistries = registerOutput<List<SpringCloudServiceContainerRegistry>?>('containerRegistries');
-    this.defaultBuildService = registerOutput<SpringCloudServiceDefaultBuildService?>('defaultBuildService');
-    this.location = registerOutput<String>('location');
-    this.logStreamPublicEndpointEnabled = registerOutput<bool?>('logStreamPublicEndpointEnabled');
-    this.managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
-    this.marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace');
+         'azure:appplatform/springCloudService:SpringCloudService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
+    configServerGitSetting =
+        registerOutput<SpringCloudServiceConfigServerGitSetting?>(
+          'configServerGitSetting',
+        );
+    containerRegistries = registerOutput<List<Map<String, dynamic>>?>(
+      'containerRegistries',
+    );
+    defaultBuildService =
+        registerOutput<SpringCloudServiceDefaultBuildService?>(
+          'defaultBuildService',
+        );
+    location = registerOutput<String>('location');
+    logStreamPublicEndpointEnabled = registerOutput<bool?>(
+      'logStreamPublicEndpointEnabled',
+    );
+    managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
+    marketplace = registerOutput<SpringCloudServiceMarketplace>('marketplace');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<SpringCloudServiceNetwork?>('network');
-    this.outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
-    this.requiredNetworkTrafficRules = registerOutput<List<SpringCloudServiceRequiredNetworkTrafficRule>>('requiredNetworkTrafficRules');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceRegistryEnabled = registerOutput<bool?>('serviceRegistryEnabled');
-    this.serviceRegistryId = registerOutput<String>('serviceRegistryId');
-    this.skuName = registerOutput<String?>('skuName');
-    this.skuTier = registerOutput<String>('skuTier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trace = registerOutput<SpringCloudServiceTrace?>('trace');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    network = registerOutput<SpringCloudServiceNetwork?>('network');
+    outboundPublicIpAddresses = registerOutput<List<String>>(
+      'outboundPublicIpAddresses',
+    );
+    requiredNetworkTrafficRules = registerOutput<List<Map<String, dynamic>>>(
+      'requiredNetworkTrafficRules',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceRegistryEnabled = registerOutput<bool?>('serviceRegistryEnabled');
+    serviceRegistryId = registerOutput<String>('serviceRegistryId');
+    skuName = registerOutput<String?>('skuName');
+    skuTier = registerOutput<String>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trace = registerOutput<SpringCloudServiceTrace?>('trace');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

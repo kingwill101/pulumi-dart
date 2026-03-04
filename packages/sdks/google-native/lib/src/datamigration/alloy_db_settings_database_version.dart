@@ -4,16 +4,15 @@ enum AlloyDbSettingsDatabaseVersion {
   postgres14("POSTGRES_14"),
   postgres15("POSTGRES_15");
 
-  const AlloyDbSettingsDatabaseVersion(this.value);
-  final String value;
+  const AlloyDbSettingsDatabaseVersion(this.wireValue);
+  final String wireValue;
 
   static AlloyDbSettingsDatabaseVersion fromValue(String value) {
     for (final item in AlloyDbSettingsDatabaseVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlloyDbSettingsDatabaseVersion value: $value');
   }
 }
-

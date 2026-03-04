@@ -10,20 +10,35 @@ class GetSAPAvailabilityZoneDetailsResult {
 
   /// Creates a new [GetSAPAvailabilityZoneDetailsResult].
   /// [availabilityZonePairs] Gets the list of availability zone pairs.
-  GetSAPAvailabilityZoneDetailsResult({
-    this.availabilityZonePairs,
-  });
+  GetSAPAvailabilityZoneDetailsResult({this.availabilityZonePairs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availabilityZonePairs': ?availabilityZonePairs == null ? null : pulumi.Input.encodeList<SAPAvailabilityZonePairResponse, Map<String, dynamic>>(availabilityZonePairs!, (value) => value.toMap()),
+      'availabilityZonePairs': ?(() {
+        final guardedValue = availabilityZonePairs;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          SAPAvailabilityZonePairResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory GetSAPAvailabilityZoneDetailsResult.fromMap(Map<String, dynamic> map) {
+  factory GetSAPAvailabilityZoneDetailsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSAPAvailabilityZoneDetailsResult(
-      availabilityZonePairs: map['availabilityZonePairs'] == null ? null : pulumi.Input.decodeList<SAPAvailabilityZonePairResponse>(map['availabilityZonePairs']!, (value) => SAPAvailabilityZonePairResponse.fromMap((value as Map).cast<String, dynamic>())),
+      availabilityZonePairs: (() {
+        final guardedValue = map['availabilityZonePairs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SAPAvailabilityZonePairResponse>(
+          guardedValue,
+          (value) => SAPAvailabilityZonePairResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum LinuxNodeConfigCgroupMode {
   cgroupModeV1("CGROUP_MODE_V1"),
   cgroupModeV2("CGROUP_MODE_V2");
 
-  const LinuxNodeConfigCgroupMode(this.value);
-  final String value;
+  const LinuxNodeConfigCgroupMode(this.wireValue);
+  final String wireValue;
 
   static LinuxNodeConfigCgroupMode fromValue(String value) {
     for (final item in LinuxNodeConfigCgroupMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LinuxNodeConfigCgroupMode value: $value');
   }
 }
-

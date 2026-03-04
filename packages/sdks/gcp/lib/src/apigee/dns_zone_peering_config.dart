@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DnsZonePeeringConfig {
   /// The name of the producer VPC network.
   final pulumi.Input<String> targetNetworkId;
+
   /// The ID of the project that contains the producer VPC network.
   final pulumi.Input<String> targetProjectId;
 
@@ -25,9 +26,8 @@ class DnsZonePeeringConfig {
 
   factory DnsZonePeeringConfig.fromMap(Map<String, dynamic> map) {
     return DnsZonePeeringConfig(
-      targetNetworkId: (map['targetNetworkId'] as String).input(),
-      targetProjectId: (map['targetProjectId'] as String).input(),
+      targetNetworkId: pulumi.Input.fromValue(map['targetNetworkId'] as String),
+      targetProjectId: pulumi.Input.fromValue(map['targetProjectId'] as String),
     );
   }
 }
-

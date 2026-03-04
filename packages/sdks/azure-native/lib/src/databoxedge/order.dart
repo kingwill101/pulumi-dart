@@ -4,7 +4,6 @@ import 'contact_details_response.dart';
 import 'order_args.dart';
 import 'order_status_response.dart';
 import 'system_data_response.dart';
-import 'tracking_info_response.dart';
 
 /// The order details.
 ///
@@ -231,30 +230,43 @@ import 'tracking_info_response.dart';
 class Order extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The contact details.
   late final pulumi.Output<ContactDetailsResponse> contactInformation;
+
   /// Current status of the order.
   late final pulumi.Output<OrderStatusResponse> currentStatus;
+
   /// Tracking information for the package delivered to the customer whether it has an original or a replacement device.
-  late final pulumi.Output<List<TrackingInfoResponse>> deliveryTrackingInfo;
+  late final pulumi.Output<List<Map<String, dynamic>>> deliveryTrackingInfo;
+
   /// It specify the order api version.
   late final pulumi.Output<String> kind;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// List of status changes in the order.
-  late final pulumi.Output<List<OrderStatusResponse>> orderHistory;
+  late final pulumi.Output<List<Map<String, dynamic>>> orderHistory;
+
   /// It specify the order resource id.
   late final pulumi.Output<String> orderId;
+
   /// Tracking information for the package returned from the customer whether it has an original or a replacement device.
-  late final pulumi.Output<List<TrackingInfoResponse>> returnTrackingInfo;
+  late final pulumi.Output<List<Map<String, dynamic>>> returnTrackingInfo;
+
   /// Serial number of the device.
   late final pulumi.Output<String> serialNumber;
+
   /// ShipmentType of the order
   late final pulumi.Output<String?> shipmentType;
+
   /// The shipping address.
   late final pulumi.Output<AddressResponse?> shippingAddress;
+
   /// Metadata pertaining to creation and last modification of Order
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -262,29 +274,32 @@ class Order extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Order]. {@macro pulumi_databoxedge_order_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Order(
-    String name, {
-    OrderArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:databoxedge:Order',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contactInformation = registerOutput<ContactDetailsResponse>('contactInformation');
-    this.currentStatus = registerOutput<OrderStatusResponse>('currentStatus');
-    this.deliveryTrackingInfo = registerOutput<List<TrackingInfoResponse>>('deliveryTrackingInfo');
-    this.kind = registerOutput<String>('kind');
+  Order(String name, {OrderArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:databoxedge:Order',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contactInformation = registerOutput<ContactDetailsResponse>(
+      'contactInformation',
+    );
+    currentStatus = registerOutput<OrderStatusResponse>('currentStatus');
+    deliveryTrackingInfo = registerOutput<List<Map<String, dynamic>>>(
+      'deliveryTrackingInfo',
+    );
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.orderHistory = registerOutput<List<OrderStatusResponse>>('orderHistory');
-    this.orderId = registerOutput<String>('orderId');
-    this.returnTrackingInfo = registerOutput<List<TrackingInfoResponse>>('returnTrackingInfo');
-    this.serialNumber = registerOutput<String>('serialNumber');
-    this.shipmentType = registerOutput<String?>('shipmentType');
-    this.shippingAddress = registerOutput<AddressResponse?>('shippingAddress');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    orderHistory = registerOutput<List<Map<String, dynamic>>>('orderHistory');
+    orderId = registerOutput<String>('orderId');
+    returnTrackingInfo = registerOutput<List<Map<String, dynamic>>>(
+      'returnTrackingInfo',
+    );
+    serialNumber = registerOutput<String>('serialNumber');
+    shipmentType = registerOutput<String?>('shipmentType');
+    shippingAddress = registerOutput<AddressResponse?>('shippingAddress');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

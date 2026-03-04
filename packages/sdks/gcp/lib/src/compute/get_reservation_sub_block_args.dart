@@ -9,15 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReservationSubBlockArgs {
   /// The name of the reservation sub-block.
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The name of the parent reservation.
   ///
   /// - - -
   final pulumi.Input<String> reservation;
+
   /// The name of the parent reservation block.
   final pulumi.Input<String> reservationBlock;
+
   /// The zone where the reservation sub-block resides.
   final pulumi.Input<String>? zone;
 
@@ -47,12 +51,21 @@ class GetReservationSubBlockArgs {
 
   factory GetReservationSubBlockArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationSubBlockArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      reservation: (map['reservation'] as String).input(),
-      reservationBlock: (map['reservationBlock'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservation: pulumi.Input.fromValue(map['reservation'] as String),
+      reservationBlock: pulumi.Input.fromValue(
+        map['reservationBlock'] as String,
+      ),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

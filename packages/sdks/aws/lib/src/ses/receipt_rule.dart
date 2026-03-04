@@ -1,13 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'receipt_rule_add_header_action.dart';
 import 'receipt_rule_args.dart';
-import 'receipt_rule_bounce_action.dart';
-import 'receipt_rule_lambda_action.dart';
-import 'receipt_rule_s3_action.dart';
-import 'receipt_rule_sns_action.dart';
 import 'receipt_rule_state.dart';
-import 'receipt_rule_stop_action.dart';
-import 'receipt_rule_workmail_action.dart';
 
 /// Provides an SES receipt rule resource
 ///
@@ -212,37 +205,52 @@ import 'receipt_rule_workmail_action.dart';
 /// ```
 class ReceiptRule extends pulumi.CustomResource {
   /// A list of Add Header Action blocks. Documented below.
-  late final pulumi.Output<List<ReceiptRuleAddHeaderAction>?> addHeaderActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> addHeaderActions;
+
   /// The name of the rule to place this rule after
   late final pulumi.Output<String?> after;
+
   /// The SES receipt rule ARN.
   late final pulumi.Output<String> arn;
+
   /// A list of Bounce Action blocks. Documented below.
-  late final pulumi.Output<List<ReceiptRuleBounceAction>?> bounceActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> bounceActions;
+
   /// If true, the rule will be enabled
   late final pulumi.Output<bool?> enabled;
+
   /// A list of Lambda Action blocks. Documented below.
-  late final pulumi.Output<List<ReceiptRuleLambdaAction>?> lambdaActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> lambdaActions;
+
   /// The name of the rule
   late final pulumi.Output<String> name;
+
   /// A list of email addresses
   late final pulumi.Output<List<String>?> recipients;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The name of the rule set
   late final pulumi.Output<String> ruleSetName;
+
   /// A list of S3 Action blocks. Documented below.
-  late final pulumi.Output<List<ReceiptRuleS3Action>?> s3Actions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> s3Actions;
+
   /// If true, incoming emails will be scanned for spam and viruses
   late final pulumi.Output<bool?> scanEnabled;
+
   /// A list of SNS Action blocks. Documented below.
-  late final pulumi.Output<List<ReceiptRuleSnsAction>?> snsActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> snsActions;
+
   /// A list of Stop Action blocks. Documented below.
-  late final pulumi.Output<List<ReceiptRuleStopAction>?> stopActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> stopActions;
+
   /// `Require` or `Optional`
   late final pulumi.Output<String> tlsPolicy;
+
   /// A list of WorkMail Action blocks. Documented below.
-  late final pulumi.Output<List<ReceiptRuleWorkmailAction>?> workmailActions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> workmailActions;
 
   /// Creates a new [ReceiptRule].
   /// [name] The Pulumi resource name.
@@ -253,27 +261,35 @@ class ReceiptRule extends pulumi.CustomResource {
     ReceiptRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/receiptRule:ReceiptRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions');
-    this.after = registerOutput<String?>('after');
-    this.arn = registerOutput<String>('arn');
-    this.bounceActions = registerOutput<List<ReceiptRuleBounceAction>?>('bounceActions');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.lambdaActions = registerOutput<List<ReceiptRuleLambdaAction>?>('lambdaActions');
+         'aws:ses/receiptRule:ReceiptRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>(
+      'addHeaderActions',
+    );
+    after = registerOutput<String?>('after');
+    arn = registerOutput<String>('arn');
+    bounceActions = registerOutput<List<Map<String, dynamic>>?>(
+      'bounceActions',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    lambdaActions = registerOutput<List<Map<String, dynamic>>?>(
+      'lambdaActions',
+    );
     this.name = registerOutput<String>('name');
-    this.recipients = registerOutput<List<String>?>('recipients');
-    this.region = registerOutput<String>('region');
-    this.ruleSetName = registerOutput<String>('ruleSetName');
-    this.s3Actions = registerOutput<List<ReceiptRuleS3Action>?>('s3Actions');
-    this.scanEnabled = registerOutput<bool?>('scanEnabled');
-    this.snsActions = registerOutput<List<ReceiptRuleSnsAction>?>('snsActions');
-    this.stopActions = registerOutput<List<ReceiptRuleStopAction>?>('stopActions');
-    this.tlsPolicy = registerOutput<String>('tlsPolicy');
-    this.workmailActions = registerOutput<List<ReceiptRuleWorkmailAction>?>('workmailActions');
+    recipients = registerOutput<List<String>?>('recipients');
+    region = registerOutput<String>('region');
+    ruleSetName = registerOutput<String>('ruleSetName');
+    s3Actions = registerOutput<List<Map<String, dynamic>>?>('s3Actions');
+    scanEnabled = registerOutput<bool?>('scanEnabled');
+    snsActions = registerOutput<List<Map<String, dynamic>>?>('snsActions');
+    stopActions = registerOutput<List<Map<String, dynamic>>?>('stopActions');
+    tlsPolicy = registerOutput<String>('tlsPolicy');
+    workmailActions = registerOutput<List<Map<String, dynamic>>?>(
+      'workmailActions',
+    );
   }
 
   /// Gets an existing [ReceiptRule] resource's state with the given [name] and [id].
@@ -294,26 +310,34 @@ class ReceiptRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/receiptRule:ReceiptRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addHeaderActions = registerOutput<List<ReceiptRuleAddHeaderAction>?>('addHeaderActions');
-    this.after = registerOutput<String?>('after');
-    this.arn = registerOutput<String>('arn');
-    this.bounceActions = registerOutput<List<ReceiptRuleBounceAction>?>('bounceActions');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.lambdaActions = registerOutput<List<ReceiptRuleLambdaAction>?>('lambdaActions');
+         'aws:ses/receiptRule:ReceiptRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addHeaderActions = registerOutput<List<Map<String, dynamic>>?>(
+      'addHeaderActions',
+    );
+    after = registerOutput<String?>('after');
+    arn = registerOutput<String>('arn');
+    bounceActions = registerOutput<List<Map<String, dynamic>>?>(
+      'bounceActions',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    lambdaActions = registerOutput<List<Map<String, dynamic>>?>(
+      'lambdaActions',
+    );
     this.name = registerOutput<String>('name');
-    this.recipients = registerOutput<List<String>?>('recipients');
-    this.region = registerOutput<String>('region');
-    this.ruleSetName = registerOutput<String>('ruleSetName');
-    this.s3Actions = registerOutput<List<ReceiptRuleS3Action>?>('s3Actions');
-    this.scanEnabled = registerOutput<bool?>('scanEnabled');
-    this.snsActions = registerOutput<List<ReceiptRuleSnsAction>?>('snsActions');
-    this.stopActions = registerOutput<List<ReceiptRuleStopAction>?>('stopActions');
-    this.tlsPolicy = registerOutput<String>('tlsPolicy');
-    this.workmailActions = registerOutput<List<ReceiptRuleWorkmailAction>?>('workmailActions');
+    recipients = registerOutput<List<String>?>('recipients');
+    region = registerOutput<String>('region');
+    ruleSetName = registerOutput<String>('ruleSetName');
+    s3Actions = registerOutput<List<Map<String, dynamic>>?>('s3Actions');
+    scanEnabled = registerOutput<bool?>('scanEnabled');
+    snsActions = registerOutput<List<Map<String, dynamic>>?>('snsActions');
+    stopActions = registerOutput<List<Map<String, dynamic>>?>('stopActions');
+    tlsPolicy = registerOutput<String>('tlsPolicy');
+    workmailActions = registerOutput<List<Map<String, dynamic>>?>(
+      'workmailActions',
+    );
   }
 }

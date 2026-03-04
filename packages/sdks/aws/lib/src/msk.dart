@@ -1,5 +1,3 @@
-library module_msk;
-
 export 'msk/cluster.dart';
 export 'msk/cluster_args.dart';
 export 'msk/cluster_broker_node_group_info.dart';

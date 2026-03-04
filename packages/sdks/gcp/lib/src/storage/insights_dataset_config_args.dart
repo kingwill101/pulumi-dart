@@ -16,43 +16,62 @@ import 'insights_dataset_config_source_projects.dart';
 class InsightsDatasetConfigArgs {
   /// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
   final pulumi.Input<int>? activityDataRetentionPeriodDays;
+
   /// The user-defined ID of the DatasetConfig
   final pulumi.Input<String> datasetConfigId;
+
   /// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
   final pulumi.Input<String>? description;
+
   /// Defined the options for excluding cloud storage buckets for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageBuckets>? excludeCloudStorageBuckets;
+  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageBuckets>?
+  excludeCloudStorageBuckets;
+
   /// Defines the options for excluding cloud storage locations for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageLocations>? excludeCloudStorageLocations;
+  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageLocations>?
+  excludeCloudStorageLocations;
+
   /// Identity used by DatasetConfig.
   /// Structure is documented below.
   final pulumi.Input<InsightsDatasetConfigIdentity> identity;
+
   /// Defines the options for including cloud storage buckets for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageBuckets>? includeCloudStorageBuckets;
+  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageBuckets>?
+  includeCloudStorageBuckets;
+
   /// Defines the options for including cloud storage locations for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageLocations>? includeCloudStorageLocations;
+  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageLocations>?
+  includeCloudStorageLocations;
+
   /// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
   final pulumi.Input<bool>? includeNewlyCreatedBuckets;
   final pulumi.Input<bool>? linkDataset;
+
   /// The location of the DatasetConfig.
   final pulumi.Input<String> location;
+
   /// Organization resource ID that the source projects should belong to.
   /// Projects that do not belong to the provided organization are not considered when creating the dataset.
   final pulumi.Input<String>? organizationNumber;
+
   /// Defines the options for providing a source organization for the DatasetConfig.
   final pulumi.Input<bool>? organizationScope;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Number of days of history that must be retained.
   final pulumi.Input<int> retentionPeriodDays;
+
   /// Defines the options for providing source folders for the DatasetConfig.
   /// Structure is documented below.
   final pulumi.Input<InsightsDatasetConfigSourceFolders>? sourceFolders;
+
   /// Defines the options for providing source projects for the DatasetConfig.
   /// Structure is documented below.
   final pulumi.Input<InsightsDatasetConfigSourceProjects>? sourceProjects;
@@ -100,11 +119,31 @@ class InsightsDatasetConfigArgs {
       'activityDataRetentionPeriodDays': ?activityDataRetentionPeriodDays,
       'datasetConfigId': datasetConfigId,
       'description': ?description,
-      'excludeCloudStorageBuckets': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigExcludeCloudStorageBuckets, Map<String, dynamic>>(excludeCloudStorageBuckets, (value) => value.toMap()),
-      'excludeCloudStorageLocations': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigExcludeCloudStorageLocations, Map<String, dynamic>>(excludeCloudStorageLocations, (value) => value.toMap()),
-      'identity': pulumi.Input.mapInputValue<InsightsDatasetConfigIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'includeCloudStorageBuckets': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigIncludeCloudStorageBuckets, Map<String, dynamic>>(includeCloudStorageBuckets, (value) => value.toMap()),
-      'includeCloudStorageLocations': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigIncludeCloudStorageLocations, Map<String, dynamic>>(includeCloudStorageLocations, (value) => value.toMap()),
+      'excludeCloudStorageBuckets':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsDatasetConfigExcludeCloudStorageBuckets,
+            Map<String, dynamic>
+          >(excludeCloudStorageBuckets, (value) => value.toMap()),
+      'excludeCloudStorageLocations':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsDatasetConfigExcludeCloudStorageLocations,
+            Map<String, dynamic>
+          >(excludeCloudStorageLocations, (value) => value.toMap()),
+      'identity':
+          pulumi.Input.mapInputValue<
+            InsightsDatasetConfigIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
+      'includeCloudStorageBuckets':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsDatasetConfigIncludeCloudStorageBuckets,
+            Map<String, dynamic>
+          >(includeCloudStorageBuckets, (value) => value.toMap()),
+      'includeCloudStorageLocations':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsDatasetConfigIncludeCloudStorageLocations,
+            Map<String, dynamic>
+          >(includeCloudStorageLocations, (value) => value.toMap()),
       'includeNewlyCreatedBuckets': ?includeNewlyCreatedBuckets,
       'linkDataset': ?linkDataset,
       'location': location,
@@ -112,31 +151,120 @@ class InsightsDatasetConfigArgs {
       'organizationScope': ?organizationScope,
       'project': ?project,
       'retentionPeriodDays': retentionPeriodDays,
-      'sourceFolders': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigSourceFolders, Map<String, dynamic>>(sourceFolders, (value) => value.toMap()),
-      'sourceProjects': ?pulumi.Input.mapOptionalInputValue<InsightsDatasetConfigSourceProjects, Map<String, dynamic>>(sourceProjects, (value) => value.toMap()),
+      'sourceFolders':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsDatasetConfigSourceFolders,
+            Map<String, dynamic>
+          >(sourceFolders, (value) => value.toMap()),
+      'sourceProjects':
+          ?pulumi.Input.mapOptionalInputValue<
+            InsightsDatasetConfigSourceProjects,
+            Map<String, dynamic>
+          >(sourceProjects, (value) => value.toMap()),
     };
   }
 
   factory InsightsDatasetConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigArgs(
-      activityDataRetentionPeriodDays: map['activityDataRetentionPeriodDays'] == null ? null : (map['activityDataRetentionPeriodDays']! as int).input(),
-      datasetConfigId: (map['datasetConfigId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      excludeCloudStorageBuckets: map['excludeCloudStorageBuckets'] == null ? null : (InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap((map['excludeCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
-      excludeCloudStorageLocations: map['excludeCloudStorageLocations'] == null ? null : (InsightsDatasetConfigExcludeCloudStorageLocations.fromMap((map['excludeCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
-      identity: (InsightsDatasetConfigIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      includeCloudStorageBuckets: map['includeCloudStorageBuckets'] == null ? null : (InsightsDatasetConfigIncludeCloudStorageBuckets.fromMap((map['includeCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
-      includeCloudStorageLocations: map['includeCloudStorageLocations'] == null ? null : (InsightsDatasetConfigIncludeCloudStorageLocations.fromMap((map['includeCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
-      includeNewlyCreatedBuckets: map['includeNewlyCreatedBuckets'] == null ? null : (map['includeNewlyCreatedBuckets']! as bool).input(),
-      linkDataset: map['linkDataset'] == null ? null : (map['linkDataset']! as bool).input(),
-      location: (map['location'] as String).input(),
-      organizationNumber: map['organizationNumber'] == null ? null : (map['organizationNumber']! as String).input(),
-      organizationScope: map['organizationScope'] == null ? null : (map['organizationScope']! as bool).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      retentionPeriodDays: (map['retentionPeriodDays'] as int).input(),
-      sourceFolders: map['sourceFolders'] == null ? null : (InsightsDatasetConfigSourceFolders.fromMap((map['sourceFolders']! as Map).cast<String, dynamic>())).input(),
-      sourceProjects: map['sourceProjects'] == null ? null : (InsightsDatasetConfigSourceProjects.fromMap((map['sourceProjects']! as Map).cast<String, dynamic>())).input(),
+      activityDataRetentionPeriodDays: (() {
+        final guardedValue = map['activityDataRetentionPeriodDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      datasetConfigId: pulumi.Input.fromValue(map['datasetConfigId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      excludeCloudStorageBuckets: (() {
+        final guardedValue = map['excludeCloudStorageBuckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      excludeCloudStorageLocations: (() {
+        final guardedValue = map['excludeCloudStorageLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsDatasetConfigExcludeCloudStorageLocations.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: pulumi.Input.fromValue(
+        InsightsDatasetConfigIdentity.fromMap(
+          (map['identity']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      includeCloudStorageBuckets: (() {
+        final guardedValue = map['includeCloudStorageBuckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsDatasetConfigIncludeCloudStorageBuckets.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      includeCloudStorageLocations: (() {
+        final guardedValue = map['includeCloudStorageLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsDatasetConfigIncludeCloudStorageLocations.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      includeNewlyCreatedBuckets: (() {
+        final guardedValue = map['includeNewlyCreatedBuckets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      linkDataset: (() {
+        final guardedValue = map['linkDataset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationNumber: (() {
+        final guardedValue = map['organizationNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationScope: (() {
+        final guardedValue = map['organizationScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionPeriodDays: pulumi.Input.fromValue(
+        map['retentionPeriodDays'] as int,
+      ),
+      sourceFolders: (() {
+        final guardedValue = map['sourceFolders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsDatasetConfigSourceFolders.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceProjects: (() {
+        final guardedValue = map['sourceProjects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InsightsDatasetConfigSourceProjects.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

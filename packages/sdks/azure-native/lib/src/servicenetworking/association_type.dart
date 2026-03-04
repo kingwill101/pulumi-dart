@@ -2,16 +2,15 @@
 enum AssociationType {
   subnets("subnets");
 
-  const AssociationType(this.value);
-  final String value;
+  const AssociationType(this.wireValue);
+  final String wireValue;
 
   static AssociationType fromValue(String value) {
     for (final item in AssociationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssociationType value: $value');
   }
 }
-

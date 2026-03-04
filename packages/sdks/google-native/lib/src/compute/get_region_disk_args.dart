@@ -15,11 +15,7 @@ class GetRegionDiskArgs {
   /// [disk] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionDiskArgs({
-    required this.disk,
-    this.project,
-    required this.region,
-  });
+  GetRegionDiskArgs({required this.disk, this.project, required this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetRegionDiskArgs {
 
   factory GetRegionDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionDiskArgs(
-      disk: (map['disk'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      disk: pulumi.Input.fromValue(map['disk'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

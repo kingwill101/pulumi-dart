@@ -6,7 +6,7 @@ import 'traffic_qos_association_state.dart';
 ///
 /// For information about Express Connect Traffic Qos Association and how to use it, see [What is Traffic Qos Association](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/ModifyExpressConnectTrafficQos).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -204,10 +204,13 @@ import 'traffic_qos_association_state.dart';
 class TrafficQosAssociation extends pulumi.CustomResource {
   /// The ID of the associated instance.
   late final pulumi.Output<String> instanceId;
+
   /// The type of the associated instance. Value: **physical connection** physical connection.
   late final pulumi.Output<String> instanceType;
+
   /// The QoS policy ID.
   late final pulumi.Output<String> qosId;
+
   /// The status of the associated instance. Value:
   late final pulumi.Output<String> status;
 
@@ -220,15 +223,15 @@ class TrafficQosAssociation extends pulumi.CustomResource {
     TrafficQosAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.qosId = registerOutput<String>('qosId');
-    this.status = registerOutput<String>('status');
+         'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    qosId = registerOutput<String>('qosId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [TrafficQosAssociation] resource's state with the given [name] and [id].
@@ -249,14 +252,14 @@ class TrafficQosAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.qosId = registerOutput<String>('qosId');
-    this.status = registerOutput<String>('status');
+         'alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    qosId = registerOutput<String>('qosId');
+    status = registerOutput<String>('status');
   }
 }

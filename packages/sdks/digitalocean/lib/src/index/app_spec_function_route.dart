@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSpecFunctionRoute {
   /// Paths must start with `/` and must be unique within the app.
   final pulumi.Input<String>? path;
+
   /// An optional flag to preserve the path that is forwarded to the backend service.
   final pulumi.Input<bool>? preservePathPrefix;
 
   /// Creates a new [AppSpecFunctionRoute].
   /// [path] Paths must start with `/` and must be unique within the app.
   /// [preservePathPrefix] An optional flag to preserve the path that is forwarded to the backend service.
-  AppSpecFunctionRoute({
-    this.path,
-    this.preservePathPrefix,
-  });
+  AppSpecFunctionRoute({this.path, this.preservePathPrefix});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class AppSpecFunctionRoute {
 
   factory AppSpecFunctionRoute.fromMap(Map<String, dynamic> map) {
     return AppSpecFunctionRoute(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      preservePathPrefix: map['preservePathPrefix'] == null ? null : (map['preservePathPrefix']! as bool).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preservePathPrefix: (() {
+        final guardedValue = map['preservePathPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

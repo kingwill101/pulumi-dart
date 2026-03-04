@@ -157,24 +157,34 @@ import 'system_data_response.dart';
 class DeviceGroup extends pulumi.CustomResource {
   /// Flag to define if the user allows for crash dump collection.
   late final pulumi.Output<String?> allowCrashDumpsCollection;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of the device group.
   late final pulumi.Output<String?> description;
+
   /// Deployment status for the device group.
   late final pulumi.Output<bool> hasDeployment;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Operating system feed type of the device group.
   late final pulumi.Output<String?> osFeedType;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Regional data boundary for the device group.
   late final pulumi.Output<String?> regionalDataBoundary;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Update policy of the device group.
   late final pulumi.Output<String?> updatePolicy;
 
@@ -187,21 +197,23 @@ class DeviceGroup extends pulumi.CustomResource {
     DeviceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azuresphere:DeviceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowCrashDumpsCollection = registerOutput<String?>('allowCrashDumpsCollection');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.hasDeployment = registerOutput<bool>('hasDeployment');
+         'azure-native:azuresphere:DeviceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowCrashDumpsCollection = registerOutput<String?>(
+      'allowCrashDumpsCollection',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    hasDeployment = registerOutput<bool>('hasDeployment');
     this.name = registerOutput<String>('name');
-    this.osFeedType = registerOutput<String?>('osFeedType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.regionalDataBoundary = registerOutput<String?>('regionalDataBoundary');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.updatePolicy = registerOutput<String?>('updatePolicy');
+    osFeedType = registerOutput<String?>('osFeedType');
+    provisioningState = registerOutput<String>('provisioningState');
+    regionalDataBoundary = registerOutput<String?>('regionalDataBoundary');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    updatePolicy = registerOutput<String?>('updatePolicy');
   }
 }

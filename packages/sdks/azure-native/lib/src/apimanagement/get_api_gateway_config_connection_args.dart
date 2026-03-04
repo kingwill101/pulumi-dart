@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApiGatewayConfigConnectionArgs {
   /// The name of the API Management gateway config connection.
   final pulumi.Input<String> configConnectionName;
+
   /// The name of the API Management gateway.
   final pulumi.Input<String> gatewayName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetApiGatewayConfigConnectionArgs {
 
   factory GetApiGatewayConfigConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayConfigConnectionArgs(
-      configConnectionName: (map['configConnectionName'] as String).input(),
-      gatewayName: (map['gatewayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      configConnectionName: pulumi.Input.fromValue(
+        map['configConnectionName'] as String,
+      ),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

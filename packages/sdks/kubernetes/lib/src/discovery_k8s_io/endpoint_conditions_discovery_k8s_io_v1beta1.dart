@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointConditionsDiscoveryK8sIoV1beta1 {
   /// ready indicates that this endpoint is prepared to receive traffic, according to whatever system is managing the endpoint. A nil value indicates an unknown state. In most cases consumers should interpret this unknown state as ready.
   final pulumi.Input<bool>? ready;
+
   /// serving is identical to ready except that it is set regardless of the terminating state of endpoints. This condition should be set to true for a ready endpoint that is terminating. If nil, consumers should defer to the ready condition. This field can be enabled with the EndpointSliceTerminatingCondition feature gate.
   final pulumi.Input<bool>? serving;
+
   /// terminating indicates that this endpoint is terminating. A nil value indicates an unknown state. Consumers should interpret this unknown state to mean that the endpoint is not terminating. This field can be enabled with the EndpointSliceTerminatingCondition feature gate.
   final pulumi.Input<bool>? terminating;
 
@@ -29,12 +31,25 @@ class EndpointConditionsDiscoveryK8sIoV1beta1 {
     };
   }
 
-  factory EndpointConditionsDiscoveryK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EndpointConditionsDiscoveryK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointConditionsDiscoveryK8sIoV1beta1(
-      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
-      serving: map['serving'] == null ? null : (map['serving']! as bool).input(),
-      terminating: map['terminating'] == null ? null : (map['terminating']! as bool).input(),
+      ready: (() {
+        final guardedValue = map['ready'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serving: (() {
+        final guardedValue = map['serving'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      terminating: (() {
+        final guardedValue = map['terminating'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

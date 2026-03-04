@@ -661,39 +661,56 @@ import 'environment_timeouts.dart';
 /// ```
 class Environment extends pulumi.CustomResource {
   late final pulumi.Output<bool?> applyChangesDuringMaintenanceWindow;
+
   /// ARN of the Environment.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<String?> description;
+
   /// Engine type must be `microfocus` or `bluage`.
   late final pulumi.Output<String> engineType;
+
   /// The specific version of the engine for the Environment.
   late final pulumi.Output<String> engineVersion;
+
   /// The id of the Environment.
   late final pulumi.Output<String> environmentId;
+
   /// Force update the environment even if applications are running.
   late final pulumi.Output<bool?> forceUpdate;
-  late final pulumi.Output<EnvironmentHighAvailabilityConfig?> highAvailabilityConfig;
+  late final pulumi.Output<EnvironmentHighAvailabilityConfig?>
+  highAvailabilityConfig;
+
   /// M2 Instance Type.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> instanceType;
+
   /// ARN of the KMS key to use for the Environment.
   late final pulumi.Output<String?> kmsKeyId;
+
   /// ARN of the load balancer created by the Environment.
   late final pulumi.Output<String> loadBalancerArn;
+
   /// Name of the runtime environment. Must be unique within the account.
   late final pulumi.Output<String> name;
+
   /// Configures the maintenance window that you want for the runtime environment. The maintenance window must have the format `ddd:hh24:mi-ddd:hh24:mi` and must be less than 24 hours. If not provided a random value will be used.
   late final pulumi.Output<String> preferredMaintenanceWindow;
+
   /// Allow applications deployed to this environment to be publicly accessible.
   late final pulumi.Output<bool> publiclyAccessible;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// List of security group ids.
   late final pulumi.Output<List<String>> securityGroupIds;
-  late final pulumi.Output<EnvironmentStorageConfiguration?> storageConfiguration;
+  late final pulumi.Output<EnvironmentStorageConfiguration?>
+  storageConfiguration;
+
   /// List of subnet ids to deploy environment to.
   late final pulumi.Output<List<String>> subnetIds;
+
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -708,32 +725,40 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:m2/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applyChangesDuringMaintenanceWindow = registerOutput<bool?>('applyChangesDuringMaintenanceWindow');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.engineType = registerOutput<String>('engineType');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.forceUpdate = registerOutput<bool?>('forceUpdate');
-    this.highAvailabilityConfig = registerOutput<EnvironmentHighAvailabilityConfig?>('highAvailabilityConfig');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.loadBalancerArn = registerOutput<String>('loadBalancerArn');
+         'aws:m2/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applyChangesDuringMaintenanceWindow = registerOutput<bool?>(
+      'applyChangesDuringMaintenanceWindow',
+    );
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    engineType = registerOutput<String>('engineType');
+    engineVersion = registerOutput<String>('engineVersion');
+    environmentId = registerOutput<String>('environmentId');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    highAvailabilityConfig = registerOutput<EnvironmentHighAvailabilityConfig?>(
+      'highAvailabilityConfig',
+    );
+    instanceType = registerOutput<String>('instanceType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    loadBalancerArn = registerOutput<String>('loadBalancerArn');
     this.name = registerOutput<String>('name');
-    this.preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
-    this.publiclyAccessible = registerOutput<bool>('publiclyAccessible');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>('storageConfiguration');
-    this.subnetIds = registerOutput<List<String>>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    preferredMaintenanceWindow = registerOutput<String>(
+      'preferredMaintenanceWindow',
+    );
+    publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>(
+      'storageConfiguration',
+    );
+    subnetIds = registerOutput<List<String>>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -754,31 +779,39 @@ class Environment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:m2/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applyChangesDuringMaintenanceWindow = registerOutput<bool?>('applyChangesDuringMaintenanceWindow');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.engineType = registerOutput<String>('engineType');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.forceUpdate = registerOutput<bool?>('forceUpdate');
-    this.highAvailabilityConfig = registerOutput<EnvironmentHighAvailabilityConfig?>('highAvailabilityConfig');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.loadBalancerArn = registerOutput<String>('loadBalancerArn');
+         'aws:m2/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applyChangesDuringMaintenanceWindow = registerOutput<bool?>(
+      'applyChangesDuringMaintenanceWindow',
+    );
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    engineType = registerOutput<String>('engineType');
+    engineVersion = registerOutput<String>('engineVersion');
+    environmentId = registerOutput<String>('environmentId');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    highAvailabilityConfig = registerOutput<EnvironmentHighAvailabilityConfig?>(
+      'highAvailabilityConfig',
+    );
+    instanceType = registerOutput<String>('instanceType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    loadBalancerArn = registerOutput<String>('loadBalancerArn');
     this.name = registerOutput<String>('name');
-    this.preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
-    this.publiclyAccessible = registerOutput<bool>('publiclyAccessible');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>('storageConfiguration');
-    this.subnetIds = registerOutput<List<String>>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
+    preferredMaintenanceWindow = registerOutput<String>(
+      'preferredMaintenanceWindow',
+    );
+    publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>(
+      'storageConfiguration',
+    );
+    subnetIds = registerOutput<List<String>>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts');
   }
 }

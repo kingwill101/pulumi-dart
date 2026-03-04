@@ -9,9 +9,7 @@ class KeyPolicy {
 
   /// Creates a new [KeyPolicy].
   /// [keyExpirationPeriodInDays] The key expiration period in days.
-  KeyPolicy({
-    required this.keyExpirationPeriodInDays,
-  });
+  KeyPolicy({required this.keyExpirationPeriodInDays});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class KeyPolicy {
 
   factory KeyPolicy.fromMap(Map<String, dynamic> map) {
     return KeyPolicy(
-      keyExpirationPeriodInDays: (map['keyExpirationPeriodInDays'] as int).input(),
+      keyExpirationPeriodInDays: pulumi.Input.fromValue(
+        map['keyExpirationPeriodInDays'] as int,
+      ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeCacheServiceRoutingHostRule {
   /// A human-readable description of the hostRule.
   final pulumi.Input<String>? description;
+
   /// The list of host patterns to match.
   /// Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
   /// When multiple hosts are specified, hosts are matched in the following priority:
@@ -17,6 +18,7 @@ class EdgeCacheServiceRoutingHostRule {
   /// Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
   /// You may specify up to 10 hosts.
   final pulumi.Input<List<String>> hosts;
+
   /// The name of the pathMatcher associated with this hostRule.
   final pulumi.Input<String> pathMatcher;
 
@@ -40,10 +42,13 @@ class EdgeCacheServiceRoutingHostRule {
 
   factory EdgeCacheServiceRoutingHostRule.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingHostRule(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      hosts: ((map['hosts'] as List).cast<String>()).input(),
-      pathMatcher: (map['pathMatcher'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hosts: pulumi.Input.fromValue((map['hosts'] as List).cast<String>()),
+      pathMatcher: pulumi.Input.fromValue(map['pathMatcher'] as String),
     );
   }
 }
-

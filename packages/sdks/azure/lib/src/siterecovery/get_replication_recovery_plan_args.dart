@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationRecoveryPlanArgs {
   /// The name of the Replication Plan.
   final pulumi.Input<String> name;
+
   /// The ID of the vault that should be updated.
   final pulumi.Input<String> recoveryVaultId;
 
@@ -21,17 +22,13 @@ class GetReplicationRecoveryPlanArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'recoveryVaultId': recoveryVaultId,
-    };
+    return <String, dynamic>{'name': name, 'recoveryVaultId': recoveryVaultId};
   }
 
   factory GetReplicationRecoveryPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationRecoveryPlanArgs(
-      name: (map['name'] as String).input(),
-      recoveryVaultId: (map['recoveryVaultId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      recoveryVaultId: pulumi.Input.fromValue(map['recoveryVaultId'] as String),
     );
   }
 }
-

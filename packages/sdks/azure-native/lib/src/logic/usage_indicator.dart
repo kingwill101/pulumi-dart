@@ -5,16 +5,15 @@ enum UsageIndicator {
   valueInformation("Information"),
   valueProduction("Production");
 
-  const UsageIndicator(this.value);
-  final String value;
+  const UsageIndicator(this.wireValue);
+  final String wireValue;
 
   static UsageIndicator fromValue(String value) {
     for (final item in UsageIndicator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UsageIndicator value: $value');
   }
 }
-

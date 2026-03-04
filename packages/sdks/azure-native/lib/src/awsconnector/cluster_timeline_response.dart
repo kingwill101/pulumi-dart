@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ClusterTimeline
 class ClusterTimelineResponse {
-  /// <p>The creation date and time of the cluster.</p>
+  /// &lt;p&gt;The creation date and time of the cluster.&lt;/p&gt;
   final pulumi.Input<String>? creationDateTime;
-  /// <p>The date and time when the cluster was terminated.</p>
+
+  /// &lt;p&gt;The date and time when the cluster was terminated.&lt;/p&gt;
   final pulumi.Input<String>? endDateTime;
-  /// <p>The date and time when the cluster was ready to run steps.</p>
+
+  /// &lt;p&gt;The date and time when the cluster was ready to run steps.&lt;/p&gt;
   final pulumi.Input<String>? readyDateTime;
 
   /// Creates a new [ClusterTimelineResponse].
-  /// [creationDateTime] <p>The creation date and time of the cluster.</p>
-  /// [endDateTime] <p>The date and time when the cluster was terminated.</p>
-  /// [readyDateTime] <p>The date and time when the cluster was ready to run steps.</p>
+  /// [creationDateTime] &lt;p&gt;The creation date and time of the cluster.&lt;/p&gt;
+  /// [endDateTime] &lt;p&gt;The date and time when the cluster was terminated.&lt;/p&gt;
+  /// [readyDateTime] &lt;p&gt;The date and time when the cluster was ready to run steps.&lt;/p&gt;
   ClusterTimelineResponse({
     this.creationDateTime,
     this.endDateTime,
@@ -31,10 +33,21 @@ class ClusterTimelineResponse {
 
   factory ClusterTimelineResponse.fromMap(Map<String, dynamic> map) {
     return ClusterTimelineResponse(
-      creationDateTime: map['creationDateTime'] == null ? null : (map['creationDateTime']! as String).input(),
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
-      readyDateTime: map['readyDateTime'] == null ? null : (map['readyDateTime']! as String).input(),
+      creationDateTime: (() {
+        final guardedValue = map['creationDateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endDateTime: (() {
+        final guardedValue = map['endDateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readyDateTime: (() {
+        final guardedValue = map['readyDateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

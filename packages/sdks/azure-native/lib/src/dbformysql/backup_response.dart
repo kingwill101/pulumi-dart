@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupResponse {
   /// Backup interval hours for the server.
   final pulumi.Input<int>? backupIntervalHours;
+
   /// Backup retention days for the server.
   final pulumi.Input<int>? backupRetentionDays;
+
   /// Earliest restore point creation time (ISO8601 format)
   final pulumi.Input<String> earliestRestoreDate;
+
   /// Whether or not geo redundant backup is enabled.
   final pulumi.Input<String>? geoRedundantBackup;
 
@@ -36,11 +39,24 @@ class BackupResponse {
 
   factory BackupResponse.fromMap(Map<String, dynamic> map) {
     return BackupResponse(
-      backupIntervalHours: map['backupIntervalHours'] == null ? null : (map['backupIntervalHours']! as int).input(),
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays']! as int).input(),
-      earliestRestoreDate: (map['earliestRestoreDate'] as String).input(),
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup']! as String).input(),
+      backupIntervalHours: (() {
+        final guardedValue = map['backupIntervalHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupRetentionDays: (() {
+        final guardedValue = map['backupRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      earliestRestoreDate: pulumi.Input.fromValue(
+        map['earliestRestoreDate'] as String,
+      ),
+      geoRedundantBackup: (() {
+        final guardedValue = map['geoRedundantBackup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgreementArgs {
   /// The Offer of the Marketplace Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> offer;
+
   /// The Plan of the Marketplace Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> plan;
+
   /// The Publisher of the Marketplace Image. Changing this forces a new resource to be created.
   final pulumi.Input<String> publisher;
 
@@ -34,10 +36,9 @@ class AgreementArgs {
 
   factory AgreementArgs.fromMap(Map<String, dynamic> map) {
     return AgreementArgs(
-      offer: (map['offer'] as String).input(),
-      plan: (map['plan'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
+      offer: pulumi.Input.fromValue(map['offer'] as String),
+      plan: pulumi.Input.fromValue(map['plan'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
     );
   }
 }
-

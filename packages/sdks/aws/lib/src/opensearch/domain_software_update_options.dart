@@ -8,9 +8,7 @@ class DomainSoftwareUpdateOptions {
 
   /// Creates a new [DomainSoftwareUpdateOptions].
   /// [autoSoftwareUpdateEnabled] Whether automatic service software updates are enabled for the domain. Defaults to `false`.
-  DomainSoftwareUpdateOptions({
-    this.autoSoftwareUpdateEnabled,
-  });
+  DomainSoftwareUpdateOptions({this.autoSoftwareUpdateEnabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,11 @@ class DomainSoftwareUpdateOptions {
 
   factory DomainSoftwareUpdateOptions.fromMap(Map<String, dynamic> map) {
     return DomainSoftwareUpdateOptions(
-      autoSoftwareUpdateEnabled: map['autoSoftwareUpdateEnabled'] == null ? null : ((map['autoSoftwareUpdateEnabled'] as bool).input()).input(),
+      autoSoftwareUpdateEnabled: (() {
+        final guardedValue = map['autoSoftwareUpdateEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

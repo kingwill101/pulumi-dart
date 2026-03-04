@@ -9,20 +9,28 @@ class ResourceModelWithAllowedPropertySetIdentity {
 
   /// Creates a new [ResourceModelWithAllowedPropertySetIdentity].
   /// [type] The identity type.
-  ResourceModelWithAllowedPropertySetIdentity({
-    this.type,
-  });
+  ResourceModelWithAllowedPropertySetIdentity({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
-  factory ResourceModelWithAllowedPropertySetIdentity.fromMap(Map<String, dynamic> map) {
+  factory ResourceModelWithAllowedPropertySetIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceModelWithAllowedPropertySetIdentity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceIdentityType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum IPAddressAllocationMethod {
   valueRandom("random"),
   valueOther("other");
 
-  const IPAddressAllocationMethod(this.value);
-  final String value;
+  const IPAddressAllocationMethod(this.wireValue);
+  final String wireValue;
 
   static IPAddressAllocationMethod fromValue(String value) {
     for (final item in IPAddressAllocationMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IPAddressAllocationMethod value: $value');
   }
 }
-

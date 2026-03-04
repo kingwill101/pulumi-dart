@@ -9,20 +9,17 @@ class LoggingConfigResponse {
 
   /// Creates a new [LoggingConfigResponse].
   /// [driverLogLevels] The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
-  LoggingConfigResponse({
-    required this.driverLogLevels,
-  });
+  LoggingConfigResponse({required this.driverLogLevels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'driverLogLevels': driverLogLevels,
-    };
+    return <String, dynamic>{'driverLogLevels': driverLogLevels};
   }
 
   factory LoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return LoggingConfigResponse(
-      driverLogLevels: ((map['driverLogLevels'] as Map).cast<String, String>()).input(),
+      driverLogLevels: pulumi.Input.fromValue(
+        (map['driverLogLevels'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

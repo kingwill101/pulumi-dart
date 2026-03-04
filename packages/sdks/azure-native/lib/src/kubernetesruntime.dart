@@ -1,5 +1,3 @@
-library module_kubernetesruntime;
-
 export 'kubernetesruntime/access_mode.dart';
 export 'kubernetesruntime/advertise_mode.dart';
 export 'kubernetesruntime/bgp_peer.dart';

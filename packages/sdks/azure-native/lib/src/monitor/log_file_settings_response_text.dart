@@ -9,9 +9,7 @@ class LogFileSettingsResponseText {
 
   /// Creates a new [LogFileSettingsResponseText].
   /// [recordStartTimestampFormat] One of the supported timestamp formats
-  LogFileSettingsResponseText({
-    required this.recordStartTimestampFormat,
-  });
+  LogFileSettingsResponseText({required this.recordStartTimestampFormat});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class LogFileSettingsResponseText {
 
   factory LogFileSettingsResponseText.fromMap(Map<String, dynamic> map) {
     return LogFileSettingsResponseText(
-      recordStartTimestampFormat: (map['recordStartTimestampFormat'] as String).input(),
+      recordStartTimestampFormat: pulumi.Input.fromValue(
+        map['recordStartTimestampFormat'] as String,
+      ),
     );
   }
 }
-

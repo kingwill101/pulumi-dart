@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomImagePropertiesCustom {
   /// The image name.
   final pulumi.Input<String>? imageName;
+
   /// The OS type of the custom image (i.e. Windows, Linux)
   final pulumi.Input<String> osType;
+
   /// Indicates whether sysprep has been run on the VHD.
   final pulumi.Input<bool>? sysPrep;
 
@@ -31,10 +33,17 @@ class CustomImagePropertiesCustom {
 
   factory CustomImagePropertiesCustom.fromMap(Map<String, dynamic> map) {
     return CustomImagePropertiesCustom(
-      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
-      osType: (map['osType'] as String).input(),
-      sysPrep: map['sysPrep'] == null ? null : (map['sysPrep']! as bool).input(),
+      imageName: (() {
+        final guardedValue = map['imageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      sysPrep: (() {
+        final guardedValue = map['sysPrep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

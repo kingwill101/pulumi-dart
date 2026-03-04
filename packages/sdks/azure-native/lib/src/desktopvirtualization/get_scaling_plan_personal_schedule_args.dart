@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScalingPlanPersonalScheduleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the scaling plan.
   final pulumi.Input<String> scalingPlanName;
+
   /// The name of the ScalingPlanSchedule
   final pulumi.Input<String> scalingPlanScheduleName;
 
@@ -34,10 +36,13 @@ class GetScalingPlanPersonalScheduleArgs {
 
   factory GetScalingPlanPersonalScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetScalingPlanPersonalScheduleArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scalingPlanName: (map['scalingPlanName'] as String).input(),
-      scalingPlanScheduleName: (map['scalingPlanScheduleName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scalingPlanName: pulumi.Input.fromValue(map['scalingPlanName'] as String),
+      scalingPlanScheduleName: pulumi.Input.fromValue(
+        map['scalingPlanScheduleName'] as String,
+      ),
     );
   }
 }
-

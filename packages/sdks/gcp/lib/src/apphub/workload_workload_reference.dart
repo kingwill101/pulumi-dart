@@ -9,20 +9,19 @@ class WorkloadWorkloadReference {
 
   /// Creates a new [WorkloadWorkloadReference].
   /// [uri] (Output)
-  WorkloadWorkloadReference({
-    this.uri,
-  });
+  WorkloadWorkloadReference({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory WorkloadWorkloadReference.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadReference(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

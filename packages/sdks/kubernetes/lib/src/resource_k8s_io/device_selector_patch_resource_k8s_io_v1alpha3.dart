@@ -10,20 +10,31 @@ class DeviceSelectorPatchResourceK8sIoV1alpha3 {
 
   /// Creates a new [DeviceSelectorPatchResourceK8sIoV1alpha3].
   /// [cel] CEL contains a CEL expression for selecting a device.
-  DeviceSelectorPatchResourceK8sIoV1alpha3({
-    this.cel,
-  });
+  DeviceSelectorPatchResourceK8sIoV1alpha3({this.cel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cel': ?pulumi.Input.mapOptionalInputValue<CELDeviceSelectorPatchResourceK8sIoV1alpha3, Map<String, dynamic>>(cel, (value) => value.toMap()),
+      'cel':
+          ?pulumi.Input.mapOptionalInputValue<
+            CELDeviceSelectorPatchResourceK8sIoV1alpha3,
+            Map<String, dynamic>
+          >(cel, (value) => value.toMap()),
     };
   }
 
-  factory DeviceSelectorPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
+  factory DeviceSelectorPatchResourceK8sIoV1alpha3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeviceSelectorPatchResourceK8sIoV1alpha3(
-      cel: map['cel'] == null ? null : (CELDeviceSelectorPatchResourceK8sIoV1alpha3.fromMap((map['cel']! as Map).cast<String, dynamic>())).input(),
+      cel: (() {
+        final guardedValue = map['cel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CELDeviceSelectorPatchResourceK8sIoV1alpha3.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -133,17 +133,23 @@ import 'ueba_args.dart';
 class Ueba extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The relevant data sources that enriched by ueba
   late final pulumi.Output<List<String>?> dataSources;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The kind of the setting
   /// Expected value is 'Ueba'.
   late final pulumi.Output<String> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -151,22 +157,19 @@ class Ueba extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Ueba]. {@macro pulumi_securityinsights_ueba_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Ueba(
-    String name, {
-    UebaArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:securityinsights:Ueba',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataSources = registerOutput<List<String>?>('dataSources');
-    this.etag = registerOutput<String?>('etag');
-    this.kind = registerOutput<String>('kind');
+  Ueba(String name, {UebaArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:securityinsights:Ueba',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSources = registerOutput<List<String>?>('dataSources');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

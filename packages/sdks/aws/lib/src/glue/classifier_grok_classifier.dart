@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClassifierGrokClassifier {
   /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
   final pulumi.Input<String> classification;
+
   /// Custom grok patterns used by this classifier.
   final pulumi.Input<String>? customPatterns;
+
   /// The grok pattern used by this classifier.
   final pulumi.Input<String> grokPattern;
 
@@ -30,10 +32,13 @@ class ClassifierGrokClassifier {
 
   factory ClassifierGrokClassifier.fromMap(Map<String, dynamic> map) {
     return ClassifierGrokClassifier(
-      classification: (map['classification'] as String).input(),
-      customPatterns: map['customPatterns'] == null ? null : ((map['customPatterns'] as String).input()).input(),
-      grokPattern: (map['grokPattern'] as String).input(),
+      classification: pulumi.Input.fromValue(map['classification'] as String),
+      customPatterns: (() {
+        final guardedValue = map['customPatterns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      grokPattern: pulumi.Input.fromValue(map['grokPattern'] as String),
     );
   }
 }
-

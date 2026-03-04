@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSmartDetectorAlertRuleArgs {
   /// The name of the alert rule.
   final pulumi.Input<String> alertRuleName;
+
   /// Indicates if Smart Detector should be expanded.
   final pulumi.Input<bool>? expandDetector;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetSmartDetectorAlertRuleArgs {
 
   factory GetSmartDetectorAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSmartDetectorAlertRuleArgs(
-      alertRuleName: (map['alertRuleName'] as String).input(),
-      expandDetector: map['expandDetector'] == null ? null : (map['expandDetector']! as bool).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      alertRuleName: pulumi.Input.fromValue(map['alertRuleName'] as String),
+      expandDetector: (() {
+        final guardedValue = map['expandDetector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

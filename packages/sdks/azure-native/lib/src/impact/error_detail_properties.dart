@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorDetailProperties {
   /// ARM Error code associated with the impact.
   final pulumi.Input<String>? errorCode;
+
   /// ARM Error Message associated with the impact
   final pulumi.Input<String>? errorMessage;
 
   /// Creates a new [ErrorDetailProperties].
   /// [errorCode] ARM Error code associated with the impact.
   /// [errorMessage] ARM Error Message associated with the impact
-  ErrorDetailProperties({
-    this.errorCode,
-    this.errorMessage,
-  });
+  ErrorDetailProperties({this.errorCode, this.errorMessage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ErrorDetailProperties {
 
   factory ErrorDetailProperties.fromMap(Map<String, dynamic> map) {
     return ErrorDetailProperties(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

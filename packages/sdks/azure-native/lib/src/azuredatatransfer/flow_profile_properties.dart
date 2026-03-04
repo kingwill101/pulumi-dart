@@ -7,10 +7,13 @@ import 'flow_profile_rulesets.dart';
 class FlowProfileProperties {
   /// A user-defined description of the FlowProfile.
   final pulumi.Input<String> description;
+
   /// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
   final pulumi.Input<String> replicationScenario;
+
   /// A set of configurable rulesets applied to this FlowProfile.
   final pulumi.Input<FlowProfileRulesets>? rulesets;
+
   /// The operational status of the FlowProfile.
   final pulumi.Input<String> status;
 
@@ -30,18 +33,31 @@ class FlowProfileProperties {
     return <String, dynamic>{
       'description': description,
       'replicationScenario': replicationScenario,
-      'rulesets': ?pulumi.Input.mapOptionalInputValue<FlowProfileRulesets, Map<String, dynamic>>(rulesets, (value) => value.toMap()),
+      'rulesets':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowProfileRulesets,
+            Map<String, dynamic>
+          >(rulesets, (value) => value.toMap()),
       'status': status,
     };
   }
 
   factory FlowProfileProperties.fromMap(Map<String, dynamic> map) {
     return FlowProfileProperties(
-      description: (map['description'] as String).input(),
-      replicationScenario: (map['replicationScenario'] as String).input(),
-      rulesets: map['rulesets'] == null ? null : (FlowProfileRulesets.fromMap((map['rulesets']! as Map).cast<String, dynamic>())).input(),
-      status: (map['status'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      replicationScenario: pulumi.Input.fromValue(
+        map['replicationScenario'] as String,
+      ),
+      rulesets: (() {
+        final guardedValue = map['rulesets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowProfileRulesets.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

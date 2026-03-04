@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateSpecVersionInfoResponse {
   /// Template Spec version description.
   final pulumi.Input<String> description;
+
   /// The timestamp of when the version was created.
   final pulumi.Input<String> timeCreated;
+
   /// The timestamp of when the version was last modified.
   final pulumi.Input<String> timeModified;
 
@@ -31,10 +33,9 @@ class TemplateSpecVersionInfoResponse {
 
   factory TemplateSpecVersionInfoResponse.fromMap(Map<String, dynamic> map) {
     return TemplateSpecVersionInfoResponse(
-      description: (map['description'] as String).input(),
-      timeCreated: (map['timeCreated'] as String).input(),
-      timeModified: (map['timeModified'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      timeCreated: pulumi.Input.fromValue(map['timeCreated'] as String),
+      timeModified: pulumi.Input.fromValue(map['timeModified'] as String),
     );
   }
 }
-

@@ -12,16 +12,15 @@ enum KeyUsageName {
   kEYENCIPHERMENT("KEY_ENCIPHERMENT"),
   nONREPUDIATION("NON_REPUDIATION");
 
-  const KeyUsageName(this.value);
-  final String value;
+  const KeyUsageName(this.wireValue);
+  final String wireValue;
 
   static KeyUsageName fromValue(String value) {
     for (final item in KeyUsageName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyUsageName value: $value');
   }
 }
-

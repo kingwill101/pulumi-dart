@@ -1,5 +1,3 @@
-library module_apigee;
-
 export 'apigee/alias.dart';
 export 'apigee/alias_args.dart';
 export 'apigee/api.dart';

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'extended_location_response.dart';
-import 'resource_status_response.dart';
 import 'system_data_response.dart';
 
 /// Define the cluster.
@@ -174,46 +173,67 @@ import 'system_data_response.dart';
 class Cluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
+
   /// Gets the datastore ARM ids.
   late final pulumi.Output<List<String>> datastoreIds;
+
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Gets or sets the inventory Item ID for the cluster.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Gets or sets the vCenter Managed Object name for the cluster.
   late final pulumi.Output<String> moName;
+
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the cluster.
   late final pulumi.Output<String?> moRefId;
+
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
+
   /// Gets the network ARM ids.
   late final pulumi.Output<List<String>> networkIds;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource status information.
-  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the max CPU usage across all cores on the cluster in MHz.
   late final pulumi.Output<double> totalCpuMHz;
+
   /// Gets the total amount of physical memory on the cluster in GB.
   late final pulumi.Output<double> totalMemoryGB;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
+
   /// Gets the used CPU usage across all cores on the cluster in MHz.
   late final pulumi.Output<double> usedCpuMHz;
+
   /// Gets the used physical memory on the cluster in GB.
   late final pulumi.Output<double> usedMemoryGB;
+
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
+
   /// Gets or sets the ARM Id of the vCenter resource in which this cluster resides.
   late final pulumi.Output<String?> vCenterId;
 
@@ -226,32 +246,34 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:connectedvmwarevsphere:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customResourceName = registerOutput<String>('customResourceName');
-    this.datastoreIds = registerOutput<List<String>>('datastoreIds');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.moName = registerOutput<String>('moName');
-    this.moRefId = registerOutput<String?>('moRefId');
+         'azure-native:connectedvmwarevsphere:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customResourceName = registerOutput<String>('customResourceName');
+    datastoreIds = registerOutput<List<String>>('datastoreIds');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    moName = registerOutput<String>('moName');
+    moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    this.networkIds = registerOutput<List<String>>('networkIds');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.statuses = registerOutput<List<ResourceStatusResponse>>('statuses');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalCpuMHz = registerOutput<double>('totalCpuMHz');
-    this.totalMemoryGB = registerOutput<double>('totalMemoryGB');
-    this.type = registerOutput<String>('type');
-    this.usedCpuMHz = registerOutput<double>('usedCpuMHz');
-    this.usedMemoryGB = registerOutput<double>('usedMemoryGB');
-    this.uuid = registerOutput<String>('uuid');
-    this.vCenterId = registerOutput<String?>('vCenterId');
+    networkIds = registerOutput<List<String>>('networkIds');
+    provisioningState = registerOutput<String>('provisioningState');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalCpuMHz = registerOutput<double>('totalCpuMHz');
+    totalMemoryGB = registerOutput<double>('totalMemoryGB');
+    type = registerOutput<String>('type');
+    usedCpuMHz = registerOutput<double>('usedCpuMHz');
+    usedMemoryGB = registerOutput<double>('usedMemoryGB');
+    uuid = registerOutput<String>('uuid');
+    vCenterId = registerOutput<String?>('vCenterId');
   }
 }

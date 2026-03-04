@@ -8,20 +8,28 @@ import 'system_data_response.dart';
 class GetJobResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Specifies the resource identifier of the job.
   final String id;
+
   /// Specifies the job identity details
   final IdentityDetailsResponse? identity;
+
   /// Specifies the Azure location where the job is created.
   final String? location;
+
   /// Specifies the name of the job.
   final String name;
+
   /// Specifies the job properties
   final JobDetailsResponse properties;
+
   /// SystemData of ImportExport Jobs.
   final SystemDataResponse systemData;
+
   /// Specifies the tags that are assigned to the job.
   final dynamic tags;
+
   /// Specifies the type of the job resource.
   final String type;
 
@@ -51,7 +59,7 @@ class GetJobResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
       'properties': properties.toMap(),
@@ -65,14 +73,31 @@ class GetJobResult {
     return GetJobResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityDetailsResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return IdentityDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: JobDetailsResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : map['tags']!,
+      properties: JobDetailsResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

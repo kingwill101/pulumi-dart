@@ -1,5 +1,3 @@
-library module_guardduty;
-
 export 'guardduty/detector.dart';
 export 'guardduty/detector_args.dart';
 export 'guardduty/detector_datasources.dart';

@@ -1,5 +1,3 @@
-library module_connect;
-
 export 'connect/bot_association.dart';
 export 'connect/bot_association_args.dart';
 export 'connect/bot_association_lex_bot.dart';

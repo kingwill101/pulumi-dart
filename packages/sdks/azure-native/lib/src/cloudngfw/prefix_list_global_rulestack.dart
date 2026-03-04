@@ -272,20 +272,28 @@ import 'system_data_response.dart';
 class PrefixListGlobalRulestack extends pulumi.CustomResource {
   /// comment for this object
   late final pulumi.Output<String?> auditComment;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// prefix description
   late final pulumi.Output<String?> description;
+
   /// etag info
   late final pulumi.Output<String?> etag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// prefix list
   late final pulumi.Output<List<String>> prefixList;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -298,19 +306,19 @@ class PrefixListGlobalRulestack extends pulumi.CustomResource {
     PrefixListGlobalRulestackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cloudngfw:PrefixListGlobalRulestack',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
+         'azure-native:cloudngfw:PrefixListGlobalRulestack',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditComment = registerOutput<String?>('auditComment');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    this.prefixList = registerOutput<List<String>>('prefixList');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    prefixList = registerOutput<List<String>>('prefixList');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class K8sNetworkSettings {
   /// If 1, then SQL Server forces all connections to be encrypted. By default, this option is 0
   final pulumi.Input<int>? forceencryption;
+
   /// Specifies which ciphers are allowed by SQL Server for TLS
   final pulumi.Input<String>? tlsciphers;
+
   /// A comma-separated list of which TLS protocols are allowed by SQL Server
   final pulumi.Input<String>? tlsprotocols;
 
@@ -31,10 +33,21 @@ class K8sNetworkSettings {
 
   factory K8sNetworkSettings.fromMap(Map<String, dynamic> map) {
     return K8sNetworkSettings(
-      forceencryption: map['forceencryption'] == null ? null : (map['forceencryption']! as int).input(),
-      tlsciphers: map['tlsciphers'] == null ? null : (map['tlsciphers']! as String).input(),
-      tlsprotocols: map['tlsprotocols'] == null ? null : (map['tlsprotocols']! as String).input(),
+      forceencryption: (() {
+        final guardedValue = map['forceencryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tlsciphers: (() {
+        final guardedValue = map['tlsciphers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tlsprotocols: (() {
+        final guardedValue = map['tlsprotocols'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

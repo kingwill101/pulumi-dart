@@ -1,5 +1,3 @@
-library module_bigquery;
-
 export 'bigquery/app_profile.dart';
 export 'bigquery/app_profile_args.dart';
 export 'bigquery/app_profile_data_boost_isolation_read_only.dart';

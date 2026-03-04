@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicArgs {
   /// Is logging enabled? true or false. Default value to false.
   final pulumi.Input<bool>? loggingEnabled;
+
   /// This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
   final pulumi.Input<int>? maximumMessageSize;
+
   /// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
   final pulumi.Input<String>? name;
 
@@ -18,11 +20,7 @@ class TopicArgs {
   /// [loggingEnabled] Is logging enabled? true or false. Default value to false.
   /// [maximumMessageSize] This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
   /// [name] Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-  TopicArgs({
-    this.loggingEnabled,
-    this.maximumMessageSize,
-    this.name,
-  });
+  TopicArgs({this.loggingEnabled, this.maximumMessageSize, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,21 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled']! as bool).input(),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      loggingEnabled: (() {
+        final guardedValue = map['loggingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maximumMessageSize: (() {
+        final guardedValue = map['maximumMessageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

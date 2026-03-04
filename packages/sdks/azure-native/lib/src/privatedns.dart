@@ -1,5 +1,3 @@
-library module_privatedns;
-
 export 'privatedns/aaaa_record.dart';
 export 'privatedns/aaaa_record_response.dart';
 export 'privatedns/arecord.dart';

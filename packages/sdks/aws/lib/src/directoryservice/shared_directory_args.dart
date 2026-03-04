@@ -10,12 +10,16 @@ import 'shared_directory_target.dart';
 class SharedDirectoryArgs {
   /// Identifier of the Managed Microsoft AD directory that you want to share with other accounts.
   final pulumi.Input<String> directoryId;
+
   /// Method used when sharing a directory. Valid values are `ORGANIZATIONS` and `HANDSHAKE`. Default is `HANDSHAKE`.
   final pulumi.Input<String>? method;
+
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
   final pulumi.Input<String>? notes;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier for the directory consumer account with whom the directory is to be shared. See below.
   ///
   /// The following arguments are optional:
@@ -41,18 +45,37 @@ class SharedDirectoryArgs {
       'method': ?method,
       'notes': ?notes,
       'region': ?region,
-      'target': pulumi.Input.mapInputValue<SharedDirectoryTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target':
+          pulumi.Input.mapInputValue<
+            SharedDirectoryTarget,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
   factory SharedDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryArgs(
-      directoryId: (map['directoryId'] as String).input(),
-      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
-      notes: map['notes'] == null ? null : ((map['notes'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      target: (SharedDirectoryTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: pulumi.Input.fromValue(
+        SharedDirectoryTarget.fromMap(
+          (map['target']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

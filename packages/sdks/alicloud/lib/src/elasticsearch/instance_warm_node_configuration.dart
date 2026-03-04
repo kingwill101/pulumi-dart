@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceWarmNodeConfiguration {
   /// Elasticsearch cluster cold data node disk number
   final pulumi.Input<int>? amount;
+
   /// Elasticsearch cluster cold data node disk size
   final pulumi.Input<int>? disk;
+
   /// Elasticsearch cluster cold data node Disk encryption
   final pulumi.Input<bool>? diskEncryption;
+
   /// Elasticsearch cluster cold data node disk type
   final pulumi.Input<String>? diskType;
+
   /// Elasticsearch cluster cold data node Disk Specification
   final pulumi.Input<String>? spec;
 
@@ -40,12 +44,31 @@ class InstanceWarmNodeConfiguration {
 
   factory InstanceWarmNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceWarmNodeConfiguration(
-      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
-      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
-      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption']! as bool).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
+      amount: (() {
+        final guardedValue = map['amount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      disk: (() {
+        final guardedValue = map['disk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diskEncryption: (() {
+        final guardedValue = map['diskEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

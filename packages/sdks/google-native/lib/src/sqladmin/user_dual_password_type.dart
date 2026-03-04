@@ -5,16 +5,15 @@ enum UserDualPasswordType {
   noDualPassword("NO_DUAL_PASSWORD"),
   dualPassword("DUAL_PASSWORD");
 
-  const UserDualPasswordType(this.value);
-  final String value;
+  const UserDualPasswordType(this.wireValue);
+  final String wireValue;
 
   static UserDualPasswordType fromValue(String value) {
     for (final item in UserDualPasswordType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserDualPasswordType value: $value');
   }
 }
-

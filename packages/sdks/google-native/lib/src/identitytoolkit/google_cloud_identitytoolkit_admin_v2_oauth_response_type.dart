@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
   /// If true, authorization code is returned from IdP's authorization endpoint.
   final pulumi.Input<bool>? code;
+
   /// If true, ID token is returned from IdP's authorization endpoint.
   final pulumi.Input<bool>? idToken;
+
   /// Do not use. The `token` response type is not supported at the moment.
   final pulumi.Input<bool>? token;
 
@@ -29,12 +31,25 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2OAuthResponseType(
-      code: map['code'] == null ? null : (map['code']! as bool).input(),
-      idToken: map['idToken'] == null ? null : (map['idToken']! as bool).input(),
-      token: map['token'] == null ? null : (map['token']! as bool).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      idToken: (() {
+        final guardedValue = map['idToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

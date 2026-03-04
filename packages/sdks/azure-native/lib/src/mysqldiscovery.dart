@@ -1,5 +1,3 @@
-library module_mysqldiscovery;
-
 export 'mysqldiscovery/edition.dart';
 export 'mysqldiscovery/error.dart';
 export 'mysqldiscovery/error_response.dart';

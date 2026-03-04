@@ -3,16 +3,19 @@ enum SecuritySettingRedactionScopeDialogflowV3beta1 {
   redactionScopeUnspecified("REDACTION_SCOPE_UNSPECIFIED"),
   redactDiskStorage("REDACT_DISK_STORAGE");
 
-  const SecuritySettingRedactionScopeDialogflowV3beta1(this.value);
-  final String value;
+  const SecuritySettingRedactionScopeDialogflowV3beta1(this.wireValue);
+  final String wireValue;
 
-  static SecuritySettingRedactionScopeDialogflowV3beta1 fromValue(String value) {
+  static SecuritySettingRedactionScopeDialogflowV3beta1 fromValue(
+    String value,
+  ) {
     for (final item in SecuritySettingRedactionScopeDialogflowV3beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecuritySettingRedactionScopeDialogflowV3beta1 value: $value');
+    throw ArgumentError(
+      'Unknown SecuritySettingRedactionScopeDialogflowV3beta1 value: $value',
+    );
   }
 }
-

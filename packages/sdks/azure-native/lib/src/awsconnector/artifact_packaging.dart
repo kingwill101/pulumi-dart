@@ -3,16 +3,15 @@ enum ArtifactPackaging {
   nONE("NONE"),
   zIP("ZIP");
 
-  const ArtifactPackaging(this.value);
-  final String value;
+  const ArtifactPackaging(this.wireValue);
+  final String wireValue;
 
   static ArtifactPackaging fromValue(String value) {
     for (final item in ArtifactPackaging.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArtifactPackaging value: $value');
   }
 }
-

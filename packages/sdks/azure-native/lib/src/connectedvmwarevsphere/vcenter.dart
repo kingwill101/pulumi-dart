@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
-import 'resource_status_response.dart';
 import 'system_data_response.dart';
 import 'vcenter_args.dart';
 import 'vicredential_response.dart';
@@ -200,38 +199,55 @@ import 'vicredential_response.dart';
 class VCenter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the connection status to the vCenter.
   late final pulumi.Output<String> connectionStatus;
+
   /// Username / Password Credentials to connect to vcenter.
   late final pulumi.Output<VICredentialResponse?> credentials;
+
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
+
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Gets or sets the FQDN/IPAddress of the vCenter.
   late final pulumi.Output<String> fqdn;
+
   /// Gets or sets the instance UUID of the vCenter.
   late final pulumi.Output<String> instanceUuid;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
+
   /// Gets or sets the port of the vCenter.
   late final pulumi.Output<int?> port;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource status information.
-  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
+
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
+
   /// Gets or sets the version of the vCenter.
   late final pulumi.Output<String> version;
 
@@ -244,28 +260,30 @@ class VCenter extends pulumi.CustomResource {
     VCenterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:connectedvmwarevsphere:VCenter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectionStatus = registerOutput<String>('connectionStatus');
-    this.credentials = registerOutput<VICredentialResponse?>('credentials');
-    this.customResourceName = registerOutput<String>('customResourceName');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.instanceUuid = registerOutput<String>('instanceUuid');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
+         'azure-native:connectedvmwarevsphere:VCenter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    credentials = registerOutput<VICredentialResponse?>('credentials');
+    customResourceName = registerOutput<String>('customResourceName');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    fqdn = registerOutput<String>('fqdn');
+    instanceUuid = registerOutput<String>('instanceUuid');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int?>('port');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.statuses = registerOutput<List<ResourceStatusResponse>>('statuses');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
-    this.version = registerOutput<String>('version');
+    port = registerOutput<int?>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    version = registerOutput<String>('version');
   }
 }

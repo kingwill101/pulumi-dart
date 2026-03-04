@@ -1,12 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_service_args.dart';
-import 'vpc_endpoint_service_private_dns_name_configuration.dart';
 import 'vpc_endpoint_service_state.dart';
 
 /// Provides a VPC Endpoint Service resource.
 /// Service consumers can create an _Interface_ VPC Endpoint to connect to the service.
 ///
-/// > **NOTE on VPC Endpoint Services and VPC Endpoint Service Allowed Principals:** This provider provides
+/// &gt; **NOTE on VPC Endpoint Services and VPC Endpoint Service Allowed Principals:** This provider provides
 /// both a standalone VPC Endpoint Service Allowed Principal resource
 /// and a VPC Endpoint Service resource with an `allowed_principals` attribute. Do not use the same principal ARN in both
 /// a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
@@ -228,38 +227,56 @@ import 'vpc_endpoint_service_state.dart';
 class VpcEndpointService extends pulumi.CustomResource {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   late final pulumi.Output<bool> acceptanceRequired;
+
   /// The ARNs of one or more principals allowed to discover the endpoint service.
   late final pulumi.Output<List<String>> allowedPrincipals;
+
   /// The Amazon Resource Name (ARN) of the VPC endpoint service.
   late final pulumi.Output<String> arn;
+
   /// A set of Availability Zones in which the service is available.
   late final pulumi.Output<List<String>> availabilityZones;
+
   /// A set of DNS names for the service.
   late final pulumi.Output<List<String>> baseEndpointDnsNames;
+
   /// Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
   late final pulumi.Output<List<String>?> gatewayLoadBalancerArns;
+
   /// Whether or not the service manages its VPC endpoints - `true` or `false`.
   late final pulumi.Output<bool> managesVpcEndpoints;
+
   /// Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
   late final pulumi.Output<List<String>?> networkLoadBalancerArns;
+
   /// The private DNS name for the service.
   late final pulumi.Output<String> privateDnsName;
+
   /// List of objects containing information about the endpoint service private DNS name configuration.
-  late final pulumi.Output<List<VpcEndpointServicePrivateDnsNameConfiguration>> privateDnsNameConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateDnsNameConfigurations;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The service name.
   late final pulumi.Output<String> serviceName;
+
   /// The service type, `Gateway` or `Interface`.
   late final pulumi.Output<String> serviceType;
+
   /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
   late final pulumi.Output<String> state;
+
   /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
   late final pulumi.Output<List<String>> supportedIpAddressTypes;
+
   /// The set of regions from which service consumers can access the service.
   late final pulumi.Output<List<String>> supportedRegions;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -272,29 +289,37 @@ class VpcEndpointService extends pulumi.CustomResource {
     VpcEndpointServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcEndpointService:VpcEndpointService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptanceRequired = registerOutput<bool>('acceptanceRequired');
-    this.allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');
-    this.arn = registerOutput<String>('arn');
-    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
-    this.baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames');
-    this.gatewayLoadBalancerArns = registerOutput<List<String>?>('gatewayLoadBalancerArns');
-    this.managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
-    this.networkLoadBalancerArns = registerOutput<List<String>?>('networkLoadBalancerArns');
-    this.privateDnsName = registerOutput<String>('privateDnsName');
-    this.privateDnsNameConfigurations = registerOutput<List<VpcEndpointServicePrivateDnsNameConfiguration>>('privateDnsNameConfigurations');
-    this.region = registerOutput<String>('region');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceType = registerOutput<String>('serviceType');
-    this.state = registerOutput<String>('state');
-    this.supportedIpAddressTypes = registerOutput<List<String>>('supportedIpAddressTypes');
-    this.supportedRegions = registerOutput<List<String>>('supportedRegions');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:ec2/vpcEndpointService:VpcEndpointService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptanceRequired = registerOutput<bool>('acceptanceRequired');
+    allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames');
+    gatewayLoadBalancerArns = registerOutput<List<String>?>(
+      'gatewayLoadBalancerArns',
+    );
+    managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
+    networkLoadBalancerArns = registerOutput<List<String>?>(
+      'networkLoadBalancerArns',
+    );
+    privateDnsName = registerOutput<String>('privateDnsName');
+    privateDnsNameConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'privateDnsNameConfigurations',
+    );
+    region = registerOutput<String>('region');
+    serviceName = registerOutput<String>('serviceName');
+    serviceType = registerOutput<String>('serviceType');
+    state = registerOutput<String>('state');
+    supportedIpAddressTypes = registerOutput<List<String>>(
+      'supportedIpAddressTypes',
+    );
+    supportedRegions = registerOutput<List<String>>('supportedRegions');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [VpcEndpointService] resource's state with the given [name] and [id].
@@ -315,28 +340,36 @@ class VpcEndpointService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpcEndpointService:VpcEndpointService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptanceRequired = registerOutput<bool>('acceptanceRequired');
-    this.allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');
-    this.arn = registerOutput<String>('arn');
-    this.availabilityZones = registerOutput<List<String>>('availabilityZones');
-    this.baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames');
-    this.gatewayLoadBalancerArns = registerOutput<List<String>?>('gatewayLoadBalancerArns');
-    this.managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
-    this.networkLoadBalancerArns = registerOutput<List<String>?>('networkLoadBalancerArns');
-    this.privateDnsName = registerOutput<String>('privateDnsName');
-    this.privateDnsNameConfigurations = registerOutput<List<VpcEndpointServicePrivateDnsNameConfiguration>>('privateDnsNameConfigurations');
-    this.region = registerOutput<String>('region');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceType = registerOutput<String>('serviceType');
+         'aws:ec2/vpcEndpointService:VpcEndpointService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptanceRequired = registerOutput<bool>('acceptanceRequired');
+    allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    baseEndpointDnsNames = registerOutput<List<String>>('baseEndpointDnsNames');
+    gatewayLoadBalancerArns = registerOutput<List<String>?>(
+      'gatewayLoadBalancerArns',
+    );
+    managesVpcEndpoints = registerOutput<bool>('managesVpcEndpoints');
+    networkLoadBalancerArns = registerOutput<List<String>?>(
+      'networkLoadBalancerArns',
+    );
+    privateDnsName = registerOutput<String>('privateDnsName');
+    privateDnsNameConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'privateDnsNameConfigurations',
+    );
+    region = registerOutput<String>('region');
+    serviceName = registerOutput<String>('serviceName');
+    serviceType = registerOutput<String>('serviceType');
     this.state = registerOutput<String>('state');
-    this.supportedIpAddressTypes = registerOutput<List<String>>('supportedIpAddressTypes');
-    this.supportedRegions = registerOutput<List<String>>('supportedRegions');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    supportedIpAddressTypes = registerOutput<List<String>>(
+      'supportedIpAddressTypes',
+    );
+    supportedRegions = registerOutput<List<String>>('supportedRegions');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

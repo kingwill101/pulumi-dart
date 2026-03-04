@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_args.dart';
-import 'workload_entity_search_query.dart';
 import 'workload_state.dart';
 import 'workload_status_config_automatic.dart';
 import 'workload_status_config_static.dart';
@@ -444,7 +443,7 @@ import 'workload_status_config_static.dart';
 ///
 /// Include automatic status
 ///
-/// > The global status of your workload is a quick indicator of the workload health. You can configure it to be calculated automatically, and you can also set an alert and get a notification whenever the workload stops being operational. Alternatively, you can communicate a certain status of the workload by setting up a static value and a description. [See our docs](https://docs.newrelic.com/docs/workloads/use-workloads/workloads/workload-status)
+/// &gt; The global status of your workload is a quick indicator of the workload health. You can configure it to be calculated automatically, and you can also set an alert and get a notification whenever the workload stops being operational. Alternatively, you can communicate a certain status of the workload by setting up a static value and a description. [See our docs](https://docs.newrelic.com/docs/workloads/use-workloads/workloads/workload-status)
 ///
 ///
 ///
@@ -748,7 +747,7 @@ import 'workload_status_config_static.dart';
 ///
 /// Include static status
 ///
-/// > You can use this during maintenance tasks or any other time you want to provide a fixed status for your workload. This overrides all automatic rules. [See our docs](https://docs.newrelic.com/docs/workloads/use-workloads/workloads/workload-status#configure-static)
+/// &gt; You can use this during maintenance tasks or any other time you want to provide a fixed status for your workload. This overrides all automatic rules. [See our docs](https://docs.newrelic.com/docs/workloads/use-workloads/workloads/workload-status#configure-static)
 ///
 ///
 /// ```typescript
@@ -938,7 +937,7 @@ import 'workload_status_config_static.dart';
 /// ## Import
 ///
 /// New Relic workloads can be imported using a concatenated string of the format
-/// `<account_id>:<workload_id>:<guid>`, e.g.
+/// `&lt;account_id&gt;:&lt;workload_id&gt;:&lt;guid&gt;`, e.g.
 ///
 /// ```bash
 /// $ terraform import newrelic_workload.foo 12345678:1456:MjUyMDUyOHxBUE18QVBRTElDQVRJT058MjE1MDM3Nzk1
@@ -946,26 +945,38 @@ import 'workload_status_config_static.dart';
 class Workload extends pulumi.CustomResource {
   /// The New Relic account ID where you want to create the workload.
   late final pulumi.Output<String> accountId;
+
   /// The composite query used to compose a dynamic workload.
   late final pulumi.Output<String> compositeEntitySearchQuery;
+
   /// Relevant information about the workload.
   late final pulumi.Output<String?> description;
+
   /// A list of entity GUIDs manually assigned to this workload. At least one of either `entity_guids` or `entity_search_query` is required.
   late final pulumi.Output<List<String>> entityGuids;
+
   /// A list of search queries that define a dynamic workload. At least one of either `entity_guids` or `entity_search_query` is required. See Nested entity_search_query blocks below for details.
-  late final pulumi.Output<List<WorkloadEntitySearchQuery>?> entitySearchQueries;
+  late final pulumi.Output<List<Map<String, dynamic>>?> entitySearchQueries;
+
   /// The unique entity identifier of the workload in New Relic.
   late final pulumi.Output<String> guid;
+
   /// The workload's name.
   late final pulumi.Output<String> name;
+
   /// The URL of the workload.
   late final pulumi.Output<String> permalink;
+
   /// A list of account IDs that will be used to get entities from.
   late final pulumi.Output<List<String>> scopeAccountIds;
+
   /// An input object used to represent an automatic status configuration.See Nested status_config_automatic blocks below for details.
-  late final pulumi.Output<WorkloadStatusConfigAutomatic?> statusConfigAutomatic;
+  late final pulumi.Output<WorkloadStatusConfigAutomatic?>
+  statusConfigAutomatic;
+
   /// A list of static status configurations. You can only configure one static status for a workload.See Nested status_config_static blocks below for details.
   late final pulumi.Output<WorkloadStatusConfigStatic?> statusConfigStatic;
+
   /// The unique entity identifier of the workload.
   late final pulumi.Output<String> workloadId;
 
@@ -978,23 +989,31 @@ class Workload extends pulumi.CustomResource {
     WorkloadArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:plugins/workload:Workload',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.compositeEntitySearchQuery = registerOutput<String>('compositeEntitySearchQuery');
-    this.description = registerOutput<String?>('description');
-    this.entityGuids = registerOutput<List<String>>('entityGuids');
-    this.entitySearchQueries = registerOutput<List<WorkloadEntitySearchQuery>?>('entitySearchQueries');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:plugins/workload:Workload',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    compositeEntitySearchQuery = registerOutput<String>(
+      'compositeEntitySearchQuery',
+    );
+    description = registerOutput<String?>('description');
+    entityGuids = registerOutput<List<String>>('entityGuids');
+    entitySearchQueries = registerOutput<List<Map<String, dynamic>>?>(
+      'entitySearchQueries',
+    );
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.permalink = registerOutput<String>('permalink');
-    this.scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
-    this.statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>('statusConfigAutomatic');
-    this.statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>('statusConfigStatic');
-    this.workloadId = registerOutput<String>('workloadId');
+    permalink = registerOutput<String>('permalink');
+    scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
+    statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>(
+      'statusConfigAutomatic',
+    );
+    statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>(
+      'statusConfigStatic',
+    );
+    workloadId = registerOutput<String>('workloadId');
   }
 
   /// Gets an existing [Workload] resource's state with the given [name] and [id].
@@ -1015,22 +1034,30 @@ class Workload extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:plugins/workload:Workload',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.compositeEntitySearchQuery = registerOutput<String>('compositeEntitySearchQuery');
-    this.description = registerOutput<String?>('description');
-    this.entityGuids = registerOutput<List<String>>('entityGuids');
-    this.entitySearchQueries = registerOutput<List<WorkloadEntitySearchQuery>?>('entitySearchQueries');
-    this.guid = registerOutput<String>('guid');
+         'newrelic:plugins/workload:Workload',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    compositeEntitySearchQuery = registerOutput<String>(
+      'compositeEntitySearchQuery',
+    );
+    description = registerOutput<String?>('description');
+    entityGuids = registerOutput<List<String>>('entityGuids');
+    entitySearchQueries = registerOutput<List<Map<String, dynamic>>?>(
+      'entitySearchQueries',
+    );
+    guid = registerOutput<String>('guid');
     this.name = registerOutput<String>('name');
-    this.permalink = registerOutput<String>('permalink');
-    this.scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
-    this.statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>('statusConfigAutomatic');
-    this.statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>('statusConfigStatic');
-    this.workloadId = registerOutput<String>('workloadId');
+    permalink = registerOutput<String>('permalink');
+    scopeAccountIds = registerOutput<List<String>>('scopeAccountIds');
+    statusConfigAutomatic = registerOutput<WorkloadStatusConfigAutomatic?>(
+      'statusConfigAutomatic',
+    );
+    statusConfigStatic = registerOutput<WorkloadStatusConfigStatic?>(
+      'statusConfigStatic',
+    );
+    workloadId = registerOutput<String>('workloadId');
   }
 }

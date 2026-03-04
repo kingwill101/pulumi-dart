@@ -8,8 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_v1_hmac_key_args_doc}
 class HmacKeyArgs {
   final pulumi.Input<String>? project;
+
   /// Email address of the service account.
   final pulumi.Input<String> serviceAccountEmail;
+
   /// The project to be billed for this request.
   final pulumi.Input<String>? userProject;
 
@@ -33,10 +35,19 @@ class HmacKeyArgs {
 
   factory HmacKeyArgs.fromMap(Map<String, dynamic> map) {
     return HmacKeyArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccountEmail: pulumi.Input.fromValue(
+        map['serviceAccountEmail'] as String,
+      ),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

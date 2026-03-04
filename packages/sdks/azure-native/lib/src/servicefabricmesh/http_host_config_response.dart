@@ -7,29 +7,44 @@ import 'http_route_config_response.dart';
 class HttpHostConfigResponse {
   /// http hostname config name.
   final pulumi.Input<String> name;
+
   /// Route information to use for routing. Routes are processed in the order they are specified. Specify routes that are more specific before routes that can handle general cases.
   final pulumi.Input<List<HttpRouteConfigResponse>> routes;
 
   /// Creates a new [HttpHostConfigResponse].
   /// [name] http hostname config name.
   /// [routes] Route information to use for routing. Routes are processed in the order they are specified. Specify routes that are more specific before routes that can handle general cases.
-  HttpHostConfigResponse({
-    required this.name,
-    required this.routes,
-  });
+  HttpHostConfigResponse({required this.name, required this.routes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'routes': pulumi.Input.mapInputValue<List<HttpRouteConfigResponse>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<HttpRouteConfigResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routes':
+          pulumi.Input.mapInputValue<
+            List<HttpRouteConfigResponse>,
+            List<Map<String, dynamic>>
+          >(
+            routes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HttpRouteConfigResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory HttpHostConfigResponse.fromMap(Map<String, dynamic> map) {
     return HttpHostConfigResponse(
-      name: (map['name'] as String).input(),
-      routes: (pulumi.Input.decodeList<HttpRouteConfigResponse>(map['routes'], (value) => HttpRouteConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      routes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HttpRouteConfigResponse>(
+          map['routes']!,
+          (value) => HttpRouteConfigResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

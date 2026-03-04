@@ -1443,11 +1443,14 @@ class InstanceIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<InstanceIamBindingCondition?> condition;
   late final pulumi.Output<String> etag;
   late final pulumi.Output<List<String>> members;
+
   /// The ID of the instance or a fully qualified identifier for the instance.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the Data Fusion instance.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> role;
@@ -1461,18 +1464,18 @@ class InstanceIamBinding extends pulumi.CustomResource {
     InstanceIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/instanceIamBinding:InstanceIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<InstanceIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
+         'gcp:securitycenter/instanceIamBinding:InstanceIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<InstanceIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [InstanceIamBinding] resource's state with the given [name] and [id].
@@ -1493,17 +1496,17 @@ class InstanceIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/instanceIamBinding:InstanceIamBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<InstanceIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
+         'gcp:securitycenter/instanceIamBinding:InstanceIamBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<InstanceIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
   }
 }

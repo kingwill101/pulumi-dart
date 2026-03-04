@@ -9,20 +9,15 @@ class FullTextIndexPathResponse {
 
   /// Creates a new [FullTextIndexPathResponse].
   /// [path] The path to the full text field in the document.
-  FullTextIndexPathResponse({
-    required this.path,
-  });
+  FullTextIndexPathResponse({required this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
   factory FullTextIndexPathResponse.fromMap(Map<String, dynamic> map) {
     return FullTextIndexPathResponse(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_security_group_args.dart';
-import 'network_security_group_security_rule.dart';
 import 'network_security_group_state.dart';
 
 /// Manages a network security group that contains a list of network security rules.  Network security groups enable inbound or outbound traffic to be enabled or denied.
 ///
-/// > **NOTE on Network Security Groups and Network Security Rules:** This provider currently
+/// &gt; **NOTE on Network Security Groups and Network Security Rules:** This provider currently
 /// provides both a standalone Network Security Rule resource, and allows for Network Security Rules to be defined in-line within the Network Security Group resource.
 /// At this time you cannot use a Network Security Group with in-line Network Security Rules in conjunction with any Network Security Rule resources. Doing so will cause a conflict of rule settings and will overwrite rules.
 ///
@@ -235,7 +234,7 @@ import 'network_security_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -250,14 +249,18 @@ import 'network_security_group_state.dart';
 class NetworkSecurityGroup extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the security rule.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the network security group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A list of objects representing security rules, as defined below.
   ///
-  /// > **NOTE** Since `security_rule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  late final pulumi.Output<List<NetworkSecurityGroupSecurityRule>> securityRules;
+  /// &gt; **NOTE** Since `security_rule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
+  late final pulumi.Output<List<Map<String, dynamic>>> securityRules;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -270,16 +273,16 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
     NetworkSecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityGroup:NetworkSecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:network/networkSecurityGroup:NetworkSecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.securityRules = registerOutput<List<NetworkSecurityGroupSecurityRule>>('securityRules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityRules = registerOutput<List<Map<String, dynamic>>>('securityRules');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [NetworkSecurityGroup] resource's state with the given [name] and [id].
@@ -300,15 +303,15 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityGroup:NetworkSecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:network/networkSecurityGroup:NetworkSecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.securityRules = registerOutput<List<NetworkSecurityGroupSecurityRule>>('securityRules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityRules = registerOutput<List<Map<String, dynamic>>>('securityRules');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

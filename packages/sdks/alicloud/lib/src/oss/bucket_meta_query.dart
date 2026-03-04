@@ -6,7 +6,7 @@ import 'bucket_meta_query_state.dart';
 ///
 /// For information about OSS Bucket Meta Query and how to use it, see [What is Bucket Meta Query](https://www.alibabacloud.com/help/en/oss/developer-reference/openmetaquery).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -202,8 +202,10 @@ import 'bucket_meta_query_state.dart';
 class BucketMetaQuery extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// The creation time of the metadata index database. The format is mm:ss + TIMEZONE in the YYYY-MM-DDTHH format of RFC 3339. Where YYYY-MM-DD indicates the year, month and day, T indicates the beginning of the time element, HH:mm:ss indicates the hour, minute and second, and TIMEZONE indicates the time zone.
   late final pulumi.Output<String> createTime;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -216,14 +218,14 @@ class BucketMetaQuery extends pulumi.CustomResource {
     BucketMetaQueryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketMetaQuery:BucketMetaQuery',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:oss/bucketMetaQuery:BucketMetaQuery',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BucketMetaQuery] resource's state with the given [name] and [id].
@@ -244,13 +246,13 @@ class BucketMetaQuery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketMetaQuery:BucketMetaQuery',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.createTime = registerOutput<String>('createTime');
-    this.status = registerOutput<String>('status');
+         'alicloud:oss/bucketMetaQuery:BucketMetaQuery',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    status = registerOutput<String>('status');
   }
 }

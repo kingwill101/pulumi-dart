@@ -579,7 +579,7 @@ import 'compute_cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.MachineLearningServices` - 2025-06-01
@@ -594,30 +594,43 @@ import 'compute_cluster_state.dart';
 class ComputeCluster extends pulumi.CustomResource {
   /// The description of the Machine Learning compute. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String?> description;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ComputeClusterIdentity?> identity;
+
   /// Whether local authentication methods is enabled. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<bool?> localAuthEnabled;
+
   /// The Azure Region where the Machine Learning Compute Cluster should exist. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> machineLearningWorkspaceId;
+
   /// The name which should be used for this Machine Learning Compute Cluster. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> name;
+
   /// Whether the compute cluster will have a public ip. Defaults to `true`. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<bool?> nodePublicIpEnabled;
+
   /// A `scale_settings` block as defined below.
   late final pulumi.Output<ComputeClusterScaleSettings> scaleSettings;
+
   /// Credentials for an administrator user account that will be created on each compute node. A `ssh` block as defined below. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<ComputeClusterSsh?> ssh;
+
   /// A boolean value indicating whether enable the public SSH port. Defaults to `false`. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<bool?> sshPublicAccessEnabled;
+
   /// The ID of the Subnet that the Compute Cluster should reside in. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> subnetResourceId;
+
   /// A mapping of tags which should be assigned to the Machine Learning Compute Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The priority of the VM. Changing this forces a new Machine Learning Compute Cluster to be created. Accepted values are `Dedicated` and `LowPriority`.
   late final pulumi.Output<String> vmPriority;
+
   /// The size of the VM. Changing this forces a new Machine Learning Compute Cluster to be created.
   late final pulumi.Output<String> vmSize;
 
@@ -630,25 +643,29 @@ class ComputeCluster extends pulumi.CustomResource {
     ComputeClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/computeCluster:ComputeCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.identity = registerOutput<ComputeClusterIdentity?>('identity');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+         'azure:machinelearning/computeCluster:ComputeCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    identity = registerOutput<ComputeClusterIdentity?>('identity');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>(
+      'machineLearningWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
-    this.scaleSettings = registerOutput<ComputeClusterScaleSettings>('scaleSettings');
-    this.ssh = registerOutput<ComputeClusterSsh?>('ssh');
-    this.sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
-    this.subnetResourceId = registerOutput<String>('subnetResourceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vmPriority = registerOutput<String>('vmPriority');
-    this.vmSize = registerOutput<String>('vmSize');
+    nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
+    scaleSettings = registerOutput<ComputeClusterScaleSettings>(
+      'scaleSettings',
+    );
+    ssh = registerOutput<ComputeClusterSsh?>('ssh');
+    sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
+    subnetResourceId = registerOutput<String>('subnetResourceId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vmPriority = registerOutput<String>('vmPriority');
+    vmSize = registerOutput<String>('vmSize');
   }
 
   /// Gets an existing [ComputeCluster] resource's state with the given [name] and [id].
@@ -669,24 +686,28 @@ class ComputeCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:machinelearning/computeCluster:ComputeCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.identity = registerOutput<ComputeClusterIdentity?>('identity');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
-    this.machineLearningWorkspaceId = registerOutput<String>('machineLearningWorkspaceId');
+         'azure:machinelearning/computeCluster:ComputeCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    identity = registerOutput<ComputeClusterIdentity?>('identity');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    machineLearningWorkspaceId = registerOutput<String>(
+      'machineLearningWorkspaceId',
+    );
     this.name = registerOutput<String>('name');
-    this.nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
-    this.scaleSettings = registerOutput<ComputeClusterScaleSettings>('scaleSettings');
-    this.ssh = registerOutput<ComputeClusterSsh?>('ssh');
-    this.sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
-    this.subnetResourceId = registerOutput<String>('subnetResourceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vmPriority = registerOutput<String>('vmPriority');
-    this.vmSize = registerOutput<String>('vmSize');
+    nodePublicIpEnabled = registerOutput<bool?>('nodePublicIpEnabled');
+    scaleSettings = registerOutput<ComputeClusterScaleSettings>(
+      'scaleSettings',
+    );
+    ssh = registerOutput<ComputeClusterSsh?>('ssh');
+    sshPublicAccessEnabled = registerOutput<bool?>('sshPublicAccessEnabled');
+    subnetResourceId = registerOutput<String>('subnetResourceId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vmPriority = registerOutput<String>('vmPriority');
+    vmSize = registerOutput<String>('vmSize');
   }
 }

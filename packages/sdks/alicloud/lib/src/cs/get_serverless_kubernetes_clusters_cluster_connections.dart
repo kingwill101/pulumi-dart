@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerlessKubernetesClustersClusterConnections {
   /// API Server Internet endpoint.
   final pulumi.Input<String> apiServerInternet;
+
   /// API Server Intranet endpoint.
   final pulumi.Input<String> apiServerIntranet;
+
   /// Master node SSH IP address.
   final pulumi.Input<String> masterPublicIp;
 
@@ -28,12 +30,17 @@ class GetServerlessKubernetesClustersClusterConnections {
     };
   }
 
-  factory GetServerlessKubernetesClustersClusterConnections.fromMap(Map<String, dynamic> map) {
+  factory GetServerlessKubernetesClustersClusterConnections.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServerlessKubernetesClustersClusterConnections(
-      apiServerInternet: (map['apiServerInternet'] as String).input(),
-      apiServerIntranet: (map['apiServerIntranet'] as String).input(),
-      masterPublicIp: (map['masterPublicIp'] as String).input(),
+      apiServerInternet: pulumi.Input.fromValue(
+        map['apiServerInternet'] as String,
+      ),
+      apiServerIntranet: pulumi.Input.fromValue(
+        map['apiServerIntranet'] as String,
+      ),
+      masterPublicIp: pulumi.Input.fromValue(map['masterPublicIp'] as String),
     );
   }
 }
-

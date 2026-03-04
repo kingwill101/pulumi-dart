@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterKubeConfig {
   /// Base64 encoded public certificate used by clients to authenticate to the Kubernetes cluster.
   final pulumi.Input<String> clientCertificate;
+
   /// Base64 encoded private key used by clients to authenticate to the Kubernetes cluster.
   final pulumi.Input<String> clientKey;
+
   /// Base64 encoded public CA certificate used as the root of trust for the Kubernetes cluster.
   final pulumi.Input<String> clusterCaCertificate;
+
   /// The Kubernetes cluster server host.
   final pulumi.Input<String> host;
+
   /// A password or token used to authenticate to the Kubernetes cluster.
   final pulumi.Input<String> password;
+
   /// A username used to authenticate to the Kubernetes cluster.
   final pulumi.Input<String> username;
 
@@ -45,13 +50,16 @@ class GetKubernetesClusterKubeConfig {
 
   factory GetKubernetesClusterKubeConfig.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterKubeConfig(
-      clientCertificate: (map['clientCertificate'] as String).input(),
-      clientKey: (map['clientKey'] as String).input(),
-      clusterCaCertificate: (map['clusterCaCertificate'] as String).input(),
-      host: (map['host'] as String).input(),
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      clientCertificate: pulumi.Input.fromValue(
+        map['clientCertificate'] as String,
+      ),
+      clientKey: pulumi.Input.fromValue(map['clientKey'] as String),
+      clusterCaCertificate: pulumi.Input.fromValue(
+        map['clusterCaCertificate'] as String,
+      ),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

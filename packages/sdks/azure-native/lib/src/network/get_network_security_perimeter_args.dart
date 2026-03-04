@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkSecurityPerimeterArgs {
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetNetworkSecurityPerimeterArgs {
 
   factory GetNetworkSecurityPerimeterArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterArgs(
-      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(
+        map['networkSecurityPerimeterName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

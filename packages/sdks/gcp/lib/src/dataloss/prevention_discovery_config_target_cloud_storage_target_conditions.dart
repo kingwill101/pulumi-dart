@@ -6,9 +6,14 @@ import 'prevention_discovery_config_target_cloud_storage_target_conditions_cloud
 class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
   /// Cloud Storage conditions.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions>? cloudStorageConditions;
+  final pulumi.Input<
+    PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions
+  >?
+  cloudStorageConditions;
+
   /// File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
   final pulumi.Input<String>? createdAfter;
+
   /// Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
   final pulumi.Input<String>? minAge;
 
@@ -24,18 +29,39 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudStorageConditions': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions, Map<String, dynamic>>(cloudStorageConditions, (value) => value.toMap()),
+      'cloudStorageConditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions,
+            Map<String, dynamic>
+          >(cloudStorageConditions, (value) => value.toMap()),
       'createdAfter': ?createdAfter,
       'minAge': ?minAge,
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetConditions(
-      cloudStorageConditions: map['cloudStorageConditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap((map['cloudStorageConditions']! as Map).cast<String, dynamic>())).input(),
-      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter']! as String).input(),
-      minAge: map['minAge'] == null ? null : (map['minAge']! as String).input(),
+      cloudStorageConditions: (() {
+        final guardedValue = map['cloudStorageConditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createdAfter: (() {
+        final guardedValue = map['createdAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minAge: (() {
+        final guardedValue = map['minAge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

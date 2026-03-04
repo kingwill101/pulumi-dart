@@ -10,20 +10,21 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
 
   /// Creates a new [FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding].
   /// [name] The relative resource name of the binauthz platform policy to audit. GKE
-  FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding({
-    this.name,
-  });
+  FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
-  factory FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap(Map<String, dynamic> map) {
+  factory FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

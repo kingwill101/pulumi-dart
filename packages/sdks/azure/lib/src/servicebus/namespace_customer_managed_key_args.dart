@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceCustomerManagedKeyArgs {
   /// Used to specify whether enable Infrastructure Encryption. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? infrastructureEncryptionEnabled;
+
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// The ID of the Service Bus namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceId;
 
@@ -34,10 +36,13 @@ class NamespaceCustomerManagedKeyArgs {
 
   factory NamespaceCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKeyArgs(
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled']! as bool).input(),
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
+      infrastructureEncryptionEnabled: (() {
+        final guardedValue = map['infrastructureEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
     );
   }
 }
-

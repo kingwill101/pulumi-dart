@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerArgs {
   /// Unique ID of the MQ broker.
   final pulumi.Input<String>? brokerId;
+
   /// Unique name of the MQ broker.
   final pulumi.Input<String>? brokerName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// > **Note:** Either `broker_id` or `broker_name` must be specified.
+  /// &gt; **Note:** Either `broker_id` or `broker_name` must be specified.
   final pulumi.Input<String>? region;
+
   /// Map of tags assigned to the broker.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -22,12 +25,7 @@ class GetBrokerArgs {
   /// [brokerName] Unique name of the MQ broker.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the broker.
-  GetBrokerArgs({
-    this.brokerId,
-    this.brokerName,
-    this.region,
-    this.tags,
-  });
+  GetBrokerArgs({this.brokerId, this.brokerName, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,11 +38,28 @@ class GetBrokerArgs {
 
   factory GetBrokerArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerArgs(
-      brokerId: map['brokerId'] == null ? null : ((map['brokerId'] as String).input()).input(),
-      brokerName: map['brokerName'] == null ? null : ((map['brokerName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      brokerId: (() {
+        final guardedValue = map['brokerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      brokerName: (() {
+        final guardedValue = map['brokerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

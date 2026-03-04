@@ -10,22 +10,31 @@ import 'queue_outbound_caller_config.dart';
 class QueueArgs {
   /// Specifies the description of the Queue.
   final pulumi.Input<String>? description;
+
   /// Specifies the identifier of the Hours of Operation.
   final pulumi.Input<String> hoursOfOperationId;
+
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String> instanceId;
+
   /// Specifies the maximum number of contacts that can be in the queue before it is considered full. Minimum value of 0.
   final pulumi.Input<int>? maxContacts;
+
   /// Specifies the name of the Queue.
   final pulumi.Input<String>? name;
+
   /// A block that defines the outbound caller ID name, number, and outbound whisper flow. The Outbound Caller Config block is documented below.
   final pulumi.Input<QueueOutboundCallerConfig>? outboundCallerConfig;
+
   /// Specifies a list of quick connects ids that determine the quick connects available to agents who are working the queue.
   final pulumi.Input<List<String>>? quickConnectIds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies the description of the Queue. Valid values are `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? status;
+
   /// Tags to apply to the Queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -60,7 +69,11 @@ class QueueArgs {
       'instanceId': instanceId,
       'maxContacts': ?maxContacts,
       'name': ?name,
-      'outboundCallerConfig': ?pulumi.Input.mapOptionalInputValue<QueueOutboundCallerConfig, Map<String, dynamic>>(outboundCallerConfig, (value) => value.toMap()),
+      'outboundCallerConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            QueueOutboundCallerConfig,
+            Map<String, dynamic>
+          >(outboundCallerConfig, (value) => value.toMap()),
       'quickConnectIds': ?quickConnectIds,
       'region': ?region,
       'status': ?status,
@@ -70,17 +83,56 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      hoursOfOperationId: (map['hoursOfOperationId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      maxContacts: map['maxContacts'] == null ? null : ((map['maxContacts'] as int).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      outboundCallerConfig: map['outboundCallerConfig'] == null ? null : ((QueueOutboundCallerConfig.fromMap((map['outboundCallerConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      quickConnectIds: map['quickConnectIds'] == null ? null : (((map['quickConnectIds'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hoursOfOperationId: pulumi.Input.fromValue(
+        map['hoursOfOperationId'] as String,
+      ),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      maxContacts: (() {
+        final guardedValue = map['maxContacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outboundCallerConfig: (() {
+        final guardedValue = map['outboundCallerConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          QueueOutboundCallerConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      quickConnectIds: (() {
+        final guardedValue = map['quickConnectIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

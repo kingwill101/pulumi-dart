@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UrlSigningParamIdentifier {
   /// Indicates the purpose of the parameter
   final pulumi.Input<String> paramIndicator;
+
   /// Parameter name
   final pulumi.Input<String> paramName;
 
@@ -26,9 +27,8 @@ class UrlSigningParamIdentifier {
 
   factory UrlSigningParamIdentifier.fromMap(Map<String, dynamic> map) {
     return UrlSigningParamIdentifier(
-      paramIndicator: (map['paramIndicator'] as String).input(),
-      paramName: (map['paramName'] as String).input(),
+      paramIndicator: pulumi.Input.fromValue(map['paramIndicator'] as String),
+      paramName: pulumi.Input.fromValue(map['paramName'] as String),
     );
   }
 }
-

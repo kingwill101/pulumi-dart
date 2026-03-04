@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SolutionInstanceParameter {
   /// Create parameter Key.
   final pulumi.Input<String> parameterKey;
+
   /// Create parameter Value.
   final pulumi.Input<String> parameterValue;
 
@@ -25,9 +26,8 @@ class SolutionInstanceParameter {
 
   factory SolutionInstanceParameter.fromMap(Map<String, dynamic> map) {
     return SolutionInstanceParameter(
-      parameterKey: (map['parameterKey'] as String).input(),
-      parameterValue: (map['parameterValue'] as String).input(),
+      parameterKey: pulumi.Input.fromValue(map['parameterKey'] as String),
+      parameterValue: pulumi.Input.fromValue(map['parameterValue'] as String),
     );
   }
 }
-

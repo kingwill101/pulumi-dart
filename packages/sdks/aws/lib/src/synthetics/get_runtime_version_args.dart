@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRuntimeVersionArgs {
   /// Whether the latest version of the runtime should be fetched. Conflicts with `version`. Valid values: `true`.
   final pulumi.Input<bool>? latest;
+
   /// Name prefix of the runtime version (for example, `syn-nodejs-puppeteer`).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> prefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Version of the runtime to be fetched (for example, `9.0`). Conflicts with `latest`.
   final pulumi.Input<String>? version;
 
@@ -41,11 +44,22 @@ class GetRuntimeVersionArgs {
 
   factory GetRuntimeVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeVersionArgs(
-      latest: map['latest'] == null ? null : ((map['latest'] as bool).input()).input(),
-      prefix: (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      latest: (() {
+        final guardedValue = map['latest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

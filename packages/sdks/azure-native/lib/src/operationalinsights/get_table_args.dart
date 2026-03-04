@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the table.
   final pulumi.Input<String> tableName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,10 +36,11 @@ class GetTableArgs {
 
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

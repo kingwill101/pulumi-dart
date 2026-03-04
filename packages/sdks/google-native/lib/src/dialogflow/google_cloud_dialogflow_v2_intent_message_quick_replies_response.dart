@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse {
   /// Optional. The collection of quick replies.
   final pulumi.Input<List<String>> quickReplies;
+
   /// Optional. The title of the collection of quick replies.
   final pulumi.Input<String> title;
 
@@ -18,17 +19,17 @@ class GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'quickReplies': quickReplies,
-      'title': title,
-    };
+    return <String, dynamic>{'quickReplies': quickReplies, 'title': title};
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse(
-      quickReplies: ((map['quickReplies'] as List).cast<String>()).input(),
-      title: (map['title'] as String).input(),
+      quickReplies: pulumi.Input.fromValue(
+        (map['quickReplies'] as List).cast<String>(),
+      ),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

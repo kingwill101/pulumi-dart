@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainAssociationCertificateValidationRecord {
   /// Certificate CNAME record name.
   final pulumi.Input<String>? name;
+
   /// Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
   final pulumi.Input<String>? status;
+
   /// Record type, always `CNAME`.
   final pulumi.Input<String>? type;
+
   /// Certificate CNAME record value.
   final pulumi.Input<String>? value;
 
@@ -33,13 +36,30 @@ class CustomDomainAssociationCertificateValidationRecord {
     };
   }
 
-  factory CustomDomainAssociationCertificateValidationRecord.fromMap(Map<String, dynamic> map) {
+  factory CustomDomainAssociationCertificateValidationRecord.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomDomainAssociationCertificateValidationRecord(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

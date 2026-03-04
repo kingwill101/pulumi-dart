@@ -160,26 +160,37 @@ import 'system_data_response.dart';
 class IncidentTask extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse?> createdBy;
+
   /// The time the task was created
   late final pulumi.Output<String> createdTimeUtc;
+
   /// The description of the task
   late final pulumi.Output<String?> description;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// Information on the client (user or application) that made some action
   late final pulumi.Output<ClientInfoResponse?> lastModifiedBy;
+
   /// The last time the task was updated
   late final pulumi.Output<String> lastModifiedTimeUtc;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the task
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The title of the task
   late final pulumi.Output<String> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -192,22 +203,22 @@ class IncidentTask extends pulumi.CustomResource {
     IncidentTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:IncidentTask',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdBy = registerOutput<ClientInfoResponse?>('createdBy');
-    this.createdTimeUtc = registerOutput<String>('createdTimeUtc');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.lastModifiedBy = registerOutput<ClientInfoResponse?>('lastModifiedBy');
-    this.lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+         'azure-native:securityinsights:IncidentTask',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<ClientInfoResponse?>('createdBy');
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    lastModifiedBy = registerOutput<ClientInfoResponse?>('lastModifiedBy');
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.title = registerOutput<String>('title');
-    this.type = registerOutput<String>('type');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
   }
 }

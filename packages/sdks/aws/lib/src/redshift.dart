@@ -1,5 +1,3 @@
-library module_redshift;
-
 export 'redshift/authentication_profile.dart';
 export 'redshift/authentication_profile_args.dart';
 export 'redshift/authentication_profile_state.dart';

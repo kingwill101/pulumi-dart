@@ -14,15 +14,18 @@ class ConnectionProfileMongodbProfileStandardConnectionFormat {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'directConnection': ?directConnection,
-    };
+    return <String, dynamic>{'directConnection': ?directConnection};
   }
 
-  factory ConnectionProfileMongodbProfileStandardConnectionFormat.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileMongodbProfileStandardConnectionFormat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileMongodbProfileStandardConnectionFormat(
-      directConnection: map['directConnection'] == null ? null : (map['directConnection']! as bool).input(),
+      directConnection: (() {
+        final guardedValue = map['directConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

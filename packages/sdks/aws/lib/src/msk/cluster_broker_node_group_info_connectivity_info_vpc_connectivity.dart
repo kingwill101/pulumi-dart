@@ -5,7 +5,10 @@ import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
   /// Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
-  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication>? clientAuthentication;
+  final pulumi.Input<
+    ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication
+  >?
+  clientAuthentication;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity].
   /// [clientAuthentication] Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
@@ -15,14 +18,27 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientAuthentication': ?pulumi.Input.mapOptionalInputValue<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication, Map<String, dynamic>>(clientAuthentication, (value) => value.toMap()),
+      'clientAuthentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication,
+            Map<String, dynamic>
+          >(clientAuthentication, (value) => value.toMap()),
     };
   }
 
-  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap(Map<String, dynamic> map) {
+  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity(
-      clientAuthentication: map['clientAuthentication'] == null ? null : ((ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap((map['clientAuthentication']! as Map).cast<String, dynamic>())).input()).input(),
+      clientAuthentication: (() {
+        final guardedValue = map['clientAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

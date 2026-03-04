@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceIntegrationKmsServerSideEncryption {
   /// KMS key ID. This value can be a key ID, key ARN, alias name, or alias ARN.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Specifies whether KMS integration is enabled. Valid values are `DISABLED` and `ENABLED`.
   final pulumi.Input<String>? optInStatus;
+
   /// Type of KMS key used. Valid values are `CUSTOMER_MANAGED_KEY` and `AWS_OWNED_KMS_KEY`.
   final pulumi.Input<String>? type;
 
@@ -28,12 +30,25 @@ class ServiceIntegrationKmsServerSideEncryption {
     };
   }
 
-  factory ServiceIntegrationKmsServerSideEncryption.fromMap(Map<String, dynamic> map) {
+  factory ServiceIntegrationKmsServerSideEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceIntegrationKmsServerSideEncryption(
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      optInStatus: map['optInStatus'] == null ? null : ((map['optInStatus'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optInStatus: (() {
+        final guardedValue = map['optInStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

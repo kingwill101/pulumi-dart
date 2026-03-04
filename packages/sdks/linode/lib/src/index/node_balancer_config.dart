@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_balancer_config_args.dart';
-import 'node_balancer_config_node_status.dart';
 import 'node_balancer_config_state.dart';
 
 /// Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
@@ -200,48 +199,68 @@ import 'node_balancer_config_state.dart';
 class NodeBalancerConfig extends pulumi.CustomResource {
   /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
   late final pulumi.Output<String> algorithm;
+
   /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
   late final pulumi.Output<String> check;
+
   /// How many times to attempt a check before considering a backend to be down. (1-30)
   late final pulumi.Output<int> checkAttempts;
+
   /// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
   late final pulumi.Output<String> checkBody;
+
   /// How often, in seconds, to check that backends are up and serving requests.
   late final pulumi.Output<int> checkInterval;
+
   /// If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
   late final pulumi.Output<bool> checkPassive;
+
   /// The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
   late final pulumi.Output<String> checkPath;
+
   /// How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
   late final pulumi.Output<int> checkTimeout;
+
   /// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
   late final pulumi.Output<String> cipherSuite;
+
   /// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
-  late final pulumi.Output<List<NodeBalancerConfigNodeStatus>> nodeStatuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodeStatuses;
+
   /// The ID of the NodeBalancer to access.
   ///
   /// - - -
   late final pulumi.Output<int> nodebalancerId;
+
   /// The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
   late final pulumi.Output<int> port;
+
   /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
   late final pulumi.Output<String> protocol;
+
   /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
   late final pulumi.Output<String> proxyProtocol;
-  /// The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+
+  /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
   late final pulumi.Output<String?> sslCert;
+
   /// The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
   late final pulumi.Output<String> sslCommonname;
+
   /// The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
   late final pulumi.Output<String> sslFingerprint;
-  /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+
+  /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
   late final pulumi.Output<String?> sslKey;
+
   /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
   late final pulumi.Output<String> stickiness;
+
   /// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
   ///
   /// * **NOTE: This argument may not be generally available.**
   late final pulumi.Output<int> udpCheckPort;
+
   /// The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
   late final pulumi.Output<int> udpSessionTimeout;
 
@@ -254,32 +273,32 @@ class NodeBalancerConfig extends pulumi.CustomResource {
     NodeBalancerConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/nodeBalancerConfig:NodeBalancerConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<String>('algorithm');
-    this.check = registerOutput<String>('check');
-    this.checkAttempts = registerOutput<int>('checkAttempts');
-    this.checkBody = registerOutput<String>('checkBody');
-    this.checkInterval = registerOutput<int>('checkInterval');
-    this.checkPassive = registerOutput<bool>('checkPassive');
-    this.checkPath = registerOutput<String>('checkPath');
-    this.checkTimeout = registerOutput<int>('checkTimeout');
-    this.cipherSuite = registerOutput<String>('cipherSuite');
-    this.nodeStatuses = registerOutput<List<NodeBalancerConfigNodeStatus>>('nodeStatuses');
-    this.nodebalancerId = registerOutput<int>('nodebalancerId');
-    this.port = registerOutput<int>('port');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxyProtocol = registerOutput<String>('proxyProtocol');
-    this.sslCert = registerOutput<String?>('sslCert');
-    this.sslCommonname = registerOutput<String>('sslCommonname');
-    this.sslFingerprint = registerOutput<String>('sslFingerprint');
-    this.sslKey = registerOutput<String?>('sslKey');
-    this.stickiness = registerOutput<String>('stickiness');
-    this.udpCheckPort = registerOutput<int>('udpCheckPort');
-    this.udpSessionTimeout = registerOutput<int>('udpSessionTimeout');
+         'linode:index/nodeBalancerConfig:NodeBalancerConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<String>('algorithm');
+    check = registerOutput<String>('check');
+    checkAttempts = registerOutput<int>('checkAttempts');
+    checkBody = registerOutput<String>('checkBody');
+    checkInterval = registerOutput<int>('checkInterval');
+    checkPassive = registerOutput<bool>('checkPassive');
+    checkPath = registerOutput<String>('checkPath');
+    checkTimeout = registerOutput<int>('checkTimeout');
+    cipherSuite = registerOutput<String>('cipherSuite');
+    nodeStatuses = registerOutput<List<Map<String, dynamic>>>('nodeStatuses');
+    nodebalancerId = registerOutput<int>('nodebalancerId');
+    port = registerOutput<int>('port');
+    protocol = registerOutput<String>('protocol');
+    proxyProtocol = registerOutput<String>('proxyProtocol');
+    sslCert = registerOutput<String?>('sslCert');
+    sslCommonname = registerOutput<String>('sslCommonname');
+    sslFingerprint = registerOutput<String>('sslFingerprint');
+    sslKey = registerOutput<String?>('sslKey');
+    stickiness = registerOutput<String>('stickiness');
+    udpCheckPort = registerOutput<int>('udpCheckPort');
+    udpSessionTimeout = registerOutput<int>('udpSessionTimeout');
   }
 
   /// Gets an existing [NodeBalancerConfig] resource's state with the given [name] and [id].
@@ -300,31 +319,31 @@ class NodeBalancerConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/nodeBalancerConfig:NodeBalancerConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<String>('algorithm');
-    this.check = registerOutput<String>('check');
-    this.checkAttempts = registerOutput<int>('checkAttempts');
-    this.checkBody = registerOutput<String>('checkBody');
-    this.checkInterval = registerOutput<int>('checkInterval');
-    this.checkPassive = registerOutput<bool>('checkPassive');
-    this.checkPath = registerOutput<String>('checkPath');
-    this.checkTimeout = registerOutput<int>('checkTimeout');
-    this.cipherSuite = registerOutput<String>('cipherSuite');
-    this.nodeStatuses = registerOutput<List<NodeBalancerConfigNodeStatus>>('nodeStatuses');
-    this.nodebalancerId = registerOutput<int>('nodebalancerId');
-    this.port = registerOutput<int>('port');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxyProtocol = registerOutput<String>('proxyProtocol');
-    this.sslCert = registerOutput<String?>('sslCert');
-    this.sslCommonname = registerOutput<String>('sslCommonname');
-    this.sslFingerprint = registerOutput<String>('sslFingerprint');
-    this.sslKey = registerOutput<String?>('sslKey');
-    this.stickiness = registerOutput<String>('stickiness');
-    this.udpCheckPort = registerOutput<int>('udpCheckPort');
-    this.udpSessionTimeout = registerOutput<int>('udpSessionTimeout');
+         'linode:index/nodeBalancerConfig:NodeBalancerConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<String>('algorithm');
+    check = registerOutput<String>('check');
+    checkAttempts = registerOutput<int>('checkAttempts');
+    checkBody = registerOutput<String>('checkBody');
+    checkInterval = registerOutput<int>('checkInterval');
+    checkPassive = registerOutput<bool>('checkPassive');
+    checkPath = registerOutput<String>('checkPath');
+    checkTimeout = registerOutput<int>('checkTimeout');
+    cipherSuite = registerOutput<String>('cipherSuite');
+    nodeStatuses = registerOutput<List<Map<String, dynamic>>>('nodeStatuses');
+    nodebalancerId = registerOutput<int>('nodebalancerId');
+    port = registerOutput<int>('port');
+    protocol = registerOutput<String>('protocol');
+    proxyProtocol = registerOutput<String>('proxyProtocol');
+    sslCert = registerOutput<String?>('sslCert');
+    sslCommonname = registerOutput<String>('sslCommonname');
+    sslFingerprint = registerOutput<String>('sslFingerprint');
+    sslKey = registerOutput<String?>('sslKey');
+    stickiness = registerOutput<String>('stickiness');
+    udpCheckPort = registerOutput<int>('udpCheckPort');
+    udpSessionTimeout = registerOutput<int>('udpSessionTimeout');
   }
 }

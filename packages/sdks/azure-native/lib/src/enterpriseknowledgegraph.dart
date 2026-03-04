@@ -1,5 +1,3 @@
-library module_enterpriseknowledgegraph;
-
 export 'enterpriseknowledgegraph/enterprise_knowledge_graph.dart';
 export 'enterpriseknowledgegraph/enterprise_knowledge_graph_args.dart';
 export 'enterpriseknowledgegraph/enterprise_knowledge_graph_properties.dart';

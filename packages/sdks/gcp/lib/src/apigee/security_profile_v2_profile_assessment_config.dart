@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityProfileV2ProfileAssessmentConfig {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> assessment;
+
   /// The weight of the assessment.
   /// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
   final pulumi.Input<String> weight;
@@ -18,17 +19,15 @@ class SecurityProfileV2ProfileAssessmentConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'assessment': assessment,
-      'weight': weight,
-    };
+    return <String, dynamic>{'assessment': assessment, 'weight': weight};
   }
 
-  factory SecurityProfileV2ProfileAssessmentConfig.fromMap(Map<String, dynamic> map) {
+  factory SecurityProfileV2ProfileAssessmentConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityProfileV2ProfileAssessmentConfig(
-      assessment: (map['assessment'] as String).input(),
-      weight: (map['weight'] as String).input(),
+      assessment: pulumi.Input.fromValue(map['assessment'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as String),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupInstancePostgresqlFlexibleServerState {
   /// The ID of the Backup Policy.
   final pulumi.Input<String>? backupPolicyId;
+
   /// The location of the source database. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Backup Instance for the PostgreSQL Flexible Server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The protection state of the Backup Instance PostgreSQL Flexible Server.
   final pulumi.Input<String>? protectionState;
+
   /// The ID of the source server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? serverId;
+
   /// The ID of the Backup Vault within which the PostgreSQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? vaultId;
 
@@ -44,15 +49,40 @@ class BackupInstancePostgresqlFlexibleServerState {
     };
   }
 
-  factory BackupInstancePostgresqlFlexibleServerState.fromMap(Map<String, dynamic> map) {
+  factory BackupInstancePostgresqlFlexibleServerState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupInstancePostgresqlFlexibleServerState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
+      backupPolicyId: (() {
+        final guardedValue = map['backupPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionState: (() {
+        final guardedValue = map['protectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverId: (() {
+        final guardedValue = map['serverId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultId: (() {
+        final guardedValue = map['vaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

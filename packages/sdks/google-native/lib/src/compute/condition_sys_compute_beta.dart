@@ -6,16 +6,15 @@ enum ConditionSysComputeBeta {
   region("REGION"),
   service("SERVICE");
 
-  const ConditionSysComputeBeta(this.value);
-  final String value;
+  const ConditionSysComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ConditionSysComputeBeta fromValue(String value) {
     for (final item in ConditionSysComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionSysComputeBeta value: $value');
   }
 }
-

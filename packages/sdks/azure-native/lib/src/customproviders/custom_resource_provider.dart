@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_resource_provider_args.dart';
-import 'custom_rpaction_route_definition_response.dart';
-import 'custom_rpresource_type_route_definition_response.dart';
-import 'custom_rpvalidations_response.dart';
 
 /// A manifest file that defines the custom resource provider resources.
 ///
@@ -206,23 +203,31 @@ import 'custom_rpvalidations_response.dart';
 /// ```
 class CustomResourceProvider extends pulumi.CustomResource {
   /// A list of actions that the custom resource provider implements.
-  late final pulumi.Output<List<CustomRPActionRouteDefinitionResponse>?> actions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource provider.
   late final pulumi.Output<String> provisioningState;
+
   /// A list of resource types that the custom resource provider implements.
-  late final pulumi.Output<List<CustomRPResourceTypeRouteDefinitionResponse>?> resourceTypes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resourceTypes;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// A list of validations to run on the custom resource provider's requests.
-  late final pulumi.Output<List<CustomRPValidationsResponse>?> validations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> validations;
 
   /// Creates a new [CustomResourceProvider].
   /// [name] The Pulumi resource name.
@@ -233,19 +238,21 @@ class CustomResourceProvider extends pulumi.CustomResource {
     CustomResourceProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:customproviders:CustomResourceProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<CustomRPActionRouteDefinitionResponse>?>('actions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:customproviders:CustomResourceProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceTypes = registerOutput<List<CustomRPResourceTypeRouteDefinitionResponse>?>('resourceTypes');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.validations = registerOutput<List<CustomRPValidationsResponse>?>('validations');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceTypes = registerOutput<List<Map<String, dynamic>>?>(
+      'resourceTypes',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    validations = registerOutput<List<Map<String, dynamic>>?>('validations');
   }
 }

@@ -1,5 +1,3 @@
-library module_cloudsupport;
-
 export 'cloudsupport/actor.dart';
 export 'cloudsupport/actor_cloudsupport_v2beta.dart';
 export 'cloudsupport/actor_response.dart';

@@ -17,14 +17,18 @@ import 'certificate_signing_request_status_patch.dart';
 /// 2. serving certificates for TLS endpoints kube-apiserver can connect to securely (with the "kubernetes.io/kubelet-serving" signerName).
 ///
 /// This API can be used to request client certificates to authenticate to kube-apiserver (with the "kubernetes.io/kube-apiserver-client" signerName), or to obtain certificates from custom non-Kubernetes signers.
-class CertificateSigningRequestPatchCertificatesK8sIoV1 extends pulumi.CustomResource {
+class CertificateSigningRequestPatchCertificatesK8sIoV1
+    extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
   late final pulumi.Output<CertificateSigningRequestSpecPatch?> spec;
+
   /// status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.
   late final pulumi.Output<CertificateSigningRequestStatusPatch?> status;
 
@@ -37,15 +41,15 @@ class CertificateSigningRequestPatchCertificatesK8sIoV1 extends pulumi.CustomRes
     CertificateSigningRequestPatchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:certificates.k8s.io/v1:CertificateSigningRequestPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.spec = registerOutput<CertificateSigningRequestSpecPatch?>('spec');
-    this.status = registerOutput<CertificateSigningRequestStatusPatch?>('status');
+         'kubernetes:certificates.k8s.io/v1:CertificateSigningRequestPatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    spec = registerOutput<CertificateSigningRequestSpecPatch?>('spec');
+    status = registerOutput<CertificateSigningRequestStatusPatch?>('status');
   }
 }

@@ -136,7 +136,7 @@ import 'resource_anchor_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Oracle.Database` - 2025-09-01
@@ -151,12 +151,16 @@ import 'resource_anchor_state.dart';
 class ResourceAnchor extends pulumi.CustomResource {
   /// Oracle Cloud Infrastructure compartment [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) which was created or linked by customer with Resource Anchor.
   late final pulumi.Output<String> linkedCompartmentId;
+
   /// The Azure Region where the Oracle Resource Anchor exists.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Oracle Resource Anchor. Changing this forces a new Oracle Resource Anchor to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Oracle Resource Anchor should exist. Changing this forces a new Oracle Resource Anchor to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Oracle Resource Anchor.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -169,16 +173,16 @@ class ResourceAnchor extends pulumi.CustomResource {
     ResourceAnchorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:oracle/resourceAnchor:ResourceAnchor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.linkedCompartmentId = registerOutput<String>('linkedCompartmentId');
-    this.location = registerOutput<String>('location');
+         'azure:oracle/resourceAnchor:ResourceAnchor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    linkedCompartmentId = registerOutput<String>('linkedCompartmentId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ResourceAnchor] resource's state with the given [name] and [id].
@@ -199,15 +203,15 @@ class ResourceAnchor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:oracle/resourceAnchor:ResourceAnchor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.linkedCompartmentId = registerOutput<String>('linkedCompartmentId');
-    this.location = registerOutput<String>('location');
+         'azure:oracle/resourceAnchor:ResourceAnchor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    linkedCompartmentId = registerOutput<String>('linkedCompartmentId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

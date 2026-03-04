@@ -23,9 +23,12 @@ class GetComputeEnvironmentUpdatePolicy {
 
   factory GetComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return GetComputeEnvironmentUpdatePolicy(
-      jobExecutionTimeoutMinutes: (map['jobExecutionTimeoutMinutes'] as int).input(),
-      terminateJobsOnUpdate: (map['terminateJobsOnUpdate'] as bool).input(),
+      jobExecutionTimeoutMinutes: pulumi.Input.fromValue(
+        map['jobExecutionTimeoutMinutes'] as int,
+      ),
+      terminateJobsOnUpdate: pulumi.Input.fromValue(
+        map['terminateJobsOnUpdate'] as bool,
+      ),
     );
   }
 }
-

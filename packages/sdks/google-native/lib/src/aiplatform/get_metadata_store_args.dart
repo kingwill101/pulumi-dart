@@ -31,10 +31,13 @@ class GetMetadataStoreArgs {
 
   factory GetMetadataStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataStoreArgs(
-      location: (map['location'] as String).input(),
-      metadataStoreId: (map['metadataStoreId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      metadataStoreId: pulumi.Input.fromValue(map['metadataStoreId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

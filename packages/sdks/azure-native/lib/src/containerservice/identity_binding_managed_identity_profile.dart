@@ -9,20 +9,17 @@ class IdentityBindingManagedIdentityProfile {
 
   /// Creates a new [IdentityBindingManagedIdentityProfile].
   /// [resourceId] The resource ID of the managed identity.
-  IdentityBindingManagedIdentityProfile({
-    required this.resourceId,
-  });
+  IdentityBindingManagedIdentityProfile({required this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': resourceId,
-    };
+    return <String, dynamic>{'resourceId': resourceId};
   }
 
-  factory IdentityBindingManagedIdentityProfile.fromMap(Map<String, dynamic> map) {
+  factory IdentityBindingManagedIdentityProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityBindingManagedIdentityProfile(
-      resourceId: (map['resourceId'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

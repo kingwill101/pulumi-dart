@@ -7,11 +7,14 @@ import 'get_dedicated_block_storage_clusters_cluster.dart';
 class GetDedicatedBlockStorageClustersResult {
   /// A list of Dedicated Block Storage Cluster Entries. Each element contains the following attributes:
   final List<GetDedicatedBlockStorageClustersCluster> clusters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Dedicated Block Storage Cluster IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of name of Dedicated Block Storage Clusters.
   final List<String> names;
   final String? outputFile;
@@ -34,7 +37,11 @@ class GetDedicatedBlockStorageClustersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusters': pulumi.Input.encodeList<GetDedicatedBlockStorageClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
+      'clusters':
+          pulumi.Input.encodeList<
+            GetDedicatedBlockStorageClustersCluster,
+            Map<String, dynamic>
+          >(clusters, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -43,15 +50,30 @@ class GetDedicatedBlockStorageClustersResult {
     };
   }
 
-  factory GetDedicatedBlockStorageClustersResult.fromMap(Map<String, dynamic> map) {
+  factory GetDedicatedBlockStorageClustersResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDedicatedBlockStorageClustersResult(
-      clusters: pulumi.Input.decodeList<GetDedicatedBlockStorageClustersCluster>(map['clusters'], (value) => GetDedicatedBlockStorageClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
+      clusters:
+          pulumi.Input.decodeList<GetDedicatedBlockStorageClustersCluster>(
+            map['clusters']!,
+            (value) => GetDedicatedBlockStorageClustersCluster.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

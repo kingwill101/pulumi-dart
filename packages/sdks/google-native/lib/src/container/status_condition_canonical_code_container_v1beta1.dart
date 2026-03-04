@@ -18,16 +18,17 @@ enum StatusConditionCanonicalCodeContainerV1beta1 {
   unavailable("UNAVAILABLE"),
   dataLoss("DATA_LOSS");
 
-  const StatusConditionCanonicalCodeContainerV1beta1(this.value);
-  final String value;
+  const StatusConditionCanonicalCodeContainerV1beta1(this.wireValue);
+  final String wireValue;
 
   static StatusConditionCanonicalCodeContainerV1beta1 fromValue(String value) {
     for (final item in StatusConditionCanonicalCodeContainerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown StatusConditionCanonicalCodeContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown StatusConditionCanonicalCodeContainerV1beta1 value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum ImageArchitectureComputeBeta {
   arm64("ARM64"),
   x8664("X86_64");
 
-  const ImageArchitectureComputeBeta(this.value);
-  final String value;
+  const ImageArchitectureComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ImageArchitectureComputeBeta fromValue(String value) {
     for (final item in ImageArchitectureComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageArchitectureComputeBeta value: $value');
   }
 }
-

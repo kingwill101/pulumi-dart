@@ -12,7 +12,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.148.0+.
+/// &gt; **NOTE:** Available in v1.148.0+.
 ///
 /// ## Example Usage
 ///
@@ -122,7 +122,7 @@ Future<GetDedicatedHostAccountsResult> getDedicatedHostAccounts(
 
 /// This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -241,7 +241,7 @@ Future<GetDedicatedHostGroupsResult> getDedicatedHostGroups(
 
 /// This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 ///
 /// ## Example Usage
 ///
@@ -619,7 +619,7 @@ Future<GetDedicatedHostsResult> getDedicatedHosts(
 
 /// This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cddc_get_host_ecs_level_infos_get_host_ecs_level_infos_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetHostEcsLevelInfosResult> getHostEcsLevelInfos(
@@ -637,7 +637,7 @@ Future<GetHostEcsLevelInfosResult> getHostEcsLevelInfos(
 
 /// This data source provides the Cddc Zones of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 ///
 /// ## Example Usage
 ///

@@ -1,5 +1,3 @@
-library module_computeschedule;
-
 export 'computeschedule/action_type.dart';
 export 'computeschedule/deadline_type.dart';
 export 'computeschedule/execution_parameters.dart';

@@ -7,11 +7,14 @@ import 'get_ddos_bgp_instances_instance.dart';
 class GetDdosBgpInstancesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of instance IDs.
   final List<String> ids;
+
   /// A list of apis. Each element contains the following attributes:
   final List<GetDdosBgpInstancesInstance> instances;
   final String? nameRegex;
+
   /// A list of instance names.
   final List<String> names;
   final String? outputFile;
@@ -36,7 +39,11 @@ class GetDdosBgpInstancesResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'instances': pulumi.Input.encodeList<GetDdosBgpInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetDdosBgpInstancesInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -47,11 +54,23 @@ class GetDdosBgpInstancesResult {
     return GetDdosBgpInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetDdosBgpInstancesInstance>(map['instances'], (value) => GetDdosBgpInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      instances: pulumi.Input.decodeList<GetDdosBgpInstancesInstance>(
+        map['instances']!,
+        (value) => GetDdosBgpInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

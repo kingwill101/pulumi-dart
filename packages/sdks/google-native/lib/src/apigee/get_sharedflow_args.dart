@@ -13,10 +13,7 @@ class GetSharedflowArgs {
   /// Creates a new [GetSharedflowArgs].
   /// [organizationId] Required.
   /// [sharedflowId] Required.
-  GetSharedflowArgs({
-    required this.organizationId,
-    required this.sharedflowId,
-  });
+  GetSharedflowArgs({required this.organizationId, required this.sharedflowId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,8 @@ class GetSharedflowArgs {
 
   factory GetSharedflowArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedflowArgs(
-      organizationId: (map['organizationId'] as String).input(),
-      sharedflowId: (map['sharedflowId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      sharedflowId: pulumi.Input.fromValue(map['sharedflowId'] as String),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FloatingIpAssignmentArgs {
   /// ID of the Floating IP.
   final pulumi.Input<int> floatingIpId;
+
   /// Server to assign the Floating IP to.
   final pulumi.Input<int> serverId;
 
@@ -29,9 +30,8 @@ class FloatingIpAssignmentArgs {
 
   factory FloatingIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssignmentArgs(
-      floatingIpId: (map['floatingIpId'] as int).input(),
-      serverId: (map['serverId'] as int).input(),
+      floatingIpId: pulumi.Input.fromValue(map['floatingIpId'] as int),
+      serverId: pulumi.Input.fromValue(map['serverId'] as int),
     );
   }
 }
-

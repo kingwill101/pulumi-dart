@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_detail_response.dart';
 import 'extension_args.dart';
 import 'extension_response_aks_assigned_identity.dart';
-import 'extension_status_response.dart';
 import 'identity_response.dart';
 import 'plan_response.dart';
 import 'scope_response.dart';
@@ -416,45 +415,66 @@ import 'system_data_response.dart';
 /// ```
 class Extension extends pulumi.CustomResource {
   /// Identity of the Extension resource in an AKS cluster
-  late final pulumi.Output<ExtensionResponseAksAssignedIdentity?> aksAssignedIdentity;
+  late final pulumi.Output<ExtensionResponseAksAssignedIdentity?>
+  aksAssignedIdentity;
+
   /// Flag to note if this extension participates in auto upgrade of minor version, or not.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationProtectedSettings;
+
   /// Configuration settings, as name-value pairs for configuring this extension.
   late final pulumi.Output<Map<String, String>?> configurationSettings;
+
   /// Currently installed version of the extension.
   late final pulumi.Output<String> currentVersion;
+
   /// Custom Location settings properties.
   late final pulumi.Output<Map<String, String>> customLocationSettings;
+
   /// Error information from the Agent - e.g. errors during installation.
   late final pulumi.Output<ErrorDetailResponse> errorInfo;
+
   /// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
   late final pulumi.Output<String?> extensionType;
+
   /// Identity of the Extension resource
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Flag to note if this extension is a system extension
   late final pulumi.Output<bool> isSystemExtension;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Uri of the Helm package
   late final pulumi.Output<String> packageUri;
+
   /// The plan information.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// Status of installation of this extension.
   late final pulumi.Output<String> provisioningState;
+
   /// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
   late final pulumi.Output<String?> releaseTrain;
+
   /// Scope at which the extension is installed.
   late final pulumi.Output<ScopeResponse?> scope;
+
   /// Status from this extension.
-  late final pulumi.Output<List<ExtensionStatusResponse>?> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>?> statuses;
+
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
   late final pulumi.Output<String?> version;
 
@@ -467,31 +487,39 @@ class Extension extends pulumi.CustomResource {
     ExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kubernetesconfiguration:Extension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aksAssignedIdentity = registerOutput<ExtensionResponseAksAssignedIdentity?>('aksAssignedIdentity');
-    this.autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    this.configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
-    this.currentVersion = registerOutput<String>('currentVersion');
-    this.customLocationSettings = registerOutput<Map<String, String>>('customLocationSettings');
-    this.errorInfo = registerOutput<ErrorDetailResponse>('errorInfo');
-    this.extensionType = registerOutput<String?>('extensionType');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.isSystemExtension = registerOutput<bool>('isSystemExtension');
+         'azure-native:kubernetesconfiguration:Extension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aksAssignedIdentity = registerOutput<ExtensionResponseAksAssignedIdentity?>(
+      'aksAssignedIdentity',
+    );
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>(
+      'configurationProtectedSettings',
+    );
+    configurationSettings = registerOutput<Map<String, String>?>(
+      'configurationSettings',
+    );
+    currentVersion = registerOutput<String>('currentVersion');
+    customLocationSettings = registerOutput<Map<String, String>>(
+      'customLocationSettings',
+    );
+    errorInfo = registerOutput<ErrorDetailResponse>('errorInfo');
+    extensionType = registerOutput<String?>('extensionType');
+    identity = registerOutput<IdentityResponse?>('identity');
+    isSystemExtension = registerOutput<bool>('isSystemExtension');
     this.name = registerOutput<String>('name');
-    this.packageUri = registerOutput<String>('packageUri');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.releaseTrain = registerOutput<String?>('releaseTrain');
-    this.scope = registerOutput<ScopeResponse?>('scope');
-    this.statuses = registerOutput<List<ExtensionStatusResponse>?>('statuses');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    packageUri = registerOutput<String>('packageUri');
+    plan = registerOutput<PlanResponse?>('plan');
+    provisioningState = registerOutput<String>('provisioningState');
+    releaseTrain = registerOutput<String?>('releaseTrain');
+    scope = registerOutput<ScopeResponse?>('scope');
+    statuses = registerOutput<List<Map<String, dynamic>>?>('statuses');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

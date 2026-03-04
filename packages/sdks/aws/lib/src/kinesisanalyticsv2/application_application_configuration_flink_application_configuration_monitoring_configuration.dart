@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration {
   /// Describes whether to use the default CloudWatch logging configuration for an application. Valid values: `CUSTOM`, `DEFAULT`. Set this attribute to `CUSTOM` in order for any specified `log_level` or `metrics_level` attribute values to be effective.
   final pulumi.Input<String> configurationType;
+
   /// Describes the verbosity of the CloudWatch Logs for an application. Valid values: `DEBUG`, `ERROR`, `INFO`, `WARN`.
   final pulumi.Input<String>? logLevel;
+
   /// Describes the granularity of the CloudWatch Logs for an application. Valid values: `APPLICATION`, `OPERATOR`, `PARALLELISM`, `TASK`.
   final pulumi.Input<String>? metricsLevel;
 
@@ -28,12 +30,23 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoring
     };
   }
 
-  factory ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration(
-      configurationType: (map['configurationType'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : ((map['logLevel'] as String).input()).input(),
-      metricsLevel: map['metricsLevel'] == null ? null : ((map['metricsLevel'] as String).input()).input(),
+      configurationType: pulumi.Input.fromValue(
+        map['configurationType'] as String,
+      ),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricsLevel: (() {
+        final guardedValue = map['metricsLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

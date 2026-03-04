@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionRestrictionsGeoRestriction {
   /// [ISO 3166-1-alpha-2 codes][4] for which you want CloudFront either to distribute your content (`whitelist`) or not distribute your content (`blacklist`). If the type is specified as `none` an empty array can be used.
   final pulumi.Input<List<String>>? locations;
+
   /// Method that you want to use to restrict distribution of your content by country: `none`, `whitelist`, or `blacklist`.
   final pulumi.Input<String> restrictionType;
 
@@ -23,11 +24,16 @@ class DistributionRestrictionsGeoRestriction {
     };
   }
 
-  factory DistributionRestrictionsGeoRestriction.fromMap(Map<String, dynamic> map) {
+  factory DistributionRestrictionsGeoRestriction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionRestrictionsGeoRestriction(
-      locations: map['locations'] == null ? null : (((map['locations'] as List).cast<String>()).input()).input(),
-      restrictionType: (map['restrictionType'] as String).input(),
+      locations: (() {
+        final guardedValue = map['locations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      restrictionType: pulumi.Input.fromValue(map['restrictionType'] as String),
     );
   }
 }
-

@@ -166,18 +166,25 @@ class ScopeMap extends pulumi.CustomResource {
   /// E.g. repositories/repository-name/content/read,
   /// repositories/repository-name/metadata/write
   late final pulumi.Output<List<String>> actions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of scope map.
   late final pulumi.Output<String> creationDate;
+
   /// The user friendly description of the scope map.
   late final pulumi.Output<String?> description;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -190,18 +197,18 @@ class ScopeMap extends pulumi.CustomResource {
     ScopeMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:ScopeMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<String>>('actions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.description = registerOutput<String?>('description');
+         'azure-native:containerregistry:ScopeMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<String>>('actions');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

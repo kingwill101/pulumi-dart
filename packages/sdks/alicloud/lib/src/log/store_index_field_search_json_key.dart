@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StoreIndexFieldSearchJsonKey {
   /// The alias of one field.
   final pulumi.Input<String>? alias;
+
   /// Whether to enable statistics. default to true.
   ///
-  /// > **Note:** At least one of the "full_text" and "field_search" should be specified.
+  /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
   final pulumi.Input<bool>? docValue;
+
   /// When using the json_keys field, this field is required.
   final pulumi.Input<String> name;
+
   /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
   final pulumi.Input<String>? type;
 
@@ -37,11 +40,22 @@ class StoreIndexFieldSearchJsonKey {
 
   factory StoreIndexFieldSearchJsonKey.fromMap(Map<String, dynamic> map) {
     return StoreIndexFieldSearchJsonKey(
-      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
-      docValue: map['docValue'] == null ? null : (map['docValue']! as bool).input(),
-      name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      docValue: (() {
+        final guardedValue = map['docValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

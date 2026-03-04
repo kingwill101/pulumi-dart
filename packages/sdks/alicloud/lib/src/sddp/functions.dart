@@ -10,7 +10,7 @@ import 'get_rules_result.dart';
 
 /// This data source provides the Sddp Configs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///
@@ -173,7 +173,7 @@ Future<GetConfigsResult> getConfigs(
 
 /// This data source provides the Sddp Data Limits of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.159.0.
+/// &gt; **NOTE:** Available since v1.159.0.
 ///
 /// ## Example Usage
 ///
@@ -283,7 +283,7 @@ Future<GetDataLimitsResult> getDataLimits(
 
 /// This data source provides the Sddp Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.136.0.
+/// &gt; **NOTE:** Available since v1.136.0.
 ///
 /// ## Example Usage
 ///
@@ -393,7 +393,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Sddp Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
 /// ## Example Usage
 ///

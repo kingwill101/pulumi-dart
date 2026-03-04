@@ -134,14 +134,19 @@ import 'bucket_access_key_state.dart';
 class BucketAccessKey extends pulumi.CustomResource {
   /// Access key ID.
   late final pulumi.Output<String> accessKeyId;
+
   /// Name of the bucket that the access key will belong to and grant access to.
   late final pulumi.Output<String> bucketName;
+
   /// Date and time when the access key was created.
   late final pulumi.Output<String> createdAt;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Secret access key used to sign requests. This attribute is not available for imported resources. Note that this will be written to the state file.
   late final pulumi.Output<String> secretAccessKey;
+
   /// Status of the access key.
   late final pulumi.Output<String> status;
 
@@ -154,17 +159,17 @@ class BucketAccessKey extends pulumi.CustomResource {
     BucketAccessKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lightsail/bucketAccessKey:BucketAccessKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKeyId = registerOutput<String>('accessKeyId');
-    this.bucketName = registerOutput<String>('bucketName');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.region = registerOutput<String>('region');
-    this.secretAccessKey = registerOutput<String>('secretAccessKey');
-    this.status = registerOutput<String>('status');
+         'aws:lightsail/bucketAccessKey:BucketAccessKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKeyId = registerOutput<String>('accessKeyId');
+    bucketName = registerOutput<String>('bucketName');
+    createdAt = registerOutput<String>('createdAt');
+    region = registerOutput<String>('region');
+    secretAccessKey = registerOutput<String>('secretAccessKey');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BucketAccessKey] resource's state with the given [name] and [id].
@@ -185,16 +190,16 @@ class BucketAccessKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lightsail/bucketAccessKey:BucketAccessKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKeyId = registerOutput<String>('accessKeyId');
-    this.bucketName = registerOutput<String>('bucketName');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.region = registerOutput<String>('region');
-    this.secretAccessKey = registerOutput<String>('secretAccessKey');
-    this.status = registerOutput<String>('status');
+         'aws:lightsail/bucketAccessKey:BucketAccessKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKeyId = registerOutput<String>('accessKeyId');
+    bucketName = registerOutput<String>('bucketName');
+    createdAt = registerOutput<String>('createdAt');
+    region = registerOutput<String>('region');
+    secretAccessKey = registerOutput<String>('secretAccessKey');
+    status = registerOutput<String>('status');
   }
 }

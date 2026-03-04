@@ -1,5 +1,3 @@
-library module_appconfig;
-
 export 'appconfig/application.dart';
 export 'appconfig/application_args.dart';
 export 'appconfig/application_state.dart';

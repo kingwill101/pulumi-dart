@@ -101,12 +101,12 @@ class AdminAccount extends pulumi.CustomResource {
     AdminAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:fms/adminAccount:AdminAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'aws:fms/adminAccount:AdminAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
   }
 
   /// Gets an existing [AdminAccount] resource's state with the given [name] and [id].
@@ -127,11 +127,11 @@ class AdminAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:fms/adminAccount:AdminAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'aws:fms/adminAccount:AdminAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
   }
 }

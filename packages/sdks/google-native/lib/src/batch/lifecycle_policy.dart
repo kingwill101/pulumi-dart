@@ -8,29 +8,48 @@ import 'lifecycle_policy_action.dart';
 class LifecyclePolicy {
   /// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
   final pulumi.Input<LifecyclePolicyAction>? action;
+
   /// Conditions that decide why a task failure is dealt with a specific action.
   final pulumi.Input<ActionCondition>? actionCondition;
 
   /// Creates a new [LifecyclePolicy].
   /// [action] Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
   /// [actionCondition] Conditions that decide why a task failure is dealt with a specific action.
-  LifecyclePolicy({
-    this.action,
-    this.actionCondition,
-  });
+  LifecyclePolicy({this.action, this.actionCondition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyAction, String>(action, (value) => value.value),
-      'actionCondition': ?pulumi.Input.mapOptionalInputValue<ActionCondition, Map<String, dynamic>>(actionCondition, (value) => value.toMap()),
+      'action':
+          ?pulumi.Input.mapOptionalInputValue<LifecyclePolicyAction, String>(
+            action,
+            (value) => value.wireValue,
+          ),
+      'actionCondition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ActionCondition,
+            Map<String, dynamic>
+          >(actionCondition, (value) => value.toMap()),
     };
   }
 
   factory LifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicy(
-      action: map['action'] == null ? null : (LifecyclePolicyAction.fromValue(map['action']! as String)).input(),
-      actionCondition: map['actionCondition'] == null ? null : (ActionCondition.fromMap((map['actionCondition']! as Map).cast<String, dynamic>())).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LifecyclePolicyAction.fromValue(guardedValue as String),
+        );
+      })(),
+      actionCondition: (() {
+        final guardedValue = map['actionCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ActionCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

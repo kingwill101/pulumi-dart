@@ -12,22 +12,31 @@ import 'schedule_properties.dart';
 class ScheduledActionArgs {
   /// Scheduled action name.
   final pulumi.Input<String> displayName;
+
   /// Destination format of the view data. This is optional.
   final pulumi.Input<FileDestination>? fileDestination;
+
   /// Kind of the scheduled action.
   final pulumi.Input<String>? kind;
+
   /// Scheduled action name.
   final pulumi.Input<String>? name;
+
   /// Notification properties based on scheduled action kind.
   final pulumi.Input<NotificationProperties> notification;
+
   /// Email address of the point of contact that should get the unsubscribe requests and notification emails.
   final pulumi.Input<String>? notificationEmail;
+
   /// Schedule of the scheduled action.
   final pulumi.Input<ScheduleProperties> schedule;
-  /// For private scheduled action(Create or Update), scope will be empty.<br /> For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
+
+  /// For private scheduled action(Create or Update), scope will be empty.&lt;br /&gt; For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   final pulumi.Input<String>? scope;
+
   /// Status of the scheduled action.
   final pulumi.Input<String> status;
+
   /// Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
   final pulumi.Input<String> viewId;
 
@@ -39,7 +48,7 @@ class ScheduledActionArgs {
   /// [notification] Notification properties based on scheduled action kind.
   /// [notificationEmail] Email address of the point of contact that should get the unsubscribe requests and notification emails.
   /// [schedule] Schedule of the scheduled action.
-  /// [scope] For private scheduled action(Create or Update), scope will be empty.<br /> For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
+  /// [scope] For private scheduled action(Create or Update), scope will be empty.&lt;br /&gt; For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   /// [status] Status of the scheduled action.
   /// [viewId] Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
   ScheduledActionArgs({
@@ -58,12 +67,24 @@ class ScheduledActionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
-      'fileDestination': ?pulumi.Input.mapOptionalInputValue<FileDestination, Map<String, dynamic>>(fileDestination, (value) => value.toMap()),
+      'fileDestination':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileDestination,
+            Map<String, dynamic>
+          >(fileDestination, (value) => value.toMap()),
       'kind': ?kind,
       'name': ?name,
-      'notification': pulumi.Input.mapInputValue<NotificationProperties, Map<String, dynamic>>(notification, (value) => value.toMap()),
+      'notification':
+          pulumi.Input.mapInputValue<
+            NotificationProperties,
+            Map<String, dynamic>
+          >(notification, (value) => value.toMap()),
       'notificationEmail': ?notificationEmail,
-      'schedule': pulumi.Input.mapInputValue<ScheduleProperties, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          pulumi.Input.mapInputValue<ScheduleProperties, Map<String, dynamic>>(
+            schedule,
+            (value) => value.toMap(),
+          ),
       'scope': ?scope,
       'status': status,
       'viewId': viewId,
@@ -72,17 +93,48 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      displayName: (map['displayName'] as String).input(),
-      fileDestination: map['fileDestination'] == null ? null : (FileDestination.fromMap((map['fileDestination']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notification: (NotificationProperties.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
-      notificationEmail: map['notificationEmail'] == null ? null : (map['notificationEmail']! as String).input(),
-      schedule: (ScheduleProperties.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      status: (map['status'] as String).input(),
-      viewId: (map['viewId'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      fileDestination: (() {
+        final guardedValue = map['fileDestination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileDestination.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notification: pulumi.Input.fromValue(
+        NotificationProperties.fromMap(
+          (map['notification']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      notificationEmail: (() {
+        final guardedValue = map['notificationEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schedule: pulumi.Input.fromValue(
+        ScheduleProperties.fromMap(
+          (map['schedule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      viewId: pulumi.Input.fromValue(map['viewId'] as String),
     );
   }
 }
-

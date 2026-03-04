@@ -35,11 +35,14 @@ class GetServingConfigRetailV2betaArgs {
 
   factory GetServingConfigRetailV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetServingConfigRetailV2betaArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      servingConfigId: (map['servingConfigId'] as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servingConfigId: pulumi.Input.fromValue(map['servingConfigId'] as String),
     );
   }
 }
-

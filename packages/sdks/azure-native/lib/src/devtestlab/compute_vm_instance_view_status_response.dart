@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeVmInstanceViewStatusResponse {
   /// Gets the status Code.
   final pulumi.Input<String>? code;
+
   /// Gets the short localizable label for the status.
   final pulumi.Input<String>? displayStatus;
+
   /// Gets the message associated with the status.
   final pulumi.Input<String>? message;
 
@@ -29,12 +31,25 @@ class ComputeVmInstanceViewStatusResponse {
     };
   }
 
-  factory ComputeVmInstanceViewStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory ComputeVmInstanceViewStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ComputeVmInstanceViewStatusResponse(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
-      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayStatus: (() {
+        final guardedValue = map['displayStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

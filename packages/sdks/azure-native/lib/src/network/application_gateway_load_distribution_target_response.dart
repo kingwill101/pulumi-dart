@@ -7,14 +7,19 @@ import 'sub_resource_response.dart';
 class ApplicationGatewayLoadDistributionTargetResponse {
   /// Backend address pool resource of the application gateway.
   final pulumi.Input<SubResourceResponse>? backendAddressPool;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Name of the load distribution policy that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
+
   /// Type of the resource.
   final pulumi.Input<String> type;
+
   /// Weight per server. Range between 1 and 100.
   final pulumi.Input<int>? weightPerServer;
 
@@ -36,7 +41,11 @@ class ApplicationGatewayLoadDistributionTargetResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
+      'backendAddressPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(backendAddressPool, (value) => value.toMap()),
       'etag': etag,
       'id': ?id,
       'name': ?name,
@@ -45,15 +54,36 @@ class ApplicationGatewayLoadDistributionTargetResponse {
     };
   }
 
-  factory ApplicationGatewayLoadDistributionTargetResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayLoadDistributionTargetResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayLoadDistributionTargetResponse(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
-      weightPerServer: map['weightPerServer'] == null ? null : (map['weightPerServer']! as int).input(),
+      backendAddressPool: (() {
+        final guardedValue = map['backendAddressPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      weightPerServer: (() {
+        final guardedValue = map['weightPerServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

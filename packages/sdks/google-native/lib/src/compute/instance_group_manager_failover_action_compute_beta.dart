@@ -3,16 +3,17 @@ enum InstanceGroupManagerFailoverActionComputeBeta {
   noFailover("NO_FAILOVER"),
   unknown("UNKNOWN");
 
-  const InstanceGroupManagerFailoverActionComputeBeta(this.value);
-  final String value;
+  const InstanceGroupManagerFailoverActionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static InstanceGroupManagerFailoverActionComputeBeta fromValue(String value) {
     for (final item in InstanceGroupManagerFailoverActionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerFailoverActionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerFailoverActionComputeBeta value: $value',
+    );
   }
 }
-

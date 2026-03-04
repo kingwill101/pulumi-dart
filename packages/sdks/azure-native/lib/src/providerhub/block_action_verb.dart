@@ -7,16 +7,15 @@ enum BlockActionVerb {
   delete("Delete"),
   unrecognized("Unrecognized");
 
-  const BlockActionVerb(this.value);
-  final String value;
+  const BlockActionVerb(this.wireValue);
+  final String wireValue;
 
   static BlockActionVerb fromValue(String value) {
     for (final item in BlockActionVerb.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BlockActionVerb value: $value');
   }
 }
-

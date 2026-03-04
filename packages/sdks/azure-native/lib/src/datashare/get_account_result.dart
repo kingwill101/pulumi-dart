@@ -7,26 +7,37 @@ import 'system_data_response.dart';
 class GetAccountResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Time at which the account was created.
   final String createdAt;
+
   /// The resource id of the azure resource
   final String id;
+
   /// Identity Info on the Account
   final IdentityResponse identity;
+
   /// Location of the azure resource.
   final String? location;
+
   /// Name of the azure resource
   final String name;
+
   /// Provisioning state of the Account
   final String provisioningState;
+
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
+
   /// Tags on the azure resource.
   final Map<String, String>? tags;
+
   /// Type of the azure resource
   final String type;
+
   /// Email of the user who created the resource
   final String userEmail;
+
   /// Name of the user who created the resource
   final String userName;
 
@@ -80,16 +91,27 @@ class GetAccountResult {
       azureApiVersion: map['azureApiVersion'] as String,
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
-      identity: IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: IdentityResponse.fromMap(
+        (map['identity']! as Map).cast<String, dynamic>(),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       userEmail: map['userEmail'] as String,
       userName: map['userName'] as String,
     );
   }
 }
-

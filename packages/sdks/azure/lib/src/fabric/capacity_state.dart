@@ -7,16 +7,21 @@ import 'capacity_sku.dart';
 class CapacityState {
   /// An array of administrator user identities. The member must be an Entra user or a service principal.
   ///
-  /// > **Note:** If the member is an Entra user, use user principal name (UPN) format. If the user is a service principal, use object ID.
+  /// &gt; **Note:** If the member is an Entra user, use user principal name (UPN) format. If the user is a service principal, use object ID.
   final pulumi.Input<List<String>>? administrationMembers;
+
   /// The supported Azure location where the Fabric Capacity exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for the Fabric Capacity. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group in which to create the Fabric Capacity. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `sku` block as defined below.
   final pulumi.Input<CapacitySku>? sku;
+
   /// A mapping of tags to assign to the Fabric Capacity.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,20 +47,51 @@ class CapacityState {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<CapacitySku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            CapacitySku,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory CapacityState.fromMap(Map<String, dynamic> map) {
     return CapacityState(
-      administrationMembers: map['administrationMembers'] == null ? null : ((map['administrationMembers']! as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      sku: map['sku'] == null ? null : (CapacitySku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      administrationMembers: (() {
+        final guardedValue = map['administrationMembers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CapacitySku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

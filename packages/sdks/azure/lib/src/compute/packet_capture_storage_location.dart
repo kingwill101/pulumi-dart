@@ -5,10 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketCaptureStorageLocation {
   /// A valid local path on the target Virtual Machine. Must include the name of the capture file (*.cap). For Linux Virtual Machines it must start with `/var/captures`.
   final pulumi.Input<String>? filePath;
+
   /// The ID of the storage account where the packet capture sessions should be saved to.
   ///
-  /// > **Note:** At least one of `file_path` or `storage_account_id` must be specified.
+  /// &gt; **Note:** At least one of `file_path` or `storage_account_id` must be specified.
   final pulumi.Input<String>? storageAccountId;
+
   /// The URI of the storage path where the packet capture sessions are saved to.
   final pulumi.Input<String>? storagePath;
 
@@ -32,10 +34,21 @@ class PacketCaptureStorageLocation {
 
   factory PacketCaptureStorageLocation.fromMap(Map<String, dynamic> map) {
     return PacketCaptureStorageLocation(
-      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      storagePath: map['storagePath'] == null ? null : (map['storagePath']! as String).input(),
+      filePath: (() {
+        final guardedValue = map['filePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePath: (() {
+        final guardedValue = map['storagePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

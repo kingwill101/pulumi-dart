@@ -2,16 +2,17 @@ enum EnhancedSecurityMonitoringValue {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const EnhancedSecurityMonitoringValue(this.value);
-  final String value;
+  const EnhancedSecurityMonitoringValue(this.wireValue);
+  final String wireValue;
 
   static EnhancedSecurityMonitoringValue fromValue(String value) {
     for (final item in EnhancedSecurityMonitoringValue.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnhancedSecurityMonitoringValue value: $value');
+    throw ArgumentError(
+      'Unknown EnhancedSecurityMonitoringValue value: $value',
+    );
   }
 }
-

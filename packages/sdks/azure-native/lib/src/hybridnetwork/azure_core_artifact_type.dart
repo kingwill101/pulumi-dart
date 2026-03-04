@@ -4,16 +4,15 @@ enum AzureCoreArtifactType {
   valueVhdImageFile("VhdImageFile"),
   valueArmTemplate("ArmTemplate");
 
-  const AzureCoreArtifactType(this.value);
-  final String value;
+  const AzureCoreArtifactType(this.wireValue);
+  final String wireValue;
 
   static AzureCoreArtifactType fromValue(String value) {
     for (final item in AzureCoreArtifactType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureCoreArtifactType value: $value');
   }
 }
-

@@ -12,24 +12,31 @@ import 'os_policy_assignment_rollout.dart';
 class OsPolicyAssignmentArgs {
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
   final pulumi.Input<String>? description;
+
   /// Filter to select VMs. Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentInstanceFilter> instanceFilter;
+
   /// The location for the resource
   final pulumi.Input<String> location;
+
   /// Resource name.
   final pulumi.Input<String>? name;
+
   /// List of OS policies to be applied to the VMs.
   /// Structure is documented below.
   final pulumi.Input<List<OsPolicyAssignmentOsPolicy>> osPolicies;
+
   /// The project for the resource
   final pulumi.Input<String>? project;
+
   /// Rollout to deploy the OS policy assignment. A rollout
   /// is triggered in the following situations: 1) OSPolicyAssignment is created.
   /// 2) OSPolicyAssignment is updated and the update contains changes to one of
   /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
   /// is deleted. Structure is documented below.
   final pulumi.Input<OsPolicyAssignmentRollout> rollout;
+
   /// Set to true to skip awaiting rollout during resource creation and update.
   final pulumi.Input<bool>? skipAwaitRollout;
 
@@ -56,27 +63,76 @@ class OsPolicyAssignmentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'instanceFilter': pulumi.Input.mapInputValue<OsPolicyAssignmentInstanceFilter, Map<String, dynamic>>(instanceFilter, (value) => value.toMap()),
+      'instanceFilter':
+          pulumi.Input.mapInputValue<
+            OsPolicyAssignmentInstanceFilter,
+            Map<String, dynamic>
+          >(instanceFilter, (value) => value.toMap()),
       'location': location,
       'name': ?name,
-      'osPolicies': pulumi.Input.mapInputValue<List<OsPolicyAssignmentOsPolicy>, List<Map<String, dynamic>>>(osPolicies, (value) => pulumi.Input.encodeList<OsPolicyAssignmentOsPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'osPolicies':
+          pulumi.Input.mapInputValue<
+            List<OsPolicyAssignmentOsPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            osPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OsPolicyAssignmentOsPolicy,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
-      'rollout': pulumi.Input.mapInputValue<OsPolicyAssignmentRollout, Map<String, dynamic>>(rollout, (value) => value.toMap()),
+      'rollout':
+          pulumi.Input.mapInputValue<
+            OsPolicyAssignmentRollout,
+            Map<String, dynamic>
+          >(rollout, (value) => value.toMap()),
       'skipAwaitRollout': ?skipAwaitRollout,
     };
   }
 
   factory OsPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instanceFilter: (OsPolicyAssignmentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      osPolicies: (pulumi.Input.decodeList<OsPolicyAssignmentOsPolicy>(map['osPolicies'], (value) => OsPolicyAssignmentOsPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rollout: (OsPolicyAssignmentRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
-      skipAwaitRollout: map['skipAwaitRollout'] == null ? null : (map['skipAwaitRollout']! as bool).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceFilter: pulumi.Input.fromValue(
+        OsPolicyAssignmentInstanceFilter.fromMap(
+          (map['instanceFilter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osPolicies: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<OsPolicyAssignmentOsPolicy>(
+          map['osPolicies']!,
+          (value) => OsPolicyAssignmentOsPolicy.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rollout: pulumi.Input.fromValue(
+        OsPolicyAssignmentRollout.fromMap(
+          (map['rollout']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      skipAwaitRollout: (() {
+        final guardedValue = map['skipAwaitRollout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

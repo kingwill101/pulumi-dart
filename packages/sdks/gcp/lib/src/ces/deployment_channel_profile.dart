@@ -14,18 +14,23 @@ class DeploymentChannelProfile {
   /// GOOGLE_TELEPHONY_PLATFORM
   /// CONTACT_CENTER_AS_A_SERVICE
   final pulumi.Input<String>? channelType;
+
   /// Whether to disable user barge-in control in the conversation.
   /// - **true**: User interruptions are disabled while the agent is speaking.
   /// - **false**: The agent retains automatic control over when the user can
   /// interrupt.
   final pulumi.Input<bool>? disableBargeInControl;
+
   /// Whether to disable DTMF (dual-tone multi-frequency).
   final pulumi.Input<bool>? disableDtmf;
+
   /// Represents the persona property of a channel.
   /// Structure is documented below.
   final pulumi.Input<DeploymentChannelProfilePersonaProperty>? personaProperty;
+
   /// The unique identifier of the channel profile.
   final pulumi.Input<String>? profileId;
+
   /// Message for configuration for the web widget.
   /// Structure is documented below.
   final pulumi.Input<DeploymentChannelProfileWebWidgetConfig>? webWidgetConfig;
@@ -51,21 +56,60 @@ class DeploymentChannelProfile {
       'channelType': ?channelType,
       'disableBargeInControl': ?disableBargeInControl,
       'disableDtmf': ?disableDtmf,
-      'personaProperty': ?pulumi.Input.mapOptionalInputValue<DeploymentChannelProfilePersonaProperty, Map<String, dynamic>>(personaProperty, (value) => value.toMap()),
+      'personaProperty':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentChannelProfilePersonaProperty,
+            Map<String, dynamic>
+          >(personaProperty, (value) => value.toMap()),
       'profileId': ?profileId,
-      'webWidgetConfig': ?pulumi.Input.mapOptionalInputValue<DeploymentChannelProfileWebWidgetConfig, Map<String, dynamic>>(webWidgetConfig, (value) => value.toMap()),
+      'webWidgetConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentChannelProfileWebWidgetConfig,
+            Map<String, dynamic>
+          >(webWidgetConfig, (value) => value.toMap()),
     };
   }
 
   factory DeploymentChannelProfile.fromMap(Map<String, dynamic> map) {
     return DeploymentChannelProfile(
-      channelType: map['channelType'] == null ? null : (map['channelType']! as String).input(),
-      disableBargeInControl: map['disableBargeInControl'] == null ? null : (map['disableBargeInControl']! as bool).input(),
-      disableDtmf: map['disableDtmf'] == null ? null : (map['disableDtmf']! as bool).input(),
-      personaProperty: map['personaProperty'] == null ? null : (DeploymentChannelProfilePersonaProperty.fromMap((map['personaProperty']! as Map).cast<String, dynamic>())).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
-      webWidgetConfig: map['webWidgetConfig'] == null ? null : (DeploymentChannelProfileWebWidgetConfig.fromMap((map['webWidgetConfig']! as Map).cast<String, dynamic>())).input(),
+      channelType: (() {
+        final guardedValue = map['channelType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableBargeInControl: (() {
+        final guardedValue = map['disableBargeInControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      disableDtmf: (() {
+        final guardedValue = map['disableDtmf'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      personaProperty: (() {
+        final guardedValue = map['personaProperty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentChannelProfilePersonaProperty.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      profileId: (() {
+        final guardedValue = map['profileId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webWidgetConfig: (() {
+        final guardedValue = map['webWidgetConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentChannelProfileWebWidgetConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

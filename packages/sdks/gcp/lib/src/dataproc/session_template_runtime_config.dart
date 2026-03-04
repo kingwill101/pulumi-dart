@@ -5,11 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionTemplateRuntimeConfig {
   /// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
   final pulumi.Input<String>? containerImage;
+
   /// (Output)
   /// A mapping of property names to values, which are used to configure workload execution.
   final pulumi.Input<Map<String, String>>? effectiveProperties;
+
   /// A mapping of property names to values, which are used to configure workload execution.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Version of the session runtime.
   final pulumi.Input<String>? version;
 
@@ -36,11 +39,30 @@ class SessionTemplateRuntimeConfig {
 
   factory SessionTemplateRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateRuntimeConfig(
-      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
-      effectiveProperties: map['effectiveProperties'] == null ? null : ((map['effectiveProperties']! as Map).cast<String, String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      containerImage: (() {
+        final guardedValue = map['containerImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveProperties: (() {
+        final guardedValue = map['effectiveProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryAssociationRepositoryBitbucket {
   /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
   final pulumi.Input<String> connectionArn;
+
   /// The name of the third party source repository.
   final pulumi.Input<String> name;
+
   /// The username for the account that owns the repository.
   final pulumi.Input<String> owner;
 
@@ -28,12 +30,13 @@ class RepositoryAssociationRepositoryBitbucket {
     };
   }
 
-  factory RepositoryAssociationRepositoryBitbucket.fromMap(Map<String, dynamic> map) {
+  factory RepositoryAssociationRepositoryBitbucket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RepositoryAssociationRepositoryBitbucket(
-      connectionArn: (map['connectionArn'] as String).input(),
-      name: (map['name'] as String).input(),
-      owner: (map['owner'] as String).input(),
+      connectionArn: pulumi.Input.fromValue(map['connectionArn'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
     );
   }
 }
-

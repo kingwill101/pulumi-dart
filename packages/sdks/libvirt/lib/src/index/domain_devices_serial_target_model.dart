@@ -8,20 +8,19 @@ class DomainDevicesSerialTargetModel {
 
   /// Creates a new [DomainDevicesSerialTargetModel].
   /// [name] Specifies the name attribute for the model of the target serial device.
-  DomainDevicesSerialTargetModel({
-    this.name,
-  });
+  DomainDevicesSerialTargetModel({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory DomainDevicesSerialTargetModel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialTargetModel(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

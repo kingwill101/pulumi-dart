@@ -10,18 +10,25 @@ import 'export_task_timeouts.dart';
 class ExportTaskArgs {
   /// Data to be exported from the snapshot. If this parameter is not provided, all the snapshot data is exported. Valid values are documented in the [AWS StartExportTask API documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_StartExportTask.html#API_StartExportTask_RequestParameters).
   final pulumi.Input<List<String>>? exportOnlies;
+
   /// Unique identifier for the snapshot export task.
   final pulumi.Input<String> exportTaskIdentifier;
+
   /// ARN of the IAM role to use for writing to the Amazon S3 bucket.
   final pulumi.Input<String> iamRoleArn;
+
   /// ID of the Amazon Web Services KMS key to use to encrypt the snapshot.
   final pulumi.Input<String> kmsKeyId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of the Amazon S3 bucket to export the snapshot to.
   final pulumi.Input<String> s3BucketName;
+
   /// Amazon S3 bucket prefix to use as the file name and path of the exported snapshot.
   final pulumi.Input<String>? s3Prefix;
+
   /// Amazon Resource Name (ARN) of the snapshot to export.
   ///
   /// The following arguments are optional:
@@ -60,22 +67,47 @@ class ExportTaskArgs {
       's3BucketName': s3BucketName,
       's3Prefix': ?s3Prefix,
       'sourceArn': sourceArn,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ExportTaskTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExportTaskTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ExportTaskArgs.fromMap(Map<String, dynamic> map) {
     return ExportTaskArgs(
-      exportOnlies: map['exportOnlies'] == null ? null : (((map['exportOnlies'] as List).cast<String>()).input()).input(),
-      exportTaskIdentifier: (map['exportTaskIdentifier'] as String).input(),
-      iamRoleArn: (map['iamRoleArn'] as String).input(),
-      kmsKeyId: (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      s3BucketName: (map['s3BucketName'] as String).input(),
-      s3Prefix: map['s3Prefix'] == null ? null : ((map['s3Prefix'] as String).input()).input(),
-      sourceArn: (map['sourceArn'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : ((ExportTaskTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      exportOnlies: (() {
+        final guardedValue = map['exportOnlies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      exportTaskIdentifier: pulumi.Input.fromValue(
+        map['exportTaskIdentifier'] as String,
+      ),
+      iamRoleArn: pulumi.Input.fromValue(map['iamRoleArn'] as String),
+      kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
+      s3Prefix: (() {
+        final guardedValue = map['s3Prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceArn: pulumi.Input.fromValue(map['sourceArn'] as String),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExportTaskTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

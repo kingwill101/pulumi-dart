@@ -27,10 +27,21 @@ class SiteDeliveryTaskSlsDelivery {
 
   factory SiteDeliveryTaskSlsDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskSlsDelivery(
-      slsLogStore: map['slsLogStore'] == null ? null : (map['slsLogStore']! as String).input(),
-      slsProject: map['slsProject'] == null ? null : (map['slsProject']! as String).input(),
-      slsRegion: map['slsRegion'] == null ? null : (map['slsRegion']! as String).input(),
+      slsLogStore: (() {
+        final guardedValue = map['slsLogStore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsProject: (() {
+        final guardedValue = map['slsProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      slsRegion: (() {
+        final guardedValue = map['slsRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

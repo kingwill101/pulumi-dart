@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceServiceConnectConfigurationLogConfigurationSecretOption {
   /// Name of the secret.
   final pulumi.Input<String> name;
+
   /// Secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the SSM Parameter Store.
   final pulumi.Input<String> valueFrom;
 
@@ -17,17 +18,15 @@ class ServiceServiceConnectConfigurationLogConfigurationSecretOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'valueFrom': valueFrom,
-    };
+    return <String, dynamic>{'name': name, 'valueFrom': valueFrom};
   }
 
-  factory ServiceServiceConnectConfigurationLogConfigurationSecretOption.fromMap(Map<String, dynamic> map) {
+  factory ServiceServiceConnectConfigurationLogConfigurationSecretOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceServiceConnectConfigurationLogConfigurationSecretOption(
-      name: (map['name'] as String).input(),
-      valueFrom: (map['valueFrom'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      valueFrom: pulumi.Input.fromValue(map['valueFrom'] as String),
     );
   }
 }
-

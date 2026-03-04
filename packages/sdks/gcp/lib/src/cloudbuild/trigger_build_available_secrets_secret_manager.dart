@@ -7,6 +7,7 @@ class TriggerBuildAvailableSecretsSecretManager {
   /// variables must be unique across all of a build's secrets, and must be used
   /// by at least one build step.
   final pulumi.Input<String> env;
+
   /// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
   final pulumi.Input<String> versionName;
 
@@ -19,17 +20,15 @@ class TriggerBuildAvailableSecretsSecretManager {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'env': env,
-      'versionName': versionName,
-    };
+    return <String, dynamic>{'env': env, 'versionName': versionName};
   }
 
-  factory TriggerBuildAvailableSecretsSecretManager.fromMap(Map<String, dynamic> map) {
+  factory TriggerBuildAvailableSecretsSecretManager.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TriggerBuildAvailableSecretsSecretManager(
-      env: (map['env'] as String).input(),
-      versionName: (map['versionName'] as String).input(),
+      env: pulumi.Input.fromValue(map['env'] as String),
+      versionName: pulumi.Input.fromValue(map['versionName'] as String),
     );
   }
 }
-

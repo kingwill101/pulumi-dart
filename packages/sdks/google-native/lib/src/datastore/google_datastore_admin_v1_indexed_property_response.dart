@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDatastoreAdminV1IndexedPropertyResponse {
   /// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
   final pulumi.Input<String> direction;
+
   /// The property name to index.
   final pulumi.Input<String> name;
 
@@ -18,17 +19,15 @@ class GoogleDatastoreAdminV1IndexedPropertyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'direction': direction,
-      'name': name,
-    };
+    return <String, dynamic>{'direction': direction, 'name': name};
   }
 
-  factory GoogleDatastoreAdminV1IndexedPropertyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleDatastoreAdminV1IndexedPropertyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDatastoreAdminV1IndexedPropertyResponse(
-      direction: (map['direction'] as String).input(),
-      name: (map['name'] as String).input(),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

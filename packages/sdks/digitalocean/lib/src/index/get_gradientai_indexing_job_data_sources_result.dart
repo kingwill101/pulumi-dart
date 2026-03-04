@@ -7,7 +7,8 @@ import 'get_gradientai_indexing_job_data_sources_indexed_data_source.dart';
 class GetGradientaiIndexingJobDataSourcesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  final List<GetGradientaiIndexingJobDataSourcesIndexedDataSource> indexedDataSources;
+  final List<GetGradientaiIndexingJobDataSourcesIndexedDataSource>
+  indexedDataSources;
   final String indexingJobUuid;
 
   /// Creates a new [GetGradientaiIndexingJobDataSourcesResult].
@@ -23,17 +24,31 @@ class GetGradientaiIndexingJobDataSourcesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'indexedDataSources': pulumi.Input.encodeList<GetGradientaiIndexingJobDataSourcesIndexedDataSource, Map<String, dynamic>>(indexedDataSources, (value) => value.toMap()),
+      'indexedDataSources':
+          pulumi.Input.encodeList<
+            GetGradientaiIndexingJobDataSourcesIndexedDataSource,
+            Map<String, dynamic>
+          >(indexedDataSources, (value) => value.toMap()),
       'indexingJobUuid': indexingJobUuid,
     };
   }
 
-  factory GetGradientaiIndexingJobDataSourcesResult.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiIndexingJobDataSourcesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiIndexingJobDataSourcesResult(
       id: map['id'] as String,
-      indexedDataSources: pulumi.Input.decodeList<GetGradientaiIndexingJobDataSourcesIndexedDataSource>(map['indexedDataSources'], (value) => GetGradientaiIndexingJobDataSourcesIndexedDataSource.fromMap((value as Map).cast<String, dynamic>())),
+      indexedDataSources:
+          pulumi.Input.decodeList<
+            GetGradientaiIndexingJobDataSourcesIndexedDataSource
+          >(
+            map['indexedDataSources']!,
+            (value) =>
+                GetGradientaiIndexingJobDataSourcesIndexedDataSource.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       indexingJobUuid: map['indexingJobUuid'] as String,
     );
   }
 }
-

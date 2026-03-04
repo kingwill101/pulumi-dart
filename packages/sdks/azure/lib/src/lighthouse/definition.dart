@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'definition_args.dart';
-import 'definition_authorization.dart';
-import 'definition_eligible_authorization.dart';
 import 'definition_plan.dart';
 import 'definition_state.dart';
 
@@ -181,7 +179,7 @@ import 'definition_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ManagedServices` - 2022-10-01
@@ -195,19 +193,26 @@ import 'definition_state.dart';
 /// ```
 class Definition extends pulumi.CustomResource {
   /// An `authorization` block as defined below.
-  late final pulumi.Output<List<DefinitionAuthorization>> authorizations;
+  late final pulumi.Output<List<Map<String, dynamic>>> authorizations;
+
   /// A description of the Lighthouse Definition.
   late final pulumi.Output<String?> description;
+
   /// An `eligible_authorization` block as defined below.
-  late final pulumi.Output<List<DefinitionEligibleAuthorization>?> eligibleAuthorizations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> eligibleAuthorizations;
+
   /// A unique UUID/GUID which identifies this lighthouse definition - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> lighthouseDefinitionId;
+
   /// The ID of the managing tenant. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managingTenantId;
+
   /// The name of the Lighthouse Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `plan` block as defined below.
   late final pulumi.Output<DefinitionPlan?> plan;
+
   /// The ID of the managed subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
 
@@ -220,19 +225,23 @@ class Definition extends pulumi.CustomResource {
     DefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lighthouse/definition:Definition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizations = registerOutput<List<DefinitionAuthorization>>('authorizations');
-    this.description = registerOutput<String?>('description');
-    this.eligibleAuthorizations = registerOutput<List<DefinitionEligibleAuthorization>?>('eligibleAuthorizations');
-    this.lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
-    this.managingTenantId = registerOutput<String>('managingTenantId');
+         'azure:lighthouse/definition:Definition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizations = registerOutput<List<Map<String, dynamic>>>(
+      'authorizations',
+    );
+    description = registerOutput<String?>('description');
+    eligibleAuthorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'eligibleAuthorizations',
+    );
+    lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
+    managingTenantId = registerOutput<String>('managingTenantId');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<DefinitionPlan?>('plan');
-    this.scope = registerOutput<String>('scope');
+    plan = registerOutput<DefinitionPlan?>('plan');
+    scope = registerOutput<String>('scope');
   }
 
   /// Gets an existing [Definition] resource's state with the given [name] and [id].
@@ -253,18 +262,22 @@ class Definition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lighthouse/definition:Definition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizations = registerOutput<List<DefinitionAuthorization>>('authorizations');
-    this.description = registerOutput<String?>('description');
-    this.eligibleAuthorizations = registerOutput<List<DefinitionEligibleAuthorization>?>('eligibleAuthorizations');
-    this.lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
-    this.managingTenantId = registerOutput<String>('managingTenantId');
+         'azure:lighthouse/definition:Definition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizations = registerOutput<List<Map<String, dynamic>>>(
+      'authorizations',
+    );
+    description = registerOutput<String?>('description');
+    eligibleAuthorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'eligibleAuthorizations',
+    );
+    lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
+    managingTenantId = registerOutput<String>('managingTenantId');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<DefinitionPlan?>('plan');
-    this.scope = registerOutput<String>('scope');
+    plan = registerOutput<DefinitionPlan?>('plan');
+    scope = registerOutput<String>('scope');
   }
 }

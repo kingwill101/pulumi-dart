@@ -11,16 +11,22 @@ import 'view_included_property.dart';
 class ViewArgs {
   /// Specifies whether the view is the [_default view_](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views-about.html#manage-views-about-default) for the AWS Region. Default: `false`.
   final pulumi.Input<bool>? defaultView;
+
   /// Specifies which resources are included in the results of queries made using this view. See Filters below for more details.
   final pulumi.Input<ViewFilters>? filters;
+
   /// Optional fields to be included in search results from this view. See Included Properties below for more details.
   final pulumi.Input<List<ViewIncludedProperty>>? includedProperties;
+
   /// The name of the view. The name must be no more than 64 characters long, and can include letters, digits, and the dash (-) character. The name must be unique within its AWS Region.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The root ARN of the account, an organizational unit (OU), or an organization ARN. If left empty, the default is account.
   final pulumi.Input<String>? scope;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,8 +51,23 @@ class ViewArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultView': ?defaultView,
-      'filters': ?pulumi.Input.mapOptionalInputValue<ViewFilters, Map<String, dynamic>>(filters, (value) => value.toMap()),
-      'includedProperties': ?pulumi.Input.mapOptionalInputValue<List<ViewIncludedProperty>, List<Map<String, dynamic>>>(includedProperties, (value) => pulumi.Input.encodeList<ViewIncludedProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            ViewFilters,
+            Map<String, dynamic>
+          >(filters, (value) => value.toMap()),
+      'includedProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ViewIncludedProperty>,
+            List<Map<String, dynamic>>
+          >(
+            includedProperties,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ViewIncludedProperty,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'region': ?region,
       'scope': ?scope,
@@ -56,14 +77,52 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      defaultView: map['defaultView'] == null ? null : ((map['defaultView'] as bool).input()).input(),
-      filters: map['filters'] == null ? null : ((ViewFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input()).input(),
-      includedProperties: map['includedProperties'] == null ? null : ((pulumi.Input.decodeList<ViewIncludedProperty>(map['includedProperties']!, (value) => ViewIncludedProperty.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      defaultView: (() {
+        final guardedValue = map['defaultView'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ViewFilters.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      includedProperties: (() {
+        final guardedValue = map['includedProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ViewIncludedProperty>(
+            guardedValue,
+            (value) => ViewIncludedProperty.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

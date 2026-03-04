@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkArgs {
   /// The identity of the network.
   final pulumi.Input<String> networkResourceName;
+
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetNetworkArgs {
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      networkResourceName: (map['networkResourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkResourceName: pulumi.Input.fromValue(
+        map['networkResourceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

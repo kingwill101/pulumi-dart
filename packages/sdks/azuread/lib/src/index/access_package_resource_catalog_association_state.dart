@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPackageResourceCatalogAssociationState {
   /// The unique ID of the access package catalog. Changing this forces a new resource to be created.
   final pulumi.Input<String>? catalogId;
+
   /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceOriginId;
+
   /// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceOriginSystem;
 
@@ -29,12 +31,25 @@ class AccessPackageResourceCatalogAssociationState {
     };
   }
 
-  factory AccessPackageResourceCatalogAssociationState.fromMap(Map<String, dynamic> map) {
+  factory AccessPackageResourceCatalogAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessPackageResourceCatalogAssociationState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId']! as String).input(),
-      resourceOriginId: map['resourceOriginId'] == null ? null : (map['resourceOriginId']! as String).input(),
-      resourceOriginSystem: map['resourceOriginSystem'] == null ? null : (map['resourceOriginSystem']! as String).input(),
+      catalogId: (() {
+        final guardedValue = map['catalogId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceOriginId: (() {
+        final guardedValue = map['resourceOriginId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceOriginSystem: (() {
+        final guardedValue = map['resourceOriginSystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

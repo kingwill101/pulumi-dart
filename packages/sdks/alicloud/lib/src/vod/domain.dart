@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
-import 'domain_source.dart';
 import 'domain_state.dart';
 
 /// Provides a VOD Domain resource.
 ///
 /// For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 ///
-/// > **NOTE:** Available since v1.136.0+.
+/// &gt; **NOTE:** Available since v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -219,34 +218,48 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
   late final pulumi.Output<String> certName;
+
   /// The URL that is used for health checks.
   late final pulumi.Output<String?> checkUrl;
+
   /// The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
   late final pulumi.Output<String> cname;
+
   /// The description of the domain name for CDN.
   late final pulumi.Output<String> description;
+
   /// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
   late final pulumi.Output<String> domainName;
+
   /// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> gmtCreated;
+
   /// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> gmtModified;
+
   /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
   late final pulumi.Output<String?> scope;
+
   /// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
-  late final pulumi.Output<List<DomainSource>> sources;
+  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+
   /// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
   late final pulumi.Output<String> sslProtocol;
+
   /// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
   late final pulumi.Output<String> sslPub;
+
   /// The status of the domain name for CDN. Valid values:
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
   /// * `Value`: It can be up to 128 characters in length. It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The top-level domain name.
   late final pulumi.Output<String?> topLevelDomain;
+
   /// The weight of the origin server.
   late final pulumi.Output<String> weight;
 
@@ -254,31 +267,28 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_vod_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:vod/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certName = registerOutput<String>('certName');
-    this.checkUrl = registerOutput<String?>('checkUrl');
-    this.cname = registerOutput<String>('cname');
-    this.description = registerOutput<String>('description');
-    this.domainName = registerOutput<String>('domainName');
-    this.gmtCreated = registerOutput<String>('gmtCreated');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.scope = registerOutput<String?>('scope');
-    this.sources = registerOutput<List<DomainSource>>('sources');
-    this.sslProtocol = registerOutput<String>('sslProtocol');
-    this.sslPub = registerOutput<String>('sslPub');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topLevelDomain = registerOutput<String?>('topLevelDomain');
-    this.weight = registerOutput<String>('weight');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:vod/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    certName = registerOutput<String>('certName');
+    checkUrl = registerOutput<String?>('checkUrl');
+    cname = registerOutput<String>('cname');
+    description = registerOutput<String>('description');
+    domainName = registerOutput<String>('domainName');
+    gmtCreated = registerOutput<String>('gmtCreated');
+    gmtModified = registerOutput<String>('gmtModified');
+    scope = registerOutput<String?>('scope');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    sslProtocol = registerOutput<String>('sslProtocol');
+    sslPub = registerOutput<String>('sslPub');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topLevelDomain = registerOutput<String?>('topLevelDomain');
+    weight = registerOutput<String>('weight');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -299,25 +309,25 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vod/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certName = registerOutput<String>('certName');
-    this.checkUrl = registerOutput<String?>('checkUrl');
-    this.cname = registerOutput<String>('cname');
-    this.description = registerOutput<String>('description');
-    this.domainName = registerOutput<String>('domainName');
-    this.gmtCreated = registerOutput<String>('gmtCreated');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.scope = registerOutput<String?>('scope');
-    this.sources = registerOutput<List<DomainSource>>('sources');
-    this.sslProtocol = registerOutput<String>('sslProtocol');
-    this.sslPub = registerOutput<String>('sslPub');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topLevelDomain = registerOutput<String?>('topLevelDomain');
-    this.weight = registerOutput<String>('weight');
+         'alicloud:vod/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certName = registerOutput<String>('certName');
+    checkUrl = registerOutput<String?>('checkUrl');
+    cname = registerOutput<String>('cname');
+    description = registerOutput<String>('description');
+    domainName = registerOutput<String>('domainName');
+    gmtCreated = registerOutput<String>('gmtCreated');
+    gmtModified = registerOutput<String>('gmtModified');
+    scope = registerOutput<String?>('scope');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    sslProtocol = registerOutput<String>('sslProtocol');
+    sslPub = registerOutput<String>('sslPub');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topLevelDomain = registerOutput<String?>('topLevelDomain');
+    weight = registerOutput<String>('weight');
   }
 }

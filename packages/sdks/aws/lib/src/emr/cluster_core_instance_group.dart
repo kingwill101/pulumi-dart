@@ -6,16 +6,22 @@ import 'cluster_core_instance_group_ebs_config.dart';
 class ClusterCoreInstanceGroup {
   /// String containing the [EMR Auto Scaling Policy](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html) JSON.
   final pulumi.Input<String>? autoscalingPolicy;
+
   /// Bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
   final pulumi.Input<String>? bidPrice;
+
   /// Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
   final pulumi.Input<List<ClusterCoreInstanceGroupEbsConfig>>? ebsConfigs;
+
   /// Core node type Instance Group ID, if using Instance Group for this node type.
   final pulumi.Input<String>? id;
+
   /// Target number of instances for the instance group. Must be at least 1. Defaults to 1.
   final pulumi.Input<int>? instanceCount;
+
   /// EC2 instance type for all instances in the instance group.
   final pulumi.Input<String> instanceType;
+
   /// Friendly name given to the instance group.
   final pulumi.Input<String>? name;
 
@@ -41,7 +47,18 @@ class ClusterCoreInstanceGroup {
     return <String, dynamic>{
       'autoscalingPolicy': ?autoscalingPolicy,
       'bidPrice': ?bidPrice,
-      'ebsConfigs': ?pulumi.Input.mapOptionalInputValue<List<ClusterCoreInstanceGroupEbsConfig>, List<Map<String, dynamic>>>(ebsConfigs, (value) => pulumi.Input.encodeList<ClusterCoreInstanceGroupEbsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ebsConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterCoreInstanceGroupEbsConfig>,
+            List<Map<String, dynamic>>
+          >(
+            ebsConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterCoreInstanceGroupEbsConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
       'instanceCount': ?instanceCount,
       'instanceType': instanceType,
@@ -51,14 +68,44 @@ class ClusterCoreInstanceGroup {
 
   factory ClusterCoreInstanceGroup.fromMap(Map<String, dynamic> map) {
     return ClusterCoreInstanceGroup(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : ((map['autoscalingPolicy'] as String).input()).input(),
-      bidPrice: map['bidPrice'] == null ? null : ((map['bidPrice'] as String).input()).input(),
-      ebsConfigs: map['ebsConfigs'] == null ? null : ((pulumi.Input.decodeList<ClusterCoreInstanceGroupEbsConfig>(map['ebsConfigs']!, (value) => ClusterCoreInstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
-      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      autoscalingPolicy: (() {
+        final guardedValue = map['autoscalingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bidPrice: (() {
+        final guardedValue = map['bidPrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ebsConfigs: (() {
+        final guardedValue = map['ebsConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ClusterCoreInstanceGroupEbsConfig>(
+            guardedValue,
+            (value) => ClusterCoreInstanceGroupEbsConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

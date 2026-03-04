@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IoTHubEnrichment {
   /// The list of endpoints which will be enriched.
   final pulumi.Input<List<String>> endpointNames;
+
   /// The key of the enrichment.
   final pulumi.Input<String> key;
+
   /// The value of the enrichment. Value can be any static string, the name of the IoT Hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
   final pulumi.Input<String> value;
 
@@ -30,10 +32,11 @@ class IoTHubEnrichment {
 
   factory IoTHubEnrichment.fromMap(Map<String, dynamic> map) {
     return IoTHubEnrichment(
-      endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      endpointNames: pulumi.Input.fromValue(
+        (map['endpointNames'] as List).cast<String>(),
+      ),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

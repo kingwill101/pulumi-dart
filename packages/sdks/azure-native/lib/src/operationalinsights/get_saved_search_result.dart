@@ -7,26 +7,37 @@ import 'tag_response.dart';
 class GetSavedSearchResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The category of the saved search. This helps the user to find a saved search faster.
   final String category;
+
   /// Saved search display name.
   final String displayName;
+
   /// The ETag of the saved search. To override an existing saved search, use "*" or specify the current Etag
   final String? etag;
+
   /// The function alias if query serves as a function.
   final String? functionAlias;
+
   /// The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.
   final String? functionParameters;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The query expression for the saved search.
   final String query;
+
   /// The tags attached to the saved search.
   final List<TagResponse>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The version number of the query language. The current version is 2 and is the default.
   final double? version;
 
@@ -69,7 +80,14 @@ class GetSavedSearchResult {
       'id': id,
       'name': name,
       'query': query,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?(() {
+        final guardedValue = tags;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'type': type,
       'version': ?version,
     };
@@ -80,16 +98,39 @@ class GetSavedSearchResult {
       azureApiVersion: map['azureApiVersion'] as String,
       category: map['category'] as String,
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
-      functionAlias: map['functionAlias'] == null ? null : map['functionAlias']! as String,
-      functionParameters: map['functionParameters'] == null ? null : map['functionParameters']! as String,
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      functionAlias: (() {
+        final guardedValue = map['functionAlias'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      functionParameters: (() {
+        final guardedValue = map['functionParameters'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       query: map['query'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<TagResponse>(
+          guardedValue,
+          (value) =>
+              TagResponse.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version']! as double,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
     );
   }
 }
-

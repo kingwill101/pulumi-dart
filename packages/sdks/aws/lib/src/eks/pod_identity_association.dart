@@ -301,28 +301,39 @@ import 'pod_identity_association_state.dart';
 class PodIdentityAssociation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the association.
   late final pulumi.Output<String> associationArn;
+
   /// The ID of the association.
   late final pulumi.Output<String> associationId;
+
   /// The name of the cluster to create the association in.
   late final pulumi.Output<String> clusterName;
+
   /// Disable the tags that are automatically added to role session by Amazon EKS.
   late final pulumi.Output<bool> disableSessionTags;
+
   /// The unique identifier for this association for a target IAM role. You put this value in the trust policy of the target role, in a Condition to match the sts.ExternalId.
   late final pulumi.Output<String> externalId;
+
   /// The name of the Kubernetes namespace inside the cluster to create the association in. The service account and the pods that use the service account must be in this namespace.
   late final pulumi.Output<String> namespace;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of the IAM role to associate with the service account. The EKS Pod Identity agent manages credentials to assume this role for applications in the containers in the pods that use this service account.
   late final pulumi.Output<String> roleArn;
+
   /// The name of the Kubernetes service account inside the cluster to associate the IAM credentials with.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceAccount;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `role_arn`.
   late final pulumi.Output<String?> targetRoleArn;
 
@@ -335,23 +346,23 @@ class PodIdentityAssociation extends pulumi.CustomResource {
     PodIdentityAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:eks/podIdentityAssociation:PodIdentityAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associationArn = registerOutput<String>('associationArn');
-    this.associationId = registerOutput<String>('associationId');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.disableSessionTags = registerOutput<bool>('disableSessionTags');
-    this.externalId = registerOutput<String>('externalId');
-    this.namespace = registerOutput<String>('namespace');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.serviceAccount = registerOutput<String>('serviceAccount');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetRoleArn = registerOutput<String?>('targetRoleArn');
+         'aws:eks/podIdentityAssociation:PodIdentityAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associationArn = registerOutput<String>('associationArn');
+    associationId = registerOutput<String>('associationId');
+    clusterName = registerOutput<String>('clusterName');
+    disableSessionTags = registerOutput<bool>('disableSessionTags');
+    externalId = registerOutput<String>('externalId');
+    namespace = registerOutput<String>('namespace');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetRoleArn = registerOutput<String?>('targetRoleArn');
   }
 
   /// Gets an existing [PodIdentityAssociation] resource's state with the given [name] and [id].
@@ -372,22 +383,22 @@ class PodIdentityAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:eks/podIdentityAssociation:PodIdentityAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associationArn = registerOutput<String>('associationArn');
-    this.associationId = registerOutput<String>('associationId');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.disableSessionTags = registerOutput<bool>('disableSessionTags');
-    this.externalId = registerOutput<String>('externalId');
-    this.namespace = registerOutput<String>('namespace');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.serviceAccount = registerOutput<String>('serviceAccount');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetRoleArn = registerOutput<String?>('targetRoleArn');
+         'aws:eks/podIdentityAssociation:PodIdentityAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associationArn = registerOutput<String>('associationArn');
+    associationId = registerOutput<String>('associationId');
+    clusterName = registerOutput<String>('clusterName');
+    disableSessionTags = registerOutput<bool>('disableSessionTags');
+    externalId = registerOutput<String>('externalId');
+    namespace = registerOutput<String>('namespace');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetRoleArn = registerOutput<String?>('targetRoleArn');
   }
 }

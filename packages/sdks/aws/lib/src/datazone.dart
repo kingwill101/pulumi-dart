@@ -1,5 +1,3 @@
-library module_datazone;
-
 export 'datazone/asset_type.dart';
 export 'datazone/asset_type_args.dart';
 export 'datazone/asset_type_forms_input.dart';

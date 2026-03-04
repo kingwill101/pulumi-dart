@@ -16,30 +16,43 @@ import 'cache_upgrade_settings.dart';
 class CacheArgs {
   /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   final pulumi.Input<String>? cacheName;
+
   /// The size of this Cache, in GB.
   final pulumi.Input<int>? cacheSizeGB;
+
   /// Specifies Directory Services settings of the cache.
   final pulumi.Input<CacheDirectorySettings>? directoryServicesSettings;
+
   /// Specifies encryption settings of the cache.
   final pulumi.Input<CacheEncryptionSettings>? encryptionSettings;
+
   /// The identity of the cache, if configured.
   final pulumi.Input<CacheIdentity>? identity;
+
   /// Region name string.
   final pulumi.Input<String>? location;
+
   /// Specifies network settings of the cache.
   final pulumi.Input<CacheNetworkSettings>? networkSettings;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies security settings of the cache.
   final pulumi.Input<CacheSecuritySettings>? securitySettings;
+
   /// SKU for the cache.
   final pulumi.Input<CacheSku>? sku;
+
   /// Subnet used for the cache.
   final pulumi.Input<String>? subnet;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Upgrade settings of the cache.
   final pulumi.Input<CacheUpgradeSettings>? upgradeSettings;
+
   /// Availability zones for resources. This field should only contain a single element in the array.
   final pulumi.Input<List<String>>? zones;
 
@@ -79,38 +92,145 @@ class CacheArgs {
     return <String, dynamic>{
       'cacheName': ?cacheName,
       'cacheSizeGB': ?cacheSizeGB,
-      'directoryServicesSettings': ?pulumi.Input.mapOptionalInputValue<CacheDirectorySettings, Map<String, dynamic>>(directoryServicesSettings, (value) => value.toMap()),
-      'encryptionSettings': ?pulumi.Input.mapOptionalInputValue<CacheEncryptionSettings, Map<String, dynamic>>(encryptionSettings, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<CacheIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'directoryServicesSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheDirectorySettings,
+            Map<String, dynamic>
+          >(directoryServicesSettings, (value) => value.toMap()),
+      'encryptionSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheEncryptionSettings,
+            Map<String, dynamic>
+          >(encryptionSettings, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
-      'networkSettings': ?pulumi.Input.mapOptionalInputValue<CacheNetworkSettings, Map<String, dynamic>>(networkSettings, (value) => value.toMap()),
+      'networkSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheNetworkSettings,
+            Map<String, dynamic>
+          >(networkSettings, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'securitySettings': ?pulumi.Input.mapOptionalInputValue<CacheSecuritySettings, Map<String, dynamic>>(securitySettings, (value) => value.toMap()),
-      'sku': ?pulumi.Input.mapOptionalInputValue<CacheSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'securitySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheSecuritySettings,
+            Map<String, dynamic>
+          >(securitySettings, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<CacheSku, Map<String, dynamic>>(
+            sku,
+            (value) => value.toMap(),
+          ),
       'subnet': ?subnet,
       'tags': ?tags,
-      'upgradeSettings': ?pulumi.Input.mapOptionalInputValue<CacheUpgradeSettings, Map<String, dynamic>>(upgradeSettings, (value) => value.toMap()),
+      'upgradeSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CacheUpgradeSettings,
+            Map<String, dynamic>
+          >(upgradeSettings, (value) => value.toMap()),
       'zones': ?zones,
     };
   }
 
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
-      cacheName: map['cacheName'] == null ? null : (map['cacheName']! as String).input(),
-      cacheSizeGB: map['cacheSizeGB'] == null ? null : (map['cacheSizeGB']! as int).input(),
-      directoryServicesSettings: map['directoryServicesSettings'] == null ? null : (CacheDirectorySettings.fromMap((map['directoryServicesSettings']! as Map).cast<String, dynamic>())).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (CacheEncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (CacheIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkSettings: map['networkSettings'] == null ? null : (CacheNetworkSettings.fromMap((map['networkSettings']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (CacheSecuritySettings.fromMap((map['securitySettings']! as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (CacheSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      upgradeSettings: map['upgradeSettings'] == null ? null : (CacheUpgradeSettings.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      cacheName: (() {
+        final guardedValue = map['cacheName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cacheSizeGB: (() {
+        final guardedValue = map['cacheSizeGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      directoryServicesSettings: (() {
+        final guardedValue = map['directoryServicesSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheDirectorySettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      encryptionSettings: (() {
+        final guardedValue = map['encryptionSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheEncryptionSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSettings: (() {
+        final guardedValue = map['networkSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheNetworkSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securitySettings: (() {
+        final guardedValue = map['securitySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheSecuritySettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheSku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      upgradeSettings: (() {
+        final guardedValue = map['upgradeSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheUpgradeSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

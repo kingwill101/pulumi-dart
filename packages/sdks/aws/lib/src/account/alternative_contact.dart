@@ -139,14 +139,19 @@ import 'alternative_contact_state.dart';
 class AlternativeContact extends pulumi.CustomResource {
   /// ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
   late final pulumi.Output<String?> accountId;
+
   /// Type of the alternate contact. Allowed values are: `BILLING`, `OPERATIONS`, `SECURITY`.
   late final pulumi.Output<String> alternateContactType;
+
   /// An email address for the alternate contact.
   late final pulumi.Output<String> emailAddress;
+
   /// Name of the alternate contact.
   late final pulumi.Output<String> name;
+
   /// Phone number for the alternate contact.
   late final pulumi.Output<String> phoneNumber;
+
   /// Title for the alternate contact.
   late final pulumi.Output<String> title;
 
@@ -159,17 +164,17 @@ class AlternativeContact extends pulumi.CustomResource {
     AlternativeContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:account/alternativeContact:AlternativeContact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String?>('accountId');
-    this.alternateContactType = registerOutput<String>('alternateContactType');
-    this.emailAddress = registerOutput<String>('emailAddress');
+         'aws:account/alternativeContact:AlternativeContact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String?>('accountId');
+    alternateContactType = registerOutput<String>('alternateContactType');
+    emailAddress = registerOutput<String>('emailAddress');
     this.name = registerOutput<String>('name');
-    this.phoneNumber = registerOutput<String>('phoneNumber');
-    this.title = registerOutput<String>('title');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    title = registerOutput<String>('title');
   }
 
   /// Gets an existing [AlternativeContact] resource's state with the given [name] and [id].
@@ -190,16 +195,16 @@ class AlternativeContact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:account/alternativeContact:AlternativeContact',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String?>('accountId');
-    this.alternateContactType = registerOutput<String>('alternateContactType');
-    this.emailAddress = registerOutput<String>('emailAddress');
+         'aws:account/alternativeContact:AlternativeContact',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String?>('accountId');
+    alternateContactType = registerOutput<String>('alternateContactType');
+    emailAddress = registerOutput<String>('emailAddress');
     this.name = registerOutput<String>('name');
-    this.phoneNumber = registerOutput<String>('phoneNumber');
-    this.title = registerOutput<String>('title');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    title = registerOutput<String>('title');
   }
 }

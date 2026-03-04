@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBandwidthScheduleArgs {
   /// The device name.
   final pulumi.Input<String> deviceName;
+
   /// The bandwidth schedule name.
   final pulumi.Input<String> name;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetBandwidthScheduleArgs {
 
   factory GetBandwidthScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetBandwidthScheduleArgs(
-      deviceName: (map['deviceName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

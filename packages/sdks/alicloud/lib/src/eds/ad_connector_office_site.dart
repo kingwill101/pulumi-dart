@@ -6,7 +6,7 @@ import 'ad_connector_office_site_state.dart';
 ///
 /// For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectorofficesite).
 ///
-/// > **NOTE:** Available since v1.176.0.
+/// &gt; **NOTE:** Available since v1.176.0.
 ///
 /// ## Example Usage
 ///
@@ -257,45 +257,64 @@ import 'ad_connector_office_site_state.dart';
 class AdConnectorOfficeSite extends pulumi.CustomResource {
   /// The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
   late final pulumi.Output<String> adConnectorOfficeSiteName;
+
   /// The ad hostname.
   late final pulumi.Output<String?> adHostname;
+
   /// The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
   late final pulumi.Output<int?> bandwidth;
+
   /// The ID of the CEN instance.
   late final pulumi.Output<String> cenId;
+
   /// The cen owner id.
   late final pulumi.Output<String?> cenOwnerId;
+
   /// Workspace Corresponds to the Security Office Network of IPv4 Segment.
   late final pulumi.Output<String> cidrBlock;
+
   /// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
   /// - `INTERNET`: connects clients to cloud desktops only over the Internet.
   /// - `VPC`: connects clients to cloud desktops only over a VPC.
   /// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
   late final pulumi.Output<String> desktopAccessType;
+
   /// The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
   late final pulumi.Output<List<String>> dnsAddresses;
+
   /// The domain name of the enterprise AD system. You can register each domain name only once.
   late final pulumi.Output<String> domainName;
+
   /// The password of the domain administrator. The password can be up to 64 characters in length.
   late final pulumi.Output<String?> domainPassword;
+
   /// The username of the domain administrator. The username can be up to 64 characters in length.
   late final pulumi.Output<String?> domainUserName;
+
   /// Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
   late final pulumi.Output<bool> enableAdminAccess;
+
   /// Specifies whether to enable Internet access.
   late final pulumi.Output<bool> enableInternetAccess;
+
   /// Specifies whether to enable multi-factor authentication (MFA).
   late final pulumi.Output<bool?> mfaEnabled;
+
   /// The protocol type. Valid values: `ASP`, `HDX`.
   late final pulumi.Output<String?> protocolType;
+
   /// The AD Connector specifications. Valid values: `1`, `2`.
   late final pulumi.Output<int?> specification;
+
   /// The resource State.
   late final pulumi.Output<String> status;
+
   /// The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
   late final pulumi.Output<List<String>?> subDomainDnsAddresses;
+
   /// The domain name of the enterprise AD subdomain.
   late final pulumi.Output<String?> subDomainName;
+
   /// The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
   late final pulumi.Output<String?> verifyCode;
 
@@ -308,31 +327,35 @@ class AdConnectorOfficeSite extends pulumi.CustomResource {
     AdConnectorOfficeSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adConnectorOfficeSiteName = registerOutput<String>('adConnectorOfficeSiteName');
-    this.adHostname = registerOutput<String?>('adHostname');
-    this.bandwidth = registerOutput<int?>('bandwidth');
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String?>('cenOwnerId');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.desktopAccessType = registerOutput<String>('desktopAccessType');
-    this.dnsAddresses = registerOutput<List<String>>('dnsAddresses');
-    this.domainName = registerOutput<String>('domainName');
-    this.domainPassword = registerOutput<String?>('domainPassword');
-    this.domainUserName = registerOutput<String?>('domainUserName');
-    this.enableAdminAccess = registerOutput<bool>('enableAdminAccess');
-    this.enableInternetAccess = registerOutput<bool>('enableInternetAccess');
-    this.mfaEnabled = registerOutput<bool?>('mfaEnabled');
-    this.protocolType = registerOutput<String?>('protocolType');
-    this.specification = registerOutput<int?>('specification');
-    this.status = registerOutput<String>('status');
-    this.subDomainDnsAddresses = registerOutput<List<String>?>('subDomainDnsAddresses');
-    this.subDomainName = registerOutput<String?>('subDomainName');
-    this.verifyCode = registerOutput<String?>('verifyCode');
+         'alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adConnectorOfficeSiteName = registerOutput<String>(
+      'adConnectorOfficeSiteName',
+    );
+    adHostname = registerOutput<String?>('adHostname');
+    bandwidth = registerOutput<int?>('bandwidth');
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String?>('cenOwnerId');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    desktopAccessType = registerOutput<String>('desktopAccessType');
+    dnsAddresses = registerOutput<List<String>>('dnsAddresses');
+    domainName = registerOutput<String>('domainName');
+    domainPassword = registerOutput<String?>('domainPassword');
+    domainUserName = registerOutput<String?>('domainUserName');
+    enableAdminAccess = registerOutput<bool>('enableAdminAccess');
+    enableInternetAccess = registerOutput<bool>('enableInternetAccess');
+    mfaEnabled = registerOutput<bool?>('mfaEnabled');
+    protocolType = registerOutput<String?>('protocolType');
+    specification = registerOutput<int?>('specification');
+    status = registerOutput<String>('status');
+    subDomainDnsAddresses = registerOutput<List<String>?>(
+      'subDomainDnsAddresses',
+    );
+    subDomainName = registerOutput<String?>('subDomainName');
+    verifyCode = registerOutput<String?>('verifyCode');
   }
 
   /// Gets an existing [AdConnectorOfficeSite] resource's state with the given [name] and [id].
@@ -353,30 +376,34 @@ class AdConnectorOfficeSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adConnectorOfficeSiteName = registerOutput<String>('adConnectorOfficeSiteName');
-    this.adHostname = registerOutput<String?>('adHostname');
-    this.bandwidth = registerOutput<int?>('bandwidth');
-    this.cenId = registerOutput<String>('cenId');
-    this.cenOwnerId = registerOutput<String?>('cenOwnerId');
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.desktopAccessType = registerOutput<String>('desktopAccessType');
-    this.dnsAddresses = registerOutput<List<String>>('dnsAddresses');
-    this.domainName = registerOutput<String>('domainName');
-    this.domainPassword = registerOutput<String?>('domainPassword');
-    this.domainUserName = registerOutput<String?>('domainUserName');
-    this.enableAdminAccess = registerOutput<bool>('enableAdminAccess');
-    this.enableInternetAccess = registerOutput<bool>('enableInternetAccess');
-    this.mfaEnabled = registerOutput<bool?>('mfaEnabled');
-    this.protocolType = registerOutput<String?>('protocolType');
-    this.specification = registerOutput<int?>('specification');
-    this.status = registerOutput<String>('status');
-    this.subDomainDnsAddresses = registerOutput<List<String>?>('subDomainDnsAddresses');
-    this.subDomainName = registerOutput<String?>('subDomainName');
-    this.verifyCode = registerOutput<String?>('verifyCode');
+         'alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adConnectorOfficeSiteName = registerOutput<String>(
+      'adConnectorOfficeSiteName',
+    );
+    adHostname = registerOutput<String?>('adHostname');
+    bandwidth = registerOutput<int?>('bandwidth');
+    cenId = registerOutput<String>('cenId');
+    cenOwnerId = registerOutput<String?>('cenOwnerId');
+    cidrBlock = registerOutput<String>('cidrBlock');
+    desktopAccessType = registerOutput<String>('desktopAccessType');
+    dnsAddresses = registerOutput<List<String>>('dnsAddresses');
+    domainName = registerOutput<String>('domainName');
+    domainPassword = registerOutput<String?>('domainPassword');
+    domainUserName = registerOutput<String?>('domainUserName');
+    enableAdminAccess = registerOutput<bool>('enableAdminAccess');
+    enableInternetAccess = registerOutput<bool>('enableInternetAccess');
+    mfaEnabled = registerOutput<bool?>('mfaEnabled');
+    protocolType = registerOutput<String?>('protocolType');
+    specification = registerOutput<int?>('specification');
+    status = registerOutput<String>('status');
+    subDomainDnsAddresses = registerOutput<List<String>?>(
+      'subDomainDnsAddresses',
+    );
+    subDomainName = registerOutput<String?>('subDomainName');
+    verifyCode = registerOutput<String?>('verifyCode');
   }
 }

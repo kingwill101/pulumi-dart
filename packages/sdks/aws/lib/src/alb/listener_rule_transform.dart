@@ -6,9 +6,12 @@ import 'listener_rule_transform_url_rewrite_config.dart';
 
 class ListenerRuleTransform {
   /// Configuration block for host header rewrite. Required if `type` is `host-header-rewrite`. See Host Header Rewrite Config Blocks below.
-  final pulumi.Input<ListenerRuleTransformHostHeaderRewriteConfig>? hostHeaderRewriteConfig;
+  final pulumi.Input<ListenerRuleTransformHostHeaderRewriteConfig>?
+  hostHeaderRewriteConfig;
+
   /// Type of transform. Valid values are `host-header-rewrite` and `url-rewrite`.
   final pulumi.Input<String> type;
+
   /// Configuration block for URL rewrite. Required if `type` is `url-rewrite`. See URL Rewrite Config Blocks below.
   final pulumi.Input<ListenerRuleTransformUrlRewriteConfig>? urlRewriteConfig;
 
@@ -24,18 +27,41 @@ class ListenerRuleTransform {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hostHeaderRewriteConfig': ?pulumi.Input.mapOptionalInputValue<ListenerRuleTransformHostHeaderRewriteConfig, Map<String, dynamic>>(hostHeaderRewriteConfig, (value) => value.toMap()),
+      'hostHeaderRewriteConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ListenerRuleTransformHostHeaderRewriteConfig,
+            Map<String, dynamic>
+          >(hostHeaderRewriteConfig, (value) => value.toMap()),
       'type': type,
-      'urlRewriteConfig': ?pulumi.Input.mapOptionalInputValue<ListenerRuleTransformUrlRewriteConfig, Map<String, dynamic>>(urlRewriteConfig, (value) => value.toMap()),
+      'urlRewriteConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ListenerRuleTransformUrlRewriteConfig,
+            Map<String, dynamic>
+          >(urlRewriteConfig, (value) => value.toMap()),
     };
   }
 
   factory ListenerRuleTransform.fromMap(Map<String, dynamic> map) {
     return ListenerRuleTransform(
-      hostHeaderRewriteConfig: map['hostHeaderRewriteConfig'] == null ? null : ((ListenerRuleTransformHostHeaderRewriteConfig.fromMap((map['hostHeaderRewriteConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      type: (map['type'] as String).input(),
-      urlRewriteConfig: map['urlRewriteConfig'] == null ? null : ((ListenerRuleTransformUrlRewriteConfig.fromMap((map['urlRewriteConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      hostHeaderRewriteConfig: (() {
+        final guardedValue = map['hostHeaderRewriteConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ListenerRuleTransformHostHeaderRewriteConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      urlRewriteConfig: (() {
+        final guardedValue = map['urlRewriteConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ListenerRuleTransformUrlRewriteConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

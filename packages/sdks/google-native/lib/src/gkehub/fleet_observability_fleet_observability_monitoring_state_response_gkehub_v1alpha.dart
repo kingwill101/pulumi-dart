@@ -6,7 +6,10 @@ import 'fleet_observability_fleet_observability_base_feature_state_response_gkeh
 /// Feature state for monitoring feature.
 class FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha {
   /// The base feature state of fleet monitoring feature.
-  final pulumi.Input<FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha> state;
+  final pulumi.Input<
+    FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha
+  >
+  state;
 
   /// Creates a new [FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha].
   /// [state] The base feature state of fleet monitoring feature.
@@ -16,14 +19,23 @@ class FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'state': pulumi.Input.mapInputValue<FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha, Map<String, dynamic>>(state, (value) => value.toMap()),
+      'state':
+          pulumi.Input.mapInputValue<
+            FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
     };
   }
 
-  factory FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFleetObservabilityMonitoringStateResponseGkehubV1alpha(
-      state: (FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      state: pulumi.Input.fromValue(
+        FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1alpha.fromMap(
+          (map['state']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

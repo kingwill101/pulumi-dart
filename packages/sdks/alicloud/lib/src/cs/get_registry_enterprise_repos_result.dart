@@ -6,17 +6,22 @@ import 'get_registry_enterprise_repos_repo.dart';
 /// Result data returned by getRegistryEnterpriseRepos.
 class GetRegistryEnterpriseReposResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// The ID of the Container Registry instance to which the Repository belongs.
   final String instanceId;
   final String? nameRegex;
+
   /// A list of Repository names.
   final List<String> names;
+
   /// The name of the namespace to which the Repository belongs.
   final String? namespace;
   final String? outputFile;
+
   /// A list of Repositories. Each element contains the following attributes:
   final List<GetRegistryEnterpriseReposRepo> repos;
 
@@ -52,22 +57,46 @@ class GetRegistryEnterpriseReposResult {
       'names': names,
       'namespace': ?namespace,
       'outputFile': ?outputFile,
-      'repos': pulumi.Input.encodeList<GetRegistryEnterpriseReposRepo, Map<String, dynamic>>(repos, (value) => value.toMap()),
+      'repos':
+          pulumi.Input.encodeList<
+            GetRegistryEnterpriseReposRepo,
+            Map<String, dynamic>
+          >(repos, (value) => value.toMap()),
     };
   }
 
   factory GetRegistryEnterpriseReposResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseReposResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      namespace: map['namespace'] == null ? null : map['namespace']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      repos: pulumi.Input.decodeList<GetRegistryEnterpriseReposRepo>(map['repos'], (value) => GetRegistryEnterpriseReposRepo.fromMap((value as Map).cast<String, dynamic>())),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      repos: pulumi.Input.decodeList<GetRegistryEnterpriseReposRepo>(
+        map['repos']!,
+        (value) => GetRegistryEnterpriseReposRepo.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

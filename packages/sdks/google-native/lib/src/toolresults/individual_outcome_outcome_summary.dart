@@ -6,16 +6,17 @@ enum IndividualOutcomeOutcomeSummary {
   skipped("skipped"),
   flaky("flaky");
 
-  const IndividualOutcomeOutcomeSummary(this.value);
-  final String value;
+  const IndividualOutcomeOutcomeSummary(this.wireValue);
+  final String wireValue;
 
   static IndividualOutcomeOutcomeSummary fromValue(String value) {
     for (final item in IndividualOutcomeOutcomeSummary.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IndividualOutcomeOutcomeSummary value: $value');
+    throw ArgumentError(
+      'Unknown IndividualOutcomeOutcomeSummary value: $value',
+    );
   }
 }
-

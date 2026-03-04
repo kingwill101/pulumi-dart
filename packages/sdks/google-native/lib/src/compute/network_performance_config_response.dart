@@ -23,9 +23,12 @@ class NetworkPerformanceConfigResponse {
 
   factory NetworkPerformanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigResponse(
-      externalIpEgressBandwidthTier: (map['externalIpEgressBandwidthTier'] as String).input(),
-      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
+      externalIpEgressBandwidthTier: pulumi.Input.fromValue(
+        map['externalIpEgressBandwidthTier'] as String,
+      ),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(
+        map['totalEgressBandwidthTier'] as String,
+      ),
     );
   }
 }
-

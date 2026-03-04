@@ -5,26 +5,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstancePostPayModuleSwitchObj {
   /// Agentless Detection Module. Valid values:
   final pulumi.Input<int>? agentless;
+
   /// Anti-Ransomware Module. Valid values:
   final pulumi.Input<int>? antiRansomware;
+
   /// Basic service module. Valid values:
   final pulumi.Input<int>? basicService;
+
   /// Cloud Security Configuration Check Module. Valid values:
   final pulumi.Input<int>? cspm;
+
   /// Threat Analysis and Response Module. Valid values:
   final pulumi.Input<int>? ctdr;
+
   /// Log Management Module. Valid values:
   final pulumi.Input<int>? ctdrStorage;
+
   /// Host and Container Security Module. Valid values:
   final pulumi.Input<int>? postHost;
+
   /// Application Protection Module. Valid values:
   final pulumi.Input<int>? rasp;
+
   /// Malicious File Detection SDK Module. Valid values:
   final pulumi.Input<int>? sdk;
+
   /// Serverless Security Module. Valid values:
   final pulumi.Input<int>? serverless;
+
   /// Vulnerability Repair Module. Valid values:
   final pulumi.Input<int>? vul;
+
   /// File Tamper Protection Module. Valid values:
   final pulumi.Input<int>? webLock;
 
@@ -75,19 +86,66 @@ class InstancePostPayModuleSwitchObj {
 
   factory InstancePostPayModuleSwitchObj.fromMap(Map<String, dynamic> map) {
     return InstancePostPayModuleSwitchObj(
-      agentless: map['agentless'] == null ? null : (map['agentless']! as int).input(),
-      antiRansomware: map['antiRansomware'] == null ? null : (map['antiRansomware']! as int).input(),
-      basicService: map['basicService'] == null ? null : (map['basicService']! as int).input(),
-      cspm: map['cspm'] == null ? null : (map['cspm']! as int).input(),
-      ctdr: map['ctdr'] == null ? null : (map['ctdr']! as int).input(),
-      ctdrStorage: map['ctdrStorage'] == null ? null : (map['ctdrStorage']! as int).input(),
-      postHost: map['postHost'] == null ? null : (map['postHost']! as int).input(),
-      rasp: map['rasp'] == null ? null : (map['rasp']! as int).input(),
-      sdk: map['sdk'] == null ? null : (map['sdk']! as int).input(),
-      serverless: map['serverless'] == null ? null : (map['serverless']! as int).input(),
-      vul: map['vul'] == null ? null : (map['vul']! as int).input(),
-      webLock: map['webLock'] == null ? null : (map['webLock']! as int).input(),
+      agentless: (() {
+        final guardedValue = map['agentless'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      antiRansomware: (() {
+        final guardedValue = map['antiRansomware'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      basicService: (() {
+        final guardedValue = map['basicService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cspm: (() {
+        final guardedValue = map['cspm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ctdr: (() {
+        final guardedValue = map['ctdr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ctdrStorage: (() {
+        final guardedValue = map['ctdrStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      postHost: (() {
+        final guardedValue = map['postHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      rasp: (() {
+        final guardedValue = map['rasp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sdk: (() {
+        final guardedValue = map['sdk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serverless: (() {
+        final guardedValue = map['serverless'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vul: (() {
+        final guardedValue = map['vul'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      webLock: (() {
+        final guardedValue = map['webLock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

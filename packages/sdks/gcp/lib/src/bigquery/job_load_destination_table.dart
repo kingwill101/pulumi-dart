@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobLoadDestinationTable {
   /// The ID of the dataset containing this table.
   final pulumi.Input<String>? datasetId;
+
   /// The ID of the project containing this table.
   final pulumi.Input<String>? projectId;
+
   /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
   final pulumi.Input<String> tableId;
@@ -31,10 +33,17 @@ class JobLoadDestinationTable {
 
   factory JobLoadDestinationTable.fromMap(Map<String, dynamic> map) {
     return JobLoadDestinationTable(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      tableId: (map['tableId'] as String).input(),
+      datasetId: (() {
+        final guardedValue = map['datasetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
     );
   }
 }
-

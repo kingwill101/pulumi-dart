@@ -7,18 +7,25 @@ import 'data_cells_filter_table_data_row_filter.dart';
 class DataCellsFilterTableData {
   /// A list of column names and/or nested column attributes.
   final pulumi.Input<List<String>>? columnNames;
+
   /// A wildcard with exclusions. See Column Wildcard below for details.
   final pulumi.Input<DataCellsFilterTableDataColumnWildcard>? columnWildcard;
+
   /// The name of the database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the data cells filter.
   final pulumi.Input<String> name;
+
   /// A PartiQL predicate. See Row Filter below for details.
   final pulumi.Input<DataCellsFilterTableDataRowFilter> rowFilter;
+
   /// The ID of the Data Catalog.
   final pulumi.Input<String> tableCatalogId;
+
   /// The name of the table.
   final pulumi.Input<String> tableName;
+
   /// ID of the data cells filter version.
   final pulumi.Input<String>? versionId;
 
@@ -45,10 +52,18 @@ class DataCellsFilterTableData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'columnNames': ?columnNames,
-      'columnWildcard': ?pulumi.Input.mapOptionalInputValue<DataCellsFilterTableDataColumnWildcard, Map<String, dynamic>>(columnWildcard, (value) => value.toMap()),
+      'columnWildcard':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataCellsFilterTableDataColumnWildcard,
+            Map<String, dynamic>
+          >(columnWildcard, (value) => value.toMap()),
       'databaseName': databaseName,
       'name': name,
-      'rowFilter': pulumi.Input.mapInputValue<DataCellsFilterTableDataRowFilter, Map<String, dynamic>>(rowFilter, (value) => value.toMap()),
+      'rowFilter':
+          pulumi.Input.mapInputValue<
+            DataCellsFilterTableDataRowFilter,
+            Map<String, dynamic>
+          >(rowFilter, (value) => value.toMap()),
       'tableCatalogId': tableCatalogId,
       'tableName': tableName,
       'versionId': ?versionId,
@@ -57,15 +72,34 @@ class DataCellsFilterTableData {
 
   factory DataCellsFilterTableData.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableData(
-      columnNames: map['columnNames'] == null ? null : (((map['columnNames'] as List).cast<String>()).input()).input(),
-      columnWildcard: map['columnWildcard'] == null ? null : ((DataCellsFilterTableDataColumnWildcard.fromMap((map['columnWildcard']! as Map).cast<String, dynamic>())).input()).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      name: (map['name'] as String).input(),
-      rowFilter: (DataCellsFilterTableDataRowFilter.fromMap((map['rowFilter']! as Map).cast<String, dynamic>())).input(),
-      tableCatalogId: (map['tableCatalogId'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
-      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
+      columnNames: (() {
+        final guardedValue = map['columnNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      columnWildcard: (() {
+        final guardedValue = map['columnWildcard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataCellsFilterTableDataColumnWildcard.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      rowFilter: pulumi.Input.fromValue(
+        DataCellsFilterTableDataRowFilter.fromMap(
+          (map['rowFilter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tableCatalogId: pulumi.Input.fromValue(map['tableCatalogId'] as String),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
+      versionId: (() {
+        final guardedValue = map['versionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

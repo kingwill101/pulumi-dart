@@ -4,16 +4,17 @@ enum ResourcePolicyGroupPlacementPolicyLocality {
   strict("STRICT"),
   unspecifiedLocality("UNSPECIFIED_LOCALITY");
 
-  const ResourcePolicyGroupPlacementPolicyLocality(this.value);
-  final String value;
+  const ResourcePolicyGroupPlacementPolicyLocality(this.wireValue);
+  final String wireValue;
 
   static ResourcePolicyGroupPlacementPolicyLocality fromValue(String value) {
     for (final item in ResourcePolicyGroupPlacementPolicyLocality.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResourcePolicyGroupPlacementPolicyLocality value: $value');
+    throw ArgumentError(
+      'Unknown ResourcePolicyGroupPlacementPolicyLocality value: $value',
+    );
   }
 }
-

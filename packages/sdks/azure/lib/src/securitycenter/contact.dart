@@ -4,7 +4,7 @@ import 'contact_state.dart';
 
 /// Manages the subscription's Security Center Contact.
 ///
-/// > **Note:** Owner access permission is required.
+/// &gt; **Note:** Owner access permission is required.
 ///
 /// ## Example Usage
 ///
@@ -130,12 +130,16 @@ import 'contact_state.dart';
 class Contact extends pulumi.CustomResource {
   /// Whether to send security alerts notifications to the security contact.
   late final pulumi.Output<bool> alertNotifications;
+
   /// Whether to send security alerts notifications to subscription admins.
   late final pulumi.Output<bool> alertsToAdmins;
+
   /// The email of the Security Center Contact.
   late final pulumi.Output<String> email;
+
   /// The name of the Security Center Contact. Changing this forces a new Security Center Contact to be created.
   late final pulumi.Output<String> name;
+
   /// The phone number of the Security Center Contact.
   late final pulumi.Output<String?> phone;
 
@@ -148,16 +152,16 @@ class Contact extends pulumi.CustomResource {
     ContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/contact:Contact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertNotifications = registerOutput<bool>('alertNotifications');
-    this.alertsToAdmins = registerOutput<bool>('alertsToAdmins');
-    this.email = registerOutput<String>('email');
+         'azure:securitycenter/contact:Contact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertNotifications = registerOutput<bool>('alertNotifications');
+    alertsToAdmins = registerOutput<bool>('alertsToAdmins');
+    email = registerOutput<String>('email');
     this.name = registerOutput<String>('name');
-    this.phone = registerOutput<String?>('phone');
+    phone = registerOutput<String?>('phone');
   }
 
   /// Gets an existing [Contact] resource's state with the given [name] and [id].
@@ -178,15 +182,15 @@ class Contact extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/contact:Contact',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertNotifications = registerOutput<bool>('alertNotifications');
-    this.alertsToAdmins = registerOutput<bool>('alertsToAdmins');
-    this.email = registerOutput<String>('email');
+         'azure:securitycenter/contact:Contact',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertNotifications = registerOutput<bool>('alertNotifications');
+    alertsToAdmins = registerOutput<bool>('alertsToAdmins');
+    email = registerOutput<String>('email');
     this.name = registerOutput<String>('name');
-    this.phone = registerOutput<String?>('phone');
+    phone = registerOutput<String?>('phone');
   }
 }

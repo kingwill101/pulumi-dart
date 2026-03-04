@@ -9,20 +9,29 @@ class WebAclRuleActionBlock {
 
   /// Creates a new [WebAclRuleActionBlock].
   /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
-  WebAclRuleActionBlock({
-    this.customResponse,
-  });
+  WebAclRuleActionBlock({this.customResponse});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customResponse': ?pulumi.Input.mapOptionalInputValue<WebAclRuleActionBlockCustomResponse, Map<String, dynamic>>(customResponse, (value) => value.toMap()),
+      'customResponse':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclRuleActionBlockCustomResponse,
+            Map<String, dynamic>
+          >(customResponse, (value) => value.toMap()),
     };
   }
 
   factory WebAclRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionBlock(
-      customResponse: map['customResponse'] == null ? null : ((WebAclRuleActionBlockCustomResponse.fromMap((map['customResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      customResponse: (() {
+        final guardedValue = map['customResponse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclRuleActionBlockCustomResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

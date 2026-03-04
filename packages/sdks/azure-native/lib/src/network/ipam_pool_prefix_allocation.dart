@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpamPoolPrefixAllocation {
   /// Resource id of the associated Azure IpamPool resource.
   final pulumi.Input<String>? id;
+
   /// Number of IP addresses to allocate.
   final pulumi.Input<String>? numberOfIpAddresses;
 
   /// Creates a new [IpamPoolPrefixAllocation].
   /// [id] Resource id of the associated Azure IpamPool resource.
   /// [numberOfIpAddresses] Number of IP addresses to allocate.
-  IpamPoolPrefixAllocation({
-    this.id,
-    this.numberOfIpAddresses,
-  });
+  IpamPoolPrefixAllocation({this.id, this.numberOfIpAddresses});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class IpamPoolPrefixAllocation {
 
   factory IpamPoolPrefixAllocation.fromMap(Map<String, dynamic> map) {
     return IpamPoolPrefixAllocation(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      numberOfIpAddresses: map['numberOfIpAddresses'] == null ? null : (map['numberOfIpAddresses']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfIpAddresses: (() {
+        final guardedValue = map['numberOfIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

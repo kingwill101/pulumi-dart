@@ -159,24 +159,34 @@ import 'system_data_response.dart';
 class EdgeActionExecutionFilter extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Custom Header Key associated with the execution filter
   late final pulumi.Output<String> executionFilterIdentifierHeaderName;
+
   /// Custom Header Value associated with the execution filter
   late final pulumi.Output<String> executionFilterIdentifierHeaderValue;
+
   /// The last update time in UTC for the execution filter
   late final pulumi.Output<String> lastUpdateTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The referenced versionId of the edgeaction version
   late final pulumi.Output<String> versionId;
 
@@ -189,21 +199,25 @@ class EdgeActionExecutionFilter extends pulumi.CustomResource {
     EdgeActionExecutionFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:EdgeActionExecutionFilter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.executionFilterIdentifierHeaderName = registerOutput<String>('executionFilterIdentifierHeaderName');
-    this.executionFilterIdentifierHeaderValue = registerOutput<String>('executionFilterIdentifierHeaderValue');
-    this.lastUpdateTime = registerOutput<String>('lastUpdateTime');
-    this.location = registerOutput<String>('location');
+         'azure-native:cdn:EdgeActionExecutionFilter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    executionFilterIdentifierHeaderName = registerOutput<String>(
+      'executionFilterIdentifierHeaderName',
+    );
+    executionFilterIdentifierHeaderValue = registerOutput<String>(
+      'executionFilterIdentifierHeaderValue',
+    );
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.versionId = registerOutput<String>('versionId');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    versionId = registerOutput<String>('versionId');
   }
 }

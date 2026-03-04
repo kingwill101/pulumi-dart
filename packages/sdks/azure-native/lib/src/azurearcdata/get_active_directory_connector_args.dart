@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActiveDirectoryConnectorArgs {
   /// The name of the Active Directory connector instance
   final pulumi.Input<String> activeDirectoryConnectorName;
+
   /// The name of the data controller
   final pulumi.Input<String> dataControllerName;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetActiveDirectoryConnectorArgs {
 
   factory GetActiveDirectoryConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetActiveDirectoryConnectorArgs(
-      activeDirectoryConnectorName: (map['activeDirectoryConnectorName'] as String).input(),
-      dataControllerName: (map['dataControllerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      activeDirectoryConnectorName: pulumi.Input.fromValue(
+        map['activeDirectoryConnectorName'] as String,
+      ),
+      dataControllerName: pulumi.Input.fromValue(
+        map['dataControllerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

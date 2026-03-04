@@ -8,26 +8,37 @@ import 'tag_response.dart';
 class AwsNetworkFirewallFirewallPropertiesResponse {
   /// Property deleteProtection
   final pulumi.Input<bool>? deleteProtection;
+
   /// Property description
   final pulumi.Input<String>? description;
+
   /// Property endpointIds
   final pulumi.Input<List<String>>? endpointIds;
+
   /// A resource ARN.
   final pulumi.Input<String>? firewallArn;
+
   /// Property firewallId
   final pulumi.Input<String>? firewallId;
+
   /// Property firewallName
   final pulumi.Input<String>? firewallName;
+
   /// A resource ARN.
   final pulumi.Input<String>? firewallPolicyArn;
+
   /// Property firewallPolicyChangeProtection
   final pulumi.Input<bool>? firewallPolicyChangeProtection;
+
   /// Property subnetChangeProtection
   final pulumi.Input<bool>? subnetChangeProtection;
+
   /// Property subnetMappings
   final pulumi.Input<List<SubnetMappingResponse>>? subnetMappings;
+
   /// Property tags
   final pulumi.Input<List<TagResponse>>? tags;
+
   /// Property vpcId
   final pulumi.Input<String>? vpcId;
 
@@ -70,27 +81,111 @@ class AwsNetworkFirewallFirewallPropertiesResponse {
       'firewallPolicyArn': ?firewallPolicyArn,
       'firewallPolicyChangeProtection': ?firewallPolicyChangeProtection,
       'subnetChangeProtection': ?subnetChangeProtection,
-      'subnetMappings': ?pulumi.Input.mapOptionalInputValue<List<SubnetMappingResponse>, List<Map<String, dynamic>>>(subnetMappings, (value) => pulumi.Input.encodeList<SubnetMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnetMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubnetMappingResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subnetMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SubnetMappingResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagResponse>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) =>
+                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'vpcId': ?vpcId,
     };
   }
 
-  factory AwsNetworkFirewallFirewallPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsNetworkFirewallFirewallPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsNetworkFirewallFirewallPropertiesResponse(
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpointIds: map['endpointIds'] == null ? null : ((map['endpointIds']! as List).cast<String>()).input(),
-      firewallArn: map['firewallArn'] == null ? null : (map['firewallArn']! as String).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as String).input(),
-      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
-      firewallPolicyArn: map['firewallPolicyArn'] == null ? null : (map['firewallPolicyArn']! as String).input(),
-      firewallPolicyChangeProtection: map['firewallPolicyChangeProtection'] == null ? null : (map['firewallPolicyChangeProtection']! as bool).input(),
-      subnetChangeProtection: map['subnetChangeProtection'] == null ? null : (map['subnetChangeProtection']! as bool).input(),
-      subnetMappings: map['subnetMappings'] == null ? null : (pulumi.Input.decodeList<SubnetMappingResponse>(map['subnetMappings']!, (value) => SubnetMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      deleteProtection: (() {
+        final guardedValue = map['deleteProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointIds: (() {
+        final guardedValue = map['endpointIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      firewallArn: (() {
+        final guardedValue = map['firewallArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallId: (() {
+        final guardedValue = map['firewallId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallName: (() {
+        final guardedValue = map['firewallName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallPolicyArn: (() {
+        final guardedValue = map['firewallPolicyArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallPolicyChangeProtection: (() {
+        final guardedValue = map['firewallPolicyChangeProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subnetChangeProtection: (() {
+        final guardedValue = map['subnetChangeProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subnetMappings: (() {
+        final guardedValue = map['subnetMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubnetMappingResponse>(
+            guardedValue,
+            (value) => SubnetMappingResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagResponse>(
+            guardedValue,
+            (value) =>
+                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationUserAssignedIdentityResponse {
   /// The friendly name of user assigned identity.
   final pulumi.Input<String> name;
+
   /// The principal id of user assigned identity.
   final pulumi.Input<String> principalId;
 
@@ -17,17 +18,15 @@ class ApplicationUserAssignedIdentityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'principalId': principalId,
-    };
+    return <String, dynamic>{'name': name, 'principalId': principalId};
   }
 
-  factory ApplicationUserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationUserAssignedIdentityResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationUserAssignedIdentityResponse(
-      name: (map['name'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
     );
   }
 }
-

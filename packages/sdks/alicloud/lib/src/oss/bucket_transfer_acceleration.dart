@@ -8,20 +8,15 @@ class BucketTransferAcceleration {
 
   /// Creates a new [BucketTransferAcceleration].
   /// [enabled] Specifies the accelerate status of a bucket.
-  BucketTransferAcceleration({
-    required this.enabled,
-  });
+  BucketTransferAcceleration({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory BucketTransferAcceleration.fromMap(Map<String, dynamic> map) {
     return BucketTransferAcceleration(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

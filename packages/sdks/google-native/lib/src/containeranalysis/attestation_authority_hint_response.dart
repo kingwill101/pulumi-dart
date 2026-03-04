@@ -9,20 +9,17 @@ class AttestationAuthorityHintResponse {
 
   /// Creates a new [AttestationAuthorityHintResponse].
   /// [humanReadableName] The human readable name of this Attestation Authority, for example "qa".
-  AttestationAuthorityHintResponse({
-    required this.humanReadableName,
-  });
+  AttestationAuthorityHintResponse({required this.humanReadableName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'humanReadableName': humanReadableName,
-    };
+    return <String, dynamic>{'humanReadableName': humanReadableName};
   }
 
   factory AttestationAuthorityHintResponse.fromMap(Map<String, dynamic> map) {
     return AttestationAuthorityHintResponse(
-      humanReadableName: (map['humanReadableName'] as String).input(),
+      humanReadableName: pulumi.Input.fromValue(
+        map['humanReadableName'] as String,
+      ),
     );
   }
 }
-

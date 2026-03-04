@@ -8,6 +8,7 @@ class SourceIamMemberState {
   final pulumi.Input<SourceIamMemberCondition>? condition;
   final pulumi.Input<String>? etag;
   final pulumi.Input<String>? member;
+
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   final pulumi.Input<String>? organization;
@@ -32,7 +33,11 @@ class SourceIamMemberState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<SourceIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            SourceIamMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'etag': ?etag,
       'member': ?member,
       'organization': ?organization,
@@ -43,13 +48,40 @@ class SourceIamMemberState {
 
   factory SourceIamMemberState.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberState(
-      condition: map['condition'] == null ? null : (SourceIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      member: map['member'] == null ? null : (map['member']! as String).input(),
-      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceIamMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      member: (() {
+        final guardedValue = map['member'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organization: (() {
+        final guardedValue = map['organization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

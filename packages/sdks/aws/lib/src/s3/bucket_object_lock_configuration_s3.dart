@@ -5,9 +5,9 @@ import 'bucket_object_lock_configuration_state.dart';
 
 /// Provides an S3 bucket Object Lock configuration resource. For more information about Object Locking, go to [Using S3 Object Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html) in the Amazon S3 User Guide.
 ///
-/// > This resource can be used enable Object Lock for **new** and **existing** buckets.
+/// &gt; This resource can be used enable Object Lock for **new** and **existing** buckets.
 ///
-/// > This resource cannot be used with S3 directory buckets.
+/// &gt; This resource cannot be used with S3 directory buckets.
 ///
 /// ## Example Usage
 ///
@@ -228,14 +228,19 @@ import 'bucket_object_lock_configuration_state.dart';
 class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
   late final pulumi.Output<String?> objectLockEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for specifying the Object Lock rule for the specified object. See below.
   late final pulumi.Output<BucketObjectLockConfigurationRule?> rule;
+
   /// This argument is deprecated and no longer needed to enable Object Lock.
   /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   late final pulumi.Output<String?> token;
@@ -249,17 +254,17 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
     BucketObjectLockConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.objectLockEnabled = registerOutput<String?>('objectLockEnabled');
-    this.region = registerOutput<String>('region');
-    this.rule = registerOutput<BucketObjectLockConfigurationRule?>('rule');
-    this.token = registerOutput<String?>('token');
+         'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    objectLockEnabled = registerOutput<String?>('objectLockEnabled');
+    region = registerOutput<String>('region');
+    rule = registerOutput<BucketObjectLockConfigurationRule?>('rule');
+    token = registerOutput<String?>('token');
   }
 
   /// Gets an existing [BucketObjectLockConfigurationS3] resource's state with the given [name] and [id].
@@ -280,16 +285,16 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.objectLockEnabled = registerOutput<String?>('objectLockEnabled');
-    this.region = registerOutput<String>('region');
-    this.rule = registerOutput<BucketObjectLockConfigurationRule?>('rule');
-    this.token = registerOutput<String?>('token');
+         'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    objectLockEnabled = registerOutput<String?>('objectLockEnabled');
+    region = registerOutput<String>('region');
+    rule = registerOutput<BucketObjectLockConfigurationRule?>('rule');
+    token = registerOutput<String?>('token');
   }
 }

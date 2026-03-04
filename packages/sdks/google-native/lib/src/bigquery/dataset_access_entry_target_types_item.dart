@@ -3,16 +3,17 @@ enum DatasetAccessEntryTargetTypesItem {
   views("VIEWS"),
   routines("ROUTINES");
 
-  const DatasetAccessEntryTargetTypesItem(this.value);
-  final String value;
+  const DatasetAccessEntryTargetTypesItem(this.wireValue);
+  final String wireValue;
 
   static DatasetAccessEntryTargetTypesItem fromValue(String value) {
     for (final item in DatasetAccessEntryTargetTypesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DatasetAccessEntryTargetTypesItem value: $value');
+    throw ArgumentError(
+      'Unknown DatasetAccessEntryTargetTypesItem value: $value',
+    );
   }
 }
-

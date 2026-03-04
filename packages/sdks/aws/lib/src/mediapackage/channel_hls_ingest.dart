@@ -9,20 +9,39 @@ class ChannelHlsIngest {
 
   /// Creates a new [ChannelHlsIngest].
   /// [ingestEndpoints] A list of the ingest endpoints
-  ChannelHlsIngest({
-    this.ingestEndpoints,
-  });
+  ChannelHlsIngest({this.ingestEndpoints});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ingestEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ChannelHlsIngestIngestEndpoint>, List<Map<String, dynamic>>>(ingestEndpoints, (value) => pulumi.Input.encodeList<ChannelHlsIngestIngestEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ingestEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ChannelHlsIngestIngestEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            ingestEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ChannelHlsIngestIngestEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ChannelHlsIngest.fromMap(Map<String, dynamic> map) {
     return ChannelHlsIngest(
-      ingestEndpoints: map['ingestEndpoints'] == null ? null : ((pulumi.Input.decodeList<ChannelHlsIngestIngestEndpoint>(map['ingestEndpoints']!, (value) => ChannelHlsIngestIngestEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ingestEndpoints: (() {
+        final guardedValue = map['ingestEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ChannelHlsIngestIngestEndpoint>(
+            guardedValue,
+            (value) => ChannelHlsIngestIngestEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

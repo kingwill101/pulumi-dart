@@ -830,23 +830,32 @@ import 'policy_assignment_artifact_args.dart';
 class PolicyAssignmentArtifact extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Artifacts which need to be deployed before the specified artifact.
   late final pulumi.Output<List<String>?> dependsOn;
+
   /// Multi-line explain this resource.
   late final pulumi.Output<String?> description;
+
   /// One-liner string explain this resource.
   late final pulumi.Output<String?> displayName;
+
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'policyAssignment'.
   late final pulumi.Output<String> kind;
+
   /// Name of this resource.
   late final pulumi.Output<String> name;
+
   /// Parameter values for the policy definition.
   late final pulumi.Output<Map<String, ParameterValueResponse>> parameters;
+
   /// Azure resource ID of the policy definition.
   late final pulumi.Output<String> policyDefinitionId;
+
   /// Name of the resource group placeholder to which the policy will be assigned.
   late final pulumi.Output<String?> resourceGroup;
+
   /// Type of this resource.
   late final pulumi.Output<String> type;
 
@@ -859,20 +868,22 @@ class PolicyAssignmentArtifact extends pulumi.CustomResource {
     PolicyAssignmentArtifactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:blueprint:PolicyAssignmentArtifact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dependsOn = registerOutput<List<String>?>('dependsOn');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:blueprint:PolicyAssignmentArtifact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dependsOn = registerOutput<List<String>?>('dependsOn');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, ParameterValueResponse>>('parameters');
-    this.policyDefinitionId = registerOutput<String>('policyDefinitionId');
-    this.resourceGroup = registerOutput<String?>('resourceGroup');
-    this.type = registerOutput<String>('type');
+    parameters = registerOutput<Map<String, ParameterValueResponse>>(
+      'parameters',
+    );
+    policyDefinitionId = registerOutput<String>('policyDefinitionId');
+    resourceGroup = registerOutput<String?>('resourceGroup');
+    type = registerOutput<String>('type');
   }
 }

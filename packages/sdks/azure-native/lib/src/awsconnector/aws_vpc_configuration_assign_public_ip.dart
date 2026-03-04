@@ -3,16 +3,17 @@ enum AwsVpcConfigurationAssignPublicIp {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
-  const AwsVpcConfigurationAssignPublicIp(this.value);
-  final String value;
+  const AwsVpcConfigurationAssignPublicIp(this.wireValue);
+  final String wireValue;
 
   static AwsVpcConfigurationAssignPublicIp fromValue(String value) {
     for (final item in AwsVpcConfigurationAssignPublicIp.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AwsVpcConfigurationAssignPublicIp value: $value');
+    throw ArgumentError(
+      'Unknown AwsVpcConfigurationAssignPublicIp value: $value',
+    );
   }
 }
-

@@ -176,18 +176,25 @@ import 'system_data_response.dart';
 class BandwidthSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The days of the week when this schedule is applicable.
   late final pulumi.Output<List<String>> days;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// The bandwidth rate in Mbps.
   late final pulumi.Output<int> rateInMbps;
+
   /// The start time of the schedule in UTC.
   late final pulumi.Output<String> start;
+
   /// The stop time of the schedule in UTC.
   late final pulumi.Output<String> stop;
+
   /// Metadata pertaining to creation and last modification of BandwidthSchedule
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -200,18 +207,18 @@ class BandwidthSchedule extends pulumi.CustomResource {
     BandwidthScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:BandwidthSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.days = registerOutput<List<String>>('days');
+         'azure-native:databoxedge:BandwidthSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    days = registerOutput<List<String>>('days');
     this.name = registerOutput<String>('name');
-    this.rateInMbps = registerOutput<int>('rateInMbps');
-    this.start = registerOutput<String>('start');
-    this.stop = registerOutput<String>('stop');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    rateInMbps = registerOutput<int>('rateInMbps');
+    start = registerOutput<String>('start');
+    stop = registerOutput<String>('stop');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

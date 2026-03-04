@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NonComplianceMessage {
   /// A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
   final pulumi.Input<String> message;
+
   /// The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
   final pulumi.Input<String>? policyDefinitionReferenceId;
 
@@ -26,9 +27,12 @@ class NonComplianceMessage {
 
   factory NonComplianceMessage.fromMap(Map<String, dynamic> map) {
     return NonComplianceMessage(
-      message: (map['message'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      policyDefinitionReferenceId: (() {
+        final guardedValue = map['policyDefinitionReferenceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

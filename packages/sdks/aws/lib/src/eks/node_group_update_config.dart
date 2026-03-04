@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeGroupUpdateConfig {
   /// Desired max number of unavailable worker nodes during node group update.
   final pulumi.Input<int>? maxUnavailable;
+
   /// Desired max percentage of unavailable worker nodes during node group update.
   final pulumi.Input<int>? maxUnavailablePercentage;
+
   /// Strategy to use for updating the node group. Valid values: `MINIMAL` and `DEFAULT`.
   final pulumi.Input<String>? updateStrategy;
 
@@ -30,10 +32,21 @@ class NodeGroupUpdateConfig {
 
   factory NodeGroupUpdateConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupUpdateConfig(
-      maxUnavailable: map['maxUnavailable'] == null ? null : ((map['maxUnavailable'] as int).input()).input(),
-      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null ? null : ((map['maxUnavailablePercentage'] as int).input()).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : ((map['updateStrategy'] as String).input()).input(),
+      maxUnavailable: (() {
+        final guardedValue = map['maxUnavailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxUnavailablePercentage: (() {
+        final guardedValue = map['maxUnavailablePercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      updateStrategy: (() {
+        final guardedValue = map['updateStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

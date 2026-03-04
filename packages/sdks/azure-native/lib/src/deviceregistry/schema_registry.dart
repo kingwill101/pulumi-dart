@@ -186,28 +186,40 @@ import 'system_data_response.dart';
 class SchemaRegistry extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Human-readable description of the schema registry.
   late final pulumi.Output<String?> description;
+
   /// Human-readable display name.
   late final pulumi.Output<String?> displayName;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<SystemAssignedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Schema registry namespace. Uniquely identifies a schema registry within a tenant.
   late final pulumi.Output<String> namespace;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The Storage Account's Container URL where schemas will be stored.
   late final pulumi.Output<String> storageAccountContainerUrl;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Globally unique, immutable, non-reusable id.
   late final pulumi.Output<String> uuid;
 
@@ -220,23 +232,27 @@ class SchemaRegistry extends pulumi.CustomResource {
     SchemaRegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceregistry:SchemaRegistry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.identity = registerOutput<SystemAssignedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:deviceregistry:SchemaRegistry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    identity = registerOutput<SystemAssignedServiceIdentityResponse?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.namespace = registerOutput<String>('namespace');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storageAccountContainerUrl = registerOutput<String>('storageAccountContainerUrl');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
+    namespace = registerOutput<String>('namespace');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageAccountContainerUrl = registerOutput<String>(
+      'storageAccountContainerUrl',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
   }
 }

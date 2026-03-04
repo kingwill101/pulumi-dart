@@ -3,16 +3,15 @@ enum HTTP2HealthCheckProxyHeader {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const HTTP2HealthCheckProxyHeader(this.value);
-  final String value;
+  const HTTP2HealthCheckProxyHeader(this.wireValue);
+  final String wireValue;
 
   static HTTP2HealthCheckProxyHeader fromValue(String value) {
     for (final item in HTTP2HealthCheckProxyHeader.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HTTP2HealthCheckProxyHeader value: $value');
   }
 }
-

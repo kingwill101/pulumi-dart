@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareToAzStackHCIPolicyModelCustomPropertiesResponse {
   /// Gets or sets the app consistent snapshot frequency (in minutes).
   final pulumi.Input<int> appConsistentFrequencyInMinutes;
+
   /// Gets or sets the crash consistent snapshot frequency (in minutes).
   final pulumi.Input<int> crashConsistentFrequencyInMinutes;
+
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareToAzStackHCI'.
   final pulumi.Input<String> instanceType;
+
   /// Gets or sets the duration in minutes until which the recovery points need to be
   /// stored.
   final pulumi.Input<int> recoveryPointHistoryInMinutes;
@@ -36,13 +39,20 @@ class VMwareToAzStackHCIPolicyModelCustomPropertiesResponse {
     };
   }
 
-  factory VMwareToAzStackHCIPolicyModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VMwareToAzStackHCIPolicyModelCustomPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareToAzStackHCIPolicyModelCustomPropertiesResponse(
-      appConsistentFrequencyInMinutes: (map['appConsistentFrequencyInMinutes'] as int).input(),
-      crashConsistentFrequencyInMinutes: (map['crashConsistentFrequencyInMinutes'] as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      recoveryPointHistoryInMinutes: (map['recoveryPointHistoryInMinutes'] as int).input(),
+      appConsistentFrequencyInMinutes: pulumi.Input.fromValue(
+        map['appConsistentFrequencyInMinutes'] as int,
+      ),
+      crashConsistentFrequencyInMinutes: pulumi.Input.fromValue(
+        map['crashConsistentFrequencyInMinutes'] as int,
+      ),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      recoveryPointHistoryInMinutes: pulumi.Input.fromValue(
+        map['recoveryPointHistoryInMinutes'] as int,
+      ),
     );
   }
 }
-

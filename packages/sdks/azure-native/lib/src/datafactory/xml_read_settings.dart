@@ -7,15 +7,20 @@ import 'tar_gzip_read_settings.dart';
 class XmlReadSettings {
   /// Compression settings.
   final pulumi.Input<TarGZipReadSettings>? compressionProperties;
+
   /// Indicates whether type detection is enabled when reading the xml files. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? detectDataType;
+
   /// Namespace uri to prefix mappings to override the prefixes in column names when namespace is enabled, if no prefix is defined for a namespace uri, the prefix of xml element/attribute name in the xml data file will be used. Example: "{"http://www.example.com/xml":"prefix"}" Type: object (or Expression with resultType object).
   final pulumi.Input<dynamic>? namespacePrefixes;
+
   /// Indicates whether namespace is enabled when reading the xml files. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? namespaces;
+
   /// The read setting type.
   /// Expected value is 'XmlReadSettings'.
   final pulumi.Input<String> type;
+
   /// Indicates what validation method is used when reading the xml files. Allowed values: 'none', 'xsd', or 'dtd'. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? validationMode;
 
@@ -37,7 +42,11 @@ class XmlReadSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compressionProperties': ?pulumi.Input.mapOptionalInputValue<TarGZipReadSettings, Map<String, dynamic>>(compressionProperties, (value) => value.toMap()),
+      'compressionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            TarGZipReadSettings,
+            Map<String, dynamic>
+          >(compressionProperties, (value) => value.toMap()),
       'detectDataType': ?detectDataType,
       'namespacePrefixes': ?namespacePrefixes,
       'namespaces': ?namespaces,
@@ -48,13 +57,36 @@ class XmlReadSettings {
 
   factory XmlReadSettings.fromMap(Map<String, dynamic> map) {
     return XmlReadSettings(
-      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettings.fromMap((map['compressionProperties']! as Map).cast<String, dynamic>())).input(),
-      detectDataType: map['detectDataType'] == null ? null : (map['detectDataType']!).input(),
-      namespacePrefixes: map['namespacePrefixes'] == null ? null : (map['namespacePrefixes']!).input(),
-      namespaces: map['namespaces'] == null ? null : (map['namespaces']!).input(),
-      type: (map['type'] as String).input(),
-      validationMode: map['validationMode'] == null ? null : (map['validationMode']!).input(),
+      compressionProperties: (() {
+        final guardedValue = map['compressionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TarGZipReadSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      detectDataType: (() {
+        final guardedValue = map['detectDataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      namespacePrefixes: (() {
+        final guardedValue = map['namespacePrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      namespaces: (() {
+        final guardedValue = map['namespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      validationMode: (() {
+        final guardedValue = map['validationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

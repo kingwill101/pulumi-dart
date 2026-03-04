@@ -14,15 +14,14 @@ class PolicyControllerTemplateLibraryConfigResponseGkehubV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'installation': installation,
-    };
+    return <String, dynamic>{'installation': installation};
   }
 
-  factory PolicyControllerTemplateLibraryConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerTemplateLibraryConfigResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerTemplateLibraryConfigResponseGkehubV1beta(
-      installation: (map['installation'] as String).input(),
+      installation: pulumi.Input.fromValue(map['installation'] as String),
     );
   }
 }
-

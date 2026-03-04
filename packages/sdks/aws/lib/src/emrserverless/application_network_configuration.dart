@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationNetworkConfiguration {
   /// The array of security group Ids for customer VPC connectivity.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// The array of subnet Ids for customer VPC connectivity.
   final pulumi.Input<List<String>>? subnetIds;
 
   /// Creates a new [ApplicationNetworkConfiguration].
   /// [securityGroupIds] The array of security group Ids for customer VPC connectivity.
   /// [subnetIds] The array of subnet Ids for customer VPC connectivity.
-  ApplicationNetworkConfiguration({
-    this.securityGroupIds,
-    this.subnetIds,
-  });
+  ApplicationNetworkConfiguration({this.securityGroupIds, this.subnetIds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class ApplicationNetworkConfiguration {
 
   factory ApplicationNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationNetworkConfiguration(
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

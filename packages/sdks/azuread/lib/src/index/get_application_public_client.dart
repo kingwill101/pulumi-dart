@@ -8,20 +8,17 @@ class GetApplicationPublicClient {
 
   /// Creates a new [GetApplicationPublicClient].
   /// [redirectUris] A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-  GetApplicationPublicClient({
-    required this.redirectUris,
-  });
+  GetApplicationPublicClient({required this.redirectUris});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'redirectUris': redirectUris,
-    };
+    return <String, dynamic>{'redirectUris': redirectUris};
   }
 
   factory GetApplicationPublicClient.fromMap(Map<String, dynamic> map) {
     return GetApplicationPublicClient(
-      redirectUris: ((map['redirectUris'] as List).cast<String>()).input(),
+      redirectUris: pulumi.Input.fromValue(
+        (map['redirectUris'] as List).cast<String>(),
+      ),
     );
   }
 }
-

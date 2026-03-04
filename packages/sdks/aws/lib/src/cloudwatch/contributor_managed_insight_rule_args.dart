@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContributorManagedInsightRuleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
   final pulumi.Input<String> resourceArn;
   final pulumi.Input<String>? state;
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Template name for the managed Contributor Insights rule, as returned by ListManagedInsightRules.
   ///
   /// The following arguments are optional:
@@ -44,12 +46,25 @@ class ContributorManagedInsightRuleArgs {
 
   factory ContributorManagedInsightRuleArgs.fromMap(Map<String, dynamic> map) {
     return ContributorManagedInsightRuleArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceArn: (map['resourceArn'] as String).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      templateName: (map['templateName'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      templateName: pulumi.Input.fromValue(map['templateName'] as String),
     );
   }
 }
-

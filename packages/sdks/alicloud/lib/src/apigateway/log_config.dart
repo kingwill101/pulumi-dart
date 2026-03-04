@@ -6,7 +6,7 @@ import 'log_config_state.dart';
 ///
 /// For information about Api Gateway Log Config and how to use it, see [What is Log Config](https://www.alibabacloud.com/help/en/api-gateway/latest/api-cloudapi-2016-07-14-createlogconfig).
 ///
-/// > **NOTE:** Available since v1.185.0.
+/// &gt; **NOTE:** Available since v1.185.0.
 ///
 /// ## Example Usage
 ///
@@ -274,8 +274,10 @@ import 'log_config_state.dart';
 class LogConfig extends pulumi.CustomResource {
   /// The type the of log. Valid values: `PROVIDER`.
   late final pulumi.Output<String> logType;
+
   /// The name of the Log Store.
   late final pulumi.Output<String> slsLogStore;
+
   /// The name of the Project.
   late final pulumi.Output<String> slsProject;
 
@@ -288,14 +290,14 @@ class LogConfig extends pulumi.CustomResource {
     LogConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/logConfig:LogConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logType = registerOutput<String>('logType');
-    this.slsLogStore = registerOutput<String>('slsLogStore');
-    this.slsProject = registerOutput<String>('slsProject');
+         'alicloud:apigateway/logConfig:LogConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logType = registerOutput<String>('logType');
+    slsLogStore = registerOutput<String>('slsLogStore');
+    slsProject = registerOutput<String>('slsProject');
   }
 
   /// Gets an existing [LogConfig] resource's state with the given [name] and [id].
@@ -316,13 +318,13 @@ class LogConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/logConfig:LogConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logType = registerOutput<String>('logType');
-    this.slsLogStore = registerOutput<String>('slsLogStore');
-    this.slsProject = registerOutput<String>('slsProject');
+         'alicloud:apigateway/logConfig:LogConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logType = registerOutput<String>('logType');
+    slsLogStore = registerOutput<String>('slsLogStore');
+    slsProject = registerOutput<String>('slsProject');
   }
 }

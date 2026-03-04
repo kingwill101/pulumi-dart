@@ -9,20 +9,21 @@ class VirtualNetworkPropertiesResponseIpConfigurationReferences {
 
   /// Creates a new [VirtualNetworkPropertiesResponseIpConfigurationReferences].
   /// [id] IPConfigurationID
-  VirtualNetworkPropertiesResponseIpConfigurationReferences({
-    this.id,
-  });
+  VirtualNetworkPropertiesResponseIpConfigurationReferences({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory VirtualNetworkPropertiesResponseIpConfigurationReferences.fromMap(Map<String, dynamic> map) {
+  factory VirtualNetworkPropertiesResponseIpConfigurationReferences.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNetworkPropertiesResponseIpConfigurationReferences(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

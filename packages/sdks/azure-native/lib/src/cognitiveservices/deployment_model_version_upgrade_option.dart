@@ -4,16 +4,17 @@ enum DeploymentModelVersionUpgradeOption {
   valueOnceCurrentVersionExpired("OnceCurrentVersionExpired"),
   valueNoAutoUpgrade("NoAutoUpgrade");
 
-  const DeploymentModelVersionUpgradeOption(this.value);
-  final String value;
+  const DeploymentModelVersionUpgradeOption(this.wireValue);
+  final String wireValue;
 
   static DeploymentModelVersionUpgradeOption fromValue(String value) {
     for (final item in DeploymentModelVersionUpgradeOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeploymentModelVersionUpgradeOption value: $value');
+    throw ArgumentError(
+      'Unknown DeploymentModelVersionUpgradeOption value: $value',
+    );
   }
 }
-

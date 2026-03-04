@@ -5,15 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceSecurity {
   /// Should SSL 3.0 be enabled on the backend of the gateway? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30` field
   final pulumi.Input<bool>? backendSsl30Enabled;
+
   /// Should TLS 1.0 be enabled on the backend of the gateway? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` field
   final pulumi.Input<bool>? backendTls10Enabled;
+
   /// Should TLS 1.1 be enabled on the backend of the gateway? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` field
   final pulumi.Input<bool>? backendTls11Enabled;
   final pulumi.Input<bool>? enableBackendSsl30;
   final pulumi.Input<bool>? enableBackendTls10;
@@ -21,61 +23,75 @@ class ServiceSecurity {
   final pulumi.Input<bool>? enableFrontendSsl30;
   final pulumi.Input<bool>? enableFrontendTls10;
   final pulumi.Input<bool>? enableFrontendTls11;
+
   /// Should SSL 3.0 be enabled on the frontend of the gateway? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30` field
   final pulumi.Input<bool>? frontendSsl30Enabled;
+
   /// Should TLS 1.0 be enabled on the frontend of the gateway? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` field
   final pulumi.Input<bool>? frontendTls10Enabled;
+
   /// Should TLS 1.1 be enabled on the frontend of the gateway? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` field
   final pulumi.Input<bool>? frontendTls11Enabled;
+
   /// Should the `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA` field
   final pulumi.Input<bool>? tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled;
+
   /// Should the `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA` field
   final pulumi.Input<bool>? tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled;
+
   /// Should the `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA` field
   final pulumi.Input<bool>? tlsEcdheRsaWithAes128CbcShaCiphersEnabled;
+
   /// Should the `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA` field
   final pulumi.Input<bool>? tlsEcdheRsaWithAes256CbcShaCiphersEnabled;
+
   /// Should the `TLS_RSA_WITH_AES_128_CBC_SHA256` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256` field
   final pulumi.Input<bool>? tlsRsaWithAes128CbcSha256CiphersEnabled;
+
   /// Should the `TLS_RSA_WITH_AES_128_CBC_SHA` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA` field
   final pulumi.Input<bool>? tlsRsaWithAes128CbcShaCiphersEnabled;
+
   /// Should the `TLS_RSA_WITH_AES_128_GCM_SHA256` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256` field
   final pulumi.Input<bool>? tlsRsaWithAes128GcmSha256CiphersEnabled;
+
   /// Should the `TLS_RSA_WITH_AES_256_CBC_SHA256` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256` field
   final pulumi.Input<bool>? tlsRsaWithAes256CbcSha256CiphersEnabled;
+
   /// Should the `TLS_RSA_WITH_AES_256_CBC_SHA` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA` field
   final pulumi.Input<bool>? tlsRsaWithAes256CbcShaCiphersEnabled;
+
   /// Should the `TLS_RSA_WITH_AES_256_GCM_SHA384` cipher be enabled? Defaults to `false`.
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_GCM_SHA384` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_GCM_SHA384` field
   final pulumi.Input<bool>? tlsRsaWithAes256GcmSha384CiphersEnabled;
+
   /// Should the `TLS_RSA_WITH_3DES_EDE_CBC_SHA` cipher be enabled for alL TLS versions (1.0, 1.1 and 1.2)?
   ///
-  /// > **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` field
+  /// &gt; **Note:** This maps to the `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` field
   final pulumi.Input<bool>? tripleDesCiphersEnabled;
 
   /// Creates a new [ServiceSecurity].
@@ -142,46 +158,147 @@ class ServiceSecurity {
       'frontendSsl30Enabled': ?frontendSsl30Enabled,
       'frontendTls10Enabled': ?frontendTls10Enabled,
       'frontendTls11Enabled': ?frontendTls11Enabled,
-      'tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled': ?tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled,
-      'tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled': ?tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled,
-      'tlsEcdheRsaWithAes128CbcShaCiphersEnabled': ?tlsEcdheRsaWithAes128CbcShaCiphersEnabled,
-      'tlsEcdheRsaWithAes256CbcShaCiphersEnabled': ?tlsEcdheRsaWithAes256CbcShaCiphersEnabled,
-      'tlsRsaWithAes128CbcSha256CiphersEnabled': ?tlsRsaWithAes128CbcSha256CiphersEnabled,
-      'tlsRsaWithAes128CbcShaCiphersEnabled': ?tlsRsaWithAes128CbcShaCiphersEnabled,
-      'tlsRsaWithAes128GcmSha256CiphersEnabled': ?tlsRsaWithAes128GcmSha256CiphersEnabled,
-      'tlsRsaWithAes256CbcSha256CiphersEnabled': ?tlsRsaWithAes256CbcSha256CiphersEnabled,
-      'tlsRsaWithAes256CbcShaCiphersEnabled': ?tlsRsaWithAes256CbcShaCiphersEnabled,
-      'tlsRsaWithAes256GcmSha384CiphersEnabled': ?tlsRsaWithAes256GcmSha384CiphersEnabled,
+      'tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled':
+          ?tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled,
+      'tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled':
+          ?tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled,
+      'tlsEcdheRsaWithAes128CbcShaCiphersEnabled':
+          ?tlsEcdheRsaWithAes128CbcShaCiphersEnabled,
+      'tlsEcdheRsaWithAes256CbcShaCiphersEnabled':
+          ?tlsEcdheRsaWithAes256CbcShaCiphersEnabled,
+      'tlsRsaWithAes128CbcSha256CiphersEnabled':
+          ?tlsRsaWithAes128CbcSha256CiphersEnabled,
+      'tlsRsaWithAes128CbcShaCiphersEnabled':
+          ?tlsRsaWithAes128CbcShaCiphersEnabled,
+      'tlsRsaWithAes128GcmSha256CiphersEnabled':
+          ?tlsRsaWithAes128GcmSha256CiphersEnabled,
+      'tlsRsaWithAes256CbcSha256CiphersEnabled':
+          ?tlsRsaWithAes256CbcSha256CiphersEnabled,
+      'tlsRsaWithAes256CbcShaCiphersEnabled':
+          ?tlsRsaWithAes256CbcShaCiphersEnabled,
+      'tlsRsaWithAes256GcmSha384CiphersEnabled':
+          ?tlsRsaWithAes256GcmSha384CiphersEnabled,
       'tripleDesCiphersEnabled': ?tripleDesCiphersEnabled,
     };
   }
 
   factory ServiceSecurity.fromMap(Map<String, dynamic> map) {
     return ServiceSecurity(
-      backendSsl30Enabled: map['backendSsl30Enabled'] == null ? null : (map['backendSsl30Enabled']! as bool).input(),
-      backendTls10Enabled: map['backendTls10Enabled'] == null ? null : (map['backendTls10Enabled']! as bool).input(),
-      backendTls11Enabled: map['backendTls11Enabled'] == null ? null : (map['backendTls11Enabled']! as bool).input(),
-      enableBackendSsl30: map['enableBackendSsl30'] == null ? null : (map['enableBackendSsl30']! as bool).input(),
-      enableBackendTls10: map['enableBackendTls10'] == null ? null : (map['enableBackendTls10']! as bool).input(),
-      enableBackendTls11: map['enableBackendTls11'] == null ? null : (map['enableBackendTls11']! as bool).input(),
-      enableFrontendSsl30: map['enableFrontendSsl30'] == null ? null : (map['enableFrontendSsl30']! as bool).input(),
-      enableFrontendTls10: map['enableFrontendTls10'] == null ? null : (map['enableFrontendTls10']! as bool).input(),
-      enableFrontendTls11: map['enableFrontendTls11'] == null ? null : (map['enableFrontendTls11']! as bool).input(),
-      frontendSsl30Enabled: map['frontendSsl30Enabled'] == null ? null : (map['frontendSsl30Enabled']! as bool).input(),
-      frontendTls10Enabled: map['frontendTls10Enabled'] == null ? null : (map['frontendTls10Enabled']! as bool).input(),
-      frontendTls11Enabled: map['frontendTls11Enabled'] == null ? null : (map['frontendTls11Enabled']! as bool).input(),
-      tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled: map['tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled'] == null ? null : (map['tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled']! as bool).input(),
-      tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled: map['tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled'] == null ? null : (map['tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled']! as bool).input(),
-      tlsEcdheRsaWithAes128CbcShaCiphersEnabled: map['tlsEcdheRsaWithAes128CbcShaCiphersEnabled'] == null ? null : (map['tlsEcdheRsaWithAes128CbcShaCiphersEnabled']! as bool).input(),
-      tlsEcdheRsaWithAes256CbcShaCiphersEnabled: map['tlsEcdheRsaWithAes256CbcShaCiphersEnabled'] == null ? null : (map['tlsEcdheRsaWithAes256CbcShaCiphersEnabled']! as bool).input(),
-      tlsRsaWithAes128CbcSha256CiphersEnabled: map['tlsRsaWithAes128CbcSha256CiphersEnabled'] == null ? null : (map['tlsRsaWithAes128CbcSha256CiphersEnabled']! as bool).input(),
-      tlsRsaWithAes128CbcShaCiphersEnabled: map['tlsRsaWithAes128CbcShaCiphersEnabled'] == null ? null : (map['tlsRsaWithAes128CbcShaCiphersEnabled']! as bool).input(),
-      tlsRsaWithAes128GcmSha256CiphersEnabled: map['tlsRsaWithAes128GcmSha256CiphersEnabled'] == null ? null : (map['tlsRsaWithAes128GcmSha256CiphersEnabled']! as bool).input(),
-      tlsRsaWithAes256CbcSha256CiphersEnabled: map['tlsRsaWithAes256CbcSha256CiphersEnabled'] == null ? null : (map['tlsRsaWithAes256CbcSha256CiphersEnabled']! as bool).input(),
-      tlsRsaWithAes256CbcShaCiphersEnabled: map['tlsRsaWithAes256CbcShaCiphersEnabled'] == null ? null : (map['tlsRsaWithAes256CbcShaCiphersEnabled']! as bool).input(),
-      tlsRsaWithAes256GcmSha384CiphersEnabled: map['tlsRsaWithAes256GcmSha384CiphersEnabled'] == null ? null : (map['tlsRsaWithAes256GcmSha384CiphersEnabled']! as bool).input(),
-      tripleDesCiphersEnabled: map['tripleDesCiphersEnabled'] == null ? null : (map['tripleDesCiphersEnabled']! as bool).input(),
+      backendSsl30Enabled: (() {
+        final guardedValue = map['backendSsl30Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      backendTls10Enabled: (() {
+        final guardedValue = map['backendTls10Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      backendTls11Enabled: (() {
+        final guardedValue = map['backendTls11Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableBackendSsl30: (() {
+        final guardedValue = map['enableBackendSsl30'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableBackendTls10: (() {
+        final guardedValue = map['enableBackendTls10'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableBackendTls11: (() {
+        final guardedValue = map['enableBackendTls11'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableFrontendSsl30: (() {
+        final guardedValue = map['enableFrontendSsl30'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableFrontendTls10: (() {
+        final guardedValue = map['enableFrontendTls10'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableFrontendTls11: (() {
+        final guardedValue = map['enableFrontendTls11'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      frontendSsl30Enabled: (() {
+        final guardedValue = map['frontendSsl30Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      frontendTls10Enabled: (() {
+        final guardedValue = map['frontendTls10Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      frontendTls11Enabled: (() {
+        final guardedValue = map['frontendTls11Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled: (() {
+        final guardedValue = map['tlsEcdheEcdsaWithAes128CbcShaCiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled: (() {
+        final guardedValue = map['tlsEcdheEcdsaWithAes256CbcShaCiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsEcdheRsaWithAes128CbcShaCiphersEnabled: (() {
+        final guardedValue = map['tlsEcdheRsaWithAes128CbcShaCiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsEcdheRsaWithAes256CbcShaCiphersEnabled: (() {
+        final guardedValue = map['tlsEcdheRsaWithAes256CbcShaCiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsRsaWithAes128CbcSha256CiphersEnabled: (() {
+        final guardedValue = map['tlsRsaWithAes128CbcSha256CiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsRsaWithAes128CbcShaCiphersEnabled: (() {
+        final guardedValue = map['tlsRsaWithAes128CbcShaCiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsRsaWithAes128GcmSha256CiphersEnabled: (() {
+        final guardedValue = map['tlsRsaWithAes128GcmSha256CiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsRsaWithAes256CbcSha256CiphersEnabled: (() {
+        final guardedValue = map['tlsRsaWithAes256CbcSha256CiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsRsaWithAes256CbcShaCiphersEnabled: (() {
+        final guardedValue = map['tlsRsaWithAes256CbcShaCiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsRsaWithAes256GcmSha384CiphersEnabled: (() {
+        final guardedValue = map['tlsRsaWithAes256GcmSha384CiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tripleDesCiphersEnabled: (() {
+        final guardedValue = map['tripleDesCiphersEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

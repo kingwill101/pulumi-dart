@@ -9,20 +9,15 @@ class PathOverrideResponse {
 
   /// Creates a new [PathOverrideResponse].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  PathOverrideResponse({
-    required this.path,
-  });
+  PathOverrideResponse({required this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
   factory PathOverrideResponse.fromMap(Map<String, dynamic> map) {
     return PathOverrideResponse(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

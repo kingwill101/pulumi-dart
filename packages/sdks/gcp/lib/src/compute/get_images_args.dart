@@ -11,6 +11,7 @@ class GetImagesArgs {
   ///
   /// - - -
   final pulumi.Input<String>? filter;
+
   /// The project in which the resource belongs. If it is not
   /// provided, the provider project is used. If you are using a
   /// [public base image][pubimg], be sure to specify the correct Image Project.
@@ -19,23 +20,24 @@ class GetImagesArgs {
   /// Creates a new [GetImagesArgs].
   /// [filter] Filter for the images to be returned by the data source. Syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
   /// [project] The project in which the resource belongs. If it is not
-  GetImagesArgs({
-    this.filter,
-    this.project,
-  });
+  GetImagesArgs({this.filter, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': ?filter,
-      'project': ?project,
-    };
+    return <String, dynamic>{'filter': ?filter, 'project': ?project};
   }
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

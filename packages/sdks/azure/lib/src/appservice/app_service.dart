@@ -2,20 +2,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_args.dart';
 import 'app_service_auth_settings.dart';
 import 'app_service_backup.dart';
-import 'app_service_connection_string.dart';
 import 'app_service_identity.dart';
 import 'app_service_logs.dart';
 import 'app_service_site_config.dart';
-import 'app_service_site_credential.dart';
 import 'app_service_source_control.dart';
 import 'app_service_state.dart';
-import 'app_service_storage_account.dart';
 
 /// Manages an App Service (within an App Service Plan).
 ///
-/// !> **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` resources instead.
+/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxWebApp` and `azure.appservice.WindowsWebApp` resources instead.
 ///
-/// > **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
+/// &gt; **Note:** When using Slots - the `app_settings`, `connection_string` and `site_config` blocks on the `azure.appservice.AppService` resource will be overwritten when promoting a Slot using the `azure.appservice.ActiveSlot` resource.
 ///
 /// ## Example Usage
 ///
@@ -312,56 +309,82 @@ import 'app_service_storage_account.dart';
 class AppService extends pulumi.CustomResource {
   /// The ID of the App Service Plan within which to create this App Service.
   late final pulumi.Output<String> appServicePlanId;
+
   /// A key-value pair of App Settings.
   late final pulumi.Output<Map<String, String>> appSettings;
+
   /// A `auth_settings` block as defined below.
   late final pulumi.Output<AppServiceAuthSettings> authSettings;
+
   /// A `backup` block as defined below.
   late final pulumi.Output<AppServiceBackup?> backup;
+
   /// Should the App Service send session affinity cookies, which route client requests in the same session to the same instance?
   late final pulumi.Output<bool?> clientAffinityEnabled;
+
   /// Does the App Service require client certificates for incoming requests? Defaults to `false`.
   late final pulumi.Output<bool?> clientCertEnabled;
+
   /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `client_cert_enabled` must be set to `true`, otherwise this parameter is ignored.
   late final pulumi.Output<String> clientCertMode;
+
   /// One or more `connection_string` blocks as defined below.
-  late final pulumi.Output<List<AppServiceConnectionString>> connectionStrings;
+  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
+
   /// The Default Hostname associated with the App Service - such as `mysite.azurewebsites.net`
   late final pulumi.Output<String> defaultSiteHostname;
+
   /// Is the App Service Enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Can the App Service only be accessed via HTTPS? Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<AppServiceIdentity?> identity;
+
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
   late final pulumi.Output<String> keyVaultReferenceIdentityId;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `logs` block as defined below.
   late final pulumi.Output<AppServiceLogs> logs;
+
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
   late final pulumi.Output<List<String>> outboundIpAddressLists;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   late final pulumi.Output<String> outboundIpAddresses;
+
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outbound_ip_address_list`.
   late final pulumi.Output<List<String>> possibleOutboundIpAddressLists;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
+
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `site_config` block as defined below.
   late final pulumi.Output<AppServiceSiteConfig> siteConfig;
+
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
-  late final pulumi.Output<List<AppServiceSiteCredential>> siteCredentials;
+  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+
   /// A `source_control` block as defined below.
   late final pulumi.Output<AppServiceSourceControl> sourceControl;
+
   /// One or more `storage_account` blocks as defined below.
-  late final pulumi.Output<List<AppServiceStorageAccount>> storageAccounts;
+  late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -374,38 +397,54 @@ class AppService extends pulumi.CustomResource {
     AppServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/appService:AppService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServicePlanId = registerOutput<String>('appServicePlanId');
-    this.appSettings = registerOutput<Map<String, String>>('appSettings');
-    this.authSettings = registerOutput<AppServiceAuthSettings>('authSettings');
-    this.backup = registerOutput<AppServiceBackup?>('backup');
-    this.clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
-    this.clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
-    this.clientCertMode = registerOutput<String>('clientCertMode');
-    this.connectionStrings = registerOutput<List<AppServiceConnectionString>>('connectionStrings');
-    this.customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
-    this.defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<AppServiceIdentity?>('identity');
-    this.keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
-    this.location = registerOutput<String>('location');
-    this.logs = registerOutput<AppServiceLogs>('logs');
+         'azure:appservice/appService:AppService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings');
+    authSettings = registerOutput<AppServiceAuthSettings>('authSettings');
+    backup = registerOutput<AppServiceBackup?>('backup');
+    clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
+    clientCertMode = registerOutput<String>('clientCertMode');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    customDomainVerificationId = registerOutput<String>(
+      'customDomainVerificationId',
+    );
+    defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
+    enabled = registerOutput<bool?>('enabled');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<AppServiceIdentity?>('identity');
+    keyVaultReferenceIdentityId = registerOutput<String>(
+      'keyVaultReferenceIdentityId',
+    );
+    location = registerOutput<String>('location');
+    logs = registerOutput<AppServiceLogs>('logs');
     this.name = registerOutput<String>('name');
-    this.outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
-    this.outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    this.possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
-    this.possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<AppServiceSiteCredential>>('siteCredentials');
-    this.sourceControl = registerOutput<AppServiceSourceControl>('sourceControl');
-    this.storageAccounts = registerOutput<List<AppServiceStorageAccount>>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    outboundIpAddressLists = registerOutput<List<String>>(
+      'outboundIpAddressLists',
+    );
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>(
+      'possibleOutboundIpAddressLists',
+    );
+    possibleOutboundIpAddresses = registerOutput<String>(
+      'possibleOutboundIpAddresses',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    sourceControl = registerOutput<AppServiceSourceControl>('sourceControl');
+    storageAccounts = registerOutput<List<Map<String, dynamic>>>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [AppService] resource's state with the given [name] and [id].
@@ -426,37 +465,53 @@ class AppService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/appService:AppService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServicePlanId = registerOutput<String>('appServicePlanId');
-    this.appSettings = registerOutput<Map<String, String>>('appSettings');
-    this.authSettings = registerOutput<AppServiceAuthSettings>('authSettings');
-    this.backup = registerOutput<AppServiceBackup?>('backup');
-    this.clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
-    this.clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
-    this.clientCertMode = registerOutput<String>('clientCertMode');
-    this.connectionStrings = registerOutput<List<AppServiceConnectionString>>('connectionStrings');
-    this.customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
-    this.defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<AppServiceIdentity?>('identity');
-    this.keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
-    this.location = registerOutput<String>('location');
-    this.logs = registerOutput<AppServiceLogs>('logs');
+         'azure:appservice/appService:AppService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings');
+    authSettings = registerOutput<AppServiceAuthSettings>('authSettings');
+    backup = registerOutput<AppServiceBackup?>('backup');
+    clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
+    clientCertMode = registerOutput<String>('clientCertMode');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    customDomainVerificationId = registerOutput<String>(
+      'customDomainVerificationId',
+    );
+    defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
+    enabled = registerOutput<bool?>('enabled');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<AppServiceIdentity?>('identity');
+    keyVaultReferenceIdentityId = registerOutput<String>(
+      'keyVaultReferenceIdentityId',
+    );
+    location = registerOutput<String>('location');
+    logs = registerOutput<AppServiceLogs>('logs');
     this.name = registerOutput<String>('name');
-    this.outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
-    this.outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    this.possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
-    this.possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<AppServiceSiteCredential>>('siteCredentials');
-    this.sourceControl = registerOutput<AppServiceSourceControl>('sourceControl');
-    this.storageAccounts = registerOutput<List<AppServiceStorageAccount>>('storageAccounts');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    outboundIpAddressLists = registerOutput<List<String>>(
+      'outboundIpAddressLists',
+    );
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>(
+      'possibleOutboundIpAddressLists',
+    );
+    possibleOutboundIpAddresses = registerOutput<String>(
+      'possibleOutboundIpAddresses',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<AppServiceSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    sourceControl = registerOutput<AppServiceSourceControl>('sourceControl');
+    storageAccounts = registerOutput<List<Map<String, dynamic>>>(
+      'storageAccounts',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

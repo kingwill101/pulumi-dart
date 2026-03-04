@@ -9,20 +9,19 @@ class PropertiesResponseLockbox {
 
   /// Creates a new [PropertiesResponseLockbox].
   /// [state] lockbox configuration
-  PropertiesResponseLockbox({
-    this.state,
-  });
+  PropertiesResponseLockbox({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory PropertiesResponseLockbox.fromMap(Map<String, dynamic> map) {
     return PropertiesResponseLockbox(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

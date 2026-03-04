@@ -8,9 +8,7 @@ class PipelineParallelismConfiguration {
 
   /// Creates a new [PipelineParallelismConfiguration].
   /// [maxParallelExecutionSteps] The max number of steps that can be executed in parallel.
-  PipelineParallelismConfiguration({
-    required this.maxParallelExecutionSteps,
-  });
+  PipelineParallelismConfiguration({required this.maxParallelExecutionSteps});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,9 @@ class PipelineParallelismConfiguration {
 
   factory PipelineParallelismConfiguration.fromMap(Map<String, dynamic> map) {
     return PipelineParallelismConfiguration(
-      maxParallelExecutionSteps: (map['maxParallelExecutionSteps'] as int).input(),
+      maxParallelExecutionSteps: pulumi.Input.fromValue(
+        map['maxParallelExecutionSteps'] as int,
+      ),
     );
   }
 }
-

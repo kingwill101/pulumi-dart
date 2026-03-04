@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SamplingSettingsResponse {
   /// Rate of sampling for fixed-rate sampling.
   final pulumi.Input<double>? percentage;
+
   /// Sampling type.
   final pulumi.Input<String>? samplingType;
 
   /// Creates a new [SamplingSettingsResponse].
   /// [percentage] Rate of sampling for fixed-rate sampling.
   /// [samplingType] Sampling type.
-  SamplingSettingsResponse({
-    this.percentage,
-    this.samplingType,
-  });
+  SamplingSettingsResponse({this.percentage, this.samplingType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SamplingSettingsResponse {
 
   factory SamplingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SamplingSettingsResponse(
-      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
-      samplingType: map['samplingType'] == null ? null : (map['samplingType']! as String).input(),
+      percentage: (() {
+        final guardedValue = map['percentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      samplingType: (() {
+        final guardedValue = map['samplingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

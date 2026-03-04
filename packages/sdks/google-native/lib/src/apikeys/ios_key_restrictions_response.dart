@@ -9,20 +9,17 @@ class IosKeyRestrictionsResponse {
 
   /// Creates a new [IosKeyRestrictionsResponse].
   /// [allowedBundleIds] A list of bundle IDs that are allowed when making API calls with this key.
-  IosKeyRestrictionsResponse({
-    required this.allowedBundleIds,
-  });
+  IosKeyRestrictionsResponse({required this.allowedBundleIds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedBundleIds': allowedBundleIds,
-    };
+    return <String, dynamic>{'allowedBundleIds': allowedBundleIds};
   }
 
   factory IosKeyRestrictionsResponse.fromMap(Map<String, dynamic> map) {
     return IosKeyRestrictionsResponse(
-      allowedBundleIds: ((map['allowedBundleIds'] as List).cast<String>()).input(),
+      allowedBundleIds: pulumi.Input.fromValue(
+        (map['allowedBundleIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

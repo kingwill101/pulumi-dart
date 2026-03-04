@@ -29,12 +29,19 @@ class GetRegionNotificationEndpointComputeBetaArgs {
     };
   }
 
-  factory GetRegionNotificationEndpointComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRegionNotificationEndpointComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionNotificationEndpointComputeBetaArgs(
-      notificationEndpoint: (map['notificationEndpoint'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      notificationEndpoint: pulumi.Input.fromValue(
+        map['notificationEndpoint'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

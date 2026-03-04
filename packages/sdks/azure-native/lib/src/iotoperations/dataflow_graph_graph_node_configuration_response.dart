@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataflowGraphGraphNodeConfigurationResponse {
   /// Key of the configuration.
   final pulumi.Input<String> key;
+
   /// Value of the configuration.
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class DataflowGraphGraphNodeConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory DataflowGraphGraphNodeConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory DataflowGraphGraphNodeConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowGraphGraphNodeConfigurationResponse(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

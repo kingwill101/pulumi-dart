@@ -7,8 +7,10 @@ import 'secret_response_metastore_v1beta.dart';
 class KerberosConfigResponseMetastoreV1beta {
   /// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
   final pulumi.Input<SecretResponseMetastoreV1beta> keytab;
+
   /// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
   final pulumi.Input<String> krb5ConfigGcsUri;
+
   /// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
   final pulumi.Input<String> principal;
 
@@ -24,18 +26,29 @@ class KerberosConfigResponseMetastoreV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keytab': pulumi.Input.mapInputValue<SecretResponseMetastoreV1beta, Map<String, dynamic>>(keytab, (value) => value.toMap()),
+      'keytab':
+          pulumi.Input.mapInputValue<
+            SecretResponseMetastoreV1beta,
+            Map<String, dynamic>
+          >(keytab, (value) => value.toMap()),
       'krb5ConfigGcsUri': krb5ConfigGcsUri,
       'principal': principal,
     };
   }
 
-  factory KerberosConfigResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
+  factory KerberosConfigResponseMetastoreV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KerberosConfigResponseMetastoreV1beta(
-      keytab: (SecretResponseMetastoreV1beta.fromMap((map['keytab'] as Map).cast<String, dynamic>())).input(),
-      krb5ConfigGcsUri: (map['krb5ConfigGcsUri'] as String).input(),
-      principal: (map['principal'] as String).input(),
+      keytab: pulumi.Input.fromValue(
+        SecretResponseMetastoreV1beta.fromMap(
+          (map['keytab']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      krb5ConfigGcsUri: pulumi.Input.fromValue(
+        map['krb5ConfigGcsUri'] as String,
+      ),
+      principal: pulumi.Input.fromValue(map['principal'] as String),
     );
   }
 }
-

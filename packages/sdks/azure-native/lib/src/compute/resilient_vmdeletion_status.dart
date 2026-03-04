@@ -5,16 +5,15 @@ enum ResilientVMDeletionStatus {
   inProgress("InProgress"),
   failed("Failed");
 
-  const ResilientVMDeletionStatus(this.value);
-  final String value;
+  const ResilientVMDeletionStatus(this.wireValue);
+  final String wireValue;
 
   static ResilientVMDeletionStatus fromValue(String value) {
     for (final item in ResilientVMDeletionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResilientVMDeletionStatus value: $value');
   }
 }
-

@@ -4,31 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of Owner
 class Owner {
-  /// <p>Container for the display name of the owner. This value is only supported in the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N. Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul> <note> <p>This functionality is not supported for directory buckets.</p> </note>
+  /// &lt;p&gt;Container for the display name of the owner. This value is only supported in the following Amazon Web Services Regions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;US East (N. Virginia)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (N. California)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (Oregon)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Singapore)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Sydney)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Tokyo)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Europe (Ireland)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;South America (São Paulo)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;This functionality is not supported for directory buckets.&lt;/p&gt; &lt;/note&gt;
   final pulumi.Input<String>? displayName;
-  /// <p>Container for the ID of the owner.</p>
+
+  /// &lt;p&gt;Container for the ID of the owner.&lt;/p&gt;
   final pulumi.Input<String>? id;
 
   /// Creates a new [Owner].
-  /// [displayName] <p>Container for the display name of the owner. This value is only supported in the following Amazon Web Services Regions:</p> <ul> <li> <p>US East (N. Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p>US West (Oregon)</p> </li> <li> <p>Asia Pacific (Singapore)</p> </li> <li> <p>Asia Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul> <note> <p>This functionality is not supported for directory buckets.</p> </note>
-  /// [id] <p>Container for the ID of the owner.</p>
-  Owner({
-    this.displayName,
-    this.id,
-  });
+  /// [displayName] &lt;p&gt;Container for the display name of the owner. This value is only supported in the following Amazon Web Services Regions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;US East (N. Virginia)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (N. California)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (Oregon)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Singapore)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Sydney)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Tokyo)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Europe (Ireland)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;South America (São Paulo)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;This functionality is not supported for directory buckets.&lt;/p&gt; &lt;/note&gt;
+  /// [id] &lt;p&gt;Container for the ID of the owner.&lt;/p&gt;
+  Owner({this.displayName, this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'displayName': ?displayName,
-      'id': ?id,
-    };
+    return <String, dynamic>{'displayName': ?displayName, 'id': ?id};
   }
 
   factory Owner.fromMap(Map<String, dynamic> map) {
     return Owner(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

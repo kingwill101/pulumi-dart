@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'associated_workspace_response.dart';
 import 'capacity_reservation_properties_response.dart';
 import 'cluster_args.dart';
 import 'cluster_sku_response.dart';
@@ -179,37 +178,54 @@ import 'managed_service_identity_response.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   /// The list of Log Analytics workspaces associated with the cluster
-  late final pulumi.Output<List<AssociatedWorkspaceResponse>?> associatedWorkspaces;
+  late final pulumi.Output<List<Map<String, dynamic>>?> associatedWorkspaces;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The cluster's billing type.
   late final pulumi.Output<String?> billingType;
+
   /// Additional properties for capacity reservation
-  late final pulumi.Output<CapacityReservationPropertiesResponse?> capacityReservationProperties;
+  late final pulumi.Output<CapacityReservationPropertiesResponse?>
+  capacityReservationProperties;
+
   /// The ID associated with the cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The cluster creation time
   late final pulumi.Output<String> createdDate;
+
   /// Resource's identity.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
   late final pulumi.Output<bool?> isAvailabilityZonesEnabled;
+
   /// Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'
   late final pulumi.Output<bool?> isDoubleEncryptionEnabled;
+
   /// The associated key properties.
   late final pulumi.Output<KeyVaultPropertiesResponse?> keyVaultProperties;
+
   /// The last time the cluster was updated.
   late final pulumi.Output<String> lastModifiedDate;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the cluster.
   late final pulumi.Output<String> provisioningState;
+
   /// The sku properties.
   late final pulumi.Output<ClusterSkuResponse?> sku;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -222,27 +238,38 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationalinsights:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedWorkspaces = registerOutput<List<AssociatedWorkspaceResponse>?>('associatedWorkspaces');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.billingType = registerOutput<String?>('billingType');
-    this.capacityReservationProperties = registerOutput<CapacityReservationPropertiesResponse?>('capacityReservationProperties');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.isAvailabilityZonesEnabled = registerOutput<bool?>('isAvailabilityZonesEnabled');
-    this.isDoubleEncryptionEnabled = registerOutput<bool?>('isDoubleEncryptionEnabled');
-    this.keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>('keyVaultProperties');
-    this.lastModifiedDate = registerOutput<String>('lastModifiedDate');
-    this.location = registerOutput<String>('location');
+         'azure-native:operationalinsights:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedWorkspaces = registerOutput<List<Map<String, dynamic>>?>(
+      'associatedWorkspaces',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingType = registerOutput<String?>('billingType');
+    capacityReservationProperties =
+        registerOutput<CapacityReservationPropertiesResponse?>(
+          'capacityReservationProperties',
+        );
+    clusterId = registerOutput<String>('clusterId');
+    createdDate = registerOutput<String>('createdDate');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    isAvailabilityZonesEnabled = registerOutput<bool?>(
+      'isAvailabilityZonesEnabled',
+    );
+    isDoubleEncryptionEnabled = registerOutput<bool?>(
+      'isDoubleEncryptionEnabled',
+    );
+    keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>(
+      'keyVaultProperties',
+    );
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<ClusterSkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<ClusterSkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

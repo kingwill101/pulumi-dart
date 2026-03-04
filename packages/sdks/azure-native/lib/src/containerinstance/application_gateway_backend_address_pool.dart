@@ -9,20 +9,21 @@ class ApplicationGatewayBackendAddressPool {
 
   /// Creates a new [ApplicationGatewayBackendAddressPool].
   /// [resource] The application gateway backend address pool ARM resource Id.
-  ApplicationGatewayBackendAddressPool({
-    this.resource,
-  });
+  ApplicationGatewayBackendAddressPool({this.resource});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resource': ?resource,
-    };
+    return <String, dynamic>{'resource': ?resource};
   }
 
-  factory ApplicationGatewayBackendAddressPool.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayBackendAddressPool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayBackendAddressPool(
-      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

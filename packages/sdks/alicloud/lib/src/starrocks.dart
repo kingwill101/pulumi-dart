@@ -1,5 +1,3 @@
-library module_starrocks;
-
 export 'starrocks/instance.dart';
 export 'starrocks/instance_args.dart';
 export 'starrocks/instance_backend_node_group.dart';

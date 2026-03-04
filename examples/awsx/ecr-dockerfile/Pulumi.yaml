@@ -1,0 +1,6 @@
+name: awsx-dart-ts-ecr-dockerfile
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX ECR build from external Dockerfile in Dart.

@@ -3,16 +3,15 @@ enum MultiVmGroupCreateOption {
   valueAutoCreated("AutoCreated"),
   valueUserSpecified("UserSpecified");
 
-  const MultiVmGroupCreateOption(this.value);
-  final String value;
+  const MultiVmGroupCreateOption(this.wireValue);
+  final String wireValue;
 
   static MultiVmGroupCreateOption fromValue(String value) {
     for (final item in MultiVmGroupCreateOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MultiVmGroupCreateOption value: $value');
   }
 }
-

@@ -6,37 +6,50 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomPasswordState {
   /// A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcrypt_hash` will contain a hash of the first 72 bytes.
   final pulumi.Input<String>? bcryptHash;
+
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
-  /// The length of the string desired. The minimum value for length is 1 and, length must also be >= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+
+  /// The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
   final pulumi.Input<int>? length;
+
   /// Include lowercase alphabet characters in the result. Default value is `true`.
   final pulumi.Input<bool>? lower;
+
   /// Minimum number of lowercase alphabet characters in the result. Default value is `0`.
   final pulumi.Input<int>? minLower;
+
   /// Minimum number of numeric characters in the result. Default value is `0`.
   final pulumi.Input<int>? minNumeric;
+
   /// Minimum number of special characters in the result. Default value is `0`.
   final pulumi.Input<int>? minSpecial;
+
   /// Minimum number of uppercase alphabet characters in the result. Default value is `0`.
   final pulumi.Input<int>? minUpper;
+
   /// Include numeric characters in the result. Default value is `true`. If `number`, `upper`, `lower`, and `special` are all configured, at least one of them must be set to `true`. **NOTE**: This is deprecated, use `numeric` instead.
   final pulumi.Input<bool>? number;
+
   /// Include numeric characters in the result. Default value is `true`. If `numeric`, `upper`, `lower`, and `special` are all configured, at least one of them must be set to `true`.
   final pulumi.Input<bool>? numeric;
+
   /// Supply your own list of special characters to use for string generation.  This overrides the default character list in the special argument.  The `special` argument must still be set to true for any overwritten characters to be used in generation.
   final pulumi.Input<String>? overrideSpecial;
+
   /// The generated random string.
   final pulumi.Input<String>? result;
-  /// Include special characters in the result. These are `!@#$%&*()-_=+[]{}<>:?`. Default value is `true`.
+
+  /// Include special characters in the result. These are `!@#$%&*()-_=+[]{}&lt;&gt;:?`. Default value is `true`.
   final pulumi.Input<bool>? special;
+
   /// Include uppercase alphabet characters in the result. Default value is `true`.
   final pulumi.Input<bool>? upper;
 
   /// Creates a new [RandomPasswordState].
   /// [bcryptHash] A bcrypt hash of the generated random string. **NOTE**: If the generated random string is greater than 72 bytes in length, `bcrypt_hash` will contain a hash of the first 72 bytes.
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  /// [length] The length of the string desired. The minimum value for length is 1 and, length must also be >= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
+  /// [length] The length of the string desired. The minimum value for length is 1 and, length must also be &gt;= (`min_upper` + `min_lower` + `min_numeric` + `min_special`).
   /// [lower] Include lowercase alphabet characters in the result. Default value is `true`.
   /// [minLower] Minimum number of lowercase alphabet characters in the result. Default value is `0`.
   /// [minNumeric] Minimum number of numeric characters in the result. Default value is `0`.
@@ -46,7 +59,7 @@ class RandomPasswordState {
   /// [numeric] Include numeric characters in the result. Default value is `true`. If `numeric`, `upper`, `lower`, and `special` are all configured, at least one of them must be set to `true`.
   /// [overrideSpecial] Supply your own list of special characters to use for string generation.  This overrides the default character list in the special argument.  The `special` argument must still be set to true for any overwritten characters to be used in generation.
   /// [result] The generated random string.
-  /// [special] Include special characters in the result. These are `!@#$%&*()-_=+[]{}<>:?`. Default value is `true`.
+  /// [special] Include special characters in the result. These are `!@#$%&*()-_=+[]{}&lt;&gt;:?`. Default value is `true`.
   /// [upper] Include uppercase alphabet characters in the result. Default value is `true`.
   RandomPasswordState({
     this.bcryptHash,
@@ -86,21 +99,78 @@ class RandomPasswordState {
 
   factory RandomPasswordState.fromMap(Map<String, dynamic> map) {
     return RandomPasswordState(
-      bcryptHash: map['bcryptHash'] == null ? null : (map['bcryptHash']! as String).input(),
-      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
-      length: map['length'] == null ? null : (map['length']! as int).input(),
-      lower: map['lower'] == null ? null : (map['lower']! as bool).input(),
-      minLower: map['minLower'] == null ? null : (map['minLower']! as int).input(),
-      minNumeric: map['minNumeric'] == null ? null : (map['minNumeric']! as int).input(),
-      minSpecial: map['minSpecial'] == null ? null : (map['minSpecial']! as int).input(),
-      minUpper: map['minUpper'] == null ? null : (map['minUpper']! as int).input(),
-      number: map['number'] == null ? null : (map['number']! as bool).input(),
-      numeric: map['numeric'] == null ? null : (map['numeric']! as bool).input(),
-      overrideSpecial: map['overrideSpecial'] == null ? null : (map['overrideSpecial']! as String).input(),
-      result: map['result'] == null ? null : (map['result']! as String).input(),
-      special: map['special'] == null ? null : (map['special']! as bool).input(),
-      upper: map['upper'] == null ? null : (map['upper']! as bool).input(),
+      bcryptHash: (() {
+        final guardedValue = map['bcryptHash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keepers: (() {
+        final guardedValue = map['keepers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      length: (() {
+        final guardedValue = map['length'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lower: (() {
+        final guardedValue = map['lower'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      minLower: (() {
+        final guardedValue = map['minLower'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minNumeric: (() {
+        final guardedValue = map['minNumeric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minSpecial: (() {
+        final guardedValue = map['minSpecial'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minUpper: (() {
+        final guardedValue = map['minUpper'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      number: (() {
+        final guardedValue = map['number'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      numeric: (() {
+        final guardedValue = map['numeric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      overrideSpecial: (() {
+        final guardedValue = map['overrideSpecial'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      result: (() {
+        final guardedValue = map['result'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      special: (() {
+        final guardedValue = map['special'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      upper: (() {
+        final guardedValue = map['upper'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

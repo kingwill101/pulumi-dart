@@ -9,20 +9,19 @@ class PartitionedPrefix {
 
   /// Creates a new [PartitionedPrefix].
   /// [partitionDateSource] Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime.
-  PartitionedPrefix({
-    this.partitionDateSource,
-  });
+  PartitionedPrefix({this.partitionDateSource});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'partitionDateSource': ?partitionDateSource,
-    };
+    return <String, dynamic>{'partitionDateSource': ?partitionDateSource};
   }
 
   factory PartitionedPrefix.fromMap(Map<String, dynamic> map) {
     return PartitionedPrefix(
-      partitionDateSource: map['partitionDateSource'] == null ? null : (map['partitionDateSource']! as String).input(),
+      partitionDateSource: (() {
+        final guardedValue = map['partitionDateSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

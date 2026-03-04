@@ -8,10 +8,13 @@ import 'time_series_query_response.dart';
 class TableDataSetResponse {
   /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
   final pulumi.Input<String> minAlignmentPeriod;
+
   /// Optional. Table display options for configuring how the table is rendered.
   final pulumi.Input<TableDisplayOptionsResponse> tableDisplayOptions;
+
   /// Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}."
   final pulumi.Input<String> tableTemplate;
+
   /// Fields for querying time series data from the Stackdriver metrics API.
   final pulumi.Input<TimeSeriesQueryResponse> timeSeriesQuery;
 
@@ -30,19 +33,36 @@ class TableDataSetResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'minAlignmentPeriod': minAlignmentPeriod,
-      'tableDisplayOptions': pulumi.Input.mapInputValue<TableDisplayOptionsResponse, Map<String, dynamic>>(tableDisplayOptions, (value) => value.toMap()),
+      'tableDisplayOptions':
+          pulumi.Input.mapInputValue<
+            TableDisplayOptionsResponse,
+            Map<String, dynamic>
+          >(tableDisplayOptions, (value) => value.toMap()),
       'tableTemplate': tableTemplate,
-      'timeSeriesQuery': pulumi.Input.mapInputValue<TimeSeriesQueryResponse, Map<String, dynamic>>(timeSeriesQuery, (value) => value.toMap()),
+      'timeSeriesQuery':
+          pulumi.Input.mapInputValue<
+            TimeSeriesQueryResponse,
+            Map<String, dynamic>
+          >(timeSeriesQuery, (value) => value.toMap()),
     };
   }
 
   factory TableDataSetResponse.fromMap(Map<String, dynamic> map) {
     return TableDataSetResponse(
-      minAlignmentPeriod: (map['minAlignmentPeriod'] as String).input(),
-      tableDisplayOptions: (TableDisplayOptionsResponse.fromMap((map['tableDisplayOptions'] as Map).cast<String, dynamic>())).input(),
-      tableTemplate: (map['tableTemplate'] as String).input(),
-      timeSeriesQuery: (TimeSeriesQueryResponse.fromMap((map['timeSeriesQuery'] as Map).cast<String, dynamic>())).input(),
+      minAlignmentPeriod: pulumi.Input.fromValue(
+        map['minAlignmentPeriod'] as String,
+      ),
+      tableDisplayOptions: pulumi.Input.fromValue(
+        TableDisplayOptionsResponse.fromMap(
+          (map['tableDisplayOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tableTemplate: pulumi.Input.fromValue(map['tableTemplate'] as String),
+      timeSeriesQuery: pulumi.Input.fromValue(
+        TimeSeriesQueryResponse.fromMap(
+          (map['timeSeriesQuery']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

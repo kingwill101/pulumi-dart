@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyState {
   /// A description for the Policy.
   final pulumi.Input<String>? description;
+
   /// The Evaluation Type used for this Policy. Possible values include: 'AllowedValuesPolicy', 'MaxValuePolicy'. Changing this forces a new resource to be created.
   final pulumi.Input<String>? evaluatorType;
+
   /// The Fact Data for this Policy.
   final pulumi.Input<String>? factData;
+
   /// Specifies the name of the Dev Test Lab in which the Policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? labName;
+
   /// Specifies the name of the Dev Test Policy. Possible values are `GalleryImage`, `LabPremiumVmCount`, `LabTargetCost`, `LabVmCount`, `LabVmSize`, `UserOwnedLabPremiumVmCount`, `UserOwnedLabVmCount` and `UserOwnedLabVmCountInSubnet`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the Policy Set within the Dev Test Lab where this policy should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? policySetName;
+
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The Threshold for this Policy.
   final pulumi.Input<String>? threshold;
 
@@ -61,16 +69,53 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      evaluatorType: map['evaluatorType'] == null ? null : (map['evaluatorType']! as String).input(),
-      factData: map['factData'] == null ? null : (map['factData']! as String).input(),
-      labName: map['labName'] == null ? null : (map['labName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policySetName: map['policySetName'] == null ? null : (map['policySetName']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      evaluatorType: (() {
+        final guardedValue = map['evaluatorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      factData: (() {
+        final guardedValue = map['factData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labName: (() {
+        final guardedValue = map['labName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policySetName: (() {
+        final guardedValue = map['policySetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

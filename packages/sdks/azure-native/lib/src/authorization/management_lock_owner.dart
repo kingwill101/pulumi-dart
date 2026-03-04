@@ -9,20 +9,19 @@ class ManagementLockOwner {
 
   /// Creates a new [ManagementLockOwner].
   /// [applicationId] The application ID of the lock owner.
-  ManagementLockOwner({
-    this.applicationId,
-  });
+  ManagementLockOwner({this.applicationId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'applicationId': ?applicationId,
-    };
+    return <String, dynamic>{'applicationId': ?applicationId};
   }
 
   factory ManagementLockOwner.fromMap(Map<String, dynamic> map) {
     return ManagementLockOwner(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

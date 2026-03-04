@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcscConfigArgs {
   /// The name of the location this config is located in.
   final pulumi.Input<String>? location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The VPC SC policy for project and location.
   /// Possible values are: `DENY`, `ALLOW`.
   final pulumi.Input<String>? vpcscPolicy;
@@ -20,11 +22,7 @@ class VpcscConfigArgs {
   /// [location] The name of the location this config is located in.
   /// [project] The ID of the project in which the resource belongs.
   /// [vpcscPolicy] The VPC SC policy for project and location.
-  VpcscConfigArgs({
-    this.location,
-    this.project,
-    this.vpcscPolicy,
-  });
+  VpcscConfigArgs({this.location, this.project, this.vpcscPolicy});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,21 @@ class VpcscConfigArgs {
 
   factory VpcscConfigArgs.fromMap(Map<String, dynamic> map) {
     return VpcscConfigArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      vpcscPolicy: map['vpcscPolicy'] == null ? null : (map['vpcscPolicy']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcscPolicy: (() {
+        final guardedValue = map['vpcscPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

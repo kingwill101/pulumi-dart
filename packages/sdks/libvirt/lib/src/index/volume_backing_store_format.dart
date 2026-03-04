@@ -8,20 +8,15 @@ class VolumeBackingStoreFormat {
 
   /// Creates a new [VolumeBackingStoreFormat].
   /// [type] Specifies the type of the backing store format used for the storage volume.
-  VolumeBackingStoreFormat({
-    required this.type,
-  });
+  VolumeBackingStoreFormat({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory VolumeBackingStoreFormat.fromMap(Map<String, dynamic> map) {
     return VolumeBackingStoreFormat(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'amazon_mwslinked_service_response.dart';
 class GetLinkedServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Etag identifies change in the resource.
   final String etag;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// Properties of linked service.
   final AmazonMWSLinkedServiceResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -50,9 +55,10 @@ class GetLinkedServiceResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: AmazonMWSLinkedServiceResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: AmazonMWSLinkedServiceResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

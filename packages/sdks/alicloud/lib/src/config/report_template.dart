@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_template_args.dart';
-import 'report_template_report_scope.dart';
 import 'report_template_state.dart';
 
 /// Provides a Cloud Config (Config) Report Template resource.
@@ -9,7 +8,7 @@ import 'report_template_state.dart';
 ///
 /// For information about Cloud Config (Config) Report Template and how to use it, see [What is Report Template](https://next.api.alibabacloud.com/document/Config/2020-09-07/CreateReportTemplate).
 ///
-/// > **NOTE:** Available since v1.266.0.
+/// &gt; **NOTE:** Available since v1.266.0.
 ///
 /// ## Example Usage
 ///
@@ -203,16 +202,22 @@ import 'report_template_state.dart';
 class ReportTemplate extends pulumi.CustomResource {
   /// Report Format
   late final pulumi.Output<String?> reportFileFormats;
+
   /// Report Aggregation Granularity
   late final pulumi.Output<String?> reportGranularity;
+
   /// This property does not have a description in the spec, please add it before generating code.
   late final pulumi.Output<String?> reportLanguage;
+
   /// Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
-  late final pulumi.Output<List<ReportTemplateReportScope>?> reportScopes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> reportScopes;
+
   /// Report Template Description
   late final pulumi.Output<String?> reportTemplateDescription;
+
   /// Report Template Name
   late final pulumi.Output<String> reportTemplateName;
+
   /// Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
   ///
   /// The format is: Seconds, time, day, month, week. The following are examples of commonly used Cron expressions:
@@ -225,9 +230,9 @@ class ReportTemplate extends pulumi.CustomResource {
   /// - What-? Used for day and week fields, indicating that no specific value is specified
   /// - MON means Monday
   ///
-  /// > **NOTE:**  The trigger time is UTC +8, and the settings of the cron expression can be converted according to the time zone.
+  /// &gt; **NOTE:**  The trigger time is UTC +8, and the settings of the cron expression can be converted according to the time zone.
   ///
-  /// > **NOTE:**  It can only be triggered according to the cron expression time as much as possible. The cron expression limits the same template to trigger at most one notification per day.
+  /// &gt; **NOTE:**  It can only be triggered according to the cron expression time as much as possible. The cron expression limits the same template to trigger at most one notification per day.
   late final pulumi.Output<String?> subscriptionFrequency;
 
   /// Creates a new [ReportTemplate].
@@ -239,18 +244,20 @@ class ReportTemplate extends pulumi.CustomResource {
     ReportTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:config/reportTemplate:ReportTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.reportFileFormats = registerOutput<String?>('reportFileFormats');
-    this.reportGranularity = registerOutput<String?>('reportGranularity');
-    this.reportLanguage = registerOutput<String?>('reportLanguage');
-    this.reportScopes = registerOutput<List<ReportTemplateReportScope>?>('reportScopes');
-    this.reportTemplateDescription = registerOutput<String?>('reportTemplateDescription');
-    this.reportTemplateName = registerOutput<String>('reportTemplateName');
-    this.subscriptionFrequency = registerOutput<String?>('subscriptionFrequency');
+         'alicloud:config/reportTemplate:ReportTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    reportFileFormats = registerOutput<String?>('reportFileFormats');
+    reportGranularity = registerOutput<String?>('reportGranularity');
+    reportLanguage = registerOutput<String?>('reportLanguage');
+    reportScopes = registerOutput<List<Map<String, dynamic>>?>('reportScopes');
+    reportTemplateDescription = registerOutput<String?>(
+      'reportTemplateDescription',
+    );
+    reportTemplateName = registerOutput<String>('reportTemplateName');
+    subscriptionFrequency = registerOutput<String?>('subscriptionFrequency');
   }
 
   /// Gets an existing [ReportTemplate] resource's state with the given [name] and [id].
@@ -271,17 +278,19 @@ class ReportTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:config/reportTemplate:ReportTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.reportFileFormats = registerOutput<String?>('reportFileFormats');
-    this.reportGranularity = registerOutput<String?>('reportGranularity');
-    this.reportLanguage = registerOutput<String?>('reportLanguage');
-    this.reportScopes = registerOutput<List<ReportTemplateReportScope>?>('reportScopes');
-    this.reportTemplateDescription = registerOutput<String?>('reportTemplateDescription');
-    this.reportTemplateName = registerOutput<String>('reportTemplateName');
-    this.subscriptionFrequency = registerOutput<String?>('subscriptionFrequency');
+         'alicloud:config/reportTemplate:ReportTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    reportFileFormats = registerOutput<String?>('reportFileFormats');
+    reportGranularity = registerOutput<String?>('reportGranularity');
+    reportLanguage = registerOutput<String?>('reportLanguage');
+    reportScopes = registerOutput<List<Map<String, dynamic>>?>('reportScopes');
+    reportTemplateDescription = registerOutput<String?>(
+      'reportTemplateDescription',
+    );
+    reportTemplateName = registerOutput<String>('reportTemplateName');
+    subscriptionFrequency = registerOutput<String?>('subscriptionFrequency');
   }
 }

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteSupportSessionResponse {
   /// The level of access granted during the remote support session.
   final pulumi.Input<String> accessLevel;
+
   /// The end time of the remote support session, in UTC.
   final pulumi.Input<String> sessionEndTime;
+
   /// Unique session Id.
   final pulumi.Input<String> sessionId;
+
   /// The start time of the remote support session, in UTC.
   final pulumi.Input<String> sessionStartTime;
+
   /// The location where the session transcript is stored.
   final pulumi.Input<String> transcriptLocation;
 
@@ -41,12 +45,15 @@ class RemoteSupportSessionResponse {
 
   factory RemoteSupportSessionResponse.fromMap(Map<String, dynamic> map) {
     return RemoteSupportSessionResponse(
-      accessLevel: (map['accessLevel'] as String).input(),
-      sessionEndTime: (map['sessionEndTime'] as String).input(),
-      sessionId: (map['sessionId'] as String).input(),
-      sessionStartTime: (map['sessionStartTime'] as String).input(),
-      transcriptLocation: (map['transcriptLocation'] as String).input(),
+      accessLevel: pulumi.Input.fromValue(map['accessLevel'] as String),
+      sessionEndTime: pulumi.Input.fromValue(map['sessionEndTime'] as String),
+      sessionId: pulumi.Input.fromValue(map['sessionId'] as String),
+      sessionStartTime: pulumi.Input.fromValue(
+        map['sessionStartTime'] as String,
+      ),
+      transcriptLocation: pulumi.Input.fromValue(
+        map['transcriptLocation'] as String,
+      ),
     );
   }
 }
-

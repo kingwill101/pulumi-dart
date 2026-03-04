@@ -11,29 +11,27 @@ class GetNetworkPeeringConnectionArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetNetworkPeeringConnectionArgs].
   /// [id] The unique identifier of the ODB network peering connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNetworkPeeringConnectionArgs({
-    required this.id,
-    this.region,
-  });
+  GetNetworkPeeringConnectionArgs({required this.id, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'region': ?region,
-    };
+    return <String, dynamic>{'id': id, 'region': ?region};
   }
 
   factory GetNetworkPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionArgs(
-      id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

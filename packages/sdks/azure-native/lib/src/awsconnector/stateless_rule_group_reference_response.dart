@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StatelessRuleGroupReferenceResponse {
   /// Property priority
   final pulumi.Input<int>? priority;
+
   /// A resource ARN.
   final pulumi.Input<String>? resourceArn;
 
   /// Creates a new [StatelessRuleGroupReferenceResponse].
   /// [priority] Property priority
   /// [resourceArn] A resource ARN.
-  StatelessRuleGroupReferenceResponse({
-    this.priority,
-    this.resourceArn,
-  });
+  StatelessRuleGroupReferenceResponse({this.priority, this.resourceArn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class StatelessRuleGroupReferenceResponse {
     };
   }
 
-  factory StatelessRuleGroupReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory StatelessRuleGroupReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StatelessRuleGroupReferenceResponse(
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

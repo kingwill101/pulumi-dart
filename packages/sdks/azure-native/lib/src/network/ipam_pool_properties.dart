@@ -7,8 +7,10 @@ class IpamPoolProperties {
   /// List of IP address prefixes of the resource.
   final pulumi.Input<List<String>> addressPrefixes;
   final pulumi.Input<String>? description;
+
   /// String representing a friendly name for the resource.
   final pulumi.Input<String>? displayName;
+
   /// String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
   final pulumi.Input<String>? parentPoolName;
 
@@ -35,11 +37,24 @@ class IpamPoolProperties {
 
   factory IpamPoolProperties.fromMap(Map<String, dynamic> map) {
     return IpamPoolProperties(
-      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      parentPoolName: map['parentPoolName'] == null ? null : (map['parentPoolName']! as String).input(),
+      addressPrefixes: pulumi.Input.fromValue(
+        (map['addressPrefixes'] as List).cast<String>(),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentPoolName: (() {
+        final guardedValue = map['parentPoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

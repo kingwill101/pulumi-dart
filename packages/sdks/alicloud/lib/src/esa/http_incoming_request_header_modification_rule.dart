@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'http_incoming_request_header_modification_rule_args.dart';
-import 'http_incoming_request_header_modification_rule_request_header_modification.dart';
 import 'http_incoming_request_header_modification_rule_state.dart';
 
 /// Provides a ESA Http Incoming Request Header Modification Rule resource.
@@ -9,7 +8,7 @@ import 'http_incoming_request_header_modification_rule_state.dart';
 ///
 /// For information about ESA Http Incoming Request Header Modification Rule and how to use it, see [What is Http Incoming Request Header Modification Rule](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateHttpIncomingRequestHeaderModificationRule).
 ///
-/// > **NOTE:** Available since v1.266.0.
+/// &gt; **NOTE:** Available since v1.266.0.
 ///
 /// ## Example Usage
 ///
@@ -419,22 +418,30 @@ import 'http_incoming_request_header_modification_rule_state.dart';
 class HttpIncomingRequestHeaderModificationRule extends pulumi.CustomResource {
   /// Config Id
   late final pulumi.Output<int> configId;
+
   /// The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
-  late final pulumi.Output<List<HttpIncomingRequestHeaderModificationRuleRequestHeaderModification>> requestHeaderModifications;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  requestHeaderModifications;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// - on: open.
   /// - off: close.
   late final pulumi.Output<String?> ruleEnable;
+
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
+
   /// Order of rule execution. The smaller the value, the higher the priority for execution.
   late final pulumi.Output<int?> sequence;
+
   /// The site ID.
   late final pulumi.Output<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
 
@@ -447,19 +454,21 @@ class HttpIncomingRequestHeaderModificationRule extends pulumi.CustomResource {
     HttpIncomingRequestHeaderModificationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.requestHeaderModifications = registerOutput<List<HttpIncomingRequestHeaderModificationRuleRequestHeaderModification>>('requestHeaderModifications');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int?>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
+         'alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    requestHeaderModifications = registerOutput<List<Map<String, dynamic>>>(
+      'requestHeaderModifications',
+    );
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int?>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
   }
 
   /// Gets an existing [HttpIncomingRequestHeaderModificationRule] resource's state with the given [name] and [id].
@@ -480,18 +489,20 @@ class HttpIncomingRequestHeaderModificationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.requestHeaderModifications = registerOutput<List<HttpIncomingRequestHeaderModificationRuleRequestHeaderModification>>('requestHeaderModifications');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int?>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
+         'alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    requestHeaderModifications = registerOutput<List<Map<String, dynamic>>>(
+      'requestHeaderModifications',
+    );
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int?>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
   }
 }

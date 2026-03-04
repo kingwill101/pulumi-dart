@@ -3,16 +3,15 @@ enum MigrateRolesAndPermissions {
   true_("True"),
   false_("False");
 
-  const MigrateRolesAndPermissions(this.value);
-  final String value;
+  const MigrateRolesAndPermissions(this.wireValue);
+  final String wireValue;
 
   static MigrateRolesAndPermissions fromValue(String value) {
     for (final item in MigrateRolesAndPermissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MigrateRolesAndPermissions value: $value');
   }
 }
-

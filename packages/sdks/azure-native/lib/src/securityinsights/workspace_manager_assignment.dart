@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'assignment_item_response.dart';
 import 'system_data_response.dart';
 import 'workspace_manager_assignment_args.dart';
 
@@ -188,20 +187,28 @@ import 'workspace_manager_assignment_args.dart';
 class WorkspaceManagerAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource Etag.
   late final pulumi.Output<String> etag;
+
   /// List of resources included in this workspace manager assignment
-  late final pulumi.Output<List<AssignmentItemResponse>> items;
+  late final pulumi.Output<List<Map<String, dynamic>>> items;
+
   /// The time the last job associated to this assignment ended at
   late final pulumi.Output<String> lastJobEndTime;
+
   /// State of the last job associated to this assignment
   late final pulumi.Output<String> lastJobProvisioningState;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource name of the workspace manager group targeted by the workspace manager assignment
   late final pulumi.Output<String> targetResourceName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -214,19 +221,21 @@ class WorkspaceManagerAssignment extends pulumi.CustomResource {
     WorkspaceManagerAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:WorkspaceManagerAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.items = registerOutput<List<AssignmentItemResponse>>('items');
-    this.lastJobEndTime = registerOutput<String>('lastJobEndTime');
-    this.lastJobProvisioningState = registerOutput<String>('lastJobProvisioningState');
+         'azure-native:securityinsights:WorkspaceManagerAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    items = registerOutput<List<Map<String, dynamic>>>('items');
+    lastJobEndTime = registerOutput<String>('lastJobEndTime');
+    lastJobProvisioningState = registerOutput<String>(
+      'lastJobProvisioningState',
+    );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.targetResourceName = registerOutput<String>('targetResourceName');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    targetResourceName = registerOutput<String>('targetResourceName');
+    type = registerOutput<String>('type');
   }
 }

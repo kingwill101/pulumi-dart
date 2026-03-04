@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetSSLProxyArgs {
   /// A reference to the BackendService resource.
   final pulumi.Input<String> backendService;
+
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field can only be set for global target proxies.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
   final pulumi.Input<String>? certificateMap;
+
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -23,18 +26,22 @@ class TargetSSLProxyArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
   final pulumi.Input<String>? proxyHeader;
+
   /// A list of SslCertificate resources that are used to authenticate
   /// connections between users and the load balancer. At least one
   /// SSL certificate must be specified.
   final pulumi.Input<List<String>>? sslCertificates;
+
   /// A reference to the SslPolicy resource that will be associated with
   /// the TargetSslProxy resource. If not set, the TargetSslProxy
   /// resource will not have any SSL policy configured.
@@ -75,15 +82,42 @@ class TargetSSLProxyArgs {
 
   factory TargetSSLProxyArgs.fromMap(Map<String, dynamic> map) {
     return TargetSSLProxyArgs(
-      backendService: (map['backendService'] as String).input(),
-      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (map['proxyHeader']! as String).input(),
-      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates']! as List).cast<String>()).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
+      backendService: pulumi.Input.fromValue(map['backendService'] as String),
+      certificateMap: (() {
+        final guardedValue = map['certificateMap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxyHeader: (() {
+        final guardedValue = map['proxyHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslCertificates: (() {
+        final guardedValue = map['sslCertificates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sslPolicy: (() {
+        final guardedValue = map['sslPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

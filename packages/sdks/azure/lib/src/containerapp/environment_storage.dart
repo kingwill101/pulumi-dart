@@ -348,7 +348,7 @@ import 'environment_storage_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -363,16 +363,22 @@ import 'environment_storage_state.dart';
 class EnvironmentStorage extends pulumi.CustomResource {
   /// The Storage Account Access Key.
   late final pulumi.Output<String?> accessKey;
+
   /// The access mode to connect this storage to the Container App. Possible values include `ReadOnly` and `ReadWrite`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accessMode;
+
   /// The Azure Storage Account in which the Share to be used is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> accountName;
+
   /// The ID of the Container App Environment to which this storage belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppEnvironmentId;
+
   /// The name for this Container App Environment Storage. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The NFS server to use for the Azure File Share, the format will be `yourstorageaccountname.file.core.windows.net`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> nfsServerUrl;
+
   /// The name of the Azure Storage Share to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> shareName;
 
@@ -385,18 +391,20 @@ class EnvironmentStorage extends pulumi.CustomResource {
     EnvironmentStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentStorage:EnvironmentStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String?>('accessKey');
-    this.accessMode = registerOutput<String>('accessMode');
-    this.accountName = registerOutput<String?>('accountName');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+         'azure:containerapp/environmentStorage:EnvironmentStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String?>('accessKey');
+    accessMode = registerOutput<String>('accessMode');
+    accountName = registerOutput<String?>('accountName');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
     this.name = registerOutput<String>('name');
-    this.nfsServerUrl = registerOutput<String?>('nfsServerUrl');
-    this.shareName = registerOutput<String>('shareName');
+    nfsServerUrl = registerOutput<String?>('nfsServerUrl');
+    shareName = registerOutput<String>('shareName');
   }
 
   /// Gets an existing [EnvironmentStorage] resource's state with the given [name] and [id].
@@ -417,17 +425,19 @@ class EnvironmentStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentStorage:EnvironmentStorage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKey = registerOutput<String?>('accessKey');
-    this.accessMode = registerOutput<String>('accessMode');
-    this.accountName = registerOutput<String?>('accountName');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+         'azure:containerapp/environmentStorage:EnvironmentStorage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKey = registerOutput<String?>('accessKey');
+    accessMode = registerOutput<String>('accessMode');
+    accountName = registerOutput<String?>('accountName');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
     this.name = registerOutput<String>('name');
-    this.nfsServerUrl = registerOutput<String?>('nfsServerUrl');
-    this.shareName = registerOutput<String>('shareName');
+    nfsServerUrl = registerOutput<String?>('nfsServerUrl');
+    shareName = registerOutput<String>('shareName');
   }
 }

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerChannelState {
   /// The ID of the consumer group.
   final pulumi.Input<String>? consumerGroupId;
+
   /// The name of the consumer group.
   final pulumi.Input<String>? consumerGroupName;
+
   /// The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
   final pulumi.Input<String>? consumerGroupPassword;
+
   /// The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
   final pulumi.Input<String>? consumerGroupUserName;
+
   /// The ID of the subscription instance.
   final pulumi.Input<String>? dtsInstanceId;
 
@@ -41,12 +45,31 @@ class ConsumerChannelState {
 
   factory ConsumerChannelState.fromMap(Map<String, dynamic> map) {
     return ConsumerChannelState(
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId']! as String).input(),
-      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName']! as String).input(),
-      consumerGroupPassword: map['consumerGroupPassword'] == null ? null : (map['consumerGroupPassword']! as String).input(),
-      consumerGroupUserName: map['consumerGroupUserName'] == null ? null : (map['consumerGroupUserName']! as String).input(),
-      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId']! as String).input(),
+      consumerGroupId: (() {
+        final guardedValue = map['consumerGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerGroupName: (() {
+        final guardedValue = map['consumerGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerGroupPassword: (() {
+        final guardedValue = map['consumerGroupPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerGroupUserName: (() {
+        final guardedValue = map['consumerGroupUserName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dtsInstanceId: (() {
+        final guardedValue = map['dtsInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

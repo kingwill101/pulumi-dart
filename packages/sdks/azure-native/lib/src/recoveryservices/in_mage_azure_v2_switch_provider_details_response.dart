@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageAzureV2SwitchProviderDetailsResponse {
   /// The target appliance Id.
   final pulumi.Input<String> targetApplianceId;
+
   /// The target fabric Id.
   final pulumi.Input<String> targetFabricId;
+
   /// The target resource Id.
   final pulumi.Input<String> targetResourceId;
+
   /// The target vault Id.
   final pulumi.Input<String> targetVaultId;
 
@@ -34,13 +37,18 @@ class InMageAzureV2SwitchProviderDetailsResponse {
     };
   }
 
-  factory InMageAzureV2SwitchProviderDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory InMageAzureV2SwitchProviderDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InMageAzureV2SwitchProviderDetailsResponse(
-      targetApplianceId: (map['targetApplianceId'] as String).input(),
-      targetFabricId: (map['targetFabricId'] as String).input(),
-      targetResourceId: (map['targetResourceId'] as String).input(),
-      targetVaultId: (map['targetVaultId'] as String).input(),
+      targetApplianceId: pulumi.Input.fromValue(
+        map['targetApplianceId'] as String,
+      ),
+      targetFabricId: pulumi.Input.fromValue(map['targetFabricId'] as String),
+      targetResourceId: pulumi.Input.fromValue(
+        map['targetResourceId'] as String,
+      ),
+      targetVaultId: pulumi.Input.fromValue(map['targetVaultId'] as String),
     );
   }
 }
-

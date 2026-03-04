@@ -10,23 +10,24 @@ class KeyCreationTimeResponse {
   /// Creates a new [KeyCreationTimeResponse].
   /// [key1] Optional.
   /// [key2] Optional.
-  KeyCreationTimeResponse({
-    this.key1,
-    this.key2,
-  });
+  KeyCreationTimeResponse({this.key1, this.key2});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key1': ?key1,
-      'key2': ?key2,
-    };
+    return <String, dynamic>{'key1': ?key1, 'key2': ?key2};
   }
 
   factory KeyCreationTimeResponse.fromMap(Map<String, dynamic> map) {
     return KeyCreationTimeResponse(
-      key1: map['key1'] == null ? null : (map['key1']! as String).input(),
-      key2: map['key2'] == null ? null : (map['key2']! as String).input(),
+      key1: (() {
+        final guardedValue = map['key1'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key2: (() {
+        final guardedValue = map['key2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBareMetalMachineArgs {
   /// The name of the bare metal machine.
   final pulumi.Input<String> bareMetalMachineName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetBareMetalMachineArgs {
 
   factory GetBareMetalMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalMachineArgs(
-      bareMetalMachineName: (map['bareMetalMachineName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      bareMetalMachineName: pulumi.Input.fromValue(
+        map['bareMetalMachineName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

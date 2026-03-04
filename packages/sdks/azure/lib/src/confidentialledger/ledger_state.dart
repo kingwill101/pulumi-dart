@@ -7,21 +7,31 @@ import 'ledger_certificate_based_security_principal.dart';
 /// Input properties used for looking up and filtering Ledger resources.
 class LedgerState {
   /// A list of `azuread_based_service_principal` blocks as defined below.
-  final pulumi.Input<List<LedgerAzureadBasedServicePrincipal>>? azureadBasedServicePrincipals;
+  final pulumi.Input<List<LedgerAzureadBasedServicePrincipal>>?
+  azureadBasedServicePrincipals;
+
   /// A list of `certificate_based_security_principal` blocks as defined below.
-  final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>>? certificateBasedSecurityPrincipals;
+  final pulumi.Input<List<LedgerCertificateBasedSecurityPrincipal>>?
+  certificateBasedSecurityPrincipals;
+
   /// The Identity Service Endpoint for this Confidential Ledger.
   final pulumi.Input<String>? identityServiceEndpoint;
+
   /// The Endpoint for this Confidential Ledger.
   final pulumi.Input<String>? ledgerEndpoint;
+
   /// Specifies the type of Confidential Ledger. Possible values are `Private` and `Public`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? ledgerType;
+
   /// Specifies the supported Azure location where the Confidential Ledger exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Confidential Ledger. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Confidential Ledger exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags to assign to the Confidential Ledger.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,8 +59,30 @@ class LedgerState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureadBasedServicePrincipals': ?pulumi.Input.mapOptionalInputValue<List<LedgerAzureadBasedServicePrincipal>, List<Map<String, dynamic>>>(azureadBasedServicePrincipals, (value) => pulumi.Input.encodeList<LedgerAzureadBasedServicePrincipal, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'certificateBasedSecurityPrincipals': ?pulumi.Input.mapOptionalInputValue<List<LedgerCertificateBasedSecurityPrincipal>, List<Map<String, dynamic>>>(certificateBasedSecurityPrincipals, (value) => pulumi.Input.encodeList<LedgerCertificateBasedSecurityPrincipal, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'azureadBasedServicePrincipals':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LedgerAzureadBasedServicePrincipal>,
+            List<Map<String, dynamic>>
+          >(
+            azureadBasedServicePrincipals,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LedgerAzureadBasedServicePrincipal,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'certificateBasedSecurityPrincipals':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LedgerCertificateBasedSecurityPrincipal>,
+            List<Map<String, dynamic>>
+          >(
+            certificateBasedSecurityPrincipals,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LedgerCertificateBasedSecurityPrincipal,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'identityServiceEndpoint': ?identityServiceEndpoint,
       'ledgerEndpoint': ?ledgerEndpoint,
       'ledgerType': ?ledgerType,
@@ -63,16 +95,67 @@ class LedgerState {
 
   factory LedgerState.fromMap(Map<String, dynamic> map) {
     return LedgerState(
-      azureadBasedServicePrincipals: map['azureadBasedServicePrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals']!, (value) => LedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificateBasedSecurityPrincipals: map['certificateBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals']!, (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identityServiceEndpoint: map['identityServiceEndpoint'] == null ? null : (map['identityServiceEndpoint']! as String).input(),
-      ledgerEndpoint: map['ledgerEndpoint'] == null ? null : (map['ledgerEndpoint']! as String).input(),
-      ledgerType: map['ledgerType'] == null ? null : (map['ledgerType']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      azureadBasedServicePrincipals: (() {
+        final guardedValue = map['azureadBasedServicePrincipals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(
+            guardedValue,
+            (value) => LedgerAzureadBasedServicePrincipal.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      certificateBasedSecurityPrincipals: (() {
+        final guardedValue = map['certificateBasedSecurityPrincipals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(
+            guardedValue,
+            (value) => LedgerCertificateBasedSecurityPrincipal.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      identityServiceEndpoint: (() {
+        final guardedValue = map['identityServiceEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ledgerEndpoint: (() {
+        final guardedValue = map['ledgerEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ledgerType: (() {
+        final guardedValue = map['ledgerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

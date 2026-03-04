@@ -41,16 +41,15 @@ enum Runtime {
   ruby2d5("ruby2.5"),
   ruby2d7("ruby2.7");
 
-  const Runtime(this.value);
-  final String value;
+  const Runtime(this.wireValue);
+  final String wireValue;
 
   static Runtime fromValue(String value) {
     for (final item in Runtime.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Runtime value: $value');
   }
 }
-

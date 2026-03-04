@@ -31,11 +31,10 @@ class GetAclsAclRelatedListener {
 
   factory GetAclsAclRelatedListener.fromMap(Map<String, dynamic> map) {
     return GetAclsAclRelatedListener(
-      aclType: (map['aclType'] as String).input(),
-      frontendPort: (map['frontendPort'] as int).input(),
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
-      protocol: (map['protocol'] as String).input(),
+      aclType: pulumi.Input.fromValue(map['aclType'] as String),
+      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

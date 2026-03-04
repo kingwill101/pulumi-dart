@@ -6,27 +6,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FtpReadSettingsResponse {
   /// Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? deleteFilesAfterCompletion;
+
   /// If true, disable parallel reading within each file. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableChunking;
+
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
+
   /// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enablePartitionDiscovery;
+
   /// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileListPath;
+
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
+
   /// Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionRootPath;
+
   /// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? recursive;
+
   /// The read setting type.
   /// Expected value is 'FtpReadSettings'.
   final pulumi.Input<String> type;
+
   /// Specify whether to use binary transfer mode for FTP stores. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? useBinaryTransfer;
+
   /// Ftp wildcardFileName. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? wildcardFileName;
+
   /// Ftp wildcardFolderPath. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? wildcardFolderPath;
 
@@ -77,19 +88,62 @@ class FtpReadSettingsResponse {
 
   factory FtpReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FtpReadSettingsResponse(
-      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']!).input(),
-      disableChunking: map['disableChunking'] == null ? null : (map['disableChunking']!).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
-      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']!).input(),
-      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']!).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
-      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']!).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
-      type: (map['type'] as String).input(),
-      useBinaryTransfer: map['useBinaryTransfer'] == null ? null : (map['useBinaryTransfer']!).input(),
-      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']!).input(),
-      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']!).input(),
+      deleteFilesAfterCompletion: (() {
+        final guardedValue = map['deleteFilesAfterCompletion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      disableChunking: (() {
+        final guardedValue = map['disableChunking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      disableMetricsCollection: (() {
+        final guardedValue = map['disableMetricsCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      enablePartitionDiscovery: (() {
+        final guardedValue = map['enablePartitionDiscovery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      fileListPath: (() {
+        final guardedValue = map['fileListPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      maxConcurrentConnections: (() {
+        final guardedValue = map['maxConcurrentConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      partitionRootPath: (() {
+        final guardedValue = map['partitionRootPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      recursive: (() {
+        final guardedValue = map['recursive'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      useBinaryTransfer: (() {
+        final guardedValue = map['useBinaryTransfer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      wildcardFileName: (() {
+        final guardedValue = map['wildcardFileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      wildcardFolderPath: (() {
+        final guardedValue = map['wildcardFolderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

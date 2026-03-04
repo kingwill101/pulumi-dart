@@ -8,18 +8,25 @@ import 'system_data_response.dart';
 class GetProjectPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// Resource policies that are a part of this project policy.
   final List<ResourcePolicyResponse>? resourcePolicies;
+
   /// Resources that have access to the shared resources that are a part of this project policy.
   final List<String>? scopes;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -49,7 +56,14 @@ class GetProjectPolicyResult {
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
-      'resourcePolicies': ?resourcePolicies == null ? null : pulumi.Input.encodeList<ResourcePolicyResponse, Map<String, dynamic>>(resourcePolicies!, (value) => value.toMap()),
+      'resourcePolicies': ?(() {
+        final guardedValue = resourcePolicies;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ResourcePolicyResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'scopes': ?scopes,
       'systemData': systemData.toMap(),
       'type': type,
@@ -62,11 +76,25 @@ class GetProjectPolicyResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      resourcePolicies: map['resourcePolicies'] == null ? null : pulumi.Input.decodeList<ResourcePolicyResponse>(map['resourcePolicies']!, (value) => ResourcePolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scopes: map['scopes'] == null ? null : (map['scopes']! as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      resourcePolicies: (() {
+        final guardedValue = map['resourcePolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ResourcePolicyResponse>(
+          guardedValue,
+          (value) => ResourcePolicyResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

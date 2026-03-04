@@ -13,15 +13,14 @@ class GetNodeClassesClassSupportedEngineAvailableResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dbNodeClass': dbNodeClass,
-    };
+    return <String, dynamic>{'dbNodeClass': dbNodeClass};
   }
 
-  factory GetNodeClassesClassSupportedEngineAvailableResource.fromMap(Map<String, dynamic> map) {
+  factory GetNodeClassesClassSupportedEngineAvailableResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNodeClassesClassSupportedEngineAvailableResource(
-      dbNodeClass: (map['dbNodeClass'] as String).input(),
+      dbNodeClass: pulumi.Input.fromValue(map['dbNodeClass'] as String),
     );
   }
 }
-

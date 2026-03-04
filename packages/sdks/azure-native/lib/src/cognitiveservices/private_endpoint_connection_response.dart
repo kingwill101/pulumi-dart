@@ -8,16 +8,22 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionResponse {
   /// Resource Etag.
   final pulumi.Input<String> etag;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
+
   /// The location of the private endpoint connection
   final pulumi.Input<String>? location;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// Resource properties.
   final pulumi.Input<PrivateEndpointConnectionPropertiesResponse>? properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -45,22 +51,45 @@ class PrivateEndpointConnectionResponse {
       'id': id,
       'location': ?location,
       'name': name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointConnectionPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateEndpointConnectionPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      etag: (map['etag'] as String).input(),
-      id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateEndpointConnectionPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -31,10 +31,15 @@ class GetLbTrafficExtensionArgs {
 
   factory GetLbTrafficExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetLbTrafficExtensionArgs(
-      lbTrafficExtensionId: (map['lbTrafficExtensionId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      lbTrafficExtensionId: pulumi.Input.fromValue(
+        map['lbTrafficExtensionId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,10 +10,13 @@ class ByoipPrefixArgs {
   /// A boolean indicating whether the prefix should be advertised.
   /// Defaults to `false`.
   final pulumi.Input<bool>? advertised;
+
   /// The CIDR notation of the prefix (e.g., "192.0.2.0/24").
   final pulumi.Input<String> prefix;
+
   /// The DigitalOcean region where the prefix will be deployed.
   final pulumi.Input<String> region;
+
   /// The cryptographic signature proving ownership of the prefix.
   /// This is required during creation but can be omitted in subsequent updates.
   final pulumi.Input<String>? signature;
@@ -41,11 +44,18 @@ class ByoipPrefixArgs {
 
   factory ByoipPrefixArgs.fromMap(Map<String, dynamic> map) {
     return ByoipPrefixArgs(
-      advertised: map['advertised'] == null ? null : (map['advertised']! as bool).input(),
-      prefix: (map['prefix'] as String).input(),
-      region: (map['region'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
+      advertised: (() {
+        final guardedValue = map['advertised'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      signature: (() {
+        final guardedValue = map['signature'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

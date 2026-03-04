@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEc2NetworkAclArgs {
   /// Name of Ec2NetworkAcl
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetEc2NetworkAclArgs].
   /// [name] Name of Ec2NetworkAcl
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2NetworkAclArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetEc2NetworkAclArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetEc2NetworkAclArgs {
 
   factory GetEc2NetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return GetEc2NetworkAclArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

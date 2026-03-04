@@ -626,18 +626,23 @@ import 'app_role_assignment_state.dart';
 /// $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example /servicePrincipals/00000000-0000-0000-0000-000000000000/appRoleAssignedTo/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
+/// &gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
 class AppRoleAssignment extends pulumi.CustomResource {
   /// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appRoleId;
+
   /// The display name of the principal to which the app role is assigned.
   late final pulumi.Output<String> principalDisplayName;
+
   /// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalObjectId;
+
   /// The object type of the principal to which the app role is assigned.
   late final pulumi.Output<String> principalType;
+
   /// The display name of the application representing the resource.
   late final pulumi.Output<String> resourceDisplayName;
+
   /// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceObjectId;
 
@@ -650,17 +655,17 @@ class AppRoleAssignment extends pulumi.CustomResource {
     AppRoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/appRoleAssignment:AppRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appRoleId = registerOutput<String>('appRoleId');
-    this.principalDisplayName = registerOutput<String>('principalDisplayName');
-    this.principalObjectId = registerOutput<String>('principalObjectId');
-    this.principalType = registerOutput<String>('principalType');
-    this.resourceDisplayName = registerOutput<String>('resourceDisplayName');
-    this.resourceObjectId = registerOutput<String>('resourceObjectId');
+         'azuread:index/appRoleAssignment:AppRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appRoleId = registerOutput<String>('appRoleId');
+    principalDisplayName = registerOutput<String>('principalDisplayName');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    principalType = registerOutput<String>('principalType');
+    resourceDisplayName = registerOutput<String>('resourceDisplayName');
+    resourceObjectId = registerOutput<String>('resourceObjectId');
   }
 
   /// Gets an existing [AppRoleAssignment] resource's state with the given [name] and [id].
@@ -681,16 +686,16 @@ class AppRoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/appRoleAssignment:AppRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appRoleId = registerOutput<String>('appRoleId');
-    this.principalDisplayName = registerOutput<String>('principalDisplayName');
-    this.principalObjectId = registerOutput<String>('principalObjectId');
-    this.principalType = registerOutput<String>('principalType');
-    this.resourceDisplayName = registerOutput<String>('resourceDisplayName');
-    this.resourceObjectId = registerOutput<String>('resourceObjectId');
+         'azuread:index/appRoleAssignment:AppRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appRoleId = registerOutput<String>('appRoleId');
+    principalDisplayName = registerOutput<String>('principalDisplayName');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    principalType = registerOutput<String>('principalType');
+    resourceDisplayName = registerOutput<String>('resourceDisplayName');
+    resourceObjectId = registerOutput<String>('resourceObjectId');
   }
 }

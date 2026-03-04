@@ -2,16 +2,15 @@
 enum ScheduledFrequency {
   valueDaily("Daily");
 
-  const ScheduledFrequency(this.value);
-  final String value;
+  const ScheduledFrequency(this.wireValue);
+  final String wireValue;
 
   static ScheduledFrequency fromValue(String value) {
     for (final item in ScheduledFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduledFrequency value: $value');
   }
 }
-

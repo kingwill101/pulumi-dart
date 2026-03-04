@@ -4,14 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The throughput capacity configuration for each partition.
 class CapacityResponse {
-  /// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+  /// Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
   final pulumi.Input<int> publishMibPerSec;
-  /// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
+
+  /// Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.
   final pulumi.Input<int> subscribeMibPerSec;
 
   /// Creates a new [CapacityResponse].
-  /// [publishMibPerSec] Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
-  /// [subscribeMibPerSec] Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
+  /// [publishMibPerSec] Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
+  /// [subscribeMibPerSec] Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.
   CapacityResponse({
     required this.publishMibPerSec,
     required this.subscribeMibPerSec,
@@ -26,9 +27,10 @@ class CapacityResponse {
 
   factory CapacityResponse.fromMap(Map<String, dynamic> map) {
     return CapacityResponse(
-      publishMibPerSec: (map['publishMibPerSec'] as int).input(),
-      subscribeMibPerSec: (map['subscribeMibPerSec'] as int).input(),
+      publishMibPerSec: pulumi.Input.fromValue(map['publishMibPerSec'] as int),
+      subscribeMibPerSec: pulumi.Input.fromValue(
+        map['subscribeMibPerSec'] as int,
+      ),
     );
   }
 }
-

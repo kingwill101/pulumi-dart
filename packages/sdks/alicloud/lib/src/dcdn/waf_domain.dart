@@ -6,7 +6,7 @@ import 'waf_domain_state.dart';
 ///
 /// For information about DCDN Waf Domain and how to use it, see [What is Waf Domain](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchsetdcdnwafdomainconfigs).
 ///
-/// > **NOTE:** Available since v1.185.0.
+/// &gt; **NOTE:** Available since v1.185.0.
 ///
 /// ## Example Usage
 ///
@@ -258,6 +258,7 @@ import 'waf_domain_state.dart';
 class WafDomain extends pulumi.CustomResource {
   /// The client ip tag.
   late final pulumi.Output<String?> clientIpTag;
+
   /// The accelerated domain name.
   late final pulumi.Output<String> domainName;
 
@@ -270,13 +271,13 @@ class WafDomain extends pulumi.CustomResource {
     WafDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafDomain:WafDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientIpTag = registerOutput<String?>('clientIpTag');
-    this.domainName = registerOutput<String>('domainName');
+         'alicloud:dcdn/wafDomain:WafDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientIpTag = registerOutput<String?>('clientIpTag');
+    domainName = registerOutput<String>('domainName');
   }
 
   /// Gets an existing [WafDomain] resource's state with the given [name] and [id].
@@ -297,12 +298,12 @@ class WafDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafDomain:WafDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientIpTag = registerOutput<String?>('clientIpTag');
-    this.domainName = registerOutput<String>('domainName');
+         'alicloud:dcdn/wafDomain:WafDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientIpTag = registerOutput<String?>('clientIpTag');
+    domainName = registerOutput<String>('domainName');
   }
 }

@@ -6,7 +6,7 @@ import 'bucket_policy_state.dart';
 ///
 /// For information about OSS Bucket Policy and how to use it, see [What is Bucket Policy](https://www.alibabacloud.com/help/en/oss/user-guide/use-bucket-policy-to-grant-permission-to-access-oss).
 ///
-/// > **NOTE:** Available since v1.220.0.
+/// &gt; **NOTE:** Available since v1.220.0.
 ///
 /// ## Example Usage
 ///
@@ -305,6 +305,7 @@ import 'bucket_policy_state.dart';
 class BucketPolicy extends pulumi.CustomResource {
   /// The name of the Bucket.
   late final pulumi.Output<String> bucket;
+
   /// Json-formatted authorization policies for buckets.
   late final pulumi.Output<String> policy;
 
@@ -317,13 +318,13 @@ class BucketPolicy extends pulumi.CustomResource {
     BucketPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketPolicy:BucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
+         'alicloud:oss/bucketPolicy:BucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
   }
 
   /// Gets an existing [BucketPolicy] resource's state with the given [name] and [id].
@@ -344,12 +345,12 @@ class BucketPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketPolicy:BucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.policy = registerOutput<String>('policy');
+         'alicloud:oss/bucketPolicy:BucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
   }
 }

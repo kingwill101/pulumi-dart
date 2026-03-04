@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupAlternateIdentifierUniqueAttribute {
   /// Attribute path that is used to specify which attribute name to search. For example: `DisplayName`. Refer to the [Group data type](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html).
   final pulumi.Input<String> attributePath;
+
   /// Value for an attribute.
   final pulumi.Input<String> attributeValue;
 
@@ -23,11 +24,12 @@ class GetGroupAlternateIdentifierUniqueAttribute {
     };
   }
 
-  factory GetGroupAlternateIdentifierUniqueAttribute.fromMap(Map<String, dynamic> map) {
+  factory GetGroupAlternateIdentifierUniqueAttribute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupAlternateIdentifierUniqueAttribute(
-      attributePath: (map['attributePath'] as String).input(),
-      attributeValue: (map['attributeValue'] as String).input(),
+      attributePath: pulumi.Input.fromValue(map['attributePath'] as String),
+      attributeValue: pulumi.Input.fromValue(map['attributeValue'] as String),
     );
   }
 }
-

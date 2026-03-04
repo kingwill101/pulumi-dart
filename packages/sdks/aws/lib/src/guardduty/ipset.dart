@@ -4,7 +4,7 @@ import 'ipset_state.dart';
 
 /// Provides a resource to manage a GuardDuty IPSet.
 ///
-/// > **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage IPSets. IPSets that are uploaded by the primary account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-ip-set.html)
+/// &gt; **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage IPSets. IPSets that are uploaded by the primary account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-ip-set.html)
 ///
 /// ## Example Usage
 ///
@@ -262,20 +262,28 @@ import 'ipset_state.dart';
 class IPSet extends pulumi.CustomResource {
   /// Specifies whether GuardDuty is to start using the uploaded IPSet.
   late final pulumi.Output<bool> activate;
+
   /// Amazon Resource Name (ARN) of the GuardDuty IPSet.
   late final pulumi.Output<String> arn;
+
   /// The detector ID of the GuardDuty.
   late final pulumi.Output<String> detectorId;
+
   /// The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   late final pulumi.Output<String> format;
+
   /// The URI of the file that contains the IPSet.
   late final pulumi.Output<String> location;
+
   /// The friendly name to identify the IPSet.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -283,33 +291,26 @@ class IPSet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [IPSet]. {@macro pulumi_guardduty_i_pset_ipset_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  IPSet(
-    String name, {
-    IPSetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:guardduty/iPSet:IPSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activate = registerOutput<bool>('activate');
-    this.arn = registerOutput<String>('arn');
-    this.detectorId = registerOutput<String>('detectorId');
-    this.format = registerOutput<String>('format');
-    this.location = registerOutput<String>('location');
+  IPSet(String name, {IPSetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:guardduty/iPSet:IPSet',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    activate = registerOutput<bool>('activate');
+    arn = registerOutput<String>('arn');
+    detectorId = registerOutput<String>('detectorId');
+    format = registerOutput<String>('format');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [IPSet] resource's state with the given [name] and [id].
-  static IPSet get(
-    String name,
-    pulumi.Input<String> id, {
-    IPSetState? state,
-  }) {
+  static IPSet get(String name, pulumi.Input<String> id, {IPSetState? state}) {
     return IPSet._get(
       name,
       state: state?.toMap(),
@@ -322,19 +323,19 @@ class IPSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:guardduty/iPSet:IPSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activate = registerOutput<bool>('activate');
-    this.arn = registerOutput<String>('arn');
-    this.detectorId = registerOutput<String>('detectorId');
-    this.format = registerOutput<String>('format');
-    this.location = registerOutput<String>('location');
+         'aws:guardduty/iPSet:IPSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activate = registerOutput<bool>('activate');
+    arn = registerOutput<String>('arn');
+    detectorId = registerOutput<String>('detectorId');
+    format = registerOutput<String>('format');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

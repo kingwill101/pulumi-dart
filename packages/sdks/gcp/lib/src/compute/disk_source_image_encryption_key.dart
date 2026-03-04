@@ -9,12 +9,15 @@ class DiskSourceImageEncryptionKey {
   /// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
   /// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
   final pulumi.Input<String>? kmsKeySelfLink;
+
   /// The service account used for the encryption request for the given KMS key.
   /// If absent, the Compute Engine Service Agent service account is used.
   final pulumi.Input<String>? kmsKeyServiceAccount;
+
   /// Specifies a 256-bit customer-supplied encryption key, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
   final pulumi.Input<String>? rawKey;
+
   /// (Output)
   /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
   /// encryption key that protects this resource.
@@ -43,11 +46,26 @@ class DiskSourceImageEncryptionKey {
 
   factory DiskSourceImageEncryptionKey.fromMap(Map<String, dynamic> map) {
     return DiskSourceImageEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
-      rawKey: map['rawKey'] == null ? null : (map['rawKey']! as String).input(),
-      sha256: map['sha256'] == null ? null : (map['sha256']! as String).input(),
+      kmsKeySelfLink: (() {
+        final guardedValue = map['kmsKeySelfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyServiceAccount: (() {
+        final guardedValue = map['kmsKeyServiceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rawKey: (() {
+        final guardedValue = map['rawKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha256: (() {
+        final guardedValue = map['sha256'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

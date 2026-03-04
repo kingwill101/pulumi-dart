@@ -181,42 +181,61 @@ import 'system_data_response.dart';
 class ImportJob extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A recent and frequently updated rate of total files, directories, and symlinks imported per second.
   late final pulumi.Output<double> blobsImportedPerSecond;
+
   /// A recent and frequently updated rate of blobs walked per second.
   late final pulumi.Output<double> blobsWalkedPerSecond;
+
   /// How the import job will handle conflicts. For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes.
   late final pulumi.Output<String?> conflictResolutionMode;
+
   /// An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value.
   late final pulumi.Output<List<String>?> importPrefixes;
+
   /// The time of the last completed archive operation
   late final pulumi.Output<String> lastCompletionTime;
+
   /// The time the latest archive operation started
   late final pulumi.Output<String> lastStartedTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Total non-conflict oriented errors the import job will tolerate before exiting with failure. -1 means infinite. 0 means exit immediately and is the default.
   late final pulumi.Output<int?> maximumErrors;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ARM provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The state of the import job. InProgress indicates the import is still running. Canceled indicates it has been canceled by the user. Completed indicates import finished, successfully importing all discovered blobs into the Lustre namespace. CompletedPartial indicates the import finished but some blobs either were found to be conflicting and could not be imported or other errors were encountered. Failed means the import was unable to complete due to a fatal error.
   late final pulumi.Output<String> state;
+
   /// The status message of the import job.
   late final pulumi.Output<String> statusMessage;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The total blobs that have been imported since import began.
   late final pulumi.Output<double> totalBlobsImported;
+
   /// The total blob objects walked.
   late final pulumi.Output<double> totalBlobsWalked;
+
   /// Number of conflicts in the import job.
   late final pulumi.Output<int> totalConflicts;
+
   /// Number of errors in the import job.
   late final pulumi.Output<int> totalErrors;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -229,30 +248,30 @@ class ImportJob extends pulumi.CustomResource {
     ImportJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storagecache:ImportJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.blobsImportedPerSecond = registerOutput<double>('blobsImportedPerSecond');
-    this.blobsWalkedPerSecond = registerOutput<double>('blobsWalkedPerSecond');
-    this.conflictResolutionMode = registerOutput<String?>('conflictResolutionMode');
-    this.importPrefixes = registerOutput<List<String>?>('importPrefixes');
-    this.lastCompletionTime = registerOutput<String>('lastCompletionTime');
-    this.lastStartedTime = registerOutput<String>('lastStartedTime');
-    this.location = registerOutput<String>('location');
-    this.maximumErrors = registerOutput<int?>('maximumErrors');
+         'azure-native:storagecache:ImportJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobsImportedPerSecond = registerOutput<double>('blobsImportedPerSecond');
+    blobsWalkedPerSecond = registerOutput<double>('blobsWalkedPerSecond');
+    conflictResolutionMode = registerOutput<String?>('conflictResolutionMode');
+    importPrefixes = registerOutput<List<String>?>('importPrefixes');
+    lastCompletionTime = registerOutput<String>('lastCompletionTime');
+    lastStartedTime = registerOutput<String>('lastStartedTime');
+    location = registerOutput<String>('location');
+    maximumErrors = registerOutput<int?>('maximumErrors');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.state = registerOutput<String>('state');
-    this.statusMessage = registerOutput<String>('statusMessage');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalBlobsImported = registerOutput<double>('totalBlobsImported');
-    this.totalBlobsWalked = registerOutput<double>('totalBlobsWalked');
-    this.totalConflicts = registerOutput<int>('totalConflicts');
-    this.totalErrors = registerOutput<int>('totalErrors');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String>('state');
+    statusMessage = registerOutput<String>('statusMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalBlobsImported = registerOutput<double>('totalBlobsImported');
+    totalBlobsWalked = registerOutput<double>('totalBlobsWalked');
+    totalConflicts = registerOutput<int>('totalConflicts');
+    totalErrors = registerOutput<int>('totalErrors');
+    type = registerOutput<String>('type');
   }
 }

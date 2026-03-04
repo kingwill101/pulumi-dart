@@ -3,16 +3,15 @@ enum UpgradeAvailable {
   notAvailable("notAvailable"),
   available("available");
 
-  const UpgradeAvailable(this.value);
-  final String value;
+  const UpgradeAvailable(this.wireValue);
+  final String wireValue;
 
   static UpgradeAvailable fromValue(String value) {
     for (final item in UpgradeAvailable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpgradeAvailable value: $value');
   }
 }
-

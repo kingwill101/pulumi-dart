@@ -39,12 +39,15 @@ class GetVersionDialogflowV3Args {
 
   factory GetVersionDialogflowV3Args.fromMap(Map<String, dynamic> map) {
     return GetVersionDialogflowV3Args(
-      agentId: (map['agentId'] as String).input(),
-      flowId: (map['flowId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      flowId: pulumi.Input.fromValue(map['flowId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

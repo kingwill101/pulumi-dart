@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerForwardedForConfig {
   /// Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
   final pulumi.Input<bool>? forwardedForGaApEnabled;
+
   /// Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
   final pulumi.Input<bool>? forwardedForGaIdEnabled;
+
   /// Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
   final pulumi.Input<bool>? forwardedForPortEnabled;
+
   /// Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
   final pulumi.Input<bool>? forwardedForProtoEnabled;
+
   /// Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
   final pulumi.Input<bool>? realIpEnabled;
 
@@ -40,12 +44,31 @@ class ListenerForwardedForConfig {
 
   factory ListenerForwardedForConfig.fromMap(Map<String, dynamic> map) {
     return ListenerForwardedForConfig(
-      forwardedForGaApEnabled: map['forwardedForGaApEnabled'] == null ? null : (map['forwardedForGaApEnabled']! as bool).input(),
-      forwardedForGaIdEnabled: map['forwardedForGaIdEnabled'] == null ? null : (map['forwardedForGaIdEnabled']! as bool).input(),
-      forwardedForPortEnabled: map['forwardedForPortEnabled'] == null ? null : (map['forwardedForPortEnabled']! as bool).input(),
-      forwardedForProtoEnabled: map['forwardedForProtoEnabled'] == null ? null : (map['forwardedForProtoEnabled']! as bool).input(),
-      realIpEnabled: map['realIpEnabled'] == null ? null : (map['realIpEnabled']! as bool).input(),
+      forwardedForGaApEnabled: (() {
+        final guardedValue = map['forwardedForGaApEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      forwardedForGaIdEnabled: (() {
+        final guardedValue = map['forwardedForGaIdEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      forwardedForPortEnabled: (() {
+        final guardedValue = map['forwardedForPortEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      forwardedForProtoEnabled: (() {
+        final guardedValue = map['forwardedForProtoEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      realIpEnabled: (() {
+        final guardedValue = map['realIpEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

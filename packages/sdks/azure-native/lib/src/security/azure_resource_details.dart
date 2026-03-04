@@ -10,20 +10,15 @@ class AzureResourceDetails {
 
   /// Creates a new [AzureResourceDetails].
   /// [source] The platform where the assessed resource resides
-  AzureResourceDetails({
-    required this.source,
-  });
+  AzureResourceDetails({required this.source});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'source': source,
-    };
+    return <String, dynamic>{'source': source};
   }
 
   factory AzureResourceDetails.fromMap(Map<String, dynamic> map) {
     return AzureResourceDetails(
-      source: (map['source'] as String).input(),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

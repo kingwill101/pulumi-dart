@@ -9,22 +9,32 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionResponse {
   /// The ETag of the resource, used for concurrency statements.
   final pulumi.Input<String> etag;
+
   /// The value has one and only one group id.
   final pulumi.Input<List<String>> groupIds;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// The private endpoint of the private endpoint connection.
   final pulumi.Input<PrivateEndpointResponse> privateEndpoint;
+
   /// The private link service connection state of the private endpoint connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>?
+  privateLinkServiceConnectionState;
+
   /// The provisioning state of the private endpoint connection.
   final pulumi.Input<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -58,10 +68,22 @@ class PrivateEndpointConnectionResponse {
       'groupIds': groupIds,
       'id': id,
       'name': name,
-      'privateEndpoint': pulumi.Input.mapInputValue<PrivateEndpointResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
-      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<PrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateEndpoint':
+          pulumi.Input.mapInputValue<
+            PrivateEndpointResponse,
+            Map<String, dynamic>
+          >(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateLinkServiceConnectionStateResponse,
+            Map<String, dynamic>
+          >(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'type': type,
     };
@@ -69,17 +91,42 @@ class PrivateEndpointConnectionResponse {
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      etag: (map['etag'] as String).input(),
-      groupIds: ((map['groupIds'] as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      privateEndpoint: (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      groupIds: pulumi.Input.fromValue(
+        (map['groupIds'] as List).cast<String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateEndpoint: pulumi.Input.fromValue(
+        PrivateEndpointResponse.fromMap(
+          (map['privateEndpoint']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      privateLinkServiceConnectionState: (() {
+        final guardedValue = map['privateLinkServiceConnectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateLinkServiceConnectionStateResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

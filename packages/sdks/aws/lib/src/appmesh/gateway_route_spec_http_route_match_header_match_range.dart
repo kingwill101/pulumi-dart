@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayRouteSpecHttpRouteMatchHeaderMatchRange {
   /// End of the range.
   final pulumi.Input<int> end;
+
   /// Start of the range.
   final pulumi.Input<int> start;
 
@@ -17,17 +18,15 @@ class GatewayRouteSpecHttpRouteMatchHeaderMatchRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': end,
-      'start': start,
-    };
+    return <String, dynamic>{'end': end, 'start': start};
   }
 
-  factory GatewayRouteSpecHttpRouteMatchHeaderMatchRange.fromMap(Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttpRouteMatchHeaderMatchRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayRouteSpecHttpRouteMatchHeaderMatchRange(
-      end: (map['end'] as int).input(),
-      start: (map['start'] as int).input(),
+      end: pulumi.Input.fromValue(map['end'] as int),
+      start: pulumi.Input.fromValue(map['start'] as int),
     );
   }
 }
-

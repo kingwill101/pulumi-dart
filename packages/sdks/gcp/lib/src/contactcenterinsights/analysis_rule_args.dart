@@ -11,24 +11,30 @@ class AnalysisRuleArgs {
   /// If true, apply this rule to conversations. Otherwise, this rule is
   /// inactive and saved as a draft.
   final pulumi.Input<bool>? active;
+
   /// Percentage of conversations that we should apply this analysis setting
   /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
   /// are sampled in a determenestic way. The original runtime_percentage &
   /// upload percentage will be replaced by defining filters on the conversation.
   final pulumi.Input<double>? analysisPercentage;
+
   /// Selector of all available annotators and phrase matchers to run.
   /// Structure is documented below.
   final pulumi.Input<AnalysisRuleAnnotatorSelector>? annotatorSelector;
+
   /// Filter for the conversations that should apply this analysis
   /// rule. An empty filter means this analysis rule applies to all
   /// conversations.
   /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
   /// for details.
   final pulumi.Input<String>? conversationFilter;
+
   /// Display Name of the analysis rule.
   final pulumi.Input<String>? displayName;
+
   /// Location of the resource.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -55,7 +61,11 @@ class AnalysisRuleArgs {
     return <String, dynamic>{
       'active': ?active,
       'analysisPercentage': ?analysisPercentage,
-      'annotatorSelector': ?pulumi.Input.mapOptionalInputValue<AnalysisRuleAnnotatorSelector, Map<String, dynamic>>(annotatorSelector, (value) => value.toMap()),
+      'annotatorSelector':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnalysisRuleAnnotatorSelector,
+            Map<String, dynamic>
+          >(annotatorSelector, (value) => value.toMap()),
       'conversationFilter': ?conversationFilter,
       'displayName': ?displayName,
       'location': location,
@@ -65,14 +75,41 @@ class AnalysisRuleArgs {
 
   factory AnalysisRuleArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleArgs(
-      active: map['active'] == null ? null : (map['active']! as bool).input(),
-      analysisPercentage: map['analysisPercentage'] == null ? null : (map['analysisPercentage']! as double).input(),
-      annotatorSelector: map['annotatorSelector'] == null ? null : (AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector']! as Map).cast<String, dynamic>())).input(),
-      conversationFilter: map['conversationFilter'] == null ? null : (map['conversationFilter']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      analysisPercentage: (() {
+        final guardedValue = map['analysisPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      annotatorSelector: (() {
+        final guardedValue = map['annotatorSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnalysisRuleAnnotatorSelector.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      conversationFilter: (() {
+        final guardedValue = map['conversationFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

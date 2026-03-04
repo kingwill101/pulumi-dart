@@ -6,10 +6,12 @@ import 'get_slots_slot.dart';
 /// Result data returned by getSlots.
 class GetSlotsResult {
   final String dbInstanceId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
   final String? resourceGroupId;
+
   /// A list of Rds Replication Slots. Each element contains the following attributes:
   final List<GetSlotsSlot> slots;
 
@@ -33,7 +35,10 @@ class GetSlotsResult {
       'id': id,
       'outputFile': ?outputFile,
       'resourceGroupId': ?resourceGroupId,
-      'slots': pulumi.Input.encodeList<GetSlotsSlot, Map<String, dynamic>>(slots, (value) => value.toMap()),
+      'slots': pulumi.Input.encodeList<GetSlotsSlot, Map<String, dynamic>>(
+        slots,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -41,10 +46,20 @@ class GetSlotsResult {
     return GetSlotsResult(
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      slots: pulumi.Input.decodeList<GetSlotsSlot>(map['slots'], (value) => GetSlotsSlot.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      slots: pulumi.Input.decodeList<GetSlotsSlot>(
+        map['slots']!,
+        (value) => GetSlotsSlot.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

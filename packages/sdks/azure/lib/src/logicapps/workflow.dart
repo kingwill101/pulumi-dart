@@ -144,7 +144,7 @@ import 'workflow_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Logic` - 2019-05-01
@@ -159,40 +159,57 @@ import 'workflow_state.dart';
 class Workflow extends pulumi.CustomResource {
   /// A `access_control` block as defined below.
   late final pulumi.Output<WorkflowAccessControl?> accessControl;
+
   /// The Access Endpoint for the Logic App Workflow.
   late final pulumi.Output<String> accessEndpoint;
+
   /// The list of access endpoint IP addresses of connector.
   late final pulumi.Output<List<String>> connectorEndpointIpAddresses;
+
   /// The list of outgoing IP addresses of connector.
   late final pulumi.Output<List<String>> connectorOutboundIpAddresses;
+
   /// Is the Logic App Workflow enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<WorkflowIdentity?> identity;
+
   /// The ID of the Integration Service Environment to which this Logic App Workflow belongs. Changing this forces a new Logic App Workflow to be created.
   late final pulumi.Output<String?> integrationServiceEnvironmentId;
+
   /// Specifies the supported Azure location where the Logic App Workflow exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the integration account linked by this Logic App Workflow.
   late final pulumi.Output<String?> logicAppIntegrationAccountId;
+
   /// Specifies the name of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A map of Key-Value pairs.
   ///
-  /// > **Note:** Any parameters specified must exist in the Schema defined in `workflow_parameters`.
+  /// &gt; **Note:** Any parameters specified must exist in the Schema defined in `workflow_parameters`.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The name of the Resource Group in which the Logic App Workflow should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The list of access endpoint IP addresses of workflow.
   late final pulumi.Output<List<String>> workflowEndpointIpAddresses;
+
   /// The list of outgoing IP addresses of workflow.
   late final pulumi.Output<List<String>> workflowOutboundIpAddresses;
-  /// Specifies a map of Key-Value pairs of the Parameter Definitions to use for this Logic App Workflow. The key is the parameter name, and the value is a JSON encoded string of the parameter definition (see: <https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-definition-language#parameters>).
+
+  /// Specifies a map of Key-Value pairs of the Parameter Definitions to use for this Logic App Workflow. The key is the parameter name, and the value is a JSON encoded string of the parameter definition (see: &lt;https://docs.microsoft.com/azure/logic-apps/logic-apps-workflow-definition-language#parameters&gt;).
   late final pulumi.Output<Map<String, String>?> workflowParameters;
+
   /// Specifies the Schema to use for this Logic App Workflow. Defaults to `https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> workflowSchema;
+
   /// Specifies the version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> workflowVersion;
 
@@ -205,29 +222,43 @@ class Workflow extends pulumi.CustomResource {
     WorkflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/workflow:Workflow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControl = registerOutput<WorkflowAccessControl?>('accessControl');
-    this.accessEndpoint = registerOutput<String>('accessEndpoint');
-    this.connectorEndpointIpAddresses = registerOutput<List<String>>('connectorEndpointIpAddresses');
-    this.connectorOutboundIpAddresses = registerOutput<List<String>>('connectorOutboundIpAddresses');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.identity = registerOutput<WorkflowIdentity?>('identity');
-    this.integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
-    this.location = registerOutput<String>('location');
-    this.logicAppIntegrationAccountId = registerOutput<String?>('logicAppIntegrationAccountId');
+         'azure:logicapps/workflow:Workflow',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControl = registerOutput<WorkflowAccessControl?>('accessControl');
+    accessEndpoint = registerOutput<String>('accessEndpoint');
+    connectorEndpointIpAddresses = registerOutput<List<String>>(
+      'connectorEndpointIpAddresses',
+    );
+    connectorOutboundIpAddresses = registerOutput<List<String>>(
+      'connectorOutboundIpAddresses',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    identity = registerOutput<WorkflowIdentity?>('identity');
+    integrationServiceEnvironmentId = registerOutput<String?>(
+      'integrationServiceEnvironmentId',
+    );
+    location = registerOutput<String>('location');
+    logicAppIntegrationAccountId = registerOutput<String?>(
+      'logicAppIntegrationAccountId',
+    );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workflowEndpointIpAddresses = registerOutput<List<String>>('workflowEndpointIpAddresses');
-    this.workflowOutboundIpAddresses = registerOutput<List<String>>('workflowOutboundIpAddresses');
-    this.workflowParameters = registerOutput<Map<String, String>?>('workflowParameters');
-    this.workflowSchema = registerOutput<String?>('workflowSchema');
-    this.workflowVersion = registerOutput<String?>('workflowVersion');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workflowEndpointIpAddresses = registerOutput<List<String>>(
+      'workflowEndpointIpAddresses',
+    );
+    workflowOutboundIpAddresses = registerOutput<List<String>>(
+      'workflowOutboundIpAddresses',
+    );
+    workflowParameters = registerOutput<Map<String, String>?>(
+      'workflowParameters',
+    );
+    workflowSchema = registerOutput<String?>('workflowSchema');
+    workflowVersion = registerOutput<String?>('workflowVersion');
   }
 
   /// Gets an existing [Workflow] resource's state with the given [name] and [id].
@@ -248,28 +279,42 @@ class Workflow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/workflow:Workflow',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControl = registerOutput<WorkflowAccessControl?>('accessControl');
-    this.accessEndpoint = registerOutput<String>('accessEndpoint');
-    this.connectorEndpointIpAddresses = registerOutput<List<String>>('connectorEndpointIpAddresses');
-    this.connectorOutboundIpAddresses = registerOutput<List<String>>('connectorOutboundIpAddresses');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.identity = registerOutput<WorkflowIdentity?>('identity');
-    this.integrationServiceEnvironmentId = registerOutput<String?>('integrationServiceEnvironmentId');
-    this.location = registerOutput<String>('location');
-    this.logicAppIntegrationAccountId = registerOutput<String?>('logicAppIntegrationAccountId');
+         'azure:logicapps/workflow:Workflow',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControl = registerOutput<WorkflowAccessControl?>('accessControl');
+    accessEndpoint = registerOutput<String>('accessEndpoint');
+    connectorEndpointIpAddresses = registerOutput<List<String>>(
+      'connectorEndpointIpAddresses',
+    );
+    connectorOutboundIpAddresses = registerOutput<List<String>>(
+      'connectorOutboundIpAddresses',
+    );
+    enabled = registerOutput<bool?>('enabled');
+    identity = registerOutput<WorkflowIdentity?>('identity');
+    integrationServiceEnvironmentId = registerOutput<String?>(
+      'integrationServiceEnvironmentId',
+    );
+    location = registerOutput<String>('location');
+    logicAppIntegrationAccountId = registerOutput<String?>(
+      'logicAppIntegrationAccountId',
+    );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workflowEndpointIpAddresses = registerOutput<List<String>>('workflowEndpointIpAddresses');
-    this.workflowOutboundIpAddresses = registerOutput<List<String>>('workflowOutboundIpAddresses');
-    this.workflowParameters = registerOutput<Map<String, String>?>('workflowParameters');
-    this.workflowSchema = registerOutput<String?>('workflowSchema');
-    this.workflowVersion = registerOutput<String?>('workflowVersion');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workflowEndpointIpAddresses = registerOutput<List<String>>(
+      'workflowEndpointIpAddresses',
+    );
+    workflowOutboundIpAddresses = registerOutput<List<String>>(
+      'workflowOutboundIpAddresses',
+    );
+    workflowParameters = registerOutput<Map<String, String>?>(
+      'workflowParameters',
+    );
+    workflowSchema = registerOutput<String?>('workflowSchema');
+    workflowVersion = registerOutput<String?>('workflowVersion');
   }
 }

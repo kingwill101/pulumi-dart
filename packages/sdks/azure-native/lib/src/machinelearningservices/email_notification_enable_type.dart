@@ -4,16 +4,15 @@ enum EmailNotificationEnableType {
   valueJobFailed("JobFailed"),
   valueJobCancelled("JobCancelled");
 
-  const EmailNotificationEnableType(this.value);
-  final String value;
+  const EmailNotificationEnableType(this.wireValue);
+  final String wireValue;
 
   static EmailNotificationEnableType fromValue(String value) {
     for (final item in EmailNotificationEnableType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EmailNotificationEnableType value: $value');
   }
 }
-

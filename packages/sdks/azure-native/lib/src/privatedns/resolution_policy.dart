@@ -3,16 +3,15 @@ enum ResolutionPolicy {
   default_("Default"),
   nxDomainRedirect("NxDomainRedirect");
 
-  const ResolutionPolicy(this.value);
-  final String value;
+  const ResolutionPolicy(this.wireValue);
+  final String wireValue;
 
   static ResolutionPolicy fromValue(String value) {
     for (final item in ResolutionPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResolutionPolicy value: $value');
   }
 }
-

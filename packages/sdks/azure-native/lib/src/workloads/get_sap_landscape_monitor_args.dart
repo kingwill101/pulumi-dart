@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSapLandscapeMonitorArgs {
   /// Name of the SAP monitor resource.
   final pulumi.Input<String> monitorName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetSapLandscapeMonitorArgs {
 
   factory GetSapLandscapeMonitorArgs.fromMap(Map<String, dynamic> map) {
     return GetSapLandscapeMonitorArgs(
-      monitorName: (map['monitorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

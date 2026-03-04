@@ -9,20 +9,15 @@ class AutoUpgradeNodeImageSelection {
 
   /// Creates a new [AutoUpgradeNodeImageSelection].
   /// [type] The node image upgrade type.
-  AutoUpgradeNodeImageSelection({
-    required this.type,
-  });
+  AutoUpgradeNodeImageSelection({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory AutoUpgradeNodeImageSelection.fromMap(Map<String, dynamic> map) {
     return AutoUpgradeNodeImageSelection(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

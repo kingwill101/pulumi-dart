@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesInstanceMongo {
   /// The instance type of the shard node.
   final pulumi.Input<String> class_;
+
   /// The description of the shard node.
   final pulumi.Input<String> description;
+
   /// The ID of the shard node.
   final pulumi.Input<String> nodeId;
 
@@ -30,10 +32,9 @@ class GetInstancesInstanceMongo {
 
   factory GetInstancesInstanceMongo.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceMongo(
-      class_: (map['class'] as String).input(),
-      description: (map['description'] as String).input(),
-      nodeId: (map['nodeId'] as String).input(),
+      class_: pulumi.Input.fromValue(map['class'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
     );
   }
 }
-

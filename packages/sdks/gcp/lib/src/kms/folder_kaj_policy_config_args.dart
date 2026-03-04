@@ -12,7 +12,9 @@ class FolderKajPolicyConfigArgs {
   /// created in this folder. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final pulumi.Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy;
+  final pulumi.Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
+  defaultKeyAccessJustificationPolicy;
+
   /// The numeric folder number for which to retrieve config.
   final pulumi.Input<String> folder;
 
@@ -26,16 +28,27 @@ class FolderKajPolicyConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultKeyAccessJustificationPolicy': ?pulumi.Input.mapOptionalInputValue<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy, Map<String, dynamic>>(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
+      'defaultKeyAccessJustificationPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy,
+            Map<String, dynamic>
+          >(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
       'folder': folder,
     };
   }
 
   factory FolderKajPolicyConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderKajPolicyConfigArgs(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy']! as Map).cast<String, dynamic>())).input(),
-      folder: (map['folder'] as String).input(),
+      defaultKeyAccessJustificationPolicy: (() {
+        final guardedValue = map['defaultKeyAccessJustificationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      folder: pulumi.Input.fromValue(map['folder'] as String),
     );
   }
 }
-

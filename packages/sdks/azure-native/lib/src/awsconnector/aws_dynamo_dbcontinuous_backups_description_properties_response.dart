@@ -6,14 +6,17 @@ import 'point_in_time_recovery_description_response.dart';
 
 /// Definition of awsDynamoDBContinuousBackupsDescription
 class AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse {
-  /// <p> <code>ContinuousBackupsStatus</code> can be one of the following states: ENABLED, DISABLED</p>
-  final pulumi.Input<ContinuousBackupsStatusEnumValueResponse>? continuousBackupsStatus;
-  /// <p>The description of the point in time recovery settings applied to the table.</p>
-  final pulumi.Input<PointInTimeRecoveryDescriptionResponse>? pointInTimeRecoveryDescription;
+  /// &lt;p&gt; &lt;code&gt;ContinuousBackupsStatus&lt;/code&gt; can be one of the following states: ENABLED, DISABLED&lt;/p&gt;
+  final pulumi.Input<ContinuousBackupsStatusEnumValueResponse>?
+  continuousBackupsStatus;
+
+  /// &lt;p&gt;The description of the point in time recovery settings applied to the table.&lt;/p&gt;
+  final pulumi.Input<PointInTimeRecoveryDescriptionResponse>?
+  pointInTimeRecoveryDescription;
 
   /// Creates a new [AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse].
-  /// [continuousBackupsStatus] <p> <code>ContinuousBackupsStatus</code> can be one of the following states: ENABLED, DISABLED</p>
-  /// [pointInTimeRecoveryDescription] <p>The description of the point in time recovery settings applied to the table.</p>
+  /// [continuousBackupsStatus] &lt;p&gt; &lt;code&gt;ContinuousBackupsStatus&lt;/code&gt; can be one of the following states: ENABLED, DISABLED&lt;/p&gt;
+  /// [pointInTimeRecoveryDescription] &lt;p&gt;The description of the point in time recovery settings applied to the table.&lt;/p&gt;
   AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse({
     this.continuousBackupsStatus,
     this.pointInTimeRecoveryDescription,
@@ -21,16 +24,41 @@ class AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'continuousBackupsStatus': ?pulumi.Input.mapOptionalInputValue<ContinuousBackupsStatusEnumValueResponse, Map<String, dynamic>>(continuousBackupsStatus, (value) => value.toMap()),
-      'pointInTimeRecoveryDescription': ?pulumi.Input.mapOptionalInputValue<PointInTimeRecoveryDescriptionResponse, Map<String, dynamic>>(pointInTimeRecoveryDescription, (value) => value.toMap()),
+      'continuousBackupsStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContinuousBackupsStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(continuousBackupsStatus, (value) => value.toMap()),
+      'pointInTimeRecoveryDescription':
+          ?pulumi.Input.mapOptionalInputValue<
+            PointInTimeRecoveryDescriptionResponse,
+            Map<String, dynamic>
+          >(pointInTimeRecoveryDescription, (value) => value.toMap()),
     };
   }
 
-  factory AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse(
-      continuousBackupsStatus: map['continuousBackupsStatus'] == null ? null : (ContinuousBackupsStatusEnumValueResponse.fromMap((map['continuousBackupsStatus']! as Map).cast<String, dynamic>())).input(),
-      pointInTimeRecoveryDescription: map['pointInTimeRecoveryDescription'] == null ? null : (PointInTimeRecoveryDescriptionResponse.fromMap((map['pointInTimeRecoveryDescription']! as Map).cast<String, dynamic>())).input(),
+      continuousBackupsStatus: (() {
+        final guardedValue = map['continuousBackupsStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContinuousBackupsStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pointInTimeRecoveryDescription: (() {
+        final guardedValue = map['pointInTimeRecoveryDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PointInTimeRecoveryDescriptionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -11,8 +11,10 @@ class LocationTagBindingArgs {
   ///
   /// - - -
   final pulumi.Input<String>? location;
+
   /// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
   final pulumi.Input<String> parent;
+
   /// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
   final pulumi.Input<String> tagValue;
 
@@ -36,10 +38,13 @@ class LocationTagBindingArgs {
 
   factory LocationTagBindingArgs.fromMap(Map<String, dynamic> map) {
     return LocationTagBindingArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      parent: (map['parent'] as String).input(),
-      tagValue: (map['tagValue'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      tagValue: pulumi.Input.fromValue(map['tagValue'] as String),
     );
   }
 }
-

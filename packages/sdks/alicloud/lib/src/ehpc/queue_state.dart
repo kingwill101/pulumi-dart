@@ -8,34 +8,46 @@ class QueueState {
   /// The cluster ID.
   /// You can call the ListClusters operation to query the cluster ID.
   final pulumi.Input<String>? clusterId;
+
   /// The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
   final pulumi.Input<List<QueueComputeNode>>? computeNodes;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// Specifies whether to enable auto scale-in for the queue. Valid values:
   ///
   /// - true
   /// - false
   final pulumi.Input<bool>? enableScaleIn;
+
   /// Specifies whether to enable auto scale-out for the queue. Valid values:
   ///
   /// - true
   /// - false
   final pulumi.Input<bool>? enableScaleOut;
+
   /// The hostname prefix of the added compute nodes.
   final pulumi.Input<String>? hostnamePrefix;
+
   /// The hostname suffix of the compute nodes in the queue.
   final pulumi.Input<String>? hostnameSuffix;
+
   /// The initial number of compute nodes in the queue.
   final pulumi.Input<int>? initialCount;
+
   /// The type of the network for interconnecting compute nodes in the queue.
   final pulumi.Input<String>? interConnect;
+
   /// The maximum number of compute nodes that the queue can contain.
   final pulumi.Input<int>? maxCount;
+
   /// The minimum number of compute nodes that the queue must contain.
   final pulumi.Input<int>? minCount;
+
   /// The queue name.
   final pulumi.Input<String>? queueName;
+
   /// The vSwitches available for use by compute nodes in the queue.
   final pulumi.Input<List<String>>? vswitchIds;
 
@@ -72,7 +84,18 @@ class QueueState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': ?clusterId,
-      'computeNodes': ?pulumi.Input.mapOptionalInputValue<List<QueueComputeNode>, List<Map<String, dynamic>>>(computeNodes, (value) => pulumi.Input.encodeList<QueueComputeNode, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'computeNodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<QueueComputeNode>,
+            List<Map<String, dynamic>>
+          >(
+            computeNodes,
+            (value) =>
+                pulumi.Input.encodeList<QueueComputeNode, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'createTime': ?createTime,
       'enableScaleIn': ?enableScaleIn,
       'enableScaleOut': ?enableScaleOut,
@@ -89,20 +112,78 @@ class QueueState {
 
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      computeNodes: map['computeNodes'] == null ? null : (pulumi.Input.decodeList<QueueComputeNode>(map['computeNodes']!, (value) => QueueComputeNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      enableScaleIn: map['enableScaleIn'] == null ? null : (map['enableScaleIn']! as bool).input(),
-      enableScaleOut: map['enableScaleOut'] == null ? null : (map['enableScaleOut']! as bool).input(),
-      hostnamePrefix: map['hostnamePrefix'] == null ? null : (map['hostnamePrefix']! as String).input(),
-      hostnameSuffix: map['hostnameSuffix'] == null ? null : (map['hostnameSuffix']! as String).input(),
-      initialCount: map['initialCount'] == null ? null : (map['initialCount']! as int).input(),
-      interConnect: map['interConnect'] == null ? null : (map['interConnect']! as String).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
-      minCount: map['minCount'] == null ? null : (map['minCount']! as int).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computeNodes: (() {
+        final guardedValue = map['computeNodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<QueueComputeNode>(
+            guardedValue,
+            (value) => QueueComputeNode.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableScaleIn: (() {
+        final guardedValue = map['enableScaleIn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableScaleOut: (() {
+        final guardedValue = map['enableScaleOut'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hostnamePrefix: (() {
+        final guardedValue = map['hostnamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostnameSuffix: (() {
+        final guardedValue = map['hostnameSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialCount: (() {
+        final guardedValue = map['initialCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      interConnect: (() {
+        final guardedValue = map['interConnect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxCount: (() {
+        final guardedValue = map['maxCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minCount: (() {
+        final guardedValue = map['minCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchIds: (() {
+        final guardedValue = map['vswitchIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

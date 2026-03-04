@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HoneypotNodeArgs {
   /// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
   final pulumi.Input<bool>? allowHoneypotAccessInternet;
+
   /// Number of probes available.
   final pulumi.Input<int> availableProbeNum;
+
   /// Management node name.
   final pulumi.Input<String> nodeName;
+
   /// Release the collection of network segments.
   final pulumi.Input<List<String>>? securityGroupProbeIpLists;
 
@@ -39,11 +42,20 @@ class HoneypotNodeArgs {
 
   factory HoneypotNodeArgs.fromMap(Map<String, dynamic> map) {
     return HoneypotNodeArgs(
-      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet']! as bool).input(),
-      availableProbeNum: (map['availableProbeNum'] as int).input(),
-      nodeName: (map['nodeName'] as String).input(),
-      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists']! as List).cast<String>()).input(),
+      allowHoneypotAccessInternet: (() {
+        final guardedValue = map['allowHoneypotAccessInternet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      availableProbeNum: pulumi.Input.fromValue(
+        map['availableProbeNum'] as int,
+      ),
+      nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
+      securityGroupProbeIpLists: (() {
+        final guardedValue = map['securityGroupProbeIpLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

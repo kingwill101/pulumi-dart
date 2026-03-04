@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1LakeMetastoreStatusResponse {
   /// The URI of the endpoint used to access the Metastore service.
   final pulumi.Input<String> endpoint;
+
   /// Additional information about the current status.
   final pulumi.Input<String> message;
+
   /// Current state of association.
   final pulumi.Input<String> state;
+
   /// Last update time of the metastore status of the lake.
   final pulumi.Input<String> updateTime;
 
@@ -34,13 +37,14 @@ class GoogleCloudDataplexV1LakeMetastoreStatusResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1LakeMetastoreStatusResponse(
-      endpoint: (map['endpoint'] as String).input(),
-      message: (map['message'] as String).input(),
-      state: (map['state'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

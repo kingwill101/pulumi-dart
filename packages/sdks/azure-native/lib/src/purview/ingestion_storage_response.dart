@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngestionStorageResponse {
   /// Gets or sets the Id.
   final pulumi.Input<String> id;
+
   /// Gets or sets the primary endpoint.
   final pulumi.Input<String> primaryEndpoint;
+
   /// Gets or sets the public network access setting
   final pulumi.Input<String>? publicNetworkAccess;
 
@@ -31,10 +33,13 @@ class IngestionStorageResponse {
 
   factory IngestionStorageResponse.fromMap(Map<String, dynamic> map) {
     return IngestionStorageResponse(
-      id: (map['id'] as String).input(),
-      primaryEndpoint: (map['primaryEndpoint'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      primaryEndpoint: pulumi.Input.fromValue(map['primaryEndpoint'] as String),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

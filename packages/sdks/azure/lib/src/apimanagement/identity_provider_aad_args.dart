@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderAadArgs {
   /// List of allowed AAD Tenants.
   final pulumi.Input<List<String>> allowedTenants;
+
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
+
   /// Client Id of the Application in the AAD Identity Provider.
   final pulumi.Input<String> clientId;
+
   /// The client library to be used in the AAD Identity Provider.
   final pulumi.Input<String>? clientLibrary;
+
   /// Client secret of the Application in the AAD Identity Provider.
   final pulumi.Input<String> clientSecret;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The AAD Tenant to use instead of Common when logging into Active Directory.
   final pulumi.Input<String>? signinTenant;
 
@@ -54,14 +60,27 @@ class IdentityProviderAadArgs {
 
   factory IdentityProviderAadArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderAadArgs(
-      allowedTenants: ((map['allowedTenants'] as List).cast<String>()).input(),
-      apiManagementName: (map['apiManagementName'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary']! as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant']! as String).input(),
+      allowedTenants: pulumi.Input.fromValue(
+        (map['allowedTenants'] as List).cast<String>(),
+      ),
+      apiManagementName: pulumi.Input.fromValue(
+        map['apiManagementName'] as String,
+      ),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientLibrary: (() {
+        final guardedValue = map['clientLibrary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      signinTenant: (() {
+        final guardedValue = map['signinTenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

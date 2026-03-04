@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_policy_alert_strategy.dart';
 import 'alert_policy_args.dart';
-import 'alert_policy_condition.dart';
-import 'alert_policy_creation_record.dart';
 import 'alert_policy_documentation.dart';
 import 'alert_policy_state.dart';
 
@@ -1030,26 +1028,31 @@ class AlertPolicy extends pulumi.CustomResource {
   /// Control over how this alert policy's notification channels are notified.
   /// Structure is documented below.
   late final pulumi.Output<AlertPolicyAlertStrategy?> alertStrategy;
+
   /// How to combine the results of multiple conditions to
   /// determine if an incident should be opened.
   /// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
   late final pulumi.Output<String> combiner;
+
   /// A list of conditions for the policy. The conditions are combined by
   /// AND or OR according to the combiner field. If the combined conditions
   /// evaluate to true, then an incident is created. A policy can have from
   /// one to six conditions.
   /// Structure is documented below.
-  late final pulumi.Output<List<AlertPolicyCondition>> conditions;
+  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+
   /// A read-only record of the creation of the alerting policy.
   /// If provided in a call to create or update, this field will
   /// be ignored.
   /// Structure is documented below.
-  late final pulumi.Output<List<AlertPolicyCreationRecord>> creationRecords;
+  late final pulumi.Output<List<Map<String, dynamic>>> creationRecords;
+
   /// A short name or phrase used to identify the policy in
   /// dashboards, notifications, and incidents. To avoid confusion, don't use
   /// the same display name for multiple policies in the same project. The
   /// name is limited to 512 Unicode characters.
   late final pulumi.Output<String> displayName;
+
   /// Documentation that is included with notifications and incidents related
   /// to this policy. Best practice is for the documentation to include information
   /// to help responders understand, mitigate, escalate, and correct the underlying
@@ -1057,11 +1060,14 @@ class AlertPolicy extends pulumi.CustomResource {
   /// limited capacity might not show this documentation.
   /// Structure is documented below.
   late final pulumi.Output<AlertPolicyDocumentation?> documentation;
+
   /// Whether or not the policy is enabled. The default is true.
   late final pulumi.Output<bool?> enabled;
+
   /// The unique resource name for this policy.
   /// Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
   late final pulumi.Output<String> name;
+
   /// Identifies the notification channels to which notifications should be
   /// sent when incidents are opened or closed or when new violations occur
   /// on an already opened incident. Each element of this array corresponds
@@ -1070,14 +1076,17 @@ class AlertPolicy extends pulumi.CustomResource {
   /// entries in this field is
   /// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
   late final pulumi.Output<List<String>?> notificationChannels;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The severity of an alert policy indicates how important incidents generated
   /// by that policy are. The severity level will be displayed on the Incident
   /// detail page and in notifications.
   /// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
   late final pulumi.Output<String?> severity;
+
   /// This field is intended to be used for organizing and identifying the AlertPolicy
   /// objects.The field can contain up to 64 entries. Each key and value is limited
   /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -1094,23 +1103,27 @@ class AlertPolicy extends pulumi.CustomResource {
     AlertPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/alertPolicy:AlertPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy');
-    this.combiner = registerOutput<String>('combiner');
-    this.conditions = registerOutput<List<AlertPolicyCondition>>('conditions');
-    this.creationRecords = registerOutput<List<AlertPolicyCreationRecord>>('creationRecords');
-    this.displayName = registerOutput<String>('displayName');
-    this.documentation = registerOutput<AlertPolicyDocumentation?>('documentation');
-    this.enabled = registerOutput<bool?>('enabled');
+         'gcp:monitoring/alertPolicy:AlertPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy');
+    combiner = registerOutput<String>('combiner');
+    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    creationRecords = registerOutput<List<Map<String, dynamic>>>(
+      'creationRecords',
+    );
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<AlertPolicyDocumentation?>('documentation');
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.notificationChannels = registerOutput<List<String>?>('notificationChannels');
-    this.project = registerOutput<String>('project');
-    this.severity = registerOutput<String?>('severity');
-    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
+    notificationChannels = registerOutput<List<String>?>(
+      'notificationChannels',
+    );
+    project = registerOutput<String>('project');
+    severity = registerOutput<String?>('severity');
+    userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 
   /// Gets an existing [AlertPolicy] resource's state with the given [name] and [id].
@@ -1131,22 +1144,26 @@ class AlertPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/alertPolicy:AlertPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy');
-    this.combiner = registerOutput<String>('combiner');
-    this.conditions = registerOutput<List<AlertPolicyCondition>>('conditions');
-    this.creationRecords = registerOutput<List<AlertPolicyCreationRecord>>('creationRecords');
-    this.displayName = registerOutput<String>('displayName');
-    this.documentation = registerOutput<AlertPolicyDocumentation?>('documentation');
-    this.enabled = registerOutput<bool?>('enabled');
+         'gcp:monitoring/alertPolicy:AlertPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy');
+    combiner = registerOutput<String>('combiner');
+    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    creationRecords = registerOutput<List<Map<String, dynamic>>>(
+      'creationRecords',
+    );
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<AlertPolicyDocumentation?>('documentation');
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.notificationChannels = registerOutput<List<String>?>('notificationChannels');
-    this.project = registerOutput<String>('project');
-    this.severity = registerOutput<String?>('severity');
-    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
+    notificationChannels = registerOutput<List<String>?>(
+      'notificationChannels',
+    );
+    project = registerOutput<String>('project');
+    severity = registerOutput<String?>('severity');
+    userLabels = registerOutput<Map<String, String>?>('userLabels');
   }
 }

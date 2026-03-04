@@ -9,20 +9,19 @@ class WindowsOsInfoResponse {
 
   /// Creates a new [WindowsOsInfoResponse].
   /// [windowsOsState] The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-  WindowsOsInfoResponse({
-    this.windowsOsState,
-  });
+  WindowsOsInfoResponse({this.windowsOsState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'windowsOsState': ?windowsOsState,
-    };
+    return <String, dynamic>{'windowsOsState': ?windowsOsState};
   }
 
   factory WindowsOsInfoResponse.fromMap(Map<String, dynamic> map) {
     return WindowsOsInfoResponse(
-      windowsOsState: map['windowsOsState'] == null ? null : (map['windowsOsState']! as String).input(),
+      windowsOsState: (() {
+        final guardedValue = map['windowsOsState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

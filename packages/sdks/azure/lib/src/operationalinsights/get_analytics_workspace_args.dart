@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAnalyticsWorkspaceArgs {
   /// Specifies the name of the Log Analytics Workspace.
   final pulumi.Input<String> name;
+
   /// The name of the resource group in which the Log Analytics workspace is located in.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetAnalyticsWorkspaceArgs {
 
   factory GetAnalyticsWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsWorkspaceArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

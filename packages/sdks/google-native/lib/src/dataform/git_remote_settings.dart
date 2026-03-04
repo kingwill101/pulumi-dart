@@ -7,10 +7,13 @@ import 'ssh_authentication_config.dart';
 class GitRemoteSettings {
   /// Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String>? authenticationTokenSecretVersion;
+
   /// The Git remote's default branch name.
   final pulumi.Input<String> defaultBranch;
+
   /// Optional. Authentication fields for remote uris using SSH protocol.
   final pulumi.Input<SshAuthenticationConfig>? sshAuthenticationConfig;
+
   /// The Git remote's URL.
   final pulumi.Input<String> url;
 
@@ -30,18 +33,33 @@ class GitRemoteSettings {
     return <String, dynamic>{
       'authenticationTokenSecretVersion': ?authenticationTokenSecretVersion,
       'defaultBranch': defaultBranch,
-      'sshAuthenticationConfig': ?pulumi.Input.mapOptionalInputValue<SshAuthenticationConfig, Map<String, dynamic>>(sshAuthenticationConfig, (value) => value.toMap()),
+      'sshAuthenticationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            SshAuthenticationConfig,
+            Map<String, dynamic>
+          >(sshAuthenticationConfig, (value) => value.toMap()),
       'url': url,
     };
   }
 
   factory GitRemoteSettings.fromMap(Map<String, dynamic> map) {
     return GitRemoteSettings(
-      authenticationTokenSecretVersion: map['authenticationTokenSecretVersion'] == null ? null : (map['authenticationTokenSecretVersion']! as String).input(),
-      defaultBranch: (map['defaultBranch'] as String).input(),
-      sshAuthenticationConfig: map['sshAuthenticationConfig'] == null ? null : (SshAuthenticationConfig.fromMap((map['sshAuthenticationConfig']! as Map).cast<String, dynamic>())).input(),
-      url: (map['url'] as String).input(),
+      authenticationTokenSecretVersion: (() {
+        final guardedValue = map['authenticationTokenSecretVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultBranch: pulumi.Input.fromValue(map['defaultBranch'] as String),
+      sshAuthenticationConfig: (() {
+        final guardedValue = map['sshAuthenticationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SshAuthenticationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

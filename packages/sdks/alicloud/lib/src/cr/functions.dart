@@ -22,7 +22,7 @@ import 'get_vpc_endpoint_linked_vpcs_result.dart';
 ///
 /// For information about CR Chains and how to use it, see [What is Chain](https://www.alibabacloud.com/help/en/doc-detail/357821.html).
 ///
-/// > **NOTE:** Available in v1.161.0+.
+/// &gt; **NOTE:** Available in v1.161.0+.
 ///
 /// ## Example Usage
 ///
@@ -200,7 +200,7 @@ Future<GetChainsResult> getChains(
 
 /// This data source provides the Cr Chart Namespaces of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.149.0+.
+/// &gt; **NOTE:** Available in v1.149.0+.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cr_get_chart_namespaces_get_chart_namespaces_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetChartNamespacesResult> getChartNamespaces(
@@ -218,7 +218,7 @@ Future<GetChartNamespacesResult> getChartNamespaces(
 
 /// This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.149.0+.
+/// &gt; **NOTE:** Available in v1.149.0+.
 ///
 /// ## Example Usage
 ///
@@ -360,7 +360,7 @@ Future<GetChartRepositoriesResult> getChartRepositories(
 
 /// This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.139.0+.
+/// &gt; **NOTE:** Available in v1.139.0+.
 ///
 /// ## Example Usage
 ///
@@ -510,7 +510,7 @@ Future<GetEndpointAclPoliciesResult> getEndpointAclPolicies(
 ///
 /// For information about Event Bridge and how to use it, see [What is CR Endpoint Acl](https://www.alibabacloud.com/help/en/doc-detail/142246.htm).
 ///
-/// > **NOTE:** Available in v1.139.0+.
+/// &gt; **NOTE:** Available in v1.139.0+.
 ///
 /// ## Example Usage
 ///
@@ -637,7 +637,7 @@ Future<GetEndpointAclServiceResult> getEndpointAclService(
 
 /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
 ///
-/// > **NOTE:** Available in v1.35.0+
+/// &gt; **NOTE:** Available in v1.35.0+
 ///
 /// ## Example Usage
 ///
@@ -766,7 +766,7 @@ Future<GetNamespacesResult> getNamespaces(
 
 /// This data source provides a list Container Registry repositories on Alibaba Cloud.
 ///
-/// > **NOTE:** Available in v1.35.0+
+/// &gt; **NOTE:** Available in v1.35.0+
 ///
 /// ## Example Usage
 ///
@@ -897,7 +897,7 @@ Future<GetReposResult> getRepos(
 ///
 /// For information about Container Registry (CR) and how to use it, see [What is Container Registry (CR)](https://www.alibabacloud.com/help/en/doc-detail/142759.htm).
 ///
-/// > **NOTE:** Available in v1.116.0+
+/// &gt; **NOTE:** Available in v1.116.0+
 ///
 /// ## Example Usage
 ///
@@ -1010,7 +1010,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.199.0+.
+/// &gt; **NOTE:** Available in v1.199.0+.
 ///
 /// ## Example Usage
 ///

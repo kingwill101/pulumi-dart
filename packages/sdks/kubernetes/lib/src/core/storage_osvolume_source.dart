@@ -7,12 +7,16 @@ import 'local_object_reference.dart';
 class StorageOSVolumeSource {
   /// fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
   final pulumi.Input<String>? fsType;
+
   /// readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   final pulumi.Input<bool>? readOnly;
+
   /// secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
   final pulumi.Input<LocalObjectReference>? secretRef;
+
   /// volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.
   final pulumi.Input<String>? volumeName;
+
   /// volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
   final pulumi.Input<String>? volumeNamespace;
 
@@ -34,7 +38,11 @@ class StorageOSVolumeSource {
     return <String, dynamic>{
       'fsType': ?fsType,
       'readOnly': ?readOnly,
-      'secretRef': ?pulumi.Input.mapOptionalInputValue<LocalObjectReference, Map<String, dynamic>>(secretRef, (value) => value.toMap()),
+      'secretRef':
+          ?pulumi.Input.mapOptionalInputValue<
+            LocalObjectReference,
+            Map<String, dynamic>
+          >(secretRef, (value) => value.toMap()),
       'volumeName': ?volumeName,
       'volumeNamespace': ?volumeNamespace,
     };
@@ -42,12 +50,35 @@ class StorageOSVolumeSource {
 
   factory StorageOSVolumeSource.fromMap(Map<String, dynamic> map) {
     return StorageOSVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
-      volumeNamespace: map['volumeNamespace'] == null ? null : (map['volumeNamespace']! as String).input(),
+      fsType: (() {
+        final guardedValue = map['fsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      secretRef: (() {
+        final guardedValue = map['secretRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LocalObjectReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      volumeName: (() {
+        final guardedValue = map['volumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeNamespace: (() {
+        final guardedValue = map['volumeNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

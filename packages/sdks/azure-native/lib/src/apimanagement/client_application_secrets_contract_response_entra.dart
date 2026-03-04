@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientApplicationSecretsContractResponseEntra {
   /// EntraID client application secret
   final pulumi.Input<String>? clientSecret;
+
   /// EntraID client application secret expiration date.
   final pulumi.Input<String> expiresAt;
 
@@ -24,11 +25,16 @@ class ClientApplicationSecretsContractResponseEntra {
     };
   }
 
-  factory ClientApplicationSecretsContractResponseEntra.fromMap(Map<String, dynamic> map) {
+  factory ClientApplicationSecretsContractResponseEntra.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClientApplicationSecretsContractResponseEntra(
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      expiresAt: (map['expiresAt'] as String).input(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiresAt: pulumi.Input.fromValue(map['expiresAt'] as String),
     );
   }
 }
-

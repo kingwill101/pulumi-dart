@@ -7,20 +7,17 @@ class CloudExadataInfrastructureMaintenanceWindowDaysOfWeek {
 
   /// Creates a new [CloudExadataInfrastructureMaintenanceWindowDaysOfWeek].
   /// [name] Required.
-  CloudExadataInfrastructureMaintenanceWindowDaysOfWeek({
-    required this.name,
-  });
+  CloudExadataInfrastructureMaintenanceWindowDaysOfWeek({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory CloudExadataInfrastructureMaintenanceWindowDaysOfWeek.fromMap(Map<String, dynamic> map) {
+  factory CloudExadataInfrastructureMaintenanceWindowDaysOfWeek.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudExadataInfrastructureMaintenanceWindowDaysOfWeek(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

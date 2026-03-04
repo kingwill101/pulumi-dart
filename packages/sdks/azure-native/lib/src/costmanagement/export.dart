@@ -2006,28 +2006,40 @@ import 'system_assigned_service_identity_response.dart';
 class Export extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Has the definition for the export.
   late final pulumi.Output<ExportDefinitionResponse> definition;
+
   /// Has delivery information for the export.
   late final pulumi.Output<ExportDeliveryInfoResponse> deliveryInfo;
+
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   late final pulumi.Output<String?> eTag;
+
   /// The format of the export being delivered. Currently only 'Csv' is supported.
   late final pulumi.Output<String?> format;
+
   /// The managed identity associated with Export
   late final pulumi.Output<SystemAssignedServiceIdentityResponse?> identity;
+
   /// The location of the Export's managed identity. Only required when utilizing managed identity.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// If the export has an active schedule, provides an estimate of the next run time.
   late final pulumi.Output<String> nextRunTimeEstimate;
+
   /// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
   late final pulumi.Output<bool?> partitionData;
+
   /// If requested, has the most recent run history for the export.
   late final pulumi.Output<ExportExecutionListResultResponse?> runHistory;
+
   /// Has schedule information for the export.
   late final pulumi.Output<ExportScheduleResponse?> schedule;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -2035,28 +2047,29 @@ class Export extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Export]. {@macro pulumi_costmanagement_export_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Export(
-    String name, {
-    ExportArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:costmanagement:Export',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.definition = registerOutput<ExportDefinitionResponse>('definition');
-    this.deliveryInfo = registerOutput<ExportDeliveryInfoResponse>('deliveryInfo');
-    this.eTag = registerOutput<String?>('eTag');
-    this.format = registerOutput<String?>('format');
-    this.identity = registerOutput<SystemAssignedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+  Export(String name, {ExportArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:costmanagement:Export',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    definition = registerOutput<ExportDefinitionResponse>('definition');
+    deliveryInfo = registerOutput<ExportDeliveryInfoResponse>('deliveryInfo');
+    eTag = registerOutput<String?>('eTag');
+    format = registerOutput<String?>('format');
+    identity = registerOutput<SystemAssignedServiceIdentityResponse?>(
+      'identity',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.nextRunTimeEstimate = registerOutput<String>('nextRunTimeEstimate');
-    this.partitionData = registerOutput<bool?>('partitionData');
-    this.runHistory = registerOutput<ExportExecutionListResultResponse?>('runHistory');
-    this.schedule = registerOutput<ExportScheduleResponse?>('schedule');
-    this.type = registerOutput<String>('type');
+    nextRunTimeEstimate = registerOutput<String>('nextRunTimeEstimate');
+    partitionData = registerOutput<bool?>('partitionData');
+    runHistory = registerOutput<ExportExecutionListResultResponse?>(
+      'runHistory',
+    );
+    schedule = registerOutput<ExportScheduleResponse?>('schedule');
+    type = registerOutput<String>('type');
   }
 }

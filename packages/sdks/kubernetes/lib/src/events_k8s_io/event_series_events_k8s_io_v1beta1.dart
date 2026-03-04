@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSeriesEventsK8sIoV1beta1 {
   /// Number of occurrences in this series up to the last heartbeat time
   final pulumi.Input<int> count;
+
   /// Time when last Event from the series was seen before last heartbeat.
   final pulumi.Input<String> lastObservedTime;
+
   /// Information whether this series is ongoing or finished. Deprecated. Planned removal for 1.18
   final pulumi.Input<String> state;
 
@@ -31,10 +33,11 @@ class EventSeriesEventsK8sIoV1beta1 {
 
   factory EventSeriesEventsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return EventSeriesEventsK8sIoV1beta1(
-      count: (map['count'] as int).input(),
-      lastObservedTime: (map['lastObservedTime'] as String).input(),
-      state: (map['state'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      lastObservedTime: pulumi.Input.fromValue(
+        map['lastObservedTime'] as String,
+      ),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

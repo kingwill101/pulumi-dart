@@ -3,16 +3,15 @@ enum ProvisionedBandwidthCopyOption {
   none("None"),
   enhanced("Enhanced");
 
-  const ProvisionedBandwidthCopyOption(this.value);
-  final String value;
+  const ProvisionedBandwidthCopyOption(this.wireValue);
+  final String wireValue;
 
   static ProvisionedBandwidthCopyOption fromValue(String value) {
     for (final item in ProvisionedBandwidthCopyOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProvisionedBandwidthCopyOption value: $value');
   }
 }
-

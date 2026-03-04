@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendArgs {
   /// The name of the Backend.
   final pulumi.Input<String> backendName;
+
   /// The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
   final pulumi.Input<String> backendType;
+
   /// Whether to create an Event bus service association role.
   final pulumi.Input<bool>? createEventBridgeServiceLinkedRole;
+
   /// The description of the Backend.
   final pulumi.Input<String>? description;
 
@@ -39,11 +42,18 @@ class BackendArgs {
 
   factory BackendArgs.fromMap(Map<String, dynamic> map) {
     return BackendArgs(
-      backendName: (map['backendName'] as String).input(),
-      backendType: (map['backendType'] as String).input(),
-      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : (map['createEventBridgeServiceLinkedRole']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
+      backendName: pulumi.Input.fromValue(map['backendName'] as String),
+      backendType: pulumi.Input.fromValue(map['backendType'] as String),
+      createEventBridgeServiceLinkedRole: (() {
+        final guardedValue = map['createEventBridgeServiceLinkedRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -195,15 +195,21 @@ import 'connection_gateway_definition_response_properties.dart';
 class ConnectionGateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource ETag
   late final pulumi.Output<String?> etag;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
-  late final pulumi.Output<ConnectionGatewayDefinitionResponseProperties> properties;
+  late final pulumi.Output<ConnectionGatewayDefinitionResponseProperties>
+  properties;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -216,17 +222,19 @@ class ConnectionGateway extends pulumi.CustomResource {
     ConnectionGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:ConnectionGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:web:ConnectionGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ConnectionGatewayDefinitionResponseProperties>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ConnectionGatewayDefinitionResponseProperties>(
+      'properties',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

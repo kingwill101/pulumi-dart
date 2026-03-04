@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyPackArgs {
   /// The name of the Pulumi organization.
   final pulumi.Input<String> organizationName;
+
   /// The name of the policy pack.
   final pulumi.Input<String> policyPackName;
+
   /// The version number of the policy pack. If not specified, returns the latest version.
   final pulumi.Input<int>? version;
 
@@ -34,10 +36,15 @@ class GetPolicyPackArgs {
 
   factory GetPolicyPackArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyPackArgs(
-      organizationName: (map['organizationName'] as String).input(),
-      policyPackName: (map['policyPackName'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as int).input(),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      policyPackName: pulumi.Input.fromValue(map['policyPackName'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

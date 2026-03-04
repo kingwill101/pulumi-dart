@@ -1,5 +1,3 @@
-library module_servicebus;
-
 export 'servicebus/functions.dart';
 export 'servicebus/get_namespace_args.dart';
 export 'servicebus/get_namespace_authorization_rule_args.dart';

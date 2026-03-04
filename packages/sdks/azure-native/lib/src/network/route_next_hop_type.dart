@@ -6,16 +6,15 @@ enum RouteNextHopType {
   valueVirtualAppliance("VirtualAppliance"),
   valueNone("None");
 
-  const RouteNextHopType(this.value);
-  final String value;
+  const RouteNextHopType(this.wireValue);
+  final String wireValue;
 
   static RouteNextHopType fromValue(String value) {
     for (final item in RouteNextHopType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouteNextHopType value: $value');
   }
 }
-

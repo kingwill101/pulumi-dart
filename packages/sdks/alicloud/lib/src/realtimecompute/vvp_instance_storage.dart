@@ -9,20 +9,25 @@ class VvpInstanceStorage {
 
   /// Creates a new [VvpInstanceStorage].
   /// [oss] OSS stores information. See `oss` below.
-  VvpInstanceStorage({
-    required this.oss,
-  });
+  VvpInstanceStorage({required this.oss});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oss': pulumi.Input.mapInputValue<VvpInstanceStorageOss, Map<String, dynamic>>(oss, (value) => value.toMap()),
+      'oss':
+          pulumi.Input.mapInputValue<
+            VvpInstanceStorageOss,
+            Map<String, dynamic>
+          >(oss, (value) => value.toMap()),
     };
   }
 
   factory VvpInstanceStorage.fromMap(Map<String, dynamic> map) {
     return VvpInstanceStorage(
-      oss: (VvpInstanceStorageOss.fromMap((map['oss'] as Map).cast<String, dynamic>())).input(),
+      oss: pulumi.Input.fromValue(
+        VvpInstanceStorageOss.fromMap(
+          (map['oss']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

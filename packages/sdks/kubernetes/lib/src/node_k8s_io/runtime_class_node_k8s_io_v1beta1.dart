@@ -9,14 +9,19 @@ import 'scheduling_node_k8s_io_v1beta1.dart';
 class RuntimeClassNodeK8sIoV1beta1 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Handler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The Handler must conform to the DNS Label (RFC 1123) requirements, and is immutable.
   final pulumi.Input<String> handler;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
+
   /// Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
   final pulumi.Input<OverheadNodeK8sIoV1beta1>? overhead;
+
   /// Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
   final pulumi.Input<SchedulingNodeK8sIoV1beta1>? scheduling;
 
@@ -41,21 +46,62 @@ class RuntimeClassNodeK8sIoV1beta1 {
       'apiVersion': ?apiVersion,
       'handler': handler,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'overhead': ?pulumi.Input.mapOptionalInputValue<OverheadNodeK8sIoV1beta1, Map<String, dynamic>>(overhead, (value) => value.toMap()),
-      'scheduling': ?pulumi.Input.mapOptionalInputValue<SchedulingNodeK8sIoV1beta1, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
+      'overhead':
+          ?pulumi.Input.mapOptionalInputValue<
+            OverheadNodeK8sIoV1beta1,
+            Map<String, dynamic>
+          >(overhead, (value) => value.toMap()),
+      'scheduling':
+          ?pulumi.Input.mapOptionalInputValue<
+            SchedulingNodeK8sIoV1beta1,
+            Map<String, dynamic>
+          >(scheduling, (value) => value.toMap()),
     };
   }
 
   factory RuntimeClassNodeK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return RuntimeClassNodeK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      handler: (map['handler'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      overhead: map['overhead'] == null ? null : (OverheadNodeK8sIoV1beta1.fromMap((map['overhead']! as Map).cast<String, dynamic>())).input(),
-      scheduling: map['scheduling'] == null ? null : (SchedulingNodeK8sIoV1beta1.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      handler: pulumi.Input.fromValue(map['handler'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      overhead: (() {
+        final guardedValue = map['overhead'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OverheadNodeK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      scheduling: (() {
+        final guardedValue = map['scheduling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SchedulingNodeK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

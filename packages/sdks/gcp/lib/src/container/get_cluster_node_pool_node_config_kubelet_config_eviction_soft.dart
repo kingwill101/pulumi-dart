@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft {
   /// Defines percentage of soft eviction threshold for imagefs.available.
   final pulumi.Input<String> imagefsAvailable;
+
   /// Defines percentage of soft eviction threshold for imagefs.inodesFree.
   final pulumi.Input<String> imagefsInodesFree;
+
   /// Defines quantity of soft eviction threshold for memory.available.
   final pulumi.Input<String> memoryAvailable;
+
   /// Defines percentage of soft eviction threshold for nodefs.available.
   final pulumi.Input<String> nodefsAvailable;
+
   /// Defines percentage of soft eviction threshold for nodefs.inodesFree.
   final pulumi.Input<String> nodefsInodesFree;
+
   /// Defines percentage of soft eviction threshold for pid.available.
   final pulumi.Input<String> pidAvailable;
 
@@ -43,15 +48,22 @@ class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolNodeConfigKubeletConfigEvictionSoft(
-      imagefsAvailable: (map['imagefsAvailable'] as String).input(),
-      imagefsInodesFree: (map['imagefsInodesFree'] as String).input(),
-      memoryAvailable: (map['memoryAvailable'] as String).input(),
-      nodefsAvailable: (map['nodefsAvailable'] as String).input(),
-      nodefsInodesFree: (map['nodefsInodesFree'] as String).input(),
-      pidAvailable: (map['pidAvailable'] as String).input(),
+      imagefsAvailable: pulumi.Input.fromValue(
+        map['imagefsAvailable'] as String,
+      ),
+      imagefsInodesFree: pulumi.Input.fromValue(
+        map['imagefsInodesFree'] as String,
+      ),
+      memoryAvailable: pulumi.Input.fromValue(map['memoryAvailable'] as String),
+      nodefsAvailable: pulumi.Input.fromValue(map['nodefsAvailable'] as String),
+      nodefsInodesFree: pulumi.Input.fromValue(
+        map['nodefsInodesFree'] as String,
+      ),
+      pidAvailable: pulumi.Input.fromValue(map['pidAvailable'] as String),
     );
   }
 }
-

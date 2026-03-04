@@ -9,20 +9,28 @@ import 'tpu_response.dart';
 class GetQueuedResourceResult {
   /// The BestEffort tier.
   final Map<String, dynamic> bestEffort;
+
   /// The time when the QueuedResource was created.
   final String createTime;
+
   /// The Guaranteed tier.
   final GuaranteedResponse guaranteed;
+
   /// Immutable. The name of the QueuedResource.
   final String name;
+
   /// The queueing policy of the QueuedRequest.
   final QueueingPolicyResponse queueingPolicy;
+
   /// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
   final String reservationName;
+
   /// Optional. The Spot tier.
   final Map<String, dynamic> spot;
+
   /// State of the QueuedResource request.
   final QueuedResourceStateResponse state;
+
   /// Defines a TPU resource.
   final TpuResponse tpu;
 
@@ -64,16 +72,21 @@ class GetQueuedResourceResult {
 
   factory GetQueuedResourceResult.fromMap(Map<String, dynamic> map) {
     return GetQueuedResourceResult(
-      bestEffort: (map['bestEffort'] as Map).cast<String, dynamic>(),
+      bestEffort: (map['bestEffort']! as Map).cast<String, dynamic>(),
       createTime: map['createTime'] as String,
-      guaranteed: GuaranteedResponse.fromMap((map['guaranteed'] as Map).cast<String, dynamic>()),
+      guaranteed: GuaranteedResponse.fromMap(
+        (map['guaranteed']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      queueingPolicy: QueueingPolicyResponse.fromMap((map['queueingPolicy'] as Map).cast<String, dynamic>()),
+      queueingPolicy: QueueingPolicyResponse.fromMap(
+        (map['queueingPolicy']! as Map).cast<String, dynamic>(),
+      ),
       reservationName: map['reservationName'] as String,
-      spot: (map['spot'] as Map).cast<String, dynamic>(),
-      state: QueuedResourceStateResponse.fromMap((map['state'] as Map).cast<String, dynamic>()),
-      tpu: TpuResponse.fromMap((map['tpu'] as Map).cast<String, dynamic>()),
+      spot: (map['spot']! as Map).cast<String, dynamic>(),
+      state: QueuedResourceStateResponse.fromMap(
+        (map['state']! as Map).cast<String, dynamic>(),
+      ),
+      tpu: TpuResponse.fromMap((map['tpu']! as Map).cast<String, dynamic>()),
     );
   }
 }
-

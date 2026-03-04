@@ -5,16 +5,17 @@ enum OSPolicyResourceExecResourceExecInterpreter {
   shell("SHELL"),
   powershell("POWERSHELL");
 
-  const OSPolicyResourceExecResourceExecInterpreter(this.value);
-  final String value;
+  const OSPolicyResourceExecResourceExecInterpreter(this.wireValue);
+  final String wireValue;
 
   static OSPolicyResourceExecResourceExecInterpreter fromValue(String value) {
     for (final item in OSPolicyResourceExecResourceExecInterpreter.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OSPolicyResourceExecResourceExecInterpreter value: $value');
+    throw ArgumentError(
+      'Unknown OSPolicyResourceExecResourceExecInterpreter value: $value',
+    );
   }
 }
-

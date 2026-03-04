@@ -1,5 +1,3 @@
-library module_cloudchannel;
-
 export 'cloudchannel/channel_partner_link.dart';
 export 'cloudchannel/channel_partner_link_args.dart';
 export 'cloudchannel/channel_partner_link_link_state.dart';

@@ -3,16 +3,17 @@ enum ExpressRouteCircuitPeeringState {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const ExpressRouteCircuitPeeringState(this.value);
-  final String value;
+  const ExpressRouteCircuitPeeringState(this.wireValue);
+  final String wireValue;
 
   static ExpressRouteCircuitPeeringState fromValue(String value) {
     for (final item in ExpressRouteCircuitPeeringState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExpressRouteCircuitPeeringState value: $value');
+    throw ArgumentError(
+      'Unknown ExpressRouteCircuitPeeringState value: $value',
+    );
   }
 }
-

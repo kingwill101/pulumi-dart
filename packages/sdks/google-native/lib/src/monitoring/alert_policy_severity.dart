@@ -5,16 +5,15 @@ enum AlertPolicySeverity {
   error("ERROR"),
   warning("WARNING");
 
-  const AlertPolicySeverity(this.value);
-  final String value;
+  const AlertPolicySeverity(this.wireValue);
+  final String wireValue;
 
   static AlertPolicySeverity fromValue(String value) {
     for (final item in AlertPolicySeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AlertPolicySeverity value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum RuleState {
   valueDisabled("Disabled"),
   valueExpired("Expired");
 
-  const RuleState(this.value);
-  final String value;
+  const RuleState(this.wireValue);
+  final String wireValue;
 
   static RuleState fromValue(String value) {
     for (final item in RuleState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleState value: $value');
   }
 }
-

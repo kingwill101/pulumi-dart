@@ -7,16 +7,22 @@ import 'oracle_ssl_config_response.dart';
 class OracleProfileResponse {
   /// Connection string attributes
   final pulumi.Input<Map<String, String>> connectionAttributes;
+
   /// Database for the Oracle connection.
   final pulumi.Input<String> databaseService;
+
   /// Hostname for the Oracle connection.
   final pulumi.Input<String> hostname;
+
   /// Optional. SSL configuration for the Oracle connection.
   final pulumi.Input<OracleSslConfigResponse> oracleSslConfig;
+
   /// Password for the Oracle connection.
   final pulumi.Input<String> password;
+
   /// Port for the Oracle connection, default value is 1521.
   final pulumi.Input<int> port;
+
   /// Username for the Oracle connection.
   final pulumi.Input<String> username;
 
@@ -43,7 +49,11 @@ class OracleProfileResponse {
       'connectionAttributes': connectionAttributes,
       'databaseService': databaseService,
       'hostname': hostname,
-      'oracleSslConfig': pulumi.Input.mapInputValue<OracleSslConfigResponse, Map<String, dynamic>>(oracleSslConfig, (value) => value.toMap()),
+      'oracleSslConfig':
+          pulumi.Input.mapInputValue<
+            OracleSslConfigResponse,
+            Map<String, dynamic>
+          >(oracleSslConfig, (value) => value.toMap()),
       'password': password,
       'port': port,
       'username': username,
@@ -52,14 +62,19 @@ class OracleProfileResponse {
 
   factory OracleProfileResponse.fromMap(Map<String, dynamic> map) {
     return OracleProfileResponse(
-      connectionAttributes: ((map['connectionAttributes'] as Map).cast<String, String>()).input(),
-      databaseService: (map['databaseService'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      oracleSslConfig: (OracleSslConfigResponse.fromMap((map['oracleSslConfig'] as Map).cast<String, dynamic>())).input(),
-      password: (map['password'] as String).input(),
-      port: (map['port'] as int).input(),
-      username: (map['username'] as String).input(),
+      connectionAttributes: pulumi.Input.fromValue(
+        (map['connectionAttributes'] as Map).cast<String, String>(),
+      ),
+      databaseService: pulumi.Input.fromValue(map['databaseService'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      oracleSslConfig: pulumi.Input.fromValue(
+        OracleSslConfigResponse.fromMap(
+          (map['oracleSslConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

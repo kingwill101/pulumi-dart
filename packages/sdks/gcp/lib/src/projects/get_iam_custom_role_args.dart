@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIamCustomRoleArgs {
   /// The project were the custom role has been created in. Defaults to the provider project configuration.
   final pulumi.Input<String>? project;
+
   /// The role id that has been used for this role.
   final pulumi.Input<String> roleId;
 
   /// Creates a new [GetIamCustomRoleArgs].
   /// [project] The project were the custom role has been created in. Defaults to the provider project configuration.
   /// [roleId] The role id that has been used for this role.
-  GetIamCustomRoleArgs({
-    this.project,
-    required this.roleId,
-  });
+  GetIamCustomRoleArgs({this.project, required this.roleId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'roleId': roleId,
-    };
+    return <String, dynamic>{'project': ?project, 'roleId': roleId};
   }
 
   factory GetIamCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRoleArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      roleId: (map['roleId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleId: pulumi.Input.fromValue(map['roleId'] as String),
     );
   }
 }
-

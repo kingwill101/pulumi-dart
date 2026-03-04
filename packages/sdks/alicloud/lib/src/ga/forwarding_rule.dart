@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'forwarding_rule_args.dart';
-import 'forwarding_rule_rule_action.dart';
-import 'forwarding_rule_rule_condition.dart';
 import 'forwarding_rule_state.dart';
 
 /// Provides a Global Accelerator (GA) Forwarding Rule resource.
 ///
 /// For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -805,20 +803,27 @@ import 'forwarding_rule_state.dart';
 class ForwardingRule extends pulumi.CustomResource {
   /// The ID of the Global Accelerator instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The ID of the Forwarding Rule.
   late final pulumi.Output<String> forwardingRuleId;
+
   /// Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
   late final pulumi.Output<String?> forwardingRuleName;
+
   /// The status of the Forwarding Rule.
   late final pulumi.Output<String> forwardingRuleStatus;
+
   /// The ID of the listener.
   late final pulumi.Output<String> listenerId;
+
   /// Forwarding policy priority.
   late final pulumi.Output<int> priority;
+
   /// Forward action. See `rule_actions` below.
-  late final pulumi.Output<List<ForwardingRuleRuleAction>> ruleActions;
+  late final pulumi.Output<List<Map<String, dynamic>>> ruleActions;
+
   /// Forwarding condition list. See `rule_conditions` below.
-  late final pulumi.Output<List<ForwardingRuleRuleCondition>> ruleConditions;
+  late final pulumi.Output<List<Map<String, dynamic>>> ruleConditions;
 
   /// Creates a new [ForwardingRule].
   /// [name] The Pulumi resource name.
@@ -829,19 +834,21 @@ class ForwardingRule extends pulumi.CustomResource {
     ForwardingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/forwardingRule:ForwardingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.forwardingRuleId = registerOutput<String>('forwardingRuleId');
-    this.forwardingRuleName = registerOutput<String?>('forwardingRuleName');
-    this.forwardingRuleStatus = registerOutput<String>('forwardingRuleStatus');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.priority = registerOutput<int>('priority');
-    this.ruleActions = registerOutput<List<ForwardingRuleRuleAction>>('ruleActions');
-    this.ruleConditions = registerOutput<List<ForwardingRuleRuleCondition>>('ruleConditions');
+         'alicloud:ga/forwardingRule:ForwardingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    forwardingRuleId = registerOutput<String>('forwardingRuleId');
+    forwardingRuleName = registerOutput<String?>('forwardingRuleName');
+    forwardingRuleStatus = registerOutput<String>('forwardingRuleStatus');
+    listenerId = registerOutput<String>('listenerId');
+    priority = registerOutput<int>('priority');
+    ruleActions = registerOutput<List<Map<String, dynamic>>>('ruleActions');
+    ruleConditions = registerOutput<List<Map<String, dynamic>>>(
+      'ruleConditions',
+    );
   }
 
   /// Gets an existing [ForwardingRule] resource's state with the given [name] and [id].
@@ -862,18 +869,20 @@ class ForwardingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/forwardingRule:ForwardingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.forwardingRuleId = registerOutput<String>('forwardingRuleId');
-    this.forwardingRuleName = registerOutput<String?>('forwardingRuleName');
-    this.forwardingRuleStatus = registerOutput<String>('forwardingRuleStatus');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.priority = registerOutput<int>('priority');
-    this.ruleActions = registerOutput<List<ForwardingRuleRuleAction>>('ruleActions');
-    this.ruleConditions = registerOutput<List<ForwardingRuleRuleCondition>>('ruleConditions');
+         'alicloud:ga/forwardingRule:ForwardingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    forwardingRuleId = registerOutput<String>('forwardingRuleId');
+    forwardingRuleName = registerOutput<String?>('forwardingRuleName');
+    forwardingRuleStatus = registerOutput<String>('forwardingRuleStatus');
+    listenerId = registerOutput<String>('listenerId');
+    priority = registerOutput<int>('priority');
+    ruleActions = registerOutput<List<Map<String, dynamic>>>('ruleActions');
+    ruleConditions = registerOutput<List<Map<String, dynamic>>>(
+      'ruleConditions',
+    );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_cluster_args.dart';
 import 'database_cluster_backup_restore.dart';
-import 'database_cluster_maintenance_window.dart';
 import 'database_cluster_state.dart';
 
 /// Provides a DigitalOcean database cluster resource.
@@ -966,62 +965,91 @@ import 'database_cluster_state.dart';
 /// ```
 class DatabaseCluster extends pulumi.CustomResource {
   late final pulumi.Output<DatabaseClusterBackupRestore?> backupRestore;
+
   /// The uniform resource name of the database cluster.
   late final pulumi.Output<String> clusterUrn;
+
   /// Name of the cluster's default database.
   late final pulumi.Output<String> database;
+
   /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
   late final pulumi.Output<String> engine;
+
   /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
   late final pulumi.Output<String?> evictionPolicy;
+
   /// Database cluster's hostname.
   late final pulumi.Output<String> host;
+
   /// Defines when the automatic maintenance should be performed for the database cluster.
-  late final pulumi.Output<List<DatabaseClusterMaintenanceWindow>?> maintenanceWindows;
+  late final pulumi.Output<List<Map<String, dynamic>>?> maintenanceWindows;
+
   /// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
   late final pulumi.Output<List<String>> metricsEndpoints;
+
   /// The name of the database cluster.
   late final pulumi.Output<String> name;
+
   /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
   late final pulumi.Output<int> nodeCount;
+
   /// Password for the cluster's default user.
   late final pulumi.Output<String> password;
+
   /// Network port that the database cluster is listening on.
   late final pulumi.Output<int> port;
+
   /// Same as `host`, but only accessible from resources within the account and in the same region.
   late final pulumi.Output<String> privateHost;
+
   /// The ID of the VPC where the database cluster will be located.
   late final pulumi.Output<String> privateNetworkUuid;
+
   /// Same as `uri`, but only accessible from resources within the account and in the same region.
   late final pulumi.Output<String> privateUri;
+
   /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
   late final pulumi.Output<String> projectId;
+
   /// DigitalOcean region where the cluster will reside.
   late final pulumi.Output<String> region;
+
   /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
   late final pulumi.Output<String> size;
+
   /// A comma separated string specifying the  SQL modes for a MySQL cluster.
   late final pulumi.Output<String?> sqlMode;
+
   /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
   late final pulumi.Output<String> storageSizeMib;
+
   /// A list of tag names to be applied to the database cluster.
   late final pulumi.Output<List<String>?> tags;
+
   /// Name of the OpenSearch dashboard db.
   late final pulumi.Output<String> uiDatabase;
+
   /// Hostname for the OpenSearch dashboard.
   late final pulumi.Output<String> uiHost;
+
   /// Password for the OpenSearch dashboard's default user.
   late final pulumi.Output<String> uiPassword;
+
   /// Network port that the OpenSearch dashboard is listening on.
   late final pulumi.Output<int> uiPort;
+
   /// The full URI for connecting to the OpenSearch dashboard.
   late final pulumi.Output<String> uiUri;
+
   /// Username for OpenSearch dashboard's default user.
   late final pulumi.Output<String> uiUser;
+
   /// The full URI for connecting to the database cluster.
   late final pulumi.Output<String> uri;
+
   /// Username for the cluster's default user.
   late final pulumi.Output<String> user;
+
   /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
   /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
   late final pulumi.Output<String?> version;
@@ -1035,41 +1063,45 @@ class DatabaseCluster extends pulumi.CustomResource {
     DatabaseClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseCluster:DatabaseCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRestore = registerOutput<DatabaseClusterBackupRestore?>('backupRestore');
-    this.clusterUrn = registerOutput<String>('clusterUrn');
-    this.database = registerOutput<String>('database');
-    this.engine = registerOutput<String>('engine');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.host = registerOutput<String>('host');
-    this.maintenanceWindows = registerOutput<List<DatabaseClusterMaintenanceWindow>?>('maintenanceWindows');
-    this.metricsEndpoints = registerOutput<List<String>>('metricsEndpoints');
+         'digitalocean:index/databaseCluster:DatabaseCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRestore = registerOutput<DatabaseClusterBackupRestore?>(
+      'backupRestore',
+    );
+    clusterUrn = registerOutput<String>('clusterUrn');
+    database = registerOutput<String>('database');
+    engine = registerOutput<String>('engine');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    host = registerOutput<String>('host');
+    maintenanceWindows = registerOutput<List<Map<String, dynamic>>?>(
+      'maintenanceWindows',
+    );
+    metricsEndpoints = registerOutput<List<String>>('metricsEndpoints');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int>('nodeCount');
-    this.password = registerOutput<String>('password');
-    this.port = registerOutput<int>('port');
-    this.privateHost = registerOutput<String>('privateHost');
-    this.privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
-    this.privateUri = registerOutput<String>('privateUri');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<String>('size');
-    this.sqlMode = registerOutput<String?>('sqlMode');
-    this.storageSizeMib = registerOutput<String>('storageSizeMib');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.uiDatabase = registerOutput<String>('uiDatabase');
-    this.uiHost = registerOutput<String>('uiHost');
-    this.uiPassword = registerOutput<String>('uiPassword');
-    this.uiPort = registerOutput<int>('uiPort');
-    this.uiUri = registerOutput<String>('uiUri');
-    this.uiUser = registerOutput<String>('uiUser');
-    this.uri = registerOutput<String>('uri');
-    this.user = registerOutput<String>('user');
-    this.version = registerOutput<String?>('version');
+    nodeCount = registerOutput<int>('nodeCount');
+    password = registerOutput<String>('password');
+    port = registerOutput<int>('port');
+    privateHost = registerOutput<String>('privateHost');
+    privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
+    privateUri = registerOutput<String>('privateUri');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    size = registerOutput<String>('size');
+    sqlMode = registerOutput<String?>('sqlMode');
+    storageSizeMib = registerOutput<String>('storageSizeMib');
+    tags = registerOutput<List<String>?>('tags');
+    uiDatabase = registerOutput<String>('uiDatabase');
+    uiHost = registerOutput<String>('uiHost');
+    uiPassword = registerOutput<String>('uiPassword');
+    uiPort = registerOutput<int>('uiPort');
+    uiUri = registerOutput<String>('uiUri');
+    uiUser = registerOutput<String>('uiUser');
+    uri = registerOutput<String>('uri');
+    user = registerOutput<String>('user');
+    version = registerOutput<String?>('version');
   }
 
   /// Gets an existing [DatabaseCluster] resource's state with the given [name] and [id].
@@ -1090,40 +1122,44 @@ class DatabaseCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseCluster:DatabaseCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRestore = registerOutput<DatabaseClusterBackupRestore?>('backupRestore');
-    this.clusterUrn = registerOutput<String>('clusterUrn');
-    this.database = registerOutput<String>('database');
-    this.engine = registerOutput<String>('engine');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.host = registerOutput<String>('host');
-    this.maintenanceWindows = registerOutput<List<DatabaseClusterMaintenanceWindow>?>('maintenanceWindows');
-    this.metricsEndpoints = registerOutput<List<String>>('metricsEndpoints');
+         'digitalocean:index/databaseCluster:DatabaseCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRestore = registerOutput<DatabaseClusterBackupRestore?>(
+      'backupRestore',
+    );
+    clusterUrn = registerOutput<String>('clusterUrn');
+    database = registerOutput<String>('database');
+    engine = registerOutput<String>('engine');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    host = registerOutput<String>('host');
+    maintenanceWindows = registerOutput<List<Map<String, dynamic>>?>(
+      'maintenanceWindows',
+    );
+    metricsEndpoints = registerOutput<List<String>>('metricsEndpoints');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int>('nodeCount');
-    this.password = registerOutput<String>('password');
-    this.port = registerOutput<int>('port');
-    this.privateHost = registerOutput<String>('privateHost');
-    this.privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
-    this.privateUri = registerOutput<String>('privateUri');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<String>('size');
-    this.sqlMode = registerOutput<String?>('sqlMode');
-    this.storageSizeMib = registerOutput<String>('storageSizeMib');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.uiDatabase = registerOutput<String>('uiDatabase');
-    this.uiHost = registerOutput<String>('uiHost');
-    this.uiPassword = registerOutput<String>('uiPassword');
-    this.uiPort = registerOutput<int>('uiPort');
-    this.uiUri = registerOutput<String>('uiUri');
-    this.uiUser = registerOutput<String>('uiUser');
-    this.uri = registerOutput<String>('uri');
-    this.user = registerOutput<String>('user');
-    this.version = registerOutput<String?>('version');
+    nodeCount = registerOutput<int>('nodeCount');
+    password = registerOutput<String>('password');
+    port = registerOutput<int>('port');
+    privateHost = registerOutput<String>('privateHost');
+    privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
+    privateUri = registerOutput<String>('privateUri');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    size = registerOutput<String>('size');
+    sqlMode = registerOutput<String?>('sqlMode');
+    storageSizeMib = registerOutput<String>('storageSizeMib');
+    tags = registerOutput<List<String>?>('tags');
+    uiDatabase = registerOutput<String>('uiDatabase');
+    uiHost = registerOutput<String>('uiHost');
+    uiPassword = registerOutput<String>('uiPassword');
+    uiPort = registerOutput<int>('uiPort');
+    uiUri = registerOutput<String>('uiUri');
+    uiUser = registerOutput<String>('uiUser');
+    uri = registerOutput<String>('uri');
+    user = registerOutput<String>('user');
+    version = registerOutput<String?>('version');
   }
 }

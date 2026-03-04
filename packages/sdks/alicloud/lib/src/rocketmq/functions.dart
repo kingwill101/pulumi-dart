@@ -10,7 +10,7 @@ import 'get_topics_result.dart';
 
 /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.53.0+
+/// &gt; **NOTE:** Available in 1.53.0+
 ///
 /// ## Example Usage
 ///
@@ -245,7 +245,7 @@ Future<GetGroupsResult> getGroups(
 
 /// This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.52.0+
+/// &gt; **NOTE:** Available in 1.52.0+
 ///
 /// ## Example Usage
 ///
@@ -434,7 +434,7 @@ Future<GetInstancesResult> getInstances(
 ///
 /// For information about ONS and how to use it, see [What is ONS](https://help.aliyun.com/product/29530.html).
 ///
-/// > **NOTE:** Available in v1.111.0+
+/// &gt; **NOTE:** Available in v1.111.0+
 ///
 /// ## Example Usage
 ///
@@ -541,7 +541,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in 1.53.0+
+/// &gt; **NOTE:** Available in 1.53.0+
 ///
 /// ## Example Usage
 ///

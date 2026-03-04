@@ -6,8 +6,12 @@ import 'storage_lens_configuration_storage_lens_configuration_account_level_buck
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics {
   /// Whether prefix-level storage metrics are enabled.
   final pulumi.Input<bool>? enabled;
+
   /// Selection criteria. See Selection Criteria below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria>? selectionCriteria;
+  final pulumi.Input<
+    StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria
+  >?
+  selectionCriteria;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics].
   /// [enabled] Whether prefix-level storage metrics are enabled.
@@ -20,15 +24,32 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'selectionCriteria': ?pulumi.Input.mapOptionalInputValue<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria, Map<String, dynamic>>(selectionCriteria, (value) => value.toMap()),
+      'selectionCriteria':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria,
+            Map<String, dynamic>
+          >(selectionCriteria, (value) => value.toMap()),
     };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics.fromMap(Map<String, dynamic> map) {
+  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      selectionCriteria: map['selectionCriteria'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap((map['selectionCriteria']! as Map).cast<String, dynamic>())).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      selectionCriteria: (() {
+        final guardedValue = map['selectionCriteria'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionState {
   /// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   final pulumi.Input<String>? connectionString;
+
   /// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
   final pulumi.Input<String>? connectionStringPrefix;
+
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
+
   /// The service port number of the instance.
   final pulumi.Input<String>? port;
 
@@ -36,11 +39,26 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionStringPrefix: (() {
+        final guardedValue = map['connectionStringPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

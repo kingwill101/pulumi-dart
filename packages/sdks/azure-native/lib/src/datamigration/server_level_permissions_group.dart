@@ -3,19 +3,20 @@ enum ServerLevelPermissionsGroup {
   valueDefault("Default"),
   valueMigrationFromSqlServerToAzureDB("MigrationFromSqlServerToAzureDB"),
   valueMigrationFromSqlServerToAzureMI("MigrationFromSqlServerToAzureMI"),
-  valueMigrationFromMySQLToAzureDBForMySQL("MigrationFromMySQLToAzureDBForMySQL"),
+  valueMigrationFromMySQLToAzureDBForMySQL(
+    "MigrationFromMySQLToAzureDBForMySQL",
+  ),
   valueMigrationFromSqlServerToAzureVM("MigrationFromSqlServerToAzureVM");
 
-  const ServerLevelPermissionsGroup(this.value);
-  final String value;
+  const ServerLevelPermissionsGroup(this.wireValue);
+  final String wireValue;
 
   static ServerLevelPermissionsGroup fromValue(String value) {
     for (final item in ServerLevelPermissionsGroup.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerLevelPermissionsGroup value: $value');
   }
 }
-

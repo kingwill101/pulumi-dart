@@ -6,7 +6,7 @@ import 'membership_attachment_state.dart';
 ///
 /// For information about Ack One Membership Attachment and how to use it, see [How to attach cluster tp hub](https://www.alibabacloud.com/help/en/ack/distributed-cloud-container-platform-for-kubernetes/developer-reference/api-adcp-2022-01-01-attachclustertohub).
 ///
-/// > **NOTE:** Available since v1.243.0.
+/// &gt; **NOTE:** Available since v1.243.0.
 ///
 /// ## Example Usage
 ///
@@ -601,6 +601,7 @@ import 'membership_attachment_state.dart';
 class MembershipAttachment extends pulumi.CustomResource {
   /// The ID of the cluster to which the membership is being attached.
   late final pulumi.Output<String> clusterId;
+
   /// The ID of the member being attached to the cluster.
   late final pulumi.Output<String> subClusterId;
 
@@ -613,13 +614,13 @@ class MembershipAttachment extends pulumi.CustomResource {
     MembershipAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ackone/membershipAttachment:MembershipAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.subClusterId = registerOutput<String>('subClusterId');
+         'alicloud:ackone/membershipAttachment:MembershipAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    subClusterId = registerOutput<String>('subClusterId');
   }
 
   /// Gets an existing [MembershipAttachment] resource's state with the given [name] and [id].
@@ -640,12 +641,12 @@ class MembershipAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ackone/membershipAttachment:MembershipAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.subClusterId = registerOutput<String>('subClusterId');
+         'alicloud:ackone/membershipAttachment:MembershipAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    subClusterId = registerOutput<String>('subClusterId');
   }
 }

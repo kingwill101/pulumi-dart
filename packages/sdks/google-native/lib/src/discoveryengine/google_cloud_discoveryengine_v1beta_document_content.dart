@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDiscoveryengineV1betaDocumentContent {
   /// The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
   final pulumi.Input<String>? mimeType;
+
   /// The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json.
   final pulumi.Input<String>? rawBytes;
+
   /// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
   final pulumi.Input<String>? uri;
 
@@ -29,12 +31,25 @@ class GoogleCloudDiscoveryengineV1betaDocumentContent {
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaDocumentContent.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1betaDocumentContent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1betaDocumentContent(
-      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
-      rawBytes: map['rawBytes'] == null ? null : (map['rawBytes']! as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      mimeType: (() {
+        final guardedValue = map['mimeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rawBytes: (() {
+        final guardedValue = map['rawBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

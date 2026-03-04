@@ -7,10 +7,13 @@ import 'identity_properties_response.dart';
 class KeyEncryptionKeyResponse {
   /// Managed identity properties used for key encryption.
   final pulumi.Input<IdentityPropertiesResponse>? identityProperties;
+
   /// Type of encryption key used for key encryption.
   final pulumi.Input<String> kekType;
+
   /// Key encryption key. It is required in case of Customer managed KekType.
   final pulumi.Input<String>? kekUrl;
+
   /// Kek vault resource id. It is required in case of Customer managed KekType.
   final pulumi.Input<String>? kekVaultResourceID;
 
@@ -28,7 +31,11 @@ class KeyEncryptionKeyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityProperties': ?pulumi.Input.mapOptionalInputValue<IdentityPropertiesResponse, Map<String, dynamic>>(identityProperties, (value) => value.toMap()),
+      'identityProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityPropertiesResponse,
+            Map<String, dynamic>
+          >(identityProperties, (value) => value.toMap()),
       'kekType': kekType,
       'kekUrl': ?kekUrl,
       'kekVaultResourceID': ?kekVaultResourceID,
@@ -37,11 +44,26 @@ class KeyEncryptionKeyResponse {
 
   factory KeyEncryptionKeyResponse.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKeyResponse(
-      identityProperties: map['identityProperties'] == null ? null : (IdentityPropertiesResponse.fromMap((map['identityProperties']! as Map).cast<String, dynamic>())).input(),
-      kekType: (map['kekType'] as String).input(),
-      kekUrl: map['kekUrl'] == null ? null : (map['kekUrl']! as String).input(),
-      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : (map['kekVaultResourceID']! as String).input(),
+      identityProperties: (() {
+        final guardedValue = map['identityProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kekType: pulumi.Input.fromValue(map['kekType'] as String),
+      kekUrl: (() {
+        final guardedValue = map['kekUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kekVaultResourceID: (() {
+        final guardedValue = map['kekVaultResourceID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

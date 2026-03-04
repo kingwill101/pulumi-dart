@@ -15,16 +15,20 @@ enum GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType {
   tpuV4Pod("TPU_V4_POD"),
   tpuV5Litepod("TPU_V5_LITEPOD");
 
-  const GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType(this.value);
-  final String value;
+  const GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType fromValue(String value) {
-    for (final item in GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType.values) {
-      if (item.value == value) {
+  static GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType value: $value',
+    );
   }
 }
-

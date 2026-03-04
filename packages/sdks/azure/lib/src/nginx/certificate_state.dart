@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateState {
   /// Specify the path to the certificate file of this certificate.
   final pulumi.Input<String>? certificateVirtualPath;
+
   /// Specify the ID of the Key Vault Secret for this certificate.
   final pulumi.Input<String>? keyVaultSecretId;
+
   /// Specify the path to the key file of this certificate.
   final pulumi.Input<String>? keyVirtualPath;
+
   /// The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
   final pulumi.Input<String>? nginxDeploymentId;
 
@@ -41,12 +45,31 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificateVirtualPath: map['certificateVirtualPath'] == null ? null : (map['certificateVirtualPath']! as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
-      keyVirtualPath: map['keyVirtualPath'] == null ? null : (map['keyVirtualPath']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId']! as String).input(),
+      certificateVirtualPath: (() {
+        final guardedValue = map['certificateVirtualPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretId: (() {
+        final guardedValue = map['keyVaultSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVirtualPath: (() {
+        final guardedValue = map['keyVirtualPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nginxDeploymentId: (() {
+        final guardedValue = map['nginxDeploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

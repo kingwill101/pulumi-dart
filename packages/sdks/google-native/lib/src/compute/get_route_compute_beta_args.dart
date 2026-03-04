@@ -13,23 +13,20 @@ class GetRouteComputeBetaArgs {
   /// Creates a new [GetRouteComputeBetaArgs].
   /// [project] Optional.
   /// [route] Required.
-  GetRouteComputeBetaArgs({
-    this.project,
-    required this.route,
-  });
+  GetRouteComputeBetaArgs({this.project, required this.route});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'route': route,
-    };
+    return <String, dynamic>{'project': ?project, 'route': route};
   }
 
   factory GetRouteComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      route: (map['route'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      route: pulumi.Input.fromValue(map['route'] as String),
     );
   }
 }
-

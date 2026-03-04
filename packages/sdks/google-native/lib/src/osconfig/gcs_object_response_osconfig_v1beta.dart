@@ -6,35 +6,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GcsObjectResponseOsconfigV1beta {
   /// Bucket of the Google Cloud Storage object.
   final pulumi.Input<String> bucket;
+
   /// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
   final pulumi.Input<String> generationNumber;
+
   /// Name of the Google Cloud Storage object.
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [GcsObjectResponseOsconfigV1beta].
   /// [bucket] Bucket of the Google Cloud Storage object.
   /// [generationNumber] Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-  /// [object] Name of the Google Cloud Storage object.
+  /// [object_] Name of the Google Cloud Storage object.
   GcsObjectResponseOsconfigV1beta({
     required this.bucket,
     required this.generationNumber,
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
       'generationNumber': generationNumber,
-      'object': object,
+      'object': object_,
     };
   }
 
   factory GcsObjectResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return GcsObjectResponseOsconfigV1beta(
-      bucket: (map['bucket'] as String).input(),
-      generationNumber: (map['generationNumber'] as String).input(),
-      object: (map['object'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      generationNumber: pulumi.Input.fromValue(
+        map['generationNumber'] as String,
+      ),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

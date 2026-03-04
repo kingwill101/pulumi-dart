@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportableExceptionResponse {
   /// Actionable steps for this exception
   final pulumi.Input<String>? actionableMessage;
+
   /// The path to the file where exception occurred
   final pulumi.Input<String>? filePath;
+
   /// Coded numerical value that is assigned to a specific exception
   final pulumi.Input<int>? hResult;
+
   /// The line number where exception occurred
   final pulumi.Input<String>? lineNumber;
+
   /// Error message
   final pulumi.Input<String>? message;
+
   /// Stack trace
   final pulumi.Input<String>? stackTrace;
 
@@ -46,13 +51,36 @@ class ReportableExceptionResponse {
 
   factory ReportableExceptionResponse.fromMap(Map<String, dynamic> map) {
     return ReportableExceptionResponse(
-      actionableMessage: map['actionableMessage'] == null ? null : (map['actionableMessage']! as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
-      hResult: map['hResult'] == null ? null : (map['hResult']! as int).input(),
-      lineNumber: map['lineNumber'] == null ? null : (map['lineNumber']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      stackTrace: map['stackTrace'] == null ? null : (map['stackTrace']! as String).input(),
+      actionableMessage: (() {
+        final guardedValue = map['actionableMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filePath: (() {
+        final guardedValue = map['filePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hResult: (() {
+        final guardedValue = map['hResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lineNumber: (() {
+        final guardedValue = map['lineNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackTrace: (() {
+        final guardedValue = map['stackTrace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

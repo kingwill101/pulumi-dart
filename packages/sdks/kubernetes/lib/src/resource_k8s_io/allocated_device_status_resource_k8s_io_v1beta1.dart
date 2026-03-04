@@ -12,22 +12,28 @@ class AllocatedDeviceStatusResourceK8sIoV1beta1 {
   ///
   /// Must not contain more than 8 entries.
   final pulumi.Input<List<Condition>>? conditions;
+
   /// Data contains arbitrary driver-specific data.
   ///
   /// The length of the raw data must be smaller or equal to 10 Ki.
   final pulumi.Input<dynamic>? data;
+
   /// Device references one device instance via its name in the driver's resource pool. It must be a DNS label.
   final pulumi.Input<String> device;
+
   /// Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.
   ///
   /// Must be a DNS subdomain and should end with a DNS domain owned by the vendor of the driver. It should use only lower case characters.
   final pulumi.Input<String> driver;
+
   /// NetworkData contains network-related information specific to the device.
   final pulumi.Input<NetworkDeviceDataResourceK8sIoV1beta1>? networkData;
-  /// This name together with the driver name and the device name field identify which device was allocated (`<driver name>/<pool name>/<device name>`).
+
+  /// This name together with the driver name and the device name field identify which device was allocated (`&lt;driver name&gt;/&lt;pool name&gt;/&lt;device name&gt;`).
   ///
   /// Must not be longer than 253 characters and may contain one or more DNS sub-domains separated by slashes.
   final pulumi.Input<String> pool;
+
   /// ShareID uniquely identifies an individual allocation share of the device.
   final pulumi.Input<String>? shareID;
 
@@ -37,7 +43,7 @@ class AllocatedDeviceStatusResourceK8sIoV1beta1 {
   /// [device] Device references one device instance via its name in the driver's resource pool. It must be a DNS label.
   /// [driver] Driver specifies the name of the DRA driver whose kubelet plugin should be invoked to process the allocation once the claim is needed on a node.
   /// [networkData] NetworkData contains network-related information specific to the device.
-  /// [pool] This name together with the driver name and the device name field identify which device was allocated (`<driver name>/<pool name>/<device name>`).
+  /// [pool] This name together with the driver name and the device name field identify which device was allocated (`&lt;driver name&gt;/&lt;pool name&gt;/&lt;device name&gt;`).
   /// [shareID] ShareID uniquely identifies an individual allocation share of the device.
   AllocatedDeviceStatusResourceK8sIoV1beta1({
     this.conditions,
@@ -51,26 +57,67 @@ class AllocatedDeviceStatusResourceK8sIoV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Condition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'data': ?data,
       'device': device,
       'driver': driver,
-      'networkData': ?pulumi.Input.mapOptionalInputValue<NetworkDeviceDataResourceK8sIoV1beta1, Map<String, dynamic>>(networkData, (value) => value.toMap()),
+      'networkData':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkDeviceDataResourceK8sIoV1beta1,
+            Map<String, dynamic>
+          >(networkData, (value) => value.toMap()),
       'pool': pool,
       'shareID': ?shareID,
     };
   }
 
-  factory AllocatedDeviceStatusResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory AllocatedDeviceStatusResourceK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocatedDeviceStatusResourceK8sIoV1beta1(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      data: map['data'] == null ? null : (map['data']!).input(),
-      device: (map['device'] as String).input(),
-      driver: (map['driver'] as String).input(),
-      networkData: map['networkData'] == null ? null : (NetworkDeviceDataResourceK8sIoV1beta1.fromMap((map['networkData']! as Map).cast<String, dynamic>())).input(),
-      pool: (map['pool'] as String).input(),
-      shareID: map['shareID'] == null ? null : (map['shareID']! as String).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Condition>(
+            guardedValue,
+            (value) =>
+                Condition.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      device: pulumi.Input.fromValue(map['device'] as String),
+      driver: pulumi.Input.fromValue(map['driver'] as String),
+      networkData: (() {
+        final guardedValue = map['networkData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkDeviceDataResourceK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pool: pulumi.Input.fromValue(map['pool'] as String),
+      shareID: (() {
+        final guardedValue = map['shareID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

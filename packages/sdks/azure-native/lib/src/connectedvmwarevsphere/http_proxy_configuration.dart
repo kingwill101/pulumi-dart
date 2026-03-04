@@ -9,20 +9,19 @@ class HttpProxyConfiguration {
 
   /// Creates a new [HttpProxyConfiguration].
   /// [httpsProxy] Gets or sets httpsProxy url.
-  HttpProxyConfiguration({
-    this.httpsProxy,
-  });
+  HttpProxyConfiguration({this.httpsProxy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'httpsProxy': ?httpsProxy,
-    };
+    return <String, dynamic>{'httpsProxy': ?httpsProxy};
   }
 
   factory HttpProxyConfiguration.fromMap(Map<String, dynamic> map) {
     return HttpProxyConfiguration(
-      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy']! as String).input(),
+      httpsProxy: (() {
+        final guardedValue = map['httpsProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

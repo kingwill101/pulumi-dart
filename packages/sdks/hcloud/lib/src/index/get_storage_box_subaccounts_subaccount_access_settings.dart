@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageBoxSubaccountsSubaccountAccessSettings {
   /// Whether access from outside the Hetzner network is allowed.
   final pulumi.Input<bool> reachableExternally;
+
   /// Whether the Subaccount is read-only.
   final pulumi.Input<bool> readonly;
+
   /// Whether the Samba subsystem is enabled.
   final pulumi.Input<bool> sambaEnabled;
+
   /// Whether the SSH subsystem is enabled.
   final pulumi.Input<bool> sshEnabled;
+
   /// Whether the WebDAV subsystem is enabled.
   final pulumi.Input<bool> webdavEnabled;
 
@@ -38,14 +42,17 @@ class GetStorageBoxSubaccountsSubaccountAccessSettings {
     };
   }
 
-  factory GetStorageBoxSubaccountsSubaccountAccessSettings.fromMap(Map<String, dynamic> map) {
+  factory GetStorageBoxSubaccountsSubaccountAccessSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStorageBoxSubaccountsSubaccountAccessSettings(
-      reachableExternally: (map['reachableExternally'] as bool).input(),
-      readonly: (map['readonly'] as bool).input(),
-      sambaEnabled: (map['sambaEnabled'] as bool).input(),
-      sshEnabled: (map['sshEnabled'] as bool).input(),
-      webdavEnabled: (map['webdavEnabled'] as bool).input(),
+      reachableExternally: pulumi.Input.fromValue(
+        map['reachableExternally'] as bool,
+      ),
+      readonly: pulumi.Input.fromValue(map['readonly'] as bool),
+      sambaEnabled: pulumi.Input.fromValue(map['sambaEnabled'] as bool),
+      sshEnabled: pulumi.Input.fromValue(map['sshEnabled'] as bool),
+      webdavEnabled: pulumi.Input.fromValue(map['webdavEnabled'] as bool),
     );
   }
 }
-

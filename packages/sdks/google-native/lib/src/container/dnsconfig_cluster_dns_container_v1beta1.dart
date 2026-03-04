@@ -5,16 +5,17 @@ enum DNSConfigClusterDnsContainerV1beta1 {
   cloudDns("CLOUD_DNS"),
   kubeDns("KUBE_DNS");
 
-  const DNSConfigClusterDnsContainerV1beta1(this.value);
-  final String value;
+  const DNSConfigClusterDnsContainerV1beta1(this.wireValue);
+  final String wireValue;
 
   static DNSConfigClusterDnsContainerV1beta1 fromValue(String value) {
     for (final item in DNSConfigClusterDnsContainerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DNSConfigClusterDnsContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown DNSConfigClusterDnsContainerV1beta1 value: $value',
+    );
   }
 }
-

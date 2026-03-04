@@ -284,12 +284,16 @@ import 'ifile_state.dart';
 class Ifile extends pulumi.CustomResource {
   /// The system iFile name to reference (e.g., `/Common/my-sys-ifile`). This should reference an existing system iFile created with `f5bigip.sys.Ifile`.
   late final pulumi.Output<String> fileName;
+
   /// The complete path of the LTM iFile on the BIG-IP system.
   late final pulumi.Output<String> fullPath;
+
   /// Name of the LTM iFile to be created on BIG-IP.
   late final pulumi.Output<String> name;
+
   /// Partition where the LTM iFile will be created. Defaults to `Common`.
   late final pulumi.Output<String?> partition;
+
   /// Subdirectory within the partition for organizing iFiles.
   late final pulumi.Output<String?> subPath;
 
@@ -297,29 +301,22 @@ class Ifile extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Ifile]. {@macro pulumi_ltm_ifile_ifile_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Ifile(
-    String name, {
-    IfileArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:ltm/ifile:Ifile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileName = registerOutput<String>('fileName');
-    this.fullPath = registerOutput<String>('fullPath');
+  Ifile(String name, {IfileArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:ltm/ifile:Ifile',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    fileName = registerOutput<String>('fileName');
+    fullPath = registerOutput<String>('fullPath');
     this.name = registerOutput<String>('name');
-    this.partition = registerOutput<String?>('partition');
-    this.subPath = registerOutput<String?>('subPath');
+    partition = registerOutput<String?>('partition');
+    subPath = registerOutput<String?>('subPath');
   }
 
   /// Gets an existing [Ifile] resource's state with the given [name] and [id].
-  static Ifile get(
-    String name,
-    pulumi.Input<String> id, {
-    IfileState? state,
-  }) {
+  static Ifile get(String name, pulumi.Input<String> id, {IfileState? state}) {
     return Ifile._get(
       name,
       state: state?.toMap(),
@@ -332,15 +329,15 @@ class Ifile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/ifile:Ifile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fileName = registerOutput<String>('fileName');
-    this.fullPath = registerOutput<String>('fullPath');
+         'f5bigip:ltm/ifile:Ifile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fileName = registerOutput<String>('fileName');
+    fullPath = registerOutput<String>('fullPath');
     this.name = registerOutput<String>('name');
-    this.partition = registerOutput<String?>('partition');
-    this.subPath = registerOutput<String?>('subPath');
+    partition = registerOutput<String?>('partition');
+    subPath = registerOutput<String?>('subPath');
   }
 }

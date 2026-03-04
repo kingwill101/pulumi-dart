@@ -8,20 +8,15 @@ class ServiceVirtualNetworkConfiguration {
 
   /// Creates a new [ServiceVirtualNetworkConfiguration].
   /// [subnetId] The id of the subnet that will be used for the API Management.
-  ServiceVirtualNetworkConfiguration({
-    required this.subnetId,
-  });
+  ServiceVirtualNetworkConfiguration({required this.subnetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subnetId': subnetId,
-    };
+    return <String, dynamic>{'subnetId': subnetId};
   }
 
   factory ServiceVirtualNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceVirtualNetworkConfiguration(
-      subnetId: (map['subnetId'] as String).input(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class FileSystemTokenStore {
 
   /// Creates a new [FileSystemTokenStore].
   /// [directory] The directory in which the tokens will be stored.
-  FileSystemTokenStore({
-    this.directory,
-  });
+  FileSystemTokenStore({this.directory});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'directory': ?directory,
-    };
+    return <String, dynamic>{'directory': ?directory};
   }
 
   factory FileSystemTokenStore.fromMap(Map<String, dynamic> map) {
     return FileSystemTokenStore(
-      directory: map['directory'] == null ? null : (map['directory']! as String).input(),
+      directory: (() {
+        final guardedValue = map['directory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

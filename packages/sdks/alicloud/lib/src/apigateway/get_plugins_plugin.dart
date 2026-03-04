@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPluginsPlugin {
   /// The CreateTime of the resource.
   final pulumi.Input<String> createTime;
+
   /// The description of the plug-in, which cannot exceed 200 characters.
   final pulumi.Input<String> description;
+
   /// The ID of the Plugin.
   final pulumi.Input<String> id;
+
   /// The ModifiedTime of the resource.
   final pulumi.Input<String> modifiedTime;
+
   /// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
   final pulumi.Input<String> pluginData;
+
   /// The first ID of the resource.
   final pulumi.Input<String> pluginId;
+
   /// The name of the plug-in that you want to create.
   final pulumi.Input<String> pluginName;
+
   /// The type of the plug-in.
   final pulumi.Input<String> pluginType;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -60,16 +68,15 @@ class GetPluginsPlugin {
 
   factory GetPluginsPlugin.fromMap(Map<String, dynamic> map) {
     return GetPluginsPlugin(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      modifiedTime: (map['modifiedTime'] as String).input(),
-      pluginData: (map['pluginData'] as String).input(),
-      pluginId: (map['pluginId'] as String).input(),
-      pluginName: (map['pluginName'] as String).input(),
-      pluginType: (map['pluginType'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      modifiedTime: pulumi.Input.fromValue(map['modifiedTime'] as String),
+      pluginData: pulumi.Input.fromValue(map['pluginData'] as String),
+      pluginId: pulumi.Input.fromValue(map['pluginId'] as String),
+      pluginName: pulumi.Input.fromValue(map['pluginName'] as String),
+      pluginType: pulumi.Input.fromValue(map['pluginType'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
-

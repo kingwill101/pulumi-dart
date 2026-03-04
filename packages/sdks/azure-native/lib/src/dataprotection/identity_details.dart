@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityDetails {
   /// Specifies if the BI is protected by System Identity.
   final pulumi.Input<bool>? useSystemAssignedIdentity;
+
   /// ARM URL for User Assigned Identity.
   final pulumi.Input<String>? userAssignedIdentityArmUrl;
 
@@ -25,9 +26,16 @@ class IdentityDetails {
 
   factory IdentityDetails.fromMap(Map<String, dynamic> map) {
     return IdentityDetails(
-      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity']! as bool).input(),
-      userAssignedIdentityArmUrl: map['userAssignedIdentityArmUrl'] == null ? null : (map['userAssignedIdentityArmUrl']! as String).input(),
+      useSystemAssignedIdentity: (() {
+        final guardedValue = map['useSystemAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userAssignedIdentityArmUrl: (() {
+        final guardedValue = map['userAssignedIdentityArmUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

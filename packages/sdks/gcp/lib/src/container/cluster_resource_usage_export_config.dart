@@ -7,10 +7,13 @@ class ClusterResourceUsageExportConfig {
   /// Parameters for using BigQuery as the destination of resource usage export.
   ///
   /// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-  final pulumi.Input<ClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestination;
+  final pulumi.Input<ClusterResourceUsageExportConfigBigqueryDestination>
+  bigqueryDestination;
+
   /// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
   /// in the cluster to meter network egress traffic.
   final pulumi.Input<bool>? enableNetworkEgressMetering;
+
   /// Whether to enable resource
   /// consumption metering on this cluster. When enabled, a table will be created in
   /// the resource export BigQuery dataset to store resource consumption data. The
@@ -30,7 +33,11 @@ class ClusterResourceUsageExportConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryDestination': pulumi.Input.mapInputValue<ClusterResourceUsageExportConfigBigqueryDestination, Map<String, dynamic>>(bigqueryDestination, (value) => value.toMap()),
+      'bigqueryDestination':
+          pulumi.Input.mapInputValue<
+            ClusterResourceUsageExportConfigBigqueryDestination,
+            Map<String, dynamic>
+          >(bigqueryDestination, (value) => value.toMap()),
       'enableNetworkEgressMetering': ?enableNetworkEgressMetering,
       'enableResourceConsumptionMetering': ?enableResourceConsumptionMetering,
     };
@@ -38,10 +45,21 @@ class ClusterResourceUsageExportConfig {
 
   factory ClusterResourceUsageExportConfig.fromMap(Map<String, dynamic> map) {
     return ClusterResourceUsageExportConfig(
-      bigqueryDestination: (ClusterResourceUsageExportConfigBigqueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      enableNetworkEgressMetering: map['enableNetworkEgressMetering'] == null ? null : (map['enableNetworkEgressMetering']! as bool).input(),
-      enableResourceConsumptionMetering: map['enableResourceConsumptionMetering'] == null ? null : (map['enableResourceConsumptionMetering']! as bool).input(),
+      bigqueryDestination: pulumi.Input.fromValue(
+        ClusterResourceUsageExportConfigBigqueryDestination.fromMap(
+          (map['bigqueryDestination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      enableNetworkEgressMetering: (() {
+        final guardedValue = map['enableNetworkEgressMetering'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableResourceConsumptionMetering: (() {
+        final guardedValue = map['enableResourceConsumptionMetering'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

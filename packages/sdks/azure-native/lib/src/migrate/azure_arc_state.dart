@@ -4,16 +4,15 @@ enum AzureArcState {
   enabled("Enabled"),
   unknown("Unknown");
 
-  const AzureArcState(this.value);
-  final String value;
+  const AzureArcState(this.wireValue);
+  final String wireValue;
 
   static AzureArcState fromValue(String value) {
     for (final item in AzureArcState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureArcState value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum Casing {
   insensitive("Insensitive"),
   sensitive("Sensitive");
 
-  const Casing(this.value);
-  final String value;
+  const Casing(this.wireValue);
+  final String wireValue;
 
   static Casing fromValue(String value) {
     for (final item in Casing.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Casing value: $value');
   }
 }
-

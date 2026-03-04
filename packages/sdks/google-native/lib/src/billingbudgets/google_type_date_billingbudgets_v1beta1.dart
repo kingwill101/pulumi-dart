@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleTypeDateBillingbudgetsV1beta1 {
   /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
   final pulumi.Input<int>? day;
+
   /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
   final pulumi.Input<int>? month;
+
   /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
   final pulumi.Input<int>? year;
 
@@ -15,26 +17,31 @@ class GoogleTypeDateBillingbudgetsV1beta1 {
   /// [day] Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
   /// [month] Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
   /// [year] Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-  GoogleTypeDateBillingbudgetsV1beta1({
-    this.day,
-    this.month,
-    this.year,
-  });
+  GoogleTypeDateBillingbudgetsV1beta1({this.day, this.month, this.year});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'day': ?day,
-      'month': ?month,
-      'year': ?year,
-    };
+    return <String, dynamic>{'day': ?day, 'month': ?month, 'year': ?year};
   }
 
-  factory GoogleTypeDateBillingbudgetsV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GoogleTypeDateBillingbudgetsV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleTypeDateBillingbudgetsV1beta1(
-      day: map['day'] == null ? null : (map['day']! as int).input(),
-      month: map['month'] == null ? null : (map['month']! as int).input(),
-      year: map['year'] == null ? null : (map['year']! as int).input(),
+      day: (() {
+        final guardedValue = map['day'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      month: (() {
+        final guardedValue = map['month'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      year: (() {
+        final guardedValue = map['year'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedDirectoryAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   final pulumi.Input<String> sharedDirectoryId;
 
   /// Creates a new [SharedDirectoryAccepterArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedDirectoryId] Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
-  SharedDirectoryAccepterArgs({
-    this.region,
-    required this.sharedDirectoryId,
-  });
+  SharedDirectoryAccepterArgs({this.region, required this.sharedDirectoryId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,14 @@ class SharedDirectoryAccepterArgs {
 
   factory SharedDirectoryAccepterArgs.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryAccepterArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sharedDirectoryId: (map['sharedDirectoryId'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedDirectoryId: pulumi.Input.fromValue(
+        map['sharedDirectoryId'] as String,
+      ),
     );
   }
 }
-

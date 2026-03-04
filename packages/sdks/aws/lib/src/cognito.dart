@@ -1,5 +1,3 @@
-library module_cognito;
-
 export 'cognito/functions.dart';
 export 'cognito/get_identity_pool_args.dart';
 export 'cognito/get_identity_pool_cognito_identity_provider.dart';

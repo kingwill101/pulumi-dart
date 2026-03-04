@@ -1,5 +1,3 @@
-library module_firestore;
-
 export 'firestore/backup_schedule.dart';
 export 'firestore/backup_schedule_args.dart';
 export 'firestore/backup_schedule_state.dart';

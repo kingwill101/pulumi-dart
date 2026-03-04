@@ -397,7 +397,7 @@ import 'protection_container_mapping_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -411,19 +411,27 @@ import 'protection_container_mapping_state.dart';
 /// ```
 class ProtectionContainerMapping extends pulumi.CustomResource {
   /// a `automatic_update` block defined as below.
-  late final pulumi.Output<ProtectionContainerMappingAutomaticUpdate> automaticUpdate;
+  late final pulumi.Output<ProtectionContainerMappingAutomaticUpdate>
+  automaticUpdate;
+
   /// The name of the protection container mapping. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Name of fabric that should contains the protection container to map. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryFabricName;
+
   /// Id of the policy to use for this mapping. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryReplicationPolicyId;
+
   /// Name of the source protection container to map. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoverySourceProtectionContainerName;
+
   /// Id of target protection container to map to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryTargetProtectionContainerId;
+
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
+
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -436,19 +444,27 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
     ProtectionContainerMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>('automaticUpdate');
+         'azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>(
+      'automaticUpdate',
+    );
     this.name = registerOutput<String>('name');
-    this.recoveryFabricName = registerOutput<String>('recoveryFabricName');
-    this.recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
-    this.recoverySourceProtectionContainerName = registerOutput<String>('recoverySourceProtectionContainerName');
-    this.recoveryTargetProtectionContainerId = registerOutput<String>('recoveryTargetProtectionContainerId');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    recoveryFabricName = registerOutput<String>('recoveryFabricName');
+    recoveryReplicationPolicyId = registerOutput<String>(
+      'recoveryReplicationPolicyId',
+    );
+    recoverySourceProtectionContainerName = registerOutput<String>(
+      'recoverySourceProtectionContainerName',
+    );
+    recoveryTargetProtectionContainerId = registerOutput<String>(
+      'recoveryTargetProtectionContainerId',
+    );
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ProtectionContainerMapping] resource's state with the given [name] and [id].
@@ -469,18 +485,26 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>('automaticUpdate');
+         'azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>(
+      'automaticUpdate',
+    );
     this.name = registerOutput<String>('name');
-    this.recoveryFabricName = registerOutput<String>('recoveryFabricName');
-    this.recoveryReplicationPolicyId = registerOutput<String>('recoveryReplicationPolicyId');
-    this.recoverySourceProtectionContainerName = registerOutput<String>('recoverySourceProtectionContainerName');
-    this.recoveryTargetProtectionContainerId = registerOutput<String>('recoveryTargetProtectionContainerId');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    recoveryFabricName = registerOutput<String>('recoveryFabricName');
+    recoveryReplicationPolicyId = registerOutput<String>(
+      'recoveryReplicationPolicyId',
+    );
+    recoverySourceProtectionContainerName = registerOutput<String>(
+      'recoverySourceProtectionContainerName',
+    );
+    recoveryTargetProtectionContainerId = registerOutput<String>(
+      'recoveryTargetProtectionContainerId',
+    );
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

@@ -11,20 +11,41 @@ class RegionResizeRequestStatusLastAttempt {
 
   /// Creates a new [RegionResizeRequestStatusLastAttempt].
   /// [errors] (Output)
-  RegionResizeRequestStatusLastAttempt({
-    this.errors,
-  });
+  RegionResizeRequestStatusLastAttempt({this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?pulumi.Input.mapOptionalInputValue<List<RegionResizeRequestStatusLastAttemptError>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<RegionResizeRequestStatusLastAttemptError, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RegionResizeRequestStatusLastAttemptError>,
+            List<Map<String, dynamic>>
+          >(
+            errors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RegionResizeRequestStatusLastAttemptError,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory RegionResizeRequestStatusLastAttempt.fromMap(Map<String, dynamic> map) {
+  factory RegionResizeRequestStatusLastAttempt.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionResizeRequestStatusLastAttempt(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptError>(map['errors']!, (value) => RegionResizeRequestStatusLastAttemptError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: (() {
+        final guardedValue = map['errors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptError>(
+            guardedValue,
+            (value) => RegionResizeRequestStatusLastAttemptError.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

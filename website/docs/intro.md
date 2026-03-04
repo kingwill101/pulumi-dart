@@ -49,7 +49,6 @@ Pulumi for Dart is community-maintained and is not currently an officially suppo
 - [Install Pulumi Dart tooling](./get-started/install.md)
 
 ## Related links
-
 - [Pulumi docs](https://www.pulumi.com/docs/)
 - [Pulumi Registry](https://www.pulumi.com/registry/)
 - [Pulumi Dart repository](https://github.com/pulumi/pulumi-dart)

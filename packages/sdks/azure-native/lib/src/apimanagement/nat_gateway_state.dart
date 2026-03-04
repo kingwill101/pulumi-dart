@@ -3,16 +3,15 @@ enum NatGatewayState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const NatGatewayState(this.value);
-  final String value;
+  const NatGatewayState(this.wireValue);
+  final String wireValue;
 
   static NatGatewayState fromValue(String value) {
     for (final item in NatGatewayState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NatGatewayState value: $value');
   }
 }
-

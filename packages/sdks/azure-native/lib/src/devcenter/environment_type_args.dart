@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentTypeArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
+
   /// The display name of the environment type.
   final pulumi.Input<String>? displayName;
+
   /// The name of the environment type.
   final pulumi.Input<String>? environmentTypeName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,27 @@ class EnvironmentTypeArgs {
 
   factory EnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentTypeArgs(
-      devCenterName: (map['devCenterName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      environmentTypeName: map['environmentTypeName'] == null ? null : (map['environmentTypeName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentTypeName: (() {
+        final guardedValue = map['environmentTypeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

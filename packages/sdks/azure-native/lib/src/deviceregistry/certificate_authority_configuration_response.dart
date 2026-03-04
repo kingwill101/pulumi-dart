@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateAuthorityConfigurationResponse {
   /// Crypto type: ECC.
   final pulumi.Input<String> keyType;
+
   /// Certificate subject.
   final pulumi.Input<String> subject;
+
   /// Certificate is valid not after this date. Format ISO8601. Generated based on validity period.
   final pulumi.Input<String> validityNotAfter;
+
   /// Certificate is valid not before this date. Format ISO8601. Generated based on on validity period.
   final pulumi.Input<String> validityNotBefore;
 
@@ -34,13 +37,18 @@ class CertificateAuthorityConfigurationResponse {
     };
   }
 
-  factory CertificateAuthorityConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory CertificateAuthorityConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateAuthorityConfigurationResponse(
-      keyType: (map['keyType'] as String).input(),
-      subject: (map['subject'] as String).input(),
-      validityNotAfter: (map['validityNotAfter'] as String).input(),
-      validityNotBefore: (map['validityNotBefore'] as String).input(),
+      keyType: pulumi.Input.fromValue(map['keyType'] as String),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      validityNotAfter: pulumi.Input.fromValue(
+        map['validityNotAfter'] as String,
+      ),
+      validityNotBefore: pulumi.Input.fromValue(
+        map['validityNotBefore'] as String,
+      ),
     );
   }
 }
-

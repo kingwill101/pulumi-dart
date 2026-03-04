@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'acl_acl_entry.dart';
 import 'acl_args.dart';
 import 'acl_state.dart';
 
@@ -7,7 +6,7 @@ import 'acl_state.dart';
 ///
 /// For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createacl).
 ///
-/// > **NOTE:** Available since v1.150.0.
+/// &gt; **NOTE:** Available since v1.150.0.
 ///
 /// ## Example Usage
 ///
@@ -158,17 +157,23 @@ import 'acl_state.dart';
 /// ```
 class Acl extends pulumi.CustomResource {
   /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
-  late final pulumi.Output<List<AclAclEntry>> aclEntries;
+  late final pulumi.Output<List<Map<String, dynamic>>> aclEntries;
+
   /// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
   late final pulumi.Output<String?> aclName;
+
   /// The IP version. Valid values: `IPv4` and `IPv6`.
   late final pulumi.Output<String> addressIpVersion;
+
   /// The dry run.
   late final pulumi.Output<bool?> dryRun;
+
   /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -176,31 +181,24 @@ class Acl extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Acl]. {@macro pulumi_ga_acl_acl_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Acl(
-    String name, {
-    AclArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ga/acl:Acl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclEntries = registerOutput<List<AclAclEntry>>('aclEntries');
-    this.aclName = registerOutput<String?>('aclName');
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+  Acl(String name, {AclArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ga/acl:Acl',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    aclEntries = registerOutput<List<Map<String, dynamic>>>('aclEntries');
+    aclName = registerOutput<String?>('aclName');
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    dryRun = registerOutput<bool?>('dryRun');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Acl] resource's state with the given [name] and [id].
-  static Acl get(
-    String name,
-    pulumi.Input<String> id, {
-    AclState? state,
-  }) {
+  static Acl get(String name, pulumi.Input<String> id, {AclState? state}) {
     return Acl._get(
       name,
       state: state?.toMap(),
@@ -213,17 +211,17 @@ class Acl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/acl:Acl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclEntries = registerOutput<List<AclAclEntry>>('aclEntries');
-    this.aclName = registerOutput<String?>('aclName');
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ga/acl:Acl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclEntries = registerOutput<List<Map<String, dynamic>>>('aclEntries');
+    aclName = registerOutput<String?>('aclName');
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    dryRun = registerOutput<bool?>('dryRun');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -6,8 +6,13 @@ import 'data_source_custom_document_enrichment_configuration_inline_configuratio
 class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition {
   /// The identifier of the document attribute used for the condition. For example, `_source_uri` could be an identifier for the attribute or metadata field that contains source URIs associated with the documents. Amazon Kendra currently does not support `_document_body` as an attribute key used for the condition.
   final pulumi.Input<String> conditionDocumentAttributeKey;
+
   /// The value used by the operator. For example, you can specify the value 'financial' for strings in the `_source_uri` field that partially match or contain this value. See condition_on_value.
-  final pulumi.Input<DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue>? conditionOnValue;
+  final pulumi.Input<
+    DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue
+  >?
+  conditionOnValue;
+
   /// The condition operator. For example, you can use `Contains` to partially match a string. Valid Values: `GreaterThan` | `GreaterThanOrEquals` | `LessThan` | `LessThanOrEquals` | `Equals` | `NotEquals` | `Contains` | `NotContains` | `Exists` | `NotExists` | `BeginsWith`.
   final pulumi.Input<String> operator;
 
@@ -24,17 +29,32 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditio
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'conditionDocumentAttributeKey': conditionDocumentAttributeKey,
-      'conditionOnValue': ?pulumi.Input.mapOptionalInputValue<DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue, Map<String, dynamic>>(conditionOnValue, (value) => value.toMap()),
+      'conditionOnValue':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue,
+            Map<String, dynamic>
+          >(conditionOnValue, (value) => value.toMap()),
       'operator': operator,
     };
   }
 
-  factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition.fromMap(Map<String, dynamic> map) {
+  factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition(
-      conditionDocumentAttributeKey: (map['conditionDocumentAttributeKey'] as String).input(),
-      conditionOnValue: map['conditionOnValue'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue.fromMap((map['conditionOnValue']! as Map).cast<String, dynamic>())).input()).input(),
-      operator: (map['operator'] as String).input(),
+      conditionDocumentAttributeKey: pulumi.Input.fromValue(
+        map['conditionDocumentAttributeKey'] as String,
+      ),
+      conditionOnValue: (() {
+        final guardedValue = map['conditionOnValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
     );
   }
 }
-

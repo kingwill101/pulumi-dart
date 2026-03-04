@@ -10,20 +10,31 @@ class VirtualMachineInstanceManagedDiskParametersResponse {
 
   /// Creates a new [VirtualMachineInstanceManagedDiskParametersResponse].
   /// [securityProfile] Specifies the security profile for the managed disk.
-  VirtualMachineInstanceManagedDiskParametersResponse({
-    this.securityProfile,
-  });
+  VirtualMachineInstanceManagedDiskParametersResponse({this.securityProfile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'securityProfile': ?pulumi.Input.mapOptionalInputValue<VMDiskSecurityProfileResponse, Map<String, dynamic>>(securityProfile, (value) => value.toMap()),
+      'securityProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VMDiskSecurityProfileResponse,
+            Map<String, dynamic>
+          >(securityProfile, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachineInstanceManagedDiskParametersResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineInstanceManagedDiskParametersResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineInstanceManagedDiskParametersResponse(
-      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfileResponse.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      securityProfile: (() {
+        final guardedValue = map['securityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VMDiskSecurityProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

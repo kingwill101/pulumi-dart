@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActiveDirectoryAdministratorState {
   /// The login name of the principal to set as the server administrator
   final pulumi.Input<String>? login;
+
   /// The ID of the principal to set as the server administrator. For a managed identity this should be the Client ID of the identity.
   final pulumi.Input<String>? objectId;
+
   /// The name of the resource group for the PostgreSQL server. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The name of the PostgreSQL Server on which to set the administrator. Changing this forces a new resource to be created.
   final pulumi.Input<String>? serverName;
+
   /// The Azure Tenant ID
   final pulumi.Input<String>? tenantId;
 
@@ -41,12 +45,31 @@ class ActiveDirectoryAdministratorState {
 
   factory ActiveDirectoryAdministratorState.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryAdministratorState(
-      login: map['login'] == null ? null : (map['login']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      login: (() {
+        final guardedValue = map['login'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverName: (() {
+        final guardedValue = map['serverName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

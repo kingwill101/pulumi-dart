@@ -9,14 +9,19 @@ import 'volume_mount.dart';
 class InitContainerDefinition {
   /// The command to execute within the init container in exec form.
   final pulumi.Input<List<String>>? command;
+
   /// The environment variables to set in the init container.
   final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+
   /// The image of the init container.
   final pulumi.Input<String>? image;
+
   /// The name for the init container.
   final pulumi.Input<String> name;
+
   /// The container security properties.
   final pulumi.Input<SecurityContextDefinition>? securityContext;
+
   /// The volume mounts available to the init container.
   final pulumi.Input<List<VolumeMount>>? volumeMounts;
 
@@ -39,23 +44,85 @@ class InitContainerDefinition {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'command': ?command,
-      'environmentVariables': ?pulumi.Input.mapOptionalInputValue<List<EnvironmentVariable>, List<Map<String, dynamic>>>(environmentVariables, (value) => pulumi.Input.encodeList<EnvironmentVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'environmentVariables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EnvironmentVariable>,
+            List<Map<String, dynamic>>
+          >(
+            environmentVariables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EnvironmentVariable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'image': ?image,
       'name': name,
-      'securityContext': ?pulumi.Input.mapOptionalInputValue<SecurityContextDefinition, Map<String, dynamic>>(securityContext, (value) => value.toMap()),
-      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<VolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<VolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'securityContext':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityContextDefinition,
+            Map<String, dynamic>
+          >(securityContext, (value) => value.toMap()),
+      'volumeMounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VolumeMount>,
+            List<Map<String, dynamic>>
+          >(
+            volumeMounts,
+            (value) =>
+                pulumi.Input.encodeList<VolumeMount, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory InitContainerDefinition.fromMap(Map<String, dynamic> map) {
     return InitContainerDefinition(
-      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      name: (map['name'] as String).input(),
-      securityContext: map['securityContext'] == null ? null : (SecurityContextDefinition.fromMap((map['securityContext']! as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMount>(map['volumeMounts']!, (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      command: (() {
+        final guardedValue = map['command'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      environmentVariables: (() {
+        final guardedValue = map['environmentVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EnvironmentVariable>(
+            guardedValue,
+            (value) => EnvironmentVariable.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      securityContext: (() {
+        final guardedValue = map['securityContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityContextDefinition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      volumeMounts: (() {
+        final guardedValue = map['volumeMounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VolumeMount>(
+            guardedValue,
+            (value) =>
+                VolumeMount.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

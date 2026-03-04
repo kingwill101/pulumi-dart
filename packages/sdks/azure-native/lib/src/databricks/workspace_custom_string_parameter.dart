@@ -9,20 +9,15 @@ class WorkspaceCustomStringParameter {
 
   /// Creates a new [WorkspaceCustomStringParameter].
   /// [value] The value which should be used for this field.
-  WorkspaceCustomStringParameter({
-    required this.value,
-  });
+  WorkspaceCustomStringParameter({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
   factory WorkspaceCustomStringParameter.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomStringParameter(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

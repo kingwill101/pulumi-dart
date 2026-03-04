@@ -6,9 +6,16 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_res
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
   /// Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline>? inline;
+  final pulumi.Input<
+    AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline
+  >?
+  inline;
+
   /// Contains configurations for a prompt from Prompt management. See Prompt Resource Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource>? resource;
+  final pulumi.Input<
+    AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource
+  >?
+  resource;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration].
   /// [inline] Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
@@ -20,16 +27,41 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inline': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline, Map<String, dynamic>>(inline, (value) => value.toMap()),
-      'resource': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource, Map<String, dynamic>>(resource, (value) => value.toMap()),
+      'inline':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline,
+            Map<String, dynamic>
+          >(inline, (value) => value.toMap()),
+      'resource':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource,
+            Map<String, dynamic>
+          >(resource, (value) => value.toMap()),
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration(
-      inline: map['inline'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap((map['inline']! as Map).cast<String, dynamic>())).input()).input(),
-      resource: map['resource'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap((map['resource']! as Map).cast<String, dynamic>())).input()).input(),
+      inline: (() {
+        final guardedValue = map['inline'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

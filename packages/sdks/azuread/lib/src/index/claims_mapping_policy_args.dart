@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClaimsMappingPolicyArgs {
   /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
   final pulumi.Input<List<String>> definitions;
+
   /// The display name for this Claims Mapping Policy.
   final pulumi.Input<String> displayName;
 
@@ -29,9 +30,10 @@ class ClaimsMappingPolicyArgs {
 
   factory ClaimsMappingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ClaimsMappingPolicyArgs(
-      definitions: ((map['definitions'] as List).cast<String>()).input(),
-      displayName: (map['displayName'] as String).input(),
+      definitions: pulumi.Input.fromValue(
+        (map['definitions'] as List).cast<String>(),
+      ),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
-

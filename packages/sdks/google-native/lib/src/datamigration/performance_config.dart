@@ -10,20 +10,27 @@ class PerformanceConfig {
 
   /// Creates a new [PerformanceConfig].
   /// [dumpParallelLevel] Initial dump parallelism level.
-  PerformanceConfig({
-    this.dumpParallelLevel,
-  });
+  PerformanceConfig({this.dumpParallelLevel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dumpParallelLevel': ?pulumi.Input.mapOptionalInputValue<PerformanceConfigDumpParallelLevel, String>(dumpParallelLevel, (value) => value.value),
+      'dumpParallelLevel':
+          ?pulumi.Input.mapOptionalInputValue<
+            PerformanceConfigDumpParallelLevel,
+            String
+          >(dumpParallelLevel, (value) => value.wireValue),
     };
   }
 
   factory PerformanceConfig.fromMap(Map<String, dynamic> map) {
     return PerformanceConfig(
-      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : (PerformanceConfigDumpParallelLevel.fromValue(map['dumpParallelLevel']! as String)).input(),
+      dumpParallelLevel: (() {
+        final guardedValue = map['dumpParallelLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PerformanceConfigDumpParallelLevel.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

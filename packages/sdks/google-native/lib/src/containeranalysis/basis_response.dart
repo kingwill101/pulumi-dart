@@ -7,29 +7,34 @@ import 'fingerprint_response_containeranalysis_v1alpha1.dart';
 class BasisResponse {
   /// The fingerprint of the base image.
   final pulumi.Input<FingerprintResponseContaineranalysisV1alpha1> fingerprint;
+
   /// The resource_url for the resource representing the basis of associated occurrence images.
   final pulumi.Input<String> resourceUrl;
 
   /// Creates a new [BasisResponse].
   /// [fingerprint] The fingerprint of the base image.
   /// [resourceUrl] The resource_url for the resource representing the basis of associated occurrence images.
-  BasisResponse({
-    required this.fingerprint,
-    required this.resourceUrl,
-  });
+  BasisResponse({required this.fingerprint, required this.resourceUrl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fingerprint': pulumi.Input.mapInputValue<FingerprintResponseContaineranalysisV1alpha1, Map<String, dynamic>>(fingerprint, (value) => value.toMap()),
+      'fingerprint':
+          pulumi.Input.mapInputValue<
+            FingerprintResponseContaineranalysisV1alpha1,
+            Map<String, dynamic>
+          >(fingerprint, (value) => value.toMap()),
       'resourceUrl': resourceUrl,
     };
   }
 
   factory BasisResponse.fromMap(Map<String, dynamic> map) {
     return BasisResponse(
-      fingerprint: (FingerprintResponseContaineranalysisV1alpha1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>())).input(),
-      resourceUrl: (map['resourceUrl'] as String).input(),
+      fingerprint: pulumi.Input.fromValue(
+        FingerprintResponseContaineranalysisV1alpha1.fromMap(
+          (map['fingerprint']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceUrl: pulumi.Input.fromValue(map['resourceUrl'] as String),
     );
   }
 }
-

@@ -112,16 +112,13 @@ import 'get_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.HybridCompute` - 2022-11-10
 /// [args] Arguments passed to this invoke. {@macro pulumi_arcmachine_get_get_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetResult> get(
-  GetArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<GetResult> get(GetArgs args, {pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'azure:arcmachine/get:get',

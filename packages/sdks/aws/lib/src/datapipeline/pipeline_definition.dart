@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_definition_args.dart';
-import 'pipeline_definition_parameter_object.dart';
-import 'pipeline_definition_parameter_value.dart';
-import 'pipeline_definition_pipeline_object.dart';
 import 'pipeline_definition_state.dart';
 
 /// Provides a DataPipeline Pipeline Definition resource.
@@ -445,15 +442,19 @@ import 'pipeline_definition_state.dart';
 /// ```
 class PipelineDefinition extends pulumi.CustomResource {
   /// Configuration block for the parameter objects used in the pipeline definition. See below
-  late final pulumi.Output<List<PipelineDefinitionParameterObject>?> parameterObjects;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameterObjects;
+
   /// Configuration block for the parameter values used in the pipeline definition. See below
-  late final pulumi.Output<List<PipelineDefinitionParameterValue>?> parameterValues;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameterValues;
+
   /// ID of the pipeline.
   late final pulumi.Output<String> pipelineId;
+
   /// Configuration block for the objects that define the pipeline. See below
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<PipelineDefinitionPipelineObject>> pipelineObjects;
+  late final pulumi.Output<List<Map<String, dynamic>>> pipelineObjects;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -466,16 +467,22 @@ class PipelineDefinition extends pulumi.CustomResource {
     PipelineDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datapipeline/pipelineDefinition:PipelineDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.parameterObjects = registerOutput<List<PipelineDefinitionParameterObject>?>('parameterObjects');
-    this.parameterValues = registerOutput<List<PipelineDefinitionParameterValue>?>('parameterValues');
-    this.pipelineId = registerOutput<String>('pipelineId');
-    this.pipelineObjects = registerOutput<List<PipelineDefinitionPipelineObject>>('pipelineObjects');
-    this.region = registerOutput<String>('region');
+         'aws:datapipeline/pipelineDefinition:PipelineDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    parameterObjects = registerOutput<List<Map<String, dynamic>>?>(
+      'parameterObjects',
+    );
+    parameterValues = registerOutput<List<Map<String, dynamic>>?>(
+      'parameterValues',
+    );
+    pipelineId = registerOutput<String>('pipelineId');
+    pipelineObjects = registerOutput<List<Map<String, dynamic>>>(
+      'pipelineObjects',
+    );
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [PipelineDefinition] resource's state with the given [name] and [id].
@@ -496,15 +503,21 @@ class PipelineDefinition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datapipeline/pipelineDefinition:PipelineDefinition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.parameterObjects = registerOutput<List<PipelineDefinitionParameterObject>?>('parameterObjects');
-    this.parameterValues = registerOutput<List<PipelineDefinitionParameterValue>?>('parameterValues');
-    this.pipelineId = registerOutput<String>('pipelineId');
-    this.pipelineObjects = registerOutput<List<PipelineDefinitionPipelineObject>>('pipelineObjects');
-    this.region = registerOutput<String>('region');
+         'aws:datapipeline/pipelineDefinition:PipelineDefinition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    parameterObjects = registerOutput<List<Map<String, dynamic>>?>(
+      'parameterObjects',
+    );
+    parameterValues = registerOutput<List<Map<String, dynamic>>?>(
+      'parameterValues',
+    );
+    pipelineId = registerOutput<String>('pipelineId');
+    pipelineObjects = registerOutput<List<Map<String, dynamic>>>(
+      'pipelineObjects',
+    );
+    region = registerOutput<String>('region');
   }
 }

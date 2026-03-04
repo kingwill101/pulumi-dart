@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyGroupArgs {
   /// A comment to describe the key group..
   final pulumi.Input<String>? comment;
+
   /// A list of the identifiers of the public keys in the key group.
   final pulumi.Input<List<String>> items;
+
   /// A name to identify the key group.
   final pulumi.Input<String>? name;
 
@@ -18,11 +20,7 @@ class KeyGroupArgs {
   /// [comment] A comment to describe the key group..
   /// [items] A list of the identifiers of the public keys in the key group.
   /// [name] A name to identify the key group.
-  KeyGroupArgs({
-    this.comment,
-    required this.items,
-    this.name,
-  });
+  KeyGroupArgs({this.comment, required this.items, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class KeyGroupArgs {
 
   factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
     return KeyGroupArgs(
-      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
-      items: ((map['items'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

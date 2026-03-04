@@ -7,10 +7,14 @@ import 'application_gateway_load_distribution_target.dart';
 class ApplicationGatewayLoadDistributionPolicy {
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Load Distribution Targets resource of an application gateway.
   final pulumi.Input<String>? loadDistributionAlgorithm;
+
   /// Load Distribution Targets resource of an application gateway.
-  final pulumi.Input<List<ApplicationGatewayLoadDistributionTarget>>? loadDistributionTargets;
+  final pulumi.Input<List<ApplicationGatewayLoadDistributionTarget>>?
+  loadDistributionTargets;
+
   /// Name of the load distribution policy that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
 
@@ -30,18 +34,53 @@ class ApplicationGatewayLoadDistributionPolicy {
     return <String, dynamic>{
       'id': ?id,
       'loadDistributionAlgorithm': ?loadDistributionAlgorithm,
-      'loadDistributionTargets': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayLoadDistributionTarget>, List<Map<String, dynamic>>>(loadDistributionTargets, (value) => pulumi.Input.encodeList<ApplicationGatewayLoadDistributionTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'loadDistributionTargets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationGatewayLoadDistributionTarget>,
+            List<Map<String, dynamic>>
+          >(
+            loadDistributionTargets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationGatewayLoadDistributionTarget,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
     };
   }
 
-  factory ApplicationGatewayLoadDistributionPolicy.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayLoadDistributionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayLoadDistributionPolicy(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      loadDistributionAlgorithm: map['loadDistributionAlgorithm'] == null ? null : (map['loadDistributionAlgorithm']! as String).input(),
-      loadDistributionTargets: map['loadDistributionTargets'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayLoadDistributionTarget>(map['loadDistributionTargets']!, (value) => ApplicationGatewayLoadDistributionTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadDistributionAlgorithm: (() {
+        final guardedValue = map['loadDistributionAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadDistributionTargets: (() {
+        final guardedValue = map['loadDistributionTargets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationGatewayLoadDistributionTarget>(
+            guardedValue,
+            (value) => ApplicationGatewayLoadDistributionTarget.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

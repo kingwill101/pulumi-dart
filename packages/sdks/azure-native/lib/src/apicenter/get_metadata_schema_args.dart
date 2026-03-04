@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMetadataSchemaArgs {
   /// The name of the metadata schema.
   final pulumi.Input<String> metadataSchemaName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,13 @@ class GetMetadataSchemaArgs {
 
   factory GetMetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetMetadataSchemaArgs(
-      metadataSchemaName: (map['metadataSchemaName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      metadataSchemaName: pulumi.Input.fromValue(
+        map['metadataSchemaName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

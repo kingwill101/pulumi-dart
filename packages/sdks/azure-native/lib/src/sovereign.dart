@@ -1,5 +1,3 @@
-library module_sovereign;
-
 export 'sovereign/custom_naming_convention.dart';
 export 'sovereign/custom_naming_convention_response.dart';
 export 'sovereign/decommissioned_management_group_properties.dart';

@@ -156,16 +156,22 @@ import 'migrate_project_response_tags.dart';
 class MigrateProject extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the eTag for concurrency control.
   late final pulumi.Output<String?> eTag;
+
   /// Gets or sets the Azure location in which migrate project is created.
   late final pulumi.Output<String?> location;
+
   /// Gets the name of the migrate project.
   late final pulumi.Output<String> name;
+
   /// Gets or sets the nested properties.
   late final pulumi.Output<MigrateProjectPropertiesResponse> properties;
+
   /// Gets or sets the tags.
   late final pulumi.Output<MigrateProjectResponseTags?> tags;
+
   /// Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
   late final pulumi.Output<String> type;
 
@@ -178,17 +184,17 @@ class MigrateProject extends pulumi.CustomResource {
     MigrateProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:MigrateProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String?>('eTag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:migrate:MigrateProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MigrateProjectPropertiesResponse>('properties');
-    this.tags = registerOutput<MigrateProjectResponseTags?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MigrateProjectPropertiesResponse>('properties');
+    tags = registerOutput<MigrateProjectResponseTags?>('tags');
+    type = registerOutput<String>('type');
   }
 }

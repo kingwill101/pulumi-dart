@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
   /// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
   final pulumi.Input<bool> allowMultiLabel;
+
   /// Annotation spec set resource name.
   final pulumi.Input<String> annotationSpecSet;
+
   /// Optional. The type of how to aggregate answers.
   final pulumi.Input<String> answerAggregationType;
 
@@ -29,12 +31,17 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse(
-      allowMultiLabel: (map['allowMultiLabel'] as bool).input(),
-      annotationSpecSet: (map['annotationSpecSet'] as String).input(),
-      answerAggregationType: (map['answerAggregationType'] as String).input(),
+      allowMultiLabel: pulumi.Input.fromValue(map['allowMultiLabel'] as bool),
+      annotationSpecSet: pulumi.Input.fromValue(
+        map['annotationSpecSet'] as String,
+      ),
+      answerAggregationType: pulumi.Input.fromValue(
+        map['answerAggregationType'] as String,
+      ),
     );
   }
 }
-

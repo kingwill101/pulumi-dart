@@ -2,16 +2,15 @@
 enum SsisLogLocationType {
   valueFile("File");
 
-  const SsisLogLocationType(this.value);
-  final String value;
+  const SsisLogLocationType(this.wireValue);
+  final String wireValue;
 
   static SsisLogLocationType fromValue(String value) {
     for (final item in SsisLogLocationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SsisLogLocationType value: $value');
   }
 }
-

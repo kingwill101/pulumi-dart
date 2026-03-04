@@ -157,23 +157,32 @@ import 'system_data_response.dart';
 class ScheduledSynchronizationSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Time at which the synchronization setting was created.
   late final pulumi.Output<String> createdAt;
+
   /// Kind of synchronization setting.
   /// Expected value is 'ScheduleBased'.
   late final pulumi.Output<String> kind;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// Gets or sets the provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// Recurrence Interval
   late final pulumi.Output<String> recurrenceInterval;
+
   /// Synchronization time
   late final pulumi.Output<String> synchronizationTime;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
+
   /// Name of the user who created the synchronization setting.
   late final pulumi.Output<String> userName;
 
@@ -186,20 +195,20 @@ class ScheduledSynchronizationSetting extends pulumi.CustomResource {
     ScheduledSynchronizationSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:ScheduledSynchronizationSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:datashare:ScheduledSynchronizationSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.recurrenceInterval = registerOutput<String>('recurrenceInterval');
-    this.synchronizationTime = registerOutput<String>('synchronizationTime');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.userName = registerOutput<String>('userName');
+    provisioningState = registerOutput<String>('provisioningState');
+    recurrenceInterval = registerOutput<String>('recurrenceInterval');
+    synchronizationTime = registerOutput<String>('synchronizationTime');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    userName = registerOutput<String>('userName');
   }
 }

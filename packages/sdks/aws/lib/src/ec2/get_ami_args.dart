@@ -13,37 +13,46 @@ class GetAmiArgs {
   /// will be returned by this data source. Consider filtering by owner or image ID rather
   /// than setting this argument.
   final pulumi.Input<bool>? allowUnsafeFilter;
+
   /// Limit search to users with *explicit* launch permission on
   /// the image. Valid items are the numeric account ID or `self`.
   final pulumi.Input<List<String>>? executableUsers;
+
   /// One or more name/value pairs to filter off of. There are
   /// several valid keys, for a full reference, check out
   /// [describe-images in the AWS CLI reference][1].
   final pulumi.Input<List<GetAmiFilter>>? filters;
+
   /// If true, all deprecated AMIs are included in the response. If false, no deprecated AMIs are included in the response. If no value is specified, the default value is false.
   final pulumi.Input<bool>? includeDeprecated;
+
   /// If more than one result is returned, use the most
   /// recent AMI.
   final pulumi.Input<bool>? mostRecent;
+
   /// Regex string to apply to the AMI list returned
   /// by AWS. This allows more advanced filtering not supported from the AWS API. This
   /// filtering is done locally on what AWS returns, and could have a performance
   /// impact if the result is large. Combine this with other
   /// options to narrow down the list AWS returns.
   ///
-  /// > **NOTE:** If more or less than a single match is returned by the search,
+  /// &gt; **NOTE:** If more or less than a single match is returned by the search,
   /// this call will fail. Ensure that your search is specific enough to return
   /// a single AMI ID only, or use `most_recent` to choose the most recent one. If
   /// you want to match multiple AMIs, use the `aws.ec2.getAmiIds` data source instead.
   final pulumi.Input<String>? nameRegex;
+
   /// List of AMI owners to limit search. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g., `amazon`, `aws-marketplace`, `microsoft`).
   final pulumi.Input<List<String>>? owners;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Any tags assigned to the image.
   /// * `tags.#.key` - Key name of the tag.
   /// * `tags.#.value` - Value of the tag.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// (Optional) Base64 representation of the non-volatile UEFI variable store.
   final pulumi.Input<String>? uefiData;
 
@@ -75,7 +84,18 @@ class GetAmiArgs {
     return <String, dynamic>{
       'allowUnsafeFilter': ?allowUnsafeFilter,
       'executableUsers': ?executableUsers,
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetAmiFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetAmiFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetAmiFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<GetAmiFilter, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'includeDeprecated': ?includeDeprecated,
       'mostRecent': ?mostRecent,
       'nameRegex': ?nameRegex,
@@ -88,17 +108,64 @@ class GetAmiArgs {
 
   factory GetAmiArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiArgs(
-      allowUnsafeFilter: map['allowUnsafeFilter'] == null ? null : ((map['allowUnsafeFilter'] as bool).input()).input(),
-      executableUsers: map['executableUsers'] == null ? null : (((map['executableUsers'] as List).cast<String>()).input()).input(),
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetAmiFilter>(map['filters']!, (value) => GetAmiFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : ((map['includeDeprecated'] as bool).input()).input(),
-      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
-      nameRegex: map['nameRegex'] == null ? null : ((map['nameRegex'] as String).input()).input(),
-      owners: map['owners'] == null ? null : (((map['owners'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      uefiData: map['uefiData'] == null ? null : ((map['uefiData'] as String).input()).input(),
+      allowUnsafeFilter: (() {
+        final guardedValue = map['allowUnsafeFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      executableUsers: (() {
+        final guardedValue = map['executableUsers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetAmiFilter>(
+            guardedValue,
+            (value) =>
+                GetAmiFilter.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      includeDeprecated: (() {
+        final guardedValue = map['includeDeprecated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owners: (() {
+        final guardedValue = map['owners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uefiData: (() {
+        final guardedValue = map['uefiData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

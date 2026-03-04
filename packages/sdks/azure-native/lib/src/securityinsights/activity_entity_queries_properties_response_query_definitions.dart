@@ -9,20 +9,21 @@ class ActivityEntityQueriesPropertiesResponseQueryDefinitions {
 
   /// Creates a new [ActivityEntityQueriesPropertiesResponseQueryDefinitions].
   /// [query] The Activity query to run on a given entity
-  ActivityEntityQueriesPropertiesResponseQueryDefinitions({
-    this.query,
-  });
+  ActivityEntityQueriesPropertiesResponseQueryDefinitions({this.query});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'query': ?query,
-    };
+    return <String, dynamic>{'query': ?query};
   }
 
-  factory ActivityEntityQueriesPropertiesResponseQueryDefinitions.fromMap(Map<String, dynamic> map) {
+  factory ActivityEntityQueriesPropertiesResponseQueryDefinitions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ActivityEntityQueriesPropertiesResponseQueryDefinitions(
-      query: map['query'] == null ? null : (map['query']! as String).input(),
+      query: (() {
+        final guardedValue = map['query'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

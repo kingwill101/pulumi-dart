@@ -7,8 +7,10 @@ import 'managed_identity_authentication_response.dart';
 class DataLakeServiceStorageAuthenticationResponse {
   /// Access token secret name.
   final pulumi.Input<String>? accessTokenSecretName;
+
   /// Configuration for managed identity authentication.
-  final pulumi.Input<ManagedIdentityAuthenticationResponse>? systemAssignedManagedIdentity;
+  final pulumi.Input<ManagedIdentityAuthenticationResponse>?
+  systemAssignedManagedIdentity;
 
   /// Creates a new [DataLakeServiceStorageAuthenticationResponse].
   /// [accessTokenSecretName] Access token secret name.
@@ -21,15 +23,32 @@ class DataLakeServiceStorageAuthenticationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessTokenSecretName': ?accessTokenSecretName,
-      'systemAssignedManagedIdentity': ?pulumi.Input.mapOptionalInputValue<ManagedIdentityAuthenticationResponse, Map<String, dynamic>>(systemAssignedManagedIdentity, (value) => value.toMap()),
+      'systemAssignedManagedIdentity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedIdentityAuthenticationResponse,
+            Map<String, dynamic>
+          >(systemAssignedManagedIdentity, (value) => value.toMap()),
     };
   }
 
-  factory DataLakeServiceStorageAuthenticationResponse.fromMap(Map<String, dynamic> map) {
+  factory DataLakeServiceStorageAuthenticationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataLakeServiceStorageAuthenticationResponse(
-      accessTokenSecretName: map['accessTokenSecretName'] == null ? null : (map['accessTokenSecretName']! as String).input(),
-      systemAssignedManagedIdentity: map['systemAssignedManagedIdentity'] == null ? null : (ManagedIdentityAuthenticationResponse.fromMap((map['systemAssignedManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      accessTokenSecretName: (() {
+        final guardedValue = map['accessTokenSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      systemAssignedManagedIdentity: (() {
+        final guardedValue = map['systemAssignedManagedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedIdentityAuthenticationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

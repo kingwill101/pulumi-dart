@@ -162,22 +162,31 @@ import 'test_base_account_skuresponse.dart';
 class TestBaseAccount extends pulumi.CustomResource {
   /// The access level of the Test Base Account.
   late final pulumi.Output<String> accessLevel;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity of the testBaseAccount.
   late final pulumi.Output<SystemAssignedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU of the Test Base Account.
   late final pulumi.Output<TestBaseAccountSKUResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -190,20 +199,22 @@ class TestBaseAccount extends pulumi.CustomResource {
     TestBaseAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:testbase:TestBaseAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessLevel = registerOutput<String>('accessLevel');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<SystemAssignedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:testbase:TestBaseAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessLevel = registerOutput<String>('accessLevel');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<SystemAssignedServiceIdentityResponse?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<TestBaseAccountSKUResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<TestBaseAccountSKUResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

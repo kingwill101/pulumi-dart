@@ -4,25 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the action responsible for properties update operations.
 class GoogleCloudContentwarehouseV1DataUpdateActionResponse {
-  /// Map of (K, V) -> (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
+  /// Map of (K, V) -&gt; (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
   final pulumi.Input<Map<String, String>> entries;
 
   /// Creates a new [GoogleCloudContentwarehouseV1DataUpdateActionResponse].
-  /// [entries] Map of (K, V) -> (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
+  /// [entries] Map of (K, V) -&gt; (valid name of the field, new value of the field) E.g., ("age", "60") entry triggers update of field age with a value of 60. If the field is not present then new entry is added. During update action execution, value strings will be casted to appropriate types.
   GoogleCloudContentwarehouseV1DataUpdateActionResponse({
     required this.entries,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entries': entries,
-    };
+    return <String, dynamic>{'entries': entries};
   }
 
-  factory GoogleCloudContentwarehouseV1DataUpdateActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1DataUpdateActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1DataUpdateActionResponse(
-      entries: ((map['entries'] as Map).cast<String, String>()).input(),
+      entries: pulumi.Input.fromValue(
+        (map['entries'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

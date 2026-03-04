@@ -10,7 +10,7 @@ import 'waf_rule_state.dart';
 ///
 /// For information about ESA Waf Rule and how to use it, see [What is Waf Rule](https://next.api.alibabacloud.com/document/ESA/2024-09-10/BatchCreateWafRules).
 ///
-/// > **NOTE:** Available since v1.261.0.
+/// &gt; **NOTE:** Available since v1.261.0.
 ///
 /// ## Example Usage
 ///
@@ -277,14 +277,18 @@ import 'waf_rule_state.dart';
 class WafRule extends pulumi.CustomResource {
   /// The specific configuration of the WAF rule. See `config` below.
   late final pulumi.Output<WafRuleConfig?> config;
+
   /// The phase in which the WAF processes this rule.
   late final pulumi.Output<String> phase;
+
   /// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
   late final pulumi.Output<int?> rulesetId;
   late final pulumi.Output<WafRuleShared?> shared;
+
   /// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   late final pulumi.Output<String> siteId;
   late final pulumi.Output<int?> siteVersion;
+
   /// The unique identifier of the WAF rule.
   late final pulumi.Output<int> wafRuleId;
 
@@ -297,18 +301,18 @@ class WafRule extends pulumi.CustomResource {
     WafRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/wafRule:WafRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<WafRuleConfig?>('config');
-    this.phase = registerOutput<String>('phase');
-    this.rulesetId = registerOutput<int?>('rulesetId');
-    this.shared = registerOutput<WafRuleShared?>('shared');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.wafRuleId = registerOutput<int>('wafRuleId');
+         'alicloud:esa/wafRule:WafRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<WafRuleConfig?>('config');
+    phase = registerOutput<String>('phase');
+    rulesetId = registerOutput<int?>('rulesetId');
+    shared = registerOutput<WafRuleShared?>('shared');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    wafRuleId = registerOutput<int>('wafRuleId');
   }
 
   /// Gets an existing [WafRule] resource's state with the given [name] and [id].
@@ -329,17 +333,17 @@ class WafRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/wafRule:WafRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<WafRuleConfig?>('config');
-    this.phase = registerOutput<String>('phase');
-    this.rulesetId = registerOutput<int?>('rulesetId');
-    this.shared = registerOutput<WafRuleShared?>('shared');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.wafRuleId = registerOutput<int>('wafRuleId');
+         'alicloud:esa/wafRule:WafRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<WafRuleConfig?>('config');
+    phase = registerOutput<String>('phase');
+    rulesetId = registerOutput<int?>('rulesetId');
+    shared = registerOutput<WafRuleShared?>('shared');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    wafRuleId = registerOutput<int>('wafRuleId');
   }
 }

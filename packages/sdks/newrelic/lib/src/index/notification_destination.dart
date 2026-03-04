@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notification_destination_args.dart';
 import 'notification_destination_auth_basic.dart';
-import 'notification_destination_auth_custom_header.dart';
 import 'notification_destination_auth_token.dart';
-import 'notification_destination_property.dart';
 import 'notification_destination_secure_url.dart';
 import 'notification_destination_state.dart';
 
@@ -200,7 +198,7 @@ import 'notification_destination_state.dart';
 ///
 /// ## Additional Examples
 ///
-/// > **NOTE:** We support all properties. The mentioned properties are just an example.
+/// &gt; **NOTE:** We support all properties. The mentioned properties are just an example.
 ///
 /// #### [WORKFLOW_AUTOMATION]
 ///
@@ -1590,9 +1588,9 @@ import 'notification_destination_state.dart';
 ///
 /// ## Import
 ///
-/// > **WARNING:** Slack-based destinations can only be imported and destroyed; this resource **does not** support creating and updating Slack-based destinations, owing to the reasons stated above, under the **Slack** section.
+/// &gt; **WARNING:** Slack-based destinations can only be imported and destroyed; this resource **does not** support creating and updating Slack-based destinations, owing to the reasons stated above, under the **Slack** section.
 ///
-/// Destination id can be found in the Destinations page > three dots at the right of the chosen destination > copy destination id to clipboard.
+/// Destination id can be found in the Destinations page &gt; three dots at the right of the chosen destination &gt; copy destination id to clipboard.
 /// This example is especially useful for slack destinations which *must* be imported.
 ///
 /// 1. Add an empty resource to your terraform file:
@@ -1670,33 +1668,44 @@ import 'notification_destination_state.dart';
 ///     type: newrelic:NotificationDestination
 /// ```
 ///
-/// 2. Run import command: `terraform import newrelic_notification_destination.foo <destination_id>`
+/// 2. Run import command: `terraform import newrelic_notification_destination.foo &lt;destination_id&gt;`
 /// 3. Run the following command after the import successfully done and copy the information to your resource:
 /// `terraform state show newrelic_notification_destination.foo`
 /// 4. Add `ignore_changes` attribute on `all` in your imported resource:
 class NotificationDestination extends pulumi.CustomResource {
   /// Determines the New Relic account where the notification destination will be created. Defaults to the account associated with the API key used.
   late final pulumi.Output<String> accountId;
+
   /// Indicates whether the destination is active.
   late final pulumi.Output<bool?> active;
+
   /// A nested block that describes a basic username and password authentication credentials. Only one auth_basic block is permitted per notification destination definition.  See Nested auth_basic blocks below for details.
   late final pulumi.Output<NotificationDestinationAuthBasic?> authBasic;
+
   /// A nested block that describes a custom header authentication credentials. This field is required when the destination type is WORKFLOW_AUTOMATION and optional for other destination types. Multiple blocks are permitted per notification destination definition. Nested auth_custom_header blocks below for details.
-  late final pulumi.Output<List<NotificationDestinationAuthCustomHeader>?> authCustomHeaders;
+  late final pulumi.Output<List<Map<String, dynamic>>?> authCustomHeaders;
+
   /// A nested block that describes a token authentication credentials. Only one auth_token block is permitted per notification destination definition.  See Nested auth_token blocks below for details.
   late final pulumi.Output<NotificationDestinationAuthToken?> authToken;
+
   /// The unique entity identifier of the destination in New Relic.
   late final pulumi.Output<String> guid;
+
   /// The last time a notification was sent.
   late final pulumi.Output<String> lastSent;
+
   /// The name of the destination.
   late final pulumi.Output<String> name;
+
   /// A nested block that describes a notification destination property. See Nested property blocks below for details.
-  late final pulumi.Output<List<NotificationDestinationProperty>> properties;
+  late final pulumi.Output<List<Map<String, dynamic>>> properties;
+
   /// A nested block that describes a URL that contains sensitive data at the path or parameters. Only one secure_url block is permitted per notification destination definition. See Nested secure_url blocks below for details.
   late final pulumi.Output<NotificationDestinationSecureUrl?> secureUrl;
+
   /// The status of the destination.
   late final pulumi.Output<String> status;
+
   /// The type of destination.  One of: `EMAIL`, `SERVICE_NOW`, `SERVICE_NOW_APP`, `WEBHOOK`, `JIRA`, `MOBILE_PUSH`, `EVENT_BRIDGE`, `PAGERDUTY_ACCOUNT_INTEGRATION` or `PAGERDUTY_SERVICE_INTEGRATION`, `MICROSOFT_TEAMS`, `WORKFLOW_AUTOMATION`. The types `SLACK` and `SLACK_COLLABORATION` can only be imported, updated and destroyed (cannot be created via terraform).
   late final pulumi.Output<String> type;
 
@@ -1709,23 +1718,25 @@ class NotificationDestination extends pulumi.CustomResource {
     NotificationDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/notificationDestination:NotificationDestination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.active = registerOutput<bool?>('active');
-    this.authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic');
-    this.authCustomHeaders = registerOutput<List<NotificationDestinationAuthCustomHeader>?>('authCustomHeaders');
-    this.authToken = registerOutput<NotificationDestinationAuthToken?>('authToken');
-    this.guid = registerOutput<String>('guid');
-    this.lastSent = registerOutput<String>('lastSent');
+         'newrelic:index/notificationDestination:NotificationDestination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    active = registerOutput<bool?>('active');
+    authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic');
+    authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>(
+      'authCustomHeaders',
+    );
+    authToken = registerOutput<NotificationDestinationAuthToken?>('authToken');
+    guid = registerOutput<String>('guid');
+    lastSent = registerOutput<String>('lastSent');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<List<NotificationDestinationProperty>>('properties');
-    this.secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<List<Map<String, dynamic>>>('properties');
+    secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [NotificationDestination] resource's state with the given [name] and [id].
@@ -1746,22 +1757,24 @@ class NotificationDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/notificationDestination:NotificationDestination',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.active = registerOutput<bool?>('active');
-    this.authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic');
-    this.authCustomHeaders = registerOutput<List<NotificationDestinationAuthCustomHeader>?>('authCustomHeaders');
-    this.authToken = registerOutput<NotificationDestinationAuthToken?>('authToken');
-    this.guid = registerOutput<String>('guid');
-    this.lastSent = registerOutput<String>('lastSent');
+         'newrelic:index/notificationDestination:NotificationDestination',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    active = registerOutput<bool?>('active');
+    authBasic = registerOutput<NotificationDestinationAuthBasic?>('authBasic');
+    authCustomHeaders = registerOutput<List<Map<String, dynamic>>?>(
+      'authCustomHeaders',
+    );
+    authToken = registerOutput<NotificationDestinationAuthToken?>('authToken');
+    guid = registerOutput<String>('guid');
+    lastSent = registerOutput<String>('lastSent');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<List<NotificationDestinationProperty>>('properties');
-    this.secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<List<Map<String, dynamic>>>('properties');
+    secureUrl = registerOutput<NotificationDestinationSecureUrl?>('secureUrl');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 }

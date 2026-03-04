@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGtmInstancesInstanceAlertConfig {
   /// Whether to configure DingTalk notifications.
   final pulumi.Input<bool> dingtalkNotice;
+
   /// Whether to configure mail notification.
   final pulumi.Input<bool> emailNotice;
+
   /// The Alarm Event Type.
   final pulumi.Input<String> noticeType;
+
   /// Whether to configure SMS notification.
   final pulumi.Input<bool> smsNotice;
 
@@ -35,11 +38,10 @@ class GetGtmInstancesInstanceAlertConfig {
 
   factory GetGtmInstancesInstanceAlertConfig.fromMap(Map<String, dynamic> map) {
     return GetGtmInstancesInstanceAlertConfig(
-      dingtalkNotice: (map['dingtalkNotice'] as bool).input(),
-      emailNotice: (map['emailNotice'] as bool).input(),
-      noticeType: (map['noticeType'] as String).input(),
-      smsNotice: (map['smsNotice'] as bool).input(),
+      dingtalkNotice: pulumi.Input.fromValue(map['dingtalkNotice'] as bool),
+      emailNotice: pulumi.Input.fromValue(map['emailNotice'] as bool),
+      noticeType: pulumi.Input.fromValue(map['noticeType'] as String),
+      smsNotice: pulumi.Input.fromValue(map['smsNotice'] as bool),
     );
   }
 }
-

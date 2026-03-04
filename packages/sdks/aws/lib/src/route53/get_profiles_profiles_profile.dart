@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProfilesProfilesProfile {
   /// ARN of the Profile.
   final pulumi.Input<String> arn;
+
   /// ID of the Profile.
   final pulumi.Input<String> id;
+
   /// Name of the Profile.
   final pulumi.Input<String> name;
+
   /// Share status of the Profile. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
   final pulumi.Input<String> shareStatus;
 
@@ -35,11 +38,10 @@ class GetProfilesProfilesProfile {
 
   factory GetProfilesProfilesProfile.fromMap(Map<String, dynamic> map) {
     return GetProfilesProfilesProfile(
-      arn: (map['arn'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      shareStatus: (map['shareStatus'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      shareStatus: pulumi.Input.fromValue(map['shareStatus'] as String),
     );
   }
 }
-

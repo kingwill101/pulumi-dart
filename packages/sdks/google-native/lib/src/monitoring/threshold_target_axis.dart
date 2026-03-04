@@ -4,16 +4,15 @@ enum ThresholdTargetAxis {
   y1("Y1"),
   y2("Y2");
 
-  const ThresholdTargetAxis(this.value);
-  final String value;
+  const ThresholdTargetAxis(this.wireValue);
+  final String wireValue;
 
   static ThresholdTargetAxis fromValue(String value) {
     for (final item in ThresholdTargetAxis.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ThresholdTargetAxis value: $value');
   }
 }
-

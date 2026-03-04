@@ -4,16 +4,15 @@ enum GatewayConfigGatewayType {
   gateway("GATEWAY"),
   nonGateway("NON_GATEWAY");
 
-  const GatewayConfigGatewayType(this.value);
-  final String value;
+  const GatewayConfigGatewayType(this.wireValue);
+  final String wireValue;
 
   static GatewayConfigGatewayType fromValue(String value) {
     for (final item in GatewayConfigGatewayType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GatewayConfigGatewayType value: $value');
   }
 }
-

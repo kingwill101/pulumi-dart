@@ -8,7 +8,7 @@ import 'public_endpoint_state.dart';
 ///
 /// For information about Click House Enterprise Db Cluster Public Endpoint and how to use it, see [What is Enterprise Db Cluster Public Endpoint](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateEndpoint).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -311,8 +311,10 @@ import 'public_endpoint_state.dart';
 class PublicEndpoint extends pulumi.CustomResource {
   /// The public network connection string prefix of the instance.
   late final pulumi.Output<String> connectionStringPrefix;
+
   /// The cluster ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Network type of the connection address. Valid values:
   /// - Public: Public network.
   late final pulumi.Output<String> netType;
@@ -326,14 +328,14 @@ class PublicEndpoint extends pulumi.CustomResource {
     PublicEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.netType = registerOutput<String>('netType');
+         'alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    netType = registerOutput<String>('netType');
   }
 
   /// Gets an existing [PublicEndpoint] resource's state with the given [name] and [id].
@@ -354,13 +356,13 @@ class PublicEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.netType = registerOutput<String>('netType');
+         'alicloud:clickhouseenterprisedbcluster/publicEndpoint:PublicEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    netType = registerOutput<String>('netType');
   }
 }

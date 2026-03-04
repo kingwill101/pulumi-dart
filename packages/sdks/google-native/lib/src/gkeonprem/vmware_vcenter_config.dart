@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareVCenterConfig {
   /// Contains the vCenter CA certificate public key for SSL verification.
   final pulumi.Input<String>? caCertData;
+
   /// The name of the vCenter cluster for the user cluster.
   final pulumi.Input<String>? cluster;
+
   /// The name of the vCenter datacenter for the user cluster.
   final pulumi.Input<String>? datacenter;
+
   /// The name of the vCenter datastore for the user cluster.
   final pulumi.Input<String>? datastore;
+
   /// The name of the vCenter folder for the user cluster.
   final pulumi.Input<String>? folder;
+
   /// The name of the vCenter resource pool for the user cluster.
   final pulumi.Input<String>? resourcePool;
+
   /// The name of the vCenter storage policy for the user cluster.
   final pulumi.Input<String>? storagePolicyName;
 
@@ -51,14 +57,41 @@ class VmwareVCenterConfig {
 
   factory VmwareVCenterConfig.fromMap(Map<String, dynamic> map) {
     return VmwareVCenterConfig(
-      caCertData: map['caCertData'] == null ? null : (map['caCertData']! as String).input(),
-      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
-      datacenter: map['datacenter'] == null ? null : (map['datacenter']! as String).input(),
-      datastore: map['datastore'] == null ? null : (map['datastore']! as String).input(),
-      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
-      resourcePool: map['resourcePool'] == null ? null : (map['resourcePool']! as String).input(),
-      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName']! as String).input(),
+      caCertData: (() {
+        final guardedValue = map['caCertData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cluster: (() {
+        final guardedValue = map['cluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      datacenter: (() {
+        final guardedValue = map['datacenter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      datastore: (() {
+        final guardedValue = map['datastore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourcePool: (() {
+        final guardedValue = map['resourcePool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePolicyName: (() {
+        final guardedValue = map['storagePolicyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'site_origin_client_certificate_state.dart';
 ///
 /// For information about ESA Site Origin Client Certificate and how to use it, see [What is Site Origin Client Certificate](https://next.api.alibabacloud.com/document/ESA/2024-09-10/UploadSiteOriginClientCertificate).
 ///
-/// > **NOTE:** Available since v1.256.0.
+/// &gt; **NOTE:** Available since v1.256.0.
 ///
 /// ## Example Usage
 ///
@@ -408,16 +408,22 @@ import 'site_origin_client_certificate_state.dart';
 class SiteOriginClientCertificate extends pulumi.CustomResource {
   /// The certificate content.
   late final pulumi.Output<String> certificate;
+
   /// The time when the certificate was created.
   late final pulumi.Output<String> createTime;
+
   /// The private key of the certificate.
   late final pulumi.Output<String> privateKey;
+
   /// Site ID.
   late final pulumi.Output<String> siteId;
+
   /// The certificate ID on ESA.
   late final pulumi.Output<String> siteOriginClientCertificateId;
+
   /// The certificate name.
   late final pulumi.Output<String?> siteOriginClientCertificateName;
+
   /// The status of the certificate.
   late final pulumi.Output<String> status;
 
@@ -430,18 +436,22 @@ class SiteOriginClientCertificate extends pulumi.CustomResource {
     SiteOriginClientCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteOriginClientCertificateId = registerOutput<String>('siteOriginClientCertificateId');
-    this.siteOriginClientCertificateName = registerOutput<String?>('siteOriginClientCertificateName');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
+    privateKey = registerOutput<String>('privateKey');
+    siteId = registerOutput<String>('siteId');
+    siteOriginClientCertificateId = registerOutput<String>(
+      'siteOriginClientCertificateId',
+    );
+    siteOriginClientCertificateName = registerOutput<String?>(
+      'siteOriginClientCertificateName',
+    );
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [SiteOriginClientCertificate] resource's state with the given [name] and [id].
@@ -462,17 +472,21 @@ class SiteOriginClientCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.createTime = registerOutput<String>('createTime');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteOriginClientCertificateId = registerOutput<String>('siteOriginClientCertificateId');
-    this.siteOriginClientCertificateName = registerOutput<String?>('siteOriginClientCertificateName');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
+    privateKey = registerOutput<String>('privateKey');
+    siteId = registerOutput<String>('siteId');
+    siteOriginClientCertificateId = registerOutput<String>(
+      'siteOriginClientCertificateId',
+    );
+    siteOriginClientCertificateName = registerOutput<String?>(
+      'siteOriginClientCertificateName',
+    );
+    status = registerOutput<String>('status');
   }
 }

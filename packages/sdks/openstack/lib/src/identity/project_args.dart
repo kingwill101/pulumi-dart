@@ -9,24 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectArgs {
   /// A description of the project.
   final pulumi.Input<String>? description;
+
   /// The domain this project belongs to.
   final pulumi.Input<String>? domainId;
+
   /// Whether the project is enabled or disabled. Valid
   /// values are `true` and `false`. Default is `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Whether this project is a domain. Valid values
   /// are `true` and `false`. Default is `false`. Changing this creates a new
   /// project/domain.
   final pulumi.Input<bool>? isDomain;
+
   /// The name of the project.
   final pulumi.Input<String>? name;
+
   /// The parent of this project. Changing this creates
   /// a new project.
   final pulumi.Input<String>? parentId;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new project.
   final pulumi.Input<String>? region;
+
   /// Tags for the project. Changing this updates the existing
   /// project.
   final pulumi.Input<List<String>>? tags;
@@ -66,15 +73,46 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      isDomain: map['isDomain'] == null ? null : (map['isDomain']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainId: (() {
+        final guardedValue = map['domainId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isDomain: (() {
+        final guardedValue = map['isDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentId: (() {
+        final guardedValue = map['parentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

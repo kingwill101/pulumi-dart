@@ -130,6 +130,8 @@ export 'src/asset_archive.dart';
 export 'src/config.dart';
 export 'src/deployment/deployment.dart';
 export 'src/deployment/stack.dart';
+export 'src/deployment/models.dart'
+    show Parameterization, RegisterPackageRequest;
 export 'src/deprecated.dart';
 
 // Engine/monitor integration and helpers.

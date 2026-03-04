@@ -9,20 +9,21 @@ class BatchReportModeTypeEnumValueResponse {
 
   /// Creates a new [BatchReportModeTypeEnumValueResponse].
   /// [value] Property value
-  BatchReportModeTypeEnumValueResponse({
-    this.value,
-  });
+  BatchReportModeTypeEnumValueResponse({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
-  factory BatchReportModeTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
+  factory BatchReportModeTypeEnumValueResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BatchReportModeTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

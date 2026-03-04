@@ -3,16 +3,15 @@ enum RoutingPreference {
   default_("Default"),
   routeAll("RouteAll");
 
-  const RoutingPreference(this.value);
-  final String value;
+  const RoutingPreference(this.wireValue);
+  final String wireValue;
 
   static RoutingPreference fromValue(String value) {
     for (final item in RoutingPreference.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutingPreference value: $value');
   }
 }
-

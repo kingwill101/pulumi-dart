@@ -5,16 +5,15 @@ enum DigitalTwinsIdentityType {
   valueUserAssigned("UserAssigned"),
   valueSystemAssignedUserAssigned("SystemAssigned,UserAssigned");
 
-  const DigitalTwinsIdentityType(this.value);
-  final String value;
+  const DigitalTwinsIdentityType(this.wireValue);
+  final String wireValue;
 
   static DigitalTwinsIdentityType fromValue(String value) {
     for (final item in DigitalTwinsIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DigitalTwinsIdentityType value: $value');
   }
 }
-

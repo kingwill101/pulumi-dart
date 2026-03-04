@@ -9,20 +9,19 @@ class PathOverride {
 
   /// Creates a new [PathOverride].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  PathOverride({
-    this.path,
-  });
+  PathOverride({this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': ?path,
-    };
+    return <String, dynamic>{'path': ?path};
   }
 
   factory PathOverride.fromMap(Map<String, dynamic> map) {
     return PathOverride(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

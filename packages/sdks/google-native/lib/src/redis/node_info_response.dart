@@ -9,20 +9,15 @@ class NodeInfoResponse {
 
   /// Creates a new [NodeInfoResponse].
   /// [zone] Location of the node.
-  NodeInfoResponse({
-    required this.zone,
-  });
+  NodeInfoResponse({required this.zone});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'zone': zone,
-    };
+    return <String, dynamic>{'zone': zone};
   }
 
   factory NodeInfoResponse.fromMap(Map<String, dynamic> map) {
     return NodeInfoResponse(
-      zone: (map['zone'] as String).input(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

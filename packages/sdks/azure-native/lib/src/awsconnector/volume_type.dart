@@ -5,16 +5,15 @@ enum VolumeType {
   io1("io1"),
   standard("standard");
 
-  const VolumeType(this.value);
-  final String value;
+  const VolumeType(this.wireValue);
+  final String wireValue;
 
   static VolumeType fromValue(String value) {
     for (final item in VolumeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VolumeType value: $value');
   }
 }
-

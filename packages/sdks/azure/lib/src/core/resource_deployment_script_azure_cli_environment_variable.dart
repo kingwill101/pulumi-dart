@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceDeploymentScriptAzureCliEnvironmentVariable {
   /// Specifies the name of the environment variable.
   final pulumi.Input<String> name;
+
   /// Specifies the value of the secure environment variable.
   final pulumi.Input<String>? secureValue;
+
   /// Specifies the value of the environment variable.
   final pulumi.Input<String>? value;
 
@@ -28,12 +30,21 @@ class ResourceDeploymentScriptAzureCliEnvironmentVariable {
     };
   }
 
-  factory ResourceDeploymentScriptAzureCliEnvironmentVariable.fromMap(Map<String, dynamic> map) {
+  factory ResourceDeploymentScriptAzureCliEnvironmentVariable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceDeploymentScriptAzureCliEnvironmentVariable(
-      name: (map['name'] as String).input(),
-      secureValue: map['secureValue'] == null ? null : (map['secureValue']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      secureValue: (() {
+        final guardedValue = map['secureValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

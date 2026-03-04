@@ -6,9 +6,16 @@ import 'cluster_core_instance_fleet_launch_specifications_spot_specification.dar
 
 class ClusterCoreInstanceFleetLaunchSpecifications {
   /// Configuration block for on demand instances launch specifications.
-  final pulumi.Input<List<ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification>>? onDemandSpecifications;
+  final pulumi.Input<
+    List<ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification>
+  >?
+  onDemandSpecifications;
+
   /// Configuration block for spot instances launch specifications.
-  final pulumi.Input<List<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification>>? spotSpecifications;
+  final pulumi.Input<
+    List<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification>
+  >?
+  spotSpecifications;
 
   /// Creates a new [ClusterCoreInstanceFleetLaunchSpecifications].
   /// [onDemandSpecifications] Configuration block for on demand instances launch specifications.
@@ -20,16 +27,69 @@ class ClusterCoreInstanceFleetLaunchSpecifications {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'onDemandSpecifications': ?pulumi.Input.mapOptionalInputValue<List<ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification>, List<Map<String, dynamic>>>(onDemandSpecifications, (value) => pulumi.Input.encodeList<ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'spotSpecifications': ?pulumi.Input.mapOptionalInputValue<List<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification>, List<Map<String, dynamic>>>(spotSpecifications, (value) => pulumi.Input.encodeList<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'onDemandSpecifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification
+            >,
+            List<Map<String, dynamic>>
+          >(
+            onDemandSpecifications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'spotSpecifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification>,
+            List<Map<String, dynamic>>
+          >(
+            spotSpecifications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ClusterCoreInstanceFleetLaunchSpecifications.fromMap(Map<String, dynamic> map) {
+  factory ClusterCoreInstanceFleetLaunchSpecifications.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterCoreInstanceFleetLaunchSpecifications(
-      onDemandSpecifications: map['onDemandSpecifications'] == null ? null : ((pulumi.Input.decodeList<ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification>(map['onDemandSpecifications']!, (value) => ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      spotSpecifications: map['spotSpecifications'] == null ? null : ((pulumi.Input.decodeList<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification>(map['spotSpecifications']!, (value) => ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      onDemandSpecifications: (() {
+        final guardedValue = map['onDemandSpecifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification
+          >(
+            guardedValue,
+            (value) =>
+                ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      spotSpecifications: (() {
+        final guardedValue = map['spotSpecifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification
+          >(
+            guardedValue,
+            (value) =>
+                ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

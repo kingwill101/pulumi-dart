@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservedIpState {
   /// The ID of Droplet that the reserved IP will be assigned to.
   final pulumi.Input<int>? dropletId;
+
   /// The IP Address of the resource
   final pulumi.Input<String>? ipAddress;
+
   /// The region that the reserved IP is reserved to.
   final pulumi.Input<String>? region;
+
   /// The uniform resource name of the reserved ip
   final pulumi.Input<String>? reservedIpUrn;
 
@@ -36,11 +39,26 @@ class ReservedIpState {
 
   factory ReservedIpState.fromMap(Map<String, dynamic> map) {
     return ReservedIpState(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      reservedIpUrn: map['reservedIpUrn'] == null ? null : (map['reservedIpUrn']! as String).input(),
+      dropletId: (() {
+        final guardedValue = map['dropletId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservedIpUrn: (() {
+        final guardedValue = map['reservedIpUrn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

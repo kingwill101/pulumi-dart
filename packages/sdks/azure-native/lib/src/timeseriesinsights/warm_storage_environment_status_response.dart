@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WarmStorageEnvironmentStatusResponse {
   /// A value that represents the number of properties used by the environment for S1/S2 SKU and number of properties used by Warm Store for PAYG SKU
   final pulumi.Input<int>? currentCount;
+
   /// A value that represents the maximum number of properties used allowed by the environment for S1/S2 SKU and maximum number of properties allowed by Warm Store for PAYG SKU.
   final pulumi.Input<int>? maxCount;
+
   /// This string represents the state of warm storage properties usage. It can be "Ok", "Error", "Unknown".
   final pulumi.Input<String>? state;
 
@@ -29,12 +31,25 @@ class WarmStorageEnvironmentStatusResponse {
     };
   }
 
-  factory WarmStorageEnvironmentStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory WarmStorageEnvironmentStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WarmStorageEnvironmentStatusResponse(
-      currentCount: map['currentCount'] == null ? null : (map['currentCount']! as int).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      currentCount: (() {
+        final guardedValue = map['currentCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxCount: (() {
+        final guardedValue = map['maxCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

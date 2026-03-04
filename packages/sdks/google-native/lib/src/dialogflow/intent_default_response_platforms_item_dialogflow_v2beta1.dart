@@ -11,16 +11,20 @@ enum IntentDefaultResponsePlatformsItemDialogflowV2beta1 {
   telephony("TELEPHONY"),
   googleHangouts("GOOGLE_HANGOUTS");
 
-  const IntentDefaultResponsePlatformsItemDialogflowV2beta1(this.value);
-  final String value;
+  const IntentDefaultResponsePlatformsItemDialogflowV2beta1(this.wireValue);
+  final String wireValue;
 
-  static IntentDefaultResponsePlatformsItemDialogflowV2beta1 fromValue(String value) {
-    for (final item in IntentDefaultResponsePlatformsItemDialogflowV2beta1.values) {
-      if (item.value == value) {
+  static IntentDefaultResponsePlatformsItemDialogflowV2beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in IntentDefaultResponsePlatformsItemDialogflowV2beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntentDefaultResponsePlatformsItemDialogflowV2beta1 value: $value');
+    throw ArgumentError(
+      'Unknown IntentDefaultResponsePlatformsItemDialogflowV2beta1 value: $value',
+    );
   }
 }
-

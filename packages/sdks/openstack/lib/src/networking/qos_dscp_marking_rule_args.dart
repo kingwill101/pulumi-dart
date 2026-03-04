@@ -10,8 +10,10 @@ class QosDscpMarkingRuleArgs {
   /// The value of DSCP mark. Changing this updates the DSCP mark value existing
   /// QoS DSCP marking rule.
   final pulumi.Input<int> dscpMark;
+
   /// The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
   final pulumi.Input<String> qosPolicyId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
@@ -37,10 +39,13 @@ class QosDscpMarkingRuleArgs {
 
   factory QosDscpMarkingRuleArgs.fromMap(Map<String, dynamic> map) {
     return QosDscpMarkingRuleArgs(
-      dscpMark: (map['dscpMark'] as int).input(),
-      qosPolicyId: (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      dscpMark: pulumi.Input.fromValue(map['dscpMark'] as int),
+      qosPolicyId: pulumi.Input.fromValue(map['qosPolicyId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

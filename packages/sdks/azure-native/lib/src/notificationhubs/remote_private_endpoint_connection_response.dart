@@ -9,20 +9,17 @@ class RemotePrivateEndpointConnectionResponse {
 
   /// Creates a new [RemotePrivateEndpointConnectionResponse].
   /// [id] ARM resource ID of the Private Endpoint. This may belong to different subscription and resource group than a Notification Hubs namespace.
-  RemotePrivateEndpointConnectionResponse({
-    required this.id,
-  });
+  RemotePrivateEndpointConnectionResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
-  factory RemotePrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
+  factory RemotePrivateEndpointConnectionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RemotePrivateEndpointConnectionResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

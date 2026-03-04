@@ -1,0 +1,3 @@
+name: service_provider_dart
+description: Service provider fixture ported to Dart.
+runtime: dart

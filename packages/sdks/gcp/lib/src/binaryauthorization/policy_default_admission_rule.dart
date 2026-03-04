@@ -6,9 +6,11 @@ class PolicyDefaultAdmissionRule {
   /// The action when a pod creation is denied by the admission rule.
   /// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
   final pulumi.Input<String> enforcementMode;
+
   /// How this admission rule will be evaluated.
   /// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
   final pulumi.Input<String> evaluationMode;
+
   /// The resource names of the attestors that must attest to a
   /// container image. If the attestor is in a different project from the
   /// policy, it should be specified in the format `projects/*/attestors/*`.
@@ -39,10 +41,13 @@ class PolicyDefaultAdmissionRule {
 
   factory PolicyDefaultAdmissionRule.fromMap(Map<String, dynamic> map) {
     return PolicyDefaultAdmissionRule(
-      enforcementMode: (map['enforcementMode'] as String).input(),
-      evaluationMode: (map['evaluationMode'] as String).input(),
-      requireAttestationsBies: map['requireAttestationsBies'] == null ? null : ((map['requireAttestationsBies']! as List).cast<String>()).input(),
+      enforcementMode: pulumi.Input.fromValue(map['enforcementMode'] as String),
+      evaluationMode: pulumi.Input.fromValue(map['evaluationMode'] as String),
+      requireAttestationsBies: (() {
+        final guardedValue = map['requireAttestationsBies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

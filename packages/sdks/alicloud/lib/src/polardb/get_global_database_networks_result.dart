@@ -7,18 +7,23 @@ import 'get_global_database_networks_network.dart';
 class GetGlobalDatabaseNetworksResult {
   /// The ID of the PolarDB cluster.
   final String? dbClusterId;
+
   /// The description of the Global Database Network.
   final String? description;
+
   /// The ID of the Global Database Network.
   final String? gdnId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// A list of PolarDB Global Database Networks. Each element contains the following attributes:
   final List<GetGlobalDatabaseNetworksNetwork> networks;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
+
   /// The status of the Global Database Network.
   final String? status;
 
@@ -53,7 +58,11 @@ class GetGlobalDatabaseNetworksResult {
       'gdnId': ?gdnId,
       'id': id,
       'ids': ids,
-      'networks': pulumi.Input.encodeList<GetGlobalDatabaseNetworksNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
+      'networks':
+          pulumi.Input.encodeList<
+            GetGlobalDatabaseNetworksNetwork,
+            Map<String, dynamic>
+          >(networks, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
@@ -63,17 +72,49 @@ class GetGlobalDatabaseNetworksResult {
 
   factory GetGlobalDatabaseNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalDatabaseNetworksResult(
-      dbClusterId: map['dbClusterId'] == null ? null : map['dbClusterId']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      gdnId: map['gdnId'] == null ? null : map['gdnId']! as String,
+      dbClusterId: (() {
+        final guardedValue = map['dbClusterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      gdnId: (() {
+        final guardedValue = map['gdnId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      networks: pulumi.Input.decodeList<GetGlobalDatabaseNetworksNetwork>(map['networks'], (value) => GetGlobalDatabaseNetworksNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      status: map['status'] == null ? null : map['status']! as String,
+      networks: pulumi.Input.decodeList<GetGlobalDatabaseNetworksNetwork>(
+        map['networks']!,
+        (value) => GetGlobalDatabaseNetworksNetwork.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

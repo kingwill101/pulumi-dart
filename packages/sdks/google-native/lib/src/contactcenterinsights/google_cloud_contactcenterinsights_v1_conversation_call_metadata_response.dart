@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
   /// The audio channel that contains the agent.
   final pulumi.Input<int> agentChannel;
+
   /// The audio channel that contains the customer.
   final pulumi.Input<int> customerChannel;
 
@@ -24,11 +25,12 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse(
-      agentChannel: (map['agentChannel'] as int).input(),
-      customerChannel: (map['customerChannel'] as int).input(),
+      agentChannel: pulumi.Input.fromValue(map['agentChannel'] as int),
+      customerChannel: pulumi.Input.fromValue(map['customerChannel'] as int),
     );
   }
 }
-

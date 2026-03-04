@@ -9,6 +9,7 @@ class GetInstanceNetworkingResult {
   final String id;
   final List<GetInstanceNetworkingIpv4> ipv4s;
   final List<GetInstanceNetworkingIpv6> ipv6s;
+
   /// The ID of the Linode this address currently belongs to.
   final int linodeId;
 
@@ -27,8 +28,16 @@ class GetInstanceNetworkingResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'ipv4s': pulumi.Input.encodeList<GetInstanceNetworkingIpv4, Map<String, dynamic>>(ipv4s, (value) => value.toMap()),
-      'ipv6s': pulumi.Input.encodeList<GetInstanceNetworkingIpv6, Map<String, dynamic>>(ipv6s, (value) => value.toMap()),
+      'ipv4s':
+          pulumi.Input.encodeList<
+            GetInstanceNetworkingIpv4,
+            Map<String, dynamic>
+          >(ipv4s, (value) => value.toMap()),
+      'ipv6s':
+          pulumi.Input.encodeList<
+            GetInstanceNetworkingIpv6,
+            Map<String, dynamic>
+          >(ipv6s, (value) => value.toMap()),
       'linodeId': linodeId,
     };
   }
@@ -36,10 +45,19 @@ class GetInstanceNetworkingResult {
   factory GetInstanceNetworkingResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceNetworkingResult(
       id: map['id'] as String,
-      ipv4s: pulumi.Input.decodeList<GetInstanceNetworkingIpv4>(map['ipv4s'], (value) => GetInstanceNetworkingIpv4.fromMap((value as Map).cast<String, dynamic>())),
-      ipv6s: pulumi.Input.decodeList<GetInstanceNetworkingIpv6>(map['ipv6s'], (value) => GetInstanceNetworkingIpv6.fromMap((value as Map).cast<String, dynamic>())),
+      ipv4s: pulumi.Input.decodeList<GetInstanceNetworkingIpv4>(
+        map['ipv4s']!,
+        (value) => GetInstanceNetworkingIpv4.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      ipv6s: pulumi.Input.decodeList<GetInstanceNetworkingIpv6>(
+        map['ipv6s']!,
+        (value) => GetInstanceNetworkingIpv6.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       linodeId: map['linodeId'] as int,
     );
   }
 }
-

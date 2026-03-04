@@ -1,5 +1,3 @@
-library module_wafv2;
-
 export 'wafv2/api_key.dart';
 export 'wafv2/api_key_args.dart';
 export 'wafv2/api_key_state.dart';

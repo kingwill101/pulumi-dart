@@ -12,6 +12,7 @@ class StudyArgs {
   final pulumi.Input<String> displayName;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// Configuration of the Study.
   final pulumi.Input<GoogleCloudAiplatformV1StudySpec> studySpec;
 
@@ -32,17 +33,32 @@ class StudyArgs {
       'displayName': displayName,
       'location': ?location,
       'project': ?project,
-      'studySpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1StudySpec, Map<String, dynamic>>(studySpec, (value) => value.toMap()),
+      'studySpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1StudySpec,
+            Map<String, dynamic>
+          >(studySpec, (value) => value.toMap()),
     };
   }
 
   factory StudyArgs.fromMap(Map<String, dynamic> map) {
     return StudyArgs(
-      displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      studySpec: (GoogleCloudAiplatformV1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>())).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      studySpec: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1StudySpec.fromMap(
+          (map['studySpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

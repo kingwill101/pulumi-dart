@@ -21,8 +21,9 @@ class BareMetalMaintenanceConfigResponse {
 
   factory BareMetalMaintenanceConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMaintenanceConfigResponse(
-      maintenanceAddressCidrBlocks: ((map['maintenanceAddressCidrBlocks'] as List).cast<String>()).input(),
+      maintenanceAddressCidrBlocks: pulumi.Input.fromValue(
+        (map['maintenanceAddressCidrBlocks'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LanguageExtensionResponse {
   /// The language extension custom image name.
   final pulumi.Input<String>? languageExtensionCustomImageName;
+
   /// The language extension image name.
   final pulumi.Input<String>? languageExtensionImageName;
+
   /// The language extension name.
   final pulumi.Input<String>? languageExtensionName;
 
@@ -31,10 +33,21 @@ class LanguageExtensionResponse {
 
   factory LanguageExtensionResponse.fromMap(Map<String, dynamic> map) {
     return LanguageExtensionResponse(
-      languageExtensionCustomImageName: map['languageExtensionCustomImageName'] == null ? null : (map['languageExtensionCustomImageName']! as String).input(),
-      languageExtensionImageName: map['languageExtensionImageName'] == null ? null : (map['languageExtensionImageName']! as String).input(),
-      languageExtensionName: map['languageExtensionName'] == null ? null : (map['languageExtensionName']! as String).input(),
+      languageExtensionCustomImageName: (() {
+        final guardedValue = map['languageExtensionCustomImageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      languageExtensionImageName: (() {
+        final guardedValue = map['languageExtensionImageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      languageExtensionName: (() {
+        final guardedValue = map['languageExtensionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

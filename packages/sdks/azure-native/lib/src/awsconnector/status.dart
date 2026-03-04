@@ -4,16 +4,15 @@ enum Status {
   pENDINGCLOSURE("PENDING_CLOSURE"),
   sUSPENDED("SUSPENDED");
 
-  const Status(this.value);
-  final String value;
+  const Status(this.wireValue);
+  final String wireValue;
 
   static Status fromValue(String value) {
     for (final item in Status.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Status value: $value');
   }
 }
-

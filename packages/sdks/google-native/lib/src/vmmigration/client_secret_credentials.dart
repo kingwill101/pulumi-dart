@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientSecretCredentials {
   /// Azure client ID.
   final pulumi.Input<String>? clientId;
+
   /// Input only. Azure client secret.
   final pulumi.Input<String>? clientSecret;
+
   /// Azure tenant ID.
   final pulumi.Input<String>? tenantId;
 
@@ -15,11 +17,7 @@ class ClientSecretCredentials {
   /// [clientId] Azure client ID.
   /// [clientSecret] Input only. Azure client secret.
   /// [tenantId] Azure tenant ID.
-  ClientSecretCredentials({
-    this.clientId,
-    this.clientSecret,
-    this.tenantId,
-  });
+  ClientSecretCredentials({this.clientId, this.clientSecret, this.tenantId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ClientSecretCredentials {
 
   factory ClientSecretCredentials.fromMap(Map<String, dynamic> map) {
     return ClientSecretCredentials(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

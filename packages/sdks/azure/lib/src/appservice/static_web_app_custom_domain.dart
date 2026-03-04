@@ -4,7 +4,7 @@ import 'static_web_app_custom_domain_state.dart';
 
 /// Manages a Static Web App Custom Domain.
 ///
-/// !> **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
+/// !&gt; **Note:** DNS validation polling is only done for CNAME records, terraform will not validate TXT validation records are complete.
 ///
 /// ## Example Usage
 ///
@@ -501,7 +501,7 @@ import 'static_web_app_custom_domain_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-01-01
@@ -516,15 +516,18 @@ import 'static_web_app_custom_domain_state.dart';
 class StaticWebAppCustomDomain extends pulumi.CustomResource {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> domainName;
+
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   late final pulumi.Output<String> staticWebAppId;
+
   /// Token to be used with `dns-txt-token` validation.
   late final pulumi.Output<String> validationToken;
+
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
   ///
-  /// > **Note:** Apex domains must use `dns-txt-token` validation.
+  /// &gt; **Note:** Apex domains must use `dns-txt-token` validation.
   ///
-  /// > **Note:** Validation using `dns-txt-token` is performed asynchronously and Terraform does not wait for the validation process to be successful before marking the resource as created successfully. Please ensure that the appropriate TXT record is created using the `validation_token` value for this to complete out of band.
+  /// &gt; **Note:** Validation using `dns-txt-token` is performed asynchronously and Terraform does not wait for the validation process to be successful before marking the resource as created successfully. Please ensure that the appropriate TXT record is created using the `validation_token` value for this to complete out of band.
   late final pulumi.Output<String> validationType;
 
   /// Creates a new [StaticWebAppCustomDomain].
@@ -536,15 +539,15 @@ class StaticWebAppCustomDomain extends pulumi.CustomResource {
     StaticWebAppCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.staticWebAppId = registerOutput<String>('staticWebAppId');
-    this.validationToken = registerOutput<String>('validationToken');
-    this.validationType = registerOutput<String>('validationType');
+         'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
+    staticWebAppId = registerOutput<String>('staticWebAppId');
+    validationToken = registerOutput<String>('validationToken');
+    validationType = registerOutput<String>('validationType');
   }
 
   /// Gets an existing [StaticWebAppCustomDomain] resource's state with the given [name] and [id].
@@ -565,14 +568,14 @@ class StaticWebAppCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.staticWebAppId = registerOutput<String>('staticWebAppId');
-    this.validationToken = registerOutput<String>('validationToken');
-    this.validationType = registerOutput<String>('validationType');
+         'azure:appservice/staticWebAppCustomDomain:StaticWebAppCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
+    staticWebAppId = registerOutput<String>('staticWebAppId');
+    validationToken = registerOutput<String>('validationToken');
+    validationType = registerOutput<String>('validationType');
   }
 }

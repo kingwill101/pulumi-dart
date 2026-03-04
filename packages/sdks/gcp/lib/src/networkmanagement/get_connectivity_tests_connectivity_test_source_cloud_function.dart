@@ -8,20 +8,17 @@ class GetConnectivityTestsConnectivityTestSourceCloudFunction {
 
   /// Creates a new [GetConnectivityTestsConnectivityTestSourceCloudFunction].
   /// [uri] A Cloud Run revision URI.
-  GetConnectivityTestsConnectivityTestSourceCloudFunction({
-    required this.uri,
-  });
+  GetConnectivityTestsConnectivityTestSourceCloudFunction({required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GetConnectivityTestsConnectivityTestSourceCloudFunction.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTestSourceCloudFunction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestsConnectivityTestSourceCloudFunction(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

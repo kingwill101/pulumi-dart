@@ -21,11 +21,16 @@ class GetTableGlobalSecondaryIndexWarmThroughput {
     };
   }
 
-  factory GetTableGlobalSecondaryIndexWarmThroughput.fromMap(Map<String, dynamic> map) {
+  factory GetTableGlobalSecondaryIndexWarmThroughput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTableGlobalSecondaryIndexWarmThroughput(
-      readUnitsPerSecond: (map['readUnitsPerSecond'] as int).input(),
-      writeUnitsPerSecond: (map['writeUnitsPerSecond'] as int).input(),
+      readUnitsPerSecond: pulumi.Input.fromValue(
+        map['readUnitsPerSecond'] as int,
+      ),
+      writeUnitsPerSecond: pulumi.Input.fromValue(
+        map['writeUnitsPerSecond'] as int,
+      ),
     );
   }
 }
-

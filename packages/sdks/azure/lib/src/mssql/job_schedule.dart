@@ -379,7 +379,7 @@ import 'job_schedule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -394,16 +394,21 @@ import 'job_schedule_state.dart';
 class JobSchedule extends pulumi.CustomResource {
   /// Should the Elastic Job Schedule be enabled? Defaults to `false`.
   ///
-  /// > **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignore_changes`. This is because Azure will set `enabled` to `false` once the job has executed.
+  /// &gt; **Note:** When `type` is set to `Once` and `enabled` is set to `true`, it's recommended to add `enabled` to `ignore_changes`. This is because Azure will set `enabled` to `false` once the job has executed.
   late final pulumi.Output<bool> enabled;
+
   /// The end time of the schedule. Must be in RFC3339 format.
   late final pulumi.Output<String> endTime;
+
   /// The interval between job executions. Must be in ISO8601 duration format.
   late final pulumi.Output<String?> interval;
+
   /// The ID of the Elastic Job. Changing this forces a new Elastic Job Schedule to be created.
   late final pulumi.Output<String> jobId;
+
   /// The start time of the schedule. Must be in RFC3339 format.
   late final pulumi.Output<String> startTime;
+
   /// The type of schedule. Possible values are `Once` and `Recurring`.
   late final pulumi.Output<String> type;
 
@@ -416,17 +421,17 @@ class JobSchedule extends pulumi.CustomResource {
     JobScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobSchedule:JobSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.endTime = registerOutput<String>('endTime');
-    this.interval = registerOutput<String?>('interval');
-    this.jobId = registerOutput<String>('jobId');
-    this.startTime = registerOutput<String>('startTime');
-    this.type = registerOutput<String>('type');
+         'azure:mssql/jobSchedule:JobSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    endTime = registerOutput<String>('endTime');
+    interval = registerOutput<String?>('interval');
+    jobId = registerOutput<String>('jobId');
+    startTime = registerOutput<String>('startTime');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [JobSchedule] resource's state with the given [name] and [id].
@@ -447,16 +452,16 @@ class JobSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobSchedule:JobSchedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.endTime = registerOutput<String>('endTime');
-    this.interval = registerOutput<String?>('interval');
-    this.jobId = registerOutput<String>('jobId');
-    this.startTime = registerOutput<String>('startTime');
-    this.type = registerOutput<String>('type');
+         'azure:mssql/jobSchedule:JobSchedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    endTime = registerOutput<String>('endTime');
+    interval = registerOutput<String?>('interval');
+    jobId = registerOutput<String>('jobId');
+    startTime = registerOutput<String>('startTime');
+    type = registerOutput<String>('type');
   }
 }

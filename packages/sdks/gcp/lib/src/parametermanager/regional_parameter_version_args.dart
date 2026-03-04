@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionalParameterVersionArgs {
   /// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
   final pulumi.Input<bool>? disabled;
+
   /// Parameter Manager Regional Parameter resource.
   final pulumi.Input<String> parameter;
+
   /// The Regional Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> parameterData;
+
   /// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
   final pulumi.Input<String> parameterVersionId;
 
@@ -40,11 +43,16 @@ class RegionalParameterVersionArgs {
 
   factory RegionalParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegionalParameterVersionArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      parameter: (map['parameter'] as String).input(),
-      parameterData: (map['parameterData'] as String).input(),
-      parameterVersionId: (map['parameterVersionId'] as String).input(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      parameter: pulumi.Input.fromValue(map['parameter'] as String),
+      parameterData: pulumi.Input.fromValue(map['parameterData'] as String),
+      parameterVersionId: pulumi.Input.fromValue(
+        map['parameterVersionId'] as String,
+      ),
     );
   }
 }
-

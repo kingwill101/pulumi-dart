@@ -9,20 +9,21 @@ class NodeLabelsContainerV1beta1 {
 
   /// Creates a new [NodeLabelsContainerV1beta1].
   /// [labels] Map of node label keys and node label values.
-  NodeLabelsContainerV1beta1({
-    this.labels,
-  });
+  NodeLabelsContainerV1beta1({this.labels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': ?labels,
-    };
+    return <String, dynamic>{'labels': ?labels};
   }
 
   factory NodeLabelsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeLabelsContainerV1beta1(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

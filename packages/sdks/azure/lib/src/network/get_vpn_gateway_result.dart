@@ -8,18 +8,24 @@ import 'get_vpn_gateway_ip_configuration.dart';
 class GetVpnGatewayResult {
   /// A `bgp_settings` block as defined below.
   final List<GetVpnGatewayBgpSetting> bgpSettings;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// An `ip_configuration` block as defined below.
   final List<GetVpnGatewayIpConfiguration> ipConfigurations;
+
   /// The Azure location where the VPN Gateway exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The Scale Unit of this VPN Gateway.
   final int scaleUnit;
+
   /// A mapping of tags assigned to the VPN Gateway.
   final Map<String, String> tags;
+
   /// The ID of the Virtual Hub within which this VPN Gateway has been created.
   final String virtualHubId;
 
@@ -47,9 +53,17 @@ class GetVpnGatewayResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgpSettings': pulumi.Input.encodeList<GetVpnGatewayBgpSetting, Map<String, dynamic>>(bgpSettings, (value) => value.toMap()),
+      'bgpSettings':
+          pulumi.Input.encodeList<
+            GetVpnGatewayBgpSetting,
+            Map<String, dynamic>
+          >(bgpSettings, (value) => value.toMap()),
       'id': id,
-      'ipConfigurations': pulumi.Input.encodeList<GetVpnGatewayIpConfiguration, Map<String, dynamic>>(ipConfigurations, (value) => value.toMap()),
+      'ipConfigurations':
+          pulumi.Input.encodeList<
+            GetVpnGatewayIpConfiguration,
+            Map<String, dynamic>
+          >(ipConfigurations, (value) => value.toMap()),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -61,9 +75,19 @@ class GetVpnGatewayResult {
 
   factory GetVpnGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetVpnGatewayResult(
-      bgpSettings: pulumi.Input.decodeList<GetVpnGatewayBgpSetting>(map['bgpSettings'], (value) => GetVpnGatewayBgpSetting.fromMap((value as Map).cast<String, dynamic>())),
+      bgpSettings: pulumi.Input.decodeList<GetVpnGatewayBgpSetting>(
+        map['bgpSettings']!,
+        (value) => GetVpnGatewayBgpSetting.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      ipConfigurations: pulumi.Input.decodeList<GetVpnGatewayIpConfiguration>(map['ipConfigurations'], (value) => GetVpnGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      ipConfigurations: pulumi.Input.decodeList<GetVpnGatewayIpConfiguration>(
+        map['ipConfigurations']!,
+        (value) => GetVpnGatewayIpConfiguration.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -73,4 +97,3 @@ class GetVpnGatewayResult {
     );
   }
 }
-

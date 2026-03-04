@@ -5,16 +5,15 @@ enum ClassDiscriminator {
   valueDataBoxHeavy("DataBoxHeavy"),
   valueDataBoxCustomerDisk("DataBoxCustomerDisk");
 
-  const ClassDiscriminator(this.value);
-  final String value;
+  const ClassDiscriminator(this.wireValue);
+  final String wireValue;
 
   static ClassDiscriminator fromValue(String value) {
     for (final item in ClassDiscriminator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClassDiscriminator value: $value');
   }
 }
-

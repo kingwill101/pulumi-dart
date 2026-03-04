@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaVersionPropertiesResponse {
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
+
   /// Value of schema version
   final pulumi.Input<String> value;
 
@@ -26,9 +27,10 @@ class SchemaVersionPropertiesResponse {
 
   factory SchemaVersionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SchemaVersionPropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
-      value: (map['value'] as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

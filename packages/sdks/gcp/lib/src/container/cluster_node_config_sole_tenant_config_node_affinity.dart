@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeConfigSoleTenantConfigNodeAffinity {
   /// The default or custom node affinity label key name.
   final pulumi.Input<String> key;
+
   /// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
   final pulumi.Input<String> operator;
+
   /// List of node affinity label values as strings.
   final pulumi.Input<List<String>> values;
 
@@ -28,12 +30,13 @@ class ClusterNodeConfigSoleTenantConfigNodeAffinity {
     };
   }
 
-  factory ClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigSoleTenantConfigNodeAffinity(
-      key: (map['key'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

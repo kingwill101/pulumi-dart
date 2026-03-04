@@ -10,20 +10,35 @@ class ListDatabaseAccountConnectionStringsResult {
 
   /// Creates a new [ListDatabaseAccountConnectionStringsResult].
   /// [connectionStrings] An array that contains the connection strings for the Cosmos DB account.
-  ListDatabaseAccountConnectionStringsResult({
-    this.connectionStrings,
-  });
+  ListDatabaseAccountConnectionStringsResult({this.connectionStrings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionStrings': ?connectionStrings == null ? null : pulumi.Input.encodeList<DatabaseAccountConnectionStringResponse, Map<String, dynamic>>(connectionStrings!, (value) => value.toMap()),
+      'connectionStrings': ?(() {
+        final guardedValue = connectionStrings;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          DatabaseAccountConnectionStringResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListDatabaseAccountConnectionStringsResult.fromMap(Map<String, dynamic> map) {
+  factory ListDatabaseAccountConnectionStringsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListDatabaseAccountConnectionStringsResult(
-      connectionStrings: map['connectionStrings'] == null ? null : pulumi.Input.decodeList<DatabaseAccountConnectionStringResponse>(map['connectionStrings']!, (value) => DatabaseAccountConnectionStringResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connectionStrings: (() {
+        final guardedValue = map['connectionStrings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<DatabaseAccountConnectionStringResponse>(
+          guardedValue,
+          (value) => DatabaseAccountConnectionStringResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

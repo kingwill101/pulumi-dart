@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceEndpointResponse {
   /// A list of locations.
   final pulumi.Input<List<String>>? locations;
+
   /// The type of the endpoint service.
   final pulumi.Input<String> service;
 
   /// Creates a new [ServiceEndpointResponse].
   /// [locations] A list of locations.
   /// [service] The type of the endpoint service.
-  ServiceEndpointResponse({
-    this.locations,
-    required this.service,
-  });
+  ServiceEndpointResponse({this.locations, required this.service});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'locations': ?locations,
-      'service': service,
-    };
+    return <String, dynamic>{'locations': ?locations, 'service': service};
   }
 
   factory ServiceEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointResponse(
-      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
-      service: (map['service'] as String).input(),
+      locations: (() {
+        final guardedValue = map['locations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeGroupSapHanaVolumeExportPolicyRule {
   /// A comma-sperated list of allowed client IPv4 addresses.
   final pulumi.Input<String> allowedClients;
+
   /// Enables NFSv3. Please note that this cannot be enabled if volume has NFSv4.1 as its protocol.
   final pulumi.Input<bool> nfsv3Enabled;
+
   /// Enables NFSv4.1. Please note that this cannot be enabled if volume has NFSv3 as its protocol.
   final pulumi.Input<bool> nfsv41Enabled;
+
   /// Is root access permitted to this volume? Defaults to `true`.
   final pulumi.Input<bool>? rootAccessEnabled;
+
   /// The index number of the rule, must start at 1 and maximum 5.
   final pulumi.Input<int> ruleIndex;
+
   /// Is the file system on unix read only? Defaults to `false.
   final pulumi.Input<bool>? unixReadOnly;
+
   /// Is the file system on unix read and write? Defaults to `true`.
   final pulumi.Input<bool>? unixReadWrite;
 
@@ -48,16 +54,29 @@ class VolumeGroupSapHanaVolumeExportPolicyRule {
     };
   }
 
-  factory VolumeGroupSapHanaVolumeExportPolicyRule.fromMap(Map<String, dynamic> map) {
+  factory VolumeGroupSapHanaVolumeExportPolicyRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumeGroupSapHanaVolumeExportPolicyRule(
-      allowedClients: (map['allowedClients'] as String).input(),
-      nfsv3Enabled: (map['nfsv3Enabled'] as bool).input(),
-      nfsv41Enabled: (map['nfsv41Enabled'] as bool).input(),
-      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : (map['rootAccessEnabled']! as bool).input(),
-      ruleIndex: (map['ruleIndex'] as int).input(),
-      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly']! as bool).input(),
-      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite']! as bool).input(),
+      allowedClients: pulumi.Input.fromValue(map['allowedClients'] as String),
+      nfsv3Enabled: pulumi.Input.fromValue(map['nfsv3Enabled'] as bool),
+      nfsv41Enabled: pulumi.Input.fromValue(map['nfsv41Enabled'] as bool),
+      rootAccessEnabled: (() {
+        final guardedValue = map['rootAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ruleIndex: pulumi.Input.fromValue(map['ruleIndex'] as int),
+      unixReadOnly: (() {
+        final guardedValue = map['unixReadOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      unixReadWrite: (() {
+        final guardedValue = map['unixReadWrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

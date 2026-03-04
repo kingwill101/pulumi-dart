@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementCluster {
   /// The cluster size
   final pulumi.Input<int>? clusterSize;
+
   /// The hosts
   final pulumi.Input<List<String>>? hosts;
+
   /// Name of the vsan datastore associated with the cluster
   final pulumi.Input<String>? vsanDatastoreName;
 
@@ -15,11 +17,7 @@ class ManagementCluster {
   /// [clusterSize] The cluster size
   /// [hosts] The hosts
   /// [vsanDatastoreName] Name of the vsan datastore associated with the cluster
-  ManagementCluster({
-    this.clusterSize,
-    this.hosts,
-    this.vsanDatastoreName,
-  });
+  ManagementCluster({this.clusterSize, this.hosts, this.vsanDatastoreName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ManagementCluster {
 
   factory ManagementCluster.fromMap(Map<String, dynamic> map) {
     return ManagementCluster(
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName']! as String).input(),
+      clusterSize: (() {
+        final guardedValue = map['clusterSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      hosts: (() {
+        final guardedValue = map['hosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vsanDatastoreName: (() {
+        final guardedValue = map['vsanDatastoreName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

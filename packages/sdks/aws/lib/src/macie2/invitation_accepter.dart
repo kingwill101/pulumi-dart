@@ -205,8 +205,10 @@ import 'invitation_accepter_state.dart';
 class InvitationAccepter extends pulumi.CustomResource {
   /// The AWS account ID for the account that sent the invitation.
   late final pulumi.Output<String> administratorAccountId;
+
   /// The unique identifier for the invitation.
   late final pulumi.Output<String> invitationId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -219,14 +221,14 @@ class InvitationAccepter extends pulumi.CustomResource {
     InvitationAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:macie2/invitationAccepter:InvitationAccepter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorAccountId = registerOutput<String>('administratorAccountId');
-    this.invitationId = registerOutput<String>('invitationId');
-    this.region = registerOutput<String>('region');
+         'aws:macie2/invitationAccepter:InvitationAccepter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorAccountId = registerOutput<String>('administratorAccountId');
+    invitationId = registerOutput<String>('invitationId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [InvitationAccepter] resource's state with the given [name] and [id].
@@ -247,13 +249,13 @@ class InvitationAccepter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:macie2/invitationAccepter:InvitationAccepter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorAccountId = registerOutput<String>('administratorAccountId');
-    this.invitationId = registerOutput<String>('invitationId');
-    this.region = registerOutput<String>('region');
+         'aws:macie2/invitationAccepter:InvitationAccepter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorAccountId = registerOutput<String>('administratorAccountId');
+    invitationId = registerOutput<String>('invitationId');
+    region = registerOutput<String>('region');
   }
 }

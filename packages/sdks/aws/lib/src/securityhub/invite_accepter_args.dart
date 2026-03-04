@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InviteAccepterArgs {
   /// The account ID of the master Security Hub account whose invitation you're accepting.
   final pulumi.Input<String> masterId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [InviteAccepterArgs].
   /// [masterId] The account ID of the master Security Hub account whose invitation you're accepting.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InviteAccepterArgs({
-    required this.masterId,
-    this.region,
-  });
+  InviteAccepterArgs({required this.masterId, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'masterId': masterId,
-      'region': ?region,
-    };
+    return <String, dynamic>{'masterId': masterId, 'region': ?region};
   }
 
   factory InviteAccepterArgs.fromMap(Map<String, dynamic> map) {
     return InviteAccepterArgs(
-      masterId: (map['masterId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      masterId: pulumi.Input.fromValue(map['masterId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

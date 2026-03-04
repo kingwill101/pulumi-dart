@@ -8,8 +8,10 @@ import 'site_spn_properties.dart';
 class SiteApplianceProperties {
   /// Gets or sets the on-premises agent details.
   final pulumi.Input<SiteAgentProperties>? agentDetails;
+
   /// Gets or sets the Appliance Name.
   final pulumi.Input<String>? applianceName;
+
   /// Gets or sets the service principal identity details used by agent for  communication              to the service.
   final pulumi.Input<SiteSpnProperties>? servicePrincipalIdentityDetails;
 
@@ -25,18 +27,45 @@ class SiteApplianceProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentDetails': ?pulumi.Input.mapOptionalInputValue<SiteAgentProperties, Map<String, dynamic>>(agentDetails, (value) => value.toMap()),
+      'agentDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            SiteAgentProperties,
+            Map<String, dynamic>
+          >(agentDetails, (value) => value.toMap()),
       'applianceName': ?applianceName,
-      'servicePrincipalIdentityDetails': ?pulumi.Input.mapOptionalInputValue<SiteSpnProperties, Map<String, dynamic>>(servicePrincipalIdentityDetails, (value) => value.toMap()),
+      'servicePrincipalIdentityDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            SiteSpnProperties,
+            Map<String, dynamic>
+          >(servicePrincipalIdentityDetails, (value) => value.toMap()),
     };
   }
 
   factory SiteApplianceProperties.fromMap(Map<String, dynamic> map) {
     return SiteApplianceProperties(
-      agentDetails: map['agentDetails'] == null ? null : (SiteAgentProperties.fromMap((map['agentDetails']! as Map).cast<String, dynamic>())).input(),
-      applianceName: map['applianceName'] == null ? null : (map['applianceName']! as String).input(),
-      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : (SiteSpnProperties.fromMap((map['servicePrincipalIdentityDetails']! as Map).cast<String, dynamic>())).input(),
+      agentDetails: (() {
+        final guardedValue = map['agentDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SiteAgentProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      applianceName: (() {
+        final guardedValue = map['applianceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servicePrincipalIdentityDetails: (() {
+        final guardedValue = map['servicePrincipalIdentityDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SiteSpnProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

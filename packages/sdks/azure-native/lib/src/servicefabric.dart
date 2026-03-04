@@ -1,5 +1,3 @@
-library module_servicefabric;
-
 export 'servicefabric/access.dart';
 export 'servicefabric/add_remove_incremental_named_partition_scaling_mechanism.dart';
 export 'servicefabric/add_remove_incremental_named_partition_scaling_mechanism_response.dart';

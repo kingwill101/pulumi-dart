@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse {
   /// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
   final pulumi.Input<List<String>> actionTokenSiteKeys;
+
   /// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
   final pulumi.Input<List<String>> sessionTokenSiteKeys;
 
@@ -23,11 +24,16 @@ class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse {
     };
   }
 
-  factory SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse(
-      actionTokenSiteKeys: ((map['actionTokenSiteKeys'] as List).cast<String>()).input(),
-      sessionTokenSiteKeys: ((map['sessionTokenSiteKeys'] as List).cast<String>()).input(),
+      actionTokenSiteKeys: pulumi.Input.fromValue(
+        (map['actionTokenSiteKeys'] as List).cast<String>(),
+      ),
+      sessionTokenSiteKeys: pulumi.Input.fromValue(
+        (map['sessionTokenSiteKeys'] as List).cast<String>(),
+      ),
     );
   }
 }
-

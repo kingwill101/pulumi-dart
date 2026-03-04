@@ -8,23 +8,38 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_network_profile.dar
 /// Input properties used for looking up and filtering NextGenerationFirewallVirtualHubLocalRulestack resources.
 class NextGenerationFirewallVirtualHubLocalRulestackState {
   /// One or more `destination_nat` blocks as defined below.
-  final pulumi.Input<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>>? destinationNats;
+  final pulumi.Input<
+    List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>
+  >?
+  destinationNats;
+
   /// A `dns_settings` block as defined below.
-  final pulumi.Input<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings>? dnsSettings;
+  final pulumi.Input<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings>?
+  dnsSettings;
+
   /// The marketplace offer ID. Defaults to `pan_swfw_cloud_ngfw`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? marketplaceOfferId;
+
   /// The name which should be used for this Palo Alto Next Generation Firewall VHub Local Rulestack. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   final pulumi.Input<String>? name;
+
   /// A `network_profile` block as defined below.
-  final pulumi.Input<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile>? networkProfile;
+  final pulumi.Input<
+    NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile
+  >?
+  networkProfile;
+
   /// The billing plan ID as published by Liftr.PAN. Defaults to `panw-cloud-ngfw-payg`.
   ///
-  /// > **Note:** The former `plan_id` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `plan_id` to `panw-cngfw-payg` when creating new resources.
+  /// &gt; **Note:** The former `plan_id` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `plan_id` to `panw-cngfw-payg` when creating new resources.
   final pulumi.Input<String>? planId;
+
   /// The name of the Resource Group where the Palo Alto Next Generation Firewall VHub Local Rulestack should exist. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The ID of the Local Rulestack to be used for this Next Generation Firewall.
   final pulumi.Input<String>? rulestackId;
+
   /// A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall VHub Local Rulestack.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -52,11 +67,30 @@ class NextGenerationFirewallVirtualHubLocalRulestackState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinationNats': ?pulumi.Input.mapOptionalInputValue<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>, List<Map<String, dynamic>>>(destinationNats, (value) => pulumi.Input.encodeList<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'dnsSettings': ?pulumi.Input.mapOptionalInputValue<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings, Map<String, dynamic>>(dnsSettings, (value) => value.toMap()),
+      'destinationNats':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>,
+            List<Map<String, dynamic>>
+          >(
+            destinationNats,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NextGenerationFirewallVirtualHubLocalRulestackDestinationNat,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'dnsSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            NextGenerationFirewallVirtualHubLocalRulestackDnsSettings,
+            Map<String, dynamic>
+          >(dnsSettings, (value) => value.toMap()),
       'marketplaceOfferId': ?marketplaceOfferId,
       'name': ?name,
-      'networkProfile': ?pulumi.Input.mapOptionalInputValue<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile, Map<String, dynamic>>(networkProfile, (value) => value.toMap()),
+      'networkProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile,
+            Map<String, dynamic>
+          >(networkProfile, (value) => value.toMap()),
       'planId': ?planId,
       'resourceGroupName': ?resourceGroupName,
       'rulestackId': ?rulestackId,
@@ -64,18 +98,75 @@ class NextGenerationFirewallVirtualHubLocalRulestackState {
     };
   }
 
-  factory NextGenerationFirewallVirtualHubLocalRulestackState.fromMap(Map<String, dynamic> map) {
+  factory NextGenerationFirewallVirtualHubLocalRulestackState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NextGenerationFirewallVirtualHubLocalRulestackState(
-      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>(map['destinationNats']!, (value) => NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
-      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
-      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      destinationNats: (() {
+        final guardedValue = map['destinationNats'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            NextGenerationFirewallVirtualHubLocalRulestackDestinationNat
+          >(
+            guardedValue,
+            (value) =>
+                NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      dnsSettings: (() {
+        final guardedValue = map['dnsSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      marketplaceOfferId: (() {
+        final guardedValue = map['marketplaceOfferId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkProfile: (() {
+        final guardedValue = map['networkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      planId: (() {
+        final guardedValue = map['planId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rulestackId: (() {
+        final guardedValue = map['rulestackId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

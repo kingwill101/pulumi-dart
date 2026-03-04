@@ -352,10 +352,13 @@ import 'service_network_settings_state.dart';
 class ServiceNetworkSettings extends pulumi.CustomResource {
   /// Ingress settings for this service. Will apply to all versions.
   /// Structure is documented below.
-  late final pulumi.Output<ServiceNetworkSettingsNetworkSettings> networkSettings;
+  late final pulumi.Output<ServiceNetworkSettingsNetworkSettings>
+  networkSettings;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The name of the service these settings apply to.
   late final pulumi.Output<String> service;
 
@@ -368,14 +371,16 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
     ServiceNetworkSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>('networkSettings');
-    this.project = registerOutput<String>('project');
-    this.service = registerOutput<String>('service');
+         'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>(
+      'networkSettings',
+    );
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
   }
 
   /// Gets an existing [ServiceNetworkSettings] resource's state with the given [name] and [id].
@@ -396,13 +401,15 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>('networkSettings');
-    this.project = registerOutput<String>('project');
-    this.service = registerOutput<String>('service');
+         'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>(
+      'networkSettings',
+    );
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
   }
 }

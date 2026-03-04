@@ -8,16 +8,15 @@ enum EncryptionAlgorithm {
   valueAES192("AES192"),
   valueAES256("AES256");
 
-  const EncryptionAlgorithm(this.value);
-  final String value;
+  const EncryptionAlgorithm(this.wireValue);
+  final String wireValue;
 
   static EncryptionAlgorithm fromValue(String value) {
     for (final item in EncryptionAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncryptionAlgorithm value: $value');
   }
 }
-

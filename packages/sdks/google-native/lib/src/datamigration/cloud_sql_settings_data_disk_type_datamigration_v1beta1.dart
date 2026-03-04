@@ -4,16 +4,20 @@ enum CloudSqlSettingsDataDiskTypeDatamigrationV1beta1 {
   pdSsd("PD_SSD"),
   pdHdd("PD_HDD");
 
-  const CloudSqlSettingsDataDiskTypeDatamigrationV1beta1(this.value);
-  final String value;
+  const CloudSqlSettingsDataDiskTypeDatamigrationV1beta1(this.wireValue);
+  final String wireValue;
 
-  static CloudSqlSettingsDataDiskTypeDatamigrationV1beta1 fromValue(String value) {
-    for (final item in CloudSqlSettingsDataDiskTypeDatamigrationV1beta1.values) {
-      if (item.value == value) {
+  static CloudSqlSettingsDataDiskTypeDatamigrationV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in CloudSqlSettingsDataDiskTypeDatamigrationV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CloudSqlSettingsDataDiskTypeDatamigrationV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CloudSqlSettingsDataDiskTypeDatamigrationV1beta1 value: $value',
+    );
   }
 }
-

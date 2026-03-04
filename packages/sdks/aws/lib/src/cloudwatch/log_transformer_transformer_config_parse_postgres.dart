@@ -8,20 +8,21 @@ class LogTransformerTransformerConfigParsePostgres {
 
   /// Creates a new [LogTransformerTransformerConfigParsePostgres].
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParsePostgres({
-    this.source,
-  });
+  LogTransformerTransformerConfigParsePostgres({this.source});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'source': ?source,
-    };
+    return <String, dynamic>{'source': ?source};
   }
 
-  factory LogTransformerTransformerConfigParsePostgres.fromMap(Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigParsePostgres.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogTransformerTransformerConfigParsePostgres(
-      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

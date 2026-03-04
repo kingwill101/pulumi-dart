@@ -2,11 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enclave_address_spaces_model_response.dart';
 import 'enclave_default_settings_model_response.dart';
 import 'enclave_virtual_network_model_response.dart';
-import 'governed_service_item_response.dart';
 import 'maintenance_mode_configuration_model_response.dart';
 import 'managed_on_behalf_of_configuration_response.dart';
 import 'managed_service_identity_response.dart';
-import 'role_assignment_item_response.dart';
 import 'system_data_response.dart';
 import 'virtual_enclave_args.dart';
 
@@ -25,44 +23,68 @@ import 'virtual_enclave_args.dart';
 class VirtualEnclave extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Deploy Bastion service (True or False).
   late final pulumi.Output<bool?> bastionEnabled;
+
   /// Community Resource Id.
   late final pulumi.Output<String> communityResourceId;
+
   /// Enclave Address Spaces
-  late final pulumi.Output<EnclaveAddressSpacesModelResponse> enclaveAddressSpaces;
+  late final pulumi.Output<EnclaveAddressSpacesModelResponse>
+  enclaveAddressSpaces;
+
   /// Enclave default settings.
-  late final pulumi.Output<EnclaveDefaultSettingsModelResponse?> enclaveDefaultSettings;
+  late final pulumi.Output<EnclaveDefaultSettingsModelResponse?>
+  enclaveDefaultSettings;
+
   /// Enclave role assignments
-  late final pulumi.Output<List<RoleAssignmentItemResponse>?> enclaveRoleAssignments;
+  late final pulumi.Output<List<Map<String, dynamic>>?> enclaveRoleAssignments;
+
   /// Virtual Network.
-  late final pulumi.Output<EnclaveVirtualNetworkModelResponse> enclaveVirtualNetwork;
+  late final pulumi.Output<EnclaveVirtualNetworkModelResponse>
+  enclaveVirtualNetwork;
+
   /// Enclave specific policies
-  late final pulumi.Output<List<GovernedServiceItemResponse>?> governedServiceList;
+  late final pulumi.Output<List<Map<String, dynamic>>?> governedServiceList;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Maintenance Mode configuration.
-  late final pulumi.Output<MaintenanceModeConfigurationModelResponse?> maintenanceModeConfiguration;
+  late final pulumi.Output<MaintenanceModeConfigurationModelResponse?>
+  maintenanceModeConfiguration;
+
   /// Managed On Behalf Of Configuration.
-  late final pulumi.Output<ManagedOnBehalfOfConfigurationResponse> managedOnBehalfOfConfiguration;
+  late final pulumi.Output<ManagedOnBehalfOfConfigurationResponse>
+  managedOnBehalfOfConfiguration;
+
   /// Managed resource group name.
   late final pulumi.Output<String> managedResourceGroupName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning State.
   late final pulumi.Output<String> provisioningState;
+
   /// List of resource ids created by Virtual Enclave.
   late final pulumi.Output<List<String>> resourceCollection;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Workload role assignments
-  late final pulumi.Output<List<RoleAssignmentItemResponse>?> workloadRoleAssignments;
+  late final pulumi.Output<List<Map<String, dynamic>>?> workloadRoleAssignments;
 
   /// Creates a new [VirtualEnclave].
   /// [name] The Pulumi resource name.
@@ -73,30 +95,51 @@ class VirtualEnclave extends pulumi.CustomResource {
     VirtualEnclaveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:mission:VirtualEnclave',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bastionEnabled = registerOutput<bool?>('bastionEnabled');
-    this.communityResourceId = registerOutput<String>('communityResourceId');
-    this.enclaveAddressSpaces = registerOutput<EnclaveAddressSpacesModelResponse>('enclaveAddressSpaces');
-    this.enclaveDefaultSettings = registerOutput<EnclaveDefaultSettingsModelResponse?>('enclaveDefaultSettings');
-    this.enclaveRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('enclaveRoleAssignments');
-    this.enclaveVirtualNetwork = registerOutput<EnclaveVirtualNetworkModelResponse>('enclaveVirtualNetwork');
-    this.governedServiceList = registerOutput<List<GovernedServiceItemResponse>?>('governedServiceList');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maintenanceModeConfiguration = registerOutput<MaintenanceModeConfigurationModelResponse?>('maintenanceModeConfiguration');
-    this.managedOnBehalfOfConfiguration = registerOutput<ManagedOnBehalfOfConfigurationResponse>('managedOnBehalfOfConfiguration');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+         'azure-native:mission:VirtualEnclave',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bastionEnabled = registerOutput<bool?>('bastionEnabled');
+    communityResourceId = registerOutput<String>('communityResourceId');
+    enclaveAddressSpaces = registerOutput<EnclaveAddressSpacesModelResponse>(
+      'enclaveAddressSpaces',
+    );
+    enclaveDefaultSettings =
+        registerOutput<EnclaveDefaultSettingsModelResponse?>(
+          'enclaveDefaultSettings',
+        );
+    enclaveRoleAssignments = registerOutput<List<Map<String, dynamic>>?>(
+      'enclaveRoleAssignments',
+    );
+    enclaveVirtualNetwork = registerOutput<EnclaveVirtualNetworkModelResponse>(
+      'enclaveVirtualNetwork',
+    );
+    governedServiceList = registerOutput<List<Map<String, dynamic>>?>(
+      'governedServiceList',
+    );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    maintenanceModeConfiguration =
+        registerOutput<MaintenanceModeConfigurationModelResponse?>(
+          'maintenanceModeConfiguration',
+        );
+    managedOnBehalfOfConfiguration =
+        registerOutput<ManagedOnBehalfOfConfigurationResponse>(
+          'managedOnBehalfOfConfiguration',
+        );
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceCollection = registerOutput<List<String>>('resourceCollection');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.workloadRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('workloadRoleAssignments');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCollection = registerOutput<List<String>>('resourceCollection');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    workloadRoleAssignments = registerOutput<List<Map<String, dynamic>>?>(
+      'workloadRoleAssignments',
+    );
   }
 }

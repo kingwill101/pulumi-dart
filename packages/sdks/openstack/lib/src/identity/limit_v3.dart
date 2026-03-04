@@ -4,7 +4,7 @@ import 'limit_v3_state.dart';
 
 /// Manages a V3 Limit resource within OpenStack Keystone.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -183,21 +183,27 @@ import 'limit_v3_state.dart';
 class LimitV3 extends pulumi.CustomResource {
   /// Description of the limit.
   late final pulumi.Output<String?> description;
+
   /// The domain the limit applies to. Changing this
   /// creates a new Limit.
   late final pulumi.Output<String> domainId;
+
   /// The project the limit applies to. Changing this
   /// creates a new Limit.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new Limit.
   late final pulumi.Output<String> region;
+
   /// Integer for the actual limit.
   late final pulumi.Output<int> resourceLimit;
+
   /// The resource that the limit applies to. Changing
   /// this creates a new Limit.
   late final pulumi.Output<String> resourceName;
+
   /// The service the limit applies to. Changing this
   /// creates a new Limit.
   late final pulumi.Output<String> serviceId;
@@ -211,18 +217,18 @@ class LimitV3 extends pulumi.CustomResource {
     LimitV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/limitV3:LimitV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.resourceLimit = registerOutput<int>('resourceLimit');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.serviceId = registerOutput<String>('serviceId');
+         'openstack:identity/limitV3:LimitV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    resourceLimit = registerOutput<int>('resourceLimit');
+    resourceName = registerOutput<String>('resourceName');
+    serviceId = registerOutput<String>('serviceId');
   }
 
   /// Gets an existing [LimitV3] resource's state with the given [name] and [id].
@@ -243,17 +249,17 @@ class LimitV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/limitV3:LimitV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.resourceLimit = registerOutput<int>('resourceLimit');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.serviceId = registerOutput<String>('serviceId');
+         'openstack:identity/limitV3:LimitV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    resourceLimit = registerOutput<int>('resourceLimit');
+    resourceName = registerOutput<String>('resourceName');
+    serviceId = registerOutput<String>('serviceId');
   }
 }

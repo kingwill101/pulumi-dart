@@ -8,10 +8,13 @@ import 'software_recipe_artifact_remote.dart';
 class SoftwareRecipeArtifact {
   /// Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
   final pulumi.Input<bool>? allowInsecure;
+
   /// A Google Cloud Storage artifact.
   final pulumi.Input<SoftwareRecipeArtifactGcs>? gcs;
+
   /// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
   final pulumi.Input<String> id;
+
   /// A generic remote artifact.
   final pulumi.Input<SoftwareRecipeArtifactRemote>? remote;
 
@@ -30,19 +33,46 @@ class SoftwareRecipeArtifact {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInsecure': ?allowInsecure,
-      'gcs': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeArtifactGcs, Map<String, dynamic>>(gcs, (value) => value.toMap()),
+      'gcs':
+          ?pulumi.Input.mapOptionalInputValue<
+            SoftwareRecipeArtifactGcs,
+            Map<String, dynamic>
+          >(gcs, (value) => value.toMap()),
       'id': id,
-      'remote': ?pulumi.Input.mapOptionalInputValue<SoftwareRecipeArtifactRemote, Map<String, dynamic>>(remote, (value) => value.toMap()),
+      'remote':
+          ?pulumi.Input.mapOptionalInputValue<
+            SoftwareRecipeArtifactRemote,
+            Map<String, dynamic>
+          >(remote, (value) => value.toMap()),
     };
   }
 
   factory SoftwareRecipeArtifact.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeArtifact(
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
-      gcs: map['gcs'] == null ? null : (SoftwareRecipeArtifactGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
-      id: (map['id'] as String).input(),
-      remote: map['remote'] == null ? null : (SoftwareRecipeArtifactRemote.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
+      allowInsecure: (() {
+        final guardedValue = map['allowInsecure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gcs: (() {
+        final guardedValue = map['gcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SoftwareRecipeArtifactGcs.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      remote: (() {
+        final guardedValue = map['remote'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SoftwareRecipeArtifactRemote.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

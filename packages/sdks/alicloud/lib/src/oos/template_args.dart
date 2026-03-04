@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateArgs {
   /// When deleting a template, whether to delete its related executions. Default to `false`.
   final pulumi.Input<bool>? autoDeleteExecutions;
+
   /// The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
   final pulumi.Input<String> content;
+
   /// The ID of resource group which the template belongs.
   final pulumi.Input<String>? resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
   final pulumi.Input<String> templateName;
+
   /// The name of template version.
   final pulumi.Input<String>? versionName;
 
@@ -49,13 +54,30 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      autoDeleteExecutions: map['autoDeleteExecutions'] == null ? null : (map['autoDeleteExecutions']! as bool).input(),
-      content: (map['content'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      templateName: (map['templateName'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
+      autoDeleteExecutions: (() {
+        final guardedValue = map['autoDeleteExecutions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      templateName: pulumi.Input.fromValue(map['templateName'] as String),
+      versionName: (() {
+        final guardedValue = map['versionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

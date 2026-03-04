@@ -3,16 +3,15 @@ enum SecurityStyle {
   valueNtfs("ntfs"),
   valueUnix("unix");
 
-  const SecurityStyle(this.value);
-  final String value;
+  const SecurityStyle(this.wireValue);
+  final String wireValue;
 
   static SecurityStyle fromValue(String value) {
     for (final item in SecurityStyle.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityStyle value: $value');
   }
 }
-

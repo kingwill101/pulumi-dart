@@ -162,7 +162,7 @@ import 'directory_role_assignment_state.dart';
 /// ```
 ///
 ///
-/// > Note the use of the `template_id` attribute when referencing built-in roles.
+/// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
 ///
 /// *Assignment for a custom role*
 ///
@@ -582,7 +582,7 @@ import 'directory_role_assignment_state.dart';
 /// ```
 ///
 ///
-/// > Note the use of the `template_id` attribute when referencing built-in roles.
+/// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
 ///
 /// ## Import
 ///
@@ -594,10 +594,13 @@ import 'directory_role_assignment_state.dart';
 class DirectoryRoleAssignment extends pulumi.CustomResource {
   /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appScopeId;
+
   /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
   late final pulumi.Output<String> directoryScopeId;
+
   /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalObjectId;
+
   /// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleId;
 
@@ -610,15 +613,15 @@ class DirectoryRoleAssignment extends pulumi.CustomResource {
     DirectoryRoleAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/directoryRoleAssignment:DirectoryRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appScopeId = registerOutput<String>('appScopeId');
-    this.directoryScopeId = registerOutput<String>('directoryScopeId');
-    this.principalObjectId = registerOutput<String>('principalObjectId');
-    this.roleId = registerOutput<String>('roleId');
+         'azuread:index/directoryRoleAssignment:DirectoryRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appScopeId = registerOutput<String>('appScopeId');
+    directoryScopeId = registerOutput<String>('directoryScopeId');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    roleId = registerOutput<String>('roleId');
   }
 
   /// Gets an existing [DirectoryRoleAssignment] resource's state with the given [name] and [id].
@@ -639,14 +642,14 @@ class DirectoryRoleAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/directoryRoleAssignment:DirectoryRoleAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appScopeId = registerOutput<String>('appScopeId');
-    this.directoryScopeId = registerOutput<String>('directoryScopeId');
-    this.principalObjectId = registerOutput<String>('principalObjectId');
-    this.roleId = registerOutput<String>('roleId');
+         'azuread:index/directoryRoleAssignment:DirectoryRoleAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appScopeId = registerOutput<String>('appScopeId');
+    directoryScopeId = registerOutput<String>('directoryScopeId');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    roleId = registerOutput<String>('roleId');
   }
 }

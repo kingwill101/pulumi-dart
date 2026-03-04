@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageRcmFailbackPolicyCreationInput {
   /// The app consistent snapshot frequency (in minutes).
   final pulumi.Input<int>? appConsistentFrequencyInMinutes;
+
   /// The crash consistent snapshot frequency (in minutes).
   final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
+
   /// The class type.
   /// Expected value is 'InMageRcmFailback'.
   final pulumi.Input<String> instanceType;
@@ -30,12 +32,21 @@ class InMageRcmFailbackPolicyCreationInput {
     };
   }
 
-  factory InMageRcmFailbackPolicyCreationInput.fromMap(Map<String, dynamic> map) {
+  factory InMageRcmFailbackPolicyCreationInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InMageRcmFailbackPolicyCreationInput(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes']! as int).input(),
-      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes']! as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
+      appConsistentFrequencyInMinutes: (() {
+        final guardedValue = map['appConsistentFrequencyInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      crashConsistentFrequencyInMinutes: (() {
+        final guardedValue = map['crashConsistentFrequencyInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }
 }
-

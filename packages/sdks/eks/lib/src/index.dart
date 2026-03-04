@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/access_entry.dart';
 export 'index/access_entry_type.dart';
 export 'index/access_policy_association.dart';

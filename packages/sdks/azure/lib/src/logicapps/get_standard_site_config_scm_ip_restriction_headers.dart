@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandardSiteConfigScmIpRestrictionHeaders {
   /// A list of allowed Azure FrontDoor IDs in UUID notation.
   final pulumi.Input<List<String>> xAzureFdids;
+
   /// A list to allow the Azure FrontDoor health probe header.
   final pulumi.Input<String> xFdHealthProbe;
+
   /// A list of allowed 'X-Forwarded-For' IPs in CIDR notation.
   final pulumi.Input<List<String>> xForwardedFors;
+
   /// A list of allowed 'X-Forwarded-Host' domains.
   final pulumi.Input<List<String>> xForwardedHosts;
 
@@ -33,13 +36,20 @@ class GetStandardSiteConfigScmIpRestrictionHeaders {
     };
   }
 
-  factory GetStandardSiteConfigScmIpRestrictionHeaders.fromMap(Map<String, dynamic> map) {
+  factory GetStandardSiteConfigScmIpRestrictionHeaders.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetStandardSiteConfigScmIpRestrictionHeaders(
-      xAzureFdids: ((map['xAzureFdids'] as List).cast<String>()).input(),
-      xFdHealthProbe: (map['xFdHealthProbe'] as String).input(),
-      xForwardedFors: ((map['xForwardedFors'] as List).cast<String>()).input(),
-      xForwardedHosts: ((map['xForwardedHosts'] as List).cast<String>()).input(),
+      xAzureFdids: pulumi.Input.fromValue(
+        (map['xAzureFdids'] as List).cast<String>(),
+      ),
+      xFdHealthProbe: pulumi.Input.fromValue(map['xFdHealthProbe'] as String),
+      xForwardedFors: pulumi.Input.fromValue(
+        (map['xForwardedFors'] as List).cast<String>(),
+      ),
+      xForwardedHosts: pulumi.Input.fromValue(
+        (map['xForwardedHosts'] as List).cast<String>(),
+      ),
     );
   }
 }
-

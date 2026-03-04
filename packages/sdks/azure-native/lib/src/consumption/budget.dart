@@ -491,28 +491,40 @@ import 'system_data_response.dart';
 class Budget extends pulumi.CustomResource {
   /// The total amount of cost to track with the budget
   late final pulumi.Output<double> amount;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The category of the budget, whether the budget tracks cost or usage.
   late final pulumi.Output<String> category;
+
   /// The current amount of cost which is being tracked for a budget.
   late final pulumi.Output<CurrentSpendResponse> currentSpend;
+
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   late final pulumi.Output<String?> eTag;
+
   /// May be used to filter budgets by user-specified dimensions and/or tags.
   late final pulumi.Output<BudgetFilterResponse?> filter;
+
   /// The forecasted cost which is being tracked for a budget.
   late final pulumi.Output<ForecastSpendResponse> forecastSpend;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
   late final pulumi.Output<Map<String, NotificationResponse>?> notifications;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
   late final pulumi.Output<String> timeGrain;
+
   /// Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
   late final pulumi.Output<BudgetTimePeriodResponse> timePeriod;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -520,28 +532,27 @@ class Budget extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Budget]. {@macro pulumi_consumption_budget_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Budget(
-    String name, {
-    BudgetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:consumption:Budget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amount = registerOutput<double>('amount');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.category = registerOutput<String>('category');
-    this.currentSpend = registerOutput<CurrentSpendResponse>('currentSpend');
-    this.eTag = registerOutput<String?>('eTag');
-    this.filter = registerOutput<BudgetFilterResponse?>('filter');
-    this.forecastSpend = registerOutput<ForecastSpendResponse>('forecastSpend');
+  Budget(String name, {BudgetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:consumption:Budget',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    amount = registerOutput<double>('amount');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String>('category');
+    currentSpend = registerOutput<CurrentSpendResponse>('currentSpend');
+    eTag = registerOutput<String?>('eTag');
+    filter = registerOutput<BudgetFilterResponse?>('filter');
+    forecastSpend = registerOutput<ForecastSpendResponse>('forecastSpend');
     this.name = registerOutput<String>('name');
-    this.notifications = registerOutput<Map<String, NotificationResponse>?>('notifications');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeGrain = registerOutput<String>('timeGrain');
-    this.timePeriod = registerOutput<BudgetTimePeriodResponse>('timePeriod');
-    this.type = registerOutput<String>('type');
+    notifications = registerOutput<Map<String, NotificationResponse>?>(
+      'notifications',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeGrain = registerOutput<String>('timeGrain');
+    timePeriod = registerOutput<BudgetTimePeriodResponse>('timePeriod');
+    type = registerOutput<String>('type');
   }
 }

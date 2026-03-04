@@ -6,7 +6,7 @@ import 'service_setting_state.dart';
 ///
 /// For information about OOS Service Setting and how to use it, see [What is Service Setting](https://www.alibabacloud.com/help/en/doc-detail/268700.html).
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 ///
 /// ## Example Usage
 ///
@@ -240,12 +240,16 @@ import 'service_setting_state.dart';
 class ServiceSetting extends pulumi.CustomResource {
   /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
   late final pulumi.Output<String?> deliveryOssBucketName;
+
   /// Is the recording function for the OSS delivery template enabled.
   late final pulumi.Output<bool?> deliveryOssEnabled;
+
   /// The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
   late final pulumi.Output<String?> deliveryOssKeyPrefix;
+
   /// Is the execution record function to SLS delivery Template turned on.
   late final pulumi.Output<bool?> deliverySlsEnabled;
+
   /// The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
   late final pulumi.Output<String?> deliverySlsProjectName;
 
@@ -258,16 +262,16 @@ class ServiceSetting extends pulumi.CustomResource {
     ServiceSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/serviceSetting:ServiceSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryOssBucketName = registerOutput<String?>('deliveryOssBucketName');
-    this.deliveryOssEnabled = registerOutput<bool?>('deliveryOssEnabled');
-    this.deliveryOssKeyPrefix = registerOutput<String?>('deliveryOssKeyPrefix');
-    this.deliverySlsEnabled = registerOutput<bool?>('deliverySlsEnabled');
-    this.deliverySlsProjectName = registerOutput<String?>('deliverySlsProjectName');
+         'alicloud:oos/serviceSetting:ServiceSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryOssBucketName = registerOutput<String?>('deliveryOssBucketName');
+    deliveryOssEnabled = registerOutput<bool?>('deliveryOssEnabled');
+    deliveryOssKeyPrefix = registerOutput<String?>('deliveryOssKeyPrefix');
+    deliverySlsEnabled = registerOutput<bool?>('deliverySlsEnabled');
+    deliverySlsProjectName = registerOutput<String?>('deliverySlsProjectName');
   }
 
   /// Gets an existing [ServiceSetting] resource's state with the given [name] and [id].
@@ -288,15 +292,15 @@ class ServiceSetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/serviceSetting:ServiceSetting',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryOssBucketName = registerOutput<String?>('deliveryOssBucketName');
-    this.deliveryOssEnabled = registerOutput<bool?>('deliveryOssEnabled');
-    this.deliveryOssKeyPrefix = registerOutput<String?>('deliveryOssKeyPrefix');
-    this.deliverySlsEnabled = registerOutput<bool?>('deliverySlsEnabled');
-    this.deliverySlsProjectName = registerOutput<String?>('deliverySlsProjectName');
+         'alicloud:oos/serviceSetting:ServiceSetting',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryOssBucketName = registerOutput<String?>('deliveryOssBucketName');
+    deliveryOssEnabled = registerOutput<bool?>('deliveryOssEnabled');
+    deliveryOssKeyPrefix = registerOutput<String?>('deliveryOssKeyPrefix');
+    deliverySlsEnabled = registerOutput<bool?>('deliverySlsEnabled');
+    deliverySlsProjectName = registerOutput<String?>('deliverySlsProjectName');
   }
 }

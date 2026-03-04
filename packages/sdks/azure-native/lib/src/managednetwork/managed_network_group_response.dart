@@ -7,24 +7,34 @@ import 'resource_id_response.dart';
 class ManagedNetworkGroupResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
+
   /// Responsibility role under which this Managed Network Group will be created
   final pulumi.Input<String>? kind;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The collection of management groups covered by the Managed Network
   final pulumi.Input<List<ResourceIdResponse>>? managementGroups;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// Provisioning state of the ManagedNetwork resource.
   final pulumi.Input<String> provisioningState;
+
   /// The collection of  subnets covered by the Managed Network
   final pulumi.Input<List<ResourceIdResponse>>? subnets;
+
   /// The collection of subscriptions covered by the Managed Network
   final pulumi.Input<List<ResourceIdResponse>>? subscriptions;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   final pulumi.Input<String> type;
+
   /// The collection of virtual nets covered by the Managed Network
   final pulumi.Input<List<ResourceIdResponse>>? virtualNetworks;
 
@@ -60,30 +70,127 @@ class ManagedNetworkGroupResponse {
       'id': id,
       'kind': ?kind,
       'location': ?location,
-      'managementGroups': ?pulumi.Input.mapOptionalInputValue<List<ResourceIdResponse>, List<Map<String, dynamic>>>(managementGroups, (value) => pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managementGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceIdResponse>,
+            List<Map<String, dynamic>>
+          >(
+            managementGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceIdResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
       'provisioningState': provisioningState,
-      'subnets': ?pulumi.Input.mapOptionalInputValue<List<ResourceIdResponse>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'subscriptions': ?pulumi.Input.mapOptionalInputValue<List<ResourceIdResponse>, List<Map<String, dynamic>>>(subscriptions, (value) => pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceIdResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subnets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceIdResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'subscriptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceIdResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subscriptions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceIdResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
-      'virtualNetworks': ?pulumi.Input.mapOptionalInputValue<List<ResourceIdResponse>, List<Map<String, dynamic>>>(virtualNetworks, (value) => pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'virtualNetworks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceIdResponse>,
+            List<Map<String, dynamic>>
+          >(
+            virtualNetworks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceIdResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ManagedNetworkGroupResponse.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkGroupResponse(
-      etag: (map['etag'] as String).input(),
-      id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managementGroups: map['managementGroups'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['managementGroups']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['subnets']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['subscriptions']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
-      virtualNetworks: map['virtualNetworks'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['virtualNetworks']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementGroups: (() {
+        final guardedValue = map['managementGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceIdResponse>(
+            guardedValue,
+            (value) => ResourceIdResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      subnets: (() {
+        final guardedValue = map['subnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceIdResponse>(
+            guardedValue,
+            (value) => ResourceIdResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      subscriptions: (() {
+        final guardedValue = map['subscriptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceIdResponse>(
+            guardedValue,
+            (value) => ResourceIdResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      virtualNetworks: (() {
+        final guardedValue = map['virtualNetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceIdResponse>(
+            guardedValue,
+            (value) => ResourceIdResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

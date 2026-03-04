@@ -12,16 +12,15 @@ enum CcpAuthType {
   valueOracle("Oracle"),
   valueNone("None");
 
-  const CcpAuthType(this.value);
-  final String value;
+  const CcpAuthType(this.wireValue);
+  final String wireValue;
 
   static CcpAuthType fromValue(String value) {
     for (final item in CcpAuthType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CcpAuthType value: $value');
   }
 }
-

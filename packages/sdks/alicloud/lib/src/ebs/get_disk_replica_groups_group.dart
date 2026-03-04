@@ -5,33 +5,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiskReplicaGroupsGroup {
   /// The description of the consistent replication group.
   final pulumi.Input<String> description;
+
   /// The ID of the region to which the disaster recovery site belongs.
   final pulumi.Input<String> destinationRegionId;
+
   /// The ID of the zone to which the disaster recovery site belongs.
   final pulumi.Input<String> destinationZoneId;
+
   /// Consistent replication group name.
   final pulumi.Input<String> groupName;
+
   /// The ID of the Disk Replica Group.
   final pulumi.Input<String> id;
   final pulumi.Input<String> lastRecoverPoint;
+
   /// The initial source region of the replication group.
   final pulumi.Input<String> primaryRegion;
+
   /// The initial source available area of the replication group.
   final pulumi.Input<String> primaryZone;
+
   /// The ID of the consistent replication group.
   final pulumi.Input<String> replicaGroupId;
+
   /// The recovery point objective (RPO) of the replication pair-consistent group.
   final pulumi.Input<int> rpo;
+
   /// Site information sources for replication pairs and consistent replication groups.
   final pulumi.Input<String> site;
+
   /// The ID of the region to which the production site belongs.
   final pulumi.Input<String> sourceRegionId;
+
   /// The ID of the zone to which the production site belongs.
   final pulumi.Input<String> sourceZoneId;
+
   /// The initial destination region of the replication group.
   final pulumi.Input<String> standbyRegion;
+
   /// The initial destination zone of the replication group.
   final pulumi.Input<String> standbyZone;
+
   /// The status of the consistent replication group. Possible values:
   final pulumi.Input<String> status;
 
@@ -94,23 +108,28 @@ class GetDiskReplicaGroupsGroup {
 
   factory GetDiskReplicaGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetDiskReplicaGroupsGroup(
-      description: (map['description'] as String).input(),
-      destinationRegionId: (map['destinationRegionId'] as String).input(),
-      destinationZoneId: (map['destinationZoneId'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastRecoverPoint: (map['lastRecoverPoint'] as String).input(),
-      primaryRegion: (map['primaryRegion'] as String).input(),
-      primaryZone: (map['primaryZone'] as String).input(),
-      replicaGroupId: (map['replicaGroupId'] as String).input(),
-      rpo: (map['rpo'] as int).input(),
-      site: (map['site'] as String).input(),
-      sourceRegionId: (map['sourceRegionId'] as String).input(),
-      sourceZoneId: (map['sourceZoneId'] as String).input(),
-      standbyRegion: (map['standbyRegion'] as String).input(),
-      standbyZone: (map['standbyZone'] as String).input(),
-      status: (map['status'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      destinationRegionId: pulumi.Input.fromValue(
+        map['destinationRegionId'] as String,
+      ),
+      destinationZoneId: pulumi.Input.fromValue(
+        map['destinationZoneId'] as String,
+      ),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastRecoverPoint: pulumi.Input.fromValue(
+        map['lastRecoverPoint'] as String,
+      ),
+      primaryRegion: pulumi.Input.fromValue(map['primaryRegion'] as String),
+      primaryZone: pulumi.Input.fromValue(map['primaryZone'] as String),
+      replicaGroupId: pulumi.Input.fromValue(map['replicaGroupId'] as String),
+      rpo: pulumi.Input.fromValue(map['rpo'] as int),
+      site: pulumi.Input.fromValue(map['site'] as String),
+      sourceRegionId: pulumi.Input.fromValue(map['sourceRegionId'] as String),
+      sourceZoneId: pulumi.Input.fromValue(map['sourceZoneId'] as String),
+      standbyRegion: pulumi.Input.fromValue(map['standbyRegion'] as String),
+      standbyZone: pulumi.Input.fromValue(map['standbyZone'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

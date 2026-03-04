@@ -152,10 +152,13 @@ import 'job_credential_args.dart';
 class JobCredential extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The credential user name.
   late final pulumi.Output<String> username;
 
@@ -168,14 +171,14 @@ class JobCredential extends pulumi.CustomResource {
     JobCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:JobCredential',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:sql:JobCredential',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.username = registerOutput<String>('username');
+    type = registerOutput<String>('type');
+    username = registerOutput<String>('username');
   }
 }

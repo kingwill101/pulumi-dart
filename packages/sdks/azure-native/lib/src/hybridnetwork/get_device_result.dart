@@ -8,24 +8,34 @@ import 'system_data_response.dart';
 class GetDeviceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The type of the device.
   final String deviceType;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The list of network functions deployed on the device.
   final List<SubResourceResponse> networkFunctions;
+
   /// The provisioning state of the device resource.
   final String provisioningState;
+
   /// The current device status.
   final String status;
+
   /// The system meta data relating to this resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -62,7 +72,11 @@ class GetDeviceResult {
       'id': id,
       'location': location,
       'name': name,
-      'networkFunctions': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(networkFunctions, (value) => value.toMap()),
+      'networkFunctions':
+          pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(
+            networkFunctions,
+            (value) => value.toMap(),
+          ),
       'provisioningState': provisioningState,
       'status': status,
       'systemData': systemData.toMap(),
@@ -78,13 +92,22 @@ class GetDeviceResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      networkFunctions: pulumi.Input.decodeList<SubResourceResponse>(map['networkFunctions'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkFunctions: pulumi.Input.decodeList<SubResourceResponse>(
+        map['networkFunctions']!,
+        (value) =>
+            SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

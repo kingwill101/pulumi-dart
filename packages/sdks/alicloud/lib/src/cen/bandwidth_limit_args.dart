@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BandwidthLimitArgs {
   /// The bandwidth configured for the interconnected regions communication.
   ///
-  /// ->**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+  /// -&gt;**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
   final pulumi.Input<int> bandwidthLimit;
+
   /// The ID of the CEN.
   final pulumi.Input<String> instanceId;
+
   /// List of the two regions to interconnect. Must be two different regions.
   final pulumi.Input<List<String>> regionIds;
 
@@ -36,10 +38,11 @@ class BandwidthLimitArgs {
 
   factory BandwidthLimitArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthLimitArgs(
-      bandwidthLimit: (map['bandwidthLimit'] as int).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      regionIds: ((map['regionIds'] as List).cast<String>()).input(),
+      bandwidthLimit: pulumi.Input.fromValue(map['bandwidthLimit'] as int),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      regionIds: pulumi.Input.fromValue(
+        (map['regionIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

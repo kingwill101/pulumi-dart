@@ -3,16 +3,15 @@ enum ExpeditedRolloutIntent {
   notSpecified("NotSpecified"),
   hotfix("Hotfix");
 
-  const ExpeditedRolloutIntent(this.value);
-  final String value;
+  const ExpeditedRolloutIntent(this.wireValue);
+  final String wireValue;
 
   static ExpeditedRolloutIntent fromValue(String value) {
     for (final item in ExpeditedRolloutIntent.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpeditedRolloutIntent value: $value');
   }
 }
-

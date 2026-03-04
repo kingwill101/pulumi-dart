@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'patch_schedule_args.dart';
-import 'schedule_entry_response.dart';
 import 'system_data_response.dart';
 
 /// Response to put/get patch schedules for Redis cache.
@@ -200,14 +199,19 @@ import 'system_data_response.dart';
 class PatchSchedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of patch schedules for a Redis cache.
-  late final pulumi.Output<List<ScheduleEntryResponse>> scheduleEntries;
+  late final pulumi.Output<List<Map<String, dynamic>>> scheduleEntries;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -220,16 +224,18 @@ class PatchSchedule extends pulumi.CustomResource {
     PatchScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:redis:PatchSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:redis:PatchSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.scheduleEntries = registerOutput<List<ScheduleEntryResponse>>('scheduleEntries');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    scheduleEntries = registerOutput<List<Map<String, dynamic>>>(
+      'scheduleEntries',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

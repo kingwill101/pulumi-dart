@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserDefinedResourcesPropertiesResponse {
   /// Azure Resource Graph query which represents the security solution's user defined resources. Required to start with "where type != "Microsoft.Devices/IotHubs""
   final pulumi.Input<String> query;
+
   /// List of Azure subscription ids on which the user defined resources query should be executed.
   final pulumi.Input<List<String>> querySubscriptions;
 
@@ -24,11 +25,14 @@ class UserDefinedResourcesPropertiesResponse {
     };
   }
 
-  factory UserDefinedResourcesPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory UserDefinedResourcesPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserDefinedResourcesPropertiesResponse(
-      query: (map['query'] as String).input(),
-      querySubscriptions: ((map['querySubscriptions'] as List).cast<String>()).input(),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      querySubscriptions: pulumi.Input.fromValue(
+        (map['querySubscriptions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

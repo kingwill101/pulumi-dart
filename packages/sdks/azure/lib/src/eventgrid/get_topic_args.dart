@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicArgs {
   /// The name of the EventGrid Topic resource.
   final pulumi.Input<String> name;
+
   /// The name of the resource group in which the EventGrid Topic exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetTopicArgs].
   /// [name] The name of the EventGrid Topic resource.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Topic exists.
-  GetTopicArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetTopicArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetTopicArgs {
 
   factory GetTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

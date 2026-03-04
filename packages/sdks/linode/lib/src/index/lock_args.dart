@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LockArgs {
   /// The ID of the entity to lock.
   final pulumi.Input<int> entityId;
+
   /// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
   final pulumi.Input<String> entityType;
+
   /// The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
   final pulumi.Input<String> lockType;
 
@@ -34,10 +36,9 @@ class LockArgs {
 
   factory LockArgs.fromMap(Map<String, dynamic> map) {
     return LockArgs(
-      entityId: (map['entityId'] as int).input(),
-      entityType: (map['entityType'] as String).input(),
-      lockType: (map['lockType'] as String).input(),
+      entityId: pulumi.Input.fromValue(map['entityId'] as int),
+      entityType: pulumi.Input.fromValue(map['entityType'] as String),
+      lockType: pulumi.Input.fromValue(map['lockType'] as String),
     );
   }
 }
-

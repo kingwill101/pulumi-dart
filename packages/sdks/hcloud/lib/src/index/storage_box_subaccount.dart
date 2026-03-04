@@ -208,20 +208,28 @@ import 'storage_box_subaccount_state.dart';
 class StorageBoxSubaccount extends pulumi.CustomResource {
   /// Access settings for the Subaccount.
   late final pulumi.Output<StorageBoxSubaccountAccessSettings> accessSettings;
+
   /// A description of the Storage Box Subaccount.
   late final pulumi.Output<String> description;
+
   /// Home directory of the Storage Box Subaccount. The directory will be created if it doesn't exist yet. Must not include a leading slash (`/`).
   late final pulumi.Output<String> homeDirectory;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   late final pulumi.Output<Map<String, String>> labels;
+
   /// Name of the Storage Box Subaccount.
   late final pulumi.Output<String> name;
+
   /// Password of the Storage Box. For more details, see the [Storage Boxes password policy](https://docs.hetzner.cloud/reference/hetzner#storage-boxes-password-policy).
   late final pulumi.Output<String> password;
+
   /// FQDN of the Storage Box Subaccount.
   late final pulumi.Output<String> server;
+
   /// ID of the Storage Box.
   late final pulumi.Output<int> storageBoxId;
+
   /// Username of the Storage Box Subaccount.
   late final pulumi.Output<String> username;
 
@@ -234,20 +242,22 @@ class StorageBoxSubaccount extends pulumi.CustomResource {
     StorageBoxSubaccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/storageBoxSubaccount:StorageBoxSubaccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>('accessSettings');
-    this.description = registerOutput<String>('description');
-    this.homeDirectory = registerOutput<String>('homeDirectory');
-    this.labels = registerOutput<Map<String, String>>('labels');
+         'hcloud:index/storageBoxSubaccount:StorageBoxSubaccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>(
+      'accessSettings',
+    );
+    description = registerOutput<String>('description');
+    homeDirectory = registerOutput<String>('homeDirectory');
+    labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.server = registerOutput<String>('server');
-    this.storageBoxId = registerOutput<int>('storageBoxId');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    server = registerOutput<String>('server');
+    storageBoxId = registerOutput<int>('storageBoxId');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [StorageBoxSubaccount] resource's state with the given [name] and [id].
@@ -268,19 +278,21 @@ class StorageBoxSubaccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/storageBoxSubaccount:StorageBoxSubaccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>('accessSettings');
-    this.description = registerOutput<String>('description');
-    this.homeDirectory = registerOutput<String>('homeDirectory');
-    this.labels = registerOutput<Map<String, String>>('labels');
+         'hcloud:index/storageBoxSubaccount:StorageBoxSubaccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>(
+      'accessSettings',
+    );
+    description = registerOutput<String>('description');
+    homeDirectory = registerOutput<String>('homeDirectory');
+    labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.server = registerOutput<String>('server');
-    this.storageBoxId = registerOutput<int>('storageBoxId');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    server = registerOutput<String>('server');
+    storageBoxId = registerOutput<int>('storageBoxId');
+    username = registerOutput<String>('username');
   }
 }

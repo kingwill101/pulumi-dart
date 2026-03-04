@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkPacketBrokerArgs {
   /// Name of the Network Packet Broker.
   final pulumi.Input<String> networkPacketBrokerName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetNetworkPacketBrokerArgs {
 
   factory GetNetworkPacketBrokerArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPacketBrokerArgs(
-      networkPacketBrokerName: (map['networkPacketBrokerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkPacketBrokerName: pulumi.Input.fromValue(
+        map['networkPacketBrokerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

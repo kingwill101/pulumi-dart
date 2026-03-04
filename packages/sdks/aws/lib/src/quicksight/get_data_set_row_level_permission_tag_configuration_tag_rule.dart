@@ -29,13 +29,16 @@ class GetDataSetRowLevelPermissionTagConfigurationTagRule {
     };
   }
 
-  factory GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetRowLevelPermissionTagConfigurationTagRule(
-      columnName: (map['columnName'] as String).input(),
-      matchAllValue: (map['matchAllValue'] as String).input(),
-      tagKey: (map['tagKey'] as String).input(),
-      tagMultiValueDelimiter: (map['tagMultiValueDelimiter'] as String).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      matchAllValue: pulumi.Input.fromValue(map['matchAllValue'] as String),
+      tagKey: pulumi.Input.fromValue(map['tagKey'] as String),
+      tagMultiValueDelimiter: pulumi.Input.fromValue(
+        map['tagMultiValueDelimiter'] as String,
+      ),
     );
   }
 }
-

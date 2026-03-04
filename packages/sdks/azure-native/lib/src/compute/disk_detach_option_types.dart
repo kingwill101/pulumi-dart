@@ -2,16 +2,15 @@
 enum DiskDetachOptionTypes {
   forceDetach("ForceDetach");
 
-  const DiskDetachOptionTypes(this.value);
-  final String value;
+  const DiskDetachOptionTypes(this.wireValue);
+  final String wireValue;
 
   static DiskDetachOptionTypes fromValue(String value) {
     for (final item in DiskDetachOptionTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskDetachOptionTypes value: $value');
   }
 }
-

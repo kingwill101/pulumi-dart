@@ -9,32 +9,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateDnsArgs {
   /// The name of Private DNS instance
   final pulumi.Input<String> accessInstanceName;
+
   /// Private DNS domain name list
   final pulumi.Input<List<String>>? domainNameLists;
+
   /// The type of firewall
   final pulumi.Input<List<String>> firewallTypes;
+
   /// IP protocol
   final pulumi.Input<String>? ipProtocol;
+
   /// The member Uid
   final pulumi.Input<int>? memberUid;
+
   /// The Port of Private DNS instance
   final pulumi.Input<int>? port;
+
   /// Primary DNS IP
   final pulumi.Input<String>? primaryDns;
+
   /// Primary zone Switch ID
   final pulumi.Input<String>? primaryVswitchId;
+
   /// Primary zone switch IP
   final pulumi.Input<String>? primaryVswitchIp;
+
   /// The type of Private DNS instance
   final pulumi.Input<String> privateDnsType;
+
   /// The region ID of Private DNS instance
   final pulumi.Input<String> regionNo;
+
   /// Standby DNS IP
   final pulumi.Input<String>? standbyDns;
+
   /// Standby zone switch ID
   final pulumi.Input<String>? standbyVswitchId;
+
   /// Standby zone switch IP address
   final pulumi.Input<String>? standbyVswitchIp;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
 
@@ -94,22 +108,65 @@ class PrivateDnsArgs {
 
   factory PrivateDnsArgs.fromMap(Map<String, dynamic> map) {
     return PrivateDnsArgs(
-      accessInstanceName: (map['accessInstanceName'] as String).input(),
-      domainNameLists: map['domainNameLists'] == null ? null : ((map['domainNameLists']! as List).cast<String>()).input(),
-      firewallTypes: ((map['firewallTypes'] as List).cast<String>()).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as int).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      primaryDns: map['primaryDns'] == null ? null : (map['primaryDns']! as String).input(),
-      primaryVswitchId: map['primaryVswitchId'] == null ? null : (map['primaryVswitchId']! as String).input(),
-      primaryVswitchIp: map['primaryVswitchIp'] == null ? null : (map['primaryVswitchIp']! as String).input(),
-      privateDnsType: (map['privateDnsType'] as String).input(),
-      regionNo: (map['regionNo'] as String).input(),
-      standbyDns: map['standbyDns'] == null ? null : (map['standbyDns']! as String).input(),
-      standbyVswitchId: map['standbyVswitchId'] == null ? null : (map['standbyVswitchId']! as String).input(),
-      standbyVswitchIp: map['standbyVswitchIp'] == null ? null : (map['standbyVswitchIp']! as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      accessInstanceName: pulumi.Input.fromValue(
+        map['accessInstanceName'] as String,
+      ),
+      domainNameLists: (() {
+        final guardedValue = map['domainNameLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      firewallTypes: pulumi.Input.fromValue(
+        (map['firewallTypes'] as List).cast<String>(),
+      ),
+      ipProtocol: (() {
+        final guardedValue = map['ipProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberUid: (() {
+        final guardedValue = map['memberUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      primaryDns: (() {
+        final guardedValue = map['primaryDns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryVswitchId: (() {
+        final guardedValue = map['primaryVswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryVswitchIp: (() {
+        final guardedValue = map['primaryVswitchIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsType: pulumi.Input.fromValue(map['privateDnsType'] as String),
+      regionNo: pulumi.Input.fromValue(map['regionNo'] as String),
+      standbyDns: (() {
+        final guardedValue = map['standbyDns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      standbyVswitchId: (() {
+        final guardedValue = map['standbyVswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      standbyVswitchIp: (() {
+        final guardedValue = map['standbyVswitchIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

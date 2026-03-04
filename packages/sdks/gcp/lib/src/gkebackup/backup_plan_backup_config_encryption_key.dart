@@ -8,20 +8,19 @@ class BackupPlanBackupConfigEncryptionKey {
 
   /// Creates a new [BackupPlanBackupConfigEncryptionKey].
   /// [gcpKmsEncryptionKey] Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
-  BackupPlanBackupConfigEncryptionKey({
-    required this.gcpKmsEncryptionKey,
-  });
+  BackupPlanBackupConfigEncryptionKey({required this.gcpKmsEncryptionKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gcpKmsEncryptionKey': gcpKmsEncryptionKey,
-    };
+    return <String, dynamic>{'gcpKmsEncryptionKey': gcpKmsEncryptionKey};
   }
 
-  factory BackupPlanBackupConfigEncryptionKey.fromMap(Map<String, dynamic> map) {
+  factory BackupPlanBackupConfigEncryptionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupPlanBackupConfigEncryptionKey(
-      gcpKmsEncryptionKey: (map['gcpKmsEncryptionKey'] as String).input(),
+      gcpKmsEncryptionKey: pulumi.Input.fromValue(
+        map['gcpKmsEncryptionKey'] as String,
+      ),
     );
   }
 }
-

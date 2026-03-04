@@ -6,8 +6,10 @@ class GetInstanceScratchDisk {
   /// Name with which the attached disk is accessible
   /// under `/dev/disk/by-id/`
   final pulumi.Input<String> deviceName;
+
   /// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
   final pulumi.Input<String> interface;
+
   /// The size of the image in gigabytes.
   final pulumi.Input<int> size;
 
@@ -31,10 +33,9 @@ class GetInstanceScratchDisk {
 
   factory GetInstanceScratchDisk.fromMap(Map<String, dynamic> map) {
     return GetInstanceScratchDisk(
-      deviceName: (map['deviceName'] as String).input(),
-      interface: (map['interface'] as String).input(),
-      size: (map['size'] as int).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      interface: pulumi.Input.fromValue(map['interface'] as String),
+      size: pulumi.Input.fromValue(map['size'] as int),
     );
   }
 }
-

@@ -7,21 +7,28 @@ import 'get_access_groups_group.dart';
 class GetAccessGroupsResult {
   /// (Available in 1.95.0+) The name of the AccessGroup.
   final String? accessGroupName;
+
   /// (Available in 1.95.0+) The type of the AccessGroup.
   final String? accessGroupType;
+
   /// Description of the AccessGroup.
   final String? description;
   final String? fileSystemType;
+
   /// A list of AccessGroups. Each element contains the following attributes:
   final List<GetAccessGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `<access_group_id>:<file_system_type>`.
+
+  /// A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `&lt;access_group_id&gt;:&lt;file_system_type&gt;`.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of AccessGroup names.
   final List<String> names;
   final String? outputFile;
+
   /// (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `access_group_type` after version 1.95.0.
   final String? type;
   final bool? useutcDateTime;
@@ -33,7 +40,7 @@ class GetAccessGroupsResult {
   /// [fileSystemType] Optional.
   /// [groups] A list of AccessGroups. Each element contains the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `<access_group_id>:<file_system_type>`.
+  /// [ids] A list of AccessGroup IDs, the value is set to `names`. After version 1.95.0 the item value as `&lt;access_group_id&gt;:&lt;file_system_type&gt;`.
   /// [nameRegex] Optional.
   /// [names] A list of AccessGroup names.
   /// [outputFile] Optional.
@@ -60,7 +67,11 @@ class GetAccessGroupsResult {
       'accessGroupType': ?accessGroupType,
       'description': ?description,
       'fileSystemType': ?fileSystemType,
-      'groups': pulumi.Input.encodeList<GetAccessGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<GetAccessGroupsGroup, Map<String, dynamic>>(
+            groups,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -73,19 +84,55 @@ class GetAccessGroupsResult {
 
   factory GetAccessGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetAccessGroupsResult(
-      accessGroupName: map['accessGroupName'] == null ? null : map['accessGroupName']! as String,
-      accessGroupType: map['accessGroupType'] == null ? null : map['accessGroupType']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      fileSystemType: map['fileSystemType'] == null ? null : map['fileSystemType']! as String,
-      groups: pulumi.Input.decodeList<GetAccessGroupsGroup>(map['groups'], (value) => GetAccessGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      accessGroupName: (() {
+        final guardedValue = map['accessGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      accessGroupType: (() {
+        final guardedValue = map['accessGroupType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      fileSystemType: (() {
+        final guardedValue = map['fileSystemType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groups: pulumi.Input.decodeList<GetAccessGroupsGroup>(
+        map['groups']!,
+        (value) => GetAccessGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      type: map['type'] == null ? null : map['type']! as String,
-      useutcDateTime: map['useutcDateTime'] == null ? null : map['useutcDateTime']! as bool,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      useutcDateTime: (() {
+        final guardedValue = map['useutcDateTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
     );
   }
 }
-

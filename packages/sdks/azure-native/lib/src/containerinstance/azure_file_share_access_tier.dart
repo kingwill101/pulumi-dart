@@ -5,16 +5,15 @@ enum AzureFileShareAccessTier {
   valuePremium("Premium"),
   valueTransactionOptimized("TransactionOptimized");
 
-  const AzureFileShareAccessTier(this.value);
-  final String value;
+  const AzureFileShareAccessTier(this.wireValue);
+  final String wireValue;
 
   static AzureFileShareAccessTier fromValue(String value) {
     for (final item in AzureFileShareAccessTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureFileShareAccessTier value: $value');
   }
 }
-

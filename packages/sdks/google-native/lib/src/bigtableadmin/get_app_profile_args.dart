@@ -31,10 +31,13 @@ class GetAppProfileArgs {
 
   factory GetAppProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetAppProfileArgs(
-      appProfileId: (map['appProfileId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      appProfileId: pulumi.Input.fromValue(map['appProfileId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

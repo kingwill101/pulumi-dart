@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse {
   /// The name of the rollout step;
   final pulumi.Input<String> displayName;
+
   /// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
   final pulumi.Input<String> minDuration;
+
   /// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
   final pulumi.Input<int> trafficPercent;
 
@@ -29,12 +31,13 @@ class GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse(
-      displayName: (map['displayName'] as String).input(),
-      minDuration: (map['minDuration'] as String).input(),
-      trafficPercent: (map['trafficPercent'] as int).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      minDuration: pulumi.Input.fromValue(map['minDuration'] as String),
+      trafficPercent: pulumi.Input.fromValue(map['trafficPercent'] as int),
     );
   }
 }
-

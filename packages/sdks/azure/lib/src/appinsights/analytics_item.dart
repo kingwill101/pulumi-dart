@@ -199,7 +199,7 @@ import 'analytics_item_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2015-05-01
@@ -212,7 +212,7 @@ import 'analytics_item_state.dart';
 /// $ pulumi import azure:appinsights/analyticsItem:AnalyticsItem example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Insights/components/mycomponent1/analyticsItems/11111111-1111-1111-1111-111111111111
 /// ```
 ///
-/// > **Please Note:** This is a provider Unique ID matching the format: `{appInsightsID}/analyticsItems/{itemId}` for items with `scope` set to `shared`, or  `{appInsightsID}/myAnalyticsItems/{itemId}` for items with `scope` set to `user`
+/// &gt; **Please Note:** This is a provider Unique ID matching the format: `{appInsightsID}/analyticsItems/{itemId}` for items with `scope` set to `shared`, or  `{appInsightsID}/myAnalyticsItems/{itemId}` for items with `scope` set to `user`
 ///
 /// To find the Analytics Item ID you can query the REST API using the [`az rest` CLI command](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest), e.g.
 ///
@@ -222,20 +222,28 @@ import 'analytics_item_state.dart';
 class AnalyticsItem extends pulumi.CustomResource {
   /// The ID of the Application Insights component on which the Analytics Item exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationInsightsId;
+
   /// The content for the Analytics Item, for example the query text if `type` is `query`.
   late final pulumi.Output<String> content;
+
   /// The alias to use for the function. Required when `type` is `function`.
   late final pulumi.Output<String?> functionAlias;
+
   /// Specifies the name of the Application Insights Analytics Item. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The scope for the Analytics Item. Can be `shared` or `user`. Changing this forces a new resource to be created. Must be `shared` for functions.
   late final pulumi.Output<String> scope;
+
   /// A string containing the time the Analytics Item was created.
   late final pulumi.Output<String> timeCreated;
+
   /// A string containing the time the Analytics Item was last modified.
   late final pulumi.Output<String> timeModified;
+
   /// The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
+
   /// A string indicating the version of the query format
   late final pulumi.Output<String> version;
 
@@ -248,20 +256,20 @@ class AnalyticsItem extends pulumi.CustomResource {
     AnalyticsItemArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/analyticsItem:AnalyticsItem',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.content = registerOutput<String>('content');
-    this.functionAlias = registerOutput<String?>('functionAlias');
+         'azure:appinsights/analyticsItem:AnalyticsItem',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    content = registerOutput<String>('content');
+    functionAlias = registerOutput<String?>('functionAlias');
     this.name = registerOutput<String>('name');
-    this.scope = registerOutput<String>('scope');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.timeModified = registerOutput<String>('timeModified');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    scope = registerOutput<String>('scope');
+    timeCreated = registerOutput<String>('timeCreated');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [AnalyticsItem] resource's state with the given [name] and [id].
@@ -282,19 +290,19 @@ class AnalyticsItem extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/analyticsItem:AnalyticsItem',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.content = registerOutput<String>('content');
-    this.functionAlias = registerOutput<String?>('functionAlias');
+         'azure:appinsights/analyticsItem:AnalyticsItem',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    content = registerOutput<String>('content');
+    functionAlias = registerOutput<String?>('functionAlias');
     this.name = registerOutput<String>('name');
-    this.scope = registerOutput<String>('scope');
-    this.timeCreated = registerOutput<String>('timeCreated');
-    this.timeModified = registerOutput<String>('timeModified');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    scope = registerOutput<String>('scope');
+    timeCreated = registerOutput<String>('timeCreated');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

@@ -7,10 +7,12 @@ import 'service_reference.dart';
 class WebhookClientConfig {
   /// `caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
   final pulumi.Input<String>? caBundle;
+
   /// `service` is a reference to the service for this webhook. Either `service` or `url` must be specified.
   ///
   /// If the webhook is running within the cluster, then you should use `service`.
   final pulumi.Input<ServiceReference>? service;
+
   /// `url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
   ///
   /// The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.
@@ -28,26 +30,41 @@ class WebhookClientConfig {
   /// [caBundle] `caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
   /// [service] `service` is a reference to the service for this webhook. Either `service` or `url` must be specified.
   /// [url] `url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.
-  WebhookClientConfig({
-    this.caBundle,
-    this.service,
-    this.url,
-  });
+  WebhookClientConfig({this.caBundle, this.service, this.url});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'caBundle': ?caBundle,
-      'service': ?pulumi.Input.mapOptionalInputValue<ServiceReference, Map<String, dynamic>>(service, (value) => value.toMap()),
+      'service':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceReference,
+            Map<String, dynamic>
+          >(service, (value) => value.toMap()),
       'url': ?url,
     };
   }
 
   factory WebhookClientConfig.fromMap(Map<String, dynamic> map) {
     return WebhookClientConfig(
-      caBundle: map['caBundle'] == null ? null : (map['caBundle']! as String).input(),
-      service: map['service'] == null ? null : (ServiceReference.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      caBundle: (() {
+        final guardedValue = map['caBundle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'replication_config_state.dart';
 
 /// Provides a DMS Serverless replication config resource.
 ///
-/// > **NOTE:** Changing most arguments will stop the replication if it is running. You can set `start_replication` to resume the replication afterwards.
+/// &gt; **NOTE:** Changing most arguments will stop the replication if it is running. You can set `start_replication` to resume the replication afterwards.
 ///
 /// ## Example Usage
 ///
@@ -203,30 +203,43 @@ import 'replication_config_state.dart';
 class ReplicationConfig extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) for the serverless replication config.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for provisioning an DMS Serverless replication.
   late final pulumi.Output<ReplicationConfigComputeConfig> computeConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Unique identifier that you want to use to create the config.
   late final pulumi.Output<String> replicationConfigIdentifier;
+
   /// An escaped JSON string that are used to provision this replication configuration. For example, [Change processing tuning settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.ChangeProcessingTuning.html)
   late final pulumi.Output<String> replicationSettings;
+
   /// The migration type. Can be one of `full-load | cdc | full-load-and-cdc`.
   late final pulumi.Output<String> replicationType;
+
   /// Unique value or name that you set for a given resource that can be used to construct an Amazon Resource Name (ARN) for that resource. For more information, see [Fine-grained access control using resource names and tags](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.FineGrainedAccess)
   late final pulumi.Output<String> resourceIdentifier;
+
   /// The Amazon Resource Name (ARN) string that uniquely identifies the source endpoint.
   late final pulumi.Output<String> sourceEndpointArn;
+
   /// Whether to run or stop the serverless replication, default is false.
   late final pulumi.Output<bool?> startReplication;
+
   /// JSON settings for specifying supplemental data. For more information see [Specifying supplemental data for task settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
   late final pulumi.Output<String?> supplementalSettings;
+
   /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
   late final pulumi.Output<String> tableMappings;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
   late final pulumi.Output<String> targetEndpointArn;
 
@@ -239,25 +252,29 @@ class ReplicationConfig extends pulumi.CustomResource {
     ReplicationConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dms/replicationConfig:ReplicationConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.computeConfig = registerOutput<ReplicationConfigComputeConfig>('computeConfig');
-    this.region = registerOutput<String>('region');
-    this.replicationConfigIdentifier = registerOutput<String>('replicationConfigIdentifier');
-    this.replicationSettings = registerOutput<String>('replicationSettings');
-    this.replicationType = registerOutput<String>('replicationType');
-    this.resourceIdentifier = registerOutput<String>('resourceIdentifier');
-    this.sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
-    this.startReplication = registerOutput<bool?>('startReplication');
-    this.supplementalSettings = registerOutput<String?>('supplementalSettings');
-    this.tableMappings = registerOutput<String>('tableMappings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetEndpointArn = registerOutput<String>('targetEndpointArn');
+         'aws:dms/replicationConfig:ReplicationConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    computeConfig = registerOutput<ReplicationConfigComputeConfig>(
+      'computeConfig',
+    );
+    region = registerOutput<String>('region');
+    replicationConfigIdentifier = registerOutput<String>(
+      'replicationConfigIdentifier',
+    );
+    replicationSettings = registerOutput<String>('replicationSettings');
+    replicationType = registerOutput<String>('replicationType');
+    resourceIdentifier = registerOutput<String>('resourceIdentifier');
+    sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
+    startReplication = registerOutput<bool?>('startReplication');
+    supplementalSettings = registerOutput<String?>('supplementalSettings');
+    tableMappings = registerOutput<String>('tableMappings');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 
   /// Gets an existing [ReplicationConfig] resource's state with the given [name] and [id].
@@ -278,24 +295,28 @@ class ReplicationConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dms/replicationConfig:ReplicationConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.computeConfig = registerOutput<ReplicationConfigComputeConfig>('computeConfig');
-    this.region = registerOutput<String>('region');
-    this.replicationConfigIdentifier = registerOutput<String>('replicationConfigIdentifier');
-    this.replicationSettings = registerOutput<String>('replicationSettings');
-    this.replicationType = registerOutput<String>('replicationType');
-    this.resourceIdentifier = registerOutput<String>('resourceIdentifier');
-    this.sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
-    this.startReplication = registerOutput<bool?>('startReplication');
-    this.supplementalSettings = registerOutput<String?>('supplementalSettings');
-    this.tableMappings = registerOutput<String>('tableMappings');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetEndpointArn = registerOutput<String>('targetEndpointArn');
+         'aws:dms/replicationConfig:ReplicationConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    computeConfig = registerOutput<ReplicationConfigComputeConfig>(
+      'computeConfig',
+    );
+    region = registerOutput<String>('region');
+    replicationConfigIdentifier = registerOutput<String>(
+      'replicationConfigIdentifier',
+    );
+    replicationSettings = registerOutput<String>('replicationSettings');
+    replicationType = registerOutput<String>('replicationType');
+    resourceIdentifier = registerOutput<String>('resourceIdentifier');
+    sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
+    startReplication = registerOutput<bool?>('startReplication');
+    supplementalSettings = registerOutput<String?>('supplementalSettings');
+    tableMappings = registerOutput<String>('tableMappings');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 }

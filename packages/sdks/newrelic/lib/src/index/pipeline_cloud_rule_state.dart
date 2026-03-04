@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineCloudRuleState {
   /// The account ID where the Pipeline Cloud Rule will be created.
   final pulumi.Input<String>? accountId;
+
   /// Additional information about the rule.
   final pulumi.Input<String>? description;
+
   /// The name of the rule. This must be unique within an account.
   final pulumi.Input<String>? name;
+
   /// The NRQL query that defines the data to be processed by this Pipeline Cloud Rule.
   final pulumi.Input<String>? nrql;
 
@@ -36,11 +39,26 @@ class PipelineCloudRuleState {
 
   factory PipelineCloudRuleState.fromMap(Map<String, dynamic> map) {
     return PipelineCloudRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nrql: map['nrql'] == null ? null : (map['nrql']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nrql: (() {
+        final guardedValue = map['nrql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

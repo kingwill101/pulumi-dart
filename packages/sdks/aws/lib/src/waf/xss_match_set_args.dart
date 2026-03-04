@@ -10,29 +10,52 @@ import 'xss_match_set_xss_match_tuple.dart';
 class XssMatchSetArgs {
   /// The name or description of the SizeConstraintSet.
   final pulumi.Input<String>? name;
+
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
   final pulumi.Input<List<XssMatchSetXssMatchTuple>>? xssMatchTuples;
 
   /// Creates a new [XssMatchSetArgs].
   /// [name] The name or description of the SizeConstraintSet.
   /// [xssMatchTuples] The parts of web requests that you want to inspect for cross-site scripting attacks.
-  XssMatchSetArgs({
-    this.name,
-    this.xssMatchTuples,
-  });
+  XssMatchSetArgs({this.name, this.xssMatchTuples});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'xssMatchTuples': ?pulumi.Input.mapOptionalInputValue<List<XssMatchSetXssMatchTuple>, List<Map<String, dynamic>>>(xssMatchTuples, (value) => pulumi.Input.encodeList<XssMatchSetXssMatchTuple, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'xssMatchTuples':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<XssMatchSetXssMatchTuple>,
+            List<Map<String, dynamic>>
+          >(
+            xssMatchTuples,
+            (value) =>
+                pulumi.Input.encodeList<
+                  XssMatchSetXssMatchTuple,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory XssMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return XssMatchSetArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      xssMatchTuples: map['xssMatchTuples'] == null ? null : ((pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(map['xssMatchTuples']!, (value) => XssMatchSetXssMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      xssMatchTuples: (() {
+        final guardedValue = map['xssMatchTuples'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<XssMatchSetXssMatchTuple>(
+            guardedValue,
+            (value) => XssMatchSetXssMatchTuple.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

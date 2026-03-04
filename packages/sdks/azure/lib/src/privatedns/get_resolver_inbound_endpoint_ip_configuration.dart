@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverInboundEndpointIpConfiguration {
   /// The private IP address of the IP configuration.
   final pulumi.Input<String> privateIpAddress;
+
   /// The private IP address allocation method.
   final pulumi.Input<String> privateIpAllocationMethod;
+
   /// The subnet ID of the IP configuration.
   final pulumi.Input<String> subnetId;
 
@@ -28,12 +30,17 @@ class GetResolverInboundEndpointIpConfiguration {
     };
   }
 
-  factory GetResolverInboundEndpointIpConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetResolverInboundEndpointIpConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResolverInboundEndpointIpConfiguration(
-      privateIpAddress: (map['privateIpAddress'] as String).input(),
-      privateIpAllocationMethod: (map['privateIpAllocationMethod'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      privateIpAddress: pulumi.Input.fromValue(
+        map['privateIpAddress'] as String,
+      ),
+      privateIpAllocationMethod: pulumi.Input.fromValue(
+        map['privateIpAllocationMethod'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

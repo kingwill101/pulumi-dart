@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VersionDetailsResponse {
   /// Version expiry date.
   final pulumi.Input<String>? expiryDate;
+
   /// A value indicating whether security update required.
   final pulumi.Input<String>? status;
+
   /// The agent version.
   final pulumi.Input<String>? version;
 
@@ -15,11 +17,7 @@ class VersionDetailsResponse {
   /// [expiryDate] Version expiry date.
   /// [status] A value indicating whether security update required.
   /// [version] The agent version.
-  VersionDetailsResponse({
-    this.expiryDate,
-    this.status,
-    this.version,
-  });
+  VersionDetailsResponse({this.expiryDate, this.status, this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class VersionDetailsResponse {
 
   factory VersionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VersionDetailsResponse(
-      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      expiryDate: (() {
+        final guardedValue = map['expiryDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

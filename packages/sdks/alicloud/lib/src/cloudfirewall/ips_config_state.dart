@@ -8,23 +8,29 @@ class IpsConfigState {
   /// - 1: Open.
   /// - 0: Closed (Default).
   final pulumi.Input<int>? basicRules;
+
   /// Threat intelligence. Value:
   /// - 1: Open.
   /// - 0: Closed (Default).
   final pulumi.Input<int>? ctiRules;
+
   /// Language
   final pulumi.Input<String>? lang;
+
   /// Sensitive data detection Daily detection traffic limit. Defaults to 0.
   final pulumi.Input<int>? maxSdl;
+
   /// Virtual patch switch. Value:
   /// - 1: Open.
   /// - 0: Closed (Default).
   final pulumi.Input<int>? patchRules;
+
   /// The IPS rule Group. Value:
   /// - 1: loose rule Group.
   /// - 2: Medium rule Group.
   /// - 3: Strict rule groups.
   final pulumi.Input<int>? ruleClass;
+
   /// IPS defense mode. Value:
   /// - 1: Intercept mode.
   /// - 0: Observation mode (Default).
@@ -62,14 +68,41 @@ class IpsConfigState {
 
   factory IpsConfigState.fromMap(Map<String, dynamic> map) {
     return IpsConfigState(
-      basicRules: map['basicRules'] == null ? null : (map['basicRules']! as int).input(),
-      ctiRules: map['ctiRules'] == null ? null : (map['ctiRules']! as int).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      maxSdl: map['maxSdl'] == null ? null : (map['maxSdl']! as int).input(),
-      patchRules: map['patchRules'] == null ? null : (map['patchRules']! as int).input(),
-      ruleClass: map['ruleClass'] == null ? null : (map['ruleClass']! as int).input(),
-      runMode: map['runMode'] == null ? null : (map['runMode']! as int).input(),
+      basicRules: (() {
+        final guardedValue = map['basicRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ctiRules: (() {
+        final guardedValue = map['ctiRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxSdl: (() {
+        final guardedValue = map['maxSdl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      patchRules: (() {
+        final guardedValue = map['patchRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ruleClass: (() {
+        final guardedValue = map['ruleClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      runMode: (() {
+        final guardedValue = map['runMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

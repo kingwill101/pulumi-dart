@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMavenArtifactsArgs {
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
+
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
 
@@ -34,10 +36,13 @@ class GetMavenArtifactsArgs {
 
   factory GetMavenArtifactsArgs.fromMap(Map<String, dynamic> map) {
     return GetMavenArtifactsArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repositoryId: (map['repositoryId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );
   }
 }
-

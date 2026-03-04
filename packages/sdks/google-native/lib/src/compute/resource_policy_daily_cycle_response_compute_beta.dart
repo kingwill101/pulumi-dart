@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicyDailyCycleResponseComputeBeta {
   /// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
   final pulumi.Input<int> daysInCycle;
+
   /// [Output only] A predetermined duration for the window, automatically chosen to be the smallest possible in the given scenario.
   final pulumi.Input<String> duration;
+
   /// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
   final pulumi.Input<String> startTime;
 
@@ -29,12 +31,13 @@ class ResourcePolicyDailyCycleResponseComputeBeta {
     };
   }
 
-  factory ResourcePolicyDailyCycleResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyDailyCycleResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyDailyCycleResponseComputeBeta(
-      daysInCycle: (map['daysInCycle'] as int).input(),
-      duration: (map['duration'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      daysInCycle: pulumi.Input.fromValue(map['daysInCycle'] as int),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

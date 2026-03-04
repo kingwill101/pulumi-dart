@@ -3,16 +3,17 @@ enum TpmAttestationAuthenticationType {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const TpmAttestationAuthenticationType(this.value);
-  final String value;
+  const TpmAttestationAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static TpmAttestationAuthenticationType fromValue(String value) {
     for (final item in TpmAttestationAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TpmAttestationAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown TpmAttestationAuthenticationType value: $value',
+    );
   }
 }
-

@@ -4,16 +4,15 @@ enum VpnLinkConnectionMode {
   valueResponderOnly("ResponderOnly"),
   valueInitiatorOnly("InitiatorOnly");
 
-  const VpnLinkConnectionMode(this.value);
-  final String value;
+  const VpnLinkConnectionMode(this.wireValue);
+  final String wireValue;
 
   static VpnLinkConnectionMode fromValue(String value) {
     for (final item in VpnLinkConnectionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnLinkConnectionMode value: $value');
   }
 }
-

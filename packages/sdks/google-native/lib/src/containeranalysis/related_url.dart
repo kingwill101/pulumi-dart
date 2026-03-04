@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelatedUrl {
   /// Label to describe usage of the URL.
   final pulumi.Input<String>? label;
+
   /// Specific URL associated with the resource.
   final pulumi.Input<String>? url;
 
   /// Creates a new [RelatedUrl].
   /// [label] Label to describe usage of the URL.
   /// [url] Specific URL associated with the resource.
-  RelatedUrl({
-    this.label,
-    this.url,
-  });
+  RelatedUrl({this.label, this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'label': ?label,
-      'url': ?url,
-    };
+    return <String, dynamic>{'label': ?label, 'url': ?url};
   }
 
   factory RelatedUrl.fromMap(Map<String, dynamic> map) {
     return RelatedUrl(
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

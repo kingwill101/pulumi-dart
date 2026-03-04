@@ -3,16 +3,15 @@ enum ReplicationMode {
   full("Full"),
   shallow("Shallow");
 
-  const ReplicationMode(this.value);
-  final String value;
+  const ReplicationMode(this.wireValue);
+  final String wireValue;
 
   static ReplicationMode fromValue(String value) {
     for (final item in ReplicationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReplicationMode value: $value');
   }
 }
-

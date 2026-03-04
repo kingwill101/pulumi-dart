@@ -13,23 +13,20 @@ class GetModelArgs {
   /// Creates a new [GetModelArgs].
   /// [modelId] Required.
   /// [project] Optional.
-  GetModelArgs({
-    required this.modelId,
-    this.project,
-  });
+  GetModelArgs({required this.modelId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'modelId': modelId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'modelId': modelId, 'project': ?project};
   }
 
   factory GetModelArgs.fromMap(Map<String, dynamic> map) {
     return GetModelArgs(
-      modelId: (map['modelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

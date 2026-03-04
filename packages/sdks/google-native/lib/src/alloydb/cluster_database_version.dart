@@ -5,16 +5,15 @@ enum ClusterDatabaseVersion {
   postgres14("POSTGRES_14"),
   postgres15("POSTGRES_15");
 
-  const ClusterDatabaseVersion(this.value);
-  final String value;
+  const ClusterDatabaseVersion(this.wireValue);
+  final String wireValue;
 
   static ClusterDatabaseVersion fromValue(String value) {
     for (final item in ClusterDatabaseVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterDatabaseVersion value: $value');
   }
 }
-

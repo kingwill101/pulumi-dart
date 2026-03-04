@@ -9,16 +9,22 @@ enum GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy {
   exponentialBackoff("EXPONENTIAL_BACKOFF"),
   restartIntegrationWithBackoff("RESTART_INTEGRATION_WITH_BACKOFF");
 
-  const GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy value: $value',
+    );
   }
 }
-

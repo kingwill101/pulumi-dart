@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentDaprComponentMetadata {
   /// The name of the Metadata configuration item.
   final pulumi.Input<String> name;
+
   /// The name of a secret specified in the `secrets` block that contains the value for this metadata configuration item.
   final pulumi.Input<String>? secretName;
+
   /// The value for this metadata configuration item.
   final pulumi.Input<String>? value;
 
@@ -30,10 +32,17 @@ class EnvironmentDaprComponentMetadata {
 
   factory EnvironmentDaprComponentMetadata.fromMap(Map<String, dynamic> map) {
     return EnvironmentDaprComponentMetadata(
-      name: (map['name'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      secretName: (() {
+        final guardedValue = map['secretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

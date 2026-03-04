@@ -3,16 +3,15 @@ enum ResourceTypeEndpointKind {
   managed("Managed"),
   direct("Direct");
 
-  const ResourceTypeEndpointKind(this.value);
-  final String value;
+  const ResourceTypeEndpointKind(this.wireValue);
+  final String wireValue;
 
   static ResourceTypeEndpointKind fromValue(String value) {
     for (final item in ResourceTypeEndpointKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceTypeEndpointKind value: $value');
   }
 }
-

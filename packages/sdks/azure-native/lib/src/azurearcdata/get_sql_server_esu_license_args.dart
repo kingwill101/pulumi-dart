@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlServerEsuLicenseArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server ESU License
   final pulumi.Input<String> sqlServerEsuLicenseName;
 
@@ -29,9 +30,12 @@ class GetSqlServerEsuLicenseArgs {
 
   factory GetSqlServerEsuLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerEsuLicenseArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerEsuLicenseName: (map['sqlServerEsuLicenseName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerEsuLicenseName: pulumi.Input.fromValue(
+        map['sqlServerEsuLicenseName'] as String,
+      ),
     );
   }
 }
-

@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GenaiKnowledgeBaseLastIndexingJob {
   /// Number of completed datasources in the last indexing job
   final pulumi.Input<int>? completedDatasources;
+
   /// Created At timestamp for the last indexing job
   final pulumi.Input<String>? createdAt;
+
   /// Datasource UUIDs for the last indexing job
   final pulumi.Input<List<String>>? dataSourceUuids;
+
   /// Timestamp when the last indexing job finished
   final pulumi.Input<String>? finishedAt;
+
   /// UUID  of the Knowledge Base for the last indexing job
   final pulumi.Input<String>? knowledgeBaseUuid;
+
   /// Phase of the last indexing job
   final pulumi.Input<String>? phase;
+
   /// Timestamp when the last indexing job started
   final pulumi.Input<String>? startedAt;
+
   /// Number of tokens processed in the last indexing job
   final pulumi.Input<int>? tokens;
+
   /// Total number of datasources in the last indexing job
   final pulumi.Input<int>? totalDatasources;
+
   /// Timestamp when the last indexing job updated
   final pulumi.Input<String>? updatedAt;
+
   /// UUID  of the last indexing job
   final pulumi.Input<String>? uuid;
 
@@ -70,18 +80,61 @@ class GenaiKnowledgeBaseLastIndexingJob {
 
   factory GenaiKnowledgeBaseLastIndexingJob.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseLastIndexingJob(
-      completedDatasources: map['completedDatasources'] == null ? null : (map['completedDatasources']! as int).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      dataSourceUuids: map['dataSourceUuids'] == null ? null : ((map['dataSourceUuids']! as List).cast<String>()).input(),
-      finishedAt: map['finishedAt'] == null ? null : (map['finishedAt']! as String).input(),
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid']! as String).input(),
-      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
-      startedAt: map['startedAt'] == null ? null : (map['startedAt']! as String).input(),
-      tokens: map['tokens'] == null ? null : (map['tokens']! as int).input(),
-      totalDatasources: map['totalDatasources'] == null ? null : (map['totalDatasources']! as int).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      completedDatasources: (() {
+        final guardedValue = map['completedDatasources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSourceUuids: (() {
+        final guardedValue = map['dataSourceUuids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      finishedAt: (() {
+        final guardedValue = map['finishedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      knowledgeBaseUuid: (() {
+        final guardedValue = map['knowledgeBaseUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phase: (() {
+        final guardedValue = map['phase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startedAt: (() {
+        final guardedValue = map['startedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokens: (() {
+        final guardedValue = map['tokens'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalDatasources: (() {
+        final guardedValue = map['totalDatasources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

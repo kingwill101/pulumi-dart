@@ -3,16 +3,15 @@ enum AddressFamilyType {
   valueIPv4("IPv4"),
   valueIPv6("IPv6");
 
-  const AddressFamilyType(this.value);
-  final String value;
+  const AddressFamilyType(this.wireValue);
+  final String wireValue;
 
   static AddressFamilyType fromValue(String value) {
     for (final item in AddressFamilyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressFamilyType value: $value');
   }
 }
-

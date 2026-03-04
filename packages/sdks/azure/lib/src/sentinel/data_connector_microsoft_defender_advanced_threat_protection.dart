@@ -211,14 +211,17 @@ import 'data_connector_microsoft_defender_advanced_threat_protection_state.dart'
 /// ```sh
 /// $ pulumi import azure:sentinel/dataConnectorMicrosoftDefenderAdvancedThreatProtection:DataConnectorMicrosoftDefenderAdvancedThreatProtection example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.OperationalInsights/workspaces/workspace1/providers/Microsoft.SecurityInsights/dataConnectors/dc1
 /// ```
-class DataConnectorMicrosoftDefenderAdvancedThreatProtection extends pulumi.CustomResource {
+class DataConnectorMicrosoftDefenderAdvancedThreatProtection
+    extends pulumi.CustomResource {
   /// The ID of the Log Analytics Workspace that this Microsoft Defender Advanced Threat Protection Data Connector resides in. Changing this forces a new Microsoft Defender Advanced Threat Protection Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Microsoft Defender Advanced Threat Protection Data Connector. Changing this forces a new Microsoft Defender Advanced Threat Protection Data Connector to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the tenant that this Microsoft Defender Advanced Threat Protection Data Connector connects to. Changing this forces a new Microsoft Defender Advanced Threat Protection Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   late final pulumi.Output<String> tenantId;
 
   /// Creates a new [DataConnectorMicrosoftDefenderAdvancedThreatProtection].
@@ -230,14 +233,14 @@ class DataConnectorMicrosoftDefenderAdvancedThreatProtection extends pulumi.Cust
     DataConnectorMicrosoftDefenderAdvancedThreatProtectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorMicrosoftDefenderAdvancedThreatProtection:DataConnectorMicrosoftDefenderAdvancedThreatProtection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorMicrosoftDefenderAdvancedThreatProtection:DataConnectorMicrosoftDefenderAdvancedThreatProtection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [DataConnectorMicrosoftDefenderAdvancedThreatProtection] resource's state with the given [name] and [id].
@@ -258,13 +261,13 @@ class DataConnectorMicrosoftDefenderAdvancedThreatProtection extends pulumi.Cust
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorMicrosoftDefenderAdvancedThreatProtection:DataConnectorMicrosoftDefenderAdvancedThreatProtection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorMicrosoftDefenderAdvancedThreatProtection:DataConnectorMicrosoftDefenderAdvancedThreatProtection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

@@ -11,9 +11,7 @@ class PreventionJobTriggerTriggerSchedule {
 
   /// Creates a new [PreventionJobTriggerTriggerSchedule].
   /// [recurrencePeriodDuration] With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
-  PreventionJobTriggerTriggerSchedule({
-    this.recurrencePeriodDuration,
-  });
+  PreventionJobTriggerTriggerSchedule({this.recurrencePeriodDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,10 +19,15 @@ class PreventionJobTriggerTriggerSchedule {
     };
   }
 
-  factory PreventionJobTriggerTriggerSchedule.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerTriggerSchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerTriggerSchedule(
-      recurrencePeriodDuration: map['recurrencePeriodDuration'] == null ? null : (map['recurrencePeriodDuration']! as String).input(),
+      recurrencePeriodDuration: (() {
+        final guardedValue = map['recurrencePeriodDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

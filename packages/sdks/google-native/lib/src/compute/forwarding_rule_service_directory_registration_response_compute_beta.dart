@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ForwardingRuleServiceDirectoryRegistrationResponseComputeBeta {
   /// Service Directory namespace to register the forwarding rule under.
   final pulumi.Input<String> namespace;
+
   /// Service Directory service to register the forwarding rule under.
   final pulumi.Input<String> service;
+
   /// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
   final pulumi.Input<String> serviceDirectoryRegion;
 
@@ -29,12 +31,15 @@ class ForwardingRuleServiceDirectoryRegistrationResponseComputeBeta {
     };
   }
 
-  factory ForwardingRuleServiceDirectoryRegistrationResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ForwardingRuleServiceDirectoryRegistrationResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ForwardingRuleServiceDirectoryRegistrationResponseComputeBeta(
-      namespace: (map['namespace'] as String).input(),
-      service: (map['service'] as String).input(),
-      serviceDirectoryRegion: (map['serviceDirectoryRegion'] as String).input(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
+      serviceDirectoryRegion: pulumi.Input.fromValue(
+        map['serviceDirectoryRegion'] as String,
+      ),
     );
   }
 }
-

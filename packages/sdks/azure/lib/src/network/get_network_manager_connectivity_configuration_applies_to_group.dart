@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagerConnectivityConfigurationAppliesToGroup {
   /// Whether global mesh is supported.
   final pulumi.Input<bool> globalMeshEnabled;
+
   /// The group connectivity type.
   final pulumi.Input<String> groupConnectivity;
+
   /// The ID of the Network Manager Network Group.
   final pulumi.Input<String> networkGroupId;
+
   /// Whether hub gateway is used.
   final pulumi.Input<bool> useHubGateway;
 
@@ -33,13 +36,18 @@ class GetNetworkManagerConnectivityConfigurationAppliesToGroup {
     };
   }
 
-  factory GetNetworkManagerConnectivityConfigurationAppliesToGroup.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkManagerConnectivityConfigurationAppliesToGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkManagerConnectivityConfigurationAppliesToGroup(
-      globalMeshEnabled: (map['globalMeshEnabled'] as bool).input(),
-      groupConnectivity: (map['groupConnectivity'] as String).input(),
-      networkGroupId: (map['networkGroupId'] as String).input(),
-      useHubGateway: (map['useHubGateway'] as bool).input(),
+      globalMeshEnabled: pulumi.Input.fromValue(
+        map['globalMeshEnabled'] as bool,
+      ),
+      groupConnectivity: pulumi.Input.fromValue(
+        map['groupConnectivity'] as String,
+      ),
+      networkGroupId: pulumi.Input.fromValue(map['networkGroupId'] as String),
+      useHubGateway: pulumi.Input.fromValue(map['useHubGateway'] as bool),
     );
   }
 }
-

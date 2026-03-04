@@ -9,20 +9,19 @@ class ImageTemplateAutoRunResponse {
 
   /// Creates a new [ImageTemplateAutoRunResponse].
   /// [state] Enabling this field will trigger an automatic build on image template creation or update.
-  ImageTemplateAutoRunResponse({
-    this.state,
-  });
+  ImageTemplateAutoRunResponse({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory ImageTemplateAutoRunResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateAutoRunResponse(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

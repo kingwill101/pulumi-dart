@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigManagementHierarchyControllerConfigGkehubV1alpha {
   /// Whether hierarchical resource quota is enabled in this cluster.
   final pulumi.Input<bool>? enableHierarchicalResourceQuota;
+
   /// Whether pod tree labels are enabled in this cluster.
   final pulumi.Input<bool>? enablePodTreeLabels;
+
   /// Whether Hierarchy Controller is enabled in this cluster.
   final pulumi.Input<bool>? enabled;
 
@@ -29,12 +31,25 @@ class ConfigManagementHierarchyControllerConfigGkehubV1alpha {
     };
   }
 
-  factory ConfigManagementHierarchyControllerConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ConfigManagementHierarchyControllerConfigGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigManagementHierarchyControllerConfigGkehubV1alpha(
-      enableHierarchicalResourceQuota: map['enableHierarchicalResourceQuota'] == null ? null : (map['enableHierarchicalResourceQuota']! as bool).input(),
-      enablePodTreeLabels: map['enablePodTreeLabels'] == null ? null : (map['enablePodTreeLabels']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enableHierarchicalResourceQuota: (() {
+        final guardedValue = map['enableHierarchicalResourceQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enablePodTreeLabels: (() {
+        final guardedValue = map['enablePodTreeLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

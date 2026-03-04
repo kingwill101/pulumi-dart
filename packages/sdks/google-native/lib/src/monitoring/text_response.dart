@@ -7,8 +7,10 @@ import 'text_style_response.dart';
 class TextResponse {
   /// The text content to be displayed.
   final pulumi.Input<String> content;
+
   /// How the text content is formatted.
   final pulumi.Input<String> format;
+
   /// How the text is styled
   final pulumi.Input<TextStyleResponse> style;
 
@@ -26,16 +28,23 @@ class TextResponse {
     return <String, dynamic>{
       'content': content,
       'format': format,
-      'style': pulumi.Input.mapInputValue<TextStyleResponse, Map<String, dynamic>>(style, (value) => value.toMap()),
+      'style':
+          pulumi.Input.mapInputValue<TextStyleResponse, Map<String, dynamic>>(
+            style,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory TextResponse.fromMap(Map<String, dynamic> map) {
     return TextResponse(
-      content: (map['content'] as String).input(),
-      format: (map['format'] as String).input(),
-      style: (TextStyleResponse.fromMap((map['style'] as Map).cast<String, dynamic>())).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      style: pulumi.Input.fromValue(
+        TextStyleResponse.fromMap(
+          (map['style']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

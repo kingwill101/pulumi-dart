@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscriptionFeatureRegistrationArgs {
   /// The feature name.
   final pulumi.Input<String> featureName;
+
   /// The provider namespace.
   final pulumi.Input<String> providerNamespace;
 
@@ -27,11 +28,14 @@ class GetSubscriptionFeatureRegistrationArgs {
     };
   }
 
-  factory GetSubscriptionFeatureRegistrationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSubscriptionFeatureRegistrationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSubscriptionFeatureRegistrationArgs(
-      featureName: (map['featureName'] as String).input(),
-      providerNamespace: (map['providerNamespace'] as String).input(),
+      featureName: pulumi.Input.fromValue(map['featureName'] as String),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
     );
   }
 }
-

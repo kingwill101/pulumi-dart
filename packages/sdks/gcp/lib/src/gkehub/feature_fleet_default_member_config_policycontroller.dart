@@ -6,7 +6,11 @@ import 'feature_fleet_default_member_config_policycontroller_policy_controller_h
 class FeatureFleetDefaultMemberConfigPolicycontroller {
   /// Configuration of Policy Controller
   /// Structure is documented below.
-  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig> policyControllerHubConfig;
+  final pulumi.Input<
+    FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
+  >
+  policyControllerHubConfig;
+
   /// Configures the version of Policy Controller
   final pulumi.Input<String>? version;
 
@@ -20,16 +24,29 @@ class FeatureFleetDefaultMemberConfigPolicycontroller {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyControllerHubConfig': pulumi.Input.mapInputValue<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig, Map<String, dynamic>>(policyControllerHubConfig, (value) => value.toMap()),
+      'policyControllerHubConfig':
+          pulumi.Input.mapInputValue<
+            FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig,
+            Map<String, dynamic>
+          >(policyControllerHubConfig, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
-  factory FeatureFleetDefaultMemberConfigPolicycontroller.fromMap(Map<String, dynamic> map) {
+  factory FeatureFleetDefaultMemberConfigPolicycontroller.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureFleetDefaultMemberConfigPolicycontroller(
-      policyControllerHubConfig: (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      policyControllerHubConfig: pulumi.Input.fromValue(
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.fromMap(
+          (map['policyControllerHubConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

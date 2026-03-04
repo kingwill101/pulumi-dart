@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMcaAccountScopeArgs {
   /// The Billing Account Name of the MCA account.
   final pulumi.Input<String> billingAccountName;
+
   /// The Billing Profile Name in the above Billing Account.
   final pulumi.Input<String> billingProfileName;
+
   /// The Invoice Section Name in the above Billing Profile.
   final pulumi.Input<String> invoiceSectionName;
 
@@ -34,10 +36,15 @@ class GetMcaAccountScopeArgs {
 
   factory GetMcaAccountScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetMcaAccountScopeArgs(
-      billingAccountName: (map['billingAccountName'] as String).input(),
-      billingProfileName: (map['billingProfileName'] as String).input(),
-      invoiceSectionName: (map['invoiceSectionName'] as String).input(),
+      billingAccountName: pulumi.Input.fromValue(
+        map['billingAccountName'] as String,
+      ),
+      billingProfileName: pulumi.Input.fromValue(
+        map['billingProfileName'] as String,
+      ),
+      invoiceSectionName: pulumi.Input.fromValue(
+        map['invoiceSectionName'] as String,
+      ),
     );
   }
 }
-

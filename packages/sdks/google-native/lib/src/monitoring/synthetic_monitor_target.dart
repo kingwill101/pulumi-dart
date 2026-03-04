@@ -10,20 +10,29 @@ class SyntheticMonitorTarget {
 
   /// Creates a new [SyntheticMonitorTarget].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 instance.
-  SyntheticMonitorTarget({
-    this.cloudFunctionV2,
-  });
+  SyntheticMonitorTarget({this.cloudFunctionV2});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudFunctionV2': ?pulumi.Input.mapOptionalInputValue<CloudFunctionV2Target, Map<String, dynamic>>(cloudFunctionV2, (value) => value.toMap()),
+      'cloudFunctionV2':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudFunctionV2Target,
+            Map<String, dynamic>
+          >(cloudFunctionV2, (value) => value.toMap()),
     };
   }
 
   factory SyntheticMonitorTarget.fromMap(Map<String, dynamic> map) {
     return SyntheticMonitorTarget(
-      cloudFunctionV2: map['cloudFunctionV2'] == null ? null : (CloudFunctionV2Target.fromMap((map['cloudFunctionV2']! as Map).cast<String, dynamic>())).input(),
+      cloudFunctionV2: (() {
+        final guardedValue = map['cloudFunctionV2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudFunctionV2Target.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

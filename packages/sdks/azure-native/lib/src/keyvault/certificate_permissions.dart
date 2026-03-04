@@ -17,16 +17,15 @@ enum CertificatePermissions {
   valueBackup("backup"),
   valueRestore("restore");
 
-  const CertificatePermissions(this.value);
-  final String value;
+  const CertificatePermissions(this.wireValue);
+  final String wireValue;
 
   static CertificatePermissions fromValue(String value) {
     for (final item in CertificatePermissions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CertificatePermissions value: $value');
   }
 }
-

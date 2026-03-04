@@ -6,26 +6,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InMageRcmDiscoveredProtectedVmDetailsResponse {
   /// The SDS created timestamp.
   final pulumi.Input<String> createdTimestamp;
+
   /// The list of datastores.
   final pulumi.Input<List<String>> datastores;
+
   /// The list of IP addresses.
   final pulumi.Input<List<String>> ipAddresses;
+
   /// A value indicating whether the VM is deleted.
   final pulumi.Input<bool> isDeleted;
+
   /// The last time when SDS information discovered in SRS.
   final pulumi.Input<String> lastDiscoveryTimeInUtc;
+
   /// The VM's OS name.
   final pulumi.Input<String> osName;
+
   /// The VM power status.
   final pulumi.Input<String> powerStatus;
+
   /// The SDS updated timestamp.
   final pulumi.Input<String> updatedTimestamp;
+
   /// The VCenter fqdn.
   final pulumi.Input<String> vCenterFqdn;
+
   /// The VCenter Id.
   final pulumi.Input<String> vCenterId;
+
   /// The VM fqdn.
   final pulumi.Input<String> vmFqdn;
+
   /// The VMware tools status.
   final pulumi.Input<String> vmwareToolsStatus;
 
@@ -74,21 +85,34 @@ class InMageRcmDiscoveredProtectedVmDetailsResponse {
     };
   }
 
-  factory InMageRcmDiscoveredProtectedVmDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory InMageRcmDiscoveredProtectedVmDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InMageRcmDiscoveredProtectedVmDetailsResponse(
-      createdTimestamp: (map['createdTimestamp'] as String).input(),
-      datastores: ((map['datastores'] as List).cast<String>()).input(),
-      ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
-      isDeleted: (map['isDeleted'] as bool).input(),
-      lastDiscoveryTimeInUtc: (map['lastDiscoveryTimeInUtc'] as String).input(),
-      osName: (map['osName'] as String).input(),
-      powerStatus: (map['powerStatus'] as String).input(),
-      updatedTimestamp: (map['updatedTimestamp'] as String).input(),
-      vCenterFqdn: (map['vCenterFqdn'] as String).input(),
-      vCenterId: (map['vCenterId'] as String).input(),
-      vmFqdn: (map['vmFqdn'] as String).input(),
-      vmwareToolsStatus: (map['vmwareToolsStatus'] as String).input(),
+      createdTimestamp: pulumi.Input.fromValue(
+        map['createdTimestamp'] as String,
+      ),
+      datastores: pulumi.Input.fromValue(
+        (map['datastores'] as List).cast<String>(),
+      ),
+      ipAddresses: pulumi.Input.fromValue(
+        (map['ipAddresses'] as List).cast<String>(),
+      ),
+      isDeleted: pulumi.Input.fromValue(map['isDeleted'] as bool),
+      lastDiscoveryTimeInUtc: pulumi.Input.fromValue(
+        map['lastDiscoveryTimeInUtc'] as String,
+      ),
+      osName: pulumi.Input.fromValue(map['osName'] as String),
+      powerStatus: pulumi.Input.fromValue(map['powerStatus'] as String),
+      updatedTimestamp: pulumi.Input.fromValue(
+        map['updatedTimestamp'] as String,
+      ),
+      vCenterFqdn: pulumi.Input.fromValue(map['vCenterFqdn'] as String),
+      vCenterId: pulumi.Input.fromValue(map['vCenterId'] as String),
+      vmFqdn: pulumi.Input.fromValue(map['vmFqdn'] as String),
+      vmwareToolsStatus: pulumi.Input.fromValue(
+        map['vmwareToolsStatus'] as String,
+      ),
     );
   }
 }
-

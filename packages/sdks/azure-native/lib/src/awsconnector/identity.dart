@@ -5,25 +5,31 @@ import 'oidc.dart';
 
 /// Definition of Identity
 class Identity {
-  /// <p>An object representing the <a href='https://openid.net/connect/'>OpenID Connect</a> identity provider information.</p>
+  /// &lt;p&gt;An object representing the &lt;a href='https://openid.net/connect/'&gt;OpenID Connect&lt;/a&gt; identity provider information.&lt;/p&gt;
   final pulumi.Input<OIDC>? oidc;
 
   /// Creates a new [Identity].
-  /// [oidc] <p>An object representing the <a href='https://openid.net/connect/'>OpenID Connect</a> identity provider information.</p>
-  Identity({
-    this.oidc,
-  });
+  /// [oidc] &lt;p&gt;An object representing the &lt;a href='https://openid.net/connect/'&gt;OpenID Connect&lt;/a&gt; identity provider information.&lt;/p&gt;
+  Identity({this.oidc});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oidc': ?pulumi.Input.mapOptionalInputValue<OIDC, Map<String, dynamic>>(oidc, (value) => value.toMap()),
+      'oidc': ?pulumi.Input.mapOptionalInputValue<OIDC, Map<String, dynamic>>(
+        oidc,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      oidc: map['oidc'] == null ? null : (OIDC.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
+      oidc: (() {
+        final guardedValue = map['oidc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OIDC.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

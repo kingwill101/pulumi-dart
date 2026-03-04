@@ -11,13 +11,16 @@ class CustomerManagedKeyArgs {
   final pulumi.Input<String>? federatedIdentityClientId;
   final pulumi.Input<String>? keyName;
   final pulumi.Input<String>? keyVaultId;
+
   /// The ID of the Key Vault Key.
   final pulumi.Input<String>? keyVaultKeyId;
   final pulumi.Input<String>? keyVaultUri;
   final pulumi.Input<String>? keyVersion;
   final pulumi.Input<String>? managedHsmKeyId;
+
   /// The ID of the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
+
   /// The ID of a user assigned identity.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -59,16 +62,49 @@ class CustomerManagedKeyArgs {
 
   factory CustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyArgs(
-      federatedIdentityClientId: map['federatedIdentityClientId'] == null ? null : (map['federatedIdentityClientId']! as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
-      storageAccountId: (map['storageAccountId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      federatedIdentityClientId: (() {
+        final guardedValue = map['federatedIdentityClientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultKeyId: (() {
+        final guardedValue = map['keyVaultKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVersion: (() {
+        final guardedValue = map['keyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedHsmKeyId: (() {
+        final guardedValue = map['managedHsmKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: pulumi.Input.fromValue(
+        map['storageAccountId'] as String,
+      ),
+      userAssignedIdentityId: (() {
+        final guardedValue = map['userAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

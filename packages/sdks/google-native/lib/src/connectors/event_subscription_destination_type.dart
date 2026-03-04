@@ -3,16 +3,17 @@ enum EventSubscriptionDestinationType {
   typeUnspecified("TYPE_UNSPECIFIED"),
   endpoint("ENDPOINT");
 
-  const EventSubscriptionDestinationType(this.value);
-  final String value;
+  const EventSubscriptionDestinationType(this.wireValue);
+  final String wireValue;
 
   static EventSubscriptionDestinationType fromValue(String value) {
     for (final item in EventSubscriptionDestinationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EventSubscriptionDestinationType value: $value');
+    throw ArgumentError(
+      'Unknown EventSubscriptionDestinationType value: $value',
+    );
   }
 }
-

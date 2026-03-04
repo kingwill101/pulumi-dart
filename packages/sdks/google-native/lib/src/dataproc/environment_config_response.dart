@@ -8,6 +8,7 @@ import 'peripherals_config_response.dart';
 class EnvironmentConfigResponse {
   /// Optional. Execution configuration for a workload.
   final pulumi.Input<ExecutionConfigResponse> executionConfig;
+
   /// Optional. Peripherals configuration that workload has access to.
   final pulumi.Input<PeripheralsConfigResponse> peripheralsConfig;
 
@@ -21,16 +22,31 @@ class EnvironmentConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executionConfig': pulumi.Input.mapInputValue<ExecutionConfigResponse, Map<String, dynamic>>(executionConfig, (value) => value.toMap()),
-      'peripheralsConfig': pulumi.Input.mapInputValue<PeripheralsConfigResponse, Map<String, dynamic>>(peripheralsConfig, (value) => value.toMap()),
+      'executionConfig':
+          pulumi.Input.mapInputValue<
+            ExecutionConfigResponse,
+            Map<String, dynamic>
+          >(executionConfig, (value) => value.toMap()),
+      'peripheralsConfig':
+          pulumi.Input.mapInputValue<
+            PeripheralsConfigResponse,
+            Map<String, dynamic>
+          >(peripheralsConfig, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigResponse(
-      executionConfig: (ExecutionConfigResponse.fromMap((map['executionConfig'] as Map).cast<String, dynamic>())).input(),
-      peripheralsConfig: (PeripheralsConfigResponse.fromMap((map['peripheralsConfig'] as Map).cast<String, dynamic>())).input(),
+      executionConfig: pulumi.Input.fromValue(
+        ExecutionConfigResponse.fromMap(
+          (map['executionConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      peripheralsConfig: pulumi.Input.fromValue(
+        PeripheralsConfigResponse.fromMap(
+          (map['peripheralsConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

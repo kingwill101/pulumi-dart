@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HardwareProfileResponse {
   /// Gets or sets a value indicating whether virtual processors can be added while this virtual machine is running.
   final pulumi.Input<bool> cpuHotAddEnabled;
+
   /// Gets or sets a value indicating whether virtual processors can be removed while this virtual machine is running.
   final pulumi.Input<bool> cpuHotRemoveEnabled;
+
   /// Gets or sets a value indicating whether memory can be added while this virtual machine is running.
   final pulumi.Input<bool> memoryHotAddEnabled;
+
   /// Gets or sets memory size in MBs for the vm.
   final pulumi.Input<int>? memorySizeMB;
+
   /// Gets or sets the number of vCPUs for the vm.
   final pulumi.Input<int>? numCPUs;
+
   /// Gets or sets the number of cores per socket for the vm. Defaults to 1 if unspecified.
   final pulumi.Input<int>? numCoresPerSocket;
 
@@ -46,13 +51,28 @@ class HardwareProfileResponse {
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      cpuHotAddEnabled: (map['cpuHotAddEnabled'] as bool).input(),
-      cpuHotRemoveEnabled: (map['cpuHotRemoveEnabled'] as bool).input(),
-      memoryHotAddEnabled: (map['memoryHotAddEnabled'] as bool).input(),
-      memorySizeMB: map['memorySizeMB'] == null ? null : (map['memorySizeMB']! as int).input(),
-      numCPUs: map['numCPUs'] == null ? null : (map['numCPUs']! as int).input(),
-      numCoresPerSocket: map['numCoresPerSocket'] == null ? null : (map['numCoresPerSocket']! as int).input(),
+      cpuHotAddEnabled: pulumi.Input.fromValue(map['cpuHotAddEnabled'] as bool),
+      cpuHotRemoveEnabled: pulumi.Input.fromValue(
+        map['cpuHotRemoveEnabled'] as bool,
+      ),
+      memoryHotAddEnabled: pulumi.Input.fromValue(
+        map['memoryHotAddEnabled'] as bool,
+      ),
+      memorySizeMB: (() {
+        final guardedValue = map['memorySizeMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      numCPUs: (() {
+        final guardedValue = map['numCPUs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      numCoresPerSocket: (() {
+        final guardedValue = map['numCoresPerSocket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

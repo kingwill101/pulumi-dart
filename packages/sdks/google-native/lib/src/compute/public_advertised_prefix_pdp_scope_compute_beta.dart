@@ -4,16 +4,17 @@ enum PublicAdvertisedPrefixPdpScopeComputeBeta {
   globalAndRegional("GLOBAL_AND_REGIONAL"),
   regional("REGIONAL");
 
-  const PublicAdvertisedPrefixPdpScopeComputeBeta(this.value);
-  final String value;
+  const PublicAdvertisedPrefixPdpScopeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static PublicAdvertisedPrefixPdpScopeComputeBeta fromValue(String value) {
     for (final item in PublicAdvertisedPrefixPdpScopeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PublicAdvertisedPrefixPdpScopeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown PublicAdvertisedPrefixPdpScopeComputeBeta value: $value',
+    );
   }
 }
-

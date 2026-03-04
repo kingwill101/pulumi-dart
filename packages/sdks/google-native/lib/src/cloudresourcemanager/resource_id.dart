@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceId {
   /// The type-specific id. This should correspond to the id used in the type-specific API's.
   final pulumi.Input<String>? id;
+
   /// The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
   final pulumi.Input<String>? type;
 
   /// Creates a new [ResourceId].
   /// [id] The type-specific id. This should correspond to the id used in the type-specific API's.
   /// [type] The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
-  ResourceId({
-    this.id,
-    this.type,
-  });
+  ResourceId({this.id, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'type': ?type,
-    };
+    return <String, dynamic>{'id': ?id, 'type': ?type};
   }
 
   factory ResourceId.fromMap(Map<String, dynamic> map) {
     return ResourceId(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum SslState {
   valueSniEnabled("SniEnabled"),
   valueIpBasedEnabled("IpBasedEnabled");
 
-  const SslState(this.value);
-  final String value;
+  const SslState(this.wireValue);
+  final String wireValue;
 
   static SslState fromValue(String value) {
     for (final item in SslState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslState value: $value');
   }
 }
-

@@ -13,15 +13,16 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDes
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destinationRefId': destinationRefId,
-    };
+    return <String, dynamic>{'destinationRefId': destinationRefId};
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination(
-      destinationRefId: (map['destinationRefId'] as String).input(),
+      destinationRefId: pulumi.Input.fromValue(
+        map['destinationRefId'] as String,
+      ),
     );
   }
 }
-

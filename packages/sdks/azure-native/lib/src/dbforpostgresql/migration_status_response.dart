@@ -7,8 +7,10 @@ import 'migration_substate_details_response.dart';
 class MigrationStatusResponse {
   /// Current migration sub state details.
   final pulumi.Input<MigrationSubstateDetailsResponse> currentSubStateDetails;
+
   /// Error message, if any, for the migration state.
   final pulumi.Input<String> error;
+
   /// State of migration.
   final pulumi.Input<String> state;
 
@@ -24,7 +26,11 @@ class MigrationStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentSubStateDetails': pulumi.Input.mapInputValue<MigrationSubstateDetailsResponse, Map<String, dynamic>>(currentSubStateDetails, (value) => value.toMap()),
+      'currentSubStateDetails':
+          pulumi.Input.mapInputValue<
+            MigrationSubstateDetailsResponse,
+            Map<String, dynamic>
+          >(currentSubStateDetails, (value) => value.toMap()),
       'error': error,
       'state': state,
     };
@@ -32,10 +38,13 @@ class MigrationStatusResponse {
 
   factory MigrationStatusResponse.fromMap(Map<String, dynamic> map) {
     return MigrationStatusResponse(
-      currentSubStateDetails: (MigrationSubstateDetailsResponse.fromMap((map['currentSubStateDetails'] as Map).cast<String, dynamic>())).input(),
-      error: (map['error'] as String).input(),
-      state: (map['state'] as String).input(),
+      currentSubStateDetails: pulumi.Input.fromValue(
+        MigrationSubstateDetailsResponse.fromMap(
+          (map['currentSubStateDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      error: pulumi.Input.fromValue(map['error'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

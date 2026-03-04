@@ -676,50 +676,75 @@ import 'terminal_server_configuration_response.dart';
 class NetworkFabric extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// ASN of CE devices for CE/PE connectivity.
   late final pulumi.Output<double> fabricASN;
+
   /// The version of Network Fabric.
   late final pulumi.Output<String?> fabricVersion;
+
   /// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
   late final pulumi.Output<String> ipv4Prefix;
+
   /// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
   late final pulumi.Output<String?> ipv6Prefix;
+
   /// List of L2 Isolation Domain resource IDs under the Network Fabric.
   late final pulumi.Output<List<String>> l2IsolationDomains;
+
   /// List of L3 Isolation Domain resource IDs under the Network Fabric.
   late final pulumi.Output<List<String>> l3IsolationDomains;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Configuration to be used to setup the management network.
-  late final pulumi.Output<ManagementNetworkConfigurationPropertiesResponse> managementNetworkConfiguration;
+  late final pulumi.Output<ManagementNetworkConfigurationPropertiesResponse>
+  managementNetworkConfiguration;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure resource ID for the NetworkFabricController the NetworkFabric belongs.
   late final pulumi.Output<String> networkFabricControllerId;
+
   /// Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
   late final pulumi.Output<String> networkFabricSku;
+
   /// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning.
   late final pulumi.Output<String> provisioningState;
+
   /// Number of compute racks associated to Network Fabric.
   late final pulumi.Output<int?> rackCount;
+
   /// List of NetworkRack resource IDs under the Network Fabric. The number of racks allowed depends on the Network Fabric SKU.
   late final pulumi.Output<List<String>> racks;
+
   /// Array of router IDs.
   late final pulumi.Output<List<String>> routerIds;
+
   /// Number of servers.Possible values are from 1-16.
   late final pulumi.Output<int> serverCountPerRack;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Network and credentials configuration currently applied to terminal server.
-  late final pulumi.Output<TerminalServerConfigurationResponse> terminalServerConfiguration;
+  late final pulumi.Output<TerminalServerConfigurationResponse>
+  terminalServerConfiguration;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -732,34 +757,42 @@ class NetworkFabric extends pulumi.CustomResource {
     NetworkFabricArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:NetworkFabric',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.fabricASN = registerOutput<double>('fabricASN');
-    this.fabricVersion = registerOutput<String?>('fabricVersion');
-    this.ipv4Prefix = registerOutput<String>('ipv4Prefix');
-    this.ipv6Prefix = registerOutput<String?>('ipv6Prefix');
-    this.l2IsolationDomains = registerOutput<List<String>>('l2IsolationDomains');
-    this.l3IsolationDomains = registerOutput<List<String>>('l3IsolationDomains');
-    this.location = registerOutput<String>('location');
-    this.managementNetworkConfiguration = registerOutput<ManagementNetworkConfigurationPropertiesResponse>('managementNetworkConfiguration');
+         'azure-native:managednetworkfabric:NetworkFabric',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    fabricASN = registerOutput<double>('fabricASN');
+    fabricVersion = registerOutput<String?>('fabricVersion');
+    ipv4Prefix = registerOutput<String>('ipv4Prefix');
+    ipv6Prefix = registerOutput<String?>('ipv6Prefix');
+    l2IsolationDomains = registerOutput<List<String>>('l2IsolationDomains');
+    l3IsolationDomains = registerOutput<List<String>>('l3IsolationDomains');
+    location = registerOutput<String>('location');
+    managementNetworkConfiguration =
+        registerOutput<ManagementNetworkConfigurationPropertiesResponse>(
+          'managementNetworkConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.networkFabricControllerId = registerOutput<String>('networkFabricControllerId');
-    this.networkFabricSku = registerOutput<String>('networkFabricSku');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.rackCount = registerOutput<int?>('rackCount');
-    this.racks = registerOutput<List<String>>('racks');
-    this.routerIds = registerOutput<List<String>>('routerIds');
-    this.serverCountPerRack = registerOutput<int>('serverCountPerRack');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.terminalServerConfiguration = registerOutput<TerminalServerConfigurationResponse>('terminalServerConfiguration');
-    this.type = registerOutput<String>('type');
+    networkFabricControllerId = registerOutput<String>(
+      'networkFabricControllerId',
+    );
+    networkFabricSku = registerOutput<String>('networkFabricSku');
+    provisioningState = registerOutput<String>('provisioningState');
+    rackCount = registerOutput<int?>('rackCount');
+    racks = registerOutput<List<String>>('racks');
+    routerIds = registerOutput<List<String>>('routerIds');
+    serverCountPerRack = registerOutput<int>('serverCountPerRack');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    terminalServerConfiguration =
+        registerOutput<TerminalServerConfigurationResponse>(
+          'terminalServerConfiguration',
+        );
+    type = registerOutput<String>('type');
   }
 }

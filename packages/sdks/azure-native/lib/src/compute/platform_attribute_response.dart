@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlatformAttributeResponse {
   /// This property specifies the name of the platformAttribute. It is read-only.
   final pulumi.Input<String> name;
+
   /// This property specifies the value of the corresponding name property. It is read-only.
   final pulumi.Input<String> value;
 
   /// Creates a new [PlatformAttributeResponse].
   /// [name] This property specifies the name of the platformAttribute. It is read-only.
   /// [value] This property specifies the value of the corresponding name property. It is read-only.
-  PlatformAttributeResponse({
-    required this.name,
-    required this.value,
-  });
+  PlatformAttributeResponse({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory PlatformAttributeResponse.fromMap(Map<String, dynamic> map) {
     return PlatformAttributeResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

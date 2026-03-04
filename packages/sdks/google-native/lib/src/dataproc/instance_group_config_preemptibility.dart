@@ -5,16 +5,17 @@ enum InstanceGroupConfigPreemptibility {
   preemptible("PREEMPTIBLE"),
   spot("SPOT");
 
-  const InstanceGroupConfigPreemptibility(this.value);
-  final String value;
+  const InstanceGroupConfigPreemptibility(this.wireValue);
+  final String wireValue;
 
   static InstanceGroupConfigPreemptibility fromValue(String value) {
     for (final item in InstanceGroupConfigPreemptibility.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupConfigPreemptibility value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupConfigPreemptibility value: $value',
+    );
   }
 }
-

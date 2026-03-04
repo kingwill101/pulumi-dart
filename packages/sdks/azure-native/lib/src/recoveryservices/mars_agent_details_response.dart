@@ -7,20 +7,28 @@ import 'health_error_response.dart';
 class MarsAgentDetailsResponse {
   /// The Mars agent Bios Id.
   final pulumi.Input<String> biosId;
+
   /// The fabric object Id.
   final pulumi.Input<String> fabricObjectId;
+
   /// The Mars agent Fqdn.
   final pulumi.Input<String> fqdn;
+
   /// The health of the Mars agent.
   final pulumi.Input<String> health;
+
   /// The health errors.
   final pulumi.Input<List<HealthErrorResponse>> healthErrors;
+
   /// The Mars agent Id.
   final pulumi.Input<String> id;
+
   /// The last heartbeat received from the Mars agent.
   final pulumi.Input<String> lastHeartbeatUtc;
+
   /// The Mars agent name.
   final pulumi.Input<String> name;
+
   /// The version.
   final pulumi.Input<String> version;
 
@@ -52,7 +60,18 @@ class MarsAgentDetailsResponse {
       'fabricObjectId': fabricObjectId,
       'fqdn': fqdn,
       'health': health,
-      'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'healthErrors':
+          pulumi.Input.mapInputValue<
+            List<HealthErrorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            healthErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HealthErrorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': id,
       'lastHeartbeatUtc': lastHeartbeatUtc,
       'name': name,
@@ -62,16 +81,24 @@ class MarsAgentDetailsResponse {
 
   factory MarsAgentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MarsAgentDetailsResponse(
-      biosId: (map['biosId'] as String).input(),
-      fabricObjectId: (map['fabricObjectId'] as String).input(),
-      fqdn: (map['fqdn'] as String).input(),
-      health: (map['health'] as String).input(),
-      healthErrors: (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: (map['id'] as String).input(),
-      lastHeartbeatUtc: (map['lastHeartbeatUtc'] as String).input(),
-      name: (map['name'] as String).input(),
-      version: (map['version'] as String).input(),
+      biosId: pulumi.Input.fromValue(map['biosId'] as String),
+      fabricObjectId: pulumi.Input.fromValue(map['fabricObjectId'] as String),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      health: pulumi.Input.fromValue(map['health'] as String),
+      healthErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HealthErrorResponse>(
+          map['healthErrors']!,
+          (value) => HealthErrorResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastHeartbeatUtc: pulumi.Input.fromValue(
+        map['lastHeartbeatUtc'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

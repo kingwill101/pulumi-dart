@@ -5,23 +5,27 @@ import 'tlssecurity_policy_enum_value.dart';
 
 /// Definition of DomainEndpointOptions
 class DomainEndpointOptions {
-  /// <p>The fully qualified URL for the custom endpoint.</p>
+  /// &lt;p&gt;The fully qualified URL for the custom endpoint.&lt;/p&gt;
   final pulumi.Input<String>? customEndpoint;
-  /// <p>The ARN for your security certificate, managed in Amazon Web Services Certificate Manager (ACM).</p>
+
+  /// &lt;p&gt;The ARN for your security certificate, managed in Amazon Web Services Certificate Manager (ACM).&lt;/p&gt;
   final pulumi.Input<String>? customEndpointCertificateArn;
-  /// <p>Whether to enable a custom endpoint for the domain.</p>
+
+  /// &lt;p&gt;Whether to enable a custom endpoint for the domain.&lt;/p&gt;
   final pulumi.Input<bool>? customEndpointEnabled;
-  /// <p>True to require that all traffic to the domain arrive over HTTPS.</p>
+
+  /// &lt;p&gt;True to require that all traffic to the domain arrive over HTTPS.&lt;/p&gt;
   final pulumi.Input<bool>? enforceHTTPS;
-  /// <p>Specify the TLS security policy to apply to the HTTPS endpoint of the domain. The policy can be one of the following values:</p> <ul> <li> <p> <b>Policy-Min-TLS-1-0-2019-07:</b> TLS security policy that supports TLS version 1.0 to TLS version 1.2</p> </li> <li> <p> <b>Policy-Min-TLS-1-2-2019-07:</b> TLS security policy that supports only TLS version 1.2</p> </li> <li> <p> <b>Policy-Min-TLS-1-2-PFS-2023-10:</b> TLS security policy that supports TLS version 1.2 to TLS version 1.3 with perfect forward secrecy cipher suites</p> </li> </ul>
+
+  /// &lt;p&gt;Specify the TLS security policy to apply to the HTTPS endpoint of the domain. The policy can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-0-2019-07:&lt;/b&gt; TLS security policy that supports TLS version 1.0 to TLS version 1.2&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-2-2019-07:&lt;/b&gt; TLS security policy that supports only TLS version 1.2&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-2-PFS-2023-10:&lt;/b&gt; TLS security policy that supports TLS version 1.2 to TLS version 1.3 with perfect forward secrecy cipher suites&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<TLSSecurityPolicyEnumValue>? tlsSecurityPolicy;
 
   /// Creates a new [DomainEndpointOptions].
-  /// [customEndpoint] <p>The fully qualified URL for the custom endpoint.</p>
-  /// [customEndpointCertificateArn] <p>The ARN for your security certificate, managed in Amazon Web Services Certificate Manager (ACM).</p>
-  /// [customEndpointEnabled] <p>Whether to enable a custom endpoint for the domain.</p>
-  /// [enforceHTTPS] <p>True to require that all traffic to the domain arrive over HTTPS.</p>
-  /// [tlsSecurityPolicy] <p>Specify the TLS security policy to apply to the HTTPS endpoint of the domain. The policy can be one of the following values:</p> <ul> <li> <p> <b>Policy-Min-TLS-1-0-2019-07:</b> TLS security policy that supports TLS version 1.0 to TLS version 1.2</p> </li> <li> <p> <b>Policy-Min-TLS-1-2-2019-07:</b> TLS security policy that supports only TLS version 1.2</p> </li> <li> <p> <b>Policy-Min-TLS-1-2-PFS-2023-10:</b> TLS security policy that supports TLS version 1.2 to TLS version 1.3 with perfect forward secrecy cipher suites</p> </li> </ul>
+  /// [customEndpoint] &lt;p&gt;The fully qualified URL for the custom endpoint.&lt;/p&gt;
+  /// [customEndpointCertificateArn] &lt;p&gt;The ARN for your security certificate, managed in Amazon Web Services Certificate Manager (ACM).&lt;/p&gt;
+  /// [customEndpointEnabled] &lt;p&gt;Whether to enable a custom endpoint for the domain.&lt;/p&gt;
+  /// [enforceHTTPS] &lt;p&gt;True to require that all traffic to the domain arrive over HTTPS.&lt;/p&gt;
+  /// [tlsSecurityPolicy] &lt;p&gt;Specify the TLS security policy to apply to the HTTPS endpoint of the domain. The policy can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-0-2019-07:&lt;/b&gt; TLS security policy that supports TLS version 1.0 to TLS version 1.2&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-2-2019-07:&lt;/b&gt; TLS security policy that supports only TLS version 1.2&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-2-PFS-2023-10:&lt;/b&gt; TLS security policy that supports TLS version 1.2 to TLS version 1.3 with perfect forward secrecy cipher suites&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   DomainEndpointOptions({
     this.customEndpoint,
     this.customEndpointCertificateArn,
@@ -36,18 +40,45 @@ class DomainEndpointOptions {
       'customEndpointCertificateArn': ?customEndpointCertificateArn,
       'customEndpointEnabled': ?customEndpointEnabled,
       'enforceHTTPS': ?enforceHTTPS,
-      'tlsSecurityPolicy': ?pulumi.Input.mapOptionalInputValue<TLSSecurityPolicyEnumValue, Map<String, dynamic>>(tlsSecurityPolicy, (value) => value.toMap()),
+      'tlsSecurityPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            TLSSecurityPolicyEnumValue,
+            Map<String, dynamic>
+          >(tlsSecurityPolicy, (value) => value.toMap()),
     };
   }
 
   factory DomainEndpointOptions.fromMap(Map<String, dynamic> map) {
     return DomainEndpointOptions(
-      customEndpoint: map['customEndpoint'] == null ? null : (map['customEndpoint']! as String).input(),
-      customEndpointCertificateArn: map['customEndpointCertificateArn'] == null ? null : (map['customEndpointCertificateArn']! as String).input(),
-      customEndpointEnabled: map['customEndpointEnabled'] == null ? null : (map['customEndpointEnabled']! as bool).input(),
-      enforceHTTPS: map['enforceHTTPS'] == null ? null : (map['enforceHTTPS']! as bool).input(),
-      tlsSecurityPolicy: map['tlsSecurityPolicy'] == null ? null : (TLSSecurityPolicyEnumValue.fromMap((map['tlsSecurityPolicy']! as Map).cast<String, dynamic>())).input(),
+      customEndpoint: (() {
+        final guardedValue = map['customEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customEndpointCertificateArn: (() {
+        final guardedValue = map['customEndpointCertificateArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customEndpointEnabled: (() {
+        final guardedValue = map['customEndpointEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enforceHTTPS: (() {
+        final guardedValue = map['enforceHTTPS'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tlsSecurityPolicy: (() {
+        final guardedValue = map['tlsSecurityPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TLSSecurityPolicyEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

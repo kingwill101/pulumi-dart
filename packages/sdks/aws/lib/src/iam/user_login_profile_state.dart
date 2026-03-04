@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserLoginProfileState {
   /// The encrypted password, base64 encoded. Only available if password was handled on resource creation, not import.
   final pulumi.Input<String>? encryptedPassword;
+
   /// The fingerprint of the PGP key used to encrypt the password. Only available if password was handled on this provider resource creation, not import.
   final pulumi.Input<String>? keyFingerprint;
+
   /// The plain text password, only available when `pgp_key` is not provided.
   final pulumi.Input<String>? password;
+
   /// The length of the generated password on resource creation. Only applies on resource creation. Drift detection is not possible with this argument. Default value is `20`.
   final pulumi.Input<int>? passwordLength;
+
   /// Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation.
   final pulumi.Input<bool>? passwordResetRequired;
+
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
   final pulumi.Input<String>? pgpKey;
+
   /// The IAM user's name.
   final pulumi.Input<String>? user;
 
@@ -51,14 +57,41 @@ class UserLoginProfileState {
 
   factory UserLoginProfileState.fromMap(Map<String, dynamic> map) {
     return UserLoginProfileState(
-      encryptedPassword: map['encryptedPassword'] == null ? null : ((map['encryptedPassword'] as String).input()).input(),
-      keyFingerprint: map['keyFingerprint'] == null ? null : ((map['keyFingerprint'] as String).input()).input(),
-      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
-      passwordLength: map['passwordLength'] == null ? null : ((map['passwordLength'] as int).input()).input(),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : ((map['passwordResetRequired'] as bool).input()).input(),
-      pgpKey: map['pgpKey'] == null ? null : ((map['pgpKey'] as String).input()).input(),
-      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
+      encryptedPassword: (() {
+        final guardedValue = map['encryptedPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyFingerprint: (() {
+        final guardedValue = map['keyFingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordLength: (() {
+        final guardedValue = map['passwordLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      passwordResetRequired: (() {
+        final guardedValue = map['passwordResetRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      pgpKey: (() {
+        final guardedValue = map['pgpKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

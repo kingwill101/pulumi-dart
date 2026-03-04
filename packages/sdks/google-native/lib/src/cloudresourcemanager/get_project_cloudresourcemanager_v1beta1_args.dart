@@ -11,20 +11,21 @@ class GetProjectCloudresourcemanagerV1beta1Args {
 
   /// Creates a new [GetProjectCloudresourcemanagerV1beta1Args].
   /// [project] Optional.
-  GetProjectCloudresourcemanagerV1beta1Args({
-    this.project,
-  });
+  GetProjectCloudresourcemanagerV1beta1Args({this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
-  factory GetProjectCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetProjectCloudresourcemanagerV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProjectCloudresourcemanagerV1beta1Args(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

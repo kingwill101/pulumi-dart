@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_nfs_target_args.dart';
-import 'cache_nfs_target_namespace_junction.dart';
 import 'cache_nfs_target_state.dart';
 
 /// Manages a NFS Target within a HPC Cache.
 ///
-/// !> **Note:** The `azure.hpc.CacheNfsTarget` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
+/// !&gt; **Note:** The `azure.hpc.CacheNfsTarget` resource has been deprecated because the service is retiring on 2025-09-30. This resource will be removed in v5.0 of the AzureRM Provider. See https://aka.ms/hpccacheretirement for more information.
 ///
-/// > **Note:** By request of the service team the provider no longer automatically registering the `Microsoft.StorageCache` Resource Provider for this resource. To register it you can run `az provider register --namespace 'Microsoft.StorageCache'`.
+/// &gt; **Note:** By request of the service team the provider no longer automatically registering the `Microsoft.StorageCache` Resource Provider for this resource. To register it you can run `az provider register --namespace 'Microsoft.StorageCache'`.
 ///
 /// ## Example Usage
 ///
@@ -782,7 +781,7 @@ import 'cache_nfs_target_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageCache` - 2023-05-01
@@ -797,18 +796,25 @@ import 'cache_nfs_target_state.dart';
 class CacheNfsTarget extends pulumi.CustomResource {
   /// The name HPC Cache, which the HPC Cache NFS Target will be added to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cacheName;
+
   /// The name of the HPC Cache NFS Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Can be specified multiple times to define multiple `namespace_junction`. Each `namespace_junction` block supports fields documented below.
-  late final pulumi.Output<List<CacheNfsTargetNamespaceJunction>> namespaceJunctions;
+  late final pulumi.Output<List<Map<String, dynamic>>> namespaceJunctions;
+
   /// The name of the Resource Group in which to create the HPC Cache NFS Target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The IP address or fully qualified domain name (FQDN) of the HPC Cache NFS target. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetHostName;
+
   /// The type of usage of the HPC Cache NFS Target. Possible values are: `READ_HEAVY_INFREQ`, `READ_HEAVY_CHECK_180`, `READ_ONLY`, `READ_WRITE`, `WRITE_WORKLOAD_15`, `WRITE_AROUND`, `WRITE_WORKLOAD_CHECK_30`, `WRITE_WORKLOAD_CHECK_60` and `WRITE_WORKLOAD_CLOUDWS`.
   late final pulumi.Output<String> usageModel;
+
   /// The amount of time the cache waits before it checks the back-end storage for file updates. Possible values are between `1` and `31536000`.
   late final pulumi.Output<int?> verificationTimerInSeconds;
+
   /// The amount of time the cache waits after the last file change before it copies the changed file to back-end storage. Possible values are between `1` and `31536000`.
   late final pulumi.Output<int?> writeBackTimerInSeconds;
 
@@ -821,19 +827,23 @@ class CacheNfsTarget extends pulumi.CustomResource {
     CacheNfsTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hpc/cacheNfsTarget:CacheNfsTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cacheName = registerOutput<String>('cacheName');
+         'azure:hpc/cacheNfsTarget:CacheNfsTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');
-    this.namespaceJunctions = registerOutput<List<CacheNfsTargetNamespaceJunction>>('namespaceJunctions');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.targetHostName = registerOutput<String>('targetHostName');
-    this.usageModel = registerOutput<String>('usageModel');
-    this.verificationTimerInSeconds = registerOutput<int?>('verificationTimerInSeconds');
-    this.writeBackTimerInSeconds = registerOutput<int?>('writeBackTimerInSeconds');
+    namespaceJunctions = registerOutput<List<Map<String, dynamic>>>(
+      'namespaceJunctions',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    targetHostName = registerOutput<String>('targetHostName');
+    usageModel = registerOutput<String>('usageModel');
+    verificationTimerInSeconds = registerOutput<int?>(
+      'verificationTimerInSeconds',
+    );
+    writeBackTimerInSeconds = registerOutput<int?>('writeBackTimerInSeconds');
   }
 
   /// Gets an existing [CacheNfsTarget] resource's state with the given [name] and [id].
@@ -854,18 +864,22 @@ class CacheNfsTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:hpc/cacheNfsTarget:CacheNfsTarget',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cacheName = registerOutput<String>('cacheName');
+         'azure:hpc/cacheNfsTarget:CacheNfsTarget',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cacheName = registerOutput<String>('cacheName');
     this.name = registerOutput<String>('name');
-    this.namespaceJunctions = registerOutput<List<CacheNfsTargetNamespaceJunction>>('namespaceJunctions');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.targetHostName = registerOutput<String>('targetHostName');
-    this.usageModel = registerOutput<String>('usageModel');
-    this.verificationTimerInSeconds = registerOutput<int?>('verificationTimerInSeconds');
-    this.writeBackTimerInSeconds = registerOutput<int?>('writeBackTimerInSeconds');
+    namespaceJunctions = registerOutput<List<Map<String, dynamic>>>(
+      'namespaceJunctions',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    targetHostName = registerOutput<String>('targetHostName');
+    usageModel = registerOutput<String>('usageModel');
+    verificationTimerInSeconds = registerOutput<int?>(
+      'verificationTimerInSeconds',
+    );
+    writeBackTimerInSeconds = registerOutput<int?>('writeBackTimerInSeconds');
   }
 }

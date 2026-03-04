@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointArgs {
   /// Type of access for the network connectivity. Valid values are `Private` or `CustomerOwnedIp`.
   final pulumi.Input<String>? accessType;
+
   /// The ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
   final pulumi.Input<String>? customerOwnedIpv4Pool;
+
   /// Identifier of the Outpost to contain this endpoint.
   final pulumi.Input<String> outpostId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of the EC2 Security Group.
   final pulumi.Input<String> securityGroupId;
+
   /// Identifier of the EC2 Subnet.
   final pulumi.Input<String> subnetId;
 
@@ -49,13 +54,24 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      accessType: map['accessType'] == null ? null : ((map['accessType'] as String).input()).input(),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : ((map['customerOwnedIpv4Pool'] as String).input()).input(),
-      outpostId: (map['outpostId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      accessType: (() {
+        final guardedValue = map['accessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerOwnedIpv4Pool: (() {
+        final guardedValue = map['customerOwnedIpv4Pool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outpostId: pulumi.Input.fromValue(map['outpostId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

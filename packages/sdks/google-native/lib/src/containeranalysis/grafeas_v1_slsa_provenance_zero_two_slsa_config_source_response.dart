@@ -26,12 +26,15 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse {
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse(
-      digest: ((map['digest'] as Map).cast<String, String>()).input(),
-      entryPoint: (map['entryPoint'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      digest: pulumi.Input.fromValue(
+        (map['digest'] as Map).cast<String, String>(),
+      ),
+      entryPoint: pulumi.Input.fromValue(map['entryPoint'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

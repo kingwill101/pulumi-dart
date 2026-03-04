@@ -1,5 +1,3 @@
-library module_timestreamquery;
-
 export 'timestreamquery/scheduled_query.dart';
 export 'timestreamquery/scheduled_query_args.dart';
 export 'timestreamquery/scheduled_query_error_report_configuration.dart';

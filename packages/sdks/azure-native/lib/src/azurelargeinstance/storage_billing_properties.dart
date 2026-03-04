@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageBillingProperties {
   /// the billing mode for the storage instance
   final pulumi.Input<String>? billingMode;
+
   /// the SKU type that is provisioned
   final pulumi.Input<String>? sku;
 
   /// Creates a new [StorageBillingProperties].
   /// [billingMode] the billing mode for the storage instance
   /// [sku] the SKU type that is provisioned
-  StorageBillingProperties({
-    this.billingMode,
-    this.sku,
-  });
+  StorageBillingProperties({this.billingMode, this.sku});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'billingMode': ?billingMode,
-      'sku': ?sku,
-    };
+    return <String, dynamic>{'billingMode': ?billingMode, 'sku': ?sku};
   }
 
   factory StorageBillingProperties.fromMap(Map<String, dynamic> map) {
     return StorageBillingProperties(
-      billingMode: map['billingMode'] == null ? null : (map['billingMode']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      billingMode: (() {
+        final guardedValue = map['billingMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

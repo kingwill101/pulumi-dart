@@ -8,20 +8,15 @@ class ControlRedirectAction {
 
   /// Creates a new [ControlRedirectAction].
   /// [redirectUri] The URI to redirect to.
-  ControlRedirectAction({
-    required this.redirectUri,
-  });
+  ControlRedirectAction({required this.redirectUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'redirectUri': redirectUri,
-    };
+    return <String, dynamic>{'redirectUri': redirectUri};
   }
 
   factory ControlRedirectAction.fromMap(Map<String, dynamic> map) {
     return ControlRedirectAction(
-      redirectUri: (map['redirectUri'] as String).input(),
+      redirectUri: pulumi.Input.fromValue(map['redirectUri'] as String),
     );
   }
 }
-

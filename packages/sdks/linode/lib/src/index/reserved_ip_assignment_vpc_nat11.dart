@@ -27,10 +27,9 @@ class ReservedIpAssignmentVpcNat11 {
 
   factory ReservedIpAssignmentVpcNat11.fromMap(Map<String, dynamic> map) {
     return ReservedIpAssignmentVpcNat11(
-      address: (map['address'] as String).input(),
-      subnetId: (map['subnetId'] as int).input(),
-      vpcId: (map['vpcId'] as int).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as int),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as int),
     );
   }
 }
-

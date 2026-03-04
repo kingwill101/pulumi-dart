@@ -7,26 +7,37 @@ import 'extended_location_response.dart';
 class A2AFabricSpecificLocationDetailsResponse {
   /// The initial primary ExtendedLocation.
   final pulumi.Input<ExtendedLocationResponse>? initialPrimaryExtendedLocation;
+
   /// Initial primary fabric location info.
   final pulumi.Input<String>? initialPrimaryFabricLocation;
+
   /// The initial source zone info.
   final pulumi.Input<String>? initialPrimaryZone;
+
   /// The initial recovery ExtendedLocation.
   final pulumi.Input<ExtendedLocationResponse>? initialRecoveryExtendedLocation;
+
   /// The initial recovery fabric location info.
   final pulumi.Input<String>? initialRecoveryFabricLocation;
+
   /// The initial target zone info.
   final pulumi.Input<String>? initialRecoveryZone;
+
   /// The primary ExtendedLocation.
   final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
+
   /// Primary fabric location info.
   final pulumi.Input<String>? primaryFabricLocation;
+
   /// Source zone info.
   final pulumi.Input<String>? primaryZone;
+
   /// The recovery ExtendedLocation.
   final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
+
   /// The recovery fabric location info.
   final pulumi.Input<String>? recoveryFabricLocation;
+
   /// The target zone info.
   final pulumi.Input<String>? recoveryZone;
 
@@ -60,36 +71,117 @@ class A2AFabricSpecificLocationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'initialPrimaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(initialPrimaryExtendedLocation, (value) => value.toMap()),
+      'initialPrimaryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(initialPrimaryExtendedLocation, (value) => value.toMap()),
       'initialPrimaryFabricLocation': ?initialPrimaryFabricLocation,
       'initialPrimaryZone': ?initialPrimaryZone,
-      'initialRecoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(initialRecoveryExtendedLocation, (value) => value.toMap()),
+      'initialRecoveryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(initialRecoveryExtendedLocation, (value) => value.toMap()),
       'initialRecoveryFabricLocation': ?initialRecoveryFabricLocation,
       'initialRecoveryZone': ?initialRecoveryZone,
-      'primaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(primaryExtendedLocation, (value) => value.toMap()),
+      'primaryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(primaryExtendedLocation, (value) => value.toMap()),
       'primaryFabricLocation': ?primaryFabricLocation,
       'primaryZone': ?primaryZone,
-      'recoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocationResponse, Map<String, dynamic>>(recoveryExtendedLocation, (value) => value.toMap()),
+      'recoveryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocationResponse,
+            Map<String, dynamic>
+          >(recoveryExtendedLocation, (value) => value.toMap()),
       'recoveryFabricLocation': ?recoveryFabricLocation,
       'recoveryZone': ?recoveryZone,
     };
   }
 
-  factory A2AFabricSpecificLocationDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory A2AFabricSpecificLocationDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return A2AFabricSpecificLocationDetailsResponse(
-      initialPrimaryExtendedLocation: map['initialPrimaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialPrimaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      initialPrimaryFabricLocation: map['initialPrimaryFabricLocation'] == null ? null : (map['initialPrimaryFabricLocation']! as String).input(),
-      initialPrimaryZone: map['initialPrimaryZone'] == null ? null : (map['initialPrimaryZone']! as String).input(),
-      initialRecoveryExtendedLocation: map['initialRecoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['initialRecoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      initialRecoveryFabricLocation: map['initialRecoveryFabricLocation'] == null ? null : (map['initialRecoveryFabricLocation']! as String).input(),
-      initialRecoveryZone: map['initialRecoveryZone'] == null ? null : (map['initialRecoveryZone']! as String).input(),
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation']! as String).input(),
-      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone']! as String).input(),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      recoveryFabricLocation: map['recoveryFabricLocation'] == null ? null : (map['recoveryFabricLocation']! as String).input(),
-      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone']! as String).input(),
+      initialPrimaryExtendedLocation: (() {
+        final guardedValue = map['initialPrimaryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      initialPrimaryFabricLocation: (() {
+        final guardedValue = map['initialPrimaryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialPrimaryZone: (() {
+        final guardedValue = map['initialPrimaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialRecoveryExtendedLocation: (() {
+        final guardedValue = map['initialRecoveryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      initialRecoveryFabricLocation: (() {
+        final guardedValue = map['initialRecoveryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialRecoveryZone: (() {
+        final guardedValue = map['initialRecoveryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryExtendedLocation: (() {
+        final guardedValue = map['primaryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      primaryFabricLocation: (() {
+        final guardedValue = map['primaryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryZone: (() {
+        final guardedValue = map['primaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryExtendedLocation: (() {
+        final guardedValue = map['recoveryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recoveryFabricLocation: (() {
+        final guardedValue = map['recoveryFabricLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryZone: (() {
+        final guardedValue = map['recoveryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum GoogleIamV1AuditLogConfigLogTypeDnsV1beta2 {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const GoogleIamV1AuditLogConfigLogTypeDnsV1beta2(this.value);
-  final String value;
+  const GoogleIamV1AuditLogConfigLogTypeDnsV1beta2(this.wireValue);
+  final String wireValue;
 
   static GoogleIamV1AuditLogConfigLogTypeDnsV1beta2 fromValue(String value) {
     for (final item in GoogleIamV1AuditLogConfigLogTypeDnsV1beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleIamV1AuditLogConfigLogTypeDnsV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown GoogleIamV1AuditLogConfigLogTypeDnsV1beta2 value: $value',
+    );
   }
 }
-

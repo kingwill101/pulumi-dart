@@ -8,29 +8,46 @@ import 'crypto_key_version_template_protection_level.dart';
 class CryptoKeyVersionTemplate {
   /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
   final pulumi.Input<CryptoKeyVersionTemplateAlgorithm> algorithm;
+
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
   final pulumi.Input<CryptoKeyVersionTemplateProtectionLevel>? protectionLevel;
 
   /// Creates a new [CryptoKeyVersionTemplate].
   /// [algorithm] Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
   /// [protectionLevel] ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-  CryptoKeyVersionTemplate({
-    required this.algorithm,
-    this.protectionLevel,
-  });
+  CryptoKeyVersionTemplate({required this.algorithm, this.protectionLevel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'algorithm': pulumi.Input.mapInputValue<CryptoKeyVersionTemplateAlgorithm, String>(algorithm, (value) => value.value),
-      'protectionLevel': ?pulumi.Input.mapOptionalInputValue<CryptoKeyVersionTemplateProtectionLevel, String>(protectionLevel, (value) => value.value),
+      'algorithm':
+          pulumi.Input.mapInputValue<CryptoKeyVersionTemplateAlgorithm, String>(
+            algorithm,
+            (value) => value.wireValue,
+          ),
+      'protectionLevel':
+          ?pulumi.Input.mapOptionalInputValue<
+            CryptoKeyVersionTemplateProtectionLevel,
+            String
+          >(protectionLevel, (value) => value.wireValue),
     };
   }
 
   factory CryptoKeyVersionTemplate.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionTemplate(
-      algorithm: (CryptoKeyVersionTemplateAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      protectionLevel: map['protectionLevel'] == null ? null : (CryptoKeyVersionTemplateProtectionLevel.fromValue(map['protectionLevel']! as String)).input(),
+      algorithm: pulumi.Input.fromValue(
+        CryptoKeyVersionTemplateAlgorithm.fromValue(
+          map['algorithm']! as String,
+        ),
+      ),
+      protectionLevel: (() {
+        final guardedValue = map['protectionLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CryptoKeyVersionTemplateProtectionLevel.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

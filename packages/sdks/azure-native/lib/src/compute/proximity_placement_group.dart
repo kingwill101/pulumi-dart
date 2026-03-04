@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_view_status_response.dart';
 import 'proximity_placement_group_args.dart';
 import 'proximity_placement_group_properties_intent_response.dart';
-import 'sub_resource_with_colocation_status_response.dart';
 import 'system_data_response.dart';
 
 /// Specifies information about the proximity placement group.
@@ -191,29 +190,42 @@ import 'system_data_response.dart';
 /// ```
 class ProximityPlacementGroup extends pulumi.CustomResource {
   /// A list of references to all availability sets in the proximity placement group.
-  late final pulumi.Output<List<SubResourceWithColocationStatusResponse>> availabilitySets;
+  late final pulumi.Output<List<Map<String, dynamic>>> availabilitySets;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Describes colocation status of the Proximity Placement Group.
   late final pulumi.Output<InstanceViewStatusResponse?> colocationStatus;
+
   /// Specifies the user intent of the proximity placement group.
-  late final pulumi.Output<ProximityPlacementGroupPropertiesIntentResponse?> intent;
+  late final pulumi.Output<ProximityPlacementGroupPropertiesIntentResponse?>
+  intent;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
   late final pulumi.Output<String?> proximityPlacementGroupType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A list of references to all virtual machine scale sets in the proximity placement group.
-  late final pulumi.Output<List<SubResourceWithColocationStatusResponse>> virtualMachineScaleSets;
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualMachineScaleSets;
+
   /// A list of references to all virtual machines in the proximity placement group.
-  late final pulumi.Output<List<SubResourceWithColocationStatusResponse>> virtualMachines;
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
+
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -226,23 +238,35 @@ class ProximityPlacementGroup extends pulumi.CustomResource {
     ProximityPlacementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:ProximityPlacementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilitySets = registerOutput<List<SubResourceWithColocationStatusResponse>>('availabilitySets');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.colocationStatus = registerOutput<InstanceViewStatusResponse?>('colocationStatus');
-    this.intent = registerOutput<ProximityPlacementGroupPropertiesIntentResponse?>('intent');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:ProximityPlacementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilitySets = registerOutput<List<Map<String, dynamic>>>(
+      'availabilitySets',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    colocationStatus = registerOutput<InstanceViewStatusResponse?>(
+      'colocationStatus',
+    );
+    intent = registerOutput<ProximityPlacementGroupPropertiesIntentResponse?>(
+      'intent',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.proximityPlacementGroupType = registerOutput<String?>('proximityPlacementGroupType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualMachineScaleSets = registerOutput<List<SubResourceWithColocationStatusResponse>>('virtualMachineScaleSets');
-    this.virtualMachines = registerOutput<List<SubResourceWithColocationStatusResponse>>('virtualMachines');
-    this.zones = registerOutput<List<String>?>('zones');
+    proximityPlacementGroupType = registerOutput<String?>(
+      'proximityPlacementGroupType',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualMachineScaleSets = registerOutput<List<Map<String, dynamic>>>(
+      'virtualMachineScaleSets',
+    );
+    virtualMachines = registerOutput<List<Map<String, dynamic>>>(
+      'virtualMachines',
+    );
+    zones = registerOutput<List<String>?>('zones');
   }
 }

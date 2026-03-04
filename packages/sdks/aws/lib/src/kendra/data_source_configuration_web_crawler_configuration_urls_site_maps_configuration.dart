@@ -13,15 +13,16 @@ class DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'siteMaps': siteMaps,
-    };
+    return <String, dynamic>{'siteMaps': siteMaps};
   }
 
-  factory DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration(
-      siteMaps: ((map['siteMaps'] as List).cast<String>()).input(),
+      siteMaps: pulumi.Input.fromValue(
+        (map['siteMaps'] as List).cast<String>(),
+      ),
     );
   }
 }
-

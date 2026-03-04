@@ -5,24 +5,53 @@ import 'bucket_website_routing_rules_routing_rule_redirect_mirror_taggings_taggi
 
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
   /// Image back-to-source save label rule list See `taggings` below.
-  final pulumi.Input<List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging>>? taggings;
+  final pulumi.Input<
+    List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging>
+  >?
+  taggings;
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings].
   /// [taggings] Image back-to-source save label rule list See `taggings` below.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings({
-    this.taggings,
-  });
+  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings({this.taggings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'taggings': ?pulumi.Input.mapOptionalInputValue<List<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging>, List<Map<String, dynamic>>>(taggings, (value) => pulumi.Input.encodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'taggings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging
+            >,
+            List<Map<String, dynamic>>
+          >(
+            taggings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings.fromMap(Map<String, dynamic> map) {
+  factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings(
-      taggings: map['taggings'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging>(map['taggings']!, (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taggings: (() {
+        final guardedValue = map['taggings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging
+          >(
+            guardedValue,
+            (value) =>
+                BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

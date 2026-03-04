@@ -5,16 +5,17 @@ enum GlobalAddressNetworkTierComputeV1 {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const GlobalAddressNetworkTierComputeV1(this.value);
-  final String value;
+  const GlobalAddressNetworkTierComputeV1(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressNetworkTierComputeV1 fromValue(String value) {
     for (final item in GlobalAddressNetworkTierComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressNetworkTierComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressNetworkTierComputeV1 value: $value',
+    );
   }
 }
-

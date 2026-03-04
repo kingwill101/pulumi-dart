@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'store_args.dart';
 import 'store_encrypt_conf.dart';
-import 'store_shard.dart';
 import 'store_state.dart';
 
 /// Provides a SLS Log Store resource.
@@ -10,7 +9,7 @@ import 'store_state.dart';
 ///
 /// For information about SLS Log Store and how to use it, see [What is Log Store](https://www.alibabacloud.com/help/doc-detail/48874.htm).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -710,38 +709,55 @@ import 'store_state.dart';
 class Store extends pulumi.CustomResource {
   /// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
   late final pulumi.Output<bool?> appendMeta;
+
   /// Determines whether to automatically split a shard. Default to `false`.
   late final pulumi.Output<bool?> autoSplit;
+
   /// Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
   late final pulumi.Output<int> createTime;
+
   /// Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
   late final pulumi.Output<bool?> enableWebTracking;
+
   /// Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
   late final pulumi.Output<StoreEncryptConf> encryptConf;
+
   /// The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
   late final pulumi.Output<int?> hotTtl;
+
   /// Low frequency storage time
   late final pulumi.Output<int?> infrequentAccessTtl;
+
   /// The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
   late final pulumi.Output<String> logstoreName;
+
   /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
   late final pulumi.Output<int?> maxSplitShardCount;
+
   /// Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
   late final pulumi.Output<String> meteringMode;
+
   /// The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
   late final pulumi.Output<String> mode;
+
   /// . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
   late final pulumi.Output<String> name;
+
   /// . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
   late final pulumi.Output<String> project;
+
   /// The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
   late final pulumi.Output<String> projectName;
+
   /// The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
   late final pulumi.Output<int?> retentionPeriod;
+
   /// The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
   late final pulumi.Output<int?> shardCount;
+
   /// The shard attribute.
-  late final pulumi.Output<List<StoreShard>> shards;
+  late final pulumi.Output<List<Map<String, dynamic>>> shards;
+
   /// Determines whether store type is metric. `Metrics` means metric store, empty means log store.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -751,42 +767,35 @@ class Store extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Store]. {@macro pulumi_log_store_store_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Store(
-    String name, {
-    StoreArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:log/store:Store',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appendMeta = registerOutput<bool?>('appendMeta');
-    this.autoSplit = registerOutput<bool?>('autoSplit');
-    this.createTime = registerOutput<int>('createTime');
-    this.enableWebTracking = registerOutput<bool?>('enableWebTracking');
-    this.encryptConf = registerOutput<StoreEncryptConf>('encryptConf');
-    this.hotTtl = registerOutput<int?>('hotTtl');
-    this.infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
-    this.logstoreName = registerOutput<String>('logstoreName');
-    this.maxSplitShardCount = registerOutput<int?>('maxSplitShardCount');
-    this.meteringMode = registerOutput<String>('meteringMode');
-    this.mode = registerOutput<String>('mode');
+  Store(String name, {StoreArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:log/store:Store',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    appendMeta = registerOutput<bool?>('appendMeta');
+    autoSplit = registerOutput<bool?>('autoSplit');
+    createTime = registerOutput<int>('createTime');
+    enableWebTracking = registerOutput<bool?>('enableWebTracking');
+    encryptConf = registerOutput<StoreEncryptConf>('encryptConf');
+    hotTtl = registerOutput<int?>('hotTtl');
+    infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
+    logstoreName = registerOutput<String>('logstoreName');
+    maxSplitShardCount = registerOutput<int?>('maxSplitShardCount');
+    meteringMode = registerOutput<String>('meteringMode');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.projectName = registerOutput<String>('projectName');
-    this.retentionPeriod = registerOutput<int?>('retentionPeriod');
-    this.shardCount = registerOutput<int?>('shardCount');
-    this.shards = registerOutput<List<StoreShard>>('shards');
-    this.telemetryType = registerOutput<String?>('telemetryType');
+    project = registerOutput<String>('project');
+    projectName = registerOutput<String>('projectName');
+    retentionPeriod = registerOutput<int?>('retentionPeriod');
+    shardCount = registerOutput<int?>('shardCount');
+    shards = registerOutput<List<Map<String, dynamic>>>('shards');
+    telemetryType = registerOutput<String?>('telemetryType');
   }
 
   /// Gets an existing [Store] resource's state with the given [name] and [id].
-  static Store get(
-    String name,
-    pulumi.Input<String> id, {
-    StoreState? state,
-  }) {
+  static Store get(String name, pulumi.Input<String> id, {StoreState? state}) {
     return Store._get(
       name,
       state: state?.toMap(),
@@ -799,28 +808,28 @@ class Store extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/store:Store',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appendMeta = registerOutput<bool?>('appendMeta');
-    this.autoSplit = registerOutput<bool?>('autoSplit');
-    this.createTime = registerOutput<int>('createTime');
-    this.enableWebTracking = registerOutput<bool?>('enableWebTracking');
-    this.encryptConf = registerOutput<StoreEncryptConf>('encryptConf');
-    this.hotTtl = registerOutput<int?>('hotTtl');
-    this.infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
-    this.logstoreName = registerOutput<String>('logstoreName');
-    this.maxSplitShardCount = registerOutput<int?>('maxSplitShardCount');
-    this.meteringMode = registerOutput<String>('meteringMode');
-    this.mode = registerOutput<String>('mode');
+         'alicloud:log/store:Store',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appendMeta = registerOutput<bool?>('appendMeta');
+    autoSplit = registerOutput<bool?>('autoSplit');
+    createTime = registerOutput<int>('createTime');
+    enableWebTracking = registerOutput<bool?>('enableWebTracking');
+    encryptConf = registerOutput<StoreEncryptConf>('encryptConf');
+    hotTtl = registerOutput<int?>('hotTtl');
+    infrequentAccessTtl = registerOutput<int?>('infrequentAccessTtl');
+    logstoreName = registerOutput<String>('logstoreName');
+    maxSplitShardCount = registerOutput<int?>('maxSplitShardCount');
+    meteringMode = registerOutput<String>('meteringMode');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.projectName = registerOutput<String>('projectName');
-    this.retentionPeriod = registerOutput<int?>('retentionPeriod');
-    this.shardCount = registerOutput<int?>('shardCount');
-    this.shards = registerOutput<List<StoreShard>>('shards');
-    this.telemetryType = registerOutput<String?>('telemetryType');
+    project = registerOutput<String>('project');
+    projectName = registerOutput<String>('projectName');
+    retentionPeriod = registerOutput<int?>('retentionPeriod');
+    shardCount = registerOutput<int?>('shardCount');
+    shards = registerOutput<List<Map<String, dynamic>>>('shards');
+    telemetryType = registerOutput<String?>('telemetryType');
   }
 }

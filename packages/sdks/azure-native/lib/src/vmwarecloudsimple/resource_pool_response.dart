@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePoolResponse {
   /// Hierarchical resource pool name
   final pulumi.Input<String> fullName;
+
   /// resource pool id (privateCloudId:vsphereId)
   final pulumi.Input<String> id;
+
   /// Azure region
   final pulumi.Input<String> location;
+
   /// {ResourcePoolName}
   final pulumi.Input<String> name;
+
   /// The Private Cloud Id
   final pulumi.Input<String> privateCloudId;
+
   /// {resourceProviderNamespace}/{resourceType}
   final pulumi.Input<String> type;
 
@@ -46,13 +51,12 @@ class ResourcePoolResponse {
 
   factory ResourcePoolResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePoolResponse(
-      fullName: (map['fullName'] as String).input(),
-      id: (map['id'] as String).input(),
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      privateCloudId: (map['privateCloudId'] as String).input(),
-      type: (map['type'] as String).input(),
+      fullName: pulumi.Input.fromValue(map['fullName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -5,9 +5,9 @@ import 'database_redis_config_state.dart';
 /// Provides a virtual resource that can be used to change advanced configuration
 /// options for a DigitalOcean managed Redis database cluster.
 ///
-/// > **Note** DigitalOcean managed Redis cluster product is discontinued as of 30 June 2025 and is replaced by the Managed Valkey product. Use the `digitalocean.DatabaseValkeyConfig` resource instead of `digitalocean.DatabaseRedisConfig`
+/// &gt; **Note** DigitalOcean managed Redis cluster product is discontinued as of 30 June 2025 and is replaced by the Managed Valkey product. Use the `digitalocean.DatabaseValkeyConfig` resource instead of `digitalocean.DatabaseRedisConfig`
 ///
-/// > **Note** Redis configurations are only removed from state when destroyed. The remote configuration is not unset.
+/// &gt; **Note** Redis configurations are only removed from state when destroyed. The remote configuration is not unset.
 ///
 /// ## Example Usage
 ///
@@ -184,28 +184,39 @@ import 'database_redis_config_state.dart';
 class DatabaseRedisConfig extends pulumi.CustomResource {
   /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
   late final pulumi.Output<String> aclChannelsDefault;
+
   /// The ID of the target Redis cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The Redis IO thread count.
   late final pulumi.Output<int> ioThreads;
+
   /// The LFU maxmemory policy counter decay time in minutes.
   late final pulumi.Output<int> lfuDecayTime;
+
   /// The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
   late final pulumi.Output<int> lfuLogFactor;
+
   /// A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
   late final pulumi.Output<String> maxmemoryPolicy;
+
   /// The `notify-keyspace-events` option. Requires at least `K` or `E`.
   late final pulumi.Output<String> notifyKeyspaceEvents;
+
   /// The number of Redis databases. Changing this will cause a restart of Redis service.
   late final pulumi.Output<int> numberOfDatabases;
+
   /// When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
   late final pulumi.Output<String> persistence;
+
   /// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
   late final pulumi.Output<int> pubsubClientOutputBufferLimit;
+
   /// A boolean indicating whether to require SSL to access Redis.
   /// - When enabled, Redis accepts only SSL connections on port `25061`.
   /// - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
   late final pulumi.Output<bool> ssl;
+
   /// The Redis idle connection timeout in seconds.
   late final pulumi.Output<int> timeout;
 
@@ -218,23 +229,25 @@ class DatabaseRedisConfig extends pulumi.CustomResource {
     DatabaseRedisConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseRedisConfig:DatabaseRedisConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.ioThreads = registerOutput<int>('ioThreads');
-    this.lfuDecayTime = registerOutput<int>('lfuDecayTime');
-    this.lfuLogFactor = registerOutput<int>('lfuLogFactor');
-    this.maxmemoryPolicy = registerOutput<String>('maxmemoryPolicy');
-    this.notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
-    this.numberOfDatabases = registerOutput<int>('numberOfDatabases');
-    this.persistence = registerOutput<String>('persistence');
-    this.pubsubClientOutputBufferLimit = registerOutput<int>('pubsubClientOutputBufferLimit');
-    this.ssl = registerOutput<bool>('ssl');
-    this.timeout = registerOutput<int>('timeout');
+         'digitalocean:index/databaseRedisConfig:DatabaseRedisConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
+    clusterId = registerOutput<String>('clusterId');
+    ioThreads = registerOutput<int>('ioThreads');
+    lfuDecayTime = registerOutput<int>('lfuDecayTime');
+    lfuLogFactor = registerOutput<int>('lfuLogFactor');
+    maxmemoryPolicy = registerOutput<String>('maxmemoryPolicy');
+    notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
+    numberOfDatabases = registerOutput<int>('numberOfDatabases');
+    persistence = registerOutput<String>('persistence');
+    pubsubClientOutputBufferLimit = registerOutput<int>(
+      'pubsubClientOutputBufferLimit',
+    );
+    ssl = registerOutput<bool>('ssl');
+    timeout = registerOutput<int>('timeout');
   }
 
   /// Gets an existing [DatabaseRedisConfig] resource's state with the given [name] and [id].
@@ -255,22 +268,24 @@ class DatabaseRedisConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseRedisConfig:DatabaseRedisConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.ioThreads = registerOutput<int>('ioThreads');
-    this.lfuDecayTime = registerOutput<int>('lfuDecayTime');
-    this.lfuLogFactor = registerOutput<int>('lfuLogFactor');
-    this.maxmemoryPolicy = registerOutput<String>('maxmemoryPolicy');
-    this.notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
-    this.numberOfDatabases = registerOutput<int>('numberOfDatabases');
-    this.persistence = registerOutput<String>('persistence');
-    this.pubsubClientOutputBufferLimit = registerOutput<int>('pubsubClientOutputBufferLimit');
-    this.ssl = registerOutput<bool>('ssl');
-    this.timeout = registerOutput<int>('timeout');
+         'digitalocean:index/databaseRedisConfig:DatabaseRedisConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
+    clusterId = registerOutput<String>('clusterId');
+    ioThreads = registerOutput<int>('ioThreads');
+    lfuDecayTime = registerOutput<int>('lfuDecayTime');
+    lfuLogFactor = registerOutput<int>('lfuLogFactor');
+    maxmemoryPolicy = registerOutput<String>('maxmemoryPolicy');
+    notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
+    numberOfDatabases = registerOutput<int>('numberOfDatabases');
+    persistence = registerOutput<String>('persistence');
+    pubsubClientOutputBufferLimit = registerOutput<int>(
+      'pubsubClientOutputBufferLimit',
+    );
+    ssl = registerOutput<bool>('ssl');
+    timeout = registerOutput<int>('timeout');
   }
 }

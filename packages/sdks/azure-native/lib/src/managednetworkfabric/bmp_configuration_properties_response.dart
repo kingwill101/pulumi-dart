@@ -7,24 +7,35 @@ import 'station_connection_properties_response.dart';
 class BmpConfigurationPropertiesResponse {
   /// Export Policy for the BMP Configuration.
   final pulumi.Input<String>? exportPolicy;
+
   /// Monitored Address Families for the BMP Configuration.
   final pulumi.Input<List<String>>? monitoredAddressFamilies;
+
   /// The List of Network ID's that need to be monitored.
   final pulumi.Input<List<String>>? monitoredNetworks;
+
   /// Scope resource ARM Identifier.
   final pulumi.Input<String>? scopeResourceId;
+
   /// Enabling a station. Either True/False.
   final pulumi.Input<String>? stationConfigurationState;
+
   /// Station Connection Mode.
   final pulumi.Input<String>? stationConnectionMode;
+
   /// Station Connection Properties.
-  final pulumi.Input<StationConnectionPropertiesResponse>? stationConnectionProperties;
+  final pulumi.Input<StationConnectionPropertiesResponse>?
+  stationConnectionProperties;
+
   /// IP Address of the station.
   final pulumi.Input<String>? stationIp;
+
   /// Name of the station.
   final pulumi.Input<String>? stationName;
+
   /// Network of the station
   final pulumi.Input<String>? stationNetwork;
+
   /// Port of the station. Default value is 5000.
   final pulumi.Input<int>? stationPort;
 
@@ -62,7 +73,11 @@ class BmpConfigurationPropertiesResponse {
       'scopeResourceId': ?scopeResourceId,
       'stationConfigurationState': ?stationConfigurationState,
       'stationConnectionMode': ?stationConnectionMode,
-      'stationConnectionProperties': ?pulumi.Input.mapOptionalInputValue<StationConnectionPropertiesResponse, Map<String, dynamic>>(stationConnectionProperties, (value) => value.toMap()),
+      'stationConnectionProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            StationConnectionPropertiesResponse,
+            Map<String, dynamic>
+          >(stationConnectionProperties, (value) => value.toMap()),
       'stationIp': ?stationIp,
       'stationName': ?stationName,
       'stationNetwork': ?stationNetwork,
@@ -72,18 +87,65 @@ class BmpConfigurationPropertiesResponse {
 
   factory BmpConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BmpConfigurationPropertiesResponse(
-      exportPolicy: map['exportPolicy'] == null ? null : (map['exportPolicy']! as String).input(),
-      monitoredAddressFamilies: map['monitoredAddressFamilies'] == null ? null : ((map['monitoredAddressFamilies']! as List).cast<String>()).input(),
-      monitoredNetworks: map['monitoredNetworks'] == null ? null : ((map['monitoredNetworks']! as List).cast<String>()).input(),
-      scopeResourceId: map['scopeResourceId'] == null ? null : (map['scopeResourceId']! as String).input(),
-      stationConfigurationState: map['stationConfigurationState'] == null ? null : (map['stationConfigurationState']! as String).input(),
-      stationConnectionMode: map['stationConnectionMode'] == null ? null : (map['stationConnectionMode']! as String).input(),
-      stationConnectionProperties: map['stationConnectionProperties'] == null ? null : (StationConnectionPropertiesResponse.fromMap((map['stationConnectionProperties']! as Map).cast<String, dynamic>())).input(),
-      stationIp: map['stationIp'] == null ? null : (map['stationIp']! as String).input(),
-      stationName: map['stationName'] == null ? null : (map['stationName']! as String).input(),
-      stationNetwork: map['stationNetwork'] == null ? null : (map['stationNetwork']! as String).input(),
-      stationPort: map['stationPort'] == null ? null : (map['stationPort']! as int).input(),
+      exportPolicy: (() {
+        final guardedValue = map['exportPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      monitoredAddressFamilies: (() {
+        final guardedValue = map['monitoredAddressFamilies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      monitoredNetworks: (() {
+        final guardedValue = map['monitoredNetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scopeResourceId: (() {
+        final guardedValue = map['scopeResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stationConfigurationState: (() {
+        final guardedValue = map['stationConfigurationState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stationConnectionMode: (() {
+        final guardedValue = map['stationConnectionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stationConnectionProperties: (() {
+        final guardedValue = map['stationConnectionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StationConnectionPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stationIp: (() {
+        final guardedValue = map['stationIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stationName: (() {
+        final guardedValue = map['stationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stationNetwork: (() {
+        final guardedValue = map['stationNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stationPort: (() {
+        final guardedValue = map['stationPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

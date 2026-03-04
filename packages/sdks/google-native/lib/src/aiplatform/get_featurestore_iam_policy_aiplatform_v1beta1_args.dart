@@ -29,12 +29,17 @@ class GetFeaturestoreIamPolicyAiplatformV1beta1Args {
     };
   }
 
-  factory GetFeaturestoreIamPolicyAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetFeaturestoreIamPolicyAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFeaturestoreIamPolicyAiplatformV1beta1Args(
-      featurestoreId: (map['featurestoreId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      featurestoreId: pulumi.Input.fromValue(map['featurestoreId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

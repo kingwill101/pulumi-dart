@@ -4,18 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of VpcSecurityGroupMembership
 class VpcSecurityGroupMembership {
-  /// <p>The status of the VPC security group.</p>
+  /// &lt;p&gt;The status of the VPC security group.&lt;/p&gt;
   final pulumi.Input<String>? status;
-  /// <p>The VPC security group ID.</p>
+
+  /// &lt;p&gt;The VPC security group ID.&lt;/p&gt;
   final pulumi.Input<String>? vpcSecurityGroupId;
 
   /// Creates a new [VpcSecurityGroupMembership].
-  /// [status] <p>The status of the VPC security group.</p>
-  /// [vpcSecurityGroupId] <p>The VPC security group ID.</p>
-  VpcSecurityGroupMembership({
-    this.status,
-    this.vpcSecurityGroupId,
-  });
+  /// [status] &lt;p&gt;The status of the VPC security group.&lt;/p&gt;
+  /// [vpcSecurityGroupId] &lt;p&gt;The VPC security group ID.&lt;/p&gt;
+  VpcSecurityGroupMembership({this.status, this.vpcSecurityGroupId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class VpcSecurityGroupMembership {
 
   factory VpcSecurityGroupMembership.fromMap(Map<String, dynamic> map) {
     return VpcSecurityGroupMembership(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcSecurityGroupId: map['vpcSecurityGroupId'] == null ? null : (map['vpcSecurityGroupId']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcSecurityGroupId: (() {
+        final guardedValue = map['vpcSecurityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

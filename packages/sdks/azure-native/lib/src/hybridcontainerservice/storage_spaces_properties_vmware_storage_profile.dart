@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageSpacesPropertiesVmwareStorageProfile {
   /// Name of the datacenter in VSphere
   final pulumi.Input<String>? datacenter;
+
   /// Name of the datastore in VSphere
   final pulumi.Input<String>? datastore;
+
   /// Name of the folder in VSphere
   final pulumi.Input<String>? folder;
+
   /// Name of the resource pool in VSphere
   final pulumi.Input<String>? resourcePool;
 
@@ -33,13 +36,30 @@ class StorageSpacesPropertiesVmwareStorageProfile {
     };
   }
 
-  factory StorageSpacesPropertiesVmwareStorageProfile.fromMap(Map<String, dynamic> map) {
+  factory StorageSpacesPropertiesVmwareStorageProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageSpacesPropertiesVmwareStorageProfile(
-      datacenter: map['datacenter'] == null ? null : (map['datacenter']! as String).input(),
-      datastore: map['datastore'] == null ? null : (map['datastore']! as String).input(),
-      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
-      resourcePool: map['resourcePool'] == null ? null : (map['resourcePool']! as String).input(),
+      datacenter: (() {
+        final guardedValue = map['datacenter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      datastore: (() {
+        final guardedValue = map['datastore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourcePool: (() {
+        final guardedValue = map['resourcePool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

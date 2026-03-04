@@ -7,10 +7,12 @@ import 'package:pulumi_aws/s3.dart' as pulumi_aws_s3;
 class Trail extends pulumi.ComponentResource {
   /// The managed S3 Bucket where the Trail will place its logs.
   late final pulumi.Output<pulumi_aws_s3.Bucket?> bucket;
+
   /// The managed Cloudwatch Log Group.
   late final pulumi.Output<pulumi_aws_cloudwatch.LogGroup?> logGroup;
+
   /// The CloudTrail Trail.
-  late final pulumi.Output<pulumi_aws_cloudtrail.Trail> trail;
+  late final pulumi.Output<pulumi_aws_cloudtrail.Trail?> trail;
 
   /// Creates a new [Trail].
   /// [name] The Pulumi resource name.
@@ -21,13 +23,14 @@ class Trail extends pulumi.ComponentResource {
     TrailArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'awsx:cloudtrail:Trail',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.bucket = registerOutput<pulumi_aws_s3.Bucket?>('bucket');
-    this.logGroup = registerOutput<pulumi_aws_cloudwatch.LogGroup?>('logGroup');
-    this.trail = registerOutput<pulumi_aws_cloudtrail.Trail>('trail');
+         'awsx:cloudtrail:Trail',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    bucket = registerOutput<pulumi_aws_s3.Bucket?>('bucket');
+    logGroup = registerOutput<pulumi_aws_cloudwatch.LogGroup?>('logGroup');
+    trail = registerOutput<pulumi_aws_cloudtrail.Trail?>('trail');
   }
 }

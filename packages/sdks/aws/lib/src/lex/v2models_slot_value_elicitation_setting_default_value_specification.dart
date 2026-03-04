@@ -7,7 +7,12 @@ class V2modelsSlotValueElicitationSettingDefaultValueSpecification {
   /// List of default values.
   /// Amazon Lex chooses the default value to use in the order that they are presented in the list.
   /// See the `default_value_list` argument reference below.
-  final pulumi.Input<List<V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList>> defaultValueLists;
+  final pulumi.Input<
+    List<
+      V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList
+    >
+  >
+  defaultValueLists;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingDefaultValueSpecification].
   /// [defaultValueLists] List of default values.
@@ -17,14 +22,38 @@ class V2modelsSlotValueElicitationSettingDefaultValueSpecification {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultValueLists': pulumi.Input.mapInputValue<List<V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList>, List<Map<String, dynamic>>>(defaultValueLists, (value) => pulumi.Input.encodeList<V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultValueLists':
+          pulumi.Input.mapInputValue<
+            List<
+              V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList
+            >,
+            List<Map<String, dynamic>>
+          >(
+            defaultValueLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingDefaultValueSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotValueElicitationSettingDefaultValueSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotValueElicitationSettingDefaultValueSpecification(
-      defaultValueLists: (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList>(map['defaultValueLists']!, (value) => V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultValueLists: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList
+        >(
+          map['defaultValueLists']!,
+          (value) =>
+              V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

@@ -252,7 +252,7 @@ import 'linked_storage_account_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2020-08-01
@@ -267,10 +267,13 @@ import 'linked_storage_account_state.dart';
 class LinkedStorageAccount extends pulumi.CustomResource {
   /// The data source type which should be used for this Log Analytics Linked Storage Account. Possible values are `CustomLogs`, `AzureWatson`, `Query`, `Ingestion` and `Alerts`. Changing this forces a new Log Analytics Linked Storage Account to be created.
   late final pulumi.Output<String> dataSourceType;
+
   /// The name of the Resource Group where the Log Analytics Linked Storage Account should exist. Changing this forces a new Log Analytics Linked Storage Account to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The storage account resource ids to be linked.
   late final pulumi.Output<List<String>> storageAccountIds;
+
   /// The resource ID of the Log Analytics Workspace. Changing this forces a new Log Analytics Linked Storage Account to be created.
   late final pulumi.Output<String> workspaceId;
   late final pulumi.Output<String> workspaceResourceId;
@@ -284,16 +287,16 @@ class LinkedStorageAccount extends pulumi.CustomResource {
     LinkedStorageAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataSourceType = registerOutput<String>('dataSourceType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageAccountIds = registerOutput<List<String>>('storageAccountIds');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.workspaceResourceId = registerOutput<String>('workspaceResourceId');
+         'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataSourceType = registerOutput<String>('dataSourceType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountIds = registerOutput<List<String>>('storageAccountIds');
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 
   /// Gets an existing [LinkedStorageAccount] resource's state with the given [name] and [id].
@@ -314,15 +317,15 @@ class LinkedStorageAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataSourceType = registerOutput<String>('dataSourceType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.storageAccountIds = registerOutput<List<String>>('storageAccountIds');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.workspaceResourceId = registerOutput<String>('workspaceResourceId');
+         'azure:loganalytics/linkedStorageAccount:LinkedStorageAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataSourceType = registerOutput<String>('dataSourceType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountIds = registerOutput<List<String>>('storageAccountIds');
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
 }

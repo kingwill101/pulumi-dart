@@ -6,9 +6,16 @@ import 'data_source_configuration_web_crawler_configuration_urls_site_maps_confi
 
 class DataSourceConfigurationWebCrawlerConfigurationUrls {
   /// A block that specifies the configuration of the seed or starting point URLs of the websites you want to crawl. You can choose to crawl only the website host names, or the website host names with subdomains, or the website host names with subdomains and other domains that the webpages link to. You can list up to `100` seed URLs. Detailed below.
-  final pulumi.Input<DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration>? seedUrlConfiguration;
+  final pulumi.Input<
+    DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration
+  >?
+  seedUrlConfiguration;
+
   /// A block that specifies the configuration of the sitemap URLs of the websites you want to crawl. Only URLs belonging to the same website host names are crawled. You can list up to `3` sitemap URLs. Detailed below.
-  final pulumi.Input<DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration>? siteMapsConfiguration;
+  final pulumi.Input<
+    DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration
+  >?
+  siteMapsConfiguration;
 
   /// Creates a new [DataSourceConfigurationWebCrawlerConfigurationUrls].
   /// [seedUrlConfiguration] A block that specifies the configuration of the seed or starting point URLs of the websites you want to crawl. You can choose to crawl only the website host names, or the website host names with subdomains, or the website host names with subdomains and other domains that the webpages link to. You can list up to `100` seed URLs. Detailed below.
@@ -20,16 +27,41 @@ class DataSourceConfigurationWebCrawlerConfigurationUrls {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'seedUrlConfiguration': ?pulumi.Input.mapOptionalInputValue<DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration, Map<String, dynamic>>(seedUrlConfiguration, (value) => value.toMap()),
-      'siteMapsConfiguration': ?pulumi.Input.mapOptionalInputValue<DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration, Map<String, dynamic>>(siteMapsConfiguration, (value) => value.toMap()),
+      'seedUrlConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration,
+            Map<String, dynamic>
+          >(seedUrlConfiguration, (value) => value.toMap()),
+      'siteMapsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration,
+            Map<String, dynamic>
+          >(siteMapsConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory DataSourceConfigurationWebCrawlerConfigurationUrls.fromMap(Map<String, dynamic> map) {
+  factory DataSourceConfigurationWebCrawlerConfigurationUrls.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceConfigurationWebCrawlerConfigurationUrls(
-      seedUrlConfiguration: map['seedUrlConfiguration'] == null ? null : ((DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration.fromMap((map['seedUrlConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      siteMapsConfiguration: map['siteMapsConfiguration'] == null ? null : ((DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration.fromMap((map['siteMapsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      seedUrlConfiguration: (() {
+        final guardedValue = map['seedUrlConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      siteMapsConfiguration: (() {
+        final guardedValue = map['siteMapsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

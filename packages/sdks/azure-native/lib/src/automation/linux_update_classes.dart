@@ -5,16 +5,15 @@ enum LinuxUpdateClasses {
   valueSecurity("Security"),
   valueOther("Other");
 
-  const LinuxUpdateClasses(this.value);
-  final String value;
+  const LinuxUpdateClasses(this.wireValue);
+  final String wireValue;
 
   static LinuxUpdateClasses fromValue(String value) {
     for (final item in LinuxUpdateClasses.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LinuxUpdateClasses value: $value');
   }
 }
-

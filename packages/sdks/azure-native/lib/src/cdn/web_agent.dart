@@ -1,6 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'agent_path_response.dart';
-import 'resource_reference_response.dart';
 import 'system_data_response.dart';
 import 'web_agent_args.dart';
 
@@ -221,24 +219,34 @@ import 'web_agent_args.dart';
 class WebAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Optional textual description of the agent.
   late final pulumi.Output<String?> description;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of paths associated with the web agent.
-  late final pulumi.Output<List<AgentPathResponse>?> paths;
+  late final pulumi.Output<List<Map<String, dynamic>>?> paths;
+
   /// References to agent links in CDN profiles.
-  late final pulumi.Output<List<ResourceReferenceResponse>> profileAgentLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> profileAgentLinks;
+
   /// Provisioning status of the web agent.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// System prompt for the web agent.
   late final pulumi.Output<String?> systemPrompt;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -251,21 +259,23 @@ class WebAgent extends pulumi.CustomResource {
     WebAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:WebAgent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'azure-native:cdn:WebAgent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.paths = registerOutput<List<AgentPathResponse>?>('paths');
-    this.profileAgentLinks = registerOutput<List<ResourceReferenceResponse>>('profileAgentLinks');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.systemPrompt = registerOutput<String?>('systemPrompt');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    paths = registerOutput<List<Map<String, dynamic>>?>('paths');
+    profileAgentLinks = registerOutput<List<Map<String, dynamic>>>(
+      'profileAgentLinks',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemPrompt = registerOutput<String?>('systemPrompt');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

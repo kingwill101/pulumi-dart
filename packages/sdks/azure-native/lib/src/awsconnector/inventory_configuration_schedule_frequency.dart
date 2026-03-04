@@ -3,16 +3,17 @@ enum InventoryConfigurationScheduleFrequency {
   daily("Daily"),
   weekly("Weekly");
 
-  const InventoryConfigurationScheduleFrequency(this.value);
-  final String value;
+  const InventoryConfigurationScheduleFrequency(this.wireValue);
+  final String wireValue;
 
   static InventoryConfigurationScheduleFrequency fromValue(String value) {
     for (final item in InventoryConfigurationScheduleFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InventoryConfigurationScheduleFrequency value: $value');
+    throw ArgumentError(
+      'Unknown InventoryConfigurationScheduleFrequency value: $value',
+    );
   }
 }
-

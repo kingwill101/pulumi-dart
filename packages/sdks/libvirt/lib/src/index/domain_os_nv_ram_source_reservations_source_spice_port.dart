@@ -8,20 +8,17 @@ class DomainOsNvRamSourceReservationsSourceSpicePort {
 
   /// Creates a new [DomainOsNvRamSourceReservationsSourceSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainOsNvRamSourceReservationsSourceSpicePort({
-    required this.channel,
-  });
+  DomainOsNvRamSourceReservationsSourceSpicePort({required this.channel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': channel,
-    };
+    return <String, dynamic>{'channel': channel};
   }
 
-  factory DomainOsNvRamSourceReservationsSourceSpicePort.fromMap(Map<String, dynamic> map) {
+  factory DomainOsNvRamSourceReservationsSourceSpicePort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainOsNvRamSourceReservationsSourceSpicePort(
-      channel: (map['channel'] as String).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
-

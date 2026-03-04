@@ -9,20 +9,19 @@ class JobTypeEnumValue {
 
   /// Creates a new [JobTypeEnumValue].
   /// [value] Property value
-  JobTypeEnumValue({
-    this.value,
-  });
+  JobTypeEnumValue({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory JobTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return JobTypeEnumValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

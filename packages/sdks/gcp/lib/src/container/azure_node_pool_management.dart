@@ -8,20 +8,19 @@ class AzureNodePoolManagement {
 
   /// Creates a new [AzureNodePoolManagement].
   /// [autoRepair] Optional. Whether or not the nodes will be automatically repaired.
-  AzureNodePoolManagement({
-    this.autoRepair,
-  });
+  AzureNodePoolManagement({this.autoRepair});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'autoRepair': ?autoRepair,
-    };
+    return <String, dynamic>{'autoRepair': ?autoRepair};
   }
 
   factory AzureNodePoolManagement.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolManagement(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
+      autoRepair: (() {
+        final guardedValue = map['autoRepair'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

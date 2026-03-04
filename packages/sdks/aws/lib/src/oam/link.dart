@@ -5,7 +5,7 @@ import 'link_state.dart';
 
 /// Resource for managing an AWS CloudWatch Observability Access Manager Link.
 ///
-/// > **NOTE:** Creating an `aws.oam.Link` may sometimes fail if the `aws.oam.SinkPolicy` for the attached `aws.oam.Sink` is not created before the `aws.oam.Link`. To prevent this, declare an explicit dependency using a `depends_on` meta-argument.
+/// &gt; **NOTE:** Creating an `aws.oam.Link` may sometimes fail if the `aws.oam.SinkPolicy` for the attached `aws.oam.Sink` is not created before the `aws.oam.Link`. To prevent this, declare an explicit dependency using a `depends_on` meta-argument.
 ///
 /// ## Example Usage
 ///
@@ -512,24 +512,33 @@ import 'link_state.dart';
 class Link extends pulumi.CustomResource {
   /// ARN of the link.
   late final pulumi.Output<String> arn;
+
   /// Label that is assigned to this link.
   late final pulumi.Output<String> label;
+
   /// Human-readable name to use to identify this source account when you are viewing data from it in the monitoring account.
   late final pulumi.Output<String> labelTemplate;
+
   /// Configuration for creating filters that specify that only some metric namespaces or log groups are to be shared from the source account to the monitoring account. See `link_configuration` Block for details.
   late final pulumi.Output<LinkLinkConfiguration?> linkConfiguration;
+
   /// ID string that AWS generated as part of the link ARN.
   late final pulumi.Output<String> linkId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Types of data that the source account shares with the monitoring account.
   late final pulumi.Output<List<String>> resourceTypes;
+
   /// ARN of the sink that is used for this link.
   late final pulumi.Output<String> sinkArn;
+
   /// Identifier of the sink to use to create this link.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> sinkIdentifier;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -538,35 +547,30 @@ class Link extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Link]. {@macro pulumi_oam_link_link_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Link(
-    String name, {
-    LinkArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:oam/link:Link',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.label = registerOutput<String>('label');
-    this.labelTemplate = registerOutput<String>('labelTemplate');
-    this.linkConfiguration = registerOutput<LinkLinkConfiguration?>('linkConfiguration');
-    this.linkId = registerOutput<String>('linkId');
-    this.region = registerOutput<String>('region');
-    this.resourceTypes = registerOutput<List<String>>('resourceTypes');
-    this.sinkArn = registerOutput<String>('sinkArn');
-    this.sinkIdentifier = registerOutput<String>('sinkIdentifier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+  Link(String name, {LinkArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:oam/link:Link',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    label = registerOutput<String>('label');
+    labelTemplate = registerOutput<String>('labelTemplate');
+    linkConfiguration = registerOutput<LinkLinkConfiguration?>(
+      'linkConfiguration',
+    );
+    linkId = registerOutput<String>('linkId');
+    region = registerOutput<String>('region');
+    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    sinkArn = registerOutput<String>('sinkArn');
+    sinkIdentifier = registerOutput<String>('sinkIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Link] resource's state with the given [name] and [id].
-  static Link get(
-    String name,
-    pulumi.Input<String> id, {
-    LinkState? state,
-  }) {
+  static Link get(String name, pulumi.Input<String> id, {LinkState? state}) {
     return Link._get(
       name,
       state: state?.toMap(),
@@ -579,21 +583,23 @@ class Link extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:oam/link:Link',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.label = registerOutput<String>('label');
-    this.labelTemplate = registerOutput<String>('labelTemplate');
-    this.linkConfiguration = registerOutput<LinkLinkConfiguration?>('linkConfiguration');
-    this.linkId = registerOutput<String>('linkId');
-    this.region = registerOutput<String>('region');
-    this.resourceTypes = registerOutput<List<String>>('resourceTypes');
-    this.sinkArn = registerOutput<String>('sinkArn');
-    this.sinkIdentifier = registerOutput<String>('sinkIdentifier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:oam/link:Link',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    label = registerOutput<String>('label');
+    labelTemplate = registerOutput<String>('labelTemplate');
+    linkConfiguration = registerOutput<LinkLinkConfiguration?>(
+      'linkConfiguration',
+    );
+    linkId = registerOutput<String>('linkId');
+    region = registerOutput<String>('region');
+    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    sinkArn = registerOutput<String>('sinkArn');
+    sinkIdentifier = registerOutput<String>('sinkIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetMappingResponse {
   /// [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.
   final pulumi.Input<String>? allocationId;
+
   /// [Network Load Balancers] The IPv6 address.
   final pulumi.Input<String>? iPv6Address;
+
   /// A IPAddressType
   final pulumi.Input<String>? ipAddressType;
+
   /// [Network Load Balancers] The private IPv4 address for an internal load balancer.
   final pulumi.Input<String>? privateIPv4Address;
+
   /// A SubnetId.
   final pulumi.Input<String>? subnetId;
 
@@ -41,12 +45,31 @@ class SubnetMappingResponse {
 
   factory SubnetMappingResponse.fromMap(Map<String, dynamic> map) {
     return SubnetMappingResponse(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
-      iPv6Address: map['iPv6Address'] == null ? null : (map['iPv6Address']! as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
-      privateIPv4Address: map['privateIPv4Address'] == null ? null : (map['privateIPv4Address']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      allocationId: (() {
+        final guardedValue = map['allocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iPv6Address: (() {
+        final guardedValue = map['iPv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddressType: (() {
+        final guardedValue = map['ipAddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIPv4Address: (() {
+        final guardedValue = map['privateIPv4Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

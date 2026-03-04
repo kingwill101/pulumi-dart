@@ -13,15 +13,14 @@ class FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'soaking': soaking,
-    };
+    return <String, dynamic>{'soaking': soaking};
   }
 
-  factory FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions.fromMap(Map<String, dynamic> map) {
+  factory FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions(
-      soaking: (map['soaking'] as String).input(),
+      soaking: pulumi.Input.fromValue(map['soaking'] as String),
     );
   }
 }
-

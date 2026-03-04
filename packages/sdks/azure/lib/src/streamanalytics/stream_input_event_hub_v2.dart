@@ -3,7 +3,7 @@ import 'stream_input_event_hub_v2_args.dart';
 import 'stream_input_event_hub_v2_serialization.dart';
 import 'stream_input_event_hub_v2_state.dart';
 
-/// > **Note:** This resource creates a Stream Input of type `Microsoft.EventHub/EventHub`, to create a Stream Input of type `Microsoft.ServiceBus/EventHub` please use the resource azurerm_stream_analytics_stream_input_eventhub.
+/// &gt; **Note:** This resource creates a Stream Input of type `Microsoft.EventHub/EventHub`, to create a Stream Input of type `Microsoft.ServiceBus/EventHub` please use the resource azurerm_stream_analytics_stream_input_eventhub.
 ///
 /// Manages a Stream Analytics Stream Input EventHub V2.
 ///
@@ -375,7 +375,7 @@ import 'stream_input_event_hub_v2_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2020-03-01
@@ -390,22 +390,31 @@ import 'stream_input_event_hub_v2_state.dart';
 class StreamInputEventHubV2 extends pulumi.CustomResource {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
+
   /// The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub. If not set the input will use the Event Hub's default consumer group.
   late final pulumi.Output<String?> eventhubConsumerGroupName;
+
   /// The name of the Event Hub.
   late final pulumi.Output<String> eventhubName;
+
   /// The name of the Stream Input EventHub V2. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The property the input Event Hub has been partitioned by.
   late final pulumi.Output<String?> partitionKey;
+
   /// A `serialization` block as defined below.
   late final pulumi.Output<StreamInputEventHubV2Serialization> serialization;
+
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
   late final pulumi.Output<String> servicebusNamespace;
+
   /// The shared access policy key for the specified shared access policy.
   late final pulumi.Output<String?> sharedAccessPolicyKey;
+
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
   late final pulumi.Output<String?> sharedAccessPolicyName;
+
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;
 
@@ -418,21 +427,25 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
     StreamInputEventHubV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/streamInputEventHubV2:StreamInputEventHubV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationMode = registerOutput<String?>('authenticationMode');
-    this.eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
-    this.eventhubName = registerOutput<String>('eventhubName');
+         'azure:streamanalytics/streamInputEventHubV2:StreamInputEventHubV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    eventhubConsumerGroupName = registerOutput<String?>(
+      'eventhubConsumerGroupName',
+    );
+    eventhubName = registerOutput<String>('eventhubName');
     this.name = registerOutput<String>('name');
-    this.partitionKey = registerOutput<String?>('partitionKey');
-    this.serialization = registerOutput<StreamInputEventHubV2Serialization>('serialization');
-    this.servicebusNamespace = registerOutput<String>('servicebusNamespace');
-    this.sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
-    this.sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+    partitionKey = registerOutput<String?>('partitionKey');
+    serialization = registerOutput<StreamInputEventHubV2Serialization>(
+      'serialization',
+    );
+    servicebusNamespace = registerOutput<String>('servicebusNamespace');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
+    sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
 
   /// Gets an existing [StreamInputEventHubV2] resource's state with the given [name] and [id].
@@ -453,20 +466,24 @@ class StreamInputEventHubV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/streamInputEventHubV2:StreamInputEventHubV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationMode = registerOutput<String?>('authenticationMode');
-    this.eventhubConsumerGroupName = registerOutput<String?>('eventhubConsumerGroupName');
-    this.eventhubName = registerOutput<String>('eventhubName');
+         'azure:streamanalytics/streamInputEventHubV2:StreamInputEventHubV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    eventhubConsumerGroupName = registerOutput<String?>(
+      'eventhubConsumerGroupName',
+    );
+    eventhubName = registerOutput<String>('eventhubName');
     this.name = registerOutput<String>('name');
-    this.partitionKey = registerOutput<String?>('partitionKey');
-    this.serialization = registerOutput<StreamInputEventHubV2Serialization>('serialization');
-    this.servicebusNamespace = registerOutput<String>('servicebusNamespace');
-    this.sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
-    this.sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+    partitionKey = registerOutput<String?>('partitionKey');
+    serialization = registerOutput<StreamInputEventHubV2Serialization>(
+      'serialization',
+    );
+    servicebusNamespace = registerOutput<String>('servicebusNamespace');
+    sharedAccessPolicyKey = registerOutput<String?>('sharedAccessPolicyKey');
+    sharedAccessPolicyName = registerOutput<String?>('sharedAccessPolicyName');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
 }

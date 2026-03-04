@@ -4,24 +4,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_ddos_protection_config_ddos_protection_compute_beta.dart';
 
 class SecurityPolicyDdosProtectionConfigComputeBeta {
-  final pulumi.Input<SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta>? ddosProtection;
+  final pulumi.Input<
+    SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta
+  >?
+  ddosProtection;
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigComputeBeta].
   /// [ddosProtection] Optional.
-  SecurityPolicyDdosProtectionConfigComputeBeta({
-    this.ddosProtection,
-  });
+  SecurityPolicyDdosProtectionConfigComputeBeta({this.ddosProtection});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ddosProtection': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta, String>(ddosProtection, (value) => value.value),
+      'ddosProtection':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta,
+            String
+          >(ddosProtection, (value) => value.wireValue),
     };
   }
 
-  factory SecurityPolicyDdosProtectionConfigComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyDdosProtectionConfigComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyDdosProtectionConfigComputeBeta(
-      ddosProtection: map['ddosProtection'] == null ? null : (SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta.fromValue(map['ddosProtection']! as String)).input(),
+      ddosProtection: (() {
+        final guardedValue = map['ddosProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityPolicyDdosProtectionConfigDdosProtectionComputeBeta.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

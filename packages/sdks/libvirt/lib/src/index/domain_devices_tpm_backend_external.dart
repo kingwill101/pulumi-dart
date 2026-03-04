@@ -9,20 +9,29 @@ class DomainDevicesTpmBackendExternal {
 
   /// Creates a new [DomainDevicesTpmBackendExternal].
   /// [source] Specifies the source configuration for the external TPM backend.
-  DomainDevicesTpmBackendExternal({
-    this.source,
-  });
+  DomainDevicesTpmBackendExternal({this.source});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendExternalSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesTpmBackendExternalSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesTpmBackendExternal.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendExternal(
-      source: map['source'] == null ? null : (DomainDevicesTpmBackendExternalSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesTpmBackendExternalSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

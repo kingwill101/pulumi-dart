@@ -1,5 +1,3 @@
-library module_vpclattice;
-
 export 'vpclattice/access_log_subscription.dart';
 export 'vpclattice/access_log_subscription_args.dart';
 export 'vpclattice/access_log_subscription_state.dart';

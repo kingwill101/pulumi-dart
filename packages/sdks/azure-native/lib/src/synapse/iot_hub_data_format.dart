@@ -17,16 +17,15 @@ enum IotHubDataFormat {
   valueAPACHEAVRO("APACHEAVRO"),
   valueW3CLOGFILE("W3CLOGFILE");
 
-  const IotHubDataFormat(this.value);
-  final String value;
+  const IotHubDataFormat(this.wireValue);
+  final String wireValue;
 
   static IotHubDataFormat fromValue(String value) {
     for (final item in IotHubDataFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IotHubDataFormat value: $value');
   }
 }
-

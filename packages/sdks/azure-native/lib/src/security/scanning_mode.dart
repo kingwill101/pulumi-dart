@@ -2,16 +2,15 @@
 enum ScanningMode {
   valueDefault("Default");
 
-  const ScanningMode(this.value);
-  final String value;
+  const ScanningMode(this.wireValue);
+  final String wireValue;
 
   static ScanningMode fromValue(String value) {
     for (final item in ScanningMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScanningMode value: $value');
   }
 }
-

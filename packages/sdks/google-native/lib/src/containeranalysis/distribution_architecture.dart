@@ -4,16 +4,15 @@ enum DistributionArchitecture {
   x86("X86"),
   x64("X64");
 
-  const DistributionArchitecture(this.value);
-  final String value;
+  const DistributionArchitecture(this.wireValue);
+  final String wireValue;
 
   static DistributionArchitecture fromValue(String value) {
     for (final item in DistributionArchitecture.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DistributionArchitecture value: $value');
   }
 }
-

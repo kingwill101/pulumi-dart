@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudChannelV1EduDataResponse {
   /// Size of the institute.
   final pulumi.Input<String> instituteSize;
+
   /// Designated institute type of customer.
   final pulumi.Input<String> instituteType;
+
   /// Web address for the edu customer's institution.
   final pulumi.Input<String> website;
 
@@ -29,12 +31,13 @@ class GoogleCloudChannelV1EduDataResponse {
     };
   }
 
-  factory GoogleCloudChannelV1EduDataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1EduDataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1EduDataResponse(
-      instituteSize: (map['instituteSize'] as String).input(),
-      instituteType: (map['instituteType'] as String).input(),
-      website: (map['website'] as String).input(),
+      instituteSize: pulumi.Input.fromValue(map['instituteSize'] as String),
+      instituteType: pulumi.Input.fromValue(map['instituteType'] as String),
+      website: pulumi.Input.fromValue(map['website'] as String),
     );
   }
 }
-

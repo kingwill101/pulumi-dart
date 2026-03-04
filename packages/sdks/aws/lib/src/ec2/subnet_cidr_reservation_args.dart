@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetCidrReservationArgs {
   /// The CIDR block for the reservation.
   final pulumi.Input<String> cidrBlock;
+
   /// A brief description of the reservation.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The type of reservation to create. Valid values: `explicit`, `prefix`
   final pulumi.Input<String> reservationType;
+
   /// The ID of the subnet to create the reservation for.
   final pulumi.Input<String> subnetId;
 
@@ -44,12 +48,19 @@ class SubnetCidrReservationArgs {
 
   factory SubnetCidrReservationArgs.fromMap(Map<String, dynamic> map) {
     return SubnetCidrReservationArgs(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      reservationType: (map['reservationType'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservationType: pulumi.Input.fromValue(map['reservationType'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

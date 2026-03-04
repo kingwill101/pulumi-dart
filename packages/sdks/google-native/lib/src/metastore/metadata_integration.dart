@@ -10,20 +10,29 @@ class MetadataIntegration {
 
   /// Creates a new [MetadataIntegration].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.
-  MetadataIntegration({
-    this.dataCatalogConfig,
-  });
+  MetadataIntegration({this.dataCatalogConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataCatalogConfig': ?pulumi.Input.mapOptionalInputValue<DataCatalogConfig, Map<String, dynamic>>(dataCatalogConfig, (value) => value.toMap()),
+      'dataCatalogConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataCatalogConfig,
+            Map<String, dynamic>
+          >(dataCatalogConfig, (value) => value.toMap()),
     };
   }
 
   factory MetadataIntegration.fromMap(Map<String, dynamic> map) {
     return MetadataIntegration(
-      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : (DataCatalogConfig.fromMap((map['dataCatalogConfig']! as Map).cast<String, dynamic>())).input(),
+      dataCatalogConfig: (() {
+        final guardedValue = map['dataCatalogConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataCatalogConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

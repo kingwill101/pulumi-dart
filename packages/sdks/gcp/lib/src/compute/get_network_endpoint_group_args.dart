@@ -10,11 +10,14 @@ class GetNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name.
   /// Provide either this or a `self_link`.
   final pulumi.Input<String>? name;
+
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The Network Endpoint Group self_link.
   final pulumi.Input<String>? selfLink;
+
   /// The Network Endpoint Group availability zone.
   final pulumi.Input<String>? zone;
 
@@ -41,11 +44,26 @@ class GetNetworkEndpointGroupArgs {
 
   factory GetNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkEndpointGroupArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

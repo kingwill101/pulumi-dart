@@ -8,6 +8,7 @@ class GetDesktopsResult {
   final String? desktopName;
   final List<GetDesktopsDesktop> desktops;
   final List<String>? endUserIds;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -47,7 +48,11 @@ class GetDesktopsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'desktopName': ?desktopName,
-      'desktops': pulumi.Input.encodeList<GetDesktopsDesktop, Map<String, dynamic>>(desktops, (value) => value.toMap()),
+      'desktops':
+          pulumi.Input.encodeList<GetDesktopsDesktop, Map<String, dynamic>>(
+            desktops,
+            (value) => value.toMap(),
+          ),
       'endUserIds': ?endUserIds,
       'id': id,
       'ids': ids,
@@ -62,18 +67,49 @@ class GetDesktopsResult {
 
   factory GetDesktopsResult.fromMap(Map<String, dynamic> map) {
     return GetDesktopsResult(
-      desktopName: map['desktopName'] == null ? null : map['desktopName']! as String,
-      desktops: pulumi.Input.decodeList<GetDesktopsDesktop>(map['desktops'], (value) => GetDesktopsDesktop.fromMap((value as Map).cast<String, dynamic>())),
-      endUserIds: map['endUserIds'] == null ? null : (map['endUserIds']! as List).cast<String>(),
+      desktopName: (() {
+        final guardedValue = map['desktopName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      desktops: pulumi.Input.decodeList<GetDesktopsDesktop>(
+        map['desktops']!,
+        (value) =>
+            GetDesktopsDesktop.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      endUserIds: (() {
+        final guardedValue = map['endUserIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      officeSiteId: map['officeSiteId'] == null ? null : map['officeSiteId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      policyGroupId: map['policyGroupId'] == null ? null : map['policyGroupId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      officeSiteId: (() {
+        final guardedValue = map['officeSiteId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policyGroupId: (() {
+        final guardedValue = map['policyGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

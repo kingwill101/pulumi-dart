@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogicalNetworkInterfaceResponse {
   /// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
   final pulumi.Input<bool> defaultGateway;
+
   /// IP address in the network
   final pulumi.Input<String> ipAddress;
+
   /// Name of the network
   final pulumi.Input<String> network;
+
   /// Type of network.
   final pulumi.Input<String> networkType;
 
@@ -36,11 +39,10 @@ class LogicalNetworkInterfaceResponse {
 
   factory LogicalNetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkInterfaceResponse(
-      defaultGateway: (map['defaultGateway'] as bool).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      network: (map['network'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
+      defaultGateway: pulumi.Input.fromValue(map['defaultGateway'] as bool),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
     );
   }
 }
-

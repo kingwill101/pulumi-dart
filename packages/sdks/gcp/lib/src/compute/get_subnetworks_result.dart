@@ -6,10 +6,12 @@ import 'get_subnetworks_subnetwork.dart';
 /// Result data returned by getSubnetworks.
 class GetSubnetworksResult {
   final String? filter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? project;
   final String? region;
+
   /// A list of all retrieved GCE subnetworks. Structure is defined below.
   final List<GetSubnetworksSubnetwork> subnetworks;
 
@@ -33,18 +35,38 @@ class GetSubnetworksResult {
       'id': id,
       'project': ?project,
       'region': ?region,
-      'subnetworks': pulumi.Input.encodeList<GetSubnetworksSubnetwork, Map<String, dynamic>>(subnetworks, (value) => value.toMap()),
+      'subnetworks':
+          pulumi.Input.encodeList<
+            GetSubnetworksSubnetwork,
+            Map<String, dynamic>
+          >(subnetworks, (value) => value.toMap()),
     };
   }
 
   factory GetSubnetworksResult.fromMap(Map<String, dynamic> map) {
     return GetSubnetworksResult(
-      filter: map['filter'] == null ? null : map['filter']! as String,
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
-      subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(map['subnetworks'], (value) => GetSubnetworksSubnetwork.fromMap((value as Map).cast<String, dynamic>())),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(
+        map['subnetworks']!,
+        (value) => GetSubnetworksSubnetwork.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

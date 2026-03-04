@@ -8,7 +8,7 @@ import 'defense_template_state.dart';
 ///
 /// For information about WAFV3 Defense Template and how to use it, see [What is Defense Template](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdefensetemplate).
 ///
-/// > **NOTE:** Available since v1.218.0.
+/// &gt; **NOTE:** Available since v1.218.0.
 ///
 /// ## Example Usage
 ///
@@ -196,23 +196,32 @@ import 'defense_template_state.dart';
 class DefenseTemplate extends pulumi.CustomResource {
   /// The WAF protection scenario to be created. Valid values:
   late final pulumi.Output<String> defenseScene;
+
   /// Template ID
   late final pulumi.Output<int> defenseTemplateId;
+
   /// The name of the protection rule template.
   late final pulumi.Output<String> defenseTemplateName;
+
   /// The description of the protection rule template.
   late final pulumi.Output<String?> description;
+
   /// The ID of the Web Application Firewall (WAF) instance.
   late final pulumi.Output<String> instanceId;
+
   /// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
   late final pulumi.Output<List<String>?> resourceGroups;
   late final pulumi.Output<String?> resourceManagerResourceGroupId;
+
   /// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
   late final pulumi.Output<List<String>?> resources;
+
   /// The status of the protection rule template. Valid values:
   late final pulumi.Output<String> status;
+
   /// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
   late final pulumi.Output<String> templateOrigin;
+
   /// The type of the protection rule template. Valid values:
   /// - **user_default:** default template.
   /// - **user_custom:** custom template.
@@ -227,22 +236,24 @@ class DefenseTemplate extends pulumi.CustomResource {
     DefenseTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:wafv3/defenseTemplate:DefenseTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.defenseTemplateId = registerOutput<int>('defenseTemplateId');
-    this.defenseTemplateName = registerOutput<String>('defenseTemplateName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.resourceGroups = registerOutput<List<String>?>('resourceGroups');
-    this.resourceManagerResourceGroupId = registerOutput<String?>('resourceManagerResourceGroupId');
-    this.resources = registerOutput<List<String>?>('resources');
-    this.status = registerOutput<String>('status');
-    this.templateOrigin = registerOutput<String>('templateOrigin');
-    this.templateType = registerOutput<String>('templateType');
+         'alicloud:wafv3/defenseTemplate:DefenseTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defenseScene = registerOutput<String>('defenseScene');
+    defenseTemplateId = registerOutput<int>('defenseTemplateId');
+    defenseTemplateName = registerOutput<String>('defenseTemplateName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    resourceGroups = registerOutput<List<String>?>('resourceGroups');
+    resourceManagerResourceGroupId = registerOutput<String?>(
+      'resourceManagerResourceGroupId',
+    );
+    resources = registerOutput<List<String>?>('resources');
+    status = registerOutput<String>('status');
+    templateOrigin = registerOutput<String>('templateOrigin');
+    templateType = registerOutput<String>('templateType');
   }
 
   /// Gets an existing [DefenseTemplate] resource's state with the given [name] and [id].
@@ -263,21 +274,23 @@ class DefenseTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:wafv3/defenseTemplate:DefenseTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defenseScene = registerOutput<String>('defenseScene');
-    this.defenseTemplateId = registerOutput<int>('defenseTemplateId');
-    this.defenseTemplateName = registerOutput<String>('defenseTemplateName');
-    this.description = registerOutput<String?>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.resourceGroups = registerOutput<List<String>?>('resourceGroups');
-    this.resourceManagerResourceGroupId = registerOutput<String?>('resourceManagerResourceGroupId');
-    this.resources = registerOutput<List<String>?>('resources');
-    this.status = registerOutput<String>('status');
-    this.templateOrigin = registerOutput<String>('templateOrigin');
-    this.templateType = registerOutput<String>('templateType');
+         'alicloud:wafv3/defenseTemplate:DefenseTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defenseScene = registerOutput<String>('defenseScene');
+    defenseTemplateId = registerOutput<int>('defenseTemplateId');
+    defenseTemplateName = registerOutput<String>('defenseTemplateName');
+    description = registerOutput<String?>('description');
+    instanceId = registerOutput<String>('instanceId');
+    resourceGroups = registerOutput<List<String>?>('resourceGroups');
+    resourceManagerResourceGroupId = registerOutput<String?>(
+      'resourceManagerResourceGroupId',
+    );
+    resources = registerOutput<List<String>?>('resources');
+    status = registerOutput<String>('status');
+    templateOrigin = registerOutput<String>('templateOrigin');
+    templateType = registerOutput<String>('templateType');
   }
 }

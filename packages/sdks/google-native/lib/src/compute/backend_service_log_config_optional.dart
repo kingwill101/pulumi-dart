@@ -5,16 +5,17 @@ enum BackendServiceLogConfigOptional {
   includeAllOptional("INCLUDE_ALL_OPTIONAL"),
   unspecifiedOptionalMode("UNSPECIFIED_OPTIONAL_MODE");
 
-  const BackendServiceLogConfigOptional(this.value);
-  final String value;
+  const BackendServiceLogConfigOptional(this.wireValue);
+  final String wireValue;
 
   static BackendServiceLogConfigOptional fromValue(String value) {
     for (final item in BackendServiceLogConfigOptional.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceLogConfigOptional value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceLogConfigOptional value: $value',
+    );
   }
 }
-

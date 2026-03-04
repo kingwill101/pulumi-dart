@@ -8,20 +8,19 @@ class JobConfigAdBreak {
 
   /// Creates a new [JobConfigAdBreak].
   /// [startTimeOffset] Start time in seconds for the ad break, relative to the output file timeline
-  JobConfigAdBreak({
-    this.startTimeOffset,
-  });
+  JobConfigAdBreak({this.startTimeOffset});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTimeOffset': ?startTimeOffset,
-    };
+    return <String, dynamic>{'startTimeOffset': ?startTimeOffset};
   }
 
   factory JobConfigAdBreak.fromMap(Map<String, dynamic> map) {
     return JobConfigAdBreak(
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
+      startTimeOffset: (() {
+        final guardedValue = map['startTimeOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

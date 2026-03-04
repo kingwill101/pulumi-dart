@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaReferencePropertiesResponse {
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
+
   /// Schema Id of schema reference
   final pulumi.Input<String> schemaId;
 
@@ -26,9 +27,10 @@ class SchemaReferencePropertiesResponse {
 
   factory SchemaReferencePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SchemaReferencePropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
-      schemaId: (map['schemaId'] as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
     );
   }
 }
-

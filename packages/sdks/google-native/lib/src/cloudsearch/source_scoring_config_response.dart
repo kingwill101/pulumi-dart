@@ -9,20 +9,17 @@ class SourceScoringConfigResponse {
 
   /// Creates a new [SourceScoringConfigResponse].
   /// [sourceImportance] Importance of the source.
-  SourceScoringConfigResponse({
-    required this.sourceImportance,
-  });
+  SourceScoringConfigResponse({required this.sourceImportance});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sourceImportance': sourceImportance,
-    };
+    return <String, dynamic>{'sourceImportance': sourceImportance};
   }
 
   factory SourceScoringConfigResponse.fromMap(Map<String, dynamic> map) {
     return SourceScoringConfigResponse(
-      sourceImportance: (map['sourceImportance'] as String).input(),
+      sourceImportance: pulumi.Input.fromValue(
+        map['sourceImportance'] as String,
+      ),
     );
   }
 }
-

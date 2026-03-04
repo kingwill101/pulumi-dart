@@ -123,18 +123,25 @@ import 'browser_application_state.dart';
 class BrowserApplication extends pulumi.CustomResource {
   /// The account ID of the New Relic account you wish to create the browser application in. Defaults to the value of the environment variable `NEW_RELIC_ACCOUNT_ID` if not specified.
   late final pulumi.Output<String> accountId;
+
   /// The application ID of the browser application (not to be confused with GUID).
   late final pulumi.Output<String> applicationId;
+
   /// Configures cookies. Defaults to `true`, if not specified.
   late final pulumi.Output<bool?> cookiesEnabled;
+
   /// Configures distributed tracing in browser apps. Defaults to `true`, if not specified.
   late final pulumi.Output<bool?> distributedTracingEnabled;
+
   /// The GUID of the browser application.
   late final pulumi.Output<String> guid;
+
   /// The JavaScript configuration of the browser application, encoded into a string.
   late final pulumi.Output<String> jsConfig;
+
   /// Determines the browser loader configured. Valid values are `SPA`, `PRO`, and `LITE`. The default is `SPA`. Refer to the [browser agent loader documentation](https://docs.newrelic.com/docs/browser/browser-monitoring/installation/install-browser-monitoring-agent/#agent-types) for more information on valid loader types.
   late final pulumi.Output<String?> loaderType;
+
   /// The name of the browser application.
   late final pulumi.Output<String> name;
 
@@ -147,18 +154,20 @@ class BrowserApplication extends pulumi.CustomResource {
     BrowserApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/browserApplication:BrowserApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.cookiesEnabled = registerOutput<bool?>('cookiesEnabled');
-    this.distributedTracingEnabled = registerOutput<bool?>('distributedTracingEnabled');
-    this.guid = registerOutput<String>('guid');
-    this.jsConfig = registerOutput<String>('jsConfig');
-    this.loaderType = registerOutput<String?>('loaderType');
+         'newrelic:index/browserApplication:BrowserApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    applicationId = registerOutput<String>('applicationId');
+    cookiesEnabled = registerOutput<bool?>('cookiesEnabled');
+    distributedTracingEnabled = registerOutput<bool?>(
+      'distributedTracingEnabled',
+    );
+    guid = registerOutput<String>('guid');
+    jsConfig = registerOutput<String>('jsConfig');
+    loaderType = registerOutput<String?>('loaderType');
     this.name = registerOutput<String>('name');
   }
 
@@ -180,18 +189,20 @@ class BrowserApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/browserApplication:BrowserApplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.cookiesEnabled = registerOutput<bool?>('cookiesEnabled');
-    this.distributedTracingEnabled = registerOutput<bool?>('distributedTracingEnabled');
-    this.guid = registerOutput<String>('guid');
-    this.jsConfig = registerOutput<String>('jsConfig');
-    this.loaderType = registerOutput<String?>('loaderType');
+         'newrelic:index/browserApplication:BrowserApplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    applicationId = registerOutput<String>('applicationId');
+    cookiesEnabled = registerOutput<bool?>('cookiesEnabled');
+    distributedTracingEnabled = registerOutput<bool?>(
+      'distributedTracingEnabled',
+    );
+    guid = registerOutput<String>('guid');
+    jsConfig = registerOutput<String>('jsConfig');
+    loaderType = registerOutput<String?>('loaderType');
     this.name = registerOutput<String>('name');
   }
 }

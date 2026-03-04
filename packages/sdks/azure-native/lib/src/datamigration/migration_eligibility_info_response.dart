@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationEligibilityInfoResponse {
   /// Whether object is eligible for migration or not.
   final pulumi.Input<bool> isEligibleForMigration;
+
   /// Information about eligibility failure for the server object.
   final pulumi.Input<List<String>> validationMessages;
 
@@ -26,9 +27,12 @@ class MigrationEligibilityInfoResponse {
 
   factory MigrationEligibilityInfoResponse.fromMap(Map<String, dynamic> map) {
     return MigrationEligibilityInfoResponse(
-      isEligibleForMigration: (map['isEligibleForMigration'] as bool).input(),
-      validationMessages: ((map['validationMessages'] as List).cast<String>()).input(),
+      isEligibleForMigration: pulumi.Input.fromValue(
+        map['isEligibleForMigration'] as bool,
+      ),
+      validationMessages: pulumi.Input.fromValue(
+        (map['validationMessages'] as List).cast<String>(),
+      ),
     );
   }
 }
-

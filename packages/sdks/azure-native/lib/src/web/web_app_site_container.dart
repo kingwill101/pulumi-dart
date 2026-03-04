@@ -1,6 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'environment_variable_response.dart';
-import 'volume_mount_response.dart';
 import 'web_app_site_container_args.dart';
 
 /// Container of a site
@@ -18,36 +16,51 @@ import 'web_app_site_container_args.dart';
 class WebAppSiteContainer extends pulumi.CustomResource {
   /// Auth Type
   late final pulumi.Output<String?> authType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Created Time
   late final pulumi.Output<String> createdTime;
+
   /// List of environment variables
-  late final pulumi.Output<List<EnvironmentVariableResponse>?> environmentVariables;
+  late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
+
   /// Image Name
   late final pulumi.Output<String> image;
-  /// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
+
+  /// &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool> isMain;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Last Modified Time
   late final pulumi.Output<String> lastModifiedTime;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Password Secret
   late final pulumi.Output<String?> passwordSecret;
+
   /// StartUp Command
   late final pulumi.Output<String?> startUpCommand;
+
   /// Target Port
   late final pulumi.Output<String?> targetPort;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// UserManagedIdentity ClientId
   late final pulumi.Output<String?> userManagedIdentityClientId;
+
   /// User Name
   late final pulumi.Output<String?> userName;
+
   /// List of volume mounts
-  late final pulumi.Output<List<VolumeMountResponse>?> volumeMounts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> volumeMounts;
 
   /// Creates a new [WebAppSiteContainer].
   /// [name] The Pulumi resource name.
@@ -58,26 +71,30 @@ class WebAppSiteContainer extends pulumi.CustomResource {
     WebAppSiteContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppSiteContainer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authType = registerOutput<String?>('authType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.environmentVariables = registerOutput<List<EnvironmentVariableResponse>?>('environmentVariables');
-    this.image = registerOutput<String>('image');
-    this.isMain = registerOutput<bool>('isMain');
-    this.kind = registerOutput<String?>('kind');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'azure-native:web:WebAppSiteContainer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authType = registerOutput<String?>('authType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTime = registerOutput<String>('createdTime');
+    environmentVariables = registerOutput<List<Map<String, dynamic>>?>(
+      'environmentVariables',
+    );
+    image = registerOutput<String>('image');
+    isMain = registerOutput<bool>('isMain');
+    kind = registerOutput<String?>('kind');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.passwordSecret = registerOutput<String?>('passwordSecret');
-    this.startUpCommand = registerOutput<String?>('startUpCommand');
-    this.targetPort = registerOutput<String?>('targetPort');
-    this.type = registerOutput<String>('type');
-    this.userManagedIdentityClientId = registerOutput<String?>('userManagedIdentityClientId');
-    this.userName = registerOutput<String?>('userName');
-    this.volumeMounts = registerOutput<List<VolumeMountResponse>?>('volumeMounts');
+    passwordSecret = registerOutput<String?>('passwordSecret');
+    startUpCommand = registerOutput<String?>('startUpCommand');
+    targetPort = registerOutput<String?>('targetPort');
+    type = registerOutput<String>('type');
+    userManagedIdentityClientId = registerOutput<String?>(
+      'userManagedIdentityClientId',
+    );
+    userName = registerOutput<String?>('userName');
+    volumeMounts = registerOutput<List<Map<String, dynamic>>?>('volumeMounts');
   }
 }

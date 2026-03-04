@@ -4,16 +4,15 @@ enum PhraseMatcherType {
   allOf("ALL_OF"),
   anyOf("ANY_OF");
 
-  const PhraseMatcherType(this.value);
-  final String value;
+  const PhraseMatcherType(this.wireValue);
+  final String wireValue;
 
   static PhraseMatcherType fromValue(String value) {
     for (final item in PhraseMatcherType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PhraseMatcherType value: $value');
   }
 }
-

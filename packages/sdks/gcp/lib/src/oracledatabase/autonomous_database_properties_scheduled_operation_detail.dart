@@ -15,14 +15,22 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
   /// SATURDAY
   /// SUNDAY
   final pulumi.Input<String>? dayOfWeek;
+
   /// Represents a time of day. The date and time zone are either not significant
   /// or are specified elsewhere. An API may choose to allow leap seconds. Related
   /// types are google.type.Date and 'google.protobuf.Timestamp'.
-  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>>? startTimes;
+  final pulumi.Input<
+    List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>
+  >?
+  startTimes;
+
   /// Represents a time of day. The date and time zone are either not significant
   /// or are specified elsewhere. An API may choose to allow leap seconds. Related
   /// types are google.type.Date and 'google.protobuf.Timestamp'.
-  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>>? stopTimes;
+  final pulumi.Input<
+    List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>
+  >?
+  stopTimes;
 
   /// Creates a new [AutonomousDatabasePropertiesScheduledOperationDetail].
   /// [dayOfWeek] Possible values:
@@ -37,17 +45,72 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dayOfWeek': ?dayOfWeek,
-      'startTimes': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>, List<Map<String, dynamic>>>(startTimes, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesScheduledOperationDetailStartTime, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'stopTimes': ?pulumi.Input.mapOptionalInputValue<List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>, List<Map<String, dynamic>>>(stopTimes, (value) => pulumi.Input.encodeList<AutonomousDatabasePropertiesScheduledOperationDetailStopTime, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'startTimes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>,
+            List<Map<String, dynamic>>
+          >(
+            startTimes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AutonomousDatabasePropertiesScheduledOperationDetailStartTime,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'stopTimes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>,
+            List<Map<String, dynamic>>
+          >(
+            stopTimes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AutonomousDatabasePropertiesScheduledOperationDetailStopTime,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory AutonomousDatabasePropertiesScheduledOperationDetail.fromMap(Map<String, dynamic> map) {
+  factory AutonomousDatabasePropertiesScheduledOperationDetail.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutonomousDatabasePropertiesScheduledOperationDetail(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as String).input(),
-      startTimes: map['startTimes'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>(map['startTimes']!, (value) => AutonomousDatabasePropertiesScheduledOperationDetailStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stopTimes: map['stopTimes'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>(map['stopTimes']!, (value) => AutonomousDatabasePropertiesScheduledOperationDetailStopTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dayOfWeek: (() {
+        final guardedValue = map['dayOfWeek'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTimes: (() {
+        final guardedValue = map['startTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AutonomousDatabasePropertiesScheduledOperationDetailStartTime
+          >(
+            guardedValue,
+            (value) =>
+                AutonomousDatabasePropertiesScheduledOperationDetailStartTime.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      stopTimes: (() {
+        final guardedValue = map['stopTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AutonomousDatabasePropertiesScheduledOperationDetailStopTime
+          >(
+            guardedValue,
+            (value) =>
+                AutonomousDatabasePropertiesScheduledOperationDetailStopTime.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

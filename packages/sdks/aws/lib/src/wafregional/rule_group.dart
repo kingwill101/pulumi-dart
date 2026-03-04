@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'rule_group_activated_rule.dart';
 import 'rule_group_args.dart';
 import 'rule_group_state.dart';
 
@@ -192,17 +191,23 @@ import 'rule_group_state.dart';
 /// ```
 class RuleGroup extends pulumi.CustomResource {
   /// A list of activated rules, see below
-  late final pulumi.Output<List<RuleGroupActivatedRule>?> activatedRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> activatedRules;
+
   /// The ARN of the WAF Regional Rule Group.
   late final pulumi.Output<String> arn;
+
   /// A friendly name for the metrics from the rule group
   late final pulumi.Output<String> metricName;
+
   /// A friendly name of the rule group
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -215,18 +220,20 @@ class RuleGroup extends pulumi.CustomResource {
     RuleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/ruleGroup:RuleGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules');
-    this.arn = registerOutput<String>('arn');
-    this.metricName = registerOutput<String>('metricName');
+         'aws:wafregional/ruleGroup:RuleGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activatedRules = registerOutput<List<Map<String, dynamic>>?>(
+      'activatedRules',
+    );
+    arn = registerOutput<String>('arn');
+    metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [RuleGroup] resource's state with the given [name] and [id].
@@ -247,17 +254,19 @@ class RuleGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/ruleGroup:RuleGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules');
-    this.arn = registerOutput<String>('arn');
-    this.metricName = registerOutput<String>('metricName');
+         'aws:wafregional/ruleGroup:RuleGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activatedRules = registerOutput<List<Map<String, dynamic>>?>(
+      'activatedRules',
+    );
+    arn = registerOutput<String>('arn');
+    metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

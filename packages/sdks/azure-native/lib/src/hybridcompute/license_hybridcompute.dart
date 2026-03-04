@@ -185,22 +185,31 @@ import 'system_data_response.dart';
 class LicenseHybridcompute extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Describes the properties of a License.
   late final pulumi.Output<LicenseDetailsResponse?> licenseDetails;
+
   /// The type of the license resource.
   late final pulumi.Output<String?> licenseType;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Describes the tenant id.
   late final pulumi.Output<String?> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -213,20 +222,20 @@ class LicenseHybridcompute extends pulumi.CustomResource {
     LicenseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcompute:License',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.licenseDetails = registerOutput<LicenseDetailsResponse?>('licenseDetails');
-    this.licenseType = registerOutput<String?>('licenseType');
-    this.location = registerOutput<String>('location');
+         'azure-native:hybridcompute:License',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    licenseDetails = registerOutput<LicenseDetailsResponse?>('licenseDetails');
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

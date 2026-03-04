@@ -292,7 +292,7 @@ import 'role_management_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2020-10-01
@@ -307,18 +307,28 @@ import 'role_management_policy_state.dart';
 class RoleManagementPolicy extends pulumi.CustomResource {
   /// An `activation_rules` block as defined below.
   late final pulumi.Output<RoleManagementPolicyActivationRules> activationRules;
+
   /// An `active_assignment_rules` block as defined below.
-  late final pulumi.Output<RoleManagementPolicyActiveAssignmentRules> activeAssignmentRules;
+  late final pulumi.Output<RoleManagementPolicyActiveAssignmentRules>
+  activeAssignmentRules;
+
   /// (String) The description of this policy.
   late final pulumi.Output<String> description;
+
   /// An `eligible_assignment_rules` block as defined below.
-  late final pulumi.Output<RoleManagementPolicyEligibleAssignmentRules> eligibleAssignmentRules;
+  late final pulumi.Output<RoleManagementPolicyEligibleAssignmentRules>
+  eligibleAssignmentRules;
+
   /// (String) The name of this policy, which is typically a UUID and may change over time.
   late final pulumi.Output<String> name;
+
   /// A `notification_rules` block as defined below.
-  late final pulumi.Output<RoleManagementPolicyNotificationRules> notificationRules;
+  late final pulumi.Output<RoleManagementPolicyNotificationRules>
+  notificationRules;
+
   /// The scoped Role Definition ID of the role for which this policy will apply. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
+
   /// The scope to which this Role Management Policy will apply. Can refer to a management group, a subscription, a resource group or a resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
 
@@ -331,19 +341,29 @@ class RoleManagementPolicy extends pulumi.CustomResource {
     RoleManagementPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:pim/roleManagementPolicy:RoleManagementPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activationRules = registerOutput<RoleManagementPolicyActivationRules>('activationRules');
-    this.activeAssignmentRules = registerOutput<RoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules');
-    this.description = registerOutput<String>('description');
-    this.eligibleAssignmentRules = registerOutput<RoleManagementPolicyEligibleAssignmentRules>('eligibleAssignmentRules');
+         'azure:pim/roleManagementPolicy:RoleManagementPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activationRules = registerOutput<RoleManagementPolicyActivationRules>(
+      'activationRules',
+    );
+    activeAssignmentRules =
+        registerOutput<RoleManagementPolicyActiveAssignmentRules>(
+          'activeAssignmentRules',
+        );
+    description = registerOutput<String>('description');
+    eligibleAssignmentRules =
+        registerOutput<RoleManagementPolicyEligibleAssignmentRules>(
+          'eligibleAssignmentRules',
+        );
     this.name = registerOutput<String>('name');
-    this.notificationRules = registerOutput<RoleManagementPolicyNotificationRules>('notificationRules');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.scope = registerOutput<String>('scope');
+    notificationRules = registerOutput<RoleManagementPolicyNotificationRules>(
+      'notificationRules',
+    );
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
   }
 
   /// Gets an existing [RoleManagementPolicy] resource's state with the given [name] and [id].
@@ -364,18 +384,28 @@ class RoleManagementPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:pim/roleManagementPolicy:RoleManagementPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activationRules = registerOutput<RoleManagementPolicyActivationRules>('activationRules');
-    this.activeAssignmentRules = registerOutput<RoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules');
-    this.description = registerOutput<String>('description');
-    this.eligibleAssignmentRules = registerOutput<RoleManagementPolicyEligibleAssignmentRules>('eligibleAssignmentRules');
+         'azure:pim/roleManagementPolicy:RoleManagementPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activationRules = registerOutput<RoleManagementPolicyActivationRules>(
+      'activationRules',
+    );
+    activeAssignmentRules =
+        registerOutput<RoleManagementPolicyActiveAssignmentRules>(
+          'activeAssignmentRules',
+        );
+    description = registerOutput<String>('description');
+    eligibleAssignmentRules =
+        registerOutput<RoleManagementPolicyEligibleAssignmentRules>(
+          'eligibleAssignmentRules',
+        );
     this.name = registerOutput<String>('name');
-    this.notificationRules = registerOutput<RoleManagementPolicyNotificationRules>('notificationRules');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.scope = registerOutput<String>('scope');
+    notificationRules = registerOutput<RoleManagementPolicyNotificationRules>(
+      'notificationRules',
+    );
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
   }
 }

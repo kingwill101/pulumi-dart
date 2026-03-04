@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomRoutingEndpointGroupDestinationConfiguration {
   /// The first port, inclusive, in the range of ports for the endpoint group that is associated with a custom routing accelerator.
   final pulumi.Input<int> fromPort;
+
   /// The protocol for the endpoint group that is associated with a custom routing accelerator. The protocol can be either `"TCP"` or `"UDP"`.
   final pulumi.Input<List<String>> protocols;
+
   /// The last port, inclusive, in the range of ports for the endpoint group that is associated with a custom routing accelerator.
   final pulumi.Input<int> toPort;
 
@@ -28,12 +30,15 @@ class CustomRoutingEndpointGroupDestinationConfiguration {
     };
   }
 
-  factory CustomRoutingEndpointGroupDestinationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CustomRoutingEndpointGroupDestinationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomRoutingEndpointGroupDestinationConfiguration(
-      fromPort: (map['fromPort'] as int).input(),
-      protocols: ((map['protocols'] as List).cast<String>()).input(),
-      toPort: (map['toPort'] as int).input(),
+      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      protocols: pulumi.Input.fromValue(
+        (map['protocols'] as List).cast<String>(),
+      ),
+      toPort: pulumi.Input.fromValue(map['toPort'] as int),
     );
   }
 }
-

@@ -19,10 +19,15 @@ class AzureMonitorWorkspaceIntegrationResponse {
     };
   }
 
-  factory AzureMonitorWorkspaceIntegrationResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureMonitorWorkspaceIntegrationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureMonitorWorkspaceIntegrationResponse(
-      azureMonitorWorkspaceResourceId: map['azureMonitorWorkspaceResourceId'] == null ? null : (map['azureMonitorWorkspaceResourceId']! as String).input(),
+      azureMonitorWorkspaceResourceId: (() {
+        final guardedValue = map['azureMonitorWorkspaceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

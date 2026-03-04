@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_args.dart';
 import 'load_balancer_state.dart';
-import 'load_balancer_zone_mapping.dart';
 
 /// Provides a GWLB Load Balancer resource.
 ///
@@ -9,7 +8,7 @@ import 'load_balancer_zone_mapping.dart';
 ///
 /// For information about GWLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createloadbalancer).
 ///
-/// > **NOTE:** Available since v1.234.0.
+/// &gt; **NOTE:** Available since v1.234.0.
 ///
 /// ## Example Usage
 ///
@@ -424,24 +423,32 @@ class LoadBalancer extends pulumi.CustomResource {
   ///
   /// - `Ipv4`: IPv4 (default)
   late final pulumi.Output<String> addressIpVersion;
+
   /// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// The GWLB instance name.
   ///
   /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
   late final pulumi.Output<String?> loadBalancerName;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The GWLB instance status.
   late final pulumi.Output<String> status;
+
   /// The tag keys. You can specify at most 20 tags in each call.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The virtual private cloud (VPC) ID.
   late final pulumi.Output<String> vpcId;
+
   /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
-  late final pulumi.Output<List<LoadBalancerZoneMapping>> zoneMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>> zoneMappings;
 
   /// Creates a new [LoadBalancer].
   /// [name] The Pulumi resource name.
@@ -452,20 +459,20 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gwlb/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.loadBalancerName = registerOutput<String?>('loadBalancerName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.zoneMappings = registerOutput<List<LoadBalancerZoneMapping>>('zoneMappings');
+         'alicloud:gwlb/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    loadBalancerName = registerOutput<String?>('loadBalancerName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    zoneMappings = registerOutput<List<Map<String, dynamic>>>('zoneMappings');
   }
 
   /// Gets an existing [LoadBalancer] resource's state with the given [name] and [id].
@@ -486,19 +493,19 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gwlb/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressIpVersion = registerOutput<String>('addressIpVersion');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.loadBalancerName = registerOutput<String?>('loadBalancerName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.zoneMappings = registerOutput<List<LoadBalancerZoneMapping>>('zoneMappings');
+         'alicloud:gwlb/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressIpVersion = registerOutput<String>('addressIpVersion');
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    loadBalancerName = registerOutput<String?>('loadBalancerName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
+    zoneMappings = registerOutput<List<Map<String, dynamic>>>('zoneMappings');
   }
 }

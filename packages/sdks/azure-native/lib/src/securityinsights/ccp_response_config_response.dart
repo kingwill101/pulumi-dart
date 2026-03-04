@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CcpResponseConfigResponse {
   /// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
   final pulumi.Input<String>? compressionAlgo;
+
   /// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
   final pulumi.Input<bool>? convertChildPropertiesToArray;
+
   /// The csv delimiter, in case the response format is CSV.
   final pulumi.Input<String>? csvDelimiter;
+
   /// The character used to escape characters in CSV.
   final pulumi.Input<String>? csvEscape;
+
   /// The json paths, '$' char is the json root.
   final pulumi.Input<List<String>> eventsJsonPaths;
+
   /// The response format. possible values are json,csv,xml
   final pulumi.Input<String>? format;
+
   /// The value indicating whether the response has CSV boundary in case the response in CSV format.
   final pulumi.Input<bool>? hasCsvBoundary;
+
   /// The value indicating whether the response has headers in case the response in CSV format.
   final pulumi.Input<bool>? hasCsvHeader;
+
   /// The value indicating whether the remote server support Gzip and we should expect Gzip response.
   final pulumi.Input<bool>? isGzipCompressed;
+
   /// The value where the status message/code should appear in the response.
   final pulumi.Input<String>? successStatusJsonPath;
+
   /// The status value.
   final pulumi.Input<String>? successStatusValue;
 
@@ -71,18 +81,59 @@ class CcpResponseConfigResponse {
 
   factory CcpResponseConfigResponse.fromMap(Map<String, dynamic> map) {
     return CcpResponseConfigResponse(
-      compressionAlgo: map['compressionAlgo'] == null ? null : (map['compressionAlgo']! as String).input(),
-      convertChildPropertiesToArray: map['convertChildPropertiesToArray'] == null ? null : (map['convertChildPropertiesToArray']! as bool).input(),
-      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter']! as String).input(),
-      csvEscape: map['csvEscape'] == null ? null : (map['csvEscape']! as String).input(),
-      eventsJsonPaths: ((map['eventsJsonPaths'] as List).cast<String>()).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      hasCsvBoundary: map['hasCsvBoundary'] == null ? null : (map['hasCsvBoundary']! as bool).input(),
-      hasCsvHeader: map['hasCsvHeader'] == null ? null : (map['hasCsvHeader']! as bool).input(),
-      isGzipCompressed: map['isGzipCompressed'] == null ? null : (map['isGzipCompressed']! as bool).input(),
-      successStatusJsonPath: map['successStatusJsonPath'] == null ? null : (map['successStatusJsonPath']! as String).input(),
-      successStatusValue: map['successStatusValue'] == null ? null : (map['successStatusValue']! as String).input(),
+      compressionAlgo: (() {
+        final guardedValue = map['compressionAlgo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      convertChildPropertiesToArray: (() {
+        final guardedValue = map['convertChildPropertiesToArray'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      csvDelimiter: (() {
+        final guardedValue = map['csvDelimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      csvEscape: (() {
+        final guardedValue = map['csvEscape'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventsJsonPaths: pulumi.Input.fromValue(
+        (map['eventsJsonPaths'] as List).cast<String>(),
+      ),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hasCsvBoundary: (() {
+        final guardedValue = map['hasCsvBoundary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hasCsvHeader: (() {
+        final guardedValue = map['hasCsvHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isGzipCompressed: (() {
+        final guardedValue = map['isGzipCompressed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      successStatusJsonPath: (() {
+        final guardedValue = map['successStatusJsonPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      successStatusValue: (() {
+        final guardedValue = map['successStatusValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

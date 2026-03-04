@@ -1,16 +1,17 @@
 enum KnownPrometheusForwarderDataSourceStreams {
   valueMicrosoftPrometheusMetrics("Microsoft-PrometheusMetrics");
 
-  const KnownPrometheusForwarderDataSourceStreams(this.value);
-  final String value;
+  const KnownPrometheusForwarderDataSourceStreams(this.wireValue);
+  final String wireValue;
 
   static KnownPrometheusForwarderDataSourceStreams fromValue(String value) {
     for (final item in KnownPrometheusForwarderDataSourceStreams.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KnownPrometheusForwarderDataSourceStreams value: $value');
+    throw ArgumentError(
+      'Unknown KnownPrometheusForwarderDataSourceStreams value: $value',
+    );
   }
 }
-

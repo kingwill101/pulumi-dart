@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterV2SharedStorage {
   /// The ID of the mounted file system.
   final pulumi.Input<String>? fileSystemId;
+
   /// The local Mount directory where the file system is mounted.
   final pulumi.Input<String>? mountDirectory;
+
   /// Storage mount options for the mounted file system.
   final pulumi.Input<String>? mountOptions;
+
   /// The mount point address of the mounted file system.
   final pulumi.Input<String>? mountTargetDomain;
+
   /// The remote directory to which the mounted file system needs to be mounted.
   final pulumi.Input<String>? nasDirectory;
+
   /// The protocol type of the mounted file system. Value range:
   /// - NFS
   /// - SMB
@@ -47,13 +52,36 @@ class ClusterV2SharedStorage {
 
   factory ClusterV2SharedStorage.fromMap(Map<String, dynamic> map) {
     return ClusterV2SharedStorage(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
-      mountDirectory: map['mountDirectory'] == null ? null : (map['mountDirectory']! as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as String).input(),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain']! as String).input(),
-      nasDirectory: map['nasDirectory'] == null ? null : (map['nasDirectory']! as String).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
+      fileSystemId: (() {
+        final guardedValue = map['fileSystemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountDirectory: (() {
+        final guardedValue = map['mountDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountOptions: (() {
+        final guardedValue = map['mountOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountTargetDomain: (() {
+        final guardedValue = map['mountTargetDomain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nasDirectory: (() {
+        final guardedValue = map['nasDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolType: (() {
+        final guardedValue = map['protocolType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

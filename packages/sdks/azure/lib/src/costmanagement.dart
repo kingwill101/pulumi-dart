@@ -1,5 +1,3 @@
-library module_costmanagement;
-
 export 'costmanagement/anomaly_alert.dart';
 export 'costmanagement/anomaly_alert_args.dart';
 export 'costmanagement/anomaly_alert_state.dart';

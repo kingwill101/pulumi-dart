@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1 {
   /// APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required.
   final pulumi.Input<List<String>>? apiGroups;
+
   /// APIVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required.
   final pulumi.Input<List<String>>? apiVersions;
+
   /// Operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required.
   final pulumi.Input<List<String>>? operations;
+
   /// ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
   final pulumi.Input<List<String>>? resourceNames;
+
   /// Resources is a list of resources this rule applies to.
   ///
   /// For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*/scale' means all scale subresources. '*/*' means all resources and their subresources.
@@ -20,6 +24,7 @@ class NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1 {
   ///
   /// Depending on the enclosing object, subresources might not be allowed. Required.
   final pulumi.Input<List<String>>? resources;
+
   /// scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*".
   final pulumi.Input<String>? scope;
 
@@ -50,15 +55,40 @@ class NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1 {
     };
   }
 
-  factory NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1(
-      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups']! as List).cast<String>()).input(),
-      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions']! as List).cast<String>()).input(),
-      operations: map['operations'] == null ? null : ((map['operations']! as List).cast<String>()).input(),
-      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames']! as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      apiGroups: (() {
+        final guardedValue = map['apiGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      apiVersions: (() {
+        final guardedValue = map['apiVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      operations: (() {
+        final guardedValue = map['operations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceNames: (() {
+        final guardedValue = map['resourceNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

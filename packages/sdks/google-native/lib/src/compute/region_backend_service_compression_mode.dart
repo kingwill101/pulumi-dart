@@ -3,16 +3,17 @@ enum RegionBackendServiceCompressionMode {
   automatic("AUTOMATIC"),
   disabled("DISABLED");
 
-  const RegionBackendServiceCompressionMode(this.value);
-  final String value;
+  const RegionBackendServiceCompressionMode(this.wireValue);
+  final String wireValue;
 
   static RegionBackendServiceCompressionMode fromValue(String value) {
     for (final item in RegionBackendServiceCompressionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceCompressionMode value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceCompressionMode value: $value',
+    );
   }
 }
-

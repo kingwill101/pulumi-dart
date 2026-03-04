@@ -14,23 +14,20 @@ class GetDatabaseClusterArgs {
   /// Creates a new [GetDatabaseClusterArgs].
   /// [name] The name of the database cluster.
   /// [tags] Optional.
-  GetDatabaseClusterArgs({
-    required this.name,
-    this.tags,
-  });
+  GetDatabaseClusterArgs({required this.name, this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'name': name, 'tags': ?tags};
   }
 
   factory GetDatabaseClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseClusterArgs(
-      name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

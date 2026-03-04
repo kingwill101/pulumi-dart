@@ -8,16 +8,15 @@ enum StorageTaskOperationName {
   deleteBlob("DeleteBlob"),
   undeleteBlob("UndeleteBlob");
 
-  const StorageTaskOperationName(this.value);
-  final String value;
+  const StorageTaskOperationName(this.wireValue);
+  final String wireValue;
 
   static StorageTaskOperationName fromValue(String value) {
     for (final item in StorageTaskOperationName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageTaskOperationName value: $value');
   }
 }
-

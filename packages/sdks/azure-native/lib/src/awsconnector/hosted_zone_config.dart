@@ -9,20 +9,19 @@ class HostedZoneConfig {
 
   /// Creates a new [HostedZoneConfig].
   /// [comment] Any comments that you want to include about the hosted zone.
-  HostedZoneConfig({
-    this.comment,
-  });
+  HostedZoneConfig({this.comment});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comment': ?comment,
-    };
+    return <String, dynamic>{'comment': ?comment};
   }
 
   factory HostedZoneConfig.fromMap(Map<String, dynamic> map) {
     return HostedZoneConfig(
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

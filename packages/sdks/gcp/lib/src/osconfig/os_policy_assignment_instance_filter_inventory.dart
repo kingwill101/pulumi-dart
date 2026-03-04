@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OsPolicyAssignmentInstanceFilterInventory {
   /// The OS short name
   final pulumi.Input<String> osShortName;
+
   /// The OS version Prefix matches are supported if
   /// asterisk(*) is provided as the last character. For example, to match all
   /// versions with a major version of `7`, specify the following value for this
@@ -26,11 +27,16 @@ class OsPolicyAssignmentInstanceFilterInventory {
     };
   }
 
-  factory OsPolicyAssignmentInstanceFilterInventory.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentInstanceFilterInventory.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentInstanceFilterInventory(
-      osShortName: (map['osShortName'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
+      osShortName: pulumi.Input.fromValue(map['osShortName'] as String),
+      osVersion: (() {
+        final guardedValue = map['osVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

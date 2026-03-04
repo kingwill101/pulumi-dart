@@ -23,9 +23,13 @@ class Serializer {
 
   final Set<Resource> dependentResources = {};
   final bool _excessiveDebugOutput;
+  final bool _collapseUnknownCollections;
 
-  Serializer({bool excessiveDebugOutput = false})
-    : _excessiveDebugOutput = excessiveDebugOutput;
+  Serializer({
+    bool excessiveDebugOutput = false,
+    bool collapseUnknownCollections = true,
+  }) : _excessiveDebugOutput = excessiveDebugOutput,
+       _collapseUnknownCollections = collapseUnknownCollections;
 
   /// Serializes [prop] in context [ctx].
   ///
@@ -37,6 +41,24 @@ class Serializer {
     bool keepResources, {
     bool keepOutputValues = false,
   }) async {
+    return _serializeAsync(
+      ctx,
+      prop,
+      keepResources,
+      keepOutputValues,
+      <Object>{},
+    );
+  }
+
+  Future<dynamic> _serializeAsync(
+    String ctx,
+    dynamic prop,
+    bool keepResources,
+    bool keepOutputValues,
+    Set<Object> seen,
+  ) async {
+    final seenSet = seen;
+
     if (prop == null ||
         prop is bool ||
         prop is int ||
@@ -49,11 +71,17 @@ class Serializer {
     }
 
     if (prop is Inputs) {
-      return serializeResourceArgs(ctx, prop, keepResources, keepOutputValues);
+      return serializeResourceArgs(
+        ctx,
+        prop,
+        keepResources,
+        keepOutputValues,
+        seenSet,
+      );
     }
 
     if (prop is AssetOrArchive) {
-      return serializeAssetOrArchive(ctx, prop, keepResources);
+      return serializeAssetOrArchive(ctx, prop, keepResources, seenSet);
     }
 
     if (prop is Future) {
@@ -62,89 +90,103 @@ class Serializer {
       );
     }
 
+    if (prop is Output) {
+      if (!seenSet.add(prop)) {
+        throw StateError(
+          'Detected recursive Output/Input graph while serializing value at $ctx.',
+        );
+      }
+      if (_excessiveDebugOutput) {
+        print('Serialize property[$ctx]: Recursing into Output');
+      }
+      try {
+        final data = await prop.getData();
+        dependentResources.addAll(data.resources);
+        var propResources = Set<Resource>.from(data.resources);
+
+        final isKnown = data.isKnown;
+        final isSecret = data.isSecret;
+
+        final valueSerializer = Serializer(
+          excessiveDebugOutput: _excessiveDebugOutput,
+          collapseUnknownCollections: _collapseUnknownCollections,
+        );
+        final value = isKnown
+            ? await valueSerializer._serializeAsync(
+                '$ctx.value',
+                data.value,
+                keepResources,
+                false,
+                seenSet,
+              )
+            : null;
+
+        final promiseDeps = valueSerializer.dependentResources;
+        dependentResources.addAll(promiseDeps);
+        propResources.addAll(promiseDeps);
+
+        if (keepOutputValues) {
+          if (isKnown && !isSecret && propResources.isEmpty) {
+            return value;
+          }
+
+          final urnDeps = <Resource>{};
+          for (final resource in propResources) {
+            final urnSerializer = Serializer(
+              excessiveDebugOutput: _excessiveDebugOutput,
+              collapseUnknownCollections: _collapseUnknownCollections,
+            );
+            await urnSerializer._serializeAsync(
+              '$ctx dependency',
+              resource.urn,
+              keepResources,
+              false,
+              seenSet,
+            );
+            urnDeps.addAll(urnSerializer.dependentResources);
+          }
+          dependentResources.addAll(urnDeps);
+          propResources.addAll(urnDeps);
+
+          final dependencies = await getAllTransitivelyReferencedResourceUrns(
+            propResources,
+          );
+          final result = {
+            Constants.specialSigKey: Constants.specialOutputValueSig,
+            if (isKnown) Constants.valueName: value,
+            if (isSecret) Constants.secretName: isSecret,
+            if (dependencies.isNotEmpty)
+              Constants.dependenciesName: dependencies.toList()..sort(),
+          };
+          return result;
+        }
+
+        if (!isKnown) return _unknownSentinelForOutput(prop);
+
+        if (isSecret) {
+          return {
+            Constants.specialSigKey: Constants.specialSecretSig,
+            Constants.valueName: value,
+          };
+        }
+
+        return value;
+      } finally {
+        seenSet.remove(prop);
+      }
+    }
+
     if (prop is Input) {
       if (_excessiveDebugOutput) {
         print('Serialize property[$ctx]: Recursing into Input');
       }
-      return serializeAsync(
+      return _serializeAsync(
         ctx,
         prop.toOutput(),
         keepResources,
-        keepOutputValues: keepOutputValues,
+        keepOutputValues,
+        seenSet,
       );
-    }
-
-    if (prop is Output) {
-      if (_excessiveDebugOutput) {
-        print('Serialize property[$ctx]: Recursing into Output');
-      }
-      var data = await prop.getData();
-      dependentResources.addAll(data.resources);
-      var propResources = Set<Resource>.from(data.resources);
-
-      var isKnown = data.isKnown;
-      var isSecret = data.isSecret;
-
-      var valueSerializer = Serializer(
-        excessiveDebugOutput: _excessiveDebugOutput,
-      );
-      dynamic value = isKnown
-          ? await valueSerializer.serializeAsync(
-              '$ctx.value',
-              data.value,
-              keepResources,
-              keepOutputValues: false,
-            )
-          : null;
-
-      var promiseDeps = valueSerializer.dependentResources;
-      dependentResources.addAll(promiseDeps);
-      propResources.addAll(promiseDeps);
-
-      if (keepOutputValues) {
-        if (isKnown && !isSecret && propResources.isEmpty) {
-          return value;
-        }
-
-        var urnDeps = <Resource>{};
-        for (var resource in propResources) {
-          var urnSerializer = Serializer(
-            excessiveDebugOutput: _excessiveDebugOutput,
-          );
-          await urnSerializer.serializeAsync(
-            '$ctx dependency',
-            resource.urn,
-            keepResources,
-            keepOutputValues: false,
-          );
-          urnDeps.addAll(urnSerializer.dependentResources);
-        }
-        dependentResources.addAll(urnDeps);
-        propResources.addAll(urnDeps);
-
-        var dependencies = await getAllTransitivelyReferencedResourceUrns(
-          propResources,
-        );
-        var result = {
-          Constants.specialSigKey: Constants.specialOutputValueSig,
-          if (isKnown) Constants.valueName: value,
-          if (isSecret) Constants.secretName: isSecret,
-          if (dependencies.isNotEmpty)
-            Constants.dependenciesName: dependencies.toList()..sort(),
-        };
-        return result;
-      }
-
-      if (!isKnown) return _unknownSentinelForOutput(prop);
-
-      if (isSecret) {
-        return {
-          Constants.specialSigKey: Constants.specialSecretSig,
-          Constants.valueName: value,
-        };
-      }
-
-      return value;
     }
 
     if (prop is CustomResource) {
@@ -154,18 +196,20 @@ class Serializer {
 
       dependentResources.add(prop);
 
-      var id = await serializeAsync(
+      var id = await _serializeAsync(
         '$ctx.id',
         prop.id,
         keepResources,
-        keepOutputValues: false,
+        false,
+        seenSet,
       );
       if (keepResources) {
-        var urn = await serializeAsync(
+        var urn = await _serializeAsync(
           '$ctx.urn',
           prop.urn,
           keepResources,
-          keepOutputValues: false,
+          false,
+          seenSet,
         );
         return {
           Constants.specialSigKey: Constants.specialResourceSig,
@@ -184,11 +228,12 @@ class Serializer {
 
       dependentResources.add(prop);
 
-      var urn = await serializeAsync(
+      var urn = await _serializeAsync(
         '$ctx.urn',
         prop.urn,
         keepResources,
-        keepOutputValues: false,
+        false,
+        seenSet,
       );
       if (keepResources) {
         return {
@@ -205,8 +250,11 @@ class Serializer {
         prop.cast(),
         keepResources,
         keepOutputValues,
+        seenSet,
       );
-      if (!keepOutputValues && _containsUnknowns(serialized)) {
+      if (_collapseUnknownCollections &&
+          !keepOutputValues &&
+          _containsUnknowns(serialized)) {
         return Constants.unknownObjectValue;
       }
       return serialized;
@@ -218,8 +266,11 @@ class Serializer {
         prop,
         keepResources,
         keepOutputValues,
+        seenSet,
       );
-      if (!keepOutputValues && _containsUnknowns(serialized)) {
+      if (_collapseUnknownCollections &&
+          !keepOutputValues &&
+          _containsUnknowns(serialized)) {
         return Constants.unknownArrayValue;
       }
       return serialized;
@@ -236,12 +287,13 @@ class Serializer {
     Inputs args,
     bool keepResources,
     bool keepOutputValues,
+    Set<Object> seen,
   ) async {
     if (_excessiveDebugOutput) {
       print('Serialize property[$ctx]: Recursing into ResourceArgs');
     }
 
-    return serializeMap(ctx, args, keepResources, keepOutputValues);
+    return serializeMap(ctx, args, keepResources, keepOutputValues, seen);
   }
 
   /// Serializes an [AssetOrArchive] into Pulumi signature maps.
@@ -249,6 +301,7 @@ class Serializer {
     String ctx,
     AssetOrArchive assetOrArchive,
     bool keepResources,
+    Set<Object> seen,
   ) async {
     if (_excessiveDebugOutput) {
       print(
@@ -284,6 +337,7 @@ class Serializer {
         assetOrArchive.assets,
         keepResources,
         false,
+        seen,
       );
     } else if (assetOrArchive is RemoteArchive) {
       propName = Constants.assetOrArchiveUriName;
@@ -295,11 +349,12 @@ class Serializer {
       );
     }
 
-    var serializedValue = await serializeAsync(
+    var serializedValue = await _serializeAsync(
       "$ctx.$propName",
       value,
       keepResources,
-      keepOutputValues: false,
+      false,
+      seen,
     );
 
     return {Constants.specialSigKey: sigKey, propName: serializedValue};
@@ -311,6 +366,7 @@ class Serializer {
     Map<String, dynamic> map,
     bool keepResources,
     bool keepOutputValues,
+    Set<Object> seen,
   ) async {
     if (_excessiveDebugOutput) {
       print('Serialize property[$ctx]: Hit map');
@@ -322,11 +378,12 @@ class Serializer {
         print('Serialize property[$ctx]: object.${entry.key}');
       }
 
-      var v = await serializeAsync(
+      var v = await _serializeAsync(
         '$ctx.${entry.key}',
         entry.value,
         keepResources,
-        keepOutputValues: keepOutputValues,
+        keepOutputValues,
+        seen,
       );
       if (v != null) {
         result[entry.key] = v;
@@ -342,6 +399,7 @@ class Serializer {
     Iterable iterable,
     bool keepResources,
     bool keepOutputValues,
+    Set<Object> seen,
   ) async {
     if (_excessiveDebugOutput) {
       print('Serialize property[$ctx]: Hit list');
@@ -355,11 +413,12 @@ class Serializer {
       }
 
       result.add(
-        await serializeAsync(
+        await _serializeAsync(
           '$ctx[$index]',
           item,
           keepResources,
-          keepOutputValues: keepOutputValues,
+          keepOutputValues,
+          seen,
         ),
       );
       index++;

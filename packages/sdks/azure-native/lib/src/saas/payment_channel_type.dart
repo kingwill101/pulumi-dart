@@ -3,16 +3,15 @@ enum PaymentChannelType {
   valueSubscriptionDelegated("SubscriptionDelegated"),
   valueCustomerDelegated("CustomerDelegated");
 
-  const PaymentChannelType(this.value);
-  final String value;
+  const PaymentChannelType(this.wireValue);
+  final String wireValue;
 
   static PaymentChannelType fromValue(String value) {
     for (final item in PaymentChannelType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PaymentChannelType value: $value');
   }
 }
-

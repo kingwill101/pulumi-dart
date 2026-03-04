@@ -11,20 +11,39 @@ class KeystoresAliasesPkcs12CertsInfo {
 
   /// Creates a new [KeystoresAliasesPkcs12CertsInfo].
   /// [certInfos] (Output)
-  KeystoresAliasesPkcs12CertsInfo({
-    this.certInfos,
-  });
+  KeystoresAliasesPkcs12CertsInfo({this.certInfos});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certInfos': ?pulumi.Input.mapOptionalInputValue<List<KeystoresAliasesPkcs12CertsInfoCertInfo>, List<Map<String, dynamic>>>(certInfos, (value) => pulumi.Input.encodeList<KeystoresAliasesPkcs12CertsInfoCertInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'certInfos':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<KeystoresAliasesPkcs12CertsInfoCertInfo>,
+            List<Map<String, dynamic>>
+          >(
+            certInfos,
+            (value) =>
+                pulumi.Input.encodeList<
+                  KeystoresAliasesPkcs12CertsInfoCertInfo,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory KeystoresAliasesPkcs12CertsInfo.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12CertsInfo(
-      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfoCertInfo>(map['certInfos']!, (value) => KeystoresAliasesPkcs12CertsInfoCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certInfos: (() {
+        final guardedValue = map['certInfos'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfoCertInfo>(
+            guardedValue,
+            (value) => KeystoresAliasesPkcs12CertsInfoCertInfo.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

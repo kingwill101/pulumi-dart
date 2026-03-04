@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmsReceiverResponse {
   /// The country code of the SMS receiver.
   final pulumi.Input<String> countryCode;
+
   /// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
   final pulumi.Input<String> name;
+
   /// The phone number of the SMS receiver.
   final pulumi.Input<String> phoneNumber;
+
   /// The status of the receiver.
   final pulumi.Input<String> status;
 
@@ -36,11 +39,10 @@ class SmsReceiverResponse {
 
   factory SmsReceiverResponse.fromMap(Map<String, dynamic> map) {
     return SmsReceiverResponse(
-      countryCode: (map['countryCode'] as String).input(),
-      name: (map['name'] as String).input(),
-      phoneNumber: (map['phoneNumber'] as String).input(),
-      status: (map['status'] as String).input(),
+      countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

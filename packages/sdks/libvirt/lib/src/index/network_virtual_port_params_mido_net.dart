@@ -8,20 +8,19 @@ class NetworkVirtualPortParamsMidoNet {
 
   /// Creates a new [NetworkVirtualPortParamsMidoNet].
   /// [interfaceId] Specifies the interface ID for MidoNet virtual port parameters.
-  NetworkVirtualPortParamsMidoNet({
-    this.interfaceId,
-  });
+  NetworkVirtualPortParamsMidoNet({this.interfaceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interfaceId': ?interfaceId,
-    };
+    return <String, dynamic>{'interfaceId': ?interfaceId};
   }
 
   factory NetworkVirtualPortParamsMidoNet.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualPortParamsMidoNet(
-      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId']! as String).input(),
+      interfaceId: (() {
+        final guardedValue = map['interfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

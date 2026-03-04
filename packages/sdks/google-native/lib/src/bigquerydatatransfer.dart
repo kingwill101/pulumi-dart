@@ -1,5 +1,3 @@
-library module_bigquerydatatransfer;
-
 export 'bigquerydatatransfer/email_preferences.dart';
 export 'bigquerydatatransfer/email_preferences_response.dart';
 export 'bigquerydatatransfer/encryption_configuration.dart';

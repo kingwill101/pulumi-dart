@@ -10,11 +10,14 @@ import 'instance_iam_binding_condition.dart';
 class InstanceIamBindingArgs {
   final pulumi.Input<InstanceIamBindingCondition>? condition;
   final pulumi.Input<List<String>> members;
+
   /// The ID of the instance or a fully qualified identifier for the instance.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the Data Fusion instance.
   final pulumi.Input<String>? region;
   final pulumi.Input<String> role;
@@ -37,7 +40,11 @@ class InstanceIamBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<InstanceIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'members': members,
       'name': ?name,
       'project': ?project,
@@ -48,13 +55,32 @@ class InstanceIamBindingArgs {
 
   factory InstanceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamBindingArgs(
-      condition: map['condition'] == null ? null : (InstanceIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      members: ((map['members'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      role: (map['role'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

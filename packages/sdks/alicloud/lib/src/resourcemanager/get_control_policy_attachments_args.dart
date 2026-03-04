@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetControlPolicyAttachmentsArgs {
   /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
   final pulumi.Input<String>? language;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The policy type of control policy. Valid values: `Custom` and `System`.
   final pulumi.Input<String>? policyType;
+
   /// The Id of target.
   final pulumi.Input<String> targetId;
 
@@ -39,11 +42,22 @@ class GetControlPolicyAttachmentsArgs {
 
   factory GetControlPolicyAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetControlPolicyAttachmentsArgs(
-      language: map['language'] == null ? null : (map['language']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
-      targetId: (map['targetId'] as String).input(),
+      language: (() {
+        final guardedValue = map['language'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyType: (() {
+        final guardedValue = map['policyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

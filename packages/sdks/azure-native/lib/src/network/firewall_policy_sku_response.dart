@@ -9,20 +9,19 @@ class FirewallPolicySkuResponse {
 
   /// Creates a new [FirewallPolicySkuResponse].
   /// [tier] Tier of Firewall Policy.
-  FirewallPolicySkuResponse({
-    this.tier,
-  });
+  FirewallPolicySkuResponse({this.tier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tier': ?tier,
-    };
+    return <String, dynamic>{'tier': ?tier};
   }
 
   factory FirewallPolicySkuResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicySkuResponse(
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

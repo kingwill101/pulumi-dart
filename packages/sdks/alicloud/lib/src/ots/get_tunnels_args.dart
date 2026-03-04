@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTunnelsArgs {
   /// A list of tunnel IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The name of OTS instance.
   final pulumi.Input<String> instanceName;
+
   /// A regex string to filter results by tunnel name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The name of OTS table.
   final pulumi.Input<String> tableName;
 
@@ -44,12 +48,23 @@ class GetTunnelsArgs {
 
   factory GetTunnelsArgs.fromMap(Map<String, dynamic> map) {
     return GetTunnelsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      tableName: (map['tableName'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

@@ -10,29 +10,31 @@ class GetRoutersArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// If provided, only resources from the given regions are queried.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetRoutersArgs].
   /// [project] The project in which the resource belongs. If it
   /// [region] If provided, only resources from the given regions are queried.
-  GetRoutersArgs({
-    this.project,
-    this.region,
-  });
+  GetRoutersArgs({this.project, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'region': ?region,
-    };
+    return <String, dynamic>{'project': ?project, 'region': ?region};
   }
 
   factory GetRoutersArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutersArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

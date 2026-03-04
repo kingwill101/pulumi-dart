@@ -31,10 +31,13 @@ class GetSynonymSetArgs {
 
   factory GetSynonymSetArgs.fromMap(Map<String, dynamic> map) {
     return GetSynonymSetArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      synonymSetId: (map['synonymSetId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      synonymSetId: pulumi.Input.fromValue(map['synonymSetId'] as String),
     );
   }
 }
-

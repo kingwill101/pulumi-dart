@@ -6,25 +6,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVReplicaPolicyInput {
   /// A value indicating the authentication type.
   final pulumi.Input<int>? allowedAuthenticationType;
+
   /// A value indicating the application consistent frequency.
   final pulumi.Input<int>? applicationConsistentSnapshotFrequencyInHours;
+
   /// A value indicating whether compression has to be enabled.
   final pulumi.Input<String>? compression;
+
   /// A value indicating whether IR is online.
   final pulumi.Input<String>? initialReplicationMethod;
+
   /// The class type.
   /// Expected value is 'HyperVReplica2012'.
   final pulumi.Input<String> instanceType;
+
   /// A value indicating the offline IR export path.
   final pulumi.Input<String>? offlineReplicationExportPath;
+
   /// A value indicating the offline IR import path.
   final pulumi.Input<String>? offlineReplicationImportPath;
+
   /// A value indicating the online IR start time.
   final pulumi.Input<String>? onlineReplicationStartTime;
+
   /// A value indicating the number of recovery points.
   final pulumi.Input<int>? recoveryPoints;
+
   /// A value indicating whether the VM has to be auto deleted.
   final pulumi.Input<String>? replicaDeletion;
+
   /// A value indicating the recovery HTTPS port.
   final pulumi.Input<int>? replicationPort;
 
@@ -57,7 +67,8 @@ class HyperVReplicaPolicyInput {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedAuthenticationType': ?allowedAuthenticationType,
-      'applicationConsistentSnapshotFrequencyInHours': ?applicationConsistentSnapshotFrequencyInHours,
+      'applicationConsistentSnapshotFrequencyInHours':
+          ?applicationConsistentSnapshotFrequencyInHours,
       'compression': ?compression,
       'initialReplicationMethod': ?initialReplicationMethod,
       'instanceType': instanceType,
@@ -72,18 +83,58 @@ class HyperVReplicaPolicyInput {
 
   factory HyperVReplicaPolicyInput.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaPolicyInput(
-      allowedAuthenticationType: map['allowedAuthenticationType'] == null ? null : (map['allowedAuthenticationType']! as int).input(),
-      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours']! as int).input(),
-      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
-      initialReplicationMethod: map['initialReplicationMethod'] == null ? null : (map['initialReplicationMethod']! as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      offlineReplicationExportPath: map['offlineReplicationExportPath'] == null ? null : (map['offlineReplicationExportPath']! as String).input(),
-      offlineReplicationImportPath: map['offlineReplicationImportPath'] == null ? null : (map['offlineReplicationImportPath']! as String).input(),
-      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime']! as String).input(),
-      recoveryPoints: map['recoveryPoints'] == null ? null : (map['recoveryPoints']! as int).input(),
-      replicaDeletion: map['replicaDeletion'] == null ? null : (map['replicaDeletion']! as String).input(),
-      replicationPort: map['replicationPort'] == null ? null : (map['replicationPort']! as int).input(),
+      allowedAuthenticationType: (() {
+        final guardedValue = map['allowedAuthenticationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      applicationConsistentSnapshotFrequencyInHours: (() {
+        final guardedValue =
+            map['applicationConsistentSnapshotFrequencyInHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      compression: (() {
+        final guardedValue = map['compression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialReplicationMethod: (() {
+        final guardedValue = map['initialReplicationMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      offlineReplicationExportPath: (() {
+        final guardedValue = map['offlineReplicationExportPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offlineReplicationImportPath: (() {
+        final guardedValue = map['offlineReplicationImportPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onlineReplicationStartTime: (() {
+        final guardedValue = map['onlineReplicationStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryPoints: (() {
+        final guardedValue = map['recoveryPoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicaDeletion: (() {
+        final guardedValue = map['replicaDeletion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationPort: (() {
+        final guardedValue = map['replicationPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

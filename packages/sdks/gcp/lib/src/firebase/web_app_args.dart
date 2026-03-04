@@ -12,8 +12,10 @@ class WebAppArgs {
   /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
   final pulumi.Input<String>? apiKeyId;
   final pulumi.Input<String>? deletionPolicy;
+
   /// The user-assigned display name of the App.
   final pulumi.Input<String> displayName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -41,11 +43,22 @@ class WebAppArgs {
 
   factory WebAppArgs.fromMap(Map<String, dynamic> map) {
     return WebAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      apiKeyId: (() {
+        final guardedValue = map['apiKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionPolicy: (() {
+        final guardedValue = map['deletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

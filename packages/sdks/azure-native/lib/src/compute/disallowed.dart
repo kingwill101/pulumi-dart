@@ -9,20 +9,19 @@ class Disallowed {
 
   /// Creates a new [Disallowed].
   /// [diskTypes] A list of disk types.
-  Disallowed({
-    this.diskTypes,
-  });
+  Disallowed({this.diskTypes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskTypes': ?diskTypes,
-    };
+    return <String, dynamic>{'diskTypes': ?diskTypes};
   }
 
   factory Disallowed.fromMap(Map<String, dynamic> map) {
     return Disallowed(
-      diskTypes: map['diskTypes'] == null ? null : ((map['diskTypes']! as List).cast<String>()).input(),
+      diskTypes: (() {
+        final guardedValue = map['diskTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

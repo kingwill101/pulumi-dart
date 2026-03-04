@@ -12,11 +12,14 @@ class SchemaState {
   /// error indicating that the limit has been reached require manually
   /// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
   final pulumi.Input<String>? definition;
+
   /// The ID to use for the schema, which will become the final component of the schema's resource name.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The type of the schema definition
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -27,12 +30,7 @@ class SchemaState {
   /// [name] The ID to use for the schema, which will become the final component of the schema's resource name.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the schema definition
-  SchemaState({
-    this.definition,
-    this.name,
-    this.project,
-    this.type,
-  });
+  SchemaState({this.definition, this.name, this.project, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +43,26 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      definition: map['definition'] == null ? null : (map['definition']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

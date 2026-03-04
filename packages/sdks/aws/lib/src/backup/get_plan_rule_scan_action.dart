@@ -9,10 +9,7 @@ class GetPlanRuleScanAction {
   /// Creates a new [GetPlanRuleScanAction].
   /// [malwareScanner] Required.
   /// [scanMode] Required.
-  GetPlanRuleScanAction({
-    required this.malwareScanner,
-    required this.scanMode,
-  });
+  GetPlanRuleScanAction({required this.malwareScanner, required this.scanMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,8 @@ class GetPlanRuleScanAction {
 
   factory GetPlanRuleScanAction.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleScanAction(
-      malwareScanner: (map['malwareScanner'] as String).input(),
-      scanMode: (map['scanMode'] as String).input(),
+      malwareScanner: pulumi.Input.fromValue(map['malwareScanner'] as String),
+      scanMode: pulumi.Input.fromValue(map['scanMode'] as String),
     );
   }
 }
-

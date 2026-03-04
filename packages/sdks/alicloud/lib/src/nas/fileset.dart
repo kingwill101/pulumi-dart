@@ -8,7 +8,7 @@ import 'fileset_state.dart';
 ///
 /// For information about File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 ///
-/// > **NOTE:** Available since v1.153.0.
+/// &gt; **NOTE:** Available since v1.153.0.
 ///
 /// ## Example Usage
 ///
@@ -298,20 +298,27 @@ import 'fileset_state.dart';
 class Fileset extends pulumi.CustomResource {
   /// The time when Fileset was created.
   late final pulumi.Output<String> createTime;
+
   /// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
   /// - true: Enable instance release protection.
   /// - false (default): Turn off instance release protection
   late final pulumi.Output<bool> deletionProtection;
+
   /// Description of Fileset.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> dryRun;
+
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The path of Fileset.
   late final pulumi.Output<String> fileSystemPath;
+
   /// Fileset ID
   late final pulumi.Output<String> filesetId;
+
   /// The status of Fileset. Includes:
   late final pulumi.Output<String> status;
 
@@ -324,19 +331,19 @@ class Fileset extends pulumi.CustomResource {
     FilesetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/fileset:Fileset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionProtection = registerOutput<bool>('deletionProtection');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.fileSystemPath = registerOutput<String>('fileSystemPath');
-    this.filesetId = registerOutput<String>('filesetId');
-    this.status = registerOutput<String>('status');
+         'alicloud:nas/fileset:Fileset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionProtection = registerOutput<bool>('deletionProtection');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    fileSystemPath = registerOutput<String>('fileSystemPath');
+    filesetId = registerOutput<String>('filesetId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Fileset] resource's state with the given [name] and [id].
@@ -357,18 +364,18 @@ class Fileset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/fileset:Fileset',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionProtection = registerOutput<bool>('deletionProtection');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.fileSystemPath = registerOutput<String>('fileSystemPath');
-    this.filesetId = registerOutput<String>('filesetId');
-    this.status = registerOutput<String>('status');
+         'alicloud:nas/fileset:Fileset',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionProtection = registerOutput<bool>('deletionProtection');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    fileSystemPath = registerOutput<String>('fileSystemPath');
+    filesetId = registerOutput<String>('filesetId');
+    status = registerOutput<String>('status');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleAssignmentArgs {
   /// The name of the role assignment. It can be any valid GUID.
   final pulumi.Input<String> roleAssignmentName;
+
   /// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   final pulumi.Input<String> scope;
+
   /// Tenant ID for cross-tenant request
   final pulumi.Input<String>? tenantId;
 
@@ -34,10 +36,15 @@ class GetRoleAssignmentArgs {
 
   factory GetRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentArgs(
-      roleAssignmentName: (map['roleAssignmentName'] as String).input(),
-      scope: (map['scope'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      roleAssignmentName: pulumi.Input.fromValue(
+        map['roleAssignmentName'] as String,
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum TargetTcpProxyProxyHeader {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const TargetTcpProxyProxyHeader(this.value);
-  final String value;
+  const TargetTcpProxyProxyHeader(this.wireValue);
+  final String wireValue;
 
   static TargetTcpProxyProxyHeader fromValue(String value) {
     for (final item in TargetTcpProxyProxyHeader.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetTcpProxyProxyHeader value: $value');
   }
 }
-

@@ -8,29 +8,56 @@ import 'grpc_route_route_match.dart';
 class GrpcRouteRouteRule {
   /// A detailed rule defining how to route traffic. This field is required.
   final pulumi.Input<GrpcRouteRouteAction> action;
+
   /// Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic.
   final pulumi.Input<List<GrpcRouteRouteMatch>>? matches;
 
   /// Creates a new [GrpcRouteRouteRule].
   /// [action] A detailed rule defining how to route traffic. This field is required.
   /// [matches] Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic.
-  GrpcRouteRouteRule({
-    required this.action,
-    this.matches,
-  });
+  GrpcRouteRouteRule({required this.action, this.matches});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': pulumi.Input.mapInputValue<GrpcRouteRouteAction, Map<String, dynamic>>(action, (value) => value.toMap()),
-      'matches': ?pulumi.Input.mapOptionalInputValue<List<GrpcRouteRouteMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GrpcRouteRouteMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'action':
+          pulumi.Input.mapInputValue<
+            GrpcRouteRouteAction,
+            Map<String, dynamic>
+          >(action, (value) => value.toMap()),
+      'matches':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GrpcRouteRouteMatch>,
+            List<Map<String, dynamic>>
+          >(
+            matches,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GrpcRouteRouteMatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GrpcRouteRouteRule.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteRule(
-      action: (GrpcRouteRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRouteMatch>(map['matches']!, (value) => GrpcRouteRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: pulumi.Input.fromValue(
+        GrpcRouteRouteAction.fromMap(
+          (map['action']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      matches: (() {
+        final guardedValue = map['matches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GrpcRouteRouteMatch>(
+            guardedValue,
+            (value) => GrpcRouteRouteMatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

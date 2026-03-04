@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThreatIntelligenceParsedPatternTypeValue {
   /// Value of parsed pattern
   final pulumi.Input<String>? value;
+
   /// Type of the value
   final pulumi.Input<String>? valueType;
 
   /// Creates a new [ThreatIntelligenceParsedPatternTypeValue].
   /// [value] Value of parsed pattern
   /// [valueType] Type of the value
-  ThreatIntelligenceParsedPatternTypeValue({
-    this.value,
-    this.valueType,
-  });
+  ThreatIntelligenceParsedPatternTypeValue({this.value, this.valueType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-      'valueType': ?valueType,
-    };
+    return <String, dynamic>{'value': ?value, 'valueType': ?valueType};
   }
 
-  factory ThreatIntelligenceParsedPatternTypeValue.fromMap(Map<String, dynamic> map) {
+  factory ThreatIntelligenceParsedPatternTypeValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ThreatIntelligenceParsedPatternTypeValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueType: (() {
+        final guardedValue = map['valueType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

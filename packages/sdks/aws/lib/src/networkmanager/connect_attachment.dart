@@ -389,34 +389,49 @@ import 'connect_attachment_state.dart';
 class ConnectAttachment extends pulumi.CustomResource {
   /// ARN of the attachment.
   late final pulumi.Output<String> arn;
+
   /// ID of the attachment.
   late final pulumi.Output<String> attachmentId;
+
   /// Policy rule number associated with the attachment.
   late final pulumi.Output<int> attachmentPolicyRuleNumber;
+
   /// Type of attachment.
   late final pulumi.Output<String> attachmentType;
+
   /// ARN of a core network.
   late final pulumi.Output<String> coreNetworkArn;
+
   /// ID of a core network where you want to create the attachment.
   late final pulumi.Output<String> coreNetworkId;
+
   /// Region where the edge is located.
   late final pulumi.Output<String> edgeLocation;
+
   /// Options block. See options for more information.
   late final pulumi.Output<ConnectAttachmentOptions> options;
+
   /// ID of the attachment account owner.
   late final pulumi.Output<String> ownerAccountId;
+
   /// Attachment resource ARN.
   late final pulumi.Output<String> resourceArn;
+
   /// The routing policy label to apply to the Connect attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   late final pulumi.Output<String?> routingPolicyLabel;
+
   /// Name of the segment attachment.
   late final pulumi.Output<String> segmentName;
+
   /// State of the attachment.
   late final pulumi.Output<String> state;
+
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// ID of the attachment between the two connections.
   ///
   /// The following arguments are optional:
@@ -431,27 +446,29 @@ class ConnectAttachment extends pulumi.CustomResource {
     ConnectAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/connectAttachment:ConnectAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.attachmentId = registerOutput<String>('attachmentId');
-    this.attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
-    this.attachmentType = registerOutput<String>('attachmentType');
-    this.coreNetworkArn = registerOutput<String>('coreNetworkArn');
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.edgeLocation = registerOutput<String>('edgeLocation');
+         'aws:networkmanager/connectAttachment:ConnectAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    attachmentId = registerOutput<String>('attachmentId');
+    attachmentPolicyRuleNumber = registerOutput<int>(
+      'attachmentPolicyRuleNumber',
+    );
+    attachmentType = registerOutput<String>('attachmentType');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    edgeLocation = registerOutput<String>('edgeLocation');
     this.options = registerOutput<ConnectAttachmentOptions>('options');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
-    this.segmentName = registerOutput<String>('segmentName');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.transportAttachmentId = registerOutput<String>('transportAttachmentId');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    resourceArn = registerOutput<String>('resourceArn');
+    routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
+    segmentName = registerOutput<String>('segmentName');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    transportAttachmentId = registerOutput<String>('transportAttachmentId');
   }
 
   /// Gets an existing [ConnectAttachment] resource's state with the given [name] and [id].
@@ -472,26 +489,28 @@ class ConnectAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/connectAttachment:ConnectAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.attachmentId = registerOutput<String>('attachmentId');
-    this.attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
-    this.attachmentType = registerOutput<String>('attachmentType');
-    this.coreNetworkArn = registerOutput<String>('coreNetworkArn');
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.edgeLocation = registerOutput<String>('edgeLocation');
+         'aws:networkmanager/connectAttachment:ConnectAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    attachmentId = registerOutput<String>('attachmentId');
+    attachmentPolicyRuleNumber = registerOutput<int>(
+      'attachmentPolicyRuleNumber',
+    );
+    attachmentType = registerOutput<String>('attachmentType');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    edgeLocation = registerOutput<String>('edgeLocation');
     this.options = registerOutput<ConnectAttachmentOptions>('options');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
-    this.segmentName = registerOutput<String>('segmentName');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    resourceArn = registerOutput<String>('resourceArn');
+    routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
+    segmentName = registerOutput<String>('segmentName');
     this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.transportAttachmentId = registerOutput<String>('transportAttachmentId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    transportAttachmentId = registerOutput<String>('transportAttachmentId');
   }
 }

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionSettingsResponse {
   /// The secret name which is referenced for EncryptionKey.
   final pulumi.Input<String>? containerAppAuthEncryptionSecretName;
+
   /// The secret name which is referenced for SigningKey.
   final pulumi.Input<String>? containerAppAuthSigningSecretName;
 
@@ -19,16 +20,24 @@ class EncryptionSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerAppAuthEncryptionSecretName': ?containerAppAuthEncryptionSecretName,
+      'containerAppAuthEncryptionSecretName':
+          ?containerAppAuthEncryptionSecretName,
       'containerAppAuthSigningSecretName': ?containerAppAuthSigningSecretName,
     };
   }
 
   factory EncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsResponse(
-      containerAppAuthEncryptionSecretName: map['containerAppAuthEncryptionSecretName'] == null ? null : (map['containerAppAuthEncryptionSecretName']! as String).input(),
-      containerAppAuthSigningSecretName: map['containerAppAuthSigningSecretName'] == null ? null : (map['containerAppAuthSigningSecretName']! as String).input(),
+      containerAppAuthEncryptionSecretName: (() {
+        final guardedValue = map['containerAppAuthEncryptionSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerAppAuthSigningSecretName: (() {
+        final guardedValue = map['containerAppAuthSigningSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

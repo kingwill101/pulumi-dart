@@ -10,20 +10,35 @@ class GetVirtualNetworkGatewayBgpPeerStatusResult {
 
   /// Creates a new [GetVirtualNetworkGatewayBgpPeerStatusResult].
   /// [value] List of BGP peers.
-  GetVirtualNetworkGatewayBgpPeerStatusResult({
-    this.value,
-  });
+  GetVirtualNetworkGatewayBgpPeerStatusResult({this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': ?value == null ? null : pulumi.Input.encodeList<BgpPeerStatusResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          BgpPeerStatusResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory GetVirtualNetworkGatewayBgpPeerStatusResult.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNetworkGatewayBgpPeerStatusResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNetworkGatewayBgpPeerStatusResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<BgpPeerStatusResponse>(map['value']!, (value) => BgpPeerStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<BgpPeerStatusResponse>(
+          guardedValue,
+          (value) => BgpPeerStatusResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

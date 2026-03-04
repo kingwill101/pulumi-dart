@@ -485,7 +485,7 @@ import 'job_step_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -500,34 +500,45 @@ import 'job_step_state.dart';
 class JobStep extends pulumi.CustomResource {
   /// The initial retry interval in seconds. Defaults to `1`.
   late final pulumi.Output<int?> initialRetryIntervalSeconds;
+
   /// The ID of the Elastic Job Credential to use when executing this Elastic Job Step. Omit this argument to run the step under the Job Agent's managed identity (user-assigned).
   ///
-  /// !> **Note:** Once set, `job_credential_id` cannot be removed. Removing the credential will force a new resource to be created.
+  /// !&gt; **Note:** Once set, `job_credential_id` cannot be removed. Removing the credential will force a new resource to be created.
   late final pulumi.Output<String?> jobCredentialId;
+
   /// The ID of the Elastic Job. Changing this forces a new Elastic Job Step to be created.
   late final pulumi.Output<String> jobId;
+
   /// The index at which to insert this Elastic Job Step into the Elastic Job.
   ///
-  /// > **Note:** This value must be greater than or equal to 1 and less than or equal to the number of job steps in the Elastic Job.
+  /// &gt; **Note:** This value must be greater than or equal to 1 and less than or equal to the number of job steps in the Elastic Job.
   late final pulumi.Output<int> jobStepIndex;
+
   /// The ID of the Elastic Job Target Group.
   late final pulumi.Output<String> jobTargetGroupId;
+
   /// The maximum retry interval in seconds. Defaults to `120`.
   ///
-  /// > **Note:** `maximum_retry_interval_seconds` must be greater than `initial_retry_interval_seconds`.
+  /// &gt; **Note:** `maximum_retry_interval_seconds` must be greater than `initial_retry_interval_seconds`.
   late final pulumi.Output<int?> maximumRetryIntervalSeconds;
+
   /// The name which should be used for this Elastic Job Step. Changing this forces a new Elastic Job Step to be created.
   late final pulumi.Output<String> name;
+
   /// An `output_target` block as defined below.
   late final pulumi.Output<JobStepOutputTarget?> outputTarget;
+
   /// The number of retry attempts. Defaults to `10`.
   late final pulumi.Output<int?> retryAttempts;
+
   /// The multiplier for time between retries. Defaults to `2.0`.
   late final pulumi.Output<double?> retryIntervalBackoffMultiplier;
+
   /// The T-SQL script to be executed by this Elastic Job Step.
   ///
-  /// > **Note:** While Azure places no restrictions on the script provided here, it is recommended to ensure the script is idempotent.
+  /// &gt; **Note:** While Azure places no restrictions on the script provided here, it is recommended to ensure the script is idempotent.
   late final pulumi.Output<String> sqlScript;
+
   /// The execution timeout in seconds for this Elastic Job Step. Defaults to `43200`.
   late final pulumi.Output<int?> timeoutSeconds;
 
@@ -540,23 +551,29 @@ class JobStep extends pulumi.CustomResource {
     JobStepArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobStep:JobStep',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.initialRetryIntervalSeconds = registerOutput<int?>('initialRetryIntervalSeconds');
-    this.jobCredentialId = registerOutput<String?>('jobCredentialId');
-    this.jobId = registerOutput<String>('jobId');
-    this.jobStepIndex = registerOutput<int>('jobStepIndex');
-    this.jobTargetGroupId = registerOutput<String>('jobTargetGroupId');
-    this.maximumRetryIntervalSeconds = registerOutput<int?>('maximumRetryIntervalSeconds');
+         'azure:mssql/jobStep:JobStep',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    initialRetryIntervalSeconds = registerOutput<int?>(
+      'initialRetryIntervalSeconds',
+    );
+    jobCredentialId = registerOutput<String?>('jobCredentialId');
+    jobId = registerOutput<String>('jobId');
+    jobStepIndex = registerOutput<int>('jobStepIndex');
+    jobTargetGroupId = registerOutput<String>('jobTargetGroupId');
+    maximumRetryIntervalSeconds = registerOutput<int?>(
+      'maximumRetryIntervalSeconds',
+    );
     this.name = registerOutput<String>('name');
-    this.outputTarget = registerOutput<JobStepOutputTarget?>('outputTarget');
-    this.retryAttempts = registerOutput<int?>('retryAttempts');
-    this.retryIntervalBackoffMultiplier = registerOutput<double?>('retryIntervalBackoffMultiplier');
-    this.sqlScript = registerOutput<String>('sqlScript');
-    this.timeoutSeconds = registerOutput<int?>('timeoutSeconds');
+    outputTarget = registerOutput<JobStepOutputTarget?>('outputTarget');
+    retryAttempts = registerOutput<int?>('retryAttempts');
+    retryIntervalBackoffMultiplier = registerOutput<double?>(
+      'retryIntervalBackoffMultiplier',
+    );
+    sqlScript = registerOutput<String>('sqlScript');
+    timeoutSeconds = registerOutput<int?>('timeoutSeconds');
   }
 
   /// Gets an existing [JobStep] resource's state with the given [name] and [id].
@@ -577,22 +594,28 @@ class JobStep extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/jobStep:JobStep',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.initialRetryIntervalSeconds = registerOutput<int?>('initialRetryIntervalSeconds');
-    this.jobCredentialId = registerOutput<String?>('jobCredentialId');
-    this.jobId = registerOutput<String>('jobId');
-    this.jobStepIndex = registerOutput<int>('jobStepIndex');
-    this.jobTargetGroupId = registerOutput<String>('jobTargetGroupId');
-    this.maximumRetryIntervalSeconds = registerOutput<int?>('maximumRetryIntervalSeconds');
+         'azure:mssql/jobStep:JobStep',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    initialRetryIntervalSeconds = registerOutput<int?>(
+      'initialRetryIntervalSeconds',
+    );
+    jobCredentialId = registerOutput<String?>('jobCredentialId');
+    jobId = registerOutput<String>('jobId');
+    jobStepIndex = registerOutput<int>('jobStepIndex');
+    jobTargetGroupId = registerOutput<String>('jobTargetGroupId');
+    maximumRetryIntervalSeconds = registerOutput<int?>(
+      'maximumRetryIntervalSeconds',
+    );
     this.name = registerOutput<String>('name');
-    this.outputTarget = registerOutput<JobStepOutputTarget?>('outputTarget');
-    this.retryAttempts = registerOutput<int?>('retryAttempts');
-    this.retryIntervalBackoffMultiplier = registerOutput<double?>('retryIntervalBackoffMultiplier');
-    this.sqlScript = registerOutput<String>('sqlScript');
-    this.timeoutSeconds = registerOutput<int?>('timeoutSeconds');
+    outputTarget = registerOutput<JobStepOutputTarget?>('outputTarget');
+    retryAttempts = registerOutput<int?>('retryAttempts');
+    retryIntervalBackoffMultiplier = registerOutput<double?>(
+      'retryIntervalBackoffMultiplier',
+    );
+    sqlScript = registerOutput<String>('sqlScript');
+    timeoutSeconds = registerOutput<int?>('timeoutSeconds');
   }
 }

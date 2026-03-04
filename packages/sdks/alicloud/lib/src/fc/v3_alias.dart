@@ -8,7 +8,7 @@ import 'v3_alias_state.dart';
 ///
 /// For information about FCV3 Alias and how to use it, see [What is Alias](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-createalias).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -182,16 +182,22 @@ import 'v3_alias_state.dart';
 class V3Alias extends pulumi.CustomResource {
   /// Grayscale version
   late final pulumi.Output<Map<String, double>?> additionalVersionWeight;
+
   /// Function Alias
   late final pulumi.Output<String> aliasName;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Description
   late final pulumi.Output<String?> description;
+
   /// Function Name
   late final pulumi.Output<String> functionName;
+
   /// (Available since v1.234.0) Last modification time
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The version that the alias points
   late final pulumi.Output<String?> versionId;
 
@@ -204,18 +210,20 @@ class V3Alias extends pulumi.CustomResource {
     V3AliasArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3Alias:V3Alias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalVersionWeight = registerOutput<Map<String, double>?>('additionalVersionWeight');
-    this.aliasName = registerOutput<String>('aliasName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.functionName = registerOutput<String>('functionName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.versionId = registerOutput<String?>('versionId');
+         'alicloud:fc/v3Alias:V3Alias',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalVersionWeight = registerOutput<Map<String, double>?>(
+      'additionalVersionWeight',
+    );
+    aliasName = registerOutput<String>('aliasName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    functionName = registerOutput<String>('functionName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    versionId = registerOutput<String?>('versionId');
   }
 
   /// Gets an existing [V3Alias] resource's state with the given [name] and [id].
@@ -236,17 +244,19 @@ class V3Alias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fc/v3Alias:V3Alias',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalVersionWeight = registerOutput<Map<String, double>?>('additionalVersionWeight');
-    this.aliasName = registerOutput<String>('aliasName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.functionName = registerOutput<String>('functionName');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.versionId = registerOutput<String?>('versionId');
+         'alicloud:fc/v3Alias:V3Alias',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalVersionWeight = registerOutput<Map<String, double>?>(
+      'additionalVersionWeight',
+    );
+    aliasName = registerOutput<String>('aliasName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    functionName = registerOutput<String>('functionName');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    versionId = registerOutput<String?>('versionId');
   }
 }

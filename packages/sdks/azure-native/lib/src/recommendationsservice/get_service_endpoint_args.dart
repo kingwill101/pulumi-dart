@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceEndpointArgs {
   /// The name of the RecommendationsService Account resource.
   final pulumi.Input<String> accountName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the ServiceEndpoint resource.
   final pulumi.Input<String> serviceEndpointName;
 
@@ -34,10 +36,13 @@ class GetServiceEndpointArgs {
 
   factory GetServiceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceEndpointName: (map['serviceEndpointName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceEndpointName: pulumi.Input.fromValue(
+        map['serviceEndpointName'] as String,
+      ),
     );
   }
 }
-

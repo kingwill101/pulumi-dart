@@ -4,16 +4,15 @@ enum NextStep {
   valueContinue("Continue"),
   valueTerminate("Terminate");
 
-  const NextStep(this.value);
-  final String value;
+  const NextStep(this.wireValue);
+  final String wireValue;
 
   static NextStep fromValue(String value) {
     for (final item in NextStep.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NextStep value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'gateway_route_spec_http2_route_match_query_parameter_match.dart';
 class GatewayRouteSpecHttp2RouteMatchQueryParameter {
   /// The query parameter to match on.
   final pulumi.Input<GatewayRouteSpecHttp2RouteMatchQueryParameterMatch>? match;
+
   /// Name for the query parameter that will be matched on.
   final pulumi.Input<String> name;
 
@@ -19,16 +20,29 @@ class GatewayRouteSpecHttp2RouteMatchQueryParameter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'match': ?pulumi.Input.mapOptionalInputValue<GatewayRouteSpecHttp2RouteMatchQueryParameterMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
+      'match':
+          ?pulumi.Input.mapOptionalInputValue<
+            GatewayRouteSpecHttp2RouteMatchQueryParameterMatch,
+            Map<String, dynamic>
+          >(match, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory GatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap(Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayRouteSpecHttp2RouteMatchQueryParameter(
-      match: map['match'] == null ? null : ((GatewayRouteSpecHttp2RouteMatchQueryParameterMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input()).input(),
-      name: (map['name'] as String).input(),
+      match: (() {
+        final guardedValue = map['match'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GatewayRouteSpecHttp2RouteMatchQueryParameterMatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

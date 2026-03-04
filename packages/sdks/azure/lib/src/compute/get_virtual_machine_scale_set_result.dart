@@ -9,14 +9,19 @@ import 'get_virtual_machine_scale_set_network_interface.dart';
 class GetVirtualMachineScaleSetResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A `identity` block as defined below.
   final List<GetVirtualMachineScaleSetIdentity> identities;
+
   /// A list of `instances` blocks as defined below.
   final List<GetVirtualMachineScaleSetInstance> instances;
+
   /// The Azure Region in which this Virtual Machine Scale Set exists.
   final String location;
+
   /// The name of the public IP address configuration
   final String name;
+
   /// A list of `network_interface` blocks as defined below.
   final List<GetVirtualMachineScaleSetNetworkInterface> networkInterfaces;
   final String resourceGroupName;
@@ -42,11 +47,23 @@ class GetVirtualMachineScaleSetResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identities': pulumi.Input.encodeList<GetVirtualMachineScaleSetIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'instances': pulumi.Input.encodeList<GetVirtualMachineScaleSetInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<
+            GetVirtualMachineScaleSetIdentity,
+            Map<String, dynamic>
+          >(identities, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetVirtualMachineScaleSetInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'location': location,
       'name': name,
-      'networkInterfaces': pulumi.Input.encodeList<GetVirtualMachineScaleSetNetworkInterface, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            GetVirtualMachineScaleSetNetworkInterface,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -54,13 +71,28 @@ class GetVirtualMachineScaleSetResult {
   factory GetVirtualMachineScaleSetResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetResult(
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetVirtualMachineScaleSetIdentity>(map['identities'], (value) => GetVirtualMachineScaleSetIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      instances: pulumi.Input.decodeList<GetVirtualMachineScaleSetInstance>(map['instances'], (value) => GetVirtualMachineScaleSetInstance.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetVirtualMachineScaleSetIdentity>(
+        map['identities']!,
+        (value) => GetVirtualMachineScaleSetIdentity.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      instances: pulumi.Input.decodeList<GetVirtualMachineScaleSetInstance>(
+        map['instances']!,
+        (value) => GetVirtualMachineScaleSetInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
-      networkInterfaces: pulumi.Input.decodeList<GetVirtualMachineScaleSetNetworkInterface>(map['networkInterfaces'], (value) => GetVirtualMachineScaleSetNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<GetVirtualMachineScaleSetNetworkInterface>(
+            map['networkInterfaces']!,
+            (value) => GetVirtualMachineScaleSetNetworkInterface.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       resourceGroupName: map['resourceGroupName'] as String,
     );
   }
 }
-

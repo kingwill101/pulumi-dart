@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventRuleOpenApiParameter {
   /// The API name.
   final pulumi.Input<String>? action;
+
   /// (Available since v1.211.1) The ARN of the API operation.
   final pulumi.Input<String>? arn;
+
   /// The ID of the recipient that receives alert notifications sent by an API callback.
   final pulumi.Input<String>? openApiParametersId;
+
   /// The ID of the cloud service to which the API operation belongs.
   final pulumi.Input<String>? product;
+
   /// The region where the resource resides.
   final pulumi.Input<String>? region;
+
   /// The name of the role.
   final pulumi.Input<String>? role;
+
   /// The version of the API.
   final pulumi.Input<String>? version;
 
@@ -50,14 +56,41 @@ class EventRuleOpenApiParameter {
 
   factory EventRuleOpenApiParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleOpenApiParameter(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
-      openApiParametersId: map['openApiParametersId'] == null ? null : (map['openApiParametersId']! as String).input(),
-      product: map['product'] == null ? null : (map['product']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      openApiParametersId: (() {
+        final guardedValue = map['openApiParametersId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      product: (() {
+        final guardedValue = map['product'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

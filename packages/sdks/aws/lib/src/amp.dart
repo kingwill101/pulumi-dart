@@ -1,5 +1,3 @@
-library module_amp;
-
 export 'amp/alert_manager_definition.dart';
 export 'amp/alert_manager_definition_args.dart';
 export 'amp/alert_manager_definition_state.dart';

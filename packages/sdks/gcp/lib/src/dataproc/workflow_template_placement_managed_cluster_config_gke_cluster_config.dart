@@ -5,7 +5,10 @@ import 'workflow_template_placement_managed_cluster_config_gke_cluster_config_na
 
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
   /// A target for the deployment.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget>? namespacedGkeDeploymentTarget;
+  final pulumi.Input<
+    WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget
+  >?
+  namespacedGkeDeploymentTarget;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig].
   /// [namespacedGkeDeploymentTarget] A target for the deployment.
@@ -15,14 +18,27 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'namespacedGkeDeploymentTarget': ?pulumi.Input.mapOptionalInputValue<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget, Map<String, dynamic>>(namespacedGkeDeploymentTarget, (value) => value.toMap()),
+      'namespacedGkeDeploymentTarget':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget,
+            Map<String, dynamic>
+          >(namespacedGkeDeploymentTarget, (value) => value.toMap()),
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(
-      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget.fromMap((map['namespacedGkeDeploymentTarget']! as Map).cast<String, dynamic>())).input(),
+      namespacedGkeDeploymentTarget: (() {
+        final guardedValue = map['namespacedGkeDeploymentTarget'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

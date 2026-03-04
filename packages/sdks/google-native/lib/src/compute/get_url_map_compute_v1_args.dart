@@ -13,23 +13,20 @@ class GetUrlMapComputeV1Args {
   /// Creates a new [GetUrlMapComputeV1Args].
   /// [project] Optional.
   /// [urlMap] Required.
-  GetUrlMapComputeV1Args({
-    this.project,
-    required this.urlMap,
-  });
+  GetUrlMapComputeV1Args({this.project, required this.urlMap});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'urlMap': urlMap,
-    };
+    return <String, dynamic>{'project': ?project, 'urlMap': urlMap};
   }
 
   factory GetUrlMapComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetUrlMapComputeV1Args(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      urlMap: (map['urlMap'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlMap: pulumi.Input.fromValue(map['urlMap'] as String),
     );
   }
 }
-

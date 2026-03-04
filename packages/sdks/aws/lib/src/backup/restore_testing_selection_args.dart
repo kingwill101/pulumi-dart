@@ -10,20 +10,29 @@ import 'restore_testing_selection_protected_resource_conditions.dart';
 class RestoreTestingSelectionArgs {
   /// The ARN of the IAM role.
   final pulumi.Input<String> iamRoleArn;
+
   /// The name of the backup restore testing selection.
   final pulumi.Input<String>? name;
+
   /// The ARNs for the protected resources.
   final pulumi.Input<List<String>>? protectedResourceArns;
+
   /// The conditions for the protected resource.
-  final pulumi.Input<RestoreTestingSelectionProtectedResourceConditions>? protectedResourceConditions;
+  final pulumi.Input<RestoreTestingSelectionProtectedResourceConditions>?
+  protectedResourceConditions;
+
   /// The type of the protected resource.
   final pulumi.Input<String> protectedResourceType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
   final pulumi.Input<Map<String, String>>? restoreMetadataOverrides;
+
   /// The name of the restore testing plan.
   final pulumi.Input<String> restoreTestingPlanName;
+
   /// The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
   final pulumi.Input<int>? validationWindowHours;
 
@@ -54,7 +63,11 @@ class RestoreTestingSelectionArgs {
       'iamRoleArn': iamRoleArn,
       'name': ?name,
       'protectedResourceArns': ?protectedResourceArns,
-      'protectedResourceConditions': ?pulumi.Input.mapOptionalInputValue<RestoreTestingSelectionProtectedResourceConditions, Map<String, dynamic>>(protectedResourceConditions, (value) => value.toMap()),
+      'protectedResourceConditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            RestoreTestingSelectionProtectedResourceConditions,
+            Map<String, dynamic>
+          >(protectedResourceConditions, (value) => value.toMap()),
       'protectedResourceType': protectedResourceType,
       'region': ?region,
       'restoreMetadataOverrides': ?restoreMetadataOverrides,
@@ -65,16 +78,49 @@ class RestoreTestingSelectionArgs {
 
   factory RestoreTestingSelectionArgs.fromMap(Map<String, dynamic> map) {
     return RestoreTestingSelectionArgs(
-      iamRoleArn: (map['iamRoleArn'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      protectedResourceArns: map['protectedResourceArns'] == null ? null : (((map['protectedResourceArns'] as List).cast<String>()).input()).input(),
-      protectedResourceConditions: map['protectedResourceConditions'] == null ? null : ((RestoreTestingSelectionProtectedResourceConditions.fromMap((map['protectedResourceConditions']! as Map).cast<String, dynamic>())).input()).input(),
-      protectedResourceType: (map['protectedResourceType'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restoreMetadataOverrides: map['restoreMetadataOverrides'] == null ? null : (((map['restoreMetadataOverrides'] as Map).cast<String, String>()).input()).input(),
-      restoreTestingPlanName: (map['restoreTestingPlanName'] as String).input(),
-      validationWindowHours: map['validationWindowHours'] == null ? null : ((map['validationWindowHours'] as int).input()).input(),
+      iamRoleArn: pulumi.Input.fromValue(map['iamRoleArn'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectedResourceArns: (() {
+        final guardedValue = map['protectedResourceArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      protectedResourceConditions: (() {
+        final guardedValue = map['protectedResourceConditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RestoreTestingSelectionProtectedResourceConditions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      protectedResourceType: pulumi.Input.fromValue(
+        map['protectedResourceType'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restoreMetadataOverrides: (() {
+        final guardedValue = map['restoreMetadataOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      restoreTestingPlanName: pulumi.Input.fromValue(
+        map['restoreTestingPlanName'] as String,
+      ),
+      validationWindowHours: (() {
+        final guardedValue = map['validationWindowHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

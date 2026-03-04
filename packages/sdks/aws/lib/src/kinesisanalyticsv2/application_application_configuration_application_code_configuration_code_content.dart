@@ -5,7 +5,11 @@ import 'application_application_configuration_application_code_configuration_cod
 
 class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent {
   /// Information about the Amazon S3 bucket containing the application code.
-  final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation>? s3ContentLocation;
+  final pulumi.Input<
+    ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation
+  >?
+  s3ContentLocation;
+
   /// The text-format code for the application.
   final pulumi.Input<String>? textContent;
 
@@ -19,16 +23,33 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3ContentLocation': ?pulumi.Input.mapOptionalInputValue<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation, Map<String, dynamic>>(s3ContentLocation, (value) => value.toMap()),
+      's3ContentLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation,
+            Map<String, dynamic>
+          >(s3ContentLocation, (value) => value.toMap()),
       'textContent': ?textContent,
     };
   }
 
-  factory ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent(
-      s3ContentLocation: map['s3ContentLocation'] == null ? null : ((ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation.fromMap((map['s3ContentLocation']! as Map).cast<String, dynamic>())).input()).input(),
-      textContent: map['textContent'] == null ? null : ((map['textContent'] as String).input()).input(),
+      s3ContentLocation: (() {
+        final guardedValue = map['s3ContentLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      textContent: (() {
+        final guardedValue = map['textContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

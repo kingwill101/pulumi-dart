@@ -8,18 +8,25 @@ class GetSecurityPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
   final String deploymentStatus;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// object which contains security policy parameters
   final SecurityPolicyWebApplicationFirewallParametersResponse? parameters;
+
   /// The name of the profile which holds the security policy.
   final String profileName;
+
   /// Provisioning status
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -51,7 +58,7 @@ class GetSecurityPolicyResult {
       'deploymentStatus': deploymentStatus,
       'id': id,
       'name': name,
-      'parameters': ?parameters == null ? null : parameters!.toMap(),
+      'parameters': ?parameters?.toMap(),
       'profileName': profileName,
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
@@ -65,12 +72,19 @@ class GetSecurityPolicyResult {
       deploymentStatus: map['deploymentStatus'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : SecurityPolicyWebApplicationFirewallParametersResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>()),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return SecurityPolicyWebApplicationFirewallParametersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       profileName: map['profileName'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

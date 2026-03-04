@@ -139,8 +139,10 @@ import 'patch_group_state.dart';
 class PatchGroup extends pulumi.CustomResource {
   /// The ID of the patch baseline to register the patch group with.
   late final pulumi.Output<String> baselineId;
+
   /// The name of the patch group that should be registered with the patch baseline.
   late final pulumi.Output<String> patchGroup;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -153,14 +155,14 @@ class PatchGroup extends pulumi.CustomResource {
     PatchGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/patchGroup:PatchGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.baselineId = registerOutput<String>('baselineId');
-    this.patchGroup = registerOutput<String>('patchGroup');
-    this.region = registerOutput<String>('region');
+         'aws:ssm/patchGroup:PatchGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    baselineId = registerOutput<String>('baselineId');
+    patchGroup = registerOutput<String>('patchGroup');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [PatchGroup] resource's state with the given [name] and [id].
@@ -181,13 +183,13 @@ class PatchGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/patchGroup:PatchGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.baselineId = registerOutput<String>('baselineId');
-    this.patchGroup = registerOutput<String>('patchGroup');
-    this.region = registerOutput<String>('region');
+         'aws:ssm/patchGroup:PatchGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    baselineId = registerOutput<String>('baselineId');
+    patchGroup = registerOutput<String>('patchGroup');
+    region = registerOutput<String>('region');
   }
 }

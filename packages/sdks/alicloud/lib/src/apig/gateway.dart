@@ -5,7 +5,6 @@ import 'gateway_network_access_config.dart';
 import 'gateway_state.dart';
 import 'gateway_vpc.dart';
 import 'gateway_vswitch.dart';
-import 'gateway_zone.dart';
 import 'gateway_zone_config.dart';
 
 /// ## Import
@@ -18,34 +17,47 @@ import 'gateway_zone_config.dart';
 class Gateway extends pulumi.CustomResource {
   /// The creation timestamp. Unit: milliseconds.
   late final pulumi.Output<int> createTime;
+
   /// The name of the resource
   late final pulumi.Output<String?> gatewayName;
+
   /// Describes the gateway type, which is categorized into the following two types:
   /// - API: indicates an API gateway
   /// - AI: Indicates an AI gateway
   late final pulumi.Output<String> gatewayType;
+
   /// Log Configuration See `log_config` below.
   late final pulumi.Output<GatewayLogConfig?> logConfig;
+
   /// Network Access Configuration See `network_access_config` below.
   late final pulumi.Output<GatewayNetworkAccessConfig?> networkAccessConfig;
+
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// Gateway instance specifications
   late final pulumi.Output<String?> spec;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The VPC associated with the Gateway. See `vpc` below.
   late final pulumi.Output<GatewayVpc?> vpc;
+
   /// The virtual switch associated with the Gateway. See `vswitch` below.
   late final pulumi.Output<GatewayVswitch?> vswitch;
+
   /// Availability Zone Configuration See `zone_config` below.
   late final pulumi.Output<GatewayZoneConfig> zoneConfig;
+
   /// The List of zones associated with the Gateway. See `zones` below.
-  late final pulumi.Output<List<GatewayZone>> zones;
+  late final pulumi.Output<List<Map<String, dynamic>>> zones;
 
   /// Creates a new [Gateway].
   /// [name] The Pulumi resource name.
@@ -56,25 +68,27 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apig/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.gatewayName = registerOutput<String?>('gatewayName');
-    this.gatewayType = registerOutput<String>('gatewayType');
-    this.logConfig = registerOutput<GatewayLogConfig?>('logConfig');
-    this.networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>('networkAccessConfig');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.spec = registerOutput<String?>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpc = registerOutput<GatewayVpc?>('vpc');
-    this.vswitch = registerOutput<GatewayVswitch?>('vswitch');
-    this.zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig');
-    this.zones = registerOutput<List<GatewayZone>>('zones');
+         'alicloud:apig/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    gatewayName = registerOutput<String?>('gatewayName');
+    gatewayType = registerOutput<String>('gatewayType');
+    logConfig = registerOutput<GatewayLogConfig?>('logConfig');
+    networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>(
+      'networkAccessConfig',
+    );
+    paymentType = registerOutput<String>('paymentType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    spec = registerOutput<String?>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpc = registerOutput<GatewayVpc?>('vpc');
+    vswitch = registerOutput<GatewayVswitch?>('vswitch');
+    zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig');
+    zones = registerOutput<List<Map<String, dynamic>>>('zones');
   }
 
   /// Gets an existing [Gateway] resource's state with the given [name] and [id].
@@ -95,24 +109,26 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apig/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.gatewayName = registerOutput<String?>('gatewayName');
-    this.gatewayType = registerOutput<String>('gatewayType');
-    this.logConfig = registerOutput<GatewayLogConfig?>('logConfig');
-    this.networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>('networkAccessConfig');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.spec = registerOutput<String?>('spec');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpc = registerOutput<GatewayVpc?>('vpc');
-    this.vswitch = registerOutput<GatewayVswitch?>('vswitch');
-    this.zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig');
-    this.zones = registerOutput<List<GatewayZone>>('zones');
+         'alicloud:apig/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    gatewayName = registerOutput<String?>('gatewayName');
+    gatewayType = registerOutput<String>('gatewayType');
+    logConfig = registerOutput<GatewayLogConfig?>('logConfig');
+    networkAccessConfig = registerOutput<GatewayNetworkAccessConfig?>(
+      'networkAccessConfig',
+    );
+    paymentType = registerOutput<String>('paymentType');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    spec = registerOutput<String?>('spec');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpc = registerOutput<GatewayVpc?>('vpc');
+    vswitch = registerOutput<GatewayVswitch?>('vswitch');
+    zoneConfig = registerOutput<GatewayZoneConfig>('zoneConfig');
+    zones = registerOutput<List<Map<String, dynamic>>>('zones');
   }
 }

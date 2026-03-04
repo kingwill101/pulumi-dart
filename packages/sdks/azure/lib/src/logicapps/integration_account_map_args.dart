@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationAccountMapArgs {
   /// The content of the Logic App Integration Account Map.
   final pulumi.Input<String> content;
+
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Map to be created.
   final pulumi.Input<String> integrationAccountName;
+
   /// The type of the Logic App Integration Account Map. Possible values are `Liquid`, `NotSpecified`, `Xslt`, `Xslt30` and `Xslt20`.
   final pulumi.Input<String> mapType;
+
   /// The metadata of the Logic App Integration Account Map.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The name which should be used for this Logic App Integration Account Map. Changing this forces a new Logic App Integration Account Map to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Logic App Integration Account Map should exist. Changing this forces a new Logic App Integration Account Map to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -49,13 +54,26 @@ class IntegrationAccountMapArgs {
 
   factory IntegrationAccountMapArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountMapArgs(
-      content: (map['content'] as String).input(),
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      mapType: (map['mapType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      mapType: pulumi.Input.fromValue(map['mapType'] as String),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

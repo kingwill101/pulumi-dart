@@ -8,20 +8,17 @@ class DistributionConnectionFunctionAssociation {
 
   /// Creates a new [DistributionConnectionFunctionAssociation].
   /// [id] Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
-  DistributionConnectionFunctionAssociation({
-    required this.id,
-  });
+  DistributionConnectionFunctionAssociation({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
-  factory DistributionConnectionFunctionAssociation.fromMap(Map<String, dynamic> map) {
+  factory DistributionConnectionFunctionAssociation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionConnectionFunctionAssociation(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

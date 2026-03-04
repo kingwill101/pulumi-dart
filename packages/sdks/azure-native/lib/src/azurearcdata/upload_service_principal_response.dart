@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadServicePrincipalResponse {
   /// Authority for the service principal. Example: https://login.microsoftonline.com/
   final pulumi.Input<String>? authority;
+
   /// Client ID of the service principal for uploading data.
   final pulumi.Input<String>? clientId;
+
   /// Tenant ID of the service principal.
   final pulumi.Input<String>? tenantId;
 
@@ -31,10 +33,21 @@ class UploadServicePrincipalResponse {
 
   factory UploadServicePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return UploadServicePrincipalResponse(
-      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

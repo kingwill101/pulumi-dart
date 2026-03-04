@@ -12,11 +12,13 @@ class GetFirewallArgs {
   /// The list of the IDs of the Droplets assigned to
   /// the Firewall.
   final pulumi.Input<List<int>>? dropletIds;
+
   /// The ID of the firewall to retrieve information
   /// about.
   final pulumi.Input<String> firewallId;
   final pulumi.Input<List<GetFirewallInboundRule>>? inboundRules;
   final pulumi.Input<List<GetFirewallOutboundRule>>? outboundRules;
+
   /// The names of the Tags assigned to the Firewall.
   final pulumi.Input<List<String>>? tags;
 
@@ -38,20 +40,71 @@ class GetFirewallArgs {
     return <String, dynamic>{
       'dropletIds': ?dropletIds,
       'firewallId': firewallId,
-      'inboundRules': ?pulumi.Input.mapOptionalInputValue<List<GetFirewallInboundRule>, List<Map<String, dynamic>>>(inboundRules, (value) => pulumi.Input.encodeList<GetFirewallInboundRule, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'outboundRules': ?pulumi.Input.mapOptionalInputValue<List<GetFirewallOutboundRule>, List<Map<String, dynamic>>>(outboundRules, (value) => pulumi.Input.encodeList<GetFirewallOutboundRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inboundRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetFirewallInboundRule>,
+            List<Map<String, dynamic>>
+          >(
+            inboundRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetFirewallInboundRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'outboundRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetFirewallOutboundRule>,
+            List<Map<String, dynamic>>
+          >(
+            outboundRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetFirewallOutboundRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
     };
   }
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
-      dropletIds: map['dropletIds'] == null ? null : ((map['dropletIds']! as List).cast<int>()).input(),
-      firewallId: (map['firewallId'] as String).input(),
-      inboundRules: map['inboundRules'] == null ? null : (pulumi.Input.decodeList<GetFirewallInboundRule>(map['inboundRules']!, (value) => GetFirewallInboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeList<GetFirewallOutboundRule>(map['outboundRules']!, (value) => GetFirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      dropletIds: (() {
+        final guardedValue = map['dropletIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      firewallId: pulumi.Input.fromValue(map['firewallId'] as String),
+      inboundRules: (() {
+        final guardedValue = map['inboundRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetFirewallInboundRule>(
+            guardedValue,
+            (value) => GetFirewallInboundRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      outboundRules: (() {
+        final guardedValue = map['outboundRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetFirewallOutboundRule>(
+            guardedValue,
+            (value) => GetFirewallOutboundRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

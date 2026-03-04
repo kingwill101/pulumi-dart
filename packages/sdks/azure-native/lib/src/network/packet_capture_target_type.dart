@@ -3,16 +3,15 @@ enum PacketCaptureTargetType {
   valueAzureVM("AzureVM"),
   valueAzureVMSS("AzureVMSS");
 
-  const PacketCaptureTargetType(this.value);
-  final String value;
+  const PacketCaptureTargetType(this.wireValue);
+  final String wireValue;
 
   static PacketCaptureTargetType fromValue(String value) {
     for (final item in PacketCaptureTargetType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PacketCaptureTargetType value: $value');
   }
 }
-

@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_import_args.dart';
 import 'file_metadata_response.dart';
 import 'system_data_response.dart';
-import 'validation_error_response.dart';
 
 /// Represents a file import in Azure Security Insights.
 ///
@@ -186,36 +185,52 @@ import 'validation_error_response.dart';
 class FileImport extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The content type of this file.
   late final pulumi.Output<String> contentType;
+
   /// The time the file was imported.
   late final pulumi.Output<String> createdTimeUTC;
+
   /// Represents the error file (if the import was ingested with errors or failed the validation).
   late final pulumi.Output<FileMetadataResponse> errorFile;
+
   /// An ordered list of some of the errors that were encountered during validation.
-  late final pulumi.Output<List<ValidationErrorResponse>> errorsPreview;
+  late final pulumi.Output<List<Map<String, dynamic>>> errorsPreview;
+
   /// The time the files associated with this import are deleted from the storage account.
   late final pulumi.Output<String> filesValidUntilTimeUTC;
+
   /// Represents the imported file.
   late final pulumi.Output<FileMetadataResponse> importFile;
+
   /// The time the file import record is soft deleted from the database and history.
   late final pulumi.Output<String> importValidUntilTimeUTC;
+
   /// The number of records that have been successfully ingested.
   late final pulumi.Output<int> ingestedRecordCount;
+
   /// Describes how to ingest the records in the file.
   late final pulumi.Output<String> ingestionMode;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The source for the data in the file.
   late final pulumi.Output<String> source;
+
   /// The state of the file import.
   late final pulumi.Output<String> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The number of records in the file.
   late final pulumi.Output<int> totalRecordCount;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The number of records that have passed validation.
   late final pulumi.Output<int> validRecordCount;
 
@@ -228,27 +243,27 @@ class FileImport extends pulumi.CustomResource {
     FileImportArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:FileImport',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contentType = registerOutput<String>('contentType');
-    this.createdTimeUTC = registerOutput<String>('createdTimeUTC');
-    this.errorFile = registerOutput<FileMetadataResponse>('errorFile');
-    this.errorsPreview = registerOutput<List<ValidationErrorResponse>>('errorsPreview');
-    this.filesValidUntilTimeUTC = registerOutput<String>('filesValidUntilTimeUTC');
-    this.importFile = registerOutput<FileMetadataResponse>('importFile');
-    this.importValidUntilTimeUTC = registerOutput<String>('importValidUntilTimeUTC');
-    this.ingestedRecordCount = registerOutput<int>('ingestedRecordCount');
-    this.ingestionMode = registerOutput<String>('ingestionMode');
+         'azure-native:securityinsights:FileImport',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentType = registerOutput<String>('contentType');
+    createdTimeUTC = registerOutput<String>('createdTimeUTC');
+    errorFile = registerOutput<FileMetadataResponse>('errorFile');
+    errorsPreview = registerOutput<List<Map<String, dynamic>>>('errorsPreview');
+    filesValidUntilTimeUTC = registerOutput<String>('filesValidUntilTimeUTC');
+    importFile = registerOutput<FileMetadataResponse>('importFile');
+    importValidUntilTimeUTC = registerOutput<String>('importValidUntilTimeUTC');
+    ingestedRecordCount = registerOutput<int>('ingestedRecordCount');
+    ingestionMode = registerOutput<String>('ingestionMode');
     this.name = registerOutput<String>('name');
-    this.source = registerOutput<String>('source');
-    this.state = registerOutput<String>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.totalRecordCount = registerOutput<int>('totalRecordCount');
-    this.type = registerOutput<String>('type');
-    this.validRecordCount = registerOutput<int>('validRecordCount');
+    source = registerOutput<String>('source');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    totalRecordCount = registerOutput<int>('totalRecordCount');
+    type = registerOutput<String>('type');
+    validRecordCount = registerOutput<int>('validRecordCount');
   }
 }

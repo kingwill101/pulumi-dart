@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice {
   /// The absolute file path in the container where the tmpfs volume is mounted.
   final pulumi.Input<String> containerPath;
+
   /// The path for the device on the host container instance.
   final pulumi.Input<String> hostPath;
+
   /// The explicit permissions to provide to the container for the device.
   final pulumi.Input<List<String>> permissions;
 
@@ -28,12 +30,15 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice
     };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice(
-      containerPath: (map['containerPath'] as String).input(),
-      hostPath: (map['hostPath'] as String).input(),
-      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      containerPath: pulumi.Input.fromValue(map['containerPath'] as String),
+      hostPath: pulumi.Input.fromValue(map['hostPath'] as String),
+      permissions: pulumi.Input.fromValue(
+        (map['permissions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

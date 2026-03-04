@@ -10,35 +10,59 @@ import 'conversation_profile_human_agent_assistant_config_end_user_suggestion_co
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig {
   /// Configs of custom conversation model.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig>? conversationModelConfig;
+  final pulumi.Input<
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig
+  >?
+  conversationModelConfig;
+
   /// Config to process conversation.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig>? conversationProcessConfig;
+  final pulumi.Input<
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig
+  >?
+  conversationProcessConfig;
+
   /// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
   /// This feature is only supported for types: KNOWLEDGE_SEARCH.
   final pulumi.Input<bool>? disableAgentQueryLogging;
+
   /// Enable including conversation context during query answer generation.
   /// This feature is only supported for types: KNOWLEDGE_SEARCH.
   final pulumi.Input<bool>? enableConversationAugmentedQuery;
+
   /// Automatically iterates all participants and tries to compile suggestions.
   /// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
   final pulumi.Input<bool>? enableEventBasedSuggestion;
+
   /// Enable query suggestion only.
   /// This feature is only supported for types: KNOWLEDGE_ASSIST
   final pulumi.Input<bool>? enableQuerySuggestionOnly;
+
   /// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
   /// This feature is only supported for types: KNOWLEDGE_ASSIST.
   final pulumi.Input<bool>? enableQuerySuggestionWhenNoAnswer;
+
   /// Configs of query.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig>? queryConfig;
+  final pulumi.Input<
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig
+  >?
+  queryConfig;
+
   /// The suggestion feature.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature>? suggestionFeature;
+  final pulumi.Input<
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature
+  >?
+  suggestionFeature;
+
   /// Settings of suggestion trigger.
   /// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings>? suggestionTriggerSettings;
+  final pulumi.Input<
+    ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings
+  >?
+  suggestionTriggerSettings;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig].
   /// [conversationModelConfig] Configs of custom conversation model.
@@ -66,32 +90,113 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conversationModelConfig': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig, Map<String, dynamic>>(conversationModelConfig, (value) => value.toMap()),
-      'conversationProcessConfig': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig, Map<String, dynamic>>(conversationProcessConfig, (value) => value.toMap()),
+      'conversationModelConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig,
+            Map<String, dynamic>
+          >(conversationModelConfig, (value) => value.toMap()),
+      'conversationProcessConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig,
+            Map<String, dynamic>
+          >(conversationProcessConfig, (value) => value.toMap()),
       'disableAgentQueryLogging': ?disableAgentQueryLogging,
       'enableConversationAugmentedQuery': ?enableConversationAugmentedQuery,
       'enableEventBasedSuggestion': ?enableEventBasedSuggestion,
       'enableQuerySuggestionOnly': ?enableQuerySuggestionOnly,
       'enableQuerySuggestionWhenNoAnswer': ?enableQuerySuggestionWhenNoAnswer,
-      'queryConfig': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig, Map<String, dynamic>>(queryConfig, (value) => value.toMap()),
-      'suggestionFeature': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature, Map<String, dynamic>>(suggestionFeature, (value) => value.toMap()),
-      'suggestionTriggerSettings': ?pulumi.Input.mapOptionalInputValue<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings, Map<String, dynamic>>(suggestionTriggerSettings, (value) => value.toMap()),
+      'queryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig,
+            Map<String, dynamic>
+          >(queryConfig, (value) => value.toMap()),
+      'suggestionFeature':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature,
+            Map<String, dynamic>
+          >(suggestionFeature, (value) => value.toMap()),
+      'suggestionTriggerSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings,
+            Map<String, dynamic>
+          >(suggestionTriggerSettings, (value) => value.toMap()),
     };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig(
-      conversationModelConfig: map['conversationModelConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig.fromMap((map['conversationModelConfig']! as Map).cast<String, dynamic>())).input(),
-      conversationProcessConfig: map['conversationProcessConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig.fromMap((map['conversationProcessConfig']! as Map).cast<String, dynamic>())).input(),
-      disableAgentQueryLogging: map['disableAgentQueryLogging'] == null ? null : (map['disableAgentQueryLogging']! as bool).input(),
-      enableConversationAugmentedQuery: map['enableConversationAugmentedQuery'] == null ? null : (map['enableConversationAugmentedQuery']! as bool).input(),
-      enableEventBasedSuggestion: map['enableEventBasedSuggestion'] == null ? null : (map['enableEventBasedSuggestion']! as bool).input(),
-      enableQuerySuggestionOnly: map['enableQuerySuggestionOnly'] == null ? null : (map['enableQuerySuggestionOnly']! as bool).input(),
-      enableQuerySuggestionWhenNoAnswer: map['enableQuerySuggestionWhenNoAnswer'] == null ? null : (map['enableQuerySuggestionWhenNoAnswer']! as bool).input(),
-      queryConfig: map['queryConfig'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig.fromMap((map['queryConfig']! as Map).cast<String, dynamic>())).input(),
-      suggestionFeature: map['suggestionFeature'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature.fromMap((map['suggestionFeature']! as Map).cast<String, dynamic>())).input(),
-      suggestionTriggerSettings: map['suggestionTriggerSettings'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings.fromMap((map['suggestionTriggerSettings']! as Map).cast<String, dynamic>())).input(),
+      conversationModelConfig: (() {
+        final guardedValue = map['conversationModelConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      conversationProcessConfig: (() {
+        final guardedValue = map['conversationProcessConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      disableAgentQueryLogging: (() {
+        final guardedValue = map['disableAgentQueryLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableConversationAugmentedQuery: (() {
+        final guardedValue = map['enableConversationAugmentedQuery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableEventBasedSuggestion: (() {
+        final guardedValue = map['enableEventBasedSuggestion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableQuerySuggestionOnly: (() {
+        final guardedValue = map['enableQuerySuggestionOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableQuerySuggestionWhenNoAnswer: (() {
+        final guardedValue = map['enableQuerySuggestionWhenNoAnswer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      queryConfig: (() {
+        final guardedValue = map['queryConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      suggestionFeature: (() {
+        final guardedValue = map['suggestionFeature'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      suggestionTriggerSettings: (() {
+        final guardedValue = map['suggestionTriggerSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

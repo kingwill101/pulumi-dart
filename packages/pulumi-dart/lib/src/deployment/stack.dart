@@ -76,10 +76,6 @@ abstract class Stack extends ComponentResource {
     }
 
     final properties = getOutputProperties();
-    if (properties.isEmpty) {
-      return;
-    }
-
     final outputProperties = <String, Object?>{};
 
     for (final property in properties) {

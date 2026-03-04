@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesClusterStorageProfile {
   /// Is the Blob CSI driver enabled?
   final pulumi.Input<bool> blobDriverEnabled;
+
   /// Is the Disk CSI driver enabled?
   final pulumi.Input<bool> diskDriverEnabled;
+
   /// Is the File CSI driver enabled?
   final pulumi.Input<bool> fileDriverEnabled;
+
   /// Is the Snapshot Controller enabled?
   final pulumi.Input<bool> snapshotControllerEnabled;
 
@@ -35,11 +38,18 @@ class GetKubernetesClusterStorageProfile {
 
   factory GetKubernetesClusterStorageProfile.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterStorageProfile(
-      blobDriverEnabled: (map['blobDriverEnabled'] as bool).input(),
-      diskDriverEnabled: (map['diskDriverEnabled'] as bool).input(),
-      fileDriverEnabled: (map['fileDriverEnabled'] as bool).input(),
-      snapshotControllerEnabled: (map['snapshotControllerEnabled'] as bool).input(),
+      blobDriverEnabled: pulumi.Input.fromValue(
+        map['blobDriverEnabled'] as bool,
+      ),
+      diskDriverEnabled: pulumi.Input.fromValue(
+        map['diskDriverEnabled'] as bool,
+      ),
+      fileDriverEnabled: pulumi.Input.fromValue(
+        map['fileDriverEnabled'] as bool,
+      ),
+      snapshotControllerEnabled: pulumi.Input.fromValue(
+        map['snapshotControllerEnabled'] as bool,
+      ),
     );
   }
 }
-

@@ -766,24 +766,31 @@ import 'edge_cache_origin_timeout.dart';
 class EdgeCacheOrigin extends pulumi.CustomResource {
   /// Enable AWS Signature Version 4 origin authentication.
   /// Structure is documented below.
-  late final pulumi.Output<EdgeCacheOriginAwsV4Authentication?> awsV4Authentication;
+  late final pulumi.Output<EdgeCacheOriginAwsV4Authentication?>
+  awsV4Authentication;
+
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The Origin resource to try when the current origin cannot be reached.
   /// After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
   /// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
   /// A reference to a Topic resource.
   late final pulumi.Output<String?> failoverOrigin;
+
   /// The FlexShieldingOptions to be used for all routes to this origin.
   /// If not set, defaults to a global caching layer in front of the origin.
   /// Structure is documented below.
   late final pulumi.Output<EdgeCacheOriginFlexShielding?> flexShielding;
+
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
   /// Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
   /// retryConditions and failoverOrigin to control its own cache fill failures.
@@ -793,35 +800,45 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
   /// If no origin returns a valid response, an HTTP 502 will be returned to the client.
   /// Defaults to 1. Must be a value greater than 0 and less than 4.
   late final pulumi.Output<int?> maxAttempts;
+
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
   late final pulumi.Output<String> name;
+
   /// A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
   /// This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
   /// When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
   /// If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
   late final pulumi.Output<String> originAddress;
+
   /// The override actions, including url rewrites and header
   /// additions, for requests that use this origin.
   /// Structure is documented below.
-  late final pulumi.Output<EdgeCacheOriginOriginOverrideAction?> originOverrideAction;
+  late final pulumi.Output<EdgeCacheOriginOriginOverrideAction?>
+  originOverrideAction;
+
   /// Follow redirects from this origin.
   /// Structure is documented below.
   late final pulumi.Output<EdgeCacheOriginOriginRedirect?> originRedirect;
+
   /// The port to connect to the origin on.
   /// Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
   late final pulumi.Output<int> port;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
   /// When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
   /// Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
   late final pulumi.Output<String> protocol;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Specifies one or more retry conditions for the configured origin.
   /// If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
   /// the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -837,6 +854,7 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
   /// - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
   /// Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
   late final pulumi.Output<List<String>> retryConditions;
+
   /// The connection and HTTP timeout configuration for this origin.
   /// Structure is documented below.
   late final pulumi.Output<EdgeCacheOriginTimeout?> timeout;
@@ -850,28 +868,36 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
     EdgeCacheOriginArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.failoverOrigin = registerOutput<String?>('failoverOrigin');
-    this.flexShielding = registerOutput<EdgeCacheOriginFlexShielding?>('flexShielding');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.maxAttempts = registerOutput<int?>('maxAttempts');
+         'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>(
+      'awsV4Authentication',
+    );
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    failoverOrigin = registerOutput<String?>('failoverOrigin');
+    flexShielding = registerOutput<EdgeCacheOriginFlexShielding?>(
+      'flexShielding',
+    );
+    labels = registerOutput<Map<String, String>?>('labels');
+    maxAttempts = registerOutput<int?>('maxAttempts');
     this.name = registerOutput<String>('name');
-    this.originAddress = registerOutput<String>('originAddress');
-    this.originOverrideAction = registerOutput<EdgeCacheOriginOriginOverrideAction?>('originOverrideAction');
-    this.originRedirect = registerOutput<EdgeCacheOriginOriginRedirect?>('originRedirect');
-    this.port = registerOutput<int>('port');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String>('protocol');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.retryConditions = registerOutput<List<String>>('retryConditions');
-    this.timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout');
+    originAddress = registerOutput<String>('originAddress');
+    originOverrideAction = registerOutput<EdgeCacheOriginOriginOverrideAction?>(
+      'originOverrideAction',
+    );
+    originRedirect = registerOutput<EdgeCacheOriginOriginRedirect?>(
+      'originRedirect',
+    );
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    retryConditions = registerOutput<List<String>>('retryConditions');
+    timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout');
   }
 
   /// Gets an existing [EdgeCacheOrigin] resource's state with the given [name] and [id].
@@ -892,27 +918,35 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.failoverOrigin = registerOutput<String?>('failoverOrigin');
-    this.flexShielding = registerOutput<EdgeCacheOriginFlexShielding?>('flexShielding');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.maxAttempts = registerOutput<int?>('maxAttempts');
+         'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>(
+      'awsV4Authentication',
+    );
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    failoverOrigin = registerOutput<String?>('failoverOrigin');
+    flexShielding = registerOutput<EdgeCacheOriginFlexShielding?>(
+      'flexShielding',
+    );
+    labels = registerOutput<Map<String, String>?>('labels');
+    maxAttempts = registerOutput<int?>('maxAttempts');
     this.name = registerOutput<String>('name');
-    this.originAddress = registerOutput<String>('originAddress');
-    this.originOverrideAction = registerOutput<EdgeCacheOriginOriginOverrideAction?>('originOverrideAction');
-    this.originRedirect = registerOutput<EdgeCacheOriginOriginRedirect?>('originRedirect');
-    this.port = registerOutput<int>('port');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String>('protocol');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.retryConditions = registerOutput<List<String>>('retryConditions');
-    this.timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout');
+    originAddress = registerOutput<String>('originAddress');
+    originOverrideAction = registerOutput<EdgeCacheOriginOriginOverrideAction?>(
+      'originOverrideAction',
+    );
+    originRedirect = registerOutput<EdgeCacheOriginOriginRedirect?>(
+      'originRedirect',
+    );
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    retryConditions = registerOutput<List<String>>('retryConditions');
+    timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout');
   }
 }

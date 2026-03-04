@@ -9,20 +9,19 @@ class ServiceServicePropertyIdentity {
 
   /// Creates a new [ServiceServicePropertyIdentity].
   /// [principal] (Output)
-  ServiceServicePropertyIdentity({
-    this.principal,
-  });
+  ServiceServicePropertyIdentity({this.principal});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'principal': ?principal,
-    };
+    return <String, dynamic>{'principal': ?principal};
   }
 
   factory ServiceServicePropertyIdentity.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyIdentity(
-      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
+      principal: (() {
+        final guardedValue = map['principal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

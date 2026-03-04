@@ -12,20 +12,21 @@ class AppVersionSnapshotGuardrailActionTransferAgent {
 
   /// Creates a new [AppVersionSnapshotGuardrailActionTransferAgent].
   /// [agent] (Output)
-  AppVersionSnapshotGuardrailActionTransferAgent({
-    this.agent,
-  });
+  AppVersionSnapshotGuardrailActionTransferAgent({this.agent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agent': ?agent,
-    };
+    return <String, dynamic>{'agent': ?agent};
   }
 
-  factory AppVersionSnapshotGuardrailActionTransferAgent.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailActionTransferAgent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotGuardrailActionTransferAgent(
-      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
+      agent: (() {
+        final guardedValue = map['agent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

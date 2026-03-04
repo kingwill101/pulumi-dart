@@ -10,20 +10,29 @@ class SAPVirtualInstanceErrorResponse {
 
   /// Creates a new [SAPVirtualInstanceErrorResponse].
   /// [properties] The Virtual Instance for SAP error body.
-  SAPVirtualInstanceErrorResponse({
-    this.properties,
-  });
+  SAPVirtualInstanceErrorResponse({this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<ErrorDefinitionResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ErrorDefinitionResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory SAPVirtualInstanceErrorResponse.fromMap(Map<String, dynamic> map) {
     return SAPVirtualInstanceErrorResponse(
-      properties: map['properties'] == null ? null : (ErrorDefinitionResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ErrorDefinitionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

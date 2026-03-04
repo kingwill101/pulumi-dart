@@ -1,5 +1,3 @@
-library module_websecurityscanner;
-
 export 'websecurityscanner/authentication.dart';
 export 'websecurityscanner/authentication_response.dart';
 export 'websecurityscanner/authentication_response_websecurityscanner_v1alpha.dart';

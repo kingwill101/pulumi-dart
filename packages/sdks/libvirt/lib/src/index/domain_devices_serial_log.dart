@@ -5,29 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesSerialLog {
   /// Indicates whether to append log data to the existing log file.
   final pulumi.Input<String>? append;
+
   /// Defines the file path where channel logs will be written.
   final pulumi.Input<String> file;
 
   /// Creates a new [DomainDevicesSerialLog].
   /// [append] Indicates whether to append log data to the existing log file.
   /// [file] Defines the file path where channel logs will be written.
-  DomainDevicesSerialLog({
-    this.append,
-    required this.file,
-  });
+  DomainDevicesSerialLog({this.append, required this.file});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'append': ?append,
-      'file': file,
-    };
+    return <String, dynamic>{'append': ?append, 'file': file};
   }
 
   factory DomainDevicesSerialLog.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialLog(
-      append: map['append'] == null ? null : (map['append']! as String).input(),
-      file: (map['file'] as String).input(),
+      append: (() {
+        final guardedValue = map['append'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      file: pulumi.Input.fromValue(map['file'] as String),
     );
   }
 }
-

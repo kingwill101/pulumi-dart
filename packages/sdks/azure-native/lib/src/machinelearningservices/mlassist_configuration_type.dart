@@ -3,16 +3,15 @@ enum MLAssistConfigurationType {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const MLAssistConfigurationType(this.value);
-  final String value;
+  const MLAssistConfigurationType(this.wireValue);
+  final String wireValue;
 
   static MLAssistConfigurationType fromValue(String value) {
     for (final item in MLAssistConfigurationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MLAssistConfigurationType value: $value');
   }
 }
-

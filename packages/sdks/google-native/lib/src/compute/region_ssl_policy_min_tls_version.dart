@@ -4,16 +4,15 @@ enum RegionSslPolicyMinTlsVersion {
   tls11("TLS_1_1"),
   tls12("TLS_1_2");
 
-  const RegionSslPolicyMinTlsVersion(this.value);
-  final String value;
+  const RegionSslPolicyMinTlsVersion(this.wireValue);
+  final String wireValue;
 
   static RegionSslPolicyMinTlsVersion fromValue(String value) {
     for (final item in RegionSslPolicyMinTlsVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionSslPolicyMinTlsVersion value: $value');
   }
 }
-

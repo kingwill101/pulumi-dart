@@ -4,16 +4,15 @@ enum UserUserType {
   alloydbBuiltIn("ALLOYDB_BUILT_IN"),
   alloydbIamUser("ALLOYDB_IAM_USER");
 
-  const UserUserType(this.value);
-  final String value;
+  const UserUserType(this.wireValue);
+  final String wireValue;
 
   static UserUserType fromValue(String value) {
     for (final item in UserUserType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserUserType value: $value');
   }
 }
-

@@ -5,7 +5,6 @@ import 'job_extract.dart';
 import 'job_load.dart';
 import 'job_query.dart';
 import 'job_state.dart';
-import 'job_status.dart';
 
 /// Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
 /// Once a BigQuery job is created, it cannot be changed or deleted.
@@ -2762,45 +2761,59 @@ class Job extends pulumi.CustomResource {
   /// Copies a table.
   /// Structure is documented below.
   late final pulumi.Output<JobCopy?> copy;
+
   /// (Output)
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Configures an extract job.
   /// Structure is documented below.
   late final pulumi.Output<JobExtract?> extract;
+
   /// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
   late final pulumi.Output<String> jobId;
+
   /// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
   late final pulumi.Output<String?> jobTimeoutMs;
+
   /// (Output)
   /// The type of the job.
   late final pulumi.Output<String> jobType;
+
   /// The labels associated with this job. You can use these to organize and group your jobs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Configures a load job.
   /// Structure is documented below.
   late final pulumi.Output<JobLoad?> load;
+
   /// The geographic location of the job. The default value is US.
   late final pulumi.Output<String?> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// (Output)
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Configures a query job.
   /// Structure is documented below.
   late final pulumi.Output<JobQuery?> query;
+
   /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
   /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
   late final pulumi.Output<String?> reservation;
+
   /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
   /// Structure is documented below.
-  late final pulumi.Output<List<JobStatus>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// Email address of the user who ran the job.
   late final pulumi.Output<String> userEmail;
 
@@ -2808,39 +2821,32 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_bigquery_job_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:bigquery/job:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.copy = registerOutput<JobCopy?>('copy');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.extract = registerOutput<JobExtract?>('extract');
-    this.jobId = registerOutput<String>('jobId');
-    this.jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
-    this.jobType = registerOutput<String>('jobType');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.load = registerOutput<JobLoad?>('load');
-    this.location = registerOutput<String?>('location');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.query = registerOutput<JobQuery?>('query');
-    this.reservation = registerOutput<String?>('reservation');
-    this.statuses = registerOutput<List<JobStatus>>('statuses');
-    this.userEmail = registerOutput<String>('userEmail');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:bigquery/job:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    copy = registerOutput<JobCopy?>('copy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    extract = registerOutput<JobExtract?>('extract');
+    jobId = registerOutput<String>('jobId');
+    jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
+    jobType = registerOutput<String>('jobType');
+    labels = registerOutput<Map<String, String>?>('labels');
+    load = registerOutput<JobLoad?>('load');
+    location = registerOutput<String?>('location');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    query = registerOutput<JobQuery?>('query');
+    reservation = registerOutput<String?>('reservation');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    userEmail = registerOutput<String>('userEmail');
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
-  static Job get(
-    String name,
-    pulumi.Input<String> id, {
-    JobState? state,
-  }) {
+  static Job get(String name, pulumi.Input<String> id, {JobState? state}) {
     return Job._get(
       name,
       state: state?.toMap(),
@@ -2853,25 +2859,25 @@ class Job extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigquery/job:Job',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.copy = registerOutput<JobCopy?>('copy');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.extract = registerOutput<JobExtract?>('extract');
-    this.jobId = registerOutput<String>('jobId');
-    this.jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
-    this.jobType = registerOutput<String>('jobType');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.load = registerOutput<JobLoad?>('load');
-    this.location = registerOutput<String?>('location');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.query = registerOutput<JobQuery?>('query');
-    this.reservation = registerOutput<String?>('reservation');
-    this.statuses = registerOutput<List<JobStatus>>('statuses');
-    this.userEmail = registerOutput<String>('userEmail');
+         'gcp:bigquery/job:Job',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    copy = registerOutput<JobCopy?>('copy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    extract = registerOutput<JobExtract?>('extract');
+    jobId = registerOutput<String>('jobId');
+    jobTimeoutMs = registerOutput<String?>('jobTimeoutMs');
+    jobType = registerOutput<String>('jobType');
+    labels = registerOutput<Map<String, String>?>('labels');
+    load = registerOutput<JobLoad?>('load');
+    location = registerOutput<String?>('location');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    query = registerOutput<JobQuery?>('query');
+    reservation = registerOutput<String?>('reservation');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    userEmail = registerOutput<String>('userEmail');
   }
 }

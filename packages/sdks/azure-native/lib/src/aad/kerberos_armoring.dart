@@ -3,16 +3,15 @@ enum KerberosArmoring {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const KerberosArmoring(this.value);
-  final String value;
+  const KerberosArmoring(this.wireValue);
+  final String wireValue;
 
   static KerberosArmoring fromValue(String value) {
     for (final item in KerberosArmoring.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KerberosArmoring value: $value');
   }
 }
-

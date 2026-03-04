@@ -5,16 +5,17 @@ enum GoogleFirestoreAdminV1beta1IndexFieldMode {
   descending("DESCENDING"),
   arrayContains("ARRAY_CONTAINS");
 
-  const GoogleFirestoreAdminV1beta1IndexFieldMode(this.value);
-  final String value;
+  const GoogleFirestoreAdminV1beta1IndexFieldMode(this.wireValue);
+  final String wireValue;
 
   static GoogleFirestoreAdminV1beta1IndexFieldMode fromValue(String value) {
     for (final item in GoogleFirestoreAdminV1beta1IndexFieldMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleFirestoreAdminV1beta1IndexFieldMode value: $value');
+    throw ArgumentError(
+      'Unknown GoogleFirestoreAdminV1beta1IndexFieldMode value: $value',
+    );
   }
 }
-

@@ -8,20 +8,15 @@ class SqlContainerUniqueKey {
 
   /// Creates a new [SqlContainerUniqueKey].
   /// [paths] A list of paths to use for this unique key. Changing this forces a new resource to be created.
-  SqlContainerUniqueKey({
-    required this.paths,
-  });
+  SqlContainerUniqueKey({required this.paths});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'paths': paths,
-    };
+    return <String, dynamic>{'paths': paths};
   }
 
   factory SqlContainerUniqueKey.fromMap(Map<String, dynamic> map) {
     return SqlContainerUniqueKey(
-      paths: ((map['paths'] as List).cast<String>()).input(),
+      paths: pulumi.Input.fromValue((map['paths'] as List).cast<String>()),
     );
   }
 }
-

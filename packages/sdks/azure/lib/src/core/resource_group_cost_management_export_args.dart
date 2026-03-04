@@ -11,20 +11,30 @@ import 'resource_group_cost_management_export_export_data_storage_location.dart'
 class ResourceGroupCostManagementExportArgs {
   /// Is the cost management export active? Default is `true`.
   final pulumi.Input<bool>? active;
+
   /// A `export_data_options` block as defined below.
-  final pulumi.Input<ResourceGroupCostManagementExportExportDataOptions> exportDataOptions;
+  final pulumi.Input<ResourceGroupCostManagementExportExportDataOptions>
+  exportDataOptions;
+
   /// A `export_data_storage_location` block as defined below.
-  final pulumi.Input<ResourceGroupCostManagementExportExportDataStorageLocation> exportDataStorageLocation;
+  final pulumi.Input<ResourceGroupCostManagementExportExportDataStorageLocation>
+  exportDataStorageLocation;
+
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
   final pulumi.Input<String>? fileFormat;
+
   /// Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The date the export will stop capturing information.
   final pulumi.Input<String> recurrencePeriodEndDate;
+
   /// The date the export will start capturing information.
   final pulumi.Input<String> recurrencePeriodStartDate;
+
   /// How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
   final pulumi.Input<String> recurrenceType;
+
   /// The id of the resource group on which to create an export. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupId;
 
@@ -53,8 +63,16 @@ class ResourceGroupCostManagementExportArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'active': ?active,
-      'exportDataOptions': pulumi.Input.mapInputValue<ResourceGroupCostManagementExportExportDataOptions, Map<String, dynamic>>(exportDataOptions, (value) => value.toMap()),
-      'exportDataStorageLocation': pulumi.Input.mapInputValue<ResourceGroupCostManagementExportExportDataStorageLocation, Map<String, dynamic>>(exportDataStorageLocation, (value) => value.toMap()),
+      'exportDataOptions':
+          pulumi.Input.mapInputValue<
+            ResourceGroupCostManagementExportExportDataOptions,
+            Map<String, dynamic>
+          >(exportDataOptions, (value) => value.toMap()),
+      'exportDataStorageLocation':
+          pulumi.Input.mapInputValue<
+            ResourceGroupCostManagementExportExportDataStorageLocation,
+            Map<String, dynamic>
+          >(exportDataStorageLocation, (value) => value.toMap()),
       'fileFormat': ?fileFormat,
       'name': ?name,
       'recurrencePeriodEndDate': recurrencePeriodEndDate,
@@ -64,18 +82,43 @@ class ResourceGroupCostManagementExportArgs {
     };
   }
 
-  factory ResourceGroupCostManagementExportArgs.fromMap(Map<String, dynamic> map) {
+  factory ResourceGroupCostManagementExportArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceGroupCostManagementExportArgs(
-      active: map['active'] == null ? null : (map['active']! as bool).input(),
-      exportDataOptions: (ResourceGroupCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
-      exportDataStorageLocation: (ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      recurrencePeriodEndDate: (map['recurrencePeriodEndDate'] as String).input(),
-      recurrencePeriodStartDate: (map['recurrencePeriodStartDate'] as String).input(),
-      recurrenceType: (map['recurrenceType'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      exportDataOptions: pulumi.Input.fromValue(
+        ResourceGroupCostManagementExportExportDataOptions.fromMap(
+          (map['exportDataOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      exportDataStorageLocation: pulumi.Input.fromValue(
+        ResourceGroupCostManagementExportExportDataStorageLocation.fromMap(
+          (map['exportDataStorageLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      fileFormat: (() {
+        final guardedValue = map['fileFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recurrencePeriodEndDate: pulumi.Input.fromValue(
+        map['recurrencePeriodEndDate'] as String,
+      ),
+      recurrencePeriodStartDate: pulumi.Input.fromValue(
+        map['recurrencePeriodStartDate'] as String,
+      ),
+      recurrenceType: pulumi.Input.fromValue(map['recurrenceType'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
     );
   }
 }
-

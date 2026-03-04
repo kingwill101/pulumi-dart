@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
   /// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
   final pulumi.Input<String> network;
+
   /// A list of CIDR block IP subnetwork specification. Must be IPv4.
   final pulumi.Input<List<String>>? vpcIpSubnetworks;
 
@@ -23,11 +24,16 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
     };
   }
 
-  factory AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.fromMap(Map<String, dynamic> map) {
+  factory AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(
-      network: (map['network'] as String).input(),
-      vpcIpSubnetworks: map['vpcIpSubnetworks'] == null ? null : ((map['vpcIpSubnetworks']! as List).cast<String>()).input(),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      vpcIpSubnetworks: (() {
+        final guardedValue = map['vpcIpSubnetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

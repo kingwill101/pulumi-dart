@@ -3,16 +3,15 @@ enum RoutingChoice {
   valueMicrosoftRouting("MicrosoftRouting"),
   valueInternetRouting("InternetRouting");
 
-  const RoutingChoice(this.value);
-  final String value;
+  const RoutingChoice(this.wireValue);
+  final String wireValue;
 
   static RoutingChoice fromValue(String value) {
     for (final item in RoutingChoice.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutingChoice value: $value');
   }
 }
-

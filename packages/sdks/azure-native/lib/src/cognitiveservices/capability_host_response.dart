@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityHostResponse {
   /// List of AI services connections.
   final pulumi.Input<List<String>>? aiServicesConnections;
+
   /// Kind of this capability host.
   final pulumi.Input<String>? capabilityHostKind;
+
   /// Customer subnet info to help set up this capability host.
   final pulumi.Input<String>? customerSubnet;
+
   /// The asset description text.
   final pulumi.Input<String>? description;
+
   /// Provisioning state for the CapabilityHost.
   final pulumi.Input<String> provisioningState;
+
   /// List of Storage connections.
   final pulumi.Input<List<String>>? storageConnections;
+
   /// Tag dictionary. Tags can be added, removed, and updated.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// List of Thread storage connections.
   final pulumi.Input<List<String>>? threadStorageConnections;
+
   /// List of VectorStore connections.
   final pulumi.Input<List<String>>? vectorStoreConnections;
 
@@ -60,16 +68,51 @@ class CapabilityHostResponse {
 
   factory CapabilityHostResponse.fromMap(Map<String, dynamic> map) {
     return CapabilityHostResponse(
-      aiServicesConnections: map['aiServicesConnections'] == null ? null : ((map['aiServicesConnections']! as List).cast<String>()).input(),
-      capabilityHostKind: map['capabilityHostKind'] == null ? null : (map['capabilityHostKind']! as String).input(),
-      customerSubnet: map['customerSubnet'] == null ? null : (map['customerSubnet']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      storageConnections: map['storageConnections'] == null ? null : ((map['storageConnections']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      threadStorageConnections: map['threadStorageConnections'] == null ? null : ((map['threadStorageConnections']! as List).cast<String>()).input(),
-      vectorStoreConnections: map['vectorStoreConnections'] == null ? null : ((map['vectorStoreConnections']! as List).cast<String>()).input(),
+      aiServicesConnections: (() {
+        final guardedValue = map['aiServicesConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      capabilityHostKind: (() {
+        final guardedValue = map['capabilityHostKind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerSubnet: (() {
+        final guardedValue = map['customerSubnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      storageConnections: (() {
+        final guardedValue = map['storageConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      threadStorageConnections: (() {
+        final guardedValue = map['threadStorageConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vectorStoreConnections: (() {
+        final guardedValue = map['vectorStoreConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

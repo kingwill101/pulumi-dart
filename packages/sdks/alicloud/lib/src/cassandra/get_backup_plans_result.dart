@@ -6,6 +6,7 @@ import 'get_backup_plans_plan.dart';
 /// Result data returned by getBackupPlans.
 class GetBackupPlansResult {
   final String clusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -32,7 +33,11 @@ class GetBackupPlansResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'plans': pulumi.Input.encodeList<GetBackupPlansPlan, Map<String, dynamic>>(plans, (value) => value.toMap()),
+      'plans':
+          pulumi.Input.encodeList<GetBackupPlansPlan, Map<String, dynamic>>(
+            plans,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -41,9 +46,16 @@ class GetBackupPlansResult {
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      plans: pulumi.Input.decodeList<GetBackupPlansPlan>(map['plans'], (value) => GetBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      plans: pulumi.Input.decodeList<GetBackupPlansPlan>(
+        map['plans']!,
+        (value) =>
+            GetBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

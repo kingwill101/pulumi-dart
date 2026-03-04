@@ -3,16 +3,15 @@ enum InstanceOperationType {
   valueUpsert("Upsert"),
   valueDelete("Delete");
 
-  const InstanceOperationType(this.value);
-  final String value;
+  const InstanceOperationType(this.wireValue);
+  final String wireValue;
 
   static InstanceOperationType fromValue(String value) {
     for (final item in InstanceOperationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceOperationType value: $value');
   }
 }
-

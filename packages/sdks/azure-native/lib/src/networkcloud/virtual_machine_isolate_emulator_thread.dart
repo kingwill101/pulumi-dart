@@ -3,16 +3,17 @@ enum VirtualMachineIsolateEmulatorThread {
   valueTrue("True"),
   valueFalse("False");
 
-  const VirtualMachineIsolateEmulatorThread(this.value);
-  final String value;
+  const VirtualMachineIsolateEmulatorThread(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineIsolateEmulatorThread fromValue(String value) {
     for (final item in VirtualMachineIsolateEmulatorThread.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachineIsolateEmulatorThread value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachineIsolateEmulatorThread value: $value',
+    );
   }
 }
-

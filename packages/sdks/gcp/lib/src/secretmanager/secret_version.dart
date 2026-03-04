@@ -13,7 +13,7 @@ import 'secret_version_state.dart';
 ///
 ///
 ///
-/// > **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
 /// Read more about Write-only Arguments.
 ///
 /// ## Example Usage
@@ -1119,6 +1119,7 @@ import 'secret_version_state.dart';
 class SecretVersion extends pulumi.CustomResource {
   /// The time at which the Secret was created.
   late final pulumi.Output<String> createTime;
+
   /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
   /// disabled rather than deleted. Default is `DELETE`. Possible values are:
@@ -1126,32 +1127,42 @@ class SecretVersion extends pulumi.CustomResource {
   /// * DISABLE
   /// * ABANDON
   late final pulumi.Output<String?> deletionPolicy;
+
   /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
   late final pulumi.Output<String> destroyTime;
+
   /// The current state of the SecretVersion.
   late final pulumi.Output<bool?> enabled;
+
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
   late final pulumi.Output<bool?> isSecretDataBase64;
+
   /// The resource name of the SecretVersion. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used
   late final pulumi.Output<String> project;
+
   /// Secret Manager secret resource
   late final pulumi.Output<String> secret;
+
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> secretData;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+  /// &gt; **Note:** One of `secret_data` or `secret_data_wo` can only be set.
   late final pulumi.Output<String?> secretDataWo;
+
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<int?> secretDataWoVersion;
+
   /// The version of the Secret.
   late final pulumi.Output<String> version;
 
@@ -1164,23 +1175,23 @@ class SecretVersion extends pulumi.CustomResource {
     SecretVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:secretmanager/secretVersion:SecretVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.destroyTime = registerOutput<String>('destroyTime');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
+         'gcp:secretmanager/secretVersion:SecretVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    destroyTime = registerOutput<String>('destroyTime');
+    enabled = registerOutput<bool?>('enabled');
+    isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.secret = registerOutput<String>('secret');
-    this.secretData = registerOutput<String?>('secretData');
-    this.secretDataWo = registerOutput<String?>('secretDataWo');
-    this.secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
-    this.version = registerOutput<String>('version');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret');
+    secretData = registerOutput<String?>('secretData');
+    secretDataWo = registerOutput<String?>('secretDataWo');
+    secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [SecretVersion] resource's state with the given [name] and [id].
@@ -1201,22 +1212,22 @@ class SecretVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:secretmanager/secretVersion:SecretVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.destroyTime = registerOutput<String>('destroyTime');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
+         'gcp:secretmanager/secretVersion:SecretVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    destroyTime = registerOutput<String>('destroyTime');
+    enabled = registerOutput<bool?>('enabled');
+    isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.secret = registerOutput<String>('secret');
-    this.secretData = registerOutput<String?>('secretData');
-    this.secretDataWo = registerOutput<String?>('secretDataWo');
-    this.secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
-    this.version = registerOutput<String>('version');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret');
+    secretData = registerOutput<String?>('secretData');
+    secretDataWo = registerOutput<String?>('secretDataWo');
+    secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
+    version = registerOutput<String>('version');
   }
 }

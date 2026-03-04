@@ -8,20 +8,15 @@ class ArmIdWrapperResponse {
 
   /// Creates a new [ArmIdWrapperResponse].
   /// [id] Required.
-  ArmIdWrapperResponse({
-    required this.id,
-  });
+  ArmIdWrapperResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory ArmIdWrapperResponse.fromMap(Map<String, dynamic> map) {
     return ArmIdWrapperResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

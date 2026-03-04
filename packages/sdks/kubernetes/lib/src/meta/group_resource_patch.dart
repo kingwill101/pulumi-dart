@@ -10,23 +10,24 @@ class GroupResourcePatch {
   /// Creates a new [GroupResourcePatch].
   /// [group] Optional.
   /// [resource] Optional.
-  GroupResourcePatch({
-    this.group,
-    this.resource,
-  });
+  GroupResourcePatch({this.group, this.resource});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'group': ?group,
-      'resource': ?resource,
-    };
+    return <String, dynamic>{'group': ?group, 'resource': ?resource};
   }
 
   factory GroupResourcePatch.fromMap(Map<String, dynamic> map) {
     return GroupResourcePatch(
-      group: map['group'] == null ? null : (map['group']! as String).input(),
-      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

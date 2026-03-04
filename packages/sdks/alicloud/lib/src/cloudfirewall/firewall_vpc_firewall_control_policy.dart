@@ -8,7 +8,7 @@ import 'firewall_vpc_firewall_control_policy_state.dart';
 ///
 /// For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -295,74 +295,106 @@ import 'firewall_vpc_firewall_control_policy_state.dart';
 class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
   /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
   late final pulumi.Output<String> aclAction;
+
   /// Access control over VPC firewalls strategy unique identifier.
   late final pulumi.Output<String> aclUuid;
+
   /// Policy specifies the application ID.
   late final pulumi.Output<String> applicationId;
+
   /// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
   late final pulumi.Output<String?> applicationName;
+
   /// The list of application types that the access control policy supports.
-  /// > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+  /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
   late final pulumi.Output<List<String>?> applicationNameLists;
+
   /// (Available since v1.267.0) The time when the policy was created.
   late final pulumi.Output<int> createTime;
+
   /// Access control over VPC firewalls description of the strategy information.
   late final pulumi.Output<String> description;
+
   /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
   late final pulumi.Output<String> destPort;
+
   /// Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
   late final pulumi.Output<String?> destPortGroup;
+
   /// Port Address Book port list.
   late final pulumi.Output<List<String>> destPortGroupPorts;
+
   /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
   late final pulumi.Output<String> destPortType;
+
   /// The destination address in the access control policy. Valid values:
   /// - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
   /// - If `destination_type` is set to `group`, the value of `destination` must be an address book.
   /// - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
   late final pulumi.Output<String> destination;
+
   /// Destination address book defined in the address list.
   late final pulumi.Output<List<String>> destinationGroupCidrs;
+
   /// The destination address book type in the access control policy.
   late final pulumi.Output<String> destinationGroupType;
+
   /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
   late final pulumi.Output<String> destinationType;
+
   /// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
   late final pulumi.Output<String> domainResolveType;
+
   /// The end time of the policy validity period.
   late final pulumi.Output<int?> endTime;
+
   /// Control strategy of hits per second.
   late final pulumi.Output<int> hitTimes;
+
   /// The language of the content within the request and response. Valid values: `zh`, `en`.
   late final pulumi.Output<String?> lang;
+
   /// The UID of the member account of the current Alibaba cloud account.
   late final pulumi.Output<String> memberUid;
+
   /// The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
   late final pulumi.Output<int> order;
+
   /// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
   late final pulumi.Output<String> proto;
+
   /// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
   late final pulumi.Output<String> release;
+
   /// The days of the week or month on which the policy is recurrently active. Valid values:
   /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
   /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
   late final pulumi.Output<List<int>?> repeatDays;
+
   /// The recurring end time of the policy validity period.
   late final pulumi.Output<String?> repeatEndTime;
+
   /// The recurring start time of the policy validity period.
   late final pulumi.Output<String?> repeatStartTime;
+
   /// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
   late final pulumi.Output<String> repeatType;
+
   /// Access control over VPC firewalls strategy in the source address.
   late final pulumi.Output<String> source;
+
   /// SOURCE address of the address list.
   late final pulumi.Output<List<String>> sourceGroupCidrs;
+
   /// The source address type in the access control policy.
   late final pulumi.Output<String> sourceGroupType;
+
   /// The type of the source address in the access control policy. Valid values: `net`, `group`.
   late final pulumi.Output<String> sourceType;
+
   /// The start time of the policy validity period.
   late final pulumi.Output<int?> startTime;
+
   /// The ID of the VPC firewall instance. Valid values:
   /// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
   /// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -377,44 +409,48 @@ class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
     FirewallVpcFirewallControlPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclAction = registerOutput<String>('aclAction');
-    this.aclUuid = registerOutput<String>('aclUuid');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.applicationName = registerOutput<String?>('applicationName');
-    this.applicationNameLists = registerOutput<List<String>?>('applicationNameLists');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String>('description');
-    this.destPort = registerOutput<String>('destPort');
-    this.destPortGroup = registerOutput<String?>('destPortGroup');
-    this.destPortGroupPorts = registerOutput<List<String>>('destPortGroupPorts');
-    this.destPortType = registerOutput<String>('destPortType');
-    this.destination = registerOutput<String>('destination');
-    this.destinationGroupCidrs = registerOutput<List<String>>('destinationGroupCidrs');
-    this.destinationGroupType = registerOutput<String>('destinationGroupType');
-    this.destinationType = registerOutput<String>('destinationType');
-    this.domainResolveType = registerOutput<String>('domainResolveType');
-    this.endTime = registerOutput<int?>('endTime');
-    this.hitTimes = registerOutput<int>('hitTimes');
-    this.lang = registerOutput<String?>('lang');
-    this.memberUid = registerOutput<String>('memberUid');
-    this.order = registerOutput<int>('order');
-    this.proto = registerOutput<String>('proto');
-    this.release = registerOutput<String>('release');
-    this.repeatDays = registerOutput<List<int>?>('repeatDays');
-    this.repeatEndTime = registerOutput<String?>('repeatEndTime');
-    this.repeatStartTime = registerOutput<String?>('repeatStartTime');
-    this.repeatType = registerOutput<String>('repeatType');
-    this.source = registerOutput<String>('source');
-    this.sourceGroupCidrs = registerOutput<List<String>>('sourceGroupCidrs');
-    this.sourceGroupType = registerOutput<String>('sourceGroupType');
-    this.sourceType = registerOutput<String>('sourceType');
-    this.startTime = registerOutput<int?>('startTime');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
+         'alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclAction = registerOutput<String>('aclAction');
+    aclUuid = registerOutput<String>('aclUuid');
+    applicationId = registerOutput<String>('applicationId');
+    applicationName = registerOutput<String?>('applicationName');
+    applicationNameLists = registerOutput<List<String>?>(
+      'applicationNameLists',
+    );
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String>('description');
+    destPort = registerOutput<String>('destPort');
+    destPortGroup = registerOutput<String?>('destPortGroup');
+    destPortGroupPorts = registerOutput<List<String>>('destPortGroupPorts');
+    destPortType = registerOutput<String>('destPortType');
+    destination = registerOutput<String>('destination');
+    destinationGroupCidrs = registerOutput<List<String>>(
+      'destinationGroupCidrs',
+    );
+    destinationGroupType = registerOutput<String>('destinationGroupType');
+    destinationType = registerOutput<String>('destinationType');
+    domainResolveType = registerOutput<String>('domainResolveType');
+    endTime = registerOutput<int?>('endTime');
+    hitTimes = registerOutput<int>('hitTimes');
+    lang = registerOutput<String?>('lang');
+    memberUid = registerOutput<String>('memberUid');
+    order = registerOutput<int>('order');
+    proto = registerOutput<String>('proto');
+    release = registerOutput<String>('release');
+    repeatDays = registerOutput<List<int>?>('repeatDays');
+    repeatEndTime = registerOutput<String?>('repeatEndTime');
+    repeatStartTime = registerOutput<String?>('repeatStartTime');
+    repeatType = registerOutput<String>('repeatType');
+    source = registerOutput<String>('source');
+    sourceGroupCidrs = registerOutput<List<String>>('sourceGroupCidrs');
+    sourceGroupType = registerOutput<String>('sourceGroupType');
+    sourceType = registerOutput<String>('sourceType');
+    startTime = registerOutput<int?>('startTime');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
   }
 
   /// Gets an existing [FirewallVpcFirewallControlPolicy] resource's state with the given [name] and [id].
@@ -435,43 +471,47 @@ class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclAction = registerOutput<String>('aclAction');
-    this.aclUuid = registerOutput<String>('aclUuid');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.applicationName = registerOutput<String?>('applicationName');
-    this.applicationNameLists = registerOutput<List<String>?>('applicationNameLists');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String>('description');
-    this.destPort = registerOutput<String>('destPort');
-    this.destPortGroup = registerOutput<String?>('destPortGroup');
-    this.destPortGroupPorts = registerOutput<List<String>>('destPortGroupPorts');
-    this.destPortType = registerOutput<String>('destPortType');
-    this.destination = registerOutput<String>('destination');
-    this.destinationGroupCidrs = registerOutput<List<String>>('destinationGroupCidrs');
-    this.destinationGroupType = registerOutput<String>('destinationGroupType');
-    this.destinationType = registerOutput<String>('destinationType');
-    this.domainResolveType = registerOutput<String>('domainResolveType');
-    this.endTime = registerOutput<int?>('endTime');
-    this.hitTimes = registerOutput<int>('hitTimes');
-    this.lang = registerOutput<String?>('lang');
-    this.memberUid = registerOutput<String>('memberUid');
-    this.order = registerOutput<int>('order');
-    this.proto = registerOutput<String>('proto');
-    this.release = registerOutput<String>('release');
-    this.repeatDays = registerOutput<List<int>?>('repeatDays');
-    this.repeatEndTime = registerOutput<String?>('repeatEndTime');
-    this.repeatStartTime = registerOutput<String?>('repeatStartTime');
-    this.repeatType = registerOutput<String>('repeatType');
-    this.source = registerOutput<String>('source');
-    this.sourceGroupCidrs = registerOutput<List<String>>('sourceGroupCidrs');
-    this.sourceGroupType = registerOutput<String>('sourceGroupType');
-    this.sourceType = registerOutput<String>('sourceType');
-    this.startTime = registerOutput<int?>('startTime');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
+         'alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclAction = registerOutput<String>('aclAction');
+    aclUuid = registerOutput<String>('aclUuid');
+    applicationId = registerOutput<String>('applicationId');
+    applicationName = registerOutput<String?>('applicationName');
+    applicationNameLists = registerOutput<List<String>?>(
+      'applicationNameLists',
+    );
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String>('description');
+    destPort = registerOutput<String>('destPort');
+    destPortGroup = registerOutput<String?>('destPortGroup');
+    destPortGroupPorts = registerOutput<List<String>>('destPortGroupPorts');
+    destPortType = registerOutput<String>('destPortType');
+    destination = registerOutput<String>('destination');
+    destinationGroupCidrs = registerOutput<List<String>>(
+      'destinationGroupCidrs',
+    );
+    destinationGroupType = registerOutput<String>('destinationGroupType');
+    destinationType = registerOutput<String>('destinationType');
+    domainResolveType = registerOutput<String>('domainResolveType');
+    endTime = registerOutput<int?>('endTime');
+    hitTimes = registerOutput<int>('hitTimes');
+    lang = registerOutput<String?>('lang');
+    memberUid = registerOutput<String>('memberUid');
+    order = registerOutput<int>('order');
+    proto = registerOutput<String>('proto');
+    release = registerOutput<String>('release');
+    repeatDays = registerOutput<List<int>?>('repeatDays');
+    repeatEndTime = registerOutput<String?>('repeatEndTime');
+    repeatStartTime = registerOutput<String?>('repeatStartTime');
+    repeatType = registerOutput<String>('repeatType');
+    source = registerOutput<String>('source');
+    sourceGroupCidrs = registerOutput<List<String>>('sourceGroupCidrs');
+    sourceGroupType = registerOutput<String>('sourceGroupType');
+    sourceType = registerOutput<String>('sourceType');
+    startTime = registerOutput<int?>('startTime');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
   }
 }

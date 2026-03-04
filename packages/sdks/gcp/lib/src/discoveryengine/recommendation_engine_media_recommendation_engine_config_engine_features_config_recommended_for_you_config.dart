@@ -19,15 +19,18 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRec
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'contextEventType': ?contextEventType,
-    };
+    return <String, dynamic>{'contextEventType': ?contextEventType};
   }
 
-  factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig.fromMap(Map<String, dynamic> map) {
+  factory RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig(
-      contextEventType: map['contextEventType'] == null ? null : (map['contextEventType']! as String).input(),
+      contextEventType: (() {
+        final guardedValue = map['contextEventType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

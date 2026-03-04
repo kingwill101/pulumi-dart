@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterNodeConfigSecondaryBootDisk {
   /// Disk image to create the secondary boot disk from
   final pulumi.Input<String> diskImage;
+
   /// Mode for how the secondary boot disk is used.
   final pulumi.Input<String> mode;
 
@@ -17,17 +18,15 @@ class GetClusterNodeConfigSecondaryBootDisk {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskImage': diskImage,
-      'mode': mode,
-    };
+    return <String, dynamic>{'diskImage': diskImage, 'mode': mode};
   }
 
-  factory GetClusterNodeConfigSecondaryBootDisk.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodeConfigSecondaryBootDisk.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodeConfigSecondaryBootDisk(
-      diskImage: (map['diskImage'] as String).input(),
-      mode: (map['mode'] as String).input(),
+      diskImage: pulumi.Input.fromValue(map['diskImage'] as String),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

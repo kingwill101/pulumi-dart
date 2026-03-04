@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaterializedViewsBuilderRegionalServiceResourceResponse {
   /// The location name.
   final pulumi.Input<String> location;
+
   /// The regional service name.
   final pulumi.Input<String> name;
+
   /// Describes the status of a service.
   final pulumi.Input<String> status;
 
@@ -29,12 +31,13 @@ class MaterializedViewsBuilderRegionalServiceResourceResponse {
     };
   }
 
-  factory MaterializedViewsBuilderRegionalServiceResourceResponse.fromMap(Map<String, dynamic> map) {
+  factory MaterializedViewsBuilderRegionalServiceResourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaterializedViewsBuilderRegionalServiceResourceResponse(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      status: (map['status'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

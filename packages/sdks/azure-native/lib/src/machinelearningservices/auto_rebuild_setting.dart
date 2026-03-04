@@ -3,16 +3,15 @@ enum AutoRebuildSetting {
   valueDisabled("Disabled"),
   valueOnBaseImageUpdate("OnBaseImageUpdate");
 
-  const AutoRebuildSetting(this.value);
-  final String value;
+  const AutoRebuildSetting(this.wireValue);
+  final String wireValue;
 
   static AutoRebuildSetting fromValue(String value) {
     for (final item in AutoRebuildSetting.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoRebuildSetting value: $value');
   }
 }
-

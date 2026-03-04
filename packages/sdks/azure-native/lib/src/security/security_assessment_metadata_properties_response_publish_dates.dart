@@ -15,17 +15,19 @@ class SecurityAssessmentMetadataPropertiesResponsePublishDates {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gA': ?gA,
-      'public': public,
-    };
+    return <String, dynamic>{'gA': ?gA, 'public': public};
   }
 
-  factory SecurityAssessmentMetadataPropertiesResponsePublishDates.fromMap(Map<String, dynamic> map) {
+  factory SecurityAssessmentMetadataPropertiesResponsePublishDates.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityAssessmentMetadataPropertiesResponsePublishDates(
-      gA: map['gA'] == null ? null : (map['gA']! as String).input(),
-      public: (map['public'] as String).input(),
+      gA: (() {
+        final guardedValue = map['gA'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      public: pulumi.Input.fromValue(map['public'] as String),
     );
   }
 }
-

@@ -341,18 +341,26 @@ import 'managed_service_identity_response.dart';
 class IntegrationServiceEnvironment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Managed service identity properties.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The integration service environment properties.
-  late final pulumi.Output<IntegrationServiceEnvironmentPropertiesResponse> properties;
+  late final pulumi.Output<IntegrationServiceEnvironmentPropertiesResponse>
+  properties;
+
   /// The sku.
   late final pulumi.Output<IntegrationServiceEnvironmentSkuResponse?> sku;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -365,18 +373,21 @@ class IntegrationServiceEnvironment extends pulumi.CustomResource {
     IntegrationServiceEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationServiceEnvironment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:logic:IntegrationServiceEnvironment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<IntegrationServiceEnvironmentPropertiesResponse>('properties');
-    this.sku = registerOutput<IntegrationServiceEnvironmentSkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties =
+        registerOutput<IntegrationServiceEnvironmentPropertiesResponse>(
+          'properties',
+        );
+    sku = registerOutput<IntegrationServiceEnvironmentSkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

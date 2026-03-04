@@ -57,20 +57,31 @@ class GetListenerDefaultActionAuthenticateOidc {
     };
   }
 
-  factory GetListenerDefaultActionAuthenticateOidc.fromMap(Map<String, dynamic> map) {
+  factory GetListenerDefaultActionAuthenticateOidc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetListenerDefaultActionAuthenticateOidc(
-      authenticationRequestExtraParams: ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
-      authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      issuer: (map['issuer'] as String).input(),
-      onUnauthenticatedRequest: (map['onUnauthenticatedRequest'] as String).input(),
-      scope: (map['scope'] as String).input(),
-      sessionCookieName: (map['sessionCookieName'] as String).input(),
-      sessionTimeout: (map['sessionTimeout'] as int).input(),
-      tokenEndpoint: (map['tokenEndpoint'] as String).input(),
-      userInfoEndpoint: (map['userInfoEndpoint'] as String).input(),
+      authenticationRequestExtraParams: pulumi.Input.fromValue(
+        (map['authenticationRequestExtraParams'] as Map).cast<String, String>(),
+      ),
+      authorizationEndpoint: pulumi.Input.fromValue(
+        map['authorizationEndpoint'] as String,
+      ),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      issuer: pulumi.Input.fromValue(map['issuer'] as String),
+      onUnauthenticatedRequest: pulumi.Input.fromValue(
+        map['onUnauthenticatedRequest'] as String,
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      sessionCookieName: pulumi.Input.fromValue(
+        map['sessionCookieName'] as String,
+      ),
+      sessionTimeout: pulumi.Input.fromValue(map['sessionTimeout'] as int),
+      tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
+      userInfoEndpoint: pulumi.Input.fromValue(
+        map['userInfoEndpoint'] as String,
+      ),
     );
   }
 }
-

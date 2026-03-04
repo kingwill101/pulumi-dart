@@ -4,16 +4,15 @@ enum SettingsConnectorEnforcement {
   notRequired("NOT_REQUIRED"),
   required("REQUIRED");
 
-  const SettingsConnectorEnforcement(this.value);
-  final String value;
+  const SettingsConnectorEnforcement(this.wireValue);
+  final String wireValue;
 
   static SettingsConnectorEnforcement fromValue(String value) {
     for (final item in SettingsConnectorEnforcement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingsConnectorEnforcement value: $value');
   }
 }
-

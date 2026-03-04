@@ -9,20 +9,21 @@ class InstanceClientConnectionConfigSslConfig {
 
   /// Creates a new [InstanceClientConnectionConfigSslConfig].
   /// [sslMode] SSL mode. Specifies client-server SSL/TLS connection behavior.
-  InstanceClientConnectionConfigSslConfig({
-    this.sslMode,
-  });
+  InstanceClientConnectionConfigSslConfig({this.sslMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sslMode': ?sslMode,
-    };
+    return <String, dynamic>{'sslMode': ?sslMode};
   }
 
-  factory InstanceClientConnectionConfigSslConfig.fromMap(Map<String, dynamic> map) {
+  factory InstanceClientConnectionConfigSslConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceClientConnectionConfigSslConfig(
-      sslMode: map['sslMode'] == null ? null : (map['sslMode']! as String).input(),
+      sslMode: (() {
+        final guardedValue = map['sslMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

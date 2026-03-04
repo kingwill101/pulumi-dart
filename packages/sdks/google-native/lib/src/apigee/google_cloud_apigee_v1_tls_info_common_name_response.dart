@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1TlsInfoCommonNameResponse {
   /// The TLS Common Name string of the certificate.
   final pulumi.Input<String> value;
+
   /// Indicates whether the cert should be matched against as a wildcard cert.
   final pulumi.Input<bool> wildcardMatch;
 
@@ -17,17 +18,15 @@ class GoogleCloudApigeeV1TlsInfoCommonNameResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-      'wildcardMatch': wildcardMatch,
-    };
+    return <String, dynamic>{'value': value, 'wildcardMatch': wildcardMatch};
   }
 
-  factory GoogleCloudApigeeV1TlsInfoCommonNameResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1TlsInfoCommonNameResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1TlsInfoCommonNameResponse(
-      value: (map['value'] as String).input(),
-      wildcardMatch: (map['wildcardMatch'] as bool).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
+      wildcardMatch: pulumi.Input.fromValue(map['wildcardMatch'] as bool),
     );
   }
 }
-

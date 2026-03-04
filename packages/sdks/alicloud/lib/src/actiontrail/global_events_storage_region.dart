@@ -6,7 +6,7 @@ import 'global_events_storage_region_state.dart';
 ///
 /// For information about global events storage region and how to use it, see [What is Global Events Storage Region](https://next.api.alibabacloud.com/api/Actiontrail/2020-07-06/UpdateGlobalEventsStorageRegion).
 ///
-/// > **NOTE:** Available since v1.201.0.
+/// &gt; **NOTE:** Available since v1.201.0.
 ///
 /// ## Example Usage
 ///
@@ -114,12 +114,12 @@ class GlobalEventsStorageRegion extends pulumi.CustomResource {
     GlobalEventsStorageRegionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.storageRegion = registerOutput<String>('storageRegion');
+         'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    storageRegion = registerOutput<String>('storageRegion');
   }
 
   /// Gets an existing [GlobalEventsStorageRegion] resource's state with the given [name] and [id].
@@ -140,11 +140,11 @@ class GlobalEventsStorageRegion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.storageRegion = registerOutput<String>('storageRegion');
+         'alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    storageRegion = registerOutput<String>('storageRegion');
   }
 }

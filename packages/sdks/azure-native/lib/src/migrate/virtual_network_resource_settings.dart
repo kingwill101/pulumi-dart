@@ -7,21 +7,28 @@ import 'subnet_resource_settings.dart';
 class VirtualNetworkResourceSettings {
   /// Gets or sets the address prefixes for the virtual network.
   final pulumi.Input<List<String>>? addressSpace;
+
   /// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
   /// deployed in the virtual network.
   final pulumi.Input<List<String>>? dnsServers;
+
   /// Gets or sets a value indicating whether gets or sets whether the
   /// DDOS protection should be switched on.
   final pulumi.Input<bool>? enableDdosProtection;
+
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/virtualNetworks'.
   final pulumi.Input<String> resourceType;
+
   /// Gets or sets List of subnets in a VirtualNetwork.
   final pulumi.Input<List<SubnetResourceSettings>>? subnets;
+
   /// Gets or sets the Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Gets or sets the target resource group name.
   final pulumi.Input<String>? targetResourceGroupName;
+
   /// Gets or sets the target Resource name.
   final pulumi.Input<String>? targetResourceName;
 
@@ -51,7 +58,18 @@ class VirtualNetworkResourceSettings {
       'dnsServers': ?dnsServers,
       'enableDdosProtection': ?enableDdosProtection,
       'resourceType': resourceType,
-      'subnets': ?pulumi.Input.mapOptionalInputValue<List<SubnetResourceSettings>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<SubnetResourceSettings, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubnetResourceSettings>,
+            List<Map<String, dynamic>>
+          >(
+            subnets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SubnetResourceSettings,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
       'targetResourceGroupName': ?targetResourceGroupName,
       'targetResourceName': ?targetResourceName,
@@ -60,15 +78,51 @@ class VirtualNetworkResourceSettings {
 
   factory VirtualNetworkResourceSettings.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkResourceSettings(
-      addressSpace: map['addressSpace'] == null ? null : ((map['addressSpace']! as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      enableDdosProtection: map['enableDdosProtection'] == null ? null : (map['enableDdosProtection']! as bool).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<SubnetResourceSettings>(map['subnets']!, (value) => SubnetResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
+      addressSpace: (() {
+        final guardedValue = map['addressSpace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enableDdosProtection: (() {
+        final guardedValue = map['enableDdosProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      subnets: (() {
+        final guardedValue = map['subnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubnetResourceSettings>(
+            guardedValue,
+            (value) => SubnetResourceSettings.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetResourceGroupName: (() {
+        final guardedValue = map['targetResourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceName: (() {
+        final guardedValue = map['targetResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

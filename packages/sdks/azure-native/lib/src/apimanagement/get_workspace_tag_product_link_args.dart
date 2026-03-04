@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceTagProductLinkArgs {
   /// Tag-product link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productLinkId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Tag identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> tagId;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -44,12 +48,13 @@ class GetWorkspaceTagProductLinkArgs {
 
   factory GetWorkspaceTagProductLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceTagProductLinkArgs(
-      productLinkId: (map['productLinkId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      tagId: (map['tagId'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      productLinkId: pulumi.Input.fromValue(map['productLinkId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      tagId: pulumi.Input.fromValue(map['tagId'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

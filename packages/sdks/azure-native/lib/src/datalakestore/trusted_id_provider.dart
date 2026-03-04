@@ -138,10 +138,13 @@ import 'trusted_id_provider_args.dart';
 class TrustedIdProvider extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The URL of this trusted identity provider.
   late final pulumi.Output<String> idProvider;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -154,14 +157,14 @@ class TrustedIdProvider extends pulumi.CustomResource {
     TrustedIdProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datalakestore:TrustedIdProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.idProvider = registerOutput<String>('idProvider');
+         'azure-native:datalakestore:TrustedIdProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    idProvider = registerOutput<String>('idProvider');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/account_settings.dart';
 export 'index/account_settings_args.dart';
 export 'index/account_settings_state.dart';

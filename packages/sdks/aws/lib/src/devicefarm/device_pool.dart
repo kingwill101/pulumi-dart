@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_pool_args.dart';
-import 'device_pool_rule.dart';
 import 'device_pool_state.dart';
 
 /// Provides a resource to manage AWS Device Farm Device Pools.
@@ -154,20 +153,28 @@ import 'device_pool_state.dart';
 class DevicePool extends pulumi.CustomResource {
   /// The Amazon Resource Name of this Device Pool
   late final pulumi.Output<String> arn;
+
   /// The device pool's description.
   late final pulumi.Output<String?> description;
+
   /// The number of devices that Device Farm can add to your device pool.
   late final pulumi.Output<int?> maxDevices;
+
   /// The name of the Device Pool
   late final pulumi.Output<String> name;
+
   /// The ARN of the project for the device pool.
   late final pulumi.Output<String> projectArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The device pool's rules. See Rule.
-  late final pulumi.Output<List<DevicePoolRule>> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<String> type;
@@ -181,21 +188,21 @@ class DevicePool extends pulumi.CustomResource {
     DevicePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devicefarm/devicePool:DevicePool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.maxDevices = registerOutput<int?>('maxDevices');
+         'aws:devicefarm/devicePool:DevicePool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    maxDevices = registerOutput<int?>('maxDevices');
     this.name = registerOutput<String>('name');
-    this.projectArn = registerOutput<String>('projectArn');
-    this.region = registerOutput<String>('region');
-    this.rules = registerOutput<List<DevicePoolRule>>('rules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
+    projectArn = registerOutput<String>('projectArn');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [DevicePool] resource's state with the given [name] and [id].
@@ -216,20 +223,20 @@ class DevicePool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devicefarm/devicePool:DevicePool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.maxDevices = registerOutput<int?>('maxDevices');
+         'aws:devicefarm/devicePool:DevicePool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    maxDevices = registerOutput<int?>('maxDevices');
     this.name = registerOutput<String>('name');
-    this.projectArn = registerOutput<String>('projectArn');
-    this.region = registerOutput<String>('region');
-    this.rules = registerOutput<List<DevicePoolRule>>('rules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
+    projectArn = registerOutput<String>('projectArn');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
   }
 }

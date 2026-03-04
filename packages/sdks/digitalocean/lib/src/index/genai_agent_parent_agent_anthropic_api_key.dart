@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GenaiAgentParentAgentAnthropicApiKey {
   /// Timestamp when the API Key was created
   final pulumi.Input<String>? createdAt;
+
   /// Created By user ID for the API Key
   final pulumi.Input<String>? createdBy;
+
   /// Deleted At timestamp for the API Key
   final pulumi.Input<String>? deletedAt;
+
   /// Name of the API Key
   final pulumi.Input<String>? name;
+
   /// Updated At timestamp for the API Key
   final pulumi.Input<String>? updatedAt;
+
   /// API Key value
   final pulumi.Input<String>? uuid;
 
@@ -43,15 +48,40 @@ class GenaiAgentParentAgentAnthropicApiKey {
     };
   }
 
-  factory GenaiAgentParentAgentAnthropicApiKey.fromMap(Map<String, dynamic> map) {
+  factory GenaiAgentParentAgentAnthropicApiKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GenaiAgentParentAgentAnthropicApiKey(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
-      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletedAt: (() {
+        final guardedValue = map['deletedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

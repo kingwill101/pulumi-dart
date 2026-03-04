@@ -4,16 +4,17 @@ enum RouterNatLogConfigFilterComputeV1 {
   errorsOnly("ERRORS_ONLY"),
   translationsOnly("TRANSLATIONS_ONLY");
 
-  const RouterNatLogConfigFilterComputeV1(this.value);
-  final String value;
+  const RouterNatLogConfigFilterComputeV1(this.wireValue);
+  final String wireValue;
 
   static RouterNatLogConfigFilterComputeV1 fromValue(String value) {
     for (final item in RouterNatLogConfigFilterComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatLogConfigFilterComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatLogConfigFilterComputeV1 value: $value',
+    );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_voice;
-
 export 'voice/services_communications_gateway.dart';
 export 'voice/services_communications_gateway_args.dart';
 export 'voice/services_communications_gateway_service_location.dart';

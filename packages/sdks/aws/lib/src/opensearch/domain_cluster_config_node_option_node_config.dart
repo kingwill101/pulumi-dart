@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainClusterConfigNodeOptionNodeConfig {
   /// Number of nodes of a particular node type in the cluster.
   final pulumi.Input<int>? count;
+
   /// Whether a particular node type is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// The instance type of a particular node type in the cluster.
   final pulumi.Input<String>? type;
 
@@ -28,12 +30,25 @@ class DomainClusterConfigNodeOptionNodeConfig {
     };
   }
 
-  factory DomainClusterConfigNodeOptionNodeConfig.fromMap(Map<String, dynamic> map) {
+  factory DomainClusterConfigNodeOptionNodeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainClusterConfigNodeOptionNodeConfig(
-      count: map['count'] == null ? null : ((map['count'] as int).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

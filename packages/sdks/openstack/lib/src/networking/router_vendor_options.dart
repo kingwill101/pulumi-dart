@@ -9,9 +9,7 @@ class RouterVendorOptions {
 
   /// Creates a new [RouterVendorOptions].
   /// [setRouterGatewayAfterCreate] Boolean to control whether
-  RouterVendorOptions({
-    this.setRouterGatewayAfterCreate,
-  });
+  RouterVendorOptions({this.setRouterGatewayAfterCreate});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class RouterVendorOptions {
 
   factory RouterVendorOptions.fromMap(Map<String, dynamic> map) {
     return RouterVendorOptions(
-      setRouterGatewayAfterCreate: map['setRouterGatewayAfterCreate'] == null ? null : (map['setRouterGatewayAfterCreate']! as bool).input(),
+      setRouterGatewayAfterCreate: (() {
+        final guardedValue = map['setRouterGatewayAfterCreate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

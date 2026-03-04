@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupInstanceDiskState {
   /// The ID of the Backup Policy.
   final pulumi.Input<String>? backupPolicyId;
+
   /// The ID of the source Disk. Changing this forces a new Backup Instance Disk to be created.
   final pulumi.Input<String>? diskId;
+
   /// The Azure Region where the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Backup Instance Disk. Changing this forces a new Backup Instance Disk to be created.
   final pulumi.Input<String>? name;
+
   /// The protection state of the Backup Instance Disk.
   final pulumi.Input<String>? protectionState;
+
   /// The name of the Resource Group where snapshots are stored. Changing this forces a new Backup Instance Disk to be created.
   final pulumi.Input<String>? snapshotResourceGroupName;
+
   /// The subscription ID of the Resource Group where snapshots are stored. The default value is the subscription ID of the Backup Vault. Changing this forces a new Backup Instance Disk to be created.
   final pulumi.Input<String>? snapshotSubscriptionId;
+
   /// The ID of the Backup Vault within which the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
   final pulumi.Input<String>? vaultId;
 
@@ -56,15 +63,46 @@ class BackupInstanceDiskState {
 
   factory BackupInstanceDiskState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceDiskState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
-      snapshotResourceGroupName: map['snapshotResourceGroupName'] == null ? null : (map['snapshotResourceGroupName']! as String).input(),
-      snapshotSubscriptionId: map['snapshotSubscriptionId'] == null ? null : (map['snapshotSubscriptionId']! as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
+      backupPolicyId: (() {
+        final guardedValue = map['backupPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionState: (() {
+        final guardedValue = map['protectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotResourceGroupName: (() {
+        final guardedValue = map['snapshotResourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotSubscriptionId: (() {
+        final guardedValue = map['snapshotSubscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultId: (() {
+        final guardedValue = map['vaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

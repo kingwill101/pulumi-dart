@@ -7,36 +7,52 @@ import 'system_data_response.dart';
 class GetStorageClassResult {
   /// The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce]
   final List<String>? accessModes;
+
   /// Volume can be expanded or not
   final String? allowVolumeExpansion;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Allow single data node failure
   final String? dataResilience;
+
   /// Failover speed: NA, Slow, Fast
   final String? failoverSpeed;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Limitations of the storage class
   final List<String>? limitations;
+
   /// Additional mount options
   final List<String>? mountOptions;
+
   /// The name of the resource
   final String name;
+
   /// Performance tier
   final String? performance;
+
   /// Selection priority when multiple storage classes meet the criteria. 0: Highest, -1: Never use
   final double? priority;
+
   /// Provisioner name
   final String? provisioner;
+
   /// Resource provision state
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Properties of the StorageClass
   final BlobStorageClassTypePropertiesResponse typeProperties;
+
   /// Binding mode of volumes: Immediate, WaitForFirstConsumer
   final String? volumeBindingMode;
 
@@ -102,24 +118,67 @@ class GetStorageClassResult {
 
   factory GetStorageClassResult.fromMap(Map<String, dynamic> map) {
     return GetStorageClassResult(
-      accessModes: map['accessModes'] == null ? null : (map['accessModes']! as List).cast<String>(),
-      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : map['allowVolumeExpansion']! as String,
+      accessModes: (() {
+        final guardedValue = map['accessModes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      allowVolumeExpansion: (() {
+        final guardedValue = map['allowVolumeExpansion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      dataResilience: map['dataResilience'] == null ? null : map['dataResilience']! as String,
-      failoverSpeed: map['failoverSpeed'] == null ? null : map['failoverSpeed']! as String,
+      dataResilience: (() {
+        final guardedValue = map['dataResilience'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      failoverSpeed: (() {
+        final guardedValue = map['failoverSpeed'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      limitations: map['limitations'] == null ? null : (map['limitations']! as List).cast<String>(),
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as List).cast<String>(),
+      limitations: (() {
+        final guardedValue = map['limitations'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      mountOptions: (() {
+        final guardedValue = map['mountOptions'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       name: map['name'] as String,
-      performance: map['performance'] == null ? null : map['performance']! as String,
-      priority: map['priority'] == null ? null : map['priority']! as double,
-      provisioner: map['provisioner'] == null ? null : map['provisioner']! as String,
+      performance: (() {
+        final guardedValue = map['performance'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      provisioner: (() {
+        final guardedValue = map['provisioner'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      typeProperties: BlobStorageClassTypePropertiesResponse.fromMap((map['typeProperties'] as Map).cast<String, dynamic>()),
-      volumeBindingMode: map['volumeBindingMode'] == null ? null : map['volumeBindingMode']! as String,
+      typeProperties: BlobStorageClassTypePropertiesResponse.fromMap(
+        (map['typeProperties']! as Map).cast<String, dynamic>(),
+      ),
+      volumeBindingMode: (() {
+        final guardedValue = map['volumeBindingMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

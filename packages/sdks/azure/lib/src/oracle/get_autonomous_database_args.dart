@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutonomousDatabaseArgs {
   /// The name of this Autonomous Database.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Autonomous Database exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetAutonomousDatabaseArgs {
 
   factory GetAutonomousDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RemoteWriteState {
   /// The ID of the Prometheus instance.
   final pulumi.Input<String>? clusterId;
+
   /// The name of the Remote Write configuration item.
   final pulumi.Input<String>? remoteWriteName;
+
   /// The details of the Remote Write configuration item. Specify the value in the YAML format.
   final pulumi.Input<String>? remoteWriteYaml;
 
@@ -31,10 +33,21 @@ class RemoteWriteState {
 
   factory RemoteWriteState.fromMap(Map<String, dynamic> map) {
     return RemoteWriteState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      remoteWriteName: map['remoteWriteName'] == null ? null : (map['remoteWriteName']! as String).input(),
-      remoteWriteYaml: map['remoteWriteYaml'] == null ? null : (map['remoteWriteYaml']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteWriteName: (() {
+        final guardedValue = map['remoteWriteName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteWriteYaml: (() {
+        final guardedValue = map['remoteWriteYaml'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

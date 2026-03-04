@@ -4,7 +4,7 @@ import 'access_point_policy_state.dart';
 
 /// Provides a resource to manage an S3 Access Point resource policy.
 ///
-/// > **NOTE on Access Points and Access Point Policies:** The provider provides both a standalone Access Point Policy resource and an Access Point resource with a resource policy defined in-line. You cannot use an Access Point with in-line resource policy in conjunction with an Access Point Policy resource. Doing so will cause a conflict of policies and will overwrite the access point's resource policy.
+/// &gt; **NOTE on Access Points and Access Point Policies:** The provider provides both a standalone Access Point Policy resource and an Access Point resource with a resource policy defined in-line. You cannot use an Access Point with in-line resource policy in conjunction with an Access Point Policy resource. Doing so will cause a conflict of policies and will overwrite the access point's resource policy.
 ///
 /// ## Example Usage
 ///
@@ -288,10 +288,13 @@ import 'access_point_policy_state.dart';
 class AccessPointPolicy extends pulumi.CustomResource {
   /// The ARN of the access point that you want to associate with the specified policy.
   late final pulumi.Output<String> accessPointArn;
+
   /// Indicates whether this access point currently has a policy that allows public access.
   late final pulumi.Output<bool> hasPublicAccessPolicy;
+
   /// The policy that you want to apply to the specified access point.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -304,15 +307,15 @@ class AccessPointPolicy extends pulumi.CustomResource {
     AccessPointPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/accessPointPolicy:AccessPointPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointArn = registerOutput<String>('accessPointArn');
-    this.hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:s3control/accessPointPolicy:AccessPointPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointArn = registerOutput<String>('accessPointArn');
+    hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [AccessPointPolicy] resource's state with the given [name] and [id].
@@ -333,14 +336,14 @@ class AccessPointPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/accessPointPolicy:AccessPointPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointArn = registerOutput<String>('accessPointArn');
-    this.hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
+         'aws:s3control/accessPointPolicy:AccessPointPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointArn = registerOutput<String>('accessPointArn');
+    hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
   }
 }

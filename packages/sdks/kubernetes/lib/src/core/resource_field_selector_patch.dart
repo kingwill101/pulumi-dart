@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceFieldSelectorPatch {
   /// Container name: required for volumes, optional for env vars
   final pulumi.Input<String>? containerName;
+
   /// Specifies the output format of the exposed resources, defaults to "1"
   final pulumi.Input<String>? divisor;
+
   /// Required: resource to select
   final pulumi.Input<String>? resource;
 
@@ -15,11 +17,7 @@ class ResourceFieldSelectorPatch {
   /// [containerName] Container name: required for volumes, optional for env vars
   /// [divisor] Specifies the output format of the exposed resources, defaults to "1"
   /// [resource] Required: resource to select
-  ResourceFieldSelectorPatch({
-    this.containerName,
-    this.divisor,
-    this.resource,
-  });
+  ResourceFieldSelectorPatch({this.containerName, this.divisor, this.resource});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ResourceFieldSelectorPatch {
 
   factory ResourceFieldSelectorPatch.fromMap(Map<String, dynamic> map) {
     return ResourceFieldSelectorPatch(
-      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
-      divisor: map['divisor'] == null ? null : (map['divisor']! as String).input(),
-      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      containerName: (() {
+        final guardedValue = map['containerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      divisor: (() {
+        final guardedValue = map['divisor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

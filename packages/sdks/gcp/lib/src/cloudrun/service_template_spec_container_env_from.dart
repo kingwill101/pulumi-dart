@@ -7,9 +7,12 @@ import 'service_template_spec_container_env_from_secret_ref.dart';
 class ServiceTemplateSpecContainerEnvFrom {
   /// The ConfigMap to select from.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerEnvFromConfigMapRef>? configMapRef;
+  final pulumi.Input<ServiceTemplateSpecContainerEnvFromConfigMapRef>?
+  configMapRef;
+
   /// An optional identifier to prepend to each key in the ConfigMap.
   final pulumi.Input<String>? prefix;
+
   /// The Secret to select from.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateSpecContainerEnvFromSecretRef>? secretRef;
@@ -26,18 +29,47 @@ class ServiceTemplateSpecContainerEnvFrom {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configMapRef': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerEnvFromConfigMapRef, Map<String, dynamic>>(configMapRef, (value) => value.toMap()),
+      'configMapRef':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceTemplateSpecContainerEnvFromConfigMapRef,
+            Map<String, dynamic>
+          >(configMapRef, (value) => value.toMap()),
       'prefix': ?prefix,
-      'secretRef': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerEnvFromSecretRef, Map<String, dynamic>>(secretRef, (value) => value.toMap()),
+      'secretRef':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceTemplateSpecContainerEnvFromSecretRef,
+            Map<String, dynamic>
+          >(secretRef, (value) => value.toMap()),
     };
   }
 
-  factory ServiceTemplateSpecContainerEnvFrom.fromMap(Map<String, dynamic> map) {
+  factory ServiceTemplateSpecContainerEnvFrom.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTemplateSpecContainerEnvFrom(
-      configMapRef: map['configMapRef'] == null ? null : (ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap((map['configMapRef']! as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
-      secretRef: map['secretRef'] == null ? null : (ServiceTemplateSpecContainerEnvFromSecretRef.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
+      configMapRef: (() {
+        final guardedValue = map['configMapRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretRef: (() {
+        final guardedValue = map['secretRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceTemplateSpecContainerEnvFromSecretRef.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

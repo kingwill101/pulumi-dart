@@ -314,16 +314,22 @@ import 'anomaly_monitor_state.dart';
 class AnomalyMonitor extends pulumi.CustomResource {
   /// ARN of the anomaly monitor.
   late final pulumi.Output<String> arn;
+
   /// The dimensions to evaluate. Valid values: `SERVICE`.
   late final pulumi.Output<String?> monitorDimension;
+
   /// A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
   late final pulumi.Output<String?> monitorSpecification;
+
   /// The possible type values. Valid values: `DIMENSIONAL` | `CUSTOM`.
   late final pulumi.Output<String> monitorType;
+
   /// The name of the monitor.
   late final pulumi.Output<String> name;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -336,18 +342,18 @@ class AnomalyMonitor extends pulumi.CustomResource {
     AnomalyMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:costexplorer/anomalyMonitor:AnomalyMonitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.monitorDimension = registerOutput<String?>('monitorDimension');
-    this.monitorSpecification = registerOutput<String?>('monitorSpecification');
-    this.monitorType = registerOutput<String>('monitorType');
+         'aws:costexplorer/anomalyMonitor:AnomalyMonitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    monitorDimension = registerOutput<String?>('monitorDimension');
+    monitorSpecification = registerOutput<String?>('monitorSpecification');
+    monitorType = registerOutput<String>('monitorType');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [AnomalyMonitor] resource's state with the given [name] and [id].
@@ -368,17 +374,17 @@ class AnomalyMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:costexplorer/anomalyMonitor:AnomalyMonitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.monitorDimension = registerOutput<String?>('monitorDimension');
-    this.monitorSpecification = registerOutput<String?>('monitorSpecification');
-    this.monitorType = registerOutput<String>('monitorType');
+         'aws:costexplorer/anomalyMonitor:AnomalyMonitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    monitorDimension = registerOutput<String?>('monitorDimension');
+    monitorSpecification = registerOutput<String?>('monitorSpecification');
+    monitorType = registerOutput<String>('monitorType');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -8,20 +8,15 @@ class WorkloadEntitySearchQuery {
 
   /// Creates a new [WorkloadEntitySearchQuery].
   /// [query] A valid entity search query; empty, and null values are considered invalid.
-  WorkloadEntitySearchQuery({
-    required this.query,
-  });
+  WorkloadEntitySearchQuery({required this.query});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'query': query,
-    };
+    return <String, dynamic>{'query': query};
   }
 
   factory WorkloadEntitySearchQuery.fromMap(Map<String, dynamic> map) {
     return WorkloadEntitySearchQuery(
-      query: (map['query'] as String).input(),
+      query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
-

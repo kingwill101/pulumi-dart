@@ -7,8 +7,10 @@ import 'kmsenv_map_response.dart';
 class EnvironmentResponse {
   /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
   final pulumi.Input<KMSEnvMapResponse> encryptedVariables;
+
   /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
   final pulumi.Input<Map<String, String>> secretVariables;
+
   /// A map of environment variable names to values.
   final pulumi.Input<Map<String, String>> variables;
 
@@ -24,7 +26,11 @@ class EnvironmentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptedVariables': pulumi.Input.mapInputValue<KMSEnvMapResponse, Map<String, dynamic>>(encryptedVariables, (value) => value.toMap()),
+      'encryptedVariables':
+          pulumi.Input.mapInputValue<KMSEnvMapResponse, Map<String, dynamic>>(
+            encryptedVariables,
+            (value) => value.toMap(),
+          ),
       'secretVariables': secretVariables,
       'variables': variables,
     };
@@ -32,10 +38,17 @@ class EnvironmentResponse {
 
   factory EnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentResponse(
-      encryptedVariables: (KMSEnvMapResponse.fromMap((map['encryptedVariables'] as Map).cast<String, dynamic>())).input(),
-      secretVariables: ((map['secretVariables'] as Map).cast<String, String>()).input(),
-      variables: ((map['variables'] as Map).cast<String, String>()).input(),
+      encryptedVariables: pulumi.Input.fromValue(
+        KMSEnvMapResponse.fromMap(
+          (map['encryptedVariables']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      secretVariables: pulumi.Input.fromValue(
+        (map['secretVariables'] as Map).cast<String, String>(),
+      ),
+      variables: pulumi.Input.fromValue(
+        (map['variables'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

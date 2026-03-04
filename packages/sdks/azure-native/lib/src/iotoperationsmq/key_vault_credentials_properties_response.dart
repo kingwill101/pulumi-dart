@@ -19,10 +19,13 @@ class KeyVaultCredentialsPropertiesResponse {
     };
   }
 
-  factory KeyVaultCredentialsPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory KeyVaultCredentialsPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KeyVaultCredentialsPropertiesResponse(
-      servicePrincipalLocalSecretName: (map['servicePrincipalLocalSecretName'] as String).input(),
+      servicePrincipalLocalSecretName: pulumi.Input.fromValue(
+        map['servicePrincipalLocalSecretName'] as String,
+      ),
     );
   }
 }
-

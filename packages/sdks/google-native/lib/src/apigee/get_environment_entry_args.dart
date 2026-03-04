@@ -35,11 +35,10 @@ class GetEnvironmentEntryArgs {
 
   factory GetEnvironmentEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentEntryArgs(
-      entryId: (map['entryId'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      keyvaluemapId: (map['keyvaluemapId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      entryId: pulumi.Input.fromValue(map['entryId'] as String),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      keyvaluemapId: pulumi.Input.fromValue(map['keyvaluemapId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

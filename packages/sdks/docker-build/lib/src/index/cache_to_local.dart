@@ -7,14 +7,19 @@ import 'compression_type.dart';
 class CacheToLocal {
   /// The compression type to use.
   final pulumi.Input<CompressionType>? compression;
+
   /// Compression level from 0 to 22.
   final pulumi.Input<int>? compressionLevel;
+
   /// Path of the local directory to export the cache.
   final pulumi.Input<String> dest;
+
   /// Forcefully apply compression.
   final pulumi.Input<bool>? forceCompression;
+
   /// Ignore errors caused by failed cache exports.
   final pulumi.Input<bool>? ignoreError;
+
   /// The cache mode to use. Defaults to `min`.
   final pulumi.Input<CacheMode>? mode;
 
@@ -36,24 +41,54 @@ class CacheToLocal {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compression': ?pulumi.Input.mapOptionalInputValue<CompressionType, String>(compression, (value) => value.value),
+      'compression':
+          ?pulumi.Input.mapOptionalInputValue<CompressionType, String>(
+            compression,
+            (value) => value.wireValue,
+          ),
       'compressionLevel': ?compressionLevel,
       'dest': dest,
       'forceCompression': ?forceCompression,
       'ignoreError': ?ignoreError,
-      'mode': ?pulumi.Input.mapOptionalInputValue<CacheMode, String>(mode, (value) => value.value),
+      'mode': ?pulumi.Input.mapOptionalInputValue<CacheMode, String>(
+        mode,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory CacheToLocal.fromMap(Map<String, dynamic> map) {
     return CacheToLocal(
-      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression']! as String)).input(),
-      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel']! as int).input(),
-      dest: (map['dest'] as String).input(),
-      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression']! as bool).input(),
-      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError']! as bool).input(),
-      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode']! as String)).input(),
+      compression: (() {
+        final guardedValue = map['compression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CompressionType.fromValue(guardedValue as String),
+        );
+      })(),
+      compressionLevel: (() {
+        final guardedValue = map['compressionLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dest: pulumi.Input.fromValue(map['dest'] as String),
+      forceCompression: (() {
+        final guardedValue = map['forceCompression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ignoreError: (() {
+        final guardedValue = map['ignoreError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CacheMode.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

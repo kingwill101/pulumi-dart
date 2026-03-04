@@ -8,16 +8,22 @@ import 'system_data_response.dart';
 class GetCustomerEventResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The name of the event subscribed to.
   final String eventName;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The notification event receivers.
   final List<NotificationEventReceiverResponse> receivers;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -45,7 +51,11 @@ class GetCustomerEventResult {
       'eventName': eventName,
       'id': id,
       'name': name,
-      'receivers': pulumi.Input.encodeList<NotificationEventReceiverResponse, Map<String, dynamic>>(receivers, (value) => value.toMap()),
+      'receivers':
+          pulumi.Input.encodeList<
+            NotificationEventReceiverResponse,
+            Map<String, dynamic>
+          >(receivers, (value) => value.toMap()),
       'systemData': systemData.toMap(),
       'type': type,
     };
@@ -57,10 +67,16 @@ class GetCustomerEventResult {
       eventName: map['eventName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      receivers: pulumi.Input.decodeList<NotificationEventReceiverResponse>(map['receivers'], (value) => NotificationEventReceiverResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      receivers: pulumi.Input.decodeList<NotificationEventReceiverResponse>(
+        map['receivers']!,
+        (value) => NotificationEventReceiverResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

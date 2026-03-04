@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse {
   /// User readable description of the volume.
   final pulumi.Input<String>? description;
+
   /// Specifies the application-scoped volume kind.
   /// Expected value is 'ServiceFabricVolumeDisk'.
   final pulumi.Input<String> kind;
+
   /// Volume size
   final pulumi.Input<String> sizeDisk;
 
@@ -30,12 +32,17 @@ class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse {
     };
   }
 
-  factory ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      kind: (map['kind'] as String).input(),
-      sizeDisk: (map['sizeDisk'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      sizeDisk: pulumi.Input.fromValue(map['sizeDisk'] as String),
     );
   }
 }
-

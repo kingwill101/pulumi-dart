@@ -10,16 +10,22 @@ import 'get_dev_environment_repository.dart';
 class GetDevEnvironmentArgs {
   /// The user-specified alias for the Dev Environment.
   final pulumi.Input<String>? alias;
+
   /// The system-generated unique ID of the user who created the Dev Environment.
   final pulumi.Input<String>? creatorId;
+
   /// - (Required) The system-generated unique ID of the Dev Environment for which you want to view information. To retrieve a list of Dev Environment IDs, use [ListDevEnvironments](https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListDevEnvironments.html).
   final pulumi.Input<String> envId;
+
   /// The name of the project in the space.
   final pulumi.Input<String> projectName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The source repository that contains the branch to clone into the Dev Environment.
   final pulumi.Input<List<GetDevEnvironmentRepository>>? repositories;
+
   /// The name of the space.
   final pulumi.Input<String> spaceName;
   final pulumi.Input<Map<String, String>>? tags;
@@ -51,7 +57,18 @@ class GetDevEnvironmentArgs {
       'envId': envId,
       'projectName': projectName,
       'region': ?region,
-      'repositories': ?pulumi.Input.mapOptionalInputValue<List<GetDevEnvironmentRepository>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<GetDevEnvironmentRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'repositories':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetDevEnvironmentRepository>,
+            List<Map<String, dynamic>>
+          >(
+            repositories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDevEnvironmentRepository,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'spaceName': spaceName,
       'tags': ?tags,
     };
@@ -59,15 +76,43 @@ class GetDevEnvironmentArgs {
 
   factory GetDevEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentArgs(
-      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
-      creatorId: map['creatorId'] == null ? null : ((map['creatorId'] as String).input()).input(),
-      envId: (map['envId'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      repositories: map['repositories'] == null ? null : ((pulumi.Input.decodeList<GetDevEnvironmentRepository>(map['repositories']!, (value) => GetDevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      spaceName: (map['spaceName'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      creatorId: (() {
+        final guardedValue = map['creatorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      envId: pulumi.Input.fromValue(map['envId'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositories: (() {
+        final guardedValue = map['repositories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetDevEnvironmentRepository>(
+            guardedValue,
+            (value) => GetDevEnvironmentRepository.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      spaceName: pulumi.Input.fromValue(map['spaceName'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

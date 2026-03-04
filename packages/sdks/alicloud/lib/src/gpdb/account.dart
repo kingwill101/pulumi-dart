@@ -6,7 +6,7 @@ import 'account_state.dart';
 ///
 /// For information about GPDB Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/86924.htm).
 ///
-/// > **NOTE:** Available since v1.142.0.
+/// &gt; **NOTE:** Available since v1.142.0.
 ///
 /// ## Example Usage
 ///
@@ -363,23 +363,29 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The description of the account.
   late final pulumi.Output<String?> accountDescription;
+
   /// The account name.
   late final pulumi.Output<String> accountName;
+
   /// AccountPassword
   late final pulumi.Output<String> accountPassword;
+
   /// Account type. The value range is as follows:
   ///
   /// Normal: Normal account number.
   ///
   /// Super: a high-privilege account.
   late final pulumi.Output<String> accountType;
+
   /// Database name, with the following restrictions:
   /// - Can only contain letters, numbers and underscores.
   /// - Must start with a letter.
   /// - Length cannot exceed 63 characters.
   late final pulumi.Output<String?> databaseName;
+
   /// The Adb pg instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -392,18 +398,18 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String>('accountType');
-    this.databaseName = registerOutput<String?>('databaseName');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String>('accountType');
+    databaseName = registerOutput<String?>('databaseName');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -424,17 +430,17 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountDescription = registerOutput<String?>('accountDescription');
-    this.accountName = registerOutput<String>('accountName');
-    this.accountPassword = registerOutput<String>('accountPassword');
-    this.accountType = registerOutput<String>('accountType');
-    this.databaseName = registerOutput<String?>('databaseName');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountDescription = registerOutput<String?>('accountDescription');
+    accountName = registerOutput<String>('accountName');
+    accountPassword = registerOutput<String>('accountPassword');
+    accountType = registerOutput<String>('accountType');
+    databaseName = registerOutput<String?>('databaseName');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    status = registerOutput<String>('status');
   }
 }

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BusinessProcessMappingItemResponse {
   /// The logic app resource id.
   final pulumi.Input<String>? logicAppResourceId;
+
   /// The operation name.
   final pulumi.Input<String>? operationName;
+
   /// The mapping item operation type of the business process.
   final pulumi.Input<String>? operationType;
+
   /// The workflow name within the logic app.
   final pulumi.Input<String>? workflowName;
 
@@ -36,11 +39,26 @@ class BusinessProcessMappingItemResponse {
 
   factory BusinessProcessMappingItemResponse.fromMap(Map<String, dynamic> map) {
     return BusinessProcessMappingItemResponse(
-      logicAppResourceId: map['logicAppResourceId'] == null ? null : (map['logicAppResourceId']! as String).input(),
-      operationName: map['operationName'] == null ? null : (map['operationName']! as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
-      workflowName: map['workflowName'] == null ? null : (map['workflowName']! as String).input(),
+      logicAppResourceId: (() {
+        final guardedValue = map['logicAppResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operationName: (() {
+        final guardedValue = map['operationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operationType: (() {
+        final guardedValue = map['operationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workflowName: (() {
+        final guardedValue = map['workflowName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

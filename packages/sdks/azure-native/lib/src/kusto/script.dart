@@ -177,22 +177,31 @@ import 'system_data_response.dart';
 class Script extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Flag that indicates whether to continue if one of the command fails.
   late final pulumi.Output<bool?> continueOnErrors;
+
   /// A unique string. If changed the script will be applied again.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Indicates if the permissions for the script caller are kept following completion of the script.
   late final pulumi.Output<String?> principalPermissionsAction;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
   late final pulumi.Output<String?> scriptLevel;
+
   /// The url to the KQL script blob file. Must not be used together with scriptContent property
   late final pulumi.Output<String?> scriptUrl;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -200,25 +209,24 @@ class Script extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Script]. {@macro pulumi_kusto_script_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Script(
-    String name, {
-    ScriptArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:kusto:Script',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.continueOnErrors = registerOutput<bool?>('continueOnErrors');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+  Script(String name, {ScriptArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:kusto:Script',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    continueOnErrors = registerOutput<bool?>('continueOnErrors');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String>('name');
-    this.principalPermissionsAction = registerOutput<String?>('principalPermissionsAction');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scriptLevel = registerOutput<String?>('scriptLevel');
-    this.scriptUrl = registerOutput<String?>('scriptUrl');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    principalPermissionsAction = registerOutput<String?>(
+      'principalPermissionsAction',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    scriptLevel = registerOutput<String?>('scriptLevel');
+    scriptUrl = registerOutput<String?>('scriptUrl');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

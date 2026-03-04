@@ -284,7 +284,7 @@ import 'event_hub_authorization_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -299,30 +299,42 @@ import 'event_hub_authorization_rule_state.dart';
 class EventHubAuthorizationRule extends pulumi.CustomResource {
   /// Specifies the name of the EventHub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> eventhubName;
+
   /// Does this Authorization Rule have permissions to Listen to the Event Hub? Defaults to `false`.
   late final pulumi.Output<bool?> listen;
+
   /// Does this Authorization Rule have permissions to Manage to the Event Hub? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   late final pulumi.Output<bool?> manage;
+
   /// Specifies the name of the EventHub Authorization Rule resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceName;
+
   /// The Primary Connection String for the Event Hubs authorization Rule.
   late final pulumi.Output<String> primaryConnectionString;
+
   /// The alias of the Primary Connection String for the Event Hubs authorization Rule, which is generated when disaster recovery is enabled.
   late final pulumi.Output<String> primaryConnectionStringAlias;
+
   /// The Primary Key for the Event Hubs authorization Rule.
   late final pulumi.Output<String> primaryKey;
+
   /// The name of the resource group in which the EventHub Namespace exists. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** At least one of the 3 permissions below needs to be set.
+  /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Secondary Connection String for the Event Hubs Authorization Rule.
   late final pulumi.Output<String> secondaryConnectionString;
+
   /// The alias of the Secondary Connection String for the Event Hubs Authorization Rule, which is generated when disaster recovery is enabled.
   late final pulumi.Output<String> secondaryConnectionStringAlias;
+
   /// The Secondary Key for the Event Hubs Authorization Rule.
   late final pulumi.Output<String> secondaryKey;
+
   /// Does this Authorization Rule have permissions to Send to the Event Hub? Defaults to `false`.
   late final pulumi.Output<bool?> send;
 
@@ -335,24 +347,30 @@ class EventHubAuthorizationRule extends pulumi.CustomResource {
     EventHubAuthorizationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventhubName = registerOutput<String>('eventhubName');
-    this.listen = registerOutput<bool?>('listen');
-    this.manage = registerOutput<bool?>('manage');
+         'azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventhubName = registerOutput<String>('eventhubName');
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.send = registerOutput<bool?>('send');
+    namespaceName = registerOutput<String>('namespaceName');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryConnectionStringAlias = registerOutput<String>(
+      'primaryConnectionStringAlias',
+    );
+    primaryKey = registerOutput<String>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryConnectionStringAlias = registerOutput<String>(
+      'secondaryConnectionStringAlias',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    send = registerOutput<bool?>('send');
   }
 
   /// Gets an existing [EventHubAuthorizationRule] resource's state with the given [name] and [id].
@@ -373,23 +391,29 @@ class EventHubAuthorizationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eventhubName = registerOutput<String>('eventhubName');
-    this.listen = registerOutput<bool?>('listen');
-    this.manage = registerOutput<bool?>('manage');
+         'azure:eventhub/eventHubAuthorizationRule:EventHubAuthorizationRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eventhubName = registerOutput<String>('eventhubName');
+    listen = registerOutput<bool?>('listen');
+    manage = registerOutput<bool?>('manage');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    this.primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    this.secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.send = registerOutput<bool?>('send');
+    namespaceName = registerOutput<String>('namespaceName');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryConnectionStringAlias = registerOutput<String>(
+      'primaryConnectionStringAlias',
+    );
+    primaryKey = registerOutput<String>('primaryKey');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>(
+      'secondaryConnectionString',
+    );
+    secondaryConnectionStringAlias = registerOutput<String>(
+      'secondaryConnectionStringAlias',
+    );
+    secondaryKey = registerOutput<String>('secondaryKey');
+    send = registerOutput<bool?>('send');
   }
 }

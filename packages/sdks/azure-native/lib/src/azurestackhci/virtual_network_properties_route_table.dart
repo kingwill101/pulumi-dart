@@ -7,10 +7,13 @@ import 'virtual_network_properties_routes.dart';
 class VirtualNetworkPropertiesRouteTable {
   /// Etag - Gets a unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String>? id;
+
   /// Name - READ-ONLY; Resource name.
   final pulumi.Input<String>? name;
+
   /// Routes - Collection of routes contained within a route table.
   final pulumi.Input<List<VirtualNetworkPropertiesRoutes>>? routes;
+
   /// Type - READ-ONLY; Resource type.
   final pulumi.Input<String>? type;
 
@@ -30,18 +33,51 @@ class VirtualNetworkPropertiesRouteTable {
     return <String, dynamic>{
       'id': ?id,
       'name': ?name,
-      'routes': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkPropertiesRoutes>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<VirtualNetworkPropertiesRoutes, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualNetworkPropertiesRoutes>,
+            List<Map<String, dynamic>>
+          >(
+            routes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualNetworkPropertiesRoutes,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': ?type,
     };
   }
 
   factory VirtualNetworkPropertiesRouteTable.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesRouteTable(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesRoutes>(map['routes']!, (value) => VirtualNetworkPropertiesRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routes: (() {
+        final guardedValue = map['routes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualNetworkPropertiesRoutes>(
+            guardedValue,
+            (value) => VirtualNetworkPropertiesRoutes.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

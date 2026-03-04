@@ -4,16 +4,22 @@ enum MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 {
   release("RELEASE"),
   snapshot("SNAPSHOT");
 
-  const MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2(this.value);
-  final String value;
+  const MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 fromValue(String value) {
-    for (final item in MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.values) {
-      if (item.value == value) {
+  static MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 fromValue(
+    String value,
+  ) {
+    for (final item
+        in MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2 value: $value',
+    );
   }
 }
-

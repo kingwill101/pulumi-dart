@@ -6,7 +6,7 @@ import 'patch_baseline_state.dart';
 ///
 /// For information about OOS Patch Baseline and how to use it, see [What is Patch Baseline](https://www.alibabacloud.com/help/en/operation-orchestration-service/latest/patch-manager-overview).
 ///
-/// > **NOTE:** Available since v1.146.0.
+/// &gt; **NOTE:** Available since v1.146.0.
 ///
 /// ## Example Usage
 ///
@@ -145,26 +145,37 @@ import 'patch_baseline_state.dart';
 class PatchBaseline extends pulumi.CustomResource {
   /// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
   late final pulumi.Output<String> approvalRules;
+
   /// Approved Patch.
   late final pulumi.Output<List<String>?> approvedPatches;
+
   /// ApprovedPatchesEnableNonSecurity.
   late final pulumi.Output<bool?> approvedPatchesEnableNonSecurity;
+
   /// Creation time.
   late final pulumi.Output<String> createTime;
+
   /// Patches baseline description information.
   late final pulumi.Output<String?> description;
+
   /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
   late final pulumi.Output<String> operationSystem;
+
   /// The name of the patch baseline.
   late final pulumi.Output<String> patchBaselineName;
+
   /// Reject patches.
   late final pulumi.Output<List<String>?> rejectedPatches;
+
   /// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
   late final pulumi.Output<String> rejectedPatchesAction;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Source.
   late final pulumi.Output<List<String>?> sources;
+
   /// Label.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -177,23 +188,25 @@ class PatchBaseline extends pulumi.CustomResource {
     PatchBaselineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/patchBaseline:PatchBaseline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalRules = registerOutput<String>('approvalRules');
-    this.approvedPatches = registerOutput<List<String>?>('approvedPatches');
-    this.approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.operationSystem = registerOutput<String>('operationSystem');
-    this.patchBaselineName = registerOutput<String>('patchBaselineName');
-    this.rejectedPatches = registerOutput<List<String>?>('rejectedPatches');
-    this.rejectedPatchesAction = registerOutput<String>('rejectedPatchesAction');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sources = registerOutput<List<String>?>('sources');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:oos/patchBaseline:PatchBaseline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalRules = registerOutput<String>('approvalRules');
+    approvedPatches = registerOutput<List<String>?>('approvedPatches');
+    approvedPatchesEnableNonSecurity = registerOutput<bool?>(
+      'approvedPatchesEnableNonSecurity',
+    );
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    operationSystem = registerOutput<String>('operationSystem');
+    patchBaselineName = registerOutput<String>('patchBaselineName');
+    rejectedPatches = registerOutput<List<String>?>('rejectedPatches');
+    rejectedPatchesAction = registerOutput<String>('rejectedPatchesAction');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sources = registerOutput<List<String>?>('sources');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [PatchBaseline] resource's state with the given [name] and [id].
@@ -214,22 +227,24 @@ class PatchBaseline extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oos/patchBaseline:PatchBaseline',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalRules = registerOutput<String>('approvalRules');
-    this.approvedPatches = registerOutput<List<String>?>('approvedPatches');
-    this.approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.operationSystem = registerOutput<String>('operationSystem');
-    this.patchBaselineName = registerOutput<String>('patchBaselineName');
-    this.rejectedPatches = registerOutput<List<String>?>('rejectedPatches');
-    this.rejectedPatchesAction = registerOutput<String>('rejectedPatchesAction');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sources = registerOutput<List<String>?>('sources');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:oos/patchBaseline:PatchBaseline',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalRules = registerOutput<String>('approvalRules');
+    approvedPatches = registerOutput<List<String>?>('approvedPatches');
+    approvedPatchesEnableNonSecurity = registerOutput<bool?>(
+      'approvedPatchesEnableNonSecurity',
+    );
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    operationSystem = registerOutput<String>('operationSystem');
+    patchBaselineName = registerOutput<String>('patchBaselineName');
+    rejectedPatches = registerOutput<List<String>?>('rejectedPatches');
+    rejectedPatchesAction = registerOutput<String>('rejectedPatchesAction');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sources = registerOutput<List<String>?>('sources');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

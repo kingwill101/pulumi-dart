@@ -1,19 +1,24 @@
 /// actuation_mode controls the behavior of the controller
 enum NamespaceActuationFeatureSpecActuationMode {
   actuationModeUnspecified("ACTUATION_MODE_UNSPECIFIED"),
-  actuationModeCreateAndDeleteIfCreated("ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED"),
-  actuationModeAddAndRemoveFleetLabels("ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS");
+  actuationModeCreateAndDeleteIfCreated(
+    "ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED",
+  ),
+  actuationModeAddAndRemoveFleetLabels(
+    "ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS",
+  );
 
-  const NamespaceActuationFeatureSpecActuationMode(this.value);
-  final String value;
+  const NamespaceActuationFeatureSpecActuationMode(this.wireValue);
+  final String wireValue;
 
   static NamespaceActuationFeatureSpecActuationMode fromValue(String value) {
     for (final item in NamespaceActuationFeatureSpecActuationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NamespaceActuationFeatureSpecActuationMode value: $value');
+    throw ArgumentError(
+      'Unknown NamespaceActuationFeatureSpecActuationMode value: $value',
+    );
   }
 }
-

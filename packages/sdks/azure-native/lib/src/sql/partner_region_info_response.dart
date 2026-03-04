@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerRegionInfoResponse {
   /// Geo location of the partner managed instances.
   final pulumi.Input<String>? location;
+
   /// Replication role of the partner managed instances.
   final pulumi.Input<String> replicationRole;
 
   /// Creates a new [PartnerRegionInfoResponse].
   /// [location] Geo location of the partner managed instances.
   /// [replicationRole] Replication role of the partner managed instances.
-  PartnerRegionInfoResponse({
-    this.location,
-    required this.replicationRole,
-  });
+  PartnerRegionInfoResponse({this.location, required this.replicationRole});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class PartnerRegionInfoResponse {
 
   factory PartnerRegionInfoResponse.fromMap(Map<String, dynamic> map) {
     return PartnerRegionInfoResponse(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      replicationRole: (map['replicationRole'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationRole: pulumi.Input.fromValue(map['replicationRole'] as String),
     );
   }
 }
-

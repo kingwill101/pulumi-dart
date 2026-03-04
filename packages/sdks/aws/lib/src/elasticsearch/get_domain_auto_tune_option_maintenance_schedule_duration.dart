@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainAutoTuneOptionMaintenanceScheduleDuration {
   /// Unit of time.
   final pulumi.Input<String> unit;
+
   /// Duration of an Auto-Tune maintenance window.
   final pulumi.Input<int> value;
 
@@ -17,17 +18,15 @@ class GetDomainAutoTuneOptionMaintenanceScheduleDuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'unit': unit,
-      'value': value,
-    };
+    return <String, dynamic>{'unit': unit, 'value': value};
   }
 
-  factory GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap(Map<String, dynamic> map) {
+  factory GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDomainAutoTuneOptionMaintenanceScheduleDuration(
-      unit: (map['unit'] as String).input(),
-      value: (map['value'] as int).input(),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
+      value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEdgeMachineArgs {
   /// Name of Device
   final pulumi.Input<String> edgeMachineName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetEdgeMachineArgs {
 
   factory GetEdgeMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeMachineArgs(
-      edgeMachineName: (map['edgeMachineName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      edgeMachineName: pulumi.Input.fromValue(map['edgeMachineName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

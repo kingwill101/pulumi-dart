@@ -6,29 +6,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerState {
   /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
   final pulumi.Input<String>? config;
+
   /// The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
   final pulumi.Input<String>? configMns;
+
   /// The Function Compute function name.
   final pulumi.Input<String>? function;
+
   /// The date this resource was last modified.
   final pulumi.Input<String>? lastModified;
+
   /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
   final pulumi.Input<String>? name;
+
   /// Setting a prefix to get a only trigger name. It is conflict with "name".
   final pulumi.Input<String>? namePrefix;
+
   /// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   final pulumi.Input<String>? role;
+
   /// The Function Compute service name.
   final pulumi.Input<String>? service;
+
   /// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   final pulumi.Input<String>? sourceArn;
+
   /// The Function Compute trigger ID.
   final pulumi.Input<String>? triggerId;
+
   /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
   ///
-  /// > **NOTE:** Config does not support modification when type is mns_topic.
-  /// > **NOTE:** type = cdn_events, available in 1.47.0+.
-  /// > **NOTE:** type = eventbridge, available in 1.173.0+.
+  /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+  /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+  /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
   final pulumi.Input<String>? type;
 
   /// Creates a new [TriggerState].
@@ -75,18 +85,61 @@ class TriggerState {
 
   factory TriggerState.fromMap(Map<String, dynamic> map) {
     return TriggerState(
-      config: map['config'] == null ? null : (map['config']! as String).input(),
-      configMns: map['configMns'] == null ? null : (map['configMns']! as String).input(),
-      function: map['function'] == null ? null : (map['function']! as String).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configMns: (() {
+        final guardedValue = map['configMns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      function: (() {
+        final guardedValue = map['function'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModified: (() {
+        final guardedValue = map['lastModified'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceArn: (() {
+        final guardedValue = map['sourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerId: (() {
+        final guardedValue = map['triggerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

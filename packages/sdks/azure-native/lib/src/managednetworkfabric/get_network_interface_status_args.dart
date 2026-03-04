@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkInterfaceStatusArgs {
   /// Name of the NetworkDevice.
   final pulumi.Input<String> networkDeviceName;
+
   /// Name of the NetworkInterface
   final pulumi.Input<String> networkInterfaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetNetworkInterfaceStatusArgs {
 
   factory GetNetworkInterfaceStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceStatusArgs(
-      networkDeviceName: (map['networkDeviceName'] as String).input(),
-      networkInterfaceName: (map['networkInterfaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      networkDeviceName: pulumi.Input.fromValue(
+        map['networkDeviceName'] as String,
+      ),
+      networkInterfaceName: pulumi.Input.fromValue(
+        map['networkInterfaceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

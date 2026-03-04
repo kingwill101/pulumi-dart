@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNeighborGroupArgs {
   /// Name of the Neighbor Group.
   final pulumi.Input<String> neighborGroupName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetNeighborGroupArgs {
 
   factory GetNeighborGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNeighborGroupArgs(
-      neighborGroupName: (map['neighborGroupName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      neighborGroupName: pulumi.Input.fromValue(
+        map['neighborGroupName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

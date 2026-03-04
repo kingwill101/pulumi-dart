@@ -3,16 +3,15 @@ enum RoutineDataGovernanceType {
   dataGovernanceTypeUnspecified("DATA_GOVERNANCE_TYPE_UNSPECIFIED"),
   dataMasking("DATA_MASKING");
 
-  const RoutineDataGovernanceType(this.value);
-  final String value;
+  const RoutineDataGovernanceType(this.wireValue);
+  final String wireValue;
 
   static RoutineDataGovernanceType fromValue(String value) {
     for (final item in RoutineDataGovernanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutineDataGovernanceType value: $value');
   }
 }
-

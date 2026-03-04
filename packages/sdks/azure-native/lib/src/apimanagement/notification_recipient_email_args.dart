@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationRecipientEmailArgs {
   /// Email identifier.
   final pulumi.Input<String>? email;
+
   /// Notification Name Identifier.
   final pulumi.Input<String> notificationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -39,11 +42,18 @@ class NotificationRecipientEmailArgs {
 
   factory NotificationRecipientEmailArgs.fromMap(Map<String, dynamic> map) {
     return NotificationRecipientEmailArgs(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      notificationName: (map['notificationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationName: pulumi.Input.fromValue(
+        map['notificationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

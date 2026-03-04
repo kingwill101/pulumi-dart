@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureFilePersistentVolumeSourcePatch {
   /// readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   final pulumi.Input<bool>? readOnly;
+
   /// secretName is the name of secret that contains Azure Storage Account Name and Key
   final pulumi.Input<String>? secretName;
+
   /// secretNamespace is the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod
   final pulumi.Input<String>? secretNamespace;
+
   /// shareName is the azure Share Name
   final pulumi.Input<String>? shareName;
 
@@ -34,13 +37,30 @@ class AzureFilePersistentVolumeSourcePatch {
     };
   }
 
-  factory AzureFilePersistentVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
+  factory AzureFilePersistentVolumeSourcePatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureFilePersistentVolumeSourcePatch(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
-      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace']! as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      secretName: (() {
+        final guardedValue = map['secretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretNamespace: (() {
+        final guardedValue = map['secretNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareName: (() {
+        final guardedValue = map['shareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

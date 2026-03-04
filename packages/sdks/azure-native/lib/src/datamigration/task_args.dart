@@ -10,12 +10,16 @@ import 'connect_to_mongo_db_task_properties.dart';
 class TaskArgs {
   /// Name of the resource group
   final pulumi.Input<String> groupName;
+
   /// Name of the project
   final pulumi.Input<String> projectName;
+
   /// Custom task properties
   final pulumi.Input<ConnectToMongoDbTaskProperties>? properties;
+
   /// Name of the service
   final pulumi.Input<String> serviceName;
+
   /// Name of the Task
   final pulumi.Input<String>? taskName;
 
@@ -37,7 +41,11 @@ class TaskArgs {
     return <String, dynamic>{
       'groupName': groupName,
       'projectName': projectName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ConnectToMongoDbTaskProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectToMongoDbTaskProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'serviceName': serviceName,
       'taskName': ?taskName,
     };
@@ -45,12 +53,23 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      groupName: (map['groupName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConnectToMongoDbTaskProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectToMongoDbTaskProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      taskName: (() {
+        final guardedValue = map['taskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

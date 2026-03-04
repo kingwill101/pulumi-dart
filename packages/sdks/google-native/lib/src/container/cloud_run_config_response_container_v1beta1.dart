@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudRunConfigResponseContainerV1beta1 {
   /// Whether Cloud Run addon is enabled for this cluster.
   final pulumi.Input<bool> disabled;
+
   /// Which load balancer type is installed for Cloud Run.
   final pulumi.Input<String> loadBalancerType;
 
@@ -24,11 +25,14 @@ class CloudRunConfigResponseContainerV1beta1 {
     };
   }
 
-  factory CloudRunConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CloudRunConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudRunConfigResponseContainerV1beta1(
-      disabled: (map['disabled'] as bool).input(),
-      loadBalancerType: (map['loadBalancerType'] as String).input(),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      loadBalancerType: pulumi.Input.fromValue(
+        map['loadBalancerType'] as String,
+      ),
     );
   }
 }
-

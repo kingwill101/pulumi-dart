@@ -8,28 +8,38 @@ import 'cx_webhook_service_directory.dart';
 class CxWebhookState {
   /// Indicates whether the webhook is disabled.
   final pulumi.Input<bool>? disabled;
+
   /// The human-readable name of the webhook, unique within the agent.
   final pulumi.Input<String>? displayName;
+
   /// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
   final pulumi.Input<bool>? enableSpellCorrection;
+
   /// Deprecated. Determines whether this agent should log conversation queries.
   final pulumi.Input<bool>? enableStackdriverLogging;
+
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
   final pulumi.Input<CxWebhookGenericWebService>? genericWebService;
+
   /// The unique identifier of the webhook.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
   final pulumi.Input<String>? name;
+
   /// The agent to create a webhook for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   final pulumi.Input<String>? parent;
-  /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+
+  /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
   final pulumi.Input<String>? securitySettings;
+
   /// Configuration for a Service Directory service.
   /// Structure is documented below.
   final pulumi.Input<CxWebhookServiceDirectory>? serviceDirectory;
-  /// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+
+  /// Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   final pulumi.Input<String>? startFlow;
+
   /// Webhook execution timeout.
   final pulumi.Input<String>? timeout;
 
@@ -41,9 +51,9 @@ class CxWebhookState {
   /// [genericWebService] Represents configuration for a generic web service.
   /// [name] The unique identifier of the webhook.
   /// [parent] The agent to create a webhook for.
-  /// [securitySettings] Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+  /// [securitySettings] Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
   /// [serviceDirectory] Configuration for a Service Directory service.
-  /// [startFlow] Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+  /// [startFlow] Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   /// [timeout] Webhook execution timeout.
   CxWebhookState({
     this.disabled,
@@ -65,11 +75,19 @@ class CxWebhookState {
       'displayName': ?displayName,
       'enableSpellCorrection': ?enableSpellCorrection,
       'enableStackdriverLogging': ?enableStackdriverLogging,
-      'genericWebService': ?pulumi.Input.mapOptionalInputValue<CxWebhookGenericWebService, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
+      'genericWebService':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxWebhookGenericWebService,
+            Map<String, dynamic>
+          >(genericWebService, (value) => value.toMap()),
       'name': ?name,
       'parent': ?parent,
       'securitySettings': ?securitySettings,
-      'serviceDirectory': ?pulumi.Input.mapOptionalInputValue<CxWebhookServiceDirectory, Map<String, dynamic>>(serviceDirectory, (value) => value.toMap()),
+      'serviceDirectory':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxWebhookServiceDirectory,
+            Map<String, dynamic>
+          >(serviceDirectory, (value) => value.toMap()),
       'startFlow': ?startFlow,
       'timeout': ?timeout,
     };
@@ -77,18 +95,69 @@ class CxWebhookState {
 
   factory CxWebhookState.fromMap(Map<String, dynamic> map) {
     return CxWebhookState(
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : (map['enableSpellCorrection']! as bool).input(),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
-      genericWebService: map['genericWebService'] == null ? null : (CxWebhookGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings']! as String).input(),
-      serviceDirectory: map['serviceDirectory'] == null ? null : (CxWebhookServiceDirectory.fromMap((map['serviceDirectory']! as Map).cast<String, dynamic>())).input(),
-      startFlow: map['startFlow'] == null ? null : (map['startFlow']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableSpellCorrection: (() {
+        final guardedValue = map['enableSpellCorrection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableStackdriverLogging: (() {
+        final guardedValue = map['enableStackdriverLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      genericWebService: (() {
+        final guardedValue = map['genericWebService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxWebhookGenericWebService.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securitySettings: (() {
+        final guardedValue = map['securitySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceDirectory: (() {
+        final guardedValue = map['serviceDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxWebhookServiceDirectory.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startFlow: (() {
+        final guardedValue = map['startFlow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

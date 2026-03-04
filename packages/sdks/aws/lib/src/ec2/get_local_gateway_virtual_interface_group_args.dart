@@ -10,12 +10,16 @@ import 'get_local_gateway_virtual_interface_group_filter.dart';
 class GetLocalGatewayVirtualInterfaceGroupArgs {
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
   final pulumi.Input<List<GetLocalGatewayVirtualInterfaceGroupFilter>>? filters;
+
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
   final pulumi.Input<String>? id;
+
   /// Identifier of EC2 Local Gateway.
   final pulumi.Input<String>? localGatewayId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,7 +39,18 @@ class GetLocalGatewayVirtualInterfaceGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetLocalGatewayVirtualInterfaceGroupFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetLocalGatewayVirtualInterfaceGroupFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetLocalGatewayVirtualInterfaceGroupFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetLocalGatewayVirtualInterfaceGroupFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
       'localGatewayId': ?localGatewayId,
       'region': ?region,
@@ -43,14 +58,44 @@ class GetLocalGatewayVirtualInterfaceGroupArgs {
     };
   }
 
-  factory GetLocalGatewayVirtualInterfaceGroupArgs.fromMap(Map<String, dynamic> map) {
+  factory GetLocalGatewayVirtualInterfaceGroupArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLocalGatewayVirtualInterfaceGroupArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(map['filters']!, (value) => GetLocalGatewayVirtualInterfaceGroupFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
-      localGatewayId: map['localGatewayId'] == null ? null : ((map['localGatewayId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(
+            guardedValue,
+            (value) => GetLocalGatewayVirtualInterfaceGroupFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localGatewayId: (() {
+        final guardedValue = map['localGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

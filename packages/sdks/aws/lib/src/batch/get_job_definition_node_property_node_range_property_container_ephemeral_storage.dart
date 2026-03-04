@@ -12,15 +12,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sizeInGib': sizeInGib,
-    };
+    return <String, dynamic>{'sizeInGib': sizeInGib};
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage(
-      sizeInGib: (map['sizeInGib'] as int).input(),
+      sizeInGib: pulumi.Input.fromValue(map['sizeInGib'] as int),
     );
   }
 }
-

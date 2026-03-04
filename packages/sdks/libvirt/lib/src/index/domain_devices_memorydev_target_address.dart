@@ -8,20 +8,21 @@ class DomainDevicesMemorydevTargetAddress {
 
   /// Creates a new [DomainDevicesMemorydevTargetAddress].
   /// [base] Configures the base address for the target of the memory device, specifying where it starts in memory.
-  DomainDevicesMemorydevTargetAddress({
-    this.base,
-  });
+  DomainDevicesMemorydevTargetAddress({this.base});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'base': ?base,
-    };
+    return <String, dynamic>{'base': ?base};
   }
 
-  factory DomainDevicesMemorydevTargetAddress.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesMemorydevTargetAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesMemorydevTargetAddress(
-      base: map['base'] == null ? null : (map['base']! as double).input(),
+      base: (() {
+        final guardedValue = map['base'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

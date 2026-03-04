@@ -5,9 +5,9 @@ import 'organization_configuration_state.dart';
 
 /// Resource for managing an Amazon Inspector Organization Configuration.
 ///
-/// > **NOTE:** In order for this resource to work, the account you use must be an Inspector Delegated Admin Account.
+/// &gt; **NOTE:** In order for this resource to work, the account you use must be an Inspector Delegated Admin Account.
 ///
-/// > **NOTE:** When this resource is deleted, EC2, ECR, Lambda, and Lambda code scans will no longer be automatically enabled for new members of your Amazon Inspector organization.
+/// &gt; **NOTE:** When this resource is deleted, EC2, ECR, Lambda, and Lambda code scans will no longer be automatically enabled for new members of your Amazon Inspector organization.
 ///
 /// ## Example Usage
 ///
@@ -136,8 +136,10 @@ import 'organization_configuration_state.dart';
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// Configuration block for auto enabling. See below.
   late final pulumi.Output<OrganizationConfigurationAutoEnable> autoEnable;
+
   /// Whether your configuration reached the max account limit.
   late final pulumi.Output<bool> maxAccountLimitReached;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -150,14 +152,16 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     OrganizationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable');
-    this.maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
-    this.region = registerOutput<String>('region');
+         'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoEnable = registerOutput<OrganizationConfigurationAutoEnable>(
+      'autoEnable',
+    );
+    maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [OrganizationConfiguration] resource's state with the given [name] and [id].
@@ -178,13 +182,15 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable');
-    this.maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
-    this.region = registerOutput<String>('region');
+         'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoEnable = registerOutput<OrganizationConfigurationAutoEnable>(
+      'autoEnable',
+    );
+    maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');
+    region = registerOutput<String>('region');
   }
 }

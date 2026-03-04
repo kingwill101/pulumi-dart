@@ -16,29 +16,42 @@ class DomainEventSubscriptionArgs {
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
   final pulumi.Input<StorageBlobDeadLetterDestination>? deadLetterDestination;
+
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
-  final pulumi.Input<DeadLetterWithResourceIdentity>? deadLetterWithResourceIdentity;
+  final pulumi.Input<DeadLetterWithResourceIdentity>?
+  deadLetterWithResourceIdentity;
+
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
-  final pulumi.Input<DeliveryWithResourceIdentity>? deliveryWithResourceIdentity;
+  final pulumi.Input<DeliveryWithResourceIdentity>?
+  deliveryWithResourceIdentity;
+
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
   final pulumi.Input<AzureFunctionEventSubscriptionDestination>? destination;
+
   /// Name of the domain topic.
   final pulumi.Input<String> domainName;
+
   /// The event delivery schema for the event subscription.
   final pulumi.Input<String>? eventDeliverySchema;
+
   /// Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
   final pulumi.Input<String>? eventSubscriptionName;
+
   /// Expiration time of the event subscription.
   final pulumi.Input<String>? expirationTimeUtc;
+
   /// Information about the filter for the event subscription.
   final pulumi.Input<EventSubscriptionFilter>? filter;
+
   /// List of user defined labels.
   final pulumi.Input<List<String>>? labels;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
   final pulumi.Input<RetryPolicy>? retryPolicy;
 
@@ -72,36 +85,123 @@ class DomainEventSubscriptionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deadLetterDestination': ?pulumi.Input.mapOptionalInputValue<StorageBlobDeadLetterDestination, Map<String, dynamic>>(deadLetterDestination, (value) => value.toMap()),
-      'deadLetterWithResourceIdentity': ?pulumi.Input.mapOptionalInputValue<DeadLetterWithResourceIdentity, Map<String, dynamic>>(deadLetterWithResourceIdentity, (value) => value.toMap()),
-      'deliveryWithResourceIdentity': ?pulumi.Input.mapOptionalInputValue<DeliveryWithResourceIdentity, Map<String, dynamic>>(deliveryWithResourceIdentity, (value) => value.toMap()),
-      'destination': ?pulumi.Input.mapOptionalInputValue<AzureFunctionEventSubscriptionDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'deadLetterDestination':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageBlobDeadLetterDestination,
+            Map<String, dynamic>
+          >(deadLetterDestination, (value) => value.toMap()),
+      'deadLetterWithResourceIdentity':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeadLetterWithResourceIdentity,
+            Map<String, dynamic>
+          >(deadLetterWithResourceIdentity, (value) => value.toMap()),
+      'deliveryWithResourceIdentity':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeliveryWithResourceIdentity,
+            Map<String, dynamic>
+          >(deliveryWithResourceIdentity, (value) => value.toMap()),
+      'destination':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureFunctionEventSubscriptionDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'domainName': domainName,
       'eventDeliverySchema': ?eventDeliverySchema,
       'eventSubscriptionName': ?eventSubscriptionName,
       'expirationTimeUtc': ?expirationTimeUtc,
-      'filter': ?pulumi.Input.mapOptionalInputValue<EventSubscriptionFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
+      'filter':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventSubscriptionFilter,
+            Map<String, dynamic>
+          >(filter, (value) => value.toMap()),
       'labels': ?labels,
       'resourceGroupName': resourceGroupName,
-      'retryPolicy': ?pulumi.Input.mapOptionalInputValue<RetryPolicy, Map<String, dynamic>>(retryPolicy, (value) => value.toMap()),
+      'retryPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetryPolicy,
+            Map<String, dynamic>
+          >(retryPolicy, (value) => value.toMap()),
     };
   }
 
   factory DomainEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return DomainEventSubscriptionArgs(
-      deadLetterDestination: map['deadLetterDestination'] == null ? null : (StorageBlobDeadLetterDestination.fromMap((map['deadLetterDestination']! as Map).cast<String, dynamic>())).input(),
-      deadLetterWithResourceIdentity: map['deadLetterWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentity.fromMap((map['deadLetterWithResourceIdentity']! as Map).cast<String, dynamic>())).input(),
-      deliveryWithResourceIdentity: map['deliveryWithResourceIdentity'] == null ? null : (DeliveryWithResourceIdentity.fromMap((map['deliveryWithResourceIdentity']! as Map).cast<String, dynamic>())).input(),
-      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
-      domainName: (map['domainName'] as String).input(),
-      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : (map['eventDeliverySchema']! as String).input(),
-      eventSubscriptionName: map['eventSubscriptionName'] == null ? null : (map['eventSubscriptionName']! as String).input(),
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : (map['expirationTimeUtc']! as String).input(),
-      filter: map['filter'] == null ? null : (EventSubscriptionFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      deadLetterDestination: (() {
+        final guardedValue = map['deadLetterDestination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageBlobDeadLetterDestination.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deadLetterWithResourceIdentity: (() {
+        final guardedValue = map['deadLetterWithResourceIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeadLetterWithResourceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deliveryWithResourceIdentity: (() {
+        final guardedValue = map['deliveryWithResourceIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeliveryWithResourceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureFunctionEventSubscriptionDestination.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      eventDeliverySchema: (() {
+        final guardedValue = map['eventDeliverySchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventSubscriptionName: (() {
+        final guardedValue = map['eventSubscriptionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationTimeUtc: (() {
+        final guardedValue = map['expirationTimeUtc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventSubscriptionFilter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      retryPolicy: (() {
+        final guardedValue = map['retryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

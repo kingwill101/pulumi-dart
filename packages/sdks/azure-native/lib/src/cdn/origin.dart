@@ -201,38 +201,55 @@ import 'system_data_response.dart';
 class Origin extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Origin is enabled for load balancing or not
   late final pulumi.Output<bool?> enabled;
+
   /// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
   late final pulumi.Output<String> hostName;
+
   /// The value of the HTTP port. Must be between 1 and 65535.
   late final pulumi.Output<int?> httpPort;
+
   /// The value of the HTTPS port. Must be between 1 and 65535.
   late final pulumi.Output<int?> httpsPort;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
   late final pulumi.Output<String?> originHostHeader;
+
   /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
   late final pulumi.Output<int?> priority;
+
   /// The approval status for the connection to the Private Link
   late final pulumi.Output<String> privateEndpointStatus;
+
   /// The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private'
   late final pulumi.Output<String?> privateLinkAlias;
+
   /// A custom message to be included in the approval request to connect to the Private Link.
   late final pulumi.Output<String?> privateLinkApprovalMessage;
+
   /// The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
   late final pulumi.Output<String?> privateLinkLocation;
+
   /// The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   late final pulumi.Output<String?> privateLinkResourceId;
+
   /// Provisioning status of the origin.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource status of the origin.
   late final pulumi.Output<String> resourceState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
   late final pulumi.Output<int?> weight;
 
@@ -240,33 +257,32 @@ class Origin extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Origin]. {@macro pulumi_cdn_origin_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Origin(
-    String name, {
-    OriginArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:cdn:Origin',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.hostName = registerOutput<String>('hostName');
-    this.httpPort = registerOutput<int?>('httpPort');
-    this.httpsPort = registerOutput<int?>('httpsPort');
+  Origin(String name, {OriginArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:cdn:Origin',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
+    httpPort = registerOutput<int?>('httpPort');
+    httpsPort = registerOutput<int?>('httpsPort');
     this.name = registerOutput<String>('name');
-    this.originHostHeader = registerOutput<String?>('originHostHeader');
-    this.priority = registerOutput<int?>('priority');
-    this.privateEndpointStatus = registerOutput<String>('privateEndpointStatus');
-    this.privateLinkAlias = registerOutput<String?>('privateLinkAlias');
-    this.privateLinkApprovalMessage = registerOutput<String?>('privateLinkApprovalMessage');
-    this.privateLinkLocation = registerOutput<String?>('privateLinkLocation');
-    this.privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.weight = registerOutput<int?>('weight');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    priority = registerOutput<int?>('priority');
+    privateEndpointStatus = registerOutput<String>('privateEndpointStatus');
+    privateLinkAlias = registerOutput<String?>('privateLinkAlias');
+    privateLinkApprovalMessage = registerOutput<String?>(
+      'privateLinkApprovalMessage',
+    );
+    privateLinkLocation = registerOutput<String?>('privateLinkLocation');
+    privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    weight = registerOutput<int?>('weight');
   }
 }

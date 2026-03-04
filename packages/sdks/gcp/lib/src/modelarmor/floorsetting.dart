@@ -539,31 +539,44 @@ import 'floorsetting_state.dart';
 class Floorsetting extends pulumi.CustomResource {
   /// AI Platform floor setting.
   /// Structure is documented below.
-  late final pulumi.Output<FloorsettingAiPlatformFloorSetting?> aiPlatformFloorSetting;
+  late final pulumi.Output<FloorsettingAiPlatformFloorSetting?>
+  aiPlatformFloorSetting;
+
   /// [Output only] Create timestamp
   late final pulumi.Output<String> createTime;
+
   /// Floor Settings enforcement status.
   late final pulumi.Output<bool?> enableFloorSettingEnforcement;
+
   /// Filters configuration.
   /// Structure is documented below.
   late final pulumi.Output<FloorsettingFilterConfig> filterConfig;
+
   /// Metadata to enable multi language detection via floor setting.
   /// Structure is documented below.
-  late final pulumi.Output<FloorsettingFloorSettingMetadata?> floorSettingMetadata;
+  late final pulumi.Output<FloorsettingFloorSettingMetadata?>
+  floorSettingMetadata;
+
   /// Google MCP Server floor setting.
   /// Structure is documented below.
-  late final pulumi.Output<FloorsettingGoogleMcpServerFloorSetting?> googleMcpServerFloorSetting;
+  late final pulumi.Output<FloorsettingGoogleMcpServerFloorSetting?>
+  googleMcpServerFloorSetting;
+
   /// List of integrated services for which the floor setting is applicable.
   late final pulumi.Output<List<String>?> integratedServices;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+
   /// Identifier. The resource name.
   late final pulumi.Output<String> name;
+
   /// Will be any one of these:
   /// * `projects/{project}`
   /// * `folders/{folder}`
   /// * `organizations/{organizationId}`
   late final pulumi.Output<String> parent;
+
   /// [Output only] Update timestamp
   late final pulumi.Output<String> updateTime;
 
@@ -576,22 +589,32 @@ class Floorsetting extends pulumi.CustomResource {
     FloorsettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:modelarmor/floorsetting:Floorsetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aiPlatformFloorSetting = registerOutput<FloorsettingAiPlatformFloorSetting?>('aiPlatformFloorSetting');
-    this.createTime = registerOutput<String>('createTime');
-    this.enableFloorSettingEnforcement = registerOutput<bool?>('enableFloorSettingEnforcement');
-    this.filterConfig = registerOutput<FloorsettingFilterConfig>('filterConfig');
-    this.floorSettingMetadata = registerOutput<FloorsettingFloorSettingMetadata?>('floorSettingMetadata');
-    this.googleMcpServerFloorSetting = registerOutput<FloorsettingGoogleMcpServerFloorSetting?>('googleMcpServerFloorSetting');
-    this.integratedServices = registerOutput<List<String>?>('integratedServices');
-    this.location = registerOutput<String>('location');
+         'gcp:modelarmor/floorsetting:Floorsetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aiPlatformFloorSetting =
+        registerOutput<FloorsettingAiPlatformFloorSetting?>(
+          'aiPlatformFloorSetting',
+        );
+    createTime = registerOutput<String>('createTime');
+    enableFloorSettingEnforcement = registerOutput<bool?>(
+      'enableFloorSettingEnforcement',
+    );
+    filterConfig = registerOutput<FloorsettingFilterConfig>('filterConfig');
+    floorSettingMetadata = registerOutput<FloorsettingFloorSettingMetadata?>(
+      'floorSettingMetadata',
+    );
+    googleMcpServerFloorSetting =
+        registerOutput<FloorsettingGoogleMcpServerFloorSetting?>(
+          'googleMcpServerFloorSetting',
+        );
+    integratedServices = registerOutput<List<String>?>('integratedServices');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Floorsetting] resource's state with the given [name] and [id].
@@ -612,21 +635,31 @@ class Floorsetting extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:modelarmor/floorsetting:Floorsetting',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aiPlatformFloorSetting = registerOutput<FloorsettingAiPlatformFloorSetting?>('aiPlatformFloorSetting');
-    this.createTime = registerOutput<String>('createTime');
-    this.enableFloorSettingEnforcement = registerOutput<bool?>('enableFloorSettingEnforcement');
-    this.filterConfig = registerOutput<FloorsettingFilterConfig>('filterConfig');
-    this.floorSettingMetadata = registerOutput<FloorsettingFloorSettingMetadata?>('floorSettingMetadata');
-    this.googleMcpServerFloorSetting = registerOutput<FloorsettingGoogleMcpServerFloorSetting?>('googleMcpServerFloorSetting');
-    this.integratedServices = registerOutput<List<String>?>('integratedServices');
-    this.location = registerOutput<String>('location');
+         'gcp:modelarmor/floorsetting:Floorsetting',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aiPlatformFloorSetting =
+        registerOutput<FloorsettingAiPlatformFloorSetting?>(
+          'aiPlatformFloorSetting',
+        );
+    createTime = registerOutput<String>('createTime');
+    enableFloorSettingEnforcement = registerOutput<bool?>(
+      'enableFloorSettingEnforcement',
+    );
+    filterConfig = registerOutput<FloorsettingFilterConfig>('filterConfig');
+    floorSettingMetadata = registerOutput<FloorsettingFloorSettingMetadata?>(
+      'floorSettingMetadata',
+    );
+    googleMcpServerFloorSetting =
+        registerOutput<FloorsettingGoogleMcpServerFloorSetting?>(
+          'googleMcpServerFloorSetting',
+        );
+    integratedServices = registerOutput<List<String>?>('integratedServices');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String>('parent');
-    this.updateTime = registerOutput<String>('updateTime');
+    parent = registerOutput<String>('parent');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

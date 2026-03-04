@@ -5,16 +5,15 @@ enum InstanceSuspensionReasonItem {
   operationalIssue("OPERATIONAL_ISSUE"),
   kmsKeyIssue("KMS_KEY_ISSUE");
 
-  const InstanceSuspensionReasonItem(this.value);
-  final String value;
+  const InstanceSuspensionReasonItem(this.wireValue);
+  final String wireValue;
 
   static InstanceSuspensionReasonItem fromValue(String value) {
     for (final item in InstanceSuspensionReasonItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceSuspensionReasonItem value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum StagingEnvironmentPolicy {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const StagingEnvironmentPolicy(this.value);
-  final String value;
+  const StagingEnvironmentPolicy(this.wireValue);
+  final String wireValue;
 
   static StagingEnvironmentPolicy fromValue(String value) {
     for (final item in StagingEnvironmentPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StagingEnvironmentPolicy value: $value');
   }
 }
-

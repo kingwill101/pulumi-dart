@@ -4,16 +4,15 @@ enum SqlServerLicenseType {
   aHUB("AHUB"),
   dR("DR");
 
-  const SqlServerLicenseType(this.value);
-  final String value;
+  const SqlServerLicenseType(this.wireValue);
+  final String wireValue;
 
   static SqlServerLicenseType fromValue(String value) {
     for (final item in SqlServerLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlServerLicenseType value: $value');
   }
 }
-

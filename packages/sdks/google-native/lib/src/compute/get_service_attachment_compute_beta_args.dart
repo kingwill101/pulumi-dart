@@ -29,12 +29,19 @@ class GetServiceAttachmentComputeBetaArgs {
     };
   }
 
-  factory GetServiceAttachmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetServiceAttachmentComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceAttachmentComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      serviceAttachment: (map['serviceAttachment'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      serviceAttachment: pulumi.Input.fromValue(
+        map['serviceAttachment'] as String,
+      ),
     );
   }
 }
-

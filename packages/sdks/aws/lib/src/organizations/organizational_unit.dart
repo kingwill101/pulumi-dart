@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'organizational_unit_account.dart';
 import 'organizational_unit_args.dart';
 import 'organizational_unit_state.dart';
 
@@ -121,15 +120,20 @@ import 'organizational_unit_state.dart';
 /// ```
 class OrganizationalUnit extends pulumi.CustomResource {
   /// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-  late final pulumi.Output<List<OrganizationalUnitAccount>> accounts;
+  late final pulumi.Output<List<Map<String, dynamic>>> accounts;
+
   /// ARN of the organizational unit
   late final pulumi.Output<String> arn;
+
   /// The name for the organizational unit
   late final pulumi.Output<String> name;
+
   /// ID of the parent organizational unit, which may be the root
   late final pulumi.Output<String> parentId;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -142,17 +146,17 @@ class OrganizationalUnit extends pulumi.CustomResource {
     OrganizationalUnitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:organizations/organizationalUnit:OrganizationalUnit',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts');
-    this.arn = registerOutput<String>('arn');
+         'aws:organizations/organizationalUnit:OrganizationalUnit',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accounts = registerOutput<List<Map<String, dynamic>>>('accounts');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.parentId = registerOutput<String>('parentId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    parentId = registerOutput<String>('parentId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [OrganizationalUnit] resource's state with the given [name] and [id].
@@ -173,16 +177,16 @@ class OrganizationalUnit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:organizations/organizationalUnit:OrganizationalUnit',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts');
-    this.arn = registerOutput<String>('arn');
+         'aws:organizations/organizationalUnit:OrganizationalUnit',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accounts = registerOutput<List<Map<String, dynamic>>>('accounts');
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.parentId = registerOutput<String>('parentId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    parentId = registerOutput<String>('parentId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

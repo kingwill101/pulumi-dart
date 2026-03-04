@@ -1,5 +1,3 @@
-library module_datadog;
-
 export 'datadog/datadog_api_key_response.dart';
 export 'datadog/datadog_host_metadata_response.dart';
 export 'datadog/datadog_host_response.dart';

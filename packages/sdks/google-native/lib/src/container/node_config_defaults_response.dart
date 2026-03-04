@@ -8,6 +8,7 @@ import 'node_pool_logging_config_response.dart';
 class NodeConfigDefaultsResponse {
   /// GCFS (Google Container File System, also known as Riptide) options.
   final pulumi.Input<GcfsConfigResponse> gcfsConfig;
+
   /// Logging configuration for node pools.
   final pulumi.Input<NodePoolLoggingConfigResponse> loggingConfig;
 
@@ -21,16 +22,31 @@ class NodeConfigDefaultsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gcfsConfig': pulumi.Input.mapInputValue<GcfsConfigResponse, Map<String, dynamic>>(gcfsConfig, (value) => value.toMap()),
-      'loggingConfig': pulumi.Input.mapInputValue<NodePoolLoggingConfigResponse, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'gcfsConfig':
+          pulumi.Input.mapInputValue<GcfsConfigResponse, Map<String, dynamic>>(
+            gcfsConfig,
+            (value) => value.toMap(),
+          ),
+      'loggingConfig':
+          pulumi.Input.mapInputValue<
+            NodePoolLoggingConfigResponse,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
     };
   }
 
   factory NodeConfigDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return NodeConfigDefaultsResponse(
-      gcfsConfig: (GcfsConfigResponse.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>())).input(),
-      loggingConfig: (NodePoolLoggingConfigResponse.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      gcfsConfig: pulumi.Input.fromValue(
+        GcfsConfigResponse.fromMap(
+          (map['gcfsConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      loggingConfig: pulumi.Input.fromValue(
+        NodePoolLoggingConfigResponse.fromMap(
+          (map['loggingConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

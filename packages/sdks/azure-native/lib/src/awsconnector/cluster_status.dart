@@ -7,16 +7,15 @@ enum ClusterStatus {
   pENDING("PENDING"),
   uPDATING("UPDATING");
 
-  const ClusterStatus(this.value);
-  final String value;
+  const ClusterStatus(this.wireValue);
+  final String wireValue;
 
   static ClusterStatus fromValue(String value) {
     for (final item in ClusterStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterStatus value: $value');
   }
 }
-

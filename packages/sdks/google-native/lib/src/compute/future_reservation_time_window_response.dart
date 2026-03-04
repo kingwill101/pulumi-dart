@@ -6,6 +6,7 @@ import 'duration_response.dart';
 class FutureReservationTimeWindowResponse {
   final pulumi.Input<DurationResponse> duration;
   final pulumi.Input<String> endTime;
+
   /// Start time of the Future Reservation. The start_time is an RFC3339 string.
   final pulumi.Input<String> startTime;
 
@@ -21,18 +22,27 @@ class FutureReservationTimeWindowResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'duration': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(duration, (value) => value.toMap()),
+      'duration':
+          pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(
+            duration,
+            (value) => value.toMap(),
+          ),
       'endTime': endTime,
       'startTime': startTime,
     };
   }
 
-  factory FutureReservationTimeWindowResponse.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationTimeWindowResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationTimeWindowResponse(
-      duration: (DurationResponse.fromMap((map['duration'] as Map).cast<String, dynamic>())).input(),
-      endTime: (map['endTime'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      duration: pulumi.Input.fromValue(
+        DurationResponse.fromMap(
+          (map['duration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

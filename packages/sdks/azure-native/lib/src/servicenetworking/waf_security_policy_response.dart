@@ -9,20 +9,15 @@ class WafSecurityPolicyResponse {
 
   /// Creates a new [WafSecurityPolicyResponse].
   /// [id] Resource ID of the Waf Security Policy
-  WafSecurityPolicyResponse({
-    required this.id,
-  });
+  WafSecurityPolicyResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory WafSecurityPolicyResponse.fromMap(Map<String, dynamic> map) {
     return WafSecurityPolicyResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

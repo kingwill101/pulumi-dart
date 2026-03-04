@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureResourceDetailsResponse {
   /// Azure resource Id of the assessed resource
   final pulumi.Input<String> id;
+
   /// The platform where the assessed resource resides
   /// Expected value is 'Azure'.
   final pulumi.Input<String> source;
@@ -13,23 +14,16 @@ class AzureResourceDetailsResponse {
   /// Creates a new [AzureResourceDetailsResponse].
   /// [id] Azure resource Id of the assessed resource
   /// [source] The platform where the assessed resource resides
-  AzureResourceDetailsResponse({
-    required this.id,
-    required this.source,
-  });
+  AzureResourceDetailsResponse({required this.id, required this.source});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'source': source,
-    };
+    return <String, dynamic>{'id': id, 'source': source};
   }
 
   factory AzureResourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceDetailsResponse(
-      id: (map['id'] as String).input(),
-      source: (map['source'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
     );
   }
 }
-

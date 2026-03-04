@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedGroupConfigResponseDataprocV1beta2 {
   /// The name of the Instance Group Manager for this group.
   final pulumi.Input<String> instanceGroupManagerName;
+
   /// The name of the Instance Template used for the Managed Instance Group.
   final pulumi.Input<String> instanceTemplateName;
 
@@ -24,11 +25,16 @@ class ManagedGroupConfigResponseDataprocV1beta2 {
     };
   }
 
-  factory ManagedGroupConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ManagedGroupConfigResponseDataprocV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedGroupConfigResponseDataprocV1beta2(
-      instanceGroupManagerName: (map['instanceGroupManagerName'] as String).input(),
-      instanceTemplateName: (map['instanceTemplateName'] as String).input(),
+      instanceGroupManagerName: pulumi.Input.fromValue(
+        map['instanceGroupManagerName'] as String,
+      ),
+      instanceTemplateName: pulumi.Input.fromValue(
+        map['instanceTemplateName'] as String,
+      ),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMetaStoreConf {
   /// Custom rds database password.
   final pulumi.Input<String> dbPassword;
+
   /// Custom rds database connection url.
   final pulumi.Input<String> dbUrl;
+
   /// Custom rds database user name.
   final pulumi.Input<String> dbUserName;
 
@@ -30,10 +32,9 @@ class ClusterMetaStoreConf {
 
   factory ClusterMetaStoreConf.fromMap(Map<String, dynamic> map) {
     return ClusterMetaStoreConf(
-      dbPassword: (map['dbPassword'] as String).input(),
-      dbUrl: (map['dbUrl'] as String).input(),
-      dbUserName: (map['dbUserName'] as String).input(),
+      dbPassword: pulumi.Input.fromValue(map['dbPassword'] as String),
+      dbUrl: pulumi.Input.fromValue(map['dbUrl'] as String),
+      dbUserName: pulumi.Input.fromValue(map['dbUserName'] as String),
     );
   }
 }
-

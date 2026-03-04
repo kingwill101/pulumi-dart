@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AIServicesNetworkAclsVirtualNetworkRule {
   /// Whether to ignore a missing Virtual Network Service Endpoint or not. Default to `false`.
   final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+
   /// The ID of the subnet which should be able to access this AI Services Account.
   final pulumi.Input<String> subnetId;
 
@@ -23,11 +24,16 @@ class AIServicesNetworkAclsVirtualNetworkRule {
     };
   }
 
-  factory AIServicesNetworkAclsVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
+  factory AIServicesNetworkAclsVirtualNetworkRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AIServicesNetworkAclsVirtualNetworkRule(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      ignoreMissingVnetServiceEndpoint: (() {
+        final guardedValue = map['ignoreMissingVnetServiceEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_compute;
-
 export 'compute/automanage_configuration_assignment.dart';
 export 'compute/automanage_configuration_assignment_args.dart';
 export 'compute/automanage_configuration_assignment_state.dart';

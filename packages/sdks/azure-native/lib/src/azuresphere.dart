@@ -1,5 +1,3 @@
-library module_azuresphere;
-
 export 'azuresphere/allow_crash_dump_collection.dart';
 export 'azuresphere/catalog.dart';
 export 'azuresphere/catalog_args.dart';

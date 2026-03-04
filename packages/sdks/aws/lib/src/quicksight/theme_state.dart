@@ -8,34 +8,48 @@ import 'theme_permission.dart';
 class ThemeState {
   /// ARN of the theme.
   final pulumi.Input<String>? arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
   final pulumi.Input<String>? baseThemeId;
+
   /// The theme configuration, which contains the theme display properties. See configuration.
   final pulumi.Input<ThemeConfiguration>? configuration;
+
   /// The time that the theme was created.
   final pulumi.Input<String>? createdTime;
+
   /// The time that the theme was last updated.
   final pulumi.Input<String>? lastUpdatedTime;
+
   /// Display name of the theme.
   final pulumi.Input<String>? name;
+
   /// A set of resource permissions on the theme. Maximum of 64 items. See permissions.
   final pulumi.Input<List<ThemePermission>>? permissions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The theme creation status.
   final pulumi.Input<String>? status;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Identifier of the theme.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? themeId;
+
   /// A description of the current theme version being created/updated.
   final pulumi.Input<String>? versionDescription;
+
   /// The version number of the theme version.
   final pulumi.Input<int>? versionNumber;
 
@@ -78,11 +92,26 @@ class ThemeState {
       'arn': ?arn,
       'awsAccountId': ?awsAccountId,
       'baseThemeId': ?baseThemeId,
-      'configuration': ?pulumi.Input.mapOptionalInputValue<ThemeConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ThemeConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'createdTime': ?createdTime,
       'lastUpdatedTime': ?lastUpdatedTime,
       'name': ?name,
-      'permissions': ?pulumi.Input.mapOptionalInputValue<List<ThemePermission>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<ThemePermission, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'permissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ThemePermission>,
+            List<Map<String, dynamic>>
+          >(
+            permissions,
+            (value) =>
+                pulumi.Input.encodeList<ThemePermission, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'region': ?region,
       'status': ?status,
       'tags': ?tags,
@@ -95,22 +124,95 @@ class ThemeState {
 
   factory ThemeState.fromMap(Map<String, dynamic> map) {
     return ThemeState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
-      baseThemeId: map['baseThemeId'] == null ? null : ((map['baseThemeId'] as String).input()).input(),
-      configuration: map['configuration'] == null ? null : ((ThemeConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
-      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<ThemePermission>(map['permissions']!, (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      themeId: map['themeId'] == null ? null : ((map['themeId'] as String).input()).input(),
-      versionDescription: map['versionDescription'] == null ? null : ((map['versionDescription'] as String).input()).input(),
-      versionNumber: map['versionNumber'] == null ? null : ((map['versionNumber'] as int).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      baseThemeId: (() {
+        final guardedValue = map['baseThemeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ThemeConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createdTime: (() {
+        final guardedValue = map['createdTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastUpdatedTime: (() {
+        final guardedValue = map['lastUpdatedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ThemePermission>(
+            guardedValue,
+            (value) =>
+                ThemePermission.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      themeId: (() {
+        final guardedValue = map['themeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionDescription: (() {
+        final guardedValue = map['versionDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionNumber: (() {
+        final guardedValue = map['versionNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

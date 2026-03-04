@@ -1,16 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_args.dart';
-import 'user_domain_grant.dart';
-import 'user_firewall_grant.dart';
 import 'user_global_grants.dart';
-import 'user_image_grant.dart';
-import 'user_linode_grant.dart';
-import 'user_longview_grant.dart';
-import 'user_nodebalancer_grant.dart';
-import 'user_stackscript_grant.dart';
 import 'user_state.dart';
-import 'user_volume_grant.dart';
-import 'user_vpc_grant.dart';
 
 /// Manages a Linode User.
 /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-user).
@@ -298,80 +289,96 @@ import 'user_vpc_grant.dart';
 /// * `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)
 class User extends pulumi.CustomResource {
   /// The domains the user has permissions access to.
-  late final pulumi.Output<List<UserDomainGrant>> domainGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> domainGrants;
+
   /// The email address of the user.
   late final pulumi.Output<String> email;
+
   /// The firewalls the user has permissions access to.
-  late final pulumi.Output<List<UserFirewallGrant>> firewallGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> firewallGrants;
+
   /// A structure containing the Account-level grants a User has.
   late final pulumi.Output<UserGlobalGrants> globalGrants;
+
   /// The images the user has permissions access to.
-  late final pulumi.Output<List<UserImageGrant>> imageGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> imageGrants;
+
   /// The Linodes the user has permissions access to.
-  late final pulumi.Output<List<UserLinodeGrant>> linodeGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> linodeGrants;
+
   /// The longview the user has permissions access to.
-  late final pulumi.Output<List<UserLongviewGrant>> longviewGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> longviewGrants;
+
   /// The NodeBalancers the user has permissions access to.
-  late final pulumi.Output<List<UserNodebalancerGrant>> nodebalancerGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> nodebalancerGrants;
+
   /// If true, this user will only have explicit permissions granted.
   ///
   /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
   ///
   /// The following arguments are sets of entity grants:
   late final pulumi.Output<bool?> restricted;
+
   /// A list of the User's SSH keys.
   late final pulumi.Output<List<String>> sshKeys;
+
   /// The StackScripts the user has permissions access to.
-  late final pulumi.Output<List<UserStackscriptGrant>> stackscriptGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> stackscriptGrants;
+
   /// Whether the user has two-factor-authentication enabled.
   late final pulumi.Output<bool> tfaEnabled;
+
   /// The type of this user.
   late final pulumi.Output<String> userType;
+
   /// The username of the user.
   late final pulumi.Output<String> username;
+
   /// The volumes the user has permissions access to.
-  late final pulumi.Output<List<UserVolumeGrant>> volumeGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> volumeGrants;
+
   /// The Virtual Private Clouds (VPCs) the user has permissions access to.
-  late final pulumi.Output<List<UserVpcGrant>> vpcGrants;
+  late final pulumi.Output<List<Map<String, dynamic>>> vpcGrants;
 
   /// Creates a new [User].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_index_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'linode:index/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainGrants = registerOutput<List<UserDomainGrant>>('domainGrants');
-    this.email = registerOutput<String>('email');
-    this.firewallGrants = registerOutput<List<UserFirewallGrant>>('firewallGrants');
-    this.globalGrants = registerOutput<UserGlobalGrants>('globalGrants');
-    this.imageGrants = registerOutput<List<UserImageGrant>>('imageGrants');
-    this.linodeGrants = registerOutput<List<UserLinodeGrant>>('linodeGrants');
-    this.longviewGrants = registerOutput<List<UserLongviewGrant>>('longviewGrants');
-    this.nodebalancerGrants = registerOutput<List<UserNodebalancerGrant>>('nodebalancerGrants');
-    this.restricted = registerOutput<bool?>('restricted');
-    this.sshKeys = registerOutput<List<String>>('sshKeys');
-    this.stackscriptGrants = registerOutput<List<UserStackscriptGrant>>('stackscriptGrants');
-    this.tfaEnabled = registerOutput<bool>('tfaEnabled');
-    this.userType = registerOutput<String>('userType');
-    this.username = registerOutput<String>('username');
-    this.volumeGrants = registerOutput<List<UserVolumeGrant>>('volumeGrants');
-    this.vpcGrants = registerOutput<List<UserVpcGrant>>('vpcGrants');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'linode:index/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    domainGrants = registerOutput<List<Map<String, dynamic>>>('domainGrants');
+    email = registerOutput<String>('email');
+    firewallGrants = registerOutput<List<Map<String, dynamic>>>(
+      'firewallGrants',
+    );
+    globalGrants = registerOutput<UserGlobalGrants>('globalGrants');
+    imageGrants = registerOutput<List<Map<String, dynamic>>>('imageGrants');
+    linodeGrants = registerOutput<List<Map<String, dynamic>>>('linodeGrants');
+    longviewGrants = registerOutput<List<Map<String, dynamic>>>(
+      'longviewGrants',
+    );
+    nodebalancerGrants = registerOutput<List<Map<String, dynamic>>>(
+      'nodebalancerGrants',
+    );
+    restricted = registerOutput<bool?>('restricted');
+    sshKeys = registerOutput<List<String>>('sshKeys');
+    stackscriptGrants = registerOutput<List<Map<String, dynamic>>>(
+      'stackscriptGrants',
+    );
+    tfaEnabled = registerOutput<bool>('tfaEnabled');
+    userType = registerOutput<String>('userType');
+    username = registerOutput<String>('username');
+    volumeGrants = registerOutput<List<Map<String, dynamic>>>('volumeGrants');
+    vpcGrants = registerOutput<List<Map<String, dynamic>>>('vpcGrants');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -384,26 +391,34 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainGrants = registerOutput<List<UserDomainGrant>>('domainGrants');
-    this.email = registerOutput<String>('email');
-    this.firewallGrants = registerOutput<List<UserFirewallGrant>>('firewallGrants');
-    this.globalGrants = registerOutput<UserGlobalGrants>('globalGrants');
-    this.imageGrants = registerOutput<List<UserImageGrant>>('imageGrants');
-    this.linodeGrants = registerOutput<List<UserLinodeGrant>>('linodeGrants');
-    this.longviewGrants = registerOutput<List<UserLongviewGrant>>('longviewGrants');
-    this.nodebalancerGrants = registerOutput<List<UserNodebalancerGrant>>('nodebalancerGrants');
-    this.restricted = registerOutput<bool?>('restricted');
-    this.sshKeys = registerOutput<List<String>>('sshKeys');
-    this.stackscriptGrants = registerOutput<List<UserStackscriptGrant>>('stackscriptGrants');
-    this.tfaEnabled = registerOutput<bool>('tfaEnabled');
-    this.userType = registerOutput<String>('userType');
-    this.username = registerOutput<String>('username');
-    this.volumeGrants = registerOutput<List<UserVolumeGrant>>('volumeGrants');
-    this.vpcGrants = registerOutput<List<UserVpcGrant>>('vpcGrants');
+         'linode:index/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainGrants = registerOutput<List<Map<String, dynamic>>>('domainGrants');
+    email = registerOutput<String>('email');
+    firewallGrants = registerOutput<List<Map<String, dynamic>>>(
+      'firewallGrants',
+    );
+    globalGrants = registerOutput<UserGlobalGrants>('globalGrants');
+    imageGrants = registerOutput<List<Map<String, dynamic>>>('imageGrants');
+    linodeGrants = registerOutput<List<Map<String, dynamic>>>('linodeGrants');
+    longviewGrants = registerOutput<List<Map<String, dynamic>>>(
+      'longviewGrants',
+    );
+    nodebalancerGrants = registerOutput<List<Map<String, dynamic>>>(
+      'nodebalancerGrants',
+    );
+    restricted = registerOutput<bool?>('restricted');
+    sshKeys = registerOutput<List<String>>('sshKeys');
+    stackscriptGrants = registerOutput<List<Map<String, dynamic>>>(
+      'stackscriptGrants',
+    );
+    tfaEnabled = registerOutput<bool>('tfaEnabled');
+    userType = registerOutput<String>('userType');
+    username = registerOutput<String>('username');
+    volumeGrants = registerOutput<List<Map<String, dynamic>>>('volumeGrants');
+    vpcGrants = registerOutput<List<Map<String, dynamic>>>('vpcGrants');
   }
 }

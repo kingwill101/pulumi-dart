@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPolicyArgs {
   /// The name of the policy. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String>? name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String>? namePrefix;
+
   /// The policy document. This is a JSON formatted string.
   final pulumi.Input<String> policy;
+
   /// IAM user to which to attach this policy.
   final pulumi.Input<String> user;
 
@@ -39,11 +42,18 @@ class UserPolicyArgs {
 
   factory UserPolicyArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
-      policy: (map['policy'] as String).input(),
-      user: (map['user'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

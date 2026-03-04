@@ -9,15 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetArgs {
   /// CIDR network segment.
   final pulumi.Input<String> cidr;
+
   /// The Subnet name.
   final pulumi.Input<String> subnetName;
+
   /// Eflo subnet usage type. optional value:
   /// - General type is not filled in
   /// - OOB:OOB type
   /// - LB: LB type
   final pulumi.Input<String>? type;
+
   /// The Eflo VPD ID.
   final pulumi.Input<String> vpdId;
+
   /// The zone ID  of the resource.
   final pulumi.Input<String> zoneId;
 
@@ -47,12 +51,15 @@ class SubnetArgs {
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
-      cidr: (map['cidr'] as String).input(),
-      subnetName: (map['subnetName'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vpdId: (map['vpdId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      subnetName: pulumi.Input.fromValue(map['subnetName'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpdId: pulumi.Input.fromValue(map['vpdId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

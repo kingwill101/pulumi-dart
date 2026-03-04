@@ -6,16 +6,17 @@ enum SharedPrivateLinkResourceProvisioningState {
   succeeded("Succeeded"),
   incomplete("Incomplete");
 
-  const SharedPrivateLinkResourceProvisioningState(this.value);
-  final String value;
+  const SharedPrivateLinkResourceProvisioningState(this.wireValue);
+  final String wireValue;
 
   static SharedPrivateLinkResourceProvisioningState fromValue(String value) {
     for (final item in SharedPrivateLinkResourceProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SharedPrivateLinkResourceProvisioningState value: $value');
+    throw ArgumentError(
+      'Unknown SharedPrivateLinkResourceProvisioningState value: $value',
+    );
   }
 }
-

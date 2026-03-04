@@ -5,26 +5,31 @@ import 'subnet_response.dart';
 
 /// Definition of ReplicationSubnetGroup
 class ReplicationSubnetGroupResponse {
-  /// <p>A description for the replication subnet group.</p>
+  /// &lt;p&gt;A description for the replication subnet group.&lt;/p&gt;
   final pulumi.Input<String>? replicationSubnetGroupDescription;
-  /// <p>The identifier of the replication instance subnet group.</p>
+
+  /// &lt;p&gt;The identifier of the replication instance subnet group.&lt;/p&gt;
   final pulumi.Input<String>? replicationSubnetGroupIdentifier;
-  /// <p>The status of the subnet group.</p>
+
+  /// &lt;p&gt;The status of the subnet group.&lt;/p&gt;
   final pulumi.Input<String>? subnetGroupStatus;
-  /// <p>The subnets that are in the subnet group.</p>
+
+  /// &lt;p&gt;The subnets that are in the subnet group.&lt;/p&gt;
   final pulumi.Input<List<SubnetResponse>>? subnets;
-  /// <p>The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.</p>
+
+  /// &lt;p&gt;The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.&lt;/p&gt;
   final pulumi.Input<List<String>>? supportedNetworkTypes;
-  /// <p>The ID of the VPC.</p>
+
+  /// &lt;p&gt;The ID of the VPC.&lt;/p&gt;
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [ReplicationSubnetGroupResponse].
-  /// [replicationSubnetGroupDescription] <p>A description for the replication subnet group.</p>
-  /// [replicationSubnetGroupIdentifier] <p>The identifier of the replication instance subnet group.</p>
-  /// [subnetGroupStatus] <p>The status of the subnet group.</p>
-  /// [subnets] <p>The subnets that are in the subnet group.</p>
-  /// [supportedNetworkTypes] <p>The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.</p>
-  /// [vpcId] <p>The ID of the VPC.</p>
+  /// [replicationSubnetGroupDescription] &lt;p&gt;A description for the replication subnet group.&lt;/p&gt;
+  /// [replicationSubnetGroupIdentifier] &lt;p&gt;The identifier of the replication instance subnet group.&lt;/p&gt;
+  /// [subnetGroupStatus] &lt;p&gt;The status of the subnet group.&lt;/p&gt;
+  /// [subnets] &lt;p&gt;The subnets that are in the subnet group.&lt;/p&gt;
+  /// [supportedNetworkTypes] &lt;p&gt;The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.&lt;/p&gt;
+  /// [vpcId] &lt;p&gt;The ID of the VPC.&lt;/p&gt;
   ReplicationSubnetGroupResponse({
     this.replicationSubnetGroupDescription,
     this.replicationSubnetGroupIdentifier,
@@ -39,7 +44,18 @@ class ReplicationSubnetGroupResponse {
       'replicationSubnetGroupDescription': ?replicationSubnetGroupDescription,
       'replicationSubnetGroupIdentifier': ?replicationSubnetGroupIdentifier,
       'subnetGroupStatus': ?subnetGroupStatus,
-      'subnets': ?pulumi.Input.mapOptionalInputValue<List<SubnetResponse>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubnetResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subnets,
+            (value) =>
+                pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'supportedNetworkTypes': ?supportedNetworkTypes,
       'vpcId': ?vpcId,
     };
@@ -47,13 +63,42 @@ class ReplicationSubnetGroupResponse {
 
   factory ReplicationSubnetGroupResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationSubnetGroupResponse(
-      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] == null ? null : (map['replicationSubnetGroupDescription']! as String).input(),
-      replicationSubnetGroupIdentifier: map['replicationSubnetGroupIdentifier'] == null ? null : (map['replicationSubnetGroupIdentifier']! as String).input(),
-      subnetGroupStatus: map['subnetGroupStatus'] == null ? null : (map['subnetGroupStatus']! as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<SubnetResponse>(map['subnets']!, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      supportedNetworkTypes: map['supportedNetworkTypes'] == null ? null : ((map['supportedNetworkTypes']! as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      replicationSubnetGroupDescription: (() {
+        final guardedValue = map['replicationSubnetGroupDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicationSubnetGroupIdentifier: (() {
+        final guardedValue = map['replicationSubnetGroupIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetGroupStatus: (() {
+        final guardedValue = map['subnetGroupStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnets: (() {
+        final guardedValue = map['subnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubnetResponse>(
+            guardedValue,
+            (value) =>
+                SubnetResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      supportedNetworkTypes: (() {
+        final guardedValue = map['supportedNetworkTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

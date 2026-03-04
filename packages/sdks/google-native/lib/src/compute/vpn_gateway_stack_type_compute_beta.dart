@@ -3,16 +3,15 @@ enum VpnGatewayStackTypeComputeBeta {
   ipv4Ipv6("IPV4_IPV6"),
   ipv4Only("IPV4_ONLY");
 
-  const VpnGatewayStackTypeComputeBeta(this.value);
-  final String value;
+  const VpnGatewayStackTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static VpnGatewayStackTypeComputeBeta fromValue(String value) {
     for (final item in VpnGatewayStackTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnGatewayStackTypeComputeBeta value: $value');
   }
 }
-

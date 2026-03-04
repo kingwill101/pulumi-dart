@@ -6,16 +6,15 @@ enum ProductAvailability {
   preorder("PREORDER"),
   backorder("BACKORDER");
 
-  const ProductAvailability(this.value);
-  final String value;
+  const ProductAvailability(this.wireValue);
+  final String wireValue;
 
   static ProductAvailability fromValue(String value) {
     for (final item in ProductAvailability.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProductAvailability value: $value');
   }
 }
-

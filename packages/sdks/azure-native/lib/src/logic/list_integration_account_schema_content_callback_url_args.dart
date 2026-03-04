@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListIntegrationAccountSchemaContentCallbackUrlArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
+
   /// The key type.
   final pulumi.Input<String>? keyType;
+
   /// The expiry time.
   final pulumi.Input<String>? notAfter;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The integration account schema name.
   final pulumi.Input<String> schemaName;
 
@@ -42,14 +46,27 @@ class ListIntegrationAccountSchemaContentCallbackUrlArgs {
     };
   }
 
-  factory ListIntegrationAccountSchemaContentCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
+  factory ListIntegrationAccountSchemaContentCallbackUrlArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListIntegrationAccountSchemaContentCallbackUrlArgs(
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: (map['schemaName'] as String).input(),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      keyType: (() {
+        final guardedValue = map['keyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notAfter: (() {
+        final guardedValue = map['notAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
     );
   }
 }
-

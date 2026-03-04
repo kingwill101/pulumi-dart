@@ -9,16 +9,15 @@ enum RouteType {
   valueINHERITED("INHERITED"),
   valueSTATIC("STATIC");
 
-  const RouteType(this.value);
-  final String value;
+  const RouteType(this.wireValue);
+  final String wireValue;
 
   static RouteType fromValue(String value) {
     for (final item in RouteType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouteType value: $value');
   }
 }
-

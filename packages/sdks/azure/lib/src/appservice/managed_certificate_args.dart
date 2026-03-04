@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedCertificateArgs {
   /// The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.
   final pulumi.Input<String> customHostnameBindingId;
+
   /// A mapping of tags which should be assigned to the App Service Managed Certificate.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ManagedCertificateArgs].
   /// [customHostnameBindingId] The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.
   /// [tags] A mapping of tags which should be assigned to the App Service Managed Certificate.
-  ManagedCertificateArgs({
-    required this.customHostnameBindingId,
-    this.tags,
-  });
+  ManagedCertificateArgs({required this.customHostnameBindingId, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class ManagedCertificateArgs {
 
   factory ManagedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateArgs(
-      customHostnameBindingId: (map['customHostnameBindingId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      customHostnameBindingId: pulumi.Input.fromValue(
+        map['customHostnameBindingId'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

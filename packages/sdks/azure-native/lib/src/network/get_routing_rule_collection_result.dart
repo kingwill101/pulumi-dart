@@ -8,24 +8,34 @@ import 'system_data_response.dart';
 class GetRoutingRuleCollectionResult {
   /// Groups for configuration
   final List<NetworkManagerRoutingGroupItemResponse> appliesTo;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A description of the routing rule collection.
   final String? description;
+
   /// Determines whether BGP route propagation is enabled. Defaults to true.
   final String? disableBgpRoutePropagation;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// The provisioning state of the resource.
   final String provisioningState;
+
   /// Unique identifier for this resource.
   final String resourceGuid;
+
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
+
   /// Resource type.
   final String type;
 
@@ -57,7 +67,11 @@ class GetRoutingRuleCollectionResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesTo': pulumi.Input.encodeList<NetworkManagerRoutingGroupItemResponse, Map<String, dynamic>>(appliesTo, (value) => value.toMap()),
+      'appliesTo':
+          pulumi.Input.encodeList<
+            NetworkManagerRoutingGroupItemResponse,
+            Map<String, dynamic>
+          >(appliesTo, (value) => value.toMap()),
       'azureApiVersion': azureApiVersion,
       'description': ?description,
       'disableBgpRoutePropagation': ?disableBgpRoutePropagation,
@@ -73,18 +87,33 @@ class GetRoutingRuleCollectionResult {
 
   factory GetRoutingRuleCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetRoutingRuleCollectionResult(
-      appliesTo: pulumi.Input.decodeList<NetworkManagerRoutingGroupItemResponse>(map['appliesTo'], (value) => NetworkManagerRoutingGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      appliesTo:
+          pulumi.Input.decodeList<NetworkManagerRoutingGroupItemResponse>(
+            map['appliesTo']!,
+            (value) => NetworkManagerRoutingGroupItemResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : map['disableBgpRoutePropagation']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      disableBgpRoutePropagation: (() {
+        final guardedValue = map['disableBgpRoutePropagation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

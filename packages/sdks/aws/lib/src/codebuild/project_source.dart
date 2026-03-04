@@ -9,29 +9,37 @@ class ProjectSource {
   /// Information about the strategy CodeBuild should use when authenticating with the source code host.
   /// Detailed below.
   final pulumi.Input<ProjectSourceAuth>? auth;
+
   /// Configuration block that contains information that defines how the build project
   /// reports the build status to the source provider. This option is only used when the source provider is GitHub, GitHub
   /// Enterprise, GitLab, GitLab Self Managed, or Bitbucket. `build_status_config` blocks are documented below.
   final pulumi.Input<ProjectSourceBuildStatusConfig>? buildStatusConfig;
+
   /// Build specification to use for this build project's related builds. This must be set when
   /// `type` is `NO_SOURCE`. Also, if a non-default buildspec file name or file path aside from the root is used, it must be
   /// specified.
   final pulumi.Input<String>? buildspec;
+
   /// Truncate git history to this many commits. Use `0` for a `Full` checkout which you need
   /// to run commands like `git branch --show-current`.
   /// See [AWS CodePipeline User Guide: Tutorial: Use full clone with a GitHub pipeline source](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-github-gitclone.html)
   /// for details.
   final pulumi.Input<int>? gitCloneDepth;
+
   /// Configuration block. Detailed below.
   final pulumi.Input<ProjectSourceGitSubmodulesConfig>? gitSubmodulesConfig;
+
   /// Ignore SSL warnings when connecting to source control.
   final pulumi.Input<bool>? insecureSsl;
+
   /// Location of the source code from git or s3.
   final pulumi.Input<String>? location;
+
   /// Whether to report the status of a build's start and finish to your source provider.
   /// This option is valid only when your source provider is GitHub, GitHub Enterprise, GitLab, GitLab Self Managed, or
   /// Bitbucket.
   final pulumi.Input<bool>? reportBuildStatus;
+
   /// Type of repository that contains the source code to be built. Valid values: `BITBUCKET`,
   /// `CODECOMMIT`, `CODEPIPELINE`, `GITHUB`, `GITHUB_ENTERPRISE`, `GITLAB`, `GITLAB_SELF_MANAGED`, `NO_SOURCE`, `S3`.
   final pulumi.Input<String> type;
@@ -60,11 +68,23 @@ class ProjectSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auth': ?pulumi.Input.mapOptionalInputValue<ProjectSourceAuth, Map<String, dynamic>>(auth, (value) => value.toMap()),
-      'buildStatusConfig': ?pulumi.Input.mapOptionalInputValue<ProjectSourceBuildStatusConfig, Map<String, dynamic>>(buildStatusConfig, (value) => value.toMap()),
+      'auth':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProjectSourceAuth,
+            Map<String, dynamic>
+          >(auth, (value) => value.toMap()),
+      'buildStatusConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProjectSourceBuildStatusConfig,
+            Map<String, dynamic>
+          >(buildStatusConfig, (value) => value.toMap()),
       'buildspec': ?buildspec,
       'gitCloneDepth': ?gitCloneDepth,
-      'gitSubmodulesConfig': ?pulumi.Input.mapOptionalInputValue<ProjectSourceGitSubmodulesConfig, Map<String, dynamic>>(gitSubmodulesConfig, (value) => value.toMap()),
+      'gitSubmodulesConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProjectSourceGitSubmodulesConfig,
+            Map<String, dynamic>
+          >(gitSubmodulesConfig, (value) => value.toMap()),
       'insecureSsl': ?insecureSsl,
       'location': ?location,
       'reportBuildStatus': ?reportBuildStatus,
@@ -74,16 +94,59 @@ class ProjectSource {
 
   factory ProjectSource.fromMap(Map<String, dynamic> map) {
     return ProjectSource(
-      auth: map['auth'] == null ? null : ((ProjectSourceAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input()).input(),
-      buildStatusConfig: map['buildStatusConfig'] == null ? null : ((ProjectSourceBuildStatusConfig.fromMap((map['buildStatusConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      buildspec: map['buildspec'] == null ? null : ((map['buildspec'] as String).input()).input(),
-      gitCloneDepth: map['gitCloneDepth'] == null ? null : ((map['gitCloneDepth'] as int).input()).input(),
-      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : ((ProjectSourceGitSubmodulesConfig.fromMap((map['gitSubmodulesConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      insecureSsl: map['insecureSsl'] == null ? null : ((map['insecureSsl'] as bool).input()).input(),
-      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
-      reportBuildStatus: map['reportBuildStatus'] == null ? null : ((map['reportBuildStatus'] as bool).input()).input(),
-      type: (map['type'] as String).input(),
+      auth: (() {
+        final guardedValue = map['auth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProjectSourceAuth.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      buildStatusConfig: (() {
+        final guardedValue = map['buildStatusConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProjectSourceBuildStatusConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      buildspec: (() {
+        final guardedValue = map['buildspec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gitCloneDepth: (() {
+        final guardedValue = map['gitCloneDepth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gitSubmodulesConfig: (() {
+        final guardedValue = map['gitSubmodulesConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProjectSourceGitSubmodulesConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      insecureSsl: (() {
+        final guardedValue = map['insecureSsl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reportBuildStatus: (() {
+        final guardedValue = map['reportBuildStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

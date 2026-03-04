@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerGroupsGroupContainerVolumeMount {
   /// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
   final pulumi.Input<String> mountPath;
+
   /// The name of the volume. The name is the same as the volume you selected when you purchased the container.
   final pulumi.Input<String> name;
+
   /// Default value: `false`.
   final pulumi.Input<bool> readOnly;
 
@@ -28,12 +30,13 @@ class GetContainerGroupsGroupContainerVolumeMount {
     };
   }
 
-  factory GetContainerGroupsGroupContainerVolumeMount.fromMap(Map<String, dynamic> map) {
+  factory GetContainerGroupsGroupContainerVolumeMount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetContainerGroupsGroupContainerVolumeMount(
-      mountPath: (map['mountPath'] as String).input(),
-      name: (map['name'] as String).input(),
-      readOnly: (map['readOnly'] as bool).input(),
+      mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
     );
   }
 }
-

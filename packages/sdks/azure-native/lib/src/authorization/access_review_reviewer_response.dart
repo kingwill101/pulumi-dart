@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessReviewReviewerResponse {
   /// The id of the reviewer(user/servicePrincipal)
   final pulumi.Input<String>? principalId;
+
   /// The identity type : user/servicePrincipal
   final pulumi.Input<String> principalType;
 
   /// Creates a new [AccessReviewReviewerResponse].
   /// [principalId] The id of the reviewer(user/servicePrincipal)
   /// [principalType] The identity type : user/servicePrincipal
-  AccessReviewReviewerResponse({
-    this.principalId,
-    required this.principalType,
-  });
+  AccessReviewReviewerResponse({this.principalId, required this.principalType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class AccessReviewReviewerResponse {
 
   factory AccessReviewReviewerResponse.fromMap(Map<String, dynamic> map) {
     return AccessReviewReviewerResponse(
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      principalType: (map['principalType'] as String).input(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
     );
   }
 }
-

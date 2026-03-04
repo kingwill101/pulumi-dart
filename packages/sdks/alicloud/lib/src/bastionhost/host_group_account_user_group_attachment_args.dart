@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostGroupAccountUserGroupAttachmentArgs {
   /// A list names of the host account.
   final pulumi.Input<List<String>> hostAccountNames;
+
   /// The ID of the host group.
   final pulumi.Input<String> hostGroupId;
+
   /// The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
   final pulumi.Input<String> instanceId;
+
   /// The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
   final pulumi.Input<String> userGroupId;
 
@@ -37,13 +40,16 @@ class HostGroupAccountUserGroupAttachmentArgs {
     };
   }
 
-  factory HostGroupAccountUserGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory HostGroupAccountUserGroupAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HostGroupAccountUserGroupAttachmentArgs(
-      hostAccountNames: ((map['hostAccountNames'] as List).cast<String>()).input(),
-      hostGroupId: (map['hostGroupId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      userGroupId: (map['userGroupId'] as String).input(),
+      hostAccountNames: pulumi.Input.fromValue(
+        (map['hostAccountNames'] as List).cast<String>(),
+      ),
+      hostGroupId: pulumi.Input.fromValue(map['hostGroupId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      userGroupId: pulumi.Input.fromValue(map['userGroupId'] as String),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class DomainFeaturesApic {
 
   /// Creates a new [DomainFeaturesApic].
   /// [eoi] Determines the EOI (End of Interrupt) behavior for APIC, allowing customization of how interrupts are acknowledged.
-  DomainFeaturesApic({
-    this.eoi,
-  });
+  DomainFeaturesApic({this.eoi});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'eoi': ?eoi,
-    };
+    return <String, dynamic>{'eoi': ?eoi};
   }
 
   factory DomainFeaturesApic.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesApic(
-      eoi: map['eoi'] == null ? null : (map['eoi']! as String).input(),
+      eoi: (() {
+        final guardedValue = map['eoi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

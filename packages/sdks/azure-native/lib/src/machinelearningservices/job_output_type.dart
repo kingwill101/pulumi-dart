@@ -7,16 +7,15 @@ enum JobOutputType {
   valueMlflowModel("mlflow_model"),
   valueTritonModel("triton_model");
 
-  const JobOutputType(this.value);
-  final String value;
+  const JobOutputType(this.wireValue);
+  final String wireValue;
 
   static JobOutputType fromValue(String value) {
     for (final item in JobOutputType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobOutputType value: $value');
   }
 }
-

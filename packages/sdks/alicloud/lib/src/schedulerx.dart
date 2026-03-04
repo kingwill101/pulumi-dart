@@ -1,5 +1,3 @@
-library module_schedulerx;
-
 export 'schedulerx/app_group.dart';
 export 'schedulerx/app_group_args.dart';
 export 'schedulerx/app_group_state.dart';

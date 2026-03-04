@@ -1,18 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'scaling_group_alb_server_group.dart';
 import 'scaling_group_args.dart';
-import 'scaling_group_launch_template_override.dart';
 import 'scaling_group_state.dart';
 
 /// Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
 ///
 /// It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
 ///
-/// > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
+/// &gt; **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
 ///
 /// For information about ess scaling rule, see [CreateScalingGroup](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalinggroup).
 ///
-/// > **NOTE:** Available since v1.39.0.
+/// &gt; **NOTE:** Available since v1.39.0.
 ///
 /// ## Example Usage
 ///
@@ -586,53 +584,77 @@ import 'scaling_group_state.dart';
 /// ```
 class ScalingGroup extends pulumi.CustomResource {
   /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
-  late final pulumi.Output<List<ScalingGroupAlbServerGroup>?> albServerGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> albServerGroups;
+
   /// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
   late final pulumi.Output<String> allocationStrategy;
+
   /// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
   late final pulumi.Output<bool?> autoRebalance;
+
   /// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
   late final pulumi.Output<bool?> azBalance;
+
   /// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
   late final pulumi.Output<String?> balanceMode;
+
   /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
   late final pulumi.Output<bool> capacityOptionsCompensateWithOnDemand;
+
   /// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
   late final pulumi.Output<int> capacityOptionsOnDemandBaseCapacity;
+
   /// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
-  late final pulumi.Output<int> capacityOptionsOnDemandPercentageAboveBaseCapacity;
+  late final pulumi.Output<int>
+  capacityOptionsOnDemandPercentageAboveBaseCapacity;
+
   /// The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
   late final pulumi.Output<String> capacityOptionsPriceComparisonMode;
+
   /// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
   late final pulumi.Output<bool> capacityOptionsSpotAutoReplaceOnDemand;
+
   /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
   late final pulumi.Output<bool> compensateWithOnDemand;
+
   /// The ID of the elastic container instance.
   late final pulumi.Output<String?> containerGroupId;
+
   /// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
   /// - The specified RDS instance must be in running status.
   /// - The specified RDS instance’s whitelist must have room for more IP addresses.
   late final pulumi.Output<List<String>?> dbInstanceIds;
+
   /// Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
   late final pulumi.Output<int?> defaultCooldown;
+
   /// Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
   late final pulumi.Output<int?> desiredCapacity;
+
   /// Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
   late final pulumi.Output<bool?> groupDeletionProtection;
+
   /// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
   late final pulumi.Output<String> groupType;
+
   /// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
   late final pulumi.Output<String> healthCheckType;
+
   /// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
   late final pulumi.Output<List<String>?> healthCheckTypes;
+
   /// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
   late final pulumi.Output<String?> instanceId;
+
   /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
   late final pulumi.Output<String?> launchTemplateId;
+
   /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
-  late final pulumi.Output<List<ScalingGroupLaunchTemplateOverride>?> launchTemplateOverrides;
+  late final pulumi.Output<List<Map<String, dynamic>>?> launchTemplateOverrides;
+
   /// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
   late final pulumi.Output<String?> launchTemplateVersion;
+
   /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
   /// - The Server Load Balancer instance must be enabled.
   /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -640,48 +662,66 @@ class ScalingGroup extends pulumi.CustomResource {
   /// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
   /// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
   late final pulumi.Output<List<String>?> loadbalancerIds;
+
   /// The maximum life span of an instance in the scaling group. Unit: seconds.
   late final pulumi.Output<int?> maxInstanceLifetime;
+
   /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
   /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
   late final pulumi.Output<int> maxSize;
+
   /// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
   /// **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
   late final pulumi.Output<int> minSize;
+
   /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
   late final pulumi.Output<String?> multiAzPolicy;
+
   /// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
   late final pulumi.Output<int> onDemandBaseCapacity;
+
   /// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
   late final pulumi.Output<int> onDemandPercentageAboveBaseCapacity;
+
   /// Set or unset instances within group into protected status.
   late final pulumi.Output<List<String>?> protectedInstances;
+
   /// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
   /// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
   /// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
   /// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
   /// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
   late final pulumi.Output<List<String>> removalPolicies;
+
   /// The ID of the resource group to which you want to add the scaling group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
   late final pulumi.Output<String?> scalingGroupName;
+
   /// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
   late final pulumi.Output<String> scalingPolicy;
+
   /// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
   late final pulumi.Output<String> spotAllocationStrategy;
+
   /// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
   late final pulumi.Output<int> spotInstancePools;
+
   /// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
   late final pulumi.Output<bool> spotInstanceRemedy;
+
   /// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
   late final pulumi.Output<int?> stopInstanceTimeout;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
   late final pulumi.Output<String?> vswitchId;
+
   /// List of virtual switch IDs in which the ecs instances to be launched.
   late final pulumi.Output<List<String>?> vswitchIds;
 
@@ -694,53 +734,69 @@ class ScalingGroup extends pulumi.CustomResource {
     ScalingGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/scalingGroup:ScalingGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.albServerGroups = registerOutput<List<ScalingGroupAlbServerGroup>?>('albServerGroups');
-    this.allocationStrategy = registerOutput<String>('allocationStrategy');
-    this.autoRebalance = registerOutput<bool?>('autoRebalance');
-    this.azBalance = registerOutput<bool?>('azBalance');
-    this.balanceMode = registerOutput<String?>('balanceMode');
-    this.capacityOptionsCompensateWithOnDemand = registerOutput<bool>('capacityOptionsCompensateWithOnDemand');
-    this.capacityOptionsOnDemandBaseCapacity = registerOutput<int>('capacityOptionsOnDemandBaseCapacity');
-    this.capacityOptionsOnDemandPercentageAboveBaseCapacity = registerOutput<int>('capacityOptionsOnDemandPercentageAboveBaseCapacity');
-    this.capacityOptionsPriceComparisonMode = registerOutput<String>('capacityOptionsPriceComparisonMode');
-    this.capacityOptionsSpotAutoReplaceOnDemand = registerOutput<bool>('capacityOptionsSpotAutoReplaceOnDemand');
-    this.compensateWithOnDemand = registerOutput<bool>('compensateWithOnDemand');
-    this.containerGroupId = registerOutput<String?>('containerGroupId');
-    this.dbInstanceIds = registerOutput<List<String>?>('dbInstanceIds');
-    this.defaultCooldown = registerOutput<int?>('defaultCooldown');
-    this.desiredCapacity = registerOutput<int?>('desiredCapacity');
-    this.groupDeletionProtection = registerOutput<bool?>('groupDeletionProtection');
-    this.groupType = registerOutput<String>('groupType');
-    this.healthCheckType = registerOutput<String>('healthCheckType');
-    this.healthCheckTypes = registerOutput<List<String>?>('healthCheckTypes');
-    this.instanceId = registerOutput<String?>('instanceId');
-    this.launchTemplateId = registerOutput<String?>('launchTemplateId');
-    this.launchTemplateOverrides = registerOutput<List<ScalingGroupLaunchTemplateOverride>?>('launchTemplateOverrides');
-    this.launchTemplateVersion = registerOutput<String?>('launchTemplateVersion');
-    this.loadbalancerIds = registerOutput<List<String>?>('loadbalancerIds');
-    this.maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
-    this.maxSize = registerOutput<int>('maxSize');
-    this.minSize = registerOutput<int>('minSize');
-    this.multiAzPolicy = registerOutput<String?>('multiAzPolicy');
-    this.onDemandBaseCapacity = registerOutput<int>('onDemandBaseCapacity');
-    this.onDemandPercentageAboveBaseCapacity = registerOutput<int>('onDemandPercentageAboveBaseCapacity');
-    this.protectedInstances = registerOutput<List<String>?>('protectedInstances');
-    this.removalPolicies = registerOutput<List<String>>('removalPolicies');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scalingGroupName = registerOutput<String?>('scalingGroupName');
-    this.scalingPolicy = registerOutput<String>('scalingPolicy');
-    this.spotAllocationStrategy = registerOutput<String>('spotAllocationStrategy');
-    this.spotInstancePools = registerOutput<int>('spotInstancePools');
-    this.spotInstanceRemedy = registerOutput<bool>('spotInstanceRemedy');
-    this.stopInstanceTimeout = registerOutput<int?>('stopInstanceTimeout');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.vswitchIds = registerOutput<List<String>?>('vswitchIds');
+         'alicloud:ess/scalingGroup:ScalingGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    albServerGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'albServerGroups',
+    );
+    allocationStrategy = registerOutput<String>('allocationStrategy');
+    autoRebalance = registerOutput<bool?>('autoRebalance');
+    azBalance = registerOutput<bool?>('azBalance');
+    balanceMode = registerOutput<String?>('balanceMode');
+    capacityOptionsCompensateWithOnDemand = registerOutput<bool>(
+      'capacityOptionsCompensateWithOnDemand',
+    );
+    capacityOptionsOnDemandBaseCapacity = registerOutput<int>(
+      'capacityOptionsOnDemandBaseCapacity',
+    );
+    capacityOptionsOnDemandPercentageAboveBaseCapacity = registerOutput<int>(
+      'capacityOptionsOnDemandPercentageAboveBaseCapacity',
+    );
+    capacityOptionsPriceComparisonMode = registerOutput<String>(
+      'capacityOptionsPriceComparisonMode',
+    );
+    capacityOptionsSpotAutoReplaceOnDemand = registerOutput<bool>(
+      'capacityOptionsSpotAutoReplaceOnDemand',
+    );
+    compensateWithOnDemand = registerOutput<bool>('compensateWithOnDemand');
+    containerGroupId = registerOutput<String?>('containerGroupId');
+    dbInstanceIds = registerOutput<List<String>?>('dbInstanceIds');
+    defaultCooldown = registerOutput<int?>('defaultCooldown');
+    desiredCapacity = registerOutput<int?>('desiredCapacity');
+    groupDeletionProtection = registerOutput<bool?>('groupDeletionProtection');
+    groupType = registerOutput<String>('groupType');
+    healthCheckType = registerOutput<String>('healthCheckType');
+    healthCheckTypes = registerOutput<List<String>?>('healthCheckTypes');
+    instanceId = registerOutput<String?>('instanceId');
+    launchTemplateId = registerOutput<String?>('launchTemplateId');
+    launchTemplateOverrides = registerOutput<List<Map<String, dynamic>>?>(
+      'launchTemplateOverrides',
+    );
+    launchTemplateVersion = registerOutput<String?>('launchTemplateVersion');
+    loadbalancerIds = registerOutput<List<String>?>('loadbalancerIds');
+    maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
+    maxSize = registerOutput<int>('maxSize');
+    minSize = registerOutput<int>('minSize');
+    multiAzPolicy = registerOutput<String?>('multiAzPolicy');
+    onDemandBaseCapacity = registerOutput<int>('onDemandBaseCapacity');
+    onDemandPercentageAboveBaseCapacity = registerOutput<int>(
+      'onDemandPercentageAboveBaseCapacity',
+    );
+    protectedInstances = registerOutput<List<String>?>('protectedInstances');
+    removalPolicies = registerOutput<List<String>>('removalPolicies');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scalingGroupName = registerOutput<String?>('scalingGroupName');
+    scalingPolicy = registerOutput<String>('scalingPolicy');
+    spotAllocationStrategy = registerOutput<String>('spotAllocationStrategy');
+    spotInstancePools = registerOutput<int>('spotInstancePools');
+    spotInstanceRemedy = registerOutput<bool>('spotInstanceRemedy');
+    stopInstanceTimeout = registerOutput<int?>('stopInstanceTimeout');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vswitchId = registerOutput<String?>('vswitchId');
+    vswitchIds = registerOutput<List<String>?>('vswitchIds');
   }
 
   /// Gets an existing [ScalingGroup] resource's state with the given [name] and [id].
@@ -761,52 +817,68 @@ class ScalingGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ess/scalingGroup:ScalingGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.albServerGroups = registerOutput<List<ScalingGroupAlbServerGroup>?>('albServerGroups');
-    this.allocationStrategy = registerOutput<String>('allocationStrategy');
-    this.autoRebalance = registerOutput<bool?>('autoRebalance');
-    this.azBalance = registerOutput<bool?>('azBalance');
-    this.balanceMode = registerOutput<String?>('balanceMode');
-    this.capacityOptionsCompensateWithOnDemand = registerOutput<bool>('capacityOptionsCompensateWithOnDemand');
-    this.capacityOptionsOnDemandBaseCapacity = registerOutput<int>('capacityOptionsOnDemandBaseCapacity');
-    this.capacityOptionsOnDemandPercentageAboveBaseCapacity = registerOutput<int>('capacityOptionsOnDemandPercentageAboveBaseCapacity');
-    this.capacityOptionsPriceComparisonMode = registerOutput<String>('capacityOptionsPriceComparisonMode');
-    this.capacityOptionsSpotAutoReplaceOnDemand = registerOutput<bool>('capacityOptionsSpotAutoReplaceOnDemand');
-    this.compensateWithOnDemand = registerOutput<bool>('compensateWithOnDemand');
-    this.containerGroupId = registerOutput<String?>('containerGroupId');
-    this.dbInstanceIds = registerOutput<List<String>?>('dbInstanceIds');
-    this.defaultCooldown = registerOutput<int?>('defaultCooldown');
-    this.desiredCapacity = registerOutput<int?>('desiredCapacity');
-    this.groupDeletionProtection = registerOutput<bool?>('groupDeletionProtection');
-    this.groupType = registerOutput<String>('groupType');
-    this.healthCheckType = registerOutput<String>('healthCheckType');
-    this.healthCheckTypes = registerOutput<List<String>?>('healthCheckTypes');
-    this.instanceId = registerOutput<String?>('instanceId');
-    this.launchTemplateId = registerOutput<String?>('launchTemplateId');
-    this.launchTemplateOverrides = registerOutput<List<ScalingGroupLaunchTemplateOverride>?>('launchTemplateOverrides');
-    this.launchTemplateVersion = registerOutput<String?>('launchTemplateVersion');
-    this.loadbalancerIds = registerOutput<List<String>?>('loadbalancerIds');
-    this.maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
-    this.maxSize = registerOutput<int>('maxSize');
-    this.minSize = registerOutput<int>('minSize');
-    this.multiAzPolicy = registerOutput<String?>('multiAzPolicy');
-    this.onDemandBaseCapacity = registerOutput<int>('onDemandBaseCapacity');
-    this.onDemandPercentageAboveBaseCapacity = registerOutput<int>('onDemandPercentageAboveBaseCapacity');
-    this.protectedInstances = registerOutput<List<String>?>('protectedInstances');
-    this.removalPolicies = registerOutput<List<String>>('removalPolicies');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scalingGroupName = registerOutput<String?>('scalingGroupName');
-    this.scalingPolicy = registerOutput<String>('scalingPolicy');
-    this.spotAllocationStrategy = registerOutput<String>('spotAllocationStrategy');
-    this.spotInstancePools = registerOutput<int>('spotInstancePools');
-    this.spotInstanceRemedy = registerOutput<bool>('spotInstanceRemedy');
-    this.stopInstanceTimeout = registerOutput<int?>('stopInstanceTimeout');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.vswitchIds = registerOutput<List<String>?>('vswitchIds');
+         'alicloud:ess/scalingGroup:ScalingGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    albServerGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'albServerGroups',
+    );
+    allocationStrategy = registerOutput<String>('allocationStrategy');
+    autoRebalance = registerOutput<bool?>('autoRebalance');
+    azBalance = registerOutput<bool?>('azBalance');
+    balanceMode = registerOutput<String?>('balanceMode');
+    capacityOptionsCompensateWithOnDemand = registerOutput<bool>(
+      'capacityOptionsCompensateWithOnDemand',
+    );
+    capacityOptionsOnDemandBaseCapacity = registerOutput<int>(
+      'capacityOptionsOnDemandBaseCapacity',
+    );
+    capacityOptionsOnDemandPercentageAboveBaseCapacity = registerOutput<int>(
+      'capacityOptionsOnDemandPercentageAboveBaseCapacity',
+    );
+    capacityOptionsPriceComparisonMode = registerOutput<String>(
+      'capacityOptionsPriceComparisonMode',
+    );
+    capacityOptionsSpotAutoReplaceOnDemand = registerOutput<bool>(
+      'capacityOptionsSpotAutoReplaceOnDemand',
+    );
+    compensateWithOnDemand = registerOutput<bool>('compensateWithOnDemand');
+    containerGroupId = registerOutput<String?>('containerGroupId');
+    dbInstanceIds = registerOutput<List<String>?>('dbInstanceIds');
+    defaultCooldown = registerOutput<int?>('defaultCooldown');
+    desiredCapacity = registerOutput<int?>('desiredCapacity');
+    groupDeletionProtection = registerOutput<bool?>('groupDeletionProtection');
+    groupType = registerOutput<String>('groupType');
+    healthCheckType = registerOutput<String>('healthCheckType');
+    healthCheckTypes = registerOutput<List<String>?>('healthCheckTypes');
+    instanceId = registerOutput<String?>('instanceId');
+    launchTemplateId = registerOutput<String?>('launchTemplateId');
+    launchTemplateOverrides = registerOutput<List<Map<String, dynamic>>?>(
+      'launchTemplateOverrides',
+    );
+    launchTemplateVersion = registerOutput<String?>('launchTemplateVersion');
+    loadbalancerIds = registerOutput<List<String>?>('loadbalancerIds');
+    maxInstanceLifetime = registerOutput<int?>('maxInstanceLifetime');
+    maxSize = registerOutput<int>('maxSize');
+    minSize = registerOutput<int>('minSize');
+    multiAzPolicy = registerOutput<String?>('multiAzPolicy');
+    onDemandBaseCapacity = registerOutput<int>('onDemandBaseCapacity');
+    onDemandPercentageAboveBaseCapacity = registerOutput<int>(
+      'onDemandPercentageAboveBaseCapacity',
+    );
+    protectedInstances = registerOutput<List<String>?>('protectedInstances');
+    removalPolicies = registerOutput<List<String>>('removalPolicies');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scalingGroupName = registerOutput<String?>('scalingGroupName');
+    scalingPolicy = registerOutput<String>('scalingPolicy');
+    spotAllocationStrategy = registerOutput<String>('spotAllocationStrategy');
+    spotInstancePools = registerOutput<int>('spotInstancePools');
+    spotInstanceRemedy = registerOutput<bool>('spotInstanceRemedy');
+    stopInstanceTimeout = registerOutput<int?>('stopInstanceTimeout');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vswitchId = registerOutput<String?>('vswitchId');
+    vswitchIds = registerOutput<List<String>?>('vswitchIds');
   }
 }

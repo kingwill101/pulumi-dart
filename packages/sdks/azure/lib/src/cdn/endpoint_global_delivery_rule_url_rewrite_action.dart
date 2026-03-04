@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointGlobalDeliveryRuleUrlRewriteAction {
   /// This value must start with a `/` and can't be longer than 260 characters.
   final pulumi.Input<String> destination;
+
   /// Whether preserve an unmatched path. Defaults to `true`.
   final pulumi.Input<bool>? preserveUnmatchedPath;
+
   /// This value must start with a `/` and can't be longer than 260 characters.
   final pulumi.Input<String> sourcePattern;
 
@@ -28,12 +30,17 @@ class EndpointGlobalDeliveryRuleUrlRewriteAction {
     };
   }
 
-  factory EndpointGlobalDeliveryRuleUrlRewriteAction.fromMap(Map<String, dynamic> map) {
+  factory EndpointGlobalDeliveryRuleUrlRewriteAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointGlobalDeliveryRuleUrlRewriteAction(
-      destination: (map['destination'] as String).input(),
-      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : (map['preserveUnmatchedPath']! as bool).input(),
-      sourcePattern: (map['sourcePattern'] as String).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      preserveUnmatchedPath: (() {
+        final guardedValue = map['preserveUnmatchedPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourcePattern: pulumi.Input.fromValue(map['sourcePattern'] as String),
     );
   }
 }
-

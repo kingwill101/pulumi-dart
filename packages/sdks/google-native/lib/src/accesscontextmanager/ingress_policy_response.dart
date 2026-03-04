@@ -8,29 +8,42 @@ import 'ingress_to_response.dart';
 class IngressPolicyResponse {
   /// Defines the conditions on the source of a request causing this IngressPolicy to apply.
   final pulumi.Input<IngressFromResponse> ingressFrom;
+
   /// Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
   final pulumi.Input<IngressToResponse> ingressTo;
 
   /// Creates a new [IngressPolicyResponse].
   /// [ingressFrom] Defines the conditions on the source of a request causing this IngressPolicy to apply.
   /// [ingressTo] Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
-  IngressPolicyResponse({
-    required this.ingressFrom,
-    required this.ingressTo,
-  });
+  IngressPolicyResponse({required this.ingressFrom, required this.ingressTo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ingressFrom': pulumi.Input.mapInputValue<IngressFromResponse, Map<String, dynamic>>(ingressFrom, (value) => value.toMap()),
-      'ingressTo': pulumi.Input.mapInputValue<IngressToResponse, Map<String, dynamic>>(ingressTo, (value) => value.toMap()),
+      'ingressFrom':
+          pulumi.Input.mapInputValue<IngressFromResponse, Map<String, dynamic>>(
+            ingressFrom,
+            (value) => value.toMap(),
+          ),
+      'ingressTo':
+          pulumi.Input.mapInputValue<IngressToResponse, Map<String, dynamic>>(
+            ingressTo,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory IngressPolicyResponse.fromMap(Map<String, dynamic> map) {
     return IngressPolicyResponse(
-      ingressFrom: (IngressFromResponse.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>())).input(),
-      ingressTo: (IngressToResponse.fromMap((map['ingressTo'] as Map).cast<String, dynamic>())).input(),
+      ingressFrom: pulumi.Input.fromValue(
+        IngressFromResponse.fromMap(
+          (map['ingressFrom']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      ingressTo: pulumi.Input.fromValue(
+        IngressToResponse.fromMap(
+          (map['ingressTo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

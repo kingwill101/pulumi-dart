@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotebookExecutionCustomEnvironmentSpecNetworkSpec {
   /// Enable public internet access for the runtime.
   final pulumi.Input<bool>? enableInternetAccess;
+
   /// The name of the VPC that this runtime is in.
   final pulumi.Input<String>? network;
+
   /// The name of the subnetwork that this runtime is in.
   final pulumi.Input<String>? subnetwork;
 
@@ -28,12 +30,25 @@ class NotebookExecutionCustomEnvironmentSpecNetworkSpec {
     };
   }
 
-  factory NotebookExecutionCustomEnvironmentSpecNetworkSpec.fromMap(Map<String, dynamic> map) {
+  factory NotebookExecutionCustomEnvironmentSpecNetworkSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NotebookExecutionCustomEnvironmentSpecNetworkSpec(
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess']! as bool).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      enableInternetAccess: (() {
+        final guardedValue = map['enableInternetAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

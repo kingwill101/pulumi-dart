@@ -3,16 +3,15 @@ enum ClusterNodePools {
   system("system"),
   generalPurpose("general-purpose");
 
-  const ClusterNodePools(this.value);
-  final String value;
+  const ClusterNodePools(this.wireValue);
+  final String wireValue;
 
   static ClusterNodePools fromValue(String value) {
     for (final item in ClusterNodePools.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterNodePools value: $value');
   }
 }
-

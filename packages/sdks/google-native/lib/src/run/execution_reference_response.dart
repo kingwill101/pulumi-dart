@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExecutionReferenceResponse {
   /// Optional. Completion timestamp of the execution.
   final pulumi.Input<String> completionTimestamp;
+
   /// Optional. Creation timestamp of the execution.
   final pulumi.Input<String> creationTimestamp;
+
   /// Optional. Name of the execution.
   final pulumi.Input<String> name;
 
@@ -31,10 +33,13 @@ class ExecutionReferenceResponse {
 
   factory ExecutionReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionReferenceResponse(
-      completionTimestamp: (map['completionTimestamp'] as String).input(),
-      creationTimestamp: (map['creationTimestamp'] as String).input(),
-      name: (map['name'] as String).input(),
+      completionTimestamp: pulumi.Input.fromValue(
+        map['completionTimestamp'] as String,
+      ),
+      creationTimestamp: pulumi.Input.fromValue(
+        map['creationTimestamp'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

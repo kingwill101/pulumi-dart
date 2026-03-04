@@ -203,24 +203,34 @@ import 'system_data_response.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The custom metadata defined for API catalog entities.
   late final pulumi.Output<dynamic> customProperties;
+
   /// API center-scoped definition resource ID.
   late final pulumi.Output<String?> definitionId;
+
   /// Description of the deployment.
   late final pulumi.Output<String?> description;
+
   /// API center-scoped environment resource ID.
   late final pulumi.Output<String?> environmentId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The deployment server
   late final pulumi.Output<DeploymentServerResponse?> server;
+
   /// State of API deployment.
   late final pulumi.Output<String?> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// API deployment title
   late final pulumi.Output<String?> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -233,21 +243,21 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apicenter:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customProperties = registerOutput<dynamic>('customProperties');
-    this.definitionId = registerOutput<String?>('definitionId');
-    this.description = registerOutput<String?>('description');
-    this.environmentId = registerOutput<String?>('environmentId');
+         'azure-native:apicenter:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customProperties = registerOutput<dynamic>('customProperties');
+    definitionId = registerOutput<String?>('definitionId');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String?>('environmentId');
     this.name = registerOutput<String>('name');
-    this.server = registerOutput<DeploymentServerResponse?>('server');
-    this.state = registerOutput<String?>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.title = registerOutput<String?>('title');
-    this.type = registerOutput<String>('type');
+    server = registerOutput<DeploymentServerResponse?>('server');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomFieldResponse {
   /// Name is the field name.
   final pulumi.Input<String> name;
+
   /// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
   final pulumi.Input<String> value;
 
   /// Creates a new [CustomFieldResponse].
   /// [name] Name is the field name.
   /// [value] Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
-  CustomFieldResponse({
-    required this.name,
-    required this.value,
-  });
+  CustomFieldResponse({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory CustomFieldResponse.fromMap(Map<String, dynamic> map) {
     return CustomFieldResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

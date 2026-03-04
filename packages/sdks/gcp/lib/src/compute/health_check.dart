@@ -22,7 +22,7 @@ import 'health_check_tcp_health_check.dart';
 /// successfully to some number of consecutive probes, it is marked
 /// healthy again and can receive new connections.
 ///
-/// ~>**NOTE**: Legacy HTTP(S) health checks must be used for target pool-based network
+/// ~&gt;**NOTE**: Legacy HTTP(S) health checks must be used for target pool-based network
 /// load balancers. See the [official guide](https://cloud.google.com/load-balancing/docs/health-check-concepts#selecting_hc)
 /// for choosing a type of health check.
 ///
@@ -2617,32 +2617,42 @@ class HealthCheck extends pulumi.CustomResource {
   /// How often (in seconds) to send a health check. The default value is 5
   /// seconds.
   late final pulumi.Output<int?> checkIntervalSec;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
+
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckGrpcHealthCheck?> grpcHealthCheck;
+
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckGrpcTlsHealthCheck?> grpcTlsHealthCheck;
+
   /// A so-far unhealthy instance will be marked healthy after this many
   /// consecutive successes. The default value is 2.
   late final pulumi.Output<int?> healthyThreshold;
+
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckHttp2HealthCheck?> http2HealthCheck;
+
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckHttpHealthCheck?> httpHealthCheck;
+
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckHttpsHealthCheck?> httpsHealthCheck;
+
   /// Configure logging on this health check.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckLogConfig> logConfig;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -2651,11 +2661,14 @@ class HealthCheck extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The list of cloud regions from which health checks are performed. If
   /// any regions are specified, then exactly 3 regions should be specified.
   /// The region names must be valid names of Google Cloud regions. This can
@@ -2669,18 +2682,23 @@ class HealthCheck extends pulumi.CustomResource {
   /// * The health check cannot be used with BackendService nor with managed
   /// instance group auto-healing.
   late final pulumi.Output<List<String>?> sourceRegions;
+
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckSslHealthCheck?> sslHealthCheck;
+
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<HealthCheckTcpHealthCheck?> tcpHealthCheck;
+
   /// How long (in seconds) to wait before claiming failure.
   /// The default value is 5 seconds.  It is invalid for timeoutSec to have
   /// greater value than checkIntervalSec.
   late final pulumi.Output<int?> timeoutSec;
+
   /// The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
   late final pulumi.Output<String> type;
+
   /// A so-far healthy instance will be marked unhealthy after this many
   /// consecutive failures. The default value is 2.
   late final pulumi.Output<int?> unhealthyThreshold;
@@ -2694,30 +2712,44 @@ class HealthCheck extends pulumi.CustomResource {
     HealthCheckArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/healthCheck:HealthCheck',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.checkIntervalSec = registerOutput<int?>('checkIntervalSec');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.grpcHealthCheck = registerOutput<HealthCheckGrpcHealthCheck?>('grpcHealthCheck');
-    this.grpcTlsHealthCheck = registerOutput<HealthCheckGrpcTlsHealthCheck?>('grpcTlsHealthCheck');
-    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
-    this.http2HealthCheck = registerOutput<HealthCheckHttp2HealthCheck?>('http2HealthCheck');
-    this.httpHealthCheck = registerOutput<HealthCheckHttpHealthCheck?>('httpHealthCheck');
-    this.httpsHealthCheck = registerOutput<HealthCheckHttpsHealthCheck?>('httpsHealthCheck');
-    this.logConfig = registerOutput<HealthCheckLogConfig>('logConfig');
+         'gcp:compute/healthCheck:HealthCheck',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    checkIntervalSec = registerOutput<int?>('checkIntervalSec');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    grpcHealthCheck = registerOutput<HealthCheckGrpcHealthCheck?>(
+      'grpcHealthCheck',
+    );
+    grpcTlsHealthCheck = registerOutput<HealthCheckGrpcTlsHealthCheck?>(
+      'grpcTlsHealthCheck',
+    );
+    healthyThreshold = registerOutput<int?>('healthyThreshold');
+    http2HealthCheck = registerOutput<HealthCheckHttp2HealthCheck?>(
+      'http2HealthCheck',
+    );
+    httpHealthCheck = registerOutput<HealthCheckHttpHealthCheck?>(
+      'httpHealthCheck',
+    );
+    httpsHealthCheck = registerOutput<HealthCheckHttpsHealthCheck?>(
+      'httpsHealthCheck',
+    );
+    logConfig = registerOutput<HealthCheckLogConfig>('logConfig');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.sourceRegions = registerOutput<List<String>?>('sourceRegions');
-    this.sslHealthCheck = registerOutput<HealthCheckSslHealthCheck?>('sslHealthCheck');
-    this.tcpHealthCheck = registerOutput<HealthCheckTcpHealthCheck?>('tcpHealthCheck');
-    this.timeoutSec = registerOutput<int?>('timeoutSec');
-    this.type = registerOutput<String>('type');
-    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sourceRegions = registerOutput<List<String>?>('sourceRegions');
+    sslHealthCheck = registerOutput<HealthCheckSslHealthCheck?>(
+      'sslHealthCheck',
+    );
+    tcpHealthCheck = registerOutput<HealthCheckTcpHealthCheck?>(
+      'tcpHealthCheck',
+    );
+    timeoutSec = registerOutput<int?>('timeoutSec');
+    type = registerOutput<String>('type');
+    unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
   }
 
   /// Gets an existing [HealthCheck] resource's state with the given [name] and [id].
@@ -2738,29 +2770,43 @@ class HealthCheck extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/healthCheck:HealthCheck',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.checkIntervalSec = registerOutput<int?>('checkIntervalSec');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.grpcHealthCheck = registerOutput<HealthCheckGrpcHealthCheck?>('grpcHealthCheck');
-    this.grpcTlsHealthCheck = registerOutput<HealthCheckGrpcTlsHealthCheck?>('grpcTlsHealthCheck');
-    this.healthyThreshold = registerOutput<int?>('healthyThreshold');
-    this.http2HealthCheck = registerOutput<HealthCheckHttp2HealthCheck?>('http2HealthCheck');
-    this.httpHealthCheck = registerOutput<HealthCheckHttpHealthCheck?>('httpHealthCheck');
-    this.httpsHealthCheck = registerOutput<HealthCheckHttpsHealthCheck?>('httpsHealthCheck');
-    this.logConfig = registerOutput<HealthCheckLogConfig>('logConfig');
+         'gcp:compute/healthCheck:HealthCheck',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    checkIntervalSec = registerOutput<int?>('checkIntervalSec');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    grpcHealthCheck = registerOutput<HealthCheckGrpcHealthCheck?>(
+      'grpcHealthCheck',
+    );
+    grpcTlsHealthCheck = registerOutput<HealthCheckGrpcTlsHealthCheck?>(
+      'grpcTlsHealthCheck',
+    );
+    healthyThreshold = registerOutput<int?>('healthyThreshold');
+    http2HealthCheck = registerOutput<HealthCheckHttp2HealthCheck?>(
+      'http2HealthCheck',
+    );
+    httpHealthCheck = registerOutput<HealthCheckHttpHealthCheck?>(
+      'httpHealthCheck',
+    );
+    httpsHealthCheck = registerOutput<HealthCheckHttpsHealthCheck?>(
+      'httpsHealthCheck',
+    );
+    logConfig = registerOutput<HealthCheckLogConfig>('logConfig');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.sourceRegions = registerOutput<List<String>?>('sourceRegions');
-    this.sslHealthCheck = registerOutput<HealthCheckSslHealthCheck?>('sslHealthCheck');
-    this.tcpHealthCheck = registerOutput<HealthCheckTcpHealthCheck?>('tcpHealthCheck');
-    this.timeoutSec = registerOutput<int?>('timeoutSec');
-    this.type = registerOutput<String>('type');
-    this.unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sourceRegions = registerOutput<List<String>?>('sourceRegions');
+    sslHealthCheck = registerOutput<HealthCheckSslHealthCheck?>(
+      'sslHealthCheck',
+    );
+    tcpHealthCheck = registerOutput<HealthCheckTcpHealthCheck?>(
+      'tcpHealthCheck',
+    );
+    timeoutSec = registerOutput<int?>('timeoutSec');
+    type = registerOutput<String>('type');
+    unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
   }
 }

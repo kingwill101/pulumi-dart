@@ -4,14 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The min/max number of replicas allowed if enabling autoscaling
 class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
-  /// Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error
+  /// Optional. max replicas in the node pool, must be ≥ replica_count and &gt; min_replica_count or will throw error
   final pulumi.Input<String>? maxReplicaCount;
-  /// Optional. min replicas in the node pool, must be ≤ replica_count and < max_replica_count or will throw error
+
+  /// Optional. min replicas in the node pool, must be ≤ replica_count and &lt; max_replica_count or will throw error
   final pulumi.Input<String>? minReplicaCount;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec].
-  /// [maxReplicaCount] Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error
-  /// [minReplicaCount] Optional. min replicas in the node pool, must be ≤ replica_count and < max_replica_count or will throw error
+  /// [maxReplicaCount] Optional. max replicas in the node pool, must be ≥ replica_count and &gt; min_replica_count or will throw error
+  /// [minReplicaCount] Optional. min replicas in the node pool, must be ≤ replica_count and &lt; max_replica_count or will throw error
   GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec({
     this.maxReplicaCount,
     this.minReplicaCount,
@@ -24,11 +25,20 @@ class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec(
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as String).input(),
-      minReplicaCount: map['minReplicaCount'] == null ? null : (map['minReplicaCount']! as String).input(),
+      maxReplicaCount: (() {
+        final guardedValue = map['maxReplicaCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minReplicaCount: (() {
+        final guardedValue = map['minReplicaCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

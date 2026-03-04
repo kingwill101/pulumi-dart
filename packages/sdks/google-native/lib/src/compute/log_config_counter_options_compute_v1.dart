@@ -6,9 +6,12 @@ import 'log_config_counter_options_custom_field_compute_v1.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCounterOptionsComputeV1 {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<LogConfigCounterOptionsCustomFieldComputeV1>>? customFields;
+  final pulumi.Input<List<LogConfigCounterOptionsCustomFieldComputeV1>>?
+  customFields;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String>? field;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<String>? metric;
 
@@ -24,7 +27,18 @@ class LogConfigCounterOptionsComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customFields': ?pulumi.Input.mapOptionalInputValue<List<LogConfigCounterOptionsCustomFieldComputeV1>, List<Map<String, dynamic>>>(customFields, (value) => pulumi.Input.encodeList<LogConfigCounterOptionsCustomFieldComputeV1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customFields':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LogConfigCounterOptionsCustomFieldComputeV1>,
+            List<Map<String, dynamic>>
+          >(
+            customFields,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LogConfigCounterOptionsCustomFieldComputeV1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'field': ?field,
       'metric': ?metric,
     };
@@ -32,10 +46,28 @@ class LogConfigCounterOptionsComputeV1 {
 
   factory LogConfigCounterOptionsComputeV1.fromMap(Map<String, dynamic> map) {
     return LogConfigCounterOptionsComputeV1(
-      customFields: map['customFields'] == null ? null : (pulumi.Input.decodeList<LogConfigCounterOptionsCustomFieldComputeV1>(map['customFields']!, (value) => LogConfigCounterOptionsCustomFieldComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      field: map['field'] == null ? null : (map['field']! as String).input(),
-      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
+      customFields: (() {
+        final guardedValue = map['customFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LogConfigCounterOptionsCustomFieldComputeV1>(
+            guardedValue,
+            (value) => LogConfigCounterOptionsCustomFieldComputeV1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metric: (() {
+        final guardedValue = map['metric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,15 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseUserSettingAcl {
   /// An identifier for the ACL, this will be automatically assigned when you create an ACL entry
   final pulumi.Input<String>? id;
+
   /// The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
   final pulumi.Input<String> permission;
-  /// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
+
+  /// A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "&lt;prefix&gt;*", or "&lt;literal&gt;". "*" is a special value indicating a wildcard that matches on all topics. "&lt;prefix&gt;*" defines a regex that matches all topics with the prefix. "&lt;literal&gt;" performs an exact match on a topic name and only applies to that topic.
   final pulumi.Input<String> topic;
 
   /// Creates a new [DatabaseUserSettingAcl].
   /// [id] An identifier for the ACL, this will be automatically assigned when you create an ACL entry
   /// [permission] The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-  /// [topic] A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
+  /// [topic] A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "&lt;prefix&gt;*", or "&lt;literal&gt;". "*" is a special value indicating a wildcard that matches on all topics. "&lt;prefix&gt;*" defines a regex that matches all topics with the prefix. "&lt;literal&gt;" performs an exact match on a topic name and only applies to that topic.
   DatabaseUserSettingAcl({
     this.id,
     required this.permission,
@@ -30,10 +32,13 @@ class DatabaseUserSettingAcl {
 
   factory DatabaseUserSettingAcl.fromMap(Map<String, dynamic> map) {
     return DatabaseUserSettingAcl(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      permission: (map['permission'] as String).input(),
-      topic: (map['topic'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permission: pulumi.Input.fromValue(map['permission'] as String),
+      topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
-

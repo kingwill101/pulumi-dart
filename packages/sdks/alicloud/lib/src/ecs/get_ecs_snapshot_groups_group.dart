@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsSnapshotGroupsGroup {
   /// The description of the snapshot-consistent group.
   final pulumi.Input<String> description;
+
   /// The ID of the Snapshot Group.
   final pulumi.Input<String> id;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The ID of the resource group to which the snapshot consistency group belongs.
   final pulumi.Input<String> resourceGroupId;
+
   /// The first ID of the resource.
   final pulumi.Input<String> snapshotGroupId;
+
   /// The name of the snapshot-consistent group.
   final pulumi.Input<String> snapshotGroupName;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
+
   /// List of label key-value pairs.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -55,15 +62,22 @@ class GetEcsSnapshotGroupsGroup {
 
   factory GetEcsSnapshotGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetEcsSnapshotGroupsGroup(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      snapshotGroupId: (map['snapshotGroupId'] as String).input(),
-      snapshotGroupName: (map['snapshotGroupName'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      snapshotGroupId: pulumi.Input.fromValue(map['snapshotGroupId'] as String),
+      snapshotGroupName: pulumi.Input.fromValue(
+        map['snapshotGroupName'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

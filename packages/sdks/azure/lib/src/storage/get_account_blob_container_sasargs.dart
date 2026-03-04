@@ -10,28 +10,39 @@ import 'get_account_blob_container_saspermissions.dart';
 class GetAccountBlobContainerSASArgs {
   /// The `Cache-Control` response header that is sent when this SAS token is used.
   final pulumi.Input<String>? cacheControl;
+
   /// The connection string for the storage account to which this SAS applies. Typically directly from the `primary_connection_string` attribute of an `azure.storage.Account` resource.
   final pulumi.Input<String> connectionString;
+
   /// Name of the container.
   final pulumi.Input<String> containerName;
+
   /// The `Content-Disposition` response header that is sent when this SAS token is used.
   final pulumi.Input<String>? contentDisposition;
+
   /// The `Content-Encoding` response header that is sent when this SAS token is used.
   final pulumi.Input<String>? contentEncoding;
+
   /// The `Content-Language` response header that is sent when this SAS token is used.
   final pulumi.Input<String>? contentLanguage;
+
   /// The `Content-Type` response header that is sent when this SAS token is used.
   final pulumi.Input<String>? contentType;
+
   /// The expiration time and date of this SAS. Must be a valid ISO-8601 format time/date string.
   ///
-  /// > **Note:** The [ISO-8601 Time offset from UTC](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC) is currently not supported by the service, which will result into 409 error.
+  /// &gt; **Note:** The [ISO-8601 Time offset from UTC](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC) is currently not supported by the service, which will result into 409 error.
   final pulumi.Input<String> expiry;
+
   /// Only permit `https` access. If `false`, both `http` and `https` are permitted. Defaults to `true`.
   final pulumi.Input<bool>? httpsOnly;
+
   /// Single IPv4 address or range (connected with a dash) of IPv4 addresses.
   final pulumi.Input<String>? ipAddress;
+
   /// A `permissions` block as defined below.
   final pulumi.Input<GetAccountBlobContainerSASPermissions> permissions;
+
   /// The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
   final pulumi.Input<String> start;
 
@@ -75,26 +86,63 @@ class GetAccountBlobContainerSASArgs {
       'expiry': expiry,
       'httpsOnly': ?httpsOnly,
       'ipAddress': ?ipAddress,
-      'permissions': pulumi.Input.mapInputValue<GetAccountBlobContainerSASPermissions, Map<String, dynamic>>(permissions, (value) => value.toMap()),
+      'permissions':
+          pulumi.Input.mapInputValue<
+            GetAccountBlobContainerSASPermissions,
+            Map<String, dynamic>
+          >(permissions, (value) => value.toMap()),
       'start': start,
     };
   }
 
   factory GetAccountBlobContainerSASArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountBlobContainerSASArgs(
-      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl']! as String).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      containerName: (map['containerName'] as String).input(),
-      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition']! as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
-      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage']! as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
-      expiry: (map['expiry'] as String).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      permissions: (GetAccountBlobContainerSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
-      start: (map['start'] as String).input(),
+      cacheControl: (() {
+        final guardedValue = map['cacheControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      contentDisposition: (() {
+        final guardedValue = map['contentDisposition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentEncoding: (() {
+        final guardedValue = map['contentEncoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentLanguage: (() {
+        final guardedValue = map['contentLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expiry: pulumi.Input.fromValue(map['expiry'] as String),
+      httpsOnly: (() {
+        final guardedValue = map['httpsOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: pulumi.Input.fromValue(
+        GetAccountBlobContainerSASPermissions.fromMap(
+          (map['permissions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

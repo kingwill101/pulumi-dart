@@ -8,16 +8,15 @@ enum AuthConfigState {
   unauthorized("UNAUTHORIZED"),
   unsupported("UNSUPPORTED");
 
-  const AuthConfigState(this.value);
-  final String value;
+  const AuthConfigState(this.wireValue);
+  final String wireValue;
 
   static AuthConfigState fromValue(String value) {
     for (final item in AuthConfigState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthConfigState value: $value');
   }
 }
-

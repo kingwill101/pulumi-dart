@@ -8,8 +8,10 @@ import 'storage_account_details.dart';
 class RegistryRegionArmDetails {
   /// List of ACR accounts
   final pulumi.Input<List<AcrDetails>>? acrDetails;
+
   /// The location where the registry exists
   final pulumi.Input<String>? location;
+
   /// List of storage accounts
   final pulumi.Input<List<StorageAccountDetails>>? storageAccountDetails;
 
@@ -25,18 +27,64 @@ class RegistryRegionArmDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acrDetails': ?pulumi.Input.mapOptionalInputValue<List<AcrDetails>, List<Map<String, dynamic>>>(acrDetails, (value) => pulumi.Input.encodeList<AcrDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'acrDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AcrDetails>,
+            List<Map<String, dynamic>>
+          >(
+            acrDetails,
+            (value) =>
+                pulumi.Input.encodeList<AcrDetails, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'location': ?location,
-      'storageAccountDetails': ?pulumi.Input.mapOptionalInputValue<List<StorageAccountDetails>, List<Map<String, dynamic>>>(storageAccountDetails, (value) => pulumi.Input.encodeList<StorageAccountDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'storageAccountDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StorageAccountDetails>,
+            List<Map<String, dynamic>>
+          >(
+            storageAccountDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StorageAccountDetails,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RegistryRegionArmDetails.fromMap(Map<String, dynamic> map) {
     return RegistryRegionArmDetails(
-      acrDetails: map['acrDetails'] == null ? null : (pulumi.Input.decodeList<AcrDetails>(map['acrDetails']!, (value) => AcrDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      storageAccountDetails: map['storageAccountDetails'] == null ? null : (pulumi.Input.decodeList<StorageAccountDetails>(map['storageAccountDetails']!, (value) => StorageAccountDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acrDetails: (() {
+        final guardedValue = map['acrDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AcrDetails>(
+            guardedValue,
+            (value) =>
+                AcrDetails.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountDetails: (() {
+        final guardedValue = map['storageAccountDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StorageAccountDetails>(
+            guardedValue,
+            (value) => StorageAccountDetails.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

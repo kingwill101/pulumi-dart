@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_environment_args.dart';
 import 'cx_environment_state.dart';
-import 'cx_environment_version_config.dart';
 
 /// Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
 /// When you edit an agent, you are editing the draft agent. At any point, you can save the draft agent as an agent version, which is an immutable snapshot of your agent.
@@ -318,18 +317,23 @@ import 'cx_environment_version_config.dart';
 class CxEnvironment extends pulumi.CustomResource {
   /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
   late final pulumi.Output<String?> description;
+
   /// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
   late final pulumi.Output<String> displayName;
+
   /// The name of the environment.
   late final pulumi.Output<String> name;
+
   /// The Agent to create an Environment for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
+
   /// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> updateTime;
+
   /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
   /// Structure is documented below.
-  late final pulumi.Output<List<CxEnvironmentVersionConfig>> versionConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> versionConfigs;
 
   /// Creates a new [CxEnvironment].
   /// [name] The Pulumi resource name.
@@ -340,17 +344,19 @@ class CxEnvironment extends pulumi.CustomResource {
     CxEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxEnvironment:CxEnvironment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'gcp:diagflow/cxEnvironment:CxEnvironment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.versionConfigs = registerOutput<List<CxEnvironmentVersionConfig>>('versionConfigs');
+    parent = registerOutput<String?>('parent');
+    updateTime = registerOutput<String>('updateTime');
+    versionConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'versionConfigs',
+    );
   }
 
   /// Gets an existing [CxEnvironment] resource's state with the given [name] and [id].
@@ -371,16 +377,18 @@ class CxEnvironment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/cxEnvironment:CxEnvironment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'gcp:diagflow/cxEnvironment:CxEnvironment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<String?>('parent');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.versionConfigs = registerOutput<List<CxEnvironmentVersionConfig>>('versionConfigs');
+    parent = registerOutput<String?>('parent');
+    updateTime = registerOutput<String>('updateTime');
+    versionConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'versionConfigs',
+    );
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesServiceVersionsArgs {
   /// Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
   final pulumi.Input<bool>? includePreview;
+
   /// Specifies the location in which to query for versions.
   final pulumi.Input<String> location;
+
   /// A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
   final pulumi.Input<String>? versionPrefix;
 
@@ -34,10 +36,17 @@ class GetKubernetesServiceVersionsArgs {
 
   factory GetKubernetesServiceVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesServiceVersionsArgs(
-      includePreview: map['includePreview'] == null ? null : (map['includePreview']! as bool).input(),
-      location: (map['location'] as String).input(),
-      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix']! as String).input(),
+      includePreview: (() {
+        final guardedValue = map['includePreview'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      versionPrefix: (() {
+        final guardedValue = map['versionPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

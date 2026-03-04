@@ -10,20 +10,39 @@ class MapperAttributeMappingsResponse {
 
   /// Creates a new [MapperAttributeMappingsResponse].
   /// [attributeMappings] List of attribute mappings.
-  MapperAttributeMappingsResponse({
-    this.attributeMappings,
-  });
+  MapperAttributeMappingsResponse({this.attributeMappings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributeMappings': ?pulumi.Input.mapOptionalInputValue<List<MapperAttributeMappingResponse>, List<Map<String, dynamic>>>(attributeMappings, (value) => pulumi.Input.encodeList<MapperAttributeMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attributeMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MapperAttributeMappingResponse>,
+            List<Map<String, dynamic>>
+          >(
+            attributeMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MapperAttributeMappingResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory MapperAttributeMappingsResponse.fromMap(Map<String, dynamic> map) {
     return MapperAttributeMappingsResponse(
-      attributeMappings: map['attributeMappings'] == null ? null : (pulumi.Input.decodeList<MapperAttributeMappingResponse>(map['attributeMappings']!, (value) => MapperAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributeMappings: (() {
+        final guardedValue = map['attributeMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MapperAttributeMappingResponse>(
+            guardedValue,
+            (value) => MapperAttributeMappingResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

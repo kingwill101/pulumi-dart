@@ -5,9 +5,9 @@ import 'spring_cloud_java_deployment_state.dart';
 
 /// Manages an Azure Spring Cloud Deployment with a Java runtime.
 ///
-/// > **Note:** This resource is applicable only for Spring Cloud Service with basic and standard tier.
+/// &gt; **Note:** This resource is applicable only for Spring Cloud Service with basic and standard tier.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudJavaDeployment` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudJavaDeployment` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -313,16 +313,22 @@ import 'spring_cloud_java_deployment_state.dart';
 class SpringCloudJavaDeployment extends pulumi.CustomResource {
   /// Specifies the environment variables of the Spring Cloud Deployment as a map of key-value pairs.
   late final pulumi.Output<Map<String, String>?> environmentVariables;
+
   /// Specifies the required instance count of the Spring Cloud Deployment. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   late final pulumi.Output<int?> instanceCount;
+
   /// Specifies the jvm option of the Spring Cloud Deployment.
   late final pulumi.Output<String?> jvmOptions;
+
   /// Specifies the name of the Spring Cloud Deployment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `quota` block as defined below.
   late final pulumi.Output<SpringCloudJavaDeploymentQuota> quota;
+
   /// Specifies the runtime version of the Spring Cloud Deployment. Possible Values are `Java_8`, `Java_11` and `Java_17`. Defaults to `Java_8`.
   late final pulumi.Output<String?> runtimeVersion;
+
   /// Specifies the id of the Spring Cloud Application in which to create the Deployment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> springCloudAppId;
 
@@ -335,18 +341,20 @@ class SpringCloudJavaDeployment extends pulumi.CustomResource {
     SpringCloudJavaDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    this.instanceCount = registerOutput<int?>('instanceCount');
-    this.jvmOptions = registerOutput<String?>('jvmOptions');
+         'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    environmentVariables = registerOutput<Map<String, String>?>(
+      'environmentVariables',
+    );
+    instanceCount = registerOutput<int?>('instanceCount');
+    jvmOptions = registerOutput<String?>('jvmOptions');
     this.name = registerOutput<String>('name');
-    this.quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota');
-    this.runtimeVersion = registerOutput<String?>('runtimeVersion');
-    this.springCloudAppId = registerOutput<String>('springCloudAppId');
+    quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota');
+    runtimeVersion = registerOutput<String?>('runtimeVersion');
+    springCloudAppId = registerOutput<String>('springCloudAppId');
   }
 
   /// Gets an existing [SpringCloudJavaDeployment] resource's state with the given [name] and [id].
@@ -367,17 +375,19 @@ class SpringCloudJavaDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
-    this.instanceCount = registerOutput<int?>('instanceCount');
-    this.jvmOptions = registerOutput<String?>('jvmOptions');
+         'azure:appplatform/springCloudJavaDeployment:SpringCloudJavaDeployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    environmentVariables = registerOutput<Map<String, String>?>(
+      'environmentVariables',
+    );
+    instanceCount = registerOutput<int?>('instanceCount');
+    jvmOptions = registerOutput<String?>('jvmOptions');
     this.name = registerOutput<String>('name');
-    this.quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota');
-    this.runtimeVersion = registerOutput<String?>('runtimeVersion');
-    this.springCloudAppId = registerOutput<String>('springCloudAppId');
+    quota = registerOutput<SpringCloudJavaDeploymentQuota>('quota');
+    runtimeVersion = registerOutput<String?>('runtimeVersion');
+    springCloudAppId = registerOutput<String>('springCloudAppId');
   }
 }

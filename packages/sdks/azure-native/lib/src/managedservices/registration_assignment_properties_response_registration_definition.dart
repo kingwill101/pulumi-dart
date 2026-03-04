@@ -9,14 +9,20 @@ import 'system_data_response.dart';
 class RegistrationAssignmentPropertiesResponseRegistrationDefinition {
   /// The fully qualified path of the registration definition.
   final pulumi.Input<String> id;
+
   /// The name of the registration definition.
   final pulumi.Input<String> name;
+
   /// The details for the Managed Services offer’s plan in Azure Marketplace.
   final pulumi.Input<PlanResponse>? plan;
+
   /// The properties of the registration definition associated with the registration assignment.
-  final pulumi.Input<RegistrationAssignmentPropertiesResponseProperties>? properties;
+  final pulumi.Input<RegistrationAssignmentPropertiesResponseProperties>?
+  properties;
+
   /// The metadata for the registration definition resource.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
   final pulumi.Input<String> type;
 
@@ -40,22 +46,53 @@ class RegistrationAssignmentPropertiesResponseRegistrationDefinition {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'plan': ?pulumi.Input.mapOptionalInputValue<PlanResponse, Map<String, dynamic>>(plan, (value) => value.toMap()),
-      'properties': ?pulumi.Input.mapOptionalInputValue<RegistrationAssignmentPropertiesResponseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'plan':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlanResponse,
+            Map<String, dynamic>
+          >(plan, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistrationAssignmentPropertiesResponseProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
 
-  factory RegistrationAssignmentPropertiesResponseRegistrationDefinition.fromMap(Map<String, dynamic> map) {
+  factory RegistrationAssignmentPropertiesResponseRegistrationDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistrationAssignmentPropertiesResponseRegistrationDefinition(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (PlanResponse.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (RegistrationAssignmentPropertiesResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistrationAssignmentPropertiesResponseProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

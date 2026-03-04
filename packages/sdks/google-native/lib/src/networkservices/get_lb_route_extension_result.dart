@@ -7,18 +7,25 @@ import 'extension_chain_response.dart';
 class GetLbRouteExtensionResult {
   /// The timestamp when the resource was created.
   final String createTime;
+
   /// Optional. A human-readable description of the resource.
   final String description;
+
   /// A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
   final List<ExtensionChainResponse> extensionChains;
+
   /// A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding rule.
   final List<String> forwardingRules;
+
   /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
   final Map<String, String> labels;
+
   /// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
   final String loadBalancingScheme;
+
   /// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
   final String name;
+
   /// The timestamp when the resource was updated.
   final String updateTime;
 
@@ -46,7 +53,11 @@ class GetLbRouteExtensionResult {
     return <String, dynamic>{
       'createTime': createTime,
       'description': description,
-      'extensionChains': pulumi.Input.encodeList<ExtensionChainResponse, Map<String, dynamic>>(extensionChains, (value) => value.toMap()),
+      'extensionChains':
+          pulumi.Input.encodeList<ExtensionChainResponse, Map<String, dynamic>>(
+            extensionChains,
+            (value) => value.toMap(),
+          ),
       'forwardingRules': forwardingRules,
       'labels': labels,
       'loadBalancingScheme': loadBalancingScheme,
@@ -59,7 +70,12 @@ class GetLbRouteExtensionResult {
     return GetLbRouteExtensionResult(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      extensionChains: pulumi.Input.decodeList<ExtensionChainResponse>(map['extensionChains'], (value) => ExtensionChainResponse.fromMap((value as Map).cast<String, dynamic>())),
+      extensionChains: pulumi.Input.decodeList<ExtensionChainResponse>(
+        map['extensionChains']!,
+        (value) => ExtensionChainResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       forwardingRules: (map['forwardingRules'] as List).cast<String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
       loadBalancingScheme: map['loadBalancingScheme'] as String,
@@ -68,4 +84,3 @@ class GetLbRouteExtensionResult {
     );
   }
 }
-

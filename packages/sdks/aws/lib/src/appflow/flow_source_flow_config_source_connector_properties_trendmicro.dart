@@ -3,24 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro {
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro].
-  /// [object] Required.
+  /// [object_] Required.
   FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro({
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'object': object,
-    };
+    return <String, dynamic>{'object': object_};
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro(
-      object: (map['object'] as String).input(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

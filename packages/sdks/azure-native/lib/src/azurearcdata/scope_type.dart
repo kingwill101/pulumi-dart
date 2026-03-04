@@ -4,16 +4,15 @@ enum ScopeType {
   valueSubscription("Subscription"),
   valueResourceGroup("ResourceGroup");
 
-  const ScopeType(this.value);
-  final String value;
+  const ScopeType(this.wireValue);
+  final String wireValue;
 
   static ScopeType fromValue(String value) {
     for (final item in ScopeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScopeType value: $value');
   }
 }
-

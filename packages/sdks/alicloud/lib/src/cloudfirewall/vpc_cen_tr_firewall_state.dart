@@ -6,38 +6,53 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcCenTrFirewallState {
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   final pulumi.Input<String>? cenId;
+
   /// The description of the firewall.
   final pulumi.Input<String>? firewallDescription;
+
   /// The ID of the firewall ENI.
   final pulumi.Input<String>? firewallEniId;
+
   /// The ID of the VPC where the firewall ENI resides.
   final pulumi.Input<String>? firewallEniVpcId;
+
   /// The name of the Cloud Firewall.
   final pulumi.Input<String>? firewallName;
+
   /// The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
   final pulumi.Input<String>? firewallSubnetCidr;
+
   /// The ID of the firewall VPC connection.
   final pulumi.Input<String>? firewallVpcAttachmentId;
+
   /// The CIDR block of the firewall VPC in automatic mode.
   final pulumi.Input<String>? firewallVpcCidr;
+
   /// The region ID of the transit router instance.
   final pulumi.Input<String>? regionNo;
+
   /// The routing mode. Valid values:
   final pulumi.Input<String>? routeMode;
+
   /// The status of the firewall.
   final pulumi.Input<String>? status;
+
   /// The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
   final pulumi.Input<String>? trAttachmentMasterCidr;
+
   /// The primary zone of the vSwitch.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? trAttachmentMasterZone;
+
   /// The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
   final pulumi.Input<String>? trAttachmentSlaveCidr;
+
   /// The secondary zone of the vSwitch.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? trAttachmentSlaveZone;
+
   /// The ID of the Transit Router instance.
   final pulumi.Input<String>? transitRouterId;
 
@@ -100,23 +115,86 @@ class VpcCenTrFirewallState {
 
   factory VpcCenTrFirewallState.fromMap(Map<String, dynamic> map) {
     return VpcCenTrFirewallState(
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      firewallDescription: map['firewallDescription'] == null ? null : (map['firewallDescription']! as String).input(),
-      firewallEniId: map['firewallEniId'] == null ? null : (map['firewallEniId']! as String).input(),
-      firewallEniVpcId: map['firewallEniVpcId'] == null ? null : (map['firewallEniVpcId']! as String).input(),
-      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
-      firewallSubnetCidr: map['firewallSubnetCidr'] == null ? null : (map['firewallSubnetCidr']! as String).input(),
-      firewallVpcAttachmentId: map['firewallVpcAttachmentId'] == null ? null : (map['firewallVpcAttachmentId']! as String).input(),
-      firewallVpcCidr: map['firewallVpcCidr'] == null ? null : (map['firewallVpcCidr']! as String).input(),
-      regionNo: map['regionNo'] == null ? null : (map['regionNo']! as String).input(),
-      routeMode: map['routeMode'] == null ? null : (map['routeMode']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      trAttachmentMasterCidr: map['trAttachmentMasterCidr'] == null ? null : (map['trAttachmentMasterCidr']! as String).input(),
-      trAttachmentMasterZone: map['trAttachmentMasterZone'] == null ? null : (map['trAttachmentMasterZone']! as String).input(),
-      trAttachmentSlaveCidr: map['trAttachmentSlaveCidr'] == null ? null : (map['trAttachmentSlaveCidr']! as String).input(),
-      trAttachmentSlaveZone: map['trAttachmentSlaveZone'] == null ? null : (map['trAttachmentSlaveZone']! as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallDescription: (() {
+        final guardedValue = map['firewallDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallEniId: (() {
+        final guardedValue = map['firewallEniId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallEniVpcId: (() {
+        final guardedValue = map['firewallEniVpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallName: (() {
+        final guardedValue = map['firewallName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallSubnetCidr: (() {
+        final guardedValue = map['firewallSubnetCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallVpcAttachmentId: (() {
+        final guardedValue = map['firewallVpcAttachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallVpcCidr: (() {
+        final guardedValue = map['firewallVpcCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionNo: (() {
+        final guardedValue = map['regionNo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeMode: (() {
+        final guardedValue = map['routeMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trAttachmentMasterCidr: (() {
+        final guardedValue = map['trAttachmentMasterCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trAttachmentMasterZone: (() {
+        final guardedValue = map['trAttachmentMasterZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trAttachmentSlaveCidr: (() {
+        final guardedValue = map['trAttachmentSlaveCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trAttachmentSlaveZone: (() {
+        final guardedValue = map['trAttachmentSlaveZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

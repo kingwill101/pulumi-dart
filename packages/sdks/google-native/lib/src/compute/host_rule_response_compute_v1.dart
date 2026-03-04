@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostRuleResponseComputeV1 {
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String> description;
+
   /// The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port. * matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
   final pulumi.Input<List<String>> hosts;
+
   /// The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
   final pulumi.Input<String> pathMatcher;
 
@@ -31,10 +33,9 @@ class HostRuleResponseComputeV1 {
 
   factory HostRuleResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return HostRuleResponseComputeV1(
-      description: (map['description'] as String).input(),
-      hosts: ((map['hosts'] as List).cast<String>()).input(),
-      pathMatcher: (map['pathMatcher'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      hosts: pulumi.Input.fromValue((map['hosts'] as List).cast<String>()),
+      pathMatcher: pulumi.Input.fromValue(map['pathMatcher'] as String),
     );
   }
 }
-

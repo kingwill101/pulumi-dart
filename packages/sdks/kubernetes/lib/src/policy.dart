@@ -1,5 +1,3 @@
-library module_policy;
-
 export 'policy/allowed_csidriver.dart';
 export 'policy/allowed_csidriver_patch.dart';
 export 'policy/allowed_flex_volume.dart';

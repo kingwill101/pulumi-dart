@@ -21,11 +21,12 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughpu
     };
   }
 
-  factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap(Map<String, dynamic> map) {
+  factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput(
-      enabled: (map['enabled'] as bool).input(),
-      volumeThroughput: (map['volumeThroughput'] as int).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      volumeThroughput: pulumi.Input.fromValue(map['volumeThroughput'] as int),
     );
   }
 }
-

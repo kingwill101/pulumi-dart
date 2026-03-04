@@ -56,16 +56,15 @@ enum SkuName {
   valueFlashOptimizedA2000("FlashOptimized_A2000"),
   valueFlashOptimizedA4500("FlashOptimized_A4500");
 
-  const SkuName(this.value);
-  final String value;
+  const SkuName(this.wireValue);
+  final String wireValue;
 
   static SkuName fromValue(String value) {
     for (final item in SkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuName value: $value');
   }
 }
-

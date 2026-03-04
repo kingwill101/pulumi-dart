@@ -7,32 +7,46 @@ import 'business_identity_response.dart';
 class GetIntegrationAccountAgreementResult {
   /// The agreement type.
   final String agreementType;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The changed time.
   final String changedTime;
+
   /// The agreement content.
   final AgreementContentResponse content;
+
   /// The created time.
   final String createdTime;
+
   /// The business identity of the guest partner.
   final BusinessIdentityResponse guestIdentity;
+
   /// The integration account partner that is set as guest partner for this agreement.
   final String guestPartner;
+
   /// The business identity of the host partner.
   final BusinessIdentityResponse hostIdentity;
+
   /// The integration account partner that is set as host partner for this agreement.
   final String hostPartner;
+
   /// The resource id.
   final String id;
+
   /// The resource location.
   final String? location;
+
   /// The metadata.
   final dynamic metadata;
+
   /// Gets the resource name.
   final String name;
+
   /// The resource tags.
   final Map<String, String>? tags;
+
   /// Gets the resource type.
   final String type;
 
@@ -90,24 +104,43 @@ class GetIntegrationAccountAgreementResult {
     };
   }
 
-  factory GetIntegrationAccountAgreementResult.fromMap(Map<String, dynamic> map) {
+  factory GetIntegrationAccountAgreementResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIntegrationAccountAgreementResult(
       agreementType: map['agreementType'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       changedTime: map['changedTime'] as String,
-      content: AgreementContentResponse.fromMap((map['content'] as Map).cast<String, dynamic>()),
+      content: AgreementContentResponse.fromMap(
+        (map['content']! as Map).cast<String, dynamic>(),
+      ),
       createdTime: map['createdTime'] as String,
-      guestIdentity: BusinessIdentityResponse.fromMap((map['guestIdentity'] as Map).cast<String, dynamic>()),
+      guestIdentity: BusinessIdentityResponse.fromMap(
+        (map['guestIdentity']! as Map).cast<String, dynamic>(),
+      ),
       guestPartner: map['guestPartner'] as String,
-      hostIdentity: BusinessIdentityResponse.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>()),
+      hostIdentity: BusinessIdentityResponse.fromMap(
+        (map['hostIdentity']! as Map).cast<String, dynamic>(),
+      ),
       hostPartner: map['hostPartner'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
-      metadata: map['metadata'] == null ? null : map['metadata']!,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return guardedValue;
+      })(),
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

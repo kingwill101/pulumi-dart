@@ -6,16 +6,15 @@ enum JobTier {
   valueStandard("Standard"),
   valuePremium("Premium");
 
-  const JobTier(this.value);
-  final String value;
+  const JobTier(this.wireValue);
+  final String wireValue;
 
   static JobTier fromValue(String value) {
     for (final item in JobTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobTier value: $value');
   }
 }
-

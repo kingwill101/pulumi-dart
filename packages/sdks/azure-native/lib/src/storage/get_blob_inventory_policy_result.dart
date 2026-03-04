@@ -7,16 +7,22 @@ import 'system_data_response.dart';
 class GetBlobInventoryPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Returns the last modified date and time of the blob inventory policy.
   final String lastModifiedTime;
+
   /// The name of the resource
   final String name;
+
   /// The storage account blob inventory policy object. It is composed of policy rules.
   final BlobInventoryPolicySchemaResponse policy;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -56,10 +62,13 @@ class GetBlobInventoryPolicyResult {
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
-      policy: BlobInventoryPolicySchemaResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      policy: BlobInventoryPolicySchemaResponse.fromMap(
+        (map['policy']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

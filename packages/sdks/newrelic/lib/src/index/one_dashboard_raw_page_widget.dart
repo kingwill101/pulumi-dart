@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardRawPageWidget {
   /// (Required) Column position of widget from top left, starting at `1`.
   final pulumi.Input<int> column;
+
   /// (Required) The configuration of the widget.
   final pulumi.Input<String> configuration;
+
   /// (Optional) Height of the widget. Valid values are `1` to `12` inclusive. Defaults to `3`.
   final pulumi.Input<int>? height;
+
   /// The ID of the widget.
   final pulumi.Input<String>? id;
+
   /// (Optional) Related entity GUIDs.
   final pulumi.Input<List<String>>? linkedEntityGuids;
+
   /// (Required) Row position of widget from top left, starting at `1`.
   final pulumi.Input<int> row;
+
   /// (Required) A title for the widget.
   final pulumi.Input<String> title;
+
   /// (Required) The visualization ID of the widget
   final pulumi.Input<String> visualizationId;
+
   /// (Optional) Width of the widget. Valid values are `1` to `12` inclusive. Defaults to `4`.
   final pulumi.Input<int>? width;
 
@@ -60,16 +68,31 @@ class OneDashboardRawPageWidget {
 
   factory OneDashboardRawPageWidget.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawPageWidget(
-      column: (map['column'] as int).input(),
-      configuration: (map['configuration'] as String).input(),
-      height: map['height'] == null ? null : (map['height']! as int).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      linkedEntityGuids: map['linkedEntityGuids'] == null ? null : ((map['linkedEntityGuids']! as List).cast<String>()).input(),
-      row: (map['row'] as int).input(),
-      title: (map['title'] as String).input(),
-      visualizationId: (map['visualizationId'] as String).input(),
-      width: map['width'] == null ? null : (map['width']! as int).input(),
+      column: pulumi.Input.fromValue(map['column'] as int),
+      configuration: pulumi.Input.fromValue(map['configuration'] as String),
+      height: (() {
+        final guardedValue = map['height'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedEntityGuids: (() {
+        final guardedValue = map['linkedEntityGuids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      row: pulumi.Input.fromValue(map['row'] as int),
+      title: pulumi.Input.fromValue(map['title'] as String),
+      visualizationId: pulumi.Input.fromValue(map['visualizationId'] as String),
+      width: (() {
+        final guardedValue = map['width'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'virtual_network_dns_servers_state.dart';
 
 /// Manages the DNS servers associated with a virtual network.
 ///
-/// > **Note:** Terraform currently provides both a standalone virtual network DNS Servers resource, and allows for DNS servers to be defined in-line within the Virtual Network resource.
+/// &gt; **Note:** Terraform currently provides both a standalone virtual network DNS Servers resource, and allows for DNS servers to be defined in-line within the Virtual Network resource.
 /// At this time you cannot use a Virtual Network with in-line DNS servers in conjunction with any Virtual Network DNS Servers resources. Doing so will cause a conflict of Virtual Network DNS Servers configurations and will overwrite virtual networks DNS servers.
 ///
 /// ## Example Usage
@@ -243,7 +243,7 @@ import 'virtual_network_dns_servers_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -258,6 +258,7 @@ import 'virtual_network_dns_servers_state.dart';
 class VirtualNetworkDnsServers extends pulumi.CustomResource {
   /// List of IP addresses of DNS servers
   late final pulumi.Output<List<String>?> dnsServers;
+
   /// The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkId;
 
@@ -270,13 +271,13 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
     VirtualNetworkDnsServersArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsServers = registerOutput<List<String>?>('dnsServers');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
+         'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsServers = registerOutput<List<String>?>('dnsServers');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 
   /// Gets an existing [VirtualNetworkDnsServers] resource's state with the given [name] and [id].
@@ -297,12 +298,12 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dnsServers = registerOutput<List<String>?>('dnsServers');
-    this.virtualNetworkId = registerOutput<String>('virtualNetworkId');
+         'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dnsServers = registerOutput<List<String>?>('dnsServers');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 }

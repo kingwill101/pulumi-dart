@@ -4,16 +4,15 @@ enum EndpointAuthMode {
   valueKey("Key"),
   valueAADToken("AADToken");
 
-  const EndpointAuthMode(this.value);
-  final String value;
+  const EndpointAuthMode(this.wireValue);
+  final String wireValue;
 
   static EndpointAuthMode fromValue(String value) {
     for (final item in EndpointAuthMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointAuthMode value: $value');
   }
 }
-

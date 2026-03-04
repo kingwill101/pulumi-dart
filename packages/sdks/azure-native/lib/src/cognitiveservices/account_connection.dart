@@ -171,10 +171,13 @@ import 'account_connection_args.dart';
 class AccountConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Connection property base schema.
   late final pulumi.Output<AADAuthTypeConnectionPropertiesResponse> properties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -187,14 +190,16 @@ class AccountConnection extends pulumi.CustomResource {
     AccountConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cognitiveservices:AccountConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:cognitiveservices:AccountConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<AADAuthTypeConnectionPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<AADAuthTypeConnectionPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WnsCredential {
   /// Ges or sets the WNS Certificate Key.
   final pulumi.Input<String>? certificateKey;
+
   /// Gets or sets the package ID for this credential.
   final pulumi.Input<String>? packageSid;
+
   /// Gets or sets the secret key.
   final pulumi.Input<String>? secretKey;
+
   /// Gets or sets the Windows Live endpoint.
   final pulumi.Input<String>? windowsLiveEndpoint;
+
   /// Gets or sets the WNS Certificate.
   final pulumi.Input<String>? wnsCertificate;
 
@@ -41,12 +45,31 @@ class WnsCredential {
 
   factory WnsCredential.fromMap(Map<String, dynamic> map) {
     return WnsCredential(
-      certificateKey: map['certificateKey'] == null ? null : (map['certificateKey']! as String).input(),
-      packageSid: map['packageSid'] == null ? null : (map['packageSid']! as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
-      windowsLiveEndpoint: map['windowsLiveEndpoint'] == null ? null : (map['windowsLiveEndpoint']! as String).input(),
-      wnsCertificate: map['wnsCertificate'] == null ? null : (map['wnsCertificate']! as String).input(),
+      certificateKey: (() {
+        final guardedValue = map['certificateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageSid: (() {
+        final guardedValue = map['packageSid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretKey: (() {
+        final guardedValue = map['secretKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      windowsLiveEndpoint: (() {
+        final guardedValue = map['windowsLiveEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      wnsCertificate: (() {
+        final guardedValue = map['wnsCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

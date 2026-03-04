@@ -508,26 +508,34 @@ class Certificate extends pulumi.CustomResource {
   /// between the certificate authority's certificate and your domain's TLS
   /// certificate. Only valid when type is `custom`.
   late final pulumi.Output<String?> certificateChain;
+
   /// List of fully qualified domain names (FQDNs) for
   /// which the certificate will be issued. The domains must be managed using
   /// DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
   late final pulumi.Output<List<String>?> domains;
+
   /// The contents of a PEM-formatted public
   /// TLS certificate. Only valid when type is `custom`.
   late final pulumi.Output<String?> leafCertificate;
+
   /// The name of the certificate for identification.
   late final pulumi.Output<String> name;
+
   /// The expiration date of the certificate
   late final pulumi.Output<String> notAfter;
+
   /// The contents of a PEM-formatted private-key
   /// corresponding to the SSL certificate. Only valid when type is `custom`.
   late final pulumi.Output<String?> privateKey;
+
   /// The SHA-1 fingerprint of the certificate
   late final pulumi.Output<String> sha1Fingerprint;
   late final pulumi.Output<String> state;
+
   /// The type of certificate to provision. Can be either
   /// `custom` or `lets_encrypt`. Defaults to `custom`.
   late final pulumi.Output<String?> type;
+
   /// The UUID of the certificate
   late final pulumi.Output<String> uuid;
 
@@ -540,21 +548,21 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateChain = registerOutput<String?>('certificateChain');
-    this.domains = registerOutput<List<String>?>('domains');
-    this.leafCertificate = registerOutput<String?>('leafCertificate');
+         'digitalocean:index/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateChain = registerOutput<String?>('certificateChain');
+    domains = registerOutput<List<String>?>('domains');
+    leafCertificate = registerOutput<String?>('leafCertificate');
     this.name = registerOutput<String>('name');
-    this.notAfter = registerOutput<String>('notAfter');
-    this.privateKey = registerOutput<String?>('privateKey');
-    this.sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
-    this.state = registerOutput<String>('state');
-    this.type = registerOutput<String?>('type');
-    this.uuid = registerOutput<String>('uuid');
+    notAfter = registerOutput<String>('notAfter');
+    privateKey = registerOutput<String?>('privateKey');
+    sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
+    state = registerOutput<String>('state');
+    type = registerOutput<String?>('type');
+    uuid = registerOutput<String>('uuid');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -575,20 +583,20 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateChain = registerOutput<String?>('certificateChain');
-    this.domains = registerOutput<List<String>?>('domains');
-    this.leafCertificate = registerOutput<String?>('leafCertificate');
+         'digitalocean:index/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateChain = registerOutput<String?>('certificateChain');
+    domains = registerOutput<List<String>?>('domains');
+    leafCertificate = registerOutput<String?>('leafCertificate');
     this.name = registerOutput<String>('name');
-    this.notAfter = registerOutput<String>('notAfter');
-    this.privateKey = registerOutput<String?>('privateKey');
-    this.sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
+    notAfter = registerOutput<String>('notAfter');
+    privateKey = registerOutput<String?>('privateKey');
+    sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
     this.state = registerOutput<String>('state');
-    this.type = registerOutput<String?>('type');
-    this.uuid = registerOutput<String>('uuid');
+    type = registerOutput<String?>('type');
+    uuid = registerOutput<String>('uuid');
   }
 }

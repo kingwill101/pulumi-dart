@@ -10,20 +10,27 @@ class GooglePrivacyDlpV2CryptoHashConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2CryptoHashConfigResponse].
   /// [cryptoKey] The key used by the hash function.
-  GooglePrivacyDlpV2CryptoHashConfigResponse({
-    required this.cryptoKey,
-  });
+  GooglePrivacyDlpV2CryptoHashConfigResponse({required this.cryptoKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cryptoKey': pulumi.Input.mapInputValue<GooglePrivacyDlpV2CryptoKeyResponse, Map<String, dynamic>>(cryptoKey, (value) => value.toMap()),
+      'cryptoKey':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2CryptoKeyResponse,
+            Map<String, dynamic>
+          >(cryptoKey, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2CryptoHashConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CryptoHashConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2CryptoHashConfigResponse(
-      cryptoKey: (GooglePrivacyDlpV2CryptoKeyResponse.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
+      cryptoKey: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2CryptoKeyResponse.fromMap(
+          (map['cryptoKey']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

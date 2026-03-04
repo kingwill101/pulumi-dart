@@ -5,9 +5,9 @@ import 'spring_cloud_build_pack_binding_state.dart';
 
 /// Manages a Spring Cloud Build Pack Binding.
 ///
-/// > **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
+/// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuildPackBinding` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuildPackBinding` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -353,10 +353,13 @@ import 'spring_cloud_build_pack_binding_state.dart';
 class SpringCloudBuildPackBinding extends pulumi.CustomResource {
   /// Specifies the Build Pack Binding Type. Allowed values are `ApacheSkyWalking`, `AppDynamics`, `ApplicationInsights`, `Dynatrace`, `ElasticAPM` and `NewRelic`.
   late final pulumi.Output<String?> bindingType;
+
   /// A `launch` block as defined below.
   late final pulumi.Output<SpringCloudBuildPackBindingLaunch?> launch;
+
   /// The name which should be used for this Spring Cloud Build Pack Binding. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Spring Cloud Builder. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   late final pulumi.Output<String> springCloudBuilderId;
 
@@ -369,15 +372,15 @@ class SpringCloudBuildPackBinding extends pulumi.CustomResource {
     SpringCloudBuildPackBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bindingType = registerOutput<String?>('bindingType');
-    this.launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch');
+         'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bindingType = registerOutput<String?>('bindingType');
+    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch');
     this.name = registerOutput<String>('name');
-    this.springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
+    springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
   }
 
   /// Gets an existing [SpringCloudBuildPackBinding] resource's state with the given [name] and [id].
@@ -398,14 +401,14 @@ class SpringCloudBuildPackBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bindingType = registerOutput<String?>('bindingType');
-    this.launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch');
+         'azure:appplatform/springCloudBuildPackBinding:SpringCloudBuildPackBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bindingType = registerOutput<String?>('bindingType');
+    launch = registerOutput<SpringCloudBuildPackBindingLaunch?>('launch');
     this.name = registerOutput<String>('name');
-    this.springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
+    springCloudBuilderId = registerOutput<String>('springCloudBuilderId');
   }
 }

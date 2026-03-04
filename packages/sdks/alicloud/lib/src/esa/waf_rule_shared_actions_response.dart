@@ -4,29 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WafRuleSharedActionsResponse {
   final pulumi.Input<int>? code;
+
   /// The internal unique ID of the WAF rule.
   final pulumi.Input<int>? id;
 
   /// Creates a new [WafRuleSharedActionsResponse].
   /// [code] Optional.
   /// [id] The internal unique ID of the WAF rule.
-  WafRuleSharedActionsResponse({
-    this.code,
-    this.id,
-  });
+  WafRuleSharedActionsResponse({this.code, this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-      'id': ?id,
-    };
+    return <String, dynamic>{'code': ?code, 'id': ?id};
   }
 
   factory WafRuleSharedActionsResponse.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedActionsResponse(
-      code: map['code'] == null ? null : (map['code']! as int).input(),
-      id: map['id'] == null ? null : (map['id']! as int).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

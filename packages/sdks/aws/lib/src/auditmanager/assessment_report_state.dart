@@ -8,14 +8,19 @@ class AssessmentReportState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? assessmentId;
+
   /// Name of the user who created the assessment report.
   final pulumi.Input<String>? author;
+
   /// Description of the assessment report.
   final pulumi.Input<String>? description;
+
   /// Name of the assessment report.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Current status of the specified assessment report. Valid values are `COMPLETE`, `IN_PROGRESS`, and `FAILED`.
   final pulumi.Input<String>? status;
 
@@ -48,13 +53,36 @@ class AssessmentReportState {
 
   factory AssessmentReportState.fromMap(Map<String, dynamic> map) {
     return AssessmentReportState(
-      assessmentId: map['assessmentId'] == null ? null : ((map['assessmentId'] as String).input()).input(),
-      author: map['author'] == null ? null : ((map['author'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      assessmentId: (() {
+        final guardedValue = map['assessmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      author: (() {
+        final guardedValue = map['author'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

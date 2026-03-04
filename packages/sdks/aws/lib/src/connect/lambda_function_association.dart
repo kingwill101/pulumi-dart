@@ -111,8 +111,10 @@ import 'lambda_function_association_state.dart';
 class LambdaFunctionAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
   late final pulumi.Output<String> functionArn;
+
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -125,14 +127,14 @@ class LambdaFunctionAssociation extends pulumi.CustomResource {
     LambdaFunctionAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.functionArn = registerOutput<String>('functionArn');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.region = registerOutput<String>('region');
+         'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    functionArn = registerOutput<String>('functionArn');
+    instanceId = registerOutput<String>('instanceId');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [LambdaFunctionAssociation] resource's state with the given [name] and [id].
@@ -153,13 +155,13 @@ class LambdaFunctionAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.functionArn = registerOutput<String>('functionArn');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.region = registerOutput<String>('region');
+         'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    functionArn = registerOutput<String>('functionArn');
+    instanceId = registerOutput<String>('instanceId');
+    region = registerOutput<String>('region');
   }
 }

@@ -11,52 +11,77 @@ import 'sub_resource_response.dart';
 class GetExpressRouteCircuitResult {
   /// Allow classic operations.
   final bool? allowClassicOperations;
+
   /// The authorizationKey.
   final String? authorizationKey;
+
   /// The authorization status of the Circuit.
   final String authorizationStatus;
+
   /// The list of authorizations.
   final List<ExpressRouteCircuitAuthorizationResponse>? authorizations;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
   final double? bandwidthInGbps;
+
   /// The CircuitProvisioningState state of the resource.
   final String? circuitProvisioningState;
+
   /// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
   final bool? enableDirectPortRateLimit;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
   final SubResourceResponse? expressRoutePort;
+
   /// The GatewayManager Etag.
   final String? gatewayManagerEtag;
+
   /// Flag denoting global reach status.
   final bool? globalReachEnabled;
+
   /// Resource ID.
   final String? id;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// The list of peerings.
   final List<ExpressRouteCircuitPeeringResponse>? peerings;
+
   /// The provisioning state of the express route circuit resource.
   final String provisioningState;
+
   /// The ServiceKey.
   final String? serviceKey;
+
   /// The ServiceProviderNotes.
   final String? serviceProviderNotes;
+
   /// The ServiceProviderProperties.
-  final ExpressRouteCircuitServiceProviderPropertiesResponse? serviceProviderProperties;
+  final ExpressRouteCircuitServiceProviderPropertiesResponse?
+  serviceProviderProperties;
+
   /// The ServiceProviderProvisioningState state of the resource.
   final String? serviceProviderProvisioningState;
+
   /// The SKU.
   final ExpressRouteCircuitSkuResponse? sku;
+
   /// The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
   final int stag;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -119,25 +144,39 @@ class GetExpressRouteCircuitResult {
       'allowClassicOperations': ?allowClassicOperations,
       'authorizationKey': ?authorizationKey,
       'authorizationStatus': authorizationStatus,
-      'authorizations': ?authorizations == null ? null : pulumi.Input.encodeList<ExpressRouteCircuitAuthorizationResponse, Map<String, dynamic>>(authorizations!, (value) => value.toMap()),
+      'authorizations': ?(() {
+        final guardedValue = authorizations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ExpressRouteCircuitAuthorizationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'azureApiVersion': azureApiVersion,
       'bandwidthInGbps': ?bandwidthInGbps,
       'circuitProvisioningState': ?circuitProvisioningState,
       'enableDirectPortRateLimit': ?enableDirectPortRateLimit,
       'etag': etag,
-      'expressRoutePort': ?expressRoutePort == null ? null : expressRoutePort!.toMap(),
+      'expressRoutePort': ?expressRoutePort?.toMap(),
       'gatewayManagerEtag': ?gatewayManagerEtag,
       'globalReachEnabled': ?globalReachEnabled,
       'id': ?id,
       'location': ?location,
       'name': name,
-      'peerings': ?peerings == null ? null : pulumi.Input.encodeList<ExpressRouteCircuitPeeringResponse, Map<String, dynamic>>(peerings!, (value) => value.toMap()),
+      'peerings': ?(() {
+        final guardedValue = peerings;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ExpressRouteCircuitPeeringResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'provisioningState': provisioningState,
       'serviceKey': ?serviceKey,
       'serviceProviderNotes': ?serviceProviderNotes,
-      'serviceProviderProperties': ?serviceProviderProperties == null ? null : serviceProviderProperties!.toMap(),
+      'serviceProviderProperties': ?serviceProviderProperties?.toMap(),
       'serviceProviderProvisioningState': ?serviceProviderProvisioningState,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'stag': stag,
       'tags': ?tags,
       'type': type,
@@ -146,32 +185,120 @@ class GetExpressRouteCircuitResult {
 
   factory GetExpressRouteCircuitResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitResult(
-      allowClassicOperations: map['allowClassicOperations'] == null ? null : map['allowClassicOperations']! as bool,
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey']! as String,
+      allowClassicOperations: (() {
+        final guardedValue = map['allowClassicOperations'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      authorizationKey: (() {
+        final guardedValue = map['authorizationKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       authorizationStatus: map['authorizationStatus'] as String,
-      authorizations: map['authorizations'] == null ? null : pulumi.Input.decodeList<ExpressRouteCircuitAuthorizationResponse>(map['authorizations']!, (value) => ExpressRouteCircuitAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      authorizations: (() {
+        final guardedValue = map['authorizations'];
+        if (guardedValue == null) return null;
+        return pulumi
+            .Input.decodeList<ExpressRouteCircuitAuthorizationResponse>(
+          guardedValue,
+          (value) => ExpressRouteCircuitAuthorizationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : map['bandwidthInGbps']! as double,
-      circuitProvisioningState: map['circuitProvisioningState'] == null ? null : map['circuitProvisioningState']! as String,
-      enableDirectPortRateLimit: map['enableDirectPortRateLimit'] == null ? null : map['enableDirectPortRateLimit']! as bool,
+      bandwidthInGbps: (() {
+        final guardedValue = map['bandwidthInGbps'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      circuitProvisioningState: (() {
+        final guardedValue = map['circuitProvisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDirectPortRateLimit: (() {
+        final guardedValue = map['enableDirectPortRateLimit'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       etag: map['etag'] as String,
-      expressRoutePort: map['expressRoutePort'] == null ? null : SubResourceResponse.fromMap((map['expressRoutePort']! as Map).cast<String, dynamic>()),
-      gatewayManagerEtag: map['gatewayManagerEtag'] == null ? null : map['gatewayManagerEtag']! as String,
-      globalReachEnabled: map['globalReachEnabled'] == null ? null : map['globalReachEnabled']! as bool,
-      id: map['id'] == null ? null : map['id']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      expressRoutePort: (() {
+        final guardedValue = map['expressRoutePort'];
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      gatewayManagerEtag: (() {
+        final guardedValue = map['gatewayManagerEtag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      globalReachEnabled: (() {
+        final guardedValue = map['globalReachEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      peerings: map['peerings'] == null ? null : pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(map['peerings']!, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
+      peerings: (() {
+        final guardedValue = map['peerings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(
+          guardedValue,
+          (value) => ExpressRouteCircuitPeeringResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      serviceKey: map['serviceKey'] == null ? null : map['serviceKey']! as String,
-      serviceProviderNotes: map['serviceProviderNotes'] == null ? null : map['serviceProviderNotes']! as String,
-      serviceProviderProperties: map['serviceProviderProperties'] == null ? null : ExpressRouteCircuitServiceProviderPropertiesResponse.fromMap((map['serviceProviderProperties']! as Map).cast<String, dynamic>()),
-      serviceProviderProvisioningState: map['serviceProviderProvisioningState'] == null ? null : map['serviceProviderProvisioningState']! as String,
-      sku: map['sku'] == null ? null : ExpressRouteCircuitSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      serviceKey: (() {
+        final guardedValue = map['serviceKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      serviceProviderNotes: (() {
+        final guardedValue = map['serviceProviderNotes'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      serviceProviderProperties: (() {
+        final guardedValue = map['serviceProviderProperties'];
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitServiceProviderPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      serviceProviderProvisioningState: (() {
+        final guardedValue = map['serviceProviderProvisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return ExpressRouteCircuitSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       stag: map['stag'] as int,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

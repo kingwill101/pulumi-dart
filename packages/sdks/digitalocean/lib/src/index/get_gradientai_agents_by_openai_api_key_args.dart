@@ -11,20 +11,17 @@ class GetGradientaiAgentsByOpenaiApiKeyArgs {
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyArgs].
   /// [uuid] Required.
-  GetGradientaiAgentsByOpenaiApiKeyArgs({
-    required this.uuid,
-  });
+  GetGradientaiAgentsByOpenaiApiKeyArgs({required this.uuid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uuid': uuid,
-    };
+    return <String, dynamic>{'uuid': uuid};
   }
 
-  factory GetGradientaiAgentsByOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiAgentsByOpenaiApiKeyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiAgentsByOpenaiApiKeyArgs(
-      uuid: (map['uuid'] as String).input(),
+      uuid: pulumi.Input.fromValue(map['uuid'] as String),
     );
   }
 }
-

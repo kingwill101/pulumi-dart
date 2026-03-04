@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'saved_search_args.dart';
-import 'tag_response.dart';
 
 /// Value object for saved search results.
 ///
@@ -201,24 +200,34 @@ import 'tag_response.dart';
 class SavedSearch extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The category of the saved search. This helps the user to find a saved search faster.
   late final pulumi.Output<String> category;
+
   /// Saved search display name.
   late final pulumi.Output<String> displayName;
+
   /// The ETag of the saved search. To override an existing saved search, use "*" or specify the current Etag
   late final pulumi.Output<String?> etag;
+
   /// The function alias if query serves as a function.
   late final pulumi.Output<String?> functionAlias;
+
   /// The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.
   late final pulumi.Output<String?> functionParameters;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The query expression for the saved search.
   late final pulumi.Output<String> query;
+
   /// The tags attached to the saved search.
-  late final pulumi.Output<List<TagResponse>?> tags;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The version number of the query language. The current version is 2 and is the default.
   late final pulumi.Output<double?> version;
 
@@ -231,21 +240,21 @@ class SavedSearch extends pulumi.CustomResource {
     SavedSearchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationalinsights:SavedSearch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.category = registerOutput<String>('category');
-    this.displayName = registerOutput<String>('displayName');
-    this.etag = registerOutput<String?>('etag');
-    this.functionAlias = registerOutput<String?>('functionAlias');
-    this.functionParameters = registerOutput<String?>('functionParameters');
+         'azure-native:operationalinsights:SavedSearch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String>('category');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    functionAlias = registerOutput<String?>('functionAlias');
+    functionParameters = registerOutput<String?>('functionParameters');
     this.name = registerOutput<String>('name');
-    this.query = registerOutput<String>('query');
-    this.tags = registerOutput<List<TagResponse>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<double?>('version');
+    query = registerOutput<String>('query');
+    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<double?>('version');
   }
 }

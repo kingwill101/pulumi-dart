@@ -301,7 +301,7 @@ import 'product_tag_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -316,10 +316,13 @@ import 'product_tag_state.dart';
 class ProductTag extends pulumi.CustomResource {
   /// The name of the API Management Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The name of the API Management product. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementProductId;
+
   /// The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group in which the API Management Service should be exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -332,15 +335,15 @@ class ProductTag extends pulumi.CustomResource {
     ProductTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/productTag:ProductTag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.apiManagementProductId = registerOutput<String>('apiManagementProductId');
+         'azure:apimanagement/productTag:ProductTag',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiManagementProductId = registerOutput<String>('apiManagementProductId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ProductTag] resource's state with the given [name] and [id].
@@ -361,14 +364,14 @@ class ProductTag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/productTag:ProductTag',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.apiManagementProductId = registerOutput<String>('apiManagementProductId');
+         'azure:apimanagement/productTag:ProductTag',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiManagementProductId = registerOutput<String>('apiManagementProductId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

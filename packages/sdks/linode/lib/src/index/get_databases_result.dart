@@ -8,6 +8,7 @@ import 'get_databases_filter.dart';
 class GetDatabasesResult {
   final List<GetDatabasesDatabase> databases;
   final List<GetDatabasesFilter>? filters;
+
   /// The ID of the Managed Database.
   final String id;
   final String? order;
@@ -29,8 +30,19 @@ class GetDatabasesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databases': pulumi.Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(databases, (value) => value.toMap()),
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetDatabasesFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'databases':
+          pulumi.Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(
+            databases,
+            (value) => value.toMap(),
+          ),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetDatabasesFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'order': ?order,
       'orderBy': ?orderBy,
@@ -39,12 +51,33 @@ class GetDatabasesResult {
 
   factory GetDatabasesResult.fromMap(Map<String, dynamic> map) {
     return GetDatabasesResult(
-      databases: pulumi.Input.decodeList<GetDatabasesDatabase>(map['databases'], (value) => GetDatabasesDatabase.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDatabasesFilter>(map['filters']!, (value) => GetDatabasesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      databases: pulumi.Input.decodeList<GetDatabasesDatabase>(
+        map['databases']!,
+        (value) => GetDatabasesDatabase.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetDatabasesFilter>(
+          guardedValue,
+          (value) => GetDatabasesFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

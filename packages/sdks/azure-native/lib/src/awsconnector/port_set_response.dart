@@ -9,20 +9,19 @@ class PortSetResponse {
 
   /// Creates a new [PortSetResponse].
   /// [definition] Property definition
-  PortSetResponse({
-    this.definition,
-  });
+  PortSetResponse({this.definition});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'definition': ?definition,
-    };
+    return <String, dynamic>{'definition': ?definition};
   }
 
   factory PortSetResponse.fromMap(Map<String, dynamic> map) {
     return PortSetResponse(
-      definition: map['definition'] == null ? null : ((map['definition']! as List).cast<String>()).input(),
+      definition: (() {
+        final guardedValue = map['definition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

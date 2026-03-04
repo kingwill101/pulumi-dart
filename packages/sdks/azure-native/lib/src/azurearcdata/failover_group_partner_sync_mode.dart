@@ -3,16 +3,15 @@ enum FailoverGroupPartnerSyncMode {
   valueAsync("async"),
   valueSync("sync");
 
-  const FailoverGroupPartnerSyncMode(this.value);
-  final String value;
+  const FailoverGroupPartnerSyncMode(this.wireValue);
+  final String wireValue;
 
   static FailoverGroupPartnerSyncMode fromValue(String value) {
     for (final item in FailoverGroupPartnerSyncMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FailoverGroupPartnerSyncMode value: $value');
   }
 }
-

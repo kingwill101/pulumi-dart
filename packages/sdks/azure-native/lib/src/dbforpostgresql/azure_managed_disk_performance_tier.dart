@@ -15,16 +15,17 @@ enum AzureManagedDiskPerformanceTier {
   p70("P70"),
   p80("P80");
 
-  const AzureManagedDiskPerformanceTier(this.value);
-  final String value;
+  const AzureManagedDiskPerformanceTier(this.wireValue);
+  final String wireValue;
 
   static AzureManagedDiskPerformanceTier fromValue(String value) {
     for (final item in AzureManagedDiskPerformanceTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureManagedDiskPerformanceTier value: $value');
+    throw ArgumentError(
+      'Unknown AzureManagedDiskPerformanceTier value: $value',
+    );
   }
 }
-

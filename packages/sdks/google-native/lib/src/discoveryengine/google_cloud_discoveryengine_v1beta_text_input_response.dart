@@ -6,7 +6,11 @@ import 'google_cloud_discoveryengine_v1beta_conversation_context_response.dart';
 /// Defines text input.
 class GoogleCloudDiscoveryengineV1betaTextInputResponse {
   /// Conversation context of the input.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1betaConversationContextResponse> context;
+  final pulumi.Input<
+    GoogleCloudDiscoveryengineV1betaConversationContextResponse
+  >
+  context;
+
   /// Text input.
   final pulumi.Input<String> input;
 
@@ -20,16 +24,25 @@ class GoogleCloudDiscoveryengineV1betaTextInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'context': pulumi.Input.mapInputValue<GoogleCloudDiscoveryengineV1betaConversationContextResponse, Map<String, dynamic>>(context, (value) => value.toMap()),
+      'context':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDiscoveryengineV1betaConversationContextResponse,
+            Map<String, dynamic>
+          >(context, (value) => value.toMap()),
       'input': input,
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaTextInputResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1betaTextInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1betaTextInputResponse(
-      context: (GoogleCloudDiscoveryengineV1betaConversationContextResponse.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      input: (map['input'] as String).input(),
+      context: pulumi.Input.fromValue(
+        GoogleCloudDiscoveryengineV1betaConversationContextResponse.fromMap(
+          (map['context']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      input: pulumi.Input.fromValue(map['input'] as String),
     );
   }
 }
-

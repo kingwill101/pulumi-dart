@@ -7,16 +7,24 @@ import 'frontend_endpoint_update_parameters_web_application_firewall_policy_link
 class FrontendEndpoint {
   /// The host name of the frontendEndpoint. Must be a domain name.
   final pulumi.Input<String>? hostName;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource name.
   final pulumi.Input<String>? name;
+
   /// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
   final pulumi.Input<String>? sessionAffinityEnabledState;
+
   /// UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
   final pulumi.Input<int>? sessionAffinityTtlSeconds;
+
   /// Defines the Web Application Firewall policy for each host (if applicable)
-  final pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink>? webApplicationFirewallPolicyLink;
+  final pulumi.Input<
+    FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink
+  >?
+  webApplicationFirewallPolicyLink;
 
   /// Creates a new [FrontendEndpoint].
   /// [hostName] The host name of the frontendEndpoint. Must be a domain name.
@@ -41,19 +49,50 @@ class FrontendEndpoint {
       'name': ?name,
       'sessionAffinityEnabledState': ?sessionAffinityEnabledState,
       'sessionAffinityTtlSeconds': ?sessionAffinityTtlSeconds,
-      'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
+      'webApplicationFirewallPolicyLink':
+          ?pulumi.Input.mapOptionalInputValue<
+            FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink,
+            Map<String, dynamic>
+          >(webApplicationFirewallPolicyLink, (value) => value.toMap()),
     };
   }
 
   factory FrontendEndpoint.fromMap(Map<String, dynamic> map) {
     return FrontendEndpoint(
-      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      sessionAffinityEnabledState: map['sessionAffinityEnabledState'] == null ? null : (map['sessionAffinityEnabledState']! as String).input(),
-      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : (map['sessionAffinityTtlSeconds']! as int).input(),
-      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : (FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink']! as Map).cast<String, dynamic>())).input(),
+      hostName: (() {
+        final guardedValue = map['hostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionAffinityEnabledState: (() {
+        final guardedValue = map['sessionAffinityEnabledState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionAffinityTtlSeconds: (() {
+        final guardedValue = map['sessionAffinityTtlSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      webApplicationFirewallPolicyLink: (() {
+        final guardedValue = map['webApplicationFirewallPolicyLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkflowAccessKeySecretKeysArgs {
   /// The workflow access key name.
   final pulumi.Input<String> accessKeyName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -32,12 +34,15 @@ class ListWorkflowAccessKeySecretKeysArgs {
     };
   }
 
-  factory ListWorkflowAccessKeySecretKeysArgs.fromMap(Map<String, dynamic> map) {
+  factory ListWorkflowAccessKeySecretKeysArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWorkflowAccessKeySecretKeysArgs(
-      accessKeyName: (map['accessKeyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workflowName: (map['workflowName'] as String).input(),
+      accessKeyName: pulumi.Input.fromValue(map['accessKeyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
-

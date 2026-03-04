@@ -1,5 +1,3 @@
-library module_vpcaccess;
-
 export 'vpcaccess/connector.dart';
 export 'vpcaccess/connector_args.dart';
 export 'vpcaccess/connector_vpcaccess_v1beta1.dart';

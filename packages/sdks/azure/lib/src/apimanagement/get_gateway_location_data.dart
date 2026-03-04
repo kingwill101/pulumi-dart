@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayLocationData {
   /// The city or locality where the resource is located.
   final pulumi.Input<String> city;
+
   /// The district, state, or province where the resource is located.
   final pulumi.Input<String> district;
+
   /// The name of the API Management Gateway.
   final pulumi.Input<String> name;
   final pulumi.Input<String> region;
@@ -34,11 +36,10 @@ class GetGatewayLocationData {
 
   factory GetGatewayLocationData.fromMap(Map<String, dynamic> map) {
     return GetGatewayLocationData(
-      city: (map['city'] as String).input(),
-      district: (map['district'] as String).input(),
-      name: (map['name'] as String).input(),
-      region: (map['region'] as String).input(),
+      city: pulumi.Input.fromValue(map['city'] as String),
+      district: pulumi.Input.fromValue(map['district'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

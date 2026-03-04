@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventActionActionExportRevisionToS3RevisionDestination {
   /// The S3 bucket where the revision will be exported.
   final pulumi.Input<String> bucket;
+
   /// Pattern for naming revisions in the S3 bucket.
   /// Defaults to `${Revision.CreatedAt}/${Asset.Name}`.
   final pulumi.Input<String>? keyPattern;
@@ -18,17 +19,19 @@ class EventActionActionExportRevisionToS3RevisionDestination {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'keyPattern': ?keyPattern,
-    };
+    return <String, dynamic>{'bucket': bucket, 'keyPattern': ?keyPattern};
   }
 
-  factory EventActionActionExportRevisionToS3RevisionDestination.fromMap(Map<String, dynamic> map) {
+  factory EventActionActionExportRevisionToS3RevisionDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventActionActionExportRevisionToS3RevisionDestination(
-      bucket: (map['bucket'] as String).input(),
-      keyPattern: map['keyPattern'] == null ? null : ((map['keyPattern'] as String).input()).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      keyPattern: (() {
+        final guardedValue = map['keyPattern'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

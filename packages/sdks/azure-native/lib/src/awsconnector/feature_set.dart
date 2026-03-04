@@ -3,16 +3,15 @@ enum FeatureSet {
   aLL("ALL"),
   cONSOLIDATEDBILLING("CONSOLIDATED_BILLING");
 
-  const FeatureSet(this.value);
-  final String value;
+  const FeatureSet(this.wireValue);
+  final String wireValue;
 
   static FeatureSet fromValue(String value) {
     for (final item in FeatureSet.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeatureSet value: $value');
   }
 }
-

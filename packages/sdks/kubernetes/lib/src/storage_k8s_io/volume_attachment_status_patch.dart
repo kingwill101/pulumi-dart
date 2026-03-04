@@ -7,10 +7,13 @@ import 'volume_error_patch.dart';
 class VolumeAttachmentStatusPatch {
   /// attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
   final pulumi.Input<VolumeErrorPatch>? attachError;
+
   /// attached indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
   final pulumi.Input<bool>? attached;
+
   /// attachmentMetadata is populated with any information returned by the attach operation, upon successful attach, that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
   final pulumi.Input<Map<String, String>>? attachmentMetadata;
+
   /// detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.
   final pulumi.Input<VolumeErrorPatch>? detachError;
 
@@ -28,20 +31,53 @@ class VolumeAttachmentStatusPatch {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachError': ?pulumi.Input.mapOptionalInputValue<VolumeErrorPatch, Map<String, dynamic>>(attachError, (value) => value.toMap()),
+      'attachError':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeErrorPatch,
+            Map<String, dynamic>
+          >(attachError, (value) => value.toMap()),
       'attached': ?attached,
       'attachmentMetadata': ?attachmentMetadata,
-      'detachError': ?pulumi.Input.mapOptionalInputValue<VolumeErrorPatch, Map<String, dynamic>>(detachError, (value) => value.toMap()),
+      'detachError':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeErrorPatch,
+            Map<String, dynamic>
+          >(detachError, (value) => value.toMap()),
     };
   }
 
   factory VolumeAttachmentStatusPatch.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentStatusPatch(
-      attachError: map['attachError'] == null ? null : (VolumeErrorPatch.fromMap((map['attachError']! as Map).cast<String, dynamic>())).input(),
-      attached: map['attached'] == null ? null : (map['attached']! as bool).input(),
-      attachmentMetadata: map['attachmentMetadata'] == null ? null : ((map['attachmentMetadata']! as Map).cast<String, String>()).input(),
-      detachError: map['detachError'] == null ? null : (VolumeErrorPatch.fromMap((map['detachError']! as Map).cast<String, dynamic>())).input(),
+      attachError: (() {
+        final guardedValue = map['attachError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeErrorPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      attached: (() {
+        final guardedValue = map['attached'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      attachmentMetadata: (() {
+        final guardedValue = map['attachmentMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      detachError: (() {
+        final guardedValue = map['detachError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeErrorPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -6,19 +6,25 @@ import 'job_presto_config_logging_config.dart';
 class JobPrestoConfig {
   /// Presto client tags to attach to this query.
   final pulumi.Input<List<String>>? clientTags;
+
   /// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
   final pulumi.Input<bool>? continueOnFailure;
+
   /// The runtime logging config of the job
   final pulumi.Input<JobPrestoConfigLoggingConfig>? loggingConfig;
+
   /// The format in which query output will be displayed. See the Presto documentation for supported output formats.
   ///
   /// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
   final pulumi.Input<String>? outputFormat;
+
   /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// The HCFS URI of the script that contains SQL queries.
   /// Conflicts with `query_list`
   final pulumi.Input<String>? queryFileUri;
+
   /// The list of SQL queries or statements to execute as part of the job.
   /// Conflicts with `query_file_uri`
   final pulumi.Input<List<String>>? queryLists;
@@ -45,7 +51,11 @@ class JobPrestoConfig {
     return <String, dynamic>{
       'clientTags': ?clientTags,
       'continueOnFailure': ?continueOnFailure,
-      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<JobPrestoConfigLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'loggingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobPrestoConfigLoggingConfig,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
       'outputFormat': ?outputFormat,
       'properties': ?properties,
       'queryFileUri': ?queryFileUri,
@@ -55,14 +65,47 @@ class JobPrestoConfig {
 
   factory JobPrestoConfig.fromMap(Map<String, dynamic> map) {
     return JobPrestoConfig(
-      clientTags: map['clientTags'] == null ? null : ((map['clientTags']! as List).cast<String>()).input(),
-      continueOnFailure: map['continueOnFailure'] == null ? null : (map['continueOnFailure']! as bool).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (JobPrestoConfigLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri']! as String).input(),
-      queryLists: map['queryLists'] == null ? null : ((map['queryLists']! as List).cast<String>()).input(),
+      clientTags: (() {
+        final guardedValue = map['clientTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      continueOnFailure: (() {
+        final guardedValue = map['continueOnFailure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loggingConfig: (() {
+        final guardedValue = map['loggingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobPrestoConfigLoggingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      outputFormat: (() {
+        final guardedValue = map['outputFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      queryFileUri: (() {
+        final guardedValue = map['queryFileUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queryLists: (() {
+        final guardedValue = map['queryLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

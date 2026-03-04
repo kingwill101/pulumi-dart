@@ -11,20 +11,15 @@ class GetGenaiIndexingJobArgs {
 
   /// Creates a new [GetGenaiIndexingJobArgs].
   /// [uuid] Required.
-  GetGenaiIndexingJobArgs({
-    required this.uuid,
-  });
+  GetGenaiIndexingJobArgs({required this.uuid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uuid': uuid,
-    };
+    return <String, dynamic>{'uuid': uuid};
   }
 
   factory GetGenaiIndexingJobArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiIndexingJobArgs(
-      uuid: (map['uuid'] as String).input(),
+      uuid: pulumi.Input.fromValue(map['uuid'] as String),
     );
   }
 }
-

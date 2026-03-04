@@ -14,15 +14,14 @@ class GetTopicIngestionDataSourceSettingPlatformLogsSetting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'severity': severity,
-    };
+    return <String, dynamic>{'severity': severity};
   }
 
-  factory GetTopicIngestionDataSourceSettingPlatformLogsSetting.fromMap(Map<String, dynamic> map) {
+  factory GetTopicIngestionDataSourceSettingPlatformLogsSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTopicIngestionDataSourceSettingPlatformLogsSetting(
-      severity: (map['severity'] as String).input(),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

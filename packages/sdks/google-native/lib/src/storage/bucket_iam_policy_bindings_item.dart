@@ -6,6 +6,7 @@ import 'expr.dart';
 class BucketIamPolicyBindingsItem {
   /// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
   final pulumi.Input<Expr>? condition;
+
   /// A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.
   /// - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -17,6 +18,7 @@ class BucketIamPolicyBindingsItem {
   /// - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project
   /// - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
   final pulumi.Input<List<String>>? members;
+
   /// The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
   /// The new IAM roles are:
   /// - roles/storage.admin — Full control of Google Cloud Storage resources.
@@ -34,15 +36,15 @@ class BucketIamPolicyBindingsItem {
   /// [condition] The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
   /// [members] A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:
   /// [role] The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
-  BucketIamPolicyBindingsItem({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  BucketIamPolicyBindingsItem({this.condition, this.members, this.role});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<Expr, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<Expr, Map<String, dynamic>>(
+            condition,
+            (value) => value.toMap(),
+          ),
       'members': ?members,
       'role': ?role,
     };
@@ -50,10 +52,23 @@ class BucketIamPolicyBindingsItem {
 
   factory BucketIamPolicyBindingsItem.fromMap(Map<String, dynamic> map) {
     return BucketIamPolicyBindingsItem(
-      condition: map['condition'] == null ? null : (Expr.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Expr.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      members: (() {
+        final guardedValue = map['members'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

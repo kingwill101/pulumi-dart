@@ -10,8 +10,10 @@ import 'instance_logging_configuration_access_logs.dart';
 class InstanceLoggingConfigurationArgs {
   /// A block that specifies the configuration options for Verified Access instances. Detailed below.
   final pulumi.Input<InstanceLoggingConfigurationAccessLogs> accessLogs;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the Verified Access instance.
   final pulumi.Input<String> verifiedaccessInstanceId;
 
@@ -27,7 +29,11 @@ class InstanceLoggingConfigurationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLogs': pulumi.Input.mapInputValue<InstanceLoggingConfigurationAccessLogs, Map<String, dynamic>>(accessLogs, (value) => value.toMap()),
+      'accessLogs':
+          pulumi.Input.mapInputValue<
+            InstanceLoggingConfigurationAccessLogs,
+            Map<String, dynamic>
+          >(accessLogs, (value) => value.toMap()),
       'region': ?region,
       'verifiedaccessInstanceId': verifiedaccessInstanceId,
     };
@@ -35,10 +41,19 @@ class InstanceLoggingConfigurationArgs {
 
   factory InstanceLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationArgs(
-      accessLogs: (InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs']! as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      verifiedaccessInstanceId: (map['verifiedaccessInstanceId'] as String).input(),
+      accessLogs: pulumi.Input.fromValue(
+        InstanceLoggingConfigurationAccessLogs.fromMap(
+          (map['accessLogs']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifiedaccessInstanceId: pulumi.Input.fromValue(
+        map['verifiedaccessInstanceId'] as String,
+      ),
     );
   }
 }
-

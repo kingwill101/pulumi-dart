@@ -4,16 +4,15 @@ enum MountOptionEnum {
   mOUNT("MOUNT"),
   aTTACH("ATTACH");
 
-  const MountOptionEnum(this.value);
-  final String value;
+  const MountOptionEnum(this.wireValue);
+  final String wireValue;
 
   static MountOptionEnum fromValue(String value) {
     for (final item in MountOptionEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MountOptionEnum value: $value');
   }
 }
-

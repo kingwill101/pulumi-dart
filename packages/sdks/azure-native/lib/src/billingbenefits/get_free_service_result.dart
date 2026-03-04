@@ -9,46 +9,67 @@ import 'system_data_response.dart';
 class GetFreeServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Billing account resource id where the free services metadata is present.
   final String billingAccountResourceId;
+
   /// Billing profile resource id where the free services are scoped to.
   final String billingProfileResourceId;
+
   /// Customer resource id where the free services are scoped to.
   final String customerResourceId;
+
   /// Expiration date and time of the free services
   final String? endAt;
+
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   final String etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   final ManagedServiceIdentityResponse? identity;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final String? kind;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   final String? managedBy;
+
   /// The name of the resource
   final String name;
+
   /// Plan for the resource.
   final PlanResponse? plan;
+
   /// This is the catalog UPN for the product.
   final String? productCode;
+
   /// Provisioning state of Free Services as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of Free Services resource, refer to FreeServicesStatus.
   final String provisioningState;
+
   /// The resource model definition representing SKU
   final SkuResponse? sku;
+
   /// Date and time when the free services become active
   final String? startAt;
+
   /// Current status of the free services
   final String? status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// This is the globally unique identifier of the free services which will not change for its lifetime.
   final String? systemId;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -109,15 +130,15 @@ class GetFreeServiceResult {
       'endAt': ?endAt,
       'etag': etag,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'kind': ?kind,
       'location': location,
       'managedBy': ?managedBy,
       'name': name,
-      'plan': ?plan == null ? null : plan!.toMap(),
+      'plan': ?plan?.toMap(),
       'productCode': ?productCode,
       'provisioningState': provisioningState,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'startAt': ?startAt,
       'status': ?status,
       'systemData': systemData.toMap(),
@@ -133,25 +154,76 @@ class GetFreeServiceResult {
       billingAccountResourceId: map['billingAccountResourceId'] as String,
       billingProfileResourceId: map['billingProfileResourceId'] as String,
       customerResourceId: map['customerResourceId'] as String,
-      endAt: map['endAt'] == null ? null : map['endAt']! as String,
+      endAt: (() {
+        final guardedValue = map['endAt'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       etag: map['etag'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
-      managedBy: map['managedBy'] == null ? null : map['managedBy']! as String,
+      managedBy: (() {
+        final guardedValue = map['managedBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      plan: map['plan'] == null ? null : PlanResponse.fromMap((map['plan']! as Map).cast<String, dynamic>()),
-      productCode: map['productCode'] == null ? null : map['productCode']! as String,
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return PlanResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      productCode: (() {
+        final guardedValue = map['productCode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      startAt: map['startAt'] == null ? null : map['startAt']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      systemId: map['systemId'] == null ? null : map['systemId']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      startAt: (() {
+        final guardedValue = map['startAt'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      systemId: (() {
+        final guardedValue = map['systemId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

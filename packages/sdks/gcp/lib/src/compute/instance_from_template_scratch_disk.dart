@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceFromTemplateScratchDisk {
   /// Name with which the attached disk is accessible under /dev/disk/by-id/
   final pulumi.Input<String>? deviceName;
+
   /// The disk interface used for attaching this disk. One of SCSI or NVME.
   final pulumi.Input<String> interface;
+
   /// The size of the disk in gigabytes. One of 375 or 3000.
   final pulumi.Input<int>? size;
 
@@ -30,10 +32,17 @@ class InstanceFromTemplateScratchDisk {
 
   factory InstanceFromTemplateScratchDisk.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateScratchDisk(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
-      interface: (map['interface'] as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
+      deviceName: (() {
+        final guardedValue = map['deviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interface: pulumi.Input.fromValue(map['interface'] as String),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

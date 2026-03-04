@@ -6,30 +6,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScanRuleState {
   /// Creation time
   final pulumi.Input<int>? createTime;
+
   /// Instance ID
   final pulumi.Input<String>? instanceId;
+
   /// Set of namespaces:
   /// - This parameter must not be empty when the scan scope is NAMESPACE.
   /// - This parameter must contain exactly one namespace when the scan scope is REPO.
   final pulumi.Input<List<String>>? namespaces;
+
   /// Repository list:
   /// - This parameter must be empty when the scan scope is NAMESPACE.
   /// - This parameter must not be empty when the scan scope is REPO.
   final pulumi.Input<List<String>>? repoNames;
+
   /// Regular expression for matching tags that trigger a scan
   final pulumi.Input<String>? repoTagFilterPattern;
+
   /// Event rule name
   final pulumi.Input<String>? ruleName;
+
   /// Rule ID
   final pulumi.Input<String>? scanRuleId;
+
   /// Scan scope
   final pulumi.Input<String>? scanScope;
+
   /// Scan type:
   /// - `VUL`: Artifact vulnerability scan
   /// - `SBOM`: Artifact content analysis
   ///
   /// The default value of this parameter is `VUL`.
   final pulumi.Input<String>? scanType;
+
   /// Trigger type
   final pulumi.Input<String>? triggerType;
 
@@ -74,17 +83,56 @@ class ScanRuleState {
 
   factory ScanRuleState.fromMap(Map<String, dynamic> map) {
     return ScanRuleState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
-      repoNames: map['repoNames'] == null ? null : ((map['repoNames']! as List).cast<String>()).input(),
-      repoTagFilterPattern: map['repoTagFilterPattern'] == null ? null : (map['repoTagFilterPattern']! as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      scanRuleId: map['scanRuleId'] == null ? null : (map['scanRuleId']! as String).input(),
-      scanScope: map['scanScope'] == null ? null : (map['scanScope']! as String).input(),
-      scanType: map['scanType'] == null ? null : (map['scanType']! as String).input(),
-      triggerType: map['triggerType'] == null ? null : (map['triggerType']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaces: (() {
+        final guardedValue = map['namespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      repoNames: (() {
+        final guardedValue = map['repoNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      repoTagFilterPattern: (() {
+        final guardedValue = map['repoTagFilterPattern'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scanRuleId: (() {
+        final guardedValue = map['scanRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scanScope: (() {
+        final guardedValue = map['scanScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scanType: (() {
+        final guardedValue = map['scanType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerType: (() {
+        final guardedValue = map['triggerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

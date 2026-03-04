@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAzureMonitorWorkspaceArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetAzureMonitorWorkspaceArgs {
 
   factory GetAzureMonitorWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureMonitorWorkspaceArgs(
-      azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      azureMonitorWorkspaceName: pulumi.Input.fromValue(
+        map['azureMonitorWorkspaceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

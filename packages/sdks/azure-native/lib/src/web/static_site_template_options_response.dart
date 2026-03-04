@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteTemplateOptionsResponse {
   /// Description of the newly generated repository.
   final pulumi.Input<String>? description;
+
   /// Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).
   final pulumi.Input<bool>? isPrivate;
+
   /// Owner of the newly generated repository.
   final pulumi.Input<String>? owner;
+
   /// Name of the newly generated repository.
   final pulumi.Input<String>? repositoryName;
+
   /// URL of the template repository. The newly generated repository will be based on this one.
   final pulumi.Input<String>? templateRepositoryUrl;
 
@@ -41,12 +45,31 @@ class StaticSiteTemplateOptionsResponse {
 
   factory StaticSiteTemplateOptionsResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteTemplateOptionsResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isPrivate: map['isPrivate'] == null ? null : (map['isPrivate']! as bool).input(),
-      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName']! as String).input(),
-      templateRepositoryUrl: map['templateRepositoryUrl'] == null ? null : (map['templateRepositoryUrl']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isPrivate: (() {
+        final guardedValue = map['isPrivate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryName: (() {
+        final guardedValue = map['repositoryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateRepositoryUrl: (() {
+        final guardedValue = map['templateRepositoryUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

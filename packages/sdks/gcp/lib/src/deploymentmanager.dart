@@ -1,5 +1,3 @@
-library module_deploymentmanager;
-
 export 'deploymentmanager/deployment_args.dart';
 export 'deploymentmanager/deployment_label.dart';
 export 'deploymentmanager/deployment_state.dart';

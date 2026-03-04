@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse {
   /// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
   final pulumi.Input<bool> enabled;
+
   /// The digit that terminates a DTMF digit sequence.
   final pulumi.Input<String> finishDigit;
+
   /// Max length of DTMF digits.
   final pulumi.Input<int> maxDigits;
 
@@ -29,12 +31,13 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse(
-      enabled: (map['enabled'] as bool).input(),
-      finishDigit: (map['finishDigit'] as String).input(),
-      maxDigits: (map['maxDigits'] as int).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      finishDigit: pulumi.Input.fromValue(map['finishDigit'] as String),
+      maxDigits: pulumi.Input.fromValue(map['maxDigits'] as int),
     );
   }
 }
-

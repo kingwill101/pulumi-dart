@@ -4,16 +4,17 @@ enum BinaryAuthorizationEvaluationMode {
   disabled("DISABLED"),
   projectSingletonPolicyEnforce("PROJECT_SINGLETON_POLICY_ENFORCE");
 
-  const BinaryAuthorizationEvaluationMode(this.value);
-  final String value;
+  const BinaryAuthorizationEvaluationMode(this.wireValue);
+  final String wireValue;
 
   static BinaryAuthorizationEvaluationMode fromValue(String value) {
     for (final item in BinaryAuthorizationEvaluationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BinaryAuthorizationEvaluationMode value: $value');
+    throw ArgumentError(
+      'Unknown BinaryAuthorizationEvaluationMode value: $value',
+    );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateInformation {
   /// Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   final pulumi.Input<String> expiry;
+
   /// Subject of the certificate.
   final pulumi.Input<String> subject;
+
   /// Thumbprint of the certificate.
   final pulumi.Input<String> thumbprint;
 
@@ -31,10 +33,9 @@ class CertificateInformation {
 
   factory CertificateInformation.fromMap(Map<String, dynamic> map) {
     return CertificateInformation(
-      expiry: (map['expiry'] as String).input(),
-      subject: (map['subject'] as String).input(),
-      thumbprint: (map['thumbprint'] as String).input(),
+      expiry: pulumi.Input.fromValue(map['expiry'] as String),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
     );
   }
 }
-

@@ -5,9 +5,9 @@ import 'organizations_access_timeouts.dart';
 
 /// Resource for managing AWS User Notifications Organizations Access. This resource enables or disables organizations access for AWS User Notifications in AWS Organizations, allowing the service to access organization information.
 ///
-/// > **NOTE:** This resource can only be used in the management account of an AWS Organization.
+/// &gt; **NOTE:** This resource can only be used in the management account of an AWS Organization.
 ///
-/// > **NOTE:** Deleting this resource will always disable organizations access for AWS User Notifications, regardless of the `enabled` attribute value.
+/// &gt; **NOTE:** Deleting this resource will always disable organizations access for AWS User Notifications, regardless of the `enabled` attribute value.
 ///
 /// ## Example Usage
 ///
@@ -119,13 +119,13 @@ class OrganizationsAccess extends pulumi.CustomResource {
     OrganizationsAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/organizationsAccess:OrganizationsAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
+         'aws:notifications/organizationsAccess:OrganizationsAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
   }
 
   /// Gets an existing [OrganizationsAccess] resource's state with the given [name] and [id].
@@ -146,12 +146,12 @@ class OrganizationsAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/organizationsAccess:OrganizationsAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool>('enabled');
-    this.timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
+         'aws:notifications/organizationsAccess:OrganizationsAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool>('enabled');
+    timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
   }
 }

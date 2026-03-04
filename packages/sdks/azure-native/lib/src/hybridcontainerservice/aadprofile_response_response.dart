@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AADProfileResponseResponse {
   /// The list of AAD group object IDs that will have admin role of the cluster.
   final pulumi.Input<List<String>>? adminGroupObjectIDs;
+
   /// The client AAD application ID.
   final pulumi.Input<String>? clientAppID;
+
   /// Whether to enable Azure RBAC for Kubernetes authorization.
   final pulumi.Input<bool>? enableAzureRbac;
+
   /// Whether to enable managed AAD.
   final pulumi.Input<bool>? managed;
+
   /// The server AAD application ID.
   final pulumi.Input<String>? serverAppID;
+
   /// The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
   final pulumi.Input<String>? tenantID;
 
@@ -46,13 +51,36 @@ class AADProfileResponseResponse {
 
   factory AADProfileResponseResponse.fromMap(Map<String, dynamic> map) {
     return AADProfileResponseResponse(
-      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs']! as List).cast<String>()).input(),
-      clientAppID: map['clientAppID'] == null ? null : (map['clientAppID']! as String).input(),
-      enableAzureRbac: map['enableAzureRbac'] == null ? null : (map['enableAzureRbac']! as bool).input(),
-      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
-      serverAppID: map['serverAppID'] == null ? null : (map['serverAppID']! as String).input(),
-      tenantID: map['tenantID'] == null ? null : (map['tenantID']! as String).input(),
+      adminGroupObjectIDs: (() {
+        final guardedValue = map['adminGroupObjectIDs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      clientAppID: (() {
+        final guardedValue = map['clientAppID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableAzureRbac: (() {
+        final guardedValue = map['enableAzureRbac'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      managed: (() {
+        final guardedValue = map['managed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serverAppID: (() {
+        final guardedValue = map['serverAppID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantID: (() {
+        final guardedValue = map['tenantID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

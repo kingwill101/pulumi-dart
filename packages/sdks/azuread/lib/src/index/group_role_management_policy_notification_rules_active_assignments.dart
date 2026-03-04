@@ -7,11 +7,22 @@ import 'group_role_management_policy_notification_rules_active_assignments_assig
 
 class GroupRoleManagementPolicyNotificationRulesActiveAssignments {
   /// Admin notification settings
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications>? adminNotifications;
+  final pulumi.Input<
+    GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications
+  >?
+  adminNotifications;
+
   /// Approver notification settings
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications>? approverNotifications;
+  final pulumi.Input<
+    GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications
+  >?
+  approverNotifications;
+
   /// Assignee notification settings
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications>? assigneeNotifications;
+  final pulumi.Input<
+    GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications
+  >?
+  assigneeNotifications;
 
   /// Creates a new [GroupRoleManagementPolicyNotificationRulesActiveAssignments].
   /// [adminNotifications] Admin notification settings
@@ -25,18 +36,55 @@ class GroupRoleManagementPolicyNotificationRulesActiveAssignments {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminNotifications': ?pulumi.Input.mapOptionalInputValue<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications, Map<String, dynamic>>(adminNotifications, (value) => value.toMap()),
-      'approverNotifications': ?pulumi.Input.mapOptionalInputValue<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications, Map<String, dynamic>>(approverNotifications, (value) => value.toMap()),
-      'assigneeNotifications': ?pulumi.Input.mapOptionalInputValue<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications, Map<String, dynamic>>(assigneeNotifications, (value) => value.toMap()),
+      'adminNotifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications,
+            Map<String, dynamic>
+          >(adminNotifications, (value) => value.toMap()),
+      'approverNotifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications,
+            Map<String, dynamic>
+          >(approverNotifications, (value) => value.toMap()),
+      'assigneeNotifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications,
+            Map<String, dynamic>
+          >(assigneeNotifications, (value) => value.toMap()),
     };
   }
 
-  factory GroupRoleManagementPolicyNotificationRulesActiveAssignments.fromMap(Map<String, dynamic> map) {
+  factory GroupRoleManagementPolicyNotificationRulesActiveAssignments.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GroupRoleManagementPolicyNotificationRulesActiveAssignments(
-      adminNotifications: map['adminNotifications'] == null ? null : (GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications.fromMap((map['adminNotifications']! as Map).cast<String, dynamic>())).input(),
-      approverNotifications: map['approverNotifications'] == null ? null : (GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications.fromMap((map['approverNotifications']! as Map).cast<String, dynamic>())).input(),
-      assigneeNotifications: map['assigneeNotifications'] == null ? null : (GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications.fromMap((map['assigneeNotifications']! as Map).cast<String, dynamic>())).input(),
+      adminNotifications: (() {
+        final guardedValue = map['adminNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      approverNotifications: (() {
+        final guardedValue = map['approverNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      assigneeNotifications: (() {
+        final guardedValue = map['assigneeNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

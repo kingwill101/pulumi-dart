@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// The namespace to create a snapshot for.
   final pulumi.Input<String> namespaceName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// How long to retain the created snapshot. Default value is `-1`.
   final pulumi.Input<int>? retentionPeriod;
+
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
 
@@ -39,11 +42,18 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
-      snapshotName: (map['snapshotName'] as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionPeriod: (() {
+        final guardedValue = map['retentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotName: pulumi.Input.fromValue(map['snapshotName'] as String),
     );
   }
 }
-

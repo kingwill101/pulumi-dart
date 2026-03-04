@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmEventbusProtoNodeIdentifierResponse {
   /// Configuration of the edge.
   final pulumi.Input<String> elementIdentifier;
+
   /// Destination node where the edge ends. It can only be a task config.
   final pulumi.Input<String> elementType;
 
@@ -24,11 +25,14 @@ class EnterpriseCrmEventbusProtoNodeIdentifierResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoNodeIdentifierResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoNodeIdentifierResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoNodeIdentifierResponse(
-      elementIdentifier: (map['elementIdentifier'] as String).input(),
-      elementType: (map['elementType'] as String).input(),
+      elementIdentifier: pulumi.Input.fromValue(
+        map['elementIdentifier'] as String,
+      ),
+      elementType: pulumi.Input.fromValue(map['elementType'] as String),
     );
   }
 }
-

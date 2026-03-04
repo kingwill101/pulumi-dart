@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessSelector {
   /// Optional. The permissions to appear in result.
   final pulumi.Input<List<String>>? permissions;
+
   /// Optional. The roles to appear in result.
   final pulumi.Input<List<String>>? roles;
 
   /// Creates a new [AccessSelector].
   /// [permissions] Optional. The permissions to appear in result.
   /// [roles] Optional. The roles to appear in result.
-  AccessSelector({
-    this.permissions,
-    this.roles,
-  });
+  AccessSelector({this.permissions, this.roles});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'permissions': ?permissions,
-      'roles': ?roles,
-    };
+    return <String, dynamic>{'permissions': ?permissions, 'roles': ?roles};
   }
 
   factory AccessSelector.fromMap(Map<String, dynamic> map) {
     return AccessSelector(
-      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
-      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'linked_service_reference_response.dart';
 class RedshiftUnloadSettingsResponse {
   /// The bucket of the interim Amazon S3 which will be used to store the unloaded data from Amazon Redshift source. The bucket must be in the same region as the Amazon Redshift source. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> bucketName;
+
   /// The name of the Amazon S3 linked service which will be used for the unload operation when copying from the Amazon Redshift source.
   final pulumi.Input<LinkedServiceReferenceResponse> s3LinkedServiceName;
 
@@ -21,15 +22,22 @@ class RedshiftUnloadSettingsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucketName': bucketName,
-      's3LinkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(s3LinkedServiceName, (value) => value.toMap()),
+      's3LinkedServiceName':
+          pulumi.Input.mapInputValue<
+            LinkedServiceReferenceResponse,
+            Map<String, dynamic>
+          >(s3LinkedServiceName, (value) => value.toMap()),
     };
   }
 
   factory RedshiftUnloadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RedshiftUnloadSettingsResponse(
-      bucketName: (map['bucketName']).input(),
-      s3LinkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['s3LinkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName']),
+      s3LinkedServiceName: pulumi.Input.fromValue(
+        LinkedServiceReferenceResponse.fromMap(
+          (map['s3LinkedServiceName']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -27,10 +27,9 @@ class TaskDefinitionUlimit {
 
   factory TaskDefinitionUlimit.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionUlimit(
-      hardLimit: (map['hardLimit'] as int).input(),
-      name: (map['name'] as String).input(),
-      softLimit: (map['softLimit'] as int).input(),
+      hardLimit: pulumi.Input.fromValue(map['hardLimit'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      softLimit: pulumi.Input.fromValue(map['softLimit'] as int),
     );
   }
 }
-

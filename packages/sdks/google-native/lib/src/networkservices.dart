@@ -1,5 +1,3 @@
-library module_networkservices;
-
 export 'networkservices/audit_config.dart';
 export 'networkservices/audit_config_networkservices_v1beta1.dart';
 export 'networkservices/audit_config_response.dart';

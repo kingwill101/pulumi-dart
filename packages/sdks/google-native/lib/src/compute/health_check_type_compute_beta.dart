@@ -8,16 +8,15 @@ enum HealthCheckTypeComputeBeta {
   ssl("SSL"),
   tcp("TCP");
 
-  const HealthCheckTypeComputeBeta(this.value);
-  final String value;
+  const HealthCheckTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static HealthCheckTypeComputeBeta fromValue(String value) {
     for (final item in HealthCheckTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HealthCheckTypeComputeBeta value: $value');
   }
 }
-

@@ -10,23 +10,16 @@ class BasicAuthResponse {
   /// Creates a new [BasicAuthResponse].
   /// [password] Required.
   /// [user] Required.
-  BasicAuthResponse({
-    required this.password,
-    required this.user,
-  });
+  BasicAuthResponse({required this.password, required this.user});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'user': user,
-    };
+    return <String, dynamic>{'password': password, 'user': user};
   }
 
   factory BasicAuthResponse.fromMap(Map<String, dynamic> map) {
     return BasicAuthResponse(
-      password: (map['password'] as String).input(),
-      user: (map['user'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

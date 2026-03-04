@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketWebsite {
   /// If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
   final pulumi.Input<String>? mainPageSuffix;
+
   /// If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
   final pulumi.Input<String>? notFoundPage;
 
   /// Creates a new [BucketWebsite].
   /// [mainPageSuffix] If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
   /// [notFoundPage] If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
-  BucketWebsite({
-    this.mainPageSuffix,
-    this.notFoundPage,
-  });
+  BucketWebsite({this.mainPageSuffix, this.notFoundPage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class BucketWebsite {
 
   factory BucketWebsite.fromMap(Map<String, dynamic> map) {
     return BucketWebsite(
-      mainPageSuffix: map['mainPageSuffix'] == null ? null : (map['mainPageSuffix']! as String).input(),
-      notFoundPage: map['notFoundPage'] == null ? null : (map['notFoundPage']! as String).input(),
+      mainPageSuffix: (() {
+        final guardedValue = map['mainPageSuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notFoundPage: (() {
+        final guardedValue = map['notFoundPage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

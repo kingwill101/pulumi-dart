@@ -12,20 +12,19 @@ class LinkedDatasetBigqueryDataset {
 
   /// Creates a new [LinkedDatasetBigqueryDataset].
   /// [datasetId] (Output)
-  LinkedDatasetBigqueryDataset({
-    this.datasetId,
-  });
+  LinkedDatasetBigqueryDataset({this.datasetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': ?datasetId,
-    };
+    return <String, dynamic>{'datasetId': ?datasetId};
   }
 
   factory LinkedDatasetBigqueryDataset.fromMap(Map<String, dynamic> map) {
     return LinkedDatasetBigqueryDataset(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      datasetId: (() {
+        final guardedValue = map['datasetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

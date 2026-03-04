@@ -13,16 +13,15 @@ enum AuthConfigCredentialType {
   clientCertificateOnly("CLIENT_CERTIFICATE_ONLY"),
   oidcToken("OIDC_TOKEN");
 
-  const AuthConfigCredentialType(this.value);
-  final String value;
+  const AuthConfigCredentialType(this.wireValue);
+  final String wireValue;
 
   static AuthConfigCredentialType fromValue(String value) {
     for (final item in AuthConfigCredentialType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthConfigCredentialType value: $value');
   }
 }
-

@@ -9,20 +9,19 @@ class SimpleFilterParametersResponse {
 
   /// Creates a new [SimpleFilterParametersResponse].
   /// [zones] List of Azure availability zones to filter targets by.
-  SimpleFilterParametersResponse({
-    this.zones,
-  });
+  SimpleFilterParametersResponse({this.zones});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'zones': ?zones,
-    };
+    return <String, dynamic>{'zones': ?zones};
   }
 
   factory SimpleFilterParametersResponse.fromMap(Map<String, dynamic> map) {
     return SimpleFilterParametersResponse(
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

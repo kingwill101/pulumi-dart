@@ -19,10 +19,13 @@ class GoogleCloudDialogflowV2beta1LoggingConfigResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1LoggingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1LoggingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1LoggingConfigResponse(
-      enableStackdriverLogging: (map['enableStackdriverLogging'] as bool).input(),
+      enableStackdriverLogging: pulumi.Input.fromValue(
+        map['enableStackdriverLogging'] as bool,
+      ),
     );
   }
 }
-

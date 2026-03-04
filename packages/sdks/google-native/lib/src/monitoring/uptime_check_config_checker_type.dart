@@ -4,16 +4,15 @@ enum UptimeCheckConfigCheckerType {
   staticIpCheckers("STATIC_IP_CHECKERS"),
   vpcCheckers("VPC_CHECKERS");
 
-  const UptimeCheckConfigCheckerType(this.value);
-  final String value;
+  const UptimeCheckConfigCheckerType(this.wireValue);
+  final String wireValue;
 
   static UptimeCheckConfigCheckerType fromValue(String value) {
     for (final item in UptimeCheckConfigCheckerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UptimeCheckConfigCheckerType value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum VMBootOptimizationState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const VMBootOptimizationState(this.value);
-  final String value;
+  const VMBootOptimizationState(this.wireValue);
+  final String wireValue;
 
   static VMBootOptimizationState fromValue(String value) {
     for (final item in VMBootOptimizationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VMBootOptimizationState value: $value');
   }
 }
-

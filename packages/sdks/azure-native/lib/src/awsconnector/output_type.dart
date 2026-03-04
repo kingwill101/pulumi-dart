@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutputType {
   /// Property description
   final pulumi.Input<String>? description;
+
   /// Property exportName
   final pulumi.Input<String>? exportName;
+
   /// Property outputKey
   final pulumi.Input<String>? outputKey;
+
   /// Property outputValue
   final pulumi.Input<String>? outputValue;
 
@@ -36,11 +39,26 @@ class OutputType {
 
   factory OutputType.fromMap(Map<String, dynamic> map) {
     return OutputType(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      exportName: map['exportName'] == null ? null : (map['exportName']! as String).input(),
-      outputKey: map['outputKey'] == null ? null : (map['outputKey']! as String).input(),
-      outputValue: map['outputValue'] == null ? null : (map['outputValue']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exportName: (() {
+        final guardedValue = map['exportName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputKey: (() {
+        final guardedValue = map['outputKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputValue: (() {
+        final guardedValue = map['outputValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

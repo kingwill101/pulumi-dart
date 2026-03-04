@@ -128,18 +128,25 @@ import 'system_data_response.dart';
 class SharedLimit extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The maximum permitted usage of the resource.
   late final pulumi.Output<int> limit;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The limit name properties.
   late final pulumi.Output<LimitNameResponse> resourceName;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The quota units, such as Count.
   late final pulumi.Output<String> unit;
 
@@ -152,18 +159,18 @@ class SharedLimit extends pulumi.CustomResource {
     SharedLimitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:computelimit:SharedLimit',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.limit = registerOutput<int>('limit');
+         'azure-native:computelimit:SharedLimit',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    limit = registerOutput<int>('limit');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceName = registerOutput<LimitNameResponse>('resourceName');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.unit = registerOutput<String>('unit');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceName = registerOutput<LimitNameResponse>('resourceName');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    unit = registerOutput<String>('unit');
   }
 }

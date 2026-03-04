@@ -10,6 +10,7 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
   /// restricted subset of an ISO 8601 duration value). The pattern for
   /// this is: `nDnM]`.
   final pulumi.Input<String>? attributeValue;
+
   /// The value between -1 to 1 by which to boost the score if the
   /// attribute_value evaluates to the value specified above.
   final pulumi.Input<double>? boostAmount;
@@ -29,11 +30,20 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
     };
   }
 
-  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(Map<String, dynamic> map) {
+  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint(
-      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue']! as String).input(),
-      boostAmount: map['boostAmount'] == null ? null : (map['boostAmount']! as double).input(),
+      attributeValue: (() {
+        final guardedValue = map['attributeValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      boostAmount: (() {
+        final guardedValue = map['boostAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

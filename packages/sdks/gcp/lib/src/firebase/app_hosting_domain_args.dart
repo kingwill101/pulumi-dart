@@ -10,14 +10,18 @@ import 'app_hosting_domain_serve.dart';
 class AppHostingDomainArgs {
   /// The ID of the Backend that this Domain is associated with
   final pulumi.Input<String> backend;
+
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
   final pulumi.Input<String> domainId;
+
   /// The location of the Backend that this Domain is associated with
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The serving behavior of the domain. If specified, the domain will
   /// serve content other than its Backend's live content.
   /// Structure is documented below.
@@ -43,18 +47,33 @@ class AppHostingDomainArgs {
       'domainId': domainId,
       'location': location,
       'project': ?project,
-      'serve': ?pulumi.Input.mapOptionalInputValue<AppHostingDomainServe, Map<String, dynamic>>(serve, (value) => value.toMap()),
+      'serve':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppHostingDomainServe,
+            Map<String, dynamic>
+          >(serve, (value) => value.toMap()),
     };
   }
 
   factory AppHostingDomainArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainArgs(
-      backend: (map['backend'] as String).input(),
-      domainId: (map['domainId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serve: map['serve'] == null ? null : (AppHostingDomainServe.fromMap((map['serve']! as Map).cast<String, dynamic>())).input(),
+      backend: pulumi.Input.fromValue(map['backend'] as String),
+      domainId: pulumi.Input.fromValue(map['domainId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serve: (() {
+        final guardedValue = map['serve'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppHostingDomainServe.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/functions.dart';
 export 'index/get_account_result.dart';
 export 'index/get_caller_identity_result.dart';

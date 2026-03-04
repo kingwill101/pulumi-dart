@@ -10,29 +10,39 @@ import 'sku_name.dart';
 class GetRequiredAmlFSSubnetsSizeArgs {
   /// SKU for the resource.
   final pulumi.Input<SkuName>? sku;
+
   /// The size of the AML file system, in TiB.
   final pulumi.Input<double>? storageCapacityTiB;
 
   /// Creates a new [GetRequiredAmlFSSubnetsSizeArgs].
   /// [sku] SKU for the resource.
   /// [storageCapacityTiB] The size of the AML file system, in TiB.
-  GetRequiredAmlFSSubnetsSizeArgs({
-    this.sku,
-    this.storageCapacityTiB,
-  });
+  GetRequiredAmlFSSubnetsSizeArgs({this.sku, this.storageCapacityTiB});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sku': ?pulumi.Input.mapOptionalInputValue<SkuName, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<SkuName, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'storageCapacityTiB': ?storageCapacityTiB,
     };
   }
 
   factory GetRequiredAmlFSSubnetsSizeArgs.fromMap(Map<String, dynamic> map) {
     return GetRequiredAmlFSSubnetsSizeArgs(
-      sku: map['sku'] == null ? null : (SkuName.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      storageCapacityTiB: map['storageCapacityTiB'] == null ? null : (map['storageCapacityTiB']! as double).input(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SkuName.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      storageCapacityTiB: (() {
+        final guardedValue = map['storageCapacityTiB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

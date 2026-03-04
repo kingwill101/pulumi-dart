@@ -5,16 +5,15 @@ enum WorkflowCallLogLevel {
   logErrorsOnly("LOG_ERRORS_ONLY"),
   logNone("LOG_NONE");
 
-  const WorkflowCallLogLevel(this.value);
-  final String value;
+  const WorkflowCallLogLevel(this.wireValue);
+  final String wireValue;
 
   static WorkflowCallLogLevel fromValue(String value) {
     for (final item in WorkflowCallLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkflowCallLogLevel value: $value');
   }
 }
-

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserIdentityContractResponse {
   /// Identifier value within provider.
   final pulumi.Input<String>? id;
+
   /// Identity provider name.
   final pulumi.Input<String>? provider;
 
   /// Creates a new [UserIdentityContractResponse].
   /// [id] Identifier value within provider.
   /// [provider] Identity provider name.
-  UserIdentityContractResponse({
-    this.id,
-    this.provider,
-  });
+  UserIdentityContractResponse({this.id, this.provider});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'provider': ?provider,
-    };
+    return <String, dynamic>{'id': ?id, 'provider': ?provider};
   }
 
   factory UserIdentityContractResponse.fromMap(Map<String, dynamic> map) {
     return UserIdentityContractResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provider: (() {
+        final guardedValue = map['provider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

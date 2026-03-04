@@ -10,20 +10,17 @@ class BucketReplicationEncryptionConfiguration {
 
   /// Creates a new [BucketReplicationEncryptionConfiguration].
   /// [replicaKmsKeyId] The CMK ID used in SSE-KMS.
-  BucketReplicationEncryptionConfiguration({
-    required this.replicaKmsKeyId,
-  });
+  BucketReplicationEncryptionConfiguration({required this.replicaKmsKeyId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'replicaKmsKeyId': replicaKmsKeyId,
-    };
+    return <String, dynamic>{'replicaKmsKeyId': replicaKmsKeyId};
   }
 
-  factory BucketReplicationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory BucketReplicationEncryptionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketReplicationEncryptionConfiguration(
-      replicaKmsKeyId: (map['replicaKmsKeyId'] as String).input(),
+      replicaKmsKeyId: pulumi.Input.fromValue(map['replicaKmsKeyId'] as String),
     );
   }
 }
-

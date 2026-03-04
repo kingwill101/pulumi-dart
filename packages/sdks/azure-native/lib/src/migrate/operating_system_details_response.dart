@@ -31,11 +31,26 @@ class OperatingSystemDetailsResponse {
 
   factory OperatingSystemDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OperatingSystemDetailsResponse(
-      os: map['os'] == null ? null : (map['os']! as String).input(),
-      osArchitecture: map['osArchitecture'] == null ? null : (map['osArchitecture']! as String).input(),
-      osName: map['osName'] == null ? null : (map['osName']! as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
+      os: (() {
+        final guardedValue = map['os'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osArchitecture: (() {
+        final guardedValue = map['osArchitecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osName: (() {
+        final guardedValue = map['osName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osVersion: (() {
+        final guardedValue = map['osVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

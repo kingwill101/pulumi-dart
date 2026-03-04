@@ -3,16 +3,15 @@ enum AuthorizationConfigIAM {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
-  const AuthorizationConfigIAM(this.value);
-  final String value;
+  const AuthorizationConfigIAM(this.wireValue);
+  final String wireValue;
 
   static AuthorizationConfigIAM fromValue(String value) {
     for (final item in AuthorizationConfigIAM.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthorizationConfigIAM value: $value');
   }
 }
-

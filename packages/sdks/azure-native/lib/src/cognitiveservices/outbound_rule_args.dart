@@ -10,12 +10,16 @@ import 'fqdn_outbound_rule.dart';
 class OutboundRuleArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
+
   /// Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
   final pulumi.Input<String> managedNetworkName;
+
   /// Outbound Rule for the managed network of a cognitive services account.
   final pulumi.Input<FqdnOutboundRule> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the cognitive services account managed network outbound rule
   final pulumi.Input<String>? ruleName;
 
@@ -37,7 +41,11 @@ class OutboundRuleArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'managedNetworkName': managedNetworkName,
-      'properties': pulumi.Input.mapInputValue<FqdnOutboundRule, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<FqdnOutboundRule, Map<String, dynamic>>(
+            properties,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
       'ruleName': ?ruleName,
     };
@@ -45,12 +53,23 @@ class OutboundRuleArgs {
 
   factory OutboundRuleArgs.fromMap(Map<String, dynamic> map) {
     return OutboundRuleArgs(
-      accountName: (map['accountName'] as String).input(),
-      managedNetworkName: (map['managedNetworkName'] as String).input(),
-      properties: (FqdnOutboundRule.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      managedNetworkName: pulumi.Input.fromValue(
+        map['managedNetworkName'] as String,
+      ),
+      properties: pulumi.Input.fromValue(
+        FqdnOutboundRule.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

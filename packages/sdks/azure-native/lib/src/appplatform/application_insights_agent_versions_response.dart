@@ -9,20 +9,17 @@ class ApplicationInsightsAgentVersionsResponse {
 
   /// Creates a new [ApplicationInsightsAgentVersionsResponse].
   /// [java] Indicates the version of application insight java agent
-  ApplicationInsightsAgentVersionsResponse({
-    required this.java,
-  });
+  ApplicationInsightsAgentVersionsResponse({required this.java});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'java': java,
-    };
+    return <String, dynamic>{'java': java};
   }
 
-  factory ApplicationInsightsAgentVersionsResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationInsightsAgentVersionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationInsightsAgentVersionsResponse(
-      java: (map['java'] as String).input(),
+      java: pulumi.Input.fromValue(map['java'] as String),
     );
   }
 }
-

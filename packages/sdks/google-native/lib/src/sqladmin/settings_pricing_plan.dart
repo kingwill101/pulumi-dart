@@ -4,16 +4,15 @@ enum SettingsPricingPlan {
   package("PACKAGE"),
   perUse("PER_USE");
 
-  const SettingsPricingPlan(this.value);
-  final String value;
+  const SettingsPricingPlan(this.wireValue);
+  final String wireValue;
 
   static SettingsPricingPlan fromValue(String value) {
     for (final item in SettingsPricingPlan.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingsPricingPlan value: $value');
   }
 }
-

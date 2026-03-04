@@ -10,14 +10,23 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// Remote: A checksum must be specified.
   /// Cloud Storage: An object generation number must be specified.
   final pulumi.Input<bool>? allowInsecure;
+
   /// Specifies a file available as a Cloud Storage Object.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs>? gcs;
+  final pulumi.Input<
+    V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs
+  >?
+  gcs;
+
   /// A local path within the VM to use.
   final pulumi.Input<String>? localPath;
+
   /// Specifies a file available via some URI.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote>? remote;
+  final pulumi.Input<
+    V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote
+  >?
+  remote;
 
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource].
   /// [allowInsecure] Defaults to false. When false, files are subject to validations
@@ -34,19 +43,52 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInsecure': ?allowInsecure,
-      'gcs': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs, Map<String, dynamic>>(gcs, (value) => value.toMap()),
+      'gcs':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs,
+            Map<String, dynamic>
+          >(gcs, (value) => value.toMap()),
       'localPath': ?localPath,
-      'remote': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote, Map<String, dynamic>>(remote, (value) => value.toMap()),
+      'remote':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote,
+            Map<String, dynamic>
+          >(remote, (value) => value.toMap()),
     };
   }
 
-  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource(
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
-      gcs: map['gcs'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
-      remote: map['remote'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
+      allowInsecure: (() {
+        final guardedValue = map['allowInsecure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gcs: (() {
+        final guardedValue = map['gcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      localPath: (() {
+        final guardedValue = map['localPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remote: (() {
+        final guardedValue = map['remote'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

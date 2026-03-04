@@ -10,20 +10,15 @@ class ClusterGkeAutoUpgradeConfig {
 
   /// Creates a new [ClusterGkeAutoUpgradeConfig].
   /// [patchMode] The selected patch mode.
-  ClusterGkeAutoUpgradeConfig({
-    required this.patchMode,
-  });
+  ClusterGkeAutoUpgradeConfig({required this.patchMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'patchMode': patchMode,
-    };
+    return <String, dynamic>{'patchMode': patchMode};
   }
 
   factory ClusterGkeAutoUpgradeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterGkeAutoUpgradeConfig(
-      patchMode: (map['patchMode'] as String).input(),
+      patchMode: pulumi.Input.fromValue(map['patchMode'] as String),
     );
   }
 }
-

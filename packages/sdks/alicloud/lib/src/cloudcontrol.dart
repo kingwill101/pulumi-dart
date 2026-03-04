@@ -1,5 +1,3 @@
-library module_cloudcontrol;
-
 export 'cloudcontrol/functions.dart';
 export 'cloudcontrol/get_prices_args.dart';
 export 'cloudcontrol/get_prices_price.dart';

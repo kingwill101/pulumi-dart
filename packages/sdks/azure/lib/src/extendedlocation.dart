@@ -1,5 +1,3 @@
-library module_extendedlocation;
-
 export 'extendedlocation/custom_location.dart';
 export 'extendedlocation/custom_location_args.dart';
 export 'extendedlocation/custom_location_authentication.dart';

@@ -8,6 +8,7 @@ class GetIamCustomRolesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? orgId;
+
   /// A list of all retrieved custom roles roles. Structure is defined below.
   final List<GetIamCustomRolesRole> roles;
   final bool? showDeleted;
@@ -31,7 +32,11 @@ class GetIamCustomRolesResult {
     return <String, dynamic>{
       'id': id,
       'orgId': ?orgId,
-      'roles': pulumi.Input.encodeList<GetIamCustomRolesRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
+      'roles':
+          pulumi.Input.encodeList<GetIamCustomRolesRole, Map<String, dynamic>>(
+            roles,
+            (value) => value.toMap(),
+          ),
       'showDeleted': ?showDeleted,
       'view': ?view,
     };
@@ -40,11 +45,27 @@ class GetIamCustomRolesResult {
   factory GetIamCustomRolesResult.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRolesResult(
       id: map['id'] as String,
-      orgId: map['orgId'] == null ? null : map['orgId']! as String,
-      roles: pulumi.Input.decodeList<GetIamCustomRolesRole>(map['roles'], (value) => GetIamCustomRolesRole.fromMap((value as Map).cast<String, dynamic>())),
-      showDeleted: map['showDeleted'] == null ? null : map['showDeleted']! as bool,
-      view: map['view'] == null ? null : map['view']! as String,
+      orgId: (() {
+        final guardedValue = map['orgId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      roles: pulumi.Input.decodeList<GetIamCustomRolesRole>(
+        map['roles']!,
+        (value) => GetIamCustomRolesRole.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      showDeleted: (() {
+        final guardedValue = map['showDeleted'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'vswitch_cidr_reservation_state.dart';
 ///
 /// For information about Vpc Vswitch Cidr Reservation and how to use it, see [What is Vswitch Cidr Reservation](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/610154).
 ///
-/// > **NOTE:** Available since v1.205.0.
+/// &gt; **NOTE:** Available since v1.205.0.
 ///
 /// ## Example Usage
 ///
@@ -270,24 +270,34 @@ import 'vswitch_cidr_reservation_state.dart';
 class VswitchCidrReservation extends pulumi.CustomResource {
   /// Reserved network segment CIdrBlock.
   late final pulumi.Output<String> cidrReservationCidr;
+
   /// The description of the reserved CIDR block.
   late final pulumi.Output<String?> cidrReservationDescription;
+
   /// Reserved segment mask.
   late final pulumi.Output<String?> cidrReservationMask;
+
   /// Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
   late final pulumi.Output<String> cidrReservationType;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
   late final pulumi.Output<String> ipVersion;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// The id of the vpc instance to which the reserved CIDR block belongs.
   late final pulumi.Output<String> vpcId;
+
   /// The resource attribute field of the resource ID.
   late final pulumi.Output<String> vswitchCidrReservationId;
+
   /// The name of the resource.
   late final pulumi.Output<String?> vswitchCidrReservationName;
+
   /// The Id of the switch instance.
   late final pulumi.Output<String> vswitchId;
 
@@ -300,22 +310,28 @@ class VswitchCidrReservation extends pulumi.CustomResource {
     VswitchCidrReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrReservationCidr = registerOutput<String>('cidrReservationCidr');
-    this.cidrReservationDescription = registerOutput<String?>('cidrReservationDescription');
-    this.cidrReservationMask = registerOutput<String?>('cidrReservationMask');
-    this.cidrReservationType = registerOutput<String>('cidrReservationType');
-    this.createTime = registerOutput<String>('createTime');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchCidrReservationId = registerOutput<String>('vswitchCidrReservationId');
-    this.vswitchCidrReservationName = registerOutput<String?>('vswitchCidrReservationName');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrReservationCidr = registerOutput<String>('cidrReservationCidr');
+    cidrReservationDescription = registerOutput<String?>(
+      'cidrReservationDescription',
+    );
+    cidrReservationMask = registerOutput<String?>('cidrReservationMask');
+    cidrReservationType = registerOutput<String>('cidrReservationType');
+    createTime = registerOutput<String>('createTime');
+    ipVersion = registerOutput<String>('ipVersion');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchCidrReservationId = registerOutput<String>(
+      'vswitchCidrReservationId',
+    );
+    vswitchCidrReservationName = registerOutput<String?>(
+      'vswitchCidrReservationName',
+    );
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [VswitchCidrReservation] resource's state with the given [name] and [id].
@@ -336,21 +352,27 @@ class VswitchCidrReservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrReservationCidr = registerOutput<String>('cidrReservationCidr');
-    this.cidrReservationDescription = registerOutput<String?>('cidrReservationDescription');
-    this.cidrReservationMask = registerOutput<String?>('cidrReservationMask');
-    this.cidrReservationType = registerOutput<String>('cidrReservationType');
-    this.createTime = registerOutput<String>('createTime');
-    this.ipVersion = registerOutput<String>('ipVersion');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchCidrReservationId = registerOutput<String>('vswitchCidrReservationId');
-    this.vswitchCidrReservationName = registerOutput<String?>('vswitchCidrReservationName');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrReservationCidr = registerOutput<String>('cidrReservationCidr');
+    cidrReservationDescription = registerOutput<String?>(
+      'cidrReservationDescription',
+    );
+    cidrReservationMask = registerOutput<String?>('cidrReservationMask');
+    cidrReservationType = registerOutput<String>('cidrReservationType');
+    createTime = registerOutput<String>('createTime');
+    ipVersion = registerOutput<String>('ipVersion');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchCidrReservationId = registerOutput<String>(
+      'vswitchCidrReservationId',
+    );
+    vswitchCidrReservationName = registerOutput<String?>(
+      'vswitchCidrReservationName',
+    );
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

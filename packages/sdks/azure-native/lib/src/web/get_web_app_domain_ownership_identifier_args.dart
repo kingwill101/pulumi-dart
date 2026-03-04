@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppDomainOwnershipIdentifierArgs {
   /// Name of domain ownership identifier.
   final pulumi.Input<String> domainOwnershipIdentifierName;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetWebAppDomainOwnershipIdentifierArgs {
     };
   }
 
-  factory GetWebAppDomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWebAppDomainOwnershipIdentifierArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebAppDomainOwnershipIdentifierArgs(
-      domainOwnershipIdentifierName: (map['domainOwnershipIdentifierName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      domainOwnershipIdentifierName: pulumi.Input.fromValue(
+        map['domainOwnershipIdentifierName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

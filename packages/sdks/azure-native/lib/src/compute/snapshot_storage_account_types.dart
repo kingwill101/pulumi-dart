@@ -4,16 +4,15 @@ enum SnapshotStorageAccountTypes {
   premiumLRS("Premium_LRS"),
   standardZRS("Standard_ZRS");
 
-  const SnapshotStorageAccountTypes(this.value);
-  final String value;
+  const SnapshotStorageAccountTypes(this.wireValue);
+  final String wireValue;
 
   static SnapshotStorageAccountTypes fromValue(String value) {
     for (final item in SnapshotStorageAccountTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SnapshotStorageAccountTypes value: $value');
   }
 }
-

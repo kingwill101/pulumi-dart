@@ -27,10 +27,9 @@ class GetDataSetFieldFolder {
 
   factory GetDataSetFieldFolder.fromMap(Map<String, dynamic> map) {
     return GetDataSetFieldFolder(
-      columns: ((map['columns'] as List).cast<String>()).input(),
-      description: (map['description'] as String).input(),
-      fieldFoldersId: (map['fieldFoldersId'] as String).input(),
+      columns: pulumi.Input.fromValue((map['columns'] as List).cast<String>()),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      fieldFoldersId: pulumi.Input.fromValue(map['fieldFoldersId'] as String),
     );
   }
 }
-

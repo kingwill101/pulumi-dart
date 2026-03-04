@@ -9,38 +9,56 @@ import 'system_data_response.dart';
 class GetNetworkTapRuleResult {
   /// Administrative state of the resource.
   final String administrativeState;
+
   /// Switch configuration description.
   final String? annotation;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Configuration state of the resource.
   final String configurationState;
+
   /// Input method to configure Network Tap Rule.
   final String configurationType;
+
   /// List of dynamic match configurations.
-  final List<CommonDynamicMatchConfigurationResponse>? dynamicMatchConfigurations;
+  final List<CommonDynamicMatchConfigurationResponse>?
+  dynamicMatchConfigurations;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The last sync timestamp.
   final String lastSyncedTime;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// List of match configurations.
   final List<NetworkTapRuleMatchConfigurationResponse>? matchConfigurations;
+
   /// The name of the resource
   final String name;
+
   /// The ARM resource Id of the NetworkTap.
   final String networkTapId;
+
   /// Polling interval in seconds.
   final int? pollingIntervalInSeconds;
+
   /// Provisioning state of the resource.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Network Tap Rules file URL.
   final String? tapRulesUrl;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -91,11 +109,25 @@ class GetNetworkTapRuleResult {
       'azureApiVersion': azureApiVersion,
       'configurationState': configurationState,
       'configurationType': configurationType,
-      'dynamicMatchConfigurations': ?dynamicMatchConfigurations == null ? null : pulumi.Input.encodeList<CommonDynamicMatchConfigurationResponse, Map<String, dynamic>>(dynamicMatchConfigurations!, (value) => value.toMap()),
+      'dynamicMatchConfigurations': ?(() {
+        final guardedValue = dynamicMatchConfigurations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          CommonDynamicMatchConfigurationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'lastSyncedTime': lastSyncedTime,
       'location': location,
-      'matchConfigurations': ?matchConfigurations == null ? null : pulumi.Input.encodeList<NetworkTapRuleMatchConfigurationResponse, Map<String, dynamic>>(matchConfigurations!, (value) => value.toMap()),
+      'matchConfigurations': ?(() {
+        final guardedValue = matchConfigurations;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          NetworkTapRuleMatchConfigurationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': name,
       'networkTapId': networkTapId,
       'pollingIntervalInSeconds': ?pollingIntervalInSeconds,
@@ -110,24 +142,60 @@ class GetNetworkTapRuleResult {
   factory GetNetworkTapRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkTapRuleResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation']! as String,
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       configurationType: map['configurationType'] as String,
-      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(map['dynamicMatchConfigurations']!, (value) => CommonDynamicMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dynamicMatchConfigurations: (() {
+        final guardedValue = map['dynamicMatchConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(
+          guardedValue,
+          (value) => CommonDynamicMatchConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       lastSyncedTime: map['lastSyncedTime'] as String,
       location: map['location'] as String,
-      matchConfigurations: map['matchConfigurations'] == null ? null : pulumi.Input.decodeList<NetworkTapRuleMatchConfigurationResponse>(map['matchConfigurations']!, (value) => NetworkTapRuleMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      matchConfigurations: (() {
+        final guardedValue = map['matchConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi
+            .Input.decodeList<NetworkTapRuleMatchConfigurationResponse>(
+          guardedValue,
+          (value) => NetworkTapRuleMatchConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       name: map['name'] as String,
       networkTapId: map['networkTapId'] as String,
-      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : map['pollingIntervalInSeconds']! as int,
+      pollingIntervalInSeconds: (() {
+        final guardedValue = map['pollingIntervalInSeconds'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      tapRulesUrl: map['tapRulesUrl'] == null ? null : map['tapRulesUrl']! as String,
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      tapRulesUrl: (() {
+        final guardedValue = map['tapRulesUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

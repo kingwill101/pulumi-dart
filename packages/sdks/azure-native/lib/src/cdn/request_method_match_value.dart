@@ -7,16 +7,15 @@ enum RequestMethodMatchValue {
   oPTIONS("OPTIONS"),
   tRACE("TRACE");
 
-  const RequestMethodMatchValue(this.value);
-  final String value;
+  const RequestMethodMatchValue(this.wireValue);
+  final String wireValue;
 
   static RequestMethodMatchValue fromValue(String value) {
     for (final item in RequestMethodMatchValue.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequestMethodMatchValue value: $value');
   }
 }
-

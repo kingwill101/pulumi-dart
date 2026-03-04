@@ -4,7 +4,7 @@ import 'workspace_key_state.dart';
 
 /// Manages Synapse Workspace keys
 ///
-/// > **Note:** Keys that are actively protecting a workspace cannot be deleted. When the keys resource is deleted, if the key is inactive it will be deleted, if it is active it will not be deleted.
+/// &gt; **Note:** Keys that are actively protecting a workspace cannot be deleted. When the keys resource is deleted, if the key is inactive it will be deleted, if it is active it will not be deleted.
 ///
 /// ## Example Usage
 ///
@@ -696,12 +696,15 @@ import 'workspace_key_state.dart';
 class WorkspaceKey extends pulumi.CustomResource {
   /// Specifies if the workspace should be encrypted with this key.
   ///
-  /// > **Note:** Only one key can actively encrypt a workspace. When performing a key rotation, setting a new key as the active key will disable existing keys.
+  /// &gt; **Note:** Only one key can actively encrypt a workspace. When performing a key rotation, setting a new key as the active key will disable existing keys.
   late final pulumi.Output<bool> active;
+
   /// Specifies the name of the workspace key. Should match the name of the key in the synapse workspace.
   late final pulumi.Output<String> customerManagedKeyName;
+
   /// The Azure Key Vault Key Versionless ID to be used as the Customer Managed Key (CMK) for double encryption
   late final pulumi.Output<String?> customerManagedKeyVersionlessId;
+
   /// The ID of the Synapse Workspace where the encryption key should be configured.
   late final pulumi.Output<String> synapseWorkspaceId;
 
@@ -714,15 +717,17 @@ class WorkspaceKey extends pulumi.CustomResource {
     WorkspaceKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/workspaceKey:WorkspaceKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool>('active');
-    this.customerManagedKeyName = registerOutput<String>('customerManagedKeyName');
-    this.customerManagedKeyVersionlessId = registerOutput<String?>('customerManagedKeyVersionlessId');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+         'azure:synapse/workspaceKey:WorkspaceKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool>('active');
+    customerManagedKeyName = registerOutput<String>('customerManagedKeyName');
+    customerManagedKeyVersionlessId = registerOutput<String?>(
+      'customerManagedKeyVersionlessId',
+    );
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
   }
 
   /// Gets an existing [WorkspaceKey] resource's state with the given [name] and [id].
@@ -743,14 +748,16 @@ class WorkspaceKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/workspaceKey:WorkspaceKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool>('active');
-    this.customerManagedKeyName = registerOutput<String>('customerManagedKeyName');
-    this.customerManagedKeyVersionlessId = registerOutput<String?>('customerManagedKeyVersionlessId');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+         'azure:synapse/workspaceKey:WorkspaceKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool>('active');
+    customerManagedKeyName = registerOutput<String>('customerManagedKeyName');
+    customerManagedKeyVersionlessId = registerOutput<String?>(
+      'customerManagedKeyVersionlessId',
+    );
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
   }
 }

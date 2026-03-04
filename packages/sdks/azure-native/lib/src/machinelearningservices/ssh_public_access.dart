@@ -3,16 +3,15 @@ enum SshPublicAccess {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SshPublicAccess(this.value);
-  final String value;
+  const SshPublicAccess(this.wireValue);
+  final String wireValue;
 
   static SshPublicAccess fromValue(String value) {
     for (final item in SshPublicAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SshPublicAccess value: $value');
   }
 }
-

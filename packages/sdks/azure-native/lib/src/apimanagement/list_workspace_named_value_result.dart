@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listWorkspaceNamedValue.
 class ListWorkspaceNamedValueResult {
   /// This is secret value of the NamedValue entity.
@@ -8,20 +7,19 @@ class ListWorkspaceNamedValueResult {
 
   /// Creates a new [ListWorkspaceNamedValueResult].
   /// [value] This is secret value of the NamedValue entity.
-  ListWorkspaceNamedValueResult({
-    this.value,
-  });
+  ListWorkspaceNamedValueResult({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory ListWorkspaceNamedValueResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceNamedValueResult(
-      value: map['value'] == null ? null : map['value']! as String,
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_fluidrelay;
-
 export 'fluidrelay/cmk_identity_type.dart';
 export 'fluidrelay/customer_managed_key_encryption_properties.dart';
 export 'fluidrelay/customer_managed_key_encryption_properties_key_encryption_key_identity.dart';

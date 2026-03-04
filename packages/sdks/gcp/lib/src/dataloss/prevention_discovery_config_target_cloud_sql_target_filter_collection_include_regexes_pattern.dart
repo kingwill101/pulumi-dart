@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern {
   /// Regex to test the database name against. If empty, all databases match.
   final pulumi.Input<String>? databaseRegex;
+
   /// Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'
   final pulumi.Input<String>? databaseResourceNameRegex;
+
   /// Regex to test the instance name against. If empty, all instances match.
   final pulumi.Input<String>? instanceRegex;
+
   /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
   final pulumi.Input<String>? projectIdRegex;
 
@@ -33,13 +36,30 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern(
-      databaseRegex: map['databaseRegex'] == null ? null : (map['databaseRegex']! as String).input(),
-      databaseResourceNameRegex: map['databaseResourceNameRegex'] == null ? null : (map['databaseResourceNameRegex']! as String).input(),
-      instanceRegex: map['instanceRegex'] == null ? null : (map['instanceRegex']! as String).input(),
-      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex']! as String).input(),
+      databaseRegex: (() {
+        final guardedValue = map['databaseRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseResourceNameRegex: (() {
+        final guardedValue = map['databaseResourceNameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceRegex: (() {
+        final guardedValue = map['instanceRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectIdRegex: (() {
+        final guardedValue = map['projectIdRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

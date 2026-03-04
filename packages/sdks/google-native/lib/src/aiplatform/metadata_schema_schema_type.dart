@@ -5,16 +5,15 @@ enum MetadataSchemaSchemaType {
   executionType("EXECUTION_TYPE"),
   contextType("CONTEXT_TYPE");
 
-  const MetadataSchemaSchemaType(this.value);
-  final String value;
+  const MetadataSchemaSchemaType(this.wireValue);
+  final String wireValue;
 
   static MetadataSchemaSchemaType fromValue(String value) {
     for (final item in MetadataSchemaSchemaType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataSchemaSchemaType value: $value');
   }
 }
-

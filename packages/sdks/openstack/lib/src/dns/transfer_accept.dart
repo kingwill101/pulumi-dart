@@ -199,15 +199,19 @@ class TransferAccept extends pulumi.CustomResource {
   /// status. The check is enabled by default. If this argument is true, zone
   /// will be considered as created/updated if OpenStack accept returned success.
   late final pulumi.Output<bool?> disableStatusCheck;
+
   /// The transfer key.
   late final pulumi.Output<String> key;
+
   /// The region in which to obtain the V2 DNS client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new DNS zone zone transfer accept.
   late final pulumi.Output<String> region;
+
   /// Map of additional options. Changing this creates a
   /// new transfer accept.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
+
   /// The ID of the zone transfer request.
   late final pulumi.Output<String> zoneTransferRequestId;
 
@@ -220,16 +224,16 @@ class TransferAccept extends pulumi.CustomResource {
     TransferAcceptArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/transferAccept:TransferAccept',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
-    this.key = registerOutput<String>('key');
-    this.region = registerOutput<String>('region');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    this.zoneTransferRequestId = registerOutput<String>('zoneTransferRequestId');
+         'openstack:dns/transferAccept:TransferAccept',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    zoneTransferRequestId = registerOutput<String>('zoneTransferRequestId');
   }
 
   /// Gets an existing [TransferAccept] resource's state with the given [name] and [id].
@@ -250,15 +254,15 @@ class TransferAccept extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:dns/transferAccept:TransferAccept',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
-    this.key = registerOutput<String>('key');
-    this.region = registerOutput<String>('region');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    this.zoneTransferRequestId = registerOutput<String>('zoneTransferRequestId');
+         'openstack:dns/transferAccept:TransferAccept',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disableStatusCheck = registerOutput<bool?>('disableStatusCheck');
+    key = registerOutput<String>('key');
+    region = registerOutput<String>('region');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    zoneTransferRequestId = registerOutput<String>('zoneTransferRequestId');
   }
 }

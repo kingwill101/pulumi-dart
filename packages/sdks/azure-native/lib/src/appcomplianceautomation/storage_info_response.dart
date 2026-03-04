@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageInfoResponse {
   /// 'bring your own storage' account name
   final pulumi.Input<String>? accountName;
+
   /// The region of 'bring your own storage' account
   final pulumi.Input<String>? location;
+
   /// The resourceGroup which 'bring your own storage' account belongs to
   final pulumi.Input<String>? resourceGroup;
+
   /// The subscription id which 'bring your own storage' account belongs to
   final pulumi.Input<String>? subscriptionId;
 
@@ -36,11 +39,26 @@ class StorageInfoResponse {
 
   factory StorageInfoResponse.fromMap(Map<String, dynamic> map) {
     return StorageInfoResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

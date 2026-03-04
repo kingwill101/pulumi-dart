@@ -4,16 +4,15 @@ enum AttachedDiskModeTpuV2alpha1 {
   readWrite("READ_WRITE"),
   readOnly("READ_ONLY");
 
-  const AttachedDiskModeTpuV2alpha1(this.value);
-  final String value;
+  const AttachedDiskModeTpuV2alpha1(this.wireValue);
+  final String wireValue;
 
   static AttachedDiskModeTpuV2alpha1 fromValue(String value) {
     for (final item in AttachedDiskModeTpuV2alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttachedDiskModeTpuV2alpha1 value: $value');
   }
 }
-

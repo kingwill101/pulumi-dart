@@ -9,20 +9,29 @@ class AttestationAuthority {
 
   /// Creates a new [AttestationAuthority].
   /// [hint] Optional.
-  AttestationAuthority({
-    this.hint,
-  });
+  AttestationAuthority({this.hint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': ?pulumi.Input.mapOptionalInputValue<AttestationAuthorityHint, Map<String, dynamic>>(hint, (value) => value.toMap()),
+      'hint':
+          ?pulumi.Input.mapOptionalInputValue<
+            AttestationAuthorityHint,
+            Map<String, dynamic>
+          >(hint, (value) => value.toMap()),
     };
   }
 
   factory AttestationAuthority.fromMap(Map<String, dynamic> map) {
     return AttestationAuthority(
-      hint: map['hint'] == null ? null : (AttestationAuthorityHint.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
+      hint: (() {
+        final guardedValue = map['hint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AttestationAuthorityHint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

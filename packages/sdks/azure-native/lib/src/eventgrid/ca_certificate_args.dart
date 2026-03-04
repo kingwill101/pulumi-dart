@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CaCertificateArgs {
   /// The CA certificate name.
   final pulumi.Input<String>? caCertificateName;
+
   /// Description for the CA Certificate resource.
   final pulumi.Input<String>? description;
+
   /// Base64 encoded PEM (Privacy Enhanced Mail) format certificate data.
   final pulumi.Input<String>? encodedCertificate;
+
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,25 @@ class CaCertificateArgs {
 
   factory CaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CaCertificateArgs(
-      caCertificateName: map['caCertificateName'] == null ? null : (map['caCertificateName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      encodedCertificate: map['encodedCertificate'] == null ? null : (map['encodedCertificate']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      caCertificateName: (() {
+        final guardedValue = map['caCertificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encodedCertificate: (() {
+        final guardedValue = map['encodedCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

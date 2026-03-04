@@ -12,6 +12,7 @@ class GetClustersResult {
   final bool? defaultStatus;
   final String? depositType;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -75,7 +76,11 @@ class GetClustersResult {
     return <String, dynamic>{
       'clusterName': ?clusterName,
       'clusterTypeLists': ?clusterTypeLists,
-      'clusters': pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(clusters, (value) => value.toMap()),
+      'clusters':
+          pulumi.Input.encodeList<GetClustersCluster, Map<String, dynamic>>(
+            clusters,
+            (value) => value.toMap(),
+          ),
       'createType': ?createType,
       'defaultStatus': ?defaultStatus,
       'depositType': ?depositType,
@@ -98,27 +103,90 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusterName: map['clusterName'] == null ? null : map['clusterName']! as String,
-      clusterTypeLists: map['clusterTypeLists'] == null ? null : (map['clusterTypeLists']! as List).cast<String>(),
-      clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters'], (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      createType: map['createType'] == null ? null : map['createType']! as String,
-      defaultStatus: map['defaultStatus'] == null ? null : map['defaultStatus']! as bool,
-      depositType: map['depositType'] == null ? null : map['depositType']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      clusterTypeLists: (() {
+        final guardedValue = map['clusterTypeLists'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      clusters: pulumi.Input.decodeList<GetClustersCluster>(
+        map['clusters']!,
+        (value) =>
+            GetClustersCluster.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      createType: (() {
+        final guardedValue = map['createType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      defaultStatus: (() {
+        final guardedValue = map['defaultStatus'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      depositType: (() {
+        final guardedValue = map['depositType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      isDesc: map['isDesc'] == null ? null : map['isDesc']! as bool,
-      machineType: map['machineType'] == null ? null : map['machineType']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      isDesc: (() {
+        final guardedValue = map['isDesc'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      machineType: (() {
+        final guardedValue = map['machineType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
-      statusLists: map['statusLists'] == null ? null : (map['statusLists']! as List).cast<String>(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      statusLists: (() {
+        final guardedValue = map['statusLists'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       totalCount: map['totalCount'] as int,
-      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

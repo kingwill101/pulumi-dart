@@ -8,7 +8,7 @@ import 'schedule_target.dart';
 ///
 /// You can find out more about EventBridge Scheduler in the [User Guide](https://docs.aws.amazon.com/scheduler/latest/UserGuide/what-is-scheduler.html).
 ///
-/// > **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
+/// &gt; **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
 ///
 /// ## Example Usage
 ///
@@ -362,32 +362,46 @@ import 'schedule_target.dart';
 class Schedule extends pulumi.CustomResource {
   /// Action that applies to the schedule after completing invocation of the target. Valid values are `NONE` and `DELETE`. Defaults to `NONE`.
   late final pulumi.Output<String> actionAfterCompletion;
+
   /// ARN of the schedule.
   late final pulumi.Output<String> arn;
+
   /// Brief description of the schedule.
   late final pulumi.Output<String?> description;
+
   /// The date, in UTC, before which the schedule can invoke its target. Depending on the schedule's recurrence expression, invocations might stop on, or before, the end date you specify. EventBridge Scheduler ignores the end date for one-time schedules. Example: `2030-01-01T01:00:00Z`.
   late final pulumi.Output<String?> endDate;
+
   /// Configures a time window during which EventBridge Scheduler invokes the schedule. Detailed below.
   late final pulumi.Output<ScheduleFlexibleTimeWindow> flexibleTimeWindow;
+
   /// Name of the schedule group to associate with this schedule. When omitted, the `default` schedule group is used.
   late final pulumi.Output<String> groupName;
+
   /// ARN for the customer managed KMS key that EventBridge Scheduler will use to encrypt and decrypt your data.
   late final pulumi.Output<String?> kmsKeyArn;
+
   /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Defines when the schedule runs. Read more in [Schedule types on EventBridge Scheduler](https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html).
   late final pulumi.Output<String> scheduleExpression;
+
   /// Timezone in which the scheduling expression is evaluated. Defaults to `UTC`. Example: `Australia/Sydney`.
   late final pulumi.Output<String?> scheduleExpressionTimezone;
+
   /// The date, in UTC, after which the schedule can begin invoking its target. Depending on the schedule's recurrence expression, invocations might occur on, or after, the start date you specify. EventBridge Scheduler ignores the start date for one-time schedules. Example: `2030-01-01T01:00:00Z`.
   late final pulumi.Output<String?> startDate;
+
   /// Specifies whether the schedule is enabled or disabled. One of: `ENABLED` (default), `DISABLED`.
   late final pulumi.Output<String?> state;
+
   /// Configures the target of the schedule. Detailed below.
   ///
   /// The following arguments are optional:
@@ -402,26 +416,30 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:scheduler/schedule:Schedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionAfterCompletion = registerOutput<String>('actionAfterCompletion');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.endDate = registerOutput<String?>('endDate');
-    this.flexibleTimeWindow = registerOutput<ScheduleFlexibleTimeWindow>('flexibleTimeWindow');
-    this.groupName = registerOutput<String>('groupName');
-    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+         'aws:scheduler/schedule:Schedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionAfterCompletion = registerOutput<String>('actionAfterCompletion');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    endDate = registerOutput<String?>('endDate');
+    flexibleTimeWindow = registerOutput<ScheduleFlexibleTimeWindow>(
+      'flexibleTimeWindow',
+    );
+    groupName = registerOutput<String>('groupName');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.region = registerOutput<String>('region');
-    this.scheduleExpression = registerOutput<String>('scheduleExpression');
-    this.scheduleExpressionTimezone = registerOutput<String?>('scheduleExpressionTimezone');
-    this.startDate = registerOutput<String?>('startDate');
-    this.state = registerOutput<String?>('state');
-    this.target = registerOutput<ScheduleTarget>('target');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    scheduleExpression = registerOutput<String>('scheduleExpression');
+    scheduleExpressionTimezone = registerOutput<String?>(
+      'scheduleExpressionTimezone',
+    );
+    startDate = registerOutput<String?>('startDate');
+    state = registerOutput<String?>('state');
+    target = registerOutput<ScheduleTarget>('target');
   }
 
   /// Gets an existing [Schedule] resource's state with the given [name] and [id].
@@ -442,25 +460,29 @@ class Schedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:scheduler/schedule:Schedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionAfterCompletion = registerOutput<String>('actionAfterCompletion');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.endDate = registerOutput<String?>('endDate');
-    this.flexibleTimeWindow = registerOutput<ScheduleFlexibleTimeWindow>('flexibleTimeWindow');
-    this.groupName = registerOutput<String>('groupName');
-    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+         'aws:scheduler/schedule:Schedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionAfterCompletion = registerOutput<String>('actionAfterCompletion');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    endDate = registerOutput<String?>('endDate');
+    flexibleTimeWindow = registerOutput<ScheduleFlexibleTimeWindow>(
+      'flexibleTimeWindow',
+    );
+    groupName = registerOutput<String>('groupName');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.region = registerOutput<String>('region');
-    this.scheduleExpression = registerOutput<String>('scheduleExpression');
-    this.scheduleExpressionTimezone = registerOutput<String?>('scheduleExpressionTimezone');
-    this.startDate = registerOutput<String?>('startDate');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    scheduleExpression = registerOutput<String>('scheduleExpression');
+    scheduleExpressionTimezone = registerOutput<String?>(
+      'scheduleExpressionTimezone',
+    );
+    startDate = registerOutput<String?>('startDate');
     this.state = registerOutput<String?>('state');
-    this.target = registerOutput<ScheduleTarget>('target');
+    target = registerOutput<ScheduleTarget>('target');
   }
 }

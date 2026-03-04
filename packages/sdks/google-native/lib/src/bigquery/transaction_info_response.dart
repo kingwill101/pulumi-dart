@@ -8,20 +8,15 @@ class TransactionInfoResponse {
 
   /// Creates a new [TransactionInfoResponse].
   /// [transactionId] // [Alpha] Id of the transaction.
-  TransactionInfoResponse({
-    required this.transactionId,
-  });
+  TransactionInfoResponse({required this.transactionId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'transactionId': transactionId,
-    };
+    return <String, dynamic>{'transactionId': transactionId};
   }
 
   factory TransactionInfoResponse.fromMap(Map<String, dynamic> map) {
     return TransactionInfoResponse(
-      transactionId: (map['transactionId'] as String).input(),
+      transactionId: pulumi.Input.fromValue(map['transactionId'] as String),
     );
   }
 }
-

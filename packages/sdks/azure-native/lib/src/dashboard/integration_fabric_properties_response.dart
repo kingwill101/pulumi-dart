@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationFabricPropertiesResponse {
   /// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
   final pulumi.Input<String>? dataSourceResourceId;
+
   /// Provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
+
   /// A list of integration scenarios covered by this integration fabric
   final pulumi.Input<List<String>>? scenarios;
+
   /// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
   final pulumi.Input<String>? targetResourceId;
 
@@ -33,13 +36,28 @@ class IntegrationFabricPropertiesResponse {
     };
   }
 
-  factory IntegrationFabricPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory IntegrationFabricPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationFabricPropertiesResponse(
-      dataSourceResourceId: map['dataSourceResourceId'] == null ? null : (map['dataSourceResourceId']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      scenarios: map['scenarios'] == null ? null : ((map['scenarios']! as List).cast<String>()).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      dataSourceResourceId: (() {
+        final guardedValue = map['dataSourceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      scenarios: (() {
+        final guardedValue = map['scenarios'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targetResourceId: (() {
+        final guardedValue = map['targetResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

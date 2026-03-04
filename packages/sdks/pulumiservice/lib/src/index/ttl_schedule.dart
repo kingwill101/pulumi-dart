@@ -5,14 +5,19 @@ import 'ttl_schedule_args.dart';
 class TtlSchedule extends pulumi.CustomResource {
   /// True if the stack and all associated history and settings should be deleted.
   late final pulumi.Output<bool?> deleteAfterDestroy;
+
   /// Organization name.
   late final pulumi.Output<String> organization;
+
   /// Project name.
   late final pulumi.Output<String> project;
+
   /// Schedule ID of the created schedule, assigned by Pulumi Cloud.
   late final pulumi.Output<String> scheduleId;
+
   /// Stack name.
   late final pulumi.Output<String> stack;
+
   /// The time at which the schedule should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z.
   late final pulumi.Output<String> timestamp;
 
@@ -25,16 +30,16 @@ class TtlSchedule extends pulumi.CustomResource {
     TtlScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:TtlSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteAfterDestroy = registerOutput<bool?>('deleteAfterDestroy');
-    this.organization = registerOutput<String>('organization');
-    this.project = registerOutput<String>('project');
-    this.scheduleId = registerOutput<String>('scheduleId');
-    this.stack = registerOutput<String>('stack');
-    this.timestamp = registerOutput<String>('timestamp');
+         'pulumiservice:index:TtlSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteAfterDestroy = registerOutput<bool?>('deleteAfterDestroy');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    scheduleId = registerOutput<String>('scheduleId');
+    stack = registerOutput<String>('stack');
+    timestamp = registerOutput<String>('timestamp');
   }
 }

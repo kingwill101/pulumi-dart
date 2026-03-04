@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpSetsSet {
   /// The ID of an acceleration region.
   final pulumi.Input<String> accelerateRegionId;
+
   /// The bandwidth allocated to the acceleration region.
   final pulumi.Input<int> bandwidth;
+
   /// The ID of the Ip Set.
   final pulumi.Input<String> id;
+
   /// The list of accelerated IP addresses in the acceleration region.
   final pulumi.Input<List<String>> ipAddressLists;
+
   /// Accelerated area ID.
   final pulumi.Input<String> ipSetId;
+
   /// The IP protocol used by the GA instance.
   final pulumi.Input<String> ipVersion;
+
   /// The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
   final pulumi.Input<String> status;
 
@@ -50,14 +56,17 @@ class GetIpSetsSet {
 
   factory GetIpSetsSet.fromMap(Map<String, dynamic> map) {
     return GetIpSetsSet(
-      accelerateRegionId: (map['accelerateRegionId'] as String).input(),
-      bandwidth: (map['bandwidth'] as int).input(),
-      id: (map['id'] as String).input(),
-      ipAddressLists: ((map['ipAddressLists'] as List).cast<String>()).input(),
-      ipSetId: (map['ipSetId'] as String).input(),
-      ipVersion: (map['ipVersion'] as String).input(),
-      status: (map['status'] as String).input(),
+      accelerateRegionId: pulumi.Input.fromValue(
+        map['accelerateRegionId'] as String,
+      ),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ipAddressLists: pulumi.Input.fromValue(
+        (map['ipAddressLists'] as List).cast<String>(),
+      ),
+      ipSetId: pulumi.Input.fromValue(map['ipSetId'] as String),
+      ipVersion: pulumi.Input.fromValue(map['ipVersion'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

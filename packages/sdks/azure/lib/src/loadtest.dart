@@ -1,5 +1,3 @@
-library module_loadtest;
-
 export 'loadtest/functions.dart';
 export 'loadtest/get_args.dart';
 export 'loadtest/get_encryption.dart';

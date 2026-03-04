@@ -7,14 +7,19 @@ import 'google_privacy_dlp_v2_inspect_config_response.dart';
 class GooglePrivacyDlpV2InspectTemplateResponse {
   /// The creation timestamp of an inspectTemplate.
   final pulumi.Input<String> createTime;
+
   /// Short description (max 256 chars).
   final pulumi.Input<String> description;
+
   /// Display name (max 256 chars).
   final pulumi.Input<String> displayName;
+
   /// The core content of the template. Configuration of the scanning process.
   final pulumi.Input<GooglePrivacyDlpV2InspectConfigResponse> inspectConfig;
+
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
   final pulumi.Input<String> name;
+
   /// The last update timestamp of an inspectTemplate.
   final pulumi.Input<String> updateTime;
 
@@ -39,21 +44,30 @@ class GooglePrivacyDlpV2InspectTemplateResponse {
       'createTime': createTime,
       'description': description,
       'displayName': displayName,
-      'inspectConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2InspectConfigResponse, Map<String, dynamic>>(inspectConfig, (value) => value.toMap()),
+      'inspectConfig':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2InspectConfigResponse,
+            Map<String, dynamic>
+          >(inspectConfig, (value) => value.toMap()),
       'name': name,
       'updateTime': updateTime,
     };
   }
 
-  factory GooglePrivacyDlpV2InspectTemplateResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InspectTemplateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InspectTemplateResponse(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      inspectConfig: (GooglePrivacyDlpV2InspectConfigResponse.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      inspectConfig: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2InspectConfigResponse.fromMap(
+          (map['inspectConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

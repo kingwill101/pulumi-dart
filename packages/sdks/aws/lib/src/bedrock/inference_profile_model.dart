@@ -8,20 +8,15 @@ class InferenceProfileModel {
 
   /// Creates a new [InferenceProfileModel].
   /// [modelArn] The Amazon Resource Name (ARN) of the model.
-  InferenceProfileModel({
-    required this.modelArn,
-  });
+  InferenceProfileModel({required this.modelArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'modelArn': modelArn,
-    };
+    return <String, dynamic>{'modelArn': modelArn};
   }
 
   factory InferenceProfileModel.fromMap(Map<String, dynamic> map) {
     return InferenceProfileModel(
-      modelArn: (map['modelArn'] as String).input(),
+      modelArn: pulumi.Input.fromValue(map['modelArn'] as String),
     );
   }
 }
-

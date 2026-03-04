@@ -7,8 +7,10 @@ import 'report_recurrence_period_response.dart';
 class ReportScheduleResponse {
   /// The schedule recurrence.
   final pulumi.Input<String> recurrence;
+
   /// Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
   final pulumi.Input<ReportRecurrencePeriodResponse>? recurrencePeriod;
+
   /// The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
   final pulumi.Input<String>? status;
 
@@ -25,17 +27,32 @@ class ReportScheduleResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'recurrence': recurrence,
-      'recurrencePeriod': ?pulumi.Input.mapOptionalInputValue<ReportRecurrencePeriodResponse, Map<String, dynamic>>(recurrencePeriod, (value) => value.toMap()),
+      'recurrencePeriod':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReportRecurrencePeriodResponse,
+            Map<String, dynamic>
+          >(recurrencePeriod, (value) => value.toMap()),
       'status': ?status,
     };
   }
 
   factory ReportScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ReportScheduleResponse(
-      recurrence: (map['recurrence'] as String).input(),
-      recurrencePeriod: map['recurrencePeriod'] == null ? null : (ReportRecurrencePeriodResponse.fromMap((map['recurrencePeriod']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      recurrence: pulumi.Input.fromValue(map['recurrence'] as String),
+      recurrencePeriod: (() {
+        final guardedValue = map['recurrencePeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReportRecurrencePeriodResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

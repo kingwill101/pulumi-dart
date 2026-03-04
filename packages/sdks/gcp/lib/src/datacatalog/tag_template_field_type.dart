@@ -8,6 +8,7 @@ class TagTemplateFieldType {
   /// Exactly one of `primitive_type` or `enum_type` must be set
   /// Structure is documented below.
   final pulumi.Input<TagTemplateFieldTypeEnumType>? enumType;
+
   /// Represents primitive types - string, bool etc.
   /// Exactly one of `primitive_type` or `enum_type` must be set
   /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
@@ -16,23 +17,35 @@ class TagTemplateFieldType {
   /// Creates a new [TagTemplateFieldType].
   /// [enumType] Represents an enum type.
   /// [primitiveType] Represents primitive types - string, bool etc.
-  TagTemplateFieldType({
-    this.enumType,
-    this.primitiveType,
-  });
+  TagTemplateFieldType({this.enumType, this.primitiveType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enumType': ?pulumi.Input.mapOptionalInputValue<TagTemplateFieldTypeEnumType, Map<String, dynamic>>(enumType, (value) => value.toMap()),
+      'enumType':
+          ?pulumi.Input.mapOptionalInputValue<
+            TagTemplateFieldTypeEnumType,
+            Map<String, dynamic>
+          >(enumType, (value) => value.toMap()),
       'primitiveType': ?primitiveType,
     };
   }
 
   factory TagTemplateFieldType.fromMap(Map<String, dynamic> map) {
     return TagTemplateFieldType(
-      enumType: map['enumType'] == null ? null : (TagTemplateFieldTypeEnumType.fromMap((map['enumType']! as Map).cast<String, dynamic>())).input(),
-      primitiveType: map['primitiveType'] == null ? null : (map['primitiveType']! as String).input(),
+      enumType: (() {
+        final guardedValue = map['enumType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TagTemplateFieldTypeEnumType.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      primitiveType: (() {
+        final guardedValue = map['primitiveType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

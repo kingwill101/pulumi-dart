@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestorePolicyProperties {
   /// how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
   final pulumi.Input<int>? days;
+
   /// Blob restore is enabled if set to true.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [RestorePolicyProperties].
   /// [days] how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
   /// [enabled] Blob restore is enabled if set to true.
-  RestorePolicyProperties({
-    this.days,
-    required this.enabled,
-  });
+  RestorePolicyProperties({this.days, required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'days': ?days,
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'days': ?days, 'enabled': enabled};
   }
 
   factory RestorePolicyProperties.fromMap(Map<String, dynamic> map) {
     return RestorePolicyProperties(
-      days: map['days'] == null ? null : (map['days']! as int).input(),
-      enabled: (map['enabled'] as bool).input(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

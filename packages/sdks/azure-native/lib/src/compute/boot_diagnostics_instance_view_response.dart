@@ -7,8 +7,10 @@ import 'instance_view_status_response.dart';
 class BootDiagnosticsInstanceViewResponse {
   /// The console screenshot blob URI. **Note:** This will **not** be set if boot diagnostics is currently enabled with managed storage.
   final pulumi.Input<String> consoleScreenshotBlobUri;
+
   /// The serial console log blob Uri. **Note:** This will **not** be set if boot diagnostics is currently enabled with managed storage.
   final pulumi.Input<String> serialConsoleLogBlobUri;
+
   /// The boot diagnostics status information for the VM. **Note:** It will be set only if there are errors encountered in enabling boot diagnostics.
   final pulumi.Input<InstanceViewStatusResponse> status;
 
@@ -26,16 +28,29 @@ class BootDiagnosticsInstanceViewResponse {
     return <String, dynamic>{
       'consoleScreenshotBlobUri': consoleScreenshotBlobUri,
       'serialConsoleLogBlobUri': serialConsoleLogBlobUri,
-      'status': pulumi.Input.mapInputValue<InstanceViewStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            InstanceViewStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
-  factory BootDiagnosticsInstanceViewResponse.fromMap(Map<String, dynamic> map) {
+  factory BootDiagnosticsInstanceViewResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BootDiagnosticsInstanceViewResponse(
-      consoleScreenshotBlobUri: (map['consoleScreenshotBlobUri'] as String).input(),
-      serialConsoleLogBlobUri: (map['serialConsoleLogBlobUri'] as String).input(),
-      status: (InstanceViewStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      consoleScreenshotBlobUri: pulumi.Input.fromValue(
+        map['consoleScreenshotBlobUri'] as String,
+      ),
+      serialConsoleLogBlobUri: pulumi.Input.fromValue(
+        map['serialConsoleLogBlobUri'] as String,
+      ),
+      status: pulumi.Input.fromValue(
+        InstanceViewStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

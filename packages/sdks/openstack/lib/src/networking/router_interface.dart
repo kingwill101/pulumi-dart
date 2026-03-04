@@ -210,7 +210,7 @@ import 'router_interface_state.dart';
 ///
 /// Router Interfaces can be imported using the port `id`, e.g.
 ///
-/// $ openstack port list --router <router name or id>
+/// $ openstack port list --router &lt;router name or id&gt;
 ///
 /// ```sh
 /// $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
@@ -220,17 +220,21 @@ class RouterInterface extends pulumi.CustomResource {
   /// corresponding router ID should be deleted so that the router interface can
   /// be destroyed without any errors. The default value is `false`.
   late final pulumi.Output<bool?> forceDestroy;
+
   /// ID of the port this interface connects to. Changing
   /// this creates a new router interface.
   late final pulumi.Output<String> portId;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a router. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// router interface.
   late final pulumi.Output<String> region;
+
   /// ID of the router this interface belongs to. Changing
   /// this creates a new router interface.
   late final pulumi.Output<String> routerId;
+
   /// ID of the subnet this interface connects to. Changing
   /// this creates a new router interface.
   late final pulumi.Output<String> subnetId;
@@ -244,16 +248,16 @@ class RouterInterface extends pulumi.CustomResource {
     RouterInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/routerInterface:RouterInterface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
-    this.routerId = registerOutput<String>('routerId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'openstack:networking/routerInterface:RouterInterface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
+    routerId = registerOutput<String>('routerId');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [RouterInterface] resource's state with the given [name] and [id].
@@ -274,15 +278,15 @@ class RouterInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/routerInterface:RouterInterface',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
-    this.routerId = registerOutput<String>('routerId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'openstack:networking/routerInterface:RouterInterface',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
+    routerId = registerOutput<String>('routerId');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

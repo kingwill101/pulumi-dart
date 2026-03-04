@@ -12,7 +12,7 @@ import 'application_identifier_uri_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -136,7 +136,7 @@ import 'application_identifier_uri_state.dart';
 /// ```
 ///
 ///
-/// > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
+/// &gt; **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
 ///
 /// *Usage with azuread.Application resource*
 ///
@@ -259,6 +259,7 @@ import 'application_identifier_uri_state.dart';
 class ApplicationIdentifierUri extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
   late final pulumi.Output<String> identifierUri;
 
@@ -271,13 +272,13 @@ class ApplicationIdentifierUri extends pulumi.CustomResource {
     ApplicationIdentifierUriArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.identifierUri = registerOutput<String>('identifierUri');
+         'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    identifierUri = registerOutput<String>('identifierUri');
   }
 
   /// Gets an existing [ApplicationIdentifierUri] resource's state with the given [name] and [id].
@@ -298,12 +299,12 @@ class ApplicationIdentifierUri extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.identifierUri = registerOutput<String>('identifierUri');
+         'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    identifierUri = registerOutput<String>('identifierUri');
   }
 }

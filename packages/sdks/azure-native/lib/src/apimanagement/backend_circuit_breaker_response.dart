@@ -10,20 +10,39 @@ class BackendCircuitBreakerResponse {
 
   /// Creates a new [BackendCircuitBreakerResponse].
   /// [rules] The rules for tripping the backend.
-  BackendCircuitBreakerResponse({
-    this.rules,
-  });
+  BackendCircuitBreakerResponse({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<CircuitBreakerRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<CircuitBreakerRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CircuitBreakerRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CircuitBreakerRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory BackendCircuitBreakerResponse.fromMap(Map<String, dynamic> map) {
     return BackendCircuitBreakerResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CircuitBreakerRuleResponse>(map['rules']!, (value) => CircuitBreakerRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CircuitBreakerRuleResponse>(
+            guardedValue,
+            (value) => CircuitBreakerRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

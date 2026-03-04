@@ -19,16 +19,17 @@ enum LayerDirectiveContaineranalysisV1beta1 {
   healthcheck("HEALTHCHECK"),
   shell("SHELL");
 
-  const LayerDirectiveContaineranalysisV1beta1(this.value);
-  final String value;
+  const LayerDirectiveContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static LayerDirectiveContaineranalysisV1beta1 fromValue(String value) {
     for (final item in LayerDirectiveContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LayerDirectiveContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown LayerDirectiveContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

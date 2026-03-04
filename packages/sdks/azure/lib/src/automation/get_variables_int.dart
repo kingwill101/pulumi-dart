@@ -5,11 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariablesInt {
   /// The description of the Automation Variable.
   final pulumi.Input<String> description;
+
   /// Specifies if the Automation Variable is encrypted.
   final pulumi.Input<bool> encrypted;
   final pulumi.Input<String> id;
+
   /// The name of the Automation Variable.
   final pulumi.Input<String> name;
+
   /// The value of the Automation Variable.
   final pulumi.Input<int> value;
 
@@ -39,12 +42,11 @@ class GetVariablesInt {
 
   factory GetVariablesInt.fromMap(Map<String, dynamic> map) {
     return GetVariablesInt(
-      description: (map['description'] as String).input(),
-      encrypted: (map['encrypted'] as bool).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      value: (map['value'] as int).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
-

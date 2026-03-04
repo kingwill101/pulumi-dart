@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceStatusCondition {
   /// Human readable message indicating details about the current status.
   final pulumi.Input<String> message;
+
   /// One-word CamelCase reason for the condition's current status.
   final pulumi.Input<String> reason;
+
   /// Status of the condition, one of True, False, Unknown.
   final pulumi.Input<String> status;
+
   /// Type of domain mapping condition.
   final pulumi.Input<String> type;
 
@@ -35,11 +38,10 @@ class GetServiceStatusCondition {
 
   factory GetServiceStatusCondition.fromMap(Map<String, dynamic> map) {
     return GetServiceStatusCondition(
-      message: (map['message'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      status: (map['status'] as String).input(),
-      type: (map['type'] as String).input(),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

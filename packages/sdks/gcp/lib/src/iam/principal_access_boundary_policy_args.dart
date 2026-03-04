@@ -14,15 +14,20 @@ class PrincipalAccessBoundaryPolicyArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Principal access boundary policy details
   /// Structure is documented below.
   final pulumi.Input<PrincipalAccessBoundaryPolicyDetails>? details;
+
   /// The description of the principal access boundary policy. Must be less than or equal to 63 characters.
   final pulumi.Input<String>? displayName;
+
   /// The location the principal access boundary policy is in.
   final pulumi.Input<String> location;
+
   /// The parent organization of the principal access boundary policy.
   final pulumi.Input<String> organization;
+
   /// The ID to use to create the principal access boundary policy.
   /// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
   final pulumi.Input<String> principalAccessBoundaryPolicyId;
@@ -46,7 +51,11 @@ class PrincipalAccessBoundaryPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'details': ?pulumi.Input.mapOptionalInputValue<PrincipalAccessBoundaryPolicyDetails, Map<String, dynamic>>(details, (value) => value.toMap()),
+      'details':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrincipalAccessBoundaryPolicyDetails,
+            Map<String, dynamic>
+          >(details, (value) => value.toMap()),
       'displayName': ?displayName,
       'location': location,
       'organization': organization,
@@ -56,13 +65,32 @@ class PrincipalAccessBoundaryPolicyArgs {
 
   factory PrincipalAccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      details: map['details'] == null ? null : (PrincipalAccessBoundaryPolicyDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: (map['location'] as String).input(),
-      organization: (map['organization'] as String).input(),
-      principalAccessBoundaryPolicyId: (map['principalAccessBoundaryPolicyId'] as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrincipalAccessBoundaryPolicyDetails.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      principalAccessBoundaryPolicyId: pulumi.Input.fromValue(
+        map['principalAccessBoundaryPolicyId'] as String,
+      ),
     );
   }
 }
-

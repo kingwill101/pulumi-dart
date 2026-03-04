@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuntimeMigrationEligibilityResponse {
   /// Certain configurations make the GmN ineligible for an automatic migration. A manual migration is required.
   final pulumi.Input<List<String>> errors;
+
   /// Certain configurations will be defaulted during the migration.
   final pulumi.Input<List<String>> warnings;
 
@@ -18,17 +19,17 @@ class RuntimeMigrationEligibilityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'errors': errors,
-      'warnings': warnings,
-    };
+    return <String, dynamic>{'errors': errors, 'warnings': warnings};
   }
 
-  factory RuntimeMigrationEligibilityResponse.fromMap(Map<String, dynamic> map) {
+  factory RuntimeMigrationEligibilityResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuntimeMigrationEligibilityResponse(
-      errors: ((map['errors'] as List).cast<String>()).input(),
-      warnings: ((map['warnings'] as List).cast<String>()).input(),
+      errors: pulumi.Input.fromValue((map['errors'] as List).cast<String>()),
+      warnings: pulumi.Input.fromValue(
+        (map['warnings'] as List).cast<String>(),
+      ),
     );
   }
 }
-

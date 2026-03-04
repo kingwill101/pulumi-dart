@@ -14,9 +14,10 @@ import 'access_policy_assignment_state.dart';
 class AccessPolicyAssignment extends pulumi.CustomResource {
   /// The ID of the Managed Redis instance. Changing this forces a new Access Policy Assignment to be created.
   late final pulumi.Output<String> managedRedisId;
+
   /// The object ID of the Azure Active Directory user, group, service principal, or managed identity to assign the access policy to. Changing this forces a new Access Policy Assignment to be created.
   ///
-  /// > **Note:** Access Policy Assignments are created on the `default` database of the Managed Redis instance.
+  /// &gt; **Note:** Access Policy Assignments are created on the `default` database of the Managed Redis instance.
   late final pulumi.Output<String> objectId;
 
   /// Creates a new [AccessPolicyAssignment].
@@ -28,13 +29,13 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
     AccessPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedredis/accessPolicyAssignment:AccessPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managedRedisId = registerOutput<String>('managedRedisId');
-    this.objectId = registerOutput<String>('objectId');
+         'azure:managedredis/accessPolicyAssignment:AccessPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managedRedisId = registerOutput<String>('managedRedisId');
+    objectId = registerOutput<String>('objectId');
   }
 
   /// Gets an existing [AccessPolicyAssignment] resource's state with the given [name] and [id].
@@ -55,12 +56,12 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedredis/accessPolicyAssignment:AccessPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managedRedisId = registerOutput<String>('managedRedisId');
-    this.objectId = registerOutput<String>('objectId');
+         'azure:managedredis/accessPolicyAssignment:AccessPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managedRedisId = registerOutput<String>('managedRedisId');
+    objectId = registerOutput<String>('objectId');
   }
 }

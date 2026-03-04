@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'response_policy_args.dart';
-import 'response_policy_gke_cluster.dart';
-import 'response_policy_network.dart';
 import 'response_policy_state.dart';
 
 /// A Response Policy is a collection of selectors that apply to queries
@@ -538,15 +536,19 @@ import 'response_policy_state.dart';
 class ResponsePolicy extends pulumi.CustomResource {
   /// The description of the response policy, such as `My new response policy`.
   late final pulumi.Output<String?> description;
+
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
-  late final pulumi.Output<List<ResponsePolicyGkeCluster>?> gkeClusters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> gkeClusters;
+
   /// The list of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
-  late final pulumi.Output<List<ResponsePolicyNetwork>?> networks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
   late final pulumi.Output<String> responsePolicyName;
 
@@ -559,16 +561,16 @@ class ResponsePolicy extends pulumi.CustomResource {
     ResponsePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dns/responsePolicy:ResponsePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.gkeClusters = registerOutput<List<ResponsePolicyGkeCluster>?>('gkeClusters');
-    this.networks = registerOutput<List<ResponsePolicyNetwork>?>('networks');
-    this.project = registerOutput<String>('project');
-    this.responsePolicyName = registerOutput<String>('responsePolicyName');
+         'gcp:dns/responsePolicy:ResponsePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    project = registerOutput<String>('project');
+    responsePolicyName = registerOutput<String>('responsePolicyName');
   }
 
   /// Gets an existing [ResponsePolicy] resource's state with the given [name] and [id].
@@ -589,15 +591,15 @@ class ResponsePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dns/responsePolicy:ResponsePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.gkeClusters = registerOutput<List<ResponsePolicyGkeCluster>?>('gkeClusters');
-    this.networks = registerOutput<List<ResponsePolicyNetwork>?>('networks');
-    this.project = registerOutput<String>('project');
-    this.responsePolicyName = registerOutput<String>('responsePolicyName');
+         'gcp:dns/responsePolicy:ResponsePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    project = registerOutput<String>('project');
+    responsePolicyName = registerOutput<String>('responsePolicyName');
   }
 }

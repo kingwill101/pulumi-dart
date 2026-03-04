@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleTypeDateResponsePolicysimulatorV1beta {
   /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
   final pulumi.Input<int> day;
+
   /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
   final pulumi.Input<int> month;
+
   /// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
   final pulumi.Input<int> year;
 
@@ -22,19 +24,16 @@ class GoogleTypeDateResponsePolicysimulatorV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'day': day,
-      'month': month,
-      'year': year,
-    };
+    return <String, dynamic>{'day': day, 'month': month, 'year': year};
   }
 
-  factory GoogleTypeDateResponsePolicysimulatorV1beta.fromMap(Map<String, dynamic> map) {
+  factory GoogleTypeDateResponsePolicysimulatorV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleTypeDateResponsePolicysimulatorV1beta(
-      day: (map['day'] as int).input(),
-      month: (map['month'] as int).input(),
-      year: (map['year'] as int).input(),
+      day: pulumi.Input.fromValue(map['day'] as int),
+      month: pulumi.Input.fromValue(map['month'] as int),
+      year: pulumi.Input.fromValue(map['year'] as int),
     );
   }
 }
-

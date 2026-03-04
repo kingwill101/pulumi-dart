@@ -148,20 +148,28 @@ import 'system_data_response.dart';
 class IncidentComment extends pulumi.CustomResource {
   /// Describes the client that created the comment
   late final pulumi.Output<ClientInfoResponse> author;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The time the comment was created
   late final pulumi.Output<String> createdTimeUtc;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The time the comment was updated
   late final pulumi.Output<String> lastModifiedTimeUtc;
+
   /// The comment message
   late final pulumi.Output<String> message;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -174,19 +182,19 @@ class IncidentComment extends pulumi.CustomResource {
     IncidentCommentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:IncidentComment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.author = registerOutput<ClientInfoResponse>('author');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTimeUtc = registerOutput<String>('createdTimeUtc');
-    this.etag = registerOutput<String?>('etag');
-    this.lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
-    this.message = registerOutput<String>('message');
+         'azure-native:securityinsights:IncidentComment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    author = registerOutput<ClientInfoResponse>('author');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    etag = registerOutput<String?>('etag');
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+    message = registerOutput<String>('message');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

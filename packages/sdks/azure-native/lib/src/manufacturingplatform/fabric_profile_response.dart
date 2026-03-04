@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricProfileResponse {
   /// Azure Key Vault Uri
   final pulumi.Input<String> keyUri;
+
   /// One Lake Path
   final pulumi.Input<String> oneLakePath;
+
   /// URI of One Lake
   final pulumi.Input<String> oneLakeUri;
 
@@ -31,10 +33,9 @@ class FabricProfileResponse {
 
   factory FabricProfileResponse.fromMap(Map<String, dynamic> map) {
     return FabricProfileResponse(
-      keyUri: (map['keyUri'] as String).input(),
-      oneLakePath: (map['oneLakePath'] as String).input(),
-      oneLakeUri: (map['oneLakeUri'] as String).input(),
+      keyUri: pulumi.Input.fromValue(map['keyUri'] as String),
+      oneLakePath: pulumi.Input.fromValue(map['oneLakePath'] as String),
+      oneLakeUri: pulumi.Input.fromValue(map['oneLakeUri'] as String),
     );
   }
 }
-

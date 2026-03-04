@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverInboundEndpointIpConfigurations {
   /// Private IP address of the IP configuration.
   final pulumi.Input<String>? privateIpAddress;
+
   /// Private IP address allocation method. Allowed value is `Dynamic` and `Static`. Defaults to `Dynamic`.
   final pulumi.Input<String>? privateIpAllocationMethod;
+
   /// The subnet ID of the IP configuration.
   final pulumi.Input<String> subnetId;
 
@@ -28,12 +30,21 @@ class ResolverInboundEndpointIpConfigurations {
     };
   }
 
-  factory ResolverInboundEndpointIpConfigurations.fromMap(Map<String, dynamic> map) {
+  factory ResolverInboundEndpointIpConfigurations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResolverInboundEndpointIpConfigurations(
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod']! as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIpAllocationMethod: (() {
+        final guardedValue = map['privateIpAllocationMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

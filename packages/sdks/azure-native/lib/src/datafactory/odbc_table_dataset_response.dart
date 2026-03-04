@@ -9,20 +9,28 @@ import 'parameter_specification_response.dart';
 class OdbcTableDatasetResponse {
   /// List of tags that can be used for describing the Dataset.
   final pulumi.Input<List<dynamic>>? annotations;
+
   /// Dataset description.
   final pulumi.Input<String>? description;
+
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
   final pulumi.Input<DatasetResponseFolder>? folder;
+
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
+
   /// Parameters for dataset.
   final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   final pulumi.Input<dynamic>? schema;
+
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   final pulumi.Input<dynamic>? structure;
+
   /// The ODBC table name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? tableName;
+
   /// Type of dataset.
   /// Expected value is 'OdbcTable'.
   final pulumi.Input<String> type;
@@ -53,9 +61,28 @@ class OdbcTableDatasetResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'description': ?description,
-      'folder': ?pulumi.Input.mapOptionalInputValue<DatasetResponseFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
-      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'folder':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatasetResponseFolder,
+            Map<String, dynamic>
+          >(folder, (value) => value.toMap()),
+      'linkedServiceName':
+          pulumi.Input.mapInputValue<
+            LinkedServiceReferenceResponse,
+            Map<String, dynamic>
+          >(linkedServiceName, (value) => value.toMap()),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ParameterSpecificationResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ParameterSpecificationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'schema': ?schema,
       'structure': ?structure,
       'tableName': ?tableName,
@@ -65,16 +92,58 @@ class OdbcTableDatasetResponse {
 
   factory OdbcTableDatasetResponse.fromMap(Map<String, dynamic> map) {
     return OdbcTableDatasetResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
-      linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schema: map['schema'] == null ? null : (map['schema']!).input(),
-      structure: map['structure'] == null ? null : (map['structure']!).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName']!).input(),
-      type: (map['type'] as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatasetResponseFolder.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      linkedServiceName: pulumi.Input.fromValue(
+        LinkedServiceReferenceResponse.fromMap(
+          (map['linkedServiceName']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(
+            guardedValue,
+            (value) => ParameterSpecificationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      structure: (() {
+        final guardedValue = map['structure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

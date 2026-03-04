@@ -31,10 +31,15 @@ class GetConversationDatasetArgs {
 
   factory GetConversationDatasetArgs.fromMap(Map<String, dynamic> map) {
     return GetConversationDatasetArgs(
-      conversationDatasetId: (map['conversationDatasetId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      conversationDatasetId: pulumi.Input.fromValue(
+        map['conversationDatasetId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum HibernateSupport {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const HibernateSupport(this.value);
-  final String value;
+  const HibernateSupport(this.wireValue);
+  final String wireValue;
 
   static HibernateSupport fromValue(String value) {
     for (final item in HibernateSupport.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HibernateSupport value: $value');
   }
 }
-

@@ -163,22 +163,31 @@ import 'license_grant_state.dart';
 class LicenseGrant extends pulumi.CustomResource {
   /// A list of the allowed operations for the grant. This is a subset of the allowed operations on the license.
   late final pulumi.Output<List<String>> allowedOperations;
+
   /// The grant ARN.
   late final pulumi.Output<String> arn;
+
   /// The home region for the license.
   late final pulumi.Output<String> homeRegion;
+
   /// The ARN of the license to grant.
   late final pulumi.Output<String> licenseArn;
+
   /// The Name of the grant.
   late final pulumi.Output<String> name;
+
   /// The parent ARN.
   late final pulumi.Output<String> parentArn;
+
   /// The target account for the grant in the form of the ARN for an account principal of the root user.
   late final pulumi.Output<String> principal;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The grant status.
   late final pulumi.Output<String> status;
+
   /// The grant version.
   late final pulumi.Output<String> version;
 
@@ -191,21 +200,21 @@ class LicenseGrant extends pulumi.CustomResource {
     LicenseGrantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:licensemanager/licenseGrant:LicenseGrant',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedOperations = registerOutput<List<String>>('allowedOperations');
-    this.arn = registerOutput<String>('arn');
-    this.homeRegion = registerOutput<String>('homeRegion');
-    this.licenseArn = registerOutput<String>('licenseArn');
+         'aws:licensemanager/licenseGrant:LicenseGrant',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedOperations = registerOutput<List<String>>('allowedOperations');
+    arn = registerOutput<String>('arn');
+    homeRegion = registerOutput<String>('homeRegion');
+    licenseArn = registerOutput<String>('licenseArn');
     this.name = registerOutput<String>('name');
-    this.parentArn = registerOutput<String>('parentArn');
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.version = registerOutput<String>('version');
+    parentArn = registerOutput<String>('parentArn');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [LicenseGrant] resource's state with the given [name] and [id].
@@ -226,20 +235,20 @@ class LicenseGrant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:licensemanager/licenseGrant:LicenseGrant',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedOperations = registerOutput<List<String>>('allowedOperations');
-    this.arn = registerOutput<String>('arn');
-    this.homeRegion = registerOutput<String>('homeRegion');
-    this.licenseArn = registerOutput<String>('licenseArn');
+         'aws:licensemanager/licenseGrant:LicenseGrant',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedOperations = registerOutput<List<String>>('allowedOperations');
+    arn = registerOutput<String>('arn');
+    homeRegion = registerOutput<String>('homeRegion');
+    licenseArn = registerOutput<String>('licenseArn');
     this.name = registerOutput<String>('name');
-    this.parentArn = registerOutput<String>('parentArn');
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.version = registerOutput<String>('version');
+    parentArn = registerOutput<String>('parentArn');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    version = registerOutput<String>('version');
   }
 }

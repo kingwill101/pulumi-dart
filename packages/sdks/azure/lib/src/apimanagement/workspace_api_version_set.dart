@@ -250,7 +250,7 @@ import 'workspace_api_version_set_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -265,16 +265,22 @@ import 'workspace_api_version_set_state.dart';
 class WorkspaceApiVersionSet extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementWorkspaceId;
+
   /// Specifies the description of the API Management Workspace API Version Set.
   late final pulumi.Output<String?> description;
+
   /// Specifies the display name of the API Management Workspace API Version Set.
   late final pulumi.Output<String> displayName;
+
   /// Specifies the name of the API Management Workspace API Version Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the header to read from inbound requests to determine the API version.
   late final pulumi.Output<String?> versionHeaderName;
+
   /// Specifies the name of the query string parameter to read from inbound requests to determine the API version.
   late final pulumi.Output<String?> versionQueryName;
+
   /// Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
   late final pulumi.Output<String> versioningScheme;
 
@@ -287,18 +293,20 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
     WorkspaceApiVersionSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.versionHeaderName = registerOutput<String?>('versionHeaderName');
-    this.versionQueryName = registerOutput<String?>('versionQueryName');
-    this.versioningScheme = registerOutput<String>('versioningScheme');
+    versionHeaderName = registerOutput<String?>('versionHeaderName');
+    versionQueryName = registerOutput<String?>('versionQueryName');
+    versioningScheme = registerOutput<String>('versioningScheme');
   }
 
   /// Gets an existing [WorkspaceApiVersionSet] resource's state with the given [name] and [id].
@@ -319,17 +327,19 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'azure:apimanagement/workspaceApiVersionSet:WorkspaceApiVersionSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.versionHeaderName = registerOutput<String?>('versionHeaderName');
-    this.versionQueryName = registerOutput<String?>('versionQueryName');
-    this.versioningScheme = registerOutput<String>('versioningScheme');
+    versionHeaderName = registerOutput<String?>('versionHeaderName');
+    versionQueryName = registerOutput<String?>('versionQueryName');
+    versioningScheme = registerOutput<String>('versioningScheme');
   }
 }

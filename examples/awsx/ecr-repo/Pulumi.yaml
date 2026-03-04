@@ -1,0 +1,6 @@
+name: awsx-dart-ts-ecr-repo
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX ECR repository example in Dart.

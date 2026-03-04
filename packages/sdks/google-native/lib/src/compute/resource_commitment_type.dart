@@ -6,16 +6,15 @@ enum ResourceCommitmentType {
   unspecified("UNSPECIFIED"),
   vcpu("VCPU");
 
-  const ResourceCommitmentType(this.value);
-  final String value;
+  const ResourceCommitmentType(this.wireValue);
+  final String wireValue;
 
   static ResourceCommitmentType fromValue(String value) {
     for (final item in ResourceCommitmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceCommitmentType value: $value');
   }
 }
-

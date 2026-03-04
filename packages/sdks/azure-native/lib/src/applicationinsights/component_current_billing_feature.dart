@@ -175,10 +175,13 @@ import 'component_current_billing_feature_args.dart';
 class ComponentCurrentBillingFeature extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
   late final pulumi.Output<List<String>?> currentBillingFeatures;
+
   /// An Application Insights component daily data volume cap
-  late final pulumi.Output<ApplicationInsightsComponentDataVolumeCapResponse?> dataVolumeCap;
+  late final pulumi.Output<ApplicationInsightsComponentDataVolumeCapResponse?>
+  dataVolumeCap;
 
   /// Creates a new [ComponentCurrentBillingFeature].
   /// [name] The Pulumi resource name.
@@ -189,13 +192,18 @@ class ComponentCurrentBillingFeature extends pulumi.CustomResource {
     ComponentCurrentBillingFeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:applicationinsights:ComponentCurrentBillingFeature',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.currentBillingFeatures = registerOutput<List<String>?>('currentBillingFeatures');
-    this.dataVolumeCap = registerOutput<ApplicationInsightsComponentDataVolumeCapResponse?>('dataVolumeCap');
+         'azure-native:applicationinsights:ComponentCurrentBillingFeature',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    currentBillingFeatures = registerOutput<List<String>?>(
+      'currentBillingFeatures',
+    );
+    dataVolumeCap =
+        registerOutput<ApplicationInsightsComponentDataVolumeCapResponse?>(
+          'dataVolumeCap',
+        );
   }
 }

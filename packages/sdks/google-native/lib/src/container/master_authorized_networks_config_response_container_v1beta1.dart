@@ -7,8 +7,10 @@ import 'cidr_block_response_container_v1beta1.dart';
 class MasterAuthorizedNetworksConfigResponseContainerV1beta1 {
   /// cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS.
   final pulumi.Input<List<CidrBlockResponseContainerV1beta1>> cidrBlocks;
+
   /// Whether or not master authorized networks is enabled.
   final pulumi.Input<bool> enabled;
+
   /// Whether master is accessbile via Google Compute Engine Public IP addresses.
   final pulumi.Input<bool> gcpPublicCidrsAccessEnabled;
 
@@ -24,18 +26,39 @@ class MasterAuthorizedNetworksConfigResponseContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrBlocks': pulumi.Input.mapInputValue<List<CidrBlockResponseContainerV1beta1>, List<Map<String, dynamic>>>(cidrBlocks, (value) => pulumi.Input.encodeList<CidrBlockResponseContainerV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cidrBlocks':
+          pulumi.Input.mapInputValue<
+            List<CidrBlockResponseContainerV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            cidrBlocks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CidrBlockResponseContainerV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enabled': enabled,
       'gcpPublicCidrsAccessEnabled': gcpPublicCidrsAccessEnabled,
     };
   }
 
-  factory MasterAuthorizedNetworksConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MasterAuthorizedNetworksConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MasterAuthorizedNetworksConfigResponseContainerV1beta1(
-      cidrBlocks: (pulumi.Input.decodeList<CidrBlockResponseContainerV1beta1>(map['cidrBlocks'], (value) => CidrBlockResponseContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: (map['enabled'] as bool).input(),
-      gcpPublicCidrsAccessEnabled: (map['gcpPublicCidrsAccessEnabled'] as bool).input(),
+      cidrBlocks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<CidrBlockResponseContainerV1beta1>(
+          map['cidrBlocks']!,
+          (value) => CidrBlockResponseContainerV1beta1.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      gcpPublicCidrsAccessEnabled: pulumi.Input.fromValue(
+        map['gcpPublicCidrsAccessEnabled'] as bool,
+      ),
     );
   }
 }
-

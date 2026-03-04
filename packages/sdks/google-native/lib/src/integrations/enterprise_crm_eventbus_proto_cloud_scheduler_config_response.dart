@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse {
   /// The cron tab of cloud scheduler trigger.
   final pulumi.Input<String> cronTab;
+
   /// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
   final pulumi.Input<String> errorMessage;
+
   /// The location where associated cloud scheduler job will be created
   final pulumi.Input<String> location;
+
   /// Service account used by Cloud Scheduler to trigger the integration at scheduled time
   final pulumi.Input<String> serviceAccountEmail;
 
@@ -34,13 +37,16 @@ class EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse(
-      cronTab: (map['cronTab'] as String).input(),
-      errorMessage: (map['errorMessage'] as String).input(),
-      location: (map['location'] as String).input(),
-      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      cronTab: pulumi.Input.fromValue(map['cronTab'] as String),
+      errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      serviceAccountEmail: pulumi.Input.fromValue(
+        map['serviceAccountEmail'] as String,
+      ),
     );
   }
 }
-

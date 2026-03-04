@@ -1,5 +1,3 @@
-library module_cloudasset;
-
 export 'cloudasset/access_selector.dart';
 export 'cloudasset/access_selector_response.dart';
 export 'cloudasset/condition_context.dart';

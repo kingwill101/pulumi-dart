@@ -8,29 +8,42 @@ import 'regular_file_response.dart';
 class DeviceFileResponse {
   /// A reference to an opaque binary blob file.
   final pulumi.Input<ObbFileResponse> obbFile;
+
   /// A reference to a regular file.
   final pulumi.Input<RegularFileResponse> regularFile;
 
   /// Creates a new [DeviceFileResponse].
   /// [obbFile] A reference to an opaque binary blob file.
   /// [regularFile] A reference to a regular file.
-  DeviceFileResponse({
-    required this.obbFile,
-    required this.regularFile,
-  });
+  DeviceFileResponse({required this.obbFile, required this.regularFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'obbFile': pulumi.Input.mapInputValue<ObbFileResponse, Map<String, dynamic>>(obbFile, (value) => value.toMap()),
-      'regularFile': pulumi.Input.mapInputValue<RegularFileResponse, Map<String, dynamic>>(regularFile, (value) => value.toMap()),
+      'obbFile':
+          pulumi.Input.mapInputValue<ObbFileResponse, Map<String, dynamic>>(
+            obbFile,
+            (value) => value.toMap(),
+          ),
+      'regularFile':
+          pulumi.Input.mapInputValue<RegularFileResponse, Map<String, dynamic>>(
+            regularFile,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory DeviceFileResponse.fromMap(Map<String, dynamic> map) {
     return DeviceFileResponse(
-      obbFile: (ObbFileResponse.fromMap((map['obbFile'] as Map).cast<String, dynamic>())).input(),
-      regularFile: (RegularFileResponse.fromMap((map['regularFile'] as Map).cast<String, dynamic>())).input(),
+      obbFile: pulumi.Input.fromValue(
+        ObbFileResponse.fromMap(
+          (map['obbFile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      regularFile: pulumi.Input.fromValue(
+        RegularFileResponse.fromMap(
+          (map['regularFile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

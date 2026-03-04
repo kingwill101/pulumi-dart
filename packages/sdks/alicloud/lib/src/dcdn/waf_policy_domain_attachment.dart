@@ -6,7 +6,7 @@ import 'waf_policy_domain_attachment_state.dart';
 ///
 /// For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-modifydcdnwafpolicydomains).
 ///
-/// > **NOTE:** Available since v1.186.0.
+/// &gt; **NOTE:** Available since v1.186.0.
 ///
 /// ## Example Usage
 ///
@@ -349,6 +349,7 @@ import 'waf_policy_domain_attachment_state.dart';
 class WafPolicyDomainAttachment extends pulumi.CustomResource {
   /// Access the accelerated domain name of the specified protection policy.
   late final pulumi.Output<String> domainName;
+
   /// The protection policy ID. Only one input is supported.
   late final pulumi.Output<String> policyId;
 
@@ -361,13 +362,13 @@ class WafPolicyDomainAttachment extends pulumi.CustomResource {
     WafPolicyDomainAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.policyId = registerOutput<String>('policyId');
+         'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
+    policyId = registerOutput<String>('policyId');
   }
 
   /// Gets an existing [WafPolicyDomainAttachment] resource's state with the given [name] and [id].
@@ -388,12 +389,12 @@ class WafPolicyDomainAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
-    this.policyId = registerOutput<String>('policyId');
+         'alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
+    policyId = registerOutput<String>('policyId');
   }
 }

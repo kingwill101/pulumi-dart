@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueueReservationPlanSettings {
   /// The length of the term of your reserved queue pricing plan commitment. Valid value is `ONE_YEAR`.
   final pulumi.Input<String> commitment;
+
   /// Specifies whether the term of your reserved queue pricing plan. Valid values are `AUTO_RENEW` or `EXPIRE`.
   final pulumi.Input<String> renewalType;
+
   /// Specifies the number of reserved transcode slots (RTS) for queue.
   final pulumi.Input<int> reservedSlots;
 
@@ -30,10 +32,9 @@ class QueueReservationPlanSettings {
 
   factory QueueReservationPlanSettings.fromMap(Map<String, dynamic> map) {
     return QueueReservationPlanSettings(
-      commitment: (map['commitment'] as String).input(),
-      renewalType: (map['renewalType'] as String).input(),
-      reservedSlots: (map['reservedSlots'] as int).input(),
+      commitment: pulumi.Input.fromValue(map['commitment'] as String),
+      renewalType: pulumi.Input.fromValue(map['renewalType'] as String),
+      reservedSlots: pulumi.Input.fromValue(map['reservedSlots'] as int),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum PublicIPType {
   valueIPv4("IPv4"),
   valueDualStack("DualStack");
 
-  const PublicIPType(this.value);
-  final String value;
+  const PublicIPType(this.wireValue);
+  final String wireValue;
 
   static PublicIPType fromValue(String value) {
     for (final item in PublicIPType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicIPType value: $value');
   }
 }
-

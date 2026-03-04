@@ -87,25 +87,42 @@ class GetEndpointPostgresSetting {
 
   factory GetEndpointPostgresSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointPostgresSetting(
-      afterConnectScript: (map['afterConnectScript'] as String).input(),
-      authenticationMethod: (map['authenticationMethod'] as String).input(),
-      babelfishDatabaseName: (map['babelfishDatabaseName'] as String).input(),
-      captureDdls: (map['captureDdls'] as bool).input(),
-      databaseMode: (map['databaseMode'] as String).input(),
-      ddlArtifactsSchema: (map['ddlArtifactsSchema'] as String).input(),
-      executeTimeout: (map['executeTimeout'] as int).input(),
-      failTasksOnLobTruncation: (map['failTasksOnLobTruncation'] as bool).input(),
-      heartbeatEnable: (map['heartbeatEnable'] as bool).input(),
-      heartbeatFrequency: (map['heartbeatFrequency'] as int).input(),
-      heartbeatSchema: (map['heartbeatSchema'] as String).input(),
-      mapBooleanAsBoolean: (map['mapBooleanAsBoolean'] as bool).input(),
-      mapJsonbAsClob: (map['mapJsonbAsClob'] as bool).input(),
-      mapLongVarcharAs: (map['mapLongVarcharAs'] as String).input(),
-      maxFileSize: (map['maxFileSize'] as int).input(),
-      pluginName: (map['pluginName'] as String).input(),
-      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
-      slotName: (map['slotName'] as String).input(),
+      afterConnectScript: pulumi.Input.fromValue(
+        map['afterConnectScript'] as String,
+      ),
+      authenticationMethod: pulumi.Input.fromValue(
+        map['authenticationMethod'] as String,
+      ),
+      babelfishDatabaseName: pulumi.Input.fromValue(
+        map['babelfishDatabaseName'] as String,
+      ),
+      captureDdls: pulumi.Input.fromValue(map['captureDdls'] as bool),
+      databaseMode: pulumi.Input.fromValue(map['databaseMode'] as String),
+      ddlArtifactsSchema: pulumi.Input.fromValue(
+        map['ddlArtifactsSchema'] as String,
+      ),
+      executeTimeout: pulumi.Input.fromValue(map['executeTimeout'] as int),
+      failTasksOnLobTruncation: pulumi.Input.fromValue(
+        map['failTasksOnLobTruncation'] as bool,
+      ),
+      heartbeatEnable: pulumi.Input.fromValue(map['heartbeatEnable'] as bool),
+      heartbeatFrequency: pulumi.Input.fromValue(
+        map['heartbeatFrequency'] as int,
+      ),
+      heartbeatSchema: pulumi.Input.fromValue(map['heartbeatSchema'] as String),
+      mapBooleanAsBoolean: pulumi.Input.fromValue(
+        map['mapBooleanAsBoolean'] as bool,
+      ),
+      mapJsonbAsClob: pulumi.Input.fromValue(map['mapJsonbAsClob'] as bool),
+      mapLongVarcharAs: pulumi.Input.fromValue(
+        map['mapLongVarcharAs'] as String,
+      ),
+      maxFileSize: pulumi.Input.fromValue(map['maxFileSize'] as int),
+      pluginName: pulumi.Input.fromValue(map['pluginName'] as String),
+      serviceAccessRoleArn: pulumi.Input.fromValue(
+        map['serviceAccessRoleArn'] as String,
+      ),
+      slotName: pulumi.Input.fromValue(map['slotName'] as String),
     );
   }
 }
-

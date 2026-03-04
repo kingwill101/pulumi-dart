@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailSensitiveInformationPolicyConfigRegexesConfig {
   /// Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String> action;
+
   /// The regex description.
   final pulumi.Input<String>? description;
+
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String>? inputAction;
+
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool>? inputEnabled;
+
   /// The regex name.
   final pulumi.Input<String> name;
+
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String>? outputAction;
+
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool>? outputEnabled;
+
   /// The regex pattern.
   final pulumi.Input<String> pattern;
 
@@ -53,17 +60,38 @@ class GuardrailSensitiveInformationPolicyConfigRegexesConfig {
     };
   }
 
-  factory GuardrailSensitiveInformationPolicyConfigRegexesConfig.fromMap(Map<String, dynamic> map) {
+  factory GuardrailSensitiveInformationPolicyConfigRegexesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuardrailSensitiveInformationPolicyConfigRegexesConfig(
-      action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      inputAction: map['inputAction'] == null ? null : ((map['inputAction'] as String).input()).input(),
-      inputEnabled: map['inputEnabled'] == null ? null : ((map['inputEnabled'] as bool).input()).input(),
-      name: (map['name'] as String).input(),
-      outputAction: map['outputAction'] == null ? null : ((map['outputAction'] as String).input()).input(),
-      outputEnabled: map['outputEnabled'] == null ? null : ((map['outputEnabled'] as bool).input()).input(),
-      pattern: (map['pattern'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputAction: (() {
+        final guardedValue = map['inputAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputEnabled: (() {
+        final guardedValue = map['inputEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      outputAction: (() {
+        final guardedValue = map['outputAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputEnabled: (() {
+        final guardedValue = map['outputEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      pattern: pulumi.Input.fromValue(map['pattern'] as String),
     );
   }
 }
-

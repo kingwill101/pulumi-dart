@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'di_alarm_rule_args.dart';
 import 'di_alarm_rule_notification_settings.dart';
 import 'di_alarm_rule_state.dart';
-import 'di_alarm_rule_trigger_condition.dart';
 
 /// Provides a Data Works Di Alarm Rule resource.
 ///
@@ -10,7 +9,7 @@ import 'di_alarm_rule_trigger_condition.dart';
 ///
 /// For information about Data Works Di Alarm Rule and how to use it, see [What is Di Alarm Rule](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdialarmrule).
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -801,22 +800,29 @@ import 'di_alarm_rule_trigger_condition.dart';
 /// ```
 class DiAlarmRule extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
+
   /// Resource attribute field representing resource level ID
   late final pulumi.Output<int> diAlarmRuleId;
+
   /// Data Integration alarm rule name
   late final pulumi.Output<String> diAlarmRuleName;
+
   /// Task ID: the ID of the task associated with the alert rule.
   late final pulumi.Output<int> diJobId;
   late final pulumi.Output<bool?> enabled;
+
   /// Alarm indicator type. Optional enumerated values:
   /// - Heartbeat (task status alarm)
   /// - FailoverCount(failover times alarm)
   /// - Delay (task Delay alarm)
   late final pulumi.Output<String> metricType;
+
   /// Alarm notification settings See `notification_settings` below.
-  late final pulumi.Output<DiAlarmRuleNotificationSettings> notificationSettings;
+  late final pulumi.Output<DiAlarmRuleNotificationSettings>
+  notificationSettings;
+
   /// Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
-  late final pulumi.Output<List<DiAlarmRuleTriggerCondition>> triggerConditions;
+  late final pulumi.Output<List<Map<String, dynamic>>> triggerConditions;
 
   /// Creates a new [DiAlarmRule].
   /// [name] The Pulumi resource name.
@@ -827,19 +833,23 @@ class DiAlarmRule extends pulumi.CustomResource {
     DiAlarmRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/diAlarmRule:DiAlarmRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.diAlarmRuleId = registerOutput<int>('diAlarmRuleId');
-    this.diAlarmRuleName = registerOutput<String>('diAlarmRuleName');
-    this.diJobId = registerOutput<int>('diJobId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.metricType = registerOutput<String>('metricType');
-    this.notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>('notificationSettings');
-    this.triggerConditions = registerOutput<List<DiAlarmRuleTriggerCondition>>('triggerConditions');
+         'alicloud:dataworks/diAlarmRule:DiAlarmRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    diAlarmRuleId = registerOutput<int>('diAlarmRuleId');
+    diAlarmRuleName = registerOutput<String>('diAlarmRuleName');
+    diJobId = registerOutput<int>('diJobId');
+    enabled = registerOutput<bool?>('enabled');
+    metricType = registerOutput<String>('metricType');
+    notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>(
+      'notificationSettings',
+    );
+    triggerConditions = registerOutput<List<Map<String, dynamic>>>(
+      'triggerConditions',
+    );
   }
 
   /// Gets an existing [DiAlarmRule] resource's state with the given [name] and [id].
@@ -860,18 +870,22 @@ class DiAlarmRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/diAlarmRule:DiAlarmRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.diAlarmRuleId = registerOutput<int>('diAlarmRuleId');
-    this.diAlarmRuleName = registerOutput<String>('diAlarmRuleName');
-    this.diJobId = registerOutput<int>('diJobId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.metricType = registerOutput<String>('metricType');
-    this.notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>('notificationSettings');
-    this.triggerConditions = registerOutput<List<DiAlarmRuleTriggerCondition>>('triggerConditions');
+         'alicloud:dataworks/diAlarmRule:DiAlarmRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    diAlarmRuleId = registerOutput<int>('diAlarmRuleId');
+    diAlarmRuleName = registerOutput<String>('diAlarmRuleName');
+    diJobId = registerOutput<int>('diJobId');
+    enabled = registerOutput<bool?>('enabled');
+    metricType = registerOutput<String>('metricType');
+    notificationSettings = registerOutput<DiAlarmRuleNotificationSettings>(
+      'notificationSettings',
+    );
+    triggerConditions = registerOutput<List<Map<String, dynamic>>>(
+      'triggerConditions',
+    );
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvPodMonitorArgs {
   /// Language environment, default is Chinese zh | en.
   final pulumi.Input<String>? aliyunLang;
+
   /// Yaml configuration string.
   final pulumi.Input<String> configYaml;
+
   /// Environment id.
   final pulumi.Input<String> environmentId;
 
@@ -34,10 +36,13 @@ class EnvPodMonitorArgs {
 
   factory EnvPodMonitorArgs.fromMap(Map<String, dynamic> map) {
     return EnvPodMonitorArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
-      configYaml: (map['configYaml'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
+      aliyunLang: (() {
+        final guardedValue = map['aliyunLang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configYaml: pulumi.Input.fromValue(map['configYaml'] as String),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
     );
   }
 }
-

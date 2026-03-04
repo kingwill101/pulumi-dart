@@ -6,9 +6,9 @@ import 'network_state.dart';
 ///
 /// For information about cloud connect network and how to use it, see [What is Cloud Connect Network](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createcloudconnectnetwork).
 ///
-/// > **NOTE:** Available since v1.59.0.
+/// &gt; **NOTE:** Available since v1.59.0.
 ///
-/// > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -153,10 +153,13 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// The CidrBlock of the CCN instance. Defaults to null.
   late final pulumi.Output<String?> cidrBlock;
+
   /// The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
   late final pulumi.Output<String?> description;
+
   /// Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
   late final pulumi.Output<bool> isDefault;
+
   /// The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
   late final pulumi.Output<String> name;
 
@@ -169,14 +172,14 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudconnect/network:Network',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String?>('cidrBlock');
-    this.description = registerOutput<String?>('description');
-    this.isDefault = registerOutput<bool>('isDefault');
+         'alicloud:cloudconnect/network:Network',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String?>('cidrBlock');
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool>('isDefault');
     this.name = registerOutput<String>('name');
   }
 
@@ -198,14 +201,14 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudconnect/network:Network',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String?>('cidrBlock');
-    this.description = registerOutput<String?>('description');
-    this.isDefault = registerOutput<bool>('isDefault');
+         'alicloud:cloudconnect/network:Network',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String?>('cidrBlock');
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool>('isDefault');
     this.name = registerOutput<String>('name');
   }
 }

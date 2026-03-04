@@ -210,15 +210,21 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:machinelearningservices:EnvironmentContainer testEnvironment /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}
 /// ```
-class EnvironmentContainerMachinelearningservices extends pulumi.CustomResource {
+class EnvironmentContainerMachinelearningservices
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<EnvironmentContainerResponse> environmentContainerProperties;
+  late final pulumi.Output<EnvironmentContainerResponse>
+  environmentContainerProperties;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -231,15 +237,18 @@ class EnvironmentContainerMachinelearningservices extends pulumi.CustomResource 
     EnvironmentContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:EnvironmentContainer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.environmentContainerProperties = registerOutput<EnvironmentContainerResponse>('environmentContainerProperties');
+         'azure-native:machinelearningservices:EnvironmentContainer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    environmentContainerProperties =
+        registerOutput<EnvironmentContainerResponse>(
+          'environmentContainerProperties',
+        );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

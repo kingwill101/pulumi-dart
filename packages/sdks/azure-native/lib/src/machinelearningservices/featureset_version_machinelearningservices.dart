@@ -441,12 +441,17 @@ import 'system_data_response.dart';
 class FeaturesetVersionMachinelearningservices extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<FeaturesetVersionResponse> featuresetVersionProperties;
+  late final pulumi.Output<FeaturesetVersionResponse>
+  featuresetVersionProperties;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -459,15 +464,17 @@ class FeaturesetVersionMachinelearningservices extends pulumi.CustomResource {
     FeaturesetVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:FeaturesetVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.featuresetVersionProperties = registerOutput<FeaturesetVersionResponse>('featuresetVersionProperties');
+         'azure-native:machinelearningservices:FeaturesetVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    featuresetVersionProperties = registerOutput<FeaturesetVersionResponse>(
+      'featuresetVersionProperties',
+    );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

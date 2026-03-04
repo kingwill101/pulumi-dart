@@ -9,27 +9,38 @@ import 'user_property.dart';
 class ValidationActivity {
   /// Can be used if dataset points to a folder. If set to true, the folder must have at least one file. If set to false, the folder must be empty. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? childItems;
+
   /// Validation activity dataset reference.
   final pulumi.Input<DatasetReference> dataset;
+
   /// Activity depends on condition.
   final pulumi.Input<List<ActivityDependency>>? dependsOn;
+
   /// Activity description.
   final pulumi.Input<String>? description;
+
   /// Can be used if dataset points to a file. The file must be greater than or equal in size to the value specified. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? minimumSize;
+
   /// Activity name.
   final pulumi.Input<String> name;
+
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
   final pulumi.Input<String>? onInactiveMarkAs;
+
   /// A delay in seconds between validation attempts. If no value is specified, 10 seconds will be used as the default. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sleep;
+
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
   final pulumi.Input<String>? state;
+
   /// Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? timeout;
+
   /// Type of activity.
   /// Expected value is 'Validation'.
   final pulumi.Input<String> type;
+
   /// Activity user properties.
   final pulumi.Input<List<UserProperty>>? userProperties;
 
@@ -64,8 +75,23 @@ class ValidationActivity {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'childItems': ?childItems,
-      'dataset': pulumi.Input.mapInputValue<DatasetReference, Map<String, dynamic>>(dataset, (value) => value.toMap()),
-      'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependency>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependency, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataset':
+          pulumi.Input.mapInputValue<DatasetReference, Map<String, dynamic>>(
+            dataset,
+            (value) => value.toMap(),
+          ),
+      'dependsOn':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ActivityDependency>,
+            List<Map<String, dynamic>>
+          >(
+            dependsOn,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ActivityDependency,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': ?description,
       'minimumSize': ?minimumSize,
       'name': name,
@@ -74,25 +100,88 @@ class ValidationActivity {
       'state': ?state,
       'timeout': ?timeout,
       'type': type,
-      'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserProperty>,
+            List<Map<String, dynamic>>
+          >(
+            userProperties,
+            (value) =>
+                pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ValidationActivity.fromMap(Map<String, dynamic> map) {
     return ValidationActivity(
-      childItems: map['childItems'] == null ? null : (map['childItems']!).input(),
-      dataset: (DatasetReference.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      minimumSize: map['minimumSize'] == null ? null : (map['minimumSize']!).input(),
-      name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
-      sleep: map['sleep'] == null ? null : (map['sleep']!).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']!).input(),
-      type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      childItems: (() {
+        final guardedValue = map['childItems'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      dataset: pulumi.Input.fromValue(
+        DatasetReference.fromMap(
+          (map['dataset']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ActivityDependency>(
+            guardedValue,
+            (value) => ActivityDependency.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minimumSize: (() {
+        final guardedValue = map['minimumSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      onInactiveMarkAs: (() {
+        final guardedValue = map['onInactiveMarkAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sleep: (() {
+        final guardedValue = map['sleep'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userProperties: (() {
+        final guardedValue = map['userProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserProperty>(
+            guardedValue,
+            (value) =>
+                UserProperty.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

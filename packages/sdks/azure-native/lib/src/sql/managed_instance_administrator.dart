@@ -295,16 +295,22 @@ import 'managed_instance_administrator_args.dart';
 class ManagedInstanceAdministrator extends pulumi.CustomResource {
   /// Type of the managed instance administrator.
   late final pulumi.Output<String> administratorType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Login name of the managed instance administrator.
   late final pulumi.Output<String> login;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// SID (object ID) of the managed instance administrator.
   late final pulumi.Output<String> sid;
+
   /// Tenant ID of the managed instance administrator.
   late final pulumi.Output<String?> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -317,17 +323,17 @@ class ManagedInstanceAdministrator extends pulumi.CustomResource {
     ManagedInstanceAdministratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:ManagedInstanceAdministrator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorType = registerOutput<String>('administratorType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.login = registerOutput<String>('login');
+         'azure-native:sql:ManagedInstanceAdministrator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorType = registerOutput<String>('administratorType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    login = registerOutput<String>('login');
     this.name = registerOutput<String>('name');
-    this.sid = registerOutput<String>('sid');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    sid = registerOutput<String>('sid');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

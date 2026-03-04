@@ -9,20 +9,29 @@ class DomainDevicesInterfaceVirtualPort {
 
   /// Creates a new [DomainDevicesInterfaceVirtualPort].
   /// [params] Contains parameters settings for the virtual port.
-  DomainDevicesInterfaceVirtualPort({
-    this.params,
-  });
+  DomainDevicesInterfaceVirtualPort({this.params});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'params': ?pulumi.Input.mapOptionalInputValue<DomainDevicesInterfaceVirtualPortParams, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'params':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesInterfaceVirtualPortParams,
+            Map<String, dynamic>
+          >(params, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesInterfaceVirtualPort.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPort(
-      params: map['params'] == null ? null : (DomainDevicesInterfaceVirtualPortParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      params: (() {
+        final guardedValue = map['params'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesInterfaceVirtualPortParams.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

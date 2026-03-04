@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterCredentialCertificateAuthority {
   /// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kube config file for your cluster.
   final pulumi.Input<String> clientCert;
+
   /// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kube config file for your cluster.
   final pulumi.Input<String> clientKey;
+
   /// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kube config file for your cluster.
   final pulumi.Input<String> clusterCert;
 
@@ -28,12 +30,13 @@ class GetClusterCredentialCertificateAuthority {
     };
   }
 
-  factory GetClusterCredentialCertificateAuthority.fromMap(Map<String, dynamic> map) {
+  factory GetClusterCredentialCertificateAuthority.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterCredentialCertificateAuthority(
-      clientCert: (map['clientCert'] as String).input(),
-      clientKey: (map['clientKey'] as String).input(),
-      clusterCert: (map['clusterCert'] as String).input(),
+      clientCert: pulumi.Input.fromValue(map['clientCert'] as String),
+      clientKey: pulumi.Input.fromValue(map['clientKey'] as String),
+      clusterCert: pulumi.Input.fromValue(map['clusterCert'] as String),
     );
   }
 }
-

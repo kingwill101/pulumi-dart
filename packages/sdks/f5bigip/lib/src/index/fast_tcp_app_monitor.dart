@@ -8,20 +8,19 @@ class FastTcpAppMonitor {
 
   /// Creates a new [FastTcpAppMonitor].
   /// [interval] Set the time between health checks,in seconds for FAST-Generated Pool Monitor.
-  FastTcpAppMonitor({
-    this.interval,
-  });
+  FastTcpAppMonitor({this.interval});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interval': ?interval,
-    };
+    return <String, dynamic>{'interval': ?interval};
   }
 
   factory FastTcpAppMonitor.fromMap(Map<String, dynamic> map) {
     return FastTcpAppMonitor(
-      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SQLStorageSettingsResponse {
   /// SQL Server default file path
   final pulumi.Input<String>? defaultFilePath;
+
   /// Logical Unit Numbers for the disks.
   final pulumi.Input<List<int>>? luns;
+
   /// Use storage pool to build a drive if true or not provided
   final pulumi.Input<bool>? useStoragePool;
 
@@ -31,10 +33,21 @@ class SQLStorageSettingsResponse {
 
   factory SQLStorageSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SQLStorageSettingsResponse(
-      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath']! as String).input(),
-      luns: map['luns'] == null ? null : ((map['luns']! as List).cast<int>()).input(),
-      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool']! as bool).input(),
+      defaultFilePath: (() {
+        final guardedValue = map['defaultFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      luns: (() {
+        final guardedValue = map['luns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      useStoragePool: (() {
+        final guardedValue = map['useStoragePool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

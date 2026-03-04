@@ -10,24 +10,34 @@ import 'asymmetric_encrypted_secret.dart';
 class StorageAccountCredentialArgs {
   /// Encrypted storage key.
   final pulumi.Input<AsymmetricEncryptedSecret>? accountKey;
+
   /// Type of storage accessed on the storage account.
   final pulumi.Input<String> accountType;
+
   /// Alias for the storage account.
   final pulumi.Input<String> alias;
+
   /// Blob end point for private clouds.
   final pulumi.Input<String>? blobDomainName;
+
   /// Connection string for the storage account. Use this string if username and account key are not specified.
   final pulumi.Input<String>? connectionString;
+
   /// The device name.
   final pulumi.Input<String> deviceName;
+
   /// The storage account credential name.
   final pulumi.Input<String>? name;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Signifies whether SSL needs to be enabled or not.
   final pulumi.Input<String> sslStatus;
+
   /// Id of the storage account.
   final pulumi.Input<String>? storageAccountId;
+
   /// Username for the storage account.
   final pulumi.Input<String>? userName;
 
@@ -59,7 +69,11 @@ class StorageAccountCredentialArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountKey': ?pulumi.Input.mapOptionalInputValue<AsymmetricEncryptedSecret, Map<String, dynamic>>(accountKey, (value) => value.toMap()),
+      'accountKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            AsymmetricEncryptedSecret,
+            Map<String, dynamic>
+          >(accountKey, (value) => value.toMap()),
       'accountType': accountType,
       'alias': alias,
       'blobDomainName': ?blobDomainName,
@@ -75,18 +89,47 @@ class StorageAccountCredentialArgs {
 
   factory StorageAccountCredentialArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountCredentialArgs(
-      accountKey: map['accountKey'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['accountKey']! as Map).cast<String, dynamic>())).input(),
-      accountType: (map['accountType'] as String).input(),
-      alias: (map['alias'] as String).input(),
-      blobDomainName: map['blobDomainName'] == null ? null : (map['blobDomainName']! as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sslStatus: (map['sslStatus'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AsymmetricEncryptedSecret.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      accountType: pulumi.Input.fromValue(map['accountType'] as String),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      blobDomainName: (() {
+        final guardedValue = map['blobDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sslStatus: pulumi.Input.fromValue(map['sslStatus'] as String),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

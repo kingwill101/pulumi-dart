@@ -6,16 +6,15 @@ enum DatastoreType {
   valueAzureFile("AzureFile"),
   valueOneLake("OneLake");
 
-  const DatastoreType(this.value);
-  final String value;
+  const DatastoreType(this.wireValue);
+  final String wireValue;
 
   static DatastoreType fromValue(String value) {
     for (final item in DatastoreType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatastoreType value: $value');
   }
 }
-

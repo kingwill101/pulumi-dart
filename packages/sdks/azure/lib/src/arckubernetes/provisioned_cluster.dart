@@ -265,7 +265,7 @@ import 'provisioned_cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Kubernetes` - 2024-01-01
@@ -280,32 +280,47 @@ import 'provisioned_cluster_state.dart';
 class ProvisionedCluster extends pulumi.CustomResource {
   /// The version of the agent running on the cluster resource.
   late final pulumi.Output<String> agentVersion;
+
   /// Whether the Arc agents will be upgraded automatically to the latest version. Defaults to `true`.
   late final pulumi.Output<bool?> arcAgentAutoUpgradeEnabled;
+
   /// The version of the Arc agents to be installed on the cluster.
   late final pulumi.Output<String?> arcAgentDesiredVersion;
+
   /// An `azure_active_directory` block as defined below.
-  late final pulumi.Output<ProvisionedClusterAzureActiveDirectory?> azureActiveDirectory;
+  late final pulumi.Output<ProvisionedClusterAzureActiveDirectory?>
+  azureActiveDirectory;
+
   /// The distribution running on this Arc Kubernetes Provisioned Cluster.
   late final pulumi.Output<String> distribution;
+
   /// An `identity` block as defined below. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<ProvisionedClusterIdentity> identity;
+
   /// The infrastructure on which the Arc Kubernetes Provisioned Cluster is running on.
   late final pulumi.Output<String> infrastructure;
+
   /// The Kubernetes version of the cluster resource.
   late final pulumi.Output<String> kubernetesVersion;
+
   /// The Azure Region where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Arc Kubernetes Provisioned Cluster. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<String> name;
+
   /// The cluster offering.
   late final pulumi.Output<String> offering;
+
   /// The name of the Resource Group where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Arc Kubernetes Provisioned Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The number of CPU cores present in the cluster resource.
   late final pulumi.Output<int> totalCoreCount;
+
   /// The number of nodes present in the cluster resource.
   late final pulumi.Output<int> totalNodeCount;
 
@@ -318,26 +333,31 @@ class ProvisionedCluster extends pulumi.CustomResource {
     ProvisionedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.arcAgentAutoUpgradeEnabled = registerOutput<bool?>('arcAgentAutoUpgradeEnabled');
-    this.arcAgentDesiredVersion = registerOutput<String?>('arcAgentDesiredVersion');
-    this.azureActiveDirectory = registerOutput<ProvisionedClusterAzureActiveDirectory?>('azureActiveDirectory');
-    this.distribution = registerOutput<String>('distribution');
-    this.identity = registerOutput<ProvisionedClusterIdentity>('identity');
-    this.infrastructure = registerOutput<String>('infrastructure');
-    this.kubernetesVersion = registerOutput<String>('kubernetesVersion');
-    this.location = registerOutput<String>('location');
+         'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    arcAgentAutoUpgradeEnabled = registerOutput<bool?>(
+      'arcAgentAutoUpgradeEnabled',
+    );
+    arcAgentDesiredVersion = registerOutput<String?>('arcAgentDesiredVersion');
+    azureActiveDirectory =
+        registerOutput<ProvisionedClusterAzureActiveDirectory?>(
+          'azureActiveDirectory',
+        );
+    distribution = registerOutput<String>('distribution');
+    identity = registerOutput<ProvisionedClusterIdentity>('identity');
+    infrastructure = registerOutput<String>('infrastructure');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.offering = registerOutput<String>('offering');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalCoreCount = registerOutput<int>('totalCoreCount');
-    this.totalNodeCount = registerOutput<int>('totalNodeCount');
+    offering = registerOutput<String>('offering');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalCoreCount = registerOutput<int>('totalCoreCount');
+    totalNodeCount = registerOutput<int>('totalNodeCount');
   }
 
   /// Gets an existing [ProvisionedCluster] resource's state with the given [name] and [id].
@@ -358,25 +378,30 @@ class ProvisionedCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.arcAgentAutoUpgradeEnabled = registerOutput<bool?>('arcAgentAutoUpgradeEnabled');
-    this.arcAgentDesiredVersion = registerOutput<String?>('arcAgentDesiredVersion');
-    this.azureActiveDirectory = registerOutput<ProvisionedClusterAzureActiveDirectory?>('azureActiveDirectory');
-    this.distribution = registerOutput<String>('distribution');
-    this.identity = registerOutput<ProvisionedClusterIdentity>('identity');
-    this.infrastructure = registerOutput<String>('infrastructure');
-    this.kubernetesVersion = registerOutput<String>('kubernetesVersion');
-    this.location = registerOutput<String>('location');
+         'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    arcAgentAutoUpgradeEnabled = registerOutput<bool?>(
+      'arcAgentAutoUpgradeEnabled',
+    );
+    arcAgentDesiredVersion = registerOutput<String?>('arcAgentDesiredVersion');
+    azureActiveDirectory =
+        registerOutput<ProvisionedClusterAzureActiveDirectory?>(
+          'azureActiveDirectory',
+        );
+    distribution = registerOutput<String>('distribution');
+    identity = registerOutput<ProvisionedClusterIdentity>('identity');
+    infrastructure = registerOutput<String>('infrastructure');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.offering = registerOutput<String>('offering');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.totalCoreCount = registerOutput<int>('totalCoreCount');
-    this.totalNodeCount = registerOutput<int>('totalNodeCount');
+    offering = registerOutput<String>('offering');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    totalCoreCount = registerOutput<int>('totalCoreCount');
+    totalNodeCount = registerOutput<int>('totalNodeCount');
   }
 }

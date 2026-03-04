@@ -1,5 +1,3 @@
-library module_kendra;
-
 export 'kendra/data_source.dart';
 export 'kendra/data_source_args.dart';
 export 'kendra/data_source_configuration.dart';

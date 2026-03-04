@@ -202,29 +202,38 @@ import 'temp_url_state.dart';
 class TempUrl extends pulumi.CustomResource {
   /// The container name the object belongs to.
   late final pulumi.Output<String> container;
+
   /// The digest to use when generating the tempurl.
   /// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
   late final pulumi.Output<String?> digest;
+
   /// The key to use when generating the tempurl. If not
   /// provided, the key will be read from the container or account metadata.
   late final pulumi.Output<String?> key;
+
   /// The method allowed when accessing this URL.
   /// Valid values are `GET`, and `POST`. Default is `GET`.
   late final pulumi.Output<String?> method;
+
   /// The object name the tempurl is for.
-  late final pulumi.Output<String> object;
+  late final pulumi.Output<String> object_;
+
   /// Whether to automatically regenerate the URL when
   /// it has expired. If set to true, this will create a new resource with a new
   /// ID and new URL. Defaults to false.
   late final pulumi.Output<bool?> regenerate;
+
   /// The region the tempurl is located in.
   late final pulumi.Output<String> region;
+
   /// Split is the string on which to split the object URL.
   /// Default is `/v1/`.
   late final pulumi.Output<String?> split;
+
   /// The TTL, in seconds, for the URL. For how long it should
   /// be valid.
   late final pulumi.Output<int> ttl;
+
   /// The URL
   late final pulumi.Output<String> url;
 
@@ -237,21 +246,21 @@ class TempUrl extends pulumi.CustomResource {
     TempUrlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:objectstorage/tempUrl:TempUrl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.container = registerOutput<String>('container');
-    this.digest = registerOutput<String?>('digest');
-    this.key = registerOutput<String?>('key');
-    this.method = registerOutput<String?>('method');
-    this.object = registerOutput<String>('object');
-    this.regenerate = registerOutput<bool?>('regenerate');
-    this.region = registerOutput<String>('region');
-    this.split = registerOutput<String?>('split');
-    this.ttl = registerOutput<int>('ttl');
-    this.url = registerOutput<String>('url');
+         'openstack:objectstorage/tempUrl:TempUrl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    container = registerOutput<String>('container');
+    digest = registerOutput<String?>('digest');
+    key = registerOutput<String?>('key');
+    method = registerOutput<String?>('method');
+    object_ = registerOutput<String>('object');
+    regenerate = registerOutput<bool?>('regenerate');
+    region = registerOutput<String>('region');
+    split = registerOutput<String?>('split');
+    ttl = registerOutput<int>('ttl');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [TempUrl] resource's state with the given [name] and [id].
@@ -272,20 +281,20 @@ class TempUrl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:objectstorage/tempUrl:TempUrl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.container = registerOutput<String>('container');
-    this.digest = registerOutput<String?>('digest');
-    this.key = registerOutput<String?>('key');
-    this.method = registerOutput<String?>('method');
-    this.object = registerOutput<String>('object');
-    this.regenerate = registerOutput<bool?>('regenerate');
-    this.region = registerOutput<String>('region');
-    this.split = registerOutput<String?>('split');
-    this.ttl = registerOutput<int>('ttl');
-    this.url = registerOutput<String>('url');
+         'openstack:objectstorage/tempUrl:TempUrl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    container = registerOutput<String>('container');
+    digest = registerOutput<String?>('digest');
+    key = registerOutput<String?>('key');
+    method = registerOutput<String?>('method');
+    object_ = registerOutput<String>('object');
+    regenerate = registerOutput<bool?>('regenerate');
+    region = registerOutput<String>('region');
+    split = registerOutput<String?>('split');
+    ttl = registerOutput<int>('ttl');
+    url = registerOutput<String>('url');
   }
 }

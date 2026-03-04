@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HubRouteResponse {
   /// The type of destinations (eg: CIDR, ResourceId, Service).
   final pulumi.Input<String> destinationType;
+
   /// List of all destinations.
   final pulumi.Input<List<String>> destinations;
+
   /// The name of the Route that is unique within a RouteTable. This name can be used to access this route.
   final pulumi.Input<String> name;
+
   /// NextHop resource ID.
   final pulumi.Input<String> nextHop;
+
   /// The type of next hop (eg: ResourceId).
   final pulumi.Input<String> nextHopType;
 
@@ -41,12 +45,13 @@ class HubRouteResponse {
 
   factory HubRouteResponse.fromMap(Map<String, dynamic> map) {
     return HubRouteResponse(
-      destinationType: (map['destinationType'] as String).input(),
-      destinations: ((map['destinations'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      nextHop: (map['nextHop'] as String).input(),
-      nextHopType: (map['nextHopType'] as String).input(),
+      destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
+      destinations: pulumi.Input.fromValue(
+        (map['destinations'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
+      nextHopType: pulumi.Input.fromValue(map['nextHopType'] as String),
     );
   }
 }
-

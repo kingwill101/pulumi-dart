@@ -1,36 +1,49 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSyncMember.
 class GetSyncMemberResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Database name of the member database in the sync member.
   final String? databaseName;
+
   /// Database type of the sync member.
   final String? databaseType;
+
   /// Resource ID.
   final String id;
+
   /// Resource name.
   final String name;
+
   /// Private endpoint name of the sync member if use private link connection is enabled, for sync members in Azure.
   final String privateEndpointName;
+
   /// Server name of the member database in the sync member
   final String? serverName;
+
   /// SQL Server database id of the sync member.
   final String? sqlServerDatabaseId;
+
   /// ARM resource id of the sync agent in the sync member.
   final String? syncAgentId;
+
   /// Sync direction of the sync member.
   final String? syncDirection;
+
   /// ARM resource id of the sync member logical database, for sync members in Azure.
   final String? syncMemberAzureDatabaseResourceId;
+
   /// Sync state of the sync member.
   final String syncState;
+
   /// Resource type.
   final String type;
+
   /// Whether to use private link connection.
   final bool? usePrivateLinkConnection;
+
   /// User name of the member database in the sync member.
   final String? userName;
 
@@ -91,21 +104,56 @@ class GetSyncMemberResult {
   factory GetSyncMemberResult.fromMap(Map<String, dynamic> map) {
     return GetSyncMemberResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName']! as String,
-      databaseType: map['databaseType'] == null ? null : map['databaseType']! as String,
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      databaseType: (() {
+        final guardedValue = map['databaseType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       privateEndpointName: map['privateEndpointName'] as String,
-      serverName: map['serverName'] == null ? null : map['serverName']! as String,
-      sqlServerDatabaseId: map['sqlServerDatabaseId'] == null ? null : map['sqlServerDatabaseId']! as String,
-      syncAgentId: map['syncAgentId'] == null ? null : map['syncAgentId']! as String,
-      syncDirection: map['syncDirection'] == null ? null : map['syncDirection']! as String,
-      syncMemberAzureDatabaseResourceId: map['syncMemberAzureDatabaseResourceId'] == null ? null : map['syncMemberAzureDatabaseResourceId']! as String,
+      serverName: (() {
+        final guardedValue = map['serverName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sqlServerDatabaseId: (() {
+        final guardedValue = map['sqlServerDatabaseId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      syncAgentId: (() {
+        final guardedValue = map['syncAgentId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      syncDirection: (() {
+        final guardedValue = map['syncDirection'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      syncMemberAzureDatabaseResourceId: (() {
+        final guardedValue = map['syncMemberAzureDatabaseResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       syncState: map['syncState'] as String,
       type: map['type'] as String,
-      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : map['usePrivateLinkConnection']! as bool,
-      userName: map['userName'] == null ? null : map['userName']! as String,
+      usePrivateLinkConnection: (() {
+        final guardedValue = map['usePrivateLinkConnection'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalLoadBalancerAddressPoolResponse {
   /// The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
   final pulumi.Input<List<String>> addresses;
+
   /// If true, avoid using IPs ending in .0 or .255. This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
   final pulumi.Input<bool> avoidBuggyIps;
+
   /// If true, prevent IP addresses from being automatically assigned.
   final pulumi.Input<bool> manualAssign;
+
   /// The name of the address pool.
   final pulumi.Input<String> pool;
 
@@ -34,13 +37,16 @@ class BareMetalLoadBalancerAddressPoolResponse {
     };
   }
 
-  factory BareMetalLoadBalancerAddressPoolResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalLoadBalancerAddressPoolResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalLoadBalancerAddressPoolResponse(
-      addresses: ((map['addresses'] as List).cast<String>()).input(),
-      avoidBuggyIps: (map['avoidBuggyIps'] as bool).input(),
-      manualAssign: (map['manualAssign'] as bool).input(),
-      pool: (map['pool'] as String).input(),
+      addresses: pulumi.Input.fromValue(
+        (map['addresses'] as List).cast<String>(),
+      ),
+      avoidBuggyIps: pulumi.Input.fromValue(map['avoidBuggyIps'] as bool),
+      manualAssign: pulumi.Input.fromValue(map['manualAssign'] as bool),
+      pool: pulumi.Input.fromValue(map['pool'] as String),
     );
   }
 }
-

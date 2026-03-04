@@ -3,9 +3,7 @@ import 'job_args.dart';
 import 'job_event_trigger_config.dart';
 import 'job_identity.dart';
 import 'job_manual_trigger_config.dart';
-import 'job_registry.dart';
 import 'job_schedule_trigger_config.dart';
-import 'job_secret.dart';
 import 'job_state.dart';
 import 'job_template.dart';
 
@@ -489,7 +487,7 @@ import 'job_template.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -504,38 +502,54 @@ import 'job_template.dart';
 class Job extends pulumi.CustomResource {
   /// The ID of the Container App Environment in which to create the Container App Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppEnvironmentId;
+
   /// The endpoint for the Container App Job event stream.
   late final pulumi.Output<String> eventStreamEndpoint;
+
   /// A `event_trigger_config` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<JobEventTriggerConfig?> eventTriggerConfig;
+
   /// A `identity` block as defined below.
   late final pulumi.Output<JobIdentity?> identity;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `manual_trigger_config` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<JobManualTriggerConfig?> manualTriggerConfig;
+
   /// Specifies the name of the Container App Job resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of the Public IP Addresses which the Container App uses for outbound network access.
   late final pulumi.Output<List<String>> outboundIpAddresses;
+
   /// One or more `registry` blocks as defined below.
-  late final pulumi.Output<List<JobRegistry>?> registries;
+  late final pulumi.Output<List<Map<String, dynamic>>?> registries;
+
   /// The maximum number of times a replica is allowed to retry.
   late final pulumi.Output<int?> replicaRetryLimit;
+
   /// The maximum number of seconds a replica is allowed to run.
   late final pulumi.Output<int> replicaTimeoutInSeconds;
+
   /// The name of the resource group in which to create the Container App Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `schedule_trigger_config` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Only one of `manual_trigger_config`, `event_trigger_config` or `schedule_trigger_config` can be specified.
+  /// &gt; **Note:** Only one of `manual_trigger_config`, `event_trigger_config` or `schedule_trigger_config` can be specified.
   late final pulumi.Output<JobScheduleTriggerConfig?> scheduleTriggerConfig;
+
   /// One or more `secret` blocks as defined below.
-  late final pulumi.Output<List<JobSecret>?> secrets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A `template` block as defined below.
   late final pulumi.Output<JobTemplate> template;
+
   /// The name of the workload profile to use for the Container App Job.
   late final pulumi.Output<String?> workloadProfileName;
 
@@ -543,41 +557,42 @@ class Job extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Job]. {@macro pulumi_containerapp_job_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Job(
-    String name, {
-    JobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:containerapp/job:Job',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
-    this.eventTriggerConfig = registerOutput<JobEventTriggerConfig?>('eventTriggerConfig');
-    this.identity = registerOutput<JobIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.manualTriggerConfig = registerOutput<JobManualTriggerConfig?>('manualTriggerConfig');
+  Job(String name, {JobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:containerapp/job:Job',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
+    eventTriggerConfig = registerOutput<JobEventTriggerConfig?>(
+      'eventTriggerConfig',
+    );
+    identity = registerOutput<JobIdentity?>('identity');
+    location = registerOutput<String>('location');
+    manualTriggerConfig = registerOutput<JobManualTriggerConfig?>(
+      'manualTriggerConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
-    this.registries = registerOutput<List<JobRegistry>?>('registries');
-    this.replicaRetryLimit = registerOutput<int?>('replicaRetryLimit');
-    this.replicaTimeoutInSeconds = registerOutput<int>('replicaTimeoutInSeconds');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>('scheduleTriggerConfig');
-    this.secrets = registerOutput<List<JobSecret>?>('secrets');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.template = registerOutput<JobTemplate>('template');
-    this.workloadProfileName = registerOutput<String?>('workloadProfileName');
+    outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
+    registries = registerOutput<List<Map<String, dynamic>>?>('registries');
+    replicaRetryLimit = registerOutput<int?>('replicaRetryLimit');
+    replicaTimeoutInSeconds = registerOutput<int>('replicaTimeoutInSeconds');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>(
+      'scheduleTriggerConfig',
+    );
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    tags = registerOutput<Map<String, String>?>('tags');
+    template = registerOutput<JobTemplate>('template');
+    workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
-  static Job get(
-    String name,
-    pulumi.Input<String> id, {
-    JobState? state,
-  }) {
+  static Job get(String name, pulumi.Input<String> id, {JobState? state}) {
     return Job._get(
       name,
       state: state?.toMap(),
@@ -590,27 +605,35 @@ class Job extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/job:Job',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
-    this.eventTriggerConfig = registerOutput<JobEventTriggerConfig?>('eventTriggerConfig');
-    this.identity = registerOutput<JobIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.manualTriggerConfig = registerOutput<JobManualTriggerConfig?>('manualTriggerConfig');
+         'azure:containerapp/job:Job',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
+    eventTriggerConfig = registerOutput<JobEventTriggerConfig?>(
+      'eventTriggerConfig',
+    );
+    identity = registerOutput<JobIdentity?>('identity');
+    location = registerOutput<String>('location');
+    manualTriggerConfig = registerOutput<JobManualTriggerConfig?>(
+      'manualTriggerConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
-    this.registries = registerOutput<List<JobRegistry>?>('registries');
-    this.replicaRetryLimit = registerOutput<int?>('replicaRetryLimit');
-    this.replicaTimeoutInSeconds = registerOutput<int>('replicaTimeoutInSeconds');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>('scheduleTriggerConfig');
-    this.secrets = registerOutput<List<JobSecret>?>('secrets');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.template = registerOutput<JobTemplate>('template');
-    this.workloadProfileName = registerOutput<String?>('workloadProfileName');
+    outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
+    registries = registerOutput<List<Map<String, dynamic>>?>('registries');
+    replicaRetryLimit = registerOutput<int?>('replicaRetryLimit');
+    replicaTimeoutInSeconds = registerOutput<int>('replicaTimeoutInSeconds');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>(
+      'scheduleTriggerConfig',
+    );
+    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    tags = registerOutput<Map<String, String>?>('tags');
+    template = registerOutput<JobTemplate>('template');
+    workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
 }

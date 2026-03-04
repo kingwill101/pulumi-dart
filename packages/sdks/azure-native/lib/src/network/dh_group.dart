@@ -9,16 +9,15 @@ enum DhGroup {
   valueECP384("ECP384"),
   valueDHGroup24("DHGroup24");
 
-  const DhGroup(this.value);
-  final String value;
+  const DhGroup(this.wireValue);
+  final String wireValue;
 
   static DhGroup fromValue(String value) {
     for (final item in DhGroup.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DhGroup value: $value');
   }
 }
-

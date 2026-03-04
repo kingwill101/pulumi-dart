@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserInfoResponse {
   /// A user alternate sec id. This represents the user in a different identity provider system Eg.1:live.com:puid
   final pulumi.Input<String>? userAltSecId;
+
   /// A user identity provider. Eg live.com
   final pulumi.Input<String>? userIdp;
+
   /// The issuer which issued the token for this user.
   final pulumi.Input<String>? userIss;
+
   /// A user's full name or a service principal's app ID.
   final pulumi.Input<String>? userName;
+
   /// A user or service principal's object ID..
   final pulumi.Input<String>? userObjectId;
+
   /// A user or service principal's PuID.
   final pulumi.Input<String>? userPuId;
+
   /// A user or service principal's tenant ID.
   final pulumi.Input<String>? userTenantId;
 
@@ -51,14 +57,41 @@ class UserInfoResponse {
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserInfoResponse(
-      userAltSecId: map['userAltSecId'] == null ? null : (map['userAltSecId']! as String).input(),
-      userIdp: map['userIdp'] == null ? null : (map['userIdp']! as String).input(),
-      userIss: map['userIss'] == null ? null : (map['userIss']! as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
-      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId']! as String).input(),
-      userPuId: map['userPuId'] == null ? null : (map['userPuId']! as String).input(),
-      userTenantId: map['userTenantId'] == null ? null : (map['userTenantId']! as String).input(),
+      userAltSecId: (() {
+        final guardedValue = map['userAltSecId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userIdp: (() {
+        final guardedValue = map['userIdp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userIss: (() {
+        final guardedValue = map['userIss'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userObjectId: (() {
+        final guardedValue = map['userObjectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPuId: (() {
+        final guardedValue = map['userPuId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userTenantId: (() {
+        final guardedValue = map['userTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

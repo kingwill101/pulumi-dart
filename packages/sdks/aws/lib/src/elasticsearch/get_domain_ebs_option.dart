@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainEbsOption {
   /// Whether EBS volumes are attached to data nodes in the domain.
   final pulumi.Input<bool> ebsEnabled;
+
   /// The baseline input/output (I/O) performance of EBS volumes attached to data nodes.
   final pulumi.Input<int> iops;
+
   /// The throughput (in MiB/s) of the EBS volumes attached to data nodes.
   final pulumi.Input<int> throughput;
+
   /// The size of EBS volumes attached to data nodes (in GB).
   final pulumi.Input<int> volumeSize;
+
   /// The type of EBS volumes attached to data nodes.
   final pulumi.Input<String> volumeType;
 
@@ -40,12 +44,11 @@ class GetDomainEbsOption {
 
   factory GetDomainEbsOption.fromMap(Map<String, dynamic> map) {
     return GetDomainEbsOption(
-      ebsEnabled: (map['ebsEnabled'] as bool).input(),
-      iops: (map['iops'] as int).input(),
-      throughput: (map['throughput'] as int).input(),
-      volumeSize: (map['volumeSize'] as int).input(),
-      volumeType: (map['volumeType'] as String).input(),
+      ebsEnabled: pulumi.Input.fromValue(map['ebsEnabled'] as bool),
+      iops: pulumi.Input.fromValue(map['iops'] as int),
+      throughput: pulumi.Input.fromValue(map['throughput'] as int),
+      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }
 }
-

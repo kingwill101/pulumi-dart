@@ -8,7 +8,7 @@ import 'load_balancer_zone_shifted_attachment_state.dart';
 ///
 /// For information about Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment and how to use it, see [What is Load Balancer Zone Shifted Attachment](https://www.alibabacloud.com/help/en/).
 ///
-/// > **NOTE:** Available since v1.242.0.
+/// &gt; **NOTE:** Available since v1.242.0.
 ///
 /// ## Example Usage
 ///
@@ -551,10 +551,13 @@ import 'load_balancer_zone_shifted_attachment_state.dart';
 class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
   /// The ID of the load balancing instance.
   late final pulumi.Output<String> loadBalancerId;
+
   /// Availability zone status. Value:
   late final pulumi.Output<String> status;
+
   /// The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
   late final pulumi.Output<String> vswitchId;
+
   /// The ID of the zone.
   late final pulumi.Output<String> zoneId;
 
@@ -567,15 +570,15 @@ class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
     LoadBalancerZoneShiftedAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [LoadBalancerZoneShiftedAttachment] resource's state with the given [name] and [id].
@@ -596,14 +599,14 @@ class LoadBalancerZoneShiftedAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:alb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

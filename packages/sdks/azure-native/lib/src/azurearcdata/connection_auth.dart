@@ -11,16 +11,15 @@ enum ConnectionAuth {
   valueCertificateWindowsKerberos("Certificate_Windows_Kerberos"),
   valueCertificateWindowsNegotiate("Certificate_Windows_Negotiate");
 
-  const ConnectionAuth(this.value);
-  final String value;
+  const ConnectionAuth(this.wireValue);
+  final String wireValue;
 
   static ConnectionAuth fromValue(String value) {
     for (final item in ConnectionAuth.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionAuth value: $value');
   }
 }
-

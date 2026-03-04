@@ -5,22 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecondaryIndexesIndex {
   /// A list of defined column for index, referenced from Table's primary keys or predefined columns.
   final pulumi.Input<List<String>> definedColumns;
-  /// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+
+  /// The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;indexName&gt;:&lt;indexType&gt;`.
   final pulumi.Input<String> id;
+
   /// The index name of the OTS Table which could not be changed.
   final pulumi.Input<String> indexName;
+
   /// The index type of the OTS Table which could not be changed.
   final pulumi.Input<String> indexType;
+
   /// The name of OTS instance.
   final pulumi.Input<String> instanceName;
+
   /// A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   final pulumi.Input<List<String>> primaryKeys;
+
   /// The name of OTS table.
   final pulumi.Input<String> tableName;
 
   /// Creates a new [GetSecondaryIndexesIndex].
   /// [definedColumns] A list of defined column for index, referenced from Table's primary keys or predefined columns.
-  /// [id] The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+  /// [id] The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;indexName&gt;:&lt;indexType&gt;`.
   /// [indexName] The index name of the OTS Table which could not be changed.
   /// [indexType] The index type of the OTS Table which could not be changed.
   /// [instanceName] The name of OTS instance.
@@ -50,14 +56,17 @@ class GetSecondaryIndexesIndex {
 
   factory GetSecondaryIndexesIndex.fromMap(Map<String, dynamic> map) {
     return GetSecondaryIndexesIndex(
-      definedColumns: ((map['definedColumns'] as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      indexName: (map['indexName'] as String).input(),
-      indexType: (map['indexType'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      primaryKeys: ((map['primaryKeys'] as List).cast<String>()).input(),
-      tableName: (map['tableName'] as String).input(),
+      definedColumns: pulumi.Input.fromValue(
+        (map['definedColumns'] as List).cast<String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      indexName: pulumi.Input.fromValue(map['indexName'] as String),
+      indexType: pulumi.Input.fromValue(map['indexType'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      primaryKeys: pulumi.Input.fromValue(
+        (map['primaryKeys'] as List).cast<String>(),
+      ),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
     );
   }
 }
-

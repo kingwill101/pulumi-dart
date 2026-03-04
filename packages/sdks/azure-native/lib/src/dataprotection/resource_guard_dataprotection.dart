@@ -150,18 +150,25 @@ import 'system_data_response.dart';
 class ResourceGuardDataprotection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Optional ETag.
   late final pulumi.Output<String?> eTag;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
+
   /// ResourceGuardResource properties
   late final pulumi.Output<ResourceGuardResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   late final pulumi.Output<String> type;
 
@@ -174,18 +181,18 @@ class ResourceGuardDataprotection extends pulumi.CustomResource {
     ResourceGuardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dataprotection:ResourceGuard',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String?>('eTag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:dataprotection:ResourceGuard',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ResourceGuardResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ResourceGuardResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -8,7 +8,11 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
   /// based on filterMatchCriteria  This list must not be empty and can have at the
   /// most 64 entries.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>> filterLabels;
+  final pulumi.Input<
+    List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>
+  >
+  filterLabels;
+
   /// Specifies how individual filterLabel matches within the list of filterLabels
   /// contribute towards the overall metadataFilter match. Supported values are:
   /// - MATCH_ANY: At least one of the filterLabels must have a matching label in the
@@ -28,16 +32,40 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterLabels': pulumi.Input.mapInputValue<List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>, List<Map<String, dynamic>>>(filterLabels, (value) => pulumi.Input.encodeList<URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filterLabels':
+          pulumi.Input.mapInputValue<
+            List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>,
+            List<Map<String, dynamic>>
+          >(
+            filterLabels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'filterMatchCriteria': filterMatchCriteria,
     };
   }
 
-  factory URLMapPathMatcherRouteRuleMatchRuleMetadataFilter.fromMap(Map<String, dynamic> map) {
+  factory URLMapPathMatcherRouteRuleMatchRuleMetadataFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(
-      filterLabels: (pulumi.Input.decodeList<URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel>(map['filterLabels'], (value) => URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filterMatchCriteria: (map['filterMatchCriteria'] as String).input(),
+      filterLabels: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel
+        >(
+          map['filterLabels']!,
+          (value) =>
+              URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      filterMatchCriteria: pulumi.Input.fromValue(
+        map['filterMatchCriteria'] as String,
+      ),
     );
   }
 }
-

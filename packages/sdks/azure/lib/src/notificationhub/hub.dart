@@ -202,7 +202,7 @@ import 'hub_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NotificationHubs` - 2023-09-01
@@ -217,22 +217,29 @@ import 'hub_state.dart';
 class Hub extends pulumi.CustomResource {
   /// A `apns_credential` block as defined below.
   ///
-  /// > **Note:** Removing the `apns_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
+  /// &gt; **Note:** Removing the `apns_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   late final pulumi.Output<HubApnsCredential?> apnsCredential;
+
   /// A `browser_credential` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<HubBrowserCredential?> browserCredential;
+
   /// A `gcm_credential` block as defined below.
   ///
-  /// > **Note:** Removing the `gcm_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
+  /// &gt; **Note:** Removing the `gcm_credential` block will currently force a recreation of this resource [due to this bug in the Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/issues/2246) - we'll remove this limitation when the SDK bug is fixed.
   late final pulumi.Output<HubGcmCredential?> gcmCredential;
+
   /// The Azure Region in which this Notification Hub Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name to use for this Notification Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Notification Hub Namespace in which to create this Notification Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceName;
+
   /// The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -240,32 +247,27 @@ class Hub extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Hub]. {@macro pulumi_notificationhub_hub_hub_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Hub(
-    String name, {
-    HubArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:notificationhub/hub:Hub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential');
-    this.browserCredential = registerOutput<HubBrowserCredential?>('browserCredential');
-    this.gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential');
-    this.location = registerOutput<String>('location');
+  Hub(String name, {HubArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:notificationhub/hub:Hub',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential');
+    browserCredential = registerOutput<HubBrowserCredential?>(
+      'browserCredential',
+    );
+    gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    namespaceName = registerOutput<String>('namespaceName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Hub] resource's state with the given [name] and [id].
-  static Hub get(
-    String name,
-    pulumi.Input<String> id, {
-    HubState? state,
-  }) {
+  static Hub get(String name, pulumi.Input<String> id, {HubState? state}) {
     return Hub._get(
       name,
       state: state?.toMap(),
@@ -278,18 +280,20 @@ class Hub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:notificationhub/hub:Hub',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential');
-    this.browserCredential = registerOutput<HubBrowserCredential?>('browserCredential');
-    this.gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential');
-    this.location = registerOutput<String>('location');
+         'azure:notificationhub/hub:Hub',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apnsCredential = registerOutput<HubApnsCredential?>('apnsCredential');
+    browserCredential = registerOutput<HubBrowserCredential?>(
+      'browserCredential',
+    );
+    gcmCredential = registerOutput<HubGcmCredential?>('gcmCredential');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    namespaceName = registerOutput<String>('namespaceName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

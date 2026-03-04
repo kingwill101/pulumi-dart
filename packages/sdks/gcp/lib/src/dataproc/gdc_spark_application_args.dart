@@ -15,41 +15,60 @@ class GdcSparkApplicationArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// An ApplicationEnvironment from which to inherit configuration properties.
   final pulumi.Input<String>? applicationEnvironment;
+
   /// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
   final pulumi.Input<List<String>>? dependencyImages;
+
   /// User-provided human-readable name to be used in user interfaces.
   final pulumi.Input<String>? displayName;
+
   /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location of the spark application.
   final pulumi.Input<String> location;
+
   /// The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
   final pulumi.Input<String>? namespace;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// application-specific properties.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Represents the PySparkApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationPysparkApplicationConfig>? pysparkApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationPysparkApplicationConfig>?
+  pysparkApplicationConfig;
+
   /// The id of the service instance to which this spark application belongs.
   final pulumi.Input<String> serviceinstance;
+
   /// Represents the SparkApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationSparkApplicationConfig>? sparkApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationSparkApplicationConfig>?
+  sparkApplicationConfig;
+
   /// The id of the application
   final pulumi.Input<String> sparkApplicationId;
+
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationSparkRApplicationConfig>? sparkRApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationSparkRApplicationConfig>?
+  sparkRApplicationConfig;
+
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationSparkSqlApplicationConfig>? sparkSqlApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationSparkSqlApplicationConfig>?
+  sparkSqlApplicationConfig;
+
   /// The Dataproc version of this application.
   final pulumi.Input<String>? version;
 
@@ -100,35 +119,126 @@ class GdcSparkApplicationArgs {
       'namespace': ?namespace,
       'project': ?project,
       'properties': ?properties,
-      'pysparkApplicationConfig': ?pulumi.Input.mapOptionalInputValue<GdcSparkApplicationPysparkApplicationConfig, Map<String, dynamic>>(pysparkApplicationConfig, (value) => value.toMap()),
+      'pysparkApplicationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GdcSparkApplicationPysparkApplicationConfig,
+            Map<String, dynamic>
+          >(pysparkApplicationConfig, (value) => value.toMap()),
       'serviceinstance': serviceinstance,
-      'sparkApplicationConfig': ?pulumi.Input.mapOptionalInputValue<GdcSparkApplicationSparkApplicationConfig, Map<String, dynamic>>(sparkApplicationConfig, (value) => value.toMap()),
+      'sparkApplicationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GdcSparkApplicationSparkApplicationConfig,
+            Map<String, dynamic>
+          >(sparkApplicationConfig, (value) => value.toMap()),
       'sparkApplicationId': sparkApplicationId,
-      'sparkRApplicationConfig': ?pulumi.Input.mapOptionalInputValue<GdcSparkApplicationSparkRApplicationConfig, Map<String, dynamic>>(sparkRApplicationConfig, (value) => value.toMap()),
-      'sparkSqlApplicationConfig': ?pulumi.Input.mapOptionalInputValue<GdcSparkApplicationSparkSqlApplicationConfig, Map<String, dynamic>>(sparkSqlApplicationConfig, (value) => value.toMap()),
+      'sparkRApplicationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GdcSparkApplicationSparkRApplicationConfig,
+            Map<String, dynamic>
+          >(sparkRApplicationConfig, (value) => value.toMap()),
+      'sparkSqlApplicationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GdcSparkApplicationSparkSqlApplicationConfig,
+            Map<String, dynamic>
+          >(sparkSqlApplicationConfig, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory GdcSparkApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GdcSparkApplicationArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      applicationEnvironment: map['applicationEnvironment'] == null ? null : (map['applicationEnvironment']! as String).input(),
-      dependencyImages: map['dependencyImages'] == null ? null : ((map['dependencyImages']! as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      pysparkApplicationConfig: map['pysparkApplicationConfig'] == null ? null : (GdcSparkApplicationPysparkApplicationConfig.fromMap((map['pysparkApplicationConfig']! as Map).cast<String, dynamic>())).input(),
-      serviceinstance: (map['serviceinstance'] as String).input(),
-      sparkApplicationConfig: map['sparkApplicationConfig'] == null ? null : (GdcSparkApplicationSparkApplicationConfig.fromMap((map['sparkApplicationConfig']! as Map).cast<String, dynamic>())).input(),
-      sparkApplicationId: (map['sparkApplicationId'] as String).input(),
-      sparkRApplicationConfig: map['sparkRApplicationConfig'] == null ? null : (GdcSparkApplicationSparkRApplicationConfig.fromMap((map['sparkRApplicationConfig']! as Map).cast<String, dynamic>())).input(),
-      sparkSqlApplicationConfig: map['sparkSqlApplicationConfig'] == null ? null : (GdcSparkApplicationSparkSqlApplicationConfig.fromMap((map['sparkSqlApplicationConfig']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      applicationEnvironment: (() {
+        final guardedValue = map['applicationEnvironment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dependencyImages: (() {
+        final guardedValue = map['dependencyImages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      pysparkApplicationConfig: (() {
+        final guardedValue = map['pysparkApplicationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GdcSparkApplicationPysparkApplicationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceinstance: pulumi.Input.fromValue(map['serviceinstance'] as String),
+      sparkApplicationConfig: (() {
+        final guardedValue = map['sparkApplicationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GdcSparkApplicationSparkApplicationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sparkApplicationId: pulumi.Input.fromValue(
+        map['sparkApplicationId'] as String,
+      ),
+      sparkRApplicationConfig: (() {
+        final guardedValue = map['sparkRApplicationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GdcSparkApplicationSparkRApplicationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sparkSqlApplicationConfig: (() {
+        final guardedValue = map['sparkSqlApplicationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GdcSparkApplicationSparkSqlApplicationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

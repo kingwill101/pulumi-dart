@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AmlFilesystemContainerStorageInterfaceResponse {
   /// Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML
   final pulumi.Input<String> persistentVolume;
+
   /// Recommended AKS Persistent Volume Claim for the CSI driver, in Base64 encoded YAML
   final pulumi.Input<String> persistentVolumeClaim;
+
   /// Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML
   final pulumi.Input<String> storageClass;
 
@@ -29,12 +31,17 @@ class AmlFilesystemContainerStorageInterfaceResponse {
     };
   }
 
-  factory AmlFilesystemContainerStorageInterfaceResponse.fromMap(Map<String, dynamic> map) {
+  factory AmlFilesystemContainerStorageInterfaceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AmlFilesystemContainerStorageInterfaceResponse(
-      persistentVolume: (map['persistentVolume'] as String).input(),
-      persistentVolumeClaim: (map['persistentVolumeClaim'] as String).input(),
-      storageClass: (map['storageClass'] as String).input(),
+      persistentVolume: pulumi.Input.fromValue(
+        map['persistentVolume'] as String,
+      ),
+      persistentVolumeClaim: pulumi.Input.fromValue(
+        map['persistentVolumeClaim'] as String,
+      ),
+      storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
     );
   }
 }
-

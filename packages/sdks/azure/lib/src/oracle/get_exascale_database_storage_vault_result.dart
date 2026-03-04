@@ -7,30 +7,43 @@ import 'get_exascale_database_storage_vault_high_capacity_database_storage.dart'
 class GetExascaleDatabaseStorageVaultResult {
   /// The size of additional Flash Cache in percentage of High Capacity database storage.
   final int additionalFlashCachePercentage;
+
   /// Exadata Database Storage Vault description.
   final String description;
+
   /// The user-friendly name for the Exadata Database Storage Vault.
   final String displayName;
+
   /// A `high_capacity_database_storage` block as defined below.
-  final List<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage> highCapacityDatabaseStorages;
+  final List<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>
+  highCapacityDatabaseStorages;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Additional information about the current lifecycle state.
   final String lifecycleDetails;
+
   /// Exadata Database Storage Vault lifecycle state enum.
   final String lifecycleState;
+
   /// The Azure Region where the Exadata Database Storage Vault exists.
   final String location;
   final String name;
+
   /// The URL of the resource in the OCI console.
   final String ociUrl;
+
   /// The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the Exadata Database Storage Vault.
   final String ocid;
   final String resourceGroupName;
+
   /// The time zone of the Exadata Database Storage Vault.
   final String timeZone;
+
   /// The number of Exadata virtual machine clusters used the Exadata Database Storage Vault.
   final int virtualMachineClusterCount;
+
   /// The Exadata Database Storage Vault Azure zones.
   final List<String> zones;
 
@@ -73,7 +86,11 @@ class GetExascaleDatabaseStorageVaultResult {
       'additionalFlashCachePercentage': additionalFlashCachePercentage,
       'description': description,
       'displayName': displayName,
-      'highCapacityDatabaseStorages': pulumi.Input.encodeList<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage, Map<String, dynamic>>(highCapacityDatabaseStorages, (value) => value.toMap()),
+      'highCapacityDatabaseStorages':
+          pulumi.Input.encodeList<
+            GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage,
+            Map<String, dynamic>
+          >(highCapacityDatabaseStorages, (value) => value.toMap()),
       'id': id,
       'lifecycleDetails': lifecycleDetails,
       'lifecycleState': lifecycleState,
@@ -88,12 +105,24 @@ class GetExascaleDatabaseStorageVaultResult {
     };
   }
 
-  factory GetExascaleDatabaseStorageVaultResult.fromMap(Map<String, dynamic> map) {
+  factory GetExascaleDatabaseStorageVaultResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExascaleDatabaseStorageVaultResult(
-      additionalFlashCachePercentage: map['additionalFlashCachePercentage'] as int,
+      additionalFlashCachePercentage:
+          map['additionalFlashCachePercentage'] as int,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      highCapacityDatabaseStorages: pulumi.Input.decodeList<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(map['highCapacityDatabaseStorages'], (value) => GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((value as Map).cast<String, dynamic>())),
+      highCapacityDatabaseStorages:
+          pulumi.Input.decodeList<
+            GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage
+          >(
+            map['highCapacityDatabaseStorages']!,
+            (value) =>
+                GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       id: map['id'] as String,
       lifecycleDetails: map['lifecycleDetails'] as String,
       lifecycleState: map['lifecycleState'] as String,
@@ -108,4 +137,3 @@ class GetExascaleDatabaseStorageVaultResult {
     );
   }
 }
-

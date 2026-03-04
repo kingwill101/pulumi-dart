@@ -8,20 +8,19 @@ class DomainDevicesShmemAcpi {
 
   /// Creates a new [DomainDevicesShmemAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesShmemAcpi({
-    this.index,
-  });
+  DomainDevicesShmemAcpi({this.index});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'index': ?index,
-    };
+    return <String, dynamic>{'index': ?index};
   }
 
   factory DomainDevicesShmemAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesShmemAcpi(
-      index: map['index'] == null ? null : (map['index']! as double).input(),
+      index: (() {
+        final guardedValue = map['index'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

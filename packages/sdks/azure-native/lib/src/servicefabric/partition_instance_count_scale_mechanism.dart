@@ -7,10 +7,13 @@ class PartitionInstanceCountScaleMechanism {
   /// Enumerates the ways that a service can be partitioned.
   /// Expected value is 'ScalePartitionInstanceCount'.
   final pulumi.Input<String> kind;
+
   /// Maximum number of instances of the partition.
   final pulumi.Input<int> maxInstanceCount;
+
   /// Minimum number of instances of the partition.
   final pulumi.Input<int> minInstanceCount;
+
   /// The number of instances to add or remove during a scaling operation.
   final pulumi.Input<int> scaleIncrement;
 
@@ -35,13 +38,14 @@ class PartitionInstanceCountScaleMechanism {
     };
   }
 
-  factory PartitionInstanceCountScaleMechanism.fromMap(Map<String, dynamic> map) {
+  factory PartitionInstanceCountScaleMechanism.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PartitionInstanceCountScaleMechanism(
-      kind: (map['kind'] as String).input(),
-      maxInstanceCount: (map['maxInstanceCount'] as int).input(),
-      minInstanceCount: (map['minInstanceCount'] as int).input(),
-      scaleIncrement: (map['scaleIncrement'] as int).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
+      minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
+      scaleIncrement: pulumi.Input.fromValue(map['scaleIncrement'] as int),
     );
   }
 }
-

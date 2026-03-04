@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerChannelsChannel {
   /// The ID of the consumer group.
   final pulumi.Input<String> consumerGroupId;
+
   /// The name of the consumer group.
   final pulumi.Input<String> consumerGroupName;
+
   /// The username of the consumer group.
   final pulumi.Input<String> consumerGroupUserName;
+
   /// The time point when the client consumed the last message in the subscription channel.
   final pulumi.Input<String> consumptionCheckpoint;
+
   /// The ID of the Consumer Channel.
   final pulumi.Input<String> id;
+
   /// The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
   final pulumi.Input<int> messageDelay;
+
   /// The total number of unconsumed messages.
   final pulumi.Input<int> unconsumedData;
 
@@ -50,14 +56,19 @@ class GetConsumerChannelsChannel {
 
   factory GetConsumerChannelsChannel.fromMap(Map<String, dynamic> map) {
     return GetConsumerChannelsChannel(
-      consumerGroupId: (map['consumerGroupId'] as String).input(),
-      consumerGroupName: (map['consumerGroupName'] as String).input(),
-      consumerGroupUserName: (map['consumerGroupUserName'] as String).input(),
-      consumptionCheckpoint: (map['consumptionCheckpoint'] as String).input(),
-      id: (map['id'] as String).input(),
-      messageDelay: (map['messageDelay'] as int).input(),
-      unconsumedData: (map['unconsumedData'] as int).input(),
+      consumerGroupId: pulumi.Input.fromValue(map['consumerGroupId'] as String),
+      consumerGroupName: pulumi.Input.fromValue(
+        map['consumerGroupName'] as String,
+      ),
+      consumerGroupUserName: pulumi.Input.fromValue(
+        map['consumerGroupUserName'] as String,
+      ),
+      consumptionCheckpoint: pulumi.Input.fromValue(
+        map['consumptionCheckpoint'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      messageDelay: pulumi.Input.fromValue(map['messageDelay'] as int),
+      unconsumedData: pulumi.Input.fromValue(map['unconsumedData'] as int),
     );
   }
 }
-

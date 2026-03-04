@@ -9,31 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpamIpamPoolCidrArgs {
   /// The CIDR address segment to be preset.
   ///
-  /// > **NOTE:**  currently, only IPv4 address segments are supported.
+  /// &gt; **NOTE:**  currently, only IPv4 address segments are supported.
   final pulumi.Input<String> cidr;
+
   /// The ID of the IPAM pool instance.
   final pulumi.Input<String> ipamPoolId;
 
   /// Creates a new [IpamIpamPoolCidrArgs].
   /// [cidr] The CIDR address segment to be preset.
   /// [ipamPoolId] The ID of the IPAM pool instance.
-  IpamIpamPoolCidrArgs({
-    required this.cidr,
-    required this.ipamPoolId,
-  });
+  IpamIpamPoolCidrArgs({required this.cidr, required this.ipamPoolId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidr': cidr,
-      'ipamPoolId': ipamPoolId,
-    };
+    return <String, dynamic>{'cidr': cidr, 'ipamPoolId': ipamPoolId};
   }
 
   factory IpamIpamPoolCidrArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolCidrArgs(
-      cidr: (map['cidr'] as String).input(),
-      ipamPoolId: (map['ipamPoolId'] as String).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
     );
   }
 }
-

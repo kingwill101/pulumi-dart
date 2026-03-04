@@ -1,9 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
-import 'network_interface_response.dart';
-import 'resource_status_response.dart';
 import 'system_data_response.dart';
-import 'virtual_disk_response.dart';
 import 'virtual_machine_template_args.dart';
 
 /// Define the virtualMachineTemplate.
@@ -176,58 +173,84 @@ import 'virtual_machine_template_args.dart';
 class VirtualMachineTemplate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
+
   /// Gets or sets the disks the template.
-  late final pulumi.Output<List<VirtualDiskResponse>> disks;
+  late final pulumi.Output<List<Map<String, dynamic>>> disks;
+
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Firmware type
   late final pulumi.Output<String> firmwareType;
+
   /// Gets or sets the folder path of the template.
   late final pulumi.Output<String> folderPath;
+
   /// Gets or sets the inventory Item ID for the virtual machine template.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Gets or sets memory size in MBs for the template.
   late final pulumi.Output<int> memorySizeMB;
+
   /// Gets or sets the vCenter Managed Object name for the virtual machine template.
   late final pulumi.Output<String> moName;
+
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine
   /// template.
   late final pulumi.Output<String?> moRefId;
+
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
+
   /// Gets or sets the network interfaces of the template.
-  late final pulumi.Output<List<NetworkInterfaceResponse>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// Gets or sets the number of vCPUs for the template.
   late final pulumi.Output<int> numCPUs;
+
   /// Gets or sets the number of cores per socket for the template.
   /// Defaults to 1 if unspecified.
   late final pulumi.Output<int> numCoresPerSocket;
+
   /// Gets or sets os name.
   late final pulumi.Output<String> osName;
+
   /// Gets or sets the type of the os.
   late final pulumi.Output<String> osType;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource status information.
-  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets or sets the current version of VMware Tools.
   late final pulumi.Output<String> toolsVersion;
+
   /// Gets or sets the current version status of VMware Tools installed in the guest operating system.
   late final pulumi.Output<String> toolsVersionStatus;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
+
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
+
   /// Gets or sets the ARM Id of the vCenter resource in which this template resides.
   late final pulumi.Output<String?> vCenterId;
 
@@ -240,37 +263,41 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     VirtualMachineTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:connectedvmwarevsphere:VirtualMachineTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customResourceName = registerOutput<String>('customResourceName');
-    this.disks = registerOutput<List<VirtualDiskResponse>>('disks');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.firmwareType = registerOutput<String>('firmwareType');
-    this.folderPath = registerOutput<String>('folderPath');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.memorySizeMB = registerOutput<int>('memorySizeMB');
-    this.moName = registerOutput<String>('moName');
-    this.moRefId = registerOutput<String?>('moRefId');
+         'azure-native:connectedvmwarevsphere:VirtualMachineTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customResourceName = registerOutput<String>('customResourceName');
+    disks = registerOutput<List<Map<String, dynamic>>>('disks');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    firmwareType = registerOutput<String>('firmwareType');
+    folderPath = registerOutput<String>('folderPath');
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    memorySizeMB = registerOutput<int>('memorySizeMB');
+    moName = registerOutput<String>('moName');
+    moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces');
-    this.numCPUs = registerOutput<int>('numCPUs');
-    this.numCoresPerSocket = registerOutput<int>('numCoresPerSocket');
-    this.osName = registerOutput<String>('osName');
-    this.osType = registerOutput<String>('osType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.statuses = registerOutput<List<ResourceStatusResponse>>('statuses');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.toolsVersion = registerOutput<String>('toolsVersion');
-    this.toolsVersionStatus = registerOutput<String>('toolsVersionStatus');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
-    this.vCenterId = registerOutput<String?>('vCenterId');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    numCPUs = registerOutput<int>('numCPUs');
+    numCoresPerSocket = registerOutput<int>('numCoresPerSocket');
+    osName = registerOutput<String>('osName');
+    osType = registerOutput<String>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    toolsVersion = registerOutput<String>('toolsVersion');
+    toolsVersionStatus = registerOutput<String>('toolsVersionStatus');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    vCenterId = registerOutput<String?>('vCenterId');
   }
 }

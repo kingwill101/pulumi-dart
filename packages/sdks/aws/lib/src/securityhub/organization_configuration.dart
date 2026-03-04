@@ -5,13 +5,13 @@ import 'organization_configuration_state.dart';
 
 /// Manages the Security Hub Organization Configuration.
 ///
-/// > **NOTE:** This resource requires an `aws.securityhub.OrganizationAdminAccount` to be configured (not necessarily with Pulumi). More information about managing Security Hub in an organization can be found in the [Managing administrator and member accounts](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts.html) documentation.
+/// &gt; **NOTE:** This resource requires an `aws.securityhub.OrganizationAdminAccount` to be configured (not necessarily with Pulumi). More information about managing Security Hub in an organization can be found in the [Managing administrator and member accounts](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts.html) documentation.
 ///
-/// > **NOTE:** In order to set the `configuration_type` to `CENTRAL`, the delegated admin must be a member account of the organization and not the management account. Central configuration also requires an `aws.securityhub.FindingAggregator` to be configured.
+/// &gt; **NOTE:** In order to set the `configuration_type` to `CENTRAL`, the delegated admin must be a member account of the organization and not the management account. Central configuration also requires an `aws.securityhub.FindingAggregator` to be configured.
 ///
-/// > **NOTE:** This is an advanced AWS resource. Pulumi will automatically assume management of the Security Hub Organization Configuration without import and perform no actions on removal from the Pulumi program.
+/// &gt; **NOTE:** This is an advanced AWS resource. Pulumi will automatically assume management of the Security Hub Organization Configuration without import and perform no actions on removal from the Pulumi program.
 ///
-/// > **NOTE:** Deleting this resource resets security hub to a local organization configuration with auto enable false.
+/// &gt; **NOTE:** Deleting this resource resets security hub to a local organization configuration with auto enable false.
 ///
 /// ## Example Usage
 ///
@@ -405,10 +405,14 @@ import 'organization_configuration_state.dart';
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// Whether to automatically enable Security Hub for new accounts in the organization.
   late final pulumi.Output<bool> autoEnable;
+
   /// Whether to automatically enable Security Hub default standards for new member accounts in the organization. By default, this parameter is equal to `DEFAULT`, and new member accounts are automatically enabled with default Security Hub standards. To opt out of enabling default standards for new member accounts, set this parameter equal to `NONE`.
   late final pulumi.Output<String> autoEnableStandards;
+
   /// Provides information about the way an organization is configured in Security Hub.
-  late final pulumi.Output<OrganizationConfigurationOrganizationConfiguration> organizationConfiguration;
+  late final pulumi.Output<OrganizationConfigurationOrganizationConfiguration>
+  organizationConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -421,15 +425,18 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     OrganizationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoEnable = registerOutput<bool>('autoEnable');
-    this.autoEnableStandards = registerOutput<String>('autoEnableStandards');
-    this.organizationConfiguration = registerOutput<OrganizationConfigurationOrganizationConfiguration>('organizationConfiguration');
-    this.region = registerOutput<String>('region');
+         'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoEnable = registerOutput<bool>('autoEnable');
+    autoEnableStandards = registerOutput<String>('autoEnableStandards');
+    organizationConfiguration =
+        registerOutput<OrganizationConfigurationOrganizationConfiguration>(
+          'organizationConfiguration',
+        );
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [OrganizationConfiguration] resource's state with the given [name] and [id].
@@ -450,14 +457,17 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoEnable = registerOutput<bool>('autoEnable');
-    this.autoEnableStandards = registerOutput<String>('autoEnableStandards');
-    this.organizationConfiguration = registerOutput<OrganizationConfigurationOrganizationConfiguration>('organizationConfiguration');
-    this.region = registerOutput<String>('region');
+         'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoEnable = registerOutput<bool>('autoEnable');
+    autoEnableStandards = registerOutput<String>('autoEnableStandards');
+    organizationConfiguration =
+        registerOutput<OrganizationConfigurationOrganizationConfiguration>(
+          'organizationConfiguration',
+        );
+    region = registerOutput<String>('region');
   }
 }

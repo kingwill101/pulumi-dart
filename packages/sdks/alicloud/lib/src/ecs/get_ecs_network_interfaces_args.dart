@@ -9,34 +9,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsNetworkInterfacesArgs {
   /// A list of Network Interface IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The instance id.
   final pulumi.Input<String>? instanceId;
+
   /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
   final pulumi.Input<String>? name;
+
   /// A regex string to filter results by Network Interface name.
   final pulumi.Input<String>? nameRegex;
+
   /// The network interface name.
   final pulumi.Input<String>? networkInterfaceName;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The primary private IP address of the ENI.
   final pulumi.Input<String>? primaryIpAddress;
+
   /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
   final pulumi.Input<String>? privateIp;
+
   /// The resource group id.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The security group id.
   final pulumi.Input<String>? securityGroupId;
+
   /// Whether the user of the elastic network card is a cloud product or a virtual vendor.
   final pulumi.Input<bool>? serviceManaged;
+
   /// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
   final pulumi.Input<String>? status;
+
   /// A map of tags assigned to ENIs.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of ENI. Valid Values: `Primary`, `Secondary`.
   final pulumi.Input<String>? type;
+
   /// The vpc id.
   final pulumi.Input<String>? vpcId;
+
   /// The vswitch id.
   final pulumi.Input<String>? vswitchId;
 
@@ -99,23 +114,88 @@ class GetEcsNetworkInterfacesArgs {
 
   factory GetEcsNetworkInterfacesArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsNetworkInterfacesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      primaryIpAddress: map['primaryIpAddress'] == null ? null : (map['primaryIpAddress']! as String).input(),
-      privateIp: map['privateIp'] == null ? null : (map['privateIp']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
-      serviceManaged: map['serviceManaged'] == null ? null : (map['serviceManaged']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceName: (() {
+        final guardedValue = map['networkInterfaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryIpAddress: (() {
+        final guardedValue = map['primaryIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIp: (() {
+        final guardedValue = map['privateIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceManaged: (() {
+        final guardedValue = map['serviceManaged'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

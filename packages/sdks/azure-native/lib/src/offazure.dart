@@ -1,5 +1,3 @@
-library module_offazure;
-
 export 'offazure/functions.dart';
 export 'offazure/get_hyper_vsite_args.dart';
 export 'offazure/get_hyper_vsite_result.dart';

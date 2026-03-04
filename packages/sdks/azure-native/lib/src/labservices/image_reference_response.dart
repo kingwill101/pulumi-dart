@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageReferenceResponse {
   /// The actual version of the image after use.
   final pulumi.Input<String> exactVersion;
+
   /// Image resource ID
   final pulumi.Input<String>? id;
+
   /// The image offer if applicable.
   final pulumi.Input<String>? offer;
+
   /// The image publisher
   final pulumi.Input<String>? publisher;
+
   /// The image SKU
   final pulumi.Input<String>? sku;
+
   /// The image version specified on creation.
   final pulumi.Input<String>? version;
 
@@ -46,13 +51,32 @@ class ImageReferenceResponse {
 
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
-      exactVersion: (map['exactVersion'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      exactVersion: pulumi.Input.fromValue(map['exactVersion'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offer: (() {
+        final guardedValue = map['offer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

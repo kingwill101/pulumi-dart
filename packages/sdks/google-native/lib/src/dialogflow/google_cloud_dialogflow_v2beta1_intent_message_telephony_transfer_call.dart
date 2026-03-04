@@ -14,15 +14,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'phoneNumber': phoneNumber,
-    };
+    return <String, dynamic>{'phoneNumber': phoneNumber};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall(
-      phoneNumber: (map['phoneNumber'] as String).input(),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
-

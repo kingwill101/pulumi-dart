@@ -10,14 +10,18 @@ import 'management_server_network.dart';
 class ManagementServerArgs {
   /// The location for the management server (management console)
   final pulumi.Input<String> location;
+
   /// The name of management server (management console)
   final pulumi.Input<String>? name;
+
   /// Network details to create management server (management console).
   /// Structure is documented below.
   final pulumi.Input<List<ManagementServerNetwork>>? networks;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The type of management server (management console).
   /// Default value is `BACKUP_RESTORE`.
   /// Possible values are: `BACKUP_RESTORE`.
@@ -41,7 +45,18 @@ class ManagementServerArgs {
     return <String, dynamic>{
       'location': location,
       'name': ?name,
-      'networks': ?pulumi.Input.mapOptionalInputValue<List<ManagementServerNetwork>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<ManagementServerNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ManagementServerNetwork>,
+            List<Map<String, dynamic>>
+          >(
+            networks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ManagementServerNetwork,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
       'type': ?type,
     };
@@ -49,12 +64,34 @@ class ManagementServerArgs {
 
   factory ManagementServerArgs.fromMap(Map<String, dynamic> map) {
     return ManagementServerArgs(
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ManagementServerNetwork>(map['networks']!, (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networks: (() {
+        final guardedValue = map['networks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ManagementServerNetwork>(
+            guardedValue,
+            (value) => ManagementServerNetwork.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

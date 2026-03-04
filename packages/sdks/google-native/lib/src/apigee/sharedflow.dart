@@ -6,13 +6,17 @@ import 'sharedflow_args.dart';
 class Sharedflow extends pulumi.CustomResource {
   /// Required. Must be set to either `import` or `validate`.
   late final pulumi.Output<String> action;
+
   /// The id of the most recently created revision for this shared flow.
   late final pulumi.Output<String> latestRevisionId;
+
   /// Metadata describing the shared flow.
   late final pulumi.Output<GoogleCloudApigeeV1EntityMetadataResponse> metaData;
+
   /// Required. The name to give the shared flow
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
+
   /// A list of revisions of this shared flow.
   late final pulumi.Output<List<String>> revision;
 
@@ -25,16 +29,18 @@ class Sharedflow extends pulumi.CustomResource {
     SharedflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:apigee/v1:Sharedflow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.latestRevisionId = registerOutput<String>('latestRevisionId');
-    this.metaData = registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>('metaData');
+         'google-native:apigee/v1:Sharedflow',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    latestRevisionId = registerOutput<String>('latestRevisionId');
+    metaData = registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>(
+      'metaData',
+    );
     this.name = registerOutput<String>('name');
-    this.organizationId = registerOutput<String>('organizationId');
-    this.revision = registerOutput<List<String>>('revision');
+    organizationId = registerOutput<String>('organizationId');
+    revision = registerOutput<List<String>>('revision');
   }
 }

@@ -5,9 +5,14 @@ import 'rule_group_rule_statement_regex_pattern_set_reference_statement_field_to
 
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader {
   /// The filter to use to identify the subset of headers to inspect in a web request. The `match_pattern` block supports only one of the following arguments:
-  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern> matchPattern;
+  final pulumi.Input<
+    RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern
+  >
+  matchPattern;
+
   /// The parts of the headers to inspect with the rule inspection criteria. If you specify `All`, AWS WAF inspects both keys and values. Valid values include the following: `ALL`, `Key`, `Value`.
   final pulumi.Input<String> matchScope;
+
   /// Oversize handling tells AWS WAF what to do with a web request when the request component that the rule inspects is over the limits. Valid values include the following: `CONTINUE`, `MATCH`, `NO_MATCH`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-oversize-handling.html) for more information.
   final pulumi.Input<String> oversizeHandling;
 
@@ -23,18 +28,29 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'matchPattern': pulumi.Input.mapInputValue<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern, Map<String, dynamic>>(matchPattern, (value) => value.toMap()),
+      'matchPattern':
+          pulumi.Input.mapInputValue<
+            RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern,
+            Map<String, dynamic>
+          >(matchPattern, (value) => value.toMap()),
       'matchScope': matchScope,
       'oversizeHandling': oversizeHandling,
     };
   }
 
-  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader(
-      matchPattern: (RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
-      matchScope: (map['matchScope'] as String).input(),
-      oversizeHandling: (map['oversizeHandling'] as String).input(),
+      matchPattern: pulumi.Input.fromValue(
+        RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern.fromMap(
+          (map['matchPattern']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      matchScope: pulumi.Input.fromValue(map['matchScope'] as String),
+      oversizeHandling: pulumi.Input.fromValue(
+        map['oversizeHandling'] as String,
+      ),
     );
   }
 }
-

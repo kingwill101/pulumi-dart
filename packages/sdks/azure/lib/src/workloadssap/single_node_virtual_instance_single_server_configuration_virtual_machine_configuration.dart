@@ -6,9 +6,17 @@ import 'single_node_virtual_instance_single_server_configuration_virtual_machine
 
 class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration {
   /// An `image` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage> image;
+  final pulumi.Input<
+    SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage
+  >
+  image;
+
   /// An `os_profile` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile> osProfile;
+  final pulumi.Input<
+    SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile
+  >
+  osProfile;
+
   /// The size of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineSize;
 
@@ -24,18 +32,37 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'image': pulumi.Input.mapInputValue<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage, Map<String, dynamic>>(image, (value) => value.toMap()),
-      'osProfile': pulumi.Input.mapInputValue<SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
+      'image':
+          pulumi.Input.mapInputValue<
+            SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
+      'osProfile':
+          pulumi.Input.mapInputValue<
+            SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile,
+            Map<String, dynamic>
+          >(osProfile, (value) => value.toMap()),
       'virtualMachineSize': virtualMachineSize,
     };
   }
 
-  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration.fromMap(Map<String, dynamic> map) {
+  factory SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration(
-      image: (SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      osProfile: (SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      virtualMachineSize: (map['virtualMachineSize'] as String).input(),
+      image: pulumi.Input.fromValue(
+        SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage.fromMap(
+          (map['image']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      osProfile: pulumi.Input.fromValue(
+        SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfile.fromMap(
+          (map['osProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      virtualMachineSize: pulumi.Input.fromValue(
+        map['virtualMachineSize'] as String,
+      ),
     );
   }
 }
-

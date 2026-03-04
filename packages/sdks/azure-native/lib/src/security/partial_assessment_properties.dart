@@ -9,20 +9,19 @@ class PartialAssessmentProperties {
 
   /// Creates a new [PartialAssessmentProperties].
   /// [assessmentKey] The assessment key
-  PartialAssessmentProperties({
-    this.assessmentKey,
-  });
+  PartialAssessmentProperties({this.assessmentKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'assessmentKey': ?assessmentKey,
-    };
+    return <String, dynamic>{'assessmentKey': ?assessmentKey};
   }
 
   factory PartialAssessmentProperties.fromMap(Map<String, dynamic> map) {
     return PartialAssessmentProperties(
-      assessmentKey: map['assessmentKey'] == null ? null : (map['assessmentKey']! as String).input(),
+      assessmentKey: (() {
+        final guardedValue = map['assessmentKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

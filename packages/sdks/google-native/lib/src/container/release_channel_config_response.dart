@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReleaseChannelConfigResponse {
   /// The release channel this configuration applies to.
   final pulumi.Input<String> channel;
+
   /// The default version for newly created clusters on the channel.
   final pulumi.Input<String> defaultVersion;
+
   /// List of valid versions for the channel.
   final pulumi.Input<List<String>> validVersions;
 
@@ -31,10 +33,11 @@ class ReleaseChannelConfigResponse {
 
   factory ReleaseChannelConfigResponse.fromMap(Map<String, dynamic> map) {
     return ReleaseChannelConfigResponse(
-      channel: (map['channel'] as String).input(),
-      defaultVersion: (map['defaultVersion'] as String).input(),
-      validVersions: ((map['validVersions'] as List).cast<String>()).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
+      defaultVersion: pulumi.Input.fromValue(map['defaultVersion'] as String),
+      validVersions: pulumi.Input.fromValue(
+        (map['validVersions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -37,15 +37,16 @@ class GetDatabaseMysqlConfigMysqlTmpTableSize {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlTmpTableSize.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMysqlConfigMysqlTmpTableSize.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMysqlConfigMysqlTmpTableSize(
-      description: (map['description'] as String).input(),
-      example: (map['example'] as int).input(),
-      maximum: (map['maximum'] as int).input(),
-      minimum: (map['minimum'] as int).input(),
-      requiresRestart: (map['requiresRestart'] as bool).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      example: pulumi.Input.fromValue(map['example'] as int),
+      maximum: pulumi.Input.fromValue(map['maximum'] as int),
+      minimum: pulumi.Input.fromValue(map['minimum'] as int),
+      requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -7,14 +7,19 @@ import 'rollout_policy_response_compute_beta.dart';
 class DeprecationStatusResponseComputeBeta {
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String> deleted;
+
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DEPRECATED. This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String> deprecated;
+
   /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE. This is only informational and the status will not change unless the client explicitly changes it.
   final pulumi.Input<String> obsolete;
+
   /// The URL of the suggested replacement for a deprecated resource. The suggested replacement resource must be the same kind of resource as the deprecated resource.
   final pulumi.Input<String> replacement;
+
   /// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
   final pulumi.Input<String> state;
+
   /// The rollout policy for this deprecation. This policy is only enforced by image family views. The rollout policy restricts the zones where the associated resource is considered in a deprecated state. When the rollout policy does not include the user specified zone, or if the zone is rolled out, the associated resource is considered in a deprecated state. The rollout policy for this deprecation is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
   final pulumi.Input<RolloutPolicyResponseComputeBeta> stateOverride;
 
@@ -41,19 +46,28 @@ class DeprecationStatusResponseComputeBeta {
       'obsolete': obsolete,
       'replacement': replacement,
       'state': state,
-      'stateOverride': pulumi.Input.mapInputValue<RolloutPolicyResponseComputeBeta, Map<String, dynamic>>(stateOverride, (value) => value.toMap()),
+      'stateOverride':
+          pulumi.Input.mapInputValue<
+            RolloutPolicyResponseComputeBeta,
+            Map<String, dynamic>
+          >(stateOverride, (value) => value.toMap()),
     };
   }
 
-  factory DeprecationStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory DeprecationStatusResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeprecationStatusResponseComputeBeta(
-      deleted: (map['deleted'] as String).input(),
-      deprecated: (map['deprecated'] as String).input(),
-      obsolete: (map['obsolete'] as String).input(),
-      replacement: (map['replacement'] as String).input(),
-      state: (map['state'] as String).input(),
-      stateOverride: (RolloutPolicyResponseComputeBeta.fromMap((map['stateOverride'] as Map).cast<String, dynamic>())).input(),
+      deleted: pulumi.Input.fromValue(map['deleted'] as String),
+      deprecated: pulumi.Input.fromValue(map['deprecated'] as String),
+      obsolete: pulumi.Input.fromValue(map['obsolete'] as String),
+      replacement: pulumi.Input.fromValue(map['replacement'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      stateOverride: pulumi.Input.fromValue(
+        RolloutPolicyResponseComputeBeta.fromMap(
+          (map['stateOverride']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

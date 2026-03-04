@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StoragePoolResourceStatusResponse {
   /// Sum of all the disks' provisioned IOPS.
   final pulumi.Input<String> aggregateDiskProvisionedIops;
+
   /// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
   final pulumi.Input<String> aggregateDiskSizeGb;
+
   /// Timestamp of the last successful resize in RFC3339 text format.
   final pulumi.Input<String> lastResizeTimestamp;
+
   /// Maximum allowed aggregate disk size in gigabytes.
   final pulumi.Input<String> maxAggregateDiskSizeGb;
+
   /// Number of disks used.
   final pulumi.Input<String> numberOfDisks;
+
   /// Space used by data stored in disks within the storage pool (in bytes).
   final pulumi.Input<String> usedBytes;
+
   /// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
   final pulumi.Input<String> usedReducedBytes;
+
   /// Sum of all the disks' provisioned throughput in MB/s.
   final pulumi.Input<String> usedThroughput;
 
@@ -56,15 +63,24 @@ class StoragePoolResourceStatusResponse {
 
   factory StoragePoolResourceStatusResponse.fromMap(Map<String, dynamic> map) {
     return StoragePoolResourceStatusResponse(
-      aggregateDiskProvisionedIops: (map['aggregateDiskProvisionedIops'] as String).input(),
-      aggregateDiskSizeGb: (map['aggregateDiskSizeGb'] as String).input(),
-      lastResizeTimestamp: (map['lastResizeTimestamp'] as String).input(),
-      maxAggregateDiskSizeGb: (map['maxAggregateDiskSizeGb'] as String).input(),
-      numberOfDisks: (map['numberOfDisks'] as String).input(),
-      usedBytes: (map['usedBytes'] as String).input(),
-      usedReducedBytes: (map['usedReducedBytes'] as String).input(),
-      usedThroughput: (map['usedThroughput'] as String).input(),
+      aggregateDiskProvisionedIops: pulumi.Input.fromValue(
+        map['aggregateDiskProvisionedIops'] as String,
+      ),
+      aggregateDiskSizeGb: pulumi.Input.fromValue(
+        map['aggregateDiskSizeGb'] as String,
+      ),
+      lastResizeTimestamp: pulumi.Input.fromValue(
+        map['lastResizeTimestamp'] as String,
+      ),
+      maxAggregateDiskSizeGb: pulumi.Input.fromValue(
+        map['maxAggregateDiskSizeGb'] as String,
+      ),
+      numberOfDisks: pulumi.Input.fromValue(map['numberOfDisks'] as String),
+      usedBytes: pulumi.Input.fromValue(map['usedBytes'] as String),
+      usedReducedBytes: pulumi.Input.fromValue(
+        map['usedReducedBytes'] as String,
+      ),
+      usedThroughput: pulumi.Input.fromValue(map['usedThroughput'] as String),
     );
   }
 }
-

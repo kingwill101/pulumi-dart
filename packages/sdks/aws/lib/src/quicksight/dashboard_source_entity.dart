@@ -9,20 +9,29 @@ class DashboardSourceEntity {
 
   /// Creates a new [DashboardSourceEntity].
   /// [sourceTemplate] The source template. See source_template.
-  DashboardSourceEntity({
-    this.sourceTemplate,
-  });
+  DashboardSourceEntity({this.sourceTemplate});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceTemplate': ?pulumi.Input.mapOptionalInputValue<DashboardSourceEntitySourceTemplate, Map<String, dynamic>>(sourceTemplate, (value) => value.toMap()),
+      'sourceTemplate':
+          ?pulumi.Input.mapOptionalInputValue<
+            DashboardSourceEntitySourceTemplate,
+            Map<String, dynamic>
+          >(sourceTemplate, (value) => value.toMap()),
     };
   }
 
   factory DashboardSourceEntity.fromMap(Map<String, dynamic> map) {
     return DashboardSourceEntity(
-      sourceTemplate: map['sourceTemplate'] == null ? null : ((DashboardSourceEntitySourceTemplate.fromMap((map['sourceTemplate']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceTemplate: (() {
+        final guardedValue = map['sourceTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DashboardSourceEntitySourceTemplate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

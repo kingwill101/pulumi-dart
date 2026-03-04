@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2ColorResponse {
   /// The amount of blue in the color as a value in the interval [0, 1].
   final pulumi.Input<double> blue;
+
   /// The amount of green in the color as a value in the interval [0, 1].
   final pulumi.Input<double> green;
+
   /// The amount of red in the color as a value in the interval [0, 1].
   final pulumi.Input<double> red;
 
@@ -22,19 +24,14 @@ class GooglePrivacyDlpV2ColorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'blue': blue,
-      'green': green,
-      'red': red,
-    };
+    return <String, dynamic>{'blue': blue, 'green': green, 'red': red};
   }
 
   factory GooglePrivacyDlpV2ColorResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ColorResponse(
-      blue: (map['blue'] as double).input(),
-      green: (map['green'] as double).input(),
-      red: (map['red'] as double).input(),
+      blue: pulumi.Input.fromValue(map['blue'] as double),
+      green: pulumi.Input.fromValue(map['green'] as double),
+      red: pulumi.Input.fromValue(map['red'] as double),
     );
   }
 }
-

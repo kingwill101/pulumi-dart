@@ -1,5 +1,3 @@
-library module_powerbidedicated;
-
 export 'powerbidedicated/auto_scale_vcore.dart';
 export 'powerbidedicated/auto_scale_vcore_args.dart';
 export 'powerbidedicated/auto_scale_vcore_sku.dart';

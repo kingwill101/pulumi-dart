@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListFeatureAccountArgs {
   /// The name of the account.
   final pulumi.Input<String> accountName;
+
   /// Set of features
   final pulumi.Input<List<String>>? features;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class ListFeatureAccountArgs {
 
   factory ListFeatureAccountArgs.fromMap(Map<String, dynamic> map) {
     return ListFeatureAccountArgs(
-      accountName: (map['accountName'] as String).input(),
-      features: map['features'] == null ? null : ((map['features']! as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      features: (() {
+        final guardedValue = map['features'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

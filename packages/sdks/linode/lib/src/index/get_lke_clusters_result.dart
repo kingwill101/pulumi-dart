@@ -7,6 +7,7 @@ import 'get_lke_clusters_lke_cluster.dart';
 /// Result data returned by getLkeClusters.
 class GetLkeClustersResult {
   final List<GetLkeClustersFilter>? filters;
+
   /// The LKE Cluster's ID.
   final String id;
   final List<GetLkeClustersLkeCluster> lkeClusters;
@@ -29,9 +30,20 @@ class GetLkeClustersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetLkeClustersFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetLkeClustersFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
-      'lkeClusters': pulumi.Input.encodeList<GetLkeClustersLkeCluster, Map<String, dynamic>>(lkeClusters, (value) => value.toMap()),
+      'lkeClusters':
+          pulumi.Input.encodeList<
+            GetLkeClustersLkeCluster,
+            Map<String, dynamic>
+          >(lkeClusters, (value) => value.toMap()),
       'order': ?order,
       'orderBy': ?orderBy,
     };
@@ -39,12 +51,33 @@ class GetLkeClustersResult {
 
   factory GetLkeClustersResult.fromMap(Map<String, dynamic> map) {
     return GetLkeClustersResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLkeClustersFilter>(map['filters']!, (value) => GetLkeClustersFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetLkeClustersFilter>(
+          guardedValue,
+          (value) => GetLkeClustersFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
-      lkeClusters: pulumi.Input.decodeList<GetLkeClustersLkeCluster>(map['lkeClusters'], (value) => GetLkeClustersLkeCluster.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] == null ? null : map['order']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
+      lkeClusters: pulumi.Input.decodeList<GetLkeClustersLkeCluster>(
+        map['lkeClusters']!,
+        (value) => GetLkeClustersLkeCluster.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

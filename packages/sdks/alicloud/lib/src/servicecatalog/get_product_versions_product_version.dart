@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductVersionsProductVersion {
   /// Whether the version is activated
   final pulumi.Input<bool> active;
+
   /// The creation time of the resource
   final pulumi.Input<String> createTime;
+
   /// Version description
   final pulumi.Input<String> description;
+
   /// Administrator guidance
   final pulumi.Input<String> guidance;
+
   /// ID of product version.
   final pulumi.Input<String> id;
+
   /// Product ID
   final pulumi.Input<String> productId;
+
   /// The first ID of the resource
   final pulumi.Input<String> productVersionId;
+
   /// The name of the resource
   final pulumi.Input<String> productVersionName;
+
   /// Template Type
   final pulumi.Input<String> templateType;
+
   /// Template URL
   final pulumi.Input<String> templateUrl;
 
@@ -65,17 +74,20 @@ class GetProductVersionsProductVersion {
 
   factory GetProductVersionsProductVersion.fromMap(Map<String, dynamic> map) {
     return GetProductVersionsProductVersion(
-      active: (map['active'] as bool).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      guidance: (map['guidance'] as String).input(),
-      id: (map['id'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      productVersionId: (map['productVersionId'] as String).input(),
-      productVersionName: (map['productVersionName'] as String).input(),
-      templateType: (map['templateType'] as String).input(),
-      templateUrl: (map['templateUrl'] as String).input(),
+      active: pulumi.Input.fromValue(map['active'] as bool),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      guidance: pulumi.Input.fromValue(map['guidance'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      productVersionId: pulumi.Input.fromValue(
+        map['productVersionId'] as String,
+      ),
+      productVersionName: pulumi.Input.fromValue(
+        map['productVersionName'] as String,
+      ),
+      templateType: pulumi.Input.fromValue(map['templateType'] as String),
+      templateUrl: pulumi.Input.fromValue(map['templateUrl'] as String),
     );
   }
 }
-

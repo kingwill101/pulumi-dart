@@ -13,15 +13,14 @@ class GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cron': cron,
-    };
+    return <String, dynamic>{'cron': cron};
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse(
-      cron: (map['cron'] as String).input(),
+      cron: pulumi.Input.fromValue(map['cron'] as String),
     );
   }
 }
-

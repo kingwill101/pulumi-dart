@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkConfigProperties {
   /// The type of the spark config properties file.
   final pulumi.Input<String>? configurationType;
+
   /// The spark config properties.
   final pulumi.Input<String>? content;
+
   /// The filename of the spark config properties file.
   final pulumi.Input<String>? filename;
 
@@ -15,11 +17,7 @@ class SparkConfigProperties {
   /// [configurationType] The type of the spark config properties file.
   /// [content] The spark config properties.
   /// [filename] The filename of the spark config properties file.
-  SparkConfigProperties({
-    this.configurationType,
-    this.content,
-    this.filename,
-  });
+  SparkConfigProperties({this.configurationType, this.content, this.filename});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class SparkConfigProperties {
 
   factory SparkConfigProperties.fromMap(Map<String, dynamic> map) {
     return SparkConfigProperties(
-      configurationType: map['configurationType'] == null ? null : (map['configurationType']! as String).input(),
-      content: map['content'] == null ? null : (map['content']! as String).input(),
-      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
+      configurationType: (() {
+        final guardedValue = map['configurationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filename: (() {
+        final guardedValue = map['filename'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

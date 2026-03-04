@@ -6,7 +6,6 @@ import 'data_encryption_response.dart';
 import 'high_availability_response.dart';
 import 'maintenance_window_response.dart';
 import 'network_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'replica_response.dart';
 import 'server_args.dart';
 import 'sku_response.dart';
@@ -2822,56 +2821,83 @@ import 'user_assigned_identity_response.dart';
 class Server extends pulumi.CustomResource {
   /// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
   late final pulumi.Output<String?> administratorLogin;
+
   /// Authentication configuration properties of a server.
   late final pulumi.Output<AuthConfigResponse?> authConfig;
+
   /// Availability zone of a server.
   late final pulumi.Output<String?> availabilityZone;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Backup properties of a server.
   late final pulumi.Output<BackupResponse?> backup;
+
   /// Cluster properties of a server.
   late final pulumi.Output<ClusterResponse?> cluster;
+
   /// Data encryption properties of a server.
   late final pulumi.Output<DataEncryptionResponse?> dataEncryption;
+
   /// Fully qualified domain name of a server.
   late final pulumi.Output<String> fullyQualifiedDomainName;
+
   /// High availability properties of a server.
   late final pulumi.Output<HighAvailabilityResponse?> highAvailability;
+
   /// User assigned managed identities assigned to the server.
   late final pulumi.Output<UserAssignedIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Maintenance window properties of a server.
   late final pulumi.Output<MaintenanceWindowResponse?> maintenanceWindow;
+
   /// Minor version of PostgreSQL database engine.
   late final pulumi.Output<String> minorVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
   late final pulumi.Output<NetworkResponse?> network;
+
   /// List of private endpoint connections associated with the specified server.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Read replica properties of a server. Required only in case that you want to promote a server.
   late final pulumi.Output<ReplicaResponse?> replica;
+
   /// Maximum number of read replicas allowed for a server.
   late final pulumi.Output<int> replicaCapacity;
+
   /// Role of the server in a replication set.
   late final pulumi.Output<String?> replicationRole;
+
   /// Compute tier and size of a server.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
   late final pulumi.Output<String?> sourceServerResourceId;
+
   /// Possible states of a server.
   late final pulumi.Output<String> state;
+
   /// Storage properties of a server.
   late final pulumi.Output<StorageResponse?> storage;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Major version of PostgreSQL database engine.
   late final pulumi.Output<String?> version;
 
@@ -2879,42 +2905,47 @@ class Server extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Server]. {@macro pulumi_dbforpostgresql_server_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Server(
-    String name, {
-    ServerArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:dbforpostgresql:Server',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String?>('administratorLogin');
-    this.authConfig = registerOutput<AuthConfigResponse?>('authConfig');
-    this.availabilityZone = registerOutput<String?>('availabilityZone');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backup = registerOutput<BackupResponse?>('backup');
-    this.cluster = registerOutput<ClusterResponse?>('cluster');
-    this.dataEncryption = registerOutput<DataEncryptionResponse?>('dataEncryption');
-    this.fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
-    this.highAvailability = registerOutput<HighAvailabilityResponse?>('highAvailability');
-    this.identity = registerOutput<UserAssignedIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow');
-    this.minorVersion = registerOutput<String>('minorVersion');
+  Server(String name, {ServerArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:dbforpostgresql:Server',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    authConfig = registerOutput<AuthConfigResponse?>('authConfig');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backup = registerOutput<BackupResponse?>('backup');
+    cluster = registerOutput<ClusterResponse?>('cluster');
+    dataEncryption = registerOutput<DataEncryptionResponse?>('dataEncryption');
+    fullyQualifiedDomainName = registerOutput<String>(
+      'fullyQualifiedDomainName',
+    );
+    highAvailability = registerOutput<HighAvailabilityResponse?>(
+      'highAvailability',
+    );
+    identity = registerOutput<UserAssignedIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<MaintenanceWindowResponse?>(
+      'maintenanceWindow',
+    );
+    minorVersion = registerOutput<String>('minorVersion');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<NetworkResponse?>('network');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.replica = registerOutput<ReplicaResponse?>('replica');
-    this.replicaCapacity = registerOutput<int>('replicaCapacity');
-    this.replicationRole = registerOutput<String?>('replicationRole');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.sourceServerResourceId = registerOutput<String?>('sourceServerResourceId');
-    this.state = registerOutput<String>('state');
-    this.storage = registerOutput<StorageResponse?>('storage');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    network = registerOutput<NetworkResponse?>('network');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    replica = registerOutput<ReplicaResponse?>('replica');
+    replicaCapacity = registerOutput<int>('replicaCapacity');
+    replicationRole = registerOutput<String?>('replicationRole');
+    sku = registerOutput<SkuResponse?>('sku');
+    sourceServerResourceId = registerOutput<String?>('sourceServerResourceId');
+    state = registerOutput<String>('state');
+    storage = registerOutput<StorageResponse?>('storage');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

@@ -6,7 +6,7 @@ import 'access_rule_state.dart';
 ///
 /// For information about NAS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createaccessrule).
 ///
-/// > **NOTE:** Available since v1.34.0.
+/// &gt; **NOTE:** Available since v1.34.0.
 ///
 /// ## Example Usage
 ///
@@ -247,20 +247,28 @@ import 'access_rule_state.dart';
 class AccessRule extends pulumi.CustomResource {
   /// AccessGroupName.
   late final pulumi.Output<String> accessGroupName;
+
   /// The first ID of the resource.
   late final pulumi.Output<String> accessRuleId;
+
   /// filesystem type. include standard, extreme.
   late final pulumi.Output<String> fileSystemType;
+
   /// Ipv6SourceCidrIp.
   late final pulumi.Output<String?> ipv6SourceCidrIp;
+
   /// Priority.
   late final pulumi.Output<int?> priority;
+
   /// (Available since v1.256.0) The region ID.
   late final pulumi.Output<String> regionId;
+
   /// RWAccess.
   late final pulumi.Output<String> rwAccessType;
+
   /// SourceCidrIp.
   late final pulumi.Output<String?> sourceCidrIp;
+
   /// UserAccess.
   late final pulumi.Output<String> userAccessType;
 
@@ -273,20 +281,20 @@ class AccessRule extends pulumi.CustomResource {
     AccessRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/accessRule:AccessRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String>('accessGroupName');
-    this.accessRuleId = registerOutput<String>('accessRuleId');
-    this.fileSystemType = registerOutput<String>('fileSystemType');
-    this.ipv6SourceCidrIp = registerOutput<String?>('ipv6SourceCidrIp');
-    this.priority = registerOutput<int?>('priority');
-    this.regionId = registerOutput<String>('regionId');
-    this.rwAccessType = registerOutput<String>('rwAccessType');
-    this.sourceCidrIp = registerOutput<String?>('sourceCidrIp');
-    this.userAccessType = registerOutput<String>('userAccessType');
+         'alicloud:nas/accessRule:AccessRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String>('accessGroupName');
+    accessRuleId = registerOutput<String>('accessRuleId');
+    fileSystemType = registerOutput<String>('fileSystemType');
+    ipv6SourceCidrIp = registerOutput<String?>('ipv6SourceCidrIp');
+    priority = registerOutput<int?>('priority');
+    regionId = registerOutput<String>('regionId');
+    rwAccessType = registerOutput<String>('rwAccessType');
+    sourceCidrIp = registerOutput<String?>('sourceCidrIp');
+    userAccessType = registerOutput<String>('userAccessType');
   }
 
   /// Gets an existing [AccessRule] resource's state with the given [name] and [id].
@@ -307,19 +315,19 @@ class AccessRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/accessRule:AccessRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String>('accessGroupName');
-    this.accessRuleId = registerOutput<String>('accessRuleId');
-    this.fileSystemType = registerOutput<String>('fileSystemType');
-    this.ipv6SourceCidrIp = registerOutput<String?>('ipv6SourceCidrIp');
-    this.priority = registerOutput<int?>('priority');
-    this.regionId = registerOutput<String>('regionId');
-    this.rwAccessType = registerOutput<String>('rwAccessType');
-    this.sourceCidrIp = registerOutput<String?>('sourceCidrIp');
-    this.userAccessType = registerOutput<String>('userAccessType');
+         'alicloud:nas/accessRule:AccessRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String>('accessGroupName');
+    accessRuleId = registerOutput<String>('accessRuleId');
+    fileSystemType = registerOutput<String>('fileSystemType');
+    ipv6SourceCidrIp = registerOutput<String?>('ipv6SourceCidrIp');
+    priority = registerOutput<int?>('priority');
+    regionId = registerOutput<String>('regionId');
+    rwAccessType = registerOutput<String>('rwAccessType');
+    sourceCidrIp = registerOutput<String?>('sourceCidrIp');
+    userAccessType = registerOutput<String>('userAccessType');
   }
 }

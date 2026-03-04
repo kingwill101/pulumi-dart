@@ -10,14 +10,19 @@ import 'data_quality_ruleset_target_table.dart';
 class DataQualityRulesetArgs {
   /// Description of the data quality ruleset.
   final pulumi.Input<String>? description;
+
   /// Name of the data quality ruleset.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   final pulumi.Input<String> ruleset;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
   final pulumi.Input<DataQualityRulesetTargetTable>? targetTable;
 
@@ -44,19 +49,48 @@ class DataQualityRulesetArgs {
       'region': ?region,
       'ruleset': ruleset,
       'tags': ?tags,
-      'targetTable': ?pulumi.Input.mapOptionalInputValue<DataQualityRulesetTargetTable, Map<String, dynamic>>(targetTable, (value) => value.toMap()),
+      'targetTable':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataQualityRulesetTargetTable,
+            Map<String, dynamic>
+          >(targetTable, (value) => value.toMap()),
     };
   }
 
   factory DataQualityRulesetArgs.fromMap(Map<String, dynamic> map) {
     return DataQualityRulesetArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      ruleset: (map['ruleset'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      targetTable: map['targetTable'] == null ? null : ((DataQualityRulesetTargetTable.fromMap((map['targetTable']! as Map).cast<String, dynamic>())).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleset: pulumi.Input.fromValue(map['ruleset'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetTable: (() {
+        final guardedValue = map['targetTable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataQualityRulesetTargetTable.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

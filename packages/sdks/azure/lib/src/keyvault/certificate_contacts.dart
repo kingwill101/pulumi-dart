@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_contacts_args.dart';
-import 'certificate_contacts_contact.dart';
 import 'certificate_contacts_state.dart';
 
 /// Manages Key Vault Certificate Contacts.
@@ -355,7 +354,8 @@ import 'certificate_contacts_state.dart';
 /// ```
 class CertificateContacts extends pulumi.CustomResource {
   /// One or more `contact` blocks as defined below.
-  late final pulumi.Output<List<CertificateContactsContact>?> contacts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> contacts;
+
   /// The ID of the Key Vault. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
 
@@ -368,13 +368,13 @@ class CertificateContacts extends pulumi.CustomResource {
     CertificateContactsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/certificateContacts:CertificateContacts',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contacts = registerOutput<List<CertificateContactsContact>?>('contacts');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+         'azure:keyvault/certificateContacts:CertificateContacts',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contacts = registerOutput<List<Map<String, dynamic>>?>('contacts');
+    keyVaultId = registerOutput<String>('keyVaultId');
   }
 
   /// Gets an existing [CertificateContacts] resource's state with the given [name] and [id].
@@ -395,12 +395,12 @@ class CertificateContacts extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/certificateContacts:CertificateContacts',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contacts = registerOutput<List<CertificateContactsContact>?>('contacts');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+         'azure:keyvault/certificateContacts:CertificateContacts',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contacts = registerOutput<List<Map<String, dynamic>>?>('contacts');
+    keyVaultId = registerOutput<String>('keyVaultId');
   }
 }

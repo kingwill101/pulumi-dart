@@ -7,8 +7,10 @@ import 'inquiry_validation_response.dart';
 class WorkloadInquiryDetailsResponse {
   /// Inquiry validation such as permissions and other backup validations.
   final pulumi.Input<InquiryValidationResponse>? inquiryValidation;
+
   /// Contains the protectable item Count inside this Container.
   final pulumi.Input<double>? itemCount;
+
   /// Type of the Workload such as SQL, Oracle etc.
   final pulumi.Input<String>? type;
 
@@ -24,7 +26,11 @@ class WorkloadInquiryDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inquiryValidation': ?pulumi.Input.mapOptionalInputValue<InquiryValidationResponse, Map<String, dynamic>>(inquiryValidation, (value) => value.toMap()),
+      'inquiryValidation':
+          ?pulumi.Input.mapOptionalInputValue<
+            InquiryValidationResponse,
+            Map<String, dynamic>
+          >(inquiryValidation, (value) => value.toMap()),
       'itemCount': ?itemCount,
       'type': ?type,
     };
@@ -32,10 +38,25 @@ class WorkloadInquiryDetailsResponse {
 
   factory WorkloadInquiryDetailsResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadInquiryDetailsResponse(
-      inquiryValidation: map['inquiryValidation'] == null ? null : (InquiryValidationResponse.fromMap((map['inquiryValidation']! as Map).cast<String, dynamic>())).input(),
-      itemCount: map['itemCount'] == null ? null : (map['itemCount']! as double).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      inquiryValidation: (() {
+        final guardedValue = map['inquiryValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InquiryValidationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      itemCount: (() {
+        final guardedValue = map['itemCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_bgpvpn;
-
 export 'bgpvpn/network_associate_v2.dart';
 export 'bgpvpn/network_associate_v2_args.dart';
 export 'bgpvpn/network_associate_v2_state.dart';

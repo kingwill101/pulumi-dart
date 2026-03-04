@@ -18,6 +18,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation {
   /// this field must be defined;
   /// otherwise an error is returned.
   final pulumi.Input<String>? alignmentPeriod;
+
   /// The approach to be used to combine
   /// time series. Not all reducer
   /// functions may be applied to all
@@ -37,6 +38,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation {
   /// returned.
   /// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
   final pulumi.Input<String>? crossSeriesReducer;
+
   /// The set of fields to preserve when
   /// crossSeriesReducer is specified.
   /// The groupByFields determine how
@@ -63,6 +65,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation {
   /// is not defined, this field is
   /// ignored.
   final pulumi.Input<List<String>>? groupByFields;
+
   /// The approach to be used to align
   /// individual time series. Not all
   /// alignment functions may be applied
@@ -104,13 +107,30 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation {
     };
   }
 
-  factory AlertPolicyConditionConditionThresholdDenominatorAggregation.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionThresholdDenominatorAggregation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionThresholdDenominatorAggregation(
-      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod']! as String).input(),
-      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (map['crossSeriesReducer']! as String).input(),
-      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields']! as List).cast<String>()).input(),
-      perSeriesAligner: map['perSeriesAligner'] == null ? null : (map['perSeriesAligner']! as String).input(),
+      alignmentPeriod: (() {
+        final guardedValue = map['alignmentPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossSeriesReducer: (() {
+        final guardedValue = map['crossSeriesReducer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupByFields: (() {
+        final guardedValue = map['groupByFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      perSeriesAligner: (() {
+        final guardedValue = map['perSeriesAligner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

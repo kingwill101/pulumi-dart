@@ -1,5 +1,3 @@
-library module_signalrservice;
-
 export 'signalrservice/aclaction.dart';
 export 'signalrservice/feature_flags.dart';
 export 'signalrservice/functions.dart';

@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutputFunctionArgs {
   /// The API key for the Function.
   final pulumi.Input<String> apiKey;
+
   /// The maximum number of events in each batch that's sent to the function. Defaults to `100`.
   final pulumi.Input<int>? batchMaxCount;
+
   /// The maximum batch size in bytes that's sent to the function. Defaults to `262144` (256 kB).
   final pulumi.Input<int>? batchMaxInBytes;
+
   /// The name of the Function App.
   final pulumi.Input<String> functionApp;
+
   /// The name of the function in the Function App.
   final pulumi.Input<String> functionName;
+
   /// The name which should be used for this Stream Analytics Output. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Stream Analytics Output should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
 
@@ -59,15 +66,30 @@ class OutputFunctionArgs {
 
   factory OutputFunctionArgs.fromMap(Map<String, dynamic> map) {
     return OutputFunctionArgs(
-      apiKey: (map['apiKey'] as String).input(),
-      batchMaxCount: map['batchMaxCount'] == null ? null : (map['batchMaxCount']! as int).input(),
-      batchMaxInBytes: map['batchMaxInBytes'] == null ? null : (map['batchMaxInBytes']! as int).input(),
-      functionApp: (map['functionApp'] as String).input(),
-      functionName: (map['functionName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
+      apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
+      batchMaxCount: (() {
+        final guardedValue = map['batchMaxCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      batchMaxInBytes: (() {
+        final guardedValue = map['batchMaxInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      functionApp: pulumi.Input.fromValue(map['functionApp'] as String),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      streamAnalyticsJobName: pulumi.Input.fromValue(
+        map['streamAnalyticsJobName'] as String,
+      ),
     );
   }
 }
-

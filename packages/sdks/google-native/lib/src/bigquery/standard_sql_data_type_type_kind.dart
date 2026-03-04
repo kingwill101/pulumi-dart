@@ -2,9 +2,9 @@
 enum StandardSqlDataTypeTypeKind {
   typeKindUnspecified("TYPE_KIND_UNSPECIFIED"),
   int64("INT64"),
-  bool("BOOL"),
+  bool_("BOOL"),
   float64("FLOAT64"),
-  string("STRING"),
+  string_("STRING"),
   bytes("BYTES"),
   timestamp("TIMESTAMP"),
   date("DATE"),
@@ -19,16 +19,15 @@ enum StandardSqlDataTypeTypeKind {
   struct("STRUCT"),
   range("RANGE");
 
-  const StandardSqlDataTypeTypeKind(this.value);
-  final String value;
+  const StandardSqlDataTypeTypeKind(this.wireValue);
+  final String wireValue;
 
   static StandardSqlDataTypeTypeKind fromValue(String value) {
     for (final item in StandardSqlDataTypeTypeKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StandardSqlDataTypeTypeKind value: $value');
   }
 }
-

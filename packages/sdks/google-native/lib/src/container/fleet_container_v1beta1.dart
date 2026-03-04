@@ -9,20 +9,19 @@ class FleetContainerV1beta1 {
 
   /// Creates a new [FleetContainerV1beta1].
   /// [project] The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
-  FleetContainerV1beta1({
-    this.project,
-  });
+  FleetContainerV1beta1({this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory FleetContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return FleetContainerV1beta1(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

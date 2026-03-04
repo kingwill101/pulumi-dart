@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImage {
   /// The description of the image.
   final pulumi.Input<String> description;
+
   /// The ID of the Instance Image.
   final pulumi.Input<String> id;
+
   /// The ID of the image.
   final pulumi.Input<String> imageId;
+
   /// The name of the resource.
   final pulumi.Input<String> imageName;
+
   /// The type of the image. Valid values: `app`, `custom`, `system`.
   final pulumi.Input<String> imageType;
+
   /// The platform of Plan supported.
   final pulumi.Input<String> platform;
 
@@ -45,13 +50,12 @@ class GetImagesImage {
 
   factory GetImagesImage.fromMap(Map<String, dynamic> map) {
     return GetImagesImage(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      imageId: (map['imageId'] as String).input(),
-      imageName: (map['imageName'] as String).input(),
-      imageType: (map['imageType'] as String).input(),
-      platform: (map['platform'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
+      imageName: pulumi.Input.fromValue(map['imageName'] as String),
+      imageType: pulumi.Input.fromValue(map['imageType'] as String),
+      platform: pulumi.Input.fromValue(map['platform'] as String),
     );
   }
 }
-

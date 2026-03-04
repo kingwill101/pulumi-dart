@@ -7,14 +7,19 @@ class GetEmailIdentityDkimSigningAttribute {
   final pulumi.Input<String> currentSigningKeyLength;
   final pulumi.Input<String> domainSigningPrivateKey;
   final pulumi.Input<String> domainSigningSelector;
+
   /// [Easy DKIM] The last time a key pair was generated for this identity.
   final pulumi.Input<String> lastKeyGenerationTimestamp;
+
   /// [Easy DKIM] The key length of the future DKIM key pair to be generated. This can be changed at most once per day.
   final pulumi.Input<String> nextSigningKeyLength;
+
   /// A string that indicates how DKIM was configured for the identity. `AWS_SES` indicates that DKIM was configured for the identity by using Easy DKIM. `EXTERNAL` indicates that DKIM was configured for the identity by using Bring Your Own DKIM (BYODKIM).
   final pulumi.Input<String> signingAttributesOrigin;
+
   /// Describes whether or not Amazon SES has successfully located the DKIM records in the DNS records for the domain. See the [AWS SES API v2 Reference](https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_DkimAttributes.html#SES-Type-DkimAttributes-Status) for supported statuses.
   final pulumi.Input<String> status;
+
   /// If you used Easy DKIM to configure DKIM authentication for the domain, then this object contains a set of unique strings that you use to create a set of CNAME records that you add to the DNS configuration for your domain. When Amazon SES detects these records in the DNS configuration for your domain, the DKIM authentication process is complete. If you configured DKIM authentication for the domain by providing your own public-private key pair, then this object contains the selector for the public key.
   final pulumi.Input<List<String>> tokens;
 
@@ -51,17 +56,30 @@ class GetEmailIdentityDkimSigningAttribute {
     };
   }
 
-  factory GetEmailIdentityDkimSigningAttribute.fromMap(Map<String, dynamic> map) {
+  factory GetEmailIdentityDkimSigningAttribute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEmailIdentityDkimSigningAttribute(
-      currentSigningKeyLength: (map['currentSigningKeyLength'] as String).input(),
-      domainSigningPrivateKey: (map['domainSigningPrivateKey'] as String).input(),
-      domainSigningSelector: (map['domainSigningSelector'] as String).input(),
-      lastKeyGenerationTimestamp: (map['lastKeyGenerationTimestamp'] as String).input(),
-      nextSigningKeyLength: (map['nextSigningKeyLength'] as String).input(),
-      signingAttributesOrigin: (map['signingAttributesOrigin'] as String).input(),
-      status: (map['status'] as String).input(),
-      tokens: ((map['tokens'] as List).cast<String>()).input(),
+      currentSigningKeyLength: pulumi.Input.fromValue(
+        map['currentSigningKeyLength'] as String,
+      ),
+      domainSigningPrivateKey: pulumi.Input.fromValue(
+        map['domainSigningPrivateKey'] as String,
+      ),
+      domainSigningSelector: pulumi.Input.fromValue(
+        map['domainSigningSelector'] as String,
+      ),
+      lastKeyGenerationTimestamp: pulumi.Input.fromValue(
+        map['lastKeyGenerationTimestamp'] as String,
+      ),
+      nextSigningKeyLength: pulumi.Input.fromValue(
+        map['nextSigningKeyLength'] as String,
+      ),
+      signingAttributesOrigin: pulumi.Input.fromValue(
+        map['signingAttributesOrigin'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tokens: pulumi.Input.fromValue((map['tokens'] as List).cast<String>()),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGremlinResourceGremlinGraphArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
+
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
+
   /// Cosmos DB graph name.
   final pulumi.Input<String> graphName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,12 @@ class GetGremlinResourceGremlinGraphArgs {
 
   factory GetGremlinResourceGremlinGraphArgs.fromMap(Map<String, dynamic> map) {
     return GetGremlinResourceGremlinGraphArgs(
-      accountName: (map['accountName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      graphName: (map['graphName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      graphName: pulumi.Input.fromValue(map['graphName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

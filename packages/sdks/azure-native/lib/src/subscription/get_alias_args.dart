@@ -12,20 +12,15 @@ class GetAliasArgs {
 
   /// Creates a new [GetAliasArgs].
   /// [aliasName] AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  GetAliasArgs({
-    required this.aliasName,
-  });
+  GetAliasArgs({required this.aliasName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'aliasName': aliasName,
-    };
+    return <String, dynamic>{'aliasName': aliasName};
   }
 
   factory GetAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetAliasArgs(
-      aliasName: (map['aliasName'] as String).input(),
+      aliasName: pulumi.Input.fromValue(map['aliasName'] as String),
     );
   }
 }
-

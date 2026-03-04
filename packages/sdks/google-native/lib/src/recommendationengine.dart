@@ -1,5 +1,3 @@
-library module_recommendationengine;
-
 export 'recommendationengine/catalog_item.dart';
 export 'recommendationengine/catalog_item_args.dart';
 export 'recommendationengine/functions.dart';

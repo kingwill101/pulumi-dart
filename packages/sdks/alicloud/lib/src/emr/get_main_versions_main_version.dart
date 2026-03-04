@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMainVersionsMainVersion {
   /// A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
   final pulumi.Input<List<String>> clusterTypes;
+
   /// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
   final pulumi.Input<String> emrVersion;
+
   /// The image id of the emr cluster instance.
   final pulumi.Input<String> imageId;
 
@@ -30,10 +32,11 @@ class GetMainVersionsMainVersion {
 
   factory GetMainVersionsMainVersion.fromMap(Map<String, dynamic> map) {
     return GetMainVersionsMainVersion(
-      clusterTypes: ((map['clusterTypes'] as List).cast<String>()).input(),
-      emrVersion: (map['emrVersion'] as String).input(),
-      imageId: (map['imageId'] as String).input(),
+      clusterTypes: pulumi.Input.fromValue(
+        (map['clusterTypes'] as List).cast<String>(),
+      ),
+      emrVersion: pulumi.Input.fromValue(map['emrVersion'] as String),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
     );
   }
 }
-

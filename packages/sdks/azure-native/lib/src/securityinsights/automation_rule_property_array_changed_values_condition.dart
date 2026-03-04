@@ -21,11 +21,20 @@ class AutomationRulePropertyArrayChangedValuesCondition {
     };
   }
 
-  factory AutomationRulePropertyArrayChangedValuesCondition.fromMap(Map<String, dynamic> map) {
+  factory AutomationRulePropertyArrayChangedValuesCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRulePropertyArrayChangedValuesCondition(
-      arrayType: map['arrayType'] == null ? null : (map['arrayType']! as String).input(),
-      changeType: map['changeType'] == null ? null : (map['changeType']! as String).input(),
+      arrayType: (() {
+        final guardedValue = map['arrayType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      changeType: (() {
+        final guardedValue = map['changeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

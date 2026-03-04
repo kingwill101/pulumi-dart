@@ -679,16 +679,22 @@ import 'route_entry_state.dart';
 class RouteEntry extends pulumi.CustomResource {
   /// The next hop of the destination route.
   late final pulumi.Output<String> nextHop;
+
   /// Whether to issue the destination route to the VPC.
   late final pulumi.Output<bool> publishVpc;
+
   /// The destination network segment of the destination route.
   late final pulumi.Output<String> routeDest;
+
   /// (Available since v1.161.0) The type of the vpn route entry.
   late final pulumi.Output<String> routeEntryType;
+
   /// (Available since v1.161.0) The status of the vpn route entry.
   late final pulumi.Output<String> status;
+
   /// The id of the vpn gateway.
   late final pulumi.Output<String> vpnGatewayId;
+
   /// The value should be 0 or 100.
   late final pulumi.Output<int> weight;
 
@@ -701,18 +707,18 @@ class RouteEntry extends pulumi.CustomResource {
     RouteEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/routeEntry:RouteEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nextHop = registerOutput<String>('nextHop');
-    this.publishVpc = registerOutput<bool>('publishVpc');
-    this.routeDest = registerOutput<String>('routeDest');
-    this.routeEntryType = registerOutput<String>('routeEntryType');
-    this.status = registerOutput<String>('status');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:vpn/routeEntry:RouteEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nextHop = registerOutput<String>('nextHop');
+    publishVpc = registerOutput<bool>('publishVpc');
+    routeDest = registerOutput<String>('routeDest');
+    routeEntryType = registerOutput<String>('routeEntryType');
+    status = registerOutput<String>('status');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
+    weight = registerOutput<int>('weight');
   }
 
   /// Gets an existing [RouteEntry] resource's state with the given [name] and [id].
@@ -733,17 +739,17 @@ class RouteEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/routeEntry:RouteEntry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.nextHop = registerOutput<String>('nextHop');
-    this.publishVpc = registerOutput<bool>('publishVpc');
-    this.routeDest = registerOutput<String>('routeDest');
-    this.routeEntryType = registerOutput<String>('routeEntryType');
-    this.status = registerOutput<String>('status');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
-    this.weight = registerOutput<int>('weight');
+         'alicloud:vpn/routeEntry:RouteEntry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    nextHop = registerOutput<String>('nextHop');
+    publishVpc = registerOutput<bool>('publishVpc');
+    routeDest = registerOutput<String>('routeDest');
+    routeEntryType = registerOutput<String>('routeEntryType');
+    status = registerOutput<String>('status');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
+    weight = registerOutput<int>('weight');
   }
 }

@@ -10,20 +10,29 @@ class ProtocolSettingsResponse {
 
   /// Creates a new [ProtocolSettingsResponse].
   /// [smb] Setting for SMB protocol
-  ProtocolSettingsResponse({
-    this.smb,
-  });
+  ProtocolSettingsResponse({this.smb});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'smb': ?pulumi.Input.mapOptionalInputValue<SmbSettingResponse, Map<String, dynamic>>(smb, (value) => value.toMap()),
+      'smb':
+          ?pulumi.Input.mapOptionalInputValue<
+            SmbSettingResponse,
+            Map<String, dynamic>
+          >(smb, (value) => value.toMap()),
     };
   }
 
   factory ProtocolSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ProtocolSettingsResponse(
-      smb: map['smb'] == null ? null : (SmbSettingResponse.fromMap((map['smb']! as Map).cast<String, dynamic>())).input(),
+      smb: (() {
+        final guardedValue = map['smb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SmbSettingResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

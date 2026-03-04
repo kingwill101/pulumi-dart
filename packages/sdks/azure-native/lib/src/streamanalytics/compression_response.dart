@@ -9,20 +9,15 @@ class CompressionResponse {
 
   /// Creates a new [CompressionResponse].
   /// [type] Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.
-  CompressionResponse({
-    required this.type,
-  });
+  CompressionResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory CompressionResponse.fromMap(Map<String, dynamic> map) {
     return CompressionResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

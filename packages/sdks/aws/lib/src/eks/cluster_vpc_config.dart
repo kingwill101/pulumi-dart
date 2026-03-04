@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterVpcConfig {
   /// Cluster security group that is created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.
   final pulumi.Input<String>? clusterSecurityGroupId;
+
   /// Whether the Amazon EKS private API server endpoint is enabled. Default is `false`.
   final pulumi.Input<bool>? endpointPrivateAccess;
+
   /// Whether the Amazon EKS public API server endpoint is enabled. Default is `true`.
   final pulumi.Input<bool>? endpointPublicAccess;
+
   /// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. The provider will only perform drift detection of its value when present in a configuration.
   final pulumi.Input<List<String>>? publicAccessCidrs;
+
   /// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
   final pulumi.Input<List<String>> subnetIds;
+
   /// ID of the VPC associated with your cluster.
   final pulumi.Input<String>? vpcId;
 
@@ -50,14 +56,39 @@ class ClusterVpcConfig {
 
   factory ClusterVpcConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVpcConfig(
-      clusterSecurityGroupId: map['clusterSecurityGroupId'] == null ? null : ((map['clusterSecurityGroupId'] as String).input()).input(),
-      endpointPrivateAccess: map['endpointPrivateAccess'] == null ? null : ((map['endpointPrivateAccess'] as bool).input()).input(),
-      endpointPublicAccess: map['endpointPublicAccess'] == null ? null : ((map['endpointPublicAccess'] as bool).input()).input(),
-      publicAccessCidrs: map['publicAccessCidrs'] == null ? null : (((map['publicAccessCidrs'] as List).cast<String>()).input()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      clusterSecurityGroupId: (() {
+        final guardedValue = map['clusterSecurityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointPrivateAccess: (() {
+        final guardedValue = map['endpointPrivateAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpointPublicAccess: (() {
+        final guardedValue = map['endpointPublicAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      publicAccessCidrs: (() {
+        final guardedValue = map['publicAccessCidrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

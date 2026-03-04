@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualMachineArgs {
   /// The expand expression to apply on the operation. 'InstanceView' retrieves a snapshot of the runtime properties of the virtual machine that is managed by the platform and can change outside of control plane operations. 'UserData' retrieves the UserData property as part of the VM model view that was provided by the user during the VM Create/Update operation.
   final pulumi.Input<String>? expand;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the virtual machine.
   final pulumi.Input<String> vmName;
 
@@ -34,10 +36,15 @@ class GetVirtualMachineArgs {
 
   factory GetVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vmName: (map['vmName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vmName: pulumi.Input.fromValue(map['vmName'] as String),
     );
   }
 }
-

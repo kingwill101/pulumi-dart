@@ -4,16 +4,15 @@ enum NfsAccessRuleScope {
   valueNetwork("network"),
   valueHost("host");
 
-  const NfsAccessRuleScope(this.value);
-  final String value;
+  const NfsAccessRuleScope(this.wireValue);
+  final String wireValue;
 
   static NfsAccessRuleScope fromValue(String value) {
     for (final item in NfsAccessRuleScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NfsAccessRuleScope value: $value');
   }
 }
-

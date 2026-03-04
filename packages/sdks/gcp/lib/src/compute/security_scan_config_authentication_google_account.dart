@@ -7,6 +7,7 @@ class SecurityScanConfigAuthenticationGoogleAccount {
   /// in GCP.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> password;
+
   /// The user name of the Google account.
   final pulumi.Input<String> username;
 
@@ -19,17 +20,15 @@ class SecurityScanConfigAuthenticationGoogleAccount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
-  factory SecurityScanConfigAuthenticationGoogleAccount.fromMap(Map<String, dynamic> map) {
+  factory SecurityScanConfigAuthenticationGoogleAccount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityScanConfigAuthenticationGoogleAccount(
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -19,15 +19,34 @@ class ComplianceOccurrenceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nonComplianceReason': nonComplianceReason,
-      'nonCompliantFiles': pulumi.Input.mapInputValue<List<NonCompliantFileResponse>, List<Map<String, dynamic>>>(nonCompliantFiles, (value) => pulumi.Input.encodeList<NonCompliantFileResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nonCompliantFiles':
+          pulumi.Input.mapInputValue<
+            List<NonCompliantFileResponse>,
+            List<Map<String, dynamic>>
+          >(
+            nonCompliantFiles,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NonCompliantFileResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ComplianceOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceOccurrenceResponse(
-      nonComplianceReason: (map['nonComplianceReason'] as String).input(),
-      nonCompliantFiles: (pulumi.Input.decodeList<NonCompliantFileResponse>(map['nonCompliantFiles'], (value) => NonCompliantFileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonComplianceReason: pulumi.Input.fromValue(
+        map['nonComplianceReason'] as String,
+      ),
+      nonCompliantFiles: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NonCompliantFileResponse>(
+          map['nonCompliantFiles']!,
+          (value) => NonCompliantFileResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

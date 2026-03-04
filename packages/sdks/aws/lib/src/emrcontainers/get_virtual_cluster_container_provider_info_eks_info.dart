@@ -8,20 +8,17 @@ class GetVirtualClusterContainerProviderInfoEksInfo {
 
   /// Creates a new [GetVirtualClusterContainerProviderInfoEksInfo].
   /// [namespace] The namespace where the EMR Containers cluster is running
-  GetVirtualClusterContainerProviderInfoEksInfo({
-    required this.namespace,
-  });
+  GetVirtualClusterContainerProviderInfoEksInfo({required this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': namespace,
-    };
+    return <String, dynamic>{'namespace': namespace};
   }
 
-  factory GetVirtualClusterContainerProviderInfoEksInfo.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualClusterContainerProviderInfoEksInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualClusterContainerProviderInfoEksInfo(
-      namespace: (map['namespace'] as String).input(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
     );
   }
 }
-

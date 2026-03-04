@@ -15,15 +15,18 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': ?filter,
-    };
+    return <String, dynamic>{'filter': ?filter};
   }
 
-  factory WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap(Map<String, dynamic> map) {
+  factory WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters(
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

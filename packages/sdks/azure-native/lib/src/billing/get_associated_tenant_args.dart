@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssociatedTenantArgs {
   /// The ID that uniquely identifies a tenant.
   final pulumi.Input<String> associatedTenantName;
+
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
 
@@ -29,9 +30,12 @@ class GetAssociatedTenantArgs {
 
   factory GetAssociatedTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetAssociatedTenantArgs(
-      associatedTenantName: (map['associatedTenantName'] as String).input(),
-      billingAccountName: (map['billingAccountName'] as String).input(),
+      associatedTenantName: pulumi.Input.fromValue(
+        map['associatedTenantName'] as String,
+      ),
+      billingAccountName: pulumi.Input.fromValue(
+        map['billingAccountName'] as String,
+      ),
     );
   }
 }
-

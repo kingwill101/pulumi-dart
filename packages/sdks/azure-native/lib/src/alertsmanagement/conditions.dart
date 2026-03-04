@@ -7,18 +7,25 @@ import 'condition.dart';
 class Conditions {
   /// filter alerts by alert context (payload)
   final pulumi.Input<Condition>? alertContext;
+
   /// filter alerts by alert rule id
   final pulumi.Input<Condition>? alertRuleId;
+
   /// filter alerts by alert rule name
   final pulumi.Input<Condition>? alertRuleName;
+
   /// filter alerts by alert rule description
   final pulumi.Input<Condition>? description;
+
   /// filter alerts by monitor condition
   final pulumi.Input<Condition>? monitorCondition;
+
   /// filter alerts by monitor service
   final pulumi.Input<Condition>? monitorService;
+
   /// filter alerts by severity
   final pulumi.Input<Condition>? severity;
+
   /// filter alerts by target resource type
   final pulumi.Input<Condition>? targetResourceType;
 
@@ -44,28 +51,107 @@ class Conditions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alertContext': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(alertContext, (value) => value.toMap()),
-      'alertRuleId': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(alertRuleId, (value) => value.toMap()),
-      'alertRuleName': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(alertRuleName, (value) => value.toMap()),
-      'description': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(description, (value) => value.toMap()),
-      'monitorCondition': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(monitorCondition, (value) => value.toMap()),
-      'monitorService': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(monitorService, (value) => value.toMap()),
-      'severity': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(severity, (value) => value.toMap()),
-      'targetResourceType': ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(targetResourceType, (value) => value.toMap()),
+      'alertContext':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            alertContext,
+            (value) => value.toMap(),
+          ),
+      'alertRuleId':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            alertRuleId,
+            (value) => value.toMap(),
+          ),
+      'alertRuleName':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            alertRuleName,
+            (value) => value.toMap(),
+          ),
+      'description':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            description,
+            (value) => value.toMap(),
+          ),
+      'monitorCondition':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            monitorCondition,
+            (value) => value.toMap(),
+          ),
+      'monitorService':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            monitorService,
+            (value) => value.toMap(),
+          ),
+      'severity':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            severity,
+            (value) => value.toMap(),
+          ),
+      'targetResourceType':
+          ?pulumi.Input.mapOptionalInputValue<Condition, Map<String, dynamic>>(
+            targetResourceType,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory Conditions.fromMap(Map<String, dynamic> map) {
     return Conditions(
-      alertContext: map['alertContext'] == null ? null : (Condition.fromMap((map['alertContext']! as Map).cast<String, dynamic>())).input(),
-      alertRuleId: map['alertRuleId'] == null ? null : (Condition.fromMap((map['alertRuleId']! as Map).cast<String, dynamic>())).input(),
-      alertRuleName: map['alertRuleName'] == null ? null : (Condition.fromMap((map['alertRuleName']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (Condition.fromMap((map['description']! as Map).cast<String, dynamic>())).input(),
-      monitorCondition: map['monitorCondition'] == null ? null : (Condition.fromMap((map['monitorCondition']! as Map).cast<String, dynamic>())).input(),
-      monitorService: map['monitorService'] == null ? null : (Condition.fromMap((map['monitorService']! as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (Condition.fromMap((map['severity']! as Map).cast<String, dynamic>())).input(),
-      targetResourceType: map['targetResourceType'] == null ? null : (Condition.fromMap((map['targetResourceType']! as Map).cast<String, dynamic>())).input(),
+      alertContext: (() {
+        final guardedValue = map['alertContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      alertRuleId: (() {
+        final guardedValue = map['alertRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      alertRuleName: (() {
+        final guardedValue = map['alertRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      monitorCondition: (() {
+        final guardedValue = map['monitorCondition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      monitorService: (() {
+        final guardedValue = map['monitorService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      targetResourceType: (() {
+        final guardedValue = map['targetResourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Condition.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum PhoenixAuthenticationType {
   valueUsernameAndPassword("UsernameAndPassword"),
   valueWindowsAzureHDInsightService("WindowsAzureHDInsightService");
 
-  const PhoenixAuthenticationType(this.value);
-  final String value;
+  const PhoenixAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static PhoenixAuthenticationType fromValue(String value) {
     for (final item in PhoenixAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PhoenixAuthenticationType value: $value');
   }
 }
-

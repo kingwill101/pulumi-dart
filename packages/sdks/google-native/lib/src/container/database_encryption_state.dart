@@ -4,16 +4,15 @@ enum DatabaseEncryptionState {
   encrypted("ENCRYPTED"),
   decrypted("DECRYPTED");
 
-  const DatabaseEncryptionState(this.value);
-  final String value;
+  const DatabaseEncryptionState(this.wireValue);
+  final String wireValue;
 
   static DatabaseEncryptionState fromValue(String value) {
     for (final item in DatabaseEncryptionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseEncryptionState value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_cloudbuildv2;
-
 export 'cloudbuildv2/connection.dart';
 export 'cloudbuildv2/connection_args.dart';
 export 'cloudbuildv2/connection_bitbucket_cloud_config.dart';

@@ -8,29 +8,46 @@ import 'kerberos_config.dart';
 class SecurityConfig {
   /// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
   final pulumi.Input<IdentityConfig>? identityConfig;
+
   /// Optional. Kerberos related configuration.
   final pulumi.Input<KerberosConfig>? kerberosConfig;
 
   /// Creates a new [SecurityConfig].
   /// [identityConfig] Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfig({
-    this.identityConfig,
-    this.kerberosConfig,
-  });
+  SecurityConfig({this.identityConfig, this.kerberosConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityConfig': ?pulumi.Input.mapOptionalInputValue<IdentityConfig, Map<String, dynamic>>(identityConfig, (value) => value.toMap()),
-      'kerberosConfig': ?pulumi.Input.mapOptionalInputValue<KerberosConfig, Map<String, dynamic>>(kerberosConfig, (value) => value.toMap()),
+      'identityConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityConfig,
+            Map<String, dynamic>
+          >(identityConfig, (value) => value.toMap()),
+      'kerberosConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            KerberosConfig,
+            Map<String, dynamic>
+          >(kerberosConfig, (value) => value.toMap()),
     };
   }
 
   factory SecurityConfig.fromMap(Map<String, dynamic> map) {
     return SecurityConfig(
-      identityConfig: map['identityConfig'] == null ? null : (IdentityConfig.fromMap((map['identityConfig']! as Map).cast<String, dynamic>())).input(),
-      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfig.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
+      identityConfig: (() {
+        final guardedValue = map['identityConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      kerberosConfig: (() {
+        final guardedValue = map['kerberosConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KerberosConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

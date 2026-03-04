@@ -11,20 +11,25 @@ class MirroringEndpointGroupAssociationArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The cloud location of the association, currently restricted to `global`.
   final pulumi.Input<String> location;
+
   /// The endpoint group that this association is connected to, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
   final pulumi.Input<String> mirroringEndpointGroup;
+
   /// The ID to use for the new association, which will become the final
   /// component of the endpoint group's resource name. If not provided, the
   /// server will generate a unique ID.
   final pulumi.Input<String>? mirroringEndpointGroupAssociationId;
+
   /// The VPC network that is associated. for example:
   /// `projects/123456789/global/networks/my-network`.
   /// See https://google.aip.dev/124.
   final pulumi.Input<String> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -50,21 +55,39 @@ class MirroringEndpointGroupAssociationArgs {
       'labels': ?labels,
       'location': location,
       'mirroringEndpointGroup': mirroringEndpointGroup,
-      'mirroringEndpointGroupAssociationId': ?mirroringEndpointGroupAssociationId,
+      'mirroringEndpointGroupAssociationId':
+          ?mirroringEndpointGroupAssociationId,
       'network': network,
       'project': ?project,
     };
   }
 
-  factory MirroringEndpointGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory MirroringEndpointGroupAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MirroringEndpointGroupAssociationArgs(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      mirroringEndpointGroup: (map['mirroringEndpointGroup'] as String).input(),
-      mirroringEndpointGroupAssociationId: map['mirroringEndpointGroupAssociationId'] == null ? null : (map['mirroringEndpointGroupAssociationId']! as String).input(),
-      network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      mirroringEndpointGroup: pulumi.Input.fromValue(
+        map['mirroringEndpointGroup'] as String,
+      ),
+      mirroringEndpointGroupAssociationId: (() {
+        final guardedValue = map['mirroringEndpointGroupAssociationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

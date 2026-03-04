@@ -3,7 +3,6 @@ import 'extended_location_response.dart';
 import 'logical_network_args.dart';
 import 'logical_network_properties_dhcp_options_response.dart';
 import 'logical_network_status_response.dart';
-import 'subnet_response.dart';
 import 'system_data_response.dart';
 
 /// The logical network resource definition.
@@ -164,26 +163,38 @@ import 'system_data_response.dart';
 class LogicalNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
-  late final pulumi.Output<LogicalNetworkPropertiesDhcpOptionsResponse?> dhcpOptions;
+  late final pulumi.Output<LogicalNetworkPropertiesDhcpOptionsResponse?>
+  dhcpOptions;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the logical network.
   late final pulumi.Output<String> provisioningState;
+
   /// The observed state of logical networks
   late final pulumi.Output<LogicalNetworkStatusResponse> status;
+
   /// Subnet - list of subnets under the logical network
-  late final pulumi.Output<List<SubnetResponse>?> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// name of the network switch to be used for VMs
   late final pulumi.Output<String?> vmSwitchName;
 
@@ -196,22 +207,26 @@ class LogicalNetwork extends pulumi.CustomResource {
     LogicalNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:LogicalNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dhcpOptions = registerOutput<LogicalNetworkPropertiesDhcpOptionsResponse?>('dhcpOptions');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.location = registerOutput<String>('location');
+         'azure-native:azurestackhci:LogicalNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dhcpOptions = registerOutput<LogicalNetworkPropertiesDhcpOptionsResponse?>(
+      'dhcpOptions',
+    );
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<LogicalNetworkStatusResponse>('status');
-    this.subnets = registerOutput<List<SubnetResponse>?>('subnets');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vmSwitchName = registerOutput<String?>('vmSwitchName');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<LogicalNetworkStatusResponse>('status');
+    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vmSwitchName = registerOutput<String?>('vmSwitchName');
   }
 }

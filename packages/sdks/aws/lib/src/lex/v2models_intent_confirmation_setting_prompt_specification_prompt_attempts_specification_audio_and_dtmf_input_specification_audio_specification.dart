@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification {
   /// Time for which a bot waits after the customer stops speaking to assume the utterance is finished.
   final pulumi.Input<int> endTimeoutMs;
+
   /// Time for how long Amazon Lex waits before speech input is truncated and the speech is returned to application.
   final pulumi.Input<int> maxLengthMs;
 
@@ -23,11 +24,12 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
     };
   }
 
-  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification(
-      endTimeoutMs: (map['endTimeoutMs'] as int).input(),
-      maxLengthMs: (map['maxLengthMs'] as int).input(),
+      endTimeoutMs: pulumi.Input.fromValue(map['endTimeoutMs'] as int),
+      maxLengthMs: pulumi.Input.fromValue(map['maxLengthMs'] as int),
     );
   }
 }
-

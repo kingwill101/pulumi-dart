@@ -10,12 +10,16 @@ import 'access_policy_association_access_scope.dart';
 class AccessPolicyAssociationArgs {
   /// The configuration block to determine the scope of the access. See `access_scope` Block below.
   final pulumi.Input<AccessPolicyAssociationAccessScope> accessScope;
+
   /// Name of the EKS Cluster.
   final pulumi.Input<String> clusterName;
+
   /// The ARN of the access policy that you're associating.
   final pulumi.Input<String> policyArn;
+
   /// The IAM Principal ARN which requires Authentication access to the EKS cluster.
   final pulumi.Input<String> principalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -35,7 +39,11 @@ class AccessPolicyAssociationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessScope': pulumi.Input.mapInputValue<AccessPolicyAssociationAccessScope, Map<String, dynamic>>(accessScope, (value) => value.toMap()),
+      'accessScope':
+          pulumi.Input.mapInputValue<
+            AccessPolicyAssociationAccessScope,
+            Map<String, dynamic>
+          >(accessScope, (value) => value.toMap()),
       'clusterName': clusterName,
       'policyArn': policyArn,
       'principalArn': principalArn,
@@ -45,12 +53,19 @@ class AccessPolicyAssociationArgs {
 
   factory AccessPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssociationArgs(
-      accessScope: (AccessPolicyAssociationAccessScope.fromMap((map['accessScope']! as Map).cast<String, dynamic>())).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      policyArn: (map['policyArn'] as String).input(),
-      principalArn: (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      accessScope: pulumi.Input.fromValue(
+        AccessPolicyAssociationAccessScope.fromMap(
+          (map['accessScope']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      policyArn: pulumi.Input.fromValue(map['policyArn'] as String),
+      principalArn: pulumi.Input.fromValue(map['principalArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,28 +9,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderArgs {
   /// Domain name/IP of the BigIP
   final pulumi.Input<String>? address;
+
   /// Amount of times to retry AS3 API requests. Default: 10.
   final pulumi.Input<int>? apiRetries;
+
   /// A timeout for AS3 requests, represented as a number of seconds. Default: 60
   final pulumi.Input<int>? apiTimeout;
+
   /// Login reference for token authentication (see BIG-IP REST docs for details)
   final pulumi.Input<String>? loginRef;
+
   /// The user's password. Leave empty if using token_value
   final pulumi.Input<String>? password;
+
   /// Management Port to connect to Bigip
   final pulumi.Input<String>? port;
+
   /// If this flag set to true,sending telemetry data to TEEM will be disabled
   final pulumi.Input<bool>? teemDisable;
+
   /// Enable to use token authentication. Can be set via the BIGIP_TOKEN_AUTH environment variable
   final pulumi.Input<bool>? tokenAuth;
+
   /// A lifespan to request for the AS3 auth token, represented as a number of seconds. Default: 1200
   final pulumi.Input<int>? tokenTimeout;
+
   /// A token generated outside the provider, in place of password
   final pulumi.Input<String>? tokenValue;
+
   /// Valid Trusted Certificate path
   final pulumi.Input<String>? trustedCertPath;
+
   /// Username with API access to the BigIP
   final pulumi.Input<String>? username;
+
   /// If set to true, Disables TLS certificate check on BIG-IP. Default : True
   final pulumi.Input<bool>? validateCertsDisable;
 
@@ -84,20 +96,71 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      apiRetries: map['apiRetries'] == null ? null : (map['apiRetries']! as int).input(),
-      apiTimeout: map['apiTimeout'] == null ? null : (map['apiTimeout']! as int).input(),
-      loginRef: map['loginRef'] == null ? null : (map['loginRef']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
-      teemDisable: map['teemDisable'] == null ? null : (map['teemDisable']! as bool).input(),
-      tokenAuth: map['tokenAuth'] == null ? null : (map['tokenAuth']! as bool).input(),
-      tokenTimeout: map['tokenTimeout'] == null ? null : (map['tokenTimeout']! as int).input(),
-      tokenValue: map['tokenValue'] == null ? null : (map['tokenValue']! as String).input(),
-      trustedCertPath: map['trustedCertPath'] == null ? null : (map['trustedCertPath']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
-      validateCertsDisable: map['validateCertsDisable'] == null ? null : (map['validateCertsDisable']! as bool).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiRetries: (() {
+        final guardedValue = map['apiRetries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      apiTimeout: (() {
+        final guardedValue = map['apiTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      loginRef: (() {
+        final guardedValue = map['loginRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      teemDisable: (() {
+        final guardedValue = map['teemDisable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tokenAuth: (() {
+        final guardedValue = map['tokenAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tokenTimeout: (() {
+        final guardedValue = map['tokenTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tokenValue: (() {
+        final guardedValue = map['tokenValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustedCertPath: (() {
+        final guardedValue = map['trustedCertPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validateCertsDisable: (() {
+        final guardedValue = map['validateCertsDisable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

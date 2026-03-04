@@ -9,20 +9,21 @@ class FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3 {
 
   /// Creates a new [FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3({
-    this.type,
-  });
+  FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
+  factory FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

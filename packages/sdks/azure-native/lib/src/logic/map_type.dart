@@ -6,16 +6,15 @@ enum MapType {
   valueXslt30("Xslt30"),
   valueLiquid("Liquid");
 
-  const MapType(this.value);
-  final String value;
+  const MapType(this.wireValue);
+  final String wireValue;
 
   static MapType fromValue(String value) {
     for (final item in MapType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MapType value: $value');
   }
 }
-

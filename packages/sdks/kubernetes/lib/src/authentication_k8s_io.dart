@@ -1,5 +1,3 @@
-library module_authentication_k8s_io;
-
 export 'authentication_k8s_io/bound_object_reference.dart';
 export 'authentication_k8s_io/bound_object_reference_patch.dart';
 export 'authentication_k8s_io/self_subject_review.dart';

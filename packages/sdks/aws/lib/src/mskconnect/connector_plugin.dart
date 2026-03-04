@@ -9,20 +9,25 @@ class ConnectorPlugin {
 
   /// Creates a new [ConnectorPlugin].
   /// [customPlugin] Details about a custom plugin. See `custom_plugin` Block for details.
-  ConnectorPlugin({
-    required this.customPlugin,
-  });
+  ConnectorPlugin({required this.customPlugin});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPlugin': pulumi.Input.mapInputValue<ConnectorPluginCustomPlugin, Map<String, dynamic>>(customPlugin, (value) => value.toMap()),
+      'customPlugin':
+          pulumi.Input.mapInputValue<
+            ConnectorPluginCustomPlugin,
+            Map<String, dynamic>
+          >(customPlugin, (value) => value.toMap()),
     };
   }
 
   factory ConnectorPlugin.fromMap(Map<String, dynamic> map) {
     return ConnectorPlugin(
-      customPlugin: (ConnectorPluginCustomPlugin.fromMap((map['customPlugin']! as Map).cast<String, dynamic>())).input(),
+      customPlugin: pulumi.Input.fromValue(
+        ConnectorPluginCustomPlugin.fromMap(
+          (map['customPlugin']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

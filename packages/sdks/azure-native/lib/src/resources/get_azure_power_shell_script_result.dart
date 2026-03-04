@@ -12,51 +12,74 @@ import 'system_data_response.dart';
 class GetAzurePowerShellScriptResult {
   /// Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2'
   final String? arguments;
+
   /// Azure PowerShell module version to be used.
   final String azPowerShellVersion;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
   final String? cleanupPreference;
+
   /// Container settings.
   final ContainerConfigurationResponse? containerSettings;
+
   /// The environment variables to pass over to the script.
   final List<EnvironmentVariableResponse>? environmentVariables;
+
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
   final String? forceUpdateTag;
+
   /// String Id used to locate any resource on Azure.
   final String id;
+
   /// Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
   final ManagedServiceIdentityResponse? identity;
+
   /// Type of the script.
   /// Expected value is 'AzurePowerShell'.
   final String kind;
+
   /// The location of the ACI and the storage account for the deployment script.
   final String location;
+
   /// Name of this resource.
   final String name;
+
   /// List of script outputs.
   final Map<String, dynamic> outputs;
+
   /// Uri for the script. This is the entry point for the external script.
   final String? primaryScriptUri;
+
   /// State of the script execution. This only appears in the response.
   final String provisioningState;
+
   /// Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P1D means one day).
   final String retentionInterval;
+
   /// Script body.
   final String? scriptContent;
+
   /// Contains the results of script execution.
   final ScriptStatusResponse status;
+
   /// Storage Account settings.
   final StorageAccountConfigurationResponse? storageAccountSettings;
+
   /// Supporting files for the external script.
   final List<String>? supportingScriptUris;
+
   /// The system metadata related to this resource.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   final String? timeout;
+
   /// Type of this resource.
   final String type;
 
@@ -118,11 +141,18 @@ class GetAzurePowerShellScriptResult {
       'azPowerShellVersion': azPowerShellVersion,
       'azureApiVersion': azureApiVersion,
       'cleanupPreference': ?cleanupPreference,
-      'containerSettings': ?containerSettings == null ? null : containerSettings!.toMap(),
-      'environmentVariables': ?environmentVariables == null ? null : pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(environmentVariables!, (value) => value.toMap()),
+      'containerSettings': ?containerSettings?.toMap(),
+      'environmentVariables': ?(() {
+        final guardedValue = environmentVariables;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          EnvironmentVariableResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'forceUpdateTag': ?forceUpdateTag,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'kind': kind,
       'location': location,
       'name': name,
@@ -132,7 +162,7 @@ class GetAzurePowerShellScriptResult {
       'retentionInterval': retentionInterval,
       'scriptContent': ?scriptContent,
       'status': status.toMap(),
-      'storageAccountSettings': ?storageAccountSettings == null ? null : storageAccountSettings!.toMap(),
+      'storageAccountSettings': ?storageAccountSettings?.toMap(),
       'supportingScriptUris': ?supportingScriptUris,
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -143,31 +173,93 @@ class GetAzurePowerShellScriptResult {
 
   factory GetAzurePowerShellScriptResult.fromMap(Map<String, dynamic> map) {
     return GetAzurePowerShellScriptResult(
-      arguments: map['arguments'] == null ? null : map['arguments']! as String,
+      arguments: (() {
+        final guardedValue = map['arguments'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azPowerShellVersion: map['azPowerShellVersion'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      cleanupPreference: map['cleanupPreference'] == null ? null : map['cleanupPreference']! as String,
-      containerSettings: map['containerSettings'] == null ? null : ContainerConfigurationResponse.fromMap((map['containerSettings']! as Map).cast<String, dynamic>()),
-      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
+      cleanupPreference: (() {
+        final guardedValue = map['cleanupPreference'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      containerSettings: (() {
+        final guardedValue = map['containerSettings'];
+        if (guardedValue == null) return null;
+        return ContainerConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      environmentVariables: (() {
+        final guardedValue = map['environmentVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<EnvironmentVariableResponse>(
+          guardedValue,
+          (value) => EnvironmentVariableResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      forceUpdateTag: (() {
+        final guardedValue = map['forceUpdateTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       outputs: (map['outputs'] as Map).cast<String, dynamic>(),
-      primaryScriptUri: map['primaryScriptUri'] == null ? null : map['primaryScriptUri']! as String,
+      primaryScriptUri: (() {
+        final guardedValue = map['primaryScriptUri'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
       retentionInterval: map['retentionInterval'] as String,
-      scriptContent: map['scriptContent'] == null ? null : map['scriptContent']! as String,
-      status: ScriptStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      storageAccountSettings: map['storageAccountSettings'] == null ? null : StorageAccountConfigurationResponse.fromMap((map['storageAccountSettings']! as Map).cast<String, dynamic>()),
-      supportingScriptUris: map['supportingScriptUris'] == null ? null : (map['supportingScriptUris']! as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      timeout: map['timeout'] == null ? null : map['timeout']! as String,
+      scriptContent: (() {
+        final guardedValue = map['scriptContent'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: ScriptStatusResponse.fromMap(
+        (map['status']! as Map).cast<String, dynamic>(),
+      ),
+      storageAccountSettings: (() {
+        final guardedValue = map['storageAccountSettings'];
+        if (guardedValue == null) return null;
+        return StorageAccountConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      supportingScriptUris: (() {
+        final guardedValue = map['supportingScriptUris'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

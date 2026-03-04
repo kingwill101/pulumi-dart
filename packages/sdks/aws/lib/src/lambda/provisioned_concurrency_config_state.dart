@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionedConcurrencyConfigState {
   /// Name or Amazon Resource Name (ARN) of the Lambda Function.
   final pulumi.Input<String>? functionName;
+
   /// Amount of capacity to allocate. Must be greater than or equal to 1.
   final pulumi.Input<int>? provisionedConcurrentExecutions;
+
   /// Lambda Function version or Lambda Alias name.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? qualifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
   final pulumi.Input<bool>? skipDestroy;
 
@@ -43,12 +47,31 @@ class ProvisionedConcurrencyConfigState {
 
   factory ProvisionedConcurrencyConfigState.fromMap(Map<String, dynamic> map) {
     return ProvisionedConcurrencyConfigState(
-      functionName: map['functionName'] == null ? null : ((map['functionName'] as String).input()).input(),
-      provisionedConcurrentExecutions: map['provisionedConcurrentExecutions'] == null ? null : ((map['provisionedConcurrentExecutions'] as int).input()).input(),
-      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      functionName: (() {
+        final guardedValue = map['functionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisionedConcurrentExecutions: (() {
+        final guardedValue = map['provisionedConcurrentExecutions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      qualifier: (() {
+        final guardedValue = map['qualifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipDestroy: (() {
+        final guardedValue = map['skipDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

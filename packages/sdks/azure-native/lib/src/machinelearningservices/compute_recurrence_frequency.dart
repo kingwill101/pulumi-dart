@@ -6,16 +6,15 @@ enum ComputeRecurrenceFrequency {
   valueWeek("Week"),
   valueMonth("Month");
 
-  const ComputeRecurrenceFrequency(this.value);
-  final String value;
+  const ComputeRecurrenceFrequency(this.wireValue);
+  final String wireValue;
 
   static ComputeRecurrenceFrequency fromValue(String value) {
     for (final item in ComputeRecurrenceFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComputeRecurrenceFrequency value: $value');
   }
 }
-

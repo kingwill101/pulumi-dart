@@ -9,23 +9,26 @@ class FileCacheLustreConfigurationLogConfiguration {
   /// Creates a new [FileCacheLustreConfigurationLogConfiguration].
   /// [destination] Optional.
   /// [level] Optional.
-  FileCacheLustreConfigurationLogConfiguration({
-    this.destination,
-    this.level,
-  });
+  FileCacheLustreConfigurationLogConfiguration({this.destination, this.level});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destination': ?destination,
-      'level': ?level,
-    };
+    return <String, dynamic>{'destination': ?destination, 'level': ?level};
   }
 
-  factory FileCacheLustreConfigurationLogConfiguration.fromMap(Map<String, dynamic> map) {
+  factory FileCacheLustreConfigurationLogConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FileCacheLustreConfigurationLogConfiguration(
-      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
-      level: map['level'] == null ? null : ((map['level'] as String).input()).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

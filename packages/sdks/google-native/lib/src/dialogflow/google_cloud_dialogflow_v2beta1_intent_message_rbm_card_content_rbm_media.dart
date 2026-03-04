@@ -7,8 +7,13 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_card_content_rbm_medi
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   /// Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
   final pulumi.Input<String> fileUri;
+
   /// Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight>? height;
+  final pulumi.Input<
+    GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight
+  >?
+  height;
+
   /// Optional. Publicly reachable URI of the thumbnail.If you don't provide a thumbnail URI, the RBM platform displays a blank placeholder thumbnail until the user's device downloads the file. Depending on the user's setting, the file may not download automatically and may require the user to tap a download button.
   final pulumi.Input<String>? thumbnailUri;
 
@@ -25,17 +30,34 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fileUri': fileUri,
-      'height': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight, String>(height, (value) => value.value),
+      'height':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight,
+            String
+          >(height, (value) => value.wireValue),
       'thumbnailUri': ?thumbnailUri,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia(
-      fileUri: (map['fileUri'] as String).input(),
-      height: map['height'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight.fromValue(map['height']! as String)).input(),
-      thumbnailUri: map['thumbnailUri'] == null ? null : (map['thumbnailUri']! as String).input(),
+      fileUri: pulumi.Input.fromValue(map['fileUri'] as String),
+      height: (() {
+        final guardedValue = map['height'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      thumbnailUri: (() {
+        final guardedValue = map['thumbnailUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

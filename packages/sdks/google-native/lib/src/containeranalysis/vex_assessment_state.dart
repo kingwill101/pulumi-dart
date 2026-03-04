@@ -6,16 +6,15 @@ enum VexAssessmentState {
   fixed("FIXED"),
   underInvestigation("UNDER_INVESTIGATION");
 
-  const VexAssessmentState(this.value);
-  final String value;
+  const VexAssessmentState(this.wireValue);
+  final String wireValue;
 
   static VexAssessmentState fromValue(String value) {
     for (final item in VexAssessmentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VexAssessmentState value: $value');
   }
 }
-

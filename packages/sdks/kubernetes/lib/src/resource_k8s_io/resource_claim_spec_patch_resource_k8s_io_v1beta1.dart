@@ -10,20 +10,31 @@ class ResourceClaimSpecPatchResourceK8sIoV1beta1 {
 
   /// Creates a new [ResourceClaimSpecPatchResourceK8sIoV1beta1].
   /// [devices] Devices defines how to request devices.
-  ResourceClaimSpecPatchResourceK8sIoV1beta1({
-    this.devices,
-  });
+  ResourceClaimSpecPatchResourceK8sIoV1beta1({this.devices});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'devices': ?pulumi.Input.mapOptionalInputValue<DeviceClaimPatchResourceK8sIoV1beta1, Map<String, dynamic>>(devices, (value) => value.toMap()),
+      'devices':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeviceClaimPatchResourceK8sIoV1beta1,
+            Map<String, dynamic>
+          >(devices, (value) => value.toMap()),
     };
   }
 
-  factory ResourceClaimSpecPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ResourceClaimSpecPatchResourceK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceClaimSpecPatchResourceK8sIoV1beta1(
-      devices: map['devices'] == null ? null : (DeviceClaimPatchResourceK8sIoV1beta1.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
+      devices: (() {
+        final guardedValue = map['devices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeviceClaimPatchResourceK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

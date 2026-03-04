@@ -142,7 +142,7 @@ import 'lication_load_balancer_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ServiceNetworking` - 2025-01-01
@@ -157,12 +157,16 @@ import 'lication_load_balancer_state.dart';
 class LicationLoadBalancer extends pulumi.CustomResource {
   /// The Azure Region where the Application Gateway for Containers (ALB) should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Application Gateway for Containers (ALB). Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The primary configuration endpoints of the Application Gateway for Containers (ALB).
   late final pulumi.Output<String> primaryConfigurationEndpoint;
+
   /// The name of Resource Group where the Application Gateway for Containers (ALB) should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Application Gateway for Containers (ALB).
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -175,16 +179,18 @@ class LicationLoadBalancer extends pulumi.CustomResource {
     LicationLoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appconfiguration/licationLoadBalancer:LicationLoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:appconfiguration/licationLoadBalancer:LicationLoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryConfigurationEndpoint = registerOutput<String>('primaryConfigurationEndpoint');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryConfigurationEndpoint = registerOutput<String>(
+      'primaryConfigurationEndpoint',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [LicationLoadBalancer] resource's state with the given [name] and [id].
@@ -205,15 +211,17 @@ class LicationLoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appconfiguration/licationLoadBalancer:LicationLoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:appconfiguration/licationLoadBalancer:LicationLoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryConfigurationEndpoint = registerOutput<String>('primaryConfigurationEndpoint');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryConfigurationEndpoint = registerOutput<String>(
+      'primaryConfigurationEndpoint',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

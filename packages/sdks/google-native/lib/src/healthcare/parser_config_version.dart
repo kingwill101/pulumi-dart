@@ -5,16 +5,15 @@ enum ParserConfigVersion {
   v2("V2"),
   v3("V3");
 
-  const ParserConfigVersion(this.value);
-  final String value;
+  const ParserConfigVersion(this.wireValue);
+  final String wireValue;
 
   static ParserConfigVersion fromValue(String value) {
     for (final item in ParserConfigVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ParserConfigVersion value: $value');
   }
 }
-

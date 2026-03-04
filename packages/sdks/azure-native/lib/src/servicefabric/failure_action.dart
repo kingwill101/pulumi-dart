@@ -3,16 +3,15 @@ enum FailureAction {
   valueRollback("Rollback"),
   valueManual("Manual");
 
-  const FailureAction(this.value);
-  final String value;
+  const FailureAction(this.wireValue);
+  final String wireValue;
 
   static FailureAction fromValue(String value) {
     for (final item in FailureAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FailureAction value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum SingleServerCreateMode {
   valueGeoRestore("GeoRestore"),
   valueReplica("Replica");
 
-  const SingleServerCreateMode(this.value);
-  final String value;
+  const SingleServerCreateMode(this.wireValue);
+  final String wireValue;
 
   static SingleServerCreateMode fromValue(String value) {
     for (final item in SingleServerCreateMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SingleServerCreateMode value: $value');
   }
 }
-

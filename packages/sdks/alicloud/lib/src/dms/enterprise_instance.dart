@@ -4,9 +4,9 @@ import 'enterprise_instance_state.dart';
 
 /// Provides a DMS Enterprise Instance resource.
 ///
-/// > **NOTE:** API users must first register in DMS.
+/// &gt; **NOTE:** API users must first register in DMS.
 ///
-/// > **NOTE:** Available since v1.81.0.
+/// &gt; **NOTE:** Available since v1.81.0.
 ///
 /// ## Example Usage
 ///
@@ -664,60 +664,88 @@ import 'enterprise_instance_state.dart';
 class EnterpriseInstance extends pulumi.CustomResource {
   /// Cross-database query datalink name.
   late final pulumi.Output<String> dataLinkName;
+
   /// Database access password.
   late final pulumi.Output<String> databasePassword;
+
   /// Database access account.
   late final pulumi.Output<String> databaseUser;
+
   /// The dba id of the database instance.
   late final pulumi.Output<String> dbaId;
+
   /// The instance dba nickname.
   late final pulumi.Output<String> dbaNickName;
+
   /// The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
   late final pulumi.Output<int> dbaUid;
+
   /// Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
   late final pulumi.Output<int?> ddlOnline;
+
   /// ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
   late final pulumi.Output<String> ecsInstanceId;
+
   /// The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
   late final pulumi.Output<String?> ecsRegion;
+
   /// Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
   late final pulumi.Output<String> envType;
+
   /// Export timeout, unit: s (seconds).
   late final pulumi.Output<int> exportTimeout;
+
   /// Host address of the target database.
   late final pulumi.Output<String> host;
+
   /// Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
   late final pulumi.Output<String> instanceAlias;
+
   /// The instance id of the database instance.
   late final pulumi.Output<String> instanceId;
+
   /// Instance name, to help users quickly distinguish positioning.
   late final pulumi.Output<String> instanceName;
+
   /// The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
   late final pulumi.Output<String> instanceSource;
+
   /// Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
   late final pulumi.Output<String> instanceType;
+
   /// Network type. Valid values: `CLASSIC`, `VPC`.
   late final pulumi.Output<String> networkType;
+
   /// Access port of the target database.
   late final pulumi.Output<int> port;
+
   /// Query timeout time, unit: s (seconds).
   late final pulumi.Output<int> queryTimeout;
+
   /// The security rule of the instance is passed into the name of the security rule in the enterprise.
   late final pulumi.Output<String> safeRule;
+
   /// The safe rule id of the database instance.
   late final pulumi.Output<String> safeRuleId;
+
   /// The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
   late final pulumi.Output<String?> sid;
+
   /// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> skipTest;
+
   /// It has been deprecated from provider version 1.100.0 and 'status' instead.
   late final pulumi.Output<String> state;
+
   /// The instance status.
   late final pulumi.Output<String> status;
+
   /// The tenant ID.
   late final pulumi.Output<int?> tid;
+
   /// Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
   late final pulumi.Output<int> useDsql;
+
   /// VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
   late final pulumi.Output<String?> vpcId;
 
@@ -730,40 +758,40 @@ class EnterpriseInstance extends pulumi.CustomResource {
     EnterpriseInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseInstance:EnterpriseInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataLinkName = registerOutput<String>('dataLinkName');
-    this.databasePassword = registerOutput<String>('databasePassword');
-    this.databaseUser = registerOutput<String>('databaseUser');
-    this.dbaId = registerOutput<String>('dbaId');
-    this.dbaNickName = registerOutput<String>('dbaNickName');
-    this.dbaUid = registerOutput<int>('dbaUid');
-    this.ddlOnline = registerOutput<int?>('ddlOnline');
-    this.ecsInstanceId = registerOutput<String>('ecsInstanceId');
-    this.ecsRegion = registerOutput<String?>('ecsRegion');
-    this.envType = registerOutput<String>('envType');
-    this.exportTimeout = registerOutput<int>('exportTimeout');
-    this.host = registerOutput<String>('host');
-    this.instanceAlias = registerOutput<String>('instanceAlias');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceSource = registerOutput<String>('instanceSource');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.networkType = registerOutput<String>('networkType');
-    this.port = registerOutput<int>('port');
-    this.queryTimeout = registerOutput<int>('queryTimeout');
-    this.safeRule = registerOutput<String>('safeRule');
-    this.safeRuleId = registerOutput<String>('safeRuleId');
-    this.sid = registerOutput<String?>('sid');
-    this.skipTest = registerOutput<bool?>('skipTest');
-    this.state = registerOutput<String>('state');
-    this.status = registerOutput<String>('status');
-    this.tid = registerOutput<int?>('tid');
-    this.useDsql = registerOutput<int>('useDsql');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:dms/enterpriseInstance:EnterpriseInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataLinkName = registerOutput<String>('dataLinkName');
+    databasePassword = registerOutput<String>('databasePassword');
+    databaseUser = registerOutput<String>('databaseUser');
+    dbaId = registerOutput<String>('dbaId');
+    dbaNickName = registerOutput<String>('dbaNickName');
+    dbaUid = registerOutput<int>('dbaUid');
+    ddlOnline = registerOutput<int?>('ddlOnline');
+    ecsInstanceId = registerOutput<String>('ecsInstanceId');
+    ecsRegion = registerOutput<String?>('ecsRegion');
+    envType = registerOutput<String>('envType');
+    exportTimeout = registerOutput<int>('exportTimeout');
+    host = registerOutput<String>('host');
+    instanceAlias = registerOutput<String>('instanceAlias');
+    instanceId = registerOutput<String>('instanceId');
+    instanceName = registerOutput<String>('instanceName');
+    instanceSource = registerOutput<String>('instanceSource');
+    instanceType = registerOutput<String>('instanceType');
+    networkType = registerOutput<String>('networkType');
+    port = registerOutput<int>('port');
+    queryTimeout = registerOutput<int>('queryTimeout');
+    safeRule = registerOutput<String>('safeRule');
+    safeRuleId = registerOutput<String>('safeRuleId');
+    sid = registerOutput<String?>('sid');
+    skipTest = registerOutput<bool?>('skipTest');
+    state = registerOutput<String>('state');
+    status = registerOutput<String>('status');
+    tid = registerOutput<int?>('tid');
+    useDsql = registerOutput<int>('useDsql');
+    vpcId = registerOutput<String?>('vpcId');
   }
 
   /// Gets an existing [EnterpriseInstance] resource's state with the given [name] and [id].
@@ -784,39 +812,39 @@ class EnterpriseInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseInstance:EnterpriseInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataLinkName = registerOutput<String>('dataLinkName');
-    this.databasePassword = registerOutput<String>('databasePassword');
-    this.databaseUser = registerOutput<String>('databaseUser');
-    this.dbaId = registerOutput<String>('dbaId');
-    this.dbaNickName = registerOutput<String>('dbaNickName');
-    this.dbaUid = registerOutput<int>('dbaUid');
-    this.ddlOnline = registerOutput<int?>('ddlOnline');
-    this.ecsInstanceId = registerOutput<String>('ecsInstanceId');
-    this.ecsRegion = registerOutput<String?>('ecsRegion');
-    this.envType = registerOutput<String>('envType');
-    this.exportTimeout = registerOutput<int>('exportTimeout');
-    this.host = registerOutput<String>('host');
-    this.instanceAlias = registerOutput<String>('instanceAlias');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceName = registerOutput<String>('instanceName');
-    this.instanceSource = registerOutput<String>('instanceSource');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.networkType = registerOutput<String>('networkType');
-    this.port = registerOutput<int>('port');
-    this.queryTimeout = registerOutput<int>('queryTimeout');
-    this.safeRule = registerOutput<String>('safeRule');
-    this.safeRuleId = registerOutput<String>('safeRuleId');
-    this.sid = registerOutput<String?>('sid');
-    this.skipTest = registerOutput<bool?>('skipTest');
+         'alicloud:dms/enterpriseInstance:EnterpriseInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataLinkName = registerOutput<String>('dataLinkName');
+    databasePassword = registerOutput<String>('databasePassword');
+    databaseUser = registerOutput<String>('databaseUser');
+    dbaId = registerOutput<String>('dbaId');
+    dbaNickName = registerOutput<String>('dbaNickName');
+    dbaUid = registerOutput<int>('dbaUid');
+    ddlOnline = registerOutput<int?>('ddlOnline');
+    ecsInstanceId = registerOutput<String>('ecsInstanceId');
+    ecsRegion = registerOutput<String?>('ecsRegion');
+    envType = registerOutput<String>('envType');
+    exportTimeout = registerOutput<int>('exportTimeout');
+    host = registerOutput<String>('host');
+    instanceAlias = registerOutput<String>('instanceAlias');
+    instanceId = registerOutput<String>('instanceId');
+    instanceName = registerOutput<String>('instanceName');
+    instanceSource = registerOutput<String>('instanceSource');
+    instanceType = registerOutput<String>('instanceType');
+    networkType = registerOutput<String>('networkType');
+    port = registerOutput<int>('port');
+    queryTimeout = registerOutput<int>('queryTimeout');
+    safeRule = registerOutput<String>('safeRule');
+    safeRuleId = registerOutput<String>('safeRuleId');
+    sid = registerOutput<String?>('sid');
+    skipTest = registerOutput<bool?>('skipTest');
     this.state = registerOutput<String>('state');
-    this.status = registerOutput<String>('status');
-    this.tid = registerOutput<int?>('tid');
-    this.useDsql = registerOutput<int>('useDsql');
-    this.vpcId = registerOutput<String?>('vpcId');
+    status = registerOutput<String>('status');
+    tid = registerOutput<int?>('tid');
+    useDsql = registerOutput<int>('useDsql');
+    vpcId = registerOutput<String?>('vpcId');
   }
 }

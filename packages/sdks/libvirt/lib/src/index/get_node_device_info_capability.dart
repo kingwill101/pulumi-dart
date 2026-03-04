@@ -5,56 +5,82 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeDeviceInfoCapability {
   /// MAC address or device address.
   final pulumi.Input<String> address;
+
   /// Block device path (e.g., `/dev/sda`).
   final pulumi.Input<String> block;
+
   /// PCI/USB bus number.
   final pulumi.Input<double> bus;
+
   /// PCI class code (e.g., `0x030000` for VGA).
   final pulumi.Input<String> class_;
+
   /// USB device number.
   final pulumi.Input<double> deviceNumber;
+
   /// PCI domain number.
   final pulumi.Input<double> domain;
+
   /// Drive type (e.g., `disk`, `cdrom`).
   final pulumi.Input<String> driveType;
+
   /// PCI function number.
   final pulumi.Input<double> function;
+
   /// SCSI host number.
   final pulumi.Input<double> host;
+
   /// Network interface name (e.g., `eth0`).
   final pulumi.Input<String> interface;
+
   /// IOMMU group number (for PCI passthrough).
   final pulumi.Input<double> iommuGroup;
+
   /// Network link speed.
   final pulumi.Input<String> linkSpeed;
+
   /// Network link state (e.g., `up`, `down`).
   final pulumi.Input<String> linkState;
+
   /// Logical block size in bytes.
   final pulumi.Input<double> logicalBlockSize;
+
   /// SCSI LUN (Logical Unit Number).
   final pulumi.Input<double> lun;
+
   /// Device model name.
   final pulumi.Input<String> model;
+
   /// Number of blocks.
   final pulumi.Input<double> numBlocks;
+
   /// Product ID (vendor-specific identifier).
   final pulumi.Input<String> productId;
+
   /// Product name or description.
   final pulumi.Input<String> productName;
+
   /// SCSI device type.
   final pulumi.Input<String> scsiType;
+
   /// Device serial number.
   final pulumi.Input<String> serial;
+
   /// Storage capacity in bytes.
   final pulumi.Input<double> size;
+
   /// PCI slot number.
   final pulumi.Input<double> slot;
+
   /// SCSI target number.
   final pulumi.Input<double> target;
+
   /// Capability type (e.g., `pci`, `usb_device`, `net`, `storage`).
   final pulumi.Input<String> type;
+
   /// Vendor ID.
   final pulumi.Input<String> vendorId;
+
   /// Vendor name.
   final pulumi.Input<String> vendorName;
 
@@ -150,34 +176,35 @@ class GetNodeDeviceInfoCapability {
 
   factory GetNodeDeviceInfoCapability.fromMap(Map<String, dynamic> map) {
     return GetNodeDeviceInfoCapability(
-      address: (map['address'] as String).input(),
-      block: (map['block'] as String).input(),
-      bus: (map['bus'] as double).input(),
-      class_: (map['class'] as String).input(),
-      deviceNumber: (map['deviceNumber'] as double).input(),
-      domain: (map['domain'] as double).input(),
-      driveType: (map['driveType'] as String).input(),
-      function: (map['function'] as double).input(),
-      host: (map['host'] as double).input(),
-      interface: (map['interface'] as String).input(),
-      iommuGroup: (map['iommuGroup'] as double).input(),
-      linkSpeed: (map['linkSpeed'] as String).input(),
-      linkState: (map['linkState'] as String).input(),
-      logicalBlockSize: (map['logicalBlockSize'] as double).input(),
-      lun: (map['lun'] as double).input(),
-      model: (map['model'] as String).input(),
-      numBlocks: (map['numBlocks'] as double).input(),
-      productId: (map['productId'] as String).input(),
-      productName: (map['productName'] as String).input(),
-      scsiType: (map['scsiType'] as String).input(),
-      serial: (map['serial'] as String).input(),
-      size: (map['size'] as double).input(),
-      slot: (map['slot'] as double).input(),
-      target: (map['target'] as double).input(),
-      type: (map['type'] as String).input(),
-      vendorId: (map['vendorId'] as String).input(),
-      vendorName: (map['vendorName'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      block: pulumi.Input.fromValue(map['block'] as String),
+      bus: pulumi.Input.fromValue(map['bus'] as double),
+      class_: pulumi.Input.fromValue(map['class'] as String),
+      deviceNumber: pulumi.Input.fromValue(map['deviceNumber'] as double),
+      domain: pulumi.Input.fromValue(map['domain'] as double),
+      driveType: pulumi.Input.fromValue(map['driveType'] as String),
+      function: pulumi.Input.fromValue(map['function'] as double),
+      host: pulumi.Input.fromValue(map['host'] as double),
+      interface: pulumi.Input.fromValue(map['interface'] as String),
+      iommuGroup: pulumi.Input.fromValue(map['iommuGroup'] as double),
+      linkSpeed: pulumi.Input.fromValue(map['linkSpeed'] as String),
+      linkState: pulumi.Input.fromValue(map['linkState'] as String),
+      logicalBlockSize: pulumi.Input.fromValue(
+        map['logicalBlockSize'] as double,
+      ),
+      lun: pulumi.Input.fromValue(map['lun'] as double),
+      model: pulumi.Input.fromValue(map['model'] as String),
+      numBlocks: pulumi.Input.fromValue(map['numBlocks'] as double),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      productName: pulumi.Input.fromValue(map['productName'] as String),
+      scsiType: pulumi.Input.fromValue(map['scsiType'] as String),
+      serial: pulumi.Input.fromValue(map['serial'] as String),
+      size: pulumi.Input.fromValue(map['size'] as double),
+      slot: pulumi.Input.fromValue(map['slot'] as double),
+      target: pulumi.Input.fromValue(map['target'] as double),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      vendorId: pulumi.Input.fromValue(map['vendorId'] as String),
+      vendorName: pulumi.Input.fromValue(map['vendorName'] as String),
     );
   }
 }
-

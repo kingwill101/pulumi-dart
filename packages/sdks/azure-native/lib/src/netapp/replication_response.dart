@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationResponse {
   /// Indicates whether the local volume is the source or destination for the Volume Replication
   final pulumi.Input<String>? endpointType;
+
   /// The remote region for the other end of the Volume Replication.
   final pulumi.Input<String>? remoteVolumeRegion;
+
   /// The resource ID of the remote volume.
   final pulumi.Input<String> remoteVolumeResourceId;
+
   /// UUID v4 used to identify the replication.
   final pulumi.Input<String> replicationId;
+
   /// Schedule
   final pulumi.Input<String>? replicationSchedule;
 
@@ -41,12 +45,25 @@ class ReplicationResponse {
 
   factory ReplicationResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationResponse(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
-      remoteVolumeRegion: map['remoteVolumeRegion'] == null ? null : (map['remoteVolumeRegion']! as String).input(),
-      remoteVolumeResourceId: (map['remoteVolumeResourceId'] as String).input(),
-      replicationId: (map['replicationId'] as String).input(),
-      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule']! as String).input(),
+      endpointType: (() {
+        final guardedValue = map['endpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteVolumeRegion: (() {
+        final guardedValue = map['remoteVolumeRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteVolumeResourceId: pulumi.Input.fromValue(
+        map['remoteVolumeResourceId'] as String,
+      ),
+      replicationId: pulumi.Input.fromValue(map['replicationId'] as String),
+      replicationSchedule: (() {
+        final guardedValue = map['replicationSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

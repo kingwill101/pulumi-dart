@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceApiKeyArgs {
   /// Specifies the name of the API key. Key names must be unique to the workspace.
   final pulumi.Input<String> keyName;
+
   /// Specifies the permission level of the API key. Valid values are `VIEWER`, `EDITOR`, or `ADMIN`.
   final pulumi.Input<String> keyRole;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies the time in seconds until the API key expires. Keys can be valid for up to 30 days.
   final pulumi.Input<int> secondsToLive;
+
   /// The ID of the workspace that the API key is valid for.
   final pulumi.Input<String> workspaceId;
 
@@ -44,12 +48,15 @@ class WorkspaceApiKeyArgs {
 
   factory WorkspaceApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiKeyArgs(
-      keyName: (map['keyName'] as String).input(),
-      keyRole: (map['keyRole'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      secondsToLive: (map['secondsToLive'] as int).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      keyRole: pulumi.Input.fromValue(map['keyRole'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondsToLive: pulumi.Input.fromValue(map['secondsToLive'] as int),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceSecurityGroupAttachmentArgs {
   /// Instance ID.
   final pulumi.Input<String>? instanceId;
+
   /// Security group ID.
   final pulumi.Input<String> securityGroupId;
 
@@ -27,11 +28,16 @@ class InstanceSecurityGroupAttachmentArgs {
     };
   }
 
-  factory InstanceSecurityGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory InstanceSecurityGroupAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceSecurityGroupAttachmentArgs(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
     );
   }
 }
-

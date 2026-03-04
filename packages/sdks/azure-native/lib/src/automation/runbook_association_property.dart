@@ -9,20 +9,19 @@ class RunbookAssociationProperty {
 
   /// Creates a new [RunbookAssociationProperty].
   /// [name] Gets or sets the name of the runbook.
-  RunbookAssociationProperty({
-    this.name,
-  });
+  RunbookAssociationProperty({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory RunbookAssociationProperty.fromMap(Map<String, dynamic> map) {
     return RunbookAssociationProperty(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

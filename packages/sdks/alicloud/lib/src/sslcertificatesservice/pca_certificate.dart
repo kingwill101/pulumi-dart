@@ -8,7 +8,7 @@ import 'pca_certificate_state.dart';
 ///
 /// For information about SSL Certificates Pca Certificate and how to use it, see [What is Pca Certificate](https://next.api.alibabacloud.com/document/cas/2020-06-30/CreateRootCACertificate).
 ///
-/// > **NOTE:** Available since v1.257.0.
+/// &gt; **NOTE:** Available since v1.257.0.
 ///
 /// ## Example Usage
 ///
@@ -155,7 +155,7 @@ import 'pca_certificate_state.dart';
 /// $ pulumi import alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate example <id>
 /// ```
 class PcaCertificate extends pulumi.CustomResource {
-  /// The key algorithm type of the CA certificate. The key algorithm is in the <encryption algorithm>_<key length> format. Valid values:
+  /// The key algorithm type of the CA certificate. The key algorithm is in the &lt;encryption algorithm&gt;_&lt;key length&gt; format. Valid values:
   /// - `RSA_1024`: The corresponding signature algorithm is Sha256WithRSA.
   /// - `RSA_2048`: The corresponding signature algorithm is Sha256WithRSA.
   /// - `RSA_4096`: The corresponding signature algorithm is Sha256WithRSA.
@@ -163,44 +163,60 @@ class PcaCertificate extends pulumi.CustomResource {
   /// - `ECC_384`: The corresponding signature algorithm is Sha256WithECDSA.
   /// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
   /// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
-  /// > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
+  /// &gt; **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `algorithm` is required.
   late final pulumi.Output<String> algorithm;
   late final pulumi.Output<String?> aliasName;
+
   /// The type of the CA certificate. Default value: `ROOT`. Valid values:
   /// - `ROOT`: A root CA certificate.
   /// - `SUB_ROOT`: A subordinate CA certificate.
   late final pulumi.Output<String> certificateType;
+
   /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
   late final pulumi.Output<String> commonName;
+
   /// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
   late final pulumi.Output<String?> countryCode;
+
   /// The validity period for the CRL, in days. Valid values: `1` to `365`. **Note:** `crl_day` takes effect only if `certificate_type` is set to `SUB_ROOT`.
   late final pulumi.Output<int> crlDay;
+
   /// This setting turns the Certificate Revocation List (CRL) service on or off. Valid values:
   late final pulumi.Output<bool?> enableCrl;
+
   /// The extended key usages. **Note:** `extended_key_usages` takes effect only if `certificate_type` is set to `SUB_ROOT`.
   late final pulumi.Output<List<String>?> extendedKeyUsages;
+
   /// Name of the city where the organization is located. Support the use of Chinese, English characters.
   late final pulumi.Output<String> locality;
+
   /// The name of the organization (corresponding to your enterprise or company) associated with the CA certificate. Support the use of Chinese, English characters.
   late final pulumi.Output<String> organization;
+
   /// The name of the department or branch under the organization. Support the use of Chinese, English characters.
   late final pulumi.Output<String> organizationUnit;
+
   /// The unique identifier of the root CA certificate.
-  /// > **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
+  /// &gt; **NOTE:** If `certificate_type` is set to `SUB_ROOT`, `parent_identifier` is required.
   late final pulumi.Output<String?> parentIdentifier;
+
   /// The certificate path length. Default value: `0`. **Note:** `path_len_constraint` takes effect only if `certificate_type` is set to `SUB_ROOT`.
   late final pulumi.Output<int?> pathLenConstraint;
+
   /// A resource property field representing the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
   late final pulumi.Output<String> state;
+
   /// The status of the CA certificate.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The validity period of the CA certificate, in years.
-  /// > **NOTE:**  It is recommended to set to `5` to `10` years.
+  /// &gt; **NOTE:**  It is recommended to set to `5` to `10` years.
   late final pulumi.Output<int> years;
 
   /// Creates a new [PcaCertificate].
@@ -212,29 +228,29 @@ class PcaCertificate extends pulumi.CustomResource {
     PcaCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<String>('algorithm');
-    this.aliasName = registerOutput<String?>('aliasName');
-    this.certificateType = registerOutput<String>('certificateType');
-    this.commonName = registerOutput<String>('commonName');
-    this.countryCode = registerOutput<String?>('countryCode');
-    this.crlDay = registerOutput<int>('crlDay');
-    this.enableCrl = registerOutput<bool?>('enableCrl');
-    this.extendedKeyUsages = registerOutput<List<String>?>('extendedKeyUsages');
-    this.locality = registerOutput<String>('locality');
-    this.organization = registerOutput<String>('organization');
-    this.organizationUnit = registerOutput<String>('organizationUnit');
-    this.parentIdentifier = registerOutput<String?>('parentIdentifier');
-    this.pathLenConstraint = registerOutput<int?>('pathLenConstraint');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.state = registerOutput<String>('state');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.years = registerOutput<int>('years');
+         'alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<String>('algorithm');
+    aliasName = registerOutput<String?>('aliasName');
+    certificateType = registerOutput<String>('certificateType');
+    commonName = registerOutput<String>('commonName');
+    countryCode = registerOutput<String?>('countryCode');
+    crlDay = registerOutput<int>('crlDay');
+    enableCrl = registerOutput<bool?>('enableCrl');
+    extendedKeyUsages = registerOutput<List<String>?>('extendedKeyUsages');
+    locality = registerOutput<String>('locality');
+    organization = registerOutput<String>('organization');
+    organizationUnit = registerOutput<String>('organizationUnit');
+    parentIdentifier = registerOutput<String?>('parentIdentifier');
+    pathLenConstraint = registerOutput<int?>('pathLenConstraint');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    state = registerOutput<String>('state');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    years = registerOutput<int>('years');
   }
 
   /// Gets an existing [PcaCertificate] resource's state with the given [name] and [id].
@@ -255,28 +271,28 @@ class PcaCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<String>('algorithm');
-    this.aliasName = registerOutput<String?>('aliasName');
-    this.certificateType = registerOutput<String>('certificateType');
-    this.commonName = registerOutput<String>('commonName');
-    this.countryCode = registerOutput<String?>('countryCode');
-    this.crlDay = registerOutput<int>('crlDay');
-    this.enableCrl = registerOutput<bool?>('enableCrl');
-    this.extendedKeyUsages = registerOutput<List<String>?>('extendedKeyUsages');
-    this.locality = registerOutput<String>('locality');
-    this.organization = registerOutput<String>('organization');
-    this.organizationUnit = registerOutput<String>('organizationUnit');
-    this.parentIdentifier = registerOutput<String?>('parentIdentifier');
-    this.pathLenConstraint = registerOutput<int?>('pathLenConstraint');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
+         'alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<String>('algorithm');
+    aliasName = registerOutput<String?>('aliasName');
+    certificateType = registerOutput<String>('certificateType');
+    commonName = registerOutput<String>('commonName');
+    countryCode = registerOutput<String?>('countryCode');
+    crlDay = registerOutput<int>('crlDay');
+    enableCrl = registerOutput<bool?>('enableCrl');
+    extendedKeyUsages = registerOutput<List<String>?>('extendedKeyUsages');
+    locality = registerOutput<String>('locality');
+    organization = registerOutput<String>('organization');
+    organizationUnit = registerOutput<String>('organizationUnit');
+    parentIdentifier = registerOutput<String?>('parentIdentifier');
+    pathLenConstraint = registerOutput<int?>('pathLenConstraint');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
     this.state = registerOutput<String>('state');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.years = registerOutput<int>('years');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    years = registerOutput<int>('years');
   }
 }

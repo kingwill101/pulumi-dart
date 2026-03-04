@@ -5,16 +5,17 @@ enum ExtensionChainExtensionSupportedEventsItem {
   responseHeaders("RESPONSE_HEADERS"),
   responseBody("RESPONSE_BODY");
 
-  const ExtensionChainExtensionSupportedEventsItem(this.value);
-  final String value;
+  const ExtensionChainExtensionSupportedEventsItem(this.wireValue);
+  final String wireValue;
 
   static ExtensionChainExtensionSupportedEventsItem fromValue(String value) {
     for (final item in ExtensionChainExtensionSupportedEventsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExtensionChainExtensionSupportedEventsItem value: $value');
+    throw ArgumentError(
+      'Unknown ExtensionChainExtensionSupportedEventsItem value: $value',
+    );
   }
 }
-

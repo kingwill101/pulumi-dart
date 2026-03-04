@@ -9,20 +9,19 @@ class MultiCloudClusterGkehubV1beta1 {
 
   /// Creates a new [MultiCloudClusterGkehubV1beta1].
   /// [resourceLink] Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
-  MultiCloudClusterGkehubV1beta1({
-    this.resourceLink,
-  });
+  MultiCloudClusterGkehubV1beta1({this.resourceLink});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceLink': ?resourceLink,
-    };
+    return <String, dynamic>{'resourceLink': ?resourceLink};
   }
 
   factory MultiCloudClusterGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return MultiCloudClusterGkehubV1beta1(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
+      resourceLink: (() {
+        final guardedValue = map['resourceLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

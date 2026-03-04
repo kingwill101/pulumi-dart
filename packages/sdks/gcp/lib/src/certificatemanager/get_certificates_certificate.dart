@@ -7,29 +7,37 @@ class GetCertificatesCertificate {
   /// A human-readable description of the resource.
   final pulumi.Input<String> description;
   final pulumi.Input<Map<String, String>> effectiveLabels;
+
   /// Set of label tags associated with the Certificate resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>> labels;
+
   /// The Certificate Manager location. If not specified, "global" is used.
   final pulumi.Input<String> location;
+
   /// Configuration and state of a Managed Certificate.
   /// Certificate Manager provisions and renews Managed Certificates
   /// automatically, for as long as it's authorized to do so.
   final pulumi.Input<List<GetCertificatesCertificateManaged>> manageds;
+
   /// A user-defined name of the certificate. Certificate names must be unique
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>> pulumiLabels;
+
   /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
   final pulumi.Input<List<String>> sanDnsnames;
+
   /// The scope of the certificate.
   ///
   /// DEFAULT: Certificates with default scope are served from core Google data centers.
@@ -75,7 +83,18 @@ class GetCertificatesCertificate {
       'effectiveLabels': effectiveLabels,
       'labels': labels,
       'location': location,
-      'manageds': pulumi.Input.mapInputValue<List<GetCertificatesCertificateManaged>, List<Map<String, dynamic>>>(manageds, (value) => pulumi.Input.encodeList<GetCertificatesCertificateManaged, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'manageds':
+          pulumi.Input.mapInputValue<
+            List<GetCertificatesCertificateManaged>,
+            List<Map<String, dynamic>>
+          >(
+            manageds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCertificatesCertificateManaged,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
       'project': project,
       'pulumiLabels': pulumiLabels,
@@ -86,17 +105,31 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
-      description: (map['description'] as String).input(),
-      effectiveLabels: ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      manageds: (pulumi.Input.decodeList<GetCertificatesCertificateManaged>(map['manageds'], (value) => GetCertificatesCertificateManaged.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      project: (map['project'] as String).input(),
-      pulumiLabels: ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      sanDnsnames: ((map['sanDnsnames'] as List).cast<String>()).input(),
-      scope: (map['scope'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      effectiveLabels: pulumi.Input.fromValue(
+        (map['effectiveLabels'] as Map).cast<String, String>(),
+      ),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      manageds: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetCertificatesCertificateManaged>(
+          map['manageds']!,
+          (value) => GetCertificatesCertificateManaged.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      pulumiLabels: pulumi.Input.fromValue(
+        (map['pulumiLabels'] as Map).cast<String, String>(),
+      ),
+      sanDnsnames: pulumi.Input.fromValue(
+        (map['sanDnsnames'] as List).cast<String>(),
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

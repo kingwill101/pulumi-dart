@@ -8,44 +8,65 @@ import 'role_eligibility_schedule_request_properties_response_ticket_info.dart';
 class GetPimRoleEligibilityScheduleResult {
   /// The approvalId of the role eligibility schedule request.
   final String approvalId;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
   final String? condition;
+
   /// Version of the condition. Currently accepted value is '2.0'
   final String? conditionVersion;
+
   /// DateTime when role eligibility schedule request was created
   final String createdOn;
+
   /// Additional properties of principal, scope and role definition
   final ExpandedPropertiesResponse expandedProperties;
+
   /// The role eligibility schedule request ID.
   final String id;
+
   /// Justification for the role eligibility
   final String? justification;
+
   /// The role eligibility schedule request name.
   final String name;
+
   /// The principal ID.
   final String principalId;
+
   /// The principal type of the assigned principal ID.
   final String principalType;
+
   /// The type of the role assignment schedule request. Eg: SelfActivate, AdminAssign etc
   final String requestType;
+
   /// Id of the user who created this request
   final String requestorId;
+
   /// The role definition ID.
   final String roleDefinitionId;
+
   /// Schedule info of the role eligibility schedule
-  final RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo? scheduleInfo;
+  final RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo?
+  scheduleInfo;
+
   /// The role eligibility schedule request scope.
   final String scope;
+
   /// The status of the role eligibility schedule request.
   final String status;
+
   /// The resultant role eligibility schedule id or the role eligibility schedule id being updated
   final String? targetRoleEligibilityScheduleId;
+
   /// The role eligibility schedule instance id being updated
   final String? targetRoleEligibilityScheduleInstanceId;
+
   /// Ticket Info of the role eligibility
   final RoleEligibilityScheduleRequestPropertiesResponseTicketInfo? ticketInfo;
+
   /// The role eligibility schedule request type.
   final String type;
 
@@ -111,40 +132,76 @@ class GetPimRoleEligibilityScheduleResult {
       'requestType': requestType,
       'requestorId': requestorId,
       'roleDefinitionId': roleDefinitionId,
-      'scheduleInfo': ?scheduleInfo == null ? null : scheduleInfo!.toMap(),
+      'scheduleInfo': ?scheduleInfo?.toMap(),
       'scope': scope,
       'status': status,
       'targetRoleEligibilityScheduleId': ?targetRoleEligibilityScheduleId,
-      'targetRoleEligibilityScheduleInstanceId': ?targetRoleEligibilityScheduleInstanceId,
-      'ticketInfo': ?ticketInfo == null ? null : ticketInfo!.toMap(),
+      'targetRoleEligibilityScheduleInstanceId':
+          ?targetRoleEligibilityScheduleInstanceId,
+      'ticketInfo': ?ticketInfo?.toMap(),
       'type': type,
     };
   }
 
-  factory GetPimRoleEligibilityScheduleResult.fromMap(Map<String, dynamic> map) {
+  factory GetPimRoleEligibilityScheduleResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPimRoleEligibilityScheduleResult(
       approvalId: map['approvalId'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      condition: map['condition'] == null ? null : map['condition']! as String,
-      conditionVersion: map['conditionVersion'] == null ? null : map['conditionVersion']! as String,
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      conditionVersion: (() {
+        final guardedValue = map['conditionVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       createdOn: map['createdOn'] as String,
-      expandedProperties: ExpandedPropertiesResponse.fromMap((map['expandedProperties'] as Map).cast<String, dynamic>()),
+      expandedProperties: ExpandedPropertiesResponse.fromMap(
+        (map['expandedProperties']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
-      justification: map['justification'] == null ? null : map['justification']! as String,
+      justification: (() {
+        final guardedValue = map['justification'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       principalId: map['principalId'] as String,
       principalType: map['principalType'] as String,
       requestType: map['requestType'] as String,
       requestorId: map['requestorId'] as String,
       roleDefinitionId: map['roleDefinitionId'] as String,
-      scheduleInfo: map['scheduleInfo'] == null ? null : RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo.fromMap((map['scheduleInfo']! as Map).cast<String, dynamic>()),
+      scheduleInfo: (() {
+        final guardedValue = map['scheduleInfo'];
+        if (guardedValue == null) return null;
+        return RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       scope: map['scope'] as String,
       status: map['status'] as String,
-      targetRoleEligibilityScheduleId: map['targetRoleEligibilityScheduleId'] == null ? null : map['targetRoleEligibilityScheduleId']! as String,
-      targetRoleEligibilityScheduleInstanceId: map['targetRoleEligibilityScheduleInstanceId'] == null ? null : map['targetRoleEligibilityScheduleInstanceId']! as String,
-      ticketInfo: map['ticketInfo'] == null ? null : RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap((map['ticketInfo']! as Map).cast<String, dynamic>()),
+      targetRoleEligibilityScheduleId: (() {
+        final guardedValue = map['targetRoleEligibilityScheduleId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      targetRoleEligibilityScheduleInstanceId: (() {
+        final guardedValue = map['targetRoleEligibilityScheduleInstanceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ticketInfo: (() {
+        final guardedValue = map['ticketInfo'];
+        if (guardedValue == null) return null;
+        return RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

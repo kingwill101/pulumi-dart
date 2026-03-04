@@ -31,11 +31,14 @@ class GetAccountIdentity {
 
   factory GetAccountIdentity.fromMap(Map<String, dynamic> map) {
     return GetAccountIdentity(
-      identityIds: map['identityIds'] == null ? null : ((map['identityIds']! as List).cast<String>()).input(),
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: (map['type'] as String).input(),
+      identityIds: (() {
+        final guardedValue = map['identityIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

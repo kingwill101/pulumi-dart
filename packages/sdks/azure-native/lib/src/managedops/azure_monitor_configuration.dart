@@ -9,9 +9,7 @@ class AzureMonitorConfiguration {
 
   /// Creates a new [AzureMonitorConfiguration].
   /// [azureMonitorWorkspaceId] Azure monitor workspace resource ID used by the service.
-  AzureMonitorConfiguration({
-    required this.azureMonitorWorkspaceId,
-  });
+  AzureMonitorConfiguration({required this.azureMonitorWorkspaceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class AzureMonitorConfiguration {
 
   factory AzureMonitorConfiguration.fromMap(Map<String, dynamic> map) {
     return AzureMonitorConfiguration(
-      azureMonitorWorkspaceId: (map['azureMonitorWorkspaceId'] as String).input(),
+      azureMonitorWorkspaceId: pulumi.Input.fromValue(
+        map['azureMonitorWorkspaceId'] as String,
+      ),
     );
   }
 }
-

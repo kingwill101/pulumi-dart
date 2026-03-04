@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly {
   /// The occurrence of the week within the month.
   final pulumi.Input<int> week;
+
   /// The day of the occurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
   final pulumi.Input<String> weekday;
 
@@ -17,17 +18,15 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonth
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'week': week,
-      'weekday': weekday,
-    };
+    return <String, dynamic>{'week': week, 'weekday': weekday};
   }
 
-  factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly.fromMap(Map<String, dynamic> map) {
+  factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly(
-      week: (map['week'] as int).input(),
-      weekday: (map['weekday'] as String).input(),
+      week: pulumi.Input.fromValue(map['week'] as int),
+      weekday: pulumi.Input.fromValue(map['weekday'] as String),
     );
   }
 }
-

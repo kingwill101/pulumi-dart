@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobBackupDatasourceParameters {
   /// List of containers to be backed up during configuration of backup of blobs
   final pulumi.Input<List<String>> containersList;
+
   /// Type of the specific object - used for deserializing
   /// Expected value is 'BlobBackupDatasourceParameters'.
   final pulumi.Input<String> objectType;
@@ -27,9 +28,10 @@ class BlobBackupDatasourceParameters {
 
   factory BlobBackupDatasourceParameters.fromMap(Map<String, dynamic> map) {
     return BlobBackupDatasourceParameters(
-      containersList: ((map['containersList'] as List).cast<String>()).input(),
-      objectType: (map['objectType'] as String).input(),
+      containersList: pulumi.Input.fromValue(
+        (map['containersList'] as List).cast<String>(),
+      ),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
     );
   }
 }
-

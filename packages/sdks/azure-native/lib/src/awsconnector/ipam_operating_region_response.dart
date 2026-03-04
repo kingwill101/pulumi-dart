@@ -4,25 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of IpamOperatingRegion
 class IpamOperatingRegionResponse {
-  /// <p>The name of the operating Region.</p>
+  /// &lt;p&gt;The name of the operating Region.&lt;/p&gt;
   final pulumi.Input<String>? regionName;
 
   /// Creates a new [IpamOperatingRegionResponse].
-  /// [regionName] <p>The name of the operating Region.</p>
-  IpamOperatingRegionResponse({
-    this.regionName,
-  });
+  /// [regionName] &lt;p&gt;The name of the operating Region.&lt;/p&gt;
+  IpamOperatingRegionResponse({this.regionName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'regionName': ?regionName,
-    };
+    return <String, dynamic>{'regionName': ?regionName};
   }
 
   factory IpamOperatingRegionResponse.fromMap(Map<String, dynamic> map) {
     return IpamOperatingRegionResponse(
-      regionName: map['regionName'] == null ? null : (map['regionName']! as String).input(),
+      regionName: (() {
+        final guardedValue = map['regionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

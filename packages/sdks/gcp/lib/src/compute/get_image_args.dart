@@ -10,9 +10,11 @@ class GetImageArgs {
   /// The family name of the image.
   final pulumi.Input<String>? family;
   final pulumi.Input<String>? filter;
+
   /// A boolean to indicate either to take to most recent image if your filter
   /// returns more than one image.
   final pulumi.Input<bool>? mostRecent;
+
   /// , `family` or `filter` - (Required) The name of a specific image or a family.
   /// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
   /// the corresponding image. If `family` is specified, it will return the latest image
@@ -22,6 +24,7 @@ class GetImageArgs {
   ///
   /// - - -
   final pulumi.Input<String>? name;
+
   /// The project in which the resource belongs. If it is not
   /// provided, the provider project is used. If you are using a
   /// [public base image][pubimg], be sure to specify the correct Image Project.
@@ -53,12 +56,31 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      family: map['family'] == null ? null : (map['family']! as String).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      family: (() {
+        final guardedValue = map['family'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,30 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPoliciesPolicy {
   /// The number of references to the policy.
   final pulumi.Input<int> attachmentCount;
+
   /// The time when the policy was created.
   final pulumi.Input<String> createDate;
+
   /// The default version of the policy.
   final pulumi.Input<String> defaultVersion;
+
   /// The description of the policy.
   final pulumi.Input<String> description;
+
   /// The document of the policy. **Note:** `document` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> document;
+
   /// (Available since v1.114.0) The ID of the Policy.
   final pulumi.Input<String> id;
+
   /// The name of the policy.
   final pulumi.Input<String> name;
+
   /// (Available since v1.114.0) The document of the policy. **Note:** `policy_document` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> policyDocument;
+
   /// (Available since v1.114.0) The name of the policy.
   final pulumi.Input<String> policyName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The type of the policy. Valid values: `System` and `Custom`.
   final pulumi.Input<String> type;
+
   /// The time when the policy was modified.
   final pulumi.Input<String> updateDate;
+
   /// The name of the RAM user.
   final pulumi.Input<String> userName;
+
   /// (Available since v1.114.0) The ID of the default policy version. **Note:** `version_id` takes effect only if `enable_details` is set to `true`.
   final pulumi.Input<String> versionId;
 
@@ -85,21 +98,20 @@ class GetPoliciesPolicy {
 
   factory GetPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetPoliciesPolicy(
-      attachmentCount: (map['attachmentCount'] as int).input(),
-      createDate: (map['createDate'] as String).input(),
-      defaultVersion: (map['defaultVersion'] as String).input(),
-      description: (map['description'] as String).input(),
-      document: (map['document'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      policyDocument: (map['policyDocument'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
-      updateDate: (map['updateDate'] as String).input(),
-      userName: (map['userName'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      attachmentCount: pulumi.Input.fromValue(map['attachmentCount'] as int),
+      createDate: pulumi.Input.fromValue(map['createDate'] as String),
+      defaultVersion: pulumi.Input.fromValue(map['defaultVersion'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      document: pulumi.Input.fromValue(map['document'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      policyDocument: pulumi.Input.fromValue(map['policyDocument'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      updateDate: pulumi.Input.fromValue(map['updateDate'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

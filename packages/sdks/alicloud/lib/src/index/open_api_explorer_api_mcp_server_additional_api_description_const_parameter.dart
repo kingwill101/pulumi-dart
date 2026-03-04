@@ -14,8 +14,9 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
   ///
   /// Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
   ///
-  /// > **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+  /// &gt; **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.&gt;
   final pulumi.Input<String>? key;
+
   /// This property does not have a description in the spec, please add it before generating code.
   final pulumi.Input<String>? value;
 
@@ -28,17 +29,23 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'value': ?value};
   }
 
-  factory OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter.fromMap(Map<String, dynamic> map) {
+  factory OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

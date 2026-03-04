@@ -9,9 +9,7 @@ class QueryLoggingConfigResponse {
 
   /// Creates a new [QueryLoggingConfigResponse].
   /// [cloudWatchLogsLogGroupArn] The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.
-  QueryLoggingConfigResponse({
-    this.cloudWatchLogsLogGroupArn,
-  });
+  QueryLoggingConfigResponse({this.cloudWatchLogsLogGroupArn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class QueryLoggingConfigResponse {
 
   factory QueryLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigResponse(
-      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : (map['cloudWatchLogsLogGroupArn']! as String).input(),
+      cloudWatchLogsLogGroupArn: (() {
+        final guardedValue = map['cloudWatchLogsLogGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

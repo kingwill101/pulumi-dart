@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool {
   /// Specifies starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> endingAddress;
+
   /// Specifies ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> startingAddress;
 
@@ -23,11 +24,12 @@ class HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool {
     };
   }
 
-  factory HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool.fromMap(Map<String, dynamic> map) {
+  factory HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool(
-      endingAddress: (map['endingAddress'] as String).input(),
-      startingAddress: (map['startingAddress'] as String).input(),
+      endingAddress: pulumi.Input.fromValue(map['endingAddress'] as String),
+      startingAddress: pulumi.Input.fromValue(map['startingAddress'] as String),
     );
   }
 }
-

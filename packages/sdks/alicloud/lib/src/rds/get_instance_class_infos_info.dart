@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceClassInfosInfo {
   /// The code of the instance type.
   final pulumi.Input<String>? classCode;
+
   /// The instance family of the instance.
   final pulumi.Input<String>? classGroup;
+
   /// The number of cores that are supported by the instance type. Unit: cores.
   final pulumi.Input<String>? cpu;
+
   /// The architecture of the instance type.
   final pulumi.Input<String>? instructionSetArch;
+
   /// The maximum number of connections that are supported by the instance type. Unit: connections.
   final pulumi.Input<String>? maxConnections;
+
   /// The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
   final pulumi.Input<String>? maxIombps;
+
   /// The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
   final pulumi.Input<String>? maxIops;
+
   /// The memory capacity that is supported by the instance type. Unit: GB.
   final pulumi.Input<String>? memoryClass;
+
   /// The fee that you must pay for the instance type. Unit: cent (USD).
   final pulumi.Input<String>? referencePrice;
 
@@ -60,16 +68,51 @@ class GetInstanceClassInfosInfo {
 
   factory GetInstanceClassInfosInfo.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassInfosInfo(
-      classCode: map['classCode'] == null ? null : (map['classCode']! as String).input(),
-      classGroup: map['classGroup'] == null ? null : (map['classGroup']! as String).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
-      instructionSetArch: map['instructionSetArch'] == null ? null : (map['instructionSetArch']! as String).input(),
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as String).input(),
-      maxIombps: map['maxIombps'] == null ? null : (map['maxIombps']! as String).input(),
-      maxIops: map['maxIops'] == null ? null : (map['maxIops']! as String).input(),
-      memoryClass: map['memoryClass'] == null ? null : (map['memoryClass']! as String).input(),
-      referencePrice: map['referencePrice'] == null ? null : (map['referencePrice']! as String).input(),
+      classCode: (() {
+        final guardedValue = map['classCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      classGroup: (() {
+        final guardedValue = map['classGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instructionSetArch: (() {
+        final guardedValue = map['instructionSetArch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxConnections: (() {
+        final guardedValue = map['maxConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxIombps: (() {
+        final guardedValue = map['maxIombps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxIops: (() {
+        final guardedValue = map['maxIops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryClass: (() {
+        final guardedValue = map['memoryClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      referencePrice: (() {
+        final guardedValue = map['referencePrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

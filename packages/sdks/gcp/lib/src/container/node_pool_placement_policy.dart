@@ -7,8 +7,10 @@ class NodePoolPlacementPolicy {
   /// The resource policy must be in the same project and region as the node pool.
   /// If not found, InvalidArgument error is returned.
   final pulumi.Input<String>? policyName;
+
   /// The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
   final pulumi.Input<String>? tpuTopology;
+
   /// The type of the policy. Supports a single value: COMPACT.
   /// Specifying COMPACT placement policy type places node pool's nodes in a closer
   /// physical proximity in order to reduce network latency between nodes.
@@ -34,10 +36,17 @@ class NodePoolPlacementPolicy {
 
   factory NodePoolPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolPlacementPolicy(
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
-      type: (map['type'] as String).input(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tpuTopology: (() {
+        final guardedValue = map['tpuTopology'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

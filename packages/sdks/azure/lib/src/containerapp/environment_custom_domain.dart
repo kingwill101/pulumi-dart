@@ -269,7 +269,7 @@ import 'environment_custom_domain_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.App` - 2025-07-01
@@ -286,10 +286,13 @@ import 'environment_custom_domain_state.dart';
 class EnvironmentCustomDomain extends pulumi.CustomResource {
   /// The bundle of Private Key and Certificate for the Custom DNS Suffix as a base64 encoded PFX or PEM.
   late final pulumi.Output<String> certificateBlobBase64;
+
   /// The password for the Certificate bundle.
   late final pulumi.Output<String> certificatePassword;
+
   /// The ID of the Container Apps Managed Environment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> containerAppEnvironmentId;
+
   /// Custom DNS Suffix for the Container App Environment.
   late final pulumi.Output<String> dnsSuffix;
 
@@ -302,15 +305,17 @@ class EnvironmentCustomDomain extends pulumi.CustomResource {
     EnvironmentCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentCustomDomain:EnvironmentCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBlobBase64 = registerOutput<String>('certificateBlobBase64');
-    this.certificatePassword = registerOutput<String>('certificatePassword');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.dnsSuffix = registerOutput<String>('dnsSuffix');
+         'azure:containerapp/environmentCustomDomain:EnvironmentCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBlobBase64 = registerOutput<String>('certificateBlobBase64');
+    certificatePassword = registerOutput<String>('certificatePassword');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    dnsSuffix = registerOutput<String>('dnsSuffix');
   }
 
   /// Gets an existing [EnvironmentCustomDomain] resource's state with the given [name] and [id].
@@ -331,14 +336,16 @@ class EnvironmentCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerapp/environmentCustomDomain:EnvironmentCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBlobBase64 = registerOutput<String>('certificateBlobBase64');
-    this.certificatePassword = registerOutput<String>('certificatePassword');
-    this.containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
-    this.dnsSuffix = registerOutput<String>('dnsSuffix');
+         'azure:containerapp/environmentCustomDomain:EnvironmentCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBlobBase64 = registerOutput<String>('certificateBlobBase64');
+    certificatePassword = registerOutput<String>('certificatePassword');
+    containerAppEnvironmentId = registerOutput<String>(
+      'containerAppEnvironmentId',
+    );
+    dnsSuffix = registerOutput<String>('dnsSuffix');
   }
 }

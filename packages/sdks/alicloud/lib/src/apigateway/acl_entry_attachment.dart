@@ -4,7 +4,7 @@ import 'acl_entry_attachment_state.dart';
 
 /// Provides an ACL entry attachment resource for attaching ACL entry to an API Gateway ACL.
 ///
-/// > **NOTE:** Available since v1.228.0
+/// &gt; **NOTE:** Available since v1.228.0
 ///
 /// ## Example Usage
 ///
@@ -176,8 +176,10 @@ import 'acl_entry_attachment_state.dart';
 class AclEntryAttachment extends pulumi.CustomResource {
   /// The ID of the ACL that the entry will be attached to.
   late final pulumi.Output<String> aclId;
+
   /// The comment for the entry.
   late final pulumi.Output<String?> comment;
+
   /// The CIDR block of the entry to attach.
   late final pulumi.Output<String> entry;
 
@@ -190,14 +192,14 @@ class AclEntryAttachment extends pulumi.CustomResource {
     AclEntryAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/aclEntryAttachment:AclEntryAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.comment = registerOutput<String?>('comment');
-    this.entry = registerOutput<String>('entry');
+         'alicloud:apigateway/aclEntryAttachment:AclEntryAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    comment = registerOutput<String?>('comment');
+    entry = registerOutput<String>('entry');
   }
 
   /// Gets an existing [AclEntryAttachment] resource's state with the given [name] and [id].
@@ -218,13 +220,13 @@ class AclEntryAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apigateway/aclEntryAttachment:AclEntryAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclId = registerOutput<String>('aclId');
-    this.comment = registerOutput<String?>('comment');
-    this.entry = registerOutput<String>('entry');
+         'alicloud:apigateway/aclEntryAttachment:AclEntryAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclId = registerOutput<String>('aclId');
+    comment = registerOutput<String?>('comment');
+    entry = registerOutput<String>('entry');
   }
 }

@@ -36,7 +36,10 @@ class GetConfigMapsResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'maps': pulumi.Input.encodeList<GetConfigMapsMap, Map<String, dynamic>>(maps, (value) => value.toMap()),
+      'maps': pulumi.Input.encodeList<GetConfigMapsMap, Map<String, dynamic>>(
+        maps,
+        (value) => value.toMap(),
+      ),
       'nameRegex': ?nameRegex,
       'names': names,
       'namespaceId': namespaceId,
@@ -48,12 +51,23 @@ class GetConfigMapsResult {
     return GetConfigMapsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      maps: pulumi.Input.decodeList<GetConfigMapsMap>(map['maps'], (value) => GetConfigMapsMap.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      maps: pulumi.Input.decodeList<GetConfigMapsMap>(
+        map['maps']!,
+        (value) =>
+            GetConfigMapsMap.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
       namespaceId: map['namespaceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -10,16 +10,15 @@ enum RunbookTypeEnum {
   valuePython3("Python3"),
   valuePowerShell72("PowerShell72");
 
-  const RunbookTypeEnum(this.value);
-  final String value;
+  const RunbookTypeEnum(this.wireValue);
+  final String wireValue;
 
   static RunbookTypeEnum fromValue(String value) {
     for (final item in RunbookTypeEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RunbookTypeEnum value: $value');
   }
 }
-

@@ -1,10 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'ipsec_policy_response.dart';
 import 'routing_configuration_response.dart';
 import 'sub_resource_response.dart';
-import 'traffic_selector_policy_response.dart';
 import 'vpn_connection_args.dart';
-import 'vpn_site_link_connection_response.dart';
 
 /// VpnConnection Resource.
 ///
@@ -401,48 +398,69 @@ import 'vpn_site_link_connection_response.dart';
 class VpnConnectionNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Expected bandwidth in MBPS.
   late final pulumi.Output<int?> connectionBandwidth;
+
   /// The connection status.
   late final pulumi.Output<String> connectionStatus;
+
   /// DPD timeout in seconds for vpn connection.
   late final pulumi.Output<int?> dpdTimeoutSeconds;
+
   /// Egress bytes transferred.
   late final pulumi.Output<double> egressBytesTransferred;
+
   /// EnableBgp flag.
   late final pulumi.Output<bool?> enableBgp;
+
   /// Enable internet security.
   late final pulumi.Output<bool?> enableInternetSecurity;
+
   /// EnableBgp flag.
   late final pulumi.Output<bool?> enableRateLimiting;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Ingress bytes transferred.
   late final pulumi.Output<double> ingressBytesTransferred;
+
   /// The IPSec Policies to be considered by this connection.
-  late final pulumi.Output<List<IpsecPolicyResponse>?> ipsecPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipsecPolicies;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The provisioning state of the VPN connection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Id of the connected vpn site.
   late final pulumi.Output<SubResourceResponse?> remoteVpnSite;
+
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
   late final pulumi.Output<RoutingConfigurationResponse?> routingConfiguration;
+
   /// Routing weight for vpn connection.
   late final pulumi.Output<int?> routingWeight;
+
   /// SharedKey for the vpn connection.
   late final pulumi.Output<String?> sharedKey;
+
   /// The Traffic Selector Policies to be considered by this connection.
-  late final pulumi.Output<List<TrafficSelectorPolicyResponse>?> trafficSelectorPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> trafficSelectorPolicies;
+
   /// Use local azure ip to initiate connection.
   late final pulumi.Output<bool?> useLocalAzureIpAddress;
+
   /// Enable policy-based traffic selectors.
   late final pulumi.Output<bool?> usePolicyBasedTrafficSelectors;
+
   /// Connection protocol used for this connection.
   late final pulumi.Output<String?> vpnConnectionProtocolType;
+
   /// List of all vpn site link connections to the gateway.
-  late final pulumi.Output<List<VpnSiteLinkConnectionResponse>?> vpnLinkConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> vpnLinkConnections;
 
   /// Creates a new [VpnConnectionNetwork].
   /// [name] The Pulumi resource name.
@@ -453,32 +471,44 @@ class VpnConnectionNetwork extends pulumi.CustomResource {
     VpnConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VpnConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectionBandwidth = registerOutput<int?>('connectionBandwidth');
-    this.connectionStatus = registerOutput<String>('connectionStatus');
-    this.dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
-    this.egressBytesTransferred = registerOutput<double>('egressBytesTransferred');
-    this.enableBgp = registerOutput<bool?>('enableBgp');
-    this.enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
-    this.enableRateLimiting = registerOutput<bool?>('enableRateLimiting');
-    this.etag = registerOutput<String>('etag');
-    this.ingressBytesTransferred = registerOutput<double>('ingressBytesTransferred');
-    this.ipsecPolicies = registerOutput<List<IpsecPolicyResponse>?>('ipsecPolicies');
+         'azure-native:network:VpnConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionBandwidth = registerOutput<int?>('connectionBandwidth');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
+    egressBytesTransferred = registerOutput<double>('egressBytesTransferred');
+    enableBgp = registerOutput<bool?>('enableBgp');
+    enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
+    enableRateLimiting = registerOutput<bool?>('enableRateLimiting');
+    etag = registerOutput<String>('etag');
+    ingressBytesTransferred = registerOutput<double>('ingressBytesTransferred');
+    ipsecPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'ipsecPolicies',
+    );
     this.name = registerOutput<String?>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.remoteVpnSite = registerOutput<SubResourceResponse?>('remoteVpnSite');
-    this.routingConfiguration = registerOutput<RoutingConfigurationResponse?>('routingConfiguration');
-    this.routingWeight = registerOutput<int?>('routingWeight');
-    this.sharedKey = registerOutput<String?>('sharedKey');
-    this.trafficSelectorPolicies = registerOutput<List<TrafficSelectorPolicyResponse>?>('trafficSelectorPolicies');
-    this.useLocalAzureIpAddress = registerOutput<bool?>('useLocalAzureIpAddress');
-    this.usePolicyBasedTrafficSelectors = registerOutput<bool?>('usePolicyBasedTrafficSelectors');
-    this.vpnConnectionProtocolType = registerOutput<String?>('vpnConnectionProtocolType');
-    this.vpnLinkConnections = registerOutput<List<VpnSiteLinkConnectionResponse>?>('vpnLinkConnections');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteVpnSite = registerOutput<SubResourceResponse?>('remoteVpnSite');
+    routingConfiguration = registerOutput<RoutingConfigurationResponse?>(
+      'routingConfiguration',
+    );
+    routingWeight = registerOutput<int?>('routingWeight');
+    sharedKey = registerOutput<String?>('sharedKey');
+    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'trafficSelectorPolicies',
+    );
+    useLocalAzureIpAddress = registerOutput<bool?>('useLocalAzureIpAddress');
+    usePolicyBasedTrafficSelectors = registerOutput<bool?>(
+      'usePolicyBasedTrafficSelectors',
+    );
+    vpnConnectionProtocolType = registerOutput<String?>(
+      'vpnConnectionProtocolType',
+    );
+    vpnLinkConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'vpnLinkConnections',
+    );
   }
 }

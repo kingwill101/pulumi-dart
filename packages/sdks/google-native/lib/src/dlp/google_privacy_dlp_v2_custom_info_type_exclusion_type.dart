@@ -3,16 +3,17 @@ enum GooglePrivacyDlpV2CustomInfoTypeExclusionType {
   exclusionTypeUnspecified("EXCLUSION_TYPE_UNSPECIFIED"),
   exclusionTypeExclude("EXCLUSION_TYPE_EXCLUDE");
 
-  const GooglePrivacyDlpV2CustomInfoTypeExclusionType(this.value);
-  final String value;
+  const GooglePrivacyDlpV2CustomInfoTypeExclusionType(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2CustomInfoTypeExclusionType fromValue(String value) {
     for (final item in GooglePrivacyDlpV2CustomInfoTypeExclusionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2CustomInfoTypeExclusionType value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2CustomInfoTypeExclusionType value: $value',
+    );
   }
 }
-

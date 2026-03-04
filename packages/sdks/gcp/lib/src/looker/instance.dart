@@ -1680,62 +1680,84 @@ class Instance extends pulumi.CustomResource {
   /// Looker instance Admin settings.
   /// Structure is documented below.
   late final pulumi.Output<InstanceAdminSettings?> adminSettings;
+
   /// Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
   /// Note that the consumer network may be in a different GCP project than the consumer
   /// project that is hosting the Looker Instance.
   late final pulumi.Output<String?> consumerNetwork;
+
   /// Controlled egress configuration.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceControlledEgressConfig?> controlledEgressConfig;
+  late final pulumi.Output<InstanceControlledEgressConfig?>
+  controlledEgressConfig;
+
   /// Whether controlled egress is enabled on the Looker instance.
   late final pulumi.Output<bool?> controlledEgressEnabled;
+
   /// The time the instance was created in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds.
   late final pulumi.Output<String> createTime;
+
   /// Custom domain settings for a Looker instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceCustomDomain?> customDomain;
+
   /// Policy to determine if the cluster should be deleted forcefully.
   /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
   /// of its nested resources. If set to "DEFAULT", Looker instances that still have
   /// nested resources will return an error. Possible values: DEFAULT, FORCE
   late final pulumi.Output<String?> deletionPolicy;
+
   /// Maintenance denial period for this instance.
   /// You must allow at least 14 days of maintenance availability
   /// between any two deny maintenance periods.
   /// Structure is documented below.
-  late final pulumi.Output<InstanceDenyMaintenancePeriod?> denyMaintenancePeriod;
+  late final pulumi.Output<InstanceDenyMaintenancePeriod?>
+  denyMaintenancePeriod;
+
   /// Public Egress IP (IPv4).
   late final pulumi.Output<String> egressPublicIp;
+
   /// Looker instance encryption settings.
   /// Structure is documented below.
   late final pulumi.Output<InstanceEncryptionConfig> encryptionConfig;
+
   /// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
   late final pulumi.Output<bool?> fipsEnabled;
+
   /// Gemini enablement for Looker (Google Cloud Core).
   late final pulumi.Output<bool?> geminiEnabled;
+
   /// Private Ingress IP (IPv4).
   late final pulumi.Output<String> ingressPrivateIp;
+
   /// Public Ingress IP (IPv4).
   late final pulumi.Output<String> ingressPublicIp;
+
   /// Looker instance URI which can be used to access the Looker Instance UI.
   late final pulumi.Output<String> lookerUri;
+
   /// The Looker version that the instance is using.
   late final pulumi.Output<String> lookerVersion;
+
   /// Maintenance window for an instance.
   /// Maintenance of your instance takes place once a month, and will require
   /// your instance to be restarted during updates, which will temporarily
   /// disrupt service.
   /// Structure is documented below.
   late final pulumi.Output<InstanceMaintenanceWindow?> maintenanceWindow;
+
   /// The ID of the instance or a fully qualified identifier for the instance.
   late final pulumi.Output<String> name;
+
   /// Looker Instance OAuth login settings.
   /// Structure is documented below.
   late final pulumi.Output<InstanceOauthConfig> oauthConfig;
+
   /// Configuration for periodic export.
   /// Structure is documented below.
   late final pulumi.Output<InstancePeriodicExportConfig?> periodicExportConfig;
+
   /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
   /// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
   /// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -1751,26 +1773,35 @@ class Instance extends pulumi.CustomResource {
   /// Default value is `LOOKER_CORE_TRIAL`.
   /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`, `LOOKER_CORE_TRIAL_STANDARD`, `LOOKER_CORE_TRIAL_ENTERPRISE`, `LOOKER_CORE_TRIAL_EMBED`.
   late final pulumi.Output<String?> platformEdition;
+
   /// Whether private IP is enabled on the Looker instance.
   late final pulumi.Output<bool?> privateIpEnabled;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Information for Private Service Connect (PSC) setup for a Looker instance.
   /// Structure is documented below.
   late final pulumi.Output<InstancePscConfig> pscConfig;
+
   /// Whether Public Service Connect (PSC) is enabled on the Looker instance
   late final pulumi.Output<bool?> pscEnabled;
+
   /// Whether public IP is enabled on the Looker instance.
   late final pulumi.Output<bool?> publicIpEnabled;
+
   /// The name of the Looker region of the instance.
   late final pulumi.Output<String> region;
+
   /// Name of a reserved IP address range within the consumer network, to be used for
   /// private service access connection. User may or may not specify this in a request.
   late final pulumi.Output<String?> reservedRange;
+
   /// The time the instance was updated in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds.
   late final pulumi.Output<String> updateTime;
+
   /// Metadata about users for a Looker instance.
   /// These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
   /// There are ten Standard and two Developer users included in the cost of the product.
@@ -1790,41 +1821,51 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:looker/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings');
-    this.consumerNetwork = registerOutput<String?>('consumerNetwork');
-    this.controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>('controlledEgressConfig');
-    this.controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
-    this.createTime = registerOutput<String>('createTime');
-    this.customDomain = registerOutput<InstanceCustomDomain?>('customDomain');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod');
-    this.egressPublicIp = registerOutput<String>('egressPublicIp');
-    this.encryptionConfig = registerOutput<InstanceEncryptionConfig>('encryptionConfig');
-    this.fipsEnabled = registerOutput<bool?>('fipsEnabled');
-    this.geminiEnabled = registerOutput<bool?>('geminiEnabled');
-    this.ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
-    this.ingressPublicIp = registerOutput<String>('ingressPublicIp');
-    this.lookerUri = registerOutput<String>('lookerUri');
-    this.lookerVersion = registerOutput<String>('lookerVersion');
-    this.maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>('maintenanceWindow');
+         'gcp:looker/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings');
+    consumerNetwork = registerOutput<String?>('consumerNetwork');
+    controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>(
+      'controlledEgressConfig',
+    );
+    controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
+    createTime = registerOutput<String>('createTime');
+    customDomain = registerOutput<InstanceCustomDomain?>('customDomain');
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>(
+      'denyMaintenancePeriod',
+    );
+    egressPublicIp = registerOutput<String>('egressPublicIp');
+    encryptionConfig = registerOutput<InstanceEncryptionConfig>(
+      'encryptionConfig',
+    );
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    geminiEnabled = registerOutput<bool?>('geminiEnabled');
+    ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
+    ingressPublicIp = registerOutput<String>('ingressPublicIp');
+    lookerUri = registerOutput<String>('lookerUri');
+    lookerVersion = registerOutput<String>('lookerVersion');
+    maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig');
-    this.periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>('periodicExportConfig');
-    this.platformEdition = registerOutput<String?>('platformEdition');
-    this.privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
-    this.project = registerOutput<String>('project');
-    this.pscConfig = registerOutput<InstancePscConfig>('pscConfig');
-    this.pscEnabled = registerOutput<bool?>('pscEnabled');
-    this.publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
-    this.region = registerOutput<String>('region');
-    this.reservedRange = registerOutput<String?>('reservedRange');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata');
+    oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig');
+    periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>(
+      'periodicExportConfig',
+    );
+    platformEdition = registerOutput<String?>('platformEdition');
+    privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
+    project = registerOutput<String>('project');
+    pscConfig = registerOutput<InstancePscConfig>('pscConfig');
+    pscEnabled = registerOutput<bool?>('pscEnabled');
+    publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
+    region = registerOutput<String>('region');
+    reservedRange = registerOutput<String?>('reservedRange');
+    updateTime = registerOutput<String>('updateTime');
+    userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -1845,40 +1886,50 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:looker/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings');
-    this.consumerNetwork = registerOutput<String?>('consumerNetwork');
-    this.controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>('controlledEgressConfig');
-    this.controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
-    this.createTime = registerOutput<String>('createTime');
-    this.customDomain = registerOutput<InstanceCustomDomain?>('customDomain');
-    this.deletionPolicy = registerOutput<String?>('deletionPolicy');
-    this.denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod');
-    this.egressPublicIp = registerOutput<String>('egressPublicIp');
-    this.encryptionConfig = registerOutput<InstanceEncryptionConfig>('encryptionConfig');
-    this.fipsEnabled = registerOutput<bool?>('fipsEnabled');
-    this.geminiEnabled = registerOutput<bool?>('geminiEnabled');
-    this.ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
-    this.ingressPublicIp = registerOutput<String>('ingressPublicIp');
-    this.lookerUri = registerOutput<String>('lookerUri');
-    this.lookerVersion = registerOutput<String>('lookerVersion');
-    this.maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>('maintenanceWindow');
+         'gcp:looker/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminSettings = registerOutput<InstanceAdminSettings?>('adminSettings');
+    consumerNetwork = registerOutput<String?>('consumerNetwork');
+    controlledEgressConfig = registerOutput<InstanceControlledEgressConfig?>(
+      'controlledEgressConfig',
+    );
+    controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
+    createTime = registerOutput<String>('createTime');
+    customDomain = registerOutput<InstanceCustomDomain?>('customDomain');
+    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>(
+      'denyMaintenancePeriod',
+    );
+    egressPublicIp = registerOutput<String>('egressPublicIp');
+    encryptionConfig = registerOutput<InstanceEncryptionConfig>(
+      'encryptionConfig',
+    );
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    geminiEnabled = registerOutput<bool?>('geminiEnabled');
+    ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
+    ingressPublicIp = registerOutput<String>('ingressPublicIp');
+    lookerUri = registerOutput<String>('lookerUri');
+    lookerVersion = registerOutput<String>('lookerVersion');
+    maintenanceWindow = registerOutput<InstanceMaintenanceWindow?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig');
-    this.periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>('periodicExportConfig');
-    this.platformEdition = registerOutput<String?>('platformEdition');
-    this.privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
-    this.project = registerOutput<String>('project');
-    this.pscConfig = registerOutput<InstancePscConfig>('pscConfig');
-    this.pscEnabled = registerOutput<bool?>('pscEnabled');
-    this.publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
-    this.region = registerOutput<String>('region');
-    this.reservedRange = registerOutput<String?>('reservedRange');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata');
+    oauthConfig = registerOutput<InstanceOauthConfig>('oauthConfig');
+    periodicExportConfig = registerOutput<InstancePeriodicExportConfig?>(
+      'periodicExportConfig',
+    );
+    platformEdition = registerOutput<String?>('platformEdition');
+    privateIpEnabled = registerOutput<bool?>('privateIpEnabled');
+    project = registerOutput<String>('project');
+    pscConfig = registerOutput<InstancePscConfig>('pscConfig');
+    pscEnabled = registerOutput<bool?>('pscEnabled');
+    publicIpEnabled = registerOutput<bool?>('publicIpEnabled');
+    region = registerOutput<String>('region');
+    reservedRange = registerOutput<String?>('reservedRange');
+    updateTime = registerOutput<String>('updateTime');
+    userMetadata = registerOutput<InstanceUserMetadata?>('userMetadata');
   }
 }

@@ -27,10 +27,9 @@ class GetClusterMasterUserSecret {
 
   factory GetClusterMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return GetClusterMasterUserSecret(
-      kmsKeyId: (map['kmsKeyId'] as String).input(),
-      secretArn: (map['secretArn'] as String).input(),
-      secretStatus: (map['secretStatus'] as String).input(),
+      kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
+      secretArn: pulumi.Input.fromValue(map['secretArn'] as String),
+      secretStatus: pulumi.Input.fromValue(map['secretStatus'] as String),
     );
   }
 }
-

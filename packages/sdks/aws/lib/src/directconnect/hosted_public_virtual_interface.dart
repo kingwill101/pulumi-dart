@@ -164,29 +164,41 @@ import 'hosted_public_virtual_interface_state.dart';
 class HostedPublicVirtualInterface extends pulumi.CustomResource {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   late final pulumi.Output<String> addressFamily;
+
   /// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
   late final pulumi.Output<String> amazonAddress;
   late final pulumi.Output<String> amazonSideAsn;
+
   /// The ARN of the virtual interface.
   late final pulumi.Output<String> arn;
+
   /// The Direct Connect endpoint on which the virtual interface terminates.
   late final pulumi.Output<String> awsDevice;
+
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
   late final pulumi.Output<int> bgpAsn;
+
   /// The authentication key for BGP configuration.
   late final pulumi.Output<String> bgpAuthKey;
+
   /// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
   late final pulumi.Output<String> connectionId;
+
   /// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
   late final pulumi.Output<String> customerAddress;
+
   /// The name for the virtual interface.
   late final pulumi.Output<String> name;
+
   /// The AWS account that will own the new virtual interface.
   late final pulumi.Output<String> ownerAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A list of routes to be advertised to the AWS network in this region.
   late final pulumi.Output<List<String>> routeFilterPrefixes;
+
   /// The VLAN ID.
   late final pulumi.Output<int> vlan;
 
@@ -199,25 +211,25 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
     HostedPublicVirtualInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directconnect/hostedPublicVirtualInterface:HostedPublicVirtualInterface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressFamily = registerOutput<String>('addressFamily');
-    this.amazonAddress = registerOutput<String>('amazonAddress');
-    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
-    this.arn = registerOutput<String>('arn');
-    this.awsDevice = registerOutput<String>('awsDevice');
-    this.bgpAsn = registerOutput<int>('bgpAsn');
-    this.bgpAuthKey = registerOutput<String>('bgpAuthKey');
-    this.connectionId = registerOutput<String>('connectionId');
-    this.customerAddress = registerOutput<String>('customerAddress');
+         'aws:directconnect/hostedPublicVirtualInterface:HostedPublicVirtualInterface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    connectionId = registerOutput<String>('connectionId');
+    customerAddress = registerOutput<String>('customerAddress');
     this.name = registerOutput<String>('name');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.region = registerOutput<String>('region');
-    this.routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
-    this.vlan = registerOutput<int>('vlan');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
+    vlan = registerOutput<int>('vlan');
   }
 
   /// Gets an existing [HostedPublicVirtualInterface] resource's state with the given [name] and [id].
@@ -238,24 +250,24 @@ class HostedPublicVirtualInterface extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:directconnect/hostedPublicVirtualInterface:HostedPublicVirtualInterface',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressFamily = registerOutput<String>('addressFamily');
-    this.amazonAddress = registerOutput<String>('amazonAddress');
-    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
-    this.arn = registerOutput<String>('arn');
-    this.awsDevice = registerOutput<String>('awsDevice');
-    this.bgpAsn = registerOutput<int>('bgpAsn');
-    this.bgpAuthKey = registerOutput<String>('bgpAuthKey');
-    this.connectionId = registerOutput<String>('connectionId');
-    this.customerAddress = registerOutput<String>('customerAddress');
+         'aws:directconnect/hostedPublicVirtualInterface:HostedPublicVirtualInterface',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    connectionId = registerOutput<String>('connectionId');
+    customerAddress = registerOutput<String>('customerAddress');
     this.name = registerOutput<String>('name');
-    this.ownerAccountId = registerOutput<String>('ownerAccountId');
-    this.region = registerOutput<String>('region');
-    this.routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
-    this.vlan = registerOutput<int>('vlan');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    routeFilterPrefixes = registerOutput<List<String>>('routeFilterPrefixes');
+    vlan = registerOutput<int>('vlan');
   }
 }

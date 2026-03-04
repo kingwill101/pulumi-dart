@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataLakeConnectorTopicMapArgs {
   /// Name of MQ dataLakeConnector resource
   final pulumi.Input<String> dataLakeConnectorName;
+
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of MQ dataLakeConnector/topicMap resource
   final pulumi.Input<String> topicMapName;
 
@@ -39,11 +42,14 @@ class GetDataLakeConnectorTopicMapArgs {
 
   factory GetDataLakeConnectorTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return GetDataLakeConnectorTopicMapArgs(
-      dataLakeConnectorName: (map['dataLakeConnectorName'] as String).input(),
-      mqName: (map['mqName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicMapName: (map['topicMapName'] as String).input(),
+      dataLakeConnectorName: pulumi.Input.fromValue(
+        map['dataLakeConnectorName'] as String,
+      ),
+      mqName: pulumi.Input.fromValue(map['mqName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      topicMapName: pulumi.Input.fromValue(map['topicMapName'] as String),
     );
   }
 }
-

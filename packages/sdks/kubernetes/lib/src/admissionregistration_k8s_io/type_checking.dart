@@ -10,20 +10,39 @@ class TypeChecking {
 
   /// Creates a new [TypeChecking].
   /// [expressionWarnings] The type checking warnings for each expression.
-  TypeChecking({
-    this.expressionWarnings,
-  });
+  TypeChecking({this.expressionWarnings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressionWarnings': ?pulumi.Input.mapOptionalInputValue<List<ExpressionWarning>, List<Map<String, dynamic>>>(expressionWarnings, (value) => pulumi.Input.encodeList<ExpressionWarning, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'expressionWarnings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ExpressionWarning>,
+            List<Map<String, dynamic>>
+          >(
+            expressionWarnings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ExpressionWarning,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TypeChecking.fromMap(Map<String, dynamic> map) {
     return TypeChecking(
-      expressionWarnings: map['expressionWarnings'] == null ? null : (pulumi.Input.decodeList<ExpressionWarning>(map['expressionWarnings']!, (value) => ExpressionWarning.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expressionWarnings: (() {
+        final guardedValue = map['expressionWarnings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ExpressionWarning>(
+            guardedValue,
+            (value) => ExpressionWarning.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

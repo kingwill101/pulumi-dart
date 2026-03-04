@@ -27,10 +27,9 @@ class GetVolumeV3Attachment {
 
   factory GetVolumeV3Attachment.fromMap(Map<String, dynamic> map) {
     return GetVolumeV3Attachment(
-      device: (map['device'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      device: pulumi.Input.fromValue(map['device'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

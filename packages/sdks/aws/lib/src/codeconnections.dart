@@ -1,5 +1,3 @@
-library module_codeconnections;
-
 export 'codeconnections/connection.dart';
 export 'codeconnections/connection_args.dart';
 export 'codeconnections/connection_state.dart';

@@ -1,5 +1,3 @@
-library module_loadtestservice;
-
 export 'loadtestservice/enablement_status.dart';
 export 'loadtestservice/encryption_properties.dart';
 export 'loadtestservice/encryption_properties_identity.dart';

@@ -6,7 +6,7 @@ import 'chart_namespace_state.dart';
 ///
 /// For information about CR Chart Namespace and how to use it, see [What is Chart Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createchartnamespace).
 ///
-/// > **NOTE:** Available since v1.149.0.
+/// &gt; **NOTE:** Available since v1.149.0.
 ///
 /// ## Example Usage
 ///
@@ -234,10 +234,13 @@ import 'chart_namespace_state.dart';
 class ChartNamespace extends pulumi.CustomResource {
   /// Specifies whether to automatically create repositories in the namespace. Valid values:
   late final pulumi.Output<bool> autoCreateRepo;
+
   /// DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
   late final pulumi.Output<String> defaultRepoType;
+
   /// The ID of the Container Registry instance.
   late final pulumi.Output<String> instanceId;
+
   /// The name of the namespace that you want to create.
   late final pulumi.Output<String> namespaceName;
 
@@ -250,15 +253,15 @@ class ChartNamespace extends pulumi.CustomResource {
     ChartNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/chartNamespace:ChartNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreateRepo = registerOutput<bool>('autoCreateRepo');
-    this.defaultRepoType = registerOutput<String>('defaultRepoType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaceName = registerOutput<String>('namespaceName');
+         'alicloud:cr/chartNamespace:ChartNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoCreateRepo = registerOutput<bool>('autoCreateRepo');
+    defaultRepoType = registerOutput<String>('defaultRepoType');
+    instanceId = registerOutput<String>('instanceId');
+    namespaceName = registerOutput<String>('namespaceName');
   }
 
   /// Gets an existing [ChartNamespace] resource's state with the given [name] and [id].
@@ -279,14 +282,14 @@ class ChartNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/chartNamespace:ChartNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreateRepo = registerOutput<bool>('autoCreateRepo');
-    this.defaultRepoType = registerOutput<String>('defaultRepoType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.namespaceName = registerOutput<String>('namespaceName');
+         'alicloud:cr/chartNamespace:ChartNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoCreateRepo = registerOutput<bool>('autoCreateRepo');
+    defaultRepoType = registerOutput<String>('defaultRepoType');
+    instanceId = registerOutput<String>('instanceId');
+    namespaceName = registerOutput<String>('namespaceName');
   }
 }

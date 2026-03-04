@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_address_pool_args.dart';
 import 'backend_address_pool_state.dart';
-import 'backend_address_pool_tunnel_interface.dart';
 
 /// Manages a Load Balancer Backend Address Pool.
 ///
-/// > **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
+/// &gt; **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
 ///
 /// ## Example Usage
 ///
@@ -254,7 +253,7 @@ import 'backend_address_pool_tunnel_interface.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2023-09-01
@@ -269,22 +268,30 @@ import 'backend_address_pool_tunnel_interface.dart';
 class BackendAddressPool extends pulumi.CustomResource {
   /// The Backend IP Configurations associated with this Backend Address Pool.
   late final pulumi.Output<List<String>> backendIpConfigurations;
+
   /// An array of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool.
   late final pulumi.Output<List<String>> inboundNatRules;
+
   /// The Load Balancing Rules associated with this Backend Address Pool.
   late final pulumi.Output<List<String>> loadBalancingRules;
+
   /// The ID of the Load Balancer in which to create the Backend Address Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> loadbalancerId;
+
   /// Specifies the name of the Backend Address Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// An array of the Load Balancing Outbound Rules associated with this Backend Address Pool.
   late final pulumi.Output<List<String>> outboundRules;
+
   /// The backend address synchronous mode for the Backend Address Pool. Possible values are `Automatic` and `Manual`. This is required with `virtual_network_id`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `synchronous_mode` can set only for Load Balancer with `Standard` SKU.
+  /// &gt; **Note:** The `synchronous_mode` can set only for Load Balancer with `Standard` SKU.
   late final pulumi.Output<String?> synchronousMode;
+
   /// One or more `tunnel_interface` blocks as defined below.
-  late final pulumi.Output<List<BackendAddressPoolTunnelInterface>?> tunnelInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tunnelInterfaces;
+
   /// The ID of the Virtual Network within which the Backend Address Pool should exist.
   late final pulumi.Output<String?> virtualNetworkId;
 
@@ -297,20 +304,24 @@ class BackendAddressPool extends pulumi.CustomResource {
     BackendAddressPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/backendAddressPool:BackendAddressPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendIpConfigurations = registerOutput<List<String>>('backendIpConfigurations');
-    this.inboundNatRules = registerOutput<List<String>>('inboundNatRules');
-    this.loadBalancingRules = registerOutput<List<String>>('loadBalancingRules');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'azure:lb/backendAddressPool:BackendAddressPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendIpConfigurations = registerOutput<List<String>>(
+      'backendIpConfigurations',
+    );
+    inboundNatRules = registerOutput<List<String>>('inboundNatRules');
+    loadBalancingRules = registerOutput<List<String>>('loadBalancingRules');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.outboundRules = registerOutput<List<String>>('outboundRules');
-    this.synchronousMode = registerOutput<String?>('synchronousMode');
-    this.tunnelInterfaces = registerOutput<List<BackendAddressPoolTunnelInterface>?>('tunnelInterfaces');
-    this.virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+    outboundRules = registerOutput<List<String>>('outboundRules');
+    synchronousMode = registerOutput<String?>('synchronousMode');
+    tunnelInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'tunnelInterfaces',
+    );
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
   }
 
   /// Gets an existing [BackendAddressPool] resource's state with the given [name] and [id].
@@ -331,19 +342,23 @@ class BackendAddressPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/backendAddressPool:BackendAddressPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendIpConfigurations = registerOutput<List<String>>('backendIpConfigurations');
-    this.inboundNatRules = registerOutput<List<String>>('inboundNatRules');
-    this.loadBalancingRules = registerOutput<List<String>>('loadBalancingRules');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'azure:lb/backendAddressPool:BackendAddressPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendIpConfigurations = registerOutput<List<String>>(
+      'backendIpConfigurations',
+    );
+    inboundNatRules = registerOutput<List<String>>('inboundNatRules');
+    loadBalancingRules = registerOutput<List<String>>('loadBalancingRules');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.outboundRules = registerOutput<List<String>>('outboundRules');
-    this.synchronousMode = registerOutput<String?>('synchronousMode');
-    this.tunnelInterfaces = registerOutput<List<BackendAddressPoolTunnelInterface>?>('tunnelInterfaces');
-    this.virtualNetworkId = registerOutput<String?>('virtualNetworkId');
+    outboundRules = registerOutput<List<String>>('outboundRules');
+    synchronousMode = registerOutput<String?>('synchronousMode');
+    tunnelInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'tunnelInterfaces',
+    );
+    virtualNetworkId = registerOutput<String?>('virtualNetworkId');
   }
 }

@@ -8,36 +8,52 @@ import 'system_data_response.dart';
 class GetDiagnosticServiceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The frequency at which the data will be exported.
   final int? dataExportFrequencySeconds;
+
   /// Extended Location
   final ExtendedLocationPropertyResponse extendedLocation;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The details of Diagnostic Service Docker Image.
   final ContainerImageResponse image;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The format for the logs generated.
   final String? logFormat;
+
   /// The format for the logs generated.
   final String? logLevel;
+
   /// The maximum data stored in MiB.
   final double? maxDataStorageSize;
+
   /// The port at which metrics is exposed.
   final int? metricsPort;
+
   /// The name of the resource
   final String name;
+
   /// The destination to collect traces. Diagnostic service will push traces to this endpoint
   final String? openTelemetryTracesCollectorAddr;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// Metric inactivity timeout.
   final int? staleDataTimeoutSeconds;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -104,23 +120,60 @@ class GetDiagnosticServiceResult {
   factory GetDiagnosticServiceResult.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticServiceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataExportFrequencySeconds: map['dataExportFrequencySeconds'] == null ? null : map['dataExportFrequencySeconds']! as int,
-      extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      dataExportFrequencySeconds: (() {
+        final guardedValue = map['dataExportFrequencySeconds'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      extendedLocation: ExtendedLocationPropertyResponse.fromMap(
+        (map['extendedLocation']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
-      image: ContainerImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      image: ContainerImageResponse.fromMap(
+        (map['image']! as Map).cast<String, dynamic>(),
+      ),
       location: map['location'] as String,
-      logFormat: map['logFormat'] == null ? null : map['logFormat']! as String,
-      logLevel: map['logLevel'] == null ? null : map['logLevel']! as String,
-      maxDataStorageSize: map['maxDataStorageSize'] == null ? null : map['maxDataStorageSize']! as double,
-      metricsPort: map['metricsPort'] == null ? null : map['metricsPort']! as int,
+      logFormat: (() {
+        final guardedValue = map['logFormat'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      maxDataStorageSize: (() {
+        final guardedValue = map['maxDataStorageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      metricsPort: (() {
+        final guardedValue = map['metricsPort'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       name: map['name'] as String,
-      openTelemetryTracesCollectorAddr: map['openTelemetryTracesCollectorAddr'] == null ? null : map['openTelemetryTracesCollectorAddr']! as String,
+      openTelemetryTracesCollectorAddr: (() {
+        final guardedValue = map['openTelemetryTracesCollectorAddr'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      staleDataTimeoutSeconds: map['staleDataTimeoutSeconds'] == null ? null : map['staleDataTimeoutSeconds']! as int,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      staleDataTimeoutSeconds: (() {
+        final guardedValue = map['staleDataTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

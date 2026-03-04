@@ -8,9 +8,9 @@ import 'instance_iam_policy_state.dart';
 /// * `gcp.bigtable.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
 /// * `gcp.bigtable.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
 ///
-/// > **Note:** `gcp.bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.InstanceIamBinding` and `gcp.bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `gcp.bigtable.InstanceIamPolicy` replaces the entire policy.
+/// &gt; **Note:** `gcp.bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.InstanceIamBinding` and `gcp.bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `gcp.bigtable.InstanceIamPolicy` replaces the entire policy.
 ///
-/// > **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.bigtable.InstanceIamPolicy
 ///
@@ -778,6 +778,7 @@ import 'instance_iam_policy_state.dart';
 class InstanceIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the instances's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
@@ -794,15 +795,15 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     InstanceIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/instanceIamPolicy:InstanceIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.instance = registerOutput<String>('instance');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+         'gcp:bigtable/instanceIamPolicy:InstanceIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [InstanceIamPolicy] resource's state with the given [name] and [id].
@@ -823,14 +824,14 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/instanceIamPolicy:InstanceIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.instance = registerOutput<String>('instance');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+         'gcp:bigtable/instanceIamPolicy:InstanceIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 }

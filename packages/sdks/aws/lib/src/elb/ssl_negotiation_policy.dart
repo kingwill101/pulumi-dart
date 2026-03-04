@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssl_negotiation_policy_args.dart';
-import 'ssl_negotiation_policy_attribute.dart';
 import 'ssl_negotiation_policy_state.dart';
 
 /// Provides a load balancer SSL negotiation policy, which allows an ELB to control the ciphers and protocols that are supported during SSL negotiations between a client and a load balancer.
@@ -366,23 +365,28 @@ import 'ssl_negotiation_policy_state.dart';
 /// ```
 class SslNegotiationPolicy extends pulumi.CustomResource {
   /// An SSL Negotiation policy attribute. Each has two properties:
-  late final pulumi.Output<List<SslNegotiationPolicyAttribute>?> attributes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
+
   /// The load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
   late final pulumi.Output<int> lbPort;
+
   /// The load balancer to which the policy
   /// should be attached.
   late final pulumi.Output<String> loadBalancer;
+
   /// The name of the SSL negotiation policy.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   ///
   /// To set your attributes, please see the [AWS Elastic Load Balancing Developer Guide](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-policy-table.html) for a listing of the supported SSL protocols, SSL options, and SSL ciphers.
   ///
-  /// > **NOTE:** The AWS documentation references Server Order Preference, which the AWS Elastic Load Balancing API refers to as `Server-Defined-Cipher-Order`. If you wish to set Server Order Preference, use this value instead.
+  /// &gt; **NOTE:** The AWS documentation references Server Order Preference, which the AWS Elastic Load Balancing API refers to as `Server-Defined-Cipher-Order`. If you wish to set Server Order Preference, use this value instead.
   late final pulumi.Output<Map<String, String>?> triggers;
 
   /// Creates a new [SslNegotiationPolicy].
@@ -394,17 +398,17 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
     SslNegotiationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attributes = registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes');
-    this.lbPort = registerOutput<int>('lbPort');
-    this.loadBalancer = registerOutput<String>('loadBalancer');
+         'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+    region = registerOutput<String>('region');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 
   /// Gets an existing [SslNegotiationPolicy] resource's state with the given [name] and [id].
@@ -425,16 +429,16 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attributes = registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes');
-    this.lbPort = registerOutput<int>('lbPort');
-    this.loadBalancer = registerOutput<String>('loadBalancer');
+         'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    lbPort = registerOutput<int>('lbPort');
+    loadBalancer = registerOutput<String>('loadBalancer');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.triggers = registerOutput<Map<String, String>?>('triggers');
+    region = registerOutput<String>('region');
+    triggers = registerOutput<Map<String, String>?>('triggers');
   }
 }

@@ -16,14 +16,28 @@ class ListApplicationBusinessProcessDevelopmentArtifactsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': pulumi.Input.encodeList<SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<
+            SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
-  factory ListApplicationBusinessProcessDevelopmentArtifactsResult.fromMap(Map<String, dynamic> map) {
+  factory ListApplicationBusinessProcessDevelopmentArtifactsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListApplicationBusinessProcessDevelopmentArtifactsResult(
-      value: pulumi.Input.decodeList<SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse>(map['value'], (value) => SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value:
+          pulumi.Input.decodeList<
+            SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse
+          >(
+            map['value']!,
+            (value) =>
+                SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

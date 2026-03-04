@@ -6,10 +6,13 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
   /// Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
   /// **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
   final pulumi.Input<int>? maxInstances;
+
   /// Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
   final pulumi.Input<int>? minInstances;
+
   /// Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
   final pulumi.Input<double>? targetCpuUtilization;
+
   /// Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
   final pulumi.Input<double>? targetThroughputUtilization;
 
@@ -34,13 +37,30 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
     };
   }
 
-  factory StandardAppVersionAutomaticScalingStandardSchedulerSettings.fromMap(Map<String, dynamic> map) {
+  factory StandardAppVersionAutomaticScalingStandardSchedulerSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StandardAppVersionAutomaticScalingStandardSchedulerSettings(
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
-      targetCpuUtilization: map['targetCpuUtilization'] == null ? null : (map['targetCpuUtilization']! as double).input(),
-      targetThroughputUtilization: map['targetThroughputUtilization'] == null ? null : (map['targetThroughputUtilization']! as double).input(),
+      maxInstances: (() {
+        final guardedValue = map['maxInstances'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minInstances: (() {
+        final guardedValue = map['minInstances'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetCpuUtilization: (() {
+        final guardedValue = map['targetCpuUtilization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      targetThroughputUtilization: (() {
+        final guardedValue = map['targetThroughputUtilization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

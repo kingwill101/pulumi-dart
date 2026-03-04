@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderArgs {
   /// The Hetzner Cloud API endpoint, can be used to override the default API Endpoint https://api.hetzner.cloud/v1.
   final pulumi.Input<String>? endpoint;
+
   /// The Hetzner API endpoint, can be used to override the default API Endpoint https://api.hetzner.com/v1.
   final pulumi.Input<String>? endpointHetzner;
+
   /// The type of function to be used during the polling.
   final pulumi.Input<String>? pollFunction;
+
   /// The interval at which actions are polled by the client. Default `500ms`. Increase this interval if you run into rate limiting errors.
   final pulumi.Input<String>? pollInterval;
+
   /// The Hetzner Cloud API token, can also be specified with the HCLOUD_TOKEN environment variable.
   final pulumi.Input<String>? token;
 
@@ -44,12 +48,31 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      endpointHetzner: map['endpointHetzner'] == null ? null : (map['endpointHetzner']! as String).input(),
-      pollFunction: map['pollFunction'] == null ? null : (map['pollFunction']! as String).input(),
-      pollInterval: map['pollInterval'] == null ? null : (map['pollInterval']! as String).input(),
-      token: map['token'] == null ? null : (map['token']! as String).input(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointHetzner: (() {
+        final guardedValue = map['endpointHetzner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pollFunction: (() {
+        final guardedValue = map['pollFunction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pollInterval: (() {
+        final guardedValue = map['pollInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

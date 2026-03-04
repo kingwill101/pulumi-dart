@@ -12,15 +12,14 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': action,
-    };
+    return <String, dynamic>{'action': action};
   }
 
-  factory GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride(
-      action: (map['action'] as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
     );
   }
 }
-

@@ -150,15 +150,21 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:machinelearningservices:MarketplaceSubscription string /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}
 /// ```
-class MarketplaceSubscriptionMachinelearningservices extends pulumi.CustomResource {
+class MarketplaceSubscriptionMachinelearningservices
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<MarketplaceSubscriptionResponse> marketplaceSubscriptionProperties;
+  late final pulumi.Output<MarketplaceSubscriptionResponse>
+  marketplaceSubscriptionProperties;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,15 +177,18 @@ class MarketplaceSubscriptionMachinelearningservices extends pulumi.CustomResour
     MarketplaceSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:MarketplaceSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.marketplaceSubscriptionProperties = registerOutput<MarketplaceSubscriptionResponse>('marketplaceSubscriptionProperties');
+         'azure-native:machinelearningservices:MarketplaceSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    marketplaceSubscriptionProperties =
+        registerOutput<MarketplaceSubscriptionResponse>(
+          'marketplaceSubscriptionProperties',
+        );
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

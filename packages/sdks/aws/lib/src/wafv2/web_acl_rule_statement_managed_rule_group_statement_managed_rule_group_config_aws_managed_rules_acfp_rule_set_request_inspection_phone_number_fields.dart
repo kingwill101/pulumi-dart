@@ -13,15 +13,16 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identifiers': identifiers,
-    };
+    return <String, dynamic>{'identifiers': identifiers};
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields(
-      identifiers: ((map['identifiers'] as List).cast<String>()).input(),
+      identifiers: pulumi.Input.fromValue(
+        (map['identifiers'] as List).cast<String>(),
+      ),
     );
   }
 }
-

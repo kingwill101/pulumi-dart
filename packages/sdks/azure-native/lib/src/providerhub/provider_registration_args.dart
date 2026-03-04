@@ -11,6 +11,7 @@ class ProviderRegistrationArgs {
   /// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   final pulumi.Input<String>? kind;
   final pulumi.Input<ProviderRegistrationProperties>? properties;
+
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String>? providerNamespace;
 
@@ -27,17 +28,36 @@ class ProviderRegistrationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kind': ?kind,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ProviderRegistrationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProviderRegistrationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'providerNamespace': ?providerNamespace,
     };
   }
 
   factory ProviderRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationArgs(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      properties: map['properties'] == null ? null : (ProviderRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      providerNamespace: map['providerNamespace'] == null ? null : (map['providerNamespace']! as String).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProviderRegistrationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      providerNamespace: (() {
+        final guardedValue = map['providerNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyntheticTaskAvailableAssertion {
   /// Expected value.
   final pulumi.Input<String> expect;
+
   /// Condition: gt: greater than; gte: greater than or equal to; lt: less than; te: less than or equal to; eq: equal to; neq: not equal to; ctn: contains; nctn: does not contain; exist: exists; n_exist: does not exist; belong: belongs to; reg_match: regular matching.
   final pulumi.Input<String> operator;
+
   /// Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
   final pulumi.Input<String>? target;
+
   /// Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
   final pulumi.Input<String> type;
 
@@ -35,11 +38,14 @@ class SyntheticTaskAvailableAssertion {
 
   factory SyntheticTaskAvailableAssertion.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskAvailableAssertion(
-      expect: (map['expect'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
-      type: (map['type'] as String).input(),
+      expect: pulumi.Input.fromValue(map['expect'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

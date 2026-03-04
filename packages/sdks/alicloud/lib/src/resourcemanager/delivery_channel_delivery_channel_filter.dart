@@ -10,20 +10,21 @@ class DeliveryChannelDeliveryChannelFilter {
 
   /// Creates a new [DeliveryChannelDeliveryChannelFilter].
   /// [resourceTypes] An array of effective resource types for the delivery channel.
-  DeliveryChannelDeliveryChannelFilter({
-    this.resourceTypes,
-  });
+  DeliveryChannelDeliveryChannelFilter({this.resourceTypes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceTypes': ?resourceTypes,
-    };
+    return <String, dynamic>{'resourceTypes': ?resourceTypes};
   }
 
-  factory DeliveryChannelDeliveryChannelFilter.fromMap(Map<String, dynamic> map) {
+  factory DeliveryChannelDeliveryChannelFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryChannelDeliveryChannelFilter(
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
+      resourceTypes: (() {
+        final guardedValue = map['resourceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

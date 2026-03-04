@@ -18,41 +18,55 @@ class BareMetalNodePoolState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// The cluster this node pool belongs to.
   final pulumi.Input<String>? bareMetalCluster;
+
   /// The time the cluster was created, in RFC3339 text format.
   final pulumi.Input<String>? createTime;
+
   /// The time the cluster was deleted, in RFC3339 text format.
   final pulumi.Input<String>? deleteTime;
+
   /// The display name for the Bare Metal Node Pool.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// Allows clients to perform consistent read-modify-writes
   /// through optimistic concurrency control.
   final pulumi.Input<String>? etag;
+
   /// The location of the resource.
   final pulumi.Input<String>? location;
+
   /// The bare metal node pool name.
   final pulumi.Input<String>? name;
+
   /// Node pool configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalNodePoolNodePoolConfig>? nodePoolConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// If set, there are currently changes in flight to the Bare Metal User Cluster.
   final pulumi.Input<bool>? reconciling;
+
   /// (Output)
   /// The lifecycle state of the condition.
   final pulumi.Input<String>? state;
+
   /// Specifies detailed node pool status.
   /// Structure is documented below.
   final pulumi.Input<List<BareMetalNodePoolStatus>>? statuses;
+
   /// The unique identifier of the Bare Metal Node Pool.
   final pulumi.Input<String>? uid;
+
   /// The time the cluster was last updated, in RFC3339 text format.
   final pulumi.Input<String>? updateTime;
 
@@ -103,11 +117,26 @@ class BareMetalNodePoolState {
       'etag': ?etag,
       'location': ?location,
       'name': ?name,
-      'nodePoolConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalNodePoolNodePoolConfig, Map<String, dynamic>>(nodePoolConfig, (value) => value.toMap()),
+      'nodePoolConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalNodePoolNodePoolConfig,
+            Map<String, dynamic>
+          >(nodePoolConfig, (value) => value.toMap()),
       'project': ?project,
       'reconciling': ?reconciling,
       'state': ?state,
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<BareMetalNodePoolStatus>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<BareMetalNodePoolStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BareMetalNodePoolStatus>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BareMetalNodePoolStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
@@ -115,23 +144,101 @@ class BareMetalNodePoolState {
 
   factory BareMetalNodePoolState.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      bareMetalCluster: map['bareMetalCluster'] == null ? null : (map['bareMetalCluster']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nodePoolConfig: map['nodePoolConfig'] == null ? null : (BareMetalNodePoolNodePoolConfig.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<BareMetalNodePoolStatus>(map['statuses']!, (value) => BareMetalNodePoolStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      bareMetalCluster: (() {
+        final guardedValue = map['bareMetalCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteTime: (() {
+        final guardedValue = map['deleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveAnnotations: (() {
+        final guardedValue = map['effectiveAnnotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodePoolConfig: (() {
+        final guardedValue = map['nodePoolConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalNodePoolNodePoolConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reconciling: (() {
+        final guardedValue = map['reconciling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BareMetalNodePoolStatus>(
+            guardedValue,
+            (value) => BareMetalNodePoolStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

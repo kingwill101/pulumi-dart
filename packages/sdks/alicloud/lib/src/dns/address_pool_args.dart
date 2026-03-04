@@ -10,12 +10,16 @@ import 'address_pool_address.dart';
 class AddressPoolArgs {
   /// The name of the address pool.
   final pulumi.Input<String> addressPoolName;
+
   /// The address lists of the Address Pool. See `address` below for details.
   final pulumi.Input<List<AddressPoolAddress>> addresses;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
   final pulumi.Input<String> lbaStrategy;
+
   /// The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
   final pulumi.Input<String> type;
 
@@ -36,7 +40,18 @@ class AddressPoolArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressPoolName': addressPoolName,
-      'addresses': pulumi.Input.mapInputValue<List<AddressPoolAddress>, List<Map<String, dynamic>>>(addresses, (value) => pulumi.Input.encodeList<AddressPoolAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'addresses':
+          pulumi.Input.mapInputValue<
+            List<AddressPoolAddress>,
+            List<Map<String, dynamic>>
+          >(
+            addresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AddressPoolAddress,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'instanceId': instanceId,
       'lbaStrategy': lbaStrategy,
       'type': type,
@@ -45,12 +60,18 @@ class AddressPoolArgs {
 
   factory AddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return AddressPoolArgs(
-      addressPoolName: (map['addressPoolName'] as String).input(),
-      addresses: (pulumi.Input.decodeList<AddressPoolAddress>(map['addresses'], (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      lbaStrategy: (map['lbaStrategy'] as String).input(),
-      type: (map['type'] as String).input(),
+      addressPoolName: pulumi.Input.fromValue(map['addressPoolName'] as String),
+      addresses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AddressPoolAddress>(
+          map['addresses']!,
+          (value) => AddressPoolAddress.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      lbaStrategy: pulumi.Input.fromValue(map['lbaStrategy'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

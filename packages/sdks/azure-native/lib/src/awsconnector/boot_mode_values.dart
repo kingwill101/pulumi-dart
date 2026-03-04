@@ -4,16 +4,15 @@ enum BootModeValues {
   uefi("uefi"),
   uefiPreferred("uefi-preferred");
 
-  const BootModeValues(this.value);
-  final String value;
+  const BootModeValues(this.wireValue);
+  final String wireValue;
 
   static BootModeValues fromValue(String value) {
     for (final item in BootModeValues.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BootModeValues value: $value');
   }
 }
-

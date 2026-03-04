@@ -14,15 +14,18 @@ class AppVersionSnapshotAppLoggingSettingCloudLoggingSetting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableCloudLogging': ?enableCloudLogging,
-    };
+    return <String, dynamic>{'enableCloudLogging': ?enableCloudLogging};
   }
 
-  factory AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppLoggingSettingCloudLoggingSetting(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging']! as bool).input(),
+      enableCloudLogging: (() {
+        final guardedValue = map['enableCloudLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -10,10 +10,13 @@ import 'connection_properties.dart';
 class PrivateEndpointConnectionArgs {
   /// The name of the private endpoint connection.
   final pulumi.Input<String>? privateEndpointConnectionName;
+
   /// The connection properties.
   final pulumi.Input<ConnectionProperties> properties;
+
   /// The name of the resource group that contains the DigitalTwinsInstance.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the DigitalTwinsInstance.
   final pulumi.Input<String> resourceName;
 
@@ -32,7 +35,11 @@ class PrivateEndpointConnectionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'privateEndpointConnectionName': ?privateEndpointConnectionName,
-      'properties': pulumi.Input.mapInputValue<ConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ConnectionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
@@ -40,11 +47,20 @@ class PrivateEndpointConnectionArgs {
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
-      properties: (ConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      privateEndpointConnectionName: (() {
+        final guardedValue = map['privateEndpointConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        ConnectionProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

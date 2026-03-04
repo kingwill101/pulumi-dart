@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rds_parameter_group_args.dart';
-import 'rds_parameter_group_param_detail.dart';
 import 'rds_parameter_group_state.dart';
 
 /// Provides a RDS Parameter Group resource.
 ///
 /// For information about RDS Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/doc-detail/144839.htm).
 ///
-/// > **NOTE:** Available since v1.119.0.
+/// &gt; **NOTE:** Available since v1.119.0.
 ///
 /// ## Example Usage
 ///
@@ -210,12 +209,16 @@ import 'rds_parameter_group_state.dart';
 class RdsParameterGroup extends pulumi.CustomResource {
   /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
   late final pulumi.Output<String> engine;
+
   /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
   late final pulumi.Output<String> engineVersion;
+
   /// Parameter list. See `param_detail` below.
-  late final pulumi.Output<List<RdsParameterGroupParamDetail>> paramDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>> paramDetails;
+
   /// The description of the parameter template.
   late final pulumi.Output<String?> parameterGroupDesc;
+
   /// The name of the parameter template.
   late final pulumi.Output<String> parameterGroupName;
 
@@ -228,16 +231,16 @@ class RdsParameterGroup extends pulumi.CustomResource {
     RdsParameterGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.paramDetails = registerOutput<List<RdsParameterGroupParamDetail>>('paramDetails');
-    this.parameterGroupDesc = registerOutput<String?>('parameterGroupDesc');
-    this.parameterGroupName = registerOutput<String>('parameterGroupName');
+         'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    paramDetails = registerOutput<List<Map<String, dynamic>>>('paramDetails');
+    parameterGroupDesc = registerOutput<String?>('parameterGroupDesc');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
   }
 
   /// Gets an existing [RdsParameterGroup] resource's state with the given [name] and [id].
@@ -258,15 +261,15 @@ class RdsParameterGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.paramDetails = registerOutput<List<RdsParameterGroupParamDetail>>('paramDetails');
-    this.parameterGroupDesc = registerOutput<String?>('parameterGroupDesc');
-    this.parameterGroupName = registerOutput<String>('parameterGroupName');
+         'alicloud:rds/rdsParameterGroup:RdsParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    paramDetails = registerOutput<List<Map<String, dynamic>>>('paramDetails');
+    parameterGroupDesc = registerOutput<String?>('parameterGroupDesc');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
   }
 }

@@ -224,14 +224,19 @@ import 'usage_plan_key_state.dart';
 class UsagePlanKey extends pulumi.CustomResource {
   /// Identifier of the API key resource.
   late final pulumi.Output<String> keyId;
+
   /// Type of the API key resource. Currently, the valid key type is API_KEY.
   late final pulumi.Output<String> keyType;
+
   /// Name of a usage plan key.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Id of the usage plan resource representing to associate the key to.
   late final pulumi.Output<String> usagePlanId;
+
   /// Value of a usage plan key.
   late final pulumi.Output<String> value;
 
@@ -244,17 +249,17 @@ class UsagePlanKey extends pulumi.CustomResource {
     UsagePlanKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/usagePlanKey:UsagePlanKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyId = registerOutput<String>('keyId');
-    this.keyType = registerOutput<String>('keyType');
+         'aws:apigateway/usagePlanKey:UsagePlanKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyId = registerOutput<String>('keyId');
+    keyType = registerOutput<String>('keyType');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.usagePlanId = registerOutput<String>('usagePlanId');
-    this.value = registerOutput<String>('value');
+    region = registerOutput<String>('region');
+    usagePlanId = registerOutput<String>('usagePlanId');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [UsagePlanKey] resource's state with the given [name] and [id].
@@ -275,16 +280,16 @@ class UsagePlanKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/usagePlanKey:UsagePlanKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyId = registerOutput<String>('keyId');
-    this.keyType = registerOutput<String>('keyType');
+         'aws:apigateway/usagePlanKey:UsagePlanKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyId = registerOutput<String>('keyId');
+    keyType = registerOutput<String>('keyType');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.usagePlanId = registerOutput<String>('usagePlanId');
-    this.value = registerOutput<String>('value');
+    region = registerOutput<String>('region');
+    usagePlanId = registerOutput<String>('usagePlanId');
+    value = registerOutput<String>('value');
   }
 }

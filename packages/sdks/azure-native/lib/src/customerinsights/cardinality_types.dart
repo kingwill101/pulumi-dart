@@ -4,16 +4,15 @@ enum CardinalityTypes {
   valueOneToMany("OneToMany"),
   valueManyToMany("ManyToMany");
 
-  const CardinalityTypes(this.value);
-  final String value;
+  const CardinalityTypes(this.wireValue);
+  final String wireValue;
 
   static CardinalityTypes fromValue(String value) {
     for (final item in CardinalityTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CardinalityTypes value: $value');
   }
 }
-

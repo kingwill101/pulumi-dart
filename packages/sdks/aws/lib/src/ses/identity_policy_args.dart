@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityPolicyArgs {
   /// Name or Amazon Resource Name (ARN) of the SES Identity.
   final pulumi.Input<String> identity;
+
   /// Name of the policy.
   final pulumi.Input<String>? name;
+
   /// JSON string of the policy.
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,18 @@ class IdentityPolicyArgs {
 
   factory IdentityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return IdentityPolicyArgs(
-      identity: (map['identity'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      identity: pulumi.Input.fromValue(map['identity'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

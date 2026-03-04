@@ -10,20 +10,29 @@ class ManagedEnvironmentResponsePeerAuthentication {
 
   /// Creates a new [ManagedEnvironmentResponsePeerAuthentication].
   /// [mtls] Mutual TLS authentication settings for the Managed Environment
-  ManagedEnvironmentResponsePeerAuthentication({
-    this.mtls,
-  });
+  ManagedEnvironmentResponsePeerAuthentication({this.mtls});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mtls': ?pulumi.Input.mapOptionalInputValue<MtlsResponse, Map<String, dynamic>>(mtls, (value) => value.toMap()),
+      'mtls':
+          ?pulumi.Input.mapOptionalInputValue<
+            MtlsResponse,
+            Map<String, dynamic>
+          >(mtls, (value) => value.toMap()),
     };
   }
 
-  factory ManagedEnvironmentResponsePeerAuthentication.fromMap(Map<String, dynamic> map) {
+  factory ManagedEnvironmentResponsePeerAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedEnvironmentResponsePeerAuthentication(
-      mtls: map['mtls'] == null ? null : (MtlsResponse.fromMap((map['mtls']! as Map).cast<String, dynamic>())).input(),
+      mtls: (() {
+        final guardedValue = map['mtls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MtlsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

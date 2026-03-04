@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionInputResponse {
   /// The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
   final pulumi.Input<String>? dataType;
+
   /// A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
   final pulumi.Input<bool>? isConfigurationParameter;
 
   /// Creates a new [FunctionInputResponse].
   /// [dataType] The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
   /// [isConfigurationParameter] A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
-  FunctionInputResponse({
-    this.dataType,
-    this.isConfigurationParameter,
-  });
+  FunctionInputResponse({this.dataType, this.isConfigurationParameter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class FunctionInputResponse {
 
   factory FunctionInputResponse.fromMap(Map<String, dynamic> map) {
     return FunctionInputResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
-      isConfigurationParameter: map['isConfigurationParameter'] == null ? null : (map['isConfigurationParameter']! as bool).input(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isConfigurationParameter: (() {
+        final guardedValue = map['isConfigurationParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum AzureSkuTier {
   valueStandard("Standard");
 
-  const AzureSkuTier(this.value);
-  final String value;
+  const AzureSkuTier(this.wireValue);
+  final String wireValue;
 
   static AzureSkuTier fromValue(String value) {
     for (final item in AzureSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureSkuTier value: $value');
   }
 }
-

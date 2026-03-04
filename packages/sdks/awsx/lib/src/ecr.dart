@@ -1,5 +1,3 @@
-library module_ecr;
-
 export 'ecr/builder_version.dart';
 export 'ecr/docker_build.dart';
 export 'ecr/image.dart';

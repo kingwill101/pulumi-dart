@@ -506,32 +506,40 @@ class Table extends pulumi.CustomResource {
   /// digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+
   /// The id of the parent database.
   late final pulumi.Output<String?> database;
+
   /// Output only. The deletion time of the table. Only set after the
   /// table is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> deleteTime;
+
   /// The checksum of a table object computed by the server based on the value
   /// of other fields. It may be sent on update requests to ensure the client
   /// has an up-to-date value before proceeding. It is only checked for update
   /// table operations.
   late final pulumi.Output<String> etag;
+
   /// Output only. The time when this table is considered expired. Only set
   /// after the table is deleted. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> expireTime;
+
   /// Options of a Hive table.
   /// Structure is documented below.
   late final pulumi.Output<TableHiveOptions?> hiveOptions;
+
   /// Output only. The name of the Table. Format:
   /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
   late final pulumi.Output<String> name;
+
   /// The database type.
   /// Possible values are: `HIVE`.
   late final pulumi.Output<String?> type;
+
   /// Output only. The last modification time of the table. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -542,33 +550,26 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_biglake_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(
-    String name, {
-    TableArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:biglake/table:Table',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.database = registerOutput<String?>('database');
-    this.deleteTime = registerOutput<String>('deleteTime');
-    this.etag = registerOutput<String>('etag');
-    this.expireTime = registerOutput<String>('expireTime');
-    this.hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions');
+  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:biglake/table:Table',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String?>('database');
+    deleteTime = registerOutput<String>('deleteTime');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String?>('type');
-    this.updateTime = registerOutput<String>('updateTime');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
-  static Table get(
-    String name,
-    pulumi.Input<String> id, {
-    TableState? state,
-  }) {
+  static Table get(String name, pulumi.Input<String> id, {TableState? state}) {
     return Table._get(
       name,
       state: state?.toMap(),
@@ -581,19 +582,19 @@ class Table extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:biglake/table:Table',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.database = registerOutput<String?>('database');
-    this.deleteTime = registerOutput<String>('deleteTime');
-    this.etag = registerOutput<String>('etag');
-    this.expireTime = registerOutput<String>('expireTime');
-    this.hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions');
+         'gcp:biglake/table:Table',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String?>('database');
+    deleteTime = registerOutput<String>('deleteTime');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String?>('type');
-    this.updateTime = registerOutput<String>('updateTime');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

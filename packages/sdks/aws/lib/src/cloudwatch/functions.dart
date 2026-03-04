@@ -110,7 +110,8 @@ import 'get_log_groups_result.dart';
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudwatch_get_contributor_managed_insight_rules_get_contributor_managed_insight_rules_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetContributorManagedInsightRulesResult> getContributorManagedInsightRules(
+Future<GetContributorManagedInsightRulesResult>
+getContributorManagedInsightRules(
   GetContributorManagedInsightRulesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -339,7 +340,7 @@ Future<GetEventBusesResult> getEventBuses(
 
 /// Use this data source to retrieve information about an EventBridge connection.
 ///
-/// > **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
+/// &gt; **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
 ///
 /// ## Example Usage
 ///
@@ -446,7 +447,7 @@ Future<GetEventConnectionResult> getEventConnection(
 
 /// Use this data source to get information about an EventBridge Partner Event Source. This data source will only return one partner event source. An error will be returned if multiple sources match the same name prefix.
 ///
-/// > **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
+/// &gt; **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
 ///
 /// ## Example Usage
 ///
@@ -553,7 +554,7 @@ Future<GetEventSourceResult> getEventSource(
 
 /// Generates a CloudWatch Log Group Data Protection Policy document in JSON format for use with the `aws.cloudwatch.LogDataProtectionPolicy` resource.
 ///
-/// > For more information about data protection policies, see the [Help protect sensitive log data with masking](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html).
+/// &gt; For more information about data protection policies, see the [Help protect sensitive log data with masking](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html).
 ///
 /// ## Example Usage
 ///
@@ -891,7 +892,8 @@ Future<GetEventSourceResult> getEventSource(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudwatch_get_log_data_protection_policy_document_get_log_data_protection_policy_document_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPolicyDocument(
+Future<GetLogDataProtectionPolicyDocumentResult>
+getLogDataProtectionPolicyDocument(
   GetLogDataProtectionPolicyDocumentArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscaleSettingNotificationWebhook {
   /// A map of settings.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// The HTTPS URI which should receive scale notifications.
   final pulumi.Input<String> serviceUri;
 
@@ -23,11 +24,18 @@ class AutoscaleSettingNotificationWebhook {
     };
   }
 
-  factory AutoscaleSettingNotificationWebhook.fromMap(Map<String, dynamic> map) {
+  factory AutoscaleSettingNotificationWebhook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutoscaleSettingNotificationWebhook(
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      serviceUri: (map['serviceUri'] as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      serviceUri: pulumi.Input.fromValue(map['serviceUri'] as String),
     );
   }
 }
-

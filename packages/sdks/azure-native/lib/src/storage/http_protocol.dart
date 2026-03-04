@@ -3,16 +3,15 @@ enum HttpProtocol {
   valueHttpsHttp("https,http"),
   valueHttps("https");
 
-  const HttpProtocol(this.value);
-  final String value;
+  const HttpProtocol(this.wireValue);
+  final String wireValue;
 
   static HttpProtocol fromValue(String value) {
     for (final item in HttpProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpProtocol value: $value');
   }
 }
-

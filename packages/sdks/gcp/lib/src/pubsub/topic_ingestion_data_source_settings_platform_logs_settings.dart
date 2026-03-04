@@ -11,20 +11,21 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettings {
 
   /// Creates a new [TopicIngestionDataSourceSettingsPlatformLogsSettings].
   /// [severity] The minimum severity level of Platform Logs that will be written. If unspecified,
-  TopicIngestionDataSourceSettingsPlatformLogsSettings({
-    this.severity,
-  });
+  TopicIngestionDataSourceSettingsPlatformLogsSettings({this.severity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'severity': ?severity,
-    };
+    return <String, dynamic>{'severity': ?severity};
   }
 
-  factory TopicIngestionDataSourceSettingsPlatformLogsSettings.fromMap(Map<String, dynamic> map) {
+  factory TopicIngestionDataSourceSettingsPlatformLogsSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TopicIngestionDataSourceSettingsPlatformLogsSettings(
-      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

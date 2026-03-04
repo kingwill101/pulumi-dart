@@ -1,5 +1,3 @@
-library module_osconfig;
-
 export 'osconfig/guest_policies.dart';
 export 'osconfig/guest_policies_args.dart';
 export 'osconfig/guest_policies_assignment.dart';

@@ -4,16 +4,15 @@ enum ActivityOnInactiveMarkAs {
   valueFailed("Failed"),
   valueSkipped("Skipped");
 
-  const ActivityOnInactiveMarkAs(this.value);
-  final String value;
+  const ActivityOnInactiveMarkAs(this.wireValue);
+  final String wireValue;
 
   static ActivityOnInactiveMarkAs fromValue(String value) {
     for (final item in ActivityOnInactiveMarkAs.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ActivityOnInactiveMarkAs value: $value');
   }
 }
-

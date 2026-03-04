@@ -10,20 +10,15 @@ class CspmMonitorDockerHubOffering {
 
   /// Creates a new [CspmMonitorDockerHubOffering].
   /// [offeringType] The type of the security offering.
-  CspmMonitorDockerHubOffering({
-    required this.offeringType,
-  });
+  CspmMonitorDockerHubOffering({required this.offeringType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'offeringType': offeringType,
-    };
+    return <String, dynamic>{'offeringType': offeringType};
   }
 
   factory CspmMonitorDockerHubOffering.fromMap(Map<String, dynamic> map) {
     return CspmMonitorDockerHubOffering(
-      offeringType: (map['offeringType'] as String).input(),
+      offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
-

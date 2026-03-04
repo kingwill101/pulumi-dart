@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEntitlementAdditionalNotificationTarget {
   /// Optional. Additional email addresses to be notified when a principal(requester) is granted access.
   final pulumi.Input<List<String>> adminEmailRecipients;
+
   /// Optional. Additional email address to be notified about an eligible entitlement.
   final pulumi.Input<List<String>> requesterEmailRecipients;
 
@@ -23,11 +24,16 @@ class GetEntitlementAdditionalNotificationTarget {
     };
   }
 
-  factory GetEntitlementAdditionalNotificationTarget.fromMap(Map<String, dynamic> map) {
+  factory GetEntitlementAdditionalNotificationTarget.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEntitlementAdditionalNotificationTarget(
-      adminEmailRecipients: ((map['adminEmailRecipients'] as List).cast<String>()).input(),
-      requesterEmailRecipients: ((map['requesterEmailRecipients'] as List).cast<String>()).input(),
+      adminEmailRecipients: pulumi.Input.fromValue(
+        (map['adminEmailRecipients'] as List).cast<String>(),
+      ),
+      requesterEmailRecipients: pulumi.Input.fromValue(
+        (map['requesterEmailRecipients'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentAutoScaleProfile {
   /// The maximum number of NGINX capacity units for this NGINX Deployment.
   final pulumi.Input<int> maxCapacity;
+
   /// The minimum number of NGINX capacity units for this NGINX Deployment.
   final pulumi.Input<int> minCapacity;
+
   /// The name of this NGINX Deployment.
   final pulumi.Input<String> name;
 
@@ -30,10 +32,9 @@ class GetDeploymentAutoScaleProfile {
 
   factory GetDeploymentAutoScaleProfile.fromMap(Map<String, dynamic> map) {
     return GetDeploymentAutoScaleProfile(
-      maxCapacity: (map['maxCapacity'] as int).input(),
-      minCapacity: (map['minCapacity'] as int).input(),
-      name: (map['name'] as String).input(),
+      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
+      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

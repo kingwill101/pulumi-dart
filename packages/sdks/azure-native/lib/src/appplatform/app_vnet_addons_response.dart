@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVNetAddonsResponse {
   /// Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
   final pulumi.Input<bool>? publicEndpoint;
+
   /// URL of the App in vnet injection instance which could be accessed from internet
   final pulumi.Input<String> publicEndpointUrl;
 
   /// Creates a new [AppVNetAddonsResponse].
   /// [publicEndpoint] Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
   /// [publicEndpointUrl] URL of the App in vnet injection instance which could be accessed from internet
-  AppVNetAddonsResponse({
-    this.publicEndpoint,
-    required this.publicEndpointUrl,
-  });
+  AppVNetAddonsResponse({this.publicEndpoint, required this.publicEndpointUrl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class AppVNetAddonsResponse {
 
   factory AppVNetAddonsResponse.fromMap(Map<String, dynamic> map) {
     return AppVNetAddonsResponse(
-      publicEndpoint: map['publicEndpoint'] == null ? null : (map['publicEndpoint']! as bool).input(),
-      publicEndpointUrl: (map['publicEndpointUrl'] as String).input(),
+      publicEndpoint: (() {
+        final guardedValue = map['publicEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      publicEndpointUrl: pulumi.Input.fromValue(
+        map['publicEndpointUrl'] as String,
+      ),
     );
   }
 }
-

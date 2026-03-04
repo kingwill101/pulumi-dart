@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linked_service_sftp_args.dart';
-import 'linked_service_sftp_key_vault_password.dart';
 import 'linked_service_sftp_key_vault_private_key_content_base64.dart';
 import 'linked_service_sftp_key_vault_private_key_passphrase.dart';
 import 'linked_service_sftp_state.dart';
@@ -219,48 +218,69 @@ class LinkedServiceSftp extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to SFTP Linked Service:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The type of authentication used to connect to the SFTP server. Valid options are `MultiFactor`, `Basic` and `SshPublicKey`.
   late final pulumi.Output<String> authenticationType;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
+
   /// The SFTP server hostname.
   late final pulumi.Output<String> host;
+
   /// The host key fingerprint of the SFTP server.
   late final pulumi.Output<String?> hostKeyFingerprint;
+
   /// The name of the integration runtime to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
+
   /// A `key_vault_password` block as defined below.
   ///
-  /// > **Note:** Either `password` or `key_vault_password` is required when `authentication_type` is set to `Basic`.
-  late final pulumi.Output<List<LinkedServiceSftpKeyVaultPassword>?> keyVaultPasswords;
+  /// &gt; **Note:** Either `password` or `key_vault_password` is required when `authentication_type` is set to `Basic`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> keyVaultPasswords;
+
   /// A `key_vault_private_key_content_base64` block as defined below.
-  late final pulumi.Output<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?> keyVaultPrivateKeyContentBase64;
+  late final pulumi.Output<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>
+  keyVaultPrivateKeyContentBase64;
+
   /// A `key_vault_private_key_passphrase` block as defined below.
   ///
-  /// > **Note:** One of `private_key_content_base64` or `private_key_path` (or their Key Vault equivalent) is required when `authentication_type` is set to `SshPublicKey`.
-  late final pulumi.Output<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?> keyVaultPrivateKeyPassphrase;
+  /// &gt; **Note:** One of `private_key_content_base64` or `private_key_path` (or their Key Vault equivalent) is required when `authentication_type` is set to `SshPublicKey`.
+  late final pulumi.Output<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>
+  keyVaultPrivateKeyPassphrase;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// Password to log on to the SFTP Server for Basic Authentication.
   late final pulumi.Output<String?> password;
+
   /// The TCP port number that the SFTP server uses to listen for client connection. Default value is 22.
   late final pulumi.Output<int> port;
+
   /// The Base64 encoded private key content in OpenSSH format used to log on to the SFTP server.
   late final pulumi.Output<String?> privateKeyContentBase64;
+
   /// The passphrase for the private key if the key is encrypted.
   late final pulumi.Output<String?> privateKeyPassphrase;
+
   /// The absolute path to the private key file that the self-hosted integration runtime can access.
   ///
-  /// > **Note:** `private_key_path` only applies when using a self-hosted integration runtime (instead of the default Azure provided runtime), as indicated by supplying a value for `integration_runtime_name`.
+  /// &gt; **Note:** `private_key_path` only applies when using a self-hosted integration runtime (instead of the default Azure provided runtime), as indicated by supplying a value for `integration_runtime_name`.
   late final pulumi.Output<String?> privateKeyPath;
+
   /// Whether to validate host key fingerprint while connecting. If set to `false`, `host_key_fingerprint` must also be set.
   late final pulumi.Output<bool?> skipHostKeyValidation;
+
   /// The username used to log on to the SFTP server.
   late final pulumi.Output<String> username;
 
@@ -273,31 +293,43 @@ class LinkedServiceSftp extends pulumi.CustomResource {
     LinkedServiceSftpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceSftp:LinkedServiceSftp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.authenticationType = registerOutput<String>('authenticationType');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.host = registerOutput<String>('host');
-    this.hostKeyFingerprint = registerOutput<String?>('hostKeyFingerprint');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultPasswords = registerOutput<List<LinkedServiceSftpKeyVaultPassword>?>('keyVaultPasswords');
-    this.keyVaultPrivateKeyContentBase64 = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>('keyVaultPrivateKeyContentBase64');
-    this.keyVaultPrivateKeyPassphrase = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>('keyVaultPrivateKeyPassphrase');
+         'azure:datafactory/linkedServiceSftp:LinkedServiceSftp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    authenticationType = registerOutput<String>('authenticationType');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    host = registerOutput<String>('host');
+    hostKeyFingerprint = registerOutput<String?>('hostKeyFingerprint');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPasswords = registerOutput<List<Map<String, dynamic>>?>(
+      'keyVaultPasswords',
+    );
+    keyVaultPrivateKeyContentBase64 =
+        registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>(
+          'keyVaultPrivateKeyContentBase64',
+        );
+    keyVaultPrivateKeyPassphrase =
+        registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>(
+          'keyVaultPrivateKeyPassphrase',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.password = registerOutput<String?>('password');
-    this.port = registerOutput<int>('port');
-    this.privateKeyContentBase64 = registerOutput<String?>('privateKeyContentBase64');
-    this.privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase');
-    this.privateKeyPath = registerOutput<String?>('privateKeyPath');
-    this.skipHostKeyValidation = registerOutput<bool?>('skipHostKeyValidation');
-    this.username = registerOutput<String>('username');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    password = registerOutput<String?>('password');
+    port = registerOutput<int>('port');
+    privateKeyContentBase64 = registerOutput<String?>(
+      'privateKeyContentBase64',
+    );
+    privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase');
+    privateKeyPath = registerOutput<String?>('privateKeyPath');
+    skipHostKeyValidation = registerOutput<bool?>('skipHostKeyValidation');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [LinkedServiceSftp] resource's state with the given [name] and [id].
@@ -318,30 +350,42 @@ class LinkedServiceSftp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceSftp:LinkedServiceSftp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.authenticationType = registerOutput<String>('authenticationType');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.host = registerOutput<String>('host');
-    this.hostKeyFingerprint = registerOutput<String?>('hostKeyFingerprint');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultPasswords = registerOutput<List<LinkedServiceSftpKeyVaultPassword>?>('keyVaultPasswords');
-    this.keyVaultPrivateKeyContentBase64 = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>('keyVaultPrivateKeyContentBase64');
-    this.keyVaultPrivateKeyPassphrase = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>('keyVaultPrivateKeyPassphrase');
+         'azure:datafactory/linkedServiceSftp:LinkedServiceSftp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    authenticationType = registerOutput<String>('authenticationType');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    host = registerOutput<String>('host');
+    hostKeyFingerprint = registerOutput<String?>('hostKeyFingerprint');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPasswords = registerOutput<List<Map<String, dynamic>>?>(
+      'keyVaultPasswords',
+    );
+    keyVaultPrivateKeyContentBase64 =
+        registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>(
+          'keyVaultPrivateKeyContentBase64',
+        );
+    keyVaultPrivateKeyPassphrase =
+        registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>(
+          'keyVaultPrivateKeyPassphrase',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.password = registerOutput<String?>('password');
-    this.port = registerOutput<int>('port');
-    this.privateKeyContentBase64 = registerOutput<String?>('privateKeyContentBase64');
-    this.privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase');
-    this.privateKeyPath = registerOutput<String?>('privateKeyPath');
-    this.skipHostKeyValidation = registerOutput<bool?>('skipHostKeyValidation');
-    this.username = registerOutput<String>('username');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    password = registerOutput<String?>('password');
+    port = registerOutput<int>('port');
+    privateKeyContentBase64 = registerOutput<String?>(
+      'privateKeyContentBase64',
+    );
+    privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase');
+    privateKeyPath = registerOutput<String?>('privateKeyPath');
+    skipHostKeyValidation = registerOutput<bool?>('skipHostKeyValidation');
+    username = registerOutput<String>('username');
   }
 }

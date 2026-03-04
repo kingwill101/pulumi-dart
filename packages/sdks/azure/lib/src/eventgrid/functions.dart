@@ -122,7 +122,7 @@ import 'get_topic_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -241,7 +241,7 @@ Future<GetDomainResult> getDomain(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -370,7 +370,7 @@ Future<GetDomainTopicResult> getDomainTopic(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -499,7 +499,7 @@ Future<GetPartnerNamespaceResult> getPartnerNamespace(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -618,7 +618,7 @@ Future<GetPartnerRegistrationResult> getPartnerRegistration(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -737,7 +737,7 @@ Future<GetSystemTopicResult> getSystemTopic(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15

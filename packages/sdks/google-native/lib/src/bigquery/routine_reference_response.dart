@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutineReferenceResponse {
   /// The ID of the dataset containing this routine.
   final pulumi.Input<String> datasetId;
+
   /// The ID of the project containing this routine.
   final pulumi.Input<String> project;
+
   /// The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
   final pulumi.Input<String> routineId;
 
@@ -30,10 +32,9 @@ class RoutineReferenceResponse {
 
   factory RoutineReferenceResponse.fromMap(Map<String, dynamic> map) {
     return RoutineReferenceResponse(
-      datasetId: (map['datasetId'] as String).input(),
-      project: (map['project'] as String).input(),
-      routineId: (map['routineId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      routineId: pulumi.Input.fromValue(map['routineId'] as String),
     );
   }
 }
-

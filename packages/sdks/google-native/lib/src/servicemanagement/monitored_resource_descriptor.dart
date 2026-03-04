@@ -8,14 +8,19 @@ import 'monitored_resource_descriptor_launch_stage.dart';
 class MonitoredResourceDescriptor {
   /// Optional. A detailed description of the monitored resource type that might be used in documentation.
   final pulumi.Input<String>? description;
+
   /// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
   final pulumi.Input<String>? displayName;
+
   /// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
   final pulumi.Input<List<LabelDescriptor>> labels;
+
   /// Optional. The launch stage of the monitored resource definition.
   final pulumi.Input<MonitoredResourceDescriptorLaunchStage>? launchStage;
+
   /// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
   final pulumi.Input<String>? name;
+
   /// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
   final pulumi.Input<String> type;
 
@@ -39,8 +44,23 @@ class MonitoredResourceDescriptor {
     return <String, dynamic>{
       'description': ?description,
       'displayName': ?displayName,
-      'labels': pulumi.Input.mapInputValue<List<LabelDescriptor>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<LabelDescriptor, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'launchStage': ?pulumi.Input.mapOptionalInputValue<MonitoredResourceDescriptorLaunchStage, String>(launchStage, (value) => value.value),
+      'labels':
+          pulumi.Input.mapInputValue<
+            List<LabelDescriptor>,
+            List<Map<String, dynamic>>
+          >(
+            labels,
+            (value) =>
+                pulumi.Input.encodeList<LabelDescriptor, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'launchStage':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoredResourceDescriptorLaunchStage,
+            String
+          >(launchStage, (value) => value.wireValue),
       'name': ?name,
       'type': type,
     };
@@ -48,13 +68,38 @@ class MonitoredResourceDescriptor {
 
   factory MonitoredResourceDescriptor.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceDescriptor(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: (pulumi.Input.decodeList<LabelDescriptor>(map['labels'], (value) => LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchStage: map['launchStage'] == null ? null : (MonitoredResourceDescriptorLaunchStage.fromValue(map['launchStage']! as String)).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<LabelDescriptor>(
+          map['labels']!,
+          (value) =>
+              LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      launchStage: (() {
+        final guardedValue = map['launchStage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoredResourceDescriptorLaunchStage.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

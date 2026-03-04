@@ -10,16 +10,15 @@ enum RequestType {
   valueSelfExtend("SelfExtend"),
   valueSelfRenew("SelfRenew");
 
-  const RequestType(this.value);
-  final String value;
+  const RequestType(this.wireValue);
+  final String wireValue;
 
   static RequestType fromValue(String value) {
     for (final item in RequestType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequestType value: $value');
   }
 }
-

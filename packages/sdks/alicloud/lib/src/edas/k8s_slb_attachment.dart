@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'k8s_slb_attachment_args.dart';
-import 'k8s_slb_attachment_slb_config.dart';
 import 'k8s_slb_attachment_state.dart';
 
 /// Binds SLBs to an EDAS k8s application.
 ///
 /// For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -717,8 +716,9 @@ import 'k8s_slb_attachment_state.dart';
 class K8sSlbAttachment extends pulumi.CustomResource {
   /// The ID of the EDAS k8s application to which you want to bind SLB instances.
   late final pulumi.Output<String> appId;
+
   /// The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
-  late final pulumi.Output<List<K8sSlbAttachmentSlbConfig>> slbConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> slbConfigs;
 
   /// Creates a new [K8sSlbAttachment].
   /// [name] The Pulumi resource name.
@@ -729,13 +729,13 @@ class K8sSlbAttachment extends pulumi.CustomResource {
     K8sSlbAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/k8sSlbAttachment:K8sSlbAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.slbConfigs = registerOutput<List<K8sSlbAttachmentSlbConfig>>('slbConfigs');
+         'alicloud:edas/k8sSlbAttachment:K8sSlbAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    slbConfigs = registerOutput<List<Map<String, dynamic>>>('slbConfigs');
   }
 
   /// Gets an existing [K8sSlbAttachment] resource's state with the given [name] and [id].
@@ -756,12 +756,12 @@ class K8sSlbAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/k8sSlbAttachment:K8sSlbAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.slbConfigs = registerOutput<List<K8sSlbAttachmentSlbConfig>>('slbConfigs');
+         'alicloud:edas/k8sSlbAttachment:K8sSlbAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    slbConfigs = registerOutput<List<Map<String, dynamic>>>('slbConfigs');
   }
 }

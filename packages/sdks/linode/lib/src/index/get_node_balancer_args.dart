@@ -12,20 +12,13 @@ class GetNodeBalancerArgs {
 
   /// Creates a new [GetNodeBalancerArgs].
   /// [id] The NodeBalancer's ID.
-  GetNodeBalancerArgs({
-    required this.id,
-  });
+  GetNodeBalancerArgs({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetNodeBalancerArgs.fromMap(Map<String, dynamic> map) {
-    return GetNodeBalancerArgs(
-      id: (map['id'] as int).input(),
-    );
+    return GetNodeBalancerArgs(id: pulumi.Input.fromValue(map['id'] as int));
   }
 }
-

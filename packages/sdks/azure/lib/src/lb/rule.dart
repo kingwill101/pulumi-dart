@@ -4,7 +4,7 @@ import 'rule_state.dart';
 
 /// Manages a Load Balancer Rule.
 ///
-/// > **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
+/// &gt; **Note:** When using this resource, the Load Balancer needs to have a FrontEnd IP Configuration Attached
 ///
 /// ## Example Usage
 ///
@@ -277,7 +277,7 @@ import 'rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2023-09-01
@@ -292,38 +292,50 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// A list of reference to a Backend Address Pool over which this Load Balancing Rule operates.
   ///
-  /// > **Note:** In most cases users can only set one Backend Address Pool ID in the `backend_address_pool_ids`. Especially, when the sku of the LB is `Gateway`, users can set up to two IDs in the `backend_address_pool_ids`.
+  /// &gt; **Note:** In most cases users can only set one Backend Address Pool ID in the `backend_address_pool_ids`. Especially, when the sku of the LB is `Gateway`, users can set up to two IDs in the `backend_address_pool_ids`.
   late final pulumi.Output<List<String>?> backendAddressPoolIds;
+
   /// The port used for internal connections on the endpoint. Possible values range between 0 and 65535, inclusive. A port of `0` means "Any Port".
   late final pulumi.Output<int> backendPort;
+
   /// Is snat enabled for this Load Balancer Rule? Default `false`.
   late final pulumi.Output<bool?> disableOutboundSnat;
   late final pulumi.Output<bool> enableFloatingIp;
   late final pulumi.Output<bool> enableTcpReset;
+
   /// Are the Floating IPs enabled for this Load Balancer Rule? A "floating" IP is reassigned to a secondary server in case the primary server fails. Required to configure a SQL AlwaysOn Availability Group. Defaults to `false`.
   late final pulumi.Output<bool> floatingIpEnabled;
   late final pulumi.Output<String> frontendIpConfigurationId;
+
   /// The name of the frontend IP configuration to which the rule is associated.
   late final pulumi.Output<String> frontendIpConfigurationName;
+
   /// The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 0 and 65534, inclusive. A port of `0` means "Any Port".
   late final pulumi.Output<int> frontendPort;
+
   /// Specifies the idle timeout in minutes for TCP connections. Valid values are between `4` and `100` minutes. Defaults to `4` minutes.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
+
   /// Specifies the load balancing distribution type to be used by the Load Balancer. Possible values are `Default`, `SourceIP` and `SourceIPProtocol`. Defaults to `Default.`
   /// * `Default` – The load balancer is configured to use a 5 tuple hash to map traffic to available servers.
   /// * `SourceIP` – The load balancer is configured to use a 2 tuple hash to map traffic to available servers.
   /// * `SourceIPProtocol` – The load balancer is configured to use a 3 tuple hash to map traffic to available servers.
   ///
-  /// > **Note:** In the portal, this is known as Session Persistence where the options are `None`, `Client IP` and `Client IP and Protocol` respectively.
+  /// &gt; **Note:** In the portal, this is known as Session Persistence where the options are `None`, `Client IP` and `Client IP and Protocol` respectively.
   late final pulumi.Output<String?> loadDistribution;
+
   /// The ID of the Load Balancer in which to create the Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> loadbalancerId;
+
   /// Specifies the name of the LB Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A reference to a Probe used by this Load Balancing Rule.
   late final pulumi.Output<String?> probeId;
+
   /// The transport protocol for the external endpoint. Possible values are `Tcp`, `Udp` or `All`.
   late final pulumi.Output<String> protocol;
+
   /// Is TCP Reset enabled for this Load Balancer Rule?
   late final pulumi.Output<bool> tcpResetEnabled;
 
@@ -331,40 +343,39 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_lb_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(
-    String name, {
-    RuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:lb/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds');
-    this.backendPort = registerOutput<int>('backendPort');
-    this.disableOutboundSnat = registerOutput<bool?>('disableOutboundSnat');
-    this.enableFloatingIp = registerOutput<bool>('enableFloatingIp');
-    this.enableTcpReset = registerOutput<bool>('enableTcpReset');
-    this.floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
-    this.frontendIpConfigurationId = registerOutput<String>('frontendIpConfigurationId');
-    this.frontendIpConfigurationName = registerOutput<String>('frontendIpConfigurationName');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
-    this.loadDistribution = registerOutput<String?>('loadDistribution');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:lb/rule:Rule',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    backendAddressPoolIds = registerOutput<List<String>?>(
+      'backendAddressPoolIds',
+    );
+    backendPort = registerOutput<int>('backendPort');
+    disableOutboundSnat = registerOutput<bool?>('disableOutboundSnat');
+    enableFloatingIp = registerOutput<bool>('enableFloatingIp');
+    enableTcpReset = registerOutput<bool>('enableTcpReset');
+    floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
+    frontendIpConfigurationId = registerOutput<String>(
+      'frontendIpConfigurationId',
+    );
+    frontendIpConfigurationName = registerOutput<String>(
+      'frontendIpConfigurationName',
+    );
+    frontendPort = registerOutput<int>('frontendPort');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadDistribution = registerOutput<String?>('loadDistribution');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.probeId = registerOutput<String?>('probeId');
-    this.protocol = registerOutput<String>('protocol');
-    this.tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
+    probeId = registerOutput<String?>('probeId');
+    protocol = registerOutput<String>('protocol');
+    tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(
-    String name,
-    pulumi.Input<String> id, {
-    RuleState? state,
-  }) {
+  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -377,26 +388,32 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds');
-    this.backendPort = registerOutput<int>('backendPort');
-    this.disableOutboundSnat = registerOutput<bool?>('disableOutboundSnat');
-    this.enableFloatingIp = registerOutput<bool>('enableFloatingIp');
-    this.enableTcpReset = registerOutput<bool>('enableTcpReset');
-    this.floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
-    this.frontendIpConfigurationId = registerOutput<String>('frontendIpConfigurationId');
-    this.frontendIpConfigurationName = registerOutput<String>('frontendIpConfigurationName');
-    this.frontendPort = registerOutput<int>('frontendPort');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
-    this.loadDistribution = registerOutput<String?>('loadDistribution');
-    this.loadbalancerId = registerOutput<String>('loadbalancerId');
+         'azure:lb/rule:Rule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendAddressPoolIds = registerOutput<List<String>?>(
+      'backendAddressPoolIds',
+    );
+    backendPort = registerOutput<int>('backendPort');
+    disableOutboundSnat = registerOutput<bool?>('disableOutboundSnat');
+    enableFloatingIp = registerOutput<bool>('enableFloatingIp');
+    enableTcpReset = registerOutput<bool>('enableTcpReset');
+    floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
+    frontendIpConfigurationId = registerOutput<String>(
+      'frontendIpConfigurationId',
+    );
+    frontendIpConfigurationName = registerOutput<String>(
+      'frontendIpConfigurationName',
+    );
+    frontendPort = registerOutput<int>('frontendPort');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadDistribution = registerOutput<String?>('loadDistribution');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
     this.name = registerOutput<String>('name');
-    this.probeId = registerOutput<String?>('probeId');
-    this.protocol = registerOutput<String>('protocol');
-    this.tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
+    probeId = registerOutput<String?>('probeId');
+    protocol = registerOutput<String>('protocol');
+    tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
   }
 }

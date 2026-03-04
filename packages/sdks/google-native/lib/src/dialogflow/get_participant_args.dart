@@ -35,11 +35,14 @@ class GetParticipantArgs {
 
   factory GetParticipantArgs.fromMap(Map<String, dynamic> map) {
     return GetParticipantArgs(
-      conversationId: (map['conversationId'] as String).input(),
-      location: (map['location'] as String).input(),
-      participantId: (map['participantId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      conversationId: pulumi.Input.fromValue(map['conversationId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      participantId: pulumi.Input.fromValue(map['participantId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,12 +7,16 @@ import 'control_tower_control_parameter.dart';
 class ControlTowerControlState {
   /// The ARN of the EnabledControl resource.
   final pulumi.Input<String>? arn;
+
   /// The ARN of the control. Only Strongly recommended and Elective controls are permitted, with the exception of the Region deny guardrail.
   final pulumi.Input<String>? controlIdentifier;
+
   /// Parameter values which are specified to configure the control when you enable it. See Parameters for more details.
   final pulumi.Input<List<ControlTowerControlParameter>>? parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the organizational unit.
   ///
   /// The following arguments are optional:
@@ -36,7 +40,18 @@ class ControlTowerControlState {
     return <String, dynamic>{
       'arn': ?arn,
       'controlIdentifier': ?controlIdentifier,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ControlTowerControlParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ControlTowerControlParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ControlTowerControlParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ControlTowerControlParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'targetIdentifier': ?targetIdentifier,
     };
@@ -44,12 +59,38 @@ class ControlTowerControlState {
 
   factory ControlTowerControlState.fromMap(Map<String, dynamic> map) {
     return ControlTowerControlState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      controlIdentifier: map['controlIdentifier'] == null ? null : ((map['controlIdentifier'] as String).input()).input(),
-      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ControlTowerControlParameter>(map['parameters']!, (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      targetIdentifier: map['targetIdentifier'] == null ? null : ((map['targetIdentifier'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlIdentifier: (() {
+        final guardedValue = map['controlIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ControlTowerControlParameter>(
+            guardedValue,
+            (value) => ControlTowerControlParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetIdentifier: (() {
+        final guardedValue = map['targetIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -11,17 +11,24 @@ import 'sku.dart';
 class NamespaceArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The namespace name
   final pulumi.Input<String>? namespaceName;
+
   /// List of private endpoint connections.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<PrivateEndpointConnectionRelay>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionRelay>>?
+  privateEndpointConnections;
+
   /// This determines if traffic is allowed over public network. By default it is enabled.
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// SKU of the namespace.
   final pulumi.Input<Sku>? sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,21 +57,55 @@ class NamespaceArgs {
       'privateEndpointConnections': ?privateEndpointConnections,
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections']! as List).cast<PrivateEndpointConnectionRelay>()).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateEndpointConnections: (() {
+        final guardedValue = map['privateEndpointConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<PrivateEndpointConnectionRelay>(),
+        );
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

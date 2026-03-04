@@ -5,16 +5,17 @@ enum AuditLogConfigLogTypeCloudresourcemanagerV3 {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const AuditLogConfigLogTypeCloudresourcemanagerV3(this.value);
-  final String value;
+  const AuditLogConfigLogTypeCloudresourcemanagerV3(this.wireValue);
+  final String wireValue;
 
   static AuditLogConfigLogTypeCloudresourcemanagerV3 fromValue(String value) {
     for (final item in AuditLogConfigLogTypeCloudresourcemanagerV3.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeCloudresourcemanagerV3 value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeCloudresourcemanagerV3 value: $value',
+    );
   }
 }
-

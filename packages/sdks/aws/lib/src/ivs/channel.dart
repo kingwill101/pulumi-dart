@@ -110,24 +110,34 @@ import 'channel_state.dart';
 class Channel extends pulumi.CustomResource {
   /// ARN of the Channel.
   late final pulumi.Output<String> arn;
+
   /// If `true`, channel is private (enabled for playback authorization).
   late final pulumi.Output<bool> authorized;
+
   /// Channel ingest endpoint, part of the definition of an ingest server, used when setting up streaming software.
   late final pulumi.Output<String> ingestEndpoint;
+
   /// Channel latency mode. Valid values: `NORMAL`, `LOW`.
   late final pulumi.Output<String> latencyMode;
+
   /// Channel name.
   late final pulumi.Output<String> name;
+
   /// Channel playback URL.
   late final pulumi.Output<String> playbackUrl;
+
   /// Recording configuration ARN.
   late final pulumi.Output<String> recordingConfigurationArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Channel type, which determines the allowable resolution and bitrate. Valid values: `STANDARD`, `BASIC`.
   late final pulumi.Output<String> type;
 
@@ -140,22 +150,24 @@ class Channel extends pulumi.CustomResource {
     ChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ivs/channel:Channel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authorized = registerOutput<bool>('authorized');
-    this.ingestEndpoint = registerOutput<String>('ingestEndpoint');
-    this.latencyMode = registerOutput<String>('latencyMode');
+         'aws:ivs/channel:Channel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    authorized = registerOutput<bool>('authorized');
+    ingestEndpoint = registerOutput<String>('ingestEndpoint');
+    latencyMode = registerOutput<String>('latencyMode');
     this.name = registerOutput<String>('name');
-    this.playbackUrl = registerOutput<String>('playbackUrl');
-    this.recordingConfigurationArn = registerOutput<String>('recordingConfigurationArn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
+    playbackUrl = registerOutput<String>('playbackUrl');
+    recordingConfigurationArn = registerOutput<String>(
+      'recordingConfigurationArn',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Channel] resource's state with the given [name] and [id].
@@ -176,21 +188,23 @@ class Channel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ivs/channel:Channel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.authorized = registerOutput<bool>('authorized');
-    this.ingestEndpoint = registerOutput<String>('ingestEndpoint');
-    this.latencyMode = registerOutput<String>('latencyMode');
+         'aws:ivs/channel:Channel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    authorized = registerOutput<bool>('authorized');
+    ingestEndpoint = registerOutput<String>('ingestEndpoint');
+    latencyMode = registerOutput<String>('latencyMode');
     this.name = registerOutput<String>('name');
-    this.playbackUrl = registerOutput<String>('playbackUrl');
-    this.recordingConfigurationArn = registerOutput<String>('recordingConfigurationArn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
+    playbackUrl = registerOutput<String>('playbackUrl');
+    recordingConfigurationArn = registerOutput<String>(
+      'recordingConfigurationArn',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
   }
 }

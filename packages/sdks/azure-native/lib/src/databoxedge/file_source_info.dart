@@ -9,20 +9,15 @@ class FileSourceInfo {
 
   /// Creates a new [FileSourceInfo].
   /// [shareId] File share ID.
-  FileSourceInfo({
-    required this.shareId,
-  });
+  FileSourceInfo({required this.shareId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'shareId': shareId,
-    };
+    return <String, dynamic>{'shareId': shareId};
   }
 
   factory FileSourceInfo.fromMap(Map<String, dynamic> map) {
     return FileSourceInfo(
-      shareId: (map['shareId'] as String).input(),
+      shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );
   }
 }
-

@@ -142,15 +142,20 @@ import 'document_ai_processor_state.dart';
 class DocumentAiProcessor extends pulumi.CustomResource {
   /// The display name. Must be unique.
   late final pulumi.Output<String> displayName;
+
   /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
   late final pulumi.Output<String?> kmsKeyName;
+
   /// The location of the resource.
   late final pulumi.Output<String> location;
+
   /// The resource name of the processor.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
   late final pulumi.Output<String> type;
 
@@ -163,17 +168,17 @@ class DocumentAiProcessor extends pulumi.CustomResource {
     DocumentAiProcessorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
-    this.location = registerOutput<String>('location');
+         'gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.type = registerOutput<String>('type');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [DocumentAiProcessor] resource's state with the given [name] and [id].
@@ -194,16 +199,16 @@ class DocumentAiProcessor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.kmsKeyName = registerOutput<String?>('kmsKeyName');
-    this.location = registerOutput<String>('location');
+         'gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.type = registerOutput<String>('type');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
   }
 }

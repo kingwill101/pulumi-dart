@@ -4,16 +4,15 @@ enum GrpcRouteHeaderMatchType {
   exact("EXACT"),
   regularExpression("REGULAR_EXPRESSION");
 
-  const GrpcRouteHeaderMatchType(this.value);
-  final String value;
+  const GrpcRouteHeaderMatchType(this.wireValue);
+  final String wireValue;
 
   static GrpcRouteHeaderMatchType fromValue(String value) {
     for (final item in GrpcRouteHeaderMatchType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GrpcRouteHeaderMatchType value: $value');
   }
 }
-

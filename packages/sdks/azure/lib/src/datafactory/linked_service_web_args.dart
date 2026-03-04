@@ -11,24 +11,34 @@ class LinkedServiceWebArgs {
   ///
   /// The following supported arguments are specific to Web Linked Service:
   final pulumi.Input<Map<String, String>>? additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   final pulumi.Input<List<String>>? annotations;
+
   /// The type of authentication used to connect to the web table source. Valid options are `Anonymous`, `Basic` and `ClientCertificate`.
   final pulumi.Input<String> authenticationType;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service.
   final pulumi.Input<String>? description;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String>? integrationRuntimeName;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// The password for Basic authentication. Required if `authentication_type` sets to `Basic`.
   final pulumi.Input<String>? password;
-  /// The URL of the web service endpoint (e.g. <https://www.microsoft.com>).
+
+  /// The URL of the web service endpoint (e.g. &lt;https://www.microsoft.com&gt;).
   final pulumi.Input<String> url;
+
   /// The username for Basic authentication. Required if `authentication_type` sets to `Basic`.
   final pulumi.Input<String>? username;
 
@@ -42,7 +52,7 @@ class LinkedServiceWebArgs {
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [password] The password for Basic authentication. Required if `authentication_type` sets to `Basic`.
-  /// [url] The URL of the web service endpoint (e.g. <https://www.microsoft.com>).
+  /// [url] The URL of the web service endpoint (e.g. &lt;https://www.microsoft.com&gt;).
   /// [username] The username for Basic authentication. Required if `authentication_type` sets to `Basic`.
   LinkedServiceWebArgs({
     this.additionalProperties,
@@ -76,18 +86,55 @@ class LinkedServiceWebArgs {
 
   factory LinkedServiceWebArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceWebArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      authenticationType: (map['authenticationType'] as String).input(),
-      dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      url: (map['url'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      authenticationType: pulumi.Input.fromValue(
+        map['authenticationType'] as String,
+      ),
+      dataFactoryId: pulumi.Input.fromValue(map['dataFactoryId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationRuntimeName: (() {
+        final guardedValue = map['integrationRuntimeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: pulumi.Input.fromValue(map['url'] as String),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

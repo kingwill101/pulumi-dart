@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimePartitioningResponse {
   /// Number of milliseconds for which to keep the storage for a partition.
   final pulumi.Input<String> expirationMs;
+
   /// Type of partitioning.
   final pulumi.Input<String> type;
 
   /// Creates a new [TimePartitioningResponse].
   /// [expirationMs] Number of milliseconds for which to keep the storage for a partition.
   /// [type] Type of partitioning.
-  TimePartitioningResponse({
-    required this.expirationMs,
-    required this.type,
-  });
+  TimePartitioningResponse({required this.expirationMs, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expirationMs': expirationMs,
-      'type': type,
-    };
+    return <String, dynamic>{'expirationMs': expirationMs, 'type': type};
   }
 
   factory TimePartitioningResponse.fromMap(Map<String, dynamic> map) {
     return TimePartitioningResponse(
-      expirationMs: (map['expirationMs'] as String).input(),
-      type: (map['type'] as String).input(),
+      expirationMs: pulumi.Input.fromValue(map['expirationMs'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

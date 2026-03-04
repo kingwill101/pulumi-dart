@@ -31,10 +31,13 @@ class GetRegionJobIamPolicyArgs {
 
   factory GetRegionJobIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionJobIamPolicyArgs(
-      jobId: (map['jobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

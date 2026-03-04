@@ -8,13 +8,24 @@ import 'settings_email_notification_settings_custom_notification_behavior_reques
 class SettingsEmailNotificationSettingsCustomNotificationBehavior {
   /// Email notifications specific to Requesters.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications>? adminNotifications;
+  final pulumi.Input<
+    SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications
+  >?
+  adminNotifications;
+
   /// Email notifications specific to Approvers.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications>? approverNotifications;
+  final pulumi.Input<
+    SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications
+  >?
+  approverNotifications;
+
   /// Email notifications specific to Requesters.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications>? requesterNotifications;
+  final pulumi.Input<
+    SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications
+  >?
+  requesterNotifications;
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehavior].
   /// [adminNotifications] Email notifications specific to Requesters.
@@ -28,18 +39,55 @@ class SettingsEmailNotificationSettingsCustomNotificationBehavior {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminNotifications': ?pulumi.Input.mapOptionalInputValue<SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications, Map<String, dynamic>>(adminNotifications, (value) => value.toMap()),
-      'approverNotifications': ?pulumi.Input.mapOptionalInputValue<SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications, Map<String, dynamic>>(approverNotifications, (value) => value.toMap()),
-      'requesterNotifications': ?pulumi.Input.mapOptionalInputValue<SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications, Map<String, dynamic>>(requesterNotifications, (value) => value.toMap()),
+      'adminNotifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications,
+            Map<String, dynamic>
+          >(adminNotifications, (value) => value.toMap()),
+      'approverNotifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications,
+            Map<String, dynamic>
+          >(approverNotifications, (value) => value.toMap()),
+      'requesterNotifications':
+          ?pulumi.Input.mapOptionalInputValue<
+            SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications,
+            Map<String, dynamic>
+          >(requesterNotifications, (value) => value.toMap()),
     };
   }
 
-  factory SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap(Map<String, dynamic> map) {
+  factory SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SettingsEmailNotificationSettingsCustomNotificationBehavior(
-      adminNotifications: map['adminNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap((map['adminNotifications']! as Map).cast<String, dynamic>())).input(),
-      approverNotifications: map['approverNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap((map['approverNotifications']! as Map).cast<String, dynamic>())).input(),
-      requesterNotifications: map['requesterNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.fromMap((map['requesterNotifications']! as Map).cast<String, dynamic>())).input(),
+      adminNotifications: (() {
+        final guardedValue = map['adminNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      approverNotifications: (() {
+        final guardedValue = map['approverNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      requesterNotifications: (() {
+        final guardedValue = map['requesterNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

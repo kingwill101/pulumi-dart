@@ -3,16 +3,17 @@ enum InterconnectAttachmentEncryptionComputeBeta {
   ipsec("IPSEC"),
   none("NONE");
 
-  const InterconnectAttachmentEncryptionComputeBeta(this.value);
-  final String value;
+  const InterconnectAttachmentEncryptionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static InterconnectAttachmentEncryptionComputeBeta fromValue(String value) {
     for (final item in InterconnectAttachmentEncryptionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectAttachmentEncryptionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectAttachmentEncryptionComputeBeta value: $value',
+    );
   }
 }
-

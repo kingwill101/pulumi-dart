@@ -3,16 +3,15 @@ enum PropertyValueType {
   pLAINTEXT("PLAIN_TEXT"),
   sTRINGIFIEDJSON("STRINGIFIED_JSON");
 
-  const PropertyValueType(this.value);
-  final String value;
+  const PropertyValueType(this.wireValue);
+  final String wireValue;
 
   static PropertyValueType fromValue(String value) {
     for (final item in PropertyValueType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PropertyValueType value: $value');
   }
 }
-

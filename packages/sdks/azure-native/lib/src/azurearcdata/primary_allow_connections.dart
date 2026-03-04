@@ -3,16 +3,15 @@ enum PrimaryAllowConnections {
   valueALL("ALL"),
   valueREADWRITE("READ_WRITE");
 
-  const PrimaryAllowConnections(this.value);
-  final String value;
+  const PrimaryAllowConnections(this.wireValue);
+  final String wireValue;
 
   static PrimaryAllowConnections fromValue(String value) {
     for (final item in PrimaryAllowConnections.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrimaryAllowConnections value: $value');
   }
 }
-

@@ -12,16 +12,15 @@ enum Field {
   valueDescription("Description"),
   valueAlertContext("AlertContext");
 
-  const Field(this.value);
-  final String value;
+  const Field(this.wireValue);
+  final String wireValue;
 
   static Field fromValue(String value) {
     for (final item in Field.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Field value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum ManifestGenerationMode {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
-  const ManifestGenerationMode(this.value);
-  final String value;
+  const ManifestGenerationMode(this.wireValue);
+  final String wireValue;
 
   static ManifestGenerationMode fromValue(String value) {
     for (final item in ManifestGenerationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManifestGenerationMode value: $value');
   }
 }
-

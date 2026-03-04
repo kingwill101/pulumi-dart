@@ -8,20 +8,21 @@ class AppLoggingSettingsCloudLoggingSettings {
 
   /// Creates a new [AppLoggingSettingsCloudLoggingSettings].
   /// [enableCloudLogging] Whether to enable Cloud Logging for the sessions.
-  AppLoggingSettingsCloudLoggingSettings({
-    this.enableCloudLogging,
-  });
+  AppLoggingSettingsCloudLoggingSettings({this.enableCloudLogging});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableCloudLogging': ?enableCloudLogging,
-    };
+    return <String, dynamic>{'enableCloudLogging': ?enableCloudLogging};
   }
 
-  factory AppLoggingSettingsCloudLoggingSettings.fromMap(Map<String, dynamic> map) {
+  factory AppLoggingSettingsCloudLoggingSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppLoggingSettingsCloudLoggingSettings(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging']! as bool).input(),
+      enableCloudLogging: (() {
+        final guardedValue = map['enableCloudLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

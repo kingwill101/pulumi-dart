@@ -8,7 +8,7 @@ import 'resource_directory_state.dart';
 ///
 /// For information about Resource Manager Resource Directory and how to use it, see [What is Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 ///
-/// > **NOTE:** Available since v1.84.0.
+/// &gt; **NOTE:** Available since v1.84.0.
 ///
 /// ## Example Usage
 ///
@@ -164,20 +164,26 @@ import 'resource_directory_state.dart';
 class ResourceDirectory extends pulumi.CustomResource {
   /// The time when the resource directory was created
   late final pulumi.Output<String> createTime;
+
   /// The ID of the master account
   late final pulumi.Output<String> masterAccountId;
+
   /// The name of the master account
   late final pulumi.Output<String> masterAccountName;
+
   /// The status of the Member Display Name Synchronization feature. Valid values:
   /// - Enabled
   /// - Disabled
   late final pulumi.Output<String> memberAccountDisplayNameSyncStatus;
+
   /// The status of the member deletion feature. Valid values:
   /// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
   /// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
   late final pulumi.Output<String> memberDeletionStatus;
+
   /// The ID of the root folder
   late final pulumi.Output<String> rootFolderId;
+
   /// ScpStatus
   late final pulumi.Output<String> status;
 
@@ -190,18 +196,20 @@ class ResourceDirectory extends pulumi.CustomResource {
     ResourceDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/resourceDirectory:ResourceDirectory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.masterAccountId = registerOutput<String>('masterAccountId');
-    this.masterAccountName = registerOutput<String>('masterAccountName');
-    this.memberAccountDisplayNameSyncStatus = registerOutput<String>('memberAccountDisplayNameSyncStatus');
-    this.memberDeletionStatus = registerOutput<String>('memberDeletionStatus');
-    this.rootFolderId = registerOutput<String>('rootFolderId');
-    this.status = registerOutput<String>('status');
+         'alicloud:resourcemanager/resourceDirectory:ResourceDirectory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    masterAccountId = registerOutput<String>('masterAccountId');
+    masterAccountName = registerOutput<String>('masterAccountName');
+    memberAccountDisplayNameSyncStatus = registerOutput<String>(
+      'memberAccountDisplayNameSyncStatus',
+    );
+    memberDeletionStatus = registerOutput<String>('memberDeletionStatus');
+    rootFolderId = registerOutput<String>('rootFolderId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ResourceDirectory] resource's state with the given [name] and [id].
@@ -222,17 +230,19 @@ class ResourceDirectory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/resourceDirectory:ResourceDirectory',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.masterAccountId = registerOutput<String>('masterAccountId');
-    this.masterAccountName = registerOutput<String>('masterAccountName');
-    this.memberAccountDisplayNameSyncStatus = registerOutput<String>('memberAccountDisplayNameSyncStatus');
-    this.memberDeletionStatus = registerOutput<String>('memberDeletionStatus');
-    this.rootFolderId = registerOutput<String>('rootFolderId');
-    this.status = registerOutput<String>('status');
+         'alicloud:resourcemanager/resourceDirectory:ResourceDirectory',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    masterAccountId = registerOutput<String>('masterAccountId');
+    masterAccountName = registerOutput<String>('masterAccountName');
+    memberAccountDisplayNameSyncStatus = registerOutput<String>(
+      'memberAccountDisplayNameSyncStatus',
+    );
+    memberDeletionStatus = registerOutput<String>('memberDeletionStatus');
+    rootFolderId = registerOutput<String>('rootFolderId');
+    status = registerOutput<String>('status');
   }
 }

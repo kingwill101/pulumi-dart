@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionConfigResponse {
   /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
   final pulumi.Input<String> gcePdKmsKeyName;
+
   /// Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
   final pulumi.Input<String> kmsKey;
 
@@ -26,9 +27,8 @@ class EncryptionConfigResponse {
 
   factory EncryptionConfigResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigResponse(
-      gcePdKmsKeyName: (map['gcePdKmsKeyName'] as String).input(),
-      kmsKey: (map['kmsKey'] as String).input(),
+      gcePdKmsKeyName: pulumi.Input.fromValue(map['gcePdKmsKeyName'] as String),
+      kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
     );
   }
 }
-

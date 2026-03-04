@@ -3,16 +3,15 @@ enum CostAllocationResourceType {
   dimension("Dimension"),
   tag("Tag");
 
-  const CostAllocationResourceType(this.value);
-  final String value;
+  const CostAllocationResourceType(this.wireValue);
+  final String wireValue;
 
   static CostAllocationResourceType fromValue(String value) {
     for (final item in CostAllocationResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CostAllocationResourceType value: $value');
   }
 }
-

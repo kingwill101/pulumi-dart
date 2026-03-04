@@ -4,16 +4,17 @@ enum ResponseBasedDetectedErrorTypes {
   valueTcpErrorsOnly("TcpErrorsOnly"),
   valueTcpAndHttpErrors("TcpAndHttpErrors");
 
-  const ResponseBasedDetectedErrorTypes(this.value);
-  final String value;
+  const ResponseBasedDetectedErrorTypes(this.wireValue);
+  final String wireValue;
 
   static ResponseBasedDetectedErrorTypes fromValue(String value) {
     for (final item in ResponseBasedDetectedErrorTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResponseBasedDetectedErrorTypes value: $value');
+    throw ArgumentError(
+      'Unknown ResponseBasedDetectedErrorTypes value: $value',
+    );
   }
 }
-

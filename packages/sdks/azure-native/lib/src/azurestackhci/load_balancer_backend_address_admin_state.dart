@@ -3,16 +3,17 @@ enum LoadBalancerBackendAddressAdminState {
   up("Up"),
   down("Down");
 
-  const LoadBalancerBackendAddressAdminState(this.value);
-  final String value;
+  const LoadBalancerBackendAddressAdminState(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerBackendAddressAdminState fromValue(String value) {
     for (final item in LoadBalancerBackendAddressAdminState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoadBalancerBackendAddressAdminState value: $value');
+    throw ArgumentError(
+      'Unknown LoadBalancerBackendAddressAdminState value: $value',
+    );
   }
 }
-

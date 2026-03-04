@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKubernetesVersionMetadataRuntime {
   /// The runtime name.
   final pulumi.Input<String> name;
+
   /// The runtime version.
   final pulumi.Input<String> version;
 
@@ -17,17 +18,15 @@ class GetKubernetesVersionMetadataRuntime {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'version': version,
-    };
+    return <String, dynamic>{'name': name, 'version': version};
   }
 
-  factory GetKubernetesVersionMetadataRuntime.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesVersionMetadataRuntime.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesVersionMetadataRuntime(
-      name: (map['name'] as String).input(),
-      version: (map['version'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

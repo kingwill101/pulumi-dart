@@ -9,46 +9,60 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticityAssuranceArgs {
   /// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
   final pulumi.Input<String>? assuranceTimes;
+
   /// Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
   /// - true
   /// - false
   ///
   /// Default value: `false`.
   final pulumi.Input<bool>? autoRenew;
+
   /// The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
   /// - Default value when `PeriodUnit` is set to Month: 1.
   /// - Default value when `PeriodUnit` is set to Year: 12.
   ///
-  /// > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+  /// &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
   final pulumi.Input<int>? autoRenewPeriod;
+
   /// Unit of duration. Value range:
   /// - Month: Month
   /// - Year: Year
   ///
   /// Default value: Year
   final pulumi.Input<String>? autoRenewPeriodUnit;
+
   /// Description of flexible guarantee service.
   final pulumi.Input<String>? description;
+
   /// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
   final pulumi.Input<int> instanceAmount;
+
   /// Instance type. Currently, only one instance type is supported.
   final pulumi.Input<String> instanceType;
+
   /// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
   /// - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
   /// - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
   final pulumi.Input<int>? period;
+
   /// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
   final pulumi.Input<String>? periodUnit;
+
   /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
   final pulumi.Input<String>? privatePoolOptionsMatchCriteria;
+
   /// The name of the flexible protection service.
   final pulumi.Input<String>? privatePoolOptionsName;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// Flexible guarantee service effective time.
   final pulumi.Input<String>? startTime;
+
   /// The tag key-value pair information bound by the elastic guarantee service.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
   final pulumi.Input<List<String>> zoneIds;
 
@@ -108,22 +122,71 @@ class ElasticityAssuranceArgs {
 
   factory ElasticityAssuranceArgs.fromMap(Map<String, dynamic> map) {
     return ElasticityAssuranceArgs(
-      assuranceTimes: map['assuranceTimes'] == null ? null : (map['assuranceTimes']! as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
-      autoRenewPeriodUnit: map['autoRenewPeriodUnit'] == null ? null : (map['autoRenewPeriodUnit']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instanceAmount: (map['instanceAmount'] as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
-      privatePoolOptionsMatchCriteria: map['privatePoolOptionsMatchCriteria'] == null ? null : (map['privatePoolOptionsMatchCriteria']! as String).input(),
-      privatePoolOptionsName: map['privatePoolOptionsName'] == null ? null : (map['privatePoolOptionsName']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
+      assuranceTimes: (() {
+        final guardedValue = map['assuranceTimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenewPeriod: (() {
+        final guardedValue = map['autoRenewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      autoRenewPeriodUnit: (() {
+        final guardedValue = map['autoRenewPeriodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceAmount: pulumi.Input.fromValue(map['instanceAmount'] as int),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      periodUnit: (() {
+        final guardedValue = map['periodUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privatePoolOptionsMatchCriteria: (() {
+        final guardedValue = map['privatePoolOptionsMatchCriteria'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privatePoolOptionsName: (() {
+        final guardedValue = map['privatePoolOptionsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zoneIds: pulumi.Input.fromValue((map['zoneIds'] as List).cast<String>()),
     );
   }
 }
-

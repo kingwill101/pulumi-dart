@@ -1,5 +1,3 @@
-library module_windowsesu;
-
 export 'windowsesu/functions.dart';
 export 'windowsesu/get_multiple_activation_key_args.dart';
 export 'windowsesu/get_multiple_activation_key_result.dart';

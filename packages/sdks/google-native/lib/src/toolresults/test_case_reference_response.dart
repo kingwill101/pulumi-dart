@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TestCaseReferenceResponse {
   /// The name of the class.
   final pulumi.Input<String> className;
+
   /// The name of the test case. Required.
   final pulumi.Input<String> name;
+
   /// The name of the test suite to which this test case belongs.
   final pulumi.Input<String> testSuiteName;
 
@@ -31,10 +33,9 @@ class TestCaseReferenceResponse {
 
   factory TestCaseReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TestCaseReferenceResponse(
-      className: (map['className'] as String).input(),
-      name: (map['name'] as String).input(),
-      testSuiteName: (map['testSuiteName'] as String).input(),
+      className: pulumi.Input.fromValue(map['className'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      testSuiteName: pulumi.Input.fromValue(map['testSuiteName'] as String),
     );
   }
 }
-

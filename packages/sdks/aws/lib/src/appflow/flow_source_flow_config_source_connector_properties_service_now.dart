@@ -3,24 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesServiceNow {
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesServiceNow].
-  /// [object] Required.
+  /// [object_] Required.
   FlowSourceFlowConfigSourceConnectorPropertiesServiceNow({
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'object': object,
-    };
+    return <String, dynamic>{'object': object_};
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesServiceNow.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesServiceNow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesServiceNow(
-      object: (map['object'] as String).input(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

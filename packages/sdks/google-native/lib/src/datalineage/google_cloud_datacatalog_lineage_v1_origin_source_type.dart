@@ -8,16 +8,19 @@ enum GoogleCloudDatacatalogLineageV1OriginSourceType {
   lookerStudio("LOOKER_STUDIO"),
   dataproc("DATAPROC");
 
-  const GoogleCloudDatacatalogLineageV1OriginSourceType(this.value);
-  final String value;
+  const GoogleCloudDatacatalogLineageV1OriginSourceType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDatacatalogLineageV1OriginSourceType fromValue(String value) {
+  static GoogleCloudDatacatalogLineageV1OriginSourceType fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudDatacatalogLineageV1OriginSourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogLineageV1OriginSourceType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogLineageV1OriginSourceType value: $value',
+    );
   }
 }
-

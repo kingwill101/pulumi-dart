@@ -4,7 +4,7 @@ import 'forward_entry_state.dart';
 
 /// Provides a forward resource.
 ///
-/// > **NOTE:** Available since v1.40.0.
+/// &gt; **NOTE:** Available since v1.40.0.
 ///
 /// ## Example Usage
 ///
@@ -377,26 +377,36 @@ import 'forward_entry_state.dart';
 class ForwardEntry extends pulumi.CustomResource {
   /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
   late final pulumi.Output<String> externalIp;
+
   /// The external port, valid value is 1~65535|any.
   late final pulumi.Output<String> externalPort;
+
   /// The id of the forward entry on the server.
   late final pulumi.Output<String> forwardEntryId;
+
   /// The name of forward entry.
   late final pulumi.Output<String> forwardEntryName;
+
   /// The value can get from `alicloud.vpc.NatGateway` Attributes "forward_table_ids".
   late final pulumi.Output<String> forwardTableId;
+
   /// The internal ip, must a private ip.
   late final pulumi.Output<String> internalIp;
+
   /// The internal port, valid value is 1~65535|any.
   late final pulumi.Output<String> internalPort;
+
   /// The ip protocol, valid value is tcp|udp|any.
   late final pulumi.Output<String> ipProtocol;
+
   /// Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
   late final pulumi.Output<String> name;
+
   /// Specifies whether to remove limits on the port range. Default value is `false`.
   ///
-  /// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+  /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
   late final pulumi.Output<bool?> portBreak;
+
   /// (Available since v1.119.1) The status of forward entry.
   late final pulumi.Output<String> status;
 
@@ -409,22 +419,22 @@ class ForwardEntry extends pulumi.CustomResource {
     ForwardEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/forwardEntry:ForwardEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.externalIp = registerOutput<String>('externalIp');
-    this.externalPort = registerOutput<String>('externalPort');
-    this.forwardEntryId = registerOutput<String>('forwardEntryId');
-    this.forwardEntryName = registerOutput<String>('forwardEntryName');
-    this.forwardTableId = registerOutput<String>('forwardTableId');
-    this.internalIp = registerOutput<String>('internalIp');
-    this.internalPort = registerOutput<String>('internalPort');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
+         'alicloud:vpc/forwardEntry:ForwardEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    externalIp = registerOutput<String>('externalIp');
+    externalPort = registerOutput<String>('externalPort');
+    forwardEntryId = registerOutput<String>('forwardEntryId');
+    forwardEntryName = registerOutput<String>('forwardEntryName');
+    forwardTableId = registerOutput<String>('forwardTableId');
+    internalIp = registerOutput<String>('internalIp');
+    internalPort = registerOutput<String>('internalPort');
+    ipProtocol = registerOutput<String>('ipProtocol');
     this.name = registerOutput<String>('name');
-    this.portBreak = registerOutput<bool?>('portBreak');
-    this.status = registerOutput<String>('status');
+    portBreak = registerOutput<bool?>('portBreak');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ForwardEntry] resource's state with the given [name] and [id].
@@ -445,21 +455,21 @@ class ForwardEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/forwardEntry:ForwardEntry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.externalIp = registerOutput<String>('externalIp');
-    this.externalPort = registerOutput<String>('externalPort');
-    this.forwardEntryId = registerOutput<String>('forwardEntryId');
-    this.forwardEntryName = registerOutput<String>('forwardEntryName');
-    this.forwardTableId = registerOutput<String>('forwardTableId');
-    this.internalIp = registerOutput<String>('internalIp');
-    this.internalPort = registerOutput<String>('internalPort');
-    this.ipProtocol = registerOutput<String>('ipProtocol');
+         'alicloud:vpc/forwardEntry:ForwardEntry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    externalIp = registerOutput<String>('externalIp');
+    externalPort = registerOutput<String>('externalPort');
+    forwardEntryId = registerOutput<String>('forwardEntryId');
+    forwardEntryName = registerOutput<String>('forwardEntryName');
+    forwardTableId = registerOutput<String>('forwardTableId');
+    internalIp = registerOutput<String>('internalIp');
+    internalPort = registerOutput<String>('internalPort');
+    ipProtocol = registerOutput<String>('ipProtocol');
     this.name = registerOutput<String>('name');
-    this.portBreak = registerOutput<bool?>('portBreak');
-    this.status = registerOutput<String>('status');
+    portBreak = registerOutput<bool?>('portBreak');
+    status = registerOutput<String>('status');
   }
 }

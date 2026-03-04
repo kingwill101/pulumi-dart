@@ -5,16 +5,15 @@ enum RuleQueryStringCachingBehavior {
   ignoreSpecifiedQueryStrings("IgnoreSpecifiedQueryStrings"),
   includeSpecifiedQueryStrings("IncludeSpecifiedQueryStrings");
 
-  const RuleQueryStringCachingBehavior(this.value);
-  final String value;
+  const RuleQueryStringCachingBehavior(this.wireValue);
+  final String wireValue;
 
   static RuleQueryStringCachingBehavior fromValue(String value) {
     for (final item in RuleQueryStringCachingBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleQueryStringCachingBehavior value: $value');
   }
 }
-

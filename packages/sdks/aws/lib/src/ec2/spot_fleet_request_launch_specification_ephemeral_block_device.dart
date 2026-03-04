@@ -21,11 +21,12 @@ class SpotFleetRequestLaunchSpecificationEphemeralBlockDevice {
     };
   }
 
-  factory SpotFleetRequestLaunchSpecificationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestLaunchSpecificationEphemeralBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestLaunchSpecificationEphemeralBlockDevice(
-      deviceName: (map['deviceName'] as String).input(),
-      virtualName: (map['virtualName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      virtualName: pulumi.Input.fromValue(map['virtualName'] as String),
     );
   }
 }
-

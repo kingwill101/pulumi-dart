@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogCollectionJobSessionResponse {
   /// A unique identifier for correlating this log collection session with other operations or sessions.
   final pulumi.Input<String> correlationId;
+
   /// The timestamp when log collection ended, in ISO 8601 format.
   final pulumi.Input<String> endTime;
+
   /// The size of the collected logs in bytes.
   final pulumi.Input<int> logSize;
+
   /// The timestamp when log collection started, in ISO 8601 format.
   final pulumi.Input<String> startTime;
+
   /// The status of the log collection session.
   final pulumi.Input<String> status;
+
   /// The total time logs were collected for, in ISO 8601 duration format.
   final pulumi.Input<String> timeCollected;
 
@@ -46,13 +51,12 @@ class LogCollectionJobSessionResponse {
 
   factory LogCollectionJobSessionResponse.fromMap(Map<String, dynamic> map) {
     return LogCollectionJobSessionResponse(
-      correlationId: (map['correlationId'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      logSize: (map['logSize'] as int).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
-      timeCollected: (map['timeCollected'] as String).input(),
+      correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      logSize: pulumi.Input.fromValue(map['logSize'] as int),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      timeCollected: pulumi.Input.fromValue(map['timeCollected'] as String),
     );
   }
 }
-

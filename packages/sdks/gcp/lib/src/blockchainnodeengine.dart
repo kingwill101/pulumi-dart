@@ -1,5 +1,3 @@
-library module_blockchainnodeengine;
-
 export 'blockchainnodeengine/blockchain_nodes.dart';
 export 'blockchainnodeengine/blockchain_nodes_args.dart';
 export 'blockchainnodeengine/blockchain_nodes_connection_info.dart';

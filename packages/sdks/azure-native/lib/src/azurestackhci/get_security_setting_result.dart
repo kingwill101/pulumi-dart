@@ -7,22 +7,31 @@ import 'system_data_response.dart';
 class GetSecuritySettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// Secured Core Compliance Assignment
   final String? securedCoreComplianceAssignment;
+
   /// Security Compliance Status
   final SecurityComplianceStatusResponse securityComplianceStatus;
+
   /// SMB encryption for intra-cluster traffic Compliance Assignment
   final String? smbEncryptionForIntraClusterTrafficComplianceAssignment;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// WDAC Compliance Assignment
   final String? wdacComplianceAssignment;
 
@@ -58,7 +67,8 @@ class GetSecuritySettingResult {
       'provisioningState': provisioningState,
       'securedCoreComplianceAssignment': ?securedCoreComplianceAssignment,
       'securityComplianceStatus': securityComplianceStatus.toMap(),
-      'smbEncryptionForIntraClusterTrafficComplianceAssignment': ?smbEncryptionForIntraClusterTrafficComplianceAssignment,
+      'smbEncryptionForIntraClusterTrafficComplianceAssignment':
+          ?smbEncryptionForIntraClusterTrafficComplianceAssignment,
       'systemData': systemData.toMap(),
       'type': type,
       'wdacComplianceAssignment': ?wdacComplianceAssignment,
@@ -71,13 +81,29 @@ class GetSecuritySettingResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      securedCoreComplianceAssignment: map['securedCoreComplianceAssignment'] == null ? null : map['securedCoreComplianceAssignment']! as String,
-      securityComplianceStatus: SecurityComplianceStatusResponse.fromMap((map['securityComplianceStatus'] as Map).cast<String, dynamic>()),
-      smbEncryptionForIntraClusterTrafficComplianceAssignment: map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] == null ? null : map['smbEncryptionForIntraClusterTrafficComplianceAssignment']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      securedCoreComplianceAssignment: (() {
+        final guardedValue = map['securedCoreComplianceAssignment'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      securityComplianceStatus: SecurityComplianceStatusResponse.fromMap(
+        (map['securityComplianceStatus']! as Map).cast<String, dynamic>(),
+      ),
+      smbEncryptionForIntraClusterTrafficComplianceAssignment: (() {
+        final guardedValue =
+            map['smbEncryptionForIntraClusterTrafficComplianceAssignment'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      wdacComplianceAssignment: map['wdacComplianceAssignment'] == null ? null : map['wdacComplianceAssignment']! as String,
+      wdacComplianceAssignment: (() {
+        final guardedValue = map['wdacComplianceAssignment'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

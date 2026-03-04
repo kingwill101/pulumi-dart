@@ -7,6 +7,7 @@ class ServicePerimeterEgressPolicyEgressToOperationMethodSelector {
   /// `serviceName` in `ApiOperation`. If `*` used as value for method,
   /// then ALL methods and permissions are allowed.
   final pulumi.Input<String>? method;
+
   /// Value for permission should be a valid Cloud IAM permission for the
   /// corresponding `serviceName` in `ApiOperation`.
   final pulumi.Input<String>? permission;
@@ -20,17 +21,23 @@ class ServicePerimeterEgressPolicyEgressToOperationMethodSelector {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'method': ?method,
-      'permission': ?permission,
-    };
+    return <String, dynamic>{'method': ?method, 'permission': ?permission};
   }
 
-  factory ServicePerimeterEgressPolicyEgressToOperationMethodSelector.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterEgressPolicyEgressToOperationMethodSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterEgressPolicyEgressToOperationMethodSelector(
-      method: map['method'] == null ? null : (map['method']! as String).input(),
-      permission: map['permission'] == null ? null : (map['permission']! as String).input(),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permission: (() {
+        final guardedValue = map['permission'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

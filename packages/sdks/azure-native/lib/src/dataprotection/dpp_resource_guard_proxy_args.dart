@@ -10,10 +10,13 @@ import 'resource_guard_proxy_base.dart';
 class DppResourceGuardProxyArgs {
   /// ResourceGuardProxyBaseResource properties
   final pulumi.Input<ResourceGuardProxyBase>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// name of the resource guard proxy
   final pulumi.Input<String>? resourceGuardProxyName;
+
   /// The name of the backup vault.
   final pulumi.Input<String> vaultName;
 
@@ -31,7 +34,11 @@ class DppResourceGuardProxyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<ResourceGuardProxyBase, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceGuardProxyBase,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceGuardProxyName': ?resourceGuardProxyName,
       'vaultName': vaultName,
@@ -40,11 +47,24 @@ class DppResourceGuardProxyArgs {
 
   factory DppResourceGuardProxyArgs.fromMap(Map<String, dynamic> map) {
     return DppResourceGuardProxyArgs(
-      properties: map['properties'] == null ? null : (ResourceGuardProxyBase.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceGuardProxyName: map['resourceGuardProxyName'] == null ? null : (map['resourceGuardProxyName']! as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceGuardProxyBase.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceGuardProxyName: (() {
+        final guardedValue = map['resourceGuardProxyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GovernedServiceItem {
   /// Initiative enforcement (Enabled or Disabled).
   final pulumi.Input<String>? enforcement;
+
   /// Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable).
   final pulumi.Input<String>? option;
+
   /// Enforcement mode for policy. AuditOnly, Enforce, or None.
   final pulumi.Input<String>? policyAction;
+
   /// Service ID
   final pulumi.Input<String> serviceId;
 
@@ -36,11 +39,22 @@ class GovernedServiceItem {
 
   factory GovernedServiceItem.fromMap(Map<String, dynamic> map) {
     return GovernedServiceItem(
-      enforcement: map['enforcement'] == null ? null : (map['enforcement']! as String).input(),
-      option: map['option'] == null ? null : (map['option']! as String).input(),
-      policyAction: map['policyAction'] == null ? null : (map['policyAction']! as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
+      enforcement: (() {
+        final guardedValue = map['enforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      option: (() {
+        final guardedValue = map['option'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyAction: (() {
+        final guardedValue = map['policyAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
-

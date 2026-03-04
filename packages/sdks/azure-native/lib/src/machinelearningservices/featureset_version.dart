@@ -8,20 +8,28 @@ import 'materialization_settings.dart';
 class FeaturesetVersion {
   /// The asset description text.
   final pulumi.Input<String>? description;
+
   /// Specifies list of entities
   final pulumi.Input<List<String>>? entities;
+
   /// If the name version are system generated (anonymous registration).
   final pulumi.Input<bool>? isAnonymous;
+
   /// Is the asset archived?
   final pulumi.Input<bool>? isArchived;
+
   /// Specifies the materialization settings
   final pulumi.Input<MaterializationSettings>? materializationSettings;
+
   /// The asset property dictionary.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Specifies the feature spec details
   final pulumi.Input<FeaturesetSpecification>? specification;
+
   /// Specifies the asset stage
   final pulumi.Input<String>? stage;
+
   /// Tag dictionary. Tags can be added, removed, and updated.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -53,9 +61,17 @@ class FeaturesetVersion {
       'entities': ?entities,
       'isAnonymous': ?isAnonymous,
       'isArchived': ?isArchived,
-      'materializationSettings': ?pulumi.Input.mapOptionalInputValue<MaterializationSettings, Map<String, dynamic>>(materializationSettings, (value) => value.toMap()),
+      'materializationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaterializationSettings,
+            Map<String, dynamic>
+          >(materializationSettings, (value) => value.toMap()),
       'properties': ?properties,
-      'specification': ?pulumi.Input.mapOptionalInputValue<FeaturesetSpecification, Map<String, dynamic>>(specification, (value) => value.toMap()),
+      'specification':
+          ?pulumi.Input.mapOptionalInputValue<
+            FeaturesetSpecification,
+            Map<String, dynamic>
+          >(specification, (value) => value.toMap()),
       'stage': ?stage,
       'tags': ?tags,
     };
@@ -63,16 +79,63 @@ class FeaturesetVersion {
 
   factory FeaturesetVersion.fromMap(Map<String, dynamic> map) {
     return FeaturesetVersion(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      entities: map['entities'] == null ? null : ((map['entities']! as List).cast<String>()).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
-      materializationSettings: map['materializationSettings'] == null ? null : (MaterializationSettings.fromMap((map['materializationSettings']! as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      specification: map['specification'] == null ? null : (FeaturesetSpecification.fromMap((map['specification']! as Map).cast<String, dynamic>())).input(),
-      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entities: (() {
+        final guardedValue = map['entities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      isAnonymous: (() {
+        final guardedValue = map['isAnonymous'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isArchived: (() {
+        final guardedValue = map['isArchived'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      materializationSettings: (() {
+        final guardedValue = map['materializationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaterializationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      specification: (() {
+        final guardedValue = map['specification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FeaturesetSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stage: (() {
+        final guardedValue = map['stage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

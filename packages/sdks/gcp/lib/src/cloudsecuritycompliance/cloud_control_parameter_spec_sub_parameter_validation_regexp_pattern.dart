@@ -13,15 +13,14 @@ class CloudControlParameterSpecSubParameterValidationRegexpPattern {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pattern': pattern,
-    };
+    return <String, dynamic>{'pattern': pattern};
   }
 
-  factory CloudControlParameterSpecSubParameterValidationRegexpPattern.fromMap(Map<String, dynamic> map) {
+  factory CloudControlParameterSpecSubParameterValidationRegexpPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudControlParameterSpecSubParameterValidationRegexpPattern(
-      pattern: (map['pattern'] as String).input(),
+      pattern: pulumi.Input.fromValue(map['pattern'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum NetworkAclBypass {
   valueNone("None"),
   valueAzureServices("AzureServices");
 
-  const NetworkAclBypass(this.value);
-  final String value;
+  const NetworkAclBypass(this.wireValue);
+  final String wireValue;
 
   static NetworkAclBypass fromValue(String value) {
     for (final item in NetworkAclBypass.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkAclBypass value: $value');
   }
 }
-

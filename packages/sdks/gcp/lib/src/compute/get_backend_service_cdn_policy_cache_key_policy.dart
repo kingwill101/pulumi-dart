@@ -5,13 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackendServiceCdnPolicyCacheKeyPolicy {
   /// If true requests to different hosts will be cached separately.
   final pulumi.Input<bool> includeHost;
+
   /// Allows HTTP request headers (by name) to be used in the
   /// cache key.
   final pulumi.Input<List<String>> includeHttpHeaders;
+
   /// Names of cookies to include in cache keys.
   final pulumi.Input<List<String>> includeNamedCookies;
+
   /// If true, http and https requests will be cached separately.
   final pulumi.Input<bool> includeProtocol;
+
   /// If true, include query string parameters in the cache key
   /// according to query_string_whitelist and
   /// query_string_blacklist. If neither is set, the entire query
@@ -20,6 +24,7 @@ class GetBackendServiceCdnPolicyCacheKeyPolicy {
   /// If false, the query string will be excluded from the cache
   /// key entirely.
   final pulumi.Input<bool> includeQueryString;
+
   /// Names of query string parameters to exclude in cache keys.
   ///
   /// All other parameters will be included. Either specify
@@ -27,6 +32,7 @@ class GetBackendServiceCdnPolicyCacheKeyPolicy {
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
   final pulumi.Input<List<String>> queryStringBlacklists;
+
   /// Names of query string parameters to include in cache keys.
   ///
   /// All other parameters will be excluded. Either specify
@@ -65,16 +71,27 @@ class GetBackendServiceCdnPolicyCacheKeyPolicy {
     };
   }
 
-  factory GetBackendServiceCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetBackendServiceCdnPolicyCacheKeyPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackendServiceCdnPolicyCacheKeyPolicy(
-      includeHost: (map['includeHost'] as bool).input(),
-      includeHttpHeaders: ((map['includeHttpHeaders'] as List).cast<String>()).input(),
-      includeNamedCookies: ((map['includeNamedCookies'] as List).cast<String>()).input(),
-      includeProtocol: (map['includeProtocol'] as bool).input(),
-      includeQueryString: (map['includeQueryString'] as bool).input(),
-      queryStringBlacklists: ((map['queryStringBlacklists'] as List).cast<String>()).input(),
-      queryStringWhitelists: ((map['queryStringWhitelists'] as List).cast<String>()).input(),
+      includeHost: pulumi.Input.fromValue(map['includeHost'] as bool),
+      includeHttpHeaders: pulumi.Input.fromValue(
+        (map['includeHttpHeaders'] as List).cast<String>(),
+      ),
+      includeNamedCookies: pulumi.Input.fromValue(
+        (map['includeNamedCookies'] as List).cast<String>(),
+      ),
+      includeProtocol: pulumi.Input.fromValue(map['includeProtocol'] as bool),
+      includeQueryString: pulumi.Input.fromValue(
+        map['includeQueryString'] as bool,
+      ),
+      queryStringBlacklists: pulumi.Input.fromValue(
+        (map['queryStringBlacklists'] as List).cast<String>(),
+      ),
+      queryStringWhitelists: pulumi.Input.fromValue(
+        (map['queryStringWhitelists'] as List).cast<String>(),
+      ),
     );
   }
 }
-

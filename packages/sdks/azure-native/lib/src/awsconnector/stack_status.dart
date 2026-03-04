@@ -20,20 +20,21 @@ enum StackStatus {
   uPDATEFAILED("UPDATE_FAILED"),
   uPDATEINPROGRESS("UPDATE_IN_PROGRESS"),
   uPDATEROLLBACKCOMPLETE("UPDATE_ROLLBACK_COMPLETE"),
-  uPDATEROLLBACKCOMPLETECLEANUPINPROGRESS("UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"),
+  uPDATEROLLBACKCOMPLETECLEANUPINPROGRESS(
+    "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS",
+  ),
   uPDATEROLLBACKFAILED("UPDATE_ROLLBACK_FAILED"),
   uPDATEROLLBACKINPROGRESS("UPDATE_ROLLBACK_IN_PROGRESS");
 
-  const StackStatus(this.value);
-  final String value;
+  const StackStatus(this.wireValue);
+  final String wireValue;
 
   static StackStatus fromValue(String value) {
     for (final item in StackStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StackStatus value: $value');
   }
 }
-

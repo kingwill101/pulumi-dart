@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1SavedQueryResponse {
   /// Filters on the Annotations in the dataset.
   final pulumi.Input<String> annotationFilter;
+
   /// Number of AnnotationSpecs in the context of the SavedQuery.
   final pulumi.Input<int> annotationSpecCount;
+
   /// Timestamp when this SavedQuery was created.
   final pulumi.Input<String> createTime;
+
   /// The user-defined name of the SavedQuery. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
+
   /// Used to perform a consistent read-modify-write update. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String> etag;
+
   /// Some additional information about the SavedQuery.
   final pulumi.Input<dynamic> metadata;
+
   /// Resource name of the SavedQuery.
   final pulumi.Input<String> name;
+
   /// Problem type of the SavedQuery. Allowed values: * IMAGE_CLASSIFICATION_SINGLE_LABEL * IMAGE_CLASSIFICATION_MULTI_LABEL * IMAGE_BOUNDING_POLY * IMAGE_BOUNDING_BOX * TEXT_CLASSIFICATION_SINGLE_LABEL * TEXT_CLASSIFICATION_MULTI_LABEL * TEXT_EXTRACTION * TEXT_SENTIMENT * VIDEO_CLASSIFICATION * VIDEO_OBJECT_TRACKING
   final pulumi.Input<String> problemType;
+
   /// If the Annotations belonging to the SavedQuery can be used for AutoML training.
   final pulumi.Input<bool> supportAutomlTraining;
+
   /// Timestamp when SavedQuery was last updated.
   final pulumi.Input<String> updateTime;
 
@@ -64,19 +73,26 @@ class GoogleCloudAiplatformV1SavedQueryResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1SavedQueryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1SavedQueryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1SavedQueryResponse(
-      annotationFilter: (map['annotationFilter'] as String).input(),
-      annotationSpecCount: (map['annotationSpecCount'] as int).input(),
-      createTime: (map['createTime'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      etag: (map['etag'] as String).input(),
-      metadata: (map['metadata']).input(),
-      name: (map['name'] as String).input(),
-      problemType: (map['problemType'] as String).input(),
-      supportAutomlTraining: (map['supportAutomlTraining'] as bool).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      annotationFilter: pulumi.Input.fromValue(
+        map['annotationFilter'] as String,
+      ),
+      annotationSpecCount: pulumi.Input.fromValue(
+        map['annotationSpecCount'] as int,
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      metadata: pulumi.Input.fromValue(map['metadata']),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      problemType: pulumi.Input.fromValue(map['problemType'] as String),
+      supportAutomlTraining: pulumi.Input.fromValue(
+        map['supportAutomlTraining'] as bool,
+      ),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

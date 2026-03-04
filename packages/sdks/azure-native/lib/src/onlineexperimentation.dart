@@ -1,5 +1,3 @@
-library module_onlineexperimentation;
-
 export 'onlineexperimentation/customer_managed_key_encryption.dart';
 export 'onlineexperimentation/customer_managed_key_encryption_response.dart';
 export 'onlineexperimentation/functions.dart';

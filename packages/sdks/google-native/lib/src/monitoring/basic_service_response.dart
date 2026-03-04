@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicServiceResponse {
   /// Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
   final pulumi.Input<Map<String, String>> serviceLabels;
+
   /// The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
   final pulumi.Input<String> serviceType;
 
@@ -26,9 +27,10 @@ class BasicServiceResponse {
 
   factory BasicServiceResponse.fromMap(Map<String, dynamic> map) {
     return BasicServiceResponse(
-      serviceLabels: ((map['serviceLabels'] as Map).cast<String, String>()).input(),
-      serviceType: (map['serviceType'] as String).input(),
+      serviceLabels: pulumi.Input.fromValue(
+        (map['serviceLabels'] as Map).cast<String, String>(),
+      ),
+      serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
     );
   }
 }
-

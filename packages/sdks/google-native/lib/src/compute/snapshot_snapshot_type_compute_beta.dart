@@ -3,16 +3,17 @@ enum SnapshotSnapshotTypeComputeBeta {
   archive("ARCHIVE"),
   standard("STANDARD");
 
-  const SnapshotSnapshotTypeComputeBeta(this.value);
-  final String value;
+  const SnapshotSnapshotTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SnapshotSnapshotTypeComputeBeta fromValue(String value) {
     for (final item in SnapshotSnapshotTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SnapshotSnapshotTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SnapshotSnapshotTypeComputeBeta value: $value',
+    );
   }
 }
-

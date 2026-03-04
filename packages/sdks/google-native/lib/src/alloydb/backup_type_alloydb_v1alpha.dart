@@ -5,16 +5,15 @@ enum BackupTypeAlloydbV1alpha {
   automated("AUTOMATED"),
   continuous("CONTINUOUS");
 
-  const BackupTypeAlloydbV1alpha(this.value);
-  final String value;
+  const BackupTypeAlloydbV1alpha(this.wireValue);
+  final String wireValue;
 
   static BackupTypeAlloydbV1alpha fromValue(String value) {
     for (final item in BackupTypeAlloydbV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupTypeAlloydbV1alpha value: $value');
   }
 }
-

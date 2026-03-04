@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReturnAddressResponse {
   /// The city name to use when returning the drives.
   final pulumi.Input<String> city;
+
   /// The country or region to use when returning the drives.
   final pulumi.Input<String> countryOrRegion;
+
   /// Email address of the recipient of the returned drives.
   final pulumi.Input<String> email;
+
   /// Phone number of the recipient of the returned drives.
   final pulumi.Input<String> phone;
+
   /// The postal code to use when returning the drives.
   final pulumi.Input<String> postalCode;
+
   /// The name of the recipient who will receive the hard drives when they are returned.
   final pulumi.Input<String> recipientName;
+
   /// The state or province to use when returning the drives.
   final pulumi.Input<String>? stateOrProvince;
+
   /// The first line of the street address to use when returning the drives.
   final pulumi.Input<String> streetAddress1;
+
   /// The second line of the street address to use when returning the drives.
   final pulumi.Input<String>? streetAddress2;
 
@@ -61,16 +69,23 @@ class ReturnAddressResponse {
 
   factory ReturnAddressResponse.fromMap(Map<String, dynamic> map) {
     return ReturnAddressResponse(
-      city: (map['city'] as String).input(),
-      countryOrRegion: (map['countryOrRegion'] as String).input(),
-      email: (map['email'] as String).input(),
-      phone: (map['phone'] as String).input(),
-      postalCode: (map['postalCode'] as String).input(),
-      recipientName: (map['recipientName'] as String).input(),
-      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince']! as String).input(),
-      streetAddress1: (map['streetAddress1'] as String).input(),
-      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2']! as String).input(),
+      city: pulumi.Input.fromValue(map['city'] as String),
+      countryOrRegion: pulumi.Input.fromValue(map['countryOrRegion'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      phone: pulumi.Input.fromValue(map['phone'] as String),
+      postalCode: pulumi.Input.fromValue(map['postalCode'] as String),
+      recipientName: pulumi.Input.fromValue(map['recipientName'] as String),
+      stateOrProvince: (() {
+        final guardedValue = map['stateOrProvince'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streetAddress1: pulumi.Input.fromValue(map['streetAddress1'] as String),
+      streetAddress2: (() {
+        final guardedValue = map['streetAddress2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_fast;
-
 export 'fast/functions.dart';
 export 'fast/get_aws_service_discovery_args.dart';
 export 'fast/get_aws_service_discovery_result.dart';

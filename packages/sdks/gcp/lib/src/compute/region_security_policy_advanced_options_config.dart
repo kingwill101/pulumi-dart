@@ -6,17 +6,22 @@ import 'region_security_policy_advanced_options_config_json_custom_config.dart';
 class RegionSecurityPolicyAdvancedOptionsConfig {
   /// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
   /// Structure is documented below.
-  final pulumi.Input<RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig>? jsonCustomConfig;
+  final pulumi.Input<RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig>?
+  jsonCustomConfig;
+
   /// JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL".
   /// Possible values are: `DISABLED`, `STANDARD`, `STANDARD_WITH_GRAPHQL`.
   final pulumi.Input<String>? jsonParsing;
+
   /// Logging level. Supported values include: "NORMAL", "VERBOSE".
   /// Possible values are: `NORMAL`, `VERBOSE`.
   final pulumi.Input<String>? logLevel;
+
   /// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
   /// Values are case insensitive.
   /// Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
   final pulumi.Input<String>? requestBodyInspectionSize;
+
   /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
   final pulumi.Input<List<String>>? userIpRequestHeaders;
 
@@ -36,7 +41,11 @@ class RegionSecurityPolicyAdvancedOptionsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jsonCustomConfig': ?pulumi.Input.mapOptionalInputValue<RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig, Map<String, dynamic>>(jsonCustomConfig, (value) => value.toMap()),
+      'jsonCustomConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig,
+            Map<String, dynamic>
+          >(jsonCustomConfig, (value) => value.toMap()),
       'jsonParsing': ?jsonParsing,
       'logLevel': ?logLevel,
       'requestBodyInspectionSize': ?requestBodyInspectionSize,
@@ -44,14 +53,39 @@ class RegionSecurityPolicyAdvancedOptionsConfig {
     };
   }
 
-  factory RegionSecurityPolicyAdvancedOptionsConfig.fromMap(Map<String, dynamic> map) {
+  factory RegionSecurityPolicyAdvancedOptionsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionSecurityPolicyAdvancedOptionsConfig(
-      jsonCustomConfig: map['jsonCustomConfig'] == null ? null : (RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap((map['jsonCustomConfig']! as Map).cast<String, dynamic>())).input(),
-      jsonParsing: map['jsonParsing'] == null ? null : (map['jsonParsing']! as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
-      requestBodyInspectionSize: map['requestBodyInspectionSize'] == null ? null : (map['requestBodyInspectionSize']! as String).input(),
-      userIpRequestHeaders: map['userIpRequestHeaders'] == null ? null : ((map['userIpRequestHeaders']! as List).cast<String>()).input(),
+      jsonCustomConfig: (() {
+        final guardedValue = map['jsonCustomConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      jsonParsing: (() {
+        final guardedValue = map['jsonParsing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestBodyInspectionSize: (() {
+        final guardedValue = map['requestBodyInspectionSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userIpRequestHeaders: (() {
+        final guardedValue = map['userIpRequestHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

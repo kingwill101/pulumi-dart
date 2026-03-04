@@ -10,10 +10,13 @@ import 'sql_injection_match_set_sql_injection_match_tuple.dart';
 class SqlInjectionMatchSetArgs {
   /// The name or description of the SizeConstraintSet.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  final pulumi.Input<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>? sqlInjectionMatchTuples;
+  final pulumi.Input<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>?
+  sqlInjectionMatchTuples;
 
   /// Creates a new [SqlInjectionMatchSetArgs].
   /// [name] The name or description of the SizeConstraintSet.
@@ -29,16 +32,45 @@ class SqlInjectionMatchSetArgs {
     return <String, dynamic>{
       'name': ?name,
       'region': ?region,
-      'sqlInjectionMatchTuples': ?pulumi.Input.mapOptionalInputValue<List<SqlInjectionMatchSetSqlInjectionMatchTuple>, List<Map<String, dynamic>>>(sqlInjectionMatchTuples, (value) => pulumi.Input.encodeList<SqlInjectionMatchSetSqlInjectionMatchTuple, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sqlInjectionMatchTuples':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SqlInjectionMatchSetSqlInjectionMatchTuple>,
+            List<Map<String, dynamic>>
+          >(
+            sqlInjectionMatchTuples,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SqlInjectionMatchSetSqlInjectionMatchTuple,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SqlInjectionMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return SqlInjectionMatchSetArgs(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sqlInjectionMatchTuples: map['sqlInjectionMatchTuples'] == null ? null : ((pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(map['sqlInjectionMatchTuples']!, (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sqlInjectionMatchTuples: (() {
+        final guardedValue = map['sqlInjectionMatchTuples'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(
+            guardedValue,
+            (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

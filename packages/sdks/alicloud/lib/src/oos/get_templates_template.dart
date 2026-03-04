@@ -5,32 +5,46 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplatesTemplate {
   /// The category of template.
   final pulumi.Input<String> category;
+
   /// The creator of the template.
   final pulumi.Input<String> createdBy;
+
   /// The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
   final pulumi.Input<String> createdDate;
+
   /// Description of the OOS Template.
   final pulumi.Input<String> description;
+
   /// Is it triggered successfully.
   final pulumi.Input<bool> hasTrigger;
+
   /// ID of the OOS Template. The value is same as template_name.
   final pulumi.Input<String> id;
+
   /// The sharing type of the template. Valid values: `Private`, `Public`.
   final pulumi.Input<String> shareType;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The format of the template. Valid values: `JSON`, `YAML`.
   final pulumi.Input<String> templateFormat;
+
   /// ID of the OOS Template resource.
   final pulumi.Input<String> templateId;
+
   /// Name of the OOS Template.
   final pulumi.Input<String> templateName;
+
   /// The type of OOS Template.
   final pulumi.Input<String> templateType;
+
   /// Version of the OOS Template.
   final pulumi.Input<String> templateVersion;
+
   /// The user who updated the template.
   final pulumi.Input<String> updatedBy;
+
   /// The time when the template was updated.
   final pulumi.Input<String> updatedDate;
 
@@ -90,22 +104,21 @@ class GetTemplatesTemplate {
 
   factory GetTemplatesTemplate.fromMap(Map<String, dynamic> map) {
     return GetTemplatesTemplate(
-      category: (map['category'] as String).input(),
-      createdBy: (map['createdBy'] as String).input(),
-      createdDate: (map['createdDate'] as String).input(),
-      description: (map['description'] as String).input(),
-      hasTrigger: (map['hasTrigger'] as bool).input(),
-      id: (map['id'] as String).input(),
-      shareType: (map['shareType'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      templateFormat: (map['templateFormat'] as String).input(),
-      templateId: (map['templateId'] as String).input(),
-      templateName: (map['templateName'] as String).input(),
-      templateType: (map['templateType'] as String).input(),
-      templateVersion: (map['templateVersion'] as String).input(),
-      updatedBy: (map['updatedBy'] as String).input(),
-      updatedDate: (map['updatedDate'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      createdDate: pulumi.Input.fromValue(map['createdDate'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      hasTrigger: pulumi.Input.fromValue(map['hasTrigger'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      templateFormat: pulumi.Input.fromValue(map['templateFormat'] as String),
+      templateId: pulumi.Input.fromValue(map['templateId'] as String),
+      templateName: pulumi.Input.fromValue(map['templateName'] as String),
+      templateType: pulumi.Input.fromValue(map['templateType'] as String),
+      templateVersion: pulumi.Input.fromValue(map['templateVersion'] as String),
+      updatedBy: pulumi.Input.fromValue(map['updatedBy'] as String),
+      updatedDate: pulumi.Input.fromValue(map['updatedDate'] as String),
     );
   }
 }
-

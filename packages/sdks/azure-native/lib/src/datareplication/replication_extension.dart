@@ -165,11 +165,16 @@ import 'replication_extension_model_response_system_data.dart';
 class ReplicationExtension extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Replication extension model properties.
-  late final pulumi.Output<ReplicationExtensionModelPropertiesResponse> properties;
-  late final pulumi.Output<ReplicationExtensionModelResponseSystemData> systemData;
+  late final pulumi.Output<ReplicationExtensionModelPropertiesResponse>
+  properties;
+  late final pulumi.Output<ReplicationExtensionModelResponseSystemData>
+  systemData;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -182,15 +187,19 @@ class ReplicationExtension extends pulumi.CustomResource {
     ReplicationExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datareplication:ReplicationExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:datareplication:ReplicationExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ReplicationExtensionModelPropertiesResponse>('properties');
-    this.systemData = registerOutput<ReplicationExtensionModelResponseSystemData>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ReplicationExtensionModelPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<ReplicationExtensionModelResponseSystemData>(
+      'systemData',
+    );
+    type = registerOutput<String>('type');
   }
 }

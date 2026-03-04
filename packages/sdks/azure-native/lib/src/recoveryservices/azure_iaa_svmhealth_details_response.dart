@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureIaaSVMHealthDetailsResponse {
   /// Health Code
   final pulumi.Input<int> code;
+
   /// Health Message
   final pulumi.Input<String> message;
+
   /// Health Recommended Actions
   final pulumi.Input<List<String>> recommendations;
+
   /// Health Title
   final pulumi.Input<String> title;
 
@@ -36,11 +39,12 @@ class AzureIaaSVMHealthDetailsResponse {
 
   factory AzureIaaSVMHealthDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureIaaSVMHealthDetailsResponse(
-      code: (map['code'] as int).input(),
-      message: (map['message'] as String).input(),
-      recommendations: ((map['recommendations'] as List).cast<String>()).input(),
-      title: (map['title'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as int),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      recommendations: pulumi.Input.fromValue(
+        (map['recommendations'] as List).cast<String>(),
+      ),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationState {
   /// Custom `display_name` for the organization.
   final pulumi.Input<String>? displayName;
+
   /// The application `id`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? iotcentralApplicationId;
+
   /// The ID of the organization. Changing this forces a new resource to be created.
   final pulumi.Input<String>? organizationId;
+
   /// The `organization_id` of the parent organization. Changing this forces a new resource to be created.
   final pulumi.Input<String>? parentOrganizationId;
 
@@ -36,11 +39,26 @@ class OrganizationState {
 
   factory OrganizationState.fromMap(Map<String, dynamic> map) {
     return OrganizationState(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      iotcentralApplicationId: map['iotcentralApplicationId'] == null ? null : (map['iotcentralApplicationId']! as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId']! as String).input(),
-      parentOrganizationId: map['parentOrganizationId'] == null ? null : (map['parentOrganizationId']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iotcentralApplicationId: (() {
+        final guardedValue = map['iotcentralApplicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: (() {
+        final guardedValue = map['organizationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentOrganizationId: (() {
+        final guardedValue = map['parentOrganizationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

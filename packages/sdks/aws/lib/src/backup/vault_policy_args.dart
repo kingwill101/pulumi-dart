@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultPolicyArgs {
   /// Name of the backup vault to add policy for.
   final pulumi.Input<String> backupVaultName;
+
   /// The backup vault access policy document in JSON format.
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,10 +36,13 @@ class VaultPolicyArgs {
 
   factory VaultPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VaultPolicyArgs(
-      backupVaultName: (map['backupVaultName'] as String).input(),
-      policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      backupVaultName: pulumi.Input.fromValue(map['backupVaultName'] as String),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,36 +13,51 @@ class GetUserResult {
   /// List of details about the user's address.
   final List<GetUserAddress> addresses;
   final GetUserAlternateIdentifier? alternateIdentifier;
+
   /// The name that is typically displayed when the user is referenced.
   final String displayName;
+
   /// List of details about the user's email.
   final List<GetUserEmail> emails;
+
   /// List of identifiers issued to this resource by an external identity provider.
   final List<GetUserExternalId> externalIds;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String identityStoreId;
+
   /// The user's geographical region or location.
   final String locale;
+
   /// Details about the user's full name.
   final List<GetUserName> names;
+
   /// An alternate name for the user.
   final String nickname;
+
   /// List of details about the user's phone number.
   final List<GetUserPhoneNumber> phoneNumbers;
+
   /// The preferred language of the user.
   final String preferredLanguage;
+
   /// An URL that may be associated with the user.
   final String profileUrl;
+
   /// The region of the address.
   final String region;
+
   /// The user's time zone.
   final String timezone;
+
   /// The user's title.
   final String title;
   final String userId;
+
   /// User's user name value.
   final String userName;
+
   /// The user type.
   final String userType;
 
@@ -90,17 +105,35 @@ class GetUserResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses': pulumi.Input.encodeList<GetUserAddress, Map<String, dynamic>>(addresses, (value) => value.toMap()),
-      'alternateIdentifier': ?alternateIdentifier == null ? null : alternateIdentifier!.toMap(),
+      'addresses':
+          pulumi.Input.encodeList<GetUserAddress, Map<String, dynamic>>(
+            addresses,
+            (value) => value.toMap(),
+          ),
+      'alternateIdentifier': ?alternateIdentifier?.toMap(),
       'displayName': displayName,
-      'emails': pulumi.Input.encodeList<GetUserEmail, Map<String, dynamic>>(emails, (value) => value.toMap()),
-      'externalIds': pulumi.Input.encodeList<GetUserExternalId, Map<String, dynamic>>(externalIds, (value) => value.toMap()),
+      'emails': pulumi.Input.encodeList<GetUserEmail, Map<String, dynamic>>(
+        emails,
+        (value) => value.toMap(),
+      ),
+      'externalIds':
+          pulumi.Input.encodeList<GetUserExternalId, Map<String, dynamic>>(
+            externalIds,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'identityStoreId': identityStoreId,
       'locale': locale,
-      'names': pulumi.Input.encodeList<GetUserName, Map<String, dynamic>>(names, (value) => value.toMap()),
+      'names': pulumi.Input.encodeList<GetUserName, Map<String, dynamic>>(
+        names,
+        (value) => value.toMap(),
+      ),
       'nickname': nickname,
-      'phoneNumbers': pulumi.Input.encodeList<GetUserPhoneNumber, Map<String, dynamic>>(phoneNumbers, (value) => value.toMap()),
+      'phoneNumbers':
+          pulumi.Input.encodeList<GetUserPhoneNumber, Map<String, dynamic>>(
+            phoneNumbers,
+            (value) => value.toMap(),
+          ),
       'preferredLanguage': preferredLanguage,
       'profileUrl': profileUrl,
       'region': region,
@@ -114,17 +147,41 @@ class GetUserResult {
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      addresses: pulumi.Input.decodeList<GetUserAddress>(map['addresses']!, (value) => GetUserAddress.fromMap((value as Map).cast<String, dynamic>())),
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : GetUserAlternateIdentifier.fromMap((map['alternateIdentifier']! as Map).cast<String, dynamic>()),
+      addresses: pulumi.Input.decodeList<GetUserAddress>(
+        map['addresses']!,
+        (value) =>
+            GetUserAddress.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      alternateIdentifier: (() {
+        final guardedValue = map['alternateIdentifier'];
+        if (guardedValue == null) return null;
+        return GetUserAlternateIdentifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       displayName: map['displayName'] as String,
-      emails: pulumi.Input.decodeList<GetUserEmail>(map['emails']!, (value) => GetUserEmail.fromMap((value as Map).cast<String, dynamic>())),
-      externalIds: pulumi.Input.decodeList<GetUserExternalId>(map['externalIds']!, (value) => GetUserExternalId.fromMap((value as Map).cast<String, dynamic>())),
+      emails: pulumi.Input.decodeList<GetUserEmail>(
+        map['emails']!,
+        (value) => GetUserEmail.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      externalIds: pulumi.Input.decodeList<GetUserExternalId>(
+        map['externalIds']!,
+        (value) =>
+            GetUserExternalId.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       locale: map['locale'] as String,
-      names: pulumi.Input.decodeList<GetUserName>(map['names']!, (value) => GetUserName.fromMap((value as Map).cast<String, dynamic>())),
+      names: pulumi.Input.decodeList<GetUserName>(
+        map['names']!,
+        (value) => GetUserName.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       nickname: map['nickname'] as String,
-      phoneNumbers: pulumi.Input.decodeList<GetUserPhoneNumber>(map['phoneNumbers']!, (value) => GetUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>())),
+      phoneNumbers: pulumi.Input.decodeList<GetUserPhoneNumber>(
+        map['phoneNumbers']!,
+        (value) =>
+            GetUserPhoneNumber.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       preferredLanguage: map['preferredLanguage'] as String,
       profileUrl: map['profileUrl'] as String,
       region: map['region'] as String,
@@ -136,4 +193,3 @@ class GetUserResult {
     );
   }
 }
-

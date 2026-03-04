@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSPolicyResourceRepositoryResourceGooRepository {
   /// The name of the repository.
   final pulumi.Input<String> name;
+
   /// The url of the repository.
   final pulumi.Input<String> url;
 
@@ -18,17 +19,15 @@ class OSPolicyResourceRepositoryResourceGooRepository {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'url': url,
-    };
+    return <String, dynamic>{'name': name, 'url': url};
   }
 
-  factory OSPolicyResourceRepositoryResourceGooRepository.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourceRepositoryResourceGooRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourceRepositoryResourceGooRepository(
-      name: (map['name'] as String).input(),
-      url: (map['url'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

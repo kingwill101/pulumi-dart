@@ -8,12 +8,16 @@ class VpcEndpointServiceConnectionState {
   ///
   /// Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
   final pulumi.Input<int>? bandwidth;
+
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   final pulumi.Input<bool>? dryRun;
+
   /// The endpoint ID.
   final pulumi.Input<String>? endpointId;
+
   /// The endpoint service ID.
   final pulumi.Input<String>? serviceId;
+
   /// The state of the endpoint connection.
   final pulumi.Input<String>? status;
 
@@ -43,12 +47,31 @@ class VpcEndpointServiceConnectionState {
 
   factory VpcEndpointServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceConnectionState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endpointId: (() {
+        final guardedValue = map['endpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: (() {
+        final guardedValue = map['serviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

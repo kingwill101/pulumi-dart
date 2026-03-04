@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageAccount {
   /// The Azure Resource Manager ID of the storage account resource.
   final pulumi.Input<String> id;
+
   /// The storage account key.
   final pulumi.Input<String> key;
 
   /// Creates a new [StorageAccount].
   /// [id] The Azure Resource Manager ID of the storage account resource.
   /// [key] The storage account key.
-  StorageAccount({
-    required this.id,
-    required this.key,
-  });
+  StorageAccount({required this.id, required this.key});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'key': key,
-    };
+    return <String, dynamic>{'id': id, 'key': key};
   }
 
   factory StorageAccount.fromMap(Map<String, dynamic> map) {
     return StorageAccount(
-      id: (map['id'] as String).input(),
-      key: (map['key'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

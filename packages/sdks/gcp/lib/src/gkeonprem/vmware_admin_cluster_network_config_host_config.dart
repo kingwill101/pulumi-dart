@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareAdminClusterNetworkConfigHostConfig {
   /// DNS search domains.
   final pulumi.Input<List<String>>? dnsSearchDomains;
+
   /// DNS servers.
   final pulumi.Input<List<String>>? dnsServers;
+
   /// NTP servers.
   final pulumi.Input<List<String>>? ntpServers;
 
@@ -28,12 +30,25 @@ class VmwareAdminClusterNetworkConfigHostConfig {
     };
   }
 
-  factory VmwareAdminClusterNetworkConfigHostConfig.fromMap(Map<String, dynamic> map) {
+  factory VmwareAdminClusterNetworkConfigHostConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareAdminClusterNetworkConfigHostConfig(
-      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : ((map['dnsSearchDomains']! as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers']! as List).cast<String>()).input(),
+      dnsSearchDomains: (() {
+        final guardedValue = map['dnsSearchDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ntpServers: (() {
+        final guardedValue = map['ntpServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

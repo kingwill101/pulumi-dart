@@ -9,36 +9,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DdosCooInstanceArgs {
   /// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   final pulumi.Input<String>? addressType;
+
   /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   final pulumi.Input<String>? bandwidth;
+
   /// The mitigation plan of the instance. Valid values:
   final pulumi.Input<String>? bandwidthMode;
+
   /// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   final pulumi.Input<String>? baseBandwidth;
+
   /// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
   final pulumi.Input<String> domainCount;
+
   /// The mitigation plan of the instance. Default value: `coop`. Valid values:
   final pulumi.Input<String>? editionSale;
+
   /// The function plan of the instance. Valid values:
   final pulumi.Input<String>? functionVersion;
+
   /// The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
   final pulumi.Input<String>? modifyType;
+
   /// Name of the instance. This name can have a string of `1` to `64` characters.
   final pulumi.Input<String>? name;
+
   /// The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
   final pulumi.Input<String>? normalBandwidth;
+
   /// The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
   final pulumi.Input<String>? normalQps;
+
   /// The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
   final pulumi.Input<int>? period;
+
   /// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
   final pulumi.Input<String> portCount;
+
   /// The mitigation plan of the instance. Valid values:
   final pulumi.Input<String>? productPlan;
+
   /// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
   final pulumi.Input<String>? productType;
+
   /// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   final pulumi.Input<String>? serviceBandwidth;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -104,24 +120,85 @@ class DdosCooInstanceArgs {
 
   factory DdosCooInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DdosCooInstanceArgs(
-      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as String).input(),
-      bandwidthMode: map['bandwidthMode'] == null ? null : (map['bandwidthMode']! as String).input(),
-      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth']! as String).input(),
-      domainCount: (map['domainCount'] as String).input(),
-      editionSale: map['editionSale'] == null ? null : (map['editionSale']! as String).input(),
-      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion']! as String).input(),
-      modifyType: map['modifyType'] == null ? null : (map['modifyType']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      normalBandwidth: map['normalBandwidth'] == null ? null : (map['normalBandwidth']! as String).input(),
-      normalQps: map['normalQps'] == null ? null : (map['normalQps']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      portCount: (map['portCount'] as String).input(),
-      productPlan: map['productPlan'] == null ? null : (map['productPlan']! as String).input(),
-      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
-      serviceBandwidth: map['serviceBandwidth'] == null ? null : (map['serviceBandwidth']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      addressType: (() {
+        final guardedValue = map['addressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bandwidthMode: (() {
+        final guardedValue = map['bandwidthMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      baseBandwidth: (() {
+        final guardedValue = map['baseBandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainCount: pulumi.Input.fromValue(map['domainCount'] as String),
+      editionSale: (() {
+        final guardedValue = map['editionSale'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionVersion: (() {
+        final guardedValue = map['functionVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modifyType: (() {
+        final guardedValue = map['modifyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      normalBandwidth: (() {
+        final guardedValue = map['normalBandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      normalQps: (() {
+        final guardedValue = map['normalQps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      portCount: pulumi.Input.fromValue(map['portCount'] as String),
+      productPlan: (() {
+        final guardedValue = map['productPlan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productType: (() {
+        final guardedValue = map['productType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceBandwidth: (() {
+        final guardedValue = map['serviceBandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

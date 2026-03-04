@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpannerIODetailsResponse {
   /// DatabaseId accessed in the connection.
   final pulumi.Input<String> databaseId;
+
   /// InstanceId accessed in the connection.
   final pulumi.Input<String> instanceId;
+
   /// ProjectId accessed in the connection.
   final pulumi.Input<String> project;
 
@@ -31,10 +33,9 @@ class SpannerIODetailsResponse {
 
   factory SpannerIODetailsResponse.fromMap(Map<String, dynamic> map) {
     return SpannerIODetailsResponse(
-      databaseId: (map['databaseId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      project: (map['project'] as String).input(),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

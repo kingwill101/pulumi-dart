@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSignalRArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
 
   /// Creates a new [GetSignalRArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  GetSignalRArgs({
-    required this.resourceGroupName,
-    required this.resourceName,
-  });
+  GetSignalRArgs({required this.resourceGroupName, required this.resourceName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetSignalRArgs {
 
   factory GetSignalRArgs.fromMap(Map<String, dynamic> map) {
     return GetSignalRArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

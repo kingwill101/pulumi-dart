@@ -109,13 +109,17 @@ import 'index_timeouts.dart';
 class Index extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Resource Explorer index.
   late final pulumi.Output<String> arn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<IndexTimeouts?> timeouts;
+
   /// The type of the index. Valid values: `AGGREGATOR`, `LOCAL`. To understand the difference between `LOCAL` and `AGGREGATOR`, see the [_AWS Resource Explorer User Guide_](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html).
   late final pulumi.Output<String> type;
 
@@ -123,30 +127,23 @@ class Index extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Index]. {@macro pulumi_resourceexplorer_index_index_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Index(
-    String name, {
-    IndexArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:resourceexplorer/index:Index',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<IndexTimeouts?>('timeouts');
-    this.type = registerOutput<String>('type');
+  Index(String name, {IndexArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:resourceexplorer/index:Index',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<IndexTimeouts?>('timeouts');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Index] resource's state with the given [name] and [id].
-  static Index get(
-    String name,
-    pulumi.Input<String> id, {
-    IndexState? state,
-  }) {
+  static Index get(String name, pulumi.Input<String> id, {IndexState? state}) {
     return Index._get(
       name,
       state: state?.toMap(),
@@ -159,16 +156,16 @@ class Index extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:resourceexplorer/index:Index',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<IndexTimeouts?>('timeouts');
-    this.type = registerOutput<String>('type');
+         'aws:resourceexplorer/index:Index',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<IndexTimeouts?>('timeouts');
+    type = registerOutput<String>('type');
   }
 }

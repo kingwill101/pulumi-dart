@@ -5,16 +5,15 @@ enum HostpoolPublicNetworkAccess {
   valueEnabledForSessionHostsOnly("EnabledForSessionHostsOnly"),
   valueEnabledForClientsOnly("EnabledForClientsOnly");
 
-  const HostpoolPublicNetworkAccess(this.value);
-  final String value;
+  const HostpoolPublicNetworkAccess(this.wireValue);
+  final String wireValue;
 
   static HostpoolPublicNetworkAccess fromValue(String value) {
     for (final item in HostpoolPublicNetworkAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HostpoolPublicNetworkAccess value: $value');
   }
 }
-

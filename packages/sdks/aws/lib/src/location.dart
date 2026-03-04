@@ -1,5 +1,3 @@
-library module_location;
-
 export 'location/functions.dart';
 export 'location/geofence_collection.dart';
 export 'location/geofence_collection_args.dart';

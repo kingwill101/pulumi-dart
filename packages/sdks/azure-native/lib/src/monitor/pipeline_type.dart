@@ -2,16 +2,15 @@
 enum PipelineType {
   logs("Logs");
 
-  const PipelineType(this.value);
-  final String value;
+  const PipelineType(this.wireValue);
+  final String wireValue;
 
   static PipelineType fromValue(String value) {
     for (final item in PipelineType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PipelineType value: $value');
   }
 }
-

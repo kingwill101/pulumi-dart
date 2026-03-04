@@ -3,16 +3,15 @@ enum DataResidencyType {
   valueGeoZoneReplication("GeoZoneReplication"),
   valueZoneReplication("ZoneReplication");
 
-  const DataResidencyType(this.value);
-  final String value;
+  const DataResidencyType(this.wireValue);
+  final String wireValue;
 
   static DataResidencyType fromValue(String value) {
     for (final item in DataResidencyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataResidencyType value: $value');
   }
 }
-

@@ -9,20 +9,19 @@ class ElasticEncryptionIdentity {
 
   /// Creates a new [ElasticEncryptionIdentity].
   /// [userAssignedIdentity] The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  ElasticEncryptionIdentity({
-    this.userAssignedIdentity,
-  });
+  ElasticEncryptionIdentity({this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userAssignedIdentity': ?userAssignedIdentity,
-    };
+    return <String, dynamic>{'userAssignedIdentity': ?userAssignedIdentity};
   }
 
   factory ElasticEncryptionIdentity.fromMap(Map<String, dynamic> map) {
     return ElasticEncryptionIdentity(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

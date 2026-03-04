@@ -6,16 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegisteredLimitV3State {
   /// Integer for the actual limit.
   final pulumi.Input<int>? defaultLimit;
+
   /// Description of the limit
   final pulumi.Input<String>? description;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new registered limit.
   final pulumi.Input<String>? region;
+
   /// The resource that the limit applies to. On
   /// updates, either service_id, resource_name or region_id must be different than
   /// existing value otherwise it will raise 409.
   final pulumi.Input<String>? resourceName;
+
   /// The service the limit applies to. On updates,
   /// either service_id, resource_name or region_id must be different than existing
   /// value otherwise it will raise 409.
@@ -47,12 +51,31 @@ class RegisteredLimitV3State {
 
   factory RegisteredLimitV3State.fromMap(Map<String, dynamic> map) {
     return RegisteredLimitV3State(
-      defaultLimit: map['defaultLimit'] == null ? null : (map['defaultLimit']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      defaultLimit: (() {
+        final guardedValue = map['defaultLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: (() {
+        final guardedValue = map['serviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

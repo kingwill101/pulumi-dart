@@ -4,16 +4,15 @@ enum S3CompatibleMetadataAuthMethod {
   authMethodAwsSignatureV4("AUTH_METHOD_AWS_SIGNATURE_V4"),
   authMethodAwsSignatureV2("AUTH_METHOD_AWS_SIGNATURE_V2");
 
-  const S3CompatibleMetadataAuthMethod(this.value);
-  final String value;
+  const S3CompatibleMetadataAuthMethod(this.wireValue);
+  final String wireValue;
 
   static S3CompatibleMetadataAuthMethod fromValue(String value) {
     for (final item in S3CompatibleMetadataAuthMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown S3CompatibleMetadataAuthMethod value: $value');
   }
 }
-

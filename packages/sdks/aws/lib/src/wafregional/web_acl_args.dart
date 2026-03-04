@@ -12,16 +12,22 @@ import 'web_acl_rule.dart';
 class WebAclArgs {
   /// The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
   final pulumi.Input<WebAclDefaultAction> defaultAction;
+
   /// Configuration block to enable WAF logging. Detailed below.
   final pulumi.Input<WebAclLoggingConfiguration>? loggingConfiguration;
+
   /// The name or description for the Amazon CloudWatch metric of this web ACL.
   final pulumi.Input<String> metricName;
+
   /// The name or description of the web ACL.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Set of configuration blocks containing rules for the web ACL. Detailed below.
   final pulumi.Input<List<WebAclRule>>? rules;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,26 +51,80 @@ class WebAclArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultAction': pulumi.Input.mapInputValue<WebAclDefaultAction, Map<String, dynamic>>(defaultAction, (value) => value.toMap()),
-      'loggingConfiguration': ?pulumi.Input.mapOptionalInputValue<WebAclLoggingConfiguration, Map<String, dynamic>>(loggingConfiguration, (value) => value.toMap()),
+      'defaultAction':
+          pulumi.Input.mapInputValue<WebAclDefaultAction, Map<String, dynamic>>(
+            defaultAction,
+            (value) => value.toMap(),
+          ),
+      'loggingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            WebAclLoggingConfiguration,
+            Map<String, dynamic>
+          >(loggingConfiguration, (value) => value.toMap()),
       'metricName': metricName,
       'name': ?name,
       'region': ?region,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<WebAclRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<WebAclRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WebAclRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<WebAclRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
     };
   }
 
   factory WebAclArgs.fromMap(Map<String, dynamic> map) {
     return WebAclArgs(
-      defaultAction: (WebAclDefaultAction.fromMap((map['defaultAction']! as Map).cast<String, dynamic>())).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((WebAclLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      metricName: (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<WebAclRule>(map['rules']!, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      defaultAction: pulumi.Input.fromValue(
+        WebAclDefaultAction.fromMap(
+          (map['defaultAction']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      loggingConfiguration: (() {
+        final guardedValue = map['loggingConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WebAclLoggingConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<WebAclRule>(
+            guardedValue,
+            (value) =>
+                WebAclRule.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

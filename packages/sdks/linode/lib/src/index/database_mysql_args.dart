@@ -10,30 +10,39 @@ import 'database_mysql_updates.dart';
 class DatabaseMysqlArgs {
   /// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
   final pulumi.Input<List<String>>? allowLists;
+
   /// The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
   final pulumi.Input<int>? clusterSize;
+
   /// Whether the Managed Databases is encrypted. (default `false`)
   final pulumi.Input<bool>? encrypted;
+
   /// The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
   final pulumi.Input<String> engineId;
+
   /// A unique, user-defined string referring to the Managed Database.
   final pulumi.Input<String> label;
+
   /// The region to use for the Managed Database.
   final pulumi.Input<String> region;
+
   /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
   ///
   /// * Must be `none` for a single node cluster.
   ///
   /// * Must be `asynch` or `semi_synch` for a high availability cluster.
   final pulumi.Input<String>? replicationType;
+
   /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
   ///
   /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
   final pulumi.Input<bool>? sslConnection;
+
   /// The Linode Instance type used for the nodes of the  Managed Database instance.
   ///
   /// - - -
   final pulumi.Input<String> type;
+
   /// Configuration settings for automated patch update maintenance for the Managed Database.
   final pulumi.Input<DatabaseMysqlUpdates>? updates;
 
@@ -72,23 +81,54 @@ class DatabaseMysqlArgs {
       'replicationType': ?replicationType,
       'sslConnection': ?sslConnection,
       'type': type,
-      'updates': ?pulumi.Input.mapOptionalInputValue<DatabaseMysqlUpdates, Map<String, dynamic>>(updates, (value) => value.toMap()),
+      'updates':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatabaseMysqlUpdates,
+            Map<String, dynamic>
+          >(updates, (value) => value.toMap()),
     };
   }
 
   factory DatabaseMysqlArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMysqlArgs(
-      allowLists: map['allowLists'] == null ? null : ((map['allowLists']! as List).cast<String>()).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      engineId: (map['engineId'] as String).input(),
-      label: (map['label'] as String).input(),
-      region: (map['region'] as String).input(),
-      replicationType: map['replicationType'] == null ? null : (map['replicationType']! as String).input(),
-      sslConnection: map['sslConnection'] == null ? null : (map['sslConnection']! as bool).input(),
-      type: (map['type'] as String).input(),
-      updates: map['updates'] == null ? null : (DatabaseMysqlUpdates.fromMap((map['updates']! as Map).cast<String, dynamic>())).input(),
+      allowLists: (() {
+        final guardedValue = map['allowLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      clusterSize: (() {
+        final guardedValue = map['clusterSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engineId: pulumi.Input.fromValue(map['engineId'] as String),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      replicationType: (() {
+        final guardedValue = map['replicationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslConnection: (() {
+        final guardedValue = map['sslConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      updates: (() {
+        final guardedValue = map['updates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DatabaseMysqlUpdates.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

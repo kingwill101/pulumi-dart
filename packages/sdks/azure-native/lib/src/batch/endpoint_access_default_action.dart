@@ -3,16 +3,15 @@ enum EndpointAccessDefaultAction {
   allow("Allow"),
   deny("Deny");
 
-  const EndpointAccessDefaultAction(this.value);
-  final String value;
+  const EndpointAccessDefaultAction(this.wireValue);
+  final String wireValue;
 
   static EndpointAccessDefaultAction fromValue(String value) {
     for (final item in EndpointAccessDefaultAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointAccessDefaultAction value: $value');
   }
 }
-

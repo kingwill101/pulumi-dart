@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountProjectArgs {
   /// The name of the Cognitive Services Account in which the Project exists.
   final pulumi.Input<String> cognitiveAccountName;
+
   /// The name of the Cognitive Services Account Project.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Cognitive Services Account exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetAccountProjectArgs {
 
   factory GetAccountProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountProjectArgs(
-      cognitiveAccountName: (map['cognitiveAccountName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      cognitiveAccountName: pulumi.Input.fromValue(
+        map['cognitiveAccountName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

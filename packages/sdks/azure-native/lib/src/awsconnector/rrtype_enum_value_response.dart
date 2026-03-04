@@ -9,20 +9,19 @@ class RRTypeEnumValueResponse {
 
   /// Creates a new [RRTypeEnumValueResponse].
   /// [value] Property value
-  RRTypeEnumValueResponse({
-    this.value,
-  });
+  RRTypeEnumValueResponse({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory RRTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return RRTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

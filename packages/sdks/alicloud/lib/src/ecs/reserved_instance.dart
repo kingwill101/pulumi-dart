@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reserved_instance_args.dart';
-import 'reserved_instance_operation_lock.dart';
 import 'reserved_instance_state.dart';
 
 /// Provides an Reserved Instance resource.
 ///
-/// > **NOTE:** Available since v1.65.0.
+/// &gt; **NOTE:** Available since v1.65.0.
 ///
 /// ## Example Usage
 ///
@@ -180,49 +179,69 @@ import 'reserved_instance_state.dart';
 class ReservedInstance extends pulumi.CustomResource {
   /// Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
   late final pulumi.Output<String> allocationStatus;
+
   /// The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
   late final pulumi.Output<int> autoRenewPeriod;
+
   /// The time when the reserved instance was created.
   late final pulumi.Output<String> createTime;
+
   /// Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// The time when the reserved instance expires.
   late final pulumi.Output<String> expiredTime;
+
   /// Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
   late final pulumi.Output<int> instanceAmount;
+
   /// Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
   late final pulumi.Output<String> instanceType;
+
   /// Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
   late final pulumi.Output<String> name;
+
   /// Payment type of the RI. Default value: `All Upfront`. Valid values:
   /// - `No Upfront`: No upfront payment.
   /// - `Partial Upfront`: A portion of upfront payment.
   /// - `All Upfront`: Full upfront payment.
   late final pulumi.Output<String> offeringType;
+
   /// Details about the lock status of the reserved instance.
-  late final pulumi.Output<List<ReservedInstanceOperationLock>> operationLocks;
+  late final pulumi.Output<List<Map<String, dynamic>>> operationLocks;
+
   /// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
   /// - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
   /// - When `period_unit` is `Month`, Valid values: `1`.
   late final pulumi.Output<int?> period;
+
   /// The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
   late final pulumi.Output<String?> periodUnit;
+
   /// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
   late final pulumi.Output<String> platform;
+
   /// Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
   late final pulumi.Output<String> renewalStatus;
+
   /// Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
   late final pulumi.Output<String> reservedInstanceName;
+
   /// Resource group ID.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
   late final pulumi.Output<String> scope;
+
   /// The time when the reserved instance took effect.
   late final pulumi.Output<String> startTime;
+
   /// The status of the reserved instance.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
   late final pulumi.Output<String?> zoneId;
 
@@ -235,32 +254,34 @@ class ReservedInstance extends pulumi.CustomResource {
     ReservedInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/reservedInstance:ReservedInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationStatus = registerOutput<String>('allocationStatus');
-    this.autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.expiredTime = registerOutput<String>('expiredTime');
-    this.instanceAmount = registerOutput<int>('instanceAmount');
-    this.instanceType = registerOutput<String>('instanceType');
+         'alicloud:ecs/reservedInstance:ReservedInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationStatus = registerOutput<String>('allocationStatus');
+    autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    expiredTime = registerOutput<String>('expiredTime');
+    instanceAmount = registerOutput<int>('instanceAmount');
+    instanceType = registerOutput<String>('instanceType');
     this.name = registerOutput<String>('name');
-    this.offeringType = registerOutput<String>('offeringType');
-    this.operationLocks = registerOutput<List<ReservedInstanceOperationLock>>('operationLocks');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.platform = registerOutput<String>('platform');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.reservedInstanceName = registerOutput<String>('reservedInstanceName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scope = registerOutput<String>('scope');
-    this.startTime = registerOutput<String>('startTime');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zoneId = registerOutput<String?>('zoneId');
+    offeringType = registerOutput<String>('offeringType');
+    operationLocks = registerOutput<List<Map<String, dynamic>>>(
+      'operationLocks',
+    );
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    platform = registerOutput<String>('platform');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    reservedInstanceName = registerOutput<String>('reservedInstanceName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scope = registerOutput<String>('scope');
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zoneId = registerOutput<String?>('zoneId');
   }
 
   /// Gets an existing [ReservedInstance] resource's state with the given [name] and [id].
@@ -281,31 +302,33 @@ class ReservedInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/reservedInstance:ReservedInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationStatus = registerOutput<String>('allocationStatus');
-    this.autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.expiredTime = registerOutput<String>('expiredTime');
-    this.instanceAmount = registerOutput<int>('instanceAmount');
-    this.instanceType = registerOutput<String>('instanceType');
+         'alicloud:ecs/reservedInstance:ReservedInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationStatus = registerOutput<String>('allocationStatus');
+    autoRenewPeriod = registerOutput<int>('autoRenewPeriod');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    expiredTime = registerOutput<String>('expiredTime');
+    instanceAmount = registerOutput<int>('instanceAmount');
+    instanceType = registerOutput<String>('instanceType');
     this.name = registerOutput<String>('name');
-    this.offeringType = registerOutput<String>('offeringType');
-    this.operationLocks = registerOutput<List<ReservedInstanceOperationLock>>('operationLocks');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String?>('periodUnit');
-    this.platform = registerOutput<String>('platform');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.reservedInstanceName = registerOutput<String>('reservedInstanceName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scope = registerOutput<String>('scope');
-    this.startTime = registerOutput<String>('startTime');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zoneId = registerOutput<String?>('zoneId');
+    offeringType = registerOutput<String>('offeringType');
+    operationLocks = registerOutput<List<Map<String, dynamic>>>(
+      'operationLocks',
+    );
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String?>('periodUnit');
+    platform = registerOutput<String>('platform');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    reservedInstanceName = registerOutput<String>('reservedInstanceName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scope = registerOutput<String>('scope');
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zoneId = registerOutput<String?>('zoneId');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSQuotaInfoArgs {
   /// The parent of the quota info. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
   final pulumi.Input<String> parent;
+
   /// The id of the quota, which is unique within the service.
   final pulumi.Input<String> quotaId;
+
   /// The name of the service in which the quota is defined.
   final pulumi.Input<String> service;
 
@@ -34,10 +36,9 @@ class GetSQuotaInfoArgs {
 
   factory GetSQuotaInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetSQuotaInfoArgs(
-      parent: (map['parent'] as String).input(),
-      quotaId: (map['quotaId'] as String).input(),
-      service: (map['service'] as String).input(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      quotaId: pulumi.Input.fromValue(map['quotaId'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

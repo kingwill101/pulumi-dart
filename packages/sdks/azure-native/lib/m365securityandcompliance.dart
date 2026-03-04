@@ -1,3 +1,1 @@
-library pulumi_azure_native_m365securityandcompliance;
-
 export 'package:pulumi_azure_native/src/m365securityandcompliance.dart';

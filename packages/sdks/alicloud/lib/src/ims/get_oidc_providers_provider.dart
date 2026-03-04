@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOidcProvidersProvider {
   /// ARN of OIDC identity provider.
   final pulumi.Input<String> arn;
+
   /// Client ID.
   final pulumi.Input<List<String>> clientIds;
+
   /// Creation Time (UTC time).
   final pulumi.Input<String> createTime;
+
   /// Description of OIDC identity provider.
   final pulumi.Input<String> description;
+
   /// The authentication fingerprint of the HTTPS CA certificate.
   final pulumi.Input<List<String>> fingerprints;
+
   /// The ID of the resource supplied above.
   final pulumi.Input<String> id;
+
   /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
   final pulumi.Input<int> issuanceLimitTime;
+
   /// The issuer URL of the OIDC identity provider.
   final pulumi.Input<String> issuerUrl;
+
   /// The name of the OIDC identity provider.
   final pulumi.Input<String> oidcProviderName;
+
   /// Modification Time (UTC time).
   final pulumi.Input<String> updateTime;
 
@@ -65,17 +74,24 @@ class GetOidcProvidersProvider {
 
   factory GetOidcProvidersProvider.fromMap(Map<String, dynamic> map) {
     return GetOidcProvidersProvider(
-      arn: (map['arn'] as String).input(),
-      clientIds: ((map['clientIds'] as List).cast<String>()).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      fingerprints: ((map['fingerprints'] as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      issuanceLimitTime: (map['issuanceLimitTime'] as int).input(),
-      issuerUrl: (map['issuerUrl'] as String).input(),
-      oidcProviderName: (map['oidcProviderName'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      clientIds: pulumi.Input.fromValue(
+        (map['clientIds'] as List).cast<String>(),
+      ),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      fingerprints: pulumi.Input.fromValue(
+        (map['fingerprints'] as List).cast<String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      issuanceLimitTime: pulumi.Input.fromValue(
+        map['issuanceLimitTime'] as int,
+      ),
+      issuerUrl: pulumi.Input.fromValue(map['issuerUrl'] as String),
+      oidcProviderName: pulumi.Input.fromValue(
+        map['oidcProviderName'] as String,
+      ),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

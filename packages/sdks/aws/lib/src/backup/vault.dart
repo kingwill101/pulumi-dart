@@ -110,18 +110,25 @@ import 'vault_state.dart';
 class Vault extends pulumi.CustomResource {
   /// The ARN of the vault.
   late final pulumi.Output<String> arn;
+
   /// A boolean that indicates that all recovery points stored in the vault are deleted so that the vault can be destroyed without error.
   late final pulumi.Output<bool?> forceDestroy;
+
   /// The server-side encryption key that is used to protect your backups.
   late final pulumi.Output<String> kmsKeyArn;
+
   /// Name of the backup vault to create.
   late final pulumi.Output<String> name;
+
   /// The number of recovery points that are stored in a backup vault.
   late final pulumi.Output<int> recoveryPoints;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Metadata that you can assign to help organize the resources that you create. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -129,32 +136,25 @@ class Vault extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vault]. {@macro pulumi_backup_vault_vault_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vault(
-    String name, {
-    VaultArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:backup/vault:Vault',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+  Vault(String name, {VaultArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:backup/vault:Vault',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.recoveryPoints = registerOutput<int>('recoveryPoints');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    recoveryPoints = registerOutput<int>('recoveryPoints');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Vault] resource's state with the given [name] and [id].
-  static Vault get(
-    String name,
-    pulumi.Input<String> id, {
-    VaultState? state,
-  }) {
+  static Vault get(String name, pulumi.Input<String> id, {VaultState? state}) {
     return Vault._get(
       name,
       state: state?.toMap(),
@@ -167,18 +167,18 @@ class Vault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:backup/vault:Vault',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.forceDestroy = registerOutput<bool?>('forceDestroy');
-    this.kmsKeyArn = registerOutput<String>('kmsKeyArn');
+         'aws:backup/vault:Vault',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.recoveryPoints = registerOutput<int>('recoveryPoints');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    recoveryPoints = registerOutput<int>('recoveryPoints');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

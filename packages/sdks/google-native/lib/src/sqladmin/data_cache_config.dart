@@ -9,20 +9,19 @@ class DataCacheConfig {
 
   /// Creates a new [DataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.
-  DataCacheConfig({
-    this.dataCacheEnabled,
-  });
+  DataCacheConfig({this.dataCacheEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataCacheEnabled': ?dataCacheEnabled,
-    };
+    return <String, dynamic>{'dataCacheEnabled': ?dataCacheEnabled};
   }
 
   factory DataCacheConfig.fromMap(Map<String, dynamic> map) {
     return DataCacheConfig(
-      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled']! as bool).input(),
+      dataCacheEnabled: (() {
+        final guardedValue = map['dataCacheEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

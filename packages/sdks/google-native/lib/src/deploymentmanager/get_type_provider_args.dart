@@ -13,23 +13,20 @@ class GetTypeProviderArgs {
   /// Creates a new [GetTypeProviderArgs].
   /// [project] Optional.
   /// [typeProvider] Required.
-  GetTypeProviderArgs({
-    this.project,
-    required this.typeProvider,
-  });
+  GetTypeProviderArgs({this.project, required this.typeProvider});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'typeProvider': typeProvider,
-    };
+    return <String, dynamic>{'project': ?project, 'typeProvider': typeProvider};
   }
 
   factory GetTypeProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetTypeProviderArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      typeProvider: (map['typeProvider'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      typeProvider: pulumi.Input.fromValue(map['typeProvider'] as String),
     );
   }
 }
-

@@ -13,23 +13,20 @@ class GetReleaseArgs {
   /// Creates a new [GetReleaseArgs].
   /// [project] Optional.
   /// [releaseId] Required.
-  GetReleaseArgs({
-    this.project,
-    required this.releaseId,
-  });
+  GetReleaseArgs({this.project, required this.releaseId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'releaseId': releaseId,
-    };
+    return <String, dynamic>{'project': ?project, 'releaseId': releaseId};
   }
 
   factory GetReleaseArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      releaseId: (map['releaseId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseId: pulumi.Input.fromValue(map['releaseId'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_securitycenter;
-
 export 'securitycenter/advanced_threat_protection.dart';
 export 'securitycenter/advanced_threat_protection_args.dart';
 export 'securitycenter/advanced_threat_protection_state.dart';

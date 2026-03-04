@@ -6,10 +6,13 @@ import 'marketplace_plan_response.dart';
 class MarketplaceSubscriptionResponse {
   /// Marketplace Plan associated with the Marketplace Subscription.
   final pulumi.Input<MarketplacePlanResponse> marketplacePlan;
+
   /// Current status of the Marketplace Subscription.
   final pulumi.Input<String> marketplaceSubscriptionStatus;
+
   /// [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
   final pulumi.Input<String> modelId;
+
   /// Provisioning State of the Marketplace Subscription.
   final pulumi.Input<String> provisioningState;
 
@@ -27,7 +30,11 @@ class MarketplaceSubscriptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'marketplacePlan': pulumi.Input.mapInputValue<MarketplacePlanResponse, Map<String, dynamic>>(marketplacePlan, (value) => value.toMap()),
+      'marketplacePlan':
+          pulumi.Input.mapInputValue<
+            MarketplacePlanResponse,
+            Map<String, dynamic>
+          >(marketplacePlan, (value) => value.toMap()),
       'marketplaceSubscriptionStatus': marketplaceSubscriptionStatus,
       'modelId': modelId,
       'provisioningState': provisioningState,
@@ -36,11 +43,18 @@ class MarketplaceSubscriptionResponse {
 
   factory MarketplaceSubscriptionResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceSubscriptionResponse(
-      marketplacePlan: (MarketplacePlanResponse.fromMap((map['marketplacePlan'] as Map).cast<String, dynamic>())).input(),
-      marketplaceSubscriptionStatus: (map['marketplaceSubscriptionStatus'] as String).input(),
-      modelId: (map['modelId'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      marketplacePlan: pulumi.Input.fromValue(
+        MarketplacePlanResponse.fromMap(
+          (map['marketplacePlan']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      marketplaceSubscriptionStatus: pulumi.Input.fromValue(
+        map['marketplaceSubscriptionStatus'] as String,
+      ),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

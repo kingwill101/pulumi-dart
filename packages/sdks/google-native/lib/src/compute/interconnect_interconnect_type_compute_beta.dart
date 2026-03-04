@@ -4,16 +4,17 @@ enum InterconnectInterconnectTypeComputeBeta {
   itPrivate("IT_PRIVATE"),
   partner("PARTNER");
 
-  const InterconnectInterconnectTypeComputeBeta(this.value);
-  final String value;
+  const InterconnectInterconnectTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static InterconnectInterconnectTypeComputeBeta fromValue(String value) {
     for (final item in InterconnectInterconnectTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectInterconnectTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectInterconnectTypeComputeBeta value: $value',
+    );
   }
 }
-

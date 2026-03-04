@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAutoclass {
   /// Whether or not Autoclass is enabled on this bucket
   final pulumi.Input<bool>? enabled;
+
   /// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Valid values are NEARLINE and ARCHIVE.
   final pulumi.Input<String>? terminalStorageClass;
+
   /// A date and time in RFC 3339 format representing the time of the most recent update to "terminalStorageClass".
   final pulumi.Input<String>? terminalStorageClassUpdateTime;
+
   /// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
   final pulumi.Input<String>? toggleTime;
 
@@ -36,11 +39,26 @@ class BucketAutoclass {
 
   factory BucketAutoclass.fromMap(Map<String, dynamic> map) {
     return BucketAutoclass(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      terminalStorageClass: map['terminalStorageClass'] == null ? null : (map['terminalStorageClass']! as String).input(),
-      terminalStorageClassUpdateTime: map['terminalStorageClassUpdateTime'] == null ? null : (map['terminalStorageClassUpdateTime']! as String).input(),
-      toggleTime: map['toggleTime'] == null ? null : (map['toggleTime']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      terminalStorageClass: (() {
+        final guardedValue = map['terminalStorageClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      terminalStorageClassUpdateTime: (() {
+        final guardedValue = map['terminalStorageClassUpdateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      toggleTime: (() {
+        final guardedValue = map['toggleTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

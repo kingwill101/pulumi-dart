@@ -5,16 +5,15 @@ enum OrganizationType {
   typePaid("TYPE_PAID"),
   typeInternal("TYPE_INTERNAL");
 
-  const OrganizationType(this.value);
-  final String value;
+  const OrganizationType(this.wireValue);
+  final String wireValue;
 
   static OrganizationType fromValue(String value) {
     for (final item in OrganizationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationType value: $value');
   }
 }
-

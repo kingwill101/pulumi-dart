@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile {
   /// Certificate trust chain for a certificate stored on the file system of the mesh endpoint that the proxy is running on. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> certificateChain;
+
   /// Private key for a certificate stored on the file system of the mesh endpoint that the proxy is running on. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> privateKey;
 
@@ -23,11 +24,14 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile {
     };
   }
 
-  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap(Map<String, dynamic> map) {
+  factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile(
-      certificateChain: (map['certificateChain'] as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
+      certificateChain: pulumi.Input.fromValue(
+        map['certificateChain'] as String,
+      ),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
     );
   }
 }
-

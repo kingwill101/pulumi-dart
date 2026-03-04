@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionArgs {
   /// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
   final pulumi.Input<String> connectionStringPrefix;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The service port number of the instance.
   final pulumi.Input<String> port;
 
@@ -34,10 +36,11 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      port: (map['port'] as String).input(),
+      connectionStringPrefix: pulumi.Input.fromValue(
+        map['connectionStringPrefix'] as String,
+      ),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
     );
   }
 }
-

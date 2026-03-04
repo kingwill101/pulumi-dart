@@ -13,16 +13,15 @@ enum DataSetMappingKind {
   valueSqlDWTable("SqlDWTable"),
   valueSynapseWorkspaceSqlPoolTable("SynapseWorkspaceSqlPoolTable");
 
-  const DataSetMappingKind(this.value);
-  final String value;
+  const DataSetMappingKind(this.wireValue);
+  final String wireValue;
 
   static DataSetMappingKind fromValue(String value) {
     for (final item in DataSetMappingKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataSetMappingKind value: $value');
   }
 }
-

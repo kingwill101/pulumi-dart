@@ -4,16 +4,15 @@ enum CategoricalDataDriftMetric {
   valuePopulationStabilityIndex("PopulationStabilityIndex"),
   valuePearsonsChiSquaredTest("PearsonsChiSquaredTest");
 
-  const CategoricalDataDriftMetric(this.value);
-  final String value;
+  const CategoricalDataDriftMetric(this.wireValue);
+  final String wireValue;
 
   static CategoricalDataDriftMetric fromValue(String value) {
     for (final item in CategoricalDataDriftMetric.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CategoricalDataDriftMetric value: $value');
   }
 }
-

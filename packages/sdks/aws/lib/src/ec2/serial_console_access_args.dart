@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SerialConsoleAccessArgs {
   /// Whether or not serial console access is enabled. Valid values are `true` or `false`. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [SerialConsoleAccessArgs].
   /// [enabled] Whether or not serial console access is enabled. Valid values are `true` or `false`. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  SerialConsoleAccessArgs({
-    this.enabled,
-    this.region,
-  });
+  SerialConsoleAccessArgs({this.enabled, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-      'region': ?region,
-    };
+    return <String, dynamic>{'enabled': ?enabled, 'region': ?region};
   }
 
   factory SerialConsoleAccessArgs.fromMap(Map<String, dynamic> map) {
     return SerialConsoleAccessArgs(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

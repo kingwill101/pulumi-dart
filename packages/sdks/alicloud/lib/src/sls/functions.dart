@@ -12,7 +12,7 @@ import 'get_machine_groups_result.dart';
 
 /// This data source provides Sls Alert available to the user.[What is Alert](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateAlert)
 ///
-/// > **NOTE:** Available since v1.250.0.
+/// &gt; **NOTE:** Available since v1.250.0.
 ///
 /// ## Example Usage
 ///
@@ -956,7 +956,7 @@ Future<GetAlertsResult> getAlerts(
 
 /// This data source provides Sls Etl available to the user.[What is Etl](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateETL)
 ///
-/// > **NOTE:** Available since v1.258.0.
+/// &gt; **NOTE:** Available since v1.258.0.
 ///
 /// ## Example Usage
 ///
@@ -1334,7 +1334,7 @@ Future<GetEtlsResult> getEtls(
 
 /// This data source provides Sls Index available to the user.[What is Index](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateIndex)
 ///
-/// > **NOTE:** Available since v1.262.0.
+/// &gt; **NOTE:** Available since v1.262.0.
 ///
 /// ## Example Usage
 ///
@@ -1864,7 +1864,7 @@ Future<GetIndexsResult> getIndexs(
 
 /// This data source provides Sls Logtail Config available to the user.[What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig)
 ///
-/// > **NOTE:** Available since v1.259.0.
+/// &gt; **NOTE:** Available since v1.259.0.
 ///
 /// ## Example Usage
 ///
@@ -2420,7 +2420,7 @@ Future<GetLogtailConfigsResult> getLogtailConfigs(
 
 /// This data source provides Sls Machine Group available to the user.[What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup)
 ///
-/// > **NOTE:** Available since v1.259.0.
+/// &gt; **NOTE:** Available since v1.259.0.
 ///
 /// ## Example Usage
 ///

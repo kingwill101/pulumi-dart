@@ -228,7 +228,7 @@ import 'subscription_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -243,28 +243,38 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// Determines whether tracing can be enabled. Defaults to `true`.
   late final pulumi.Output<bool?> allowTracing;
+
   /// The ID of the API which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
+  /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
   late final pulumi.Output<String?> apiId;
+
   /// The name of the API Management Service where this Subscription should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The display name of this Subscription.
   late final pulumi.Output<String> displayName;
+
   /// The primary subscription key to use for the subscription.
   late final pulumi.Output<String> primaryKey;
+
   /// The ID of the Product which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `all_apis` scope is used for the subscription.
+  /// &gt; **Note:** Only one of `product_id` and `api_id` can be set. If both are missing `all_apis` scope is used for the subscription.
   late final pulumi.Output<String?> productId;
+
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The secondary subscription key to use for the subscription.
   late final pulumi.Output<String> secondaryKey;
+
   /// The state of this Subscription. Possible values are `active`, `cancelled`, `expired`, `rejected`, `submitted` and `suspended`. Defaults to `submitted`.
   late final pulumi.Output<String?> state;
+
   /// An Identifier which should used as the ID of this Subscription. If not specified a new Subscription ID will be generated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subscriptionId;
+
   /// The ID of the User which should be assigned to this Subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> userId;
 
@@ -277,22 +287,22 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowTracing = registerOutput<bool?>('allowTracing');
-    this.apiId = registerOutput<String?>('apiId');
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.displayName = registerOutput<String>('displayName');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.productId = registerOutput<String?>('productId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
-    this.state = registerOutput<String?>('state');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.userId = registerOutput<String?>('userId');
+         'azure:apimanagement/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowTracing = registerOutput<bool?>('allowTracing');
+    apiId = registerOutput<String?>('apiId');
+    apiManagementName = registerOutput<String>('apiManagementName');
+    displayName = registerOutput<String>('displayName');
+    primaryKey = registerOutput<String>('primaryKey');
+    productId = registerOutput<String?>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String>('secondaryKey');
+    state = registerOutput<String?>('state');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    userId = registerOutput<String?>('userId');
   }
 
   /// Gets an existing [Subscription] resource's state with the given [name] and [id].
@@ -313,21 +323,21 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowTracing = registerOutput<bool?>('allowTracing');
-    this.apiId = registerOutput<String?>('apiId');
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.displayName = registerOutput<String>('displayName');
-    this.primaryKey = registerOutput<String>('primaryKey');
-    this.productId = registerOutput<String?>('productId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryKey = registerOutput<String>('secondaryKey');
+         'azure:apimanagement/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowTracing = registerOutput<bool?>('allowTracing');
+    apiId = registerOutput<String?>('apiId');
+    apiManagementName = registerOutput<String>('apiManagementName');
+    displayName = registerOutput<String>('displayName');
+    primaryKey = registerOutput<String>('primaryKey');
+    productId = registerOutput<String?>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String>('secondaryKey');
     this.state = registerOutput<String?>('state');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.userId = registerOutput<String?>('userId');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    userId = registerOutput<String?>('userId');
   }
 }

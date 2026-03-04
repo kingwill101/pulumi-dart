@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserAssignedIdentityResponse {
   /// Client App Id associated with this identity.
   final pulumi.Input<String>? clientId;
+
   /// Azure Active Directory principal ID associated with this Identity.
   final pulumi.Input<String>? principalId;
 
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] Client App Id associated with this identity.
   /// [principalId] Azure Active Directory principal ID associated with this Identity.
-  UserAssignedIdentityResponse({
-    this.clientId,
-    this.principalId,
-  });
+  UserAssignedIdentityResponse({this.clientId, this.principalId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class UserAssignedIdentityResponse {
 
   factory UserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum BackendPoolType {
   valueNodeIPConfiguration("NodeIPConfiguration"),
   valueNodeIP("NodeIP");
 
-  const BackendPoolType(this.value);
-  final String value;
+  const BackendPoolType(this.wireValue);
+  final String wireValue;
 
   static BackendPoolType fromValue(String value) {
     for (final item in BackendPoolType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendPoolType value: $value');
   }
 }
-

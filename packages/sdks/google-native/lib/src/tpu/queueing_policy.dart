@@ -7,12 +7,16 @@ import 'interval.dart';
 class QueueingPolicy {
   /// A relative time after which resources may be created.
   final pulumi.Input<String>? validAfterDuration;
+
   /// An absolute time at which resources may be created.
   final pulumi.Input<String>? validAfterTime;
+
   /// An absolute time interval within which resources may be created.
   final pulumi.Input<Interval>? validInterval;
+
   /// A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
   final pulumi.Input<String>? validUntilDuration;
+
   /// An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
   final pulumi.Input<String>? validUntilTime;
 
@@ -34,7 +38,11 @@ class QueueingPolicy {
     return <String, dynamic>{
       'validAfterDuration': ?validAfterDuration,
       'validAfterTime': ?validAfterTime,
-      'validInterval': ?pulumi.Input.mapOptionalInputValue<Interval, Map<String, dynamic>>(validInterval, (value) => value.toMap()),
+      'validInterval':
+          ?pulumi.Input.mapOptionalInputValue<Interval, Map<String, dynamic>>(
+            validInterval,
+            (value) => value.toMap(),
+          ),
       'validUntilDuration': ?validUntilDuration,
       'validUntilTime': ?validUntilTime,
     };
@@ -42,12 +50,33 @@ class QueueingPolicy {
 
   factory QueueingPolicy.fromMap(Map<String, dynamic> map) {
     return QueueingPolicy(
-      validAfterDuration: map['validAfterDuration'] == null ? null : (map['validAfterDuration']! as String).input(),
-      validAfterTime: map['validAfterTime'] == null ? null : (map['validAfterTime']! as String).input(),
-      validInterval: map['validInterval'] == null ? null : (Interval.fromMap((map['validInterval']! as Map).cast<String, dynamic>())).input(),
-      validUntilDuration: map['validUntilDuration'] == null ? null : (map['validUntilDuration']! as String).input(),
-      validUntilTime: map['validUntilTime'] == null ? null : (map['validUntilTime']! as String).input(),
+      validAfterDuration: (() {
+        final guardedValue = map['validAfterDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validAfterTime: (() {
+        final guardedValue = map['validAfterTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validInterval: (() {
+        final guardedValue = map['validInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Interval.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      validUntilDuration: (() {
+        final guardedValue = map['validUntilDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validUntilTime: (() {
+        final guardedValue = map['validUntilTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

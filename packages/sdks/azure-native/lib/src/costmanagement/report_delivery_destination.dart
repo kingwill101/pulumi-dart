@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportDeliveryDestination {
   /// The name of the container where reports will be uploaded.
   final pulumi.Input<String> container;
+
   /// The resource id of the storage account where reports will be delivered.
   final pulumi.Input<String> resourceId;
+
   /// The name of the directory where reports will be uploaded.
   final pulumi.Input<String>? rootFolderPath;
 
@@ -31,10 +33,13 @@ class ReportDeliveryDestination {
 
   factory ReportDeliveryDestination.fromMap(Map<String, dynamic> map) {
     return ReportDeliveryDestination(
-      container: (map['container'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      rootFolderPath: map['rootFolderPath'] == null ? null : (map['rootFolderPath']! as String).input(),
+      container: pulumi.Input.fromValue(map['container'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      rootFolderPath: (() {
+        final guardedValue = map['rootFolderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

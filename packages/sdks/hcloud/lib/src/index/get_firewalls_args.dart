@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallsArgs {
   /// Sorts list by date.
   final pulumi.Input<bool>? mostRecent;
+
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final pulumi.Input<String>? withSelector;
 
   /// Creates a new [GetFirewallsArgs].
   /// [mostRecent] Sorts list by date.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetFirewallsArgs({
-    this.mostRecent,
-    this.withSelector,
-  });
+  GetFirewallsArgs({this.mostRecent, this.withSelector});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class GetFirewallsArgs {
 
   factory GetFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallsArgs(
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

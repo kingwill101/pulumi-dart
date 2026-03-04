@@ -10,17 +10,23 @@ import 'security_rule_network.dart';
 class NetworkSecurityGroupArgs {
   /// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
   final pulumi.Input<bool>? flushConnection;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the network security group.
   final pulumi.Input<String>? networkSecurityGroupName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// A collection of security rules of the network security group.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
   final pulumi.Input<List<SecurityRuleNetwork>>? securityRules;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -56,14 +62,43 @@ class NetworkSecurityGroupArgs {
 
   factory NetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupArgs(
-      flushConnection: map['flushConnection'] == null ? null : (map['flushConnection']! as bool).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : (map['networkSecurityGroupName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityRules: map['securityRules'] == null ? null : ((map['securityRules']! as List).cast<SecurityRuleNetwork>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      flushConnection: (() {
+        final guardedValue = map['flushConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityGroupName: (() {
+        final guardedValue = map['networkSecurityGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityRules: (() {
+        final guardedValue = map['securityRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<SecurityRuleNetwork>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

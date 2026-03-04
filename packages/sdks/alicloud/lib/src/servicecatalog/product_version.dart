@@ -8,7 +8,7 @@ import 'product_version_state.dart';
 ///
 /// For information about Service Catalog Product Version and how to use it, see [What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createproductversion).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -209,18 +209,25 @@ import 'product_version_state.dart';
 class ProductVersion extends pulumi.CustomResource {
   /// Whether the version is activated
   late final pulumi.Output<bool?> active;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Version description
   late final pulumi.Output<String?> description;
+
   /// Administrator guidance
   late final pulumi.Output<String?> guidance;
+
   /// Product ID
   late final pulumi.Output<String> productId;
+
   /// The name of the resource
   late final pulumi.Output<String> productVersionName;
+
   /// Template Type
   late final pulumi.Output<String> templateType;
+
   /// Template URL
   late final pulumi.Output<String> templateUrl;
 
@@ -233,19 +240,19 @@ class ProductVersion extends pulumi.CustomResource {
     ProductVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/productVersion:ProductVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool?>('active');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.guidance = registerOutput<String?>('guidance');
-    this.productId = registerOutput<String>('productId');
-    this.productVersionName = registerOutput<String>('productVersionName');
-    this.templateType = registerOutput<String>('templateType');
-    this.templateUrl = registerOutput<String>('templateUrl');
+         'alicloud:servicecatalog/productVersion:ProductVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool?>('active');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    guidance = registerOutput<String?>('guidance');
+    productId = registerOutput<String>('productId');
+    productVersionName = registerOutput<String>('productVersionName');
+    templateType = registerOutput<String>('templateType');
+    templateUrl = registerOutput<String>('templateUrl');
   }
 
   /// Gets an existing [ProductVersion] resource's state with the given [name] and [id].
@@ -266,18 +273,18 @@ class ProductVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/productVersion:ProductVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.active = registerOutput<bool?>('active');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.guidance = registerOutput<String?>('guidance');
-    this.productId = registerOutput<String>('productId');
-    this.productVersionName = registerOutput<String>('productVersionName');
-    this.templateType = registerOutput<String>('templateType');
-    this.templateUrl = registerOutput<String>('templateUrl');
+         'alicloud:servicecatalog/productVersion:ProductVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    active = registerOutput<bool?>('active');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    guidance = registerOutput<String?>('guidance');
+    productId = registerOutput<String>('productId');
+    productVersionName = registerOutput<String>('productVersionName');
+    templateType = registerOutput<String>('templateType');
+    templateUrl = registerOutput<String>('templateUrl');
   }
 }

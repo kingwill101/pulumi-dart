@@ -9,20 +9,15 @@ class AllowedCSIDriver {
 
   /// Creates a new [AllowedCSIDriver].
   /// [name] Name is the registered name of the CSI driver
-  AllowedCSIDriver({
-    required this.name,
-  });
+  AllowedCSIDriver({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory AllowedCSIDriver.fromMap(Map<String, dynamic> map) {
     return AllowedCSIDriver(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

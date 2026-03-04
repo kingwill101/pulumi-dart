@@ -1,5 +1,3 @@
-library module_ehpc;
-
 export 'ehpc/cluster.dart';
 export 'ehpc/cluster_additional_volume.dart';
 export 'ehpc/cluster_additional_volume_role.dart';

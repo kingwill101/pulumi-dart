@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SystemTopicEventSubscriptionDeadLetterIdentity {
   /// Specifies the type of Managed Service Identity that is used for dead lettering. Allowed value is `SystemAssigned`, `UserAssigned`.
   final pulumi.Input<String> type;
+
   /// The user identity associated with the resource.
   final pulumi.Input<String>? userAssignedIdentity;
 
@@ -23,11 +24,16 @@ class SystemTopicEventSubscriptionDeadLetterIdentity {
     };
   }
 
-  factory SystemTopicEventSubscriptionDeadLetterIdentity.fromMap(Map<String, dynamic> map) {
+  factory SystemTopicEventSubscriptionDeadLetterIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SystemTopicEventSubscriptionDeadLetterIdentity(
-      type: (map['type'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

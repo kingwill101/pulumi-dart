@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VertexAIParametersResponse {
   /// Environment variables. At most 100 environment variables can be specified and unique. Example: `GCP_BUCKET=gs://my-bucket/samples/`
   final pulumi.Input<Map<String, String>> env;
+
   /// The full name of the Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
   final pulumi.Input<String> network;
 
   /// Creates a new [VertexAIParametersResponse].
   /// [env] Environment variables. At most 100 environment variables can be specified and unique. Example: `GCP_BUCKET=gs://my-bucket/samples/`
   /// [network] The full name of the Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is a network name. Private services access must already be configured for the network. If left unspecified, the job is not peered with any network.
-  VertexAIParametersResponse({
-    required this.env,
-    required this.network,
-  });
+  VertexAIParametersResponse({required this.env, required this.network});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'env': env,
-      'network': network,
-    };
+    return <String, dynamic>{'env': env, 'network': network};
   }
 
   factory VertexAIParametersResponse.fromMap(Map<String, dynamic> map) {
     return VertexAIParametersResponse(
-      env: ((map['env'] as Map).cast<String, String>()).input(),
-      network: (map['network'] as String).input(),
+      env: pulumi.Input.fromValue((map['env'] as Map).cast<String, String>()),
+      network: pulumi.Input.fromValue(map['network'] as String),
     );
   }
 }
-

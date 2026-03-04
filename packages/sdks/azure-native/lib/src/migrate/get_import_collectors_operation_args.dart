@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImportCollectorsOperationArgs {
   /// Import collector ARM name
   final pulumi.Input<String> importCollectorName;
+
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetImportCollectorsOperationArgs {
 
   factory GetImportCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetImportCollectorsOperationArgs(
-      importCollectorName: (map['importCollectorName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      importCollectorName: pulumi.Input.fromValue(
+        map['importCollectorName'] as String,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

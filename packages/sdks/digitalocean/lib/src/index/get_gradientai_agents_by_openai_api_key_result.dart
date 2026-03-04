@@ -6,6 +6,7 @@ import 'get_gradientai_agents_by_openai_api_key_agent.dart';
 /// Result data returned by getGradientaiAgentsByOpenaiApiKey.
 class GetGradientaiAgentsByOpenaiApiKeyResult {
   final List<GetGradientaiAgentsByOpenaiApiKeyAgent> agents;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String uuid;
@@ -22,18 +23,28 @@ class GetGradientaiAgentsByOpenaiApiKeyResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agents': pulumi.Input.encodeList<GetGradientaiAgentsByOpenaiApiKeyAgent, Map<String, dynamic>>(agents, (value) => value.toMap()),
+      'agents':
+          pulumi.Input.encodeList<
+            GetGradientaiAgentsByOpenaiApiKeyAgent,
+            Map<String, dynamic>
+          >(agents, (value) => value.toMap()),
       'id': id,
       'uuid': uuid,
     };
   }
 
-  factory GetGradientaiAgentsByOpenaiApiKeyResult.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiAgentsByOpenaiApiKeyResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiAgentsByOpenaiApiKeyResult(
-      agents: pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgent>(map['agents'], (value) => GetGradientaiAgentsByOpenaiApiKeyAgent.fromMap((value as Map).cast<String, dynamic>())),
+      agents: pulumi.Input.decodeList<GetGradientaiAgentsByOpenaiApiKeyAgent>(
+        map['agents']!,
+        (value) => GetGradientaiAgentsByOpenaiApiKeyAgent.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       uuid: map['uuid'] as String,
     );
   }
 }
-

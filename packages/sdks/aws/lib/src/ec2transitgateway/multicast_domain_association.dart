@@ -200,10 +200,13 @@ import 'multicast_domain_association_state.dart';
 class MulticastDomainAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the subnet to associate with the transit gateway multicast domain.
   late final pulumi.Output<String> subnetId;
+
   /// The ID of the transit gateway attachment.
   late final pulumi.Output<String> transitGatewayAttachmentId;
+
   /// The ID of the transit gateway multicast domain.
   late final pulumi.Output<String> transitGatewayMulticastDomainId;
 
@@ -216,15 +219,19 @@ class MulticastDomainAssociation extends pulumi.CustomResource {
     MulticastDomainAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2transitgateway/multicastDomainAssociation:MulticastDomainAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
-    this.transitGatewayMulticastDomainId = registerOutput<String>('transitGatewayMulticastDomainId');
+         'aws:ec2transitgateway/multicastDomainAssociation:MulticastDomainAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
+    transitGatewayAttachmentId = registerOutput<String>(
+      'transitGatewayAttachmentId',
+    );
+    transitGatewayMulticastDomainId = registerOutput<String>(
+      'transitGatewayMulticastDomainId',
+    );
   }
 
   /// Gets an existing [MulticastDomainAssociation] resource's state with the given [name] and [id].
@@ -245,14 +252,18 @@ class MulticastDomainAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2transitgateway/multicastDomainAssociation:MulticastDomainAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
-    this.transitGatewayMulticastDomainId = registerOutput<String>('transitGatewayMulticastDomainId');
+         'aws:ec2transitgateway/multicastDomainAssociation:MulticastDomainAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
+    transitGatewayAttachmentId = registerOutput<String>(
+      'transitGatewayAttachmentId',
+    );
+    transitGatewayMulticastDomainId = registerOutput<String>(
+      'transitGatewayMulticastDomainId',
+    );
   }
 }

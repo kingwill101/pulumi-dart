@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionedClusterAzureActiveDirectory {
   /// A list of IDs of Microsoft Entra ID Groups. All members of the specified Microsoft Entra ID Groups have the cluster administrator access to the Kubernetes cluster.
   final pulumi.Input<List<String>>? adminGroupObjectIds;
+
   /// Whether to enable Azure RBAC for Kubernetes authorization. Defaults to `false`.
   final pulumi.Input<bool>? azureRbacEnabled;
+
   /// The Tenant ID to use for authentication. If not specified, the Tenant of the Arc Kubernetes Cluster will be used.
   final pulumi.Input<String>? tenantId;
 
@@ -28,12 +30,25 @@ class ProvisionedClusterAzureActiveDirectory {
     };
   }
 
-  factory ProvisionedClusterAzureActiveDirectory.fromMap(Map<String, dynamic> map) {
+  factory ProvisionedClusterAzureActiveDirectory.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProvisionedClusterAzureActiveDirectory(
-      adminGroupObjectIds: map['adminGroupObjectIds'] == null ? null : ((map['adminGroupObjectIds']! as List).cast<String>()).input(),
-      azureRbacEnabled: map['azureRbacEnabled'] == null ? null : (map['azureRbacEnabled']! as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      adminGroupObjectIds: (() {
+        final guardedValue = map['adminGroupObjectIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      azureRbacEnabled: (() {
+        final guardedValue = map['azureRbacEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

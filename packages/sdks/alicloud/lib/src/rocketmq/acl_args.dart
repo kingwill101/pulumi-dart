@@ -11,16 +11,22 @@ class AclArgs {
   /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
   /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
   final pulumi.Input<List<String>> actions;
+
   /// The decision result of the authorization. Valid values: `Deny`, `Allow`.
   final pulumi.Input<String> decision;
+
   /// The instance ID.
   final pulumi.Input<String> instanceId;
+
   /// The IP address whitelists.
   final pulumi.Input<List<String>>? ipWhitelists;
+
   /// The name of the resource on which you want to grant permissions.
   final pulumi.Input<String> resourceName;
+
   /// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
   final pulumi.Input<String> resourceType;
+
   /// The username of the account.
   final pulumi.Input<String> username;
 
@@ -56,14 +62,17 @@ class AclArgs {
 
   factory AclArgs.fromMap(Map<String, dynamic> map) {
     return AclArgs(
-      actions: ((map['actions'] as List).cast<String>()).input(),
-      decision: (map['decision'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists']! as List).cast<String>()).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      username: (map['username'] as String).input(),
+      actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
+      decision: pulumi.Input.fromValue(map['decision'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      ipWhitelists: (() {
+        final guardedValue = map['ipWhitelists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

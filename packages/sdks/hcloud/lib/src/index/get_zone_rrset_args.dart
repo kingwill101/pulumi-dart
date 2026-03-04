@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneRrsetArgs {
   /// ID of the Zone RRSet.
   final pulumi.Input<String>? id;
+
   /// Name of the Zone RRSet.
   final pulumi.Input<String>? name;
+
   /// Type of the Zone RRSet.
   final pulumi.Input<String>? type;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final pulumi.Input<String>? withSelector;
+
   /// ID or Name of the parent Zone.
   final pulumi.Input<String> zone;
 
@@ -44,12 +48,27 @@ class GetZoneRrsetArgs {
 
   factory GetZoneRrsetArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneRrsetArgs(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
-      zone: (map['zone'] as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

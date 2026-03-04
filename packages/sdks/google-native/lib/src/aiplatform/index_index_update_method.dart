@@ -4,16 +4,15 @@ enum IndexIndexUpdateMethod {
   batchUpdate("BATCH_UPDATE"),
   streamUpdate("STREAM_UPDATE");
 
-  const IndexIndexUpdateMethod(this.value);
-  final String value;
+  const IndexIndexUpdateMethod(this.wireValue);
+  final String wireValue;
 
   static IndexIndexUpdateMethod fromValue(String value) {
     for (final item in IndexIndexUpdateMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IndexIndexUpdateMethod value: $value');
   }
 }
-

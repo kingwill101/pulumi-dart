@@ -4,16 +4,17 @@ enum NotificationChannelVerificationStatus {
   unverified("UNVERIFIED"),
   verified("VERIFIED");
 
-  const NotificationChannelVerificationStatus(this.value);
-  final String value;
+  const NotificationChannelVerificationStatus(this.wireValue);
+  final String wireValue;
 
   static NotificationChannelVerificationStatus fromValue(String value) {
     for (final item in NotificationChannelVerificationStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NotificationChannelVerificationStatus value: $value');
+    throw ArgumentError(
+      'Unknown NotificationChannelVerificationStatus value: $value',
+    );
   }
 }
-

@@ -14,15 +14,14 @@ class ContactProfilesPropertiesResponseNetworkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subnetId': subnetId,
-    };
+    return <String, dynamic>{'subnetId': subnetId};
   }
 
-  factory ContactProfilesPropertiesResponseNetworkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ContactProfilesPropertiesResponseNetworkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactProfilesPropertiesResponseNetworkConfiguration(
-      subnetId: (map['subnetId'] as String).input(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

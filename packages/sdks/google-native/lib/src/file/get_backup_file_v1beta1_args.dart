@@ -31,10 +31,13 @@ class GetBackupFileV1beta1Args {
 
   factory GetBackupFileV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetBackupFileV1beta1Args(
-      backupId: (map['backupId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backupId: pulumi.Input.fromValue(map['backupId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

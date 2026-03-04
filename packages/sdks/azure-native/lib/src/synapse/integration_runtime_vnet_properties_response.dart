@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationRuntimeVNetPropertiesResponse {
   /// Resource IDs of the public IP addresses that this integration runtime will use.
   final pulumi.Input<List<String>>? publicIPs;
+
   /// The name of the subnet this integration runtime will join.
   final pulumi.Input<String>? subnet;
+
   /// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
   final pulumi.Input<String>? subnetId;
+
   /// The ID of the VNet that this integration runtime will join.
   final pulumi.Input<String>? vNetId;
 
@@ -34,13 +37,30 @@ class IntegrationRuntimeVNetPropertiesResponse {
     };
   }
 
-  factory IntegrationRuntimeVNetPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory IntegrationRuntimeVNetPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationRuntimeVNetPropertiesResponse(
-      publicIPs: map['publicIPs'] == null ? null : ((map['publicIPs']! as List).cast<String>()).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      vNetId: map['vNetId'] == null ? null : (map['vNetId']! as String).input(),
+      publicIPs: (() {
+        final guardedValue = map['publicIPs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vNetId: (() {
+        final guardedValue = map['vNetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

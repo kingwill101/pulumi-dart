@@ -5,18 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionBuildConfigSourceRepoSource {
   /// Regex matching branches to build.
   final pulumi.Input<String> branchName;
+
   /// Regex matching tags to build.
   final pulumi.Input<String> commitSha;
+
   /// Directory, relative to the source root, in which to run the build.
   final pulumi.Input<String> dir;
+
   /// Only trigger a build if the revision regex does
   /// NOT match the revision regex.
   final pulumi.Input<bool> invertRegex;
+
   /// ID of the project that owns the Cloud Source Repository. If omitted, the
   /// project ID requesting the build is assumed.
   final pulumi.Input<String> projectId;
+
   /// Name of the Cloud Source Repository.
   final pulumi.Input<String> repoName;
+
   /// Regex matching tags to build.
   final pulumi.Input<String> tagName;
 
@@ -50,16 +56,17 @@ class GetFunctionBuildConfigSourceRepoSource {
     };
   }
 
-  factory GetFunctionBuildConfigSourceRepoSource.fromMap(Map<String, dynamic> map) {
+  factory GetFunctionBuildConfigSourceRepoSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFunctionBuildConfigSourceRepoSource(
-      branchName: (map['branchName'] as String).input(),
-      commitSha: (map['commitSha'] as String).input(),
-      dir: (map['dir'] as String).input(),
-      invertRegex: (map['invertRegex'] as bool).input(),
-      projectId: (map['projectId'] as String).input(),
-      repoName: (map['repoName'] as String).input(),
-      tagName: (map['tagName'] as String).input(),
+      branchName: pulumi.Input.fromValue(map['branchName'] as String),
+      commitSha: pulumi.Input.fromValue(map['commitSha'] as String),
+      dir: pulumi.Input.fromValue(map['dir'] as String),
+      invertRegex: pulumi.Input.fromValue(map['invertRegex'] as bool),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      repoName: pulumi.Input.fromValue(map['repoName'] as String),
+      tagName: pulumi.Input.fromValue(map['tagName'] as String),
     );
   }
 }
-

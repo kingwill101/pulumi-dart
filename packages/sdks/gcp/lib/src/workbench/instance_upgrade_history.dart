@@ -5,22 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceUpgradeHistory {
   /// Optional. Action. Rolloback or Upgrade.
   final pulumi.Input<String>? action;
+
   /// Optional. The container image before this instance upgrade.
   final pulumi.Input<String>? containerImage;
+
   /// An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
   /// The milliseconds portion (".SSS") is optional.
   final pulumi.Input<String>? createTime;
+
   /// Optional. The framework of this workbench instance.
   final pulumi.Input<String>? framework;
+
   /// Optional. The snapshot of the boot disk of this workbench instance before upgrade.
   final pulumi.Input<String>? snapshot;
+
   /// (Output)
   /// Output only. The state of this instance upgrade history entry.
   final pulumi.Input<String>? state;
+
   /// Optional. Target VM Version, like m63.
   final pulumi.Input<String>? targetVersion;
+
   /// Optional. The version of the workbench instance before this upgrade.
   final pulumi.Input<String>? version;
+
   /// Optional. The VM image before this instance upgrade.
   final pulumi.Input<String>? vmImage;
 
@@ -62,16 +70,51 @@ class InstanceUpgradeHistory {
 
   factory InstanceUpgradeHistory.fromMap(Map<String, dynamic> map) {
     return InstanceUpgradeHistory(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      framework: map['framework'] == null ? null : (map['framework']! as String).input(),
-      snapshot: map['snapshot'] == null ? null : (map['snapshot']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
-      vmImage: map['vmImage'] == null ? null : (map['vmImage']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerImage: (() {
+        final guardedValue = map['containerImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      framework: (() {
+        final guardedValue = map['framework'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshot: (() {
+        final guardedValue = map['snapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVersion: (() {
+        final guardedValue = map['targetVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmImage: (() {
+        final guardedValue = map['vmImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

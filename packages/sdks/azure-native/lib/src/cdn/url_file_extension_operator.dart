@@ -11,16 +11,15 @@ enum UrlFileExtensionOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const UrlFileExtensionOperator(this.value);
-  final String value;
+  const UrlFileExtensionOperator(this.wireValue);
+  final String wireValue;
 
   static UrlFileExtensionOperator fromValue(String value) {
     for (final item in UrlFileExtensionOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UrlFileExtensionOperator value: $value');
   }
 }
-

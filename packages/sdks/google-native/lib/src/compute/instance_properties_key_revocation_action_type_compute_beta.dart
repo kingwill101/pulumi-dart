@@ -4,16 +4,20 @@ enum InstancePropertiesKeyRevocationActionTypeComputeBeta {
   none("NONE"),
   stop("STOP");
 
-  const InstancePropertiesKeyRevocationActionTypeComputeBeta(this.value);
-  final String value;
+  const InstancePropertiesKeyRevocationActionTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static InstancePropertiesKeyRevocationActionTypeComputeBeta fromValue(String value) {
-    for (final item in InstancePropertiesKeyRevocationActionTypeComputeBeta.values) {
-      if (item.value == value) {
+  static InstancePropertiesKeyRevocationActionTypeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstancePropertiesKeyRevocationActionTypeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstancePropertiesKeyRevocationActionTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstancePropertiesKeyRevocationActionTypeComputeBeta value: $value',
+    );
   }
 }
-

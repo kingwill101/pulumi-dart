@@ -4,7 +4,7 @@ import 'route_state.dart';
 
 /// Manages an IotHub Route
 ///
-/// > **Note:** Routes can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.Route` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
+/// &gt; **Note:** Routes can be defined either directly on the `azure.iot.IoTHub` resource, or using the `azure.iot.Route` resource - but the two cannot be used together. If both are used against the same IoTHub, spurious changes will occur.
 ///
 /// ## Example Usage
 ///
@@ -420,18 +420,24 @@ import 'route_state.dart';
 /// $ pulumi import azure:iot/route:Route route1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Devices/iotHubs/hub1/routes/route1
 /// ```
 class Route extends pulumi.CustomResource {
-  /// The condition that is evaluated to apply the routing rule. For grammar, see: <https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language>. Defaults to `true`.
+  /// The condition that is evaluated to apply the routing rule. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;. Defaults to `true`.
   late final pulumi.Output<String?> condition;
+
   /// Specifies whether a route is enabled.
   late final pulumi.Output<bool> enabled;
+
   /// The list of endpoints to which messages that satisfy the condition are routed. Currently only one endpoint is allowed.
   late final pulumi.Output<String> endpointNames;
+
   /// The name of the IoTHub to which this Route belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> iothubName;
+
   /// The name of the route. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group under which the IotHub Route resource has to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The source that the routing rule is to be applied to. Possible values include: `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents`, `DeviceLifecycleEvents`, `DeviceMessages`, `DigitalTwinChangeEvents`, `Invalid`, `TwinChangeEvents`.
   late final pulumi.Output<String> source;
 
@@ -439,31 +445,24 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_iot_route_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(
-    String name, {
-    RouteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:iot/route:Route',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<String?>('condition');
-    this.enabled = registerOutput<bool>('enabled');
-    this.endpointNames = registerOutput<String>('endpointNames');
-    this.iothubName = registerOutput<String>('iothubName');
+  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:iot/route:Route',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    condition = registerOutput<String?>('condition');
+    enabled = registerOutput<bool>('enabled');
+    endpointNames = registerOutput<String>('endpointNames');
+    iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.source = registerOutput<String>('source');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    source = registerOutput<String>('source');
   }
 
   /// Gets an existing [Route] resource's state with the given [name] and [id].
-  static Route get(
-    String name,
-    pulumi.Input<String> id, {
-    RouteState? state,
-  }) {
+  static Route get(String name, pulumi.Input<String> id, {RouteState? state}) {
     return Route._get(
       name,
       state: state?.toMap(),
@@ -476,17 +475,17 @@ class Route extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:iot/route:Route',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<String?>('condition');
-    this.enabled = registerOutput<bool>('enabled');
-    this.endpointNames = registerOutput<String>('endpointNames');
-    this.iothubName = registerOutput<String>('iothubName');
+         'azure:iot/route:Route',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<String?>('condition');
+    enabled = registerOutput<bool>('enabled');
+    endpointNames = registerOutput<String>('endpointNames');
+    iothubName = registerOutput<String>('iothubName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.source = registerOutput<String>('source');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    source = registerOutput<String>('source');
   }
 }

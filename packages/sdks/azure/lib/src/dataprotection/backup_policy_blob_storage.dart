@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_blob_storage_args.dart';
-import 'backup_policy_blob_storage_retention_rule.dart';
 import 'backup_policy_blob_storage_state.dart';
 
 /// Manages a Backup Policy Blob Storage.
@@ -439,7 +438,7 @@ import 'backup_policy_blob_storage_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataProtection` - 2024-04-01
@@ -454,20 +453,26 @@ import 'backup_policy_blob_storage_state.dart';
 class BackupPolicyBlobStorage extends pulumi.CustomResource {
   /// Specifies a list of repeating time interval. It should follow `ISO 8601` repeating time interval. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<List<String>?> backupRepeatingTimeIntervals;
+
   /// The name which should be used for this Backup Policy Blob Storage. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String> name;
+
   /// The duration of operational default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String?> operationalDefaultRetentionDuration;
+
   /// One or more `retention_rule` blocks as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
-  /// > **Note:** Setting `retention_rule` also requires setting `vault_default_retention_duration`.
-  late final pulumi.Output<List<BackupPolicyBlobStorageRetentionRule>?> retentionRules;
+  /// &gt; **Note:** Setting `retention_rule` also requires setting `vault_default_retention_duration`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> retentionRules;
+
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String?> timeZone;
+
   /// The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   ///
-  /// > **Note:** Setting `vault_default_retention_duration` also requires setting `backup_repeating_time_intervals`. At least one of `operational_default_retention_duration` or `vault_default_retention_duration` must be specified.
+  /// &gt; **Note:** Setting `vault_default_retention_duration` also requires setting `backup_repeating_time_intervals`. At least one of `operational_default_retention_duration` or `vault_default_retention_duration` must be specified.
   late final pulumi.Output<String?> vaultDefaultRetentionDuration;
+
   /// The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
   late final pulumi.Output<String> vaultId;
 
@@ -480,18 +485,26 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
     BackupPolicyBlobStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupPolicyBlobStorage:BackupPolicyBlobStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals');
+         'azure:dataprotection/backupPolicyBlobStorage:BackupPolicyBlobStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>?>(
+      'backupRepeatingTimeIntervals',
+    );
     this.name = registerOutput<String>('name');
-    this.operationalDefaultRetentionDuration = registerOutput<String?>('operationalDefaultRetentionDuration');
-    this.retentionRules = registerOutput<List<BackupPolicyBlobStorageRetentionRule>?>('retentionRules');
-    this.timeZone = registerOutput<String?>('timeZone');
-    this.vaultDefaultRetentionDuration = registerOutput<String?>('vaultDefaultRetentionDuration');
-    this.vaultId = registerOutput<String>('vaultId');
+    operationalDefaultRetentionDuration = registerOutput<String?>(
+      'operationalDefaultRetentionDuration',
+    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
+      'retentionRules',
+    );
+    timeZone = registerOutput<String?>('timeZone');
+    vaultDefaultRetentionDuration = registerOutput<String?>(
+      'vaultDefaultRetentionDuration',
+    );
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [BackupPolicyBlobStorage] resource's state with the given [name] and [id].
@@ -512,17 +525,25 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupPolicyBlobStorage:BackupPolicyBlobStorage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals');
+         'azure:dataprotection/backupPolicyBlobStorage:BackupPolicyBlobStorage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupRepeatingTimeIntervals = registerOutput<List<String>?>(
+      'backupRepeatingTimeIntervals',
+    );
     this.name = registerOutput<String>('name');
-    this.operationalDefaultRetentionDuration = registerOutput<String?>('operationalDefaultRetentionDuration');
-    this.retentionRules = registerOutput<List<BackupPolicyBlobStorageRetentionRule>?>('retentionRules');
-    this.timeZone = registerOutput<String?>('timeZone');
-    this.vaultDefaultRetentionDuration = registerOutput<String?>('vaultDefaultRetentionDuration');
-    this.vaultId = registerOutput<String>('vaultId');
+    operationalDefaultRetentionDuration = registerOutput<String?>(
+      'operationalDefaultRetentionDuration',
+    );
+    retentionRules = registerOutput<List<Map<String, dynamic>>?>(
+      'retentionRules',
+    );
+    timeZone = registerOutput<String?>('timeZone');
+    vaultDefaultRetentionDuration = registerOutput<String?>(
+      'vaultDefaultRetentionDuration',
+    );
+    vaultId = registerOutput<String>('vaultId');
   }
 }

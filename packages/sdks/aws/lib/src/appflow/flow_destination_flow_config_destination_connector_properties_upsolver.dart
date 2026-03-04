@@ -6,7 +6,10 @@ import 'flow_destination_flow_config_destination_connector_properties_upsolver_s
 class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String>? bucketPrefix;
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig> s3OutputFormatConfig;
+  final pulumi.Input<
+    FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig
+  >
+  s3OutputFormatConfig;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver].
   /// [bucketName] Required.
@@ -22,16 +25,29 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
     return <String, dynamic>{
       'bucketName': bucketName,
       'bucketPrefix': ?bucketPrefix,
-      's3OutputFormatConfig': pulumi.Input.mapInputValue<FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig, Map<String, dynamic>>(s3OutputFormatConfig, (value) => value.toMap()),
+      's3OutputFormatConfig':
+          pulumi.Input.mapInputValue<
+            FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig,
+            Map<String, dynamic>
+          >(s3OutputFormatConfig, (value) => value.toMap()),
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver(
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
-      s3OutputFormatConfig: (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap((map['s3OutputFormatConfig']! as Map).cast<String, dynamic>())).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3OutputFormatConfig: pulumi.Input.fromValue(
+        FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap(
+          (map['s3OutputFormatConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

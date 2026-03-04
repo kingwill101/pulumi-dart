@@ -5,11 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationSetRegion {
   /// The ARN of the AWS Key Management Service (AWS KMS) encryption key.
   final pulumi.Input<String> kmsKeyArn;
+
   /// The name of the Region.
   final pulumi.Input<String> name;
+
   /// The current status of the Region.
   /// * Valid Values: `ACTIVE` | `CREATING` | `UPDATING` | `DELETING` | `FAILED`
   final pulumi.Input<String> status;
+
   /// More information about the status of a Region.
   final pulumi.Input<String> statusMessage;
 
@@ -36,11 +39,10 @@ class GetReplicationSetRegion {
 
   factory GetReplicationSetRegion.fromMap(Map<String, dynamic> map) {
     return GetReplicationSetRegion(
-      kmsKeyArn: (map['kmsKeyArn'] as String).input(),
-      name: (map['name'] as String).input(),
-      status: (map['status'] as String).input(),
-      statusMessage: (map['statusMessage'] as String).input(),
+      kmsKeyArn: pulumi.Input.fromValue(map['kmsKeyArn'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
     );
   }
 }
-

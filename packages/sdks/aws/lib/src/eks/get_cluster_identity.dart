@@ -9,20 +9,35 @@ class GetClusterIdentity {
 
   /// Creates a new [GetClusterIdentity].
   /// [oidcs] Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
-  GetClusterIdentity({
-    required this.oidcs,
-  });
+  GetClusterIdentity({required this.oidcs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oidcs': pulumi.Input.mapInputValue<List<GetClusterIdentityOidc>, List<Map<String, dynamic>>>(oidcs, (value) => pulumi.Input.encodeList<GetClusterIdentityOidc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'oidcs':
+          pulumi.Input.mapInputValue<
+            List<GetClusterIdentityOidc>,
+            List<Map<String, dynamic>>
+          >(
+            oidcs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterIdentityOidc,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetClusterIdentity.fromMap(Map<String, dynamic> map) {
     return GetClusterIdentity(
-      oidcs: (pulumi.Input.decodeList<GetClusterIdentityOidc>(map['oidcs']!, (value) => GetClusterIdentityOidc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oidcs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetClusterIdentityOidc>(
+          map['oidcs']!,
+          (value) => GetClusterIdentityOidc.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

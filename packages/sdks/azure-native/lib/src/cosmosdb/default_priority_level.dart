@@ -3,16 +3,15 @@ enum DefaultPriorityLevel {
   valueHigh("High"),
   valueLow("Low");
 
-  const DefaultPriorityLevel(this.value);
-  final String value;
+  const DefaultPriorityLevel(this.wireValue);
+  final String wireValue;
 
   static DefaultPriorityLevel fromValue(String value) {
     for (final item in DefaultPriorityLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefaultPriorityLevel value: $value');
   }
 }
-

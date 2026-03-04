@@ -23,18 +23,55 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailySchedule': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyDailyCycle, Map<String, dynamic>>(dailySchedule, (value) => value.toMap()),
-      'hourlySchedule': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyHourlyCycle, Map<String, dynamic>>(hourlySchedule, (value) => value.toMap()),
-      'weeklySchedule': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyWeeklyCycle, Map<String, dynamic>>(weeklySchedule, (value) => value.toMap()),
+      'dailySchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourcePolicyDailyCycle,
+            Map<String, dynamic>
+          >(dailySchedule, (value) => value.toMap()),
+      'hourlySchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourcePolicyHourlyCycle,
+            Map<String, dynamic>
+          >(hourlySchedule, (value) => value.toMap()),
+      'weeklySchedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourcePolicyWeeklyCycle,
+            Map<String, dynamic>
+          >(weeklySchedule, (value) => value.toMap()),
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicySchedule.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicySchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicySchedule(
-      dailySchedule: map['dailySchedule'] == null ? null : (ResourcePolicyDailyCycle.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
-      hourlySchedule: map['hourlySchedule'] == null ? null : (ResourcePolicyHourlyCycle.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (ResourcePolicyWeeklyCycle.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
+      dailySchedule: (() {
+        final guardedValue = map['dailySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourcePolicyDailyCycle.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hourlySchedule: (() {
+        final guardedValue = map['hourlySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourcePolicyHourlyCycle.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      weeklySchedule: (() {
+        final guardedValue = map['weeklySchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourcePolicyWeeklyCycle.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

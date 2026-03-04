@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostGroupArgs {
   /// Specifies the name of the Dedicated Host Group.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the resource group the Dedicated Host Group is located in.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetDedicatedHostGroupArgs {
 
   factory GetDedicatedHostGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostGroupArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

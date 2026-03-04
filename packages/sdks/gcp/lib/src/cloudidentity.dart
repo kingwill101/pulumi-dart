@@ -1,5 +1,3 @@
-library module_cloudidentity;
-
 export 'cloudidentity/functions.dart';
 export 'cloudidentity/get_group_lookup_args.dart';
 export 'cloudidentity/get_group_lookup_group_key.dart';

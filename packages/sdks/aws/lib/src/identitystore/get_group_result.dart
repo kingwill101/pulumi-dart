@@ -7,13 +7,17 @@ import 'get_group_external_id.dart';
 /// Result data returned by getGroup.
 class GetGroupResult {
   final GetGroupAlternateIdentifier? alternateIdentifier;
+
   /// Description of the specified group.
   final String description;
+
   /// Group's display name value.
   final String displayName;
+
   /// List of identifiers issued to this resource by an external identity provider.
   final List<GetGroupExternalId> externalIds;
   final String groupId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String identityStoreId;
@@ -41,10 +45,14 @@ class GetGroupResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alternateIdentifier': ?alternateIdentifier == null ? null : alternateIdentifier!.toMap(),
+      'alternateIdentifier': ?alternateIdentifier?.toMap(),
       'description': description,
       'displayName': displayName,
-      'externalIds': pulumi.Input.encodeList<GetGroupExternalId, Map<String, dynamic>>(externalIds, (value) => value.toMap()),
+      'externalIds':
+          pulumi.Input.encodeList<GetGroupExternalId, Map<String, dynamic>>(
+            externalIds,
+            (value) => value.toMap(),
+          ),
       'groupId': groupId,
       'id': id,
       'identityStoreId': identityStoreId,
@@ -54,10 +62,20 @@ class GetGroupResult {
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : GetGroupAlternateIdentifier.fromMap((map['alternateIdentifier']! as Map).cast<String, dynamic>()),
+      alternateIdentifier: (() {
+        final guardedValue = map['alternateIdentifier'];
+        if (guardedValue == null) return null;
+        return GetGroupAlternateIdentifier.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      externalIds: pulumi.Input.decodeList<GetGroupExternalId>(map['externalIds']!, (value) => GetGroupExternalId.fromMap((value as Map).cast<String, dynamic>())),
+      externalIds: pulumi.Input.decodeList<GetGroupExternalId>(
+        map['externalIds']!,
+        (value) =>
+            GetGroupExternalId.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       groupId: map['groupId'] as String,
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
@@ -65,4 +83,3 @@ class GetGroupResult {
     );
   }
 }
-

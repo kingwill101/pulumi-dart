@@ -1,5 +1,3 @@
-library module_automation;
-
 export 'automation/advanced_schedule.dart';
 export 'automation/advanced_schedule_monthly_occurrence.dart';
 export 'automation/advanced_schedule_monthly_occurrence_response.dart';

@@ -8,9 +8,16 @@ import 'resource_policy_snapshot_schedule_policy_retention_policy_on_source_disk
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
   /// Maximum age of the snapshot that is allowed to be kept.
   final pulumi.Input<int>? maxRetentionDays;
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch>? onPolicySwitch;
+  final pulumi.Input<
+    ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch
+  >?
+  onPolicySwitch;
+
   /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete>? onSourceDiskDelete;
+  final pulumi.Input<
+    ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete
+  >?
+  onSourceDiskDelete;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyRetentionPolicy].
   /// [maxRetentionDays] Maximum age of the snapshot that is allowed to be kept.
@@ -25,17 +32,46 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxRetentionDays': ?maxRetentionDays,
-      'onPolicySwitch': ?pulumi.Input.mapOptionalInputValue<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch, String>(onPolicySwitch, (value) => value.value),
-      'onSourceDiskDelete': ?pulumi.Input.mapOptionalInputValue<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete, String>(onSourceDiskDelete, (value) => value.value),
+      'onPolicySwitch':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch,
+            String
+          >(onPolicySwitch, (value) => value.wireValue),
+      'onSourceDiskDelete':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete,
+            String
+          >(onSourceDiskDelete, (value) => value.wireValue),
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-      maxRetentionDays: map['maxRetentionDays'] == null ? null : (map['maxRetentionDays']! as int).input(),
-      onPolicySwitch: map['onPolicySwitch'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch.fromValue(map['onPolicySwitch']! as String)).input(),
-      onSourceDiskDelete: map['onSourceDiskDelete'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete.fromValue(map['onSourceDiskDelete']! as String)).input(),
+      maxRetentionDays: (() {
+        final guardedValue = map['maxRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      onPolicySwitch: (() {
+        final guardedValue = map['onPolicySwitch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      onSourceDiskDelete: (() {
+        final guardedValue = map['onSourceDiskDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

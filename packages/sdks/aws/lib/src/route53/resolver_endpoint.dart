@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resolver_endpoint_args.dart';
-import 'resolver_endpoint_ip_address.dart';
 import 'resolver_endpoint_state.dart';
 
 /// Provides a Route 53 Resolver endpoint resource.
@@ -231,32 +230,44 @@ import 'resolver_endpoint_state.dart';
 class ResolverEndpoint extends pulumi.CustomResource {
   /// ARN of the Route 53 Resolver endpoint.
   late final pulumi.Output<String> arn;
+
   /// Direction of DNS queries to or from the Route 53 Resolver endpoint.
   /// Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC), `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC) or `INBOUND_DELEGATION` (resolver delegates queries to Route 53 private hosted zones from your network).
   late final pulumi.Output<String> direction;
+
   /// ID of the VPC that you want to create the resolver endpoint in.
   late final pulumi.Output<String> hostVpcId;
+
   /// Subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
   /// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-  late final pulumi.Output<List<ResolverEndpointIpAddress>> ipAddresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipAddresses;
+
   /// Friendly name of the Route 53 Resolver endpoint.
   late final pulumi.Output<String> name;
+
   /// Protocols you want to use for the Route 53 Resolver endpoint.
   /// Valid values are `DoH`, `Do53`, or `DoH-FIPS`.
   late final pulumi.Output<List<String>> protocols;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Endpoint IP type. This endpoint type is applied to all IP addresses.
   /// Valid values are `IPV6`,`IPV4` or `DUALSTACK` (both IPv4 and IPv6).
   late final pulumi.Output<String> resolverEndpointType;
+
   /// Boolean indicating whether RNI enhanced metrics are enabled for the Resolver endpoint. Defaults to `false`. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
   late final pulumi.Output<bool> rniEnhancedMetricsEnabled;
+
   /// ID of one or more security groups that you want to use to control access to this VPC.
   late final pulumi.Output<List<String>> securityGroupIds;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
   late final pulumi.Output<bool> targetNameServerMetricsEnabled;
 
@@ -269,24 +280,28 @@ class ResolverEndpoint extends pulumi.CustomResource {
     ResolverEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/resolverEndpoint:ResolverEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.direction = registerOutput<String>('direction');
-    this.hostVpcId = registerOutput<String>('hostVpcId');
-    this.ipAddresses = registerOutput<List<ResolverEndpointIpAddress>>('ipAddresses');
+         'aws:route53/resolverEndpoint:ResolverEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    direction = registerOutput<String>('direction');
+    hostVpcId = registerOutput<String>('hostVpcId');
+    ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
     this.name = registerOutput<String>('name');
-    this.protocols = registerOutput<List<String>>('protocols');
-    this.region = registerOutput<String>('region');
-    this.resolverEndpointType = registerOutput<String>('resolverEndpointType');
-    this.rniEnhancedMetricsEnabled = registerOutput<bool>('rniEnhancedMetricsEnabled');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetNameServerMetricsEnabled = registerOutput<bool>('targetNameServerMetricsEnabled');
+    protocols = registerOutput<List<String>>('protocols');
+    region = registerOutput<String>('region');
+    resolverEndpointType = registerOutput<String>('resolverEndpointType');
+    rniEnhancedMetricsEnabled = registerOutput<bool>(
+      'rniEnhancedMetricsEnabled',
+    );
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetNameServerMetricsEnabled = registerOutput<bool>(
+      'targetNameServerMetricsEnabled',
+    );
   }
 
   /// Gets an existing [ResolverEndpoint] resource's state with the given [name] and [id].
@@ -307,23 +322,27 @@ class ResolverEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/resolverEndpoint:ResolverEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.direction = registerOutput<String>('direction');
-    this.hostVpcId = registerOutput<String>('hostVpcId');
-    this.ipAddresses = registerOutput<List<ResolverEndpointIpAddress>>('ipAddresses');
+         'aws:route53/resolverEndpoint:ResolverEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    direction = registerOutput<String>('direction');
+    hostVpcId = registerOutput<String>('hostVpcId');
+    ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
     this.name = registerOutput<String>('name');
-    this.protocols = registerOutput<List<String>>('protocols');
-    this.region = registerOutput<String>('region');
-    this.resolverEndpointType = registerOutput<String>('resolverEndpointType');
-    this.rniEnhancedMetricsEnabled = registerOutput<bool>('rniEnhancedMetricsEnabled');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.targetNameServerMetricsEnabled = registerOutput<bool>('targetNameServerMetricsEnabled');
+    protocols = registerOutput<List<String>>('protocols');
+    region = registerOutput<String>('region');
+    resolverEndpointType = registerOutput<String>('resolverEndpointType');
+    rniEnhancedMetricsEnabled = registerOutput<bool>(
+      'rniEnhancedMetricsEnabled',
+    );
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    targetNameServerMetricsEnabled = registerOutput<bool>(
+      'targetNameServerMetricsEnabled',
+    );
   }
 }

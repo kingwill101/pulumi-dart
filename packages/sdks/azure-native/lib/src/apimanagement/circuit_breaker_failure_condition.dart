@@ -7,12 +7,16 @@ import 'failure_status_code_range.dart';
 class CircuitBreakerFailureCondition {
   /// The threshold for opening the circuit.
   final pulumi.Input<double>? count;
+
   /// The error reasons which are considered as failure.
   final pulumi.Input<List<String>>? errorReasons;
+
   /// The interval during which the failures are counted.
   final pulumi.Input<String>? interval;
+
   /// The threshold for opening the circuit.
   final pulumi.Input<double>? percentage;
+
   /// The status code ranges which are considered as failure.
   final pulumi.Input<List<FailureStatusCodeRange>>? statusCodeRanges;
 
@@ -36,18 +40,55 @@ class CircuitBreakerFailureCondition {
       'errorReasons': ?errorReasons,
       'interval': ?interval,
       'percentage': ?percentage,
-      'statusCodeRanges': ?pulumi.Input.mapOptionalInputValue<List<FailureStatusCodeRange>, List<Map<String, dynamic>>>(statusCodeRanges, (value) => pulumi.Input.encodeList<FailureStatusCodeRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statusCodeRanges':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FailureStatusCodeRange>,
+            List<Map<String, dynamic>>
+          >(
+            statusCodeRanges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FailureStatusCodeRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CircuitBreakerFailureCondition.fromMap(Map<String, dynamic> map) {
     return CircuitBreakerFailureCondition(
-      count: map['count'] == null ? null : (map['count']! as double).input(),
-      errorReasons: map['errorReasons'] == null ? null : ((map['errorReasons']! as List).cast<String>()).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
-      statusCodeRanges: map['statusCodeRanges'] == null ? null : (pulumi.Input.decodeList<FailureStatusCodeRange>(map['statusCodeRanges']!, (value) => FailureStatusCodeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      errorReasons: (() {
+        final guardedValue = map['errorReasons'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      percentage: (() {
+        final guardedValue = map['percentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      statusCodeRanges: (() {
+        final guardedValue = map['statusCodeRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FailureStatusCodeRange>(
+            guardedValue,
+            (value) => FailureStatusCodeRange.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

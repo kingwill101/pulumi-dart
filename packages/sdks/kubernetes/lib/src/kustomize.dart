@@ -1,5 +1,3 @@
-library module_kustomize;
-
 export 'kustomize/directory.dart';
 export 'kustomize/directory_args.dart';
 export 'kustomize/directory_kustomize.dart';

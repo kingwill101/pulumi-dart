@@ -8,7 +8,7 @@ import 'tenant_role_user_attachment_state.dart';
 ///
 /// For information about Max Compute Tenant Role User Attachment and how to use it, see [What is Tenant Role User Attachment](https://next.api.alibabacloud.com/document/MaxCompute/2022-01-04/UpdateTenantUserRoles).
 ///
-/// > **NOTE:** Available since v1.270.0.
+/// &gt; **NOTE:** Available since v1.270.0.
 ///
 /// ## Example Usage
 ///
@@ -151,6 +151,7 @@ class TenantRoleUserAttachment extends pulumi.CustomResource {
   /// 3. If the user is a RAM role, the AccountId format is v4_UID.
   /// Example: v4_300007628597555555
   late final pulumi.Output<String> accountId;
+
   /// Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
   late final pulumi.Output<String> tenantRole;
 
@@ -163,13 +164,13 @@ class TenantRoleUserAttachment extends pulumi.CustomResource {
     TenantRoleUserAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.tenantRole = registerOutput<String>('tenantRole');
+         'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    tenantRole = registerOutput<String>('tenantRole');
   }
 
   /// Gets an existing [TenantRoleUserAttachment] resource's state with the given [name] and [id].
@@ -190,12 +191,12 @@ class TenantRoleUserAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.tenantRole = registerOutput<String>('tenantRole');
+         'alicloud:maxcompute/tenantRoleUserAttachment:TenantRoleUserAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    tenantRole = registerOutput<String>('tenantRole');
   }
 }

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceServerCaCert {
   /// The certificate data in PEM format.
   final pulumi.Input<String> cert;
+
   /// The time when the certificate was created.
   final pulumi.Input<String> createTime;
+
   /// The time when the certificate expires.
   final pulumi.Input<String> expireTime;
+
   /// Serial number, as extracted from the certificate.
   final pulumi.Input<String> serialNumber;
+
   /// Sha1 Fingerprint of the certificate.
   final pulumi.Input<String> sha1Fingerprint;
 
@@ -40,12 +44,11 @@ class GetInstanceServerCaCert {
 
   factory GetInstanceServerCaCert.fromMap(Map<String, dynamic> map) {
     return GetInstanceServerCaCert(
-      cert: (map['cert'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      serialNumber: (map['serialNumber'] as String).input(),
-      sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
+      cert: pulumi.Input.fromValue(map['cert'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
+      sha1Fingerprint: pulumi.Input.fromValue(map['sha1Fingerprint'] as String),
     );
   }
 }
-

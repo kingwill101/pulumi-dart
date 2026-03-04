@@ -7,20 +7,19 @@ class ApplicationReadinessV2TcpSocket {
 
   /// Creates a new [ApplicationReadinessV2TcpSocket].
   /// [port] Optional.
-  ApplicationReadinessV2TcpSocket({
-    this.port,
-  });
+  ApplicationReadinessV2TcpSocket({this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': ?port,
-    };
+    return <String, dynamic>{'port': ?port};
   }
 
   factory ApplicationReadinessV2TcpSocket.fromMap(Map<String, dynamic> map) {
     return ApplicationReadinessV2TcpSocket(
-      port: map['port'] == null ? null : (map['port']! as int).input(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

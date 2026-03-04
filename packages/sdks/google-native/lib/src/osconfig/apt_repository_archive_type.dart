@@ -4,16 +4,15 @@ enum AptRepositoryArchiveType {
   deb("DEB"),
   debSrc("DEB_SRC");
 
-  const AptRepositoryArchiveType(this.value);
-  final String value;
+  const AptRepositoryArchiveType(this.wireValue);
+  final String wireValue;
 
   static AptRepositoryArchiveType fromValue(String value) {
     for (final item in AptRepositoryArchiveType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AptRepositoryArchiveType value: $value');
   }
 }
-

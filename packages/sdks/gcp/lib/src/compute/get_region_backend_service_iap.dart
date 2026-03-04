@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionBackendServiceIap {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
   final pulumi.Input<bool> enabled;
+
   /// OAuth2 Client ID for IAP
   final pulumi.Input<String> oauth2ClientId;
+
   /// OAuth2 Client Secret for IAP
   final pulumi.Input<String> oauth2ClientSecret;
+
   /// OAuth2 Client Secret SHA-256 for IAP
   final pulumi.Input<String> oauth2ClientSecretSha256;
 
@@ -35,11 +38,14 @@ class GetRegionBackendServiceIap {
 
   factory GetRegionBackendServiceIap.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceIap(
-      enabled: (map['enabled'] as bool).input(),
-      oauth2ClientId: (map['oauth2ClientId'] as String).input(),
-      oauth2ClientSecret: (map['oauth2ClientSecret'] as String).input(),
-      oauth2ClientSecretSha256: (map['oauth2ClientSecretSha256'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      oauth2ClientId: pulumi.Input.fromValue(map['oauth2ClientId'] as String),
+      oauth2ClientSecret: pulumi.Input.fromValue(
+        map['oauth2ClientSecret'] as String,
+      ),
+      oauth2ClientSecretSha256: pulumi.Input.fromValue(
+        map['oauth2ClientSecretSha256'] as String,
+      ),
     );
   }
 }
-

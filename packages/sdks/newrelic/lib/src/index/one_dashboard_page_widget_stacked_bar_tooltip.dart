@@ -8,20 +8,17 @@ class OneDashboardPageWidgetStackedBarTooltip {
 
   /// Creates a new [OneDashboardPageWidgetStackedBarTooltip].
   /// [mode] (Required) The tooltip display mode. Valid values are:
-  OneDashboardPageWidgetStackedBarTooltip({
-    required this.mode,
-  });
+  OneDashboardPageWidgetStackedBarTooltip({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
-  factory OneDashboardPageWidgetStackedBarTooltip.fromMap(Map<String, dynamic> map) {
+  factory OneDashboardPageWidgetStackedBarTooltip.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OneDashboardPageWidgetStackedBarTooltip(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

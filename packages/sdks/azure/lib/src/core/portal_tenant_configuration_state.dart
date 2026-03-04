@@ -6,14 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortalTenantConfigurationState {
   /// Is the private tile markdown storage which used to display custom dynamic and static content enabled?
   ///
-  /// > **Note:** When `private_markdown_storage_enforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
+  /// &gt; **Note:** When `private_markdown_storage_enforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
   final pulumi.Input<bool>? privateMarkdownStorageEnforced;
 
   /// Creates a new [PortalTenantConfigurationState].
   /// [privateMarkdownStorageEnforced] Is the private tile markdown storage which used to display custom dynamic and static content enabled?
-  PortalTenantConfigurationState({
-    this.privateMarkdownStorageEnforced,
-  });
+  PortalTenantConfigurationState({this.privateMarkdownStorageEnforced});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,8 +21,11 @@ class PortalTenantConfigurationState {
 
   factory PortalTenantConfigurationState.fromMap(Map<String, dynamic> map) {
     return PortalTenantConfigurationState(
-      privateMarkdownStorageEnforced: map['privateMarkdownStorageEnforced'] == null ? null : (map['privateMarkdownStorageEnforced']! as bool).input(),
+      privateMarkdownStorageEnforced: (() {
+        final guardedValue = map['privateMarkdownStorageEnforced'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

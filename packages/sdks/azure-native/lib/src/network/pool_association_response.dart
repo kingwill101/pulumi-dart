@@ -6,19 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PoolAssociationResponse {
   /// List of assigned IP address prefixes in the IpamPool of the associated resource.
   final pulumi.Input<List<String>> addressPrefixes;
+
   /// Creation time of the association.
   final pulumi.Input<String> createdAt;
   final pulumi.Input<String>? description;
+
   /// Total number of reserved IP addresses of the association.
   final pulumi.Input<String> numberOfReservedIPAddresses;
+
   /// IpamPool id for which the resource is associated to.
   final pulumi.Input<String>? poolId;
+
   /// Expire time for IP addresses reserved.
   final pulumi.Input<String> reservationExpiresAt;
+
   /// List of reserved IP address prefixes in the IpamPool of the associated resource.
   final pulumi.Input<List<String>> reservedPrefixes;
+
   /// Resource id of the associated Azure resource.
   final pulumi.Input<String> resourceId;
+
   /// Total number of assigned IP addresses of the association.
   final pulumi.Input<String> totalNumberOfIPAddresses;
 
@@ -60,16 +67,33 @@ class PoolAssociationResponse {
 
   factory PoolAssociationResponse.fromMap(Map<String, dynamic> map) {
     return PoolAssociationResponse(
-      addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      numberOfReservedIPAddresses: (map['numberOfReservedIPAddresses'] as String).input(),
-      poolId: map['poolId'] == null ? null : (map['poolId']! as String).input(),
-      reservationExpiresAt: (map['reservationExpiresAt'] as String).input(),
-      reservedPrefixes: ((map['reservedPrefixes'] as List).cast<String>()).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      totalNumberOfIPAddresses: (map['totalNumberOfIPAddresses'] as String).input(),
+      addressPrefixes: pulumi.Input.fromValue(
+        (map['addressPrefixes'] as List).cast<String>(),
+      ),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfReservedIPAddresses: pulumi.Input.fromValue(
+        map['numberOfReservedIPAddresses'] as String,
+      ),
+      poolId: (() {
+        final guardedValue = map['poolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservationExpiresAt: pulumi.Input.fromValue(
+        map['reservationExpiresAt'] as String,
+      ),
+      reservedPrefixes: pulumi.Input.fromValue(
+        (map['reservedPrefixes'] as List).cast<String>(),
+      ),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      totalNumberOfIPAddresses: pulumi.Input.fromValue(
+        map['totalNumberOfIPAddresses'] as String,
+      ),
     );
   }
 }
-

@@ -10,12 +10,16 @@ import 'configuration_value_with_secrets.dart';
 class ConfigurationGroupValueArgs {
   /// The name of the configuration group value.
   final pulumi.Input<String>? configurationGroupValueName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Hybrid configuration group value properties.
   final pulumi.Input<ConfigurationValueWithSecrets>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,7 +41,11 @@ class ConfigurationGroupValueArgs {
     return <String, dynamic>{
       'configurationGroupValueName': ?configurationGroupValueName,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ConfigurationValueWithSecrets, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigurationValueWithSecrets,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -45,12 +53,35 @@ class ConfigurationGroupValueArgs {
 
   factory ConfigurationGroupValueArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupValueArgs(
-      configurationGroupValueName: map['configurationGroupValueName'] == null ? null : (map['configurationGroupValueName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationValueWithSecrets.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      configurationGroupValueName: (() {
+        final guardedValue = map['configurationGroupValueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigurationValueWithSecrets.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

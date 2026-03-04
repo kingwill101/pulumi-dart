@@ -6,22 +6,31 @@ import 'get_storage_box_subaccount_access_settings.dart';
 class GetStorageBoxSubaccountResult {
   /// Access settings for the Subaccount.
   final GetStorageBoxSubaccountAccessSettings accessSettings;
+
   /// Description of the Storage Box Subaccount.
   final String description;
+
   /// Home directory of the Storage Box Subaccount.
   final String homeDirectory;
+
   /// ID of the Storage Box Subaccount.
   final int id;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final Map<String, String> labels;
+
   /// Name of the Storage Box Subaccount.
   final String name;
+
   /// FQDN of the Storage Box Subaccount.
   final String server;
+
   /// ID of the Storage Box.
   final int storageBoxId;
+
   /// Username of the Storage Box Subaccount.
   final String username;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final String? withSelector;
 
@@ -66,7 +75,9 @@ class GetStorageBoxSubaccountResult {
 
   factory GetStorageBoxSubaccountResult.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSubaccountResult(
-      accessSettings: GetStorageBoxSubaccountAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>()),
+      accessSettings: GetStorageBoxSubaccountAccessSettings.fromMap(
+        (map['accessSettings']! as Map).cast<String, dynamic>(),
+      ),
       description: map['description'] as String,
       homeDirectory: map['homeDirectory'] as String,
       id: map['id'] as int,
@@ -75,8 +86,11 @@ class GetStorageBoxSubaccountResult {
       server: map['server'] as String,
       storageBoxId: map['storageBoxId'] as int,
       username: map['username'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

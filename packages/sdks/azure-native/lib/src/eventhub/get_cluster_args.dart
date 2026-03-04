@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// The name of the Event Hubs Cluster.
   final pulumi.Input<String> clusterName;
+
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetClusterArgs].
   /// [clusterName] The name of the Event Hubs Cluster.
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetClusterArgs({
-    required this.clusterName,
-    required this.resourceGroupName,
-  });
+  GetClusterArgs({required this.clusterName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

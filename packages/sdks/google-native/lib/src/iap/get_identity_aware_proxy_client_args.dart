@@ -31,10 +31,15 @@ class GetIdentityAwareProxyClientArgs {
 
   factory GetIdentityAwareProxyClientArgs.fromMap(Map<String, dynamic> map) {
     return GetIdentityAwareProxyClientArgs(
-      brandId: (map['brandId'] as String).input(),
-      identityAwareProxyClientId: (map['identityAwareProxyClientId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      brandId: pulumi.Input.fromValue(map['brandId'] as String),
+      identityAwareProxyClientId: pulumi.Input.fromValue(
+        map['identityAwareProxyClientId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

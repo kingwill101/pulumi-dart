@@ -6,26 +6,37 @@ import 'environment_deployment_properties_response.dart';
 class GetEnvironmentResult {
   /// The display name of the Azure Resource Manager template that produced the environment.
   final String? armTemplateDisplayName;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The creator of the environment.
   final String createdByUser;
+
   /// The deployment properties of the environment.
   final EnvironmentDeploymentPropertiesResponse? deploymentProperties;
+
   /// The identifier of the resource.
   final String id;
+
   /// The location of the resource.
   final String? location;
+
   /// The name of the resource.
   final String name;
+
   /// The provisioning status of the resource.
   final String provisioningState;
+
   /// The identifier of the resource group containing the environment's resources.
   final String resourceGroupId;
+
   /// The tags of the resource.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
+
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
 
@@ -62,7 +73,7 @@ class GetEnvironmentResult {
       'armTemplateDisplayName': ?armTemplateDisplayName,
       'azureApiVersion': azureApiVersion,
       'createdByUser': createdByUser,
-      'deploymentProperties': ?deploymentProperties == null ? null : deploymentProperties!.toMap(),
+      'deploymentProperties': ?deploymentProperties?.toMap(),
       'id': id,
       'location': ?location,
       'name': name,
@@ -76,19 +87,36 @@ class GetEnvironmentResult {
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      armTemplateDisplayName: map['armTemplateDisplayName'] == null ? null : map['armTemplateDisplayName']! as String,
+      armTemplateDisplayName: (() {
+        final guardedValue = map['armTemplateDisplayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       createdByUser: map['createdByUser'] as String,
-      deploymentProperties: map['deploymentProperties'] == null ? null : EnvironmentDeploymentPropertiesResponse.fromMap((map['deploymentProperties']! as Map).cast<String, dynamic>()),
+      deploymentProperties: (() {
+        final guardedValue = map['deploymentProperties'];
+        if (guardedValue == null) return null;
+        return EnvironmentDeploymentPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGroupId: map['resourceGroupId'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );
   }
 }
-

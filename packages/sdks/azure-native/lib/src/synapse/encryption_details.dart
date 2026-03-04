@@ -10,20 +10,29 @@ class EncryptionDetails {
 
   /// Creates a new [EncryptionDetails].
   /// [cmk] Customer Managed Key Details
-  EncryptionDetails({
-    this.cmk,
-  });
+  EncryptionDetails({this.cmk});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cmk': ?pulumi.Input.mapOptionalInputValue<CustomerManagedKeyDetails, Map<String, dynamic>>(cmk, (value) => value.toMap()),
+      'cmk':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerManagedKeyDetails,
+            Map<String, dynamic>
+          >(cmk, (value) => value.toMap()),
     };
   }
 
   factory EncryptionDetails.fromMap(Map<String, dynamic> map) {
     return EncryptionDetails(
-      cmk: map['cmk'] == null ? null : (CustomerManagedKeyDetails.fromMap((map['cmk']! as Map).cast<String, dynamic>())).input(),
+      cmk: (() {
+        final guardedValue = map['cmk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomerManagedKeyDetails.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_autoscalingplans;
-
 export 'autoscalingplans/scaling_plan.dart';
 export 'autoscalingplans/scaling_plan_application_source.dart';
 export 'autoscalingplans/scaling_plan_application_source_tag_filter.dart';

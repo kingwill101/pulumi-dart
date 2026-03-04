@@ -1,5 +1,3 @@
-library module_scdn;
-
 export 'scdn/domain.dart';
 export 'scdn/domain_args.dart';
 export 'scdn/domain_cert_info.dart';

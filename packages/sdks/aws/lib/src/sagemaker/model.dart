@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_args.dart';
-import 'model_container.dart';
 import 'model_inference_execution_config.dart';
 import 'model_primary_container.dart';
 import 'model_state.dart';
@@ -271,24 +270,35 @@ import 'model_vpc_config.dart';
 class Model extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) assigned by AWS to this model.
   late final pulumi.Output<String> arn;
+
   /// Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
-  late final pulumi.Output<List<ModelContainer>?> containers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> containers;
+
   /// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
   late final pulumi.Output<bool?> enableNetworkIsolation;
+
   /// A role that SageMaker AI can assume to access model artifacts and docker images for deployment.
   late final pulumi.Output<String> executionRoleArn;
+
   /// Specifies details of how containers in a multi-container endpoint are called. See Inference Execution Config.
-  late final pulumi.Output<ModelInferenceExecutionConfig> inferenceExecutionConfig;
+  late final pulumi.Output<ModelInferenceExecutionConfig>
+  inferenceExecutionConfig;
+
   /// Name of the model (must be unique). If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
+
   /// Primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
   late final pulumi.Output<ModelPrimaryContainer?> primaryContainer;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Specifies the VPC that you want your model to connect to. This configuration is used in hosting services and in batch transform. See VPC Config.
   late final pulumi.Output<ModelVpcConfig?> vpcConfig;
 
@@ -296,35 +306,32 @@ class Model extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Model]. {@macro pulumi_sagemaker_model_model_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Model(
-    String name, {
-    ModelArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:sagemaker/model:Model',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.containers = registerOutput<List<ModelContainer>?>('containers');
-    this.enableNetworkIsolation = registerOutput<bool?>('enableNetworkIsolation');
-    this.executionRoleArn = registerOutput<String>('executionRoleArn');
-    this.inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>('inferenceExecutionConfig');
+  Model(String name, {ModelArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:sagemaker/model:Model',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    containers = registerOutput<List<Map<String, dynamic>>?>('containers');
+    enableNetworkIsolation = registerOutput<bool?>('enableNetworkIsolation');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>(
+      'inferenceExecutionConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.primaryContainer = registerOutput<ModelPrimaryContainer?>('primaryContainer');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig');
+    primaryContainer = registerOutput<ModelPrimaryContainer?>(
+      'primaryContainer',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig');
   }
 
   /// Gets an existing [Model] resource's state with the given [name] and [id].
-  static Model get(
-    String name,
-    pulumi.Input<String> id, {
-    ModelState? state,
-  }) {
+  static Model get(String name, pulumi.Input<String> id, {ModelState? state}) {
     return Model._get(
       name,
       state: state?.toMap(),
@@ -337,21 +344,25 @@ class Model extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sagemaker/model:Model',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.containers = registerOutput<List<ModelContainer>?>('containers');
-    this.enableNetworkIsolation = registerOutput<bool?>('enableNetworkIsolation');
-    this.executionRoleArn = registerOutput<String>('executionRoleArn');
-    this.inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>('inferenceExecutionConfig');
+         'aws:sagemaker/model:Model',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    containers = registerOutput<List<Map<String, dynamic>>?>('containers');
+    enableNetworkIsolation = registerOutput<bool?>('enableNetworkIsolation');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    inferenceExecutionConfig = registerOutput<ModelInferenceExecutionConfig>(
+      'inferenceExecutionConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.primaryContainer = registerOutput<ModelPrimaryContainer?>('primaryContainer');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig');
+    primaryContainer = registerOutput<ModelPrimaryContainer?>(
+      'primaryContainer',
+    );
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcConfig = registerOutput<ModelVpcConfig?>('vpcConfig');
   }
 }

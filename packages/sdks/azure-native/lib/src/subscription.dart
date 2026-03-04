@@ -1,5 +1,3 @@
-library module_subscription;
-
 export 'subscription/alias.dart';
 export 'subscription/alias_args.dart';
 export 'subscription/functions.dart';

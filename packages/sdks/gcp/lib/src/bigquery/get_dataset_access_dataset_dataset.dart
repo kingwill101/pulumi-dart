@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatasetAccessDatasetDataset {
   /// The dataset ID.
   final pulumi.Input<String> datasetId;
+
   /// The ID of the project containing this table.
   final pulumi.Input<String> projectId;
 
@@ -17,17 +18,13 @@ class GetDatasetAccessDatasetDataset {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': datasetId,
-      'projectId': projectId,
-    };
+    return <String, dynamic>{'datasetId': datasetId, 'projectId': projectId};
   }
 
   factory GetDatasetAccessDatasetDataset.fromMap(Map<String, dynamic> map) {
     return GetDatasetAccessDatasetDataset(
-      datasetId: (map['datasetId'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
-

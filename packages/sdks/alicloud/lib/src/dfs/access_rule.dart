@@ -6,7 +6,7 @@ import 'access_rule_state.dart';
 ///
 /// For information about DFS Access Rule and how to use it, see [What is Access Rule](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 ///
-/// > **NOTE:** Available since v1.140.0.
+/// &gt; **NOTE:** Available since v1.140.0.
 ///
 /// ## Example Usage
 ///
@@ -196,16 +196,22 @@ import 'access_rule_state.dart';
 class AccessRule extends pulumi.CustomResource {
   /// Permission group resource ID. You must specify the permission group ID when creating a permission rule.
   late final pulumi.Output<String> accessGroupId;
+
   /// The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
   late final pulumi.Output<String> accessRuleId;
+
   /// Permission rule resource creation time.
   late final pulumi.Output<String> createTime;
+
   /// Permission rule description.  No more than 32 characters in length.
   late final pulumi.Output<String?> description;
+
   /// The IP address or network segment of the authorized object.
   late final pulumi.Output<String> networkSegment;
+
   /// Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
   late final pulumi.Output<int> priority;
+
   /// The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
   late final pulumi.Output<String> rwAccessType;
 
@@ -218,18 +224,18 @@ class AccessRule extends pulumi.CustomResource {
     AccessRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dfs/accessRule:AccessRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupId = registerOutput<String>('accessGroupId');
-    this.accessRuleId = registerOutput<String>('accessRuleId');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.networkSegment = registerOutput<String>('networkSegment');
-    this.priority = registerOutput<int>('priority');
-    this.rwAccessType = registerOutput<String>('rwAccessType');
+         'alicloud:dfs/accessRule:AccessRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupId = registerOutput<String>('accessGroupId');
+    accessRuleId = registerOutput<String>('accessRuleId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    networkSegment = registerOutput<String>('networkSegment');
+    priority = registerOutput<int>('priority');
+    rwAccessType = registerOutput<String>('rwAccessType');
   }
 
   /// Gets an existing [AccessRule] resource's state with the given [name] and [id].
@@ -250,17 +256,17 @@ class AccessRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dfs/accessRule:AccessRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupId = registerOutput<String>('accessGroupId');
-    this.accessRuleId = registerOutput<String>('accessRuleId');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.networkSegment = registerOutput<String>('networkSegment');
-    this.priority = registerOutput<int>('priority');
-    this.rwAccessType = registerOutput<String>('rwAccessType');
+         'alicloud:dfs/accessRule:AccessRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupId = registerOutput<String>('accessGroupId');
+    accessRuleId = registerOutput<String>('accessRuleId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    networkSegment = registerOutput<String>('networkSegment');
+    priority = registerOutput<int>('priority');
+    rwAccessType = registerOutput<String>('rwAccessType');
   }
 }

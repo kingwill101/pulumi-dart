@@ -10,21 +10,29 @@ import 'partner_topic_info.dart';
 class ChannelArgs {
   /// Name of the channel.
   final pulumi.Input<String>? channelName;
+
   /// The type of the event channel which represents the direction flow of events.
   final pulumi.Input<String>? channelType;
+
   /// Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
   /// the channel and corresponding partner topic are deleted.
   final pulumi.Input<String>? expirationTimeIfNotActivatedUtc;
+
   /// Context or helpful message that can be used during the approval process by the subscriber.
   final pulumi.Input<String>? messageForActivation;
+
   /// Name of the partner namespace.
   final pulumi.Input<String> partnerNamespaceName;
+
   /// This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
   final pulumi.Input<PartnerTopicInfo>? partnerTopicInfo;
+
   /// Provisioning state of the channel.
   final pulumi.Input<String>? provisioningState;
+
   /// The readiness state of the corresponding partner topic.
   final pulumi.Input<String>? readinessState;
+
   /// The name of the resource group within the partners subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -57,7 +65,11 @@ class ChannelArgs {
       'expirationTimeIfNotActivatedUtc': ?expirationTimeIfNotActivatedUtc,
       'messageForActivation': ?messageForActivation,
       'partnerNamespaceName': partnerNamespaceName,
-      'partnerTopicInfo': ?pulumi.Input.mapOptionalInputValue<PartnerTopicInfo, Map<String, dynamic>>(partnerTopicInfo, (value) => value.toMap()),
+      'partnerTopicInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            PartnerTopicInfo,
+            Map<String, dynamic>
+          >(partnerTopicInfo, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
       'readinessState': ?readinessState,
       'resourceGroupName': resourceGroupName,
@@ -66,16 +78,51 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      channelName: map['channelName'] == null ? null : (map['channelName']! as String).input(),
-      channelType: map['channelType'] == null ? null : (map['channelType']! as String).input(),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc']! as String).input(),
-      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation']! as String).input(),
-      partnerNamespaceName: (map['partnerNamespaceName'] as String).input(),
-      partnerTopicInfo: map['partnerTopicInfo'] == null ? null : (PartnerTopicInfo.fromMap((map['partnerTopicInfo']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      readinessState: map['readinessState'] == null ? null : (map['readinessState']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      channelName: (() {
+        final guardedValue = map['channelName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      channelType: (() {
+        final guardedValue = map['channelType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationTimeIfNotActivatedUtc: (() {
+        final guardedValue = map['expirationTimeIfNotActivatedUtc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageForActivation: (() {
+        final guardedValue = map['messageForActivation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerNamespaceName: pulumi.Input.fromValue(
+        map['partnerNamespaceName'] as String,
+      ),
+      partnerTopicInfo: (() {
+        final guardedValue = map['partnerTopicInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PartnerTopicInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readinessState: (() {
+        final guardedValue = map['readinessState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

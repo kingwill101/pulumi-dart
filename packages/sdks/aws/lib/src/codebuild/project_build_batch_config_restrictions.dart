@@ -8,6 +8,7 @@ class ProjectBuildBatchConfigRestrictions {
   /// See [Build environment compute types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
   /// in the AWS CodeBuild User Guide for these values.
   final pulumi.Input<List<String>>? computeTypesAlloweds;
+
   /// Specifies the maximum number of builds allowed.
   final pulumi.Input<int>? maximumBuildsAllowed;
 
@@ -26,11 +27,20 @@ class ProjectBuildBatchConfigRestrictions {
     };
   }
 
-  factory ProjectBuildBatchConfigRestrictions.fromMap(Map<String, dynamic> map) {
+  factory ProjectBuildBatchConfigRestrictions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProjectBuildBatchConfigRestrictions(
-      computeTypesAlloweds: map['computeTypesAlloweds'] == null ? null : (((map['computeTypesAlloweds'] as List).cast<String>()).input()).input(),
-      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : ((map['maximumBuildsAllowed'] as int).input()).input(),
+      computeTypesAlloweds: (() {
+        final guardedValue = map['computeTypesAlloweds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maximumBuildsAllowed: (() {
+        final guardedValue = map['maximumBuildsAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

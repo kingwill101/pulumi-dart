@@ -3,16 +3,15 @@ enum AvailabilityStrategy {
   singleZone("SingleZone"),
   dualZone("DualZone");
 
-  const AvailabilityStrategy(this.value);
-  final String value;
+  const AvailabilityStrategy(this.wireValue);
+  final String wireValue;
 
   static AvailabilityStrategy fromValue(String value) {
     for (final item in AvailabilityStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AvailabilityStrategy value: $value');
   }
 }
-

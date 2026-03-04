@@ -2,16 +2,15 @@
 enum SynchronizationSettingKind {
   valueScheduleBased("ScheduleBased");
 
-  const SynchronizationSettingKind(this.value);
-  final String value;
+  const SynchronizationSettingKind(this.wireValue);
+  final String wireValue;
 
   static SynchronizationSettingKind fromValue(String value) {
     for (final item in SynchronizationSettingKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SynchronizationSettingKind value: $value');
   }
 }
-

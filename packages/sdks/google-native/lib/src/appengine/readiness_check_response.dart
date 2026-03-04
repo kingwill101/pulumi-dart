@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadinessCheckResponse {
   /// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
   final pulumi.Input<String> appStartTimeout;
+
   /// Interval between health checks.
   final pulumi.Input<String> checkInterval;
+
   /// Number of consecutive failed checks required before removing traffic.
   final pulumi.Input<int> failureThreshold;
+
   /// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
   final pulumi.Input<String> host;
+
   /// The request path.
   final pulumi.Input<String> path;
+
   /// Number of consecutive successful checks required before receiving traffic.
   final pulumi.Input<int> successThreshold;
+
   /// Time before the check is considered failed.
   final pulumi.Input<String> timeout;
 
@@ -51,14 +57,13 @@ class ReadinessCheckResponse {
 
   factory ReadinessCheckResponse.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckResponse(
-      appStartTimeout: (map['appStartTimeout'] as String).input(),
-      checkInterval: (map['checkInterval'] as String).input(),
-      failureThreshold: (map['failureThreshold'] as int).input(),
-      host: (map['host'] as String).input(),
-      path: (map['path'] as String).input(),
-      successThreshold: (map['successThreshold'] as int).input(),
-      timeout: (map['timeout'] as String).input(),
+      appStartTimeout: pulumi.Input.fromValue(map['appStartTimeout'] as String),
+      checkInterval: pulumi.Input.fromValue(map['checkInterval'] as String),
+      failureThreshold: pulumi.Input.fromValue(map['failureThreshold'] as int),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      successThreshold: pulumi.Input.fromValue(map['successThreshold'] as int),
+      timeout: pulumi.Input.fromValue(map['timeout'] as String),
     );
   }
 }
-

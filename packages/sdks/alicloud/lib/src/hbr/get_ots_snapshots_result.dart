@@ -6,6 +6,7 @@ import 'get_ots_snapshots_snapshot.dart';
 /// Result data returned by getOtsSnapshots.
 class GetOtsSnapshotsResult {
   final String? endTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -35,20 +36,40 @@ class GetOtsSnapshotsResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'snapshots': pulumi.Input.encodeList<GetOtsSnapshotsSnapshot, Map<String, dynamic>>(snapshots, (value) => value.toMap()),
+      'snapshots':
+          pulumi.Input.encodeList<
+            GetOtsSnapshotsSnapshot,
+            Map<String, dynamic>
+          >(snapshots, (value) => value.toMap()),
       'startTime': ?startTime,
     };
   }
 
   factory GetOtsSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetOtsSnapshotsResult(
-      endTime: map['endTime'] == null ? null : map['endTime']! as String,
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      snapshots: pulumi.Input.decodeList<GetOtsSnapshotsSnapshot>(map['snapshots'], (value) => GetOtsSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
-      startTime: map['startTime'] == null ? null : map['startTime']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      snapshots: pulumi.Input.decodeList<GetOtsSnapshotsSnapshot>(
+        map['snapshots']!,
+        (value) => GetOtsSnapshotsSnapshot.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

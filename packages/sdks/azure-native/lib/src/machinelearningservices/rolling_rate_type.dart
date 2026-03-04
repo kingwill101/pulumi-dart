@@ -9,16 +9,15 @@ enum RollingRateType {
   valueHour("Hour"),
   valueMinute("Minute");
 
-  const RollingRateType(this.value);
-  final String value;
+  const RollingRateType(this.wireValue);
+  final String wireValue;
 
   static RollingRateType fromValue(String value) {
     for (final item in RollingRateType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RollingRateType value: $value');
   }
 }
-

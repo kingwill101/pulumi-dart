@@ -8,7 +8,7 @@ import 'enterprise_workspace_state.dart';
 ///
 /// For information about DMS Enterprise Workspace and how to use it, see [What is Workspace](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateWorkspace).
 ///
-/// > **NOTE:** Available since v1.259.0.
+/// &gt; **NOTE:** Available since v1.259.0.
 ///
 /// ## Example Usage
 ///
@@ -232,10 +232,13 @@ import 'enterprise_workspace_state.dart';
 class EnterpriseWorkspace extends pulumi.CustomResource {
   /// The description of the Workspace.
   late final pulumi.Output<String> description;
+
   /// The region ID of the resource.
   late final pulumi.Output<String> regionId;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
+
   /// The name of the Workspace.
   late final pulumi.Output<String> workspaceName;
 
@@ -248,15 +251,15 @@ class EnterpriseWorkspace extends pulumi.CustomResource {
     EnterpriseWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.regionId = registerOutput<String>('regionId');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.workspaceName = registerOutput<String>('workspaceName');
+         'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    regionId = registerOutput<String>('regionId');
+    vpcId = registerOutput<String>('vpcId');
+    workspaceName = registerOutput<String>('workspaceName');
   }
 
   /// Gets an existing [EnterpriseWorkspace] resource's state with the given [name] and [id].
@@ -277,14 +280,14 @@ class EnterpriseWorkspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.regionId = registerOutput<String>('regionId');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.workspaceName = registerOutput<String>('workspaceName');
+         'alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    regionId = registerOutput<String>('regionId');
+    vpcId = registerOutput<String>('vpcId');
+    workspaceName = registerOutput<String>('workspaceName');
   }
 }

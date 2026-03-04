@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrefixArgs {
   /// The properties to be expanded.
   final pulumi.Input<String>? expand;
+
   /// The name of the peering service.
   final pulumi.Input<String> peeringServiceName;
+
   /// The name of the prefix.
   final pulumi.Input<String> prefixName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,18 @@ class GetPrefixArgs {
 
   factory GetPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      peeringServiceName: (map['peeringServiceName'] as String).input(),
-      prefixName: (map['prefixName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      peeringServiceName: pulumi.Input.fromValue(
+        map['peeringServiceName'] as String,
+      ),
+      prefixName: pulumi.Input.fromValue(map['prefixName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

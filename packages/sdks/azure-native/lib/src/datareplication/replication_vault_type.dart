@@ -3,16 +3,15 @@ enum ReplicationVaultType {
   valueDisasterRecovery("DisasterRecovery"),
   valueMigrate("Migrate");
 
-  const ReplicationVaultType(this.value);
-  final String value;
+  const ReplicationVaultType(this.wireValue);
+  final String wireValue;
 
   static ReplicationVaultType fromValue(String value) {
     for (final item in ReplicationVaultType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReplicationVaultType value: $value');
   }
 }
-

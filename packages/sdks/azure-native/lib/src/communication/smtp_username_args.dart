@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmtpUsernameArgs {
   /// The name of the CommunicationService resource.
   final pulumi.Input<String> communicationServiceName;
+
   /// The application Id for the linked Entra Application.
   final pulumi.Input<String> entraApplicationId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the SmtpUsernameResource.
   final pulumi.Input<String>? smtpUsername;
+
   /// The tenant of the linked Entra Application.
   final pulumi.Input<String> tenantId;
+
   /// The SMTP username. Could be free form or in the email address format.
   final pulumi.Input<String> username;
 
@@ -49,13 +54,22 @@ class SmtpUsernameArgs {
 
   factory SmtpUsernameArgs.fromMap(Map<String, dynamic> map) {
     return SmtpUsernameArgs(
-      communicationServiceName: (map['communicationServiceName'] as String).input(),
-      entraApplicationId: (map['entraApplicationId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      smtpUsername: map['smtpUsername'] == null ? null : (map['smtpUsername']! as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      username: (map['username'] as String).input(),
+      communicationServiceName: pulumi.Input.fromValue(
+        map['communicationServiceName'] as String,
+      ),
+      entraApplicationId: pulumi.Input.fromValue(
+        map['entraApplicationId'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      smtpUsername: (() {
+        final guardedValue = map['smtpUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

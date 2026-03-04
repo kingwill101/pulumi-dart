@@ -11,28 +11,40 @@ import 'runbook_draft.dart';
 class RunbookArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Gets or sets the description of the runbook.
   final pulumi.Input<String>? description;
+
   /// Gets or sets the draft runbook properties.
   final pulumi.Input<RunbookDraft>? draft;
+
   /// Gets or sets the location of the resource.
   final pulumi.Input<String>? location;
+
   /// Gets or sets the activity-level tracing options of the runbook.
   final pulumi.Input<int>? logActivityTrace;
+
   /// Gets or sets progress log option.
   final pulumi.Input<bool>? logProgress;
+
   /// Gets or sets verbose log option.
   final pulumi.Input<bool>? logVerbose;
+
   /// Gets or sets the name of the resource.
   final pulumi.Input<String>? name;
+
   /// Gets or sets the published runbook content link.
   final pulumi.Input<ContentLink>? publishContentLink;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The runbook name.
   final pulumi.Input<String>? runbookName;
+
   /// Gets or sets the type of the runbook.
   final pulumi.Input<String> runbookType;
+
   /// Gets or sets the tags attached to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -70,13 +82,21 @@ class RunbookArgs {
     return <String, dynamic>{
       'automationAccountName': automationAccountName,
       'description': ?description,
-      'draft': ?pulumi.Input.mapOptionalInputValue<RunbookDraft, Map<String, dynamic>>(draft, (value) => value.toMap()),
+      'draft':
+          ?pulumi.Input.mapOptionalInputValue<
+            RunbookDraft,
+            Map<String, dynamic>
+          >(draft, (value) => value.toMap()),
       'location': ?location,
       'logActivityTrace': ?logActivityTrace,
       'logProgress': ?logProgress,
       'logVerbose': ?logVerbose,
       'name': ?name,
-      'publishContentLink': ?pulumi.Input.mapOptionalInputValue<ContentLink, Map<String, dynamic>>(publishContentLink, (value) => value.toMap()),
+      'publishContentLink':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContentLink,
+            Map<String, dynamic>
+          >(publishContentLink, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'runbookName': ?runbookName,
       'runbookType': runbookType,
@@ -86,20 +106,69 @@ class RunbookArgs {
 
   factory RunbookArgs.fromMap(Map<String, dynamic> map) {
     return RunbookArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      draft: map['draft'] == null ? null : (RunbookDraft.fromMap((map['draft']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      logActivityTrace: map['logActivityTrace'] == null ? null : (map['logActivityTrace']! as int).input(),
-      logProgress: map['logProgress'] == null ? null : (map['logProgress']! as bool).input(),
-      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publishContentLink: map['publishContentLink'] == null ? null : (ContentLink.fromMap((map['publishContentLink']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runbookName: map['runbookName'] == null ? null : (map['runbookName']! as String).input(),
-      runbookType: (map['runbookType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      draft: (() {
+        final guardedValue = map['draft'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RunbookDraft.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logActivityTrace: (() {
+        final guardedValue = map['logActivityTrace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      logProgress: (() {
+        final guardedValue = map['logProgress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logVerbose: (() {
+        final guardedValue = map['logVerbose'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publishContentLink: (() {
+        final guardedValue = map['publishContentLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContentLink.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      runbookName: (() {
+        final guardedValue = map['runbookName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runbookType: pulumi.Input.fromValue(map['runbookType'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

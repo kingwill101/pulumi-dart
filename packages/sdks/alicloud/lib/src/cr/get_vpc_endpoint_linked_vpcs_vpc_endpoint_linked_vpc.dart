@@ -5,26 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
   /// Indicates whether the default policy is used to access the instance.
   final pulumi.Input<bool> defaultAccess;
-  /// The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+
+  /// The ID of the Vpc Endpoint Linked Vpc. It formats as `&lt;instance_id&gt;:&lt;vpc_id&gt;:&lt;vswitch_id&gt;:&lt;module_name&gt;`.
   final pulumi.Input<String> id;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// IP address.
   final pulumi.Input<String> ip;
+
   /// The name of the module that you want to access. Valid Values:
   /// - `Registry`: the image repository.
   /// - `Chart`: a Helm chart.
   final pulumi.Input<String> moduleName;
+
   /// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
   final pulumi.Input<String> status;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
+
   /// The ID of the vSwitch.
   final pulumi.Input<String> vswitchId;
 
   /// Creates a new [GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc].
   /// [defaultAccess] Indicates whether the default policy is used to access the instance.
-  /// [id] The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+  /// [id] The ID of the Vpc Endpoint Linked Vpc. It formats as `&lt;instance_id&gt;:&lt;vpc_id&gt;:&lt;vswitch_id&gt;:&lt;module_name&gt;`.
   /// [instanceId] The ID of the instance.
   /// [ip] IP address.
   /// [moduleName] The name of the module that you want to access. Valid Values:
@@ -55,17 +62,18 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
     };
   }
 
-  factory GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap(Map<String, dynamic> map) {
+  factory GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc(
-      defaultAccess: (map['defaultAccess'] as bool).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      ip: (map['ip'] as String).input(),
-      moduleName: (map['moduleName'] as String).input(),
-      status: (map['status'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      defaultAccess: pulumi.Input.fromValue(map['defaultAccess'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      moduleName: pulumi.Input.fromValue(map['moduleName'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

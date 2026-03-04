@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzurePlanResponse {
   /// The ID that uniquely identifies a product.
   final pulumi.Input<String>? productId;
+
   /// The sku description.
   final pulumi.Input<String>? skuDescription;
+
   /// The ID that uniquely identifies a sku.
   final pulumi.Input<String>? skuId;
 
@@ -15,11 +17,7 @@ class AzurePlanResponse {
   /// [productId] The ID that uniquely identifies a product.
   /// [skuDescription] The sku description.
   /// [skuId] The ID that uniquely identifies a sku.
-  AzurePlanResponse({
-    this.productId,
-    this.skuDescription,
-    this.skuId,
-  });
+  AzurePlanResponse({this.productId, this.skuDescription, this.skuId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class AzurePlanResponse {
 
   factory AzurePlanResponse.fromMap(Map<String, dynamic> map) {
     return AzurePlanResponse(
-      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
-      skuDescription: map['skuDescription'] == null ? null : (map['skuDescription']! as String).input(),
-      skuId: map['skuId'] == null ? null : (map['skuId']! as String).input(),
+      productId: (() {
+        final guardedValue = map['productId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skuDescription: (() {
+        final guardedValue = map['skuDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skuId: (() {
+        final guardedValue = map['skuId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

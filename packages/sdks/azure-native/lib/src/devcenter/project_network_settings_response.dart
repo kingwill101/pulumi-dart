@@ -21,8 +21,9 @@ class ProjectNetworkSettingsResponse {
 
   factory ProjectNetworkSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ProjectNetworkSettingsResponse(
-      microsoftHostedNetworkEnableStatus: (map['microsoftHostedNetworkEnableStatus'] as String).input(),
+      microsoftHostedNetworkEnableStatus: pulumi.Input.fromValue(
+        map['microsoftHostedNetworkEnableStatus'] as String,
+      ),
     );
   }
 }
-

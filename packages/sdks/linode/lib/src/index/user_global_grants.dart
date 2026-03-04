@@ -5,28 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGlobalGrants {
   /// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
   final pulumi.Input<String>? accountAccess;
+
   /// If true, this User may add Databases.
   final pulumi.Input<bool>? addDatabases;
+
   /// If true, this User may add Domains.
   final pulumi.Input<bool>? addDomains;
+
   /// If true, this User may add Firewalls.
   final pulumi.Input<bool>? addFirewalls;
+
   /// If true, this User may add Images.
   final pulumi.Input<bool>? addImages;
+
   /// If true, this User may create Linodes.
   final pulumi.Input<bool>? addLinodes;
+
   /// If true, this User may create Longview clients and view the current plan.
   final pulumi.Input<bool>? addLongview;
+
   /// If true, this User may add NodeBalancers.
   final pulumi.Input<bool>? addNodebalancers;
+
   /// If true, this User may add StackScripts.
   final pulumi.Input<bool>? addStackscripts;
+
   /// If true, this User may add Volumes.
   final pulumi.Input<bool>? addVolumes;
+
   /// If true, this User may add Virtual Private Clouds (VPCs).
   final pulumi.Input<bool>? addVpcs;
+
   /// If true, this User may cancel the entire Account.
   final pulumi.Input<bool>? cancelAccount;
+
   /// If true, this User may manage the Account’s Longview subscription.
   final pulumi.Input<bool>? longviewSubscription;
 
@@ -80,20 +92,71 @@ class UserGlobalGrants {
 
   factory UserGlobalGrants.fromMap(Map<String, dynamic> map) {
     return UserGlobalGrants(
-      accountAccess: map['accountAccess'] == null ? null : (map['accountAccess']! as String).input(),
-      addDatabases: map['addDatabases'] == null ? null : (map['addDatabases']! as bool).input(),
-      addDomains: map['addDomains'] == null ? null : (map['addDomains']! as bool).input(),
-      addFirewalls: map['addFirewalls'] == null ? null : (map['addFirewalls']! as bool).input(),
-      addImages: map['addImages'] == null ? null : (map['addImages']! as bool).input(),
-      addLinodes: map['addLinodes'] == null ? null : (map['addLinodes']! as bool).input(),
-      addLongview: map['addLongview'] == null ? null : (map['addLongview']! as bool).input(),
-      addNodebalancers: map['addNodebalancers'] == null ? null : (map['addNodebalancers']! as bool).input(),
-      addStackscripts: map['addStackscripts'] == null ? null : (map['addStackscripts']! as bool).input(),
-      addVolumes: map['addVolumes'] == null ? null : (map['addVolumes']! as bool).input(),
-      addVpcs: map['addVpcs'] == null ? null : (map['addVpcs']! as bool).input(),
-      cancelAccount: map['cancelAccount'] == null ? null : (map['cancelAccount']! as bool).input(),
-      longviewSubscription: map['longviewSubscription'] == null ? null : (map['longviewSubscription']! as bool).input(),
+      accountAccess: (() {
+        final guardedValue = map['accountAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addDatabases: (() {
+        final guardedValue = map['addDatabases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addDomains: (() {
+        final guardedValue = map['addDomains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addFirewalls: (() {
+        final guardedValue = map['addFirewalls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addImages: (() {
+        final guardedValue = map['addImages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addLinodes: (() {
+        final guardedValue = map['addLinodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addLongview: (() {
+        final guardedValue = map['addLongview'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addNodebalancers: (() {
+        final guardedValue = map['addNodebalancers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addStackscripts: (() {
+        final guardedValue = map['addStackscripts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addVolumes: (() {
+        final guardedValue = map['addVolumes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      addVpcs: (() {
+        final guardedValue = map['addVpcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      cancelAccount: (() {
+        final guardedValue = map['cancelAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      longviewSubscription: (() {
+        final guardedValue = map['longviewSubscription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

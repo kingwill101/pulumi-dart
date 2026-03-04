@@ -503,19 +503,26 @@ import 'sql_pool_security_alert_policy_state.dart';
 class SqlPoolSecurityAlertPolicy extends pulumi.CustomResource {
   /// Specifies an array of alerts that are disabled. Allowed values are: `Sql_Injection`, `Sql_Injection_Vulnerability`, `Access_Anomaly`, `Data_Exfiltration`, `Unsafe_Action`.
   late final pulumi.Output<List<String>?> disabledAlerts;
+
   /// Boolean flag which specifies if the alert is sent to the account administrators or not. Defaults to `false`.
   late final pulumi.Output<bool?> emailAccountAdminsEnabled;
+
   /// Specifies an array of email addresses to which the alert is sent.
   late final pulumi.Output<List<String>?> emailAddresses;
+
   /// Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific SQL pool. Possible values are `Disabled`, `Enabled` and `New`.
   late final pulumi.Output<String> policyState;
+
   /// Specifies the number of days to keep in the Threat Detection audit logs. Defaults to `0`.
   late final pulumi.Output<int?> retentionDays;
+
   /// Specifies the ID of the Synapse SQL Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sqlPoolId;
+
   /// Specifies the identifier key of the Threat Detection audit storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
-  /// Specifies the blob storage endpoint (e.g. <https://example.blob.core.windows.net>). This blob storage will hold all Threat Detection audit logs.
+
+  /// Specifies the blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all Threat Detection audit logs.
   late final pulumi.Output<String?> storageEndpoint;
 
   /// Creates a new [SqlPoolSecurityAlertPolicy].
@@ -527,19 +534,23 @@ class SqlPoolSecurityAlertPolicy extends pulumi.CustomResource {
     SqlPoolSecurityAlertPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/sqlPoolSecurityAlertPolicy:SqlPoolSecurityAlertPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
-    this.emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
-    this.emailAddresses = registerOutput<List<String>?>('emailAddresses');
-    this.policyState = registerOutput<String>('policyState');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.sqlPoolId = registerOutput<String>('sqlPoolId');
-    this.storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
-    this.storageEndpoint = registerOutput<String?>('storageEndpoint');
+         'azure:synapse/sqlPoolSecurityAlertPolicy:SqlPoolSecurityAlertPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    emailAccountAdminsEnabled = registerOutput<bool?>(
+      'emailAccountAdminsEnabled',
+    );
+    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    policyState = registerOutput<String>('policyState');
+    retentionDays = registerOutput<int?>('retentionDays');
+    sqlPoolId = registerOutput<String>('sqlPoolId');
+    storageAccountAccessKey = registerOutput<String?>(
+      'storageAccountAccessKey',
+    );
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
   /// Gets an existing [SqlPoolSecurityAlertPolicy] resource's state with the given [name] and [id].
@@ -560,18 +571,22 @@ class SqlPoolSecurityAlertPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/sqlPoolSecurityAlertPolicy:SqlPoolSecurityAlertPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
-    this.emailAccountAdminsEnabled = registerOutput<bool?>('emailAccountAdminsEnabled');
-    this.emailAddresses = registerOutput<List<String>?>('emailAddresses');
-    this.policyState = registerOutput<String>('policyState');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.sqlPoolId = registerOutput<String>('sqlPoolId');
-    this.storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
-    this.storageEndpoint = registerOutput<String?>('storageEndpoint');
+         'azure:synapse/sqlPoolSecurityAlertPolicy:SqlPoolSecurityAlertPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    emailAccountAdminsEnabled = registerOutput<bool?>(
+      'emailAccountAdminsEnabled',
+    );
+    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    policyState = registerOutput<String>('policyState');
+    retentionDays = registerOutput<int?>('retentionDays');
+    sqlPoolId = registerOutput<String>('sqlPoolId');
+    storageAccountAccessKey = registerOutput<String?>(
+      'storageAccountAccessKey',
+    );
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

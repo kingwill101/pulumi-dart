@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsImageComponentsComponent {
   /// The type of the image component.
   final pulumi.Input<String> componentType;
+
   /// The content of the image component.
   final pulumi.Input<String> content;
+
   /// The time when the image component was created.
   final pulumi.Input<String> createTime;
+
   /// The description of the image component.
   final pulumi.Input<String> description;
+
   /// The ID of the Image Component.
   final pulumi.Input<String> id;
+
   /// The ID of the image component.
   final pulumi.Input<String> imageComponentId;
+
   /// The name of the image component.
   final pulumi.Input<String> imageComponentName;
+
   /// The type of the image component.
   final pulumi.Input<String> owner;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The operating system type supported by the image component.
   final pulumi.Input<String> systemType;
+
   /// List of label key-value pairs.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -70,18 +80,21 @@ class GetEcsImageComponentsComponent {
 
   factory GetEcsImageComponentsComponent.fromMap(Map<String, dynamic> map) {
     return GetEcsImageComponentsComponent(
-      componentType: (map['componentType'] as String).input(),
-      content: (map['content'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      imageComponentId: (map['imageComponentId'] as String).input(),
-      imageComponentName: (map['imageComponentName'] as String).input(),
-      owner: (map['owner'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      systemType: (map['systemType'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
+      componentType: pulumi.Input.fromValue(map['componentType'] as String),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      imageComponentId: pulumi.Input.fromValue(
+        map['imageComponentId'] as String,
+      ),
+      imageComponentName: pulumi.Input.fromValue(
+        map['imageComponentName'] as String,
+      ),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      systemType: pulumi.Input.fromValue(map['systemType'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
     );
   }
 }
-

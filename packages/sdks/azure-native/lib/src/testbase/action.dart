@@ -7,16 +7,15 @@ enum Action {
   valueCustom("Custom"),
   valueFlowDrivenCustom("FlowDrivenCustom");
 
-  const Action(this.value);
-  final String value;
+  const Action(this.wireValue);
+  final String wireValue;
 
   static Action fromValue(String value) {
     for (final item in Action.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Action value: $value');
   }
 }
-

@@ -5,16 +5,15 @@ enum RepositoryMode {
   virtualRepository("VIRTUAL_REPOSITORY"),
   remoteRepository("REMOTE_REPOSITORY");
 
-  const RepositoryMode(this.value);
-  final String value;
+  const RepositoryMode(this.wireValue);
+  final String wireValue;
 
   static RepositoryMode fromValue(String value) {
     for (final item in RepositoryMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RepositoryMode value: $value');
   }
 }
-

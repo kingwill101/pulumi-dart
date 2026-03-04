@@ -9,20 +9,15 @@ class IncidentLabel {
 
   /// Creates a new [IncidentLabel].
   /// [labelName] The name of the label
-  IncidentLabel({
-    required this.labelName,
-  });
+  IncidentLabel({required this.labelName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labelName': labelName,
-    };
+    return <String, dynamic>{'labelName': labelName};
   }
 
   factory IncidentLabel.fromMap(Map<String, dynamic> map) {
     return IncidentLabel(
-      labelName: (map['labelName'] as String).input(),
+      labelName: pulumi.Input.fromValue(map['labelName'] as String),
     );
   }
 }
-

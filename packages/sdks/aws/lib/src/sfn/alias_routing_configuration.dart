@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AliasRoutingConfiguration {
   /// The Amazon Resource Name (ARN) of the state machine version.
   final pulumi.Input<String> stateMachineVersionArn;
+
   /// Percentage of traffic routed to the state machine version.
   final pulumi.Input<int> weight;
 
@@ -25,9 +26,10 @@ class AliasRoutingConfiguration {
 
   factory AliasRoutingConfiguration.fromMap(Map<String, dynamic> map) {
     return AliasRoutingConfiguration(
-      stateMachineVersionArn: (map['stateMachineVersionArn'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      stateMachineVersionArn: pulumi.Input.fromValue(
+        map['stateMachineVersionArn'] as String,
+      ),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class MultiClusterRoutingUseAnyResponse {
 
   /// Creates a new [MultiClusterRoutingUseAnyResponse].
   /// [clusterIds] The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
-  MultiClusterRoutingUseAnyResponse({
-    required this.clusterIds,
-  });
+  MultiClusterRoutingUseAnyResponse({required this.clusterIds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clusterIds': clusterIds,
-    };
+    return <String, dynamic>{'clusterIds': clusterIds};
   }
 
   factory MultiClusterRoutingUseAnyResponse.fromMap(Map<String, dynamic> map) {
     return MultiClusterRoutingUseAnyResponse(
-      clusterIds: ((map['clusterIds'] as List).cast<String>()).input(),
+      clusterIds: pulumi.Input.fromValue(
+        (map['clusterIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

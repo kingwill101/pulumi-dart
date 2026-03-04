@@ -1,5 +1,3 @@
-library module_edge;
-
 export 'edge/active_state.dart';
 export 'edge/available_solution_template_version_response.dart';
 export 'edge/azure_resource_manager_common_types_extended_location.dart';

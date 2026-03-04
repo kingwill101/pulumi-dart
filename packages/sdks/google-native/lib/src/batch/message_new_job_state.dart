@@ -8,16 +8,15 @@ enum MessageNewJobState {
   failed("FAILED"),
   deletionInProgress("DELETION_IN_PROGRESS");
 
-  const MessageNewJobState(this.value);
-  final String value;
+  const MessageNewJobState(this.wireValue);
+  final String wireValue;
 
   static MessageNewJobState fromValue(String value) {
     for (final item in MessageNewJobState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MessageNewJobState value: $value');
   }
 }
-

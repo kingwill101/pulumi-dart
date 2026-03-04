@@ -7,10 +7,13 @@ import 'instance_group_config_response.dart';
 class NodeGroupResponse {
   /// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
   final pulumi.Input<Map<String, String>> labels;
+
   /// The Node group resource name (https://aip.dev/122).
   final pulumi.Input<String> name;
+
   /// Optional. The node group instance group configuration.
   final pulumi.Input<InstanceGroupConfigResponse> nodeGroupConfig;
+
   /// Node group roles.
   final pulumi.Input<List<String>> roles;
 
@@ -30,18 +33,27 @@ class NodeGroupResponse {
     return <String, dynamic>{
       'labels': labels,
       'name': name,
-      'nodeGroupConfig': pulumi.Input.mapInputValue<InstanceGroupConfigResponse, Map<String, dynamic>>(nodeGroupConfig, (value) => value.toMap()),
+      'nodeGroupConfig':
+          pulumi.Input.mapInputValue<
+            InstanceGroupConfigResponse,
+            Map<String, dynamic>
+          >(nodeGroupConfig, (value) => value.toMap()),
       'roles': roles,
     };
   }
 
   factory NodeGroupResponse.fromMap(Map<String, dynamic> map) {
     return NodeGroupResponse(
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      name: (map['name'] as String).input(),
-      nodeGroupConfig: (InstanceGroupConfigResponse.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>())).input(),
-      roles: ((map['roles'] as List).cast<String>()).input(),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nodeGroupConfig: pulumi.Input.fromValue(
+        InstanceGroupConfigResponse.fromMap(
+          (map['nodeGroupConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      roles: pulumi.Input.fromValue((map['roles'] as List).cast<String>()),
     );
   }
 }
-

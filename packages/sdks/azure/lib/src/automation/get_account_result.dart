@@ -8,17 +8,22 @@ import 'get_account_private_endpoint_connection.dart';
 class GetAccountResult {
   /// The Endpoint for this Automation Account.
   final String endpoint;
+
   /// The URL of automation hybrid service which is used for hybrid worker on-boarding With this Automation Account.
   final String hybridServiceUrl;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// (Optional) An `identity` block as defined below.
   final List<GetAccountIdentity> identities;
   final String name;
+
   /// The Primary Access Key for the Automation Account.
   final String primaryKey;
   final List<GetAccountPrivateEndpointConnection> privateEndpointConnections;
   final String resourceGroupName;
+
   /// The Secondary Access Key for the Automation Account.
   final String secondaryKey;
 
@@ -49,10 +54,18 @@ class GetAccountResult {
       'endpoint': endpoint,
       'hybridServiceUrl': hybridServiceUrl,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(
+            identities,
+            (value) => value.toMap(),
+          ),
       'name': name,
       'primaryKey': primaryKey,
-      'privateEndpointConnections': pulumi.Input.encodeList<GetAccountPrivateEndpointConnection, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections':
+          pulumi.Input.encodeList<
+            GetAccountPrivateEndpointConnection,
+            Map<String, dynamic>
+          >(privateEndpointConnections, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'secondaryKey': secondaryKey,
     };
@@ -63,13 +76,22 @@ class GetAccountResult {
       endpoint: map['endpoint'] as String,
       hybridServiceUrl: map['hybridServiceUrl'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetAccountIdentity>(map['identities'], (value) => GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetAccountIdentity>(
+        map['identities']!,
+        (value) =>
+            GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       name: map['name'] as String,
       primaryKey: map['primaryKey'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<GetAccountPrivateEndpointConnection>(map['privateEndpointConnections'], (value) => GetAccountPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections:
+          pulumi.Input.decodeList<GetAccountPrivateEndpointConnection>(
+            map['privateEndpointConnections']!,
+            (value) => GetAccountPrivateEndpointConnection.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       resourceGroupName: map['resourceGroupName'] as String,
       secondaryKey: map['secondaryKey'] as String,
     );
   }
 }
-

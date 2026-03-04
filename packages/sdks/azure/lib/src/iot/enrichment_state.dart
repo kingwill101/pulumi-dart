@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnrichmentState {
   /// The list of endpoints which will be enriched.
   final pulumi.Input<List<String>>? endpointNames;
+
   /// The IoTHub name of the enrichment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? iothubName;
+
   /// The key of the enrichment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? key;
+
   /// The name of the resource group under which the IoTHub resource is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The value of the enrichment. Value can be any static string, the name of the IoT hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
   final pulumi.Input<String>? value;
 
@@ -41,12 +45,31 @@ class EnrichmentState {
 
   factory EnrichmentState.fromMap(Map<String, dynamic> map) {
     return EnrichmentState(
-      endpointNames: map['endpointNames'] == null ? null : ((map['endpointNames']! as List).cast<String>()).input(),
-      iothubName: map['iothubName'] == null ? null : (map['iothubName']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      endpointNames: (() {
+        final guardedValue = map['endpointNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      iothubName: (() {
+        final guardedValue = map['iothubName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

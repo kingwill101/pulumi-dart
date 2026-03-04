@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSourceArgs {
   /// The ID of the Backup Vault in which the Data Source belongs.
   final pulumi.Input<String> backupVaultId;
+
   /// The ID of the Data Source.
   final pulumi.Input<String> dataSourceId;
+
   /// The location in which the Data Source belongs.
   final pulumi.Input<String> location;
+
   /// The Google Cloud Project in which the Data Source belongs.
   final pulumi.Input<String> project;
 
@@ -39,11 +42,10 @@ class GetDataSourceArgs {
 
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
-      backupVaultId: (map['backupVaultId'] as String).input(),
-      dataSourceId: (map['dataSourceId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: (map['project'] as String).input(),
+      backupVaultId: pulumi.Input.fromValue(map['backupVaultId'] as String),
+      dataSourceId: pulumi.Input.fromValue(map['dataSourceId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

@@ -4,13 +4,13 @@ import 'portal_tenant_configuration_state.dart';
 
 /// Manages Portal Tenant Configuration.
 ///
-/// > **Note:** User has to be `Contributor` or `Owner` at scope `/` for managing this resource.
+/// &gt; **Note:** User has to be `Contributor` or `Owner` at scope `/` for managing this resource.
 ///
-/// > **Note:** The Service Principal with Tenant Admin can be created by `az ad sp create-for-rbac --name "<sp name>" --role="Contributor" --scopes="/"`.
+/// &gt; **Note:** The Service Principal with Tenant Admin can be created by `az ad sp create-for-rbac --name "&lt;sp name&gt;" --role="Contributor" --scopes="/"`.
 ///
-/// > **Note:** The Service Principal can be granted Tenant Admin permission by `az role assignment create --assignee "<app id>" --role "Contributor" --scope "/"`.
+/// &gt; **Note:** The Service Principal can be granted Tenant Admin permission by `az role assignment create --assignee "&lt;app id&gt;" --role "Contributor" --scope "/"`.
 ///
-/// > **Note:** While assigning the role to the existing/new Service Principal at the Tenant Scope, the user assigning role must already have the `Owner` role assigned at the Tenant Scope.
+/// &gt; **Note:** While assigning the role to the existing/new Service Principal at the Tenant Scope, the user assigning role must already have the `Owner` role assigned at the Tenant Scope.
 ///
 /// ## Example Usage
 ///
@@ -101,7 +101,7 @@ import 'portal_tenant_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Portal` - 2019-01-01-preview
@@ -116,7 +116,7 @@ import 'portal_tenant_configuration_state.dart';
 class PortalTenantConfiguration extends pulumi.CustomResource {
   /// Is the private tile markdown storage which used to display custom dynamic and static content enabled?
   ///
-  /// > **Note:** When `private_markdown_storage_enforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
+  /// &gt; **Note:** When `private_markdown_storage_enforced` is set to `true`, only external storage configuration (URI) is allowed for Markdown tiles. Inline content configuration will be prohibited.
   late final pulumi.Output<bool> privateMarkdownStorageEnforced;
 
   /// Creates a new [PortalTenantConfiguration].
@@ -128,12 +128,14 @@ class PortalTenantConfiguration extends pulumi.CustomResource {
     PortalTenantConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/portalTenantConfiguration:PortalTenantConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.privateMarkdownStorageEnforced = registerOutput<bool>('privateMarkdownStorageEnforced');
+         'azure:core/portalTenantConfiguration:PortalTenantConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    privateMarkdownStorageEnforced = registerOutput<bool>(
+      'privateMarkdownStorageEnforced',
+    );
   }
 
   /// Gets an existing [PortalTenantConfiguration] resource's state with the given [name] and [id].
@@ -154,11 +156,13 @@ class PortalTenantConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/portalTenantConfiguration:PortalTenantConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.privateMarkdownStorageEnforced = registerOutput<bool>('privateMarkdownStorageEnforced');
+         'azure:core/portalTenantConfiguration:PortalTenantConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    privateMarkdownStorageEnforced = registerOutput<bool>(
+      'privateMarkdownStorageEnforced',
+    );
   }
 }

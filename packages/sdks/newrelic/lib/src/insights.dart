@@ -1,5 +1,3 @@
-library module_insights;
-
 export 'insights/event.dart';
 export 'insights/event_args.dart';
 export 'insights/event_event.dart';

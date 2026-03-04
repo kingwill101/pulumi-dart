@@ -2,16 +2,15 @@
 enum PropertyType {
   valueString("String");
 
-  const PropertyType(this.value);
-  final String value;
+  const PropertyType(this.wireValue);
+  final String wireValue;
 
   static PropertyType fromValue(String value) {
     for (final item in PropertyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PropertyType value: $value');
   }
 }
-

@@ -8,20 +8,17 @@ class GetDiscoveredWorkloadWorkloadReference {
 
   /// Creates a new [GetDiscoveredWorkloadWorkloadReference].
   /// [uri] The underlying resource URI.
-  GetDiscoveredWorkloadWorkloadReference({
-    required this.uri,
-  });
+  GetDiscoveredWorkloadWorkloadReference({required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GetDiscoveredWorkloadWorkloadReference.fromMap(Map<String, dynamic> map) {
+  factory GetDiscoveredWorkloadWorkloadReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDiscoveredWorkloadWorkloadReference(
-      uri: (map['uri'] as String).input(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

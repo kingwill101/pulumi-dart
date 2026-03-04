@@ -5,16 +5,15 @@ enum ExecutionCallLogLevel {
   logErrorsOnly("LOG_ERRORS_ONLY"),
   logNone("LOG_NONE");
 
-  const ExecutionCallLogLevel(this.value);
-  final String value;
+  const ExecutionCallLogLevel(this.wireValue);
+  final String wireValue;
 
   static ExecutionCallLogLevel fromValue(String value) {
     for (final item in ExecutionCallLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExecutionCallLogLevel value: $value');
   }
 }
-

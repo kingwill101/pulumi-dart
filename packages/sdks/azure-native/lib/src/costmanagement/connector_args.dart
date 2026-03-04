@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorArgs {
   /// Connector Name.
   final pulumi.Input<String>? connectorName;
+
   /// Credentials authentication key (eg AWS ARN)
   final pulumi.Input<String>? credentialsKey;
+
   /// Credentials secret (eg AWS ExternalId)
   final pulumi.Input<String>? credentialsSecret;
+
   /// Connector DisplayName (defaults to Name)
   final pulumi.Input<String>? displayName;
+
   /// Connector kind (eg aws)
   final pulumi.Input<String>? kind;
+
   /// Connector location
   final pulumi.Input<String>? location;
+
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   final pulumi.Input<String>? reportId;
+
   /// Azure Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Connector status
   final pulumi.Input<String>? status;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -69,17 +78,56 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
-      credentialsKey: map['credentialsKey'] == null ? null : (map['credentialsKey']! as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      reportId: map['reportId'] == null ? null : (map['reportId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      connectorName: (() {
+        final guardedValue = map['connectorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialsKey: (() {
+        final guardedValue = map['credentialsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialsSecret: (() {
+        final guardedValue = map['credentialsSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reportId: (() {
+        final guardedValue = map['reportId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

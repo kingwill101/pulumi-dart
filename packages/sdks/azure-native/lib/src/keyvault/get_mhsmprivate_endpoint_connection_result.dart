@@ -10,28 +10,41 @@ import 'system_data_response.dart';
 class GetMHSMPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Modified whenever there is a change in the state of private endpoint connection.
   final String? etag;
+
   /// The Azure Resource Manager resource ID for the managed HSM Pool.
   final String id;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   final ManagedServiceIdentityResponse? identity;
+
   /// The supported Azure location where the managed HSM Pool should be created.
   final String? location;
+
   /// The name of the managed HSM Pool.
   final String name;
+
   /// Properties of the private endpoint object.
   final MHSMPrivateEndpointResponse? privateEndpoint;
+
   /// Approval state of the private link connection.
-  final MHSMPrivateLinkServiceConnectionStateResponse? privateLinkServiceConnectionState;
+  final MHSMPrivateLinkServiceConnectionStateResponse?
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the private endpoint connection.
   final String provisioningState;
+
   /// SKU details
   final ManagedHsmSkuResponse? sku;
+
   /// Metadata pertaining to creation and last modification of the key vault resource.
   final SystemDataResponse systemData;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// The resource type of the managed HSM Pool.
   final String type;
 
@@ -70,35 +83,75 @@ class GetMHSMPrivateEndpointConnectionResult {
       'azureApiVersion': azureApiVersion,
       'etag': ?etag,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState == null ? null : privateLinkServiceConnectionState!.toMap(),
+      'privateEndpoint': ?privateEndpoint?.toMap(),
+      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState
+          ?.toMap(),
       'provisioningState': provisioningState,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
     };
   }
 
-  factory GetMHSMPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
+  factory GetMHSMPrivateEndpointConnectionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMHSMPrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ManagedServiceIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : MHSMPrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : MHSMPrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>()),
+      privateEndpoint: (() {
+        final guardedValue = map['privateEndpoint'];
+        if (guardedValue == null) return null;
+        return MHSMPrivateEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      privateLinkServiceConnectionState: (() {
+        final guardedValue = map['privateLinkServiceConnectionState'];
+        if (guardedValue == null) return null;
+        return MHSMPrivateLinkServiceConnectionStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      sku: map['sku'] == null ? null : ManagedHsmSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return ManagedHsmSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

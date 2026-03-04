@@ -9,20 +9,19 @@ class AzureADAuthenticationAsArmPolicy {
 
   /// Creates a new [AzureADAuthenticationAsArmPolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
-  AzureADAuthenticationAsArmPolicy({
-    this.status,
-  });
+  AzureADAuthenticationAsArmPolicy({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
   factory AzureADAuthenticationAsArmPolicy.fromMap(Map<String, dynamic> map) {
     return AzureADAuthenticationAsArmPolicy(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

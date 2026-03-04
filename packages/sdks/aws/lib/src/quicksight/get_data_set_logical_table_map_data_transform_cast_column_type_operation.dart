@@ -25,12 +25,13 @@ class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
     };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation(
-      columnName: (map['columnName'] as String).input(),
-      format: (map['format'] as String).input(),
-      newColumnType: (map['newColumnType'] as String).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      newColumnType: pulumi.Input.fromValue(map['newColumnType'] as String),
     );
   }
 }
-

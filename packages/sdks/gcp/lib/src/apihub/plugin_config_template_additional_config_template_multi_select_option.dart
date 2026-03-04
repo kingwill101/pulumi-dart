@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption {
   /// Description of the option.
   final pulumi.Input<String>? description;
+
   /// Display name of the option.
   final pulumi.Input<String> displayName;
+
   /// Id of the option.
   final pulumi.Input<String> id;
 
@@ -28,12 +30,17 @@ class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption {
     };
   }
 
-  factory PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.fromMap(Map<String, dynamic> map) {
+  factory PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      id: (map['id'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

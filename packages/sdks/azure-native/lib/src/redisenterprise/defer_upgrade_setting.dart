@@ -3,16 +3,15 @@ enum DeferUpgradeSetting {
   valueDeferred("Deferred"),
   valueNotDeferred("NotDeferred");
 
-  const DeferUpgradeSetting(this.value);
-  final String value;
+  const DeferUpgradeSetting(this.wireValue);
+  final String wireValue;
 
   static DeferUpgradeSetting fromValue(String value) {
     for (final item in DeferUpgradeSetting.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeferUpgradeSetting value: $value');
   }
 }
-

@@ -31,10 +31,15 @@ class GetSessionTemplateArgs {
 
   factory GetSessionTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionTemplateArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sessionTemplateId: (map['sessionTemplateId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionTemplateId: pulumi.Input.fromValue(
+        map['sessionTemplateId'] as String,
+      ),
     );
   }
 }
-

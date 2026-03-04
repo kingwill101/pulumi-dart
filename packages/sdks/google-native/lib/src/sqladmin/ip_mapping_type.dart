@@ -6,16 +6,15 @@ enum IpMappingType {
   private("PRIVATE"),
   migrated1stGen("MIGRATED_1ST_GEN");
 
-  const IpMappingType(this.value);
-  final String value;
+  const IpMappingType(this.wireValue);
+  final String wireValue;
 
   static IpMappingType fromValue(String value) {
     for (final item in IpMappingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpMappingType value: $value');
   }
 }
-

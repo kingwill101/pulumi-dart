@@ -25,21 +25,21 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.created = registerOutput<String>('created');
-    this.domainNames = registerOutput<List<String>>('domainNames');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    created = registerOutput<String>('created');
+    domainNames = registerOutput<List<String>>('domainNames');
+    fingerprint = registerOutput<String>('fingerprint');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.notValidAfter = registerOutput<String>('notValidAfter');
-    this.notValidBefore = registerOutput<String>('notValidBefore');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.type = registerOutput<String>('type');
+    notValidAfter = registerOutput<String>('notValidAfter');
+    notValidBefore = registerOutput<String>('notValidBefore');
+    privateKey = registerOutput<String>('privateKey');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -60,20 +60,20 @@ class Certificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<String>('certificate');
-    this.created = registerOutput<String>('created');
-    this.domainNames = registerOutput<List<String>>('domainNames');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<String>('certificate');
+    created = registerOutput<String>('created');
+    domainNames = registerOutput<List<String>>('domainNames');
+    fingerprint = registerOutput<String>('fingerprint');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.notValidAfter = registerOutput<String>('notValidAfter');
-    this.notValidBefore = registerOutput<String>('notValidBefore');
-    this.privateKey = registerOutput<String>('privateKey');
-    this.type = registerOutput<String>('type');
+    notValidAfter = registerOutput<String>('notValidAfter');
+    notValidBefore = registerOutput<String>('notValidBefore');
+    privateKey = registerOutput<String>('privateKey');
+    type = registerOutput<String>('type');
   }
 }

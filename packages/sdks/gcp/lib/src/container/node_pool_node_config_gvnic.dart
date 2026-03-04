@@ -8,20 +8,15 @@ class NodePoolNodeConfigGvnic {
 
   /// Creates a new [NodePoolNodeConfigGvnic].
   /// [enabled] Whether or not gvnic is enabled
-  NodePoolNodeConfigGvnic({
-    required this.enabled,
-  });
+  NodePoolNodeConfigGvnic({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory NodePoolNodeConfigGvnic.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGvnic(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

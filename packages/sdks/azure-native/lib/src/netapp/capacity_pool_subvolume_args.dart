@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityPoolSubvolumeArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
+
   /// parent path to the subvolume
   final pulumi.Input<String>? parentPath;
+
   /// Path to the subvolume
   final pulumi.Input<String>? path;
+
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Truncate subvolume to the provided size in bytes
   final pulumi.Input<double>? size;
+
   /// The name of the subvolume.
   final pulumi.Input<String>? subvolumeName;
+
   /// The name of the volume
   final pulumi.Input<String> volumeName;
 
@@ -59,15 +66,32 @@ class CapacityPoolSubvolumeArgs {
 
   factory CapacityPoolSubvolumeArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolSubvolumeArgs(
-      accountName: (map['accountName'] as String).input(),
-      parentPath: map['parentPath'] == null ? null : (map['parentPath']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      size: map['size'] == null ? null : (map['size']! as double).input(),
-      subvolumeName: map['subvolumeName'] == null ? null : (map['subvolumeName']! as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      parentPath: (() {
+        final guardedValue = map['parentPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      subvolumeName: (() {
+        final guardedValue = map['subvolumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

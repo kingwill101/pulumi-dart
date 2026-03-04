@@ -1,5 +1,3 @@
-library module_awsconnector;
-
 export 'awsconnector/abort_incomplete_multipart_upload.dart';
 export 'awsconnector/abort_incomplete_multipart_upload_response.dart';
 export 'awsconnector/accelerate_configuration.dart';

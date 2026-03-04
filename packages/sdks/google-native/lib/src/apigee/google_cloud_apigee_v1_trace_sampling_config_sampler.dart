@@ -4,16 +4,17 @@ enum GoogleCloudApigeeV1TraceSamplingConfigSampler {
   off("OFF"),
   probability("PROBABILITY");
 
-  const GoogleCloudApigeeV1TraceSamplingConfigSampler(this.value);
-  final String value;
+  const GoogleCloudApigeeV1TraceSamplingConfigSampler(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudApigeeV1TraceSamplingConfigSampler fromValue(String value) {
     for (final item in GoogleCloudApigeeV1TraceSamplingConfigSampler.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudApigeeV1TraceSamplingConfigSampler value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudApigeeV1TraceSamplingConfigSampler value: $value',
+    );
   }
 }
-

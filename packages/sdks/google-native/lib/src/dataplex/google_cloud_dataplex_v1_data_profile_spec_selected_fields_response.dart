@@ -14,15 +14,16 @@ class GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fieldNames': fieldNames,
-    };
+    return <String, dynamic>{'fieldNames': fieldNames};
   }
 
-  factory GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse(
-      fieldNames: ((map['fieldNames'] as List).cast<String>()).input(),
+      fieldNames: pulumi.Input.fromValue(
+        (map['fieldNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

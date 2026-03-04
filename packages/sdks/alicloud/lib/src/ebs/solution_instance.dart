@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'solution_instance_args.dart';
-import 'solution_instance_parameter.dart';
 import 'solution_instance_state.dart';
 
 /// Provides a EBS Solution Instance resource.
 ///
 /// For information about EBS Solution Instance and how to use it, see [What is Solution Instance](https://www.alibabacloud.com/help/en/).
 ///
-/// > **NOTE:** Available since v1.216.0.
+/// &gt; **NOTE:** Available since v1.216.0.
 ///
 /// ## Example Usage
 ///
@@ -555,16 +554,22 @@ import 'solution_instance_state.dart';
 class SolutionInstance extends pulumi.CustomResource {
   /// Solution Instance Creation Time.
   late final pulumi.Output<String> createTime;
+
   /// Solution Instance Description.
   late final pulumi.Output<String?> description;
+
   /// Solution Instance Creation Parameters. See `parameters` below.
-  late final pulumi.Output<List<SolutionInstanceParameter>?> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Solution ID.
   late final pulumi.Output<String> solutionId;
+
   /// Solution Instance Name.
   late final pulumi.Output<String> solutionInstanceName;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -577,18 +582,18 @@ class SolutionInstance extends pulumi.CustomResource {
     SolutionInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/solutionInstance:SolutionInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.parameters = registerOutput<List<SolutionInstanceParameter>?>('parameters');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.solutionId = registerOutput<String>('solutionId');
-    this.solutionInstanceName = registerOutput<String>('solutionInstanceName');
-    this.status = registerOutput<String>('status');
+         'alicloud:ebs/solutionInstance:SolutionInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    solutionId = registerOutput<String>('solutionId');
+    solutionInstanceName = registerOutput<String>('solutionInstanceName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [SolutionInstance] resource's state with the given [name] and [id].
@@ -609,17 +614,17 @@ class SolutionInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ebs/solutionInstance:SolutionInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.parameters = registerOutput<List<SolutionInstanceParameter>?>('parameters');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.solutionId = registerOutput<String>('solutionId');
-    this.solutionInstanceName = registerOutput<String>('solutionInstanceName');
-    this.status = registerOutput<String>('status');
+         'alicloud:ebs/solutionInstance:SolutionInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    solutionId = registerOutput<String>('solutionId');
+    solutionInstanceName = registerOutput<String>('solutionInstanceName');
+    status = registerOutput<String>('status');
   }
 }

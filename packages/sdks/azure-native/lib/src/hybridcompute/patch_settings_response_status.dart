@@ -7,6 +7,7 @@ import 'error_detail_response.dart';
 class PatchSettingsResponseStatus {
   /// The errors that were encountered during the hotpatch capability enrollment or disenrollment.
   final pulumi.Input<ErrorDetailResponse> error;
+
   /// Indicates the current status of the hotpatch being enabled or disabled.
   final pulumi.Input<String>? hotpatchEnablementStatus;
 
@@ -20,16 +21,27 @@ class PatchSettingsResponseStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
+            error,
+            (value) => value.toMap(),
+          ),
       'hotpatchEnablementStatus': ?hotpatchEnablementStatus,
     };
   }
 
   factory PatchSettingsResponseStatus.fromMap(Map<String, dynamic> map) {
     return PatchSettingsResponseStatus(
-      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      hotpatchEnablementStatus: map['hotpatchEnablementStatus'] == null ? null : (map['hotpatchEnablementStatus']! as String).input(),
+      error: pulumi.Input.fromValue(
+        ErrorDetailResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      hotpatchEnablementStatus: (() {
+        final guardedValue = map['hotpatchEnablementStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

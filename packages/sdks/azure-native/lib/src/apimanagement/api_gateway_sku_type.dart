@@ -4,16 +4,15 @@ enum ApiGatewaySkuType {
   valueWorkspaceGatewayStandard("WorkspaceGatewayStandard"),
   valueWorkspaceGatewayPremium("WorkspaceGatewayPremium");
 
-  const ApiGatewaySkuType(this.value);
-  final String value;
+  const ApiGatewaySkuType(this.wireValue);
+  final String wireValue;
 
   static ApiGatewaySkuType fromValue(String value) {
     for (final item in ApiGatewaySkuType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApiGatewaySkuType value: $value');
   }
 }
-

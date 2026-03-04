@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilterResponse {
   /// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
   final pulumi.Input<String> destRange;
+
   /// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
   final pulumi.Input<String> ipProtocol;
+
   /// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
   final pulumi.Input<String> protocolVersion;
+
   /// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
   final pulumi.Input<String> srcRange;
 
@@ -36,11 +39,10 @@ class FilterResponse {
 
   factory FilterResponse.fromMap(Map<String, dynamic> map) {
     return FilterResponse(
-      destRange: (map['destRange'] as String).input(),
-      ipProtocol: (map['ipProtocol'] as String).input(),
-      protocolVersion: (map['protocolVersion'] as String).input(),
-      srcRange: (map['srcRange'] as String).input(),
+      destRange: pulumi.Input.fromValue(map['destRange'] as String),
+      ipProtocol: pulumi.Input.fromValue(map['ipProtocol'] as String),
+      protocolVersion: pulumi.Input.fromValue(map['protocolVersion'] as String),
+      srcRange: pulumi.Input.fromValue(map['srcRange'] as String),
     );
   }
 }
-

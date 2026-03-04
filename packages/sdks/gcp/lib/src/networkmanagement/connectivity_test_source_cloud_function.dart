@@ -8,20 +8,21 @@ class ConnectivityTestSourceCloudFunction {
 
   /// Creates a new [ConnectivityTestSourceCloudFunction].
   /// [uri] A Cloud Function name.
-  ConnectivityTestSourceCloudFunction({
-    this.uri,
-  });
+  ConnectivityTestSourceCloudFunction({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
-  factory ConnectivityTestSourceCloudFunction.fromMap(Map<String, dynamic> map) {
+  factory ConnectivityTestSourceCloudFunction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectivityTestSourceCloudFunction(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

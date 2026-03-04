@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetColumnGroupGeoSpatialColumnGroup {
   /// Columns in this hierarchy.
   final pulumi.Input<List<String>> columns;
+
   /// Country code. Valid values are `US`.
   final pulumi.Input<String> countryCode;
+
   /// A display name for the hierarchy.
   final pulumi.Input<String> name;
 
@@ -28,12 +30,13 @@ class DataSetColumnGroupGeoSpatialColumnGroup {
     };
   }
 
-  factory DataSetColumnGroupGeoSpatialColumnGroup.fromMap(Map<String, dynamic> map) {
+  factory DataSetColumnGroupGeoSpatialColumnGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetColumnGroupGeoSpatialColumnGroup(
-      columns: ((map['columns'] as List).cast<String>()).input(),
-      countryCode: (map['countryCode'] as String).input(),
-      name: (map['name'] as String).input(),
+      columns: pulumi.Input.fromValue((map['columns'] as List).cast<String>()),
+      countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

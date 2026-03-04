@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'blob_inventory_policy_args.dart';
-import 'blob_inventory_policy_rule.dart';
 import 'blob_inventory_policy_state.dart';
 
 /// Manages a Storage Blob Inventory Policy.
@@ -311,7 +310,7 @@ import 'blob_inventory_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -325,7 +324,8 @@ import 'blob_inventory_policy_state.dart';
 /// ```
 class BlobInventoryPolicy extends pulumi.CustomResource {
   /// One or more `rules` blocks as defined below.
-  late final pulumi.Output<List<BlobInventoryPolicyRule>> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+
   /// The ID of the storage account to apply this Blob Inventory Policy to. Changing this forces a new Storage Blob Inventory Policy to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -338,13 +338,13 @@ class BlobInventoryPolicy extends pulumi.CustomResource {
     BlobInventoryPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/blobInventoryPolicy:BlobInventoryPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.rules = registerOutput<List<BlobInventoryPolicyRule>>('rules');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/blobInventoryPolicy:BlobInventoryPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [BlobInventoryPolicy] resource's state with the given [name] and [id].
@@ -365,12 +365,12 @@ class BlobInventoryPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/blobInventoryPolicy:BlobInventoryPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.rules = registerOutput<List<BlobInventoryPolicyRule>>('rules');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+         'azure:storage/blobInventoryPolicy:BlobInventoryPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

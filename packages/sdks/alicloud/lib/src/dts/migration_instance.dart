@@ -6,7 +6,7 @@ import 'migration_instance_state.dart';
 ///
 /// For information about DTS Migration Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/208270.html).
 ///
-/// > **NOTE:** Available since v1.157.0.
+/// &gt; **NOTE:** Available since v1.157.0.
 ///
 /// ## Example Usage
 ///
@@ -178,26 +178,37 @@ import 'migration_instance_state.dart';
 class MigrationInstance extends pulumi.CustomResource {
   /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
   late final pulumi.Output<int?> computeUnit;
+
   /// The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
   late final pulumi.Output<int?> databaseCount;
+
   /// The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
   late final pulumi.Output<String> destinationEndpointEngineName;
+
   /// The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
   late final pulumi.Output<String> destinationEndpointRegion;
+
   /// The ID of the Migration Instance.
   late final pulumi.Output<String> dtsInstanceId;
+
   /// The instance class. Valid values: `large`, `medium`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
   late final pulumi.Output<String> instanceClass;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
+
   /// The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
   late final pulumi.Output<String> sourceEndpointEngineName;
+
   /// The region of source instance.
   late final pulumi.Output<String> sourceEndpointRegion;
+
   /// The status.
   late final pulumi.Output<String> status;
+
   /// The sync architecture. Valid values: `oneway`.
   late final pulumi.Output<String?> syncArchitecture;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -210,23 +221,29 @@ class MigrationInstance extends pulumi.CustomResource {
     MigrationInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/migrationInstance:MigrationInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.computeUnit = registerOutput<int?>('computeUnit');
-    this.databaseCount = registerOutput<int?>('databaseCount');
-    this.destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
-    this.destinationEndpointRegion = registerOutput<String>('destinationEndpointRegion');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.instanceClass = registerOutput<String>('instanceClass');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
-    this.status = registerOutput<String>('status');
-    this.syncArchitecture = registerOutput<String?>('syncArchitecture');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dts/migrationInstance:MigrationInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    computeUnit = registerOutput<int?>('computeUnit');
+    databaseCount = registerOutput<int?>('databaseCount');
+    destinationEndpointEngineName = registerOutput<String>(
+      'destinationEndpointEngineName',
+    );
+    destinationEndpointRegion = registerOutput<String>(
+      'destinationEndpointRegion',
+    );
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    instanceClass = registerOutput<String>('instanceClass');
+    paymentType = registerOutput<String>('paymentType');
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
+    status = registerOutput<String>('status');
+    syncArchitecture = registerOutput<String?>('syncArchitecture');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [MigrationInstance] resource's state with the given [name] and [id].
@@ -247,22 +264,28 @@ class MigrationInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/migrationInstance:MigrationInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.computeUnit = registerOutput<int?>('computeUnit');
-    this.databaseCount = registerOutput<int?>('databaseCount');
-    this.destinationEndpointEngineName = registerOutput<String>('destinationEndpointEngineName');
-    this.destinationEndpointRegion = registerOutput<String>('destinationEndpointRegion');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
-    this.instanceClass = registerOutput<String>('instanceClass');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.sourceEndpointEngineName = registerOutput<String>('sourceEndpointEngineName');
-    this.sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
-    this.status = registerOutput<String>('status');
-    this.syncArchitecture = registerOutput<String?>('syncArchitecture');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:dts/migrationInstance:MigrationInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    computeUnit = registerOutput<int?>('computeUnit');
+    databaseCount = registerOutput<int?>('databaseCount');
+    destinationEndpointEngineName = registerOutput<String>(
+      'destinationEndpointEngineName',
+    );
+    destinationEndpointRegion = registerOutput<String>(
+      'destinationEndpointRegion',
+    );
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
+    instanceClass = registerOutput<String>('instanceClass');
+    paymentType = registerOutput<String>('paymentType');
+    sourceEndpointEngineName = registerOutput<String>(
+      'sourceEndpointEngineName',
+    );
+    sourceEndpointRegion = registerOutput<String>('sourceEndpointRegion');
+    status = registerOutput<String>('status');
+    syncArchitecture = registerOutput<String?>('syncArchitecture');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

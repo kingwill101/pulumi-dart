@@ -25,11 +25,14 @@ class GetOrganizationNotificationConfigArgs {
     };
   }
 
-  factory GetOrganizationNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationNotificationConfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationNotificationConfigArgs(
-      notificationConfigId: (map['notificationConfigId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      notificationConfigId: pulumi.Input.fromValue(
+        map['notificationConfigId'] as String,
+      ),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

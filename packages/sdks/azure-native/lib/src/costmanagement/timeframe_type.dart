@@ -4,16 +4,15 @@ enum TimeframeType {
   valueMonthToDate("MonthToDate"),
   valueCustom("Custom");
 
-  const TimeframeType(this.value);
-  final String value;
+  const TimeframeType(this.wireValue);
+  final String wireValue;
 
   static TimeframeType fromValue(String value) {
     for (final item in TimeframeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TimeframeType value: $value');
   }
 }
-

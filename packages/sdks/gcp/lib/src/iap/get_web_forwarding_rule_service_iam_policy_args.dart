@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebForwardingRuleServiceIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> forwardingRuleServiceName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
@@ -28,11 +29,18 @@ class GetWebForwardingRuleServiceIamPolicyArgs {
     };
   }
 
-  factory GetWebForwardingRuleServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWebForwardingRuleServiceIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebForwardingRuleServiceIamPolicyArgs(
-      forwardingRuleServiceName: (map['forwardingRuleServiceName'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      forwardingRuleServiceName: pulumi.Input.fromValue(
+        map['forwardingRuleServiceName'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

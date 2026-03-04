@@ -242,7 +242,9 @@ void main() {
             isA<Exception>().having(
               (e) => e.toString(),
               'message',
-              contains('does not support transforms'),
+              contains(
+                'The Pulumi CLI does not support transforms. Please update the Pulumi CLI.',
+              ),
             ),
           ),
         );
@@ -260,7 +262,9 @@ void main() {
             isA<Exception>().having(
               (e) => e.toString(),
               'message',
-              contains('does not support invoke transforms'),
+              contains(
+                'The Pulumi CLI does not support invoke transforms. Please update the Pulumi CLI.',
+              ),
             ),
           ),
         );

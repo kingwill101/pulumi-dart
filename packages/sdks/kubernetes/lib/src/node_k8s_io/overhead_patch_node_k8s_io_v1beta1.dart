@@ -9,20 +9,21 @@ class OverheadPatchNodeK8sIoV1beta1 {
 
   /// Creates a new [OverheadPatchNodeK8sIoV1beta1].
   /// [podFixed] PodFixed represents the fixed resource overhead associated with running a pod.
-  OverheadPatchNodeK8sIoV1beta1({
-    this.podFixed,
-  });
+  OverheadPatchNodeK8sIoV1beta1({this.podFixed});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'podFixed': ?podFixed,
-    };
+    return <String, dynamic>{'podFixed': ?podFixed};
   }
 
   factory OverheadPatchNodeK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return OverheadPatchNodeK8sIoV1beta1(
-      podFixed: map['podFixed'] == null ? null : ((map['podFixed']! as Map).cast<String, String>()).input(),
+      podFixed: (() {
+        final guardedValue = map['podFixed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

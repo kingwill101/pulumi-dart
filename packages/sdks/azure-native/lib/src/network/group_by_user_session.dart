@@ -10,20 +10,34 @@ class GroupByUserSession {
 
   /// Creates a new [GroupByUserSession].
   /// [groupByVariables] List of group by clause variables.
-  GroupByUserSession({
-    required this.groupByVariables,
-  });
+  GroupByUserSession({required this.groupByVariables});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupByVariables': pulumi.Input.mapInputValue<List<GroupByVariable>, List<Map<String, dynamic>>>(groupByVariables, (value) => pulumi.Input.encodeList<GroupByVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'groupByVariables':
+          pulumi.Input.mapInputValue<
+            List<GroupByVariable>,
+            List<Map<String, dynamic>>
+          >(
+            groupByVariables,
+            (value) =>
+                pulumi.Input.encodeList<GroupByVariable, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory GroupByUserSession.fromMap(Map<String, dynamic> map) {
     return GroupByUserSession(
-      groupByVariables: (pulumi.Input.decodeList<GroupByVariable>(map['groupByVariables'], (value) => GroupByVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupByVariables: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GroupByVariable>(
+          map['groupByVariables']!,
+          (value) =>
+              GroupByVariable.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

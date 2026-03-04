@@ -7,21 +7,29 @@ import 'system_data_response.dart';
 class GetAATPDataConnectorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The available data types for the connector.
   final AlertsDataTypeOfDataConnectorResponse? dataTypes;
+
   /// Etag of the azure resource
   final String? etag;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The kind of the data connector
   /// Expected value is 'AzureAdvancedThreatProtection'.
   final String kind;
+
   /// The name of the resource
   final String name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The tenant id to connect to, and get the data from.
   final String tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -50,7 +58,7 @@ class GetAATPDataConnectorResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'dataTypes': ?dataTypes == null ? null : dataTypes!.toMap(),
+      'dataTypes': ?dataTypes?.toMap(),
       'etag': ?etag,
       'id': id,
       'kind': kind,
@@ -64,15 +72,26 @@ class GetAATPDataConnectorResult {
   factory GetAATPDataConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAATPDataConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataTypes: map['dataTypes'] == null ? null : AlertsDataTypeOfDataConnectorResponse.fromMap((map['dataTypes']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      dataTypes: (() {
+        final guardedValue = map['dataTypes'];
+        if (guardedValue == null) return null;
+        return AlertsDataTypeOfDataConnectorResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
     );
   }
 }
-

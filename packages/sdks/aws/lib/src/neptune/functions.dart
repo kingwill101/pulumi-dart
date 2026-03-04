@@ -6,7 +6,7 @@ import 'get_orderable_db_instance_result.dart';
 
 /// Information about a Neptune engine version.
 ///
-/// > **Note:** If AWS returns multiple matching engine versions, this data source will produce a `multiple Neptune engine versions` error. To avoid this, provide additional criteria to narrow the results or use the `latest` argument to select a single version. See the Argument Reference for details.
+/// &gt; **Note:** If AWS returns multiple matching engine versions, this data source will produce a `multiple Neptune engine versions` error. To avoid this, provide additional criteria to narrow the results or use the `latest` argument to select a single version. See the Argument Reference for details.
 ///
 /// ## Example Usage
 ///

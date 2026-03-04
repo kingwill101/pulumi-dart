@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PersistentDiskResponse {
   /// The URI of the Persistent Disk.
   final pulumi.Input<String> diskUri;
+
   /// The ordinal number of the source VM disk.
   final pulumi.Input<int> sourceDiskNumber;
 
@@ -26,9 +27,8 @@ class PersistentDiskResponse {
 
   factory PersistentDiskResponse.fromMap(Map<String, dynamic> map) {
     return PersistentDiskResponse(
-      diskUri: (map['diskUri'] as String).input(),
-      sourceDiskNumber: (map['sourceDiskNumber'] as int).input(),
+      diskUri: pulumi.Input.fromValue(map['diskUri'] as String),
+      sourceDiskNumber: pulumi.Input.fromValue(map['sourceDiskNumber'] as int),
     );
   }
 }
-

@@ -6,16 +6,17 @@ enum ErrorHandlerErrorCodeAppengineV1beta {
   errorCodeDosApiDenial("ERROR_CODE_DOS_API_DENIAL"),
   errorCodeTimeout("ERROR_CODE_TIMEOUT");
 
-  const ErrorHandlerErrorCodeAppengineV1beta(this.value);
-  final String value;
+  const ErrorHandlerErrorCodeAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static ErrorHandlerErrorCodeAppengineV1beta fromValue(String value) {
     for (final item in ErrorHandlerErrorCodeAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ErrorHandlerErrorCodeAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ErrorHandlerErrorCodeAppengineV1beta value: $value',
+    );
   }
 }
-

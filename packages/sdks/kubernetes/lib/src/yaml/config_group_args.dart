@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigGroupArgs {
   /// Set of paths and/or URLs to Kubernetes manifest files. Supports glob patterns.
   final pulumi.Input<List<String>>? files;
+
   /// Objects representing Kubernetes resource configurations.
   final pulumi.Input<List<dynamic>>? objs;
+
   /// A prefix for the auto-generated resource names. Defaults to the name of the ConfigGroup. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   final pulumi.Input<String>? resourcePrefix;
+
   /// Indicates that child resources should skip the await logic.
   final pulumi.Input<bool>? skipAwait;
+
   /// A Kubernetes YAML manifest containing Kubernetes resource configuration(s).
   final pulumi.Input<String>? yaml;
 
@@ -44,12 +48,31 @@ class ConfigGroupArgs {
 
   factory ConfigGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConfigGroupArgs(
-      files: map['files'] == null ? null : ((map['files']! as List).cast<String>()).input(),
-      objs: map['objs'] == null ? null : ((map['objs']! as List).cast<dynamic>()).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix']! as String).input(),
-      skipAwait: map['skipAwait'] == null ? null : (map['skipAwait']! as bool).input(),
-      yaml: map['yaml'] == null ? null : (map['yaml']! as String).input(),
+      files: (() {
+        final guardedValue = map['files'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      objs: (() {
+        final guardedValue = map['objs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      resourcePrefix: (() {
+        final guardedValue = map['resourcePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipAwait: (() {
+        final guardedValue = map['skipAwait'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      yaml: (() {
+        final guardedValue = map['yaml'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -31,10 +31,9 @@ class GetKeystoreArgs {
 
   factory GetKeystoreArgs.fromMap(Map<String, dynamic> map) {
     return GetKeystoreArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      keystoreId: (map['keystoreId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      keystoreId: pulumi.Input.fromValue(map['keystoreId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

@@ -7,10 +7,19 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification {
   final pulumi.Input<bool>? allowInterrupt;
-  final pulumi.Input<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes>? allowedInputTypes;
-  final pulumi.Input<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification>? audioAndDtmfInputSpecification;
+  final pulumi.Input<
+    V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes
+  >?
+  allowedInputTypes;
+  final pulumi.Input<
+    V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification
+  >?
+  audioAndDtmfInputSpecification;
   final pulumi.Input<String> mapBlockKey;
-  final pulumi.Input<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification>? textInputSpecification;
+  final pulumi.Input<
+    V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification
+  >?
+  textInputSpecification;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification].
   /// [allowInterrupt] Optional.
@@ -29,21 +38,62 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
-      'allowedInputTypes': ?pulumi.Input.mapOptionalInputValue<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes, Map<String, dynamic>>(allowedInputTypes, (value) => value.toMap()),
-      'audioAndDtmfInputSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification, Map<String, dynamic>>(audioAndDtmfInputSpecification, (value) => value.toMap()),
+      'allowedInputTypes':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes,
+            Map<String, dynamic>
+          >(allowedInputTypes, (value) => value.toMap()),
+      'audioAndDtmfInputSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification,
+            Map<String, dynamic>
+          >(audioAndDtmfInputSpecification, (value) => value.toMap()),
       'mapBlockKey': mapBlockKey,
-      'textInputSpecification': ?pulumi.Input.mapOptionalInputValue<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification, Map<String, dynamic>>(textInputSpecification, (value) => value.toMap()),
+      'textInputSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification,
+            Map<String, dynamic>
+          >(textInputSpecification, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
-      allowedInputTypes: map['allowedInputTypes'] == null ? null : ((V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes']! as Map).cast<String, dynamic>())).input()).input(),
-      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : ((V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
-      mapBlockKey: (map['mapBlockKey'] as String).input(),
-      textInputSpecification: map['textInputSpecification'] == null ? null : ((V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      allowInterrupt: (() {
+        final guardedValue = map['allowInterrupt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      allowedInputTypes: (() {
+        final guardedValue = map['allowedInputTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      audioAndDtmfInputSpecification: (() {
+        final guardedValue = map['audioAndDtmfInputSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
+      textInputSpecification: (() {
+        final guardedValue = map['textInputSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

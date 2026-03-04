@@ -4,16 +4,15 @@ enum DependencyCondition {
   valueSkipped("Skipped"),
   valueCompleted("Completed");
 
-  const DependencyCondition(this.value);
-  final String value;
+  const DependencyCondition(this.wireValue);
+  final String wireValue;
 
   static DependencyCondition fromValue(String value) {
     for (final item in DependencyCondition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DependencyCondition value: $value');
   }
 }
-

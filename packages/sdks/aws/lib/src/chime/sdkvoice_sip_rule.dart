@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sdkvoice_sip_rule_args.dart';
 import 'sdkvoice_sip_rule_state.dart';
-import 'sdkvoice_sip_rule_target_application.dart';
 
 /// A SIP rule associates your SIP media application with a phone number or a Request URI hostname. You can associate a SIP rule with more than one SIP media application. Each application then runs only that rule.
 ///
@@ -155,14 +154,19 @@ import 'sdkvoice_sip_rule_target_application.dart';
 class SdkvoiceSipRule extends pulumi.CustomResource {
   /// Enables or disables a rule. You must disable rules before you can delete them.
   late final pulumi.Output<bool?> disabled;
+
   /// The name of the SIP rule.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `target_applications`.
-  late final pulumi.Output<List<SdkvoiceSipRuleTargetApplication>> targetApplications;
+  late final pulumi.Output<List<Map<String, dynamic>>> targetApplications;
+
   /// The type of trigger assigned to the SIP rule in `trigger_value`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
   late final pulumi.Output<String> triggerType;
+
   /// If `trigger_type` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `trigger_type` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
   ///
   /// The following arguments are optional:
@@ -177,17 +181,19 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
     SdkvoiceSipRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disabled = registerOutput<bool?>('disabled');
+         'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.targetApplications = registerOutput<List<SdkvoiceSipRuleTargetApplication>>('targetApplications');
-    this.triggerType = registerOutput<String>('triggerType');
-    this.triggerValue = registerOutput<String>('triggerValue');
+    region = registerOutput<String>('region');
+    targetApplications = registerOutput<List<Map<String, dynamic>>>(
+      'targetApplications',
+    );
+    triggerType = registerOutput<String>('triggerType');
+    triggerValue = registerOutput<String>('triggerValue');
   }
 
   /// Gets an existing [SdkvoiceSipRule] resource's state with the given [name] and [id].
@@ -208,16 +214,18 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disabled = registerOutput<bool?>('disabled');
+         'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.targetApplications = registerOutput<List<SdkvoiceSipRuleTargetApplication>>('targetApplications');
-    this.triggerType = registerOutput<String>('triggerType');
-    this.triggerValue = registerOutput<String>('triggerValue');
+    region = registerOutput<String>('region');
+    targetApplications = registerOutput<List<Map<String, dynamic>>>(
+      'targetApplications',
+    );
+    triggerType = registerOutput<String>('triggerType');
+    triggerValue = registerOutput<String>('triggerValue');
   }
 }

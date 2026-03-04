@@ -215,7 +215,7 @@ import 'hybrid_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Relay` - 2021-11-01
@@ -230,12 +230,16 @@ import 'hybrid_connection_state.dart';
 class HybridConnection extends pulumi.CustomResource {
   /// Specifies the name of the Azure Relay Hybrid Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Azure Relay in which to create the Azure Relay Hybrid Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> relayNamespaceName;
+
   /// Specify if client authorization is needed for this hybrid connection. Changing this forces a new resource to be created. Defaults to `true`.
   late final pulumi.Output<bool?> requiresClientAuthorization;
+
   /// The name of the resource group in which to create the Azure Relay Hybrid Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
   late final pulumi.Output<String?> userMetadata;
 
@@ -248,16 +252,18 @@ class HybridConnection extends pulumi.CustomResource {
     HybridConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:relay/hybridConnection:HybridConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:relay/hybridConnection:HybridConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.relayNamespaceName = registerOutput<String>('relayNamespaceName');
-    this.requiresClientAuthorization = registerOutput<bool?>('requiresClientAuthorization');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.userMetadata = registerOutput<String?>('userMetadata');
+    relayNamespaceName = registerOutput<String>('relayNamespaceName');
+    requiresClientAuthorization = registerOutput<bool?>(
+      'requiresClientAuthorization',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    userMetadata = registerOutput<String?>('userMetadata');
   }
 
   /// Gets an existing [HybridConnection] resource's state with the given [name] and [id].
@@ -278,15 +284,17 @@ class HybridConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:relay/hybridConnection:HybridConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:relay/hybridConnection:HybridConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.relayNamespaceName = registerOutput<String>('relayNamespaceName');
-    this.requiresClientAuthorization = registerOutput<bool?>('requiresClientAuthorization');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.userMetadata = registerOutput<String?>('userMetadata');
+    relayNamespaceName = registerOutput<String>('relayNamespaceName');
+    requiresClientAuthorization = registerOutput<bool?>(
+      'requiresClientAuthorization',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    userMetadata = registerOutput<String?>('userMetadata');
   }
 }

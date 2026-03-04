@@ -2,16 +2,17 @@
 enum MigrationSpecificPropertiesInstanceType {
   serverMigration("ServerMigration");
 
-  const MigrationSpecificPropertiesInstanceType(this.value);
-  final String value;
+  const MigrationSpecificPropertiesInstanceType(this.wireValue);
+  final String wireValue;
 
   static MigrationSpecificPropertiesInstanceType fromValue(String value) {
     for (final item in MigrationSpecificPropertiesInstanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MigrationSpecificPropertiesInstanceType value: $value');
+    throw ArgumentError(
+      'Unknown MigrationSpecificPropertiesInstanceType value: $value',
+    );
   }
 }
-

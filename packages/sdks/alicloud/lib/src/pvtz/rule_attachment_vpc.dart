@@ -5,29 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleAttachmentVpc {
   /// The region of the vpc. If not set, the current region will instead of.
   final pulumi.Input<String> regionId;
+
   /// The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
   final pulumi.Input<String> vpcId;
 
   /// Creates a new [RuleAttachmentVpc].
   /// [regionId] The region of the vpc. If not set, the current region will instead of.
   /// [vpcId] The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
-  RuleAttachmentVpc({
-    required this.regionId,
-    required this.vpcId,
-  });
+  RuleAttachmentVpc({required this.regionId, required this.vpcId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'regionId': regionId,
-      'vpcId': vpcId,
-    };
+    return <String, dynamic>{'regionId': regionId, 'vpcId': vpcId};
   }
 
   factory RuleAttachmentVpc.fromMap(Map<String, dynamic> map) {
     return RuleAttachmentVpc(
-      regionId: (map['regionId'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

@@ -11,24 +11,30 @@ class AlertPolicyConditionConditionSql {
   /// A test that uses an alerting result in a boolean column produced by the SQL query.
   /// Structure is documented below.
   final pulumi.Input<AlertPolicyConditionConditionSqlBooleanTest>? booleanTest;
+
   /// Used to schedule the query to run every so many days.
   /// Structure is documented below.
   final pulumi.Input<AlertPolicyConditionConditionSqlDaily>? daily;
+
   /// Used to schedule the query to run every so many hours.
   /// Structure is documented below.
   final pulumi.Input<AlertPolicyConditionConditionSqlHourly>? hourly;
+
   /// Used to schedule the query to run every so many minutes.
   /// Structure is documented below.
   final pulumi.Input<AlertPolicyConditionConditionSqlMinutes>? minutes;
+
   /// The Log Analytics SQL query to run, as a string.  The query must
   /// conform to the required shape. Specifically, the query must not try to
   /// filter the input by time.  A filter will automatically be applied
   /// to filter the input so that the query receives all rows received
   /// since the last time the query was run.
   final pulumi.Input<String> query;
+
   /// A test that checks if the number of rows in the result set violates some threshold.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionSqlRowCountTest>? rowCountTest;
+  final pulumi.Input<AlertPolicyConditionConditionSqlRowCountTest>?
+  rowCountTest;
 
   /// Creates a new [AlertPolicyConditionConditionSql].
   /// [booleanTest] A test that uses an alerting result in a boolean column produced by the SQL query.
@@ -48,24 +54,83 @@ class AlertPolicyConditionConditionSql {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'booleanTest': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionSqlBooleanTest, Map<String, dynamic>>(booleanTest, (value) => value.toMap()),
-      'daily': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionSqlDaily, Map<String, dynamic>>(daily, (value) => value.toMap()),
-      'hourly': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionSqlHourly, Map<String, dynamic>>(hourly, (value) => value.toMap()),
-      'minutes': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionSqlMinutes, Map<String, dynamic>>(minutes, (value) => value.toMap()),
+      'booleanTest':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertPolicyConditionConditionSqlBooleanTest,
+            Map<String, dynamic>
+          >(booleanTest, (value) => value.toMap()),
+      'daily':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertPolicyConditionConditionSqlDaily,
+            Map<String, dynamic>
+          >(daily, (value) => value.toMap()),
+      'hourly':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertPolicyConditionConditionSqlHourly,
+            Map<String, dynamic>
+          >(hourly, (value) => value.toMap()),
+      'minutes':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertPolicyConditionConditionSqlMinutes,
+            Map<String, dynamic>
+          >(minutes, (value) => value.toMap()),
       'query': query,
-      'rowCountTest': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionSqlRowCountTest, Map<String, dynamic>>(rowCountTest, (value) => value.toMap()),
+      'rowCountTest':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertPolicyConditionConditionSqlRowCountTest,
+            Map<String, dynamic>
+          >(rowCountTest, (value) => value.toMap()),
     };
   }
 
   factory AlertPolicyConditionConditionSql.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSql(
-      booleanTest: map['booleanTest'] == null ? null : (AlertPolicyConditionConditionSqlBooleanTest.fromMap((map['booleanTest']! as Map).cast<String, dynamic>())).input(),
-      daily: map['daily'] == null ? null : (AlertPolicyConditionConditionSqlDaily.fromMap((map['daily']! as Map).cast<String, dynamic>())).input(),
-      hourly: map['hourly'] == null ? null : (AlertPolicyConditionConditionSqlHourly.fromMap((map['hourly']! as Map).cast<String, dynamic>())).input(),
-      minutes: map['minutes'] == null ? null : (AlertPolicyConditionConditionSqlMinutes.fromMap((map['minutes']! as Map).cast<String, dynamic>())).input(),
-      query: (map['query'] as String).input(),
-      rowCountTest: map['rowCountTest'] == null ? null : (AlertPolicyConditionConditionSqlRowCountTest.fromMap((map['rowCountTest']! as Map).cast<String, dynamic>())).input(),
+      booleanTest: (() {
+        final guardedValue = map['booleanTest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertPolicyConditionConditionSqlBooleanTest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      daily: (() {
+        final guardedValue = map['daily'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertPolicyConditionConditionSqlDaily.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hourly: (() {
+        final guardedValue = map['hourly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertPolicyConditionConditionSqlHourly.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      minutes: (() {
+        final guardedValue = map['minutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertPolicyConditionConditionSqlMinutes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      rowCountTest: (() {
+        final guardedValue = map['rowCountTest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertPolicyConditionConditionSqlRowCountTest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

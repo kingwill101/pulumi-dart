@@ -9,20 +9,15 @@ class SecretResponse {
 
   /// Creates a new [SecretResponse].
   /// [secretVersion] The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
-  SecretResponse({
-    required this.secretVersion,
-  });
+  SecretResponse({required this.secretVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      secretVersion: (map['secretVersion'] as String).input(),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectFieldSelectorPatch {
   /// Version of the schema the FieldPath is written in terms of, defaults to "v1".
   final pulumi.Input<String>? apiVersion;
+
   /// Path of the field to select in the specified API version.
   final pulumi.Input<String>? fieldPath;
 
   /// Creates a new [ObjectFieldSelectorPatch].
   /// [apiVersion] Version of the schema the FieldPath is written in terms of, defaults to "v1".
   /// [fieldPath] Path of the field to select in the specified API version.
-  ObjectFieldSelectorPatch({
-    this.apiVersion,
-    this.fieldPath,
-  });
+  ObjectFieldSelectorPatch({this.apiVersion, this.fieldPath});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ObjectFieldSelectorPatch {
 
   factory ObjectFieldSelectorPatch.fromMap(Map<String, dynamic> map) {
     return ObjectFieldSelectorPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fieldPath: (() {
+        final guardedValue = map['fieldPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,54 +7,77 @@ import 'get_cluster_node_pool_upgrade_setting.dart';
 class GetClusterNodePoolResult {
   /// Does this Node Pool have Auto-Scaling enabled?
   final bool autoScalingEnabled;
+
   /// The eviction policy used for Virtual Machines in the Virtual Machine Scale Set, when `priority` is set to `Spot`.
   final String evictionPolicy;
   final String gpuDriver;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kubernetesClusterName;
+
   /// The maximum number of Nodes allowed when auto-scaling is enabled.
   final int maxCount;
+
   /// The maximum number of Pods allowed on each Node in this Node Pool.
   final int maxPods;
+
   /// The minimum number of Nodes allowed when auto-scaling is enabled.
   final int minCount;
+
   /// The Mode for this Node Pool, specifying how these Nodes should be used (for either System or User resources).
   final String mode;
   final String name;
+
   /// The current number of Nodes in the Node Pool.
   final int nodeCount;
+
   /// A map of Kubernetes Labels applied to each Node in this Node Pool.
   final Map<String, String> nodeLabels;
+
   /// Do nodes in this Node Pool have a Public IP Address?
   final bool nodePublicIpEnabled;
+
   /// Resource ID for the Public IP Addresses Prefix for the nodes in this Agent Pool.
   final String nodePublicIpPrefixId;
+
   /// A map of Kubernetes Taints applied to each Node in this Node Pool.
   final List<String> nodeTaints;
+
   /// The version of Kubernetes configured on each Node in this Node Pool.
   final String orchestratorVersion;
+
   /// The size of the OS Disk on each Node in this Node Pool.
   final int osDiskSizeGb;
+
   /// The type of the OS Disk on each Node in this Node Pool.
   final String osDiskType;
+
   /// The operating system used on each Node in this Node Pool.
   final String osType;
+
   /// The priority of the Virtual Machines in the Virtual Machine Scale Set backing this Node Pool.
   final String priority;
+
   /// The ID of the Proximity Placement Group where the Virtual Machine Scale Set backing this Node Pool will be placed.
   final String proximityPlacementGroupId;
   final String resourceGroupName;
+
   /// The maximum price being paid for Virtual Machines in this Scale Set. `-1` means the current on-demand price for a Virtual Machine.
   final double spotMaxPrice;
+
   /// A mapping of tags assigned to the Kubernetes Cluster Node Pool.
   final Map<String, String> tags;
+
   /// A `upgrade_settings` block as documented below.
   final List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
+
   /// The size of the Virtual Machines used in the Virtual Machine Scale Set backing this Node Pool.
   final String vmSize;
+
   /// The ID of the Subnet in which this Node Pool exists.
   final String vnetSubnetId;
+
   /// A list of the Availability Zones where the Nodes in this Node Pool exist.
   final List<String> zones;
 
@@ -144,7 +167,11 @@ class GetClusterNodePoolResult {
       'resourceGroupName': resourceGroupName,
       'spotMaxPrice': spotMaxPrice,
       'tags': tags,
-      'upgradeSettings': pulumi.Input.encodeList<GetClusterNodePoolUpgradeSetting, Map<String, dynamic>>(upgradeSettings, (value) => value.toMap()),
+      'upgradeSettings':
+          pulumi.Input.encodeList<
+            GetClusterNodePoolUpgradeSetting,
+            Map<String, dynamic>
+          >(upgradeSettings, (value) => value.toMap()),
       'vmSize': vmSize,
       'vnetSubnetId': vnetSubnetId,
       'zones': zones,
@@ -177,11 +204,16 @@ class GetClusterNodePoolResult {
       resourceGroupName: map['resourceGroupName'] as String,
       spotMaxPrice: map['spotMaxPrice'] as double,
       tags: (map['tags'] as Map).cast<String, String>(),
-      upgradeSettings: pulumi.Input.decodeList<GetClusterNodePoolUpgradeSetting>(map['upgradeSettings'], (value) => GetClusterNodePoolUpgradeSetting.fromMap((value as Map).cast<String, dynamic>())),
+      upgradeSettings:
+          pulumi.Input.decodeList<GetClusterNodePoolUpgradeSetting>(
+            map['upgradeSettings']!,
+            (value) => GetClusterNodePoolUpgradeSetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       vmSize: map['vmSize'] as String,
       vnetSubnetId: map['vnetSubnetId'] as String,
       zones: (map['zones'] as List).cast<String>(),
     );
   }
 }
-

@@ -10,12 +10,16 @@ import 'metadata_assignment.dart';
 class MetadataSchemaArgs {
   /// The assignees
   final pulumi.Input<List<MetadataAssignment>>? assignedTo;
+
   /// The name of the metadata schema.
   final pulumi.Input<String>? metadataSchemaName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The schema defining the type.
   final pulumi.Input<String> schema;
+
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
 
@@ -35,7 +39,18 @@ class MetadataSchemaArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignedTo': ?pulumi.Input.mapOptionalInputValue<List<MetadataAssignment>, List<Map<String, dynamic>>>(assignedTo, (value) => pulumi.Input.encodeList<MetadataAssignment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'assignedTo':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MetadataAssignment>,
+            List<Map<String, dynamic>>
+          >(
+            assignedTo,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MetadataAssignment,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'metadataSchemaName': ?metadataSchemaName,
       'resourceGroupName': resourceGroupName,
       'schema': schema,
@@ -45,12 +60,28 @@ class MetadataSchemaArgs {
 
   factory MetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return MetadataSchemaArgs(
-      assignedTo: map['assignedTo'] == null ? null : (pulumi.Input.decodeList<MetadataAssignment>(map['assignedTo']!, (value) => MetadataAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadataSchemaName: map['metadataSchemaName'] == null ? null : (map['metadataSchemaName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schema: (map['schema'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      assignedTo: (() {
+        final guardedValue = map['assignedTo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MetadataAssignment>(
+            guardedValue,
+            (value) => MetadataAssignment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      metadataSchemaName: (() {
+        final guardedValue = map['metadataSchemaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

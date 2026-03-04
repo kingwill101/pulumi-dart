@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppSeenInfoResponse {
   /// category
   final pulumi.Input<String> category;
+
   /// risk
   final pulumi.Input<String> risk;
+
   /// standardPorts
   final pulumi.Input<String> standardPorts;
+
   /// subCategory
   final pulumi.Input<String> subCategory;
+
   /// tag
   final pulumi.Input<String> tag;
+
   /// technology
   final pulumi.Input<String> technology;
+
   /// title
   final pulumi.Input<String> title;
 
@@ -51,14 +57,13 @@ class AppSeenInfoResponse {
 
   factory AppSeenInfoResponse.fromMap(Map<String, dynamic> map) {
     return AppSeenInfoResponse(
-      category: (map['category'] as String).input(),
-      risk: (map['risk'] as String).input(),
-      standardPorts: (map['standardPorts'] as String).input(),
-      subCategory: (map['subCategory'] as String).input(),
-      tag: (map['tag'] as String).input(),
-      technology: (map['technology'] as String).input(),
-      title: (map['title'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      risk: pulumi.Input.fromValue(map['risk'] as String),
+      standardPorts: pulumi.Input.fromValue(map['standardPorts'] as String),
+      subCategory: pulumi.Input.fromValue(map['subCategory'] as String),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
+      technology: pulumi.Input.fromValue(map['technology'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

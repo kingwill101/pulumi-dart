@@ -4,16 +4,15 @@ enum SAPSoftwareInstallationType {
   sAPInstallWithoutOSConfig("SAPInstallWithoutOSConfig"),
   external("External");
 
-  const SAPSoftwareInstallationType(this.value);
-  final String value;
+  const SAPSoftwareInstallationType(this.wireValue);
+  final String wireValue;
 
   static SAPSoftwareInstallationType fromValue(String value) {
     for (final item in SAPSoftwareInstallationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SAPSoftwareInstallationType value: $value');
   }
 }
-

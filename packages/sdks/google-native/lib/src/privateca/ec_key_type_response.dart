@@ -9,20 +9,17 @@ class EcKeyTypeResponse {
 
   /// Creates a new [EcKeyTypeResponse].
   /// [signatureAlgorithm] Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-  EcKeyTypeResponse({
-    required this.signatureAlgorithm,
-  });
+  EcKeyTypeResponse({required this.signatureAlgorithm});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'signatureAlgorithm': signatureAlgorithm,
-    };
+    return <String, dynamic>{'signatureAlgorithm': signatureAlgorithm};
   }
 
   factory EcKeyTypeResponse.fromMap(Map<String, dynamic> map) {
     return EcKeyTypeResponse(
-      signatureAlgorithm: (map['signatureAlgorithm'] as String).input(),
+      signatureAlgorithm: pulumi.Input.fromValue(
+        map['signatureAlgorithm'] as String,
+      ),
     );
   }
 }
-

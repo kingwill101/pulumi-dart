@@ -6,7 +6,7 @@ import 'queue_state.dart';
 ///
 /// For information about RabbitMQ (AMQP) Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createqueue).
 ///
-/// > **NOTE:** Available since v1.127.0.
+/// &gt; **NOTE:** Available since v1.127.0.
 ///
 /// ## Example Usage
 ///
@@ -298,22 +298,31 @@ import 'queue_state.dart';
 class Queue extends pulumi.CustomResource {
   /// Specifies whether to automatically delete the queue. Valid values:
   late final pulumi.Output<bool?> autoDeleteState;
+
   /// The auto-expiration time for the queue.
   late final pulumi.Output<String?> autoExpireState;
+
   /// The dead-letter exchange.
   late final pulumi.Output<String?> deadLetterExchange;
+
   /// The dead-letter routing key.
   late final pulumi.Output<String?> deadLetterRoutingKey;
+
   /// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
   late final pulumi.Output<String> instanceId;
+
   /// The maximum number of messages that can be stored in the queue.
   late final pulumi.Output<String?> maxLength;
+
   /// The priority of the queue.
   late final pulumi.Output<int?> maximumPriority;
+
   /// The time to live (TTL) of a message in the queue.
   late final pulumi.Output<String?> messageTtl;
+
   /// The name of the queue to create.
   late final pulumi.Output<String> queueName;
+
   /// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
   late final pulumi.Output<String> virtualHostName;
 
@@ -321,34 +330,27 @@ class Queue extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Queue]. {@macro pulumi_amqp_queue_queue_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Queue(
-    String name, {
-    QueueArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:amqp/queue:Queue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoDeleteState = registerOutput<bool?>('autoDeleteState');
-    this.autoExpireState = registerOutput<String?>('autoExpireState');
-    this.deadLetterExchange = registerOutput<String?>('deadLetterExchange');
-    this.deadLetterRoutingKey = registerOutput<String?>('deadLetterRoutingKey');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxLength = registerOutput<String?>('maxLength');
-    this.maximumPriority = registerOutput<int?>('maximumPriority');
-    this.messageTtl = registerOutput<String?>('messageTtl');
-    this.queueName = registerOutput<String>('queueName');
-    this.virtualHostName = registerOutput<String>('virtualHostName');
+  Queue(String name, {QueueArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:amqp/queue:Queue',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    autoDeleteState = registerOutput<bool?>('autoDeleteState');
+    autoExpireState = registerOutput<String?>('autoExpireState');
+    deadLetterExchange = registerOutput<String?>('deadLetterExchange');
+    deadLetterRoutingKey = registerOutput<String?>('deadLetterRoutingKey');
+    instanceId = registerOutput<String>('instanceId');
+    maxLength = registerOutput<String?>('maxLength');
+    maximumPriority = registerOutput<int?>('maximumPriority');
+    messageTtl = registerOutput<String?>('messageTtl');
+    queueName = registerOutput<String>('queueName');
+    virtualHostName = registerOutput<String>('virtualHostName');
   }
 
   /// Gets an existing [Queue] resource's state with the given [name] and [id].
-  static Queue get(
-    String name,
-    pulumi.Input<String> id, {
-    QueueState? state,
-  }) {
+  static Queue get(String name, pulumi.Input<String> id, {QueueState? state}) {
     return Queue._get(
       name,
       state: state?.toMap(),
@@ -361,20 +363,20 @@ class Queue extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:amqp/queue:Queue',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoDeleteState = registerOutput<bool?>('autoDeleteState');
-    this.autoExpireState = registerOutput<String?>('autoExpireState');
-    this.deadLetterExchange = registerOutput<String?>('deadLetterExchange');
-    this.deadLetterRoutingKey = registerOutput<String?>('deadLetterRoutingKey');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.maxLength = registerOutput<String?>('maxLength');
-    this.maximumPriority = registerOutput<int?>('maximumPriority');
-    this.messageTtl = registerOutput<String?>('messageTtl');
-    this.queueName = registerOutput<String>('queueName');
-    this.virtualHostName = registerOutput<String>('virtualHostName');
+         'alicloud:amqp/queue:Queue',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoDeleteState = registerOutput<bool?>('autoDeleteState');
+    autoExpireState = registerOutput<String?>('autoExpireState');
+    deadLetterExchange = registerOutput<String?>('deadLetterExchange');
+    deadLetterRoutingKey = registerOutput<String?>('deadLetterRoutingKey');
+    instanceId = registerOutput<String>('instanceId');
+    maxLength = registerOutput<String?>('maxLength');
+    maximumPriority = registerOutput<int?>('maximumPriority');
+    messageTtl = registerOutput<String?>('messageTtl');
+    queueName = registerOutput<String>('queueName');
+    virtualHostName = registerOutput<String>('virtualHostName');
   }
 }

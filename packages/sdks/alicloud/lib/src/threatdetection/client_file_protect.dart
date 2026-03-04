@@ -6,7 +6,7 @@ import 'client_file_protect_state.dart';
 ///
 /// For information about Threat Detection Client File Protect and how to use it, see [What is Client File Protect](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createfileprotectrule).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -193,18 +193,25 @@ import 'client_file_protect_state.dart';
 class ClientFileProtect extends pulumi.CustomResource {
   /// 0 no alert 1 info 2 suspicious 3 critical.
   late final pulumi.Output<int?> alertLevel;
+
   /// file operation.
   late final pulumi.Output<List<String>> fileOps;
+
   /// file path.
   late final pulumi.Output<List<String>> filePaths;
+
   /// process path.
   late final pulumi.Output<List<String>> procPaths;
+
   /// rule action, pass or alert.
   late final pulumi.Output<String> ruleAction;
+
   /// ruleName.
   late final pulumi.Output<String> ruleName;
+
   /// rule status 0 is disable 1 is enable.
   late final pulumi.Output<int> status;
+
   /// switch id.
   late final pulumi.Output<String?> switchId;
 
@@ -217,19 +224,19 @@ class ClientFileProtect extends pulumi.CustomResource {
     ClientFileProtectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertLevel = registerOutput<int?>('alertLevel');
-    this.fileOps = registerOutput<List<String>>('fileOps');
-    this.filePaths = registerOutput<List<String>>('filePaths');
-    this.procPaths = registerOutput<List<String>>('procPaths');
-    this.ruleAction = registerOutput<String>('ruleAction');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.status = registerOutput<int>('status');
-    this.switchId = registerOutput<String?>('switchId');
+         'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertLevel = registerOutput<int?>('alertLevel');
+    fileOps = registerOutput<List<String>>('fileOps');
+    filePaths = registerOutput<List<String>>('filePaths');
+    procPaths = registerOutput<List<String>>('procPaths');
+    ruleAction = registerOutput<String>('ruleAction');
+    ruleName = registerOutput<String>('ruleName');
+    status = registerOutput<int>('status');
+    switchId = registerOutput<String?>('switchId');
   }
 
   /// Gets an existing [ClientFileProtect] resource's state with the given [name] and [id].
@@ -250,18 +257,18 @@ class ClientFileProtect extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertLevel = registerOutput<int?>('alertLevel');
-    this.fileOps = registerOutput<List<String>>('fileOps');
-    this.filePaths = registerOutput<List<String>>('filePaths');
-    this.procPaths = registerOutput<List<String>>('procPaths');
-    this.ruleAction = registerOutput<String>('ruleAction');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.status = registerOutput<int>('status');
-    this.switchId = registerOutput<String?>('switchId');
+         'alicloud:threatdetection/clientFileProtect:ClientFileProtect',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertLevel = registerOutput<int?>('alertLevel');
+    fileOps = registerOutput<List<String>>('fileOps');
+    filePaths = registerOutput<List<String>>('filePaths');
+    procPaths = registerOutput<List<String>>('procPaths');
+    ruleAction = registerOutput<String>('ruleAction');
+    ruleName = registerOutput<String>('ruleName');
+    status = registerOutput<int>('status');
+    switchId = registerOutput<String?>('switchId');
   }
 }

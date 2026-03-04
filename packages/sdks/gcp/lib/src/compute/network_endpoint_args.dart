@@ -11,19 +11,24 @@ class NetworkEndpointArgs {
   /// This is required for network endpoints of type GCE_VM_IP_PORT.
   /// The instance must be in the same zone of network endpoint group.
   final pulumi.Input<String>? instance;
+
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
   final pulumi.Input<String> ipAddress;
+
   /// The network endpoint group this endpoint is part of.
   final pulumi.Input<String> networkEndpointGroup;
+
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
   final pulumi.Input<int>? port;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Zone where the containing network endpoint group is located.
   final pulumi.Input<String>? zone;
 
@@ -56,13 +61,30 @@ class NetworkEndpointArgs {
 
   factory NetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointArgs(
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      networkEndpointGroup: pulumi.Input.fromValue(
+        map['networkEndpointGroup'] as String,
+      ),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

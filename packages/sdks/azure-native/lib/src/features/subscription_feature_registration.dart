@@ -135,9 +135,12 @@ import 'subscription_feature_registration_response_properties.dart';
 class SubscriptionFeatureRegistration extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure resource name.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<SubscriptionFeatureRegistrationResponseProperties> properties;
+  late final pulumi.Output<SubscriptionFeatureRegistrationResponseProperties>
+  properties;
+
   /// Azure resource type.
   late final pulumi.Output<String> type;
 
@@ -150,14 +153,17 @@ class SubscriptionFeatureRegistration extends pulumi.CustomResource {
     SubscriptionFeatureRegistrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:features:SubscriptionFeatureRegistration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:features:SubscriptionFeatureRegistration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<SubscriptionFeatureRegistrationResponseProperties>('properties');
-    this.type = registerOutput<String>('type');
+    properties =
+        registerOutput<SubscriptionFeatureRegistrationResponseProperties>(
+          'properties',
+        );
+    type = registerOutput<String>('type');
   }
 }

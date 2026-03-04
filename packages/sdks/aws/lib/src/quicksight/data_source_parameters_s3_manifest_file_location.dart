@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceParametersS3ManifestFileLocation {
   /// The name of the bucket that contains the manifest file.
   final pulumi.Input<String> bucket;
+
   /// The key of the manifest file within the bucket.
   final pulumi.Input<String> key;
 
@@ -17,17 +18,15 @@ class DataSourceParametersS3ManifestFileLocation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'key': key,
-    };
+    return <String, dynamic>{'bucket': bucket, 'key': key};
   }
 
-  factory DataSourceParametersS3ManifestFileLocation.fromMap(Map<String, dynamic> map) {
+  factory DataSourceParametersS3ManifestFileLocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceParametersS3ManifestFileLocation(
-      bucket: (map['bucket'] as String).input(),
-      key: (map['key'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

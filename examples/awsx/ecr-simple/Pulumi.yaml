@@ -1,0 +1,6 @@
+name: awsx-dart-ts-ecr-simple
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX simple ECR image example in Dart.

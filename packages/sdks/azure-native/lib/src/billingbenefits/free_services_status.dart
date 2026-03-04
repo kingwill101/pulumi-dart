@@ -6,16 +6,15 @@ enum FreeServicesStatus {
   valueCanceled("Canceled"),
   valueCompleted("Completed");
 
-  const FreeServicesStatus(this.value);
-  final String value;
+  const FreeServicesStatus(this.wireValue);
+  final String wireValue;
 
   static FreeServicesStatus fromValue(String value) {
     for (final item in FreeServicesStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FreeServicesStatus value: $value');
   }
 }
-

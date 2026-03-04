@@ -1,5 +1,3 @@
-library module_ga;
-
 export 'ga/accelerator.dart';
 export 'ga/accelerator_args.dart';
 export 'ga/accelerator_spare_ip_attachment.dart';

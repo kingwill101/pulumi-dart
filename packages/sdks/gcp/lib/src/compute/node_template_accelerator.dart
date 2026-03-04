@@ -6,6 +6,7 @@ class NodeTemplateAccelerator {
   /// The number of the guest accelerator cards exposed to this
   /// node template.
   final pulumi.Input<int>? acceleratorCount;
+
   /// Full or partial URL of the accelerator type resource to expose
   /// to this node template.
   final pulumi.Input<String>? acceleratorType;
@@ -13,10 +14,7 @@ class NodeTemplateAccelerator {
   /// Creates a new [NodeTemplateAccelerator].
   /// [acceleratorCount] The number of the guest accelerator cards exposed to this
   /// [acceleratorType] Full or partial URL of the accelerator type resource to expose
-  NodeTemplateAccelerator({
-    this.acceleratorCount,
-    this.acceleratorType,
-  });
+  NodeTemplateAccelerator({this.acceleratorCount, this.acceleratorType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class NodeTemplateAccelerator {
 
   factory NodeTemplateAccelerator.fromMap(Map<String, dynamic> map) {
     return NodeTemplateAccelerator(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      acceleratorCount: (() {
+        final guardedValue = map['acceleratorCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      acceleratorType: (() {
+        final guardedValue = map['acceleratorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

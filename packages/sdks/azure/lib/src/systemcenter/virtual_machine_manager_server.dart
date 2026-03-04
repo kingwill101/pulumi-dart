@@ -4,9 +4,9 @@ import 'virtual_machine_manager_server_state.dart';
 
 /// Manages a System Center Virtual Machine Manager Server.
 ///
-/// > **Note:** By request of the service team the provider no longer automatically registering the `Microsoft.ScVmm` Resource Provider for this resource. To register it you can run `az provider register --namespace Microsoft.ScVmm`.
+/// &gt; **Note:** By request of the service team the provider no longer automatically registering the `Microsoft.ScVmm` Resource Provider for this resource. To register it you can run `az provider register --namespace Microsoft.ScVmm`.
 ///
-/// > **Note:** This resource depends on an existing `System Center Virtual Machine Manager Host Machine`, `Arc Resource Bridge` and `Custom Location`. Installing and configuring these dependencies is outside the scope of this document. See [Virtual Machine Manager documentation](https://learn.microsoft.com/en-us/system-center/vmm/?view=sc-vmm-2022) and [Install VMM](https://learn.microsoft.com/en-us/system-center/vmm/install?view=sc-vmm-2022) for more details of `System Center Virtual Machine Manager Host Machine`. See [What is Azure Arc resource bridge](https://learn.microsoft.com/en-us/azure/azure-arc/resource-bridge/overview) and [Overview of Arc-enabled System Center Virtual Machine Manager](https://learn.microsoft.com/en-us/azure/azure-arc/system-center-virtual-machine-manager/overview) for more details of `Arc Resource Bridge/Appliance`. See [Create and manage custom locations on Azure Arc-enabled Kubernetes](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/custom-locations) for more details of `Custom Location`. If you encounter issues while configuring, we'd recommend opening a ticket with Microsoft Support.
+/// &gt; **Note:** This resource depends on an existing `System Center Virtual Machine Manager Host Machine`, `Arc Resource Bridge` and `Custom Location`. Installing and configuring these dependencies is outside the scope of this document. See [Virtual Machine Manager documentation](https://learn.microsoft.com/en-us/system-center/vmm/?view=sc-vmm-2022) and [Install VMM](https://learn.microsoft.com/en-us/system-center/vmm/install?view=sc-vmm-2022) for more details of `System Center Virtual Machine Manager Host Machine`. See [What is Azure Arc resource bridge](https://learn.microsoft.com/en-us/azure/azure-arc/resource-bridge/overview) and [Overview of Arc-enabled System Center Virtual Machine Manager](https://learn.microsoft.com/en-us/azure/azure-arc/system-center-virtual-machine-manager/overview) for more details of `Arc Resource Bridge/Appliance`. See [Create and manage custom locations on Azure Arc-enabled Kubernetes](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/custom-locations) for more details of `Custom Location`. If you encounter issues while configuring, we'd recommend opening a ticket with Microsoft Support.
 ///
 /// ## Example Usage
 ///
@@ -170,7 +170,7 @@ import 'virtual_machine_manager_server_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ScVmm` - 2023-10-07
@@ -185,20 +185,28 @@ import 'virtual_machine_manager_server_state.dart';
 class VirtualMachineManagerServer extends pulumi.CustomResource {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
+
   /// The FQDN of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> fqdn;
+
   /// The Azure Region where the System Center Virtual Machine Manager Server should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The password that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> password;
+
   /// The port on which the System Center Virtual Machine Manager Server is listening. Possible values are between `1` and `65535`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> port;
+
   /// The name of the Resource Group where the System Center Virtual Machine Manager should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Server.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The username that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> username;
 
@@ -211,20 +219,20 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
     VirtualMachineManagerServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.location = registerOutput<String>('location');
+         'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    fqdn = registerOutput<String>('fqdn');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.port = registerOutput<int?>('port');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    port = registerOutput<int?>('port');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [VirtualMachineManagerServer] resource's state with the given [name] and [id].
@@ -245,19 +253,19 @@ class VirtualMachineManagerServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.location = registerOutput<String>('location');
+         'azure:systemcenter/virtualMachineManagerServer:VirtualMachineManagerServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    fqdn = registerOutput<String>('fqdn');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.port = registerOutput<int?>('port');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    port = registerOutput<int?>('port');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    username = registerOutput<String>('username');
   }
 }

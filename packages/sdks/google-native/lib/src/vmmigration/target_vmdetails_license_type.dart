@@ -4,16 +4,15 @@ enum TargetVMDetailsLicenseType {
   payg("PAYG"),
   byol("BYOL");
 
-  const TargetVMDetailsLicenseType(this.value);
-  final String value;
+  const TargetVMDetailsLicenseType(this.wireValue);
+  final String wireValue;
 
   static TargetVMDetailsLicenseType fromValue(String value) {
     for (final item in TargetVMDetailsLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetVMDetailsLicenseType value: $value');
   }
 }
-

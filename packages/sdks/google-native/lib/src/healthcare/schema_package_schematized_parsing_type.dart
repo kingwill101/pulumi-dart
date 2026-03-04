@@ -4,16 +4,17 @@ enum SchemaPackageSchematizedParsingType {
   softFail("SOFT_FAIL"),
   hardFail("HARD_FAIL");
 
-  const SchemaPackageSchematizedParsingType(this.value);
-  final String value;
+  const SchemaPackageSchematizedParsingType(this.wireValue);
+  final String wireValue;
 
   static SchemaPackageSchematizedParsingType fromValue(String value) {
     for (final item in SchemaPackageSchematizedParsingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchemaPackageSchematizedParsingType value: $value');
+    throw ArgumentError(
+      'Unknown SchemaPackageSchematizedParsingType value: $value',
+    );
   }
 }
-

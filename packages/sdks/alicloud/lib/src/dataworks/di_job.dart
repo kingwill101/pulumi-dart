@@ -1,12 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'di_job_args.dart';
-import 'di_job_destination_data_source_setting.dart';
 import 'di_job_job_settings.dart';
 import 'di_job_resource_settings.dart';
-import 'di_job_source_data_source_setting.dart';
 import 'di_job_state.dart';
-import 'di_job_table_mapping.dart';
-import 'di_job_transformation_rule.dart';
 
 /// Provides a Data Works Di Job resource.
 ///
@@ -14,7 +10,7 @@ import 'di_job_transformation_rule.dart';
 ///
 /// For information about Data Works Di Job and how to use it, see [What is Di Job](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdijob).
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -718,16 +714,23 @@ import 'di_job_transformation_rule.dart';
 class DiJob extends pulumi.CustomResource {
   /// Description of the integration task
   late final pulumi.Output<String?> description;
+
   /// Destination data source See `destination_data_source_settings` below.
-  late final pulumi.Output<List<DiJobDestinationDataSourceSetting>> destinationDataSourceSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  destinationDataSourceSettings;
+
   /// The type of the target data source. Enumerated values: Hologres and Hive.
   late final pulumi.Output<String> destinationDataSourceType;
+
   /// Integration Task Id
   late final pulumi.Output<int> diJobId;
+
   /// Task Name.
   late final pulumi.Output<String> jobName;
+
   /// The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `job_settings` below.
   late final pulumi.Output<DiJobJobSettings?> jobSettings;
+
   /// Synchronization type, optional enumeration values are:
   ///
   /// Fulllandrealtimeincremental (full and real-time incremental)
@@ -740,54 +743,63 @@ class DiJob extends pulumi.CustomResource {
   ///
   /// FullAndOfflineIncremental (full amount + offline increment)
   late final pulumi.Output<String> migrationType;
+
   /// Project Id
   late final pulumi.Output<int> projectId;
+
   /// Resource Group Properties See `resource_settings` below.
   late final pulumi.Output<DiJobResourceSettings> resourceSettings;
+
   /// Source data source setting List See `source_data_source_settings` below.
-  late final pulumi.Output<List<DiJobSourceDataSourceSetting>> sourceDataSourceSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>> sourceDataSourceSettings;
+
   /// The type of the source data source. The enumerated value is MySQL.
   late final pulumi.Output<String> sourceDataSourceType;
+
   /// Synchronize object transformation mapping list See `table_mappings` below.
-  late final pulumi.Output<List<DiJobTableMapping>> tableMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>> tableMappings;
+
   /// Definition list of synchronization object conversion rules See `transformation_rules` below.
-  late final pulumi.Output<List<DiJobTransformationRule>?> transformationRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> transformationRules;
 
   /// Creates a new [DiJob].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [DiJob]. {@macro pulumi_dataworks_di_job_di_job_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  DiJob(
-    String name, {
-    DiJobArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:dataworks/diJob:DiJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destinationDataSourceSettings = registerOutput<List<DiJobDestinationDataSourceSetting>>('destinationDataSourceSettings');
-    this.destinationDataSourceType = registerOutput<String>('destinationDataSourceType');
-    this.diJobId = registerOutput<int>('diJobId');
-    this.jobName = registerOutput<String>('jobName');
-    this.jobSettings = registerOutput<DiJobJobSettings?>('jobSettings');
-    this.migrationType = registerOutput<String>('migrationType');
-    this.projectId = registerOutput<int>('projectId');
-    this.resourceSettings = registerOutput<DiJobResourceSettings>('resourceSettings');
-    this.sourceDataSourceSettings = registerOutput<List<DiJobSourceDataSourceSetting>>('sourceDataSourceSettings');
-    this.sourceDataSourceType = registerOutput<String>('sourceDataSourceType');
-    this.tableMappings = registerOutput<List<DiJobTableMapping>>('tableMappings');
-    this.transformationRules = registerOutput<List<DiJobTransformationRule>?>('transformationRules');
+  DiJob(String name, {DiJobArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:dataworks/diJob:DiJob',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String?>('description');
+    destinationDataSourceSettings = registerOutput<List<Map<String, dynamic>>>(
+      'destinationDataSourceSettings',
+    );
+    destinationDataSourceType = registerOutput<String>(
+      'destinationDataSourceType',
+    );
+    diJobId = registerOutput<int>('diJobId');
+    jobName = registerOutput<String>('jobName');
+    jobSettings = registerOutput<DiJobJobSettings?>('jobSettings');
+    migrationType = registerOutput<String>('migrationType');
+    projectId = registerOutput<int>('projectId');
+    resourceSettings = registerOutput<DiJobResourceSettings>(
+      'resourceSettings',
+    );
+    sourceDataSourceSettings = registerOutput<List<Map<String, dynamic>>>(
+      'sourceDataSourceSettings',
+    );
+    sourceDataSourceType = registerOutput<String>('sourceDataSourceType');
+    tableMappings = registerOutput<List<Map<String, dynamic>>>('tableMappings');
+    transformationRules = registerOutput<List<Map<String, dynamic>>?>(
+      'transformationRules',
+    );
   }
 
   /// Gets an existing [DiJob] resource's state with the given [name] and [id].
-  static DiJob get(
-    String name,
-    pulumi.Input<String> id, {
-    DiJobState? state,
-  }) {
+  static DiJob get(String name, pulumi.Input<String> id, {DiJobState? state}) {
     return DiJob._get(
       name,
       state: state?.toMap(),
@@ -800,23 +812,33 @@ class DiJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/diJob:DiJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destinationDataSourceSettings = registerOutput<List<DiJobDestinationDataSourceSetting>>('destinationDataSourceSettings');
-    this.destinationDataSourceType = registerOutput<String>('destinationDataSourceType');
-    this.diJobId = registerOutput<int>('diJobId');
-    this.jobName = registerOutput<String>('jobName');
-    this.jobSettings = registerOutput<DiJobJobSettings?>('jobSettings');
-    this.migrationType = registerOutput<String>('migrationType');
-    this.projectId = registerOutput<int>('projectId');
-    this.resourceSettings = registerOutput<DiJobResourceSettings>('resourceSettings');
-    this.sourceDataSourceSettings = registerOutput<List<DiJobSourceDataSourceSetting>>('sourceDataSourceSettings');
-    this.sourceDataSourceType = registerOutput<String>('sourceDataSourceType');
-    this.tableMappings = registerOutput<List<DiJobTableMapping>>('tableMappings');
-    this.transformationRules = registerOutput<List<DiJobTransformationRule>?>('transformationRules');
+         'alicloud:dataworks/diJob:DiJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    destinationDataSourceSettings = registerOutput<List<Map<String, dynamic>>>(
+      'destinationDataSourceSettings',
+    );
+    destinationDataSourceType = registerOutput<String>(
+      'destinationDataSourceType',
+    );
+    diJobId = registerOutput<int>('diJobId');
+    jobName = registerOutput<String>('jobName');
+    jobSettings = registerOutput<DiJobJobSettings?>('jobSettings');
+    migrationType = registerOutput<String>('migrationType');
+    projectId = registerOutput<int>('projectId');
+    resourceSettings = registerOutput<DiJobResourceSettings>(
+      'resourceSettings',
+    );
+    sourceDataSourceSettings = registerOutput<List<Map<String, dynamic>>>(
+      'sourceDataSourceSettings',
+    );
+    sourceDataSourceType = registerOutput<String>('sourceDataSourceType');
+    tableMappings = registerOutput<List<Map<String, dynamic>>>('tableMappings');
+    transformationRules = registerOutput<List<Map<String, dynamic>>?>(
+      'transformationRules',
+    );
   }
 }

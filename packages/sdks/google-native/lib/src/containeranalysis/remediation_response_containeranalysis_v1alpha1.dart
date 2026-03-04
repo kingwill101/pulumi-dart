@@ -7,8 +7,10 @@ import 'uriresponse.dart';
 class RemediationResponseContaineranalysisV1alpha1 {
   /// Contains a comprehensive human-readable discussion of the remediation.
   final pulumi.Input<String> details;
+
   /// The type of remediation that can be applied.
   final pulumi.Input<String> remediationType;
+
   /// Contains the URL where to obtain the remediation.
   final pulumi.Input<URIResponse> remediationUri;
 
@@ -26,16 +28,25 @@ class RemediationResponseContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'details': details,
       'remediationType': remediationType,
-      'remediationUri': pulumi.Input.mapInputValue<URIResponse, Map<String, dynamic>>(remediationUri, (value) => value.toMap()),
+      'remediationUri':
+          pulumi.Input.mapInputValue<URIResponse, Map<String, dynamic>>(
+            remediationUri,
+            (value) => value.toMap(),
+          ),
     };
   }
 
-  factory RemediationResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory RemediationResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RemediationResponseContaineranalysisV1alpha1(
-      details: (map['details'] as String).input(),
-      remediationType: (map['remediationType'] as String).input(),
-      remediationUri: (URIResponse.fromMap((map['remediationUri'] as Map).cast<String, dynamic>())).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      remediationType: pulumi.Input.fromValue(map['remediationType'] as String),
+      remediationUri: pulumi.Input.fromValue(
+        URIResponse.fromMap(
+          (map['remediationUri']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

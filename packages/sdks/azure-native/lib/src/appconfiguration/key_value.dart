@@ -164,28 +164,38 @@ import 'key_value_args.dart';
 class KeyValue extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The content type of the key-value's value.
   /// Providing a proper content-type can enable transformations of values when they are retrieved by applications.
   late final pulumi.Output<String?> contentType;
+
   /// An ETag indicating the state of a key-value within a configuration store.
   late final pulumi.Output<String> eTag;
+
   /// The primary identifier of a key-value.
   /// The key is used in unison with the label to uniquely identify a key-value.
   late final pulumi.Output<String> key;
+
   /// A value used to group key-values.
   /// The label is used in unison with the key to uniquely identify a key-value.
   late final pulumi.Output<String> label;
+
   /// The last time a modifying operation was performed on the given key-value.
   late final pulumi.Output<String> lastModified;
+
   /// A value indicating whether the key-value is locked.
   /// A locked key-value may not be modified until it is unlocked.
   late final pulumi.Output<bool> locked;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// A dictionary of tags that can help identify what a key-value may be applicable for.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// The value of the key-value.
   late final pulumi.Output<String?> value;
 
@@ -198,21 +208,21 @@ class KeyValue extends pulumi.CustomResource {
     KeyValueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appconfiguration:KeyValue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contentType = registerOutput<String?>('contentType');
-    this.eTag = registerOutput<String>('eTag');
-    this.key = registerOutput<String>('key');
-    this.label = registerOutput<String>('label');
-    this.lastModified = registerOutput<String>('lastModified');
-    this.locked = registerOutput<bool>('locked');
+         'azure-native:appconfiguration:KeyValue',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentType = registerOutput<String?>('contentType');
+    eTag = registerOutput<String>('eTag');
+    key = registerOutput<String>('key');
+    label = registerOutput<String>('label');
+    lastModified = registerOutput<String>('lastModified');
+    locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String?>('value');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
   }
 }

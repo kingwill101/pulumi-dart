@@ -1,0 +1,6 @@
+name: awsx-dart-ts-nlb-simple
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX simple network load balancer in Dart.

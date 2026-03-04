@@ -1,5 +1,3 @@
-library module_realtimecompute;
-
 export 'realtimecompute/deployment_args.dart';
 export 'realtimecompute/deployment_artifact.dart';
 export 'realtimecompute/deployment_artifact_jar_artifact.dart';

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteLocation {
   /// Address of the location.
   final pulumi.Input<String> address;
+
   /// Latitude of the location.
   final pulumi.Input<String> latitude;
+
   /// Longitude of the location.
   final pulumi.Input<String> longitude;
 
@@ -30,10 +32,9 @@ class GetSiteLocation {
 
   factory GetSiteLocation.fromMap(Map<String, dynamic> map) {
     return GetSiteLocation(
-      address: (map['address'] as String).input(),
-      latitude: (map['latitude'] as String).input(),
-      longitude: (map['longitude'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      latitude: pulumi.Input.fromValue(map['latitude'] as String),
+      longitude: pulumi.Input.fromValue(map['longitude'] as String),
     );
   }
 }
-

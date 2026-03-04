@@ -4,16 +4,17 @@ enum AllocationAggregateReservationWorkloadType {
   serving("SERVING"),
   unspecified("UNSPECIFIED");
 
-  const AllocationAggregateReservationWorkloadType(this.value);
-  final String value;
+  const AllocationAggregateReservationWorkloadType(this.wireValue);
+  final String wireValue;
 
   static AllocationAggregateReservationWorkloadType fromValue(String value) {
     for (final item in AllocationAggregateReservationWorkloadType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AllocationAggregateReservationWorkloadType value: $value');
+    throw ArgumentError(
+      'Unknown AllocationAggregateReservationWorkloadType value: $value',
+    );
   }
 }
-

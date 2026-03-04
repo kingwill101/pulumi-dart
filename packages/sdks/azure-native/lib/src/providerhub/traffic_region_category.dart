@@ -9,16 +9,15 @@ enum TrafficRegionCategory {
   restOfTheWorldGroupOne("RestOfTheWorldGroupOne"),
   restOfTheWorldGroupTwo("RestOfTheWorldGroupTwo");
 
-  const TrafficRegionCategory(this.value);
-  final String value;
+  const TrafficRegionCategory(this.wireValue);
+  final String wireValue;
 
   static TrafficRegionCategory fromValue(String value) {
     for (final item in TrafficRegionCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TrafficRegionCategory value: $value');
   }
 }
-

@@ -6,18 +6,25 @@ import 'membership_binding_lifecycle_state_response_gkehub_v1beta.dart';
 class GetBindingGkehubV1betaResult {
   /// When the membership binding was created.
   final String createTime;
+
   /// When the membership binding was deleted.
   final String deleteTime;
+
   /// Optional. Labels for this MembershipBinding.
   final Map<String, String> labels;
+
   /// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
   final String name;
+
   /// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
   final String scope;
+
   /// State of the membership binding resource.
   final MembershipBindingLifecycleStateResponseGkehubV1beta state;
+
   /// Google-generated UUID for this resource. This is unique across all membershipbinding resources. If a membershipbinding resource is deleted and another resource with the same name is created, it gets a different uid.
   final String uid;
+
   /// When the membership binding was last updated.
   final String updateTime;
 
@@ -61,10 +68,11 @@ class GetBindingGkehubV1betaResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       scope: map['scope'] as String,
-      state: MembershipBindingLifecycleStateResponseGkehubV1beta.fromMap((map['state'] as Map).cast<String, dynamic>()),
+      state: MembershipBindingLifecycleStateResponseGkehubV1beta.fromMap(
+        (map['state']! as Map).cast<String, dynamic>(),
+      ),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

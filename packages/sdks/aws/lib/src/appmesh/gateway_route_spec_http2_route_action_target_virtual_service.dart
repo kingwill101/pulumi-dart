@@ -13,15 +13,16 @@ class GatewayRouteSpecHttp2RouteActionTargetVirtualService {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'virtualServiceName': virtualServiceName,
-    };
+    return <String, dynamic>{'virtualServiceName': virtualServiceName};
   }
 
-  factory GatewayRouteSpecHttp2RouteActionTargetVirtualService.fromMap(Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttp2RouteActionTargetVirtualService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayRouteSpecHttp2RouteActionTargetVirtualService(
-      virtualServiceName: (map['virtualServiceName'] as String).input(),
+      virtualServiceName: pulumi.Input.fromValue(
+        map['virtualServiceName'] as String,
+      ),
     );
   }
 }
-

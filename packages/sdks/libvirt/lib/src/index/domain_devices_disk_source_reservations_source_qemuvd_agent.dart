@@ -6,9 +6,14 @@ import 'domain_devices_disk_source_reservations_source_qemuvd_agent_mouse.dart';
 
 class DomainDevicesDiskSourceReservationsSourceQemuvdAgent {
   /// Configures clipboard sharing settings for the QEMU guest agent.
-  final pulumi.Input<DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard>? clipBoard;
+  final pulumi.Input<
+    DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard
+  >?
+  clipBoard;
+
   /// Configures mouse settings for the QEMU guest agent in the random number generator setup.
-  final pulumi.Input<DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse>? mouse;
+  final pulumi.Input<DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse>?
+  mouse;
 
   /// Creates a new [DomainDevicesDiskSourceReservationsSourceQemuvdAgent].
   /// [clipBoard] Configures clipboard sharing settings for the QEMU guest agent.
@@ -20,16 +25,41 @@ class DomainDevicesDiskSourceReservationsSourceQemuvdAgent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clipBoard': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard, Map<String, dynamic>>(clipBoard, (value) => value.toMap()),
-      'mouse': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse, Map<String, dynamic>>(mouse, (value) => value.toMap()),
+      'clipBoard':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard,
+            Map<String, dynamic>
+          >(clipBoard, (value) => value.toMap()),
+      'mouse':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse,
+            Map<String, dynamic>
+          >(mouse, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskSourceReservationsSourceQemuvdAgent.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskSourceReservationsSourceQemuvdAgent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskSourceReservationsSourceQemuvdAgent(
-      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard.fromMap((map['clipBoard']! as Map).cast<String, dynamic>())).input(),
-      mouse: map['mouse'] == null ? null : (DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse.fromMap((map['mouse']! as Map).cast<String, dynamic>())).input(),
+      clipBoard: (() {
+        final guardedValue = map['clipBoard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskSourceReservationsSourceQemuvdAgentClipBoard.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mouse: (() {
+        final guardedValue = map['mouse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskSourceReservationsSourceQemuvdAgentMouse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

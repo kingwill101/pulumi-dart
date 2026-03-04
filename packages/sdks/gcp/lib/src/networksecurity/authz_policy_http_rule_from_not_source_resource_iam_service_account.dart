@@ -7,16 +7,20 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount {
   /// Examples:
   /// * abc matches the value xyz.abc.def
   final pulumi.Input<String>? contains;
+
   /// The input string must match exactly the string specified here.
   /// Examples:
   /// * abc only matches the value abc.
   final pulumi.Input<String>? exact;
+
   /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
   final pulumi.Input<bool>? ignoreCase;
+
   /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value abc.xyz
   final pulumi.Input<String>? prefix;
+
   /// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value xyz.abc
@@ -46,14 +50,35 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount {
     };
   }
 
-  factory AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount.fromMap(Map<String, dynamic> map) {
+  factory AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount(
-      contains: map['contains'] == null ? null : (map['contains']! as String).input(),
-      exact: map['exact'] == null ? null : (map['exact']! as String).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
+      contains: (() {
+        final guardedValue = map['contains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exact: (() {
+        final guardedValue = map['exact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ignoreCase: (() {
+        final guardedValue = map['ignoreCase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      suffix: (() {
+        final guardedValue = map['suffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

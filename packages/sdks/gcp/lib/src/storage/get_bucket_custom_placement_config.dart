@@ -8,20 +8,17 @@ class GetBucketCustomPlacementConfig {
 
   /// Creates a new [GetBucketCustomPlacementConfig].
   /// [dataLocations] The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
-  GetBucketCustomPlacementConfig({
-    required this.dataLocations,
-  });
+  GetBucketCustomPlacementConfig({required this.dataLocations});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataLocations': dataLocations,
-    };
+    return <String, dynamic>{'dataLocations': dataLocations};
   }
 
   factory GetBucketCustomPlacementConfig.fromMap(Map<String, dynamic> map) {
     return GetBucketCustomPlacementConfig(
-      dataLocations: ((map['dataLocations'] as List).cast<String>()).input(),
+      dataLocations: pulumi.Input.fromValue(
+        (map['dataLocations'] as List).cast<String>(),
+      ),
     );
   }
 }
-

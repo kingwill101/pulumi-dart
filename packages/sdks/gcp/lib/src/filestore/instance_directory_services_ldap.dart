@@ -5,10 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceDirectoryServicesLdap {
   /// The LDAP domain name in the format of `my-domain.com`.
   final pulumi.Input<String> domain;
+
   /// The groups Organizational Unit (OU) is optional. This parameter is a hint
   /// to allow faster lookup in the LDAP namespace. In case that this parameter
   /// is not provided, Filestore instance will query the whole LDAP namespace.
   final pulumi.Input<String>? groupsOu;
+
   /// The servers names are used for specifying the LDAP servers names.
   /// The LDAP servers names can come with two formats:
   /// 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
@@ -16,6 +18,7 @@ class InstanceDirectoryServicesLdap {
   /// All servers names must be in the same format: either all DNS names or all
   /// IP addresses.
   final pulumi.Input<List<String>> servers;
+
   /// The users Organizational Unit (OU) is optional. This parameter is a hint
   /// to allow faster lookup in the LDAP namespace. In case that this parameter
   /// is not provided, Filestore instance will query the whole LDAP namespace.
@@ -44,11 +47,18 @@ class InstanceDirectoryServicesLdap {
 
   factory InstanceDirectoryServicesLdap.fromMap(Map<String, dynamic> map) {
     return InstanceDirectoryServicesLdap(
-      domain: (map['domain'] as String).input(),
-      groupsOu: map['groupsOu'] == null ? null : (map['groupsOu']! as String).input(),
-      servers: ((map['servers'] as List).cast<String>()).input(),
-      usersOu: map['usersOu'] == null ? null : (map['usersOu']! as String).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      groupsOu: (() {
+        final guardedValue = map['groupsOu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      servers: pulumi.Input.fromValue((map['servers'] as List).cast<String>()),
+      usersOu: (() {
+        final guardedValue = map['usersOu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

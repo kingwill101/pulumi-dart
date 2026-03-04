@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InitialReplicationDetailsResponse {
   /// The initial replication progress percentage.
   final pulumi.Input<String>? initialReplicationProgressPercentage;
+
   /// Initial replication type.
   final pulumi.Input<String>? initialReplicationType;
 
@@ -19,16 +20,24 @@ class InitialReplicationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'initialReplicationProgressPercentage': ?initialReplicationProgressPercentage,
+      'initialReplicationProgressPercentage':
+          ?initialReplicationProgressPercentage,
       'initialReplicationType': ?initialReplicationType,
     };
   }
 
   factory InitialReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InitialReplicationDetailsResponse(
-      initialReplicationProgressPercentage: map['initialReplicationProgressPercentage'] == null ? null : (map['initialReplicationProgressPercentage']! as String).input(),
-      initialReplicationType: map['initialReplicationType'] == null ? null : (map['initialReplicationType']! as String).input(),
+      initialReplicationProgressPercentage: (() {
+        final guardedValue = map['initialReplicationProgressPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      initialReplicationType: (() {
+        final guardedValue = map['initialReplicationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,59 +8,87 @@ import 'vmware_cbt_security_profile_properties.dart';
 class VMwareCbtEnableMigrationInput {
   /// The confidential VM key vault Id for ADE installation.
   final pulumi.Input<String>? confidentialVmKeyVaultId;
+
   /// The data mover run as account Id.
   final pulumi.Input<String> dataMoverRunAsAccountId;
+
   /// The disks to include list.
   final pulumi.Input<List<VMwareCbtDiskInput>> disksToInclude;
+
   /// The class type.
   /// Expected value is 'VMwareCbt'.
   final pulumi.Input<String> instanceType;
+
   /// License type.
   final pulumi.Input<String>? licenseType;
+
   /// The license type for Linux VM's.
   final pulumi.Input<String>? linuxLicenseType;
+
   /// A value indicating whether auto resync is to be done.
   final pulumi.Input<String>? performAutoResync;
+
   /// A value indicating whether bulk SQL RP registration to be done.
   final pulumi.Input<String>? performSqlBulkRegistration;
+
   /// The tags for the seed disks.
   final pulumi.Input<Map<String, String>>? seedDiskTags;
+
   /// The snapshot run as account Id.
   final pulumi.Input<String> snapshotRunAsAccountId;
+
   /// The SQL Server license type.
   final pulumi.Input<String>? sqlServerLicenseType;
+
   /// The target availability set ARM Id.
   final pulumi.Input<String>? targetAvailabilitySetId;
+
   /// The target availability zone.
   final pulumi.Input<String>? targetAvailabilityZone;
+
   /// The target boot diagnostics storage account ARM Id.
   final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
+
   /// The tags for the target disks.
   final pulumi.Input<Map<String, String>>? targetDiskTags;
+
   /// The target network ARM Id.
   final pulumi.Input<String> targetNetworkId;
+
   /// The tags for the target NICs.
   final pulumi.Input<Map<String, String>>? targetNicTags;
+
   /// The target proximity placement group ARM Id.
   final pulumi.Input<String>? targetProximityPlacementGroupId;
+
   /// The target resource group ARM Id.
   final pulumi.Input<String> targetResourceGroupId;
+
   /// The target subnet name.
   final pulumi.Input<String>? targetSubnetName;
+
   /// The target VM name.
   final pulumi.Input<String>? targetVmName;
+
   /// The target VM security profile.
-  final pulumi.Input<VMwareCbtSecurityProfileProperties>? targetVmSecurityProfile;
+  final pulumi.Input<VMwareCbtSecurityProfileProperties>?
+  targetVmSecurityProfile;
+
   /// The target VM size.
   final pulumi.Input<String>? targetVmSize;
+
   /// The target VM tags.
   final pulumi.Input<Map<String, String>>? targetVmTags;
+
   /// The selected test network ARM Id.
   final pulumi.Input<String>? testNetworkId;
+
   /// The selected test subnet name.
   final pulumi.Input<String>? testSubnetName;
+
   /// The OS name selected by user.
   final pulumi.Input<String>? userSelectedOSName;
+
   /// The ARM Id of the VM discovered in VMware.
   final pulumi.Input<String> vmwareMachineId;
 
@@ -128,7 +156,18 @@ class VMwareCbtEnableMigrationInput {
     return <String, dynamic>{
       'confidentialVmKeyVaultId': ?confidentialVmKeyVaultId,
       'dataMoverRunAsAccountId': dataMoverRunAsAccountId,
-      'disksToInclude': pulumi.Input.mapInputValue<List<VMwareCbtDiskInput>, List<Map<String, dynamic>>>(disksToInclude, (value) => pulumi.Input.encodeList<VMwareCbtDiskInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'disksToInclude':
+          pulumi.Input.mapInputValue<
+            List<VMwareCbtDiskInput>,
+            List<Map<String, dynamic>>
+          >(
+            disksToInclude,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VMwareCbtDiskInput,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'instanceType': instanceType,
       'licenseType': ?licenseType,
       'linuxLicenseType': ?linuxLicenseType,
@@ -139,7 +178,8 @@ class VMwareCbtEnableMigrationInput {
       'sqlServerLicenseType': ?sqlServerLicenseType,
       'targetAvailabilitySetId': ?targetAvailabilitySetId,
       'targetAvailabilityZone': ?targetAvailabilityZone,
-      'targetBootDiagnosticsStorageAccountId': ?targetBootDiagnosticsStorageAccountId,
+      'targetBootDiagnosticsStorageAccountId':
+          ?targetBootDiagnosticsStorageAccountId,
       'targetDiskTags': ?targetDiskTags,
       'targetNetworkId': targetNetworkId,
       'targetNicTags': ?targetNicTags,
@@ -147,7 +187,11 @@ class VMwareCbtEnableMigrationInput {
       'targetResourceGroupId': targetResourceGroupId,
       'targetSubnetName': ?targetSubnetName,
       'targetVmName': ?targetVmName,
-      'targetVmSecurityProfile': ?pulumi.Input.mapOptionalInputValue<VMwareCbtSecurityProfileProperties, Map<String, dynamic>>(targetVmSecurityProfile, (value) => value.toMap()),
+      'targetVmSecurityProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VMwareCbtSecurityProfileProperties,
+            Map<String, dynamic>
+          >(targetVmSecurityProfile, (value) => value.toMap()),
       'targetVmSize': ?targetVmSize,
       'targetVmTags': ?targetVmTags,
       'testNetworkId': ?testNetworkId,
@@ -159,35 +203,143 @@ class VMwareCbtEnableMigrationInput {
 
   factory VMwareCbtEnableMigrationInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtEnableMigrationInput(
-      confidentialVmKeyVaultId: map['confidentialVmKeyVaultId'] == null ? null : (map['confidentialVmKeyVaultId']! as String).input(),
-      dataMoverRunAsAccountId: (map['dataMoverRunAsAccountId'] as String).input(),
-      disksToInclude: (pulumi.Input.decodeList<VMwareCbtDiskInput>(map['disksToInclude'], (value) => VMwareCbtDiskInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
-      linuxLicenseType: map['linuxLicenseType'] == null ? null : (map['linuxLicenseType']! as String).input(),
-      performAutoResync: map['performAutoResync'] == null ? null : (map['performAutoResync']! as String).input(),
-      performSqlBulkRegistration: map['performSqlBulkRegistration'] == null ? null : (map['performSqlBulkRegistration']! as String).input(),
-      seedDiskTags: map['seedDiskTags'] == null ? null : ((map['seedDiskTags']! as Map).cast<String, String>()).input(),
-      snapshotRunAsAccountId: (map['snapshotRunAsAccountId'] as String).input(),
-      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType']! as String).input(),
-      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : (map['targetAvailabilitySetId']! as String).input(),
-      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone']! as String).input(),
-      targetBootDiagnosticsStorageAccountId: map['targetBootDiagnosticsStorageAccountId'] == null ? null : (map['targetBootDiagnosticsStorageAccountId']! as String).input(),
-      targetDiskTags: map['targetDiskTags'] == null ? null : ((map['targetDiskTags']! as Map).cast<String, String>()).input(),
-      targetNetworkId: (map['targetNetworkId'] as String).input(),
-      targetNicTags: map['targetNicTags'] == null ? null : ((map['targetNicTags']! as Map).cast<String, String>()).input(),
-      targetProximityPlacementGroupId: map['targetProximityPlacementGroupId'] == null ? null : (map['targetProximityPlacementGroupId']! as String).input(),
-      targetResourceGroupId: (map['targetResourceGroupId'] as String).input(),
-      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName']! as String).input(),
-      targetVmName: map['targetVmName'] == null ? null : (map['targetVmName']! as String).input(),
-      targetVmSecurityProfile: map['targetVmSecurityProfile'] == null ? null : (VMwareCbtSecurityProfileProperties.fromMap((map['targetVmSecurityProfile']! as Map).cast<String, dynamic>())).input(),
-      targetVmSize: map['targetVmSize'] == null ? null : (map['targetVmSize']! as String).input(),
-      targetVmTags: map['targetVmTags'] == null ? null : ((map['targetVmTags']! as Map).cast<String, String>()).input(),
-      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId']! as String).input(),
-      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName']! as String).input(),
-      userSelectedOSName: map['userSelectedOSName'] == null ? null : (map['userSelectedOSName']! as String).input(),
-      vmwareMachineId: (map['vmwareMachineId'] as String).input(),
+      confidentialVmKeyVaultId: (() {
+        final guardedValue = map['confidentialVmKeyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataMoverRunAsAccountId: pulumi.Input.fromValue(
+        map['dataMoverRunAsAccountId'] as String,
+      ),
+      disksToInclude: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<VMwareCbtDiskInput>(
+          map['disksToInclude']!,
+          (value) => VMwareCbtDiskInput.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      licenseType: (() {
+        final guardedValue = map['licenseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linuxLicenseType: (() {
+        final guardedValue = map['linuxLicenseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performAutoResync: (() {
+        final guardedValue = map['performAutoResync'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performSqlBulkRegistration: (() {
+        final guardedValue = map['performSqlBulkRegistration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      seedDiskTags: (() {
+        final guardedValue = map['seedDiskTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      snapshotRunAsAccountId: pulumi.Input.fromValue(
+        map['snapshotRunAsAccountId'] as String,
+      ),
+      sqlServerLicenseType: (() {
+        final guardedValue = map['sqlServerLicenseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetAvailabilitySetId: (() {
+        final guardedValue = map['targetAvailabilitySetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetAvailabilityZone: (() {
+        final guardedValue = map['targetAvailabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetBootDiagnosticsStorageAccountId: (() {
+        final guardedValue = map['targetBootDiagnosticsStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetDiskTags: (() {
+        final guardedValue = map['targetDiskTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetNetworkId: pulumi.Input.fromValue(map['targetNetworkId'] as String),
+      targetNicTags: (() {
+        final guardedValue = map['targetNicTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetProximityPlacementGroupId: (() {
+        final guardedValue = map['targetProximityPlacementGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceGroupId: pulumi.Input.fromValue(
+        map['targetResourceGroupId'] as String,
+      ),
+      targetSubnetName: (() {
+        final guardedValue = map['targetSubnetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVmName: (() {
+        final guardedValue = map['targetVmName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVmSecurityProfile: (() {
+        final guardedValue = map['targetVmSecurityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VMwareCbtSecurityProfileProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      targetVmSize: (() {
+        final guardedValue = map['targetVmSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVmTags: (() {
+        final guardedValue = map['targetVmTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      testNetworkId: (() {
+        final guardedValue = map['testNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testSubnetName: (() {
+        final guardedValue = map['testSubnetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userSelectedOSName: (() {
+        final guardedValue = map['userSelectedOSName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmwareMachineId: pulumi.Input.fromValue(map['vmwareMachineId'] as String),
     );
   }
 }
-

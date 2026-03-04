@@ -16,7 +16,7 @@ import 'get_scheduled_tasks_result.dart';
 
 /// This data source provides available alarm resources.
 ///
-/// > **NOTE** Available in 1.72.0+
+/// &gt; **NOTE** Available in 1.72.0+
 /// [args] Arguments passed to this invoke. {@macro pulumi_ess_get_alarms_get_alarms_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetAlarmsResult> getAlarms(
@@ -34,7 +34,7 @@ Future<GetAlarmsResult> getAlarms(
 
 /// This data source provides available lifecycle hook resources.
 ///
-/// > **NOTE:** Available in 1.72.0+
+/// &gt; **NOTE:** Available in 1.72.0+
 ///
 /// ## Example Usage
 ///
@@ -157,7 +157,7 @@ Future<GetLifecycleHooksResult> getLifecycleHooks(
 
 /// This data source provides available notification resources.
 ///
-/// > **NOTE:** Available in 1.72.0+
+/// &gt; **NOTE:** Available in 1.72.0+
 ///
 /// ## Example Usage
 ///
@@ -274,7 +274,7 @@ Future<GetNotificationsResult> getNotifications(
 
 /// This data source provides available scaling configuration resources.
 ///
-/// > **NOTE:** Available since v1.240.0
+/// &gt; **NOTE:** Available since v1.240.0
 ///
 /// ## Example Usage
 ///
@@ -903,7 +903,7 @@ Future<GetScalingConfigurationsResult> getScalingConfigurations(
 
 /// This data source provides available scaling group resources.
 ///
-/// > **NOTE:** Available since v1.39.0
+/// &gt; **NOTE:** Available since v1.39.0
 ///
 /// ## Example Usage
 ///
@@ -1285,7 +1285,7 @@ Future<GetScalingGroupsResult> getScalingGroups(
 
 /// This data source provides available scaling rule resources.
 ///
-/// > **NOTE:** Available since v1.39.0
+/// &gt; **NOTE:** Available since v1.39.0
 ///
 /// ## Example Usage
 ///
@@ -1718,7 +1718,7 @@ Future<GetScalingRulesResult> getScalingRules(
 
 /// This data source provides available scheduled task resources.
 ///
-/// > **NOTE:** Available in 1.72.0+
+/// &gt; **NOTE:** Available in 1.72.0+
 ///
 /// ## Example Usage
 ///

@@ -1,5 +1,3 @@
-library module_servicelinker;
-
 export 'servicelinker/access_key_info_base.dart';
 export 'servicelinker/access_key_info_base_response.dart';
 export 'servicelinker/access_key_permissions.dart';

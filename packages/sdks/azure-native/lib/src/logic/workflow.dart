@@ -437,41 +437,62 @@ import 'workflow_parameter_response.dart';
 /// ```
 class Workflow extends pulumi.CustomResource {
   /// The access control configuration.
-  late final pulumi.Output<FlowAccessControlConfigurationResponse?> accessControl;
+  late final pulumi.Output<FlowAccessControlConfigurationResponse?>
+  accessControl;
+
   /// Gets the access endpoint.
   late final pulumi.Output<String> accessEndpoint;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the changed time.
   late final pulumi.Output<String> changedTime;
+
   /// Gets the created time.
   late final pulumi.Output<String> createdTime;
+
   /// The definition.
   late final pulumi.Output<dynamic> definition;
+
   /// The endpoints configuration.
-  late final pulumi.Output<FlowEndpointsConfigurationResponse?> endpointsConfiguration;
+  late final pulumi.Output<FlowEndpointsConfigurationResponse?>
+  endpointsConfiguration;
+
   /// Managed service identity properties.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The integration account.
   late final pulumi.Output<ResourceReferenceResponse?> integrationAccount;
+
   /// The integration service environment.
-  late final pulumi.Output<ResourceReferenceResponse?> integrationServiceEnvironment;
+  late final pulumi.Output<ResourceReferenceResponse?>
+  integrationServiceEnvironment;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The parameters.
   late final pulumi.Output<Map<String, WorkflowParameterResponse>?> parameters;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The sku.
   late final pulumi.Output<SkuResponse> sku;
+
   /// The state.
   late final pulumi.Output<String?> state;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
+
   /// Gets the version.
   late final pulumi.Output<String> version;
 
@@ -484,29 +505,40 @@ class Workflow extends pulumi.CustomResource {
     WorkflowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:Workflow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControl = registerOutput<FlowAccessControlConfigurationResponse?>('accessControl');
-    this.accessEndpoint = registerOutput<String>('accessEndpoint');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.changedTime = registerOutput<String>('changedTime');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.definition = registerOutput<dynamic>('definition');
-    this.endpointsConfiguration = registerOutput<FlowEndpointsConfigurationResponse?>('endpointsConfiguration');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.integrationAccount = registerOutput<ResourceReferenceResponse?>('integrationAccount');
-    this.integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>('integrationServiceEnvironment');
-    this.location = registerOutput<String?>('location');
+         'azure-native:logic:Workflow',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControl = registerOutput<FlowAccessControlConfigurationResponse?>(
+      'accessControl',
+    );
+    accessEndpoint = registerOutput<String>('accessEndpoint');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    createdTime = registerOutput<String>('createdTime');
+    definition = registerOutput<dynamic>('definition');
+    endpointsConfiguration =
+        registerOutput<FlowEndpointsConfigurationResponse?>(
+          'endpointsConfiguration',
+        );
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    integrationAccount = registerOutput<ResourceReferenceResponse?>(
+      'integrationAccount',
+    );
+    integrationServiceEnvironment = registerOutput<ResourceReferenceResponse?>(
+      'integrationServiceEnvironment',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, WorkflowParameterResponse>?>('parameters');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.state = registerOutput<String?>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    parameters = registerOutput<Map<String, WorkflowParameterResponse>?>(
+      'parameters',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku');
+    state = registerOutput<String?>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

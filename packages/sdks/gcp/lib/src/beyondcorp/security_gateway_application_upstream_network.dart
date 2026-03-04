@@ -9,20 +9,17 @@ class SecurityGatewayApplicationUpstreamNetwork {
 
   /// Creates a new [SecurityGatewayApplicationUpstreamNetwork].
   /// [name] Required. Network name is of the format:
-  SecurityGatewayApplicationUpstreamNetwork({
-    required this.name,
-  });
+  SecurityGatewayApplicationUpstreamNetwork({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory SecurityGatewayApplicationUpstreamNetwork.fromMap(Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationUpstreamNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityGatewayApplicationUpstreamNetwork(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

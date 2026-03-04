@@ -7,8 +7,10 @@ import 'stretched_cluster_config.dart';
 class ManagementCluster {
   /// The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   final pulumi.Input<String> clusterId;
+
   /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
   final pulumi.Input<Map<String, String>> nodeTypeConfigs;
+
   /// Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
   final pulumi.Input<StretchedClusterConfig>? stretchedClusterConfig;
 
@@ -26,16 +28,29 @@ class ManagementCluster {
     return <String, dynamic>{
       'clusterId': clusterId,
       'nodeTypeConfigs': nodeTypeConfigs,
-      'stretchedClusterConfig': ?pulumi.Input.mapOptionalInputValue<StretchedClusterConfig, Map<String, dynamic>>(stretchedClusterConfig, (value) => value.toMap()),
+      'stretchedClusterConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            StretchedClusterConfig,
+            Map<String, dynamic>
+          >(stretchedClusterConfig, (value) => value.toMap()),
     };
   }
 
   factory ManagementCluster.fromMap(Map<String, dynamic> map) {
     return ManagementCluster(
-      clusterId: (map['clusterId'] as String).input(),
-      nodeTypeConfigs: ((map['nodeTypeConfigs'] as Map).cast<String, String>()).input(),
-      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (StretchedClusterConfig.fromMap((map['stretchedClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      nodeTypeConfigs: pulumi.Input.fromValue(
+        (map['nodeTypeConfigs'] as Map).cast<String, String>(),
+      ),
+      stretchedClusterConfig: (() {
+        final guardedValue = map['stretchedClusterConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StretchedClusterConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

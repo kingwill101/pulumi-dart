@@ -155,16 +155,22 @@ import 'system_data_response.dart';
 class MigrateProjectsControllerMigrateProject extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
+
   /// Azure location in which project is created.
   late final pulumi.Output<String?> location;
+
   /// Name of the project.
   late final pulumi.Output<String> name;
+
   /// Properties of a migrate project.
   late final pulumi.Output<MigrateProjectPropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the object = [Microsoft.Migrate/migrateProjects].
   late final pulumi.Output<String> type;
 
@@ -177,17 +183,17 @@ class MigrateProjectsControllerMigrateProject extends pulumi.CustomResource {
     MigrateProjectsControllerMigrateProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:MigrateProjectsControllerMigrateProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String?>('eTag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:migrate:MigrateProjectsControllerMigrateProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MigrateProjectPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MigrateProjectPropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

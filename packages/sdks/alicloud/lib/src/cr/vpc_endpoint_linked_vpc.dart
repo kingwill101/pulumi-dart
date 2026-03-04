@@ -6,7 +6,7 @@ import 'vpc_endpoint_linked_vpc_state.dart';
 ///
 /// For information about CR Vpc Endpoint Linked Vpc and how to use it, see [What is Vpc Endpoint Linked Vpc](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createinstancevpcendpointlinkedvpc).
 ///
-/// > **NOTE:** Available since v1.199.0.
+/// &gt; **NOTE:** Available since v1.199.0.
 ///
 /// ## Example Usage
 ///
@@ -361,16 +361,21 @@ import 'vpc_endpoint_linked_vpc_state.dart';
 class VpcEndpointLinkedVpc extends pulumi.CustomResource {
   /// Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
   late final pulumi.Output<bool?> enableCreateDnsRecordInPvzt;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The name of the module that you want to access. Valid Values:
   /// - `Registry`: the image repository.
   /// - `Chart`: a Helm chart.
   late final pulumi.Output<String> moduleName;
+
   /// The status of the Vpc Endpoint Linked Vpc.
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of the vSwitch.
   late final pulumi.Output<String> vswitchId;
 
@@ -383,17 +388,19 @@ class VpcEndpointLinkedVpc extends pulumi.CustomResource {
     VpcEndpointLinkedVpcArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enableCreateDnsRecordInPvzt = registerOutput<bool?>('enableCreateDnsRecordInPvzt');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.moduleName = registerOutput<String>('moduleName');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enableCreateDnsRecordInPvzt = registerOutput<bool?>(
+      'enableCreateDnsRecordInPvzt',
+    );
+    instanceId = registerOutput<String>('instanceId');
+    moduleName = registerOutput<String>('moduleName');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [VpcEndpointLinkedVpc] resource's state with the given [name] and [id].
@@ -414,16 +421,18 @@ class VpcEndpointLinkedVpc extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enableCreateDnsRecordInPvzt = registerOutput<bool?>('enableCreateDnsRecordInPvzt');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.moduleName = registerOutput<String>('moduleName');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enableCreateDnsRecordInPvzt = registerOutput<bool?>(
+      'enableCreateDnsRecordInPvzt',
+    );
+    instanceId = registerOutput<String>('instanceId');
+    moduleName = registerOutput<String>('moduleName');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

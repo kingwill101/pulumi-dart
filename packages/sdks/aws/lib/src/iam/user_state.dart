@@ -6,20 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserState {
   /// The ARN assigned by AWS for this user.
   final pulumi.Input<String>? arn;
+
   /// When destroying this user, destroy even if it
   /// has non-provider-managed IAM access keys, login profile or MFA devices. Without `force_destroy`
   /// a user with non-provider-managed access keys and login profile will fail to be destroyed.
   final pulumi.Input<bool>? forceDestroy;
+
   /// The user's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".
   final pulumi.Input<String>? name;
+
   /// Path in which to create the user.
   final pulumi.Input<String>? path;
+
   /// The ARN of the policy that is used to set the permissions boundary for the user.
   final pulumi.Input<String>? permissionsBoundary;
+
   /// Key-value mapping of tags for the IAM user. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The [unique ID][1] assigned by AWS.
   final pulumi.Input<String>? uniqueId;
 
@@ -58,15 +65,50 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : ((map['permissionsBoundary'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      uniqueId: map['uniqueId'] == null ? null : ((map['uniqueId'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissionsBoundary: (() {
+        final guardedValue = map['permissionsBoundary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uniqueId: (() {
+        final guardedValue = map['uniqueId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

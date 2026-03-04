@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocationArgs {
   /// Code for the location to retrieve.
   final pulumi.Input<String> locationCode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetLocationArgs].
   /// [locationCode] Code for the location to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetLocationArgs({
-    required this.locationCode,
-    this.region,
-  });
+  GetLocationArgs({required this.locationCode, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'locationCode': locationCode,
-      'region': ?region,
-    };
+    return <String, dynamic>{'locationCode': locationCode, 'region': ?region};
   }
 
   factory GetLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetLocationArgs(
-      locationCode: (map['locationCode'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      locationCode: pulumi.Input.fromValue(map['locationCode'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum GlobalAddressAddressType {
   internal("INTERNAL"),
   unspecifiedType("UNSPECIFIED_TYPE");
 
-  const GlobalAddressAddressType(this.value);
-  final String value;
+  const GlobalAddressAddressType(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressAddressType fromValue(String value) {
     for (final item in GlobalAddressAddressType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GlobalAddressAddressType value: $value');
   }
 }
-

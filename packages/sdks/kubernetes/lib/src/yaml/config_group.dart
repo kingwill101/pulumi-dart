@@ -30,8 +30,8 @@ import 'config_group_args.dart';
 ///
 /// | Resource Scope   | Format                                         |
 /// | :--------------- | :--------------------------------------------- |
-/// | namespace-scoped | `<group>/namespaces/<namespace>/<kind>/<name>` |
-/// | cluster-scoped   | `<group>/<kind>/<name>`                        |
+/// | namespace-scoped | `&lt;group&gt;/namespaces/&lt;namespace&gt;/&lt;kind&gt;/&lt;name&gt;` |
+/// | cluster-scoped   | `&lt;group&gt;/&lt;kind&gt;/&lt;name&gt;`                        |
 ///
 /// For resources in the “core” group, the empty string is used instead (for example: `/namespaces/test/Pod/pod-a`).
 ///
@@ -450,7 +450,7 @@ import 'config_group_args.dart';
 /// {% /examples %}}
 class ConfigGroup extends pulumi.ComponentResource {
   /// Resources created by the ConfigGroup.
-  late final pulumi.Output<List<dynamic>?> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
 
   /// Creates a new [ConfigGroup].
   /// [name] The Pulumi resource name.
@@ -461,11 +461,12 @@ class ConfigGroup extends pulumi.ComponentResource {
     ConfigGroupArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'kubernetes:yaml/v2:ConfigGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.resources = registerOutput<List<dynamic>?>('resources');
+         'kubernetes:yaml/v2:ConfigGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
   }
 }

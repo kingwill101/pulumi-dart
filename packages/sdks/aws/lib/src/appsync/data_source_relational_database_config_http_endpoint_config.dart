@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
   /// AWS secret store ARN for database credentials.
   final pulumi.Input<String> awsSecretStoreArn;
+
   /// Logical database name.
   final pulumi.Input<String>? databaseName;
+
   /// Amazon RDS cluster identifier.
   final pulumi.Input<String> dbClusterIdentifier;
+
   /// AWS Region for RDS HTTP endpoint. Defaults to current region.
   final pulumi.Input<String>? region;
+
   /// Logical schema name.
   final pulumi.Input<String>? schema;
 
@@ -38,14 +42,31 @@ class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
     };
   }
 
-  factory DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap(Map<String, dynamic> map) {
+  factory DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceRelationalDatabaseConfigHttpEndpointConfig(
-      awsSecretStoreArn: (map['awsSecretStoreArn'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
-      dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
+      awsSecretStoreArn: pulumi.Input.fromValue(
+        map['awsSecretStoreArn'] as String,
+      ),
+      databaseName: (() {
+        final guardedValue = map['databaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbClusterIdentifier: pulumi.Input.fromValue(
+        map['dbClusterIdentifier'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

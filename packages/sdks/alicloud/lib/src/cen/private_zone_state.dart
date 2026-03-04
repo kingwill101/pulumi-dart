@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateZoneState {
   /// The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
   final pulumi.Input<String>? accessRegionId;
+
   /// The ID of the CEN instance.
   final pulumi.Input<String>? cenId;
+
   /// The ID of the region where PrivateZone is deployed.
   ///
-  /// ->**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
+  /// -&gt;**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
   final pulumi.Input<String>? hostRegionId;
+
   /// The ID of the VPC that is associated with PrivateZone.
   final pulumi.Input<String>? hostVpcId;
+
   /// The status of the Private Zone.
   final pulumi.Input<String>? status;
 
@@ -43,12 +47,31 @@ class PrivateZoneState {
 
   factory PrivateZoneState.fromMap(Map<String, dynamic> map) {
     return PrivateZoneState(
-      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId']! as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
-      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId']! as String).input(),
-      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accessRegionId: (() {
+        final guardedValue = map['accessRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostRegionId: (() {
+        final guardedValue = map['hostRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostVpcId: (() {
+        final guardedValue = map['hostVpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

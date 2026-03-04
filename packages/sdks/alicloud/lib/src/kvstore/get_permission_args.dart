@@ -12,20 +12,19 @@ class GetPermissionArgs {
 
   /// Creates a new [GetPermissionArgs].
   /// [enable] Setting the value to `On` to assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore). If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
-  GetPermissionArgs({
-    this.enable,
-  });
+  GetPermissionArgs({this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': ?enable,
-    };
+    return <String, dynamic>{'enable': ?enable};
   }
 
   factory GetPermissionArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionArgs(
-      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceJunctionResponse {
   /// Namespace path on a cache for a Storage Target.
   final pulumi.Input<String>? namespacePath;
+
   /// Name of the access policy applied to this junction.
   final pulumi.Input<String>? nfsAccessPolicy;
+
   /// NFS export where targetPath exists.
   final pulumi.Input<String>? nfsExport;
+
   /// Path in Storage Target to which namespacePath points.
   final pulumi.Input<String>? targetPath;
 
@@ -36,11 +39,26 @@ class NamespaceJunctionResponse {
 
   factory NamespaceJunctionResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceJunctionResponse(
-      namespacePath: map['namespacePath'] == null ? null : (map['namespacePath']! as String).input(),
-      nfsAccessPolicy: map['nfsAccessPolicy'] == null ? null : (map['nfsAccessPolicy']! as String).input(),
-      nfsExport: map['nfsExport'] == null ? null : (map['nfsExport']! as String).input(),
-      targetPath: map['targetPath'] == null ? null : (map['targetPath']! as String).input(),
+      namespacePath: (() {
+        final guardedValue = map['namespacePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfsAccessPolicy: (() {
+        final guardedValue = map['nfsAccessPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nfsExport: (() {
+        final guardedValue = map['nfsExport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPath: (() {
+        final guardedValue = map['targetPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,10 +10,13 @@ import 'web_pub_sub_hub_properties.dart';
 class WebPubSubHubArgs {
   /// The hub name.
   final pulumi.Input<String>? hubName;
+
   /// Properties of a hub.
   final pulumi.Input<WebPubSubHubProperties> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
 
@@ -32,7 +35,11 @@ class WebPubSubHubArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'hubName': ?hubName,
-      'properties': pulumi.Input.mapInputValue<WebPubSubHubProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            WebPubSubHubProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
@@ -40,11 +47,20 @@ class WebPubSubHubArgs {
 
   factory WebPubSubHubArgs.fromMap(Map<String, dynamic> map) {
     return WebPubSubHubArgs(
-      hubName: map['hubName'] == null ? null : (map['hubName']! as String).input(),
-      properties: (WebPubSubHubProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      hubName: (() {
+        final guardedValue = map['hubName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        WebPubSubHubProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

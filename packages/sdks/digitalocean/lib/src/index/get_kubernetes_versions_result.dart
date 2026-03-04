@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKubernetesVersions.
 class GetKubernetesVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The most recent version available.
   final String latestVersion;
+
   /// A list of available versions.
   final List<String> validVersions;
   final String? versionPrefix;
@@ -37,8 +38,11 @@ class GetKubernetesVersionsResult {
       id: map['id'] as String,
       latestVersion: map['latestVersion'] as String,
       validVersions: (map['validVersions'] as List).cast<String>(),
-      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix']! as String,
+      versionPrefix: (() {
+        final guardedValue = map['versionPrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

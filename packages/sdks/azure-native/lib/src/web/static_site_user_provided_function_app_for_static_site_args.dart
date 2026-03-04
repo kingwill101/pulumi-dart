@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteUserProvidedFunctionAppForStaticSiteArgs {
   /// Name of the function app to register with the static site.
   final pulumi.Input<String>? functionAppName;
+
   /// The region of the function app registered with the static site
   final pulumi.Input<String>? functionAppRegion;
+
   /// The resource id of the function app registered with the static site
   final pulumi.Input<String>? functionAppResourceId;
-  /// Specify <code>true</code> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is <code>false</code>.
+
+  /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? isForced;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the static site.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -26,7 +32,7 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteArgs {
   /// [functionAppName] Name of the function app to register with the static site.
   /// [functionAppRegion] The region of the function app registered with the static site
   /// [functionAppResourceId] The resource id of the function app registered with the static site
-  /// [isForced] Specify <code>true</code> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is <code>false</code>.
+  /// [isForced] Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is &lt;code&gt;false&lt;/code&gt;.
   /// [kind] Kind of resource.
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
@@ -52,16 +58,39 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteArgs {
     };
   }
 
-  factory StaticSiteUserProvidedFunctionAppForStaticSiteArgs.fromMap(Map<String, dynamic> map) {
+  factory StaticSiteUserProvidedFunctionAppForStaticSiteArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StaticSiteUserProvidedFunctionAppForStaticSiteArgs(
-      functionAppName: map['functionAppName'] == null ? null : (map['functionAppName']! as String).input(),
-      functionAppRegion: map['functionAppRegion'] == null ? null : (map['functionAppRegion']! as String).input(),
-      functionAppResourceId: map['functionAppResourceId'] == null ? null : (map['functionAppResourceId']! as String).input(),
-      isForced: map['isForced'] == null ? null : (map['isForced']! as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      functionAppName: (() {
+        final guardedValue = map['functionAppName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionAppRegion: (() {
+        final guardedValue = map['functionAppRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionAppResourceId: (() {
+        final guardedValue = map['functionAppResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isForced: (() {
+        final guardedValue = map['isForced'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

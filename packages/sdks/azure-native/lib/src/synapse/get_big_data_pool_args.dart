@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBigDataPoolArgs {
   /// Big Data pool name
   final pulumi.Input<String> bigDataPoolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -34,10 +36,11 @@ class GetBigDataPoolArgs {
 
   factory GetBigDataPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetBigDataPoolArgs(
-      bigDataPoolName: (map['bigDataPoolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      bigDataPoolName: pulumi.Input.fromValue(map['bigDataPoolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

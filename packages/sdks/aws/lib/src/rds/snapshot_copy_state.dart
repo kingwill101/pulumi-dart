@@ -6,50 +6,72 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotCopyState {
   /// Specifies the allocated storage size in gigabytes (GB).
   final pulumi.Input<int>? allocatedStorage;
+
   /// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
   final pulumi.Input<String>? availabilityZone;
+
   /// Whether to copy existing tags. Defaults to `false`.
   final pulumi.Input<bool>? copyTags;
+
   /// The Amazon Resource Name (ARN) for the DB snapshot.
   final pulumi.Input<String>? dbSnapshotArn;
+
   /// The Destination region to place snapshot copy.
   final pulumi.Input<String>? destinationRegion;
+
   /// Specifies whether the DB snapshot is encrypted.
   final pulumi.Input<bool>? encrypted;
+
   /// Specifies the name of the database engine.
   final pulumi.Input<String>? engine;
+
   /// Specifies the version of the database engine.
   final pulumi.Input<String>? engineVersion;
+
   /// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
   final pulumi.Input<int>? iops;
+
   /// KMS key ID.
   final pulumi.Input<String>? kmsKeyId;
+
   /// License model information for the restored DB instance.
   final pulumi.Input<String>? licenseModel;
+
   /// The name of an option group to associate with the copy of the snapshot.
   final pulumi.Input<String>? optionGroupName;
   final pulumi.Input<int>? port;
+
   /// he URL that contains a Signature Version 4 signed request.
   final pulumi.Input<String>? presignedUrl;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   final pulumi.Input<List<String>>? sharedAccounts;
   final pulumi.Input<String>? snapshotType;
+
   /// Snapshot identifier of the source snapshot.
   final pulumi.Input<String>? sourceDbSnapshotIdentifier;
+
   /// The region that the DB snapshot was created in or copied from.
   final pulumi.Input<String>? sourceRegion;
+
   /// Specifies the storage type associated with DB snapshot.
   final pulumi.Input<String>? storageType;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The external custom Availability Zone.
   final pulumi.Input<String>? targetCustomAvailabilityZone;
+
   /// The Identifier for the snapshot.
   final pulumi.Input<String>? targetDbSnapshotIdentifier;
+
   /// Provides the VPC ID associated with the DB snapshot.
   final pulumi.Input<String>? vpcId;
 
@@ -139,32 +161,135 @@ class SnapshotCopyState {
 
   factory SnapshotCopyState.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyState(
-      allocatedStorage: map['allocatedStorage'] == null ? null : ((map['allocatedStorage'] as int).input()).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      copyTags: map['copyTags'] == null ? null : ((map['copyTags'] as bool).input()).input(),
-      dbSnapshotArn: map['dbSnapshotArn'] == null ? null : ((map['dbSnapshotArn'] as String).input()).input(),
-      destinationRegion: map['destinationRegion'] == null ? null : ((map['destinationRegion'] as String).input()).input(),
-      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
-      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
-      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
-      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      licenseModel: map['licenseModel'] == null ? null : ((map['licenseModel'] as String).input()).input(),
-      optionGroupName: map['optionGroupName'] == null ? null : ((map['optionGroupName'] as String).input()).input(),
-      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
-      presignedUrl: map['presignedUrl'] == null ? null : ((map['presignedUrl'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sharedAccounts: map['sharedAccounts'] == null ? null : (((map['sharedAccounts'] as List).cast<String>()).input()).input(),
-      snapshotType: map['snapshotType'] == null ? null : ((map['snapshotType'] as String).input()).input(),
-      sourceDbSnapshotIdentifier: map['sourceDbSnapshotIdentifier'] == null ? null : ((map['sourceDbSnapshotIdentifier'] as String).input()).input(),
-      sourceRegion: map['sourceRegion'] == null ? null : ((map['sourceRegion'] as String).input()).input(),
-      storageType: map['storageType'] == null ? null : ((map['storageType'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      targetCustomAvailabilityZone: map['targetCustomAvailabilityZone'] == null ? null : ((map['targetCustomAvailabilityZone'] as String).input()).input(),
-      targetDbSnapshotIdentifier: map['targetDbSnapshotIdentifier'] == null ? null : ((map['targetDbSnapshotIdentifier'] as String).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      allocatedStorage: (() {
+        final guardedValue = map['allocatedStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      copyTags: (() {
+        final guardedValue = map['copyTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dbSnapshotArn: (() {
+        final guardedValue = map['dbSnapshotArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationRegion: (() {
+        final guardedValue = map['destinationRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iops: (() {
+        final guardedValue = map['iops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenseModel: (() {
+        final guardedValue = map['licenseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionGroupName: (() {
+        final guardedValue = map['optionGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      presignedUrl: (() {
+        final guardedValue = map['presignedUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedAccounts: (() {
+        final guardedValue = map['sharedAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      snapshotType: (() {
+        final guardedValue = map['snapshotType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceDbSnapshotIdentifier: (() {
+        final guardedValue = map['sourceDbSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceRegion: (() {
+        final guardedValue = map['sourceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetCustomAvailabilityZone: (() {
+        final guardedValue = map['targetCustomAvailabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetDbSnapshotIdentifier: (() {
+        final guardedValue = map['targetDbSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

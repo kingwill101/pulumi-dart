@@ -8,7 +8,7 @@ import 'ipv6_address_state.dart';
 ///
 /// For information about VPC Ipv6 Address and how to use it, see [What is Ipv6 Address](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AllocateIpv6Address).
 ///
-/// > **NOTE:** Available since v1.216.0.
+/// &gt; **NOTE:** Available since v1.216.0.
 ///
 /// ## Example Usage
 ///
@@ -296,20 +296,28 @@ class Ipv6Address extends pulumi.CustomResource {
   /// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
   /// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
   late final pulumi.Output<String> addressType;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// IPv6 address
   late final pulumi.Output<String> ipv6Address;
+
   /// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
   late final pulumi.Output<String> ipv6AddressDescription;
+
   /// The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
   late final pulumi.Output<String?> ipv6AddressName;
+
   /// The ID of the resource group to which the instance belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource.  Available, Pending and Deleting.
   late final pulumi.Output<String> status;
+
   /// The tags for the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The VSwitchId of the IPv6 address.
   late final pulumi.Output<String> vswitchId;
 
@@ -322,20 +330,20 @@ class Ipv6Address extends pulumi.CustomResource {
     Ipv6AddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv6Address:Ipv6Address',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressType = registerOutput<String>('addressType');
-    this.createTime = registerOutput<String>('createTime');
-    this.ipv6Address = registerOutput<String>('ipv6Address');
-    this.ipv6AddressDescription = registerOutput<String>('ipv6AddressDescription');
-    this.ipv6AddressName = registerOutput<String?>('ipv6AddressName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:vpc/ipv6Address:Ipv6Address',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressType = registerOutput<String>('addressType');
+    createTime = registerOutput<String>('createTime');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    ipv6AddressDescription = registerOutput<String>('ipv6AddressDescription');
+    ipv6AddressName = registerOutput<String?>('ipv6AddressName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [Ipv6Address] resource's state with the given [name] and [id].
@@ -356,19 +364,19 @@ class Ipv6Address extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv6Address:Ipv6Address',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressType = registerOutput<String>('addressType');
-    this.createTime = registerOutput<String>('createTime');
-    this.ipv6Address = registerOutput<String>('ipv6Address');
-    this.ipv6AddressDescription = registerOutput<String>('ipv6AddressDescription');
-    this.ipv6AddressName = registerOutput<String?>('ipv6AddressName');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:vpc/ipv6Address:Ipv6Address',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressType = registerOutput<String>('addressType');
+    createTime = registerOutput<String>('createTime');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    ipv6AddressDescription = registerOutput<String>('ipv6AddressDescription');
+    ipv6AddressName = registerOutput<String?>('ipv6AddressName');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

@@ -10,20 +10,29 @@ class AppHostingDomainServe {
 
   /// Creates a new [AppHostingDomainServe].
   /// [redirect] Specifies redirect behavior for a domain.
-  AppHostingDomainServe({
-    this.redirect,
-  });
+  AppHostingDomainServe({this.redirect});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'redirect': ?pulumi.Input.mapOptionalInputValue<AppHostingDomainServeRedirect, Map<String, dynamic>>(redirect, (value) => value.toMap()),
+      'redirect':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppHostingDomainServeRedirect,
+            Map<String, dynamic>
+          >(redirect, (value) => value.toMap()),
     };
   }
 
   factory AppHostingDomainServe.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainServe(
-      redirect: map['redirect'] == null ? null : (AppHostingDomainServeRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input(),
+      redirect: (() {
+        final guardedValue = map['redirect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppHostingDomainServeRedirect.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

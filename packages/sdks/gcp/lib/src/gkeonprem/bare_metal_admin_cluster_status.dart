@@ -8,6 +8,7 @@ class BareMetalAdminClusterStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
   /// Structure is documented below.
   final pulumi.Input<List<BareMetalAdminClusterStatusCondition>>? conditions;
+
   /// (Output)
   /// Human-friendly representation of the error message from the admin cluster
   /// controller. The error message can be temporary as the admin cluster
@@ -19,23 +20,45 @@ class BareMetalAdminClusterStatus {
   /// Creates a new [BareMetalAdminClusterStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  BareMetalAdminClusterStatus({
-    this.conditions,
-    this.errorMessage,
-  });
+  BareMetalAdminClusterStatus({this.conditions, this.errorMessage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<BareMetalAdminClusterStatusCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<BareMetalAdminClusterStatusCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BareMetalAdminClusterStatusCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BareMetalAdminClusterStatusCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'errorMessage': ?errorMessage,
     };
   }
 
   factory BareMetalAdminClusterStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterStatusCondition>(map['conditions']!, (value) => BareMetalAdminClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BareMetalAdminClusterStatusCondition>(
+            guardedValue,
+            (value) => BareMetalAdminClusterStatusCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

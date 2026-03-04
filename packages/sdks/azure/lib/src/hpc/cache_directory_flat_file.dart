@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheDirectoryFlatFile {
   /// The URI of the file containing group information (`/etc/group` file format in Unix-like OS).
   final pulumi.Input<String> groupFileUri;
+
   /// The URI of the file containing user information (`/etc/passwd` file format in Unix-like OS).
   final pulumi.Input<String> passwordFileUri;
 
@@ -25,9 +26,8 @@ class CacheDirectoryFlatFile {
 
   factory CacheDirectoryFlatFile.fromMap(Map<String, dynamic> map) {
     return CacheDirectoryFlatFile(
-      groupFileUri: (map['groupFileUri'] as String).input(),
-      passwordFileUri: (map['passwordFileUri'] as String).input(),
+      groupFileUri: pulumi.Input.fromValue(map['groupFileUri'] as String),
+      passwordFileUri: pulumi.Input.fromValue(map['passwordFileUri'] as String),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CidrBlockResponse {
   /// CIDR block that must be specified in CIDR notation.
   final pulumi.Input<String> cidrBlock;
+
   /// User-defined name that identifies the CIDR block.
   final pulumi.Input<String> displayName;
 
   /// Creates a new [CidrBlockResponse].
   /// [cidrBlock] CIDR block that must be specified in CIDR notation.
   /// [displayName] User-defined name that identifies the CIDR block.
-  CidrBlockResponse({
-    required this.cidrBlock,
-    required this.displayName,
-  });
+  CidrBlockResponse({required this.cidrBlock, required this.displayName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class CidrBlockResponse {
 
   factory CidrBlockResponse.fromMap(Map<String, dynamic> map) {
     return CidrBlockResponse(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
-

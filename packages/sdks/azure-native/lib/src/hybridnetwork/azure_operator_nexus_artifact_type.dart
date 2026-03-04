@@ -4,16 +4,15 @@ enum AzureOperatorNexusArtifactType {
   valueImageFile("ImageFile"),
   valueArmTemplate("ArmTemplate");
 
-  const AzureOperatorNexusArtifactType(this.value);
-  final String value;
+  const AzureOperatorNexusArtifactType(this.wireValue);
+  final String wireValue;
 
   static AzureOperatorNexusArtifactType fromValue(String value) {
     for (final item in AzureOperatorNexusArtifactType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureOperatorNexusArtifactType value: $value');
   }
 }
-

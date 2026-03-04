@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceSftpKeyVaultPrivateKeyPassphrase {
   /// Specifies the name of an existing Key Vault Data Factory Linked Service.
   final pulumi.Input<String> linkedServiceName;
+
   /// Specifies the name of the secret containing the SSH private key passphrase.
   final pulumi.Input<String> secretName;
 
@@ -23,11 +24,14 @@ class LinkedServiceSftpKeyVaultPrivateKeyPassphrase {
     };
   }
 
-  factory LinkedServiceSftpKeyVaultPrivateKeyPassphrase.fromMap(Map<String, dynamic> map) {
+  factory LinkedServiceSftpKeyVaultPrivateKeyPassphrase.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinkedServiceSftpKeyVaultPrivateKeyPassphrase(
-      linkedServiceName: (map['linkedServiceName'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
+      linkedServiceName: pulumi.Input.fromValue(
+        map['linkedServiceName'] as String,
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

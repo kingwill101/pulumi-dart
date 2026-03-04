@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GenaiAgentKnowledgeBaseAttachmentArgs {
   /// A unique identifier for an agent.
   final pulumi.Input<String> agentUuid;
+
   /// A unique identifier for a knowledge base.
   final pulumi.Input<String> knowledgeBaseUuid;
 
@@ -27,11 +28,14 @@ class GenaiAgentKnowledgeBaseAttachmentArgs {
     };
   }
 
-  factory GenaiAgentKnowledgeBaseAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory GenaiAgentKnowledgeBaseAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GenaiAgentKnowledgeBaseAttachmentArgs(
-      agentUuid: (map['agentUuid'] as String).input(),
-      knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
+      agentUuid: pulumi.Input.fromValue(map['agentUuid'] as String),
+      knowledgeBaseUuid: pulumi.Input.fromValue(
+        map['knowledgeBaseUuid'] as String,
+      ),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'bucket_user_defined_log_fields_state.dart';
 ///
 /// For information about OSS Bucket User Defined Log Fields and how to use it, see [What is Bucket User Defined Log Fields](https://www.alibabacloud.com/help/en/oss/developer-reference/putuserdefinedlogfieldsconfig).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -257,8 +257,10 @@ import 'bucket_user_defined_log_fields_state.dart';
 class BucketUserDefinedLogFields extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Container for custom request header configuration information.
   late final pulumi.Output<List<String>?> headerSets;
+
   /// Container for custom request parameters configuration information.
   late final pulumi.Output<List<String>?> paramSets;
 
@@ -271,14 +273,14 @@ class BucketUserDefinedLogFields extends pulumi.CustomResource {
     BucketUserDefinedLogFieldsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.headerSets = registerOutput<List<String>?>('headerSets');
-    this.paramSets = registerOutput<List<String>?>('paramSets');
+         'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    headerSets = registerOutput<List<String>?>('headerSets');
+    paramSets = registerOutput<List<String>?>('paramSets');
   }
 
   /// Gets an existing [BucketUserDefinedLogFields] resource's state with the given [name] and [id].
@@ -299,13 +301,13 @@ class BucketUserDefinedLogFields extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.headerSets = registerOutput<List<String>?>('headerSets');
-    this.paramSets = registerOutput<List<String>?>('paramSets');
+         'alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    headerSets = registerOutput<List<String>?>('headerSets');
+    paramSets = registerOutput<List<String>?>('paramSets');
   }
 }

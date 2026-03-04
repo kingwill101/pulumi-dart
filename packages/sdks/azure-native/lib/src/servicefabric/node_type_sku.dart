@@ -4,22 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes a node type sku.
 class NodeTypeSku {
-  /// The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
+  /// The number of nodes in the node type.&lt;br /&gt;&lt;br /&gt;If present in request it will override properties.vmInstanceCount.
   final pulumi.Input<int> capacity;
-  /// The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
+
+  /// The sku name. &lt;br /&gt;&lt;br /&gt;Name is internally generated and is used in auto-scale scenarios.&lt;br /&gt; Property does not allow to be changed to other values than generated.&lt;br /&gt; To avoid deployment errors please omit the property.
   final pulumi.Input<String>? name;
-  /// Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
+
+  /// Specifies the tier of the node type. &lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br /&gt; **Standard**
   final pulumi.Input<String>? tier;
 
   /// Creates a new [NodeTypeSku].
-  /// [capacity] The number of nodes in the node type.<br /><br />If present in request it will override properties.vmInstanceCount.
-  /// [name] The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
-  /// [tier] Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
-  NodeTypeSku({
-    required this.capacity,
-    this.name,
-    this.tier,
-  });
+  /// [capacity] The number of nodes in the node type.&lt;br /&gt;&lt;br /&gt;If present in request it will override properties.vmInstanceCount.
+  /// [name] The sku name. &lt;br /&gt;&lt;br /&gt;Name is internally generated and is used in auto-scale scenarios.&lt;br /&gt; Property does not allow to be changed to other values than generated.&lt;br /&gt; To avoid deployment errors please omit the property.
+  /// [tier] Specifies the tier of the node type. &lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br /&gt; **Standard**
+  NodeTypeSku({required this.capacity, this.name, this.tier});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class NodeTypeSku {
 
   factory NodeTypeSku.fromMap(Map<String, dynamic> map) {
     return NodeTypeSku(
-      capacity: (map['capacity'] as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

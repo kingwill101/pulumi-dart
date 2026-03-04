@@ -1,5 +1,3 @@
-library module_chaosstudio;
-
 export 'chaosstudio/capability.dart';
 export 'chaosstudio/capability_args.dart';
 export 'chaosstudio/capability_state.dart';

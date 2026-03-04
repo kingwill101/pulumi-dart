@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_at_subscription_args.dart';
-import 'attestation_evidence_response.dart';
 import 'system_data_response.dart';
 
 /// An attestation resource.
@@ -325,32 +324,46 @@ import 'system_data_response.dart';
 class AttestationAtSubscription extends pulumi.CustomResource {
   /// The time the evidence was assessed
   late final pulumi.Output<String?> assessmentDate;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Comments describing why this attestation was created.
   late final pulumi.Output<String?> comments;
+
   /// The compliance state that should be set on the resource.
   late final pulumi.Output<String?> complianceState;
+
   /// The evidence supporting the compliance state set in this attestation.
-  late final pulumi.Output<List<AttestationEvidenceResponse>?> evidence;
+  late final pulumi.Output<List<Map<String, dynamic>>?> evidence;
+
   /// The time the compliance state should expire.
   late final pulumi.Output<String?> expiresOn;
+
   /// The time the compliance state was last changed in this attestation.
   late final pulumi.Output<String> lastComplianceStateChangeAt;
+
   /// Additional metadata for this attestation
   late final pulumi.Output<dynamic> metadata;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.
   late final pulumi.Output<String?> owner;
+
   /// The resource ID of the policy assignment that the attestation is setting the state for.
   late final pulumi.Output<String> policyAssignmentId;
+
   /// The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition.
   late final pulumi.Output<String?> policyDefinitionReferenceId;
+
   /// The status of the attestation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -363,25 +376,29 @@ class AttestationAtSubscription extends pulumi.CustomResource {
     AttestationAtSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:policyinsights:AttestationAtSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessmentDate = registerOutput<String?>('assessmentDate');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.comments = registerOutput<String?>('comments');
-    this.complianceState = registerOutput<String?>('complianceState');
-    this.evidence = registerOutput<List<AttestationEvidenceResponse>?>('evidence');
-    this.expiresOn = registerOutput<String?>('expiresOn');
-    this.lastComplianceStateChangeAt = registerOutput<String>('lastComplianceStateChangeAt');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:policyinsights:AttestationAtSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessmentDate = registerOutput<String?>('assessmentDate');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    comments = registerOutput<String?>('comments');
+    complianceState = registerOutput<String?>('complianceState');
+    evidence = registerOutput<List<Map<String, dynamic>>?>('evidence');
+    expiresOn = registerOutput<String?>('expiresOn');
+    lastComplianceStateChangeAt = registerOutput<String>(
+      'lastComplianceStateChangeAt',
+    );
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.owner = registerOutput<String?>('owner');
-    this.policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    this.policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    owner = registerOutput<String?>('owner');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>(
+      'policyDefinitionReferenceId',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

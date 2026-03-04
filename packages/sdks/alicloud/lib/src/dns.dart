@@ -1,5 +1,3 @@
-library module_dns;
-
 export 'dns/access_strategy.dart';
 export 'dns/access_strategy_args.dart';
 export 'dns/access_strategy_default_addr_pool.dart';

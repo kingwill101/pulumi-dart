@@ -3,17 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerPort {
-  /// Port exposed out of the container. If not given a free random port `>= 32768` will be used.
+  /// Port exposed out of the container. If not given a free random port `&gt;= 32768` will be used.
   final pulumi.Input<int>? external;
+
   /// Port within the container.
   final pulumi.Input<int> internal;
+
   /// IP address/mask that can access this port. Defaults to `0.0.0.0`.
   final pulumi.Input<String>? ip;
+
   /// Protocol that can be used over this port. Defaults to `tcp`.
   final pulumi.Input<String>? protocol;
 
   /// Creates a new [ContainerPort].
-  /// [external] Port exposed out of the container. If not given a free random port `>= 32768` will be used.
+  /// [external] Port exposed out of the container. If not given a free random port `&gt;= 32768` will be used.
   /// [internal] Port within the container.
   /// [ip] IP address/mask that can access this port. Defaults to `0.0.0.0`.
   /// [protocol] Protocol that can be used over this port. Defaults to `tcp`.
@@ -35,11 +38,22 @@ class ContainerPort {
 
   factory ContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerPort(
-      external: map['external'] == null ? null : (map['external']! as int).input(),
-      internal: (map['internal'] as int).input(),
-      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      external: (() {
+        final guardedValue = map['external'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      internal: pulumi.Input.fromValue(map['internal'] as int),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

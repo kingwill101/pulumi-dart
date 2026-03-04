@@ -6,7 +6,7 @@ import 'auto_snapshot_policy_state.dart';
 ///
 /// For information about NAS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html)).
 ///
-/// > **NOTE:** Available since v1.153.0.
+/// &gt; **NOTE:** Available since v1.153.0.
 ///
 /// ## Example Usage
 ///
@@ -207,19 +207,25 @@ class AutoSnapshotPolicy extends pulumi.CustomResource {
   /// - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
   /// - The value of this parameter is empty by default.
   late final pulumi.Output<String?> autoSnapshotPolicyName;
+
   /// Creation time.
   late final pulumi.Output<String> createTime;
+
   /// The file system type.
   late final pulumi.Output<String> fileSystemType;
+
   /// The day on which an auto snapshot is created.
   /// - A maximum of 7 time points can be selected.
   /// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
   late final pulumi.Output<List<String>> repeatWeekdays;
+
   /// The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
   /// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
   late final pulumi.Output<int> retentionDays;
+
   /// The status of the automatic snapshot policy.
   late final pulumi.Output<String> status;
+
   /// The point in time at which an auto snapshot is created.
   /// - A maximum of 24 time points can be selected.
   /// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -234,18 +240,18 @@ class AutoSnapshotPolicy extends pulumi.CustomResource {
     AutoSnapshotPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoSnapshotPolicyName = registerOutput<String?>('autoSnapshotPolicyName');
-    this.createTime = registerOutput<String>('createTime');
-    this.fileSystemType = registerOutput<String>('fileSystemType');
-    this.repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
-    this.retentionDays = registerOutput<int>('retentionDays');
-    this.status = registerOutput<String>('status');
-    this.timePoints = registerOutput<List<String>>('timePoints');
+         'alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoSnapshotPolicyName = registerOutput<String?>('autoSnapshotPolicyName');
+    createTime = registerOutput<String>('createTime');
+    fileSystemType = registerOutput<String>('fileSystemType');
+    repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
+    retentionDays = registerOutput<int>('retentionDays');
+    status = registerOutput<String>('status');
+    timePoints = registerOutput<List<String>>('timePoints');
   }
 
   /// Gets an existing [AutoSnapshotPolicy] resource's state with the given [name] and [id].
@@ -266,17 +272,17 @@ class AutoSnapshotPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoSnapshotPolicyName = registerOutput<String?>('autoSnapshotPolicyName');
-    this.createTime = registerOutput<String>('createTime');
-    this.fileSystemType = registerOutput<String>('fileSystemType');
-    this.repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
-    this.retentionDays = registerOutput<int>('retentionDays');
-    this.status = registerOutput<String>('status');
-    this.timePoints = registerOutput<List<String>>('timePoints');
+         'alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoSnapshotPolicyName = registerOutput<String?>('autoSnapshotPolicyName');
+    createTime = registerOutput<String>('createTime');
+    fileSystemType = registerOutput<String>('fileSystemType');
+    repeatWeekdays = registerOutput<List<String>>('repeatWeekdays');
+    retentionDays = registerOutput<int>('retentionDays');
+    status = registerOutput<String>('status');
+    timePoints = registerOutput<List<String>>('timePoints');
   }
 }

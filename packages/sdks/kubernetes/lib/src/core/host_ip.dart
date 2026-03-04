@@ -9,20 +9,13 @@ class HostIP {
 
   /// Creates a new [HostIP].
   /// [ip] IP is the IP address assigned to the host
-  HostIP({
-    required this.ip,
-  });
+  HostIP({required this.ip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ip': ip,
-    };
+    return <String, dynamic>{'ip': ip};
   }
 
   factory HostIP.fromMap(Map<String, dynamic> map) {
-    return HostIP(
-      ip: (map['ip'] as String).input(),
-    );
+    return HostIP(ip: pulumi.Input.fromValue(map['ip'] as String));
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegularPriorityProfile {
   /// Allocation strategy to follow when determining the VM sizes distribution for Regular VMs.
   final pulumi.Input<String>? allocationStrategy;
+
   /// Total capacity to achieve. It is currently in terms of number of VMs.
   final pulumi.Input<int>? capacity;
+
   /// Minimum capacity to achieve which cannot be updated. If we will not be able to "guarantee" minimum capacity, we will reject the request in the sync path itself.
   final pulumi.Input<int>? minCapacity;
 
@@ -31,10 +33,21 @@ class RegularPriorityProfile {
 
   factory RegularPriorityProfile.fromMap(Map<String, dynamic> map) {
     return RegularPriorityProfile(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy']! as String).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
+      allocationStrategy: (() {
+        final guardedValue = map['allocationStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minCapacity: (() {
+        final guardedValue = map['minCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

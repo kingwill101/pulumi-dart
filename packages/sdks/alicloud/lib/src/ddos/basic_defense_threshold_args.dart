@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicDefenseThresholdArgs {
   /// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
   final pulumi.Input<int>? bps;
+
   /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
   final pulumi.Input<String> ddosType;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
   final pulumi.Input<String> instanceType;
+
   /// The Internet IP address.
   final pulumi.Input<String>? internetIp;
+
   /// Whether it is the system default threshold. Value:
   final pulumi.Input<bool>? isAuto;
+
   /// The current message number cleaning threshold. Unit: pps.
   final pulumi.Input<int>? pps;
 
@@ -54,14 +60,29 @@ class BasicDefenseThresholdArgs {
 
   factory BasicDefenseThresholdArgs.fromMap(Map<String, dynamic> map) {
     return BasicDefenseThresholdArgs(
-      bps: map['bps'] == null ? null : (map['bps']! as int).input(),
-      ddosType: (map['ddosType'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      internetIp: map['internetIp'] == null ? null : (map['internetIp']! as String).input(),
-      isAuto: map['isAuto'] == null ? null : (map['isAuto']! as bool).input(),
-      pps: map['pps'] == null ? null : (map['pps']! as int).input(),
+      bps: (() {
+        final guardedValue = map['bps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ddosType: pulumi.Input.fromValue(map['ddosType'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      internetIp: (() {
+        final guardedValue = map['internetIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isAuto: (() {
+        final guardedValue = map['isAuto'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      pps: (() {
+        final guardedValue = map['pps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

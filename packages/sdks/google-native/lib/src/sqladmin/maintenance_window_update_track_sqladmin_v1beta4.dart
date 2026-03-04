@@ -5,16 +5,17 @@ enum MaintenanceWindowUpdateTrackSqladminV1beta4 {
   stable("stable"),
   week5("week5");
 
-  const MaintenanceWindowUpdateTrackSqladminV1beta4(this.value);
-  final String value;
+  const MaintenanceWindowUpdateTrackSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static MaintenanceWindowUpdateTrackSqladminV1beta4 fromValue(String value) {
     for (final item in MaintenanceWindowUpdateTrackSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MaintenanceWindowUpdateTrackSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown MaintenanceWindowUpdateTrackSqladminV1beta4 value: $value',
+    );
   }
 }
-

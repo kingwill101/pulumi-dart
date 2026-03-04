@@ -8,20 +8,15 @@ class FunctionDeadLetterConfig {
 
   /// Creates a new [FunctionDeadLetterConfig].
   /// [targetArn] ARN of an SNS topic or SQS queue to notify when an invocation fails.
-  FunctionDeadLetterConfig({
-    required this.targetArn,
-  });
+  FunctionDeadLetterConfig({required this.targetArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetArn': targetArn,
-    };
+    return <String, dynamic>{'targetArn': targetArn};
   }
 
   factory FunctionDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return FunctionDeadLetterConfig(
-      targetArn: (map['targetArn'] as String).input(),
+      targetArn: pulumi.Input.fromValue(map['targetArn'] as String),
     );
   }
 }
-

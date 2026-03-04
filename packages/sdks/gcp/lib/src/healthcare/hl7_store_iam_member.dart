@@ -9,9 +9,9 @@ import 'hl7_store_iam_member_state.dart';
 /// * `gcp.healthcare.Hl7StoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the HL7v2 store are preserved.
 /// * `gcp.healthcare.Hl7StoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the HL7v2 store are preserved.
 ///
-/// > **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.healthcare.Hl7StoreIamPolicy
 ///
@@ -618,13 +618,16 @@ import 'hl7_store_iam_member_state.dart';
 /// ```
 class Hl7StoreIamMember extends pulumi.CustomResource {
   late final pulumi.Output<Hl7StoreIamMemberCondition?> condition;
+
   /// (Computed) The etag of the HL7v2 store's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The HL7v2 store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
   /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
   /// project setting will be used as a fallback.
   late final pulumi.Output<String> hl7V2StoreId;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -634,6 +637,7 @@ class Hl7StoreIamMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The role that should be applied. Only one
   /// `gcp.healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -648,16 +652,16 @@ class Hl7StoreIamMember extends pulumi.CustomResource {
     Hl7StoreIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<Hl7StoreIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<Hl7StoreIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [Hl7StoreIamMember] resource's state with the given [name] and [id].
@@ -678,15 +682,15 @@ class Hl7StoreIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<Hl7StoreIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
-    this.member = registerOutput<String>('member');
-    this.role = registerOutput<String>('role');
+         'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<Hl7StoreIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
   }
 }

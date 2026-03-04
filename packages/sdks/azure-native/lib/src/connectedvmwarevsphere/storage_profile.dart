@@ -10,20 +10,38 @@ class StorageProfile {
 
   /// Creates a new [StorageProfile].
   /// [disks] Gets or sets the list of virtual disks associated with the virtual machine.
-  StorageProfile({
-    this.disks,
-  });
+  StorageProfile({this.disks});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': ?pulumi.Input.mapOptionalInputValue<List<VirtualDisk>, List<Map<String, dynamic>>>(disks, (value) => pulumi.Input.encodeList<VirtualDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'disks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualDisk>,
+            List<Map<String, dynamic>>
+          >(
+            disks,
+            (value) =>
+                pulumi.Input.encodeList<VirtualDisk, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDisk>(map['disks']!, (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disks: (() {
+        final guardedValue = map['disks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualDisk>(
+            guardedValue,
+            (value) =>
+                VirtualDisk.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

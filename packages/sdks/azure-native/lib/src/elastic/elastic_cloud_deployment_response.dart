@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticCloudDeploymentResponse {
   /// Associated Azure subscription Id for the elastic deployment.
   final pulumi.Input<String> azureSubscriptionId;
+
   /// Elastic deployment Id
   final pulumi.Input<String> deploymentId;
+
   /// Region where Deployment at Elastic side took place.
   final pulumi.Input<String> elasticsearchRegion;
+
   /// Elasticsearch ingestion endpoint of the Elastic deployment.
   final pulumi.Input<String> elasticsearchServiceUrl;
+
   /// Kibana endpoint of the Elastic deployment.
   final pulumi.Input<String> kibanaServiceUrl;
+
   /// Kibana dashboard sso URL of the Elastic deployment.
   final pulumi.Input<String> kibanaSsoUrl;
+
   /// Elastic deployment name
   final pulumi.Input<String> name;
 
@@ -51,14 +57,21 @@ class ElasticCloudDeploymentResponse {
 
   factory ElasticCloudDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return ElasticCloudDeploymentResponse(
-      azureSubscriptionId: (map['azureSubscriptionId'] as String).input(),
-      deploymentId: (map['deploymentId'] as String).input(),
-      elasticsearchRegion: (map['elasticsearchRegion'] as String).input(),
-      elasticsearchServiceUrl: (map['elasticsearchServiceUrl'] as String).input(),
-      kibanaServiceUrl: (map['kibanaServiceUrl'] as String).input(),
-      kibanaSsoUrl: (map['kibanaSsoUrl'] as String).input(),
-      name: (map['name'] as String).input(),
+      azureSubscriptionId: pulumi.Input.fromValue(
+        map['azureSubscriptionId'] as String,
+      ),
+      deploymentId: pulumi.Input.fromValue(map['deploymentId'] as String),
+      elasticsearchRegion: pulumi.Input.fromValue(
+        map['elasticsearchRegion'] as String,
+      ),
+      elasticsearchServiceUrl: pulumi.Input.fromValue(
+        map['elasticsearchServiceUrl'] as String,
+      ),
+      kibanaServiceUrl: pulumi.Input.fromValue(
+        map['kibanaServiceUrl'] as String,
+      ),
+      kibanaSsoUrl: pulumi.Input.fromValue(map['kibanaSsoUrl'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

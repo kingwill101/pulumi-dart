@@ -9,20 +9,19 @@ class StatefulRuleGroupOverrideResponse {
 
   /// Creates a new [StatefulRuleGroupOverrideResponse].
   /// [action] Property action
-  StatefulRuleGroupOverrideResponse({
-    this.action,
-  });
+  StatefulRuleGroupOverrideResponse({this.action});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': ?action,
-    };
+    return <String, dynamic>{'action': ?action};
   }
 
   factory StatefulRuleGroupOverrideResponse.fromMap(Map<String, dynamic> map) {
     return StatefulRuleGroupOverrideResponse(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

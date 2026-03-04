@@ -22,18 +22,71 @@ class GetRouteSpecTcpRoute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.mapInputValue<List<GetRouteSpecTcpRouteAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<GetRouteSpecTcpRouteAction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'matches': pulumi.Input.mapInputValue<List<GetRouteSpecTcpRouteMatch>, List<Map<String, dynamic>>>(matches, (value) => pulumi.Input.encodeList<GetRouteSpecTcpRouteMatch, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'timeouts': pulumi.Input.mapInputValue<List<GetRouteSpecTcpRouteTimeout>, List<Map<String, dynamic>>>(timeouts, (value) => pulumi.Input.encodeList<GetRouteSpecTcpRouteTimeout, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions':
+          pulumi.Input.mapInputValue<
+            List<GetRouteSpecTcpRouteAction>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRouteSpecTcpRouteAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'matches':
+          pulumi.Input.mapInputValue<
+            List<GetRouteSpecTcpRouteMatch>,
+            List<Map<String, dynamic>>
+          >(
+            matches,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRouteSpecTcpRouteMatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'timeouts':
+          pulumi.Input.mapInputValue<
+            List<GetRouteSpecTcpRouteTimeout>,
+            List<Map<String, dynamic>>
+          >(
+            timeouts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRouteSpecTcpRouteTimeout,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetRouteSpecTcpRoute.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRoute(
-      actions: (pulumi.Input.decodeList<GetRouteSpecTcpRouteAction>(map['actions']!, (value) => GetRouteSpecTcpRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matches: (pulumi.Input.decodeList<GetRouteSpecTcpRouteMatch>(map['matches']!, (value) => GetRouteSpecTcpRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: (pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeout>(map['timeouts']!, (value) => GetRouteSpecTcpRouteTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetRouteSpecTcpRouteAction>(
+          map['actions']!,
+          (value) => GetRouteSpecTcpRouteAction.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      matches: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetRouteSpecTcpRouteMatch>(
+          map['matches']!,
+          (value) => GetRouteSpecTcpRouteMatch.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      timeouts: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeout>(
+          map['timeouts']!,
+          (value) => GetRouteSpecTcpRouteTimeout.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

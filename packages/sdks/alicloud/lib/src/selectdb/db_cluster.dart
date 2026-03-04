@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'db_cluster_args.dart';
-import 'db_cluster_desired_param.dart';
-import 'db_cluster_param_change_log.dart';
 import 'db_cluster_state.dart';
 
 /// Provides a SelectDB DBCluster resource.
 ///
 /// For information about SelectDB DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/zh/selectdb/latest/api-selectdb-2023-05-22-createdbcluster).
 ///
-/// > **NOTE:** Available since v1.229.0.
+/// &gt; **NOTE:** Available since v1.229.0.
 ///
 /// ## Example Usage
 ///
@@ -315,38 +313,55 @@ import 'db_cluster_state.dart';
 class DbCluster extends pulumi.CustomResource {
   /// The desired cache size on creating cluster. The number should be divided by 100.
   late final pulumi.Output<int> cacheSize;
+
   /// The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
   late final pulumi.Output<int> cpu;
+
   /// The time when DBCluster is created.
   late final pulumi.Output<String> createTime;
+
   /// The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
   late final pulumi.Output<String> dbClusterClass;
+
   /// The DBCluster description.
   late final pulumi.Output<String> dbClusterDescription;
+
   /// The id of the cluster.
   late final pulumi.Output<String> dbClusterId;
+
   /// The InstanceId of DBInstance for DBCluster. Every DBCluster requires one DBInstance to rely on.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The modified parameter in DBCluster. See `desired_params` below.
-  late final pulumi.Output<List<DbClusterDesiredParam>?> desiredParams;
+  late final pulumi.Output<List<Map<String, dynamic>>?> desiredParams;
+
   /// The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
   late final pulumi.Output<String?> desiredStatus;
+
   /// The engine of DBCluster. Always `selectdb`.
   late final pulumi.Output<String> engine;
+
   /// The version of DBCluster.
   late final pulumi.Output<String> engineVersion;
+
   /// The memory resource amount of DBCluster. Depends on `db_cluster_class`.
   late final pulumi.Output<int> memory;
+
   /// The details about parameter changelogs in DBCluster returned.
-  late final pulumi.Output<List<DbClusterParamChangeLog>> paramChangeLogs;
+  late final pulumi.Output<List<Map<String, dynamic>>> paramChangeLogs;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// The ID of region for the cluster.
   late final pulumi.Output<String> regionId;
+
   /// The current status of the resource.
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC for the cluster.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of zone for the cluster.
   late final pulumi.Output<String> zoneId;
 
@@ -359,29 +374,33 @@ class DbCluster extends pulumi.CustomResource {
     DbClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:selectdb/dbCluster:DbCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cacheSize = registerOutput<int>('cacheSize');
-    this.cpu = registerOutput<int>('cpu');
-    this.createTime = registerOutput<String>('createTime');
-    this.dbClusterClass = registerOutput<String>('dbClusterClass');
-    this.dbClusterDescription = registerOutput<String>('dbClusterDescription');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.desiredParams = registerOutput<List<DbClusterDesiredParam>?>('desiredParams');
-    this.desiredStatus = registerOutput<String?>('desiredStatus');
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.memory = registerOutput<int>('memory');
-    this.paramChangeLogs = registerOutput<List<DbClusterParamChangeLog>>('paramChangeLogs');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:selectdb/dbCluster:DbCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cacheSize = registerOutput<int>('cacheSize');
+    cpu = registerOutput<int>('cpu');
+    createTime = registerOutput<String>('createTime');
+    dbClusterClass = registerOutput<String>('dbClusterClass');
+    dbClusterDescription = registerOutput<String>('dbClusterDescription');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    desiredParams = registerOutput<List<Map<String, dynamic>>?>(
+      'desiredParams',
+    );
+    desiredStatus = registerOutput<String?>('desiredStatus');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    memory = registerOutput<int>('memory');
+    paramChangeLogs = registerOutput<List<Map<String, dynamic>>>(
+      'paramChangeLogs',
+    );
+    paymentType = registerOutput<String>('paymentType');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [DbCluster] resource's state with the given [name] and [id].
@@ -402,28 +421,32 @@ class DbCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:selectdb/dbCluster:DbCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cacheSize = registerOutput<int>('cacheSize');
-    this.cpu = registerOutput<int>('cpu');
-    this.createTime = registerOutput<String>('createTime');
-    this.dbClusterClass = registerOutput<String>('dbClusterClass');
-    this.dbClusterDescription = registerOutput<String>('dbClusterDescription');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.desiredParams = registerOutput<List<DbClusterDesiredParam>?>('desiredParams');
-    this.desiredStatus = registerOutput<String?>('desiredStatus');
-    this.engine = registerOutput<String>('engine');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.memory = registerOutput<int>('memory');
-    this.paramChangeLogs = registerOutput<List<DbClusterParamChangeLog>>('paramChangeLogs');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:selectdb/dbCluster:DbCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cacheSize = registerOutput<int>('cacheSize');
+    cpu = registerOutput<int>('cpu');
+    createTime = registerOutput<String>('createTime');
+    dbClusterClass = registerOutput<String>('dbClusterClass');
+    dbClusterDescription = registerOutput<String>('dbClusterDescription');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    desiredParams = registerOutput<List<Map<String, dynamic>>?>(
+      'desiredParams',
+    );
+    desiredStatus = registerOutput<String?>('desiredStatus');
+    engine = registerOutput<String>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    memory = registerOutput<int>('memory');
+    paramChangeLogs = registerOutput<List<Map<String, dynamic>>>(
+      'paramChangeLogs',
+    );
+    paymentType = registerOutput<String>('paymentType');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

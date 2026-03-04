@@ -7,38 +7,55 @@ import 'cloud_formation_type_logging_config.dart';
 class CloudFormationTypeState {
   /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type version. See also `type_arn`.
   final pulumi.Input<String>? arn;
+
   /// Identifier of the CloudFormation Type default version.
   final pulumi.Input<String>? defaultVersionId;
+
   /// Deprecation status of the version.
   final pulumi.Input<String>? deprecatedStatus;
+
   /// Description of the version.
   final pulumi.Input<String>? description;
+
   /// URL of the documentation for the CloudFormation Type.
   final pulumi.Input<String>? documentationUrl;
+
   /// Amazon Resource Name (ARN) of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
   final pulumi.Input<String>? executionRoleArn;
+
   /// Whether the CloudFormation Type version is the default version.
   final pulumi.Input<bool>? isDefaultVersion;
+
   /// Configuration block containing logging configuration.
   final pulumi.Input<CloudFormationTypeLoggingConfig>? loggingConfig;
+
   /// Provisioning behavior of the CloudFormation Type.
   final pulumi.Input<String>? provisioningType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// JSON document of the CloudFormation Type schema.
   final pulumi.Input<String>? schema;
+
   /// URL to the S3 bucket containing the extension project package that contains the necessary files for the extension you want to register. Must begin with `s3://` or `https://`. For example, `s3://example-bucket/example-object`.
   final pulumi.Input<String>? schemaHandlerPackage;
+
   /// URL of the source code for the CloudFormation Type.
   final pulumi.Input<String>? sourceUrl;
+
   /// CloudFormation Registry Type. For example, `RESOURCE` or `MODULE`.
   final pulumi.Input<String>? type;
+
   /// (Optional) Amazon Resource Name (ARN) of the CloudFormation Type. See also `arn`.
   final pulumi.Input<String>? typeArn;
+
   /// CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.
   final pulumi.Input<String>? typeName;
+
   /// (Optional) Identifier of the CloudFormation Type version.
   final pulumi.Input<String>? versionId;
+
   /// Scope of the CloudFormation Type.
   final pulumi.Input<String>? visibility;
 
@@ -91,7 +108,11 @@ class CloudFormationTypeState {
       'documentationUrl': ?documentationUrl,
       'executionRoleArn': ?executionRoleArn,
       'isDefaultVersion': ?isDefaultVersion,
-      'loggingConfig': ?pulumi.Input.mapOptionalInputValue<CloudFormationTypeLoggingConfig, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'loggingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CloudFormationTypeLoggingConfig,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
       'provisioningType': ?provisioningType,
       'region': ?region,
       'schema': ?schema,
@@ -107,25 +128,100 @@ class CloudFormationTypeState {
 
   factory CloudFormationTypeState.fromMap(Map<String, dynamic> map) {
     return CloudFormationTypeState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      defaultVersionId: map['defaultVersionId'] == null ? null : ((map['defaultVersionId'] as String).input()).input(),
-      deprecatedStatus: map['deprecatedStatus'] == null ? null : ((map['deprecatedStatus'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      documentationUrl: map['documentationUrl'] == null ? null : ((map['documentationUrl'] as String).input()).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : ((map['isDefaultVersion'] as bool).input()).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : ((CloudFormationTypeLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      provisioningType: map['provisioningType'] == null ? null : ((map['provisioningType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
-      schemaHandlerPackage: map['schemaHandlerPackage'] == null ? null : ((map['schemaHandlerPackage'] as String).input()).input(),
-      sourceUrl: map['sourceUrl'] == null ? null : ((map['sourceUrl'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      typeArn: map['typeArn'] == null ? null : ((map['typeArn'] as String).input()).input(),
-      typeName: map['typeName'] == null ? null : ((map['typeName'] as String).input()).input(),
-      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
-      visibility: map['visibility'] == null ? null : ((map['visibility'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultVersionId: (() {
+        final guardedValue = map['defaultVersionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deprecatedStatus: (() {
+        final guardedValue = map['deprecatedStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentationUrl: (() {
+        final guardedValue = map['documentationUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionRoleArn: (() {
+        final guardedValue = map['executionRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefaultVersion: (() {
+        final guardedValue = map['isDefaultVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loggingConfig: (() {
+        final guardedValue = map['loggingConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CloudFormationTypeLoggingConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningType: (() {
+        final guardedValue = map['provisioningType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaHandlerPackage: (() {
+        final guardedValue = map['schemaHandlerPackage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceUrl: (() {
+        final guardedValue = map['sourceUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      typeArn: (() {
+        final guardedValue = map['typeArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      typeName: (() {
+        final guardedValue = map['typeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionId: (() {
+        final guardedValue = map['versionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      visibility: (() {
+        final guardedValue = map['visibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerGroupsGroupEvent {
   /// The number of events.
   final pulumi.Input<int> count;
+
   /// The time when the event started.
   final pulumi.Input<String> firstTimestamp;
+
   /// The time when the event ended.
   final pulumi.Input<String> lastTimestamp;
+
   /// The content of the event.
   final pulumi.Input<String> message;
+
   /// The name of the object to which the event belongs.
   final pulumi.Input<String> name;
+
   /// The name of the event.
   final pulumi.Input<String> reason;
+
   /// The type of the event. Valid values: Normal and Warning.
   final pulumi.Input<String> type;
 
@@ -50,14 +56,13 @@ class GetContainerGroupsGroupEvent {
 
   factory GetContainerGroupsGroupEvent.fromMap(Map<String, dynamic> map) {
     return GetContainerGroupsGroupEvent(
-      count: (map['count'] as int).input(),
-      firstTimestamp: (map['firstTimestamp'] as String).input(),
-      lastTimestamp: (map['lastTimestamp'] as String).input(),
-      message: (map['message'] as String).input(),
-      name: (map['name'] as String).input(),
-      reason: (map['reason'] as String).input(),
-      type: (map['type'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      firstTimestamp: pulumi.Input.fromValue(map['firstTimestamp'] as String),
+      lastTimestamp: pulumi.Input.fromValue(map['lastTimestamp'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrgAccessTokenArgs {
   /// Optional. True if this is an admin token.
   final pulumi.Input<bool>? admin;
+
   /// Optional. Team description.
   final pulumi.Input<String>? description;
+
   /// The name for the token.
   final pulumi.Input<String> name;
+
   /// The organization's name.
   final pulumi.Input<String> organizationName;
 
@@ -39,11 +42,20 @@ class OrgAccessTokenArgs {
 
   factory OrgAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return OrgAccessTokenArgs(
-      admin: map['admin'] == null ? null : (map['admin']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      organizationName: (map['organizationName'] as String).input(),
+      admin: (() {
+        final guardedValue = map['admin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
     );
   }
 }
-

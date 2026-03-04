@@ -12,20 +12,15 @@ class GetViewArgs {
 
   /// Creates a new [GetViewArgs].
   /// [viewName] View name
-  GetViewArgs({
-    required this.viewName,
-  });
+  GetViewArgs({required this.viewName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'viewName': viewName,
-    };
+    return <String, dynamic>{'viewName': viewName};
   }
 
   factory GetViewArgs.fromMap(Map<String, dynamic> map) {
     return GetViewArgs(
-      viewName: (map['viewName'] as String).input(),
+      viewName: pulumi.Input.fromValue(map['viewName'] as String),
     );
   }
 }
-

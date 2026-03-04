@@ -9,10 +9,13 @@ import 'k8s_settings.dart';
 class SqlManagedInstanceK8sSpec {
   /// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
   final pulumi.Input<int>? replicas;
+
   /// The kubernetes scheduling information.
   final pulumi.Input<K8sScheduling>? scheduling;
+
   /// The kubernetes security information.
   final pulumi.Input<K8sSecurity>? security;
+
   /// The kubernetes settings information.
   final pulumi.Input<K8sSettings>? settings;
 
@@ -31,19 +34,52 @@ class SqlManagedInstanceK8sSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'replicas': ?replicas,
-      'scheduling': ?pulumi.Input.mapOptionalInputValue<K8sScheduling, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
-      'security': ?pulumi.Input.mapOptionalInputValue<K8sSecurity, Map<String, dynamic>>(security, (value) => value.toMap()),
-      'settings': ?pulumi.Input.mapOptionalInputValue<K8sSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'scheduling':
+          ?pulumi.Input.mapOptionalInputValue<
+            K8sScheduling,
+            Map<String, dynamic>
+          >(scheduling, (value) => value.toMap()),
+      'security':
+          ?pulumi.Input.mapOptionalInputValue<
+            K8sSecurity,
+            Map<String, dynamic>
+          >(security, (value) => value.toMap()),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            K8sSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
     };
   }
 
   factory SqlManagedInstanceK8sSpec.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceK8sSpec(
-      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
-      scheduling: map['scheduling'] == null ? null : (K8sScheduling.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
-      security: map['security'] == null ? null : (K8sSecurity.fromMap((map['security']! as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (K8sSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      replicas: (() {
+        final guardedValue = map['replicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scheduling: (() {
+        final guardedValue = map['scheduling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          K8sScheduling.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      security: (() {
+        final guardedValue = map['security'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          K8sSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          K8sSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

@@ -110,12 +110,16 @@ import 'route_state.dart';
 class Route extends pulumi.CustomResource {
   /// Specifies a gateway address for the route.
   late final pulumi.Output<String?> gw;
+
   /// Name of the route.Name of Route should be full path,full path is the combination of the `partition + route name`,For ex: `/Common/test-net-route`.
   late final pulumi.Output<String> name;
+
   /// The destination subnet and netmask for the route.
   late final pulumi.Output<String> network;
+
   /// reject route
   late final pulumi.Output<bool?> reject;
+
   /// tunnel_ref to route traffic
   late final pulumi.Output<String?> tunnelRef;
 
@@ -123,29 +127,22 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_net_route_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(
-    String name, {
-    RouteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:net/route:Route',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gw = registerOutput<String?>('gw');
+  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:net/route:Route',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    gw = registerOutput<String?>('gw');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.reject = registerOutput<bool?>('reject');
-    this.tunnelRef = registerOutput<String?>('tunnelRef');
+    network = registerOutput<String>('network');
+    reject = registerOutput<bool?>('reject');
+    tunnelRef = registerOutput<String?>('tunnelRef');
   }
 
   /// Gets an existing [Route] resource's state with the given [name] and [id].
-  static Route get(
-    String name,
-    pulumi.Input<String> id, {
-    RouteState? state,
-  }) {
+  static Route get(String name, pulumi.Input<String> id, {RouteState? state}) {
     return Route._get(
       name,
       state: state?.toMap(),
@@ -158,15 +155,15 @@ class Route extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:net/route:Route',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gw = registerOutput<String?>('gw');
+         'f5bigip:net/route:Route',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gw = registerOutput<String?>('gw');
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<String>('network');
-    this.reject = registerOutput<bool?>('reject');
-    this.tunnelRef = registerOutput<String?>('tunnelRef');
+    network = registerOutput<String>('network');
+    reject = registerOutput<bool?>('reject');
+    tunnelRef = registerOutput<String?>('tunnelRef');
   }
 }

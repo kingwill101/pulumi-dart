@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ModelState {
   /// The description of the model.
   final pulumi.Input<String>? description;
+
   /// The group of the model belongs to.
   final pulumi.Input<String>? groupId;
+
   /// The name of the model.
   final pulumi.Input<String>? modelName;
+
   /// The schema of the model.
   final pulumi.Input<String>? schema;
 
@@ -18,12 +21,7 @@ class ModelState {
   /// [groupId] The group of the model belongs to.
   /// [modelName] The name of the model.
   /// [schema] The schema of the model.
-  ModelState({
-    this.description,
-    this.groupId,
-    this.modelName,
-    this.schema,
-  });
+  ModelState({this.description, this.groupId, this.modelName, this.schema});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      modelName: map['modelName'] == null ? null : (map['modelName']! as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modelName: (() {
+        final guardedValue = map['modelName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

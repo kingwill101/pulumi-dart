@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VariableArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Gets or sets the description of the variable.
   final pulumi.Input<String>? description;
+
   /// Gets or sets the encrypted flag of the variable.
   final pulumi.Input<bool>? isEncrypted;
+
   /// Gets or sets the name of the variable.
   final pulumi.Input<String> name;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets the value of the variable.
   final pulumi.Input<String>? value;
+
   /// The variable name.
   final pulumi.Input<String>? variableName;
 
@@ -54,14 +60,33 @@ class VariableArgs {
 
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted']! as bool).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      variableName: map['variableName'] == null ? null : (map['variableName']! as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isEncrypted: (() {
+        final guardedValue = map['isEncrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      variableName: (() {
+        final guardedValue = map['variableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

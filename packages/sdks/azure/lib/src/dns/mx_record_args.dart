@@ -10,14 +10,19 @@ import 'mx_record_record.dart';
 class MxRecordArgs {
   /// The name of the DNS MX Record. Defaults to `@` (root). Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A list of values that make up the MX record. Each `record` block supports fields documented below.
   final pulumi.Input<List<MxRecordRecord>> records;
+
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The Time To Live (TTL) of the DNS record in seconds.
   final pulumi.Input<int> ttl;
+
   /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> zoneName;
 
@@ -40,7 +45,18 @@ class MxRecordArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'records': pulumi.Input.mapInputValue<List<MxRecordRecord>, List<Map<String, dynamic>>>(records, (value) => pulumi.Input.encodeList<MxRecordRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'records':
+          pulumi.Input.mapInputValue<
+            List<MxRecordRecord>,
+            List<Map<String, dynamic>>
+          >(
+            records,
+            (value) =>
+                pulumi.Input.encodeList<MxRecordRecord, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'ttl': ttl,
@@ -50,13 +66,30 @@ class MxRecordArgs {
 
   factory MxRecordArgs.fromMap(Map<String, dynamic> map) {
     return MxRecordArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      records: (pulumi.Input.decodeList<MxRecordRecord>(map['records'], (value) => MxRecordRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      ttl: (map['ttl'] as int).input(),
-      zoneName: (map['zoneName'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      records: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MxRecordRecord>(
+          map['records']!,
+          (value) =>
+              MxRecordRecord.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
-

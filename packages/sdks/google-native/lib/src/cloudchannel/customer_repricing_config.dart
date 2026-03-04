@@ -7,10 +7,14 @@ import 'google_cloud_channel_v1_repricing_config_response.dart';
 class CustomerRepricingConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> customerId;
+
   /// Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
   late final pulumi.Output<String> name;
+
   /// The configuration for bill modifications made by a reseller before sending it to customers.
-  late final pulumi.Output<GoogleCloudChannelV1RepricingConfigResponse> repricingConfig;
+  late final pulumi.Output<GoogleCloudChannelV1RepricingConfigResponse>
+  repricingConfig;
+
   /// Timestamp of an update to the repricing rule. If `update_time` is after RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
   late final pulumi.Output<String> updateTime;
 
@@ -23,15 +27,18 @@ class CustomerRepricingConfig extends pulumi.CustomResource {
     CustomerRepricingConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudchannel/v1:CustomerRepricingConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.customerId = registerOutput<String>('customerId');
+         'google-native:cloudchannel/v1:CustomerRepricingConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    customerId = registerOutput<String>('customerId');
     this.name = registerOutput<String>('name');
-    this.repricingConfig = registerOutput<GoogleCloudChannelV1RepricingConfigResponse>('repricingConfig');
-    this.updateTime = registerOutput<String>('updateTime');
+    repricingConfig =
+        registerOutput<GoogleCloudChannelV1RepricingConfigResponse>(
+          'repricingConfig',
+        );
+    updateTime = registerOutput<String>('updateTime');
   }
 }

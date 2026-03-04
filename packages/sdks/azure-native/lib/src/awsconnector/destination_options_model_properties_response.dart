@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DestinationOptionsModelPropertiesResponse {
   /// Property fileFormat
   final pulumi.Input<String>? fileFormat;
+
   /// Property hiveCompatiblePartitions
   final pulumi.Input<bool>? hiveCompatiblePartitions;
+
   /// Property perHourPartition
   final pulumi.Input<bool>? perHourPartition;
 
@@ -29,12 +31,25 @@ class DestinationOptionsModelPropertiesResponse {
     };
   }
 
-  factory DestinationOptionsModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory DestinationOptionsModelPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DestinationOptionsModelPropertiesResponse(
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
-      hiveCompatiblePartitions: map['hiveCompatiblePartitions'] == null ? null : (map['hiveCompatiblePartitions']! as bool).input(),
-      perHourPartition: map['perHourPartition'] == null ? null : (map['perHourPartition']! as bool).input(),
+      fileFormat: (() {
+        final guardedValue = map['fileFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hiveCompatiblePartitions: (() {
+        final guardedValue = map['hiveCompatiblePartitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      perHourPartition: (() {
+        final guardedValue = map['perHourPartition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

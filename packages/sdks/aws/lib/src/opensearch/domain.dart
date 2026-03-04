@@ -9,7 +9,6 @@ import 'domain_domain_endpoint_options.dart';
 import 'domain_ebs_options.dart';
 import 'domain_encrypt_at_rest.dart';
 import 'domain_identity_center_options.dart';
-import 'domain_log_publishing_option.dart';
 import 'domain_node_to_node_encryption.dart';
 import 'domain_off_peak_window_options.dart';
 import 'domain_snapshot_options.dart';
@@ -171,7 +170,7 @@ import 'domain_vpc_options.dart';
 ///
 /// ### Access Policy
 ///
-/// > See also: `aws.opensearch.DomainPolicy` resource
+/// &gt; See also: `aws.opensearch.DomainPolicy` resource
 ///
 ///
 /// ```typescript
@@ -1905,66 +1904,96 @@ import 'domain_vpc_options.dart';
 class Domain extends pulumi.CustomResource {
   /// IAM policy document specifying the access policies for the domain.
   late final pulumi.Output<String> accessPolicies;
+
   /// Key-value string pairs to specify advanced configuration options. Note that the values for these configuration options must be strings (wrapped in quotes) or they may be wrong and cause a perpetual diff, causing the provider to want to recreate your OpenSearch domain on every apply.
   late final pulumi.Output<Map<String, String>> advancedOptions;
+
   /// Configuration block for [fine-grained access control](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html). Detailed below.
-  late final pulumi.Output<DomainAdvancedSecurityOptions> advancedSecurityOptions;
+  late final pulumi.Output<DomainAdvancedSecurityOptions>
+  advancedSecurityOptions;
+
   /// Configuration block for parameters required to enable all machine learning features. Detailed below.
   late final pulumi.Output<DomainAimlOptions> aimlOptions;
+
   /// ARN of the domain.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for the Auto-Tune options of the domain. Detailed below.
   late final pulumi.Output<DomainAutoTuneOptions> autoTuneOptions;
+
   /// Configuration block for the cluster of the domain. Detailed below.
   late final pulumi.Output<DomainClusterConfig> clusterConfig;
+
   /// Configuration block for authenticating dashboard with Cognito. Detailed below.
   late final pulumi.Output<DomainCognitoOptions?> cognitoOptions;
+
   /// Domain-specific endpoint for Dashboard without https scheme.
   late final pulumi.Output<String> dashboardEndpoint;
+
   /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
   late final pulumi.Output<String> dashboardEndpointV2;
+
   /// Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   late final pulumi.Output<DomainDomainEndpointOptions> domainEndpointOptions;
+
   /// Dual stack hosted zone ID for the domain.
   late final pulumi.Output<String> domainEndpointV2HostedZoneId;
+
   /// Unique identifier for the domain.
   late final pulumi.Output<String> domainId;
+
   /// Name of the domain.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
+
   /// Configuration block for EBS related options, may be required based on chosen [instance size](https://aws.amazon.com/opensearch-service/pricing/). Detailed below.
   late final pulumi.Output<DomainEbsOptions> ebsOptions;
+
   /// Configuration block for encrypt at rest options. Only available for [certain instance types](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/encryption-at-rest.html). Detailed below.
   late final pulumi.Output<DomainEncryptAtRest> encryptAtRest;
+
   /// Domain-specific endpoint used to submit index, search, and data upload requests.
   late final pulumi.Output<String> endpoint;
+
   /// V2 domain endpoint that works with both IPv4 and IPv6 addresses, used to submit index, search, and data upload requests.
   late final pulumi.Output<String> endpointV2;
+
   /// Either `Elasticsearch_X.Y` or `OpenSearch_X.Y` to specify the engine version for the Amazon OpenSearch Service domain. For example, `OpenSearch_1.0` or `Elasticsearch_7.9`.
   /// See [Creating and managing Amazon OpenSearch Service domains](http://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains).
   /// Defaults to the lastest version of OpenSearch.
   late final pulumi.Output<String> engineVersion;
+
   /// Configuration block for enabling and managing IAM Identity Center integration within a domain. Detailed below.
   late final pulumi.Output<DomainIdentityCenterOptions?> identityCenterOptions;
+
   /// The IP address type for the endpoint. Valid values are `ipv4` and `dualstack`.
   late final pulumi.Output<String> ipAddressType;
+
   /// Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
-  late final pulumi.Output<List<DomainLogPublishingOption>?> logPublishingOptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> logPublishingOptions;
+
   /// Configuration block for node-to-node encryption options. Detailed below.
   late final pulumi.Output<DomainNodeToNodeEncryption> nodeToNodeEncryption;
+
   /// Configuration to add Off Peak update options. ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/off-peak.html)). Detailed below.
   late final pulumi.Output<DomainOffPeakWindowOptions> offPeakWindowOptions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for snapshot related options. Detailed below. DEPRECATED. For domains running OpenSearch 5.3 and later, Amazon OpenSearch takes hourly automated snapshots, making this setting irrelevant. For domains running earlier versions, OpenSearch takes daily automated snapshots.
   late final pulumi.Output<DomainSnapshotOptions?> snapshotOptions;
+
   /// Software update options for the domain. Detailed below.
   late final pulumi.Output<DomainSoftwareUpdateOptions> softwareUpdateOptions;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
   late final pulumi.Output<DomainVpcOptions?> vpcOptions;
 
@@ -1972,46 +2001,59 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_opensearch_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:opensearch/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPolicies = registerOutput<String>('accessPolicies');
-    this.advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
-    this.advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions');
-    this.aimlOptions = registerOutput<DomainAimlOptions>('aimlOptions');
-    this.arn = registerOutput<String>('arn');
-    this.autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions');
-    this.clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig');
-    this.cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions');
-    this.dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
-    this.dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
-    this.domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions');
-    this.domainEndpointV2HostedZoneId = registerOutput<String>('domainEndpointV2HostedZoneId');
-    this.domainId = registerOutput<String>('domainId');
-    this.domainName = registerOutput<String>('domainName');
-    this.ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions');
-    this.encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.endpointV2 = registerOutput<String>('endpointV2');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>('identityCenterOptions');
-    this.ipAddressType = registerOutput<String>('ipAddressType');
-    this.logPublishingOptions = registerOutput<List<DomainLogPublishingOption>?>('logPublishingOptions');
-    this.nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption');
-    this.offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>('offPeakWindowOptions');
-    this.region = registerOutput<String>('region');
-    this.snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions');
-    this.softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>('softwareUpdateOptions');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:opensearch/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accessPolicies = registerOutput<String>('accessPolicies');
+    advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
+    advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>(
+      'advancedSecurityOptions',
+    );
+    aimlOptions = registerOutput<DomainAimlOptions>('aimlOptions');
+    arn = registerOutput<String>('arn');
+    autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions');
+    clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig');
+    cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions');
+    dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
+    dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
+    domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>(
+      'domainEndpointOptions',
+    );
+    domainEndpointV2HostedZoneId = registerOutput<String>(
+      'domainEndpointV2HostedZoneId',
+    );
+    domainId = registerOutput<String>('domainId');
+    domainName = registerOutput<String>('domainName');
+    ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions');
+    encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest');
+    endpoint = registerOutput<String>('endpoint');
+    endpointV2 = registerOutput<String>('endpointV2');
+    engineVersion = registerOutput<String>('engineVersion');
+    identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>(
+      'identityCenterOptions',
+    );
+    ipAddressType = registerOutput<String>('ipAddressType');
+    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>(
+      'logPublishingOptions',
+    );
+    nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>(
+      'nodeToNodeEncryption',
+    );
+    offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>(
+      'offPeakWindowOptions',
+    );
+    region = registerOutput<String>('region');
+    snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions');
+    softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>(
+      'softwareUpdateOptions',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -2032,40 +2074,56 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:opensearch/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPolicies = registerOutput<String>('accessPolicies');
-    this.advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
-    this.advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions');
-    this.aimlOptions = registerOutput<DomainAimlOptions>('aimlOptions');
-    this.arn = registerOutput<String>('arn');
-    this.autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions');
-    this.clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig');
-    this.cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions');
-    this.dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
-    this.dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
-    this.domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions');
-    this.domainEndpointV2HostedZoneId = registerOutput<String>('domainEndpointV2HostedZoneId');
-    this.domainId = registerOutput<String>('domainId');
-    this.domainName = registerOutput<String>('domainName');
-    this.ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions');
-    this.encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.endpointV2 = registerOutput<String>('endpointV2');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>('identityCenterOptions');
-    this.ipAddressType = registerOutput<String>('ipAddressType');
-    this.logPublishingOptions = registerOutput<List<DomainLogPublishingOption>?>('logPublishingOptions');
-    this.nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption');
-    this.offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>('offPeakWindowOptions');
-    this.region = registerOutput<String>('region');
-    this.snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions');
-    this.softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>('softwareUpdateOptions');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions');
+         'aws:opensearch/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPolicies = registerOutput<String>('accessPolicies');
+    advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
+    advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>(
+      'advancedSecurityOptions',
+    );
+    aimlOptions = registerOutput<DomainAimlOptions>('aimlOptions');
+    arn = registerOutput<String>('arn');
+    autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions');
+    clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig');
+    cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions');
+    dashboardEndpoint = registerOutput<String>('dashboardEndpoint');
+    dashboardEndpointV2 = registerOutput<String>('dashboardEndpointV2');
+    domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>(
+      'domainEndpointOptions',
+    );
+    domainEndpointV2HostedZoneId = registerOutput<String>(
+      'domainEndpointV2HostedZoneId',
+    );
+    domainId = registerOutput<String>('domainId');
+    domainName = registerOutput<String>('domainName');
+    ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions');
+    encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest');
+    endpoint = registerOutput<String>('endpoint');
+    endpointV2 = registerOutput<String>('endpointV2');
+    engineVersion = registerOutput<String>('engineVersion');
+    identityCenterOptions = registerOutput<DomainIdentityCenterOptions?>(
+      'identityCenterOptions',
+    );
+    ipAddressType = registerOutput<String>('ipAddressType');
+    logPublishingOptions = registerOutput<List<Map<String, dynamic>>?>(
+      'logPublishingOptions',
+    );
+    nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>(
+      'nodeToNodeEncryption',
+    );
+    offPeakWindowOptions = registerOutput<DomainOffPeakWindowOptions>(
+      'offPeakWindowOptions',
+    );
+    region = registerOutput<String>('region');
+    snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions');
+    softwareUpdateOptions = registerOutput<DomainSoftwareUpdateOptions>(
+      'softwareUpdateOptions',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions');
   }
 }

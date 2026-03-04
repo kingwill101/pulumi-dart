@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeGroupArgs {
   /// The name of the OpenStack Magnum cluster.
   final pulumi.Input<String> clusterId;
+
   /// The name of the node group.
   final pulumi.Input<String>? name;
+
   /// The region in which to obtain the V1 Container Infra
   /// client.
   /// If omitted, the `region` argument of the provider is used.
@@ -20,11 +22,7 @@ class GetNodeGroupArgs {
   /// [clusterId] The name of the OpenStack Magnum cluster.
   /// [name] The name of the node group.
   /// [region] The region in which to obtain the V1 Container Infra
-  GetNodeGroupArgs({
-    required this.clusterId,
-    this.name,
-    this.region,
-  });
+  GetNodeGroupArgs({required this.clusterId, this.name, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,17 @@ class GetNodeGroupArgs {
 
   factory GetNodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

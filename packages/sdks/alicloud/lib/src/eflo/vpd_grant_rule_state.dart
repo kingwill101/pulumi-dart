@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpdGrantRuleState {
   /// The Creation time.
   final pulumi.Input<String>? createTime;
+
   /// The ID of the ER instance under the cross-account tenant.
   final pulumi.Input<String>? erId;
+
   /// Cross-account authorized tenant ID.
   final pulumi.Input<String>? grantTenantId;
+
   /// Instance ID of VPD.
   final pulumi.Input<String>? instanceId;
+
   /// The Region ID.
   final pulumi.Input<String>? regionId;
 
@@ -41,12 +45,31 @@ class VpdGrantRuleState {
 
   factory VpdGrantRuleState.fromMap(Map<String, dynamic> map) {
     return VpdGrantRuleState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      erId: map['erId'] == null ? null : (map['erId']! as String).input(),
-      grantTenantId: map['grantTenantId'] == null ? null : (map['grantTenantId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      erId: (() {
+        final guardedValue = map['erId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      grantTenantId: (() {
+        final guardedValue = map['grantTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,20 +8,15 @@ class TableSchemaDefinitionPartitionKey {
 
   /// Creates a new [TableSchemaDefinitionPartitionKey].
   /// [name] The name of the partition key column.
-  TableSchemaDefinitionPartitionKey({
-    required this.name,
-  });
+  TableSchemaDefinitionPartitionKey({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory TableSchemaDefinitionPartitionKey.fromMap(Map<String, dynamic> map) {
     return TableSchemaDefinitionPartitionKey(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

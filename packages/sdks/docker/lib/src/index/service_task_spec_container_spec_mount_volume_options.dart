@@ -6,10 +6,14 @@ import 'service_task_spec_container_spec_mount_volume_options_label.dart';
 class ServiceTaskSpecContainerSpecMountVolumeOptions {
   /// Name of the driver to use to create the volume
   final pulumi.Input<String>? driverName;
+
   /// key/value map of driver specific options
   final pulumi.Input<Map<String, String>>? driverOptions;
+
   /// User-defined key/value metadata
-  final pulumi.Input<List<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel>>? labels;
+  final pulumi.Input<List<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel>>?
+  labels;
+
   /// Populate volume with data from the target
   final pulumi.Input<bool>? noCopy;
 
@@ -29,18 +33,58 @@ class ServiceTaskSpecContainerSpecMountVolumeOptions {
     return <String, dynamic>{
       'driverName': ?driverName,
       'driverOptions': ?driverOptions,
-      'labels': ?pulumi.Input.mapOptionalInputValue<List<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel>,
+            List<Map<String, dynamic>>
+          >(
+            labels,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceTaskSpecContainerSpecMountVolumeOptionsLabel,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'noCopy': ?noCopy,
     };
   }
 
-  factory ServiceTaskSpecContainerSpecMountVolumeOptions.fromMap(Map<String, dynamic> map) {
+  factory ServiceTaskSpecContainerSpecMountVolumeOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTaskSpecContainerSpecMountVolumeOptions(
-      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
-      driverOptions: map['driverOptions'] == null ? null : ((map['driverOptions']! as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecContainerSpecMountVolumeOptionsLabel>(map['labels']!, (value) => ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      noCopy: map['noCopy'] == null ? null : (map['noCopy']! as bool).input(),
+      driverName: (() {
+        final guardedValue = map['driverName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      driverOptions: (() {
+        final guardedValue = map['driverOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ServiceTaskSpecContainerSpecMountVolumeOptionsLabel
+          >(
+            guardedValue,
+            (value) =>
+                ServiceTaskSpecContainerSpecMountVolumeOptionsLabel.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      noCopy: (() {
+        final guardedValue = map['noCopy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

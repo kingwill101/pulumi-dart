@@ -8,22 +8,32 @@ import 'prometheus_rule_resolve_configuration_response.dart';
 class PrometheusRuleResponse {
   /// Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
   final pulumi.Input<List<PrometheusRuleGroupActionResponse>>? actions;
+
   /// Alert rule name.
   final pulumi.Input<String>? alert;
+
   /// The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Enable/disable rule.
   final pulumi.Input<bool>? enabled;
+
   /// The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
   final pulumi.Input<String> expression;
+
   /// The amount of time alert must be active before firing.
   final pulumi.Input<String>? for_;
+
   /// Labels to add or overwrite before storing the result.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Recorded metrics name.
   final pulumi.Input<String>? record;
+
   /// Defines the configuration for resolving fired alerts. Only relevant for alerts.
-  final pulumi.Input<PrometheusRuleResolveConfigurationResponse>? resolveConfiguration;
+  final pulumi.Input<PrometheusRuleResolveConfigurationResponse>?
+  resolveConfiguration;
+
   /// The severity of the alerts fired by the rule. Must be between 0 and 4.
   final pulumi.Input<int>? severity;
 
@@ -53,7 +63,18 @@ class PrometheusRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<PrometheusRuleGroupActionResponse>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PrometheusRuleGroupActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrometheusRuleGroupActionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrometheusRuleGroupActionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'alert': ?alert,
       'annotations': ?annotations,
       'enabled': ?enabled,
@@ -61,24 +82,78 @@ class PrometheusRuleResponse {
       'for': ?for_,
       'labels': ?labels,
       'record': ?record,
-      'resolveConfiguration': ?pulumi.Input.mapOptionalInputValue<PrometheusRuleResolveConfigurationResponse, Map<String, dynamic>>(resolveConfiguration, (value) => value.toMap()),
+      'resolveConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrometheusRuleResolveConfigurationResponse,
+            Map<String, dynamic>
+          >(resolveConfiguration, (value) => value.toMap()),
       'severity': ?severity,
     };
   }
 
   factory PrometheusRuleResponse.fromMap(Map<String, dynamic> map) {
     return PrometheusRuleResponse(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PrometheusRuleGroupActionResponse>(map['actions']!, (value) => PrometheusRuleGroupActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      alert: map['alert'] == null ? null : (map['alert']! as String).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      expression: (map['expression'] as String).input(),
-      for_: map['for'] == null ? null : (map['for']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      record: map['record'] == null ? null : (map['record']! as String).input(),
-      resolveConfiguration: map['resolveConfiguration'] == null ? null : (PrometheusRuleResolveConfigurationResponse.fromMap((map['resolveConfiguration']! as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrometheusRuleGroupActionResponse>(
+            guardedValue,
+            (value) => PrometheusRuleGroupActionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      alert: (() {
+        final guardedValue = map['alert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expression: pulumi.Input.fromValue(map['expression'] as String),
+      for_: (() {
+        final guardedValue = map['for'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      record: (() {
+        final guardedValue = map['record'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resolveConfiguration: (() {
+        final guardedValue = map['resolveConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrometheusRuleResolveConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

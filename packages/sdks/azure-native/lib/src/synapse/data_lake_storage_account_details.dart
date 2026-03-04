@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataLakeStorageAccountDetails {
   /// Account URL
   final pulumi.Input<String>? accountUrl;
+
   /// Create managed private endpoint to this storage account or not
   final pulumi.Input<bool>? createManagedPrivateEndpoint;
+
   /// Filesystem name
   final pulumi.Input<String>? filesystem;
+
   /// ARM resource Id of this storage account
   final pulumi.Input<String>? resourceId;
 
@@ -36,11 +39,26 @@ class DataLakeStorageAccountDetails {
 
   factory DataLakeStorageAccountDetails.fromMap(Map<String, dynamic> map) {
     return DataLakeStorageAccountDetails(
-      accountUrl: map['accountUrl'] == null ? null : (map['accountUrl']! as String).input(),
-      createManagedPrivateEndpoint: map['createManagedPrivateEndpoint'] == null ? null : (map['createManagedPrivateEndpoint']! as bool).input(),
-      filesystem: map['filesystem'] == null ? null : (map['filesystem']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      accountUrl: (() {
+        final guardedValue = map['accountUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createManagedPrivateEndpoint: (() {
+        final guardedValue = map['createManagedPrivateEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filesystem: (() {
+        final guardedValue = map['filesystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

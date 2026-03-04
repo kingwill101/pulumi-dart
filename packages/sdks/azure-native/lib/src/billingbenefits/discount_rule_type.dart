@@ -4,16 +4,15 @@ enum DiscountRuleType {
   fixedListPrice("FixedListPrice"),
   priceCeiling("PriceCeiling");
 
-  const DiscountRuleType(this.value);
-  final String value;
+  const DiscountRuleType(this.wireValue);
+  final String wireValue;
 
   static DiscountRuleType fromValue(String value) {
     for (final item in DiscountRuleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscountRuleType value: $value');
   }
 }
-

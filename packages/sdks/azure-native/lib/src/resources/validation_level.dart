@@ -4,16 +4,15 @@ enum ValidationLevel {
   provider("Provider"),
   providerNoRbac("ProviderNoRbac");
 
-  const ValidationLevel(this.value);
-  final String value;
+  const ValidationLevel(this.wireValue);
+  final String wireValue;
 
   static ValidationLevel fromValue(String value) {
     for (final item in ValidationLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ValidationLevel value: $value');
   }
 }
-

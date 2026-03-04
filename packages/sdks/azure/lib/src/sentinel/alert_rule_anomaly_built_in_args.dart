@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyBuiltInArgs {
   /// The Display Name of the built-in Anomaly Alert Rule.
   ///
-  /// > **Note:** One of `name` or `display_name` block must be specified.
+  /// &gt; **Note:** One of `name` or `display_name` block must be specified.
   final pulumi.Input<String>? displayName;
+
   /// Should the Built-in Anomaly Alert Rule be enabled?
   final pulumi.Input<bool> enabled;
+
   /// The ID of the Log Analytics Workspace. Changing this forces a new Built-in Anomaly Alert Rule to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
+
   /// mode of the Built-in Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   final pulumi.Input<String> mode;
+
   /// The Name of the built-in Anomaly Alert Rule.
   final pulumi.Input<String>? name;
 
@@ -46,12 +50,21 @@ class AlertRuleAnomalyBuiltInArgs {
 
   factory AlertRuleAnomalyBuiltInArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      mode: (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

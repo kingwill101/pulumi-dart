@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteLinkedBackendForBuildArgs {
   /// The resource id of the backend linked to the static site
   final pulumi.Input<String>? backendResourceId;
+
   /// The stage site identifier
   final pulumi.Input<String> environmentName;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the backend to link to the static site
   final pulumi.Input<String>? linkedBackendName;
+
   /// Name of the static site
   final pulumi.Input<String> name;
+
   /// The region of the backend linked to the static site
   final pulumi.Input<String>? region;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -52,16 +58,35 @@ class StaticSiteLinkedBackendForBuildArgs {
     };
   }
 
-  factory StaticSiteLinkedBackendForBuildArgs.fromMap(Map<String, dynamic> map) {
+  factory StaticSiteLinkedBackendForBuildArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StaticSiteLinkedBackendForBuildArgs(
-      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId']! as String).input(),
-      environmentName: (map['environmentName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      linkedBackendName: map['linkedBackendName'] == null ? null : (map['linkedBackendName']! as String).input(),
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      backendResourceId: (() {
+        final guardedValue = map['backendResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedBackendName: (() {
+        final guardedValue = map['linkedBackendName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

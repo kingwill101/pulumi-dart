@@ -12,23 +12,41 @@ class ListIpamPoolAssociatedResourcesResult {
   /// Creates a new [ListIpamPoolAssociatedResourcesResult].
   /// [nextLink] The link used to get the next page of operations.
   /// [value] Optional.
-  ListIpamPoolAssociatedResourcesResult({
-    this.nextLink,
-    this.value,
-  });
+  ListIpamPoolAssociatedResourcesResult({this.nextLink, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': ?value == null ? null : pulumi.Input.encodeList<PoolAssociationResponse, Map<String, dynamic>>(value!, (value) => value.toMap()),
+      'value': ?(() {
+        final guardedValue = value;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PoolAssociationResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListIpamPoolAssociatedResourcesResult.fromMap(Map<String, dynamic> map) {
+  factory ListIpamPoolAssociatedResourcesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListIpamPoolAssociatedResourcesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<PoolAssociationResponse>(map['value']!, (value) => PoolAssociationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PoolAssociationResponse>(
+          guardedValue,
+          (value) => PoolAssociationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

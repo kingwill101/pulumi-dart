@@ -10,24 +10,34 @@ import 'sku.dart';
 class DedicatedCloudNodeArgs {
   /// Availability Zone id, e.g. "az1"
   final pulumi.Input<String> availabilityZoneId;
+
   /// dedicated cloud node name
   final pulumi.Input<String>? dedicatedCloudNodeName;
+
   /// SKU's id
   final pulumi.Input<String> id;
+
   /// Azure region
   final pulumi.Input<String>? location;
+
   /// SKU's name
   final pulumi.Input<String> name;
+
   /// count of nodes to create
   final pulumi.Input<int> nodesCount;
+
   /// Placement Group id, e.g. "n1"
   final pulumi.Input<String> placementGroupId;
+
   /// purchase id
   final pulumi.Input<String> purchaseId;
+
   /// The name of the resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Dedicated Cloud Nodes SKU
   final pulumi.Input<Sku>? sku;
+
   /// Dedicated Cloud Nodes tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -68,25 +78,53 @@ class DedicatedCloudNodeArgs {
       'placementGroupId': placementGroupId,
       'purchaseId': purchaseId,
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory DedicatedCloudNodeArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedCloudNodeArgs(
-      availabilityZoneId: (map['availabilityZoneId'] as String).input(),
-      dedicatedCloudNodeName: map['dedicatedCloudNodeName'] == null ? null : (map['dedicatedCloudNodeName']! as String).input(),
-      id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      nodesCount: (map['nodesCount'] as int).input(),
-      placementGroupId: (map['placementGroupId'] as String).input(),
-      purchaseId: (map['purchaseId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      availabilityZoneId: pulumi.Input.fromValue(
+        map['availabilityZoneId'] as String,
+      ),
+      dedicatedCloudNodeName: (() {
+        final guardedValue = map['dedicatedCloudNodeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nodesCount: pulumi.Input.fromValue(map['nodesCount'] as int),
+      placementGroupId: pulumi.Input.fromValue(
+        map['placementGroupId'] as String,
+      ),
+      purchaseId: pulumi.Input.fromValue(map['purchaseId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

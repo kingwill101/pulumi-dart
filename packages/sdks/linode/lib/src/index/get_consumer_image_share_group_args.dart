@@ -12,20 +12,15 @@ class GetConsumerImageShareGroupArgs {
 
   /// Creates a new [GetConsumerImageShareGroupArgs].
   /// [tokenUuid] The UUID of the token that has been accepted into the Image Share Group.
-  GetConsumerImageShareGroupArgs({
-    required this.tokenUuid,
-  });
+  GetConsumerImageShareGroupArgs({required this.tokenUuid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tokenUuid': tokenUuid,
-    };
+    return <String, dynamic>{'tokenUuid': tokenUuid};
   }
 
   factory GetConsumerImageShareGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerImageShareGroupArgs(
-      tokenUuid: (map['tokenUuid'] as String).input(),
+      tokenUuid: pulumi.Input.fromValue(map['tokenUuid'] as String),
     );
   }
 }
-

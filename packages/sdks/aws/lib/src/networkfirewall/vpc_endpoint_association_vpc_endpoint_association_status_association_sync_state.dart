@@ -5,7 +5,13 @@ import 'vpc_endpoint_association_vpc_endpoint_association_status_association_syn
 
 class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState {
   /// Nested list describing the attachment status of the firewall's VPC Endpoint Association with a single VPC subnet.
-  final pulumi.Input<List<VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment>> attachments;
+  final pulumi.Input<
+    List<
+      VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment
+    >
+  >
+  attachments;
+
   /// The Availability Zone where the subnet is configured.
   final pulumi.Input<String> availabilityZone;
 
@@ -19,16 +25,42 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachments': pulumi.Input.mapInputValue<List<VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment>, List<Map<String, dynamic>>>(attachments, (value) => pulumi.Input.encodeList<VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attachments':
+          pulumi.Input.mapInputValue<
+            List<
+              VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment
+            >,
+            List<Map<String, dynamic>>
+          >(
+            attachments,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'availabilityZone': availabilityZone,
     };
   }
 
-  factory VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState.fromMap(Map<String, dynamic> map) {
+  factory VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState(
-      attachments: (pulumi.Input.decodeList<VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment>(map['attachments']!, (value) => VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      availabilityZone: (map['availabilityZone'] as String).input(),
+      attachments: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment
+        >(
+          map['attachments']!,
+          (value) =>
+              VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
     );
   }
 }
-

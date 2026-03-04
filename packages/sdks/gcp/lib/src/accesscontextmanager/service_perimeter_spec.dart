@@ -16,32 +16,38 @@ class ServicePerimeterSpec {
   /// be empty.
   /// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
   final pulumi.Input<List<String>>? accessLevels;
+
   /// List of EgressPolicies to apply to the perimeter. A perimeter may
   /// have multiple EgressPolicies, each of which is evaluated separately.
   /// Access is granted if any EgressPolicy grants it. Must be empty for
   /// a perimeter bridge.
   /// Structure is documented below.
   final pulumi.Input<List<ServicePerimeterSpecEgressPolicy>>? egressPolicies;
+
   /// List of `IngressPolicies` to apply to the perimeter. A perimeter may
   /// have multiple `IngressPolicies`, each of which is evaluated
   /// separately. Access is granted if any `Ingress Policy` grants it.
   /// Must be empty for a perimeter bridge.
   /// Structure is documented below.
   final pulumi.Input<List<ServicePerimeterSpecIngressPolicy>>? ingressPolicies;
+
   /// A list of GCP resources that are inside of the service perimeter.
   /// Currently only projects are allowed.
   /// Format: projects/{project_number}
   final pulumi.Input<List<String>>? resources;
+
   /// GCP services that are subject to the Service Perimeter
   /// restrictions. Must contain a list of services. For example, if
   /// `storage.googleapis.com` is specified, access to the storage
   /// buckets inside the perimeter must meet the perimeter's access
   /// restrictions.
   final pulumi.Input<List<String>>? restrictedServices;
+
   /// Specifies how APIs are allowed to communicate within the Service
   /// Perimeter.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterSpecVpcAccessibleServices>? vpcAccessibleServices;
+  final pulumi.Input<ServicePerimeterSpecVpcAccessibleServices>?
+  vpcAccessibleServices;
 
   /// Creates a new [ServicePerimeterSpec].
   /// [accessLevels] A list of AccessLevel resource names that allow resources within
@@ -62,23 +68,90 @@ class ServicePerimeterSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessLevels': ?accessLevels,
-      'egressPolicies': ?pulumi.Input.mapOptionalInputValue<List<ServicePerimeterSpecEgressPolicy>, List<Map<String, dynamic>>>(egressPolicies, (value) => pulumi.Input.encodeList<ServicePerimeterSpecEgressPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ingressPolicies': ?pulumi.Input.mapOptionalInputValue<List<ServicePerimeterSpecIngressPolicy>, List<Map<String, dynamic>>>(ingressPolicies, (value) => pulumi.Input.encodeList<ServicePerimeterSpecIngressPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'egressPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServicePerimeterSpecEgressPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            egressPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServicePerimeterSpecEgressPolicy,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ingressPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServicePerimeterSpecIngressPolicy>,
+            List<Map<String, dynamic>>
+          >(
+            ingressPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServicePerimeterSpecIngressPolicy,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resources': ?resources,
       'restrictedServices': ?restrictedServices,
-      'vpcAccessibleServices': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterSpecVpcAccessibleServices, Map<String, dynamic>>(vpcAccessibleServices, (value) => value.toMap()),
+      'vpcAccessibleServices':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterSpecVpcAccessibleServices,
+            Map<String, dynamic>
+          >(vpcAccessibleServices, (value) => value.toMap()),
     };
   }
 
   factory ServicePerimeterSpec.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterSpec(
-      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels']! as List).cast<String>()).input(),
-      egressPolicies: map['egressPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterSpecEgressPolicy>(map['egressPolicies']!, (value) => ServicePerimeterSpecEgressPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingressPolicies: map['ingressPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterSpecIngressPolicy>(map['ingressPolicies']!, (value) => ServicePerimeterSpecIngressPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
-      restrictedServices: map['restrictedServices'] == null ? null : ((map['restrictedServices']! as List).cast<String>()).input(),
-      vpcAccessibleServices: map['vpcAccessibleServices'] == null ? null : (ServicePerimeterSpecVpcAccessibleServices.fromMap((map['vpcAccessibleServices']! as Map).cast<String, dynamic>())).input(),
+      accessLevels: (() {
+        final guardedValue = map['accessLevels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      egressPolicies: (() {
+        final guardedValue = map['egressPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServicePerimeterSpecEgressPolicy>(
+            guardedValue,
+            (value) => ServicePerimeterSpecEgressPolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ingressPolicies: (() {
+        final guardedValue = map['ingressPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServicePerimeterSpecIngressPolicy>(
+            guardedValue,
+            (value) => ServicePerimeterSpecIngressPolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      restrictedServices: (() {
+        final guardedValue = map['restrictedServices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vpcAccessibleServices: (() {
+        final guardedValue = map['vpcAccessibleServices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServicePerimeterSpecVpcAccessibleServices.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

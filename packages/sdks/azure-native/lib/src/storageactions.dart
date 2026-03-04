@@ -1,5 +1,3 @@
-library module_storageactions;
-
 export 'storageactions/else_condition.dart';
 export 'storageactions/else_condition_response.dart';
 export 'storageactions/functions.dart';

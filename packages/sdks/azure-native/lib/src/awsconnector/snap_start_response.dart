@@ -9,20 +9,19 @@ class SnapStartResponse {
 
   /// Creates a new [SnapStartResponse].
   /// [applyOn] Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
-  SnapStartResponse({
-    this.applyOn,
-  });
+  SnapStartResponse({this.applyOn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'applyOn': ?applyOn,
-    };
+    return <String, dynamic>{'applyOn': ?applyOn};
   }
 
   factory SnapStartResponse.fromMap(Map<String, dynamic> map) {
     return SnapStartResponse(
-      applyOn: map['applyOn'] == null ? null : (map['applyOn']! as String).input(),
+      applyOn: (() {
+        final guardedValue = map['applyOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

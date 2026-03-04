@@ -10,14 +10,19 @@ import 'workload_instance_model_properties.dart';
 class WorkloadInstanceArgs {
   /// ModernizeProject name.
   final pulumi.Input<String> modernizeProjectName;
+
   /// Workload instance model properties.
   final pulumi.Input<WorkloadInstanceModelProperties>? properties;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure Subscription Id in which project was created.
   final pulumi.Input<String>? subscriptionId;
+
   /// Gets or sets the resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Workload instance name.
   final pulumi.Input<String>? workloadInstanceName;
 
@@ -40,7 +45,11 @@ class WorkloadInstanceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'modernizeProjectName': modernizeProjectName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<WorkloadInstanceModelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkloadInstanceModelProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'subscriptionId': ?subscriptionId,
       'tags': ?tags,
@@ -50,13 +59,38 @@ class WorkloadInstanceArgs {
 
   factory WorkloadInstanceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadInstanceArgs(
-      modernizeProjectName: (map['modernizeProjectName'] as String).input(),
-      properties: map['properties'] == null ? null : (WorkloadInstanceModelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      workloadInstanceName: map['workloadInstanceName'] == null ? null : (map['workloadInstanceName']! as String).input(),
+      modernizeProjectName: pulumi.Input.fromValue(
+        map['modernizeProjectName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkloadInstanceModelProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      workloadInstanceName: (() {
+        final guardedValue = map['workloadInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

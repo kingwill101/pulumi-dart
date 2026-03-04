@@ -7,8 +7,10 @@ import 'gallery_disk_image_source_response.dart';
 class GalleryOSDiskImageResponse {
   /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
   final pulumi.Input<String>? hostCaching;
+
   /// This property indicates the size of the VHD to be created.
   final pulumi.Input<int> sizeInGB;
+
   /// The source for the disk image.
   final pulumi.Input<GalleryDiskImageSourceResponse>? source;
 
@@ -26,16 +28,31 @@ class GalleryOSDiskImageResponse {
     return <String, dynamic>{
       'hostCaching': ?hostCaching,
       'sizeInGB': sizeInGB,
-      'source': ?pulumi.Input.mapOptionalInputValue<GalleryDiskImageSourceResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            GalleryDiskImageSourceResponse,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory GalleryOSDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return GalleryOSDiskImageResponse(
-      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching']! as String).input(),
-      sizeInGB: (map['sizeInGB'] as int).input(),
-      source: map['source'] == null ? null : (GalleryDiskImageSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      hostCaching: (() {
+        final guardedValue = map['hostCaching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sizeInGB: pulumi.Input.fromValue(map['sizeInGB'] as int),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GalleryDiskImageSourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

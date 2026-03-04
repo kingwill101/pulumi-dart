@@ -4,16 +4,15 @@ enum ArtifactState {
   pending("PENDING"),
   live("LIVE");
 
-  const ArtifactState(this.value);
-  final String value;
+  const ArtifactState(this.wireValue);
+  final String wireValue;
 
   static ArtifactState fromValue(String value) {
     for (final item in ArtifactState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArtifactState value: $value');
   }
 }
-

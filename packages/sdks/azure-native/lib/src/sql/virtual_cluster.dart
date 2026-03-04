@@ -148,18 +148,25 @@ import 'virtual_cluster_args.dart';
 class VirtualCluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of resources in this virtual cluster.
-  late final pulumi.Output<List<String>> childResources;
+  late final pulumi.Output<List<String>> childResources_;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Subnet resource ID for the virtual cluster.
   late final pulumi.Output<String> subnetId;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Virtual cluster version.
   late final pulumi.Output<String?> version;
 
@@ -172,18 +179,18 @@ class VirtualCluster extends pulumi.CustomResource {
     VirtualClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:VirtualCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.childResources = registerOutput<List<String>>('childResources');
-    this.location = registerOutput<String>('location');
+         'azure-native:sql:VirtualCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    childResources_ = registerOutput<List<String>>('childResources');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

@@ -214,11 +214,13 @@ import 'data_connector_azure_active_directory_state.dart';
 class DataConnectorAzureActiveDirectory extends pulumi.CustomResource {
   /// The ID of the Log Analytics Workspace that this Azure Active Directory Data Connector resides in. Changing this forces a new Azure Active Directory Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Azure Active Directory Data Connector. Changing this forces a new Azure Active Directory Data Connector to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the tenant that this Azure Active Directory Data Connector connects to. Changing this forces a new Azure Active Directory Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   late final pulumi.Output<String> tenantId;
 
   /// Creates a new [DataConnectorAzureActiveDirectory].
@@ -230,14 +232,14 @@ class DataConnectorAzureActiveDirectory extends pulumi.CustomResource {
     DataConnectorAzureActiveDirectoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorAzureActiveDirectory:DataConnectorAzureActiveDirectory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorAzureActiveDirectory:DataConnectorAzureActiveDirectory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [DataConnectorAzureActiveDirectory] resource's state with the given [name] and [id].
@@ -258,13 +260,13 @@ class DataConnectorAzureActiveDirectory extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorAzureActiveDirectory:DataConnectorAzureActiveDirectory',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorAzureActiveDirectory:DataConnectorAzureActiveDirectory',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.tenantId = registerOutput<String>('tenantId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

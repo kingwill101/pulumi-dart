@@ -1,5 +1,3 @@
-library module_cdn;
-
 export 'cdn/endpoint.dart';
 export 'cdn/endpoint_args.dart';
 export 'cdn/endpoint_custom_domain.dart';

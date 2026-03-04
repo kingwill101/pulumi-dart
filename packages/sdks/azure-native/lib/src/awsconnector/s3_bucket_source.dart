@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class S3BucketSource {
   /// The S3 bucket that is being imported from.
   final pulumi.Input<String>? s3Bucket;
+
   /// The account number of the S3 bucket that is being imported from. If the bucket is owned by the requester this is optional.
   final pulumi.Input<String>? s3BucketOwner;
+
   /// The key prefix shared by all S3 Objects that are being imported.
   final pulumi.Input<String>? s3KeyPrefix;
 
@@ -15,11 +17,7 @@ class S3BucketSource {
   /// [s3Bucket] The S3 bucket that is being imported from.
   /// [s3BucketOwner] The account number of the S3 bucket that is being imported from. If the bucket is owned by the requester this is optional.
   /// [s3KeyPrefix] The key prefix shared by all S3 Objects that are being imported.
-  S3BucketSource({
-    this.s3Bucket,
-    this.s3BucketOwner,
-    this.s3KeyPrefix,
-  });
+  S3BucketSource({this.s3Bucket, this.s3BucketOwner, this.s3KeyPrefix});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class S3BucketSource {
 
   factory S3BucketSource.fromMap(Map<String, dynamic> map) {
     return S3BucketSource(
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket']! as String).input(),
-      s3BucketOwner: map['s3BucketOwner'] == null ? null : (map['s3BucketOwner']! as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
+      s3Bucket: (() {
+        final guardedValue = map['s3Bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3BucketOwner: (() {
+        final guardedValue = map['s3BucketOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3KeyPrefix: (() {
+        final guardedValue = map['s3KeyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

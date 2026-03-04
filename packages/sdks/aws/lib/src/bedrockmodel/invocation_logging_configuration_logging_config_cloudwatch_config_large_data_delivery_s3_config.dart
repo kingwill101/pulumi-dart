@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config {
   /// S3 bucket name.
   final pulumi.Input<String> bucketName;
+
   /// S3 prefix.
   final pulumi.Input<String>? keyPrefix;
 
@@ -17,17 +18,19 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDelive
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketName': bucketName,
-      'keyPrefix': ?keyPrefix,
-    };
+    return <String, dynamic>{'bucketName': bucketName, 'keyPrefix': ?keyPrefix};
   }
 
-  factory InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap(Map<String, dynamic> map) {
+  factory InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config(
-      bucketName: (map['bucketName'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      keyPrefix: (() {
+        final guardedValue = map['keyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

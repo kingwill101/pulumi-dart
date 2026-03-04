@@ -14,8 +14,10 @@ class SiteDeliveryTaskHttpDelivery {
   final pulumi.Input<int>? maxRetry;
   final pulumi.Input<Map<String, String>>? queryParam;
   final pulumi.Input<bool>? standardAuthOn;
+
   /// See `standard_auth_param` below.
-  final pulumi.Input<SiteDeliveryTaskHttpDeliveryStandardAuthParam>? standardAuthParam;
+  final pulumi.Input<SiteDeliveryTaskHttpDeliveryStandardAuthParam>?
+  standardAuthParam;
   final pulumi.Input<int>? transformTimeout;
 
   /// Creates a new [SiteDeliveryTaskHttpDelivery].
@@ -58,26 +60,85 @@ class SiteDeliveryTaskHttpDelivery {
       'maxRetry': ?maxRetry,
       'queryParam': ?queryParam,
       'standardAuthOn': ?standardAuthOn,
-      'standardAuthParam': ?pulumi.Input.mapOptionalInputValue<SiteDeliveryTaskHttpDeliveryStandardAuthParam, Map<String, dynamic>>(standardAuthParam, (value) => value.toMap()),
+      'standardAuthParam':
+          ?pulumi.Input.mapOptionalInputValue<
+            SiteDeliveryTaskHttpDeliveryStandardAuthParam,
+            Map<String, dynamic>
+          >(standardAuthParam, (value) => value.toMap()),
       'transformTimeout': ?transformTimeout,
     };
   }
 
   factory SiteDeliveryTaskHttpDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskHttpDelivery(
-      compress: map['compress'] == null ? null : (map['compress']! as String).input(),
-      destUrl: map['destUrl'] == null ? null : (map['destUrl']! as String).input(),
-      headerParam: map['headerParam'] == null ? null : ((map['headerParam']! as Map).cast<String, String>()).input(),
-      logBodyPrefix: map['logBodyPrefix'] == null ? null : (map['logBodyPrefix']! as String).input(),
-      logBodySuffix: map['logBodySuffix'] == null ? null : (map['logBodySuffix']! as String).input(),
-      maxBatchMb: map['maxBatchMb'] == null ? null : (map['maxBatchMb']! as int).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize']! as int).input(),
-      maxRetry: map['maxRetry'] == null ? null : (map['maxRetry']! as int).input(),
-      queryParam: map['queryParam'] == null ? null : ((map['queryParam']! as Map).cast<String, String>()).input(),
-      standardAuthOn: map['standardAuthOn'] == null ? null : (map['standardAuthOn']! as bool).input(),
-      standardAuthParam: map['standardAuthParam'] == null ? null : (SiteDeliveryTaskHttpDeliveryStandardAuthParam.fromMap((map['standardAuthParam']! as Map).cast<String, dynamic>())).input(),
-      transformTimeout: map['transformTimeout'] == null ? null : (map['transformTimeout']! as int).input(),
+      compress: (() {
+        final guardedValue = map['compress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destUrl: (() {
+        final guardedValue = map['destUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headerParam: (() {
+        final guardedValue = map['headerParam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      logBodyPrefix: (() {
+        final guardedValue = map['logBodyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logBodySuffix: (() {
+        final guardedValue = map['logBodySuffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxBatchMb: (() {
+        final guardedValue = map['maxBatchMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxBatchSize: (() {
+        final guardedValue = map['maxBatchSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRetry: (() {
+        final guardedValue = map['maxRetry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      queryParam: (() {
+        final guardedValue = map['queryParam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      standardAuthOn: (() {
+        final guardedValue = map['standardAuthOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      standardAuthParam: (() {
+        final guardedValue = map['standardAuthParam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SiteDeliveryTaskHttpDeliveryStandardAuthParam.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      transformTimeout: (() {
+        final guardedValue = map['transformTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

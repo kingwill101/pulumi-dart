@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProviderAssumeRole {
   /// The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
   final pulumi.Input<String>? duration;
+
   /// A unique identifier that might be required when you assume a role in another account.
   final pulumi.Input<String>? externalId;
+
   /// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
   final pulumi.Input<String>? policy;
+
   /// Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
   final pulumi.Input<List<String>>? policyArns;
+
   /// Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.
   final pulumi.Input<String>? roleArn;
+
   /// An identifier for the assumed role session.
   final pulumi.Input<String>? sessionName;
+
   /// Source identity specified by the principal assuming the role.
   final pulumi.Input<String>? sourceIdentity;
+
   /// Assume role session tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Assume role session tag keys to pass to any subsequent sessions.
   final pulumi.Input<List<String>>? transitiveTagKeys;
 
@@ -60,16 +68,53 @@ class ProviderAssumeRole {
 
   factory ProviderAssumeRole.fromMap(Map<String, dynamic> map) {
     return ProviderAssumeRole(
-      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
-      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
-      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
-      policyArns: map['policyArns'] == null ? null : (((map['policyArns'] as List).cast<String>()).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      sessionName: map['sessionName'] == null ? null : ((map['sessionName'] as String).input()).input(),
-      sourceIdentity: map['sourceIdentity'] == null ? null : ((map['sourceIdentity'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      transitiveTagKeys: map['transitiveTagKeys'] == null ? null : (((map['transitiveTagKeys'] as List).cast<String>()).input()).input(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyArns: (() {
+        final guardedValue = map['policyArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionName: (() {
+        final guardedValue = map['sessionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceIdentity: (() {
+        final guardedValue = map['sourceIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transitiveTagKeys: (() {
+        final guardedValue = map['transitiveTagKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

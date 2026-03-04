@@ -9,27 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DpsSharedAccessPolicyArgs {
   /// Adds `EnrollmentRead` permission to this Shared Access Account. It allows read access to enrollment data.
   ///
-  /// > **Note:** When `enrollment_read` is set to `true`, `registration_read` must also be set to true. This is a limitation of the Azure REST API
+  /// &gt; **Note:** When `enrollment_read` is set to `true`, `registration_read` must also be set to true. This is a limitation of the Azure REST API
   final pulumi.Input<bool>? enrollmentRead;
+
   /// Adds `EnrollmentWrite` permission to this Shared Access Account. It allows write access to enrollment data.
   ///
-  /// > **Note:** When `registration_write` is set to `true`, `enrollment_read`, `registration_read`, and `registration_write` must also be set to true. This is a requirement of the Azure API.
+  /// &gt; **Note:** When `registration_write` is set to `true`, `enrollment_read`, `registration_read`, and `registration_write` must also be set to true. This is a requirement of the Azure API.
   final pulumi.Input<bool>? enrollmentWrite;
+
   /// The name of the IoT Hub Device Provisioning service to which this Shared Access Policy belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubDpsName;
+
   /// Specifies the name of the IotHub Shared Access Policy resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Adds `RegistrationStatusRead` permission to this Shared Access Account. It allows read access to device registrations.
   final pulumi.Input<bool>? registrationRead;
+
   /// Adds `RegistrationStatusWrite` permission to this Shared Access Account. It allows write access to device registrations.
   ///
-  /// > **Note:** When `registration_write` is set to `true`, `registration_read` must also be set to true. This is a requirement of the Azure API.
+  /// &gt; **Note:** When `registration_write` is set to `true`, `registration_read` must also be set to true. This is a requirement of the Azure API.
   final pulumi.Input<bool>? registrationWrite;
+
   /// The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
   ///
-  /// > **Note:** At least one of `registration_read`, `registration_write`, `service_config`, `enrollment_read`, `enrollment_write` permissions must be set to `true`.
+  /// &gt; **Note:** At least one of `registration_read`, `registration_write`, `service_config`, `enrollment_read`, `enrollment_write` permissions must be set to `true`.
   final pulumi.Input<bool>? serviceConfig;
 
   /// Creates a new [DpsSharedAccessPolicyArgs].
@@ -67,15 +74,40 @@ class DpsSharedAccessPolicyArgs {
 
   factory DpsSharedAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DpsSharedAccessPolicyArgs(
-      enrollmentRead: map['enrollmentRead'] == null ? null : (map['enrollmentRead']! as bool).input(),
-      enrollmentWrite: map['enrollmentWrite'] == null ? null : (map['enrollmentWrite']! as bool).input(),
-      iothubDpsName: (map['iothubDpsName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      registrationRead: map['registrationRead'] == null ? null : (map['registrationRead']! as bool).input(),
-      registrationWrite: map['registrationWrite'] == null ? null : (map['registrationWrite']! as bool).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceConfig: map['serviceConfig'] == null ? null : (map['serviceConfig']! as bool).input(),
+      enrollmentRead: (() {
+        final guardedValue = map['enrollmentRead'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enrollmentWrite: (() {
+        final guardedValue = map['enrollmentWrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      iothubDpsName: pulumi.Input.fromValue(map['iothubDpsName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationRead: (() {
+        final guardedValue = map['registrationRead'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      registrationWrite: (() {
+        final guardedValue = map['registrationWrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceConfig: (() {
+        final guardedValue = map['serviceConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

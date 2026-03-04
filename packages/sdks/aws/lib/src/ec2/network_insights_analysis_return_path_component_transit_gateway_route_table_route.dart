@@ -41,16 +41,45 @@ class NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute {
     };
   }
 
-  factory NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsAnalysisReturnPathComponentTransitGatewayRouteTableRoute(
-      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
-      destinationCidr: map['destinationCidr'] == null ? null : ((map['destinationCidr'] as String).input()).input(),
-      prefixListId: map['prefixListId'] == null ? null : ((map['prefixListId'] as String).input()).input(),
-      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
-      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
-      routeOrigin: map['routeOrigin'] == null ? null : ((map['routeOrigin'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      attachmentId: (() {
+        final guardedValue = map['attachmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationCidr: (() {
+        final guardedValue = map['destinationCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefixListId: (() {
+        final guardedValue = map['prefixListId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeOrigin: (() {
+        final guardedValue = map['routeOrigin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

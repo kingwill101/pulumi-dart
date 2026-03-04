@@ -6,22 +6,31 @@ import 'dsc_configuration_association_property_response.dart';
 class GetDscNodeConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets or sets the configuration of the node.
   final DscConfigurationAssociationPropertyResponse? configuration;
+
   /// Gets or sets creation time.
   final String? creationTime;
+
   /// Fully qualified resource Id for the resource
   final String id;
+
   /// If a new build version of NodeConfiguration is required.
   final bool? incrementNodeConfigurationBuild;
+
   /// Gets or sets the last modified time.
   final String? lastModifiedTime;
+
   /// The name of the resource
   final String name;
+
   /// Number of nodes with this node configuration assigned
   final double? nodeCount;
+
   /// Source of node configuration.
   final String? source;
+
   /// The type of the resource.
   final String type;
 
@@ -52,7 +61,7 @@ class GetDscNodeConfigurationResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'configuration': ?configuration == null ? null : configuration!.toMap(),
+      'configuration': ?configuration?.toMap(),
       'creationTime': ?creationTime,
       'id': id,
       'incrementNodeConfigurationBuild': ?incrementNodeConfigurationBuild,
@@ -67,16 +76,41 @@ class GetDscNodeConfigurationResult {
   factory GetDscNodeConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetDscNodeConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      configuration: map['configuration'] == null ? null : DscConfigurationAssociationPropertyResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>()),
-      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return DscConfigurationAssociationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : map['incrementNodeConfigurationBuild']! as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
+      incrementNodeConfigurationBuild: (() {
+        final guardedValue = map['incrementNodeConfigurationBuild'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount']! as double,
-      source: map['source'] == null ? null : map['source']! as String,
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

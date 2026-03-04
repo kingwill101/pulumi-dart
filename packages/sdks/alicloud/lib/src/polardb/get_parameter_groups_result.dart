@@ -7,14 +7,18 @@ import 'get_parameter_groups_group.dart';
 class GetParameterGroupsResult {
   /// The type of the database engine.
   final String? dbType;
+
   /// The version number of the database engine.
   final String? dbVersion;
+
   /// A list of PolarDB Parameter Groups. Each element contains the following attributes:
   final List<GetParameterGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Parameter Group names.
   final List<String> names;
   final String? outputFile;
@@ -43,7 +47,11 @@ class GetParameterGroupsResult {
     return <String, dynamic>{
       'dbType': ?dbType,
       'dbVersion': ?dbVersion,
-      'groups': pulumi.Input.encodeList<GetParameterGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<
+            GetParameterGroupsGroup,
+            Map<String, dynamic>
+          >(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -54,15 +62,35 @@ class GetParameterGroupsResult {
 
   factory GetParameterGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetParameterGroupsResult(
-      dbType: map['dbType'] == null ? null : map['dbType']! as String,
-      dbVersion: map['dbVersion'] == null ? null : map['dbVersion']! as String,
-      groups: pulumi.Input.decodeList<GetParameterGroupsGroup>(map['groups'], (value) => GetParameterGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      dbType: (() {
+        final guardedValue = map['dbType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dbVersion: (() {
+        final guardedValue = map['dbVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groups: pulumi.Input.decodeList<GetParameterGroupsGroup>(
+        map['groups']!,
+        (value) => GetParameterGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

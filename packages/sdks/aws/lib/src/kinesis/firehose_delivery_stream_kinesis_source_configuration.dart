@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirehoseDeliveryStreamKinesisSourceConfiguration {
   /// The kinesis stream used as the source of the firehose delivery stream.
   final pulumi.Input<String> kinesisStreamArn;
+
   /// The ARN of the role that provides access to the source Kinesis stream.
   final pulumi.Input<String> roleArn;
 
@@ -23,11 +24,14 @@ class FirehoseDeliveryStreamKinesisSourceConfiguration {
     };
   }
 
-  factory FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap(Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamKinesisSourceConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirehoseDeliveryStreamKinesisSourceConfiguration(
-      kinesisStreamArn: (map['kinesisStreamArn'] as String).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      kinesisStreamArn: pulumi.Input.fromValue(
+        map['kinesisStreamArn'] as String,
+      ),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_pai;
-
 export 'pai/flow_pipeline.dart';
 export 'pai/flow_pipeline_args.dart';
 export 'pai/flow_pipeline_state.dart';

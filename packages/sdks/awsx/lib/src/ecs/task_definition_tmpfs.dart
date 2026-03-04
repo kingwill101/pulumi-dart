@@ -27,10 +27,17 @@ class TaskDefinitionTmpfs {
 
   factory TaskDefinitionTmpfs.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionTmpfs(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
-      size: (map['size'] as int).input(),
+      containerPath: (() {
+        final guardedValue = map['containerPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountOptions: (() {
+        final guardedValue = map['mountOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      size: pulumi.Input.fromValue(map['size'] as int),
     );
   }
 }
-

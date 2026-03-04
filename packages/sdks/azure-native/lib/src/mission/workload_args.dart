@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// List of resource group ids.
   final pulumi.Input<List<String>>? resourceGroupCollection;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the enclaveResource Resource
   final pulumi.Input<String> virtualEnclaveName;
+
   /// The name of the workloadResource Resource
   final pulumi.Input<String>? workloadName;
 
@@ -49,13 +54,34 @@ class WorkloadArgs {
 
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupCollection: map['resourceGroupCollection'] == null ? null : ((map['resourceGroupCollection']! as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
-      workloadName: map['workloadName'] == null ? null : (map['workloadName']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupCollection: (() {
+        final guardedValue = map['resourceGroupCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      virtualEnclaveName: pulumi.Input.fromValue(
+        map['virtualEnclaveName'] as String,
+      ),
+      workloadName: (() {
+        final guardedValue = map['workloadName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,7 +4,6 @@ import 'system_topic_event_subscription_args.dart';
 import 'system_topic_event_subscription_azure_function_endpoint.dart';
 import 'system_topic_event_subscription_dead_letter_identity.dart';
 import 'system_topic_event_subscription_delivery_identity.dart';
-import 'system_topic_event_subscription_delivery_property.dart';
 import 'system_topic_event_subscription_retry_policy.dart';
 import 'system_topic_event_subscription_state.dart';
 import 'system_topic_event_subscription_storage_blob_dead_letter_destination.dart';
@@ -329,7 +328,7 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -343,53 +342,84 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 /// ```
 class SystemTopicEventSubscription extends pulumi.CustomResource {
   /// A `advanced_filter` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionAdvancedFilter?> advancedFilter;
+  late final pulumi.Output<SystemTopicEventSubscriptionAdvancedFilter?>
+  advancedFilter;
+
   /// Specifies whether advanced filters should be evaluated against an array of values instead of expecting a singular value. Defaults to `false`.
   late final pulumi.Output<bool?> advancedFilteringOnArraysEnabled;
+
   /// An `azure_function_endpoint` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionAzureFunctionEndpoint?> azureFunctionEndpoint;
+  late final pulumi.Output<SystemTopicEventSubscriptionAzureFunctionEndpoint?>
+  azureFunctionEndpoint;
+
   /// A `dead_letter_identity` block as defined below.
   ///
-  /// > **Note:** `storage_blob_dead_letter_destination` must be specified when a `dead_letter_identity` is specified
-  late final pulumi.Output<SystemTopicEventSubscriptionDeadLetterIdentity?> deadLetterIdentity;
+  /// &gt; **Note:** `storage_blob_dead_letter_destination` must be specified when a `dead_letter_identity` is specified
+  late final pulumi.Output<SystemTopicEventSubscriptionDeadLetterIdentity?>
+  deadLetterIdentity;
+
   /// A `delivery_identity` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionDeliveryIdentity?> deliveryIdentity;
+  late final pulumi.Output<SystemTopicEventSubscriptionDeliveryIdentity?>
+  deliveryIdentity;
+
   /// One or more `delivery_property` blocks as defined below.
-  late final pulumi.Output<List<SystemTopicEventSubscriptionDeliveryProperty>?> deliveryProperties;
+  late final pulumi.Output<List<Map<String, dynamic>>?> deliveryProperties;
+
   /// Specifies the event delivery schema for the event subscription. Possible values include: `EventGridSchema`, `CloudEventSchemaV1_0`, `CustomInputSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> eventDeliverySchema;
+
   /// Specifies the id where the Event Hub is located.
   late final pulumi.Output<String> eventhubEndpointId;
+
   /// Specifies the expiration time of the event subscription (Datetime Format `RFC 3339`).
   late final pulumi.Output<String?> expirationTimeUtc;
+
   /// Specifies the id where the Hybrid Connection is located.
   late final pulumi.Output<String> hybridConnectionEndpointId;
+
   /// A list of applicable event types that need to be part of the event subscription.
   late final pulumi.Output<List<String>> includedEventTypes;
+
   /// A list of labels to assign to the event subscription.
   late final pulumi.Output<List<String>?> labels;
+
   /// The name which should be used for this Event Subscription. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the System Topic exists. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `retry_policy` block as defined below.
   late final pulumi.Output<SystemTopicEventSubscriptionRetryPolicy> retryPolicy;
+
   /// Specifies the id where the Service Bus Queue is located.
   late final pulumi.Output<String?> serviceBusQueueEndpointId;
+
   /// Specifies the id where the Service Bus Topic is located.
   late final pulumi.Output<String?> serviceBusTopicEndpointId;
+
   /// A `storage_blob_dead_letter_destination` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?> storageBlobDeadLetterDestination;
+  late final pulumi.Output<
+    SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
+  >
+  storageBlobDeadLetterDestination;
+
   /// A `storage_queue_endpoint` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionStorageQueueEndpoint?> storageQueueEndpoint;
+  late final pulumi.Output<SystemTopicEventSubscriptionStorageQueueEndpoint?>
+  storageQueueEndpoint;
+
   /// A `subject_filter` block as defined below.
-  late final pulumi.Output<SystemTopicEventSubscriptionSubjectFilter?> subjectFilter;
+  late final pulumi.Output<SystemTopicEventSubscriptionSubjectFilter?>
+  subjectFilter;
+
   /// The System Topic where the Event Subscription should be created in. Changing this forces a new Event Subscription to be created.
   late final pulumi.Output<String> systemTopic;
+
   /// A `webhook_endpoint` block as defined below.
   ///
-  /// > **Note:** One of `azure_function_endpoint`, `eventhub_endpoint_id`, `hybrid_connection_endpoint`, `hybrid_connection_endpoint_id`, `service_bus_queue_endpoint_id`, `service_bus_topic_endpoint_id`, `storage_queue_endpoint` or `webhook_endpoint` must be specified.
-  late final pulumi.Output<SystemTopicEventSubscriptionWebhookEndpoint?> webhookEndpoint;
+  /// &gt; **Note:** One of `azure_function_endpoint`, `eventhub_endpoint_id`, `hybrid_connection_endpoint`, `hybrid_connection_endpoint_id`, `service_bus_queue_endpoint_id`, `service_bus_topic_endpoint_id`, `storage_queue_endpoint` or `webhook_endpoint` must be specified.
+  late final pulumi.Output<SystemTopicEventSubscriptionWebhookEndpoint?>
+  webhookEndpoint;
 
   /// Creates a new [SystemTopicEventSubscription].
   /// [name] The Pulumi resource name.
@@ -400,33 +430,68 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     SystemTopicEventSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advancedFilter = registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>('advancedFilter');
-    this.advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');
-    this.azureFunctionEndpoint = registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>('azureFunctionEndpoint');
-    this.deadLetterIdentity = registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>('deadLetterIdentity');
-    this.deliveryIdentity = registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>('deliveryIdentity');
-    this.deliveryProperties = registerOutput<List<SystemTopicEventSubscriptionDeliveryProperty>?>('deliveryProperties');
-    this.eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
-    this.eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
-    this.expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    this.hybridConnectionEndpointId = registerOutput<String>('hybridConnectionEndpointId');
-    this.includedEventTypes = registerOutput<List<String>>('includedEventTypes');
-    this.labels = registerOutput<List<String>?>('labels');
+         'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    advancedFilter =
+        registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>(
+          'advancedFilter',
+        );
+    advancedFilteringOnArraysEnabled = registerOutput<bool?>(
+      'advancedFilteringOnArraysEnabled',
+    );
+    azureFunctionEndpoint =
+        registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>(
+          'azureFunctionEndpoint',
+        );
+    deadLetterIdentity =
+        registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>(
+          'deadLetterIdentity',
+        );
+    deliveryIdentity =
+        registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>(
+          'deliveryIdentity',
+        );
+    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>(
+      'deliveryProperties',
+    );
+    eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
+    eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
+    expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
+    hybridConnectionEndpointId = registerOutput<String>(
+      'hybridConnectionEndpointId',
+    );
+    includedEventTypes = registerOutput<List<String>>('includedEventTypes');
+    labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>('retryPolicy');
-    this.serviceBusQueueEndpointId = registerOutput<String?>('serviceBusQueueEndpointId');
-    this.serviceBusTopicEndpointId = registerOutput<String?>('serviceBusTopicEndpointId');
-    this.storageBlobDeadLetterDestination = registerOutput<SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?>('storageBlobDeadLetterDestination');
-    this.storageQueueEndpoint = registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>('storageQueueEndpoint');
-    this.subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>('subjectFilter');
-    this.systemTopic = registerOutput<String>('systemTopic');
-    this.webhookEndpoint = registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>('webhookEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>(
+      'retryPolicy',
+    );
+    serviceBusQueueEndpointId = registerOutput<String?>(
+      'serviceBusQueueEndpointId',
+    );
+    serviceBusTopicEndpointId = registerOutput<String?>(
+      'serviceBusTopicEndpointId',
+    );
+    storageBlobDeadLetterDestination =
+        registerOutput<
+          SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
+        >('storageBlobDeadLetterDestination');
+    storageQueueEndpoint =
+        registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>(
+          'storageQueueEndpoint',
+        );
+    subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>(
+      'subjectFilter',
+    );
+    systemTopic = registerOutput<String>('systemTopic');
+    webhookEndpoint =
+        registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>(
+          'webhookEndpoint',
+        );
   }
 
   /// Gets an existing [SystemTopicEventSubscription] resource's state with the given [name] and [id].
@@ -447,32 +512,67 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advancedFilter = registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>('advancedFilter');
-    this.advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');
-    this.azureFunctionEndpoint = registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>('azureFunctionEndpoint');
-    this.deadLetterIdentity = registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>('deadLetterIdentity');
-    this.deliveryIdentity = registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>('deliveryIdentity');
-    this.deliveryProperties = registerOutput<List<SystemTopicEventSubscriptionDeliveryProperty>?>('deliveryProperties');
-    this.eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
-    this.eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
-    this.expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    this.hybridConnectionEndpointId = registerOutput<String>('hybridConnectionEndpointId');
-    this.includedEventTypes = registerOutput<List<String>>('includedEventTypes');
-    this.labels = registerOutput<List<String>?>('labels');
+         'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    advancedFilter =
+        registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>(
+          'advancedFilter',
+        );
+    advancedFilteringOnArraysEnabled = registerOutput<bool?>(
+      'advancedFilteringOnArraysEnabled',
+    );
+    azureFunctionEndpoint =
+        registerOutput<SystemTopicEventSubscriptionAzureFunctionEndpoint?>(
+          'azureFunctionEndpoint',
+        );
+    deadLetterIdentity =
+        registerOutput<SystemTopicEventSubscriptionDeadLetterIdentity?>(
+          'deadLetterIdentity',
+        );
+    deliveryIdentity =
+        registerOutput<SystemTopicEventSubscriptionDeliveryIdentity?>(
+          'deliveryIdentity',
+        );
+    deliveryProperties = registerOutput<List<Map<String, dynamic>>?>(
+      'deliveryProperties',
+    );
+    eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
+    eventhubEndpointId = registerOutput<String>('eventhubEndpointId');
+    expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
+    hybridConnectionEndpointId = registerOutput<String>(
+      'hybridConnectionEndpointId',
+    );
+    includedEventTypes = registerOutput<List<String>>('includedEventTypes');
+    labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>('retryPolicy');
-    this.serviceBusQueueEndpointId = registerOutput<String?>('serviceBusQueueEndpointId');
-    this.serviceBusTopicEndpointId = registerOutput<String?>('serviceBusTopicEndpointId');
-    this.storageBlobDeadLetterDestination = registerOutput<SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?>('storageBlobDeadLetterDestination');
-    this.storageQueueEndpoint = registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>('storageQueueEndpoint');
-    this.subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>('subjectFilter');
-    this.systemTopic = registerOutput<String>('systemTopic');
-    this.webhookEndpoint = registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>('webhookEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryPolicy = registerOutput<SystemTopicEventSubscriptionRetryPolicy>(
+      'retryPolicy',
+    );
+    serviceBusQueueEndpointId = registerOutput<String?>(
+      'serviceBusQueueEndpointId',
+    );
+    serviceBusTopicEndpointId = registerOutput<String?>(
+      'serviceBusTopicEndpointId',
+    );
+    storageBlobDeadLetterDestination =
+        registerOutput<
+          SystemTopicEventSubscriptionStorageBlobDeadLetterDestination?
+        >('storageBlobDeadLetterDestination');
+    storageQueueEndpoint =
+        registerOutput<SystemTopicEventSubscriptionStorageQueueEndpoint?>(
+          'storageQueueEndpoint',
+        );
+    subjectFilter = registerOutput<SystemTopicEventSubscriptionSubjectFilter?>(
+      'subjectFilter',
+    );
+    systemTopic = registerOutput<String>('systemTopic');
+    webhookEndpoint =
+        registerOutput<SystemTopicEventSubscriptionWebhookEndpoint?>(
+          'webhookEndpoint',
+        );
   }
 }

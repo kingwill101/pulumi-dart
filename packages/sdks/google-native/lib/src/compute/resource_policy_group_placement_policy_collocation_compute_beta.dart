@@ -3,16 +3,22 @@ enum ResourcePolicyGroupPlacementPolicyCollocationComputeBeta {
   collocated("COLLOCATED"),
   unspecifiedCollocation("UNSPECIFIED_COLLOCATION");
 
-  const ResourcePolicyGroupPlacementPolicyCollocationComputeBeta(this.value);
-  final String value;
+  const ResourcePolicyGroupPlacementPolicyCollocationComputeBeta(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static ResourcePolicyGroupPlacementPolicyCollocationComputeBeta fromValue(String value) {
-    for (final item in ResourcePolicyGroupPlacementPolicyCollocationComputeBeta.values) {
-      if (item.value == value) {
+  static ResourcePolicyGroupPlacementPolicyCollocationComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ResourcePolicyGroupPlacementPolicyCollocationComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResourcePolicyGroupPlacementPolicyCollocationComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ResourcePolicyGroupPlacementPolicyCollocationComputeBeta value: $value',
+    );
   }
 }
-

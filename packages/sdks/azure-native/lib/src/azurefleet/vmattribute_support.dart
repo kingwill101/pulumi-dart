@@ -4,16 +4,15 @@ enum VMAttributeSupport {
   included("Included"),
   required("Required");
 
-  const VMAttributeSupport(this.value);
-  final String value;
+  const VMAttributeSupport(this.wireValue);
+  final String wireValue;
 
   static VMAttributeSupport fromValue(String value) {
     for (final item in VMAttributeSupport.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VMAttributeSupport value: $value');
   }
 }
-

@@ -9,20 +9,19 @@ class VirtualNetworkProfileResponse {
 
   /// Creates a new [VirtualNetworkProfileResponse].
   /// [computeSubnetId] Subnet ID used for computes in workspace
-  VirtualNetworkProfileResponse({
-    this.computeSubnetId,
-  });
+  VirtualNetworkProfileResponse({this.computeSubnetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'computeSubnetId': ?computeSubnetId,
-    };
+    return <String, dynamic>{'computeSubnetId': ?computeSubnetId};
   }
 
   factory VirtualNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkProfileResponse(
-      computeSubnetId: map['computeSubnetId'] == null ? null : (map['computeSubnetId']! as String).input(),
+      computeSubnetId: (() {
+        final guardedValue = map['computeSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

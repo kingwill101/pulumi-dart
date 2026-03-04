@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automatic_shortfall_suppress_reason_response.dart';
 import 'commitment_response.dart';
 import 'macc_args.dart';
-import 'macc_milestone_response.dart';
 import 'managed_service_identity_response.dart';
 import 'plan_response.dart';
 import 'shortfall_response.dart';
@@ -717,62 +716,92 @@ import 'system_data_response.dart';
 class Macc extends pulumi.CustomResource {
   /// Setting this to true means multi-entity.
   late final pulumi.Output<bool?> allowContributors;
+
   /// Setting this to 'Enable' enables automatic shortfall charging when commitment is not met.
   late final pulumi.Output<String?> automaticShortfall;
+
   /// Optional field to record suppression reason for automatic shortfall.
-  late final pulumi.Output<AutomaticShortfallSuppressReasonResponse?> automaticShortfallSuppressReason;
+  late final pulumi.Output<AutomaticShortfallSuppressReasonResponse?>
+  automaticShortfallSuppressReason;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}
   late final pulumi.Output<String?> billingAccountResourceId;
+
   /// Commitment towards the benefit.
   late final pulumi.Output<CommitmentResponse?> commitment;
+
   /// Display name
   late final pulumi.Output<String?> displayName;
+
   /// Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
   late final pulumi.Output<String?> endAt;
+
   /// Represents type of the object being operated on. Possible values are primary or contributor.
   late final pulumi.Output<String> entityType;
+
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> etag;
+
   /// Managed service identity (system assigned and/or user assigned identities)
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
+
   /// List of milestones associated with this MACC.
-  late final pulumi.Output<List<MaccMilestoneResponse>?> milestones;
+  late final pulumi.Output<List<Map<String, dynamic>>?> milestones;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Plan for the resource.
   late final pulumi.Output<PlanResponse?> plan;
+
   /// Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
   late final pulumi.Output<String?> primaryBillingAccountResourceId;
+
   /// Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
   late final pulumi.Output<String?> primaryResourceId;
+
   /// Represents catalog UPN.
   late final pulumi.Output<String?> productCode;
+
   /// Provisioning state of MACC as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of MACC resource, refer to MaccStatus.
   late final pulumi.Output<String> provisioningState;
+
   /// This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
   late final pulumi.Output<String?> resourceId;
+
   /// MACC shortfall
   late final pulumi.Output<ShortfallResponse?> shortfall;
+
   /// The resource model definition representing SKU
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z.
   late final pulumi.Output<String?> startAt;
+
   /// Represents the current status of the MACC.
   late final pulumi.Output<String?> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
   late final pulumi.Output<String?> systemId;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -780,45 +809,49 @@ class Macc extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Macc]. {@macro pulumi_billingbenefits_macc_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Macc(
-    String name, {
-    MaccArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:billingbenefits:Macc',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowContributors = registerOutput<bool?>('allowContributors');
-    this.automaticShortfall = registerOutput<String?>('automaticShortfall');
-    this.automaticShortfallSuppressReason = registerOutput<AutomaticShortfallSuppressReasonResponse?>('automaticShortfallSuppressReason');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.billingAccountResourceId = registerOutput<String?>('billingAccountResourceId');
-    this.commitment = registerOutput<CommitmentResponse?>('commitment');
-    this.displayName = registerOutput<String?>('displayName');
-    this.endAt = registerOutput<String?>('endAt');
-    this.entityType = registerOutput<String>('entityType');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.managedBy = registerOutput<String?>('managedBy');
-    this.milestones = registerOutput<List<MaccMilestoneResponse>?>('milestones');
+  Macc(String name, {MaccArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:billingbenefits:Macc',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allowContributors = registerOutput<bool?>('allowContributors');
+    automaticShortfall = registerOutput<String?>('automaticShortfall');
+    automaticShortfallSuppressReason =
+        registerOutput<AutomaticShortfallSuppressReasonResponse?>(
+          'automaticShortfallSuppressReason',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingAccountResourceId = registerOutput<String?>(
+      'billingAccountResourceId',
+    );
+    commitment = registerOutput<CommitmentResponse?>('commitment');
+    displayName = registerOutput<String?>('displayName');
+    endAt = registerOutput<String?>('endAt');
+    entityType = registerOutput<String>('entityType');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    milestones = registerOutput<List<Map<String, dynamic>>?>('milestones');
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<PlanResponse?>('plan');
-    this.primaryBillingAccountResourceId = registerOutput<String?>('primaryBillingAccountResourceId');
-    this.primaryResourceId = registerOutput<String?>('primaryResourceId');
-    this.productCode = registerOutput<String?>('productCode');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.shortfall = registerOutput<ShortfallResponse?>('shortfall');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.startAt = registerOutput<String?>('startAt');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.systemId = registerOutput<String?>('systemId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    plan = registerOutput<PlanResponse?>('plan');
+    primaryBillingAccountResourceId = registerOutput<String?>(
+      'primaryBillingAccountResourceId',
+    );
+    primaryResourceId = registerOutput<String?>('primaryResourceId');
+    productCode = registerOutput<String?>('productCode');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceId = registerOutput<String?>('resourceId');
+    shortfall = registerOutput<ShortfallResponse?>('shortfall');
+    sku = registerOutput<SkuResponse?>('sku');
+    startAt = registerOutput<String?>('startAt');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    systemId = registerOutput<String?>('systemId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

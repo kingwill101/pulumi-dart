@@ -6,23 +6,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityProfileState {
   /// The Amazon Resource Name (ARN) of the Security Profile.
   final pulumi.Input<String>? arn;
+
   /// Specifies the description of the Security Profile.
   final pulumi.Input<String>? description;
+
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String>? instanceId;
+
   /// Specifies the name of the Security Profile.
   final pulumi.Input<String>? name;
+
   /// The organization resource identifier for the security profile.
   final pulumi.Input<String>? organizationResourceId;
+
   /// Specifies a list of permissions assigned to the security profile.
   final pulumi.Input<List<String>>? permissions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The identifier for the Security Profile.
   final pulumi.Input<String>? securityProfileId;
+
   /// Tags to apply to the Security Profile. If configured with a provider
   /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -67,17 +76,60 @@ class SecurityProfileState {
 
   factory SecurityProfileState.fromMap(Map<String, dynamic> map) {
     return SecurityProfileState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      organizationResourceId: map['organizationResourceId'] == null ? null : ((map['organizationResourceId'] as String).input()).input(),
-      permissions: map['permissions'] == null ? null : (((map['permissions'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityProfileId: map['securityProfileId'] == null ? null : ((map['securityProfileId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationResourceId: (() {
+        final guardedValue = map['organizationResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityProfileId: (() {
+        final guardedValue = map['securityProfileId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

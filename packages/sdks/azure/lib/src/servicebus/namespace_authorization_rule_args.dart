@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceAuthorizationRuleArgs {
   /// Grants listen access to this Authorization Rule. Defaults to `false`.
   final pulumi.Input<bool>? listen;
+
   /// Grants manage access to this Authorization Rule. When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   final pulumi.Input<bool>? manage;
+
   /// Specifies the name of the ServiceBus Namespace Authorization Rule resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the ServiceBus Namespace. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** At least one of the 3 permissions below needs to be set.
+  /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   final pulumi.Input<String> namespaceId;
+
   /// Grants send access to this Authorization Rule. Defaults to `false`.
   final pulumi.Input<bool>? send;
 
@@ -46,12 +50,27 @@ class NamespaceAuthorizationRuleArgs {
 
   factory NamespaceAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
-      send: map['send'] == null ? null : (map['send']! as bool).input(),
+      listen: (() {
+        final guardedValue = map['listen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manage: (() {
+        final guardedValue = map['manage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
+      send: (() {
+        final guardedValue = map['send'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,35 @@ class GetThemeConfigurationSheetTile {
 
   /// Creates a new [GetThemeConfigurationSheetTile].
   /// [borders] The border around a tile. See border.
-  GetThemeConfigurationSheetTile({
-    required this.borders,
-  });
+  GetThemeConfigurationSheetTile({required this.borders});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'borders': pulumi.Input.mapInputValue<List<GetThemeConfigurationSheetTileBorder>, List<Map<String, dynamic>>>(borders, (value) => pulumi.Input.encodeList<GetThemeConfigurationSheetTileBorder, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'borders':
+          pulumi.Input.mapInputValue<
+            List<GetThemeConfigurationSheetTileBorder>,
+            List<Map<String, dynamic>>
+          >(
+            borders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetThemeConfigurationSheetTileBorder,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetThemeConfigurationSheetTile.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTile(
-      borders: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileBorder>(map['borders']!, (value) => GetThemeConfigurationSheetTileBorder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      borders: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetThemeConfigurationSheetTileBorder>(
+          map['borders']!,
+          (value) => GetThemeConfigurationSheetTileBorder.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

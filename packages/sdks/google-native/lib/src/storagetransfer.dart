@@ -1,5 +1,3 @@
-library module_storagetransfer;
-
 export 'storagetransfer/agent_pool.dart';
 export 'storagetransfer/agent_pool_args.dart';
 export 'storagetransfer/aws_access_key.dart';

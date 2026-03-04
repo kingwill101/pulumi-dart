@@ -4,16 +4,15 @@ enum Variant {
   valueV7("v7"),
   valueV8("v8");
 
-  const Variant(this.value);
-  final String value;
+  const Variant(this.wireValue);
+  final String wireValue;
 
   static Variant fromValue(String value) {
     for (final item in Variant.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Variant value: $value');
   }
 }
-

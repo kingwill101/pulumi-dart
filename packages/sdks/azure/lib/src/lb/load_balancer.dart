@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_args.dart';
-import 'load_balancer_frontend_ip_configuration.dart';
 import 'load_balancer_state.dart';
 
 /// Manages a Load Balancer Resource.
@@ -219,7 +218,7 @@ import 'load_balancer_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2023-09-01
@@ -234,30 +233,42 @@ import 'load_balancer_state.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Specifies the Edge Zone within the Azure Region where this Load Balancer should exist. Changing this forces a new Load Balancer to be created.
   late final pulumi.Output<String?> edgeZone;
+
   /// One or more `frontend_ip_configuration` blocks as documented below.
   ///
-  /// > **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontend_ip_configuration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
-  late final pulumi.Output<List<LoadBalancerFrontendIpConfiguration>?> frontendIpConfigurations;
+  /// &gt; **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontend_ip_configuration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  frontendIpConfigurations;
+
   /// Specifies the supported Azure Region where the Load Balancer should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Load Balancer. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Private IP Address to assign to the Load Balancer.
   late final pulumi.Output<String> privateIpAddress;
+
   /// The list of private IP address assigned to the load balancer in `frontend_ip_configuration` blocks, if any.
   late final pulumi.Output<List<String>> privateIpAddresses;
+
   /// The ID of a Public IP Address which is associated with this Load Balancer.
   late final pulumi.Output<String> publicIpAddressId;
+
   /// The name of the Resource Group in which to create the Load Balancer. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The SKU of the Azure Load Balancer. Accepted values are `Basic`, `Standard` and `Gateway`. Defaults to `Standard`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The `Microsoft.Network/AllowGatewayLoadBalancer` feature is required to be registered in order to use the `Gateway` SKU. The feature can only be registered by the Azure service team, please submit an [Azure support ticket](https://azure.microsoft.com/en-us/support/create-ticket/) for that.
+  /// &gt; **Note:** The `Microsoft.Network/AllowGatewayLoadBalancer` feature is required to be registered in order to use the `Gateway` SKU. The feature can only be registered by the Azure service team, please submit an [Azure support ticket](https://azure.microsoft.com/en-us/support/create-ticket/) for that.
   late final pulumi.Output<String?> sku;
+
   /// `sku_tier` - (Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> skuTier;
+
   /// The ID of the Subnet which is associated with the IP Configuration.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -270,23 +281,25 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.edgeZone = registerOutput<String?>('edgeZone');
-    this.frontendIpConfigurations = registerOutput<List<LoadBalancerFrontendIpConfiguration>?>('frontendIpConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:lb/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    edgeZone = registerOutput<String?>('edgeZone');
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendIpConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateIpAddress = registerOutput<String>('privateIpAddress');
-    this.privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
-    this.publicIpAddressId = registerOutput<String>('publicIpAddressId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.skuTier = registerOutput<String?>('skuTier');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    skuTier = registerOutput<String?>('skuTier');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [LoadBalancer] resource's state with the given [name] and [id].
@@ -307,22 +320,24 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:lb/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.edgeZone = registerOutput<String?>('edgeZone');
-    this.frontendIpConfigurations = registerOutput<List<LoadBalancerFrontendIpConfiguration>?>('frontendIpConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:lb/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    edgeZone = registerOutput<String?>('edgeZone');
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'frontendIpConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateIpAddress = registerOutput<String>('privateIpAddress');
-    this.privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
-    this.publicIpAddressId = registerOutput<String>('publicIpAddressId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String?>('sku');
-    this.skuTier = registerOutput<String?>('skuTier');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    skuTier = registerOutput<String?>('skuTier');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

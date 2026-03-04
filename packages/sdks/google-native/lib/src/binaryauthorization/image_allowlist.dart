@@ -9,20 +9,17 @@ class ImageAllowlist {
 
   /// Creates a new [ImageAllowlist].
   /// [allowPattern] A disjunction of image patterns to allow. If any of these patterns match, then the image is considered exempted by this allowlist.
-  ImageAllowlist({
-    required this.allowPattern,
-  });
+  ImageAllowlist({required this.allowPattern});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowPattern': allowPattern,
-    };
+    return <String, dynamic>{'allowPattern': allowPattern};
   }
 
   factory ImageAllowlist.fromMap(Map<String, dynamic> map) {
     return ImageAllowlist(
-      allowPattern: ((map['allowPattern'] as List).cast<String>()).input(),
+      allowPattern: pulumi.Input.fromValue(
+        (map['allowPattern'] as List).cast<String>(),
+      ),
     );
   }
 }
-

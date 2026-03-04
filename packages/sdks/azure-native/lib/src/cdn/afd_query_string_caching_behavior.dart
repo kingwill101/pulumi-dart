@@ -5,16 +5,15 @@ enum AfdQueryStringCachingBehavior {
   ignoreSpecifiedQueryStrings("IgnoreSpecifiedQueryStrings"),
   includeSpecifiedQueryStrings("IncludeSpecifiedQueryStrings");
 
-  const AfdQueryStringCachingBehavior(this.value);
-  final String value;
+  const AfdQueryStringCachingBehavior(this.wireValue);
+  final String wireValue;
 
   static AfdQueryStringCachingBehavior fromValue(String value) {
     for (final item in AfdQueryStringCachingBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AfdQueryStringCachingBehavior value: $value');
   }
 }
-

@@ -4,16 +4,17 @@ enum TransformationSerializationFormat {
   json("Json"),
   parquet("Parquet");
 
-  const TransformationSerializationFormat(this.value);
-  final String value;
+  const TransformationSerializationFormat(this.wireValue);
+  final String wireValue;
 
   static TransformationSerializationFormat fromValue(String value) {
     for (final item in TransformationSerializationFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TransformationSerializationFormat value: $value');
+    throw ArgumentError(
+      'Unknown TransformationSerializationFormat value: $value',
+    );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2CharsToIgnoreResponse {
   /// Characters to not transform when masking.
   final pulumi.Input<String> charactersToSkip;
+
   /// Common characters to not transform when masking. Useful to avoid removing punctuation.
   final pulumi.Input<String> commonCharactersToIgnore;
 
@@ -24,11 +25,16 @@ class GooglePrivacyDlpV2CharsToIgnoreResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2CharsToIgnoreResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CharsToIgnoreResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2CharsToIgnoreResponse(
-      charactersToSkip: (map['charactersToSkip'] as String).input(),
-      commonCharactersToIgnore: (map['commonCharactersToIgnore'] as String).input(),
+      charactersToSkip: pulumi.Input.fromValue(
+        map['charactersToSkip'] as String,
+      ),
+      commonCharactersToIgnore: pulumi.Input.fromValue(
+        map['commonCharactersToIgnore'] as String,
+      ),
     );
   }
 }
-

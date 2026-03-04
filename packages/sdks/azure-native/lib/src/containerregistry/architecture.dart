@@ -6,16 +6,15 @@ enum Architecture {
   valueArm("arm"),
   valueArm64("arm64");
 
-  const Architecture(this.value);
-  final String value;
+  const Architecture(this.wireValue);
+  final String wireValue;
 
   static Architecture fromValue(String value) {
     for (final item in Architecture.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Architecture value: $value');
   }
 }
-

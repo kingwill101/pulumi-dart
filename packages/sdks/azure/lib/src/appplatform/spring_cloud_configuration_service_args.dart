@@ -10,12 +10,17 @@ import 'spring_cloud_configuration_service_repository.dart';
 class SpringCloudConfigurationServiceArgs {
   /// The generation of the Spring Cloud Configuration Service. Possible values are `Gen1` and `Gen2`.
   final pulumi.Input<String>? generation;
+
   /// The name which should be used for this Spring Cloud Configuration Service. The only possible value is `default`. Changing this forces a new Spring Cloud Configuration Service to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies how often to check repository updates. Minimum value is 0.
   final pulumi.Input<int>? refreshIntervalInSeconds;
+
   /// One or more `repository` blocks as defined below.
-  final pulumi.Input<List<SpringCloudConfigurationServiceRepository>>? repositories;
+  final pulumi.Input<List<SpringCloudConfigurationServiceRepository>>?
+  repositories;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Configuration Service to be created.
   final pulumi.Input<String> springCloudServiceId;
 
@@ -38,19 +43,56 @@ class SpringCloudConfigurationServiceArgs {
       'generation': ?generation,
       'name': ?name,
       'refreshIntervalInSeconds': ?refreshIntervalInSeconds,
-      'repositories': ?pulumi.Input.mapOptionalInputValue<List<SpringCloudConfigurationServiceRepository>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<SpringCloudConfigurationServiceRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'repositories':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SpringCloudConfigurationServiceRepository>,
+            List<Map<String, dynamic>>
+          >(
+            repositories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SpringCloudConfigurationServiceRepository,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'springCloudServiceId': springCloudServiceId,
     };
   }
 
-  factory SpringCloudConfigurationServiceArgs.fromMap(Map<String, dynamic> map) {
+  factory SpringCloudConfigurationServiceArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpringCloudConfigurationServiceArgs(
-      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds']! as int).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(map['repositories']!, (value) => SpringCloudConfigurationServiceRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      springCloudServiceId: (map['springCloudServiceId'] as String).input(),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshIntervalInSeconds: (() {
+        final guardedValue = map['refreshIntervalInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      repositories: (() {
+        final guardedValue = map['repositories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SpringCloudConfigurationServiceRepository>(
+            guardedValue,
+            (value) => SpringCloudConfigurationServiceRepository.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      springCloudServiceId: pulumi.Input.fromValue(
+        map['springCloudServiceId'] as String,
+      ),
     );
   }
 }
-

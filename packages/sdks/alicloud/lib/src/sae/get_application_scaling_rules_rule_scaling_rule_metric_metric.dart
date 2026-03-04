@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
   /// The target value of the monitoring indicator.
   final pulumi.Input<int> metricTargetAverageUtilization;
+
   /// The metric type of the Application Scaling Rule.
   final pulumi.Input<String> metricType;
 
@@ -23,11 +24,14 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
     };
   }
 
-  factory GetApplicationScalingRulesRuleScalingRuleMetricMetric.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationScalingRulesRuleScalingRuleMetricMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationScalingRulesRuleScalingRuleMetricMetric(
-      metricTargetAverageUtilization: (map['metricTargetAverageUtilization'] as int).input(),
-      metricType: (map['metricType'] as String).input(),
+      metricTargetAverageUtilization: pulumi.Input.fromValue(
+        map['metricTargetAverageUtilization'] as int,
+      ),
+      metricType: pulumi.Input.fromValue(map['metricType'] as String),
     );
   }
 }
-

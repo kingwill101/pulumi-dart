@@ -5,9 +5,9 @@ import 'tag_tag.dart';
 
 /// Manages an individual Autoscaling Group (ASG) tag. This resource should only be used in cases where ASGs are created outside the provider (e.g., ASGs implicitly created by EKS Node Groups).
 ///
-/// > **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.autoscaling.Group` and `aws.autoscaling.Tag` to manage tags of the same ASG will cause a perpetual difference where the `aws.autoscaling.Group` resource will try to remove the tag being added by the `aws.autoscaling.Tag` resource.
+/// &gt; **NOTE:** This tagging resource should not be combined with the resource for managing the parent resource. For example, using `aws.autoscaling.Group` and `aws.autoscaling.Tag` to manage tags of the same ASG will cause a perpetual difference where the `aws.autoscaling.Group` resource will try to remove the tag being added by the `aws.autoscaling.Tag` resource.
 ///
-/// > **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
+/// &gt; **NOTE:** This tagging resource does not use the provider `ignore_tags` configuration.
 ///
 /// ## Example Usage
 ///
@@ -121,8 +121,10 @@ import 'tag_tag.dart';
 class Tag extends pulumi.CustomResource {
   /// Name of the Autoscaling Group to apply the tag to.
   late final pulumi.Output<String> autoscalingGroupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Tag to create. The `tag` block is documented below.
   late final pulumi.Output<TagTag> tag;
 
@@ -130,27 +132,20 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_autoscaling_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(
-    String name, {
-    TagArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:autoscaling/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
-    this.region = registerOutput<String>('region');
-    this.tag = registerOutput<TagTag>('tag');
+  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:autoscaling/tag:Tag',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    region = registerOutput<String>('region');
+    tag = registerOutput<TagTag>('tag');
   }
 
   /// Gets an existing [Tag] resource's state with the given [name] and [id].
-  static Tag get(
-    String name,
-    pulumi.Input<String> id, {
-    TagState? state,
-  }) {
+  static Tag get(String name, pulumi.Input<String> id, {TagState? state}) {
     return Tag._get(
       name,
       state: state?.toMap(),
@@ -163,13 +158,13 @@ class Tag extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:autoscaling/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
-    this.region = registerOutput<String>('region');
-    this.tag = registerOutput<TagTag>('tag');
+         'aws:autoscaling/tag:Tag',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    region = registerOutput<String>('region');
+    tag = registerOutput<TagTag>('tag');
   }
 }

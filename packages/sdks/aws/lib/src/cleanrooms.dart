@@ -1,5 +1,3 @@
-library module_cleanrooms;
-
 export 'cleanrooms/collaboration.dart';
 export 'cleanrooms/collaboration_args.dart';
 export 'cleanrooms/collaboration_data_encryption_metadata.dart';

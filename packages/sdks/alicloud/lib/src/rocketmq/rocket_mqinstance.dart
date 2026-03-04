@@ -16,17 +16,21 @@ import 'rocket_mqinstance_state.dart';
 class RocketMQInstance extends pulumi.CustomResource {
   /// The access control list for the instance. See `acl_info` below.
   late final pulumi.Output<RocketMQInstanceAclInfo> aclInfo;
+
   /// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
   /// - true: Enable auto-renewal
   /// - false: Disable auto-renewal
   late final pulumi.Output<bool?> autoRenew;
+
   /// Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
   ///
   /// The values can be as follows:
   /// - Monthly renewal: 1, 2, 3, 6, 12
   late final pulumi.Output<int?> autoRenewPeriod;
+
   /// The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
   late final pulumi.Output<String> autoRenewPeriodUnit;
+
   /// Commodity code
   ///
   /// ons_rmqsub_public_cn: Package year and month instance
@@ -35,14 +39,19 @@ class RocketMQInstance extends pulumi.CustomResource {
   ///
   /// Next: Serverless instances
   late final pulumi.Output<String> commodityCode;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The name of instance
   late final pulumi.Output<String?> instanceName;
+
   /// The ip whitelist.
   late final pulumi.Output<List<String>> ipWhitelists;
+
   /// Instance network configuration information See `network_info` below.
   late final pulumi.Output<RocketMQInstanceNetworkInfo> networkInfo;
+
   /// The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
   ///
   /// The parameter values are as follows:
@@ -51,26 +60,33 @@ class RocketMQInstance extends pulumi.CustomResource {
   ///
   /// For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
   late final pulumi.Output<String> paymentType;
+
   /// Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
   ///
   /// The values can be as follows:
   /// - Monthly purchase: 1, 2, 3, 4, 5, 6
   /// - Annual purchase: 1, 2, 3
   late final pulumi.Output<int?> period;
+
   /// The minimum periodic unit for the duration of purchase.
   ///
   /// The parameter values are as follows:
   /// - Month: Purchase on a monthly basis
   /// - Year: Purchase on an annual basis
   late final pulumi.Output<String> periodUnit;
+
   /// product info See `product_info` below.
   late final pulumi.Output<RocketMQInstanceProductInfo?> productInfo;
+
   /// (Available since v1.245.0) The ID of the region in which the instance resides.
   late final pulumi.Output<String> regionId;
+
   /// Custom description
   late final pulumi.Output<String?> remark;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
   ///
   /// The parameter values are as follows:
@@ -78,12 +94,16 @@ class RocketMQInstance extends pulumi.CustomResource {
   /// - ultimate: Platinum Edition
   /// - professional: Professional Edition
   late final pulumi.Output<String> seriesCode;
+
   /// The code of the service code instance. The code of the RocketMQ is rmq.
   late final pulumi.Output<String> serviceCode;
+
   /// Instance software information. See `software` below.
   late final pulumi.Output<RocketMQInstanceSoftware> software;
+
   /// The status of the instance
   late final pulumi.Output<String> status;
+
   /// The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
   ///
   /// The parameter values are as follows:
@@ -93,6 +113,7 @@ class RocketMQInstance extends pulumi.CustomResource {
   /// **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
   /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
   late final pulumi.Output<String> subSeriesCode;
+
   /// The resource label.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -105,33 +126,33 @@ class RocketMQInstance extends pulumi.CustomResource {
     RocketMQInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/rocketMQInstance:RocketMQInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclInfo = registerOutput<RocketMQInstanceAclInfo>('aclInfo');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
-    this.autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
-    this.commodityCode = registerOutput<String>('commodityCode');
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.ipWhitelists = registerOutput<List<String>>('ipWhitelists');
-    this.networkInfo = registerOutput<RocketMQInstanceNetworkInfo>('networkInfo');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String>('periodUnit');
-    this.productInfo = registerOutput<RocketMQInstanceProductInfo?>('productInfo');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String?>('remark');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.seriesCode = registerOutput<String>('seriesCode');
-    this.serviceCode = registerOutput<String>('serviceCode');
-    this.software = registerOutput<RocketMQInstanceSoftware>('software');
-    this.status = registerOutput<String>('status');
-    this.subSeriesCode = registerOutput<String>('subSeriesCode');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:rocketmq/rocketMQInstance:RocketMQInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclInfo = registerOutput<RocketMQInstanceAclInfo>('aclInfo');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
+    autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
+    commodityCode = registerOutput<String>('commodityCode');
+    createTime = registerOutput<String>('createTime');
+    instanceName = registerOutput<String?>('instanceName');
+    ipWhitelists = registerOutput<List<String>>('ipWhitelists');
+    networkInfo = registerOutput<RocketMQInstanceNetworkInfo>('networkInfo');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String>('periodUnit');
+    productInfo = registerOutput<RocketMQInstanceProductInfo?>('productInfo');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String?>('remark');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    seriesCode = registerOutput<String>('seriesCode');
+    serviceCode = registerOutput<String>('serviceCode');
+    software = registerOutput<RocketMQInstanceSoftware>('software');
+    status = registerOutput<String>('status');
+    subSeriesCode = registerOutput<String>('subSeriesCode');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [RocketMQInstance] resource's state with the given [name] and [id].
@@ -152,32 +173,32 @@ class RocketMQInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/rocketMQInstance:RocketMQInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclInfo = registerOutput<RocketMQInstanceAclInfo>('aclInfo');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
-    this.autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
-    this.commodityCode = registerOutput<String>('commodityCode');
-    this.createTime = registerOutput<String>('createTime');
-    this.instanceName = registerOutput<String?>('instanceName');
-    this.ipWhitelists = registerOutput<List<String>>('ipWhitelists');
-    this.networkInfo = registerOutput<RocketMQInstanceNetworkInfo>('networkInfo');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.periodUnit = registerOutput<String>('periodUnit');
-    this.productInfo = registerOutput<RocketMQInstanceProductInfo?>('productInfo');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String?>('remark');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.seriesCode = registerOutput<String>('seriesCode');
-    this.serviceCode = registerOutput<String>('serviceCode');
-    this.software = registerOutput<RocketMQInstanceSoftware>('software');
-    this.status = registerOutput<String>('status');
-    this.subSeriesCode = registerOutput<String>('subSeriesCode');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:rocketmq/rocketMQInstance:RocketMQInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclInfo = registerOutput<RocketMQInstanceAclInfo>('aclInfo');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    autoRenewPeriod = registerOutput<int?>('autoRenewPeriod');
+    autoRenewPeriodUnit = registerOutput<String>('autoRenewPeriodUnit');
+    commodityCode = registerOutput<String>('commodityCode');
+    createTime = registerOutput<String>('createTime');
+    instanceName = registerOutput<String?>('instanceName');
+    ipWhitelists = registerOutput<List<String>>('ipWhitelists');
+    networkInfo = registerOutput<RocketMQInstanceNetworkInfo>('networkInfo');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    periodUnit = registerOutput<String>('periodUnit');
+    productInfo = registerOutput<RocketMQInstanceProductInfo?>('productInfo');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String?>('remark');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    seriesCode = registerOutput<String>('seriesCode');
+    serviceCode = registerOutput<String>('serviceCode');
+    software = registerOutput<RocketMQInstanceSoftware>('software');
+    status = registerOutput<String>('status');
+    subSeriesCode = registerOutput<String>('subSeriesCode');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

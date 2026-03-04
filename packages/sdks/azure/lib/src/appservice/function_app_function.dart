@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_app_function_args.dart';
-import 'function_app_function_file.dart';
 import 'function_app_function_state.dart';
 
 /// Manages a Function App Function.
@@ -1017,7 +1016,7 @@ import 'function_app_function_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -1032,32 +1031,45 @@ import 'function_app_function_state.dart';
 class FunctionAppFunction extends pulumi.CustomResource {
   /// The config for this Function in JSON format.
   late final pulumi.Output<String> configJson;
+
   /// The URL of the configuration JSON.
   late final pulumi.Output<String> configUrl;
+
   /// Should this function be enabled. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// A `file` block as detailed below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<FunctionAppFunctionFile>?> files;
+  late final pulumi.Output<List<Map<String, dynamic>>?> files;
+
   /// The ID of the Function App in which this function should reside. Changing this forces a new resource to be created.
   late final pulumi.Output<String> functionAppId;
+
   /// The invocation URL.
   late final pulumi.Output<String> invocationUrl;
+
   /// The language the Function is written in. Possible values are `CSharp`, `Custom`, `Java`, `Javascript`, `Python`, `PowerShell`, and `TypeScript`.
   ///
-  /// > **Note:** when using `Custom` language, you must specify the code handler in the `host.json` file for your function. See the [official docs](https://docs.microsoft.com/azure/azure-functions/functions-custom-handlers#hostjson) for more information.
+  /// &gt; **Note:** when using `Custom` language, you must specify the code handler in the `host.json` file for your function. See the [official docs](https://docs.microsoft.com/azure/azure-functions/functions-custom-handlers#hostjson) for more information.
   late final pulumi.Output<String?> language;
+
   /// The name of the function. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Script root path URL.
   late final pulumi.Output<String> scriptRootPathUrl;
+
   /// The script URL.
   late final pulumi.Output<String> scriptUrl;
+
   /// The URL for the Secrets File.
   late final pulumi.Output<String> secretsFileUrl;
+
   /// The test data for the function.
   late final pulumi.Output<String?> testData;
+
   /// The Test data URL.
   late final pulumi.Output<String> testDataUrl;
+
   /// The function URL.
   late final pulumi.Output<String> url;
 
@@ -1070,25 +1082,25 @@ class FunctionAppFunction extends pulumi.CustomResource {
     FunctionAppFunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/functionAppFunction:FunctionAppFunction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configJson = registerOutput<String>('configJson');
-    this.configUrl = registerOutput<String>('configUrl');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.files = registerOutput<List<FunctionAppFunctionFile>?>('files');
-    this.functionAppId = registerOutput<String>('functionAppId');
-    this.invocationUrl = registerOutput<String>('invocationUrl');
-    this.language = registerOutput<String?>('language');
+         'azure:appservice/functionAppFunction:FunctionAppFunction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configJson = registerOutput<String>('configJson');
+    configUrl = registerOutput<String>('configUrl');
+    enabled = registerOutput<bool?>('enabled');
+    files = registerOutput<List<Map<String, dynamic>>?>('files');
+    functionAppId = registerOutput<String>('functionAppId');
+    invocationUrl = registerOutput<String>('invocationUrl');
+    language = registerOutput<String?>('language');
     this.name = registerOutput<String>('name');
-    this.scriptRootPathUrl = registerOutput<String>('scriptRootPathUrl');
-    this.scriptUrl = registerOutput<String>('scriptUrl');
-    this.secretsFileUrl = registerOutput<String>('secretsFileUrl');
-    this.testData = registerOutput<String?>('testData');
-    this.testDataUrl = registerOutput<String>('testDataUrl');
-    this.url = registerOutput<String>('url');
+    scriptRootPathUrl = registerOutput<String>('scriptRootPathUrl');
+    scriptUrl = registerOutput<String>('scriptUrl');
+    secretsFileUrl = registerOutput<String>('secretsFileUrl');
+    testData = registerOutput<String?>('testData');
+    testDataUrl = registerOutput<String>('testDataUrl');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [FunctionAppFunction] resource's state with the given [name] and [id].
@@ -1109,24 +1121,24 @@ class FunctionAppFunction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/functionAppFunction:FunctionAppFunction',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configJson = registerOutput<String>('configJson');
-    this.configUrl = registerOutput<String>('configUrl');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.files = registerOutput<List<FunctionAppFunctionFile>?>('files');
-    this.functionAppId = registerOutput<String>('functionAppId');
-    this.invocationUrl = registerOutput<String>('invocationUrl');
-    this.language = registerOutput<String?>('language');
+         'azure:appservice/functionAppFunction:FunctionAppFunction',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configJson = registerOutput<String>('configJson');
+    configUrl = registerOutput<String>('configUrl');
+    enabled = registerOutput<bool?>('enabled');
+    files = registerOutput<List<Map<String, dynamic>>?>('files');
+    functionAppId = registerOutput<String>('functionAppId');
+    invocationUrl = registerOutput<String>('invocationUrl');
+    language = registerOutput<String?>('language');
     this.name = registerOutput<String>('name');
-    this.scriptRootPathUrl = registerOutput<String>('scriptRootPathUrl');
-    this.scriptUrl = registerOutput<String>('scriptUrl');
-    this.secretsFileUrl = registerOutput<String>('secretsFileUrl');
-    this.testData = registerOutput<String?>('testData');
-    this.testDataUrl = registerOutput<String>('testDataUrl');
-    this.url = registerOutput<String>('url');
+    scriptRootPathUrl = registerOutput<String>('scriptRootPathUrl');
+    scriptUrl = registerOutput<String>('scriptUrl');
+    secretsFileUrl = registerOutput<String>('secretsFileUrl');
+    testData = registerOutput<String?>('testData');
+    testDataUrl = registerOutput<String>('testDataUrl');
+    url = registerOutput<String>('url');
   }
 }

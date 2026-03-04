@@ -677,13 +677,16 @@ import 'service_principal_delegated_permission_grant_state.dart';
 class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResource {
   /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
   late final pulumi.Output<List<String>> claimValues;
+
   /// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceServicePrincipalObjectId;
+
   /// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalObjectId;
+
   /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
   ///
-  /// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+  /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
   late final pulumi.Output<String?> userObjectId;
 
   /// Creates a new [ServicePrincipalDelegatedPermissionGrant].
@@ -695,15 +698,19 @@ class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResource {
     ServicePrincipalDelegatedPermissionGrantArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.claimValues = registerOutput<List<String>>('claimValues');
-    this.resourceServicePrincipalObjectId = registerOutput<String>('resourceServicePrincipalObjectId');
-    this.servicePrincipalObjectId = registerOutput<String>('servicePrincipalObjectId');
-    this.userObjectId = registerOutput<String?>('userObjectId');
+         'azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    claimValues = registerOutput<List<String>>('claimValues');
+    resourceServicePrincipalObjectId = registerOutput<String>(
+      'resourceServicePrincipalObjectId',
+    );
+    servicePrincipalObjectId = registerOutput<String>(
+      'servicePrincipalObjectId',
+    );
+    userObjectId = registerOutput<String?>('userObjectId');
   }
 
   /// Gets an existing [ServicePrincipalDelegatedPermissionGrant] resource's state with the given [name] and [id].
@@ -724,14 +731,18 @@ class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.claimValues = registerOutput<List<String>>('claimValues');
-    this.resourceServicePrincipalObjectId = registerOutput<String>('resourceServicePrincipalObjectId');
-    this.servicePrincipalObjectId = registerOutput<String>('servicePrincipalObjectId');
-    this.userObjectId = registerOutput<String?>('userObjectId');
+         'azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    claimValues = registerOutput<List<String>>('claimValues');
+    resourceServicePrincipalObjectId = registerOutput<String>(
+      'resourceServicePrincipalObjectId',
+    );
+    servicePrincipalObjectId = registerOutput<String>(
+      'servicePrincipalObjectId',
+    );
+    userObjectId = registerOutput<String?>('userObjectId');
   }
 }

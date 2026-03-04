@@ -11,23 +11,63 @@ class GetDatabaseUserSetting {
   /// Creates a new [GetDatabaseUserSetting].
   /// [acls] Optional.
   /// [opensearchAcls] Optional.
-  GetDatabaseUserSetting({
-    this.acls,
-    this.opensearchAcls,
-  });
+  GetDatabaseUserSetting({this.acls, this.opensearchAcls});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acls': ?pulumi.Input.mapOptionalInputValue<List<GetDatabaseUserSettingAcl>, List<Map<String, dynamic>>>(acls, (value) => pulumi.Input.encodeList<GetDatabaseUserSettingAcl, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'opensearchAcls': ?pulumi.Input.mapOptionalInputValue<List<GetDatabaseUserSettingOpensearchAcl>, List<Map<String, dynamic>>>(opensearchAcls, (value) => pulumi.Input.encodeList<GetDatabaseUserSettingOpensearchAcl, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'acls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetDatabaseUserSettingAcl>,
+            List<Map<String, dynamic>>
+          >(
+            acls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDatabaseUserSettingAcl,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'opensearchAcls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetDatabaseUserSettingOpensearchAcl>,
+            List<Map<String, dynamic>>
+          >(
+            opensearchAcls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDatabaseUserSettingOpensearchAcl,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetDatabaseUserSetting.fromMap(Map<String, dynamic> map) {
     return GetDatabaseUserSetting(
-      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<GetDatabaseUserSettingAcl>(map['acls']!, (value) => GetDatabaseUserSettingAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      opensearchAcls: map['opensearchAcls'] == null ? null : (pulumi.Input.decodeList<GetDatabaseUserSettingOpensearchAcl>(map['opensearchAcls']!, (value) => GetDatabaseUserSettingOpensearchAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acls: (() {
+        final guardedValue = map['acls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetDatabaseUserSettingAcl>(
+            guardedValue,
+            (value) => GetDatabaseUserSettingAcl.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      opensearchAcls: (() {
+        final guardedValue = map['opensearchAcls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetDatabaseUserSettingOpensearchAcl>(
+            guardedValue,
+            (value) => GetDatabaseUserSettingOpensearchAcl.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

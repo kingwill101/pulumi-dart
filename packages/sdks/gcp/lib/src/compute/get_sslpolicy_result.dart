@@ -1,27 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSSLPolicy.
 class GetSSLPolicyResult {
   final String creationTimestamp;
+
   /// If the `profile` is `CUSTOM`, these are the custom encryption
   /// ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
   /// attribute will be empty.
   final List<String> customFeatures;
+
   /// Description of this SSL Policy.
   final String description;
+
   /// The set of enabled encryption ciphers as a result of the policy config
   final List<String> enabledFeatures;
+
   /// Fingerprint of this resource.
   final String fingerprint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The minimum supported TLS version of this policy.
   final String minTlsVersion;
   final String name;
+
   /// The Google-curated or custom profile used by this policy.
   final String profile;
   final String? project;
+
   /// The URI of the created resource.
   final String selfLink;
 
@@ -78,9 +85,12 @@ class GetSSLPolicyResult {
       minTlsVersion: map['minTlsVersion'] as String,
       name: map['name'] as String,
       profile: map['profile'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       selfLink: map['selfLink'] as String,
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_containerapp;
-
 export 'containerapp/app.dart';
 export 'containerapp/app_args.dart';
 export 'containerapp/app_dapr.dart';

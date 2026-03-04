@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsUpdateSettingsResponse {
   /// Only apply updates of these windows update classifications. If empty, all updates are applied.
   final pulumi.Input<List<String>> classifications;
+
   /// List of KBs to exclude from update.
   final pulumi.Input<List<String>> excludes;
+
   /// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
   final pulumi.Input<List<String>> exclusivePatches;
 
@@ -31,10 +33,15 @@ class WindowsUpdateSettingsResponse {
 
   factory WindowsUpdateSettingsResponse.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateSettingsResponse(
-      classifications: ((map['classifications'] as List).cast<String>()).input(),
-      excludes: ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePatches: ((map['exclusivePatches'] as List).cast<String>()).input(),
+      classifications: pulumi.Input.fromValue(
+        (map['classifications'] as List).cast<String>(),
+      ),
+      excludes: pulumi.Input.fromValue(
+        (map['excludes'] as List).cast<String>(),
+      ),
+      exclusivePatches: pulumi.Input.fromValue(
+        (map['exclusivePatches'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -27,10 +27,9 @@ class KxVolumeAttachedCluster {
 
   factory KxVolumeAttachedCluster.fromMap(Map<String, dynamic> map) {
     return KxVolumeAttachedCluster(
-      clusterName: (map['clusterName'] as String).input(),
-      clusterStatus: (map['clusterStatus'] as String).input(),
-      clusterType: (map['clusterType'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      clusterStatus: pulumi.Input.fromValue(map['clusterStatus'] as String),
+      clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
     );
   }
 }
-

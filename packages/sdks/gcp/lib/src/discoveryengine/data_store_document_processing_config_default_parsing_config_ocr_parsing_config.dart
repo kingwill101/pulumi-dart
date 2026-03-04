@@ -13,15 +13,18 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'useNativeText': ?useNativeText,
-    };
+    return <String, dynamic>{'useNativeText': ?useNativeText};
   }
 
-  factory DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap(Map<String, dynamic> map) {
+  factory DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig(
-      useNativeText: map['useNativeText'] == null ? null : (map['useNativeText']! as bool).input(),
+      useNativeText: (() {
+        final guardedValue = map['useNativeText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

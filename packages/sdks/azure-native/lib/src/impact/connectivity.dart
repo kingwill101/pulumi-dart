@@ -7,10 +7,13 @@ import 'source_or_target.dart';
 class Connectivity {
   /// Port number for the connection
   final pulumi.Input<int>? port;
+
   /// Protocol used for the connection
   final pulumi.Input<String>? protocol;
+
   /// Source from which the connection was attempted
   final pulumi.Input<SourceOrTarget>? source;
+
   /// target which connection was attempted
   final pulumi.Input<SourceOrTarget>? target;
 
@@ -19,29 +22,51 @@ class Connectivity {
   /// [protocol] Protocol used for the connection
   /// [source] Source from which the connection was attempted
   /// [target] target which connection was attempted
-  Connectivity({
-    this.port,
-    this.protocol,
-    this.source,
-    this.target,
-  });
+  Connectivity({this.port, this.protocol, this.source, this.target});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'port': ?port,
       'protocol': ?protocol,
-      'source': ?pulumi.Input.mapOptionalInputValue<SourceOrTarget, Map<String, dynamic>>(source, (value) => value.toMap()),
-      'target': ?pulumi.Input.mapOptionalInputValue<SourceOrTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            SourceOrTarget,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
+      'target':
+          ?pulumi.Input.mapOptionalInputValue<
+            SourceOrTarget,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
   factory Connectivity.fromMap(Map<String, dynamic> map) {
     return Connectivity(
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      source: map['source'] == null ? null : (SourceOrTarget.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (SourceOrTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceOrTarget.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceOrTarget.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

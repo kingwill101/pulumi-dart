@@ -10,6 +10,7 @@ class GetClusterPersistenceConfigRdbConfig {
   /// - TWELVE_HOURS:	Snapshot every 12 hours.
   /// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["SNAPSHOT_PERIOD_UNSPECIFIED", "ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
   final pulumi.Input<String> rdbSnapshotPeriod;
+
   /// The time that the first snapshot was/will be attempted, and to which
   /// future snapshots will be aligned.
   /// If not provided, the current time will be used.
@@ -30,11 +31,16 @@ class GetClusterPersistenceConfigRdbConfig {
     };
   }
 
-  factory GetClusterPersistenceConfigRdbConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterPersistenceConfigRdbConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterPersistenceConfigRdbConfig(
-      rdbSnapshotPeriod: (map['rdbSnapshotPeriod'] as String).input(),
-      rdbSnapshotStartTime: (map['rdbSnapshotStartTime'] as String).input(),
+      rdbSnapshotPeriod: pulumi.Input.fromValue(
+        map['rdbSnapshotPeriod'] as String,
+      ),
+      rdbSnapshotStartTime: pulumi.Input.fromValue(
+        map['rdbSnapshotStartTime'] as String,
+      ),
     );
   }
 }
-

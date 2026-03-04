@@ -210,12 +210,17 @@ import 'system_data_response.dart';
 class Alias extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Alias ID.
   late final pulumi.Output<String> name;
+
   /// Subscription Alias response properties.
-  late final pulumi.Output<SubscriptionAliasResponsePropertiesResponse> properties;
+  late final pulumi.Output<SubscriptionAliasResponsePropertiesResponse>
+  properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type, Microsoft.Subscription/aliases.
   late final pulumi.Output<String> type;
 
@@ -223,20 +228,19 @@ class Alias extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alias]. {@macro pulumi_subscription_alias_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alias(
-    String name, {
-    AliasArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:subscription:Alias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+  Alias(String name, {AliasArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:subscription:Alias',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<SubscriptionAliasResponsePropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<SubscriptionAliasResponsePropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,15 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'db_instance_args.dart';
-import 'db_instance_desired_security_ip_list.dart';
-import 'db_instance_instance_net_info.dart';
-import 'db_instance_security_ip_list.dart';
 import 'db_instance_state.dart';
 
 /// Provides a SelectDB DBInstance resource.
 ///
 /// For information about SelectDB DBInstance and how to use it, see [What is DBInstance](https://www.alibabacloud.com/help/zh/selectdb/latest/api-selectdb-2023-05-22-createdbinstance).
 ///
-/// > **NOTE:** Available since v1.229.0.
+/// &gt; **NOTE:** Available since v1.229.0.
 ///
 /// ## Example Usage
 ///
@@ -265,72 +262,105 @@ import 'db_instance_state.dart';
 class DbInstance extends pulumi.CustomResource {
   /// The password for DBInstance using admin account.
   late final pulumi.Output<String?> adminPass;
+
   /// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
   late final pulumi.Output<int> cacheSize;
+
   /// The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
   late final pulumi.Output<int> cacheSizePostpaid;
+
   /// The sum of cache size for every `Subscription` clusters in DBInstance.
   late final pulumi.Output<int> cacheSizePrepaid;
+
   /// The sum of cluster counts for `PayAsYouGo` clusters in DBInstance.
   late final pulumi.Output<int> clusterCountPostpaid;
+
   /// The sum of cluster counts for `Subscription` clusters in DBInstance.
   late final pulumi.Output<int> clusterCountPrepaid;
+
   /// The sum of cpu resource amount for every `PayAsYouGo` clusters in DBInstance.
   late final pulumi.Output<int> cpuPostpaid;
+
   /// The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
   late final pulumi.Output<int> cpuPrepaid;
+
   /// The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
   late final pulumi.Output<String> dbInstanceClass;
+
   /// The DBInstance description.
   late final pulumi.Output<String> dbInstanceDescription;
+
   /// The modified IP address whitelists. See `desired_security_ip_lists` below.
-  late final pulumi.Output<List<DbInstanceDesiredSecurityIpList>?> desiredSecurityIpLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?> desiredSecurityIpLists;
+
   /// If DBInstance need to open public network, set it to `true`.
   late final pulumi.Output<bool?> enablePublicNetwork;
+
   /// The engine of DBInstance. Always `selectdb`.
   late final pulumi.Output<String> engine;
+
   /// The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
   late final pulumi.Output<String> engineMinorVersion;
+
   /// The time when DBInstance is created.
   late final pulumi.Output<String> gmtCreated;
+
   /// The time when DBInstance will be expired. Available on `Subscription` DBInstance.
   late final pulumi.Output<String> gmtExpired;
+
   /// The time when DBInstance is modified.
   late final pulumi.Output<String> gmtModified;
+
   /// The net infos for instances.
-  late final pulumi.Output<List<DbInstanceInstanceNetInfo>> instanceNetInfos;
+  late final pulumi.Output<List<Map<String, dynamic>>> instanceNetInfos;
+
   /// The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
   late final pulumi.Output<String> lockMode;
+
   /// The reason why the instance is locked.
   late final pulumi.Output<String> lockReason;
+
   /// The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
   late final pulumi.Output<int> memoryPostpaid;
+
   /// The sum of memory resource amount offor every `Subscription` clusters in DBInstance.
   late final pulumi.Output<int> memoryPrepaid;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
   late final pulumi.Output<String?> period;
+
   /// The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
   late final pulumi.Output<int?> periodTime;
+
   /// The region ID of the instance.
   late final pulumi.Output<String> regionId;
+
   /// The details about each IP address whitelist returned.
-  late final pulumi.Output<List<DbInstanceSecurityIpList>> securityIpLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> securityIpLists;
+
   /// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
   late final pulumi.Output<String> status;
+
   /// The sub domain of DBInstance.
   late final pulumi.Output<String> subDomain;
+
   /// A mapping of tags to assign to the resource.
   /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
   /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
   late final pulumi.Output<String> upgradedEngineMinorVersion;
+
   /// The ID of the VPC for DBInstance.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of vswitch for DBInstance.
   late final pulumi.Output<String> vswitchId;
+
   /// The ID of zone for DBInstance.
   late final pulumi.Output<String> zoneId;
 
@@ -343,45 +373,53 @@ class DbInstance extends pulumi.CustomResource {
     DbInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:selectdb/dbInstance:DbInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminPass = registerOutput<String?>('adminPass');
-    this.cacheSize = registerOutput<int>('cacheSize');
-    this.cacheSizePostpaid = registerOutput<int>('cacheSizePostpaid');
-    this.cacheSizePrepaid = registerOutput<int>('cacheSizePrepaid');
-    this.clusterCountPostpaid = registerOutput<int>('clusterCountPostpaid');
-    this.clusterCountPrepaid = registerOutput<int>('clusterCountPrepaid');
-    this.cpuPostpaid = registerOutput<int>('cpuPostpaid');
-    this.cpuPrepaid = registerOutput<int>('cpuPrepaid');
-    this.dbInstanceClass = registerOutput<String>('dbInstanceClass');
-    this.dbInstanceDescription = registerOutput<String>('dbInstanceDescription');
-    this.desiredSecurityIpLists = registerOutput<List<DbInstanceDesiredSecurityIpList>?>('desiredSecurityIpLists');
-    this.enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
-    this.engine = registerOutput<String>('engine');
-    this.engineMinorVersion = registerOutput<String>('engineMinorVersion');
-    this.gmtCreated = registerOutput<String>('gmtCreated');
-    this.gmtExpired = registerOutput<String>('gmtExpired');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.instanceNetInfos = registerOutput<List<DbInstanceInstanceNetInfo>>('instanceNetInfos');
-    this.lockMode = registerOutput<String>('lockMode');
-    this.lockReason = registerOutput<String>('lockReason');
-    this.memoryPostpaid = registerOutput<int>('memoryPostpaid');
-    this.memoryPrepaid = registerOutput<int>('memoryPrepaid');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.periodTime = registerOutput<int?>('periodTime');
-    this.regionId = registerOutput<String>('regionId');
-    this.securityIpLists = registerOutput<List<DbInstanceSecurityIpList>>('securityIpLists');
-    this.status = registerOutput<String>('status');
-    this.subDomain = registerOutput<String>('subDomain');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.upgradedEngineMinorVersion = registerOutput<String>('upgradedEngineMinorVersion');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:selectdb/dbInstance:DbInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminPass = registerOutput<String?>('adminPass');
+    cacheSize = registerOutput<int>('cacheSize');
+    cacheSizePostpaid = registerOutput<int>('cacheSizePostpaid');
+    cacheSizePrepaid = registerOutput<int>('cacheSizePrepaid');
+    clusterCountPostpaid = registerOutput<int>('clusterCountPostpaid');
+    clusterCountPrepaid = registerOutput<int>('clusterCountPrepaid');
+    cpuPostpaid = registerOutput<int>('cpuPostpaid');
+    cpuPrepaid = registerOutput<int>('cpuPrepaid');
+    dbInstanceClass = registerOutput<String>('dbInstanceClass');
+    dbInstanceDescription = registerOutput<String>('dbInstanceDescription');
+    desiredSecurityIpLists = registerOutput<List<Map<String, dynamic>>?>(
+      'desiredSecurityIpLists',
+    );
+    enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
+    engine = registerOutput<String>('engine');
+    engineMinorVersion = registerOutput<String>('engineMinorVersion');
+    gmtCreated = registerOutput<String>('gmtCreated');
+    gmtExpired = registerOutput<String>('gmtExpired');
+    gmtModified = registerOutput<String>('gmtModified');
+    instanceNetInfos = registerOutput<List<Map<String, dynamic>>>(
+      'instanceNetInfos',
+    );
+    lockMode = registerOutput<String>('lockMode');
+    lockReason = registerOutput<String>('lockReason');
+    memoryPostpaid = registerOutput<int>('memoryPostpaid');
+    memoryPrepaid = registerOutput<int>('memoryPrepaid');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<String?>('period');
+    periodTime = registerOutput<int?>('periodTime');
+    regionId = registerOutput<String>('regionId');
+    securityIpLists = registerOutput<List<Map<String, dynamic>>>(
+      'securityIpLists',
+    );
+    status = registerOutput<String>('status');
+    subDomain = registerOutput<String>('subDomain');
+    tags = registerOutput<Map<String, String>?>('tags');
+    upgradedEngineMinorVersion = registerOutput<String>(
+      'upgradedEngineMinorVersion',
+    );
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [DbInstance] resource's state with the given [name] and [id].
@@ -402,44 +440,52 @@ class DbInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:selectdb/dbInstance:DbInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminPass = registerOutput<String?>('adminPass');
-    this.cacheSize = registerOutput<int>('cacheSize');
-    this.cacheSizePostpaid = registerOutput<int>('cacheSizePostpaid');
-    this.cacheSizePrepaid = registerOutput<int>('cacheSizePrepaid');
-    this.clusterCountPostpaid = registerOutput<int>('clusterCountPostpaid');
-    this.clusterCountPrepaid = registerOutput<int>('clusterCountPrepaid');
-    this.cpuPostpaid = registerOutput<int>('cpuPostpaid');
-    this.cpuPrepaid = registerOutput<int>('cpuPrepaid');
-    this.dbInstanceClass = registerOutput<String>('dbInstanceClass');
-    this.dbInstanceDescription = registerOutput<String>('dbInstanceDescription');
-    this.desiredSecurityIpLists = registerOutput<List<DbInstanceDesiredSecurityIpList>?>('desiredSecurityIpLists');
-    this.enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
-    this.engine = registerOutput<String>('engine');
-    this.engineMinorVersion = registerOutput<String>('engineMinorVersion');
-    this.gmtCreated = registerOutput<String>('gmtCreated');
-    this.gmtExpired = registerOutput<String>('gmtExpired');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.instanceNetInfos = registerOutput<List<DbInstanceInstanceNetInfo>>('instanceNetInfos');
-    this.lockMode = registerOutput<String>('lockMode');
-    this.lockReason = registerOutput<String>('lockReason');
-    this.memoryPostpaid = registerOutput<int>('memoryPostpaid');
-    this.memoryPrepaid = registerOutput<int>('memoryPrepaid');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<String?>('period');
-    this.periodTime = registerOutput<int?>('periodTime');
-    this.regionId = registerOutput<String>('regionId');
-    this.securityIpLists = registerOutput<List<DbInstanceSecurityIpList>>('securityIpLists');
-    this.status = registerOutput<String>('status');
-    this.subDomain = registerOutput<String>('subDomain');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.upgradedEngineMinorVersion = registerOutput<String>('upgradedEngineMinorVersion');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:selectdb/dbInstance:DbInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminPass = registerOutput<String?>('adminPass');
+    cacheSize = registerOutput<int>('cacheSize');
+    cacheSizePostpaid = registerOutput<int>('cacheSizePostpaid');
+    cacheSizePrepaid = registerOutput<int>('cacheSizePrepaid');
+    clusterCountPostpaid = registerOutput<int>('clusterCountPostpaid');
+    clusterCountPrepaid = registerOutput<int>('clusterCountPrepaid');
+    cpuPostpaid = registerOutput<int>('cpuPostpaid');
+    cpuPrepaid = registerOutput<int>('cpuPrepaid');
+    dbInstanceClass = registerOutput<String>('dbInstanceClass');
+    dbInstanceDescription = registerOutput<String>('dbInstanceDescription');
+    desiredSecurityIpLists = registerOutput<List<Map<String, dynamic>>?>(
+      'desiredSecurityIpLists',
+    );
+    enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
+    engine = registerOutput<String>('engine');
+    engineMinorVersion = registerOutput<String>('engineMinorVersion');
+    gmtCreated = registerOutput<String>('gmtCreated');
+    gmtExpired = registerOutput<String>('gmtExpired');
+    gmtModified = registerOutput<String>('gmtModified');
+    instanceNetInfos = registerOutput<List<Map<String, dynamic>>>(
+      'instanceNetInfos',
+    );
+    lockMode = registerOutput<String>('lockMode');
+    lockReason = registerOutput<String>('lockReason');
+    memoryPostpaid = registerOutput<int>('memoryPostpaid');
+    memoryPrepaid = registerOutput<int>('memoryPrepaid');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<String?>('period');
+    periodTime = registerOutput<int?>('periodTime');
+    regionId = registerOutput<String>('regionId');
+    securityIpLists = registerOutput<List<Map<String, dynamic>>>(
+      'securityIpLists',
+    );
+    status = registerOutput<String>('status');
+    subDomain = registerOutput<String>('subDomain');
+    tags = registerOutput<Map<String, String>?>('tags');
+    upgradedEngineMinorVersion = registerOutput<String>(
+      'upgradedEngineMinorVersion',
+    );
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

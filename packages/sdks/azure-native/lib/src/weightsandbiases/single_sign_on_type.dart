@@ -3,16 +3,15 @@ enum SingleSignOnType {
   saml("Saml"),
   openId("OpenId");
 
-  const SingleSignOnType(this.value);
-  final String value;
+  const SingleSignOnType(this.wireValue);
+  final String wireValue;
 
   static SingleSignOnType fromValue(String value) {
     for (final item in SingleSignOnType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SingleSignOnType value: $value');
   }
 }
-

@@ -9,20 +9,23 @@ class DSSEAttestationNoteResponse {
 
   /// Creates a new [DSSEAttestationNoteResponse].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.
-  DSSEAttestationNoteResponse({
-    required this.hint,
-  });
+  DSSEAttestationNoteResponse({required this.hint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': pulumi.Input.mapInputValue<DSSEHintResponse, Map<String, dynamic>>(hint, (value) => value.toMap()),
+      'hint':
+          pulumi.Input.mapInputValue<DSSEHintResponse, Map<String, dynamic>>(
+            hint,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory DSSEAttestationNoteResponse.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationNoteResponse(
-      hint: (DSSEHintResponse.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: pulumi.Input.fromValue(
+        DSSEHintResponse.fromMap((map['hint']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

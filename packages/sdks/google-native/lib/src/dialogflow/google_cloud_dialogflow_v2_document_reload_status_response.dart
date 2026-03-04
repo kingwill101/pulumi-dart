@@ -7,6 +7,7 @@ import 'google_rpc_status_response.dart';
 class GoogleCloudDialogflowV2DocumentReloadStatusResponse {
   /// The status of a reload attempt or the initial load.
   final pulumi.Input<GoogleRpcStatusResponse> status;
+
   /// The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
   final pulumi.Input<String> time;
 
@@ -20,16 +21,25 @@ class GoogleCloudDialogflowV2DocumentReloadStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'status': pulumi.Input.mapInputValue<GoogleRpcStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            GoogleRpcStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'time': time,
     };
   }
 
-  factory GoogleCloudDialogflowV2DocumentReloadStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2DocumentReloadStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2DocumentReloadStatusResponse(
-      status: (GoogleRpcStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      time: (map['time'] as String).input(),
+      status: pulumi.Input.fromValue(
+        GoogleRpcStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      time: pulumi.Input.fromValue(map['time'] as String),
     );
   }
 }
-

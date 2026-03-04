@@ -7,7 +7,7 @@ import 'rule_state.dart';
 ///
 /// For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigrule).
 ///
-/// > **NOTE:** Available since v1.204.0.
+/// &gt; **NOTE:** Available since v1.204.0.
 ///
 /// ## Example Usage
 ///
@@ -239,54 +239,79 @@ import 'rule_state.dart';
 class Rule extends pulumi.CustomResource {
   /// The ID of Alicloud account.
   late final pulumi.Output<int> accountId;
+
   /// compliance information.
   late final pulumi.Output<RuleCompliance> compliance;
+
   /// Compliance Package ID.
   late final pulumi.Output<String> compliancePackId;
+
   /// config rule arn.
   late final pulumi.Output<String> configRuleArn;
+
   /// The ID of the rule.
   late final pulumi.Output<String> configRuleId;
+
   /// The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
   late final pulumi.Output<String> configRuleTriggerTypes;
+
   /// The timestamp when the rule was created.
   late final pulumi.Output<int> createTime;
+
   /// The description of the rule.
   late final pulumi.Output<String?> description;
+
   /// The event source of the rule.
   late final pulumi.Output<String> eventSource;
+
   /// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
   late final pulumi.Output<String?> excludeResourceIdsScope;
+
   /// The settings of the input parameters for the rule.
   late final pulumi.Output<Map<String, String>?> inputParameters;
+
   /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
   late final pulumi.Output<String> maximumExecutionFrequency;
+
   /// The timestamp when the rule was last modified.
   late final pulumi.Output<int> modifiedTimestamp;
+
   /// The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
   late final pulumi.Output<String?> regionIdsScope;
+
   /// The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
   late final pulumi.Output<String?> resourceGroupIdsScope;
+
   /// The types of the resources to be evaluated against the rule.
   late final pulumi.Output<List<String>> resourceTypesScopes;
+
   /// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
   late final pulumi.Output<int> riskLevel;
+
   /// The name of the rule.
   late final pulumi.Output<String> ruleName;
+
   /// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
   late final pulumi.Output<String> scopeComplianceResourceTypes;
+
   /// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
   late final pulumi.Output<String> sourceDetailMessageType;
+
   /// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
   late final pulumi.Output<String> sourceIdentifier;
+
   /// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
   late final pulumi.Output<String> sourceMaximumExecutionFrequency;
+
   /// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
   late final pulumi.Output<String> sourceOwner;
+
   /// The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
   late final pulumi.Output<String> status;
+
   /// The rule monitors the tag key, only applies to rules created based on managed rules.
   late final pulumi.Output<String?> tagKeyScope;
+
   /// The rule monitors the tag value, only applies to rules created based on managed rules.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -296,50 +321,51 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_cfg_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(
-    String name, {
-    RuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cfg/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<int>('accountId');
-    this.compliance = registerOutput<RuleCompliance>('compliance');
-    this.compliancePackId = registerOutput<String>('compliancePackId');
-    this.configRuleArn = registerOutput<String>('configRuleArn');
-    this.configRuleId = registerOutput<String>('configRuleId');
-    this.configRuleTriggerTypes = registerOutput<String>('configRuleTriggerTypes');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.eventSource = registerOutput<String>('eventSource');
-    this.excludeResourceIdsScope = registerOutput<String?>('excludeResourceIdsScope');
-    this.inputParameters = registerOutput<Map<String, String>?>('inputParameters');
-    this.maximumExecutionFrequency = registerOutput<String>('maximumExecutionFrequency');
-    this.modifiedTimestamp = registerOutput<int>('modifiedTimestamp');
-    this.regionIdsScope = registerOutput<String?>('regionIdsScope');
-    this.resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
-    this.resourceTypesScopes = registerOutput<List<String>>('resourceTypesScopes');
-    this.riskLevel = registerOutput<int>('riskLevel');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.scopeComplianceResourceTypes = registerOutput<String>('scopeComplianceResourceTypes');
-    this.sourceDetailMessageType = registerOutput<String>('sourceDetailMessageType');
-    this.sourceIdentifier = registerOutput<String>('sourceIdentifier');
-    this.sourceMaximumExecutionFrequency = registerOutput<String>('sourceMaximumExecutionFrequency');
-    this.sourceOwner = registerOutput<String>('sourceOwner');
-    this.status = registerOutput<String>('status');
-    this.tagKeyScope = registerOutput<String?>('tagKeyScope');
-    this.tagValueScope = registerOutput<String?>('tagValueScope');
+  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cfg/rule:Rule',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accountId = registerOutput<int>('accountId');
+    compliance = registerOutput<RuleCompliance>('compliance');
+    compliancePackId = registerOutput<String>('compliancePackId');
+    configRuleArn = registerOutput<String>('configRuleArn');
+    configRuleId = registerOutput<String>('configRuleId');
+    configRuleTriggerTypes = registerOutput<String>('configRuleTriggerTypes');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    eventSource = registerOutput<String>('eventSource');
+    excludeResourceIdsScope = registerOutput<String?>(
+      'excludeResourceIdsScope',
+    );
+    inputParameters = registerOutput<Map<String, String>?>('inputParameters');
+    maximumExecutionFrequency = registerOutput<String>(
+      'maximumExecutionFrequency',
+    );
+    modifiedTimestamp = registerOutput<int>('modifiedTimestamp');
+    regionIdsScope = registerOutput<String?>('regionIdsScope');
+    resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
+    resourceTypesScopes = registerOutput<List<String>>('resourceTypesScopes');
+    riskLevel = registerOutput<int>('riskLevel');
+    ruleName = registerOutput<String>('ruleName');
+    scopeComplianceResourceTypes = registerOutput<String>(
+      'scopeComplianceResourceTypes',
+    );
+    sourceDetailMessageType = registerOutput<String>('sourceDetailMessageType');
+    sourceIdentifier = registerOutput<String>('sourceIdentifier');
+    sourceMaximumExecutionFrequency = registerOutput<String>(
+      'sourceMaximumExecutionFrequency',
+    );
+    sourceOwner = registerOutput<String>('sourceOwner');
+    status = registerOutput<String>('status');
+    tagKeyScope = registerOutput<String?>('tagKeyScope');
+    tagValueScope = registerOutput<String?>('tagValueScope');
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
-  static Rule get(
-    String name,
-    pulumi.Input<String> id, {
-    RuleState? state,
-  }) {
+  static Rule get(String name, pulumi.Input<String> id, {RuleState? state}) {
     return Rule._get(
       name,
       state: state?.toMap(),
@@ -352,36 +378,44 @@ class Rule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cfg/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<int>('accountId');
-    this.compliance = registerOutput<RuleCompliance>('compliance');
-    this.compliancePackId = registerOutput<String>('compliancePackId');
-    this.configRuleArn = registerOutput<String>('configRuleArn');
-    this.configRuleId = registerOutput<String>('configRuleId');
-    this.configRuleTriggerTypes = registerOutput<String>('configRuleTriggerTypes');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.eventSource = registerOutput<String>('eventSource');
-    this.excludeResourceIdsScope = registerOutput<String?>('excludeResourceIdsScope');
-    this.inputParameters = registerOutput<Map<String, String>?>('inputParameters');
-    this.maximumExecutionFrequency = registerOutput<String>('maximumExecutionFrequency');
-    this.modifiedTimestamp = registerOutput<int>('modifiedTimestamp');
-    this.regionIdsScope = registerOutput<String?>('regionIdsScope');
-    this.resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
-    this.resourceTypesScopes = registerOutput<List<String>>('resourceTypesScopes');
-    this.riskLevel = registerOutput<int>('riskLevel');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.scopeComplianceResourceTypes = registerOutput<String>('scopeComplianceResourceTypes');
-    this.sourceDetailMessageType = registerOutput<String>('sourceDetailMessageType');
-    this.sourceIdentifier = registerOutput<String>('sourceIdentifier');
-    this.sourceMaximumExecutionFrequency = registerOutput<String>('sourceMaximumExecutionFrequency');
-    this.sourceOwner = registerOutput<String>('sourceOwner');
-    this.status = registerOutput<String>('status');
-    this.tagKeyScope = registerOutput<String?>('tagKeyScope');
-    this.tagValueScope = registerOutput<String?>('tagValueScope');
+         'alicloud:cfg/rule:Rule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<int>('accountId');
+    compliance = registerOutput<RuleCompliance>('compliance');
+    compliancePackId = registerOutput<String>('compliancePackId');
+    configRuleArn = registerOutput<String>('configRuleArn');
+    configRuleId = registerOutput<String>('configRuleId');
+    configRuleTriggerTypes = registerOutput<String>('configRuleTriggerTypes');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String?>('description');
+    eventSource = registerOutput<String>('eventSource');
+    excludeResourceIdsScope = registerOutput<String?>(
+      'excludeResourceIdsScope',
+    );
+    inputParameters = registerOutput<Map<String, String>?>('inputParameters');
+    maximumExecutionFrequency = registerOutput<String>(
+      'maximumExecutionFrequency',
+    );
+    modifiedTimestamp = registerOutput<int>('modifiedTimestamp');
+    regionIdsScope = registerOutput<String?>('regionIdsScope');
+    resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
+    resourceTypesScopes = registerOutput<List<String>>('resourceTypesScopes');
+    riskLevel = registerOutput<int>('riskLevel');
+    ruleName = registerOutput<String>('ruleName');
+    scopeComplianceResourceTypes = registerOutput<String>(
+      'scopeComplianceResourceTypes',
+    );
+    sourceDetailMessageType = registerOutput<String>('sourceDetailMessageType');
+    sourceIdentifier = registerOutput<String>('sourceIdentifier');
+    sourceMaximumExecutionFrequency = registerOutput<String>(
+      'sourceMaximumExecutionFrequency',
+    );
+    sourceOwner = registerOutput<String>('sourceOwner');
+    status = registerOutput<String>('status');
+    tagKeyScope = registerOutput<String?>('tagKeyScope');
+    tagValueScope = registerOutput<String?>('tagValueScope');
   }
 }

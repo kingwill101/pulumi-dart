@@ -12,20 +12,15 @@ class GetConsoleArgs {
 
   /// Creates a new [GetConsoleArgs].
   /// [consoleName] The name of the console
-  GetConsoleArgs({
-    required this.consoleName,
-  });
+  GetConsoleArgs({required this.consoleName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'consoleName': consoleName,
-    };
+    return <String, dynamic>{'consoleName': consoleName};
   }
 
   factory GetConsoleArgs.fromMap(Map<String, dynamic> map) {
     return GetConsoleArgs(
-      consoleName: (map['consoleName'] as String).input(),
+      consoleName: pulumi.Input.fromValue(map['consoleName'] as String),
     );
   }
 }
-

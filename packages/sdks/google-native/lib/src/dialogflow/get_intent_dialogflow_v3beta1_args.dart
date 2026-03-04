@@ -39,12 +39,19 @@ class GetIntentDialogflowV3beta1Args {
 
   factory GetIntentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetIntentDialogflowV3beta1Args(
-      agentId: (map['agentId'] as String).input(),
-      intentId: (map['intentId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      intentId: pulumi.Input.fromValue(map['intentId'] as String),
+      languageCode: (() {
+        final guardedValue = map['languageCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

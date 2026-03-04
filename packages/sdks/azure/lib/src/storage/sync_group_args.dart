@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncGroupArgs {
   /// The name which should be used for this Storage Sync Group. Changing this forces a new Storage Sync Group to be created.
   final pulumi.Input<String>? name;
+
   /// The resource ID of the Storage Sync where this Storage Sync Group is. Changing this forces a new Storage Sync Group to be created.
   final pulumi.Input<String> storageSyncId;
 
   /// Creates a new [SyncGroupArgs].
   /// [name] The name which should be used for this Storage Sync Group. Changing this forces a new Storage Sync Group to be created.
   /// [storageSyncId] The resource ID of the Storage Sync where this Storage Sync Group is. Changing this forces a new Storage Sync Group to be created.
-  SyncGroupArgs({
-    this.name,
-    required this.storageSyncId,
-  });
+  SyncGroupArgs({this.name, required this.storageSyncId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'storageSyncId': storageSyncId,
-    };
+    return <String, dynamic>{'name': ?name, 'storageSyncId': storageSyncId};
   }
 
   factory SyncGroupArgs.fromMap(Map<String, dynamic> map) {
     return SyncGroupArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      storageSyncId: (map['storageSyncId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSyncId: pulumi.Input.fromValue(map['storageSyncId'] as String),
     );
   }
 }
-

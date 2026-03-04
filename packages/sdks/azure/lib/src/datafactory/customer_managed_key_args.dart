@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerManagedKeyArgs {
   /// The ID the of the Customer Managed Key to associate with the Data Factory.
   final pulumi.Input<String> customerManagedKeyId;
+
   /// The ID of the Data Factory Resource the Customer Managed Key will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> dataFactoryId;
+
   /// The User Assigned Identity ID that will be used to access Key Vaults that contain the encryption keys.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -34,10 +36,15 @@ class CustomerManagedKeyArgs {
 
   factory CustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyArgs(
-      customerManagedKeyId: (map['customerManagedKeyId'] as String).input(),
-      dataFactoryId: (map['dataFactoryId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      customerManagedKeyId: pulumi.Input.fromValue(
+        map['customerManagedKeyId'] as String,
+      ),
+      dataFactoryId: pulumi.Input.fromValue(map['dataFactoryId'] as String),
+      userAssignedIdentityId: (() {
+        final guardedValue = map['userAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

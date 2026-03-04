@@ -31,10 +31,17 @@ class GetSchemaIamPolicyArgs {
 
   factory GetSchemaIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      schemaId: (map['schemaId'] as String).input(),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
     );
   }
 }
-

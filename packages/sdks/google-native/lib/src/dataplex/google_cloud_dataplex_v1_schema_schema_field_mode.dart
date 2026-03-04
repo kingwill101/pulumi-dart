@@ -5,16 +5,17 @@ enum GoogleCloudDataplexV1SchemaSchemaFieldMode {
   nullable("NULLABLE"),
   repeated("REPEATED");
 
-  const GoogleCloudDataplexV1SchemaSchemaFieldMode(this.value);
-  final String value;
+  const GoogleCloudDataplexV1SchemaSchemaFieldMode(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDataplexV1SchemaSchemaFieldMode fromValue(String value) {
     for (final item in GoogleCloudDataplexV1SchemaSchemaFieldMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaSchemaFieldMode value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1SchemaSchemaFieldMode value: $value',
+    );
   }
 }
-

@@ -8,20 +8,17 @@ class V2modelsSlotTypeSlotTypeValueSynonym {
 
   /// Creates a new [V2modelsSlotTypeSlotTypeValueSynonym].
   /// [value] Value that can be used for a slot type.
-  V2modelsSlotTypeSlotTypeValueSynonym({
-    required this.value,
-  });
+  V2modelsSlotTypeSlotTypeValueSynonym({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory V2modelsSlotTypeSlotTypeValueSynonym.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotTypeSlotTypeValueSynonym.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotTypeSlotTypeValueSynonym(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

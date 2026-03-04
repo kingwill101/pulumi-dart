@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttestationAtResourceArgs {
   /// The name of the attestation.
   final pulumi.Input<String> attestationName;
+
   /// Resource ID.
   final pulumi.Input<String> resourceId;
 
@@ -29,9 +30,8 @@ class GetAttestationAtResourceArgs {
 
   factory GetAttestationAtResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestationAtResourceArgs(
-      attestationName: (map['attestationName'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      attestationName: pulumi.Input.fromValue(map['attestationName'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

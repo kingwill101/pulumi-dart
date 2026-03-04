@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'p2_sconnection_configuration_response.dart';
 import 'p2s_vpn_gateway_args.dart';
 import 'sub_resource_response.dart';
 import 'vpn_client_connection_health_response.dart';
@@ -428,30 +427,45 @@ import 'vpn_client_connection_health_response.dart';
 class P2sVpnGateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of all customer specified DNS servers IP addresses.
   late final pulumi.Output<List<String>?> customDnsServers;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Enable Routing Preference property for the Public IP Interface of the P2SVpnGateway.
   late final pulumi.Output<bool?> isRoutingPreferenceInternet;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// List of all p2s connection configurations of the gateway.
-  late final pulumi.Output<List<P2SConnectionConfigurationResponse>?> p2SConnectionConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  p2SConnectionConfigurations;
+
   /// The provisioning state of the P2S VPN gateway resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The VirtualHub to which the gateway belongs.
   late final pulumi.Output<SubResourceResponse?> virtualHub;
+
   /// All P2S VPN clients' connection health status.
-  late final pulumi.Output<VpnClientConnectionHealthResponse> vpnClientConnectionHealth;
+  late final pulumi.Output<VpnClientConnectionHealthResponse>
+  vpnClientConnectionHealth;
+
   /// The scale unit for this p2s vpn gateway.
   late final pulumi.Output<int?> vpnGatewayScaleUnit;
+
   /// The VpnServerConfiguration to which the p2sVpnGateway is attached to.
   late final pulumi.Output<SubResourceResponse?> vpnServerConfiguration;
 
@@ -464,24 +478,33 @@ class P2sVpnGateway extends pulumi.CustomResource {
     P2sVpnGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:P2sVpnGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customDnsServers = registerOutput<List<String>?>('customDnsServers');
-    this.etag = registerOutput<String>('etag');
-    this.isRoutingPreferenceInternet = registerOutput<bool?>('isRoutingPreferenceInternet');
-    this.location = registerOutput<String>('location');
+         'azure-native:network:P2sVpnGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customDnsServers = registerOutput<List<String>?>('customDnsServers');
+    etag = registerOutput<String>('etag');
+    isRoutingPreferenceInternet = registerOutput<bool?>(
+      'isRoutingPreferenceInternet',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.p2SConnectionConfigurations = registerOutput<List<P2SConnectionConfigurationResponse>?>('p2SConnectionConfigurations');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
-    this.vpnClientConnectionHealth = registerOutput<VpnClientConnectionHealthResponse>('vpnClientConnectionHealth');
-    this.vpnGatewayScaleUnit = registerOutput<int?>('vpnGatewayScaleUnit');
-    this.vpnServerConfiguration = registerOutput<SubResourceResponse?>('vpnServerConfiguration');
+    p2SConnectionConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'p2SConnectionConfigurations',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    vpnClientConnectionHealth =
+        registerOutput<VpnClientConnectionHealthResponse>(
+          'vpnClientConnectionHealth',
+        );
+    vpnGatewayScaleUnit = registerOutput<int?>('vpnGatewayScaleUnit');
+    vpnServerConfiguration = registerOutput<SubResourceResponse?>(
+      'vpnServerConfiguration',
+    );
   }
 }

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceProviderManifestPropertiesDstsConfiguration {
   /// This is a URI property.
   final pulumi.Input<String>? serviceDnsName;
+
   /// The service name.
   final pulumi.Input<String> serviceName;
 
@@ -24,11 +25,16 @@ class ResourceProviderManifestPropertiesDstsConfiguration {
     };
   }
 
-  factory ResourceProviderManifestPropertiesDstsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ResourceProviderManifestPropertiesDstsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceProviderManifestPropertiesDstsConfiguration(
-      serviceDnsName: map['serviceDnsName'] == null ? null : (map['serviceDnsName']! as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      serviceDnsName: (() {
+        final guardedValue = map['serviceDnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

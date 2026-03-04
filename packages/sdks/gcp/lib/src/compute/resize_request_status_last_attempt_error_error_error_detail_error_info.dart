@@ -6,9 +6,11 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo {
   /// (Output)
   /// The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
   final pulumi.Input<String>? domain;
+
   /// (Output)
   /// Additional structured details about this error.
   final pulumi.Input<Map<String, String>>? metadatas;
+
   /// (Output)
   /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
   final pulumi.Input<String>? reason;
@@ -31,12 +33,27 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo {
     };
   }
 
-  factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo.fromMap(Map<String, dynamic> map) {
+  factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      metadatas: map['metadatas'] == null ? null : ((map['metadatas']! as Map).cast<String, String>()).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadatas: (() {
+        final guardedValue = map['metadatas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

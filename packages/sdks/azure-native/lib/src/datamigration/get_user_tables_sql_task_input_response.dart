@@ -7,8 +7,10 @@ import 'sql_connection_info_response.dart';
 class GetUserTablesSqlTaskInputResponse {
   /// Connection information for SQL Server
   final pulumi.Input<SqlConnectionInfoResponse> connectionInfo;
+
   /// encrypted key for secure fields
   final pulumi.Input<String>? encryptedKeyForSecureFields;
+
   /// List of database names to collect tables for
   final pulumi.Input<List<String>> selectedDatabases;
 
@@ -24,7 +26,11 @@ class GetUserTablesSqlTaskInputResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionInfo': pulumi.Input.mapInputValue<SqlConnectionInfoResponse, Map<String, dynamic>>(connectionInfo, (value) => value.toMap()),
+      'connectionInfo':
+          pulumi.Input.mapInputValue<
+            SqlConnectionInfoResponse,
+            Map<String, dynamic>
+          >(connectionInfo, (value) => value.toMap()),
       'encryptedKeyForSecureFields': ?encryptedKeyForSecureFields,
       'selectedDatabases': selectedDatabases,
     };
@@ -32,10 +38,19 @@ class GetUserTablesSqlTaskInputResponse {
 
   factory GetUserTablesSqlTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return GetUserTablesSqlTaskInputResponse(
-      connectionInfo: (SqlConnectionInfoResponse.fromMap((map['connectionInfo'] as Map).cast<String, dynamic>())).input(),
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields']! as String).input(),
-      selectedDatabases: ((map['selectedDatabases'] as List).cast<String>()).input(),
+      connectionInfo: pulumi.Input.fromValue(
+        SqlConnectionInfoResponse.fromMap(
+          (map['connectionInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      encryptedKeyForSecureFields: (() {
+        final guardedValue = map['encryptedKeyForSecureFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selectedDatabases: pulumi.Input.fromValue(
+        (map['selectedDatabases'] as List).cast<String>(),
+      ),
     );
   }
 }
-

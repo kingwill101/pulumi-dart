@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlatformImagePurchasePlanResponse {
   /// Name of the purchase plan.
   final pulumi.Input<String> planName;
+
   /// Product of the purchase plan.
   final pulumi.Input<String> planProduct;
+
   /// Publisher of the purchase plan.
   final pulumi.Input<String> planPublisher;
 
@@ -31,10 +33,9 @@ class PlatformImagePurchasePlanResponse {
 
   factory PlatformImagePurchasePlanResponse.fromMap(Map<String, dynamic> map) {
     return PlatformImagePurchasePlanResponse(
-      planName: (map['planName'] as String).input(),
-      planProduct: (map['planProduct'] as String).input(),
-      planPublisher: (map['planPublisher'] as String).input(),
+      planName: pulumi.Input.fromValue(map['planName'] as String),
+      planProduct: pulumi.Input.fromValue(map['planProduct'] as String),
+      planPublisher: pulumi.Input.fromValue(map['planPublisher'] as String),
     );
   }
 }
-

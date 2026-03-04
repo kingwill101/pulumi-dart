@@ -116,10 +116,13 @@ import 'transit_gateway_connect_peer_association_state.dart';
 class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
   /// ID of the device.
   late final pulumi.Output<String> deviceId;
+
   /// ID of the global network.
   late final pulumi.Output<String> globalNetworkId;
+
   /// ID of the link.
   late final pulumi.Output<String?> linkId;
+
   /// ARN of the Connect peer.
   ///
   /// The following arguments are optional:
@@ -134,15 +137,17 @@ class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
     TransitGatewayConnectPeerAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/transitGatewayConnectPeerAssociation:TransitGatewayConnectPeerAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deviceId = registerOutput<String>('deviceId');
-    this.globalNetworkId = registerOutput<String>('globalNetworkId');
-    this.linkId = registerOutput<String?>('linkId');
-    this.transitGatewayConnectPeerArn = registerOutput<String>('transitGatewayConnectPeerArn');
+         'aws:networkmanager/transitGatewayConnectPeerAssociation:TransitGatewayConnectPeerAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deviceId = registerOutput<String>('deviceId');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    linkId = registerOutput<String?>('linkId');
+    transitGatewayConnectPeerArn = registerOutput<String>(
+      'transitGatewayConnectPeerArn',
+    );
   }
 
   /// Gets an existing [TransitGatewayConnectPeerAssociation] resource's state with the given [name] and [id].
@@ -163,14 +168,16 @@ class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/transitGatewayConnectPeerAssociation:TransitGatewayConnectPeerAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deviceId = registerOutput<String>('deviceId');
-    this.globalNetworkId = registerOutput<String>('globalNetworkId');
-    this.linkId = registerOutput<String?>('linkId');
-    this.transitGatewayConnectPeerArn = registerOutput<String>('transitGatewayConnectPeerArn');
+         'aws:networkmanager/transitGatewayConnectPeerAssociation:TransitGatewayConnectPeerAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deviceId = registerOutput<String>('deviceId');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    linkId = registerOutput<String?>('linkId');
+    transitGatewayConnectPeerArn = registerOutput<String>(
+      'transitGatewayConnectPeerArn',
+    );
   }
 }

@@ -9,24 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleArgs {
   /// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
   final pulumi.Input<String>? assumeRolePolicyDocument;
+
   /// The description of the RAM role.
   final pulumi.Input<String>? description;
+
   /// Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
   final pulumi.Input<String>? document;
+
   /// Specifies whether to force delete the Role. Default value: `false`. Valid values:
   final pulumi.Input<bool>? force;
+
   /// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
   final pulumi.Input<int>? maxSessionDuration;
+
   /// Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
   final pulumi.Input<String>? name;
+
   /// Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
   final pulumi.Input<List<String>>? ramUsers;
+
   /// The name of the RAM role.
   final pulumi.Input<String>? roleName;
+
   /// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
   final pulumi.Input<List<String>>? services;
+
   /// The list of tags for the role.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
   final pulumi.Input<String>? version;
 
@@ -74,18 +84,63 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      document: map['document'] == null ? null : (map['document']! as String).input(),
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ramUsers: map['ramUsers'] == null ? null : ((map['ramUsers']! as List).cast<String>()).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
-      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      assumeRolePolicyDocument: (() {
+        final guardedValue = map['assumeRolePolicyDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      document: (() {
+        final guardedValue = map['document'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxSessionDuration: (() {
+        final guardedValue = map['maxSessionDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ramUsers: (() {
+        final guardedValue = map['ramUsers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      roleName: (() {
+        final guardedValue = map['roleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      services: (() {
+        final guardedValue = map['services'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

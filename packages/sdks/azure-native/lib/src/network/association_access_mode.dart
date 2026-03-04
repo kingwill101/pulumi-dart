@@ -4,16 +4,15 @@ enum AssociationAccessMode {
   valueEnforced("Enforced"),
   valueAudit("Audit");
 
-  const AssociationAccessMode(this.value);
-  final String value;
+  const AssociationAccessMode(this.wireValue);
+  final String wireValue;
 
   static AssociationAccessMode fromValue(String value) {
     for (final item in AssociationAccessMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssociationAccessMode value: $value');
   }
 }
-

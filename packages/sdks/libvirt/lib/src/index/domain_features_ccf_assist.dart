@@ -8,20 +8,19 @@ class DomainFeaturesCcfAssist {
 
   /// Creates a new [DomainFeaturesCcfAssist].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesCcfAssist({
-    this.state,
-  });
+  DomainFeaturesCcfAssist({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesCcfAssist.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCcfAssist(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

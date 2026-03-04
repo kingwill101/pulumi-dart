@@ -5,16 +5,15 @@ enum SettingsDataDiskType {
   pdHdd("PD_HDD"),
   obsoleteLocalSsd("OBSOLETE_LOCAL_SSD");
 
-  const SettingsDataDiskType(this.value);
-  final String value;
+  const SettingsDataDiskType(this.wireValue);
+  final String wireValue;
 
   static SettingsDataDiskType fromValue(String value) {
     for (final item in SettingsDataDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingsDataDiskType value: $value');
   }
 }
-

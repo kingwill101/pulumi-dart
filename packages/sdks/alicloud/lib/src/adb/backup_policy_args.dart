@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyArgs {
   /// The Id of cluster that can run database.
   final pulumi.Input<String> dbClusterId;
+
   /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
   final pulumi.Input<List<String>> preferredBackupPeriods;
+
   /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
   final pulumi.Input<String> preferredBackupTime;
 
@@ -34,10 +36,13 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      dbClusterId: (map['dbClusterId'] as String).input(),
-      preferredBackupPeriods: ((map['preferredBackupPeriods'] as List).cast<String>()).input(),
-      preferredBackupTime: (map['preferredBackupTime'] as String).input(),
+      dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
+      preferredBackupPeriods: pulumi.Input.fromValue(
+        (map['preferredBackupPeriods'] as List).cast<String>(),
+      ),
+      preferredBackupTime: pulumi.Input.fromValue(
+        map['preferredBackupTime'] as String,
+      ),
     );
   }
 }
-

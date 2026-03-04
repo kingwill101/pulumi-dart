@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpamIpamScopesArgs {
   /// A list of Ipam Scope IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The id of the Ipam instance.
   final pulumi.Input<String>? ipamId;
+
   /// The first ID of the resource.
   final pulumi.Input<String>? ipamScopeId;
+
   /// The name of the resource.
   final pulumi.Input<String>? ipamScopeName;
-  /// IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+
+  /// IPAM scope of action type:**private**.&gt; Currently, only the role scope of the private network is supported.
   final pulumi.Input<String>? ipamScopeType;
+
   /// A regex string to filter results by Group Metric Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -31,7 +39,7 @@ class GetIpamIpamScopesArgs {
   /// [ipamId] The id of the Ipam instance.
   /// [ipamScopeId] The first ID of the resource.
   /// [ipamScopeName] The name of the resource.
-  /// [ipamScopeType] IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
+  /// [ipamScopeType] IPAM scope of action type:**private**.&gt; Currently, only the role scope of the private network is supported.
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group.
@@ -64,16 +72,53 @@ class GetIpamIpamScopesArgs {
 
   factory GetIpamIpamScopesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamScopesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      ipamId: map['ipamId'] == null ? null : (map['ipamId']! as String).input(),
-      ipamScopeId: map['ipamScopeId'] == null ? null : (map['ipamScopeId']! as String).input(),
-      ipamScopeName: map['ipamScopeName'] == null ? null : (map['ipamScopeName']! as String).input(),
-      ipamScopeType: map['ipamScopeType'] == null ? null : (map['ipamScopeType']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipamId: (() {
+        final guardedValue = map['ipamId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamScopeId: (() {
+        final guardedValue = map['ipamScopeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamScopeName: (() {
+        final guardedValue = map['ipamScopeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamScopeType: (() {
+        final guardedValue = map['ipamScopeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

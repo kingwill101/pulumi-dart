@@ -8,37 +8,51 @@ import 'reserved_cache_node_timeouts.dart';
 class ReservedCacheNodeState {
   /// ARN for the reserved cache node.
   final pulumi.Input<String>? arn;
+
   /// Number of cache node instances to reserve.
   /// Default value is `1`.
   final pulumi.Input<int>? cacheNodeCount;
+
   /// Node type for the reserved cache nodes.
   final pulumi.Input<String>? cacheNodeType;
+
   /// Duration of the reservation as an RFC3339 duration.
   final pulumi.Input<String>? duration;
+
   /// Fixed price charged for this reserved cache node.
   final pulumi.Input<double>? fixedPrice;
+
   /// Offering type of this reserved cache node.
   final pulumi.Input<String>? offeringType;
+
   /// Engine type for the reserved cache node.
   final pulumi.Input<String>? productDescription;
+
   /// Recurring price charged to run this reserved cache node.
   final pulumi.Input<List<ReservedCacheNodeRecurringCharge>>? recurringCharges;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the reserved cache node offering to purchase.
   /// To determine an `reserved_cache_nodes_offering_id`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? reservedCacheNodesOfferingId;
+
   /// Time the reservation started.
   final pulumi.Input<String>? startTime;
+
   /// State of the reserved cache node.
   final pulumi.Input<String>? state;
+
   /// Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<ReservedCacheNodeTimeouts>? timeouts;
+
   /// Hourly price charged for this reserved cache node.
   final pulumi.Input<double>? usagePrice;
 
@@ -87,37 +101,130 @@ class ReservedCacheNodeState {
       'fixedPrice': ?fixedPrice,
       'offeringType': ?offeringType,
       'productDescription': ?productDescription,
-      'recurringCharges': ?pulumi.Input.mapOptionalInputValue<List<ReservedCacheNodeRecurringCharge>, List<Map<String, dynamic>>>(recurringCharges, (value) => pulumi.Input.encodeList<ReservedCacheNodeRecurringCharge, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recurringCharges':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReservedCacheNodeRecurringCharge>,
+            List<Map<String, dynamic>>
+          >(
+            recurringCharges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReservedCacheNodeRecurringCharge,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'reservedCacheNodesOfferingId': ?reservedCacheNodesOfferingId,
       'startTime': ?startTime,
       'state': ?state,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ReservedCacheNodeTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReservedCacheNodeTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'usagePrice': ?usagePrice,
     };
   }
 
   factory ReservedCacheNodeState.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      cacheNodeCount: map['cacheNodeCount'] == null ? null : ((map['cacheNodeCount'] as int).input()).input(),
-      cacheNodeType: map['cacheNodeType'] == null ? null : ((map['cacheNodeType'] as String).input()).input(),
-      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
-      fixedPrice: map['fixedPrice'] == null ? null : ((map['fixedPrice'] as double).input()).input(),
-      offeringType: map['offeringType'] == null ? null : ((map['offeringType'] as String).input()).input(),
-      productDescription: map['productDescription'] == null ? null : ((map['productDescription'] as String).input()).input(),
-      recurringCharges: map['recurringCharges'] == null ? null : ((pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(map['recurringCharges']!, (value) => ReservedCacheNodeRecurringCharge.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      reservedCacheNodesOfferingId: map['reservedCacheNodesOfferingId'] == null ? null : ((map['reservedCacheNodesOfferingId'] as String).input()).input(),
-      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ReservedCacheNodeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      usagePrice: map['usagePrice'] == null ? null : ((map['usagePrice'] as double).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cacheNodeCount: (() {
+        final guardedValue = map['cacheNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      cacheNodeType: (() {
+        final guardedValue = map['cacheNodeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fixedPrice: (() {
+        final guardedValue = map['fixedPrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      offeringType: (() {
+        final guardedValue = map['offeringType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productDescription: (() {
+        final guardedValue = map['productDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recurringCharges: (() {
+        final guardedValue = map['recurringCharges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(
+            guardedValue,
+            (value) => ReservedCacheNodeRecurringCharge.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservedCacheNodesOfferingId: (() {
+        final guardedValue = map['reservedCacheNodesOfferingId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReservedCacheNodeTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      usagePrice: (() {
+        final guardedValue = map['usagePrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

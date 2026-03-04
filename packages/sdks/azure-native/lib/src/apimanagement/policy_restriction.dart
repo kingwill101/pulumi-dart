@@ -146,12 +146,16 @@ import 'policy_restriction_args.dart';
 class PolicyRestriction extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Indicates if base policy should be enforced for the policy document.
   late final pulumi.Output<String?> requireBase;
+
   /// Path to the policy document.
   late final pulumi.Output<String?> scope;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -164,15 +168,15 @@ class PolicyRestriction extends pulumi.CustomResource {
     PolicyRestrictionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:PolicyRestriction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:apimanagement:PolicyRestriction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.requireBase = registerOutput<String?>('requireBase');
-    this.scope = registerOutput<String?>('scope');
-    this.type = registerOutput<String>('type');
+    requireBase = registerOutput<String?>('requireBase');
+    scope = registerOutput<String?>('scope');
+    type = registerOutput<String>('type');
   }
 }

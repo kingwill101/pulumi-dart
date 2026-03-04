@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Workload {
   /// the scenario for the workload
   final pulumi.Input<String>? context;
+
   /// Tool used to interact with Azure. SDK, AzPortal, etc.., Other
   final pulumi.Input<String>? toolset;
 
   /// Creates a new [Workload].
   /// [context] the scenario for the workload
   /// [toolset] Tool used to interact with Azure. SDK, AzPortal, etc.., Other
-  Workload({
-    this.context,
-    this.toolset,
-  });
+  Workload({this.context, this.toolset});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'context': ?context,
-      'toolset': ?toolset,
-    };
+    return <String, dynamic>{'context': ?context, 'toolset': ?toolset};
   }
 
   factory Workload.fromMap(Map<String, dynamic> map) {
     return Workload(
-      context: map['context'] == null ? null : (map['context']! as String).input(),
-      toolset: map['toolset'] == null ? null : (map['toolset']! as String).input(),
+      context: (() {
+        final guardedValue = map['context'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      toolset: (() {
+        final guardedValue = map['toolset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

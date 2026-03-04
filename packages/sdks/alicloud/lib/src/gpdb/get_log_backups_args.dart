@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogBackupsArgs {
   /// The ID of the Master node of the instance.
   final pulumi.Input<String> dbInstanceId;
+
   /// The query end time, which must be greater than the query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
   final pulumi.Input<String>? endTime;
+
   /// A list of Logbackup IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Current page number.
   final pulumi.Input<int>? pageNumber;
+
   /// Number of records per page.
   final pulumi.Input<int>? pageSize;
+
   /// The query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
   final pulumi.Input<String>? startTime;
 
@@ -54,14 +60,37 @@ class GetLogBackupsArgs {
 
   factory GetLogBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogBackupsArgs(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

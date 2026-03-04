@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSkusNestedResourceTypeFirstArgs {
   /// The first child resource type.
   final pulumi.Input<String> nestedResourceTypeFirst;
+
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
+
   /// The resource type.
   final pulumi.Input<String> resourceType;
+
   /// The SKU.
   final pulumi.Input<String> sku;
 
@@ -39,11 +42,14 @@ class GetSkusNestedResourceTypeFirstArgs {
 
   factory GetSkusNestedResourceTypeFirstArgs.fromMap(Map<String, dynamic> map) {
     return GetSkusNestedResourceTypeFirstArgs(
-      nestedResourceTypeFirst: (map['nestedResourceTypeFirst'] as String).input(),
-      providerNamespace: (map['providerNamespace'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      sku: (map['sku'] as String).input(),
+      nestedResourceTypeFirst: pulumi.Input.fromValue(
+        map['nestedResourceTypeFirst'] as String,
+      ),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
     );
   }
 }
-

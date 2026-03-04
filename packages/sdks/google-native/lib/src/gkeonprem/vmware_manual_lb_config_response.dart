@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareManualLbConfigResponse {
   /// NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
   final pulumi.Input<int> controlPlaneNodePort;
+
   /// NodePort for ingress service's http. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 32527).
   final pulumi.Input<int> ingressHttpNodePort;
+
   /// NodePort for ingress service's https. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 30139).
   final pulumi.Input<int> ingressHttpsNodePort;
+
   /// NodePort for konnectivity server service running as a sidecar in each kube-apiserver pod (ex. 30564).
   final pulumi.Input<int> konnectivityServerNodePort;
 
@@ -36,11 +39,18 @@ class VmwareManualLbConfigResponse {
 
   factory VmwareManualLbConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareManualLbConfigResponse(
-      controlPlaneNodePort: (map['controlPlaneNodePort'] as int).input(),
-      ingressHttpNodePort: (map['ingressHttpNodePort'] as int).input(),
-      ingressHttpsNodePort: (map['ingressHttpsNodePort'] as int).input(),
-      konnectivityServerNodePort: (map['konnectivityServerNodePort'] as int).input(),
+      controlPlaneNodePort: pulumi.Input.fromValue(
+        map['controlPlaneNodePort'] as int,
+      ),
+      ingressHttpNodePort: pulumi.Input.fromValue(
+        map['ingressHttpNodePort'] as int,
+      ),
+      ingressHttpsNodePort: pulumi.Input.fromValue(
+        map['ingressHttpsNodePort'] as int,
+      ),
+      konnectivityServerNodePort: pulumi.Input.fromValue(
+        map['konnectivityServerNodePort'] as int,
+      ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FtpServerLocation {
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
+
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
+
   /// Type of dataset storage location.
   /// Expected value is 'FtpServerLocation'.
   final pulumi.Input<String> type;
@@ -16,11 +18,7 @@ class FtpServerLocation {
   /// [fileName] Specify the file name of dataset. Type: string (or Expression with resultType string).
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
-  FtpServerLocation({
-    this.fileName,
-    this.folderPath,
-    required this.type,
-  });
+  FtpServerLocation({this.fileName, this.folderPath, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class FtpServerLocation {
 
   factory FtpServerLocation.fromMap(Map<String, dynamic> map) {
     return FtpServerLocation(
-      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
-      type: (map['type'] as String).input(),
+      fileName: (() {
+        final guardedValue = map['fileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      folderPath: (() {
+        final guardedValue = map['folderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

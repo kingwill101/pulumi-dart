@@ -7,10 +7,15 @@ import 'resource_claim_parameters_reference_patch_resource_k8s_io_v1alpha2.dart'
 class ResourceClaimSpecPatchResourceK8sIoV1alpha2 {
   /// Allocation can start immediately or when a Pod wants to use the resource. "WaitForFirstConsumer" is the default.
   final pulumi.Input<String>? allocationMode;
+
   /// ParametersRef references a separate object with arbitrary parameters that will be used by the driver when allocating a resource for the claim.
   ///
   /// The object must be in the same namespace as the ResourceClaim.
-  final pulumi.Input<ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2>? parametersRef;
+  final pulumi.Input<
+    ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2
+  >?
+  parametersRef;
+
   /// ResourceClassName references the driver and additional parameters via the name of a ResourceClass that was created as part of the driver deployment.
   final pulumi.Input<String>? resourceClassName;
 
@@ -27,17 +32,38 @@ class ResourceClaimSpecPatchResourceK8sIoV1alpha2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationMode': ?allocationMode,
-      'parametersRef': ?pulumi.Input.mapOptionalInputValue<ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2, Map<String, dynamic>>(parametersRef, (value) => value.toMap()),
+      'parametersRef':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2,
+            Map<String, dynamic>
+          >(parametersRef, (value) => value.toMap()),
       'resourceClassName': ?resourceClassName,
     };
   }
 
-  factory ResourceClaimSpecPatchResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
+  factory ResourceClaimSpecPatchResourceK8sIoV1alpha2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceClaimSpecPatchResourceK8sIoV1alpha2(
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
-      parametersRef: map['parametersRef'] == null ? null : (ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['parametersRef']! as Map).cast<String, dynamic>())).input(),
-      resourceClassName: map['resourceClassName'] == null ? null : (map['resourceClassName']! as String).input(),
+      allocationMode: (() {
+        final guardedValue = map['allocationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parametersRef: (() {
+        final guardedValue = map['parametersRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceClassName: (() {
+        final guardedValue = map['resourceClassName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

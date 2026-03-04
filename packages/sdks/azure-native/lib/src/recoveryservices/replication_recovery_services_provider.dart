@@ -245,12 +245,17 @@ import 'replication_recovery_services_provider_args.dart';
 class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource Location
   late final pulumi.Output<String?> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// Provider properties.
-  late final pulumi.Output<RecoveryServicesProviderPropertiesResponse> properties;
+  late final pulumi.Output<RecoveryServicesProviderPropertiesResponse>
+  properties;
+
   /// Resource Type
   late final pulumi.Output<String> type;
 
@@ -263,15 +268,17 @@ class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
     ReplicationRecoveryServicesProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:recoveryservices:ReplicationRecoveryServicesProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:recoveryservices:ReplicationRecoveryServicesProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<RecoveryServicesProviderPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<RecoveryServicesProviderPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

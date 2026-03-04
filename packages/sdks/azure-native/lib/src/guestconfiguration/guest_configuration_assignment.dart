@@ -245,14 +245,20 @@ import 'system_data_response.dart';
 class GuestConfigurationAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Region where the VM is located.
   late final pulumi.Output<String?> location;
+
   /// The guest configuration assignment name.
   late final pulumi.Output<String> name;
+
   /// Properties of the Guest configuration assignment.
-  late final pulumi.Output<GuestConfigurationAssignmentPropertiesResponse> properties;
+  late final pulumi.Output<GuestConfigurationAssignmentPropertiesResponse>
+  properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -265,16 +271,18 @@ class GuestConfigurationAssignment extends pulumi.CustomResource {
     GuestConfigurationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:guestconfiguration:GuestConfigurationAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:guestconfiguration:GuestConfigurationAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<GuestConfigurationAssignmentPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<GuestConfigurationAssignmentPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

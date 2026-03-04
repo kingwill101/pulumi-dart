@@ -6,16 +6,15 @@ enum AzureStorageRedundancy {
   geoRedundant("GeoRedundant"),
   readAccessGeoRedundant("ReadAccessGeoRedundant");
 
-  const AzureStorageRedundancy(this.value);
-  final String value;
+  const AzureStorageRedundancy(this.wireValue);
+  final String wireValue;
 
   static AzureStorageRedundancy fromValue(String value) {
     for (final item in AzureStorageRedundancy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureStorageRedundancy value: $value');
   }
 }
-

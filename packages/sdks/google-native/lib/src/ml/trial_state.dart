@@ -6,16 +6,15 @@ enum TrialState {
   completed("COMPLETED"),
   stopping("STOPPING");
 
-  const TrialState(this.value);
-  final String value;
+  const TrialState(this.wireValue);
+  final String wireValue;
 
   static TrialState fromValue(String value) {
     for (final item in TrialState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TrialState value: $value');
   }
 }
-

@@ -9,20 +9,25 @@ class VirtualRouterSpecListener {
 
   /// Creates a new [VirtualRouterSpecListener].
   /// [portMapping] Port mapping information for the listener.
-  VirtualRouterSpecListener({
-    required this.portMapping,
-  });
+  VirtualRouterSpecListener({required this.portMapping});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'portMapping': pulumi.Input.mapInputValue<VirtualRouterSpecListenerPortMapping, Map<String, dynamic>>(portMapping, (value) => value.toMap()),
+      'portMapping':
+          pulumi.Input.mapInputValue<
+            VirtualRouterSpecListenerPortMapping,
+            Map<String, dynamic>
+          >(portMapping, (value) => value.toMap()),
     };
   }
 
   factory VirtualRouterSpecListener.fromMap(Map<String, dynamic> map) {
     return VirtualRouterSpecListener(
-      portMapping: (VirtualRouterSpecListenerPortMapping.fromMap((map['portMapping']! as Map).cast<String, dynamic>())).input(),
+      portMapping: pulumi.Input.fromValue(
+        VirtualRouterSpecListenerPortMapping.fromMap(
+          (map['portMapping']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_simpleapplicationserver;
-
 export 'simpleapplicationserver/custom_image.dart';
 export 'simpleapplicationserver/custom_image_args.dart';
 export 'simpleapplicationserver/custom_image_state.dart';

@@ -341,7 +341,7 @@ import 'route_server_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -356,23 +356,31 @@ import 'route_server_state.dart';
 class RouteServer extends pulumi.CustomResource {
   /// Whether to enable route exchange between Azure Route Server and the gateway(s).
   late final pulumi.Output<bool?> branchToBranchTrafficEnabled;
+
   /// The hub routing preference. Valid values are `ASPath`, `ExpressRoute` or `VpnGateway`. Defaults to `ExpressRoute`.
   late final pulumi.Output<String?> hubRoutingPreference;
+
   /// Specifies the supported Azure location where the Route Server should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Route Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Public IP Address. This option is required since September 1st 2021. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publicIpAddressId;
+
   /// Specifies the name of the Resource Group where the Route Server should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   late final pulumi.Output<String> routingState;
+
   /// The SKU of the Route Server. The only possible value is `Standard`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sku;
+
   /// The ID of the Subnet that the Route Server will reside. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Azure Route Server requires a dedicated subnet named RouteServerSubnet. The subnet size has to be at least /27 or short prefix (such as /26 or /25) and cannot be attached to any security group, otherwise, you'll receive an error message when deploying the Route Server.
+  /// &gt; **Note:** Azure Route Server requires a dedicated subnet named RouteServerSubnet. The subnet size has to be at least /27 or short prefix (such as /26 or /25) and cannot be attached to any security group, otherwise, you'll receive an error message when deploying the Route Server.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<int> virtualRouterAsn;
@@ -387,23 +395,25 @@ class RouteServer extends pulumi.CustomResource {
     RouteServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routeServer:RouteServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
-    this.hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
-    this.location = registerOutput<String>('location');
+         'azure:network/routeServer:RouteServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    branchToBranchTrafficEnabled = registerOutput<bool?>(
+      'branchToBranchTrafficEnabled',
+    );
+    hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicIpAddressId = registerOutput<String>('publicIpAddressId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routingState = registerOutput<String>('routingState');
-    this.sku = registerOutput<String>('sku');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
-    this.virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingState = registerOutput<String>('routingState');
+    sku = registerOutput<String>('sku');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
   }
 
   /// Gets an existing [RouteServer] resource's state with the given [name] and [id].
@@ -424,22 +434,24 @@ class RouteServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routeServer:RouteServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
-    this.hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
-    this.location = registerOutput<String>('location');
+         'azure:network/routeServer:RouteServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    branchToBranchTrafficEnabled = registerOutput<bool?>(
+      'branchToBranchTrafficEnabled',
+    );
+    hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicIpAddressId = registerOutput<String>('publicIpAddressId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routingState = registerOutput<String>('routingState');
-    this.sku = registerOutput<String>('sku');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
-    this.virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingState = registerOutput<String>('routingState');
+    sku = registerOutput<String>('sku');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
   }
 }

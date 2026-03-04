@@ -10,20 +10,29 @@ class ClusterStateInfo {
 
   /// Creates a new [ClusterStateInfo].
   /// [updateInfo] A nested object resource.
-  ClusterStateInfo({
-    this.updateInfo,
-  });
+  ClusterStateInfo({this.updateInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfo': ?pulumi.Input.mapOptionalInputValue<ClusterStateInfoUpdateInfo, Map<String, dynamic>>(updateInfo, (value) => value.toMap()),
+      'updateInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterStateInfoUpdateInfo,
+            Map<String, dynamic>
+          >(updateInfo, (value) => value.toMap()),
     };
   }
 
   factory ClusterStateInfo.fromMap(Map<String, dynamic> map) {
     return ClusterStateInfo(
-      updateInfo: map['updateInfo'] == null ? null : (ClusterStateInfoUpdateInfo.fromMap((map['updateInfo']! as Map).cast<String, dynamic>())).input(),
+      updateInfo: (() {
+        final guardedValue = map['updateInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterStateInfoUpdateInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

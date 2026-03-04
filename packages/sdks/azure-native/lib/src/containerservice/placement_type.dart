@@ -3,16 +3,15 @@ enum PlacementType {
   pickAll("PickAll"),
   pickFixed("PickFixed");
 
-  const PlacementType(this.value);
-  final String value;
+  const PlacementType(this.wireValue);
+  final String wireValue;
 
   static PlacementType fromValue(String value) {
     for (final item in PlacementType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PlacementType value: $value');
   }
 }
-

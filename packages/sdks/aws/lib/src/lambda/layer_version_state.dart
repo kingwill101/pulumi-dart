@@ -6,44 +6,63 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LayerVersionState {
   /// ARN of the Lambda Layer with version.
   final pulumi.Input<String>? arn;
+
   /// Path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
   final pulumi.Input<dynamic>? code;
+
   /// Base64-encoded representation of raw SHA-256 sum of the zip file.
   final pulumi.Input<String>? codeSha256;
+
   /// List of [Architectures](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleArchitectures) this layer is compatible with. Currently `x86_64` and `arm64` can be specified.
   final pulumi.Input<List<String>>? compatibleArchitectures;
+
   /// List of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 15 runtimes can be specified.
   final pulumi.Input<List<String>>? compatibleRuntimes;
+
   /// Date this resource was created.
   final pulumi.Input<String>? createdDate;
+
   /// Description of what your Lambda Layer does.
   final pulumi.Input<String>? description;
+
   /// ARN of the Lambda Layer without version.
   final pulumi.Input<String>? layerArn;
+
   /// Unique name for your Lambda Layer.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? layerName;
+
   /// License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
   final pulumi.Input<String>? licenseInfo;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
   final pulumi.Input<String>? s3Bucket;
+
   /// S3 key of an object containing the function's deployment package. Conflicts with `filename`.
   final pulumi.Input<String>? s3Key;
+
   /// Object version containing the function's deployment package. Conflicts with `filename`.
   final pulumi.Input<String>? s3ObjectVersion;
+
   /// ARN of a signing job.
   final pulumi.Input<String>? signingJobArn;
+
   /// ARN for a signing profile version.
   final pulumi.Input<String>? signingProfileVersionArn;
+
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_architectures`, `compatible_runtimes`, `description`, `filename`, `layer_name`, `license_info`, `s3_bucket`, `s3_key`, `s3_object_version`, or `source_code_hash` forces deletion of the existing layer version and creation of a new layer version.
   final pulumi.Input<bool>? skipDestroy;
+
   /// Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
   final pulumi.Input<String>? sourceCodeHash;
+
   /// Size in bytes of the function .zip file.
   final pulumi.Input<int>? sourceCodeSize;
+
   /// Lambda Layer version.
   final pulumi.Input<String>? version;
 
@@ -118,27 +137,106 @@ class LayerVersionState {
 
   factory LayerVersionState.fromMap(Map<String, dynamic> map) {
     return LayerVersionState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      code: map['code'] == null ? null : ((map['code']).input()).input(),
-      codeSha256: map['codeSha256'] == null ? null : ((map['codeSha256'] as String).input()).input(),
-      compatibleArchitectures: map['compatibleArchitectures'] == null ? null : (((map['compatibleArchitectures'] as List).cast<String>()).input()).input(),
-      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : (((map['compatibleRuntimes'] as List).cast<String>()).input()).input(),
-      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      layerArn: map['layerArn'] == null ? null : ((map['layerArn'] as String).input()).input(),
-      layerName: map['layerName'] == null ? null : ((map['layerName'] as String).input()).input(),
-      licenseInfo: map['licenseInfo'] == null ? null : ((map['licenseInfo'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : ((map['s3Bucket'] as String).input()).input(),
-      s3Key: map['s3Key'] == null ? null : ((map['s3Key'] as String).input()).input(),
-      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : ((map['s3ObjectVersion'] as String).input()).input(),
-      signingJobArn: map['signingJobArn'] == null ? null : ((map['signingJobArn'] as String).input()).input(),
-      signingProfileVersionArn: map['signingProfileVersionArn'] == null ? null : ((map['signingProfileVersionArn'] as String).input()).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
-      sourceCodeHash: map['sourceCodeHash'] == null ? null : ((map['sourceCodeHash'] as String).input()).input(),
-      sourceCodeSize: map['sourceCodeSize'] == null ? null : ((map['sourceCodeSize'] as int).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      codeSha256: (() {
+        final guardedValue = map['codeSha256'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      compatibleArchitectures: (() {
+        final guardedValue = map['compatibleArchitectures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      compatibleRuntimes: (() {
+        final guardedValue = map['compatibleRuntimes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      createdDate: (() {
+        final guardedValue = map['createdDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      layerArn: (() {
+        final guardedValue = map['layerArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      layerName: (() {
+        final guardedValue = map['layerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenseInfo: (() {
+        final guardedValue = map['licenseInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3Bucket: (() {
+        final guardedValue = map['s3Bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3Key: (() {
+        final guardedValue = map['s3Key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3ObjectVersion: (() {
+        final guardedValue = map['s3ObjectVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signingJobArn: (() {
+        final guardedValue = map['signingJobArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signingProfileVersionArn: (() {
+        final guardedValue = map['signingProfileVersionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipDestroy: (() {
+        final guardedValue = map['skipDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourceCodeHash: (() {
+        final guardedValue = map['sourceCodeHash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceCodeSize: (() {
+        final guardedValue = map['sourceCodeSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

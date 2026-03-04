@@ -11,58 +11,78 @@ class WorkstationClusterState {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Status conditions describing the current resource state.
   /// Structure is documented below.
   final pulumi.Input<List<WorkstationClusterCondition>>? conditions;
+
   /// The private IP address of the control plane for this workstation cluster.
   /// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
   final pulumi.Input<String>? controlPlaneIp;
+
   /// Time when this resource was created.
   final pulumi.Input<String>? createTime;
+
   /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
   /// Details can be found in the conditions field.
   final pulumi.Input<bool>? degraded;
+
   /// Human-readable name for this resource.
   final pulumi.Input<String>? displayName;
+
   /// Configuration options for a custom domain.
   /// Structure is documented below.
   final pulumi.Input<WorkstationClusterDomainConfig>? domainConfig;
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Checksum computed by the server.
   /// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
+
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location where the workstation cluster should reside.
   final pulumi.Input<String>? location;
+
   /// The name of the cluster resource.
   final pulumi.Input<String>? name;
+
   /// The relative resource name of the VPC network on which the instance can be accessed.
   /// It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
   final pulumi.Input<String>? network;
+
   /// Configuration for private cluster.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationClusterPrivateClusterConfig>? privateClusterConfig;
+  final pulumi.Input<WorkstationClusterPrivateClusterConfig>?
+  privateClusterConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
   /// Must be part of the subnetwork specified for this cluster.
   final pulumi.Input<String>? subnetwork;
+
   /// Resource manager tags bound to this resource.
   /// For example:
   /// "123/environment": "production",
   /// "123/costCenter": "marketing"
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The system-generated UID of the resource.
   final pulumi.Input<String>? uid;
+
   /// ID to use for the workstation cluster.
   final pulumi.Input<String>? workstationClusterId;
 
@@ -115,12 +135,27 @@ class WorkstationClusterState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<WorkstationClusterCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<WorkstationClusterCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WorkstationClusterCondition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WorkstationClusterCondition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'controlPlaneIp': ?controlPlaneIp,
       'createTime': ?createTime,
       'degraded': ?degraded,
       'displayName': ?displayName,
-      'domainConfig': ?pulumi.Input.mapOptionalInputValue<WorkstationClusterDomainConfig, Map<String, dynamic>>(domainConfig, (value) => value.toMap()),
+      'domainConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkstationClusterDomainConfig,
+            Map<String, dynamic>
+          >(domainConfig, (value) => value.toMap()),
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
@@ -128,7 +163,11 @@ class WorkstationClusterState {
       'location': ?location,
       'name': ?name,
       'network': ?network,
-      'privateClusterConfig': ?pulumi.Input.mapOptionalInputValue<WorkstationClusterPrivateClusterConfig, Map<String, dynamic>>(privateClusterConfig, (value) => value.toMap()),
+      'privateClusterConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkstationClusterPrivateClusterConfig,
+            Map<String, dynamic>
+          >(privateClusterConfig, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'subnetwork': ?subnetwork,
@@ -140,28 +179,138 @@ class WorkstationClusterState {
 
   factory WorkstationClusterState.fromMap(Map<String, dynamic> map) {
     return WorkstationClusterState(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<WorkstationClusterCondition>(map['conditions']!, (value) => WorkstationClusterCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      controlPlaneIp: map['controlPlaneIp'] == null ? null : (map['controlPlaneIp']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      degraded: map['degraded'] == null ? null : (map['degraded']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      domainConfig: map['domainConfig'] == null ? null : (WorkstationClusterDomainConfig.fromMap((map['domainConfig']! as Map).cast<String, dynamic>())).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      privateClusterConfig: map['privateClusterConfig'] == null ? null : (WorkstationClusterPrivateClusterConfig.fromMap((map['privateClusterConfig']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      workstationClusterId: map['workstationClusterId'] == null ? null : (map['workstationClusterId']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<WorkstationClusterCondition>(
+            guardedValue,
+            (value) => WorkstationClusterCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      controlPlaneIp: (() {
+        final guardedValue = map['controlPlaneIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      degraded: (() {
+        final guardedValue = map['degraded'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainConfig: (() {
+        final guardedValue = map['domainConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkstationClusterDomainConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      effectiveAnnotations: (() {
+        final guardedValue = map['effectiveAnnotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateClusterConfig: (() {
+        final guardedValue = map['privateClusterConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkstationClusterPrivateClusterConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workstationClusterId: (() {
+        final guardedValue = map['workstationClusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

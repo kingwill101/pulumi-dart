@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespacesNamespace {
   /// The description of the resource.
   final pulumi.Input<String> description;
+
   /// The ID of the resource.
   final pulumi.Input<String> id;
+
   /// The ID of the Namespace.
   final pulumi.Input<String> namespaceId;
+
   /// The name of the resource.
   final pulumi.Input<String> namespaceName;
 
@@ -35,11 +38,10 @@ class GetNamespacesNamespace {
 
   factory GetNamespacesNamespace.fromMap(Map<String, dynamic> map) {
     return GetNamespacesNamespace(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      namespaceId: (map['namespaceId'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
     );
   }
 }
-

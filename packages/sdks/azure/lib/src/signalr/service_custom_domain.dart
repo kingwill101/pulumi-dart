@@ -598,7 +598,7 @@ import 'service_custom_domain_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -613,12 +613,15 @@ import 'service_custom_domain_state.dart';
 class ServiceCustomDomain extends pulumi.CustomResource {
   /// Specifies the custom domain name of the SignalR Custom Domain. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected SignalR Custom Certificate.
+  /// &gt; **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected SignalR Custom Certificate.
   late final pulumi.Output<String> domainName;
+
   /// Specifies the name of the SignalR Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> signalrCustomCertificateId;
+
   /// Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   late final pulumi.Output<String> signalrServiceId;
 
@@ -631,15 +634,17 @@ class ServiceCustomDomain extends pulumi.CustomResource {
     ServiceCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
+         'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    this.signalrCustomCertificateId = registerOutput<String>('signalrCustomCertificateId');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
+    signalrCustomCertificateId = registerOutput<String>(
+      'signalrCustomCertificateId',
+    );
+    signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 
   /// Gets an existing [ServiceCustomDomain] resource's state with the given [name] and [id].
@@ -660,14 +665,16 @@ class ServiceCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domainName = registerOutput<String>('domainName');
+         'azure:signalr/serviceCustomDomain:ServiceCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
-    this.signalrCustomCertificateId = registerOutput<String>('signalrCustomCertificateId');
-    this.signalrServiceId = registerOutput<String>('signalrServiceId');
+    signalrCustomCertificateId = registerOutput<String>(
+      'signalrCustomCertificateId',
+    );
+    signalrServiceId = registerOutput<String>('signalrServiceId');
   }
 }

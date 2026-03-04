@@ -8,20 +8,17 @@ class ResourceCollectionCloudformation {
 
   /// Creates a new [ResourceCollectionCloudformation].
   /// [stackNames] Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all acccount resources) this array should be a single item containing a wildcard (`"*"`).
-  ResourceCollectionCloudformation({
-    required this.stackNames,
-  });
+  ResourceCollectionCloudformation({required this.stackNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'stackNames': stackNames,
-    };
+    return <String, dynamic>{'stackNames': stackNames};
   }
 
   factory ResourceCollectionCloudformation.fromMap(Map<String, dynamic> map) {
     return ResourceCollectionCloudformation(
-      stackNames: ((map['stackNames'] as List).cast<String>()).input(),
+      stackNames: pulumi.Input.fromValue(
+        (map['stackNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

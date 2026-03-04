@@ -8,12 +8,17 @@ import 'google_cloud_dialogflow_v2_fulfillment_generic_web_service.dart';
 class GoogleCloudDialogflowV2Fulfillment {
   /// Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
   final pulumi.Input<String>? displayName;
+
   /// Optional. Whether fulfillment is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// Optional. The field defines whether the fulfillment is enabled for certain features.
   final pulumi.Input<List<GoogleCloudDialogflowV2FulfillmentFeature>>? features;
+
   /// Configuration for a generic web service.
-  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentGenericWebService>? genericWebService;
+  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentGenericWebService>?
+  genericWebService;
+
   /// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
   final pulumi.Input<String> name;
 
@@ -35,20 +40,61 @@ class GoogleCloudDialogflowV2Fulfillment {
     return <String, dynamic>{
       'displayName': ?displayName,
       'enabled': ?enabled,
-      'features': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowV2FulfillmentFeature>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2FulfillmentFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'genericWebService': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2FulfillmentGenericWebService, Map<String, dynamic>>(genericWebService, (value) => value.toMap()),
+      'features':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudDialogflowV2FulfillmentFeature>,
+            List<Map<String, dynamic>>
+          >(
+            features,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowV2FulfillmentFeature,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'genericWebService':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2FulfillmentGenericWebService,
+            Map<String, dynamic>
+          >(genericWebService, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory GoogleCloudDialogflowV2Fulfillment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2Fulfillment(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeature>(map['features']!, (value) => GoogleCloudDialogflowV2FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowV2FulfillmentGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      features: (() {
+        final guardedValue = map['features'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeature>(
+            guardedValue,
+            (value) => GoogleCloudDialogflowV2FulfillmentFeature.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      genericWebService: (() {
+        final guardedValue = map['genericWebService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2FulfillmentGenericWebService.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

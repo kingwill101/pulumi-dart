@@ -14,15 +14,16 @@ class ShieldedInstanceIntegrityPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'updateAutoLearnPolicy': updateAutoLearnPolicy,
-    };
+    return <String, dynamic>{'updateAutoLearnPolicy': updateAutoLearnPolicy};
   }
 
-  factory ShieldedInstanceIntegrityPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory ShieldedInstanceIntegrityPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ShieldedInstanceIntegrityPolicyResponse(
-      updateAutoLearnPolicy: (map['updateAutoLearnPolicy'] as bool).input(),
+      updateAutoLearnPolicy: pulumi.Input.fromValue(
+        map['updateAutoLearnPolicy'] as bool,
+      ),
     );
   }
 }
-

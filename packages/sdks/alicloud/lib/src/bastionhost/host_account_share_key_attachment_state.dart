@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostAccountShareKeyAttachmentState {
   /// The ID list of the host account.
   final pulumi.Input<String>? hostAccountId;
+
   /// The ID of the host shared key.
   final pulumi.Input<String>? hostShareKeyId;
+
   /// The ID of the Bastion machine instance.
   final pulumi.Input<String>? instanceId;
 
@@ -31,10 +33,21 @@ class HostAccountShareKeyAttachmentState {
 
   factory HostAccountShareKeyAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostAccountShareKeyAttachmentState(
-      hostAccountId: map['hostAccountId'] == null ? null : (map['hostAccountId']! as String).input(),
-      hostShareKeyId: map['hostShareKeyId'] == null ? null : (map['hostShareKeyId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      hostAccountId: (() {
+        final guardedValue = map['hostAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostShareKeyId: (() {
+        final guardedValue = map['hostShareKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

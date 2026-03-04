@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPatchBaselineApprovalRulePatchFilter {
   /// Key for the filter.
   final pulumi.Input<String> key;
+
   /// Value for the filter.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class GetPatchBaselineApprovalRulePatchFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory GetPatchBaselineApprovalRulePatchFilter.fromMap(Map<String, dynamic> map) {
+  factory GetPatchBaselineApprovalRulePatchFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPatchBaselineApprovalRulePatchFilter(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

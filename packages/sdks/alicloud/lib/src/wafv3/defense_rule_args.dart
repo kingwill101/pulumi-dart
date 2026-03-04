@@ -10,27 +10,35 @@ import 'defense_rule_config.dart';
 class DefenseRuleArgs {
   /// Rule configuration content, in JSON format, constructed with a series of parameters.
   ///
-  /// > **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
+  /// &gt; **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
   /// See `config` below.
   final pulumi.Input<DefenseRuleConfig> config;
+
   /// Sources of protection. Value:
   final pulumi.Input<String>? defenseOrigin;
+
   /// The WAF protection scenario to be created.
   ///
   /// When the protection rule type `DefenseType` is set to `template`, the value is as follows:
   final pulumi.Input<String> defenseScene;
+
   /// The protection rule type. Value:
   final pulumi.Input<String> defenseType;
+
   /// The ID of the Web Application Firewall (WAF) instance.
   final pulumi.Input<String> instanceId;
+
   /// The protection object corresponding to the rule to be queried.
   ///
-  /// > **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
+  /// &gt; **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
   final pulumi.Input<String>? resource;
+
   /// The rule name.
   final pulumi.Input<String>? ruleName;
+
   /// Protection rule status.
   final pulumi.Input<int>? ruleStatus;
+
   /// The protection template ID of the protection rule to be created.
   final pulumi.Input<int>? templateId;
 
@@ -58,7 +66,11 @@ class DefenseRuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': pulumi.Input.mapInputValue<DefenseRuleConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'config':
+          pulumi.Input.mapInputValue<DefenseRuleConfig, Map<String, dynamic>>(
+            config,
+            (value) => value.toMap(),
+          ),
       'defenseOrigin': ?defenseOrigin,
       'defenseScene': defenseScene,
       'defenseType': defenseType,
@@ -72,16 +84,39 @@ class DefenseRuleArgs {
 
   factory DefenseRuleArgs.fromMap(Map<String, dynamic> map) {
     return DefenseRuleArgs(
-      config: (DefenseRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      defenseOrigin: map['defenseOrigin'] == null ? null : (map['defenseOrigin']! as String).input(),
-      defenseScene: (map['defenseScene'] as String).input(),
-      defenseType: (map['defenseType'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus']! as int).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as int).input(),
+      config: pulumi.Input.fromValue(
+        DefenseRuleConfig.fromMap(
+          (map['config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      defenseOrigin: (() {
+        final guardedValue = map['defenseOrigin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defenseScene: pulumi.Input.fromValue(map['defenseScene'] as String),
+      defenseType: pulumi.Input.fromValue(map['defenseType'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleStatus: (() {
+        final guardedValue = map['ruleStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

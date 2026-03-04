@@ -9,20 +9,15 @@ class GetHealthCheckLogConfig {
 
   /// Creates a new [GetHealthCheckLogConfig].
   /// [enable] Indicates whether or not to export logs. This is false by default,
-  GetHealthCheckLogConfig({
-    required this.enable,
-  });
+  GetHealthCheckLogConfig({required this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': enable,
-    };
+    return <String, dynamic>{'enable': enable};
   }
 
   factory GetHealthCheckLogConfig.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckLogConfig(
-      enable: (map['enable'] as bool).input(),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
     );
   }
 }
-

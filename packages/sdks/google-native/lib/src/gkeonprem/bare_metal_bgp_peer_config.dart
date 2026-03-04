@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalBgpPeerConfig {
   /// BGP autonomous system number (ASN) for the network that contains the external peer device.
   final pulumi.Input<String> asn;
+
   /// The IP address of the control plane node that connects to the external peer. If you don't specify any control plane nodes, all control plane nodes can connect to the external peer. If you specify one or more IP addresses, only the nodes specified participate in peering sessions.
   final pulumi.Input<List<String>>? controlPlaneNodes;
+
   /// The IP address of the external peer device.
   final pulumi.Input<String> ipAddress;
 
@@ -31,10 +33,13 @@ class BareMetalBgpPeerConfig {
 
   factory BareMetalBgpPeerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalBgpPeerConfig(
-      asn: (map['asn'] as String).input(),
-      controlPlaneNodes: map['controlPlaneNodes'] == null ? null : ((map['controlPlaneNodes']! as List).cast<String>()).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
+      asn: pulumi.Input.fromValue(map['asn'] as String),
+      controlPlaneNodes: (() {
+        final guardedValue = map['controlPlaneNodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );
   }
 }
-

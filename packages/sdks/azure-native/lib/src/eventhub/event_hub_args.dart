@@ -12,20 +12,28 @@ import 'retention_description.dart';
 class EventHubArgs {
   /// Properties of capture description
   final pulumi.Input<CaptureDescription>? captureDescription;
+
   /// The Event Hub name
   final pulumi.Input<String>? eventHubName;
+
   /// Number of days to retain the events for this Event Hub, value should be 1 to 7 days
   final pulumi.Input<double>? messageRetentionInDays;
+
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
   final pulumi.Input<double>? partitionCount;
+
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// Event Hub retention settings
   final pulumi.Input<RetentionDescription>? retentionDescription;
+
   /// Enumerates the possible values for the status of the Event Hub.
   final pulumi.Input<EntityStatus>? status;
+
   /// Gets and Sets Metadata of User.
   final pulumi.Input<String>? userMetadata;
 
@@ -53,30 +61,80 @@ class EventHubArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'captureDescription': ?pulumi.Input.mapOptionalInputValue<CaptureDescription, Map<String, dynamic>>(captureDescription, (value) => value.toMap()),
+      'captureDescription':
+          ?pulumi.Input.mapOptionalInputValue<
+            CaptureDescription,
+            Map<String, dynamic>
+          >(captureDescription, (value) => value.toMap()),
       'eventHubName': ?eventHubName,
       'messageRetentionInDays': ?messageRetentionInDays,
       'namespaceName': namespaceName,
       'partitionCount': ?partitionCount,
       'resourceGroupName': resourceGroupName,
-      'retentionDescription': ?pulumi.Input.mapOptionalInputValue<RetentionDescription, Map<String, dynamic>>(retentionDescription, (value) => value.toMap()),
-      'status': ?pulumi.Input.mapOptionalInputValue<EntityStatus, String>(status, (value) => value.value),
+      'retentionDescription':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetentionDescription,
+            Map<String, dynamic>
+          >(retentionDescription, (value) => value.toMap()),
+      'status': ?pulumi.Input.mapOptionalInputValue<EntityStatus, String>(
+        status,
+        (value) => value.wireValue,
+      ),
       'userMetadata': ?userMetadata,
     };
   }
 
   factory EventHubArgs.fromMap(Map<String, dynamic> map) {
     return EventHubArgs(
-      captureDescription: map['captureDescription'] == null ? null : (CaptureDescription.fromMap((map['captureDescription']! as Map).cast<String, dynamic>())).input(),
-      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName']! as String).input(),
-      messageRetentionInDays: map['messageRetentionInDays'] == null ? null : (map['messageRetentionInDays']! as double).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as double).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDescription: map['retentionDescription'] == null ? null : (RetentionDescription.fromMap((map['retentionDescription']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (EntityStatus.fromValue(map['status']! as String)).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
+      captureDescription: (() {
+        final guardedValue = map['captureDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CaptureDescription.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      eventHubName: (() {
+        final guardedValue = map['eventHubName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      messageRetentionInDays: (() {
+        final guardedValue = map['messageRetentionInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      partitionCount: (() {
+        final guardedValue = map['partitionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      retentionDescription: (() {
+        final guardedValue = map['retentionDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RetentionDescription.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EntityStatus.fromValue(guardedValue as String),
+        );
+      })(),
+      userMetadata: (() {
+        final guardedValue = map['userMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

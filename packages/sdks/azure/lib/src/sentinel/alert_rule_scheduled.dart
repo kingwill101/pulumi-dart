@@ -1,10 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'alert_rule_scheduled_alert_details_override.dart';
 import 'alert_rule_scheduled_args.dart';
-import 'alert_rule_scheduled_entity_mapping.dart';
 import 'alert_rule_scheduled_event_grouping.dart';
 import 'alert_rule_scheduled_incident.dart';
-import 'alert_rule_scheduled_sentinel_entity_mapping.dart';
 import 'alert_rule_scheduled_state.dart';
 
 /// Manages a Sentinel Scheduled Alert Rule.
@@ -250,7 +247,7 @@ import 'alert_rule_scheduled_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2023-12-01-preview
@@ -264,55 +261,77 @@ import 'alert_rule_scheduled_state.dart';
 /// ```
 class AlertRuleScheduled extends pulumi.CustomResource {
   /// An `alert_details_override` block as defined below.
-  late final pulumi.Output<List<AlertRuleScheduledAlertDetailsOverride>?> alertDetailsOverrides;
+  late final pulumi.Output<List<Map<String, dynamic>>?> alertDetailsOverrides;
+
   /// The GUID of the alert rule template which is used for this Sentinel Scheduled Alert Rule. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
   late final pulumi.Output<String?> alertRuleTemplateGuid;
+
   /// The version of the alert rule template which is used for this Sentinel Scheduled Alert Rule.
   late final pulumi.Output<String?> alertRuleTemplateVersion;
+
   /// A map of string key-value pairs of columns to be attached to this Sentinel Scheduled Alert Rule. The key will appear as the field name in alerts and the value is the event parameter you wish to surface in the alerts.
   late final pulumi.Output<Map<String, String>?> customDetails;
+
   /// The description of this Sentinel Scheduled Alert Rule.
   late final pulumi.Output<String?> description;
+
   /// The friendly name of this Sentinel Scheduled Alert Rule.
   late final pulumi.Output<String> displayName;
+
   /// Should the Sentinel Scheduled Alert Rule be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// A list of `entity_mapping` blocks as defined below.
-  late final pulumi.Output<List<AlertRuleScheduledEntityMapping>?> entityMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> entityMappings;
+
   /// A `event_grouping` block as defined below.
   late final pulumi.Output<AlertRuleScheduledEventGrouping?> eventGrouping;
+
   /// A `incident` block as defined below.
   late final pulumi.Output<AlertRuleScheduledIncident> incident;
+
   /// The ID of the Log Analytics Workspace this Sentinel Scheduled Alert Rule belongs to. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Sentinel Scheduled Alert Rule. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
   late final pulumi.Output<String> name;
+
   /// The query of this Sentinel Scheduled Alert Rule.
   late final pulumi.Output<String> query;
+
   /// The ISO 8601 timespan duration between two consecutive queries. Defaults to `PT5H`.
   late final pulumi.Output<String?> queryFrequency;
+
   /// The ISO 8601 timespan duration, which determine the time period of the data covered by the query. For example, it can query the past 10 minutes of data, or the past 6 hours of data. Defaults to `PT5H`.
   ///
-  /// > **Note:** `query_period` must larger than or equal to `query_frequency`, which ensures there is no gaps in the overall query coverage.
+  /// &gt; **Note:** `query_period` must larger than or equal to `query_frequency`, which ensures there is no gaps in the overall query coverage.
   late final pulumi.Output<String?> queryPeriod;
+
   /// A list of `sentinel_entity_mapping` blocks as defined below.
   ///
-  /// > **Note:** `entity_mapping` and `sentinel_entity_mapping` together can't exceed 10.
-  late final pulumi.Output<List<AlertRuleScheduledSentinelEntityMapping>?> sentinelEntityMappings;
+  /// &gt; **Note:** `entity_mapping` and `sentinel_entity_mapping` together can't exceed 10.
+  late final pulumi.Output<List<Map<String, dynamic>>?> sentinelEntityMappings;
+
   /// The alert severity of this Sentinel Scheduled Alert Rule. Possible values are `High`, `Medium`, `Low` and `Informational`.
   late final pulumi.Output<String> severity;
+
   /// If `suppression_enabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
   ///
-  /// > **Note:** `suppression_duration` must larger than or equal to `query_frequency`, otherwise the suppression has no actual effect since no query will happen during the suppression duration.
+  /// &gt; **Note:** `suppression_duration` must larger than or equal to `query_frequency`, otherwise the suppression has no actual effect since no query will happen during the suppression duration.
   late final pulumi.Output<String?> suppressionDuration;
+
   /// Should the Sentinel Scheduled Alert Rulea stop running query after alert is generated? Defaults to `false`.
   late final pulumi.Output<bool?> suppressionEnabled;
+
   /// A list of categories of attacks by which to classify the rule. Possible values are `Collection`, `CommandAndControl`, `CredentialAccess`, `DefenseEvasion`, `Discovery`, `Execution`, `Exfiltration`, `ImpairProcessControl`, `InhibitResponseFunction`, `Impact`, `InitialAccess`, `LateralMovement`, `Persistence`, `PrivilegeEscalation`, `PreAttack`, `Reconnaissance` and `ResourceDevelopment`.
   late final pulumi.Output<List<String>?> tactics;
+
   /// A list of techniques of attacks by which to classify the rule.
   late final pulumi.Output<List<String>?> techniques;
+
   /// The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule. Possible values are `Equal`, `GreaterThan`, `LessThan`, `NotEqual`. Defaults to `GreaterThan`.
   late final pulumi.Output<String?> triggerOperator;
+
   /// The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule. Defaults to `0`.
   late final pulumi.Output<int?> triggerThreshold;
 
@@ -325,34 +344,44 @@ class AlertRuleScheduled extends pulumi.CustomResource {
     AlertRuleScheduledArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/alertRuleScheduled:AlertRuleScheduled',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertDetailsOverrides = registerOutput<List<AlertRuleScheduledAlertDetailsOverride>?>('alertDetailsOverrides');
-    this.alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
-    this.alertRuleTemplateVersion = registerOutput<String?>('alertRuleTemplateVersion');
-    this.customDetails = registerOutput<Map<String, String>?>('customDetails');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityMappings = registerOutput<List<AlertRuleScheduledEntityMapping>?>('entityMappings');
-    this.eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>('eventGrouping');
-    this.incident = registerOutput<AlertRuleScheduledIncident>('incident');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/alertRuleScheduled:AlertRuleScheduled',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>(
+      'alertDetailsOverrides',
+    );
+    alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
+    alertRuleTemplateVersion = registerOutput<String?>(
+      'alertRuleTemplateVersion',
+    );
+    customDetails = registerOutput<Map<String, String>?>('customDetails');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    entityMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'entityMappings',
+    );
+    eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>(
+      'eventGrouping',
+    );
+    incident = registerOutput<AlertRuleScheduledIncident>('incident');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.query = registerOutput<String>('query');
-    this.queryFrequency = registerOutput<String?>('queryFrequency');
-    this.queryPeriod = registerOutput<String?>('queryPeriod');
-    this.sentinelEntityMappings = registerOutput<List<AlertRuleScheduledSentinelEntityMapping>?>('sentinelEntityMappings');
-    this.severity = registerOutput<String>('severity');
-    this.suppressionDuration = registerOutput<String?>('suppressionDuration');
-    this.suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
-    this.tactics = registerOutput<List<String>?>('tactics');
-    this.techniques = registerOutput<List<String>?>('techniques');
-    this.triggerOperator = registerOutput<String?>('triggerOperator');
-    this.triggerThreshold = registerOutput<int?>('triggerThreshold');
+    query = registerOutput<String>('query');
+    queryFrequency = registerOutput<String?>('queryFrequency');
+    queryPeriod = registerOutput<String?>('queryPeriod');
+    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'sentinelEntityMappings',
+    );
+    severity = registerOutput<String>('severity');
+    suppressionDuration = registerOutput<String?>('suppressionDuration');
+    suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
+    tactics = registerOutput<List<String>?>('tactics');
+    techniques = registerOutput<List<String>?>('techniques');
+    triggerOperator = registerOutput<String?>('triggerOperator');
+    triggerThreshold = registerOutput<int?>('triggerThreshold');
   }
 
   /// Gets an existing [AlertRuleScheduled] resource's state with the given [name] and [id].
@@ -373,33 +402,43 @@ class AlertRuleScheduled extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/alertRuleScheduled:AlertRuleScheduled',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertDetailsOverrides = registerOutput<List<AlertRuleScheduledAlertDetailsOverride>?>('alertDetailsOverrides');
-    this.alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
-    this.alertRuleTemplateVersion = registerOutput<String?>('alertRuleTemplateVersion');
-    this.customDetails = registerOutput<Map<String, String>?>('customDetails');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.entityMappings = registerOutput<List<AlertRuleScheduledEntityMapping>?>('entityMappings');
-    this.eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>('eventGrouping');
-    this.incident = registerOutput<AlertRuleScheduledIncident>('incident');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/alertRuleScheduled:AlertRuleScheduled',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertDetailsOverrides = registerOutput<List<Map<String, dynamic>>?>(
+      'alertDetailsOverrides',
+    );
+    alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');
+    alertRuleTemplateVersion = registerOutput<String?>(
+      'alertRuleTemplateVersion',
+    );
+    customDetails = registerOutput<Map<String, String>?>('customDetails');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    entityMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'entityMappings',
+    );
+    eventGrouping = registerOutput<AlertRuleScheduledEventGrouping?>(
+      'eventGrouping',
+    );
+    incident = registerOutput<AlertRuleScheduledIncident>('incident');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.query = registerOutput<String>('query');
-    this.queryFrequency = registerOutput<String?>('queryFrequency');
-    this.queryPeriod = registerOutput<String?>('queryPeriod');
-    this.sentinelEntityMappings = registerOutput<List<AlertRuleScheduledSentinelEntityMapping>?>('sentinelEntityMappings');
-    this.severity = registerOutput<String>('severity');
-    this.suppressionDuration = registerOutput<String?>('suppressionDuration');
-    this.suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
-    this.tactics = registerOutput<List<String>?>('tactics');
-    this.techniques = registerOutput<List<String>?>('techniques');
-    this.triggerOperator = registerOutput<String?>('triggerOperator');
-    this.triggerThreshold = registerOutput<int?>('triggerThreshold');
+    query = registerOutput<String>('query');
+    queryFrequency = registerOutput<String?>('queryFrequency');
+    queryPeriod = registerOutput<String?>('queryPeriod');
+    sentinelEntityMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'sentinelEntityMappings',
+    );
+    severity = registerOutput<String>('severity');
+    suppressionDuration = registerOutput<String?>('suppressionDuration');
+    suppressionEnabled = registerOutput<bool?>('suppressionEnabled');
+    tactics = registerOutput<List<String>?>('tactics');
+    techniques = registerOutput<List<String>?>('techniques');
+    triggerOperator = registerOutput<String?>('triggerOperator');
+    triggerThreshold = registerOutput<int?>('triggerThreshold');
   }
 }

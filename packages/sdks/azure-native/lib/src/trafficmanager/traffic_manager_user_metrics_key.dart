@@ -108,10 +108,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficManagerUserMetricsKey extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The key returned by the User Metrics operation.
   late final pulumi.Output<String?> key;
+
   /// The name of the resource
   late final pulumi.Output<String?> name;
+
   /// The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
   late final pulumi.Output<String?> type;
 
@@ -124,14 +127,14 @@ class TrafficManagerUserMetricsKey extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:trafficmanager:TrafficManagerUserMetricsKey',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.key = registerOutput<String?>('key');
+         'azure-native:trafficmanager:TrafficManagerUserMetricsKey',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    key = registerOutput<String?>('key');
     this.name = registerOutput<String?>('name');
-    this.type = registerOutput<String?>('type');
+    type = registerOutput<String?>('type');
   }
 }

@@ -1,30 +1,37 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'genai_knowledge_base_args.dart';
-import 'genai_knowledge_base_last_indexing_job.dart';
 import 'genai_knowledge_base_state.dart';
-import 'gradientai_knowledge_base_data_source.dart';
 
 class GenaiKnowledgeBase extends pulumi.CustomResource {
   /// The time when the knowledge base was added to the agent.
   late final pulumi.Output<String?> addedToAgentAt;
+
   /// The time when the knowledge base was created.
   late final pulumi.Output<String> createdAt;
+
   /// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
   late final pulumi.Output<String?> databaseId;
+
   /// Data sources for the knowledge base
-  late final pulumi.Output<List<GradientaiKnowledgeBaseDataSource>> datasources;
+  late final pulumi.Output<List<Map<String, dynamic>>> datasources;
+
   /// The unique identifier of the embedding model
   late final pulumi.Output<String> embeddingModelUuid;
+
   /// Indicates whether the knowledge base is public or private.
   late final pulumi.Output<bool?> isPublic;
+
   /// The last indexing job for the knowledge base.
-  late final pulumi.Output<List<GenaiKnowledgeBaseLastIndexingJob>?> lastIndexingJobs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> lastIndexingJobs;
+
   /// The name of the knowledge base.
   late final pulumi.Output<String> name;
+
   /// The unique identifier of the project to which the knowledge base belongs.
   late final pulumi.Output<String> projectId;
   late final pulumi.Output<String> region;
   late final pulumi.Output<List<String>?> tags;
+
   /// The unique identifier of the VPC to which the knowledge base belongs.
   late final pulumi.Output<String?> vpcUuid;
 
@@ -37,23 +44,25 @@ class GenaiKnowledgeBase extends pulumi.CustomResource {
     GenaiKnowledgeBaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addedToAgentAt = registerOutput<String?>('addedToAgentAt');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.databaseId = registerOutput<String?>('databaseId');
-    this.datasources = registerOutput<List<GradientaiKnowledgeBaseDataSource>>('datasources');
-    this.embeddingModelUuid = registerOutput<String>('embeddingModelUuid');
-    this.isPublic = registerOutput<bool?>('isPublic');
-    this.lastIndexingJobs = registerOutput<List<GenaiKnowledgeBaseLastIndexingJob>?>('lastIndexingJobs');
+         'digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addedToAgentAt = registerOutput<String?>('addedToAgentAt');
+    createdAt = registerOutput<String>('createdAt');
+    databaseId = registerOutput<String?>('databaseId');
+    datasources = registerOutput<List<Map<String, dynamic>>>('datasources');
+    embeddingModelUuid = registerOutput<String>('embeddingModelUuid');
+    isPublic = registerOutput<bool?>('isPublic');
+    lastIndexingJobs = registerOutput<List<Map<String, dynamic>>?>(
+      'lastIndexingJobs',
+    );
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.vpcUuid = registerOutput<String?>('vpcUuid');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>?>('tags');
+    vpcUuid = registerOutput<String?>('vpcUuid');
   }
 
   /// Gets an existing [GenaiKnowledgeBase] resource's state with the given [name] and [id].
@@ -74,22 +83,24 @@ class GenaiKnowledgeBase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addedToAgentAt = registerOutput<String?>('addedToAgentAt');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.databaseId = registerOutput<String?>('databaseId');
-    this.datasources = registerOutput<List<GradientaiKnowledgeBaseDataSource>>('datasources');
-    this.embeddingModelUuid = registerOutput<String>('embeddingModelUuid');
-    this.isPublic = registerOutput<bool?>('isPublic');
-    this.lastIndexingJobs = registerOutput<List<GenaiKnowledgeBaseLastIndexingJob>?>('lastIndexingJobs');
+         'digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addedToAgentAt = registerOutput<String?>('addedToAgentAt');
+    createdAt = registerOutput<String>('createdAt');
+    databaseId = registerOutput<String?>('databaseId');
+    datasources = registerOutput<List<Map<String, dynamic>>>('datasources');
+    embeddingModelUuid = registerOutput<String>('embeddingModelUuid');
+    isPublic = registerOutput<bool?>('isPublic');
+    lastIndexingJobs = registerOutput<List<Map<String, dynamic>>?>(
+      'lastIndexingJobs',
+    );
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.vpcUuid = registerOutput<String?>('vpcUuid');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>?>('tags');
+    vpcUuid = registerOutput<String?>('vpcUuid');
   }
 }

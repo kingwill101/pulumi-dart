@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentConfigWorkloadsConfigWebServer {
   /// CPU request and limit for Airflow web server.
   final pulumi.Input<double>? cpu;
+
   /// Memory (GB) request and limit for Airflow web server.
   final pulumi.Input<double>? memoryGb;
+
   /// Storage (GB) request and limit for Airflow web server.
   final pulumi.Input<double>? storageGb;
 
@@ -28,12 +30,25 @@ class EnvironmentConfigWorkloadsConfigWebServer {
     };
   }
 
-  factory EnvironmentConfigWorkloadsConfigWebServer.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentConfigWorkloadsConfigWebServer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentConfigWorkloadsConfigWebServer(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      memoryGb: (() {
+        final guardedValue = map['memoryGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      storageGb: (() {
+        final guardedValue = map['storageGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

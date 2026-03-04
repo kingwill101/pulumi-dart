@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeGroupAckConfigPvc {
   /// The ack cluster job pod data disk size of persistent volume claim.
   final pulumi.Input<int> dataDiskSize;
+
   /// The ack cluster job pod data disk storage class of persistent volume claim.
   final pulumi.Input<String> dataDiskStorageClass;
+
   /// The name of ack cluster job pod volume mounts.
   final pulumi.Input<String> name;
+
   /// The path of ack cluster job pod volume mounts.
   final pulumi.Input<String> path;
 
@@ -35,11 +38,12 @@ class ClusterNodeGroupAckConfigPvc {
 
   factory ClusterNodeGroupAckConfigPvc.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAckConfigPvc(
-      dataDiskSize: (map['dataDiskSize'] as int).input(),
-      dataDiskStorageClass: (map['dataDiskStorageClass'] as String).input(),
-      name: (map['name'] as String).input(),
-      path: (map['path'] as String).input(),
+      dataDiskSize: pulumi.Input.fromValue(map['dataDiskSize'] as int),
+      dataDiskStorageClass: pulumi.Input.fromValue(
+        map['dataDiskStorageClass'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

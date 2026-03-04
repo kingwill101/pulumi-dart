@@ -55,17 +55,24 @@ class GetCertificatesCertificate {
 
   factory GetCertificatesCertificate.fromMap(Map<String, dynamic> map) {
     return GetCertificatesCertificate(
-      certificate: (map['certificate'] as String).input(),
-      created: (map['created'] as String).input(),
-      domainNames: ((map['domainNames'] as List).cast<String>()).input(),
-      fingerprint: (map['fingerprint'] as String).input(),
-      id: (map['id'] as int).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notValidAfter: (map['notValidAfter'] as String).input(),
-      notValidBefore: (map['notValidBefore'] as String).input(),
-      type: (map['type'] as String).input(),
+      certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      created: pulumi.Input.fromValue(map['created'] as String),
+      domainNames: pulumi.Input.fromValue(
+        (map['domainNames'] as List).cast<String>(),
+      ),
+      fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notValidAfter: pulumi.Input.fromValue(map['notValidAfter'] as String),
+      notValidBefore: pulumi.Input.fromValue(map['notValidBefore'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -1,10 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_args.dart';
 import 'volume_cluster.dart';
-import 'volume_label.dart';
 import 'volume_state.dart';
 
-/// <!-- Bug: Type and Name are switched -->
+/// &lt;!-- Bug: Type and Name are switched --&gt;
 /// Creates and destroys a volume in Docker. This can be used alongside docker.Container to prepare volumes that can be shared across containers.
 ///
 /// ## Example Usage
@@ -129,14 +128,19 @@ import 'volume_state.dart';
 class Volume extends pulumi.CustomResource {
   /// Cluster-specific options for volume creation. Only works if the Docker daemon is running in swarm mode and is the swarm manager.
   late final pulumi.Output<VolumeCluster?> cluster;
+
   /// Driver type for the volume. Defaults to `local`.
   late final pulumi.Output<String> driver;
+
   /// Options specific to the driver.
   late final pulumi.Output<Map<String, String>?> driverOpts;
+
   /// User-defined key/value metadata
-  late final pulumi.Output<List<VolumeLabel>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// The mountpoint of the volume.
   late final pulumi.Output<String> mountpoint;
+
   /// The name of the Docker volume (will be generated if not provided).
   late final pulumi.Output<String> name;
 
@@ -144,21 +148,18 @@ class Volume extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Volume]. {@macro pulumi_index_volume_volume_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Volume(
-    String name, {
-    VolumeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'docker:index/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cluster = registerOutput<VolumeCluster?>('cluster');
-    this.driver = registerOutput<String>('driver');
-    this.driverOpts = registerOutput<Map<String, String>?>('driverOpts');
-    this.labels = registerOutput<List<VolumeLabel>?>('labels');
-    this.mountpoint = registerOutput<String>('mountpoint');
+  Volume(String name, {VolumeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'docker:index/volume:Volume',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    cluster = registerOutput<VolumeCluster?>('cluster');
+    driver = registerOutput<String>('driver');
+    driverOpts = registerOutput<Map<String, String>?>('driverOpts');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    mountpoint = registerOutput<String>('mountpoint');
     this.name = registerOutput<String>('name');
   }
 
@@ -180,16 +181,16 @@ class Volume extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'docker:index/volume:Volume',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cluster = registerOutput<VolumeCluster?>('cluster');
-    this.driver = registerOutput<String>('driver');
-    this.driverOpts = registerOutput<Map<String, String>?>('driverOpts');
-    this.labels = registerOutput<List<VolumeLabel>?>('labels');
-    this.mountpoint = registerOutput<String>('mountpoint');
+         'docker:index/volume:Volume',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cluster = registerOutput<VolumeCluster?>('cluster');
+    driver = registerOutput<String>('driver');
+    driverOpts = registerOutput<Map<String, String>?>('driverOpts');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    mountpoint = registerOutput<String>('mountpoint');
     this.name = registerOutput<String>('name');
   }
 }

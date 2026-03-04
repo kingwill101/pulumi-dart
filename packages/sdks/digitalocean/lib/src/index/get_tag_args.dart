@@ -12,20 +12,13 @@ class GetTagArgs {
 
   /// Creates a new [GetTagArgs].
   /// [name] The name of the tag.
-  GetTagArgs({
-    required this.name,
-  });
+  GetTagArgs({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory GetTagArgs.fromMap(Map<String, dynamic> map) {
-    return GetTagArgs(
-      name: (map['name'] as String).input(),
-    );
+    return GetTagArgs(name: pulumi.Input.fromValue(map['name'] as String));
   }
 }
-

@@ -5,20 +5,23 @@ import 'status_type_enum_value_response.dart';
 
 /// Definition of awsIamAccessKeyMetadata
 class AwsIamAccessKeyMetadataPropertiesResponse {
-  /// <p>The ID for this access key.</p>
+  /// &lt;p&gt;The ID for this access key.&lt;/p&gt;
   final pulumi.Input<String>? accessKeyId;
-  /// <p>The date when the access key was created.</p>
+
+  /// &lt;p&gt;The date when the access key was created.&lt;/p&gt;
   final pulumi.Input<String>? createDate;
-  /// <p>The status of the access key. <code>Active</code> means that the key is valid for API calls; <code>Inactive</code> means it is not.</p>
+
+  /// &lt;p&gt;The status of the access key. &lt;code&gt;Active&lt;/code&gt; means that the key is valid for API calls; &lt;code&gt;Inactive&lt;/code&gt; means it is not.&lt;/p&gt;
   final pulumi.Input<StatusTypeEnumValueResponse>? status;
-  /// <p>The name of the IAM user that the key is associated with.</p>
+
+  /// &lt;p&gt;The name of the IAM user that the key is associated with.&lt;/p&gt;
   final pulumi.Input<String>? userName;
 
   /// Creates a new [AwsIamAccessKeyMetadataPropertiesResponse].
-  /// [accessKeyId] <p>The ID for this access key.</p>
-  /// [createDate] <p>The date when the access key was created.</p>
-  /// [status] <p>The status of the access key. <code>Active</code> means that the key is valid for API calls; <code>Inactive</code> means it is not.</p>
-  /// [userName] <p>The name of the IAM user that the key is associated with.</p>
+  /// [accessKeyId] &lt;p&gt;The ID for this access key.&lt;/p&gt;
+  /// [createDate] &lt;p&gt;The date when the access key was created.&lt;/p&gt;
+  /// [status] &lt;p&gt;The status of the access key. &lt;code&gt;Active&lt;/code&gt; means that the key is valid for API calls; &lt;code&gt;Inactive&lt;/code&gt; means it is not.&lt;/p&gt;
+  /// [userName] &lt;p&gt;The name of the IAM user that the key is associated with.&lt;/p&gt;
   AwsIamAccessKeyMetadataPropertiesResponse({
     this.accessKeyId,
     this.createDate,
@@ -30,18 +33,43 @@ class AwsIamAccessKeyMetadataPropertiesResponse {
     return <String, dynamic>{
       'accessKeyId': ?accessKeyId,
       'createDate': ?createDate,
-      'status': ?pulumi.Input.mapOptionalInputValue<StatusTypeEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            StatusTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'userName': ?userName,
     };
   }
 
-  factory AwsIamAccessKeyMetadataPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsIamAccessKeyMetadataPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsIamAccessKeyMetadataPropertiesResponse(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
-      createDate: map['createDate'] == null ? null : (map['createDate']! as String).input(),
-      status: map['status'] == null ? null : (StatusTypeEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      accessKeyId: (() {
+        final guardedValue = map['accessKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createDate: (() {
+        final guardedValue = map['createDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StatusTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

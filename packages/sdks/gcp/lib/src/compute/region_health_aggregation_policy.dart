@@ -167,9 +167,11 @@ import 'region_health_aggregation_policy_state.dart';
 class RegionHealthAggregationPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   late final pulumi.Output<String?> description;
+
   /// Fingerprint of this resource. A hash of the contents stored in this object.
   /// This field is used in optimistic locking. This field will be ignored when
   /// inserting a `HealthAggregationPolicy`. An up-to-date fingerprint
@@ -178,6 +180,7 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
   /// the latest fingerprint, make a `get()` request to retrieve the
   /// RegionHealthAggregationPolicy.
   late final pulumi.Output<String> fingerprint;
+
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
   /// percentage) of healthy endpoints required in order to consider the
@@ -190,6 +193,7 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
   /// endpoints within a Network Endpoint Group or instances within an Instance
   /// Group.
   late final pulumi.Output<int?> healthyPercentThreshold;
+
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
   /// healthy endpoints required in order to consider the aggregated health
@@ -202,6 +206,7 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
   /// network endpoints within a Network Endpoint Group or instances within an
   /// Instance Group.
   late final pulumi.Output<int?> minHealthyThreshold;
+
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
@@ -210,6 +215,7 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
   /// be a dash, lowercase letter, or digit, except the last character, which
   /// cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// Specifies the type of the healthAggregationPolicy. The only allowed value
   /// for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
   /// value for regional resources is `BACKEND_SERVICE_POLICY`. Must
@@ -218,11 +224,14 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
   /// Default value is `BACKEND_SERVICE_POLICY`.
   /// Possible values are: `DNS_PUBLIC_IP_POLICY`, `BACKEND_SERVICE_POLICY`.
   late final pulumi.Output<String?> policyType;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// URL of the region where the health aggregation policy resides.
   late final pulumi.Output<String> region;
+
   /// Server-defined URL with id for the resource.
   late final pulumi.Output<String> selfLinkWithId;
 
@@ -235,21 +244,21 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
     RegionHealthAggregationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.healthyPercentThreshold = registerOutput<int?>('healthyPercentThreshold');
-    this.minHealthyThreshold = registerOutput<int?>('minHealthyThreshold');
+         'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    healthyPercentThreshold = registerOutput<int?>('healthyPercentThreshold');
+    minHealthyThreshold = registerOutput<int?>('minHealthyThreshold');
     this.name = registerOutput<String>('name');
-    this.policyType = registerOutput<String?>('policyType');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    policyType = registerOutput<String?>('policyType');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }
 
   /// Gets an existing [RegionHealthAggregationPolicy] resource's state with the given [name] and [id].
@@ -270,20 +279,20 @@ class RegionHealthAggregationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.healthyPercentThreshold = registerOutput<int?>('healthyPercentThreshold');
-    this.minHealthyThreshold = registerOutput<int?>('minHealthyThreshold');
+         'gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    healthyPercentThreshold = registerOutput<int?>('healthyPercentThreshold');
+    minHealthyThreshold = registerOutput<int?>('minHealthyThreshold');
     this.name = registerOutput<String>('name');
-    this.policyType = registerOutput<String?>('policyType');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    policyType = registerOutput<String?>('policyType');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
   }
 }

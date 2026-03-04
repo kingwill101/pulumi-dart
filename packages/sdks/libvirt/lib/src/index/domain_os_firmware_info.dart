@@ -9,20 +9,39 @@ class DomainOsFirmwareInfo {
 
   /// Creates a new [DomainOsFirmwareInfo].
   /// [features] Lists the optional features supported by the firmware.
-  DomainOsFirmwareInfo({
-    this.features,
-  });
+  DomainOsFirmwareInfo({this.features});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'features': ?pulumi.Input.mapOptionalInputValue<List<DomainOsFirmwareInfoFeature>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<DomainOsFirmwareInfoFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'features':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainOsFirmwareInfoFeature>,
+            List<Map<String, dynamic>>
+          >(
+            features,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainOsFirmwareInfoFeature,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainOsFirmwareInfo.fromMap(Map<String, dynamic> map) {
     return DomainOsFirmwareInfo(
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<DomainOsFirmwareInfoFeature>(map['features']!, (value) => DomainOsFirmwareInfoFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      features: (() {
+        final guardedValue = map['features'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainOsFirmwareInfoFeature>(
+            guardedValue,
+            (value) => DomainOsFirmwareInfoFeature.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

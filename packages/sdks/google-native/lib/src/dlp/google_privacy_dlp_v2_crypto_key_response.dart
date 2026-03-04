@@ -9,8 +9,10 @@ import 'google_privacy_dlp_v2_unwrapped_crypto_key_response.dart';
 class GooglePrivacyDlpV2CryptoKeyResponse {
   /// Key wrapped using Cloud KMS
   final pulumi.Input<GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse> kmsWrapped;
+
   /// Transient crypto key
   final pulumi.Input<GooglePrivacyDlpV2TransientCryptoKeyResponse> transient;
+
   /// Unwrapped crypto key
   final pulumi.Input<GooglePrivacyDlpV2UnwrappedCryptoKeyResponse> unwrapped;
 
@@ -26,18 +28,43 @@ class GooglePrivacyDlpV2CryptoKeyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kmsWrapped': pulumi.Input.mapInputValue<GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse, Map<String, dynamic>>(kmsWrapped, (value) => value.toMap()),
-      'transient': pulumi.Input.mapInputValue<GooglePrivacyDlpV2TransientCryptoKeyResponse, Map<String, dynamic>>(transient, (value) => value.toMap()),
-      'unwrapped': pulumi.Input.mapInputValue<GooglePrivacyDlpV2UnwrappedCryptoKeyResponse, Map<String, dynamic>>(unwrapped, (value) => value.toMap()),
+      'kmsWrapped':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse,
+            Map<String, dynamic>
+          >(kmsWrapped, (value) => value.toMap()),
+      'transient':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2TransientCryptoKeyResponse,
+            Map<String, dynamic>
+          >(transient, (value) => value.toMap()),
+      'unwrapped':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2UnwrappedCryptoKeyResponse,
+            Map<String, dynamic>
+          >(unwrapped, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2CryptoKeyResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CryptoKeyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2CryptoKeyResponse(
-      kmsWrapped: (GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>())).input(),
-      transient: (GooglePrivacyDlpV2TransientCryptoKeyResponse.fromMap((map['transient'] as Map).cast<String, dynamic>())).input(),
-      unwrapped: (GooglePrivacyDlpV2UnwrappedCryptoKeyResponse.fromMap((map['unwrapped'] as Map).cast<String, dynamic>())).input(),
+      kmsWrapped: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse.fromMap(
+          (map['kmsWrapped']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      transient: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2TransientCryptoKeyResponse.fromMap(
+          (map['transient']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      unwrapped: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2UnwrappedCryptoKeyResponse.fromMap(
+          (map['unwrapped']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

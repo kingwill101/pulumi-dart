@@ -10,6 +10,7 @@ class FirewallAllow {
   /// Example inputs include: [22], [80, 443], and
   /// ["12345-12349"].
   final pulumi.Input<List<String>>? ports;
+
   /// The IP protocol to which this rule applies. The protocol type is
   /// required when creating a firewall rule. This value can either be
   /// one of the following well known protocol strings (tcp, udp,
@@ -19,23 +20,20 @@ class FirewallAllow {
   /// Creates a new [FirewallAllow].
   /// [ports] An optional list of ports to which this rule applies. This field
   /// [protocol] The IP protocol to which this rule applies. The protocol type is
-  FirewallAllow({
-    this.ports,
-    required this.protocol,
-  });
+  FirewallAllow({this.ports, required this.protocol});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ports': ?ports,
-      'protocol': protocol,
-    };
+    return <String, dynamic>{'ports': ?ports, 'protocol': protocol};
   }
 
   factory FirewallAllow.fromMap(Map<String, dynamic> map) {
     return FirewallAllow(
-      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
-      protocol: (map['protocol'] as String).input(),
+      ports: (() {
+        final guardedValue = map['ports'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

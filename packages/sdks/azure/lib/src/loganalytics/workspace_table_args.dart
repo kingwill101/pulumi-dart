@@ -9,18 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceTableArgs {
   /// Specifies the name of a table in a Log Analytics Workspace.
   final pulumi.Input<String>? name;
+
   /// Specify the system how to handle and charge the logs ingested to the table. Possible values are `Analytics` and `Basic`. Defaults to `Analytics`.
   ///
-  /// > **Note:** The `name` of tables currently supported by the `Basic` plan can be found [here](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-azure-tables).
+  /// &gt; **Note:** The `name` of tables currently supported by the `Basic` plan can be found [here](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-azure-tables).
   final pulumi.Input<String>? plan;
+
   /// The table's retention in days. Possible values are either `8` (Basic Tier only) or range between `4` and `730`.
   final pulumi.Input<int>? retentionInDays;
+
   /// The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   ///
-  /// > **Note:** `retention_in_days` and `total_retention_in_days` will revert back to the value of azure.operationalinsights.AnalyticsWorkspace retention_in_days when a azure.loganalytics.WorkspaceTable is deleted.
+  /// &gt; **Note:** `retention_in_days` and `total_retention_in_days` will revert back to the value of azure.operationalinsights.AnalyticsWorkspace retention_in_days when a azure.loganalytics.WorkspaceTable is deleted.
   ///
-  /// > **Note:** The `retention_in_days` cannot be specified when `plan` is `Basic` because the retention is fixed at eight days.
+  /// &gt; **Note:** The `retention_in_days` cannot be specified when `plan` is `Basic` because the retention is fixed at eight days.
   final pulumi.Input<int>? totalRetentionInDays;
+
   /// The object ID of the Log Analytics Workspace that contains the table.
   final pulumi.Input<String> workspaceId;
 
@@ -50,12 +54,27 @@ class WorkspaceTableArgs {
 
   factory WorkspaceTableArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceTableArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      plan: map['plan'] == null ? null : (map['plan']! as String).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
-      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays']! as int).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      retentionInDays: (() {
+        final guardedValue = map['retentionInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalRetentionInDays: (() {
+        final guardedValue = map['totalRetentionInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

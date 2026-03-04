@@ -1,5 +1,3 @@
-library module_customerprofiles;
-
 export 'customerprofiles/domain.dart';
 export 'customerprofiles/domain_args.dart';
 export 'customerprofiles/domain_matching.dart';

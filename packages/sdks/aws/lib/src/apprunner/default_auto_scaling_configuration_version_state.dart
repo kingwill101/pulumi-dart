@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultAutoScalingConfigurationVersionState {
   /// The ARN of the App Runner auto scaling configuration that you want to set as the default.
   final pulumi.Input<String>? autoScalingConfigurationArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,11 +25,20 @@ class DefaultAutoScalingConfigurationVersionState {
     };
   }
 
-  factory DefaultAutoScalingConfigurationVersionState.fromMap(Map<String, dynamic> map) {
+  factory DefaultAutoScalingConfigurationVersionState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefaultAutoScalingConfigurationVersionState(
-      autoScalingConfigurationArn: map['autoScalingConfigurationArn'] == null ? null : ((map['autoScalingConfigurationArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      autoScalingConfigurationArn: (() {
+        final guardedValue = map['autoScalingConfigurationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepoSourceResponse {
   /// Name of the branch to build.
   final pulumi.Input<String> branchName;
+
   /// Explicit commit SHA to build.
   final pulumi.Input<String> commitSha;
+
   /// ID of the project that owns the repo.
   final pulumi.Input<String> project;
+
   /// Name of the repo.
   final pulumi.Input<String> repoName;
+
   /// Name of the tag to build.
   final pulumi.Input<String> tagName;
 
@@ -41,12 +45,11 @@ class RepoSourceResponse {
 
   factory RepoSourceResponse.fromMap(Map<String, dynamic> map) {
     return RepoSourceResponse(
-      branchName: (map['branchName'] as String).input(),
-      commitSha: (map['commitSha'] as String).input(),
-      project: (map['project'] as String).input(),
-      repoName: (map['repoName'] as String).input(),
-      tagName: (map['tagName'] as String).input(),
+      branchName: pulumi.Input.fromValue(map['branchName'] as String),
+      commitSha: pulumi.Input.fromValue(map['commitSha'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      repoName: pulumi.Input.fromValue(map['repoName'] as String),
+      tagName: pulumi.Input.fromValue(map['tagName'] as String),
     );
   }
 }
-

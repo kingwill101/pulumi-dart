@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SBOMReferenceNoteResponseContaineranalysisV1beta1 {
   /// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
   final pulumi.Input<String> format;
+
   /// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
   final pulumi.Input<String> version;
 
@@ -18,17 +19,15 @@ class SBOMReferenceNoteResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'format': format,
-      'version': version,
-    };
+    return <String, dynamic>{'format': format, 'version': version};
   }
 
-  factory SBOMReferenceNoteResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory SBOMReferenceNoteResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SBOMReferenceNoteResponseContaineranalysisV1beta1(
-      format: (map['format'] as String).input(),
-      version: (map['version'] as String).input(),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

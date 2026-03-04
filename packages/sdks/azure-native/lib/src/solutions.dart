@@ -1,5 +1,3 @@
-library module_solutions;
-
 export 'solutions/application.dart';
 export 'solutions/application_args.dart';
 export 'solutions/application_artifact_response.dart';

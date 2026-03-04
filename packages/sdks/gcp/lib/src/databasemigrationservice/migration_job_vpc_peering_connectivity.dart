@@ -8,20 +8,19 @@ class MigrationJobVpcPeeringConnectivity {
 
   /// Creates a new [MigrationJobVpcPeeringConnectivity].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.
-  MigrationJobVpcPeeringConnectivity({
-    this.vpc,
-  });
+  MigrationJobVpcPeeringConnectivity({this.vpc});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vpc': ?vpc,
-    };
+    return <String, dynamic>{'vpc': ?vpc};
   }
 
   factory MigrationJobVpcPeeringConnectivity.fromMap(Map<String, dynamic> map) {
     return MigrationJobVpcPeeringConnectivity(
-      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
+      vpc: (() {
+        final guardedValue = map['vpc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

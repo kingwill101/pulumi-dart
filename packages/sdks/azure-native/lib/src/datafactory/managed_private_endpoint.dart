@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedPrivateEndpoint {
   /// Fully qualified domain names
   final pulumi.Input<List<String>>? fqdns;
+
   /// The groupId to which the managed private endpoint is created
   final pulumi.Input<String>? groupId;
+
   /// The ARM resource ID of the resource to which the managed private endpoint is created
   final pulumi.Input<String>? privateLinkResourceId;
 
@@ -31,10 +33,21 @@ class ManagedPrivateEndpoint {
 
   factory ManagedPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpoint(
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
+      fqdns: (() {
+        final guardedValue = map['fqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkResourceId: (() {
+        final guardedValue = map['privateLinkResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

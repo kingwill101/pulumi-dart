@@ -8,7 +8,7 @@ import 'version_state.dart';
 ///
 /// For information about ESA Version and how to use it, see [What is Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
 ///
-/// > **NOTE:** Available since v1.251.0.
+/// &gt; **NOTE:** Available since v1.251.0.
 ///
 /// ## Example Usage
 ///
@@ -226,14 +226,19 @@ import 'version_state.dart';
 class Version extends pulumi.CustomResource {
   /// The creation time. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
   late final pulumi.Output<String> createTime;
+
   /// The Site version's description.
   late final pulumi.Output<String?> description;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int> originVersion;
+
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int> siteVersion;
+
   /// Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
   late final pulumi.Output<String> status;
 
@@ -246,17 +251,17 @@ class Version extends pulumi.CustomResource {
     VersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/version:Version',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.originVersion = registerOutput<int>('originVersion');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int>('siteVersion');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/version:Version',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    originVersion = registerOutput<int>('originVersion');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int>('siteVersion');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Version] resource's state with the given [name] and [id].
@@ -277,16 +282,16 @@ class Version extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/version:Version',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.originVersion = registerOutput<int>('originVersion');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int>('siteVersion');
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/version:Version',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    originVersion = registerOutput<int>('originVersion');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int>('siteVersion');
+    status = registerOutput<String>('status');
   }
 }

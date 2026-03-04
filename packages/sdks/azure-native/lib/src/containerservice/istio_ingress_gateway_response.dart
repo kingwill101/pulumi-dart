@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IstioIngressGatewayResponse {
   /// Whether to enable the ingress gateway.
   final pulumi.Input<bool> enabled;
+
   /// Mode of an ingress gateway.
   final pulumi.Input<String> mode;
 
   /// Creates a new [IstioIngressGatewayResponse].
   /// [enabled] Whether to enable the ingress gateway.
   /// [mode] Mode of an ingress gateway.
-  IstioIngressGatewayResponse({
-    required this.enabled,
-    required this.mode,
-  });
+  IstioIngressGatewayResponse({required this.enabled, required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'mode': mode,
-    };
+    return <String, dynamic>{'enabled': enabled, 'mode': mode};
   }
 
   factory IstioIngressGatewayResponse.fromMap(Map<String, dynamic> map) {
     return IstioIngressGatewayResponse(
-      enabled: (map['enabled'] as bool).input(),
-      mode: (map['mode'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

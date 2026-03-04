@@ -7,16 +7,20 @@ import 'get_istio_canonical_service_telemetry.dart';
 class GetIstioCanonicalServiceResult {
   final String canonicalService;
   final String canonicalServiceNamespace;
+
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String meshUid;
+
   /// The full REST resource name for this channel. The syntax is:
   /// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
   final String name;
   final String? project;
   final String serviceId;
+
   /// Configuration for how to query telemetry on the Service. Structure is documented below.
   final List<GetIstioCanonicalServiceTelemetry> telemetries;
   final Map<String, String> userLabels;
@@ -55,7 +59,11 @@ class GetIstioCanonicalServiceResult {
       'name': name,
       'project': ?project,
       'serviceId': serviceId,
-      'telemetries': pulumi.Input.encodeList<GetIstioCanonicalServiceTelemetry, Map<String, dynamic>>(telemetries, (value) => value.toMap()),
+      'telemetries':
+          pulumi.Input.encodeList<
+            GetIstioCanonicalServiceTelemetry,
+            Map<String, dynamic>
+          >(telemetries, (value) => value.toMap()),
       'userLabels': userLabels,
     };
   }
@@ -68,11 +76,19 @@ class GetIstioCanonicalServiceResult {
       id: map['id'] as String,
       meshUid: map['meshUid'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       serviceId: map['serviceId'] as String,
-      telemetries: pulumi.Input.decodeList<GetIstioCanonicalServiceTelemetry>(map['telemetries'], (value) => GetIstioCanonicalServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())),
+      telemetries: pulumi.Input.decodeList<GetIstioCanonicalServiceTelemetry>(
+        map['telemetries']!,
+        (value) => GetIstioCanonicalServiceTelemetry.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       userLabels: (map['userLabels'] as Map).cast<String, String>(),
     );
   }
 }
-

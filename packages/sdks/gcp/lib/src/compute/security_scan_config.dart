@@ -187,32 +187,42 @@ class SecurityScanConfig extends pulumi.CustomResource {
   /// If specified, service will use the authentication configuration during scanning.
   /// Structure is documented below.
   late final pulumi.Output<SecurityScanConfigAuthentication?> authentication;
+
   /// The blacklist URL patterns as described in
   /// https://cloud.google.com/security-scanner/docs/excluded-urls
   late final pulumi.Output<List<String>?> blacklistPatterns;
+
   /// The user provider display name of the ScanConfig.
   late final pulumi.Output<String> displayName;
+
   /// Controls export of scan configurations and results to Cloud Security Command Center.
   /// Default value is `ENABLED`.
   /// Possible values are: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String?> exportToSecurityCommandCenter;
+
   /// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
   /// Defaults to 15.
   late final pulumi.Output<int?> maxQps;
+
   /// A server defined name for this index. Format:
   /// `projects/{{project}}/scanConfigs/{{server_generated_id}}`
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The schedule of the ScanConfig
   /// Structure is documented below.
   late final pulumi.Output<SecurityScanConfigSchedule?> schedule;
+
   /// The starting URLs from which the scanner finds site pages.
   late final pulumi.Output<List<String>> startingUrls;
+
   /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
   /// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
   late final pulumi.Output<List<String>?> targetPlatforms;
+
   /// Type of the user agents used for scanning
   /// Default value is `CHROME_LINUX`.
   /// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
@@ -227,22 +237,26 @@ class SecurityScanConfig extends pulumi.CustomResource {
     SecurityScanConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/securityScanConfig:SecurityScanConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<SecurityScanConfigAuthentication?>('authentication');
-    this.blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
-    this.displayName = registerOutput<String>('displayName');
-    this.exportToSecurityCommandCenter = registerOutput<String?>('exportToSecurityCommandCenter');
-    this.maxQps = registerOutput<int?>('maxQps');
+         'gcp:compute/securityScanConfig:SecurityScanConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<SecurityScanConfigAuthentication?>(
+      'authentication',
+    );
+    blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
+    displayName = registerOutput<String>('displayName');
+    exportToSecurityCommandCenter = registerOutput<String?>(
+      'exportToSecurityCommandCenter',
+    );
+    maxQps = registerOutput<int?>('maxQps');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.schedule = registerOutput<SecurityScanConfigSchedule?>('schedule');
-    this.startingUrls = registerOutput<List<String>>('startingUrls');
-    this.targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
-    this.userAgent = registerOutput<String?>('userAgent');
+    project = registerOutput<String>('project');
+    schedule = registerOutput<SecurityScanConfigSchedule?>('schedule');
+    startingUrls = registerOutput<List<String>>('startingUrls');
+    targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
+    userAgent = registerOutput<String?>('userAgent');
   }
 
   /// Gets an existing [SecurityScanConfig] resource's state with the given [name] and [id].
@@ -263,21 +277,25 @@ class SecurityScanConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/securityScanConfig:SecurityScanConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authentication = registerOutput<SecurityScanConfigAuthentication?>('authentication');
-    this.blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
-    this.displayName = registerOutput<String>('displayName');
-    this.exportToSecurityCommandCenter = registerOutput<String?>('exportToSecurityCommandCenter');
-    this.maxQps = registerOutput<int?>('maxQps');
+         'gcp:compute/securityScanConfig:SecurityScanConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authentication = registerOutput<SecurityScanConfigAuthentication?>(
+      'authentication',
+    );
+    blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
+    displayName = registerOutput<String>('displayName');
+    exportToSecurityCommandCenter = registerOutput<String?>(
+      'exportToSecurityCommandCenter',
+    );
+    maxQps = registerOutput<int?>('maxQps');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.schedule = registerOutput<SecurityScanConfigSchedule?>('schedule');
-    this.startingUrls = registerOutput<List<String>>('startingUrls');
-    this.targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
-    this.userAgent = registerOutput<String?>('userAgent');
+    project = registerOutput<String>('project');
+    schedule = registerOutput<SecurityScanConfigSchedule?>('schedule');
+    startingUrls = registerOutput<List<String>>('startingUrls');
+    targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
+    userAgent = registerOutput<String?>('userAgent');
   }
 }

@@ -1,5 +1,3 @@
-library module_cloudiot;
-
 export 'cloudiot/binding.dart';
 export 'cloudiot/binding_response.dart';
 export 'cloudiot/device.dart';

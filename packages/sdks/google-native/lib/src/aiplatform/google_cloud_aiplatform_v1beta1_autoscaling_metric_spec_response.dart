@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse {
   /// The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
   final pulumi.Input<String> metricName;
+
   /// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
   final pulumi.Input<int> target;
 
@@ -18,17 +19,15 @@ class GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metricName': metricName,
-      'target': target,
-    };
+    return <String, dynamic>{'metricName': metricName, 'target': target};
   }
 
-  factory GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse(
-      metricName: (map['metricName'] as String).input(),
-      target: (map['target'] as int).input(),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
+      target: pulumi.Input.fromValue(map['target'] as int),
     );
   }
 }
-

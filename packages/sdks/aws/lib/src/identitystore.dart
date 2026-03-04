@@ -1,5 +1,3 @@
-library module_identitystore;
-
 export 'identitystore/functions.dart';
 export 'identitystore/get_group_alternate_identifier.dart';
 export 'identitystore/get_group_alternate_identifier_external_id.dart';

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_group_args.dart';
-import 'parameter_group_parameter.dart';
 import 'parameter_group_state.dart';
 
 /// Provides an RDS DB parameter group resource. Documentation of the available parameters for various RDS engines can be found at:
@@ -11,9 +10,9 @@ import 'parameter_group_state.dart';
 /// * [Oracle Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ModifyInstance.Oracle.html#USER_ModifyInstance.Oracle.sqlnet)
 /// * [PostgreSQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.Parameters)
 ///
-/// > **Hands-on:** For an example of the `aws.rds.ParameterGroup` in use, follow the Manage AWS RDS Instances tutorial on HashiCorp Learn.
+/// &gt; **Hands-on:** For an example of the `aws.rds.ParameterGroup` in use, follow the Manage AWS RDS Instances tutorial on HashiCorp Learn.
 ///
-/// > **NOTE:** If you encounter a pulumi preview showing parameter changes after an apply (_i.e._, _perpetual diffs_), see the Problematic Plan Changes example below for additional guidance.
+/// &gt; **NOTE:** If you encounter a pulumi preview showing parameter changes after an apply (_i.e._, _perpetual diffs_), see the Problematic Plan Changes example below for additional guidance.
 ///
 /// ## Example Usage
 ///
@@ -674,22 +673,31 @@ import 'parameter_group_state.dart';
 class ParameterGroup extends pulumi.CustomResource {
   /// The ARN of the db parameter group.
   late final pulumi.Output<String> arn;
+
   /// The description of the DB parameter group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;
+
   /// The family of the DB parameter group.
   late final pulumi.Output<String> family;
+
   /// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+
   /// The DB parameters to apply. See `parameter` Block below for more details. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
-  late final pulumi.Output<List<ParameterGroupParameter>?> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Set to true if you do not wish the parameter group to be deleted at destroy time, and instead just remove the parameter group from the Terraform state.
   late final pulumi.Output<bool?> skipDestroy;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -702,21 +710,21 @@ class ParameterGroup extends pulumi.CustomResource {
     ParameterGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/parameterGroup:ParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String>('description');
-    this.family = registerOutput<String>('family');
+         'aws:rds/parameterGroup:ParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.parameters = registerOutput<List<ParameterGroupParameter>?>('parameters');
-    this.region = registerOutput<String>('region');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    namePrefix = registerOutput<String>('namePrefix');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [ParameterGroup] resource's state with the given [name] and [id].
@@ -737,20 +745,20 @@ class ParameterGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/parameterGroup:ParameterGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String>('description');
-    this.family = registerOutput<String>('family');
+         'aws:rds/parameterGroup:ParameterGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.parameters = registerOutput<List<ParameterGroupParameter>?>('parameters');
-    this.region = registerOutput<String>('region');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    namePrefix = registerOutput<String>('namePrefix');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

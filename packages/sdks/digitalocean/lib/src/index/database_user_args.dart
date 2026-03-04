@@ -10,10 +10,13 @@ import 'database_user_setting.dart';
 class DatabaseUserArgs {
   /// The ID of the original source database cluster.
   final pulumi.Input<String> clusterId;
+
   /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
   final pulumi.Input<String>? mysqlAuthPlugin;
+
   /// The name for the database user.
   final pulumi.Input<String>? name;
+
   /// Contains optional settings for the user.
   /// The `settings` block is documented below.
   final pulumi.Input<List<DatabaseUserSetting>>? settings;
@@ -35,17 +38,46 @@ class DatabaseUserArgs {
       'clusterId': clusterId,
       'mysqlAuthPlugin': ?mysqlAuthPlugin,
       'name': ?name,
-      'settings': ?pulumi.Input.mapOptionalInputValue<List<DatabaseUserSetting>, List<Map<String, dynamic>>>(settings, (value) => pulumi.Input.encodeList<DatabaseUserSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DatabaseUserSetting>,
+            List<Map<String, dynamic>>
+          >(
+            settings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DatabaseUserSetting,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DatabaseUserArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseUserArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : (map['mysqlAuthPlugin']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSetting>(map['settings']!, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      mysqlAuthPlugin: (() {
+        final guardedValue = map['mysqlAuthPlugin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DatabaseUserSetting>(
+            guardedValue,
+            (value) => DatabaseUserSetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

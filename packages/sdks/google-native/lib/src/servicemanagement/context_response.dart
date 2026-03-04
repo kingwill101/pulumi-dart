@@ -10,20 +10,35 @@ class ContextResponse {
 
   /// Creates a new [ContextResponse].
   /// [rules] A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  ContextResponse({
-    required this.rules,
-  });
+  ContextResponse({required this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.mapInputValue<List<ContextRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ContextRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<ContextRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ContextRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ContextResponse.fromMap(Map<String, dynamic> map) {
     return ContextResponse(
-      rules: (pulumi.Input.decodeList<ContextRuleResponse>(map['rules'], (value) => ContextRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ContextRuleResponse>(
+          map['rules']!,
+          (value) => ContextRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

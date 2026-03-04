@@ -15,12 +15,16 @@ import 'uptime_check_state.dart';
 class UptimeCheck extends pulumi.CustomResource {
   /// A boolean value indicating whether the check is enabled/disabled.
   late final pulumi.Output<bool?> enabled;
+
   /// A human-friendly display name for the check.
   late final pulumi.Output<String> name;
+
   /// An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
   late final pulumi.Output<List<String>?> regions;
+
   /// The endpoint to perform healthchecks on.
   late final pulumi.Output<String> target;
+
   /// The type of health check to perform: 'ping' 'http' 'https'.
   late final pulumi.Output<String?> type;
 
@@ -33,16 +37,16 @@ class UptimeCheck extends pulumi.CustomResource {
     UptimeCheckArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/uptimeCheck:UptimeCheck',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
+         'digitalocean:index/uptimeCheck:UptimeCheck',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.regions = registerOutput<List<String>?>('regions');
-    this.target = registerOutput<String>('target');
-    this.type = registerOutput<String?>('type');
+    regions = registerOutput<List<String>?>('regions');
+    target = registerOutput<String>('target');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [UptimeCheck] resource's state with the given [name] and [id].
@@ -63,15 +67,15 @@ class UptimeCheck extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/uptimeCheck:UptimeCheck',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enabled = registerOutput<bool?>('enabled');
+         'digitalocean:index/uptimeCheck:UptimeCheck',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.regions = registerOutput<List<String>?>('regions');
-    this.target = registerOutput<String>('target');
-    this.type = registerOutput<String?>('type');
+    regions = registerOutput<List<String>?>('regions');
+    target = registerOutput<String>('target');
+    type = registerOutput<String?>('type');
   }
 }

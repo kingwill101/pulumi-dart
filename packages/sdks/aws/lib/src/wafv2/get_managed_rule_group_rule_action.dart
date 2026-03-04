@@ -30,22 +30,111 @@ class GetManagedRuleGroupRuleAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allows': pulumi.Input.mapInputValue<List<GetManagedRuleGroupRuleActionAllow>, List<Map<String, dynamic>>>(allows, (value) => pulumi.Input.encodeList<GetManagedRuleGroupRuleActionAllow, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'blocks': pulumi.Input.mapInputValue<List<GetManagedRuleGroupRuleActionBlock>, List<Map<String, dynamic>>>(blocks, (value) => pulumi.Input.encodeList<GetManagedRuleGroupRuleActionBlock, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'captchas': pulumi.Input.mapInputValue<List<GetManagedRuleGroupRuleActionCaptcha>, List<Map<String, dynamic>>>(captchas, (value) => pulumi.Input.encodeList<GetManagedRuleGroupRuleActionCaptcha, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'challenges': pulumi.Input.mapInputValue<List<GetManagedRuleGroupRuleActionChallenge>, List<Map<String, dynamic>>>(challenges, (value) => pulumi.Input.encodeList<GetManagedRuleGroupRuleActionChallenge, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'counts': pulumi.Input.mapInputValue<List<GetManagedRuleGroupRuleActionCount>, List<Map<String, dynamic>>>(counts, (value) => pulumi.Input.encodeList<GetManagedRuleGroupRuleActionCount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allows':
+          pulumi.Input.mapInputValue<
+            List<GetManagedRuleGroupRuleActionAllow>,
+            List<Map<String, dynamic>>
+          >(
+            allows,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetManagedRuleGroupRuleActionAllow,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'blocks':
+          pulumi.Input.mapInputValue<
+            List<GetManagedRuleGroupRuleActionBlock>,
+            List<Map<String, dynamic>>
+          >(
+            blocks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetManagedRuleGroupRuleActionBlock,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'captchas':
+          pulumi.Input.mapInputValue<
+            List<GetManagedRuleGroupRuleActionCaptcha>,
+            List<Map<String, dynamic>>
+          >(
+            captchas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetManagedRuleGroupRuleActionCaptcha,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'challenges':
+          pulumi.Input.mapInputValue<
+            List<GetManagedRuleGroupRuleActionChallenge>,
+            List<Map<String, dynamic>>
+          >(
+            challenges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetManagedRuleGroupRuleActionChallenge,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'counts':
+          pulumi.Input.mapInputValue<
+            List<GetManagedRuleGroupRuleActionCount>,
+            List<Map<String, dynamic>>
+          >(
+            counts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetManagedRuleGroupRuleActionCount,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetManagedRuleGroupRuleAction.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleAction(
-      allows: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionAllow>(map['allows']!, (value) => GetManagedRuleGroupRuleActionAllow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      blocks: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlock>(map['blocks']!, (value) => GetManagedRuleGroupRuleActionBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      captchas: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptcha>(map['captchas']!, (value) => GetManagedRuleGroupRuleActionCaptcha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      challenges: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionChallenge>(map['challenges']!, (value) => GetManagedRuleGroupRuleActionChallenge.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      counts: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCount>(map['counts']!, (value) => GetManagedRuleGroupRuleActionCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allows: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetManagedRuleGroupRuleActionAllow>(
+          map['allows']!,
+          (value) => GetManagedRuleGroupRuleActionAllow.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      blocks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlock>(
+          map['blocks']!,
+          (value) => GetManagedRuleGroupRuleActionBlock.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      captchas: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptcha>(
+          map['captchas']!,
+          (value) => GetManagedRuleGroupRuleActionCaptcha.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      challenges: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetManagedRuleGroupRuleActionChallenge>(
+          map['challenges']!,
+          (value) => GetManagedRuleGroupRuleActionChallenge.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      counts: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCount>(
+          map['counts']!,
+          (value) => GetManagedRuleGroupRuleActionCount.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

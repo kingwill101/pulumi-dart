@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_scratch_args.dart';
-import 'template_scratch_preference_parameter.dart';
-import 'template_scratch_source_resource.dart';
 import 'template_scratch_source_resource_group.dart';
 import 'template_scratch_source_tag.dart';
 import 'template_scratch_state.dart';
@@ -10,7 +8,7 @@ import 'template_scratch_state.dart';
 ///
 /// For information about ROS Template Scratch and how to use it, see [What is Template Scratch](https://www.alibabacloud.com/help/zh/doc-detail/352074.html).
 ///
-/// > **NOTE:** Available since v1.151.0.
+/// &gt; **NOTE:** Available since v1.151.0.
 ///
 /// ## Example Usage
 ///
@@ -203,20 +201,29 @@ import 'template_scratch_state.dart';
 class TemplateScratch extends pulumi.CustomResource {
   /// The Description of the Template Scratch.
   late final pulumi.Output<String?> description;
+
   /// The execution mode. Valid Values: `Async` or `Sync`.
   late final pulumi.Output<String?> executionMode;
+
   /// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
   late final pulumi.Output<String> logicalIdStrategy;
+
   /// Priority parameter. See the following `Block preference_parameters`.
-  late final pulumi.Output<List<TemplateScratchPreferenceParameter>> preferenceParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>> preferenceParameters;
+
   /// Source resource grouping. See the following `Block source_resource_group`.
-  late final pulumi.Output<TemplateScratchSourceResourceGroup?> sourceResourceGroup;
+  late final pulumi.Output<TemplateScratchSourceResourceGroup?>
+  sourceResourceGroup;
+
   /// Source resource. See the following `Block source_resources`.
-  late final pulumi.Output<List<TemplateScratchSourceResource>?> sourceResources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sourceResources;
+
   /// Source tag. See the following `Block source_tag`.
   late final pulumi.Output<TemplateScratchSourceTag?> sourceTag;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
   late final pulumi.Output<String> templateScratchType;
 
@@ -229,20 +236,26 @@ class TemplateScratch extends pulumi.CustomResource {
     TemplateScratchArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ros/templateScratch:TemplateScratch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.executionMode = registerOutput<String?>('executionMode');
-    this.logicalIdStrategy = registerOutput<String>('logicalIdStrategy');
-    this.preferenceParameters = registerOutput<List<TemplateScratchPreferenceParameter>>('preferenceParameters');
-    this.sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>('sourceResourceGroup');
-    this.sourceResources = registerOutput<List<TemplateScratchSourceResource>?>('sourceResources');
-    this.sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag');
-    this.status = registerOutput<String>('status');
-    this.templateScratchType = registerOutput<String>('templateScratchType');
+         'alicloud:ros/templateScratch:TemplateScratch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    executionMode = registerOutput<String?>('executionMode');
+    logicalIdStrategy = registerOutput<String>('logicalIdStrategy');
+    preferenceParameters = registerOutput<List<Map<String, dynamic>>>(
+      'preferenceParameters',
+    );
+    sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>(
+      'sourceResourceGroup',
+    );
+    sourceResources = registerOutput<List<Map<String, dynamic>>?>(
+      'sourceResources',
+    );
+    sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag');
+    status = registerOutput<String>('status');
+    templateScratchType = registerOutput<String>('templateScratchType');
   }
 
   /// Gets an existing [TemplateScratch] resource's state with the given [name] and [id].
@@ -263,19 +276,25 @@ class TemplateScratch extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ros/templateScratch:TemplateScratch',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.executionMode = registerOutput<String?>('executionMode');
-    this.logicalIdStrategy = registerOutput<String>('logicalIdStrategy');
-    this.preferenceParameters = registerOutput<List<TemplateScratchPreferenceParameter>>('preferenceParameters');
-    this.sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>('sourceResourceGroup');
-    this.sourceResources = registerOutput<List<TemplateScratchSourceResource>?>('sourceResources');
-    this.sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag');
-    this.status = registerOutput<String>('status');
-    this.templateScratchType = registerOutput<String>('templateScratchType');
+         'alicloud:ros/templateScratch:TemplateScratch',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    executionMode = registerOutput<String?>('executionMode');
+    logicalIdStrategy = registerOutput<String>('logicalIdStrategy');
+    preferenceParameters = registerOutput<List<Map<String, dynamic>>>(
+      'preferenceParameters',
+    );
+    sourceResourceGroup = registerOutput<TemplateScratchSourceResourceGroup?>(
+      'sourceResourceGroup',
+    );
+    sourceResources = registerOutput<List<Map<String, dynamic>>?>(
+      'sourceResources',
+    );
+    sourceTag = registerOutput<TemplateScratchSourceTag?>('sourceTag');
+    status = registerOutput<String>('status');
+    templateScratchType = registerOutput<String>('templateScratchType');
   }
 }

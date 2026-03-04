@@ -9,23 +9,16 @@ class OssShipperParquetConfig {
   /// Creates a new [OssShipperParquetConfig].
   /// [name] Required.
   /// [type] Required.
-  OssShipperParquetConfig({
-    required this.name,
-    required this.type,
-  });
+  OssShipperParquetConfig({required this.name, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'type': type};
   }
 
   factory OssShipperParquetConfig.fromMap(Map<String, dynamic> map) {
     return OssShipperParquetConfig(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

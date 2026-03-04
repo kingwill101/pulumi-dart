@@ -7,16 +7,15 @@ enum Level {
   valueTrace("trace"),
   valueWarn("warn");
 
-  const Level(this.value);
-  final String value;
+  const Level(this.wireValue);
+  final String wireValue;
 
   static Level fromValue(String value) {
     for (final item in Level.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Level value: $value');
   }
 }
-

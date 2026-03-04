@@ -6,7 +6,7 @@ import 'consumer_channel_state.dart';
 ///
 /// For information about DTS Consumer Channel and how to use it, see [What is Consumer Channel](https://www.alibabacloud.com/help/en/doc-detail/264593.htm).
 ///
-/// > **NOTE:** Available since v1.146.0.
+/// &gt; **NOTE:** Available since v1.146.0.
 ///
 /// ## Example Usage
 ///
@@ -733,12 +733,16 @@ import 'consumer_channel_state.dart';
 class ConsumerChannel extends pulumi.CustomResource {
   /// The ID of the consumer group.
   late final pulumi.Output<String> consumerGroupId;
+
   /// The name of the consumer group.
   late final pulumi.Output<String> consumerGroupName;
+
   /// The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
   late final pulumi.Output<String> consumerGroupPassword;
+
   /// The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
   late final pulumi.Output<String> consumerGroupUserName;
+
   /// The ID of the subscription instance.
   late final pulumi.Output<String> dtsInstanceId;
 
@@ -751,16 +755,16 @@ class ConsumerChannel extends pulumi.CustomResource {
     ConsumerChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/consumerChannel:ConsumerChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumerGroupId = registerOutput<String>('consumerGroupId');
-    this.consumerGroupName = registerOutput<String>('consumerGroupName');
-    this.consumerGroupPassword = registerOutput<String>('consumerGroupPassword');
-    this.consumerGroupUserName = registerOutput<String>('consumerGroupUserName');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
+         'alicloud:dts/consumerChannel:ConsumerChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumerGroupId = registerOutput<String>('consumerGroupId');
+    consumerGroupName = registerOutput<String>('consumerGroupName');
+    consumerGroupPassword = registerOutput<String>('consumerGroupPassword');
+    consumerGroupUserName = registerOutput<String>('consumerGroupUserName');
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
   }
 
   /// Gets an existing [ConsumerChannel] resource's state with the given [name] and [id].
@@ -781,15 +785,15 @@ class ConsumerChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dts/consumerChannel:ConsumerChannel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumerGroupId = registerOutput<String>('consumerGroupId');
-    this.consumerGroupName = registerOutput<String>('consumerGroupName');
-    this.consumerGroupPassword = registerOutput<String>('consumerGroupPassword');
-    this.consumerGroupUserName = registerOutput<String>('consumerGroupUserName');
-    this.dtsInstanceId = registerOutput<String>('dtsInstanceId');
+         'alicloud:dts/consumerChannel:ConsumerChannel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumerGroupId = registerOutput<String>('consumerGroupId');
+    consumerGroupName = registerOutput<String>('consumerGroupName');
+    consumerGroupPassword = registerOutput<String>('consumerGroupPassword');
+    consumerGroupUserName = registerOutput<String>('consumerGroupUserName');
+    dtsInstanceId = registerOutput<String>('dtsInstanceId');
   }
 }

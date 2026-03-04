@@ -8,11 +8,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake 
   final pulumi.Input<String> bucketName;
   final pulumi.Input<String>? bucketPrefix;
   final pulumi.Input<String>? privateLinkServiceName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * `name ` (Required) - Name of the connector profile. The name is unique for each `ConnectorProfile` in your AWS account.
   final pulumi.Input<String>? region;
-  /// Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `<Database>.<Schema>.<Stage Name>`.
+
+  /// Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `&lt;Database&gt;.&lt;Schema&gt;.&lt;Stage Name&gt;`.
   final pulumi.Input<String> stage;
+
   /// The name of the Snowflake warehouse.
   final pulumi.Input<String> warehouse;
 
@@ -22,7 +25,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake 
   /// [bucketPrefix] Optional.
   /// [privateLinkServiceName] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [stage] Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `<Database>.<Schema>.<Stage Name>`.
+  /// [stage] Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `&lt;Database&gt;.&lt;Schema&gt;.&lt;Stage Name&gt;`.
   /// [warehouse] The name of the Snowflake warehouse.
   ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake({
     this.accountName,
@@ -46,16 +49,33 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake 
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake(
-      accountName: map['accountName'] == null ? null : ((map['accountName'] as String).input()).input(),
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
-      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : ((map['privateLinkServiceName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      stage: (map['stage'] as String).input(),
-      warehouse: (map['warehouse'] as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkServiceName: (() {
+        final guardedValue = map['privateLinkServiceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stage: pulumi.Input.fromValue(map['stage'] as String),
+      warehouse: pulumi.Input.fromValue(map['warehouse'] as String),
     );
   }
 }
-

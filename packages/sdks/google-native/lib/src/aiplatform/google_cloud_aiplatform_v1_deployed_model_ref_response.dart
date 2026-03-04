@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1DeployedModelRefResponse {
   /// Immutable. An ID of a DeployedModel in the above Endpoint.
   final pulumi.Input<String> deployedModelId;
+
   /// Immutable. A resource name of an Endpoint.
   final pulumi.Input<String> endpoint;
 
@@ -24,11 +25,12 @@ class GoogleCloudAiplatformV1DeployedModelRefResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1DeployedModelRefResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1DeployedModelRefResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1DeployedModelRefResponse(
-      deployedModelId: (map['deployedModelId'] as String).input(),
-      endpoint: (map['endpoint'] as String).input(),
+      deployedModelId: pulumi.Input.fromValue(map['deployedModelId'] as String),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
-

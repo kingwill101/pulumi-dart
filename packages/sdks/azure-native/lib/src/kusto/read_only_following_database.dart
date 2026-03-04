@@ -272,35 +272,51 @@ import 'table_level_sharing_properties_response.dart';
 class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
   /// The name of the attached database configuration cluster
   late final pulumi.Output<String> attachedDatabaseConfigurationName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The origin of the following setup.
   late final pulumi.Output<String> databaseShareOrigin;
+
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   late final pulumi.Output<String?> hotCachePeriod;
+
   /// Kind of the database
   /// Expected value is 'ReadOnlyFollowing'.
   late final pulumi.Output<String> kind;
+
   /// The name of the leader cluster
   late final pulumi.Output<String> leaderClusterResourceId;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The original database name, before databaseNameOverride or databaseNamePrefix where applied.
   late final pulumi.Output<String> originalDatabaseName;
+
   /// The principals modification kind of the database
   late final pulumi.Output<String> principalsModificationKind;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
   late final pulumi.Output<String> softDeletePeriod;
+
   /// The statistics of the database.
   late final pulumi.Output<DatabaseStatisticsResponse> statistics;
+
   /// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
   late final pulumi.Output<SuspensionDetailsResponse> suspensionDetails;
+
   /// Table level sharing specifications
-  late final pulumi.Output<TableLevelSharingPropertiesResponse> tableLevelSharingProperties;
+  late final pulumi.Output<TableLevelSharingPropertiesResponse>
+  tableLevelSharingProperties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -313,26 +329,35 @@ class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     ReadOnlyFollowingDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kusto:ReadOnlyFollowingDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachedDatabaseConfigurationName = registerOutput<String>('attachedDatabaseConfigurationName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.databaseShareOrigin = registerOutput<String>('databaseShareOrigin');
-    this.hotCachePeriod = registerOutput<String?>('hotCachePeriod');
-    this.kind = registerOutput<String>('kind');
-    this.leaderClusterResourceId = registerOutput<String>('leaderClusterResourceId');
-    this.location = registerOutput<String?>('location');
+         'azure-native:kusto:ReadOnlyFollowingDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachedDatabaseConfigurationName = registerOutput<String>(
+      'attachedDatabaseConfigurationName',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databaseShareOrigin = registerOutput<String>('databaseShareOrigin');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    kind = registerOutput<String>('kind');
+    leaderClusterResourceId = registerOutput<String>('leaderClusterResourceId');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.originalDatabaseName = registerOutput<String>('originalDatabaseName');
-    this.principalsModificationKind = registerOutput<String>('principalsModificationKind');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.softDeletePeriod = registerOutput<String>('softDeletePeriod');
-    this.statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
-    this.suspensionDetails = registerOutput<SuspensionDetailsResponse>('suspensionDetails');
-    this.tableLevelSharingProperties = registerOutput<TableLevelSharingPropertiesResponse>('tableLevelSharingProperties');
-    this.type = registerOutput<String>('type');
+    originalDatabaseName = registerOutput<String>('originalDatabaseName');
+    principalsModificationKind = registerOutput<String>(
+      'principalsModificationKind',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    softDeletePeriod = registerOutput<String>('softDeletePeriod');
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics');
+    suspensionDetails = registerOutput<SuspensionDetailsResponse>(
+      'suspensionDetails',
+    );
+    tableLevelSharingProperties =
+        registerOutput<TableLevelSharingPropertiesResponse>(
+          'tableLevelSharingProperties',
+        );
+    type = registerOutput<String>('type');
   }
 }

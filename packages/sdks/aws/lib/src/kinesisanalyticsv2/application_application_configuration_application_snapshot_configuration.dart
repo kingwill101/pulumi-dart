@@ -13,15 +13,14 @@ class ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'snapshotsEnabled': snapshotsEnabled,
-    };
+    return <String, dynamic>{'snapshotsEnabled': snapshotsEnabled};
   }
 
-  factory ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationApplicationSnapshotConfiguration(
-      snapshotsEnabled: (map['snapshotsEnabled'] as bool).input(),
+      snapshotsEnabled: pulumi.Input.fromValue(map['snapshotsEnabled'] as bool),
     );
   }
 }
-

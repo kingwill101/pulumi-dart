@@ -6,42 +6,60 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionState {
   /// The ARN of the connection.
   final pulumi.Input<String>? arn;
+
   /// The Direct Connect endpoint on which the physical connection terminates.
   final pulumi.Input<String>? awsDevice;
+
   /// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps, 100Gbps, and 400Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps, and 25Gbps. Case sensitive. Refer to the AWS Direct Connection supported bandwidths for [Dedicated Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/dedicated_connection.html) and [Hosted Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/hosted_connection.html).
   final pulumi.Input<String>? bandwidth;
+
   /// The connection MAC Security (MACsec) encryption mode. MAC Security (MACsec) is only available on dedicated connections. Valid values are `no_encrypt`, `should_encrypt`, and `must_encrypt`.
   final pulumi.Input<String>? encryptionMode;
+
   /// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
   final pulumi.Input<String>? hasLogicalRedundancy;
+
   /// Boolean value representing if jumbo frames have been enabled for this connection.
   final pulumi.Input<bool>? jumboFrameCapable;
+
   /// The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
   final pulumi.Input<String>? location;
+
   /// Boolean value indicating whether the connection supports MAC Security (MACsec).
   final pulumi.Input<bool>? macsecCapable;
+
   /// The name of the connection.
   final pulumi.Input<String>? name;
+
   /// The ID of the AWS account that owns the connection.
   final pulumi.Input<String>? ownerAccountId;
+
   /// The name of the AWS Direct Connect service provider associated with the connection.
   final pulumi.Input<String>? partnerName;
+
   /// The MAC Security (MACsec) port link status of the connection.
   final pulumi.Input<String>? portEncryptionStatus;
+
   /// The name of the service provider associated with the connection.
   final pulumi.Input<String>? providerName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Boolean value indicating whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is only available on dedicated connections. See [MACsec prerequisites](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites) for more information about MAC Security (MACsec) prerequisites. Default value: `false`.
   ///
-  /// > **NOTE:** Changing the value of `request_macsec` will cause the resource to be destroyed and re-created.
+  /// &gt; **NOTE:** Changing the value of `request_macsec` will cause the resource to be destroyed and re-created.
   final pulumi.Input<bool>? requestMacsec;
+
   /// Set to true if you do not wish the connection to be deleted at destroy time, and instead just removed from the state.
   final pulumi.Input<bool>? skipDestroy;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The VLAN ID.
   final pulumi.Input<int>? vlanId;
 
@@ -113,26 +131,105 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      awsDevice: map['awsDevice'] == null ? null : ((map['awsDevice'] as String).input()).input(),
-      bandwidth: map['bandwidth'] == null ? null : ((map['bandwidth'] as String).input()).input(),
-      encryptionMode: map['encryptionMode'] == null ? null : ((map['encryptionMode'] as String).input()).input(),
-      hasLogicalRedundancy: map['hasLogicalRedundancy'] == null ? null : ((map['hasLogicalRedundancy'] as String).input()).input(),
-      jumboFrameCapable: map['jumboFrameCapable'] == null ? null : ((map['jumboFrameCapable'] as bool).input()).input(),
-      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
-      macsecCapable: map['macsecCapable'] == null ? null : ((map['macsecCapable'] as bool).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
-      partnerName: map['partnerName'] == null ? null : ((map['partnerName'] as String).input()).input(),
-      portEncryptionStatus: map['portEncryptionStatus'] == null ? null : ((map['portEncryptionStatus'] as String).input()).input(),
-      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      requestMacsec: map['requestMacsec'] == null ? null : ((map['requestMacsec'] as bool).input()).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vlanId: map['vlanId'] == null ? null : ((map['vlanId'] as int).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsDevice: (() {
+        final guardedValue = map['awsDevice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionMode: (() {
+        final guardedValue = map['encryptionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hasLogicalRedundancy: (() {
+        final guardedValue = map['hasLogicalRedundancy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jumboFrameCapable: (() {
+        final guardedValue = map['jumboFrameCapable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      macsecCapable: (() {
+        final guardedValue = map['macsecCapable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerAccountId: (() {
+        final guardedValue = map['ownerAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerName: (() {
+        final guardedValue = map['partnerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portEncryptionStatus: (() {
+        final guardedValue = map['portEncryptionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestMacsec: (() {
+        final guardedValue = map['requestMacsec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      skipDestroy: (() {
+        final guardedValue = map['skipDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vlanId: (() {
+        final guardedValue = map['vlanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

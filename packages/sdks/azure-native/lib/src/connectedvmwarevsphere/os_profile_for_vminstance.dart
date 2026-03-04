@@ -7,14 +7,19 @@ import 'windows_configuration.dart';
 class OsProfileForVMInstance {
   /// Sets administrator password.
   final pulumi.Input<String>? adminPassword;
+
   /// Gets or sets administrator username.
   final pulumi.Input<String>? adminUsername;
+
   /// Gets or sets computer name.
   final pulumi.Input<String>? computerName;
+
   /// Gets or sets the guestId.
   final pulumi.Input<String>? guestId;
+
   /// Gets or sets the type of the os.
   final pulumi.Input<String>? osType;
+
   /// Windows Configuration.
   final pulumi.Input<WindowsConfiguration>? windowsConfiguration;
 
@@ -41,19 +46,50 @@ class OsProfileForVMInstance {
       'computerName': ?computerName,
       'guestId': ?guestId,
       'osType': ?osType,
-      'windowsConfiguration': ?pulumi.Input.mapOptionalInputValue<WindowsConfiguration, Map<String, dynamic>>(windowsConfiguration, (value) => value.toMap()),
+      'windowsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            WindowsConfiguration,
+            Map<String, dynamic>
+          >(windowsConfiguration, (value) => value.toMap()),
     };
   }
 
   factory OsProfileForVMInstance.fromMap(Map<String, dynamic> map) {
     return OsProfileForVMInstance(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
-      guestId: map['guestId'] == null ? null : (map['guestId']! as String).input(),
-      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      adminPassword: (() {
+        final guardedValue = map['adminPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adminUsername: (() {
+        final guardedValue = map['adminUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computerName: (() {
+        final guardedValue = map['computerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      guestId: (() {
+        final guardedValue = map['guestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      windowsConfiguration: (() {
+        final guardedValue = map['windowsConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WindowsConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

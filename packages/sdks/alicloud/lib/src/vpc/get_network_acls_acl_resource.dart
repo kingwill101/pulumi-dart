@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkAclsAclResource {
   /// The ID of the associated resource.
   final pulumi.Input<String> resourceId;
+
   /// The type of the associated resource.
   final pulumi.Input<String> resourceType;
+
   /// The state of the associated resource.
   final pulumi.Input<String> status;
 
@@ -30,10 +32,9 @@ class GetNetworkAclsAclResource {
 
   factory GetNetworkAclsAclResource.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsAclResource(
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      status: (map['status'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

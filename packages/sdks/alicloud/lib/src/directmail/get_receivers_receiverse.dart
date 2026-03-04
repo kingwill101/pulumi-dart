@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReceiversReceiverse {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
+
   /// The description.
   final pulumi.Input<String> description;
+
   /// The ID of the Receivers.
   final pulumi.Input<String> id;
+
   /// The Receivers Alias.
   final pulumi.Input<String> receiversAlias;
+
   /// The first ID of the resource.
   final pulumi.Input<String> receiversId;
+
   /// The name of the resource.
   final pulumi.Input<String> receiversName;
+
   /// The status of the resource.
   final pulumi.Input<int> status;
 
@@ -50,14 +56,13 @@ class GetReceiversReceiverse {
 
   factory GetReceiversReceiverse.fromMap(Map<String, dynamic> map) {
     return GetReceiversReceiverse(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      receiversAlias: (map['receiversAlias'] as String).input(),
-      receiversId: (map['receiversId'] as String).input(),
-      receiversName: (map['receiversName'] as String).input(),
-      status: (map['status'] as int).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      receiversAlias: pulumi.Input.fromValue(map['receiversAlias'] as String),
+      receiversId: pulumi.Input.fromValue(map['receiversId'] as String),
+      receiversName: pulumi.Input.fromValue(map['receiversName'] as String),
+      status: pulumi.Input.fromValue(map['status'] as int),
     );
   }
 }
-

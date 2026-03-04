@@ -4,16 +4,15 @@ enum UserImpact {
   valueModerate("Moderate"),
   valueHigh("High");
 
-  const UserImpact(this.value);
-  final String value;
+  const UserImpact(this.wireValue);
+  final String wireValue;
 
   static UserImpact fromValue(String value) {
     for (final item in UserImpact.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserImpact value: $value');
   }
 }
-

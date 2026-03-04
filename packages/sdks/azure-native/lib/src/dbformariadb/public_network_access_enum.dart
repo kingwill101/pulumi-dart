@@ -3,16 +3,15 @@ enum PublicNetworkAccessEnum {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const PublicNetworkAccessEnum(this.value);
-  final String value;
+  const PublicNetworkAccessEnum(this.wireValue);
+  final String wireValue;
 
   static PublicNetworkAccessEnum fromValue(String value) {
     for (final item in PublicNetworkAccessEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicNetworkAccessEnum value: $value');
   }
 }
-

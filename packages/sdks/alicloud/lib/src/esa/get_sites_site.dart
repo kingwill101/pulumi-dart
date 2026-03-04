@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSitesSite {
   /// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
   final pulumi.Input<String> accessType;
+
   /// Acceleration area
   final pulumi.Input<String> coverage;
+
   /// Creation time
   final pulumi.Input<String> createTime;
+
   /// The ID of the resource supplied above.
   final pulumi.Input<int> id;
+
   /// The ID of the associated package instance.
   final pulumi.Input<String> instanceId;
+
   /// Modification time
   final pulumi.Input<String> modifyTime;
+
   /// Site Resolution Name Server List
   final pulumi.Input<String> nameServerList;
+
   /// The ID of the resource group
   final pulumi.Input<String> resourceGroupId;
+
   /// Site ID
   final pulumi.Input<int> siteId;
+
   /// Site Name
   final pulumi.Input<String> siteName;
+
   /// The status of the resource
   final pulumi.Input<String> status;
 
@@ -70,18 +80,17 @@ class GetSitesSite {
 
   factory GetSitesSite.fromMap(Map<String, dynamic> map) {
     return GetSitesSite(
-      accessType: (map['accessType'] as String).input(),
-      coverage: (map['coverage'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as int).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      modifyTime: (map['modifyTime'] as String).input(),
-      nameServerList: (map['nameServerList'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      siteId: (map['siteId'] as int).input(),
-      siteName: (map['siteName'] as String).input(),
-      status: (map['status'] as String).input(),
+      accessType: pulumi.Input.fromValue(map['accessType'] as String),
+      coverage: pulumi.Input.fromValue(map['coverage'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      modifyTime: pulumi.Input.fromValue(map['modifyTime'] as String),
+      nameServerList: pulumi.Input.fromValue(map['nameServerList'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as int),
+      siteName: pulumi.Input.fromValue(map['siteName'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

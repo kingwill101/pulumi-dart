@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CIAMResourceSKU {
   /// The name of the SKU for the tenant.
   final pulumi.Input<String> name;
+
   /// The tier of the tenant.
   final pulumi.Input<String> tier;
 
   /// Creates a new [CIAMResourceSKU].
   /// [name] The name of the SKU for the tenant.
   /// [tier] The tier of the tenant.
-  CIAMResourceSKU({
-    required this.name,
-    required this.tier,
-  });
+  CIAMResourceSKU({required this.name, required this.tier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'tier': tier,
-    };
+    return <String, dynamic>{'name': name, 'tier': tier};
   }
 
   factory CIAMResourceSKU.fromMap(Map<String, dynamic> map) {
     return CIAMResourceSKU(
-      name: (map['name'] as String).input(),
-      tier: (map['tier'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tier: pulumi.Input.fromValue(map['tier'] as String),
     );
   }
 }
-

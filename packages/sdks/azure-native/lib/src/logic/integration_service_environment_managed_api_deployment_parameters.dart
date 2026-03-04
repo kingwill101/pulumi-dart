@@ -16,14 +16,25 @@ class IntegrationServiceEnvironmentManagedApiDeploymentParameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'contentLinkDefinition': ?pulumi.Input.mapOptionalInputValue<ContentLink, Map<String, dynamic>>(contentLinkDefinition, (value) => value.toMap()),
+      'contentLinkDefinition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContentLink,
+            Map<String, dynamic>
+          >(contentLinkDefinition, (value) => value.toMap()),
     };
   }
 
-  factory IntegrationServiceEnvironmentManagedApiDeploymentParameters.fromMap(Map<String, dynamic> map) {
+  factory IntegrationServiceEnvironmentManagedApiDeploymentParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationServiceEnvironmentManagedApiDeploymentParameters(
-      contentLinkDefinition: map['contentLinkDefinition'] == null ? null : (ContentLink.fromMap((map['contentLinkDefinition']! as Map).cast<String, dynamic>())).input(),
+      contentLinkDefinition: (() {
+        final guardedValue = map['contentLinkDefinition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContentLink.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

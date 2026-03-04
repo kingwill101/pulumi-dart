@@ -8,14 +8,19 @@ import 'function_java_script_udfoutput.dart';
 class FunctionJavaScriptUDFState {
   /// One or more `input` blocks as defined below.
   final pulumi.Input<List<FunctionJavaScriptUDFInput>>? inputs;
+
   /// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// An `output` blocks as defined below.
   final pulumi.Input<FunctionJavaScriptUDFOutput>? output;
+
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The JavaScript of this UDF Function.
   final pulumi.Input<String>? script;
+
   /// The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? streamAnalyticsJobName;
 
@@ -37,9 +42,24 @@ class FunctionJavaScriptUDFState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inputs': ?pulumi.Input.mapOptionalInputValue<List<FunctionJavaScriptUDFInput>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<FunctionJavaScriptUDFInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inputs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FunctionJavaScriptUDFInput>,
+            List<Map<String, dynamic>>
+          >(
+            inputs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FunctionJavaScriptUDFInput,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
-      'output': ?pulumi.Input.mapOptionalInputValue<FunctionJavaScriptUDFOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
+      'output':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionJavaScriptUDFOutput,
+            Map<String, dynamic>
+          >(output, (value) => value.toMap()),
       'resourceGroupName': ?resourceGroupName,
       'script': ?script,
       'streamAnalyticsJobName': ?streamAnalyticsJobName,
@@ -48,13 +68,47 @@ class FunctionJavaScriptUDFState {
 
   factory FunctionJavaScriptUDFState.fromMap(Map<String, dynamic> map) {
     return FunctionJavaScriptUDFState(
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(map['inputs']!, (value) => FunctionJavaScriptUDFInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      output: map['output'] == null ? null : (FunctionJavaScriptUDFOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      script: map['script'] == null ? null : (map['script']! as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
+      inputs: (() {
+        final guardedValue = map['inputs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(
+            guardedValue,
+            (value) => FunctionJavaScriptUDFInput.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      output: (() {
+        final guardedValue = map['output'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionJavaScriptUDFOutput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      script: (() {
+        final guardedValue = map['script'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamAnalyticsJobName: (() {
+        final guardedValue = map['streamAnalyticsJobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

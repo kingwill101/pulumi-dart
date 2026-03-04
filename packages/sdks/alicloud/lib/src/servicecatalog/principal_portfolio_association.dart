@@ -8,7 +8,7 @@ import 'principal_portfolio_association_state.dart';
 ///
 /// For information about Service Catalog Principal Portfolio Association and how to use it, see [What is Principal Portfolio Association](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-associateprincipalwithportfolio).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -321,8 +321,10 @@ import 'principal_portfolio_association_state.dart';
 class PrincipalPortfolioAssociation extends pulumi.CustomResource {
   /// Product Portfolio ID
   late final pulumi.Output<String> portfolioId;
+
   /// RAM entity ID
   late final pulumi.Output<String> principalId;
+
   /// RAM entity type
   late final pulumi.Output<String> principalType;
 
@@ -335,14 +337,14 @@ class PrincipalPortfolioAssociation extends pulumi.CustomResource {
     PrincipalPortfolioAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portfolioId = registerOutput<String>('portfolioId');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
+         'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portfolioId = registerOutput<String>('portfolioId');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
   }
 
   /// Gets an existing [PrincipalPortfolioAssociation] resource's state with the given [name] and [id].
@@ -363,13 +365,13 @@ class PrincipalPortfolioAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.portfolioId = registerOutput<String>('portfolioId');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalType = registerOutput<String>('principalType');
+         'alicloud:servicecatalog/principalPortfolioAssociation:PrincipalPortfolioAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    portfolioId = registerOutput<String>('portfolioId');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
   }
 }

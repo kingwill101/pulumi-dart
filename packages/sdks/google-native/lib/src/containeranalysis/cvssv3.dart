@@ -13,9 +13,11 @@ import 'cvssv3_user_interaction.dart';
 /// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 class CVSSv3 {
   final pulumi.Input<CVSSv3AttackComplexity>? attackComplexity;
+
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
   final pulumi.Input<CVSSv3AttackVector>? attackVector;
   final pulumi.Input<CVSSv3AvailabilityImpact>? availabilityImpact;
+
   /// The base score is a function of the base metric scores.
   final pulumi.Input<double>? baseScore;
   final pulumi.Input<CVSSv3ConfidentialityImpact>? confidentialityImpact;
@@ -54,34 +56,124 @@ class CVSSv3 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attackComplexity': ?pulumi.Input.mapOptionalInputValue<CVSSv3AttackComplexity, String>(attackComplexity, (value) => value.value),
-      'attackVector': ?pulumi.Input.mapOptionalInputValue<CVSSv3AttackVector, String>(attackVector, (value) => value.value),
-      'availabilityImpact': ?pulumi.Input.mapOptionalInputValue<CVSSv3AvailabilityImpact, String>(availabilityImpact, (value) => value.value),
+      'attackComplexity':
+          ?pulumi.Input.mapOptionalInputValue<CVSSv3AttackComplexity, String>(
+            attackComplexity,
+            (value) => value.wireValue,
+          ),
+      'attackVector':
+          ?pulumi.Input.mapOptionalInputValue<CVSSv3AttackVector, String>(
+            attackVector,
+            (value) => value.wireValue,
+          ),
+      'availabilityImpact':
+          ?pulumi.Input.mapOptionalInputValue<CVSSv3AvailabilityImpact, String>(
+            availabilityImpact,
+            (value) => value.wireValue,
+          ),
       'baseScore': ?baseScore,
-      'confidentialityImpact': ?pulumi.Input.mapOptionalInputValue<CVSSv3ConfidentialityImpact, String>(confidentialityImpact, (value) => value.value),
+      'confidentialityImpact':
+          ?pulumi.Input.mapOptionalInputValue<
+            CVSSv3ConfidentialityImpact,
+            String
+          >(confidentialityImpact, (value) => value.wireValue),
       'exploitabilityScore': ?exploitabilityScore,
       'impactScore': ?impactScore,
-      'integrityImpact': ?pulumi.Input.mapOptionalInputValue<CVSSv3IntegrityImpact, String>(integrityImpact, (value) => value.value),
-      'privilegesRequired': ?pulumi.Input.mapOptionalInputValue<CVSSv3PrivilegesRequired, String>(privilegesRequired, (value) => value.value),
-      'scope': ?pulumi.Input.mapOptionalInputValue<CVSSv3Scope, String>(scope, (value) => value.value),
-      'userInteraction': ?pulumi.Input.mapOptionalInputValue<CVSSv3UserInteraction, String>(userInteraction, (value) => value.value),
+      'integrityImpact':
+          ?pulumi.Input.mapOptionalInputValue<CVSSv3IntegrityImpact, String>(
+            integrityImpact,
+            (value) => value.wireValue,
+          ),
+      'privilegesRequired':
+          ?pulumi.Input.mapOptionalInputValue<CVSSv3PrivilegesRequired, String>(
+            privilegesRequired,
+            (value) => value.wireValue,
+          ),
+      'scope': ?pulumi.Input.mapOptionalInputValue<CVSSv3Scope, String>(
+        scope,
+        (value) => value.wireValue,
+      ),
+      'userInteraction':
+          ?pulumi.Input.mapOptionalInputValue<CVSSv3UserInteraction, String>(
+            userInteraction,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory CVSSv3.fromMap(Map<String, dynamic> map) {
     return CVSSv3(
-      attackComplexity: map['attackComplexity'] == null ? null : (CVSSv3AttackComplexity.fromValue(map['attackComplexity']! as String)).input(),
-      attackVector: map['attackVector'] == null ? null : (CVSSv3AttackVector.fromValue(map['attackVector']! as String)).input(),
-      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSv3AvailabilityImpact.fromValue(map['availabilityImpact']! as String)).input(),
-      baseScore: map['baseScore'] == null ? null : (map['baseScore']! as double).input(),
-      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSv3ConfidentialityImpact.fromValue(map['confidentialityImpact']! as String)).input(),
-      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore']! as double).input(),
-      impactScore: map['impactScore'] == null ? null : (map['impactScore']! as double).input(),
-      integrityImpact: map['integrityImpact'] == null ? null : (CVSSv3IntegrityImpact.fromValue(map['integrityImpact']! as String)).input(),
-      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSv3PrivilegesRequired.fromValue(map['privilegesRequired']! as String)).input(),
-      scope: map['scope'] == null ? null : (CVSSv3Scope.fromValue(map['scope']! as String)).input(),
-      userInteraction: map['userInteraction'] == null ? null : (CVSSv3UserInteraction.fromValue(map['userInteraction']! as String)).input(),
+      attackComplexity: (() {
+        final guardedValue = map['attackComplexity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3AttackComplexity.fromValue(guardedValue as String),
+        );
+      })(),
+      attackVector: (() {
+        final guardedValue = map['attackVector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3AttackVector.fromValue(guardedValue as String),
+        );
+      })(),
+      availabilityImpact: (() {
+        final guardedValue = map['availabilityImpact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3AvailabilityImpact.fromValue(guardedValue as String),
+        );
+      })(),
+      baseScore: (() {
+        final guardedValue = map['baseScore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      confidentialityImpact: (() {
+        final guardedValue = map['confidentialityImpact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3ConfidentialityImpact.fromValue(guardedValue as String),
+        );
+      })(),
+      exploitabilityScore: (() {
+        final guardedValue = map['exploitabilityScore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      impactScore: (() {
+        final guardedValue = map['impactScore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      integrityImpact: (() {
+        final guardedValue = map['integrityImpact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3IntegrityImpact.fromValue(guardedValue as String),
+        );
+      })(),
+      privilegesRequired: (() {
+        final guardedValue = map['privilegesRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3PrivilegesRequired.fromValue(guardedValue as String),
+        );
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3Scope.fromValue(guardedValue as String),
+        );
+      })(),
+      userInteraction: (() {
+        final guardedValue = map['userInteraction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CVSSv3UserInteraction.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

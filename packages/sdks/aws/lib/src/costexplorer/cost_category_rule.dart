@@ -7,10 +7,13 @@ import 'cost_category_rule_rule.dart';
 class CostCategoryRule {
   /// Configuration block for the value the line item is categorized as if the line item contains the matched dimension. See below.
   final pulumi.Input<CostCategoryRuleInheritedValue>? inheritedValue;
+
   /// Configuration block for the `Expression` object used to categorize costs. See below.
   final pulumi.Input<CostCategoryRuleRule>? rule;
+
   /// You can define the CostCategoryRule rule type as either `REGULAR` or `INHERITED_VALUE`.
   final pulumi.Input<String>? type;
+
   /// Default value for the cost category.
   final pulumi.Input<String>? value;
 
@@ -19,17 +22,20 @@ class CostCategoryRule {
   /// [rule] Configuration block for the `Expression` object used to categorize costs. See below.
   /// [type] You can define the CostCategoryRule rule type as either `REGULAR` or `INHERITED_VALUE`.
   /// [value] Default value for the cost category.
-  CostCategoryRule({
-    this.inheritedValue,
-    this.rule,
-    this.type,
-    this.value,
-  });
+  CostCategoryRule({this.inheritedValue, this.rule, this.type, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inheritedValue': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleInheritedValue, Map<String, dynamic>>(inheritedValue, (value) => value.toMap()),
-      'rule': ?pulumi.Input.mapOptionalInputValue<CostCategoryRuleRule, Map<String, dynamic>>(rule, (value) => value.toMap()),
+      'inheritedValue':
+          ?pulumi.Input.mapOptionalInputValue<
+            CostCategoryRuleInheritedValue,
+            Map<String, dynamic>
+          >(inheritedValue, (value) => value.toMap()),
+      'rule':
+          ?pulumi.Input.mapOptionalInputValue<
+            CostCategoryRuleRule,
+            Map<String, dynamic>
+          >(rule, (value) => value.toMap()),
       'type': ?type,
       'value': ?value,
     };
@@ -37,11 +43,34 @@ class CostCategoryRule {
 
   factory CostCategoryRule.fromMap(Map<String, dynamic> map) {
     return CostCategoryRule(
-      inheritedValue: map['inheritedValue'] == null ? null : ((CostCategoryRuleInheritedValue.fromMap((map['inheritedValue']! as Map).cast<String, dynamic>())).input()).input(),
-      rule: map['rule'] == null ? null : ((CostCategoryRuleRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      inheritedValue: (() {
+        final guardedValue = map['inheritedValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CostCategoryRuleInheritedValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rule: (() {
+        final guardedValue = map['rule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CostCategoryRuleRule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

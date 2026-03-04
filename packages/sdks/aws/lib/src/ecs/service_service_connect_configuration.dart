@@ -7,10 +7,14 @@ import 'service_service_connect_configuration_service.dart';
 class ServiceServiceConnectConfiguration {
   /// Whether to use Service Connect with this service.
   final pulumi.Input<bool> enabled;
+
   /// Log configuration for the container. See below.
-  final pulumi.Input<ServiceServiceConnectConfigurationLogConfiguration>? logConfiguration;
+  final pulumi.Input<ServiceServiceConnectConfigurationLogConfiguration>?
+  logConfiguration;
+
   /// Namespace name or ARN of the `aws.servicediscovery.HttpNamespace` for use with Service Connect.
   final pulumi.Input<String>? namespace;
+
   /// List of Service Connect service objects. See below.
   final pulumi.Input<List<ServiceServiceConnectConfigurationService>>? services;
 
@@ -29,19 +33,56 @@ class ServiceServiceConnectConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'logConfiguration': ?pulumi.Input.mapOptionalInputValue<ServiceServiceConnectConfigurationLogConfiguration, Map<String, dynamic>>(logConfiguration, (value) => value.toMap()),
+      'logConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceServiceConnectConfigurationLogConfiguration,
+            Map<String, dynamic>
+          >(logConfiguration, (value) => value.toMap()),
       'namespace': ?namespace,
-      'services': ?pulumi.Input.mapOptionalInputValue<List<ServiceServiceConnectConfigurationService>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<ServiceServiceConnectConfigurationService, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'services':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceServiceConnectConfigurationService>,
+            List<Map<String, dynamic>>
+          >(
+            services,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceServiceConnectConfigurationService,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ServiceServiceConnectConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfiguration(
-      enabled: (map['enabled'] as bool).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : ((ServiceServiceConnectConfigurationLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
-      services: map['services'] == null ? null : ((pulumi.Input.decodeList<ServiceServiceConnectConfigurationService>(map['services']!, (value) => ServiceServiceConnectConfigurationService.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      logConfiguration: (() {
+        final guardedValue = map['logConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceServiceConnectConfigurationLogConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      services: (() {
+        final guardedValue = map['services'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceServiceConnectConfigurationService>(
+            guardedValue,
+            (value) => ServiceServiceConnectConfigurationService.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

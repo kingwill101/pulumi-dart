@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStackInstancesArgs {
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Stack Instance IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The name of the stack group.
   final pulumi.Input<String> stackGroupName;
+
   /// The account to which the stack instance belongs.
   final pulumi.Input<String>? stackInstanceAccountId;
+
   /// The region of the stack instance.
   final pulumi.Input<String>? stackInstanceRegionId;
+
   /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
   /// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
   /// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
@@ -59,14 +65,37 @@ class GetStackInstancesArgs {
 
   factory GetStackInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetStackInstancesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      stackGroupName: (map['stackGroupName'] as String).input(),
-      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : (map['stackInstanceAccountId']! as String).input(),
-      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : (map['stackInstanceRegionId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackGroupName: pulumi.Input.fromValue(map['stackGroupName'] as String),
+      stackInstanceAccountId: (() {
+        final guardedValue = map['stackInstanceAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackInstanceRegionId: (() {
+        final guardedValue = map['stackInstanceRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

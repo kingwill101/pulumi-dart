@@ -10,16 +10,15 @@ enum TierType {
   valueCommitment100000AUHours("Commitment_100000AUHours"),
   valueCommitment500000AUHours("Commitment_500000AUHours");
 
-  const TierType(this.value);
-  final String value;
+  const TierType(this.wireValue);
+  final String wireValue;
 
   static TierType fromValue(String value) {
     for (final item in TierType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TierType value: $value');
   }
 }
-

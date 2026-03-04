@@ -12,8 +12,10 @@ class GetZonesArgs {
   /// - **en-US** (default): English
   /// - **ja**: Japanese
   final pulumi.Input<String>? acceptLanguage;
+
   /// A list of Zone IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -21,11 +23,7 @@ class GetZonesArgs {
   /// [acceptLanguage] The supported language. Valid values:
   /// [ids] A list of Zone IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({
-    this.acceptLanguage,
-    this.ids,
-    this.outputFile,
-  });
+  GetZonesArgs({this.acceptLanguage, this.ids, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +35,21 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      acceptLanguage: (() {
+        final guardedValue = map['acceptLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

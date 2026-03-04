@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocalNetworkGatewayArgs {
   /// The name of the local network gateway.
   final pulumi.Input<String> localNetworkGatewayName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetLocalNetworkGatewayArgs {
 
   factory GetLocalNetworkGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalNetworkGatewayArgs(
-      localNetworkGatewayName: (map['localNetworkGatewayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      localNetworkGatewayName: pulumi.Input.fromValue(
+        map['localNetworkGatewayName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

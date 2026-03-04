@@ -1,5 +1,3 @@
-library module_hardwaresecuritymodules;
-
 export 'hardwaresecuritymodules/api_entity_reference.dart';
 export 'hardwaresecuritymodules/api_entity_reference_response.dart';
 export 'hardwaresecuritymodules/auto_generated_domain_name_label_scope.dart';

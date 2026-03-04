@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrchestratedVirtualMachineScaleSetArgs {
   /// The name of this Orchestrated Virtual Machine Scale Set.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Orchestrated Virtual Machine Scale Set exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetOrchestratedVirtualMachineScaleSetArgs {
     };
   }
 
-  factory GetOrchestratedVirtualMachineScaleSetArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrchestratedVirtualMachineScaleSetArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrchestratedVirtualMachineScaleSetArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

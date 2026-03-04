@@ -4,16 +4,15 @@ enum PrivateConnectionRoutingMode {
   global("GLOBAL"),
   regional("REGIONAL");
 
-  const PrivateConnectionRoutingMode(this.value);
-  final String value;
+  const PrivateConnectionRoutingMode(this.wireValue);
+  final String wireValue;
 
   static PrivateConnectionRoutingMode fromValue(String value) {
     for (final item in PrivateConnectionRoutingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateConnectionRoutingMode value: $value');
   }
 }
-

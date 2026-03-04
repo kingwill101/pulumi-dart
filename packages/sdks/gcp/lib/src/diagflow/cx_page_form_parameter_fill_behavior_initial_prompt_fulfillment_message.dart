@@ -11,6 +11,7 @@ import 'cx_page_form_parameter_fill_behavior_initial_prompt_fulfillment_message_
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
   /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
   final pulumi.Input<String>? channel;
+
   /// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
   /// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
   /// You may set this, for example:
@@ -18,7 +19,11 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
   /// * In a webhook response when you determine that you handled the customer issue.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess>? conversationSuccess;
+  final pulumi.Input<
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess
+  >?
+  conversationSuccess;
+
   /// Indicates that the conversation should be handed off to a live agent.
   /// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
   /// You may set this, for example:
@@ -26,26 +31,46 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
   /// * In a webhook response when you determine that the customer issue can only be handled by a human.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff>? liveAgentHandoff;
+  final pulumi.Input<
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff
+  >?
+  liveAgentHandoff;
+
   /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText>? outputAudioText;
+  final pulumi.Input<
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText
+  >?
+  outputAudioText;
+
   /// Returns a response containing a custom, platform-specific payload.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   final pulumi.Input<String>? payload;
+
   /// Specifies an audio clip to be played by the client as part of the response.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio>? playAudio;
+  final pulumi.Input<
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio
+  >?
+  playAudio;
+
   /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall>? telephonyTransferCall;
+  final pulumi.Input<
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall
+  >?
+  telephonyTransferCall;
+
   /// The text response message.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText>? text;
+  final pulumi.Input<
+    CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText
+  >?
+  text;
 
   /// Creates a new [CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage].
   /// [channel] The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -70,27 +95,108 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channel': ?channel,
-      'conversationSuccess': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess, Map<String, dynamic>>(conversationSuccess, (value) => value.toMap()),
-      'liveAgentHandoff': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff, Map<String, dynamic>>(liveAgentHandoff, (value) => value.toMap()),
-      'outputAudioText': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText, Map<String, dynamic>>(outputAudioText, (value) => value.toMap()),
+      'conversationSuccess':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess,
+            Map<String, dynamic>
+          >(conversationSuccess, (value) => value.toMap()),
+      'liveAgentHandoff':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff,
+            Map<String, dynamic>
+          >(liveAgentHandoff, (value) => value.toMap()),
+      'outputAudioText':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText,
+            Map<String, dynamic>
+          >(outputAudioText, (value) => value.toMap()),
       'payload': ?payload,
-      'playAudio': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio, Map<String, dynamic>>(playAudio, (value) => value.toMap()),
-      'telephonyTransferCall': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall, Map<String, dynamic>>(telephonyTransferCall, (value) => value.toMap()),
-      'text': ?pulumi.Input.mapOptionalInputValue<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText, Map<String, dynamic>>(text, (value) => value.toMap()),
+      'playAudio':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio,
+            Map<String, dynamic>
+          >(playAudio, (value) => value.toMap()),
+      'telephonyTransferCall':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall,
+            Map<String, dynamic>
+          >(telephonyTransferCall, (value) => value.toMap()),
+      'text':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText,
+            Map<String, dynamic>
+          >(text, (value) => value.toMap()),
     };
   }
 
-  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage.fromMap(Map<String, dynamic> map) {
+  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
-      conversationSuccess: map['conversationSuccess'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess']! as Map).cast<String, dynamic>())).input(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff']! as Map).cast<String, dynamic>())).input(),
-      outputAudioText: map['outputAudioText'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText']! as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
-      playAudio: map['playAudio'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio.fromMap((map['playAudio']! as Map).cast<String, dynamic>())).input(),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall']! as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      conversationSuccess: (() {
+        final guardedValue = map['conversationSuccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      liveAgentHandoff: (() {
+        final guardedValue = map['liveAgentHandoff'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      outputAudioText: (() {
+        final guardedValue = map['outputAudioText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      payload: (() {
+        final guardedValue = map['payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      playAudio: (() {
+        final guardedValue = map['playAudio'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      telephonyTransferCall: (() {
+        final guardedValue = map['telephonyTransferCall'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'route_response.dart';
 import 'route_table_args.dart';
-import 'subnet_response.dart';
 
 /// Route table resource.
 ///
@@ -291,24 +289,34 @@ import 'subnet_response.dart';
 class RouteTableNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Whether to disable the routes learned by BGP on that route table. True means disable.
   late final pulumi.Output<bool?> disableBgpRoutePropagation;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the route table resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource GUID property of the route table.
   late final pulumi.Output<String> resourceGuid;
+
   /// Collection of routes contained within a route table.
-  late final pulumi.Output<List<RouteResponse>?> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+
   /// A collection of references to subnets.
-  late final pulumi.Output<List<SubnetResponse>> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -321,21 +329,23 @@ class RouteTableNetwork extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:RouteTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.disableBgpRoutePropagation = registerOutput<bool?>('disableBgpRoutePropagation');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:RouteTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableBgpRoutePropagation = registerOutput<bool?>(
+      'disableBgpRoutePropagation',
+    );
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.routes = registerOutput<List<RouteResponse>?>('routes');
-    this.subnets = registerOutput<List<SubnetResponse>>('subnets');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,16 +7,23 @@ import 'google_cloud_datapipelines_v1_flex_template_runtime_environment.dart';
 class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   /// Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
   final pulumi.Input<String>? containerSpecGcsPath;
+
   /// The runtime environment for the Flex Template job.
-  final pulumi.Input<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment>? environment;
+  final pulumi.Input<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment>?
+  environment;
+
   /// The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
   final pulumi.Input<String> jobName;
+
   /// Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
   final pulumi.Input<Map<String, String>>? launchOptions;
+
   /// The parameters for the Flex Template. Example: `{"num_workers":"5"}`
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Use this to pass transform name mappings for streaming update jobs. Example: `{"oldTransformName":"newTransformName",...}`
   final pulumi.Input<Map<String, String>>? transformNameMappings;
+
   /// Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
   final pulumi.Input<bool>? update;
 
@@ -41,7 +48,11 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerSpecGcsPath': ?containerSpecGcsPath,
-      'environment': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment, Map<String, dynamic>>(environment, (value) => value.toMap()),
+      'environment':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment,
+            Map<String, dynamic>
+          >(environment, (value) => value.toMap()),
       'jobName': jobName,
       'launchOptions': ?launchOptions,
       'parameters': ?parameters,
@@ -50,16 +61,51 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
     };
   }
 
-  factory GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter(
-      containerSpecGcsPath: map['containerSpecGcsPath'] == null ? null : (map['containerSpecGcsPath']! as String).input(),
-      environment: map['environment'] == null ? null : (GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
-      jobName: (map['jobName'] as String).input(),
-      launchOptions: map['launchOptions'] == null ? null : ((map['launchOptions']! as Map).cast<String, String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      transformNameMappings: map['transformNameMappings'] == null ? null : ((map['transformNameMappings']! as Map).cast<String, String>()).input(),
-      update: map['update'] == null ? null : (map['update']! as bool).input(),
+      containerSpecGcsPath: (() {
+        final guardedValue = map['containerSpecGcsPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      launchOptions: (() {
+        final guardedValue = map['launchOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transformNameMappings: (() {
+        final guardedValue = map['transformNameMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      update: (() {
+        final guardedValue = map['update'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

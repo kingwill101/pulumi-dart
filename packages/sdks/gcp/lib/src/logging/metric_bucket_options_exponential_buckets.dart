@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricBucketOptionsExponentialBuckets {
   /// Must be greater than 1.
   final pulumi.Input<double> growthFactor;
+
   /// Must be greater than 0.
   final pulumi.Input<int> numFiniteBuckets;
+
   /// Must be greater than 0.
   final pulumi.Input<double> scale;
 
@@ -28,12 +30,13 @@ class MetricBucketOptionsExponentialBuckets {
     };
   }
 
-  factory MetricBucketOptionsExponentialBuckets.fromMap(Map<String, dynamic> map) {
+  factory MetricBucketOptionsExponentialBuckets.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetricBucketOptionsExponentialBuckets(
-      growthFactor: (map['growthFactor'] as double).input(),
-      numFiniteBuckets: (map['numFiniteBuckets'] as int).input(),
-      scale: (map['scale'] as double).input(),
+      growthFactor: pulumi.Input.fromValue(map['growthFactor'] as double),
+      numFiniteBuckets: pulumi.Input.fromValue(map['numFiniteBuckets'] as int),
+      scale: pulumi.Input.fromValue(map['scale'] as double),
     );
   }
 }
-

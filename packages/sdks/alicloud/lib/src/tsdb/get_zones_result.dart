@@ -28,7 +28,10 @@ class GetZonesResult {
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
-      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(
+        zones,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -36,9 +39,15 @@ class GetZonesResult {
     return GetZonesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zones: pulumi.Input.decodeList<GetZonesZone>(
+        map['zones']!,
+        (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

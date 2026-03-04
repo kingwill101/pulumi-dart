@@ -9,20 +9,15 @@ class SecretResponse {
 
   /// Creates a new [SecretResponse].
   /// [cloudSecret] The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-  SecretResponse({
-    required this.cloudSecret,
-  });
+  SecretResponse({required this.cloudSecret});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudSecret': cloudSecret,
-    };
+    return <String, dynamic>{'cloudSecret': cloudSecret};
   }
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      cloudSecret: (map['cloudSecret'] as String).input(),
+      cloudSecret: pulumi.Input.fromValue(map['cloudSecret'] as String),
     );
   }
 }
-

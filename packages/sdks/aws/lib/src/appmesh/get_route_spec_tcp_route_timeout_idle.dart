@@ -9,23 +9,16 @@ class GetRouteSpecTcpRouteTimeoutIdle {
   /// Creates a new [GetRouteSpecTcpRouteTimeoutIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecTcpRouteTimeoutIdle({
-    required this.unit,
-    required this.value,
-  });
+  GetRouteSpecTcpRouteTimeoutIdle({required this.unit, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'unit': unit,
-      'value': value,
-    };
+    return <String, dynamic>{'unit': unit, 'value': value};
   }
 
   factory GetRouteSpecTcpRouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteTimeoutIdle(
-      unit: (map['unit'] as String).input(),
-      value: (map['value'] as int).input(),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
+      value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
-

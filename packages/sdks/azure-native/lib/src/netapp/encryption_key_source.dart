@@ -3,16 +3,15 @@ enum EncryptionKeySource {
   valueMicrosoftNetApp("Microsoft.NetApp"),
   valueMicrosoftKeyVault("Microsoft.KeyVault");
 
-  const EncryptionKeySource(this.value);
-  final String value;
+  const EncryptionKeySource(this.wireValue);
+  final String wireValue;
 
   static EncryptionKeySource fromValue(String value) {
     for (final item in EncryptionKeySource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncryptionKeySource value: $value');
   }
 }
-

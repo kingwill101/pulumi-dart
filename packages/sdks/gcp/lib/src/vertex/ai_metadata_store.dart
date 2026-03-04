@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_metadata_store_args.dart';
 import 'ai_metadata_store_encryption_spec.dart';
-import 'ai_metadata_store_state.dart';
 import 'ai_metadata_store_vertex_state.dart';
 
 /// Instance of a metadata store. Contains a set of metadata that can be queried.
@@ -149,21 +148,28 @@ import 'ai_metadata_store_vertex_state.dart';
 class AiMetadataStore extends pulumi.CustomResource {
   /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+
   /// Description of the MetadataStore.
   late final pulumi.Output<String?> description;
+
   /// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
   /// Structure is documented below.
   late final pulumi.Output<AiMetadataStoreEncryptionSpec?> encryptionSpec;
+
   /// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the Metadata Store. eg us-central1
   late final pulumi.Output<String> region;
+
   /// State information of the MetadataStore.
   /// Structure is documented below.
-  late final pulumi.Output<List<AiMetadataStoreState>> states;
+  late final pulumi.Output<List<Map<String, dynamic>>> states;
+
   /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
 
@@ -176,19 +182,21 @@ class AiMetadataStore extends pulumi.CustomResource {
     AiMetadataStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiMetadataStore:AiMetadataStore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>('encryptionSpec');
+         'gcp:vertex/aiMetadataStore:AiMetadataStore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>(
+      'encryptionSpec',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.states = registerOutput<List<AiMetadataStoreState>>('states');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    states = registerOutput<List<Map<String, dynamic>>>('states');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [AiMetadataStore] resource's state with the given [name] and [id].
@@ -209,18 +217,20 @@ class AiMetadataStore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiMetadataStore:AiMetadataStore',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>('encryptionSpec');
+         'gcp:vertex/aiMetadataStore:AiMetadataStore',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>(
+      'encryptionSpec',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.states = registerOutput<List<AiMetadataStoreState>>('states');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    states = registerOutput<List<Map<String, dynamic>>>('states');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

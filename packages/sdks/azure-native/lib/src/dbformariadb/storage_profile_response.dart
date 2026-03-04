@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageProfileResponse {
   /// Backup retention days for the server.
   final pulumi.Input<int>? backupRetentionDays;
+
   /// Enable Geo-redundant or not for server backup.
   final pulumi.Input<String>? geoRedundantBackup;
+
   /// Enable Storage Auto Grow.
   final pulumi.Input<String>? storageAutogrow;
+
   /// Max storage allowed for a server.
   final pulumi.Input<int>? storageMB;
 
@@ -36,11 +39,26 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays']! as int).input(),
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup']! as String).input(),
-      storageAutogrow: map['storageAutogrow'] == null ? null : (map['storageAutogrow']! as String).input(),
-      storageMB: map['storageMB'] == null ? null : (map['storageMB']! as int).input(),
+      backupRetentionDays: (() {
+        final guardedValue = map['backupRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      geoRedundantBackup: (() {
+        final guardedValue = map['geoRedundantBackup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAutogrow: (() {
+        final guardedValue = map['storageAutogrow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageMB: (() {
+        final guardedValue = map['storageMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

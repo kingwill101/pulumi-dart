@@ -16,6 +16,7 @@ import 'reserved_ipv6_assignment_state.dart';
 class ReservedIpv6Assignment extends pulumi.CustomResource {
   /// The ID of Droplet that the reserved IPv6 will be assigned to.
   late final pulumi.Output<int> dropletId;
+
   /// The reserved IPv6 to assign to the Droplet.
   late final pulumi.Output<String> ip;
 
@@ -28,13 +29,13 @@ class ReservedIpv6Assignment extends pulumi.CustomResource {
     ReservedIpv6AssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dropletId = registerOutput<int>('dropletId');
-    this.ip = registerOutput<String>('ip');
+         'digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dropletId = registerOutput<int>('dropletId');
+    ip = registerOutput<String>('ip');
   }
 
   /// Gets an existing [ReservedIpv6Assignment] resource's state with the given [name] and [id].
@@ -55,12 +56,12 @@ class ReservedIpv6Assignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dropletId = registerOutput<int>('dropletId');
-    this.ip = registerOutput<String>('ip');
+         'digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dropletId = registerOutput<int>('dropletId');
+    ip = registerOutput<String>('ip');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiSystemParameter {
   /// System parameter location; values: 'HEAD' and 'QUERY'.
   final pulumi.Input<String> in_;
+
   /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
   final pulumi.Input<String> name;
+
   /// Backend service's parameter name.
   final pulumi.Input<String> nameService;
 
@@ -30,10 +32,9 @@ class ApiSystemParameter {
 
   factory ApiSystemParameter.fromMap(Map<String, dynamic> map) {
     return ApiSystemParameter(
-      in_: (map['in'] as String).input(),
-      name: (map['name'] as String).input(),
-      nameService: (map['nameService'] as String).input(),
+      in_: pulumi.Input.fromValue(map['in'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nameService: pulumi.Input.fromValue(map['nameService'] as String),
     );
   }
 }
-

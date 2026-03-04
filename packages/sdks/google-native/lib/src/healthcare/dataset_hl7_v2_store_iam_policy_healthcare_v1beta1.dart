@@ -1,22 +1,24 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'audit_config_response_healthcare_v1beta1.dart';
-import 'binding_response_healthcare_v1beta1.dart';
 import 'dataset_hl7_v2_store_iam_policy_healthcare_v1beta1_args.dart';
 
 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
-class DatasetHl7V2StoreIamPolicyHealthcareV1beta1 extends pulumi.CustomResource {
+class DatasetHl7V2StoreIamPolicyHealthcareV1beta1
+    extends pulumi.CustomResource {
   /// Specifies cloud audit logging configuration for this policy.
-  late final pulumi.Output<List<AuditConfigResponseHealthcareV1beta1>> auditConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> auditConfigs;
+
   /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
-  late final pulumi.Output<List<BindingResponseHealthcareV1beta1>> bindings;
+  late final pulumi.Output<List<Map<String, dynamic>>> bindings;
   late final pulumi.Output<String> datasetId;
+
   /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> hl7V2StoreId;
   late final pulumi.Output<String> location;
   late final pulumi.Output<String> project;
+
   /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   late final pulumi.Output<int> version;
 
@@ -29,18 +31,18 @@ class DatasetHl7V2StoreIamPolicyHealthcareV1beta1 extends pulumi.CustomResource 
     DatasetHl7V2StoreIamPolicyHealthcareV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditConfigs = registerOutput<List<AuditConfigResponseHealthcareV1beta1>>('auditConfigs');
-    this.bindings = registerOutput<List<BindingResponseHealthcareV1beta1>>('bindings');
-    this.datasetId = registerOutput<String>('datasetId');
-    this.etag = registerOutput<String>('etag');
-    this.hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
-    this.location = registerOutput<String>('location');
-    this.project = registerOutput<String>('project');
-    this.version = registerOutput<int>('version');
+         'google-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditConfigs = registerOutput<List<Map<String, dynamic>>>('auditConfigs');
+    bindings = registerOutput<List<Map<String, dynamic>>>('bindings');
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    version = registerOutput<int>('version');
   }
 }

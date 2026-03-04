@@ -7,13 +7,17 @@ import 'get_alarm_contacts_contact.dart';
 class GetAlarmContactsResult {
   final String? chanelType;
   final String? chanelValue;
+
   /// A list of alarm contacts. Each element contains the following attributes:
   final List<GetAlarmContactsContact> contacts;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of alarm contact IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of alarm contact names.
   final List<String> names;
   final String? outputFile;
@@ -42,7 +46,11 @@ class GetAlarmContactsResult {
     return <String, dynamic>{
       'chanelType': ?chanelType,
       'chanelValue': ?chanelValue,
-      'contacts': pulumi.Input.encodeList<GetAlarmContactsContact, Map<String, dynamic>>(contacts, (value) => value.toMap()),
+      'contacts':
+          pulumi.Input.encodeList<
+            GetAlarmContactsContact,
+            Map<String, dynamic>
+          >(contacts, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -53,15 +61,35 @@ class GetAlarmContactsResult {
 
   factory GetAlarmContactsResult.fromMap(Map<String, dynamic> map) {
     return GetAlarmContactsResult(
-      chanelType: map['chanelType'] == null ? null : map['chanelType']! as String,
-      chanelValue: map['chanelValue'] == null ? null : map['chanelValue']! as String,
-      contacts: pulumi.Input.decodeList<GetAlarmContactsContact>(map['contacts'], (value) => GetAlarmContactsContact.fromMap((value as Map).cast<String, dynamic>())),
+      chanelType: (() {
+        final guardedValue = map['chanelType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      chanelValue: (() {
+        final guardedValue = map['chanelValue'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      contacts: pulumi.Input.decodeList<GetAlarmContactsContact>(
+        map['contacts']!,
+        (value) => GetAlarmContactsContact.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

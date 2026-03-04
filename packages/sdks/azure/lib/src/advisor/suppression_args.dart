@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SuppressionArgs {
   /// The Name which should be used for this Advisor suppression. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Advisor recommendation to suppress. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String> recommendationId;
+
   /// The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String> resourceId;
+
   /// A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
   final pulumi.Input<String>? ttl;
 
@@ -39,11 +42,20 @@ class SuppressionArgs {
 
   factory SuppressionArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      recommendationId: (map['recommendationId'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recommendationId: pulumi.Input.fromValue(
+        map['recommendationId'] as String,
+      ),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

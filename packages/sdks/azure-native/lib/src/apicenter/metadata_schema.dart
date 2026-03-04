@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'metadata_assignment_response.dart';
 import 'metadata_schema_args.dart';
 import 'system_data_response.dart';
 
@@ -171,15 +170,20 @@ import 'system_data_response.dart';
 /// ```
 class MetadataSchema extends pulumi.CustomResource {
   /// The assignees
-  late final pulumi.Output<List<MetadataAssignmentResponse>?> assignedTo;
+  late final pulumi.Output<List<Map<String, dynamic>>?> assignedTo;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The schema defining the type.
   late final pulumi.Output<String> schema;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -192,16 +196,16 @@ class MetadataSchema extends pulumi.CustomResource {
     MetadataSchemaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apicenter:MetadataSchema',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignedTo = registerOutput<List<MetadataAssignmentResponse>?>('assignedTo');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:apicenter:MetadataSchema',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignedTo = registerOutput<List<Map<String, dynamic>>?>('assignedTo');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.schema = registerOutput<String>('schema');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    schema = registerOutput<String>('schema');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

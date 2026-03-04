@@ -10,24 +10,34 @@ import 'partner_region_info_response.dart';
 class GetInstanceFailoverGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// List of managed instance pairs in the failover group.
   final List<ManagedInstancePairInfoResponse> managedInstancePairs;
+
   /// Resource name.
   final String name;
+
   /// Partner region information for the failover group.
   final List<PartnerRegionInfoResponse> partnerRegions;
+
   /// Read-only endpoint of the failover group instance.
   final InstanceFailoverGroupReadOnlyEndpointResponse? readOnlyEndpoint;
+
   /// Read-write endpoint of the failover group instance.
   final InstanceFailoverGroupReadWriteEndpointResponse readWriteEndpoint;
+
   /// Local replication role of the failover group instance.
   final String replicationRole;
+
   /// Replication state of the failover group instance.
   final String replicationState;
+
   /// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
   final String? secondaryType;
+
   /// Resource type.
   final String type;
 
@@ -61,10 +71,18 @@ class GetInstanceFailoverGroupResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'managedInstancePairs': pulumi.Input.encodeList<ManagedInstancePairInfoResponse, Map<String, dynamic>>(managedInstancePairs, (value) => value.toMap()),
+      'managedInstancePairs':
+          pulumi.Input.encodeList<
+            ManagedInstancePairInfoResponse,
+            Map<String, dynamic>
+          >(managedInstancePairs, (value) => value.toMap()),
       'name': name,
-      'partnerRegions': pulumi.Input.encodeList<PartnerRegionInfoResponse, Map<String, dynamic>>(partnerRegions, (value) => value.toMap()),
-      'readOnlyEndpoint': ?readOnlyEndpoint == null ? null : readOnlyEndpoint!.toMap(),
+      'partnerRegions':
+          pulumi.Input.encodeList<
+            PartnerRegionInfoResponse,
+            Map<String, dynamic>
+          >(partnerRegions, (value) => value.toMap()),
+      'readOnlyEndpoint': ?readOnlyEndpoint?.toMap(),
       'readWriteEndpoint': readWriteEndpoint.toMap(),
       'replicationRole': replicationRole,
       'replicationState': replicationState,
@@ -77,16 +95,38 @@ class GetInstanceFailoverGroupResult {
     return GetInstanceFailoverGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      managedInstancePairs: pulumi.Input.decodeList<ManagedInstancePairInfoResponse>(map['managedInstancePairs'], (value) => ManagedInstancePairInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      managedInstancePairs:
+          pulumi.Input.decodeList<ManagedInstancePairInfoResponse>(
+            map['managedInstancePairs']!,
+            (value) => ManagedInstancePairInfoResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
-      partnerRegions: pulumi.Input.decodeList<PartnerRegionInfoResponse>(map['partnerRegions'], (value) => PartnerRegionInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : InstanceFailoverGroupReadOnlyEndpointResponse.fromMap((map['readOnlyEndpoint']! as Map).cast<String, dynamic>()),
-      readWriteEndpoint: InstanceFailoverGroupReadWriteEndpointResponse.fromMap((map['readWriteEndpoint'] as Map).cast<String, dynamic>()),
+      partnerRegions: pulumi.Input.decodeList<PartnerRegionInfoResponse>(
+        map['partnerRegions']!,
+        (value) => PartnerRegionInfoResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      readOnlyEndpoint: (() {
+        final guardedValue = map['readOnlyEndpoint'];
+        if (guardedValue == null) return null;
+        return InstanceFailoverGroupReadOnlyEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      readWriteEndpoint: InstanceFailoverGroupReadWriteEndpointResponse.fromMap(
+        (map['readWriteEndpoint']! as Map).cast<String, dynamic>(),
+      ),
       replicationRole: map['replicationRole'] as String,
       replicationState: map['replicationState'] as String,
-      secondaryType: map['secondaryType'] == null ? null : map['secondaryType']! as String,
+      secondaryType: (() {
+        final guardedValue = map['secondaryType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'apiresource.dart';
 class APIResourceList {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// groupVersion is the group and version this APIResourceList is for.
   final pulumi.Input<String> groupVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// resources contains the name of the resources and if they are namespaced.
   final pulumi.Input<List<APIResource>> resources;
 
@@ -31,17 +34,41 @@ class APIResourceList {
       'apiVersion': ?apiVersion,
       'groupVersion': groupVersion,
       'kind': ?kind,
-      'resources': pulumi.Input.mapInputValue<List<APIResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<APIResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resources':
+          pulumi.Input.mapInputValue<
+            List<APIResource>,
+            List<Map<String, dynamic>>
+          >(
+            resources,
+            (value) =>
+                pulumi.Input.encodeList<APIResource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory APIResourceList.fromMap(Map<String, dynamic> map) {
     return APIResourceList(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      groupVersion: (map['groupVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      resources: (pulumi.Input.decodeList<APIResource>(map['resources'], (value) => APIResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupVersion: pulumi.Input.fromValue(map['groupVersion'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resources: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<APIResource>(
+          map['resources']!,
+          (value) =>
+              APIResource.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

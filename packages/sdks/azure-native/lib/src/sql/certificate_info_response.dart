@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateInfoResponse {
   /// The certificate name
   final pulumi.Input<String> certificateName;
+
   /// The certificate expiry date
   final pulumi.Input<String> expiryDate;
 
@@ -26,9 +27,8 @@ class CertificateInfoResponse {
 
   factory CertificateInfoResponse.fromMap(Map<String, dynamic> map) {
     return CertificateInfoResponse(
-      certificateName: (map['certificateName'] as String).input(),
-      expiryDate: (map['expiryDate'] as String).input(),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      expiryDate: pulumi.Input.fromValue(map['expiryDate'] as String),
     );
   }
 }
-

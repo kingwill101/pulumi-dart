@@ -7,8 +7,10 @@ import 'link_types.dart';
 class TypePropertiesMapping {
   /// Link type.
   final pulumi.Input<LinkTypes>? linkType;
+
   /// Property name on the source Entity Type.
   final pulumi.Input<String> sourcePropertyName;
+
   /// Property name on the target Entity Type.
   final pulumi.Input<String> targetPropertyName;
 
@@ -24,7 +26,10 @@ class TypePropertiesMapping {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'linkType': ?pulumi.Input.mapOptionalInputValue<LinkTypes, String>(linkType, (value) => value.value),
+      'linkType': ?pulumi.Input.mapOptionalInputValue<LinkTypes, String>(
+        linkType,
+        (value) => value.wireValue,
+      ),
       'sourcePropertyName': sourcePropertyName,
       'targetPropertyName': targetPropertyName,
     };
@@ -32,10 +37,19 @@ class TypePropertiesMapping {
 
   factory TypePropertiesMapping.fromMap(Map<String, dynamic> map) {
     return TypePropertiesMapping(
-      linkType: map['linkType'] == null ? null : (LinkTypes.fromValue(map['linkType']! as String)).input(),
-      sourcePropertyName: (map['sourcePropertyName'] as String).input(),
-      targetPropertyName: (map['targetPropertyName'] as String).input(),
+      linkType: (() {
+        final guardedValue = map['linkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkTypes.fromValue(guardedValue as String),
+        );
+      })(),
+      sourcePropertyName: pulumi.Input.fromValue(
+        map['sourcePropertyName'] as String,
+      ),
+      targetPropertyName: pulumi.Input.fromValue(
+        map['targetPropertyName'] as String,
+      ),
     );
   }
 }
-

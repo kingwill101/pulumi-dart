@@ -6,18 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceCredentialState {
   /// The ARN of Source Credential.
   final pulumi.Input<String>? arn;
+
   /// The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket
   /// repository. Valid values are `BASIC_AUTH`,
   /// `PERSONAL_ACCESS_TOKEN`, `CODECONNECTIONS`, and `SECRETS_MANAGER`. An OAUTH connection is not supported by the API.
   final pulumi.Input<String>? authType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The source provider used for this project.
   final pulumi.Input<String>? serverType;
+
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// app password. When using an AWS CodeStar connection (`auth_type = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
   final pulumi.Input<String>? token;
+
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   /// other types of source providers or connections.
   final pulumi.Input<String>? userName;
@@ -51,13 +56,36 @@ class SourceCredentialState {
 
   factory SourceCredentialState.fromMap(Map<String, dynamic> map) {
     return SourceCredentialState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      authType: map['authType'] == null ? null : ((map['authType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serverType: map['serverType'] == null ? null : ((map['serverType'] as String).input()).input(),
-      token: map['token'] == null ? null : ((map['token'] as String).input()).input(),
-      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverType: (() {
+        final guardedValue = map['serverType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

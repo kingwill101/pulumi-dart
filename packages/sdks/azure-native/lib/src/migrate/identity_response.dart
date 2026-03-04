@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityResponse {
   /// Gets or sets the principal id.
   final pulumi.Input<String>? principalId;
+
   /// Gets or sets the tenant id.
   final pulumi.Input<String>? tenantId;
+
   /// The type of identity used for the resource mover service.
   final pulumi.Input<String>? type;
 
@@ -15,11 +17,7 @@ class IdentityResponse {
   /// [principalId] Gets or sets the principal id.
   /// [tenantId] Gets or sets the tenant id.
   /// [type] The type of identity used for the resource mover service.
-  IdentityResponse({
-    this.principalId,
-    this.tenantId,
-    this.type,
-  });
+  IdentityResponse({this.principalId, this.tenantId, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class IdentityResponse {
 
   factory IdentityResponse.fromMap(Map<String, dynamic> map) {
     return IdentityResponse(
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

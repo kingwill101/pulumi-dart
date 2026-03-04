@@ -10,34 +10,41 @@ class BudgetBudgetFilter {
   /// Exactly one of `calendar_period`, `custom_period` must be provided.
   /// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
   final pulumi.Input<String>? calendarPeriod;
+
   /// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
   /// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
   /// If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
   final pulumi.Input<List<String>>? creditTypes;
+
   /// Specifies how credits should be treated when determining spend
   /// for threshold calculations.
   /// Default value is `INCLUDE_ALL_CREDITS`.
   /// Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
   final pulumi.Input<String>? creditTypesTreatment;
+
   /// Specifies to track usage from any start date (required) to any end date (optional).
   /// This time period is static, it does not recur.
   /// Exactly one of `calendar_period`, `custom_period` must be provided.
   /// Structure is documented below.
   final pulumi.Input<BudgetBudgetFilterCustomPeriod>? customPeriod;
+
   /// A single label and value pair specifying that usage from only
   /// this set of labeled resources should be included in the budget.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// A set of projects of the form projects/{project_number},
   /// specifying that usage from only this set of projects should be
   /// included in the budget. If omitted, the report will include
   /// all usage for the billing account, regardless of which project
   /// the usage occurred on.
   final pulumi.Input<List<String>>? projects;
+
   /// A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
   /// specifying that usage from only this set of folders and organizations should be included in the budget.
   /// If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
   /// contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
   final pulumi.Input<List<String>>? resourceAncestors;
+
   /// A set of services of the form services/{service_id},
   /// specifying that usage from only this set of services should be
   /// included in the budget. If omitted, the report will include
@@ -45,6 +52,7 @@ class BudgetBudgetFilter {
   /// through the Catalog API:
   /// https://cloud.google.com/billing/v1/how-tos/catalog-api.
   final pulumi.Input<List<String>>? services;
+
   /// A set of subaccounts of the form billingAccounts/{account_id},
   /// specifying that usage from only this set of subaccounts should
   /// be included in the budget. If a subaccount is set to the name of
@@ -80,7 +88,11 @@ class BudgetBudgetFilter {
       'calendarPeriod': ?calendarPeriod,
       'creditTypes': ?creditTypes,
       'creditTypesTreatment': ?creditTypesTreatment,
-      'customPeriod': ?pulumi.Input.mapOptionalInputValue<BudgetBudgetFilterCustomPeriod, Map<String, dynamic>>(customPeriod, (value) => value.toMap()),
+      'customPeriod':
+          ?pulumi.Input.mapOptionalInputValue<
+            BudgetBudgetFilterCustomPeriod,
+            Map<String, dynamic>
+          >(customPeriod, (value) => value.toMap()),
       'labels': ?labels,
       'projects': ?projects,
       'resourceAncestors': ?resourceAncestors,
@@ -91,16 +103,57 @@ class BudgetBudgetFilter {
 
   factory BudgetBudgetFilter.fromMap(Map<String, dynamic> map) {
     return BudgetBudgetFilter(
-      calendarPeriod: map['calendarPeriod'] == null ? null : (map['calendarPeriod']! as String).input(),
-      creditTypes: map['creditTypes'] == null ? null : ((map['creditTypes']! as List).cast<String>()).input(),
-      creditTypesTreatment: map['creditTypesTreatment'] == null ? null : (map['creditTypesTreatment']! as String).input(),
-      customPeriod: map['customPeriod'] == null ? null : (BudgetBudgetFilterCustomPeriod.fromMap((map['customPeriod']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      projects: map['projects'] == null ? null : ((map['projects']! as List).cast<String>()).input(),
-      resourceAncestors: map['resourceAncestors'] == null ? null : ((map['resourceAncestors']! as List).cast<String>()).input(),
-      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
-      subaccounts: map['subaccounts'] == null ? null : ((map['subaccounts']! as List).cast<String>()).input(),
+      calendarPeriod: (() {
+        final guardedValue = map['calendarPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      creditTypes: (() {
+        final guardedValue = map['creditTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      creditTypesTreatment: (() {
+        final guardedValue = map['creditTypesTreatment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customPeriod: (() {
+        final guardedValue = map['customPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BudgetBudgetFilterCustomPeriod.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      projects: (() {
+        final guardedValue = map['projects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceAncestors: (() {
+        final guardedValue = map['resourceAncestors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      services: (() {
+        final guardedValue = map['services'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subaccounts: (() {
+        final guardedValue = map['subaccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

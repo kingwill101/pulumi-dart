@@ -4,16 +4,15 @@ enum FactoryIdentityType {
   valueUserAssigned("UserAssigned"),
   valueSystemAssignedUserAssigned("SystemAssigned,UserAssigned");
 
-  const FactoryIdentityType(this.value);
-  final String value;
+  const FactoryIdentityType(this.wireValue);
+  final String wireValue;
 
   static FactoryIdentityType fromValue(String value) {
     for (final item in FactoryIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FactoryIdentityType value: $value');
   }
 }
-

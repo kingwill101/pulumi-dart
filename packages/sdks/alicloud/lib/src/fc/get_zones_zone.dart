@@ -8,20 +8,13 @@ class GetZonesZone {
 
   /// Creates a new [GetZonesZone].
   /// [id] ID of the zone.
-  GetZonesZone({
-    required this.id,
-  });
+  GetZonesZone({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetZonesZone.fromMap(Map<String, dynamic> map) {
-    return GetZonesZone(
-      id: (map['id'] as String).input(),
-    );
+    return GetZonesZone(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

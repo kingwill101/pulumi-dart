@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PersistentVolumeStatus {
   /// lastPhaseTransitionTime is the time the phase transitioned from one to another and automatically resets to current time everytime a volume phase transitions.
   final pulumi.Input<String>? lastPhaseTransitionTime;
+
   /// message is a human-readable message indicating details about why the volume is in this state.
   final pulumi.Input<String>? message;
+
   /// phase indicates if a volume is available, bound to a claim, or released by a claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase
   final pulumi.Input<String>? phase;
+
   /// reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI.
   final pulumi.Input<String>? reason;
 
@@ -36,11 +39,26 @@ class PersistentVolumeStatus {
 
   factory PersistentVolumeStatus.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeStatus(
-      lastPhaseTransitionTime: map['lastPhaseTransitionTime'] == null ? null : (map['lastPhaseTransitionTime']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      lastPhaseTransitionTime: (() {
+        final guardedValue = map['lastPhaseTransitionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phase: (() {
+        final guardedValue = map['phase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

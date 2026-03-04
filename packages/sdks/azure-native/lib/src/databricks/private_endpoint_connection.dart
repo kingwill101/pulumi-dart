@@ -173,10 +173,14 @@ import 'private_endpoint_connection_properties_response.dart';
 class PrivateEndpointConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The private endpoint connection properties.
-  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse> properties;
+  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse>
+  properties;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -189,14 +193,16 @@ class PrivateEndpointConnection extends pulumi.CustomResource {
     PrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databricks:PrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:databricks:PrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>(
+      'properties',
+    );
+    type = registerOutput<String>('type');
   }
 }

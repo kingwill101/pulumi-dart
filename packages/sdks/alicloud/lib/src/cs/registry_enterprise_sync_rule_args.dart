@@ -9,33 +9,45 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryEnterpriseSyncRuleArgs {
   /// The ID of the Container Registry source instance.
   final pulumi.Input<String> instanceId;
+
   /// Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
   final pulumi.Input<String>? name;
+
   /// The namespace name of the source instance.
   final pulumi.Input<String> namespaceName;
+
   /// The image repository name of the source instance.
   final pulumi.Input<String>? repoName;
+
   /// The name of the sync rule.
   final pulumi.Input<String>? syncRuleName;
+
   /// The synchronization scope. Valid values:
   /// - `REPO`: Encrypts or decrypts data.
   /// - `NAMESPACE`: Generates or verifies a digital signature.
-  /// > **NOTE:** From version 1.240.0, `sync_scope` can be set.
+  /// &gt; **NOTE:** From version 1.240.0, `sync_scope` can be set.
   final pulumi.Input<String>? syncScope;
+
   /// The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
   /// - `INITIATIVE`: Manually triggers the synchronization rule.
   /// - `PASSIVE`: Automatically triggers the synchronization rule.
   final pulumi.Input<String>? syncTrigger;
+
   /// The regular expression used to filter image tags.
   final pulumi.Input<String> tagFilter;
+
   /// The ID of the destination instance.
   final pulumi.Input<String> targetInstanceId;
+
   /// The namespace name of the destination instance.
   final pulumi.Input<String> targetNamespaceName;
+
   /// The region ID of the destination instance.
   final pulumi.Input<String> targetRegionId;
+
   /// The image repository name of the destination instance.
   final pulumi.Input<String>? targetRepoName;
+
   /// The UID of the account to which the target instance belongs.
   final pulumi.Input<String>? targetUserId;
 
@@ -89,20 +101,51 @@ class RegistryEnterpriseSyncRuleArgs {
 
   factory RegistryEnterpriseSyncRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseSyncRuleArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
-      syncRuleName: map['syncRuleName'] == null ? null : (map['syncRuleName']! as String).input(),
-      syncScope: map['syncScope'] == null ? null : (map['syncScope']! as String).input(),
-      syncTrigger: map['syncTrigger'] == null ? null : (map['syncTrigger']! as String).input(),
-      tagFilter: (map['tagFilter'] as String).input(),
-      targetInstanceId: (map['targetInstanceId'] as String).input(),
-      targetNamespaceName: (map['targetNamespaceName'] as String).input(),
-      targetRegionId: (map['targetRegionId'] as String).input(),
-      targetRepoName: map['targetRepoName'] == null ? null : (map['targetRepoName']! as String).input(),
-      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId']! as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      repoName: (() {
+        final guardedValue = map['repoName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncRuleName: (() {
+        final guardedValue = map['syncRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncScope: (() {
+        final guardedValue = map['syncScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncTrigger: (() {
+        final guardedValue = map['syncTrigger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagFilter: pulumi.Input.fromValue(map['tagFilter'] as String),
+      targetInstanceId: pulumi.Input.fromValue(
+        map['targetInstanceId'] as String,
+      ),
+      targetNamespaceName: pulumi.Input.fromValue(
+        map['targetNamespaceName'] as String,
+      ),
+      targetRegionId: pulumi.Input.fromValue(map['targetRegionId'] as String),
+      targetRepoName: (() {
+        final guardedValue = map['targetRepoName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetUserId: (() {
+        final guardedValue = map['targetUserId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

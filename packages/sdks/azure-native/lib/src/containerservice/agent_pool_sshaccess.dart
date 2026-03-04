@@ -3,16 +3,15 @@ enum AgentPoolSSHAccess {
   valueLocalUser("LocalUser"),
   valueDisabled("Disabled");
 
-  const AgentPoolSSHAccess(this.value);
-  final String value;
+  const AgentPoolSSHAccess(this.wireValue);
+  final String wireValue;
 
   static AgentPoolSSHAccess fromValue(String value) {
     for (final item in AgentPoolSSHAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AgentPoolSSHAccess value: $value');
   }
 }
-

@@ -467,7 +467,7 @@ import 'network_interface_backend_address_pool_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -480,12 +480,15 @@ import 'network_interface_backend_address_pool_association_state.dart';
 /// $ pulumi import azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation association1 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/example|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/pool1"
 /// ```
 ///
-/// > **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
-class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResource {
+/// &gt; **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}/ipConfigurations/{ipConfigurationName}|{backendAddressPoolId}`.
+class NetworkInterfaceBackendAddressPoolAssociation
+    extends pulumi.CustomResource {
   /// The ID of the Load Balancer Backend Address Pool which this Network Interface should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> backendAddressPoolId;
+
   /// The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ipConfigurationName;
+
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkInterfaceId;
 
@@ -498,14 +501,14 @@ class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResourc
     NetworkInterfaceBackendAddressPoolAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    this.ipConfigurationName = registerOutput<String>('ipConfigurationName');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+         'azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    ipConfigurationName = registerOutput<String>('ipConfigurationName');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
   }
 
   /// Gets an existing [NetworkInterfaceBackendAddressPoolAssociation] resource's state with the given [name] and [id].
@@ -526,13 +529,13 @@ class NetworkInterfaceBackendAddressPoolAssociation extends pulumi.CustomResourc
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
-    this.ipConfigurationName = registerOutput<String>('ipConfigurationName');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+         'azure:network/networkInterfaceBackendAddressPoolAssociation:NetworkInterfaceBackendAddressPoolAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
+    ipConfigurationName = registerOutput<String>('ipConfigurationName');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
   }
 }

@@ -11,20 +11,28 @@ import 'mqtt_bridge_routes.dart';
 class MqttBridgeTopicMapArgs {
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
+
   /// Name of MQ mqttBridgeConnector resource
   final pulumi.Input<String> mqttBridgeConnectorName;
+
   /// The MqttBridgeConnector CRD it refers to.
   final pulumi.Input<String> mqttBridgeConnectorRef;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The route details for MqttBridge connector.
   final pulumi.Input<List<MqttBridgeRoutes>>? routes;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Name of MQ mqttBridgeTopicMap resource
   final pulumi.Input<String>? topicMapName;
 
@@ -52,13 +60,28 @@ class MqttBridgeTopicMapArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocationProperty, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<
+            ExtendedLocationProperty,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'location': ?location,
       'mqName': mqName,
       'mqttBridgeConnectorName': mqttBridgeConnectorName,
       'mqttBridgeConnectorRef': mqttBridgeConnectorRef,
       'resourceGroupName': resourceGroupName,
-      'routes': ?pulumi.Input.mapOptionalInputValue<List<MqttBridgeRoutes>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<MqttBridgeRoutes, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MqttBridgeRoutes>,
+            List<Map<String, dynamic>>
+          >(
+            routes,
+            (value) =>
+                pulumi.Input.encodeList<MqttBridgeRoutes, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
       'topicMapName': ?topicMapName,
     };
@@ -66,16 +89,50 @@ class MqttBridgeTopicMapArgs {
 
   factory MqttBridgeTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return MqttBridgeTopicMapArgs(
-      extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mqName: (map['mqName'] as String).input(),
-      mqttBridgeConnectorName: (map['mqttBridgeConnectorName'] as String).input(),
-      mqttBridgeConnectorRef: (map['mqttBridgeConnectorRef'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<MqttBridgeRoutes>(map['routes']!, (value) => MqttBridgeRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      topicMapName: map['topicMapName'] == null ? null : (map['topicMapName']! as String).input(),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocationProperty.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mqName: pulumi.Input.fromValue(map['mqName'] as String),
+      mqttBridgeConnectorName: pulumi.Input.fromValue(
+        map['mqttBridgeConnectorName'] as String,
+      ),
+      mqttBridgeConnectorRef: pulumi.Input.fromValue(
+        map['mqttBridgeConnectorRef'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      routes: (() {
+        final guardedValue = map['routes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MqttBridgeRoutes>(
+            guardedValue,
+            (value) => MqttBridgeRoutes.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      topicMapName: (() {
+        final guardedValue = map['topicMapName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

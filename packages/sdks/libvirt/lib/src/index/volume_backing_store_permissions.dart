@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeBackingStorePermissions {
   /// Sets the group ownership for the backing store permissions of the volume.
   final pulumi.Input<String>? group;
+
   /// Configures the label associated with the backing store permissions.
   final pulumi.Input<String>? label;
+
   /// Specifies the mode (file permissions) for the backing store of the volume.
   final pulumi.Input<String>? mode;
+
   /// Defines the owner of the backing store permissions for the volume.
   final pulumi.Input<String>? owner;
 
@@ -35,11 +38,26 @@ class VolumeBackingStorePermissions {
 
   factory VolumeBackingStorePermissions.fromMap(Map<String, dynamic> map) {
     return VolumeBackingStorePermissions(
-      group: map['group'] == null ? null : (map['group']! as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

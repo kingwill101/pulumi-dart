@@ -12,22 +12,31 @@ import 'target_selector_properties.dart';
 class InstanceArgs {
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Name of Instance.
   final pulumi.Input<String>? name;
+
   /// Reconciliation Policy.
   final pulumi.Input<ReconciliationPolicy>? reconciliationPolicy;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Deployment scope (such as Kubernetes namespace).
   final pulumi.Input<String>? scope;
+
   /// Name of the solution.
   final pulumi.Input<String>? solution;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Defines the Target the Instance will deploy to.
   final pulumi.Input<TargetSelectorProperties>? target;
+
   /// Version of the particular resource.
   final pulumi.Input<String>? version;
 
@@ -57,32 +66,91 @@ class InstanceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
       'location': ?location,
       'name': ?name,
-      'reconciliationPolicy': ?pulumi.Input.mapOptionalInputValue<ReconciliationPolicy, Map<String, dynamic>>(reconciliationPolicy, (value) => value.toMap()),
+      'reconciliationPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReconciliationPolicy,
+            Map<String, dynamic>
+          >(reconciliationPolicy, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'scope': ?scope,
       'solution': ?solution,
       'tags': ?tags,
-      'target': ?pulumi.Input.mapOptionalInputValue<TargetSelectorProperties, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetSelectorProperties,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicy.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      solution: map['solution'] == null ? null : (map['solution']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      target: map['target'] == null ? null : (TargetSelectorProperties.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reconciliationPolicy: (() {
+        final guardedValue = map['reconciliationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReconciliationPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      solution: (() {
+        final guardedValue = map['solution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetSelectorProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

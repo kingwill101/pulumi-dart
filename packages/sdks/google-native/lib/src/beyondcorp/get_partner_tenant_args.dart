@@ -27,9 +27,8 @@ class GetPartnerTenantArgs {
 
   factory GetPartnerTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerTenantArgs(
-      organizationId: (map['organizationId'] as String).input(),
-      partnerTenantId: (map['partnerTenantId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
     );
   }
 }
-

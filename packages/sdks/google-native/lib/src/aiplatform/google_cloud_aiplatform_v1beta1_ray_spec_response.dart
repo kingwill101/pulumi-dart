@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1beta1RaySpecResponse {
   /// Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
   final pulumi.Input<String> headNodeResourcePoolId;
+
   /// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
   final pulumi.Input<String> imageUri;
+
   /// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
   final pulumi.Input<Map<String, String>> resourcePoolImages;
 
@@ -29,12 +31,17 @@ class GoogleCloudAiplatformV1beta1RaySpecResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1RaySpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1RaySpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1RaySpecResponse(
-      headNodeResourcePoolId: (map['headNodeResourcePoolId'] as String).input(),
-      imageUri: (map['imageUri'] as String).input(),
-      resourcePoolImages: ((map['resourcePoolImages'] as Map).cast<String, String>()).input(),
+      headNodeResourcePoolId: pulumi.Input.fromValue(
+        map['headNodeResourcePoolId'] as String,
+      ),
+      imageUri: pulumi.Input.fromValue(map['imageUri'] as String),
+      resourcePoolImages: pulumi.Input.fromValue(
+        (map['resourcePoolImages'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

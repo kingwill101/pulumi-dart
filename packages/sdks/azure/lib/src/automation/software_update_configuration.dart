@@ -10,7 +10,7 @@ import 'software_update_configuration_windows.dart';
 
 /// Manages an Automation Software Update Configuration.
 ///
-/// !> **Note:** The `azure.automation.SoftwareUpdateConfiguration` resource has been deprecated because the Azure Automation Update Management was retired on 2024-08-31 and has been shutdown on 2025-02-28. This resource will be removed in v5.0 of the AzureRM Provider. Please migrate to Azure Update Manager, and use the `azure.maintenance.Configuration` resource combined with the appropriate assignment resources instead. See https://techcommunity.microsoft.com/blog/azuregovernanceandmanagementblog/log-analytics-agent-based-azure-management-services-shut-down-starting-28-februa/4381853 for more information.
+/// !&gt; **Note:** The `azure.automation.SoftwareUpdateConfiguration` resource has been deprecated because the Azure Automation Update Management was retired on 2024-08-31 and has been shutdown on 2025-02-28. This resource will be removed in v5.0 of the AzureRM Provider. Please migrate to Azure Update Manager, and use the `azure.maintenance.Configuration` resource combined with the appropriate assignment resources instead. See https://techcommunity.microsoft.com/blog/azuregovernanceandmanagementblog/log-analytics-agent-based-azure-management-services-shut-down-starting-28-februa/4381853 for more information.
 ///
 /// ## Example Usage
 ///
@@ -381,7 +381,7 @@ import 'software_update_configuration_windows.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2019-06-01
@@ -396,31 +396,43 @@ import 'software_update_configuration_windows.dart';
 class SoftwareUpdateConfiguration extends pulumi.CustomResource {
   /// The ID of Automation Account to manage this Source Control. Changing this forces a new Automation Source Control to be created.
   late final pulumi.Output<String> automationAccountId;
+
   /// Maximum time allowed for the software update configuration run. using format `PT[n]H[n]M[n]S` as per ISO8601. Defaults to `PT2H`.
   late final pulumi.Output<String?> duration;
+
   /// The Error code when failed.
   late final pulumi.Output<String> errorCode;
+
   /// The Error message indicating why the operation failed.
   late final pulumi.Output<String> errorMessage;
+
   /// A `linux` block as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationLinux?> linux;
+
   /// The name which should be used for this Automation. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies a list of names of non-Azure machines for the software update configuration.
   late final pulumi.Output<List<String>?> nonAzureComputerNames;
+
   /// A `post_task` blocks as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationPostTask?> postTask;
+
   /// A `pre_task` blocks as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationPreTask?> preTask;
+
   /// A `schedule` blocks as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationSchedule> schedule;
+
   /// A `target` blocks as defined below.
   late final pulumi.Output<SoftwareUpdateConfigurationTarget?> target;
+
   /// Specifies a list of Azure Resource IDs of azure virtual machines.
   late final pulumi.Output<List<String>?> virtualMachineIds;
+
   /// A `windows` block as defined below.
   ///
-  /// > **Note:** One of `linux` or `windows` must be specified.
+  /// &gt; **Note:** One of `linux` or `windows` must be specified.
   late final pulumi.Output<SoftwareUpdateConfigurationWindows?> windows;
 
   /// Creates a new [SoftwareUpdateConfiguration].
@@ -432,24 +444,26 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
     SoftwareUpdateConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/softwareUpdateConfiguration:SoftwareUpdateConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountId = registerOutput<String>('automationAccountId');
-    this.duration = registerOutput<String?>('duration');
-    this.errorCode = registerOutput<String>('errorCode');
-    this.errorMessage = registerOutput<String>('errorMessage');
-    this.linux = registerOutput<SoftwareUpdateConfigurationLinux?>('linux');
+         'azure:automation/softwareUpdateConfiguration:SoftwareUpdateConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    duration = registerOutput<String?>('duration');
+    errorCode = registerOutput<String>('errorCode');
+    errorMessage = registerOutput<String>('errorMessage');
+    linux = registerOutput<SoftwareUpdateConfigurationLinux?>('linux');
     this.name = registerOutput<String>('name');
-    this.nonAzureComputerNames = registerOutput<List<String>?>('nonAzureComputerNames');
-    this.postTask = registerOutput<SoftwareUpdateConfigurationPostTask?>('postTask');
-    this.preTask = registerOutput<SoftwareUpdateConfigurationPreTask?>('preTask');
-    this.schedule = registerOutput<SoftwareUpdateConfigurationSchedule>('schedule');
-    this.target = registerOutput<SoftwareUpdateConfigurationTarget?>('target');
-    this.virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds');
-    this.windows = registerOutput<SoftwareUpdateConfigurationWindows?>('windows');
+    nonAzureComputerNames = registerOutput<List<String>?>(
+      'nonAzureComputerNames',
+    );
+    postTask = registerOutput<SoftwareUpdateConfigurationPostTask?>('postTask');
+    preTask = registerOutput<SoftwareUpdateConfigurationPreTask?>('preTask');
+    schedule = registerOutput<SoftwareUpdateConfigurationSchedule>('schedule');
+    target = registerOutput<SoftwareUpdateConfigurationTarget?>('target');
+    virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds');
+    windows = registerOutput<SoftwareUpdateConfigurationWindows?>('windows');
   }
 
   /// Gets an existing [SoftwareUpdateConfiguration] resource's state with the given [name] and [id].
@@ -470,23 +484,25 @@ class SoftwareUpdateConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/softwareUpdateConfiguration:SoftwareUpdateConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountId = registerOutput<String>('automationAccountId');
-    this.duration = registerOutput<String?>('duration');
-    this.errorCode = registerOutput<String>('errorCode');
-    this.errorMessage = registerOutput<String>('errorMessage');
-    this.linux = registerOutput<SoftwareUpdateConfigurationLinux?>('linux');
+         'azure:automation/softwareUpdateConfiguration:SoftwareUpdateConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    duration = registerOutput<String?>('duration');
+    errorCode = registerOutput<String>('errorCode');
+    errorMessage = registerOutput<String>('errorMessage');
+    linux = registerOutput<SoftwareUpdateConfigurationLinux?>('linux');
     this.name = registerOutput<String>('name');
-    this.nonAzureComputerNames = registerOutput<List<String>?>('nonAzureComputerNames');
-    this.postTask = registerOutput<SoftwareUpdateConfigurationPostTask?>('postTask');
-    this.preTask = registerOutput<SoftwareUpdateConfigurationPreTask?>('preTask');
-    this.schedule = registerOutput<SoftwareUpdateConfigurationSchedule>('schedule');
-    this.target = registerOutput<SoftwareUpdateConfigurationTarget?>('target');
-    this.virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds');
-    this.windows = registerOutput<SoftwareUpdateConfigurationWindows?>('windows');
+    nonAzureComputerNames = registerOutput<List<String>?>(
+      'nonAzureComputerNames',
+    );
+    postTask = registerOutput<SoftwareUpdateConfigurationPostTask?>('postTask');
+    preTask = registerOutput<SoftwareUpdateConfigurationPreTask?>('preTask');
+    schedule = registerOutput<SoftwareUpdateConfigurationSchedule>('schedule');
+    target = registerOutput<SoftwareUpdateConfigurationTarget?>('target');
+    virtualMachineIds = registerOutput<List<String>?>('virtualMachineIds');
+    windows = registerOutput<SoftwareUpdateConfigurationWindows?>('windows');
   }
 }

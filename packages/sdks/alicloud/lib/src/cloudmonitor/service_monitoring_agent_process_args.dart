@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMonitoringAgentProcessArgs {
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The name of the process.
   final pulumi.Input<String> processName;
+
   /// The user who launches the process.
   final pulumi.Input<String>? processUser;
 
@@ -34,10 +36,13 @@ class ServiceMonitoringAgentProcessArgs {
 
   factory ServiceMonitoringAgentProcessArgs.fromMap(Map<String, dynamic> map) {
     return ServiceMonitoringAgentProcessArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      processName: (map['processName'] as String).input(),
-      processUser: map['processUser'] == null ? null : (map['processUser']! as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      processName: pulumi.Input.fromValue(map['processName'] as String),
+      processUser: (() {
+        final guardedValue = map['processUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

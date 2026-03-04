@@ -7,13 +7,17 @@ import 'get_virtual_hub_route_table_route.dart';
 class GetVirtualHubRouteTableResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of labels associated with this route table.
   final List<String> labels;
+
   /// The name which is used for this route.
   final String name;
   final String resourceGroupName;
+
   /// A `route` block as defined below.
   final List<GetVirtualHubRouteTableRoute> routes;
+
   /// The ID of the Virtual Hub within which this route table is created
   final String virtualHubId;
   final String virtualHubName;
@@ -42,7 +46,11 @@ class GetVirtualHubRouteTableResult {
       'labels': labels,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'routes': pulumi.Input.encodeList<GetVirtualHubRouteTableRoute, Map<String, dynamic>>(routes, (value) => value.toMap()),
+      'routes':
+          pulumi.Input.encodeList<
+            GetVirtualHubRouteTableRoute,
+            Map<String, dynamic>
+          >(routes, (value) => value.toMap()),
       'virtualHubId': virtualHubId,
       'virtualHubName': virtualHubName,
     };
@@ -54,10 +62,14 @@ class GetVirtualHubRouteTableResult {
       labels: (map['labels'] as List).cast<String>(),
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      routes: pulumi.Input.decodeList<GetVirtualHubRouteTableRoute>(map['routes'], (value) => GetVirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())),
+      routes: pulumi.Input.decodeList<GetVirtualHubRouteTableRoute>(
+        map['routes']!,
+        (value) => GetVirtualHubRouteTableRoute.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       virtualHubId: map['virtualHubId'] as String,
       virtualHubName: map['virtualHubName'] as String,
     );
   }
 }
-

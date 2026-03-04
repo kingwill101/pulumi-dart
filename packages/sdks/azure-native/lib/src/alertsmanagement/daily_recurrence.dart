@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DailyRecurrence {
   /// End time for recurrence.
   final pulumi.Input<String> endTime;
+
   /// Specifies when the recurrence should be applied.
   /// Expected value is 'Daily'.
   final pulumi.Input<String> recurrenceType;
+
   /// Start time for recurrence.
   final pulumi.Input<String> startTime;
 
@@ -32,10 +34,9 @@ class DailyRecurrence {
 
   factory DailyRecurrence.fromMap(Map<String, dynamic> map) {
     return DailyRecurrence(
-      endTime: (map['endTime'] as String).input(),
-      recurrenceType: (map['recurrenceType'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      recurrenceType: pulumi.Input.fromValue(map['recurrenceType'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

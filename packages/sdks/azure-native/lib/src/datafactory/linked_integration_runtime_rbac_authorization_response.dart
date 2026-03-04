@@ -8,8 +8,10 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse {
   /// The authorization type for integration runtime sharing.
   /// Expected value is 'RBAC'.
   final pulumi.Input<String> authorizationType;
+
   /// The credential reference containing authentication information.
   final pulumi.Input<CredentialReferenceResponse>? credential;
+
   /// The resource identifier of the integration runtime to be shared.
   final pulumi.Input<String> resourceId;
 
@@ -26,17 +28,32 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorizationType': authorizationType,
-      'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
+      'credential':
+          ?pulumi.Input.mapOptionalInputValue<
+            CredentialReferenceResponse,
+            Map<String, dynamic>
+          >(credential, (value) => value.toMap()),
       'resourceId': resourceId,
     };
   }
 
-  factory LinkedIntegrationRuntimeRbacAuthorizationResponse.fromMap(Map<String, dynamic> map) {
+  factory LinkedIntegrationRuntimeRbacAuthorizationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinkedIntegrationRuntimeRbacAuthorizationResponse(
-      authorizationType: (map['authorizationType'] as String).input(),
-      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      authorizationType: pulumi.Input.fromValue(
+        map['authorizationType'] as String,
+      ),
+      credential: (() {
+        final guardedValue = map['credential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CredentialReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

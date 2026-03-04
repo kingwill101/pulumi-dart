@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryVpcSettings {
   final pulumi.Input<List<String>>? availabilityZones;
+
   /// The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
   final pulumi.Input<List<String>> subnetIds;
+
   /// The identifier of the VPC that the directory is in.
   final pulumi.Input<String> vpcId;
 
@@ -29,10 +31,15 @@ class DirectoryVpcSettings {
 
   factory DirectoryVpcSettings.fromMap(Map<String, dynamic> map) {
     return DirectoryVpcSettings(
-      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      availabilityZones: (() {
+        final guardedValue = map['availabilityZones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

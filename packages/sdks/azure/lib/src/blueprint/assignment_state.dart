@@ -7,33 +7,45 @@ import 'assignment_identity.dart';
 class AssignmentState {
   /// The name of the blueprint assigned
   final pulumi.Input<String>? blueprintName;
+
   /// The Description on the Blueprint
   final pulumi.Input<String>? description;
+
   /// The display name of the blueprint
   final pulumi.Input<String>? displayName;
+
   /// An `identity` block as defined below.
   final pulumi.Input<AssignmentIdentity>? identity;
+
   /// The Azure location of the Assignment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// a list of up to 200 actions that are permitted to bypass the locks applied by the Blueprint.
   final pulumi.Input<List<String>>? lockExcludeActions;
+
   /// a list of up to 5 Principal IDs that are permitted to bypass the locks applied by the Blueprint.
   final pulumi.Input<List<String>>? lockExcludePrincipals;
+
   /// The locking mode of the Blueprint Assignment. One of `None` (Default), `AllResourcesReadOnly`, or `AllResourcesDoNotDelete`. Defaults to `None`.
   final pulumi.Input<String>? lockMode;
+
   /// The name of the Blueprint Assignment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// a JSON string to supply Blueprint Assignment parameter values.
   ///
-  /// > **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
+  /// &gt; **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
   final pulumi.Input<String>? parameterValues;
+
   /// a JSON string to supply the Blueprint Resource Group information.
   ///
-  /// > **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
+  /// &gt; **NOTE:** Improperly formatted JSON, or missing values required by a Blueprint will cause the assignment to fail.
   final pulumi.Input<String>? resourceGroups;
+
   /// The Subscription ID the Blueprint Published Version is to be applied to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? targetSubscriptionId;
   final pulumi.Input<String>? type;
+
   /// The ID of the Published Version of the blueprint to be assigned.
   final pulumi.Input<String>? versionId;
 
@@ -74,7 +86,11 @@ class AssignmentState {
       'blueprintName': ?blueprintName,
       'description': ?description,
       'displayName': ?displayName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<AssignmentIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssignmentIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'lockExcludeActions': ?lockExcludeActions,
       'lockExcludePrincipals': ?lockExcludePrincipals,
@@ -90,21 +106,80 @@ class AssignmentState {
 
   factory AssignmentState.fromMap(Map<String, dynamic> map) {
     return AssignmentState(
-      blueprintName: map['blueprintName'] == null ? null : (map['blueprintName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      identity: map['identity'] == null ? null : (AssignmentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      lockExcludeActions: map['lockExcludeActions'] == null ? null : ((map['lockExcludeActions']! as List).cast<String>()).input(),
-      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : ((map['lockExcludePrincipals']! as List).cast<String>()).input(),
-      lockMode: map['lockMode'] == null ? null : (map['lockMode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups']! as String).input(),
-      targetSubscriptionId: map['targetSubscriptionId'] == null ? null : (map['targetSubscriptionId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
+      blueprintName: (() {
+        final guardedValue = map['blueprintName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssignmentIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lockExcludeActions: (() {
+        final guardedValue = map['lockExcludeActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      lockExcludePrincipals: (() {
+        final guardedValue = map['lockExcludePrincipals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      lockMode: (() {
+        final guardedValue = map['lockMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterValues: (() {
+        final guardedValue = map['parameterValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroups: (() {
+        final guardedValue = map['resourceGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetSubscriptionId: (() {
+        final guardedValue = map['targetSubscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionId: (() {
+        final guardedValue = map['versionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

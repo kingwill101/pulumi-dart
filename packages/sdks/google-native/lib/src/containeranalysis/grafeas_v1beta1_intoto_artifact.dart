@@ -10,23 +10,33 @@ class GrafeasV1beta1IntotoArtifact {
   /// Creates a new [GrafeasV1beta1IntotoArtifact].
   /// [hashes] Optional.
   /// [resourceUri] Optional.
-  GrafeasV1beta1IntotoArtifact({
-    this.hashes,
-    this.resourceUri,
-  });
+  GrafeasV1beta1IntotoArtifact({this.hashes, this.resourceUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hashes': ?pulumi.Input.mapOptionalInputValue<ArtifactHashes, Map<String, dynamic>>(hashes, (value) => value.toMap()),
+      'hashes':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArtifactHashes,
+            Map<String, dynamic>
+          >(hashes, (value) => value.toMap()),
       'resourceUri': ?resourceUri,
     };
   }
 
   factory GrafeasV1beta1IntotoArtifact.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoArtifact(
-      hashes: map['hashes'] == null ? null : (ArtifactHashes.fromMap((map['hashes']! as Map).cast<String, dynamic>())).input(),
-      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri']! as String).input(),
+      hashes: (() {
+        final guardedValue = map['hashes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArtifactHashes.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      resourceUri: (() {
+        final guardedValue = map['resourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

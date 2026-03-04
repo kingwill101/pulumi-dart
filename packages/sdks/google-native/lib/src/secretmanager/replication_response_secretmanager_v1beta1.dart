@@ -7,6 +7,7 @@ import 'user_managed_response_secretmanager_v1beta1.dart';
 class ReplicationResponseSecretmanagerV1beta1 {
   /// The Secret will automatically be replicated without any restrictions.
   final pulumi.Input<Map<String, dynamic>> automatic;
+
   /// The Secret will only be replicated into the locations specified.
   final pulumi.Input<UserManagedResponseSecretmanagerV1beta1> userManaged;
 
@@ -21,15 +22,26 @@ class ReplicationResponseSecretmanagerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automatic': automatic,
-      'userManaged': pulumi.Input.mapInputValue<UserManagedResponseSecretmanagerV1beta1, Map<String, dynamic>>(userManaged, (value) => value.toMap()),
+      'userManaged':
+          pulumi.Input.mapInputValue<
+            UserManagedResponseSecretmanagerV1beta1,
+            Map<String, dynamic>
+          >(userManaged, (value) => value.toMap()),
     };
   }
 
-  factory ReplicationResponseSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ReplicationResponseSecretmanagerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationResponseSecretmanagerV1beta1(
-      automatic: ((map['automatic'] as Map).cast<String, dynamic>()).input(),
-      userManaged: (UserManagedResponseSecretmanagerV1beta1.fromMap((map['userManaged'] as Map).cast<String, dynamic>())).input(),
+      automatic: pulumi.Input.fromValue(
+        (map['automatic']! as Map).cast<String, dynamic>(),
+      ),
+      userManaged: pulumi.Input.fromValue(
+        UserManagedResponseSecretmanagerV1beta1.fromMap(
+          (map['userManaged']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

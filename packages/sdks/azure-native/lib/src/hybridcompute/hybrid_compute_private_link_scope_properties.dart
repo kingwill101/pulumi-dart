@@ -9,20 +9,21 @@ class HybridComputePrivateLinkScopeProperties {
 
   /// Creates a new [HybridComputePrivateLinkScopeProperties].
   /// [publicNetworkAccess] Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  HybridComputePrivateLinkScopeProperties({
-    this.publicNetworkAccess,
-  });
+  HybridComputePrivateLinkScopeProperties({this.publicNetworkAccess});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'publicNetworkAccess': ?publicNetworkAccess,
-    };
+    return <String, dynamic>{'publicNetworkAccess': ?publicNetworkAccess};
   }
 
-  factory HybridComputePrivateLinkScopeProperties.fromMap(Map<String, dynamic> map) {
+  factory HybridComputePrivateLinkScopeProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HybridComputePrivateLinkScopeProperties(
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

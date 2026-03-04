@@ -1,5 +1,3 @@
-library module_servicebus;
-
 export 'servicebus/access_rights.dart';
 export 'servicebus/action.dart';
 export 'servicebus/action_response.dart';

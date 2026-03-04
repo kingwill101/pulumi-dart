@@ -3,16 +3,15 @@ enum EdgeActionIsDefaultVersion {
   true_("True"),
   false_("False");
 
-  const EdgeActionIsDefaultVersion(this.value);
-  final String value;
+  const EdgeActionIsDefaultVersion(this.wireValue);
+  final String wireValue;
 
   static EdgeActionIsDefaultVersion fromValue(String value) {
     for (final item in EdgeActionIsDefaultVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EdgeActionIsDefaultVersion value: $value');
   }
 }
-

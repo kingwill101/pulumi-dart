@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityArgs {
   final pulumi.Input<String> connectionId;
   final pulumi.Input<String> entityTypeId;
+
   /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
   final pulumi.Input<Map<String, String>>? fields;
   final pulumi.Input<String>? location;
@@ -40,12 +41,25 @@ class EntityArgs {
 
   factory EntityArgs.fromMap(Map<String, dynamic> map) {
     return EntityArgs(
-      connectionId: (map['connectionId'] as String).input(),
-      entityTypeId: (map['entityTypeId'] as String).input(),
-      fields: map['fields'] == null ? null : ((map['fields']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
+      entityTypeId: pulumi.Input.fromValue(map['entityTypeId'] as String),
+      fields: (() {
+        final guardedValue = map['fields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

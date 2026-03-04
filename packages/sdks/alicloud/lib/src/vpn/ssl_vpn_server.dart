@@ -400,24 +400,34 @@ class SslVpnServer extends pulumi.CustomResource {
   /// * `AES-192-CBC` - the AES-192-CBC algorithm.
   /// * `AES-256-CBC` - the AES-256-CBC algorithm.
   late final pulumi.Output<String?> cipher;
+
   /// The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
   late final pulumi.Output<String> clientIpPool;
+
   /// Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
   late final pulumi.Output<bool?> compress;
+
   /// The number of current connections.
   late final pulumi.Output<int> connections;
+
   /// The internet IP of the SSL-VPN server.
   late final pulumi.Output<String> internetIp;
+
   /// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
   late final pulumi.Output<String> localSubnet;
+
   /// The maximum number of connections.
   late final pulumi.Output<int> maxConnections;
+
   /// The name of the SSL-VPN server.
   late final pulumi.Output<String> name;
+
   /// The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
   late final pulumi.Output<int?> port;
+
   /// The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
   late final pulumi.Output<String?> protocol;
+
   /// The ID of the VPN gateway.
   late final pulumi.Output<String> vpnGatewayId;
 
@@ -430,22 +440,22 @@ class SslVpnServer extends pulumi.CustomResource {
     SslVpnServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/sslVpnServer:SslVpnServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cipher = registerOutput<String?>('cipher');
-    this.clientIpPool = registerOutput<String>('clientIpPool');
-    this.compress = registerOutput<bool?>('compress');
-    this.connections = registerOutput<int>('connections');
-    this.internetIp = registerOutput<String>('internetIp');
-    this.localSubnet = registerOutput<String>('localSubnet');
-    this.maxConnections = registerOutput<int>('maxConnections');
+         'alicloud:vpn/sslVpnServer:SslVpnServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cipher = registerOutput<String?>('cipher');
+    clientIpPool = registerOutput<String>('clientIpPool');
+    compress = registerOutput<bool?>('compress');
+    connections = registerOutput<int>('connections');
+    internetIp = registerOutput<String>('internetIp');
+    localSubnet = registerOutput<String>('localSubnet');
+    maxConnections = registerOutput<int>('maxConnections');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int?>('port');
-    this.protocol = registerOutput<String?>('protocol');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
+    port = registerOutput<int?>('port');
+    protocol = registerOutput<String?>('protocol');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }
 
   /// Gets an existing [SslVpnServer] resource's state with the given [name] and [id].
@@ -466,21 +476,21 @@ class SslVpnServer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpn/sslVpnServer:SslVpnServer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cipher = registerOutput<String?>('cipher');
-    this.clientIpPool = registerOutput<String>('clientIpPool');
-    this.compress = registerOutput<bool?>('compress');
-    this.connections = registerOutput<int>('connections');
-    this.internetIp = registerOutput<String>('internetIp');
-    this.localSubnet = registerOutput<String>('localSubnet');
-    this.maxConnections = registerOutput<int>('maxConnections');
+         'alicloud:vpn/sslVpnServer:SslVpnServer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cipher = registerOutput<String?>('cipher');
+    clientIpPool = registerOutput<String>('clientIpPool');
+    compress = registerOutput<bool?>('compress');
+    connections = registerOutput<int>('connections');
+    internetIp = registerOutput<String>('internetIp');
+    localSubnet = registerOutput<String>('localSubnet');
+    maxConnections = registerOutput<int>('maxConnections');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int?>('port');
-    this.protocol = registerOutput<String?>('protocol');
-    this.vpnGatewayId = registerOutput<String>('vpnGatewayId');
+    port = registerOutput<int?>('port');
+    protocol = registerOutput<String?>('protocol');
+    vpnGatewayId = registerOutput<String>('vpnGatewayId');
   }
 }

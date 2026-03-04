@@ -3,16 +3,15 @@ enum ApplicationGroupType {
   valueRemoteApp("RemoteApp"),
   valueDesktop("Desktop");
 
-  const ApplicationGroupType(this.value);
-  final String value;
+  const ApplicationGroupType(this.wireValue);
+  final String wireValue;
 
   static ApplicationGroupType fromValue(String value) {
     for (final item in ApplicationGroupType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationGroupType value: $value');
   }
 }
-

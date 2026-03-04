@@ -37,22 +37,63 @@ class ArcConfiguration {
       'artifactStorageClassName': ?artifactStorageClassName,
       'artifactStorageMountPath': ?artifactStorageMountPath,
       'artifactStorageNodeName': ?artifactStorageNodeName,
-      'artifactsStorageType': ?pulumi.Input.mapOptionalInputValue<StorageType, String>(artifactsStorageType, (value) => value.value),
-      'frontEndServiceConfiguration': ?pulumi.Input.mapOptionalInputValue<FrontEndConfiguration, Map<String, dynamic>>(frontEndServiceConfiguration, (value) => value.toMap()),
+      'artifactsStorageType':
+          ?pulumi.Input.mapOptionalInputValue<StorageType, String>(
+            artifactsStorageType,
+            (value) => value.wireValue,
+          ),
+      'frontEndServiceConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            FrontEndConfiguration,
+            Map<String, dynamic>
+          >(frontEndServiceConfiguration, (value) => value.toMap()),
       'kubeConfig': ?kubeConfig,
     };
   }
 
   factory ArcConfiguration.fromMap(Map<String, dynamic> map) {
     return ArcConfiguration(
-      artifactStorageAccessMode: map['artifactStorageAccessMode'] == null ? null : (map['artifactStorageAccessMode']! as String).input(),
-      artifactStorageClassName: map['artifactStorageClassName'] == null ? null : (map['artifactStorageClassName']! as String).input(),
-      artifactStorageMountPath: map['artifactStorageMountPath'] == null ? null : (map['artifactStorageMountPath']! as String).input(),
-      artifactStorageNodeName: map['artifactStorageNodeName'] == null ? null : (map['artifactStorageNodeName']! as String).input(),
-      artifactsStorageType: map['artifactsStorageType'] == null ? null : (StorageType.fromValue(map['artifactsStorageType']! as String)).input(),
-      frontEndServiceConfiguration: map['frontEndServiceConfiguration'] == null ? null : (FrontEndConfiguration.fromMap((map['frontEndServiceConfiguration']! as Map).cast<String, dynamic>())).input(),
-      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig']! as String).input(),
+      artifactStorageAccessMode: (() {
+        final guardedValue = map['artifactStorageAccessMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      artifactStorageClassName: (() {
+        final guardedValue = map['artifactStorageClassName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      artifactStorageMountPath: (() {
+        final guardedValue = map['artifactStorageMountPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      artifactStorageNodeName: (() {
+        final guardedValue = map['artifactStorageNodeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      artifactsStorageType: (() {
+        final guardedValue = map['artifactsStorageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageType.fromValue(guardedValue as String),
+        );
+      })(),
+      frontEndServiceConfiguration: (() {
+        final guardedValue = map['frontEndServiceConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FrontEndConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kubeConfig: (() {
+        final guardedValue = map['kubeConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

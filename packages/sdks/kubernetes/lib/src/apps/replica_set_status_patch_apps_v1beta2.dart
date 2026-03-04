@@ -7,14 +7,19 @@ import 'replica_set_condition_patch_apps_v1beta2.dart';
 class ReplicaSetStatusPatchAppsV1beta2 {
   /// The number of available replicas (ready for at least minReadySeconds) for this replica set.
   final pulumi.Input<int>? availableReplicas;
+
   /// Represents the latest available observations of a replica set's current state.
   final pulumi.Input<List<ReplicaSetConditionPatchAppsV1beta2>>? conditions;
+
   /// The number of pods that have labels matching the labels of the pod template of the replicaset.
   final pulumi.Input<int>? fullyLabeledReplicas;
+
   /// ObservedGeneration reflects the generation of the most recently observed ReplicaSet.
   final pulumi.Input<int>? observedGeneration;
+
   /// The number of ready replicas for this replica set.
   final pulumi.Input<int>? readyReplicas;
+
   /// Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
   final pulumi.Input<int>? replicas;
 
@@ -37,7 +42,18 @@ class ReplicaSetStatusPatchAppsV1beta2 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availableReplicas': ?availableReplicas,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ReplicaSetConditionPatchAppsV1beta2>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ReplicaSetConditionPatchAppsV1beta2, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReplicaSetConditionPatchAppsV1beta2>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReplicaSetConditionPatchAppsV1beta2,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'fullyLabeledReplicas': ?fullyLabeledReplicas,
       'observedGeneration': ?observedGeneration,
       'readyReplicas': ?readyReplicas,
@@ -47,13 +63,43 @@ class ReplicaSetStatusPatchAppsV1beta2 {
 
   factory ReplicaSetStatusPatchAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return ReplicaSetStatusPatchAppsV1beta2(
-      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas']! as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ReplicaSetConditionPatchAppsV1beta2>(map['conditions']!, (value) => ReplicaSetConditionPatchAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fullyLabeledReplicas: map['fullyLabeledReplicas'] == null ? null : (map['fullyLabeledReplicas']! as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
-      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas']! as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      availableReplicas: (() {
+        final guardedValue = map['availableReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReplicaSetConditionPatchAppsV1beta2>(
+            guardedValue,
+            (value) => ReplicaSetConditionPatchAppsV1beta2.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      fullyLabeledReplicas: (() {
+        final guardedValue = map['fullyLabeledReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      observedGeneration: (() {
+        final guardedValue = map['observedGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      readyReplicas: (() {
+        final guardedValue = map['readyReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicas: (() {
+        final guardedValue = map['replicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

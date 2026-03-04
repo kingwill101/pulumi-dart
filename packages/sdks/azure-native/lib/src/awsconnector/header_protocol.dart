@@ -20,16 +20,15 @@ enum HeaderProtocol {
   tLS("TLS"),
   uDP("UDP");
 
-  const HeaderProtocol(this.value);
-  final String value;
+  const HeaderProtocol(this.wireValue);
+  final String wireValue;
 
   static HeaderProtocol fromValue(String value) {
     for (final item in HeaderProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HeaderProtocol value: $value');
   }
 }
-

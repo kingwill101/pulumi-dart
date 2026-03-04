@@ -87,8 +87,8 @@ import 'chart_helm_sh_v4_args.dart';
 ///
 /// | Resource Scope   | Format                                         |
 /// | :--------------- | :--------------------------------------------- |
-/// | namespace-scoped | `<group>/namespaces/<namespace>/<kind>/<name>` |
-/// | cluster-scoped   | `<group>/<kind>/<name>`                        |
+/// | namespace-scoped | `&lt;group&gt;/namespaces/&lt;namespace&gt;/&lt;kind&gt;/&lt;name&gt;` |
+/// | cluster-scoped   | `&lt;group&gt;/&lt;kind&gt;/&lt;name&gt;`                        |
 ///
 /// For resources in the “core” group, the empty string is used instead (for example: `/namespaces/test/Pod/pod-a`).
 ///
@@ -661,7 +661,7 @@ import 'chart_helm_sh_v4_args.dart';
 /// {{% /examples %}}
 class ChartHelmShV4 extends pulumi.ComponentResource {
   /// Resources created by the Chart.
-  late final pulumi.Output<List<dynamic>?> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resources;
 
   /// Creates a new [ChartHelmShV4].
   /// [name] The Pulumi resource name.
@@ -672,11 +672,12 @@ class ChartHelmShV4 extends pulumi.ComponentResource {
     ChartHelmShV4Args? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'kubernetes:helm.sh/v4:Chart',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
-    this.resources = registerOutput<List<dynamic>?>('resources');
+         'kubernetes:helm.sh/v4:Chart',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+         remote: true,
+       ) {
+    resources = registerOutput<List<Map<String, dynamic>>?>('resources');
   }
 }

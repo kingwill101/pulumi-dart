@@ -5,16 +5,17 @@ enum AliasContextKindContaineranalysisV1beta1 {
   movable("MOVABLE"),
   other("OTHER");
 
-  const AliasContextKindContaineranalysisV1beta1(this.value);
-  final String value;
+  const AliasContextKindContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static AliasContextKindContaineranalysisV1beta1 fromValue(String value) {
     for (final item in AliasContextKindContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AliasContextKindContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown AliasContextKindContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

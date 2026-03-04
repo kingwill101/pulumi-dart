@@ -140,44 +140,56 @@ class NodeGroup extends pulumi.CustomResource {
   /// Changing this creates a new node group.
   late final pulumi.Output<String> clusterId;
   late final pulumi.Output<String> createdAt;
+
   /// The size (in GB) of the Docker volume.
   /// Changing this creates a new node group.
   late final pulumi.Output<int> dockerVolumeSize;
+
   /// The flavor for the nodes of the node group. Can be set
   /// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
   /// node group.
   late final pulumi.Output<String> flavorId;
+
   /// The reference to an image that is used for nodes of the
   /// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
   /// Changing this updates the image attribute of the existing node group.
   late final pulumi.Output<String> imageId;
+
   /// The list of key value pairs representing additional
   /// properties of the node group. Changing this creates a new node group.
   late final pulumi.Output<Map<String, String>> labels;
+
   /// The maximum number of nodes for the node group.
   /// Changing this update the maximum number of nodes of the node group.
   late final pulumi.Output<int?> maxNodeCount;
+
   /// Indicates whether the provided labels should be
   /// merged with cluster labels. Changing this creates a new nodegroup.
   late final pulumi.Output<bool?> mergeLabels;
+
   /// The minimum number of nodes for the node group.
   /// Changing this update the minimum number of nodes of the node group.
   late final pulumi.Output<int> minNodeCount;
+
   /// The name of the node group. Changing this creates a new
   /// node group.
   late final pulumi.Output<String> name;
+
   /// The number of nodes for the node group. Changing
   /// this update the number of nodes of the node group.
   late final pulumi.Output<int?> nodeCount;
+
   /// The project of the node group. Required if admin
   /// wants to create a cluster in another project. Changing this creates a new
   /// node group.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V1 Container Infra
   /// client. A Container Infra client is needed to create a cluster. If omitted,
   /// the `region` argument of the provider is used. Changing this creates a new
   /// node group.
   late final pulumi.Output<String> region;
+
   /// The role of nodes in the node group. Changing this
   /// creates a new node group.
   late final pulumi.Output<String> role;
@@ -192,26 +204,26 @@ class NodeGroup extends pulumi.CustomResource {
     NodeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:containerinfra/nodeGroup:NodeGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
-    this.flavorId = registerOutput<String>('flavorId');
-    this.imageId = registerOutput<String>('imageId');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.maxNodeCount = registerOutput<int?>('maxNodeCount');
-    this.mergeLabels = registerOutput<bool?>('mergeLabels');
-    this.minNodeCount = registerOutput<int>('minNodeCount');
+         'openstack:containerinfra/nodeGroup:NodeGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    createdAt = registerOutput<String>('createdAt');
+    dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
+    flavorId = registerOutput<String>('flavorId');
+    imageId = registerOutput<String>('imageId');
+    labels = registerOutput<Map<String, String>>('labels');
+    maxNodeCount = registerOutput<int?>('maxNodeCount');
+    mergeLabels = registerOutput<bool?>('mergeLabels');
+    minNodeCount = registerOutput<int>('minNodeCount');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int?>('nodeCount');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    nodeCount = registerOutput<int?>('nodeCount');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [NodeGroup] resource's state with the given [name] and [id].
@@ -232,25 +244,25 @@ class NodeGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:containerinfra/nodeGroup:NodeGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
-    this.flavorId = registerOutput<String>('flavorId');
-    this.imageId = registerOutput<String>('imageId');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.maxNodeCount = registerOutput<int?>('maxNodeCount');
-    this.mergeLabels = registerOutput<bool?>('mergeLabels');
-    this.minNodeCount = registerOutput<int>('minNodeCount');
+         'openstack:containerinfra/nodeGroup:NodeGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    createdAt = registerOutput<String>('createdAt');
+    dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
+    flavorId = registerOutput<String>('flavorId');
+    imageId = registerOutput<String>('imageId');
+    labels = registerOutput<Map<String, String>>('labels');
+    maxNodeCount = registerOutput<int?>('maxNodeCount');
+    mergeLabels = registerOutput<bool?>('mergeLabels');
+    minNodeCount = registerOutput<int>('minNodeCount');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int?>('nodeCount');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    nodeCount = registerOutput<int?>('nodeCount');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

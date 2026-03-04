@@ -352,7 +352,7 @@ import 'network_interface_application_security_group_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -365,10 +365,12 @@ import 'network_interface_application_security_group_association_state.dart';
 /// $ pulumi import azure:network/networkInterfaceApplicationSecurityGroupAssociation:NetworkInterfaceApplicationSecurityGroupAssociation association1 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/networkInterfaces/nic1|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/applicationSecurityGroups/securityGroup1"
 /// ```
 ///
-/// > **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}|{applicationSecurityGroupId}`.
-class NetworkInterfaceApplicationSecurityGroupAssociation extends pulumi.CustomResource {
+/// &gt; **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}|{applicationSecurityGroupId}`.
+class NetworkInterfaceApplicationSecurityGroupAssociation
+    extends pulumi.CustomResource {
   /// The ID of the Application Security Group which this Network Interface which should be connected to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationSecurityGroupId;
+
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkInterfaceId;
 
@@ -381,13 +383,15 @@ class NetworkInterfaceApplicationSecurityGroupAssociation extends pulumi.CustomR
     NetworkInterfaceApplicationSecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceApplicationSecurityGroupAssociation:NetworkInterfaceApplicationSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+         'azure:network/networkInterfaceApplicationSecurityGroupAssociation:NetworkInterfaceApplicationSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationSecurityGroupId = registerOutput<String>(
+      'applicationSecurityGroupId',
+    );
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
   }
 
   /// Gets an existing [NetworkInterfaceApplicationSecurityGroupAssociation] resource's state with the given [name] and [id].
@@ -408,12 +412,14 @@ class NetworkInterfaceApplicationSecurityGroupAssociation extends pulumi.CustomR
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceApplicationSecurityGroupAssociation:NetworkInterfaceApplicationSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationSecurityGroupId = registerOutput<String>('applicationSecurityGroupId');
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
+         'azure:network/networkInterfaceApplicationSecurityGroupAssociation:NetworkInterfaceApplicationSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationSecurityGroupId = registerOutput<String>(
+      'applicationSecurityGroupId',
+    );
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
   }
 }

@@ -1,5 +1,3 @@
-library module_pubsublite;
-
 export 'pubsublite/capacity.dart';
 export 'pubsublite/capacity_response.dart';
 export 'pubsublite/delivery_config.dart';

@@ -231,28 +231,40 @@ import 'wsfc_domain_profile_response.dart';
 class SqlVirtualMachineGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Cluster type.
   late final pulumi.Output<String> clusterConfiguration;
+
   /// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
   late final pulumi.Output<String> clusterManagerType;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state to track the async operation status.
   late final pulumi.Output<String> provisioningState;
+
   /// Scale type.
   late final pulumi.Output<String> scaleType;
+
   /// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
   late final pulumi.Output<String?> sqlImageOffer;
+
   /// SQL image sku.
   late final pulumi.Output<String?> sqlImageSku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Cluster Active Directory domain profile.
   late final pulumi.Output<WsfcDomainProfileResponse?> wsfcDomainProfile;
 
@@ -265,23 +277,25 @@ class SqlVirtualMachineGroup extends pulumi.CustomResource {
     SqlVirtualMachineGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sqlvirtualmachine:SqlVirtualMachineGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterConfiguration = registerOutput<String>('clusterConfiguration');
-    this.clusterManagerType = registerOutput<String>('clusterManagerType');
-    this.location = registerOutput<String>('location');
+         'azure-native:sqlvirtualmachine:SqlVirtualMachineGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterConfiguration = registerOutput<String>('clusterConfiguration');
+    clusterManagerType = registerOutput<String>('clusterManagerType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.scaleType = registerOutput<String>('scaleType');
-    this.sqlImageOffer = registerOutput<String?>('sqlImageOffer');
-    this.sqlImageSku = registerOutput<String?>('sqlImageSku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.wsfcDomainProfile = registerOutput<WsfcDomainProfileResponse?>('wsfcDomainProfile');
+    provisioningState = registerOutput<String>('provisioningState');
+    scaleType = registerOutput<String>('scaleType');
+    sqlImageOffer = registerOutput<String?>('sqlImageOffer');
+    sqlImageSku = registerOutput<String?>('sqlImageSku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    wsfcDomainProfile = registerOutput<WsfcDomainProfileResponse?>(
+      'wsfcDomainProfile',
+    );
   }
 }

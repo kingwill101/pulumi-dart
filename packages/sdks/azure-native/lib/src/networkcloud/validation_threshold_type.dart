@@ -3,16 +3,15 @@ enum ValidationThresholdType {
   valueCountSuccess("CountSuccess"),
   valuePercentSuccess("PercentSuccess");
 
-  const ValidationThresholdType(this.value);
-  final String value;
+  const ValidationThresholdType(this.wireValue);
+  final String wireValue;
 
   static ValidationThresholdType fromValue(String value) {
     for (final item in ValidationThresholdType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ValidationThresholdType value: $value');
   }
 }
-

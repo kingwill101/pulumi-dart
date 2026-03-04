@@ -1,5 +1,3 @@
-library module_management;
-
 export 'management/create_management_group_details.dart';
 export 'management/create_parent_group_info.dart';
 export 'management/descendant_parent_group_info_response.dart';

@@ -10,20 +10,29 @@ class ApigatewayApiConfigOpenApiDocument {
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocument].
   /// [document] The OpenAPI Specification document file.
-  ApigatewayApiConfigOpenApiDocument({
-    this.document,
-  });
+  ApigatewayApiConfigOpenApiDocument({this.document});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'document': ?pulumi.Input.mapOptionalInputValue<ApigatewayApiConfigFile, Map<String, dynamic>>(document, (value) => value.toMap()),
+      'document':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApigatewayApiConfigFile,
+            Map<String, dynamic>
+          >(document, (value) => value.toMap()),
     };
   }
 
   factory ApigatewayApiConfigOpenApiDocument.fromMap(Map<String, dynamic> map) {
     return ApigatewayApiConfigOpenApiDocument(
-      document: map['document'] == null ? null : (ApigatewayApiConfigFile.fromMap((map['document']! as Map).cast<String, dynamic>())).input(),
+      document: (() {
+        final guardedValue = map['document'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApigatewayApiConfigFile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum GoogleCloudMlV1MetricSpecName {
   cpuUsage("CPU_USAGE"),
   gpuDutyCycle("GPU_DUTY_CYCLE");
 
-  const GoogleCloudMlV1MetricSpecName(this.value);
-  final String value;
+  const GoogleCloudMlV1MetricSpecName(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1MetricSpecName fromValue(String value) {
     for (final item in GoogleCloudMlV1MetricSpecName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GoogleCloudMlV1MetricSpecName value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum PartitionScheme {
   uniformInt64Range("UniformInt64Range"),
   named("Named");
 
-  const PartitionScheme(this.value);
-  final String value;
+  const PartitionScheme(this.wireValue);
+  final String wireValue;
 
   static PartitionScheme fromValue(String value) {
     for (final item in PartitionScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PartitionScheme value: $value');
   }
 }
-

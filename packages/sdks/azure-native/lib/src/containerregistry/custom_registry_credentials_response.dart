@@ -11,9 +11,11 @@ class CustomRegistryCredentialsResponse {
   /// identity may be used to authenticate to key vault to retrieve credentials or it may be the only
   /// source of authentication used for accessing the registry.
   final pulumi.Input<String>? identity;
+
   /// The password for logging into the custom registry. The password is a secret
   /// object that allows multiple ways of providing the value for it.
   final pulumi.Input<SecretObjectResponse>? password;
+
   /// The username for logging into the custom registry.
   final pulumi.Input<SecretObjectResponse>? userName;
 
@@ -30,17 +32,44 @@ class CustomRegistryCredentialsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'identity': ?identity,
-      'password': ?pulumi.Input.mapOptionalInputValue<SecretObjectResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
-      'userName': ?pulumi.Input.mapOptionalInputValue<SecretObjectResponse, Map<String, dynamic>>(userName, (value) => value.toMap()),
+      'password':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretObjectResponse,
+            Map<String, dynamic>
+          >(password, (value) => value.toMap()),
+      'userName':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretObjectResponse,
+            Map<String, dynamic>
+          >(userName, (value) => value.toMap()),
     };
   }
 
   factory CustomRegistryCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return CustomRegistryCredentialsResponse(
-      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
-      password: map['password'] == null ? null : (SecretObjectResponse.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (SecretObjectResponse.fromMap((map['userName']! as Map).cast<String, dynamic>())).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretObjectResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretObjectResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

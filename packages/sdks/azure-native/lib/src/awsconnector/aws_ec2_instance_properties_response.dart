@@ -33,179 +33,241 @@ import 'virtualization_type_enum_value_response.dart';
 
 /// Definition of awsEc2Instance
 class AwsEc2InstancePropertiesResponse {
-  /// <p>The AMI launch index, which can be used to find this instance in the launch group.</p>
+  /// &lt;p&gt;The AMI launch index, which can be used to find this instance in the launch group.&lt;/p&gt;
   final pulumi.Input<int>? amiLaunchIndex;
-  /// <p>The architecture of the image.</p>
+
+  /// &lt;p&gt;The architecture of the image.&lt;/p&gt;
   final pulumi.Input<ArchitectureValuesEnumValueResponse>? architecture;
-  /// <p>Any block device mapping entries for the instance.</p>
-  final pulumi.Input<List<InstanceBlockDeviceMappingResponse>>? blockDeviceMappings;
-  /// <p>The boot mode that was specified by the AMI. If the value is <code>uefi-preferred</code>, the AMI supports both UEFI and Legacy BIOS. The <code>currentInstanceBootMode</code> parameter is the boot mode that is used to boot the instance at launch or start.</p> <note> <p>The operating system contained in the AMI must be configured to support the specified boot mode.</p> </note> <p>For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'>Boot modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;Any block device mapping entries for the instance.&lt;/p&gt;
+  final pulumi.Input<List<InstanceBlockDeviceMappingResponse>>?
+  blockDeviceMappings;
+
+  /// &lt;p&gt;The boot mode that was specified by the AMI. If the value is &lt;code&gt;uefi-preferred&lt;/code&gt;, the AMI supports both UEFI and Legacy BIOS. The &lt;code&gt;currentInstanceBootMode&lt;/code&gt; parameter is the boot mode that is used to boot the instance at launch or start.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The operating system contained in the AMI must be configured to support the specified boot mode.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'&gt;Boot modes&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<BootModeValuesEnumValueResponse>? bootMode;
-  /// <p>The ID of the Capacity Reservation.</p>
+
+  /// &lt;p&gt;The ID of the Capacity Reservation.&lt;/p&gt;
   final pulumi.Input<String>? capacityReservationId;
-  /// <p>Information about the Capacity Reservation targeting option.</p>
-  final pulumi.Input<CapacityReservationSpecificationResponseResponse>? capacityReservationSpecification;
-  /// <p>The idempotency token you provided when you launched the instance, if applicable.</p>
+
+  /// &lt;p&gt;Information about the Capacity Reservation targeting option.&lt;/p&gt;
+  final pulumi.Input<CapacityReservationSpecificationResponseResponse>?
+  capacityReservationSpecification;
+
+  /// &lt;p&gt;The idempotency token you provided when you launched the instance, if applicable.&lt;/p&gt;
   final pulumi.Input<String>? clientToken;
-  /// <p>The CPU options for the instance.</p>
+
+  /// &lt;p&gt;The CPU options for the instance.&lt;/p&gt;
   final pulumi.Input<CpuOptionsResponse>? cpuOptions;
-  /// <p>The boot mode that is used to boot the instance at launch or start. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'>Boot modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  final pulumi.Input<InstanceBootModeValuesEnumValueResponse>? currentInstanceBootMode;
-  /// <p>Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.</p>
+
+  /// &lt;p&gt;The boot mode that is used to boot the instance at launch or start. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'&gt;Boot modes&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  final pulumi.Input<InstanceBootModeValuesEnumValueResponse>?
+  currentInstanceBootMode;
+
+  /// &lt;p&gt;Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.&lt;/p&gt;
   final pulumi.Input<bool>? ebsOptimized;
-  /// <p>Deprecated.</p> <note> <p>Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4ad, G4dn, or G5 instances.</p> </note>
-  final pulumi.Input<List<ElasticGpuAssociationResponse>>? elasticGpuAssociations;
-  /// <p>The elastic inference accelerator associated with the instance.</p>
-  final pulumi.Input<List<ElasticInferenceAcceleratorAssociationResponse>>? elasticInferenceAcceleratorAssociations;
-  /// <p>Specifies whether enhanced networking with ENA is enabled.</p>
+
+  /// &lt;p&gt;Deprecated.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4ad, G4dn, or G5 instances.&lt;/p&gt; &lt;/note&gt;
+  final pulumi.Input<List<ElasticGpuAssociationResponse>>?
+  elasticGpuAssociations;
+
+  /// &lt;p&gt;The elastic inference accelerator associated with the instance.&lt;/p&gt;
+  final pulumi.Input<List<ElasticInferenceAcceleratorAssociationResponse>>?
+  elasticInferenceAcceleratorAssociations;
+
+  /// &lt;p&gt;Specifies whether enhanced networking with ENA is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? enaSupport;
-  /// <p>Indicates whether the instance is enabled for Amazon Web Services Nitro Enclaves.</p>
+
+  /// &lt;p&gt;Indicates whether the instance is enabled for Amazon Web Services Nitro Enclaves.&lt;/p&gt;
   final pulumi.Input<EnclaveOptionsResponse>? enclaveOptions;
-  /// <p>Indicates whether the instance is enabled for hibernation.</p>
+
+  /// &lt;p&gt;Indicates whether the instance is enabled for hibernation.&lt;/p&gt;
   final pulumi.Input<HibernationOptionsResponse>? hibernationOptions;
-  /// <p>The hypervisor type of the instance. The value <code>xen</code> is used for both Xen and Nitro hypervisors.</p>
+
+  /// &lt;p&gt;The hypervisor type of the instance. The value &lt;code&gt;xen&lt;/code&gt; is used for both Xen and Nitro hypervisors.&lt;/p&gt;
   final pulumi.Input<HypervisorTypeEnumValueResponse>? hypervisor;
-  /// <p>The IAM instance profile associated with the instance, if applicable.</p>
+
+  /// &lt;p&gt;The IAM instance profile associated with the instance, if applicable.&lt;/p&gt;
   final pulumi.Input<IamInstanceProfileResponse>? iamInstanceProfile;
-  /// <p>The ID of the AMI used to launch the instance.</p>
+
+  /// &lt;p&gt;The ID of the AMI used to launch the instance.&lt;/p&gt;
   final pulumi.Input<String>? imageId;
-  /// <p>The ID of the instance.</p>
+
+  /// &lt;p&gt;The ID of the instance.&lt;/p&gt;
   final pulumi.Input<String>? instanceId;
-  /// <p>Indicates whether this is a Spot Instance or a Scheduled Instance.</p>
+
+  /// &lt;p&gt;Indicates whether this is a Spot Instance or a Scheduled Instance.&lt;/p&gt;
   final pulumi.Input<InstanceLifecycleTypeEnumValueResponse>? instanceLifecycle;
-  /// <p>The instance type.</p>
+
+  /// &lt;p&gt;The instance type.&lt;/p&gt;
   final pulumi.Input<InstanceTypeEnumValueResponse>? instanceType;
-  /// <p>The IPv6 address assigned to the instance.</p>
+
+  /// &lt;p&gt;The IPv6 address assigned to the instance.&lt;/p&gt;
   final pulumi.Input<String>? ipv6Address;
-  /// <p>The kernel associated with this instance, if applicable.</p>
+
+  /// &lt;p&gt;The kernel associated with this instance, if applicable.&lt;/p&gt;
   final pulumi.Input<String>? kernelId;
-  /// <p>The name of the key pair, if this instance was launched with an associated key pair.</p>
+
+  /// &lt;p&gt;The name of the key pair, if this instance was launched with an associated key pair.&lt;/p&gt;
   final pulumi.Input<String>? keyName;
-  /// <p>The time the instance was launched.</p>
+
+  /// &lt;p&gt;The time the instance was launched.&lt;/p&gt;
   final pulumi.Input<String>? launchTime;
-  /// <p>The license configurations for the instance.</p>
+
+  /// &lt;p&gt;The license configurations for the instance.&lt;/p&gt;
   final pulumi.Input<List<LicenseConfigurationResponse>>? licenses;
-  /// <p>Provides information on the recovery and maintenance options of your instance.</p>
+
+  /// &lt;p&gt;Provides information on the recovery and maintenance options of your instance.&lt;/p&gt;
   final pulumi.Input<InstanceMaintenanceOptionsResponse>? maintenanceOptions;
-  /// <p>The metadata options for the instance.</p>
+
+  /// &lt;p&gt;The metadata options for the instance.&lt;/p&gt;
   final pulumi.Input<InstanceMetadataOptionsResponseResponse>? metadataOptions;
-  /// <p>The monitoring for the instance.</p>
+
+  /// &lt;p&gt;The monitoring for the instance.&lt;/p&gt;
   final pulumi.Input<MonitoringResponse>? monitoring;
-  /// <p>The network interfaces for the instance.</p>
+
+  /// &lt;p&gt;The network interfaces for the instance.&lt;/p&gt;
   final pulumi.Input<List<InstanceNetworkInterfaceResponse>>? networkInterfaces;
-  /// <p>The Amazon Resource Name (ARN) of the Outpost.</p>
+
+  /// &lt;p&gt;The Amazon Resource Name (ARN) of the Outpost.&lt;/p&gt;
   final pulumi.Input<String>? outpostArn;
-  /// <p>The location where the instance launched, if applicable.</p>
+
+  /// &lt;p&gt;The location where the instance launched, if applicable.&lt;/p&gt;
   final pulumi.Input<PlacementResponse>? placement;
-  /// <p>The platform. This value is <code>windows</code> for Windows instances; otherwise, it is empty.</p>
+
+  /// &lt;p&gt;The platform. This value is &lt;code&gt;windows&lt;/code&gt; for Windows instances; otherwise, it is empty.&lt;/p&gt;
   final pulumi.Input<PlatformValuesEnumValueResponse>? platform;
-  /// <p>The platform details value for the instance. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'>AMI billing information fields</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;The platform details value for the instance. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'&gt;AMI billing information fields&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<String>? platformDetails;
-  /// <p>[IPv4 only] The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the <code>running</code> state. </p> <p>The Amazon-provided DNS server resolves Amazon-provided private DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If you are not using the Amazon-provided DNS server in your VPC, your custom domain name servers must resolve the hostname as appropriate.</p>
+
+  /// &lt;p&gt;[IPv4 only] The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the &lt;code&gt;running&lt;/code&gt; state. &lt;/p&gt; &lt;p&gt;The Amazon-provided DNS server resolves Amazon-provided private DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If you are not using the Amazon-provided DNS server in your VPC, your custom domain name servers must resolve the hostname as appropriate.&lt;/p&gt;
   final pulumi.Input<String>? privateDnsName;
-  /// <p>The options for the instance hostname.</p>
-  final pulumi.Input<PrivateDnsNameOptionsResponseResponse>? privateDnsNameOptions;
-  /// <p>The private IPv4 address assigned to the instance.</p>
+
+  /// &lt;p&gt;The options for the instance hostname.&lt;/p&gt;
+  final pulumi.Input<PrivateDnsNameOptionsResponseResponse>?
+  privateDnsNameOptions;
+
+  /// &lt;p&gt;The private IPv4 address assigned to the instance.&lt;/p&gt;
   final pulumi.Input<String>? privateIpAddress;
-  /// <p>The product codes attached to this instance, if applicable.</p>
+
+  /// &lt;p&gt;The product codes attached to this instance, if applicable.&lt;/p&gt;
   final pulumi.Input<List<ProductCodeResponse>>? productCodes;
-  /// <p>[IPv4 only] The public DNS name assigned to the instance. This name is not available until the instance enters the <code>running</code> state. This name is only available if you've enabled DNS hostnames for your VPC.</p>
+
+  /// &lt;p&gt;[IPv4 only] The public DNS name assigned to the instance. This name is not available until the instance enters the &lt;code&gt;running&lt;/code&gt; state. This name is only available if you've enabled DNS hostnames for your VPC.&lt;/p&gt;
   final pulumi.Input<String>? publicDnsName;
-  /// <p>The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable.</p> <p>A Carrier IP address only applies to an instance launched in a subnet associated with a Wavelength Zone.</p>
+
+  /// &lt;p&gt;The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable.&lt;/p&gt; &lt;p&gt;A Carrier IP address only applies to an instance launched in a subnet associated with a Wavelength Zone.&lt;/p&gt;
   final pulumi.Input<String>? publicIpAddress;
-  /// <p>The RAM disk associated with this instance, if applicable.</p>
+
+  /// &lt;p&gt;The RAM disk associated with this instance, if applicable.&lt;/p&gt;
   final pulumi.Input<String>? ramdiskId;
-  /// <p>The device name of the root device volume (for example, <code>/dev/sda1</code>).</p>
+
+  /// &lt;p&gt;The device name of the root device volume (for example, &lt;code&gt;/dev/sda1&lt;/code&gt;).&lt;/p&gt;
   final pulumi.Input<String>? rootDeviceName;
-  /// <p>The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.</p>
+
+  /// &lt;p&gt;The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.&lt;/p&gt;
   final pulumi.Input<DeviceTypeEnumValueResponse>? rootDeviceType;
-  /// <p>The security groups for the instance.</p>
+
+  /// &lt;p&gt;The security groups for the instance.&lt;/p&gt;
   final pulumi.Input<List<GroupIdentifierResponse>>? securityGroups;
-  /// <p>Indicates whether source/destination checking is enabled.</p>
+
+  /// &lt;p&gt;Indicates whether source/destination checking is enabled.&lt;/p&gt;
   final pulumi.Input<bool>? sourceDestCheck;
-  /// <p>If the request is a Spot Instance request, the ID of the request.</p>
+
+  /// &lt;p&gt;If the request is a Spot Instance request, the ID of the request.&lt;/p&gt;
   final pulumi.Input<String>? spotInstanceRequestId;
-  /// <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</p>
+
+  /// &lt;p&gt;Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.&lt;/p&gt;
   final pulumi.Input<String>? sriovNetSupport;
-  /// <p>The current state of the instance.</p>
+
+  /// &lt;p&gt;The current state of the instance.&lt;/p&gt;
   final pulumi.Input<InstanceStateResponse>? state;
-  /// <p>The reason for the most recent state transition.</p>
+
+  /// &lt;p&gt;The reason for the most recent state transition.&lt;/p&gt;
   final pulumi.Input<StateReasonResponse>? stateReason;
-  /// <p>The reason for the most recent state transition. This might be an empty string.</p>
+
+  /// &lt;p&gt;The reason for the most recent state transition. This might be an empty string.&lt;/p&gt;
   final pulumi.Input<String>? stateTransitionReason;
-  /// <p>The ID of the subnet in which the instance is running.</p>
+
+  /// &lt;p&gt;The ID of the subnet in which the instance is running.&lt;/p&gt;
   final pulumi.Input<String>? subnetId;
-  /// <p>Any tags assigned to the instance.</p>
+
+  /// &lt;p&gt;Any tags assigned to the instance.&lt;/p&gt;
   final pulumi.Input<List<TagResponse>>? tags;
-  /// <p>If the instance is configured for NitroTPM support, the value is <code>v2.0</code>. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'>NitroTPM</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;If the instance is configured for NitroTPM support, the value is &lt;code&gt;v2.0&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'&gt;NitroTPM&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<String>? tpmSupport;
-  /// <p>The usage operation value for the instance. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'>AMI billing information fields</a> in the <i>Amazon EC2 User Guide</i>.</p>
+
+  /// &lt;p&gt;The usage operation value for the instance. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'&gt;AMI billing information fields&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
   final pulumi.Input<String>? usageOperation;
-  /// <p>The time that the usage operation was last updated.</p>
+
+  /// &lt;p&gt;The time that the usage operation was last updated.&lt;/p&gt;
   final pulumi.Input<String>? usageOperationUpdateTime;
-  /// <p>The virtualization type of the instance.</p>
+
+  /// &lt;p&gt;The virtualization type of the instance.&lt;/p&gt;
   final pulumi.Input<VirtualizationTypeEnumValueResponse>? virtualizationType;
-  /// <p>The ID of the VPC in which the instance is running.</p>
+
+  /// &lt;p&gt;The ID of the VPC in which the instance is running.&lt;/p&gt;
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [AwsEc2InstancePropertiesResponse].
-  /// [amiLaunchIndex] <p>The AMI launch index, which can be used to find this instance in the launch group.</p>
-  /// [architecture] <p>The architecture of the image.</p>
-  /// [blockDeviceMappings] <p>Any block device mapping entries for the instance.</p>
-  /// [bootMode] <p>The boot mode that was specified by the AMI. If the value is <code>uefi-preferred</code>, the AMI supports both UEFI and Legacy BIOS. The <code>currentInstanceBootMode</code> parameter is the boot mode that is used to boot the instance at launch or start.</p> <note> <p>The operating system contained in the AMI must be configured to support the specified boot mode.</p> </note> <p>For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'>Boot modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [capacityReservationId] <p>The ID of the Capacity Reservation.</p>
-  /// [capacityReservationSpecification] <p>Information about the Capacity Reservation targeting option.</p>
-  /// [clientToken] <p>The idempotency token you provided when you launched the instance, if applicable.</p>
-  /// [cpuOptions] <p>The CPU options for the instance.</p>
-  /// [currentInstanceBootMode] <p>The boot mode that is used to boot the instance at launch or start. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'>Boot modes</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [ebsOptimized] <p>Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.</p>
-  /// [elasticGpuAssociations] <p>Deprecated.</p> <note> <p>Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4ad, G4dn, or G5 instances.</p> </note>
-  /// [elasticInferenceAcceleratorAssociations] <p>The elastic inference accelerator associated with the instance.</p>
-  /// [enaSupport] <p>Specifies whether enhanced networking with ENA is enabled.</p>
-  /// [enclaveOptions] <p>Indicates whether the instance is enabled for Amazon Web Services Nitro Enclaves.</p>
-  /// [hibernationOptions] <p>Indicates whether the instance is enabled for hibernation.</p>
-  /// [hypervisor] <p>The hypervisor type of the instance. The value <code>xen</code> is used for both Xen and Nitro hypervisors.</p>
-  /// [iamInstanceProfile] <p>The IAM instance profile associated with the instance, if applicable.</p>
-  /// [imageId] <p>The ID of the AMI used to launch the instance.</p>
-  /// [instanceId] <p>The ID of the instance.</p>
-  /// [instanceLifecycle] <p>Indicates whether this is a Spot Instance or a Scheduled Instance.</p>
-  /// [instanceType] <p>The instance type.</p>
-  /// [ipv6Address] <p>The IPv6 address assigned to the instance.</p>
-  /// [kernelId] <p>The kernel associated with this instance, if applicable.</p>
-  /// [keyName] <p>The name of the key pair, if this instance was launched with an associated key pair.</p>
-  /// [launchTime] <p>The time the instance was launched.</p>
-  /// [licenses] <p>The license configurations for the instance.</p>
-  /// [maintenanceOptions] <p>Provides information on the recovery and maintenance options of your instance.</p>
-  /// [metadataOptions] <p>The metadata options for the instance.</p>
-  /// [monitoring] <p>The monitoring for the instance.</p>
-  /// [networkInterfaces] <p>The network interfaces for the instance.</p>
-  /// [outpostArn] <p>The Amazon Resource Name (ARN) of the Outpost.</p>
-  /// [placement] <p>The location where the instance launched, if applicable.</p>
-  /// [platform] <p>The platform. This value is <code>windows</code> for Windows instances; otherwise, it is empty.</p>
-  /// [platformDetails] <p>The platform details value for the instance. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'>AMI billing information fields</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [privateDnsName] <p>[IPv4 only] The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the <code>running</code> state. </p> <p>The Amazon-provided DNS server resolves Amazon-provided private DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If you are not using the Amazon-provided DNS server in your VPC, your custom domain name servers must resolve the hostname as appropriate.</p>
-  /// [privateDnsNameOptions] <p>The options for the instance hostname.</p>
-  /// [privateIpAddress] <p>The private IPv4 address assigned to the instance.</p>
-  /// [productCodes] <p>The product codes attached to this instance, if applicable.</p>
-  /// [publicDnsName] <p>[IPv4 only] The public DNS name assigned to the instance. This name is not available until the instance enters the <code>running</code> state. This name is only available if you've enabled DNS hostnames for your VPC.</p>
-  /// [publicIpAddress] <p>The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable.</p> <p>A Carrier IP address only applies to an instance launched in a subnet associated with a Wavelength Zone.</p>
-  /// [ramdiskId] <p>The RAM disk associated with this instance, if applicable.</p>
-  /// [rootDeviceName] <p>The device name of the root device volume (for example, <code>/dev/sda1</code>).</p>
-  /// [rootDeviceType] <p>The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.</p>
-  /// [securityGroups] <p>The security groups for the instance.</p>
-  /// [sourceDestCheck] <p>Indicates whether source/destination checking is enabled.</p>
-  /// [spotInstanceRequestId] <p>If the request is a Spot Instance request, the ID of the request.</p>
-  /// [sriovNetSupport] <p>Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.</p>
-  /// [state] <p>The current state of the instance.</p>
-  /// [stateReason] <p>The reason for the most recent state transition.</p>
-  /// [stateTransitionReason] <p>The reason for the most recent state transition. This might be an empty string.</p>
-  /// [subnetId] <p>The ID of the subnet in which the instance is running.</p>
-  /// [tags] <p>Any tags assigned to the instance.</p>
-  /// [tpmSupport] <p>If the instance is configured for NitroTPM support, the value is <code>v2.0</code>. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'>NitroTPM</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [usageOperation] <p>The usage operation value for the instance. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'>AMI billing information fields</a> in the <i>Amazon EC2 User Guide</i>.</p>
-  /// [usageOperationUpdateTime] <p>The time that the usage operation was last updated.</p>
-  /// [virtualizationType] <p>The virtualization type of the instance.</p>
-  /// [vpcId] <p>The ID of the VPC in which the instance is running.</p>
+  /// [amiLaunchIndex] &lt;p&gt;The AMI launch index, which can be used to find this instance in the launch group.&lt;/p&gt;
+  /// [architecture] &lt;p&gt;The architecture of the image.&lt;/p&gt;
+  /// [blockDeviceMappings] &lt;p&gt;Any block device mapping entries for the instance.&lt;/p&gt;
+  /// [bootMode] &lt;p&gt;The boot mode that was specified by the AMI. If the value is &lt;code&gt;uefi-preferred&lt;/code&gt;, the AMI supports both UEFI and Legacy BIOS. The &lt;code&gt;currentInstanceBootMode&lt;/code&gt; parameter is the boot mode that is used to boot the instance at launch or start.&lt;/p&gt; &lt;note&gt; &lt;p&gt;The operating system contained in the AMI must be configured to support the specified boot mode.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'&gt;Boot modes&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [capacityReservationId] &lt;p&gt;The ID of the Capacity Reservation.&lt;/p&gt;
+  /// [capacityReservationSpecification] &lt;p&gt;Information about the Capacity Reservation targeting option.&lt;/p&gt;
+  /// [clientToken] &lt;p&gt;The idempotency token you provided when you launched the instance, if applicable.&lt;/p&gt;
+  /// [cpuOptions] &lt;p&gt;The CPU options for the instance.&lt;/p&gt;
+  /// [currentInstanceBootMode] &lt;p&gt;The boot mode that is used to boot the instance at launch or start. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html'&gt;Boot modes&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [ebsOptimized] &lt;p&gt;Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.&lt;/p&gt;
+  /// [elasticGpuAssociations] &lt;p&gt;Deprecated.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4ad, G4dn, or G5 instances.&lt;/p&gt; &lt;/note&gt;
+  /// [elasticInferenceAcceleratorAssociations] &lt;p&gt;The elastic inference accelerator associated with the instance.&lt;/p&gt;
+  /// [enaSupport] &lt;p&gt;Specifies whether enhanced networking with ENA is enabled.&lt;/p&gt;
+  /// [enclaveOptions] &lt;p&gt;Indicates whether the instance is enabled for Amazon Web Services Nitro Enclaves.&lt;/p&gt;
+  /// [hibernationOptions] &lt;p&gt;Indicates whether the instance is enabled for hibernation.&lt;/p&gt;
+  /// [hypervisor] &lt;p&gt;The hypervisor type of the instance. The value &lt;code&gt;xen&lt;/code&gt; is used for both Xen and Nitro hypervisors.&lt;/p&gt;
+  /// [iamInstanceProfile] &lt;p&gt;The IAM instance profile associated with the instance, if applicable.&lt;/p&gt;
+  /// [imageId] &lt;p&gt;The ID of the AMI used to launch the instance.&lt;/p&gt;
+  /// [instanceId] &lt;p&gt;The ID of the instance.&lt;/p&gt;
+  /// [instanceLifecycle] &lt;p&gt;Indicates whether this is a Spot Instance or a Scheduled Instance.&lt;/p&gt;
+  /// [instanceType] &lt;p&gt;The instance type.&lt;/p&gt;
+  /// [ipv6Address] &lt;p&gt;The IPv6 address assigned to the instance.&lt;/p&gt;
+  /// [kernelId] &lt;p&gt;The kernel associated with this instance, if applicable.&lt;/p&gt;
+  /// [keyName] &lt;p&gt;The name of the key pair, if this instance was launched with an associated key pair.&lt;/p&gt;
+  /// [launchTime] &lt;p&gt;The time the instance was launched.&lt;/p&gt;
+  /// [licenses] &lt;p&gt;The license configurations for the instance.&lt;/p&gt;
+  /// [maintenanceOptions] &lt;p&gt;Provides information on the recovery and maintenance options of your instance.&lt;/p&gt;
+  /// [metadataOptions] &lt;p&gt;The metadata options for the instance.&lt;/p&gt;
+  /// [monitoring] &lt;p&gt;The monitoring for the instance.&lt;/p&gt;
+  /// [networkInterfaces] &lt;p&gt;The network interfaces for the instance.&lt;/p&gt;
+  /// [outpostArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Outpost.&lt;/p&gt;
+  /// [placement] &lt;p&gt;The location where the instance launched, if applicable.&lt;/p&gt;
+  /// [platform] &lt;p&gt;The platform. This value is &lt;code&gt;windows&lt;/code&gt; for Windows instances; otherwise, it is empty.&lt;/p&gt;
+  /// [platformDetails] &lt;p&gt;The platform details value for the instance. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'&gt;AMI billing information fields&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [privateDnsName] &lt;p&gt;[IPv4 only] The private DNS hostname name assigned to the instance. This DNS hostname can only be used inside the Amazon EC2 network. This name is not available until the instance enters the &lt;code&gt;running&lt;/code&gt; state. &lt;/p&gt; &lt;p&gt;The Amazon-provided DNS server resolves Amazon-provided private DNS hostnames if you've enabled DNS resolution and DNS hostnames in your VPC. If you are not using the Amazon-provided DNS server in your VPC, your custom domain name servers must resolve the hostname as appropriate.&lt;/p&gt;
+  /// [privateDnsNameOptions] &lt;p&gt;The options for the instance hostname.&lt;/p&gt;
+  /// [privateIpAddress] &lt;p&gt;The private IPv4 address assigned to the instance.&lt;/p&gt;
+  /// [productCodes] &lt;p&gt;The product codes attached to this instance, if applicable.&lt;/p&gt;
+  /// [publicDnsName] &lt;p&gt;[IPv4 only] The public DNS name assigned to the instance. This name is not available until the instance enters the &lt;code&gt;running&lt;/code&gt; state. This name is only available if you've enabled DNS hostnames for your VPC.&lt;/p&gt;
+  /// [publicIpAddress] &lt;p&gt;The public IPv4 address, or the Carrier IP address assigned to the instance, if applicable.&lt;/p&gt; &lt;p&gt;A Carrier IP address only applies to an instance launched in a subnet associated with a Wavelength Zone.&lt;/p&gt;
+  /// [ramdiskId] &lt;p&gt;The RAM disk associated with this instance, if applicable.&lt;/p&gt;
+  /// [rootDeviceName] &lt;p&gt;The device name of the root device volume (for example, &lt;code&gt;/dev/sda1&lt;/code&gt;).&lt;/p&gt;
+  /// [rootDeviceType] &lt;p&gt;The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.&lt;/p&gt;
+  /// [securityGroups] &lt;p&gt;The security groups for the instance.&lt;/p&gt;
+  /// [sourceDestCheck] &lt;p&gt;Indicates whether source/destination checking is enabled.&lt;/p&gt;
+  /// [spotInstanceRequestId] &lt;p&gt;If the request is a Spot Instance request, the ID of the request.&lt;/p&gt;
+  /// [sriovNetSupport] &lt;p&gt;Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.&lt;/p&gt;
+  /// [state] &lt;p&gt;The current state of the instance.&lt;/p&gt;
+  /// [stateReason] &lt;p&gt;The reason for the most recent state transition.&lt;/p&gt;
+  /// [stateTransitionReason] &lt;p&gt;The reason for the most recent state transition. This might be an empty string.&lt;/p&gt;
+  /// [subnetId] &lt;p&gt;The ID of the subnet in which the instance is running.&lt;/p&gt;
+  /// [tags] &lt;p&gt;Any tags assigned to the instance.&lt;/p&gt;
+  /// [tpmSupport] &lt;p&gt;If the instance is configured for NitroTPM support, the value is &lt;code&gt;v2.0&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html'&gt;NitroTPM&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [usageOperation] &lt;p&gt;The usage operation value for the instance. For more information, see &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/billing-info-fields.html'&gt;AMI billing information fields&lt;/a&gt; in the &lt;i&gt;Amazon EC2 User Guide&lt;/i&gt;.&lt;/p&gt;
+  /// [usageOperationUpdateTime] &lt;p&gt;The time that the usage operation was last updated.&lt;/p&gt;
+  /// [virtualizationType] &lt;p&gt;The virtualization type of the instance.&lt;/p&gt;
+  /// [vpcId] &lt;p&gt;The ID of the VPC in which the instance is running.&lt;/p&gt;
   AwsEc2InstancePropertiesResponse({
     this.amiLaunchIndex,
     this.architecture,
@@ -269,125 +331,664 @@ class AwsEc2InstancePropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'amiLaunchIndex': ?amiLaunchIndex,
-      'architecture': ?pulumi.Input.mapOptionalInputValue<ArchitectureValuesEnumValueResponse, Map<String, dynamic>>(architecture, (value) => value.toMap()),
-      'blockDeviceMappings': ?pulumi.Input.mapOptionalInputValue<List<InstanceBlockDeviceMappingResponse>, List<Map<String, dynamic>>>(blockDeviceMappings, (value) => pulumi.Input.encodeList<InstanceBlockDeviceMappingResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'bootMode': ?pulumi.Input.mapOptionalInputValue<BootModeValuesEnumValueResponse, Map<String, dynamic>>(bootMode, (value) => value.toMap()),
+      'architecture':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArchitectureValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(architecture, (value) => value.toMap()),
+      'blockDeviceMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceBlockDeviceMappingResponse>,
+            List<Map<String, dynamic>>
+          >(
+            blockDeviceMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceBlockDeviceMappingResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'bootMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            BootModeValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(bootMode, (value) => value.toMap()),
       'capacityReservationId': ?capacityReservationId,
-      'capacityReservationSpecification': ?pulumi.Input.mapOptionalInputValue<CapacityReservationSpecificationResponseResponse, Map<String, dynamic>>(capacityReservationSpecification, (value) => value.toMap()),
+      'capacityReservationSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            CapacityReservationSpecificationResponseResponse,
+            Map<String, dynamic>
+          >(capacityReservationSpecification, (value) => value.toMap()),
       'clientToken': ?clientToken,
-      'cpuOptions': ?pulumi.Input.mapOptionalInputValue<CpuOptionsResponse, Map<String, dynamic>>(cpuOptions, (value) => value.toMap()),
-      'currentInstanceBootMode': ?pulumi.Input.mapOptionalInputValue<InstanceBootModeValuesEnumValueResponse, Map<String, dynamic>>(currentInstanceBootMode, (value) => value.toMap()),
+      'cpuOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            CpuOptionsResponse,
+            Map<String, dynamic>
+          >(cpuOptions, (value) => value.toMap()),
+      'currentInstanceBootMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceBootModeValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(currentInstanceBootMode, (value) => value.toMap()),
       'ebsOptimized': ?ebsOptimized,
-      'elasticGpuAssociations': ?pulumi.Input.mapOptionalInputValue<List<ElasticGpuAssociationResponse>, List<Map<String, dynamic>>>(elasticGpuAssociations, (value) => pulumi.Input.encodeList<ElasticGpuAssociationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'elasticInferenceAcceleratorAssociations': ?pulumi.Input.mapOptionalInputValue<List<ElasticInferenceAcceleratorAssociationResponse>, List<Map<String, dynamic>>>(elasticInferenceAcceleratorAssociations, (value) => pulumi.Input.encodeList<ElasticInferenceAcceleratorAssociationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'elasticGpuAssociations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ElasticGpuAssociationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            elasticGpuAssociations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ElasticGpuAssociationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'elasticInferenceAcceleratorAssociations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ElasticInferenceAcceleratorAssociationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            elasticInferenceAcceleratorAssociations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ElasticInferenceAcceleratorAssociationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enaSupport': ?enaSupport,
-      'enclaveOptions': ?pulumi.Input.mapOptionalInputValue<EnclaveOptionsResponse, Map<String, dynamic>>(enclaveOptions, (value) => value.toMap()),
-      'hibernationOptions': ?pulumi.Input.mapOptionalInputValue<HibernationOptionsResponse, Map<String, dynamic>>(hibernationOptions, (value) => value.toMap()),
-      'hypervisor': ?pulumi.Input.mapOptionalInputValue<HypervisorTypeEnumValueResponse, Map<String, dynamic>>(hypervisor, (value) => value.toMap()),
-      'iamInstanceProfile': ?pulumi.Input.mapOptionalInputValue<IamInstanceProfileResponse, Map<String, dynamic>>(iamInstanceProfile, (value) => value.toMap()),
+      'enclaveOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnclaveOptionsResponse,
+            Map<String, dynamic>
+          >(enclaveOptions, (value) => value.toMap()),
+      'hibernationOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            HibernationOptionsResponse,
+            Map<String, dynamic>
+          >(hibernationOptions, (value) => value.toMap()),
+      'hypervisor':
+          ?pulumi.Input.mapOptionalInputValue<
+            HypervisorTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(hypervisor, (value) => value.toMap()),
+      'iamInstanceProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            IamInstanceProfileResponse,
+            Map<String, dynamic>
+          >(iamInstanceProfile, (value) => value.toMap()),
       'imageId': ?imageId,
       'instanceId': ?instanceId,
-      'instanceLifecycle': ?pulumi.Input.mapOptionalInputValue<InstanceLifecycleTypeEnumValueResponse, Map<String, dynamic>>(instanceLifecycle, (value) => value.toMap()),
-      'instanceType': ?pulumi.Input.mapOptionalInputValue<InstanceTypeEnumValueResponse, Map<String, dynamic>>(instanceType, (value) => value.toMap()),
+      'instanceLifecycle':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceLifecycleTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(instanceLifecycle, (value) => value.toMap()),
+      'instanceType':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(instanceType, (value) => value.toMap()),
       'ipv6Address': ?ipv6Address,
       'kernelId': ?kernelId,
       'keyName': ?keyName,
       'launchTime': ?launchTime,
-      'licenses': ?pulumi.Input.mapOptionalInputValue<List<LicenseConfigurationResponse>, List<Map<String, dynamic>>>(licenses, (value) => pulumi.Input.encodeList<LicenseConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'maintenanceOptions': ?pulumi.Input.mapOptionalInputValue<InstanceMaintenanceOptionsResponse, Map<String, dynamic>>(maintenanceOptions, (value) => value.toMap()),
-      'metadataOptions': ?pulumi.Input.mapOptionalInputValue<InstanceMetadataOptionsResponseResponse, Map<String, dynamic>>(metadataOptions, (value) => value.toMap()),
-      'monitoring': ?pulumi.Input.mapOptionalInputValue<MonitoringResponse, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
-      'networkInterfaces': ?pulumi.Input.mapOptionalInputValue<List<InstanceNetworkInterfaceResponse>, List<Map<String, dynamic>>>(networkInterfaces, (value) => pulumi.Input.encodeList<InstanceNetworkInterfaceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'licenses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LicenseConfigurationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            licenses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LicenseConfigurationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'maintenanceOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceMaintenanceOptionsResponse,
+            Map<String, dynamic>
+          >(maintenanceOptions, (value) => value.toMap()),
+      'metadataOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceMetadataOptionsResponseResponse,
+            Map<String, dynamic>
+          >(metadataOptions, (value) => value.toMap()),
+      'monitoring':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringResponse,
+            Map<String, dynamic>
+          >(monitoring, (value) => value.toMap()),
+      'networkInterfaces':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceNetworkInterfaceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            networkInterfaces,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceNetworkInterfaceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'outpostArn': ?outpostArn,
-      'placement': ?pulumi.Input.mapOptionalInputValue<PlacementResponse, Map<String, dynamic>>(placement, (value) => value.toMap()),
-      'platform': ?pulumi.Input.mapOptionalInputValue<PlatformValuesEnumValueResponse, Map<String, dynamic>>(platform, (value) => value.toMap()),
+      'placement':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlacementResponse,
+            Map<String, dynamic>
+          >(placement, (value) => value.toMap()),
+      'platform':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlatformValuesEnumValueResponse,
+            Map<String, dynamic>
+          >(platform, (value) => value.toMap()),
       'platformDetails': ?platformDetails,
       'privateDnsName': ?privateDnsName,
-      'privateDnsNameOptions': ?pulumi.Input.mapOptionalInputValue<PrivateDnsNameOptionsResponseResponse, Map<String, dynamic>>(privateDnsNameOptions, (value) => value.toMap()),
+      'privateDnsNameOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateDnsNameOptionsResponseResponse,
+            Map<String, dynamic>
+          >(privateDnsNameOptions, (value) => value.toMap()),
       'privateIpAddress': ?privateIpAddress,
-      'productCodes': ?pulumi.Input.mapOptionalInputValue<List<ProductCodeResponse>, List<Map<String, dynamic>>>(productCodes, (value) => pulumi.Input.encodeList<ProductCodeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'productCodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ProductCodeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            productCodes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ProductCodeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'publicDnsName': ?publicDnsName,
       'publicIpAddress': ?publicIpAddress,
       'ramdiskId': ?ramdiskId,
       'rootDeviceName': ?rootDeviceName,
-      'rootDeviceType': ?pulumi.Input.mapOptionalInputValue<DeviceTypeEnumValueResponse, Map<String, dynamic>>(rootDeviceType, (value) => value.toMap()),
-      'securityGroups': ?pulumi.Input.mapOptionalInputValue<List<GroupIdentifierResponse>, List<Map<String, dynamic>>>(securityGroups, (value) => pulumi.Input.encodeList<GroupIdentifierResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rootDeviceType':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeviceTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(rootDeviceType, (value) => value.toMap()),
+      'securityGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GroupIdentifierResponse>,
+            List<Map<String, dynamic>>
+          >(
+            securityGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GroupIdentifierResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'sourceDestCheck': ?sourceDestCheck,
       'spotInstanceRequestId': ?spotInstanceRequestId,
       'sriovNetSupport': ?sriovNetSupport,
-      'state': ?pulumi.Input.mapOptionalInputValue<InstanceStateResponse, Map<String, dynamic>>(state, (value) => value.toMap()),
-      'stateReason': ?pulumi.Input.mapOptionalInputValue<StateReasonResponse, Map<String, dynamic>>(stateReason, (value) => value.toMap()),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceStateResponse,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
+      'stateReason':
+          ?pulumi.Input.mapOptionalInputValue<
+            StateReasonResponse,
+            Map<String, dynamic>
+          >(stateReason, (value) => value.toMap()),
       'stateTransitionReason': ?stateTransitionReason,
       'subnetId': ?subnetId,
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagResponse>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) =>
+                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tpmSupport': ?tpmSupport,
       'usageOperation': ?usageOperation,
       'usageOperationUpdateTime': ?usageOperationUpdateTime,
-      'virtualizationType': ?pulumi.Input.mapOptionalInputValue<VirtualizationTypeEnumValueResponse, Map<String, dynamic>>(virtualizationType, (value) => value.toMap()),
+      'virtualizationType':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualizationTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(virtualizationType, (value) => value.toMap()),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsEc2InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2InstancePropertiesResponse(
-      amiLaunchIndex: map['amiLaunchIndex'] == null ? null : (map['amiLaunchIndex']! as int).input(),
-      architecture: map['architecture'] == null ? null : (ArchitectureValuesEnumValueResponse.fromMap((map['architecture']! as Map).cast<String, dynamic>())).input(),
-      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : (pulumi.Input.decodeList<InstanceBlockDeviceMappingResponse>(map['blockDeviceMappings']!, (value) => InstanceBlockDeviceMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootMode: map['bootMode'] == null ? null : (BootModeValuesEnumValueResponse.fromMap((map['bootMode']! as Map).cast<String, dynamic>())).input(),
-      capacityReservationId: map['capacityReservationId'] == null ? null : (map['capacityReservationId']! as String).input(),
-      capacityReservationSpecification: map['capacityReservationSpecification'] == null ? null : (CapacityReservationSpecificationResponseResponse.fromMap((map['capacityReservationSpecification']! as Map).cast<String, dynamic>())).input(),
-      clientToken: map['clientToken'] == null ? null : (map['clientToken']! as String).input(),
-      cpuOptions: map['cpuOptions'] == null ? null : (CpuOptionsResponse.fromMap((map['cpuOptions']! as Map).cast<String, dynamic>())).input(),
-      currentInstanceBootMode: map['currentInstanceBootMode'] == null ? null : (InstanceBootModeValuesEnumValueResponse.fromMap((map['currentInstanceBootMode']! as Map).cast<String, dynamic>())).input(),
-      ebsOptimized: map['ebsOptimized'] == null ? null : (map['ebsOptimized']! as bool).input(),
-      elasticGpuAssociations: map['elasticGpuAssociations'] == null ? null : (pulumi.Input.decodeList<ElasticGpuAssociationResponse>(map['elasticGpuAssociations']!, (value) => ElasticGpuAssociationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      elasticInferenceAcceleratorAssociations: map['elasticInferenceAcceleratorAssociations'] == null ? null : (pulumi.Input.decodeList<ElasticInferenceAcceleratorAssociationResponse>(map['elasticInferenceAcceleratorAssociations']!, (value) => ElasticInferenceAcceleratorAssociationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enaSupport: map['enaSupport'] == null ? null : (map['enaSupport']! as bool).input(),
-      enclaveOptions: map['enclaveOptions'] == null ? null : (EnclaveOptionsResponse.fromMap((map['enclaveOptions']! as Map).cast<String, dynamic>())).input(),
-      hibernationOptions: map['hibernationOptions'] == null ? null : (HibernationOptionsResponse.fromMap((map['hibernationOptions']! as Map).cast<String, dynamic>())).input(),
-      hypervisor: map['hypervisor'] == null ? null : (HypervisorTypeEnumValueResponse.fromMap((map['hypervisor']! as Map).cast<String, dynamic>())).input(),
-      iamInstanceProfile: map['iamInstanceProfile'] == null ? null : (IamInstanceProfileResponse.fromMap((map['iamInstanceProfile']! as Map).cast<String, dynamic>())).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      instanceLifecycle: map['instanceLifecycle'] == null ? null : (InstanceLifecycleTypeEnumValueResponse.fromMap((map['instanceLifecycle']! as Map).cast<String, dynamic>())).input(),
-      instanceType: map['instanceType'] == null ? null : (InstanceTypeEnumValueResponse.fromMap((map['instanceType']! as Map).cast<String, dynamic>())).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
-      kernelId: map['kernelId'] == null ? null : (map['kernelId']! as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      launchTime: map['launchTime'] == null ? null : (map['launchTime']! as String).input(),
-      licenses: map['licenses'] == null ? null : (pulumi.Input.decodeList<LicenseConfigurationResponse>(map['licenses']!, (value) => LicenseConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maintenanceOptions: map['maintenanceOptions'] == null ? null : (InstanceMaintenanceOptionsResponse.fromMap((map['maintenanceOptions']! as Map).cast<String, dynamic>())).input(),
-      metadataOptions: map['metadataOptions'] == null ? null : (InstanceMetadataOptionsResponseResponse.fromMap((map['metadataOptions']! as Map).cast<String, dynamic>())).input(),
-      monitoring: map['monitoring'] == null ? null : (MonitoringResponse.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<InstanceNetworkInterfaceResponse>(map['networkInterfaces']!, (value) => InstanceNetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn']! as String).input(),
-      placement: map['placement'] == null ? null : (PlacementResponse.fromMap((map['placement']! as Map).cast<String, dynamic>())).input(),
-      platform: map['platform'] == null ? null : (PlatformValuesEnumValueResponse.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
-      platformDetails: map['platformDetails'] == null ? null : (map['platformDetails']! as String).input(),
-      privateDnsName: map['privateDnsName'] == null ? null : (map['privateDnsName']! as String).input(),
-      privateDnsNameOptions: map['privateDnsNameOptions'] == null ? null : (PrivateDnsNameOptionsResponseResponse.fromMap((map['privateDnsNameOptions']! as Map).cast<String, dynamic>())).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
-      productCodes: map['productCodes'] == null ? null : (pulumi.Input.decodeList<ProductCodeResponse>(map['productCodes']!, (value) => ProductCodeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicDnsName: map['publicDnsName'] == null ? null : (map['publicDnsName']! as String).input(),
-      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress']! as String).input(),
-      ramdiskId: map['ramdiskId'] == null ? null : (map['ramdiskId']! as String).input(),
-      rootDeviceName: map['rootDeviceName'] == null ? null : (map['rootDeviceName']! as String).input(),
-      rootDeviceType: map['rootDeviceType'] == null ? null : (DeviceTypeEnumValueResponse.fromMap((map['rootDeviceType']! as Map).cast<String, dynamic>())).input(),
-      securityGroups: map['securityGroups'] == null ? null : (pulumi.Input.decodeList<GroupIdentifierResponse>(map['securityGroups']!, (value) => GroupIdentifierResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceDestCheck: map['sourceDestCheck'] == null ? null : (map['sourceDestCheck']! as bool).input(),
-      spotInstanceRequestId: map['spotInstanceRequestId'] == null ? null : (map['spotInstanceRequestId']! as String).input(),
-      sriovNetSupport: map['sriovNetSupport'] == null ? null : (map['sriovNetSupport']! as String).input(),
-      state: map['state'] == null ? null : (InstanceStateResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
-      stateReason: map['stateReason'] == null ? null : (StateReasonResponse.fromMap((map['stateReason']! as Map).cast<String, dynamic>())).input(),
-      stateTransitionReason: map['stateTransitionReason'] == null ? null : (map['stateTransitionReason']! as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tpmSupport: map['tpmSupport'] == null ? null : (map['tpmSupport']! as String).input(),
-      usageOperation: map['usageOperation'] == null ? null : (map['usageOperation']! as String).input(),
-      usageOperationUpdateTime: map['usageOperationUpdateTime'] == null ? null : (map['usageOperationUpdateTime']! as String).input(),
-      virtualizationType: map['virtualizationType'] == null ? null : (VirtualizationTypeEnumValueResponse.fromMap((map['virtualizationType']! as Map).cast<String, dynamic>())).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      amiLaunchIndex: (() {
+        final guardedValue = map['amiLaunchIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArchitectureValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      blockDeviceMappings: (() {
+        final guardedValue = map['blockDeviceMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceBlockDeviceMappingResponse>(
+            guardedValue,
+            (value) => InstanceBlockDeviceMappingResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      bootMode: (() {
+        final guardedValue = map['bootMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BootModeValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      capacityReservationId: (() {
+        final guardedValue = map['capacityReservationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      capacityReservationSpecification: (() {
+        final guardedValue = map['capacityReservationSpecification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CapacityReservationSpecificationResponseResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientToken: (() {
+        final guardedValue = map['clientToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cpuOptions: (() {
+        final guardedValue = map['cpuOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CpuOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      currentInstanceBootMode: (() {
+        final guardedValue = map['currentInstanceBootMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceBootModeValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ebsOptimized: (() {
+        final guardedValue = map['ebsOptimized'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      elasticGpuAssociations: (() {
+        final guardedValue = map['elasticGpuAssociations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ElasticGpuAssociationResponse>(
+            guardedValue,
+            (value) => ElasticGpuAssociationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      elasticInferenceAcceleratorAssociations: (() {
+        final guardedValue = map['elasticInferenceAcceleratorAssociations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<ElasticInferenceAcceleratorAssociationResponse>(
+            guardedValue,
+            (value) => ElasticInferenceAcceleratorAssociationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enaSupport: (() {
+        final guardedValue = map['enaSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enclaveOptions: (() {
+        final guardedValue = map['enclaveOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnclaveOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hibernationOptions: (() {
+        final guardedValue = map['hibernationOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HibernationOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      hypervisor: (() {
+        final guardedValue = map['hypervisor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HypervisorTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      iamInstanceProfile: (() {
+        final guardedValue = map['iamInstanceProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IamInstanceProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceLifecycle: (() {
+        final guardedValue = map['instanceLifecycle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceLifecycleTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipv6Address: (() {
+        final guardedValue = map['ipv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kernelId: (() {
+        final guardedValue = map['kernelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      launchTime: (() {
+        final guardedValue = map['launchTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenses: (() {
+        final guardedValue = map['licenses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LicenseConfigurationResponse>(
+            guardedValue,
+            (value) => LicenseConfigurationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      maintenanceOptions: (() {
+        final guardedValue = map['maintenanceOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceMaintenanceOptionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metadataOptions: (() {
+        final guardedValue = map['metadataOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceMetadataOptionsResponseResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      monitoring: (() {
+        final guardedValue = map['monitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      networkInterfaces: (() {
+        final guardedValue = map['networkInterfaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceNetworkInterfaceResponse>(
+            guardedValue,
+            (value) => InstanceNetworkInterfaceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      outpostArn: (() {
+        final guardedValue = map['outpostArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      placement: (() {
+        final guardedValue = map['placement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlacementResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlatformValuesEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      platformDetails: (() {
+        final guardedValue = map['platformDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsName: (() {
+        final guardedValue = map['privateDnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsNameOptions: (() {
+        final guardedValue = map['privateDnsNameOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateDnsNameOptionsResponseResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productCodes: (() {
+        final guardedValue = map['productCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ProductCodeResponse>(
+            guardedValue,
+            (value) => ProductCodeResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      publicDnsName: (() {
+        final guardedValue = map['publicDnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpAddress: (() {
+        final guardedValue = map['publicIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ramdiskId: (() {
+        final guardedValue = map['ramdiskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootDeviceName: (() {
+        final guardedValue = map['rootDeviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rootDeviceType: (() {
+        final guardedValue = map['rootDeviceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeviceTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      securityGroups: (() {
+        final guardedValue = map['securityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GroupIdentifierResponse>(
+            guardedValue,
+            (value) => GroupIdentifierResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sourceDestCheck: (() {
+        final guardedValue = map['sourceDestCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      spotInstanceRequestId: (() {
+        final guardedValue = map['spotInstanceRequestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sriovNetSupport: (() {
+        final guardedValue = map['sriovNetSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceStateResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stateReason: (() {
+        final guardedValue = map['stateReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StateReasonResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stateTransitionReason: (() {
+        final guardedValue = map['stateTransitionReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagResponse>(
+            guardedValue,
+            (value) =>
+                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tpmSupport: (() {
+        final guardedValue = map['tpmSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usageOperation: (() {
+        final guardedValue = map['usageOperation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usageOperationUpdateTime: (() {
+        final guardedValue = map['usageOperationUpdateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualizationType: (() {
+        final guardedValue = map['virtualizationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualizationTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

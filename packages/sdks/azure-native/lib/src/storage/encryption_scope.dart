@@ -254,20 +254,29 @@ import 'encryption_scope_key_vault_properties_response.dart';
 class EncryptionScope extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the creation date and time of the encryption scope in UTC.
   late final pulumi.Output<String> creationTime;
+
   /// The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
-  late final pulumi.Output<EncryptionScopeKeyVaultPropertiesResponse?> keyVaultProperties;
+  late final pulumi.Output<EncryptionScopeKeyVaultPropertiesResponse?>
+  keyVaultProperties;
+
   /// Gets the last modification date and time of the encryption scope in UTC.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
   late final pulumi.Output<bool?> requireInfrastructureEncryption;
+
   /// The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
   late final pulumi.Output<String?> source;
+
   /// The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled.
   late final pulumi.Output<String?> state;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -280,19 +289,24 @@ class EncryptionScope extends pulumi.CustomResource {
     EncryptionScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storage:EncryptionScope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.keyVaultProperties = registerOutput<EncryptionScopeKeyVaultPropertiesResponse?>('keyVaultProperties');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
+         'azure-native:storage:EncryptionScope',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    keyVaultProperties =
+        registerOutput<EncryptionScopeKeyVaultPropertiesResponse?>(
+          'keyVaultProperties',
+        );
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    this.requireInfrastructureEncryption = registerOutput<bool?>('requireInfrastructureEncryption');
-    this.source = registerOutput<String?>('source');
-    this.state = registerOutput<String?>('state');
-    this.type = registerOutput<String>('type');
+    requireInfrastructureEncryption = registerOutput<bool?>(
+      'requireInfrastructureEncryption',
+    );
+    source = registerOutput<String?>('source');
+    state = registerOutput<String?>('state');
+    type = registerOutput<String>('type');
   }
 }

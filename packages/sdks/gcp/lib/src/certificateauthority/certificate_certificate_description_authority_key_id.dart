@@ -9,20 +9,21 @@ class CertificateCertificateDescriptionAuthorityKeyId {
 
   /// Creates a new [CertificateCertificateDescriptionAuthorityKeyId].
   /// [keyId] (Output)
-  CertificateCertificateDescriptionAuthorityKeyId({
-    this.keyId,
-  });
+  CertificateCertificateDescriptionAuthorityKeyId({this.keyId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyId': ?keyId,
-    };
+    return <String, dynamic>{'keyId': ?keyId};
   }
 
-  factory CertificateCertificateDescriptionAuthorityKeyId.fromMap(Map<String, dynamic> map) {
+  factory CertificateCertificateDescriptionAuthorityKeyId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateCertificateDescriptionAuthorityKeyId(
-      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      keyId: (() {
+        final guardedValue = map['keyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

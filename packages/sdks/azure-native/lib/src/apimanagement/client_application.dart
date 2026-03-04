@@ -152,20 +152,28 @@ import 'client_application_args.dart';
 class ClientApplication extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Client application description.
   late final pulumi.Output<String?> description;
+
   /// Client application name.
   late final pulumi.Output<String> displayName;
+
   /// Microsoft EntraID Application ID (Client ID). This is the value that is used to identify the application when it is requesting access tokens from Microsoft EntraID. This property is read-only and will be set by the system when the application is created.
   late final pulumi.Output<String> entraApplicationId;
+
   /// Tenant ID is a unique identifier (a GUID) for an organization directory in Microsoft’s cloud. It’s used to identify tenants across Microsoft services.
   late final pulumi.Output<String> entraTenantId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A resource identifier for the user who owns the application.
   late final pulumi.Output<String> ownerId;
+
   /// Client application state. The value derives the state of an application based on the statuses of its associated ClientApplicationProductLinks.
   late final pulumi.Output<String> state;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -178,19 +186,19 @@ class ClientApplication extends pulumi.CustomResource {
     ClientApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ClientApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.entraApplicationId = registerOutput<String>('entraApplicationId');
-    this.entraTenantId = registerOutput<String>('entraTenantId');
+         'azure-native:apimanagement:ClientApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    entraApplicationId = registerOutput<String>('entraApplicationId');
+    entraTenantId = registerOutput<String>('entraTenantId');
     this.name = registerOutput<String>('name');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.state = registerOutput<String>('state');
-    this.type = registerOutput<String>('type');
+    ownerId = registerOutput<String>('ownerId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
   }
 }

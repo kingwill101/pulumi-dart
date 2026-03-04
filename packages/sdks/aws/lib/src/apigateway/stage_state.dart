@@ -8,43 +8,61 @@ import 'stage_canary_settings.dart';
 class StageState {
   /// Enables access logs for the API stage. See Access Log Settings below.
   final pulumi.Input<StageAccessLogSettings>? accessLogSettings;
+
   /// ARN
   final pulumi.Input<String>? arn;
+
   /// Whether a cache cluster is enabled for the stage
   final pulumi.Input<bool>? cacheClusterEnabled;
+
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
   final pulumi.Input<String>? cacheClusterSize;
+
   /// Configuration settings of a canary deployment. See Canary Settings below.
   final pulumi.Input<StageCanarySettings>? canarySettings;
+
   /// Identifier of a client certificate for the stage.
   final pulumi.Input<String>? clientCertificateId;
+
   /// ID of the deployment that the stage points to
   final pulumi.Input<String>? deployment;
+
   /// Description of the stage.
   final pulumi.Input<String>? description;
+
   /// Version of the associated API documentation.
   final pulumi.Input<String>? documentationVersion;
+
   /// Execution ARN to be used in `lambda_permission`'s `source_arn`
   /// when allowing API Gateway to invoke a Lambda function,
   /// e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
   final pulumi.Input<String>? executionArn;
+
   /// URL to invoke the API pointing to the stage,
   /// e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
   final pulumi.Input<String>? invokeUrl;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the associated REST API
   final pulumi.Input<String>? restApi;
+
   /// Name of the stage
   final pulumi.Input<String>? stageName;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Map that defines the stage variables.
   final pulumi.Input<Map<String, String>>? variables;
+
   /// ARN of the WebAcl associated with the Stage.
   final pulumi.Input<String>? webAclArn;
+
   /// Whether active tracing with X-ray is enabled. Defaults to `false`.
   final pulumi.Input<bool>? xrayTracingEnabled;
 
@@ -92,11 +110,19 @@ class StageState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLogSettings': ?pulumi.Input.mapOptionalInputValue<StageAccessLogSettings, Map<String, dynamic>>(accessLogSettings, (value) => value.toMap()),
+      'accessLogSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            StageAccessLogSettings,
+            Map<String, dynamic>
+          >(accessLogSettings, (value) => value.toMap()),
       'arn': ?arn,
       'cacheClusterEnabled': ?cacheClusterEnabled,
       'cacheClusterSize': ?cacheClusterSize,
-      'canarySettings': ?pulumi.Input.mapOptionalInputValue<StageCanarySettings, Map<String, dynamic>>(canarySettings, (value) => value.toMap()),
+      'canarySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            StageCanarySettings,
+            Map<String, dynamic>
+          >(canarySettings, (value) => value.toMap()),
       'clientCertificateId': ?clientCertificateId,
       'deployment': ?deployment,
       'description': ?description,
@@ -116,26 +142,115 @@ class StageState {
 
   factory StageState.fromMap(Map<String, dynamic> map) {
     return StageState(
-      accessLogSettings: map['accessLogSettings'] == null ? null : ((StageAccessLogSettings.fromMap((map['accessLogSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      cacheClusterEnabled: map['cacheClusterEnabled'] == null ? null : ((map['cacheClusterEnabled'] as bool).input()).input(),
-      cacheClusterSize: map['cacheClusterSize'] == null ? null : ((map['cacheClusterSize'] as String).input()).input(),
-      canarySettings: map['canarySettings'] == null ? null : ((StageCanarySettings.fromMap((map['canarySettings']! as Map).cast<String, dynamic>())).input()).input(),
-      clientCertificateId: map['clientCertificateId'] == null ? null : ((map['clientCertificateId'] as String).input()).input(),
-      deployment: map['deployment'] == null ? null : ((map['deployment'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      documentationVersion: map['documentationVersion'] == null ? null : ((map['documentationVersion'] as String).input()).input(),
-      executionArn: map['executionArn'] == null ? null : ((map['executionArn'] as String).input()).input(),
-      invokeUrl: map['invokeUrl'] == null ? null : ((map['invokeUrl'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
-      stageName: map['stageName'] == null ? null : ((map['stageName'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      variables: map['variables'] == null ? null : (((map['variables'] as Map).cast<String, String>()).input()).input(),
-      webAclArn: map['webAclArn'] == null ? null : ((map['webAclArn'] as String).input()).input(),
-      xrayTracingEnabled: map['xrayTracingEnabled'] == null ? null : ((map['xrayTracingEnabled'] as bool).input()).input(),
+      accessLogSettings: (() {
+        final guardedValue = map['accessLogSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StageAccessLogSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cacheClusterEnabled: (() {
+        final guardedValue = map['cacheClusterEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      cacheClusterSize: (() {
+        final guardedValue = map['cacheClusterSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      canarySettings: (() {
+        final guardedValue = map['canarySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StageCanarySettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientCertificateId: (() {
+        final guardedValue = map['clientCertificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deployment: (() {
+        final guardedValue = map['deployment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentationVersion: (() {
+        final guardedValue = map['documentationVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionArn: (() {
+        final guardedValue = map['executionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invokeUrl: (() {
+        final guardedValue = map['invokeUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restApi: (() {
+        final guardedValue = map['restApi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stageName: (() {
+        final guardedValue = map['stageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      variables: (() {
+        final guardedValue = map['variables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      webAclArn: (() {
+        final guardedValue = map['webAclArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      xrayTracingEnabled: (() {
+        final guardedValue = map['xrayTracingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

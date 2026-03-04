@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationGatewayPrivateLinkConfigurationIpConfiguration {
   /// The name of this Application Gateway.
   final pulumi.Input<String> name;
+
   /// Is this the Primary IP Configuration?
   final pulumi.Input<bool> primary;
+
   /// The Static IP Address which is used.
   final pulumi.Input<String> privateIpAddress;
+
   /// The allocation method used for the Private IP Address.
   final pulumi.Input<String> privateIpAddressAllocation;
+
   /// The ID of the subnet the private link configuration is connected to.
   final pulumi.Input<String> subnetId;
 
@@ -38,14 +42,19 @@ class GetApplicationGatewayPrivateLinkConfigurationIpConfiguration {
     };
   }
 
-  factory GetApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationGatewayPrivateLinkConfigurationIpConfiguration(
-      name: (map['name'] as String).input(),
-      primary: (map['primary'] as bool).input(),
-      privateIpAddress: (map['privateIpAddress'] as String).input(),
-      privateIpAddressAllocation: (map['privateIpAddressAllocation'] as String).input(),
-      subnetId: (map['subnetId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      primary: pulumi.Input.fromValue(map['primary'] as bool),
+      privateIpAddress: pulumi.Input.fromValue(
+        map['privateIpAddress'] as String,
+      ),
+      privateIpAddressAllocation: pulumi.Input.fromValue(
+        map['privateIpAddressAllocation'] as String,
+      ),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum DiscoveryOccurrenceContinuousAnalysis {
   active("ACTIVE"),
   inactive("INACTIVE");
 
-  const DiscoveryOccurrenceContinuousAnalysis(this.value);
-  final String value;
+  const DiscoveryOccurrenceContinuousAnalysis(this.wireValue);
+  final String wireValue;
 
   static DiscoveryOccurrenceContinuousAnalysis fromValue(String value) {
     for (final item in DiscoveryOccurrenceContinuousAnalysis.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiscoveryOccurrenceContinuousAnalysis value: $value');
+    throw ArgumentError(
+      'Unknown DiscoveryOccurrenceContinuousAnalysis value: $value',
+    );
   }
 }
-

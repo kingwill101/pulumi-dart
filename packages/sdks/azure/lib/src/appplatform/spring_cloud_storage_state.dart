@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudStorageState {
   /// The name which should be used for this Spring Cloud Storage. Changing this forces a new Spring Cloud Storage to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Spring Cloud Service where the Spring Cloud Storage should exist. Changing this forces a new Spring Cloud Storage to be created.
   final pulumi.Input<String>? springCloudServiceId;
+
   /// The access key of the Azure Storage Account.
   final pulumi.Input<String>? storageAccountKey;
+
   /// The account name of the Azure Storage Account.
   final pulumi.Input<String>? storageAccountName;
 
@@ -36,11 +39,26 @@ class SpringCloudStorageState {
 
   factory SpringCloudStorageState.fromMap(Map<String, dynamic> map) {
     return SpringCloudStorageState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      springCloudServiceId: (() {
+        final guardedValue = map['springCloudServiceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountKey: (() {
+        final guardedValue = map['storageAccountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

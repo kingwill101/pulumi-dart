@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFactoryVstsConfiguration {
   /// The VSTS account name.
   final pulumi.Input<String> accountName;
+
   /// The branch of the repository to get code from.
   final pulumi.Input<String> branchName;
+
   /// The name of the VSTS project.
   final pulumi.Input<String> projectName;
+
   /// The name of the git repository.
   final pulumi.Input<String> repositoryName;
+
   /// The root folder within the repository.
   final pulumi.Input<String> rootFolder;
+
   /// The Tenant ID associated with the VSTS account.
   final pulumi.Input<String> tenantId;
 
@@ -45,13 +50,12 @@ class GetFactoryVstsConfiguration {
 
   factory GetFactoryVstsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFactoryVstsConfiguration(
-      accountName: (map['accountName'] as String).input(),
-      branchName: (map['branchName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      repositoryName: (map['repositoryName'] as String).input(),
-      rootFolder: (map['rootFolder'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      branchName: pulumi.Input.fromValue(map['branchName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
+      rootFolder: pulumi.Input.fromValue(map['rootFolder'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

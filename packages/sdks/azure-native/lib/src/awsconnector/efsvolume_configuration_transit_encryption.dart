@@ -3,16 +3,17 @@ enum EFSVolumeConfigurationTransitEncryption {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
-  const EFSVolumeConfigurationTransitEncryption(this.value);
-  final String value;
+  const EFSVolumeConfigurationTransitEncryption(this.wireValue);
+  final String wireValue;
 
   static EFSVolumeConfigurationTransitEncryption fromValue(String value) {
     for (final item in EFSVolumeConfigurationTransitEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EFSVolumeConfigurationTransitEncryption value: $value');
+    throw ArgumentError(
+      'Unknown EFSVolumeConfigurationTransitEncryption value: $value',
+    );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExternalDocumentationResponse {
   /// Description of the documentation.
   final pulumi.Input<String>? description;
+
   /// Title of the documentation.
   final pulumi.Input<String>? title;
+
   /// URL pointing to the documentation.
   final pulumi.Input<String> url;
 
@@ -31,10 +33,17 @@ class ExternalDocumentationResponse {
 
   factory ExternalDocumentationResponse.fromMap(Map<String, dynamic> map) {
     return ExternalDocumentationResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
-      url: (map['url'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

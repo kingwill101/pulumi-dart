@@ -9,20 +9,17 @@ class VmwareAAGConfigResponse {
 
   /// Creates a new [VmwareAAGConfigResponse].
   /// [aagConfigDisabled] Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
-  VmwareAAGConfigResponse({
-    required this.aagConfigDisabled,
-  });
+  VmwareAAGConfigResponse({required this.aagConfigDisabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'aagConfigDisabled': aagConfigDisabled,
-    };
+    return <String, dynamic>{'aagConfigDisabled': aagConfigDisabled};
   }
 
   factory VmwareAAGConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareAAGConfigResponse(
-      aagConfigDisabled: (map['aagConfigDisabled'] as bool).input(),
+      aagConfigDisabled: pulumi.Input.fromValue(
+        map['aagConfigDisabled'] as bool,
+      ),
     );
   }
 }
-

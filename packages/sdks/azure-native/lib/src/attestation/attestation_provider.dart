@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_provider_args.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// Attestation service response message.
@@ -189,26 +188,38 @@ import 'system_data_response.dart';
 class AttestationProvider extends pulumi.CustomResource {
   /// Gets the uri of attestation service
   late final pulumi.Output<String?> attestUri;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of private endpoint connections associated with the attestation provider.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Status of attestation service.
   late final pulumi.Output<String?> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
   late final pulumi.Output<String?> tpmAttestationAuthentication;
+
   /// Trust model for the attestation provider.
   late final pulumi.Output<String?> trustModel;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -221,22 +232,26 @@ class AttestationProvider extends pulumi.CustomResource {
     AttestationProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:attestation:AttestationProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attestUri = registerOutput<String?>('attestUri');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:attestation:AttestationProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attestUri = registerOutput<String?>('attestUri');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.status = registerOutput<String?>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tpmAttestationAuthentication = registerOutput<String?>('tpmAttestationAuthentication');
-    this.trustModel = registerOutput<String?>('trustModel');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tpmAttestationAuthentication = registerOutput<String?>(
+      'tpmAttestationAuthentication',
+    );
+    trustModel = registerOutput<String?>('trustModel');
+    type = registerOutput<String>('type');
   }
 }

@@ -178,6 +178,7 @@ import 'channel_association_state.dart';
 class ChannelAssociation extends pulumi.CustomResource {
   /// ARN of the channel to associate with the notification configuration. Must match pattern `^arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+$`.
   late final pulumi.Output<String> arn;
+
   /// ARN of the notification configuration to associate the channel with.
   late final pulumi.Output<String> notificationConfigurationArn;
 
@@ -190,13 +191,15 @@ class ChannelAssociation extends pulumi.CustomResource {
     ChannelAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/channelAssociation:ChannelAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
+         'aws:notifications/channelAssociation:ChannelAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    notificationConfigurationArn = registerOutput<String>(
+      'notificationConfigurationArn',
+    );
   }
 
   /// Gets an existing [ChannelAssociation] resource's state with the given [name] and [id].
@@ -217,12 +220,14 @@ class ChannelAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/channelAssociation:ChannelAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
+         'aws:notifications/channelAssociation:ChannelAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    notificationConfigurationArn = registerOutput<String>(
+      'notificationConfigurationArn',
+    );
   }
 }

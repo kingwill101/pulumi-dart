@@ -8,7 +8,7 @@ import 'network_state.dart';
 ///
 /// For information about Data Works Network and how to use it, see [What is Network](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createnetwork).
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -474,12 +474,16 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// Time when the network resource was created
   late final pulumi.Output<int> createTime;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> dwResourceGroupId;
+
   /// Network Resource Status
   late final pulumi.Output<String> status;
+
   /// Virtual Private Cloud ID of network resources
   late final pulumi.Output<String> vpcId;
+
   /// The vSwitch ID of the network resource.
   late final pulumi.Output<String> vswitchId;
 
@@ -492,16 +496,16 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/network:Network',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.dwResourceGroupId = registerOutput<String>('dwResourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:dataworks/network:Network',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    dwResourceGroupId = registerOutput<String>('dwResourceGroupId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [Network] resource's state with the given [name] and [id].
@@ -522,15 +526,15 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/network:Network',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.dwResourceGroupId = registerOutput<String>('dwResourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:dataworks/network:Network',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    dwResourceGroupId = registerOutput<String>('dwResourceGroupId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

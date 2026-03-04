@@ -1,5 +1,3 @@
-library module_metastore;
-
 export 'metastore/audit_config.dart';
 export 'metastore/audit_config_metastore_v1alpha.dart';
 export 'metastore/audit_config_metastore_v1beta.dart';

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelativeMonthlySchedule {
   /// Specifies on which day of the week the maintenance occurs.
   final pulumi.Input<String> dayOfWeek;
+
   /// Specifies the number of months between each set of occurrences.
   final pulumi.Input<int> intervalMonths;
+
   /// The week index. Specifies on which week of the month the dayOfWeek applies.
   final pulumi.Input<String> weekIndex;
 
@@ -31,10 +33,9 @@ class RelativeMonthlySchedule {
 
   factory RelativeMonthlySchedule.fromMap(Map<String, dynamic> map) {
     return RelativeMonthlySchedule(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      intervalMonths: (map['intervalMonths'] as int).input(),
-      weekIndex: (map['weekIndex'] as String).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      intervalMonths: pulumi.Input.fromValue(map['intervalMonths'] as int),
+      weekIndex: pulumi.Input.fromValue(map['weekIndex'] as String),
     );
   }
 }
-

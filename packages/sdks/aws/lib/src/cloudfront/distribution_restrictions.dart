@@ -8,20 +8,25 @@ class DistributionRestrictions {
 
   /// Creates a new [DistributionRestrictions].
   /// [geoRestriction] Required.
-  DistributionRestrictions({
-    required this.geoRestriction,
-  });
+  DistributionRestrictions({required this.geoRestriction});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoRestriction': pulumi.Input.mapInputValue<DistributionRestrictionsGeoRestriction, Map<String, dynamic>>(geoRestriction, (value) => value.toMap()),
+      'geoRestriction':
+          pulumi.Input.mapInputValue<
+            DistributionRestrictionsGeoRestriction,
+            Map<String, dynamic>
+          >(geoRestriction, (value) => value.toMap()),
     };
   }
 
   factory DistributionRestrictions.fromMap(Map<String, dynamic> map) {
     return DistributionRestrictions(
-      geoRestriction: (DistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction']! as Map).cast<String, dynamic>())).input(),
+      geoRestriction: pulumi.Input.fromValue(
+        DistributionRestrictionsGeoRestriction.fromMap(
+          (map['geoRestriction']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

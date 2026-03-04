@@ -4,16 +4,15 @@ enum ShipmentType {
   valueShippedToCustomer("ShippedToCustomer"),
   valueSelfPickup("SelfPickup");
 
-  const ShipmentType(this.value);
-  final String value;
+  const ShipmentType(this.wireValue);
+  final String wireValue;
 
   static ShipmentType fromValue(String value) {
     for (final item in ShipmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShipmentType value: $value');
   }
 }
-

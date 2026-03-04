@@ -9,20 +9,17 @@ class EntityKeyResponseCloudidentityV1beta1 {
 
   /// Creates a new [EntityKeyResponseCloudidentityV1beta1].
   /// [namespace] The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
-  EntityKeyResponseCloudidentityV1beta1({
-    required this.namespace,
-  });
+  EntityKeyResponseCloudidentityV1beta1({required this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': namespace,
-    };
+    return <String, dynamic>{'namespace': namespace};
   }
 
-  factory EntityKeyResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EntityKeyResponseCloudidentityV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EntityKeyResponseCloudidentityV1beta1(
-      namespace: (map['namespace'] as String).input(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
     );
   }
 }
-

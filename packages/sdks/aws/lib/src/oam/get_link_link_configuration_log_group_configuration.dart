@@ -8,20 +8,17 @@ class GetLinkLinkConfigurationLogGroupConfiguration {
 
   /// Creates a new [GetLinkLinkConfigurationLogGroupConfiguration].
   /// [filter] Filter string that specifies  which metrics are to be shared with the monitoring account. See [MetricConfiguration](https://docs.aws.amazon.com/OAM/latest/APIReference/API_MetricConfiguration.html) for details.
-  GetLinkLinkConfigurationLogGroupConfiguration({
-    required this.filter,
-  });
+  GetLinkLinkConfigurationLogGroupConfiguration({required this.filter});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': filter,
-    };
+    return <String, dynamic>{'filter': filter};
   }
 
-  factory GetLinkLinkConfigurationLogGroupConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetLinkLinkConfigurationLogGroupConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLinkLinkConfigurationLogGroupConfiguration(
-      filter: (map['filter'] as String).input(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class DomainDevicesControllerNvme {
 
   /// Creates a new [DomainDevicesControllerNvme].
   /// [serial] Sets the serial number for the NVMe controller device.
-  DomainDevicesControllerNvme({
-    this.serial,
-  });
+  DomainDevicesControllerNvme({this.serial});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serial': ?serial,
-    };
+    return <String, dynamic>{'serial': ?serial};
   }
 
   factory DomainDevicesControllerNvme.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerNvme(
-      serial: map['serial'] == null ? null : (map['serial']! as String).input(),
+      serial: (() {
+        final guardedValue = map['serial'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

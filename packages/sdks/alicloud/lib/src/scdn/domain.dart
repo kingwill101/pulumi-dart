@@ -1,18 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
-import 'domain_cert_info.dart';
-import 'domain_source.dart';
 import 'domain_state.dart';
 
 /// Provides a SCDN Domain resource.
 ///
 /// For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
 ///
-/// > **NOTE:** Available since v1.131.0.
+/// &gt; **NOTE:** Available since v1.131.0.
 ///
-/// > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
+/// &gt; **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 ///
-/// > **DEPRECATED:**  This resource has been [deprecated](https://www.aliyun.com/product/scdn) from version `1.219.0`.
+/// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.aliyun.com/product/scdn) from version `1.219.0`.
 ///
 /// ## Example Usage
 ///
@@ -166,18 +164,25 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// Attribute perm has been deprecated and suggest removing it from your template.
   late final pulumi.Output<String?> bizName;
+
   /// Certificate Information. See the following `Block cert_infos`.
-  late final pulumi.Output<List<DomainCertInfo>?> certInfos;
+  late final pulumi.Output<List<Map<String, dynamic>>?> certInfos;
+
   /// The health check url.
   late final pulumi.Output<String?> checkUrl;
+
   /// The name of domain.
   late final pulumi.Output<String> domainName;
+
   /// Whether to set certificate forcibly.
   late final pulumi.Output<String?> forceSet;
+
   /// The resource group id.
   late final pulumi.Output<String> resourceGroupId;
+
   /// the Origin Server Information. See the following `Block sources`.
-  late final pulumi.Output<List<DomainSource>> sources;
+  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+
   /// The status of the resource. Valid values: `offline`, `online`.
   late final pulumi.Output<String> status;
 
@@ -185,24 +190,21 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_scdn_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:scdn/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizName = registerOutput<String?>('bizName');
-    this.certInfos = registerOutput<List<DomainCertInfo>?>('certInfos');
-    this.checkUrl = registerOutput<String?>('checkUrl');
-    this.domainName = registerOutput<String>('domainName');
-    this.forceSet = registerOutput<String?>('forceSet');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sources = registerOutput<List<DomainSource>>('sources');
-    this.status = registerOutput<String>('status');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:scdn/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    bizName = registerOutput<String?>('bizName');
+    certInfos = registerOutput<List<Map<String, dynamic>>?>('certInfos');
+    checkUrl = registerOutput<String?>('checkUrl');
+    domainName = registerOutput<String>('domainName');
+    forceSet = registerOutput<String?>('forceSet');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -223,18 +225,18 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:scdn/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizName = registerOutput<String?>('bizName');
-    this.certInfos = registerOutput<List<DomainCertInfo>?>('certInfos');
-    this.checkUrl = registerOutput<String?>('checkUrl');
-    this.domainName = registerOutput<String>('domainName');
-    this.forceSet = registerOutput<String?>('forceSet');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sources = registerOutput<List<DomainSource>>('sources');
-    this.status = registerOutput<String>('status');
+         'alicloud:scdn/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bizName = registerOutput<String?>('bizName');
+    certInfos = registerOutput<List<Map<String, dynamic>>?>('certInfos');
+    checkUrl = registerOutput<String?>('checkUrl');
+    domainName = registerOutput<String>('domainName');
+    forceSet = registerOutput<String?>('forceSet');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    status = registerOutput<String>('status');
   }
 }

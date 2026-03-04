@@ -4,7 +4,7 @@ import 'encryption_scope_state.dart';
 
 /// Manages a Storage Encryption Scope.
 ///
-/// > **Note:** Storage Encryption Scopes are in Preview [more information can be found here](https://docs.microsoft.com/azure/storage/blobs/encryption-scope-manage).
+/// &gt; **Note:** Storage Encryption Scopes are in Preview [more information can be found here](https://docs.microsoft.com/azure/storage/blobs/encryption-scope-manage).
 ///
 /// ## Example Usage
 ///
@@ -214,7 +214,7 @@ import 'encryption_scope_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Storage` - 2023-05-01
@@ -229,12 +229,16 @@ import 'encryption_scope_state.dart';
 class EncryptionScope extends pulumi.CustomResource {
   /// Is a secondary layer of encryption with Platform Managed Keys for data applied? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> infrastructureEncryptionRequired;
+
   /// The ID of the Key Vault Key. Required when `source` is `Microsoft.KeyVault`.
   late final pulumi.Output<String?> keyVaultKeyId;
+
   /// The name which should be used for this Storage Encryption Scope. Changing this forces a new Storage Encryption Scope to be created.
   late final pulumi.Output<String> name;
+
   /// The source of the Storage Encryption Scope. Possible values are `Microsoft.KeyVault` and `Microsoft.Storage`.
   late final pulumi.Output<String> source;
+
   /// The ID of the Storage Account where this Storage Encryption Scope is created. Changing this forces a new Storage Encryption Scope to be created.
   late final pulumi.Output<String> storageAccountId;
 
@@ -247,16 +251,18 @@ class EncryptionScope extends pulumi.CustomResource {
     EncryptionScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/encryptionScope:EncryptionScope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.infrastructureEncryptionRequired = registerOutput<bool?>('infrastructureEncryptionRequired');
-    this.keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+         'azure:storage/encryptionScope:EncryptionScope',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    infrastructureEncryptionRequired = registerOutput<bool?>(
+      'infrastructureEncryptionRequired',
+    );
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     this.name = registerOutput<String>('name');
-    this.source = registerOutput<String>('source');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+    source = registerOutput<String>('source');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 
   /// Gets an existing [EncryptionScope] resource's state with the given [name] and [id].
@@ -277,15 +283,17 @@ class EncryptionScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/encryptionScope:EncryptionScope',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.infrastructureEncryptionRequired = registerOutput<bool?>('infrastructureEncryptionRequired');
-    this.keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
+         'azure:storage/encryptionScope:EncryptionScope',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    infrastructureEncryptionRequired = registerOutput<bool?>(
+      'infrastructureEncryptionRequired',
+    );
+    keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');
     this.name = registerOutput<String>('name');
-    this.source = registerOutput<String>('source');
-    this.storageAccountId = registerOutput<String>('storageAccountId');
+    source = registerOutput<String>('source');
+    storageAccountId = registerOutput<String>('storageAccountId');
   }
 }

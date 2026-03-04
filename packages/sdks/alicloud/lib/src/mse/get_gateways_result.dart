@@ -8,6 +8,7 @@ class GetGatewaysResult {
   final bool? enableDetails;
   final String? gatewayName;
   final List<GetGatewaysGateway> gateways;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -45,7 +46,11 @@ class GetGatewaysResult {
     return <String, dynamic>{
       'enableDetails': ?enableDetails,
       'gatewayName': ?gatewayName,
-      'gateways': pulumi.Input.encodeList<GetGatewaysGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
+      'gateways':
+          pulumi.Input.encodeList<GetGatewaysGateway, Map<String, dynamic>>(
+            gateways,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -58,17 +63,44 @@ class GetGatewaysResult {
 
   factory GetGatewaysResult.fromMap(Map<String, dynamic> map) {
     return GetGatewaysResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
-      gatewayName: map['gatewayName'] == null ? null : map['gatewayName']! as String,
-      gateways: pulumi.Input.decodeList<GetGatewaysGateway>(map['gateways'], (value) => GetGatewaysGateway.fromMap((value as Map).cast<String, dynamic>())),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      gatewayName: (() {
+        final guardedValue = map['gatewayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      gateways: pulumi.Input.decodeList<GetGatewaysGateway>(
+        map['gateways']!,
+        (value) =>
+            GetGatewaysGateway.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

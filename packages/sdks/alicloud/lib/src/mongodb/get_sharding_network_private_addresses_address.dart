@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShardingNetworkPrivateAddressesAddress {
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
+
   /// The remaining duration of the classic network address. Unit: `seconds`.
   final pulumi.Input<String> expiredTime;
+
   /// The IP address of the instance.
   final pulumi.Input<String> ipAddress;
+
   /// The endpoint of the instance.
   final pulumi.Input<String> networkAddress;
+
   /// The type of the network.
   final pulumi.Input<String> networkType;
+
   /// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   final pulumi.Input<String> nodeId;
+
   /// The type of the node.
   final pulumi.Input<String> nodeType;
+
   /// The port number.
   final pulumi.Input<String> port;
+
   /// The role of the node.
   final pulumi.Input<String> role;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
+
   /// The vSwitch ID of the VPC.
   final pulumi.Input<String> vswitchId;
 
@@ -68,20 +78,21 @@ class GetShardingNetworkPrivateAddressesAddress {
     };
   }
 
-  factory GetShardingNetworkPrivateAddressesAddress.fromMap(Map<String, dynamic> map) {
+  factory GetShardingNetworkPrivateAddressesAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetShardingNetworkPrivateAddressesAddress(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      expiredTime: (map['expiredTime'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      networkAddress: (map['networkAddress'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      nodeId: (map['nodeId'] as String).input(),
-      nodeType: (map['nodeType'] as String).input(),
-      port: (map['port'] as String).input(),
-      role: (map['role'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      networkAddress: pulumi.Input.fromValue(map['networkAddress'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
+      nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
+      port: pulumi.Input.fromValue(map['port'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

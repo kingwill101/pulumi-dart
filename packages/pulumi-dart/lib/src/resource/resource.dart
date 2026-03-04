@@ -87,6 +87,17 @@ abstract class Resource {
         ),
       ),
     );
+    unawaited(_urnCompleter.future.catchError((_) => ''));
+    unawaited(
+      urn.getData().catchError(
+        (_) => OutputData<String>(
+          value: '',
+          isKnown: false,
+          isSecret: false,
+          resources: {this},
+        ),
+      ),
+    );
 
     if (dependency) {
       completionSources = {};
@@ -297,7 +308,7 @@ abstract class Resource {
   ) {
     final value = outputs.fields[propertyName];
     if (value == null) {
-      source.trySetDefaultResult(true);
+      source.trySetDefaultResult(!DeploymentImpl.instance.isDryRun);
       return;
     }
 
@@ -328,10 +339,6 @@ abstract class Resource {
       return v;
     }
 
-    if (value is Input) {
-      return _serializeValue(value.toOutput());
-    }
-
     if (value is Output) {
       final data = await value.getData();
       if (!data.isKnown) {
@@ -350,6 +357,10 @@ abstract class Resource {
         ..fields[Constants.valueName] = inner;
       v.structValue = secret;
       return v;
+    }
+
+    if (value is Input) {
+      return _serializeValue(value.toOutput());
     }
 
     if (value is Resource) {

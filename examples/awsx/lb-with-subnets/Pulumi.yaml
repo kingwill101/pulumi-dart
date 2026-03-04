@@ -1,0 +1,6 @@
+name: awsx-dart-ts-lb-with-subnets
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX ALB with explicit subnet IDs in Dart.

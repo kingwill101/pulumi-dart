@@ -4,16 +4,15 @@ enum SharedImageStorageAccountType {
   valueStandardZRS("Standard_ZRS"),
   valuePremiumLRS("Premium_LRS");
 
-  const SharedImageStorageAccountType(this.value);
-  final String value;
+  const SharedImageStorageAccountType(this.wireValue);
+  final String wireValue;
 
   static SharedImageStorageAccountType fromValue(String value) {
     for (final item in SharedImageStorageAccountType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SharedImageStorageAccountType value: $value');
   }
 }
-

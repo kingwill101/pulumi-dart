@@ -8,20 +8,17 @@ class GetInferenceProfilesInferenceProfileSummaryModel {
 
   /// Creates a new [GetInferenceProfilesInferenceProfileSummaryModel].
   /// [modelArn] Amazon Resource Name (ARN) of the model.
-  GetInferenceProfilesInferenceProfileSummaryModel({
-    required this.modelArn,
-  });
+  GetInferenceProfilesInferenceProfileSummaryModel({required this.modelArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'modelArn': modelArn,
-    };
+    return <String, dynamic>{'modelArn': modelArn};
   }
 
-  factory GetInferenceProfilesInferenceProfileSummaryModel.fromMap(Map<String, dynamic> map) {
+  factory GetInferenceProfilesInferenceProfileSummaryModel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInferenceProfilesInferenceProfileSummaryModel(
-      modelArn: (map['modelArn'] as String).input(),
+      modelArn: pulumi.Input.fromValue(map['modelArn'] as String),
     );
   }
 }
-

@@ -6,7 +6,11 @@ import 'region_autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_
 class RegionAutoscalerAutoscalingPolicyScaleDownControl {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>? maxScaledDownReplicas;
+  final pulumi.Input<
+    RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas
+  >?
+  maxScaledDownReplicas;
+
   /// How long back autoscaling should look when computing recommendations
   /// to include directives regarding slower scale down, as described above.
   final pulumi.Input<int>? timeWindowSec;
@@ -21,16 +25,33 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControl {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxScaledDownReplicas': ?pulumi.Input.mapOptionalInputValue<RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas, Map<String, dynamic>>(maxScaledDownReplicas, (value) => value.toMap()),
+      'maxScaledDownReplicas':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas,
+            Map<String, dynamic>
+          >(maxScaledDownReplicas, (value) => value.toMap()),
       'timeWindowSec': ?timeWindowSec,
     };
   }
 
-  factory RegionAutoscalerAutoscalingPolicyScaleDownControl.fromMap(Map<String, dynamic> map) {
+  factory RegionAutoscalerAutoscalingPolicyScaleDownControl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionAutoscalerAutoscalingPolicyScaleDownControl(
-      maxScaledDownReplicas: map['maxScaledDownReplicas'] == null ? null : (RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap((map['maxScaledDownReplicas']! as Map).cast<String, dynamic>())).input(),
-      timeWindowSec: map['timeWindowSec'] == null ? null : (map['timeWindowSec']! as int).input(),
+      maxScaledDownReplicas: (() {
+        final guardedValue = map['maxScaledDownReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeWindowSec: (() {
+        final guardedValue = map['timeWindowSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

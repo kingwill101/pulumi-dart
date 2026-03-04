@@ -4,7 +4,7 @@ import 'creator_state.dart';
 
 /// Manages an Azure Maps Creator.
 ///
-/// > **Note:** The `azure.maps.Creator` resource has been deprecated because the service is retiring from 2024-09-23 and will be removed in v5.0 of the AzureRM Provider.
+/// &gt; **Note:** The `azure.maps.Creator` resource has been deprecated because the service is retiring from 2024-09-23 and will be removed in v5.0 of the AzureRM Provider.
 ///
 /// ## Example Usage
 ///
@@ -221,7 +221,7 @@ import 'creator_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Maps` - 2023-06-01
@@ -236,12 +236,16 @@ import 'creator_state.dart';
 class Creator extends pulumi.CustomResource {
   /// The Azure Region where the Azure Maps Creator should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The ID of the Azure Maps Creator. Changing this forces a new resource to be created.
   late final pulumi.Output<String> mapsAccountId;
+
   /// The name of the Azure Maps Creator. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The storage units to be allocated. Integer values from 1 to 100, inclusive.
   late final pulumi.Output<int> storageUnits;
+
   /// A mapping of tags which should be assigned to the Azure Maps Creator.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -254,16 +258,16 @@ class Creator extends pulumi.CustomResource {
     CreatorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maps/creator:Creator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.mapsAccountId = registerOutput<String>('mapsAccountId');
+         'azure:maps/creator:Creator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    mapsAccountId = registerOutput<String>('mapsAccountId');
     this.name = registerOutput<String>('name');
-    this.storageUnits = registerOutput<int>('storageUnits');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    storageUnits = registerOutput<int>('storageUnits');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Creator] resource's state with the given [name] and [id].
@@ -284,15 +288,15 @@ class Creator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maps/creator:Creator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.mapsAccountId = registerOutput<String>('mapsAccountId');
+         'azure:maps/creator:Creator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    mapsAccountId = registerOutput<String>('mapsAccountId');
     this.name = registerOutput<String>('name');
-    this.storageUnits = registerOutput<int>('storageUnits');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    storageUnits = registerOutput<int>('storageUnits');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

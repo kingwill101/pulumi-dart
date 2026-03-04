@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
   /// The group attribute field. Minimum length of 1. Maximum length of 2048.
   final pulumi.Input<String> groupAttributeField;
+
   /// The user name attribute field. Minimum length of 1. Maximum length of 2048.
   final pulumi.Input<String> userNameAttributeField;
 
@@ -23,11 +24,16 @@ class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
     };
   }
 
-  factory IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap(Map<String, dynamic> map) {
+  factory IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IndexUserTokenConfigurationsJsonTokenTypeConfiguration(
-      groupAttributeField: (map['groupAttributeField'] as String).input(),
-      userNameAttributeField: (map['userNameAttributeField'] as String).input(),
+      groupAttributeField: pulumi.Input.fromValue(
+        map['groupAttributeField'] as String,
+      ),
+      userNameAttributeField: pulumi.Input.fromValue(
+        map['userNameAttributeField'] as String,
+      ),
     );
   }
 }
-

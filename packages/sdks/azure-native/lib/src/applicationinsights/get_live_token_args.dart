@@ -12,20 +12,15 @@ class GetLiveTokenArgs {
 
   /// Creates a new [GetLiveTokenArgs].
   /// [resourceUri] The identifier of the resource.
-  GetLiveTokenArgs({
-    required this.resourceUri,
-  });
+  GetLiveTokenArgs({required this.resourceUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceUri': resourceUri,
-    };
+    return <String, dynamic>{'resourceUri': resourceUri};
   }
 
   factory GetLiveTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetLiveTokenArgs(
-      resourceUri: (map['resourceUri'] as String).input(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

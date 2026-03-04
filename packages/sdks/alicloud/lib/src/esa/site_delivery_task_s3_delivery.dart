@@ -10,8 +10,10 @@ class SiteDeliveryTaskS3Delivery {
   final pulumi.Input<String>? region;
   final pulumi.Input<bool>? s3Cmpt;
   final pulumi.Input<String>? secretKey;
+
   /// Server-side encryption
   final pulumi.Input<bool>? serverSideEncryption;
+
   /// Authentication Type
   final pulumi.Input<String>? vertifyType;
 
@@ -53,16 +55,51 @@ class SiteDeliveryTaskS3Delivery {
 
   factory SiteDeliveryTaskS3Delivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskS3Delivery(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
-      bucketPath: map['bucketPath'] == null ? null : (map['bucketPath']! as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      prefixPath: map['prefixPath'] == null ? null : (map['prefixPath']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      s3Cmpt: map['s3Cmpt'] == null ? null : (map['s3Cmpt']! as bool).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
-      serverSideEncryption: map['serverSideEncryption'] == null ? null : (map['serverSideEncryption']! as bool).input(),
-      vertifyType: map['vertifyType'] == null ? null : (map['vertifyType']! as String).input(),
+      accessKey: (() {
+        final guardedValue = map['accessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bucketPath: (() {
+        final guardedValue = map['bucketPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefixPath: (() {
+        final guardedValue = map['prefixPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      s3Cmpt: (() {
+        final guardedValue = map['s3Cmpt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      secretKey: (() {
+        final guardedValue = map['secretKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverSideEncryption: (() {
+        final guardedValue = map['serverSideEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vertifyType: (() {
+        final guardedValue = map['vertifyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

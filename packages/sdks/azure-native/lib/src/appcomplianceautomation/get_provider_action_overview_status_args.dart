@@ -12,20 +12,21 @@ class GetProviderActionOverviewStatusArgs {
 
   /// Creates a new [GetProviderActionOverviewStatusArgs].
   /// [type] The resource type.
-  GetProviderActionOverviewStatusArgs({
-    this.type,
-  });
+  GetProviderActionOverviewStatusArgs({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory GetProviderActionOverviewStatusArgs.fromMap(Map<String, dynamic> map) {
+  factory GetProviderActionOverviewStatusArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProviderActionOverviewStatusArgs(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEdgeActionVersionCodeArgs {
   /// The name of the Edge Action
   final pulumi.Input<String> edgeActionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Edge Action version
   final pulumi.Input<String> version;
 
@@ -34,10 +36,11 @@ class GetEdgeActionVersionCodeArgs {
 
   factory GetEdgeActionVersionCodeArgs.fromMap(Map<String, dynamic> map) {
     return GetEdgeActionVersionCodeArgs(
-      edgeActionName: (map['edgeActionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: (map['version'] as String).input(),
+      edgeActionName: pulumi.Input.fromValue(map['edgeActionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

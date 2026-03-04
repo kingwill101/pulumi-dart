@@ -172,7 +172,7 @@ import 'event_hub_namespace_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -187,44 +187,63 @@ import 'event_hub_namespace_state.dart';
 class EventHubNamespace extends pulumi.CustomResource {
   /// Is Auto Inflate enabled for the EventHub Namespace?
   late final pulumi.Output<bool?> autoInflateEnabled;
+
   /// Specifies the Capacity / Throughput Units for a `Standard` SKU namespace. Default capacity has a maximum of `2`, but can be increased in blocks of 2 on a committed purchase basis. Defaults to `1`.
   late final pulumi.Output<int?> capacity;
+
   /// Specifies the ID of the EventHub Dedicated Cluster where this Namespace should created. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> dedicatedClusterId;
+
   /// The primary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultPrimaryConnectionString;
+
   /// The alias of the primary connection string for the authorization rule `RootManageSharedAccessKey`, which is generated when disaster recovery is enabled.
   late final pulumi.Output<String> defaultPrimaryConnectionStringAlias;
+
   /// The primary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultPrimaryKey;
+
   /// The secondary connection string for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultSecondaryConnectionString;
+
   /// The alias of the secondary connection string for the authorization rule `RootManageSharedAccessKey`, which is generated when disaster recovery is enabled.
   late final pulumi.Output<String> defaultSecondaryConnectionStringAlias;
+
   /// The secondary access key for the authorization rule `RootManageSharedAccessKey`.
   late final pulumi.Output<String> defaultSecondaryKey;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<EventHubNamespaceIdentity?> identity;
+
   /// Is SAS authentication enabled for the EventHub Namespace? Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the maximum number of throughput units when Auto Inflate is Enabled. Valid values range from `1` - `40`.
   late final pulumi.Output<int?> maximumThroughputUnits;
+
   /// The minimum supported TLS version for this EventHub Namespace. Valid values are: `1.0`, `1.1` and `1.2`. Defaults to `1.2`.
   ///
-  /// > **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
+  /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   late final pulumi.Output<String?> minimumTlsVersion;
+
   /// Specifies the name of the EventHub Namespace resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_rulesets` block as defined below.
   late final pulumi.Output<EventHubNamespaceNetworkRulesets> networkRulesets;
+
   /// Is public network access enabled for the EventHub Namespace? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group in which to create the namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Defines which tier to use. Valid options are `Basic`, `Standard`, and `Premium`. Please note that setting this field to `Premium` will force the creation of a new resource.
   late final pulumi.Output<String> sku;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -237,31 +256,45 @@ class EventHubNamespace extends pulumi.CustomResource {
     EventHubNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/eventHubNamespace:EventHubNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');
-    this.capacity = registerOutput<int?>('capacity');
-    this.dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
-    this.defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
-    this.defaultPrimaryConnectionStringAlias = registerOutput<String>('defaultPrimaryConnectionStringAlias');
-    this.defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    this.defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
-    this.defaultSecondaryConnectionStringAlias = registerOutput<String>('defaultSecondaryConnectionStringAlias');
-    this.defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
-    this.identity = registerOutput<EventHubNamespaceIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
-    this.maximumThroughputUnits = registerOutput<int?>('maximumThroughputUnits');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure:eventhub/eventHubNamespace:EventHubNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');
+    capacity = registerOutput<int?>('capacity');
+    dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
+    defaultPrimaryConnectionString = registerOutput<String>(
+      'defaultPrimaryConnectionString',
+    );
+    defaultPrimaryConnectionStringAlias = registerOutput<String>(
+      'defaultPrimaryConnectionStringAlias',
+    );
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
+    defaultSecondaryConnectionString = registerOutput<String>(
+      'defaultSecondaryConnectionString',
+    );
+    defaultSecondaryConnectionStringAlias = registerOutput<String>(
+      'defaultSecondaryConnectionStringAlias',
+    );
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    identity = registerOutput<EventHubNamespaceIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
+    maximumThroughputUnits = registerOutput<int?>('maximumThroughputUnits');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.networkRulesets = registerOutput<EventHubNamespaceNetworkRulesets>('networkRulesets');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkRulesets = registerOutput<EventHubNamespaceNetworkRulesets>(
+      'networkRulesets',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [EventHubNamespace] resource's state with the given [name] and [id].
@@ -282,30 +315,44 @@ class EventHubNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/eventHubNamespace:EventHubNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');
-    this.capacity = registerOutput<int?>('capacity');
-    this.dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
-    this.defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
-    this.defaultPrimaryConnectionStringAlias = registerOutput<String>('defaultPrimaryConnectionStringAlias');
-    this.defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    this.defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
-    this.defaultSecondaryConnectionStringAlias = registerOutput<String>('defaultSecondaryConnectionStringAlias');
-    this.defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
-    this.identity = registerOutput<EventHubNamespaceIdentity?>('identity');
-    this.localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
-    this.location = registerOutput<String>('location');
-    this.maximumThroughputUnits = registerOutput<int?>('maximumThroughputUnits');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure:eventhub/eventHubNamespace:EventHubNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');
+    capacity = registerOutput<int?>('capacity');
+    dedicatedClusterId = registerOutput<String?>('dedicatedClusterId');
+    defaultPrimaryConnectionString = registerOutput<String>(
+      'defaultPrimaryConnectionString',
+    );
+    defaultPrimaryConnectionStringAlias = registerOutput<String>(
+      'defaultPrimaryConnectionStringAlias',
+    );
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
+    defaultSecondaryConnectionString = registerOutput<String>(
+      'defaultSecondaryConnectionString',
+    );
+    defaultSecondaryConnectionStringAlias = registerOutput<String>(
+      'defaultSecondaryConnectionStringAlias',
+    );
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    identity = registerOutput<EventHubNamespaceIdentity?>('identity');
+    localAuthenticationEnabled = registerOutput<bool?>(
+      'localAuthenticationEnabled',
+    );
+    location = registerOutput<String>('location');
+    maximumThroughputUnits = registerOutput<int?>('maximumThroughputUnits');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.networkRulesets = registerOutput<EventHubNamespaceNetworkRulesets>('networkRulesets');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sku = registerOutput<String>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkRulesets = registerOutput<EventHubNamespaceNetworkRulesets>(
+      'networkRulesets',
+    );
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GkeNodePoolAcceleratorConfigResponse {
   /// The number of accelerator cards exposed to an instance.
   final pulumi.Input<String> acceleratorCount;
+
   /// The accelerator type resource namename (see GPUs on Compute Engine).
   final pulumi.Input<String> acceleratorType;
+
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
   final pulumi.Input<String> gpuPartitionSize;
 
@@ -29,12 +31,17 @@ class GkeNodePoolAcceleratorConfigResponse {
     };
   }
 
-  factory GkeNodePoolAcceleratorConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GkeNodePoolAcceleratorConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GkeNodePoolAcceleratorConfigResponse(
-      acceleratorCount: (map['acceleratorCount'] as String).input(),
-      acceleratorType: (map['acceleratorType'] as String).input(),
-      gpuPartitionSize: (map['gpuPartitionSize'] as String).input(),
+      acceleratorCount: pulumi.Input.fromValue(
+        map['acceleratorCount'] as String,
+      ),
+      acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
+      gpuPartitionSize: pulumi.Input.fromValue(
+        map['gpuPartitionSize'] as String,
+      ),
     );
   }
 }
-

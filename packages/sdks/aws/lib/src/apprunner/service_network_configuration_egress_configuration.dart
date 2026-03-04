@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceNetworkConfigurationEgressConfiguration {
   /// The type of egress configuration. Valid values are: `DEFAULT` and `VPC`.
   final pulumi.Input<String>? egressType;
+
   /// The Amazon Resource Name (ARN) of the App Runner VPC connector that you want to associate with your App Runner service. Only valid when `EgressType = VPC`.
   final pulumi.Input<String>? vpcConnectorArn;
 
@@ -23,11 +24,20 @@ class ServiceNetworkConfigurationEgressConfiguration {
     };
   }
 
-  factory ServiceNetworkConfigurationEgressConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ServiceNetworkConfigurationEgressConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceNetworkConfigurationEgressConfiguration(
-      egressType: map['egressType'] == null ? null : ((map['egressType'] as String).input()).input(),
-      vpcConnectorArn: map['vpcConnectorArn'] == null ? null : ((map['vpcConnectorArn'] as String).input()).input(),
+      egressType: (() {
+        final guardedValue = map['egressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcConnectorArn: (() {
+        final guardedValue = map['vpcConnectorArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerIntranetIntranet {
   /// The SSL certificate. `https_cert_id` is required when HTTPS is selected
   final pulumi.Input<String>? httpsCertId;
+
   /// The SLB Port.
   final pulumi.Input<int>? port;
+
   /// The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
   final pulumi.Input<String>? protocol;
+
   /// The Container port.
   final pulumi.Input<int>? targetPort;
 
@@ -35,11 +38,26 @@ class LoadBalancerIntranetIntranet {
 
   factory LoadBalancerIntranetIntranet.fromMap(Map<String, dynamic> map) {
     return LoadBalancerIntranetIntranet(
-      httpsCertId: map['httpsCertId'] == null ? null : (map['httpsCertId']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
+      httpsCertId: (() {
+        final guardedValue = map['httpsCertId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPort: (() {
+        final guardedValue = map['targetPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

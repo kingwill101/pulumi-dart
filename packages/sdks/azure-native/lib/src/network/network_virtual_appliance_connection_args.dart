@@ -10,14 +10,19 @@ import 'network_virtual_appliance_connection_properties.dart';
 class NetworkVirtualApplianceConnectionArgs {
   /// The name of the NVA connection.
   final pulumi.Input<String>? connectionName;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the resource.
   final pulumi.Input<String>? name;
+
   /// The name of the Network Virtual Appliance.
   final pulumi.Input<String> networkVirtualApplianceName;
+
   /// Properties of the express route connection.
   final pulumi.Input<NetworkVirtualApplianceConnectionProperties>? properties;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,20 +48,49 @@ class NetworkVirtualApplianceConnectionArgs {
       'id': ?id,
       'name': ?name,
       'networkVirtualApplianceName': networkVirtualApplianceName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<NetworkVirtualApplianceConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkVirtualApplianceConnectionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
-  factory NetworkVirtualApplianceConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkVirtualApplianceConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkVirtualApplianceConnectionArgs(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
-      properties: map['properties'] == null ? null : (NetworkVirtualApplianceConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectionName: (() {
+        final guardedValue = map['connectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkVirtualApplianceName: pulumi.Input.fromValue(
+        map['networkVirtualApplianceName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkVirtualApplianceConnectionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

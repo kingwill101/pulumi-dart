@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateRenewalSummary {
   /// The status of ACM's managed renewal of the certificate
   final pulumi.Input<String>? renewalStatus;
+
   /// The reason that a renewal request was unsuccessful or is pending
   final pulumi.Input<String>? renewalStatusReason;
   final pulumi.Input<String>? updatedAt;
@@ -29,10 +30,21 @@ class CertificateRenewalSummary {
 
   factory CertificateRenewalSummary.fromMap(Map<String, dynamic> map) {
     return CertificateRenewalSummary(
-      renewalStatus: map['renewalStatus'] == null ? null : ((map['renewalStatus'] as String).input()).input(),
-      renewalStatusReason: map['renewalStatusReason'] == null ? null : ((map['renewalStatusReason'] as String).input()).input(),
-      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
+      renewalStatus: (() {
+        final guardedValue = map['renewalStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewalStatusReason: (() {
+        final guardedValue = map['renewalStatusReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

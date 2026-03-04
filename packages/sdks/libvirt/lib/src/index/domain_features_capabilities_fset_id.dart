@@ -8,20 +8,19 @@ class DomainFeaturesCapabilitiesFsetId {
 
   /// Creates a new [DomainFeaturesCapabilitiesFsetId].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesFsetId({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesFsetId({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesCapabilitiesFsetId.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesFsetId(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPlacementGroupsPlacementGroupMember {
   /// Whether this Linode is currently compliant with the group's placement group type.
   final pulumi.Input<bool> isCompliant;
+
   /// The unique identifier for the Linode being migrated out of the placement group.
   final pulumi.Input<int> linodeId;
 
@@ -17,17 +18,15 @@ class GetPlacementGroupsPlacementGroupMember {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'isCompliant': isCompliant,
-      'linodeId': linodeId,
-    };
+    return <String, dynamic>{'isCompliant': isCompliant, 'linodeId': linodeId};
   }
 
-  factory GetPlacementGroupsPlacementGroupMember.fromMap(Map<String, dynamic> map) {
+  factory GetPlacementGroupsPlacementGroupMember.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPlacementGroupsPlacementGroupMember(
-      isCompliant: (map['isCompliant'] as bool).input(),
-      linodeId: (map['linodeId'] as int).input(),
+      isCompliant: pulumi.Input.fromValue(map['isCompliant'] as bool),
+      linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
     );
   }
 }
-

@@ -184,7 +184,7 @@ import 'load_test_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.LoadTestService` - 2022-12-01
@@ -203,18 +203,25 @@ import 'load_test_state.dart';
 class LoadTest extends pulumi.CustomResource {
   /// Resource data plane URI.
   late final pulumi.Output<String> dataPlaneUri;
+
   /// Description of the resource.
   late final pulumi.Output<String?> description;
+
   /// An `encryption` block as defined below. Changing this forces a new Load Test to be created.
   late final pulumi.Output<LoadTestEncryption?> encryption;
+
   /// An `identity` block as defined below. Specifies the Managed Identity which should be assigned to this Load Test.
   late final pulumi.Output<LoadTestIdentity?> identity;
+
   /// The Azure Region where the Load Test should exist. Changing this forces a new Load Test to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of this Load Test. Changing this forces a new Load Test to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group within which this Load Test should exist. Changing this forces a new Load Test to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Load Test.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -227,19 +234,19 @@ class LoadTest extends pulumi.CustomResource {
     LoadTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loadtest/loadTest:LoadTest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataPlaneUri = registerOutput<String>('dataPlaneUri');
-    this.description = registerOutput<String?>('description');
-    this.encryption = registerOutput<LoadTestEncryption?>('encryption');
-    this.identity = registerOutput<LoadTestIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:loadtest/loadTest:LoadTest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataPlaneUri = registerOutput<String>('dataPlaneUri');
+    description = registerOutput<String?>('description');
+    encryption = registerOutput<LoadTestEncryption?>('encryption');
+    identity = registerOutput<LoadTestIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [LoadTest] resource's state with the given [name] and [id].
@@ -260,18 +267,18 @@ class LoadTest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loadtest/loadTest:LoadTest',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataPlaneUri = registerOutput<String>('dataPlaneUri');
-    this.description = registerOutput<String?>('description');
-    this.encryption = registerOutput<LoadTestEncryption?>('encryption');
-    this.identity = registerOutput<LoadTestIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:loadtest/loadTest:LoadTest',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataPlaneUri = registerOutput<String>('dataPlaneUri');
+    description = registerOutput<String?>('description');
+    encryption = registerOutput<LoadTestEncryption?>('encryption');
+    identity = registerOutput<LoadTestIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

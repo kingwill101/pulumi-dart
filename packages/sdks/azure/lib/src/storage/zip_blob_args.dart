@@ -79,22 +79,75 @@ class ZipBlobArgs {
 
   factory ZipBlobArgs.fromMap(Map<String, dynamic> map) {
     return ZipBlobArgs(
-      accessTier: map['accessTier'] == null ? null : (map['accessTier']! as String).input(),
-      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl']! as String).input(),
-      content: map['content'] == null ? null : (map['content']!).input(),
-      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5']! as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
-      encryptionScope: map['encryptionScope'] == null ? null : (map['encryptionScope']! as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      sourceContent: map['sourceContent'] == null ? null : (map['sourceContent']! as String).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri']! as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
-      storageContainerName: (map['storageContainerName'] as String).input(),
-      type: (map['type'] as String).input(),
+      accessTier: (() {
+        final guardedValue = map['accessTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cacheControl: (() {
+        final guardedValue = map['cacheControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      contentMd5: (() {
+        final guardedValue = map['contentMd5'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionScope: (() {
+        final guardedValue = map['encryptionScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parallelism: (() {
+        final guardedValue = map['parallelism'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sourceContent: (() {
+        final guardedValue = map['sourceContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceUri: (() {
+        final guardedValue = map['sourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
+      storageContainerName: pulumi.Input.fromValue(
+        map['storageContainerName'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

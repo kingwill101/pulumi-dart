@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_member_args.dart';
 import 'fleet_member_state.dart';
 
-/// <!-- Note: This documentation is generated. Any manual changes will be overwritten -->
+/// &lt;!-- Note: This documentation is generated. Any manual changes will be overwritten --&gt;
 ///
 /// Manages a Kubernetes Fleet Member.
 ///
@@ -310,10 +310,13 @@ import 'fleet_member_state.dart';
 class FleetMember extends pulumi.CustomResource {
   /// The group this member belongs to for multi-cluster update management.
   late final pulumi.Output<String?> group;
+
   /// The ARM resource ID of the cluster that joins the Fleet. Changing this forces a new Kubernetes Fleet Member to be created.
   late final pulumi.Output<String> kubernetesClusterId;
+
   /// Specifies the Kubernetes Fleet Id within which this Kubernetes Fleet Member should exist. Changing this forces a new Kubernetes Fleet Member to be created.
   late final pulumi.Output<String> kubernetesFleetId;
+
   /// Specifies the name of this Kubernetes Fleet Member. Changing this forces a new Kubernetes Fleet Member to be created.
   late final pulumi.Output<String> name;
 
@@ -326,14 +329,14 @@ class FleetMember extends pulumi.CustomResource {
     FleetMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/fleetMember:FleetMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String?>('group');
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
-    this.kubernetesFleetId = registerOutput<String>('kubernetesFleetId');
+         'azure:containerservice/fleetMember:FleetMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String?>('group');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    kubernetesFleetId = registerOutput<String>('kubernetesFleetId');
     this.name = registerOutput<String>('name');
   }
 
@@ -355,14 +358,14 @@ class FleetMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/fleetMember:FleetMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String?>('group');
-    this.kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
-    this.kubernetesFleetId = registerOutput<String>('kubernetesFleetId');
+         'azure:containerservice/fleetMember:FleetMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String?>('group');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    kubernetesFleetId = registerOutput<String>('kubernetesFleetId');
     this.name = registerOutput<String>('name');
   }
 }

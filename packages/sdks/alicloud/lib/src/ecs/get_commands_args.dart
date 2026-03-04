@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCommandsArgs {
   /// Public order provider.
   final pulumi.Input<String>? commandProvider;
+
   /// The Base64-encoded content of the command.
   final pulumi.Input<String>? contentEncoding;
+
   /// The description of command.
   final pulumi.Input<String>? description;
+
   /// A list of Command IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The name of the command.
   final pulumi.Input<String>? name;
+
   /// A regex string to filter results by Command name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
   final pulumi.Input<String>? type;
 
@@ -59,15 +66,46 @@ class GetCommandsArgs {
 
   factory GetCommandsArgs.fromMap(Map<String, dynamic> map) {
     return GetCommandsArgs(
-      commandProvider: map['commandProvider'] == null ? null : (map['commandProvider']! as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      commandProvider: (() {
+        final guardedValue = map['commandProvider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentEncoding: (() {
+        final guardedValue = map['contentEncoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

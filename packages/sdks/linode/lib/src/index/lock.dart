@@ -2,15 +2,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lock_args.dart';
 import 'lock_state.dart';
 
-/// > **Early Access** Locks are in Early Access and may not be available to all users.
+/// &gt; **Early Access** Locks are in Early Access and may not be available to all users.
 ///
-/// > **Important** Only unrestricted users can create and delete locks. Restricted users cannot manage locks even if they have read/write permissions for the resource.
+/// &gt; **Important** Only unrestricted users can create and delete locks. Restricted users cannot manage locks even if they have read/write permissions for the resource.
 ///
 /// Manages a Linode Lock which prevents accidental deletion and modification of resources. Locks protect against deletion, rebuild operations, and service transfers. The `cannot_delete_with_subresources` lock type also protects subresources such as disks, configs, interfaces, and IP addresses.
 ///
 /// For more information, see the Linode APIv4 docs (TBD).
 ///
-/// > **Note** Only one lock can exist per resource at a time. You cannot have both `cannot_delete` and `cannot_delete_with_subresources` locks on the same resource simultaneously.
+/// &gt; **Note** Only one lock can exist per resource at a time. You cannot have both `cannot_delete` and `cannot_delete_with_subresources` locks on the same resource simultaneously.
 ///
 /// ## Example Usage
 ///
@@ -299,12 +299,16 @@ import 'lock_state.dart';
 class Lock extends pulumi.CustomResource {
   /// The ID of the entity to lock.
   late final pulumi.Output<int> entityId;
+
   /// The label of the locked entity.
   late final pulumi.Output<String> entityLabel;
+
   /// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
   late final pulumi.Output<String> entityType;
+
   /// The URL of the locked entity.
   late final pulumi.Output<String> entityUrl;
+
   /// The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
   late final pulumi.Output<String> lockType;
 
@@ -312,29 +316,22 @@ class Lock extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lock]. {@macro pulumi_index_lock_lock_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lock(
-    String name, {
-    LockArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'linode:index/lock:Lock',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.entityId = registerOutput<int>('entityId');
-    this.entityLabel = registerOutput<String>('entityLabel');
-    this.entityType = registerOutput<String>('entityType');
-    this.entityUrl = registerOutput<String>('entityUrl');
-    this.lockType = registerOutput<String>('lockType');
+  Lock(String name, {LockArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'linode:index/lock:Lock',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    entityId = registerOutput<int>('entityId');
+    entityLabel = registerOutput<String>('entityLabel');
+    entityType = registerOutput<String>('entityType');
+    entityUrl = registerOutput<String>('entityUrl');
+    lockType = registerOutput<String>('lockType');
   }
 
   /// Gets an existing [Lock] resource's state with the given [name] and [id].
-  static Lock get(
-    String name,
-    pulumi.Input<String> id, {
-    LockState? state,
-  }) {
+  static Lock get(String name, pulumi.Input<String> id, {LockState? state}) {
     return Lock._get(
       name,
       state: state?.toMap(),
@@ -347,15 +344,15 @@ class Lock extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/lock:Lock',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.entityId = registerOutput<int>('entityId');
-    this.entityLabel = registerOutput<String>('entityLabel');
-    this.entityType = registerOutput<String>('entityType');
-    this.entityUrl = registerOutput<String>('entityUrl');
-    this.lockType = registerOutput<String>('lockType');
+         'linode:index/lock:Lock',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    entityId = registerOutput<int>('entityId');
+    entityLabel = registerOutput<String>('entityLabel');
+    entityType = registerOutput<String>('entityType');
+    entityUrl = registerOutput<String>('entityUrl');
+    lockType = registerOutput<String>('lockType');
   }
 }

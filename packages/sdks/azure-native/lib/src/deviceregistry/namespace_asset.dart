@@ -1,15 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'dataset_broker_state_store_destination_response.dart';
 import 'device_ref_response.dart';
-import 'event_mqtt_destination_response.dart';
 import 'extended_location_response.dart';
-import 'management_group_response.dart';
 import 'namespace_asset_args.dart';
 import 'namespace_asset_status_response.dart';
-import 'namespace_dataset_response.dart';
-import 'namespace_event_response.dart';
-import 'namespace_stream_response.dart';
-import 'stream_mqtt_destination_response.dart';
 import 'system_data_response.dart';
 
 /// Asset definition.
@@ -1324,80 +1317,121 @@ import 'system_data_response.dart';
 class NamespaceAsset extends pulumi.CustomResource {
   /// URIs or type definition IDs.
   late final pulumi.Output<List<String>?> assetTypeRefs;
+
   /// A set of key-value pairs that contain custom attributes set by the customer.
   late final pulumi.Output<dynamic> attributes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
-  late final pulumi.Output<List<NamespaceDatasetResponse>?> datasets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> datasets;
+
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultDatasetsConfiguration;
+
   /// Default destinations for a dataset.
-  late final pulumi.Output<List<DatasetBrokerStateStoreDestinationResponse>?> defaultDatasetsDestinations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  defaultDatasetsDestinations;
+
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultEventsConfiguration;
+
   /// Default destinations for an event.
-  late final pulumi.Output<List<EventMqttDestinationResponse>?> defaultEventsDestinations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  defaultEventsDestinations;
+
   /// Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultManagementGroupsConfiguration;
+
   /// Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultStreamsConfiguration;
+
   /// Default destinations for a stream.
-  late final pulumi.Output<List<StreamMqttDestinationResponse>?> defaultStreamsDestinations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  defaultStreamsDestinations;
+
   /// Human-readable description of the asset.
   late final pulumi.Output<String?> description;
+
   /// Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.
   late final pulumi.Output<DeviceRefResponse> deviceRef;
+
   /// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
   late final pulumi.Output<List<String>?> discoveredAssetRefs;
+
   /// Human-readable display name.
   late final pulumi.Output<String?> displayName;
+
   /// Asset documentation reference.
   late final pulumi.Output<String?> documentationUri;
+
   /// Enabled/disabled status of the asset.
   late final pulumi.Output<bool?> enabled;
+
   /// Array of events that are part of the asset. Each event can have per-event configuration.
-  late final pulumi.Output<List<NamespaceEventResponse>?> events;
+  late final pulumi.Output<List<Map<String, dynamic>>?> events;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Asset ID provided by the customer.
   late final pulumi.Output<String?> externalAssetId;
+
   /// Asset hardware revision number.
   late final pulumi.Output<String?> hardwareRevision;
+
   /// A timestamp (in UTC) that is updated each time the resource is modified.
   late final pulumi.Output<String> lastTransitionTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Array of management groups that are part of the asset. Each management group can have a per-group configuration.
-  late final pulumi.Output<List<ManagementGroupResponse>?> managementGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> managementGroups;
+
   /// Asset manufacturer.
   late final pulumi.Output<String?> manufacturer;
+
   /// Asset manufacturer URI.
   late final pulumi.Output<String?> manufacturerUri;
+
   /// Asset model.
   late final pulumi.Output<String?> model;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Asset product code.
   late final pulumi.Output<String?> productCode;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Asset serial number.
   late final pulumi.Output<String?> serialNumber;
+
   /// Asset software revision number.
   late final pulumi.Output<String?> softwareRevision;
+
   /// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
   late final pulumi.Output<NamespaceAssetStatusResponse> status;
+
   /// Array of streams that are part of the asset. Each stream can have a per-stream configuration.
-  late final pulumi.Output<List<NamespaceStreamResponse>?> streams;
+  late final pulumi.Output<List<Map<String, dynamic>>?> streams;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Globally unique, immutable, non-reusable ID.
   late final pulumi.Output<String> uuid;
+
   /// An integer that is incremented each time the resource is modified.
   late final pulumi.Output<double> version;
 
@@ -1410,49 +1444,67 @@ class NamespaceAsset extends pulumi.CustomResource {
     NamespaceAssetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceregistry:NamespaceAsset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assetTypeRefs = registerOutput<List<String>?>('assetTypeRefs');
-    this.attributes = registerOutput<dynamic>('attributes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.datasets = registerOutput<List<NamespaceDatasetResponse>?>('datasets');
-    this.defaultDatasetsConfiguration = registerOutput<String?>('defaultDatasetsConfiguration');
-    this.defaultDatasetsDestinations = registerOutput<List<DatasetBrokerStateStoreDestinationResponse>?>('defaultDatasetsDestinations');
-    this.defaultEventsConfiguration = registerOutput<String?>('defaultEventsConfiguration');
-    this.defaultEventsDestinations = registerOutput<List<EventMqttDestinationResponse>?>('defaultEventsDestinations');
-    this.defaultManagementGroupsConfiguration = registerOutput<String?>('defaultManagementGroupsConfiguration');
-    this.defaultStreamsConfiguration = registerOutput<String?>('defaultStreamsConfiguration');
-    this.defaultStreamsDestinations = registerOutput<List<StreamMqttDestinationResponse>?>('defaultStreamsDestinations');
-    this.description = registerOutput<String?>('description');
-    this.deviceRef = registerOutput<DeviceRefResponse>('deviceRef');
-    this.discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
-    this.displayName = registerOutput<String?>('displayName');
-    this.documentationUri = registerOutput<String?>('documentationUri');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.events = registerOutput<List<NamespaceEventResponse>?>('events');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.externalAssetId = registerOutput<String?>('externalAssetId');
-    this.hardwareRevision = registerOutput<String?>('hardwareRevision');
-    this.lastTransitionTime = registerOutput<String>('lastTransitionTime');
-    this.location = registerOutput<String>('location');
-    this.managementGroups = registerOutput<List<ManagementGroupResponse>?>('managementGroups');
-    this.manufacturer = registerOutput<String?>('manufacturer');
-    this.manufacturerUri = registerOutput<String?>('manufacturerUri');
-    this.model = registerOutput<String?>('model');
+         'azure-native:deviceregistry:NamespaceAsset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assetTypeRefs = registerOutput<List<String>?>('assetTypeRefs');
+    attributes = registerOutput<dynamic>('attributes');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    datasets = registerOutput<List<Map<String, dynamic>>?>('datasets');
+    defaultDatasetsConfiguration = registerOutput<String?>(
+      'defaultDatasetsConfiguration',
+    );
+    defaultDatasetsDestinations = registerOutput<List<Map<String, dynamic>>?>(
+      'defaultDatasetsDestinations',
+    );
+    defaultEventsConfiguration = registerOutput<String?>(
+      'defaultEventsConfiguration',
+    );
+    defaultEventsDestinations = registerOutput<List<Map<String, dynamic>>?>(
+      'defaultEventsDestinations',
+    );
+    defaultManagementGroupsConfiguration = registerOutput<String?>(
+      'defaultManagementGroupsConfiguration',
+    );
+    defaultStreamsConfiguration = registerOutput<String?>(
+      'defaultStreamsConfiguration',
+    );
+    defaultStreamsDestinations = registerOutput<List<Map<String, dynamic>>?>(
+      'defaultStreamsDestinations',
+    );
+    description = registerOutput<String?>('description');
+    deviceRef = registerOutput<DeviceRefResponse>('deviceRef');
+    discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
+    displayName = registerOutput<String?>('displayName');
+    documentationUri = registerOutput<String?>('documentationUri');
+    enabled = registerOutput<bool?>('enabled');
+    events = registerOutput<List<Map<String, dynamic>>?>('events');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    externalAssetId = registerOutput<String?>('externalAssetId');
+    hardwareRevision = registerOutput<String?>('hardwareRevision');
+    lastTransitionTime = registerOutput<String>('lastTransitionTime');
+    location = registerOutput<String>('location');
+    managementGroups = registerOutput<List<Map<String, dynamic>>?>(
+      'managementGroups',
+    );
+    manufacturer = registerOutput<String?>('manufacturer');
+    manufacturerUri = registerOutput<String?>('manufacturerUri');
+    model = registerOutput<String?>('model');
     this.name = registerOutput<String>('name');
-    this.productCode = registerOutput<String?>('productCode');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serialNumber = registerOutput<String?>('serialNumber');
-    this.softwareRevision = registerOutput<String?>('softwareRevision');
-    this.status = registerOutput<NamespaceAssetStatusResponse>('status');
-    this.streams = registerOutput<List<NamespaceStreamResponse>?>('streams');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
-    this.version = registerOutput<double>('version');
+    productCode = registerOutput<String?>('productCode');
+    provisioningState = registerOutput<String>('provisioningState');
+    serialNumber = registerOutput<String?>('serialNumber');
+    softwareRevision = registerOutput<String?>('softwareRevision');
+    status = registerOutput<NamespaceAssetStatusResponse>('status');
+    streams = registerOutput<List<Map<String, dynamic>>?>('streams');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    version = registerOutput<double>('version');
   }
 }

@@ -36,12 +36,31 @@ class RepositoryIamPolicyState {
 
   factory RepositoryIamPolicyState.fromMap(Map<String, dynamic> map) {
     return RepositoryIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyData: (() {
+        final guardedValue = map['policyData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repository: (() {
+        final guardedValue = map['repository'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

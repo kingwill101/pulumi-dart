@@ -8,17 +8,23 @@ class DataPolicyState {
   /// The data masking policy that specifies the data masking rule to use.
   /// Structure is documented below.
   final pulumi.Input<DataPolicyDataMaskingPolicy>? dataMaskingPolicy;
+
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
   final pulumi.Input<String>? dataPolicyId;
+
   /// The enrollment level of the service.
   /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
   final pulumi.Input<String>? dataPolicyType;
+
   /// The name of the location of the data policy.
   final pulumi.Input<String>? location;
+
   /// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
   final pulumi.Input<String>? name;
+
   /// Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
   final pulumi.Input<String>? policyTag;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -43,7 +49,11 @@ class DataPolicyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataMaskingPolicy': ?pulumi.Input.mapOptionalInputValue<DataPolicyDataMaskingPolicy, Map<String, dynamic>>(dataMaskingPolicy, (value) => value.toMap()),
+      'dataMaskingPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataPolicyDataMaskingPolicy,
+            Map<String, dynamic>
+          >(dataMaskingPolicy, (value) => value.toMap()),
       'dataPolicyId': ?dataPolicyId,
       'dataPolicyType': ?dataPolicyType,
       'location': ?location,
@@ -55,14 +65,45 @@ class DataPolicyState {
 
   factory DataPolicyState.fromMap(Map<String, dynamic> map) {
     return DataPolicyState(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy']! as Map).cast<String, dynamic>())).input(),
-      dataPolicyId: map['dataPolicyId'] == null ? null : (map['dataPolicyId']! as String).input(),
-      dataPolicyType: map['dataPolicyType'] == null ? null : (map['dataPolicyType']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policyTag: map['policyTag'] == null ? null : (map['policyTag']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dataMaskingPolicy: (() {
+        final guardedValue = map['dataMaskingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataPolicyDataMaskingPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataPolicyId: (() {
+        final guardedValue = map['dataPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataPolicyType: (() {
+        final guardedValue = map['dataPolicyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyTag: (() {
+        final guardedValue = map['policyTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

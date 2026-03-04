@@ -11,12 +11,16 @@ import 'function_javascript_uda_output.dart';
 class FunctionJavascriptUdaArgs {
   /// One or more `input` blocks as defined below.
   final pulumi.Input<List<FunctionJavascriptUdaInput>> inputs;
+
   /// The name of the JavaScript UDA Function. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// An `output` block as defined below.
   final pulumi.Input<FunctionJavascriptUdaOutput> output;
+
   /// The JavaScript of this UDA Function.
   final pulumi.Input<String> script;
+
   /// The resource ID of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobId;
 
@@ -36,9 +40,24 @@ class FunctionJavascriptUdaArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inputs': pulumi.Input.mapInputValue<List<FunctionJavascriptUdaInput>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<FunctionJavascriptUdaInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inputs':
+          pulumi.Input.mapInputValue<
+            List<FunctionJavascriptUdaInput>,
+            List<Map<String, dynamic>>
+          >(
+            inputs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FunctionJavascriptUdaInput,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
-      'output': pulumi.Input.mapInputValue<FunctionJavascriptUdaOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
+      'output':
+          pulumi.Input.mapInputValue<
+            FunctionJavascriptUdaOutput,
+            Map<String, dynamic>
+          >(output, (value) => value.toMap()),
       'script': script,
       'streamAnalyticsJobId': streamAnalyticsJobId,
     };
@@ -46,12 +65,28 @@ class FunctionJavascriptUdaArgs {
 
   factory FunctionJavascriptUdaArgs.fromMap(Map<String, dynamic> map) {
     return FunctionJavascriptUdaArgs(
-      inputs: (pulumi.Input.decodeList<FunctionJavascriptUdaInput>(map['inputs'], (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      output: (FunctionJavascriptUdaOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      script: (map['script'] as String).input(),
-      streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
+      inputs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<FunctionJavascriptUdaInput>(
+          map['inputs']!,
+          (value) => FunctionJavascriptUdaInput.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      output: pulumi.Input.fromValue(
+        FunctionJavascriptUdaOutput.fromMap(
+          (map['output']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      script: pulumi.Input.fromValue(map['script'] as String),
+      streamAnalyticsJobId: pulumi.Input.fromValue(
+        map['streamAnalyticsJobId'] as String,
+      ),
     );
   }
 }
-

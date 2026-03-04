@@ -4,16 +4,17 @@ enum VirtualNetworkGatewayConnectionMode {
   valueResponderOnly("ResponderOnly"),
   valueInitiatorOnly("InitiatorOnly");
 
-  const VirtualNetworkGatewayConnectionMode(this.value);
-  final String value;
+  const VirtualNetworkGatewayConnectionMode(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkGatewayConnectionMode fromValue(String value) {
     for (final item in VirtualNetworkGatewayConnectionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualNetworkGatewayConnectionMode value: $value');
+    throw ArgumentError(
+      'Unknown VirtualNetworkGatewayConnectionMode value: $value',
+    );
   }
 }
-

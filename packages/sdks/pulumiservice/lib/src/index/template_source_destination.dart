@@ -8,20 +8,19 @@ class TemplateSourceDestination {
 
   /// Creates a new [TemplateSourceDestination].
   /// [url] Destination URL that gets filled in on new project creation.
-  TemplateSourceDestination({
-    this.url,
-  });
+  TemplateSourceDestination({this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': ?url,
-    };
+    return <String, dynamic>{'url': ?url};
   }
 
   factory TemplateSourceDestination.fromMap(Map<String, dynamic> map) {
     return TemplateSourceDestination(
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

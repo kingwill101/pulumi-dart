@@ -7,8 +7,10 @@ import 'service_mesh_type_response.dart';
 class ServiceMeshAnalysisMessageBaseResponse {
   /// A url pointing to the Service Mesh or Istio documentation for this specific error type.
   final pulumi.Input<String> documentationUrl;
+
   /// Represents how severe a message is.
   final pulumi.Input<String> level;
+
   /// Represents the specific type of a message.
   final pulumi.Input<ServiceMeshTypeResponse> type;
 
@@ -26,16 +28,27 @@ class ServiceMeshAnalysisMessageBaseResponse {
     return <String, dynamic>{
       'documentationUrl': documentationUrl,
       'level': level,
-      'type': pulumi.Input.mapInputValue<ServiceMeshTypeResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
+      'type':
+          pulumi.Input.mapInputValue<
+            ServiceMeshTypeResponse,
+            Map<String, dynamic>
+          >(type, (value) => value.toMap()),
     };
   }
 
-  factory ServiceMeshAnalysisMessageBaseResponse.fromMap(Map<String, dynamic> map) {
+  factory ServiceMeshAnalysisMessageBaseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceMeshAnalysisMessageBaseResponse(
-      documentationUrl: (map['documentationUrl'] as String).input(),
-      level: (map['level'] as String).input(),
-      type: (ServiceMeshTypeResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      documentationUrl: pulumi.Input.fromValue(
+        map['documentationUrl'] as String,
+      ),
+      level: pulumi.Input.fromValue(map['level'] as String),
+      type: pulumi.Input.fromValue(
+        ServiceMeshTypeResponse.fromMap(
+          (map['type']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum LinkedServiceEntityStatus {
   valueProvisioningAccount("ProvisioningAccount"),
   valueUpdating("Updating");
 
-  const LinkedServiceEntityStatus(this.value);
-  final String value;
+  const LinkedServiceEntityStatus(this.wireValue);
+  final String wireValue;
 
   static LinkedServiceEntityStatus fromValue(String value) {
     for (final item in LinkedServiceEntityStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LinkedServiceEntityStatus value: $value');
   }
 }
-

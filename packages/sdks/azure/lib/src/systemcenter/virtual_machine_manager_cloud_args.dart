@@ -9,14 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineManagerCloudArgs {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Cloud. Changing this forces a new resource to be created.
   final pulumi.Input<String> customLocationId;
+
   /// The Azure Region where the System Center Virtual Machine Manager Cloud should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the System Center Virtual Machine Manager Cloud. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the System Center Virtual Machine Cloud should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The ID of the System Center Virtual Machine Manager Server Inventory Item. Changing this forces a new resource to be created.
-  final pulumi.Input<String> systemCenterVirtualMachineManagerServerInventoryItemId;
+  final pulumi.Input<String>
+  systemCenterVirtualMachineManagerServerInventoryItemId;
+
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Cloud.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,20 +48,42 @@ class VirtualMachineManagerCloudArgs {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': resourceGroupName,
-      'systemCenterVirtualMachineManagerServerInventoryItemId': systemCenterVirtualMachineManagerServerInventoryItemId,
+      'systemCenterVirtualMachineManagerServerInventoryItemId':
+          systemCenterVirtualMachineManagerServerInventoryItemId,
       'tags': ?tags,
     };
   }
 
   factory VirtualMachineManagerCloudArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerCloudArgs(
-      customLocationId: (map['customLocationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      systemCenterVirtualMachineManagerServerInventoryItemId: (map['systemCenterVirtualMachineManagerServerInventoryItemId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      customLocationId: pulumi.Input.fromValue(
+        map['customLocationId'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      systemCenterVirtualMachineManagerServerInventoryItemId:
+          pulumi.Input.fromValue(
+            map['systemCenterVirtualMachineManagerServerInventoryItemId']
+                as String,
+          ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -26,7 +26,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides user-available access groups. Use when you can create mount points
 ///
-/// > NOTE: Available in 1.35.0+
+/// &gt; NOTE: Available in 1.35.0+
 ///
 /// ## Example Usage
 ///
@@ -155,7 +155,7 @@ Future<GetAccessGroupsResult> getAccessGroups(
 
 /// This data source provides AccessRule available to the user.
 ///
-/// > **NOTE**: Available in 1.35.0+
+/// &gt; **NOTE**: Available in 1.35.0+
 ///
 /// ## Example Usage
 ///
@@ -290,7 +290,7 @@ Future<GetAccessRulesResult> getAccessRules(
 
 /// This data source provides Auto Snapshot Policies available to the user.
 ///
-/// > **NOTE**: Available in v1.153.0+.
+/// &gt; **NOTE**: Available in v1.153.0+.
 ///
 /// ## Example Usage
 ///
@@ -413,7 +413,7 @@ Future<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(
 
 /// This data source provides the Nas Data Flows of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.153.0+.
+/// &gt; **NOTE:** Available in v1.153.0+.
 ///
 /// ## Example Usage
 ///
@@ -591,7 +591,7 @@ Future<GetDataFlowsResult> getDataFlows(
 
 /// This data source provides FileSystems available to the user.
 ///
-/// > **NOTE**: Available in 1.35.0+
+/// &gt; **NOTE**: Available in 1.35.0+
 ///
 /// ## Example Usage
 ///
@@ -714,7 +714,7 @@ Future<GetFileSystemsResult> getFileSystems(
 
 /// This data source provides the Nas Filesets of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.153.0+.
+/// &gt; **NOTE:** Available in v1.153.0+.
 ///
 /// ## Example Usage
 ///
@@ -856,7 +856,7 @@ Future<GetFilesetsResult> getFilesets(
 
 /// This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.153.0+.
+/// &gt; **NOTE:** Available in v1.153.0+.
 ///
 /// ## Example Usage
 ///
@@ -1034,7 +1034,7 @@ Future<GetLifecyclePoliciesResult> getLifecyclePolicies(
 
 /// This data source provides MountTargets available to the user.
 ///
-/// > **NOTE**: Available in 1.35.0+
+/// &gt; **NOTE**: Available in 1.35.0+
 ///
 /// ## Example Usage
 ///
@@ -1157,7 +1157,7 @@ Future<GetMountTargetsResult> getMountTargets(
 
 /// Provide  a data source to retrieve the type of protocol used to create NAS file system.
 ///
-/// > **NOTE:** Available in 1.42.0
+/// &gt; **NOTE:** Available in 1.42.0
 ///
 /// ## Example Usage
 ///
@@ -1288,7 +1288,7 @@ Future<GetProtocolsResult> getProtocols(
 ///
 /// For information about NAS and how to use it, see [What is NAS](https://www.alibabacloud.com/help/product/27516.htm).
 ///
-/// > **NOTE:** Available in v1.97.0+
+/// &gt; **NOTE:** Available in v1.97.0+
 ///
 /// ## Example Usage
 ///
@@ -1395,7 +1395,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Nas Snapshots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.152.0+.
+/// &gt; **NOTE:** Available in v1.152.0+.
 ///
 /// ## Example Usage
 ///
@@ -1535,7 +1535,7 @@ Future<GetSnapshotsResult> getSnapshots(
 
 /// Provide  a data source to retrieve the type of zone used to create NAS file system.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///

@@ -10,20 +10,31 @@ class AmlFilesystemEncryptionSettingsResponse {
 
   /// Creates a new [AmlFilesystemEncryptionSettingsResponse].
   /// [keyEncryptionKey] Specifies the location of the encryption key in Key Vault.
-  AmlFilesystemEncryptionSettingsResponse({
-    this.keyEncryptionKey,
-  });
+  AmlFilesystemEncryptionSettingsResponse({this.keyEncryptionKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyEncryptionKey': ?pulumi.Input.mapOptionalInputValue<KeyVaultKeyReferenceResponse, Map<String, dynamic>>(keyEncryptionKey, (value) => value.toMap()),
+      'keyEncryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultKeyReferenceResponse,
+            Map<String, dynamic>
+          >(keyEncryptionKey, (value) => value.toMap()),
     };
   }
 
-  factory AmlFilesystemEncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory AmlFilesystemEncryptionSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AmlFilesystemEncryptionSettingsResponse(
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReferenceResponse.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: (() {
+        final guardedValue = map['keyEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultKeyReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

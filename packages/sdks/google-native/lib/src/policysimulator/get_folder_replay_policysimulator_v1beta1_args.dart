@@ -29,12 +29,13 @@ class GetFolderReplayPolicysimulatorV1beta1Args {
     };
   }
 
-  factory GetFolderReplayPolicysimulatorV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetFolderReplayPolicysimulatorV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFolderReplayPolicysimulatorV1beta1Args(
-      folderId: (map['folderId'] as String).input(),
-      location: (map['location'] as String).input(),
-      replayId: (map['replayId'] as String).input(),
+      folderId: pulumi.Input.fromValue(map['folderId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      replayId: pulumi.Input.fromValue(map['replayId'] as String),
     );
   }
 }
-

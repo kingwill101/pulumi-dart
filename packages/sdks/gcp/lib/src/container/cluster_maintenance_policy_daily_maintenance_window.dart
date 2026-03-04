@@ -15,17 +15,19 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'duration': ?duration,
-      'startTime': startTime,
-    };
+    return <String, dynamic>{'duration': ?duration, 'startTime': startTime};
   }
 
-  factory ClusterMaintenancePolicyDailyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory ClusterMaintenancePolicyDailyMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMaintenancePolicyDailyMaintenanceWindow(
-      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

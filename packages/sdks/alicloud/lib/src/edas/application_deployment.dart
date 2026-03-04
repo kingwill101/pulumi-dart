@@ -4,7 +4,7 @@ import 'application_deployment_state.dart';
 
 /// Deploys applications on EDAS, see [What is EDAS Application Deployment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-deployapplication).
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 /// ## Example Usage
 ///
@@ -587,12 +587,16 @@ import 'application_deployment_state.dart';
 class ApplicationDeployment extends pulumi.CustomResource {
   /// The ID of the application that you want to deploy.
   late final pulumi.Output<String> appId;
+
   /// The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
   late final pulumi.Output<String> groupId;
+
   /// Last package version deployed.
   late final pulumi.Output<String> lastPackageVersion;
+
   /// The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
   late final pulumi.Output<String?> packageVersion;
+
   /// The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
   late final pulumi.Output<String> warUrl;
 
@@ -605,16 +609,16 @@ class ApplicationDeployment extends pulumi.CustomResource {
     ApplicationDeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/applicationDeployment:ApplicationDeployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.groupId = registerOutput<String>('groupId');
-    this.lastPackageVersion = registerOutput<String>('lastPackageVersion');
-    this.packageVersion = registerOutput<String?>('packageVersion');
-    this.warUrl = registerOutput<String>('warUrl');
+         'alicloud:edas/applicationDeployment:ApplicationDeployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    groupId = registerOutput<String>('groupId');
+    lastPackageVersion = registerOutput<String>('lastPackageVersion');
+    packageVersion = registerOutput<String?>('packageVersion');
+    warUrl = registerOutput<String>('warUrl');
   }
 
   /// Gets an existing [ApplicationDeployment] resource's state with the given [name] and [id].
@@ -635,15 +639,15 @@ class ApplicationDeployment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/applicationDeployment:ApplicationDeployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.groupId = registerOutput<String>('groupId');
-    this.lastPackageVersion = registerOutput<String>('lastPackageVersion');
-    this.packageVersion = registerOutput<String?>('packageVersion');
-    this.warUrl = registerOutput<String>('warUrl');
+         'alicloud:edas/applicationDeployment:ApplicationDeployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    groupId = registerOutput<String>('groupId');
+    lastPackageVersion = registerOutput<String>('lastPackageVersion');
+    packageVersion = registerOutput<String?>('packageVersion');
+    warUrl = registerOutput<String>('warUrl');
   }
 }

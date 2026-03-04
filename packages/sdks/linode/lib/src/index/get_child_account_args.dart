@@ -12,20 +12,15 @@ class GetChildAccountArgs {
 
   /// Creates a new [GetChildAccountArgs].
   /// [euuid] The unique EUUID of this Child Account.
-  GetChildAccountArgs({
-    required this.euuid,
-  });
+  GetChildAccountArgs({required this.euuid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'euuid': euuid,
-    };
+    return <String, dynamic>{'euuid': euuid};
   }
 
   factory GetChildAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetChildAccountArgs(
-      euuid: (map['euuid'] as String).input(),
+      euuid: pulumi.Input.fromValue(map['euuid'] as String),
     );
   }
 }
-

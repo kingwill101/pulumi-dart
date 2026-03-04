@@ -10,13 +10,18 @@ import 'content_safety_endpoint_deployment_resource_properties.dart';
 class ConnectionDeploymentArgs {
   /// Friendly name of the workspace connection
   final pulumi.Input<String> connectionName;
+
   /// Name of the deployment resource
   final pulumi.Input<String>? deploymentName;
-  final pulumi.Input<ContentSafetyEndpointDeploymentResourceProperties> properties;
+  final pulumi.Input<ContentSafetyEndpointDeploymentResourceProperties>
+  properties;
+
   /// Api version used by proxy call
   final pulumi.Input<String>? proxyApiVersion;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -40,7 +45,11 @@ class ConnectionDeploymentArgs {
     return <String, dynamic>{
       'connectionName': connectionName,
       'deploymentName': ?deploymentName,
-      'properties': pulumi.Input.mapInputValue<ContentSafetyEndpointDeploymentResourceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ContentSafetyEndpointDeploymentResourceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'proxyApiVersion': ?proxyApiVersion,
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
@@ -49,13 +58,26 @@ class ConnectionDeploymentArgs {
 
   factory ConnectionDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionDeploymentArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
-      properties: (ContentSafetyEndpointDeploymentResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        ContentSafetyEndpointDeploymentResourceProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      proxyApiVersion: (() {
+        final guardedValue = map['proxyApiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInsightArgs {
   /// Name of the insight
   final pulumi.Input<String> insightName;
+
   /// workloadImpact resource
   final pulumi.Input<String> workloadImpactName;
 
   /// Creates a new [GetInsightArgs].
   /// [insightName] Name of the insight
   /// [workloadImpactName] workloadImpact resource
-  GetInsightArgs({
-    required this.insightName,
-    required this.workloadImpactName,
-  });
+  GetInsightArgs({required this.insightName, required this.workloadImpactName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetInsightArgs {
 
   factory GetInsightArgs.fromMap(Map<String, dynamic> map) {
     return GetInsightArgs(
-      insightName: (map['insightName'] as String).input(),
-      workloadImpactName: (map['workloadImpactName'] as String).input(),
+      insightName: pulumi.Input.fromValue(map['insightName'] as String),
+      workloadImpactName: pulumi.Input.fromValue(
+        map['workloadImpactName'] as String,
+      ),
     );
   }
 }
-

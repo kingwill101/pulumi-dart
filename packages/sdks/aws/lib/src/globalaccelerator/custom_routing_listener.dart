@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_routing_listener_args.dart';
-import 'custom_routing_listener_port_range.dart';
 import 'custom_routing_listener_state.dart';
 
 /// Provides a Global Accelerator custom routing listener.
@@ -213,8 +212,9 @@ class CustomRoutingListener extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of a custom routing accelerator.
   late final pulumi.Output<String> acceleratorArn;
   late final pulumi.Output<String> arn;
+
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-  late final pulumi.Output<List<CustomRoutingListenerPortRange>> portRanges;
+  late final pulumi.Output<List<Map<String, dynamic>>> portRanges;
 
   /// Creates a new [CustomRoutingListener].
   /// [name] The Pulumi resource name.
@@ -225,14 +225,14 @@ class CustomRoutingListener extends pulumi.CustomResource {
     CustomRoutingListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorArn = registerOutput<String>('acceleratorArn');
-    this.arn = registerOutput<String>('arn');
-    this.portRanges = registerOutput<List<CustomRoutingListenerPortRange>>('portRanges');
+         'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorArn = registerOutput<String>('acceleratorArn');
+    arn = registerOutput<String>('arn');
+    portRanges = registerOutput<List<Map<String, dynamic>>>('portRanges');
   }
 
   /// Gets an existing [CustomRoutingListener] resource's state with the given [name] and [id].
@@ -253,13 +253,13 @@ class CustomRoutingListener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorArn = registerOutput<String>('acceleratorArn');
-    this.arn = registerOutput<String>('arn');
-    this.portRanges = registerOutput<List<CustomRoutingListenerPortRange>>('portRanges');
+         'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorArn = registerOutput<String>('acceleratorArn');
+    arn = registerOutput<String>('arn');
+    portRanges = registerOutput<List<Map<String, dynamic>>>('portRanges');
   }
 }

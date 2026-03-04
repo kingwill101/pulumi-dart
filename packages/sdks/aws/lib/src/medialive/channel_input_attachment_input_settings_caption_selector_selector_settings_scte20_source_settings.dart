@@ -21,11 +21,20 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20So
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings(
-      convert608To708: map['convert608To708'] == null ? null : ((map['convert608To708'] as String).input()).input(),
-      source608ChannelNumber: map['source608ChannelNumber'] == null ? null : ((map['source608ChannelNumber'] as int).input()).input(),
+      convert608To708: (() {
+        final guardedValue = map['convert608To708'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source608ChannelNumber: (() {
+        final guardedValue = map['source608ChannelNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

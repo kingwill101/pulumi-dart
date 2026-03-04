@@ -8,20 +8,19 @@ class ListenerCertificate {
 
   /// Creates a new [ListenerCertificate].
   /// [id] The id of the certificate.
-  ListenerCertificate({
-    this.id,
-  });
+  ListenerCertificate({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ListenerCertificate.fromMap(Map<String, dynamic> map) {
     return ListenerCertificate(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

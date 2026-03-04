@@ -9,26 +9,37 @@ import 'system_data_response.dart';
 class GetImageResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The extended location of the Image.
   final ExtendedLocationResponse? extendedLocation;
+
   /// Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image source is a blob, then we need the user to specify the value, if the source is managed resource like disk or snapshot, we may require the user to specify the property if we cannot deduce it from the source managed resource.
   final String? hyperVGeneration;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The provisioning state.
   final String provisioningState;
+
   /// The source virtual machine from which Image is created.
   final SubResourceResponse? sourceVirtualMachine;
+
   /// Specifies the storage settings for the virtual machine disks.
   final ImageStorageProfileResponse? storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -63,14 +74,14 @@ class GetImageResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'extendedLocation': ?extendedLocation == null ? null : extendedLocation!.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'hyperVGeneration': ?hyperVGeneration,
       'id': id,
       'location': location,
       'name': name,
       'provisioningState': provisioningState,
-      'sourceVirtualMachine': ?sourceVirtualMachine == null ? null : sourceVirtualMachine!.toMap(),
-      'storageProfile': ?storageProfile == null ? null : storageProfile!.toMap(),
+      'sourceVirtualMachine': ?sourceVirtualMachine?.toMap(),
+      'storageProfile': ?storageProfile?.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
@@ -80,18 +91,45 @@ class GetImageResult {
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
     return GetImageResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : map['hyperVGeneration']! as String,
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return ExtendedLocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      hyperVGeneration: (() {
+        final guardedValue = map['hyperVGeneration'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceVirtualMachine: map['sourceVirtualMachine'] == null ? null : SubResourceResponse.fromMap((map['sourceVirtualMachine']! as Map).cast<String, dynamic>()),
-      storageProfile: map['storageProfile'] == null ? null : ImageStorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sourceVirtualMachine: (() {
+        final guardedValue = map['sourceVirtualMachine'];
+        if (guardedValue == null) return null;
+        return SubResourceResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      storageProfile: (() {
+        final guardedValue = map['storageProfile'];
+        if (guardedValue == null) return null;
+        return ImageStorageProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

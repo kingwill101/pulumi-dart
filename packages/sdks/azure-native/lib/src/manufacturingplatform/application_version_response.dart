@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationVersionResponse {
   /// Is Deprecated
   final pulumi.Input<bool> isDeprecated;
+
   /// Is Latest
   final pulumi.Input<bool> isLatest;
+
   /// Is Preview
   final pulumi.Input<bool> isPreview;
+
   /// Application Version
   final pulumi.Input<String> version;
 
@@ -36,11 +39,10 @@ class ApplicationVersionResponse {
 
   factory ApplicationVersionResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationVersionResponse(
-      isDeprecated: (map['isDeprecated'] as bool).input(),
-      isLatest: (map['isLatest'] as bool).input(),
-      isPreview: (map['isPreview'] as bool).input(),
-      version: (map['version'] as String).input(),
+      isDeprecated: pulumi.Input.fromValue(map['isDeprecated'] as bool),
+      isLatest: pulumi.Input.fromValue(map['isLatest'] as bool),
+      isPreview: pulumi.Input.fromValue(map['isPreview'] as bool),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

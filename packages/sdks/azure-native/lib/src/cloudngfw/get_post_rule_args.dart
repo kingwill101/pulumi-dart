@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPostRuleArgs {
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
+
   /// Post Rule priority
   final pulumi.Input<String> priority;
 
   /// Creates a new [GetPostRuleArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Post Rule priority
-  GetPostRuleArgs({
-    required this.globalRulestackName,
-    required this.priority,
-  });
+  GetPostRuleArgs({required this.globalRulestackName, required this.priority});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetPostRuleArgs {
 
   factory GetPostRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetPostRuleArgs(
-      globalRulestackName: (map['globalRulestackName'] as String).input(),
-      priority: (map['priority'] as String).input(),
+      globalRulestackName: pulumi.Input.fromValue(
+        map['globalRulestackName'] as String,
+      ),
+      priority: pulumi.Input.fromValue(map['priority'] as String),
     );
   }
 }
-

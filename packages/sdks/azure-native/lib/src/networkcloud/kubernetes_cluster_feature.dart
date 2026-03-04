@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_feature_args.dart';
-import 'string_key_value_pair_response.dart';
 import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
@@ -194,30 +193,43 @@ import 'system_data_response.dart';
 class KubernetesClusterFeature extends pulumi.CustomResource {
   /// The lifecycle indicator of the feature.
   late final pulumi.Output<String> availabilityLifecycle;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The detailed status of the feature.
   late final pulumi.Output<String> detailedStatus;
+
   /// The descriptive message for the detailed status of the feature.
   late final pulumi.Output<String> detailedStatusMessage;
+
   /// Resource ETag.
   late final pulumi.Output<String> etag;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The configured options for the feature.
-  late final pulumi.Output<List<StringKeyValuePairResponse>?> options;
+  late final pulumi.Output<List<Map<String, dynamic>>?> options;
+
   /// The provisioning state of the Kubernetes cluster feature.
   late final pulumi.Output<String> provisioningState;
+
   /// The indicator of if the feature is required or optional. Optional features may be deleted by the user, while required features are managed with the kubernetes cluster lifecycle.
   late final pulumi.Output<String> required;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The version of the feature.
   late final pulumi.Output<String> version;
 
@@ -230,24 +242,24 @@ class KubernetesClusterFeature extends pulumi.CustomResource {
     KubernetesClusterFeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkcloud:KubernetesClusterFeature',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilityLifecycle = registerOutput<String>('availabilityLifecycle');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.detailedStatus = registerOutput<String>('detailedStatus');
-    this.detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:networkcloud:KubernetesClusterFeature',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilityLifecycle = registerOutput<String>('availabilityLifecycle');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<List<StringKeyValuePairResponse>?>('options');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.required = registerOutput<String>('required');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    this.options = registerOutput<List<Map<String, dynamic>>?>('options');
+    provisioningState = registerOutput<String>('provisioningState');
+    required = registerOutput<String>('required');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

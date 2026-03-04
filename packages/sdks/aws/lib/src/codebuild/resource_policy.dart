@@ -332,8 +332,10 @@ import 'resource_policy_state.dart';
 class ResourcePolicy extends pulumi.CustomResource {
   /// A JSON-formatted resource policy. For more information, see [Sharing a Projec](https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share) and [Sharing a Report Group](https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share).
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ARN of the Project or ReportGroup resource you want to associate with a resource policy.
   late final pulumi.Output<String> resourceArn;
 
@@ -346,14 +348,14 @@ class ResourcePolicy extends pulumi.CustomResource {
     ResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:codebuild/resourcePolicy:ResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+         'aws:codebuild/resourcePolicy:ResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 
   /// Gets an existing [ResourcePolicy] resource's state with the given [name] and [id].
@@ -374,13 +376,13 @@ class ResourcePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:codebuild/resourcePolicy:ResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
+         'aws:codebuild/resourcePolicy:ResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
   }
 }

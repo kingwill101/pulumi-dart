@@ -3,16 +3,15 @@ enum TolerationOperator {
   exists("Exists"),
   equal("Equal");
 
-  const TolerationOperator(this.value);
-  final String value;
+  const TolerationOperator(this.wireValue);
+  final String wireValue;
 
   static TolerationOperator fromValue(String value) {
     for (final item in TolerationOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TolerationOperator value: $value');
   }
 }
-

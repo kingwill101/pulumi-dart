@@ -368,15 +368,20 @@ class ModernizeProject extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<ResourceIdentityResponse?> identity;
+
   /// Gets or sets the location of the modernizeProject.
   late final pulumi.Output<String?> location;
+
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// ModernizeProject properties.
   late final pulumi.Output<ModernizeProjectModelPropertiesResponse> properties;
   late final pulumi.Output<ModernizeProjectModelResponseSystemData> systemData;
+
   /// Gets or sets the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -389,18 +394,22 @@ class ModernizeProject extends pulumi.CustomResource {
     ModernizeProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:ModernizeProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ResourceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:migrate:ModernizeProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ModernizeProjectModelPropertiesResponse>('properties');
-    this.systemData = registerOutput<ModernizeProjectModelResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ModernizeProjectModelPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<ModernizeProjectModelResponseSystemData>(
+      'systemData',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

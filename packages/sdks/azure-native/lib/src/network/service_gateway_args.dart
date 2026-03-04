@@ -12,20 +12,28 @@ import 'virtual_network_network.dart';
 class ServiceGatewayArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Route Target address of Service gateway
   final pulumi.Input<RouteTargetAddressPropertiesFormat>? routeTargetAddress;
+
   /// Route Target address V6 of Service gateway
   final pulumi.Input<RouteTargetAddressPropertiesFormat>? routeTargetAddressV6;
+
   /// The name of the service gateway.
   final pulumi.Input<String>? serviceGatewayName;
+
   /// The service gateway SKU.
   final pulumi.Input<ServiceGatewaySku>? sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Reference to an existing virtual network.
   final pulumi.Input<VirtualNetworkNetwork>? virtualNetwork;
+
   /// A list of availability zones denoting the zone in which service gateway should be deployed.
   ///
   /// - The zone values must be provided as strings representing numeric identifiers like "1", "2", "3" etc.
@@ -57,10 +65,22 @@ class ServiceGatewayArgs {
     return <String, dynamic>{
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'routeTargetAddress': ?pulumi.Input.mapOptionalInputValue<RouteTargetAddressPropertiesFormat, Map<String, dynamic>>(routeTargetAddress, (value) => value.toMap()),
-      'routeTargetAddressV6': ?pulumi.Input.mapOptionalInputValue<RouteTargetAddressPropertiesFormat, Map<String, dynamic>>(routeTargetAddressV6, (value) => value.toMap()),
+      'routeTargetAddress':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteTargetAddressPropertiesFormat,
+            Map<String, dynamic>
+          >(routeTargetAddress, (value) => value.toMap()),
+      'routeTargetAddressV6':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteTargetAddressPropertiesFormat,
+            Map<String, dynamic>
+          >(routeTargetAddressV6, (value) => value.toMap()),
       'serviceGatewayName': ?serviceGatewayName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<ServiceGatewaySku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceGatewaySku,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
       'tags': ?tags,
       'virtualNetwork': ?virtualNetwork,
       'zones': ?zones,
@@ -69,16 +89,63 @@ class ServiceGatewayArgs {
 
   factory ServiceGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGatewayArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeTargetAddress: map['routeTargetAddress'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddress']! as Map).cast<String, dynamic>())).input(),
-      routeTargetAddressV6: map['routeTargetAddressV6'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddressV6']! as Map).cast<String, dynamic>())).input(),
-      serviceGatewayName: map['serviceGatewayName'] == null ? null : (map['serviceGatewayName']! as String).input(),
-      sku: map['sku'] == null ? null : (ServiceGatewaySku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      virtualNetwork: map['virtualNetwork'] == null ? null : (map['virtualNetwork']! as VirtualNetworkNetwork).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      routeTargetAddress: (() {
+        final guardedValue = map['routeTargetAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteTargetAddressPropertiesFormat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      routeTargetAddressV6: (() {
+        final guardedValue = map['routeTargetAddressV6'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteTargetAddressPropertiesFormat.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceGatewayName: (() {
+        final guardedValue = map['serviceGatewayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceGatewaySku.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      virtualNetwork: (() {
+        final guardedValue = map['virtualNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as VirtualNetworkNetwork);
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

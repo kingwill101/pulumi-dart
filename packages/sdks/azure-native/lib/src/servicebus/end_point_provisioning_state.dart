@@ -7,16 +7,15 @@ enum EndPointProvisioningState {
   valueCanceled("Canceled"),
   valueFailed("Failed");
 
-  const EndPointProvisioningState(this.value);
-  final String value;
+  const EndPointProvisioningState(this.wireValue);
+  final String wireValue;
 
   static EndPointProvisioningState fromValue(String value) {
     for (final item in EndPointProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndPointProvisioningState value: $value');
   }
 }
-

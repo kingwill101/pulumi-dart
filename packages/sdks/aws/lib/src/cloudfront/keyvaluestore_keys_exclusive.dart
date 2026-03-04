@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keyvaluestore_keys_exclusive_args.dart';
-import 'keyvaluestore_keys_exclusive_resource_key_value_pair.dart';
 import 'keyvaluestore_keys_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of resource key value pairs defined in an AWS CloudFront KeyValueStore.
 ///
-/// !> This resource takes exclusive ownership over key value pairs defined in a KeyValueStore. This includes removal of key value pairs which are not explicitly configured. To prevent persistent drift, ensure any `aws.cloudfront.KeyvaluestoreKey` resources managed alongside this resource have an equivalent `resource_key_value_pair` argument.
+/// !&gt; This resource takes exclusive ownership over key value pairs defined in a KeyValueStore. This includes removal of key value pairs which are not explicitly configured. To prevent persistent drift, ensure any `aws.cloudfront.KeyvaluestoreKey` resources managed alongside this resource have an equivalent `resource_key_value_pair` argument.
 ///
-/// > Destruction of this resource means Terraform will no longer manage reconciliation of the configured key value pairs. It __will not__ delete the configured key value pairs from the KeyValueStore.
+/// &gt; Destruction of this resource means Terraform will no longer manage reconciliation of the configured key value pairs. It __will not__ delete the configured key value pairs from the KeyValueStore.
 ///
 /// ## Example Usage
 ///
@@ -168,7 +167,7 @@ import 'keyvaluestore_keys_exclusive_state.dart';
 ///
 /// To automatically remove any configured key value pairs, omit a `resource_key_value_pair` block.
 ///
-/// > This will not __prevent__ key value pairs from being defined in a KeyValueStore via Terraform (or any other interface). This resource enables bringing key value pairs into a configured state, however, this reconciliation happens only when `apply` is proactively run.
+/// &gt; This will not __prevent__ key value pairs from being defined in a KeyValueStore via Terraform (or any other interface). This resource enables bringing key value pairs into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
 ///
 /// ```typescript
@@ -267,11 +266,14 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> keyValueStoreArn;
+
   /// Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
   late final pulumi.Output<int> maxBatchSize;
+
   /// A list of all resource key value pairs associated with the KeyValueStore.
   /// See `resource_key_value_pair` below.
-  late final pulumi.Output<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?> resourceKeyValuePairs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resourceKeyValuePairs;
+
   /// Total size of the Key Value Store in bytes.
   late final pulumi.Output<int> totalSizeInBytes;
 
@@ -284,15 +286,17 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
     KeyvaluestoreKeysExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
-    this.maxBatchSize = registerOutput<int>('maxBatchSize');
-    this.resourceKeyValuePairs = registerOutput<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>('resourceKeyValuePairs');
-    this.totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
+         'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    maxBatchSize = registerOutput<int>('maxBatchSize');
+    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>(
+      'resourceKeyValuePairs',
+    );
+    totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
   }
 
   /// Gets an existing [KeyvaluestoreKeysExclusive] resource's state with the given [name] and [id].
@@ -313,14 +317,16 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
-    this.maxBatchSize = registerOutput<int>('maxBatchSize');
-    this.resourceKeyValuePairs = registerOutput<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>('resourceKeyValuePairs');
-    this.totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
+         'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    maxBatchSize = registerOutput<int>('maxBatchSize');
+    resourceKeyValuePairs = registerOutput<List<Map<String, dynamic>>?>(
+      'resourceKeyValuePairs',
+    );
+    totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
   }
 }

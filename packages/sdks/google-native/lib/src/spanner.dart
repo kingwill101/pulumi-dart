@@ -1,5 +1,3 @@
-library module_spanner;
-
 export 'spanner/autoscaling_config.dart';
 export 'spanner/autoscaling_config_response.dart';
 export 'spanner/autoscaling_limits.dart';

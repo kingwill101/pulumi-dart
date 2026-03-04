@@ -3,16 +3,15 @@ enum InboundNATRuleProtocol {
   tCP("Tcp"),
   uDP("Udp");
 
-  const InboundNATRuleProtocol(this.value);
-  final String value;
+  const InboundNATRuleProtocol(this.wireValue);
+  final String wireValue;
 
   static InboundNATRuleProtocol fromValue(String value) {
     for (final item in InboundNATRuleProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InboundNATRuleProtocol value: $value');
   }
 }
-

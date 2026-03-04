@@ -6,36 +6,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicSubscriptionState {
   /// ARN of the subscription.
   final pulumi.Input<String>? arn;
+
   /// Integer indicating number of minutes to wait in retrying mode for fetching subscription arn before marking it as failure. Only applicable for http and https protocols. Default is `1`.
   final pulumi.Input<int>? confirmationTimeoutInMinutes;
+
   /// Whether the subscription confirmation request was authenticated.
   final pulumi.Input<bool>? confirmationWasAuthenticated;
+
   /// JSON String with the delivery policy (retries, backoff, etc.) that will be used in the subscription - this only applies to HTTP/S subscriptions. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/DeliveryPolicies.html) for more details.
   final pulumi.Input<String>? deliveryPolicy;
+
   /// Endpoint to send data to. The contents vary with the protocol. See details below.
   final pulumi.Input<String>? endpoint;
+
   /// Whether the endpoint is capable of [auto confirming subscription](http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.prepare) (e.g., PagerDuty). Default is `false`.
   final pulumi.Input<bool>? endpointAutoConfirms;
+
   /// JSON String with the filter policy that will be used in the subscription to filter messages seen by the target resource. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-filtering.html) for more details.
   final pulumi.Input<String>? filterPolicy;
+
   /// Whether the `filter_policy` applies to `MessageAttributes` (default) or `MessageBody`.
   final pulumi.Input<String>? filterPolicyScope;
+
   /// AWS account ID of the subscription's owner.
   final pulumi.Input<String>? ownerId;
+
   /// Whether the subscription has not been confirmed.
   final pulumi.Input<bool>? pendingConfirmation;
+
   /// Protocol to use. Valid values are: `sqs`, `sms`, `lambda`, `firehose`, and `application`. Protocols `email`, `email-json`, `http` and `https` are also valid but partially supported. See details below.
   final pulumi.Input<String>? protocol;
+
   /// Whether to enable raw message delivery (the original message is directly passed, not wrapped in JSON with the original message in the message property). Default is `false`.
   final pulumi.Input<bool>? rawMessageDelivery;
+
   /// JSON String with the redrive policy that will be used in the subscription. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/sns-dead-letter-queues.html#how-messages-moved-into-dead-letter-queue) for more details.
   final pulumi.Input<String>? redrivePolicy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// JSON String with the archived message replay policy that will be used in the subscription. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/message-archiving-and-replay-subscriber.html) for more details.
   final pulumi.Input<String>? replayPolicy;
+
   /// ARN of the IAM role to publish to Kinesis Data Firehose delivery stream. Refer to [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html).
   final pulumi.Input<String>? subscriptionRoleArn;
+
   /// ARN of the SNS topic to subscribe to.
   ///
   /// The following arguments are optional:
@@ -103,24 +119,91 @@ class TopicSubscriptionState {
 
   factory TopicSubscriptionState.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      confirmationTimeoutInMinutes: map['confirmationTimeoutInMinutes'] == null ? null : ((map['confirmationTimeoutInMinutes'] as int).input()).input(),
-      confirmationWasAuthenticated: map['confirmationWasAuthenticated'] == null ? null : ((map['confirmationWasAuthenticated'] as bool).input()).input(),
-      deliveryPolicy: map['deliveryPolicy'] == null ? null : ((map['deliveryPolicy'] as String).input()).input(),
-      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
-      endpointAutoConfirms: map['endpointAutoConfirms'] == null ? null : ((map['endpointAutoConfirms'] as bool).input()).input(),
-      filterPolicy: map['filterPolicy'] == null ? null : ((map['filterPolicy'] as String).input()).input(),
-      filterPolicyScope: map['filterPolicyScope'] == null ? null : ((map['filterPolicyScope'] as String).input()).input(),
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      pendingConfirmation: map['pendingConfirmation'] == null ? null : ((map['pendingConfirmation'] as bool).input()).input(),
-      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
-      rawMessageDelivery: map['rawMessageDelivery'] == null ? null : ((map['rawMessageDelivery'] as bool).input()).input(),
-      redrivePolicy: map['redrivePolicy'] == null ? null : ((map['redrivePolicy'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      replayPolicy: map['replayPolicy'] == null ? null : ((map['replayPolicy'] as String).input()).input(),
-      subscriptionRoleArn: map['subscriptionRoleArn'] == null ? null : ((map['subscriptionRoleArn'] as String).input()).input(),
-      topic: map['topic'] == null ? null : ((map['topic'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      confirmationTimeoutInMinutes: (() {
+        final guardedValue = map['confirmationTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      confirmationWasAuthenticated: (() {
+        final guardedValue = map['confirmationWasAuthenticated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deliveryPolicy: (() {
+        final guardedValue = map['deliveryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointAutoConfirms: (() {
+        final guardedValue = map['endpointAutoConfirms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filterPolicy: (() {
+        final guardedValue = map['filterPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filterPolicyScope: (() {
+        final guardedValue = map['filterPolicyScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pendingConfirmation: (() {
+        final guardedValue = map['pendingConfirmation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rawMessageDelivery: (() {
+        final guardedValue = map['rawMessageDelivery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      redrivePolicy: (() {
+        final guardedValue = map['redrivePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replayPolicy: (() {
+        final guardedValue = map['replayPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionRoleArn: (() {
+        final guardedValue = map['subscriptionRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

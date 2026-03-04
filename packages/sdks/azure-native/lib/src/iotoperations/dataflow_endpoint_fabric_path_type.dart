@@ -3,16 +3,15 @@ enum DataflowEndpointFabricPathType {
   files("Files"),
   tables("Tables");
 
-  const DataflowEndpointFabricPathType(this.value);
-  final String value;
+  const DataflowEndpointFabricPathType(this.wireValue);
+  final String wireValue;
 
   static DataflowEndpointFabricPathType fromValue(String value) {
     for (final item in DataflowEndpointFabricPathType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataflowEndpointFabricPathType value: $value');
   }
 }
-

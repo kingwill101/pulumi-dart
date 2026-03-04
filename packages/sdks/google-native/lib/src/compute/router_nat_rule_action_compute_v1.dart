@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouterNatRuleActionComputeV1 {
   /// A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
   final pulumi.Input<List<String>>? sourceNatActiveIps;
+
   /// A list of URLs of the subnetworks used as source ranges for this NAT Rule. These subnetworks must have purpose set to PRIVATE_NAT. This field is used for private NAT.
   final pulumi.Input<List<String>>? sourceNatActiveRanges;
+
   /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
   final pulumi.Input<List<String>>? sourceNatDrainIps;
+
   /// A list of URLs of subnetworks representing source ranges to be drained. This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule. This field is used for private NAT.
   final pulumi.Input<List<String>>? sourceNatDrainRanges;
 
@@ -35,11 +38,26 @@ class RouterNatRuleActionComputeV1 {
 
   factory RouterNatRuleActionComputeV1.fromMap(Map<String, dynamic> map) {
     return RouterNatRuleActionComputeV1(
-      sourceNatActiveIps: map['sourceNatActiveIps'] == null ? null : ((map['sourceNatActiveIps']! as List).cast<String>()).input(),
-      sourceNatActiveRanges: map['sourceNatActiveRanges'] == null ? null : ((map['sourceNatActiveRanges']! as List).cast<String>()).input(),
-      sourceNatDrainIps: map['sourceNatDrainIps'] == null ? null : ((map['sourceNatDrainIps']! as List).cast<String>()).input(),
-      sourceNatDrainRanges: map['sourceNatDrainRanges'] == null ? null : ((map['sourceNatDrainRanges']! as List).cast<String>()).input(),
+      sourceNatActiveIps: (() {
+        final guardedValue = map['sourceNatActiveIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceNatActiveRanges: (() {
+        final guardedValue = map['sourceNatActiveRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceNatDrainIps: (() {
+        final guardedValue = map['sourceNatDrainIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceNatDrainRanges: (() {
+        final guardedValue = map['sourceNatDrainRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

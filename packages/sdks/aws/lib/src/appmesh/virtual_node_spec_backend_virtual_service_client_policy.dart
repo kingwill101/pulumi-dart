@@ -9,20 +9,31 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicy {
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicy].
   /// [tls] Transport Layer Security (TLS) client policy.
-  VirtualNodeSpecBackendVirtualServiceClientPolicy({
-    this.tls,
-  });
+  VirtualNodeSpecBackendVirtualServiceClientPolicy({this.tls});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'tls': ?pulumi.Input.mapOptionalInputValue<VirtualNodeSpecBackendVirtualServiceClientPolicyTls, Map<String, dynamic>>(tls, (value) => value.toMap()),
+      'tls':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNodeSpecBackendVirtualServiceClientPolicyTls,
+            Map<String, dynamic>
+          >(tls, (value) => value.toMap()),
     };
   }
 
-  factory VirtualNodeSpecBackendVirtualServiceClientPolicy.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendVirtualServiceClientPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicy(
-      tls: map['tls'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input()).input(),
+      tls: (() {
+        final guardedValue = map['tls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNodeSpecBackendVirtualServiceClientPolicyTls.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitRouterMulticastDomainPeerMemberArgs {
   /// Specifies whether only to precheck the request.
   final pulumi.Input<bool>? dryRun;
+
   /// The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
   final pulumi.Input<String> groupIpAddress;
+
   /// The IDs of the inter-region multicast domains.
   final pulumi.Input<String> peerTransitRouterMulticastDomainId;
+
   /// The ID of the multicast domain to which the multicast member belongs.
   final pulumi.Input<String> transitRouterMulticastDomainId;
 
@@ -37,13 +40,22 @@ class TransitRouterMulticastDomainPeerMemberArgs {
     };
   }
 
-  factory TransitRouterMulticastDomainPeerMemberArgs.fromMap(Map<String, dynamic> map) {
+  factory TransitRouterMulticastDomainPeerMemberArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitRouterMulticastDomainPeerMemberArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      groupIpAddress: (map['groupIpAddress'] as String).input(),
-      peerTransitRouterMulticastDomainId: (map['peerTransitRouterMulticastDomainId'] as String).input(),
-      transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      groupIpAddress: pulumi.Input.fromValue(map['groupIpAddress'] as String),
+      peerTransitRouterMulticastDomainId: pulumi.Input.fromValue(
+        map['peerTransitRouterMulticastDomainId'] as String,
+      ),
+      transitRouterMulticastDomainId: pulumi.Input.fromValue(
+        map['transitRouterMulticastDomainId'] as String,
+      ),
     );
   }
 }
-

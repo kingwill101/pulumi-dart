@@ -8,16 +8,17 @@ enum GlobalForwardingRuleIpProtocolComputeBeta {
   tcp("TCP"),
   udp("UDP");
 
-  const GlobalForwardingRuleIpProtocolComputeBeta(this.value);
-  final String value;
+  const GlobalForwardingRuleIpProtocolComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GlobalForwardingRuleIpProtocolComputeBeta fromValue(String value) {
     for (final item in GlobalForwardingRuleIpProtocolComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleIpProtocolComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleIpProtocolComputeBeta value: $value',
+    );
   }
 }
-

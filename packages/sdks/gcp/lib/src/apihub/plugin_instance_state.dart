@@ -9,27 +9,36 @@ class PluginInstanceState {
   /// The action status for the plugin instance.
   /// Structure is documented below.
   final pulumi.Input<List<PluginInstanceAction>>? actions;
+
   /// AuthConfig represents the authentication information.
   /// Structure is documented below.
   final pulumi.Input<PluginInstanceAuthConfig>? authConfig;
+
   /// Timestamp indicating when the plugin instance was created.
   final pulumi.Input<String>? createTime;
+
   /// The display name for this plugin instance. Max length is 255 characters.
   final pulumi.Input<bool>? disable;
+
   /// The display name for this plugin instance. Max length is 255 characters.
   final pulumi.Input<String>? displayName;
+
   /// Error message describing the failure, if any, during Create, Delete or
   /// ApplyConfig operation corresponding to the plugin instance.This field will
   /// only be populated if the plugin instance is in the ERROR or FAILED state.
   final pulumi.Input<String>? errorMessage;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
+
   /// Identifier. The unique name of the plugin instance resource.
   /// Format:
   /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
   final pulumi.Input<String>? name;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? plugin;
+
   /// The ID to use for the plugin instance, which will become the final
   /// component of the plugin instance's resource name. This field is optional.
   /// * If provided, the same will be used. The service will throw an error if
@@ -39,9 +48,11 @@ class PluginInstanceState {
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z[0-9]-_/.
   final pulumi.Input<String>? pluginInstanceId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The current state of the plugin instance (e.g., enabled, disabled,
   /// provisioning).
   /// Possible values:
@@ -53,6 +64,7 @@ class PluginInstanceState {
   /// FAILED
   /// DELETING
   final pulumi.Input<String>? state;
+
   /// Timestamp indicating when the plugin instance was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -88,8 +100,23 @@ class PluginInstanceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<PluginInstanceAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PluginInstanceAction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'authConfig': ?pulumi.Input.mapOptionalInputValue<PluginInstanceAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PluginInstanceAction>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PluginInstanceAction,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'authConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PluginInstanceAuthConfig,
+            Map<String, dynamic>
+          >(authConfig, (value) => value.toMap()),
       'createTime': ?createTime,
       'disable': ?disable,
       'displayName': ?displayName,
@@ -106,20 +133,82 @@ class PluginInstanceState {
 
   factory PluginInstanceState.fromMap(Map<String, dynamic> map) {
     return PluginInstanceState(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceAction>(map['actions']!, (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authConfig: map['authConfig'] == null ? null : (PluginInstanceAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      plugin: map['plugin'] == null ? null : (map['plugin']! as String).input(),
-      pluginInstanceId: map['pluginInstanceId'] == null ? null : (map['pluginInstanceId']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PluginInstanceAction>(
+            guardedValue,
+            (value) => PluginInstanceAction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      authConfig: (() {
+        final guardedValue = map['authConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PluginInstanceAuthConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disable: (() {
+        final guardedValue = map['disable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      plugin: (() {
+        final guardedValue = map['plugin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pluginInstanceId: (() {
+        final guardedValue = map['pluginInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

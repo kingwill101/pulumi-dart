@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceMemberArgs {
   /// The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
   final pulumi.Input<List<String>> roles;
+
   /// The ID of the User.
   final pulumi.Input<String> userId;
+
   /// The ID of the Workspace.
   final pulumi.Input<String> workspaceId;
 
@@ -34,10 +36,9 @@ class WorkspaceMemberArgs {
 
   factory WorkspaceMemberArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceMemberArgs(
-      roles: ((map['roles'] as List).cast<String>()).input(),
-      userId: (map['userId'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      roles: pulumi.Input.fromValue((map['roles'] as List).cast<String>()),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

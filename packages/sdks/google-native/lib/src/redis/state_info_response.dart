@@ -10,20 +10,25 @@ class StateInfoResponse {
 
   /// Creates a new [StateInfoResponse].
   /// [updateInfo] Describes ongoing update on the cluster when cluster state is UPDATING.
-  StateInfoResponse({
-    required this.updateInfo,
-  });
+  StateInfoResponse({required this.updateInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfo': pulumi.Input.mapInputValue<UpdateInfoResponse, Map<String, dynamic>>(updateInfo, (value) => value.toMap()),
+      'updateInfo':
+          pulumi.Input.mapInputValue<UpdateInfoResponse, Map<String, dynamic>>(
+            updateInfo,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory StateInfoResponse.fromMap(Map<String, dynamic> map) {
     return StateInfoResponse(
-      updateInfo: (UpdateInfoResponse.fromMap((map['updateInfo'] as Map).cast<String, dynamic>())).input(),
+      updateInfo: pulumi.Input.fromValue(
+        UpdateInfoResponse.fromMap(
+          (map['updateInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

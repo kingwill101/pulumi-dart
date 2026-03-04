@@ -13,26 +13,51 @@ class Envelope {
   /// [payload] Optional.
   /// [payloadType] Optional.
   /// [signatures] Optional.
-  Envelope({
-    this.payload,
-    this.payloadType,
-    this.signatures,
-  });
+  Envelope({this.payload, this.payloadType, this.signatures});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'payload': ?payload,
       'payloadType': ?payloadType,
-      'signatures': ?pulumi.Input.mapOptionalInputValue<List<EnvelopeSignature>, List<Map<String, dynamic>>>(signatures, (value) => pulumi.Input.encodeList<EnvelopeSignature, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'signatures':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EnvelopeSignature>,
+            List<Map<String, dynamic>>
+          >(
+            signatures,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EnvelopeSignature,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory Envelope.fromMap(Map<String, dynamic> map) {
     return Envelope(
-      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
-      payloadType: map['payloadType'] == null ? null : (map['payloadType']! as String).input(),
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignature>(map['signatures']!, (value) => EnvelopeSignature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      payload: (() {
+        final guardedValue = map['payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      payloadType: (() {
+        final guardedValue = map['payloadType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signatures: (() {
+        final guardedValue = map['signatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EnvelopeSignature>(
+            guardedValue,
+            (value) => EnvelopeSignature.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

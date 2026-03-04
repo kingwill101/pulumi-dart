@@ -218,24 +218,32 @@ import 'system_data_response.dart';
 class CapacityPoolBucket extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
   late final pulumi.Output<FileSystemUserResponse?> fileSystemUser;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The volume path mounted inside the bucket. The default is the root path '/' if no value is provided when the bucket is created.
   late final pulumi.Output<String?> path;
+
   /// Provisioning state of the resource
   late final pulumi.Output<String> provisioningState;
+
   /// Properties of the server managing the lifecycle of volume buckets
   late final pulumi.Output<BucketServerPropertiesResponse?> server;
+
   /// The bucket credentials status. There states:
   ///
   /// "NoCredentialsSet": Access and Secret key pair have not been generated.
   /// "CredentialsExpired": Access and Secret key pair have expired.
   /// "Active": The certificate has been installed and credentials are unexpired.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -248,19 +256,19 @@ class CapacityPoolBucket extends pulumi.CustomResource {
     CapacityPoolBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:CapacityPoolBucket',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.fileSystemUser = registerOutput<FileSystemUserResponse?>('fileSystemUser');
+         'azure-native:netapp:CapacityPoolBucket',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    fileSystemUser = registerOutput<FileSystemUserResponse?>('fileSystemUser');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String?>('path');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.server = registerOutput<BucketServerPropertiesResponse?>('server');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    path = registerOutput<String?>('path');
+    provisioningState = registerOutput<String>('provisioningState');
+    server = registerOutput<BucketServerPropertiesResponse?>('server');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

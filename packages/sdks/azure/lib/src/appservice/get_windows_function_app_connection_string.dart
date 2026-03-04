@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsFunctionAppConnectionString {
   /// The name of this Windows Function App.
   final pulumi.Input<String> name;
+
   /// The type of Managed Service Identity that is configured on this Windows Function App.
   final pulumi.Input<String> type;
+
   /// The connection string value.
   final pulumi.Input<String> value;
 
@@ -21,19 +23,16 @@ class GetWindowsFunctionAppConnectionString {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'type': type, 'value': value};
   }
 
-  factory GetWindowsFunctionAppConnectionString.fromMap(Map<String, dynamic> map) {
+  factory GetWindowsFunctionAppConnectionString.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWindowsFunctionAppConnectionString(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

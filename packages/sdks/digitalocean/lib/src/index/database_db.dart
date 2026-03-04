@@ -168,6 +168,7 @@ import 'database_db_state.dart';
 class DatabaseDb extends pulumi.CustomResource {
   /// The ID of the original source database cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The name for the database.
   late final pulumi.Output<String> name;
 
@@ -180,12 +181,12 @@ class DatabaseDb extends pulumi.CustomResource {
     DatabaseDbArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseDb:DatabaseDb',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
+         'digitalocean:index/databaseDb:DatabaseDb',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
   }
 
@@ -207,12 +208,12 @@ class DatabaseDb extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseDb:DatabaseDb',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
+         'digitalocean:index/databaseDb:DatabaseDb',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
   }
 }

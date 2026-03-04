@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class L2IsolationDomainArgs {
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
+
   /// Name of the L2 Isolation Domain.
   final pulumi.Input<String>? l2IsolationDomainName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Maximum transmission unit. Default value is 1500.
   final pulumi.Input<int>? mtu;
+
   /// ARM Resource ID of the Network Fabric.
   final pulumi.Input<String> networkFabricId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Vlan Identifier of the Network Fabric. Example: 501.
   final pulumi.Input<int> vlanId;
 
@@ -59,15 +66,38 @@ class L2IsolationDomainArgs {
 
   factory L2IsolationDomainArgs.fromMap(Map<String, dynamic> map) {
     return L2IsolationDomainArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
-      l2IsolationDomainName: map['l2IsolationDomainName'] == null ? null : (map['l2IsolationDomainName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
-      networkFabricId: (map['networkFabricId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vlanId: (map['vlanId'] as int).input(),
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      l2IsolationDomainName: (() {
+        final guardedValue = map['l2IsolationDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mtu: (() {
+        final guardedValue = map['mtu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      networkFabricId: pulumi.Input.fromValue(map['networkFabricId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vlanId: pulumi.Input.fromValue(map['vlanId'] as int),
     );
   }
 }
-

@@ -347,7 +347,7 @@ import 'endpoint_event_hub_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DigitalTwins` - 2023-01-31
@@ -360,14 +360,18 @@ import 'endpoint_event_hub_state.dart';
 /// $ pulumi import azure:digitaltwins/endpointEventHub:EndpointEventHub example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.DigitalTwins/digitalTwinsInstances/dt1/endpoints/ep1
 /// ```
 class EndpointEventHub extends pulumi.CustomResource {
-  /// The storage secret of the dead-lettering, whose format is `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
+  /// The storage secret of the dead-lettering, whose format is `https://&lt;storageAccountname&gt;.blob.core.windows.net/&lt;containerName&gt;?&lt;SASToken&gt;`. When an endpoint can't deliver an event within a certain time period or after trying to deliver the event a certain number of times, it can send the undelivered event to a storage account.
   late final pulumi.Output<String?> deadLetterStorageSecret;
+
   /// The resource ID of the Digital Twins Instance. Changing this forces a new Digital Twins Event Hub Endpoint to be created.
   late final pulumi.Output<String> digitalTwinsId;
+
   /// The primary connection string of the Event Hub Authorization Rule with a minimum of `send` permission.
   late final pulumi.Output<String> eventhubPrimaryConnectionString;
+
   /// The secondary connection string of the Event Hub Authorization Rule with a minimum of `send` permission.
   late final pulumi.Output<String> eventhubSecondaryConnectionString;
+
   /// The name which should be used for this Digital Twins Event Hub Endpoint. Changing this forces a new Digital Twins Event Hub Endpoint to be created.
   late final pulumi.Output<String> name;
 
@@ -380,15 +384,21 @@ class EndpointEventHub extends pulumi.CustomResource {
     EndpointEventHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:digitaltwins/endpointEventHub:EndpointEventHub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
-    this.digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    this.eventhubPrimaryConnectionString = registerOutput<String>('eventhubPrimaryConnectionString');
-    this.eventhubSecondaryConnectionString = registerOutput<String>('eventhubSecondaryConnectionString');
+         'azure:digitaltwins/endpointEventHub:EndpointEventHub',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deadLetterStorageSecret = registerOutput<String?>(
+      'deadLetterStorageSecret',
+    );
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    eventhubPrimaryConnectionString = registerOutput<String>(
+      'eventhubPrimaryConnectionString',
+    );
+    eventhubSecondaryConnectionString = registerOutput<String>(
+      'eventhubSecondaryConnectionString',
+    );
     this.name = registerOutput<String>('name');
   }
 
@@ -410,15 +420,21 @@ class EndpointEventHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:digitaltwins/endpointEventHub:EndpointEventHub',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
-    this.digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    this.eventhubPrimaryConnectionString = registerOutput<String>('eventhubPrimaryConnectionString');
-    this.eventhubSecondaryConnectionString = registerOutput<String>('eventhubSecondaryConnectionString');
+         'azure:digitaltwins/endpointEventHub:EndpointEventHub',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deadLetterStorageSecret = registerOutput<String?>(
+      'deadLetterStorageSecret',
+    );
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    eventhubPrimaryConnectionString = registerOutput<String>(
+      'eventhubPrimaryConnectionString',
+    );
+    eventhubSecondaryConnectionString = registerOutput<String>(
+      'eventhubSecondaryConnectionString',
+    );
     this.name = registerOutput<String>('name');
   }
 }

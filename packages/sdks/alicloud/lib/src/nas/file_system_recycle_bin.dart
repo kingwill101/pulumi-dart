@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileSystemRecycleBin {
   /// Recycle Bin open time
   final pulumi.Input<String>? enableTime;
+
   /// Retention time of files in the Recycle Bin. Unit: days.
   final pulumi.Input<int>? reservedDays;
+
   /// Amount of low-frequency data stored in the recycle bin. Unit: Byte.
   final pulumi.Input<int>? secondarySize;
+
   /// The amount of files stored in the Recycle Bin. Unit: Byte.
   final pulumi.Input<int>? size;
+
   /// Recycle Bin Status
   final pulumi.Input<String>? status;
 
@@ -40,12 +44,31 @@ class FileSystemRecycleBin {
 
   factory FileSystemRecycleBin.fromMap(Map<String, dynamic> map) {
     return FileSystemRecycleBin(
-      enableTime: map['enableTime'] == null ? null : (map['enableTime']! as String).input(),
-      reservedDays: map['reservedDays'] == null ? null : (map['reservedDays']! as int).input(),
-      secondarySize: map['secondarySize'] == null ? null : (map['secondarySize']! as int).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      enableTime: (() {
+        final guardedValue = map['enableTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservedDays: (() {
+        final guardedValue = map['reservedDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      secondarySize: (() {
+        final guardedValue = map['secondarySize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

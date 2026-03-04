@@ -6,7 +6,7 @@ import 'bundle_state.dart';
 ///
 /// For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createbundle).
 ///
-/// > **NOTE:** Available since v1.170.0.
+/// &gt; **NOTE:** Available since v1.170.0.
 ///
 /// ## Example Usage
 ///
@@ -258,20 +258,28 @@ import 'bundle_state.dart';
 class Bundle extends pulumi.CustomResource {
   /// The name of the bundle.
   late final pulumi.Output<String?> bundleName;
+
   /// The description of the bundle.
   late final pulumi.Output<String?> description;
+
   /// The desktop type. You can call `alicloud.eds.getDesktopTypes` to query desktop type.
   late final pulumi.Output<String> desktopType;
+
   /// The ID of the image.
   late final pulumi.Output<String> imageId;
+
   /// The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
   late final pulumi.Output<String?> language;
+
   /// The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
   late final pulumi.Output<String> rootDiskPerformanceLevel;
+
   /// The root disk size gib.
   late final pulumi.Output<int> rootDiskSizeGib;
+
   /// The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
   late final pulumi.Output<String> userDiskPerformanceLevel;
+
   /// The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
   /// - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
   /// - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
@@ -281,25 +289,26 @@ class Bundle extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Bundle]. {@macro pulumi_eds_bundle_bundle_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Bundle(
-    String name, {
-    BundleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:eds/bundle:Bundle',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bundleName = registerOutput<String?>('bundleName');
-    this.description = registerOutput<String?>('description');
-    this.desktopType = registerOutput<String>('desktopType');
-    this.imageId = registerOutput<String>('imageId');
-    this.language = registerOutput<String?>('language');
-    this.rootDiskPerformanceLevel = registerOutput<String>('rootDiskPerformanceLevel');
-    this.rootDiskSizeGib = registerOutput<int>('rootDiskSizeGib');
-    this.userDiskPerformanceLevel = registerOutput<String>('userDiskPerformanceLevel');
-    this.userDiskSizeGibs = registerOutput<List<int>>('userDiskSizeGibs');
+  Bundle(String name, {BundleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:eds/bundle:Bundle',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    bundleName = registerOutput<String?>('bundleName');
+    description = registerOutput<String?>('description');
+    desktopType = registerOutput<String>('desktopType');
+    imageId = registerOutput<String>('imageId');
+    language = registerOutput<String?>('language');
+    rootDiskPerformanceLevel = registerOutput<String>(
+      'rootDiskPerformanceLevel',
+    );
+    rootDiskSizeGib = registerOutput<int>('rootDiskSizeGib');
+    userDiskPerformanceLevel = registerOutput<String>(
+      'userDiskPerformanceLevel',
+    );
+    userDiskSizeGibs = registerOutput<List<int>>('userDiskSizeGibs');
   }
 
   /// Gets an existing [Bundle] resource's state with the given [name] and [id].
@@ -320,19 +329,23 @@ class Bundle extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eds/bundle:Bundle',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bundleName = registerOutput<String?>('bundleName');
-    this.description = registerOutput<String?>('description');
-    this.desktopType = registerOutput<String>('desktopType');
-    this.imageId = registerOutput<String>('imageId');
-    this.language = registerOutput<String?>('language');
-    this.rootDiskPerformanceLevel = registerOutput<String>('rootDiskPerformanceLevel');
-    this.rootDiskSizeGib = registerOutput<int>('rootDiskSizeGib');
-    this.userDiskPerformanceLevel = registerOutput<String>('userDiskPerformanceLevel');
-    this.userDiskSizeGibs = registerOutput<List<int>>('userDiskSizeGibs');
+         'alicloud:eds/bundle:Bundle',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bundleName = registerOutput<String?>('bundleName');
+    description = registerOutput<String?>('description');
+    desktopType = registerOutput<String>('desktopType');
+    imageId = registerOutput<String>('imageId');
+    language = registerOutput<String?>('language');
+    rootDiskPerformanceLevel = registerOutput<String>(
+      'rootDiskPerformanceLevel',
+    );
+    rootDiskSizeGib = registerOutput<int>('rootDiskSizeGib');
+    userDiskPerformanceLevel = registerOutput<String>(
+      'userDiskPerformanceLevel',
+    );
+    userDiskSizeGibs = registerOutput<List<int>>('userDiskSizeGibs');
   }
 }

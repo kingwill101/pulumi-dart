@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshMembershipSpecResponseGkehubV1alpha {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final pulumi.Input<String> controlPlane;
+
   /// Determines which release channel to use for default injection and service mesh APIs.
   final pulumi.Input<String> defaultChannel;
+
   /// Enables automatic Service Mesh management.
   final pulumi.Input<String> management;
 
@@ -29,12 +31,13 @@ class ServiceMeshMembershipSpecResponseGkehubV1alpha {
     };
   }
 
-  factory ServiceMeshMembershipSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ServiceMeshMembershipSpecResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceMeshMembershipSpecResponseGkehubV1alpha(
-      controlPlane: (map['controlPlane'] as String).input(),
-      defaultChannel: (map['defaultChannel'] as String).input(),
-      management: (map['management'] as String).input(),
+      controlPlane: pulumi.Input.fromValue(map['controlPlane'] as String),
+      defaultChannel: pulumi.Input.fromValue(map['defaultChannel'] as String),
+      management: pulumi.Input.fromValue(map['management'] as String),
     );
   }
 }
-

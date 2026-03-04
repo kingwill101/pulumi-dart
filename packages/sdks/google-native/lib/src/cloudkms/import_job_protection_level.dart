@@ -6,16 +6,15 @@ enum ImportJobProtectionLevel {
   external("EXTERNAL"),
   externalVpc("EXTERNAL_VPC");
 
-  const ImportJobProtectionLevel(this.value);
-  final String value;
+  const ImportJobProtectionLevel(this.wireValue);
+  final String wireValue;
 
   static ImportJobProtectionLevel fromValue(String value) {
     for (final item in ImportJobProtectionLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImportJobProtectionLevel value: $value');
   }
 }
-

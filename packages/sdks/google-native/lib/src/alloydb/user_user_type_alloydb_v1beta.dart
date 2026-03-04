@@ -4,16 +4,15 @@ enum UserUserTypeAlloydbV1beta {
   alloydbBuiltIn("ALLOYDB_BUILT_IN"),
   alloydbIamUser("ALLOYDB_IAM_USER");
 
-  const UserUserTypeAlloydbV1beta(this.value);
-  final String value;
+  const UserUserTypeAlloydbV1beta(this.wireValue);
+  final String wireValue;
 
   static UserUserTypeAlloydbV1beta fromValue(String value) {
     for (final item in UserUserTypeAlloydbV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserUserTypeAlloydbV1beta value: $value');
   }
 }
-

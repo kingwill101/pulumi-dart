@@ -8,31 +8,44 @@ import 'rotation_policy_response.dart';
 class GetKeyResult {
   /// The attributes of the key.
   final KeyAttributesResponse? attributes;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
   final String? curveName;
+
   /// Fully qualified identifier of the key vault resource.
   final String id;
   final List<String>? keyOps;
+
   /// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
   final int? keySize;
+
   /// The URI to retrieve the current version of the key.
   final String keyUri;
+
   /// The URI to retrieve the specific version of the key.
   final String keyUriWithVersion;
+
   /// The type of the key. For valid values, see JsonWebKeyType.
   final String? kty;
+
   /// Azure location of the key vault resource.
   final String location;
+
   /// Name of the key vault resource.
   final String name;
+
   /// Key release policy in response. It will be used for both output and input. Omitted if empty
   final KeyReleasePolicyResponse? releasePolicy;
+
   /// Key rotation policy in response. It will be used for both output and input. Omitted if empty
   final RotationPolicyResponse? rotationPolicy;
+
   /// Tags assigned to the key vault resource.
   final Map<String, String> tags;
+
   /// Resource type of the key vault resource.
   final String type;
 
@@ -72,7 +85,7 @@ class GetKeyResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?attributes == null ? null : attributes!.toMap(),
+      'attributes': ?attributes?.toMap(),
       'azureApiVersion': azureApiVersion,
       'curveName': ?curveName,
       'id': id,
@@ -83,8 +96,8 @@ class GetKeyResult {
       'kty': ?kty,
       'location': location,
       'name': name,
-      'releasePolicy': ?releasePolicy == null ? null : releasePolicy!.toMap(),
-      'rotationPolicy': ?rotationPolicy == null ? null : rotationPolicy!.toMap(),
+      'releasePolicy': ?releasePolicy?.toMap(),
+      'rotationPolicy': ?rotationPolicy?.toMap(),
       'tags': tags,
       'type': type,
     };
@@ -92,22 +105,55 @@ class GetKeyResult {
 
   factory GetKeyResult.fromMap(Map<String, dynamic> map) {
     return GetKeyResult(
-      attributes: map['attributes'] == null ? null : KeyAttributesResponse.fromMap((map['attributes']! as Map).cast<String, dynamic>()),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return KeyAttributesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      curveName: map['curveName'] == null ? null : map['curveName']! as String,
+      curveName: (() {
+        final guardedValue = map['curveName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      keyOps: map['keyOps'] == null ? null : (map['keyOps']! as List).cast<String>(),
-      keySize: map['keySize'] == null ? null : map['keySize']! as int,
+      keyOps: (() {
+        final guardedValue = map['keyOps'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      keySize: (() {
+        final guardedValue = map['keySize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       keyUri: map['keyUri'] as String,
       keyUriWithVersion: map['keyUriWithVersion'] as String,
-      kty: map['kty'] == null ? null : map['kty']! as String,
+      kty: (() {
+        final guardedValue = map['kty'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      releasePolicy: map['releasePolicy'] == null ? null : KeyReleasePolicyResponse.fromMap((map['releasePolicy']! as Map).cast<String, dynamic>()),
-      rotationPolicy: map['rotationPolicy'] == null ? null : RotationPolicyResponse.fromMap((map['rotationPolicy']! as Map).cast<String, dynamic>()),
+      releasePolicy: (() {
+        final guardedValue = map['releasePolicy'];
+        if (guardedValue == null) return null;
+        return KeyReleasePolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rotationPolicy: (() {
+        final guardedValue = map['rotationPolicy'];
+        if (guardedValue == null) return null;
+        return RotationPolicyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }
 }
-

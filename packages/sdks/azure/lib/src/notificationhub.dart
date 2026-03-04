@@ -1,5 +1,3 @@
-library module_notificationhub;
-
 export 'notificationhub/authorization_rule.dart';
 export 'notificationhub/authorization_rule_args.dart';
 export 'notificationhub/authorization_rule_state.dart';

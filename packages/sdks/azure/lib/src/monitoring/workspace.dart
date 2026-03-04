@@ -158,7 +158,7 @@ import 'workspace_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Monitor` - 2023-04-03
@@ -173,18 +173,25 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// The ID of the managed default Data Collection Endpoint created with the Azure Monitor Workspace.
   late final pulumi.Output<String> defaultDataCollectionEndpointId;
+
   /// The ID of the managed default Data Collection Rule created with the Azure Monitor Workspace.
   late final pulumi.Output<String> defaultDataCollectionRuleId;
+
   /// Specifies the Azure Region where the Azure Monitor Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name which should be used for this Azure Monitor Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Is public network access enabled? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The query endpoint for the Azure Monitor Workspace.
   late final pulumi.Output<String> queryEndpoint;
+
   /// Specifies the name of the Resource Group where the Azure Monitor Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Azure Monitor Workspace.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -197,19 +204,25 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultDataCollectionEndpointId = registerOutput<String>('defaultDataCollectionEndpointId');
-    this.defaultDataCollectionRuleId = registerOutput<String>('defaultDataCollectionRuleId');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultDataCollectionEndpointId = registerOutput<String>(
+      'defaultDataCollectionEndpointId',
+    );
+    defaultDataCollectionRuleId = registerOutput<String>(
+      'defaultDataCollectionRuleId',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.queryEndpoint = registerOutput<String>('queryEndpoint');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    queryEndpoint = registerOutput<String>('queryEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -230,18 +243,24 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultDataCollectionEndpointId = registerOutput<String>('defaultDataCollectionEndpointId');
-    this.defaultDataCollectionRuleId = registerOutput<String>('defaultDataCollectionRuleId');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultDataCollectionEndpointId = registerOutput<String>(
+      'defaultDataCollectionEndpointId',
+    );
+    defaultDataCollectionRuleId = registerOutput<String>(
+      'defaultDataCollectionRuleId',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.queryEndpoint = registerOutput<String>('queryEndpoint');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    queryEndpoint = registerOutput<String>('queryEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

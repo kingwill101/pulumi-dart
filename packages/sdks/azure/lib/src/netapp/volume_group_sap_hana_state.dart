@@ -7,16 +7,22 @@ import 'volume_group_sap_hana_volume.dart';
 class VolumeGroupSapHanaState {
   /// Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? accountName;
+
   /// The SAP System ID, maximum 3 characters, e.g. `SH9`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? applicationIdentifier;
+
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? groupDescription;
+
   /// The Azure Region where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String>? resourceGroupName;
+
   /// One or more `volume` blocks as defined below.
   final pulumi.Input<List<VolumeGroupSapHanaVolume>>? volumes;
 
@@ -46,20 +52,65 @@ class VolumeGroupSapHanaState {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'volumes': ?pulumi.Input.mapOptionalInputValue<List<VolumeGroupSapHanaVolume>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeGroupSapHanaVolume, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VolumeGroupSapHanaVolume>,
+            List<Map<String, dynamic>>
+          >(
+            volumes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VolumeGroupSapHanaVolume,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory VolumeGroupSapHanaState.fromMap(Map<String, dynamic> map) {
     return VolumeGroupSapHanaState(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier']! as String).input(),
-      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(map['volumes']!, (value) => VolumeGroupSapHanaVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationIdentifier: (() {
+        final guardedValue = map['applicationIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupDescription: (() {
+        final guardedValue = map['groupDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumes: (() {
+        final guardedValue = map['volumes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(
+            guardedValue,
+            (value) => VolumeGroupSapHanaVolume.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

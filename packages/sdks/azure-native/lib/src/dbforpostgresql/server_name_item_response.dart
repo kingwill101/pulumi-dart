@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerNameItemResponse {
   /// The fully qualified domain name of a server.
   final pulumi.Input<String> fullyQualifiedDomainName;
+
   /// The name of a server.
   final pulumi.Input<String>? name;
 
   /// Creates a new [ServerNameItemResponse].
   /// [fullyQualifiedDomainName] The fully qualified domain name of a server.
   /// [name] The name of a server.
-  ServerNameItemResponse({
-    required this.fullyQualifiedDomainName,
-    this.name,
-  });
+  ServerNameItemResponse({required this.fullyQualifiedDomainName, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class ServerNameItemResponse {
 
   factory ServerNameItemResponse.fromMap(Map<String, dynamic> map) {
     return ServerNameItemResponse(
-      fullyQualifiedDomainName: (map['fullyQualifiedDomainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      fullyQualifiedDomainName: pulumi.Input.fromValue(
+        map['fullyQualifiedDomainName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

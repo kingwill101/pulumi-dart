@@ -13,23 +13,16 @@ class GetIngressRuleArgs {
   /// Creates a new [GetIngressRuleArgs].
   /// [appId] Required.
   /// [ingressRuleId] Required.
-  GetIngressRuleArgs({
-    required this.appId,
-    required this.ingressRuleId,
-  });
+  GetIngressRuleArgs({required this.appId, required this.ingressRuleId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appId': appId,
-      'ingressRuleId': ingressRuleId,
-    };
+    return <String, dynamic>{'appId': appId, 'ingressRuleId': ingressRuleId};
   }
 
   factory GetIngressRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetIngressRuleArgs(
-      appId: (map['appId'] as String).input(),
-      ingressRuleId: (map['ingressRuleId'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      ingressRuleId: pulumi.Input.fromValue(map['ingressRuleId'] as String),
     );
   }
 }
-

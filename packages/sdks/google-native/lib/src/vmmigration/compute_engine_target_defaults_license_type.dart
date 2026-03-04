@@ -4,16 +4,17 @@ enum ComputeEngineTargetDefaultsLicenseType {
   computeEngineLicenseTypePayg("COMPUTE_ENGINE_LICENSE_TYPE_PAYG"),
   computeEngineLicenseTypeByol("COMPUTE_ENGINE_LICENSE_TYPE_BYOL");
 
-  const ComputeEngineTargetDefaultsLicenseType(this.value);
-  final String value;
+  const ComputeEngineTargetDefaultsLicenseType(this.wireValue);
+  final String wireValue;
 
   static ComputeEngineTargetDefaultsLicenseType fromValue(String value) {
     for (final item in ComputeEngineTargetDefaultsLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeEngineTargetDefaultsLicenseType value: $value');
+    throw ArgumentError(
+      'Unknown ComputeEngineTargetDefaultsLicenseType value: $value',
+    );
   }
 }
-

@@ -9,20 +9,28 @@ import 'system_data_response.dart';
 class GetProviderInstanceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Defines the provider instance errors.
   final ErrorDetailResponse errors;
+
   /// Resource health details
   final HealthResponse health;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Defines the provider specific properties.
   final Db2ProviderInstancePropertiesResponse? providerSettings;
+
   /// State of provisioning of the provider instance
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -55,7 +63,7 @@ class GetProviderInstanceResult {
       'health': health.toMap(),
       'id': id,
       'name': name,
-      'providerSettings': ?providerSettings == null ? null : providerSettings!.toMap(),
+      'providerSettings': ?providerSettings?.toMap(),
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'type': type,
@@ -65,15 +73,26 @@ class GetProviderInstanceResult {
   factory GetProviderInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetProviderInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      errors: ErrorDetailResponse.fromMap((map['errors'] as Map).cast<String, dynamic>()),
-      health: HealthResponse.fromMap((map['health'] as Map).cast<String, dynamic>()),
+      errors: ErrorDetailResponse.fromMap(
+        (map['errors']! as Map).cast<String, dynamic>(),
+      ),
+      health: HealthResponse.fromMap(
+        (map['health']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
-      providerSettings: map['providerSettings'] == null ? null : Db2ProviderInstancePropertiesResponse.fromMap((map['providerSettings']! as Map).cast<String, dynamic>()),
+      providerSettings: (() {
+        final guardedValue = map['providerSettings'];
+        if (guardedValue == null) return null;
+        return Db2ProviderInstancePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

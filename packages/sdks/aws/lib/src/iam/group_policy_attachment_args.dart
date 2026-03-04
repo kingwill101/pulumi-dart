@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupPolicyAttachmentArgs {
   /// The group the policy should be applied to
   final pulumi.Input<String> group;
+
   /// The ARN of the policy you want to apply
   final pulumi.Input<String> policyArn;
 
   /// Creates a new [GroupPolicyAttachmentArgs].
   /// [group] The group the policy should be applied to
   /// [policyArn] The ARN of the policy you want to apply
-  GroupPolicyAttachmentArgs({
-    required this.group,
-    required this.policyArn,
-  });
+  GroupPolicyAttachmentArgs({required this.group, required this.policyArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'group': group,
-      'policyArn': policyArn,
-    };
+    return <String, dynamic>{'group': group, 'policyArn': policyArn};
   }
 
   factory GroupPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentArgs(
-      group: (map['group'] as String).input(),
-      policyArn: (map['policyArn'] as String).input(),
+      group: pulumi.Input.fromValue(map['group'] as String),
+      policyArn: pulumi.Input.fromValue(map['policyArn'] as String),
     );
   }
 }
-

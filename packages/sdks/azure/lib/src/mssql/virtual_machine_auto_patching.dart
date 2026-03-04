@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineAutoPatching {
   /// The day of week to apply the patch on. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
   final pulumi.Input<String> dayOfWeek;
+
   /// The size of the Maintenance Window in minutes.
   final pulumi.Input<int> maintenanceWindowDurationInMinutes;
+
   /// The Hour, in the Virtual Machine Time-Zone when the patching maintenance window should begin.
   final pulumi.Input<int> maintenanceWindowStartingHour;
 
@@ -30,10 +32,13 @@ class VirtualMachineAutoPatching {
 
   factory VirtualMachineAutoPatching.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAutoPatching(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      maintenanceWindowDurationInMinutes: (map['maintenanceWindowDurationInMinutes'] as int).input(),
-      maintenanceWindowStartingHour: (map['maintenanceWindowStartingHour'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      maintenanceWindowDurationInMinutes: pulumi.Input.fromValue(
+        map['maintenanceWindowDurationInMinutes'] as int,
+      ),
+      maintenanceWindowStartingHour: pulumi.Input.fromValue(
+        map['maintenanceWindowStartingHour'] as int,
+      ),
     );
   }
 }
-

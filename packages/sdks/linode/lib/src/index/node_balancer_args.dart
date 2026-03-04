@@ -10,20 +10,26 @@ import 'node_balancer_vpc.dart';
 class NodeBalancerArgs {
   /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
   final pulumi.Input<int>? clientConnThrottle;
+
   /// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
   ///
   /// * **NOTE: This argument may not be generally available.**
   final pulumi.Input<int>? clientUdpSessThrottle;
+
   /// ID for the firewall you'd like to use with this NodeBalancer.
   final pulumi.Input<int>? firewallId;
+
   /// The label of the Linode NodeBalancer
   final pulumi.Input<String>? label;
+
   /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
   ///
   /// - - -
   final pulumi.Input<String>? region;
+
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   final pulumi.Input<List<String>>? tags;
+
   /// A list of VPCs to be assigned to this NodeBalancer.
   final pulumi.Input<List<NodeBalancerVpc>>? vpcs;
 
@@ -53,20 +59,64 @@ class NodeBalancerArgs {
       'label': ?label,
       'region': ?region,
       'tags': ?tags,
-      'vpcs': ?pulumi.Input.mapOptionalInputValue<List<NodeBalancerVpc>, List<Map<String, dynamic>>>(vpcs, (value) => pulumi.Input.encodeList<NodeBalancerVpc, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeBalancerVpc>,
+            List<Map<String, dynamic>>
+          >(
+            vpcs,
+            (value) =>
+                pulumi.Input.encodeList<NodeBalancerVpc, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory NodeBalancerArgs.fromMap(Map<String, dynamic> map) {
     return NodeBalancerArgs(
-      clientConnThrottle: map['clientConnThrottle'] == null ? null : (map['clientConnThrottle']! as int).input(),
-      clientUdpSessThrottle: map['clientUdpSessThrottle'] == null ? null : (map['clientUdpSessThrottle']! as int).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<NodeBalancerVpc>(map['vpcs']!, (value) => NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientConnThrottle: (() {
+        final guardedValue = map['clientConnThrottle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clientUdpSessThrottle: (() {
+        final guardedValue = map['clientUdpSessThrottle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      firewallId: (() {
+        final guardedValue = map['firewallId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vpcs: (() {
+        final guardedValue = map['vpcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeBalancerVpc>(
+            guardedValue,
+            (value) =>
+                NodeBalancerVpc.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

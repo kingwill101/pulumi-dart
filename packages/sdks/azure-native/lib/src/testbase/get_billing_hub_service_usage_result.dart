@@ -28,8 +28,15 @@ class GetBillingHubServiceUsageResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nextRequest': ?nextRequest == null ? null : nextRequest!.toMap(),
-      'packageUsageEntries': ?packageUsageEntries == null ? null : pulumi.Input.encodeList<BillingHubPackageUsageResponse, Map<String, dynamic>>(packageUsageEntries!, (value) => value.toMap()),
+      'nextRequest': ?nextRequest?.toMap(),
+      'packageUsageEntries': ?(() {
+        final guardedValue = packageUsageEntries;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          BillingHubPackageUsageResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'totalCharges': ?totalCharges,
       'totalUsedBillableHours': ?totalUsedBillableHours,
       'totalUsedFreeHours': ?totalUsedFreeHours,
@@ -38,12 +45,38 @@ class GetBillingHubServiceUsageResult {
 
   factory GetBillingHubServiceUsageResult.fromMap(Map<String, dynamic> map) {
     return GetBillingHubServiceUsageResult(
-      nextRequest: map['nextRequest'] == null ? null : BillingHubGetUsageRequestResponse.fromMap((map['nextRequest']! as Map).cast<String, dynamic>()),
-      packageUsageEntries: map['packageUsageEntries'] == null ? null : pulumi.Input.decodeList<BillingHubPackageUsageResponse>(map['packageUsageEntries']!, (value) => BillingHubPackageUsageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      totalCharges: map['totalCharges'] == null ? null : map['totalCharges']! as double,
-      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : map['totalUsedBillableHours']! as double,
-      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : map['totalUsedFreeHours']! as double,
+      nextRequest: (() {
+        final guardedValue = map['nextRequest'];
+        if (guardedValue == null) return null;
+        return BillingHubGetUsageRequestResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      packageUsageEntries: (() {
+        final guardedValue = map['packageUsageEntries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<BillingHubPackageUsageResponse>(
+          guardedValue,
+          (value) => BillingHubPackageUsageResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      totalCharges: (() {
+        final guardedValue = map['totalCharges'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      totalUsedBillableHours: (() {
+        final guardedValue = map['totalUsedBillableHours'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      totalUsedFreeHours: (() {
+        final guardedValue = map['totalUsedFreeHours'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
     );
   }
 }
-

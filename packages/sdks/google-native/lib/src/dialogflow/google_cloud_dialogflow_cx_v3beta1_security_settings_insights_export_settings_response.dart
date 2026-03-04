@@ -14,15 +14,16 @@ class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsRespon
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableInsightsExport': enableInsightsExport,
-    };
+    return <String, dynamic>{'enableInsightsExport': enableInsightsExport};
   }
 
-  factory GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse(
-      enableInsightsExport: (map['enableInsightsExport'] as bool).input(),
+      enableInsightsExport: pulumi.Input.fromValue(
+        map['enableInsightsExport'] as bool,
+      ),
     );
   }
 }
-

@@ -9,20 +9,21 @@ class EncryptionCustomerManagedKeyEncryption {
 
   /// Creates a new [EncryptionCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyUrl] The URL of the key to use for encryption
-  EncryptionCustomerManagedKeyEncryption({
-    this.keyEncryptionKeyUrl,
-  });
+  EncryptionCustomerManagedKeyEncryption({this.keyEncryptionKeyUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyEncryptionKeyUrl': ?keyEncryptionKeyUrl,
-    };
+    return <String, dynamic>{'keyEncryptionKeyUrl': ?keyEncryptionKeyUrl};
   }
 
-  factory EncryptionCustomerManagedKeyEncryption.fromMap(Map<String, dynamic> map) {
+  factory EncryptionCustomerManagedKeyEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EncryptionCustomerManagedKeyEncryption(
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl']! as String).input(),
+      keyEncryptionKeyUrl: (() {
+        final guardedValue = map['keyEncryptionKeyUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyBindingAdvancedOptionsUdmDetail {
   /// Custom KMS key ID of encrypted copy
   final pulumi.Input<String>? destinationKmsKeyId;
+
   /// The list of backup disks. If it is empty, all disks are backed up.
   final pulumi.Input<List<String>>? diskIdLists;
+
   /// List of cloud disk IDs that are not backed up
   final pulumi.Input<List<String>>? excludeDiskIdLists;
 
@@ -28,12 +30,25 @@ class PolicyBindingAdvancedOptionsUdmDetail {
     };
   }
 
-  factory PolicyBindingAdvancedOptionsUdmDetail.fromMap(Map<String, dynamic> map) {
+  factory PolicyBindingAdvancedOptionsUdmDetail.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyBindingAdvancedOptionsUdmDetail(
-      destinationKmsKeyId: map['destinationKmsKeyId'] == null ? null : (map['destinationKmsKeyId']! as String).input(),
-      diskIdLists: map['diskIdLists'] == null ? null : ((map['diskIdLists']! as List).cast<String>()).input(),
-      excludeDiskIdLists: map['excludeDiskIdLists'] == null ? null : ((map['excludeDiskIdLists']! as List).cast<String>()).input(),
+      destinationKmsKeyId: (() {
+        final guardedValue = map['destinationKmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskIdLists: (() {
+        final guardedValue = map['diskIdLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      excludeDiskIdLists: (() {
+        final guardedValue = map['excludeDiskIdLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

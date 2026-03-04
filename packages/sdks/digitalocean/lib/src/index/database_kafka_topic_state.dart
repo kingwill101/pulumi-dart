@@ -7,15 +7,20 @@ import 'database_kafka_topic_config.dart';
 class DatabaseKafkaTopicState {
   /// The ID of the source database cluster. Note: This must be a Kafka cluster.
   final pulumi.Input<String>? clusterId;
+
   /// A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
   /// The `config` block is documented below.
   final pulumi.Input<List<DatabaseKafkaTopicConfig>>? configs;
+
   /// The name for the topic.
   final pulumi.Input<String>? name;
+
   /// The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
   final pulumi.Input<int>? partitionCount;
+
   /// The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
   final pulumi.Input<int>? replicationFactor;
+
   /// The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.
   final pulumi.Input<String>? state;
 
@@ -38,7 +43,18 @@ class DatabaseKafkaTopicState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': ?clusterId,
-      'configs': ?pulumi.Input.mapOptionalInputValue<List<DatabaseKafkaTopicConfig>, List<Map<String, dynamic>>>(configs, (value) => pulumi.Input.encodeList<DatabaseKafkaTopicConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DatabaseKafkaTopicConfig>,
+            List<Map<String, dynamic>>
+          >(
+            configs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DatabaseKafkaTopicConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'partitionCount': ?partitionCount,
       'replicationFactor': ?replicationFactor,
@@ -48,13 +64,43 @@ class DatabaseKafkaTopicState {
 
   factory DatabaseKafkaTopicState.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaTopicState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(map['configs']!, (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
-      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor']! as int).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configs: (() {
+        final guardedValue = map['configs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(
+            guardedValue,
+            (value) => DatabaseKafkaTopicConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partitionCount: (() {
+        final guardedValue = map['partitionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicationFactor: (() {
+        final guardedValue = map['replicationFactor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

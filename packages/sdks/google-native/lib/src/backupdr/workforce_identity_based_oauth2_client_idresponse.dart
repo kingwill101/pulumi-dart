@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforceIdentityBasedOAuth2ClientIDResponse {
   /// First party OAuth Client ID for Google Identities.
   final pulumi.Input<String> firstPartyOauth2ClientId;
+
   /// Third party OAuth Client ID for External Identity Providers.
   final pulumi.Input<String> thirdPartyOauth2ClientId;
 
@@ -24,11 +25,16 @@ class WorkforceIdentityBasedOAuth2ClientIDResponse {
     };
   }
 
-  factory WorkforceIdentityBasedOAuth2ClientIDResponse.fromMap(Map<String, dynamic> map) {
+  factory WorkforceIdentityBasedOAuth2ClientIDResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkforceIdentityBasedOAuth2ClientIDResponse(
-      firstPartyOauth2ClientId: (map['firstPartyOauth2ClientId'] as String).input(),
-      thirdPartyOauth2ClientId: (map['thirdPartyOauth2ClientId'] as String).input(),
+      firstPartyOauth2ClientId: pulumi.Input.fromValue(
+        map['firstPartyOauth2ClientId'] as String,
+      ),
+      thirdPartyOauth2ClientId: pulumi.Input.fromValue(
+        map['thirdPartyOauth2ClientId'] as String,
+      ),
     );
   }
 }
-

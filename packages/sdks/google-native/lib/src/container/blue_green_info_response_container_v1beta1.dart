@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlueGreenInfoResponseContainerV1beta1 {
   /// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool.
   final pulumi.Input<List<String>> blueInstanceGroupUrls;
+
   /// Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   final pulumi.Input<String> bluePoolDeletionStartTime;
+
   /// The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
   final pulumi.Input<List<String>> greenInstanceGroupUrls;
+
   /// Version of green pool.
   final pulumi.Input<String> greenPoolVersion;
+
   /// Current blue-green upgrade phase.
   final pulumi.Input<String> phase;
 
@@ -39,14 +43,23 @@ class BlueGreenInfoResponseContainerV1beta1 {
     };
   }
 
-  factory BlueGreenInfoResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory BlueGreenInfoResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BlueGreenInfoResponseContainerV1beta1(
-      blueInstanceGroupUrls: ((map['blueInstanceGroupUrls'] as List).cast<String>()).input(),
-      bluePoolDeletionStartTime: (map['bluePoolDeletionStartTime'] as String).input(),
-      greenInstanceGroupUrls: ((map['greenInstanceGroupUrls'] as List).cast<String>()).input(),
-      greenPoolVersion: (map['greenPoolVersion'] as String).input(),
-      phase: (map['phase'] as String).input(),
+      blueInstanceGroupUrls: pulumi.Input.fromValue(
+        (map['blueInstanceGroupUrls'] as List).cast<String>(),
+      ),
+      bluePoolDeletionStartTime: pulumi.Input.fromValue(
+        map['bluePoolDeletionStartTime'] as String,
+      ),
+      greenInstanceGroupUrls: pulumi.Input.fromValue(
+        (map['greenInstanceGroupUrls'] as List).cast<String>(),
+      ),
+      greenPoolVersion: pulumi.Input.fromValue(
+        map['greenPoolVersion'] as String,
+      ),
+      phase: pulumi.Input.fromValue(map['phase'] as String),
     );
   }
 }
-

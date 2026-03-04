@@ -6,17 +6,22 @@ import 'authorized_view_subset_view.dart';
 /// Input properties used for looking up and filtering AuthorizedView resources.
 class AuthorizedViewState {
   final pulumi.Input<String>? deletionProtection;
+
   /// The name of the Bigtable instance in which the authorized view belongs.
   final pulumi.Input<String>? instanceName;
+
   /// The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
   ///
   /// -----
   final pulumi.Input<AuthorizedViewSubsetView>? subsetView;
+
   /// The name of the Bigtable table in which the authorized view belongs.
   final pulumi.Input<String>? tableName;
 
@@ -42,20 +47,51 @@ class AuthorizedViewState {
       'instanceName': ?instanceName,
       'name': ?name,
       'project': ?project,
-      'subsetView': ?pulumi.Input.mapOptionalInputValue<AuthorizedViewSubsetView, Map<String, dynamic>>(subsetView, (value) => value.toMap()),
+      'subsetView':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthorizedViewSubsetView,
+            Map<String, dynamic>
+          >(subsetView, (value) => value.toMap()),
       'tableName': ?tableName,
     };
   }
 
   factory AuthorizedViewState.fromMap(Map<String, dynamic> map) {
     return AuthorizedViewState(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      subsetView: map['subsetView'] == null ? null : (AuthorizedViewSubsetView.fromMap((map['subsetView']! as Map).cast<String, dynamic>())).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subsetView: (() {
+        final guardedValue = map['subsetView'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthorizedViewSubsetView.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

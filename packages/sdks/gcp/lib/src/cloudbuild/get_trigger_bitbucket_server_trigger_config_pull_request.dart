@@ -6,8 +6,10 @@ class GetTriggerBitbucketServerTriggerConfigPullRequest {
   /// Regex of branches to match.
   /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
   final pulumi.Input<String> branch;
+
   /// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
   final pulumi.Input<String> commentControl;
+
   /// If true, branches that do NOT match the git_ref will trigger a build.
   final pulumi.Input<bool> invertRegex;
 
@@ -29,12 +31,13 @@ class GetTriggerBitbucketServerTriggerConfigPullRequest {
     };
   }
 
-  factory GetTriggerBitbucketServerTriggerConfigPullRequest.fromMap(Map<String, dynamic> map) {
+  factory GetTriggerBitbucketServerTriggerConfigPullRequest.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTriggerBitbucketServerTriggerConfigPullRequest(
-      branch: (map['branch'] as String).input(),
-      commentControl: (map['commentControl'] as String).input(),
-      invertRegex: (map['invertRegex'] as bool).input(),
+      branch: pulumi.Input.fromValue(map['branch'] as String),
+      commentControl: pulumi.Input.fromValue(map['commentControl'] as String),
+      invertRegex: pulumi.Input.fromValue(map['invertRegex'] as bool),
     );
   }
 }
-

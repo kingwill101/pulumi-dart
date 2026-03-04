@@ -10,20 +10,25 @@ class TestTimingResponse {
 
   /// Creates a new [TestTimingResponse].
   /// [testProcessDuration] How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
-  TestTimingResponse({
-    required this.testProcessDuration,
-  });
+  TestTimingResponse({required this.testProcessDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'testProcessDuration': pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(testProcessDuration, (value) => value.toMap()),
+      'testProcessDuration':
+          pulumi.Input.mapInputValue<DurationResponse, Map<String, dynamic>>(
+            testProcessDuration,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory TestTimingResponse.fromMap(Map<String, dynamic> map) {
     return TestTimingResponse(
-      testProcessDuration: (DurationResponse.fromMap((map['testProcessDuration'] as Map).cast<String, dynamic>())).input(),
+      testProcessDuration: pulumi.Input.fromValue(
+        DurationResponse.fromMap(
+          (map['testProcessDuration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

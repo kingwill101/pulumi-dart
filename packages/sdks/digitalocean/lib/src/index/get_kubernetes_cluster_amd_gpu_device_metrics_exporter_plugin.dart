@@ -12,15 +12,14 @@ class GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

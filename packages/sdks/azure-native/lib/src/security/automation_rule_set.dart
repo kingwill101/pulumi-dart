@@ -9,20 +9,39 @@ class AutomationRuleSet {
 
   /// Creates a new [AutomationRuleSet].
   /// [rules] Optional.
-  AutomationRuleSet({
-    this.rules,
-  });
+  AutomationRuleSet({this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<AutomationTriggeringRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AutomationTriggeringRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AutomationTriggeringRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AutomationTriggeringRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AutomationRuleSet.fromMap(Map<String, dynamic> map) {
     return AutomationRuleSet(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AutomationTriggeringRule>(map['rules']!, (value) => AutomationTriggeringRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AutomationTriggeringRule>(
+            guardedValue,
+            (value) => AutomationTriggeringRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

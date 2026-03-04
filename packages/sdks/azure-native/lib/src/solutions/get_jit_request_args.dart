@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJitRequestArgs {
   /// The name of the JIT request.
   final pulumi.Input<String> jitRequestName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetJitRequestArgs {
 
   factory GetJitRequestArgs.fromMap(Map<String, dynamic> map) {
     return GetJitRequestArgs(
-      jitRequestName: (map['jitRequestName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      jitRequestName: pulumi.Input.fromValue(map['jitRequestName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

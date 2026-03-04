@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainRuleBasedMatchingExportingConfigS3Exporting {
   /// The name of the S3 bucket where Identity Resolution Jobs write result files.
   final pulumi.Input<String> s3BucketName;
+
   /// The S3 key name of the location where Identity Resolution Jobs write result files.
   final pulumi.Input<String>? s3KeyName;
 
@@ -23,11 +24,16 @@ class DomainRuleBasedMatchingExportingConfigS3Exporting {
     };
   }
 
-  factory DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap(Map<String, dynamic> map) {
+  factory DomainRuleBasedMatchingExportingConfigS3Exporting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainRuleBasedMatchingExportingConfigS3Exporting(
-      s3BucketName: (map['s3BucketName'] as String).input(),
-      s3KeyName: map['s3KeyName'] == null ? null : ((map['s3KeyName'] as String).input()).input(),
+      s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
+      s3KeyName: (() {
+        final guardedValue = map['s3KeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

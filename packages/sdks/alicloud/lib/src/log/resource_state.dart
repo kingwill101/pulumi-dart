@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceState {
   /// The meta store's description.
   final pulumi.Input<String>? description;
+
   /// The ext info of meta store.
   final pulumi.Input<String>? extInfo;
+
   /// The meta store's name, can be used as table name.
   final pulumi.Input<String>? name;
+
   /// The meta store's schema info, which is json string format, used to define table's fields.
   final pulumi.Input<String>? schema;
+
   /// The meta store's type, userdefine e.g.
   final pulumi.Input<String>? type;
 
@@ -41,12 +45,31 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      extInfo: map['extInfo'] == null ? null : (map['extInfo']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extInfo: (() {
+        final guardedValue = map['extInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class GoogleCloudContentwarehouseV1IntegerArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1IntegerArrayResponse].
   /// [values] List of integer values.
-  GoogleCloudContentwarehouseV1IntegerArrayResponse({
-    required this.values,
-  });
+  GoogleCloudContentwarehouseV1IntegerArrayResponse({required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory GoogleCloudContentwarehouseV1IntegerArrayResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1IntegerArrayResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1IntegerArrayResponse(
-      values: ((map['values'] as List).cast<int>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<int>()),
     );
   }
 }
-

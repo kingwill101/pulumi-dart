@@ -3,16 +3,15 @@ enum ComputeTriggerType {
   valueRecurrence("Recurrence"),
   valueCron("Cron");
 
-  const ComputeTriggerType(this.value);
-  final String value;
+  const ComputeTriggerType(this.wireValue);
+  final String wireValue;
 
   static ComputeTriggerType fromValue(String value) {
     for (final item in ComputeTriggerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ComputeTriggerType value: $value');
   }
 }
-

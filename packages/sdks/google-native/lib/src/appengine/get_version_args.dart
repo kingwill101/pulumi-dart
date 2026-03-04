@@ -35,11 +35,14 @@ class GetVersionArgs {
 
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
-      appId: (map['appId'] as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

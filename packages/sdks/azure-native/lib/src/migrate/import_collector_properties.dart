@@ -7,20 +7,19 @@ class ImportCollectorProperties {
 
   /// Creates a new [ImportCollectorProperties].
   /// [discoverySiteId] Optional.
-  ImportCollectorProperties({
-    this.discoverySiteId,
-  });
+  ImportCollectorProperties({this.discoverySiteId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'discoverySiteId': ?discoverySiteId,
-    };
+    return <String, dynamic>{'discoverySiteId': ?discoverySiteId};
   }
 
   factory ImportCollectorProperties.fromMap(Map<String, dynamic> map) {
     return ImportCollectorProperties(
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
+      discoverySiteId: (() {
+        final guardedValue = map['discoverySiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

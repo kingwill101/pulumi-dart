@@ -1,5 +1,3 @@
-library module_avs;
-
 export 'avs/cluster.dart';
 export 'avs/cluster_args.dart';
 export 'avs/cluster_state.dart';

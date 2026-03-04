@@ -31,10 +31,11 @@ class GetCustomerRepricingConfigArgs {
 
   factory GetCustomerRepricingConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomerRepricingConfigArgs(
-      accountId: (map['accountId'] as String).input(),
-      customerId: (map['customerId'] as String).input(),
-      customerRepricingConfigId: (map['customerRepricingConfigId'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      customerId: pulumi.Input.fromValue(map['customerId'] as String),
+      customerRepricingConfigId: pulumi.Input.fromValue(
+        map['customerRepricingConfigId'] as String,
+      ),
     );
   }
 }
-

@@ -7,10 +7,12 @@ import 'instance_public_ports_port_info.dart';
 class InstancePublicPortsState {
   /// Name of the instance for which to open ports.
   final pulumi.Input<String>? instanceName;
+
   /// Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<InstancePublicPortsPortInfo>>? portInfos;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -18,26 +20,51 @@ class InstancePublicPortsState {
   /// [instanceName] Name of the instance for which to open ports.
   /// [portInfos] Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InstancePublicPortsState({
-    this.instanceName,
-    this.portInfos,
-    this.region,
-  });
+  InstancePublicPortsState({this.instanceName, this.portInfos, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'instanceName': ?instanceName,
-      'portInfos': ?pulumi.Input.mapOptionalInputValue<List<InstancePublicPortsPortInfo>, List<Map<String, dynamic>>>(portInfos, (value) => pulumi.Input.encodeList<InstancePublicPortsPortInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portInfos':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstancePublicPortsPortInfo>,
+            List<Map<String, dynamic>>
+          >(
+            portInfos,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstancePublicPortsPortInfo,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
     };
   }
 
   factory InstancePublicPortsState.fromMap(Map<String, dynamic> map) {
     return InstancePublicPortsState(
-      instanceName: map['instanceName'] == null ? null : ((map['instanceName'] as String).input()).input(),
-      portInfos: map['portInfos'] == null ? null : ((pulumi.Input.decodeList<InstancePublicPortsPortInfo>(map['portInfos']!, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portInfos: (() {
+        final guardedValue = map['portInfos'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstancePublicPortsPortInfo>(
+            guardedValue,
+            (value) => InstancePublicPortsPortInfo.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum DataLakeStorageAuthMethod {
   userAssignedManagedIdentity("UserAssignedManagedIdentity"),
   accessToken("AccessToken");
 
-  const DataLakeStorageAuthMethod(this.value);
-  final String value;
+  const DataLakeStorageAuthMethod(this.wireValue);
+  final String wireValue;
 
   static DataLakeStorageAuthMethod fromValue(String value) {
     for (final item in DataLakeStorageAuthMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataLakeStorageAuthMethod value: $value');
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNspAccessRuleArgs {
   /// The name of the NSP access rule.
   final pulumi.Input<String> accessRuleName;
+
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
+
   /// The name of the NSP profile.
   final pulumi.Input<String> profileName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetNspAccessRuleArgs {
 
   factory GetNspAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNspAccessRuleArgs(
-      accessRuleName: (map['accessRuleName'] as String).input(),
-      networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      profileName: (map['profileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accessRuleName: pulumi.Input.fromValue(map['accessRuleName'] as String),
+      networkSecurityPerimeterName: pulumi.Input.fromValue(
+        map['networkSecurityPerimeterName'] as String,
+      ),
+      profileName: pulumi.Input.fromValue(map['profileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

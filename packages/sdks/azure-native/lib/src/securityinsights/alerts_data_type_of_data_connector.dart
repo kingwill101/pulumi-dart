@@ -10,20 +10,25 @@ class AlertsDataTypeOfDataConnector {
 
   /// Creates a new [AlertsDataTypeOfDataConnector].
   /// [alerts] Alerts data type connection.
-  AlertsDataTypeOfDataConnector({
-    required this.alerts,
-  });
+  AlertsDataTypeOfDataConnector({required this.alerts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alerts': pulumi.Input.mapInputValue<DataConnectorDataTypeCommon, Map<String, dynamic>>(alerts, (value) => value.toMap()),
+      'alerts':
+          pulumi.Input.mapInputValue<
+            DataConnectorDataTypeCommon,
+            Map<String, dynamic>
+          >(alerts, (value) => value.toMap()),
     };
   }
 
   factory AlertsDataTypeOfDataConnector.fromMap(Map<String, dynamic> map) {
     return AlertsDataTypeOfDataConnector(
-      alerts: (DataConnectorDataTypeCommon.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
+      alerts: pulumi.Input.fromValue(
+        DataConnectorDataTypeCommon.fromMap(
+          (map['alerts']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

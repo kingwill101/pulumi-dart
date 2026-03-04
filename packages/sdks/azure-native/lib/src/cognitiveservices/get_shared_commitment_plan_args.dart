@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedCommitmentPlanArgs {
   /// The name of the commitmentPlan associated with the Cognitive Services Account
   final pulumi.Input<String> commitmentPlanName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetSharedCommitmentPlanArgs {
 
   factory GetSharedCommitmentPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedCommitmentPlanArgs(
-      commitmentPlanName: (map['commitmentPlanName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      commitmentPlanName: pulumi.Input.fromValue(
+        map['commitmentPlanName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

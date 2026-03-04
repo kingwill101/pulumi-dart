@@ -146,20 +146,28 @@ import 'route_args.dart';
 class RouteNetwork extends pulumi.CustomResource {
   /// The destination CIDR to which the route applies.
   late final pulumi.Output<String?> addressPrefix;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
   late final pulumi.Output<bool> hasBgpOverride;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
   late final pulumi.Output<String?> nextHopIpAddress;
+
   /// The type of Azure hop the packet should be sent to.
   late final pulumi.Output<String> nextHopType;
+
   /// The provisioning state of the route resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The type of the resource.
   late final pulumi.Output<String?> type;
 
@@ -172,19 +180,19 @@ class RouteNetwork extends pulumi.CustomResource {
     RouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:Route',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefix = registerOutput<String?>('addressPrefix');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.hasBgpOverride = registerOutput<bool>('hasBgpOverride');
+         'azure-native:network:Route',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    hasBgpOverride = registerOutput<bool>('hasBgpOverride');
     this.name = registerOutput<String?>('name');
-    this.nextHopIpAddress = registerOutput<String?>('nextHopIpAddress');
-    this.nextHopType = registerOutput<String>('nextHopType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String?>('type');
+    nextHopIpAddress = registerOutput<String?>('nextHopIpAddress');
+    nextHopType = registerOutput<String>('nextHopType');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String?>('type');
   }
 }

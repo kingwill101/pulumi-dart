@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IotHubLocationDescriptionResponse {
   /// The name of the Azure region
   final pulumi.Input<String>? location;
+
   /// The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to.
   final pulumi.Input<String>? role;
 
   /// Creates a new [IotHubLocationDescriptionResponse].
   /// [location] The name of the Azure region
   /// [role] The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to.
-  IotHubLocationDescriptionResponse({
-    this.location,
-    this.role,
-  });
+  IotHubLocationDescriptionResponse({this.location, this.role});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': ?location,
-      'role': ?role,
-    };
+    return <String, dynamic>{'location': ?location, 'role': ?role};
   }
 
   factory IotHubLocationDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return IotHubLocationDescriptionResponse(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

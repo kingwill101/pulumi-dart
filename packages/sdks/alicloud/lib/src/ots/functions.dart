@@ -143,7 +143,7 @@ Future<GetInstanceAttachmentsResult> getInstanceAttachments(
 
 /// This data source provides the ots instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.40.0.
+/// &gt; **NOTE:** Available since v1.40.0.
 ///
 /// ## Example Usage
 ///
@@ -262,7 +262,7 @@ Future<GetInstancesResult> getInstances(
 ///
 /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
 ///
-/// > **NOTE:** Available in v1.187.0+.
+/// &gt; **NOTE:** Available in v1.187.0+.
 ///
 /// ## Example Usage
 ///
@@ -399,7 +399,7 @@ Future<GetSearchIndexesResult> getSearchIndexes(
 ///
 /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 ///
-/// > **NOTE:** Available in v1.187.0+.
+/// &gt; **NOTE:** Available in v1.187.0+.
 ///
 /// ## Example Usage
 ///
@@ -536,7 +536,7 @@ Future<GetSecondaryIndexesResult> getSecondaryIndexes(
 ///
 /// For information about Table Staore and how to use it, see [What is Table Staore](https://www.alibabacloud.com/help/product/27278.htm).
 ///
-/// > **NOTE:** Available in v1.97.0+
+/// &gt; **NOTE:** Available in v1.97.0+
 ///
 /// ## Example Usage
 ///
@@ -643,7 +643,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the ots tables of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.40.0+.
+/// &gt; **NOTE:** Available in v1.40.0+.
 ///
 /// ## Example Usage
 ///
@@ -774,7 +774,7 @@ Future<GetTablesResult> getTables(
 ///
 /// For information about OTS tunnel and how to use it, see [Tunnel overview](https://www.alibabacloud.com/help/en/tablestore/latest/tunnel-service-overview).
 ///
-/// > **NOTE:** Available in v1.172.0+.
+/// &gt; **NOTE:** Available in v1.172.0+.
 ///
 /// ## Example Usage
 ///

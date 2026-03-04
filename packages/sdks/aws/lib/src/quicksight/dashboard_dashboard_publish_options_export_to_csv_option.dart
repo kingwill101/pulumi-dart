@@ -8,20 +8,21 @@ class DashboardDashboardPublishOptionsExportToCsvOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsExportToCsvOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsExportToCsvOption({
-    this.availabilityStatus,
-  });
+  DashboardDashboardPublishOptionsExportToCsvOption({this.availabilityStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'availabilityStatus': ?availabilityStatus,
-    };
+    return <String, dynamic>{'availabilityStatus': ?availabilityStatus};
   }
 
-  factory DashboardDashboardPublishOptionsExportToCsvOption.fromMap(Map<String, dynamic> map) {
+  factory DashboardDashboardPublishOptionsExportToCsvOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DashboardDashboardPublishOptionsExportToCsvOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
+      availabilityStatus: (() {
+        final guardedValue = map['availabilityStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

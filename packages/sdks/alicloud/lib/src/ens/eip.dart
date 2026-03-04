@@ -8,7 +8,7 @@ import 'eip_state.dart';
 ///
 /// For information about ENS Eip and how to use it, see [What is Eip](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createeipinstance).
 ///
-/// > **NOTE:** Available since v1.213.0.
+/// &gt; **NOTE:** Available since v1.213.0.
 ///
 /// ## Example Usage
 ///
@@ -171,20 +171,28 @@ import 'eip_state.dart';
 class Eip extends pulumi.CustomResource {
   /// The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
   late final pulumi.Output<int> bandwidth;
+
   /// The creation time of the EIP instance.
   late final pulumi.Output<String> createTime;
+
   /// The description of the EIP.
   late final pulumi.Output<String?> description;
+
   /// The name of the EIP.
   late final pulumi.Output<String?> eipName;
+
   /// Ens node ID.
   late final pulumi.Output<String> ensRegionId;
+
   /// The metering method of the EIP. Valid value: `95BandwidthByMonth`.
   late final pulumi.Output<String> internetChargeType;
+
   /// The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
   late final pulumi.Output<String> isp;
+
   /// The billing method of the EIP. Valid value: `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
+
   /// The status of the EIP.
   late final pulumi.Output<String> status;
 
@@ -192,33 +200,26 @@ class Eip extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Eip]. {@macro pulumi_ens_eip_eip_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Eip(
-    String name, {
-    EipArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ens/eip:Eip',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.eipName = registerOutput<String?>('eipName');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.internetChargeType = registerOutput<String>('internetChargeType');
-    this.isp = registerOutput<String>('isp');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.status = registerOutput<String>('status');
+  Eip(String name, {EipArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ens/eip:Eip',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    eipName = registerOutput<String?>('eipName');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    internetChargeType = registerOutput<String>('internetChargeType');
+    isp = registerOutput<String>('isp');
+    paymentType = registerOutput<String>('paymentType');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Eip] resource's state with the given [name] and [id].
-  static Eip get(
-    String name,
-    pulumi.Input<String> id, {
-    EipState? state,
-  }) {
+  static Eip get(String name, pulumi.Input<String> id, {EipState? state}) {
     return Eip._get(
       name,
       state: state?.toMap(),
@@ -231,19 +232,19 @@ class Eip extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/eip:Eip',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.eipName = registerOutput<String?>('eipName');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.internetChargeType = registerOutput<String>('internetChargeType');
-    this.isp = registerOutput<String>('isp');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.status = registerOutput<String>('status');
+         'alicloud:ens/eip:Eip',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    eipName = registerOutput<String?>('eipName');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    internetChargeType = registerOutput<String>('internetChargeType');
+    isp = registerOutput<String>('isp');
+    paymentType = registerOutput<String>('paymentType');
+    status = registerOutput<String>('status');
   }
 }

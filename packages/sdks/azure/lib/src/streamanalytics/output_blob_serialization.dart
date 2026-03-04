@@ -5,19 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OutputBlobSerialization {
   /// The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
   ///
-  /// > **Note:** This is required when `type` is set to `Csv` or `Json`.
+  /// &gt; **Note:** This is required when `type` is set to `Csv` or `Json`.
   final pulumi.Input<String>? encoding;
+
   /// The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
   ///
-  /// > **Note:** This is required when `type` is set to `Csv`.
+  /// &gt; **Note:** This is required when `type` is set to `Csv`.
   final pulumi.Input<String>? fieldDelimiter;
+
   /// Specifies the format of the JSON the output will be written in. Possible values are `Array` and `LineSeparated`.
   ///
-  /// > **Note:** This is Required and can only be specified when `type` is set to `Json`.
+  /// &gt; **Note:** This is Required and can only be specified when `type` is set to `Json`.
   final pulumi.Input<String>? format;
+
   /// The serialization format used for outgoing data streams. Possible values are `Avro`, `Csv`, `Json` and `Parquet`.
   ///
-  /// > **Note:** `batch_max_wait_time` and `batch_min_rows` are required when `type` is set to `Parquet`
+  /// &gt; **Note:** `batch_max_wait_time` and `batch_min_rows` are required when `type` is set to `Parquet`
   final pulumi.Input<String> type;
 
   /// Creates a new [OutputBlobSerialization].
@@ -43,11 +46,22 @@ class OutputBlobSerialization {
 
   factory OutputBlobSerialization.fromMap(Map<String, dynamic> map) {
     return OutputBlobSerialization(
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      type: (map['type'] as String).input(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fieldDelimiter: (() {
+        final guardedValue = map['fieldDelimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

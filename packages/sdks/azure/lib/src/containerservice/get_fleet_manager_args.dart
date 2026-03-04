@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetManagerArgs {
   /// The name of this Kubernetes Fleet Manager.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group where the Kubernetes Fleet Manager exists.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFleetManagerArgs].
   /// [name] The name of this Kubernetes Fleet Manager.
   /// [resourceGroupName] The name of the Resource Group where the Kubernetes Fleet Manager exists.
-  GetFleetManagerArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetFleetManagerArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetFleetManagerArgs {
 
   factory GetFleetManagerArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetManagerArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

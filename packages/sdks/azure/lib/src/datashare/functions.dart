@@ -122,7 +122,7 @@ import 'get_share_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01
@@ -251,7 +251,7 @@ Future<GetAccountResult> getAccount(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01
@@ -380,7 +380,7 @@ Future<GetDatasetBlobStorageResult> getDatasetBlobStorage(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01
@@ -509,7 +509,7 @@ Future<GetDatasetDataLakeGen2Result> getDatasetDataLakeGen2(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01
@@ -638,7 +638,7 @@ Future<GetDatasetKustoClusterResult> getDatasetKustoCluster(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01
@@ -798,7 +798,7 @@ Future<GetDatasetKustoDatabaseResult> getDatasetKustoDatabase(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataShare` - 2019-11-01

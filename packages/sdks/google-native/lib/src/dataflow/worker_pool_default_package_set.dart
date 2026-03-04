@@ -5,16 +5,15 @@ enum WorkerPoolDefaultPackageSet {
   defaultPackageSetJava("DEFAULT_PACKAGE_SET_JAVA"),
   defaultPackageSetPython("DEFAULT_PACKAGE_SET_PYTHON");
 
-  const WorkerPoolDefaultPackageSet(this.value);
-  final String value;
+  const WorkerPoolDefaultPackageSet(this.wireValue);
+  final String wireValue;
 
   static WorkerPoolDefaultPackageSet fromValue(String value) {
     for (final item in WorkerPoolDefaultPackageSet.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkerPoolDefaultPackageSet value: $value');
   }
 }
-

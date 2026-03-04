@@ -175,38 +175,55 @@ import 'system_data_response.dart';
 class NetworkDevice extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// The host name of the device.
   late final pulumi.Output<String?> hostName;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Management IPv4 Address.
   late final pulumi.Output<String> managementIpv4Address;
+
   /// Management IPv6 Address.
   late final pulumi.Output<String> managementIpv6Address;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// NetworkDeviceRole is the device role: Example: CE | ToR.
   late final pulumi.Output<String> networkDeviceRole;
+
   /// Network Device SKU name.
   late final pulumi.Output<String?> networkDeviceSku;
+
   /// Reference to network rack resource id.
   late final pulumi.Output<String> networkRackId;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
   late final pulumi.Output<String> serialNumber;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Current version of the device as defined in SKU.
   late final pulumi.Output<String> version;
 
@@ -219,28 +236,28 @@ class NetworkDevice extends pulumi.CustomResource {
     NetworkDeviceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:NetworkDevice',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.hostName = registerOutput<String?>('hostName');
-    this.location = registerOutput<String>('location');
-    this.managementIpv4Address = registerOutput<String>('managementIpv4Address');
-    this.managementIpv6Address = registerOutput<String>('managementIpv6Address');
+         'azure-native:managednetworkfabric:NetworkDevice',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    hostName = registerOutput<String?>('hostName');
+    location = registerOutput<String>('location');
+    managementIpv4Address = registerOutput<String>('managementIpv4Address');
+    managementIpv6Address = registerOutput<String>('managementIpv6Address');
     this.name = registerOutput<String>('name');
-    this.networkDeviceRole = registerOutput<String>('networkDeviceRole');
-    this.networkDeviceSku = registerOutput<String?>('networkDeviceSku');
-    this.networkRackId = registerOutput<String>('networkRackId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serialNumber = registerOutput<String>('serialNumber');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    networkDeviceRole = registerOutput<String>('networkDeviceRole');
+    networkDeviceSku = registerOutput<String?>('networkDeviceSku');
+    networkRackId = registerOutput<String>('networkRackId');
+    provisioningState = registerOutput<String>('provisioningState');
+    serialNumber = registerOutput<String>('serialNumber');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

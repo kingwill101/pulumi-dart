@@ -7,7 +7,10 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo {
   final pulumi.Input<String>? accessToken;
   final pulumi.Input<String> clientId;
   final pulumi.Input<String> clientSecret;
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest>? oauthRequest;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest
+  >?
+  oauthRequest;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo].
   /// [accessToken] Optional.
@@ -26,17 +29,34 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo {
       'accessToken': ?accessToken,
       'clientId': clientId,
       'clientSecret': clientSecret,
-      'oauthRequest': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest, Map<String, dynamic>>(oauthRequest, (value) => value.toMap()),
+      'oauthRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest,
+            Map<String, dynamic>
+          >(oauthRequest, (value) => value.toMap()),
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo(
-      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      oauthRequest: (() {
+        final guardedValue = map['oauthRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

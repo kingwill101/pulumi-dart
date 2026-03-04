@@ -22,11 +22,20 @@ class ResourceGuardOperationDetailResponse {
     };
   }
 
-  factory ResourceGuardOperationDetailResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourceGuardOperationDetailResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceGuardOperationDetailResponse(
-      defaultResourceRequest: map['defaultResourceRequest'] == null ? null : (map['defaultResourceRequest']! as String).input(),
-      vaultCriticalOperation: map['vaultCriticalOperation'] == null ? null : (map['vaultCriticalOperation']! as String).input(),
+      defaultResourceRequest: (() {
+        final guardedValue = map['defaultResourceRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultCriticalOperation: (() {
+        final guardedValue = map['vaultCriticalOperation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

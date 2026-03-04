@@ -10,19 +10,26 @@ import 'virtual_machine_configuration.dart';
 class SingleServerConfiguration {
   /// The application resource group where SAP system resources will be deployed.
   final pulumi.Input<String> appResourceGroup;
+
   /// The set of custom names to be used for underlying azure resources that are part of the SAP system.
   final pulumi.Input<SingleServerFullResourceNames>? customResourceNames;
+
   /// The database type.
   final pulumi.Input<String>? databaseType;
+
   /// Gets or sets the disk configuration.
   final pulumi.Input<DiskConfiguration>? dbDiskConfiguration;
+
   /// The type of SAP deployment, single server or Three tier.
   /// Expected value is 'SingleServer'.
   final pulumi.Input<String> deploymentType;
+
   /// Network configuration for the server
   final pulumi.Input<NetworkConfiguration>? networkConfiguration;
+
   /// The subnet id.
   final pulumi.Input<String> subnetId;
+
   /// Gets or sets the virtual machine configuration.
   final pulumi.Input<VirtualMachineConfiguration> virtualMachineConfiguration;
 
@@ -49,27 +56,76 @@ class SingleServerConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appResourceGroup': appResourceGroup,
-      'customResourceNames': ?pulumi.Input.mapOptionalInputValue<SingleServerFullResourceNames, Map<String, dynamic>>(customResourceNames, (value) => value.toMap()),
+      'customResourceNames':
+          ?pulumi.Input.mapOptionalInputValue<
+            SingleServerFullResourceNames,
+            Map<String, dynamic>
+          >(customResourceNames, (value) => value.toMap()),
       'databaseType': ?databaseType,
-      'dbDiskConfiguration': ?pulumi.Input.mapOptionalInputValue<DiskConfiguration, Map<String, dynamic>>(dbDiskConfiguration, (value) => value.toMap()),
+      'dbDiskConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskConfiguration,
+            Map<String, dynamic>
+          >(dbDiskConfiguration, (value) => value.toMap()),
       'deploymentType': deploymentType,
-      'networkConfiguration': ?pulumi.Input.mapOptionalInputValue<NetworkConfiguration, Map<String, dynamic>>(networkConfiguration, (value) => value.toMap()),
+      'networkConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkConfiguration,
+            Map<String, dynamic>
+          >(networkConfiguration, (value) => value.toMap()),
       'subnetId': subnetId,
-      'virtualMachineConfiguration': pulumi.Input.mapInputValue<VirtualMachineConfiguration, Map<String, dynamic>>(virtualMachineConfiguration, (value) => value.toMap()),
+      'virtualMachineConfiguration':
+          pulumi.Input.mapInputValue<
+            VirtualMachineConfiguration,
+            Map<String, dynamic>
+          >(virtualMachineConfiguration, (value) => value.toMap()),
     };
   }
 
   factory SingleServerConfiguration.fromMap(Map<String, dynamic> map) {
     return SingleServerConfiguration(
-      appResourceGroup: (map['appResourceGroup'] as String).input(),
-      customResourceNames: map['customResourceNames'] == null ? null : (SingleServerFullResourceNames.fromMap((map['customResourceNames']! as Map).cast<String, dynamic>())).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
-      dbDiskConfiguration: map['dbDiskConfiguration'] == null ? null : (DiskConfiguration.fromMap((map['dbDiskConfiguration']! as Map).cast<String, dynamic>())).input(),
-      deploymentType: (map['deploymentType'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      virtualMachineConfiguration: (VirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),
+      appResourceGroup: pulumi.Input.fromValue(
+        map['appResourceGroup'] as String,
+      ),
+      customResourceNames: (() {
+        final guardedValue = map['customResourceNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SingleServerFullResourceNames.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      databaseType: (() {
+        final guardedValue = map['databaseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbDiskConfiguration: (() {
+        final guardedValue = map['dbDiskConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
+      networkConfiguration: (() {
+        final guardedValue = map['networkConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      virtualMachineConfiguration: pulumi.Input.fromValue(
+        VirtualMachineConfiguration.fromMap(
+          (map['virtualMachineConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

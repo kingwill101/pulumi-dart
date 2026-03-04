@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceResponse {
   /// Private Ip address of the interface
   final pulumi.Input<String>? privateIpAddress;
+
   /// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
   final pulumi.Input<String> resourceId;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [privateIpAddress] Private Ip address of the interface
   /// [resourceId] The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-  NetworkInterfaceResponse({
-    this.privateIpAddress,
-    required this.resourceId,
-  });
+  NetworkInterfaceResponse({this.privateIpAddress, required this.resourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      privateIpAddress: (() {
+        final guardedValue = map['privateIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

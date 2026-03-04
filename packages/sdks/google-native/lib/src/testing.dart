@@ -1,5 +1,3 @@
-library module_testing;
-
 export 'testing/account.dart';
 export 'testing/account_response.dart';
 export 'testing/android_device.dart';

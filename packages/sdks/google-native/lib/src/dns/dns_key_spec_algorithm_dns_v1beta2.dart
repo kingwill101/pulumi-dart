@@ -6,16 +6,15 @@ enum DnsKeySpecAlgorithmDnsV1beta2 {
   ecdsap256sha256("ecdsap256sha256"),
   ecdsap384sha384("ecdsap384sha384");
 
-  const DnsKeySpecAlgorithmDnsV1beta2(this.value);
-  final String value;
+  const DnsKeySpecAlgorithmDnsV1beta2(this.wireValue);
+  final String wireValue;
 
   static DnsKeySpecAlgorithmDnsV1beta2 fromValue(String value) {
     for (final item in DnsKeySpecAlgorithmDnsV1beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DnsKeySpecAlgorithmDnsV1beta2 value: $value');
   }
 }
-

@@ -1,34 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getIdentityProvider.
 class GetIdentityProviderResult {
   /// List of Allowed Tenants when configuring Azure Active Directory login.
   final List<String>? allowedTenants;
+
   /// OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
   final String? authority;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
   final String clientId;
+
   /// The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
   final String? clientLibrary;
+
   /// Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   final String? clientSecret;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
   final String? passwordResetPolicyName;
+
   /// Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
   final String? profileEditingPolicyName;
+
   /// Signin Policy Name. Only applies to AAD B2C Identity Provider.
   final String? signinPolicyName;
+
   /// The TenantId to use instead of Common when logging into Active Directory
   final String? signinTenant;
+
   /// Signup Policy Name. Only applies to AAD B2C Identity Provider.
   final String? signupPolicyName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -85,21 +97,56 @@ class GetIdentityProviderResult {
 
   factory GetIdentityProviderResult.fromMap(Map<String, dynamic> map) {
     return GetIdentityProviderResult(
-      allowedTenants: map['allowedTenants'] == null ? null : (map['allowedTenants']! as List).cast<String>(),
-      authority: map['authority'] == null ? null : map['authority']! as String,
+      allowedTenants: (() {
+        final guardedValue = map['allowedTenants'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       clientId: map['clientId'] as String,
-      clientLibrary: map['clientLibrary'] == null ? null : map['clientLibrary']! as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret']! as String,
+      clientLibrary: (() {
+        final guardedValue = map['clientLibrary'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      passwordResetPolicyName: map['passwordResetPolicyName'] == null ? null : map['passwordResetPolicyName']! as String,
-      profileEditingPolicyName: map['profileEditingPolicyName'] == null ? null : map['profileEditingPolicyName']! as String,
-      signinPolicyName: map['signinPolicyName'] == null ? null : map['signinPolicyName']! as String,
-      signinTenant: map['signinTenant'] == null ? null : map['signinTenant']! as String,
-      signupPolicyName: map['signupPolicyName'] == null ? null : map['signupPolicyName']! as String,
+      passwordResetPolicyName: (() {
+        final guardedValue = map['passwordResetPolicyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      profileEditingPolicyName: (() {
+        final guardedValue = map['profileEditingPolicyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      signinPolicyName: (() {
+        final guardedValue = map['signinPolicyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      signinTenant: (() {
+        final guardedValue = map['signinTenant'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      signupPolicyName: (() {
+        final guardedValue = map['signupPolicyName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

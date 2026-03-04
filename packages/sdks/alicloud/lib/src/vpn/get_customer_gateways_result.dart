@@ -7,11 +7,14 @@ import 'get_customer_gateways_gateway.dart';
 class GetCustomerGatewaysResult {
   /// A list of VPN customer gateways. Each element contains the following attributes:
   final List<GetCustomerGatewaysGateway> gateways;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// IDs of VPN customer gateway.
   final List<String> ids;
   final String? nameRegex;
+
   /// names of VPN customer gateway.
   final List<String> names;
   final String? outputFile;
@@ -34,7 +37,11 @@ class GetCustomerGatewaysResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gateways': pulumi.Input.encodeList<GetCustomerGatewaysGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
+      'gateways':
+          pulumi.Input.encodeList<
+            GetCustomerGatewaysGateway,
+            Map<String, dynamic>
+          >(gateways, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -45,13 +52,25 @@ class GetCustomerGatewaysResult {
 
   factory GetCustomerGatewaysResult.fromMap(Map<String, dynamic> map) {
     return GetCustomerGatewaysResult(
-      gateways: pulumi.Input.decodeList<GetCustomerGatewaysGateway>(map['gateways'], (value) => GetCustomerGatewaysGateway.fromMap((value as Map).cast<String, dynamic>())),
+      gateways: pulumi.Input.decodeList<GetCustomerGatewaysGateway>(
+        map['gateways']!,
+        (value) => GetCustomerGatewaysGateway.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

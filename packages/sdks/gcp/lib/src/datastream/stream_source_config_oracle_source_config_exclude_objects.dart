@@ -6,7 +6,10 @@ import 'stream_source_config_oracle_source_config_exclude_objects_oracle_schema.
 class StreamSourceConfigOracleSourceConfigExcludeObjects {
   /// Oracle schemas/databases in the database server
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema>> oracleSchemas;
+  final pulumi.Input<
+    List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema>
+  >
+  oracleSchemas;
 
   /// Creates a new [StreamSourceConfigOracleSourceConfigExcludeObjects].
   /// [oracleSchemas] Oracle schemas/databases in the database server
@@ -16,14 +19,38 @@ class StreamSourceConfigOracleSourceConfigExcludeObjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleSchemas': pulumi.Input.mapInputValue<List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema>, List<Map<String, dynamic>>>(oracleSchemas, (value) => pulumi.Input.encodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'oracleSchemas':
+          pulumi.Input.mapInputValue<
+            List<
+              StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema
+            >,
+            List<Map<String, dynamic>>
+          >(
+            oracleSchemas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory StreamSourceConfigOracleSourceConfigExcludeObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigOracleSourceConfigExcludeObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigOracleSourceConfigExcludeObjects(
-      oracleSchemas: (pulumi.Input.decodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema>(map['oracleSchemas'], (value) => StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oracleSchemas: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema
+        >(
+          map['oracleSchemas']!,
+          (value) =>
+              StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum PacketMirroringEnableComputeBeta {
   false_("FALSE"),
   true_("TRUE");
 
-  const PacketMirroringEnableComputeBeta(this.value);
-  final String value;
+  const PacketMirroringEnableComputeBeta(this.wireValue);
+  final String wireValue;
 
   static PacketMirroringEnableComputeBeta fromValue(String value) {
     for (final item in PacketMirroringEnableComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PacketMirroringEnableComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown PacketMirroringEnableComputeBeta value: $value',
+    );
   }
 }
-

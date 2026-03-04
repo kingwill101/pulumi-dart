@@ -6,9 +6,17 @@ import 'indexing_configuration_thing_group_indexing_configuration_managed_field.
 
 class IndexingConfigurationThingGroupIndexingConfiguration {
   /// A list of thing group fields to index. This list cannot contain any managed fields. See below.
-  final pulumi.Input<List<IndexingConfigurationThingGroupIndexingConfigurationCustomField>>? customFields;
+  final pulumi.Input<
+    List<IndexingConfigurationThingGroupIndexingConfigurationCustomField>
+  >?
+  customFields;
+
   /// Contains fields that are indexed and whose types are already known by the Fleet Indexing service. See below.
-  final pulumi.Input<List<IndexingConfigurationThingGroupIndexingConfigurationManagedField>>? managedFields;
+  final pulumi.Input<
+    List<IndexingConfigurationThingGroupIndexingConfigurationManagedField>
+  >?
+  managedFields;
+
   /// Thing group indexing mode. Valid values: `OFF`, `ON`.
   final pulumi.Input<String> thingGroupIndexingMode;
 
@@ -24,18 +32,75 @@ class IndexingConfigurationThingGroupIndexingConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customFields': ?pulumi.Input.mapOptionalInputValue<List<IndexingConfigurationThingGroupIndexingConfigurationCustomField>, List<Map<String, dynamic>>>(customFields, (value) => pulumi.Input.encodeList<IndexingConfigurationThingGroupIndexingConfigurationCustomField, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'managedFields': ?pulumi.Input.mapOptionalInputValue<List<IndexingConfigurationThingGroupIndexingConfigurationManagedField>, List<Map<String, dynamic>>>(managedFields, (value) => pulumi.Input.encodeList<IndexingConfigurationThingGroupIndexingConfigurationManagedField, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customFields':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              IndexingConfigurationThingGroupIndexingConfigurationCustomField
+            >,
+            List<Map<String, dynamic>>
+          >(
+            customFields,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IndexingConfigurationThingGroupIndexingConfigurationCustomField,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'managedFields':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              IndexingConfigurationThingGroupIndexingConfigurationManagedField
+            >,
+            List<Map<String, dynamic>>
+          >(
+            managedFields,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IndexingConfigurationThingGroupIndexingConfigurationManagedField,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'thingGroupIndexingMode': thingGroupIndexingMode,
     };
   }
 
-  factory IndexingConfigurationThingGroupIndexingConfiguration.fromMap(Map<String, dynamic> map) {
+  factory IndexingConfigurationThingGroupIndexingConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IndexingConfigurationThingGroupIndexingConfiguration(
-      customFields: map['customFields'] == null ? null : ((pulumi.Input.decodeList<IndexingConfigurationThingGroupIndexingConfigurationCustomField>(map['customFields']!, (value) => IndexingConfigurationThingGroupIndexingConfigurationCustomField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      managedFields: map['managedFields'] == null ? null : ((pulumi.Input.decodeList<IndexingConfigurationThingGroupIndexingConfigurationManagedField>(map['managedFields']!, (value) => IndexingConfigurationThingGroupIndexingConfigurationManagedField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      thingGroupIndexingMode: (map['thingGroupIndexingMode'] as String).input(),
+      customFields: (() {
+        final guardedValue = map['customFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            IndexingConfigurationThingGroupIndexingConfigurationCustomField
+          >(
+            guardedValue,
+            (value) =>
+                IndexingConfigurationThingGroupIndexingConfigurationCustomField.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      managedFields: (() {
+        final guardedValue = map['managedFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            IndexingConfigurationThingGroupIndexingConfigurationManagedField
+          >(
+            guardedValue,
+            (value) =>
+                IndexingConfigurationThingGroupIndexingConfigurationManagedField.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      thingGroupIndexingMode: pulumi.Input.fromValue(
+        map['thingGroupIndexingMode'] as String,
+      ),
     );
   }
 }
-

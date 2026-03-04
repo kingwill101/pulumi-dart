@@ -35,11 +35,18 @@ class GetChangeDnsV1beta2Args {
 
   factory GetChangeDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetChangeDnsV1beta2Args(
-      changeId: (map['changeId'] as String).input(),
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
-      managedZone: (map['managedZone'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      changeId: pulumi.Input.fromValue(map['changeId'] as String),
+      clientOperationId: (() {
+        final guardedValue = map['clientOperationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedZone: pulumi.Input.fromValue(map['managedZone'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

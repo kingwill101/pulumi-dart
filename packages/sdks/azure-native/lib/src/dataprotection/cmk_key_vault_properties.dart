@@ -9,20 +9,19 @@ class CmkKeyVaultProperties {
 
   /// Creates a new [CmkKeyVaultProperties].
   /// [keyUri] The key uri of the Customer Managed Key
-  CmkKeyVaultProperties({
-    this.keyUri,
-  });
+  CmkKeyVaultProperties({this.keyUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyUri': ?keyUri,
-    };
+    return <String, dynamic>{'keyUri': ?keyUri};
   }
 
   factory CmkKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return CmkKeyVaultProperties(
-      keyUri: map['keyUri'] == null ? null : (map['keyUri']! as String).input(),
+      keyUri: (() {
+        final guardedValue = map['keyUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

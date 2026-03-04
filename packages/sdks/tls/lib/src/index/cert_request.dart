@@ -143,16 +143,22 @@ import 'cert_request_subject.dart';
 class CertRequest extends pulumi.CustomResource {
   /// The certificate request data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
   late final pulumi.Output<String> certRequestPem;
+
   /// List of DNS names for which a certificate is being requested (i.e. certificate subjects).
   late final pulumi.Output<List<String>?> dnsNames;
+
   /// List of IP addresses for which a certificate is being requested (i.e. certificate subjects).
   late final pulumi.Output<List<String>?> ipAddresses;
+
   /// Name of the algorithm used when generating the private key provided in `private_key_pem`.
   late final pulumi.Output<String> keyAlgorithm;
+
   /// Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. This can be read from a separate file using the `file` interpolation function.
   late final pulumi.Output<String> privateKeyPem;
+
   /// The subject for which a certificate is being requested. The acceptable arguments are all optional and their naming is based upon [Issuer Distinguished Names (RFC5280)](https://tools.ietf.org/html/rfc5280#section-4.1.2.4) section.
   late final pulumi.Output<CertRequestSubject?> subject;
+
   /// List of URIs for which a certificate is being requested (i.e. certificate subjects).
   late final pulumi.Output<List<String>?> uris;
 
@@ -165,18 +171,18 @@ class CertRequest extends pulumi.CustomResource {
     CertRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'tls:index/certRequest:CertRequest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certRequestPem = registerOutput<String>('certRequestPem');
-    this.dnsNames = registerOutput<List<String>?>('dnsNames');
-    this.ipAddresses = registerOutput<List<String>?>('ipAddresses');
-    this.keyAlgorithm = registerOutput<String>('keyAlgorithm');
-    this.privateKeyPem = registerOutput<String>('privateKeyPem');
-    this.subject = registerOutput<CertRequestSubject?>('subject');
-    this.uris = registerOutput<List<String>?>('uris');
+         'tls:index/certRequest:CertRequest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certRequestPem = registerOutput<String>('certRequestPem');
+    dnsNames = registerOutput<List<String>?>('dnsNames');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    privateKeyPem = registerOutput<String>('privateKeyPem');
+    subject = registerOutput<CertRequestSubject?>('subject');
+    uris = registerOutput<List<String>?>('uris');
   }
 
   /// Gets an existing [CertRequest] resource's state with the given [name] and [id].
@@ -197,17 +203,17 @@ class CertRequest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'tls:index/certRequest:CertRequest',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certRequestPem = registerOutput<String>('certRequestPem');
-    this.dnsNames = registerOutput<List<String>?>('dnsNames');
-    this.ipAddresses = registerOutput<List<String>?>('ipAddresses');
-    this.keyAlgorithm = registerOutput<String>('keyAlgorithm');
-    this.privateKeyPem = registerOutput<String>('privateKeyPem');
-    this.subject = registerOutput<CertRequestSubject?>('subject');
-    this.uris = registerOutput<List<String>?>('uris');
+         'tls:index/certRequest:CertRequest',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certRequestPem = registerOutput<String>('certRequestPem');
+    dnsNames = registerOutput<List<String>?>('dnsNames');
+    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    privateKeyPem = registerOutput<String>('privateKeyPem');
+    subject = registerOutput<CertRequestSubject?>('subject');
+    uris = registerOutput<List<String>?>('uris');
   }
 }

@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'synthetic_task_args.dart';
-import 'synthetic_task_available_assertion.dart';
 import 'synthetic_task_common_setting.dart';
 import 'synthetic_task_custom_period.dart';
-import 'synthetic_task_monitor.dart';
 import 'synthetic_task_monitor_conf.dart';
 import 'synthetic_task_state.dart';
 
@@ -11,7 +9,7 @@ import 'synthetic_task_state.dart';
 ///
 /// For information about ARMS Synthetic Task and how to use it, see [What is Synthetic Task](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateTimingSyntheticTask).
 ///
-/// > **NOTE:** Available since v1.215.0.
+/// &gt; **NOTE:** Available since v1.215.0.
 ///
 /// ## Example Usage
 ///
@@ -1166,27 +1164,38 @@ import 'synthetic_task_state.dart';
 /// ```
 class SyntheticTask extends pulumi.CustomResource {
   /// Assertion List. See `available_assertions` below.
-  late final pulumi.Output<List<SyntheticTaskAvailableAssertion>?> availableAssertions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> availableAssertions;
+
   /// Common settings. See `common_setting` below.
   late final pulumi.Output<SyntheticTaskCommonSetting> commonSetting;
+
   /// Custom Cycle. See `custom_period` below.
   late final pulumi.Output<SyntheticTaskCustomPeriod?> customPeriod;
+
   /// Frequency.
   late final pulumi.Output<String> frequency;
+
   /// Classification of selected monitors.
   late final pulumi.Output<int> monitorCategory;
+
   /// Monitoring configuration. See `monitor_conf` below.
   late final pulumi.Output<SyntheticTaskMonitorConf> monitorConf;
+
   /// List of selected monitors. See `monitors` below.
-  late final pulumi.Output<List<SyntheticTaskMonitor>> monitors;
+  late final pulumi.Output<List<Map<String, dynamic>>> monitors;
+
   /// Describes which resource group the resource belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// task status.
   late final pulumi.Output<String> status;
+
   /// The name of synthetic task.
   late final pulumi.Output<String> syntheticTaskName;
+
   /// The list of tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of synthetic task.
   late final pulumi.Output<int> taskType;
 
@@ -1199,23 +1208,25 @@ class SyntheticTask extends pulumi.CustomResource {
     SyntheticTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/syntheticTask:SyntheticTask',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availableAssertions = registerOutput<List<SyntheticTaskAvailableAssertion>?>('availableAssertions');
-    this.commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting');
-    this.customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod');
-    this.frequency = registerOutput<String>('frequency');
-    this.monitorCategory = registerOutput<int>('monitorCategory');
-    this.monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf');
-    this.monitors = registerOutput<List<SyntheticTaskMonitor>>('monitors');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.syntheticTaskName = registerOutput<String>('syntheticTaskName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.taskType = registerOutput<int>('taskType');
+         'alicloud:arms/syntheticTask:SyntheticTask',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availableAssertions = registerOutput<List<Map<String, dynamic>>?>(
+      'availableAssertions',
+    );
+    commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting');
+    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod');
+    frequency = registerOutput<String>('frequency');
+    monitorCategory = registerOutput<int>('monitorCategory');
+    monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf');
+    monitors = registerOutput<List<Map<String, dynamic>>>('monitors');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    syntheticTaskName = registerOutput<String>('syntheticTaskName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    taskType = registerOutput<int>('taskType');
   }
 
   /// Gets an existing [SyntheticTask] resource's state with the given [name] and [id].
@@ -1236,22 +1247,24 @@ class SyntheticTask extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/syntheticTask:SyntheticTask',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availableAssertions = registerOutput<List<SyntheticTaskAvailableAssertion>?>('availableAssertions');
-    this.commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting');
-    this.customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod');
-    this.frequency = registerOutput<String>('frequency');
-    this.monitorCategory = registerOutput<int>('monitorCategory');
-    this.monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf');
-    this.monitors = registerOutput<List<SyntheticTaskMonitor>>('monitors');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.syntheticTaskName = registerOutput<String>('syntheticTaskName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.taskType = registerOutput<int>('taskType');
+         'alicloud:arms/syntheticTask:SyntheticTask',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availableAssertions = registerOutput<List<Map<String, dynamic>>?>(
+      'availableAssertions',
+    );
+    commonSetting = registerOutput<SyntheticTaskCommonSetting>('commonSetting');
+    customPeriod = registerOutput<SyntheticTaskCustomPeriod?>('customPeriod');
+    frequency = registerOutput<String>('frequency');
+    monitorCategory = registerOutput<int>('monitorCategory');
+    monitorConf = registerOutput<SyntheticTaskMonitorConf>('monitorConf');
+    monitors = registerOutput<List<Map<String, dynamic>>>('monitors');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    syntheticTaskName = registerOutput<String>('syntheticTaskName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    taskType = registerOutput<int>('taskType');
   }
 }

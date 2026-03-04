@@ -6,7 +6,7 @@ import 'network_manager_routing_rule_state.dart';
 
 /// Manages a Network Manager Routing Rule.
 ///
-/// !> **Note:** Terraform has enabled force deletion. This setting deletes the resource even if it's part of a deployed configuration. If the configuration is deployed, the service will perform a cleanup deployment in the background before the deletion.
+/// !&gt; **Note:** Terraform has enabled force deletion. This setting deletes the resource even if it's part of a deployed configuration. If the configuration is deployed, the service will perform a cleanup deployment in the background before the deletion.
 ///
 /// ## Example Usage
 ///
@@ -401,7 +401,7 @@ import 'network_manager_routing_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -416,12 +416,16 @@ import 'network_manager_routing_rule_state.dart';
 class NetworkManagerRoutingRule extends pulumi.CustomResource {
   /// A description for the routing rule.
   late final pulumi.Output<String?> description;
+
   /// A `destination` block as defined below.
   late final pulumi.Output<NetworkManagerRoutingRuleDestination> destination;
+
   /// The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `next_hop` block as defined below.
   late final pulumi.Output<NetworkManagerRoutingRuleNextHop> nextHop;
+
   /// The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ruleCollectionId;
 
@@ -434,16 +438,18 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
     NetworkManagerRoutingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination');
+         'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    destination = registerOutput<NetworkManagerRoutingRuleDestination>(
+      'destination',
+    );
     this.name = registerOutput<String>('name');
-    this.nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop');
-    this.ruleCollectionId = registerOutput<String>('ruleCollectionId');
+    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop');
+    ruleCollectionId = registerOutput<String>('ruleCollectionId');
   }
 
   /// Gets an existing [NetworkManagerRoutingRule] resource's state with the given [name] and [id].
@@ -464,15 +470,17 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination');
+         'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    destination = registerOutput<NetworkManagerRoutingRuleDestination>(
+      'destination',
+    );
     this.name = registerOutput<String>('name');
-    this.nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop');
-    this.ruleCollectionId = registerOutput<String>('ruleCollectionId');
+    nextHop = registerOutput<NetworkManagerRoutingRuleNextHop>('nextHop');
+    ruleCollectionId = registerOutput<String>('ruleCollectionId');
   }
 }

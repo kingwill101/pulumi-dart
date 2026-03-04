@@ -37,14 +37,23 @@ class GetMigratingVmVmmigrationV1alpha1Args {
     };
   }
 
-  factory GetMigratingVmVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetMigratingVmVmmigrationV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMigratingVmVmmigrationV1alpha1Args(
-      location: (map['location'] as String).input(),
-      migratingVmId: (map['migratingVmId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sourceId: (map['sourceId'] as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      migratingVmId: pulumi.Input.fromValue(map['migratingVmId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

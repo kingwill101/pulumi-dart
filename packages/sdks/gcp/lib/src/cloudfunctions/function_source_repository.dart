@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionSourceRepository {
   /// The URL pointing to the hosted repository where the function was defined at the time of deployment.
   final pulumi.Input<String>? deployedUrl;
+
   /// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
   ///
   /// * To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
@@ -15,23 +16,20 @@ class FunctionSourceRepository {
   /// Creates a new [FunctionSourceRepository].
   /// [deployedUrl] The URL pointing to the hosted repository where the function was defined at the time of deployment.
   /// [url] The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
-  FunctionSourceRepository({
-    this.deployedUrl,
-    required this.url,
-  });
+  FunctionSourceRepository({this.deployedUrl, required this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deployedUrl': ?deployedUrl,
-      'url': url,
-    };
+    return <String, dynamic>{'deployedUrl': ?deployedUrl, 'url': url};
   }
 
   factory FunctionSourceRepository.fromMap(Map<String, dynamic> map) {
     return FunctionSourceRepository(
-      deployedUrl: map['deployedUrl'] == null ? null : (map['deployedUrl']! as String).input(),
-      url: (map['url'] as String).input(),
+      deployedUrl: (() {
+        final guardedValue = map['deployedUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

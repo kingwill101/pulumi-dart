@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssessmentArgs {
   /// Unique name of an assessment within a project.
   final pulumi.Input<String> assessmentName;
+
   /// Unique name of a group within a project.
   final pulumi.Input<String> groupName;
+
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,12 @@ class GetAssessmentArgs {
 
   factory GetAssessmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentArgs(
-      assessmentName: (map['assessmentName'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assessmentName: pulumi.Input.fromValue(map['assessmentName'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

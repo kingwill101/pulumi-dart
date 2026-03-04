@@ -5,16 +5,17 @@ enum PerformanceConfigDumpParallelLevel {
   optimal("OPTIMAL"),
   max("MAX");
 
-  const PerformanceConfigDumpParallelLevel(this.value);
-  final String value;
+  const PerformanceConfigDumpParallelLevel(this.wireValue);
+  final String wireValue;
 
   static PerformanceConfigDumpParallelLevel fromValue(String value) {
     for (final item in PerformanceConfigDumpParallelLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PerformanceConfigDumpParallelLevel value: $value');
+    throw ArgumentError(
+      'Unknown PerformanceConfigDumpParallelLevel value: $value',
+    );
   }
 }
-

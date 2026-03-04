@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUsersUser {
   /// The email of the user email.
   final pulumi.Input<String> email;
+
   /// The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
   final pulumi.Input<String> endUserId;
+
   /// The ID of the user id.
   final pulumi.Input<String> id;
+
   /// The phone of the mobile phone number.
   final pulumi.Input<String> phone;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
 
@@ -40,12 +44,11 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      email: (map['email'] as String).input(),
-      endUserId: (map['endUserId'] as String).input(),
-      id: (map['id'] as String).input(),
-      phone: (map['phone'] as String).input(),
-      status: (map['status'] as String).input(),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      endUserId: pulumi.Input.fromValue(map['endUserId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      phone: pulumi.Input.fromValue(map['phone'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

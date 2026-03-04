@@ -8,7 +8,7 @@ import 'route_table_state.dart';
 ///
 /// For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -178,22 +178,31 @@ class RouteTable extends pulumi.CustomResource {
   /// - `VSwitch`: switch.
   /// - `Gateway`:IPv4 Gateway.
   late final pulumi.Output<String> associateType;
+
   /// The creation time of the routing table
   late final pulumi.Output<String> createTime;
+
   /// Description of the routing table.
   late final pulumi.Output<String?> description;
+
   /// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
   late final pulumi.Output<String> name;
+
   /// Resource group ID.
   late final pulumi.Output<String> resourceGroupId;
+
   /// Route Table Receive Propagate Route State
   late final pulumi.Output<bool> routePropagationEnable;
+
   /// The name of the routing table.
   late final pulumi.Output<String> routeTableName;
+
   /// Routing table state
   late final pulumi.Output<String> status;
+
   /// The tag
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of VPC.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -208,21 +217,21 @@ class RouteTable extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/routeTable:RouteTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associateType = registerOutput<String>('associateType');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
+         'alicloud:vpc/routeTable:RouteTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associateType = registerOutput<String>('associateType');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.routePropagationEnable = registerOutput<bool>('routePropagationEnable');
-    this.routeTableName = registerOutput<String>('routeTableName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    routePropagationEnable = registerOutput<bool>('routePropagationEnable');
+    routeTableName = registerOutput<String>('routeTableName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [RouteTable] resource's state with the given [name] and [id].
@@ -243,20 +252,20 @@ class RouteTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/routeTable:RouteTable',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associateType = registerOutput<String>('associateType');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
+         'alicloud:vpc/routeTable:RouteTable',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associateType = registerOutput<String>('associateType');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.routePropagationEnable = registerOutput<bool>('routePropagationEnable');
-    this.routeTableName = registerOutput<String>('routeTableName');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    routePropagationEnable = registerOutput<bool>('routePropagationEnable');
+    routeTableName = registerOutput<String>('routeTableName');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

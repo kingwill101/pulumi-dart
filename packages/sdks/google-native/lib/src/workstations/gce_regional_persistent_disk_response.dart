@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GceRegionalPersistentDiskResponse {
   /// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
   final pulumi.Input<String> diskType;
+
   /// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
   final pulumi.Input<String> fsType;
+
   /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
   final pulumi.Input<String> reclaimPolicy;
+
   /// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
   final pulumi.Input<int> sizeGb;
+
   /// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
   final pulumi.Input<String> sourceSnapshot;
 
@@ -41,12 +45,11 @@ class GceRegionalPersistentDiskResponse {
 
   factory GceRegionalPersistentDiskResponse.fromMap(Map<String, dynamic> map) {
     return GceRegionalPersistentDiskResponse(
-      diskType: (map['diskType'] as String).input(),
-      fsType: (map['fsType'] as String).input(),
-      reclaimPolicy: (map['reclaimPolicy'] as String).input(),
-      sizeGb: (map['sizeGb'] as int).input(),
-      sourceSnapshot: (map['sourceSnapshot'] as String).input(),
+      diskType: pulumi.Input.fromValue(map['diskType'] as String),
+      fsType: pulumi.Input.fromValue(map['fsType'] as String),
+      reclaimPolicy: pulumi.Input.fromValue(map['reclaimPolicy'] as String),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      sourceSnapshot: pulumi.Input.fromValue(map['sourceSnapshot'] as String),
     );
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_group_args.dart';
 import 'system_data_response.dart';
-import 'throttling_policy_response.dart';
 
 /// The Application Group object
 ///
@@ -265,18 +264,25 @@ import 'throttling_policy_response.dart';
 class ApplicationGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
   late final pulumi.Output<String> clientAppGroupIdentifier;
+
   /// Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed
   late final pulumi.Output<bool?> isEnabled;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
-  late final pulumi.Output<List<ThrottlingPolicyResponse>?> policies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> policies;
+
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
 
@@ -289,18 +295,20 @@ class ApplicationGroup extends pulumi.CustomResource {
     ApplicationGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventhub:ApplicationGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientAppGroupIdentifier = registerOutput<String>('clientAppGroupIdentifier');
-    this.isEnabled = registerOutput<bool?>('isEnabled');
-    this.location = registerOutput<String>('location');
+         'azure-native:eventhub:ApplicationGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientAppGroupIdentifier = registerOutput<String>(
+      'clientAppGroupIdentifier',
+    );
+    isEnabled = registerOutput<bool?>('isEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.policies = registerOutput<List<ThrottlingPolicyResponse>?>('policies');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    policies = registerOutput<List<Map<String, dynamic>>?>('policies');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

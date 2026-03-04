@@ -9,20 +9,17 @@ class ValueValidationResponseDataprocV1beta2 {
 
   /// Creates a new [ValueValidationResponseDataprocV1beta2].
   /// [values] List of allowed values for the parameter.
-  ValueValidationResponseDataprocV1beta2({
-    required this.values,
-  });
+  ValueValidationResponseDataprocV1beta2({required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory ValueValidationResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ValueValidationResponseDataprocV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ValueValidationResponseDataprocV1beta2(
-      values: ((map['values'] as List).cast<String>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

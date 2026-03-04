@@ -5,16 +5,15 @@ enum TargetVMDetailsDiskType {
   balanced("BALANCED"),
   ssd("SSD");
 
-  const TargetVMDetailsDiskType(this.value);
-  final String value;
+  const TargetVMDetailsDiskType(this.wireValue);
+  final String wireValue;
 
   static TargetVMDetailsDiskType fromValue(String value) {
     for (final item in TargetVMDetailsDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetVMDetailsDiskType value: $value');
   }
 }
-

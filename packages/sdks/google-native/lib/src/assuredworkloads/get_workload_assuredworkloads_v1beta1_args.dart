@@ -29,12 +29,13 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
     };
   }
 
-  factory GetWorkloadAssuredworkloadsV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadAssuredworkloadsV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadAssuredworkloadsV1beta1Args(
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      workloadId: (map['workloadId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      workloadId: pulumi.Input.fromValue(map['workloadId'] as String),
     );
   }
 }
-

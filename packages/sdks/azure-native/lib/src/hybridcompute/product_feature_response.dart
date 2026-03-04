@@ -7,16 +7,22 @@ import 'error_detail_response.dart';
 class ProductFeatureResponse {
   /// The timestamp in UTC when the billing ends.
   final pulumi.Input<String> billingEndDate;
+
   /// The timestamp in UTC when the billing starts.
   final pulumi.Input<String> billingStartDate;
+
   /// The timestamp in UTC when the user disenrolled the feature.
   final pulumi.Input<String> disenrollmentDate;
+
   /// The timestamp in UTC when the user enrolls the feature.
   final pulumi.Input<String> enrollmentDate;
+
   /// The errors that were encountered during the feature enrollment or disenrollment.
   final pulumi.Input<ErrorDetailResponse> error;
+
   /// Product feature name.
   final pulumi.Input<String>? name;
+
   /// Indicates the current status of the product features.
   final pulumi.Input<String>? subscriptionStatus;
 
@@ -44,7 +50,11 @@ class ProductFeatureResponse {
       'billingStartDate': billingStartDate,
       'disenrollmentDate': disenrollmentDate,
       'enrollmentDate': enrollmentDate,
-      'error': pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<ErrorDetailResponse, Map<String, dynamic>>(
+            error,
+            (value) => value.toMap(),
+          ),
       'name': ?name,
       'subscriptionStatus': ?subscriptionStatus,
     };
@@ -52,14 +62,29 @@ class ProductFeatureResponse {
 
   factory ProductFeatureResponse.fromMap(Map<String, dynamic> map) {
     return ProductFeatureResponse(
-      billingEndDate: (map['billingEndDate'] as String).input(),
-      billingStartDate: (map['billingStartDate'] as String).input(),
-      disenrollmentDate: (map['disenrollmentDate'] as String).input(),
-      enrollmentDate: (map['enrollmentDate'] as String).input(),
-      error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus']! as String).input(),
+      billingEndDate: pulumi.Input.fromValue(map['billingEndDate'] as String),
+      billingStartDate: pulumi.Input.fromValue(
+        map['billingStartDate'] as String,
+      ),
+      disenrollmentDate: pulumi.Input.fromValue(
+        map['disenrollmentDate'] as String,
+      ),
+      enrollmentDate: pulumi.Input.fromValue(map['enrollmentDate'] as String),
+      error: pulumi.Input.fromValue(
+        ErrorDetailResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionStatus: (() {
+        final guardedValue = map['subscriptionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

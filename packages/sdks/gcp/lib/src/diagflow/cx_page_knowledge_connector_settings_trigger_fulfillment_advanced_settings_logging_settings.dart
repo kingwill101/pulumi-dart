@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
   /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
   final pulumi.Input<bool>? enableConsentBasedRedaction;
+
   /// Enables DF Interaction logging.
   final pulumi.Input<bool>? enableInteractionLogging;
+
   /// Enables Google Cloud Logging.
   final pulumi.Input<bool>? enableStackdriverLogging;
 
@@ -28,12 +30,25 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingS
     };
   }
 
-  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap(Map<String, dynamic> map) {
+  factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings(
-      enableConsentBasedRedaction: map['enableConsentBasedRedaction'] == null ? null : (map['enableConsentBasedRedaction']! as bool).input(),
-      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging']! as bool).input(),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
+      enableConsentBasedRedaction: (() {
+        final guardedValue = map['enableConsentBasedRedaction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableInteractionLogging: (() {
+        final guardedValue = map['enableInteractionLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableStackdriverLogging: (() {
+        final guardedValue = map['enableStackdriverLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

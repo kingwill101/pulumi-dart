@@ -7,10 +7,13 @@ import 'deployment_logging_log_reserve_policy.dart';
 class DeploymentLogging {
   /// Custom log template
   final pulumi.Input<String>? log4j2ConfigurationTemplate;
+
   /// log4j configuration   See `log4j_loggers` below.
   final pulumi.Input<List<DeploymentLoggingLog4jLogger>>? log4jLoggers;
+
   /// Log retention policy   See `log_reserve_policy` below.
   final pulumi.Input<DeploymentLoggingLogReservePolicy>? logReservePolicy;
+
   /// Default system log template
   final pulumi.Input<String>? loggingProfile;
 
@@ -29,19 +32,60 @@ class DeploymentLogging {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'log4j2ConfigurationTemplate': ?log4j2ConfigurationTemplate,
-      'log4jLoggers': ?pulumi.Input.mapOptionalInputValue<List<DeploymentLoggingLog4jLogger>, List<Map<String, dynamic>>>(log4jLoggers, (value) => pulumi.Input.encodeList<DeploymentLoggingLog4jLogger, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'logReservePolicy': ?pulumi.Input.mapOptionalInputValue<DeploymentLoggingLogReservePolicy, Map<String, dynamic>>(logReservePolicy, (value) => value.toMap()),
+      'log4jLoggers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeploymentLoggingLog4jLogger>,
+            List<Map<String, dynamic>>
+          >(
+            log4jLoggers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentLoggingLog4jLogger,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'logReservePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentLoggingLogReservePolicy,
+            Map<String, dynamic>
+          >(logReservePolicy, (value) => value.toMap()),
       'loggingProfile': ?loggingProfile,
     };
   }
 
   factory DeploymentLogging.fromMap(Map<String, dynamic> map) {
     return DeploymentLogging(
-      log4j2ConfigurationTemplate: map['log4j2ConfigurationTemplate'] == null ? null : (map['log4j2ConfigurationTemplate']! as String).input(),
-      log4jLoggers: map['log4jLoggers'] == null ? null : (pulumi.Input.decodeList<DeploymentLoggingLog4jLogger>(map['log4jLoggers']!, (value) => DeploymentLoggingLog4jLogger.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logReservePolicy: map['logReservePolicy'] == null ? null : (DeploymentLoggingLogReservePolicy.fromMap((map['logReservePolicy']! as Map).cast<String, dynamic>())).input(),
-      loggingProfile: map['loggingProfile'] == null ? null : (map['loggingProfile']! as String).input(),
+      log4j2ConfigurationTemplate: (() {
+        final guardedValue = map['log4j2ConfigurationTemplate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      log4jLoggers: (() {
+        final guardedValue = map['log4jLoggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeploymentLoggingLog4jLogger>(
+            guardedValue,
+            (value) => DeploymentLoggingLog4jLogger.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      logReservePolicy: (() {
+        final guardedValue = map['logReservePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentLoggingLogReservePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loggingProfile: (() {
+        final guardedValue = map['loggingProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

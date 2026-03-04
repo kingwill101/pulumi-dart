@@ -745,23 +745,32 @@ import 'role_assignment_artifact_args.dart';
 class RoleAssignmentArtifact extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Artifacts which need to be deployed before the specified artifact.
   late final pulumi.Output<List<String>?> dependsOn;
+
   /// Multi-line explain this resource.
   late final pulumi.Output<String?> description;
+
   /// One-liner string explain this resource.
   late final pulumi.Output<String?> displayName;
+
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'roleAssignment'.
   late final pulumi.Output<String> kind;
+
   /// Name of this resource.
   late final pulumi.Output<String> name;
+
   /// Array of user or group identities in Azure Active Directory. The roleDefinition will apply to each identity.
   late final pulumi.Output<dynamic> principalIds;
+
   /// RoleAssignment will be scope to this resourceGroup. If empty, it scopes to the subscription.
   late final pulumi.Output<String?> resourceGroup;
+
   /// Azure resource ID of the RoleDefinition.
   late final pulumi.Output<String> roleDefinitionId;
+
   /// Type of this resource.
   late final pulumi.Output<String> type;
 
@@ -774,20 +783,20 @@ class RoleAssignmentArtifact extends pulumi.CustomResource {
     RoleAssignmentArtifactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:blueprint:RoleAssignmentArtifact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dependsOn = registerOutput<List<String>?>('dependsOn');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:blueprint:RoleAssignmentArtifact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dependsOn = registerOutput<List<String>?>('dependsOn');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.principalIds = registerOutput<dynamic>('principalIds');
-    this.resourceGroup = registerOutput<String?>('resourceGroup');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.type = registerOutput<String>('type');
+    principalIds = registerOutput<dynamic>('principalIds');
+    resourceGroup = registerOutput<String?>('resourceGroup');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    type = registerOutput<String>('type');
   }
 }

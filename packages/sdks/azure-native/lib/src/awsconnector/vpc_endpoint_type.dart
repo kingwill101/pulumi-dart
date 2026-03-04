@@ -4,16 +4,15 @@ enum VpcEndpointType {
   gatewayLoadBalancer("GatewayLoadBalancer"),
   interface("Interface");
 
-  const VpcEndpointType(this.value);
-  final String value;
+  const VpcEndpointType(this.wireValue);
+  final String wireValue;
 
   static VpcEndpointType fromValue(String value) {
     for (final item in VpcEndpointType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpcEndpointType value: $value');
   }
 }
-

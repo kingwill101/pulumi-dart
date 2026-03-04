@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OssExportSinkConfigurationSink {
   /// The OSS bucket.
   final pulumi.Input<String> bucket;
+
   /// The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
   final pulumi.Input<String> bufferInterval;
+
   /// The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
   final pulumi.Input<String> bufferSize;
+
   /// Supports four compression types, such as snappy, gzip, zstd, and none.
   final pulumi.Input<String> compressionType;
+
   /// The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
   ///
   /// If the contentType value is JSON, the parameters of the contentDetail value are as follows:
@@ -43,22 +47,31 @@ class OssExportSinkConfigurationSink {
   ///
   /// The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
   final pulumi.Input<String> contentDetail;
+
   /// The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
   final pulumi.Input<String> contentType;
+
   /// The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
   final pulumi.Input<int>? delaySeconds;
+
   /// The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
   final pulumi.Input<String> endpoint;
+
   /// The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
   final pulumi.Input<String>? pathFormat;
+
   /// The partition format type. only support time
   final pulumi.Input<String>? pathFormatType;
+
   /// The prefix of the OSS object.
   final pulumi.Input<String>? prefix;
+
   /// The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
   final pulumi.Input<String> roleArn;
+
   /// The suffix of the OSS object.
   final pulumi.Input<String>? suffix;
+
   /// The time zone. Example value: +0800
   final pulumi.Input<String> timeZone;
 
@@ -115,21 +128,40 @@ class OssExportSinkConfigurationSink {
 
   factory OssExportSinkConfigurationSink.fromMap(Map<String, dynamic> map) {
     return OssExportSinkConfigurationSink(
-      bucket: (map['bucket'] as String).input(),
-      bufferInterval: (map['bufferInterval'] as String).input(),
-      bufferSize: (map['bufferSize'] as String).input(),
-      compressionType: (map['compressionType'] as String).input(),
-      contentDetail: (map['contentDetail'] as String).input(),
-      contentType: (map['contentType'] as String).input(),
-      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds']! as int).input(),
-      endpoint: (map['endpoint'] as String).input(),
-      pathFormat: map['pathFormat'] == null ? null : (map['pathFormat']! as String).input(),
-      pathFormatType: map['pathFormatType'] == null ? null : (map['pathFormatType']! as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
-      roleArn: (map['roleArn'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
-      timeZone: (map['timeZone'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      bufferInterval: pulumi.Input.fromValue(map['bufferInterval'] as String),
+      bufferSize: pulumi.Input.fromValue(map['bufferSize'] as String),
+      compressionType: pulumi.Input.fromValue(map['compressionType'] as String),
+      contentDetail: pulumi.Input.fromValue(map['contentDetail'] as String),
+      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      delaySeconds: (() {
+        final guardedValue = map['delaySeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      pathFormat: (() {
+        final guardedValue = map['pathFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pathFormatType: (() {
+        final guardedValue = map['pathFormatType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      suffix: (() {
+        final guardedValue = map['suffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
-

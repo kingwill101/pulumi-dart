@@ -1,5 +1,3 @@
-library module_arcregionswitch;
-
 export 'arcregionswitch/functions.dart';
 export 'arcregionswitch/get_plan_args.dart';
 export 'arcregionswitch/get_plan_result.dart';

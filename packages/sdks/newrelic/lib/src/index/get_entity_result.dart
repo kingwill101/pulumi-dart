@@ -6,19 +6,24 @@ import 'get_entity_tag.dart';
 /// Result data returned by getEntity.
 class GetEntityResult {
   final String accountId;
+
   /// The domain-specific application ID of the entity. Only returned for APM and Browser applications.
   final String applicationId;
   final String domain;
+
   /// A JSON-encoded string, comprising tags associated with the entity fetched.
   /// * See the **Additional Examples** section below, for an illustration depicting the usage of `jsondecode` with the attribute `entity_tags`, to get the tags associated with the entity fetched.
   final String entityTags;
+
   /// The unique GUID of the entity.
   final String guid;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? ignoreCase;
   final bool? ignoreNotFound;
   final String name;
+
   /// The browser-specific ID of the backing APM entity. Only returned for Browser applications.
   final String servingApmApplicationId;
   final List<GetEntityTag>? tags;
@@ -64,7 +69,14 @@ class GetEntityResult {
       'ignoreNotFound': ?ignoreNotFound,
       'name': name,
       'servingApmApplicationId': servingApmApplicationId,
-      'tags': ?tags == null ? null : pulumi.Input.encodeList<GetEntityTag, Map<String, dynamic>>(tags!, (value) => value.toMap()),
+      'tags': ?(() {
+        final guardedValue = tags;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetEntityTag, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'type': type,
     };
   }
@@ -77,13 +89,28 @@ class GetEntityResult {
       entityTags: map['entityTags'] as String,
       guid: map['guid'] as String,
       id: map['id'] as String,
-      ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase']! as bool,
-      ignoreNotFound: map['ignoreNotFound'] == null ? null : map['ignoreNotFound']! as bool,
+      ignoreCase: (() {
+        final guardedValue = map['ignoreCase'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      ignoreNotFound: (() {
+        final guardedValue = map['ignoreNotFound'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       name: map['name'] as String,
       servingApmApplicationId: map['servingApmApplicationId'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<GetEntityTag>(map['tags']!, (value) => GetEntityTag.fromMap((value as Map).cast<String, dynamic>())),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetEntityTag>(
+          guardedValue,
+          (value) =>
+              GetEntityTag.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

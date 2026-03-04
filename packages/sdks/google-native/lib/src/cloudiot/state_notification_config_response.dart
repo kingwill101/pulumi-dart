@@ -9,20 +9,15 @@ class StateNotificationConfigResponse {
 
   /// Creates a new [StateNotificationConfigResponse].
   /// [pubsubTopicName] A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
-  StateNotificationConfigResponse({
-    required this.pubsubTopicName,
-  });
+  StateNotificationConfigResponse({required this.pubsubTopicName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pubsubTopicName': pubsubTopicName,
-    };
+    return <String, dynamic>{'pubsubTopicName': pubsubTopicName};
   }
 
   factory StateNotificationConfigResponse.fromMap(Map<String, dynamic> map) {
     return StateNotificationConfigResponse(
-      pubsubTopicName: (map['pubsubTopicName'] as String).input(),
+      pubsubTopicName: pulumi.Input.fromValue(map['pubsubTopicName'] as String),
     );
   }
 }
-

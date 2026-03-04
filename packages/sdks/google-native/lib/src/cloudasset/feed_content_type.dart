@@ -8,16 +8,15 @@ enum FeedContentType {
   osInventory("OS_INVENTORY"),
   relationship("RELATIONSHIP");
 
-  const FeedContentType(this.value);
-  final String value;
+  const FeedContentType(this.wireValue);
+  final String wireValue;
 
   static FeedContentType fromValue(String value) {
     for (final item in FeedContentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeedContentType value: $value');
   }
 }
-

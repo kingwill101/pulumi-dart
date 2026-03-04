@@ -12,18 +12,25 @@ import 'plan.dart';
 class FlowArgs {
   /// The name for the connection that is to be requested.
   final pulumi.Input<String> connectionName;
+
   /// The name for the flow that is to be onboarded.
   final pulumi.Input<String>? flowName;
+
   /// The managed identity of the flow resource, if configured.
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Plan for the resource.
   final pulumi.Input<Plan>? plan;
+
   /// Properties of flow
   final pulumi.Input<FlowProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -51,10 +58,21 @@ class FlowArgs {
     return <String, dynamic>{
       'connectionName': connectionName,
       'flowName': ?flowName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
-      'plan': ?pulumi.Input.mapOptionalInputValue<Plan, Map<String, dynamic>>(plan, (value) => value.toMap()),
-      'properties': ?pulumi.Input.mapOptionalInputValue<FlowProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'plan': ?pulumi.Input.mapOptionalInputValue<Plan, Map<String, dynamic>>(
+        plan,
+        (value) => value.toMap(),
+      ),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -62,15 +80,50 @@ class FlowArgs {
 
   factory FlowArgs.fromMap(Map<String, dynamic> map) {
     return FlowArgs(
-      connectionName: (map['connectionName'] as String).input(),
-      flowName: map['flowName'] == null ? null : (map['flowName']! as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (FlowProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      connectionName: pulumi.Input.fromValue(map['connectionName'] as String),
+      flowName: (() {
+        final guardedValue = map['flowName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Plan.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowProperties.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

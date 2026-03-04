@@ -153,20 +153,28 @@ import 'system_data_response.dart';
 class ManagedPrivateEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The groupId in which the managed private endpoint is created.
   late final pulumi.Output<String> groupId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The ARM resource ID of the resource for which the managed private endpoint is created.
   late final pulumi.Output<String> privateLinkResourceId;
+
   /// The region of the resource to which the managed private endpoint is created.
   late final pulumi.Output<String?> privateLinkResourceRegion;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The user request message.
   late final pulumi.Output<String?> requestMessage;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -179,19 +187,21 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     ManagedPrivateEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:kusto:ManagedPrivateEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.groupId = registerOutput<String>('groupId');
+         'azure-native:kusto:ManagedPrivateEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupId = registerOutput<String>('groupId');
     this.name = registerOutput<String>('name');
-    this.privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
-    this.privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.requestMessage = registerOutput<String?>('requestMessage');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
+    privateLinkResourceRegion = registerOutput<String?>(
+      'privateLinkResourceRegion',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    requestMessage = registerOutput<String?>('requestMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

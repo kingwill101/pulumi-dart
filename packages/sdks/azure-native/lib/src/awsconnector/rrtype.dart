@@ -14,16 +14,15 @@ enum RRType {
   sRV("SRV"),
   tXT("TXT");
 
-  const RRType(this.value);
-  final String value;
+  const RRType(this.wireValue);
+  final String wireValue;
 
   static RRType fromValue(String value) {
     for (final item in RRType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RRType value: $value');
   }
 }
-

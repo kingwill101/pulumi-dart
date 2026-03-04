@@ -312,7 +312,7 @@ Future<GetBandwidthPackagesResult> getBandwidthPackages(
 
 /// This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
 ///
-/// > **NOTE:** Available in 1.195.0+
+/// &gt; **NOTE:** Available in 1.195.0+
 ///
 /// ## Example Usage
 ///
@@ -420,7 +420,8 @@ Future<GetBandwidthPackagesResult> getBandwidthPackages(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_child_instance_route_entry_to_attachments_get_child_instance_route_entry_to_attachments_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(
+Future<GetChildInstanceRouteEntryToAttachmentsResult>
+getChildInstanceRouteEntryToAttachments(
   GetChildInstanceRouteEntryToAttachmentsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -435,7 +436,7 @@ Future<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntry
 
 /// This data source provides CEN flow logs available to the user.
 ///
-/// > **NOTE:** Available since v1.78.0.
+/// &gt; **NOTE:** Available since v1.78.0.
 ///
 /// ## Example Usage
 ///
@@ -830,7 +831,7 @@ Future<GetFlowlogsResult> getFlowlogs(
 
 /// This data source provides Cen Instance Attachments of the current Alibaba Cloud User.
 ///
-/// > **NOTE:** Available in v1.97.0+.
+/// &gt; **NOTE:** Available in v1.97.0+.
 ///
 /// ## Example Usage
 ///
@@ -1074,7 +1075,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.195.0+.
+/// &gt; **NOTE:** Available in v1.195.0+.
 ///
 /// ## Example Usage
 ///
@@ -1253,7 +1254,7 @@ Future<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPolicies(
 
 /// This data source provides Cen Inter Region Traffic Qos Queue available to the user.
 ///
-/// > **NOTE:** Available in 1.195.0+
+/// &gt; **NOTE:** Available in 1.195.0+
 ///
 /// ## Example Usage
 ///
@@ -1387,7 +1388,7 @@ Future<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueues(
 
 /// This data source provides CEN Private Zones available to the user.
 ///
-/// > **NOTE:** Available in v1.88.0+.
+/// &gt; **NOTE:** Available in v1.88.0+.
 ///
 /// ## Example Usage
 ///
@@ -1764,7 +1765,7 @@ Future<GetRouteEntriesResult> getRouteEntries(
 
 /// This data source provides CEN Route Maps available to the user.
 ///
-/// > **NOTE:** Available in v1.87.0+.
+/// &gt; **NOTE:** Available in v1.87.0+.
 ///
 /// ## Example Usage
 ///
@@ -1917,7 +1918,7 @@ Future<GetRouteMapsResult> getRouteMaps(
 
 /// This data source provides CEN Route Service available to the user.
 ///
-/// > **NOTE:** Available in v1.102.0+
+/// &gt; **NOTE:** Available in v1.102.0+
 ///
 /// ## Example Usage
 ///
@@ -2036,7 +2037,7 @@ Future<GetRouteServicesResult> getRouteServices(
 
 /// This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.173.0+.
+/// &gt; **NOTE:** Available in v1.173.0+.
 ///
 /// ## Example Usage
 ///
@@ -2214,7 +2215,7 @@ Future<GetTrafficMarkingPoliciesResult> getTrafficMarkingPolicies(
 
 /// This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.202.0+.
+/// &gt; **NOTE:** Available in v1.202.0+.
 ///
 /// ## Example Usage
 ///
@@ -2381,7 +2382,7 @@ Future<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(
 
 /// This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.163.0.
+/// &gt; **NOTE:** Available since v1.163.0.
 ///
 /// ## Example Usage
 ///
@@ -2482,7 +2483,8 @@ Future<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_available_resources_get_transit_router_available_resources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources(
+Future<GetTransitRouterAvailableResourcesResult>
+getTransitRouterAvailableResources(
   GetTransitRouterAvailableResourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2497,7 +2499,7 @@ Future<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResour
 
 /// This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.193.0+.
+/// &gt; **NOTE:** Available in v1.193.0+.
 ///
 /// ## Example Usage
 ///
@@ -2664,7 +2666,7 @@ Future<GetTransitRouterCidrsResult> getTransitRouterCidrs(
 
 /// This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.195.0+.
+/// &gt; **NOTE:** Available in v1.195.0+.
 ///
 /// ## Example Usage
 ///
@@ -2780,7 +2782,8 @@ Future<GetTransitRouterCidrsResult> getTransitRouterCidrs(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_associations_get_transit_router_multicast_domain_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociations(
+Future<GetTransitRouterMulticastDomainAssociationsResult>
+getTransitRouterMulticastDomainAssociations(
   GetTransitRouterMulticastDomainAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2795,7 +2798,7 @@ Future<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMultic
 
 /// This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -2899,7 +2902,8 @@ Future<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMultic
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_members_get_transit_router_multicast_domain_members_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(
+Future<GetTransitRouterMulticastDomainMembersResult>
+getTransitRouterMulticastDomainMembers(
   GetTransitRouterMulticastDomainMembersArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -2914,7 +2918,7 @@ Future<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDo
 
 /// This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -3018,7 +3022,8 @@ Future<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDo
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_peer_members_get_transit_router_multicast_domain_peer_members_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembers(
+Future<GetTransitRouterMulticastDomainPeerMembersResult>
+getTransitRouterMulticastDomainPeerMembers(
   GetTransitRouterMulticastDomainPeerMembersArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3033,7 +3038,7 @@ Future<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMultica
 
 /// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -3135,7 +3140,8 @@ Future<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMultica
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_multicast_domain_sources_get_transit_router_multicast_domain_sources_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(
+Future<GetTransitRouterMulticastDomainSourcesResult>
+getTransitRouterMulticastDomainSources(
   GetTransitRouterMulticastDomainSourcesArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3150,7 +3156,7 @@ Future<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDo
 
 /// This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.195.0+.
+/// &gt; **NOTE:** Available in v1.195.0+.
 ///
 /// ## Example Usage
 ///
@@ -3317,7 +3323,7 @@ Future<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomains(
 
 /// This data source provides CEN Transit Router peer attachments available to the user.
 ///
-/// > **NOTE:** Available in 1.128.0+
+/// &gt; **NOTE:** Available in 1.128.0+
 ///
 /// ## Example Usage
 ///
@@ -3434,7 +3440,7 @@ Future<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(
 
 /// This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.188.0+.
+/// &gt; **NOTE:** Available in v1.188.0+.
 ///
 /// ## Example Usage
 ///
@@ -3544,7 +3550,8 @@ Future<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_prefix_list_associations_get_transit_router_prefix_list_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociations(
+Future<GetTransitRouterPrefixListAssociationsResult>
+getTransitRouterPrefixListAssociations(
   GetTransitRouterPrefixListAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3559,7 +3566,7 @@ Future<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListA
 
 /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
 ///
-/// > **NOTE:** Available in 1.126.0+
+/// &gt; **NOTE:** Available in 1.126.0+
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_route_entries_get_transit_router_route_entries_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(
@@ -3577,7 +3584,7 @@ Future<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(
 
 /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
 ///
-/// > **NOTE:** Available in 1.126.0+
+/// &gt; **NOTE:** Available in 1.126.0+
 ///
 /// ## Example Usage
 ///
@@ -3679,7 +3686,8 @@ Future<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_route_table_associations_get_transit_router_route_table_associations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(
+Future<GetTransitRouterRouteTableAssociationsResult>
+getTransitRouterRouteTableAssociations(
   GetTransitRouterRouteTableAssociationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -3694,7 +3702,7 @@ Future<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableA
 
 /// This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///
@@ -4149,7 +4157,8 @@ Future<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableA
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_transit_router_route_table_propagations_get_transit_router_route_table_propagations_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(
+Future<GetTransitRouterRouteTablePropagationsResult>
+getTransitRouterRouteTablePropagations(
   GetTransitRouterRouteTablePropagationsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4164,7 +4173,7 @@ Future<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTableP
 
 /// This data source provides the CEN Transit Router Route Tables of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///
@@ -4421,7 +4430,7 @@ Future<GetTransitRouterRouteTablesResult> getTransitRouterRouteTables(
 ///
 /// For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
 ///
-/// > **NOTE:** Available since v1.139.0+
+/// &gt; **NOTE:** Available since v1.139.0+
 ///
 /// ## Example Usage
 ///
@@ -4528,7 +4537,7 @@ Future<GetTransitRouterServiceResult> getTransitRouterService(
 
 /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
 ///
-/// > **NOTE:** Available in 1.126.0+
+/// &gt; **NOTE:** Available in 1.126.0+
 ///
 /// ## Example Usage
 ///
@@ -4645,7 +4654,7 @@ Future<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachments(
 
 /// This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///
@@ -5068,7 +5077,7 @@ Future<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachments(
 
 /// This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
 ///
-/// > **NOTE:** Available since v1.183.0.
+/// &gt; **NOTE:** Available since v1.183.0.
 ///
 /// ## Example Usage
 ///
@@ -5824,7 +5833,7 @@ Future<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments(
 
 /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
 ///
-/// > **NOTE:** Available in 1.126.0+
+/// &gt; **NOTE:** Available in 1.126.0+
 ///
 /// ## Example Usage
 ///
@@ -5941,7 +5950,7 @@ Future<GetTransitRoutersResult> getTransitRouters(
 
 /// This data source provides CEN VBR Health Checks available to the user.
 ///
-/// > **NOTE:** Available in 1.98.0+
+/// &gt; **NOTE:** Available in 1.98.0+
 /// [args] Arguments passed to this invoke. {@macro pulumi_cen_get_vbr_health_checks_get_vbr_health_checks_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetVbrHealthChecksResult> getVbrHealthChecks(

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAuthKeys {
   /// The primary key.
   final pulumi.Input<String>? primaryKey;
+
   /// The secondary key.
   final pulumi.Input<String>? secondaryKey;
 
   /// Creates a new [EndpointAuthKeys].
   /// [primaryKey] The primary key.
   /// [secondaryKey] The secondary key.
-  EndpointAuthKeys({
-    this.primaryKey,
-    this.secondaryKey,
-  });
+  EndpointAuthKeys({this.primaryKey, this.secondaryKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class EndpointAuthKeys {
 
   factory EndpointAuthKeys.fromMap(Map<String, dynamic> map) {
     return EndpointAuthKeys(
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

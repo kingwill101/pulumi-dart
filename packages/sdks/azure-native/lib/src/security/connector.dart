@@ -648,13 +648,19 @@ import 'hybrid_compute_settings_properties_response.dart';
 /// ```
 class Connector extends pulumi.CustomResource {
   /// Settings for authentication management, these settings are relevant only for the cloud connector.
-  late final pulumi.Output<AwAssumeRoleAuthenticationDetailsPropertiesResponse?> authenticationDetails;
+  late final pulumi.Output<AwAssumeRoleAuthenticationDetailsPropertiesResponse?>
+  authenticationDetails;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
-  late final pulumi.Output<HybridComputeSettingsPropertiesResponse?> hybridComputeSettings;
+  late final pulumi.Output<HybridComputeSettingsPropertiesResponse?>
+  hybridComputeSettings;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -667,15 +673,21 @@ class Connector extends pulumi.CustomResource {
     ConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:Connector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationDetails = registerOutput<AwAssumeRoleAuthenticationDetailsPropertiesResponse?>('authenticationDetails');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hybridComputeSettings = registerOutput<HybridComputeSettingsPropertiesResponse?>('hybridComputeSettings');
+         'azure-native:security:Connector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationDetails =
+        registerOutput<AwAssumeRoleAuthenticationDetailsPropertiesResponse?>(
+          'authenticationDetails',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hybridComputeSettings =
+        registerOutput<HybridComputeSettingsPropertiesResponse?>(
+          'hybridComputeSettings',
+        );
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

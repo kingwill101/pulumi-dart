@@ -6,9 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionSpecEntityResponse {
   /// Cloud provider name
   final pulumi.Input<String>? cloud;
+
   /// Display Name of the region
   final pulumi.Input<String>? name;
   final pulumi.Input<List<String>>? packages;
+
   /// Region name
   final pulumi.Input<String>? regionName;
 
@@ -35,11 +37,26 @@ class RegionSpecEntityResponse {
 
   factory RegionSpecEntityResponse.fromMap(Map<String, dynamic> map) {
     return RegionSpecEntityResponse(
-      cloud: map['cloud'] == null ? null : (map['cloud']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      packages: map['packages'] == null ? null : ((map['packages']! as List).cast<String>()).input(),
-      regionName: map['regionName'] == null ? null : (map['regionName']! as String).input(),
+      cloud: (() {
+        final guardedValue = map['cloud'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packages: (() {
+        final guardedValue = map['packages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      regionName: (() {
+        final guardedValue = map['regionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

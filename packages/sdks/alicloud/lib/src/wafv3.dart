@@ -1,5 +1,3 @@
-library module_wafv3;
-
 export 'wafv3/defense_resource_group.dart';
 export 'wafv3/defense_resource_group_args.dart';
 export 'wafv3/defense_resource_group_state.dart';

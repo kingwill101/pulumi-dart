@@ -7,8 +7,10 @@ import 'nsg_reference.dart';
 class SubnetResourceSettings {
   /// Gets or sets address prefix for the subnet.
   final pulumi.Input<String>? addressPrefix;
+
   /// Gets or sets the Subnet name.
   final pulumi.Input<String>? name;
+
   /// Defines reference to NSG.
   final pulumi.Input<NsgReference>? networkSecurityGroup;
 
@@ -26,16 +28,33 @@ class SubnetResourceSettings {
     return <String, dynamic>{
       'addressPrefix': ?addressPrefix,
       'name': ?name,
-      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<NsgReference, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
+      'networkSecurityGroup':
+          ?pulumi.Input.mapOptionalInputValue<
+            NsgReference,
+            Map<String, dynamic>
+          >(networkSecurityGroup, (value) => value.toMap()),
     };
   }
 
   factory SubnetResourceSettings.fromMap(Map<String, dynamic> map) {
     return SubnetResourceSettings(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NsgReference.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
+      addressPrefix: (() {
+        final guardedValue = map['addressPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityGroup: (() {
+        final guardedValue = map['networkSecurityGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NsgReference.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

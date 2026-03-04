@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyAssignmentNonComplianceMessage {
   /// The non-compliance message text.
   final pulumi.Input<String> content;
+
   /// The ID of the Policy Definition that the non-compliance message applies to.
   final pulumi.Input<String> policyDefinitionReferenceId;
 
@@ -23,11 +24,14 @@ class GetPolicyAssignmentNonComplianceMessage {
     };
   }
 
-  factory GetPolicyAssignmentNonComplianceMessage.fromMap(Map<String, dynamic> map) {
+  factory GetPolicyAssignmentNonComplianceMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPolicyAssignmentNonComplianceMessage(
-      content: (map['content'] as String).input(),
-      policyDefinitionReferenceId: (map['policyDefinitionReferenceId'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      policyDefinitionReferenceId: pulumi.Input.fromValue(
+        map['policyDefinitionReferenceId'] as String,
+      ),
     );
   }
 }
-

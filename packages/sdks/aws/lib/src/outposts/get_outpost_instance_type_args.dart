@@ -11,10 +11,13 @@ class GetOutpostInstanceTypeArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> arn;
+
   /// Desired instance type. Conflicts with `preferred_instance_types`.
   final pulumi.Input<String>? instanceType;
+
   /// Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instance_type`.
   final pulumi.Input<List<String>>? preferredInstanceTypes;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -41,11 +44,22 @@ class GetOutpostInstanceTypeArgs {
 
   factory GetOutpostInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostInstanceTypeArgs(
-      arn: (map['arn'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
-      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : (((map['preferredInstanceTypes'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preferredInstanceTypes: (() {
+        final guardedValue = map['preferredInstanceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

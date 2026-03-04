@@ -6,7 +6,7 @@ import 'get_published_version_result.dart';
 
 /// Use this data source to access information about an existing Azure Blueprint Definition
 ///
-/// > **Note:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
+/// &gt; **Note:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
 ///
 /// ## Example Usage
 ///
@@ -149,7 +149,7 @@ import 'get_published_version_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Blueprint` - 2018-11-01-preview
@@ -170,7 +170,7 @@ Future<GetDefinitionResult> getDefinition(
 
 /// Use this data source to access information about an existing Blueprint Published Version
 ///
-/// > **Note:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
+/// &gt; **Note:** Azure Blueprints are in Preview and potentially subject to breaking change without notice.
 ///
 /// ## Example Usage
 ///
@@ -294,7 +294,7 @@ Future<GetDefinitionResult> getDefinition(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Blueprint` - 2018-11-01-preview

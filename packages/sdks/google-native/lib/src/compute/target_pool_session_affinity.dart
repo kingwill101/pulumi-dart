@@ -9,16 +9,15 @@ enum TargetPoolSessionAffinity {
   httpCookie("HTTP_COOKIE"),
   none("NONE");
 
-  const TargetPoolSessionAffinity(this.value);
-  final String value;
+  const TargetPoolSessionAffinity(this.wireValue);
+  final String wireValue;
 
   static TargetPoolSessionAffinity fromValue(String value) {
     for (final item in TargetPoolSessionAffinity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetPoolSessionAffinity value: $value');
   }
 }
-

@@ -545,7 +545,7 @@ import 'assignment_virtual_machine_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Maintenance` - 2023-04-01
@@ -560,8 +560,10 @@ import 'assignment_virtual_machine_state.dart';
 class AssignmentVirtualMachine extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> maintenanceConfigurationId;
+
   /// Specifies the Virtual Machine ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -574,14 +576,16 @@ class AssignmentVirtualMachine extends pulumi.CustomResource {
     AssignmentVirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String>(
+      'maintenanceConfigurationId',
+    );
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [AssignmentVirtualMachine] resource's state with the given [name] and [id].
@@ -602,13 +606,15 @@ class AssignmentVirtualMachine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
-    this.maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:maintenance/assignmentVirtualMachine:AssignmentVirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String>(
+      'maintenanceConfigurationId',
+    );
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

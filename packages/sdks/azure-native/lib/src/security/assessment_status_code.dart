@@ -4,16 +4,15 @@ enum AssessmentStatusCode {
   valueUnhealthy("Unhealthy"),
   valueNotApplicable("NotApplicable");
 
-  const AssessmentStatusCode(this.value);
-  final String value;
+  const AssessmentStatusCode(this.wireValue);
+  final String wireValue;
 
   static AssessmentStatusCode fromValue(String value) {
     for (final item in AssessmentStatusCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssessmentStatusCode value: $value');
   }
 }
-

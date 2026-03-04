@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateResponse {
   /// The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
   final pulumi.Input<String> issuer;
+
   /// The certificate is not valid after this time. Only present if parsed is true.
   final pulumi.Input<String> notAfterTime;
+
   /// The certificate is not valid before this time. Only present if parsed is true.
   final pulumi.Input<String> notBeforeTime;
+
   /// True if the certificate was parsed successfully.
   final pulumi.Input<bool> parsed;
+
   /// The raw certificate bytes in DER format.
   final pulumi.Input<String> rawDer;
+
   /// The certificate serial number as a hex string. Only present if parsed is true.
   final pulumi.Input<String> serialNumber;
+
   /// The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
   final pulumi.Input<String> sha256Fingerprint;
+
   /// The subject distinguished name in RFC 2253 format. Only present if parsed is true.
   final pulumi.Input<String> subject;
+
   /// The subject Alternative DNS names. Only present if parsed is true.
   final pulumi.Input<List<String>> subjectAlternativeDnsNames;
 
@@ -61,16 +69,19 @@ class CertificateResponse {
 
   factory CertificateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateResponse(
-      issuer: (map['issuer'] as String).input(),
-      notAfterTime: (map['notAfterTime'] as String).input(),
-      notBeforeTime: (map['notBeforeTime'] as String).input(),
-      parsed: (map['parsed'] as bool).input(),
-      rawDer: (map['rawDer'] as String).input(),
-      serialNumber: (map['serialNumber'] as String).input(),
-      sha256Fingerprint: (map['sha256Fingerprint'] as String).input(),
-      subject: (map['subject'] as String).input(),
-      subjectAlternativeDnsNames: ((map['subjectAlternativeDnsNames'] as List).cast<String>()).input(),
+      issuer: pulumi.Input.fromValue(map['issuer'] as String),
+      notAfterTime: pulumi.Input.fromValue(map['notAfterTime'] as String),
+      notBeforeTime: pulumi.Input.fromValue(map['notBeforeTime'] as String),
+      parsed: pulumi.Input.fromValue(map['parsed'] as bool),
+      rawDer: pulumi.Input.fromValue(map['rawDer'] as String),
+      serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
+      sha256Fingerprint: pulumi.Input.fromValue(
+        map['sha256Fingerprint'] as String,
+      ),
+      subject: pulumi.Input.fromValue(map['subject'] as String),
+      subjectAlternativeDnsNames: pulumi.Input.fromValue(
+        (map['subjectAlternativeDnsNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

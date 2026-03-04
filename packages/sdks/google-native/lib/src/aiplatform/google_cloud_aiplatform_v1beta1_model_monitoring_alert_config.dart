@@ -5,9 +5,14 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_alert_config_email_aler
 
 class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig {
   /// Email alert config.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig>? emailAlertConfig;
+  final pulumi.Input<
+    GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig
+  >?
+  emailAlertConfig;
+
   /// Dump the anomalies to Cloud Logging. The anomalies will be put to json payload encoded from proto google.cloud.aiplatform.logging.ModelMonitoringAnomaliesLogEntry. This can be further sinked to Pub/Sub or any other services supported by Cloud Logging.
   final pulumi.Input<bool>? enableLogging;
+
   /// Resource names of the NotificationChannels to send alert. Must be of the format `projects//notificationChannels/`
   final pulumi.Input<List<String>>? notificationChannels;
 
@@ -23,18 +28,39 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'emailAlertConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig, Map<String, dynamic>>(emailAlertConfig, (value) => value.toMap()),
+      'emailAlertConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig,
+            Map<String, dynamic>
+          >(emailAlertConfig, (value) => value.toMap()),
       'enableLogging': ?enableLogging,
       'notificationChannels': ?notificationChannels,
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig(
-      emailAlertConfig: map['emailAlertConfig'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig.fromMap((map['emailAlertConfig']! as Map).cast<String, dynamic>())).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
-      notificationChannels: map['notificationChannels'] == null ? null : ((map['notificationChannels']! as List).cast<String>()).input(),
+      emailAlertConfig: (() {
+        final guardedValue = map['emailAlertConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableLogging: (() {
+        final guardedValue = map['enableLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      notificationChannels: (() {
+        final guardedValue = map['notificationChannels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -1,56 +1,77 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDroplet.
 class GetDropletResult {
   /// Whether backups are enabled.
   final bool backups;
   final String createdAt;
+
   /// The size of the Droplets disk in GB.
   final int disk;
   final bool? gpu;
+
   /// The ID of the Droplet.
   final int id;
+
   /// The Droplet image ID or slug.
   final String image;
+
   /// The Droplets public IPv4 address
   final String ipv4Address;
+
   /// The Droplets private IPv4 address
   final String ipv4AddressPrivate;
+
   /// Whether IPv6 is enabled.
   final bool ipv6;
+
   /// The Droplets public IPv6 address
   final String ipv6Address;
+
   /// The Droplets private IPv6 address
   final String ipv6AddressPrivate;
+
   /// Whether the Droplet is locked.
   final bool locked;
+
   /// The amount of the Droplets memory in MB.
   final int memory;
+
   /// Whether monitoring agent is installed.
   final bool monitoring;
   final String name;
+
   /// Droplet hourly price.
   final double priceHourly;
+
   /// Droplet monthly price.
   final double priceMonthly;
+
   /// Whether private networks are enabled.
   final bool privateNetworking;
+
   /// The region the Droplet is running in.
   final String region;
+
   /// The unique slug that identifies the type of Droplet.
   final String size;
+
   /// The status of the Droplet.
   final String status;
   final String? tag;
+
   /// A list of the tags associated to the Droplet.
   final List<String> tags;
+
   /// The uniform resource name of the Droplet
   final String urn;
+
   /// The number of the Droplets virtual CPUs.
   final int vcpus;
+
   /// List of the IDs of each volumes attached to the Droplet.
   final List<String> volumeIds;
+
   /// The ID of the VPC where the Droplet is located.
   final String vpcUuid;
 
@@ -149,7 +170,11 @@ class GetDropletResult {
       backups: map['backups'] as bool,
       createdAt: map['createdAt'] as String,
       disk: map['disk'] as int,
-      gpu: map['gpu'] == null ? null : map['gpu']! as bool,
+      gpu: (() {
+        final guardedValue = map['gpu'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as int,
       image: map['image'] as String,
       ipv4Address: map['ipv4Address'] as String,
@@ -167,7 +192,11 @@ class GetDropletResult {
       region: map['region'] as String,
       size: map['size'] as String,
       status: map['status'] as String,
-      tag: map['tag'] == null ? null : map['tag']! as String,
+      tag: (() {
+        final guardedValue = map['tag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       tags: (map['tags'] as List).cast<String>(),
       urn: map['urn'] as String,
       vcpus: map['vcpus'] as int,
@@ -176,4 +205,3 @@ class GetDropletResult {
     );
   }
 }
-

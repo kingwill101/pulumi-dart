@@ -10,16 +10,22 @@ import 'windows_properties.dart';
 class UpdateConfiguration {
   /// List of azure resource Ids for azure virtual machines targeted by the software update configuration.
   final pulumi.Input<List<String>>? azureVirtualMachines;
+
   /// Maximum time allowed for the software update configuration run. Duration needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601
   final pulumi.Input<String>? duration;
+
   /// Linux specific update configuration.
   final pulumi.Input<LinuxProperties>? linux;
+
   /// List of names of non-azure machines targeted by the software update configuration.
   final pulumi.Input<List<String>>? nonAzureComputerNames;
+
   /// operating system of target machines
   final pulumi.Input<OperatingSystemType> operatingSystem;
+
   /// Group targets for the software update configuration.
   final pulumi.Input<TargetProperties>? targets;
+
   /// Windows specific update configuration.
   final pulumi.Input<WindowsProperties>? windows;
 
@@ -45,24 +51,77 @@ class UpdateConfiguration {
     return <String, dynamic>{
       'azureVirtualMachines': ?azureVirtualMachines,
       'duration': ?duration,
-      'linux': ?pulumi.Input.mapOptionalInputValue<LinuxProperties, Map<String, dynamic>>(linux, (value) => value.toMap()),
+      'linux':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinuxProperties,
+            Map<String, dynamic>
+          >(linux, (value) => value.toMap()),
       'nonAzureComputerNames': ?nonAzureComputerNames,
-      'operatingSystem': pulumi.Input.mapInputValue<OperatingSystemType, String>(operatingSystem, (value) => value.value),
-      'targets': ?pulumi.Input.mapOptionalInputValue<TargetProperties, Map<String, dynamic>>(targets, (value) => value.toMap()),
-      'windows': ?pulumi.Input.mapOptionalInputValue<WindowsProperties, Map<String, dynamic>>(windows, (value) => value.toMap()),
+      'operatingSystem':
+          pulumi.Input.mapInputValue<OperatingSystemType, String>(
+            operatingSystem,
+            (value) => value.wireValue,
+          ),
+      'targets':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetProperties,
+            Map<String, dynamic>
+          >(targets, (value) => value.toMap()),
+      'windows':
+          ?pulumi.Input.mapOptionalInputValue<
+            WindowsProperties,
+            Map<String, dynamic>
+          >(windows, (value) => value.toMap()),
     };
   }
 
   factory UpdateConfiguration.fromMap(Map<String, dynamic> map) {
     return UpdateConfiguration(
-      azureVirtualMachines: map['azureVirtualMachines'] == null ? null : ((map['azureVirtualMachines']! as List).cast<String>()).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
-      linux: map['linux'] == null ? null : (LinuxProperties.fromMap((map['linux']! as Map).cast<String, dynamic>())).input(),
-      nonAzureComputerNames: map['nonAzureComputerNames'] == null ? null : ((map['nonAzureComputerNames']! as List).cast<String>()).input(),
-      operatingSystem: (OperatingSystemType.fromValue(map['operatingSystem'] as String)).input(),
-      targets: map['targets'] == null ? null : (TargetProperties.fromMap((map['targets']! as Map).cast<String, dynamic>())).input(),
-      windows: map['windows'] == null ? null : (WindowsProperties.fromMap((map['windows']! as Map).cast<String, dynamic>())).input(),
+      azureVirtualMachines: (() {
+        final guardedValue = map['azureVirtualMachines'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linux: (() {
+        final guardedValue = map['linux'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinuxProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nonAzureComputerNames: (() {
+        final guardedValue = map['nonAzureComputerNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      operatingSystem: pulumi.Input.fromValue(
+        OperatingSystemType.fromValue(map['operatingSystem']! as String),
+      ),
+      targets: (() {
+        final guardedValue = map['targets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      windows: (() {
+        final guardedValue = map['windows'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WindowsProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

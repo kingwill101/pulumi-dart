@@ -8,8 +8,10 @@ import 'auto_heal_custom_action.dart';
 class AutoHealActions {
   /// Predefined action to be taken.
   final pulumi.Input<AutoHealActionType>? actionType;
+
   /// Custom action to be taken.
   final pulumi.Input<AutoHealCustomAction>? customAction;
+
   /// Minimum time the process must execute
   /// before taking the action
   final pulumi.Input<String>? minProcessExecutionTime;
@@ -26,18 +28,43 @@ class AutoHealActions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionType': ?pulumi.Input.mapOptionalInputValue<AutoHealActionType, String>(actionType, (value) => value.value),
-      'customAction': ?pulumi.Input.mapOptionalInputValue<AutoHealCustomAction, Map<String, dynamic>>(customAction, (value) => value.toMap()),
+      'actionType':
+          ?pulumi.Input.mapOptionalInputValue<AutoHealActionType, String>(
+            actionType,
+            (value) => value.wireValue,
+          ),
+      'customAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            AutoHealCustomAction,
+            Map<String, dynamic>
+          >(customAction, (value) => value.toMap()),
       'minProcessExecutionTime': ?minProcessExecutionTime,
     };
   }
 
   factory AutoHealActions.fromMap(Map<String, dynamic> map) {
     return AutoHealActions(
-      actionType: map['actionType'] == null ? null : (AutoHealActionType.fromValue(map['actionType']! as String)).input(),
-      customAction: map['customAction'] == null ? null : (AutoHealCustomAction.fromMap((map['customAction']! as Map).cast<String, dynamic>())).input(),
-      minProcessExecutionTime: map['minProcessExecutionTime'] == null ? null : (map['minProcessExecutionTime']! as String).input(),
+      actionType: (() {
+        final guardedValue = map['actionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoHealActionType.fromValue(guardedValue as String),
+        );
+      })(),
+      customAction: (() {
+        final guardedValue = map['customAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AutoHealCustomAction.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      minProcessExecutionTime: (() {
+        final guardedValue = map['minProcessExecutionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

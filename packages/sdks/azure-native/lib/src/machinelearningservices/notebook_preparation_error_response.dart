@@ -9,10 +9,7 @@ class NotebookPreparationErrorResponse {
   /// Creates a new [NotebookPreparationErrorResponse].
   /// [errorMessage] Optional.
   /// [statusCode] Optional.
-  NotebookPreparationErrorResponse({
-    this.errorMessage,
-    this.statusCode,
-  });
+  NotebookPreparationErrorResponse({this.errorMessage, this.statusCode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,16 @@ class NotebookPreparationErrorResponse {
 
   factory NotebookPreparationErrorResponse.fromMap(Map<String, dynamic> map) {
     return NotebookPreparationErrorResponse(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as int).input(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum IndexKind {
   valueRange("Range"),
   valueSpatial("Spatial");
 
-  const IndexKind(this.value);
-  final String value;
+  const IndexKind(this.wireValue);
+  final String wireValue;
 
   static IndexKind fromValue(String value) {
     for (final item in IndexKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IndexKind value: $value');
   }
 }
-

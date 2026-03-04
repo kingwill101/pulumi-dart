@@ -8,7 +8,7 @@ import 'advanced_query_template_state.dart';
 ///
 /// For information about Actiontrail Advanced Query Template and how to use it, see [What is Advanced Query Template](https://next.api.alibabacloud.com/document/Actiontrail/2020-07-06/CreateAdvancedQueryTemplate).
 ///
-/// > **NOTE:** Available since v1.255.0.
+/// &gt; **NOTE:** Available since v1.255.0.
 ///
 /// ## Example Usage
 ///
@@ -147,8 +147,10 @@ import 'advanced_query_template_state.dart';
 class AdvancedQueryTemplate extends pulumi.CustomResource {
   /// Distinguish whether the current template is a simple query
   late final pulumi.Output<bool> simpleQuery;
+
   /// The name of the resource
   late final pulumi.Output<String?> templateName;
+
   /// SQL content saved on behalf of the current template
   late final pulumi.Output<String> templateSql;
 
@@ -161,14 +163,14 @@ class AdvancedQueryTemplate extends pulumi.CustomResource {
     AdvancedQueryTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.simpleQuery = registerOutput<bool>('simpleQuery');
-    this.templateName = registerOutput<String?>('templateName');
-    this.templateSql = registerOutput<String>('templateSql');
+         'alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    simpleQuery = registerOutput<bool>('simpleQuery');
+    templateName = registerOutput<String?>('templateName');
+    templateSql = registerOutput<String>('templateSql');
   }
 
   /// Gets an existing [AdvancedQueryTemplate] resource's state with the given [name] and [id].
@@ -189,13 +191,13 @@ class AdvancedQueryTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.simpleQuery = registerOutput<bool>('simpleQuery');
-    this.templateName = registerOutput<String?>('templateName');
-    this.templateSql = registerOutput<String>('templateSql');
+         'alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    simpleQuery = registerOutput<bool>('simpleQuery');
+    templateName = registerOutput<String?>('templateName');
+    templateSql = registerOutput<String>('templateSql');
   }
 }

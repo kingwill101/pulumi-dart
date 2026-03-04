@@ -8,7 +8,7 @@ import 'consumer_group_state.dart';
 ///
 /// For information about Ali Kafka Consumer Group and how to use it, see [What is Consumer Group](https://next.api.alibabacloud.com/document/alikafka/2019-09-16/CreateConsumerGroup).
 ///
-/// > **NOTE:** Available since v1.56.0.
+/// &gt; **NOTE:** Available since v1.56.0.
 ///
 /// ## Example Usage
 ///
@@ -161,16 +161,22 @@ import 'consumer_group_state.dart';
 class ConsumerGroup extends pulumi.CustomResource {
   /// ID of the consumer group.
   late final pulumi.Output<String> consumerId;
+
   /// (Available since v1.268.0) The timestamp of when the group was created.
   late final pulumi.Output<int> createTime;
+
   /// Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
   late final pulumi.Output<String> description;
+
   /// ID of the ALIKAFKA Instance that owns the groups.
   late final pulumi.Output<String> instanceId;
+
   /// (Available since v1.268.0) The region ID.
   late final pulumi.Output<String> regionId;
+
   /// The remark of the resource.
   late final pulumi.Output<String> remark;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -183,18 +189,18 @@ class ConsumerGroup extends pulumi.CustomResource {
     ConsumerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alikafka/consumerGroup:ConsumerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumerId = registerOutput<String>('consumerId');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String>('remark');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:alikafka/consumerGroup:ConsumerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumerId = registerOutput<String>('consumerId');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String>('description');
+    instanceId = registerOutput<String>('instanceId');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String>('remark');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ConsumerGroup] resource's state with the given [name] and [id].
@@ -215,17 +221,17 @@ class ConsumerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alikafka/consumerGroup:ConsumerGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.consumerId = registerOutput<String>('consumerId');
-    this.createTime = registerOutput<int>('createTime');
-    this.description = registerOutput<String>('description');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.regionId = registerOutput<String>('regionId');
-    this.remark = registerOutput<String>('remark');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:alikafka/consumerGroup:ConsumerGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    consumerId = registerOutput<String>('consumerId');
+    createTime = registerOutput<int>('createTime');
+    description = registerOutput<String>('description');
+    instanceId = registerOutput<String>('instanceId');
+    regionId = registerOutput<String>('regionId');
+    remark = registerOutput<String>('remark');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

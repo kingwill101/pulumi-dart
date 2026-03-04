@@ -5,16 +5,19 @@ enum PublicIpAddressDnsSettingsDomainNameLabelScope {
   valueResourceGroupReuse("ResourceGroupReuse"),
   valueNoReuse("NoReuse");
 
-  const PublicIpAddressDnsSettingsDomainNameLabelScope(this.value);
-  final String value;
+  const PublicIpAddressDnsSettingsDomainNameLabelScope(this.wireValue);
+  final String wireValue;
 
-  static PublicIpAddressDnsSettingsDomainNameLabelScope fromValue(String value) {
+  static PublicIpAddressDnsSettingsDomainNameLabelScope fromValue(
+    String value,
+  ) {
     for (final item in PublicIpAddressDnsSettingsDomainNameLabelScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PublicIpAddressDnsSettingsDomainNameLabelScope value: $value');
+    throw ArgumentError(
+      'Unknown PublicIpAddressDnsSettingsDomainNameLabelScope value: $value',
+    );
   }
 }
-

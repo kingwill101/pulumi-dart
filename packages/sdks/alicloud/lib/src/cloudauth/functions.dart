@@ -4,7 +4,7 @@ import 'get_face_configs_result.dart';
 
 /// This data source provides the Cloudauth Face Configs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.137.0+.
+/// &gt; **NOTE:** Available in v1.137.0+.
 ///
 /// ## Example Usage
 ///

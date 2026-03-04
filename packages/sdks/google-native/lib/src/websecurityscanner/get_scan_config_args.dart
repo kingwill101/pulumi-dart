@@ -13,23 +13,20 @@ class GetScanConfigArgs {
   /// Creates a new [GetScanConfigArgs].
   /// [project] Optional.
   /// [scanConfigId] Required.
-  GetScanConfigArgs({
-    this.project,
-    required this.scanConfigId,
-  });
+  GetScanConfigArgs({this.project, required this.scanConfigId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'scanConfigId': scanConfigId,
-    };
+    return <String, dynamic>{'project': ?project, 'scanConfigId': scanConfigId};
   }
 
   factory GetScanConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetScanConfigArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      scanConfigId: (map['scanConfigId'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scanConfigId: pulumi.Input.fromValue(map['scanConfigId'] as String),
     );
   }
 }
-

@@ -9,26 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretArgs {
   /// Specifies the content type for the Key Vault Secret.
   final pulumi.Input<String>? contentType;
+
   /// Expiration UTC datetime (Y-m-d'T'H:M:S'Z').
   final pulumi.Input<String>? expirationDate;
+
   /// The ID of the Key Vault where the Secret should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultId;
+
   /// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   final pulumi.Input<String>? notBeforeDate;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   final pulumi.Input<String>? value;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   ///
-  /// > **Note:** One of `value` or `value_wo` must be specified.
+  /// &gt; **Note:** One of `value` or `value_wo` must be specified.
   final pulumi.Input<String>? valueWo;
+
   /// An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
   ///
-  /// > **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("my_secret_file"), "/\n/", "\n")` or `base64encode(file("my_secret_file"))`, respectively.
+  /// &gt; **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("my_secret_file"), "/\n/", "\n")` or `base64encode(file("my_secret_file"))`, respectively.
   final pulumi.Input<int>? valueWoVersion;
 
   /// Creates a new [SecretArgs].
@@ -69,16 +77,49 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
-      keyVaultId: (map['keyVaultId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      valueWo: map['valueWo'] == null ? null : (map['valueWo']! as String).input(),
-      valueWoVersion: map['valueWoVersion'] == null ? null : (map['valueWoVersion']! as int).input(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationDate: (() {
+        final guardedValue = map['expirationDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultId: pulumi.Input.fromValue(map['keyVaultId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notBeforeDate: (() {
+        final guardedValue = map['notBeforeDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueWo: (() {
+        final guardedValue = map['valueWo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueWoVersion: (() {
+        final guardedValue = map['valueWoVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

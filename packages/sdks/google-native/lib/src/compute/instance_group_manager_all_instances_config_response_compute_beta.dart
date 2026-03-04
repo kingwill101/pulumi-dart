@@ -15,14 +15,23 @@ class InstanceGroupManagerAllInstancesConfigResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': pulumi.Input.mapInputValue<InstancePropertiesPatchResponseComputeBeta, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            InstancePropertiesPatchResponseComputeBeta,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
-  factory InstanceGroupManagerAllInstancesConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerAllInstancesConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerAllInstancesConfigResponseComputeBeta(
-      properties: (InstancePropertiesPatchResponseComputeBeta.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: pulumi.Input.fromValue(
+        InstancePropertiesPatchResponseComputeBeta.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

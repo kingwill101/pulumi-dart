@@ -15,17 +15,13 @@ class GetEndpointClientLoginBannerOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bannerText': bannerText,
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'bannerText': bannerText, 'enabled': enabled};
   }
 
   factory GetEndpointClientLoginBannerOption.fromMap(Map<String, dynamic> map) {
     return GetEndpointClientLoginBannerOption(
-      bannerText: (map['bannerText'] as String).input(),
-      enabled: (map['enabled'] as bool).input(),
+      bannerText: pulumi.Input.fromValue(map['bannerText'] as String),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

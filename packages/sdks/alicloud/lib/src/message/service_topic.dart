@@ -8,7 +8,7 @@ import 'service_topic_state.dart';
 ///
 /// For information about Message Service Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-service/latest/createtopic).
 ///
-/// > **NOTE:** Available since v1.188.0.
+/// &gt; **NOTE:** Available since v1.188.0.
 ///
 /// ## Example Usage
 ///
@@ -147,14 +147,19 @@ import 'service_topic_state.dart';
 class ServiceTopic extends pulumi.CustomResource {
   /// (Available since v1.241.0) The time when the topic was created.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
   late final pulumi.Output<bool> enableLogging;
+
   /// . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
   late final pulumi.Output<bool> loggingEnabled;
+
   /// The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
   late final pulumi.Output<int> maxMessageSize;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The name of the topic.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -169,17 +174,17 @@ class ServiceTopic extends pulumi.CustomResource {
     ServiceTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceTopic:ServiceTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.enableLogging = registerOutput<bool>('enableLogging');
-    this.loggingEnabled = registerOutput<bool>('loggingEnabled');
-    this.maxMessageSize = registerOutput<int>('maxMessageSize');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topicName = registerOutput<String>('topicName');
+         'alicloud:message/serviceTopic:ServiceTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    enableLogging = registerOutput<bool>('enableLogging');
+    loggingEnabled = registerOutput<bool>('loggingEnabled');
+    maxMessageSize = registerOutput<int>('maxMessageSize');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topicName = registerOutput<String>('topicName');
   }
 
   /// Gets an existing [ServiceTopic] resource's state with the given [name] and [id].
@@ -200,16 +205,16 @@ class ServiceTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceTopic:ServiceTopic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.enableLogging = registerOutput<bool>('enableLogging');
-    this.loggingEnabled = registerOutput<bool>('loggingEnabled');
-    this.maxMessageSize = registerOutput<int>('maxMessageSize');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topicName = registerOutput<String>('topicName');
+         'alicloud:message/serviceTopic:ServiceTopic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    enableLogging = registerOutput<bool>('enableLogging');
+    loggingEnabled = registerOutput<bool>('loggingEnabled');
+    maxMessageSize = registerOutput<int>('maxMessageSize');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topicName = registerOutput<String>('topicName');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataConnectorIotState {
   /// The ID of the Log Analytics Workspace that this Iot Data Connector resides in. Changing this forces a new Iot Data Connector to be created.
   final pulumi.Input<String>? logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Iot Data Connector. Changing this forces a new Iot Data Connector to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the subscription that this Iot Data Connector connects to. Changing this forces a new Iot Data Connector to be created.
   final pulumi.Input<String>? subscriptionId;
 
@@ -31,10 +33,21 @@ class DataConnectorIotState {
 
   factory DataConnectorIotState.fromMap(Map<String, dynamic> map) {
     return DataConnectorIotState(
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      logAnalyticsWorkspaceId: (() {
+        final guardedValue = map['logAnalyticsWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,12 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficQosRuleState {
   /// The traffic of the QoS rule matches the Destination IPv4 network segment.
   ///
-  /// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
+  /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
   final pulumi.Input<String>? dstCidr;
+
   /// The QoS rule traffic matches the Destination IPv6 network segment.
   ///
-  /// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+  /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
   final pulumi.Input<String>? dstIpv6Cidr;
+
   /// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
   /// - `ALL`:-1/-1, not editable.
   /// - **ICMP(IPv4)**:-1/-1, non-editable.
@@ -30,10 +32,13 @@ class TrafficQosRuleState {
   /// - `PostgreSQL`:5432/5432, non-editable.
   /// - `Redis`:6379/6379, non-editable.
   final pulumi.Input<String>? dstPortRange;
+
   /// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
   final pulumi.Input<int>? matchDscp;
+
   /// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
   final pulumi.Input<int>? priority;
+
   /// QoS rule protocol type, value:
   /// - `ALL`
   /// - **ICMP(IPv4)**
@@ -52,30 +57,40 @@ class TrafficQosRuleState {
   /// - `PostgreSQL`
   /// - `Redis`
   final pulumi.Input<String>? protocol;
+
   /// The QoS policy ID.
   final pulumi.Input<String>? qosId;
+
   /// The QoS queue ID.
   final pulumi.Input<String>? queueId;
+
   /// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
   final pulumi.Input<int>? remarkingDscp;
+
   /// The description of the QoS rule.
   /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? ruleDescription;
+
   /// The ID of the QoS rule.
   final pulumi.Input<String>? ruleId;
+
   /// The name of the QoS rule.
   /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
   final pulumi.Input<String>? ruleName;
+
   /// The QoS rule traffic matches the source IPv4 CIDR block.
   ///
-  /// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
+  /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
   final pulumi.Input<String>? srcCidr;
+
   /// The QoS rule traffic matches the source IPv6 network segment.
   ///
-  /// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
+  /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
   final pulumi.Input<String>? srcIpv6Cidr;
+
   /// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
   final pulumi.Input<String>? srcPortRange;
+
   /// The status of the QoS rule. Value:
   final pulumi.Input<String>? status;
 
@@ -138,23 +153,86 @@ class TrafficQosRuleState {
 
   factory TrafficQosRuleState.fromMap(Map<String, dynamic> map) {
     return TrafficQosRuleState(
-      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr']! as String).input(),
-      dstIpv6Cidr: map['dstIpv6Cidr'] == null ? null : (map['dstIpv6Cidr']! as String).input(),
-      dstPortRange: map['dstPortRange'] == null ? null : (map['dstPortRange']! as String).input(),
-      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp']! as int).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      qosId: map['qosId'] == null ? null : (map['qosId']! as String).input(),
-      queueId: map['queueId'] == null ? null : (map['queueId']! as String).input(),
-      remarkingDscp: map['remarkingDscp'] == null ? null : (map['remarkingDscp']! as int).input(),
-      ruleDescription: map['ruleDescription'] == null ? null : (map['ruleDescription']! as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr']! as String).input(),
-      srcIpv6Cidr: map['srcIpv6Cidr'] == null ? null : (map['srcIpv6Cidr']! as String).input(),
-      srcPortRange: map['srcPortRange'] == null ? null : (map['srcPortRange']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      dstCidr: (() {
+        final guardedValue = map['dstCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dstIpv6Cidr: (() {
+        final guardedValue = map['dstIpv6Cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dstPortRange: (() {
+        final guardedValue = map['dstPortRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchDscp: (() {
+        final guardedValue = map['matchDscp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      qosId: (() {
+        final guardedValue = map['qosId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      queueId: (() {
+        final guardedValue = map['queueId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remarkingDscp: (() {
+        final guardedValue = map['remarkingDscp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ruleDescription: (() {
+        final guardedValue = map['ruleDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleId: (() {
+        final guardedValue = map['ruleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      srcCidr: (() {
+        final guardedValue = map['srcCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      srcIpv6Cidr: (() {
+        final guardedValue = map['srcIpv6Cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      srcPortRange: (() {
+        final guardedValue = map['srcPortRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

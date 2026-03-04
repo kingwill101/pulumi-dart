@@ -1,5 +1,3 @@
-library module_ssmincidents;
-
 export 'ssmincidents/functions.dart';
 export 'ssmincidents/get_replication_set_args.dart';
 export 'ssmincidents/get_replication_set_region.dart';

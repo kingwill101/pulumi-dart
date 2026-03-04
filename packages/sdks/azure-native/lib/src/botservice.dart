@@ -1,5 +1,3 @@
-library module_botservice;
-
 export 'botservice/acs_chat_channel.dart';
 export 'botservice/acs_chat_channel_response.dart';
 export 'botservice/alexa_channel.dart';

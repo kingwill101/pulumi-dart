@@ -9,34 +9,49 @@ import 'certifiate_certificate_policy.dart';
 class CertifiateState {
   /// A `certificate` block as defined below, used to Import an existing certificate. Changing this will create a new version of the Key Vault Certificate.
   final pulumi.Input<CertifiateCertificate>? certificate;
+
   /// A `certificate_attribute` block as defined below.
-  final pulumi.Input<List<CertifiateCertificateAttribute>>? certificateAttributes;
+  final pulumi.Input<List<CertifiateCertificateAttribute>>?
+  certificateAttributes;
+
   /// The raw Key Vault Certificate data represented as a hexadecimal string.
   final pulumi.Input<String>? certificateData;
+
   /// The Base64 encoded Key Vault Certificate data.
   final pulumi.Input<String>? certificateDataBase64;
+
   /// A `certificate_policy` block as defined below. Changing this (except the `lifetime_action` field) will create a new version of the Key Vault Certificate.
   ///
-  /// > **NOTE:** When creating a Key Vault Certificate, at least one of `certificate` or `certificate_policy` is required. Provide `certificate` to import an existing certificate, `certificate_policy` to generate a new certificate.
+  /// &gt; **NOTE:** When creating a Key Vault Certificate, at least one of `certificate` or `certificate_policy` is required. Provide `certificate` to import an existing certificate, `certificate_policy` to generate a new certificate.
   final pulumi.Input<CertifiateCertificatePolicy>? certificatePolicy;
+
   /// The ID of the Key Vault where the Certificate should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? keyVaultId;
+
   /// Specifies the name of the Key Vault Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The (Versioned) ID for this Key Vault Certificate. This property points to a specific version of a Key Vault Certificate, as such using this won't auto-rotate values if used in other Azure Services.
   final pulumi.Input<String>? resourceManagerId;
+
   /// The Versionless ID of the Key Vault Certificate. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Certificate is updated.
   final pulumi.Input<String>? resourceManagerVersionlessId;
+
   /// The ID of the associated Key Vault Secret.
   final pulumi.Input<String>? secretId;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The X509 Thumbprint of the Key Vault Certificate represented as a hexadecimal string.
   final pulumi.Input<String>? thumbprint;
+
   /// The current version of the Key Vault Certificate.
   final pulumi.Input<String>? version;
+
   /// The Base ID of the Key Vault Certificate.
   final pulumi.Input<String>? versionlessId;
+
   /// The Base ID of the Key Vault Secret.
   final pulumi.Input<String>? versionlessSecretId;
 
@@ -76,11 +91,30 @@ class CertifiateState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificate': ?pulumi.Input.mapOptionalInputValue<CertifiateCertificate, Map<String, dynamic>>(certificate, (value) => value.toMap()),
-      'certificateAttributes': ?pulumi.Input.mapOptionalInputValue<List<CertifiateCertificateAttribute>, List<Map<String, dynamic>>>(certificateAttributes, (value) => pulumi.Input.encodeList<CertifiateCertificateAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'certificate':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertifiateCertificate,
+            Map<String, dynamic>
+          >(certificate, (value) => value.toMap()),
+      'certificateAttributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CertifiateCertificateAttribute>,
+            List<Map<String, dynamic>>
+          >(
+            certificateAttributes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CertifiateCertificateAttribute,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'certificateData': ?certificateData,
       'certificateDataBase64': ?certificateDataBase64,
-      'certificatePolicy': ?pulumi.Input.mapOptionalInputValue<CertifiateCertificatePolicy, Map<String, dynamic>>(certificatePolicy, (value) => value.toMap()),
+      'certificatePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertifiateCertificatePolicy,
+            Map<String, dynamic>
+          >(certificatePolicy, (value) => value.toMap()),
       'keyVaultId': ?keyVaultId,
       'name': ?name,
       'resourceManagerId': ?resourceManagerId,
@@ -96,22 +130,98 @@ class CertifiateState {
 
   factory CertifiateState.fromMap(Map<String, dynamic> map) {
     return CertifiateState(
-      certificate: map['certificate'] == null ? null : (CertifiateCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
-      certificateAttributes: map['certificateAttributes'] == null ? null : (pulumi.Input.decodeList<CertifiateCertificateAttribute>(map['certificateAttributes']!, (value) => CertifiateCertificateAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificateData: map['certificateData'] == null ? null : (map['certificateData']! as String).input(),
-      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64']! as String).input(),
-      certificatePolicy: map['certificatePolicy'] == null ? null : (CertifiateCertificatePolicy.fromMap((map['certificatePolicy']! as Map).cast<String, dynamic>())).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
-      resourceManagerVersionlessId: map['resourceManagerVersionlessId'] == null ? null : (map['resourceManagerVersionlessId']! as String).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
-      versionlessId: map['versionlessId'] == null ? null : (map['versionlessId']! as String).input(),
-      versionlessSecretId: map['versionlessSecretId'] == null ? null : (map['versionlessSecretId']! as String).input(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertifiateCertificate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      certificateAttributes: (() {
+        final guardedValue = map['certificateAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CertifiateCertificateAttribute>(
+            guardedValue,
+            (value) => CertifiateCertificateAttribute.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      certificateData: (() {
+        final guardedValue = map['certificateData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateDataBase64: (() {
+        final guardedValue = map['certificateDataBase64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificatePolicy: (() {
+        final guardedValue = map['certificatePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertifiateCertificatePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceManagerId: (() {
+        final guardedValue = map['resourceManagerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceManagerVersionlessId: (() {
+        final guardedValue = map['resourceManagerVersionlessId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretId: (() {
+        final guardedValue = map['secretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionlessId: (() {
+        final guardedValue = map['versionlessId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versionlessSecretId: (() {
+        final guardedValue = map['versionlessSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

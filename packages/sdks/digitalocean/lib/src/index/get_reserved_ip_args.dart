@@ -12,20 +12,15 @@ class GetReservedIpArgs {
 
   /// Creates a new [GetReservedIpArgs].
   /// [ipAddress] The allocated IP address of the specific reserved IP to retrieve.
-  GetReservedIpArgs({
-    required this.ipAddress,
-  });
+  GetReservedIpArgs({required this.ipAddress});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddress': ipAddress,
-    };
+    return <String, dynamic>{'ipAddress': ipAddress};
   }
 
   factory GetReservedIpArgs.fromMap(Map<String, dynamic> map) {
     return GetReservedIpArgs(
-      ipAddress: (map['ipAddress'] as String).input(),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
     );
   }
 }
-

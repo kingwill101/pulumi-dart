@@ -11,15 +11,19 @@ import 'response_policy_network.dart';
 class ResponsePolicyArgs {
   /// The description of the response policy, such as `My new response policy`.
   final pulumi.Input<String>? description;
+
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
   final pulumi.Input<List<ResponsePolicyGkeCluster>>? gkeClusters;
+
   /// The list of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
   final pulumi.Input<List<ResponsePolicyNetwork>>? networks;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
   final pulumi.Input<String> responsePolicyName;
 
@@ -40,8 +44,30 @@ class ResponsePolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'gkeClusters': ?pulumi.Input.mapOptionalInputValue<List<ResponsePolicyGkeCluster>, List<Map<String, dynamic>>>(gkeClusters, (value) => pulumi.Input.encodeList<ResponsePolicyGkeCluster, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'networks': ?pulumi.Input.mapOptionalInputValue<List<ResponsePolicyNetwork>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<ResponsePolicyNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'gkeClusters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResponsePolicyGkeCluster>,
+            List<Map<String, dynamic>>
+          >(
+            gkeClusters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResponsePolicyGkeCluster,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'networks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResponsePolicyNetwork>,
+            List<Map<String, dynamic>>
+          >(
+            networks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResponsePolicyNetwork,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
       'responsePolicyName': responsePolicyName,
     };
@@ -49,12 +75,43 @@ class ResponsePolicyArgs {
 
   factory ResponsePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyGkeCluster>(map['gkeClusters']!, (value) => ResponsePolicyGkeCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyNetwork>(map['networks']!, (value) => ResponsePolicyNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      responsePolicyName: (map['responsePolicyName'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gkeClusters: (() {
+        final guardedValue = map['gkeClusters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResponsePolicyGkeCluster>(
+            guardedValue,
+            (value) => ResponsePolicyGkeCluster.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      networks: (() {
+        final guardedValue = map['networks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResponsePolicyNetwork>(
+            guardedValue,
+            (value) => ResponsePolicyNetwork.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      responsePolicyName: pulumi.Input.fromValue(
+        map['responsePolicyName'] as String,
+      ),
     );
   }
 }
-

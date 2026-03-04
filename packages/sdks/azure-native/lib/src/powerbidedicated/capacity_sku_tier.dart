@@ -4,16 +4,15 @@ enum CapacitySkuTier {
   premium("Premium"),
   autoPremiumHost("AutoPremiumHost");
 
-  const CapacitySkuTier(this.value);
-  final String value;
+  const CapacitySkuTier(this.wireValue);
+  final String wireValue;
 
   static CapacitySkuTier fromValue(String value) {
     for (final item in CapacitySkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CapacitySkuTier value: $value');
   }
 }
-

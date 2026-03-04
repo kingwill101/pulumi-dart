@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScalingConfigResponseMetastoreV1beta {
   /// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
   final pulumi.Input<String> instanceSize;
+
   /// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
   final pulumi.Input<double> scalingFactor;
 
@@ -24,11 +25,12 @@ class ScalingConfigResponseMetastoreV1beta {
     };
   }
 
-  factory ScalingConfigResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
+  factory ScalingConfigResponseMetastoreV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScalingConfigResponseMetastoreV1beta(
-      instanceSize: (map['instanceSize'] as String).input(),
-      scalingFactor: (map['scalingFactor'] as double).input(),
+      instanceSize: pulumi.Input.fromValue(map['instanceSize'] as String),
+      scalingFactor: pulumi.Input.fromValue(map['scalingFactor'] as double),
     );
   }
 }
-

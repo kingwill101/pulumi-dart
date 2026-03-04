@@ -8,10 +8,13 @@ import 'sub_resource_response.dart';
 class AdditionalNetworkInterfaceConfigurationResponse {
   /// Specifies the DSCP configuration to apply to the network interface.
   final pulumi.Input<SubResourceResponse>? dscpConfiguration;
+
   /// Specifies whether the network interface is accelerated networking-enabled.
   final pulumi.Input<bool>? enableAcceleratedNetworking;
+
   /// Specifies the IP configurations of the network interface.
   final pulumi.Input<List<IpConfigurationResponse>> ipConfigurations;
+
   /// Name of the network interface.
   final pulumi.Input<String> name;
 
@@ -29,20 +32,55 @@ class AdditionalNetworkInterfaceConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dscpConfiguration': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(dscpConfiguration, (value) => value.toMap()),
+      'dscpConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResourceResponse,
+            Map<String, dynamic>
+          >(dscpConfiguration, (value) => value.toMap()),
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
-      'ipConfigurations': pulumi.Input.mapInputValue<List<IpConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<IpConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipConfigurations':
+          pulumi.Input.mapInputValue<
+            List<IpConfigurationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IpConfigurationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
     };
   }
 
-  factory AdditionalNetworkInterfaceConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory AdditionalNetworkInterfaceConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AdditionalNetworkInterfaceConfigurationResponse(
-      dscpConfiguration: map['dscpConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['dscpConfiguration']! as Map).cast<String, dynamic>())).input(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking']! as bool).input(),
-      ipConfigurations: (pulumi.Input.decodeList<IpConfigurationResponse>(map['ipConfigurations'], (value) => IpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
+      dscpConfiguration: (() {
+        final guardedValue = map['dscpConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableAcceleratedNetworking: (() {
+        final guardedValue = map['enableAcceleratedNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipConfigurations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<IpConfigurationResponse>(
+          map['ipConfigurations']!,
+          (value) => IpConfigurationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

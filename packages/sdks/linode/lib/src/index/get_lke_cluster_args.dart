@@ -12,20 +12,13 @@ class GetLkeClusterArgs {
 
   /// Creates a new [GetLkeClusterArgs].
   /// [id] The LKE Cluster's ID.
-  GetLkeClusterArgs({
-    required this.id,
-  });
+  GetLkeClusterArgs({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetLkeClusterArgs.fromMap(Map<String, dynamic> map) {
-    return GetLkeClusterArgs(
-      id: (map['id'] as int).input(),
-    );
+    return GetLkeClusterArgs(id: pulumi.Input.fromValue(map['id'] as int));
   }
 }
-

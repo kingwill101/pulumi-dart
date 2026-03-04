@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshPublicKeyArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// SSH public key used to authenticate to a virtual machine through ssh. If this property is not initially provided when the resource is created, the publicKey property will be populated when generateKeyPair is called. If the public key is provided upon resource creation, the provided public key needs to be at least 2048-bit and in ssh-rsa format.
   final pulumi.Input<String>? publicKey;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the SSH public key.
   final pulumi.Input<String>? sshPublicKeyName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,31 @@ class SshPublicKeyArgs {
 
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sshPublicKeyName: map['sshPublicKeyName'] == null ? null : (map['sshPublicKeyName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sshPublicKeyName: (() {
+        final guardedValue = map['sshPublicKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

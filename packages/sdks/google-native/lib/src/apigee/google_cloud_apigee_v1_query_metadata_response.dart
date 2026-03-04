@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1QueryMetadataResponse {
   /// Dimensions of the AsyncQuery.
   final pulumi.Input<List<String>> dimensions;
+
   /// End timestamp of the query range.
   final pulumi.Input<String> endTimestamp;
+
   /// Metrics of the AsyncQuery. Example: ["name:message_count,func:sum,alias:sum_message_count"]
   final pulumi.Input<List<String>> metrics;
+
   /// Output format.
   final pulumi.Input<String> outputFormat;
+
   /// Start timestamp of the query range.
   final pulumi.Input<String> startTimestamp;
+
   /// Query GroupBy time unit.
   final pulumi.Input<String> timeUnit;
 
@@ -43,15 +48,18 @@ class GoogleCloudApigeeV1QueryMetadataResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1QueryMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1QueryMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1QueryMetadataResponse(
-      dimensions: ((map['dimensions'] as List).cast<String>()).input(),
-      endTimestamp: (map['endTimestamp'] as String).input(),
-      metrics: ((map['metrics'] as List).cast<String>()).input(),
-      outputFormat: (map['outputFormat'] as String).input(),
-      startTimestamp: (map['startTimestamp'] as String).input(),
-      timeUnit: (map['timeUnit'] as String).input(),
+      dimensions: pulumi.Input.fromValue(
+        (map['dimensions'] as List).cast<String>(),
+      ),
+      endTimestamp: pulumi.Input.fromValue(map['endTimestamp'] as String),
+      metrics: pulumi.Input.fromValue((map['metrics'] as List).cast<String>()),
+      outputFormat: pulumi.Input.fromValue(map['outputFormat'] as String),
+      startTimestamp: pulumi.Input.fromValue(map['startTimestamp'] as String),
+      timeUnit: pulumi.Input.fromValue(map['timeUnit'] as String),
     );
   }
 }
-

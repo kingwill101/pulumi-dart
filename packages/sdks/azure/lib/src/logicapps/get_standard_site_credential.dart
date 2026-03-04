@@ -5,29 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStandardSiteCredential {
   /// The password associated with the username, which can be used to publish to this Logic App.
   final pulumi.Input<String> password;
+
   /// The username which can be used to publish to this Logic App.
   final pulumi.Input<String> username;
 
   /// Creates a new [GetStandardSiteCredential].
   /// [password] The password associated with the username, which can be used to publish to this Logic App.
   /// [username] The username which can be used to publish to this Logic App.
-  GetStandardSiteCredential({
-    required this.password,
-    required this.username,
-  });
+  GetStandardSiteCredential({required this.password, required this.username});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
   factory GetStandardSiteCredential.fromMap(Map<String, dynamic> map) {
     return GetStandardSiteCredential(
-      password: (map['password'] as String).input(),
-      username: (map['username'] as String).input(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

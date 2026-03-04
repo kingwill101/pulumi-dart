@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CostAllocationProportionResponse {
   /// Target resource for cost allocation
   final pulumi.Input<String> name;
+
   /// Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
   final pulumi.Input<double> percentage;
 
@@ -18,17 +19,13 @@ class CostAllocationProportionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'percentage': percentage,
-    };
+    return <String, dynamic>{'name': name, 'percentage': percentage};
   }
 
   factory CostAllocationProportionResponse.fromMap(Map<String, dynamic> map) {
     return CostAllocationProportionResponse(
-      name: (map['name'] as String).input(),
-      percentage: (map['percentage'] as double).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      percentage: pulumi.Input.fromValue(map['percentage'] as double),
     );
   }
 }
-

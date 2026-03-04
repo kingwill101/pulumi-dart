@@ -9,20 +9,19 @@ class HintResponseContaineranalysisV1beta1 {
 
   /// Creates a new [HintResponseContaineranalysisV1beta1].
   /// [humanReadableName] The human readable name of this attestation authority, for example "qa".
-  HintResponseContaineranalysisV1beta1({
-    required this.humanReadableName,
-  });
+  HintResponseContaineranalysisV1beta1({required this.humanReadableName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'humanReadableName': humanReadableName,
-    };
+    return <String, dynamic>{'humanReadableName': humanReadableName};
   }
 
-  factory HintResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory HintResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HintResponseContaineranalysisV1beta1(
-      humanReadableName: (map['humanReadableName'] as String).input(),
+      humanReadableName: pulumi.Input.fromValue(
+        map['humanReadableName'] as String,
+      ),
     );
   }
 }
-

@@ -8,20 +8,15 @@ class ScheduleHourlyRecurrence {
 
   /// Creates a new [ScheduleHourlyRecurrence].
   /// [minute] Minutes of the hour the schedule will run.
-  ScheduleHourlyRecurrence({
-    required this.minute,
-  });
+  ScheduleHourlyRecurrence({required this.minute});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'minute': minute,
-    };
+    return <String, dynamic>{'minute': minute};
   }
 
   factory ScheduleHourlyRecurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleHourlyRecurrence(
-      minute: (map['minute'] as int).input(),
+      minute: pulumi.Input.fromValue(map['minute'] as int),
     );
   }
 }
-

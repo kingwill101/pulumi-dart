@@ -6,16 +6,17 @@ enum PrivateEndpointConnectionStatus {
   valueRejected("Rejected"),
   valueDisconnected("Disconnected");
 
-  const PrivateEndpointConnectionStatus(this.value);
-  final String value;
+  const PrivateEndpointConnectionStatus(this.wireValue);
+  final String wireValue;
 
   static PrivateEndpointConnectionStatus fromValue(String value) {
     for (final item in PrivateEndpointConnectionStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PrivateEndpointConnectionStatus value: $value');
+    throw ArgumentError(
+      'Unknown PrivateEndpointConnectionStatus value: $value',
+    );
   }
 }
-

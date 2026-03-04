@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontdoorFirewallPolicyArgs {
   /// The name of the Front Door Firewall Policy.
   final pulumi.Input<String> name;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetFrontdoorFirewallPolicyArgs {
 
   factory GetFrontdoorFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorFirewallPolicyArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

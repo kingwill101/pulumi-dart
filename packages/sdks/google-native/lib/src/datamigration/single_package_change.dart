@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SinglePackageChange {
   /// Optional. Sql code for package body
   final pulumi.Input<String>? packageBody;
+
   /// Optional. Sql code for package description
   final pulumi.Input<String>? packageDescription;
 
   /// Creates a new [SinglePackageChange].
   /// [packageBody] Optional. Sql code for package body
   /// [packageDescription] Optional. Sql code for package description
-  SinglePackageChange({
-    this.packageBody,
-    this.packageDescription,
-  });
+  SinglePackageChange({this.packageBody, this.packageDescription});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SinglePackageChange {
 
   factory SinglePackageChange.fromMap(Map<String, dynamic> map) {
     return SinglePackageChange(
-      packageBody: map['packageBody'] == null ? null : (map['packageBody']! as String).input(),
-      packageDescription: map['packageDescription'] == null ? null : (map['packageDescription']! as String).input(),
+      packageBody: (() {
+        final guardedValue = map['packageBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageDescription: (() {
+        final guardedValue = map['packageDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

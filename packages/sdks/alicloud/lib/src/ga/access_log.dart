@@ -6,7 +6,7 @@ import 'access_log_state.dart';
 ///
 /// For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-attachlogstoretoendpointgroup).
 ///
-/// > **NOTE:** Available since v1.187.0.
+/// &gt; **NOTE:** Available since v1.187.0.
 ///
 /// ## Example Usage
 ///
@@ -579,16 +579,22 @@ import 'access_log_state.dart';
 class AccessLog extends pulumi.CustomResource {
   /// The ID of the global acceleration instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The ID of the endpoint group instance.
   late final pulumi.Output<String> endpointGroupId;
+
   /// The ID of the listener.
   late final pulumi.Output<String> listenerId;
+
   /// The name of the Log Store.
   late final pulumi.Output<String> slsLogStoreName;
+
   /// The name of the Log Service project.
   late final pulumi.Output<String> slsProjectName;
+
   /// The region ID of the Log Service project.
   late final pulumi.Output<String> slsRegionId;
+
   /// Whether access log is enabled.
   late final pulumi.Output<String> status;
 
@@ -601,18 +607,18 @@ class AccessLog extends pulumi.CustomResource {
     AccessLogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/accessLog:AccessLog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.endpointGroupId = registerOutput<String>('endpointGroupId');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.slsLogStoreName = registerOutput<String>('slsLogStoreName');
-    this.slsProjectName = registerOutput<String>('slsProjectName');
-    this.slsRegionId = registerOutput<String>('slsRegionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/accessLog:AccessLog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    endpointGroupId = registerOutput<String>('endpointGroupId');
+    listenerId = registerOutput<String>('listenerId');
+    slsLogStoreName = registerOutput<String>('slsLogStoreName');
+    slsProjectName = registerOutput<String>('slsProjectName');
+    slsRegionId = registerOutput<String>('slsRegionId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [AccessLog] resource's state with the given [name] and [id].
@@ -633,17 +639,17 @@ class AccessLog extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/accessLog:AccessLog',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.endpointGroupId = registerOutput<String>('endpointGroupId');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.slsLogStoreName = registerOutput<String>('slsLogStoreName');
-    this.slsProjectName = registerOutput<String>('slsProjectName');
-    this.slsRegionId = registerOutput<String>('slsRegionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/accessLog:AccessLog',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    endpointGroupId = registerOutput<String>('endpointGroupId');
+    listenerId = registerOutput<String>('listenerId');
+    slsLogStoreName = registerOutput<String>('slsLogStoreName');
+    slsProjectName = registerOutput<String>('slsProjectName');
+    slsRegionId = registerOutput<String>('slsRegionId');
+    status = registerOutput<String>('status');
   }
 }

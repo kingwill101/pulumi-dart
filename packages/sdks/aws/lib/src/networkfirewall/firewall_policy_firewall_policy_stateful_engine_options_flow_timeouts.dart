@@ -13,15 +13,18 @@ class FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tcpIdleTimeoutSeconds': ?tcpIdleTimeoutSeconds,
-    };
+    return <String, dynamic>{'tcpIdleTimeoutSeconds': ?tcpIdleTimeoutSeconds};
   }
 
-  factory FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts(
-      tcpIdleTimeoutSeconds: map['tcpIdleTimeoutSeconds'] == null ? null : ((map['tcpIdleTimeoutSeconds'] as int).input()).input(),
+      tcpIdleTimeoutSeconds: (() {
+        final guardedValue = map['tcpIdleTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

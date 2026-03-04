@@ -7,6 +7,7 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse {
   /// Maximum age of the snapshot that is allowed to be kept.
   final pulumi.Input<int> maxRetentionDays;
   final pulumi.Input<String> onPolicySwitch;
+
   /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
   final pulumi.Input<String> onSourceDiskDelete;
 
@@ -28,12 +29,15 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse {
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse(
-      maxRetentionDays: (map['maxRetentionDays'] as int).input(),
-      onPolicySwitch: (map['onPolicySwitch'] as String).input(),
-      onSourceDiskDelete: (map['onSourceDiskDelete'] as String).input(),
+      maxRetentionDays: pulumi.Input.fromValue(map['maxRetentionDays'] as int),
+      onPolicySwitch: pulumi.Input.fromValue(map['onPolicySwitch'] as String),
+      onSourceDiskDelete: pulumi.Input.fromValue(
+        map['onSourceDiskDelete'] as String,
+      ),
     );
   }
 }
-

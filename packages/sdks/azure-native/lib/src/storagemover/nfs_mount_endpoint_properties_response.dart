@@ -6,15 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NfsMountEndpointPropertiesResponse {
   /// A description for the Endpoint.
   final pulumi.Input<String>? description;
+
   /// The Endpoint resource type.
   /// Expected value is 'NfsMount'.
   final pulumi.Input<String> endpointType;
+
   /// The directory being exported from the server.
   final pulumi.Input<String> export;
+
   /// The host name or IP address of the server exporting the file system.
   final pulumi.Input<String> host;
+
   /// The NFS protocol version.
   final pulumi.Input<String>? nfsVersion;
+
   /// The provisioning state of this resource.
   final pulumi.Input<String> provisioningState;
 
@@ -47,13 +52,22 @@ class NfsMountEndpointPropertiesResponse {
 
   factory NfsMountEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NfsMountEndpointPropertiesResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpointType: (map['endpointType'] as String).input(),
-      export: (map['export'] as String).input(),
-      host: (map['host'] as String).input(),
-      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      export: pulumi.Input.fromValue(map['export'] as String),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      nfsVersion: (() {
+        final guardedValue = map['nfsVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

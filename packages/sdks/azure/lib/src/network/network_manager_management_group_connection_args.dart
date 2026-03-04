@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerManagementGroupConnectionArgs {
   /// A description of the Network Manager Management Group Connection.
   final pulumi.Input<String>? description;
+
   /// Specifies the ID of the target Management Group. Changing this forces a new resource to be created.
   final pulumi.Input<String> managementGroupId;
+
   /// Specifies the name which should be used for this Network Manager Management Group Connection. Changing this forces a new Network Manager Management Group Connection to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the Network Manager which the Management Group is connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String> networkManagerId;
 
@@ -37,13 +40,26 @@ class NetworkManagerManagementGroupConnectionArgs {
     };
   }
 
-  factory NetworkManagerManagementGroupConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkManagerManagementGroupConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkManagerManagementGroupConnectionArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      managementGroupId: (map['managementGroupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkManagerId: (map['networkManagerId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementGroupId: pulumi.Input.fromValue(
+        map['managementGroupId'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkManagerId: pulumi.Input.fromValue(
+        map['networkManagerId'] as String,
+      ),
     );
   }
 }
-

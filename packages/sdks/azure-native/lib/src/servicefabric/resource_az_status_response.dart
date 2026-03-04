@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceAzStatusResponse {
   /// Zone resiliency status details for the resource.
   final pulumi.Input<String> details;
+
   /// VM Size name.
   final pulumi.Input<bool> isZoneResilient;
+
   /// VM Size properties.
   final pulumi.Input<String> resourceName;
+
   /// VM Size id.
   final pulumi.Input<String> resourceType;
 
@@ -36,11 +39,10 @@ class ResourceAzStatusResponse {
 
   factory ResourceAzStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResourceAzStatusResponse(
-      details: (map['details'] as String).input(),
-      isZoneResilient: (map['isZoneResilient'] as bool).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      isZoneResilient: pulumi.Input.fromValue(map['isZoneResilient'] as bool),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

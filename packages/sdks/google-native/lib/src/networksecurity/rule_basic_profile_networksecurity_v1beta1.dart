@@ -4,16 +4,17 @@ enum RuleBasicProfileNetworksecurityV1beta1 {
   allow("ALLOW"),
   deny("DENY");
 
-  const RuleBasicProfileNetworksecurityV1beta1(this.value);
-  final String value;
+  const RuleBasicProfileNetworksecurityV1beta1(this.wireValue);
+  final String wireValue;
 
   static RuleBasicProfileNetworksecurityV1beta1 fromValue(String value) {
     for (final item in RuleBasicProfileNetworksecurityV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RuleBasicProfileNetworksecurityV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown RuleBasicProfileNetworksecurityV1beta1 value: $value',
+    );
   }
 }
-

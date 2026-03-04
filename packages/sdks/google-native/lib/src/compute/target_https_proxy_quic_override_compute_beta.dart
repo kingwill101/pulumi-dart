@@ -4,16 +4,17 @@ enum TargetHttpsProxyQuicOverrideComputeBeta {
   enable("ENABLE"),
   none("NONE");
 
-  const TargetHttpsProxyQuicOverrideComputeBeta(this.value);
-  final String value;
+  const TargetHttpsProxyQuicOverrideComputeBeta(this.wireValue);
+  final String wireValue;
 
   static TargetHttpsProxyQuicOverrideComputeBeta fromValue(String value) {
     for (final item in TargetHttpsProxyQuicOverrideComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetHttpsProxyQuicOverrideComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown TargetHttpsProxyQuicOverrideComputeBeta value: $value',
+    );
   }
 }
-

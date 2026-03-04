@@ -9,8 +9,10 @@ import 'subject.dart';
 class PolicyRulesWithSubjects {
   /// `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL.
   final pulumi.Input<List<NonResourcePolicyRule>>? nonResourceRules;
+
   /// `resourceRules` is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty.
   final pulumi.Input<List<ResourcePolicyRule>>? resourceRules;
+
   /// subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required.
   final pulumi.Input<List<Subject>> subjects;
 
@@ -26,18 +28,73 @@ class PolicyRulesWithSubjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nonResourceRules': ?pulumi.Input.mapOptionalInputValue<List<NonResourcePolicyRule>, List<Map<String, dynamic>>>(nonResourceRules, (value) => pulumi.Input.encodeList<NonResourcePolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'resourceRules': ?pulumi.Input.mapOptionalInputValue<List<ResourcePolicyRule>, List<Map<String, dynamic>>>(resourceRules, (value) => pulumi.Input.encodeList<ResourcePolicyRule, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'subjects': pulumi.Input.mapInputValue<List<Subject>, List<Map<String, dynamic>>>(subjects, (value) => pulumi.Input.encodeList<Subject, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nonResourceRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NonResourcePolicyRule>,
+            List<Map<String, dynamic>>
+          >(
+            nonResourceRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NonResourcePolicyRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'resourceRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourcePolicyRule>,
+            List<Map<String, dynamic>>
+          >(
+            resourceRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourcePolicyRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'subjects':
+          pulumi.Input.mapInputValue<List<Subject>, List<Map<String, dynamic>>>(
+            subjects,
+            (value) => pulumi.Input.encodeList<Subject, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory PolicyRulesWithSubjects.fromMap(Map<String, dynamic> map) {
     return PolicyRulesWithSubjects(
-      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourcePolicyRule>(map['nonResourceRules']!, (value) => NonResourcePolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyRule>(map['resourceRules']!, (value) => ResourcePolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subjects: (pulumi.Input.decodeList<Subject>(map['subjects'], (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonResourceRules: (() {
+        final guardedValue = map['nonResourceRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NonResourcePolicyRule>(
+            guardedValue,
+            (value) => NonResourcePolicyRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceRules: (() {
+        final guardedValue = map['resourceRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourcePolicyRule>(
+            guardedValue,
+            (value) => ResourcePolicyRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      subjects: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<Subject>(
+          map['subjects']!,
+          (value) => Subject.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

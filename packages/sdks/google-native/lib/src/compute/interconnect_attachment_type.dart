@@ -4,16 +4,15 @@ enum InterconnectAttachmentType {
   partner("PARTNER"),
   partnerProvider("PARTNER_PROVIDER");
 
-  const InterconnectAttachmentType(this.value);
-  final String value;
+  const InterconnectAttachmentType(this.wireValue);
+  final String wireValue;
 
   static InterconnectAttachmentType fromValue(String value) {
     for (final item in InterconnectAttachmentType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InterconnectAttachmentType value: $value');
   }
 }
-

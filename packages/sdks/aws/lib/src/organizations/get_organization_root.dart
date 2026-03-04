@@ -6,10 +6,13 @@ import 'get_organization_root_policy_type.dart';
 class GetOrganizationRoot {
   /// ARN of the root.
   final pulumi.Input<String> arn;
+
   /// Identifier of the root.
   final pulumi.Input<String> id;
+
   /// Name of the policy type.
   final pulumi.Input<String> name;
+
   /// List of policy types enabled for this root. All elements have these attributes:
   final pulumi.Input<List<GetOrganizationRootPolicyType>> policyTypes;
 
@@ -30,17 +33,34 @@ class GetOrganizationRoot {
       'arn': arn,
       'id': id,
       'name': name,
-      'policyTypes': pulumi.Input.mapInputValue<List<GetOrganizationRootPolicyType>, List<Map<String, dynamic>>>(policyTypes, (value) => pulumi.Input.encodeList<GetOrganizationRootPolicyType, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyTypes':
+          pulumi.Input.mapInputValue<
+            List<GetOrganizationRootPolicyType>,
+            List<Map<String, dynamic>>
+          >(
+            policyTypes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetOrganizationRootPolicyType,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetOrganizationRoot.fromMap(Map<String, dynamic> map) {
     return GetOrganizationRoot(
-      arn: (map['arn'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      policyTypes: (pulumi.Input.decodeList<GetOrganizationRootPolicyType>(map['policyTypes']!, (value) => GetOrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      policyTypes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetOrganizationRootPolicyType>(
+          map['policyTypes']!,
+          (value) => GetOrganizationRootPolicyType.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

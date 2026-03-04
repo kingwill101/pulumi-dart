@@ -5,7 +5,7 @@ import 'role_state.dart';
 /// Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.
 /// For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 /// ## Example Usage
 ///
@@ -240,16 +240,22 @@ import 'role_state.dart';
 class Role extends pulumi.CustomResource {
   /// The resource descriptor of the role.
   late final pulumi.Output<String> arn;
+
   /// The content of the permissions strategy that plays a role.
   late final pulumi.Output<String> assumeRolePolicyDocument;
+
   /// The description of the Resource Manager role.
   late final pulumi.Output<String?> description;
+
   /// Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
   late final pulumi.Output<int?> maxSessionDuration;
+
   /// This ID of Resource Manager role. The value is set to `role_name`.
   late final pulumi.Output<String> roleId;
+
   /// Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
   late final pulumi.Output<String> roleName;
+
   /// Role update time.
   late final pulumi.Output<String> updateDate;
 
@@ -257,31 +263,26 @@ class Role extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Role]. {@macro pulumi_resourcemanager_role_role_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Role(
-    String name, {
-    RoleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:resourcemanager/role:Role',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.assumeRolePolicyDocument = registerOutput<String>('assumeRolePolicyDocument');
-    this.description = registerOutput<String?>('description');
-    this.maxSessionDuration = registerOutput<int?>('maxSessionDuration');
-    this.roleId = registerOutput<String>('roleId');
-    this.roleName = registerOutput<String>('roleName');
-    this.updateDate = registerOutput<String>('updateDate');
+  Role(String name, {RoleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:resourcemanager/role:Role',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    assumeRolePolicyDocument = registerOutput<String>(
+      'assumeRolePolicyDocument',
+    );
+    description = registerOutput<String?>('description');
+    maxSessionDuration = registerOutput<int?>('maxSessionDuration');
+    roleId = registerOutput<String>('roleId');
+    roleName = registerOutput<String>('roleName');
+    updateDate = registerOutput<String>('updateDate');
   }
 
   /// Gets an existing [Role] resource's state with the given [name] and [id].
-  static Role get(
-    String name,
-    pulumi.Input<String> id, {
-    RoleState? state,
-  }) {
+  static Role get(String name, pulumi.Input<String> id, {RoleState? state}) {
     return Role._get(
       name,
       state: state?.toMap(),
@@ -294,17 +295,19 @@ class Role extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/role:Role',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.assumeRolePolicyDocument = registerOutput<String>('assumeRolePolicyDocument');
-    this.description = registerOutput<String?>('description');
-    this.maxSessionDuration = registerOutput<int?>('maxSessionDuration');
-    this.roleId = registerOutput<String>('roleId');
-    this.roleName = registerOutput<String>('roleName');
-    this.updateDate = registerOutput<String>('updateDate');
+         'alicloud:resourcemanager/role:Role',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    assumeRolePolicyDocument = registerOutput<String>(
+      'assumeRolePolicyDocument',
+    );
+    description = registerOutput<String?>('description');
+    maxSessionDuration = registerOutput<int?>('maxSessionDuration');
+    roleId = registerOutput<String>('roleId');
+    roleName = registerOutput<String>('roleName');
+    updateDate = registerOutput<String>('updateDate');
   }
 }

@@ -194,7 +194,7 @@ import 'integration_account_certificate_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Logic` - 2019-05-01
@@ -209,14 +209,20 @@ import 'integration_account_certificate_state.dart';
 class IntegrationAccountCertificate extends pulumi.CustomResource {
   /// The name of the Logic App Integration Account. Changing this forces a new Logic App Integration Account Certificate to be created.
   late final pulumi.Output<String> integrationAccountName;
+
   /// A `key_vault_key` block as documented below.
-  late final pulumi.Output<IntegrationAccountCertificateKeyVaultKey?> keyVaultKey;
+  late final pulumi.Output<IntegrationAccountCertificateKeyVaultKey?>
+  keyVaultKey;
+
   /// A JSON mapping of any Metadata for this Logic App Integration Account Certificate.
   late final pulumi.Output<String?> metadata;
+
   /// The name which should be used for this Logic App Integration Account Certificate. Changing this forces a new Logic App Integration Account Certificate to be created.
   late final pulumi.Output<String> name;
+
   /// The public certificate for the Logic App Integration Account Certificate.
   late final pulumi.Output<String?> publicCertificate;
+
   /// The name of the Resource Group where the Logic App Integration Account Certificate should exist. Changing this forces a new Logic App Integration Account Certificate to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -229,17 +235,19 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     IntegrationAccountCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>('keyVaultKey');
-    this.metadata = registerOutput<String?>('metadata');
+         'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>(
+      'keyVaultKey',
+    );
+    metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
-    this.publicCertificate = registerOutput<String?>('publicCertificate');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    publicCertificate = registerOutput<String?>('publicCertificate');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IntegrationAccountCertificate] resource's state with the given [name] and [id].
@@ -260,16 +268,18 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.integrationAccountName = registerOutput<String>('integrationAccountName');
-    this.keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>('keyVaultKey');
-    this.metadata = registerOutput<String?>('metadata');
+         'azure:logicapps/integrationAccountCertificate:IntegrationAccountCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    keyVaultKey = registerOutput<IntegrationAccountCertificateKeyVaultKey?>(
+      'keyVaultKey',
+    );
+    metadata = registerOutput<String?>('metadata');
     this.name = registerOutput<String>('name');
-    this.publicCertificate = registerOutput<String?>('publicCertificate');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    publicCertificate = registerOutput<String?>('publicCertificate');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

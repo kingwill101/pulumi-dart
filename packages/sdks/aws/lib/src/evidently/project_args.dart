@@ -10,12 +10,16 @@ import 'project_data_delivery.dart';
 class ProjectArgs {
   /// A block that contains information about where Evidently is to store evaluation events for longer term storage, if you choose to do so. If you choose not to store these events, Evidently deletes them after using them to produce metrics and other experiment results that you can view. See below.
   final pulumi.Input<ProjectDataDelivery>? dataDelivery;
+
   /// Specifies the description of the project.
   final pulumi.Input<String>? description;
+
   /// A name for the project.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tags to apply to the project. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,7 +39,11 @@ class ProjectArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDelivery': ?pulumi.Input.mapOptionalInputValue<ProjectDataDelivery, Map<String, dynamic>>(dataDelivery, (value) => value.toMap()),
+      'dataDelivery':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProjectDataDelivery,
+            Map<String, dynamic>
+          >(dataDelivery, (value) => value.toMap()),
       'description': ?description,
       'name': ?name,
       'region': ?region,
@@ -45,12 +53,37 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      dataDelivery: map['dataDelivery'] == null ? null : ((ProjectDataDelivery.fromMap((map['dataDelivery']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      dataDelivery: (() {
+        final guardedValue = map['dataDelivery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProjectDataDelivery.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

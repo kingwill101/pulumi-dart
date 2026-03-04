@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAllowedIpAttachmentArgs {
   /// The IP address whitelist. It can be a CIDR block.
   final pulumi.Input<String> allowedIp;
+
   /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
   final pulumi.Input<String> allowedType;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
   /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
   /// - `9093/9093`: The port range for access from the Internet.
@@ -43,11 +46,10 @@ class InstanceAllowedIpAttachmentArgs {
 
   factory InstanceAllowedIpAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAllowedIpAttachmentArgs(
-      allowedIp: (map['allowedIp'] as String).input(),
-      allowedType: (map['allowedType'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      portRange: (map['portRange'] as String).input(),
+      allowedIp: pulumi.Input.fromValue(map['allowedIp'] as String),
+      allowedType: pulumi.Input.fromValue(map['allowedType'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      portRange: pulumi.Input.fromValue(map['portRange'] as String),
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EditingProjectState {
   /// The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
   final pulumi.Input<String>? coverUrl;
+
   /// The region where you want to create the online editing project.
   final pulumi.Input<String>? division;
+
   /// The description of the online editing project.
   final pulumi.Input<String>? editingProjectName;
+
   /// The Status of the resource.
   final pulumi.Input<String>? status;
+
   /// The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
   final pulumi.Input<String>? timeline;
+
   /// The title of the online editing project.
   final pulumi.Input<String>? title;
 
@@ -46,13 +51,36 @@ class EditingProjectState {
 
   factory EditingProjectState.fromMap(Map<String, dynamic> map) {
     return EditingProjectState(
-      coverUrl: map['coverUrl'] == null ? null : (map['coverUrl']! as String).input(),
-      division: map['division'] == null ? null : (map['division']! as String).input(),
-      editingProjectName: map['editingProjectName'] == null ? null : (map['editingProjectName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      timeline: map['timeline'] == null ? null : (map['timeline']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      coverUrl: (() {
+        final guardedValue = map['coverUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      division: (() {
+        final guardedValue = map['division'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      editingProjectName: (() {
+        final guardedValue = map['editingProjectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeline: (() {
+        final guardedValue = map['timeline'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

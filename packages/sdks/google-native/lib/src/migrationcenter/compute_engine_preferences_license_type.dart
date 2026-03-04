@@ -4,16 +4,17 @@ enum ComputeEnginePreferencesLicenseType {
   licenseTypeDefault("LICENSE_TYPE_DEFAULT"),
   licenseTypeBringYourOwnLicense("LICENSE_TYPE_BRING_YOUR_OWN_LICENSE");
 
-  const ComputeEnginePreferencesLicenseType(this.value);
-  final String value;
+  const ComputeEnginePreferencesLicenseType(this.wireValue);
+  final String wireValue;
 
   static ComputeEnginePreferencesLicenseType fromValue(String value) {
     for (final item in ComputeEnginePreferencesLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeEnginePreferencesLicenseType value: $value');
+    throw ArgumentError(
+      'Unknown ComputeEnginePreferencesLicenseType value: $value',
+    );
   }
 }
-

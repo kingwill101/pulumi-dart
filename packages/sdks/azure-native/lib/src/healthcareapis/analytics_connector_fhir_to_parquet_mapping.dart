@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsConnectorFhirToParquetMapping {
   /// Artifact reference for extension schema.
   final pulumi.Input<String>? extensionSchemaReference;
+
   /// Artifact reference for filter configurations.
   final pulumi.Input<String>? filterConfigurationReference;
+
   /// Type of data mapping.
   /// Expected value is 'fhirToParquet'.
   final pulumi.Input<String> type;
@@ -30,12 +32,21 @@ class AnalyticsConnectorFhirToParquetMapping {
     };
   }
 
-  factory AnalyticsConnectorFhirToParquetMapping.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsConnectorFhirToParquetMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsConnectorFhirToParquetMapping(
-      extensionSchemaReference: map['extensionSchemaReference'] == null ? null : (map['extensionSchemaReference']! as String).input(),
-      filterConfigurationReference: map['filterConfigurationReference'] == null ? null : (map['filterConfigurationReference']! as String).input(),
-      type: (map['type'] as String).input(),
+      extensionSchemaReference: (() {
+        final guardedValue = map['extensionSchemaReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filterConfigurationReference: (() {
+        final guardedValue = map['filterConfigurationReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

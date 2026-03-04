@@ -7,6 +7,7 @@ class PipelineDestinationAuthenticationConfigOauthToken {
   /// specified, "https://www.googleapis.com/auth/cloud-platform" will be
   /// used.
   final pulumi.Input<String>? scope;
+
   /// Service account email used to generate the [OAuth
   /// token](https://developers.google.com/identity/protocols/OAuth2).
   /// The principal who calls this API must have
@@ -26,17 +27,19 @@ class PipelineDestinationAuthenticationConfigOauthToken {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scope': ?scope,
-      'serviceAccount': serviceAccount,
-    };
+    return <String, dynamic>{'scope': ?scope, 'serviceAccount': serviceAccount};
   }
 
-  factory PipelineDestinationAuthenticationConfigOauthToken.fromMap(Map<String, dynamic> map) {
+  factory PipelineDestinationAuthenticationConfigOauthToken.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineDestinationAuthenticationConfigOauthToken(
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      serviceAccount: (map['serviceAccount'] as String).input(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
-

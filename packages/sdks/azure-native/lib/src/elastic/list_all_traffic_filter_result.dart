@@ -10,20 +10,33 @@ class ListAllTrafficFilterResult {
 
   /// Creates a new [ListAllTrafficFilterResult].
   /// [rulesets] List of elastic traffic filters in the account
-  ListAllTrafficFilterResult({
-    this.rulesets,
-  });
+  ListAllTrafficFilterResult({this.rulesets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rulesets': ?rulesets == null ? null : pulumi.Input.encodeList<ElasticTrafficFilterResponse, Map<String, dynamic>>(rulesets!, (value) => value.toMap()),
+      'rulesets': ?(() {
+        final guardedValue = rulesets;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ElasticTrafficFilterResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory ListAllTrafficFilterResult.fromMap(Map<String, dynamic> map) {
     return ListAllTrafficFilterResult(
-      rulesets: map['rulesets'] == null ? null : pulumi.Input.decodeList<ElasticTrafficFilterResponse>(map['rulesets']!, (value) => ElasticTrafficFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rulesets: (() {
+        final guardedValue = map['rulesets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ElasticTrafficFilterResponse>(
+          guardedValue,
+          (value) => ElasticTrafficFilterResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

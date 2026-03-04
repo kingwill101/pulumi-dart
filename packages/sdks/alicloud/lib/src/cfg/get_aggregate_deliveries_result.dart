@@ -7,15 +7,19 @@ import 'get_aggregate_deliveries_delivery.dart';
 class GetAggregateDeliveriesResult {
   /// The ID of the Aggregator.
   final String aggregatorId;
+
   /// A list of Config Aggregate Deliveries. Each element contains the following attributes:
   final List<GetAggregateDeliveriesDelivery> deliveries;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Aggregate Delivery names.
   final List<String> names;
   final String? outputFile;
+
   /// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
   final int? status;
 
@@ -42,7 +46,11 @@ class GetAggregateDeliveriesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aggregatorId': aggregatorId,
-      'deliveries': pulumi.Input.encodeList<GetAggregateDeliveriesDelivery, Map<String, dynamic>>(deliveries, (value) => value.toMap()),
+      'deliveries':
+          pulumi.Input.encodeList<
+            GetAggregateDeliveriesDelivery,
+            Map<String, dynamic>
+          >(deliveries, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -55,14 +63,30 @@ class GetAggregateDeliveriesResult {
   factory GetAggregateDeliveriesResult.fromMap(Map<String, dynamic> map) {
     return GetAggregateDeliveriesResult(
       aggregatorId: map['aggregatorId'] as String,
-      deliveries: pulumi.Input.decodeList<GetAggregateDeliveriesDelivery>(map['deliveries'], (value) => GetAggregateDeliveriesDelivery.fromMap((value as Map).cast<String, dynamic>())),
+      deliveries: pulumi.Input.decodeList<GetAggregateDeliveriesDelivery>(
+        map['deliveries']!,
+        (value) => GetAggregateDeliveriesDelivery.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

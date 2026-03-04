@@ -12,20 +12,19 @@ class GetAccountAliasArgs {
 
   /// Creates a new [GetAccountAliasArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAccountAliasArgs({
-    this.outputFile,
-  });
+  GetAccountAliasArgs({this.outputFile});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputFile': ?outputFile,
-    };
+    return <String, dynamic>{'outputFile': ?outputFile};
   }
 
   factory GetAccountAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAliasArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

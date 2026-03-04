@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobAgentIdentity {
   /// The job agent identity tenant id
   final pulumi.Input<String>? tenantId;
+
   /// The job agent identity type
   final pulumi.Input<String> type;
+
   /// The resource ids of the user assigned identities to use
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
@@ -31,10 +33,17 @@ class JobAgentIdentity {
 
   factory JobAgentIdentity.fromMap(Map<String, dynamic> map) {
     return JobAgentIdentity(
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

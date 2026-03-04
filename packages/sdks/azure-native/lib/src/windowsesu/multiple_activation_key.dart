@@ -162,27 +162,38 @@ import 'multiple_activation_key_args.dart';
 class MultipleActivationKey extends pulumi.CustomResource {
   /// Agreement number under which the key is requested.
   late final pulumi.Output<String?> agreementNumber;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// End of support of security updates activated by the MAK key.
   late final pulumi.Output<String> expirationDate;
+
   /// Number of activations/servers using the MAK key.
   late final pulumi.Output<int?> installedServerNumber;
-  /// <code> true </code> if user has eligible on-premises Windows physical or virtual machines, and that the requested key will only be used in their organization; <code> false </code> otherwise.
+
+  /// &lt;code&gt; true &lt;/code&gt; if user has eligible on-premises Windows physical or virtual machines, and that the requested key will only be used in their organization; &lt;code&gt; false &lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> isEligible;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// MAK 5x5 key.
   late final pulumi.Output<String> multipleActivationKey;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Type of OS for which the key is requested.
   late final pulumi.Output<String?> osType;
   late final pulumi.Output<String> provisioningState;
+
   /// Type of support
   late final pulumi.Output<String?> supportType;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -195,23 +206,23 @@ class MultipleActivationKey extends pulumi.CustomResource {
     MultipleActivationKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:windowsesu:MultipleActivationKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agreementNumber = registerOutput<String?>('agreementNumber');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.installedServerNumber = registerOutput<int?>('installedServerNumber');
-    this.isEligible = registerOutput<bool?>('isEligible');
-    this.location = registerOutput<String>('location');
-    this.multipleActivationKey = registerOutput<String>('multipleActivationKey');
+         'azure-native:windowsesu:MultipleActivationKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agreementNumber = registerOutput<String?>('agreementNumber');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expirationDate = registerOutput<String>('expirationDate');
+    installedServerNumber = registerOutput<int?>('installedServerNumber');
+    isEligible = registerOutput<bool?>('isEligible');
+    location = registerOutput<String>('location');
+    multipleActivationKey = registerOutput<String>('multipleActivationKey');
     this.name = registerOutput<String>('name');
-    this.osType = registerOutput<String?>('osType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.supportType = registerOutput<String?>('supportType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    osType = registerOutput<String?>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    supportType = registerOutput<String?>('supportType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

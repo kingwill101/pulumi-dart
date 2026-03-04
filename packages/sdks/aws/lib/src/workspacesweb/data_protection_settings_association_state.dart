@@ -6,10 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataProtectionSettingsAssociationState {
   /// ARN of the data protection settings to associate with the portal. Forces replacement if changed.
   final pulumi.Input<String>? dataProtectionSettingsArn;
+
   /// ARN of the portal to associate with the data protection settings. Forces replacement if changed.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? portalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,12 +33,25 @@ class DataProtectionSettingsAssociationState {
     };
   }
 
-  factory DataProtectionSettingsAssociationState.fromMap(Map<String, dynamic> map) {
+  factory DataProtectionSettingsAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataProtectionSettingsAssociationState(
-      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : ((map['dataProtectionSettingsArn'] as String).input()).input(),
-      portalArn: map['portalArn'] == null ? null : ((map['portalArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      dataProtectionSettingsArn: (() {
+        final guardedValue = map['dataProtectionSettingsArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portalArn: (() {
+        final guardedValue = map['portalArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

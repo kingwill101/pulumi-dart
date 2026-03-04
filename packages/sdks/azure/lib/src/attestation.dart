@@ -1,5 +1,3 @@
-library module_attestation;
-
 export 'attestation/functions.dart';
 export 'attestation/get_provider_args.dart';
 export 'attestation/get_provider_result.dart';

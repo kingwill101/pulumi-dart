@@ -5,16 +5,22 @@ enum GoogleCloudContentwarehouseV1AccessControlActionOperationType {
   removePolicyBinding("REMOVE_POLICY_BINDING"),
   replacePolicyBinding("REPLACE_POLICY_BINDING");
 
-  const GoogleCloudContentwarehouseV1AccessControlActionOperationType(this.value);
-  final String value;
+  const GoogleCloudContentwarehouseV1AccessControlActionOperationType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudContentwarehouseV1AccessControlActionOperationType fromValue(String value) {
-    for (final item in GoogleCloudContentwarehouseV1AccessControlActionOperationType.values) {
-      if (item.value == value) {
+  static GoogleCloudContentwarehouseV1AccessControlActionOperationType
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudContentwarehouseV1AccessControlActionOperationType
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudContentwarehouseV1AccessControlActionOperationType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudContentwarehouseV1AccessControlActionOperationType value: $value',
+    );
   }
 }
-

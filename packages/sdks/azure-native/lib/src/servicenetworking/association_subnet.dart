@@ -9,20 +9,13 @@ class AssociationSubnet {
 
   /// Creates a new [AssociationSubnet].
   /// [id] Association ID.
-  AssociationSubnet({
-    required this.id,
-  });
+  AssociationSubnet({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory AssociationSubnet.fromMap(Map<String, dynamic> map) {
-    return AssociationSubnet(
-      id: (map['id'] as String).input(),
-    );
+    return AssociationSubnet(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

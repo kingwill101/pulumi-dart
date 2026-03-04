@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpnServerConfigurationClientRootCertificate {
   /// The Name of the VPN Server Configuration.
   final pulumi.Input<String> name;
+
   /// The Public Key Data associated with the Certificate.
   final pulumi.Input<String> publicCertData;
 
@@ -17,17 +18,15 @@ class GetVpnServerConfigurationClientRootCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'publicCertData': publicCertData,
-    };
+    return <String, dynamic>{'name': name, 'publicCertData': publicCertData};
   }
 
-  factory GetVpnServerConfigurationClientRootCertificate.fromMap(Map<String, dynamic> map) {
+  factory GetVpnServerConfigurationClientRootCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVpnServerConfigurationClientRootCertificate(
-      name: (map['name'] as String).input(),
-      publicCertData: (map['publicCertData'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicCertData: pulumi.Input.fromValue(map['publicCertData'] as String),
     );
   }
 }
-

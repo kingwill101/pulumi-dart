@@ -7,10 +7,13 @@ import 'account_key_metadata_response.dart';
 class DatabaseAccountKeysMetadataResponse {
   /// The metadata related to the Primary Read-Write Key for the given Cosmos DB database account.
   final pulumi.Input<AccountKeyMetadataResponse> primaryMasterKey;
+
   /// The metadata related to the Primary Read-Only Key for the given Cosmos DB database account.
   final pulumi.Input<AccountKeyMetadataResponse> primaryReadonlyMasterKey;
+
   /// The metadata related to the Secondary Read-Write Key for the given Cosmos DB database account.
   final pulumi.Input<AccountKeyMetadataResponse> secondaryMasterKey;
+
   /// The metadata related to the Secondary Read-Only Key for the given Cosmos DB database account.
   final pulumi.Input<AccountKeyMetadataResponse> secondaryReadonlyMasterKey;
 
@@ -28,20 +31,53 @@ class DatabaseAccountKeysMetadataResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryMasterKey': pulumi.Input.mapInputValue<AccountKeyMetadataResponse, Map<String, dynamic>>(primaryMasterKey, (value) => value.toMap()),
-      'primaryReadonlyMasterKey': pulumi.Input.mapInputValue<AccountKeyMetadataResponse, Map<String, dynamic>>(primaryReadonlyMasterKey, (value) => value.toMap()),
-      'secondaryMasterKey': pulumi.Input.mapInputValue<AccountKeyMetadataResponse, Map<String, dynamic>>(secondaryMasterKey, (value) => value.toMap()),
-      'secondaryReadonlyMasterKey': pulumi.Input.mapInputValue<AccountKeyMetadataResponse, Map<String, dynamic>>(secondaryReadonlyMasterKey, (value) => value.toMap()),
+      'primaryMasterKey':
+          pulumi.Input.mapInputValue<
+            AccountKeyMetadataResponse,
+            Map<String, dynamic>
+          >(primaryMasterKey, (value) => value.toMap()),
+      'primaryReadonlyMasterKey':
+          pulumi.Input.mapInputValue<
+            AccountKeyMetadataResponse,
+            Map<String, dynamic>
+          >(primaryReadonlyMasterKey, (value) => value.toMap()),
+      'secondaryMasterKey':
+          pulumi.Input.mapInputValue<
+            AccountKeyMetadataResponse,
+            Map<String, dynamic>
+          >(secondaryMasterKey, (value) => value.toMap()),
+      'secondaryReadonlyMasterKey':
+          pulumi.Input.mapInputValue<
+            AccountKeyMetadataResponse,
+            Map<String, dynamic>
+          >(secondaryReadonlyMasterKey, (value) => value.toMap()),
     };
   }
 
-  factory DatabaseAccountKeysMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory DatabaseAccountKeysMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseAccountKeysMetadataResponse(
-      primaryMasterKey: (AccountKeyMetadataResponse.fromMap((map['primaryMasterKey'] as Map).cast<String, dynamic>())).input(),
-      primaryReadonlyMasterKey: (AccountKeyMetadataResponse.fromMap((map['primaryReadonlyMasterKey'] as Map).cast<String, dynamic>())).input(),
-      secondaryMasterKey: (AccountKeyMetadataResponse.fromMap((map['secondaryMasterKey'] as Map).cast<String, dynamic>())).input(),
-      secondaryReadonlyMasterKey: (AccountKeyMetadataResponse.fromMap((map['secondaryReadonlyMasterKey'] as Map).cast<String, dynamic>())).input(),
+      primaryMasterKey: pulumi.Input.fromValue(
+        AccountKeyMetadataResponse.fromMap(
+          (map['primaryMasterKey']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      primaryReadonlyMasterKey: pulumi.Input.fromValue(
+        AccountKeyMetadataResponse.fromMap(
+          (map['primaryReadonlyMasterKey']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      secondaryMasterKey: pulumi.Input.fromValue(
+        AccountKeyMetadataResponse.fromMap(
+          (map['secondaryMasterKey']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      secondaryReadonlyMasterKey: pulumi.Input.fromValue(
+        AccountKeyMetadataResponse.fromMap(
+          (map['secondaryReadonlyMasterKey']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

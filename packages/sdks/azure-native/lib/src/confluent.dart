@@ -1,5 +1,3 @@
-library module_confluent;
-
 export 'confluent/auth_type.dart';
 export 'confluent/azure_blob_storage_sink_connector_service_info.dart';
 export 'confluent/azure_blob_storage_sink_connector_service_info_response.dart';

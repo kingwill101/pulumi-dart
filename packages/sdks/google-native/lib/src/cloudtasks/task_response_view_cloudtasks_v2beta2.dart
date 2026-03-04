@@ -4,16 +4,17 @@ enum TaskResponseViewCloudtasksV2beta2 {
   basic("BASIC"),
   full("FULL");
 
-  const TaskResponseViewCloudtasksV2beta2(this.value);
-  final String value;
+  const TaskResponseViewCloudtasksV2beta2(this.wireValue);
+  final String wireValue;
 
   static TaskResponseViewCloudtasksV2beta2 fromValue(String value) {
     for (final item in TaskResponseViewCloudtasksV2beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TaskResponseViewCloudtasksV2beta2 value: $value');
+    throw ArgumentError(
+      'Unknown TaskResponseViewCloudtasksV2beta2 value: $value',
+    );
   }
 }
-

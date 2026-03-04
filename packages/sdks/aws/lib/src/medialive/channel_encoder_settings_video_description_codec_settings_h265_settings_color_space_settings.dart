@@ -6,12 +6,19 @@ import 'channel_encoder_settings_video_description_codec_settings_h265_settings_
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings {
   /// Sets the colorspace metadata to be passed through.
   final pulumi.Input<Map<String, dynamic>>? colorSpacePassthroughSettings;
+
   /// Set the colorspace to Dolby Vision81.
   final pulumi.Input<Map<String, dynamic>>? dolbyVision81Settings;
+
   /// Set the colorspace to be HDR10. See H265 HDR10 Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings>? hdr10Settings;
+  final pulumi.Input<
+    ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings
+  >?
+  hdr10Settings;
+
   /// Set the colorspace to Rec. 601.
   final pulumi.Input<Map<String, dynamic>>? rec601Settings;
+
   /// Set the colorspace to Rec. 709.
   final pulumi.Input<Map<String, dynamic>>? rec709Settings;
 
@@ -33,20 +40,57 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceS
     return <String, dynamic>{
       'colorSpacePassthroughSettings': ?colorSpacePassthroughSettings,
       'dolbyVision81Settings': ?dolbyVision81Settings,
-      'hdr10Settings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings, Map<String, dynamic>>(hdr10Settings, (value) => value.toMap()),
+      'hdr10Settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings,
+            Map<String, dynamic>
+          >(hdr10Settings, (value) => value.toMap()),
       'rec601Settings': ?rec601Settings,
       'rec709Settings': ?rec709Settings,
     };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings(
-      colorSpacePassthroughSettings: map['colorSpacePassthroughSettings'] == null ? null : (((map['colorSpacePassthroughSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      dolbyVision81Settings: map['dolbyVision81Settings'] == null ? null : (((map['dolbyVision81Settings'] as Map).cast<String, dynamic>()).input()).input(),
-      hdr10Settings: map['hdr10Settings'] == null ? null : ((ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings.fromMap((map['hdr10Settings']! as Map).cast<String, dynamic>())).input()).input(),
-      rec601Settings: map['rec601Settings'] == null ? null : (((map['rec601Settings'] as Map).cast<String, dynamic>()).input()).input(),
-      rec709Settings: map['rec709Settings'] == null ? null : (((map['rec709Settings'] as Map).cast<String, dynamic>()).input()).input(),
+      colorSpacePassthroughSettings: (() {
+        final guardedValue = map['colorSpacePassthroughSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      dolbyVision81Settings: (() {
+        final guardedValue = map['dolbyVision81Settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      hdr10Settings: (() {
+        final guardedValue = map['hdr10Settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rec601Settings: (() {
+        final guardedValue = map['rec601Settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rec709Settings: (() {
+        final guardedValue = map['rec709Settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

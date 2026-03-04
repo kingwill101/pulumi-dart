@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DaprMetadataResponse {
   /// The description of the metadata, returned from configuration api
   final pulumi.Input<String>? description;
+
   /// Metadata property name.
   final pulumi.Input<String>? name;
+
   /// The value indicating whether the metadata is required or not
   final pulumi.Input<String>? required;
+
   /// The secret name where dapr could get value
   final pulumi.Input<String>? secretRef;
+
   /// Metadata property value.
   final pulumi.Input<String>? value;
 
@@ -41,12 +45,31 @@ class DaprMetadataResponse {
 
   factory DaprMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DaprMetadataResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      required: map['required'] == null ? null : (map['required']! as String).input(),
-      secretRef: map['secretRef'] == null ? null : (map['secretRef']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      required: (() {
+        final guardedValue = map['required'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretRef: (() {
+        final guardedValue = map['secretRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

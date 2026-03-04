@@ -7,7 +7,8 @@ import 'google_cloud_identitytoolkit_admin_v2_code_flow_config.dart';
 class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
   /// A list of Bundle ID's usable by this project
   final pulumi.Input<List<String>>? bundleIds;
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig>? codeFlowConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig>?
+  codeFlowConfig;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig].
   /// [bundleIds] A list of Bundle ID's usable by this project
@@ -20,15 +21,32 @@ class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bundleIds': ?bundleIds,
-      'codeFlowConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig, Map<String, dynamic>>(codeFlowConfig, (value) => value.toMap()),
+      'codeFlowConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig,
+            Map<String, dynamic>
+          >(codeFlowConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig(
-      bundleIds: map['bundleIds'] == null ? null : ((map['bundleIds']! as List).cast<String>()).input(),
-      codeFlowConfig: map['codeFlowConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap((map['codeFlowConfig']! as Map).cast<String, dynamic>())).input(),
+      bundleIds: (() {
+        final guardedValue = map['bundleIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      codeFlowConfig: (() {
+        final guardedValue = map['codeFlowConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

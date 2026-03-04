@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserDetail {
   /// AAD email address
   final pulumi.Input<String>? aadEmail;
+
   /// Email address
   final pulumi.Input<String> emailAddress;
+
   /// First name
   final pulumi.Input<String>? firstName;
+
   /// Last name
   final pulumi.Input<String>? lastName;
+
   /// User principal name
   final pulumi.Input<String>? userPrincipalName;
 
@@ -41,12 +45,27 @@ class UserDetail {
 
   factory UserDetail.fromMap(Map<String, dynamic> map) {
     return UserDetail(
-      aadEmail: map['aadEmail'] == null ? null : (map['aadEmail']! as String).input(),
-      emailAddress: (map['emailAddress'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
-      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName']! as String).input(),
+      aadEmail: (() {
+        final guardedValue = map['aadEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      emailAddress: pulumi.Input.fromValue(map['emailAddress'] as String),
+      firstName: (() {
+        final guardedValue = map['firstName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastName: (() {
+        final guardedValue = map['lastName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userPrincipalName: (() {
+        final guardedValue = map['userPrincipalName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

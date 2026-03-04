@@ -1,5 +1,3 @@
-library module_dataproc;
-
 export 'dataproc/accelerator_config.dart';
 export 'dataproc/accelerator_config_dataproc_v1beta2.dart';
 export 'dataproc/accelerator_config_response.dart';

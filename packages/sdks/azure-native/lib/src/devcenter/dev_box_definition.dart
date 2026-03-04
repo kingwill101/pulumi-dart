@@ -188,32 +188,47 @@ import 'system_data_response.dart';
 class DevBoxDefinition extends pulumi.CustomResource {
   /// Image reference information for the currently active image (only populated during updates).
   late final pulumi.Output<ImageReferenceResponse> activeImageReference;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
   late final pulumi.Output<String?> hibernateSupport;
+
   /// Image reference information.
   late final pulumi.Output<ImageReferenceResponse> imageReference;
+
   /// Details for image validator error. Populated when the image validation is not successful.
-  late final pulumi.Output<ImageValidationErrorDetailsResponse> imageValidationErrorDetails;
+  late final pulumi.Output<ImageValidationErrorDetailsResponse>
+  imageValidationErrorDetails;
+
   /// Validation status of the configured image.
   late final pulumi.Output<String> imageValidationStatus;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The storage type used for the Operating System disk of Dev Boxes created using this definition.
   late final pulumi.Output<String?> osStorageType;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU for Dev Boxes created using this definition.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Validation status for the Dev Box Definition.
   late final pulumi.Output<String> validationStatus;
 
@@ -226,25 +241,30 @@ class DevBoxDefinition extends pulumi.CustomResource {
     DevBoxDefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:DevBoxDefinition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeImageReference = registerOutput<ImageReferenceResponse>('activeImageReference');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hibernateSupport = registerOutput<String?>('hibernateSupport');
-    this.imageReference = registerOutput<ImageReferenceResponse>('imageReference');
-    this.imageValidationErrorDetails = registerOutput<ImageValidationErrorDetailsResponse>('imageValidationErrorDetails');
-    this.imageValidationStatus = registerOutput<String>('imageValidationStatus');
-    this.location = registerOutput<String>('location');
+         'azure-native:devcenter:DevBoxDefinition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeImageReference = registerOutput<ImageReferenceResponse>(
+      'activeImageReference',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hibernateSupport = registerOutput<String?>('hibernateSupport');
+    imageReference = registerOutput<ImageReferenceResponse>('imageReference');
+    imageValidationErrorDetails =
+        registerOutput<ImageValidationErrorDetailsResponse>(
+          'imageValidationErrorDetails',
+        );
+    imageValidationStatus = registerOutput<String>('imageValidationStatus');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.osStorageType = registerOutput<String?>('osStorageType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.validationStatus = registerOutput<String>('validationStatus');
+    osStorageType = registerOutput<String?>('osStorageType');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    validationStatus = registerOutput<String>('validationStatus');
   }
 }

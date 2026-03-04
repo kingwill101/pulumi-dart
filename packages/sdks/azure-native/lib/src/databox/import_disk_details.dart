@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportDiskDetails {
   /// BitLocker key used to encrypt the disk.
   final pulumi.Input<String> bitLockerKey;
+
   /// The relative path of the manifest file on the disk.
   final pulumi.Input<String> manifestFile;
+
   /// The Base16-encoded MD5 hash of the manifest file on the disk.
   final pulumi.Input<String> manifestHash;
 
@@ -31,10 +33,9 @@ class ImportDiskDetails {
 
   factory ImportDiskDetails.fromMap(Map<String, dynamic> map) {
     return ImportDiskDetails(
-      bitLockerKey: (map['bitLockerKey'] as String).input(),
-      manifestFile: (map['manifestFile'] as String).input(),
-      manifestHash: (map['manifestHash'] as String).input(),
+      bitLockerKey: pulumi.Input.fromValue(map['bitLockerKey'] as String),
+      manifestFile: pulumi.Input.fromValue(map['manifestFile'] as String),
+      manifestHash: pulumi.Input.fromValue(map['manifestHash'] as String),
     );
   }
 }
-

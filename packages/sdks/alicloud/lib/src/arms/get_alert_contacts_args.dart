@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertContactsArgs {
   /// The name of the alert contact.
   final pulumi.Input<String>? alertContactName;
+
   /// The email address of the alert contact.
   final pulumi.Input<String>? email;
+
   /// A list of Alert Contact IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Alert Contact name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The mobile number of the alert contact.
   final pulumi.Input<String>? phoneNum;
 
@@ -49,13 +54,36 @@ class GetAlertContactsArgs {
 
   factory GetAlertContactsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertContactsArgs(
-      alertContactName: map['alertContactName'] == null ? null : (map['alertContactName']! as String).input(),
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      phoneNum: map['phoneNum'] == null ? null : (map['phoneNum']! as String).input(),
+      alertContactName: (() {
+        final guardedValue = map['alertContactName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phoneNum: (() {
+        final guardedValue = map['phoneNum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

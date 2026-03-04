@@ -5,16 +5,17 @@ enum GlobalForwardingRuleNetworkTierComputeBeta {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const GlobalForwardingRuleNetworkTierComputeBeta(this.value);
-  final String value;
+  const GlobalForwardingRuleNetworkTierComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GlobalForwardingRuleNetworkTierComputeBeta fromValue(String value) {
     for (final item in GlobalForwardingRuleNetworkTierComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleNetworkTierComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleNetworkTierComputeBeta value: $value',
+    );
   }
 }
-

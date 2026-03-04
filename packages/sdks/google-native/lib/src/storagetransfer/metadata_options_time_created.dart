@@ -4,16 +4,15 @@ enum MetadataOptionsTimeCreated {
   timeCreatedSkip("TIME_CREATED_SKIP"),
   timeCreatedPreserveAsCustomTime("TIME_CREATED_PRESERVE_AS_CUSTOM_TIME");
 
-  const MetadataOptionsTimeCreated(this.value);
-  final String value;
+  const MetadataOptionsTimeCreated(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsTimeCreated fromValue(String value) {
     for (final item in MetadataOptionsTimeCreated.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsTimeCreated value: $value');
   }
 }
-

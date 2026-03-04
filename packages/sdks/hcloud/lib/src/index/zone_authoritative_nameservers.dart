@@ -8,20 +8,19 @@ class ZoneAuthoritativeNameservers {
 
   /// Creates a new [ZoneAuthoritativeNameservers].
   /// [assigneds] Authoritative Hetzner nameservers assigned to the Zone.
-  ZoneAuthoritativeNameservers({
-    this.assigneds,
-  });
+  ZoneAuthoritativeNameservers({this.assigneds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'assigneds': ?assigneds,
-    };
+    return <String, dynamic>{'assigneds': ?assigneds};
   }
 
   factory ZoneAuthoritativeNameservers.fromMap(Map<String, dynamic> map) {
     return ZoneAuthoritativeNameservers(
-      assigneds: map['assigneds'] == null ? null : ((map['assigneds']! as List).cast<String>()).input(),
+      assigneds: (() {
+        final guardedValue = map['assigneds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

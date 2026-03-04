@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReceiptRuleWorkmailAction {
   /// The ARN of the WorkMail organization
   final pulumi.Input<String> organizationArn;
+
   /// The position of the action in the receipt rule
   final pulumi.Input<int> position;
+
   /// The ARN of an SNS topic to notify
   final pulumi.Input<String>? topicArn;
 
@@ -30,10 +32,13 @@ class ReceiptRuleWorkmailAction {
 
   factory ReceiptRuleWorkmailAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleWorkmailAction(
-      organizationArn: (map['organizationArn'] as String).input(),
-      position: (map['position'] as int).input(),
-      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
+      organizationArn: pulumi.Input.fromValue(map['organizationArn'] as String),
+      position: pulumi.Input.fromValue(map['position'] as int),
+      topicArn: (() {
+        final guardedValue = map['topicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,23 @@ class OsPolicyAssignmentInstanceFilterExclusionLabel {
 
   /// Creates a new [OsPolicyAssignmentInstanceFilterExclusionLabel].
   /// [labels] Labels are identified by key/value pairs in this map.
-  OsPolicyAssignmentInstanceFilterExclusionLabel({
-    this.labels,
-  });
+  OsPolicyAssignmentInstanceFilterExclusionLabel({this.labels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': ?labels,
-    };
+    return <String, dynamic>{'labels': ?labels};
   }
 
-  factory OsPolicyAssignmentInstanceFilterExclusionLabel.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentInstanceFilterExclusionLabel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentInstanceFilterExclusionLabel(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

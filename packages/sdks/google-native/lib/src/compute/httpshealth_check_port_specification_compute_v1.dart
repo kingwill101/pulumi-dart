@@ -4,16 +4,17 @@ enum HTTPSHealthCheckPortSpecificationComputeV1 {
   useNamedPort("USE_NAMED_PORT"),
   useServingPort("USE_SERVING_PORT");
 
-  const HTTPSHealthCheckPortSpecificationComputeV1(this.value);
-  final String value;
+  const HTTPSHealthCheckPortSpecificationComputeV1(this.wireValue);
+  final String wireValue;
 
   static HTTPSHealthCheckPortSpecificationComputeV1 fromValue(String value) {
     for (final item in HTTPSHealthCheckPortSpecificationComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HTTPSHealthCheckPortSpecificationComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown HTTPSHealthCheckPortSpecificationComputeV1 value: $value',
+    );
   }
 }
-

@@ -6,9 +6,9 @@ import 'service_linked_role_state.dart';
 ///
 /// For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 ///
-/// > **NOTE:** Available since v1.129.0.
+/// &gt; **NOTE:** Available since v1.129.0.
 ///
-/// > **NOTE:** From version 1.142.0, the resource is renamed as `alicloud.eventbridge.ServiceLinkedRole`.
+/// &gt; **NOTE:** From version 1.142.0, the resource is renamed as `alicloud.eventbridge.ServiceLinkedRole`.
 ///
 /// ## Example Usage
 ///
@@ -122,12 +122,12 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     ServiceLinkedRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
+         'alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    productName = registerOutput<String>('productName');
   }
 
   /// Gets an existing [ServiceLinkedRole] resource's state with the given [name] and [id].
@@ -148,11 +148,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.productName = registerOutput<String>('productName');
+         'alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    productName = registerOutput<String>('productName');
   }
 }

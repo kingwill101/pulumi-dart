@@ -132,24 +132,34 @@ import 'disaster_recovery_configuration_args.dart';
 class DisasterRecoveryConfiguration extends pulumi.CustomResource {
   /// Whether or not failover can be done automatically.
   late final pulumi.Output<String> autoFailover;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// How aggressive the automatic failover should be.
   late final pulumi.Output<String> failoverPolicy;
+
   /// Location of the server that contains this disaster recovery configuration.
   late final pulumi.Output<String> location;
+
   /// Logical name of the server.
   late final pulumi.Output<String> logicalServerName;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Logical name of the partner server.
   late final pulumi.Output<String> partnerLogicalServerName;
+
   /// Id of the partner server.
   late final pulumi.Output<String> partnerServerId;
+
   /// The role of the current server in the disaster recovery configuration.
   late final pulumi.Output<String> role;
+
   /// The status of the disaster recovery configuration.
   late final pulumi.Output<String> status;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -162,21 +172,23 @@ class DisasterRecoveryConfiguration extends pulumi.CustomResource {
     DisasterRecoveryConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:DisasterRecoveryConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoFailover = registerOutput<String>('autoFailover');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.failoverPolicy = registerOutput<String>('failoverPolicy');
-    this.location = registerOutput<String>('location');
-    this.logicalServerName = registerOutput<String>('logicalServerName');
+         'azure-native:sql:DisasterRecoveryConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoFailover = registerOutput<String>('autoFailover');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    failoverPolicy = registerOutput<String>('failoverPolicy');
+    location = registerOutput<String>('location');
+    logicalServerName = registerOutput<String>('logicalServerName');
     this.name = registerOutput<String>('name');
-    this.partnerLogicalServerName = registerOutput<String>('partnerLogicalServerName');
-    this.partnerServerId = registerOutput<String>('partnerServerId');
-    this.role = registerOutput<String>('role');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
+    partnerLogicalServerName = registerOutput<String>(
+      'partnerLogicalServerName',
+    );
+    partnerServerId = registerOutput<String>('partnerServerId');
+    role = registerOutput<String>('role');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
   }
 }

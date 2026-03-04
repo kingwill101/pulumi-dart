@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ErrorHandlerResponseAppengineV1beta {
   /// Error condition this handler applies to.
   final pulumi.Input<String> errorCode;
+
   /// MIME type of file. Defaults to text/html.
   final pulumi.Input<String> mimeType;
+
   /// Static file content to be served for this error.
   final pulumi.Input<String> staticFile;
 
@@ -29,12 +31,13 @@ class ErrorHandlerResponseAppengineV1beta {
     };
   }
 
-  factory ErrorHandlerResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
+  factory ErrorHandlerResponseAppengineV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ErrorHandlerResponseAppengineV1beta(
-      errorCode: (map['errorCode'] as String).input(),
-      mimeType: (map['mimeType'] as String).input(),
-      staticFile: (map['staticFile'] as String).input(),
+      errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
+      mimeType: pulumi.Input.fromValue(map['mimeType'] as String),
+      staticFile: pulumi.Input.fromValue(map['staticFile'] as String),
     );
   }
 }
-

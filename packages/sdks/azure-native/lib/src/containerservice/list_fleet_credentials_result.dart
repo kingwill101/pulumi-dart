@@ -10,20 +10,26 @@ class ListFleetCredentialsResult {
 
   /// Creates a new [ListFleetCredentialsResult].
   /// [kubeconfigs] Array of base64-encoded Kubernetes configuration files.
-  ListFleetCredentialsResult({
-    required this.kubeconfigs,
-  });
+  ListFleetCredentialsResult({required this.kubeconfigs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeconfigs': pulumi.Input.encodeList<FleetCredentialResultResponse, Map<String, dynamic>>(kubeconfigs, (value) => value.toMap()),
+      'kubeconfigs':
+          pulumi.Input.encodeList<
+            FleetCredentialResultResponse,
+            Map<String, dynamic>
+          >(kubeconfigs, (value) => value.toMap()),
     };
   }
 
   factory ListFleetCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListFleetCredentialsResult(
-      kubeconfigs: pulumi.Input.decodeList<FleetCredentialResultResponse>(map['kubeconfigs'], (value) => FleetCredentialResultResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kubeconfigs: pulumi.Input.decodeList<FleetCredentialResultResponse>(
+        map['kubeconfigs']!,
+        (value) => FleetCredentialResultResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

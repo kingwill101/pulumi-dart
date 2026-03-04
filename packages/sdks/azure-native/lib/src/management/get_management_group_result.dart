@@ -9,20 +9,28 @@ import 'system_data_response.dart';
 class GetManagementGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The list of children.
   final List<ManagementGroupChildInfoResponse>? children;
+
   /// The details of a management group.
   final ManagementGroupDetailsResponse? details;
+
   /// The friendly name of the management group.
   final String? displayName;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
   final String? tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -51,8 +59,15 @@ class GetManagementGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'children': ?children == null ? null : pulumi.Input.encodeList<ManagementGroupChildInfoResponse, Map<String, dynamic>>(children!, (value) => value.toMap()),
-      'details': ?details == null ? null : details!.toMap(),
+      'children': ?(() {
+        final guardedValue = children;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ManagementGroupChildInfoResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'details': ?details?.toMap(),
       'displayName': ?displayName,
       'id': id,
       'name': name,
@@ -65,15 +80,39 @@ class GetManagementGroupResult {
   factory GetManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      children: map['children'] == null ? null : pulumi.Input.decodeList<ManagementGroupChildInfoResponse>(map['children']!, (value) => ManagementGroupChildInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      details: map['details'] == null ? null : ManagementGroupDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      children: (() {
+        final guardedValue = map['children'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ManagementGroupChildInfoResponse>(
+          guardedValue,
+          (value) => ManagementGroupChildInfoResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return ManagementGroupDetailsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

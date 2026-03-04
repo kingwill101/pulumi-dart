@@ -10,42 +10,61 @@ import 'system_data_response.dart';
 class GetBareMetalMachineKeySetResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
   final String azureGroupId;
+
   /// The more detailed status of the key set.
   final String detailedStatus;
+
   /// The descriptive message about the current detailed status.
   final String detailedStatusMessage;
+
   /// Resource ETag.
   final String etag;
+
   /// The date and time after which the users in this key set will be removed from the bare metal machines.
   final String expiration;
+
   /// The extended location of the cluster associated with the resource.
   final ExtendedLocationResponse extendedLocation;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users.
   final List<String> jumpHostsAllowed;
+
   /// The last time this key set was validated.
   final String lastValidation;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The name of the group that users will be assigned to on the operating system of the machines.
   final String? osGroupName;
+
   /// The access level allowed for the users in this key set.
   final String privilegeLevel;
+
   /// The provisioning state of the bare metal machine key set.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The unique list of permitted users.
   final List<KeySetUserResponse> userList;
+
   /// The status evaluation of each user.
   final List<KeySetUserStatusResponse> userListStatus;
 
@@ -113,8 +132,16 @@ class GetBareMetalMachineKeySetResult {
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'userList': pulumi.Input.encodeList<KeySetUserResponse, Map<String, dynamic>>(userList, (value) => value.toMap()),
-      'userListStatus': pulumi.Input.encodeList<KeySetUserStatusResponse, Map<String, dynamic>>(userListStatus, (value) => value.toMap()),
+      'userList':
+          pulumi.Input.encodeList<KeySetUserResponse, Map<String, dynamic>>(
+            userList,
+            (value) => value.toMap(),
+          ),
+      'userListStatus':
+          pulumi.Input.encodeList<
+            KeySetUserStatusResponse,
+            Map<String, dynamic>
+          >(userListStatus, (value) => value.toMap()),
     };
   }
 
@@ -126,21 +153,41 @@ class GetBareMetalMachineKeySetResult {
       detailedStatusMessage: map['detailedStatusMessage'] as String,
       etag: map['etag'] as String,
       expiration: map['expiration'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: ExtendedLocationResponse.fromMap(
+        (map['extendedLocation']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       jumpHostsAllowed: (map['jumpHostsAllowed'] as List).cast<String>(),
       lastValidation: map['lastValidation'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      osGroupName: map['osGroupName'] == null ? null : map['osGroupName']! as String,
+      osGroupName: (() {
+        final guardedValue = map['osGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       privilegeLevel: map['privilegeLevel'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      userList: pulumi.Input.decodeList<KeySetUserResponse>(map['userList'], (value) => KeySetUserResponse.fromMap((value as Map).cast<String, dynamic>())),
-      userListStatus: pulumi.Input.decodeList<KeySetUserStatusResponse>(map['userListStatus'], (value) => KeySetUserStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      userList: pulumi.Input.decodeList<KeySetUserResponse>(
+        map['userList']!,
+        (value) =>
+            KeySetUserResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      userListStatus: pulumi.Input.decodeList<KeySetUserStatusResponse>(
+        map['userListStatus']!,
+        (value) => KeySetUserStatusResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum BackupStorageAccessTier {
   valueHot("Hot"),
   valueArchive("Archive");
 
-  const BackupStorageAccessTier(this.value);
-  final String value;
+  const BackupStorageAccessTier(this.wireValue);
+  final String wireValue;
 
   static BackupStorageAccessTier fromValue(String value) {
     for (final item in BackupStorageAccessTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupStorageAccessTier value: $value');
   }
 }
-

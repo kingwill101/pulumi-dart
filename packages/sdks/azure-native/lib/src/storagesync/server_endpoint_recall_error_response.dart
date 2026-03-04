@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerEndpointRecallErrorResponse {
   /// Count of occurences of the error
   final pulumi.Input<double> count;
+
   /// Error code (HResult)
   final pulumi.Input<int> errorCode;
 
@@ -18,17 +19,13 @@ class ServerEndpointRecallErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'errorCode': errorCode,
-    };
+    return <String, dynamic>{'count': count, 'errorCode': errorCode};
   }
 
   factory ServerEndpointRecallErrorResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointRecallErrorResponse(
-      count: (map['count'] as double).input(),
-      errorCode: (map['errorCode'] as int).input(),
+      count: pulumi.Input.fromValue(map['count'] as double),
+      errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
     );
   }
 }
-

@@ -10,12 +10,16 @@ import 'acl_entry_list.dart';
 class AclArgs {
   /// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
   final pulumi.Input<List<AclEntryList>>? entryLists;
+
   /// The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
   final pulumi.Input<String>? ipVersion;
+
   /// Name of the access control list.
   final pulumi.Input<String>? name;
+
   /// Resource group ID.
   final pulumi.Input<String>? resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,7 +39,18 @@ class AclArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entryLists': ?pulumi.Input.mapOptionalInputValue<List<AclEntryList>, List<Map<String, dynamic>>>(entryLists, (value) => pulumi.Input.encodeList<AclEntryList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'entryLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AclEntryList>,
+            List<Map<String, dynamic>>
+          >(
+            entryLists,
+            (value) =>
+                pulumi.Input.encodeList<AclEntryList, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'ipVersion': ?ipVersion,
       'name': ?name,
       'resourceGroupId': ?resourceGroupId,
@@ -45,12 +60,39 @@ class AclArgs {
 
   factory AclArgs.fromMap(Map<String, dynamic> map) {
     return AclArgs(
-      entryLists: map['entryLists'] == null ? null : (pulumi.Input.decodeList<AclEntryList>(map['entryLists']!, (value) => AclEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      entryLists: (() {
+        final guardedValue = map['entryLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AclEntryList>(
+            guardedValue,
+            (value) =>
+                AclEntryList.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

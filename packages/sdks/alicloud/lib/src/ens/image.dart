@@ -8,7 +8,7 @@ import 'image_state.dart';
 ///
 /// For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createimage).
 ///
-/// > **NOTE:** Available since v1.216.0.
+/// &gt; **NOTE:** Available since v1.216.0.
 ///
 /// ## Example Usage
 ///
@@ -253,14 +253,19 @@ import 'image_state.dart';
 class Image extends pulumi.CustomResource {
   /// The image creation time.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
   late final pulumi.Output<String?> deleteAfterImageUpload;
+
   /// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   late final pulumi.Output<String> imageName;
+
   /// The ID of the instance.
   late final pulumi.Output<String?> instanceId;
+
   /// The state of the image.
   late final pulumi.Output<String> status;
+
   /// The region of the target OSS where the image is to be stored.
   late final pulumi.Output<String> targetOssRegionId;
 
@@ -268,30 +273,23 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_ens_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(
-    String name, {
-    ImageArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ens/image:Image',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteAfterImageUpload = registerOutput<String?>('deleteAfterImageUpload');
-    this.imageName = registerOutput<String>('imageName');
-    this.instanceId = registerOutput<String?>('instanceId');
-    this.status = registerOutput<String>('status');
-    this.targetOssRegionId = registerOutput<String>('targetOssRegionId');
+  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ens/image:Image',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteAfterImageUpload = registerOutput<String?>('deleteAfterImageUpload');
+    imageName = registerOutput<String>('imageName');
+    instanceId = registerOutput<String?>('instanceId');
+    status = registerOutput<String>('status');
+    targetOssRegionId = registerOutput<String>('targetOssRegionId');
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
-  static Image get(
-    String name,
-    pulumi.Input<String> id, {
-    ImageState? state,
-  }) {
+  static Image get(String name, pulumi.Input<String> id, {ImageState? state}) {
     return Image._get(
       name,
       state: state?.toMap(),
@@ -304,16 +302,16 @@ class Image extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/image:Image',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteAfterImageUpload = registerOutput<String?>('deleteAfterImageUpload');
-    this.imageName = registerOutput<String>('imageName');
-    this.instanceId = registerOutput<String?>('instanceId');
-    this.status = registerOutput<String>('status');
-    this.targetOssRegionId = registerOutput<String>('targetOssRegionId');
+         'alicloud:ens/image:Image',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    deleteAfterImageUpload = registerOutput<String?>('deleteAfterImageUpload');
+    imageName = registerOutput<String>('imageName');
+    instanceId = registerOutput<String?>('instanceId');
+    status = registerOutput<String>('status');
+    targetOssRegionId = registerOutput<String>('targetOssRegionId');
   }
 }

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerSubscriptionArgs {
   /// Name of the product.
   final pulumi.Input<String>? customerSubscriptionName;
+
   /// Name of the Azure Stack registration.
   final pulumi.Input<String> registrationName;
+
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroup;
+
   /// Tenant Id.
   final pulumi.Input<String>? tenantId;
 
@@ -39,11 +42,20 @@ class CustomerSubscriptionArgs {
 
   factory CustomerSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return CustomerSubscriptionArgs(
-      customerSubscriptionName: map['customerSubscriptionName'] == null ? null : (map['customerSubscriptionName']! as String).input(),
-      registrationName: (map['registrationName'] as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      customerSubscriptionName: (() {
+        final guardedValue = map['customerSubscriptionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationName: pulumi.Input.fromValue(
+        map['registrationName'] as String,
+      ),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

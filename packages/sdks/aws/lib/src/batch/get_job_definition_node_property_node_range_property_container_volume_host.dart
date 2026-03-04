@@ -13,15 +13,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sourcePath': sourcePath,
-    };
+    return <String, dynamic>{'sourcePath': sourcePath};
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost(
-      sourcePath: (map['sourcePath'] as String).input(),
+      sourcePath: pulumi.Input.fromValue(map['sourcePath'] as String),
     );
   }
 }
-

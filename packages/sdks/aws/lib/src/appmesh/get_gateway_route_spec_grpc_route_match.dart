@@ -15,17 +15,13 @@ class GetGatewayRouteSpecGrpcRouteMatch {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': port,
-      'serviceName': serviceName,
-    };
+    return <String, dynamic>{'port': port, 'serviceName': serviceName};
   }
 
   factory GetGatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRouteMatch(
-      port: (map['port'] as int).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

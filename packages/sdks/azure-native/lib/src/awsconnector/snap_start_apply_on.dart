@@ -3,16 +3,15 @@ enum SnapStartApplyOn {
   none("None"),
   publishedVersions("PublishedVersions");
 
-  const SnapStartApplyOn(this.value);
-  final String value;
+  const SnapStartApplyOn(this.wireValue);
+  final String wireValue;
 
   static SnapStartApplyOn fromValue(String value) {
     for (final item in SnapStartApplyOn.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SnapStartApplyOn value: $value');
   }
 }
-

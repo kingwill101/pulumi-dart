@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareToAzStackHCIProtectedNicPropertiesResponse {
   /// Gets or sets a value indicating whether this is the primary NIC.
   final pulumi.Input<bool>? isPrimaryNic;
+
   /// Gets or sets the NIC label.
   final pulumi.Input<String> label;
+
   /// Gets or sets the NIC mac address.
   final pulumi.Input<String> macAddress;
+
   /// Gets or sets the network name.
   final pulumi.Input<String> networkName;
+
   /// Gets or sets the NIC Id.
   final pulumi.Input<String> nicId;
+
   /// Gets or sets the selection type of the NIC.
   final pulumi.Input<String> selectionTypeForFailover;
+
   /// Gets or sets the target network Id within AzStackHCI Cluster.
   final pulumi.Input<String> targetNetworkId;
+
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
   final pulumi.Input<String> testNetworkId;
 
@@ -54,17 +61,24 @@ class VMwareToAzStackHCIProtectedNicPropertiesResponse {
     };
   }
 
-  factory VMwareToAzStackHCIProtectedNicPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VMwareToAzStackHCIProtectedNicPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareToAzStackHCIProtectedNicPropertiesResponse(
-      isPrimaryNic: map['isPrimaryNic'] == null ? null : (map['isPrimaryNic']! as bool).input(),
-      label: (map['label'] as String).input(),
-      macAddress: (map['macAddress'] as String).input(),
-      networkName: (map['networkName'] as String).input(),
-      nicId: (map['nicId'] as String).input(),
-      selectionTypeForFailover: (map['selectionTypeForFailover'] as String).input(),
-      targetNetworkId: (map['targetNetworkId'] as String).input(),
-      testNetworkId: (map['testNetworkId'] as String).input(),
+      isPrimaryNic: (() {
+        final guardedValue = map['isPrimaryNic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
+      networkName: pulumi.Input.fromValue(map['networkName'] as String),
+      nicId: pulumi.Input.fromValue(map['nicId'] as String),
+      selectionTypeForFailover: pulumi.Input.fromValue(
+        map['selectionTypeForFailover'] as String,
+      ),
+      targetNetworkId: pulumi.Input.fromValue(map['targetNetworkId'] as String),
+      testNetworkId: pulumi.Input.fromValue(map['testNetworkId'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum SslCryptoProvider {
   valueCommoncrypto("commoncrypto"),
   valueOpenssl("openssl");
 
-  const SslCryptoProvider(this.value);
-  final String value;
+  const SslCryptoProvider(this.wireValue);
+  final String wireValue;
 
   static SslCryptoProvider fromValue(String value) {
     for (final item in SslCryptoProvider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslCryptoProvider value: $value');
   }
 }
-

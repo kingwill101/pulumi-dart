@@ -4,16 +4,17 @@ enum InstanceMemcacheVersionMemcacheV1beta2 {
   memcache15("MEMCACHE_1_5"),
   memcache1615("MEMCACHE_1_6_15");
 
-  const InstanceMemcacheVersionMemcacheV1beta2(this.value);
-  final String value;
+  const InstanceMemcacheVersionMemcacheV1beta2(this.wireValue);
+  final String wireValue;
 
   static InstanceMemcacheVersionMemcacheV1beta2 fromValue(String value) {
     for (final item in InstanceMemcacheVersionMemcacheV1beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceMemcacheVersionMemcacheV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceMemcacheVersionMemcacheV1beta2 value: $value',
+    );
   }
 }
-

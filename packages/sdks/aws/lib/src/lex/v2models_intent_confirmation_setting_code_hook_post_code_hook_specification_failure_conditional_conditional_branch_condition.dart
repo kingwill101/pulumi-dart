@@ -13,15 +13,16 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expressionString': expressionString,
-    };
+    return <String, dynamic>{'expressionString': expressionString};
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition(
-      expressionString: (map['expressionString'] as String).input(),
+      expressionString: pulumi.Input.fromValue(
+        map['expressionString'] as String,
+      ),
     );
   }
 }
-

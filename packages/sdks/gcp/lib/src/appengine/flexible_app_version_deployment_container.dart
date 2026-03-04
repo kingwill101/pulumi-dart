@@ -9,20 +9,17 @@ class FlexibleAppVersionDeploymentContainer {
 
   /// Creates a new [FlexibleAppVersionDeploymentContainer].
   /// [image] URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
-  FlexibleAppVersionDeploymentContainer({
-    required this.image,
-  });
+  FlexibleAppVersionDeploymentContainer({required this.image});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'image': image,
-    };
+    return <String, dynamic>{'image': image};
   }
 
-  factory FlexibleAppVersionDeploymentContainer.fromMap(Map<String, dynamic> map) {
+  factory FlexibleAppVersionDeploymentContainer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlexibleAppVersionDeploymentContainer(
-      image: (map['image'] as String).input(),
+      image: pulumi.Input.fromValue(map['image'] as String),
     );
   }
 }
-

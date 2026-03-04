@@ -14,15 +14,14 @@ class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigRes
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfigResponse(
-      value: (map['value'] as double).input(),
+      value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
-

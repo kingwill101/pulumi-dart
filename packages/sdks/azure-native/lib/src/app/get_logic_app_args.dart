@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogicAppArgs {
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
+
   /// Name of the Logic App, the extension resource.
   final pulumi.Input<String> logicAppName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetLogicAppArgs {
 
   factory GetLogicAppArgs.fromMap(Map<String, dynamic> map) {
     return GetLogicAppArgs(
-      containerAppName: (map['containerAppName'] as String).input(),
-      logicAppName: (map['logicAppName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      containerAppName: pulumi.Input.fromValue(
+        map['containerAppName'] as String,
+      ),
+      logicAppName: pulumi.Input.fromValue(map['logicAppName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

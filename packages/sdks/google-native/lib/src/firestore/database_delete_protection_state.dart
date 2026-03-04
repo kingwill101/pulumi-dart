@@ -4,16 +4,15 @@ enum DatabaseDeleteProtectionState {
   deleteProtectionDisabled("DELETE_PROTECTION_DISABLED"),
   deleteProtectionEnabled("DELETE_PROTECTION_ENABLED");
 
-  const DatabaseDeleteProtectionState(this.value);
-  final String value;
+  const DatabaseDeleteProtectionState(this.wireValue);
+  final String wireValue;
 
   static DatabaseDeleteProtectionState fromValue(String value) {
     for (final item in DatabaseDeleteProtectionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseDeleteProtectionState value: $value');
   }
 }
-

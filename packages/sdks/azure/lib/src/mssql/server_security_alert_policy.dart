@@ -4,7 +4,7 @@ import 'server_security_alert_policy_state.dart';
 
 /// Manages a Security Alert Policy for a MSSQL Server.
 ///
-/// > **Note:** Security Alert Policy is currently only available for MS SQL databases.
+/// &gt; **Note:** Security Alert Policy is currently only available for MS SQL databases.
 ///
 /// ## Example Usage
 ///
@@ -298,7 +298,7 @@ import 'server_security_alert_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -313,27 +313,35 @@ import 'server_security_alert_policy_state.dart';
 class ServerSecurityAlertPolicy extends pulumi.CustomResource {
   /// Specifies an array of alerts that are disabled. Allowed values are: `Sql_Injection`, `Sql_Injection_Vulnerability`, `Access_Anomaly`, `Data_Exfiltration`, `Unsafe_Action`.
   late final pulumi.Output<List<String>?> disabledAlerts;
+
   /// Are the alerts sent to the account administrators? Possible values are `true` or `false`. Defaults to `false`.
   late final pulumi.Output<bool?> emailAccountAdmins;
+
   /// Specifies an array of email addresses to which the alert is sent.
   late final pulumi.Output<List<String>?> emailAddresses;
+
   /// The name of the resource group that contains the MS SQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the number of days to keep the Threat Detection audit logs. Defaults to `0`.
   late final pulumi.Output<int?> retentionDays;
+
   /// Specifies the name of the MS SQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
+
   /// Specifies the state of the policy. Possible values are `Disabled` or `Enabled`.
   late final pulumi.Output<String> state;
+
   /// Specifies the primary access key of the Threat Detection audit logs blob storage endpoint.
   ///
-  /// > **Note:** The `storage_account_access_key` only applies if the storage account is not behind a virtual network or a firewall.
+  /// &gt; **Note:** The `storage_account_access_key` only applies if the storage account is not behind a virtual network or a firewall.
   late final pulumi.Output<String?> storageAccountAccessKey;
+
   /// Specifies the blob storage endpoint that will hold all Threat Detection audit logs (e.g., `https://example.blob.core.windows.net`).
   ///
-  /// > **Note:** The `storage_account_access_key` field is required when the `storage_endpoint` field has been set.
+  /// &gt; **Note:** The `storage_account_access_key` field is required when the `storage_endpoint` field has been set.
   ///
-  /// > **Note:** Storage accounts configured with `shared_access_key_enabled = false` cannot be used for the `storage_endpoint` field.
+  /// &gt; **Note:** Storage accounts configured with `shared_access_key_enabled = false` cannot be used for the `storage_endpoint` field.
   late final pulumi.Output<String?> storageEndpoint;
 
   /// Creates a new [ServerSecurityAlertPolicy].
@@ -345,20 +353,22 @@ class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     ServerSecurityAlertPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
-    this.emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
-    this.emailAddresses = registerOutput<List<String>?>('emailAddresses');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.serverName = registerOutput<String>('serverName');
-    this.state = registerOutput<String>('state');
-    this.storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
-    this.storageEndpoint = registerOutput<String?>('storageEndpoint');
+         'azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDays = registerOutput<int?>('retentionDays');
+    serverName = registerOutput<String>('serverName');
+    state = registerOutput<String>('state');
+    storageAccountAccessKey = registerOutput<String?>(
+      'storageAccountAccessKey',
+    );
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
   /// Gets an existing [ServerSecurityAlertPolicy] resource's state with the given [name] and [id].
@@ -379,19 +389,21 @@ class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
-    this.emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
-    this.emailAddresses = registerOutput<List<String>?>('emailAddresses');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.serverName = registerOutput<String>('serverName');
+         'azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDays = registerOutput<int?>('retentionDays');
+    serverName = registerOutput<String>('serverName');
     this.state = registerOutput<String>('state');
-    this.storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
-    this.storageEndpoint = registerOutput<String?>('storageEndpoint');
+    storageAccountAccessKey = registerOutput<String?>(
+      'storageAccountAccessKey',
+    );
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

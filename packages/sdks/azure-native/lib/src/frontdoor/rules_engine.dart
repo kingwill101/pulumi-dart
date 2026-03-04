@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rules_engine_args.dart';
-import 'rules_engine_rule_response.dart';
 
 /// A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
 ///
@@ -585,12 +584,16 @@ import 'rules_engine_rule_response.dart';
 class RulesEngine extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource status.
   late final pulumi.Output<String> resourceState;
+
   /// A list of rules that define a particular Rules Engine Configuration.
-  late final pulumi.Output<List<RulesEngineRuleResponse>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -603,15 +606,15 @@ class RulesEngine extends pulumi.CustomResource {
     RulesEngineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:frontdoor:RulesEngine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:frontdoor:RulesEngine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.rules = registerOutput<List<RulesEngineRuleResponse>?>('rules');
-    this.type = registerOutput<String>('type');
+    resourceState = registerOutput<String>('resourceState');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    type = registerOutput<String>('type');
   }
 }

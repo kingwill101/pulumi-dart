@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitHubOrganization {
   /// Optional list of repositories in which the pool should be created.
   final pulumi.Input<List<String>>? repositories;
+
   /// The GitHub organization URL in which the pool should be created.
   final pulumi.Input<String> url;
 
   /// Creates a new [GitHubOrganization].
   /// [repositories] Optional list of repositories in which the pool should be created.
   /// [url] The GitHub organization URL in which the pool should be created.
-  GitHubOrganization({
-    this.repositories,
-    required this.url,
-  });
+  GitHubOrganization({this.repositories, required this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'repositories': ?repositories,
-      'url': url,
-    };
+    return <String, dynamic>{'repositories': ?repositories, 'url': url};
   }
 
   factory GitHubOrganization.fromMap(Map<String, dynamic> map) {
     return GitHubOrganization(
-      repositories: map['repositories'] == null ? null : ((map['repositories']! as List).cast<String>()).input(),
-      url: (map['url'] as String).input(),
+      repositories: (() {
+        final guardedValue = map['repositories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      url: pulumi.Input.fromValue(map['url'] as String),
     );
   }
 }
-

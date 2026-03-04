@@ -10,20 +10,39 @@ class ResourceLogConfiguration {
 
   /// Creates a new [ResourceLogConfiguration].
   /// [categories] Gets or sets the list of category configurations.
-  ResourceLogConfiguration({
-    this.categories,
-  });
+  ResourceLogConfiguration({this.categories});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categories': ?pulumi.Input.mapOptionalInputValue<List<ResourceLogCategory>, List<Map<String, dynamic>>>(categories, (value) => pulumi.Input.encodeList<ResourceLogCategory, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'categories':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceLogCategory>,
+            List<Map<String, dynamic>>
+          >(
+            categories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceLogCategory,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ResourceLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ResourceLogConfiguration(
-      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<ResourceLogCategory>(map['categories']!, (value) => ResourceLogCategory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      categories: (() {
+        final guardedValue = map['categories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceLogCategory>(
+            guardedValue,
+            (value) => ResourceLogCategory.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_hdinsight;
-
 export 'hdinsight/functions.dart';
 export 'hdinsight/get_cluster_args.dart';
 export 'hdinsight/get_cluster_gateway.dart';

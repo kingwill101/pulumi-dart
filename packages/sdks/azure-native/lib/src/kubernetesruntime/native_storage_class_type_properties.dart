@@ -10,20 +10,15 @@ class NativeStorageClassTypeProperties {
 
   /// Creates a new [NativeStorageClassTypeProperties].
   /// [type] Type of a storage class
-  NativeStorageClassTypeProperties({
-    required this.type,
-  });
+  NativeStorageClassTypeProperties({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory NativeStorageClassTypeProperties.fromMap(Map<String, dynamic> map) {
     return NativeStorageClassTypeProperties(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

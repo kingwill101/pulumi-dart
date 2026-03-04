@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceApiDiagnosticArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiId;
+
   /// Diagnostic identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> diagnosticId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -44,12 +48,13 @@ class GetWorkspaceApiDiagnosticArgs {
 
   factory GetWorkspaceApiDiagnosticArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiDiagnosticArgs(
-      apiId: (map['apiId'] as String).input(),
-      diagnosticId: (map['diagnosticId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      diagnosticId: pulumi.Input.fromValue(map['diagnosticId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

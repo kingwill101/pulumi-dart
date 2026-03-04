@@ -6,5 +6,6 @@ environment:
 resolution: workspace
 dependencies:
     pulumi: 0.1.0
+    pulumi_gcp: ^5.0.0
 dev_dependencies:
     lints: ^6.1.0

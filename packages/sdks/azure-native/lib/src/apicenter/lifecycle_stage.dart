@@ -8,16 +8,15 @@ enum LifecycleStage {
   deprecated("deprecated"),
   retired("retired");
 
-  const LifecycleStage(this.value);
-  final String value;
+  const LifecycleStage(this.wireValue);
+  final String wireValue;
 
   static LifecycleStage fromValue(String value) {
     for (final item in LifecycleStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LifecycleStage value: $value');
   }
 }
-

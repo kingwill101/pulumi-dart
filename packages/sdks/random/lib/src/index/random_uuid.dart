@@ -140,6 +140,7 @@ import 'random_uuid_state.dart';
 class RandomUuid extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
+
   /// The generated uuid presented in string format.
   late final pulumi.Output<String> result;
 
@@ -152,13 +153,13 @@ class RandomUuid extends pulumi.CustomResource {
     RandomUuidArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'random:index/randomUuid:RandomUuid',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keepers = registerOutput<Map<String, String>?>('keepers');
-    this.result = registerOutput<String>('result');
+         'random:index/randomUuid:RandomUuid',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keepers = registerOutput<Map<String, String>?>('keepers');
+    result = registerOutput<String>('result');
   }
 
   /// Gets an existing [RandomUuid] resource's state with the given [name] and [id].
@@ -179,12 +180,12 @@ class RandomUuid extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'random:index/randomUuid:RandomUuid',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keepers = registerOutput<Map<String, String>?>('keepers');
-    this.result = registerOutput<String>('result');
+         'random:index/randomUuid:RandomUuid',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keepers = registerOutput<Map<String, String>?>('keepers');
+    result = registerOutput<String>('result');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStreamingJobArgs {
   /// The $expand OData query parameter. This is a comma-separated list of additional streaming job properties to include in the response, beyond the default set returned when this parameter is absent. The default set is all streaming job properties other than 'inputs', 'transformation', 'outputs', and 'functions'.
   final pulumi.Input<String>? expand;
+
   /// The name of the streaming job.
   final pulumi.Input<String> jobName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetStreamingJobArgs {
 
   factory GetStreamingJobArgs.fromMap(Map<String, dynamic> map) {
     return GetStreamingJobArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      jobName: (map['jobName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

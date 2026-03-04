@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StationConnectionPropertiesResponse {
   /// Connection keepalive idle time in seconds
   final pulumi.Input<int>? keepaliveIdleTime;
+
   /// Probe count, default value is 10
   final pulumi.Input<int>? probeCount;
+
   /// Probe interval in seconds, default value is 60
   final pulumi.Input<int>? probeInterval;
 
@@ -29,12 +31,25 @@ class StationConnectionPropertiesResponse {
     };
   }
 
-  factory StationConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory StationConnectionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StationConnectionPropertiesResponse(
-      keepaliveIdleTime: map['keepaliveIdleTime'] == null ? null : (map['keepaliveIdleTime']! as int).input(),
-      probeCount: map['probeCount'] == null ? null : (map['probeCount']! as int).input(),
-      probeInterval: map['probeInterval'] == null ? null : (map['probeInterval']! as int).input(),
+      keepaliveIdleTime: (() {
+        final guardedValue = map['keepaliveIdleTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      probeCount: (() {
+        final guardedValue = map['probeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      probeInterval: (() {
+        final guardedValue = map['probeInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'vpd_state.dart';
 ///
 /// For information about Eflo Vpd and how to use it, see [What is Vpd](https://next.api.alibabacloud.com/document/eflo/2022-05-30/CreateVpd).
 ///
-/// > **NOTE:** Available since v1.201.0.
+/// &gt; **NOTE:** Available since v1.201.0.
 ///
 /// ## Example Usage
 ///
@@ -167,20 +167,28 @@ import 'vpd_state.dart';
 class Vpd extends pulumi.CustomResource {
   /// The CIDR block of the VPD.
   late final pulumi.Output<String> cidr;
+
   /// The time when the activation code was created.
   late final pulumi.Output<String> createTime;
+
   /// The time when the O&M task was modified.
   late final pulumi.Output<String> gmtModified;
+
   /// (Available since v1.263.0) The region ID.
   late final pulumi.Output<String> regionId;
+
   /// The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The additional CIDR block.
   late final pulumi.Output<List<String>?> secondaryCidrBlocks;
+
   /// The current state of the instance.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The name of the VPD instance.
   late final pulumi.Output<String> vpdName;
 
@@ -188,33 +196,26 @@ class Vpd extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Vpd]. {@macro pulumi_eflo_vpd_vpd_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Vpd(
-    String name, {
-    VpdArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:eflo/vpd:Vpd',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.createTime = registerOutput<String>('createTime');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.secondaryCidrBlocks = registerOutput<List<String>?>('secondaryCidrBlocks');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpdName = registerOutput<String>('vpdName');
+  Vpd(String name, {VpdArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:eflo/vpd:Vpd',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    cidr = registerOutput<String>('cidr');
+    createTime = registerOutput<String>('createTime');
+    gmtModified = registerOutput<String>('gmtModified');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    secondaryCidrBlocks = registerOutput<List<String>?>('secondaryCidrBlocks');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpdName = registerOutput<String>('vpdName');
   }
 
   /// Gets an existing [Vpd] resource's state with the given [name] and [id].
-  static Vpd get(
-    String name,
-    pulumi.Input<String> id, {
-    VpdState? state,
-  }) {
+  static Vpd get(String name, pulumi.Input<String> id, {VpdState? state}) {
     return Vpd._get(
       name,
       state: state?.toMap(),
@@ -227,19 +228,19 @@ class Vpd extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/vpd:Vpd',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.createTime = registerOutput<String>('createTime');
-    this.gmtModified = registerOutput<String>('gmtModified');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.secondaryCidrBlocks = registerOutput<List<String>?>('secondaryCidrBlocks');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpdName = registerOutput<String>('vpdName');
+         'alicloud:eflo/vpd:Vpd',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    createTime = registerOutput<String>('createTime');
+    gmtModified = registerOutput<String>('gmtModified');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    secondaryCidrBlocks = registerOutput<List<String>?>('secondaryCidrBlocks');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpdName = registerOutput<String>('vpdName');
   }
 }

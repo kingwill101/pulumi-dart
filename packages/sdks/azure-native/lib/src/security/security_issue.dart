@@ -7,16 +7,15 @@ enum SecurityIssue {
   valueTrafficEncryption("TrafficEncryption"),
   valueBestPractices("BestPractices");
 
-  const SecurityIssue(this.value);
-  final String value;
+  const SecurityIssue(this.wireValue);
+  final String wireValue;
 
   static SecurityIssue fromValue(String value) {
     for (final item in SecurityIssue.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityIssue value: $value');
   }
 }
-

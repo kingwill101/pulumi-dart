@@ -6,6 +6,7 @@ import 'get_backup_policies_policy.dart';
 /// Result data returned by getBackupPolicies.
 class GetBackupPoliciesResult {
   final String dbClusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
@@ -28,7 +29,11 @@ class GetBackupPoliciesResult {
       'dbClusterId': dbClusterId,
       'id': id,
       'outputFile': ?outputFile,
-      'policies': pulumi.Input.encodeList<GetBackupPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'policies':
+          pulumi.Input.encodeList<
+            GetBackupPoliciesPolicy,
+            Map<String, dynamic>
+          >(policies, (value) => value.toMap()),
     };
   }
 
@@ -36,9 +41,17 @@ class GetBackupPoliciesResult {
     return GetBackupPoliciesResult(
       dbClusterId: map['dbClusterId'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      policies: pulumi.Input.decodeList<GetBackupPoliciesPolicy>(map['policies'], (value) => GetBackupPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policies: pulumi.Input.decodeList<GetBackupPoliciesPolicy>(
+        map['policies']!,
+        (value) => GetBackupPoliciesPolicy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

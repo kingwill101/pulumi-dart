@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryCredentialsResponse {
   /// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
   final pulumi.Input<String>? identity;
+
   /// The name of the Secret that contains the registry login password
   final pulumi.Input<String>? passwordSecretRef;
+
   /// Container Registry Server
   final pulumi.Input<String>? server;
+
   /// Container Registry Username
   final pulumi.Input<String>? username;
 
@@ -36,11 +39,26 @@ class RegistryCredentialsResponse {
 
   factory RegistryCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialsResponse(
-      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
-      passwordSecretRef: map['passwordSecretRef'] == null ? null : (map['passwordSecretRef']! as String).input(),
-      server: map['server'] == null ? null : (map['server']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordSecretRef: (() {
+        final guardedValue = map['passwordSecretRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

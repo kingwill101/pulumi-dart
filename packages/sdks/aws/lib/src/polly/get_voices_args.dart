@@ -10,12 +10,16 @@ import 'get_voices_voice.dart';
 class GetVoicesArgs {
   /// Engine used by Amazon Polly when processing input text for speech synthesis. Valid values are `standard`, `neural`, and `long-form`.
   final pulumi.Input<String>? engine;
+
   /// Whether to return any bilingual voices that use the specified language as an additional language.
   final pulumi.Input<bool>? includeAdditionalLanguageCodes;
+
   /// Language identification tag for filtering the list of voices returned. If not specified, all available voices are returned.
   final pulumi.Input<String>? languageCode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of voices with their properties. See `voices` Attribute Reference below.
   final pulumi.Input<List<GetVoicesVoice>>? voices;
 
@@ -39,18 +43,54 @@ class GetVoicesArgs {
       'includeAdditionalLanguageCodes': ?includeAdditionalLanguageCodes,
       'languageCode': ?languageCode,
       'region': ?region,
-      'voices': ?pulumi.Input.mapOptionalInputValue<List<GetVoicesVoice>, List<Map<String, dynamic>>>(voices, (value) => pulumi.Input.encodeList<GetVoicesVoice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'voices':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetVoicesVoice>,
+            List<Map<String, dynamic>>
+          >(
+            voices,
+            (value) =>
+                pulumi.Input.encodeList<GetVoicesVoice, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory GetVoicesArgs.fromMap(Map<String, dynamic> map) {
     return GetVoicesArgs(
-      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
-      includeAdditionalLanguageCodes: map['includeAdditionalLanguageCodes'] == null ? null : ((map['includeAdditionalLanguageCodes'] as bool).input()).input(),
-      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      voices: map['voices'] == null ? null : ((pulumi.Input.decodeList<GetVoicesVoice>(map['voices']!, (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      includeAdditionalLanguageCodes: (() {
+        final guardedValue = map['includeAdditionalLanguageCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      languageCode: (() {
+        final guardedValue = map['languageCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      voices: (() {
+        final guardedValue = map['voices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetVoicesVoice>(
+            guardedValue,
+            (value) =>
+                GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

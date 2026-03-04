@@ -3,7 +3,6 @@ import 'encryption_property_response.dart';
 import 'identity_properties_response.dart';
 import 'network_rule_set_response.dart';
 import 'policies_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'registry_args.dart';
 import 'sku_response.dart';
 import 'status_response.dart';
@@ -337,48 +336,71 @@ import 'system_data_response.dart';
 class Registry extends pulumi.CustomResource {
   /// The value that indicates whether the admin user is enabled.
   late final pulumi.Output<bool?> adminUserEnabled;
+
   /// Enables registry-wide pull from unauthenticated clients.
   late final pulumi.Output<bool?> anonymousPullEnabled;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of the container registry in ISO8601 format.
   late final pulumi.Output<String> creationDate;
+
   /// Enable a single data endpoint per region for serving data.
   late final pulumi.Output<bool?> dataEndpointEnabled;
+
   /// List of host names that will serve data when dataEndpointEnabled is true.
   late final pulumi.Output<List<String>> dataEndpointHostNames;
+
   /// The encryption settings of container registry.
   late final pulumi.Output<EncryptionPropertyResponse?> encryption;
+
   /// The identity of the container registry.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
+
   /// The location of the resource. This cannot be changed after the resource is created.
   late final pulumi.Output<String> location;
+
   /// The URL that can be used to log into the container registry.
   late final pulumi.Output<String> loginServer;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Whether to allow trusted Azure services to access a network restricted registry.
   late final pulumi.Output<String?> networkRuleBypassOptions;
+
   /// The network rule set for a container registry.
   late final pulumi.Output<NetworkRuleSetResponse?> networkRuleSet;
+
   /// The policies for a container registry.
   late final pulumi.Output<PoliciesResponse?> policies;
+
   /// List of private endpoint connections for a container registry.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The provisioning state of the container registry at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// Whether or not public network access is allowed for the container registry.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The SKU of the container registry.
   late final pulumi.Output<SkuResponse> sku;
+
   /// The status of the container registry at the time the operation was called.
   late final pulumi.Output<StatusResponse> status;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
+
   /// Whether or not zone redundancy is enabled for this container registry
   late final pulumi.Output<String?> zoneRedundancy;
 
@@ -391,33 +413,39 @@ class Registry extends pulumi.CustomResource {
     RegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:Registry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminUserEnabled = registerOutput<bool?>('adminUserEnabled');
-    this.anonymousPullEnabled = registerOutput<bool?>('anonymousPullEnabled');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.dataEndpointEnabled = registerOutput<bool?>('dataEndpointEnabled');
-    this.dataEndpointHostNames = registerOutput<List<String>>('dataEndpointHostNames');
-    this.encryption = registerOutput<EncryptionPropertyResponse?>('encryption');
-    this.identity = registerOutput<IdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.loginServer = registerOutput<String>('loginServer');
+         'azure-native:containerregistry:Registry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminUserEnabled = registerOutput<bool?>('adminUserEnabled');
+    anonymousPullEnabled = registerOutput<bool?>('anonymousPullEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    dataEndpointEnabled = registerOutput<bool?>('dataEndpointEnabled');
+    dataEndpointHostNames = registerOutput<List<String>>(
+      'dataEndpointHostNames',
+    );
+    encryption = registerOutput<EncryptionPropertyResponse?>('encryption');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    location = registerOutput<String>('location');
+    loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
-    this.networkRuleBypassOptions = registerOutput<String?>('networkRuleBypassOptions');
-    this.networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet');
-    this.policies = registerOutput<PoliciesResponse?>('policies');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.status = registerOutput<StatusResponse>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zoneRedundancy = registerOutput<String?>('zoneRedundancy');
+    networkRuleBypassOptions = registerOutput<String?>(
+      'networkRuleBypassOptions',
+    );
+    networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet');
+    policies = registerOutput<PoliciesResponse?>('policies');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    sku = registerOutput<SkuResponse>('sku');
+    status = registerOutput<StatusResponse>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zoneRedundancy = registerOutput<String?>('zoneRedundancy');
   }
 }

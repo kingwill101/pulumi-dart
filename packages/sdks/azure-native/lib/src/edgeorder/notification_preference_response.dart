@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationPreferenceResponse {
   /// Notification is required or not.
   final pulumi.Input<bool> sendNotification;
+
   /// Name of the stage.
   final pulumi.Input<String> stageName;
 
@@ -26,9 +27,8 @@ class NotificationPreferenceResponse {
 
   factory NotificationPreferenceResponse.fromMap(Map<String, dynamic> map) {
     return NotificationPreferenceResponse(
-      sendNotification: (map['sendNotification'] as bool).input(),
-      stageName: (map['stageName'] as String).input(),
+      sendNotification: pulumi.Input.fromValue(map['sendNotification'] as bool),
+      stageName: pulumi.Input.fromValue(map['stageName'] as String),
     );
   }
 }
-

@@ -7,22 +7,31 @@ import 'service_queue_dlq_policy.dart';
 class ServiceQueueState {
   /// (Available since v1.223.2) The time when the queue was created.
   final pulumi.Input<int>? createTime;
+
   /// The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
   final pulumi.Input<int>? delaySeconds;
+
   /// The dead-letter queue policy. See `dlq_policy` below.
   final pulumi.Input<ServiceQueueDlqPolicy>? dlqPolicy;
+
   /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
   final pulumi.Input<bool>? loggingEnabled;
+
   /// The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
   final pulumi.Input<int>? maximumMessageSize;
+
   /// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
   final pulumi.Input<int>? messageRetentionPeriod;
+
   /// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
   final pulumi.Input<int>? pollingWaitSeconds;
+
   /// The name of the queue.
   final pulumi.Input<String>? queueName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
   final pulumi.Input<int>? visibilityTimeout;
 
@@ -54,7 +63,11 @@ class ServiceQueueState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'delaySeconds': ?delaySeconds,
-      'dlqPolicy': ?pulumi.Input.mapOptionalInputValue<ServiceQueueDlqPolicy, Map<String, dynamic>>(dlqPolicy, (value) => value.toMap()),
+      'dlqPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceQueueDlqPolicy,
+            Map<String, dynamic>
+          >(dlqPolicy, (value) => value.toMap()),
       'loggingEnabled': ?loggingEnabled,
       'maximumMessageSize': ?maximumMessageSize,
       'messageRetentionPeriod': ?messageRetentionPeriod,
@@ -67,17 +80,62 @@ class ServiceQueueState {
 
   factory ServiceQueueState.fromMap(Map<String, dynamic> map) {
     return ServiceQueueState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
-      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds']! as int).input(),
-      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceQueueDlqPolicy.fromMap((map['dlqPolicy']! as Map).cast<String, dynamic>())).input(),
-      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled']! as bool).input(),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize']! as int).input(),
-      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : (map['messageRetentionPeriod']! as int).input(),
-      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : (map['pollingWaitSeconds']! as int).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      visibilityTimeout: map['visibilityTimeout'] == null ? null : (map['visibilityTimeout']! as int).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      delaySeconds: (() {
+        final guardedValue = map['delaySeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dlqPolicy: (() {
+        final guardedValue = map['dlqPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceQueueDlqPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loggingEnabled: (() {
+        final guardedValue = map['loggingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maximumMessageSize: (() {
+        final guardedValue = map['maximumMessageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      messageRetentionPeriod: (() {
+        final guardedValue = map['messageRetentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pollingWaitSeconds: (() {
+        final guardedValue = map['pollingWaitSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      queueName: (() {
+        final guardedValue = map['queueName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      visibilityTimeout: (() {
+        final guardedValue = map['visibilityTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

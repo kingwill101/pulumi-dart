@@ -4,16 +4,15 @@ enum MsiIdentityType {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
-  const MsiIdentityType(this.value);
-  final String value;
+  const MsiIdentityType(this.wireValue);
+  final String wireValue;
 
   static MsiIdentityType fromValue(String value) {
     for (final item in MsiIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MsiIdentityType value: $value');
   }
 }
-

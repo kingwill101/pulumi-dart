@@ -241,22 +241,31 @@ import 'system_data_response.dart';
 class ImportPipeline extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity of the import pipeline.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
+
   /// The location of the import pipeline.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The list of all options configured for the pipeline.
   late final pulumi.Output<List<String>?> options;
+
   /// The provisioning state of the pipeline at the time the operation was called.
   late final pulumi.Output<String> provisioningState;
+
   /// The source properties of the import pipeline.
   late final pulumi.Output<ImportPipelineSourcePropertiesResponse> source;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The properties that describe the trigger of the import pipeline.
   late final pulumi.Output<PipelineTriggerPropertiesResponse?> trigger;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -269,20 +278,20 @@ class ImportPipeline extends pulumi.CustomResource {
     ImportPipelineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:ImportPipeline',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:containerregistry:ImportPipeline',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     this.options = registerOutput<List<String>?>('options');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.source = registerOutput<ImportPipelineSourcePropertiesResponse>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.trigger = registerOutput<PipelineTriggerPropertiesResponse?>('trigger');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    source = registerOutput<ImportPipelineSourcePropertiesResponse>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    trigger = registerOutput<PipelineTriggerPropertiesResponse?>('trigger');
+    type = registerOutput<String>('type');
   }
 }

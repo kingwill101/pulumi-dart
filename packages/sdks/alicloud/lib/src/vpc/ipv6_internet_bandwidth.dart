@@ -6,7 +6,7 @@ import 'ipv6_internet_bandwidth_state.dart';
 ///
 /// For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateipv6internetbandwidth).
 ///
-/// > **NOTE:** Available since v1.143.0.
+/// &gt; **NOTE:** Available since v1.143.0.
 ///
 /// ## Example Usage
 ///
@@ -446,12 +446,16 @@ import 'ipv6_internet_bandwidth_state.dart';
 class Ipv6InternetBandwidth extends pulumi.CustomResource {
   /// The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
   late final pulumi.Output<int> bandwidth;
+
   /// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
   late final pulumi.Output<String> internetChargeType;
+
   /// The ID of the IPv6 address instance.
   late final pulumi.Output<String> ipv6AddressId;
+
   /// The ID of the IPv6 gateway to which the IPv6 address belongs.
   late final pulumi.Output<String> ipv6GatewayId;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
 
@@ -464,16 +468,16 @@ class Ipv6InternetBandwidth extends pulumi.CustomResource {
     Ipv6InternetBandwidthArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.internetChargeType = registerOutput<String>('internetChargeType');
-    this.ipv6AddressId = registerOutput<String>('ipv6AddressId');
-    this.ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    internetChargeType = registerOutput<String>('internetChargeType');
+    ipv6AddressId = registerOutput<String>('ipv6AddressId');
+    ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Ipv6InternetBandwidth] resource's state with the given [name] and [id].
@@ -494,15 +498,15 @@ class Ipv6InternetBandwidth extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidth = registerOutput<int>('bandwidth');
-    this.internetChargeType = registerOutput<String>('internetChargeType');
-    this.ipv6AddressId = registerOutput<String>('ipv6AddressId');
-    this.ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidth = registerOutput<int>('bandwidth');
+    internetChargeType = registerOutput<String>('internetChargeType');
+    ipv6AddressId = registerOutput<String>('ipv6AddressId');
+    ipv6GatewayId = registerOutput<String>('ipv6GatewayId');
+    status = registerOutput<String>('status');
   }
 }

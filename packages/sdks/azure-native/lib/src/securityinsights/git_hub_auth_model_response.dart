@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitHubAuthModelResponse {
   /// The GitHubApp auth installation id.
   final pulumi.Input<String>? installationId;
+
   /// Type of paging
   /// Expected value is 'GitHub'.
   final pulumi.Input<String> type;
@@ -13,23 +14,20 @@ class GitHubAuthModelResponse {
   /// Creates a new [GitHubAuthModelResponse].
   /// [installationId] The GitHubApp auth installation id.
   /// [type] Type of paging
-  GitHubAuthModelResponse({
-    this.installationId,
-    required this.type,
-  });
+  GitHubAuthModelResponse({this.installationId, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'installationId': ?installationId,
-      'type': type,
-    };
+    return <String, dynamic>{'installationId': ?installationId, 'type': type};
   }
 
   factory GitHubAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return GitHubAuthModelResponse(
-      installationId: map['installationId'] == null ? null : (map['installationId']! as String).input(),
-      type: (map['type'] as String).input(),
+      installationId: (() {
+        final guardedValue = map['installationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

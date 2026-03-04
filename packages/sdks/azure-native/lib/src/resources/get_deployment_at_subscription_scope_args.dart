@@ -12,20 +12,17 @@ class GetDeploymentAtSubscriptionScopeArgs {
 
   /// Creates a new [GetDeploymentAtSubscriptionScopeArgs].
   /// [deploymentName] The name of the deployment.
-  GetDeploymentAtSubscriptionScopeArgs({
-    required this.deploymentName,
-  });
+  GetDeploymentAtSubscriptionScopeArgs({required this.deploymentName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deploymentName': deploymentName,
-    };
+    return <String, dynamic>{'deploymentName': deploymentName};
   }
 
-  factory GetDeploymentAtSubscriptionScopeArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentAtSubscriptionScopeArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentAtSubscriptionScopeArgs(
-      deploymentName: (map['deploymentName'] as String).input(),
+      deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
     );
   }
 }
-

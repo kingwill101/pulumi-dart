@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1DialogflowSourceResponse {
   /// Cloud Storage URI that points to a file that contains the conversation audio.
   final pulumi.Input<String> audioUri;
+
   /// The name of the Dialogflow conversation that this conversation resource is derived from. Format: projects/{project}/locations/{location}/conversations/{conversation}
   final pulumi.Input<String> dialogflowConversation;
 
@@ -24,11 +25,14 @@ class GoogleCloudContactcenterinsightsV1DialogflowSourceResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1DialogflowSourceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1DialogflowSourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1DialogflowSourceResponse(
-      audioUri: (map['audioUri'] as String).input(),
-      dialogflowConversation: (map['dialogflowConversation'] as String).input(),
+      audioUri: pulumi.Input.fromValue(map['audioUri'] as String),
+      dialogflowConversation: pulumi.Input.fromValue(
+        map['dialogflowConversation'] as String,
+      ),
     );
   }
 }
-

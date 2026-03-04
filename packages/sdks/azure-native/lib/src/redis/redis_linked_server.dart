@@ -150,16 +150,22 @@ import 'redis_linked_server_args.dart';
 class RedisLinkedServer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Fully qualified resourceId of the linked redis cache.
   late final pulumi.Output<String> linkedRedisCacheId;
+
   /// Location of the linked redis cache.
   late final pulumi.Output<String> linkedRedisCacheLocation;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Terminal state of the link between primary and secondary redis cache.
   late final pulumi.Output<String> provisioningState;
+
   /// Role of the linked server.
   late final pulumi.Output<String> serverRole;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -172,17 +178,19 @@ class RedisLinkedServer extends pulumi.CustomResource {
     RedisLinkedServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:redis:RedisLinkedServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');
-    this.linkedRedisCacheLocation = registerOutput<String>('linkedRedisCacheLocation');
+         'azure-native:redis:RedisLinkedServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');
+    linkedRedisCacheLocation = registerOutput<String>(
+      'linkedRedisCacheLocation',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serverRole = registerOutput<String>('serverRole');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    serverRole = registerOutput<String>('serverRole');
+    type = registerOutput<String>('type');
   }
 }

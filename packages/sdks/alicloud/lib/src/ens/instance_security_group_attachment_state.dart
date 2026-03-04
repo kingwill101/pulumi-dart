@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceSecurityGroupAttachmentState {
   /// Instance ID.
   final pulumi.Input<String>? instanceId;
+
   /// Security group ID.
   final pulumi.Input<String>? securityGroupId;
 
   /// Creates a new [InstanceSecurityGroupAttachmentState].
   /// [instanceId] Instance ID.
   /// [securityGroupId] Security group ID.
-  InstanceSecurityGroupAttachmentState({
-    this.instanceId,
-    this.securityGroupId,
-  });
+  InstanceSecurityGroupAttachmentState({this.instanceId, this.securityGroupId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class InstanceSecurityGroupAttachmentState {
     };
   }
 
-  factory InstanceSecurityGroupAttachmentState.fromMap(Map<String, dynamic> map) {
+  factory InstanceSecurityGroupAttachmentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceSecurityGroupAttachmentState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

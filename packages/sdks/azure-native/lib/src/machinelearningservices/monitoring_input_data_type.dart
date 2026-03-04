@@ -4,16 +4,15 @@ enum MonitoringInputDataType {
   valueRolling("Rolling"),
   valueFixed("Fixed");
 
-  const MonitoringInputDataType(this.value);
-  final String value;
+  const MonitoringInputDataType(this.wireValue);
+  final String wireValue;
 
   static MonitoringInputDataType fromValue(String value) {
     for (final item in MonitoringInputDataType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MonitoringInputDataType value: $value');
   }
 }
-

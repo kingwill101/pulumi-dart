@@ -13,22 +13,31 @@ import 'system_assigned_service_identity.dart';
 class ExportArgs {
   /// Has the definition for the export.
   final pulumi.Input<ExportDefinition> definition;
+
   /// Has delivery information for the export.
   final pulumi.Input<ExportDeliveryInfo> deliveryInfo;
+
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   final pulumi.Input<String>? eTag;
+
   /// Export Name.
   final pulumi.Input<String>? exportName;
+
   /// The format of the export being delivered. Currently only 'Csv' is supported.
   final pulumi.Input<String>? format;
+
   /// The managed identity associated with Export
   final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+
   /// The location of the Export's managed identity. Only required when utilizing managed identity.
   final pulumi.Input<String>? location;
+
   /// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
   final pulumi.Input<bool>? partitionData;
+
   /// Has schedule information for the export.
   final pulumi.Input<ExportSchedule>? schedule;
+
   /// The scope associated with export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
   final pulumi.Input<String> scope;
 
@@ -58,32 +67,89 @@ class ExportArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'definition': pulumi.Input.mapInputValue<ExportDefinition, Map<String, dynamic>>(definition, (value) => value.toMap()),
-      'deliveryInfo': pulumi.Input.mapInputValue<ExportDeliveryInfo, Map<String, dynamic>>(deliveryInfo, (value) => value.toMap()),
+      'definition':
+          pulumi.Input.mapInputValue<ExportDefinition, Map<String, dynamic>>(
+            definition,
+            (value) => value.toMap(),
+          ),
+      'deliveryInfo':
+          pulumi.Input.mapInputValue<ExportDeliveryInfo, Map<String, dynamic>>(
+            deliveryInfo,
+            (value) => value.toMap(),
+          ),
       'eTag': ?eTag,
       'exportName': ?exportName,
       'format': ?format,
-      'identity': ?pulumi.Input.mapOptionalInputValue<SystemAssignedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            SystemAssignedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'partitionData': ?partitionData,
-      'schedule': ?pulumi.Input.mapOptionalInputValue<ExportSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExportSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'scope': scope,
     };
   }
 
   factory ExportArgs.fromMap(Map<String, dynamic> map) {
     return ExportArgs(
-      definition: (ExportDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      deliveryInfo: (ExportDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
-      exportName: map['exportName'] == null ? null : (map['exportName']! as String).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      partitionData: map['partitionData'] == null ? null : (map['partitionData']! as bool).input(),
-      schedule: map['schedule'] == null ? null : (ExportSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
-      scope: (map['scope'] as String).input(),
+      definition: pulumi.Input.fromValue(
+        ExportDefinition.fromMap(
+          (map['definition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      deliveryInfo: pulumi.Input.fromValue(
+        ExportDeliveryInfo.fromMap(
+          (map['deliveryInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      eTag: (() {
+        final guardedValue = map['eTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exportName: (() {
+        final guardedValue = map['exportName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SystemAssignedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partitionData: (() {
+        final guardedValue = map['partitionData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExportSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

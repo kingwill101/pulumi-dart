@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserEmail {
   /// When `true`, this is the primary phone number associated with the user.
   final pulumi.Input<bool> primary;
+
   /// The type of phone number.
   final pulumi.Input<String> type;
+
   /// The user's phone number.
   final pulumi.Input<String> value;
 
@@ -21,19 +23,14 @@ class GetUserEmail {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'primary': primary,
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'primary': primary, 'type': type, 'value': value};
   }
 
   factory GetUserEmail.fromMap(Map<String, dynamic> map) {
     return GetUserEmail(
-      primary: (map['primary'] as bool).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      primary: pulumi.Input.fromValue(map['primary'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

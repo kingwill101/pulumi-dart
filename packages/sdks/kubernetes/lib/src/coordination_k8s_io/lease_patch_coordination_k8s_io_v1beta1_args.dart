@@ -11,10 +11,13 @@ import 'lease_spec_patch_coordination_k8s_io_v1beta1.dart';
 class LeasePatchCoordinationK8sIoV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMetaPatch>? metadata;
+
   /// Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   final pulumi.Input<LeaseSpecPatchCoordinationK8sIoV1beta1>? spec;
 
@@ -34,18 +37,51 @@ class LeasePatchCoordinationK8sIoV1beta1Args {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMetaPatch, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<LeaseSpecPatchCoordinationK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            ObjectMetaPatch,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            LeaseSpecPatchCoordinationK8sIoV1beta1,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
-  factory LeasePatchCoordinationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory LeasePatchCoordinationK8sIoV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LeasePatchCoordinationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (LeaseSpecPatchCoordinationK8sIoV1beta1.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMetaPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LeaseSpecPatchCoordinationK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

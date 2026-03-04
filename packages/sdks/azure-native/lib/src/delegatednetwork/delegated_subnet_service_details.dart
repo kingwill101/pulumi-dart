@@ -332,22 +332,31 @@ class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
   /// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
   /// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
   late final pulumi.Output<int?> allocationBlockPrefixSize;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Properties of the controller.
   late final pulumi.Output<ControllerDetailsResponse?> controllerDetails;
+
   /// Location of the resource.
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The current state of dnc delegated subnet resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource guid.
   late final pulumi.Output<String> resourceGuid;
+
   /// subnet details
   late final pulumi.Output<SubnetDetailsResponse?> subnetDetails;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of resource.
   late final pulumi.Output<String> type;
 
@@ -360,20 +369,24 @@ class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
     DelegatedSubnetServiceDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:delegatednetwork:DelegatedSubnetServiceDetails',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationBlockPrefixSize = registerOutput<int?>('allocationBlockPrefixSize');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.controllerDetails = registerOutput<ControllerDetailsResponse?>('controllerDetails');
-    this.location = registerOutput<String?>('location');
+         'azure-native:delegatednetwork:DelegatedSubnetServiceDetails',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationBlockPrefixSize = registerOutput<int?>(
+      'allocationBlockPrefixSize',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    controllerDetails = registerOutput<ControllerDetailsResponse?>(
+      'controllerDetails',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.subnetDetails = registerOutput<SubnetDetailsResponse?>('subnetDetails');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    subnetDetails = registerOutput<SubnetDetailsResponse?>('subnetDetails');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -4,16 +4,15 @@ enum TagKeyPurpose {
   gceFirewall("GCE_FIREWALL"),
   dataGovernance("DATA_GOVERNANCE");
 
-  const TagKeyPurpose(this.value);
-  final String value;
+  const TagKeyPurpose(this.wireValue);
+  final String wireValue;
 
   static TagKeyPurpose fromValue(String value) {
     for (final item in TagKeyPurpose.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TagKeyPurpose value: $value');
   }
 }
-

@@ -11,30 +11,43 @@ import 'directory_vpc_settings.dart';
 class DirectoryArgs {
   /// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enable_sso`.
   final pulumi.Input<String>? alias;
+
   /// Connector related information about the directory. Fields documented below.
   final pulumi.Input<DirectoryConnectSettings>? connectSettings;
+
   /// A textual description for the directory.
   final pulumi.Input<String>? description;
+
   /// The number of domain controllers desired in the directory. Minimum value of `2`. Scaling of domain controllers is only supported for `MicrosoftAD` directories.
   final pulumi.Input<int>? desiredNumberOfDomainControllers;
+
   /// The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise`.
   final pulumi.Input<String>? edition;
+
   /// Whether to enable single-sign on for the directory. Requires `alias`. Defaults to `false`.
   final pulumi.Input<bool>? enableSso;
+
   /// The fully qualified name for the directory, such as `corp.example.com`
   final pulumi.Input<String> name;
+
   /// The password for the directory administrator or connector user.
   final pulumi.Input<String> password;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The short name of the directory, such as `CORP`.
   final pulumi.Input<String>? shortName;
+
   /// (For `SimpleAD` and `ADConnector` types) The size of the directory (`Small` or `Large` are accepted values). `Large` by default.
   final pulumi.Input<String>? size;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
   final pulumi.Input<String>? type;
+
   /// VPC related information about the directory. Fields documented below.
   final pulumi.Input<DirectoryVpcSettings>? vpcSettings;
 
@@ -73,7 +86,11 @@ class DirectoryArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alias': ?alias,
-      'connectSettings': ?pulumi.Input.mapOptionalInputValue<DirectoryConnectSettings, Map<String, dynamic>>(connectSettings, (value) => value.toMap()),
+      'connectSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectoryConnectSettings,
+            Map<String, dynamic>
+          >(connectSettings, (value) => value.toMap()),
       'description': ?description,
       'desiredNumberOfDomainControllers': ?desiredNumberOfDomainControllers,
       'edition': ?edition,
@@ -85,27 +102,88 @@ class DirectoryArgs {
       'size': ?size,
       'tags': ?tags,
       'type': ?type,
-      'vpcSettings': ?pulumi.Input.mapOptionalInputValue<DirectoryVpcSettings, Map<String, dynamic>>(vpcSettings, (value) => value.toMap()),
+      'vpcSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectoryVpcSettings,
+            Map<String, dynamic>
+          >(vpcSettings, (value) => value.toMap()),
     };
   }
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
-      connectSettings: map['connectSettings'] == null ? null : ((DirectoryConnectSettings.fromMap((map['connectSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : ((map['desiredNumberOfDomainControllers'] as int).input()).input(),
-      edition: map['edition'] == null ? null : ((map['edition'] as String).input()).input(),
-      enableSso: map['enableSso'] == null ? null : ((map['enableSso'] as bool).input()).input(),
-      name: (map['name'] as String).input(),
-      password: (map['password'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      shortName: map['shortName'] == null ? null : ((map['shortName'] as String).input()).input(),
-      size: map['size'] == null ? null : ((map['size'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      vpcSettings: map['vpcSettings'] == null ? null : ((DirectoryVpcSettings.fromMap((map['vpcSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectSettings: (() {
+        final guardedValue = map['connectSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DirectoryConnectSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      desiredNumberOfDomainControllers: (() {
+        final guardedValue = map['desiredNumberOfDomainControllers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      edition: (() {
+        final guardedValue = map['edition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableSso: (() {
+        final guardedValue = map['enableSso'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shortName: (() {
+        final guardedValue = map['shortName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcSettings: (() {
+        final guardedValue = map['vpcSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DirectoryVpcSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

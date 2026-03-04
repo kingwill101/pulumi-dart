@@ -11,26 +11,37 @@ import 'user_managed_open_aiprofile.dart';
 class MdsResourceProperties {
   /// AAD Application Id.
   final pulumi.Input<String> aadApplicationId;
+
   /// AKS Admin Group Id.
   final pulumi.Input<String>? aksAdminGroupId;
+
   /// Profile of CMK Settings.
   final pulumi.Input<CmkProfile>? cmkProfile;
+
   /// Deny Assignments exclusion list.
   final pulumi.Input<List<DenyAssignmentExclusion>>? denyAssignmentExclusions;
+
   /// Enable Copilot.
   final pulumi.Input<bool>? enableCopilot;
+
   /// Enable Diagnostic Settings.
   final pulumi.Input<bool>? enableDiagnosticSettings;
+
   /// Profile of Fabric resources.
   final pulumi.Input<FabricProfile>? fabricProfile;
+
   /// Profile of OpenAI Resource.
   final pulumi.Input<OpenAIProfile>? openAIProfile;
+
   /// Zone redundancy state for resources
   final pulumi.Input<String>? redundancyState;
+
   /// State of the resource
   final pulumi.Input<String>? resourceState;
+
   /// Profile of User Managed OpenAI Resource.
   final pulumi.Input<UserManagedOpenAIProfile>? userManagedOpenAIProfile;
+
   /// Mds Resource Version.
   final pulumi.Input<String>? version;
 
@@ -66,34 +77,123 @@ class MdsResourceProperties {
     return <String, dynamic>{
       'aadApplicationId': aadApplicationId,
       'aksAdminGroupId': ?aksAdminGroupId,
-      'cmkProfile': ?pulumi.Input.mapOptionalInputValue<CmkProfile, Map<String, dynamic>>(cmkProfile, (value) => value.toMap()),
-      'denyAssignmentExclusions': ?pulumi.Input.mapOptionalInputValue<List<DenyAssignmentExclusion>, List<Map<String, dynamic>>>(denyAssignmentExclusions, (value) => pulumi.Input.encodeList<DenyAssignmentExclusion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cmkProfile':
+          ?pulumi.Input.mapOptionalInputValue<CmkProfile, Map<String, dynamic>>(
+            cmkProfile,
+            (value) => value.toMap(),
+          ),
+      'denyAssignmentExclusions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DenyAssignmentExclusion>,
+            List<Map<String, dynamic>>
+          >(
+            denyAssignmentExclusions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DenyAssignmentExclusion,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enableCopilot': ?enableCopilot,
       'enableDiagnosticSettings': ?enableDiagnosticSettings,
-      'fabricProfile': ?pulumi.Input.mapOptionalInputValue<FabricProfile, Map<String, dynamic>>(fabricProfile, (value) => value.toMap()),
-      'openAIProfile': ?pulumi.Input.mapOptionalInputValue<OpenAIProfile, Map<String, dynamic>>(openAIProfile, (value) => value.toMap()),
+      'fabricProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            FabricProfile,
+            Map<String, dynamic>
+          >(fabricProfile, (value) => value.toMap()),
+      'openAIProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            OpenAIProfile,
+            Map<String, dynamic>
+          >(openAIProfile, (value) => value.toMap()),
       'redundancyState': ?redundancyState,
       'resourceState': ?resourceState,
-      'userManagedOpenAIProfile': ?pulumi.Input.mapOptionalInputValue<UserManagedOpenAIProfile, Map<String, dynamic>>(userManagedOpenAIProfile, (value) => value.toMap()),
+      'userManagedOpenAIProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserManagedOpenAIProfile,
+            Map<String, dynamic>
+          >(userManagedOpenAIProfile, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory MdsResourceProperties.fromMap(Map<String, dynamic> map) {
     return MdsResourceProperties(
-      aadApplicationId: (map['aadApplicationId'] as String).input(),
-      aksAdminGroupId: map['aksAdminGroupId'] == null ? null : (map['aksAdminGroupId']! as String).input(),
-      cmkProfile: map['cmkProfile'] == null ? null : (CmkProfile.fromMap((map['cmkProfile']! as Map).cast<String, dynamic>())).input(),
-      denyAssignmentExclusions: map['denyAssignmentExclusions'] == null ? null : (pulumi.Input.decodeList<DenyAssignmentExclusion>(map['denyAssignmentExclusions']!, (value) => DenyAssignmentExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableCopilot: map['enableCopilot'] == null ? null : (map['enableCopilot']! as bool).input(),
-      enableDiagnosticSettings: map['enableDiagnosticSettings'] == null ? null : (map['enableDiagnosticSettings']! as bool).input(),
-      fabricProfile: map['fabricProfile'] == null ? null : (FabricProfile.fromMap((map['fabricProfile']! as Map).cast<String, dynamic>())).input(),
-      openAIProfile: map['openAIProfile'] == null ? null : (OpenAIProfile.fromMap((map['openAIProfile']! as Map).cast<String, dynamic>())).input(),
-      redundancyState: map['redundancyState'] == null ? null : (map['redundancyState']! as String).input(),
-      resourceState: map['resourceState'] == null ? null : (map['resourceState']! as String).input(),
-      userManagedOpenAIProfile: map['userManagedOpenAIProfile'] == null ? null : (UserManagedOpenAIProfile.fromMap((map['userManagedOpenAIProfile']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      aadApplicationId: pulumi.Input.fromValue(
+        map['aadApplicationId'] as String,
+      ),
+      aksAdminGroupId: (() {
+        final guardedValue = map['aksAdminGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cmkProfile: (() {
+        final guardedValue = map['cmkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CmkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      denyAssignmentExclusions: (() {
+        final guardedValue = map['denyAssignmentExclusions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DenyAssignmentExclusion>(
+            guardedValue,
+            (value) => DenyAssignmentExclusion.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      enableCopilot: (() {
+        final guardedValue = map['enableCopilot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDiagnosticSettings: (() {
+        final guardedValue = map['enableDiagnosticSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fabricProfile: (() {
+        final guardedValue = map['fabricProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FabricProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      openAIProfile: (() {
+        final guardedValue = map['openAIProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OpenAIProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      redundancyState: (() {
+        final guardedValue = map['redundancyState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceState: (() {
+        final guardedValue = map['resourceState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userManagedOpenAIProfile: (() {
+        final guardedValue = map['userManagedOpenAIProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserManagedOpenAIProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

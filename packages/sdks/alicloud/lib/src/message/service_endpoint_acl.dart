@@ -8,7 +8,7 @@ import 'service_endpoint_acl_state.dart';
 ///
 /// For information about Message Service Endpoint Acl and how to use it, see [What is Endpoint Acl](https://www.alibabacloud.com/help/en/mns/developer-reference/api-mns-open-2022-01-19-authorizeendpointacl).
 ///
-/// > **NOTE:** Available since v1.243.0.
+/// &gt; **NOTE:** Available since v1.243.0.
 ///
 /// ## Example Usage
 ///
@@ -162,6 +162,7 @@ class ServiceEndpointAcl extends pulumi.CustomResource {
   /// - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
   late final pulumi.Output<String> aclStrategy;
   late final pulumi.Output<String> cidr;
+
   /// Access point type. Value:
   /// - public: indicates a public access point. (Currently only public is supported)
   late final pulumi.Output<String> endpointType;
@@ -175,14 +176,14 @@ class ServiceEndpointAcl extends pulumi.CustomResource {
     ServiceEndpointAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclStrategy = registerOutput<String>('aclStrategy');
-    this.cidr = registerOutput<String>('cidr');
-    this.endpointType = registerOutput<String>('endpointType');
+         'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclStrategy = registerOutput<String>('aclStrategy');
+    cidr = registerOutput<String>('cidr');
+    endpointType = registerOutput<String>('endpointType');
   }
 
   /// Gets an existing [ServiceEndpointAcl] resource's state with the given [name] and [id].
@@ -203,13 +204,13 @@ class ServiceEndpointAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclStrategy = registerOutput<String>('aclStrategy');
-    this.cidr = registerOutput<String>('cidr');
-    this.endpointType = registerOutput<String>('endpointType');
+         'alicloud:message/serviceEndpointAcl:ServiceEndpointAcl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclStrategy = registerOutput<String>('aclStrategy');
+    cidr = registerOutput<String>('cidr');
+    endpointType = registerOutput<String>('endpointType');
   }
 }

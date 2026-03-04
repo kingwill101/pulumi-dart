@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiagnosticSettingArgs {
   /// The name of the diagnostic setting.
   final pulumi.Input<String> name;
+
   /// The identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
   /// Creates a new [GetDiagnosticSettingArgs].
   /// [name] The name of the diagnostic setting.
   /// [resourceUri] The identifier of the resource.
-  GetDiagnosticSettingArgs({
-    required this.name,
-    required this.resourceUri,
-  });
+  GetDiagnosticSettingArgs({required this.name, required this.resourceUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'resourceUri': resourceUri,
-    };
+    return <String, dynamic>{'name': name, 'resourceUri': resourceUri};
   }
 
   factory GetDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticSettingArgs(
-      name: (map['name'] as String).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }
 }
-

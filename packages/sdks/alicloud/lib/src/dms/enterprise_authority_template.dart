@@ -6,7 +6,7 @@ import 'enterprise_authority_template_state.dart';
 ///
 /// For information about DMS Enterprise Authority Template and how to use it, see [What is Authority Template](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createauthoritytemplate).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -173,12 +173,16 @@ import 'enterprise_authority_template_state.dart';
 class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
   /// Permission template ID.
   late final pulumi.Output<int> authorityTemplateId;
+
   /// Permission Template name.
   late final pulumi.Output<String> authorityTemplateName;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Permission template description information.
   late final pulumi.Output<String?> description;
+
   /// Tenant ID.
   late final pulumi.Output<int> tid;
 
@@ -191,16 +195,16 @@ class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
     EnterpriseAuthorityTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorityTemplateId = registerOutput<int>('authorityTemplateId');
-    this.authorityTemplateName = registerOutput<String>('authorityTemplateName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.tid = registerOutput<int>('tid');
+         'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorityTemplateId = registerOutput<int>('authorityTemplateId');
+    authorityTemplateName = registerOutput<String>('authorityTemplateName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    tid = registerOutput<int>('tid');
   }
 
   /// Gets an existing [EnterpriseAuthorityTemplate] resource's state with the given [name] and [id].
@@ -221,15 +225,15 @@ class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorityTemplateId = registerOutput<int>('authorityTemplateId');
-    this.authorityTemplateName = registerOutput<String>('authorityTemplateName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.tid = registerOutput<int>('tid');
+         'alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorityTemplateId = registerOutput<int>('authorityTemplateId');
+    authorityTemplateName = registerOutput<String>('authorityTemplateName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    tid = registerOutput<int>('tid');
   }
 }

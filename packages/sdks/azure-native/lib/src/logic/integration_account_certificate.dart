@@ -191,22 +191,31 @@ import 'key_vault_key_reference_response.dart';
 class IntegrationAccountCertificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The changed time.
   late final pulumi.Output<String> changedTime;
+
   /// The created time.
   late final pulumi.Output<String> createdTime;
+
   /// The key details in the key vault.
   late final pulumi.Output<KeyVaultKeyReferenceResponse?> key;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The metadata.
   late final pulumi.Output<dynamic> metadata;
+
   /// Gets the resource name.
   late final pulumi.Output<String> name;
+
   /// The public certificate.
   late final pulumi.Output<String?> publicCertificate;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -219,20 +228,20 @@ class IntegrationAccountCertificate extends pulumi.CustomResource {
     IntegrationAccountCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:logic:IntegrationAccountCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.changedTime = registerOutput<String>('changedTime');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.key = registerOutput<KeyVaultKeyReferenceResponse?>('key');
-    this.location = registerOutput<String?>('location');
-    this.metadata = registerOutput<dynamic>('metadata');
+         'azure-native:logic:IntegrationAccountCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    createdTime = registerOutput<String>('createdTime');
+    key = registerOutput<KeyVaultKeyReferenceResponse?>('key');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    this.publicCertificate = registerOutput<String?>('publicCertificate');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    publicCertificate = registerOutput<String?>('publicCertificate');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

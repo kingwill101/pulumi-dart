@@ -12,11 +12,11 @@ import 'web_acl_rule_group_association_timeouts.dart';
 /// - **Custom Rule Groups**: User-created rule groups that you manage within your AWS account
 /// - **Managed Rule Groups**: Pre-configured rule groups provided by AWS or third-party vendors
 ///
-/// !> **Warning:** Verify the rule names in your `rule_action_override`s carefully. With managed rule groups, WAF silently ignores any override that uses an invalid rule name. With customer-owned rule groups, invalid rule names in your overrides will cause web ACL updates to fail. An invalid rule name is any name that doesn't exactly match the case-sensitive name of an existing rule in the rule group.
+/// !&gt; **Warning:** Verify the rule names in your `rule_action_override`s carefully. With managed rule groups, WAF silently ignores any override that uses an invalid rule name. With customer-owned rule groups, invalid rule names in your overrides will cause web ACL updates to fail. An invalid rule name is any name that doesn't exactly match the case-sensitive name of an existing rule in the rule group.
 ///
-/// !> **Warning:** Using this resource will cause the associated Web ACL resource to show configuration drift in the `rule` argument unless you add `lifecycle { ignore_changes = [rule] }` to the Web ACL resource configuration. This is because this resource modifies the Web ACL's rules outside of the Web ACL resource's direct management.
+/// !&gt; **Warning:** Using this resource will cause the associated Web ACL resource to show configuration drift in the `rule` argument unless you add `lifecycle { ignore_changes = [rule] }` to the Web ACL resource configuration. This is because this resource modifies the Web ACL's rules outside of the Web ACL resource's direct management.
 ///
-/// > **Note:** This resource creates a rule within the Web ACL that references the entire Rule Group. The rule group's individual rules are evaluated as a unit when requests are processed by the Web ACL.
+/// &gt; **Note:** This resource creates a rule within the Web ACL that references the entire Rule Group. The rule group's individual rules are evaluated as a unit when requests are processed by the Web ACL.
 /// ## Example Usage
 ///
 /// ### Custom Rule Group - Basic Usage
@@ -1167,18 +1167,26 @@ import 'web_acl_rule_group_association_timeouts.dart';
 /// ```
 class WebAclRuleGroupAssociation extends pulumi.CustomResource {
   /// Managed Rule Group configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `rule_group_reference`. See below.
-  late final pulumi.Output<WebAclRuleGroupAssociationManagedRuleGroup?> managedRuleGroup;
+  late final pulumi.Output<WebAclRuleGroupAssociationManagedRuleGroup?>
+  managedRuleGroup;
+
   /// Override action for the rule group. Valid values are `none` and `count`. Defaults to `none`. When set to `count`, the actions defined in the rule group rules are overridden to count matches instead of blocking or allowing requests.
   late final pulumi.Output<String> overrideAction;
+
   /// Priority of the rule within the Web ACL. Rules are evaluated in order of priority, with lower numbers evaluated first.
   late final pulumi.Output<int> priority;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Custom Rule Group reference configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `managed_rule_group`. See below.
-  late final pulumi.Output<WebAclRuleGroupAssociationRuleGroupReference?> ruleGroupReference;
+  late final pulumi.Output<WebAclRuleGroupAssociationRuleGroupReference?>
+  ruleGroupReference;
+
   /// Name of the rule to create in the Web ACL that references the rule group. Must be between 1 and 128 characters.
   late final pulumi.Output<String> ruleName;
   late final pulumi.Output<WebAclRuleGroupAssociationTimeouts?> timeouts;
+
   /// ARN of the Web ACL to associate the Rule Group with.
   ///
   /// The following arguments are optional:
@@ -1193,19 +1201,25 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
     WebAclRuleGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup');
-    this.overrideAction = registerOutput<String>('overrideAction');
-    this.priority = registerOutput<int>('priority');
-    this.region = registerOutput<String>('region');
-    this.ruleGroupReference = registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>('ruleGroupReference');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts');
-    this.webAclArn = registerOutput<String>('webAclArn');
+         'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managedRuleGroup =
+        registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>(
+          'managedRuleGroup',
+        );
+    overrideAction = registerOutput<String>('overrideAction');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    ruleGroupReference =
+        registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>(
+          'ruleGroupReference',
+        );
+    ruleName = registerOutput<String>('ruleName');
+    timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts');
+    webAclArn = registerOutput<String>('webAclArn');
   }
 
   /// Gets an existing [WebAclRuleGroupAssociation] resource's state with the given [name] and [id].
@@ -1226,18 +1240,24 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup');
-    this.overrideAction = registerOutput<String>('overrideAction');
-    this.priority = registerOutput<int>('priority');
-    this.region = registerOutput<String>('region');
-    this.ruleGroupReference = registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>('ruleGroupReference');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts');
-    this.webAclArn = registerOutput<String>('webAclArn');
+         'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managedRuleGroup =
+        registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>(
+          'managedRuleGroup',
+        );
+    overrideAction = registerOutput<String>('overrideAction');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    ruleGroupReference =
+        registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>(
+          'ruleGroupReference',
+        );
+    ruleName = registerOutput<String>('ruleName');
+    timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts');
+    webAclArn = registerOutput<String>('webAclArn');
   }
 }

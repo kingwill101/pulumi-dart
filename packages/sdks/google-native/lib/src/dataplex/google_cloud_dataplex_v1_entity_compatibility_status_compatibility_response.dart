@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse {
   /// Whether the entity is compatible and can be represented in the metadata store.
   final pulumi.Input<bool> compatible;
+
   /// Provides additional detail if the entity is incompatible with the metadata store.
   final pulumi.Input<String> reason;
 
@@ -18,17 +19,15 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'compatible': compatible,
-      'reason': reason,
-    };
+    return <String, dynamic>{'compatible': compatible, 'reason': reason};
   }
 
-  factory GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse(
-      compatible: (map['compatible'] as bool).input(),
-      reason: (map['reason'] as String).input(),
+      compatible: pulumi.Input.fromValue(map['compatible'] as bool),
+      reason: pulumi.Input.fromValue(map['reason'] as String),
     );
   }
 }
-

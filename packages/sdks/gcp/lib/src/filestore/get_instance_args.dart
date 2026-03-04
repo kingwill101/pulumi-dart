@@ -11,10 +11,12 @@ class GetInstanceArgs {
   /// can be a region for ENTERPRISE tier instances. If it is not provided,
   /// the provider region or zone is used.
   final pulumi.Input<String>? location;
+
   /// The name of a Filestore instance.
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -23,11 +25,7 @@ class GetInstanceArgs {
   /// [location] The name of the location of the instance. This
   /// [name] The name of a Filestore instance.
   /// [project] The project in which the resource belongs. If it
-  GetInstanceArgs({
-    this.location,
-    required this.name,
-    this.project,
-  });
+  GetInstanceArgs({this.location, required this.name, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,10 +37,17 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class GremlinDatabaseAutoscaleSettings {
 
   /// Creates a new [GremlinDatabaseAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the Gremlin database (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  GremlinDatabaseAutoscaleSettings({
-    this.maxThroughput,
-  });
+  GremlinDatabaseAutoscaleSettings({this.maxThroughput});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxThroughput': ?maxThroughput,
-    };
+    return <String, dynamic>{'maxThroughput': ?maxThroughput};
   }
 
   factory GremlinDatabaseAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseAutoscaleSettings(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
+      maxThroughput: (() {
+        final guardedValue = map['maxThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

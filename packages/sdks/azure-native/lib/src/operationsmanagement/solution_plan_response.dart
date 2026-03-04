@@ -6,16 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SolutionPlanResponse {
   /// name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.
   final pulumi.Input<String>? name;
-  /// name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/<solutionType>. This is case sensitive
+
+  /// name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/&lt;solutionType&gt;. This is case sensitive
   final pulumi.Input<String>? product;
+
   /// promotionCode, Not really used now, can you left as empty
   final pulumi.Input<String>? promotionCode;
+
   /// Publisher name. For gallery solution, it is Microsoft.
   final pulumi.Input<String>? publisher;
 
   /// Creates a new [SolutionPlanResponse].
   /// [name] name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.
-  /// [product] name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/<solutionType>. This is case sensitive
+  /// [product] name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/&lt;solutionType&gt;. This is case sensitive
   /// [promotionCode] promotionCode, Not really used now, can you left as empty
   /// [publisher] Publisher name. For gallery solution, it is Microsoft.
   SolutionPlanResponse({
@@ -36,11 +39,26 @@ class SolutionPlanResponse {
 
   factory SolutionPlanResponse.fromMap(Map<String, dynamic> map) {
     return SolutionPlanResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      product: map['product'] == null ? null : (map['product']! as String).input(),
-      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      product: (() {
+        final guardedValue = map['product'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      promotionCode: (() {
+        final guardedValue = map['promotionCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum LocalTimestampFormat {
   valueEmbedded("Embedded");
 
-  const LocalTimestampFormat(this.value);
-  final String value;
+  const LocalTimestampFormat(this.wireValue);
+  final String wireValue;
 
   static LocalTimestampFormat fromValue(String value) {
     for (final item in LocalTimestampFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LocalTimestampFormat value: $value');
   }
 }
-

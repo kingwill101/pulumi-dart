@@ -8,7 +8,7 @@ import 'grafana_workspace_state.dart';
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
 ///
-/// > **NOTE:** Available since v1.215.0.
+/// &gt; **NOTE:** Available since v1.215.0.
 ///
 /// ## Example Usage
 ///
@@ -207,48 +207,63 @@ class GrafanaWorkspace extends pulumi.CustomResource {
   /// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
   /// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
   late final pulumi.Output<String?> accountNumber;
+
   /// Language environment (if not filled in, default is zh):
   /// - zh
   /// - en
   late final pulumi.Output<String?> aliyunLang;
+
   /// Whether to automatically renew. Value range:
   /// - true: Automatic renewal. Default value: true.
   /// - false: Do not renew automatically.
   late final pulumi.Output<bool?> autoRenew;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The number of additional user-defined accounts. Value Description:
   /// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
   /// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
   /// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
   /// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
   late final pulumi.Output<String?> customAccountNumber;
+
   /// Description
   late final pulumi.Output<String?> description;
+
   /// The time of the instance package. Valid values:
   /// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
   /// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
   late final pulumi.Output<String?> duration;
+
   /// Grafana version
   late final pulumi.Output<String?> grafanaVersion;
+
   /// The edition. **Valid values:**
   /// - standard: `Beta Edition(For internal testing only) `
   /// - personal_edition: Developer Edition
   /// - experts_edition: Pro Edition
   /// - advanced_edition: Advanced Edition
   late final pulumi.Output<String?> grafanaWorkspaceEdition;
+
   /// The name of the resource
   late final pulumi.Output<String> grafanaWorkspaceName;
+
   /// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
   late final pulumi.Output<String?> password;
+
   /// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
   late final pulumi.Output<String?> pricingCycle;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -261,27 +276,29 @@ class GrafanaWorkspace extends pulumi.CustomResource {
     GrafanaWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/grafanaWorkspace:GrafanaWorkspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountNumber = registerOutput<String?>('accountNumber');
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.createTime = registerOutput<String>('createTime');
-    this.customAccountNumber = registerOutput<String?>('customAccountNumber');
-    this.description = registerOutput<String?>('description');
-    this.duration = registerOutput<String?>('duration');
-    this.grafanaVersion = registerOutput<String?>('grafanaVersion');
-    this.grafanaWorkspaceEdition = registerOutput<String?>('grafanaWorkspaceEdition');
-    this.grafanaWorkspaceName = registerOutput<String>('grafanaWorkspaceName');
-    this.password = registerOutput<String?>('password');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:arms/grafanaWorkspace:GrafanaWorkspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountNumber = registerOutput<String?>('accountNumber');
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    createTime = registerOutput<String>('createTime');
+    customAccountNumber = registerOutput<String?>('customAccountNumber');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<String?>('duration');
+    grafanaVersion = registerOutput<String?>('grafanaVersion');
+    grafanaWorkspaceEdition = registerOutput<String?>(
+      'grafanaWorkspaceEdition',
+    );
+    grafanaWorkspaceName = registerOutput<String>('grafanaWorkspaceName');
+    password = registerOutput<String?>('password');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [GrafanaWorkspace] resource's state with the given [name] and [id].
@@ -302,26 +319,28 @@ class GrafanaWorkspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/grafanaWorkspace:GrafanaWorkspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountNumber = registerOutput<String?>('accountNumber');
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.createTime = registerOutput<String>('createTime');
-    this.customAccountNumber = registerOutput<String?>('customAccountNumber');
-    this.description = registerOutput<String?>('description');
-    this.duration = registerOutput<String?>('duration');
-    this.grafanaVersion = registerOutput<String?>('grafanaVersion');
-    this.grafanaWorkspaceEdition = registerOutput<String?>('grafanaWorkspaceEdition');
-    this.grafanaWorkspaceName = registerOutput<String>('grafanaWorkspaceName');
-    this.password = registerOutput<String?>('password');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:arms/grafanaWorkspace:GrafanaWorkspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountNumber = registerOutput<String?>('accountNumber');
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    createTime = registerOutput<String>('createTime');
+    customAccountNumber = registerOutput<String?>('customAccountNumber');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<String?>('duration');
+    grafanaVersion = registerOutput<String?>('grafanaVersion');
+    grafanaWorkspaceEdition = registerOutput<String?>(
+      'grafanaWorkspaceEdition',
+    );
+    grafanaWorkspaceName = registerOutput<String>('grafanaWorkspaceName');
+    password = registerOutput<String?>('password');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

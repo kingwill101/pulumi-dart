@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleErrorActionStepFunctions {
   /// The prefix used to generate, along with a UUID, the unique state machine execution name.
   final pulumi.Input<String>? executionNamePrefix;
+
   /// The ARN of the IAM role that grants access to start execution of the state machine.
   final pulumi.Input<String> roleArn;
+
   /// The name of the Step Functions state machine whose execution will be started.
   final pulumi.Input<String> stateMachineName;
 
@@ -30,10 +32,15 @@ class TopicRuleErrorActionStepFunctions {
 
   factory TopicRuleErrorActionStepFunctions.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionStepFunctions(
-      executionNamePrefix: map['executionNamePrefix'] == null ? null : ((map['executionNamePrefix'] as String).input()).input(),
-      roleArn: (map['roleArn'] as String).input(),
-      stateMachineName: (map['stateMachineName'] as String).input(),
+      executionNamePrefix: (() {
+        final guardedValue = map['executionNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      stateMachineName: pulumi.Input.fromValue(
+        map['stateMachineName'] as String,
+      ),
     );
   }
 }
-

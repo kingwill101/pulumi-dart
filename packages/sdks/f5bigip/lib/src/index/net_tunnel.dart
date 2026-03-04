@@ -109,36 +109,52 @@ import 'net_tunnel_state.dart';
 class NetTunnel extends pulumi.CustomResource {
   /// The application service that the object belongs to
   late final pulumi.Output<String?> appService;
+
   /// Specifies whether auto lasthop is enabled or not
   late final pulumi.Output<String?> autoLastHop;
+
   /// User defined description
   late final pulumi.Output<String?> description;
+
   /// Specifies an idle timeout for wildcard tunnels in seconds
   late final pulumi.Output<int?> idleTimeout;
+
   /// The key field may represent different values depending on the type of the tunnel
   late final pulumi.Output<int?> key;
+
   /// Specifies a local IP address. This option is required
   late final pulumi.Output<String> localAddress;
+
   /// Specifies how the tunnel carries traffic
   late final pulumi.Output<String?> mode;
+
   /// Specifies the maximum transmission unit (MTU) of the tunnel
   late final pulumi.Output<int?> mtu;
+
   /// Name of the tunnel
   late final pulumi.Output<String> name;
+
   /// Displays the admin-partition within which this component resides
   late final pulumi.Output<String?> partition;
+
   /// Specifies the profile that you want to associate with the tunnel
   late final pulumi.Output<String> profile;
+
   /// Specifies a remote IP address
   late final pulumi.Output<String?> remoteAddress;
+
   /// Specifies a secondary non-floating IP address when the local-address is set to a floating address
   late final pulumi.Output<String?> secondaryAddress;
+
   /// Specifies a value for insertion into the Type of Service (ToS) octet within the IP header of the encapsulating header of transmitted packets
   late final pulumi.Output<String?> tos;
+
   /// Specifies a traffic-group for use with the tunnel
   late final pulumi.Output<String?> trafficGroup;
+
   /// Enables or disables the tunnel to be transparent
   late final pulumi.Output<String?> transparent;
+
   /// Enables or disables the tunnel to use the PMTU (Path MTU) information provided by ICMP NeedFrag error messages
   late final pulumi.Output<String?> usePmtu;
 
@@ -151,28 +167,28 @@ class NetTunnel extends pulumi.CustomResource {
     NetTunnelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/netTunnel:NetTunnel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appService = registerOutput<String?>('appService');
-    this.autoLastHop = registerOutput<String?>('autoLastHop');
-    this.description = registerOutput<String?>('description');
-    this.idleTimeout = registerOutput<int?>('idleTimeout');
-    this.key = registerOutput<int?>('key');
-    this.localAddress = registerOutput<String>('localAddress');
-    this.mode = registerOutput<String?>('mode');
-    this.mtu = registerOutput<int?>('mtu');
+         'f5bigip:index/netTunnel:NetTunnel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appService = registerOutput<String?>('appService');
+    autoLastHop = registerOutput<String?>('autoLastHop');
+    description = registerOutput<String?>('description');
+    idleTimeout = registerOutput<int?>('idleTimeout');
+    key = registerOutput<int?>('key');
+    localAddress = registerOutput<String>('localAddress');
+    mode = registerOutput<String?>('mode');
+    mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
-    this.partition = registerOutput<String?>('partition');
-    this.profile = registerOutput<String>('profile');
-    this.remoteAddress = registerOutput<String?>('remoteAddress');
-    this.secondaryAddress = registerOutput<String?>('secondaryAddress');
-    this.tos = registerOutput<String?>('tos');
-    this.trafficGroup = registerOutput<String?>('trafficGroup');
-    this.transparent = registerOutput<String?>('transparent');
-    this.usePmtu = registerOutput<String?>('usePmtu');
+    partition = registerOutput<String?>('partition');
+    profile = registerOutput<String>('profile');
+    remoteAddress = registerOutput<String?>('remoteAddress');
+    secondaryAddress = registerOutput<String?>('secondaryAddress');
+    tos = registerOutput<String?>('tos');
+    trafficGroup = registerOutput<String?>('trafficGroup');
+    transparent = registerOutput<String?>('transparent');
+    usePmtu = registerOutput<String?>('usePmtu');
   }
 
   /// Gets an existing [NetTunnel] resource's state with the given [name] and [id].
@@ -193,27 +209,27 @@ class NetTunnel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/netTunnel:NetTunnel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appService = registerOutput<String?>('appService');
-    this.autoLastHop = registerOutput<String?>('autoLastHop');
-    this.description = registerOutput<String?>('description');
-    this.idleTimeout = registerOutput<int?>('idleTimeout');
-    this.key = registerOutput<int?>('key');
-    this.localAddress = registerOutput<String>('localAddress');
-    this.mode = registerOutput<String?>('mode');
-    this.mtu = registerOutput<int?>('mtu');
+         'f5bigip:index/netTunnel:NetTunnel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appService = registerOutput<String?>('appService');
+    autoLastHop = registerOutput<String?>('autoLastHop');
+    description = registerOutput<String?>('description');
+    idleTimeout = registerOutput<int?>('idleTimeout');
+    key = registerOutput<int?>('key');
+    localAddress = registerOutput<String>('localAddress');
+    mode = registerOutput<String?>('mode');
+    mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
-    this.partition = registerOutput<String?>('partition');
-    this.profile = registerOutput<String>('profile');
-    this.remoteAddress = registerOutput<String?>('remoteAddress');
-    this.secondaryAddress = registerOutput<String?>('secondaryAddress');
-    this.tos = registerOutput<String?>('tos');
-    this.trafficGroup = registerOutput<String?>('trafficGroup');
-    this.transparent = registerOutput<String?>('transparent');
-    this.usePmtu = registerOutput<String?>('usePmtu');
+    partition = registerOutput<String?>('partition');
+    profile = registerOutput<String>('profile');
+    remoteAddress = registerOutput<String?>('remoteAddress');
+    secondaryAddress = registerOutput<String?>('secondaryAddress');
+    tos = registerOutput<String?>('tos');
+    trafficGroup = registerOutput<String?>('trafficGroup');
+    transparent = registerOutput<String?>('transparent');
+    usePmtu = registerOutput<String?>('usePmtu');
   }
 }

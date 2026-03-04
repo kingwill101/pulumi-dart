@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcNetworkAclAttachmentState {
   /// The ID of the network ACL instance.
   final pulumi.Input<String>? networkAclId;
+
   /// The ID of the associated  vswitch instance.
   final pulumi.Input<String>? resourceId;
+
   /// The type of the associated resource. Valid values: `VSwitch`.
   final pulumi.Input<String>? resourceType;
+
   /// The status of the Network Acl Attachment.
   final pulumi.Input<String>? status;
 
@@ -36,11 +39,26 @@ class VpcNetworkAclAttachmentState {
 
   factory VpcNetworkAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpcNetworkAclAttachmentState(
-      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      networkAclId: (() {
+        final guardedValue = map['networkAclId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

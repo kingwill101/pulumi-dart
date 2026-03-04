@@ -11,20 +11,29 @@ import 'google_cloud_dialogflow_cx_v3beta1_test_config.dart';
 /// {@macro pulumi_dialogflow_v3beta1_test_case_dialogflow_v3beta1_args_doc}
 class TestCaseDialogflowV3beta1Args {
   final pulumi.Input<String> agentId;
+
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   final pulumi.Input<String> displayName;
+
   /// The latest test result.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TestCaseResult>? lastTestResult;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TestCaseResult>?
+  lastTestResult;
   final pulumi.Input<String>? location;
+
   /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
   final pulumi.Input<String>? name;
+
   /// Additional freeform notes about the test case. Limit of 400 characters.
   final pulumi.Input<String>? notes;
   final pulumi.Input<String>? project;
+
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
   final pulumi.Input<List<String>>? tags;
+
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>>? testCaseConversationTurns;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>>?
+  testCaseConversationTurns;
+
   /// Config for the test case.
   final pulumi.Input<GoogleCloudDialogflowCxV3beta1TestConfig>? testConfig;
 
@@ -56,30 +65,96 @@ class TestCaseDialogflowV3beta1Args {
     return <String, dynamic>{
       'agentId': agentId,
       'displayName': displayName,
-      'lastTestResult': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1TestCaseResult, Map<String, dynamic>>(lastTestResult, (value) => value.toMap()),
+      'lastTestResult':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1TestCaseResult,
+            Map<String, dynamic>
+          >(lastTestResult, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'notes': ?notes,
       'project': ?project,
       'tags': ?tags,
-      'testCaseConversationTurns': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowCxV3beta1ConversationTurn>, List<Map<String, dynamic>>>(testCaseConversationTurns, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'testConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1TestConfig, Map<String, dynamic>>(testConfig, (value) => value.toMap()),
+      'testCaseConversationTurns':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudDialogflowCxV3beta1ConversationTurn>,
+            List<Map<String, dynamic>>
+          >(
+            testCaseConversationTurns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowCxV3beta1ConversationTurn,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'testConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1TestConfig,
+            Map<String, dynamic>
+          >(testConfig, (value) => value.toMap()),
     };
   }
 
   factory TestCaseDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return TestCaseDialogflowV3beta1Args(
-      agentId: (map['agentId'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      lastTestResult: map['lastTestResult'] == null ? null : (GoogleCloudDialogflowCxV3beta1TestCaseResult.fromMap((map['lastTestResult']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn>(map['testCaseConversationTurns']!, (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testConfig: map['testConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1TestConfig.fromMap((map['testConfig']! as Map).cast<String, dynamic>())).input(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      lastTestResult: (() {
+        final guardedValue = map['lastTestResult'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1TestCaseResult.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      testCaseConversationTurns: (() {
+        final guardedValue = map['testCaseConversationTurns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn>(
+            guardedValue,
+            (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      testConfig: (() {
+        final guardedValue = map['testConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowCxV3beta1TestConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

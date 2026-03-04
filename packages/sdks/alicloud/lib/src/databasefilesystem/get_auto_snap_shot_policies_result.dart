@@ -7,11 +7,14 @@ import 'get_auto_snap_shot_policies_auto_snap_shot_policy.dart';
 class GetAutoSnapShotPoliciesResult {
   /// A list of Auto Snap Shot Policy Entries. Each element contains the following attributes:
   final List<GetAutoSnapShotPoliciesAutoSnapShotPolicy> autoSnapShotPolicies;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Auto Snap Shot Policy IDs.
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of Auto Snap Shot Policy names.
   final List<String> names;
   final String? outputFile;
@@ -40,7 +43,11 @@ class GetAutoSnapShotPoliciesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoSnapShotPolicies': pulumi.Input.encodeList<GetAutoSnapShotPoliciesAutoSnapShotPolicy, Map<String, dynamic>>(autoSnapShotPolicies, (value) => value.toMap()),
+      'autoSnapShotPolicies':
+          pulumi.Input.encodeList<
+            GetAutoSnapShotPoliciesAutoSnapShotPolicy,
+            Map<String, dynamic>
+          >(autoSnapShotPolicies, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -53,15 +60,36 @@ class GetAutoSnapShotPoliciesResult {
 
   factory GetAutoSnapShotPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetAutoSnapShotPoliciesResult(
-      autoSnapShotPolicies: pulumi.Input.decodeList<GetAutoSnapShotPoliciesAutoSnapShotPolicy>(map['autoSnapShotPolicies'], (value) => GetAutoSnapShotPoliciesAutoSnapShotPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      autoSnapShotPolicies:
+          pulumi.Input.decodeList<GetAutoSnapShotPoliciesAutoSnapShotPolicy>(
+            map['autoSnapShotPolicies']!,
+            (value) => GetAutoSnapShotPoliciesAutoSnapShotPolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

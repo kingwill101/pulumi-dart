@@ -7,8 +7,10 @@ import 'max_pods_constraint_container_v1beta1.dart';
 class AdditionalPodNetworkConfigContainerV1beta1 {
   /// The maximum number of pods per node which use this pod network
   final pulumi.Input<MaxPodsConstraintContainerV1beta1>? maxPodsPerNode;
+
   /// The name of the secondary range on the subnet which provides IP address for this pod range
   final pulumi.Input<String>? secondaryPodRange;
+
   /// Name of the subnetwork where the additional pod network belongs
   final pulumi.Input<String>? subnetwork;
 
@@ -24,18 +26,39 @@ class AdditionalPodNetworkConfigContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxPodsPerNode': ?pulumi.Input.mapOptionalInputValue<MaxPodsConstraintContainerV1beta1, Map<String, dynamic>>(maxPodsPerNode, (value) => value.toMap()),
+      'maxPodsPerNode':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaxPodsConstraintContainerV1beta1,
+            Map<String, dynamic>
+          >(maxPodsPerNode, (value) => value.toMap()),
       'secondaryPodRange': ?secondaryPodRange,
       'subnetwork': ?subnetwork,
     };
   }
 
-  factory AdditionalPodNetworkConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory AdditionalPodNetworkConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AdditionalPodNetworkConfigContainerV1beta1(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (MaxPodsConstraintContainerV1beta1.fromMap((map['maxPodsPerNode']! as Map).cast<String, dynamic>())).input(),
-      secondaryPodRange: map['secondaryPodRange'] == null ? null : (map['secondaryPodRange']! as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      maxPodsPerNode: (() {
+        final guardedValue = map['maxPodsPerNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaxPodsConstraintContainerV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      secondaryPodRange: (() {
+        final guardedValue = map['secondaryPodRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetwork: (() {
+        final guardedValue = map['subnetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

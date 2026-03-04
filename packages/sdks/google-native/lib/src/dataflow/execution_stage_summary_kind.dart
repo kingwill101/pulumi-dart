@@ -10,16 +10,15 @@ enum ExecutionStageSummaryKind {
   singletonKind("SINGLETON_KIND"),
   shuffleKind("SHUFFLE_KIND");
 
-  const ExecutionStageSummaryKind(this.value);
-  final String value;
+  const ExecutionStageSummaryKind(this.wireValue);
+  final String wireValue;
 
   static ExecutionStageSummaryKind fromValue(String value) {
     for (final item in ExecutionStageSummaryKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExecutionStageSummaryKind value: $value');
   }
 }
-

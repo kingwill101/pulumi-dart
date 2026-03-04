@@ -15,11 +15,7 @@ class GetBackupRunArgs {
   /// [id] Required.
   /// [instance] Required.
   /// [project] Optional.
-  GetBackupRunArgs({
-    required this.id,
-    required this.instance,
-    this.project,
-  });
+  GetBackupRunArgs({required this.id, required this.instance, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetBackupRunArgs {
 
   factory GetBackupRunArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupRunArgs(
-      id: (map['id'] as String).input(),
-      instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

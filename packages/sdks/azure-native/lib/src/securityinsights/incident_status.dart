@@ -4,16 +4,15 @@ enum IncidentStatus {
   valueActive("Active"),
   valueClosed("Closed");
 
-  const IncidentStatus(this.value);
-  final String value;
+  const IncidentStatus(this.wireValue);
+  final String wireValue;
 
   static IncidentStatus fromValue(String value) {
     for (final item in IncidentStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IncidentStatus value: $value');
   }
 }
-

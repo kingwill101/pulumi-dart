@@ -7,8 +7,10 @@ import 'key_vault_parameter_reference_response.dart';
 class DeploymentParameterResponse {
   /// Azure Key Vault parameter reference.
   final pulumi.Input<KeyVaultParameterReferenceResponse>? reference;
+
   /// Type of the value.
   final pulumi.Input<String>? type;
+
   /// Input value to the parameter.
   final pulumi.Input<dynamic>? value;
 
@@ -16,15 +18,15 @@ class DeploymentParameterResponse {
   /// [reference] Azure Key Vault parameter reference.
   /// [type] Type of the value.
   /// [value] Input value to the parameter.
-  DeploymentParameterResponse({
-    this.reference,
-    this.type,
-    this.value,
-  });
+  DeploymentParameterResponse({this.reference, this.type, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'reference': ?pulumi.Input.mapOptionalInputValue<KeyVaultParameterReferenceResponse, Map<String, dynamic>>(reference, (value) => value.toMap()),
+      'reference':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultParameterReferenceResponse,
+            Map<String, dynamic>
+          >(reference, (value) => value.toMap()),
       'type': ?type,
       'value': ?value,
     };
@@ -32,10 +34,25 @@ class DeploymentParameterResponse {
 
   factory DeploymentParameterResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentParameterResponse(
-      reference: map['reference'] == null ? null : (KeyVaultParameterReferenceResponse.fromMap((map['reference']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']!).input(),
+      reference: (() {
+        final guardedValue = map['reference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultParameterReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

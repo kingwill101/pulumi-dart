@@ -7,6 +7,7 @@ import 'activated_resource_reference_response.dart';
 class SecurityPolicyWebApplicationFirewallAssociationResponse {
   /// List of domains.
   final pulumi.Input<List<ActivatedResourceReferenceResponse>>? domains;
+
   /// List of paths
   final pulumi.Input<List<String>>? patternsToMatch;
 
@@ -20,16 +21,43 @@ class SecurityPolicyWebApplicationFirewallAssociationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domains': ?pulumi.Input.mapOptionalInputValue<List<ActivatedResourceReferenceResponse>, List<Map<String, dynamic>>>(domains, (value) => pulumi.Input.encodeList<ActivatedResourceReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'domains':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ActivatedResourceReferenceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            domains,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ActivatedResourceReferenceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'patternsToMatch': ?patternsToMatch,
     };
   }
 
-  factory SecurityPolicyWebApplicationFirewallAssociationResponse.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyWebApplicationFirewallAssociationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyWebApplicationFirewallAssociationResponse(
-      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(map['domains']!, (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch']! as List).cast<String>()).input(),
+      domains: (() {
+        final guardedValue = map['domains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(
+            guardedValue,
+            (value) => ActivatedResourceReferenceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      patternsToMatch: (() {
+        final guardedValue = map['patternsToMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

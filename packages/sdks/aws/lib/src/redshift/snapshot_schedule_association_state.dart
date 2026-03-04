@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotScheduleAssociationState {
   /// The cluster identifier.
   final pulumi.Input<String>? clusterIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The snapshot schedule identifier.
   final pulumi.Input<String>? scheduleIdentifier;
 
@@ -31,10 +33,21 @@ class SnapshotScheduleAssociationState {
 
   factory SnapshotScheduleAssociationState.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleAssociationState(
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scheduleIdentifier: map['scheduleIdentifier'] == null ? null : ((map['scheduleIdentifier'] as String).input()).input(),
+      clusterIdentifier: (() {
+        final guardedValue = map['clusterIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleIdentifier: (() {
+        final guardedValue = map['scheduleIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

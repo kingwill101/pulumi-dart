@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNamespaceAuthorizationRule.
 class GetNamespaceAuthorizationRuleResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -8,17 +7,23 @@ class GetNamespaceAuthorizationRuleResult {
   final String name;
   final String? namespaceId;
   final String? namespaceName;
+
   /// The primary connection string for the authorization rule.
   final String primaryConnectionString;
+
   /// The alias Primary Connection String for the ServiceBus Namespace, if the namespace is Geo DR paired.
   final String primaryConnectionStringAlias;
+
   /// The primary access key for the authorization rule.
   final String primaryKey;
   final String? resourceGroupName;
+
   /// The secondary connection string for the authorization rule.
   final String secondaryConnectionString;
+
   /// The alias Secondary Connection String for the ServiceBus Namespace
   final String secondaryConnectionStringAlias;
+
   /// The secondary access key for the authorization rule.
   final String secondaryKey;
 
@@ -64,20 +69,35 @@ class GetNamespaceAuthorizationRuleResult {
     };
   }
 
-  factory GetNamespaceAuthorizationRuleResult.fromMap(Map<String, dynamic> map) {
+  factory GetNamespaceAuthorizationRuleResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNamespaceAuthorizationRuleResult(
       id: map['id'] as String,
       name: map['name'] as String,
-      namespaceId: map['namespaceId'] == null ? null : map['namespaceId']! as String,
-      namespaceName: map['namespaceName'] == null ? null : map['namespaceName']! as String,
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] as String,
+      primaryConnectionStringAlias:
+          map['primaryConnectionStringAlias'] as String,
       primaryKey: map['primaryKey'] as String,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName']! as String,
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] as String,
+      secondaryConnectionStringAlias:
+          map['secondaryConnectionStringAlias'] as String,
       secondaryKey: map['secondaryKey'] as String,
     );
   }
 }
-

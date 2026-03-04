@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallSettingsDefaultFirewallIds {
   /// The Linode's default firewall.
   final pulumi.Input<int>? linode;
+
   /// The NodeBalancer's default firewall.
   final pulumi.Input<int>? nodebalancer;
+
   /// The public interface's default firewall.
   final pulumi.Input<int>? publicInterface;
+
   /// The VPC interface's default firewall.
   final pulumi.Input<int>? vpcInterface;
 
@@ -35,11 +38,26 @@ class FirewallSettingsDefaultFirewallIds {
 
   factory FirewallSettingsDefaultFirewallIds.fromMap(Map<String, dynamic> map) {
     return FirewallSettingsDefaultFirewallIds(
-      linode: map['linode'] == null ? null : (map['linode']! as int).input(),
-      nodebalancer: map['nodebalancer'] == null ? null : (map['nodebalancer']! as int).input(),
-      publicInterface: map['publicInterface'] == null ? null : (map['publicInterface']! as int).input(),
-      vpcInterface: map['vpcInterface'] == null ? null : (map['vpcInterface']! as int).input(),
+      linode: (() {
+        final guardedValue = map['linode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodebalancer: (() {
+        final guardedValue = map['nodebalancer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      publicInterface: (() {
+        final guardedValue = map['publicInterface'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vpcInterface: (() {
+        final guardedValue = map['vpcInterface'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

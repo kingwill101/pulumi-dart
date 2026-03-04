@@ -5,9 +5,14 @@ import 'access_package_assignment_policy_requestor_settings_requestor.dart';
 
 class AccessPackageAssignmentPolicyRequestorSettings {
   /// A block specifying the users who are allowed to request on this policy, as documented below.
-  final pulumi.Input<List<AccessPackageAssignmentPolicyRequestorSettingsRequestor>>? requestors;
+  final pulumi.Input<
+    List<AccessPackageAssignmentPolicyRequestorSettingsRequestor>
+  >?
+  requestors;
+
   /// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
   final pulumi.Input<bool>? requestsAccepted;
+
   /// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
   final pulumi.Input<String>? scopeType;
 
@@ -23,18 +28,52 @@ class AccessPackageAssignmentPolicyRequestorSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestors': ?pulumi.Input.mapOptionalInputValue<List<AccessPackageAssignmentPolicyRequestorSettingsRequestor>, List<Map<String, dynamic>>>(requestors, (value) => pulumi.Input.encodeList<AccessPackageAssignmentPolicyRequestorSettingsRequestor, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AccessPackageAssignmentPolicyRequestorSettingsRequestor>,
+            List<Map<String, dynamic>>
+          >(
+            requestors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AccessPackageAssignmentPolicyRequestorSettingsRequestor,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'requestsAccepted': ?requestsAccepted,
       'scopeType': ?scopeType,
     };
   }
 
-  factory AccessPackageAssignmentPolicyRequestorSettings.fromMap(Map<String, dynamic> map) {
+  factory AccessPackageAssignmentPolicyRequestorSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessPackageAssignmentPolicyRequestorSettings(
-      requestors: map['requestors'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyRequestorSettingsRequestor>(map['requestors']!, (value) => AccessPackageAssignmentPolicyRequestorSettingsRequestor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestsAccepted: map['requestsAccepted'] == null ? null : (map['requestsAccepted']! as bool).input(),
-      scopeType: map['scopeType'] == null ? null : (map['scopeType']! as String).input(),
+      requestors: (() {
+        final guardedValue = map['requestors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AccessPackageAssignmentPolicyRequestorSettingsRequestor
+          >(
+            guardedValue,
+            (value) =>
+                AccessPackageAssignmentPolicyRequestorSettingsRequestor.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      requestsAccepted: (() {
+        final guardedValue = map['requestsAccepted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scopeType: (() {
+        final guardedValue = map['scopeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

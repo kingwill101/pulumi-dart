@@ -5,16 +5,15 @@ enum WebApplicationFirewallAction {
   valueLog("Log"),
   valueJSChallenge("JSChallenge");
 
-  const WebApplicationFirewallAction(this.value);
-  final String value;
+  const WebApplicationFirewallAction(this.wireValue);
+  final String wireValue;
 
   static WebApplicationFirewallAction fromValue(String value) {
     for (final item in WebApplicationFirewallAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebApplicationFirewallAction value: $value');
   }
 }
-

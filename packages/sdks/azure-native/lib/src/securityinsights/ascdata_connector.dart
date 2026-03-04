@@ -473,19 +473,26 @@ import 'system_data_response.dart';
 class ASCDataConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The available data types for the connector.
   late final pulumi.Output<AlertsDataTypeOfDataConnectorResponse?> dataTypes;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The kind of the data connector
   /// Expected value is 'AzureSecurityCenter'.
   late final pulumi.Output<String> kind;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The subscription id to connect to, and get the data from.
   late final pulumi.Output<String?> subscriptionId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -498,18 +505,20 @@ class ASCDataConnector extends pulumi.CustomResource {
     ASCDataConnectorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:ASCDataConnector',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataTypes = registerOutput<AlertsDataTypeOfDataConnectorResponse?>('dataTypes');
-    this.etag = registerOutput<String?>('etag');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:securityinsights:ASCDataConnector',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataTypes = registerOutput<AlertsDataTypeOfDataConnectorResponse?>(
+      'dataTypes',
+    );
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.subscriptionId = registerOutput<String?>('subscriptionId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    subscriptionId = registerOutput<String?>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

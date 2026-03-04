@@ -1,5 +1,3 @@
-library module_domains;
-
 export 'domains/audit_config.dart';
 export 'domains/audit_config_domains_v1alpha2.dart';
 export 'domains/audit_config_domains_v1beta1.dart';

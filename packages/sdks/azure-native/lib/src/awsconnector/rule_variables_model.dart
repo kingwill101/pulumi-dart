@@ -10,20 +10,37 @@ class RuleVariablesModel {
 
   /// Creates a new [RuleVariablesModel].
   /// [ruleVariables] Property ruleVariables
-  RuleVariablesModel({
-    this.ruleVariables,
-  });
+  RuleVariablesModel({this.ruleVariables});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ruleVariables': ?pulumi.Input.mapOptionalInputValue<Map<String, IPSet>, Map<String, Map<String, dynamic>>>(ruleVariables, (value) => pulumi.Input.encodeMapValues<IPSet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ruleVariables':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, IPSet>,
+            Map<String, Map<String, dynamic>>
+          >(
+            ruleVariables,
+            (value) =>
+                pulumi.Input.encodeMapValues<IPSet, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory RuleVariablesModel.fromMap(Map<String, dynamic> map) {
     return RuleVariablesModel(
-      ruleVariables: map['ruleVariables'] == null ? null : (pulumi.Input.decodeMapValues<IPSet>(map['ruleVariables']!, (value) => IPSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleVariables: (() {
+        final guardedValue = map['ruleVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<IPSet>(
+            guardedValue,
+            (value) => IPSet.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

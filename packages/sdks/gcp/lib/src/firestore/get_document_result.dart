@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDocument.
 class GetDocumentResult {
   final String collection;
@@ -8,6 +7,7 @@ class GetDocumentResult {
   final String database;
   final String documentId;
   final String fields;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -64,9 +64,12 @@ class GetDocumentResult {
       id: map['id'] as String,
       name: map['name'] as String,
       path: map['path'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

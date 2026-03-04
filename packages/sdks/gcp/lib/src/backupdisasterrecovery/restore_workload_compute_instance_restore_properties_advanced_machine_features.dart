@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
   /// Optional. Whether to enable nested virtualization or not (default is false).
   final pulumi.Input<bool>? enableNestedVirtualization;
+
   /// Optional. Whether to enable UEFI networking for instance creation.
   final pulumi.Input<bool>? enableUefiNetworking;
+
   /// Optional. The number of threads per physical core.
   final pulumi.Input<int>? threadsPerCore;
+
   /// Optional. The number of physical cores to expose to an instance.
   final pulumi.Input<int>? visibleCoreCount;
 
@@ -33,13 +36,30 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
-      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking']! as bool).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
-      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount']! as int).input(),
+      enableNestedVirtualization: (() {
+        final guardedValue = map['enableNestedVirtualization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableUefiNetworking: (() {
+        final guardedValue = map['enableUefiNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      threadsPerCore: (() {
+        final guardedValue = map['threadsPerCore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      visibleCoreCount: (() {
+        final guardedValue = map['visibleCoreCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

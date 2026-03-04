@@ -5,16 +5,15 @@ enum TriggerOperator {
   valueEqual("Equal"),
   valueNotEqual("NotEqual");
 
-  const TriggerOperator(this.value);
-  final String value;
+  const TriggerOperator(this.wireValue);
+  final String wireValue;
 
   static TriggerOperator fromValue(String value) {
     for (final item in TriggerOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TriggerOperator value: $value');
   }
 }
-

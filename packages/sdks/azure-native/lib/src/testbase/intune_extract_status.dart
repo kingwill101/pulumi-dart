@@ -6,16 +6,15 @@ enum IntuneExtractStatus {
   valueExtractFailed("ExtractFailed"),
   valueNoDependencyApp("NoDependencyApp");
 
-  const IntuneExtractStatus(this.value);
-  final String value;
+  const IntuneExtractStatus(this.wireValue);
+  final String wireValue;
 
   static IntuneExtractStatus fromValue(String value) {
     for (final item in IntuneExtractStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IntuneExtractStatus value: $value');
   }
 }
-

@@ -36,9 +36,9 @@ import 'get_shared_targets_result.dart';
 ///
 /// For information about Resource Manager Account Deletion Check Task and how to use it, see [What is Resource Manager Account Deletion Check Task](https://www.alibabacloud.com/help/en/resource-management/latest/check-account-delete).
 ///
-/// > **NOTE:** Available in v1.187.0+.
+/// &gt; **NOTE:** Available in v1.187.0+.
 ///
-/// > **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
+/// &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
 ///
 /// ## Example Usage
 ///
@@ -146,7 +146,7 @@ Future<GetAccountDeletionCheckTaskResult> getAccountDeletionCheckTask(
 
 /// This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.86.0.
+/// &gt; **NOTE:** Available since v1.86.0.
 ///
 /// ## Example Usage
 ///
@@ -254,7 +254,7 @@ Future<GetAccountsResult> getAccounts(
 
 /// This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.120.0+.
+/// &gt; **NOTE:** Available in v1.120.0+.
 ///
 /// ## Example Usage
 ///
@@ -385,7 +385,7 @@ Future<GetControlPoliciesResult> getControlPolicies(
 
 /// This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.120.0+.
+/// &gt; **NOTE:** Available in v1.120.0+.
 ///
 /// ## Example Usage
 ///
@@ -504,7 +504,7 @@ Future<GetControlPolicyAttachmentsResult> getControlPolicyAttachments(
 
 /// This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.181.0+.
+/// &gt; **NOTE:** Available in v1.181.0+.
 ///
 /// ## Example Usage
 ///
@@ -629,7 +629,7 @@ Future<GetDelegatedAdministratorsResult> getDelegatedAdministrators(
 
 /// This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.84.0.
+/// &gt; **NOTE:** Available since v1.84.0.
 ///
 /// ## Example Usage
 ///
@@ -797,7 +797,7 @@ Future<GetFoldersResult> getFolders(
 
 /// This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.86.0+.
+/// &gt; **NOTE:**  Available in 1.86.0+.
 ///
 /// ## Example Usage
 ///
@@ -905,7 +905,7 @@ Future<GetHandshakesResult> getHandshakes(
 
 /// This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.86.0+.
+/// &gt; **NOTE:**  Available in 1.86.0+.
 ///
 /// ## Example Usage
 ///
@@ -939,7 +939,7 @@ Future<GetPoliciesResult> getPolicies(
 
 /// This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.93.0+.
+/// &gt; **NOTE:**  Available in 1.93.0+.
 ///
 /// ## Example Usage
 ///
@@ -1047,7 +1047,7 @@ Future<GetPolicyAttachmentsResult> getPolicyAttachments(
 
 /// This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.85.0+.
+/// &gt; **NOTE:**  Available in 1.85.0+.
 ///
 /// ## Example Usage
 ///
@@ -1170,7 +1170,7 @@ Future<GetPolicyVersionsResult> getPolicyVersions(
 
 /// This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.86.0+.
+/// &gt; **NOTE:**  Available in 1.86.0+.
 ///
 /// ## Example Usage
 ///
@@ -1278,7 +1278,7 @@ Future<GetResourceDirectoriesResult> getResourceDirectories(
 
 /// This data source provides resource groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.84.0.
+/// &gt; **NOTE:** Available since v1.84.0.
 ///
 /// ## Example Usage
 ///
@@ -1397,7 +1397,7 @@ Future<GetResourceGroupsResult> getResourceGroups(
 
 /// This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.111.0+.
+/// &gt; **NOTE:** Available in v1.111.0+.
 ///
 /// ## Example Usage
 ///
@@ -1534,7 +1534,7 @@ Future<GetResourceSharesResult> getResourceShares(
 
 /// This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.86.0+.
+/// &gt; **NOTE:**  Available in 1.86.0+.
 ///
 /// ## Example Usage
 ///
@@ -1651,7 +1651,7 @@ Future<GetRolesResult> getRoles(
 
 /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -2015,7 +2015,7 @@ Future<GetSharedResourcesResult> getSharedResources(
 
 /// This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///

@@ -3,16 +3,15 @@ enum JobLimitsType {
   valueCommand("Command"),
   valueSweep("Sweep");
 
-  const JobLimitsType(this.value);
-  final String value;
+  const JobLimitsType(this.wireValue);
+  final String wireValue;
 
   static JobLimitsType fromValue(String value) {
     for (final item in JobLimitsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobLimitsType value: $value');
   }
 }
-

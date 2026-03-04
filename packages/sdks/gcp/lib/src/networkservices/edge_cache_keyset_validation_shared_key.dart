@@ -13,20 +13,15 @@ class EdgeCacheKeysetValidationSharedKey {
 
   /// Creates a new [EdgeCacheKeysetValidationSharedKey].
   /// [secretVersion] The name of the secret version in Secret Manager.
-  EdgeCacheKeysetValidationSharedKey({
-    required this.secretVersion,
-  });
+  EdgeCacheKeysetValidationSharedKey({required this.secretVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
   factory EdgeCacheKeysetValidationSharedKey.fromMap(Map<String, dynamic> map) {
     return EdgeCacheKeysetValidationSharedKey(
-      secretVersion: (map['secretVersion'] as String).input(),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

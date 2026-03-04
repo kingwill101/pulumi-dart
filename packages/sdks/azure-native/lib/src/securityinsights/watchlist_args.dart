@@ -10,48 +10,70 @@ import 'watchlist_user_info.dart';
 class WatchlistArgs {
   /// The content type of the raw content. Example : text/csv or text/tsv
   final pulumi.Input<String>? contentType;
+
   /// The time the watchlist was created
   final pulumi.Input<String>? created;
+
   /// Describes a user that created the watchlist
   final pulumi.Input<WatchlistUserInfo>? createdBy;
+
   /// The default duration of a watchlist (in ISO 8601 duration format)
   final pulumi.Input<String>? defaultDuration;
+
   /// A description of the watchlist
   final pulumi.Input<String>? description;
+
   /// The display name of the watchlist
   final pulumi.Input<String> displayName;
+
   /// A flag that indicates if the watchlist is deleted or not
   final pulumi.Input<bool>? isDeleted;
+
   /// The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.
   final pulumi.Input<String> itemsSearchKey;
+
   /// List of labels relevant to this watchlist
   final pulumi.Input<List<String>>? labels;
+
   /// The number of lines in a csv/tsv content to skip before the header
   final pulumi.Input<int>? numberOfLinesToSkip;
+
   /// The provider of the watchlist
   final pulumi.Input<String> provider;
+
   /// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
   final pulumi.Input<String>? rawContent;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The filename of the watchlist, called 'source'
   final pulumi.Input<String>? source;
+
   /// The sourceType of the watchlist
   final pulumi.Input<String>? sourceType;
+
   /// The tenantId where the watchlist belongs to
   final pulumi.Input<String>? tenantId;
+
   /// The last time the watchlist was updated
   final pulumi.Input<String>? updated;
+
   /// Describes a user that updated the watchlist
   final pulumi.Input<WatchlistUserInfo>? updatedBy;
+
   /// The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted
   final pulumi.Input<String>? uploadStatus;
+
   /// The alias of the watchlist
   final pulumi.Input<String>? watchlistAlias;
+
   /// The id (a Guid) of the watchlist
   final pulumi.Input<String>? watchlistId;
+
   /// The type of the watchlist
   final pulumi.Input<String>? watchlistType;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -109,7 +131,11 @@ class WatchlistArgs {
     return <String, dynamic>{
       'contentType': ?contentType,
       'created': ?created,
-      'createdBy': ?pulumi.Input.mapOptionalInputValue<WatchlistUserInfo, Map<String, dynamic>>(createdBy, (value) => value.toMap()),
+      'createdBy':
+          ?pulumi.Input.mapOptionalInputValue<
+            WatchlistUserInfo,
+            Map<String, dynamic>
+          >(createdBy, (value) => value.toMap()),
       'defaultDuration': ?defaultDuration,
       'description': ?description,
       'displayName': displayName,
@@ -124,7 +150,11 @@ class WatchlistArgs {
       'sourceType': ?sourceType,
       'tenantId': ?tenantId,
       'updated': ?updated,
-      'updatedBy': ?pulumi.Input.mapOptionalInputValue<WatchlistUserInfo, Map<String, dynamic>>(updatedBy, (value) => value.toMap()),
+      'updatedBy':
+          ?pulumi.Input.mapOptionalInputValue<
+            WatchlistUserInfo,
+            Map<String, dynamic>
+          >(updatedBy, (value) => value.toMap()),
       'uploadStatus': ?uploadStatus,
       'watchlistAlias': ?watchlistAlias,
       'watchlistId': ?watchlistId,
@@ -135,30 +165,111 @@ class WatchlistArgs {
 
   factory WatchlistArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistArgs(
-      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
-      created: map['created'] == null ? null : (map['created']! as String).input(),
-      createdBy: map['createdBy'] == null ? null : (WatchlistUserInfo.fromMap((map['createdBy']! as Map).cast<String, dynamic>())).input(),
-      defaultDuration: map['defaultDuration'] == null ? null : (map['defaultDuration']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      isDeleted: map['isDeleted'] == null ? null : (map['isDeleted']! as bool).input(),
-      itemsSearchKey: (map['itemsSearchKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
-      numberOfLinesToSkip: map['numberOfLinesToSkip'] == null ? null : (map['numberOfLinesToSkip']! as int).input(),
-      provider: (map['provider'] as String).input(),
-      rawContent: map['rawContent'] == null ? null : (map['rawContent']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
-      updatedBy: map['updatedBy'] == null ? null : (WatchlistUserInfo.fromMap((map['updatedBy']! as Map).cast<String, dynamic>())).input(),
-      uploadStatus: map['uploadStatus'] == null ? null : (map['uploadStatus']! as String).input(),
-      watchlistAlias: map['watchlistAlias'] == null ? null : (map['watchlistAlias']! as String).input(),
-      watchlistId: map['watchlistId'] == null ? null : (map['watchlistId']! as String).input(),
-      watchlistType: map['watchlistType'] == null ? null : (map['watchlistType']! as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WatchlistUserInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      defaultDuration: (() {
+        final guardedValue = map['defaultDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      isDeleted: (() {
+        final guardedValue = map['isDeleted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      itemsSearchKey: pulumi.Input.fromValue(map['itemsSearchKey'] as String),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      numberOfLinesToSkip: (() {
+        final guardedValue = map['numberOfLinesToSkip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      provider: pulumi.Input.fromValue(map['provider'] as String),
+      rawContent: (() {
+        final guardedValue = map['rawContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceType: (() {
+        final guardedValue = map['sourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updated: (() {
+        final guardedValue = map['updated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedBy: (() {
+        final guardedValue = map['updatedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WatchlistUserInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uploadStatus: (() {
+        final guardedValue = map['uploadStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      watchlistAlias: (() {
+        final guardedValue = map['watchlistAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      watchlistId: (() {
+        final guardedValue = map['watchlistId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      watchlistType: (() {
+        final guardedValue = map['watchlistType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

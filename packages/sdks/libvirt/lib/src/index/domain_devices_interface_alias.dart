@@ -8,20 +8,15 @@ class DomainDevicesInterfaceAlias {
 
   /// Creates a new [DomainDevicesInterfaceAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesInterfaceAlias({
-    required this.name,
-  });
+  DomainDevicesInterfaceAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesInterfaceAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

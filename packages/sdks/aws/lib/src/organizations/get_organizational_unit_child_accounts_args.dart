@@ -12,20 +12,17 @@ class GetOrganizationalUnitChildAccountsArgs {
 
   /// Creates a new [GetOrganizationalUnitChildAccountsArgs].
   /// [parentId] The parent ID of the accounts.
-  GetOrganizationalUnitChildAccountsArgs({
-    required this.parentId,
-  });
+  GetOrganizationalUnitChildAccountsArgs({required this.parentId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parentId': parentId,
-    };
+    return <String, dynamic>{'parentId': parentId};
   }
 
-  factory GetOrganizationalUnitChildAccountsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationalUnitChildAccountsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationalUnitChildAccountsArgs(
-      parentId: (map['parentId'] as String).input(),
+      parentId: pulumi.Input.fromValue(map['parentId'] as String),
     );
   }
 }
-

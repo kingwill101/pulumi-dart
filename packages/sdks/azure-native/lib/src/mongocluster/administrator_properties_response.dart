@@ -9,20 +9,19 @@ class AdministratorPropertiesResponse {
 
   /// Creates a new [AdministratorPropertiesResponse].
   /// [userName] The administrator user name.
-  AdministratorPropertiesResponse({
-    this.userName,
-  });
+  AdministratorPropertiesResponse({this.userName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userName': ?userName,
-    };
+    return <String, dynamic>{'userName': ?userName};
   }
 
   factory AdministratorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AdministratorPropertiesResponse(
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

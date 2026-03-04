@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouterStatusBestRouteAsPath {
   /// The AS numbers of the AS Path.
   final pulumi.Input<List<int>> asLists;
+
   /// The type of the AS Path, which can be one of the following values:
   /// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
   /// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
@@ -29,9 +30,8 @@ class GetRouterStatusBestRouteAsPath {
 
   factory GetRouterStatusBestRouteAsPath.fromMap(Map<String, dynamic> map) {
     return GetRouterStatusBestRouteAsPath(
-      asLists: ((map['asLists'] as List).cast<int>()).input(),
-      pathSegmentType: (map['pathSegmentType'] as String).input(),
+      asLists: pulumi.Input.fromValue((map['asLists'] as List).cast<int>()),
+      pathSegmentType: pulumi.Input.fromValue(map['pathSegmentType'] as String),
     );
   }
 }
-

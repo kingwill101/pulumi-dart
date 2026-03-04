@@ -6,7 +6,7 @@ import 'ec2_credential_v3_state.dart';
 /// EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
 /// endpoints or to authenticate against Keystone.
 ///
-/// > **Note:** All arguments including the EC2 credential access key and secret
+/// &gt; **Note:** All arguments including the EC2 credential access key and secret
 /// will be stored in the raw state as plain-text. Read more about sensitive data
 /// in state.
 ///
@@ -191,19 +191,24 @@ import 'ec2_credential_v3_state.dart';
 class Ec2CredentialV3 extends pulumi.CustomResource {
   /// contains an EC2 credential access UUID
   late final pulumi.Output<String> access;
+
   /// The ID of the project the EC2 credential is created
   /// for and that authentication requests using this EC2 credential will
   /// be scoped to. Only administrative users can specify a project ID different
   /// from the current auth scope.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new EC2 credential.
   late final pulumi.Output<String> region;
+
   /// contains an EC2 credential secret UUID
   late final pulumi.Output<String> secret;
+
   /// contains an EC2 credential trust ID scope
   late final pulumi.Output<String> trustId;
+
   /// The ID of the user the EC2 credential is created for.
   /// Only administrative users can specify a user ID different from the current
   /// auth scope.
@@ -218,17 +223,17 @@ class Ec2CredentialV3 extends pulumi.CustomResource {
     Ec2CredentialV3Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/ec2CredentialV3:Ec2CredentialV3',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.access = registerOutput<String>('access');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.secret = registerOutput<String>('secret');
-    this.trustId = registerOutput<String>('trustId');
-    this.userId = registerOutput<String>('userId');
+         'openstack:identity/ec2CredentialV3:Ec2CredentialV3',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    access = registerOutput<String>('access');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    secret = registerOutput<String>('secret');
+    trustId = registerOutput<String>('trustId');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [Ec2CredentialV3] resource's state with the given [name] and [id].
@@ -249,16 +254,16 @@ class Ec2CredentialV3 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/ec2CredentialV3:Ec2CredentialV3',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.access = registerOutput<String>('access');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.secret = registerOutput<String>('secret');
-    this.trustId = registerOutput<String>('trustId');
-    this.userId = registerOutput<String>('userId');
+         'openstack:identity/ec2CredentialV3:Ec2CredentialV3',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    access = registerOutput<String>('access');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    secret = registerOutput<String>('secret');
+    trustId = registerOutput<String>('trustId');
+    userId = registerOutput<String>('userId');
   }
 }

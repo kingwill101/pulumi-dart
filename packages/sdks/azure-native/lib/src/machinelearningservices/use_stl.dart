@@ -4,16 +4,15 @@ enum UseStl {
   valueSeason("Season"),
   valueSeasonTrend("SeasonTrend");
 
-  const UseStl(this.value);
-  final String value;
+  const UseStl(this.wireValue);
+  final String wireValue;
 
   static UseStl fromValue(String value) {
     for (final item in UseStl.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UseStl value: $value');
   }
 }
-

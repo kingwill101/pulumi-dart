@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Description of the workspace.
   final String? description;
+
   /// Name of the workspace.
   final String displayName;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -46,7 +50,11 @@ class GetWorkspaceResult {
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -54,4 +62,3 @@ class GetWorkspaceResult {
     );
   }
 }
-

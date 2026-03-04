@@ -4,16 +4,17 @@ enum GoogleCloudDataplexV1TaskTriggerSpecType {
   onDemand("ON_DEMAND"),
   recurring("RECURRING");
 
-  const GoogleCloudDataplexV1TaskTriggerSpecType(this.value);
-  final String value;
+  const GoogleCloudDataplexV1TaskTriggerSpecType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDataplexV1TaskTriggerSpecType fromValue(String value) {
     for (final item in GoogleCloudDataplexV1TaskTriggerSpecType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1TaskTriggerSpecType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1TaskTriggerSpecType value: $value',
+    );
   }
 }
-

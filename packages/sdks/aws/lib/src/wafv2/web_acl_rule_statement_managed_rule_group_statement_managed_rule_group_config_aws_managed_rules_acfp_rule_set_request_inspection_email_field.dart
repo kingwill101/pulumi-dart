@@ -13,15 +13,14 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identifier': identifier,
-    };
+    return <String, dynamic>{'identifier': identifier};
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField(
-      identifier: (map['identifier'] as String).input(),
+      identifier: pulumi.Input.fromValue(map['identifier'] as String),
     );
   }
 }
-

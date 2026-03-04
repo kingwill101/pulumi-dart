@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventHubAuthorizationRuleArgs {
   /// The authorization rule name.
   final pulumi.Input<String> authorizationRuleName;
+
   /// The Event Hub name
   final pulumi.Input<String> eventHubName;
+
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetEventHubAuthorizationRuleArgs {
 
   factory GetEventHubAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetEventHubAuthorizationRuleArgs(
-      authorizationRuleName: (map['authorizationRuleName'] as String).input(),
-      eventHubName: (map['eventHubName'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authorizationRuleName: pulumi.Input.fromValue(
+        map['authorizationRuleName'] as String,
+      ),
+      eventHubName: pulumi.Input.fromValue(map['eventHubName'] as String),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_inspector2;
-
 export 'inspector2/delegated_admin_account.dart';
 export 'inspector2/delegated_admin_account_args.dart';
 export 'inspector2/delegated_admin_account_state.dart';

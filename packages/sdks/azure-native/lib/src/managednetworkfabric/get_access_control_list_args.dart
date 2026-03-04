@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessControlListArgs {
   /// Name of the Access Control List.
   final pulumi.Input<String> accessControlListName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetAccessControlListArgs {
 
   factory GetAccessControlListArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessControlListArgs(
-      accessControlListName: (map['accessControlListName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accessControlListName: pulumi.Input.fromValue(
+        map['accessControlListName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

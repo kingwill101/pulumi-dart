@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudBuildOptionsResponse {
   /// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
   final pulumi.Input<String> appYamlPath;
+
   /// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
   final pulumi.Input<String> cloudBuildTimeout;
 
@@ -26,9 +27,10 @@ class CloudBuildOptionsResponse {
 
   factory CloudBuildOptionsResponse.fromMap(Map<String, dynamic> map) {
     return CloudBuildOptionsResponse(
-      appYamlPath: (map['appYamlPath'] as String).input(),
-      cloudBuildTimeout: (map['cloudBuildTimeout'] as String).input(),
+      appYamlPath: pulumi.Input.fromValue(map['appYamlPath'] as String),
+      cloudBuildTimeout: pulumi.Input.fromValue(
+        map['cloudBuildTimeout'] as String,
+      ),
     );
   }
 }
-

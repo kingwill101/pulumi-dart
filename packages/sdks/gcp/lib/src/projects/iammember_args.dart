@@ -11,6 +11,7 @@ class IAMMemberArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   final pulumi.Input<IAMMemberCondition>? condition;
+
   /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -18,9 +19,11 @@ class IAMMemberArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String> member;
+
   /// The project id of the target project. This is not
   /// inferred from the provider.
   final pulumi.Input<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -40,7 +43,11 @@ class IAMMemberArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<IAMMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            IAMMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'member': member,
       'project': project,
       'role': role,
@@ -49,11 +56,18 @@ class IAMMemberArgs {
 
   factory IAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return IAMMemberArgs(
-      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      member: (map['member'] as String).input(),
-      project: (map['project'] as String).input(),
-      role: (map['role'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IAMMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      member: pulumi.Input.fromValue(map['member'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

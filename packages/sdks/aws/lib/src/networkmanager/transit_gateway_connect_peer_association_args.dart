@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayConnectPeerAssociationArgs {
   /// ID of the device.
   final pulumi.Input<String> deviceId;
+
   /// ID of the global network.
   final pulumi.Input<String> globalNetworkId;
+
   /// ID of the link.
   final pulumi.Input<String>? linkId;
+
   /// ARN of the Connect peer.
   ///
   /// The following arguments are optional:
@@ -39,13 +42,20 @@ class TransitGatewayConnectPeerAssociationArgs {
     };
   }
 
-  factory TransitGatewayConnectPeerAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory TransitGatewayConnectPeerAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitGatewayConnectPeerAssociationArgs(
-      deviceId: (map['deviceId'] as String).input(),
-      globalNetworkId: (map['globalNetworkId'] as String).input(),
-      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
-      transitGatewayConnectPeerArn: (map['transitGatewayConnectPeerArn'] as String).input(),
+      deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
+      globalNetworkId: pulumi.Input.fromValue(map['globalNetworkId'] as String),
+      linkId: (() {
+        final guardedValue = map['linkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayConnectPeerArn: pulumi.Input.fromValue(
+        map['transitGatewayConnectPeerArn'] as String,
+      ),
     );
   }
 }
-

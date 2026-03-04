@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateMapArgs {
   /// Required. A user-provided name of the certificate map.
   final pulumi.Input<String> certificateMapId;
+
   /// One or more paragraphs of text description of a certificate map.
   final pulumi.Input<String>? description;
+
   /// Set of labels associated with a Certificate Map.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -47,13 +50,36 @@ class CertificateMapArgs {
 
   factory CertificateMapArgs.fromMap(Map<String, dynamic> map) {
     return CertificateMapArgs(
-      certificateMapId: (map['certificateMapId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      certificateMapId: pulumi.Input.fromValue(
+        map['certificateMapId'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

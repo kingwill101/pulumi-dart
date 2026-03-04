@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterSnapshotArgs {
   /// The DB Cluster Identifier from which to take the snapshot.
   final pulumi.Input<String> dbClusterIdentifier;
+
   /// The Identifier for the snapshot.
   final pulumi.Input<String> dbClusterSnapshotIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   final pulumi.Input<List<String>>? sharedAccounts;
+
   /// A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,29 @@ class ClusterSnapshotArgs {
 
   factory ClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotArgs(
-      dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
-      dbClusterSnapshotIdentifier: (map['dbClusterSnapshotIdentifier'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sharedAccounts: map['sharedAccounts'] == null ? null : (((map['sharedAccounts'] as List).cast<String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      dbClusterIdentifier: pulumi.Input.fromValue(
+        map['dbClusterIdentifier'] as String,
+      ),
+      dbClusterSnapshotIdentifier: pulumi.Input.fromValue(
+        map['dbClusterSnapshotIdentifier'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedAccounts: (() {
+        final guardedValue = map['sharedAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

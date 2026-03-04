@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDevBoxDefinitionArgs {
   /// The ID of the associated Dev Center.
   final pulumi.Input<String> devCenterId;
+
   /// The name of this Dev Center Dev Box Definition.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetDevBoxDefinitionArgs].
   /// [devCenterId] The ID of the associated Dev Center.
   /// [name] The name of this Dev Center Dev Box Definition.
-  GetDevBoxDefinitionArgs({
-    required this.devCenterId,
-    required this.name,
-  });
+  GetDevBoxDefinitionArgs({required this.devCenterId, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'devCenterId': devCenterId,
-      'name': name,
-    };
+    return <String, dynamic>{'devCenterId': devCenterId, 'name': name};
   }
 
   factory GetDevBoxDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetDevBoxDefinitionArgs(
-      devCenterId: (map['devCenterId'] as String).input(),
-      name: (map['name'] as String).input(),
+      devCenterId: pulumi.Input.fromValue(map['devCenterId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

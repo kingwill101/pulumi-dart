@@ -2,16 +2,15 @@
 enum Name {
   valueG2("G2");
 
-  const Name(this.value);
-  final String value;
+  const Name(this.wireValue);
+  final String wireValue;
 
   static Name fromValue(String value) {
     for (final item in Name.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Name value: $value');
   }
 }
-

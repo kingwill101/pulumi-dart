@@ -10,10 +10,13 @@ import 'bucket_cors_configuration_v2_cors_rule.dart';
 class BucketCorsConfigurationV2Args {
   /// Name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   final pulumi.Input<List<BucketCorsConfigurationV2CorsRule>> corsRules;
+
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -32,7 +35,18 @@ class BucketCorsConfigurationV2Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
-      'corsRules': pulumi.Input.mapInputValue<List<BucketCorsConfigurationV2CorsRule>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<BucketCorsConfigurationV2CorsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'corsRules':
+          pulumi.Input.mapInputValue<
+            List<BucketCorsConfigurationV2CorsRule>,
+            List<Map<String, dynamic>>
+          >(
+            corsRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BucketCorsConfigurationV2CorsRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'expectedBucketOwner': ?expectedBucketOwner,
       'region': ?region,
     };
@@ -40,11 +54,25 @@ class BucketCorsConfigurationV2Args {
 
   factory BucketCorsConfigurationV2Args.fromMap(Map<String, dynamic> map) {
     return BucketCorsConfigurationV2Args(
-      bucket: (map['bucket'] as String).input(),
-      corsRules: (pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(map['corsRules']!, (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      corsRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(
+          map['corsRules']!,
+          (value) => BucketCorsConfigurationV2CorsRule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      expectedBucketOwner: (() {
+        final guardedValue = map['expectedBucketOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

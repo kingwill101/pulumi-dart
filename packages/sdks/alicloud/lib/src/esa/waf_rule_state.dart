@@ -8,14 +8,18 @@ import 'waf_rule_shared.dart';
 class WafRuleState {
   /// The specific configuration of the WAF rule. See `config` below.
   final pulumi.Input<WafRuleConfig>? config;
+
   /// The phase in which the WAF processes this rule.
   final pulumi.Input<String>? phase;
+
   /// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
   final pulumi.Input<int>? rulesetId;
   final pulumi.Input<WafRuleShared>? shared;
+
   /// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   final pulumi.Input<String>? siteId;
   final pulumi.Input<int>? siteVersion;
+
   /// The unique identifier of the WAF rule.
   final pulumi.Input<int>? wafRuleId;
 
@@ -39,10 +43,18 @@ class WafRuleState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': ?pulumi.Input.mapOptionalInputValue<WafRuleConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'config':
+          ?pulumi.Input.mapOptionalInputValue<
+            WafRuleConfig,
+            Map<String, dynamic>
+          >(config, (value) => value.toMap()),
       'phase': ?phase,
       'rulesetId': ?rulesetId,
-      'shared': ?pulumi.Input.mapOptionalInputValue<WafRuleShared, Map<String, dynamic>>(shared, (value) => value.toMap()),
+      'shared':
+          ?pulumi.Input.mapOptionalInputValue<
+            WafRuleShared,
+            Map<String, dynamic>
+          >(shared, (value) => value.toMap()),
       'siteId': ?siteId,
       'siteVersion': ?siteVersion,
       'wafRuleId': ?wafRuleId,
@@ -51,14 +63,45 @@ class WafRuleState {
 
   factory WafRuleState.fromMap(Map<String, dynamic> map) {
     return WafRuleState(
-      config: map['config'] == null ? null : (WafRuleConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
-      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
-      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId']! as int).input(),
-      shared: map['shared'] == null ? null : (WafRuleShared.fromMap((map['shared']! as Map).cast<String, dynamic>())).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
-      wafRuleId: map['wafRuleId'] == null ? null : (map['wafRuleId']! as int).input(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WafRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      phase: (() {
+        final guardedValue = map['phase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rulesetId: (() {
+        final guardedValue = map['rulesetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      shared: (() {
+        final guardedValue = map['shared'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WafRuleShared.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteVersion: (() {
+        final guardedValue = map['siteVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      wafRuleId: (() {
+        final guardedValue = map['wafRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

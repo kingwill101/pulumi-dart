@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_group_args.dart';
 import 'server_group_connection_drain_config.dart';
 import 'server_group_health_check_config.dart';
-import 'server_group_server.dart';
 import 'server_group_state.dart';
 
 /// Provides a GWLB Server Group resource.
@@ -11,7 +10,7 @@ import 'server_group_state.dart';
 ///
 /// For information about GWLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createservergroup).
 ///
-/// > **NOTE:** Available since v1.234.0.
+/// &gt; **NOTE:** Available since v1.234.0.
 ///
 /// ## Example Usage
 ///
@@ -620,48 +619,61 @@ import 'server_group_state.dart';
 /// ```
 class ServerGroup extends pulumi.CustomResource {
   /// Connected graceful interrupt configuration. See `connection_drain_config` below.
-  late final pulumi.Output<ServerGroupConnectionDrainConfig> connectionDrainConfig;
+  late final pulumi.Output<ServerGroupConnectionDrainConfig>
+  connectionDrainConfig;
+
   /// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   late final pulumi.Output<bool?> dryRun;
+
   /// Health check configurations. See `health_check_config` below.
   late final pulumi.Output<ServerGroupHealthCheckConfig> healthCheckConfig;
+
   /// The backend protocol. Valid values:
   ///
   /// - `GENEVE`(default)
   late final pulumi.Output<String> protocol;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The scheduling algorithm. Valid values:
   ///
   /// - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
   /// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
   /// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
   late final pulumi.Output<String> scheduler;
+
   /// The server group name.
   ///
   /// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String?> serverGroupName;
+
   /// The type of server group. Valid values:
   ///
   /// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
   /// - `Ip`: allows you to add servers of by specifying IP addresses.
   late final pulumi.Output<String> serverGroupType;
+
   /// The backend servers that you want to remove.
   ///
-  /// > **NOTE:**  You can remove at most 200 backend servers in each call.
+  /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
   /// See `servers` below.
-  late final pulumi.Output<List<ServerGroupServer>?> servers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> servers;
+
   /// Indicates the status of the backend server.
   late final pulumi.Output<String> status;
+
   /// The tag keys.
   ///
   /// You can specify at most 20 tags in each call.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The VPC ID.
   ///
-  /// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+  /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [ServerGroup].
@@ -673,24 +685,28 @@ class ServerGroup extends pulumi.CustomResource {
     ServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gwlb/serverGroup:ServerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>('connectionDrainConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>('healthCheckConfig');
-    this.protocol = registerOutput<String>('protocol');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scheduler = registerOutput<String>('scheduler');
-    this.serverGroupName = registerOutput<String?>('serverGroupName');
-    this.serverGroupType = registerOutput<String>('serverGroupType');
-    this.servers = registerOutput<List<ServerGroupServer>?>('servers');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:gwlb/serverGroup:ServerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
+      'connectionDrainConfig',
+    );
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
+      'healthCheckConfig',
+    );
+    protocol = registerOutput<String>('protocol');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scheduler = registerOutput<String>('scheduler');
+    serverGroupName = registerOutput<String?>('serverGroupName');
+    serverGroupType = registerOutput<String>('serverGroupType');
+    servers = registerOutput<List<Map<String, dynamic>>?>('servers');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [ServerGroup] resource's state with the given [name] and [id].
@@ -711,23 +727,27 @@ class ServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gwlb/serverGroup:ServerGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>('connectionDrainConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>('healthCheckConfig');
-    this.protocol = registerOutput<String>('protocol');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scheduler = registerOutput<String>('scheduler');
-    this.serverGroupName = registerOutput<String?>('serverGroupName');
-    this.serverGroupType = registerOutput<String>('serverGroupType');
-    this.servers = registerOutput<List<ServerGroupServer>?>('servers');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+         'alicloud:gwlb/serverGroup:ServerGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
+      'connectionDrainConfig',
+    );
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
+      'healthCheckConfig',
+    );
+    protocol = registerOutput<String>('protocol');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scheduler = registerOutput<String>('scheduler');
+    serverGroupName = registerOutput<String?>('serverGroupName');
+    serverGroupType = registerOutput<String>('serverGroupType');
+    servers = registerOutput<List<Map<String, dynamic>>?>('servers');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

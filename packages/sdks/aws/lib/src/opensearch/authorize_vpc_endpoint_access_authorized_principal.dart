@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthorizeVpcEndpointAccessAuthorizedPrincipal {
   /// IAM principal that is allowed to access to the domain.
   final pulumi.Input<String> principal;
+
   /// Type of principal.
   final pulumi.Input<String> principalType;
 
@@ -23,11 +24,12 @@ class AuthorizeVpcEndpointAccessAuthorizedPrincipal {
     };
   }
 
-  factory AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap(Map<String, dynamic> map) {
+  factory AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthorizeVpcEndpointAccessAuthorizedPrincipal(
-      principal: (map['principal'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
+      principal: pulumi.Input.fromValue(map['principal'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
     );
   }
 }
-

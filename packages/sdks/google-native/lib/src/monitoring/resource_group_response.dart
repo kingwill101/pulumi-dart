@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceGroupResponse {
   /// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
   final pulumi.Input<String> groupId;
+
   /// The resource type of the group members.
   final pulumi.Input<String> resourceType;
 
   /// Creates a new [ResourceGroupResponse].
   /// [groupId] The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
   /// [resourceType] The resource type of the group members.
-  ResourceGroupResponse({
-    required this.groupId,
-    required this.resourceType,
-  });
+  ResourceGroupResponse({required this.groupId, required this.resourceType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupId': groupId,
-      'resourceType': resourceType,
-    };
+    return <String, dynamic>{'groupId': groupId, 'resourceType': resourceType};
   }
 
   factory ResourceGroupResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGroupResponse(
-      groupId: (map['groupId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

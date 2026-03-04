@@ -1,14 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'alert_annotation.dart';
 import 'alert_args.dart';
 import 'alert_group_configuration.dart';
-import 'alert_join_configuration.dart';
-import 'alert_label.dart';
-import 'alert_notification_list.dart';
 import 'alert_policy_configuration.dart';
-import 'alert_query_list.dart';
 import 'alert_schedule.dart';
-import 'alert_severity_configuration.dart';
 import 'alert_state.dart';
 import 'alert_template_configuration.dart';
 
@@ -17,7 +11,7 @@ import 'alert_template_configuration.dart';
 ///
 /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 ///
-/// > **NOTE:** Available in 1.78.0
+/// &gt; **NOTE:** Available in 1.78.0
 ///
 /// ## Example Usage
 ///
@@ -1738,57 +1732,83 @@ import 'alert_template_configuration.dart';
 class Alert extends pulumi.CustomResource {
   /// Alert description.
   late final pulumi.Output<String?> alertDescription;
+
   /// Alert displayname.
   late final pulumi.Output<String> alertDisplayname;
+
   /// Name of logstore for configuring alarm service.
   late final pulumi.Output<String> alertName;
+
   /// Annotations for new alert.
-  late final pulumi.Output<List<AlertAnnotation>?> annotations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> annotations;
+
   /// whether to add automatic annotation, default is false.
   late final pulumi.Output<bool?> autoAnnotation;
-  /// Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
+
+  /// Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
   late final pulumi.Output<String?> condition;
   late final pulumi.Output<String?> dashboard;
+
   /// Group configuration for new alert.
   late final pulumi.Output<AlertGroupConfiguration?> groupConfiguration;
+
   /// Join configuration for different queries.
-  late final pulumi.Output<List<AlertJoinConfiguration>?> joinConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> joinConfigurations;
+
   /// Labels for new alert.
-  late final pulumi.Output<List<AlertLabel>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// Timestamp, notifications before closing again.
   late final pulumi.Output<int> muteUntil;
+
   /// Switch for whether new alert fires when no data happens, default is false.
   late final pulumi.Output<bool?> noDataFire;
+
   /// when no data happens, the severity of new alert.
   late final pulumi.Output<int?> noDataSeverity;
+
   /// Alarm information notification list, Deprecated from 1.161.0+.
-  late final pulumi.Output<List<AlertNotificationList>?> notificationLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?> notificationLists;
+
   /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
   late final pulumi.Output<int?> notifyThreshold;
+
   /// Policy configuration for new alert.
   late final pulumi.Output<AlertPolicyConfiguration?> policyConfiguration;
+
   /// The project name.
   late final pulumi.Output<String> projectName;
+
   /// Multiple conditions for configured alarm query.
-  late final pulumi.Output<List<AlertQueryList>?> queryLists;
+  late final pulumi.Output<List<Map<String, dynamic>>?> queryLists;
+
   /// schedule for alert.
   late final pulumi.Output<AlertSchedule?> schedule;
+
   /// Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
   late final pulumi.Output<String> scheduleInterval;
+
   /// Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
   late final pulumi.Output<String> scheduleType;
+
   /// when new alert is resolved, whether to notify, default is false.
   late final pulumi.Output<bool?> sendResolved;
+
   /// Severity configuration for new alert.
-  late final pulumi.Output<List<AlertSeverityConfiguration>?> severityConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> severityConfigurations;
+
   /// Template configuration for alert, when `type` is `tpl`.
   late final pulumi.Output<AlertTemplateConfiguration?> templateConfiguration;
+
   /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
   late final pulumi.Output<int> threshold;
+
   /// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
   late final pulumi.Output<String?> throttling;
+
   /// The type of new alert, `default` for custom alert, `tpl` for template alert.
   late final pulumi.Output<String?> type;
+
   /// The version of alert, new alert is 2.0.
   late final pulumi.Output<String?> version;
 
@@ -1796,52 +1816,57 @@ class Alert extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alert]. {@macro pulumi_log_alert_alert_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alert(
-    String name, {
-    AlertArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:log/alert:Alert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertDescription = registerOutput<String?>('alertDescription');
-    this.alertDisplayname = registerOutput<String>('alertDisplayname');
-    this.alertName = registerOutput<String>('alertName');
-    this.annotations = registerOutput<List<AlertAnnotation>?>('annotations');
-    this.autoAnnotation = registerOutput<bool?>('autoAnnotation');
-    this.condition = registerOutput<String?>('condition');
-    this.dashboard = registerOutput<String?>('dashboard');
-    this.groupConfiguration = registerOutput<AlertGroupConfiguration?>('groupConfiguration');
-    this.joinConfigurations = registerOutput<List<AlertJoinConfiguration>?>('joinConfigurations');
-    this.labels = registerOutput<List<AlertLabel>?>('labels');
-    this.muteUntil = registerOutput<int>('muteUntil');
-    this.noDataFire = registerOutput<bool?>('noDataFire');
-    this.noDataSeverity = registerOutput<int?>('noDataSeverity');
-    this.notificationLists = registerOutput<List<AlertNotificationList>?>('notificationLists');
-    this.notifyThreshold = registerOutput<int?>('notifyThreshold');
-    this.policyConfiguration = registerOutput<AlertPolicyConfiguration?>('policyConfiguration');
-    this.projectName = registerOutput<String>('projectName');
-    this.queryLists = registerOutput<List<AlertQueryList>?>('queryLists');
-    this.schedule = registerOutput<AlertSchedule?>('schedule');
-    this.scheduleInterval = registerOutput<String>('scheduleInterval');
-    this.scheduleType = registerOutput<String>('scheduleType');
-    this.sendResolved = registerOutput<bool?>('sendResolved');
-    this.severityConfigurations = registerOutput<List<AlertSeverityConfiguration>?>('severityConfigurations');
-    this.templateConfiguration = registerOutput<AlertTemplateConfiguration?>('templateConfiguration');
-    this.threshold = registerOutput<int>('threshold');
-    this.throttling = registerOutput<String?>('throttling');
-    this.type = registerOutput<String?>('type');
-    this.version = registerOutput<String?>('version');
+  Alert(String name, {AlertArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:log/alert:Alert',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    alertDescription = registerOutput<String?>('alertDescription');
+    alertDisplayname = registerOutput<String>('alertDisplayname');
+    alertName = registerOutput<String>('alertName');
+    annotations = registerOutput<List<Map<String, dynamic>>?>('annotations');
+    autoAnnotation = registerOutput<bool?>('autoAnnotation');
+    condition = registerOutput<String?>('condition');
+    dashboard = registerOutput<String?>('dashboard');
+    groupConfiguration = registerOutput<AlertGroupConfiguration?>(
+      'groupConfiguration',
+    );
+    joinConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'joinConfigurations',
+    );
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    muteUntil = registerOutput<int>('muteUntil');
+    noDataFire = registerOutput<bool?>('noDataFire');
+    noDataSeverity = registerOutput<int?>('noDataSeverity');
+    notificationLists = registerOutput<List<Map<String, dynamic>>?>(
+      'notificationLists',
+    );
+    notifyThreshold = registerOutput<int?>('notifyThreshold');
+    policyConfiguration = registerOutput<AlertPolicyConfiguration?>(
+      'policyConfiguration',
+    );
+    projectName = registerOutput<String>('projectName');
+    queryLists = registerOutput<List<Map<String, dynamic>>?>('queryLists');
+    schedule = registerOutput<AlertSchedule?>('schedule');
+    scheduleInterval = registerOutput<String>('scheduleInterval');
+    scheduleType = registerOutput<String>('scheduleType');
+    sendResolved = registerOutput<bool?>('sendResolved');
+    severityConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'severityConfigurations',
+    );
+    templateConfiguration = registerOutput<AlertTemplateConfiguration?>(
+      'templateConfiguration',
+    );
+    threshold = registerOutput<int>('threshold');
+    throttling = registerOutput<String?>('throttling');
+    type = registerOutput<String?>('type');
+    version = registerOutput<String?>('version');
   }
 
   /// Gets an existing [Alert] resource's state with the given [name] and [id].
-  static Alert get(
-    String name,
-    pulumi.Input<String> id, {
-    AlertState? state,
-  }) {
+  static Alert get(String name, pulumi.Input<String> id, {AlertState? state}) {
     return Alert._get(
       name,
       state: state?.toMap(),
@@ -1854,38 +1879,50 @@ class Alert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:log/alert:Alert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertDescription = registerOutput<String?>('alertDescription');
-    this.alertDisplayname = registerOutput<String>('alertDisplayname');
-    this.alertName = registerOutput<String>('alertName');
-    this.annotations = registerOutput<List<AlertAnnotation>?>('annotations');
-    this.autoAnnotation = registerOutput<bool?>('autoAnnotation');
-    this.condition = registerOutput<String?>('condition');
-    this.dashboard = registerOutput<String?>('dashboard');
-    this.groupConfiguration = registerOutput<AlertGroupConfiguration?>('groupConfiguration');
-    this.joinConfigurations = registerOutput<List<AlertJoinConfiguration>?>('joinConfigurations');
-    this.labels = registerOutput<List<AlertLabel>?>('labels');
-    this.muteUntil = registerOutput<int>('muteUntil');
-    this.noDataFire = registerOutput<bool?>('noDataFire');
-    this.noDataSeverity = registerOutput<int?>('noDataSeverity');
-    this.notificationLists = registerOutput<List<AlertNotificationList>?>('notificationLists');
-    this.notifyThreshold = registerOutput<int?>('notifyThreshold');
-    this.policyConfiguration = registerOutput<AlertPolicyConfiguration?>('policyConfiguration');
-    this.projectName = registerOutput<String>('projectName');
-    this.queryLists = registerOutput<List<AlertQueryList>?>('queryLists');
-    this.schedule = registerOutput<AlertSchedule?>('schedule');
-    this.scheduleInterval = registerOutput<String>('scheduleInterval');
-    this.scheduleType = registerOutput<String>('scheduleType');
-    this.sendResolved = registerOutput<bool?>('sendResolved');
-    this.severityConfigurations = registerOutput<List<AlertSeverityConfiguration>?>('severityConfigurations');
-    this.templateConfiguration = registerOutput<AlertTemplateConfiguration?>('templateConfiguration');
-    this.threshold = registerOutput<int>('threshold');
-    this.throttling = registerOutput<String?>('throttling');
-    this.type = registerOutput<String?>('type');
-    this.version = registerOutput<String?>('version');
+         'alicloud:log/alert:Alert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertDescription = registerOutput<String?>('alertDescription');
+    alertDisplayname = registerOutput<String>('alertDisplayname');
+    alertName = registerOutput<String>('alertName');
+    annotations = registerOutput<List<Map<String, dynamic>>?>('annotations');
+    autoAnnotation = registerOutput<bool?>('autoAnnotation');
+    condition = registerOutput<String?>('condition');
+    dashboard = registerOutput<String?>('dashboard');
+    groupConfiguration = registerOutput<AlertGroupConfiguration?>(
+      'groupConfiguration',
+    );
+    joinConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'joinConfigurations',
+    );
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    muteUntil = registerOutput<int>('muteUntil');
+    noDataFire = registerOutput<bool?>('noDataFire');
+    noDataSeverity = registerOutput<int?>('noDataSeverity');
+    notificationLists = registerOutput<List<Map<String, dynamic>>?>(
+      'notificationLists',
+    );
+    notifyThreshold = registerOutput<int?>('notifyThreshold');
+    policyConfiguration = registerOutput<AlertPolicyConfiguration?>(
+      'policyConfiguration',
+    );
+    projectName = registerOutput<String>('projectName');
+    queryLists = registerOutput<List<Map<String, dynamic>>?>('queryLists');
+    schedule = registerOutput<AlertSchedule?>('schedule');
+    scheduleInterval = registerOutput<String>('scheduleInterval');
+    scheduleType = registerOutput<String>('scheduleType');
+    sendResolved = registerOutput<bool?>('sendResolved');
+    severityConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'severityConfigurations',
+    );
+    templateConfiguration = registerOutput<AlertTemplateConfiguration?>(
+      'templateConfiguration',
+    );
+    threshold = registerOutput<int>('threshold');
+    throttling = registerOutput<String?>('throttling');
+    type = registerOutput<String?>('type');
+    version = registerOutput<String?>('version');
   }
 }

@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceDnsEntry {
   /// DNS name for the service.
   final pulumi.Input<String> domainName;
+
   /// Hosted zone ID where the DNS name is registered.
   final pulumi.Input<String> hostedZoneId;
 
   /// Creates a new [GetServiceDnsEntry].
   /// [domainName] DNS name for the service.
   /// [hostedZoneId] Hosted zone ID where the DNS name is registered.
-  GetServiceDnsEntry({
-    required this.domainName,
-    required this.hostedZoneId,
-  });
+  GetServiceDnsEntry({required this.domainName, required this.hostedZoneId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,8 @@ class GetServiceDnsEntry {
 
   factory GetServiceDnsEntry.fromMap(Map<String, dynamic> map) {
     return GetServiceDnsEntry(
-      domainName: (map['domainName'] as String).input(),
-      hostedZoneId: (map['hostedZoneId'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      hostedZoneId: pulumi.Input.fromValue(map['hostedZoneId'] as String),
     );
   }
 }
-

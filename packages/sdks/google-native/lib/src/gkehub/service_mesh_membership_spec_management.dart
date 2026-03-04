@@ -4,16 +4,17 @@ enum ServiceMeshMembershipSpecManagement {
   managementAutomatic("MANAGEMENT_AUTOMATIC"),
   managementManual("MANAGEMENT_MANUAL");
 
-  const ServiceMeshMembershipSpecManagement(this.value);
-  final String value;
+  const ServiceMeshMembershipSpecManagement(this.wireValue);
+  final String wireValue;
 
   static ServiceMeshMembershipSpecManagement fromValue(String value) {
     for (final item in ServiceMeshMembershipSpecManagement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceMeshMembershipSpecManagement value: $value');
+    throw ArgumentError(
+      'Unknown ServiceMeshMembershipSpecManagement value: $value',
+    );
   }
 }
-

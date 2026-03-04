@@ -8,12 +8,14 @@ class ClusterPersistenceConfig {
   /// AOF configuration. This field will be ignored if mode is not AOF.
   /// Structure is documented below.
   final pulumi.Input<ClusterPersistenceConfigAofConfig>? aofConfig;
+
   /// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
   /// - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
   /// - RDB: RDB based Persistence is enabled.
   /// - AOF: AOF based Persistence is enabled.
   /// Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
   final pulumi.Input<String>? mode;
+
   /// RDB configuration. This field will be ignored if mode is not RDB.
   /// Structure is documented below.
   final pulumi.Input<ClusterPersistenceConfigRdbConfig>? rdbConfig;
@@ -22,26 +24,49 @@ class ClusterPersistenceConfig {
   /// [aofConfig] AOF configuration. This field will be ignored if mode is not AOF.
   /// [mode] Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
   /// [rdbConfig] RDB configuration. This field will be ignored if mode is not RDB.
-  ClusterPersistenceConfig({
-    this.aofConfig,
-    this.mode,
-    this.rdbConfig,
-  });
+  ClusterPersistenceConfig({this.aofConfig, this.mode, this.rdbConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aofConfig': ?pulumi.Input.mapOptionalInputValue<ClusterPersistenceConfigAofConfig, Map<String, dynamic>>(aofConfig, (value) => value.toMap()),
+      'aofConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterPersistenceConfigAofConfig,
+            Map<String, dynamic>
+          >(aofConfig, (value) => value.toMap()),
       'mode': ?mode,
-      'rdbConfig': ?pulumi.Input.mapOptionalInputValue<ClusterPersistenceConfigRdbConfig, Map<String, dynamic>>(rdbConfig, (value) => value.toMap()),
+      'rdbConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterPersistenceConfigRdbConfig,
+            Map<String, dynamic>
+          >(rdbConfig, (value) => value.toMap()),
     };
   }
 
   factory ClusterPersistenceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPersistenceConfig(
-      aofConfig: map['aofConfig'] == null ? null : (ClusterPersistenceConfigAofConfig.fromMap((map['aofConfig']! as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      rdbConfig: map['rdbConfig'] == null ? null : (ClusterPersistenceConfigRdbConfig.fromMap((map['rdbConfig']! as Map).cast<String, dynamic>())).input(),
+      aofConfig: (() {
+        final guardedValue = map['aofConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterPersistenceConfigAofConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rdbConfig: (() {
+        final guardedValue = map['rdbConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterPersistenceConfigRdbConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

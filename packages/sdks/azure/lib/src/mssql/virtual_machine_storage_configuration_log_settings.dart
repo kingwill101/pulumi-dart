@@ -15,17 +15,15 @@ class VirtualMachineStorageConfigurationLogSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultFilePath': defaultFilePath,
-      'luns': luns,
-    };
+    return <String, dynamic>{'defaultFilePath': defaultFilePath, 'luns': luns};
   }
 
-  factory VirtualMachineStorageConfigurationLogSettings.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineStorageConfigurationLogSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineStorageConfigurationLogSettings(
-      defaultFilePath: (map['defaultFilePath'] as String).input(),
-      luns: ((map['luns'] as List).cast<int>()).input(),
+      defaultFilePath: pulumi.Input.fromValue(map['defaultFilePath'] as String),
+      luns: pulumi.Input.fromValue((map['luns'] as List).cast<int>()),
     );
   }
 }
-

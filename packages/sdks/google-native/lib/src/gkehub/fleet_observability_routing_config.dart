@@ -10,20 +10,27 @@ class FleetObservabilityRoutingConfig {
 
   /// Creates a new [FleetObservabilityRoutingConfig].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfig({
-    this.mode,
-  });
+  FleetObservabilityRoutingConfig({this.mode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mode': ?pulumi.Input.mapOptionalInputValue<FleetObservabilityRoutingConfigMode, String>(mode, (value) => value.value),
+      'mode':
+          ?pulumi.Input.mapOptionalInputValue<
+            FleetObservabilityRoutingConfigMode,
+            String
+          >(mode, (value) => value.wireValue),
     };
   }
 
   factory FleetObservabilityRoutingConfig.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfig(
-      mode: map['mode'] == null ? null : (FleetObservabilityRoutingConfigMode.fromValue(map['mode']! as String)).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FleetObservabilityRoutingConfigMode.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

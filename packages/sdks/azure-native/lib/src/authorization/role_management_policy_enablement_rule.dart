@@ -7,11 +7,14 @@ import 'role_management_policy_rule_target.dart';
 class RoleManagementPolicyEnablementRule {
   /// The list of enabled rules.
   final pulumi.Input<List<String>>? enabledRules;
+
   /// The id of the rule.
   final pulumi.Input<String>? id;
+
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyEnablementRule'.
   final pulumi.Input<String> ruleType;
+
   /// The target of the current rule.
   final pulumi.Input<RoleManagementPolicyRuleTarget>? target;
 
@@ -32,17 +35,36 @@ class RoleManagementPolicyEnablementRule {
       'enabledRules': ?enabledRules,
       'id': ?id,
       'ruleType': ruleType,
-      'target': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyRuleTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoleManagementPolicyRuleTarget,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
   factory RoleManagementPolicyEnablementRule.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyEnablementRule(
-      enabledRules: map['enabledRules'] == null ? null : ((map['enabledRules']! as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      ruleType: (map['ruleType'] as String).input(),
-      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      enabledRules: (() {
+        final guardedValue = map['enabledRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RoleManagementPolicyRuleTarget.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

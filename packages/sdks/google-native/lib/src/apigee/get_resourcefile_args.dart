@@ -35,11 +35,10 @@ class GetResourcefileArgs {
 
   factory GetResourcefileArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcefileArgs(
-      environmentId: (map['environmentId'] as String).input(),
-      name: (map['name'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      type: (map['type'] as String).input(),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequiredTrafficResponse {
   /// The direction of required traffic
   final pulumi.Input<String> direction;
+
   /// The FQDN list of required traffic
   final pulumi.Input<List<String>> fqdns;
+
   /// The ip list of required traffic
   final pulumi.Input<List<String>> ips;
+
   /// The port of required traffic
   final pulumi.Input<int> port;
+
   /// The protocol of required traffic
   final pulumi.Input<String> protocol;
 
@@ -41,12 +45,11 @@ class RequiredTrafficResponse {
 
   factory RequiredTrafficResponse.fromMap(Map<String, dynamic> map) {
     return RequiredTrafficResponse(
-      direction: (map['direction'] as String).input(),
-      fqdns: ((map['fqdns'] as List).cast<String>()).input(),
-      ips: ((map['ips'] as List).cast<String>()).input(),
-      port: (map['port'] as int).input(),
-      protocol: (map['protocol'] as String).input(),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      fqdns: pulumi.Input.fromValue((map['fqdns'] as List).cast<String>()),
+      ips: pulumi.Input.fromValue((map['ips'] as List).cast<String>()),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'tag_option_resource_association_state.dart';
 
 /// Manages a Service Catalog Tag Option Resource Association.
 ///
-/// > **Tip:** A "resource" is either a Service Catalog portfolio or product.
+/// &gt; **Tip:** A "resource" is either a Service Catalog portfolio or product.
 ///
 /// ## Example Usage
 ///
@@ -114,16 +114,22 @@ import 'tag_option_resource_association_state.dart';
 class TagOptionResourceAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the resource.
   late final pulumi.Output<String> resourceArn;
+
   /// Creation time of the resource.
   late final pulumi.Output<String> resourceCreatedTime;
+
   /// Description of the resource.
   late final pulumi.Output<String> resourceDescription;
+
   /// Resource identifier.
   late final pulumi.Output<String> resourceId;
+
   /// Description of the resource.
   late final pulumi.Output<String> resourceName;
+
   /// Tag Option identifier.
   late final pulumi.Output<String> tagOptionId;
 
@@ -136,18 +142,18 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
     TagOptionResourceAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.resourceCreatedTime = registerOutput<String>('resourceCreatedTime');
-    this.resourceDescription = registerOutput<String>('resourceDescription');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.tagOptionId = registerOutput<String>('tagOptionId');
+         'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceCreatedTime = registerOutput<String>('resourceCreatedTime');
+    resourceDescription = registerOutput<String>('resourceDescription');
+    resourceId = registerOutput<String>('resourceId');
+    resourceName = registerOutput<String>('resourceName');
+    tagOptionId = registerOutput<String>('tagOptionId');
   }
 
   /// Gets an existing [TagOptionResourceAssociation] resource's state with the given [name] and [id].
@@ -168,17 +174,17 @@ class TagOptionResourceAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.resourceArn = registerOutput<String>('resourceArn');
-    this.resourceCreatedTime = registerOutput<String>('resourceCreatedTime');
-    this.resourceDescription = registerOutput<String>('resourceDescription');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.tagOptionId = registerOutput<String>('tagOptionId');
+         'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceCreatedTime = registerOutput<String>('resourceCreatedTime');
+    resourceDescription = registerOutput<String>('resourceDescription');
+    resourceId = registerOutput<String>('resourceId');
+    resourceName = registerOutput<String>('resourceName');
+    tagOptionId = registerOutput<String>('tagOptionId');
   }
 }

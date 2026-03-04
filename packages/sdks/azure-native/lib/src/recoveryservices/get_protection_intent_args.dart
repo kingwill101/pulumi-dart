@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProtectionIntentArgs {
   /// Fabric name associated with the backed up item.
   final pulumi.Input<String> fabricName;
+
   /// Backed up item name whose details are to be fetched.
   final pulumi.Input<String> intentObjectName;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -39,11 +42,14 @@ class GetProtectionIntentArgs {
 
   factory GetProtectionIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionIntentArgs(
-      fabricName: (map['fabricName'] as String).input(),
-      intentObjectName: (map['intentObjectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      intentObjectName: pulumi.Input.fromValue(
+        map['intentObjectName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

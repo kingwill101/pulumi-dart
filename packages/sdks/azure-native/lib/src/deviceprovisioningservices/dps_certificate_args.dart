@@ -10,10 +10,13 @@ import 'certificate_properties.dart';
 class DpsCertificateArgs {
   /// The name of the certificate create or update.
   final pulumi.Input<String>? certificateName;
+
   /// properties of a certificate
   final pulumi.Input<CertificateProperties>? properties;
+
   /// The name of the provisioning service.
   final pulumi.Input<String> provisioningServiceName;
+
   /// Resource group identifier.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,7 +35,11 @@ class DpsCertificateArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificateName': ?certificateName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<CertificateProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            CertificateProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'provisioningServiceName': provisioningServiceName,
       'resourceGroupName': resourceGroupName,
     };
@@ -40,11 +47,26 @@ class DpsCertificateArgs {
 
   factory DpsCertificateArgs.fromMap(Map<String, dynamic> map) {
     return DpsCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
-      properties: map['properties'] == null ? null : (CertificateProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      provisioningServiceName: (map['provisioningServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      certificateName: (() {
+        final guardedValue = map['certificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CertificateProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningServiceName: pulumi.Input.fromValue(
+        map['provisioningServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorArgs {
   /// Unique identifier for connector
   final pulumi.Input<String> id;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetConnectorArgs].
   /// [id] Unique identifier for connector
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetConnectorArgs({
-    required this.id,
-    this.region,
-  });
+  GetConnectorArgs({required this.id, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'region': ?region,
-    };
+    return <String, dynamic>{'id': id, 'region': ?region};
   }
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

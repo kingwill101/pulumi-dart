@@ -3,16 +3,20 @@ enum GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource {
   logSourceUnspecified("LOG_SOURCE_UNSPECIFIED"),
   recentAccesses("RECENT_ACCESSES");
 
-  const GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource(this.value);
-  final String value;
+  const GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource fromValue(String value) {
-    for (final item in GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource.values) {
-      if (item.value == value) {
+  static GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource value: $value',
+    );
   }
 }
-

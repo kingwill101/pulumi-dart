@@ -11,20 +11,19 @@ class InstanceNetworkPscConfig {
 
   /// Creates a new [InstanceNetworkPscConfig].
   /// [endpointProject] Consumer service project in which the Private Service Connect endpoint
-  InstanceNetworkPscConfig({
-    this.endpointProject,
-  });
+  InstanceNetworkPscConfig({this.endpointProject});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpointProject': ?endpointProject,
-    };
+    return <String, dynamic>{'endpointProject': ?endpointProject};
   }
 
   factory InstanceNetworkPscConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkPscConfig(
-      endpointProject: map['endpointProject'] == null ? null : (map['endpointProject']! as String).input(),
+      endpointProject: (() {
+        final guardedValue = map['endpointProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

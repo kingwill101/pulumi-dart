@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMailAddressesArgs {
   /// A list of Mail Address IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The key word about account email address.
   final pulumi.Input<String>? keyWord;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Account type. Valid values: `batch`, `trigger`.
   final pulumi.Input<String>? sendtype;
+
   /// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
   final pulumi.Input<String>? status;
 
@@ -44,12 +48,31 @@ class GetMailAddressesArgs {
 
   factory GetMailAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetMailAddressesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      keyWord: map['keyWord'] == null ? null : (map['keyWord']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      sendtype: map['sendtype'] == null ? null : (map['sendtype']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      keyWord: (() {
+        final guardedValue = map['keyWord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendtype: (() {
+        final guardedValue = map['sendtype'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

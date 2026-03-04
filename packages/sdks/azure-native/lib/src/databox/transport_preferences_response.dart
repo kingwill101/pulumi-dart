@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransportPreferencesResponse {
   /// Read only property which indicates whether transport preferences has been updated or not after device is prepared.
   final pulumi.Input<bool> isUpdated;
+
   /// Indicates Shipment Logistics type that the customer preferred.
   final pulumi.Input<String> preferredShipmentType;
 
@@ -26,9 +27,10 @@ class TransportPreferencesResponse {
 
   factory TransportPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return TransportPreferencesResponse(
-      isUpdated: (map['isUpdated'] as bool).input(),
-      preferredShipmentType: (map['preferredShipmentType'] as String).input(),
+      isUpdated: pulumi.Input.fromValue(map['isUpdated'] as bool),
+      preferredShipmentType: pulumi.Input.fromValue(
+        map['preferredShipmentType'] as String,
+      ),
     );
   }
 }
-

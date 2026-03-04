@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeAttachmentArgs {
   /// Automount the volume upon attaching it.
   final pulumi.Input<bool>? automount;
+
   /// Server to attach the Volume to.
   final pulumi.Input<int> serverId;
+
   /// ID of the Volume.
   final pulumi.Input<int> volumeId;
 
@@ -34,10 +36,13 @@ class VolumeAttachmentArgs {
 
   factory VolumeAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentArgs(
-      automount: map['automount'] == null ? null : (map['automount']! as bool).input(),
-      serverId: (map['serverId'] as int).input(),
-      volumeId: (map['volumeId'] as int).input(),
+      automount: (() {
+        final guardedValue = map['automount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serverId: pulumi.Input.fromValue(map['serverId'] as int),
+      volumeId: pulumi.Input.fromValue(map['volumeId'] as int),
     );
   }
 }
-

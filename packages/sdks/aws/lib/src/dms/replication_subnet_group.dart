@@ -4,7 +4,7 @@ import 'replication_subnet_group_state.dart';
 
 /// Provides a DMS (Data Migration Service) replication subnet group resource. DMS replication subnet groups can be created, updated, deleted, and imported.
 ///
-/// > **Note:** AWS requires a special IAM role called `dms-vpc-role` when using this resource. See the example below to create it as part of your configuration.
+/// &gt; **Note:** AWS requires a special IAM role called `dms-vpc-role` when using this resource. See the example below to create it as part of your configuration.
 ///
 /// ## Example Usage
 ///
@@ -457,16 +457,22 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> replicationSubnetGroupArn;
+
   /// Description for the subnet group.
   late final pulumi.Output<String> replicationSubnetGroupDescription;
+
   /// Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
   late final pulumi.Output<String> replicationSubnetGroupId;
+
   /// List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   late final pulumi.Output<List<String>> subnetIds;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The ID of the VPC the subnet group is in.
   late final pulumi.Output<String> vpcId;
 
@@ -479,19 +485,25 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
     ReplicationSubnetGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.replicationSubnetGroupArn = registerOutput<String>('replicationSubnetGroupArn');
-    this.replicationSubnetGroupDescription = registerOutput<String>('replicationSubnetGroupDescription');
-    this.replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
-    this.subnetIds = registerOutput<List<String>>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    replicationSubnetGroupArn = registerOutput<String>(
+      'replicationSubnetGroupArn',
+    );
+    replicationSubnetGroupDescription = registerOutput<String>(
+      'replicationSubnetGroupDescription',
+    );
+    replicationSubnetGroupId = registerOutput<String>(
+      'replicationSubnetGroupId',
+    );
+    subnetIds = registerOutput<List<String>>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [ReplicationSubnetGroup] resource's state with the given [name] and [id].
@@ -512,18 +524,24 @@ class ReplicationSubnetGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.replicationSubnetGroupArn = registerOutput<String>('replicationSubnetGroupArn');
-    this.replicationSubnetGroupDescription = registerOutput<String>('replicationSubnetGroupDescription');
-    this.replicationSubnetGroupId = registerOutput<String>('replicationSubnetGroupId');
-    this.subnetIds = registerOutput<List<String>>('subnetIds');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:dms/replicationSubnetGroup:ReplicationSubnetGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    replicationSubnetGroupArn = registerOutput<String>(
+      'replicationSubnetGroupArn',
+    );
+    replicationSubnetGroupDescription = registerOutput<String>(
+      'replicationSubnetGroupDescription',
+    );
+    replicationSubnetGroupId = registerOutput<String>(
+      'replicationSubnetGroupId',
+    );
+    subnetIds = registerOutput<List<String>>('subnetIds');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

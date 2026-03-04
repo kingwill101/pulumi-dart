@@ -7,16 +7,15 @@ enum StreamEncodingType {
   ascii("ascii"),
   big5("big5");
 
-  const StreamEncodingType(this.value);
-  final String value;
+  const StreamEncodingType(this.wireValue);
+  final String wireValue;
 
   static StreamEncodingType fromValue(String value) {
     for (final item in StreamEncodingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StreamEncodingType value: $value');
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SessionLoggerAssociationArgs {
   /// ARN of the web portal.
   final pulumi.Input<String> portalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the session logger.
   ///
   /// The following arguments are optional:
@@ -36,10 +38,15 @@ class SessionLoggerAssociationArgs {
 
   factory SessionLoggerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SessionLoggerAssociationArgs(
-      portalArn: (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sessionLoggerArn: (map['sessionLoggerArn'] as String).input(),
+      portalArn: pulumi.Input.fromValue(map['portalArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionLoggerArn: pulumi.Input.fromValue(
+        map['sessionLoggerArn'] as String,
+      ),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadProfileResponse {
   /// Whether to use a FIPS-enabled OS. Supported only for dedicated workload profiles.
   final pulumi.Input<bool>? enableFips;
+
   /// The maximum capacity.
   final pulumi.Input<int>? maximumCount;
+
   /// The minimum capacity.
   final pulumi.Input<int>? minimumCount;
+
   /// Workload profile type for the workloads to run on.
   final pulumi.Input<String> name;
+
   /// Workload profile type for the workloads to run on.
   final pulumi.Input<String> workloadProfileType;
 
@@ -41,12 +45,25 @@ class WorkloadProfileResponse {
 
   factory WorkloadProfileResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadProfileResponse(
-      enableFips: map['enableFips'] == null ? null : (map['enableFips']! as bool).input(),
-      maximumCount: map['maximumCount'] == null ? null : (map['maximumCount']! as int).input(),
-      minimumCount: map['minimumCount'] == null ? null : (map['minimumCount']! as int).input(),
-      name: (map['name'] as String).input(),
-      workloadProfileType: (map['workloadProfileType'] as String).input(),
+      enableFips: (() {
+        final guardedValue = map['enableFips'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maximumCount: (() {
+        final guardedValue = map['maximumCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minimumCount: (() {
+        final guardedValue = map['minimumCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      workloadProfileType: pulumi.Input.fromValue(
+        map['workloadProfileType'] as String,
+      ),
     );
   }
 }
-

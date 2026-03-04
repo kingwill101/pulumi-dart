@@ -6,20 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HsmState {
   /// The IDs of AZ in which HSM module will be located. Conflicts with `subnet_id`.
   final pulumi.Input<String>? availabilityZone;
+
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
   final pulumi.Input<String>? clusterId;
+
   /// The id of the ENI interface allocated for HSM module.
   final pulumi.Input<String>? hsmEniId;
+
   /// The id of the HSM module.
   final pulumi.Input<String>? hsmId;
+
   /// The state of the HSM module.
   final pulumi.Input<String>? hsmState;
+
   /// The IP address of HSM module. Must be within the CIDR of selected subnet.
   ///
-  /// > **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
+  /// &gt; **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
   final pulumi.Input<String>? ipAddress;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
   final pulumi.Input<String>? subnetId;
 
@@ -58,15 +65,46 @@ class HsmState {
 
   factory HsmState.fromMap(Map<String, dynamic> map) {
     return HsmState(
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      clusterId: map['clusterId'] == null ? null : ((map['clusterId'] as String).input()).input(),
-      hsmEniId: map['hsmEniId'] == null ? null : ((map['hsmEniId'] as String).input()).input(),
-      hsmId: map['hsmId'] == null ? null : ((map['hsmId'] as String).input()).input(),
-      hsmState: map['hsmState'] == null ? null : ((map['hsmState'] as String).input()).input(),
-      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmEniId: (() {
+        final guardedValue = map['hsmEniId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmId: (() {
+        final guardedValue = map['hsmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hsmState: (() {
+        final guardedValue = map['hsmState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

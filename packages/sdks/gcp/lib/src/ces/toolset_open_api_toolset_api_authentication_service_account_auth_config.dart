@@ -19,15 +19,14 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccount': serviceAccount,
-    };
+    return <String, dynamic>{'serviceAccount': serviceAccount};
   }
 
-  factory ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: (map['serviceAccount'] as String).input(),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CommandArgs {
   /// The resulting output from the `commands` executed.
   final pulumi.Input<List<String>>? commandResults;
+
   /// The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
   final pulumi.Input<List<String>> commands;
   final pulumi.Input<String>? when;
@@ -17,11 +18,7 @@ class CommandArgs {
   /// [commandResults] The resulting output from the `commands` executed.
   /// [commands] The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
   /// [when] Optional.
-  CommandArgs({
-    this.commandResults,
-    required this.commands,
-    this.when,
-  });
+  CommandArgs({this.commandResults, required this.commands, this.when});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +30,19 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      commandResults: map['commandResults'] == null ? null : ((map['commandResults']! as List).cast<String>()).input(),
-      commands: ((map['commands'] as List).cast<String>()).input(),
-      when: map['when'] == null ? null : (map['when']! as String).input(),
+      commandResults: (() {
+        final guardedValue = map['commandResults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      commands: pulumi.Input.fromValue(
+        (map['commands'] as List).cast<String>(),
+      ),
+      when: (() {
+        final guardedValue = map['when'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

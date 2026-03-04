@@ -191,26 +191,37 @@ import 'system_data_response.dart';
 class StorageAccountCredential extends pulumi.CustomResource {
   /// Encrypted storage key.
   late final pulumi.Output<AsymmetricEncryptedSecretResponse?> accountKey;
+
   /// Type of storage accessed on the storage account.
   late final pulumi.Output<String> accountType;
+
   /// Alias for the storage account.
   late final pulumi.Output<String> alias;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Blob end point for private clouds.
   late final pulumi.Output<String?> blobDomainName;
+
   /// Connection string for the storage account. Use this string if username and account key are not specified.
   late final pulumi.Output<String?> connectionString;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Signifies whether SSL needs to be enabled or not.
   late final pulumi.Output<String> sslStatus;
+
   /// Id of the storage account.
   late final pulumi.Output<String?> storageAccountId;
+
   /// Metadata pertaining to creation and last modification of StorageAccountCredential
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
+
   /// Username for the storage account.
   late final pulumi.Output<String?> userName;
 
@@ -223,22 +234,24 @@ class StorageAccountCredential extends pulumi.CustomResource {
     StorageAccountCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:StorageAccountCredential',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountKey = registerOutput<AsymmetricEncryptedSecretResponse?>('accountKey');
-    this.accountType = registerOutput<String>('accountType');
-    this.alias = registerOutput<String>('alias');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.blobDomainName = registerOutput<String?>('blobDomainName');
-    this.connectionString = registerOutput<String?>('connectionString');
+         'azure-native:databoxedge:StorageAccountCredential',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountKey = registerOutput<AsymmetricEncryptedSecretResponse?>(
+      'accountKey',
+    );
+    accountType = registerOutput<String>('accountType');
+    alias = registerOutput<String>('alias');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobDomainName = registerOutput<String?>('blobDomainName');
+    connectionString = registerOutput<String?>('connectionString');
     this.name = registerOutput<String>('name');
-    this.sslStatus = registerOutput<String>('sslStatus');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.userName = registerOutput<String?>('userName');
+    sslStatus = registerOutput<String>('sslStatus');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    userName = registerOutput<String?>('userName');
   }
 }

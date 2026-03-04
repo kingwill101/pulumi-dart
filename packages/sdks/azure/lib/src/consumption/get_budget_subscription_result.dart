@@ -9,17 +9,23 @@ import 'get_budget_subscription_time_period.dart';
 class GetBudgetSubscriptionResult {
   /// The total amount of cost to track with the budget.
   final double amount;
+
   /// A `filter` block as defined below.
   final List<GetBudgetSubscriptionFilter> filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The name of the tag to use for the filter.
   final String name;
+
   /// A `notification` block as defined below.
   final List<GetBudgetSubscriptionNotification> notifications;
   final String subscriptionId;
+
   /// The time covered by a budget.
   final String timeGrain;
+
   /// A `time_period` block as defined below.
   final List<GetBudgetSubscriptionTimePeriod> timePeriods;
 
@@ -46,27 +52,53 @@ class GetBudgetSubscriptionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'amount': amount,
-      'filters': pulumi.Input.encodeList<GetBudgetSubscriptionFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
+      'filters':
+          pulumi.Input.encodeList<
+            GetBudgetSubscriptionFilter,
+            Map<String, dynamic>
+          >(filters, (value) => value.toMap()),
       'id': id,
       'name': name,
-      'notifications': pulumi.Input.encodeList<GetBudgetSubscriptionNotification, Map<String, dynamic>>(notifications, (value) => value.toMap()),
+      'notifications':
+          pulumi.Input.encodeList<
+            GetBudgetSubscriptionNotification,
+            Map<String, dynamic>
+          >(notifications, (value) => value.toMap()),
       'subscriptionId': subscriptionId,
       'timeGrain': timeGrain,
-      'timePeriods': pulumi.Input.encodeList<GetBudgetSubscriptionTimePeriod, Map<String, dynamic>>(timePeriods, (value) => value.toMap()),
+      'timePeriods':
+          pulumi.Input.encodeList<
+            GetBudgetSubscriptionTimePeriod,
+            Map<String, dynamic>
+          >(timePeriods, (value) => value.toMap()),
     };
   }
 
   factory GetBudgetSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetBudgetSubscriptionResult(
       amount: map['amount'] as double,
-      filters: pulumi.Input.decodeList<GetBudgetSubscriptionFilter>(map['filters'], (value) => GetBudgetSubscriptionFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<GetBudgetSubscriptionFilter>(
+        map['filters']!,
+        (value) => GetBudgetSubscriptionFilter.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
-      notifications: pulumi.Input.decodeList<GetBudgetSubscriptionNotification>(map['notifications'], (value) => GetBudgetSubscriptionNotification.fromMap((value as Map).cast<String, dynamic>())),
+      notifications: pulumi.Input.decodeList<GetBudgetSubscriptionNotification>(
+        map['notifications']!,
+        (value) => GetBudgetSubscriptionNotification.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       subscriptionId: map['subscriptionId'] as String,
       timeGrain: map['timeGrain'] as String,
-      timePeriods: pulumi.Input.decodeList<GetBudgetSubscriptionTimePeriod>(map['timePeriods'], (value) => GetBudgetSubscriptionTimePeriod.fromMap((value as Map).cast<String, dynamic>())),
+      timePeriods: pulumi.Input.decodeList<GetBudgetSubscriptionTimePeriod>(
+        map['timePeriods']!,
+        (value) => GetBudgetSubscriptionTimePeriod.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -7,12 +7,16 @@ import 'experiment_execution_action_target_details_error_response.dart';
 class ExperimentExecutionActionTargetDetailsPropertiesResponse {
   /// The error of the action.
   final pulumi.Input<ExperimentExecutionActionTargetDetailsErrorResponse> error;
+
   /// The status of the execution.
   final pulumi.Input<String> status;
+
   /// The target for the action.
   final pulumi.Input<String> target;
+
   /// String that represents the completed date time.
   final pulumi.Input<String> targetCompletedTime;
+
   /// String that represents the failed date time.
   final pulumi.Input<String> targetFailedTime;
 
@@ -32,7 +36,11 @@ class ExperimentExecutionActionTargetDetailsPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': pulumi.Input.mapInputValue<ExperimentExecutionActionTargetDetailsErrorResponse, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<
+            ExperimentExecutionActionTargetDetailsErrorResponse,
+            Map<String, dynamic>
+          >(error, (value) => value.toMap()),
       'status': status,
       'target': target,
       'targetCompletedTime': targetCompletedTime,
@@ -40,14 +48,23 @@ class ExperimentExecutionActionTargetDetailsPropertiesResponse {
     };
   }
 
-  factory ExperimentExecutionActionTargetDetailsPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ExperimentExecutionActionTargetDetailsPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperimentExecutionActionTargetDetailsPropertiesResponse(
-      error: (ExperimentExecutionActionTargetDetailsErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      status: (map['status'] as String).input(),
-      target: (map['target'] as String).input(),
-      targetCompletedTime: (map['targetCompletedTime'] as String).input(),
-      targetFailedTime: (map['targetFailedTime'] as String).input(),
+      error: pulumi.Input.fromValue(
+        ExperimentExecutionActionTargetDetailsErrorResponse.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      targetCompletedTime: pulumi.Input.fromValue(
+        map['targetCompletedTime'] as String,
+      ),
+      targetFailedTime: pulumi.Input.fromValue(
+        map['targetFailedTime'] as String,
+      ),
     );
   }
 }
-

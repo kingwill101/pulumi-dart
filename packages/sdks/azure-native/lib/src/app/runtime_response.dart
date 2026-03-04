@@ -8,29 +8,50 @@ import 'runtime_response_java.dart';
 class RuntimeResponse {
   /// .NET app configuration
   final pulumi.Input<RuntimeResponseDotnet>? dotnet;
+
   /// Java app configuration
   final pulumi.Input<RuntimeResponseJava>? java;
 
   /// Creates a new [RuntimeResponse].
   /// [dotnet] .NET app configuration
   /// [java] Java app configuration
-  RuntimeResponse({
-    this.dotnet,
-    this.java,
-  });
+  RuntimeResponse({this.dotnet, this.java});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dotnet': ?pulumi.Input.mapOptionalInputValue<RuntimeResponseDotnet, Map<String, dynamic>>(dotnet, (value) => value.toMap()),
-      'java': ?pulumi.Input.mapOptionalInputValue<RuntimeResponseJava, Map<String, dynamic>>(java, (value) => value.toMap()),
+      'dotnet':
+          ?pulumi.Input.mapOptionalInputValue<
+            RuntimeResponseDotnet,
+            Map<String, dynamic>
+          >(dotnet, (value) => value.toMap()),
+      'java':
+          ?pulumi.Input.mapOptionalInputValue<
+            RuntimeResponseJava,
+            Map<String, dynamic>
+          >(java, (value) => value.toMap()),
     };
   }
 
   factory RuntimeResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeResponse(
-      dotnet: map['dotnet'] == null ? null : (RuntimeResponseDotnet.fromMap((map['dotnet']! as Map).cast<String, dynamic>())).input(),
-      java: map['java'] == null ? null : (RuntimeResponseJava.fromMap((map['java']! as Map).cast<String, dynamic>())).input(),
+      dotnet: (() {
+        final guardedValue = map['dotnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RuntimeResponseDotnet.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      java: (() {
+        final guardedValue = map['java'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RuntimeResponseJava.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

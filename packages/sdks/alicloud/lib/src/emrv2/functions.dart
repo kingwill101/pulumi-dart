@@ -6,7 +6,7 @@ import 'get_clusters_result.dart';
 
 /// This data source provides the Emr Cluster ecs instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.243.0.
+/// &gt; **NOTE:** Available since v1.243.0.
 ///
 /// ## Example Usage
 ///
@@ -1022,7 +1022,7 @@ Future<GetClusterInstancesResult> getClusterInstances(
 
 /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.199.0.
+/// &gt; **NOTE:** Available since v1.199.0.
 ///
 /// ## Example Usage
 ///

@@ -11,6 +11,7 @@ class JobStorageAccountArgs {
   final pulumi.Input<String> authenticationMode;
   final pulumi.Input<String>? storageAccountKey;
   final pulumi.Input<String> storageAccountName;
+
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobId;
 
@@ -37,11 +38,20 @@ class JobStorageAccountArgs {
 
   factory JobStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return JobStorageAccountArgs(
-      authenticationMode: (map['authenticationMode'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
-      streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
+      authenticationMode: pulumi.Input.fromValue(
+        map['authenticationMode'] as String,
+      ),
+      storageAccountKey: (() {
+        final guardedValue = map['storageAccountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
+      streamAnalyticsJobId: pulumi.Input.fromValue(
+        map['streamAnalyticsJobId'] as String,
+      ),
     );
   }
 }
-

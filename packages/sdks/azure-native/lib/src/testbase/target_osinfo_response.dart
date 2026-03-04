@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetOSInfoResponse {
   /// Specifies the baseline OSs to be tested.
   final pulumi.Input<List<String>>? baselineOSs;
+
   /// Insider Channel Ids. Only used for feature update.
   final pulumi.Input<List<String>>? insiderChannelIds;
+
   /// Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
   final pulumi.Input<String> osUpdateType;
+
   /// Specifies the ids of the target OSs from Custom Images to be tested.
   final pulumi.Input<List<String>>? targetOSImageIds;
+
   /// Specifies the target OSs to be tested.
   final pulumi.Input<List<String>>? targetOSs;
 
@@ -41,12 +45,27 @@ class TargetOSInfoResponse {
 
   factory TargetOSInfoResponse.fromMap(Map<String, dynamic> map) {
     return TargetOSInfoResponse(
-      baselineOSs: map['baselineOSs'] == null ? null : ((map['baselineOSs']! as List).cast<String>()).input(),
-      insiderChannelIds: map['insiderChannelIds'] == null ? null : ((map['insiderChannelIds']! as List).cast<String>()).input(),
-      osUpdateType: (map['osUpdateType'] as String).input(),
-      targetOSImageIds: map['targetOSImageIds'] == null ? null : ((map['targetOSImageIds']! as List).cast<String>()).input(),
-      targetOSs: map['targetOSs'] == null ? null : ((map['targetOSs']! as List).cast<String>()).input(),
+      baselineOSs: (() {
+        final guardedValue = map['baselineOSs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      insiderChannelIds: (() {
+        final guardedValue = map['insiderChannelIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      osUpdateType: pulumi.Input.fromValue(map['osUpdateType'] as String),
+      targetOSImageIds: (() {
+        final guardedValue = map['targetOSImageIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      targetOSs: (() {
+        final guardedValue = map['targetOSs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

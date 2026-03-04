@@ -1,5 +1,3 @@
-library module_sqs;
-
 export 'sqs/functions.dart';
 export 'sqs/get_queue_args.dart';
 export 'sqs/get_queue_result.dart';

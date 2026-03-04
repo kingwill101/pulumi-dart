@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DateSpanResponse {
   /// The end date of the date span.
   final pulumi.Input<String> end;
+
   /// The start date of the date span.
   final pulumi.Input<String> start;
 
   /// Creates a new [DateSpanResponse].
   /// [end] The end date of the date span.
   /// [start] The start date of the date span.
-  DateSpanResponse({
-    required this.end,
-    required this.start,
-  });
+  DateSpanResponse({required this.end, required this.start});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': end,
-      'start': start,
-    };
+    return <String, dynamic>{'end': end, 'start': start};
   }
 
   factory DateSpanResponse.fromMap(Map<String, dynamic> map) {
     return DateSpanResponse(
-      end: (map['end'] as String).input(),
-      start: (map['start'] as String).input(),
+      end: pulumi.Input.fromValue(map['end'] as String),
+      start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'definition_args.dart';
-import 'definition_authorization.dart';
 import 'definition_state.dart';
 
 /// Manages a Managed Application Definition.
@@ -213,7 +212,7 @@ import 'definition_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Solutions` - 2021-07-01
@@ -227,30 +226,41 @@ import 'definition_state.dart';
 /// ```
 class Definition extends pulumi.CustomResource {
   /// One or more `authorization` block defined below.
-  late final pulumi.Output<List<DefinitionAuthorization>?> authorizations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> authorizations;
+
   /// Specifies the `createUiDefinition` JSON for the backing template with `Microsoft.Solutions/applications` resource.
   late final pulumi.Output<String?> createUiDefinition;
+
   /// Specifies the managed application definition description.
   late final pulumi.Output<String?> description;
+
   /// Specifies the managed application definition display name.
   late final pulumi.Output<String> displayName;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the managed application lock level. Valid values include `CanNotDelete`, `None`, `ReadOnly`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> lockLevel;
+
   /// Specifies the inline main template JSON which has resources to be provisioned.
   late final pulumi.Output<String?> mainTemplate;
+
   /// Specifies the name of the Managed Application Definition. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Is the package enabled? Defaults to `true`.
   late final pulumi.Output<bool?> packageEnabled;
+
   /// Specifies the managed application definition package file Uri.
   late final pulumi.Output<String?> packageFileUri;
+
   /// The name of the Resource Group where the Managed Application Definition should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   ///
-  /// > **Note:** If either `create_ui_definition` or `main_template` is set they both must be set.
+  /// &gt; **Note:** If either `create_ui_definition` or `main_template` is set they both must be set.
   late final pulumi.Output<Map<String, String>?> tags;
 
   /// Creates a new [Definition].
@@ -262,23 +272,25 @@ class Definition extends pulumi.CustomResource {
     DefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedapplication/definition:Definition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizations = registerOutput<List<DefinitionAuthorization>?>('authorizations');
-    this.createUiDefinition = registerOutput<String?>('createUiDefinition');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.location = registerOutput<String>('location');
-    this.lockLevel = registerOutput<String>('lockLevel');
-    this.mainTemplate = registerOutput<String?>('mainTemplate');
+         'azure:managedapplication/definition:Definition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizations',
+    );
+    createUiDefinition = registerOutput<String?>('createUiDefinition');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    lockLevel = registerOutput<String>('lockLevel');
+    mainTemplate = registerOutput<String?>('mainTemplate');
     this.name = registerOutput<String>('name');
-    this.packageEnabled = registerOutput<bool?>('packageEnabled');
-    this.packageFileUri = registerOutput<String?>('packageFileUri');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    packageEnabled = registerOutput<bool?>('packageEnabled');
+    packageFileUri = registerOutput<String?>('packageFileUri');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Definition] resource's state with the given [name] and [id].
@@ -299,22 +311,24 @@ class Definition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managedapplication/definition:Definition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizations = registerOutput<List<DefinitionAuthorization>?>('authorizations');
-    this.createUiDefinition = registerOutput<String?>('createUiDefinition');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.location = registerOutput<String>('location');
-    this.lockLevel = registerOutput<String>('lockLevel');
-    this.mainTemplate = registerOutput<String?>('mainTemplate');
+         'azure:managedapplication/definition:Definition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizations',
+    );
+    createUiDefinition = registerOutput<String?>('createUiDefinition');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    lockLevel = registerOutput<String>('lockLevel');
+    mainTemplate = registerOutput<String?>('mainTemplate');
     this.name = registerOutput<String>('name');
-    this.packageEnabled = registerOutput<bool?>('packageEnabled');
-    this.packageFileUri = registerOutput<String?>('packageFileUri');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    packageEnabled = registerOutput<bool?>('packageEnabled');
+    packageFileUri = registerOutput<String?>('packageFileUri');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

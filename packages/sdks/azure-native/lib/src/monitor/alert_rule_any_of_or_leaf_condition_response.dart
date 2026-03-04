@@ -13,10 +13,13 @@ import 'alert_rule_leaf_condition_response.dart';
 class AlertRuleAnyOfOrLeafConditionResponse {
   /// An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
   final pulumi.Input<List<AlertRuleLeafConditionResponse>>? anyOf;
+
   /// The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
   final pulumi.Input<List<String>>? containsAny;
+
   /// The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
   final pulumi.Input<String>? equals;
+
   /// The name of the Activity Log event's field that this condition will examine.
   /// The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
   final pulumi.Input<String>? field;
@@ -35,20 +38,55 @@ class AlertRuleAnyOfOrLeafConditionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'anyOf': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleLeafConditionResponse>, List<Map<String, dynamic>>>(anyOf, (value) => pulumi.Input.encodeList<AlertRuleLeafConditionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'anyOf':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleLeafConditionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            anyOf,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleLeafConditionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'containsAny': ?containsAny,
       'equals': ?equals,
       'field': ?field,
     };
   }
 
-  factory AlertRuleAnyOfOrLeafConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory AlertRuleAnyOfOrLeafConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertRuleAnyOfOrLeafConditionResponse(
-      anyOf: map['anyOf'] == null ? null : (pulumi.Input.decodeList<AlertRuleLeafConditionResponse>(map['anyOf']!, (value) => AlertRuleLeafConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containsAny: map['containsAny'] == null ? null : ((map['containsAny']! as List).cast<String>()).input(),
-      equals: map['equals'] == null ? null : (map['equals']! as String).input(),
-      field: map['field'] == null ? null : (map['field']! as String).input(),
+      anyOf: (() {
+        final guardedValue = map['anyOf'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AlertRuleLeafConditionResponse>(
+            guardedValue,
+            (value) => AlertRuleLeafConditionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      containsAny: (() {
+        final guardedValue = map['containsAny'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      equals: (() {
+        final guardedValue = map['equals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      field: (() {
+        final guardedValue = map['field'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

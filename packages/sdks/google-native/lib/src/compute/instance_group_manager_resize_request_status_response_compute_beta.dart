@@ -5,7 +5,10 @@ import 'instance_group_manager_resize_request_status_error_response_compute_beta
 
 class InstanceGroupManagerResizeRequestStatusResponseComputeBeta {
   /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
-  final pulumi.Input<InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta> error;
+  final pulumi.Input<
+    InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta
+  >
+  error;
 
   /// Creates a new [InstanceGroupManagerResizeRequestStatusResponseComputeBeta].
   /// [error] Errors encountered during the queueing or provisioning phases of the ResizeRequest.
@@ -15,14 +18,23 @@ class InstanceGroupManagerResizeRequestStatusResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': pulumi.Input.mapInputValue<InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          pulumi.Input.mapInputValue<
+            InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta,
+            Map<String, dynamic>
+          >(error, (value) => value.toMap()),
     };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerResizeRequestStatusResponseComputeBeta(
-      error: (InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: pulumi.Input.fromValue(
+        InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta.fromMap(
+          (map['error']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

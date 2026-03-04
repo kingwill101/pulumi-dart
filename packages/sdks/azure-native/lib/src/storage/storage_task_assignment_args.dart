@@ -10,10 +10,13 @@ import 'storage_task_assignment_properties.dart';
 class StorageTaskAssignmentArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
+
   /// Properties of the storage task assignment.
   final pulumi.Input<StorageTaskAssignmentProperties> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String>? storageTaskAssignmentName;
 
@@ -32,7 +35,11 @@ class StorageTaskAssignmentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountName': accountName,
-      'properties': pulumi.Input.mapInputValue<StorageTaskAssignmentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            StorageTaskAssignmentProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'storageTaskAssignmentName': ?storageTaskAssignmentName,
     };
@@ -40,11 +47,20 @@ class StorageTaskAssignmentArgs {
 
   factory StorageTaskAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return StorageTaskAssignmentArgs(
-      accountName: (map['accountName'] as String).input(),
-      properties: (StorageTaskAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageTaskAssignmentName: map['storageTaskAssignmentName'] == null ? null : (map['storageTaskAssignmentName']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      properties: pulumi.Input.fromValue(
+        StorageTaskAssignmentProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageTaskAssignmentName: (() {
+        final guardedValue = map['storageTaskAssignmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,10 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
-import 'frontend_ipconfiguration_response.dart';
-import 'network_interface_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'private_link_service_args.dart';
-import 'private_link_service_ip_configuration_response.dart';
 import 'private_link_service_properties_response_auto_approval.dart';
 import 'private_link_service_properties_response_visibility.dart';
 
@@ -333,40 +329,61 @@ import 'private_link_service_properties_response_visibility.dart';
 class PrivateLinkServiceNetwork extends pulumi.CustomResource {
   /// The alias of the private link service.
   late final pulumi.Output<String> alias;
+
   /// The auto-approval list of the private link service.
-  late final pulumi.Output<PrivateLinkServicePropertiesResponseAutoApproval?> autoApproval;
+  late final pulumi.Output<PrivateLinkServicePropertiesResponseAutoApproval?>
+  autoApproval;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The destination IP address of the private link service.
   late final pulumi.Output<String?> destinationIPAddress;
+
   /// Whether the private link service is enabled for proxy protocol or not.
   late final pulumi.Output<bool?> enableProxyProtocol;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the load balancer.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The list of Fqdn.
   late final pulumi.Output<List<String>?> fqdns;
+
   /// An array of private link service IP configurations.
-  late final pulumi.Output<List<PrivateLinkServiceIpConfigurationResponse>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// An array of references to the load balancer IP configurations.
-  late final pulumi.Output<List<FrontendIPConfigurationResponse>?> loadBalancerFrontendIpConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  loadBalancerFrontendIpConfigurations;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// An array of references to the network interfaces created for this private link service.
-  late final pulumi.Output<List<NetworkInterfaceResponse>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// An array of list about connections to the private endpoint.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The provisioning state of the private link service resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The visibility list of the private link service.
-  late final pulumi.Output<PrivateLinkServicePropertiesResponseVisibility?> visibility;
+  late final pulumi.Output<PrivateLinkServicePropertiesResponseVisibility?>
+  visibility;
 
   /// Creates a new [PrivateLinkServiceNetwork].
   /// [name] The Pulumi resource name.
@@ -377,28 +394,45 @@ class PrivateLinkServiceNetwork extends pulumi.CustomResource {
     PrivateLinkServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:PrivateLinkService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alias = registerOutput<String>('alias');
-    this.autoApproval = registerOutput<PrivateLinkServicePropertiesResponseAutoApproval?>('autoApproval');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.destinationIPAddress = registerOutput<String?>('destinationIPAddress');
-    this.enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
-    this.ipConfigurations = registerOutput<List<PrivateLinkServiceIpConfigurationResponse>?>('ipConfigurations');
-    this.loadBalancerFrontendIpConfigurations = registerOutput<List<FrontendIPConfigurationResponse>?>('loadBalancerFrontendIpConfigurations');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:PrivateLinkService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alias = registerOutput<String>('alias');
+    autoApproval =
+        registerOutput<PrivateLinkServicePropertiesResponseAutoApproval?>(
+          'autoApproval',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destinationIPAddress = registerOutput<String?>('destinationIPAddress');
+    enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    fqdns = registerOutput<List<String>?>('fqdns');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    loadBalancerFrontendIpConfigurations =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'loadBalancerFrontendIpConfigurations',
+        );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.visibility = registerOutput<PrivateLinkServicePropertiesResponseVisibility?>('visibility');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    visibility =
+        registerOutput<PrivateLinkServicePropertiesResponseVisibility?>(
+          'visibility',
+        );
   }
 }

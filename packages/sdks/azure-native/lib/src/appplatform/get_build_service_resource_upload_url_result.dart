@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getBuildServiceResourceUploadUrl.
 class GetBuildServiceResourceUploadUrlResult {
   /// Source relative path
   final String? relativePath;
+
   /// Upload URL
   final String? uploadUrl;
 
   /// Creates a new [GetBuildServiceResourceUploadUrlResult].
   /// [relativePath] Source relative path
   /// [uploadUrl] Upload URL
-  GetBuildServiceResourceUploadUrlResult({
-    this.relativePath,
-    this.uploadUrl,
-  });
+  GetBuildServiceResourceUploadUrlResult({this.relativePath, this.uploadUrl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,11 +20,20 @@ class GetBuildServiceResourceUploadUrlResult {
     };
   }
 
-  factory GetBuildServiceResourceUploadUrlResult.fromMap(Map<String, dynamic> map) {
+  factory GetBuildServiceResourceUploadUrlResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBuildServiceResourceUploadUrlResult(
-      relativePath: map['relativePath'] == null ? null : map['relativePath']! as String,
-      uploadUrl: map['uploadUrl'] == null ? null : map['uploadUrl']! as String,
+      relativePath: (() {
+        final guardedValue = map['relativePath'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      uploadUrl: (() {
+        final guardedValue = map['uploadUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

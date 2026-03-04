@@ -4,16 +4,15 @@ enum MetadataAssignmentEntity {
   environment("environment"),
   deployment("deployment");
 
-  const MetadataAssignmentEntity(this.value);
-  final String value;
+  const MetadataAssignmentEntity(this.wireValue);
+  final String wireValue;
 
   static MetadataAssignmentEntity fromValue(String value) {
     for (final item in MetadataAssignmentEntity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataAssignmentEntity value: $value');
   }
 }
-

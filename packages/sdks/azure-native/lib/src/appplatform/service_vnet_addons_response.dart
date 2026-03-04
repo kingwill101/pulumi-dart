@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceVNetAddonsResponse {
   /// Indicates whether the data plane components(log stream, app connect, remote debugging) in vnet injection instance could be accessed from internet.
   final pulumi.Input<bool>? dataPlanePublicEndpoint;
+
   /// Indicates whether the log stream in vnet injection instance could be accessed from internet.
   final pulumi.Input<bool>? logStreamPublicEndpoint;
 
@@ -26,9 +27,16 @@ class ServiceVNetAddonsResponse {
 
   factory ServiceVNetAddonsResponse.fromMap(Map<String, dynamic> map) {
     return ServiceVNetAddonsResponse(
-      dataPlanePublicEndpoint: map['dataPlanePublicEndpoint'] == null ? null : (map['dataPlanePublicEndpoint']! as bool).input(),
-      logStreamPublicEndpoint: map['logStreamPublicEndpoint'] == null ? null : (map['logStreamPublicEndpoint']! as bool).input(),
+      dataPlanePublicEndpoint: (() {
+        final guardedValue = map['dataPlanePublicEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logStreamPublicEndpoint: (() {
+        final guardedValue = map['logStreamPublicEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

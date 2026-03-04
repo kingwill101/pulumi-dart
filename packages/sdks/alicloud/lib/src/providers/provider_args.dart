@@ -13,44 +13,58 @@ import '../index/provider_sign_version.dart';
 class ProviderArgs {
   /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
   final pulumi.Input<String>? accessKey;
+
   /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
   final pulumi.Input<String>? accountId;
   final pulumi.Input<String>? accountType;
   final pulumi.Input<ProviderAssumeRole>? assumeRole;
   final pulumi.Input<ProviderAssumeRoleWithOidc>? assumeRoleWithOidc;
+
   /// The maximum timeout of the client connection server.
   final pulumi.Input<int>? clientConnectTimeout;
+
   /// The maximum timeout of the client read request.
   final pulumi.Input<int>? clientReadTimeout;
   final pulumi.Input<String>? configurationSource;
+
   /// The URI of sidecar credentials service.
   final pulumi.Input<String>? credentialsUri;
+
   /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
   final pulumi.Input<String>? ecsRoleName;
   final pulumi.Input<List<ProviderEndpoint>>? endpoints;
   final pulumi.Input<String>? fc;
   final pulumi.Input<String>? logEndpoint;
+
   /// The maximum retry timeout of the request.
   final pulumi.Input<int>? maxRetryTimeout;
   final pulumi.Input<String>? mnsEndpoint;
   final pulumi.Input<String>? otsInstanceName;
+
   /// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
   final pulumi.Input<String>? profile;
   final pulumi.Input<String>? protocol;
+
   /// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
   final pulumi.Input<String>? region;
+
   /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
   final pulumi.Input<String>? secretKey;
+
   /// The security transport for the assume role invoking.
   final pulumi.Input<String>? secureTransport;
+
   /// security token. A security token is only required if you are using Security Token Service.
   final pulumi.Input<String>? securityToken;
   final pulumi.Input<String>? securityTransport;
+
   /// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
   final pulumi.Input<String>? sharedCredentialsFile;
   final pulumi.Input<ProviderSignVersion>? signVersion;
+
   /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
   final pulumi.Input<bool>? skipRegionValidation;
+
   /// The source ip for the assume role invoking.
   final pulumi.Input<String>? sourceIp;
 
@@ -117,14 +131,33 @@ class ProviderArgs {
       'accessKey': ?accessKey,
       'accountId': ?accountId,
       'accountType': ?accountType,
-      'assumeRole': ?pulumi.Input.mapOptionalInputValue<ProviderAssumeRole, Map<String, dynamic>>(assumeRole, (value) => value.toMap()),
-      'assumeRoleWithOidc': ?pulumi.Input.mapOptionalInputValue<ProviderAssumeRoleWithOidc, Map<String, dynamic>>(assumeRoleWithOidc, (value) => value.toMap()),
+      'assumeRole':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProviderAssumeRole,
+            Map<String, dynamic>
+          >(assumeRole, (value) => value.toMap()),
+      'assumeRoleWithOidc':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProviderAssumeRoleWithOidc,
+            Map<String, dynamic>
+          >(assumeRoleWithOidc, (value) => value.toMap()),
       'clientConnectTimeout': ?clientConnectTimeout,
       'clientReadTimeout': ?clientReadTimeout,
       'configurationSource': ?configurationSource,
       'credentialsUri': ?credentialsUri,
       'ecsRoleName': ?ecsRoleName,
-      'endpoints': ?pulumi.Input.mapOptionalInputValue<List<ProviderEndpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<ProviderEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'endpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ProviderEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            endpoints,
+            (value) =>
+                pulumi.Input.encodeList<ProviderEndpoint, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'fc': ?fc,
       'logEndpoint': ?logEndpoint,
       'maxRetryTimeout': ?maxRetryTimeout,
@@ -138,7 +171,11 @@ class ProviderArgs {
       'securityToken': ?securityToken,
       'securityTransport': ?securityTransport,
       'sharedCredentialsFile': ?sharedCredentialsFile,
-      'signVersion': ?pulumi.Input.mapOptionalInputValue<ProviderSignVersion, Map<String, dynamic>>(signVersion, (value) => value.toMap()),
+      'signVersion':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProviderSignVersion,
+            Map<String, dynamic>
+          >(signVersion, (value) => value.toMap()),
       'skipRegionValidation': ?skipRegionValidation,
       'sourceIp': ?sourceIp,
     };
@@ -146,34 +183,160 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
-      assumeRole: map['assumeRole'] == null ? null : (ProviderAssumeRole.fromMap((map['assumeRole']! as Map).cast<String, dynamic>())).input(),
-      assumeRoleWithOidc: map['assumeRoleWithOidc'] == null ? null : (ProviderAssumeRoleWithOidc.fromMap((map['assumeRoleWithOidc']! as Map).cast<String, dynamic>())).input(),
-      clientConnectTimeout: map['clientConnectTimeout'] == null ? null : (map['clientConnectTimeout']! as int).input(),
-      clientReadTimeout: map['clientReadTimeout'] == null ? null : (map['clientReadTimeout']! as int).input(),
-      configurationSource: map['configurationSource'] == null ? null : (map['configurationSource']! as String).input(),
-      credentialsUri: map['credentialsUri'] == null ? null : (map['credentialsUri']! as String).input(),
-      ecsRoleName: map['ecsRoleName'] == null ? null : (map['ecsRoleName']! as String).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ProviderEndpoint>(map['endpoints']!, (value) => ProviderEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fc: map['fc'] == null ? null : (map['fc']! as String).input(),
-      logEndpoint: map['logEndpoint'] == null ? null : (map['logEndpoint']! as String).input(),
-      maxRetryTimeout: map['maxRetryTimeout'] == null ? null : (map['maxRetryTimeout']! as int).input(),
-      mnsEndpoint: map['mnsEndpoint'] == null ? null : (map['mnsEndpoint']! as String).input(),
-      otsInstanceName: map['otsInstanceName'] == null ? null : (map['otsInstanceName']! as String).input(),
-      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
-      secureTransport: map['secureTransport'] == null ? null : (map['secureTransport']! as String).input(),
-      securityToken: map['securityToken'] == null ? null : (map['securityToken']! as String).input(),
-      securityTransport: map['securityTransport'] == null ? null : (map['securityTransport']! as String).input(),
-      sharedCredentialsFile: map['sharedCredentialsFile'] == null ? null : (map['sharedCredentialsFile']! as String).input(),
-      signVersion: map['signVersion'] == null ? null : (ProviderSignVersion.fromMap((map['signVersion']! as Map).cast<String, dynamic>())).input(),
-      skipRegionValidation: map['skipRegionValidation'] == null ? null : (map['skipRegionValidation']! as bool).input(),
-      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp']! as String).input(),
+      accessKey: (() {
+        final guardedValue = map['accessKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountType: (() {
+        final guardedValue = map['accountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assumeRole: (() {
+        final guardedValue = map['assumeRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProviderAssumeRole.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      assumeRoleWithOidc: (() {
+        final guardedValue = map['assumeRoleWithOidc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProviderAssumeRoleWithOidc.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientConnectTimeout: (() {
+        final guardedValue = map['clientConnectTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clientReadTimeout: (() {
+        final guardedValue = map['clientReadTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      configurationSource: (() {
+        final guardedValue = map['configurationSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialsUri: (() {
+        final guardedValue = map['credentialsUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ecsRoleName: (() {
+        final guardedValue = map['ecsRoleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoints: (() {
+        final guardedValue = map['endpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ProviderEndpoint>(
+            guardedValue,
+            (value) => ProviderEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      fc: (() {
+        final guardedValue = map['fc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logEndpoint: (() {
+        final guardedValue = map['logEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxRetryTimeout: (() {
+        final guardedValue = map['maxRetryTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mnsEndpoint: (() {
+        final guardedValue = map['mnsEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      otsInstanceName: (() {
+        final guardedValue = map['otsInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profile: (() {
+        final guardedValue = map['profile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretKey: (() {
+        final guardedValue = map['secretKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secureTransport: (() {
+        final guardedValue = map['secureTransport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityToken: (() {
+        final guardedValue = map['securityToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityTransport: (() {
+        final guardedValue = map['securityTransport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedCredentialsFile: (() {
+        final guardedValue = map['sharedCredentialsFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signVersion: (() {
+        final guardedValue = map['signVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProviderSignVersion.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      skipRegionValidation: (() {
+        final guardedValue = map['skipRegionValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sourceIp: (() {
+        final guardedValue = map['sourceIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

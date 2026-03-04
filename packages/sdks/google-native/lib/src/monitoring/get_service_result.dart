@@ -16,32 +16,46 @@ import 'telemetry_response.dart';
 class GetServiceResult {
   /// Type used for App Engine services.
   final AppEngineResponse appEngine;
+
   /// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
   final BasicServiceResponse basicService;
+
   /// Type used for Cloud Endpoints services.
   final CloudEndpointsResponse cloudEndpoints;
+
   /// Type used for Cloud Run services.
   final CloudRunResponse cloudRun;
+
   /// Type used for Istio services that live in a Kubernetes cluster.
   final ClusterIstioResponse clusterIstio;
+
   /// Custom service type.
   final Map<String, dynamic> custom;
+
   /// Name used for UI elements listing this Service.
   final String displayName;
+
   /// Type used for GKE Namespaces.
   final GkeNamespaceResponse gkeNamespace;
+
   /// Type used for GKE Services (the Kubernetes concept of a service).
   final GkeServiceResponse gkeService;
+
   /// Type used for GKE Workloads.
   final GkeWorkloadResponse gkeWorkload;
+
   /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
   final IstioCanonicalServiceResponse istioCanonicalService;
+
   /// Type used for Istio services scoped to an Istio mesh.
   final MeshIstioResponse meshIstio;
+
   /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
   final String name;
+
   /// Configuration for how to query telemetry on a Service.
   final TelemetryResponse telemetry;
+
   /// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
   final Map<String, String> userLabels;
 
@@ -101,22 +115,43 @@ class GetServiceResult {
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      appEngine: AppEngineResponse.fromMap((map['appEngine'] as Map).cast<String, dynamic>()),
-      basicService: BasicServiceResponse.fromMap((map['basicService'] as Map).cast<String, dynamic>()),
-      cloudEndpoints: CloudEndpointsResponse.fromMap((map['cloudEndpoints'] as Map).cast<String, dynamic>()),
-      cloudRun: CloudRunResponse.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
-      clusterIstio: ClusterIstioResponse.fromMap((map['clusterIstio'] as Map).cast<String, dynamic>()),
-      custom: (map['custom'] as Map).cast<String, dynamic>(),
+      appEngine: AppEngineResponse.fromMap(
+        (map['appEngine']! as Map).cast<String, dynamic>(),
+      ),
+      basicService: BasicServiceResponse.fromMap(
+        (map['basicService']! as Map).cast<String, dynamic>(),
+      ),
+      cloudEndpoints: CloudEndpointsResponse.fromMap(
+        (map['cloudEndpoints']! as Map).cast<String, dynamic>(),
+      ),
+      cloudRun: CloudRunResponse.fromMap(
+        (map['cloudRun']! as Map).cast<String, dynamic>(),
+      ),
+      clusterIstio: ClusterIstioResponse.fromMap(
+        (map['clusterIstio']! as Map).cast<String, dynamic>(),
+      ),
+      custom: (map['custom']! as Map).cast<String, dynamic>(),
       displayName: map['displayName'] as String,
-      gkeNamespace: GkeNamespaceResponse.fromMap((map['gkeNamespace'] as Map).cast<String, dynamic>()),
-      gkeService: GkeServiceResponse.fromMap((map['gkeService'] as Map).cast<String, dynamic>()),
-      gkeWorkload: GkeWorkloadResponse.fromMap((map['gkeWorkload'] as Map).cast<String, dynamic>()),
-      istioCanonicalService: IstioCanonicalServiceResponse.fromMap((map['istioCanonicalService'] as Map).cast<String, dynamic>()),
-      meshIstio: MeshIstioResponse.fromMap((map['meshIstio'] as Map).cast<String, dynamic>()),
+      gkeNamespace: GkeNamespaceResponse.fromMap(
+        (map['gkeNamespace']! as Map).cast<String, dynamic>(),
+      ),
+      gkeService: GkeServiceResponse.fromMap(
+        (map['gkeService']! as Map).cast<String, dynamic>(),
+      ),
+      gkeWorkload: GkeWorkloadResponse.fromMap(
+        (map['gkeWorkload']! as Map).cast<String, dynamic>(),
+      ),
+      istioCanonicalService: IstioCanonicalServiceResponse.fromMap(
+        (map['istioCanonicalService']! as Map).cast<String, dynamic>(),
+      ),
+      meshIstio: MeshIstioResponse.fromMap(
+        (map['meshIstio']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      telemetry: TelemetryResponse.fromMap((map['telemetry'] as Map).cast<String, dynamic>()),
+      telemetry: TelemetryResponse.fromMap(
+        (map['telemetry']! as Map).cast<String, dynamic>(),
+      ),
       userLabels: (map['userLabels'] as Map).cast<String, String>(),
     );
   }
 }
-

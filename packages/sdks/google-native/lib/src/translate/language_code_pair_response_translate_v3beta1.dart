@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LanguageCodePairResponseTranslateV3beta1 {
   /// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
   final pulumi.Input<String> sourceLanguageCode;
+
   /// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
   final pulumi.Input<String> targetLanguageCode;
 
@@ -24,11 +25,16 @@ class LanguageCodePairResponseTranslateV3beta1 {
     };
   }
 
-  factory LanguageCodePairResponseTranslateV3beta1.fromMap(Map<String, dynamic> map) {
+  factory LanguageCodePairResponseTranslateV3beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LanguageCodePairResponseTranslateV3beta1(
-      sourceLanguageCode: (map['sourceLanguageCode'] as String).input(),
-      targetLanguageCode: (map['targetLanguageCode'] as String).input(),
+      sourceLanguageCode: pulumi.Input.fromValue(
+        map['sourceLanguageCode'] as String,
+      ),
+      targetLanguageCode: pulumi.Input.fromValue(
+        map['targetLanguageCode'] as String,
+      ),
     );
   }
 }
-

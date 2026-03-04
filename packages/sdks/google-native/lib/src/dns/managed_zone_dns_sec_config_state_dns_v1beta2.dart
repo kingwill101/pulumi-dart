@@ -4,16 +4,17 @@ enum ManagedZoneDnsSecConfigStateDnsV1beta2 {
   on("on"),
   transfer("transfer");
 
-  const ManagedZoneDnsSecConfigStateDnsV1beta2(this.value);
-  final String value;
+  const ManagedZoneDnsSecConfigStateDnsV1beta2(this.wireValue);
+  final String wireValue;
 
   static ManagedZoneDnsSecConfigStateDnsV1beta2 fromValue(String value) {
     for (final item in ManagedZoneDnsSecConfigStateDnsV1beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedZoneDnsSecConfigStateDnsV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown ManagedZoneDnsSecConfigStateDnsV1beta2 value: $value',
+    );
   }
 }
-

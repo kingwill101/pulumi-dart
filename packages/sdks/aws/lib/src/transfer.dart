@@ -1,5 +1,3 @@
-library module_transfer;
-
 export 'transfer/access.dart';
 export 'transfer/access_args.dart';
 export 'transfer/access_home_directory_mapping.dart';

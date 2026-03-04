@@ -16,12 +16,16 @@ import 'web_app_domain_ownership_identifier_args.dart';
 class WebAppDomainOwnershipIdentifier extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// String representation of the identity.
   late final pulumi.Output<String?> value;
 
@@ -34,15 +38,15 @@ class WebAppDomainOwnershipIdentifier extends pulumi.CustomResource {
     WebAppDomainOwnershipIdentifierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppDomainOwnershipIdentifier',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppDomainOwnershipIdentifier',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.value = registerOutput<String?>('value');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
   }
 }

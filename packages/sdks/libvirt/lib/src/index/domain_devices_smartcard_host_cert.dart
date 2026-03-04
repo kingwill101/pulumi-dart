@@ -8,20 +8,15 @@ class DomainDevicesSmartcardHostCert {
 
   /// Creates a new [DomainDevicesSmartcardHostCert].
   /// [file] Specifies the file path for the host certificate linked to the smartcard.
-  DomainDevicesSmartcardHostCert({
-    required this.file,
-  });
+  DomainDevicesSmartcardHostCert({required this.file});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'file': file,
-    };
+    return <String, dynamic>{'file': file};
   }
 
   factory DomainDevicesSmartcardHostCert.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardHostCert(
-      file: (map['file'] as String).input(),
+      file: pulumi.Input.fromValue(map['file'] as String),
     );
   }
 }
-

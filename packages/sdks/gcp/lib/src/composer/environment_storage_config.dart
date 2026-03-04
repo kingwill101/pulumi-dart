@@ -8,20 +8,15 @@ class EnvironmentStorageConfig {
 
   /// Creates a new [EnvironmentStorageConfig].
   /// [bucket] Optional. Name of an existing Cloud Storage bucket to be used by the environment.
-  EnvironmentStorageConfig({
-    required this.bucket,
-  });
+  EnvironmentStorageConfig({required this.bucket});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-    };
+    return <String, dynamic>{'bucket': bucket};
   }
 
   factory EnvironmentStorageConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageConfig(
-      bucket: (map['bucket'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
     );
   }
 }
-

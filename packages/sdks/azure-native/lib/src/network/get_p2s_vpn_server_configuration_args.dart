@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetP2sVpnServerConfigurationArgs {
   /// The name of the P2SVpnServerConfiguration.
   final pulumi.Input<String> p2SVpnServerConfigurationName;
+
   /// The resource group name of the P2SVpnServerConfiguration.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the VirtualWan.
   final pulumi.Input<String> virtualWanName;
 
@@ -34,10 +36,13 @@ class GetP2sVpnServerConfigurationArgs {
 
   factory GetP2sVpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetP2sVpnServerConfigurationArgs(
-      p2SVpnServerConfigurationName: (map['p2SVpnServerConfigurationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualWanName: (map['virtualWanName'] as String).input(),
+      p2SVpnServerConfigurationName: pulumi.Input.fromValue(
+        map['p2SVpnServerConfigurationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualWanName: pulumi.Input.fromValue(map['virtualWanName'] as String),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum PremiumDataDisk {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const PremiumDataDisk(this.value);
-  final String value;
+  const PremiumDataDisk(this.wireValue);
+  final String wireValue;
 
   static PremiumDataDisk fromValue(String value) {
     for (final item in PremiumDataDisk.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PremiumDataDisk value: $value');
   }
 }
-

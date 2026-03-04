@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshPublicKeyState {
   /// An expiration time in microseconds since epoch.
   final pulumi.Input<String>? expirationTimeUsec;
+
   /// The SHA-256 fingerprint of the SSH public key.
   final pulumi.Input<String>? fingerprint;
+
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
   final pulumi.Input<String>? key;
+
   /// The project ID of the Google Cloud Platform project.
   final pulumi.Input<String>? project;
+
   /// The user email.
   final pulumi.Input<String>? user;
 
@@ -41,12 +45,31 @@ class SshPublicKeyState {
 
   factory SshPublicKeyState.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyState(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec']! as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      user: map['user'] == null ? null : (map['user']! as String).input(),
+      expirationTimeUsec: (() {
+        final guardedValue = map['expirationTimeUsec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fingerprint: (() {
+        final guardedValue = map['fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

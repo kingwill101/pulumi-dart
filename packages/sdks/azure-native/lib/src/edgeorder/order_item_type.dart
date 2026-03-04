@@ -4,16 +4,15 @@ enum OrderItemType {
   rental("Rental"),
   external("External");
 
-  const OrderItemType(this.value);
-  final String value;
+  const OrderItemType(this.wireValue);
+  final String wireValue;
 
   static OrderItemType fromValue(String value) {
     for (final item in OrderItemType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrderItemType value: $value');
   }
 }
-

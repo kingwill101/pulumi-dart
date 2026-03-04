@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretSyncArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the SecretSync
   final pulumi.Input<String> secretSyncName;
 
@@ -29,9 +30,10 @@ class GetSecretSyncArgs {
 
   factory GetSecretSyncArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretSyncArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secretSyncName: (map['secretSyncName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      secretSyncName: pulumi.Input.fromValue(map['secretSyncName'] as String),
     );
   }
 }
-

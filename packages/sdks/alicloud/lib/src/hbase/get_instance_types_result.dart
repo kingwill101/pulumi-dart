@@ -8,23 +8,31 @@ import 'get_instance_types_type.dart';
 /// Result data returned by getInstanceTypes.
 class GetInstanceTypesResult {
   final String? chargeType;
+
   /// (Available in 1.115.0+) A list of core instance types. Each element contains the following attributes:
   final List<GetInstanceTypesCoreInstanceType> coreInstanceTypes;
   final String? diskType;
+
   /// Name of the engine.
   final String? engine;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of instance types type IDs.
   final List<String> ids;
+
   /// Name of the instance type.
   final String? instanceType;
+
   /// (Available in 1.115.0+) A list of master instance types. Each element contains the following attributes:
   final List<GetInstanceTypesMasterInstanceType> masterInstanceTypes;
   final String? outputFile;
   final String? regionId;
+
   /// (Deprecated) A list of instance types. Each element contains the following attributes:
   final List<GetInstanceTypesType> types;
+
   /// The version of the engine.
   final String? version;
   final String? zoneId;
@@ -62,16 +70,28 @@ class GetInstanceTypesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'chargeType': ?chargeType,
-      'coreInstanceTypes': pulumi.Input.encodeList<GetInstanceTypesCoreInstanceType, Map<String, dynamic>>(coreInstanceTypes, (value) => value.toMap()),
+      'coreInstanceTypes':
+          pulumi.Input.encodeList<
+            GetInstanceTypesCoreInstanceType,
+            Map<String, dynamic>
+          >(coreInstanceTypes, (value) => value.toMap()),
       'diskType': ?diskType,
       'engine': ?engine,
       'id': id,
       'ids': ids,
       'instanceType': ?instanceType,
-      'masterInstanceTypes': pulumi.Input.encodeList<GetInstanceTypesMasterInstanceType, Map<String, dynamic>>(masterInstanceTypes, (value) => value.toMap()),
+      'masterInstanceTypes':
+          pulumi.Input.encodeList<
+            GetInstanceTypesMasterInstanceType,
+            Map<String, dynamic>
+          >(masterInstanceTypes, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'regionId': ?regionId,
-      'types': pulumi.Input.encodeList<GetInstanceTypesType, Map<String, dynamic>>(types, (value) => value.toMap()),
+      'types':
+          pulumi.Input.encodeList<GetInstanceTypesType, Map<String, dynamic>>(
+            types,
+            (value) => value.toMap(),
+          ),
       'version': ?version,
       'zoneId': ?zoneId,
     };
@@ -79,20 +99,68 @@ class GetInstanceTypesResult {
 
   factory GetInstanceTypesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesResult(
-      chargeType: map['chargeType'] == null ? null : map['chargeType']! as String,
-      coreInstanceTypes: pulumi.Input.decodeList<GetInstanceTypesCoreInstanceType>(map['coreInstanceTypes'], (value) => GetInstanceTypesCoreInstanceType.fromMap((value as Map).cast<String, dynamic>())),
-      diskType: map['diskType'] == null ? null : map['diskType']! as String,
-      engine: map['engine'] == null ? null : map['engine']! as String,
+      chargeType: (() {
+        final guardedValue = map['chargeType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      coreInstanceTypes:
+          pulumi.Input.decodeList<GetInstanceTypesCoreInstanceType>(
+            map['coreInstanceTypes']!,
+            (value) => GetInstanceTypesCoreInstanceType.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
-      masterInstanceTypes: pulumi.Input.decodeList<GetInstanceTypesMasterInstanceType>(map['masterInstanceTypes'], (value) => GetInstanceTypesMasterInstanceType.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      regionId: map['regionId'] == null ? null : map['regionId']! as String,
-      types: pulumi.Input.decodeList<GetInstanceTypesType>(map['types'], (value) => GetInstanceTypesType.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : map['version']! as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      masterInstanceTypes:
+          pulumi.Input.decodeList<GetInstanceTypesMasterInstanceType>(
+            map['masterInstanceTypes']!,
+            (value) => GetInstanceTypesMasterInstanceType.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      types: pulumi.Input.decodeList<GetInstanceTypesType>(
+        map['types']!,
+        (value) => GetInstanceTypesType.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

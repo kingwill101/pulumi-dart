@@ -7,8 +7,10 @@ import 'digest.dart';
 class DsRecord {
   /// The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
   final pulumi.Input<int>? algorithm;
+
   /// The digest entity.
   final pulumi.Input<Digest>? digest;
+
   /// The key tag value is used to determine which DNSKEY Resource Record is used for signature verification.
   final pulumi.Input<int>? keyTag;
 
@@ -16,26 +18,39 @@ class DsRecord {
   /// [algorithm] The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
   /// [digest] The digest entity.
   /// [keyTag] The key tag value is used to determine which DNSKEY Resource Record is used for signature verification.
-  DsRecord({
-    this.algorithm,
-    this.digest,
-    this.keyTag,
-  });
+  DsRecord({this.algorithm, this.digest, this.keyTag});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'algorithm': ?algorithm,
-      'digest': ?pulumi.Input.mapOptionalInputValue<Digest, Map<String, dynamic>>(digest, (value) => value.toMap()),
+      'digest':
+          ?pulumi.Input.mapOptionalInputValue<Digest, Map<String, dynamic>>(
+            digest,
+            (value) => value.toMap(),
+          ),
       'keyTag': ?keyTag,
     };
   }
 
   factory DsRecord.fromMap(Map<String, dynamic> map) {
     return DsRecord(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as int).input(),
-      digest: map['digest'] == null ? null : (Digest.fromMap((map['digest']! as Map).cast<String, dynamic>())).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag']! as int).input(),
+      algorithm: (() {
+        final guardedValue = map['algorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Digest.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      keyTag: (() {
+        final guardedValue = map['keyTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

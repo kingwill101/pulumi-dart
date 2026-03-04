@@ -3,16 +3,17 @@ enum ApplicationGatewayCookieBasedAffinity {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ApplicationGatewayCookieBasedAffinity(this.value);
-  final String value;
+  const ApplicationGatewayCookieBasedAffinity(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewayCookieBasedAffinity fromValue(String value) {
     for (final item in ApplicationGatewayCookieBasedAffinity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApplicationGatewayCookieBasedAffinity value: $value');
+    throw ArgumentError(
+      'Unknown ApplicationGatewayCookieBasedAffinity value: $value',
+    );
   }
 }
-

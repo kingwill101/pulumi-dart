@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BfdConfigurationResponse {
   /// Administrative state of the BfdConfiguration. Example: Enabled | Disabled.
   final pulumi.Input<String> administrativeState;
+
   /// Interval in milliseconds. Example: 300.
   final pulumi.Input<int>? intervalInMilliSeconds;
+
   /// Multiplier for the Bfd Configuration. Example: 5.
   final pulumi.Input<int>? multiplier;
 
@@ -31,10 +33,19 @@ class BfdConfigurationResponse {
 
   factory BfdConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BfdConfigurationResponse(
-      administrativeState: (map['administrativeState'] as String).input(),
-      intervalInMilliSeconds: map['intervalInMilliSeconds'] == null ? null : (map['intervalInMilliSeconds']! as int).input(),
-      multiplier: map['multiplier'] == null ? null : (map['multiplier']! as int).input(),
+      administrativeState: pulumi.Input.fromValue(
+        map['administrativeState'] as String,
+      ),
+      intervalInMilliSeconds: (() {
+        final guardedValue = map['intervalInMilliSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      multiplier: (() {
+        final guardedValue = map['multiplier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

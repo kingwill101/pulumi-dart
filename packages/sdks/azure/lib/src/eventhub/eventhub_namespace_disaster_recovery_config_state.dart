@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventhubNamespaceDisasterRecoveryConfigState {
   /// Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? namespaceName;
+
   /// The ID of the EventHub Namespace to replicate to.
   final pulumi.Input<String>? partnerNamespaceId;
+
   /// The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -34,13 +37,30 @@ class EventhubNamespaceDisasterRecoveryConfigState {
     };
   }
 
-  factory EventhubNamespaceDisasterRecoveryConfigState.fromMap(Map<String, dynamic> map) {
+  factory EventhubNamespaceDisasterRecoveryConfigState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventhubNamespaceDisasterRecoveryConfigState(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      partnerNamespaceId: (() {
+        final guardedValue = map['partnerNamespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

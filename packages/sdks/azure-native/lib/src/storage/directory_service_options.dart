@@ -5,16 +5,15 @@ enum DirectoryServiceOptions {
   valueAD("AD"),
   valueAADKERB("AADKERB");
 
-  const DirectoryServiceOptions(this.value);
-  final String value;
+  const DirectoryServiceOptions(this.wireValue);
+  final String wireValue;
 
   static DirectoryServiceOptions fromValue(String value) {
     for (final item in DirectoryServiceOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DirectoryServiceOptions value: $value');
   }
 }
-

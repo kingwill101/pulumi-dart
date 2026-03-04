@@ -5,16 +5,17 @@ enum ManagementSettingsPreferredRenewalMethod {
   manualRenewal("MANUAL_RENEWAL"),
   renewalDisabled("RENEWAL_DISABLED");
 
-  const ManagementSettingsPreferredRenewalMethod(this.value);
-  final String value;
+  const ManagementSettingsPreferredRenewalMethod(this.wireValue);
+  final String wireValue;
 
   static ManagementSettingsPreferredRenewalMethod fromValue(String value) {
     for (final item in ManagementSettingsPreferredRenewalMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagementSettingsPreferredRenewalMethod value: $value');
+    throw ArgumentError(
+      'Unknown ManagementSettingsPreferredRenewalMethod value: $value',
+    );
   }
 }
-

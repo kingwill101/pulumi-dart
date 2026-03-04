@@ -12,52 +12,76 @@ import 'spark_config_properties_response.dart';
 class GetBigDataPoolResult {
   /// Auto-pausing properties
   final AutoPausePropertiesResponse? autoPause;
+
   /// Auto-scaling properties
   final AutoScalePropertiesResponse? autoScale;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The cache size
   final int? cacheSize;
+
   /// The time when the Big Data pool was created.
   final String creationDate;
+
   /// List of custom libraries/packages associated with the spark pool.
   final List<LibraryInfoResponse>? customLibraries;
+
   /// The default folder where Spark logs will be written.
   final String? defaultSparkLogFolder;
+
   /// Dynamic Executor Allocation
   final DynamicExecutorAllocationResponse? dynamicExecutorAllocation;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Whether autotune is required or not.
   final bool? isAutotuneEnabled;
+
   /// Whether compute isolation is required or not.
   final bool? isComputeIsolationEnabled;
+
   /// The time when the Big Data pool was updated successfully.
   final String lastSucceededTimestamp;
+
   /// Library version requirements
   final LibraryRequirementsResponse? libraryRequirements;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The number of nodes in the Big Data pool.
   final int? nodeCount;
+
   /// The level of compute power that each node in the Big Data pool has.
   final String? nodeSize;
+
   /// The kind of nodes that the Big Data pool provides.
   final String? nodeSizeFamily;
+
   /// The state of the Big Data pool.
   final String? provisioningState;
+
   /// Whether session level packages enabled.
   final bool? sessionLevelPackagesEnabled;
+
   /// Spark configuration file to specify additional properties
   final SparkConfigPropertiesResponse? sparkConfigProperties;
+
   /// The Spark events folder
   final String? sparkEventsFolder;
+
   /// The Apache Spark version.
   final String? sparkVersion;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -117,19 +141,26 @@ class GetBigDataPoolResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoPause': ?autoPause == null ? null : autoPause!.toMap(),
-      'autoScale': ?autoScale == null ? null : autoScale!.toMap(),
+      'autoPause': ?autoPause?.toMap(),
+      'autoScale': ?autoScale?.toMap(),
       'azureApiVersion': azureApiVersion,
       'cacheSize': ?cacheSize,
       'creationDate': creationDate,
-      'customLibraries': ?customLibraries == null ? null : pulumi.Input.encodeList<LibraryInfoResponse, Map<String, dynamic>>(customLibraries!, (value) => value.toMap()),
+      'customLibraries': ?(() {
+        final guardedValue = customLibraries;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          LibraryInfoResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'defaultSparkLogFolder': ?defaultSparkLogFolder,
-      'dynamicExecutorAllocation': ?dynamicExecutorAllocation == null ? null : dynamicExecutorAllocation!.toMap(),
+      'dynamicExecutorAllocation': ?dynamicExecutorAllocation?.toMap(),
       'id': id,
       'isAutotuneEnabled': ?isAutotuneEnabled,
       'isComputeIsolationEnabled': ?isComputeIsolationEnabled,
       'lastSucceededTimestamp': lastSucceededTimestamp,
-      'libraryRequirements': ?libraryRequirements == null ? null : libraryRequirements!.toMap(),
+      'libraryRequirements': ?libraryRequirements?.toMap(),
       'location': location,
       'name': name,
       'nodeCount': ?nodeCount,
@@ -137,7 +168,7 @@ class GetBigDataPoolResult {
       'nodeSizeFamily': ?nodeSizeFamily,
       'provisioningState': ?provisioningState,
       'sessionLevelPackagesEnabled': ?sessionLevelPackagesEnabled,
-      'sparkConfigProperties': ?sparkConfigProperties == null ? null : sparkConfigProperties!.toMap(),
+      'sparkConfigProperties': ?sparkConfigProperties?.toMap(),
       'sparkEventsFolder': ?sparkEventsFolder,
       'sparkVersion': ?sparkVersion,
       'tags': ?tags,
@@ -147,32 +178,118 @@ class GetBigDataPoolResult {
 
   factory GetBigDataPoolResult.fromMap(Map<String, dynamic> map) {
     return GetBigDataPoolResult(
-      autoPause: map['autoPause'] == null ? null : AutoPausePropertiesResponse.fromMap((map['autoPause']! as Map).cast<String, dynamic>()),
-      autoScale: map['autoScale'] == null ? null : AutoScalePropertiesResponse.fromMap((map['autoScale']! as Map).cast<String, dynamic>()),
+      autoPause: (() {
+        final guardedValue = map['autoPause'];
+        if (guardedValue == null) return null;
+        return AutoPausePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      autoScale: (() {
+        final guardedValue = map['autoScale'];
+        if (guardedValue == null) return null;
+        return AutoScalePropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      cacheSize: map['cacheSize'] == null ? null : map['cacheSize']! as int,
+      cacheSize: (() {
+        final guardedValue = map['cacheSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       creationDate: map['creationDate'] as String,
-      customLibraries: map['customLibraries'] == null ? null : pulumi.Input.decodeList<LibraryInfoResponse>(map['customLibraries']!, (value) => LibraryInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      defaultSparkLogFolder: map['defaultSparkLogFolder'] == null ? null : map['defaultSparkLogFolder']! as String,
-      dynamicExecutorAllocation: map['dynamicExecutorAllocation'] == null ? null : DynamicExecutorAllocationResponse.fromMap((map['dynamicExecutorAllocation']! as Map).cast<String, dynamic>()),
+      customLibraries: (() {
+        final guardedValue = map['customLibraries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<LibraryInfoResponse>(
+          guardedValue,
+          (value) => LibraryInfoResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      defaultSparkLogFolder: (() {
+        final guardedValue = map['defaultSparkLogFolder'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dynamicExecutorAllocation: (() {
+        final guardedValue = map['dynamicExecutorAllocation'];
+        if (guardedValue == null) return null;
+        return DynamicExecutorAllocationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      isAutotuneEnabled: map['isAutotuneEnabled'] == null ? null : map['isAutotuneEnabled']! as bool,
-      isComputeIsolationEnabled: map['isComputeIsolationEnabled'] == null ? null : map['isComputeIsolationEnabled']! as bool,
+      isAutotuneEnabled: (() {
+        final guardedValue = map['isAutotuneEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isComputeIsolationEnabled: (() {
+        final guardedValue = map['isComputeIsolationEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       lastSucceededTimestamp: map['lastSucceededTimestamp'] as String,
-      libraryRequirements: map['libraryRequirements'] == null ? null : LibraryRequirementsResponse.fromMap((map['libraryRequirements']! as Map).cast<String, dynamic>()),
+      libraryRequirements: (() {
+        final guardedValue = map['libraryRequirements'];
+        if (guardedValue == null) return null;
+        return LibraryRequirementsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount']! as int,
-      nodeSize: map['nodeSize'] == null ? null : map['nodeSize']! as String,
-      nodeSizeFamily: map['nodeSizeFamily'] == null ? null : map['nodeSizeFamily']! as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
-      sessionLevelPackagesEnabled: map['sessionLevelPackagesEnabled'] == null ? null : map['sessionLevelPackagesEnabled']! as bool,
-      sparkConfigProperties: map['sparkConfigProperties'] == null ? null : SparkConfigPropertiesResponse.fromMap((map['sparkConfigProperties']! as Map).cast<String, dynamic>()),
-      sparkEventsFolder: map['sparkEventsFolder'] == null ? null : map['sparkEventsFolder']! as String,
-      sparkVersion: map['sparkVersion'] == null ? null : map['sparkVersion']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      nodeSize: (() {
+        final guardedValue = map['nodeSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nodeSizeFamily: (() {
+        final guardedValue = map['nodeSizeFamily'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sessionLevelPackagesEnabled: (() {
+        final guardedValue = map['sessionLevelPackagesEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      sparkConfigProperties: (() {
+        final guardedValue = map['sparkConfigProperties'];
+        if (guardedValue == null) return null;
+        return SparkConfigPropertiesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      sparkEventsFolder: (() {
+        final guardedValue = map['sparkEventsFolder'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sparkVersion: (() {
+        final guardedValue = map['sparkVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

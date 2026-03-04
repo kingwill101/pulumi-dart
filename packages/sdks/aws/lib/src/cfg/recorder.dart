@@ -6,7 +6,7 @@ import 'recorder_state.dart';
 
 /// Provides an AWS Config Configuration Recorder. Please note that this resource **does not start** the created recorder automatically.
 ///
-/// > **Note:** _Starting_ the Configuration Recorder requires a delivery channel (while delivery channel creation requires Configuration Recorder). This is why `aws.cfg.RecorderStatus` is a separate resource.
+/// &gt; **Note:** _Starting_ the Configuration Recorder requires a delivery channel (while delivery channel creation requires Configuration Recorder). This is why `aws.cfg.RecorderStatus` is a separate resource.
 ///
 /// ## Example Usage
 ///
@@ -607,12 +607,16 @@ import 'recorder_state.dart';
 class Recorder extends pulumi.CustomResource {
   /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
   late final pulumi.Output<String> name;
+
   /// Recording group - see below.
   late final pulumi.Output<RecorderRecordingGroup> recordingGroup;
+
   /// Recording mode - see below.
   late final pulumi.Output<RecorderRecordingMode> recordingMode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
   late final pulumi.Output<String> roleArn;
 
@@ -625,16 +629,16 @@ class Recorder extends pulumi.CustomResource {
     RecorderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cfg/recorder:Recorder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:cfg/recorder:Recorder',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup');
-    this.recordingMode = registerOutput<RecorderRecordingMode>('recordingMode');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
+    recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup');
+    recordingMode = registerOutput<RecorderRecordingMode>('recordingMode');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
   }
 
   /// Gets an existing [Recorder] resource's state with the given [name] and [id].
@@ -655,15 +659,15 @@ class Recorder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cfg/recorder:Recorder',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:cfg/recorder:Recorder',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup');
-    this.recordingMode = registerOutput<RecorderRecordingMode>('recordingMode');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
+    recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup');
+    recordingMode = registerOutput<RecorderRecordingMode>('recordingMode');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
   }
 }

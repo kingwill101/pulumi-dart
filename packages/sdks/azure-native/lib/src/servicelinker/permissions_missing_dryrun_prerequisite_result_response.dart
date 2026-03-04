@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionsMissingDryrunPrerequisiteResultResponse {
   /// The permission list
   final pulumi.Input<List<String>>? permissions;
+
   /// The recommended role to resolve permissions missing
   final pulumi.Input<String>? recommendedRole;
+
   /// The permission scope
   final pulumi.Input<String>? scope;
+
   /// The type of dryrun result.
   /// Expected value is 'permissionsMissing'.
   final pulumi.Input<String> type;
@@ -35,13 +38,26 @@ class PermissionsMissingDryrunPrerequisiteResultResponse {
     };
   }
 
-  factory PermissionsMissingDryrunPrerequisiteResultResponse.fromMap(Map<String, dynamic> map) {
+  factory PermissionsMissingDryrunPrerequisiteResultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PermissionsMissingDryrunPrerequisiteResultResponse(
-      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
-      recommendedRole: map['recommendedRole'] == null ? null : (map['recommendedRole']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      type: (map['type'] as String).input(),
+      permissions: (() {
+        final guardedValue = map['permissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      recommendedRole: (() {
+        final guardedValue = map['recommendedRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

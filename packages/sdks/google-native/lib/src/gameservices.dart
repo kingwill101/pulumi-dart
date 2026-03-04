@@ -1,5 +1,3 @@
-library module_gameservices;
-
 export 'gameservices/audit_config.dart';
 export 'gameservices/audit_config_gameservices_v1beta.dart';
 export 'gameservices/audit_config_response.dart';

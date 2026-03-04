@@ -8,20 +8,17 @@ class JobDefinitionEksPropertiesPodPropertiesImagePullSecret {
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesImagePullSecret].
   /// [name] Unique identifier.
-  JobDefinitionEksPropertiesPodPropertiesImagePullSecret({
-    required this.name,
-  });
+  JobDefinitionEksPropertiesPodPropertiesImagePullSecret({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap(Map<String, dynamic> map) {
+  factory JobDefinitionEksPropertiesPodPropertiesImagePullSecret.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobDefinitionEksPropertiesPodPropertiesImagePullSecret(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

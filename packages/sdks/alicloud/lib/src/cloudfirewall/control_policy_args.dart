@@ -9,52 +9,71 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ControlPolicyArgs {
   /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
   final pulumi.Input<String> aclAction;
+
   /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
-  /// > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
+  /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
   final pulumi.Input<String>? applicationName;
+
   /// The application types supported by the access control policy.
-  /// > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+  /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
   final pulumi.Input<List<String>>? applicationNameLists;
+
   /// The description of the access control policy.
   final pulumi.Input<String> description;
+
   /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
   final pulumi.Input<String>? destPort;
+
   /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
   final pulumi.Input<String>? destPortGroup;
+
   /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
   final pulumi.Input<String>? destPortType;
+
   /// The destination address in the access control policy.
   final pulumi.Input<String> destination;
+
   /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
   final pulumi.Input<String> destinationType;
+
   /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
   final pulumi.Input<String> direction;
+
   /// The domain name resolution method of the access control policy. Valid values:
   /// - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
   /// - `DNS`: DNS-based dynamic resolution.
   /// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
   final pulumi.Input<String>? domainResolveType;
+
   /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-  /// > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+  /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
   final pulumi.Input<int>? endTime;
+
   /// The IP version supported by the access control policy. Default value: `4`. Valid values:
   final pulumi.Input<String>? ipVersion;
+
   /// The language of the content within the request and response. Valid values: `zh`, `en`.
   final pulumi.Input<String>? lang;
+
   /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
   final pulumi.Input<String> proto;
+
   /// The status of the access control policy. Valid values: `true`, `false`.
   final pulumi.Input<String>? release;
+
   /// The days of a week or of a month on which the access control policy takes effect. Valid values:
   /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
   /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
-  /// > **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+  /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
   final pulumi.Input<List<int>>? repeatDays;
+
   /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-  /// > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+  /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
   final pulumi.Input<String>? repeatEndTime;
+
   /// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
   final pulumi.Input<String>? repeatStartTime;
+
   /// The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
   /// - `Permanent`: The policy always takes effect.
   /// - `None`: The policy takes effect for only once.
@@ -62,12 +81,16 @@ class ControlPolicyArgs {
   /// - `Weekly`: The policy takes effect on a weekly basis.
   /// - `Monthly`: The policy takes effect on a monthly basis.
   final pulumi.Input<String>? repeatType;
+
   /// The source address in the access control policy.
   final pulumi.Input<String> source;
+
   /// The source IP address of the request.
   final pulumi.Input<String>? sourceIp;
+
   /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
   final pulumi.Input<String> sourceType;
+
   /// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
   final pulumi.Input<int>? startTime;
 
@@ -154,31 +177,94 @@ class ControlPolicyArgs {
 
   factory ControlPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ControlPolicyArgs(
-      aclAction: (map['aclAction'] as String).input(),
-      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
-      applicationNameLists: map['applicationNameLists'] == null ? null : ((map['applicationNameLists']! as List).cast<String>()).input(),
-      description: (map['description'] as String).input(),
-      destPort: map['destPort'] == null ? null : (map['destPort']! as String).input(),
-      destPortGroup: map['destPortGroup'] == null ? null : (map['destPortGroup']! as String).input(),
-      destPortType: map['destPortType'] == null ? null : (map['destPortType']! as String).input(),
-      destination: (map['destination'] as String).input(),
-      destinationType: (map['destinationType'] as String).input(),
-      direction: (map['direction'] as String).input(),
-      domainResolveType: map['domainResolveType'] == null ? null : (map['domainResolveType']! as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as int).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
-      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
-      proto: (map['proto'] as String).input(),
-      release: map['release'] == null ? null : (map['release']! as String).input(),
-      repeatDays: map['repeatDays'] == null ? null : ((map['repeatDays']! as List).cast<int>()).input(),
-      repeatEndTime: map['repeatEndTime'] == null ? null : (map['repeatEndTime']! as String).input(),
-      repeatStartTime: map['repeatStartTime'] == null ? null : (map['repeatStartTime']! as String).input(),
-      repeatType: map['repeatType'] == null ? null : (map['repeatType']! as String).input(),
-      source: (map['source'] as String).input(),
-      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp']! as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as int).input(),
+      aclAction: pulumi.Input.fromValue(map['aclAction'] as String),
+      applicationName: (() {
+        final guardedValue = map['applicationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationNameLists: (() {
+        final guardedValue = map['applicationNameLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      destPort: (() {
+        final guardedValue = map['destPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destPortGroup: (() {
+        final guardedValue = map['destPortGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destPortType: (() {
+        final guardedValue = map['destPortType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      domainResolveType: (() {
+        final guardedValue = map['domainResolveType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proto: pulumi.Input.fromValue(map['proto'] as String),
+      release: (() {
+        final guardedValue = map['release'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repeatDays: (() {
+        final guardedValue = map['repeatDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      repeatEndTime: (() {
+        final guardedValue = map['repeatEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repeatStartTime: (() {
+        final guardedValue = map['repeatStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repeatType: (() {
+        final guardedValue = map['repeatType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      sourceIp: (() {
+        final guardedValue = map['sourceIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

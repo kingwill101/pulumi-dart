@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePrincipalResponse {
   /// The Azure Active Directory application client id.
   final pulumi.Input<String> clientId;
+
   /// The Azure Active Directory application object id.
   final pulumi.Input<String> principalId;
+
   /// The Azure Active Directory tenant id.
   final pulumi.Input<String> tenantId;
+
   /// Service principal type.
   final pulumi.Input<String>? type;
 
@@ -36,11 +39,14 @@ class ServicePrincipalResponse {
 
   factory ServicePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalResponse(
-      clientId: (map['clientId'] as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

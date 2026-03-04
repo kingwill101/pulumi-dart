@@ -8,16 +8,15 @@ enum DiskAccountType {
   valueStandardSSDZRS("StandardSSD_ZRS"),
   valuePremiumZRS("Premium_ZRS");
 
-  const DiskAccountType(this.value);
-  final String value;
+  const DiskAccountType(this.wireValue);
+  final String wireValue;
 
   static DiskAccountType fromValue(String value) {
     for (final item in DiskAccountType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskAccountType value: $value');
   }
 }
-

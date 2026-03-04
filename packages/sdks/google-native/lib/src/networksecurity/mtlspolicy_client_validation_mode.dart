@@ -4,16 +4,15 @@ enum MTLSPolicyClientValidationMode {
   allowInvalidOrMissingClientCert("ALLOW_INVALID_OR_MISSING_CLIENT_CERT"),
   rejectInvalid("REJECT_INVALID");
 
-  const MTLSPolicyClientValidationMode(this.value);
-  final String value;
+  const MTLSPolicyClientValidationMode(this.wireValue);
+  final String wireValue;
 
   static MTLSPolicyClientValidationMode fromValue(String value) {
     for (final item in MTLSPolicyClientValidationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MTLSPolicyClientValidationMode value: $value');
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelAlexaArgs {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> botName;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group where the Alexa Channel should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Alexa skill ID for the Alexa Channel.
   final pulumi.Input<String> skillId;
 
@@ -39,11 +42,16 @@ class ChannelAlexaArgs {
 
   factory ChannelAlexaArgs.fromMap(Map<String, dynamic> map) {
     return ChannelAlexaArgs(
-      botName: (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skillId: (map['skillId'] as String).input(),
+      botName: pulumi.Input.fromValue(map['botName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skillId: pulumi.Input.fromValue(map['skillId'] as String),
     );
   }
 }
-

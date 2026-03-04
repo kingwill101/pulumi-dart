@@ -9,18 +9,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterPrefixListAssociationsArgs {
   /// A list of Cen Transit Router Prefix List Association IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the Alibaba Cloud account to which the prefix list belongs.
   final pulumi.Input<int>? ownerUid;
   final pulumi.Input<int>? pageNumber;
   final pulumi.Input<int>? pageSize;
+
   /// The ID of the prefix list.
   final pulumi.Input<String>? prefixListId;
+
   /// The status of the prefix list. Valid Value: `Active`, `Updating`.
   final pulumi.Input<String>? status;
+
   /// The ID of the transit router.
   final pulumi.Input<String> transitRouterId;
+
   /// The ID of the route table of the transit router.
   final pulumi.Input<String> transitRouterTableId;
 
@@ -60,18 +66,49 @@ class GetTransitRouterPrefixListAssociationsArgs {
     };
   }
 
-  factory GetTransitRouterPrefixListAssociationsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterPrefixListAssociationsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterPrefixListAssociationsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid']! as int).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      transitRouterId: (map['transitRouterId'] as String).input(),
-      transitRouterTableId: (map['transitRouterTableId'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerUid: (() {
+        final guardedValue = map['ownerUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      prefixListId: (() {
+        final guardedValue = map['prefixListId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitRouterId: pulumi.Input.fromValue(map['transitRouterId'] as String),
+      transitRouterTableId: pulumi.Input.fromValue(
+        map['transitRouterTableId'] as String,
+      ),
     );
   }
 }
-

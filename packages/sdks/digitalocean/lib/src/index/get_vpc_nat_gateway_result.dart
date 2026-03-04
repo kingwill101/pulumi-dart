@@ -56,7 +56,11 @@ class GetVpcNatGatewayResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdAt': createdAt,
-      'egresses': pulumi.Input.encodeList<GetVpcNatGatewayEgress, Map<String, dynamic>>(egresses, (value) => value.toMap()),
+      'egresses':
+          pulumi.Input.encodeList<GetVpcNatGatewayEgress, Map<String, dynamic>>(
+            egresses,
+            (value) => value.toMap(),
+          ),
       'icmpTimeoutSeconds': icmpTimeoutSeconds,
       'id': ?id,
       'name': ?name,
@@ -68,17 +72,34 @@ class GetVpcNatGatewayResult {
       'type': type,
       'udpTimeoutSeconds': udpTimeoutSeconds,
       'updatedAt': updatedAt,
-      'vpcs': pulumi.Input.encodeList<GetVpcNatGatewayVpc, Map<String, dynamic>>(vpcs, (value) => value.toMap()),
+      'vpcs':
+          pulumi.Input.encodeList<GetVpcNatGatewayVpc, Map<String, dynamic>>(
+            vpcs,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetVpcNatGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetVpcNatGatewayResult(
       createdAt: map['createdAt'] as String,
-      egresses: pulumi.Input.decodeList<GetVpcNatGatewayEgress>(map['egresses'], (value) => GetVpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>())),
+      egresses: pulumi.Input.decodeList<GetVpcNatGatewayEgress>(
+        map['egresses']!,
+        (value) => GetVpcNatGatewayEgress.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       icmpTimeoutSeconds: map['icmpTimeoutSeconds'] as int,
-      id: map['id'] == null ? null : map['id']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       projectId: map['projectId'] as String,
       region: map['region'] as String,
       size: map['size'] as int,
@@ -87,8 +108,11 @@ class GetVpcNatGatewayResult {
       type: map['type'] as String,
       udpTimeoutSeconds: map['udpTimeoutSeconds'] as int,
       updatedAt: map['updatedAt'] as String,
-      vpcs: pulumi.Input.decodeList<GetVpcNatGatewayVpc>(map['vpcs'], (value) => GetVpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>())),
+      vpcs: pulumi.Input.decodeList<GetVpcNatGatewayVpc>(
+        map['vpcs']!,
+        (value) =>
+            GetVpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

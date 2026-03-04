@@ -19,10 +19,15 @@ class ResourceProviderManagementErrorResponseMessageOptions {
     };
   }
 
-  factory ResourceProviderManagementErrorResponseMessageOptions.fromMap(Map<String, dynamic> map) {
+  factory ResourceProviderManagementErrorResponseMessageOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceProviderManagementErrorResponseMessageOptions(
-      serverFailureResponseMessageType: map['serverFailureResponseMessageType'] == null ? null : (map['serverFailureResponseMessageType']! as String).input(),
+      serverFailureResponseMessageType: (() {
+        final guardedValue = map['serverFailureResponseMessageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowArgs {
   /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
   final pulumi.Input<String> definition;
+
   /// The description of the flow.
   final pulumi.Input<String> description;
+
   /// The name of the flow. The name must be unique in an Alibaba Cloud account.
   final pulumi.Input<String>? name;
+
   /// The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   final pulumi.Input<String>? roleArn;
+
   /// The type of the flow. Valid values are `FDL` or `DEFAULT`.
   final pulumi.Input<String> type;
 
@@ -44,12 +48,19 @@ class FlowArgs {
 
   factory FlowArgs.fromMap(Map<String, dynamic> map) {
     return FlowArgs(
-      definition: (map['definition'] as String).input(),
-      description: (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
-      type: (map['type'] as String).input(),
+      definition: pulumi.Input.fromValue(map['definition'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

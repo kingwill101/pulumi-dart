@@ -31,10 +31,9 @@ class GetCaseCloudsupportV2betaArgs {
 
   factory GetCaseCloudsupportV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetCaseCloudsupportV2betaArgs(
-      caseId: (map['caseId'] as String).input(),
-      v2betaId1: (map['v2betaId1'] as String).input(),
-      v2betumId: (map['v2betumId'] as String).input(),
+      caseId: pulumi.Input.fromValue(map['caseId'] as String),
+      v2betaId1: pulumi.Input.fromValue(map['v2betaId1'] as String),
+      v2betumId: pulumi.Input.fromValue(map['v2betumId'] as String),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
   /// The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
   final pulumi.Input<String> dataset;
+
   /// BigQuery resource name of the latest shard.
   final pulumi.Input<String> latestShardResource;
+
   /// Total number of shards.
   final pulumi.Input<String> shardCount;
+
   /// The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
   final pulumi.Input<String> tablePrefix;
 
@@ -34,13 +37,16 @@ class GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse(
-      dataset: (map['dataset'] as String).input(),
-      latestShardResource: (map['latestShardResource'] as String).input(),
-      shardCount: (map['shardCount'] as String).input(),
-      tablePrefix: (map['tablePrefix'] as String).input(),
+      dataset: pulumi.Input.fromValue(map['dataset'] as String),
+      latestShardResource: pulumi.Input.fromValue(
+        map['latestShardResource'] as String,
+      ),
+      shardCount: pulumi.Input.fromValue(map['shardCount'] as String),
+      tablePrefix: pulumi.Input.fromValue(map['tablePrefix'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1ApiProductRefResponse {
   /// Name of the API product.
   final pulumi.Input<String> apiproduct;
+
   /// Status of the API product. Valid values are `approved` or `revoked`.
   final pulumi.Input<String> status;
 
@@ -17,17 +18,15 @@ class GoogleCloudApigeeV1ApiProductRefResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiproduct': apiproduct,
-      'status': status,
-    };
+    return <String, dynamic>{'apiproduct': apiproduct, 'status': status};
   }
 
-  factory GoogleCloudApigeeV1ApiProductRefResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ApiProductRefResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1ApiProductRefResponse(
-      apiproduct: (map['apiproduct'] as String).input(),
-      status: (map['status'] as String).input(),
+      apiproduct: pulumi.Input.fromValue(map['apiproduct'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

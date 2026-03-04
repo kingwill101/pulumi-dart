@@ -9,23 +9,16 @@ class GetEngineVersionFilter {
   /// Creates a new [GetEngineVersionFilter].
   /// [name] Required.
   /// [values] Required.
-  GetEngineVersionFilter({
-    required this.name,
-    required this.values,
-  });
+  GetEngineVersionFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetEngineVersionFilter.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionFilter(
-      name: (map['name'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

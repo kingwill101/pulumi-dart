@@ -8,51 +8,70 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ecs_ecs_disk_ecs_disk_args_doc}
 class EcsDiskArgs {
   final pulumi.Input<String>? advancedFeatures;
+
   /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
   final pulumi.Input<String>? availabilityZone;
+
   /// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
   final pulumi.Input<bool>? burstingEnabled;
+
   /// The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
   final pulumi.Input<String>? category;
+
   /// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
   final pulumi.Input<bool>? deleteAutoSnapshot;
+
   /// Specifies whether to release the disk along with its associated instance. Default value: `false`.
   final pulumi.Input<bool>? deleteWithInstance;
+
   /// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
   final pulumi.Input<String>? description;
+
   /// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
   final pulumi.Input<String>? diskName;
+
   /// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
   final pulumi.Input<bool>? dryRun;
+
   /// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
   final pulumi.Input<bool>? enableAutoSnapshot;
   final pulumi.Input<String>? encryptAlgorithm;
+
   /// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
   final pulumi.Input<bool>? encrypted;
+
   /// The ID of the instance to which the created subscription disk is automatically attached.
   /// * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
   /// * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
   final pulumi.Input<String>? instanceId;
+
   /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
   final pulumi.Input<String>? multiAttach;
+
   /// Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
   ///
-  /// > **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+  /// &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
   final pulumi.Input<String>? name;
+
   /// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
   final pulumi.Input<String>? paymentType;
+
   /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
   /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
   /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
   /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
   /// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
   final pulumi.Input<String>? performanceLevel;
+
   /// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
   final pulumi.Input<int>? provisionedIops;
+
   /// The ID of the resource group to which to add the disk.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The size of the disk. Unit: GiB. This parameter is required. Valid values:
   /// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
   /// - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
@@ -67,16 +86,22 @@ class EcsDiskArgs {
   /// - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
   /// - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
   final pulumi.Input<int>? size;
+
   /// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
   final pulumi.Input<String>? snapshotId;
+
   /// The ID of the storage set.
   final pulumi.Input<String>? storageSetId;
+
   /// The number of partitions in the storage set.
   final pulumi.Input<int>? storageSetPartitionNumber;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
   final pulumi.Input<String>? type;
+
   /// ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
   final pulumi.Input<String>? zoneId;
 
@@ -172,34 +197,143 @@ class EcsDiskArgs {
 
   factory EcsDiskArgs.fromMap(Map<String, dynamic> map) {
     return EcsDiskArgs(
-      advancedFeatures: map['advancedFeatures'] == null ? null : (map['advancedFeatures']! as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled']! as bool).input(),
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      deleteAutoSnapshot: map['deleteAutoSnapshot'] == null ? null : (map['deleteAutoSnapshot']! as bool).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      enableAutoSnapshot: map['enableAutoSnapshot'] == null ? null : (map['enableAutoSnapshot']! as bool).input(),
-      encryptAlgorithm: map['encryptAlgorithm'] == null ? null : (map['encryptAlgorithm']! as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      multiAttach: map['multiAttach'] == null ? null : (map['multiAttach']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
-      storageSetId: map['storageSetId'] == null ? null : (map['storageSetId']! as String).input(),
-      storageSetPartitionNumber: map['storageSetPartitionNumber'] == null ? null : (map['storageSetPartitionNumber']! as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      advancedFeatures: (() {
+        final guardedValue = map['advancedFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      burstingEnabled: (() {
+        final guardedValue = map['burstingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteAutoSnapshot: (() {
+        final guardedValue = map['deleteAutoSnapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deleteWithInstance: (() {
+        final guardedValue = map['deleteWithInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskName: (() {
+        final guardedValue = map['diskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableAutoSnapshot: (() {
+        final guardedValue = map['enableAutoSnapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptAlgorithm: (() {
+        final guardedValue = map['encryptAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiAttach: (() {
+        final guardedValue = map['multiAttach'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performanceLevel: (() {
+        final guardedValue = map['performanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisionedIops: (() {
+        final guardedValue = map['provisionedIops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotId: (() {
+        final guardedValue = map['snapshotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSetId: (() {
+        final guardedValue = map['storageSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSetPartitionNumber: (() {
+        final guardedValue = map['storageSetPartitionNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

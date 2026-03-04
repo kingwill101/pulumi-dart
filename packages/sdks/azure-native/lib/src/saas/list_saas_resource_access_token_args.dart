@@ -12,20 +12,15 @@ class ListSaasResourceAccessTokenArgs {
 
   /// Creates a new [ListSaasResourceAccessTokenArgs].
   /// [resourceId] The Saas resource ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-  ListSaasResourceAccessTokenArgs({
-    required this.resourceId,
-  });
+  ListSaasResourceAccessTokenArgs({required this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': resourceId,
-    };
+    return <String, dynamic>{'resourceId': resourceId};
   }
 
   factory ListSaasResourceAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return ListSaasResourceAccessTokenArgs(
-      resourceId: (map['resourceId'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

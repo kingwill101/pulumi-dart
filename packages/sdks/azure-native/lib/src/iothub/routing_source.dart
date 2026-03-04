@@ -7,16 +7,15 @@ enum RoutingSource {
   valueDeviceJobLifecycleEvents("DeviceJobLifecycleEvents"),
   valueDeviceConnectionStateEvents("DeviceConnectionStateEvents");
 
-  const RoutingSource(this.value);
-  final String value;
+  const RoutingSource(this.wireValue);
+  final String wireValue;
 
   static RoutingSource fromValue(String value) {
     for (final item in RoutingSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutingSource value: $value');
   }
 }
-

@@ -12,18 +12,25 @@ import 'managed_service_identity.dart';
 class DevCenterArgs {
   /// The name of the devcenter.
   final pulumi.Input<String>? devCenterName;
+
   /// The display name of the devcenter.
   final pulumi.Input<String>? displayName;
+
   /// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
   final pulumi.Input<Encryption>? encryption;
+
   /// Managed identity properties
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Dev Center settings to be used when associating a project with a catalog.
   final pulumi.Input<DevCenterProjectCatalogSettings>? projectCatalogSettings;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -51,10 +58,22 @@ class DevCenterArgs {
     return <String, dynamic>{
       'devCenterName': ?devCenterName,
       'displayName': ?displayName,
-      'encryption': ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<Encryption, Map<String, dynamic>>(
+            encryption,
+            (value) => value.toMap(),
+          ),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
-      'projectCatalogSettings': ?pulumi.Input.mapOptionalInputValue<DevCenterProjectCatalogSettings, Map<String, dynamic>>(projectCatalogSettings, (value) => value.toMap()),
+      'projectCatalogSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            DevCenterProjectCatalogSettings,
+            Map<String, dynamic>
+          >(projectCatalogSettings, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -62,15 +81,56 @@ class DevCenterArgs {
 
   factory DevCenterArgs.fromMap(Map<String, dynamic> map) {
     return DevCenterArgs(
-      devCenterName: map['devCenterName'] == null ? null : (map['devCenterName']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      projectCatalogSettings: map['projectCatalogSettings'] == null ? null : (DevCenterProjectCatalogSettings.fromMap((map['projectCatalogSettings']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      devCenterName: (() {
+        final guardedValue = map['devCenterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Encryption.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectCatalogSettings: (() {
+        final guardedValue = map['projectCatalogSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DevCenterProjectCatalogSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

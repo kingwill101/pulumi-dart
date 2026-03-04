@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedDatabasePointInTimeRestore {
   /// The point in time for the restore from `source_database_id`. Changing this forces a new resource to be created.
   final pulumi.Input<String> restorePointInTime;
+
   /// The source database id that will be used to restore from. Changing this forces a new resource to be created.
   final pulumi.Input<String> sourceDatabaseId;
 
@@ -25,9 +26,12 @@ class ManagedDatabasePointInTimeRestore {
 
   factory ManagedDatabasePointInTimeRestore.fromMap(Map<String, dynamic> map) {
     return ManagedDatabasePointInTimeRestore(
-      restorePointInTime: (map['restorePointInTime'] as String).input(),
-      sourceDatabaseId: (map['sourceDatabaseId'] as String).input(),
+      restorePointInTime: pulumi.Input.fromValue(
+        map['restorePointInTime'] as String,
+      ),
+      sourceDatabaseId: pulumi.Input.fromValue(
+        map['sourceDatabaseId'] as String,
+      ),
     );
   }
 }
-

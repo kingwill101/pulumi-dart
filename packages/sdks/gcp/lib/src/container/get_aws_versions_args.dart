@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAwsVersionsArgs {
   /// The location to list versions for.
   final pulumi.Input<String>? location;
+
   /// ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
   /// Defaults to the project that the provider is authenticated with.
   final pulumi.Input<String>? project;
@@ -16,23 +17,24 @@ class GetAwsVersionsArgs {
   /// Creates a new [GetAwsVersionsArgs].
   /// [location] The location to list versions for.
   /// [project] ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
-  GetAwsVersionsArgs({
-    this.location,
-    this.project,
-  });
+  GetAwsVersionsArgs({this.location, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': ?location,
-      'project': ?project,
-    };
+    return <String, dynamic>{'location': ?location, 'project': ?project};
   }
 
   factory GetAwsVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetAwsVersionsArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

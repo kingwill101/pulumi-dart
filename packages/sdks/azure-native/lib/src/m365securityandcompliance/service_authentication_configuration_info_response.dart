@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAuthenticationConfigurationInfoResponse {
   /// The audience url for the service
   final pulumi.Input<String>? audience;
+
   /// The authority url for the service
   final pulumi.Input<String>? authority;
+
   /// If the SMART on FHIR proxy is enabled
   final pulumi.Input<bool>? smartProxyEnabled;
 
@@ -29,12 +31,25 @@ class ServiceAuthenticationConfigurationInfoResponse {
     };
   }
 
-  factory ServiceAuthenticationConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory ServiceAuthenticationConfigurationInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceAuthenticationConfigurationInfoResponse(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
-      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled']! as bool).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      smartProxyEnabled: (() {
+        final guardedValue = map['smartProxyEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum Format {
   valueCsv("Csv"),
   valueParquet("Parquet");
 
-  const Format(this.value);
-  final String value;
+  const Format(this.wireValue);
+  final String wireValue;
 
   static Format fromValue(String value) {
     for (final item in Format.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Format value: $value');
   }
 }
-

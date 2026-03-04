@@ -5,26 +5,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPatchBaselinesBaseline {
   /// Accept the rules.
   final pulumi.Input<String> approvalRules;
+
   /// The create time of patch baselines.
   final pulumi.Input<String> createTime;
+
   /// The user who created the patch baselines.
   final pulumi.Input<String> createdBy;
+
   /// Patches baseline description information.
   final pulumi.Input<String> description;
+
   /// The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
   final pulumi.Input<String> id;
+
   /// Whether it is the default patch baseline.
   final pulumi.Input<bool> isDefault;
+
   /// Operating system type.
   final pulumi.Input<String> operationSystem;
+
   /// Patch baseline ID.
   final pulumi.Input<String> patchBaselineId;
+
   /// The name of the patch baseline.
   final pulumi.Input<String> patchBaselineName;
+
   /// Patch baseline sharing type.
   final pulumi.Input<String> shareType;
+
   /// The user who updated the patch baselines.
   final pulumi.Input<String> updatedBy;
+
   /// The update time of patch baselines.
   final pulumi.Input<String> updatedDate;
 
@@ -75,19 +86,20 @@ class GetPatchBaselinesBaseline {
 
   factory GetPatchBaselinesBaseline.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesBaseline(
-      approvalRules: (map['approvalRules'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      createdBy: (map['createdBy'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      isDefault: (map['isDefault'] as bool).input(),
-      operationSystem: (map['operationSystem'] as String).input(),
-      patchBaselineId: (map['patchBaselineId'] as String).input(),
-      patchBaselineName: (map['patchBaselineName'] as String).input(),
-      shareType: (map['shareType'] as String).input(),
-      updatedBy: (map['updatedBy'] as String).input(),
-      updatedDate: (map['updatedDate'] as String).input(),
+      approvalRules: pulumi.Input.fromValue(map['approvalRules'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
+      operationSystem: pulumi.Input.fromValue(map['operationSystem'] as String),
+      patchBaselineId: pulumi.Input.fromValue(map['patchBaselineId'] as String),
+      patchBaselineName: pulumi.Input.fromValue(
+        map['patchBaselineName'] as String,
+      ),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
+      updatedBy: pulumi.Input.fromValue(map['updatedBy'] as String),
+      updatedDate: pulumi.Input.fromValue(map['updatedDate'] as String),
     );
   }
 }
-

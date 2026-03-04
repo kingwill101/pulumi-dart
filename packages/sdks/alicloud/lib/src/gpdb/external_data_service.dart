@@ -8,7 +8,7 @@ import 'external_data_service_state.dart';
 ///
 /// For information about AnalyticDB for PostgreSQL (GPDB) External Data Service and how to use it, see [What is External Data Service](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateExternalDataService).
 ///
-/// > **NOTE:** Available since v1.227.0.
+/// &gt; **NOTE:** Available since v1.227.0.
 ///
 /// ## Example Usage
 ///
@@ -360,16 +360,22 @@ import 'external_data_service_state.dart';
 class ExternalDataService extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Instance ID
   late final pulumi.Output<String> dbInstanceId;
+
   /// Service Description
   late final pulumi.Output<String?> serviceDescription;
+
   /// Service ID
   late final pulumi.Output<int> serviceId;
+
   /// Service Name
   late final pulumi.Output<String> serviceName;
+
   /// Service Specifications
   late final pulumi.Output<String> serviceSpec;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -382,18 +388,18 @@ class ExternalDataService extends pulumi.CustomResource {
     ExternalDataServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/externalDataService:ExternalDataService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.serviceDescription = registerOutput<String?>('serviceDescription');
-    this.serviceId = registerOutput<int>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceSpec = registerOutput<String>('serviceSpec');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/externalDataService:ExternalDataService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    serviceDescription = registerOutput<String?>('serviceDescription');
+    serviceId = registerOutput<int>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    serviceSpec = registerOutput<String>('serviceSpec');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [ExternalDataService] resource's state with the given [name] and [id].
@@ -414,17 +420,17 @@ class ExternalDataService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/externalDataService:ExternalDataService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.serviceDescription = registerOutput<String?>('serviceDescription');
-    this.serviceId = registerOutput<int>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceSpec = registerOutput<String>('serviceSpec');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/externalDataService:ExternalDataService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    serviceDescription = registerOutput<String?>('serviceDescription');
+    serviceId = registerOutput<int>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    serviceSpec = registerOutput<String>('serviceSpec');
+    status = registerOutput<String>('status');
   }
 }

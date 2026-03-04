@@ -6,16 +6,17 @@ enum DsRecordDigestTypeDomainsV1alpha2 {
   gost3411("GOST3411"),
   sha384("SHA384");
 
-  const DsRecordDigestTypeDomainsV1alpha2(this.value);
-  final String value;
+  const DsRecordDigestTypeDomainsV1alpha2(this.wireValue);
+  final String wireValue;
 
   static DsRecordDigestTypeDomainsV1alpha2 fromValue(String value) {
     for (final item in DsRecordDigestTypeDomainsV1alpha2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DsRecordDigestTypeDomainsV1alpha2 value: $value');
+    throw ArgumentError(
+      'Unknown DsRecordDigestTypeDomainsV1alpha2 value: $value',
+    );
   }
 }
-

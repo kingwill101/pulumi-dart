@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAkriConnectorArgs {
   /// Name of AkriConnectorTemplate resource.
   final pulumi.Input<String> akriConnectorTemplateName;
+
   /// Name of AkriConnector resource.
   final pulumi.Input<String> connectorName;
+
   /// Name of instance.
   final pulumi.Input<String> instanceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetAkriConnectorArgs {
 
   factory GetAkriConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetAkriConnectorArgs(
-      akriConnectorTemplateName: (map['akriConnectorTemplateName'] as String).input(),
-      connectorName: (map['connectorName'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      akriConnectorTemplateName: pulumi.Input.fromValue(
+        map['akriConnectorTemplateName'] as String,
+      ),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

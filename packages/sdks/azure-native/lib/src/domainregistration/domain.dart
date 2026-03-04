@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
-import 'host_name_response.dart';
 
 /// Information about a domain.
 ///
@@ -612,45 +611,65 @@ import 'host_name_response.dart';
 /// ```
 class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String?> authCode;
-  /// <code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>.
+
+  /// &lt;code&gt;true&lt;/code&gt; if the domain should be automatically renewed; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool?> autoRenew;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Domain creation timestamp.
   late final pulumi.Output<String> createdTime;
+
   /// Current DNS type
   late final pulumi.Output<String?> dnsType;
+
   /// Azure DNS Zone to use
   late final pulumi.Output<String?> dnsZoneId;
+
   /// Reasons why domain is not renewable.
   late final pulumi.Output<List<String>> domainNotRenewableReasons;
+
   /// Domain expiration timestamp.
   late final pulumi.Output<String> expirationTime;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
+
   /// Timestamp when the domain was renewed last time.
   late final pulumi.Output<String> lastRenewedTime;
+
   /// Resource Location.
   late final pulumi.Output<String> location;
+
   /// All hostnames derived from the domain and assigned to Azure resources.
-  late final pulumi.Output<List<HostNameResponse>> managedHostNames;
+  late final pulumi.Output<List<Map<String, dynamic>>> managedHostNames;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Name servers.
   late final pulumi.Output<List<String>> nameServers;
-  /// <code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>.
+
+  /// &lt;code&gt;true&lt;/code&gt; if domain privacy is enabled for this domain; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool?> privacy;
+
   /// Domain provisioning state.
   late final pulumi.Output<String> provisioningState;
-  /// <code>true</code> if Azure can assign this domain to App Service apps; otherwise, <code>false</code>. This value will be <code>true</code> if domain registration status is active and
+
+  /// &lt;code&gt;true&lt;/code&gt; if Azure can assign this domain to App Service apps; otherwise, &lt;code&gt;false&lt;/code&gt;. This value will be &lt;code&gt;true&lt;/code&gt; if domain registration status is active and
   /// it is hosted on name servers Azure has programmatic access to.
   late final pulumi.Output<bool> readyForDnsRecordManagement;
+
   /// Domain registration status.
   late final pulumi.Output<String> registrationStatus;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Target DNS type (would be used for migration)
   late final pulumi.Output<String?> targetDnsType;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -658,36 +677,39 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_domainregistration_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:domainregistration:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authCode = registerOutput<String?>('authCode');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.dnsType = registerOutput<String?>('dnsType');
-    this.dnsZoneId = registerOutput<String?>('dnsZoneId');
-    this.domainNotRenewableReasons = registerOutput<List<String>>('domainNotRenewableReasons');
-    this.expirationTime = registerOutput<String>('expirationTime');
-    this.kind = registerOutput<String?>('kind');
-    this.lastRenewedTime = registerOutput<String>('lastRenewedTime');
-    this.location = registerOutput<String>('location');
-    this.managedHostNames = registerOutput<List<HostNameResponse>>('managedHostNames');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:domainregistration:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    authCode = registerOutput<String?>('authCode');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTime = registerOutput<String>('createdTime');
+    dnsType = registerOutput<String?>('dnsType');
+    dnsZoneId = registerOutput<String?>('dnsZoneId');
+    domainNotRenewableReasons = registerOutput<List<String>>(
+      'domainNotRenewableReasons',
+    );
+    expirationTime = registerOutput<String>('expirationTime');
+    kind = registerOutput<String?>('kind');
+    lastRenewedTime = registerOutput<String>('lastRenewedTime');
+    location = registerOutput<String>('location');
+    managedHostNames = registerOutput<List<Map<String, dynamic>>>(
+      'managedHostNames',
+    );
     this.name = registerOutput<String>('name');
-    this.nameServers = registerOutput<List<String>>('nameServers');
-    this.privacy = registerOutput<bool?>('privacy');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.readyForDnsRecordManagement = registerOutput<bool>('readyForDnsRecordManagement');
-    this.registrationStatus = registerOutput<String>('registrationStatus');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetDnsType = registerOutput<String?>('targetDnsType');
-    this.type = registerOutput<String>('type');
+    nameServers = registerOutput<List<String>>('nameServers');
+    privacy = registerOutput<bool?>('privacy');
+    provisioningState = registerOutput<String>('provisioningState');
+    readyForDnsRecordManagement = registerOutput<bool>(
+      'readyForDnsRecordManagement',
+    );
+    registrationStatus = registerOutput<String>('registrationStatus');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetDnsType = registerOutput<String?>('targetDnsType');
+    type = registerOutput<String>('type');
   }
 }

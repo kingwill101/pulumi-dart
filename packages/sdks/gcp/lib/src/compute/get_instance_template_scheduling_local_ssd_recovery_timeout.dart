@@ -8,6 +8,7 @@ class GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
   /// with a 0 seconds field and a positive nanos field. Must
   /// be from 0 to 999,999,999 inclusive.
   final pulumi.Input<int> nanos;
+
   /// Span of time at a resolution of a second.
   /// Must be from 0 to 315,576,000,000 inclusive.
   final pulumi.Input<int> seconds;
@@ -21,17 +22,15 @@ class GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nanos': nanos,
-      'seconds': seconds,
-    };
+    return <String, dynamic>{'nanos': nanos, 'seconds': seconds};
   }
 
-  factory GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout(
-      nanos: (map['nanos'] as int).input(),
-      seconds: (map['seconds'] as int).input(),
+      nanos: pulumi.Input.fromValue(map['nanos'] as int),
+      seconds: pulumi.Input.fromValue(map['seconds'] as int),
     );
   }
 }
-

@@ -18,10 +18,13 @@ class GetKubernetesClusterMicrosoftDefender {
     };
   }
 
-  factory GetKubernetesClusterMicrosoftDefender.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesClusterMicrosoftDefender.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesClusterMicrosoftDefender(
-      logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
+      logAnalyticsWorkspaceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceId'] as String,
+      ),
     );
   }
 }
-

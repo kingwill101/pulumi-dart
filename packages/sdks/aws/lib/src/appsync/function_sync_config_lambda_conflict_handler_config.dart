@@ -18,10 +18,15 @@ class FunctionSyncConfigLambdaConflictHandlerConfig {
     };
   }
 
-  factory FunctionSyncConfigLambdaConflictHandlerConfig.fromMap(Map<String, dynamic> map) {
+  factory FunctionSyncConfigLambdaConflictHandlerConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FunctionSyncConfigLambdaConflictHandlerConfig(
-      lambdaConflictHandlerArn: map['lambdaConflictHandlerArn'] == null ? null : ((map['lambdaConflictHandlerArn'] as String).input()).input(),
+      lambdaConflictHandlerArn: (() {
+        final guardedValue = map['lambdaConflictHandlerArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

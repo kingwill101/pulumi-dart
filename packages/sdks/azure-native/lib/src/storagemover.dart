@@ -1,5 +1,3 @@
-library module_storagemover;
-
 export 'storagemover/agent.dart';
 export 'storagemover/agent_args.dart';
 export 'storagemover/agent_properties_error_details_response.dart';

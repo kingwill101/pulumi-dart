@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeTolerations {
   /// Toleration effect.
   final pulumi.Input<String> effect;
+
   /// Toleration key.
   final pulumi.Input<String> key;
+
   /// Toleration operator like 'Exists', 'Equal' etc.
   final pulumi.Input<String> operator;
+
   /// Toleration Value.
   final pulumi.Input<String> value;
 
@@ -36,11 +39,10 @@ class NodeTolerations {
 
   factory NodeTolerations.fromMap(Map<String, dynamic> map) {
     return NodeTolerations(
-      effect: (map['effect'] as String).input(),
-      key: (map['key'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      value: (map['value'] as String).input(),
+      effect: pulumi.Input.fromValue(map['effect'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

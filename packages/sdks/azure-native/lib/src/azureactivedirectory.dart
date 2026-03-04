@@ -1,5 +1,3 @@
-library module_azureactivedirectory;
-
 export 'azureactivedirectory/b2_cresource_sku.dart';
 export 'azureactivedirectory/b2_cresource_skuname.dart';
 export 'azureactivedirectory/b2_cresource_skuresponse.dart';

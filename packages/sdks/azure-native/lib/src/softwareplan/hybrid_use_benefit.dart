@@ -146,18 +146,25 @@ import 'sku_response.dart';
 class HybridUseBenefit extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Created date
   late final pulumi.Output<String> createdDate;
+
   /// Indicates the revision of the hybrid use benefit
   late final pulumi.Output<int> etag;
+
   /// Last updated date
   late final pulumi.Output<String> lastUpdatedDate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// Hybrid use benefit SKU
   late final pulumi.Output<SkuResponse> sku;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -170,18 +177,18 @@ class HybridUseBenefit extends pulumi.CustomResource {
     HybridUseBenefitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:softwareplan:HybridUseBenefit',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String>('createdDate');
-    this.etag = registerOutput<int>('etag');
-    this.lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+         'azure-native:softwareplan:HybridUseBenefit',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    etag = registerOutput<int>('etag');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku');
+    type = registerOutput<String>('type');
   }
 }

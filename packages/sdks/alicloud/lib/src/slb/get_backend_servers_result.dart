@@ -6,6 +6,7 @@ import 'get_backend_servers_backend_server.dart';
 /// Result data returned by getBackendServers.
 class GetBackendServersResult {
   final List<GetBackendServersBackendServer> backendServers;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -28,7 +29,11 @@ class GetBackendServersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendServers': pulumi.Input.encodeList<GetBackendServersBackendServer, Map<String, dynamic>>(backendServers, (value) => value.toMap()),
+      'backendServers':
+          pulumi.Input.encodeList<
+            GetBackendServersBackendServer,
+            Map<String, dynamic>
+          >(backendServers, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'loadBalancerId': loadBalancerId,
@@ -38,12 +43,20 @@ class GetBackendServersResult {
 
   factory GetBackendServersResult.fromMap(Map<String, dynamic> map) {
     return GetBackendServersResult(
-      backendServers: pulumi.Input.decodeList<GetBackendServersBackendServer>(map['backendServers'], (value) => GetBackendServersBackendServer.fromMap((value as Map).cast<String, dynamic>())),
+      backendServers: pulumi.Input.decodeList<GetBackendServersBackendServer>(
+        map['backendServers']!,
+        (value) => GetBackendServersBackendServer.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       loadBalancerId: map['loadBalancerId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

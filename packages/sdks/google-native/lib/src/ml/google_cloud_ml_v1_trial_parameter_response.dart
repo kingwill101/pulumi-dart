@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1TrialParameterResponse {
   /// Must be set if ParameterType is DOUBLE or DISCRETE.
   final pulumi.Input<double> floatValue;
+
   /// Must be set if ParameterType is INTEGER
   final pulumi.Input<String> intValue;
+
   /// The name of the parameter.
   final pulumi.Input<String> parameter;
+
   /// Must be set if ParameterTypeis CATEGORICAL
   final pulumi.Input<String> stringValue;
 
@@ -34,13 +37,14 @@ class GoogleCloudMlV1TrialParameterResponse {
     };
   }
 
-  factory GoogleCloudMlV1TrialParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1TrialParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1TrialParameterResponse(
-      floatValue: (map['floatValue'] as double).input(),
-      intValue: (map['intValue'] as String).input(),
-      parameter: (map['parameter'] as String).input(),
-      stringValue: (map['stringValue'] as String).input(),
+      floatValue: pulumi.Input.fromValue(map['floatValue'] as double),
+      intValue: pulumi.Input.fromValue(map['intValue'] as String),
+      parameter: pulumi.Input.fromValue(map['parameter'] as String),
+      stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
     );
   }
 }
-

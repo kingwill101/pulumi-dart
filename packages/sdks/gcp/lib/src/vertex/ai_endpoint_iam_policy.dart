@@ -18,16 +18,16 @@ class AiEndpointIamPolicy extends pulumi.CustomResource {
     AiEndpointIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoint = registerOutput<String>('endpoint');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+         'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [AiEndpointIamPolicy] resource's state with the given [name] and [id].
@@ -48,15 +48,15 @@ class AiEndpointIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoint = registerOutput<String>('endpoint');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
+         'gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
   }
 }

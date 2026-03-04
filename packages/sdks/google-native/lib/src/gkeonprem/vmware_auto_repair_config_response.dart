@@ -9,20 +9,15 @@ class VmwareAutoRepairConfigResponse {
 
   /// Creates a new [VmwareAutoRepairConfigResponse].
   /// [enabled] Whether auto repair is enabled.
-  VmwareAutoRepairConfigResponse({
-    required this.enabled,
-  });
+  VmwareAutoRepairConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory VmwareAutoRepairConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareAutoRepairConfigResponse(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

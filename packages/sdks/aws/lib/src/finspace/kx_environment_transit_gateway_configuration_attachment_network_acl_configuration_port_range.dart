@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange {
   /// First port in the range.
   final pulumi.Input<int> from;
+
   /// Last port in the range.
   final pulumi.Input<int> to;
 
@@ -17,17 +18,15 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationP
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'from': from,
-      'to': to,
-    };
+    return <String, dynamic>{'from': from, 'to': to};
   }
 
-  factory KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap(Map<String, dynamic> map) {
+  factory KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange(
-      from: (map['from'] as int).input(),
-      to: (map['to'] as int).input(),
+      from: pulumi.Input.fromValue(map['from'] as int),
+      to: pulumi.Input.fromValue(map['to'] as int),
     );
   }
 }
-

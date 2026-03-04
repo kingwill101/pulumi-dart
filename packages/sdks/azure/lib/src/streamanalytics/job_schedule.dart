@@ -639,7 +639,7 @@ import 'job_schedule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2021-10-01-preview
@@ -654,12 +654,15 @@ import 'job_schedule_state.dart';
 class JobSchedule extends pulumi.CustomResource {
   /// The time at which the Stream Analytics job last produced an output.
   late final pulumi.Output<String> lastOutputTime;
+
   /// The starting mode of the Stream Analytics Job. Possible values are `JobStartTime`, `CustomTime` and `LastOutputEventTime`.
   ///
-  /// > **Note:** Setting `start_mode` to `LastOutputEventTime` is only possible if the job had been previously started and produced output.
+  /// &gt; **Note:** Setting `start_mode` to `LastOutputEventTime` is only possible if the job had been previously started and produced output.
   late final pulumi.Output<String> startMode;
+
   /// The time in ISO8601 format at which the Stream Analytics Job should be started e.g. `2022-04-01T00:00:00Z`. This property can only be specified if `start_mode` is set to `CustomTime`
   late final pulumi.Output<String> startTime;
+
   /// The ID of the Stream Analytics Job that should be scheduled or started. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobId;
 
@@ -672,15 +675,15 @@ class JobSchedule extends pulumi.CustomResource {
     JobScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/jobSchedule:JobSchedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lastOutputTime = registerOutput<String>('lastOutputTime');
-    this.startMode = registerOutput<String>('startMode');
-    this.startTime = registerOutput<String>('startTime');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+         'azure:streamanalytics/jobSchedule:JobSchedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lastOutputTime = registerOutput<String>('lastOutputTime');
+    startMode = registerOutput<String>('startMode');
+    startTime = registerOutput<String>('startTime');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
 
   /// Gets an existing [JobSchedule] resource's state with the given [name] and [id].
@@ -701,14 +704,14 @@ class JobSchedule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/jobSchedule:JobSchedule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lastOutputTime = registerOutput<String>('lastOutputTime');
-    this.startMode = registerOutput<String>('startMode');
-    this.startTime = registerOutput<String>('startTime');
-    this.streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
+         'azure:streamanalytics/jobSchedule:JobSchedule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lastOutputTime = registerOutput<String>('lastOutputTime');
+    startMode = registerOutput<String>('startMode');
+    startTime = registerOutput<String>('startTime');
+    streamAnalyticsJobId = registerOutput<String>('streamAnalyticsJobId');
   }
 }

@@ -3,16 +3,22 @@ enum InstanceGroupManagerListManagedInstancesResultsComputeBeta {
   pageless("PAGELESS"),
   paginated("PAGINATED");
 
-  const InstanceGroupManagerListManagedInstancesResultsComputeBeta(this.value);
-  final String value;
+  const InstanceGroupManagerListManagedInstancesResultsComputeBeta(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static InstanceGroupManagerListManagedInstancesResultsComputeBeta fromValue(String value) {
-    for (final item in InstanceGroupManagerListManagedInstancesResultsComputeBeta.values) {
-      if (item.value == value) {
+  static InstanceGroupManagerListManagedInstancesResultsComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstanceGroupManagerListManagedInstancesResultsComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerListManagedInstancesResultsComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerListManagedInstancesResultsComputeBeta value: $value',
+    );
   }
 }
-

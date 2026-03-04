@@ -5,16 +5,15 @@ enum ScheduleRunType {
   valueWeekly("Weekly"),
   valueHourly("Hourly");
 
-  const ScheduleRunType(this.value);
-  final String value;
+  const ScheduleRunType(this.wireValue);
+  final String wireValue;
 
   static ScheduleRunType fromValue(String value) {
     for (final item in ScheduleRunType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduleRunType value: $value');
   }
 }
-

@@ -13,15 +13,18 @@ class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextSt
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interpretedValue': ?interpretedValue,
-    };
+    return <String, dynamic>{'interpretedValue': ?interpretedValue};
   }
 
-  factory V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntentSlotValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
+      interpretedValue: (() {
+        final guardedValue = map['interpretedValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

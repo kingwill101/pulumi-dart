@@ -29,12 +29,17 @@ class GetUrlListNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetUrlListNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetUrlListNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUrlListNetworksecurityV1beta1Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      urlListId: (map['urlListId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlListId: pulumi.Input.fromValue(map['urlListId'] as String),
     );
   }
 }
-

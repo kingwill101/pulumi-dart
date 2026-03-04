@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpandedPropertiesResponseScope {
   /// Display name of the resource
   final pulumi.Input<String>? displayName;
+
   /// Scope id of the resource
   final pulumi.Input<String>? id;
+
   /// Type of the resource
   final pulumi.Input<String>? type;
 
@@ -15,11 +17,7 @@ class ExpandedPropertiesResponseScope {
   /// [displayName] Display name of the resource
   /// [id] Scope id of the resource
   /// [type] Type of the resource
-  ExpandedPropertiesResponseScope({
-    this.displayName,
-    this.id,
-    this.type,
-  });
+  ExpandedPropertiesResponseScope({this.displayName, this.id, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ExpandedPropertiesResponseScope {
 
   factory ExpandedPropertiesResponseScope.fromMap(Map<String, dynamic> map) {
     return ExpandedPropertiesResponseScope(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

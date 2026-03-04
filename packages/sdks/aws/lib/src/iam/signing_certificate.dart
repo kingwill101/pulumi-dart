@@ -4,7 +4,7 @@ import 'signing_certificate_state.dart';
 
 /// Provides an IAM Signing Certificate resource to upload Signing Certificates.
 ///
-/// > **Note:** All arguments including the certificate body will be stored in the raw state as plain-text.
+/// &gt; **Note:** All arguments including the certificate body will be stored in the raw state as plain-text.
 /// ## Example Usage
 ///
 /// **Using certs on file:**
@@ -251,10 +251,13 @@ import 'signing_certificate_state.dart';
 class SigningCertificate extends pulumi.CustomResource {
   /// The contents of the signing certificate in PEM-encoded format.
   late final pulumi.Output<String> certificateBody;
+
   /// The ID for the signing certificate.
   late final pulumi.Output<String> certificateId;
+
   /// The status you want to assign to the certificate. `Active` means that the certificate can be used for programmatic calls to Amazon Web Services `Inactive` means that the certificate cannot be used.
   late final pulumi.Output<String?> status;
+
   /// The name of the user the signing certificate is for.
   late final pulumi.Output<String> userName;
 
@@ -267,15 +270,15 @@ class SigningCertificate extends pulumi.CustomResource {
     SigningCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/signingCertificate:SigningCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBody = registerOutput<String>('certificateBody');
-    this.certificateId = registerOutput<String>('certificateId');
-    this.status = registerOutput<String?>('status');
-    this.userName = registerOutput<String>('userName');
+         'aws:iam/signingCertificate:SigningCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBody = registerOutput<String>('certificateBody');
+    certificateId = registerOutput<String>('certificateId');
+    status = registerOutput<String?>('status');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [SigningCertificate] resource's state with the given [name] and [id].
@@ -296,14 +299,14 @@ class SigningCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/signingCertificate:SigningCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBody = registerOutput<String>('certificateBody');
-    this.certificateId = registerOutput<String>('certificateId');
-    this.status = registerOutput<String?>('status');
-    this.userName = registerOutput<String>('userName');
+         'aws:iam/signingCertificate:SigningCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBody = registerOutput<String>('certificateBody');
+    certificateId = registerOutput<String>('certificateId');
+    status = registerOutput<String?>('status');
+    userName = registerOutput<String>('userName');
   }
 }

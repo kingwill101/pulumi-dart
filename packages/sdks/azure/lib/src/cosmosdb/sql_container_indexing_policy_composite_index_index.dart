@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlContainerIndexingPolicyCompositeIndexIndex {
   /// Order of the index. Possible values are `Ascending` or `Descending`.
   final pulumi.Input<String> order;
+
   /// Path for which the indexing behaviour applies to.
   final pulumi.Input<String> path;
 
@@ -17,17 +18,15 @@ class SqlContainerIndexingPolicyCompositeIndexIndex {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'order': order,
-      'path': path,
-    };
+    return <String, dynamic>{'order': order, 'path': path};
   }
 
-  factory SqlContainerIndexingPolicyCompositeIndexIndex.fromMap(Map<String, dynamic> map) {
+  factory SqlContainerIndexingPolicyCompositeIndexIndex.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlContainerIndexingPolicyCompositeIndexIndex(
-      order: (map['order'] as String).input(),
-      path: (map['path'] as String).input(),
+      order: pulumi.Input.fromValue(map['order'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class AutoSnapshotAddOn {
 
   /// Creates a new [AutoSnapshotAddOn].
   /// [snapshotTimeOfDay] The daily time when an automatic snapshot will be created.
-  AutoSnapshotAddOn({
-    this.snapshotTimeOfDay,
-  });
+  AutoSnapshotAddOn({this.snapshotTimeOfDay});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'snapshotTimeOfDay': ?snapshotTimeOfDay,
-    };
+    return <String, dynamic>{'snapshotTimeOfDay': ?snapshotTimeOfDay};
   }
 
   factory AutoSnapshotAddOn.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotAddOn(
-      snapshotTimeOfDay: map['snapshotTimeOfDay'] == null ? null : (map['snapshotTimeOfDay']! as String).input(),
+      snapshotTimeOfDay: (() {
+        final guardedValue = map['snapshotTimeOfDay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

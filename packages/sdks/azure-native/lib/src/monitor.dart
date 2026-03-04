@@ -1,5 +1,3 @@
-library module_monitor;
-
 export 'monitor/access_mode.dart';
 export 'monitor/access_mode_settings.dart';
 export 'monitor/access_mode_settings_exclusion.dart';

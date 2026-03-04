@@ -5,7 +5,10 @@ import 'space_space_settings_code_editor_app_settings_app_lifecycle_management_i
 
 class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
-  final pulumi.Input<SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
+  final pulumi.Input<
+    SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings
+  >?
+  idleSettings;
 
   /// Creates a new [SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
@@ -15,14 +18,27 @@ class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idleSettings': ?pulumi.Input.mapOptionalInputValue<SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings, Map<String, dynamic>>(idleSettings, (value) => value.toMap()),
+      'idleSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings,
+            Map<String, dynamic>
+          >(idleSettings, (value) => value.toMap()),
     };
   }
 
-  factory SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
+  factory SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null ? null : ((SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      idleSettings: (() {
+        final guardedValue = map['idleSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_grid_topic_args.dart';
 import 'event_grid_topic_identity.dart';
-import 'event_grid_topic_inbound_ip_rule.dart';
 import 'event_grid_topic_input_mapping_default_values.dart';
 import 'event_grid_topic_input_mapping_fields.dart';
 import 'event_grid_topic_state.dart';
 
 /// Manages an EventGrid Topic
 ///
-/// > **Note:** at this time EventGrid Topics are only available in a limited number of regions.
+/// &gt; **Note:** at this time EventGrid Topics are only available in a limited number of regions.
 ///
 /// ## Example Usage
 ///
@@ -164,7 +163,7 @@ import 'event_grid_topic_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -179,30 +178,45 @@ import 'event_grid_topic_state.dart';
 class EventGridTopic extends pulumi.CustomResource {
   /// The Endpoint associated with the EventGrid Topic.
   late final pulumi.Output<String> endpoint;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<EventGridTopicIdentity?> identity;
+
   /// One or more `inbound_ip_rule` blocks as defined below.
-  late final pulumi.Output<List<EventGridTopicInboundIpRule>?> inboundIpRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+
   /// A `input_mapping_default_values` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<EventGridTopicInputMappingDefaultValues?> inputMappingDefaultValues;
+  late final pulumi.Output<EventGridTopicInputMappingDefaultValues?>
+  inputMappingDefaultValues;
+
   /// A `input_mapping_fields` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<EventGridTopicInputMappingFields?> inputMappingFields;
+  late final pulumi.Output<EventGridTopicInputMappingFields?>
+  inputMappingFields;
+
   /// Specifies the schema in which incoming events will be published to this domain. Allowed values are `CloudEventSchemaV1_0`, `CustomEventSchema`, or `EventGridSchema`. Defaults to `EventGridSchema`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> inputSchema;
+
   /// Whether local authentication methods is enabled for the EventGrid Topic. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the EventGrid Topic resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The Primary Shared Access Key associated with the EventGrid Topic.
   late final pulumi.Output<String> primaryAccessKey;
+
   /// Whether or not public network access is allowed for this server. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group in which the EventGrid Topic exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Secondary Shared Access Key associated with the EventGrid Topic.
   late final pulumi.Output<String> secondaryAccessKey;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -215,25 +229,34 @@ class EventGridTopic extends pulumi.CustomResource {
     EventGridTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/eventGridTopic:EventGridTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoint = registerOutput<String>('endpoint');
-    this.identity = registerOutput<EventGridTopicIdentity?>('identity');
-    this.inboundIpRules = registerOutput<List<EventGridTopicInboundIpRule>?>('inboundIpRules');
-    this.inputMappingDefaultValues = registerOutput<EventGridTopicInputMappingDefaultValues?>('inputMappingDefaultValues');
-    this.inputMappingFields = registerOutput<EventGridTopicInputMappingFields?>('inputMappingFields');
-    this.inputSchema = registerOutput<String?>('inputSchema');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:eventhub/eventGridTopic:EventGridTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<EventGridTopicIdentity?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    inputMappingDefaultValues =
+        registerOutput<EventGridTopicInputMappingDefaultValues?>(
+          'inputMappingDefaultValues',
+        );
+    inputMappingFields = registerOutput<EventGridTopicInputMappingFields?>(
+      'inputMappingFields',
+    );
+    inputSchema = registerOutput<String?>('inputSchema');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [EventGridTopic] resource's state with the given [name] and [id].
@@ -254,24 +277,33 @@ class EventGridTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/eventGridTopic:EventGridTopic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endpoint = registerOutput<String>('endpoint');
-    this.identity = registerOutput<EventGridTopicIdentity?>('identity');
-    this.inboundIpRules = registerOutput<List<EventGridTopicInboundIpRule>?>('inboundIpRules');
-    this.inputMappingDefaultValues = registerOutput<EventGridTopicInputMappingDefaultValues?>('inputMappingDefaultValues');
-    this.inputMappingFields = registerOutput<EventGridTopicInputMappingFields?>('inputMappingFields');
-    this.inputSchema = registerOutput<String?>('inputSchema');
-    this.localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:eventhub/eventGridTopic:EventGridTopic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<EventGridTopicIdentity?>('identity');
+    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>(
+      'inboundIpRules',
+    );
+    inputMappingDefaultValues =
+        registerOutput<EventGridTopicInputMappingDefaultValues?>(
+          'inputMappingDefaultValues',
+        );
+    inputMappingFields = registerOutput<EventGridTopicInputMappingFields?>(
+      'inputMappingFields',
+    );
+    inputSchema = registerOutput<String?>('inputSchema');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

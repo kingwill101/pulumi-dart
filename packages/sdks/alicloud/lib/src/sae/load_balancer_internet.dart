@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_internet_args.dart';
-import 'load_balancer_internet_internet.dart';
 import 'load_balancer_internet_state.dart';
 
 /// Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
 ///
 /// For information about Serverless App Engine (SAE) Load Balancer Internet Attachment and how to use it, see [alicloud.sae.LoadBalancerInternet](https://www.alibabacloud.com/help/en/sae/latest/bindslb).
 ///
-/// > **NOTE:** Available since v1.164.0.
+/// &gt; **NOTE:** Available since v1.164.0.
 ///
 /// ## Example Usage
 ///
@@ -569,12 +568,15 @@ import 'load_balancer_internet_state.dart';
 class LoadBalancerInternet extends pulumi.CustomResource {
   /// The target application ID that needs to be bound to the SLB.
   late final pulumi.Output<String> appId;
+
   /// Use designated public network SLBs that have been purchased to support non-shared instances.
   late final pulumi.Output<String> internetIp;
+
   /// The internet SLB ID.
   late final pulumi.Output<String?> internetSlbId;
+
   /// The bound private network SLB. See `internet` below.
-  late final pulumi.Output<List<LoadBalancerInternetInternet>> internets;
+  late final pulumi.Output<List<Map<String, dynamic>>> internets;
 
   /// Creates a new [LoadBalancerInternet].
   /// [name] The Pulumi resource name.
@@ -585,15 +587,15 @@ class LoadBalancerInternet extends pulumi.CustomResource {
     LoadBalancerInternetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.internetIp = registerOutput<String>('internetIp');
-    this.internetSlbId = registerOutput<String?>('internetSlbId');
-    this.internets = registerOutput<List<LoadBalancerInternetInternet>>('internets');
+         'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    internetIp = registerOutput<String>('internetIp');
+    internetSlbId = registerOutput<String?>('internetSlbId');
+    internets = registerOutput<List<Map<String, dynamic>>>('internets');
   }
 
   /// Gets an existing [LoadBalancerInternet] resource's state with the given [name] and [id].
@@ -614,14 +616,14 @@ class LoadBalancerInternet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.internetIp = registerOutput<String>('internetIp');
-    this.internetSlbId = registerOutput<String?>('internetSlbId');
-    this.internets = registerOutput<List<LoadBalancerInternetInternet>>('internets');
+         'alicloud:sae/loadBalancerInternet:LoadBalancerInternet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    internetIp = registerOutput<String>('internetIp');
+    internetSlbId = registerOutput<String?>('internetSlbId');
+    internets = registerOutput<List<Map<String, dynamic>>>('internets');
   }
 }

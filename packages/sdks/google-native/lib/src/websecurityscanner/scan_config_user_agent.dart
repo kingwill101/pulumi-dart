@@ -5,16 +5,15 @@ enum ScanConfigUserAgent {
   chromeAndroid("CHROME_ANDROID"),
   safariIphone("SAFARI_IPHONE");
 
-  const ScanConfigUserAgent(this.value);
-  final String value;
+  const ScanConfigUserAgent(this.wireValue);
+  final String wireValue;
 
   static ScanConfigUserAgent fromValue(String value) {
     for (final item in ScanConfigUserAgent.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScanConfigUserAgent value: $value');
   }
 }
-

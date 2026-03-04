@@ -13,12 +13,7 @@ class ApplicationService {
   /// [name] Optional.
   /// [status] Optional.
   /// [version] Optional.
-  ApplicationService({
-    this.id,
-    this.name,
-    this.status,
-    this.version,
-  });
+  ApplicationService({this.id, this.name, this.status, this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,11 +26,26 @@ class ApplicationService {
 
   factory ApplicationService.fromMap(Map<String, dynamic> map) {
     return ApplicationService(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

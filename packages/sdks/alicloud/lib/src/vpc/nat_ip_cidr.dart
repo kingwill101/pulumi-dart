@@ -6,7 +6,7 @@ import 'nat_ip_cidr_state.dart';
 ///
 /// For information about VPC Nat Ip Cidr and how to use it, see [What is Nat Ip Cidr](https://www.alibabacloud.com/help/doc-detail/281972.htm).
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///
@@ -295,14 +295,19 @@ import 'nat_ip_cidr_state.dart';
 class NatIpCidr extends pulumi.CustomResource {
   /// Specifies whether to precheck this request only. Valid values: `true` and `false`.
   late final pulumi.Output<bool> dryRun;
+
   /// The ID of the Virtual Private Cloud (VPC) NAT gateway where you want to create the NAT CIDR block.
   late final pulumi.Output<String> natGatewayId;
+
   /// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
   late final pulumi.Output<String?> natIpCidr;
+
   /// The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> natIpCidrDescription;
+
   /// The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> natIpCidrName;
+
   /// The status of the CIDR block of the NAT gateway. Valid values: `Available`.
   late final pulumi.Output<String> status;
 
@@ -315,17 +320,17 @@ class NatIpCidr extends pulumi.CustomResource {
     NatIpCidrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/natIpCidr:NatIpCidr',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool>('dryRun');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.natIpCidr = registerOutput<String?>('natIpCidr');
-    this.natIpCidrDescription = registerOutput<String?>('natIpCidrDescription');
-    this.natIpCidrName = registerOutput<String?>('natIpCidrName');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/natIpCidr:NatIpCidr',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool>('dryRun');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    natIpCidr = registerOutput<String?>('natIpCidr');
+    natIpCidrDescription = registerOutput<String?>('natIpCidrDescription');
+    natIpCidrName = registerOutput<String?>('natIpCidrName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [NatIpCidr] resource's state with the given [name] and [id].
@@ -346,16 +351,16 @@ class NatIpCidr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/natIpCidr:NatIpCidr',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool>('dryRun');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.natIpCidr = registerOutput<String?>('natIpCidr');
-    this.natIpCidrDescription = registerOutput<String?>('natIpCidrDescription');
-    this.natIpCidrName = registerOutput<String?>('natIpCidrName');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/natIpCidr:NatIpCidr',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool>('dryRun');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    natIpCidr = registerOutput<String?>('natIpCidr');
+    natIpCidrDescription = registerOutput<String?>('natIpCidrDescription');
+    natIpCidrName = registerOutput<String?>('natIpCidrName');
+    status = registerOutput<String>('status');
   }
 }

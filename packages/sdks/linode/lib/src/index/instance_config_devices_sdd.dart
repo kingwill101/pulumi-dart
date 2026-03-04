@@ -5,29 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceConfigDevicesSdd {
   /// The Disk ID to map to this disk slot
   final pulumi.Input<int>? diskId;
+
   /// The Block Storage volume ID to map to this disk slot
   final pulumi.Input<int>? volumeId;
 
   /// Creates a new [InstanceConfigDevicesSdd].
   /// [diskId] The Disk ID to map to this disk slot
   /// [volumeId] The Block Storage volume ID to map to this disk slot
-  InstanceConfigDevicesSdd({
-    this.diskId,
-    this.volumeId,
-  });
+  InstanceConfigDevicesSdd({this.diskId, this.volumeId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskId': ?diskId,
-      'volumeId': ?volumeId,
-    };
+    return <String, dynamic>{'diskId': ?diskId, 'volumeId': ?volumeId};
   }
 
   factory InstanceConfigDevicesSdd.fromMap(Map<String, dynamic> map) {
     return InstanceConfigDevicesSdd(
-      diskId: map['diskId'] == null ? null : (map['diskId']! as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as int).input(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeId: (() {
+        final guardedValue = map['volumeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

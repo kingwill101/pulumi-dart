@@ -7,20 +7,17 @@ class GetVirtualServiceSpecProviderVirtualNode {
 
   /// Creates a new [GetVirtualServiceSpecProviderVirtualNode].
   /// [virtualNodeName] Required.
-  GetVirtualServiceSpecProviderVirtualNode({
-    required this.virtualNodeName,
-  });
+  GetVirtualServiceSpecProviderVirtualNode({required this.virtualNodeName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'virtualNodeName': virtualNodeName,
-    };
+    return <String, dynamic>{'virtualNodeName': virtualNodeName};
   }
 
-  factory GetVirtualServiceSpecProviderVirtualNode.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualServiceSpecProviderVirtualNode.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualServiceSpecProviderVirtualNode(
-      virtualNodeName: (map['virtualNodeName'] as String).input(),
+      virtualNodeName: pulumi.Input.fromValue(map['virtualNodeName'] as String),
     );
   }
 }
-

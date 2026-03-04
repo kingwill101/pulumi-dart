@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorGroupInstancesInstance {
   /// The category of instance.
   final pulumi.Input<String> category;
+
   /// The id of instance.
   final pulumi.Input<String> instanceId;
+
   /// The name of instance.
   final pulumi.Input<String> instanceName;
+
   /// The region id of instance.
   final pulumi.Input<String> regionId;
 
@@ -35,11 +38,10 @@ class MonitorGroupInstancesInstance {
 
   factory MonitorGroupInstancesInstance.fromMap(Map<String, dynamic> map) {
     return MonitorGroupInstancesInstance(
-      category: (map['category'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

@@ -8,12 +8,15 @@ class DbSystemPropertiesDbHome {
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
   /// Structure is documented below.
   final pulumi.Input<DbSystemPropertiesDbHomeDatabase> database;
+
   /// A valid Oracle Database version. For a list of supported versions, use the
   /// ListDbVersions operation.
   final pulumi.Input<String> dbVersion;
+
   /// The display name for the Database Home. The name does not have to
   /// be unique within your project.
   final pulumi.Input<String>? displayName;
+
   /// Whether unified auditing is enabled for the Database Home.
   final pulumi.Input<bool>? isUnifiedAuditingEnabled;
 
@@ -31,7 +34,11 @@ class DbSystemPropertiesDbHome {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'database': pulumi.Input.mapInputValue<DbSystemPropertiesDbHomeDatabase, Map<String, dynamic>>(database, (value) => value.toMap()),
+      'database':
+          pulumi.Input.mapInputValue<
+            DbSystemPropertiesDbHomeDatabase,
+            Map<String, dynamic>
+          >(database, (value) => value.toMap()),
       'dbVersion': dbVersion,
       'displayName': ?displayName,
       'isUnifiedAuditingEnabled': ?isUnifiedAuditingEnabled,
@@ -40,11 +47,22 @@ class DbSystemPropertiesDbHome {
 
   factory DbSystemPropertiesDbHome.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHome(
-      database: (DbSystemPropertiesDbHomeDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
-      dbVersion: (map['dbVersion'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      isUnifiedAuditingEnabled: map['isUnifiedAuditingEnabled'] == null ? null : (map['isUnifiedAuditingEnabled']! as bool).input(),
+      database: pulumi.Input.fromValue(
+        DbSystemPropertiesDbHomeDatabase.fromMap(
+          (map['database']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dbVersion: pulumi.Input.fromValue(map['dbVersion'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isUnifiedAuditingEnabled: (() {
+        final guardedValue = map['isUnifiedAuditingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

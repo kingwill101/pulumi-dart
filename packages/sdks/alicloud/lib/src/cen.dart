@@ -1,5 +1,3 @@
-library module_cen;
-
 export 'cen/bandwidth_limit.dart';
 export 'cen/bandwidth_limit_args.dart';
 export 'cen/bandwidth_limit_state.dart';

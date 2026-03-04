@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedPrivateEndpointState {
   /// The ID of the Data Factory on which to create the Managed Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? dataFactoryId;
+
   /// Fully qualified domain names. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Possible values are listed in [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
+  /// &gt; **Note:** Possible values are listed in [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
   final pulumi.Input<List<String>>? fqdns;
+
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the sub resource name which the Data Factory Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subresourceName;
+
   /// The ID of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? targetResourceId;
 
@@ -43,12 +47,31 @@ class ManagedPrivateEndpointState {
 
   factory ManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointState(
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      dataFactoryId: (() {
+        final guardedValue = map['dataFactoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fqdns: (() {
+        final guardedValue = map['fqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subresourceName: (() {
+        final guardedValue = map['subresourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceId: (() {
+        final guardedValue = map['targetResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

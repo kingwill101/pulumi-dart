@@ -7,10 +7,14 @@ import 'google_cloud_integrations_v1alpha_event_parameter_response.dart';
 class GoogleCloudIntegrationsV1alphaAssertionResponse {
   /// The type of assertion to perform.
   final pulumi.Input<String> assertionStrategy;
+
   /// Optional. Standard filter expression for ASSERT_CONDITION to succeed
   final pulumi.Input<String> condition;
+
   /// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaEventParameterResponse> parameter;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaEventParameterResponse>
+  parameter;
+
   /// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
   final pulumi.Input<int> retryCount;
 
@@ -30,18 +34,29 @@ class GoogleCloudIntegrationsV1alphaAssertionResponse {
     return <String, dynamic>{
       'assertionStrategy': assertionStrategy,
       'condition': condition,
-      'parameter': pulumi.Input.mapInputValue<GoogleCloudIntegrationsV1alphaEventParameterResponse, Map<String, dynamic>>(parameter, (value) => value.toMap()),
+      'parameter':
+          pulumi.Input.mapInputValue<
+            GoogleCloudIntegrationsV1alphaEventParameterResponse,
+            Map<String, dynamic>
+          >(parameter, (value) => value.toMap()),
       'retryCount': retryCount,
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaAssertionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaAssertionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaAssertionResponse(
-      assertionStrategy: (map['assertionStrategy'] as String).input(),
-      condition: (map['condition'] as String).input(),
-      parameter: (GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap((map['parameter'] as Map).cast<String, dynamic>())).input(),
-      retryCount: (map['retryCount'] as int).input(),
+      assertionStrategy: pulumi.Input.fromValue(
+        map['assertionStrategy'] as String,
+      ),
+      condition: pulumi.Input.fromValue(map['condition'] as String),
+      parameter: pulumi.Input.fromValue(
+        GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap(
+          (map['parameter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class PacketMirroringMirroredResourceInfoSubnetInfoComputeV1 {
 
   /// Creates a new [PacketMirroringMirroredResourceInfoSubnetInfoComputeV1].
   /// [url] Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
-  PacketMirroringMirroredResourceInfoSubnetInfoComputeV1({
-    this.url,
-  });
+  PacketMirroringMirroredResourceInfoSubnetInfoComputeV1({this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': ?url,
-    };
+    return <String, dynamic>{'url': ?url};
   }
 
-  factory PacketMirroringMirroredResourceInfoSubnetInfoComputeV1.fromMap(Map<String, dynamic> map) {
+  factory PacketMirroringMirroredResourceInfoSubnetInfoComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PacketMirroringMirroredResourceInfoSubnetInfoComputeV1(
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SettingsParameterDescriptionResponse {
   /// The parameter name of fabric setting.
   final pulumi.Input<String> name;
+
   /// The parameter value of fabric setting.
   final pulumi.Input<String> value;
 
@@ -18,17 +19,15 @@ class SettingsParameterDescriptionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory SettingsParameterDescriptionResponse.fromMap(Map<String, dynamic> map) {
+  factory SettingsParameterDescriptionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SettingsParameterDescriptionResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -6,18 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngestionState {
   /// ARN of the Ingestion.
   final pulumi.Input<String>? arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// ID of the dataset used in the ingestion.
   final pulumi.Input<String>? dataSetId;
+
   /// ID for the ingestion.
   final pulumi.Input<String>? ingestionId;
+
   /// Ingestion status.
   final pulumi.Input<String>? ingestionStatus;
+
   /// Type of ingestion to be created. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? ingestionType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -53,14 +59,41 @@ class IngestionState {
 
   factory IngestionState.fromMap(Map<String, dynamic> map) {
     return IngestionState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
-      dataSetId: map['dataSetId'] == null ? null : ((map['dataSetId'] as String).input()).input(),
-      ingestionId: map['ingestionId'] == null ? null : ((map['ingestionId'] as String).input()).input(),
-      ingestionStatus: map['ingestionStatus'] == null ? null : ((map['ingestionStatus'] as String).input()).input(),
-      ingestionType: map['ingestionType'] == null ? null : ((map['ingestionType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSetId: (() {
+        final guardedValue = map['dataSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingestionId: (() {
+        final guardedValue = map['ingestionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingestionStatus: (() {
+        final guardedValue = map['ingestionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ingestionType: (() {
+        final guardedValue = map['ingestionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

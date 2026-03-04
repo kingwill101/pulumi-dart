@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipeSourceParametersManagedStreamingKafkaParametersCredentials {
   /// The ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String>? clientCertificateTlsAuth;
+
   /// The ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String>? saslScram512Auth;
 
@@ -23,11 +24,20 @@ class PipeSourceParametersManagedStreamingKafkaParametersCredentials {
     };
   }
 
-  factory PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap(Map<String, dynamic> map) {
+  factory PipeSourceParametersManagedStreamingKafkaParametersCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeSourceParametersManagedStreamingKafkaParametersCredentials(
-      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null ? null : ((map['clientCertificateTlsAuth'] as String).input()).input(),
-      saslScram512Auth: map['saslScram512Auth'] == null ? null : ((map['saslScram512Auth'] as String).input()).input(),
+      clientCertificateTlsAuth: (() {
+        final guardedValue = map['clientCertificateTlsAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      saslScram512Auth: (() {
+        final guardedValue = map['saslScram512Auth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

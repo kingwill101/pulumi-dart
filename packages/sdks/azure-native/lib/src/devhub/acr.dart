@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ACR {
   /// ACR registry
   final pulumi.Input<String>? acrRegistryName;
+
   /// ACR repository
   final pulumi.Input<String>? acrRepositoryName;
+
   /// ACR resource group
   final pulumi.Input<String>? acrResourceGroup;
+
   /// ACR subscription id
   final pulumi.Input<String>? acrSubscriptionId;
 
@@ -36,11 +39,26 @@ class ACR {
 
   factory ACR.fromMap(Map<String, dynamic> map) {
     return ACR(
-      acrRegistryName: map['acrRegistryName'] == null ? null : (map['acrRegistryName']! as String).input(),
-      acrRepositoryName: map['acrRepositoryName'] == null ? null : (map['acrRepositoryName']! as String).input(),
-      acrResourceGroup: map['acrResourceGroup'] == null ? null : (map['acrResourceGroup']! as String).input(),
-      acrSubscriptionId: map['acrSubscriptionId'] == null ? null : (map['acrSubscriptionId']! as String).input(),
+      acrRegistryName: (() {
+        final guardedValue = map['acrRegistryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acrRepositoryName: (() {
+        final guardedValue = map['acrRepositoryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acrResourceGroup: (() {
+        final guardedValue = map['acrResourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acrSubscriptionId: (() {
+        final guardedValue = map['acrSubscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

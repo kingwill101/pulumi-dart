@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrefixListGlobalRulestackArgs {
   /// comment for this object
   final pulumi.Input<String>? auditComment;
+
   /// prefix description
   final pulumi.Input<String>? description;
+
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
+
   /// Local Rule priority
   final pulumi.Input<String>? name;
+
   /// prefix list
   final pulumi.Input<List<String>> prefixList;
 
@@ -44,12 +48,27 @@ class PrefixListGlobalRulestackArgs {
 
   factory PrefixListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return PrefixListGlobalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      globalRulestackName: (map['globalRulestackName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      prefixList: ((map['prefixList'] as List).cast<String>()).input(),
+      auditComment: (() {
+        final guardedValue = map['auditComment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalRulestackName: pulumi.Input.fromValue(
+        map['globalRulestackName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefixList: pulumi.Input.fromValue(
+        (map['prefixList'] as List).cast<String>(),
+      ),
     );
   }
 }
-

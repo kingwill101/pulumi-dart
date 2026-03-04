@@ -8,20 +8,17 @@ class GetResourceTypesTypeHandlersDelete {
 
   /// Creates a new [GetResourceTypesTypeHandlersDelete].
   /// [permissions] The collection of required RAM permission information.
-  GetResourceTypesTypeHandlersDelete({
-    required this.permissions,
-  });
+  GetResourceTypesTypeHandlersDelete({required this.permissions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'permissions': permissions,
-    };
+    return <String, dynamic>{'permissions': permissions};
   }
 
   factory GetResourceTypesTypeHandlersDelete.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesTypeHandlersDelete(
-      permissions: ((map['permissions'] as List).cast<String>()).input(),
+      permissions: pulumi.Input.fromValue(
+        (map['permissions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

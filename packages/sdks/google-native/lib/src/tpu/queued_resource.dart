@@ -10,26 +10,36 @@ import 'tpu_response.dart';
 class QueuedResource extends pulumi.CustomResource {
   /// The BestEffort tier.
   late final pulumi.Output<Map<String, dynamic>> bestEffort;
+
   /// The time when the QueuedResource was created.
   late final pulumi.Output<String> createTime;
+
   /// The Guaranteed tier.
   late final pulumi.Output<GuaranteedResponse> guaranteed;
   late final pulumi.Output<String> location;
+
   /// Immutable. The name of the QueuedResource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
   late final pulumi.Output<String?> queuedResourceId;
+
   /// The queueing policy of the QueuedRequest.
   late final pulumi.Output<QueueingPolicyResponse> queueingPolicy;
+
   /// Idempotent request UUID.
   late final pulumi.Output<String?> requestId;
+
   /// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
   late final pulumi.Output<String> reservationName;
+
   /// Optional. The Spot tier.
   late final pulumi.Output<Map<String, dynamic>> spot;
+
   /// State of the QueuedResource request.
   late final pulumi.Output<QueuedResourceStateResponse> state;
+
   /// Defines a TPU resource.
   late final pulumi.Output<TpuResponse> tpu;
 
@@ -42,23 +52,23 @@ class QueuedResource extends pulumi.CustomResource {
     QueuedResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:tpu/v2alpha1:QueuedResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bestEffort = registerOutput<Map<String, dynamic>>('bestEffort');
-    this.createTime = registerOutput<String>('createTime');
-    this.guaranteed = registerOutput<GuaranteedResponse>('guaranteed');
-    this.location = registerOutput<String>('location');
+         'google-native:tpu/v2alpha1:QueuedResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bestEffort = registerOutput<Map<String, dynamic>>('bestEffort');
+    createTime = registerOutput<String>('createTime');
+    guaranteed = registerOutput<GuaranteedResponse>('guaranteed');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.queuedResourceId = registerOutput<String?>('queuedResourceId');
-    this.queueingPolicy = registerOutput<QueueingPolicyResponse>('queueingPolicy');
-    this.requestId = registerOutput<String?>('requestId');
-    this.reservationName = registerOutput<String>('reservationName');
-    this.spot = registerOutput<Map<String, dynamic>>('spot');
-    this.state = registerOutput<QueuedResourceStateResponse>('state');
-    this.tpu = registerOutput<TpuResponse>('tpu');
+    project = registerOutput<String>('project');
+    queuedResourceId = registerOutput<String?>('queuedResourceId');
+    queueingPolicy = registerOutput<QueueingPolicyResponse>('queueingPolicy');
+    requestId = registerOutput<String?>('requestId');
+    reservationName = registerOutput<String>('reservationName');
+    spot = registerOutput<Map<String, dynamic>>('spot');
+    state = registerOutput<QueuedResourceStateResponse>('state');
+    tpu = registerOutput<TpuResponse>('tpu');
   }
 }

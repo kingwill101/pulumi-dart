@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareVCenterConfigResponse {
   /// The vCenter IP address.
   final pulumi.Input<String> address;
+
   /// Contains the vCenter CA certificate public key for SSL verification.
   final pulumi.Input<String> caCertData;
+
   /// The name of the vCenter cluster for the user cluster.
   final pulumi.Input<String> cluster;
+
   /// The name of the vCenter datacenter for the user cluster.
   final pulumi.Input<String> datacenter;
+
   /// The name of the vCenter datastore for the user cluster.
   final pulumi.Input<String> datastore;
+
   /// The name of the vCenter folder for the user cluster.
   final pulumi.Input<String> folder;
+
   /// The name of the vCenter resource pool for the user cluster.
   final pulumi.Input<String> resourcePool;
+
   /// The name of the vCenter storage policy for the user cluster.
   final pulumi.Input<String> storagePolicyName;
 
@@ -56,15 +63,16 @@ class VmwareVCenterConfigResponse {
 
   factory VmwareVCenterConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareVCenterConfigResponse(
-      address: (map['address'] as String).input(),
-      caCertData: (map['caCertData'] as String).input(),
-      cluster: (map['cluster'] as String).input(),
-      datacenter: (map['datacenter'] as String).input(),
-      datastore: (map['datastore'] as String).input(),
-      folder: (map['folder'] as String).input(),
-      resourcePool: (map['resourcePool'] as String).input(),
-      storagePolicyName: (map['storagePolicyName'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      caCertData: pulumi.Input.fromValue(map['caCertData'] as String),
+      cluster: pulumi.Input.fromValue(map['cluster'] as String),
+      datacenter: pulumi.Input.fromValue(map['datacenter'] as String),
+      datastore: pulumi.Input.fromValue(map['datastore'] as String),
+      folder: pulumi.Input.fromValue(map['folder'] as String),
+      resourcePool: pulumi.Input.fromValue(map['resourcePool'] as String),
+      storagePolicyName: pulumi.Input.fromValue(
+        map['storagePolicyName'] as String,
+      ),
     );
   }
 }
-

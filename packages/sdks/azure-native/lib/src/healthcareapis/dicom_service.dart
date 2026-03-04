@@ -3,7 +3,6 @@ import 'cors_configuration_response.dart';
 import 'dicom_service_args.dart';
 import 'dicom_service_authentication_configuration_response.dart';
 import 'encryption_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'service_managed_identity_response_identity.dart';
 import 'storage_configuration_response.dart';
 import 'system_data_response.dart';
@@ -177,39 +176,58 @@ import 'system_data_response.dart';
 /// ```
 class DicomService extends pulumi.CustomResource {
   /// Dicom Service authentication configuration.
-  late final pulumi.Output<DicomServiceAuthenticationConfigurationResponse?> authenticationConfiguration;
+  late final pulumi.Output<DicomServiceAuthenticationConfigurationResponse?>
+  authenticationConfiguration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Dicom Service Cors configuration.
   late final pulumi.Output<CorsConfigurationResponse?> corsConfiguration;
+
   /// If data partitions is enabled or not.
   late final pulumi.Output<bool?> enableDataPartitions;
+
   /// The encryption settings of the DICOM service
   late final pulumi.Output<EncryptionResponse?> encryption;
+
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   late final pulumi.Output<String?> etag;
+
   /// DICOM Service event support status.
   late final pulumi.Output<String> eventState;
+
   /// Setting indicating whether the service has a managed identity associated with it.
   late final pulumi.Output<ServiceManagedIdentityResponseIdentity?> identity;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The list of private endpoint connections that are set up for this resource.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
   late final pulumi.Output<String> publicNetworkAccess;
+
   /// The url of the Dicom Services.
   late final pulumi.Output<String> serviceUrl;
+
   /// The configuration of external storage account
   late final pulumi.Output<StorageConfigurationResponse?> storageConfiguration;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -222,28 +240,39 @@ class DicomService extends pulumi.CustomResource {
     DicomServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:healthcareapis:DicomService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationConfiguration = registerOutput<DicomServiceAuthenticationConfigurationResponse?>('authenticationConfiguration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.corsConfiguration = registerOutput<CorsConfigurationResponse?>('corsConfiguration');
-    this.enableDataPartitions = registerOutput<bool?>('enableDataPartitions');
-    this.encryption = registerOutput<EncryptionResponse?>('encryption');
-    this.etag = registerOutput<String?>('etag');
-    this.eventState = registerOutput<String>('eventState');
-    this.identity = registerOutput<ServiceManagedIdentityResponseIdentity?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:healthcareapis:DicomService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationConfiguration =
+        registerOutput<DicomServiceAuthenticationConfigurationResponse?>(
+          'authenticationConfiguration',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    corsConfiguration = registerOutput<CorsConfigurationResponse?>(
+      'corsConfiguration',
+    );
+    enableDataPartitions = registerOutput<bool?>('enableDataPartitions');
+    encryption = registerOutput<EncryptionResponse?>('encryption');
+    etag = registerOutput<String?>('etag');
+    eventState = registerOutput<String>('eventState');
+    identity = registerOutput<ServiceManagedIdentityResponseIdentity?>(
+      'identity',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
-    this.serviceUrl = registerOutput<String>('serviceUrl');
-    this.storageConfiguration = registerOutput<StorageConfigurationResponse?>('storageConfiguration');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String>('publicNetworkAccess');
+    serviceUrl = registerOutput<String>('serviceUrl');
+    storageConfiguration = registerOutput<StorageConfigurationResponse?>(
+      'storageConfiguration',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

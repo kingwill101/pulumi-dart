@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainRuleBasedMatchingConflictResolution {
   /// How the auto-merging process should resolve conflicts between different profiles. Valid values are `RECENCY` and `SOURCE`
   final pulumi.Input<String> conflictResolvingModel;
+
   /// The `ObjectType` name that is used to resolve profile merging conflicts when choosing `SOURCE` as the `ConflictResolvingModel`.
   final pulumi.Input<String>? sourceName;
 
@@ -23,11 +24,18 @@ class DomainRuleBasedMatchingConflictResolution {
     };
   }
 
-  factory DomainRuleBasedMatchingConflictResolution.fromMap(Map<String, dynamic> map) {
+  factory DomainRuleBasedMatchingConflictResolution.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainRuleBasedMatchingConflictResolution(
-      conflictResolvingModel: (map['conflictResolvingModel'] as String).input(),
-      sourceName: map['sourceName'] == null ? null : ((map['sourceName'] as String).input()).input(),
+      conflictResolvingModel: pulumi.Input.fromValue(
+        map['conflictResolvingModel'] as String,
+      ),
+      sourceName: (() {
+        final guardedValue = map['sourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

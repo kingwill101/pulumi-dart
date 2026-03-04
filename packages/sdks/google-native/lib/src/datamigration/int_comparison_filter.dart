@@ -7,29 +7,34 @@ import 'int_comparison_filter_value_comparison.dart';
 class IntComparisonFilter {
   /// Integer compare value to be used
   final pulumi.Input<String> value;
+
   /// Relation between source value and compare value
   final pulumi.Input<IntComparisonFilterValueComparison> valueComparison;
 
   /// Creates a new [IntComparisonFilter].
   /// [value] Integer compare value to be used
   /// [valueComparison] Relation between source value and compare value
-  IntComparisonFilter({
-    required this.value,
-    required this.valueComparison,
-  });
+  IntComparisonFilter({required this.value, required this.valueComparison});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'value': value,
-      'valueComparison': pulumi.Input.mapInputValue<IntComparisonFilterValueComparison, String>(valueComparison, (value) => value.value),
+      'valueComparison':
+          pulumi.Input.mapInputValue<
+            IntComparisonFilterValueComparison,
+            String
+          >(valueComparison, (value) => value.wireValue),
     };
   }
 
   factory IntComparisonFilter.fromMap(Map<String, dynamic> map) {
     return IntComparisonFilter(
-      value: (map['value'] as String).input(),
-      valueComparison: (IntComparisonFilterValueComparison.fromValue(map['valueComparison'] as String)).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
+      valueComparison: pulumi.Input.fromValue(
+        IntComparisonFilterValueComparison.fromValue(
+          map['valueComparison']! as String,
+        ),
+      ),
     );
   }
 }
-

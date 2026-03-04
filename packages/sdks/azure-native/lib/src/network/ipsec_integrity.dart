@@ -7,16 +7,15 @@ enum IpsecIntegrity {
   valueGCMAES192("GCMAES192"),
   valueGCMAES256("GCMAES256");
 
-  const IpsecIntegrity(this.value);
-  final String value;
+  const IpsecIntegrity(this.wireValue);
+  final String wireValue;
 
   static IpsecIntegrity fromValue(String value) {
     for (final item in IpsecIntegrity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpsecIntegrity value: $value');
   }
 }
-

@@ -13,15 +13,14 @@ class GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-    };
+    return <String, dynamic>{'path': path};
   }
 
-  factory GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride.fromMap(Map<String, dynamic> map) {
+  factory GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSecurityGatewayServiceDiscoveryApiGatewayResourceOverride(
-      path: (map['path'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

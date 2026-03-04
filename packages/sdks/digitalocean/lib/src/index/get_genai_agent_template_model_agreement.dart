@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiAgentTemplateModelAgreement {
   /// Description of the agreement
   final pulumi.Input<String>? description;
+
   /// Name of the agreement
   final pulumi.Input<String>? name;
+
   /// URL of the agreement
   final pulumi.Input<String>? url;
+
   /// UUID of the agreement
   final pulumi.Input<String>? uuid;
 
@@ -33,13 +36,30 @@ class GetGenaiAgentTemplateModelAgreement {
     };
   }
 
-  factory GetGenaiAgentTemplateModelAgreement.fromMap(Map<String, dynamic> map) {
+  factory GetGenaiAgentTemplateModelAgreement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGenaiAgentTemplateModelAgreement(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

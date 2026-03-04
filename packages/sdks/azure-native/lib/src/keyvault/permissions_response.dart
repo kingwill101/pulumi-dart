@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PermissionsResponse {
   /// Permissions to certificates
   final pulumi.Input<List<String>>? certificates;
+
   /// Permissions to keys
   final pulumi.Input<List<String>>? keys;
+
   /// Permissions to secrets
   final pulumi.Input<List<String>>? secrets;
+
   /// Permissions to storage accounts
   final pulumi.Input<List<String>>? storage;
 
@@ -36,11 +39,26 @@ class PermissionsResponse {
 
   factory PermissionsResponse.fromMap(Map<String, dynamic> map) {
     return PermissionsResponse(
-      certificates: map['certificates'] == null ? null : ((map['certificates']! as List).cast<String>()).input(),
-      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
-      secrets: map['secrets'] == null ? null : ((map['secrets']! as List).cast<String>()).input(),
-      storage: map['storage'] == null ? null : ((map['storage']! as List).cast<String>()).input(),
+      certificates: (() {
+        final guardedValue = map['certificates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      keys: (() {
+        final guardedValue = map['keys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      secrets: (() {
+        final guardedValue = map['secrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      storage: (() {
+        final guardedValue = map['storage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

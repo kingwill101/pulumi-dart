@@ -6,12 +6,16 @@ import 'device_device.dart';
 /// Input properties used for looking up and filtering Device resources.
 class DeviceState {
   final pulumi.Input<String>? agentVersion;
+
   /// The Amazon Resource Name (ARN) assigned by AWS to this Device.
   final pulumi.Input<String>? arn;
+
   /// The device to register with SageMaker AI Edge Manager. See Device details below.
   final pulumi.Input<DeviceDevice>? device;
+
   /// The name of the Device Fleet.
   final pulumi.Input<String>? deviceFleetName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -33,7 +37,11 @@ class DeviceState {
     return <String, dynamic>{
       'agentVersion': ?agentVersion,
       'arn': ?arn,
-      'device': ?pulumi.Input.mapOptionalInputValue<DeviceDevice, Map<String, dynamic>>(device, (value) => value.toMap()),
+      'device':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeviceDevice,
+            Map<String, dynamic>
+          >(device, (value) => value.toMap()),
       'deviceFleetName': ?deviceFleetName,
       'region': ?region,
     };
@@ -41,12 +49,33 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      agentVersion: map['agentVersion'] == null ? null : ((map['agentVersion'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      device: map['device'] == null ? null : ((DeviceDevice.fromMap((map['device']! as Map).cast<String, dynamic>())).input()).input(),
-      deviceFleetName: map['deviceFleetName'] == null ? null : ((map['deviceFleetName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      agentVersion: (() {
+        final guardedValue = map['agentVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      device: (() {
+        final guardedValue = map['device'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeviceDevice.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      deviceFleetName: (() {
+        final guardedValue = map['deviceFleetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

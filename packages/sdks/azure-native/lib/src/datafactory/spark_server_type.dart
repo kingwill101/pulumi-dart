@@ -4,16 +4,15 @@ enum SparkServerType {
   valueSharkServer2("SharkServer2"),
   valueSparkThriftServer("SparkThriftServer");
 
-  const SparkServerType(this.value);
-  final String value;
+  const SparkServerType(this.wireValue);
+  final String wireValue;
 
   static SparkServerType fromValue(String value) {
     for (final item in SparkServerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SparkServerType value: $value');
   }
 }
-

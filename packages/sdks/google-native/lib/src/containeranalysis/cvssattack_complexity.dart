@@ -4,16 +4,15 @@ enum CVSSAttackComplexity {
   attackComplexityHigh("ATTACK_COMPLEXITY_HIGH"),
   attackComplexityMedium("ATTACK_COMPLEXITY_MEDIUM");
 
-  const CVSSAttackComplexity(this.value);
-  final String value;
+  const CVSSAttackComplexity(this.wireValue);
+  final String wireValue;
 
   static CVSSAttackComplexity fromValue(String value) {
     for (final item in CVSSAttackComplexity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSAttackComplexity value: $value');
   }
 }
-

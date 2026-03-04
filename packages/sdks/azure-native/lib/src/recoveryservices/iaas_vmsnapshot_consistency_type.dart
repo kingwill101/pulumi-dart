@@ -1,16 +1,15 @@
 enum IaasVMSnapshotConsistencyType {
   valueOnlyCrashConsistent("OnlyCrashConsistent");
 
-  const IaasVMSnapshotConsistencyType(this.value);
-  final String value;
+  const IaasVMSnapshotConsistencyType(this.wireValue);
+  final String wireValue;
 
   static IaasVMSnapshotConsistencyType fromValue(String value) {
     for (final item in IaasVMSnapshotConsistencyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IaasVMSnapshotConsistencyType value: $value');
   }
 }
-

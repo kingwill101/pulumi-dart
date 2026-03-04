@@ -31,10 +31,13 @@ class GetClusterRedisV1beta1Args {
 
   factory GetClusterRedisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetClusterRedisV1beta1Args(
-      clusterId: (map['clusterId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

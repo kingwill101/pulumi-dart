@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTriggerBitbucketServerTriggerConfigPush {
   /// Regex of branches to match.  Specify only one of branch or tag.
   final pulumi.Input<String> branch;
+
   /// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
   final pulumi.Input<bool> invertRegex;
+
   /// Regex of tags to match.  Specify only one of branch or tag.
   final pulumi.Input<String> tag;
 
@@ -28,12 +30,13 @@ class GetTriggerBitbucketServerTriggerConfigPush {
     };
   }
 
-  factory GetTriggerBitbucketServerTriggerConfigPush.fromMap(Map<String, dynamic> map) {
+  factory GetTriggerBitbucketServerTriggerConfigPush.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTriggerBitbucketServerTriggerConfigPush(
-      branch: (map['branch'] as String).input(),
-      invertRegex: (map['invertRegex'] as bool).input(),
-      tag: (map['tag'] as String).input(),
+      branch: pulumi.Input.fromValue(map['branch'] as String),
+      invertRegex: pulumi.Input.fromValue(map['invertRegex'] as bool),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
     );
   }
 }
-

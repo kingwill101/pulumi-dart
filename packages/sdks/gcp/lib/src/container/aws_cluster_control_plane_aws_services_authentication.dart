@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsClusterControlPlaneAwsServicesAuthentication {
   /// The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
   final pulumi.Input<String> roleArn;
+
   /// Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
   final pulumi.Input<String>? roleSessionName;
 
@@ -23,11 +24,16 @@ class AwsClusterControlPlaneAwsServicesAuthentication {
     };
   }
 
-  factory AwsClusterControlPlaneAwsServicesAuthentication.fromMap(Map<String, dynamic> map) {
+  factory AwsClusterControlPlaneAwsServicesAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsClusterControlPlaneAwsServicesAuthentication(
-      roleArn: (map['roleArn'] as String).input(),
-      roleSessionName: map['roleSessionName'] == null ? null : (map['roleSessionName']! as String).input(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      roleSessionName: (() {
+        final guardedValue = map['roleSessionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

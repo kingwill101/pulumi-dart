@@ -8,29 +8,43 @@ import 'key_vault_meta_info.dart';
 class EncryptionConfig {
   /// The Key Vault information for connecting to user managed encryption keys.
   final pulumi.Input<KeyVaultMetaInfo>? keyVaultMetaInfo;
+
   /// The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
   final pulumi.Input<EncryptionConfigType> type;
 
   /// Creates a new [EncryptionConfig].
   /// [keyVaultMetaInfo] The Key Vault information for connecting to user managed encryption keys.
   /// [type] The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
-  EncryptionConfig({
-    this.keyVaultMetaInfo,
-    required this.type,
-  });
+  EncryptionConfig({this.keyVaultMetaInfo, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyVaultMetaInfo': ?pulumi.Input.mapOptionalInputValue<KeyVaultMetaInfo, Map<String, dynamic>>(keyVaultMetaInfo, (value) => value.toMap()),
-      'type': pulumi.Input.mapInputValue<EncryptionConfigType, String>(type, (value) => value.value),
+      'keyVaultMetaInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultMetaInfo,
+            Map<String, dynamic>
+          >(keyVaultMetaInfo, (value) => value.toMap()),
+      'type': pulumi.Input.mapInputValue<EncryptionConfigType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      keyVaultMetaInfo: map['keyVaultMetaInfo'] == null ? null : (KeyVaultMetaInfo.fromMap((map['keyVaultMetaInfo']! as Map).cast<String, dynamic>())).input(),
-      type: (EncryptionConfigType.fromValue(map['type'] as String)).input(),
+      keyVaultMetaInfo: (() {
+        final guardedValue = map['keyVaultMetaInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultMetaInfo.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(
+        EncryptionConfigType.fromValue(map['type']! as String),
+      ),
     );
   }
 }
-

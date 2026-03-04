@@ -10,20 +10,19 @@ class SpotInstanceRequestEnclaveOptions {
 
   /// Creates a new [SpotInstanceRequestEnclaveOptions].
   /// [enabled] Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
-  SpotInstanceRequestEnclaveOptions({
-    this.enabled,
-  });
+  SpotInstanceRequestEnclaveOptions({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory SpotInstanceRequestEnclaveOptions.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestEnclaveOptions(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

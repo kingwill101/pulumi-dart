@@ -8,20 +8,19 @@ class DataPartitionNamesResponse {
 
   /// Creates a new [DataPartitionNamesResponse].
   /// [name] Optional.
-  DataPartitionNamesResponse({
-    this.name,
-  });
+  DataPartitionNamesResponse({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory DataPartitionNamesResponse.fromMap(Map<String, dynamic> map) {
     return DataPartitionNamesResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

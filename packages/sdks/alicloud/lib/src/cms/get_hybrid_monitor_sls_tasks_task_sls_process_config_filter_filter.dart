@@ -26,12 +26,13 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
     };
   }
 
-  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter.fromMap(Map<String, dynamic> map) {
+  factory GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter(
-      operator: (map['operator'] as String).input(),
-      slsKeyName: (map['slsKeyName'] as String).input(),
-      value: (map['value'] as String).input(),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      slsKeyName: pulumi.Input.fromValue(map['slsKeyName'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

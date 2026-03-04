@@ -135,18 +135,25 @@ import 'system_data_response.dart';
 class Authorization extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The ID of the ExpressRoute Circuit Authorization
   late final pulumi.Output<String> expressRouteAuthorizationId;
+
   /// The key of the ExpressRoute Circuit Authorization
   late final pulumi.Output<String> expressRouteAuthorizationKey;
+
   /// The ID of the ExpressRoute Circuit
   late final pulumi.Output<String?> expressRouteId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The state of the ExpressRoute Circuit Authorization provisioning
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -159,18 +166,22 @@ class Authorization extends pulumi.CustomResource {
     AuthorizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:Authorization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.expressRouteAuthorizationId = registerOutput<String>('expressRouteAuthorizationId');
-    this.expressRouteAuthorizationKey = registerOutput<String>('expressRouteAuthorizationKey');
-    this.expressRouteId = registerOutput<String?>('expressRouteId');
+         'azure-native:avs:Authorization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expressRouteAuthorizationId = registerOutput<String>(
+      'expressRouteAuthorizationId',
+    );
+    expressRouteAuthorizationKey = registerOutput<String>(
+      'expressRouteAuthorizationKey',
+    );
+    expressRouteId = registerOutput<String?>('expressRouteId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

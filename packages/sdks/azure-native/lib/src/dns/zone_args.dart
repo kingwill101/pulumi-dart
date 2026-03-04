@@ -11,16 +11,22 @@ import 'zone_type.dart';
 class ZoneArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
   final pulumi.Input<List<SubResource>>? registrationVirtualNetworks;
+
   /// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
   final pulumi.Input<List<SubResource>>? resolutionVirtualNetworks;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The name of the DNS zone (without a terminating dot).
   final pulumi.Input<String>? zoneName;
+
   /// The type of this DNS zone (Public or Private).
   final pulumi.Input<ZoneType>? zoneType;
 
@@ -45,25 +51,91 @@ class ZoneArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'registrationVirtualNetworks': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(registrationVirtualNetworks, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'resolutionVirtualNetworks': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(resolutionVirtualNetworks, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'registrationVirtualNetworks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubResource>,
+            List<Map<String, dynamic>>
+          >(
+            registrationVirtualNetworks,
+            (value) =>
+                pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'resolutionVirtualNetworks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubResource>,
+            List<Map<String, dynamic>>
+          >(
+            resolutionVirtualNetworks,
+            (value) =>
+                pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'zoneName': ?zoneName,
-      'zoneType': ?pulumi.Input.mapOptionalInputValue<ZoneType, String>(zoneType, (value) => value.value),
+      'zoneType': ?pulumi.Input.mapOptionalInputValue<ZoneType, String>(
+        zoneType,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      registrationVirtualNetworks: map['registrationVirtualNetworks'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['registrationVirtualNetworks']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resolutionVirtualNetworks: map['resolutionVirtualNetworks'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['resolutionVirtualNetworks']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zoneName: map['zoneName'] == null ? null : (map['zoneName']! as String).input(),
-      zoneType: map['zoneType'] == null ? null : (ZoneType.fromValue(map['zoneType']! as String)).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationVirtualNetworks: (() {
+        final guardedValue = map['registrationVirtualNetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubResource>(
+            guardedValue,
+            (value) =>
+                SubResource.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      resolutionVirtualNetworks: (() {
+        final guardedValue = map['resolutionVirtualNetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubResource>(
+            guardedValue,
+            (value) =>
+                SubResource.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zoneName: (() {
+        final guardedValue = map['zoneName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneType: (() {
+        final guardedValue = map['zoneType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ZoneType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

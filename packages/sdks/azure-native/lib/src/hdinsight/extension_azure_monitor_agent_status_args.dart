@@ -10,12 +10,17 @@ import 'azure_monitor_selected_configurations.dart';
 class ExtensionAzureMonitorAgentStatusArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
+
   /// The Log Analytics workspace key.
   final pulumi.Input<String>? primaryKey;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The selected configurations.
-  final pulumi.Input<AzureMonitorSelectedConfigurations>? selectedConfigurations;
+  final pulumi.Input<AzureMonitorSelectedConfigurations>?
+  selectedConfigurations;
+
   /// The Log Analytics workspace ID.
   final pulumi.Input<String>? workspaceId;
 
@@ -38,19 +43,42 @@ class ExtensionAzureMonitorAgentStatusArgs {
       'clusterName': clusterName,
       'primaryKey': ?primaryKey,
       'resourceGroupName': resourceGroupName,
-      'selectedConfigurations': ?pulumi.Input.mapOptionalInputValue<AzureMonitorSelectedConfigurations, Map<String, dynamic>>(selectedConfigurations, (value) => value.toMap()),
+      'selectedConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureMonitorSelectedConfigurations,
+            Map<String, dynamic>
+          >(selectedConfigurations, (value) => value.toMap()),
       'workspaceId': ?workspaceId,
     };
   }
 
-  factory ExtensionAzureMonitorAgentStatusArgs.fromMap(Map<String, dynamic> map) {
+  factory ExtensionAzureMonitorAgentStatusArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExtensionAzureMonitorAgentStatusArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      selectedConfigurations: map['selectedConfigurations'] == null ? null : (AzureMonitorSelectedConfigurations.fromMap((map['selectedConfigurations']! as Map).cast<String, dynamic>())).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      selectedConfigurations: (() {
+        final guardedValue = map['selectedConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureMonitorSelectedConfigurations.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

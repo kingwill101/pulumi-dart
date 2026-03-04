@@ -230,17 +230,20 @@ import 'trigger_custom_state.dart';
 /// $ pulumi import azure:logicapps/triggerCustom:TriggerCustom custom1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Logic/workflows/workflow1/triggers/custom1
 /// ```
 ///
-/// > **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
+/// &gt; **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
 class TriggerCustom extends pulumi.CustomResource {
   /// Specifies the JSON Blob defining the Body of this Custom Trigger.
   late final pulumi.Output<String> body;
+
   /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitor_action_group and security_center_automation.
   late final pulumi.Output<String> callbackUrl;
+
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
+
   /// Specifies the name of the HTTP Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
+  /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
   late final pulumi.Output<String> name;
 
   /// Creates a new [TriggerCustom].
@@ -252,14 +255,14 @@ class TriggerCustom extends pulumi.CustomResource {
     TriggerCustomArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/triggerCustom:TriggerCustom',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.callbackUrl = registerOutput<String>('callbackUrl');
-    this.logicAppId = registerOutput<String>('logicAppId');
+         'azure:logicapps/triggerCustom:TriggerCustom',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    callbackUrl = registerOutput<String>('callbackUrl');
+    logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
   }
 
@@ -281,14 +284,14 @@ class TriggerCustom extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/triggerCustom:TriggerCustom',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.body = registerOutput<String>('body');
-    this.callbackUrl = registerOutput<String>('callbackUrl');
-    this.logicAppId = registerOutput<String>('logicAppId');
+         'azure:logicapps/triggerCustom:TriggerCustom',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    body = registerOutput<String>('body');
+    callbackUrl = registerOutput<String>('callbackUrl');
+    logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');
   }
 }

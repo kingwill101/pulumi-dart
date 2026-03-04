@@ -4,16 +4,15 @@ enum ApplicationManagementMode {
   valueUnmanaged("Unmanaged"),
   valueManaged("Managed");
 
-  const ApplicationManagementMode(this.value);
-  final String value;
+  const ApplicationManagementMode(this.wireValue);
+  final String wireValue;
 
   static ApplicationManagementMode fromValue(String value) {
     for (final item in ApplicationManagementMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationManagementMode value: $value');
   }
 }
-

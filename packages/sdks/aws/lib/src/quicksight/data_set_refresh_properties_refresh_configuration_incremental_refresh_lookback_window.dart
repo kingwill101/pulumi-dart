@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow {
   /// The name of the lookback window column.
   final pulumi.Input<String> columnName;
+
   /// The lookback window column size.
   final pulumi.Input<int> size;
+
   /// The size unit that is used for the lookback window column. Valid values for this structure are `HOUR`, `DAY`, and `WEEK`.
   final pulumi.Input<String> sizeUnit;
 
@@ -28,12 +30,13 @@ class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWind
     };
   }
 
-  factory DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow.fromMap(Map<String, dynamic> map) {
+  factory DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow(
-      columnName: (map['columnName'] as String).input(),
-      size: (map['size'] as int).input(),
-      sizeUnit: (map['sizeUnit'] as String).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      size: pulumi.Input.fromValue(map['size'] as int),
+      sizeUnit: pulumi.Input.fromValue(map['sizeUnit'] as String),
     );
   }
 }
-

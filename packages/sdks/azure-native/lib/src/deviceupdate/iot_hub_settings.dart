@@ -9,20 +9,15 @@ class IotHubSettings {
 
   /// Creates a new [IotHubSettings].
   /// [resourceId] IoTHub resource ID
-  IotHubSettings({
-    required this.resourceId,
-  });
+  IotHubSettings({required this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': resourceId,
-    };
+    return <String, dynamic>{'resourceId': resourceId};
   }
 
   factory IotHubSettings.fromMap(Map<String, dynamic> map) {
     return IotHubSettings(
-      resourceId: (map['resourceId'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceCodeTokenArgs {
   /// The OAuth access token.
   final pulumi.Input<String> token;
+
   /// The OAuth access token secret.
   final pulumi.Input<String>? tokenSecret;
+
   /// The source control type. Possible values are `BitBucket`, `Dropbox`, `GitHub` and `OneDrive`.
   final pulumi.Input<String> type;
 
@@ -34,10 +36,13 @@ class SourceCodeTokenArgs {
 
   factory SourceCodeTokenArgs.fromMap(Map<String, dynamic> map) {
     return SourceCodeTokenArgs(
-      token: (map['token'] as String).input(),
-      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret']! as String).input(),
-      type: (map['type'] as String).input(),
+      token: pulumi.Input.fromValue(map['token'] as String),
+      tokenSecret: (() {
+        final guardedValue = map['tokenSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

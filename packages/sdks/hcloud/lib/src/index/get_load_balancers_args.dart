@@ -12,20 +12,19 @@ class GetLoadBalancersArgs {
 
   /// Creates a new [GetLoadBalancersArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetLoadBalancersArgs({
-    this.withSelector,
-  });
+  GetLoadBalancersArgs({this.withSelector});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'withSelector': ?withSelector,
-    };
+    return <String, dynamic>{'withSelector': ?withSelector};
   }
 
   factory GetLoadBalancersArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

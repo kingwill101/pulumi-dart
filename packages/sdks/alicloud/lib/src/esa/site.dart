@@ -8,7 +8,7 @@ import 'site_state.dart';
 ///
 /// For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/site-management).
 ///
-/// > **NOTE:** Available since v1.234.0.
+/// &gt; **NOTE:** Available since v1.234.0.
 ///
 /// ## Example Usage
 ///
@@ -283,54 +283,78 @@ class Site extends pulumi.CustomResource {
   /// - `NS`
   /// - `CNAME`
   late final pulumi.Output<String?> accessType;
+
   /// Add visitor geolocation header. Value range:
   late final pulumi.Output<String?> addClientGeolocationHeader;
+
   /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
   late final pulumi.Output<String?> addRealClientIpHeader;
+
   /// Multi-level cache architecture mode. Possible values:
   late final pulumi.Output<String> cacheArchitectureMode;
+
   /// Site cache hold switch. Value:
   late final pulumi.Output<String?> cacheReserveEnable;
+
   /// The ID of the cache instance.
   late final pulumi.Output<String?> cacheReserveInstanceId;
+
   /// Whether the custom CacheTag name ignores case. Value range:
   late final pulumi.Output<String?> caseInsensitive;
+
   /// The service location. Valid values:
   late final pulumi.Output<String?> coverage;
+
   /// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Whether to enable mainland China network access optimization, the default is off. Value range:
   late final pulumi.Output<String?> crossBorderOptimization;
+
   /// Development mode configuration function switch. Value range:
   late final pulumi.Output<String?> developmentMode;
+
   /// CNAME flattening mode. Possible values:
   late final pulumi.Output<String?> flattenMode;
+
   /// The ID of the associated package instance.
   late final pulumi.Output<String> instanceId;
+
   /// Specifies whether to enable IPv6. Valid values:
   late final pulumi.Output<String> ipv6Enable;
+
   /// The region in which Ipv6 is enabled. The default value is x.x:
   /// - 'x.x': Global.
   /// - 'Cn.cn ': Mainland China.
   late final pulumi.Output<String> ipv6Region;
+
   /// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
   late final pulumi.Output<bool?> paused;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// Release the search engine crawler configuration. Value:
   late final pulumi.Output<String?> seoBypass;
+
   /// The website name.
   late final pulumi.Output<String> siteName;
+
   /// Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
   late final pulumi.Output<String?> siteNameExclusive;
+
   /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
   late final pulumi.Output<int?> siteVersion;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// Custom CacheTag name.
   late final pulumi.Output<String?> tagName;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Version management enabled. When true, version management is turned on for the table site.
   late final pulumi.Output<bool?> versionManagement;
 
@@ -338,49 +362,46 @@ class Site extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Site]. {@macro pulumi_esa_site_site_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Site(
-    String name, {
-    SiteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:esa/site:Site',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessType = registerOutput<String?>('accessType');
-    this.addClientGeolocationHeader = registerOutput<String?>('addClientGeolocationHeader');
-    this.addRealClientIpHeader = registerOutput<String?>('addRealClientIpHeader');
-    this.cacheArchitectureMode = registerOutput<String>('cacheArchitectureMode');
-    this.cacheReserveEnable = registerOutput<String?>('cacheReserveEnable');
-    this.cacheReserveInstanceId = registerOutput<String?>('cacheReserveInstanceId');
-    this.caseInsensitive = registerOutput<String?>('caseInsensitive');
-    this.coverage = registerOutput<String?>('coverage');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossBorderOptimization = registerOutput<String?>('crossBorderOptimization');
-    this.developmentMode = registerOutput<String?>('developmentMode');
-    this.flattenMode = registerOutput<String?>('flattenMode');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipv6Enable = registerOutput<String>('ipv6Enable');
-    this.ipv6Region = registerOutput<String>('ipv6Region');
-    this.paused = registerOutput<bool?>('paused');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.seoBypass = registerOutput<String?>('seoBypass');
-    this.siteName = registerOutput<String>('siteName');
-    this.siteNameExclusive = registerOutput<String?>('siteNameExclusive');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.status = registerOutput<String>('status');
-    this.tagName = registerOutput<String?>('tagName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.versionManagement = registerOutput<bool?>('versionManagement');
+  Site(String name, {SiteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:esa/site:Site',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accessType = registerOutput<String?>('accessType');
+    addClientGeolocationHeader = registerOutput<String?>(
+      'addClientGeolocationHeader',
+    );
+    addRealClientIpHeader = registerOutput<String?>('addRealClientIpHeader');
+    cacheArchitectureMode = registerOutput<String>('cacheArchitectureMode');
+    cacheReserveEnable = registerOutput<String?>('cacheReserveEnable');
+    cacheReserveInstanceId = registerOutput<String?>('cacheReserveInstanceId');
+    caseInsensitive = registerOutput<String?>('caseInsensitive');
+    coverage = registerOutput<String?>('coverage');
+    createTime = registerOutput<String>('createTime');
+    crossBorderOptimization = registerOutput<String?>(
+      'crossBorderOptimization',
+    );
+    developmentMode = registerOutput<String?>('developmentMode');
+    flattenMode = registerOutput<String?>('flattenMode');
+    instanceId = registerOutput<String>('instanceId');
+    ipv6Enable = registerOutput<String>('ipv6Enable');
+    ipv6Region = registerOutput<String>('ipv6Region');
+    paused = registerOutput<bool?>('paused');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    seoBypass = registerOutput<String?>('seoBypass');
+    siteName = registerOutput<String>('siteName');
+    siteNameExclusive = registerOutput<String?>('siteNameExclusive');
+    siteVersion = registerOutput<int?>('siteVersion');
+    status = registerOutput<String>('status');
+    tagName = registerOutput<String?>('tagName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    versionManagement = registerOutput<bool?>('versionManagement');
   }
 
   /// Gets an existing [Site] resource's state with the given [name] and [id].
-  static Site get(
-    String name,
-    pulumi.Input<String> id, {
-    SiteState? state,
-  }) {
+  static Site get(String name, pulumi.Input<String> id, {SiteState? state}) {
     return Site._get(
       name,
       state: state?.toMap(),
@@ -393,35 +414,39 @@ class Site extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/site:Site',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessType = registerOutput<String?>('accessType');
-    this.addClientGeolocationHeader = registerOutput<String?>('addClientGeolocationHeader');
-    this.addRealClientIpHeader = registerOutput<String?>('addRealClientIpHeader');
-    this.cacheArchitectureMode = registerOutput<String>('cacheArchitectureMode');
-    this.cacheReserveEnable = registerOutput<String?>('cacheReserveEnable');
-    this.cacheReserveInstanceId = registerOutput<String?>('cacheReserveInstanceId');
-    this.caseInsensitive = registerOutput<String?>('caseInsensitive');
-    this.coverage = registerOutput<String?>('coverage');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossBorderOptimization = registerOutput<String?>('crossBorderOptimization');
-    this.developmentMode = registerOutput<String?>('developmentMode');
-    this.flattenMode = registerOutput<String?>('flattenMode');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipv6Enable = registerOutput<String>('ipv6Enable');
-    this.ipv6Region = registerOutput<String>('ipv6Region');
-    this.paused = registerOutput<bool?>('paused');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.seoBypass = registerOutput<String?>('seoBypass');
-    this.siteName = registerOutput<String>('siteName');
-    this.siteNameExclusive = registerOutput<String?>('siteNameExclusive');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.status = registerOutput<String>('status');
-    this.tagName = registerOutput<String?>('tagName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.versionManagement = registerOutput<bool?>('versionManagement');
+         'alicloud:esa/site:Site',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessType = registerOutput<String?>('accessType');
+    addClientGeolocationHeader = registerOutput<String?>(
+      'addClientGeolocationHeader',
+    );
+    addRealClientIpHeader = registerOutput<String?>('addRealClientIpHeader');
+    cacheArchitectureMode = registerOutput<String>('cacheArchitectureMode');
+    cacheReserveEnable = registerOutput<String?>('cacheReserveEnable');
+    cacheReserveInstanceId = registerOutput<String?>('cacheReserveInstanceId');
+    caseInsensitive = registerOutput<String?>('caseInsensitive');
+    coverage = registerOutput<String?>('coverage');
+    createTime = registerOutput<String>('createTime');
+    crossBorderOptimization = registerOutput<String?>(
+      'crossBorderOptimization',
+    );
+    developmentMode = registerOutput<String?>('developmentMode');
+    flattenMode = registerOutput<String?>('flattenMode');
+    instanceId = registerOutput<String>('instanceId');
+    ipv6Enable = registerOutput<String>('ipv6Enable');
+    ipv6Region = registerOutput<String>('ipv6Region');
+    paused = registerOutput<bool?>('paused');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    seoBypass = registerOutput<String?>('seoBypass');
+    siteName = registerOutput<String>('siteName');
+    siteNameExclusive = registerOutput<String?>('siteNameExclusive');
+    siteVersion = registerOutput<int?>('siteVersion');
+    status = registerOutput<String>('status');
+    tagName = registerOutput<String?>('tagName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    versionManagement = registerOutput<bool?>('versionManagement');
   }
 }

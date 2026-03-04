@@ -10,20 +10,29 @@ class ClusterUpgradeSettings {
 
   /// Creates a new [ClusterUpgradeSettings].
   /// [overrideSettings] Settings for overrides.
-  ClusterUpgradeSettings({
-    this.overrideSettings,
-  });
+  ClusterUpgradeSettings({this.overrideSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'overrideSettings': ?pulumi.Input.mapOptionalInputValue<UpgradeOverrideSettings, Map<String, dynamic>>(overrideSettings, (value) => value.toMap()),
+      'overrideSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            UpgradeOverrideSettings,
+            Map<String, dynamic>
+          >(overrideSettings, (value) => value.toMap()),
     };
   }
 
   factory ClusterUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeSettings(
-      overrideSettings: map['overrideSettings'] == null ? null : (UpgradeOverrideSettings.fromMap((map['overrideSettings']! as Map).cast<String, dynamic>())).input(),
+      overrideSettings: (() {
+        final guardedValue = map['overrideSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UpgradeOverrideSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum FirewallPolicyIntrusionDetectionProfileType {
   valueAdvanced("Advanced"),
   valueExtended("Extended");
 
-  const FirewallPolicyIntrusionDetectionProfileType(this.value);
-  final String value;
+  const FirewallPolicyIntrusionDetectionProfileType(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyIntrusionDetectionProfileType fromValue(String value) {
     for (final item in FirewallPolicyIntrusionDetectionProfileType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionProfileType value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyIntrusionDetectionProfileType value: $value',
+    );
   }
 }
-

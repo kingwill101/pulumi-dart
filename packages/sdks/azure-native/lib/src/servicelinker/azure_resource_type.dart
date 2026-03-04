@@ -2,16 +2,15 @@
 enum AzureResourceType {
   valueKeyVault("KeyVault");
 
-  const AzureResourceType(this.value);
-  final String value;
+  const AzureResourceType(this.wireValue);
+  final String wireValue;
 
   static AzureResourceType fromValue(String value) {
     for (final item in AzureResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureResourceType value: $value');
   }
 }
-

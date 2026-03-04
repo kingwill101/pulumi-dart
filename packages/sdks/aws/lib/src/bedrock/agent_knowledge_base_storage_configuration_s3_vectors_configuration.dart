@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
   /// ARN of the S3 Vectors index. Conflicts with `index_name` and `vector_bucket_arn`.
   final pulumi.Input<String>? indexArn;
+
   /// Name of the S3 Vectors index. Must be specified with `vector_bucket_arn`. Conflicts with `index_arn`.
   final pulumi.Input<String>? indexName;
+
   /// ARN of the S3 Vectors vector bucket. Must be specified with `index_name`. Conflicts with `index_arn`.
   final pulumi.Input<String>? vectorBucketArn;
 
@@ -28,12 +30,25 @@ class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration(
-      indexArn: map['indexArn'] == null ? null : ((map['indexArn'] as String).input()).input(),
-      indexName: map['indexName'] == null ? null : ((map['indexName'] as String).input()).input(),
-      vectorBucketArn: map['vectorBucketArn'] == null ? null : ((map['vectorBucketArn'] as String).input()).input(),
+      indexArn: (() {
+        final guardedValue = map['indexArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      indexName: (() {
+        final guardedValue = map['indexName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vectorBucketArn: (() {
+        final guardedValue = map['vectorBucketArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

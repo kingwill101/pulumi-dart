@@ -256,7 +256,7 @@ import 'load_balancer_service_state.dart';
 /// ## Import
 ///
 /// Load Balancer Service entries can be imported using a compound ID with the following format:
-/// `<load-balancer-id>__<listen-port>`
+/// `&lt;load-balancer-id&gt;__&lt;listen-port&gt;`
 ///
 /// ```sh
 /// $ pulumi import hcloud:index/loadBalancerService:LoadBalancerService example "${LOAD_BALANCER_ID}__${LISTEN_PORT}"
@@ -264,16 +264,22 @@ import 'load_balancer_service_state.dart';
 class LoadBalancerService extends pulumi.CustomResource {
   /// Port the service connects to the targets on, required if protocol is `tcp`. Can be everything between `1` and `65535`.
   late final pulumi.Output<int> destinationPort;
+
   /// Health Check configuration when `protocol` is `http` or `https`.
   late final pulumi.Output<LoadBalancerServiceHealthCheck> healthCheck;
+
   /// HTTP configuration when `protocol` is `http` or `https`.
   late final pulumi.Output<LoadBalancerServiceHttp> http;
+
   /// Port the service listen on, required if protocol is `tcp`. Can be everything between `1` and `65535`. Must be unique per Load Balancer.
   late final pulumi.Output<int> listenPort;
+
   /// Id of the load balancer this service belongs to.
   late final pulumi.Output<String> loadBalancerId;
+
   /// Protocol of the service. `http`, `https` or `tcp`
   late final pulumi.Output<String> protocol;
+
   /// Enable proxyprotocol.
   late final pulumi.Output<bool> proxyprotocol;
 
@@ -286,18 +292,18 @@ class LoadBalancerService extends pulumi.CustomResource {
     LoadBalancerServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/loadBalancerService:LoadBalancerService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationPort = registerOutput<int>('destinationPort');
-    this.healthCheck = registerOutput<LoadBalancerServiceHealthCheck>('healthCheck');
-    this.http = registerOutput<LoadBalancerServiceHttp>('http');
-    this.listenPort = registerOutput<int>('listenPort');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxyprotocol = registerOutput<bool>('proxyprotocol');
+         'hcloud:index/loadBalancerService:LoadBalancerService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationPort = registerOutput<int>('destinationPort');
+    healthCheck = registerOutput<LoadBalancerServiceHealthCheck>('healthCheck');
+    http = registerOutput<LoadBalancerServiceHttp>('http');
+    listenPort = registerOutput<int>('listenPort');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    protocol = registerOutput<String>('protocol');
+    proxyprotocol = registerOutput<bool>('proxyprotocol');
   }
 
   /// Gets an existing [LoadBalancerService] resource's state with the given [name] and [id].
@@ -318,17 +324,17 @@ class LoadBalancerService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/loadBalancerService:LoadBalancerService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destinationPort = registerOutput<int>('destinationPort');
-    this.healthCheck = registerOutput<LoadBalancerServiceHealthCheck>('healthCheck');
-    this.http = registerOutput<LoadBalancerServiceHttp>('http');
-    this.listenPort = registerOutput<int>('listenPort');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxyprotocol = registerOutput<bool>('proxyprotocol');
+         'hcloud:index/loadBalancerService:LoadBalancerService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destinationPort = registerOutput<int>('destinationPort');
+    healthCheck = registerOutput<LoadBalancerServiceHealthCheck>('healthCheck');
+    http = registerOutput<LoadBalancerServiceHttp>('http');
+    listenPort = registerOutput<int>('listenPort');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    protocol = registerOutput<String>('protocol');
+    proxyprotocol = registerOutput<bool>('proxyprotocol');
   }
 }

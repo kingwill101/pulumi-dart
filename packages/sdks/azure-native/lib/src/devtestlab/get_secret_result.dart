@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSecret.
 class GetSecretResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The identifier of the resource.
   final String id;
+
   /// The location of the resource.
   final String? location;
+
   /// The name of the resource.
   final String name;
+
   /// The provisioning status of the resource.
   final String provisioningState;
+
   /// The tags of the resource.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
+
   /// The unique immutable identifier of a resource (Guid).
   final String uniqueIdentifier;
+
   /// The value of the secret for secret creation.
   final String? value;
 
@@ -62,14 +69,25 @@ class GetSecretResult {
     return GetSecretResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      value: map['value'] == null ? null : map['value']! as String,
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

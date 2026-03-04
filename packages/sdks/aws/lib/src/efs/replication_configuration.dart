@@ -5,7 +5,7 @@ import 'replication_configuration_state.dart';
 
 /// Creates a replica of an existing EFS file system in the same or another region. Creating this resource causes the source EFS file system to be replicated to a new read-only destination EFS file system (unless using the `destination.file_system_id` attribute). Deleting this resource will cause the replication from source to destination to stop and the destination file system will no longer be read only.
 ///
-/// > **NOTE:** Deleting this resource does **not** delete the destination file system that was created.
+/// &gt; **NOTE:** Deleting this resource does **not** delete the destination file system that was created.
 ///
 /// ## Example Usage
 ///
@@ -402,16 +402,22 @@ class ReplicationConfiguration extends pulumi.CustomResource {
   /// * `destination[0].file_system_id` - The fs ID of the replica.
   /// * `destination[0].status` - The status of the replication.
   late final pulumi.Output<String> creationTime;
+
   /// A destination configuration block (documented below).
   late final pulumi.Output<ReplicationConfigurationDestination> destination;
+
   /// The Amazon Resource Name (ARN) of the original source Amazon EFS file system in the replication configuration.
   late final pulumi.Output<String> originalSourceFileSystemArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of the current source file system in the replication configuration.
   late final pulumi.Output<String> sourceFileSystemArn;
+
   /// The ID of the file system that is to be replicated.
   late final pulumi.Output<String> sourceFileSystemId;
+
   /// The AWS Region in which the source Amazon EFS file system is located.
   late final pulumi.Output<String> sourceFileSystemRegion;
 
@@ -424,18 +430,22 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     ReplicationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:efs/replicationConfiguration:ReplicationConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTime = registerOutput<String>('creationTime');
-    this.destination = registerOutput<ReplicationConfigurationDestination>('destination');
-    this.originalSourceFileSystemArn = registerOutput<String>('originalSourceFileSystemArn');
-    this.region = registerOutput<String>('region');
-    this.sourceFileSystemArn = registerOutput<String>('sourceFileSystemArn');
-    this.sourceFileSystemId = registerOutput<String>('sourceFileSystemId');
-    this.sourceFileSystemRegion = registerOutput<String>('sourceFileSystemRegion');
+         'aws:efs/replicationConfiguration:ReplicationConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTime = registerOutput<String>('creationTime');
+    destination = registerOutput<ReplicationConfigurationDestination>(
+      'destination',
+    );
+    originalSourceFileSystemArn = registerOutput<String>(
+      'originalSourceFileSystemArn',
+    );
+    region = registerOutput<String>('region');
+    sourceFileSystemArn = registerOutput<String>('sourceFileSystemArn');
+    sourceFileSystemId = registerOutput<String>('sourceFileSystemId');
+    sourceFileSystemRegion = registerOutput<String>('sourceFileSystemRegion');
   }
 
   /// Gets an existing [ReplicationConfiguration] resource's state with the given [name] and [id].
@@ -456,17 +466,21 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:efs/replicationConfiguration:ReplicationConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTime = registerOutput<String>('creationTime');
-    this.destination = registerOutput<ReplicationConfigurationDestination>('destination');
-    this.originalSourceFileSystemArn = registerOutput<String>('originalSourceFileSystemArn');
-    this.region = registerOutput<String>('region');
-    this.sourceFileSystemArn = registerOutput<String>('sourceFileSystemArn');
-    this.sourceFileSystemId = registerOutput<String>('sourceFileSystemId');
-    this.sourceFileSystemRegion = registerOutput<String>('sourceFileSystemRegion');
+         'aws:efs/replicationConfiguration:ReplicationConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTime = registerOutput<String>('creationTime');
+    destination = registerOutput<ReplicationConfigurationDestination>(
+      'destination',
+    );
+    originalSourceFileSystemArn = registerOutput<String>(
+      'originalSourceFileSystemArn',
+    );
+    region = registerOutput<String>('region');
+    sourceFileSystemArn = registerOutput<String>('sourceFileSystemArn');
+    sourceFileSystemId = registerOutput<String>('sourceFileSystemId');
+    sourceFileSystemRegion = registerOutput<String>('sourceFileSystemRegion');
   }
 }

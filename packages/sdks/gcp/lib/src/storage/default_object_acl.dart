@@ -5,7 +5,7 @@ import 'default_object_aclstate.dart';
 /// Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
 /// without managing the bucket itself.
 ///
-/// > Note that for each object, its creator will have the `"OWNER"` role in addition
+/// &gt; Note that for each object, its creator will have the `"OWNER"` role in addition
 /// to the default ACL that has been defined.
 ///
 /// For more information see
@@ -13,7 +13,7 @@ import 'default_object_aclstate.dart';
 /// and
 /// [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
 ///
-/// > Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
+/// &gt; Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
 /// to control individual role entity pairs.
 ///
 /// ## Example Usage
@@ -169,6 +169,7 @@ import 'default_object_aclstate.dart';
 class DefaultObjectACL extends pulumi.CustomResource {
   /// The name of the bucket it applies to.
   late final pulumi.Output<String> bucket;
+
   /// List of role/entity pairs in the form `ROLE:entity`.
   /// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Omitting the field is the same as providing an empty list.
@@ -183,13 +184,13 @@ class DefaultObjectACL extends pulumi.CustomResource {
     DefaultObjectACLArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/defaultObjectACL:DefaultObjectACL',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.roleEntities = registerOutput<List<String>>('roleEntities');
+         'gcp:storage/defaultObjectACL:DefaultObjectACL',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    roleEntities = registerOutput<List<String>>('roleEntities');
   }
 
   /// Gets an existing [DefaultObjectACL] resource's state with the given [name] and [id].
@@ -210,12 +211,12 @@ class DefaultObjectACL extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/defaultObjectACL:DefaultObjectACL',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.roleEntities = registerOutput<List<String>>('roleEntities');
+         'gcp:storage/defaultObjectACL:DefaultObjectACL',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    roleEntities = registerOutput<List<String>>('roleEntities');
   }
 }

@@ -7,10 +7,13 @@ import 'sdk_bug_response.dart';
 class SdkVersionResponse {
   /// Known bugs found in this SDK version.
   final pulumi.Input<List<SdkBugResponse>> bugs;
+
   /// The support status for this SDK version.
   final pulumi.Input<String> sdkSupportStatus;
+
   /// The version of the SDK used to run the job.
   final pulumi.Input<String> version;
+
   /// A readable string describing the version of the SDK.
   final pulumi.Input<String> versionDisplayName;
 
@@ -28,7 +31,18 @@ class SdkVersionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bugs': pulumi.Input.mapInputValue<List<SdkBugResponse>, List<Map<String, dynamic>>>(bugs, (value) => pulumi.Input.encodeList<SdkBugResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bugs':
+          pulumi.Input.mapInputValue<
+            List<SdkBugResponse>,
+            List<Map<String, dynamic>>
+          >(
+            bugs,
+            (value) =>
+                pulumi.Input.encodeList<SdkBugResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'sdkSupportStatus': sdkSupportStatus,
       'version': version,
       'versionDisplayName': versionDisplayName,
@@ -37,11 +51,20 @@ class SdkVersionResponse {
 
   factory SdkVersionResponse.fromMap(Map<String, dynamic> map) {
     return SdkVersionResponse(
-      bugs: (pulumi.Input.decodeList<SdkBugResponse>(map['bugs'], (value) => SdkBugResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sdkSupportStatus: (map['sdkSupportStatus'] as String).input(),
-      version: (map['version'] as String).input(),
-      versionDisplayName: (map['versionDisplayName'] as String).input(),
+      bugs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SdkBugResponse>(
+          map['bugs']!,
+          (value) =>
+              SdkBugResponse.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      sdkSupportStatus: pulumi.Input.fromValue(
+        map['sdkSupportStatus'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
+      versionDisplayName: pulumi.Input.fromValue(
+        map['versionDisplayName'] as String,
+      ),
     );
   }
 }
-

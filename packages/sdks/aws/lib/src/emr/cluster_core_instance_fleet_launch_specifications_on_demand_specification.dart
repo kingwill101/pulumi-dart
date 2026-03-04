@@ -13,15 +13,16 @@ class ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allocationStrategy': allocationStrategy,
-    };
+    return <String, dynamic>{'allocationStrategy': allocationStrategy};
   }
 
-  factory ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap(Map<String, dynamic> map) {
+  factory ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification(
-      allocationStrategy: (map['allocationStrategy'] as String).input(),
+      allocationStrategy: pulumi.Input.fromValue(
+        map['allocationStrategy'] as String,
+      ),
     );
   }
 }
-

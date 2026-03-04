@@ -10,12 +10,17 @@ import 'sku_response.dart';
 class ManagedOpsPropertiesResponse {
   /// Desired configuration input by the user.
   final pulumi.Input<DesiredConfigurationResponse> desiredConfiguration;
+
   /// Policy assignments created for managing services.
-  final pulumi.Input<PolicyAssignmentPropertiesResponse> policyAssignmentProperties;
+  final pulumi.Input<PolicyAssignmentPropertiesResponse>
+  policyAssignmentProperties;
+
   /// Provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
+
   /// Services provisioned by this resource.
   final pulumi.Input<ServiceInformationResponse> services;
+
   /// Product plan details of this resource.
   final pulumi.Input<SkuResponse> sku;
 
@@ -35,22 +40,52 @@ class ManagedOpsPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'desiredConfiguration': pulumi.Input.mapInputValue<DesiredConfigurationResponse, Map<String, dynamic>>(desiredConfiguration, (value) => value.toMap()),
-      'policyAssignmentProperties': pulumi.Input.mapInputValue<PolicyAssignmentPropertiesResponse, Map<String, dynamic>>(policyAssignmentProperties, (value) => value.toMap()),
+      'desiredConfiguration':
+          pulumi.Input.mapInputValue<
+            DesiredConfigurationResponse,
+            Map<String, dynamic>
+          >(desiredConfiguration, (value) => value.toMap()),
+      'policyAssignmentProperties':
+          pulumi.Input.mapInputValue<
+            PolicyAssignmentPropertiesResponse,
+            Map<String, dynamic>
+          >(policyAssignmentProperties, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'services': pulumi.Input.mapInputValue<ServiceInformationResponse, Map<String, dynamic>>(services, (value) => value.toMap()),
-      'sku': pulumi.Input.mapInputValue<SkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'services':
+          pulumi.Input.mapInputValue<
+            ServiceInformationResponse,
+            Map<String, dynamic>
+          >(services, (value) => value.toMap()),
+      'sku': pulumi.Input.mapInputValue<SkuResponse, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory ManagedOpsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedOpsPropertiesResponse(
-      desiredConfiguration: (DesiredConfigurationResponse.fromMap((map['desiredConfiguration'] as Map).cast<String, dynamic>())).input(),
-      policyAssignmentProperties: (PolicyAssignmentPropertiesResponse.fromMap((map['policyAssignmentProperties'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      services: (ServiceInformationResponse.fromMap((map['services'] as Map).cast<String, dynamic>())).input(),
-      sku: (SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      desiredConfiguration: pulumi.Input.fromValue(
+        DesiredConfigurationResponse.fromMap(
+          (map['desiredConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      policyAssignmentProperties: pulumi.Input.fromValue(
+        PolicyAssignmentPropertiesResponse.fromMap(
+          (map['policyAssignmentProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      services: pulumi.Input.fromValue(
+        ServiceInformationResponse.fromMap(
+          (map['services']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sku: pulumi.Input.fromValue(
+        SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

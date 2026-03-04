@@ -10,14 +10,20 @@ import 'create_protection_container_mapping_input_properties.dart';
 class ReplicationProtectionContainerMappingArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
+
   /// Protection container mapping name.
   final pulumi.Input<String>? mappingName;
+
   /// Configure protection input properties.
-  final pulumi.Input<CreateProtectionContainerMappingInputProperties>? properties;
+  final pulumi.Input<CreateProtectionContainerMappingInputProperties>?
+  properties;
+
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -41,22 +47,43 @@ class ReplicationProtectionContainerMappingArgs {
     return <String, dynamic>{
       'fabricName': fabricName,
       'mappingName': ?mappingName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<CreateProtectionContainerMappingInputProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            CreateProtectionContainerMappingInputProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'protectionContainerName': protectionContainerName,
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
   }
 
-  factory ReplicationProtectionContainerMappingArgs.fromMap(Map<String, dynamic> map) {
+  factory ReplicationProtectionContainerMappingArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationProtectionContainerMappingArgs(
-      fabricName: (map['fabricName'] as String).input(),
-      mappingName: map['mappingName'] == null ? null : (map['mappingName']! as String).input(),
-      properties: map['properties'] == null ? null : (CreateProtectionContainerMappingInputProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      protectionContainerName: (map['protectionContainerName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      mappingName: (() {
+        final guardedValue = map['mappingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CreateProtectionContainerMappingInputProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      protectionContainerName: pulumi.Input.fromValue(
+        map['protectionContainerName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

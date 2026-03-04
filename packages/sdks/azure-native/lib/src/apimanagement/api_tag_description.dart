@@ -158,18 +158,25 @@ import 'api_tag_description_args.dart';
 class ApiTagDescription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of the Tag.
   late final pulumi.Output<String?> description;
+
   /// Tag name.
   late final pulumi.Output<String?> displayName;
+
   /// Description of the external resources describing the tag.
   late final pulumi.Output<String?> externalDocsDescription;
+
   /// Absolute URL of external resources describing the tag.
   late final pulumi.Output<String?> externalDocsUrl;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Identifier of the tag in the form of /tags/{tagId}
   late final pulumi.Output<String?> tagId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -182,18 +189,20 @@ class ApiTagDescription extends pulumi.CustomResource {
     ApiTagDescriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ApiTagDescription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.externalDocsDescription = registerOutput<String?>('externalDocsDescription');
-    this.externalDocsUrl = registerOutput<String?>('externalDocsUrl');
+         'azure-native:apimanagement:ApiTagDescription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    externalDocsDescription = registerOutput<String?>(
+      'externalDocsDescription',
+    );
+    externalDocsUrl = registerOutput<String?>('externalDocsUrl');
     this.name = registerOutput<String>('name');
-    this.tagId = registerOutput<String?>('tagId');
-    this.type = registerOutput<String>('type');
+    tagId = registerOutput<String?>('tagId');
+    type = registerOutput<String>('type');
   }
 }

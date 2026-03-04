@@ -15,33 +15,80 @@ import 'domain_devices_disk_mirror_backing_store_source_reservations_source_unix
 
 class DomainDevicesDiskMirrorBackingStoreSourceReservationsSource {
   /// Configures the DBus source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus>? dbus;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus
+  >?
+  dbus;
+
   /// Defines the device path for the source of the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev>? dev;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev
+  >?
+  dev;
+
   /// Defines a file source for the RNG EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile>? file;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile
+  >?
+  file;
+
   /// Configures the NMDM (null modem) device source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm>? nmdm;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm
+  >?
+  nmdm;
+
   /// Configures settings for a null device used in reservations for storage.
   final pulumi.Input<bool>? null_;
+
   /// Defines a pipe source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe>? pipe;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe
+  >?
+  pipe;
+
   /// Defines a pseudo-terminal (PTY) source for the EGD backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty>? pty;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty
+  >?
+  pty;
+
   /// Configures the QEMU guest agent for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent>? qemuvdAgent;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent
+  >?
+  qemuvdAgent;
+
   /// Configures the SPICE port settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort>? spicePort;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort
+  >?
+  spicePort;
+
   /// Configures settings for the SPICE VMC used in reservations related to disk mirroring.
   final pulumi.Input<bool>? spiceVmc;
+
   /// Manages standard I/O settings for the reservations in disk mirroring.
   final pulumi.Input<bool>? stdIo;
+
   /// Configures TCP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp>? tcp;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp
+  >?
+  tcp;
+
   /// Configures UDP settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp>? udp;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp
+  >?
+  udp;
+
   /// Configures UNIX domain socket settings for the random number generator backend.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix>? unix;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix
+  >?
+  unix;
+
   /// Configures settings for the VC source in the backing store for disk mirroring reservations.
   final pulumi.Input<bool>? vc;
 
@@ -81,42 +128,191 @@ class DomainDevicesDiskMirrorBackingStoreSourceReservationsSource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbus': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus, Map<String, dynamic>>(dbus, (value) => value.toMap()),
-      'dev': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev, Map<String, dynamic>>(dev, (value) => value.toMap()),
-      'file': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile, Map<String, dynamic>>(file, (value) => value.toMap()),
-      'nmdm': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm, Map<String, dynamic>>(nmdm, (value) => value.toMap()),
+      'dbus':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus,
+            Map<String, dynamic>
+          >(dbus, (value) => value.toMap()),
+      'dev':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev,
+            Map<String, dynamic>
+          >(dev, (value) => value.toMap()),
+      'file':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile,
+            Map<String, dynamic>
+          >(file, (value) => value.toMap()),
+      'nmdm':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm,
+            Map<String, dynamic>
+          >(nmdm, (value) => value.toMap()),
       'null': ?null_,
-      'pipe': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe, Map<String, dynamic>>(pipe, (value) => value.toMap()),
-      'pty': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty, Map<String, dynamic>>(pty, (value) => value.toMap()),
-      'qemuvdAgent': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent, Map<String, dynamic>>(qemuvdAgent, (value) => value.toMap()),
-      'spicePort': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort, Map<String, dynamic>>(spicePort, (value) => value.toMap()),
+      'pipe':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe,
+            Map<String, dynamic>
+          >(pipe, (value) => value.toMap()),
+      'pty':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty,
+            Map<String, dynamic>
+          >(pty, (value) => value.toMap()),
+      'qemuvdAgent':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent,
+            Map<String, dynamic>
+          >(qemuvdAgent, (value) => value.toMap()),
+      'spicePort':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort,
+            Map<String, dynamic>
+          >(spicePort, (value) => value.toMap()),
       'spiceVmc': ?spiceVmc,
       'stdIo': ?stdIo,
-      'tcp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp, Map<String, dynamic>>(tcp, (value) => value.toMap()),
-      'udp': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp, Map<String, dynamic>>(udp, (value) => value.toMap()),
-      'unix': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix, Map<String, dynamic>>(unix, (value) => value.toMap()),
+      'tcp':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp,
+            Map<String, dynamic>
+          >(tcp, (value) => value.toMap()),
+      'udp':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp,
+            Map<String, dynamic>
+          >(udp, (value) => value.toMap()),
+      'unix':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix,
+            Map<String, dynamic>
+          >(unix, (value) => value.toMap()),
       'vc': ?vc,
     };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceReservationsSource.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceReservationsSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorBackingStoreSourceReservationsSource(
-      dbus: map['dbus'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus.fromMap((map['dbus']! as Map).cast<String, dynamic>())).input(),
-      dev: map['dev'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev.fromMap((map['dev']! as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
-      nmdm: map['nmdm'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm.fromMap((map['nmdm']! as Map).cast<String, dynamic>())).input(),
-      null_: map['null'] == null ? null : (map['null']! as bool).input(),
-      pipe: map['pipe'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe.fromMap((map['pipe']! as Map).cast<String, dynamic>())).input(),
-      pty: map['pty'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty.fromMap((map['pty']! as Map).cast<String, dynamic>())).input(),
-      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent.fromMap((map['qemuvdAgent']! as Map).cast<String, dynamic>())).input(),
-      spicePort: map['spicePort'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort.fromMap((map['spicePort']! as Map).cast<String, dynamic>())).input(),
-      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc']! as bool).input(),
-      stdIo: map['stdIo'] == null ? null : (map['stdIo']! as bool).input(),
-      tcp: map['tcp'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp.fromMap((map['tcp']! as Map).cast<String, dynamic>())).input(),
-      udp: map['udp'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp.fromMap((map['udp']! as Map).cast<String, dynamic>())).input(),
-      unix: map['unix'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix.fromMap((map['unix']! as Map).cast<String, dynamic>())).input(),
-      vc: map['vc'] == null ? null : (map['vc']! as bool).input(),
+      dbus: (() {
+        final guardedValue = map['dbus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDbus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dev: (() {
+        final guardedValue = map['dev'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceDev.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      file: (() {
+        final guardedValue = map['file'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceFile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nmdm: (() {
+        final guardedValue = map['nmdm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceNmdm.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      null_: (() {
+        final guardedValue = map['null'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      pipe: (() {
+        final guardedValue = map['pipe'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      pty: (() {
+        final guardedValue = map['pty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePty.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      qemuvdAgent: (() {
+        final guardedValue = map['qemuvdAgent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceQemuvdAgent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spicePort: (() {
+        final guardedValue = map['spicePort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceSpicePort.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      spiceVmc: (() {
+        final guardedValue = map['spiceVmc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      stdIo: (() {
+        final guardedValue = map['stdIo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tcp: (() {
+        final guardedValue = map['tcp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceTcp.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      udp: (() {
+        final guardedValue = map['udp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUdp.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      unix: (() {
+        final guardedValue = map['unix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceReservationsSourceUnix.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vc: (() {
+        final guardedValue = map['vc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

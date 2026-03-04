@@ -1,5 +1,3 @@
-library module_yundun;
-
 export 'yundun/bastion_host_instance.dart';
 export 'yundun/bastion_host_instance_ad_auth_server.dart';
 export 'yundun/bastion_host_instance_args.dart';

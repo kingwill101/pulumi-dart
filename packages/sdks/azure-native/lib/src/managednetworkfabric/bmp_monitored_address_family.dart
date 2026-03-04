@@ -6,16 +6,15 @@ enum BmpMonitoredAddressFamily {
   vpnIpv6("vpnIpv6"),
   all("All");
 
-  const BmpMonitoredAddressFamily(this.value);
-  final String value;
+  const BmpMonitoredAddressFamily(this.wireValue);
+  final String wireValue;
 
   static BmpMonitoredAddressFamily fromValue(String value) {
     for (final item in BmpMonitoredAddressFamily.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BmpMonitoredAddressFamily value: $value');
   }
 }
-

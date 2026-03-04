@@ -13,11 +13,15 @@ import 'custom_action_type_settings.dart';
 class CustomActionTypeArgs {
   /// The category of the custom action. Valid values: `Source`, `Build`, `Deploy`, `Test`, `Invoke`, `Approval`
   final pulumi.Input<String> category;
+
   /// The configuration properties for the custom action. Max 10 items.
-  final pulumi.Input<List<CustomActionTypeConfigurationProperty>>? configurationProperties;
+  final pulumi.Input<List<CustomActionTypeConfigurationProperty>>?
+  configurationProperties;
   final pulumi.Input<CustomActionTypeInputArtifactDetails> inputArtifactDetails;
-  final pulumi.Input<CustomActionTypeOutputArtifactDetails> outputArtifactDetails;
+  final pulumi.Input<CustomActionTypeOutputArtifactDetails>
+  outputArtifactDetails;
   final pulumi.Input<String> providerName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<CustomActionTypeSettings>? settings;
@@ -49,12 +53,35 @@ class CustomActionTypeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'category': category,
-      'configurationProperties': ?pulumi.Input.mapOptionalInputValue<List<CustomActionTypeConfigurationProperty>, List<Map<String, dynamic>>>(configurationProperties, (value) => pulumi.Input.encodeList<CustomActionTypeConfigurationProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'inputArtifactDetails': pulumi.Input.mapInputValue<CustomActionTypeInputArtifactDetails, Map<String, dynamic>>(inputArtifactDetails, (value) => value.toMap()),
-      'outputArtifactDetails': pulumi.Input.mapInputValue<CustomActionTypeOutputArtifactDetails, Map<String, dynamic>>(outputArtifactDetails, (value) => value.toMap()),
+      'configurationProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CustomActionTypeConfigurationProperty>,
+            List<Map<String, dynamic>>
+          >(
+            configurationProperties,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CustomActionTypeConfigurationProperty,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'inputArtifactDetails':
+          pulumi.Input.mapInputValue<
+            CustomActionTypeInputArtifactDetails,
+            Map<String, dynamic>
+          >(inputArtifactDetails, (value) => value.toMap()),
+      'outputArtifactDetails':
+          pulumi.Input.mapInputValue<
+            CustomActionTypeOutputArtifactDetails,
+            Map<String, dynamic>
+          >(outputArtifactDetails, (value) => value.toMap()),
       'providerName': providerName,
       'region': ?region,
-      'settings': ?pulumi.Input.mapOptionalInputValue<CustomActionTypeSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomActionTypeSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
       'tags': ?tags,
       'version': version,
     };
@@ -62,16 +89,52 @@ class CustomActionTypeArgs {
 
   factory CustomActionTypeArgs.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeArgs(
-      category: (map['category'] as String).input(),
-      configurationProperties: map['configurationProperties'] == null ? null : ((pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(map['configurationProperties']!, (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      inputArtifactDetails: (CustomActionTypeInputArtifactDetails.fromMap((map['inputArtifactDetails']! as Map).cast<String, dynamic>())).input(),
-      outputArtifactDetails: (CustomActionTypeOutputArtifactDetails.fromMap((map['outputArtifactDetails']! as Map).cast<String, dynamic>())).input(),
-      providerName: (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      settings: map['settings'] == null ? null : ((CustomActionTypeSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      version: (map['version'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      configurationProperties: (() {
+        final guardedValue = map['configurationProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(
+            guardedValue,
+            (value) => CustomActionTypeConfigurationProperty.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      inputArtifactDetails: pulumi.Input.fromValue(
+        CustomActionTypeInputArtifactDetails.fromMap(
+          (map['inputArtifactDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputArtifactDetails: pulumi.Input.fromValue(
+        CustomActionTypeOutputArtifactDetails.fromMap(
+          (map['outputArtifactDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      providerName: pulumi.Input.fromValue(map['providerName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomActionTypeSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

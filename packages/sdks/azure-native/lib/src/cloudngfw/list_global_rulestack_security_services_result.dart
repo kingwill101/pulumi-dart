@@ -6,6 +6,7 @@ import 'security_services_type_list_response.dart';
 class ListGlobalRulestackSecurityServicesResult {
   /// next link
   final String? nextLink;
+
   /// response value
   final SecurityServicesTypeListResponse value;
 
@@ -18,17 +19,21 @@ class ListGlobalRulestackSecurityServicesResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nextLink': ?nextLink,
-      'value': value.toMap(),
-    };
+    return <String, dynamic>{'nextLink': ?nextLink, 'value': value.toMap()};
   }
 
-  factory ListGlobalRulestackSecurityServicesResult.fromMap(Map<String, dynamic> map) {
+  factory ListGlobalRulestackSecurityServicesResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListGlobalRulestackSecurityServicesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
-      value: SecurityServicesTypeListResponse.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      nextLink: (() {
+        final guardedValue = map['nextLink'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      value: SecurityServicesTypeListResponse.fromMap(
+        (map['value']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

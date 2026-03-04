@@ -3,7 +3,6 @@ import 'service_args.dart';
 import 'service_auth.dart';
 import 'service_converge_config.dart';
 import 'service_endpoint_spec.dart';
-import 'service_label.dart';
 import 'service_mode.dart';
 import 'service_rollback_config.dart';
 import 'service_state.dart';
@@ -66,20 +65,28 @@ import 'service_update_config.dart';
 class Service extends pulumi.CustomResource {
   /// Configuration for the authentication for pulling the images of the service
   late final pulumi.Output<ServiceAuth?> auth;
+
   /// A configuration to ensure that a service converges aka reaches the desired that of all task up and running
   late final pulumi.Output<ServiceConvergeConfig?> convergeConfig;
+
   /// Properties that can be configured to access and load balance a service
   late final pulumi.Output<ServiceEndpointSpec> endpointSpec;
+
   /// User-defined key/value metadata
-  late final pulumi.Output<List<ServiceLabel>> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>> labels;
+
   /// Scheduling mode for the service
   late final pulumi.Output<ServiceMode> mode;
+
   /// Name of the service
   late final pulumi.Output<String> name;
+
   /// Specification for the rollback strategy of the service
   late final pulumi.Output<ServiceRollbackConfig?> rollbackConfig;
+
   /// User modifiable task configuration
   late final pulumi.Output<ServiceTaskSpec> taskSpec;
+
   /// Specification for the update strategy of the service
   late final pulumi.Output<ServiceUpdateConfig?> updateConfig;
 
@@ -92,20 +99,20 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'docker:index/service:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auth = registerOutput<ServiceAuth?>('auth');
-    this.convergeConfig = registerOutput<ServiceConvergeConfig?>('convergeConfig');
-    this.endpointSpec = registerOutput<ServiceEndpointSpec>('endpointSpec');
-    this.labels = registerOutput<List<ServiceLabel>>('labels');
-    this.mode = registerOutput<ServiceMode>('mode');
+         'docker:index/service:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auth = registerOutput<ServiceAuth?>('auth');
+    convergeConfig = registerOutput<ServiceConvergeConfig?>('convergeConfig');
+    endpointSpec = registerOutput<ServiceEndpointSpec>('endpointSpec');
+    labels = registerOutput<List<Map<String, dynamic>>>('labels');
+    mode = registerOutput<ServiceMode>('mode');
     this.name = registerOutput<String>('name');
-    this.rollbackConfig = registerOutput<ServiceRollbackConfig?>('rollbackConfig');
-    this.taskSpec = registerOutput<ServiceTaskSpec>('taskSpec');
-    this.updateConfig = registerOutput<ServiceUpdateConfig?>('updateConfig');
+    rollbackConfig = registerOutput<ServiceRollbackConfig?>('rollbackConfig');
+    taskSpec = registerOutput<ServiceTaskSpec>('taskSpec');
+    updateConfig = registerOutput<ServiceUpdateConfig?>('updateConfig');
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -126,19 +133,19 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'docker:index/service:Service',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auth = registerOutput<ServiceAuth?>('auth');
-    this.convergeConfig = registerOutput<ServiceConvergeConfig?>('convergeConfig');
-    this.endpointSpec = registerOutput<ServiceEndpointSpec>('endpointSpec');
-    this.labels = registerOutput<List<ServiceLabel>>('labels');
-    this.mode = registerOutput<ServiceMode>('mode');
+         'docker:index/service:Service',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auth = registerOutput<ServiceAuth?>('auth');
+    convergeConfig = registerOutput<ServiceConvergeConfig?>('convergeConfig');
+    endpointSpec = registerOutput<ServiceEndpointSpec>('endpointSpec');
+    labels = registerOutput<List<Map<String, dynamic>>>('labels');
+    mode = registerOutput<ServiceMode>('mode');
     this.name = registerOutput<String>('name');
-    this.rollbackConfig = registerOutput<ServiceRollbackConfig?>('rollbackConfig');
-    this.taskSpec = registerOutput<ServiceTaskSpec>('taskSpec');
-    this.updateConfig = registerOutput<ServiceUpdateConfig?>('updateConfig');
+    rollbackConfig = registerOutput<ServiceRollbackConfig?>('rollbackConfig');
+    taskSpec = registerOutput<ServiceTaskSpec>('taskSpec');
+    updateConfig = registerOutput<ServiceUpdateConfig?>('updateConfig');
   }
 }

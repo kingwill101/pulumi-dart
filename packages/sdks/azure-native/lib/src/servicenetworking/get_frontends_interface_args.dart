@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFrontendsInterfaceArgs {
   /// Frontends
   final pulumi.Input<String> frontendName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
 
@@ -34,10 +36,13 @@ class GetFrontendsInterfaceArgs {
 
   factory GetFrontendsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetFrontendsInterfaceArgs(
-      frontendName: (map['frontendName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      trafficControllerName: (map['trafficControllerName'] as String).input(),
+      frontendName: pulumi.Input.fromValue(map['frontendName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      trafficControllerName: pulumi.Input.fromValue(
+        map['trafficControllerName'] as String,
+      ),
     );
   }
 }
-

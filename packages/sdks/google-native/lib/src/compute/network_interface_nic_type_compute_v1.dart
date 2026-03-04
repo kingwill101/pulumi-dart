@@ -4,16 +4,17 @@ enum NetworkInterfaceNicTypeComputeV1 {
   unspecifiedNicType("UNSPECIFIED_NIC_TYPE"),
   virtioNet("VIRTIO_NET");
 
-  const NetworkInterfaceNicTypeComputeV1(this.value);
-  final String value;
+  const NetworkInterfaceNicTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static NetworkInterfaceNicTypeComputeV1 fromValue(String value) {
     for (final item in NetworkInterfaceNicTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkInterfaceNicTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown NetworkInterfaceNicTypeComputeV1 value: $value',
+    );
   }
 }
-

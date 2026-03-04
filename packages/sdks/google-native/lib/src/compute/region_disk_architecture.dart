@@ -4,16 +4,15 @@ enum RegionDiskArchitecture {
   arm64("ARM64"),
   x8664("X86_64");
 
-  const RegionDiskArchitecture(this.value);
-  final String value;
+  const RegionDiskArchitecture(this.wireValue);
+  final String wireValue;
 
   static RegionDiskArchitecture fromValue(String value) {
     for (final item in RegionDiskArchitecture.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionDiskArchitecture value: $value');
   }
 }
-

@@ -9,7 +9,7 @@ import 'policy_state.dart';
 ///
 /// For information about Cloud Phone Policy and how to use it, see [What is Policy](https://next.api.alibabacloud.com/document/eds-aic/2023-09-30/CreatePolicyGroup).
 ///
-/// > **NOTE:** Available since v1.243.0.
+/// &gt; **NOTE:** Available since v1.243.0.
 ///
 /// ## Example Usage
 ///
@@ -221,16 +221,22 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// Whether to turn on local camera redirection.
   late final pulumi.Output<String> cameraRedirect;
+
   /// Clipboard permissions.
   late final pulumi.Output<String> clipboard;
+
   /// Whether to lock the resolution.
   late final pulumi.Output<String> lockResolution;
+
   /// Network redirection. See `net_redirect_policy` below.
   late final pulumi.Output<PolicyNetRedirectPolicy> netRedirectPolicy;
+
   /// The policy name.
   late final pulumi.Output<String> policyGroupName;
+
   /// The height of the resolution. Unit: Pixels.
   late final pulumi.Output<int> resolutionHeight;
+
   /// The width of the resolution. Unit: Pixels.
   late final pulumi.Output<int> resolutionWidth;
 
@@ -238,23 +244,22 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_cloudphone_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cloudphone/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cameraRedirect = registerOutput<String>('cameraRedirect');
-    this.clipboard = registerOutput<String>('clipboard');
-    this.lockResolution = registerOutput<String>('lockResolution');
-    this.netRedirectPolicy = registerOutput<PolicyNetRedirectPolicy>('netRedirectPolicy');
-    this.policyGroupName = registerOutput<String>('policyGroupName');
-    this.resolutionHeight = registerOutput<int>('resolutionHeight');
-    this.resolutionWidth = registerOutput<int>('resolutionWidth');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cloudphone/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    cameraRedirect = registerOutput<String>('cameraRedirect');
+    clipboard = registerOutput<String>('clipboard');
+    lockResolution = registerOutput<String>('lockResolution');
+    netRedirectPolicy = registerOutput<PolicyNetRedirectPolicy>(
+      'netRedirectPolicy',
+    );
+    policyGroupName = registerOutput<String>('policyGroupName');
+    resolutionHeight = registerOutput<int>('resolutionHeight');
+    resolutionWidth = registerOutput<int>('resolutionWidth');
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -275,17 +280,19 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudphone/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cameraRedirect = registerOutput<String>('cameraRedirect');
-    this.clipboard = registerOutput<String>('clipboard');
-    this.lockResolution = registerOutput<String>('lockResolution');
-    this.netRedirectPolicy = registerOutput<PolicyNetRedirectPolicy>('netRedirectPolicy');
-    this.policyGroupName = registerOutput<String>('policyGroupName');
-    this.resolutionHeight = registerOutput<int>('resolutionHeight');
-    this.resolutionWidth = registerOutput<int>('resolutionWidth');
+         'alicloud:cloudphone/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cameraRedirect = registerOutput<String>('cameraRedirect');
+    clipboard = registerOutput<String>('clipboard');
+    lockResolution = registerOutput<String>('lockResolution');
+    netRedirectPolicy = registerOutput<PolicyNetRedirectPolicy>(
+      'netRedirectPolicy',
+    );
+    policyGroupName = registerOutput<String>('policyGroupName');
+    resolutionHeight = registerOutput<int>('resolutionHeight');
+    resolutionWidth = registerOutput<int>('resolutionWidth');
   }
 }

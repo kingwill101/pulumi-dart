@@ -12,15 +12,20 @@ class BackupPlanAssociationArgs {
   /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
   final pulumi.Input<String> backupPlan;
+
   /// The id of backupplan association
   final pulumi.Input<String> backupPlanAssociationId;
+
   /// The location for the backupplan association
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The resource for which BPA needs to be created
   final pulumi.Input<String> resource;
+
   /// The resource type of workload on which backupplan is applied.
   /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
   final pulumi.Input<String> resourceType;
@@ -54,13 +59,18 @@ class BackupPlanAssociationArgs {
 
   factory BackupPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationArgs(
-      backupPlan: (map['backupPlan'] as String).input(),
-      backupPlanAssociationId: (map['backupPlanAssociationId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      resource: (map['resource'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      backupPlan: pulumi.Input.fromValue(map['backupPlan'] as String),
+      backupPlanAssociationId: pulumi.Input.fromValue(
+        map['backupPlanAssociationId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

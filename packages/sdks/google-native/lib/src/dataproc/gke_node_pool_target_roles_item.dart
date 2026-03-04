@@ -5,16 +5,15 @@ enum GkeNodePoolTargetRolesItem {
   sparkDriver("SPARK_DRIVER"),
   sparkExecutor("SPARK_EXECUTOR");
 
-  const GkeNodePoolTargetRolesItem(this.value);
-  final String value;
+  const GkeNodePoolTargetRolesItem(this.wireValue);
+  final String wireValue;
 
   static GkeNodePoolTargetRolesItem fromValue(String value) {
     for (final item in GkeNodePoolTargetRolesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GkeNodePoolTargetRolesItem value: $value');
   }
 }
-

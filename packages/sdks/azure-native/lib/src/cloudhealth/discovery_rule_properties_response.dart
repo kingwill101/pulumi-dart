@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiscoveryRulePropertiesResponse {
   /// Whether to add all recommended signals to the discovered entities.
   final pulumi.Input<String> addRecommendedSignals;
+
   /// Reference to the name of the authentication setting which is used for querying Azure Resource Graph. The same authentication setting will also be assigned to any discovered entities.
   final pulumi.Input<String> authenticationSetting;
+
   /// Date when the discovery rule was (soft-)deleted.
   final pulumi.Input<String> deletionDate;
+
   /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
   final pulumi.Input<String> discoverRelationships;
+
   /// Display name
   final pulumi.Input<String>? displayName;
+
   /// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
   final pulumi.Input<String> entityName;
+
   /// Error message if the last discovery operation failed.
   final pulumi.Input<String> errorMessage;
+
   /// Number of discovered entities in the last discovery operation.
   final pulumi.Input<int> numberOfDiscoveredEntities;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
+
   /// Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
   final pulumi.Input<String> resourceGraphQuery;
 
@@ -66,17 +75,32 @@ class DiscoveryRulePropertiesResponse {
 
   factory DiscoveryRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveryRulePropertiesResponse(
-      addRecommendedSignals: (map['addRecommendedSignals'] as String).input(),
-      authenticationSetting: (map['authenticationSetting'] as String).input(),
-      deletionDate: (map['deletionDate'] as String).input(),
-      discoverRelationships: (map['discoverRelationships'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      entityName: (map['entityName'] as String).input(),
-      errorMessage: (map['errorMessage'] as String).input(),
-      numberOfDiscoveredEntities: (map['numberOfDiscoveredEntities'] as int).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      resourceGraphQuery: (map['resourceGraphQuery'] as String).input(),
+      addRecommendedSignals: pulumi.Input.fromValue(
+        map['addRecommendedSignals'] as String,
+      ),
+      authenticationSetting: pulumi.Input.fromValue(
+        map['authenticationSetting'] as String,
+      ),
+      deletionDate: pulumi.Input.fromValue(map['deletionDate'] as String),
+      discoverRelationships: pulumi.Input.fromValue(
+        map['discoverRelationships'] as String,
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityName: pulumi.Input.fromValue(map['entityName'] as String),
+      errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
+      numberOfDiscoveredEntities: pulumi.Input.fromValue(
+        map['numberOfDiscoveredEntities'] as int,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      resourceGraphQuery: pulumi.Input.fromValue(
+        map['resourceGraphQuery'] as String,
+      ),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class DomainFeaturesAsyncTeardown {
 
   /// Creates a new [DomainFeaturesAsyncTeardown].
   /// [enabled] Enables or disables the asynchronous teardown feature, which can reduce downtime during the shutdown of the virtual machine.
-  DomainFeaturesAsyncTeardown({
-    this.enabled,
-  });
+  DomainFeaturesAsyncTeardown({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory DomainFeaturesAsyncTeardown.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesAsyncTeardown(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

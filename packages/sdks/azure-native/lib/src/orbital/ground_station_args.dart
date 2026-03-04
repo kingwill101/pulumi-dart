@@ -10,24 +10,35 @@ import 'ground_stations_properties_global_communications_site.dart';
 class GroundStationArgs {
   /// Altitude of the ground station.
   final pulumi.Input<double>? altitudeMeters;
+
   /// Ground station capabilities.
   final pulumi.Input<List<String>> capabilities;
+
   /// City of ground station.
   final pulumi.Input<String>? city;
+
   /// A reference to global communications site.
-  final pulumi.Input<GroundStationsPropertiesGlobalCommunicationsSite> globalCommunicationsSite;
+  final pulumi.Input<GroundStationsPropertiesGlobalCommunicationsSite>
+  globalCommunicationsSite;
+
   /// Ground Station name.
   final pulumi.Input<String>? groundStationName;
+
   /// Latitude of the ground station in decimal degrees.
   final pulumi.Input<double>? latitudeDegrees;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Longitude of the ground station in decimal degrees.
   final pulumi.Input<double>? longitudeDegrees;
+
   /// Ground station provider name.
   final pulumi.Input<String>? providerName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -62,7 +73,11 @@ class GroundStationArgs {
       'altitudeMeters': ?altitudeMeters,
       'capabilities': capabilities,
       'city': ?city,
-      'globalCommunicationsSite': pulumi.Input.mapInputValue<GroundStationsPropertiesGlobalCommunicationsSite, Map<String, dynamic>>(globalCommunicationsSite, (value) => value.toMap()),
+      'globalCommunicationsSite':
+          pulumi.Input.mapInputValue<
+            GroundStationsPropertiesGlobalCommunicationsSite,
+            Map<String, dynamic>
+          >(globalCommunicationsSite, (value) => value.toMap()),
       'groundStationName': ?groundStationName,
       'latitudeDegrees': ?latitudeDegrees,
       'location': ?location,
@@ -75,18 +90,59 @@ class GroundStationArgs {
 
   factory GroundStationArgs.fromMap(Map<String, dynamic> map) {
     return GroundStationArgs(
-      altitudeMeters: map['altitudeMeters'] == null ? null : (map['altitudeMeters']! as double).input(),
-      capabilities: ((map['capabilities'] as List).cast<String>()).input(),
-      city: map['city'] == null ? null : (map['city']! as String).input(),
-      globalCommunicationsSite: (GroundStationsPropertiesGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite'] as Map).cast<String, dynamic>())).input(),
-      groundStationName: map['groundStationName'] == null ? null : (map['groundStationName']! as String).input(),
-      latitudeDegrees: map['latitudeDegrees'] == null ? null : (map['latitudeDegrees']! as double).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      longitudeDegrees: map['longitudeDegrees'] == null ? null : (map['longitudeDegrees']! as double).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      altitudeMeters: (() {
+        final guardedValue = map['altitudeMeters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      capabilities: pulumi.Input.fromValue(
+        (map['capabilities'] as List).cast<String>(),
+      ),
+      city: (() {
+        final guardedValue = map['city'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalCommunicationsSite: pulumi.Input.fromValue(
+        GroundStationsPropertiesGlobalCommunicationsSite.fromMap(
+          (map['globalCommunicationsSite']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      groundStationName: (() {
+        final guardedValue = map['groundStationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      latitudeDegrees: (() {
+        final guardedValue = map['latitudeDegrees'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      longitudeDegrees: (() {
+        final guardedValue = map['longitudeDegrees'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'managed_service_identity_response.dart';
 class EncryptionResponse {
   /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+
   /// The name of the key vault key.
   final pulumi.Input<String> keyName;
+
   /// The URI of the key vault.
   final pulumi.Input<String> keyVaultUri;
 
@@ -24,7 +26,11 @@ class EncryptionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentityResponse,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'keyName': keyName,
       'keyVaultUri': keyVaultUri,
     };
@@ -32,10 +38,17 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keyName: (map['keyName'] as String).input(),
-      keyVaultUri: (map['keyVaultUri'] as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
     );
   }
 }
-

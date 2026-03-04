@@ -3,16 +3,15 @@ enum ElasticNfsv3Access {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const ElasticNfsv3Access(this.value);
-  final String value;
+  const ElasticNfsv3Access(this.wireValue);
+  final String wireValue;
 
   static ElasticNfsv3Access fromValue(String value) {
     for (final item in ElasticNfsv3Access.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticNfsv3Access value: $value');
   }
 }
-

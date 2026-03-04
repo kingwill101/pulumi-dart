@@ -31,10 +31,13 @@ class GetWorkerPoolCloudbuildV1beta1Args {
 
   factory GetWorkerPoolCloudbuildV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolCloudbuildV1beta1Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workerPoolId: (map['workerPoolId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workerPoolId: pulumi.Input.fromValue(map['workerPoolId'] as String),
     );
   }
 }
-

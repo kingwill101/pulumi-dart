@@ -1,23 +1,38 @@
 enum DeliveryRuleActionParametersType {
-  deliveryRuleUrlRedirectActionParameters("DeliveryRuleUrlRedirectActionParameters"),
-  deliveryRuleUrlSigningActionParameters("DeliveryRuleUrlSigningActionParameters"),
-  deliveryRuleOriginGroupOverrideActionParameters("DeliveryRuleOriginGroupOverrideActionParameters"),
-  deliveryRuleUrlRewriteActionParameters("DeliveryRuleUrlRewriteActionParameters"),
+  deliveryRuleUrlRedirectActionParameters(
+    "DeliveryRuleUrlRedirectActionParameters",
+  ),
+  deliveryRuleUrlSigningActionParameters(
+    "DeliveryRuleUrlSigningActionParameters",
+  ),
+  deliveryRuleOriginGroupOverrideActionParameters(
+    "DeliveryRuleOriginGroupOverrideActionParameters",
+  ),
+  deliveryRuleUrlRewriteActionParameters(
+    "DeliveryRuleUrlRewriteActionParameters",
+  ),
   deliveryRuleHeaderActionParameters("DeliveryRuleHeaderActionParameters"),
-  deliveryRuleCacheExpirationActionParameters("DeliveryRuleCacheExpirationActionParameters"),
-  deliveryRuleCacheKeyQueryStringBehaviorActionParameters("DeliveryRuleCacheKeyQueryStringBehaviorActionParameters"),
-  deliveryRuleRouteConfigurationOverrideActionParameters("DeliveryRuleRouteConfigurationOverrideActionParameters");
+  deliveryRuleCacheExpirationActionParameters(
+    "DeliveryRuleCacheExpirationActionParameters",
+  ),
+  deliveryRuleCacheKeyQueryStringBehaviorActionParameters(
+    "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters",
+  ),
+  deliveryRuleRouteConfigurationOverrideActionParameters(
+    "DeliveryRuleRouteConfigurationOverrideActionParameters",
+  );
 
-  const DeliveryRuleActionParametersType(this.value);
-  final String value;
+  const DeliveryRuleActionParametersType(this.wireValue);
+  final String wireValue;
 
   static DeliveryRuleActionParametersType fromValue(String value) {
     for (final item in DeliveryRuleActionParametersType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeliveryRuleActionParametersType value: $value');
+    throw ArgumentError(
+      'Unknown DeliveryRuleActionParametersType value: $value',
+    );
   }
 }
-

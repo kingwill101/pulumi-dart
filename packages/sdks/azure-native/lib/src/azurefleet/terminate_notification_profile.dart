@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TerminateNotificationProfile {
   /// Specifies whether the Terminate Scheduled event is enabled or disabled.
   final pulumi.Input<bool>? enable;
+
   /// Configurable length of time a Virtual Machine being deleted will have to
   /// potentially approve the Terminate Scheduled Event before the event is auto
   /// approved (timed out). The configuration must be specified in ISO 8601 format,
@@ -15,10 +16,7 @@ class TerminateNotificationProfile {
   /// Creates a new [TerminateNotificationProfile].
   /// [enable] Specifies whether the Terminate Scheduled event is enabled or disabled.
   /// [notBeforeTimeout] Configurable length of time a Virtual Machine being deleted will have to
-  TerminateNotificationProfile({
-    this.enable,
-    this.notBeforeTimeout,
-  });
+  TerminateNotificationProfile({this.enable, this.notBeforeTimeout});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class TerminateNotificationProfile {
 
   factory TerminateNotificationProfile.fromMap(Map<String, dynamic> map) {
     return TerminateNotificationProfile(
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
-      notBeforeTimeout: map['notBeforeTimeout'] == null ? null : (map['notBeforeTimeout']! as String).input(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      notBeforeTimeout: (() {
+        final guardedValue = map['notBeforeTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

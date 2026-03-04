@@ -28,12 +28,17 @@ class GetResourcesResourceTagMappingListComplianceDetail {
     };
   }
 
-  factory GetResourcesResourceTagMappingListComplianceDetail.fromMap(Map<String, dynamic> map) {
+  factory GetResourcesResourceTagMappingListComplianceDetail.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResourcesResourceTagMappingListComplianceDetail(
-      complianceStatus: (map['complianceStatus'] as bool).input(),
-      keysWithNoncompliantValues: ((map['keysWithNoncompliantValues'] as List).cast<String>()).input(),
-      nonCompliantKeys: ((map['nonCompliantKeys'] as List).cast<String>()).input(),
+      complianceStatus: pulumi.Input.fromValue(map['complianceStatus'] as bool),
+      keysWithNoncompliantValues: pulumi.Input.fromValue(
+        (map['keysWithNoncompliantValues'] as List).cast<String>(),
+      ),
+      nonCompliantKeys: pulumi.Input.fromValue(
+        (map['nonCompliantKeys'] as List).cast<String>(),
+      ),
     );
   }
 }
-

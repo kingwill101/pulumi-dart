@@ -7,16 +7,20 @@ enum SubnetworkLogConfigAggregationIntervalComputeBeta {
   interval5Min("INTERVAL_5_MIN"),
   interval5Sec("INTERVAL_5_SEC");
 
-  const SubnetworkLogConfigAggregationIntervalComputeBeta(this.value);
-  final String value;
+  const SubnetworkLogConfigAggregationIntervalComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static SubnetworkLogConfigAggregationIntervalComputeBeta fromValue(String value) {
-    for (final item in SubnetworkLogConfigAggregationIntervalComputeBeta.values) {
-      if (item.value == value) {
+  static SubnetworkLogConfigAggregationIntervalComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in SubnetworkLogConfigAggregationIntervalComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkLogConfigAggregationIntervalComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkLogConfigAggregationIntervalComputeBeta value: $value',
+    );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_dataform;
-
 export 'dataform/binding.dart';
 export 'dataform/binding_response.dart';
 export 'dataform/code_compilation_config.dart';

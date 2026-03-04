@@ -7,12 +7,16 @@ import 'origin_response.dart';
 class RelatedResourceResponse {
   /// The time this relation was added to the issue (in UTC)
   final pulumi.Input<String> addedAt;
+
   /// The resource ID
   final pulumi.Input<String> id;
+
   /// The last update time of this relation (in UTC)
   final pulumi.Input<String> lastModifiedAt;
+
   /// The source that related the resource to the issue
   final pulumi.Input<OriginResponse> origin;
+
   /// The resource's relevance status
   final pulumi.Input<String> relevance;
 
@@ -35,19 +39,24 @@ class RelatedResourceResponse {
       'addedAt': addedAt,
       'id': id,
       'lastModifiedAt': lastModifiedAt,
-      'origin': pulumi.Input.mapInputValue<OriginResponse, Map<String, dynamic>>(origin, (value) => value.toMap()),
+      'origin':
+          pulumi.Input.mapInputValue<OriginResponse, Map<String, dynamic>>(
+            origin,
+            (value) => value.toMap(),
+          ),
       'relevance': relevance,
     };
   }
 
   factory RelatedResourceResponse.fromMap(Map<String, dynamic> map) {
     return RelatedResourceResponse(
-      addedAt: (map['addedAt'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
-      origin: (OriginResponse.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
-      relevance: (map['relevance'] as String).input(),
+      addedAt: pulumi.Input.fromValue(map['addedAt'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastModifiedAt: pulumi.Input.fromValue(map['lastModifiedAt'] as String),
+      origin: pulumi.Input.fromValue(
+        OriginResponse.fromMap((map['origin']! as Map).cast<String, dynamic>()),
+      ),
+      relevance: pulumi.Input.fromValue(map['relevance'] as String),
     );
   }
 }
-

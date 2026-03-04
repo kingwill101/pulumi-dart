@@ -166,34 +166,49 @@ import 'watcher_args.dart';
 class Watcher extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the creation time.
   late final pulumi.Output<String> creationTime;
+
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
+
   /// Gets or sets the etag of the resource.
   late final pulumi.Output<String?> etag;
+
   /// Gets or sets the frequency at which the watcher is invoked.
   late final pulumi.Output<double?> executionFrequencyInSeconds;
+
   /// Details of the user who last modified the watcher.
   late final pulumi.Output<String> lastModifiedBy;
+
   /// Gets or sets the last modified time.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook.
   late final pulumi.Output<String?> scriptName;
+
   /// Gets or sets the parameters of the script.
   late final pulumi.Output<Map<String, String>?> scriptParameters;
+
   /// Gets or sets the name of the hybrid worker group the watcher will run on.
   late final pulumi.Output<String?> scriptRunOn;
+
   /// Gets the current status of the watcher.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -206,26 +221,28 @@ class Watcher extends pulumi.CustomResource {
     WatcherArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:Watcher',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationTime = registerOutput<String>('creationTime');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.executionFrequencyInSeconds = registerOutput<double?>('executionFrequencyInSeconds');
-    this.lastModifiedBy = registerOutput<String>('lastModifiedBy');
-    this.lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    this.location = registerOutput<String?>('location');
+         'azure-native:automation:Watcher',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    executionFrequencyInSeconds = registerOutput<double?>(
+      'executionFrequencyInSeconds',
+    );
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.scriptName = registerOutput<String?>('scriptName');
-    this.scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
-    this.scriptRunOn = registerOutput<String?>('scriptRunOn');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    scriptName = registerOutput<String?>('scriptName');
+    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
+    scriptRunOn = registerOutput<String?>('scriptRunOn');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

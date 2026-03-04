@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionalSharingStatusResponse {
   /// Details of gallery regional sharing failure.
   final pulumi.Input<String>? details;
+
   /// Region name
   final pulumi.Input<String>? region;
+
   /// Gallery sharing state in current region
   final pulumi.Input<String> state;
 
@@ -31,10 +33,17 @@ class RegionalSharingStatusResponse {
 
   factory RegionalSharingStatusResponse.fromMap(Map<String, dynamic> map) {
     return RegionalSharingStatusResponse(
-      details: map['details'] == null ? null : (map['details']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      state: (map['state'] as String).input(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

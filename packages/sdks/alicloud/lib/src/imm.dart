@@ -1,5 +1,3 @@
-library module_imm;
-
 export 'imm/functions.dart';
 export 'imm/get_projects_args.dart';
 export 'imm/get_projects_project.dart';

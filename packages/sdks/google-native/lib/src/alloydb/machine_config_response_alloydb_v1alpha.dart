@@ -9,20 +9,17 @@ class MachineConfigResponseAlloydbV1alpha {
 
   /// Creates a new [MachineConfigResponseAlloydbV1alpha].
   /// [cpuCount] The number of CPU's in the VM instance.
-  MachineConfigResponseAlloydbV1alpha({
-    required this.cpuCount,
-  });
+  MachineConfigResponseAlloydbV1alpha({required this.cpuCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpuCount': cpuCount,
-    };
+    return <String, dynamic>{'cpuCount': cpuCount};
   }
 
-  factory MachineConfigResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
+  factory MachineConfigResponseAlloydbV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MachineConfigResponseAlloydbV1alpha(
-      cpuCount: (map['cpuCount'] as int).input(),
+      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseEnginesEngine {
   /// The Managed Database engine type.
   final pulumi.Input<String> engine;
+
   /// The Managed Database engine ID in engine/version format.
   final pulumi.Input<String> id;
+
   /// The Managed Database engine version.
   final pulumi.Input<String> version;
 
@@ -21,19 +23,14 @@ class GetDatabaseEnginesEngine {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'engine': engine,
-      'id': id,
-      'version': version,
-    };
+    return <String, dynamic>{'engine': engine, 'id': id, 'version': version};
   }
 
   factory GetDatabaseEnginesEngine.fromMap(Map<String, dynamic> map) {
     return GetDatabaseEnginesEngine(
-      engine: (map['engine'] as String).input(),
-      id: (map['id'] as String).input(),
-      version: (map['version'] as String).input(),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

@@ -8,16 +8,15 @@ enum PackageStudioTabs {
   valueTagsTab("TagsTab"),
   valueReviewAndCreateTab("ReviewAndCreateTab");
 
-  const PackageStudioTabs(this.value);
-  final String value;
+  const PackageStudioTabs(this.wireValue);
+  final String wireValue;
 
   static PackageStudioTabs fromValue(String value) {
     for (final item in PackageStudioTabs.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PackageStudioTabs value: $value');
   }
 }
-

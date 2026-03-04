@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppGroupsGroupQuota {
   /// Computing resources. Unit: LCU.
   final pulumi.Input<String> computeResource;
+
   /// Storage Size. Unit: GB.
   final pulumi.Input<String> docSize;
+
   /// Specification. Valid values:
   /// * `opensearch.share.junior`: Entry-level.
   /// * `opensearch.share.common`: Shared universal.
@@ -37,10 +39,9 @@ class GetAppGroupsGroupQuota {
 
   factory GetAppGroupsGroupQuota.fromMap(Map<String, dynamic> map) {
     return GetAppGroupsGroupQuota(
-      computeResource: (map['computeResource'] as String).input(),
-      docSize: (map['docSize'] as String).input(),
-      spec: (map['spec'] as String).input(),
+      computeResource: pulumi.Input.fromValue(map['computeResource'] as String),
+      docSize: pulumi.Input.fromValue(map['docSize'] as String),
+      spec: pulumi.Input.fromValue(map['spec'] as String),
     );
   }
 }
-

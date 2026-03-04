@@ -9,20 +9,19 @@ class ClusterInfo {
 
   /// Creates a new [ClusterInfo].
   /// [id] The resource id of cluster.
-  ClusterInfo({
-    this.id,
-  });
+  ClusterInfo({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ClusterInfo.fromMap(Map<String, dynamic> map) {
     return ClusterInfo(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

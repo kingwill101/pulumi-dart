@@ -9,20 +9,35 @@ class GetOsProfileLinux {
 
   /// Creates a new [GetOsProfileLinux].
   /// [patches] A `patch` block as defined above.
-  GetOsProfileLinux({
-    required this.patches,
-  });
+  GetOsProfileLinux({required this.patches});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'patches': pulumi.Input.mapInputValue<List<GetOsProfileLinuxPatch>, List<Map<String, dynamic>>>(patches, (value) => pulumi.Input.encodeList<GetOsProfileLinuxPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'patches':
+          pulumi.Input.mapInputValue<
+            List<GetOsProfileLinuxPatch>,
+            List<Map<String, dynamic>>
+          >(
+            patches,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetOsProfileLinuxPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetOsProfileLinux.fromMap(Map<String, dynamic> map) {
     return GetOsProfileLinux(
-      patches: (pulumi.Input.decodeList<GetOsProfileLinuxPatch>(map['patches'], (value) => GetOsProfileLinuxPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patches: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetOsProfileLinuxPatch>(
+          map['patches']!,
+          (value) => GetOsProfileLinuxPatch.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

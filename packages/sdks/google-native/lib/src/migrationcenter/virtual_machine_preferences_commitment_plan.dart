@@ -5,16 +5,17 @@ enum VirtualMachinePreferencesCommitmentPlan {
   commitmentPlanOneYear("COMMITMENT_PLAN_ONE_YEAR"),
   commitmentPlanThreeYears("COMMITMENT_PLAN_THREE_YEARS");
 
-  const VirtualMachinePreferencesCommitmentPlan(this.value);
-  final String value;
+  const VirtualMachinePreferencesCommitmentPlan(this.wireValue);
+  final String wireValue;
 
   static VirtualMachinePreferencesCommitmentPlan fromValue(String value) {
     for (final item in VirtualMachinePreferencesCommitmentPlan.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachinePreferencesCommitmentPlan value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachinePreferencesCommitmentPlan value: $value',
+    );
   }
 }
-

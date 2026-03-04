@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MachineExtensionInstanceViewResponseStatus {
   /// The status code.
   final pulumi.Input<String>? code;
+
   /// The short localizable label for the status.
   final pulumi.Input<String>? displayStatus;
+
   /// The level code.
   final pulumi.Input<String>? level;
+
   /// The detailed status message, including for alerts and error messages.
   final pulumi.Input<String>? message;
+
   /// The time of the status.
   final pulumi.Input<String>? time;
 
@@ -39,14 +43,35 @@ class MachineExtensionInstanceViewResponseStatus {
     };
   }
 
-  factory MachineExtensionInstanceViewResponseStatus.fromMap(Map<String, dynamic> map) {
+  factory MachineExtensionInstanceViewResponseStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MachineExtensionInstanceViewResponseStatus(
-      code: map['code'] == null ? null : (map['code']! as String).input(),
-      displayStatus: map['displayStatus'] == null ? null : (map['displayStatus']! as String).input(),
-      level: map['level'] == null ? null : (map['level']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      time: map['time'] == null ? null : (map['time']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayStatus: (() {
+        final guardedValue = map['displayStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      time: (() {
+        final guardedValue = map['time'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

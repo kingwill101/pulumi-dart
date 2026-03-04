@@ -9,20 +9,39 @@ class BackendBaseParametersResponsePool {
 
   /// Creates a new [BackendBaseParametersResponsePool].
   /// [services] The list of backend entities belonging to a pool.
-  BackendBaseParametersResponsePool({
-    this.services,
-  });
+  BackendBaseParametersResponsePool({this.services});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'services': ?pulumi.Input.mapOptionalInputValue<List<BackendPoolItemResponse>, List<Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeList<BackendPoolItemResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'services':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BackendPoolItemResponse>,
+            List<Map<String, dynamic>>
+          >(
+            services,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BackendPoolItemResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory BackendBaseParametersResponsePool.fromMap(Map<String, dynamic> map) {
     return BackendBaseParametersResponsePool(
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<BackendPoolItemResponse>(map['services']!, (value) => BackendPoolItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      services: (() {
+        final guardedValue = map['services'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BackendPoolItemResponse>(
+            guardedValue,
+            (value) => BackendPoolItemResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

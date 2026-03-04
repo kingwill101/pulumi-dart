@@ -4,16 +4,17 @@ enum FreeInstanceMetadataExpireBehavior {
   freeToProvisioned("FREE_TO_PROVISIONED"),
   removeAfterGracePeriod("REMOVE_AFTER_GRACE_PERIOD");
 
-  const FreeInstanceMetadataExpireBehavior(this.value);
-  final String value;
+  const FreeInstanceMetadataExpireBehavior(this.wireValue);
+  final String wireValue;
 
   static FreeInstanceMetadataExpireBehavior fromValue(String value) {
     for (final item in FreeInstanceMetadataExpireBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FreeInstanceMetadataExpireBehavior value: $value');
+    throw ArgumentError(
+      'Unknown FreeInstanceMetadataExpireBehavior value: $value',
+    );
   }
 }
-

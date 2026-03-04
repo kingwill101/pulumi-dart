@@ -5,23 +5,27 @@ import 'type_enum_value_response.dart';
 
 /// Definition of Grantee
 class GranteeResponse {
-  /// <p>Screen name of the grantee.</p>
+  /// &lt;p&gt;Screen name of the grantee.&lt;/p&gt;
   final pulumi.Input<String>? displayName;
-  /// <p>Email address of the grantee.</p> <note> <p>Using email addresses to specify a grantee is only supported in the following Amazon Web Services Regions: </p> <ul> <li> <p>US East (N. Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p> US West (Oregon)</p> </li> <li> <p> Asia Pacific (Singapore)</p> </li> <li> <p>Asia Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul> <p>For a list of all the Amazon S3 supported Regions and endpoints, see <a href='https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region'>Regions and Endpoints</a> in the Amazon Web Services General Reference.</p> </note>
+
+  /// &lt;p&gt;Email address of the grantee.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Using email addresses to specify a grantee is only supported in the following Amazon Web Services Regions: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;US East (N. Virginia)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (N. California)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; US West (Oregon)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; Asia Pacific (Singapore)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Sydney)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Tokyo)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Europe (Ireland)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;South America (São Paulo)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For a list of all the Amazon S3 supported Regions and endpoints, see &lt;a href='https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region'&gt;Regions and Endpoints&lt;/a&gt; in the Amazon Web Services General Reference.&lt;/p&gt; &lt;/note&gt;
   final pulumi.Input<String>? emailAddress;
-  /// <p>The canonical user ID of the grantee.</p>
+
+  /// &lt;p&gt;The canonical user ID of the grantee.&lt;/p&gt;
   final pulumi.Input<String>? id;
-  /// <p>Type of grantee</p>
+
+  /// &lt;p&gt;Type of grantee&lt;/p&gt;
   final pulumi.Input<TypeEnumValueResponse>? type;
-  /// <p>URI of the grantee group.</p>
+
+  /// &lt;p&gt;URI of the grantee group.&lt;/p&gt;
   final pulumi.Input<String>? uri;
 
   /// Creates a new [GranteeResponse].
-  /// [displayName] <p>Screen name of the grantee.</p>
-  /// [emailAddress] <p>Email address of the grantee.</p> <note> <p>Using email addresses to specify a grantee is only supported in the following Amazon Web Services Regions: </p> <ul> <li> <p>US East (N. Virginia)</p> </li> <li> <p>US West (N. California)</p> </li> <li> <p> US West (Oregon)</p> </li> <li> <p> Asia Pacific (Singapore)</p> </li> <li> <p>Asia Pacific (Sydney)</p> </li> <li> <p>Asia Pacific (Tokyo)</p> </li> <li> <p>Europe (Ireland)</p> </li> <li> <p>South America (São Paulo)</p> </li> </ul> <p>For a list of all the Amazon S3 supported Regions and endpoints, see <a href='https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region'>Regions and Endpoints</a> in the Amazon Web Services General Reference.</p> </note>
-  /// [id] <p>The canonical user ID of the grantee.</p>
-  /// [type] <p>Type of grantee</p>
-  /// [uri] <p>URI of the grantee group.</p>
+  /// [displayName] &lt;p&gt;Screen name of the grantee.&lt;/p&gt;
+  /// [emailAddress] &lt;p&gt;Email address of the grantee.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Using email addresses to specify a grantee is only supported in the following Amazon Web Services Regions: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;US East (N. Virginia)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (N. California)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; US West (Oregon)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; Asia Pacific (Singapore)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Sydney)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Tokyo)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Europe (Ireland)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;South America (São Paulo)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For a list of all the Amazon S3 supported Regions and endpoints, see &lt;a href='https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region'&gt;Regions and Endpoints&lt;/a&gt; in the Amazon Web Services General Reference.&lt;/p&gt; &lt;/note&gt;
+  /// [id] &lt;p&gt;The canonical user ID of the grantee.&lt;/p&gt;
+  /// [type] &lt;p&gt;Type of grantee&lt;/p&gt;
+  /// [uri] &lt;p&gt;URI of the grantee group.&lt;/p&gt;
   GranteeResponse({
     this.displayName,
     this.emailAddress,
@@ -35,19 +39,46 @@ class GranteeResponse {
       'displayName': ?displayName,
       'emailAddress': ?emailAddress,
       'id': ?id,
-      'type': ?pulumi.Input.mapOptionalInputValue<TypeEnumValueResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            TypeEnumValueResponse,
+            Map<String, dynamic>
+          >(type, (value) => value.toMap()),
       'uri': ?uri,
     };
   }
 
   factory GranteeResponse.fromMap(Map<String, dynamic> map) {
     return GranteeResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      type: map['type'] == null ? null : (TypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      emailAddress: (() {
+        final guardedValue = map['emailAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

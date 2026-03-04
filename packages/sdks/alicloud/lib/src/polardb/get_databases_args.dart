@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasesArgs {
   /// The polarDB cluster ID.
   final pulumi.Input<String> dbClusterId;
+
   /// A regex string to filter results by database name.
   final pulumi.Input<String>? nameRegex;
 
   /// Creates a new [GetDatabasesArgs].
   /// [dbClusterId] The polarDB cluster ID.
   /// [nameRegex] A regex string to filter results by database name.
-  GetDatabasesArgs({
-    required this.dbClusterId,
-    this.nameRegex,
-  });
+  GetDatabasesArgs({required this.dbClusterId, this.nameRegex});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,12 @@ class GetDatabasesArgs {
 
   factory GetDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasesArgs(
-      dbClusterId: (map['dbClusterId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      dbClusterId: pulumi.Input.fromValue(map['dbClusterId'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,6 +8,7 @@ import 'grpc_route_fault_injection_policy_delay_response.dart';
 class GrpcRouteFaultInjectionPolicyResponse {
   /// The specification for aborting to client requests.
   final pulumi.Input<GrpcRouteFaultInjectionPolicyAbortResponse> abort;
+
   /// The specification for injecting delay to client requests.
   final pulumi.Input<GrpcRouteFaultInjectionPolicyDelayResponse> delay;
 
@@ -21,16 +22,33 @@ class GrpcRouteFaultInjectionPolicyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'abort': pulumi.Input.mapInputValue<GrpcRouteFaultInjectionPolicyAbortResponse, Map<String, dynamic>>(abort, (value) => value.toMap()),
-      'delay': pulumi.Input.mapInputValue<GrpcRouteFaultInjectionPolicyDelayResponse, Map<String, dynamic>>(delay, (value) => value.toMap()),
+      'abort':
+          pulumi.Input.mapInputValue<
+            GrpcRouteFaultInjectionPolicyAbortResponse,
+            Map<String, dynamic>
+          >(abort, (value) => value.toMap()),
+      'delay':
+          pulumi.Input.mapInputValue<
+            GrpcRouteFaultInjectionPolicyDelayResponse,
+            Map<String, dynamic>
+          >(delay, (value) => value.toMap()),
     };
   }
 
-  factory GrpcRouteFaultInjectionPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory GrpcRouteFaultInjectionPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrpcRouteFaultInjectionPolicyResponse(
-      abort: (GrpcRouteFaultInjectionPolicyAbortResponse.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: (GrpcRouteFaultInjectionPolicyDelayResponse.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: pulumi.Input.fromValue(
+        GrpcRouteFaultInjectionPolicyAbortResponse.fromMap(
+          (map['abort']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      delay: pulumi.Input.fromValue(
+        GrpcRouteFaultInjectionPolicyDelayResponse.fromMap(
+          (map['delay']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

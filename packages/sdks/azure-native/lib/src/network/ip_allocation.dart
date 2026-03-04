@@ -163,28 +163,40 @@ import 'sub_resource_response.dart';
 class IpAllocation extends pulumi.CustomResource {
   /// IpAllocation tags.
   late final pulumi.Output<Map<String, String>?> allocationTags;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The IPAM allocation ID.
   late final pulumi.Output<String?> ipamAllocationId;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The address prefix for the IpAllocation.
   late final pulumi.Output<String?> prefix;
+
   /// The address prefix length for the IpAllocation.
   late final pulumi.Output<int?> prefixLength;
+
   /// The address prefix Type for the IpAllocation.
   late final pulumi.Output<String?> prefixType;
+
   /// The Subnet that using the prefix of this IpAllocation resource.
   late final pulumi.Output<SubResourceResponse> subnet;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The VirtualNetwork that using the prefix of this IpAllocation resource.
   late final pulumi.Output<SubResourceResponse> virtualNetwork;
 
@@ -197,23 +209,23 @@ class IpAllocation extends pulumi.CustomResource {
     IpAllocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:IpAllocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationTags = registerOutput<Map<String, String>?>('allocationTags');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.ipamAllocationId = registerOutput<String?>('ipamAllocationId');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:IpAllocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationTags = registerOutput<Map<String, String>?>('allocationTags');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    ipamAllocationId = registerOutput<String?>('ipamAllocationId');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.prefix = registerOutput<String?>('prefix');
-    this.prefixLength = registerOutput<int?>('prefixLength');
-    this.prefixType = registerOutput<String?>('prefixType');
-    this.subnet = registerOutput<SubResourceResponse>('subnet');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualNetwork = registerOutput<SubResourceResponse>('virtualNetwork');
+    prefix = registerOutput<String?>('prefix');
+    prefixLength = registerOutput<int?>('prefixLength');
+    prefixType = registerOutput<String?>('prefixType');
+    subnet = registerOutput<SubResourceResponse>('subnet');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualNetwork = registerOutput<SubResourceResponse>('virtualNetwork');
   }
 }

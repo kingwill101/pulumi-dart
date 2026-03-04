@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventDestinationCloudwatchDestination {
   /// The default value for the event
   final pulumi.Input<String> defaultValue;
+
   /// The name for the dimension
   final pulumi.Input<String> dimensionName;
+
   /// The source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
   final pulumi.Input<String> valueSource;
 
@@ -28,12 +30,13 @@ class EventDestinationCloudwatchDestination {
     };
   }
 
-  factory EventDestinationCloudwatchDestination.fromMap(Map<String, dynamic> map) {
+  factory EventDestinationCloudwatchDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventDestinationCloudwatchDestination(
-      defaultValue: (map['defaultValue'] as String).input(),
-      dimensionName: (map['dimensionName'] as String).input(),
-      valueSource: (map['valueSource'] as String).input(),
+      defaultValue: pulumi.Input.fromValue(map['defaultValue'] as String),
+      dimensionName: pulumi.Input.fromValue(map['dimensionName'] as String),
+      valueSource: pulumi.Input.fromValue(map['valueSource'] as String),
     );
   }
 }
-

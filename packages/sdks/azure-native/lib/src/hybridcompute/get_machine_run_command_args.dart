@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineRunCommandArgs {
   /// The name of the hybrid machine.
   final pulumi.Input<String> machineName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the run command.
   final pulumi.Input<String> runCommandName;
 
@@ -34,10 +36,11 @@ class GetMachineRunCommandArgs {
 
   factory GetMachineRunCommandArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineRunCommandArgs(
-      machineName: (map['machineName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runCommandName: (map['runCommandName'] as String).input(),
+      machineName: pulumi.Input.fromValue(map['machineName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      runCommandName: pulumi.Input.fromValue(map['runCommandName'] as String),
     );
   }
 }
-

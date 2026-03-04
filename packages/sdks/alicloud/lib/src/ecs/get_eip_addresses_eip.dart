@@ -6,18 +6,25 @@ class GetEipAddressesEip {
   /// The maximum bandwidth of the EIP. Unit: Mbit/s.
   final pulumi.Input<String> bandwidth;
   final pulumi.Input<String> creationTime;
+
   /// Indicates whether deletion protection is enabled.
   final pulumi.Input<bool> deletionProtection;
+
   /// The ID of the Address.
   final pulumi.Input<String> id;
+
   /// The ID of the instance with which the EIP is associated.
   final pulumi.Input<String> instanceId;
+
   /// The type of the instance with which the EIP is associated.
   final pulumi.Input<String> instanceType;
+
   /// The metering method of the EIP.
   final pulumi.Input<String> internetChargeType;
+
   /// The eip address.
   final pulumi.Input<String> ipAddress;
+
   /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
   final pulumi.Input<String> status;
 
@@ -59,16 +66,19 @@ class GetEipAddressesEip {
 
   factory GetEipAddressesEip.fromMap(Map<String, dynamic> map) {
     return GetEipAddressesEip(
-      bandwidth: (map['bandwidth'] as String).input(),
-      creationTime: (map['creationTime'] as String).input(),
-      deletionProtection: (map['deletionProtection'] as bool).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      internetChargeType: (map['internetChargeType'] as String).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      status: (map['status'] as String).input(),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as String),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      deletionProtection: pulumi.Input.fromValue(
+        map['deletionProtection'] as bool,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      internetChargeType: pulumi.Input.fromValue(
+        map['internetChargeType'] as String,
+      ),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

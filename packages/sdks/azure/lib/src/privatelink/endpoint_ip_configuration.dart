@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointIpConfiguration {
   /// Specifies the member name this IP address applies to. If it is not specified, it will use the value of `subresource_name`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `member_name` will be required and will not take the value of `subresource_name` in the next major version.
+  /// &gt; **Note:** `member_name` will be required and will not take the value of `subresource_name` in the next major version.
   final pulumi.Input<String>? memberName;
+
   /// Specifies the Name of the IP Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
+
   /// Specifies the static IP address within the private endpoint's subnet to be used. Changing this forces a new resource to be created.
   final pulumi.Input<String> privateIpAddress;
+
   /// Specifies the subresource this IP address applies to. `subresource_names` corresponds to `group_id`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subresourceName;
 
@@ -37,11 +40,20 @@ class EndpointIpConfiguration {
 
   factory EndpointIpConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointIpConfiguration(
-      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
-      name: (map['name'] as String).input(),
-      privateIpAddress: (map['privateIpAddress'] as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
+      memberName: (() {
+        final guardedValue = map['memberName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      privateIpAddress: pulumi.Input.fromValue(
+        map['privateIpAddress'] as String,
+      ),
+      subresourceName: (() {
+        final guardedValue = map['subresourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

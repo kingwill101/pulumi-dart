@@ -10,20 +10,29 @@ class K8sSettingsResponse {
 
   /// Creates a new [K8sSettingsResponse].
   /// [network] The kubernetes network settings information.
-  K8sSettingsResponse({
-    this.network,
-  });
+  K8sSettingsResponse({this.network});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'network': ?pulumi.Input.mapOptionalInputValue<K8sNetworkSettingsResponse, Map<String, dynamic>>(network, (value) => value.toMap()),
+      'network':
+          ?pulumi.Input.mapOptionalInputValue<
+            K8sNetworkSettingsResponse,
+            Map<String, dynamic>
+          >(network, (value) => value.toMap()),
     };
   }
 
   factory K8sSettingsResponse.fromMap(Map<String, dynamic> map) {
     return K8sSettingsResponse(
-      network: map['network'] == null ? null : (K8sNetworkSettingsResponse.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          K8sNetworkSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

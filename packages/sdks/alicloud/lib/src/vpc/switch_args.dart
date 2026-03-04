@@ -9,24 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SwitchArgs {
   /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
   final pulumi.Input<String>? availabilityZone;
+
   /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
   final pulumi.Input<String>? cidrBlock;
+
   /// The description of VSwitch.
   final pulumi.Input<String>? description;
+
   /// Whether the IPv6 function is enabled in the switch. Value:
   final pulumi.Input<bool>? enableIpv6;
+
   /// The IPv6 CIDR block of the VSwitch.
   final pulumi.Input<int>? ipv6CidrBlockMask;
+
   /// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
   final pulumi.Input<bool>? isDefault;
+
   /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
   final pulumi.Input<String>? name;
+
   /// The tags of VSwitch.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
   final pulumi.Input<String>? vpcId;
+
   /// The name of the VSwitch.
   final pulumi.Input<String>? vswitchName;
+
   /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
   final pulumi.Input<String>? zoneId;
 
@@ -74,18 +84,63 @@ class SwitchArgs {
 
   factory SwitchArgs.fromMap(Map<String, dynamic> map) {
     return SwitchArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6']! as bool).input(),
-      ipv6CidrBlockMask: map['ipv6CidrBlockMask'] == null ? null : (map['ipv6CidrBlockMask']! as int).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableIpv6: (() {
+        final guardedValue = map['enableIpv6'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv6CidrBlockMask: (() {
+        final guardedValue = map['ipv6CidrBlockMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      isDefault: (() {
+        final guardedValue = map['isDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchName: (() {
+        final guardedValue = map['vswitchName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

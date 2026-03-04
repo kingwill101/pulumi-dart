@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_hub_args.dart';
-import 'virtual_hub_route.dart';
 import 'virtual_hub_state.dart';
 
 /// Manages a Virtual Hub within a Virtual WAN.
@@ -194,7 +193,7 @@ import 'virtual_hub_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -209,30 +208,43 @@ import 'virtual_hub_state.dart';
 class VirtualHub extends pulumi.CustomResource {
   /// The Address Prefix which should be used for this Virtual Hub. Changing this forces a new resource to be created. [The address prefix subnet cannot be smaller than a `/24`. Azure recommends using a `/23`](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-faq#what-is-the-recommended-hub-address-space-during-hub-creation).
   late final pulumi.Output<String?> addressPrefix;
+
   /// Boolean flag to specify whether branch to branch traffic is allowed. Defaults to `false`.
   late final pulumi.Output<bool?> branchToBranchTrafficEnabled;
+
   /// The ID of the default Route Table in the Virtual Hub.
   late final pulumi.Output<String> defaultRouteTableId;
+
   /// The hub routing preference. Possible values are `ExpressRoute`, `ASPath` and `VpnGateway`. Defaults to `ExpressRoute`.
   late final pulumi.Output<String?> hubRoutingPreference;
+
   /// Specifies the supported Azure location where the Virtual Hub should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Virtual Hub. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group where the Virtual Hub should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// One or more `route` blocks as defined below.
-  late final pulumi.Output<List<VirtualHubRoute>?> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+
   /// The SKU of the Virtual Hub. Possible values are `Basic` and `Standard`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sku;
+
   /// A mapping of tags to assign to the Virtual Hub.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Autonomous System Number of the Virtual Hub BGP router.
   late final pulumi.Output<int> virtualRouterAsn;
+
   /// Minimum instance capacity for the scaling configuration of the Virtual Hub Router. Defaults to `2`.
   late final pulumi.Output<int?> virtualRouterAutoScaleMinCapacity;
+
   /// The IP addresses of the Virtual Hub BGP router.
   late final pulumi.Output<List<String>> virtualRouterIps;
+
   /// The ID of a Virtual WAN within which the Virtual Hub should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> virtualWanId;
 
@@ -245,25 +257,29 @@ class VirtualHub extends pulumi.CustomResource {
     VirtualHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualHub:VirtualHub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefix = registerOutput<String?>('addressPrefix');
-    this.branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
-    this.defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
-    this.hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
-    this.location = registerOutput<String>('location');
+         'azure:network/virtualHub:VirtualHub',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    branchToBranchTrafficEnabled = registerOutput<bool?>(
+      'branchToBranchTrafficEnabled',
+    );
+    defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
+    hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routes = registerOutput<List<VirtualHubRoute>?>('routes');
-    this.sku = registerOutput<String?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
-    this.virtualRouterAutoScaleMinCapacity = registerOutput<int?>('virtualRouterAutoScaleMinCapacity');
-    this.virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
-    this.virtualWanId = registerOutput<String?>('virtualWanId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
+    virtualRouterAutoScaleMinCapacity = registerOutput<int?>(
+      'virtualRouterAutoScaleMinCapacity',
+    );
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    virtualWanId = registerOutput<String?>('virtualWanId');
   }
 
   /// Gets an existing [VirtualHub] resource's state with the given [name] and [id].
@@ -284,24 +300,28 @@ class VirtualHub extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/virtualHub:VirtualHub',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefix = registerOutput<String?>('addressPrefix');
-    this.branchToBranchTrafficEnabled = registerOutput<bool?>('branchToBranchTrafficEnabled');
-    this.defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
-    this.hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
-    this.location = registerOutput<String>('location');
+         'azure:network/virtualHub:VirtualHub',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    branchToBranchTrafficEnabled = registerOutput<bool?>(
+      'branchToBranchTrafficEnabled',
+    );
+    defaultRouteTableId = registerOutput<String>('defaultRouteTableId');
+    hubRoutingPreference = registerOutput<String?>('hubRoutingPreference');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routes = registerOutput<List<VirtualHubRoute>?>('routes');
-    this.sku = registerOutput<String?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
-    this.virtualRouterAutoScaleMinCapacity = registerOutput<int?>('virtualRouterAutoScaleMinCapacity');
-    this.virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
-    this.virtualWanId = registerOutput<String?>('virtualWanId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    sku = registerOutput<String?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualRouterAsn = registerOutput<int>('virtualRouterAsn');
+    virtualRouterAutoScaleMinCapacity = registerOutput<int?>(
+      'virtualRouterAutoScaleMinCapacity',
+    );
+    virtualRouterIps = registerOutput<List<String>>('virtualRouterIps');
+    virtualWanId = registerOutput<String?>('virtualWanId');
   }
 }

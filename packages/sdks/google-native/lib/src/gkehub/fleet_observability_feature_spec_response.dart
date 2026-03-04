@@ -10,20 +10,27 @@ class FleetObservabilityFeatureSpecResponse {
 
   /// Creates a new [FleetObservabilityFeatureSpecResponse].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
-  FleetObservabilityFeatureSpecResponse({
-    required this.loggingConfig,
-  });
+  FleetObservabilityFeatureSpecResponse({required this.loggingConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'loggingConfig': pulumi.Input.mapInputValue<FleetObservabilityLoggingConfigResponse, Map<String, dynamic>>(loggingConfig, (value) => value.toMap()),
+      'loggingConfig':
+          pulumi.Input.mapInputValue<
+            FleetObservabilityLoggingConfigResponse,
+            Map<String, dynamic>
+          >(loggingConfig, (value) => value.toMap()),
     };
   }
 
-  factory FleetObservabilityFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFeatureSpecResponse(
-      loggingConfig: (FleetObservabilityLoggingConfigResponse.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      loggingConfig: pulumi.Input.fromValue(
+        FleetObservabilityLoggingConfigResponse.fromMap(
+          (map['loggingConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

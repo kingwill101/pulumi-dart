@@ -6,7 +6,11 @@ import 'customer_managed_key_encryption_properties_key_encryption_key_identity.d
 /// All Customer-managed key encryption properties for the resource.
 class CustomerManagedKeyEncryptionProperties {
   /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
-  final pulumi.Input<CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity>? keyEncryptionKeyIdentity;
+  final pulumi.Input<
+    CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity
+  >?
+  keyEncryptionKeyIdentity;
+
   /// key encryption key Url, with or without a version. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. Key auto rotation is enabled by providing a key uri without version. Otherwise, customer is responsible for rotating the key. The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url.
   final pulumi.Input<String>? keyEncryptionKeyUrl;
 
@@ -20,16 +24,33 @@ class CustomerManagedKeyEncryptionProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyEncryptionKeyIdentity': ?pulumi.Input.mapOptionalInputValue<CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity, Map<String, dynamic>>(keyEncryptionKeyIdentity, (value) => value.toMap()),
+      'keyEncryptionKeyIdentity':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity,
+            Map<String, dynamic>
+          >(keyEncryptionKeyIdentity, (value) => value.toMap()),
       'keyEncryptionKeyUrl': ?keyEncryptionKeyUrl,
     };
   }
 
-  factory CustomerManagedKeyEncryptionProperties.fromMap(Map<String, dynamic> map) {
+  factory CustomerManagedKeyEncryptionProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomerManagedKeyEncryptionProperties(
-      keyEncryptionKeyIdentity: map['keyEncryptionKeyIdentity'] == null ? null : (CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity.fromMap((map['keyEncryptionKeyIdentity']! as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl']! as String).input(),
+      keyEncryptionKeyIdentity: (() {
+        final guardedValue = map['keyEncryptionKeyIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyEncryptionKeyUrl: (() {
+        final guardedValue = map['keyEncryptionKeyUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

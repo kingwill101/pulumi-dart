@@ -8,20 +8,21 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectField {
 
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjectsObjectField].
   /// [name] Field name.
-  StreamBackfillAllSalesforceExcludedObjectsObjectField({
-    this.name,
-  });
+  StreamBackfillAllSalesforceExcludedObjectsObjectField({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
-  factory StreamBackfillAllSalesforceExcludedObjectsObjectField.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllSalesforceExcludedObjectsObjectField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllSalesforceExcludedObjectsObjectField(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

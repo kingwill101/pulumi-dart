@@ -12,6 +12,7 @@ import 'asset_bind_state.dart';
 class AssetBind extends pulumi.CustomResource {
   /// Bind version.
   late final pulumi.Output<int?> authVersion;
+
   /// The first ID of the resource
   late final pulumi.Output<String> uuid;
 
@@ -24,13 +25,13 @@ class AssetBind extends pulumi.CustomResource {
     AssetBindArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/assetBind:AssetBind',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authVersion = registerOutput<int?>('authVersion');
-    this.uuid = registerOutput<String>('uuid');
+         'alicloud:threatdetection/assetBind:AssetBind',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authVersion = registerOutput<int?>('authVersion');
+    uuid = registerOutput<String>('uuid');
   }
 
   /// Gets an existing [AssetBind] resource's state with the given [name] and [id].
@@ -51,12 +52,12 @@ class AssetBind extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:threatdetection/assetBind:AssetBind',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authVersion = registerOutput<int?>('authVersion');
-    this.uuid = registerOutput<String>('uuid');
+         'alicloud:threatdetection/assetBind:AssetBind',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authVersion = registerOutput<int?>('authVersion');
+    uuid = registerOutput<String>('uuid');
   }
 }

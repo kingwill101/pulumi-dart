@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageClassArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// The name of the the storage class
   final pulumi.Input<String> storageClassName;
 
@@ -29,9 +30,10 @@ class GetStorageClassArgs {
 
   factory GetStorageClassArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageClassArgs(
-      resourceUri: (map['resourceUri'] as String).input(),
-      storageClassName: (map['storageClassName'] as String).input(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      storageClassName: pulumi.Input.fromValue(
+        map['storageClassName'] as String,
+      ),
     );
   }
 }
-

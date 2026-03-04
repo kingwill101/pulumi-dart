@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentType {
   /// Source Uri containing ManagedCCF code
   final pulumi.Input<String>? appSourceUri;
+
   /// Unique name for the Managed CCF.
   final pulumi.Input<String>? languageRuntime;
 
   /// Creates a new [DeploymentType].
   /// [appSourceUri] Source Uri containing ManagedCCF code
   /// [languageRuntime] Unique name for the Managed CCF.
-  DeploymentType({
-    this.appSourceUri,
-    this.languageRuntime,
-  });
+  DeploymentType({this.appSourceUri, this.languageRuntime});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      appSourceUri: map['appSourceUri'] == null ? null : (map['appSourceUri']! as String).input(),
-      languageRuntime: map['languageRuntime'] == null ? null : (map['languageRuntime']! as String).input(),
+      appSourceUri: (() {
+        final guardedValue = map['appSourceUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      languageRuntime: (() {
+        final guardedValue = map['languageRuntime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

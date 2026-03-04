@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DicomServiceAuthenticationConfigurationResponse {
   /// The audiences for the service
   final pulumi.Input<List<String>> audiences;
+
   /// The authority url for the service
   final pulumi.Input<String> authority;
 
@@ -18,17 +19,17 @@ class DicomServiceAuthenticationConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audiences': audiences,
-      'authority': authority,
-    };
+    return <String, dynamic>{'audiences': audiences, 'authority': authority};
   }
 
-  factory DicomServiceAuthenticationConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory DicomServiceAuthenticationConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DicomServiceAuthenticationConfigurationResponse(
-      audiences: ((map['audiences'] as List).cast<String>()).input(),
-      authority: (map['authority'] as String).input(),
+      audiences: pulumi.Input.fromValue(
+        (map['audiences'] as List).cast<String>(),
+      ),
+      authority: pulumi.Input.fromValue(map['authority'] as String),
     );
   }
 }
-

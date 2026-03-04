@@ -171,24 +171,34 @@ import 'system_data_response.dart';
 class Schedule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The frequency of this scheduled task.
   late final pulumi.Output<String> frequency;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Indicates whether or not this scheduled task is enabled.
   late final pulumi.Output<String?> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The target time to trigger the action. The format is HH:MM.
   late final pulumi.Output<String> time;
+
   /// The IANA timezone id at which the schedule should execute.
   late final pulumi.Output<String> timeZone;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -201,21 +211,21 @@ class Schedule extends pulumi.CustomResource {
     ScheduleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:Schedule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.frequency = registerOutput<String>('frequency');
-    this.location = registerOutput<String?>('location');
+         'azure-native:devcenter:Schedule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    frequency = registerOutput<String>('frequency');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.state = registerOutput<String?>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.time = registerOutput<String>('time');
-    this.timeZone = registerOutput<String>('timeZone');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    time = registerOutput<String>('time');
+    timeZone = registerOutput<String>('timeZone');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,20 +9,19 @@ class SourceVault {
 
   /// Creates a new [SourceVault].
   /// [id] Resource Id
-  SourceVault({
-    this.id,
-  });
+  SourceVault({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory SourceVault.fromMap(Map<String, dynamic> map) {
     return SourceVault(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

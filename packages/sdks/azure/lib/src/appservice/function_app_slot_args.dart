@@ -13,48 +13,66 @@ import 'function_app_slot_site_config.dart';
 class FunctionAppSlotArgs {
   /// The ID of the App Service Plan within which to create this Function App Slot. Changing this forces a new resource to be created.
   final pulumi.Input<String> appServicePlanId;
+
   /// A key-value pair of App Settings.
   ///
-  /// > **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
+  /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// > **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
+  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
   ///
-  /// > **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
   final pulumi.Input<Map<String, String>>? appSettings;
+
   /// An `auth_settings` block as defined below.
   final pulumi.Input<FunctionAppSlotAuthSettings>? authSettings;
+
   /// A `connection_string` block as defined below.
   final pulumi.Input<List<FunctionAppSlotConnectionString>>? connectionStrings;
+
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   final pulumi.Input<int>? dailyMemoryTimeQuota;
+
   /// Should the built-in logging of the Function App be enabled? Defaults to `true`.
   final pulumi.Input<bool>? enableBuiltinLogging;
+
   /// Is the Function App enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// The name of the Function App within which to create the Function App Slot. Changing this forces a new resource to be created.
   final pulumi.Input<String> functionAppName;
+
   /// Can the Function App only be accessed via HTTPS? Defaults to `false`.
   final pulumi.Input<bool>? httpsOnly;
+
   /// An `identity` block as defined below.
   final pulumi.Input<FunctionAppSlotIdentity>? identity;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Function App. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A string indicating the Operating System type for this function app. The only possible value is `linux`. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** This value will be `linux` for Linux Derivatives or an empty string for Windows (default).
+  /// &gt; **NOTE:** This value will be `linux` for Linux Derivatives or an empty string for Windows (default).
   final pulumi.Input<String>? osType;
+
   /// The name of the resource group in which to create the Function App Slot. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A `site_config` object as defined below.
   final pulumi.Input<FunctionAppSlotSiteConfig>? siteConfig;
+
   /// The access key which will be used to access the backend storage account for the Function App.
   final pulumi.Input<String> storageAccountAccessKey;
+
   /// The backend storage account name which will be used by the Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The runtime version associated with the Function App. Defaults to `~1`.
   final pulumi.Input<String>? version;
 
@@ -104,19 +122,42 @@ class FunctionAppSlotArgs {
     return <String, dynamic>{
       'appServicePlanId': appServicePlanId,
       'appSettings': ?appSettings,
-      'authSettings': ?pulumi.Input.mapOptionalInputValue<FunctionAppSlotAuthSettings, Map<String, dynamic>>(authSettings, (value) => value.toMap()),
-      'connectionStrings': ?pulumi.Input.mapOptionalInputValue<List<FunctionAppSlotConnectionString>, List<Map<String, dynamic>>>(connectionStrings, (value) => pulumi.Input.encodeList<FunctionAppSlotConnectionString, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'authSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionAppSlotAuthSettings,
+            Map<String, dynamic>
+          >(authSettings, (value) => value.toMap()),
+      'connectionStrings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FunctionAppSlotConnectionString>,
+            List<Map<String, dynamic>>
+          >(
+            connectionStrings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FunctionAppSlotConnectionString,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dailyMemoryTimeQuota': ?dailyMemoryTimeQuota,
       'enableBuiltinLogging': ?enableBuiltinLogging,
       'enabled': ?enabled,
       'functionAppName': functionAppName,
       'httpsOnly': ?httpsOnly,
-      'identity': ?pulumi.Input.mapOptionalInputValue<FunctionAppSlotIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionAppSlotIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'osType': ?osType,
       'resourceGroupName': resourceGroupName,
-      'siteConfig': ?pulumi.Input.mapOptionalInputValue<FunctionAppSlotSiteConfig, Map<String, dynamic>>(siteConfig, (value) => value.toMap()),
+      'siteConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionAppSlotSiteConfig,
+            Map<String, dynamic>
+          >(siteConfig, (value) => value.toMap()),
       'storageAccountAccessKey': storageAccountAccessKey,
       'storageAccountName': storageAccountName,
       'tags': ?tags,
@@ -126,26 +167,112 @@ class FunctionAppSlotArgs {
 
   factory FunctionAppSlotArgs.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotArgs(
-      appServicePlanId: (map['appServicePlanId'] as String).input(),
-      appSettings: map['appSettings'] == null ? null : ((map['appSettings']! as Map).cast<String, String>()).input(),
-      authSettings: map['authSettings'] == null ? null : (FunctionAppSlotAuthSettings.fromMap((map['authSettings']! as Map).cast<String, dynamic>())).input(),
-      connectionStrings: map['connectionStrings'] == null ? null : (pulumi.Input.decodeList<FunctionAppSlotConnectionString>(map['connectionStrings']!, (value) => FunctionAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dailyMemoryTimeQuota: map['dailyMemoryTimeQuota'] == null ? null : (map['dailyMemoryTimeQuota']! as int).input(),
-      enableBuiltinLogging: map['enableBuiltinLogging'] == null ? null : (map['enableBuiltinLogging']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      functionAppName: (map['functionAppName'] as String).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
-      identity: map['identity'] == null ? null : (FunctionAppSlotIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteConfig: map['siteConfig'] == null ? null : (FunctionAppSlotSiteConfig.fromMap((map['siteConfig']! as Map).cast<String, dynamic>())).input(),
-      storageAccountAccessKey: (map['storageAccountAccessKey'] as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      appServicePlanId: pulumi.Input.fromValue(
+        map['appServicePlanId'] as String,
+      ),
+      appSettings: (() {
+        final guardedValue = map['appSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      authSettings: (() {
+        final guardedValue = map['authSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionAppSlotAuthSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectionStrings: (() {
+        final guardedValue = map['connectionStrings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FunctionAppSlotConnectionString>(
+            guardedValue,
+            (value) => FunctionAppSlotConnectionString.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      dailyMemoryTimeQuota: (() {
+        final guardedValue = map['dailyMemoryTimeQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enableBuiltinLogging: (() {
+        final guardedValue = map['enableBuiltinLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      functionAppName: pulumi.Input.fromValue(map['functionAppName'] as String),
+      httpsOnly: (() {
+        final guardedValue = map['httpsOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionAppSlotIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: (() {
+        final guardedValue = map['osType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteConfig: (() {
+        final guardedValue = map['siteConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionAppSlotSiteConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageAccountAccessKey: pulumi.Input.fromValue(
+        map['storageAccountAccessKey'] as String,
+      ),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

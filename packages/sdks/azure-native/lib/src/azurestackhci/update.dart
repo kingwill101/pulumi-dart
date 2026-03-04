@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'update_args.dart';
-import 'update_prerequisite_response.dart';
 
 /// Update details
 ///
@@ -256,48 +255,70 @@ import 'update_prerequisite_response.dart';
 class Update extends pulumi.CustomResource {
   /// Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type.
   late final pulumi.Output<String?> additionalProperties;
+
   /// Indicates the way the update content can be downloaded.
   late final pulumi.Output<String?> availabilityType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Description of the update.
   late final pulumi.Output<String?> description;
+
   /// Display name of the Update
   late final pulumi.Output<String?> displayName;
+
   /// Last time the package-specific checks were run.
   late final pulumi.Output<String?> healthCheckDate;
+
   /// Date that the update was installed.
   late final pulumi.Output<String?> installedDate;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// Minimum Sbe Version of the update.
   late final pulumi.Output<String?> minSbeVersionRequired;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Brief message with instructions for updates of AvailabilityType Notify.
   late final pulumi.Output<String?> notifyMessage;
+
   /// Path where the update package is available.
   late final pulumi.Output<String?> packagePath;
+
   /// Size of the package. This value is a combination of the size from update metadata and size of the payload that results from the live scan operation for OS update content.
   late final pulumi.Output<double?> packageSizeInMb;
+
   /// Customer-visible type of the update.
   late final pulumi.Output<String?> packageType;
+
   /// If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
-  late final pulumi.Output<List<UpdatePrerequisiteResponse>?> prerequisites;
+  late final pulumi.Output<List<Map<String, dynamic>>?> prerequisites;
+
   /// Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
   late final pulumi.Output<double?> progressPercentage;
+
   /// Provisioning state of the Updates proxy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Publisher of the update package.
   late final pulumi.Output<String?> publisher;
+
   /// Link to release notes for the update.
   late final pulumi.Output<String?> releaseLink;
+
   /// State of the update as it relates to this stamp.
   late final pulumi.Output<String?> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Version of the update.
   late final pulumi.Output<String?> version;
 
@@ -305,38 +326,37 @@ class Update extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Update]. {@macro pulumi_azurestackhci_update_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Update(
-    String name, {
-    UpdateArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:azurestackhci:Update',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<String?>('additionalProperties');
-    this.availabilityType = registerOutput<String?>('availabilityType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.healthCheckDate = registerOutput<String?>('healthCheckDate');
-    this.installedDate = registerOutput<String?>('installedDate');
-    this.location = registerOutput<String?>('location');
-    this.minSbeVersionRequired = registerOutput<String?>('minSbeVersionRequired');
+  Update(String name, {UpdateArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:azurestackhci:Update',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    additionalProperties = registerOutput<String?>('additionalProperties');
+    availabilityType = registerOutput<String?>('availabilityType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    healthCheckDate = registerOutput<String?>('healthCheckDate');
+    installedDate = registerOutput<String?>('installedDate');
+    location = registerOutput<String?>('location');
+    minSbeVersionRequired = registerOutput<String?>('minSbeVersionRequired');
     this.name = registerOutput<String>('name');
-    this.notifyMessage = registerOutput<String?>('notifyMessage');
-    this.packagePath = registerOutput<String?>('packagePath');
-    this.packageSizeInMb = registerOutput<double?>('packageSizeInMb');
-    this.packageType = registerOutput<String?>('packageType');
-    this.prerequisites = registerOutput<List<UpdatePrerequisiteResponse>?>('prerequisites');
-    this.progressPercentage = registerOutput<double?>('progressPercentage');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publisher = registerOutput<String?>('publisher');
-    this.releaseLink = registerOutput<String?>('releaseLink');
-    this.state = registerOutput<String?>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    notifyMessage = registerOutput<String?>('notifyMessage');
+    packagePath = registerOutput<String?>('packagePath');
+    packageSizeInMb = registerOutput<double?>('packageSizeInMb');
+    packageType = registerOutput<String?>('packageType');
+    prerequisites = registerOutput<List<Map<String, dynamic>>?>(
+      'prerequisites',
+    );
+    progressPercentage = registerOutput<double?>('progressPercentage');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisher = registerOutput<String?>('publisher');
+    releaseLink = registerOutput<String?>('releaseLink');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

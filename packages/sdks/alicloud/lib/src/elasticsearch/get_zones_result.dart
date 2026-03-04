@@ -7,10 +7,12 @@ import 'get_zones_zone.dart';
 class GetZonesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of zone IDs.
   final List<String> ids;
   final bool? multi;
   final String? outputFile;
+
   /// A list of availability zones. Each element contains the following attributes:
   final List<GetZonesZone> zones;
 
@@ -34,7 +36,10 @@ class GetZonesResult {
       'ids': ids,
       'multi': ?multi,
       'outputFile': ?outputFile,
-      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(
+        zones,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -42,10 +47,20 @@ class GetZonesResult {
     return GetZonesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      multi: map['multi'] == null ? null : map['multi']! as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+      multi: (() {
+        final guardedValue = map['multi'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zones: pulumi.Input.decodeList<GetZonesZone>(
+        map['zones']!,
+        (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

@@ -10,20 +10,27 @@ class OriginGroupFailoverCriteria {
 
   /// Creates a new [OriginGroupFailoverCriteria].
   /// [statusCodes] The status codes that, when returned from the primary origin, will trigger CloudFront to failover to the second origin. A complex data type for the status codes that you specify that, when returned by a primary origin, trigger CloudFront to failover to a second origin.
-  OriginGroupFailoverCriteria({
-    this.statusCodes,
-  });
+  OriginGroupFailoverCriteria({this.statusCodes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'statusCodes': ?pulumi.Input.mapOptionalInputValue<StatusCodes, Map<String, dynamic>>(statusCodes, (value) => value.toMap()),
+      'statusCodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            StatusCodes,
+            Map<String, dynamic>
+          >(statusCodes, (value) => value.toMap()),
     };
   }
 
   factory OriginGroupFailoverCriteria.fromMap(Map<String, dynamic> map) {
     return OriginGroupFailoverCriteria(
-      statusCodes: map['statusCodes'] == null ? null : (StatusCodes.fromMap((map['statusCodes']! as Map).cast<String, dynamic>())).input(),
+      statusCodes: (() {
+        final guardedValue = map['statusCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StatusCodes.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

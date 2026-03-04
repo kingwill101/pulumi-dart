@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExecutionArgs {
   /// The name of the Context.
   final pulumi.Input<String> contextName;
+
   /// The name of the Execution.
   final pulumi.Input<String> executionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workflowVersion.
   final pulumi.Input<String> versionName;
+
   /// Name of the workflow
   final pulumi.Input<String> workflowName;
 
@@ -44,12 +48,13 @@ class GetExecutionArgs {
 
   factory GetExecutionArgs.fromMap(Map<String, dynamic> map) {
     return GetExecutionArgs(
-      contextName: (map['contextName'] as String).input(),
-      executionName: (map['executionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      versionName: (map['versionName'] as String).input(),
-      workflowName: (map['workflowName'] as String).input(),
+      contextName: pulumi.Input.fromValue(map['contextName'] as String),
+      executionName: pulumi.Input.fromValue(map['executionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      versionName: pulumi.Input.fromValue(map['versionName'] as String),
+      workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
-

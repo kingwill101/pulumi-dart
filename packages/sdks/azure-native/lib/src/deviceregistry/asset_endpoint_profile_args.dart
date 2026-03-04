@@ -11,22 +11,31 @@ import 'extended_location.dart';
 class AssetEndpointProfileArgs {
   /// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
   final pulumi.Input<String>? additionalConfiguration;
+
   /// Asset Endpoint Profile name parameter.
   final pulumi.Input<String>? assetEndpointProfileName;
+
   /// Defines the client authentication mechanism to the server.
   final pulumi.Input<Authentication>? authentication;
+
   /// Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided.
   final pulumi.Input<String>? discoveredAssetEndpointProfileRef;
+
   /// Defines the configuration for the connector type that is being used with the endpoint profile.
   final pulumi.Input<String> endpointProfileType;
+
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   final pulumi.Input<String> targetAddress;
 
@@ -58,10 +67,18 @@ class AssetEndpointProfileArgs {
     return <String, dynamic>{
       'additionalConfiguration': ?additionalConfiguration,
       'assetEndpointProfileName': ?assetEndpointProfileName,
-      'authentication': ?pulumi.Input.mapOptionalInputValue<Authentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'authentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            Authentication,
+            Map<String, dynamic>
+          >(authentication, (value) => value.toMap()),
       'discoveredAssetEndpointProfileRef': ?discoveredAssetEndpointProfileRef,
       'endpointProfileType': endpointProfileType,
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -71,17 +88,52 @@ class AssetEndpointProfileArgs {
 
   factory AssetEndpointProfileArgs.fromMap(Map<String, dynamic> map) {
     return AssetEndpointProfileArgs(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration']! as String).input(),
-      assetEndpointProfileName: map['assetEndpointProfileName'] == null ? null : (map['assetEndpointProfileName']! as String).input(),
-      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
-      discoveredAssetEndpointProfileRef: map['discoveredAssetEndpointProfileRef'] == null ? null : (map['discoveredAssetEndpointProfileRef']! as String).input(),
-      endpointProfileType: (map['endpointProfileType'] as String).input(),
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetAddress: (map['targetAddress'] as String).input(),
+      additionalConfiguration: (() {
+        final guardedValue = map['additionalConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assetEndpointProfileName: (() {
+        final guardedValue = map['assetEndpointProfileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authentication: (() {
+        final guardedValue = map['authentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      discoveredAssetEndpointProfileRef: (() {
+        final guardedValue = map['discoveredAssetEndpointProfileRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointProfileType: pulumi.Input.fromValue(
+        map['endpointProfileType'] as String,
+      ),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetAddress: pulumi.Input.fromValue(map['targetAddress'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_policyinsights;
-
 export 'policyinsights/attestation_at_resource.dart';
 export 'policyinsights/attestation_at_resource_args.dart';
 export 'policyinsights/attestation_at_resource_group.dart';

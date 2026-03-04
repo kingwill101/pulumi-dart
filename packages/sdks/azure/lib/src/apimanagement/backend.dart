@@ -216,7 +216,7 @@ import 'backend_tls.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -231,28 +231,40 @@ import 'backend_tls.dart';
 class Backend extends pulumi.CustomResource {
   /// The Name of the API Management Service where this backend should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// A `circuit_breaker_rule` block as documented below.
   late final pulumi.Output<BackendCircuitBreakerRule?> circuitBreakerRule;
+
   /// A `credentials` block as documented below.
   late final pulumi.Output<BackendCredentials?> credentials;
+
   /// The description of the backend.
   late final pulumi.Output<String?> description;
+
   /// The name of the API Management backend. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The protocol used by the backend host. Possible values are `http` or `soap`.
   late final pulumi.Output<String> protocol;
+
   /// A `proxy` block as documented below.
   late final pulumi.Output<BackendProxy?> proxy;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The management URI of the backend host in an external system. This URI can be the ARM Resource ID of Logic Apps, Function Apps or API Apps, or the management endpoint of a Service Fabric cluster.
   late final pulumi.Output<String?> resourceId;
+
   /// A `service_fabric_cluster` block as documented below.
   late final pulumi.Output<BackendServiceFabricCluster?> serviceFabricCluster;
+
   /// The title of the backend.
   late final pulumi.Output<String?> title;
+
   /// A `tls` block as documented below.
   late final pulumi.Output<BackendTls?> tls;
+
   /// The backend host URL should be specified in the format `"https://backend.com/api"`, avoiding trailing slashes (/) to minimize misconfiguration risks. Azure API Management instance will append the backend resource name to this URL. This URL typically serves as the `base-url` in the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, enabling seamless transitions from frontend to backend.
   late final pulumi.Output<String> url;
 
@@ -265,24 +277,28 @@ class Backend extends pulumi.CustomResource {
     BackendArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/backend:Backend',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>('circuitBreakerRule');
-    this.credentials = registerOutput<BackendCredentials?>('credentials');
-    this.description = registerOutput<String?>('description');
+         'azure:apimanagement/backend:Backend',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>(
+      'circuitBreakerRule',
+    );
+    credentials = registerOutput<BackendCredentials?>('credentials');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxy = registerOutput<BackendProxy?>('proxy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.serviceFabricCluster = registerOutput<BackendServiceFabricCluster?>('serviceFabricCluster');
-    this.title = registerOutput<String?>('title');
-    this.tls = registerOutput<BackendTls?>('tls');
-    this.url = registerOutput<String>('url');
+    protocol = registerOutput<String>('protocol');
+    proxy = registerOutput<BackendProxy?>('proxy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceId = registerOutput<String?>('resourceId');
+    serviceFabricCluster = registerOutput<BackendServiceFabricCluster?>(
+      'serviceFabricCluster',
+    );
+    title = registerOutput<String?>('title');
+    tls = registerOutput<BackendTls?>('tls');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [Backend] resource's state with the given [name] and [id].
@@ -303,23 +319,27 @@ class Backend extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/backend:Backend',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>('circuitBreakerRule');
-    this.credentials = registerOutput<BackendCredentials?>('credentials');
-    this.description = registerOutput<String?>('description');
+         'azure:apimanagement/backend:Backend',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    circuitBreakerRule = registerOutput<BackendCircuitBreakerRule?>(
+      'circuitBreakerRule',
+    );
+    credentials = registerOutput<BackendCredentials?>('credentials');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.proxy = registerOutput<BackendProxy?>('proxy');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.serviceFabricCluster = registerOutput<BackendServiceFabricCluster?>('serviceFabricCluster');
-    this.title = registerOutput<String?>('title');
-    this.tls = registerOutput<BackendTls?>('tls');
-    this.url = registerOutput<String>('url');
+    protocol = registerOutput<String>('protocol');
+    proxy = registerOutput<BackendProxy?>('proxy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceId = registerOutput<String?>('resourceId');
+    serviceFabricCluster = registerOutput<BackendServiceFabricCluster?>(
+      'serviceFabricCluster',
+    );
+    title = registerOutput<String?>('title');
+    tls = registerOutput<BackendTls?>('tls');
+    url = registerOutput<String>('url');
   }
 }

@@ -6,14 +6,21 @@ import 'hci_deployment_setting_scale_unit_infrastructure_network_ip_pool.dart';
 class HciDeploymentSettingScaleUnitInfrastructureNetwork {
   /// Whether DHCP is enabled for hosts and cluster IPs. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   ///
-  /// > **Note:** If `dhcp_enabled` is set to `false`, the deployment will use static IPs. If set to `true`, the gateway and DNS servers are not required.
+  /// &gt; **Note:** If `dhcp_enabled` is set to `false`, the deployment will use static IPs. If set to `true`, the gateway and DNS servers are not required.
   final pulumi.Input<bool>? dhcpEnabled;
+
   /// Specifies a list of IPv4 addresses of the DNS servers in your environment. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<List<String>> dnsServers;
+
   /// Specifies the default gateway that should be used for the provided IP address space. It should be in the format of an IPv4 IP address. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> gateway;
+
   /// One or more `ip_pool` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<List<HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool>> ipPools;
+  final pulumi.Input<
+    List<HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool>
+  >
+  ipPools;
+
   /// Specifies the subnet mask that matches the provided IP address space. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String> subnetMask;
 
@@ -36,19 +43,47 @@ class HciDeploymentSettingScaleUnitInfrastructureNetwork {
       'dhcpEnabled': ?dhcpEnabled,
       'dnsServers': dnsServers,
       'gateway': gateway,
-      'ipPools': pulumi.Input.mapInputValue<List<HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool>, List<Map<String, dynamic>>>(ipPools, (value) => pulumi.Input.encodeList<HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipPools':
+          pulumi.Input.mapInputValue<
+            List<HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool>,
+            List<Map<String, dynamic>>
+          >(
+            ipPools,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'subnetMask': subnetMask,
     };
   }
 
-  factory HciDeploymentSettingScaleUnitInfrastructureNetwork.fromMap(Map<String, dynamic> map) {
+  factory HciDeploymentSettingScaleUnitInfrastructureNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HciDeploymentSettingScaleUnitInfrastructureNetwork(
-      dhcpEnabled: map['dhcpEnabled'] == null ? null : (map['dhcpEnabled']! as bool).input(),
-      dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: (map['gateway'] as String).input(),
-      ipPools: (pulumi.Input.decodeList<HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool>(map['ipPools'], (value) => HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetMask: (map['subnetMask'] as String).input(),
+      dhcpEnabled: (() {
+        final guardedValue = map['dhcpEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dnsServers: pulumi.Input.fromValue(
+        (map['dnsServers'] as List).cast<String>(),
+      ),
+      gateway: pulumi.Input.fromValue(map['gateway'] as String),
+      ipPools: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool
+        >(
+          map['ipPools']!,
+          (value) =>
+              HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      subnetMask: pulumi.Input.fromValue(map['subnetMask'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UsernamePasswordCredentials {
   /// The name of the secret containing the password.
   final pulumi.Input<String> passwordSecretName;
+
   /// The name of the secret containing the username.
   final pulumi.Input<String> usernameSecretName;
 
@@ -26,9 +27,12 @@ class UsernamePasswordCredentials {
 
   factory UsernamePasswordCredentials.fromMap(Map<String, dynamic> map) {
     return UsernamePasswordCredentials(
-      passwordSecretName: (map['passwordSecretName'] as String).input(),
-      usernameSecretName: (map['usernameSecretName'] as String).input(),
+      passwordSecretName: pulumi.Input.fromValue(
+        map['passwordSecretName'] as String,
+      ),
+      usernameSecretName: pulumi.Input.fromValue(
+        map['usernameSecretName'] as String,
+      ),
     );
   }
 }
-

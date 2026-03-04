@@ -7,11 +7,28 @@ import 'get_role_management_policy_notification_rule_eligible_activation_assigne
 
 class GetRoleManagementPolicyNotificationRuleEligibleActivation {
   /// A `notification_settings` block as defined above.
-  final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification>> adminNotifications;
+  final pulumi.Input<
+    List<
+      GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification
+    >
+  >
+  adminNotifications;
+
   /// A `notification_settings` block as defined above.
-  final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification>> approverNotifications;
+  final pulumi.Input<
+    List<
+      GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification
+    >
+  >
+  approverNotifications;
+
   /// A `notification_settings` block as defined above.
-  final pulumi.Input<List<GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification>> assigneeNotifications;
+  final pulumi.Input<
+    List<
+      GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification
+    >
+  >
+  assigneeNotifications;
 
   /// Creates a new [GetRoleManagementPolicyNotificationRuleEligibleActivation].
   /// [adminNotifications] A `notification_settings` block as defined above.
@@ -25,18 +42,88 @@ class GetRoleManagementPolicyNotificationRuleEligibleActivation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminNotifications': pulumi.Input.mapInputValue<List<GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification>, List<Map<String, dynamic>>>(adminNotifications, (value) => pulumi.Input.encodeList<GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'approverNotifications': pulumi.Input.mapInputValue<List<GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification>, List<Map<String, dynamic>>>(approverNotifications, (value) => pulumi.Input.encodeList<GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'assigneeNotifications': pulumi.Input.mapInputValue<List<GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification>, List<Map<String, dynamic>>>(assigneeNotifications, (value) => pulumi.Input.encodeList<GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'adminNotifications':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification
+            >,
+            List<Map<String, dynamic>>
+          >(
+            adminNotifications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'approverNotifications':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification
+            >,
+            List<Map<String, dynamic>>
+          >(
+            approverNotifications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'assigneeNotifications':
+          pulumi.Input.mapInputValue<
+            List<
+              GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification
+            >,
+            List<Map<String, dynamic>>
+          >(
+            assigneeNotifications,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetRoleManagementPolicyNotificationRuleEligibleActivation.fromMap(Map<String, dynamic> map) {
+  factory GetRoleManagementPolicyNotificationRuleEligibleActivation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRoleManagementPolicyNotificationRuleEligibleActivation(
-      adminNotifications: (pulumi.Input.decodeList<GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification>(map['adminNotifications'], (value) => GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      approverNotifications: (pulumi.Input.decodeList<GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification>(map['approverNotifications'], (value) => GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      assigneeNotifications: (pulumi.Input.decodeList<GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification>(map['assigneeNotifications'], (value) => GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminNotifications: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification
+        >(
+          map['adminNotifications']!,
+          (value) =>
+              GetRoleManagementPolicyNotificationRuleEligibleActivationAdminNotification.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      approverNotifications: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification
+        >(
+          map['approverNotifications']!,
+          (value) =>
+              GetRoleManagementPolicyNotificationRuleEligibleActivationApproverNotification.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      assigneeNotifications: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification
+        >(
+          map['assigneeNotifications']!,
+          (value) =>
+              GetRoleManagementPolicyNotificationRuleEligibleActivationAssigneeNotification.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

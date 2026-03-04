@@ -3,16 +3,15 @@ enum DefaultRetentionMode {
   cOMPLIANCE("COMPLIANCE"),
   gOVERNANCE("GOVERNANCE");
 
-  const DefaultRetentionMode(this.value);
-  final String value;
+  const DefaultRetentionMode(this.wireValue);
+  final String wireValue;
 
   static DefaultRetentionMode fromValue(String value) {
     for (final item in DefaultRetentionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefaultRetentionMode value: $value');
   }
 }
-

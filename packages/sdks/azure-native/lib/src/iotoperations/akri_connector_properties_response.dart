@@ -9,20 +9,17 @@ class AkriConnectorPropertiesResponse {
 
   /// Creates a new [AkriConnectorPropertiesResponse].
   /// [provisioningState] The status of the last operation.
-  AkriConnectorPropertiesResponse({
-    required this.provisioningState,
-  });
+  AkriConnectorPropertiesResponse({required this.provisioningState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'provisioningState': provisioningState,
-    };
+    return <String, dynamic>{'provisioningState': provisioningState};
   }
 
   factory AkriConnectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorPropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum TextConfigProfileType {
   empty("EMPTY"),
   basic("BASIC");
 
-  const TextConfigProfileType(this.value);
-  final String value;
+  const TextConfigProfileType(this.wireValue);
+  final String wireValue;
 
   static TextConfigProfileType fromValue(String value) {
     for (final item in TextConfigProfileType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TextConfigProfileType value: $value');
   }
 }
-

@@ -554,7 +554,7 @@ import 'hybrid_runbook_worker_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -569,22 +569,31 @@ import 'hybrid_runbook_worker_state.dart';
 class HybridRunbookWorker extends pulumi.CustomResource {
   /// The name of the automation account in which the Hybrid Worker is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// The IP address of assigned machine.
   late final pulumi.Output<String> ip;
+
   /// Last Heartbeat from the Worker.
   late final pulumi.Output<String> lastSeenDateTime;
+
   /// The registration time of the worker machine.
   late final pulumi.Output<String> registrationDateTime;
+
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the virtual machine used for this HybridWorker. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> vmResourceId;
+
   /// The name of the HybridWorker Group. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> workerGroupName;
+
   /// Specify the ID of this HybridWorker in UUID notation. Changing this forces a new Automation to be created.
   late final pulumi.Output<String> workerId;
+
   /// The name of HybridWorker.
   late final pulumi.Output<String> workerName;
+
   /// The type of the HybridWorker, the possible values are `HybridV1` and `HybridV2`.
   late final pulumi.Output<String> workerType;
 
@@ -597,21 +606,21 @@ class HybridRunbookWorker extends pulumi.CustomResource {
     HybridRunbookWorkerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/hybridRunbookWorker:HybridRunbookWorker',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.ip = registerOutput<String>('ip');
-    this.lastSeenDateTime = registerOutput<String>('lastSeenDateTime');
-    this.registrationDateTime = registerOutput<String>('registrationDateTime');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.vmResourceId = registerOutput<String>('vmResourceId');
-    this.workerGroupName = registerOutput<String>('workerGroupName');
-    this.workerId = registerOutput<String>('workerId');
-    this.workerName = registerOutput<String>('workerName');
-    this.workerType = registerOutput<String>('workerType');
+         'azure:automation/hybridRunbookWorker:HybridRunbookWorker',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    ip = registerOutput<String>('ip');
+    lastSeenDateTime = registerOutput<String>('lastSeenDateTime');
+    registrationDateTime = registerOutput<String>('registrationDateTime');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    vmResourceId = registerOutput<String>('vmResourceId');
+    workerGroupName = registerOutput<String>('workerGroupName');
+    workerId = registerOutput<String>('workerId');
+    workerName = registerOutput<String>('workerName');
+    workerType = registerOutput<String>('workerType');
   }
 
   /// Gets an existing [HybridRunbookWorker] resource's state with the given [name] and [id].
@@ -632,20 +641,20 @@ class HybridRunbookWorker extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/hybridRunbookWorker:HybridRunbookWorker',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.ip = registerOutput<String>('ip');
-    this.lastSeenDateTime = registerOutput<String>('lastSeenDateTime');
-    this.registrationDateTime = registerOutput<String>('registrationDateTime');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.vmResourceId = registerOutput<String>('vmResourceId');
-    this.workerGroupName = registerOutput<String>('workerGroupName');
-    this.workerId = registerOutput<String>('workerId');
-    this.workerName = registerOutput<String>('workerName');
-    this.workerType = registerOutput<String>('workerType');
+         'azure:automation/hybridRunbookWorker:HybridRunbookWorker',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    ip = registerOutput<String>('ip');
+    lastSeenDateTime = registerOutput<String>('lastSeenDateTime');
+    registrationDateTime = registerOutput<String>('registrationDateTime');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    vmResourceId = registerOutput<String>('vmResourceId');
+    workerGroupName = registerOutput<String>('workerGroupName');
+    workerId = registerOutput<String>('workerId');
+    workerName = registerOutput<String>('workerName');
+    workerType = registerOutput<String>('workerType');
   }
 }

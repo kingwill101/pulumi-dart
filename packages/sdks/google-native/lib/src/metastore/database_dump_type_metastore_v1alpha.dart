@@ -4,16 +4,17 @@ enum DatabaseDumpTypeMetastoreV1alpha {
   mysql("MYSQL"),
   avro("AVRO");
 
-  const DatabaseDumpTypeMetastoreV1alpha(this.value);
-  final String value;
+  const DatabaseDumpTypeMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
   static DatabaseDumpTypeMetastoreV1alpha fromValue(String value) {
     for (final item in DatabaseDumpTypeMetastoreV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DatabaseDumpTypeMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown DatabaseDumpTypeMetastoreV1alpha value: $value',
+    );
   }
 }
-

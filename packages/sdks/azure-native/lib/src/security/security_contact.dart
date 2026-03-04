@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'notifications_source_alert_response.dart';
 import 'security_contact_args.dart';
 import 'security_contact_properties_response_notifications_by_role.dart';
 
@@ -230,18 +229,28 @@ import 'security_contact_properties_response_notifications_by_role.dart';
 class SecurityContact extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
   late final pulumi.Output<String?> emails;
+
   /// Indicates whether the security contact is enabled.
   late final pulumi.Output<bool?> isEnabled;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
-  late final pulumi.Output<SecurityContactPropertiesResponseNotificationsByRole?> notificationsByRole;
+  late final pulumi.Output<
+    SecurityContactPropertiesResponseNotificationsByRole?
+  >
+  notificationsByRole;
+
   /// A collection of sources types which evaluate the email notification.
-  late final pulumi.Output<List<NotificationsSourceAlertResponse>?> notificationsSources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> notificationsSources;
+
   /// The security contact's phone number
   late final pulumi.Output<String?> phone;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -254,18 +263,23 @@ class SecurityContact extends pulumi.CustomResource {
     SecurityContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:SecurityContact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.emails = registerOutput<String?>('emails');
-    this.isEnabled = registerOutput<bool?>('isEnabled');
+         'azure-native:security:SecurityContact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    emails = registerOutput<String?>('emails');
+    isEnabled = registerOutput<bool?>('isEnabled');
     this.name = registerOutput<String>('name');
-    this.notificationsByRole = registerOutput<SecurityContactPropertiesResponseNotificationsByRole?>('notificationsByRole');
-    this.notificationsSources = registerOutput<List<NotificationsSourceAlertResponse>?>('notificationsSources');
-    this.phone = registerOutput<String?>('phone');
-    this.type = registerOutput<String>('type');
+    notificationsByRole =
+        registerOutput<SecurityContactPropertiesResponseNotificationsByRole?>(
+          'notificationsByRole',
+        );
+    notificationsSources = registerOutput<List<Map<String, dynamic>>?>(
+      'notificationsSources',
+    );
+    phone = registerOutput<String?>('phone');
+    type = registerOutput<String>('type');
   }
 }

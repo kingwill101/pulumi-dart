@@ -9,20 +9,19 @@ class TimeBasedRetentionAlloydbV1alpha {
 
   /// Creates a new [TimeBasedRetentionAlloydbV1alpha].
   /// [retentionPeriod] The retention period.
-  TimeBasedRetentionAlloydbV1alpha({
-    this.retentionPeriod,
-  });
+  TimeBasedRetentionAlloydbV1alpha({this.retentionPeriod});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'retentionPeriod': ?retentionPeriod,
-    };
+    return <String, dynamic>{'retentionPeriod': ?retentionPeriod};
   }
 
   factory TimeBasedRetentionAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return TimeBasedRetentionAlloydbV1alpha(
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as String).input(),
+      retentionPeriod: (() {
+        final guardedValue = map['retentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

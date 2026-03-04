@@ -1,5 +1,3 @@
-library module_rapidmigrationassessment;
-
 export 'rapidmigrationassessment/annotation.dart';
 export 'rapidmigrationassessment/annotation_args.dart';
 export 'rapidmigrationassessment/annotation_type.dart';

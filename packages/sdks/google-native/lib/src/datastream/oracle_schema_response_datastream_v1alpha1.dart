@@ -7,6 +7,7 @@ import 'oracle_table_response_datastream_v1alpha1.dart';
 class OracleSchemaResponseDatastreamV1alpha1 {
   /// Tables in the schema.
   final pulumi.Input<List<OracleTableResponseDatastreamV1alpha1>> oracleTables;
+
   /// Schema name.
   final pulumi.Input<String> schemaName;
 
@@ -20,16 +21,35 @@ class OracleSchemaResponseDatastreamV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleTables': pulumi.Input.mapInputValue<List<OracleTableResponseDatastreamV1alpha1>, List<Map<String, dynamic>>>(oracleTables, (value) => pulumi.Input.encodeList<OracleTableResponseDatastreamV1alpha1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'oracleTables':
+          pulumi.Input.mapInputValue<
+            List<OracleTableResponseDatastreamV1alpha1>,
+            List<Map<String, dynamic>>
+          >(
+            oracleTables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OracleTableResponseDatastreamV1alpha1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'schemaName': schemaName,
     };
   }
 
-  factory OracleSchemaResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory OracleSchemaResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OracleSchemaResponseDatastreamV1alpha1(
-      oracleTables: (pulumi.Input.decodeList<OracleTableResponseDatastreamV1alpha1>(map['oracleTables'], (value) => OracleTableResponseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaName: (map['schemaName'] as String).input(),
+      oracleTables: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<OracleTableResponseDatastreamV1alpha1>(
+          map['oracleTables']!,
+          (value) => OracleTableResponseDatastreamV1alpha1.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
     );
   }
 }
-

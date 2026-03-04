@@ -12,20 +12,15 @@ class GetTagAtScopeArgs {
 
   /// Creates a new [GetTagAtScopeArgs].
   /// [scope] The resource scope.
-  GetTagAtScopeArgs({
-    required this.scope,
-  });
+  GetTagAtScopeArgs({required this.scope});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scope': scope,
-    };
+    return <String, dynamic>{'scope': scope};
   }
 
   factory GetTagAtScopeArgs.fromMap(Map<String, dynamic> map) {
     return GetTagAtScopeArgs(
-      scope: (map['scope'] as String).input(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'project_state.dart';
 
 /// Manage a Azure Database Migration Project.
 ///
-/// > **NOTE:** Destroying a Database Migration Project will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provider.
+/// &gt; **NOTE:** Destroying a Database Migration Project will leave any outstanding tasks untouched. This is to avoid unexpectedly deleting any tasks managed outside of this provider.
 ///
 /// ## Example Usage
 ///
@@ -316,7 +316,7 @@ import 'project_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataMigration` - 2021-06-30
@@ -331,16 +331,22 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specify the name of the database migration project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Name of the resource group in which to create the database migration project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Name of the database migration service where resource belongs to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serviceName;
+
   /// The platform type of the migration source. Possible values are `MongoDb`, `MySQL`, `PostgreSql`, `SQL` and `Unknown`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sourcePlatform;
+
   /// A mapping of tags to assigned to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The platform type of the migration target. Possible values are `AzureDbForMySql`, `AzureDbForPostgreSql`, `MongoDb`, `SQLDB`, `SQLMI` and `Unknown`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> targetPlatform;
 
@@ -353,18 +359,18 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databasemigration/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:databasemigration/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.sourcePlatform = registerOutput<String>('sourcePlatform');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetPlatform = registerOutput<String>('targetPlatform');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceName = registerOutput<String>('serviceName');
+    sourcePlatform = registerOutput<String>('sourcePlatform');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetPlatform = registerOutput<String>('targetPlatform');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -385,17 +391,17 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:databasemigration/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:databasemigration/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.sourcePlatform = registerOutput<String>('sourcePlatform');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetPlatform = registerOutput<String>('targetPlatform');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceName = registerOutput<String>('serviceName');
+    sourcePlatform = registerOutput<String>('sourcePlatform');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetPlatform = registerOutput<String>('targetPlatform');
   }
 }

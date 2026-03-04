@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostingCustomDomainCertVerificationDnsDiscoveredRecord {
   /// The domain name the record pertains to, e.g. `foo.bar.com.`.
   final pulumi.Input<String>? domainName;
+
   /// The data of the record. The meaning of the value depends on record type:
   /// - A and AAAA: IP addresses for the domain name.
   /// - CNAME: Another domain to check for records.
@@ -13,8 +14,10 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecord {
   /// permission to act on the domain name's behalf.
   /// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
   final pulumi.Input<String>? rdata;
+
   /// Indicates the a required action for this record.
   final pulumi.Input<String>? requiredAction;
+
   /// The record's type, which determines what data the record contains.
   final pulumi.Input<String>? type;
 
@@ -39,13 +42,30 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecord {
     };
   }
 
-  factory HostingCustomDomainCertVerificationDnsDiscoveredRecord.fromMap(Map<String, dynamic> map) {
+  factory HostingCustomDomainCertVerificationDnsDiscoveredRecord.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HostingCustomDomainCertVerificationDnsDiscoveredRecord(
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      rdata: map['rdata'] == null ? null : (map['rdata']! as String).input(),
-      requiredAction: map['requiredAction'] == null ? null : (map['requiredAction']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rdata: (() {
+        final guardedValue = map['rdata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requiredAction: (() {
+        final guardedValue = map['requiredAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

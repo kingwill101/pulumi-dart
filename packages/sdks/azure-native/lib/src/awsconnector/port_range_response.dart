@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortRangeResponse {
   /// Property fromPort
   final pulumi.Input<int>? fromPort;
+
   /// Property toPort
   final pulumi.Input<int>? toPort;
 
   /// Creates a new [PortRangeResponse].
   /// [fromPort] Property fromPort
   /// [toPort] Property toPort
-  PortRangeResponse({
-    this.fromPort,
-    this.toPort,
-  });
+  PortRangeResponse({this.fromPort, this.toPort});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fromPort': ?fromPort,
-      'toPort': ?toPort,
-    };
+    return <String, dynamic>{'fromPort': ?fromPort, 'toPort': ?toPort};
   }
 
   factory PortRangeResponse.fromMap(Map<String, dynamic> map) {
     return PortRangeResponse(
-      fromPort: map['fromPort'] == null ? null : (map['fromPort']! as int).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort']! as int).input(),
+      fromPort: (() {
+        final guardedValue = map['fromPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      toPort: (() {
+        final guardedValue = map['toPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

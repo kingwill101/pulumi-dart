@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkingIpAssignmentAssignment {
   /// The IPv4 address or IPv6 range to assign.
   final pulumi.Input<String> address;
+
   /// The ID of the Linode to which the IP address will be assigned.
   final pulumi.Input<int> linodeId;
 
@@ -17,17 +18,13 @@ class NetworkingIpAssignmentAssignment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': address,
-      'linodeId': linodeId,
-    };
+    return <String, dynamic>{'address': address, 'linodeId': linodeId};
   }
 
   factory NetworkingIpAssignmentAssignment.fromMap(Map<String, dynamic> map) {
     return NetworkingIpAssignmentAssignment(
-      address: (map['address'] as String).input(),
-      linodeId: (map['linodeId'] as int).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      linodeId: pulumi.Input.fromValue(map['linodeId'] as int),
     );
   }
 }
-

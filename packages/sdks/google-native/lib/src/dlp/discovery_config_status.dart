@@ -4,16 +4,15 @@ enum DiscoveryConfigStatus {
   running("RUNNING"),
   paused("PAUSED");
 
-  const DiscoveryConfigStatus(this.value);
-  final String value;
+  const DiscoveryConfigStatus(this.wireValue);
+  final String wireValue;
 
   static DiscoveryConfigStatus fromValue(String value) {
     for (final item in DiscoveryConfigStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscoveryConfigStatus value: $value');
   }
 }
-

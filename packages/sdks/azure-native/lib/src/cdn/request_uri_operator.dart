@@ -11,16 +11,15 @@ enum RequestUriOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const RequestUriOperator(this.value);
-  final String value;
+  const RequestUriOperator(this.wireValue);
+  final String wireValue;
 
   static RequestUriOperator fromValue(String value) {
     for (final item in RequestUriOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequestUriOperator value: $value');
   }
 }
-

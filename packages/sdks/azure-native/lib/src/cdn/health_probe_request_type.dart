@@ -4,16 +4,15 @@ enum HealthProbeRequestType {
   valueGET("GET"),
   valueHEAD("HEAD");
 
-  const HealthProbeRequestType(this.value);
-  final String value;
+  const HealthProbeRequestType(this.wireValue);
+  final String wireValue;
 
   static HealthProbeRequestType fromValue(String value) {
     for (final item in HealthProbeRequestType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HealthProbeRequestType value: $value');
   }
 }
-

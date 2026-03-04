@@ -7,6 +7,7 @@ class ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails {
   /// The available storage capacity for the ExascaleDbStorageVault, in gigabytes
   /// (GB).
   final pulumi.Input<int>? availableSizeGbs;
+
   /// The total storage allocation for the ExascaleDbStorageVault, in gigabytes
   /// (GB).
   final pulumi.Input<int> totalSizeGbs;
@@ -26,11 +27,16 @@ class ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails {
     };
   }
 
-  factory ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.fromMap(Map<String, dynamic> map) {
+  factory ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails(
-      availableSizeGbs: map['availableSizeGbs'] == null ? null : (map['availableSizeGbs']! as int).input(),
-      totalSizeGbs: (map['totalSizeGbs'] as int).input(),
+      availableSizeGbs: (() {
+        final guardedValue = map['availableSizeGbs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalSizeGbs: pulumi.Input.fromValue(map['totalSizeGbs'] as int),
     );
   }
 }
-

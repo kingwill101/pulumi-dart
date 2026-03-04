@@ -8,10 +8,14 @@ import 'remote_private_link_service_connection_state_response.dart';
 class PrivateEndpointConnectionPropertiesResponse {
   /// List of group ids. For Notification Hubs, it always contains a single "namespace" element.
   final pulumi.Input<List<String>> groupIds;
+
   /// Represents a Private Endpoint that is connected to Notification Hubs namespace using Private Endpoint Connection.
   final pulumi.Input<RemotePrivateEndpointConnectionResponse>? privateEndpoint;
+
   /// State of the Private Link Service connection.
-  final pulumi.Input<RemotePrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<RemotePrivateLinkServiceConnectionStateResponse>?
+  privateLinkServiceConnectionState;
+
   /// State of Private Endpoint Connection.
   final pulumi.Input<String>? provisioningState;
 
@@ -30,19 +34,50 @@ class PrivateEndpointConnectionPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'groupIds': groupIds,
-      'privateEndpoint': ?pulumi.Input.mapOptionalInputValue<RemotePrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpoint, (value) => value.toMap()),
-      'privateLinkServiceConnectionState': ?pulumi.Input.mapOptionalInputValue<RemotePrivateLinkServiceConnectionStateResponse, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateEndpoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            RemotePrivateEndpointConnectionResponse,
+            Map<String, dynamic>
+          >(privateEndpoint, (value) => value.toMap()),
+      'privateLinkServiceConnectionState':
+          ?pulumi.Input.mapOptionalInputValue<
+            RemotePrivateLinkServiceConnectionStateResponse,
+            Map<String, dynamic>
+          >(privateLinkServiceConnectionState, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
     };
   }
 
-  factory PrivateEndpointConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory PrivateEndpointConnectionPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateEndpointConnectionPropertiesResponse(
-      groupIds: ((map['groupIds'] as List).cast<String>()).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (RemotePrivateEndpointConnectionResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (RemotePrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      groupIds: pulumi.Input.fromValue(
+        (map['groupIds'] as List).cast<String>(),
+      ),
+      privateEndpoint: (() {
+        final guardedValue = map['privateEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RemotePrivateEndpointConnectionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      privateLinkServiceConnectionState: (() {
+        final guardedValue = map['privateLinkServiceConnectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RemotePrivateLinkServiceConnectionStateResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

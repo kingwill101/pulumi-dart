@@ -6,7 +6,7 @@ import 'virtual_network_swift_connection_state.dart';
 ///
 /// This resource can be used for both App Services and Function Apps.
 ///
-/// > **Note:** The following resources support associating the vNet for Regional vNet Integration directly on the resource and via the `azure.appservice.VirtualNetworkSwiftConnection` resource. You can't use both simultaneously.
+/// &gt; **Note:** The following resources support associating the vNet for Regional vNet Integration directly on the resource and via the `azure.appservice.VirtualNetworkSwiftConnection` resource. You can't use both simultaneously.
 ///
 /// - azure.appservice.LinuxFunctionApp
 /// - azure.appservice.LinuxFunctionAppSlot
@@ -896,6 +896,7 @@ import 'virtual_network_swift_connection_state.dart';
 class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
   /// The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceId;
+
   /// The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
   late final pulumi.Output<String> subnetId;
 
@@ -908,13 +909,13 @@ class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
     VirtualNetworkSwiftConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceId = registerOutput<String>('appServiceId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceId = registerOutput<String>('appServiceId');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [VirtualNetworkSwiftConnection] resource's state with the given [name] and [id].
@@ -935,12 +936,12 @@ class VirtualNetworkSwiftConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceId = registerOutput<String>('appServiceId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:appservice/virtualNetworkSwiftConnection:VirtualNetworkSwiftConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceId = registerOutput<String>('appServiceId');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

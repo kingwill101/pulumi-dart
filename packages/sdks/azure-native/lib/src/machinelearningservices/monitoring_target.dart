@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoringTarget {
   /// Reference to the deployment asset targeted by this monitor.
   final pulumi.Input<String>? deploymentId;
+
   /// Reference to the model asset targeted by this monitor.
   final pulumi.Input<String>? modelId;
+
   /// [Required] The machine learning task type of the monitored model.
   final pulumi.Input<String> taskType;
 
@@ -15,11 +17,7 @@ class MonitoringTarget {
   /// [deploymentId] Reference to the deployment asset targeted by this monitor.
   /// [modelId] Reference to the model asset targeted by this monitor.
   /// [taskType] [Required] The machine learning task type of the monitored model.
-  MonitoringTarget({
-    this.deploymentId,
-    this.modelId,
-    required this.taskType,
-  });
+  MonitoringTarget({this.deploymentId, this.modelId, required this.taskType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class MonitoringTarget {
 
   factory MonitoringTarget.fromMap(Map<String, dynamic> map) {
     return MonitoringTarget(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
-      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
-      taskType: (map['taskType'] as String).input(),
+      deploymentId: (() {
+        final guardedValue = map['deploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modelId: (() {
+        final guardedValue = map['modelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskType: pulumi.Input.fromValue(map['taskType'] as String),
     );
   }
 }
-

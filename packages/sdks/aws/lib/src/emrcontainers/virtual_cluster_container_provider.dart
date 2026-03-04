@@ -6,8 +6,10 @@ import 'virtual_cluster_container_provider_info.dart';
 class VirtualClusterContainerProvider {
   /// The name of the container provider that is running your EMR Containers cluster
   final pulumi.Input<String> id;
+
   /// Nested list containing information about the configuration of the container provider
   final pulumi.Input<VirtualClusterContainerProviderInfo> info;
+
   /// The type of the container provider
   final pulumi.Input<String> type;
 
@@ -24,17 +26,24 @@ class VirtualClusterContainerProvider {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'info': pulumi.Input.mapInputValue<VirtualClusterContainerProviderInfo, Map<String, dynamic>>(info, (value) => value.toMap()),
+      'info':
+          pulumi.Input.mapInputValue<
+            VirtualClusterContainerProviderInfo,
+            Map<String, dynamic>
+          >(info, (value) => value.toMap()),
       'type': type,
     };
   }
 
   factory VirtualClusterContainerProvider.fromMap(Map<String, dynamic> map) {
     return VirtualClusterContainerProvider(
-      id: (map['id'] as String).input(),
-      info: (VirtualClusterContainerProviderInfo.fromMap((map['info']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      info: pulumi.Input.fromValue(
+        VirtualClusterContainerProviderInfo.fromMap(
+          (map['info']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

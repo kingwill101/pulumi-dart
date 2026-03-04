@@ -9,20 +9,19 @@ class EventGridAndResourceGraphResponse {
 
   /// Creates a new [EventGridAndResourceGraphResponse].
   /// [enable] Specifies if event grid and resource graph is enabled for Scheduled event related configurations.
-  EventGridAndResourceGraphResponse({
-    this.enable,
-  });
+  EventGridAndResourceGraphResponse({this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': ?enable,
-    };
+    return <String, dynamic>{'enable': ?enable};
   }
 
   factory EventGridAndResourceGraphResponse.fromMap(Map<String, dynamic> map) {
     return EventGridAndResourceGraphResponse(
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

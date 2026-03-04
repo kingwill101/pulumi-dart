@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigurationRadiusServerRootCertificate {
   /// A name used to uniquely identify this certificate.
   final pulumi.Input<String> name;
+
   /// The Public Key Data associated with the Certificate.
   final pulumi.Input<String> publicCertData;
 
@@ -17,17 +18,15 @@ class VpnServerConfigurationRadiusServerRootCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'publicCertData': publicCertData,
-    };
+    return <String, dynamic>{'name': name, 'publicCertData': publicCertData};
   }
 
-  factory VpnServerConfigurationRadiusServerRootCertificate.fromMap(Map<String, dynamic> map) {
+  factory VpnServerConfigurationRadiusServerRootCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpnServerConfigurationRadiusServerRootCertificate(
-      name: (map['name'] as String).input(),
-      publicCertData: (map['publicCertData'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicCertData: pulumi.Input.fromValue(map['publicCertData'] as String),
     );
   }
 }
-

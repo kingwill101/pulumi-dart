@@ -6,11 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspacePolicyState {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementWorkspaceId;
+
   /// Specifies the API Management Workspace Policy as an XML string.
   final pulumi.Input<String>? xmlContent;
+
   /// Specifies a publicly accessible URL to a policy XML document.
   ///
-  /// > **Note:** Exactly one of `xml_content` or `xml_link` must be specified.
+  /// &gt; **Note:** Exactly one of `xml_content` or `xml_link` must be specified.
   final pulumi.Input<String>? xmlLink;
 
   /// Creates a new [WorkspacePolicyState].
@@ -33,10 +35,21 @@ class WorkspacePolicyState {
 
   factory WorkspacePolicyState.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId']! as String).input(),
-      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent']! as String).input(),
-      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink']! as String).input(),
+      apiManagementWorkspaceId: (() {
+        final guardedValue = map['apiManagementWorkspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      xmlContent: (() {
+        final guardedValue = map['xmlContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      xmlLink: (() {
+        final guardedValue = map['xmlLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

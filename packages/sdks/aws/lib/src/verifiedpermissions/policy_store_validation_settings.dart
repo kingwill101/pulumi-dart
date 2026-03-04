@@ -10,20 +10,15 @@ class PolicyStoreValidationSettings {
 
   /// Creates a new [PolicyStoreValidationSettings].
   /// [mode] The mode for the validation settings. Valid values: `OFF`, `STRICT`.
-  PolicyStoreValidationSettings({
-    required this.mode,
-  });
+  PolicyStoreValidationSettings({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory PolicyStoreValidationSettings.fromMap(Map<String, dynamic> map) {
     return PolicyStoreValidationSettings(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

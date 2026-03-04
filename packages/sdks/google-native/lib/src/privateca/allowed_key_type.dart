@@ -8,29 +8,46 @@ import 'rsa_key_type.dart';
 class AllowedKeyType {
   /// Represents an allowed Elliptic Curve key type.
   final pulumi.Input<EcKeyType>? ellipticCurve;
+
   /// Represents an allowed RSA key type.
   final pulumi.Input<RsaKeyType>? rsa;
 
   /// Creates a new [AllowedKeyType].
   /// [ellipticCurve] Represents an allowed Elliptic Curve key type.
   /// [rsa] Represents an allowed RSA key type.
-  AllowedKeyType({
-    this.ellipticCurve,
-    this.rsa,
-  });
+  AllowedKeyType({this.ellipticCurve, this.rsa});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ellipticCurve': ?pulumi.Input.mapOptionalInputValue<EcKeyType, Map<String, dynamic>>(ellipticCurve, (value) => value.toMap()),
-      'rsa': ?pulumi.Input.mapOptionalInputValue<RsaKeyType, Map<String, dynamic>>(rsa, (value) => value.toMap()),
+      'ellipticCurve':
+          ?pulumi.Input.mapOptionalInputValue<EcKeyType, Map<String, dynamic>>(
+            ellipticCurve,
+            (value) => value.toMap(),
+          ),
+      'rsa':
+          ?pulumi.Input.mapOptionalInputValue<RsaKeyType, Map<String, dynamic>>(
+            rsa,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory AllowedKeyType.fromMap(Map<String, dynamic> map) {
     return AllowedKeyType(
-      ellipticCurve: map['ellipticCurve'] == null ? null : (EcKeyType.fromMap((map['ellipticCurve']! as Map).cast<String, dynamic>())).input(),
-      rsa: map['rsa'] == null ? null : (RsaKeyType.fromMap((map['rsa']! as Map).cast<String, dynamic>())).input(),
+      ellipticCurve: (() {
+        final guardedValue = map['ellipticCurve'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EcKeyType.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      rsa: (() {
+        final guardedValue = map['rsa'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RsaKeyType.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

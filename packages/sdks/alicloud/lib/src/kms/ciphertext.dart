@@ -141,10 +141,13 @@ import 'ciphertext_state.dart';
 class Ciphertext extends pulumi.CustomResource {
   /// The ciphertext of the data key encrypted with the primary CMK version.
   late final pulumi.Output<String> ciphertextBlob;
+
   /// The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
   late final pulumi.Output<Map<String, String>?> encryptionContext;
+
   /// The globally unique ID of the CMK.
   late final pulumi.Output<String> keyId;
+
   /// The plaintext to be encrypted which must be encoded in Base64.
   late final pulumi.Output<String> plaintext;
 
@@ -157,15 +160,17 @@ class Ciphertext extends pulumi.CustomResource {
     CiphertextArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/ciphertext:Ciphertext',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ciphertextBlob = registerOutput<String>('ciphertextBlob');
-    this.encryptionContext = registerOutput<Map<String, String>?>('encryptionContext');
-    this.keyId = registerOutput<String>('keyId');
-    this.plaintext = registerOutput<String>('plaintext');
+         'alicloud:kms/ciphertext:Ciphertext',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ciphertextBlob = registerOutput<String>('ciphertextBlob');
+    encryptionContext = registerOutput<Map<String, String>?>(
+      'encryptionContext',
+    );
+    keyId = registerOutput<String>('keyId');
+    plaintext = registerOutput<String>('plaintext');
   }
 
   /// Gets an existing [Ciphertext] resource's state with the given [name] and [id].
@@ -186,14 +191,16 @@ class Ciphertext extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/ciphertext:Ciphertext',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ciphertextBlob = registerOutput<String>('ciphertextBlob');
-    this.encryptionContext = registerOutput<Map<String, String>?>('encryptionContext');
-    this.keyId = registerOutput<String>('keyId');
-    this.plaintext = registerOutput<String>('plaintext');
+         'alicloud:kms/ciphertext:Ciphertext',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ciphertextBlob = registerOutput<String>('ciphertextBlob');
+    encryptionContext = registerOutput<Map<String, String>?>(
+      'encryptionContext',
+    );
+    keyId = registerOutput<String>('keyId');
+    plaintext = registerOutput<String>('plaintext');
   }
 }

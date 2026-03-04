@@ -9,20 +9,19 @@ class PolicyAdvancedConfigState {
 
   /// Creates a new [PolicyAdvancedConfigState].
   /// [internetSwitch] Access control policy strict mode of on-state. Valid values:
-  PolicyAdvancedConfigState({
-    this.internetSwitch,
-  });
+  PolicyAdvancedConfigState({this.internetSwitch});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'internetSwitch': ?internetSwitch,
-    };
+    return <String, dynamic>{'internetSwitch': ?internetSwitch};
   }
 
   factory PolicyAdvancedConfigState.fromMap(Map<String, dynamic> map) {
     return PolicyAdvancedConfigState(
-      internetSwitch: map['internetSwitch'] == null ? null : (map['internetSwitch']! as String).input(),
+      internetSwitch: (() {
+        final guardedValue = map['internetSwitch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

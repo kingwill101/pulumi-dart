@@ -4,16 +4,15 @@ enum ChangeDetailsMode {
   valueInclude("Include"),
   valueExclude("Exclude");
 
-  const ChangeDetailsMode(this.value);
-  final String value;
+  const ChangeDetailsMode(this.wireValue);
+  final String wireValue;
 
   static ChangeDetailsMode fromValue(String value) {
     for (final item in ChangeDetailsMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ChangeDetailsMode value: $value');
   }
 }
-

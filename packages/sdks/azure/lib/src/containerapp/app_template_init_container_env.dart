@@ -5,11 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppTemplateInitContainerEnv {
   /// The name of the environment variable for the container.
   final pulumi.Input<String> name;
+
   /// The name of the secret that contains the value for this environment variable.
   final pulumi.Input<String>? secretName;
+
   /// The value for this environment variable.
   ///
-  /// > **Note:** This value is ignored if `secret_name` is used
+  /// &gt; **Note:** This value is ignored if `secret_name` is used
   final pulumi.Input<String>? value;
 
   /// Creates a new [AppTemplateInitContainerEnv].
@@ -32,10 +34,17 @@ class AppTemplateInitContainerEnv {
 
   factory AppTemplateInitContainerEnv.fromMap(Map<String, dynamic> map) {
     return AppTemplateInitContainerEnv(
-      name: (map['name'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      secretName: (() {
+        final guardedValue = map['secretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

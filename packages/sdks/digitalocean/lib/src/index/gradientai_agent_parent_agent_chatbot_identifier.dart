@@ -7,20 +7,21 @@ class GradientaiAgentParentAgentChatbotIdentifier {
 
   /// Creates a new [GradientaiAgentParentAgentChatbotIdentifier].
   /// [chatbotId] Optional.
-  GradientaiAgentParentAgentChatbotIdentifier({
-    this.chatbotId,
-  });
+  GradientaiAgentParentAgentChatbotIdentifier({this.chatbotId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'chatbotId': ?chatbotId,
-    };
+    return <String, dynamic>{'chatbotId': ?chatbotId};
   }
 
-  factory GradientaiAgentParentAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
+  factory GradientaiAgentParentAgentChatbotIdentifier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GradientaiAgentParentAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId']! as String).input(),
+      chatbotId: (() {
+        final guardedValue = map['chatbotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

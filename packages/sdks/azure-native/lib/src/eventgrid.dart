@@ -1,5 +1,3 @@
-library module_eventgrid;
-
 export 'eventgrid/advanced_filter_operator_type.dart';
 export 'eventgrid/azure_function_event_subscription_destination.dart';
 export 'eventgrid/azure_function_event_subscription_destination_response.dart';

@@ -13,15 +13,18 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oversizeHandling': ?oversizeHandling,
-    };
+    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
   }
 
-  factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : ((map['oversizeHandling'] as String).input()).input(),
+      oversizeHandling: (() {
+        final guardedValue = map['oversizeHandling'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

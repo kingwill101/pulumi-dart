@@ -1,5 +1,3 @@
-library module_cloudscheduler;
-
 export 'cloudscheduler/job.dart';
 export 'cloudscheduler/job_app_engine_http_target.dart';
 export 'cloudscheduler/job_app_engine_http_target_app_engine_routing.dart';

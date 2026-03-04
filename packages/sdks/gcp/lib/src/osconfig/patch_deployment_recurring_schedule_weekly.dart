@@ -9,20 +9,17 @@ class PatchDeploymentRecurringScheduleWeekly {
 
   /// Creates a new [PatchDeploymentRecurringScheduleWeekly].
   /// [dayOfWeek] IANA Time Zone Database time zone, e.g. "America/New_York".
-  PatchDeploymentRecurringScheduleWeekly({
-    required this.dayOfWeek,
-  });
+  PatchDeploymentRecurringScheduleWeekly({required this.dayOfWeek});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dayOfWeek': dayOfWeek,
-    };
+    return <String, dynamic>{'dayOfWeek': dayOfWeek};
   }
 
-  factory PatchDeploymentRecurringScheduleWeekly.fromMap(Map<String, dynamic> map) {
+  factory PatchDeploymentRecurringScheduleWeekly.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PatchDeploymentRecurringScheduleWeekly(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
     );
   }
 }
-

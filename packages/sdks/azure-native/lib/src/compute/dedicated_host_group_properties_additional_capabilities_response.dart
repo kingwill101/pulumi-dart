@@ -14,15 +14,18 @@ class DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ultraSSDEnabled': ?ultraSSDEnabled,
-    };
+    return <String, dynamic>{'ultraSSDEnabled': ?ultraSSDEnabled};
   }
 
-  factory DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
+  factory DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse(
-      ultraSSDEnabled: map['ultraSSDEnabled'] == null ? null : (map['ultraSSDEnabled']! as bool).input(),
+      ultraSSDEnabled: (() {
+        final guardedValue = map['ultraSSDEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

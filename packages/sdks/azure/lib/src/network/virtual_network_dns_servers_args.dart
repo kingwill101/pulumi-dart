@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualNetworkDnsServersArgs {
   /// List of IP addresses of DNS servers
   final pulumi.Input<List<String>>? dnsServers;
+
   /// The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualNetworkId;
 
@@ -29,9 +30,14 @@ class VirtualNetworkDnsServersArgs {
 
   factory VirtualNetworkDnsServersArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkDnsServersArgs(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      virtualNetworkId: (map['virtualNetworkId'] as String).input(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      virtualNetworkId: pulumi.Input.fromValue(
+        map['virtualNetworkId'] as String,
+      ),
     );
   }
 }
-

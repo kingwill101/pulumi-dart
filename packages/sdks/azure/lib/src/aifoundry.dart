@@ -1,5 +1,3 @@
-library module_aifoundry;
-
 export 'aifoundry/hub.dart';
 export 'aifoundry/hub_args.dart';
 export 'aifoundry/hub_encryption.dart';

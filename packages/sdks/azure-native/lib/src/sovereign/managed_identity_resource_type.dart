@@ -3,16 +3,15 @@ enum ManagedIdentityResourceType {
   systemAssigned("SystemAssigned"),
   userAssigned("UserAssigned");
 
-  const ManagedIdentityResourceType(this.value);
-  final String value;
+  const ManagedIdentityResourceType(this.wireValue);
+  final String wireValue;
 
   static ManagedIdentityResourceType fromValue(String value) {
     for (final item in ManagedIdentityResourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedIdentityResourceType value: $value');
   }
 }
-

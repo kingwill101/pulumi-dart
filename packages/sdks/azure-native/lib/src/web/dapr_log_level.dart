@@ -5,16 +5,15 @@ enum DaprLogLevel {
   valueWarn("warn"),
   valueError("error");
 
-  const DaprLogLevel(this.value);
-  final String value;
+  const DaprLogLevel(this.wireValue);
+  final String wireValue;
 
   static DaprLogLevel fromValue(String value) {
     for (final item in DaprLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DaprLogLevel value: $value');
   }
 }
-

@@ -236,22 +236,27 @@ import 'trigger_http_request_state.dart';
 /// $ pulumi import azure:logicapps/triggerHttpRequest:TriggerHttpRequest request1 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Logic/workflows/workflow1/triggers/request1
 /// ```
 ///
-/// > **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
+/// &gt; **NOTE:** This ID is unique to this provider and doesn't directly match to any other resource. To compose this ID, you can take the ID Logic App Workflow and append `/triggers/{name of the trigger}`.
 class TriggerHttpRequest extends pulumi.CustomResource {
   /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitor_action_group and security_center_automation.
   late final pulumi.Output<String> callbackUrl;
+
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> logicAppId;
+
   /// Specifies the HTTP Method which the request be using. Possible values include `DELETE`, `GET`, `PATCH`, `POST` or `PUT`.
   late final pulumi.Output<String?> method;
+
   /// Specifies the name of the HTTP Request Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
+  /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
   late final pulumi.Output<String> name;
+
   /// Specifies the Relative Path used for this Request.
   ///
-  /// > **NOTE:** When `relative_path` is set a `method` must also be set.
+  /// &gt; **NOTE:** When `relative_path` is set a `method` must also be set.
   late final pulumi.Output<String?> relativePath;
+
   /// A JSON Blob defining the Schema of the incoming request. This needs to be valid JSON.
   late final pulumi.Output<String> schema;
 
@@ -264,17 +269,17 @@ class TriggerHttpRequest extends pulumi.CustomResource {
     TriggerHttpRequestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/triggerHttpRequest:TriggerHttpRequest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callbackUrl = registerOutput<String>('callbackUrl');
-    this.logicAppId = registerOutput<String>('logicAppId');
-    this.method = registerOutput<String?>('method');
+         'azure:logicapps/triggerHttpRequest:TriggerHttpRequest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
+    logicAppId = registerOutput<String>('logicAppId');
+    method = registerOutput<String?>('method');
     this.name = registerOutput<String>('name');
-    this.relativePath = registerOutput<String?>('relativePath');
-    this.schema = registerOutput<String>('schema');
+    relativePath = registerOutput<String?>('relativePath');
+    schema = registerOutput<String>('schema');
   }
 
   /// Gets an existing [TriggerHttpRequest] resource's state with the given [name] and [id].
@@ -295,16 +300,16 @@ class TriggerHttpRequest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:logicapps/triggerHttpRequest:TriggerHttpRequest',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callbackUrl = registerOutput<String>('callbackUrl');
-    this.logicAppId = registerOutput<String>('logicAppId');
-    this.method = registerOutput<String?>('method');
+         'azure:logicapps/triggerHttpRequest:TriggerHttpRequest',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
+    logicAppId = registerOutput<String>('logicAppId');
+    method = registerOutput<String?>('method');
     this.name = registerOutput<String>('name');
-    this.relativePath = registerOutput<String?>('relativePath');
-    this.schema = registerOutput<String>('schema');
+    relativePath = registerOutput<String?>('relativePath');
+    schema = registerOutput<String>('schema');
   }
 }

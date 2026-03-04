@@ -1,15 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_notification_args.dart';
-import 'bucket_notification_lambda_function.dart';
-import 'bucket_notification_queue.dart';
 import 'bucket_notification_state.dart';
-import 'bucket_notification_topic.dart';
 
 /// Manages a S3 Bucket Notification Configuration. For additional information, see the [Configuring S3 Event Notifications section in the Amazon S3 Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
 ///
-/// > **NOTE:** S3 Buckets only support a single notification configuration resource. Declaring multiple `aws.s3.BucketNotification` resources to the same S3 Bucket will cause a perpetual difference in configuration. This resource will overwrite any existing event notifications configured for the S3 bucket it's associated with. See the example "Trigger multiple Lambda functions" for an option of how to configure multiple triggers within this resource.
+/// &gt; **NOTE:** S3 Buckets only support a single notification configuration resource. Declaring multiple `aws.s3.BucketNotification` resources to the same S3 Bucket will cause a perpetual difference in configuration. This resource will overwrite any existing event notifications configured for the S3 bucket it's associated with. See the example "Trigger multiple Lambda functions" for an option of how to configure multiple triggers within this resource.
 ///
-/// > This resource cannot be used with S3 directory buckets.
+/// &gt; This resource cannot be used with S3 directory buckets.
 ///
 /// ## Example Usage
 ///
@@ -2186,16 +2183,21 @@ class BucketNotification extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> bucket;
+
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
   late final pulumi.Output<bool?> eventbridge;
+
   /// Used to configure notifications to a Lambda Function. See below.
-  late final pulumi.Output<List<BucketNotificationLambdaFunction>?> lambdaFunctions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> lambdaFunctions;
+
   /// Notification configuration to SQS Queue. See below.
-  late final pulumi.Output<List<BucketNotificationQueue>?> queues;
+  late final pulumi.Output<List<Map<String, dynamic>>?> queues;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Notification configuration to SNS Topic. See below.
-  late final pulumi.Output<List<BucketNotificationTopic>?> topics;
+  late final pulumi.Output<List<Map<String, dynamic>>?> topics;
 
   /// Creates a new [BucketNotification].
   /// [name] The Pulumi resource name.
@@ -2206,17 +2208,19 @@ class BucketNotification extends pulumi.CustomResource {
     BucketNotificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketNotification:BucketNotification',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.eventbridge = registerOutput<bool?>('eventbridge');
-    this.lambdaFunctions = registerOutput<List<BucketNotificationLambdaFunction>?>('lambdaFunctions');
-    this.queues = registerOutput<List<BucketNotificationQueue>?>('queues');
-    this.region = registerOutput<String>('region');
-    this.topics = registerOutput<List<BucketNotificationTopic>?>('topics');
+         'aws:s3/bucketNotification:BucketNotification',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    eventbridge = registerOutput<bool?>('eventbridge');
+    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>(
+      'lambdaFunctions',
+    );
+    queues = registerOutput<List<Map<String, dynamic>>?>('queues');
+    region = registerOutput<String>('region');
+    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
   }
 
   /// Gets an existing [BucketNotification] resource's state with the given [name] and [id].
@@ -2237,16 +2241,18 @@ class BucketNotification extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketNotification:BucketNotification',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.eventbridge = registerOutput<bool?>('eventbridge');
-    this.lambdaFunctions = registerOutput<List<BucketNotificationLambdaFunction>?>('lambdaFunctions');
-    this.queues = registerOutput<List<BucketNotificationQueue>?>('queues');
-    this.region = registerOutput<String>('region');
-    this.topics = registerOutput<List<BucketNotificationTopic>?>('topics');
+         'aws:s3/bucketNotification:BucketNotification',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    eventbridge = registerOutput<bool?>('eventbridge');
+    lambdaFunctions = registerOutput<List<Map<String, dynamic>>?>(
+      'lambdaFunctions',
+    );
+    queues = registerOutput<List<Map<String, dynamic>>?>('queues');
+    region = registerOutput<String>('region');
+    topics = registerOutput<List<Map<String, dynamic>>?>('topics');
   }
 }

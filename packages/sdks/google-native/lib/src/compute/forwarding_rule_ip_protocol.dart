@@ -9,16 +9,15 @@ enum ForwardingRuleIpProtocol {
   tcp("TCP"),
   udp("UDP");
 
-  const ForwardingRuleIpProtocol(this.value);
-  final String value;
+  const ForwardingRuleIpProtocol(this.wireValue);
+  final String wireValue;
 
   static ForwardingRuleIpProtocol fromValue(String value) {
     for (final item in ForwardingRuleIpProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ForwardingRuleIpProtocol value: $value');
   }
 }
-

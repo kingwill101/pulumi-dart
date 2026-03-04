@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HybridIdentityMetadatumArgs {
   /// Name of the hybridIdentityMetadata.
   final pulumi.Input<String>? metadataName;
+
   /// Gets or sets the Public Key.
   final pulumi.Input<String>? publicKey;
+
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the vm.
   final pulumi.Input<String> virtualMachineName;
+
   /// Gets or sets the Vm Id.
   final pulumi.Input<String>? vmId;
 
@@ -44,12 +48,27 @@ class HybridIdentityMetadatumArgs {
 
   factory HybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadatumArgs(
-      metadataName: map['metadataName'] == null ? null : (map['metadataName']! as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualMachineName: (map['virtualMachineName'] as String).input(),
-      vmId: map['vmId'] == null ? null : (map['vmId']! as String).input(),
+      metadataName: (() {
+        final guardedValue = map['metadataName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualMachineName: pulumi.Input.fromValue(
+        map['virtualMachineName'] as String,
+      ),
+      vmId: (() {
+        final guardedValue = map['vmId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

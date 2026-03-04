@@ -9,20 +9,15 @@ class NetAppVolumeResponse {
 
   /// Creates a new [NetAppVolumeResponse].
   /// [id] Azure resource ID of the NetApp volume
-  NetAppVolumeResponse({
-    required this.id,
-  });
+  NetAppVolumeResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory NetAppVolumeResponse.fromMap(Map<String, dynamic> map) {
     return NetAppVolumeResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

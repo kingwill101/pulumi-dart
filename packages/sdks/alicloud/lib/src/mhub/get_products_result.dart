@@ -36,7 +36,11 @@ class GetProductsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'products': pulumi.Input.encodeList<GetProductsProduct, Map<String, dynamic>>(products, (value) => value.toMap()),
+      'products':
+          pulumi.Input.encodeList<GetProductsProduct, Map<String, dynamic>>(
+            products,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -44,11 +48,22 @@ class GetProductsResult {
     return GetProductsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      products: pulumi.Input.decodeList<GetProductsProduct>(map['products'], (value) => GetProductsProduct.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      products: pulumi.Input.decodeList<GetProductsProduct>(
+        map['products']!,
+        (value) =>
+            GetProductsProduct.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

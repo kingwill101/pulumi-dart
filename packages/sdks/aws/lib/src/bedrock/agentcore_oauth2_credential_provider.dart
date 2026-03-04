@@ -1,12 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_oauth2_credential_provider_args.dart';
-import 'agentcore_oauth2_credential_provider_client_secret_arn.dart';
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config.dart';
 import 'agentcore_oauth2_credential_provider_state.dart';
 
 /// Manages an AWS Bedrock AgentCore OAuth2 Credential Provider. OAuth2 credential providers enable secure authentication with external OAuth2/OpenID Connect identity providers for agent runtimes.
 ///
-/// > **Note:** Write-Only arguments `client_id_wo` and `client_secret_wo` are available to use in place of `client_id` and `client_secret`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+/// &gt; **Note:** Write-Only arguments `client_id_wo` and `client_secret_wo` are available to use in place of `client_id` and `client_secret`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
 ///
 /// ## Example Usage
 ///
@@ -527,17 +526,25 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// ```
 class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
   /// ARN of the AWS Secrets Manager secret containing the client secret.
-  late final pulumi.Output<List<AgentcoreOauth2CredentialProviderClientSecretArn>> clientSecretArns;
+  late final pulumi.Output<List<Map<String, dynamic>>> clientSecretArns;
+
   /// ARN of the OAuth2 credential provider.
   late final pulumi.Output<String> credentialProviderArn;
+
   /// Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.
   late final pulumi.Output<String> credentialProviderVendor;
+
   /// Name of the OAuth2 credential provider.
   late final pulumi.Output<String> name;
+
   /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2_provider_config` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?> oauth2ProviderConfig;
+  late final pulumi.Output<
+    AgentcoreOauth2CredentialProviderOauth2ProviderConfig?
+  >
+  oauth2ProviderConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -550,17 +557,24 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
     AgentcoreOauth2CredentialProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns');
-    this.credentialProviderArn = registerOutput<String>('credentialProviderArn');
-    this.credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
+         'aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientSecretArns = registerOutput<List<Map<String, dynamic>>>(
+      'clientSecretArns',
+    );
+    credentialProviderArn = registerOutput<String>('credentialProviderArn');
+    credentialProviderVendor = registerOutput<String>(
+      'credentialProviderVendor',
+    );
     this.name = registerOutput<String>('name');
-    this.oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig');
-    this.region = registerOutput<String>('region');
+    oauth2ProviderConfig =
+        registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>(
+          'oauth2ProviderConfig',
+        );
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [AgentcoreOauth2CredentialProvider] resource's state with the given [name] and [id].
@@ -581,16 +595,23 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns');
-    this.credentialProviderArn = registerOutput<String>('credentialProviderArn');
-    this.credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
+         'aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientSecretArns = registerOutput<List<Map<String, dynamic>>>(
+      'clientSecretArns',
+    );
+    credentialProviderArn = registerOutput<String>('credentialProviderArn');
+    credentialProviderVendor = registerOutput<String>(
+      'credentialProviderVendor',
+    );
     this.name = registerOutput<String>('name');
-    this.oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig');
-    this.region = registerOutput<String>('region');
+    oauth2ProviderConfig =
+        registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>(
+          'oauth2ProviderConfig',
+        );
+    region = registerOutput<String>('region');
   }
 }

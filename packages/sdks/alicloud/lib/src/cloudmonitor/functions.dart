@@ -6,7 +6,7 @@ import 'get_service_metric_alarm_rules_result.dart';
 
 /// This data source provides the Cloud Monitor Service Hybrid Double Writes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.220.0.
+/// &gt; **NOTE:** Available since v1.220.0.
 ///
 /// ## Example Usage
 ///
@@ -238,7 +238,7 @@ Future<GetServiceHybridDoubleWritesResult> getServiceHybridDoubleWrites(
 
 /// This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.256.0.
+/// &gt; **NOTE:** Available since v1.256.0.
 ///
 /// ## Example Usage
 ///

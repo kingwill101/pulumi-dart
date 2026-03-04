@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtendedLocationPropertyResponse {
   /// The name of the extended location.
   final pulumi.Input<String> name;
+
   /// Type of ExtendedLocation.
   final pulumi.Input<String> type;
 
   /// Creates a new [ExtendedLocationPropertyResponse].
   /// [name] The name of the extended location.
   /// [type] Type of ExtendedLocation.
-  ExtendedLocationPropertyResponse({
-    required this.name,
-    required this.type,
-  });
+  ExtendedLocationPropertyResponse({required this.name, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'type': type};
   }
 
   factory ExtendedLocationPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ExtendedLocationPropertyResponse(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

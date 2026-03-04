@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateObjectGlobalRulestackArgs {
   /// comment for this object
   final pulumi.Input<String>? auditComment;
+
   /// use certificate self signed
   final pulumi.Input<String> certificateSelfSigned;
+
   /// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
   final pulumi.Input<String>? certificateSignerResourceId;
+
   /// user description for this object
   final pulumi.Input<String>? description;
+
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
+
   /// certificate name
   final pulumi.Input<String>? name;
 
@@ -47,15 +52,36 @@ class CertificateObjectGlobalRulestackArgs {
     };
   }
 
-  factory CertificateObjectGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
+  factory CertificateObjectGlobalRulestackArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateObjectGlobalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
-      certificateSelfSigned: (map['certificateSelfSigned'] as String).input(),
-      certificateSignerResourceId: map['certificateSignerResourceId'] == null ? null : (map['certificateSignerResourceId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      globalRulestackName: (map['globalRulestackName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      auditComment: (() {
+        final guardedValue = map['auditComment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateSelfSigned: pulumi.Input.fromValue(
+        map['certificateSelfSigned'] as String,
+      ),
+      certificateSignerResourceId: (() {
+        final guardedValue = map['certificateSignerResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalRulestackName: pulumi.Input.fromValue(
+        map['globalRulestackName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

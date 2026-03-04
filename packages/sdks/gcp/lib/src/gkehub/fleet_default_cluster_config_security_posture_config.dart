@@ -6,6 +6,7 @@ class FleetDefaultClusterConfigSecurityPostureConfig {
   /// Sets which mode to use for Security Posture features.
   /// Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
   final pulumi.Input<String>? mode;
+
   /// Sets which mode to use for vulnerability scanning.
   /// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
   final pulumi.Input<String>? vulnerabilityMode;
@@ -25,11 +26,20 @@ class FleetDefaultClusterConfigSecurityPostureConfig {
     };
   }
 
-  factory FleetDefaultClusterConfigSecurityPostureConfig.fromMap(Map<String, dynamic> map) {
+  factory FleetDefaultClusterConfigSecurityPostureConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetDefaultClusterConfigSecurityPostureConfig(
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (map['vulnerabilityMode']! as String).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vulnerabilityMode: (() {
+        final guardedValue = map['vulnerabilityMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

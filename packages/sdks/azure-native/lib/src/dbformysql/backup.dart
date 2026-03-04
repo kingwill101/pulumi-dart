@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Backup {
   /// Backup interval hours for the server.
   final pulumi.Input<int>? backupIntervalHours;
+
   /// Backup retention days for the server.
   final pulumi.Input<int>? backupRetentionDays;
+
   /// Whether or not geo redundant backup is enabled.
   final pulumi.Input<String>? geoRedundantBackup;
 
@@ -31,10 +33,21 @@ class Backup {
 
   factory Backup.fromMap(Map<String, dynamic> map) {
     return Backup(
-      backupIntervalHours: map['backupIntervalHours'] == null ? null : (map['backupIntervalHours']! as int).input(),
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays']! as int).input(),
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup']! as String).input(),
+      backupIntervalHours: (() {
+        final guardedValue = map['backupIntervalHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupRetentionDays: (() {
+        final guardedValue = map['backupRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      geoRedundantBackup: (() {
+        final guardedValue = map['geoRedundantBackup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

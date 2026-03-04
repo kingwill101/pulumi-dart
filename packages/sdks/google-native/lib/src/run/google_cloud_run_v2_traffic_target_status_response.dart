@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRunV2TrafficTargetStatusResponse {
   /// Specifies percent of the traffic to this Revision.
   final pulumi.Input<int> percent;
+
   /// Revision to which this traffic is sent.
   final pulumi.Input<String> revision;
+
   /// Indicates the string used in the URI to exclusively reference this target.
   final pulumi.Input<String> tag;
+
   /// The allocation type for this traffic target.
   final pulumi.Input<String> type;
+
   /// Displays the target URI.
   final pulumi.Input<String> uri;
 
@@ -39,14 +43,15 @@ class GoogleCloudRunV2TrafficTargetStatusResponse {
     };
   }
 
-  factory GoogleCloudRunV2TrafficTargetStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRunV2TrafficTargetStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRunV2TrafficTargetStatusResponse(
-      percent: (map['percent'] as int).input(),
-      revision: (map['revision'] as String).input(),
-      tag: (map['tag'] as String).input(),
-      type: (map['type'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      percent: pulumi.Input.fromValue(map['percent'] as int),
+      revision: pulumi.Input.fromValue(map['revision'] as String),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

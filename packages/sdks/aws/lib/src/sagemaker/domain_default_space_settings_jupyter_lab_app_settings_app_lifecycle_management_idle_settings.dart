@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings {
   /// The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
   final pulumi.Input<int>? idleTimeoutInMinutes;
+
   /// Indicates whether idle shutdown is activated for the application type. Valid values are `ENABLED` and `DISABLED`.
   final pulumi.Input<String>? lifecycleManagement;
+
   /// The maximum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
   final pulumi.Input<int>? maxIdleTimeoutInMinutes;
+
   /// The minimum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
   final pulumi.Input<int>? minIdleTimeoutInMinutes;
 
@@ -33,13 +36,30 @@ class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleS
     };
   }
 
-  factory DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
+  factory DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : ((map['idleTimeoutInMinutes'] as int).input()).input(),
-      lifecycleManagement: map['lifecycleManagement'] == null ? null : ((map['lifecycleManagement'] as String).input()).input(),
-      maxIdleTimeoutInMinutes: map['maxIdleTimeoutInMinutes'] == null ? null : ((map['maxIdleTimeoutInMinutes'] as int).input()).input(),
-      minIdleTimeoutInMinutes: map['minIdleTimeoutInMinutes'] == null ? null : ((map['minIdleTimeoutInMinutes'] as int).input()).input(),
+      idleTimeoutInMinutes: (() {
+        final guardedValue = map['idleTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lifecycleManagement: (() {
+        final guardedValue = map['lifecycleManagement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxIdleTimeoutInMinutes: (() {
+        final guardedValue = map['maxIdleTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minIdleTimeoutInMinutes: (() {
+        final guardedValue = map['minIdleTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

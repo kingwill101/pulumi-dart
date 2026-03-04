@@ -212,22 +212,31 @@ import 'task_run_args.dart';
 class TaskRun extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// How the run should be forced to rerun even if the run request configuration has not changed
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// Identity for the resource.
   late final pulumi.Output<IdentityPropertiesResponse?> identity;
+
   /// The location of the resource
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of this task run
   late final pulumi.Output<String> provisioningState;
+
   /// The request (parameters) for the run
   late final pulumi.Output<DockerBuildRequestResponse?> runRequest;
+
   /// The result of this task run
   late final pulumi.Output<RunResponse> runResult;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -240,20 +249,20 @@ class TaskRun extends pulumi.CustomResource {
     TaskRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerregistry:TaskRun',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
-    this.identity = registerOutput<IdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:containerregistry:TaskRun',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.runRequest = registerOutput<DockerBuildRequestResponse?>('runRequest');
-    this.runResult = registerOutput<RunResponse>('runResult');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    runRequest = registerOutput<DockerBuildRequestResponse?>('runRequest');
+    runResult = registerOutput<RunResponse>('runResult');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

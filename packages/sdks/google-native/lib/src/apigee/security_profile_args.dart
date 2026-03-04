@@ -11,17 +11,24 @@ import 'google_cloud_apigee_v1_security_profile_scoring_config.dart';
 class SecurityProfileArgs {
   /// Description of the security profile.
   final pulumi.Input<String>? description;
+
   /// Display name of the security profile.
   final pulumi.Input<String>? displayName;
+
   /// List of environments attached to security profile.
   final pulumi.Input<List<Map<String, dynamic>>>? environments;
+
   /// Immutable. Name of the security profile resource. Format: organizations/{org}/securityProfiles/{profile}
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Customized profile configuration that computes the security score.
   final pulumi.Input<GoogleCloudApigeeV1ProfileConfig> profileConfig;
+
   /// List of profile scoring configs in this revision.
-  final pulumi.Input<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>>? scoringConfigs;
+  final pulumi.Input<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>>?
+  scoringConfigs;
+
   /// Required. The ID to use for the SecurityProfile, which will become the final component of the action's resource name. This value should be 1-63 characters and validated by "(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)".
   final pulumi.Input<String> securityProfileId;
 
@@ -52,23 +59,74 @@ class SecurityProfileArgs {
       'environments': ?environments,
       'name': ?name,
       'organizationId': organizationId,
-      'profileConfig': pulumi.Input.mapInputValue<GoogleCloudApigeeV1ProfileConfig, Map<String, dynamic>>(profileConfig, (value) => value.toMap()),
-      'scoringConfigs': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudApigeeV1SecurityProfileScoringConfig>, List<Map<String, dynamic>>>(scoringConfigs, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1SecurityProfileScoringConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'profileConfig':
+          pulumi.Input.mapInputValue<
+            GoogleCloudApigeeV1ProfileConfig,
+            Map<String, dynamic>
+          >(profileConfig, (value) => value.toMap()),
+      'scoringConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudApigeeV1SecurityProfileScoringConfig>,
+            List<Map<String, dynamic>>
+          >(
+            scoringConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudApigeeV1SecurityProfileScoringConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'securityProfileId': securityProfileId,
     };
   }
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      environments: map['environments'] == null ? null : ((map['environments']! as List).cast<Map<String, dynamic>>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      profileConfig: (GoogleCloudApigeeV1ProfileConfig.fromMap((map['profileConfig'] as Map).cast<String, dynamic>())).input(),
-      scoringConfigs: map['scoringConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityProfileScoringConfig>(map['scoringConfigs']!, (value) => GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      securityProfileId: (map['securityProfileId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environments: (() {
+        final guardedValue = map['environments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<Map<String, dynamic>>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      profileConfig: pulumi.Input.fromValue(
+        GoogleCloudApigeeV1ProfileConfig.fromMap(
+          (map['profileConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      scoringConfigs: (() {
+        final guardedValue = map['scoringConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GoogleCloudApigeeV1SecurityProfileScoringConfig
+          >(
+            guardedValue,
+            (value) => GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      securityProfileId: pulumi.Input.fromValue(
+        map['securityProfileId'] as String,
+      ),
     );
   }
 }
-

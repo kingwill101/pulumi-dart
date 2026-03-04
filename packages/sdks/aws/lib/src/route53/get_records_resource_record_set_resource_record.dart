@@ -8,20 +8,17 @@ class GetRecordsResourceRecordSetResourceRecord {
 
   /// Creates a new [GetRecordsResourceRecordSetResourceRecord].
   /// [value] The DNS record value.
-  GetRecordsResourceRecordSetResourceRecord({
-    required this.value,
-  });
+  GetRecordsResourceRecordSetResourceRecord({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory GetRecordsResourceRecordSetResourceRecord.fromMap(Map<String, dynamic> map) {
+  factory GetRecordsResourceRecordSetResourceRecord.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRecordsResourceRecordSetResourceRecord(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

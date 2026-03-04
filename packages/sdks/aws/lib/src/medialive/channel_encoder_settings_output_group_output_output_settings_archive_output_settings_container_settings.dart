@@ -5,7 +5,11 @@ import 'channel_encoder_settings_output_group_output_output_settings_archive_out
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings {
   /// M2TS Settings. See [M2TS Settings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-m2tssettings.html) for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings>? m2tsSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings
+  >?
+  m2tsSettings;
+
   /// Raw Settings. This can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>>? rawSettings;
 
@@ -19,16 +23,35 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'm2tsSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings, Map<String, dynamic>>(m2tsSettings, (value) => value.toMap()),
+      'm2tsSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings,
+            Map<String, dynamic>
+          >(m2tsSettings, (value) => value.toMap()),
       'rawSettings': ?rawSettings,
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings(
-      m2tsSettings: map['m2tsSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings.fromMap((map['m2tsSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      rawSettings: map['rawSettings'] == null ? null : (((map['rawSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      m2tsSettings: (() {
+        final guardedValue = map['m2tsSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      rawSettings: (() {
+        final guardedValue = map['rawSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

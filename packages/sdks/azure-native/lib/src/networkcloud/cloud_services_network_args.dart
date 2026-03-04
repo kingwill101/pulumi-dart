@@ -11,16 +11,22 @@ import 'extended_location.dart';
 class CloudServicesNetworkArgs {
   /// The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
   final pulumi.Input<List<EgressEndpoint>>? additionalEgressEndpoints;
+
   /// The name of the cloud services network.
   final pulumi.Input<String>? cloudServicesNetworkName;
+
   /// The indicator of whether the platform default endpoints are allowed for the egress traffic.
   final pulumi.Input<String>? enableDefaultEgressEndpoints;
+
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,10 +50,25 @@ class CloudServicesNetworkArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalEgressEndpoints': ?pulumi.Input.mapOptionalInputValue<List<EgressEndpoint>, List<Map<String, dynamic>>>(additionalEgressEndpoints, (value) => pulumi.Input.encodeList<EgressEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'additionalEgressEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EgressEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            additionalEgressEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<EgressEndpoint, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'cloudServicesNetworkName': ?cloudServicesNetworkName,
       'enableDefaultEgressEndpoints': ?enableDefaultEgressEndpoints,
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -56,14 +77,47 @@ class CloudServicesNetworkArgs {
 
   factory CloudServicesNetworkArgs.fromMap(Map<String, dynamic> map) {
     return CloudServicesNetworkArgs(
-      additionalEgressEndpoints: map['additionalEgressEndpoints'] == null ? null : (pulumi.Input.decodeList<EgressEndpoint>(map['additionalEgressEndpoints']!, (value) => EgressEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudServicesNetworkName: map['cloudServicesNetworkName'] == null ? null : (map['cloudServicesNetworkName']! as String).input(),
-      enableDefaultEgressEndpoints: map['enableDefaultEgressEndpoints'] == null ? null : (map['enableDefaultEgressEndpoints']! as String).input(),
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      additionalEgressEndpoints: (() {
+        final guardedValue = map['additionalEgressEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EgressEndpoint>(
+            guardedValue,
+            (value) =>
+                EgressEndpoint.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      cloudServicesNetworkName: (() {
+        final guardedValue = map['cloudServicesNetworkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDefaultEgressEndpoints: (() {
+        final guardedValue = map['enableDefaultEgressEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetAutoAdjustDataHistoricalOption {
   /// (Required) - The number of budget periods included in the moving-average calculation that determines your auto-adjusted budget amount.
   final pulumi.Input<int> budgetAdjustmentPeriod;
+
   /// (Optional) - The integer that describes how many budget periods in your BudgetAdjustmentPeriod are included in the calculation of your current budget limit. If the first budget period in your BudgetAdjustmentPeriod has no cost data, then that budget period isn’t included in the average that determines your budget limit. You can’t set your own LookBackAvailablePeriods. The value is automatically calculated from the `budget_adjustment_period` and your historical cost data.
   final pulumi.Input<int> lookbackAvailablePeriods;
 
@@ -23,11 +24,16 @@ class GetBudgetAutoAdjustDataHistoricalOption {
     };
   }
 
-  factory GetBudgetAutoAdjustDataHistoricalOption.fromMap(Map<String, dynamic> map) {
+  factory GetBudgetAutoAdjustDataHistoricalOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBudgetAutoAdjustDataHistoricalOption(
-      budgetAdjustmentPeriod: (map['budgetAdjustmentPeriod'] as int).input(),
-      lookbackAvailablePeriods: (map['lookbackAvailablePeriods'] as int).input(),
+      budgetAdjustmentPeriod: pulumi.Input.fromValue(
+        map['budgetAdjustmentPeriod'] as int,
+      ),
+      lookbackAvailablePeriods: pulumi.Input.fromValue(
+        map['lookbackAvailablePeriods'] as int,
+      ),
     );
   }
 }
-

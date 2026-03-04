@@ -9,48 +9,69 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OriginRuleArgs {
   /// Overwrite the DNS resolution record of the origin request.
   final pulumi.Input<String>? dnsRecord;
+
   /// Return Source 302 follow switch. Value range:
   final pulumi.Input<String>? follow302Enable;
+
   /// 302 follows the upper limit of the number of times, with a value range of [1-5].
   final pulumi.Input<String>? follow302MaxTries;
+
   /// Retain the original request parameter switch. Value range:
   final pulumi.Input<String>? follow302RetainArgs;
+
   /// Retain the original request header switch. Value range:
   final pulumi.Input<String>? follow302RetainHeader;
+
   /// Modify the source host after 302.
   final pulumi.Input<String>? follow302TargetHost;
+
   /// The HOST carried in the back-to-origin request.
   final pulumi.Input<String>? originHost;
+
   /// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
   final pulumi.Input<String>? originHttpPort;
+
   /// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
   final pulumi.Input<String>? originHttpsPort;
+
   /// The mtls switch. Value range:
   final pulumi.Input<String>? originMtls;
+
   /// Read timeout interval of the source station (s).
   final pulumi.Input<String>? originReadTimeout;
+
   /// The protocol used by the back-to-origin request. Value range:
   final pulumi.Input<String>? originScheme;
+
   /// SNI carried in the back-to-origin request.
   final pulumi.Input<String>? originSni;
+
   /// Source station certificate verification switch. Value range:
   final pulumi.Input<String>? originVerify;
+
   /// Use the range sharding method to download the file from the source. Value range:
   final pulumi.Input<String>? range;
+
   /// range shard size.
   final pulumi.Input<String>? rangeChunkSize;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   final pulumi.Input<String>? rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   final pulumi.Input<String>? ruleEnable;
+
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   final pulumi.Input<String>? ruleName;
+
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   final pulumi.Input<int>? sequence;
+
   /// The site ID.
   final pulumi.Input<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   final pulumi.Input<int>? siteVersion;
 
@@ -131,29 +152,112 @@ class OriginRuleArgs {
 
   factory OriginRuleArgs.fromMap(Map<String, dynamic> map) {
     return OriginRuleArgs(
-      dnsRecord: map['dnsRecord'] == null ? null : (map['dnsRecord']! as String).input(),
-      follow302Enable: map['follow302Enable'] == null ? null : (map['follow302Enable']! as String).input(),
-      follow302MaxTries: map['follow302MaxTries'] == null ? null : (map['follow302MaxTries']! as String).input(),
-      follow302RetainArgs: map['follow302RetainArgs'] == null ? null : (map['follow302RetainArgs']! as String).input(),
-      follow302RetainHeader: map['follow302RetainHeader'] == null ? null : (map['follow302RetainHeader']! as String).input(),
-      follow302TargetHost: map['follow302TargetHost'] == null ? null : (map['follow302TargetHost']! as String).input(),
-      originHost: map['originHost'] == null ? null : (map['originHost']! as String).input(),
-      originHttpPort: map['originHttpPort'] == null ? null : (map['originHttpPort']! as String).input(),
-      originHttpsPort: map['originHttpsPort'] == null ? null : (map['originHttpsPort']! as String).input(),
-      originMtls: map['originMtls'] == null ? null : (map['originMtls']! as String).input(),
-      originReadTimeout: map['originReadTimeout'] == null ? null : (map['originReadTimeout']! as String).input(),
-      originScheme: map['originScheme'] == null ? null : (map['originScheme']! as String).input(),
-      originSni: map['originSni'] == null ? null : (map['originSni']! as String).input(),
-      originVerify: map['originVerify'] == null ? null : (map['originVerify']! as String).input(),
-      range: map['range'] == null ? null : (map['range']! as String).input(),
-      rangeChunkSize: map['rangeChunkSize'] == null ? null : (map['rangeChunkSize']! as String).input(),
-      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
-      siteId: (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      dnsRecord: (() {
+        final guardedValue = map['dnsRecord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      follow302Enable: (() {
+        final guardedValue = map['follow302Enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      follow302MaxTries: (() {
+        final guardedValue = map['follow302MaxTries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      follow302RetainArgs: (() {
+        final guardedValue = map['follow302RetainArgs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      follow302RetainHeader: (() {
+        final guardedValue = map['follow302RetainHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      follow302TargetHost: (() {
+        final guardedValue = map['follow302TargetHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originHost: (() {
+        final guardedValue = map['originHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originHttpPort: (() {
+        final guardedValue = map['originHttpPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originHttpsPort: (() {
+        final guardedValue = map['originHttpsPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originMtls: (() {
+        final guardedValue = map['originMtls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originReadTimeout: (() {
+        final guardedValue = map['originReadTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originScheme: (() {
+        final guardedValue = map['originScheme'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originSni: (() {
+        final guardedValue = map['originSni'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originVerify: (() {
+        final guardedValue = map['originVerify'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      range: (() {
+        final guardedValue = map['range'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rangeChunkSize: (() {
+        final guardedValue = map['rangeChunkSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rule: (() {
+        final guardedValue = map['rule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleEnable: (() {
+        final guardedValue = map['ruleEnable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sequence: (() {
+        final guardedValue = map['sequence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
+      siteVersion: (() {
+        final guardedValue = map['siteVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

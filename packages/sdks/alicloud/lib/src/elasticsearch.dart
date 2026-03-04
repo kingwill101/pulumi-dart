@@ -1,5 +1,3 @@
-library module_elasticsearch;
-
 export 'elasticsearch/functions.dart';
 export 'elasticsearch/get_instances_args.dart';
 export 'elasticsearch/get_instances_instance.dart';

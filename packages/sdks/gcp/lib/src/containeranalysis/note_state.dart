@@ -17,26 +17,36 @@ class NoteState {
   /// project.
   /// Structure is documented below.
   final pulumi.Input<NoteAttestationAuthority>? attestationAuthority;
+
   /// The time this note was created.
   final pulumi.Input<String>? createTime;
+
   /// Time of expiration for this note. Leave empty if note does not expire.
   final pulumi.Input<String>? expirationTime;
+
   /// The type of analysis this note describes
   final pulumi.Input<String>? kind;
+
   /// A detailed description of the note
   final pulumi.Input<String>? longDescription;
+
   /// The name of the note.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Names of other notes related to this note.
   final pulumi.Input<List<String>>? relatedNoteNames;
+
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
   final pulumi.Input<List<NoteRelatedUrl>>? relatedUrls;
+
   /// A one sentence description of the note.
   final pulumi.Input<String>? shortDescription;
+
   /// The time this note was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -68,7 +78,11 @@ class NoteState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestationAuthority': ?pulumi.Input.mapOptionalInputValue<NoteAttestationAuthority, Map<String, dynamic>>(attestationAuthority, (value) => value.toMap()),
+      'attestationAuthority':
+          ?pulumi.Input.mapOptionalInputValue<
+            NoteAttestationAuthority,
+            Map<String, dynamic>
+          >(attestationAuthority, (value) => value.toMap()),
       'createTime': ?createTime,
       'expirationTime': ?expirationTime,
       'kind': ?kind,
@@ -76,7 +90,18 @@ class NoteState {
       'name': ?name,
       'project': ?project,
       'relatedNoteNames': ?relatedNoteNames,
-      'relatedUrls': ?pulumi.Input.mapOptionalInputValue<List<NoteRelatedUrl>, List<Map<String, dynamic>>>(relatedUrls, (value) => pulumi.Input.encodeList<NoteRelatedUrl, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'relatedUrls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NoteRelatedUrl>,
+            List<Map<String, dynamic>>
+          >(
+            relatedUrls,
+            (value) =>
+                pulumi.Input.encodeList<NoteRelatedUrl, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'shortDescription': ?shortDescription,
       'updateTime': ?updateTime,
     };
@@ -84,18 +109,71 @@ class NoteState {
 
   factory NoteState.fromMap(Map<String, dynamic> map) {
     return NoteState(
-      attestationAuthority: map['attestationAuthority'] == null ? null : (NoteAttestationAuthority.fromMap((map['attestationAuthority']! as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      longDescription: map['longDescription'] == null ? null : (map['longDescription']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      relatedNoteNames: map['relatedNoteNames'] == null ? null : ((map['relatedNoteNames']! as List).cast<String>()).input(),
-      relatedUrls: map['relatedUrls'] == null ? null : (pulumi.Input.decodeList<NoteRelatedUrl>(map['relatedUrls']!, (value) => NoteRelatedUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      attestationAuthority: (() {
+        final guardedValue = map['attestationAuthority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NoteAttestationAuthority.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationTime: (() {
+        final guardedValue = map['expirationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      longDescription: (() {
+        final guardedValue = map['longDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relatedNoteNames: (() {
+        final guardedValue = map['relatedNoteNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      relatedUrls: (() {
+        final guardedValue = map['relatedUrls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NoteRelatedUrl>(
+            guardedValue,
+            (value) =>
+                NoteRelatedUrl.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      shortDescription: (() {
+        final guardedValue = map['shortDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

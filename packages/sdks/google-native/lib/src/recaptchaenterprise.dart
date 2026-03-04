@@ -1,5 +1,3 @@
-library module_recaptchaenterprise;
-
 export 'recaptchaenterprise/firewallpolicy.dart';
 export 'recaptchaenterprise/firewallpolicy_args.dart';
 export 'recaptchaenterprise/functions.dart';

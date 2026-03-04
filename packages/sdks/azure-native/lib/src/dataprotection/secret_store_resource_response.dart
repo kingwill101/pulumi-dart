@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretStoreResourceResponse {
   /// Gets or sets the type of secret store
   final pulumi.Input<String> secretStoreType;
+
   /// Uri to get to the resource
   final pulumi.Input<String>? uri;
+
   /// Gets or sets value stored in secret store resource
   final pulumi.Input<String>? value;
 
@@ -31,10 +33,17 @@ class SecretStoreResourceResponse {
 
   factory SecretStoreResourceResponse.fromMap(Map<String, dynamic> map) {
     return SecretStoreResourceResponse(
-      secretStoreType: (map['secretStoreType'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      secretStoreType: pulumi.Input.fromValue(map['secretStoreType'] as String),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

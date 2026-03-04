@@ -4,16 +4,15 @@ enum MultiSubnetIntent {
   highAvailability("HighAvailability"),
   disasterRecovery("DisasterRecovery");
 
-  const MultiSubnetIntent(this.value);
-  final String value;
+  const MultiSubnetIntent(this.wireValue);
+  final String wireValue;
 
   static MultiSubnetIntent fromValue(String value) {
     for (final item in MultiSubnetIntent.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MultiSubnetIntent value: $value');
   }
 }
-

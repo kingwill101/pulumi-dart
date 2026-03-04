@@ -4,16 +4,20 @@ enum GoogleCloudDataplexV1StorageFormatCompressionFormat {
   gzip("GZIP"),
   bzip2("BZIP2");
 
-  const GoogleCloudDataplexV1StorageFormatCompressionFormat(this.value);
-  final String value;
+  const GoogleCloudDataplexV1StorageFormatCompressionFormat(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDataplexV1StorageFormatCompressionFormat fromValue(String value) {
-    for (final item in GoogleCloudDataplexV1StorageFormatCompressionFormat.values) {
-      if (item.value == value) {
+  static GoogleCloudDataplexV1StorageFormatCompressionFormat fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDataplexV1StorageFormatCompressionFormat.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1StorageFormatCompressionFormat value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1StorageFormatCompressionFormat value: $value',
+    );
   }
 }
-

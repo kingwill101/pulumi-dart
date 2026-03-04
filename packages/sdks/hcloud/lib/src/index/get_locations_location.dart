@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLocationsLocation {
   /// Name of the closest city to the Location. City name and optionally state in short form.
   final pulumi.Input<String> city;
+
   /// Country the Location resides in. ISO 3166-1 alpha-2 code of the country.
   final pulumi.Input<String> country;
+
   /// Description of the Location.
   final pulumi.Input<String> description;
+
   /// ID of the Location.
   final pulumi.Input<int> id;
+
   /// Latitude of the city closest to the Location.
   final pulumi.Input<double> latitude;
+
   /// Longitude of the city closest to the Location.
   final pulumi.Input<double> longitude;
+
   /// Name of the Location.
   final pulumi.Input<String> name;
+
   /// Name of the Network Zone this Location resides in.
   final pulumi.Input<String> networkZone;
 
@@ -55,15 +62,14 @@ class GetLocationsLocation {
 
   factory GetLocationsLocation.fromMap(Map<String, dynamic> map) {
     return GetLocationsLocation(
-      city: (map['city'] as String).input(),
-      country: (map['country'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as int).input(),
-      latitude: (map['latitude'] as double).input(),
-      longitude: (map['longitude'] as double).input(),
-      name: (map['name'] as String).input(),
-      networkZone: (map['networkZone'] as String).input(),
+      city: pulumi.Input.fromValue(map['city'] as String),
+      country: pulumi.Input.fromValue(map['country'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      latitude: pulumi.Input.fromValue(map['latitude'] as double),
+      longitude: pulumi.Input.fromValue(map['longitude'] as double),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkZone: pulumi.Input.fromValue(map['networkZone'] as String),
     );
   }
 }
-

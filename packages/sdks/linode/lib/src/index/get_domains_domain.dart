@@ -5,30 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainsDomain {
   /// The list of IPs that may perform a zone transfer for this Domain.
   final pulumi.Input<List<String>> axfrIps;
+
   /// A description for this Domain.
   final pulumi.Input<String> description;
+
   /// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
   final pulumi.Input<String>? domain;
+
   /// The amount of time in seconds that may pass before this Domain is no longer authoritative.
   final pulumi.Input<int> expireSec;
+
   /// The group this Domain belongs to.
   final pulumi.Input<String> group;
+
   /// The unique ID of this Domain.
   final pulumi.Input<int>? id;
+
   /// The IP addresses representing the master DNS for this Domain.
   final pulumi.Input<List<String>> masterIps;
+
   /// The amount of time in seconds before this Domain should be refreshed.
   final pulumi.Input<int> refreshSec;
+
   /// The interval, in seconds, at which a failed refresh should be retried.
   final pulumi.Input<int> retrySec;
+
   /// Start of Authority email address.
   final pulumi.Input<String> soaEmail;
+
   /// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
   final pulumi.Input<String> status;
+
   /// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   final pulumi.Input<List<String>> tags;
+
   /// 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
   final pulumi.Input<int> ttlSec;
+
   /// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
   final pulumi.Input<String> type;
 
@@ -85,21 +98,30 @@ class GetDomainsDomain {
 
   factory GetDomainsDomain.fromMap(Map<String, dynamic> map) {
     return GetDomainsDomain(
-      axfrIps: ((map['axfrIps'] as List).cast<String>()).input(),
-      description: (map['description'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      expireSec: (map['expireSec'] as int).input(),
-      group: (map['group'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      masterIps: ((map['masterIps'] as List).cast<String>()).input(),
-      refreshSec: (map['refreshSec'] as int).input(),
-      retrySec: (map['retrySec'] as int).input(),
-      soaEmail: (map['soaEmail'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as List).cast<String>()).input(),
-      ttlSec: (map['ttlSec'] as int).input(),
-      type: (map['type'] as String).input(),
+      axfrIps: pulumi.Input.fromValue((map['axfrIps'] as List).cast<String>()),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expireSec: pulumi.Input.fromValue(map['expireSec'] as int),
+      group: pulumi.Input.fromValue(map['group'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      masterIps: pulumi.Input.fromValue(
+        (map['masterIps'] as List).cast<String>(),
+      ),
+      refreshSec: pulumi.Input.fromValue(map['refreshSec'] as int),
+      retrySec: pulumi.Input.fromValue(map['retrySec'] as int),
+      soaEmail: pulumi.Input.fromValue(map['soaEmail'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
+      ttlSec: pulumi.Input.fromValue(map['ttlSec'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum TextStyleFontSize {
   fsLarge("FS_LARGE"),
   fsExtraLarge("FS_EXTRA_LARGE");
 
-  const TextStyleFontSize(this.value);
-  final String value;
+  const TextStyleFontSize(this.wireValue);
+  final String wireValue;
 
   static TextStyleFontSize fromValue(String value) {
     for (final item in TextStyleFontSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TextStyleFontSize value: $value');
   }
 }
-

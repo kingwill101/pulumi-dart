@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceDirectoriesDirectory {
   /// The ID of resource directory.
   final pulumi.Input<String> id;
+
   /// The ID of the master account.
   final pulumi.Input<String> masterAccountId;
+
   /// The name of the master account.
   final pulumi.Input<String> masterAccountName;
+
   /// The ID of the resource directory.
   final pulumi.Input<String> resourceDirectoryId;
+
   /// The ID of the root folder.
   final pulumi.Input<String> rootFolderId;
+
   /// (Available in 1.120.0+.) The status of the control policy.
   final pulumi.Input<String> status;
 
@@ -45,13 +50,16 @@ class GetResourceDirectoriesDirectory {
 
   factory GetResourceDirectoriesDirectory.fromMap(Map<String, dynamic> map) {
     return GetResourceDirectoriesDirectory(
-      id: (map['id'] as String).input(),
-      masterAccountId: (map['masterAccountId'] as String).input(),
-      masterAccountName: (map['masterAccountName'] as String).input(),
-      resourceDirectoryId: (map['resourceDirectoryId'] as String).input(),
-      rootFolderId: (map['rootFolderId'] as String).input(),
-      status: (map['status'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      masterAccountId: pulumi.Input.fromValue(map['masterAccountId'] as String),
+      masterAccountName: pulumi.Input.fromValue(
+        map['masterAccountName'] as String,
+      ),
+      resourceDirectoryId: pulumi.Input.fromValue(
+        map['resourceDirectoryId'] as String,
+      ),
+      rootFolderId: pulumi.Input.fromValue(map['rootFolderId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

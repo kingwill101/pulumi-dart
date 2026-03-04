@@ -17,5 +17,6 @@ dependencies:
     pulumi: 0.1.0
     pulumi_aws: ^7.15.0
     pulumi_docker: ^4.6.0
+    pulumi_docker_build: ^0.0.14
 dev_dependencies:
     lints: ^6.1.0
